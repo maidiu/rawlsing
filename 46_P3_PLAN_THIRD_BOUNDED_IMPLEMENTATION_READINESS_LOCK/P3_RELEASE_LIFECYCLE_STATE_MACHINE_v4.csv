@@ -1,0 +1,8 @@
+from_status,to_status,allowed,guard
+,DRAFT,YES,First release event only; event_ordinal=1.
+DRAFT,VALIDATED,YES,All pre-shadow release validation gates pass.
+VALIDATED,SHADOW,YES,Shadow schema load succeeds and comparison run begins.
+SHADOW,PROMOTED,YES,All shadow comparison and promotion gates pass.
+SHADOW,ROLLED_BACK,YES,Shadow failure or explicit rejection; current pointer unchanged.
+PROMOTED,SUPERSEDED,YES,A successor release is promoted transactionally.
+PROMOTED,ROLLED_BACK,YES,Emergency rollback restores prior promoted release and records evidence.

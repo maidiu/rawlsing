@@ -1,0 +1,35 @@
+{
+  "authority_warning": "Do not reconstruct or promote P3C authority from this narrative ledger alone. The generated section 63-80 source, decision JSON, manifests, Git objects, and PostgreSQL databases were lost with the prior sandbox reset.",
+  "classification": "COMPLETE_AVAILABLE_ARTIFACT_RECOVERY_HANDOFF_NOT_P3C_AUTHORITY_CHECKPOINT",
+  "created_at": "2026-08-02T15:33:54.862272+00:00",
+  "exact_continuation": "Recover the missing P3C worktree/database from an external copy if one exists. Otherwise restart P3C execution from the executable v40 base and use the ledger only as a non-authoritative roadmap.",
+  "executable_base": {
+    "origin": "Rawlsing_P3A_V40_Direct_Engineering_Transfer.zip",
+    "release": "v40",
+    "sections": "00-62",
+    "source_complete": true
+  },
+  "p3c_recovery": {
+    "database_state_present": false,
+    "last_recorded_persistent_commit": "68c3114acad3366380a5e83c0480802dfef6e511",
+    "last_recorded_persistent_counts": {
+      "adjudication_decisions": 139,
+      "canonical_families": 108,
+      "canonical_revisions": 134,
+      "original_candidates_remaining": 2,
+      "resolved_pair_obligations": 326
+    },
+    "last_recorded_persistent_release": "R52",
+    "records_present": true,
+    "remaining_original_candidate": "P3CAND-000273",
+    "sections": "63-80",
+    "source_files_present": false,
+    "tested_not_promoted_counts": {
+      "adjudication_decisions": 142,
+      "canonical_families": 111,
+      "original_candidates_remaining": 1
+    },
+    "tested_not_promoted_release": "R53"
+  },
+  "status": "RECOVERY_BLOCKED_MISSING_P3C_RUNTIME_ARTIFACTS"
+}

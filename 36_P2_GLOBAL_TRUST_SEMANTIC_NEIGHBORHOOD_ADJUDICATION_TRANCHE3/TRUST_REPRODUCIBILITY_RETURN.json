@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "tracked_files": 5,
+  "hashes_exact": true,
+  "files": [
+    {
+      "file": "Rawlsing_P2_Trust_Lineage_Axis_Target_Classification_v2.csv",
+      "source_sha256": "526fe1814ee610156aa544f45f34300a9540a5b5c56e9db9bf075a5fe4e0014e",
+      "rebuilt_sha256": "526fe1814ee610156aa544f45f34300a9540a5b5c56e9db9bf075a5fe4e0014e",
+      "exact": true
+    },
+    {
+      "file": "Rawlsing_P2_Trust_Neighborhood_Pair_Rulings_v2.csv",
+      "source_sha256": "dbb5c40ae2369cb8f062374dd0712cdcfb0b3f59df50aa3603a09473e408024d",
+      "rebuilt_sha256": "dbb5c40ae2369cb8f062374dd0712cdcfb0b3f59df50aa3603a09473e408024d",
+      "exact": true
+    },
+    {
+      "file": "Rawlsing_P2_Trust_Neighborhood_Two_Sided_Evidence_Ledger_v2.csv",
+      "source_sha256": "c1b2faeef144bf74ddff0480fa7a6bec00a84ec3cbb431a8f12391055589ccfb",
+      "rebuilt_sha256": "c1b2faeef144bf74ddff0480fa7a6bec00a84ec3cbb431a8f12391055589ccfb",
+      "exact": true
+    },
+    {
+      "file": "Rawlsing_P2_Semantic_Priority_Queue_Remaining_After_Trust_Tranche_v3.csv",
+      "source_sha256": "ac63eb71c3ab7fc72d1fd2ad4315cf59762534871ceb70e40bc5416fe239861e",
+      "rebuilt_sha256": "ac63eb71c3ab7fc72d1fd2ad4315cf59762534871ceb70e40bc5416fe239861e",
+      "exact": true
+    },
+    {
+      "file": "TRUST_ADJUDICATION_RETURN_V2.json",
+      "source_sha256": "eaba706fd9ac80e16b7088ae68412da29e5abb2b64c710dfba78fa6ef06a9c29",
+      "rebuilt_sha256": "eaba706fd9ac80e16b7088ae68412da29e5abb2b64c710dfba78fa6ef06a9c29",
+      "exact": true
+    }
+  ],
+  "adjudication_return": {
+    "contract_version": "P2_TRUST_NEIGHBORHOOD_ADJUDICATION_V2",
+    "input_pending_pair_rows": 18710,
+    "trust_domain_pair_rows_adjudicated": 3863,
+    "remaining_pair_rows": 14847,
+    "trust_domain_lineages_classified": 562,
+    "lineage_classification_status_counts": {
+      "P2_NONTRUST_EXCLUSION_CLASSIFIED": 412,
+      "P2_TRUST_LINEAGE_AXIS_TARGET_CLASSIFIED": 148,
+      "P2_TRUST_LINEAGE_CLASSIFICATION_UNRESOLVED": 2
+    },
+    "lineage_relation_axis_counts": {
+      "bribery_experience": 2,
+      "climate_action_evaluation": 1,
+      "comparative_media_trust": 1,
+      "contact_exposure": 2,
+      "corruption_perception": 8,
+      "democratic_institution_requirement": 3,
+      "external_index": 5,
+      "generalized_social_trust": 23,
+      "government_responsibility_assignment": 2,
+      "government_right_action_expectation": 1,
+      "government_support_benefit": 1,
+      "household_asset_or_service": 11,
+      "identity_recognition": 3,
+      "importance_ranking": 3,
+      "information_channel": 1,
+      "information_withholding": 1,
+      "institutional_performance": 7,
+      "institutional_trust": 102,
+      "interpersonal_trust": 17,
+      "issue_or_problem_identification": 3,
+      "knowledge_identification": 2,
+      "listening_responsiveness": 2,
+      "long_term_orientation": 2,
+      "marriage_social_distance": 1,
+      "media_trust": 5,
+      "membership_participation": 15,
+      "moved_with_relatives": 16,
+      "news_use_frequency": 4,
+      "nontrust_other": 258,
+      "normative_justifiability": 3,
+      "party_metadata": 3,
+      "political_efficacy": 2,
+      "public_service_problem": 3,
+      "representation_scope": 1,
+      "respectful_treatment": 3,
+      "satisfaction_evaluation": 3,
+      "security_privacy_evaluation": 5,
+      "service_access_difficulty": 28,
+      "social_connection_resource": 1,
+      "social_distance": 2,
+      "social_ties_identity": 2,
+      "trust_target_heterogeneous": 2,
+      "unfair_treatment": 1,
+      "verbatim_reason": 1
+    },
+    "pair_authority_status_counts": {
+      "ACCEPTED_NESTED_OR_FUNCTIONAL_TRUST_TARGET_COORDINATE_ONLY": 76,
+      "ACCEPTED_NONTRUST_RELATION_REDIRECTED_FROM_CONTAMINATED_TRUST_NEIGHBORHOOD": 7,
+      "ACCEPTED_TRUST_CONSTRUCT_COORDINATE_WITH_DERIVED_INDEX": 30,
+      "ACCEPTED_TRUST_CONSTRUCT_OR_TARGET_COORDINATE_ONLY": 1,
+      "ACCEPTED_TYPED_CROSS_SOURCE_TRUST_RELATION": 329,
+      "REDIRECTED_OUT_OF_TRUST_NEIGHBORHOOD_OTHER_DOMAIN_NOT_ADJUDICATED": 1413,
+      "REJECTED_CONTAMINATED_TRUST_NEIGHBORHOOD_NONTRUST_MISMATCH": 65,
+      "REJECTED_FALSE_EQUIVALENCE_TARGET_OR_TRUST_AXIS_MISMATCH": 330,
+      "REJECTED_TRUST_VERSUS_NONTRUST_OPERATOR_MISMATCH": 1531,
+      "UNRESOLVED_INSUFFICIENT_OR_HETEROGENEOUS_RELATION_AXIS_OR_TARGET_EVIDENCE": 81
+    },
+    "pair_relation_type_counts": {
+      "DERIVED_INDEX_CONSTRUCT_COORDINATE": 30,
+      "NEGATIVE_AUTHORITY": 1926,
+      "OTHER_DOMAIN_REVIEW_REQUIRED": 1413,
+      "REWORDED_PROPOSITION_EQUIVALENCE": 336,
+      "TARGET_RELATION_COORDINATE_ONLY": 76,
+      "TRUST_CONSTRUCT_COORDINATE_ONLY": 1,
+      "UNRESOLVED": 81
+    },
+    "semantic_id_counts": {
+      "MEDIA_TRUST_SOCIAL": 2,
+      "TRUST_ARMY": 285,
+      "TRUST_COURTS": 520,
+      "TRUST_ELECTIONS": 17,
+      "TRUST_GENERAL": 886,
+      "TRUST_GOVERNMENT": 645,
+      "TRUST_PARLIAMENT": 282,
+      "TRUST_POLICE": 415,
+      "TRUST_RELIGIOUS_LEADERS": 216,
+      "TRUST_STRANGERS": 595
+    },
+    "evidence_rows": 7726,
+    "evidence_rows_expected": 7726,
+    "all_input_trust_pairs_partitioned": true,
+    "remaining_queue_partition_exact": true,
+    "accepted_proposition_rows_require_exact_axis_and_target": true,
+    "authority_boundary": "PAIR_RELATION_AUTHORITY_ONLY_NO_J_FAMILY_NO_VALUE_HARMONIZATION"
+  }
+}

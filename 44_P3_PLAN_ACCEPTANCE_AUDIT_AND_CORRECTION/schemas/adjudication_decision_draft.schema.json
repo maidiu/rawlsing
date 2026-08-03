@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/adjudication_decision_draft.schema.json",
+  "title": "Rawlsing P3 Adjudication Decision Draft",
+  "type": "object",
+  "required": [
+    "adjudication_id",
+    "candidate_family_id",
+    "candidate_revision_id",
+    "decision_status",
+    "accepted_members",
+    "excluded_members",
+    "variant_assignments",
+    "collision_dispositions",
+    "unresolved_boundaries",
+    "response_portability_status",
+    "evidence_bundle_hash",
+    "authority_release_id"
+  ],
+  "properties": {
+    "adjudication_id": {
+      "type": "string",
+      "pattern": "^P3ADJ-[0-9]{6}$"
+    },
+    "candidate_family_id": {
+      "type": "string"
+    },
+    "candidate_revision_id": {
+      "type": "string"
+    },
+    "decision_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canonical_family_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canonical_proposition": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "accepted_members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "excluded_members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "variant_assignments": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "hierarchical_relations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "collision_dispositions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "response_portability_status": {
+      "const": "NOT_AUTHORIZED_BY_P3"
+    },
+    "unresolved_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "supersedes_adjudication_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

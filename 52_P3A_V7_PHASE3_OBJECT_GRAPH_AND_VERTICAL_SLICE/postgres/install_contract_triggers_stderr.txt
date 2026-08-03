@@ -1,0 +1,10 @@
+NOTICE:  trigger "p3_vocab_a288a9ebfa66569a" for relation "p3_release_status_event" does not exist, skipping
+NOTICE:  trigger "p3_vocab_222af508c7b766bb" for relation "p3_object_registry" does not exist, skipping
+NOTICE:  trigger "p3_vocab_d1c32bee63d67a54" for relation "p3_object_registry" does not exist, skipping
+NOTICE:  trigger "p3_vocab_fa00340c36e3e8a0" for relation "p3_upstream_object_reference" does not exist, skipping
+NOTICE:  trigger "p3_vocab_42af4b016d8c9955" for relation "p3_upstream_object_reference" does not exist, skipping
+NOTICE:  trigger "p3_vocab_61ca9a427350f298" for relation "p3_lineage_participation" does not exist, skipping
+NOTICE:  trigger "p3_vocab_be3e63445f8fe212" for relation "p3_lineage_disposition" does not exist, skipping
+ERROR:  column "subject_type" of relation "p3_lineage_disposition" does not exist
+CONTEXT:  SQL statement "CREATE TRIGGER p3_vocab_be3e63445f8fe212 BEFORE INSERT OR UPDATE OF subject_type ON p3_lineage_disposition FOR EACH ROW EXECUTE FUNCTION p3_enforce_vocab_code('object_type','subject_type','P3-AUTHORITY-2026-08-01-R30-P3A-TEST')"
+PL/pgSQL function p3_install_contract_triggers(text) line 7 at EXECUTE

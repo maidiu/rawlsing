@@ -1,0 +1,1303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/proposition_signature.schema.json",
+  "title": "Rawlsing P3 Proposition Signature",
+  "type": "object",
+  "required": [
+    "signature_id",
+    "subject_id",
+    "subject_type",
+    "fields",
+    "response_topologies",
+    "signature_status",
+    "content_hash",
+    "authority_release_id"
+  ],
+  "properties": {
+    "signature_id": {
+      "type": "string",
+      "pattern": "^P3SIG-[0-9]{6}$"
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_type": {
+      "enum": [
+        "IMPORTED_SOURCE_LOCAL_LINEAGE",
+        "LINEAGE_SEGMENT"
+      ]
+    },
+    "fields": {
+      "type": "object",
+      "required": [
+        "subject_role",
+        "operator",
+        "target",
+        "object_or_outcome",
+        "modality",
+        "timeframe",
+        "condition",
+        "population_scope",
+        "geographic_scope",
+        "polarity",
+        "derived_status",
+        "parent_context"
+      ],
+      "properties": {
+        "subject_role": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "operator": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "target": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "object_or_outcome": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "modality": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "timeframe": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "condition": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "population_scope": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "geographic_scope": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "polarity": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "derived_status": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "parent_context": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Optional governed code or stable value-registry ID; free-text source value remains in field_value."
+            },
+            "evidence_state": {
+              "enum": [
+                "KNOWN",
+                "EXPLICITLY_UNSPECIFIED",
+                "NOT_APPLICABLE",
+                "UNRECOVERED",
+                "HETEROGENEOUS",
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "MEDIUM",
+                "LOW",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "response_topologies": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "BINARY",
+          "NOMINAL",
+          "ORDINAL",
+          "LIKERT",
+          "FREQUENCY_ORDINAL",
+          "NUMERIC_OPEN",
+          "RANKING",
+          "FORCED_CHOICE",
+          "MULTISELECT",
+          "TEXT_OPEN",
+          "DERIVED_INDEX",
+          "ADMINISTRATIVE",
+          "UNKNOWN"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "signature_status": {
+      "enum": [
+        "COMPLETE",
+        "PARTIAL_FAIL_CLOSED",
+        "HETEROGENEOUS",
+        "CONFLICTING"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_release_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

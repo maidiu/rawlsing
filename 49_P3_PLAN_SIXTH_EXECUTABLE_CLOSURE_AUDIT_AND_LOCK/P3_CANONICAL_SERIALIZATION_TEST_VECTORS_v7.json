@@ -1,0 +1,41 @@
+{
+  "contract_id": "P3_CANONICAL_SERIALIZATION_CONTRACT_V7",
+  "vectors": [
+    {
+      "name": "unicode_nfc",
+      "input": {
+        "x": "é"
+      },
+      "canonical_utf8": "{\"x\":\"é\"}",
+      "sha256": "97f06f396a709c3a29824e1cc794eeb98e2d1a262d7d455439d286d42803f0fe"
+    },
+    {
+      "name": "line_endings",
+      "input": {
+        "x": "a\r\nb\rc"
+      },
+      "canonical_utf8": "{\"x\":\"a\\nb\\nc\"}",
+      "sha256": "b860d37607950c3382469e0e8a9056897e434b51cda65e1520a332201b425a4c"
+    },
+    {
+      "name": "set_sorting",
+      "input": {
+        "member_ids": [
+          "b",
+          "a"
+        ]
+      },
+      "canonical_utf8": "{\"member_ids\":[\"a\",\"b\"]}",
+      "sha256": "c6c57c3d58d33ca185a8ce5b1a016f9fa8cca7fa0dea656abb40b2d520429361"
+    },
+    {
+      "name": "key_sorting",
+      "input": {
+        "z": 1,
+        "a": 2
+      },
+      "canonical_utf8": "{\"a\":2,\"z\":1}",
+      "sha256": "c2985c5ba6f7d2a55e768f92490ca09388e95bc4cccb9fdf11b15f4d42f93e73"
+    }
+  ]
+}

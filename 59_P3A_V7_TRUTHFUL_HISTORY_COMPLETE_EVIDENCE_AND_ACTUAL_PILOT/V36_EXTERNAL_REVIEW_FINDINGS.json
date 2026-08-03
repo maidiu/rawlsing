@@ -1,0 +1,79 @@
+{
+  "reviewed_delta": "Rawlsing_P3A_V36_Section58_Review_Delta.zip",
+  "delta_sha256": "6d6bc7b04f8f5f43d17ef2ccb23c810d320d3bc52ff3436135760788807a1abf",
+  "delta_bytes": 278419,
+  "accepted_progress": {
+    "candidate_origin_blocker_preserved_and_rolled_back": true,
+    "clean_candidate_rebuild_commits": true,
+    "historical_shells_not_inserted_as_current_candidate_revisions": true,
+    "frozen_identity_rows_immutable": true,
+    "current_base_candidate_origin_regressions_pass": true,
+    "current_r36_candidate_revisions": 141,
+    "postgresql_teardown": "127.0.0.1:55432 refused connection",
+    "phase_aware_future_gates_remain_legitimate": [
+      "q01b_postpromotion_pointer",
+      "q15b_no_unadjudicated_at_p3_close"
+    ]
+  },
+  "blocking_findings": [
+    {
+      "id": "V36-EXT-001",
+      "classification": "HISTORICAL_IDENTITY_HASHES_FABRICATED",
+      "count": 141,
+      "detail": "For every R35 candidate family/revision, import_historical_identity_surface derives synthetic origin/evidence hashes instead of importing the actual values available in v35."
+    },
+    {
+      "id": "V36-EXT-002",
+      "classification": "SUCCESSOR_FAMILY_AND_REVISION_GENEALOGY_CONTRADICTION",
+      "detail": "The migration maps families 1-141 to families 142-282, while creating R0002 revisions inside families 142-282. It neither preserves the actual R35 family origin nor allocates a genuinely new family after origin change."
+    },
+    {
+      "id": "V36-EXT-003",
+      "classification": "IMMUTABLE_FAMILY_ORIGIN_CHANGED_UNDER_SAME_ID",
+      "count": 141,
+      "detail": "All current v36 origin keys differ from the actual v35 origin keys, but the same family IDs 142-282 are retained and assigned R0002."
+    },
+    {
+      "id": "V36-EXT-004",
+      "classification": "RELEASE_CHANGE_LEDGER_NOT_POPULATED",
+      "detail": "R36 parentage and status events are inserted, but delivered code contains no insertion into p3_release_change_ledger."
+    },
+    {
+      "id": "V36-EXT-005",
+      "classification": "PILOT_INDEX_HAS_40_BUT_ONLY_11_PACKETS",
+      "detail": "The pilot index selects 40 candidates, while packet generation is separately truncated by --limit and produces only 11 packets/drafts."
+    },
+    {
+      "id": "V36-EXT-006",
+      "classification": "PILOT_STRATA_REMAIN_PROXY_BASED_AND_OVERLAP_SUPPRESSED",
+      "detail": "Response variant, split, hierarchy, derived index, exact-only, and precedence-overlap still use unrelated proxy predicates; a global used set suppresses allowed overlap."
+    },
+    {
+      "id": "V36-EXT-007",
+      "classification": "ALL_CANDIDATE_HASH_CLOSURE_NOT_PROVEN",
+      "count": 130,
+      "detail": "Only 11 candidates run through the full packet evidence builder; the other 130 hashes are accepted by length-only reporting."
+    },
+    {
+      "id": "V36-EXT-008",
+      "classification": "TYPED_CONSTRAINT_SCHEMA_STILL_OPEN",
+      "detail": "A redirect object stripped to endpoint IDs passes the inherited schema and shipped v36 validator after hash recomputation."
+    },
+    {
+      "id": "V36-EXT-009",
+      "classification": "FIXTURE_NEGATIVE_CASES_ACCEPT_ANY_FAILURE",
+      "detail": "run_case marks any exception as EXPECTED_FAIL. Incomplete promotion still fails at missing variant assignment; stale-hash changes only top-level hashes."
+    },
+    {
+      "id": "V36-EXT-010",
+      "classification": "FIXTURE_SURFACE_NOT_ISOLATED",
+      "detail": "Fixtures run in the main p3a_v27_shadow schema and persist fixture-release canonical/adjudication rows; no dedicated schema/database teardown is implemented."
+    },
+    {
+      "id": "V36-EXT-011",
+      "classification": "VERIFIER_CHECKS_SUMMARY_STATUS_NOT_DERIVED_EVIDENCE",
+      "detail": "The verifier accepts hash length, CSV PASS cells, pilot row counts, and fixture labels rather than reconstructing history, all hashes, pilot evidence, or named fixture invariants."
+    }
+  ],
+  "status": "BLOCKED_HISTORICAL_IDENTITY_AND_EXECUTION_EVIDENCE_DEFECT"
+}

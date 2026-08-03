@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/hyperedge.schema.json",
+  "title": "Rawlsing P3 Hyperedge",
+  "type": "object",
+  "required": [
+    "hyperedge_id",
+    "hyperedge_type",
+    "members",
+    "authority_effect",
+    "source_evidence_ids",
+    "causal_authority",
+    "authority_release_id"
+  ],
+  "properties": {
+    "hyperedge_id": {
+      "type": "string",
+      "pattern": "^P3HYP-[0-9]{6}$"
+    },
+    "hyperedge_type": {
+      "enum": [
+        "BATTERY",
+        "CROSS_SOURCE_BATTERY_ANALOGY",
+        "DERIVED_INDEX_CONSTITUTION",
+        "SIBLING_FAMILY_CONSTRUCT",
+        "TARGET_HIERARCHY",
+        "RESPONSE_CONTRACT_CLASS"
+      ]
+    },
+    "members": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "object_id",
+          "role"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "authority_effect": {
+      "enum": [
+        "DISCOVERY_CONTEXT",
+        "STRUCTURAL_SUPPORT",
+        "VARIANT_ORGANIZATION",
+        "HIERARCHY",
+        "CONSTITUTION",
+        "NO_FAMILY_MEMBERSHIP_AUTHORITY"
+      ]
+    },
+    "source_evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "causal_authority": {
+      "const": false
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

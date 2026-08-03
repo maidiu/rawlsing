@@ -1,0 +1,33 @@
+{
+  "contract_id": "P3_LIVE_INSTALLATION_BLOCKING_CONTRACT_V7",
+  "status": "BLOCKED_MISSING_USER_DESIGNATED_LIVE_TARGET",
+  "not_a_migration": true,
+  "required_before_compilation": [
+    "designated_live_repository_or_postgresql_dsn",
+    "target_shadow_schema_name",
+    "database_role_and_privilege_map",
+    "current_promoted_authority_release",
+    "upstream_runtime_table_and_column_map",
+    "backup_and_rollback_target",
+    "write_authorization",
+    "runtime_build_commands_for_v550j_v551j_v552j"
+  ],
+  "compiler_inputs_when_unblocked": [
+    "p3_postgresql_compatible_ddl_v7.sql",
+    "P3_CATEGORICAL_FIELD_VOCAB_BINDINGS_v7.csv",
+    "P3_OBJECT_REFERENCE_TYPE_CONTRACT_v7.csv",
+    "P3_HYPEREDGE_ROLE_TYPE_CONTRACT_v7.csv",
+    "P3_IDENTITY_KEY_SPEC_v7.csv",
+    "P3_LIFECYCLE_STATE_MACHINE_v7.csv",
+    "P3_RELEASE_LIFECYCLE_STATE_MACHINE_v7.csv",
+    "P3_DDL_VALIDATION_QUERIES_v7.sql"
+  ],
+  "required_outputs": [
+    "forward_shadow_migration.sql",
+    "rollback.sql",
+    "prepromotion_validation_return.json",
+    "shadow_runtime_comparison_return.json",
+    "promotion_transaction.sql"
+  ],
+  "prohibited_claim": "No executable live migration or installation PASS may be claimed before all required live-target facts are supplied and tested."
+}

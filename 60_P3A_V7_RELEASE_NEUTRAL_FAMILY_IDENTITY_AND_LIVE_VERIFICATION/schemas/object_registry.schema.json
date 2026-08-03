@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/object_registry.schema.json",
+  "title": "object_registry",
+  "type": "object",
+  "required": [
+    "object_id",
+    "object_type",
+    "identity_strategy",
+    "idempotency_key",
+    "origin_phase",
+    "allocation_release_id",
+    "stable_identity_note"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_type": {
+      "enum": [
+        "ADJUDICATION",
+        "CANDIDATE_COMPONENT",
+        "CANDIDATE_FAMILY",
+        "CANDIDATE_PACKET",
+        "CANDIDATE_REVISION",
+        "CANONICAL_FAMILY",
+        "CANONICAL_FAMILY_REVISION",
+        "CLOSURE_OBLIGATION",
+        "COLLISION",
+        "COLLISION_AUTHORITY_SOURCE",
+        "DEPENDENCY",
+        "DOCTRINE_DELTA",
+        "FAMILY_EXCLUSION",
+        "FAMILY_GENEALOGY",
+        "FAMILY_VARIANT",
+        "FAMILY_VARIANT_REVISION",
+        "HYPEREDGE",
+        "IMPORTED_IMPLEMENTATION",
+        "IMPORTED_RESPONSE_CONTRACT",
+        "IMPORTED_SOURCE_LOCAL_LINEAGE",
+        "IMPORTED_SOURCE_STRUCTURE",
+        "LINEAGE_SEGMENT",
+        "PAIR_FACT",
+        "PAIR_FACT_EVIDENCE",
+        "PAIR_FACT_SOURCE_AUTHORITY",
+        "PROPOSITION_SIGNATURE",
+        "RESPONSE_CONTRACT_REFERENCE",
+        "SIGNATURE_FIELD_EVIDENCE",
+        "STRUCTURAL_CONTEXT_REFERENCE"
+      ]
+    },
+    "identity_strategy": {
+      "enum": [
+        "CONTENT_ADDRESSED_DERIVED_ID",
+        "INHERITED_UPSTREAM_ID",
+        "REGISTRY_ALLOCATED_DURABLE_ID"
+      ]
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origin_phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "origin_authority_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "allocation_release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retired_release_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "content_hash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "stable_identity_note": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "identity_strategy": {
+            "const": "CONTENT_ADDRESSED_DERIVED_ID"
+          }
+        },
+        "required": [
+          "identity_strategy"
+        ]
+      },
+      "then": {
+        "required": [
+          "content_hash"
+        ],
+        "properties": {
+          "content_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "identity_strategy": {
+            "const": "INHERITED_UPSTREAM_ID"
+          }
+        },
+        "required": [
+          "identity_strategy"
+        ]
+      },
+      "then": {
+        "properties": {
+          "content_hash": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

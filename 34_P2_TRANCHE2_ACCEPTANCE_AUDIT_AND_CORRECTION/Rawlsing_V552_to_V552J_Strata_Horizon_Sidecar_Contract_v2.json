@@ -1,0 +1,57 @@
+{
+  "contract_id": "RAWLSING_V552_TO_V552J_STRATA_HORIZON_SIDECAR_V2",
+  "version": "2.1.0",
+  "date": "2026-07-31",
+  "status": "AUTHORED_AND_PYTESTED_NOT_INSTALLED_OR_RUNTIME_EXECUTED",
+  "supersedes": "RAWLSING_V552_TO_V552J_STRATA_HORIZON_SIDECAR_V1",
+  "purpose": "Preserve authoritative V552 question_semantic_hierarchy strata/horizon fields into V552J without blank-key joins, false match statuses, schema drift, or synthesis.",
+  "source_artifact": "v552_question_semantic_hierarchy",
+  "target_artifacts": [
+    "v552j_v553_input_index",
+    "v552j_to_v553_handoff_index"
+  ],
+  "join_key_preference": [
+    [
+      "question_implementation_id"
+    ],
+    [
+      "source",
+      "wave",
+      "question_id"
+    ],
+    [
+      "source",
+      "wave",
+      "source_variable_code"
+    ]
+  ],
+  "join_key_policy": "Select the first preferred key whose columns exist on both frames, whose sidecar values are complete on every row, and whose packet values are complete on at least one row. Key components are canonically trimmed before matching; duplicates after normalization fail closed. Incomplete packet keys never join.",
+  "required_cardinality": "many packet rows to at most one sidecar row per complete selected key; duplicate sidecar keys fail closed",
+  "authoritative_passthrough_fields": [
+    "stratum_id",
+    "stratum_label",
+    "strata_relevance",
+    "strata_path",
+    "conditional_strata_weights",
+    "horizon_affordance",
+    "horizon_type",
+    "horizon_scope",
+    "horizon_openness",
+    "horizon_reach",
+    "horizon_valence",
+    "horizon_sustaining_power"
+  ],
+  "required_sidecar_schema": "all authoritative_passthrough_fields plus one valid complete join key",
+  "row_identity_policy": "packet row count and original order must be preserved exactly",
+  "status_policy": {
+    "matched_values": "V552_AUTHORITATIVE_PASS_THROUGH_MATCHED only when the matched authoritative sidecar row itself supplies at least one non-empty passthrough value",
+    "matched_empty": "V552_SIDECAR_MATCHED_NO_AUTHORITATIVE_VALUES even when the packet already contains non-empty values",
+    "unmatched_complete_key": "NO_V552_SIDECAR_MATCH",
+    "packet_key_missing": "PACKET_JOIN_KEY_MISSING"
+  },
+  "missing_value_policy": "preserve missing; never synthesize labels, weights, or horizon classifications",
+  "conflict_policy": "fail closed when packet and sidecar both contain canonically different non-empty values; JSON strings and Python dict/list/scalar structures are compared canonically",
+  "runtime_installation_status": "NOT_INSTALLED",
+  "known_evidence": "998 non-null upstream rows across GSS 1972, 1993 and 2002 according to the recovered lineage ledger.",
+  "key_normalization_policy": "Trim scalar key text before matching; canonicalize structured values defensively; reject duplicate normalized sidecar keys and reserved internal helper-column collisions."
+}

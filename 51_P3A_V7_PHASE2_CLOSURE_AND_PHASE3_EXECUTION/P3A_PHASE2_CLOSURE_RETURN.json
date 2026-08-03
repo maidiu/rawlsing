@@ -1,0 +1,39 @@
+{
+  "status": "PASS_PHASE2_CLOSED",
+  "query_rows": 56,
+  "query_status_counts": {
+    "PASS": 53,
+    "FAIL": 0,
+    "NOT_APPLICABLE": 3
+  },
+  "catalog": {
+    "status": "PASS",
+    "relkind_counts": {
+      "i": 98,
+      "r": 75,
+      "v": 2
+    },
+    "function_count": 24,
+    "trigger_counts": [
+      {
+        "deferrable": "f",
+        "initially_deferred": "f",
+        "count": 23
+      },
+      {
+        "deferrable": "t",
+        "initially_deferred": "t",
+        "count": 30
+      }
+    ],
+    "foreign_key_count": 181,
+    "outside_p3_objects": []
+  },
+  "rollback": {
+    "status": "PASS",
+    "exit_code": 0,
+    "remaining_p3_tables_after_rollback": 0
+  },
+  "q17_regression": "validation/q17_regression_pytest.txt",
+  "teardown_result": "127.0.0.1:55432 - no response"
+}

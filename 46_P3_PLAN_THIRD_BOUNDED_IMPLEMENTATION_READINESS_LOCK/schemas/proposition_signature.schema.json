@@ -1,0 +1,2110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v4/proposition_signature.schema.json",
+  "title": "proposition_signature",
+  "type": "object",
+  "required": [
+    "signature_id",
+    "subject_id",
+    "subject_type",
+    "fields",
+    "response_topologies",
+    "signature_status",
+    "content_hash",
+    "authority_release_id"
+  ],
+  "properties": {
+    "signature_id": {
+      "type": "string",
+      "pattern": "^P3SIG-[0-9a-f]{16}$"
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_type": {
+      "enum": [
+        "IMPORTED_SOURCE_LOCAL_LINEAGE",
+        "LINEAGE_SEGMENT"
+      ]
+    },
+    "fields": {
+      "type": "object",
+      "required": [
+        "subject_role",
+        "operator",
+        "target",
+        "object_or_outcome",
+        "modality",
+        "timeframe",
+        "condition",
+        "population_scope",
+        "geographic_scope",
+        "polarity",
+        "derived_status",
+        "parent_context"
+      ],
+      "properties": {
+        "subject_role": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "CHILD_OR_DESCENDANT",
+                    "COUNTRY_OR_POPULATION",
+                    "DERIVED_SYSTEM",
+                    "GOVERNMENT",
+                    "HOUSEHOLD",
+                    "INSTITUTION",
+                    "PARENT_OR_GUARDIAN",
+                    "RESPONDENT",
+                    "SOCIAL_GROUP",
+                    "UNSPECIFIED"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "operator": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ACCESS",
+                    "APPROVAL",
+                    "BEHAVIOR",
+                    "BELIEF",
+                    "DERIVED_SCORE",
+                    "EVALUATION",
+                    "EXPECTATION",
+                    "EXPERIENCE",
+                    "FEAR_OR_CONCERN",
+                    "FREQUENCY",
+                    "IDENTIFICATION",
+                    "IMPORTANCE",
+                    "INTENTION",
+                    "KNOWLEDGE",
+                    "MEMBERSHIP",
+                    "PREFERENCE",
+                    "PRIORITY",
+                    "SATISFACTION",
+                    "SUPPORT",
+                    "TRUST",
+                    "UNSPECIFIED",
+                    "WILLINGNESS"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "target": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "object_or_outcome": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "modality": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ACTUAL_CURRENT_BEHAVIOR",
+                    "ACTUAL_PAST_BEHAVIOR",
+                    "CURRENT_STATE",
+                    "DERIVED_CONSTRUCT",
+                    "DIRECT_PROPOSITION",
+                    "FREQUENCY_MEASURE",
+                    "FUTURE_EXPECTATION",
+                    "INTENDED_FUTURE_BEHAVIOR",
+                    "NORMATIVE_PRINCIPLE",
+                    "PAST_STATE",
+                    "PERFORMANCE_EVALUATION",
+                    "RANK_OR_PRIORITY",
+                    "SUBJECTIVE_AFFECT",
+                    "UNSPECIFIED",
+                    "WILLINGNESS_OR_DISPOSITION"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "timeframe": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "CURRENT",
+                    "EXPLICITLY_UNSPECIFIED",
+                    "FUTURE_NAMED_INTERVAL",
+                    "FUTURE_UNSPECIFIED",
+                    "LIFETIME",
+                    "NOT_APPLICABLE",
+                    "OTHER_GOVERNED",
+                    "PAST_NAMED_INTERVAL",
+                    "PAST_UNSPECIFIED",
+                    "RECURRING"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "condition": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "population_scope": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "CHILDREN",
+                    "CITIZENS",
+                    "COUNTRY_POPULATION",
+                    "EXPLICITLY_UNSPECIFIED",
+                    "FAMILY",
+                    "FOREIGN_WORKERS",
+                    "HOUSEHOLD",
+                    "IMMIGRANTS",
+                    "MEN",
+                    "NAMED_SOCIAL_GROUP",
+                    "NOT_APPLICABLE",
+                    "OTHER_GOVERNED",
+                    "PARENTS",
+                    "RESIDENTS",
+                    "SELF",
+                    "WOMEN"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "geographic_scope": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "CROSS_NATIONAL",
+                    "EXPLICITLY_UNSPECIFIED",
+                    "GLOBAL",
+                    "LOCAL",
+                    "NAMED_COUNTRY",
+                    "NATIONAL",
+                    "NOT_APPLICABLE",
+                    "OTHER_GOVERNED",
+                    "REGIONAL",
+                    "SUBNATIONAL"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "polarity": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "BIPOLAR",
+                    "EXPLICITLY_UNSPECIFIED",
+                    "NEGATIVE",
+                    "NEUTRAL_OR_DESCRIPTIVE",
+                    "NOT_APPLICABLE",
+                    "POSITIVE",
+                    "REVERSE_WORDED"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "derived_status": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "ADMINISTRATIVE_METADATA",
+                    "CALCULATED_MEASURE",
+                    "COMPOSITE",
+                    "DERIVED_INDEX",
+                    "DIRECT_ITEM"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "parent_context": {
+          "type": "object",
+          "required": [
+            "field_value",
+            "normalized_value_code",
+            "evidence_state",
+            "confidence",
+            "evidence_ids"
+          ],
+          "properties": {
+            "field_value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_value_code": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "evidence_state": {
+              "enum": [
+                "CONFLICTING",
+                "DIAGNOSTIC_ONLY",
+                "EXPLICITLY_UNSPECIFIED",
+                "HETEROGENEOUS",
+                "KNOWN",
+                "NOT_APPLICABLE",
+                "UNRECOVERED"
+              ]
+            },
+            "confidence": {
+              "enum": [
+                "HIGH",
+                "LOW",
+                "MEDIUM",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "KNOWN"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_ids": {
+                    "minItems": 1
+                  },
+                  "confidence": {
+                    "enum": [
+                      "HIGH",
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "HETEROGENEOUS",
+                      "CONFLICTING"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 2
+                  },
+                  "confidence": {
+                    "enum": [
+                      "MEDIUM",
+                      "LOW"
+                    ]
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "const": "DIAGNOSTIC_ONLY"
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "evidence_ids": {
+                    "minItems": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "evidence_state": {
+                    "enum": [
+                      "EXPLICITLY_UNSPECIFIED",
+                      "NOT_APPLICABLE",
+                      "UNRECOVERED"
+                    ]
+                  }
+                },
+                "required": [
+                  "evidence_state"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "field_value": {
+                    "type": "null"
+                  },
+                  "normalized_value_code": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "response_topologies": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ADMINISTRATIVE",
+          "BINARY",
+          "DERIVED_INDEX",
+          "FORCED_CHOICE",
+          "FREQUENCY_ORDINAL",
+          "LIKERT",
+          "MULTISELECT",
+          "NOMINAL",
+          "NUMERIC_OPEN",
+          "ORDINAL",
+          "RANKING",
+          "TEXT_OPEN",
+          "UNKNOWN"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "signature_status": {
+      "enum": [
+        "COMPLETE",
+        "CONFLICTING",
+        "HETEROGENEOUS",
+        "PARTIAL_FAIL_CLOSED"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false
+}

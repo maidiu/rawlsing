@@ -1,0 +1,81 @@
+{
+  "contract_id": "P3_CANONICAL_SERIALIZATION_TEST_VECTORS_V4",
+  "vectors": [
+    {
+      "name": "key_order_and_line_endings",
+      "a": {
+        "b": "x\r\ny",
+        "a": 1
+      },
+      "b": {
+        "a": 1,
+        "b": "x\ny"
+      },
+      "must_match": true
+    },
+    {
+      "name": "unicode_nfc",
+      "a": {
+        "x": "é"
+      },
+      "b": {
+        "x": "é"
+      },
+      "must_match": true
+    },
+    {
+      "name": "set_order",
+      "object_type": "CANDIDATE_COMPONENT",
+      "path": "member_ids",
+      "a": {
+        "member_ids": [
+          "b",
+          "a"
+        ]
+      },
+      "b": {
+        "member_ids": [
+          "a",
+          "b"
+        ]
+      },
+      "must_match": true
+    },
+    {
+      "name": "ordered_array",
+      "a": {
+        "x": [
+          "b",
+          "a"
+        ]
+      },
+      "b": {
+        "x": [
+          "a",
+          "b"
+        ]
+      },
+      "must_match": false
+    },
+    {
+      "name": "null_vs_absent",
+      "a": {
+        "x": null
+      },
+      "b": {},
+      "must_match": false
+    },
+    {
+      "name": "duplicate_set_member",
+      "object_type": "CANDIDATE_COMPONENT",
+      "path": "member_ids",
+      "a": {
+        "member_ids": [
+          "a",
+          "a"
+        ]
+      },
+      "must_fail": true
+    }
+  ]
+}

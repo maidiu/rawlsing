@@ -1,0 +1,2 @@
+delta_id,triggering_object_or_sql,broken_invariant,affected_artifacts,blast_radius,migration_or_correction,regression_test,doctrine_change
+P3A-V29-DELTA-0001,q17_candidate_event_contiguous,Validation SQL must be revision-scoped and executable on PostgreSQL,P3_DDL_VALIDATION_QUERIES_v7.sql,Phase 2 validation matrix blocked in v28,Project candidate_revision_id in the q17 inner query; do not group by candidate_family_id,test_q17_candidate_event_contiguous.py,NO

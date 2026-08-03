@@ -1,0 +1,18 @@
+test,status,detail
+exact_node_count,PASS,812 expected 812
+unique_exact_identity,PASS,question implementation IDs unique
+edge_endpoints_exist,PASS,26 accepted edges
+edge_pairs_unique,PASS,no duplicate accepted pair
+accepted_revision_edges_reconcile,PASS,20 accepted revisions all materialized as edges
+authority_partitions_disjoint,PASS,accepted/review/negative pair sets disjoint
+cross_wave_only,PASS,all accepted continuity edges cross waves
+semantic_role_mismatch_explicit,PASS,source-specific check below
+structure_membership_referential_integrity,PASS,123 structures / 680 memberships
+structures_inventory_only,PASS,no structure promoted
+response_gap_reconciliation,PASS,37 gaps
+source_references_present,PASS,source reference surface present
+no_family_authoring,PASS,none authored
+no_live_execution,PASS,catalog-only pass
+active_wave_set,PASS,"['1995', '2011', '2024']"
+semantic_role_mismatch_explicit,PASS,no accepted role mismatch
+translation_portability_deferred,PASS,translation-aware equivalence remains global-P2 work

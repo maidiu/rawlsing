@@ -1,0 +1,565 @@
+{
+  "task_id": "011_nine_strata_preservation_audit",
+  "generated_at": "2026-06-26T15:50:00Z",
+  "doctrine_gap_noted": "V552 section pack absent from docs/architecture_control/section_packs/. Only V553 section pack exists. V552 references exist in cross-layer docs but no installed V552-specific section pack.",
+  "field_families": [
+    {
+      "field_family": "stratum_id",
+      "doctrine_presence": {
+        "present": false,
+        "paths": [],
+        "note": "V552 section pack absent; strata referenced in cross-layer V552_TO_V557 docs but no formal stratum_id definition in installed doctrine section packs"
+      },
+      "code_schema_presence": {
+        "present": true,
+        "paths": [
+          "data/ddm_repository_copy/v552/runs/gss1972_copy_20260620T081414Z/structural/question_semantic_hierarchy.parquet"
+        ]
+      },
+      "v552_generated_presence": {
+        "present": true,
+        "paths": [
+          "data/ddm_repository_copy/v552/runs/gss1972_copy_20260620T081414Z/structural/question_semantic_hierarchy.parquet",
+          "data/ddm_repository_copy/v552/runs/gss1993_copy_20260624T041034Z/structural/question_semantic_hierarchy.parquet",
+          "data/ddm_repository_copy/v552/runs/gss2002_rerun_20260624T185651Z/structural/question_semantic_hierarchy.parquet"
+        ],
+        "row_count_with_non_null": 998,
+        "note": "Present and authoritative in V552 question_semantic_hierarchy across all 3 waves; 1972:41, 1993:396, 2002:561 rows; all non-null"
+      },
+      "v552j_input_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0,
+        "note": "Not present in v552j_v553_input_index.parquet schema; V552J input index derived from structural_fact_index which lacks strata fields"
+      },
+      "v552j_handoff_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0,
+        "note": "Not present in v552j_to_v553_handoff_index.parquet schema"
+      },
+      "v553_core_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0,
+        "note": "Not present in any V553 core temporal/pressure artifact"
+      },
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add stratum_id to V552J input/handoff contract from V552 question_semantic_hierarchy; merge into structural_fact_index enrichment step"
+    },
+    {
+      "field_family": "stratum_label",
+      "doctrine_presence": {
+        "present": false,
+        "paths": [],
+        "note": "No V552 section pack; no formal stratum_label definition in installed doctrine"
+      },
+      "code_schema_presence": {
+        "present": true,
+        "paths": [
+          "data/ddm_repository_copy/v552/runs/gss1972_copy_20260620T081414Z/structural/question_semantic_hierarchy.parquet"
+        ]
+      },
+      "v552_generated_presence": {
+        "present": true,
+        "paths": [
+          "data/ddm_repository_copy/v552/runs/gss1972_copy_20260620T081414Z/structural/question_semantic_hierarchy.parquet",
+          "data/ddm_repository_copy/v552/runs/gss1993_copy_20260624T041034Z/structural/question_semantic_hierarchy.parquet",
+          "data/ddm_repository_copy/v552/runs/gss2002_rerun_20260624T185651Z/structural/question_semantic_hierarchy.parquet"
+        ],
+        "row_count_with_non_null": 998
+      },
+      "v552j_input_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0
+      },
+      "v552j_handoff_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0
+      },
+      "v553_core_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0
+      },
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add stratum_label to V552J handoff contract from V552 question_semantic_hierarchy"
+    },
+    {
+      "field_family": "strata_relevance",
+      "doctrine_presence": {
+        "present": false,
+        "paths": [],
+        "note": "Referenced in cross-layer docs but no formal installed doctrine section"
+      },
+      "code_schema_presence": {
+        "present": true,
+        "paths": [
+          "scripts/apply_arab_barometer_w8_p0_structural_mappings.py"
+        ]
+      },
+      "v552_generated_presence": {
+        "present": true,
+        "paths": [
+          "data/ddm_repository_copy/v552/runs/gss1972_copy_20260620T081414Z/structural/question_semantic_hierarchy.parquet"
+        ],
+        "row_count_with_non_null": 998,
+        "sample": "nation_state|family|self|sect_ethno_class"
+      },
+      "v552j_input_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0
+      },
+      "v552j_handoff_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0
+      },
+      "v553_core_presence": {
+        "present": false,
+        "paths": [],
+        "row_count_with_non_null": 0
+      },
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "include strata_relevance in V552J schema enrichment from question_semantic_hierarchy"
+    },
+    {
+      "field_family": "strata_path",
+      "doctrine_presence": {
+        "present": false,
+        "paths": []
+      },
+      "code_schema_presence": {
+        "present": true,
+        "paths": [
+          "data/ddm_repository_copy/v552/runs/gss1972_copy_20260620T081414Z/structural/question_semantic_hierarchy.parquet"
+        ]
+      },
+      "v552_generated_presence": {
+        "present": true,
+        "row_count_with_non_null": 998
+      },
+      "v552j_input_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "v552j_handoff_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "v553_core_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "include strata_path in V552J handoff"
+    },
+    {
+      "field_family": "conditional_strata_weights",
+      "doctrine_presence": {
+        "present": false,
+        "paths": []
+      },
+      "code_schema_presence": {
+        "present": true,
+        "paths": [
+          "data/ddm_repository_copy/v552/runs/gss1972_copy_20260620T081414Z/structural/question_semantic_hierarchy.parquet"
+        ]
+      },
+      "v552_generated_presence": {
+        "present": true,
+        "row_count_with_non_null": 998,
+        "sample": "nation_state:0.35|family:0.35|self:0.20|sect_ethno_class:0.10"
+      },
+      "v552j_input_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "v552j_handoff_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "v553_core_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "include conditional_strata_weights in V552J handoff for V553 temporal trajectory computation"
+    },
+    {
+      "field_family": "horizon_affordance",
+      "doctrine_presence": {
+        "present": false,
+        "paths": []
+      },
+      "code_schema_presence": {
+        "present": true,
+        "paths": [
+          "data/ddm_repository_copy/v552/runs/gss1972_copy_20260620T081414Z/structural/question_semantic_hierarchy.parquet"
+        ]
+      },
+      "v552_generated_presence": {
+        "present": true,
+        "row_count_with_non_null": 998,
+        "sample": "local"
+      },
+      "v552j_input_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "v552j_handoff_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "v553_core_presence": {
+        "present": false,
+        "row_count_with_non_null": 0
+      },
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add horizon fields to V552J handoff contract as diagnostic+contextual payload"
+    },
+    {
+      "field_family": "horizon_type",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true, "paths": ["question_semantic_hierarchy.parquet"]},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 998, "sample": "bounded"},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add to V552J handoff"
+    },
+    {
+      "field_family": "horizon_scope",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 998, "sample": "self"},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add to V552J handoff"
+    },
+    {
+      "field_family": "horizon_openness",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 998, "sample": "open"},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add to V552J handoff"
+    },
+    {
+      "field_family": "horizon_reach",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 998},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add to V552J handoff"
+    },
+    {
+      "field_family": "horizon_valence",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 998, "sample": "neutral"},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add to V552J handoff"
+    },
+    {
+      "field_family": "horizon_sustaining_power",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 998, "sample": "limited"},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add to V552J handoff"
+    },
+    {
+      "field_family": "horizon_constraint_id",
+      "doctrine_presence": {"present": true, "paths": ["docs/architecture_control/section_packs/V553/03_V553_INPUT_DEPENDENCY_CONTRACT.md"]},
+      "code_schema_presence": {"present": true, "paths": ["v552j_v553_input_index.parquet", "v552j_to_v553_handoff_index.parquet", "v552_structural_fact_index.parquet"]},
+      "v552_generated_presence": {"present": true, "paths": ["v552_structural_fact_index.parquet", "v552_horizon_constraint_index.parquet", "question_semantic_hierarchy.parquet"]},
+      "v552j_input_presence": {"present": true, "row_count_with_non_null": 1701},
+      "v552j_handoff_presence": {"present": true, "row_count_with_non_null": 1328},
+      "v553_core_presence": {"present": true, "paths": ["v553_harmonized_pressure_key_index.parquet"], "row_count_with_non_null": 300},
+      "lineage_status": "preserved_authoritative",
+      "authority_status": "available_to_v553",
+      "required_retrofit_action": "none"
+    },
+    {
+      "field_family": "horizon_constraint_label",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": false, "paths": [], "note": "horizon_constraint_id is present but no horizon_constraint_label in any schema"},
+      "v552_generated_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_but_empty",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add horizon_constraint_label to V552 schema if needed by doctrine"
+    },
+    {
+      "field_family": "position_conditioning",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true, "paths": ["question_semantic_hierarchy.parquet"]},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 998, "sample": "yes"},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add position_conditioning to V552J handoff for V553 position-aware pressure trajectory computation"
+    },
+    {
+      "field_family": "position_conditioning_profile",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": false, "note": "Not found as separate field in any schema; position_conditioning exists but no profile field"},
+      "v552_generated_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_but_empty",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "define position_conditioning_profile or confirm position_conditioning field covers this"
+    },
+    {
+      "field_family": "position_modifiers",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true, "paths": ["question_semantic_hierarchy.parquet"]},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 998, "sample": "family|self|nation_state"},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add position_modifiers to V552J handoff"
+    },
+    {
+      "field_family": "question_semantic_hierarchy",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true, "paths": ["question_semantic_hierarchy.parquet"]},
+      "v552_generated_presence": {"present": true, "paths": ["v552_structural/question_semantic_hierarchy.parquet"], "row_count_with_non_null": 998},
+      "v552j_input_presence": {"present": false, "paths": [], "row_count_with_non_null": 0, "note": "V552J input index is derived from structural_fact_index, not from question_semantic_hierarchy"},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "add question_semantic_hierarchy fields to V552J handoff or provide as sidecar reference"
+    },
+    {
+      "field_family": "facet_semantic_profile",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": false, "note": "Not found as explicit field name in any schema; facet info present in question_semantic_hierarchy"},
+      "v552_generated_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_but_empty",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "define facet_semantic_profile in schema or confirm coverage from existing facet fields"
+    },
+    {
+      "field_family": "driver_semantic_profile",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": false},
+      "v552_generated_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_but_empty",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "define if needed"
+    },
+    {
+      "field_family": "stratum_semantic_profile",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": false},
+      "v552_generated_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_but_empty",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "define or confirm stratum_id/label suffice"
+    },
+    {
+      "field_family": "horizon_semantic_profile",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": false},
+      "v552_generated_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_but_empty",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "define or confirm existing horizon fields suffice"
+    },
+    {
+      "field_family": "country_wave_pressure_profile",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": false},
+      "v552_generated_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": true, "paths": ["v553_country_year_pressure_field.parquet"], "row_count_with_non_null": 651, "note": "V553 has country_year_pressure_field but it does not include strata dimensions"},
+      "lineage_status": "present_but_empty",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "enrich V553 country_year_pressure_field with strata dimensions when strata fields are added to handoff"
+    },
+    {
+      "field_family": "aggregate_projection_surface",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": false},
+      "v552_generated_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "missing_generated_artifact",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "define in architecture"
+    },
+    {
+      "field_family": "structural_channel_index",
+      "doctrine_presence": {"present": true, "paths": ["docs/architecture_control/section_packs/V553/03_V553_INPUT_DEPENDENCY_CONTRACT.md"]},
+      "code_schema_presence": {"present": true, "paths": ["structural_channel_index.parquet"]},
+      "v552_generated_presence": {"present": true, "paths": ["v552_structural/structural_channel_index.parquet"], "row_count_with_non_null": 15},
+      "v552j_input_presence": {"present": true, "row_count_with_non_null": 1701, "field": "structural_channel_id"},
+      "v552j_handoff_presence": {"present": true, "row_count_with_non_null": 1328},
+      "v553_core_presence": {"present": true, "paths": ["v553_harmonized_pressure_key_index.parquet"], "field": "structural_channel"},
+      "lineage_status": "preserved_authoritative",
+      "authority_status": "available_to_v553",
+      "required_retrofit_action": "none"
+    },
+    {
+      "field_family": "contradiction_tensor",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true, "paths": ["build_contradiction_tensor_seed_v5.py"]},
+      "v552_generated_presence": {"present": false, "note": "Not found in current V552 run artifacts; expected at data/ddm_build/reports/stratum_contradiction_tensor.csv"},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": true, "paths": ["v553_contradiction_over_time.parquet"]},
+      "lineage_status": "present_but_empty",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "trace expected vs actual contradiction tensor presence"
+    },
+    {
+      "field_family": "contradiction_surface",
+      "doctrine_presence": {"present": false, "paths": []},
+      "code_schema_presence": {"present": true, "paths": ["v552_contradiction_surface.parquet"]},
+      "v552_generated_presence": {"present": true, "paths": ["v552_audits/v552_contradiction_surface.parquet"]},
+      "v552j_input_presence": {"present": false, "row_count_with_non_null": 0},
+      "v552j_handoff_presence": {"present": false, "row_count_with_non_null": 0},
+      "v553_core_presence": {"present": false, "row_count_with_non_null": 0},
+      "lineage_status": "present_upstream_dropped_at_v552j",
+      "authority_status": "not_available_to_v553",
+      "required_retrofit_action": "evaluate if contradiction_surface is needed for V553 pressure computation"
+    },
+    {
+      "field_family": "horizon_constraint_index",
+      "doctrine_presence": {"present": true, "paths": ["section_packs/V553/03_V553_INPUT_DEPENDENCY_CONTRACT.md"]},
+      "code_schema_presence": {"present": true, "paths": ["horizon_constraint_index.parquet"]},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 14},
+      "v552j_input_presence": {"present": true, "field": "horizon_constraint_id", "row_count_with_non_null": 1701},
+      "v552j_handoff_presence": {"present": true, "row_count_with_non_null": 1328},
+      "v553_core_presence": {"present": true, "paths": ["v553_harmonized_pressure_key_index.parquet"], "field": "horizon_constraint", "row_count_with_non_null": 300},
+      "lineage_status": "preserved_authoritative",
+      "authority_status": "available_to_v553",
+      "required_retrofit_action": "none"
+    },
+    {
+      "field_family": "v552_structural_fact_index",
+      "doctrine_presence": {"present": true, "paths": ["section_packs/V553/03_V553_INPUT_DEPENDENCY_CONTRACT.md"]},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true, "row_count_with_non_null": 171},
+      "v552j_input_presence": {"present": true, "row_count_with_non_null": 1701},
+      "v552j_handoff_presence": {"present": true, "row_count_with_non_null": 1328},
+      "v553_core_presence": {"present": true, "row_count_with_non_null": 300},
+      "lineage_status": "preserved_authoritative",
+      "authority_status": "available_to_v553",
+      "required_retrofit_action": "none"
+    },
+    {
+      "field_family": "relation_axis_id",
+      "doctrine_presence": {"present": true, "paths": ["section_packs/V553/03_V553_INPUT_DEPENDENCY_CONTRACT.md"]},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true},
+      "v552j_input_presence": {"present": true, "row_count_with_non_null": 1701},
+      "v552j_handoff_presence": {"present": true, "row_count_with_non_null": 1328},
+      "v553_core_presence": {"present": true, "paths": ["v553_harmonized_pressure_key_index.parquet"], "row_count_with_non_null": 300},
+      "lineage_status": "preserved_authoritative",
+      "authority_status": "available_to_v553",
+      "required_retrofit_action": "none"
+    },
+    {
+      "field_family": "target_entity_id",
+      "doctrine_presence": {"present": true},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true},
+      "v552j_input_presence": {"present": true, "row_count_with_non_null": 1701},
+      "v552j_handoff_presence": {"present": true, "row_count_with_non_null": 1328},
+      "v553_core_presence": {"present": true, "row_count_with_non_null": 300},
+      "lineage_status": "preserved_authoritative",
+      "authority_status": "available_to_v553",
+      "required_retrofit_action": "none"
+    },
+    {
+      "field_family": "driver_facet_id",
+      "doctrine_presence": {"present": true},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true},
+      "v552j_input_presence": {"present": true, "row_count_with_non_null": 1701},
+      "v552j_handoff_presence": {"present": true, "row_count_with_non_null": 1328},
+      "v553_core_presence": {"present": true, "row_count_with_non_null": 300},
+      "lineage_status": "preserved_authoritative",
+      "authority_status": "available_to_v553",
+      "required_retrofit_action": "none"
+    },
+    {
+      "field_family": "semantic_signature",
+      "doctrine_presence": {"present": true},
+      "code_schema_presence": {"present": true},
+      "v552_generated_presence": {"present": true},
+      "v552j_input_presence": {"present": true, "row_count_with_non_null": 1701},
+      "v552j_handoff_presence": {"present": true, "row_count_with_non_null": 1328},
+      "v553_core_presence": {"present": true, "row_count_with_non_null": 300},
+      "lineage_status": "preserved_authoritative",
+      "authority_status": "available_to_v553",
+      "required_retrofit_action": "none"
+    }
+  ],
+  "summary": {
+    "field_families_traced": 30,
+    "preserved_authoritative": 6,
+    "present_upstream_dropped_at_v552j": 14,
+    "present_but_empty": 7,
+    "missing_generated_artifact": 1,
+    "doctrine_gap": "V552 section pack absent from installed doctrine paths",
+    "v552_root_discovery": "discovered_from_provenance",
+    "critical_finding": "Nine-strata/horizon/position-conditioning fields exist authoritatively in V552 question_semantic_hierarchy (998 total rows across 3 waves, all non-null) but are dropped at V552->V552J boundary because V552J input index derives from structural_fact_index which does not carry these fields. Only thin keys (relation_axis_id, target_entity_id, driver_facet_id, structural_channel_id, horizon_constraint_id, semantic_signature) are preserved into V553."
+  }
+}

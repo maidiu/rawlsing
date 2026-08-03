@@ -1,0 +1,639 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p2_governed_question_node_catalog.schema.json",
+  "title": "P2 Governed Question Node Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "release_version",
+    "release_status",
+    "authority_scope",
+    "question_concepts",
+    "question_implementations",
+    "response_authority_bindings",
+    "source_structures",
+    "provenance_records",
+    "coverage_summary",
+    "closure"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "p2-qnode-0.1.0"
+    },
+    "release_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+    },
+    "release_version": {
+      "type": "string",
+      "pattern": "^v?[0-9]+(?:\\.[0-9]+){0,2}$"
+    },
+    "release_status": {
+      "enum": [
+        "planning_fixture",
+        "catalog_draft",
+        "source_complete",
+        "approved",
+        "superseded"
+      ]
+    },
+    "authority_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active_wave_count",
+        "source_families",
+        "contains_respondent_observations",
+        "semantic_annotations_are_governing"
+      ],
+      "properties": {
+        "active_wave_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "source_families": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "contains_respondent_observations": {
+          "const": false
+        },
+        "semantic_annotations_are_governing": {
+          "const": false
+        }
+      }
+    },
+    "question_concepts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_concept_id",
+          "concept_version",
+          "authority_status",
+          "canonical_question_meaning",
+          "evidence_ceiling",
+          "prohibited_claim_ids",
+          "provenance_ids"
+        ],
+        "properties": {
+          "question_concept_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "concept_version": {
+            "type": "string",
+            "pattern": "^v?[0-9]+(?:\\.[0-9]+){0,2}$"
+          },
+          "authority_status": {
+            "enum": [
+              "source_reviewed",
+              "approved",
+              "blocked_source_gap",
+              "superseded"
+            ]
+          },
+          "canonical_question_meaning": {
+            "type": "string",
+            "minLength": 5
+          },
+          "evidence_ceiling": {
+            "type": "string",
+            "minLength": 5
+          },
+          "prohibited_claim_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+            }
+          },
+          "crosswave_equivalence_group_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "provenance_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+            }
+          }
+        }
+      }
+    },
+    "question_implementations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question_implementation_id",
+          "question_concept_id",
+          "implementation_version",
+          "source_family",
+          "wave",
+          "instrument_scope",
+          "source_variable_code",
+          "question_text",
+          "respondent_universe_id",
+          "routing_contract_ref",
+          "question_authority_ref",
+          "response_authority_ref",
+          "semantic_annotations",
+          "collision_features",
+          "source_structure_membership_ids",
+          "provenance_ids",
+          "authority_status"
+        ],
+        "properties": {
+          "question_implementation_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "question_concept_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "implementation_version": {
+            "type": "string",
+            "pattern": "^v?[0-9]+(?:\\.[0-9]+){0,2}$"
+          },
+          "source_family": {
+            "type": "string",
+            "minLength": 1
+          },
+          "wave": {
+            "type": "string",
+            "minLength": 1
+          },
+          "instrument_scope": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "instrument_version",
+              "country_applicability",
+              "scope_status"
+            ],
+            "properties": {
+              "instrument_version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "country_applicability": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "scope_status": {
+                "enum": [
+                  "wave_wide",
+                  "country_variant",
+                  "instrument_variant",
+                  "lineage_only"
+                ]
+              }
+            }
+          },
+          "source_variable_code": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question_text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "common_stem_text": {
+            "type": "string"
+          },
+          "item_text": {
+            "type": "string"
+          },
+          "module_id": {
+            "type": "string"
+          },
+          "respondent_universe_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "routing_contract_ref": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "question_authority_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "response_authority_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "semantic_annotations": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "governance_status"
+            ],
+            "properties": {
+              "governance_status": {
+                "const": "non_governing_discovery_annotations"
+              },
+              "driver_id": {
+                "type": "string"
+              },
+              "facet_id": {
+                "type": "string"
+              },
+              "structural_domain_id": {
+                "type": "string"
+              },
+              "relation_axis_id": {
+                "type": "string"
+              },
+              "target_id": {
+                "type": "string"
+              },
+              "source_block_id": {
+                "type": "string"
+              }
+            }
+          },
+          "collision_features": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "normalized_proposition_tokens",
+              "target_tokens",
+              "condition_tokens",
+              "mechanism_tokens",
+              "cost_tokens",
+              "institution_class_tokens",
+              "role_tokens",
+              "source_native_group_signals"
+            ],
+            "properties": {
+              "normalized_proposition_tokens": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "target_tokens": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "condition_tokens": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "mechanism_tokens": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cost_tokens": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "institution_class_tokens": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "role_tokens": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "source_native_group_signals": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "common_stem",
+                    "battery",
+                    "grid",
+                    "repeated_target",
+                    "repeated_condition",
+                    "routing_link",
+                    "sequence",
+                    "paired_contrast",
+                    "none"
+                  ]
+                }
+              }
+            }
+          },
+          "source_structure_membership_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+            }
+          },
+          "provenance_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+            }
+          },
+          "authority_status": {
+            "enum": [
+              "source_reviewed",
+              "approved",
+              "blocked_source_gap",
+              "superseded"
+            ]
+          }
+        }
+      }
+    },
+    "response_authority_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "response_binding_id",
+          "question_implementation_id",
+          "response_authority_ref",
+          "available_response_classes",
+          "nonresponse_classes_distinct",
+          "binding_status",
+          "provenance_ids"
+        ],
+        "properties": {
+          "response_binding_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "question_implementation_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "response_authority_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "available_response_classes": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "support",
+                "oppose",
+                "neutral",
+                "unknown",
+                "refusal",
+                "missing",
+                "inapplicable",
+                "other_governed"
+              ]
+            }
+          },
+          "nonresponse_classes_distinct": {
+            "const": true
+          },
+          "binding_status": {
+            "enum": [
+              "bound",
+              "blocked_response_authority_gap"
+            ]
+          },
+          "provenance_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+            }
+          }
+        }
+      }
+    },
+    "source_structures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_structure_id",
+          "source_family",
+          "wave",
+          "instrument_scope",
+          "structure_kind",
+          "member_question_implementation_ids",
+          "source_locator",
+          "discovery_status",
+          "provenance_ids"
+        ],
+        "properties": {
+          "source_structure_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "source_family": {
+            "type": "string"
+          },
+          "wave": {
+            "type": "string"
+          },
+          "instrument_scope": {
+            "type": "string"
+          },
+          "structure_kind": {
+            "enum": [
+              "battery",
+              "grid",
+              "repeated_target_set",
+              "repeated_condition_set",
+              "routed_module",
+              "paired_contrast",
+              "ordered_sequence",
+              "other_source_grouping"
+            ]
+          },
+          "member_question_implementation_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+            }
+          },
+          "source_locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "discovery_status": {
+            "enum": [
+              "inventory_only",
+              "source_reviewed",
+              "blocked_source_gap"
+            ]
+          },
+          "provenance_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+            }
+          }
+        }
+      }
+    },
+    "provenance_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provenance_id",
+          "artifact_id",
+          "artifact_sha256",
+          "locator",
+          "authority_role"
+        ],
+        "properties": {
+          "provenance_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z0-9_]+)*$"
+          },
+          "artifact_id": {
+            "type": "string"
+          },
+          "artifact_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "authority_role": {
+            "enum": [
+              "source_instrument",
+              "question_authority",
+              "response_authority",
+              "routing_authority",
+              "codebook",
+              "canonical_registry",
+              "diagnostic_only"
+            ]
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "coverage_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expected_question_implementation_count",
+        "cataloged_question_implementation_count",
+        "bound_response_authority_count",
+        "blocked_source_gap_count",
+        "blocked_response_gap_count",
+        "unresolved_identity_collision_count"
+      ],
+      "properties": {
+        "expected_question_implementation_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cataloged_question_implementation_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bound_response_authority_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked_source_gap_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blocked_response_gap_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved_identity_collision_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "closure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonicalization",
+        "hash_algorithm",
+        "payload_sha256",
+        "closure_id",
+        "identity_exclusions"
+      ],
+      "properties": {
+        "canonicalization": {
+          "type": "string"
+        },
+        "hash_algorithm": {
+          "const": "SHA-256"
+        },
+        "payload_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "closure_id": {
+          "type": "string",
+          "pattern": "^closure_[0-9a-f]{16}$"
+        },
+        "identity_exclusions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

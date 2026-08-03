@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/family_exclusion.schema.json",
+  "title": "family_exclusion",
+  "type": "object",
+  "required": [
+    "exclusion_id",
+    "owner_object_id",
+    "exclusion_type",
+    "prohibited_operation",
+    "evidence_or_rule",
+    "scope",
+    "tested_surface_complete",
+    "authority_release_id"
+  ],
+  "properties": {
+    "exclusion_id": {
+      "type": "string",
+      "pattern": "^P3EXC-[0-9]{6}$"
+    },
+    "owner_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exclusion_type": {
+      "enum": [
+        "NAMED_MEMBER",
+        "RULE_BASED"
+      ]
+    },
+    "prohibited_operation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_or_rule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tested_surface_complete": {
+      "type": "boolean"
+    },
+    "excluded_object_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "exclusion_type": {
+            "const": "NAMED_MEMBER"
+          }
+        },
+        "required": [
+          "exclusion_type"
+        ]
+      },
+      "then": {
+        "required": [
+          "excluded_object_ids"
+        ],
+        "properties": {
+          "excluded_object_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "exclusion_type": {
+            "const": "RULE_BASED"
+          }
+        },
+        "required": [
+          "exclusion_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "excluded_object_ids": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

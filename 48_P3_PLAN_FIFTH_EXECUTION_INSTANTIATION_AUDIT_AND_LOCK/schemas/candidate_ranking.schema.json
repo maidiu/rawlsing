@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/candidate_ranking.schema.json",
+  "title": "candidate_ranking",
+  "type": "object",
+  "required": [
+    "candidate_revision_id",
+    "primary_class_rank",
+    "hard_collision_count",
+    "open_obligation_count",
+    "signature_completeness",
+    "source_count",
+    "lineage_count",
+    "direct_positive_density",
+    "structure_support_count",
+    "response_variant_complexity",
+    "authority_release_id"
+  ],
+  "properties": {
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "primary_class_rank": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "hard_collision_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "open_obligation_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "signature_completeness": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "source_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "lineage_count": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "direct_positive_density": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "structure_support_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "response_variant_complexity": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false
+}

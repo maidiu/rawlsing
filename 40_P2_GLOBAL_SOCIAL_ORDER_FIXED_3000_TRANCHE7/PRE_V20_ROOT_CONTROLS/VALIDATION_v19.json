@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "handoff_version": "v19",
+  "current_pass": "P2_GLOBAL_SOCIAL_ORDER_FIXED_3000_TRANCHE7_COMPLETE",
+  "next_pass": "P2_GLOBAL_FINAL_2847_PAIR_TRANCHE_AND_LIVE_COMPONENT_STRATA_BRIDGE_INSTALLATION",
+  "global_p2_status": "OPEN",
+  "canonical_j_family_authority_authored": false,
+  "respondents_processed": 0,
+  "asian_barometer_w6": "EXCLUDED",
+  "acceptance_standard_embedded": true,
+  "fixed_tranche_protocol": {
+    "status": "PASS",
+    "work_unit_pairs": 3000,
+    "input_pending_pairs": 5847,
+    "pairs_adjudicated": 3000,
+    "pairs_remaining": 2847,
+    "lineages_classified": 387,
+    "evidence_rows": 6000,
+    "pytest_cases": 26,
+    "reproducibility": "PASS_HASH_EXACT",
+    "authority_partition": {
+      "proposition_equivalence": 17,
+      "coordinate_only": 96,
+      "negative_authority": 2561,
+      "redirected": 189,
+      "unresolved": 137
+    },
+    "authority_boundary": "PAIR_RELATION_AUTHORITY_ONLY_NO_J_FAMILY_NO_VALUE_HARMONIZATION"
+  },
+  "runtime_bridge_live_repository_installation": "NOT_PERFORMED",
+  "release_status": "PASS_PROVISIONAL_RELEASE_GATE_FINAL_ZIP_RETEST_REQUIRED",
+  "docx_qa": {
+    "status": "PASS",
+    "documents": 2,
+    "rendered_pages": 3,
+    "visual_inspection": "PASS",
+    "orphan_pages": 0,
+    "clipping_or_overlap": 0,
+    "accessibility_findings": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    }
+  },
+  "cumulative_verifier": {
+    "status": "PASS",
+    "checks_passed": 152,
+    "checks_total": 152,
+    "recursive_archive_instances": 88,
+    "unique_archive_payloads": 77,
+    "file_count_at_build_gate": 818
+  },
+  "fixed_tranche_wall_clock": {
+    "start_local": "2026-07-31T18:16:00-04:00",
+    "provisional_fresh_extraction_gate_local": "2026-07-31T18:44:00-04:00",
+    "observed_minutes_to_provisional_gate": 28
+  },
+  "outer_zip_integrity": "PASS_PROVISIONAL_FINAL_RETEST_REQUIRED_AFTER_EMBEDDING_RELEASE_RETURNS",
+  "fresh_extraction_equivalence": {
+    "status": "PASS",
+    "stage": "PROVISIONAL_OUTER_ZIP_BEFORE_EMBEDDING_RELEASE_RECORDS",
+    "files_compared": 819,
+    "byte_hash_mismatches": 0,
+    "build_only": [],
+    "extract_only": [],
+    "cumulative_verifier": {
+      "status": "PASS",
+      "checks_passed": 152,
+      "checks_total": 152,
+      "file_count": 819,
+      "recursive_archive_instances": 88,
+      "unique_archive_payloads": 77,
+      "failures": []
+    },
+    "section_pytest": "26 passed",
+    "note": "Final ZIP must be rebuilt after embedding these returns and retested from a new extraction."
+  }
+}

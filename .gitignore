@@ -1,0 +1,9 @@
+# Large retained transfer/runtime payloads are packaged outside Git.
+90_RECOVERY_INPUTS/ORIGINAL_ARCHIVES/
+90_RECOVERY_INPUTS/EXTRACTED_LINUX_RUNTIME_KIT/
+*.docx
+# Runtime state and generated checkpoint payloads.
+91_RECONSTRUCTION_CONTROL/database/*.dump
+91_RECONSTRUCTION_CONTROL/database/*.tar
+91_RECONSTRUCTION_CONTROL/checkpoints/*.zip
+91_RECONSTRUCTION_CONTROL/checkpoints/*.bundle

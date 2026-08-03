@@ -1,0 +1,89 @@
+{
+  "reviewed_artifact": "Rawlsing_P3A_V33_Section55_Review_Delta.zip",
+  "complete_v33_zip_independently_hashed": false,
+  "reason": "Only the section-55 review delta was uploaded in the active runtime.",
+  "accepted_progress": {
+    "candidate_packets_present": 40,
+    "draft_decisions_present": 40,
+    "known_direct_constraint_regressions_repaired": 10,
+    "known_candidate_136_bridge_regressions_repaired": 41,
+    "main_release_canonical_families": 0,
+    "main_release_final_adjudications": 0,
+    "phase_aware_query_overrides_legitimate": [
+      "q01b_postpromotion_pointer",
+      "q15b_no_unadjudicated_at_p3_close"
+    ],
+    "manifested_payload_rows_reported": 1980,
+    "delta_zip_integrity": "PASS"
+  },
+  "blocking_findings": [
+    {
+      "id": "V33-EXT-001",
+      "classification": "DIAGNOSTIC_PREFLIGHT_USED_AS_AUTHORITATIVE_CANDIDATE_INVENTORY",
+      "detail": "p3a_v33_load.py directly reads P3_PREFLIGHT_CANDIDATE_INVENTORY_v7.csv and allocates the 141 candidates from it. No topology recomputation from populated resolved projections occurs."
+    },
+    {
+      "id": "V33-EXT-002",
+      "classification": "REGRESSION_CSVS_USED_AS_BUILD_AUTHORITY",
+      "detail": "The builder reads V32_DIRECT_INTERNAL_AUTHORITY_MISCLASSIFICATION.csv and V32_ATTACHMENT_BRIDGE_OMISSIONS.csv to decide which projections and bridges exist. The tests have become production inputs."
+    },
+    {
+      "id": "V33-EXT-003",
+      "classification": "TYPED_CONSTRAINT_GRAPH_NOT_IMPLEMENTED",
+      "detail": "No collision-scope, internal-pair-collision, unresolved-boundary, or hierarchy-relation rows are built. DIRECT_COLLISION packet rows carry empty collision_ids and hard_collisions."
+    },
+    {
+      "id": "V33-EXT-004",
+      "classification": "REDIRECT_AND_COORDINATE_AUTHORITY_COLLAPSED",
+      "detail": "Redirect authority is mapped to DIRECT_COLLISION; coordinate/bounded authority is mapped to HIERARCHICAL_ONLY without a typed redirect, coordinate, or hierarchy object."
+    },
+    {
+      "id": "V33-EXT-005",
+      "classification": "SEED_META_NODE_ORIGIN_INCOMPLETE",
+      "detail": "Attachment candidates 120-123 contain proposition-only seed components but link only the strict component. Ten seed-internal connectivity edges are incorrectly persisted as attachment projections.",
+      "affected_candidates": [
+        "P3CAND-000120",
+        "P3CAND-000121",
+        "P3CAND-000122",
+        "P3CAND-000123"
+      ],
+      "incorrect_attachment_edges": 10
+    },
+    {
+      "id": "V33-EXT-006",
+      "classification": "SIGNATURE_BLOCKER_FABRICATED_AS_ARBITRARY_PAIR",
+      "detail": "The builder creates one INCOMPLETE_SIGNATURE closure obligation per candidate, anchors it to the first incomplete member and an arbitrary second member, then breaks. It does not represent all affected subjects."
+    },
+    {
+      "id": "V33-EXT-007",
+      "classification": "GOVERNING_PILOT_STRATA_NOT_IMPLEMENTED",
+      "detail": "The 40 packets are selected through five broad SQL passes and labeled with four improvised buckets. The eleven target strata and their eligibility rules are not implemented.",
+      "delivered_strata": {
+        "collision_or_nontransitive": 2,
+        "exact_only_authority_or_unresolved": 3,
+        "response_variant_or_split_required": 20,
+        "derived_index_or_structure_supported": 15
+      }
+    },
+    {
+      "id": "V33-EXT-008",
+      "classification": "PILOT_AND_SUMMARY_ARTIFACTS_NOT_REPRODUCIBLY_GENERATED",
+      "detail": "No delivered code references or generates P3A_V33_PILOT_CANDIDATE_INDEX.csv, P3A_V33_PILOT_STRATA_RETURN.json, P3A_V33_OBJECT_COUNTS.json, or P3A_V33_TOPOLOGY_RECOMPUTATION.json."
+    },
+    {
+      "id": "V33-EXT-009",
+      "classification": "FIXTURE_MUTATIONS_DO_NOT_REACH_NAMED_INVARIANTS",
+      "detail": "Incomplete-promotion mapping still fails first at missing variant assignment. The stale-hash fixture changes only three top-level hash fields and does not mutate semantic evidence."
+    },
+    {
+      "id": "V33-EXT-010",
+      "classification": "VERIFIER_HARDCODES_REPAIR_EXAMPLES_AND_TRUSTS_SUMMARIES",
+      "detail": "verify_handoff_v33.py requires exactly 10 direct rows and 41 bridge rows and trusts pilot/object/query summary JSONs; it does not independently reconstruct topology, constraints, pilot eligibility, or fixtures."
+    },
+    {
+      "id": "V33-EXT-011",
+      "classification": "COUNT_LABEL_CONTRADICTION",
+      "detail": "The candidate loader return labels all 487 obligations as unruled_internal_pairs, while populated diagnostics report 336 actual UNRULED pair rows."
+    }
+  ]
+}

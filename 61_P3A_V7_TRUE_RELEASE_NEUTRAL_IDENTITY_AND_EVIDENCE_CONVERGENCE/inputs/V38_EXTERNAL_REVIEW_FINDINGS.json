@@ -1,0 +1,62 @@
+{
+  "reviewed_delta": "Rawlsing_P3A_V38_Section60_Review_Delta.zip",
+  "delta_sha256": "fb317cee235c3cdd4b5cc24fa2fcf1815f95929aec2362db8daa8b0d2764bf92",
+  "delta_bytes": 3025941,
+  "accepted_progress": {
+    "live_q01_q54_output_present": true,
+    "typed_constraint_required_fields_enforced": true,
+    "review_csv_removed_from_historical_import": true,
+    "r35_exact_origin_and_candidate_hash_sources_read_directly": true,
+    "release_change_ledger_generated_by_loader": true,
+    "pilot_uses_honest_zero_shortfalls_for_proxy_strata": true,
+    "postgresql_teardown_evidenced": true
+  },
+  "blocking_findings": [
+    {
+      "id": "V38-EXT-001",
+      "classification": "APPLICABLE_QUERY_FAILURE_IGNORED",
+      "detail": "q33_candidate_revision_has_current_stage is FAIL. Candidate event rows are created, erased, and never inserted."
+    },
+    {
+      "id": "V38-EXT-002",
+      "classification": "RELEASE_NEUTRAL_ORIGIN_NOT_IMPLEMENTED",
+      "detail": "Family origin uses concrete release-scoped projection IDs inside component payloads. All four packet probes differ from the contract-defined semantic-fingerprint formula."
+    },
+    {
+      "id": "V38-EXT-003",
+      "classification": "FAMILY_CONTINUITY_REPORT_IS_CIRCULAR",
+      "detail": "All 141 old/new key pairs differ, yet all are marked PASS solely by candidate numeric range. Corrected R35 semantic origins are never reconstructed."
+    },
+    {
+      "id": "V38-EXT-004",
+      "classification": "SEMANTIC_FINGERPRINT_MAPPING_CARDINALITY_WRONG",
+      "detail": "Projection and component semantic fingerprint tables make the semantic fingerprint globally UNIQUE, preventing multiple release-scoped concrete objects from mapping to one semantic identity."
+    },
+    {
+      "id": "V38-EXT-005",
+      "classification": "DATABASE_PACKET_HASH_DIVERGENCE",
+      "detail": "All four exported packet hashes differ from the immutable PostgreSQL candidate hash."
+    },
+    {
+      "id": "V38-EXT-006",
+      "classification": "CANDIDATE_EVIDENCE_HASH_EXCLUDES_TYPED_SEMANTICS",
+      "detail": "A typed coordinate evidence ID was replaced with fake evidence without changing any hash; the shipped validator returned PASS."
+    },
+    {
+      "id": "V38-EXT-007",
+      "classification": "FIXTURE_LIFECYCLE_REGRESSED",
+      "detail": "No accepted, split, hierarchy, or named negative authority transactions are executed. The fixture report contains seven metadata assertions."
+    },
+    {
+      "id": "V38-EXT-008",
+      "classification": "RELEASE_LEDGER_PRIOR_HASHES_SYNTHETIC",
+      "detail": "All 141 retained-family prior hashes are synthetic wrappers, not exact prior canonical object snapshot hashes."
+    },
+    {
+      "id": "V38-EXT-009",
+      "classification": "VERIFIER_ACCEPTS_SUMMARY_STATUS",
+      "detail": "The verifier ignores q33, does not compare DB/packet hashes, does not recompute family origin keys, and accepts the reduced fixture case count."
+    }
+  ],
+  "status": "BLOCKED_RELEASE_NEUTRAL_IDENTITY_AND_EVIDENCE_CONVERGENCE_DEFECT"
+}

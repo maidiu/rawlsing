@@ -1,0 +1,386 @@
+{
+  "candidate_family": {
+    "attachment_projection_ids": [],
+    "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+    "candidate_classification": "INSUFFICIENT_AUTHORITY_RISK",
+    "candidate_family_id": "P3CAND-000101",
+    "candidate_origin_type": "PROPOSITION_ONLY_SEED",
+    "canonical_signature_id": null,
+    "closure_obligation_ids": [
+      "P3CLOSE-d80cbdf59d3c40d6"
+    ],
+    "component_ids": [
+      "P3COMP-066390cb8e8a4967"
+    ],
+    "diagnostic_flags": [
+      "OPEN_CLOSURE"
+    ],
+    "evidence_bundle_hash": "e59a6174a0b0710e072856df90b5640d8d79a5e113ef0718b718c1de5626bcbc",
+    "exclusion_ids": [
+      "P3EXC-000101"
+    ],
+    "internal_pair_counts": {
+      "direct_collision": 0,
+      "direct_positive": 1,
+      "direct_unresolved": 0,
+      "expected_pairs": 1,
+      "hierarchical_only": 0,
+      "signature_compatible": 0,
+      "signature_conflict": 0,
+      "unruled": 0
+    },
+    "member_ids": [
+      "p2lineage_2c317ec21a29768f5f5d8f68",
+      "p2lineage_f94237c2251859461d1fb7a7"
+    ],
+    "origin_key": "99b89d8911343282b21c0301b4cf4cda9a9a8a4a4583b46c983edc46a0e1c0c6",
+    "ranking": {
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "candidate_revision_id": "P3CANDREV-000101-R0001",
+      "direct_positive_density": 1.0,
+      "hard_collision_count": 0,
+      "lineage_count": 2,
+      "open_obligation_count": 1,
+      "primary_class_rank": 101,
+      "response_variant_complexity": 0,
+      "signature_completeness": 0.0,
+      "source_count": 2,
+      "structure_support_count": 1
+    },
+    "revision_id": "P3CANDREV-000101-R0001",
+    "revision_number": 1,
+    "variant_ids": []
+  },
+  "closure_obligations": [
+    {
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "candidate_revision_id": "P3CANDREV-000101-R0001",
+      "closure_obligation_id": "P3CLOSE-d80cbdf59d3c40d6",
+      "left_id": "p2lineage_2c317ec21a29768f5f5d8f68",
+      "obligation_type": "INCOMPLETE_SIGNATURE",
+      "resolution_adjudication_id": null,
+      "right_id": "p2lineage_f94237c2251859461d1fb7a7",
+      "status": "OPEN"
+    }
+  ],
+  "decision_form": {
+    "accepted_members": [],
+    "adjudication_id": "P3ADJ-000040",
+    "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+    "candidate_family_id": "P3CAND-000101",
+    "candidate_revision_id": "P3CANDREV-000101-R0001",
+    "canonical_family_id": null,
+    "canonical_proposition": null,
+    "collision_dispositions": [],
+    "decision_ordinal": 1,
+    "decision_status": null,
+    "evidence_bundle_hash": "e59a6174a0b0710e072856df90b5640d8d79a5e113ef0718b718c1de5626bcbc",
+    "excluded_members": [],
+    "exclusion_promotions": [],
+    "hierarchical_relations": [],
+    "rationale": "Draft-only P3A pilot packet; human P3C adjudication required.",
+    "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+    "split_points": [],
+    "split_results": [],
+    "supersedes_adjudication_id": null,
+    "unresolved_boundaries": [],
+    "variant_assignments": [],
+    "variant_promotions": []
+  },
+  "evidence_bundle_hash": "e59a6174a0b0710e072856df90b5640d8d79a5e113ef0718b718c1de5626bcbc",
+  "exact_evidence_links": [
+    "P3CANDREV-000101-R0001",
+    "P3PROJ-e3811f5bb498804b",
+    "p2lineage_2c317ec21a29768f5f5d8f68"
+  ],
+  "explicit_exclusions": [
+    {
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "evidence_or_rule": "P3A candidates require human P3C adjudication before canonical acceptance.",
+      "excluded_object_ids": [],
+      "exclusion_id": "P3EXC-000101",
+      "exclusion_type": "RULE_BASED",
+      "owner_object_id": "P3CAND-000101",
+      "prohibited_operation": "P3C_AUTOMATIC_CANONICAL_ACCEPTANCE",
+      "scope": "candidate_family",
+      "tested_surface_complete": true
+    }
+  ],
+  "fixture_status": "AUTHORITY_PACKET",
+  "hard_collisions": [],
+  "hyperedge_context": [],
+  "internal_pair_matrix": [
+    {
+      "closure_obligation_ids": [
+        "P3CLOSE-d80cbdf59d3c40d6"
+      ],
+      "collision_ids": [],
+      "left_id": "p2lineage_2c317ec21a29768f5f5d8f68",
+      "pair_fact_id": "P3PF-2ff5bdc116904862",
+      "pair_projection_id": "P3PROJ-e3811f5bb498804b",
+      "pair_state": "DIRECT_POSITIVE",
+      "right_id": "p2lineage_f94237c2251859461d1fb7a7"
+    }
+  ],
+  "likely_split_points": [],
+  "members_by_source": {
+    "Arab Barometer": [
+      "p2lineage_2c317ec21a29768f5f5d8f68"
+    ],
+    "South Asia": [
+      "p2lineage_f94237c2251859461d1fb7a7"
+    ]
+  },
+  "origin_components": [
+    {
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "build_rule_version": "P3A_V32_PROPOSITION_ONLY_TOPOLOGY",
+      "component_id": "P3COMP-066390cb8e8a4967",
+      "component_type": "PROPOSITION_ONLY_COMPONENT",
+      "connectivity_projection_ids": [
+        "P3PROJ-e3811f5bb498804b"
+      ],
+      "content_hash": "066390cb8e8a4967168aec9eb5ab596d2758aace2a71e534bb0fdd23c978c8f1",
+      "member_ids": [
+        "p2lineage_2c317ec21a29768f5f5d8f68",
+        "p2lineage_f94237c2251859461d1fb7a7"
+      ]
+    }
+  ],
+  "packet_id": "P3PKT-72bd27752f140775",
+  "pair_projections": [
+    {
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "evidence_ids": [
+        "p2global_b2224158d208e5b490d776b8"
+      ],
+      "left_subject_id": "p2lineage_2c317ec21a29768f5f5d8f68",
+      "pair_fact_id": "P3PF-2ff5bdc116904862",
+      "projection_basis": "ORIGINAL_LINEAGES",
+      "projection_id": "P3PROJ-e3811f5bb498804b",
+      "right_subject_id": "p2lineage_f94237c2251859461d1fb7a7"
+    }
+  ],
+  "proposed_variants": [],
+  "proposition_signature_matrix": [
+    {
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "content_hash": "016b187b6e88d68d25c42a5b70fac38cf6afb4c22be2399ed2134b5a4ea1c5d5",
+      "fields": {
+        "condition": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "derived_status": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "geographic_scope": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "modality": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "object_or_outcome": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "operator": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "parent_context": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "polarity": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "population_scope": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "subject_role": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "target": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "timeframe": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        }
+      },
+      "response_topologies": [
+        "UNKNOWN"
+      ],
+      "signature_id": "P3SIG-016b187b6e88d68d",
+      "signature_status": "PARTIAL_FAIL_CLOSED",
+      "subject_id": "p2lineage_2c317ec21a29768f5f5d8f68",
+      "subject_type": "IMPORTED_SOURCE_LOCAL_LINEAGE"
+    },
+    {
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "content_hash": "d01a69374cf6bedb7bc27e0e43119d732dcef19c9e2e7332fdf2409ae19db7b4",
+      "fields": {
+        "condition": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "derived_status": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "geographic_scope": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "modality": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "object_or_outcome": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "operator": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "parent_context": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "polarity": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "population_scope": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "subject_role": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "target": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        },
+        "timeframe": {
+          "confidence": "NOT_APPLICABLE",
+          "evidence_ids": [],
+          "evidence_state": "UNRECOVERED",
+          "field_value": null,
+          "normalized_value_code": null
+        }
+      },
+      "response_topologies": [
+        "UNKNOWN"
+      ],
+      "signature_id": "P3SIG-d01a69374cf6bedb",
+      "signature_status": "PARTIAL_FAIL_CLOSED",
+      "subject_id": "p2lineage_f94237c2251859461d1fb7a7",
+      "subject_type": "IMPORTED_SOURCE_LOCAL_LINEAGE"
+    }
+  ],
+  "response_contract_matrix": [
+    {
+      "authority_artifact": "section-54-live-db-governed-fail-closed-reference",
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "p4_authority": false,
+      "reference_id": "P3RCR-eb61ea094165b2da",
+      "response_contract_hash": null,
+      "response_topology": "UNKNOWN",
+      "subject_id": "p2lineage_2c317ec21a29768f5f5d8f68",
+      "upstream_response_contract_id": null
+    },
+    {
+      "authority_artifact": "section-54-live-db-governed-fail-closed-reference",
+      "authority_release_id": "P3-AUTHORITY-2026-08-01-R31",
+      "p4_authority": false,
+      "reference_id": "P3RCR-558ee0f076c061cb",
+      "response_contract_hash": null,
+      "response_topology": "UNKNOWN",
+      "subject_id": "p2lineage_f94237c2251859461d1fb7a7",
+      "upstream_response_contract_id": null
+    }
+  ],
+  "strata_horizon_context": [],
+  "unresolved_pairs": [],
+  "unruled_pairs": []
+}

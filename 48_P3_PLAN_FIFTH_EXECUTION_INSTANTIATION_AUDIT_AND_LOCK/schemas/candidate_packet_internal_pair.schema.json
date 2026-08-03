@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/candidate_packet_internal_pair.schema.json",
+  "title": "candidate_packet_internal_pair",
+  "type": "object",
+  "required": [
+    "left_id",
+    "right_id",
+    "pair_state",
+    "pair_fact_id",
+    "pair_projection_id",
+    "collision_ids",
+    "closure_obligation_ids"
+  ],
+  "properties": {
+    "left_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pair_state": {
+      "enum": [
+        "DIRECT_POSITIVE",
+        "DIRECT_COLLISION",
+        "DIRECT_UNRESOLVED",
+        "HIERARCHICAL_ONLY",
+        "UNRULED",
+        "SIGNATURE_CONFLICT",
+        "SIGNATURE_COMPATIBLE"
+      ]
+    },
+    "pair_fact_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^P3PF-[0-9a-f]{16}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "pair_projection_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^P3PROJ-[0-9a-f]{16}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "collision_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^P3COL-[0-9a-f]{16}$"
+      },
+      "uniqueItems": true
+    },
+    "closure_obligation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^P3CLOSE-[0-9a-f]{16}$"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pair_state": {
+            "enum": [
+              "DIRECT_POSITIVE",
+              "DIRECT_COLLISION",
+              "DIRECT_UNRESOLVED",
+              "HIERARCHICAL_ONLY"
+            ]
+          }
+        },
+        "required": [
+          "pair_state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "pair_fact_id": {
+            "type": "string",
+            "pattern": "^P3PF-[0-9a-f]{16}$"
+          },
+          "pair_projection_id": {
+            "type": "string",
+            "pattern": "^P3PROJ-[0-9a-f]{16}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "pair_state": {
+            "enum": [
+              "UNRULED",
+              "SIGNATURE_CONFLICT",
+              "SIGNATURE_COMPATIBLE"
+            ]
+          }
+        },
+        "required": [
+          "pair_state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "pair_fact_id": {
+            "type": "null"
+          },
+          "pair_projection_id": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

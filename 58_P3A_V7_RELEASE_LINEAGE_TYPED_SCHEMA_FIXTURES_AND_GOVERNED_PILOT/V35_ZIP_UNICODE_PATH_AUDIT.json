@@ -1,0 +1,37 @@
+{
+  "zip_name": "Rawlsing_J_Family_Authority_Strategy_Handoff_v35_20260801.zip",
+  "sha256": "0024509a8b50f00bbfa3361060ae4479d97f2031db49003299781c65d430284f",
+  "bytes": 241224955,
+  "zip_regular_file_count": 2360,
+  "manifested_payload_file_count": 2358,
+  "manifest_control_files_excluded": [
+    "PACKAGE_INDEX.csv",
+    "SHA256SUMS.csv"
+  ],
+  "latinobarometro_entries": [
+    {
+      "zip_filename": "Rawlsing_J_Family_Authority_Strategy_Handoff_v35_WORKING/35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_inputs/v551_atoms/crosssurvey/Latinobar├│metro_1995_BR/",
+      "flag_bits": 0,
+      "utf8_flag_set": false,
+      "file_size": 0
+    },
+    {
+      "zip_filename": "Rawlsing_J_Family_Authority_Strategy_Handoff_v35_WORKING/35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_inputs/v551_atoms/crosssurvey/Latinobar├│metro_1995_BR/relation_evidence_atoms.csv",
+      "flag_bits": 0,
+      "utf8_flag_set": false,
+      "file_size": 125089
+    },
+    {
+      "zip_filename": "Rawlsing_J_Family_Authority_Strategy_Handoff_v35_WORKING/35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/generated_question_semantic_hierarchy/crosssurvey__Latinobar├│metro_1995_BR_question_semantic_hierarchy.csv",
+      "flag_bits": 0,
+      "utf8_flag_set": false,
+      "file_size": 9809
+    }
+  ],
+  "standard_python_path_reconciliation": {
+    "status": "FAIL",
+    "detail": "The two governed Latinobarómetro payload paths lack ZIP UTF-8 flag bit 0x800. Python zipfile decodes them as Latinobar├│metro, while PACKAGE_INDEX.csv names Latinobarómetro.",
+    "affected_payload_files": 2
+  },
+  "pyc_files_in_zip": 0
+}

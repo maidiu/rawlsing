@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/lineage_segment.schema.json",
+  "title": "Rawlsing P3 Lineage Segment",
+  "type": "object",
+  "required": [
+    "segment_id",
+    "parent_lineage_id",
+    "implementation_ids",
+    "segment_reason",
+    "validity",
+    "p2_lineage_unchanged",
+    "authority_release_id"
+  ],
+  "properties": {
+    "segment_id": {
+      "type": "string",
+      "pattern": "^P3SEG-[0-9]{6}$"
+    },
+    "parent_lineage_id": {
+      "type": "string"
+    },
+    "implementation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "segment_reason": {
+      "enum": [
+        "TARGET_DRIFT",
+        "OPERATOR_DRIFT",
+        "MODALITY_DRIFT",
+        "TIMEFRAME_DRIFT",
+        "SCOPE_DRIFT",
+        "POLARITY_DRIFT",
+        "DERIVED_DIRECT_DRIFT",
+        "OTHER_MATERIAL_PROPOSITION_DRIFT"
+      ]
+    },
+    "validity": {
+      "type": "object",
+      "required": [
+        "first_wave",
+        "last_wave"
+      ],
+      "properties": {
+        "first_wave": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_wave": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "p2_lineage_unchanged": {
+      "const": true
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

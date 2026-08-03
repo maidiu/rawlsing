@@ -1,0 +1,401 @@
+# Rawlsing v5 driver facet registry seed
+#
+# This file enumerates the facet families the atlas currently knows how to speak.
+# Broad drivers stay stable; facets carry the narrower semantic slice.
+
+version: v1_seed
+notes:
+  - "Facet coverage is still being deepened across survey families."
+  - "Rows with blank driver_facet_id are broad rows that have not yet been assigned a specific facet."
+  - "Some drivers are currently used as both the stable driver and the provisional facet until deeper subdivision is justified."
+
+driver_facets:
+  authorityStyle:
+    description: "How power, order, authority, democracy, and coercion are evaluated."
+    facets:
+      - democracy_content_matrix
+      - democracy_supply_demand
+      - authoritarian_alternative_rejection
+      - developmental_authoritarian_bargain
+      - strong_leader_bargain
+      - military_rule_rejection
+      - elite_capture_perception
+      - public_health_exception
+      - gun_security_punitive_order
+      - democracy_exhaustion_security_tradeoff
+      - emancipative_value_orientation
+      - public_order_social_control
+  trustEcology:
+    description: "Trust in institutions, people, and knowledge fields."
+    facets:
+      - institutional_actor_trust
+      - interpersonal_trust
+      - police_court_military_trust
+      - religious_traditional_authority_trust
+      - media_science_medicine_trust
+      - foreign_actor_trust
+      - post_socialist_trust_delta
+      - partisan_polarized_trust
+  materialSecurity:
+    description: "Livelihood, deprivation, welfare, labor discipline, and shock exposure."
+    facets:
+      - lived_poverty
+      - service_delivery_legitimacy
+      - food_water_medicine_cash_insecurity
+      - work_discipline
+      - welfare_state_market_ideology
+      - austerity_household_shock
+      - crisis_income_loss
+      - survival_infrastructure_dependence
+      - inflation_unemployment_tradeoff
+      - public_goods_tax_sacrifice
+      - market_planned_economy_preference
+      - occupational_status
+      - job_value_orientation
+      - income_equality_preference
+      - state_jobs_access
+      - wasta_access_dependence
+      - fatalism_agency_livelihood
+  imperialAlignment:
+    description: "External dependency, foreign actors, development models, and geopolitical relation."
+    facets:
+      - external_actor_relation_matrix
+      - foreign_influence_development
+      - external_model_competition
+      - aid_legitimacy
+      - rights_defender_attribution
+      - mediator_suitability
+      - foreign_investor_trust
+      - american_identity_immigration_language_boundary
+      - external_dependency_actor_matrix
+  genderFamilyOrder:
+    description: "Gender, family hierarchy, bodily autonomy, and public/private authority."
+    facets:
+      - gender_public_private_family_authority
+      - abortion_condition_intensity_bodily_autonomy
+      - sexual_moral_permissibility_lgbtq_boundary
+      - era_feminist_backlash
+      - gender_labor_pay_education
+      - family_state_authority_analogy
+      - boy_preference_gender_hierarchy
+      - spouse_selection_norms
+      - domestic_violence_norms
+      - household_task_distribution
+      - marriage_age_gap_norms
+      - policy_gender_norms
+  religiousMoralOrder:
+    description: "Religious practice, moral authority, secularism, and boundary-making."
+    facets:
+      - religion_role_separation
+      - christian_moral_authority
+      - moral_permissibility_target
+      - public_religious_authority
+      - sexual_moral_order
+      - religious_law_majority_will
+      - religious_authority_index
+      - ritual_religiosity
+      - doctrinal_belief_cosmology
+      - moral_rule_internalization
+      - secularization_index
+  outgroupBoundary:
+    description: "Social distance, discrimination, boundary preference, and civic universality."
+    facets:
+      - racial_order_matrix
+      - neighbor_social_distance_target
+      - discrimination_basis_site_form
+      - immigrant_labor_crime_welfare_boundary
+      - aids_hiv_sexuality_disease_stigma
+      - civil_liberties_target_tolerance
+      - spatial_social_distance
+      - migration_boundary
+      - racial_discrimination_boundary
+      - terror_conflict_boundary
+      - national_belonging
+      - regional_belonging
+  civicAgency:
+    description: "Civic action, voice, association, and public participation."
+    facets:
+      - civic_action_repertoire
+      - public_expression_risk
+      - association_membership
+      - informal_access_contact
+      - digital_civic_expression
+      - civil_liberties_target_tolerance
+  mediaEpistemicField:
+    description: "Media trust, platform field, censorship, and epistemic contestation."
+    facets:
+      - media_news_platform_use
+      - media_trust
+      - surveillance_censorship
+      - science_medicine_authority_modernity_risk
+      - fake_news_control_expression_tradeoff
+      - digital_access_skill_exclusion
+  historicalMemory:
+    description: "War, violence, transition, and collective memory."
+    facets:
+      - catastrophe_naming_threshold
+      - Arab_Spring_memory
+      - post_socialist_transition_memory_1989
+      - civil_rights_backlash
+      - AIDS_stigma_memory
+      - post_9_11_security_memory
+  corruptionStateCapacity:
+    description: "Bribes, informal payments, state contact, and clientelism."
+    facets:
+      - bribe_exposure
+      - informal_payment_public_service_access
+      - state_contact_coercion
+      - corruption_state_capacity
+      - clientelist_access_dependence
+      - bureaucratic_service_access
+  environmentalRelation:
+    description: "Climate, development tradeoffs, sacrifice, and ecological responsibility."
+    facets:
+      - climate_responsibility
+      - climate_agency_social_norm
+      - environment_development_tradeoff
+      - energy_climate_cost_tradeoff
+      - public_goods_tax_sacrifice
+      - climate_change_awareness
+      - environmental_action_norm
+      - environmental_governance
+      - environmental_membership
+      - environmental_anxiety
+  workEthic:
+    description: "Work centrality, labor discipline, and the moral status of effort."
+    facets:
+      - workEthic
+      - evs_wvs_workCentrality
+      - labor_value_orientation
+      - work_duty_society
+      - hard_work_merit
+      - anti_lazy_welfare
+      - work_pride_performance
+      - voluntary_work_orientation
+      - women_paid_work_norms
+  intergenerationalReciprocity:
+    description: "Care, duty, and exchange between generations and household members."
+    facets:
+      - intergenerationalReciprocity
+      - family_social_reproduction
+      - childbearing_norms
+      - elder_care_obligation
+      - parental_attachment
+      - household_kinship_structure
+      - mutual_aid_service
+      - family_life_orientation
+      - intergenerational_legacy_comparison
+      - careInfrastructure
+  collectiveAffectTone:
+    description: "General affective tone, social closeness, and relational mood."
+    facets:
+      - collectiveAffectTone
+      - life_satisfaction
+      - emotional_state
+      - social_closeness
+      - future_expectation
+      - relational_warmth
+      - civic_mood
+      - prosocial_orientation
+      - nature_orientation
+  collectivism:
+    description: "Group orientation, collective identification, and self/group relation."
+    facets:
+      - collectivism
+      - group_interest_priority
+      - community_collective_action
+      - organizational_membership
+      - kinship_collectivism
+      - reciprocity_obligation
+      - neighborhood_collectivism
+      - social_connections
+      - public_service_collectivism
+  hierarchy:
+    description: "Respect, rank, obedience, and hierarchy in family or society."
+    facets:
+      - hierarchy
+      - family_authority_norms
+      - intergenerational_obligation
+      - household_co_residence
+      - family_living_standard
+      - social_status_rank
+      - occupational_prestige
+  postColonialIdentity:
+    description: "Postcolonial self-understanding and inherited social identity."
+    facets:
+      - postColonialIdentity
+      - national_pride
+      - national_belonging
+      - national_security_salience
+      - identity_document_access
+      - collective_identity_boundary
+      - institutional_trust_national
+      - geographic_belonging
+  politicalStability:
+    description: "Preference for order, stability, and avoidance of disruption."
+    facets:
+      - politicalStability
+      - security_force_order
+      - institutional_confidence
+      - public_service_access
+  thresholdManagement:
+    description: "Locality thresholds, permission boundaries, institutional benchmarks, and structural context markers."
+    facets:
+      - territorial_context
+      - political_permission_threshold
+      - religious_obstacle_threshold
+      - institutional_benchmark_context
+      - development_indicator_context
+      - public_facility_access
+      - capital_governance_context
+      - thresholdManagement
+  narrativeCoherence:
+    description: "Identity and citizenship narratives that hang together over time."
+    facets:
+      - narrativeCoherence
+  europeanUnionAttitude:
+    description: "Attitudes toward the EU and European integration."
+    facets:
+      - europeanUnionAttitude
+      - eu_trust
+      - eu_enlargement
+      - eu_identity
+  secularization:
+    description: "Decline or restructuring of religious authority in social life."
+    facets:
+      - secularization
+      - religiosity_identity
+      - religious_practice
+      - church_trust
+      - secularization_expectation
+  aestheticOrientation:
+    description: "Taste, culture, imagination, and expressive orientation."
+    facets:
+      - aestheticOrientation
+      - expressive_affinity
+      - cultural_participation
+      - partner_value_alignment
+      - imaginative_child_quality
+  moralElasticity:
+    description: "Flexibility around moral boundaries and exceptions."
+    facets:
+      - moralElasticity
+      - moral_permissibility_battery
+      - doctrinal_belief_cosmology
+      - civic_rule_bending
+      - violence_justification
+      - boundary_tolerance
+  genderEquality:
+    description: "Women's rights, gendered roles, and gendered public authority."
+    facets:
+      - women_rights_representation
+      - women_work_education
+      - household_role_distribution
+      - gendered_public_authority
+      - domestic_violence_norms
+      - gender_identity_and_language
+      - women_leadership_backlash
+      - gendered_resource_access
+  civicEngagement:
+    description: "Political participation, contact, associational life, and democratic efficacy."
+    facets:
+      - political_discussion_interest
+      - electoral_participation
+      - political_action_repertoire
+      - representative_contact
+      - associational_membership
+      - democratic_efficacy_norms
+      - institutional_evaluation
+      - pluralism_conflict_orientation
+  mediaEcology:
+    description: "News use, media trust, digital access, censorship, and platform expression."
+    facets:
+      - news_consumption_channel
+      - media_trust_bias
+      - digital_access_connectivity
+      - social_media_expression
+      - censorship_expression_risk
+      - media_ownership_device
+      - information_social_network
+  temporalOrientation:
+    description: "Future outlook, generational change, and temporal uncertainty."
+    facets:
+      - economic_future_outlook
+      - generational_progress
+      - future_uncertainty
+      - personal_life_stage
+      - scientific_progress_attitude
+      - economic_social_mobility
+  conflictExpression:
+    description: "Identity, institutional, gender, climate, and science conflict expressions."
+    facets:
+      - identity_pride_boundary
+      - institutional_legitimacy_conflict
+      - gender_equality_norms
+      - community_belonging_ties
+      - climate_civic_responsibility
+      - resource_extraction_justice
+      - science_morality_conflict
+      - social_conflict_statement
+  narrativeCoherence:
+    description: "Citizenship identity, future change, and personal narrative continuity."
+    facets:
+      - civic_identity_narrative
+      - future_change_orientation
+      - social_future_optimism
+      - uncertainty_narrative
+  outgroupTolerance:
+    description: "Tolerance, identity, immigrant policy, and cross-group acceptance."
+    facets:
+      - ethnic_identity
+      - racial_neighbor_tolerance
+      - immigrant_policy
+      - neighborhood_trust
+      - foreign_affinity
+  corruptionTolerance:
+    description: "Perceptions of corruption, bribery, and anti-corruption governance."
+    facets:
+      - corruption_perception
+      - witnessed_corruption
+      - anti_corruption_governance
+      - corruption_justification
+      - public_integrity_index
+  economicInequality:
+    description: "Distributional fairness, redistribution, class position, and inequality tradeoffs."
+    facets:
+      - wealth_distribution_fairness
+      - redistribution_tradeoff
+      - class_position
+      - poverty_disadvantage
+      - social_mobility_ladder
+      - equality_of_opportunity
+  politicalStability:
+    description: "Order, security, institutional confidence, and stability tradeoffs."
+    facets:
+      - security_force_order
+      - institutional_confidence
+      - judicial_order
+      - security_vs_freedom_tradeoff
+      - administrative_efficiency
+  evs_wvs_workCentrality:
+    description: "Work centrality, voluntary service, pride, and work-life hierarchy."
+    facets:
+      - work_centrality_identity
+      - work_pride_performance
+      - voluntary_service_orientation
+      - work_duty_society
+      - anti_lazy_welfare
+      - women_paid_work_norms
+  occupationalStatus:
+    description: "Current job, classed work position, and labor market placement."
+    facets:
+      - occupationalStatus
+      - employment_status
+      - job_value_orientation
+      - occupational_prestige
+      - supervisor_employer_status
+      - income_equality_preference
+      - state_jobs_access
+      - subjective_status
+      - class_position
+      - work_conditions

@@ -1,0 +1,52 @@
+{
+  "contract_id": "RAWLSING_V552_TO_V552J_STRATA_HORIZON_SIDECAR_V1",
+  "version": "1.0.0",
+  "date": "2026-07-31",
+  "status": "AUTHORED_AND_SYNTHETICALLY_TESTED_NOT_INSTALLED_OR_RUNTIME_EXECUTED",
+  "purpose": "Preserve authoritative V552 question_semantic_hierarchy strata/horizon fields into V552J without inferring missing values.",
+  "source_artifact": "v552_question_semantic_hierarchy",
+  "target_artifacts": [
+    "v552j_v553_input_index",
+    "v552j_to_v553_handoff_index"
+  ],
+  "join_key_preference": [
+    [
+      "question_implementation_id"
+    ],
+    [
+      "source",
+      "wave",
+      "question_id"
+    ],
+    [
+      "source",
+      "wave",
+      "source_variable_code"
+    ]
+  ],
+  "required_cardinality": "many packet rows to at most one sidecar row per selected key; duplicate sidecar keys fail closed",
+  "authoritative_passthrough_fields": [
+    "stratum_id",
+    "stratum_label",
+    "strata_relevance",
+    "strata_path",
+    "conditional_strata_weights",
+    "horizon_affordance",
+    "horizon_type",
+    "horizon_scope",
+    "horizon_openness",
+    "horizon_reach",
+    "horizon_valence",
+    "horizon_sustaining_power"
+  ],
+  "additional_dropped_fields_requiring_live-repo_review": [
+    "position_conditioning",
+    "position_modifiers",
+    "question_semantic_hierarchy",
+    "contradiction_surface"
+  ],
+  "missing_value_policy": "preserve missing; never synthesize labels, weights or horizon classifications",
+  "conflict_policy": "fail closed when packet and sidecar both contain different non-empty values",
+  "runtime_installation_status": "NOT_INSTALLED",
+  "known_evidence": "998 non-null upstream rows across GSS 1972, 1993 and 2002 according to the recovered lineage ledger."
+}

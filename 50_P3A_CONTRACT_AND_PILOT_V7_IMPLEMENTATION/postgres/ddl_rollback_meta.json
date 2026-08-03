@@ -1,0 +1,26 @@
+{
+  "command": [
+    "psql",
+    "-h",
+    "127.0.0.1",
+    "-p",
+    "55432",
+    "-U",
+    "rawlsing_p3a_owner",
+    "-d",
+    "rawlsing_p3a_v27_test",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-v",
+    "search_path=p3a_v27_shadow,public",
+    "-f",
+    "/Users/matthewsmith/Desktop/Rawlsing/rawlsing_p3a_v27_execution/build/Rawlsing_J_Family_Authority_Strategy_Handoff_v28_20260801/49_P3_PLAN_SIXTH_EXECUTABLE_CLOSURE_AUDIT_AND_LOCK/sql/p3_postgresql_compatible_ddl_v7.sql"
+  ],
+  "server_version": "PostgreSQL 15.14 (Homebrew) on x86_64-apple-darwin22.3.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit",
+  "elapsed_seconds": 0,
+  "exit_code": 0,
+  "remaining_p3_tables_after_rollback": 0,
+  "stdout_path": "postgres/ddl_rollback_stdout.txt",
+  "stderr_path": "postgres/ddl_rollback_stderr.txt",
+  "status": "PASS"
+}

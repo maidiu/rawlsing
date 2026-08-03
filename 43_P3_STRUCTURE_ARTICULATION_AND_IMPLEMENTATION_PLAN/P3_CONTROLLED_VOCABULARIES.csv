@@ -1,0 +1,149 @@
+vocabulary_domain,code,label,definition,authority_effect,terminal,deprecated
+collision_scope,IMPLEMENTATION_PAIR,Implementation pair,Applies only to named implementation endpoints.,,FALSE,FALSE
+collision_scope,LINEAGE_PAIR,Lineage pair,Applies to the source-local lineage endpoints.,,FALSE,FALSE
+collision_scope,SEGMENT_PAIR,Lineage-segment pair,Applies to specific P3 lineage segments.,,FALSE,FALSE
+collision_scope,VARIANT_PAIR,Variant pair,Applies at family-variant level.,,FALSE,FALSE
+collision_scope,FAMILY_WIDE,Family wide,Applies to the entire candidate or canonical family.,,FALSE,FALSE
+collision_scope,VALUE_PORTABILITY_ONLY,Value portability only,"Does not block family identity, only measurement transformation.",,FALSE,FALSE
+collision_scope,HISTORICAL_INTERVAL,Historical interval,Applies only during a governed period.,,FALSE,FALSE
+collision_scope,SOURCE_SPECIFIC,Source specific,Applies only within or against a named source.,,FALSE,FALSE
+collision_type,BLOCK_SAME_PROPOSITION,Block same proposition,Members cannot share one proposition-defined family.,HARD_FAMILY_BLOCK,FALSE,FALSE
+collision_type,BLOCK_SAME_VARIANT,Block same variant,Members may share a family only in distinct variants.,VARIANT_SPLIT,FALSE,FALSE
+collision_type,BLOCK_VALUE_PORTABILITY,Block value portability,"Family relation may stand, but response values cannot be harmonized.",DOWNSTREAM_BLOCK,FALSE,FALSE
+collision_type,PARENT_CHILD_ONLY,Parent-child only,Members may be linked hierarchically but not merged.,HIERARCHY_ONLY,FALSE,FALSE
+collision_type,BLOCK_DERIVED_DIRECT_MERGE,Block derived/direct merge,Derived index and direct item remain separate.,HARD_FAMILY_BLOCK,FALSE,FALSE
+collision_type,BLOCK_BEHAVIOR_DISPOSITION_MERGE,Block behavior/disposition merge,Actual behavior and willingness/intention remain separate.,HARD_FAMILY_BLOCK,FALSE,FALSE
+collision_type,BLOCK_TARGET_COLLAPSE,Block target collapse,Distinct social targets remain separate.,HARD_FAMILY_BLOCK,FALSE,FALSE
+collision_type,BLOCK_OPERATOR_COLLAPSE,Block operator collapse,Distinct operators remain separate.,HARD_FAMILY_BLOCK,FALSE,FALSE
+collision_type,BLOCK_TIMEFRAME_COLLAPSE,Block timeframe collapse,Meaningful temporal scopes remain separate.,HARD_OR_HIERARCHICAL,FALSE,FALSE
+collision_type,BLOCK_POPULATION_SCOPE_COLLAPSE,Block population scope collapse,Distinct reference populations remain separate.,HARD_OR_HIERARCHICAL,FALSE,FALSE
+collision_type,BLOCK_GEOGRAPHIC_SCOPE_COLLAPSE,Block geographic scope collapse,Distinct geographic scopes remain separate.,HARD_OR_HIERARCHICAL,FALSE,FALSE
+collision_type,BLOCK_POLARITY_COLLAPSE,Block polarity collapse,"Positive, negative, exclusionary, or reverse forms cannot be silently merged.",VARIANT_OR_HARD,FALSE,FALSE
+collision_type,BLOCK_SOURCE_STRUCTURE_INFERENCE,Block source-structure inference,Battery label or position cannot manufacture proposition identity.,DISCOVERY_BLOCK,FALSE,FALSE
+collision_type,BLOCK_HETEROGENEOUS_LINEAGE,Block heterogeneous lineage,A materially drifting lineage cannot enter cleanly without segmentation.,HARD_FAMILY_BLOCK,FALSE,FALSE
+collision_type,INSUFFICIENT_EVIDENCE,Insufficient evidence,Required authoritative fields are unrecovered or conflicting.,FAIL_CLOSED,FALSE,FALSE
+collision_type,REDIRECT_SEMANTIC_ARTIFACT,Redirect semantic artifact,Inherited semantic placement is contaminated.,REMOVE_FROM_DOMAIN,FALSE,FALSE
+evidence_type,DIRECT_QUESTION_TEXT,Direct question text,Exact source-native question text.,,FALSE,FALSE
+evidence_type,PARENT_PROMPT,Parent prompt,"Battery or matrix parent supplying operator, target, or condition.",,FALSE,FALSE
+evidence_type,RESPONSE_DICTIONARY,Response dictionary,Labels or coding that establish topology and direction.,,FALSE,FALSE
+evidence_type,SOURCE_STRUCTURE,Source structure,Adjudicated battery or source structure.,,FALSE,FALSE
+evidence_type,LINEAGE_HISTORY,Lineage history,Source-local continuity and implementation drift evidence.,,FALSE,FALSE
+evidence_type,P2_RULING,P2 ruling,Closed cross-source authority ruling.,,FALSE,FALSE
+evidence_type,SEMANTIC_OVERLAY,Semantic overlay,Corrected diagnostic coordinate; never sufficient alone.,,FALSE,FALSE
+evidence_type,CODEBOOK,Codebook,Authoritative source documentation.,,FALSE,FALSE
+evidence_type,ROW_AUTHORITY_MASTER,Row-authority master,Governing row-level evidence.,,FALSE,FALSE
+evidence_type,MANUAL_ADJUDICATION,Manual adjudication,Structured human decision bound to evidence.,,FALSE,FALSE
+family_lifecycle_status,DISCOVERED,Discovered,Candidate generated mechanically and not yet evidence-complete.,NONTERMINAL,FALSE,FALSE
+family_lifecycle_status,GENERATED_CANDIDATE,Generated candidate,Candidate membership and diagnostics materialized.,NONTERMINAL,FALSE,FALSE
+family_lifecycle_status,EVIDENCE_COMPLETE,Evidence complete,Required evidence surfaces are present.,NONTERMINAL,FALSE,FALSE
+family_lifecycle_status,ADJUDICATION_REQUIRED,Adjudication required,Candidate awaits structured human authority.,NONTERMINAL,FALSE,FALSE
+family_lifecycle_status,CLEAN_FAMILY_CANDIDATE,Clean candidate,Coherent proposition with no internal family blocker.,PILOT_STATUS,FALSE,FALSE
+family_lifecycle_status,RESPONSE_VARIANT_CANDIDATE,Response-variant candidate,One proposition with governed response variants.,PILOT_STATUS,FALSE,FALSE
+family_lifecycle_status,SPLIT_REQUIRED,Split required,Connected component contains multiple propositions.,TERMINAL_CANDIDATE,TRUE,FALSE
+family_lifecycle_status,HIERARCHICAL_RELATION_ONLY,Hierarchical relation only,Related families must remain separate and linked hierarchically.,TERMINAL_CANDIDATE,TRUE,FALSE
+family_lifecycle_status,COLLISION_BEARING,Collision bearing,Internal hard or unresolved constraints prevent clean admission.,TERMINAL_CANDIDATE,TRUE,FALSE
+family_lifecycle_status,STRUCTURAL_ANALOGY_ONLY,Structural analogy only,Structure correspondence lacks proposition authority.,TERMINAL_CANDIDATE,TRUE,FALSE
+family_lifecycle_status,INSUFFICIENT_AUTHORITY,Insufficient authority,Evidence cannot establish family identity.,TERMINAL_CANDIDATE,TRUE,FALSE
+family_lifecycle_status,REJECTED_SEMANTIC_ARTIFACT,Rejected semantic artifact,Candidate was produced by contaminated semantic placement.,TERMINAL_CANDIDATE,TRUE,FALSE
+family_lifecycle_status,ACCEPTED_CANONICAL,Accepted canonical,Canonical family authorized without variants.,CANONICAL_TERMINAL,TRUE,FALSE
+family_lifecycle_status,ACCEPTED_WITH_VARIANTS,Accepted with variants,Canonical family authorized with explicit variants.,CANONICAL_TERMINAL,TRUE,FALSE
+family_lifecycle_status,BLOCKED_UNRESOLVED,Blocked unresolved,Authority remains fail-closed pending evidence.,CANONICAL_TERMINAL,TRUE,FALSE
+family_lifecycle_status,REJECTED,Rejected,Proposed family is semantically invalid.,CANONICAL_TERMINAL,TRUE,FALSE
+family_lifecycle_status,SUPERSEDED,Superseded,"Replaced by later split, merge, or revision authority.",HISTORICAL_TERMINAL,TRUE,FALSE
+family_lifecycle_status,DEPRECATED,Deprecated,Historically valid but prohibited for new builds.,HISTORICAL_TERMINAL,TRUE,FALSE
+field_evidence_state,KNOWN,Known,Field value is directly recoverable from authoritative source evidence.,,FALSE,FALSE
+field_evidence_state,EXPLICITLY_UNSPECIFIED,Explicitly unspecified,The item genuinely leaves this dimension unspecified; this is not missing documentation.,,FALSE,FALSE
+field_evidence_state,NOT_APPLICABLE,Not applicable,The field does not apply to this proposition.,,FALSE,FALSE
+field_evidence_state,UNRECOVERED,Unrecovered,The field may exist but authoritative evidence is absent or truncated.,,FALSE,FALSE
+field_evidence_state,HETEROGENEOUS,Heterogeneous,Implementations inside the lineage carry materially different values.,,FALSE,FALSE
+field_evidence_state,CONFLICTING,Conflicting,Authoritative sources disagree and the conflict is unresolved.,,FALSE,FALSE
+field_evidence_state,DIAGNOSTIC_ONLY,Diagnostic only,A value exists only in inherited or heuristic diagnostics and cannot authorize membership.,,FALSE,FALSE
+hyperedge_type,BATTERY,Battery hyperedge,Parent prompt and child proposition families.,,FALSE,FALSE
+hyperedge_type,CROSS_SOURCE_BATTERY_ANALOGY,Cross-source battery analogy,Adjudicated analogous batteries across sources.,,FALSE,FALSE
+hyperedge_type,DERIVED_INDEX_CONSTITUTION,Derived-index constitution,Derived index and constituent items.,,FALSE,FALSE
+hyperedge_type,SIBLING_FAMILY_CONSTRUCT,Sibling-family construct,Separate proposition families within a broader construct.,,FALSE,FALSE
+hyperedge_type,TARGET_HIERARCHY,Target hierarchy,Broader and narrower target families.,,FALSE,FALSE
+hyperedge_type,RESPONSE_CONTRACT_CLASS,Response-contract class,Shared response architecture without proposition identity.,,FALSE,FALSE
+modality,ACTUAL_PAST_BEHAVIOR,Actual past behavior,Action already performed in a specified or implied past period.,,FALSE,FALSE
+modality,ACTUAL_CURRENT_BEHAVIOR,Actual current behavior,Current or habitual action.,,FALSE,FALSE
+modality,WILLINGNESS_OR_DISPOSITION,Willingness or disposition,Readiness to act without a claim of actual behavior.,,FALSE,FALSE
+modality,INTENDED_FUTURE_BEHAVIOR,Intended future behavior,Planned future action.,,FALSE,FALSE
+modality,CURRENT_STATE,Current state,Present condition or status.,,FALSE,FALSE
+modality,PAST_STATE,Past state,Historical condition or status.,,FALSE,FALSE
+modality,FUTURE_EXPECTATION,Future expectation,Anticipated future condition.,,FALSE,FALSE
+modality,NORMATIVE_PRINCIPLE,Normative principle,"What should be, independent of current performance.",,FALSE,FALSE
+modality,PERFORMANCE_EVALUATION,Performance evaluation,Assessment of how an actor or system performs.,,FALSE,FALSE
+modality,SUBJECTIVE_AFFECT,Subjective affect,"Happiness, satisfaction, fear, anger, or related affect.",,FALSE,FALSE
+modality,FREQUENCY_MEASURE,Frequency measure,How often something occurs.,,FALSE,FALSE
+modality,RANK_OR_PRIORITY,Rank or priority,Ordering among alternatives.,,FALSE,FALSE
+modality,DIRECT_PROPOSITION,Direct proposition,A direct survey proposition.,,FALSE,FALSE
+modality,DERIVED_CONSTRUCT,Derived construct,A calculated or composite construct.,,FALSE,FALSE
+modality,UNSPECIFIED,Unspecified,Modality is explicitly absent.,,FALSE,FALSE
+object_type,IMPLEMENTATION,Implementation,Specific source-wave-variable evidence atom.,,FALSE,FALSE
+object_type,SOURCE_LOCAL_LINEAGE,Source-local lineage,P2-governed longitudinal continuity unit.,,FALSE,FALSE
+object_type,P3_LINEAGE_SEGMENT,P3 lineage segment,Family-authority segment of a materially heterogeneous lineage.,,FALSE,FALSE
+object_type,CANDIDATE_COMPONENT,Candidate component,Mechanically generated connected component.,,FALSE,FALSE
+object_type,CANDIDATE_FAMILY,Candidate family,Provisional proposition grouping.,,FALSE,FALSE
+object_type,CANONICAL_FAMILY,Canonical family,Adjudicated proposition family.,,FALSE,FALSE
+object_type,FAMILY_VARIANT,Family variant,Governed variation preserving the proposition.,,FALSE,FALSE
+object_type,HYPEREDGE,Hyperedge,N-ary semantic or measurement structure.,,FALSE,FALSE
+object_type,AUTHORITY_RELEASE,Authority release,Versioned immutable authority publication.,,FALSE,FALSE
+operator,TRUST,Trust,"Confidence, trust, or reliance directed toward a target.",,FALSE,FALSE
+operator,SATISFACTION,Satisfaction,"Evaluation of satisfaction with a condition, institution, or outcome.",,FALSE,FALSE
+operator,APPROVAL,Approval,"Approval or disapproval of an actor, action, or system.",,FALSE,FALSE
+operator,SUPPORT,Support,"Normative or practical support for a proposition, institution, or regime.",,FALSE,FALSE
+operator,PREFERENCE,Preference,Choice or preference between alternatives.,,FALSE,FALSE
+operator,EVALUATION,Evaluation,"Assessment of quality, condition, performance, fairness, or adequacy.",,FALSE,FALSE
+operator,BELIEF,Belief,"Belief, judgment, attribution, or proposition acceptance.",,FALSE,FALSE
+operator,EXPECTATION,Expectation,Anticipation of a future condition or outcome.,,FALSE,FALSE
+operator,FEAR_OR_CONCERN,Fear or concern,"Fear, worry, concern, or perceived threat.",,FALSE,FALSE
+operator,BEHAVIOR,Behavior,Reported past or current action.,,FALSE,FALSE
+operator,WILLINGNESS,Willingness,Disposition or willingness to act.,,FALSE,FALSE
+operator,INTENTION,Intention,Stated plan or intention to act.,,FALSE,FALSE
+operator,FREQUENCY,Frequency,How often an action or condition occurs.,,FALSE,FALSE
+operator,ACCESS,Access,Availability or ability to obtain a resource or service.,,FALSE,FALSE
+operator,EXPERIENCE,Experience,Reported experience of an event or condition.,,FALSE,FALSE
+operator,IMPORTANCE,Importance,"Importance assigned to a value, outcome, or quality.",,FALSE,FALSE
+operator,PRIORITY,Priority,Ranking or priority among competing options.,,FALSE,FALSE
+operator,IDENTIFICATION,Identification,"Self-identification, affiliation, or categorical identity.",,FALSE,FALSE
+operator,MEMBERSHIP,Membership,Formal or informal membership in a group.,,FALSE,FALSE
+operator,KNOWLEDGE,Knowledge,Knowledge or awareness of a fact or institution.,,FALSE,FALSE
+operator,DERIVED_SCORE,Derived score,A computed index or score rather than a direct question.,,FALSE,FALSE
+operator,UNSPECIFIED,Unspecified,The governing operator is explicitly absent.,,FALSE,FALSE
+pair_relation_type,PROPOSITION_RESPONSE_IDENTITY,Proposition plus response identity,Same question proposition and response topology compatible at the recorded ceiling.,CONNECTIVITY,FALSE,FALSE
+pair_relation_type,PROPOSITION_IDENTITY_ONLY,Proposition identity only,Same question proposition; response topology or value portability differs or remains unproven.,CONNECTIVITY,FALSE,FALSE
+pair_relation_type,NESTED_TARGET_RELATION,Nested target relation,Broader/narrower or role-specific target relation.,HIERARCHY_ONLY,FALSE,FALSE
+pair_relation_type,CONSTRUCT_COORDINATE,Construct coordinate,Shared conceptual domain without proposition identity.,DISCOVERY_ONLY,FALSE,FALSE
+pair_relation_type,STRUCTURE_MEMBER_ANALOGY,Structure-member analogy,Correspondence supported by adjudicated battery or structure relations.,REINFORCEMENT_ONLY,FALSE,FALSE
+pair_relation_type,EXPLICIT_NEGATIVE,Explicit negative,A recorded operation or grain is prohibited.,CONSTRAINT,FALSE,FALSE
+pair_relation_type,REDIRECT_OTHER_DOMAIN,Redirect,The inherited neighborhood is wrong or the pair belongs elsewhere.,REMOVE_FROM_DOMAIN,FALSE,FALSE
+pair_relation_type,UNRESOLVED,Unresolved,Evidence is insufficient; no positive authority may be inferred.,BLOCKER,FALSE,FALSE
+portability_ceiling,QUESTION_AND_RESPONSE_TOPOLOGY,Question and response topology,Proposition identity plus compatible response architecture.,,FALSE,FALSE
+portability_ceiling,QUESTION_PROPOSITION_ONLY,Question proposition only,Proposition identity without value or topology portability.,,FALSE,FALSE
+portability_ceiling,DOMAIN_COORDINATE_ONLY,Domain coordinate only,Shared domain; no family connectivity.,,FALSE,FALSE
+portability_ceiling,CONSTRUCT_TARGET_COORDINATE_ONLY,Construct-target coordinate only,Shared construct and target; operator or proposition differs.,,FALSE,FALSE
+portability_ceiling,HIERARCHICAL_ONLY,Hierarchical only,Broader/narrower relation only.,,FALSE,FALSE
+portability_ceiling,NO_POSITIVE_AUTHORITY,No positive authority,"Negative, redirect, or unresolved.",,FALSE,FALSE
+response_topology,BINARY,Binary,Two substantive response categories.,,FALSE,FALSE
+response_topology,NOMINAL,Nominal,Unordered categories.,,FALSE,FALSE
+response_topology,ORDINAL,Ordinal,Ordered categories without guaranteed equal intervals.,,FALSE,FALSE
+response_topology,LIKERT,Likert,Agreement or evaluation scale.,,FALSE,FALSE
+response_topology,FREQUENCY_ORDINAL,Frequency ordinal,Ordered frequency categories.,,FALSE,FALSE
+response_topology,NUMERIC_OPEN,Open numeric,Open numeric response.,,FALSE,FALSE
+response_topology,RANKING,Ranking,Rank order among options.,,FALSE,FALSE
+response_topology,FORCED_CHOICE,Forced choice,Choice between competing alternatives.,,FALSE,FALSE
+response_topology,MULTISELECT,Multiselect,Multiple selections permitted.,,FALSE,FALSE
+response_topology,TEXT_OPEN,Open text,Open-ended textual response.,,FALSE,FALSE
+response_topology,DERIVED_INDEX,Derived index,Calculated multi-item or transformed index.,,FALSE,FALSE
+response_topology,ADMINISTRATIVE,Administrative,"Identifier, weight, routing, or non-substantive field.",,FALSE,FALSE
+response_topology,UNKNOWN,Unknown,Response topology unrecovered.,,FALSE,FALSE
+subject_role,RESPONDENT,Respondent,The individual survey respondent.,,FALSE,FALSE
+subject_role,HOUSEHOLD,Household,The respondent's household or family unit.,,FALSE,FALSE
+subject_role,PARENT_OR_GUARDIAN,Parent or guardian,"A parent, guardian, or older generation.",,FALSE,FALSE
+subject_role,CHILD_OR_DESCENDANT,Child or descendant,"A child, dependent, or later generation.",,FALSE,FALSE
+subject_role,GOVERNMENT,Government,A government or governing administration.,,FALSE,FALSE
+subject_role,INSTITUTION,Institution,An institutional actor or organization.,,FALSE,FALSE
+subject_role,SOCIAL_GROUP,Social group,A named or implied social collectivity.,,FALSE,FALSE
+subject_role,COUNTRY_OR_POPULATION,Country or population,"A country, national population, or named polity.",,FALSE,FALSE
+subject_role,DERIVED_SYSTEM,Derived system,A calculated or composite subject.,,FALSE,FALSE
+subject_role,UNSPECIFIED,Unspecified,No subject role is specified.,,FALSE,FALSE

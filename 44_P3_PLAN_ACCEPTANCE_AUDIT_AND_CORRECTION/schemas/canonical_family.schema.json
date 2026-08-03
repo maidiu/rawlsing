@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/canonical_family.schema.json",
+  "title": "Rawlsing P3 Canonical Family",
+  "type": "object",
+  "required": [
+    "canonical_family_id",
+    "created_by_adjudication_id",
+    "created_release_id"
+  ],
+  "properties": {
+    "canonical_family_id": {
+      "type": "string",
+      "pattern": "^JFAM-[0-9]{6}$"
+    },
+    "created_by_adjudication_id": {
+      "type": "string"
+    },
+    "created_release_id": {
+      "type": "string"
+    },
+    "retired_release_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

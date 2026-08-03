@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v3/lineage_disposition.schema.json",
+  "title": "lineage_disposition",
+  "type": "object",
+  "required": [
+    "subject_id",
+    "subject_type",
+    "disposition_status",
+    "reason",
+    "evidence_ids",
+    "authority_release_id"
+  ],
+  "properties": {
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_type": {
+      "enum": [
+        "IMPORTED_SOURCE_LOCAL_LINEAGE",
+        "LINEAGE_SEGMENT"
+      ]
+    },
+    "disposition_status": {
+      "enum": [
+        "ADMINISTRATIVE_METADATA_PRESERVED",
+        "BLOCKED_UNRESOLVED",
+        "CANDIDATE_MEMBER",
+        "CANONICAL_MEMBER",
+        "CONSTRAINT_ONLY_PRESERVED",
+        "DERIVED_OR_INDEX_PRESERVED",
+        "OUT_OF_SCOPE_NONQUESTION",
+        "SOURCE_LOCAL_SINGLETON_PRESERVED",
+        "SUPERSEDED_BY_SEGMENT",
+        "UNADJUDICATED"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "candidate_family_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canonical_family_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authority_release_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

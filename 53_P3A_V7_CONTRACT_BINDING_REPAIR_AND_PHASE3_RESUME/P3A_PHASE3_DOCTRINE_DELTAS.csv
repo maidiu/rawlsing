@@ -1,0 +1,6 @@
+delta_id,artifact,change,reason
+D01,p3_postgresql_compatible_ddl_v7.sql,Restore p3_lineage_disposition.subject_type and composite FK,Schema and lifecycle contract require subject kind
+D02,P3_OBJECT_REFERENCE_TYPE_CONTRACT_v7.csv,projection_id -> PAIR_PROJECTION,Align contract with actual table column
+D03,P3_DDL_VALIDATION_QUERIES_v7.sql,Strengthen q20/q21 exact trigger assertions,Prevent table-level false positives
+D04,P3_IDENTITY_KEY_SPEC_v7.csv,PAIR_PROJECTION -> CONTENT_ADDRESSED_DERIVED_ID,Match DDL vocabulary and object registry enforcement
+D05,section 53 loader,Use schema-valid R31 release id,Allow JSON packet validation

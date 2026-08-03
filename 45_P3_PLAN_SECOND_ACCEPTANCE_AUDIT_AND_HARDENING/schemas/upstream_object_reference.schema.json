@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v3/upstream_object_reference.schema.json",
+  "title": "upstream_object_reference",
+  "type": "object",
+  "required": [
+    "object_id",
+    "upstream_phase",
+    "upstream_object_type",
+    "upstream_object_id",
+    "authority_artifact",
+    "authority_hash",
+    "read_only",
+    "license_provenance_state"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "upstream_phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_family": {
+      "anyOf": [
+        {
+          "enum": [
+            "Afrobarometer",
+            "Arab Barometer",
+            "Asian Barometer",
+            "EVS",
+            "GSS",
+            "Latinobarómetro",
+            "LiTS",
+            "South Asia",
+            "WVS"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "upstream_object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "upstream_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "license_provenance_state": {
+      "enum": [
+        "KNOWN",
+        "NOT_APPLICABLE",
+        "UNKNOWN"
+      ]
+    },
+    "license_provenance_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "read_only": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

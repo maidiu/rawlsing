@@ -1,0 +1,20 @@
+edge_grain,edge_type,meaning,authority_direction
+within_source,SAME_ITEM,Same source item and semantic contract across waves,positive
+within_source,RENAMED_ALIAS,Same item with changed variable code,positive
+within_source,WORDING_REVISION,Continuous item with governed wording revision,qualified
+within_source,RESPONSE_TOPOLOGY_CHANGE,Continuous proposition with changed response topology,qualified
+within_source,NARROWED,Later implementation is semantically narrower,qualified
+within_source,BROADENED,Later implementation is semantically broader,qualified
+within_source,SPLIT_FROM,One earlier implementation divides into multiple later implementations,qualified
+within_source,MERGED_FROM,Multiple earlier implementations combine,qualified
+within_source,RETURNED_AFTER_ABSENCE,Continuous concept reappears after one or more absent waves,positive
+within_source,NOT_EQUIVALENT,Reviewed lookalike is not longitudinally continuous,negative
+cross_source,EXACT_PORTABLE_EQUIVALENT,Portable proposition and response semantics equivalent,positive
+cross_source,FUNCTIONALLY_COMPARABLE,Same downstream function with bounded semantic differences,qualified
+cross_source,NARROWER_THAN,Left concept is narrower than right,qualified
+cross_source,BROADER_THAN,Left concept is broader than right,qualified
+cross_source,SHARED_TARGET_DIFFERENT_PROPOSITION,Same target but different proposition; anti-join for equivalence,negative
+cross_source,SHARED_PROPOSITION_DIFFERENT_TARGET,Same proposition but target difference must remain explicit,qualified
+cross_source,ANALOGOUS_NOT_EQUIVALENT,Useful analogy without portability authority,negative
+cross_source,FALSE_FRIEND,Lexical or inherited-label resemblance is misleading,negative
+cross_source,UNRESOLVED,Evidence insufficient for a continuity ruling,unresolved

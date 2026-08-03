@@ -1,0 +1,30 @@
+artifact,class,function,first_phase,required_for_phase_close
+P3_CONTROLLED_VOCABULARIES.csv,CANONICAL,Controlled values and definitions,P3A,YES
+P3_RELATION_COMPOSITION_MATRIX.csv,CANONICAL,Composition and non-inference doctrine,P3A,YES
+P3_STATUS_STATE_MACHINE.csv,CANONICAL,Candidate/family lifecycle,P3A,YES
+P3_EVIDENCE_SUFFICIENCY_MATRIX.csv,CANONICAL,Minimum evidence gates,P3A,YES
+p3_lineage_proposition_signatures.csv,CANONICAL,One governed signature surface per lineage/segment,P3A,YES
+p3_signature_field_evidence.csv,CANONICAL,Field-level provenance,P3A,YES
+p3_lineage_segments.csv,CANONICAL,P3-only segmentation of heterogeneous lineages,P3A,YES
+p3_pair_fact_bundles.csv,CANONICAL,Normalized typed P2 pair authority,P3A,YES
+p3_collision_scope_registry.csv,CANONICAL,Typed and scoped prohibitions,P3A,YES
+p3_strict_seed_components.csv,DERIVED,Components from strongest connective edges,P3A,YES
+p3_component_memberships.csv,DERIVED,Exact seed-component membership,P3A,YES
+p3_internal_pair_matrix.csv,DERIVED,Every internal candidate pair state,P3A,YES
+p3_closure_obligations.csv,CANONICAL,Required unresolved/unruled/conflict decisions,P3A,YES
+p3_candidate_families.csv,CANONICAL,Candidate inventory and statuses,P3A,YES
+p3_candidate_variants.csv,CANONICAL,Proposed and accepted variants,P3A/P3B,YES
+p3_candidate_exclusions.csv,CANONICAL,Named and rule-based exclusions,P3A/P3B,YES
+p3_hyperedges.csv,CANONICAL,Permitted semantic/measurement hyperedges,P3A/P3B,YES
+p3_hyperedge_memberships.csv,CANONICAL,Exact hyperedge members and roles,P3A/P3B,YES
+p3_candidate_rankings.csv,DERIVED,Lexicographic review queue,P3A/P3B,YES
+p3_candidate_packets/*.json,CANONICAL_EVIDENCE_BUNDLE,Self-contained adjudication packets,P3A/P3B,YES
+p3_adjudication_decisions.csv,CANONICAL,Structured immutable decisions,P3A/P3B,YES
+p3_doctrine_deltas.csv,CANONICAL,General rule changes triggered by cases,P3A/P3B,YES
+p3_object_id_registry.csv,CANONICAL,Stable object identities,P3A,YES
+p3_family_genealogy.csv,CANONICAL,Split/merge/supersession/deprecation,P3B/P3C,YES
+p3_artifact_dependencies.csv,CANONICAL,Blast-radius and incremental rebuild dependencies,P3A,YES
+p3_authority_releases.csv,CANONICAL,Versioned releases,P3A/P3C,YES
+p3_release_change_ledger.csv,CANONICAL,Changed objects per release,P3C,YES
+p3_failure_ledger.csv,CANONICAL,Machine-readable failures/warnings,ALL,YES
+p3_validation_return.json,CANONICAL,Acceptance-gate result,ALL,YES

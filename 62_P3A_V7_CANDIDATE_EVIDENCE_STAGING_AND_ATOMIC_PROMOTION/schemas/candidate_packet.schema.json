@@ -1,0 +1,513 @@
+{
+  "$id": "https://rawlsing.local/schemas/p3/v7/candidate_packet.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Schema validation is necessary but not sufficient. validate_p3_candidate_packet_v7.py performs exact cross-field reconciliation and evidence-hash validation.",
+  "properties": {
+    "candidate_family": {
+      "$ref": "https://rawlsing.local/schemas/p3/v7/candidate_family.schema.json"
+    },
+    "closure_obligations": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/closure_obligation.schema.json"
+      },
+      "type": "array"
+    },
+    "decision_form": {
+      "$ref": "https://rawlsing.local/schemas/p3/v7/adjudication_decision_draft.schema.json"
+    },
+    "evidence_bundle_hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "exact_evidence_links": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "explicit_exclusions": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/family_exclusion.schema.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "fixture_status": {
+      "enum": [
+        "NONAUTHORITY_TEST_FIXTURE",
+        "AUTHORITY_PACKET"
+      ]
+    },
+    "hard_collisions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "authority_release_id": {
+            "type": "string"
+          },
+          "collision_id": {
+            "pattern": "^P3COL-[0-9a-f]{16}$",
+            "type": "string"
+          },
+          "collision_type": {
+            "enum": [
+              "BLOCK_BEHAVIOR_DISPOSITION_MERGE",
+              "BLOCK_DERIVED_DIRECT_MERGE",
+              "BLOCK_GEOGRAPHIC_SCOPE_COLLAPSE",
+              "BLOCK_HETEROGENEOUS_LINEAGE",
+              "BLOCK_OPERATOR_COLLAPSE",
+              "BLOCK_POLARITY_COLLAPSE",
+              "BLOCK_POPULATION_SCOPE_COLLAPSE",
+              "BLOCK_SAME_PROPOSITION",
+              "BLOCK_SAME_VARIANT",
+              "BLOCK_SOURCE_STRUCTURE_INFERENCE",
+              "BLOCK_TARGET_COLLAPSE",
+              "BLOCK_TIMEFRAME_COLLAPSE",
+              "BLOCK_VALUE_PORTABILITY",
+              "INSUFFICIENT_EVIDENCE",
+              "PARENT_CHILD_ONLY",
+              "REDIRECT_SEMANTIC_ARTIFACT"
+            ]
+          },
+          "downstream_effects": {
+            "type": "array"
+          },
+          "hard_blocker": {
+            "type": "boolean"
+          },
+          "historical_scope": {
+            "type": "array"
+          },
+          "left_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "orientation": {
+            "enum": [
+              "DIRECTIONAL",
+              "SYMMETRIC"
+            ]
+          },
+          "right_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "scope_type": {
+            "enum": [
+              "FAMILY_WIDE",
+              "HISTORICAL_INTERVAL",
+              "IMPLEMENTATION_PAIR",
+              "LINEAGE_PAIR",
+              "SEGMENT_PAIR",
+              "SOURCE_SPECIFIC",
+              "VALUE_PORTABILITY_ONLY",
+              "VARIANT_PAIR"
+            ]
+          },
+          "source_scope": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "collision_id",
+          "collision_type",
+          "scope_type",
+          "orientation",
+          "left_id",
+          "right_id",
+          "hard_blocker",
+          "source_scope",
+          "historical_scope",
+          "downstream_effects",
+          "authority_release_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "hyperedge_context": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/hyperedge.schema.json"
+      },
+      "type": "array"
+    },
+    "immutable_evidence_snapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_release_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "canonical_payload": {
+          "type": "object"
+        },
+        "evidence_bundle_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "evidence_contract_version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence_contract_version",
+        "canonical_payload",
+        "evidence_bundle_hash",
+        "authority_release_id"
+      ],
+      "type": "object"
+    },
+    "internal_pair_matrix": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/candidate_packet_internal_pair.schema.json"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "likely_split_points": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/split_point.schema.json"
+      },
+      "type": "array"
+    },
+    "members_by_source": {
+      "additionalProperties": {
+        "items": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
+      },
+      "minProperties": 2,
+      "propertyNames": {
+        "enum": [
+          "Afrobarometer",
+          "Arab Barometer",
+          "Asian Barometer",
+          "EVS",
+          "GSS",
+          "Latinobarómetro",
+          "LiTS",
+          "South Asia",
+          "WVS"
+        ]
+      },
+      "type": "object"
+    },
+    "origin_components": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/candidate_component.schema.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "packet_id": {
+      "pattern": "^P3PKT-[0-9a-f]{16}$",
+      "type": "string"
+    },
+    "pair_projections": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/pair_projection.schema.json"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "proposed_variants": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/variant_assignment.schema.json"
+      },
+      "type": "array"
+    },
+    "proposition_signature_matrix": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/proposition_signature.schema.json"
+      },
+      "minItems": 2,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "response_contract_matrix": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/response_contract_reference.schema.json"
+      },
+      "minItems": 2,
+      "type": "array"
+    },
+    "strata_horizon_context": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/structural_context_reference.schema.json"
+      },
+      "type": "array"
+    },
+    "typed_collisions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "authority_release_id": {
+            "pattern": "^P3-AUTHORITY-2026-08-01-R[0-9]+$",
+            "type": "string"
+          },
+          "collision_id": {
+            "pattern": "^P3COL-[0-9a-f]{16}$",
+            "type": "string"
+          },
+          "collision_type": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "downstream_effects": {
+            "type": "array"
+          },
+          "hard_blocker": {
+            "type": "boolean"
+          },
+          "historical_scope": {},
+          "left_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "orientation": {
+            "enum": [
+              "SYMMETRIC",
+              "DIRECTIONAL"
+            ],
+            "type": "string"
+          },
+          "right_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "scope_type": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "source_scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "collision_id",
+          "collision_type",
+          "scope_type",
+          "orientation",
+          "left_id",
+          "right_id",
+          "hard_blocker",
+          "source_scope",
+          "historical_scope",
+          "downstream_effects",
+          "authority_release_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "typed_coordinate_constraints": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "authority_release_id": {
+            "pattern": "^P3-AUTHORITY-2026-08-01-R[0-9]+$",
+            "type": "string"
+          },
+          "candidate_revision_id": {
+            "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$",
+            "type": "string"
+          },
+          "coordinate_relation_type": {
+            "enum": [
+              "NESTED_TARGET_RELATION",
+              "CONSTRUCT_COORDINATE"
+            ],
+            "type": "string"
+          },
+          "evidence_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "left_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "projection_id": {
+            "pattern": "^P3PROJ-[0-9a-f]{16}$",
+            "type": "string"
+          },
+          "right_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "candidate_revision_id",
+          "left_id",
+          "right_id",
+          "projection_id",
+          "coordinate_relation_type",
+          "evidence_ids",
+          "authority_release_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "typed_redirect_boundaries": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "authority_release_id": {
+            "pattern": "^P3-AUTHORITY-2026-08-01-R[0-9]+$",
+            "type": "string"
+          },
+          "candidate_revision_id": {
+            "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$",
+            "type": "string"
+          },
+          "evidence_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "left_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "projection_id": {
+            "pattern": "^P3PROJ-[0-9a-f]{16}$",
+            "type": "string"
+          },
+          "redirect_scope": {
+            "enum": [
+              "OTHER_DOMAIN_REDIRECT"
+            ],
+            "type": "string"
+          },
+          "right_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "candidate_revision_id",
+          "left_id",
+          "right_id",
+          "projection_id",
+          "redirect_scope",
+          "evidence_ids",
+          "authority_release_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "typed_unresolved_boundaries": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "authority_release_id": {
+            "pattern": "^P3-AUTHORITY-2026-08-01-R[0-9]+$",
+            "type": "string"
+          },
+          "candidate_revision_id": {
+            "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$",
+            "type": "string"
+          },
+          "evidence_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "left_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "projection_id": {
+            "pattern": "^P3PROJ-[0-9a-f]{16}$",
+            "type": "string"
+          },
+          "right_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "unresolved_boundary_type": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "candidate_revision_id",
+          "left_id",
+          "right_id",
+          "projection_id",
+          "unresolved_boundary_type",
+          "evidence_ids",
+          "authority_release_id"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "unresolved_pairs": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/candidate_packet_internal_pair.schema.json"
+      },
+      "type": "array"
+    },
+    "unruled_pairs": {
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v7/candidate_packet_internal_pair.schema.json"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "packet_id",
+    "candidate_family",
+    "origin_components",
+    "members_by_source",
+    "proposition_signature_matrix",
+    "response_contract_matrix",
+    "pair_projections",
+    "internal_pair_matrix",
+    "hard_collisions",
+    "typed_collisions",
+    "typed_unresolved_boundaries",
+    "typed_redirect_boundaries",
+    "typed_coordinate_constraints",
+    "unresolved_pairs",
+    "unruled_pairs",
+    "closure_obligations",
+    "likely_split_points",
+    "proposed_variants",
+    "explicit_exclusions",
+    "hyperedge_context",
+    "strata_horizon_context",
+    "exact_evidence_links",
+    "immutable_evidence_snapshot",
+    "evidence_bundle_hash",
+    "decision_form",
+    "fixture_status"
+  ],
+  "title": "candidate_packet",
+  "type": "object"
+}

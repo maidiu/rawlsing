@@ -1,0 +1,19 @@
+test,status,detail
+exact_node_count,PASS,814 expected 814
+unique_exact_identity,PASS,question implementation IDs unique
+edge_endpoints_exist,PASS,236 accepted edges
+edge_pairs_unique,PASS,no duplicate accepted pair
+accepted_revision_edges_reconcile,PASS,140 accepted revisions all materialized as edges
+authority_partitions_disjoint,PASS,accepted/review/negative pair sets disjoint
+cross_wave_only,PASS,all accepted continuity edges cross waves
+semantic_role_mismatch_explicit,PASS,source-specific check below
+structure_membership_referential_integrity,PASS,71 structures / 479 memberships
+structures_inventory_only,PASS,no structure promoted
+response_gap_reconciliation,PASS,112 gaps
+source_references_present,PASS,source reference surface present
+no_family_authoring,PASS,none authored
+no_live_execution,PASS,catalog-only pass
+w6_excluded,PASS,W6 absent
+repeated_slot_change_not_accepted,PASS,W4 first-organization slot not joined to W5 third slot
+target_scope_expansion_reviewed,PASS,government -> president/government remains unresolved
+semantic_role_mismatch_explicit,PASS,no accepted role mismatch

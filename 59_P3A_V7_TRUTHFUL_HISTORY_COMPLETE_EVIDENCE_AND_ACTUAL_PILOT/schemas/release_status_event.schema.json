@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/release_status_event.schema.json",
+  "title": "release_status_event",
+  "type": "object",
+  "required": [
+    "release_id",
+    "event_ordinal",
+    "status",
+    "occurred_at",
+    "evidence_hash"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_ordinal": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "PROMOTED",
+        "ROLLED_BACK",
+        "SHADOW",
+        "SUPERSEDED",
+        "VALIDATED"
+      ]
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": false
+}

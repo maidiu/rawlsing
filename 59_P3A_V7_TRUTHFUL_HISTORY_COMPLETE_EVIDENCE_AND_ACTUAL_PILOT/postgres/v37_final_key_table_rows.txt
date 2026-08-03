@@ -1,0 +1,23 @@
+SET
+    authority_release_id     | count 
+-----------------------------+-------
+ P3-AUTHORITY-2026-08-01-R37 |   141
+(1 row)
+
+         evidence_status         |    allocation_release_id    | count 
+---------------------------------+-----------------------------+-------
+ IDENTITY_ONLY_NO_HASH_AUTHORITY | P3-AUTHORITY-2026-08-01-R31 |   282
+ EXACT_PRIOR_ARTIFACT            | P3-AUTHORITY-2026-08-01-R35 |   282
+(2 rows)
+
+     genealogy_branch      | predecessor_source | count 
+---------------------------+--------------------+-------
+ CHANGED_ORIGIN_NEW_FAMILY | FROZEN_HISTORY     |   141
+(1 row)
+
+     change_type     | count 
+---------------------+-------
+ ADDED               | 53329
+ UNCHANGED_REFERENCE |   282
+(2 rows)
+

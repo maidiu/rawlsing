@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/upstream_object_reference.schema.json",
+  "title": "Rawlsing P3 Imported Upstream Object Reference",
+  "type": "object",
+  "required": [
+    "object_id",
+    "upstream_phase",
+    "upstream_object_type",
+    "upstream_object_id",
+    "authority_artifact",
+    "authority_hash",
+    "read_only"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string"
+    },
+    "upstream_phase": {
+      "type": "string"
+    },
+    "source_family": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "upstream_object_type": {
+      "type": "string"
+    },
+    "upstream_object_id": {
+      "type": "string"
+    },
+    "authority_artifact": {
+      "type": "string"
+    },
+    "authority_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "license_provenance_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "read_only": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

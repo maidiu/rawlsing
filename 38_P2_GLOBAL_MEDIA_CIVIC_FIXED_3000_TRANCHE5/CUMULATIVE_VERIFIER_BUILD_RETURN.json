@@ -1,0 +1,622 @@
+{
+  "status": "PASS",
+  "root": "/mnt/data/rawlsing_v17_build/Rawlsing_J_Family_Authority_Strategy_Handoff_v17_20260731",
+  "checks_passed": 122,
+  "checks_total": 122,
+  "file_count": 760,
+  "recursive_archive_instances": 88,
+  "unique_archive_payloads": 77,
+  "failures": [],
+  "checks": [
+    {
+      "check": "PACKAGE_INDEX.csv:hashes",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "PACKAGE_INDEX.csv:coverage",
+      "status": "PASS",
+      "detail": "{\"actual\": 758, \"listed\": 758, \"only_actual\": [], \"only_listed\": []}"
+    },
+    {
+      "check": "SHA256SUMS.csv:hashes",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "SHA256SUMS.csv:coverage",
+      "status": "PASS",
+      "detail": "{\"actual\": 758, \"listed\": 758, \"only_actual\": [], \"only_listed\": []}"
+    },
+    {
+      "check": "all_files_type_readable",
+      "status": "PASS",
+      "detail": "{\"files\": 760, \"failures\": []}"
+    },
+    {
+      "check": "recursive_zip_integrity",
+      "status": "PASS",
+      "detail": "{\"instances\": 88, \"unique_payloads\": 77, \"failures\": []}"
+    },
+    {
+      "check": "GSS:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 6021, \"phase0\": 6021}"
+    },
+    {
+      "check": "GSS:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 6021, \"gaps\": 115, \"edges\": 3171, \"structures\": 722}"
+    },
+    {
+      "check": "GSS:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "WVS:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 1219, \"phase0\": 1219}"
+    },
+    {
+      "check": "WVS:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 1219, \"gaps\": 155, \"edges\": 180, \"structures\": 115}"
+    },
+    {
+      "check": "WVS:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "EVS:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 2224, \"phase0\": 2224}"
+    },
+    {
+      "check": "EVS:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 2224, \"gaps\": 43, \"edges\": 815, \"structures\": 182}"
+    },
+    {
+      "check": "EVS:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "Arab Barometer:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 1698, \"phase0\": 1698}"
+    },
+    {
+      "check": "Arab Barometer:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 1698, \"gaps\": 47, \"edges\": 67, \"structures\": 159}"
+    },
+    {
+      "check": "Arab Barometer:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "Afrobarometer:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 913, \"phase0\": 913}"
+    },
+    {
+      "check": "Afrobarometer:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 913, \"gaps\": 82, \"edges\": 119, \"structures\": 230}"
+    },
+    {
+      "check": "Afrobarometer:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "Asian Barometer:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 814, \"phase0\": 814}"
+    },
+    {
+      "check": "Asian Barometer:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 814, \"gaps\": 112, \"edges\": 236, \"structures\": 71}"
+    },
+    {
+      "check": "Asian Barometer:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "Latinobarómetro:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 812, \"phase0\": 812}"
+    },
+    {
+      "check": "Latinobarómetro:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 812, \"gaps\": 37, \"edges\": 26, \"structures\": 123}"
+    },
+    {
+      "check": "Latinobarómetro:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "South Asia:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 141, \"phase0\": 141}"
+    },
+    {
+      "check": "South Asia:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 141, \"gaps\": 6, \"edges\": 12, \"structures\": 15}"
+    },
+    {
+      "check": "South Asia:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "LiTS:phase0_identity",
+      "status": "PASS",
+      "detail": "{\"deep\": 4434, \"phase0\": 4434}"
+    },
+    {
+      "check": "LiTS:counts",
+      "status": "PASS",
+      "detail": "{\"nodes\": 4434, \"gaps\": 1371, \"edges\": 133, \"structures\": 882}"
+    },
+    {
+      "check": "LiTS:edge_referential_integrity",
+      "status": "PASS",
+      "detail": "0"
+    },
+    {
+      "check": "all_nine_union_exact_phase0",
+      "status": "PASS",
+      "detail": "{\"union\": 18276, \"phase0\": 18276, \"missing\": 0, \"extra\": 0}"
+    },
+    {
+      "check": "global_totals",
+      "status": "PASS",
+      "detail": "{\"nodes\": 18276, \"gaps\": 1968, \"bound\": 16308, \"edges\": 4759, \"structures\": 2499}"
+    },
+    {
+      "check": "restart_controls_current",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "authority_boundary_locked",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "cumulative_output_protocol_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "tranche_nodes_exact",
+      "status": "PASS",
+      "detail": "{\"rows\": 18276, \"unique\": 18276, \"phase0\": 18276}"
+    },
+    {
+      "check": "semantic_reference_join_partition",
+      "status": "PASS",
+      "detail": "{\"EXACT_SOURCE_WAVE_VARIABLE\": 18052, \"NO_SEMANTIC_REFERENCE_MATCH\": 27, \"UNIQUE_CASEFOLD_FALLBACK_DIAGNOSTIC\": 197}"
+    },
+    {
+      "check": "source_local_lineage_partition",
+      "status": "PASS",
+      "detail": "{\"lineages\": 13526, \"members\": 18276, \"bad\": []}"
+    },
+    {
+      "check": "multi_implementation_lineages",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exact_proposition_groups_governed",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exact_foundation_pair_partition",
+      "status": "PASS",
+      "detail": "{\"rows\": 751, \"accepted\": 256, \"rejected\": 74, \"unresolved\": 421, \"bad_endpoints\": []}"
+    },
+    {
+      "check": "accepted_exact_bounded_and_two_sided",
+      "status": "PASS",
+      "detail": "{\"bad_ceiling\": [], \"bad_two_sided\": []}"
+    },
+    {
+      "check": "accepted_exact_no_generic_shell_or_bare_target_leak",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "semantic_neighborhood_registry",
+      "status": "PASS",
+      "detail": "{\"rows\": 200, \"candidate_sum\": 136329}"
+    },
+    {
+      "check": "semantic_priority_queue_bounded_non_authoritative",
+      "status": "PASS",
+      "detail": "{\"rows\": 18831, \"bad\": []}"
+    },
+    {
+      "check": "structure_inventory_and_memberships_exact",
+      "status": "PASS",
+      "detail": "{\"structures\": 2499, \"memberships\": 15990, \"bad_members\": 0, \"bad_counts\": []}"
+    },
+    {
+      "check": "provisional_structure_analogy_queue",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "all_36_source_pairs_covered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "semantic_reference_anomalies_preserved",
+      "status": "PASS",
+      "detail": "{\"INHERITED_SEMANTIC_CONTENT_CONTRADICTS_EXACT_ITEM\": 3, \"NO_SEMANTIC_REFERENCE_MATCH\": 27}"
+    },
+    {
+      "check": "nine_strata_gap_lineage_disclosed",
+      "status": "PASS",
+      "detail": "{\"rows\": 33, \"statuses\": {\"present_upstream_dropped_at_v552j\": 16, \"preserved_authoritative\": 8, \"present_but_empty\": 8, \"missing_generated_artifact\": 1}, \"raw_rows\": 33, \"raw_declared\": 30, \"raw_status_sum\": 28}"
+    },
+    {
+      "check": "tranche_validation_current",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "tranche2_exact_v2_partition",
+      "status": "PASS",
+      "detail": "{\"rows\": 751, \"accepted\": 270, \"rejected\": 78, \"unresolved\": 403}"
+    },
+    {
+      "check": "exact_target_axis_18_complete",
+      "status": "PASS",
+      "detail": "{\"changed\": 18, \"statuses\": {\"accepted\": 14, \"rejected\": 4}, \"bad\": []}"
+    },
+    {
+      "check": "reworded_high_precision_121_governed",
+      "status": "PASS",
+      "detail": "{\"positive\": 97, \"rejected\": 18, \"unresolved\": 6, \"bad\": []}"
+    },
+    {
+      "check": "inherited_semantic_conflicts_flagged",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "semantic_queue_v2_exact_partition",
+      "status": "PASS",
+      "detail": "{\"adjudicated\": 121, \"pending\": 18710, \"bad\": []}"
+    },
+    {
+      "check": "structure_19_member_level_adjudicated",
+      "status": "PASS",
+      "detail": "{\"statuses\": {\"ACCEPTED_FULL_MEMBER_LEVEL_STRUCTURE_ANALOGY\": 13, \"ACCEPTED_PARTIAL_MEMBER_LEVEL_STRUCTURE_ANALOGY\": 5, \"REJECTED_SHARED_LABEL_WITHOUT_MEMBER_EQUIVALENCE\": 1}, \"members\": 119, \"bad\": []}"
+    },
+    {
+      "check": "semantic_reference_30_overlay_resolved",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "semantic_bridge_v2_overlay_applied",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "strata_horizon_sidecar_contract_tested_not_installed",
+      "status": "PASS",
+      "detail": "{\"run\": \"PASS: synthetic sidecar tests\"}"
+    },
+    {
+      "check": "tranche2_validation_current",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "tranche2_task_return_and_sources_preserved",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v14_findings_governed",
+      "status": "PASS",
+      "detail": "{\"CORRECTED\": 9, \"ACCEPTED\": 1}"
+    },
+    {
+      "check": "v14_evidence_ledger_complete",
+      "status": "PASS",
+      "detail": "{\"bad\": []}"
+    },
+    {
+      "check": "v14_v2_rulings_evidence_linked",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "v14_candidate_id_decision_registry",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v14_substantive_acceptance_no_reversals",
+      "status": "PASS",
+      "detail": "{\"EXACT_TARGET_RELATION_AXIS\": 18, \"REWORDED_TRANSLATION_HIGH_PRECISION\": 121, \"STRUCTURE_ANALOGY\": 19, \"SEMANTIC_REFERENCE_ANOMALY\": 30}"
+    },
+    {
+      "check": "v14_sidecar_v2_real_pytest",
+      "status": "PASS",
+      "detail": "{\"run\": \".................                                                        [100%]\\n17 passed\"}"
+    },
+    {
+      "check": "v14_sidecar_blank_key_and_status_partition",
+      "status": "PASS",
+      "detail": ".................                                                        [100%]\n17 passed"
+    },
+    {
+      "check": "v14_candidate_keyed_rebuild_pass",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v14_section_validation_current",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v14_master_and_report_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_acceptance_standard_embedded",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_qsh_17_scopes_111_rows",
+      "status": "PASS",
+      "detail": "{\"files\": 17, \"rows\": 111}"
+    },
+    {
+      "check": "v15_qsh_deterministic_rebuild",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_component_bridge_deterministic_rebuild",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_real_component_bridge_cardinality",
+      "status": "PASS",
+      "detail": "{\"components\": 109, \"packets\": 19}"
+    },
+    {
+      "check": "v15_real_component_bridge_status_partition",
+      "status": "PASS",
+      "detail": "{\"bridge_version\": \"v3.1\", \"packet_rows\": 19, \"component_rows\": 109, \"matched_component_rows\": 109, \"unmatched_component_rows\": 0, \"packet_status_counts\": {\"COMPLETE_HOMOGENEOUS_COMPONENT_AUTHORITY\": 19}, \"scalar_flattening_rule\": \"ONLY_COMPLETE_COVERAGE_AND_UNANIMOUS_NONEMPTY_VALUE\", \"primary_authority_surface\": \"component_strata_horizon_vector_json\", \"runtime_input_packet_file\": \"v551j_certified_packet_index.csv\", \"runtime_input_qsh_file\": \"gss8__GSS_2010_US_question_semantic_hierarchy.csv\", \"runtime_input_packet_sha256\": \"7845965018a7fe1802fdb32781c17861b3d001ce57f748e9b49094425f0c0f93\", \"runtime_input_qsh_sha256\": \"d9643c2d755713f19cdde5d0962c63904d4d3c9cd46d3ef9c239e7f14ddd8ed1\", \"pytest_status\": \"18_PASSED\", \"integration_status\": \"PASS_REAL_GSS_2010_RECOVERED_ARTIFACTS\", \"installation_status\": \"COMPONENT_BRIDGE_VALIDATED_AGAINST_RECOVERED_RUNTIME_SNAPSHOT_NOT_WRITTEN_TO_USER_LIVE_REPOSITORY\", \"supersession\": \"Supersedes row-oriented sidecar v2.1 for V551J joint packets; v2.1 remains applicable only to true one-question-per-row tables.\"}"
+    },
+    {
+      "check": "v15_component_bridge_18_real_tests",
+      "status": "PASS",
+      "detail": "..................                                                       [100%]\n18 passed in 0.11s"
+    },
+    {
+      "check": "v15_component_bridge_live_installation_boundary",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_trust_queue_partition_exact",
+      "status": "PASS",
+      "detail": "{\"rulings\": 3863, \"remaining\": 14847}"
+    },
+    {
+      "check": "v15_trust_lineage_classification_exact",
+      "status": "PASS",
+      "detail": "{\"P2_NONTRUST_EXCLUSION_CLASSIFIED\": 412, \"P2_TRUST_LINEAGE_CLASSIFICATION_UNRESOLVED\": 2, \"P2_TRUST_LINEAGE_AXIS_TARGET_CLASSIFIED\": 148}"
+    },
+    {
+      "check": "v15_trust_two_sided_evidence_exact",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_trust_proposition_axis_target_gate",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "v15_heterogeneous_lineages_fail_closed",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "v15_trust_authority_partition_exact",
+      "status": "PASS",
+      "detail": "{\"REJECTED_TRUST_VERSUS_NONTRUST_OPERATOR_MISMATCH\": 1531, \"ACCEPTED_NESTED_OR_FUNCTIONAL_TRUST_TARGET_COORDINATE_ONLY\": 76, \"REJECTED_CONTAMINATED_TRUST_NEIGHBORHOOD_NONTRUST_MISMATCH\": 65, \"REDIRECTED_OUT_OF_TRUST_NEIGHBORHOOD_OTHER_DOMAIN_NOT_ADJUDICATED\": 1413, \"ACCEPTED_TYPED_CROSS_SOURCE_TRUST_RELATION\": 329, \"REJECTED_FALSE_EQUIVALENCE_TARGET_OR_TRUST_AXIS_MISMATCH\": 330, \"UNRESOLVED_INSUFFICIENT_OR_HETEROGENEOUS_RELATION_AXIS_OR_TARGET_EVIDENCE\": 81, \"ACCEPTED_TRUST_CONSTRUCT_COORDINATE_WITH_DERIVED_INDEX\": 30, \"ACCEPTED_NONTRUST_RELATION_REDIRECTED_FROM_CONTAMINATED_TRUST_NEIGHBORHOOD\": 7, \"ACCEPTED_TRUST_CONSTRUCT_OR_TARGET_COORDINATE_ONLY\": 1}"
+    },
+    {
+      "check": "v15_pollice_typo_target_recovered",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_trust_deterministic_rebuild",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_trust_16_adversarial_tests",
+      "status": "PASS",
+      "detail": "................                                                         [100%]\n16 passed in 0.24s"
+    },
+    {
+      "check": "v15_v16_history_and_v17_resume_current",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_master_and_reports_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v15_no_generated_test_or_bytecode_debris",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "v16_fixed_work_unit_exactly_3000",
+      "status": "PASS",
+      "detail": "{\"candidates\": 3000, \"rulings\": 3000}"
+    },
+    {
+      "check": "v16_queue_partition_14847_to_11847",
+      "status": "PASS",
+      "detail": "{\"selected\": 3000, \"remaining\": 11847, \"incoming\": 14847}"
+    },
+    {
+      "check": "v16_deterministic_selection_contract",
+      "status": "PASS",
+      "detail": "{\"CIVIC_VOTE\": 783, \"CIVIC_VOTE_MATTERS\": 810, \"DEMO_EXTENT\": 843, \"REJECT_MILITARY\": 204, \"REJECT_ONEPARTY\": 27, \"REJECT_STRONGMAN\": 333}"
+    },
+    {
+      "check": "v16_lineage_and_id_integrity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v16_two_sided_evidence_6000",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v16_authority_partition_exact",
+      "status": "PASS",
+      "detail": "{\"ACCEPTED_DOMAIN_COORDINATE_ONLY_RELATION_OR_TARGET_SCOPE_DIFFERS\": 201, \"REJECTED_FALSE_EQUIVALENCE_DEMOCRACY_ELECTORAL_RELATION_OR_TARGET_MISMATCH\": 171, \"REJECTED_DEMOCRACY_ELECTORAL_VERSUS_OTHER_DOMAIN_MISMATCH\": 1163, \"REJECTED_CONTAMINATED_NEIGHBORHOOD_OTHER_DOMAIN_MISMATCH\": 1305, \"REDIRECTED_OUT_OF_DEMOCRACY_ELECTORAL_DOMAIN_SHARED_OTHER_AXIS_NOT_ADJUDICATED\": 92, \"ACCEPTED_TYPED_DEMOCRACY_ELECTORAL_PROPOSITION_RELATION\": 13, \"REJECTED_DIFFERENT_GOVERNED_RELATION_AXES\": 28, \"ACCEPTED_SAME_CONSTRUCT_TARGET_DIFFERENT_OPERATOR_COORDINATE_ONLY\": 19, \"UNRESOLVED_INSUFFICIENT_OR_HETEROGENEOUS_SOURCE_LOCAL_EVIDENCE\": 8}"
+    },
+    {
+      "check": "v16_proposition_equivalence_axis_target_operator_gate",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "v16_reproducibility_hash_exact",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v16_fixed_tranche_20_adversarial_tests",
+      "status": "PASS",
+      "detail": "....................                                                     [100%]\n20 passed in 4.77s"
+    },
+    {
+      "check": "v16_history_fixed_protocol_and_v17_resume_embedded",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v16_master_and_report_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v16_no_generated_test_or_bytecode_debris",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "v17_fixed_work_unit_exactly_3000",
+      "status": "PASS",
+      "detail": "{\"candidates\": 3000, \"rulings\": 3000}"
+    },
+    {
+      "check": "v17_queue_partition_11847_to_8847",
+      "status": "PASS",
+      "detail": "{\"selected\": 3000, \"remaining\": 8847, \"incoming\": 11847}"
+    },
+    {
+      "check": "v17_deterministic_selection_contract",
+      "status": "PASS",
+      "detail": "{\"CIVIC_DEMONSTRATION\": 425, \"CIVIC_DISCUSS_POLITICS\": 554, \"CIVIC_INTEREST_POLITICS\": 527, \"MEDIA_INTERNET\": 601, \"MEDIA_NEWS_SOURCE\": 893}"
+    },
+    {
+      "check": "v17_lineage_and_id_integrity",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v17_two_sided_evidence_6000",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v17_authority_partition_exact",
+      "status": "PASS",
+      "detail": "{\"ACCEPTED_DOMAIN_COORDINATE_ONLY_RELATION_OR_TARGET_SCOPE_DIFFERS\": 287, \"REJECTED_MEDIA_CIVIC_VERSUS_OTHER_DOMAIN_MISMATCH\": 1133, \"REJECTED_FALSE_EQUIVALENCE_MEDIA_CIVIC_RELATION_OR_TARGET_MISMATCH\": 1017, \"UNRESOLVED_INSUFFICIENT_OR_HETEROGENEOUS_SOURCE_LOCAL_EVIDENCE\": 35, \"REJECTED_CONTAMINATED_NEIGHBORHOOD_OTHER_DOMAIN_MISMATCH\": 404, \"ACCEPTED_SAME_CONSTRUCT_TARGET_DIFFERENT_OPERATOR_OR_INCOMPLETE_EVIDENCE_COORDINATE_ONLY\": 25, \"REDIRECTED_OUT_OF_MEDIA_CIVIC_DOMAIN_SHARED_OTHER_AXIS_NOT_ADJUDICATED\": 27, \"ACCEPTED_TYPED_MEDIA_CIVIC_PROPOSITION_RELATION\": 72}"
+    },
+    {
+      "check": "v17_proposition_equivalence_axis_target_operator_gate",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "v17_medium_confidence_never_exports_proposition_authority",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "v17_unresolved_surface_bounded_to_two_lineages",
+      "status": "PASS",
+      "detail": "{\"lineages\": [\"p2lineage_78193a6f13f138c9728f81d8\", \"p2lineage_a153e49c62457bf801d60b1b\"], \"pairs\": 35}"
+    },
+    {
+      "check": "v17_reproducibility_hash_exact",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v17_acceptance_review_complete",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v17_media_civic_25_adversarial_tests",
+      "status": "PASS",
+      "detail": ".........................                                                [100%]\n25 passed in 7.12s"
+    },
+    {
+      "check": "v17_current_controls_and_cumulative_counts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v17_master_and_report_present",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "v17_no_generated_test_or_bytecode_debris",
+      "status": "PASS",
+      "detail": "[]"
+    }
+  ]
+}

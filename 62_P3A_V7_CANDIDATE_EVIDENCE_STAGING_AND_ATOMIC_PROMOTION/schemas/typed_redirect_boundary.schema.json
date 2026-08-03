@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "typed_redirect_boundary.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "left_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projection_id": {
+      "type": "string",
+      "pattern": "^P3PROJ-[0-9a-f]{16}$"
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-2026-08-01-R[0-9]+$"
+    },
+    "redirect_scope": {
+      "type": "string",
+      "enum": [
+        "OTHER_DOMAIN_REDIRECT"
+      ]
+    }
+  },
+  "required": [
+    "candidate_revision_id",
+    "left_id",
+    "right_id",
+    "projection_id",
+    "redirect_scope",
+    "evidence_ids",
+    "authority_release_id"
+  ]
+}

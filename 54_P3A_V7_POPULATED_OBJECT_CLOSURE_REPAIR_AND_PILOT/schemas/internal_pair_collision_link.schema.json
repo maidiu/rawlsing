@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/internal_pair_collision_link.schema.json",
+  "title": "internal_pair_collision_link",
+  "type": "object",
+  "required": [
+    "candidate_revision_id",
+    "left_object_id",
+    "right_object_id",
+    "collision_id"
+  ],
+  "properties": {
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "left_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "collision_id": {
+      "type": "string",
+      "pattern": "^P3COL-[0-9a-f]{16}$"
+    }
+  },
+  "additionalProperties": false
+}

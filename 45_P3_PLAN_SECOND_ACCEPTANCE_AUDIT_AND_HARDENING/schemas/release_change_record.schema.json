@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v3/release_change_record.schema.json",
+  "title": "Rawlsing P3 Release Change Record",
+  "type": "object",
+  "required": [
+    "release_id",
+    "object_id",
+    "change_type",
+    "content_hash"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "change_type": {
+      "enum": [
+        "ADDED",
+        "REVISED",
+        "SUPERSEDED",
+        "DEPRECATED",
+        "UNCHANGED_REFERENCE"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "prior_content_hash": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,32 @@
+{
+  "contract_id": "P3_CANONICAL_SERIALIZATION_CONTRACT_V7",
+  "version": "7.0.0",
+  "encoding": "UTF-8",
+  "unicode_normalization": "NFC",
+  "line_endings": "LF",
+  "object_key_order": "lexicographic Unicode code point order after NFC normalization",
+  "whitespace": "none outside JSON strings",
+  "number_rule": "integers only on hashed authority surfaces; binary floating point forbidden",
+  "set_like_array_fields": [
+    "attachment_projection_ids",
+    "closure_obligation_ids",
+    "collision_ids",
+    "component_ids",
+    "connectivity_projection_ids",
+    "diagnostic_flags",
+    "evidence_ids",
+    "exact_evidence_links",
+    "excluded_member_ids",
+    "excluded_object_ids",
+    "exclusion_ids",
+    "left_member_ids",
+    "member_ids",
+    "response_topologies",
+    "right_member_ids",
+    "variant_ids"
+  ],
+  "duplicate_set_entries": "FATAL",
+  "hash_algorithm": "SHA-256",
+  "evidence_surface_rule": "Hash the full delivered nonrecursive evidence surface defined by validation/p3_canonical_json_v7.py; IDs or nested content_hash fields alone are never substitutes for delivered content.",
+  "implementation": "validation/p3_canonical_json_v7.py"
+}

@@ -1,0 +1,17 @@
+{
+  "contract_version": "v1",
+  "grains": {
+    "question_concept": "one governed semantic question meaning across one or more implementations",
+    "question_implementation": "one exact source-family + wave + instrument-scope + source-variable implementation",
+    "response_binding": "one accepted response-authority binding for one implementation",
+    "source_structure": "one source-native grouping observed in one wave/instrument scope"
+  },
+  "identity_rules": {
+    "question_concept_id": "stable human-governed semantic ID; new version for meaning/evidence-ceiling change",
+    "question_implementation_id": "question concept + source family + wave + instrument scope + source variable; new version for wording/routing/response binding or applicability change",
+    "source_variable_case": "case-preserving exact identity; lowercase may be stored only as a search key and never as canonical identity",
+    "semantic_annotations": "non-governing discovery features; changes do not alter question authority identity unless independently approved upstream",
+    "array_order": "source_structure member order is documentary unless an explicit later family implementation assigns semantic order"
+  },
+  "population_rule": "P2 is populated from original/canonical codebooks plus accepted question and response authorities. Smoke selections, QSM heuristics, embeddings, and diagnostics may annotate or suggest but never define membership or authority."
+}

@@ -1,0 +1,34 @@
+{
+  "source_packet": "P3PKT-7bf6c9fd76ed6991_P3CAND-000187.json",
+  "source_candidate_revision": "P3CANDREV-000187-R0002",
+  "mutation": {
+    "typed_redirect_boundary_before_required_fields": [
+      "authority_release_id",
+      "candidate_revision_id",
+      "evidence_ids",
+      "left_id",
+      "projection_id",
+      "redirect_scope",
+      "right_id"
+    ],
+    "typed_redirect_boundary_after_fields": [
+      "left_id",
+      "right_id"
+    ],
+    "canonical_evidence_hash_recomputed": true,
+    "packet_id_recomputed": true,
+    "candidate_and_decision_hashes_recomputed": true
+  },
+  "shipped_v36_validator_result": {
+    "status": "PASS",
+    "members": 8,
+    "internal_pairs": 28,
+    "evidence_bundle_hash": "9dbd082ad3c01671b8367222a931c9db152701c58256e694e6290e7478f2326f"
+  },
+  "cause": [
+    "Section 58 review delta contains no revised typed-constraint JSON schemas.",
+    "Inherited candidate_packet.schema.json accepts typed constraint entries as arbitrary objects.",
+    "The v36 semantic validator checks redirect endpoint membership but not projection, scope, evidence, candidate revision, or release."
+  ],
+  "verdict": "TYPED_CONSTRAINT_SEMANTICS_CAN_STILL_BE_DELETED_WITHOUT_VALIDATION_FAILURE"
+}

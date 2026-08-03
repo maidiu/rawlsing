@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v4/structural_context_reference.schema.json",
+  "title": "structural_context_reference",
+  "type": "object",
+  "required": [
+    "reference_id",
+    "subject_id",
+    "source_field",
+    "source_value",
+    "authority_artifact",
+    "p5_authority",
+    "authority_release_id"
+  ],
+  "properties": {
+    "reference_id": {
+      "type": "string",
+      "pattern": "^P3SCR-[0-9a-f]{16}$"
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_field": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_value": {},
+    "authority_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "p5_authority": {
+      "const": false
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false
+}

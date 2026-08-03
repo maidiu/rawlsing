@@ -1,0 +1,4 @@
+limitation_id,scope,status,description,downstream_rule
+GSS_ROUTING_001,all_6021_nodes,OPEN_DOCUMENTATION_LIMIT,Canonical codebook CSVs do not preserve complete original skip/routing instructions or exact respondent universes. Response-option IAP/not-asked/skipped flags are retained as routing signals only.,Do not assert universal eligibility from absence of a routing signal; recover exact instrument routing when a future family implementation requires it.
+GSS_ALIAS_001,9_review_groups,OPEN_CONTINUITY_REVIEW,"Exact text-and-response recurrences under different variable names are retained as alias candidates, not accepted continuity.",No portable question concept or collision equivalence may use these until reviewed.
+GSS_SOURCE_STRUCTURE_001,722_structures,INVENTORY_ONLY,"Heuristic contiguous/prefix structures and existing registry references are source-structure reconnaissance, not J-family authority.",P3 may use them as discovery signals only.

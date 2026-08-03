@@ -1,0 +1,77 @@
+{
+  "reviewed_zip": "Rawlsing_J_Family_Authority_Strategy_Handoff_v35_20260801.zip",
+  "sha256": "0024509a8b50f00bbfa3361060ae4479d97f2031db49003299781c65d430284f",
+  "bytes": 241224955,
+  "zip_regular_files": 2360,
+  "manifested_payload_files": 2358,
+  "accepted_progress": {
+    "rule_derived_topology": true,
+    "candidate_ids_start_after_prior_range": true,
+    "packet_ids_include_revision_hash_and_schema": true,
+    "direct_pair_counts": {
+      "unruled": 335,
+      "pair_level_obligations": 345
+    },
+    "hard_collision_count": 1,
+    "candidate_packets": 40,
+    "draft_decisions": 40,
+    "postgresql_teardown": "127.0.0.1:55432 - no response",
+    "legitimate_phase_aware_failures": [
+      "q01b_postpromotion_pointer",
+      "q15b_no_unadjudicated_at_p3_close"
+    ]
+  },
+  "blocking_findings": [
+    {
+      "id": "V35-EXT-001",
+      "classification": "SUCCESSOR_RELEASE_NOT_PERSISTED_AS_SUCCESSOR",
+      "detail": "The loader inserts R35 with parent_release_id NULL; no release-status events or release-change ledger rows are inserted, while root state claims parent R31."
+    },
+    {
+      "id": "V35-EXT-002",
+      "classification": "PRIOR_IDENTITIES_ABSENT_FROM_APPEND_ONLY_REGISTRY",
+      "detail": "The all-release candidate count is only 141, IDs 142-282. Prior candidate families/revisions are absent; skipping numbers is not an append-only migration."
+    },
+    {
+      "id": "V35-EXT-003",
+      "classification": "ALL_CANDIDATE_HASH_CLOSURE_NOT_REPRODUCIBLE",
+      "detail": "Only packet export code recomputes full hashes, for 40 candidates. No delivered code produces the claimed 141-candidate update; the report checks only 64-character length and absence of a literal substring."
+    },
+    {
+      "id": "V35-EXT-004",
+      "classification": "TYPED_CONSTRAINT_CONTRACT_REMAINS_OPEN",
+      "detail": "A stripped redirect object containing only endpoints passes the shipped schema and validator after hash recomputation."
+    },
+    {
+      "id": "V35-EXT-005",
+      "classification": "FIXTURE_RETURN_NOT_GENERATED_BY_DELIVERED_CODE",
+      "detail": "Fixture code references absent old candidate revisions, uses the main schema, retains PASS_ALREADY_COMMITTED, and implements far fewer mutations than the report claims."
+    },
+    {
+      "id": "V35-EXT-006",
+      "classification": "PILOT_STRATA_ARE_PROXY_LABELS",
+      "detail": "Six strata are implemented through unrelated origins or risk states rather than their named evidence."
+    },
+    {
+      "id": "V35-EXT-007",
+      "classification": "OVERLAP_ALLOWED_BUT_GLOBALLY_SUPPRESSED",
+      "detail": "A global used set prevents an eligible candidate from satisfying multiple strata, producing false shortfalls and arbitrary substitutes."
+    },
+    {
+      "id": "V35-EXT-008",
+      "classification": "VERIFIER_TRUSTS_REPORT_STATUS",
+      "detail": "The verifier checks hash length, report PASS cells, and fixture case count instead of recomputing release lineage, all candidate evidence, typed schemas, pilot eligibility, or fixture execution."
+    },
+    {
+      "id": "V35-EXT-009",
+      "classification": "ZIP_UNICODE_PATH_REGRESSION",
+      "detail": "Both governed Latinobar\u00f3metro file paths lack ZIP UTF-8 flag bit 0x800 and decode as mojibake under Python zipfile."
+    },
+    {
+      "id": "V35-EXT-010",
+      "classification": "STALE_RELEASE_METADATA",
+      "detail": "R35 is recorded with builder_version p3a-phase3-loader-v30 and migration artifact section 52."
+    }
+  ],
+  "status": "BLOCKED_EXECUTION_EVIDENCE_AND_RELEASE_LINEAGE_DEFECT"
+}

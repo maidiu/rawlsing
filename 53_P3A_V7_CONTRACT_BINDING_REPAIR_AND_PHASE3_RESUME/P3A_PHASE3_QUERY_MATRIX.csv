@@ -1,0 +1,11 @@
+gate,result,evidence
+contract_load_idempotency,PASS,outputs/p3a_contract_load_return_v31_1.json and _v31_2.json
+categorical_targets_67,PASS,postgres/phase1_contract_counts_and_target_preflight.tsv plus contract return
+object_reference_targets_40,PASS,postgres/phase1_contract_counts_and_target_preflight.tsv plus contract return
+q20_strengthened,PASS,outputs/phase1_gate_summary.json and postgres/phase1_mutation_regressions.tsv
+q21_strengthened,PASS,outputs/phase1_gate_summary.json and postgres/phase1_mutation_regressions.tsv
+membership_load,PASS,outputs/p3a_membership_load_return_v31.json
+pair_load,PASS,outputs/p3a_pair_load_return_v31.json
+signature_load,PASS,outputs/p3a_signature_load_return_v31.json
+candidate_load,PASS,outputs/p3a_candidate_load_return_v31.json
+vertical_slice_validator,PASS,outputs/p3a_vertical_slice_packet_build_stdout_v31.json

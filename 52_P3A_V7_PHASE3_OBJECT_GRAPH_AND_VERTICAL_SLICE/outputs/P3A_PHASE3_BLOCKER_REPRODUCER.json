@@ -1,0 +1,20 @@
+{
+  "status": "BLOCKED_EXECUTION_EXPOSED_CONTRACT_DEFECT",
+  "defect_id": "P3A-V30-CONTRACT-DEFECT-0001",
+  "classification": "GOVERNING_V7_CONTRACT_DDL_BINDING_CONTRADICTION",
+  "triggering_phase": "P3A-1 contract and authority-release load",
+  "triggering_transaction": "CALL p3_install_contract_triggers('P3-AUTHORITY-2026-08-01-R30-P3A-TEST') after loading delivered P3_CATEGORICAL_FIELD_VOCAB_BINDINGS_v7.csv",
+  "sqlstate": "42703",
+  "error_text": "column \"subject_type\" of relation \"p3_lineage_disposition\" does not exist",
+  "failing_contract_row": {
+    "source_artifact": "49_P3_PLAN_SIXTH_EXECUTABLE_CLOSURE_AUDIT_AND_LOCK/P3_CATEGORICAL_FIELD_VOCAB_BINDINGS_v7.csv",
+    "table_name": "p3_lineage_disposition",
+    "column_name": "subject_type",
+    "vocabulary_domain": "object_type"
+  },
+  "ddl_table_shape": "p3_lineage_disposition has subject_id, disposition_status, reason, canonical_family_id, evidence_ids, authority_release_id; no subject_type column.",
+  "broken_invariant": "Every loaded categorical-field binding must target a real table column so p3_install_contract_triggers can install vocabulary enforcement for the loaded release.",
+  "blast_radius": "Blocks Phase 1 closure q20 vocabulary trigger installation; therefore imported membership, pair authority, signatures, projections, candidates, vertical slice, and fixture lifecycle cannot be validly loaded under the enforced contract surface.",
+  "bounded_correction_scope": "Either remove or supersede the stale p3_lineage_disposition.subject_type binding, or add a real governed subject_type column to DDL and loaders with object-type derivation from subject_id. Must include live regression that p3_install_contract_triggers completes after all delivered bindings are loaded.",
+  "doctrine_change": "NO if treated as stale implementation-contract binding repair; YES only if adding subject_type changes governed data semantics."
+}

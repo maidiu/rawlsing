@@ -1,0 +1,65 @@
+left_edge_type,right_edge_type,path_result,creates_new_pair_authority,requires_direct_endpoint_audit,rationale
+PROPOSITION_RESPONSE_IDENTITY,PROPOSITION_RESPONSE_IDENTITY,CANDIDATE_CLOSURE_OBLIGATION,NO,YES,"Endpoint may be signature-compatible, but direct audit is mandatory."
+PROPOSITION_RESPONSE_IDENTITY,PROPOSITION_IDENTITY_ONLY,CANDIDATE_PROPOSITION_ONLY_AT_MOST,NO,YES,Path may support a candidate; endpoint authority remains uncreated.
+PROPOSITION_RESPONSE_IDENTITY,NESTED_TARGET_RELATION,HIERARCHY_REVIEW,NO,YES,Target hierarchy must be proven directly; no equivalence inference.
+PROPOSITION_RESPONSE_IDENTITY,CONSTRUCT_COORDINATE,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+PROPOSITION_RESPONSE_IDENTITY,STRUCTURE_MEMBER_ANALOGY,REINFORCEMENT_ONLY,NO,YES,Structure analogy may reinforce direct authority but cannot create endpoint authority.
+PROPOSITION_RESPONSE_IDENTITY,EXPLICIT_NEGATIVE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+PROPOSITION_RESPONSE_IDENTITY,REDIRECT_OTHER_DOMAIN,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+PROPOSITION_RESPONSE_IDENTITY,UNRESOLVED,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+PROPOSITION_IDENTITY_ONLY,PROPOSITION_RESPONSE_IDENTITY,CANDIDATE_PROPOSITION_ONLY_AT_MOST,NO,YES,Path may support a candidate; endpoint authority remains uncreated.
+PROPOSITION_IDENTITY_ONLY,PROPOSITION_IDENTITY_ONLY,CANDIDATE_PROPOSITION_ONLY_AT_MOST,NO,YES,Path may support a candidate; endpoint authority remains uncreated.
+PROPOSITION_IDENTITY_ONLY,NESTED_TARGET_RELATION,HIERARCHY_REVIEW,NO,YES,Target hierarchy must be proven directly; no equivalence inference.
+PROPOSITION_IDENTITY_ONLY,CONSTRUCT_COORDINATE,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+PROPOSITION_IDENTITY_ONLY,STRUCTURE_MEMBER_ANALOGY,REINFORCEMENT_ONLY,NO,YES,Structure analogy may reinforce direct authority but cannot create endpoint authority.
+PROPOSITION_IDENTITY_ONLY,EXPLICIT_NEGATIVE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+PROPOSITION_IDENTITY_ONLY,REDIRECT_OTHER_DOMAIN,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+PROPOSITION_IDENTITY_ONLY,UNRESOLVED,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+NESTED_TARGET_RELATION,PROPOSITION_RESPONSE_IDENTITY,HIERARCHY_REVIEW,NO,YES,Target hierarchy must be proven directly; no equivalence inference.
+NESTED_TARGET_RELATION,PROPOSITION_IDENTITY_ONLY,HIERARCHY_REVIEW,NO,YES,Target hierarchy must be proven directly; no equivalence inference.
+NESTED_TARGET_RELATION,NESTED_TARGET_RELATION,HIERARCHY_REVIEW,NO,YES,Target hierarchy must be proven directly; no equivalence inference.
+NESTED_TARGET_RELATION,CONSTRUCT_COORDINATE,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+NESTED_TARGET_RELATION,STRUCTURE_MEMBER_ANALOGY,REINFORCEMENT_ONLY,NO,YES,Structure analogy may reinforce direct authority but cannot create endpoint authority.
+NESTED_TARGET_RELATION,EXPLICIT_NEGATIVE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+NESTED_TARGET_RELATION,REDIRECT_OTHER_DOMAIN,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+NESTED_TARGET_RELATION,UNRESOLVED,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+CONSTRUCT_COORDINATE,PROPOSITION_RESPONSE_IDENTITY,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+CONSTRUCT_COORDINATE,PROPOSITION_IDENTITY_ONLY,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+CONSTRUCT_COORDINATE,NESTED_TARGET_RELATION,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+CONSTRUCT_COORDINATE,CONSTRUCT_COORDINATE,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+CONSTRUCT_COORDINATE,STRUCTURE_MEMBER_ANALOGY,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+CONSTRUCT_COORDINATE,EXPLICIT_NEGATIVE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+CONSTRUCT_COORDINATE,REDIRECT_OTHER_DOMAIN,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+CONSTRUCT_COORDINATE,UNRESOLVED,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+STRUCTURE_MEMBER_ANALOGY,PROPOSITION_RESPONSE_IDENTITY,REINFORCEMENT_ONLY,NO,YES,Structure analogy may reinforce direct authority but cannot create endpoint authority.
+STRUCTURE_MEMBER_ANALOGY,PROPOSITION_IDENTITY_ONLY,REINFORCEMENT_ONLY,NO,YES,Structure analogy may reinforce direct authority but cannot create endpoint authority.
+STRUCTURE_MEMBER_ANALOGY,NESTED_TARGET_RELATION,REINFORCEMENT_ONLY,NO,YES,Structure analogy may reinforce direct authority but cannot create endpoint authority.
+STRUCTURE_MEMBER_ANALOGY,CONSTRUCT_COORDINATE,NO_COMPOSITION,NO,YES,Coordinate edges do not create family connectivity.
+STRUCTURE_MEMBER_ANALOGY,STRUCTURE_MEMBER_ANALOGY,REINFORCEMENT_ONLY,NO,YES,Structure analogy may reinforce direct authority but cannot create endpoint authority.
+STRUCTURE_MEMBER_ANALOGY,EXPLICIT_NEGATIVE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+STRUCTURE_MEMBER_ANALOGY,REDIRECT_OTHER_DOMAIN,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+STRUCTURE_MEMBER_ANALOGY,UNRESOLVED,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+EXPLICIT_NEGATIVE,PROPOSITION_RESPONSE_IDENTITY,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+EXPLICIT_NEGATIVE,PROPOSITION_IDENTITY_ONLY,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+EXPLICIT_NEGATIVE,NESTED_TARGET_RELATION,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+EXPLICIT_NEGATIVE,CONSTRUCT_COORDINATE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+EXPLICIT_NEGATIVE,STRUCTURE_MEMBER_ANALOGY,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+EXPLICIT_NEGATIVE,EXPLICIT_NEGATIVE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+EXPLICIT_NEGATIVE,REDIRECT_OTHER_DOMAIN,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+EXPLICIT_NEGATIVE,UNRESOLVED,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+REDIRECT_OTHER_DOMAIN,PROPOSITION_RESPONSE_IDENTITY,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+REDIRECT_OTHER_DOMAIN,PROPOSITION_IDENTITY_ONLY,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+REDIRECT_OTHER_DOMAIN,NESTED_TARGET_RELATION,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+REDIRECT_OTHER_DOMAIN,CONSTRUCT_COORDINATE,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+REDIRECT_OTHER_DOMAIN,STRUCTURE_MEMBER_ANALOGY,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+REDIRECT_OTHER_DOMAIN,EXPLICIT_NEGATIVE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+REDIRECT_OTHER_DOMAIN,REDIRECT_OTHER_DOMAIN,NO_COMPOSITION,NO,YES,Redirect removes the affected path from current-domain construction.
+REDIRECT_OTHER_DOMAIN,UNRESOLVED,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+UNRESOLVED,PROPOSITION_RESPONSE_IDENTITY,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+UNRESOLVED,PROPOSITION_IDENTITY_ONLY,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+UNRESOLVED,NESTED_TARGET_RELATION,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+UNRESOLVED,CONSTRUCT_COORDINATE,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+UNRESOLVED,STRUCTURE_MEMBER_ANALOGY,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+UNRESOLVED,EXPLICIT_NEGATIVE,BLOCKED,NO,YES,Constraint propagates to candidate diagnostics; no endpoint inference.
+UNRESOLVED,REDIRECT_OTHER_DOMAIN,BLOCKED,NO,YES,Unresolved side blocks closure across the path.
+UNRESOLVED,UNRESOLVED,BLOCKED,NO,YES,Unresolved side blocks closure across the path.

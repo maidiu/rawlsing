@@ -1,0 +1,521 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/candidate_packet.schema.json",
+  "title": "Rawlsing P3 Candidate Adjudication Packet",
+  "type": "object",
+  "required": [
+    "packet_id",
+    "candidate_family",
+    "members_by_source",
+    "proposition_signature_matrix",
+    "response_contract_matrix",
+    "internal_pair_matrix",
+    "hard_collisions",
+    "unresolved_pairs",
+    "unruled_pairs",
+    "closure_obligations",
+    "proposed_variants",
+    "explicit_exclusions",
+    "exact_evidence_links",
+    "evidence_bundle_hash",
+    "decision_form"
+  ],
+  "properties": {
+    "packet_id": {
+      "type": "string",
+      "pattern": "^P3PKT-[0-9]{6}$"
+    },
+    "candidate_family": {
+      "$ref": "https://rawlsing.local/schemas/p3/v2/candidate_family.schema.json"
+    },
+    "members_by_source": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "uniqueItems": true,
+        "minItems": 1
+      },
+      "minProperties": 2
+    },
+    "proposition_signature_matrix": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "member_id",
+          "signature_id",
+          "operator",
+          "target",
+          "modality",
+          "timeframe",
+          "population_scope",
+          "geographic_scope",
+          "polarity",
+          "signature_status"
+        ],
+        "properties": {
+          "member_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signature_id": {
+            "type": "string",
+            "pattern": "^P3SIG-[0-9]{6}$"
+          },
+          "operator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "modality": {
+            "type": "string",
+            "minLength": 1
+          },
+          "timeframe": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "population_scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "geographic_scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "polarity": {
+            "type": "string",
+            "minLength": 1
+          },
+          "signature_status": {
+            "enum": [
+              "COMPLETE",
+              "PARTIAL_FAIL_CLOSED",
+              "HETEROGENEOUS",
+              "CONFLICTING"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "response_contract_matrix": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "member_id",
+          "response_contract_reference_id",
+          "response_topology",
+          "value_portability"
+        ],
+        "properties": {
+          "member_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "response_contract_reference_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "response_topology": {
+            "enum": [
+              "BINARY",
+              "NOMINAL",
+              "ORDINAL",
+              "LIKERT",
+              "FREQUENCY_ORDINAL",
+              "NUMERIC_OPEN",
+              "RANKING",
+              "FORCED_CHOICE",
+              "MULTISELECT",
+              "TEXT_OPEN",
+              "DERIVED_INDEX",
+              "ADMINISTRATIVE",
+              "UNKNOWN"
+            ]
+          },
+          "categories": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "value_portability": {
+            "const": "NOT_AUTHORIZED_BY_P3"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "internal_pair_matrix": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "left_id",
+          "right_id",
+          "pair_state",
+          "pair_fact_id",
+          "collision_ids",
+          "closure_obligation_ids"
+        ],
+        "properties": {
+          "left_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "right_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pair_state": {
+            "enum": [
+              "DIRECT_POSITIVE",
+              "DIRECT_COLLISION",
+              "HIERARCHICAL_ONLY",
+              "UNRULED",
+              "SIGNATURE_CONFLICT",
+              "SIGNATURE_COMPATIBLE"
+            ]
+          },
+          "pair_fact_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "collision_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "closure_obligation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "hard_collisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "collision_id",
+          "collision_type",
+          "scope",
+          "left_id",
+          "right_id"
+        ],
+        "properties": {
+          "collision_id": {
+            "type": "string"
+          },
+          "collision_type": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          },
+          "left_id": {
+            "type": "string"
+          },
+          "right_id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "unresolved_pairs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "left_id",
+          "right_id",
+          "pair_state",
+          "pair_fact_id",
+          "collision_ids",
+          "closure_obligation_ids"
+        ],
+        "properties": {
+          "left_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "right_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pair_state": {
+            "enum": [
+              "DIRECT_POSITIVE",
+              "DIRECT_COLLISION",
+              "HIERARCHICAL_ONLY",
+              "UNRULED",
+              "SIGNATURE_CONFLICT",
+              "SIGNATURE_COMPATIBLE"
+            ]
+          },
+          "pair_fact_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "collision_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "closure_obligation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "unruled_pairs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "left_id",
+          "right_id",
+          "pair_state",
+          "pair_fact_id",
+          "collision_ids",
+          "closure_obligation_ids"
+        ],
+        "properties": {
+          "left_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "right_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pair_state": {
+            "enum": [
+              "DIRECT_POSITIVE",
+              "DIRECT_COLLISION",
+              "HIERARCHICAL_ONLY",
+              "UNRULED",
+              "SIGNATURE_CONFLICT",
+              "SIGNATURE_COMPATIBLE"
+            ]
+          },
+          "pair_fact_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "collision_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "closure_obligation_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "closure_obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "obligation_id",
+          "obligation_type",
+          "status",
+          "left_id",
+          "right_id"
+        ],
+        "properties": {
+          "obligation_id": {
+            "type": "string"
+          },
+          "obligation_type": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "OPEN",
+              "RESOLVED_ACCEPT",
+              "RESOLVED_SPLIT",
+              "RESOLVED_EXCLUDE",
+              "FAIL_CLOSED"
+            ]
+          },
+          "left_id": {
+            "type": "string"
+          },
+          "right_id": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "likely_split_points": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "proposed_variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "variant_id",
+          "dimension",
+          "value",
+          "members"
+        ],
+        "properties": {
+          "variant_id": {
+            "type": "string",
+            "pattern": "^P3VAR-[0-9]{6}$"
+          },
+          "dimension": {
+            "enum": [
+              "RESPONSE_TOPOLOGY",
+              "WORDING_TRANSLATION",
+              "SOURCE_RESPONSE_FORM",
+              "HISTORICAL_INTERVAL",
+              "OTHER_EXPLICITLY_GOVERNED"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "explicit_exclusions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "exclusion_id",
+          "type",
+          "prohibited_operation",
+          "scope",
+          "rule_or_evidence"
+        ],
+        "properties": {
+          "exclusion_id": {
+            "type": "string",
+            "pattern": "^P3EXC-[0-9]{6}$"
+          },
+          "type": {
+            "enum": [
+              "NAMED_MEMBER",
+              "RULE_BASED"
+            ]
+          },
+          "prohibited_operation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rule_or_evidence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "excluded_object_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "hyperedge_context": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "strata_horizon_context": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "exact_evidence_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "decision_form": {
+      "$ref": "https://rawlsing.local/schemas/p3/v2/adjudication_decision_draft.schema.json"
+    }
+  },
+  "additionalProperties": false
+}

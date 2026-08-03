@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing canonical joint-evidence family concept authority (planning v0.1)",
+  "type": "object",
+  "required": [
+    "family_concept_id",
+    "version",
+    "joint_information_requirement",
+    "joint_proposition",
+    "evidence_ceiling",
+    "prohibited_claims",
+    "structural_form",
+    "downstream_consumers",
+    "authority_status"
+  ],
+  "properties": {
+    "family_concept_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "joint_information_requirement": {
+      "type": "string"
+    },
+    "ambiguity_resolved": {
+      "type": "string"
+    },
+    "joint_proposition": {
+      "type": "string"
+    },
+    "structural_form": {
+      "type": "string"
+    },
+    "required_semantic_roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "optional_semantic_roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_ceiling": {
+      "type": "string"
+    },
+    "prohibited_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "downstream_consumers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "portability_class": {
+      "enum": [
+        "cross_source",
+        "source_family",
+        "source_specific",
+        "unresolved"
+      ]
+    },
+    "source_lineage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "implementation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_status": {
+      "enum": [
+        "discovery",
+        "review_only",
+        "approved",
+        "rejected",
+        "blocked_source_gap",
+        "blocked_contract_gap",
+        "superseded"
+      ]
+    },
+    "closure_hash": {
+      "type": "string"
+    }
+  }
+}

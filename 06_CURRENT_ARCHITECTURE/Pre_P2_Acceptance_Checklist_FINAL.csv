@@ -1,0 +1,18 @@
+check_id,acceptance_condition,status
+A01,"All canonical object grains, PKs, FKs, and cardinalities are frozen.",PASS_INITIAL
+A02,Formal joint-claim grammar and evidence ceilings are machine-representable.,PASS_INITIAL
+A03,Identity/version/supersession rules are deterministic and tested.,PASS_INITIAL
+A04,Lifecycle states and transitions fail closed.,PASS_INITIAL
+A05,"Error, uncertainty, neutral, missing, refusal, inapplicable, and source absence are distinct.",PASS_INITIAL
+A06,Canonical-to-runtime projection produces a loss report and blocks unsupported semantics.,PASS_INITIAL
+A07,Negative authority/anti-joins are represented.,PASS_INITIAL
+A08,Portability/equivalence tiers are governed.,PASS_INITIAL
+A09,Empirical validation boundaries are explicit.,PASS_INITIAL
+A10,Candidate scaling rules avoid all-pairs enumeration and preserve residual completeness.,PASS_INITIAL
+A11,Vertical-slice suite passes through all downstream lineage fields.,PASS_INITIAL
+A12,Existing GSS behavior can be canonically backfilled and projected without unexplained drift.,PASS_INITIAL
+A13,Review/approval provenance and closure hashing are specified.,PASS_APPROVAL_GOVERNANCE_EXECUTED_SYNTHETICALLY
+A14,Coverage/completion manifests and no-family rulings are defined.,PASS_COVERAGE_MANIFESTS_POPULATED_AND_RECONCILED_ON_FIXTURE
+A15,"Migration, explained-delta audit, and rollback are defined before implementation.",PASS_GSS_CANONICAL_BACKFILL_MIGRATION_AND_POINTER_ROLLBACK_REHEARSED
+A16,No respondent observations are stored in authority objects.,PASS_INITIAL
+A17,"P2 node-catalog schema is generated from the frozen architecture, not improvised during population.",PASS_P2_NODE_SCHEMA_GENERATED_AND_VALIDATED

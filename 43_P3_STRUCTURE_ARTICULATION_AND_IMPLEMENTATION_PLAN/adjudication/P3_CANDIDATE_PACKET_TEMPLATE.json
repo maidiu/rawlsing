@@ -1,0 +1,153 @@
+{
+  "packet_id": "P3PKT-000001",
+  "candidate_family": {
+    "candidate_family_id": "P3CAND-000001",
+    "component_ids": [
+      "P3COMP-000001"
+    ],
+    "member_ids": [
+      "LINEAGE-EXAMPLE-A",
+      "LINEAGE-EXAMPLE-B"
+    ],
+    "canonical_signature_id": "PSIG-000001",
+    "candidate_status": "ADJUDICATION_REQUIRED",
+    "internal_pair_counts": {
+      "expected_pairs": 1,
+      "direct_positive": 1,
+      "direct_collision": 0,
+      "hierarchical_only": 0,
+      "unruled": 0,
+      "signature_conflict": 0,
+      "signature_compatible": 0
+    },
+    "closure_obligation_ids": [],
+    "variant_ids": [
+      "P3VAR-000001",
+      "P3VAR-000002"
+    ],
+    "exclusion_ids": [
+      "P3EXC-000001"
+    ],
+    "rank_tuple": [
+      "CLEAN_FAMILY_CANDIDATE",
+      0,
+      0,
+      -1,
+      -2,
+      -2,
+      -1.0,
+      0,
+      2
+    ],
+    "evidence_bundle_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "authority_release_id": "P3-AUTHORITY-2026-08-01-R1"
+  },
+  "members_by_source": {
+    "SOURCE_A": [
+      "LINEAGE-EXAMPLE-A"
+    ],
+    "SOURCE_B": [
+      "LINEAGE-EXAMPLE-B"
+    ]
+  },
+  "proposition_signature_matrix": [
+    {
+      "member_id": "LINEAGE-EXAMPLE-A",
+      "operator": "TRUST",
+      "target": "POLICE",
+      "modality": "DIRECT_PROPOSITION",
+      "signature_status": "COMPLETE"
+    },
+    {
+      "member_id": "LINEAGE-EXAMPLE-B",
+      "operator": "TRUST",
+      "target": "POLICE",
+      "modality": "DIRECT_PROPOSITION",
+      "signature_status": "COMPLETE"
+    }
+  ],
+  "response_contract_matrix": [
+    {
+      "member_id": "LINEAGE-EXAMPLE-A",
+      "response_topology": "ORDINAL",
+      "categories": 4,
+      "value_portability": "NOT_AUTHORIZED_BY_P3"
+    },
+    {
+      "member_id": "LINEAGE-EXAMPLE-B",
+      "response_topology": "ORDINAL",
+      "categories": 10,
+      "value_portability": "NOT_AUTHORIZED_BY_P3"
+    }
+  ],
+  "internal_pair_matrix": [
+    {
+      "left_id": "LINEAGE-EXAMPLE-A",
+      "right_id": "LINEAGE-EXAMPLE-B",
+      "pair_state": "DIRECT_POSITIVE",
+      "pair_fact_id": "P3PF-00000001"
+    }
+  ],
+  "hard_collisions": [],
+  "unresolved_pairs": [],
+  "unruled_pairs": [],
+  "closure_obligations": [],
+  "likely_split_points": [],
+  "proposed_variants": [
+    {
+      "variant_id": "P3VAR-000001",
+      "dimension": "RESPONSE_TOPOLOGY",
+      "value": "FOUR_POINT_ORDINAL",
+      "members": [
+        "LINEAGE-EXAMPLE-A"
+      ]
+    },
+    {
+      "variant_id": "P3VAR-000002",
+      "dimension": "RESPONSE_TOPOLOGY",
+      "value": "TEN_POINT_ORDINAL",
+      "members": [
+        "LINEAGE-EXAMPLE-B"
+      ]
+    }
+  ],
+  "explicit_exclusions": [
+    {
+      "exclusion_id": "P3EXC-000001",
+      "type": "RULE_BASED",
+      "rule": "Exclude satisfaction with police performance, police contact, police corruption, and trust in other institutions."
+    }
+  ],
+  "hyperedge_context": [
+    {
+      "hyperedge_type": "SIBLING_FAMILY_CONSTRUCT",
+      "construct": "INSTITUTIONAL_TRUST",
+      "authority_effect": "DISCOVERY_CONTEXT"
+    }
+  ],
+  "strata_horizon_context": [],
+  "exact_evidence_links": [
+    "EVIDENCE-A",
+    "EVIDENCE-B",
+    "P2-RULING-EXAMPLE"
+  ],
+  "evidence_bundle_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "decision_form": {
+    "adjudication_id": "P3ADJ-000001",
+    "candidate_family_id": "P3CAND-000001",
+    "decision_status": "ADJUDICATION_REQUIRED",
+    "canonical_family_id": null,
+    "canonical_proposition": null,
+    "accepted_members": [],
+    "excluded_members": [],
+    "variant_assignments": [],
+    "hierarchical_relations": [],
+    "collision_dispositions": [],
+    "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+    "unresolved_boundaries": [],
+    "rationale": "",
+    "evidence_bundle_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "supersedes_adjudication_id": null,
+    "authority_release_id": "P3-AUTHORITY-2026-08-01-R1"
+  }
+}

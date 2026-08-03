@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "documents": 3,
+  "total_pages": 33,
+  "page_counts": {
+    "plan_v3": 30,
+    "second_audit_report": 2,
+    "master_handoff_v23": 1
+  },
+  "visual_inspection": "PASS_ALL_PAGES_INDIVIDUALLY_REVIEWED",
+  "blank_or_orphan_pages": 0,
+  "clipping_or_overlap": 0,
+  "broken_tables": 0,
+  "missing_glyphs": 0,
+  "accessibility_counts": {
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "source_reports": [
+    {
+      "report": "PLAN_V3_A11Y_AUDIT.json",
+      "pages": 30,
+      "counts": {
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "findings": []
+    },
+    {
+      "report": "AUDIT_REPORT_A11Y_AUDIT.json",
+      "pages": 2,
+      "counts": {
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "findings": []
+    },
+    {
+      "report": "MASTER_V23_A11Y_AUDIT.json",
+      "pages": 1,
+      "counts": {
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      },
+      "findings": []
+    }
+  ],
+  "note": "The initial plan render exposed a split/orphan signature table. It was replaced with a structured list, rerendered, and all 30 final plan pages were re-inspected."
+}

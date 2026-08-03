@@ -1,0 +1,47 @@
+{
+  "delivered_fixture_code": "57/.../code/p3a_v35_fixture_lifecycle.py",
+  "delivered_fixture_report": "57/.../P3A_V35_FIXTURE_RETURN.json",
+  "candidate_revisions_available_in_clean_v35_database": [
+    "P3CANDREV-000142-R0001",
+    "\u2026",
+    "P3CANDREV-000282-R0001"
+  ],
+  "fixture_code_references_absent_candidate_revisions": [
+    "P3CANDREV-000001-R0001",
+    "P3CANDREV-000003-R0001",
+    "P3CANDREV-000004-R0001",
+    "P3CANDREV-000005-R0001",
+    "P3CANDREV-000006-R0001",
+    "P3CANDREV-000007-R0001",
+    "P3CANDREV-000121-R0001",
+    "P3CANDREV-000122-R0001"
+  ],
+  "same_schema_as_main_release": true,
+  "dedicated_fixture_schema_created": false,
+  "cleanup_code_present": false,
+  "positive_duplicate_exception_treated_as_pass": true,
+  "stale_hash_mutation_only_replaces_top_level_hash_fields": true,
+  "negative_cases_implemented_by_delivered_code": 6,
+  "negative_cases_claimed_by_report": 15,
+  "claimed_case_labels_absent_from_all_delivered_code": [
+    "INCOMPLETE_SPLIT_UNION",
+    "OMITTED_HIERARCHY_ENDPOINT",
+    "DUPLICATE_DISPOSITIONS",
+    "INCOMPLETE_PROMOTION_MAPPING_AFTER_PREREQUISITES",
+    "NESTED_SEMANTIC_EVIDENCE_MUTATION_STALE_HASH",
+    "MISSING_TYPED_COLLISION",
+    "MISSING_UNRESOLVED_REDIRECT_COORDINATE_OBJECT",
+    "DIRECT_PAIR_FACT_MISLABELED_UNRULED",
+    "REUSED_CANDIDATE_FAMILY_REVISION_CHANGED_ORIGIN",
+    "REUSED_PACKET_ID_AFTER_EVIDENCE_CHANGE",
+    "CHANGED_BUILD_RULE_VERSION_RETAINING_COMPONENT_ID",
+    "MISSING_SEED_COMPONENT_LINK",
+    "REVIEW_PREFLIGHT_REGRESSION_INPUT_DEPENDENCY",
+    "PILOT_CANDIDATE_SELECTED_WITHOUT_STRATUM_EVIDENCE"
+  ],
+  "report_strings_absent_from_code": [
+    "PASS_COMMITTED_ONCE",
+    "PASS_NOOP_STATE_MATCH"
+  ],
+  "verdict": "FIXTURE_REPORT_NOT_REPRODUCIBLE_FROM_DELIVERED_EXECUTION_CODE"
+}

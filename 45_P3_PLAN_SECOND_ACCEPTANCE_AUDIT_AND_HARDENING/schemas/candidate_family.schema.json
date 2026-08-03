@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v3/candidate_family.schema.json",
+  "title": "candidate_family",
+  "type": "object",
+  "required": [
+    "candidate_family_id",
+    "revision_id",
+    "component_ids",
+    "member_ids",
+    "lifecycle_stage",
+    "candidate_classification",
+    "candidate_origin_type",
+    "internal_pair_counts",
+    "closure_obligation_ids",
+    "evidence_bundle_hash",
+    "authority_release_id"
+  ],
+  "properties": {
+    "candidate_family_id": {
+      "type": "string",
+      "pattern": "^P3CAND-[0-9]{6}$"
+    },
+    "revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{8}$"
+    },
+    "component_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "canonical_signature_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lifecycle_stage": {
+      "enum": [
+        "ADJUDICATION_REQUIRED",
+        "DECIDED",
+        "DEPRECATED",
+        "DISCOVERED",
+        "EVIDENCE_COMPLETE",
+        "GENERATED_CANDIDATE",
+        "SUPERSEDED"
+      ]
+    },
+    "candidate_classification": {
+      "enum": [
+        "CLEAN_CANDIDATE",
+        "COLLISION_BEARING_CANDIDATE",
+        "HIERARCHY_ONLY_RISK",
+        "INSUFFICIENT_AUTHORITY_RISK",
+        "SEMANTIC_ARTIFACT_RISK",
+        "SPLIT_RISK",
+        "STRUCTURE_ONLY_DIAGNOSTIC",
+        "VARIANT_BEARING_CANDIDATE"
+      ]
+    },
+    "candidate_origin_type": {
+      "enum": [
+        "ATTACHMENT_REVIEW",
+        "NONCONNECTIVE_DIAGNOSTIC_CASE",
+        "PROPOSITION_ONLY_SEED",
+        "STRICT_RESPONSE_COMPONENT"
+      ]
+    },
+    "diagnostic_flags": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ADMINISTRATIVE_METADATA",
+          "DERIVED_INDEX",
+          "EXACT_ONLY_AUTHORITY",
+          "HARD_COLLISION",
+          "HETEROGENEOUS_LINEAGE",
+          "HIERARCHICAL_TARGET",
+          "NONTRANSITIVE_PATH",
+          "OPEN_CLOSURE",
+          "PRECEDENCE_OVERLAP",
+          "RESPONSE_VARIATION",
+          "SOURCE_DOMINATED",
+          "SPARSE",
+          "SPLIT_RISK",
+          "STRUCTURE_SUPPORTED"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "internal_pair_counts": {
+      "type": "object",
+      "required": [
+        "expected_pairs",
+        "direct_positive",
+        "direct_collision",
+        "hierarchical_only",
+        "unruled",
+        "signature_conflict",
+        "signature_compatible"
+      ],
+      "properties": {
+        "expected_pairs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direct_positive": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direct_collision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hierarchical_only": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unruled": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "signature_conflict": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "signature_compatible": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "closure_obligation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "variant_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "exclusion_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "ranking": {
+      "$ref": "https://rawlsing.local/schemas/p3/v3/candidate_ranking.schema.json"
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_release_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

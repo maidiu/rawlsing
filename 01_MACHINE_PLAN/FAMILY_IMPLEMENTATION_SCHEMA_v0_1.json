@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing family implementation authority (planning v0.1)",
+  "type": "object",
+  "required": [
+    "implementation_id",
+    "family_concept_id",
+    "source_family",
+    "scope",
+    "items",
+    "respondent_universe",
+    "completeness_rule",
+    "pattern_semantics_id",
+    "authority_status"
+  ],
+  "properties": {
+    "implementation_id": {
+      "type": "string"
+    },
+    "family_concept_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "source_family": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "waves": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "countries_or_instruments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source_native_status": {
+      "enum": [
+        "source_native",
+        "analytic",
+        "hybrid"
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "canonical_question_id",
+          "source_aliases",
+          "semantic_role",
+          "semantic_order",
+          "response_authority_reference"
+        ],
+        "properties": {
+          "canonical_question_id": {
+            "type": "string"
+          },
+          "source_aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "semantic_role": {
+            "type": "string"
+          },
+          "semantic_order": {
+            "type": "integer"
+          },
+          "required_status": {
+            "enum": [
+              "required",
+              "optional",
+              "routed",
+              "wave_variant"
+            ]
+          },
+          "target_or_condition_label": {
+            "type": "string"
+          },
+          "response_authority_reference": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "respondent_universe": {
+      "type": "string"
+    },
+    "routing_rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "completeness_rule": {
+      "type": "object"
+    },
+    "target_resolution": {
+      "type": "object"
+    },
+    "pattern_semantics_id": {
+      "type": "string"
+    },
+    "source_provenance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "runtime_projection_status": {
+      "enum": [
+        "not_assessed",
+        "faithful_current_contract",
+        "metadata_only_gap",
+        "shared_contract_gap",
+        "not_executable"
+      ]
+    },
+    "authority_status": {
+      "enum": [
+        "discovery",
+        "review_only",
+        "approved",
+        "rejected",
+        "blocked_source_gap",
+        "blocked_contract_gap",
+        "superseded"
+      ]
+    },
+    "closure_hash": {
+      "type": "string"
+    }
+  }
+}

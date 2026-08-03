@@ -1,0 +1,33 @@
+{
+  "status": "BLOCKED_DATABASE_PACKET_HASH_CONVERGENCE",
+  "release_id": "P3-AUTHORITY-2026-08-01-R39",
+  "divergent_packet_count": 4,
+  "divergences": [
+    {
+      "candidate_revision_id": "P3CANDREV-000179-R0002",
+      "database_candidate_hash": "fe8ec5484a0edacb7da657097b370bd1cf1b61b82cc404dee7629ec3303407f5",
+      "packet_evidence_hash": "36cb485e2c418ef1525dfa5c0ae29630d6fe161c816dbf045b8922fd23cf616c",
+      "hashes_match": "NO"
+    },
+    {
+      "candidate_revision_id": "P3CANDREV-000188-R0002",
+      "database_candidate_hash": "d6e45a5d225a2ea37825ca23ffd1233d70b3276401375ffe2b10f8e47a022f80",
+      "packet_evidence_hash": "37e228a58a7f9948f3a7f1cc077352e3cc54bf434c0fe46435ba74e5ce544bec",
+      "hashes_match": "NO"
+    },
+    {
+      "candidate_revision_id": "P3CANDREV-000144-R0002",
+      "database_candidate_hash": "e31ceba2b7c50def51e2871614f4e1eab92215511b141233ce21d9113431785d",
+      "packet_evidence_hash": "0d58406cb1c44ef7ea464705f6dbf759b674ea04ac28796d02f0e5724debb902",
+      "hashes_match": "NO"
+    },
+    {
+      "candidate_revision_id": "P3CANDREV-000148-R0002",
+      "database_candidate_hash": "0571251d9cc61b1129c7a5507da3c4201fad6dbd8738f5a995255ab389432aed",
+      "packet_evidence_hash": "8ab2c9edfcda7dd647f3d5689f242b963566828f4edee5e96479925c8c8beb8e",
+      "hashes_match": "NO"
+    }
+  ],
+  "q33_status": "PASS",
+  "blocker": "Complete packet evidence hash cannot be inserted immutably before child evidence rows exist without a staging/promote design; hot-patching p3_candidate_revision.evidence_bundle_hash would violate the governing immutability correction."
+}

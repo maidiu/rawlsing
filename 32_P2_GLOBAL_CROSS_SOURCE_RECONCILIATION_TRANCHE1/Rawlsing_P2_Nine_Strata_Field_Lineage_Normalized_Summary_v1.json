@@ -1,0 +1,18 @@
+{
+  "normalized_field_family_rows": 33,
+  "lineage_status_counts": {
+    "present_upstream_dropped_at_v552j": 16,
+    "preserved_authoritative": 8,
+    "present_but_empty": 8,
+    "missing_generated_artifact": 1
+  },
+  "authority_status_counts": {
+    "not_available_to_v553": 25,
+    "available_to_v553": 8
+  },
+  "raw_summary_declared_field_families_traced": 30,
+  "raw_summary_status_count_sum": 28,
+  "raw_summary_consistent_with_rows": false,
+  "disposition": "RAW_SUMMARY_METADATA_STALE_OR_INTERNALLY_INCONSISTENT; GOVERN BY FIELD_FAMILY ROWS AND THIS NORMALIZED SUMMARY",
+  "critical_finding": "Nine-strata/horizon/position-conditioning fields exist authoritatively in V552 question_semantic_hierarchy (998 total rows across 3 waves, all non-null) but are dropped at V552->V552J boundary because V552J input index derives from structural_fact_index which does not carry these fields. Only thin keys (relation_axis_id, target_entity_id, driver_facet_id, structural_channel_id, horizon_constraint_id, semantic_signature) are preserved into V553."
+}

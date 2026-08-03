@@ -1,0 +1,1432 @@
+{
+  "source_summary": [
+    {
+      "source": "GSS",
+      "nodes": 6021,
+      "bound": 5906,
+      "gaps": 115,
+      "edges": 3171,
+      "structures": 722,
+      "memberships": 0,
+      "accepted_wording": 0,
+      "guards": 24,
+      "reviews": 0,
+      "checks_passed": 16,
+      "checks_total": 16,
+      "status": "PASS"
+    },
+    {
+      "source": "WVS",
+      "nodes": 1219,
+      "bound": 1064,
+      "gaps": 155,
+      "edges": 180,
+      "structures": 115,
+      "memberships": 0,
+      "accepted_wording": 0,
+      "guards": 126,
+      "reviews": 0,
+      "checks_passed": 13,
+      "checks_total": 13,
+      "status": "PASS"
+    },
+    {
+      "source": "EVS",
+      "nodes": 2224,
+      "bound": 2181,
+      "gaps": 43,
+      "edges": 815,
+      "structures": 182,
+      "memberships": 0,
+      "accepted_wording": 0,
+      "guards": 360,
+      "reviews": 0,
+      "checks_passed": 14,
+      "checks_total": 14,
+      "status": "PASS"
+    },
+    {
+      "source": "Arab Barometer",
+      "nodes": 1698,
+      "bound": 1651,
+      "gaps": 47,
+      "edges": 67,
+      "structures": 159,
+      "memberships": 0,
+      "accepted_wording": 44,
+      "guards": 68,
+      "reviews": 76,
+      "checks_passed": 14,
+      "checks_total": 14,
+      "status": "PASS"
+    },
+    {
+      "source": "Afrobarometer",
+      "nodes": 913,
+      "bound": 831,
+      "gaps": 82,
+      "edges": 119,
+      "structures": 230,
+      "memberships": 1264,
+      "accepted_wording": 0,
+      "guards": 112,
+      "reviews": 41,
+      "checks_passed": 16,
+      "checks_total": 17,
+      "status": "FAIL"
+    },
+    {
+      "source": "Asian Barometer",
+      "nodes": 814,
+      "bound": 702,
+      "gaps": 112,
+      "edges": 236,
+      "structures": 71,
+      "memberships": 479,
+      "accepted_wording": 140,
+      "guards": 183,
+      "reviews": 57,
+      "checks_passed": 24,
+      "checks_total": 24,
+      "status": "PASS"
+    },
+    {
+      "source": "Latinobarómetro",
+      "nodes": 812,
+      "bound": 775,
+      "gaps": 37,
+      "edges": 26,
+      "structures": 123,
+      "memberships": 680,
+      "accepted_wording": 20,
+      "guards": 7,
+      "reviews": 33,
+      "checks_passed": 22,
+      "checks_total": 22,
+      "status": "PASS"
+    },
+    {
+      "source": "South Asia",
+      "nodes": 141,
+      "bound": 135,
+      "gaps": 6,
+      "edges": 12,
+      "structures": 15,
+      "memberships": 76,
+      "accepted_wording": 12,
+      "guards": 2,
+      "reviews": 3,
+      "checks_passed": 24,
+      "checks_total": 24,
+      "status": "PASS"
+    },
+    {
+      "source": "LiTS",
+      "nodes": 4434,
+      "bound": 3063,
+      "gaps": 1371,
+      "edges": 133,
+      "structures": 882,
+      "memberships": 7878,
+      "accepted_wording": 75,
+      "guards": 191,
+      "reviews": 3,
+      "checks_passed": 24,
+      "checks_total": 24,
+      "status": "PASS"
+    }
+  ],
+  "source_checks": {
+    "GSS": [
+      {
+        "check": "gap_file_matches_node_status",
+        "status": "PASS",
+        "detail": "{\"file\": 115, \"status\": 115, \"file_only\": 0, \"status_only\": 0}"
+      },
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "6021 rows / 6021 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 6021, \"phase0\": 6021, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "115 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=6021 closure=6021"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=115 closure=115"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=5906 closure=5906"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "3171 rows / 3171 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=3171 closure=3171"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "722 rows / 722 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=722 closure=722"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      },
+      {
+        "check": "validation_summary_pass",
+        "status": "PASS",
+        "detail": "{\"status\": \"PASS\", \"passed\": 13, \"total\": 13, \"failed_checks\": []}"
+      },
+      {
+        "check": "wave_coverage_totals",
+        "status": "PASS",
+        "detail": "{}"
+      }
+    ],
+    "WVS": [
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "1219 rows / 1219 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 1219, \"phase0\": 1219, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "155 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=1219 closure=1219"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=155 closure=155"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=1064 closure=1064"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "180 rows / 180 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=180 closure=180"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "115 rows / 115 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=115 closure=115"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      }
+    ],
+    "EVS": [
+      {
+        "check": "gap_file_matches_node_status",
+        "status": "PASS",
+        "detail": "{\"file\": 43, \"status\": 43, \"file_only\": 0, \"status_only\": 0}"
+      },
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "2224 rows / 2224 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 2224, \"phase0\": 2224, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "43 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=2224 closure=2224"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=43 closure=43"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=2181 closure=2181"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "815 rows / 815 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=815 closure=815"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "182 rows / 182 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=182 closure=182"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      }
+    ],
+    "Arab Barometer": [
+      {
+        "check": "gap_file_matches_node_status",
+        "status": "PASS",
+        "detail": "{\"file\": 47, \"status\": 47, \"file_only\": 0, \"status_only\": 0}"
+      },
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "1698 rows / 1698 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 1698, \"phase0\": 1698, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "47 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=1698 closure=1698"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=47 closure=47"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=1651 closure=1651"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "67 rows / 67 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=67 closure=67"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "159 rows / 159 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=159 closure=159"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      }
+    ],
+    "Afrobarometer": [
+      {
+        "check": "gap_file_matches_node_status",
+        "status": "PASS",
+        "detail": "{\"file\": 82, \"status\": 82, \"file_only\": 0, \"status_only\": 0}"
+      },
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "913 rows / 913 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 913, \"phase0\": 913, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "82 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=913 closure=913"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=82 closure=82"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=831 closure=831"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "119 rows / 119 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=119 closure=119"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "230 rows / 230 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=230 closure=230"
+      },
+      {
+        "check": "structure_membership_integrity",
+        "status": "FAIL",
+        "detail": "{\"memberships\": 1264, \"orphan_structures\": 0, \"orphan_nodes\": 2, \"member_count_mismatch\": 0}"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      },
+      {
+        "check": "validation_summary_pass",
+        "status": "PASS",
+        "detail": "{\"tests_total\": 16, \"tests_passed\": 16, \"tests_failed\": 0, \"nodes\": 913, \"accepted_continuity_edges\": 119, \"code_reuse_guards\": 112, \"same_wave_anti_collapse_guards\": 75, \"source_structures\": 230, \"structure_memberships\": 1264, \"response_gaps\": 82}"
+      },
+      {
+        "check": "wave_coverage_totals",
+        "status": "PASS",
+        "detail": "{\"response_bound\": 831, \"response_gaps\": 82}"
+      }
+    ],
+    "Asian Barometer": [
+      {
+        "check": "gap_file_matches_node_status",
+        "status": "PASS",
+        "detail": "{\"file\": 112, \"status\": 112, \"file_only\": 0, \"status_only\": 0}"
+      },
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "814 rows / 814 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 814, \"phase0\": 814, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "112 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=814 closure=814"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=112 closure=112"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=702 closure=702"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "236 rows / 236 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=236 closure=236"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "71 rows / 71 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=71 closure=71"
+      },
+      {
+        "check": "structure_membership_integrity",
+        "status": "PASS",
+        "detail": "{\"memberships\": 479, \"orphan_structures\": 0, \"orphan_nodes\": 0, \"member_count_mismatch\": 0}"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      },
+      {
+        "check": "validation_results_all_pass",
+        "status": "PASS",
+        "detail": "18/18 PASS"
+      },
+      {
+        "check": "validation_summary_pass",
+        "status": "PASS",
+        "detail": "{\"status\": \"PASS\", \"calibre_audit\": \"v2\", \"tests\": [{\"test\": \"exact_node_count\", \"status\": \"PASS\", \"detail\": \"814 expected 814\"}, {\"test\": \"unique_exact_identity\", \"status\": \"PASS\", \"detail\": \"question implementation IDs unique\"}, {\"test\": \"edge_endpoints_exist\", \"status\": \"PASS\", \"detail\": \"236 accepted edges\"}, {\"test\": \"edge_pairs_unique\", \"status\": \"PASS\", \"detail\": \"no duplicate accepted pair\"}, {\"test\": \"accepted_revision_edges_reconcile\", \"status\": \"PASS\", \"detail\": \"140 accepted revisions all materialized as edges\"}, {\"test\": \"authority_partitions_disjoint\", \"status\": \"PASS\", \"detail\": \"accepted/review/negative pair sets disjoint\"}, {\"test\": \"cross_wave_only\", \"status\": \"PASS\", \"detail\": \"all accepted continuity edges cross waves\"}, {\"test\": \"semantic_role_mismatch_explicit\", \"status\": \"PASS\", \"detail\": \"source-specific check below\"}, {\"test\": \"structure_membership_referential_integrity\", \"status\": \"PASS\", \"detail\": \"71 structures / 479 memberships\"}, {\"test\": \"structures_inventory_only\", \"status\": \"PASS\", \"detail\": \"no structure promoted\"}, {\"test\": \"response_gap_reconciliation\", \"status\": \"PASS\", \"detail\": \"112 gaps\"}, {\"test\": \"source_references_present\", \"status\": \"PASS\", \"detail\": \"source reference surface present\"}, {\"test\": \"no_family_authoring\", \"status\": \"PASS\", \"detail\": \"none authored\"}, {\"test\": \"no_live_execution\", \"status\": \"PASS\", \"detail\": \"catalog-only pass\"}, {\"test\": \"w6_excluded\", \"status\": \"PASS\", \"detail\": \"W6 absent\"}, {\"test\": \"repeated_slot_change_not_accepted\", \"status\": \"PASS\", \"detail\": \"W4 first-organization slot not joined to W5 third slot\"}, {\"test\": \"target_scope_expansion_reviewed\", \"status\": \"PASS\", \"detail\": \"government -> president/government remains unresolved\"}, {\"test\": \"semantic_role_mismatch_explicit\", \"status\": \"PASS\", \"detail\": \"no accepted role mismatch\"}]}"
+      },
+      {
+        "check": "index_hashes",
+        "status": "PASS",
+        "detail": "{\"rows\": 26, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+      },
+      {
+        "check": "index_coverage",
+        "status": "PASS",
+        "detail": "{\"actual\": 26, \"listed\": 26, \"only_actual\": [], \"only_listed\": []}"
+      },
+      {
+        "check": "sums_hashes",
+        "status": "PASS",
+        "detail": "{\"rows\": 26, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+      },
+      {
+        "check": "sums_coverage",
+        "status": "PASS",
+        "detail": "{\"actual\": 26, \"listed\": 26, \"only_actual\": [], \"only_listed\": []}"
+      },
+      {
+        "check": "wave_coverage_totals",
+        "status": "PASS",
+        "detail": "{\"question_nodes\": 814, \"response_bound\": 702, \"response_gaps\": 112, \"source_structures\": 71}"
+      },
+      {
+        "check": "asian_false_slot_demoted",
+        "status": "PASS",
+        "detail": "W4 q20 ↔ W5 q20"
+      },
+      {
+        "check": "asian_target_expansion_unresolved",
+        "status": "PASS",
+        "detail": "W4 q98 ↔ W5 q105"
+      }
+    ],
+    "Latinobarómetro": [
+      {
+        "check": "gap_file_matches_node_status",
+        "status": "PASS",
+        "detail": "{\"file\": 37, \"status\": 37, \"file_only\": 0, \"status_only\": 0}"
+      },
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "812 rows / 812 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 812, \"phase0\": 812, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "37 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=812 closure=812"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=37 closure=37"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=775 closure=775"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "26 rows / 26 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=26 closure=26"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "123 rows / 123 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=123 closure=123"
+      },
+      {
+        "check": "structure_membership_integrity",
+        "status": "PASS",
+        "detail": "{\"memberships\": 680, \"orphan_structures\": 0, \"orphan_nodes\": 0, \"member_count_mismatch\": 0}"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      },
+      {
+        "check": "validation_results_all_pass",
+        "status": "PASS",
+        "detail": "17/17 PASS"
+      },
+      {
+        "check": "validation_summary_pass",
+        "status": "PASS",
+        "detail": "{\"status\": \"PASS\", \"calibre_audit\": \"v2\", \"tests\": [{\"test\": \"exact_node_count\", \"status\": \"PASS\", \"detail\": \"812 expected 812\"}, {\"test\": \"unique_exact_identity\", \"status\": \"PASS\", \"detail\": \"question implementation IDs unique\"}, {\"test\": \"edge_endpoints_exist\", \"status\": \"PASS\", \"detail\": \"26 accepted edges\"}, {\"test\": \"edge_pairs_unique\", \"status\": \"PASS\", \"detail\": \"no duplicate accepted pair\"}, {\"test\": \"accepted_revision_edges_reconcile\", \"status\": \"PASS\", \"detail\": \"20 accepted revisions all materialized as edges\"}, {\"test\": \"authority_partitions_disjoint\", \"status\": \"PASS\", \"detail\": \"accepted/review/negative pair sets disjoint\"}, {\"test\": \"cross_wave_only\", \"status\": \"PASS\", \"detail\": \"all accepted continuity edges cross waves\"}, {\"test\": \"semantic_role_mismatch_explicit\", \"status\": \"PASS\", \"detail\": \"source-specific check below\"}, {\"test\": \"structure_membership_referential_integrity\", \"status\": \"PASS\", \"detail\": \"123 structures / 680 memberships\"}, {\"test\": \"structures_inventory_only\", \"status\": \"PASS\", \"detail\": \"no structure promoted\"}, {\"test\": \"response_gap_reconciliation\", \"status\": \"PASS\", \"detail\": \"37 gaps\"}, {\"test\": \"source_references_present\", \"status\": \"PASS\", \"detail\": \"source reference surface present\"}, {\"test\": \"no_family_authoring\", \"status\": \"PASS\", \"detail\": \"none authored\"}, {\"test\": \"no_live_execution\", \"status\": \"PASS\", \"detail\": \"catalog-only pass\"}, {\"test\": \"active_wave_set\", \"status\": \"PASS\", \"detail\": \"['1995', '2011', '2024']\"}, {\"test\": \"semantic_role_mismatch_explicit\", \"status\": \"PASS\", \"detail\": \"no accepted role mismatch\"}, {\"test\": \"translation_portability_deferred\", \"status\": \"PASS\", \"detail\": \"translation-aware equivalence remains global-P2 work\"}]}"
+      },
+      {
+        "check": "index_hashes",
+        "status": "PASS",
+        "detail": "{\"rows\": 26, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+      },
+      {
+        "check": "index_coverage",
+        "status": "PASS",
+        "detail": "{\"actual\": 26, \"listed\": 26, \"only_actual\": [], \"only_listed\": []}"
+      },
+      {
+        "check": "sums_hashes",
+        "status": "PASS",
+        "detail": "{\"rows\": 26, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+      },
+      {
+        "check": "sums_coverage",
+        "status": "PASS",
+        "detail": "{\"actual\": 26, \"listed\": 26, \"only_actual\": [], \"only_listed\": []}"
+      },
+      {
+        "check": "wave_coverage_totals",
+        "status": "PASS",
+        "detail": "{\"question_nodes\": 812, \"response_bound\": 775, \"response_gaps\": 37, \"source_structures\": 123}"
+      }
+    ],
+    "South Asia": [
+      {
+        "check": "gap_file_matches_node_status",
+        "status": "PASS",
+        "detail": "{\"file\": 6, \"status\": 6, \"file_only\": 0, \"status_only\": 0}"
+      },
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "141 rows / 141 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 141, \"phase0\": 141, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "6 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=141 closure=141"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=6 closure=6"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=135 closure=135"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "12 rows / 12 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=12 closure=12"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "15 rows / 15 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=15 closure=15"
+      },
+      {
+        "check": "structure_membership_integrity",
+        "status": "PASS",
+        "detail": "{\"memberships\": 76, \"orphan_structures\": 0, \"orphan_nodes\": 0, \"member_count_mismatch\": 0}"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      },
+      {
+        "check": "validation_results_all_pass",
+        "status": "PASS",
+        "detail": "18/18 PASS"
+      },
+      {
+        "check": "validation_summary_pass",
+        "status": "PASS",
+        "detail": "{\"status\": \"PASS\", \"calibre_audit\": \"v2\", \"tests\": [{\"test\": \"exact_node_count\", \"status\": \"PASS\", \"detail\": \"141 expected 141\"}, {\"test\": \"unique_exact_identity\", \"status\": \"PASS\", \"detail\": \"question implementation IDs unique\"}, {\"test\": \"edge_endpoints_exist\", \"status\": \"PASS\", \"detail\": \"12 accepted edges\"}, {\"test\": \"edge_pairs_unique\", \"status\": \"PASS\", \"detail\": \"no duplicate accepted pair\"}, {\"test\": \"accepted_revision_edges_reconcile\", \"status\": \"PASS\", \"detail\": \"12 accepted revisions all materialized as edges\"}, {\"test\": \"authority_partitions_disjoint\", \"status\": \"PASS\", \"detail\": \"accepted/review/negative pair sets disjoint\"}, {\"test\": \"cross_wave_only\", \"status\": \"PASS\", \"detail\": \"all accepted continuity edges cross waves\"}, {\"test\": \"semantic_role_mismatch_explicit\", \"status\": \"PASS\", \"detail\": \"source-specific check below\"}, {\"test\": \"structure_membership_referential_integrity\", \"status\": \"PASS\", \"detail\": \"15 structures / 76 memberships\"}, {\"test\": \"structures_inventory_only\", \"status\": \"PASS\", \"detail\": \"no structure promoted\"}, {\"test\": \"response_gap_reconciliation\", \"status\": \"PASS\", \"detail\": \"6 gaps\"}, {\"test\": \"source_references_present\", \"status\": \"PASS\", \"detail\": \"source reference surface present\"}, {\"test\": \"no_family_authoring\", \"status\": \"PASS\", \"detail\": \"none authored\"}, {\"test\": \"no_live_execution\", \"status\": \"PASS\", \"detail\": \"catalog-only pass\"}, {\"test\": \"referent_false_matches_guarded\", \"status\": \"PASS\", \"detail\": \"country/family economy and main-earner/respondent occupation blocked\"}, {\"test\": \"obvious_cross_code_continuities_recovered\", \"status\": \"PASS\", \"detail\": \"local government/courts/police/age recovered\"}, {\"test\": \"zero_row_ledgers_schema_valid\", \"status\": \"PASS\", \"detail\": \"negative/same-wave ledgers retain schemas\"}, {\"test\": \"semantic_role_mismatch_explicit\", \"status\": \"PASS\", \"detail\": \"no accepted role mismatch\"}]}"
+      },
+      {
+        "check": "index_hashes",
+        "status": "PASS",
+        "detail": "{\"rows\": 26, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+      },
+      {
+        "check": "index_coverage",
+        "status": "PASS",
+        "detail": "{\"actual\": 26, \"listed\": 26, \"only_actual\": [], \"only_listed\": []}"
+      },
+      {
+        "check": "sums_hashes",
+        "status": "PASS",
+        "detail": "{\"rows\": 26, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+      },
+      {
+        "check": "sums_coverage",
+        "status": "PASS",
+        "detail": "{\"actual\": 26, \"listed\": 26, \"only_actual\": [], \"only_listed\": []}"
+      },
+      {
+        "check": "wave_coverage_totals",
+        "status": "PASS",
+        "detail": "{\"question_nodes\": 141, \"response_bound\": 135, \"response_gaps\": 6, \"source_structures\": 15}"
+      },
+      {
+        "check": "south_asia_recovered_continuities",
+        "status": "PASS",
+        "detail": "[('W1', 'c13c', 'W2', 'GB7f'), ('W1', 'c13g', 'W2', 'GB7g'), ('W1', 'c13e', 'W2', 'GB7k'), ('W1', 'd1', 'W2', 'z1')]"
+      },
+      {
+        "check": "south_asia_false_matches_blocked",
+        "status": "PASS",
+        "detail": "[('W1', 'b8', 'W2', 'GBC5'), ('W1', 'd7', 'W2', 'z8')]"
+      }
+    ],
+    "LiTS": [
+      {
+        "check": "gap_file_matches_node_status",
+        "status": "PASS",
+        "detail": "{\"file\": 1371, \"status\": 1371, \"file_only\": 0, \"status_only\": 0}"
+      },
+      {
+        "check": "node_id_unique",
+        "status": "PASS",
+        "detail": "4434 rows / 4434 unique"
+      },
+      {
+        "check": "phase0_exact_identity_set",
+        "status": "PASS",
+        "detail": "{\"deep\": 4434, \"phase0\": 4434, \"deep_only\": 0, \"phase0_only\": 0}"
+      },
+      {
+        "check": "gap_ids_subset_nodes",
+        "status": "PASS",
+        "detail": "1371 gaps; orphan=0"
+      },
+      {
+        "check": "closure_node_count",
+        "status": "PASS",
+        "detail": "actual=4434 closure=4434"
+      },
+      {
+        "check": "closure_gap_count",
+        "status": "PASS",
+        "detail": "actual=1371 closure=1371"
+      },
+      {
+        "check": "closure_bound_arithmetic",
+        "status": "PASS",
+        "detail": "nodes-gaps=3063 closure=3063"
+      },
+      {
+        "check": "edge_ids_unique",
+        "status": "PASS",
+        "detail": "133 rows / 133 unique"
+      },
+      {
+        "check": "edge_referential_integrity",
+        "status": "PASS",
+        "detail": "{\"orphan\": 0, \"self\": 0, \"badstatus\": {}}"
+      },
+      {
+        "check": "closure_edge_count",
+        "status": "PASS",
+        "detail": "actual=133 closure=133"
+      },
+      {
+        "check": "structure_ids_unique",
+        "status": "PASS",
+        "detail": "882 rows / 882 unique"
+      },
+      {
+        "check": "closure_structure_count",
+        "status": "PASS",
+        "detail": "actual=882 closure=882"
+      },
+      {
+        "check": "structure_membership_integrity",
+        "status": "PASS",
+        "detail": "{\"memberships\": 7878, \"orphan_structures\": 0, \"orphan_nodes\": 0, \"member_count_mismatch\": 0}"
+      },
+      {
+        "check": "positive_negative_unresolved_pair_disjointness",
+        "status": "PASS",
+        "detail": "{\"edge_guard_overlap\": 0, \"edge_review_overlap\": 0, \"guard_review_overlap\": 0}"
+      },
+      {
+        "check": "pipeline_boundary_declared",
+        "status": "PASS",
+        "detail": "state flags inspected"
+      },
+      {
+        "check": "validation_results_all_pass",
+        "status": "PASS",
+        "detail": "20/20 PASS"
+      },
+      {
+        "check": "validation_summary_pass",
+        "status": "PASS",
+        "detail": "{\"status\": \"PASS\", \"calibre_audit\": \"v2\", \"tests\": [{\"test\": \"exact_node_count\", \"status\": \"PASS\", \"detail\": \"4434 expected 4434\"}, {\"test\": \"unique_exact_identity\", \"status\": \"PASS\", \"detail\": \"question implementation IDs unique\"}, {\"test\": \"edge_endpoints_exist\", \"status\": \"PASS\", \"detail\": \"133 accepted edges\"}, {\"test\": \"edge_pairs_unique\", \"status\": \"PASS\", \"detail\": \"no duplicate accepted pair\"}, {\"test\": \"accepted_revision_edges_reconcile\", \"status\": \"PASS\", \"detail\": \"75 accepted revisions all materialized as edges\"}, {\"test\": \"authority_partitions_disjoint\", \"status\": \"PASS\", \"detail\": \"accepted/review/negative pair sets disjoint\"}, {\"test\": \"cross_wave_only\", \"status\": \"PASS\", \"detail\": \"all accepted continuity edges cross waves\"}, {\"test\": \"semantic_role_mismatch_explicit\", \"status\": \"PASS\", \"detail\": \"source-specific check below\"}, {\"test\": \"structure_membership_referential_integrity\", \"status\": \"PASS\", \"detail\": \"882 structures / 7878 memberships\"}, {\"test\": \"structures_inventory_only\", \"status\": \"PASS\", \"detail\": \"no structure promoted\"}, {\"test\": \"response_gap_reconciliation\", \"status\": \"PASS\", \"detail\": \"1371 gaps\"}, {\"test\": \"source_references_present\", \"status\": \"PASS\", \"detail\": \"source reference surface present\"}, {\"test\": \"no_family_authoring\", \"status\": \"PASS\", \"detail\": \"none authored\"}, {\"test\": \"no_live_execution\", \"status\": \"PASS\", \"detail\": \"catalog-only pass\"}, {\"test\": \"false_same_code_revisions_blocked\", \"status\": \"PASS\", \"detail\": \"rent/repayment and economic/political blocked\"}, {\"test\": \"roster_slot_continuity_recovered\", \"status\": \"PASS\", \"detail\": \"12 gender roster slots recovered\"}, {\"test\": \"roster_code_reuse_guarded\", \"status\": \"PASS\", \"detail\": \"gender -> household-presence reuse blocked\"}, {\"test\": \"semantic_role_mismatch_explicit\", \"status\": \"PASS\", \"detail\": \"6 reconciliations / 6 mismatch edges\"}, {\"test\": \"case_sensitive_collision_controls_present\", \"status\": \"PASS\", \"detail\": \"identifier collision audit retained\"}, {\"test\": \"repeated_group_controls_present\", \"status\": \"PASS\", \"detail\": \"repeated/multiselect audit retained\"}]}"
+      },
+      {
+        "check": "index_hashes",
+        "status": "PASS",
+        "detail": "{\"rows\": 31, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+      },
+      {
+        "check": "index_coverage",
+        "status": "PASS",
+        "detail": "{\"actual\": 31, \"listed\": 31, \"only_actual\": [], \"only_listed\": []}"
+      },
+      {
+        "check": "sums_hashes",
+        "status": "PASS",
+        "detail": "{\"rows\": 31, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+      },
+      {
+        "check": "sums_coverage",
+        "status": "PASS",
+        "detail": "{\"actual\": 31, \"listed\": 31, \"only_actual\": [], \"only_listed\": []}"
+      },
+      {
+        "check": "wave_coverage_totals",
+        "status": "PASS",
+        "detail": "{\"question_nodes\": 4434, \"response_bound\": 3063, \"response_gaps\": 1371, \"source_structures\": 882}"
+      },
+      {
+        "check": "lits_false_same_code_continuities_removed",
+        "status": "PASS",
+        "detail": "[('III', 'q213', 'IV', 'q213'), ('III', 'q401a', 'IV', 'q401a')]"
+      },
+      {
+        "check": "lits_semantic_role_reconciliations_present",
+        "status": "PASS",
+        "detail": "6 rulings"
+      }
+    ]
+  },
+  "global_checks": [
+    {
+      "check": "all_nine_node_union_exact_phase0",
+      "status": "PASS",
+      "detail": "{\"all_sources\": 18276, \"phase0\": 18276, \"source_only\": 0, \"phase0_only\": 0}"
+    },
+    {
+      "check": "all_nine_nodes_total",
+      "status": "PASS",
+      "detail": "18276 expected 18276"
+    },
+    {
+      "check": "all_nine_response_bound_total",
+      "status": "PASS",
+      "detail": "16308 expected 16308"
+    },
+    {
+      "check": "all_nine_response_gaps_total",
+      "status": "PASS",
+      "detail": "1968 expected 1968"
+    },
+    {
+      "check": "all_nine_accepted_continuity_edges_total",
+      "status": "PASS",
+      "detail": "4759 expected 4759"
+    },
+    {
+      "check": "all_nine_source_structures_total",
+      "status": "PASS",
+      "detail": "2499 expected 2499"
+    }
+  ],
+  "p2_package_checks": [
+    {
+      "check": "index_hashes",
+      "status": "PASS",
+      "detail": "{\"rows\": 17, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+    },
+    {
+      "check": "index_coverage",
+      "status": "PASS",
+      "detail": "{\"actual\": 17, \"listed\": 17, \"only_actual\": [], \"only_listed\": []}"
+    },
+    {
+      "check": "sums_hashes",
+      "status": "PASS",
+      "detail": "{\"rows\": 17, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+    },
+    {
+      "check": "sums_coverage",
+      "status": "PASS",
+      "detail": "{\"actual\": 17, \"listed\": 17, \"only_actual\": [], \"only_listed\": []}"
+    },
+    {
+      "check": "zip_integrity:Rawlsing_P2_Asian_Barometer_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:Rawlsing_P2_Latinobarometro_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:Rawlsing_P2_LiTS_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:Rawlsing_P2_South_Asia_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "handoff_section30_copy:00_START_HERE/CURRENT_STATE.json",
+      "status": "PASS",
+      "detail": "00_START_HERE/CURRENT_STATE.json"
+    },
+    {
+      "check": "handoff_section30_copy:00_START_HERE/EXACT_RESUME_POINT.md",
+      "status": "PASS",
+      "detail": "00_START_HERE/EXACT_RESUME_POINT.md"
+    },
+    {
+      "check": "handoff_section30_copy:00_START_HERE/Rawlsing_P2_Remaining_Four_Calibre_Audit_and_Closure_Report_v2_20260731.docx",
+      "status": "PASS",
+      "detail": "00_START_HERE/Rawlsing_P2_Remaining_Four_Calibre_Audit_and_Closure_Report_v2_20260731.docx"
+    },
+    {
+      "check": "handoff_section30_copy:01_AUDIT/Rawlsing_P2_Remaining_Four_Calibre_Audit_Matrix_v2.csv",
+      "status": "PASS",
+      "detail": "01_AUDIT/Rawlsing_P2_Remaining_Four_Calibre_Audit_Matrix_v2.csv"
+    },
+    {
+      "check": "handoff_section30_copy:01_AUDIT/Rawlsing_P2_Remaining_Four_Correction_Summary_v2.csv",
+      "status": "PASS",
+      "detail": "01_AUDIT/Rawlsing_P2_Remaining_Four_Correction_Summary_v2.csv"
+    },
+    {
+      "check": "handoff_section30_copy:01_AUDIT/Rawlsing_P2_Remaining_Four_Validation_Summary_v2.csv",
+      "status": "PASS",
+      "detail": "01_AUDIT/Rawlsing_P2_Remaining_Four_Validation_Summary_v2.csv"
+    },
+    {
+      "check": "handoff_section30_copy:01_AUDIT/Supersession_Ledger_v2.csv",
+      "status": "PASS",
+      "detail": "01_AUDIT/Supersession_Ledger_v2.csv"
+    },
+    {
+      "check": "handoff_section30_copy:02_ALL_NINE_CLOSURE/Rawlsing_P2_All_Nine_Source_Local_Closure_Summary_v2.csv",
+      "status": "PASS",
+      "detail": "02_ALL_NINE_CLOSURE/Rawlsing_P2_All_Nine_Source_Local_Closure_Summary_v2.csv"
+    },
+    {
+      "check": "handoff_section30_copy:03_SOURCE_PACKAGES/Rawlsing_P2_Asian_Barometer_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "03_SOURCE_PACKAGES/Rawlsing_P2_Asian_Barometer_AllWave_Deep_Pass_v2_20260731.zip"
+    },
+    {
+      "check": "handoff_section30_copy:03_SOURCE_PACKAGES/Rawlsing_P2_Latinobarometro_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "03_SOURCE_PACKAGES/Rawlsing_P2_Latinobarometro_AllWave_Deep_Pass_v2_20260731.zip"
+    },
+    {
+      "check": "handoff_section30_copy:03_SOURCE_PACKAGES/Rawlsing_P2_LiTS_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "03_SOURCE_PACKAGES/Rawlsing_P2_LiTS_AllWave_Deep_Pass_v2_20260731.zip"
+    },
+    {
+      "check": "handoff_section30_copy:03_SOURCE_PACKAGES/Rawlsing_P2_South_Asia_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "03_SOURCE_PACKAGES/Rawlsing_P2_South_Asia_AllWave_Deep_Pass_v2_20260731.zip"
+    },
+    {
+      "check": "handoff_section30_copy:04_REBUILD_AND_PROVENANCE/finalize_calibre_audit.py",
+      "status": "PASS",
+      "detail": "04_REBUILD_AND_PROVENANCE/finalize_calibre_audit.py"
+    },
+    {
+      "check": "handoff_section30_copy:04_REBUILD_AND_PROVENANCE/rebuild_calibre_audited_four.py",
+      "status": "PASS",
+      "detail": "04_REBUILD_AND_PROVENANCE/rebuild_calibre_audited_four.py"
+    },
+    {
+      "check": "handoff_section30_copy:05_FINAL_INTEGRITY/Final_Integrity_Validation_Summary_v2.json",
+      "status": "PASS",
+      "detail": "05_FINAL_INTEGRITY/Final_Integrity_Validation_Summary_v2.json"
+    },
+    {
+      "check": "handoff_section30_copy:05_FINAL_INTEGRITY/Final_Integrity_Validation_v2.csv",
+      "status": "PASS",
+      "detail": "05_FINAL_INTEGRITY/Final_Integrity_Validation_v2.csv"
+    },
+    {
+      "check": "handoff_section30_copy:PACKAGE_INDEX.csv",
+      "status": "PASS",
+      "detail": "PACKAGE_INDEX.csv"
+    },
+    {
+      "check": "handoff_section30_copy:README.md",
+      "status": "PASS",
+      "detail": "README.md"
+    },
+    {
+      "check": "handoff_section30_copy:SHA256SUMS.csv",
+      "status": "PASS",
+      "detail": "SHA256SUMS.csv"
+    }
+  ],
+  "handoff_checks": [
+    {
+      "check": "index_hashes",
+      "status": "PASS",
+      "detail": "{\"rows\": 341, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+    },
+    {
+      "check": "index_coverage",
+      "status": "PASS",
+      "detail": "{\"actual\": 341, \"listed\": 341, \"only_actual\": [], \"only_listed\": []}"
+    },
+    {
+      "check": "sums_hashes",
+      "status": "PASS",
+      "detail": "{\"rows\": 341, \"bad\": [], \"missing\": [], \"sizebad\": []}"
+    },
+    {
+      "check": "sums_coverage",
+      "status": "PASS",
+      "detail": "{\"actual\": 341, \"listed\": 341, \"only_actual\": [], \"only_listed\": []}"
+    },
+    {
+      "check": "zip_integrity:03_SEMANTIC_REFERENCE/crosswave_driver_atlas(1).zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:04_EVIDENCE_ARCHIVES/Rawlsing_NEXT_CHAT_ALL_RAW_SOURCES_AND_ASSETS_20260730.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:04_EVIDENCE_ARCHIVES/Rawlsing_NEXT_CHAT_ARTIFACTS_AND_CODE_LITE_20260730.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:04_EVIDENCE_ARCHIVES/Rawlsing_NEXT_CHAT_FULL_BUNDLE_INDEX_20260730.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:04_EVIDENCE_ARCHIVES/Rawlsing_canonical_registry_supplement_20260730T155941.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:04_EVIDENCE_ARCHIVES/Rawlsing_live_attestation_20260730T153457.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:04_EVIDENCE_ARCHIVES/authority_35wave_question_and_response_authority.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:04_EVIDENCE_ARCHIVES/ddm_registries.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:04_EVIDENCE_ARCHIVES/final_codebooks_35wave.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:05_PHASE_HISTORY/Rawlsing_P1_5_Architecture_Closure_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:05_PHASE_HISTORY/Rawlsing_P1_5_Canonical_Joint_Evidence_Architecture_Implementation_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:05_PHASE_HISTORY/Rawlsing_P1_5_Canonical_Joint_Evidence_Architecture_Planning_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:05_PHASE_HISTORY/Rawlsing_P1_Downstream_Joint_Evidence_Requirements_v1_20260730.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:08_P2_PHASE0/Rawlsing_P2_Phase0_35Wave_Question_Node_Skeleton_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:09_P2_GSS_PASS1/Rawlsing_P2_GSS_AllWave_Deep_Pass_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:10_P2_WVS_PASS1/Rawlsing_P2_WVS_AllWave_Deep_Pass_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:11_P2_GSS_WVS_CROSS_SOURCE_REFRESH/Rawlsing_P2_GSS_WVS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:12_P2_EVS_PASS1/Rawlsing_P2_EVS_AllWave_Deep_Pass_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:13_P2_EVS_WVS_CROSS_SOURCE_REFRESH/Rawlsing_P2_EVS_WVS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:14_P2_EVS_GSS_CROSS_SOURCE_REFRESH/Rawlsing_P2_EVS_GSS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:15_P2_ARAB_BAROMETER_PASS1/Rawlsing_P2_Arab_Barometer_AllWave_Deep_Pass_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:16_P2_ARAB_GSS_CROSS_SOURCE_REFRESH/Rawlsing_P2_Arab_Barometer_GSS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:17_P2_ARAB_WVS_CROSS_SOURCE_REFRESH/Rawlsing_P2_Arab_Barometer_WVS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:18_P2_ARAB_EVS_CROSS_SOURCE_REFRESH/Rawlsing_P2_Arab_Barometer_EVS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:19_P2_AFROBAROMETER_PASS1/Rawlsing_P2_Afrobarometer_AllRound_Deep_Pass_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:20_P2_AFRO_GSS_CROSS_SOURCE_REFRESH/Rawlsing_P2_Afrobarometer_GSS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:21_P2_AFRO_WVS_CROSS_SOURCE_REFRESH/Rawlsing_P2_Afrobarometer_WVS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:22_P2_AFRO_EVS_CROSS_SOURCE_REFRESH/Rawlsing_P2_Afrobarometer_EVS_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:23_P2_AFRO_ARAB_BAROMETER_CROSS_SOURCE_REFRESH/Rawlsing_P2_Afrobarometer_Arab_Barometer_Cross_Source_Candidate_Refresh_v1_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:24_P2_ASIAN_BAROMETER_PASS1/Rawlsing_P2_Asian_Barometer_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:25_P2_LATINOBAROMETRO_PASS1/Rawlsing_P2_Latinobarometro_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:26_P2_SOUTH_ASIA_PASS1/Rawlsing_P2_South_Asia_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:27_P2_LITS_PASS1/Rawlsing_P2_LiTS_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:30_P2_REMAINING_FOUR_CALIBRE_AUDIT/PACKAGE_CONTENTS/03_SOURCE_PACKAGES/Rawlsing_P2_Asian_Barometer_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:30_P2_REMAINING_FOUR_CALIBRE_AUDIT/PACKAGE_CONTENTS/03_SOURCE_PACKAGES/Rawlsing_P2_Latinobarometro_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:30_P2_REMAINING_FOUR_CALIBRE_AUDIT/PACKAGE_CONTENTS/03_SOURCE_PACKAGES/Rawlsing_P2_LiTS_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:30_P2_REMAINING_FOUR_CALIBRE_AUDIT/PACKAGE_CONTENTS/03_SOURCE_PACKAGES/Rawlsing_P2_South_Asia_AllWave_Deep_Pass_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "zip_integrity:30_P2_REMAINING_FOUR_CALIBRE_AUDIT/Rawlsing_P2_Remaining_Four_Calibre_Audit_and_Closure_v2_20260731.zip",
+      "status": "PASS",
+      "detail": "None"
+    },
+    {
+      "check": "current_state_all_nine_closed",
+      "status": "PASS",
+      "detail": "{\"project\": \"Rawlsing J-family authority\", \"current_phase\": \"P2\", \"current_pass\": \"P2_ALL_NINE_SOURCE_LOCAL_DEEP_PASSES_COMPLETE_CALIBRE_AUDITED\", \"next_pass\": \"P2_GLOBAL_CROSS_SOURCE_RECONCILIATION\", \"p1_status\": \"COMPLETE_FROZEN\", \"p1_5_status\": \"COMPLETE_FROZEN\", \"p2_phase0_status\": \"COMPLETE_CATALOG_DRAFT\", \"source_local_deep_passes_closed\": [\"GSS\", \"WVS\", \"EVS\", \"Arab Barometer\", \"Afrobarometer\", \"Asian Barometer\", \"Latinobarómetro\", \"South Asia\", \"LiTS\"], \"source_local_deep_passes_remaining\": [], \"active_waves\": 35, \"global_question_nodes\": 18276, \"global_response_bound\": 16308, \"global_response_gaps\": 1968, \"global_accepted_source_local_continuity_edges\": 4759, \"global_source_structures\": 2499, \"remaining_four_calibre_audit\": \"PASS_V2\", \"global_cross_source_exact_seed_authority\": false, \"substantive_family_authority_authored\": false, \"respondents_processed\": false, \"live_pipeline_modified\": false, \"remaining_four_calibre_audit_package_sha256\": \"a9cb726b6fe23a30081344abd214807ac179b8929179295728816d63e81ff546\", \"final_integrity_validation\": \"27/27 PASS\"}"
+    },
+    {
+      "check": "master_handoff_md_current",
+      "status": "FAIL",
+      "detail": "# Current governing handoff\n\nThe authoritative narrative is `Rawlsing_J_Family_Authority_Strategy_Master_Handoff_v7_20260731.docx`. P1/P1.5 and Phase 0 are frozen. GSS, WVS, EVS and Arab Barometer source-local terrains are closed. Next: Afrobarometer R1/R5/R9.\n"
+    },
+    {
+      "check": "next_chat_instruction_current_version",
+      "status": "FAIL",
+      "detail": "Read README_FIRST.md, CURRENT_STATE.json, EXACT_RESUME_POINT.md, SCOPE_LOCK.json and the v9 master handoff. Resume with P2 global cross-source reconciliation across all nine closed source terrains. Do not treat exact-text seed counts as the full semantic or nine-strata crosswalk, and do not author J-families until global P2 reconciliation closes.\n"
+    },
+    {
+      "check": "top_level_validation_current",
+      "status": "FAIL",
+      "detail": "{\"status\": \"PASS\", \"self_contained_restart_package\": true, \"source_local_deep_passes_closed\": [\"GSS\", \"WVS\", \"EVS\", \"Arab Barometer\"], \"j_family_authority_authored\": false, \"live_pipeline_modified\": false, \"next_source\": \"Afrobarometer\"}"
+    },
+    {
+      "check": "scope_lock_current_pass_exact",
+      "status": "FAIL",
+      "detail": "scope=P2_ALL_NINE_SOURCE_LOCAL_DEEP_PASSES_COMPLETE state=P2_ALL_NINE_SOURCE_LOCAL_DEEP_PASSES_COMPLETE_CALIBRE_AUDITED"
+    }
+  ],
+  "seed_checks": [
+    {
+      "check": "seed_ids_unique",
+      "status": "PASS",
+      "detail": "168 rows / 168 unique"
+    },
+    {
+      "check": "seed_endpoint_integrity",
+      "status": "PASS",
+      "detail": "orphan rows=0"
+    },
+    {
+      "check": "pairwise_seed_summary_reconciles",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "all_36_source_pairs_present",
+      "status": "PASS",
+      "detail": "36"
+    },
+    {
+      "check": "seeds_non_authoritative",
+      "status": "PASS",
+      "detail": "all rows inspected"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "calibre_audit": "v2",
+  "tests": [
+    {
+      "test": "exact_node_count",
+      "status": "PASS",
+      "detail": "814 expected 814"
+    },
+    {
+      "test": "unique_exact_identity",
+      "status": "PASS",
+      "detail": "question implementation IDs unique"
+    },
+    {
+      "test": "edge_endpoints_exist",
+      "status": "PASS",
+      "detail": "236 accepted edges"
+    },
+    {
+      "test": "edge_pairs_unique",
+      "status": "PASS",
+      "detail": "no duplicate accepted pair"
+    },
+    {
+      "test": "accepted_revision_edges_reconcile",
+      "status": "PASS",
+      "detail": "140 accepted revisions all materialized as edges"
+    },
+    {
+      "test": "authority_partitions_disjoint",
+      "status": "PASS",
+      "detail": "accepted/review/negative pair sets disjoint"
+    },
+    {
+      "test": "cross_wave_only",
+      "status": "PASS",
+      "detail": "all accepted continuity edges cross waves"
+    },
+    {
+      "test": "semantic_role_mismatch_explicit",
+      "status": "PASS",
+      "detail": "source-specific check below"
+    },
+    {
+      "test": "structure_membership_referential_integrity",
+      "status": "PASS",
+      "detail": "71 structures / 479 memberships"
+    },
+    {
+      "test": "structures_inventory_only",
+      "status": "PASS",
+      "detail": "no structure promoted"
+    },
+    {
+      "test": "response_gap_reconciliation",
+      "status": "PASS",
+      "detail": "112 gaps"
+    },
+    {
+      "test": "source_references_present",
+      "status": "PASS",
+      "detail": "source reference surface present"
+    },
+    {
+      "test": "no_family_authoring",
+      "status": "PASS",
+      "detail": "none authored"
+    },
+    {
+      "test": "no_live_execution",
+      "status": "PASS",
+      "detail": "catalog-only pass"
+    },
+    {
+      "test": "w6_excluded",
+      "status": "PASS",
+      "detail": "W6 absent"
+    },
+    {
+      "test": "repeated_slot_change_not_accepted",
+      "status": "PASS",
+      "detail": "W4 first-organization slot not joined to W5 third slot"
+    },
+    {
+      "test": "target_scope_expansion_reviewed",
+      "status": "PASS",
+      "detail": "government -> president/government remains unresolved"
+    },
+    {
+      "test": "semantic_role_mismatch_explicit",
+      "status": "PASS",
+      "detail": "no accepted role mismatch"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+SET
+    authority_release_id     | count 
+-----------------------------+-------
+ P3-AUTHORITY-2026-08-01-R36 |   141
+(1 row)
+
+    allocation_release_id    | historical_object_type | count 
+-----------------------------+------------------------+-------
+ P3-AUTHORITY-2026-08-01-R31 | CANDIDATE_FAMILY       |   141
+ P3-AUTHORITY-2026-08-01-R31 | CANDIDATE_REVISION     |   141
+ P3-AUTHORITY-2026-08-01-R35 | CANDIDATE_FAMILY       |   141
+ P3-AUTHORITY-2026-08-01-R35 | CANDIDATE_REVISION     |   141
+(4 rows)
+
+   candidate_origin_type   | count 
+---------------------------+-------
+ ATTACHMENT_REVIEW         |    22
+ PROPOSITION_ONLY_SEED     |    25
+ STRICT_RESPONSE_COMPONENT |    94
+(3 rows)
+
+ bad_current_base_candidates 
+-----------------------------
+                           0
+(1 row)
+

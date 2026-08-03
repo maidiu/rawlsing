@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "cumulative_verifier": {
+    "status": "PASS",
+    "checks_passed": 122,
+    "checks_total": 122,
+    "recursive_archive_instances": 88,
+    "unique_archive_payloads": 77,
+    "delivered_files_including_manifests": 762
+  },
+  "fixed_tranche": {
+    "incoming": 11847,
+    "adjudicated": 3000,
+    "remaining": 8847
+  },
+  "pytest": "25 passed",
+  "reproducibility": "PASS_HASH_EXACT_6_OF_6",
+  "docx_qa": {
+    "status": "PASS",
+    "documents": 2,
+    "rendered_pages": 3,
+    "visual_inspection": "PASS",
+    "accessibility_findings": {
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    }
+  },
+  "generated_cache_or_bytecode_debris": 0,
+  "outer_zip_and_fresh_extraction": "PASS_PROVISIONAL_PACKAGE; FINAL_OUTER_RETEST_AFTER_EMBEDDING_THIS_RETURN",
+  "wall_clock": {
+    "start_local": "2026-07-31T17:01:00-04:00",
+    "fresh_extraction_gate_local": "2026-07-31T17:32:00-04:00",
+    "observed_minutes": 31
+  },
+  "fresh_extraction_equivalence": {
+    "status": "PASS",
+    "files_compared": 762,
+    "byte_hash_mismatches": 0,
+    "manifest_failures": 0,
+    "section_pytest": "25 passed"
+  }
+}

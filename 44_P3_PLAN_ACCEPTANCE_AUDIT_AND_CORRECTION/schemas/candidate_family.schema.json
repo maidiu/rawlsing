@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/candidate_family.schema.json",
+  "title": "Rawlsing P3 Candidate Family Revision",
+  "type": "object",
+  "required": [
+    "candidate_family_id",
+    "revision_id",
+    "component_ids",
+    "member_ids",
+    "lifecycle_stage",
+    "candidate_classification",
+    "internal_pair_counts",
+    "closure_obligation_ids",
+    "evidence_bundle_hash",
+    "authority_release_id"
+  ],
+  "properties": {
+    "candidate_family_id": {
+      "type": "string",
+      "pattern": "^P3CAND-[0-9]{6}$"
+    },
+    "revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{8}$"
+    },
+    "component_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "canonical_signature_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lifecycle_stage": {
+      "enum": [
+        "DISCOVERED",
+        "GENERATED_CANDIDATE",
+        "EVIDENCE_COMPLETE",
+        "ADJUDICATION_REQUIRED",
+        "DECIDED",
+        "SUPERSEDED",
+        "DEPRECATED"
+      ]
+    },
+    "candidate_classification": {
+      "enum": [
+        "CLEAN_FAMILY_CANDIDATE",
+        "RESPONSE_VARIANT_CANDIDATE",
+        "SPLIT_REQUIRED",
+        "HIERARCHICAL_RELATION_ONLY",
+        "COLLISION_BEARING",
+        "STRUCTURAL_ANALOGY_ONLY",
+        "INSUFFICIENT_AUTHORITY",
+        "REJECTED_SEMANTIC_ARTIFACT"
+      ]
+    },
+    "internal_pair_counts": {
+      "type": "object",
+      "required": [
+        "expected_pairs",
+        "direct_positive",
+        "direct_collision",
+        "hierarchical_only",
+        "unruled",
+        "signature_conflict",
+        "signature_compatible"
+      ],
+      "properties": {
+        "expected_pairs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direct_positive": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direct_collision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hierarchical_only": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unruled": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "signature_conflict": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "signature_compatible": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "closure_obligation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "variant_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "exclusion_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "rank_tuple": {
+      "type": "array"
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

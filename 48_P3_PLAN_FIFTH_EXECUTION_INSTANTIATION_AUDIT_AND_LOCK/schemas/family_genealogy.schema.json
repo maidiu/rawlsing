@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/family_genealogy.schema.json",
+  "title": "family_genealogy",
+  "type": "object",
+  "required": [
+    "genealogy_id",
+    "relation_type",
+    "predecessor_family_ids",
+    "successor_family_ids",
+    "reason",
+    "adjudication_id",
+    "authority_release_id"
+  ],
+  "properties": {
+    "genealogy_id": {
+      "type": "string",
+      "pattern": "^P3GEN-[0-9]{6}$"
+    },
+    "relation_type": {
+      "enum": [
+        "DEPRECATE",
+        "MERGE",
+        "SPLIT",
+        "SUPERSEDE"
+      ]
+    },
+    "predecessor_family_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "successor_family_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adjudication_id": {
+      "type": "string",
+      "pattern": "^P3ADJ-[0-9]{6}$"
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "relation_type": {
+            "const": "SPLIT"
+          }
+        },
+        "required": [
+          "relation_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "predecessor_family_ids": {
+            "maxItems": 1
+          },
+          "successor_family_ids": {
+            "minItems": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relation_type": {
+            "const": "MERGE"
+          }
+        },
+        "required": [
+          "relation_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "predecessor_family_ids": {
+            "minItems": 2
+          },
+          "successor_family_ids": {
+            "minItems": 1,
+            "maxItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relation_type": {
+            "const": "SUPERSEDE"
+          }
+        },
+        "required": [
+          "relation_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "successor_family_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relation_type": {
+            "const": "DEPRECATE"
+          }
+        },
+        "required": [
+          "relation_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "successor_family_ids": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

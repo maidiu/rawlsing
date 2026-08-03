@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing P3 Candidate Family",
+  "type": "object",
+  "required": [
+    "candidate_family_id",
+    "component_ids",
+    "member_ids",
+    "candidate_status",
+    "internal_pair_counts",
+    "closure_obligation_ids",
+    "authority_release_id"
+  ],
+  "properties": {
+    "candidate_family_id": {
+      "type": "string",
+      "pattern": "^P3CAND-[0-9]{6}$"
+    },
+    "component_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "member_ids": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "canonical_signature_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "candidate_status": {
+      "type": "string"
+    },
+    "internal_pair_counts": {
+      "type": "object",
+      "required": [
+        "expected_pairs",
+        "direct_positive",
+        "direct_collision",
+        "hierarchical_only",
+        "unruled",
+        "signature_conflict",
+        "signature_compatible"
+      ],
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "closure_obligation_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "variant_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "exclusion_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "rank_tuple": {
+      "type": "array",
+      "items": {}
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

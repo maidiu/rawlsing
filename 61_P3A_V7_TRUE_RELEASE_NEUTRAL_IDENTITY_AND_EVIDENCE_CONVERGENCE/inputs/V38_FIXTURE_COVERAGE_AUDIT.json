@@ -1,0 +1,39 @@
+{
+  "delivered_fixture_cases": [
+    "release_neutral_family_origin_unchanged",
+    "changed_semantic_origin_requires_new_family",
+    "attempted_candidate_hash_update",
+    "production_dependency_on_review_csv",
+    "relabelled_old_query_output_as_current",
+    "release_ledger_row_with_no_prior_basis",
+    "v37_blocked_identity_not_current"
+  ],
+  "delivered_case_count": 7,
+  "required_authority_lifecycle_cases": [
+    "positive_accepted",
+    "positive_split",
+    "positive_hierarchy",
+    "mutation_duplicate_disposition",
+    "mutation_incomplete_split_union",
+    "mutation_omitted_hierarchy_endpoint",
+    "mutation_stale_evidence_hash",
+    "mutation_release_mismatch",
+    "mutation_incomplete_promotion_mapping"
+  ],
+  "missing_required_lifecycle_cases": [
+    "positive_accepted",
+    "positive_split",
+    "positive_hierarchy",
+    "mutation_duplicate_disposition",
+    "mutation_incomplete_split_union",
+    "mutation_omitted_hierarchy_endpoint",
+    "mutation_stale_evidence_hash",
+    "mutation_release_mismatch",
+    "mutation_incomplete_promotion_mapping"
+  ],
+  "dedicated_fixture_database_or_schema_created": false,
+  "accepted_split_hierarchy_transactions_executed": false,
+  "exact_sqlstate_and_named_trigger_assertions": false,
+  "assessment": "Section 60 replaced the required authority lifecycle suite with seven metadata assertions against the main R38 database.",
+  "verdict": "FIXTURE_LIFECYCLE_NOT_EXECUTED"
+}

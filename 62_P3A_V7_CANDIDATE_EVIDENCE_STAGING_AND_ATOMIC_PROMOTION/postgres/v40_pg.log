@@ -1,0 +1,15 @@
+2026-08-01 17:30:28.502 EDT [6994] LOG:  starting PostgreSQL 15.14 (Homebrew) on x86_64-apple-darwin22.3.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2026-08-01 17:30:28.503 EDT [6994] LOG:  listening on IPv4 address "127.0.0.1", port 55432
+2026-08-01 17:30:28.504 EDT [6994] LOG:  listening on Unix socket "/tmp/.s.PGSQL.55432"
+2026-08-01 17:30:28.542 EDT [6997] LOG:  database system was shut down at 2026-08-01 17:18:02 EDT
+2026-08-01 17:30:28.579 EDT [6994] LOG:  database system is ready to accept connections
+2026-08-01 17:34:22.305 EDT [7369] ERROR:  P3 append-only authority table p3_candidate_revision rejects UPDATE
+2026-08-01 17:34:22.305 EDT [7369] CONTEXT:  PL/pgSQL function p3_forbid_update_delete() line 3 at RAISE
+2026-08-01 17:34:22.305 EDT [7369] STATEMENT:  UPDATE p3_candidate_revision SET evidence_bundle_hash=$1 WHERE candidate_revision_id=(SELECT candidate_revision_id FROM p3_candidate_revision WHERE authority_release_id='P3-AUTHORITY-2026-08-01-R40' LIMIT 1)
+2026-08-01 17:35:10.394 EDT [6994] LOG:  received fast shutdown request
+2026-08-01 17:35:10.395 EDT [6994] LOG:  aborting any active transactions
+2026-08-01 17:35:10.397 EDT [6994] LOG:  background worker "logical replication launcher" (PID 7000) exited with exit code 1
+2026-08-01 17:35:10.399 EDT [6995] LOG:  shutting down
+2026-08-01 17:35:10.400 EDT [6995] LOG:  checkpoint starting: shutdown immediate
+2026-08-01 17:35:10.716 EDT [6995] LOG:  checkpoint complete: wrote 15414 buffers (94.1%); 0 WAL file(s) added, 0 removed, 11 recycled; write=0.190 s, sync=0.123 s, total=0.317 s; sync files=745, longest=0.008 s, average=0.001 s; distance=186651 kB, estimate=186651 kB
+2026-08-01 17:35:10.739 EDT [6994] LOG:  database system is shut down

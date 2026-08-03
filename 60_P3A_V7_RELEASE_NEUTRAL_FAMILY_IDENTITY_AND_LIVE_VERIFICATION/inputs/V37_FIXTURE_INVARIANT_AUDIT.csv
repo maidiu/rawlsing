@@ -1,0 +1,23 @@
+case,reported_status,named_invariant_reached,error_or_return,assessment
+valid_accepted_fixture,PASS,YES,,RECORDED
+valid_split_fixture,PASS,YES,,RECORDED
+valid_hierarchy_fixture,PASS,YES,,RECORDED
+mutation_incomplete_split_union,EXPECTED_FAIL,UNPROVEN,"split successor partition invalid
+CONTEXT:  PL/pgSQL function p3_assert_split_result_partition(text) line 11 at RAISE
+SQL statement ""SELECT p3_assert_split_result_partition(aid)""
+PL/pgSQL function p3_validate_adjudication_closure_deferred() line 13 at PERFORM",RECORDED
+mutation_omitted_hierarchy_endpoint,EXPECTED_FAIL,UNPROVEN,"adjudication member partition mismatch: missing 1, extra 0
+CONTEXT:  PL/pgSQL function p3_assert_adjudication_member_partition(text) line 8 at RAISE
+SQL statement ""SELECT p3_assert_adjudication_member_partition(aid)""
+PL/pgSQL function p3_validate_adjudication_closure_deferred() line 12 at PERFORM",RECORDED
+mutation_duplicate_dispositions,EXPECTED_FAIL,UNPROVEN,"duplicate key value violates unique constraint ""p3_adjudication_member_pkey""
+DETAIL:  Key (adjudication_id, member_object_id)=(P3ADJ-910014, p2lineage_05ad8b1ffbe7f0b676a658a4) already exists.",RECORDED
+mutation_release_mismatch,EXPECTED_FAIL,UNPROVEN,"Candidate event revision/family/release mismatch
+CONTEXT:  PL/pgSQL function p3_validate_candidate_status_event() line 5 at RAISE",RECORDED
+mutation_incomplete_promotion_mapping,EXPECTED_FAIL,NO,"Variant acceptance requires variant assignment
+CONTEXT:  PL/pgSQL function p3_validate_adjudication_completeness() line 16 at RAISE",FAILS_AT_VARIANT_ASSIGNMENT_PREREQUISITE_NOT_INCOMPLETE_PROMOTION_MAPPING
+mutation_stale_evidence_hash,EXPECTED_FAIL,YES,"{
+  ""status"": ""FAIL"",
+  ""error"": ""evidence bundle hash does not recompute from full delivered evidence""
+}
+",NESTED_SEMANTIC_MUTATION_NOW_REACHES_HASH_INVARIANT

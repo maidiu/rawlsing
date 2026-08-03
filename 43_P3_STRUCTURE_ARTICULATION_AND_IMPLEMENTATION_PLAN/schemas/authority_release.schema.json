@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing P3 Authority Release",
+  "type": "object",
+  "required": [
+    "release_id",
+    "schema_version",
+    "builder_version",
+    "input_manifest_hash",
+    "status",
+    "created_at",
+    "object_counts",
+    "validation_return_hash"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    },
+    "parent_release_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "builder_version": {
+      "type": "string"
+    },
+    "input_manifest_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "VALIDATED",
+        "SHADOW",
+        "PROMOTED",
+        "ROLLED_BACK",
+        "SUPERSEDED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "object_counts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "changed_object_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "migration_artifact": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rollback_artifact": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "validation_return_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": false
+}

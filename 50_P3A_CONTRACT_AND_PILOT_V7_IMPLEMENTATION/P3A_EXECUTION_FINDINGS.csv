@@ -1,0 +1,2 @@
+finding_id,severity,broken_rule,blast_radius,resolution,evidence_path
+P3A-FINDING-0001,BLOCKING_INPUT_CONTRADICTION,P3_LINEAGE_PARTICIPATION_BASELINE_v7 must agree row-by-row with P3_SIGNATURE_WORKSET_v7 for participation_status and signature_requirement.,"13,127 rows: 2,897 constraint-only lineages and 10,230 nonincident lineages carried contradictory signature/defer labels.","Baseline corrected to governing Plan v7/workset semantics without changing lineage IDs, incident counts, source family, or P2 authority.",outputs/participation_baseline_correction_return.json

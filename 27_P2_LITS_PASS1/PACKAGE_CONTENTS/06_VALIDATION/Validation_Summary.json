@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "calibre_audit": "v2",
+  "tests": [
+    {
+      "test": "exact_node_count",
+      "status": "PASS",
+      "detail": "4434 expected 4434"
+    },
+    {
+      "test": "unique_exact_identity",
+      "status": "PASS",
+      "detail": "question implementation IDs unique"
+    },
+    {
+      "test": "edge_endpoints_exist",
+      "status": "PASS",
+      "detail": "133 accepted edges"
+    },
+    {
+      "test": "edge_pairs_unique",
+      "status": "PASS",
+      "detail": "no duplicate accepted pair"
+    },
+    {
+      "test": "accepted_revision_edges_reconcile",
+      "status": "PASS",
+      "detail": "75 accepted revisions all materialized as edges"
+    },
+    {
+      "test": "authority_partitions_disjoint",
+      "status": "PASS",
+      "detail": "accepted/review/negative pair sets disjoint"
+    },
+    {
+      "test": "cross_wave_only",
+      "status": "PASS",
+      "detail": "all accepted continuity edges cross waves"
+    },
+    {
+      "test": "semantic_role_mismatch_explicit",
+      "status": "PASS",
+      "detail": "source-specific check below"
+    },
+    {
+      "test": "structure_membership_referential_integrity",
+      "status": "PASS",
+      "detail": "882 structures / 7878 memberships"
+    },
+    {
+      "test": "structures_inventory_only",
+      "status": "PASS",
+      "detail": "no structure promoted"
+    },
+    {
+      "test": "response_gap_reconciliation",
+      "status": "PASS",
+      "detail": "1371 gaps"
+    },
+    {
+      "test": "source_references_present",
+      "status": "PASS",
+      "detail": "source reference surface present"
+    },
+    {
+      "test": "no_family_authoring",
+      "status": "PASS",
+      "detail": "none authored"
+    },
+    {
+      "test": "no_live_execution",
+      "status": "PASS",
+      "detail": "catalog-only pass"
+    },
+    {
+      "test": "false_same_code_revisions_blocked",
+      "status": "PASS",
+      "detail": "rent/repayment and economic/political blocked"
+    },
+    {
+      "test": "roster_slot_continuity_recovered",
+      "status": "PASS",
+      "detail": "12 gender roster slots recovered"
+    },
+    {
+      "test": "roster_code_reuse_guarded",
+      "status": "PASS",
+      "detail": "gender -> household-presence reuse blocked"
+    },
+    {
+      "test": "semantic_role_mismatch_explicit",
+      "status": "PASS",
+      "detail": "6 reconciliations / 6 mismatch edges"
+    },
+    {
+      "test": "case_sensitive_collision_controls_present",
+      "status": "PASS",
+      "detail": "identifier collision audit retained"
+    },
+    {
+      "test": "repeated_group_controls_present",
+      "status": "PASS",
+      "detail": "repeated/multiselect audit retained"
+    }
+  ]
+}

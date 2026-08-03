@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v4/canonical_family_revision.schema.json",
+  "title": "canonical_family_revision",
+  "type": "object",
+  "required": [
+    "family_revision_id",
+    "canonical_family_id",
+    "revision_number",
+    "canonical_signature_id",
+    "canonical_proposition",
+    "member_ids",
+    "variant_ids",
+    "exclusion_ids",
+    "evidence_bundle_hash",
+    "authority_release_id"
+  ],
+  "properties": {
+    "family_revision_id": {
+      "type": "string",
+      "pattern": "^JFAMREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "canonical_family_id": {
+      "type": "string",
+      "pattern": "^JFAM-[0-9]{6}$"
+    },
+    "revision_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "canonical_signature_id": {
+      "type": "string",
+      "pattern": "^P3SIG-[0-9a-f]{16}$"
+    },
+    "canonical_proposition": {
+      "$ref": "https://rawlsing.local/schemas/p3/v4/canonical_proposition.schema.json"
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "variant_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "exclusion_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false
+}

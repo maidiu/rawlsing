@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/candidate_variant.schema.json",
+  "title": "Rawlsing P3 Family Variant Revision",
+  "type": "object",
+  "required": [
+    "variant_id",
+    "owner_id",
+    "revision_id",
+    "variant_dimension",
+    "variant_value",
+    "member_ids",
+    "value_portability_status",
+    "authority_release_id"
+  ],
+  "properties": {
+    "variant_id": {
+      "type": "string",
+      "pattern": "^P3VAR-[0-9]{6}$"
+    },
+    "owner_id": {
+      "type": "string"
+    },
+    "revision_id": {
+      "type": "string",
+      "pattern": "^P3VARREV-[0-9]{8}$"
+    },
+    "variant_dimension": {
+      "enum": [
+        "RESPONSE_TOPOLOGY",
+        "WORDING_TRANSLATION",
+        "SOURCE_RESPONSE_FORM",
+        "HISTORICAL_INTERVAL",
+        "OTHER_EXPLICITLY_GOVERNED"
+      ]
+    },
+    "variant_value": {
+      "type": "string",
+      "minLength": 1
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "value_portability_status": {
+      "const": "NOT_AUTHORIZED_BY_P3"
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

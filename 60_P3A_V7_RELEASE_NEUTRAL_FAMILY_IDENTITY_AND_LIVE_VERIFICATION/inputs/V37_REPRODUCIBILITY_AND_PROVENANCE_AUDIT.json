@@ -1,0 +1,43 @@
+{
+  "production_review_artifact_dependencies": [
+    {
+      "code": "p3a_v37_load.py",
+      "dependency": "V36_HISTORICAL_IDENTITY_AND_SUCCESSOR_CONTRADICTION.csv",
+      "effect": "Review-generated regression CSV supplies production historical origin/evidence values."
+    },
+    {
+      "code": "p3a_v37_reports.py",
+      "dependency": "57/.../V34_CANDIDATE_IDENTITY_REUSE_AUDIT.csv",
+      "effect": "Review-generated audit is zipped to current candidates to create migration reporting."
+    }
+  ],
+  "historical_provenance_problem": {
+    "r35_rows_labelled_exact": 282,
+    "r35_source_artifact": "section-59 review audit CSV, not the immutable v35 authority artifact",
+    "r31_rows_labelled_identity_only_unknown": 282,
+    "r31_blanket_unknown_is_supported_by_source_inventory": false,
+    "detail": "The cumulative workspace contains sections 53-56 with exact or reconstructible prior candidate-origin surfaces; section 59 performs no recoverability inventory before declaring every R31 origin/hash unknown."
+  },
+  "candidate_hash_immutability": {
+    "loader_inserts_partial_candidate_hash": true,
+    "packet_builder_updates_candidate_revision_hash_after_insert": true,
+    "finalize_hashes_updates_all_candidates": true,
+    "governing_violation": "Immutable candidate revision evidence hash is finalized by mutation after insertion."
+  },
+  "query_matrix_provenance": {
+    "v37_reports_reads": "57/.../postgres/v35_populated_q01_q54_raw.tsv",
+    "actual_v37_q01_q54_execution_code_present": false,
+    "v37_query_matrix_is_v35_evidence_relabelled": true
+  },
+  "release_change_ledger": {
+    "csv_rows": 53611,
+    "delivered_insert_or_builder_present": false,
+    "reproducible": false
+  },
+  "verifier_limitations": [
+    "Accepts the release ledger by row count only.",
+    "Recomputes hashes only after the mutable finalize-hashes update path has run.",
+    "Checks query failure labels but not that queries executed against R37.",
+    "Does not reject production dependencies on review CSVs."
+  ]
+}

@@ -1,0 +1,97 @@
+version: v1_seed
+scope: GSS_2010_first_pass_relation_axes
+notes:
+  - "This registry formalizes the relation-axis vocabulary already used by the live builder and the older atlas packs."
+  - "It is intentionally compact and target-aware."
+relation_axes:
+  - id: respondent_position
+    label: respondent position
+    requires_target: false
+    notes: "Used for strata and respondent/household coordinates."
+  - id: trust
+    label: trust
+    requires_target: true
+  - id: distrust
+    label: distrust
+    requires_target: true
+  - id: confidence
+    label: confidence
+    requires_target: true
+  - id: threat
+    label: threat
+    requires_target: true
+  - id: usefulness
+    label: usefulness
+    requires_target: true
+  - id: dependency
+    label: dependency
+    requires_target: true
+  - id: legitimacy
+    label: legitimacy
+    requires_target: true
+  - id: betrayal
+    label: betrayal
+    requires_target: true
+  - id: admiration
+    label: admiration
+    requires_target: true
+  - id: moral_permissibility
+    label: moral permissibility
+    requires_target: true
+  - id: social_distance
+    label: social distance
+    requires_target: true
+  - id: proximity_boundary
+    label: proximity boundary
+    requires_target: true
+  - id: labor_threat
+    label: labor threat
+    requires_target: true
+  - id: welfare_threat
+    label: welfare threat
+    requires_target: true
+  - id: service_access
+    label: service access
+    requires_target: true
+  - id: bribe_exposure
+    label: bribe exposure
+    requires_target: true
+  - id: public_expression_risk
+    label: public expression risk
+    requires_target: true
+  - id: civic_action_mode
+    label: civic action mode
+    requires_target: true
+  - id: authoritarian_alternative_rejection
+    label: authoritarian alternative rejection
+    requires_target: true
+  - id: democracy_definition
+    label: democracy definition
+    requires_target: true
+  - id: democracy_satisfaction
+    label: democracy satisfaction
+    requires_target: true
+  - id: rights_defender_attribution
+    label: rights defender attribution
+    requires_target: true
+  - id: mediator_suitability
+    label: mediator suitability
+    requires_target: true
+  - id: aid_legitimacy
+    label: aid legitimacy
+    requires_target: true
+  - id: development_model_preference
+    label: development model preference
+    requires_target: true
+  - id: catastrophe_naming
+    label: catastrophe naming
+    requires_target: true
+  - id: transition_memory_comparison
+    label: transition memory comparison
+    requires_target: true
+  - id: privatization_justice
+    label: privatization justice
+    requires_target: true
+  - id: market_planned_preference
+    label: market/planned preference
+    requires_target: true

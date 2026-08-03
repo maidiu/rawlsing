@@ -1,0 +1,50 @@
+maximum_manual_candidates: 40
+global_generation_surface: All 641 closed P2 proposition relations
+selection_goal: Test the contract against the actual terrain, not maximize easy acceptances.
+strata:
+- category: clean_multi_source
+  target_count: 8
+  criteria: Multiple sources, dense direct proposition evidence, no apparent hard
+    collision.
+- category: response_variant
+  target_count: 6
+  criteria: One proposition with multiple response topologies or source-specific response
+    forms.
+- category: split_required
+  target_count: 6
+  criteria: Connectivity component contains materially different proposition signatures.
+- category: collision_or_nontransitive
+  target_count: 5
+  criteria: Positive paths coexist with negative, unresolved, or unruled endpoint
+    relations.
+- category: hierarchical_target
+  target_count: 4
+  criteria: Broader/narrower or role-specific target relations.
+- category: derived_index
+  target_count: 3
+  criteria: Derived index and direct-item constitution or collision.
+- category: heterogeneous_lineage
+  target_count: 3
+  criteria: Lineage drift requires P3 segmentation or blocking.
+- category: structure_supported
+  target_count: 3
+  criteria: Adjudicated source structures materially support but do not create proposition
+    authority.
+- category: source_dominated_or_sparse
+  target_count: 2
+  criteria: One source dominates evidence or candidate has minimal cross-source support.
+overlap_allowed: true
+shortfall_rule: Document shortfalls and substitute the nearest unrepresented risk
+  class; do not inflate with redundant easy cases.
+ranking_order:
+- candidate_status
+- hard_collision_count ascending
+- unresolved_closure_obligations ascending
+- signature_completeness descending
+- source_count descending
+- lineage_count descending
+- direct_positive_density descending
+- structure_support descending
+- response_variant_complexity ascending
+manual_authority: Structured adjudication required; no model, heuristic, score, or
+  graph algorithm may authorize a canonical family.

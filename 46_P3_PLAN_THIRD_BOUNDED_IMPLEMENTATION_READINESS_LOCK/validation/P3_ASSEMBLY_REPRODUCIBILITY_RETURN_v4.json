@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "clean_rebuild_root": "/mnt/data/rawlsing_v24_repro_test/Rawlsing_J_Family_Authority_Strategy_Handoff_v24_20260731",
+  "clean_rebuild_file_count": 1173,
+  "clean_rebuild_verifier": {
+    "checks_passed": 178,
+    "checks_total": 178,
+    "status": "PASS"
+  },
+  "substantive_contract_files_compared": 82,
+  "substantive_contract_files_hash_identical": 82,
+  "differences": [],
+  "excluded_release_or_nondeterministic_surfaces": [
+    "P3_ARTIFACT_CATALOG_v4.csv",
+    "P3_PLAN_THIRD_BOUNDED_IMPLEMENTATION_READINESS_AUDIT.md",
+    "Rawlsing_P3_Plan_Third_Bounded_Implementation_Readiness_Audit_v1_20260731.docx",
+    "Rawlsing_P3_Structure_Articulation_and_Implementation_Plan_v4_20260731.docx",
+    "SECTION_MANIFEST.csv",
+    "TASK_RETURN.md",
+    "validation/P3_DOCUMENT_QA_RETURN_v4.json",
+    "validation/P3_WHOLE_TREE_TYPE_AND_ARCHIVE_AUDIT_RETURN_v4.json",
+    "validation/build_handoff_v24.py",
+    "validation/verify_handoff_v24.py"
+  ],
+  "notes": [
+    "The clean rebuild used the accepted v23 extraction and a temporary output path.",
+    "DOCX package bytes are not used as deterministic authority; their Markdown sources, machine contracts, render QA, and content/version checks govern.",
+    "Release-gate returns and manifests are generated only after assembly."
+  ]
+}

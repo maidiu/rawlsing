@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/closure_obligation.schema.json",
+  "title": "Rawlsing P3 Closure Obligation",
+  "type": "object",
+  "required": [
+    "closure_obligation_id",
+    "candidate_revision_id",
+    "left_id",
+    "right_id",
+    "obligation_type",
+    "status",
+    "authority_release_id"
+  ],
+  "properties": {
+    "closure_obligation_id": {
+      "type": "string",
+      "pattern": "^P3CLOSE-[0-9]{8}$"
+    },
+    "candidate_revision_id": {
+      "type": "string"
+    },
+    "left_id": {
+      "type": "string"
+    },
+    "right_id": {
+      "type": "string"
+    },
+    "obligation_type": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "OPEN",
+        "RESOLVED_ACCEPT",
+        "RESOLVED_SPLIT",
+        "RESOLVED_EXCLUDE",
+        "FAIL_CLOSED"
+      ]
+    },
+    "resolution_adjudication_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

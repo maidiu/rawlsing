@@ -1,0 +1,88 @@
+{
+  "status": "BLOCKED_EXECUTION_EXPOSED_CONTRACT_DEFECT",
+  "postgres_server": "PostgreSQL 15.14 Homebrew local disposable data directory, 127.0.0.1:55432",
+  "docker": "NOT_AVAILABLE: docker command not found",
+  "database": "rawlsing_p3a_v27_test",
+  "shadow_schema": "p3a_v27_shadow",
+  "ddl_rollback_smoke": {
+    "command": [
+      "psql",
+      "-h",
+      "127.0.0.1",
+      "-p",
+      "55432",
+      "-U",
+      "rawlsing_p3a_owner",
+      "-d",
+      "rawlsing_p3a_v27_test",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-v",
+      "search_path=p3a_v27_shadow,public",
+      "-f",
+      "/Users/matthewsmith/Desktop/Rawlsing/rawlsing_p3a_v27_execution/build/Rawlsing_J_Family_Authority_Strategy_Handoff_v28_20260801/49_P3_PLAN_SIXTH_EXECUTABLE_CLOSURE_AUDIT_AND_LOCK/sql/p3_postgresql_compatible_ddl_v7.sql"
+    ],
+    "server_version": "PostgreSQL 15.14 (Homebrew) on x86_64-apple-darwin22.3.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit",
+    "elapsed_seconds": 0,
+    "exit_code": 0,
+    "remaining_p3_tables_after_rollback": 0,
+    "stdout_path": "postgres/ddl_rollback_stdout.txt",
+    "stderr_path": "postgres/ddl_rollback_stderr.txt",
+    "status": "PASS"
+  },
+  "ddl_test_derivative": {
+    "governing_source": "49_P3_PLAN_SIXTH_EXECUTABLE_CLOSURE_AUDIT_AND_LOCK/sql/p3_postgresql_compatible_ddl_v7.sql",
+    "test_derivative": "50_P3A_CONTRACT_AND_PILOT_V7_IMPLEMENTATION/sql/p3_postgresql_compatible_ddl_v7_test_commit.sql",
+    "governing_source_sha256": "005f2d09bd2a9ca017ef7022c8b59fdd284824658059a47301e0efb81c712dbf",
+    "test_derivative_sha256": "f2d53ce3389a49f2cebd4d1149c7e471c209529a8f574506be57d88278c55016",
+    "source_endswith_rollback": true,
+    "derivative_endswith_commit": true,
+    "changed_executable_lines": [
+      "-ROLLBACK;",
+      "+COMMIT;"
+    ],
+    "exactly_one_changed_line_token": true,
+    "status": "PASS"
+  },
+  "persistent_install_catalog": {
+    "status": "PASS",
+    "schema": "p3a_v27_shadow",
+    "relkind_counts": {
+      "i": 98,
+      "r": 75,
+      "v": 2
+    },
+    "function_count": 24,
+    "trigger_counts": [
+      {
+        "deferrable": "f",
+        "initially_deferred": "f",
+        "count": 23
+      },
+      {
+        "deferrable": "t",
+        "initially_deferred": "t",
+        "count": 30
+      }
+    ],
+    "foreign_key_count": 181,
+    "primary_unique_counts": {
+      "p": 73,
+      "u": 24
+    },
+    "outside_p3_objects": []
+  },
+  "validation_query_blocker": {
+    "status": "BLOCKED_EXECUTION_EXPOSED_CONTRACT_DEFECT",
+    "defect_id": "P3A-CONTRACT-DEFECT-0001",
+    "triggering_sql_file": "49_P3_PLAN_SIXTH_EXECUTABLE_CLOSURE_AUDIT_AND_LOCK/sql/P3_DDL_VALIDATION_QUERIES_v7.sql",
+    "triggering_query": "q17_candidate_event_contiguous",
+    "sqlstate": "42803",
+    "error_text": "column \"p3_candidate_status_event.candidate_family_id\" must appear in the GROUP BY clause or be used in an aggregate function",
+    "broken_invariant": "Delivered validation SQL must execute phase-aware on the installed PostgreSQL surface before later P3A loaders and packet lifecycle gates proceed.",
+    "classification": "GOVERNING_V27_CONTRACT_DEFECT",
+    "blast_radius": "Blocks completion of Phase 2 validation-query matrix and all later P3A generation/load claims that depend on the live SQL gate.",
+    "correction_scope": "Bounded amendment to q17 SELECT/GROUP BY shape, with regression on live PostgreSQL. No ontology or family-authority doctrine change implied.",
+    "next_executable_point": "Correct q17 in P3_DDL_VALIDATION_QUERIES_v7.sql, rerun phase-aware query matrix from clean test install, then resume Phase 3 builders."
+  }
+}

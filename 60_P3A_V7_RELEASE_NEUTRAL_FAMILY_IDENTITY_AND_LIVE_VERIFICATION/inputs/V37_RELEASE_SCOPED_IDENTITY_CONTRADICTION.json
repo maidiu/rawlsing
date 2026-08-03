@@ -1,0 +1,29 @@
+{
+  "status": "BLOCKING_GOVERNING_CONTRACT_CONTRADICTION",
+  "governing_identity_chain": {
+    "PAIR_PROJECTION": "canonical(pair_fact_id,left_subject_id,right_subject_id,projection_basis,authority_release_id)",
+    "CANDIDATE_COMPONENT": "sorted member subject IDs + sorted pair projection IDs + build rule version",
+    "CANDIDATE_FAMILY": "immutable candidate origin key derived from exact components, attachment projections, diagnostic lane, and subject set"
+  },
+  "logical_consequence": [
+    "PAIR_PROJECTION identity includes authority_release_id.",
+    "CANDIDATE_COMPONENT identity includes pair projection IDs.",
+    "CANDIDATE_FAMILY origin includes exact component and attachment-projection identities.",
+    "Therefore a release-only change changes projections, components, and every family origin even when members, pair facts, endpoints, topology, and origin lane are unchanged."
+  ],
+  "v37_observation": {
+    "current_candidates_compared": 141,
+    "origin_matches_r35": 0,
+    "origin_differs_from_r35": 141,
+    "new_families_allocated": 141
+  },
+  "implementation_evidence": {
+    "v35_and_v37_candidate_topology_algorithms": "materially identical",
+    "release_scoped_projection_and_component_ids": true,
+    "candidate_family_churn_is_contract_induced": true
+  },
+  "required_contract_split": {
+    "release_scoped_revision_evidence": "May retain concrete projection/component IDs and release-specific authority.",
+    "release_neutral_family_semantic_origin": "Must be derived from origin lane, exact subject set, release-neutral component semantic fingerprints, and release-neutral attachment projection semantic fingerprints."
+  }
+}

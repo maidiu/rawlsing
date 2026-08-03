@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/candidate_attachment_projection.schema.json",
+  "title": "candidate_attachment_projection",
+  "type": "object",
+  "required": [
+    "candidate_revision_id",
+    "projection_id",
+    "attachment_role",
+    "authority_release_id"
+  ],
+  "properties": {
+    "candidate_revision_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "projection_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^P3PROJ-[0-9a-f]{16}$"
+    },
+    "attachment_role": {
+      "enum": [
+        "ORPHAN_ATTACHMENT",
+        "STRICT_COMPONENT_BRIDGE",
+        "SEED_TO_STRICT_BRIDGE",
+        "ATTACHMENT_GROUP_CONNECTOR"
+      ]
+    },
+    "authority_release_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false
+}

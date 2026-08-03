@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/candidate_diagnostic_flag.schema.json",
+  "title": "candidate_diagnostic_flag",
+  "type": "object",
+  "required": [
+    "candidate_revision_id",
+    "flag",
+    "evidence_ids"
+  ],
+  "properties": {
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "flag": {
+      "enum": [
+        "ADMINISTRATIVE_METADATA",
+        "DERIVED_INDEX",
+        "EXACT_ONLY_AUTHORITY",
+        "HARD_COLLISION",
+        "HETEROGENEOUS_LINEAGE",
+        "HIERARCHICAL_TARGET",
+        "NONTRANSITIVE_PATH",
+        "OPEN_CLOSURE",
+        "PRECEDENCE_OVERLAP",
+        "RESPONSE_VARIATION",
+        "SOURCE_DOMINATED",
+        "SPARSE",
+        "SPLIT_RISK",
+        "STRUCTURE_SUPPORTED"
+      ]
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/dependency_record.schema.json",
+  "title": "Rawlsing P3 Dependency Record",
+  "type": "object",
+  "required": [
+    "dependency_id",
+    "dependent_id",
+    "authority_input_id",
+    "dependency_role",
+    "dirty_if_changed",
+    "impact_priority",
+    "authority_release_id"
+  ],
+  "properties": {
+    "dependency_id": {
+      "type": "string",
+      "pattern": "^P3DEP-[0-9]{8}$"
+    },
+    "dependent_id": {
+      "type": "string"
+    },
+    "authority_input_id": {
+      "type": "string"
+    },
+    "dependency_role": {
+      "enum": [
+        "MEMBERSHIP",
+        "EVIDENCE",
+        "CONSTRAINT",
+        "VOCABULARY",
+        "SCHEMA",
+        "BUILDER",
+        "RELEASE",
+        "DIAGNOSTIC"
+      ]
+    },
+    "dirty_if_changed": {
+      "type": "boolean"
+    },
+    "impact_priority": {
+      "enum": [
+        "FATAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ]
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

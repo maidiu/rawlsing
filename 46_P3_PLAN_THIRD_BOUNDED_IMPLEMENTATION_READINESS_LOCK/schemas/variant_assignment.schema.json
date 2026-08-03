@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v4/variant_assignment.schema.json",
+  "title": "variant_assignment",
+  "type": "object",
+  "required": [
+    "variant_id",
+    "variant_dimension",
+    "variant_value",
+    "member_ids"
+  ],
+  "properties": {
+    "variant_id": {
+      "type": "string",
+      "pattern": "^P3VAR-[0-9]{6}$"
+    },
+    "variant_revision_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^P3VARREV-[0-9]{6}-R[0-9]{4}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "variant_dimension": {
+      "enum": [
+        "HISTORICAL_INTERVAL",
+        "OTHER_EXPLICITLY_GOVERNED",
+        "RESPONSE_TOPOLOGY",
+        "SOURCE_RESPONSE_FORM",
+        "WORDING_TRANSLATION"
+      ]
+    },
+    "variant_value": {
+      "type": "string",
+      "minLength": 1
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,250 @@
+2026-08-01 14:19:23.442 EDT [66420] LOG:  starting PostgreSQL 15.14 (Homebrew) on x86_64-apple-darwin22.3.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2026-08-01 14:19:23.443 EDT [66420] LOG:  listening on IPv4 address "127.0.0.1", port 55432
+2026-08-01 14:19:23.444 EDT [66420] LOG:  listening on Unix socket "/tmp/.s.PGSQL.55432"
+2026-08-01 14:19:23.462 EDT [66423] LOG:  database system was shut down at 2026-08-01 13:46:19 EDT
+2026-08-01 14:19:23.476 EDT [66420] LOG:  database system is ready to accept connections
+2026-08-01 14:19:31.687 EDT [66730] ERROR:  Invalid first release event
+2026-08-01 14:19:31.687 EDT [66730] CONTEXT:  PL/pgSQL function p3_validate_release_status_event() line 6 at RAISE
+2026-08-01 14:19:31.687 EDT [66730] STATEMENT:  
+	            INSERT INTO p3_release_status_event (release_id,event_ordinal,status,occurred_at,evidence_hash)
+	            VALUES ($1,$2,$3,now(),$4)
+	            ON CONFLICT (release_id,event_ordinal) DO NOTHING
+	            
+2026-08-01 14:19:53.162 EDT [67022] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:19:53.162 EDT [67022] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:19:59.368 EDT [67309] ERROR:  Disallowed release transition DRAFT -> VALIDATED
+2026-08-01 14:19:59.368 EDT [67309] CONTEXT:  PL/pgSQL function p3_validate_release_status_event() line 9 at RAISE
+2026-08-01 14:19:59.368 EDT [67309] STATEMENT:  
+	            INSERT INTO p3_release_status_event (release_id,event_ordinal,status,occurred_at,evidence_hash)
+	            VALUES ($1,$2,$3,now(),$4)
+	            ON CONFLICT (release_id,event_ordinal) DO NOTHING
+	            
+2026-08-01 14:20:53.005 EDT [68751] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:20:53.005 EDT [68751] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:21:00.620 EDT [69043] ERROR:  Noncontiguous release event
+2026-08-01 14:21:00.620 EDT [69043] CONTEXT:  PL/pgSQL function p3_validate_release_status_event() line 8 at RAISE
+2026-08-01 14:21:00.620 EDT [69043] STATEMENT:  
+	            INSERT INTO p3_release_status_event (release_id,event_ordinal,status,occurred_at,evidence_hash)
+	            VALUES ($1,$2,$3,now(),$4)
+	            ON CONFLICT (release_id,event_ordinal) DO NOTHING
+	            
+2026-08-01 14:21:19.955 EDT [69341] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:21:19.955 EDT [69341] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:22:19.877 EDT [69675] ERROR:  Missing identity contract for CANDIDATE_FAMILY release P3-AUTHORITY-2026-08-01-R31
+2026-08-01 14:22:19.877 EDT [69675] CONTEXT:  PL/pgSQL function p3_enforce_identity_contract() line 5 at RAISE
+2026-08-01 14:22:19.877 EDT [69675] STATEMENT:  INSERT INTO p3_object_registry (object_id,object_type,identity_strategy,idempotency_key,origin_phase,origin_authority_id,allocation_release_id,retired_release_id,content_hash,stable_identity_note) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ON CONFLICT (object_id) DO NOTHING
+2026-08-01 14:22:48.074 EDT [69974] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:22:48.074 EDT [69974] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:23:32.907 EDT [70298] ERROR:  Unknown P3 vocabulary code p3_candidate_revision.candidate_origin_type=HISTORICAL_IMPORT
+2026-08-01 14:23:32.907 EDT [70298] CONTEXT:  PL/pgSQL function p3_enforce_vocab_code() line 10 at RAISE
+2026-08-01 14:23:32.907 EDT [70298] STATEMENT:  INSERT INTO p3_candidate_revision (candidate_revision_id,candidate_family_id,revision_number,candidate_classification,candidate_origin_type,origin_key,canonical_signature_id,evidence_bundle_hash,authority_release_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT DO NOTHING
+2026-08-01 14:23:45.429 EDT [70590] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:23:45.429 EDT [70590] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:24:23.520 EDT [66421] LOG:  checkpoint starting: time
+2026-08-01 14:24:36.698 EDT [70932] ERROR:  base candidate requires exactly one component and no attachment projection
+2026-08-01 14:24:36.698 EDT [70932] CONTEXT:  PL/pgSQL function p3_assert_candidate_origin(text) line 9 at RAISE
+	SQL statement "SELECT p3_assert_candidate_origin(rid)"
+	PL/pgSQL function p3_validate_candidate_origin_deferred() line 5 at PERFORM
+2026-08-01 14:24:36.698 EDT [70932] STATEMENT:  COMMIT
+2026-08-01 14:25:06.372 EDT [71244] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:25:06.372 EDT [71244] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:25:55.550 EDT [71573] ERROR:  new row for relation "p3_candidate_component" violates check constraint "p3_candidate_component_connectivity_edge_count_check"
+2026-08-01 14:25:55.550 EDT [71573] DETAIL:  Failing row contains (P3COMP-43668f95ffdbfdc6, STRICT_RESPONSE_COMPONENT, P3A_HISTORICAL_IDENTITY_IMPORT, 43668f95ffdbfdc6315675fbb3bc34ffa660323a6c7c8b2e066d92da8bab5667, 0, 0, P3-AUTHORITY-2026-08-01-R31).
+2026-08-01 14:25:55.550 EDT [71573] STATEMENT:  INSERT INTO p3_candidate_component (component_id,component_type,build_rule_version,content_hash,connectivity_edge_count,member_count,authority_release_id) VALUES ($1,$2,$3,$4,$5,$6,$7) ON CONFLICT DO NOTHING
+2026-08-01 14:26:25.541 EDT [72156] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:26:25.541 EDT [72156] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:27:01.858 EDT [73032] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:27:01.858 EDT [73032] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:27:51.668 EDT [73088] ERROR:  Component P3COMP-43668f95ffdbfdc6 contains invalid projected connectivity edges
+2026-08-01 14:27:51.668 EDT [73088] CONTEXT:  PL/pgSQL function p3_validate_component_closure() line 21 at RAISE
+2026-08-01 14:27:51.668 EDT [73088] STATEMENT:  COMMIT
+2026-08-01 14:28:12.475 EDT [73669] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:28:12.475 EDT [73669] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:28:53.045 EDT [66421] LOG:  checkpoint complete: wrote 13602 buffers (83.0%); 0 WAL file(s) added, 0 removed, 10 recycled; write=269.497 s, sync=0.024 s, total=269.526 s; sync files=713, longest=0.002 s, average=0.001 s; distance=157432 kB, estimate=157432 kB
+2026-08-01 14:28:59.990 EDT [73717] ERROR:  Component P3COMP-43668f95ffdbfdc6 contains invalid projected connectivity edges
+2026-08-01 14:28:59.990 EDT [73717] CONTEXT:  PL/pgSQL function p3_validate_component_closure() line 21 at RAISE
+2026-08-01 14:28:59.990 EDT [73717] STATEMENT:  COMMIT
+2026-08-01 14:29:23.047 EDT [66421] LOG:  checkpoint starting: time
+2026-08-01 14:29:26.199 EDT [74296] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:29:26.199 EDT [74296] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:30:17.689 EDT [74343] ERROR:  Candidate P3CANDREV-000001-R0001 pair matrix incomplete
+2026-08-01 14:30:17.689 EDT [74343] CONTEXT:  PL/pgSQL function p3_validate_internal_pair_closure() line 7 at RAISE
+2026-08-01 14:30:17.689 EDT [74343] STATEMENT:  COMMIT
+2026-08-01 14:30:42.580 EDT [74921] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:30:42.580 EDT [74921] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:31:55.769 EDT [75584] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:31:55.769 EDT [75584] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:32:01.436 EDT [66421] LOG:  checkpoint complete: wrote 1288 buffers (7.9%); 0 WAL file(s) added, 1 removed, 0 recycled; write=158.346 s, sync=0.002 s, total=158.390 s; sync files=134, longest=0.001 s, average=0.001 s; distance=21215 kB, estimate=143810 kB
+2026-08-01 14:32:43.147 EDT [75634] ERROR:  Noncontiguous candidate revision event
+2026-08-01 14:32:43.147 EDT [75634] CONTEXT:  PL/pgSQL function p3_validate_candidate_status_event() line 10 at RAISE
+2026-08-01 14:32:43.147 EDT [75634] STATEMENT:  INSERT INTO p3_candidate_status_event (candidate_family_id,candidate_revision_id,event_ordinal,from_stage,to_stage,guard_evidence_id,occurred_at,authority_release_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT DO NOTHING
+2026-08-01 14:33:20.279 EDT [76791] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:33:20.279 EDT [76791] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:34:08.567 EDT [76839] ERROR:  Noncontiguous candidate revision event
+2026-08-01 14:34:08.567 EDT [76839] CONTEXT:  PL/pgSQL function p3_validate_candidate_status_event() line 10 at RAISE
+2026-08-01 14:34:08.567 EDT [76839] STATEMENT:  INSERT INTO p3_candidate_status_event (candidate_family_id,candidate_revision_id,event_ordinal,from_stage,to_stage,guard_evidence_id,occurred_at,authority_release_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT DO NOTHING
+2026-08-01 14:34:23.440 EDT [66421] LOG:  checkpoint starting: time
+2026-08-01 14:34:32.378 EDT [77417] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:34:32.378 EDT [77417] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:35:21.216 EDT [77467] ERROR:  base candidate requires exactly one component and no attachment projection
+2026-08-01 14:35:21.216 EDT [77467] CONTEXT:  PL/pgSQL function p3_assert_candidate_origin(text) line 9 at RAISE
+	SQL statement "SELECT p3_assert_candidate_origin(rid)"
+	PL/pgSQL function p3_validate_candidate_origin_deferred() line 5 at PERFORM
+2026-08-01 14:35:21.216 EDT [77467] STATEMENT:  COMMIT
+2026-08-01 14:35:44.099 EDT [78050] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:35:44.099 EDT [78050] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:36:32.571 EDT [78096] ERROR:  base candidate requires exactly one component and no attachment projection
+2026-08-01 14:36:32.571 EDT [78096] CONTEXT:  PL/pgSQL function p3_assert_candidate_origin(text) line 9 at RAISE
+	SQL statement "SELECT p3_assert_candidate_origin(rid)"
+	PL/pgSQL function p3_validate_candidate_origin_deferred() line 5 at PERFORM
+2026-08-01 14:36:32.571 EDT [78096] STATEMENT:  COMMIT
+2026-08-01 14:36:35.445 EDT [66421] LOG:  checkpoint complete: wrote 1285 buffers (7.8%); 0 WAL file(s) added, 2 removed, 0 recycled; write=131.951 s, sync=0.004 s, total=132.006 s; sync files=120, longest=0.001 s, average=0.001 s; distance=20909 kB, estimate=131520 kB
+2026-08-01 14:37:05.378 EDT [79247] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:37:05.378 EDT [79247] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:38:38.251 EDT [80172] ERROR:  relation "p3_authority_release" already exists
+2026-08-01 14:38:38.251 EDT [80172] STATEMENT:  CREATE TABLE p3_authority_release (
+	    release_id TEXT PRIMARY KEY,
+	    parent_release_id TEXT REFERENCES p3_authority_release(release_id),
+	    schema_version TEXT NOT NULL, builder_version TEXT NOT NULL,
+	    input_manifest_hash CHAR(64) NOT NULL CHECK (input_manifest_hash ~ '^[0-9a-f]{64}$'),
+	    created_at TIMESTAMPTZ NOT NULL, object_counts JSONB NOT NULL DEFAULT '{}'::jsonb,
+	    validation_return_hash CHAR(64) NOT NULL CHECK (validation_return_hash ~ '^[0-9a-f]{64}$'),
+	    migration_artifact TEXT, rollback_artifact TEXT, CHECK (parent_release_id IS NULL OR parent_release_id <> release_id)
+	);
+2026-08-01 14:39:23.434 EDT [66421] LOG:  checkpoint starting: time
+2026-08-01 14:39:26.711 EDT [80223] ERROR:  base candidate requires exactly one component and no attachment projection
+2026-08-01 14:39:26.711 EDT [80223] CONTEXT:  PL/pgSQL function p3_assert_candidate_origin(text) line 9 at RAISE
+	SQL statement "SELECT p3_assert_candidate_origin(rid)"
+	PL/pgSQL function p3_validate_candidate_origin_deferred() line 5 at PERFORM
+2026-08-01 14:39:26.711 EDT [80223] STATEMENT:  COMMIT
+2026-08-01 14:40:09.367 EDT [66421] LOG:  checkpoint complete: wrote 452 buffers (2.8%); 0 WAL file(s) added, 0 removed, 0 recycled; write=45.923 s, sync=0.008 s, total=45.934 s; sync files=65, longest=0.001 s, average=0.001 s; distance=5872 kB, estimate=118955 kB
+2026-08-01 14:56:02.979 EDT [81717] ERROR:  relation "p3a_v27_shadow.p3_candidate_revision" does not exist at character 45
+2026-08-01 14:56:02.979 EDT [81717] STATEMENT:  select count(*) as candidate_revisions from p3a_v27_shadow.p3_candidate_revision; select count(*) as component_links from p3a_v27_shadow.p3_candidate_component_link; select count(*) as attachments from p3a_v27_shadow.p3_candidate_attachment_projection;

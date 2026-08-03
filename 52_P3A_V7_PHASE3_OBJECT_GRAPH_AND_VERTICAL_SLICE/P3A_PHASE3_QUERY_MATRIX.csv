@@ -1,0 +1,3 @@
+gate_id,phase,observed_result,expected_result,status,evidence
+q20_vocab_triggers_installed,P3A_1_AFTER_CONTRACT_LOAD,SQLSTATE 42703 during trigger installer for p3_lineage_disposition.subject_type,p3_install_contract_triggers completes and q20 PASS,BLOCKED_CONTRACT_DEFECT,postgres/install_contract_triggers_stderr.txt
+q47_release_reactivation_transition,P3A_1_AFTER_STATE_MACHINE_LOAD,PASS observed before trigger-install blocker,PASS,PASS,postgres/phase1_contract_gates.tsv

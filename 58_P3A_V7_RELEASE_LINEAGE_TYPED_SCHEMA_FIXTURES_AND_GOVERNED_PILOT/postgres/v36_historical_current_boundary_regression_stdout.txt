@@ -1,0 +1,21 @@
+SET
+Output format is unaligned.
+frozen_identity_count|564
+fabricated_historical_revisions|0
+current_r36_revisions|141
+bad_current_base_candidates|0
+historical_runtime_addressable|0
+successor_mapping_rows|282
+BEGIN
+DO
+ROLLBACK
+frozen_identity_mutation_rejected|PASS
+BEGIN
+DO
+ROLLBACK
+malformed_r36_base_candidate_rejected|PASS
+BEGIN
+DO
+ROLLBACK
+valid_r36_base_candidate_commits_in_rollback_fixture|PASS
+regression_fixture_rows_persisted|0

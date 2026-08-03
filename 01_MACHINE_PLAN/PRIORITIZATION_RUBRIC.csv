@@ -1,0 +1,12 @@
+dimension,definition,evidence,tier_weight
+incremental_information_gain,How much ambiguity the family resolves beyond separate atoms.,Counterfactual comparison of downstream representation with and without family.,critical
+source_validity,Strength of source/instrument and accepted-authority support for composition.,Common stem/routing/explicit contrast plus semantic authority.,hard prerequisite + critical
+respondent_coverage,Number and proportion of governed respondents/items/waves to which implementation applies.,Source and runtime coverage estimates after authority.,high
+cross_source_portability,"Breadth and semantic stability across survey families, waves, countries and eras.",Implementation concordance and counterexamples.,high
+downstream_leverage,Number and importance of explicit consumers in V552J–runtime.,Requirements-map links.,critical
+profile_discrimination,Whether the configuration distinguishes profiles that otherwise collapse together.,Controlled profile examples and later empirical checks.,high
+complexity_uncertainty_cost,"Rule complexity, routing ambiguity, sparse cells, source gaps and maintenance burden.",Implementation/rule audit.,divisor / penalty
+tier_A,Highly determinative and broadly portable; operational priority.,Passes all gates and ranks high on leverage/portability.,first
+tier_B,Highly determinative but source-specific or narrow.,Strong leverage with bounded portability.,second
+tier_C,Portable but modestly additive.,Useful enrichment; lower urgency.,later
+tier_D,"Weak, redundant, sparse or uncertain.",Fails value threshold though may remain diagnostic.,do not authorize in initial completion

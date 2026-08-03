@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/lineage_participation.schema.json",
+  "title": "lineage_participation",
+  "type": "object",
+  "required": [
+    "lineage_id",
+    "source_family",
+    "participation_status",
+    "effective_pair_incident_count",
+    "proposition_pair_incident_count",
+    "signature_requirement",
+    "authority_release_id"
+  ],
+  "properties": {
+    "lineage_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_family": {
+      "enum": [
+        "Afrobarometer",
+        "Arab Barometer",
+        "Asian Barometer",
+        "EVS",
+        "GSS",
+        "Latinobarómetro",
+        "LiTS",
+        "South Asia",
+        "WVS"
+      ]
+    },
+    "participation_status": {
+      "enum": [
+        "CONSTRAINT_ONLY_INCIDENT",
+        "NO_CURRENT_DIRECT_PAIR_AUTHORITY",
+        "PROPOSITION_GRAPH_INCIDENT"
+      ]
+    },
+    "effective_pair_incident_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "proposition_pair_incident_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "signature_requirement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false
+}

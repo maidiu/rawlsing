@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing P3 Pair Fact Bundle",
+  "type": "object",
+  "required": [
+    "pair_fact_id",
+    "left_id",
+    "right_id",
+    "relation_type",
+    "source_p2_ruling_ids",
+    "portability_ceiling",
+    "connectivity_allowed",
+    "creates_endpoint_authority"
+  ],
+  "properties": {
+    "pair_fact_id": {
+      "type": "string",
+      "pattern": "^P3PF-[0-9]{8}$"
+    },
+    "left_id": {
+      "type": "string"
+    },
+    "right_id": {
+      "type": "string"
+    },
+    "relation_type": {
+      "type": "string"
+    },
+    "source_p2_ruling_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "target_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operator_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeframe_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "response_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "portability_ceiling": {
+      "type": "string"
+    },
+    "connectivity_allowed": {
+      "type": "boolean"
+    },
+    "creates_endpoint_authority": {
+      "const": false
+    },
+    "evidence_ids": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

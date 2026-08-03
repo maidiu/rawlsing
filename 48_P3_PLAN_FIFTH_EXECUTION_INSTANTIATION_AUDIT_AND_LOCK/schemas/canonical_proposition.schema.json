@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/canonical_proposition.schema.json",
+  "title": "canonical_proposition",
+  "type": "object",
+  "required": [
+    "subject_role",
+    "operator",
+    "target",
+    "object_or_outcome",
+    "modality",
+    "timeframe",
+    "condition",
+    "population_scope",
+    "geographic_scope",
+    "polarity",
+    "derived_status",
+    "parent_context"
+  ],
+  "properties": {
+    "subject_role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operator": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "object_or_outcome": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modality": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeframe": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "condition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "population_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "geographic_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "polarity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "derived_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parent_context": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

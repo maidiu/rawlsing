@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/candidate_family.schema.json",
+  "title": "candidate_family",
+  "type": "object",
+  "required": [
+    "candidate_family_id",
+    "revision_id",
+    "revision_number",
+    "component_ids",
+    "member_ids",
+    "candidate_classification",
+    "candidate_origin_type",
+    "internal_pair_counts",
+    "closure_obligation_ids",
+    "evidence_bundle_hash",
+    "authority_release_id",
+    "origin_key",
+    "attachment_projection_ids"
+  ],
+  "properties": {
+    "candidate_family_id": {
+      "type": "string",
+      "pattern": "^P3CAND-[0-9]{6}$"
+    },
+    "revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "component_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 0
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "canonical_signature_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^P3SIG-[0-9a-f]{16}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "candidate_classification": {
+      "enum": [
+        "CLEAN_CANDIDATE",
+        "COLLISION_BEARING_CANDIDATE",
+        "HIERARCHY_ONLY_RISK",
+        "INSUFFICIENT_AUTHORITY_RISK",
+        "SEMANTIC_ARTIFACT_RISK",
+        "SPLIT_RISK",
+        "STRUCTURE_ONLY_DIAGNOSTIC",
+        "VARIANT_BEARING_CANDIDATE"
+      ]
+    },
+    "candidate_origin_type": {
+      "enum": [
+        "ATTACHMENT_REVIEW",
+        "NONCONNECTIVE_DIAGNOSTIC_CASE",
+        "PROPOSITION_ONLY_SEED",
+        "STRICT_RESPONSE_COMPONENT"
+      ]
+    },
+    "diagnostic_flags": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ADMINISTRATIVE_METADATA",
+          "DERIVED_INDEX",
+          "EXACT_ONLY_AUTHORITY",
+          "HARD_COLLISION",
+          "HETEROGENEOUS_LINEAGE",
+          "HIERARCHICAL_TARGET",
+          "INCOMPLETE_SIGNATURE_BLOCKER",
+          "NONTRANSITIVE_PATH",
+          "OPEN_CLOSURE",
+          "PRECEDENCE_OVERLAP",
+          "RESPONSE_VARIATION",
+          "SOURCE_DOMINATED",
+          "SPARSE",
+          "SPLIT_RISK",
+          "STRUCTURE_SUPPORTED"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "internal_pair_counts": {
+      "type": "object",
+      "required": [
+        "expected_pairs",
+        "direct_positive",
+        "direct_collision",
+        "direct_unresolved",
+        "hierarchical_only",
+        "unruled",
+        "signature_conflict",
+        "signature_compatible"
+      ],
+      "properties": {
+        "expected_pairs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direct_positive": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direct_collision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hierarchical_only": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unruled": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "signature_conflict": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "signature_compatible": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "direct_unresolved": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "closure_obligation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "variant_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "exclusion_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "ranking": {
+      "$ref": "https://rawlsing.local/schemas/p3/v7/candidate_ranking.schema.json"
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    },
+    "revision_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "origin_key": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!0{64}$)[0-9a-f]{64}$"
+    },
+    "attachment_projection_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^P3PROJ-[0-9a-f]{16}$"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "candidate_origin_type": {
+            "enum": [
+              "STRICT_RESPONSE_COMPONENT",
+              "PROPOSITION_ONLY_SEED"
+            ]
+          }
+        },
+        "required": [
+          "candidate_origin_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "component_ids": {
+            "minItems": 1
+          },
+          "attachment_projection_ids": {
+            "maxItems": 0
+          },
+          "member_ids": {
+            "minItems": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "candidate_origin_type": {
+            "const": "ATTACHMENT_REVIEW"
+          }
+        },
+        "required": [
+          "candidate_origin_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "attachment_projection_ids": {
+            "minItems": 1
+          },
+          "member_ids": {
+            "minItems": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "candidate_origin_type": {
+            "const": "NONCONNECTIVE_DIAGNOSTIC_CASE"
+          }
+        },
+        "required": [
+          "candidate_origin_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "component_ids": {
+            "maxItems": 0
+          },
+          "attachment_projection_ids": {
+            "maxItems": 0
+          },
+          "member_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

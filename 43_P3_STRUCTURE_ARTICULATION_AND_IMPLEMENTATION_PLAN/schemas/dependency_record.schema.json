@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing P3 Artifact Dependency",
+  "type": "object",
+  "required": [
+    "dependency_id",
+    "dependent_artifact_id",
+    "authority_input_id",
+    "dependency_role",
+    "authority_release_id"
+  ],
+  "properties": {
+    "dependency_id": {
+      "type": "string",
+      "pattern": "^P3DEP-[0-9]{8}$"
+    },
+    "dependent_artifact_id": {
+      "type": "string"
+    },
+    "authority_input_id": {
+      "type": "string"
+    },
+    "dependency_role": {
+      "enum": [
+        "MEMBERSHIP",
+        "EVIDENCE",
+        "CONSTRAINT",
+        "VOCABULARY",
+        "SCHEMA",
+        "BUILDER",
+        "RELEASE",
+        "DIAGNOSTIC"
+      ]
+    },
+    "authority_release_id": {
+      "type": "string"
+    },
+    "dirty_if_changed": {
+      "type": "boolean"
+    },
+    "impact_priority": {
+      "enum": [
+        "FATAL",
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

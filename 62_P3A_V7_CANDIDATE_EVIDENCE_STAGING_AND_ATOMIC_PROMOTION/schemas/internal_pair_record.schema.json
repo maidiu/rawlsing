@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/internal_pair_record.schema.json",
+  "title": "internal_pair_record",
+  "type": "object",
+  "required": [
+    "candidate_revision_id",
+    "left_object_id",
+    "right_object_id",
+    "pair_state",
+    "direct_pair_projection_id"
+  ],
+  "properties": {
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "left_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pair_state": {
+      "enum": [
+        "DIRECT_POSITIVE",
+        "DIRECT_COLLISION",
+        "DIRECT_UNRESOLVED",
+        "HIERARCHICAL_ONLY",
+        "UNRULED",
+        "SIGNATURE_CONFLICT",
+        "SIGNATURE_COMPATIBLE"
+      ]
+    },
+    "direct_pair_projection_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^P3PROJ-[0-9a-f]{16}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pair_state": {
+            "enum": [
+              "DIRECT_POSITIVE",
+              "DIRECT_COLLISION",
+              "DIRECT_UNRESOLVED",
+              "HIERARCHICAL_ONLY"
+            ]
+          }
+        },
+        "required": [
+          "pair_state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "direct_pair_projection_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^P3PROJ-[0-9a-f]{16}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "pair_state": {
+            "enum": [
+              "UNRULED",
+              "SIGNATURE_CONFLICT",
+              "SIGNATURE_COMPATIBLE"
+            ]
+          }
+        },
+        "required": [
+          "pair_state"
+        ]
+      },
+      "then": {
+        "properties": {
+          "direct_pair_projection_id": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

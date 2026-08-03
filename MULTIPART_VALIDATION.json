@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "format": "THREE_INDEPENDENT_ZIP_ARCHIVES_WITH_CURRENT_RECOVERY_CONTROLS",
+  "payload_file_count": 5105,
+  "combined_extraction_missing": 0,
+  "combined_extraction_mismatched": 0,
+  "assembly_instruction": "Extract all three corrected ZIP files into the same destination folder. Do not concatenate them. Open README_FIRST.md and run verify_multipart_handoff.py.",
+  "governing_entrypoint": "README_FIRST.md -> 00_RECOVERY_START_HERE/",
+  "historical_entrypoint_warning": "00_START_HERE is inherited history and is not the current resume point.",
+  "corrected_archives": [
+    "Rawlsing_Handoff_v41_CORRECTED_Part_1_of_3.zip",
+    "Rawlsing_Handoff_v41_CORRECTED_Part_2_of_3.zip",
+    "Rawlsing_Handoff_v41_CORRECTED_Part_3_of_3.zip"
+  ],
+  "outer_archive_hashes": "See Rawlsing_Handoff_v41_CORRECTED_THREE_ZIPS_RETURN.json beside the downloads."
+}

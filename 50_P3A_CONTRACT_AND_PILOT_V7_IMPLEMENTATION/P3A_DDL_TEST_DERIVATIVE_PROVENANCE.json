@@ -1,0 +1,14 @@
+{
+  "governing_source": "49_P3_PLAN_SIXTH_EXECUTABLE_CLOSURE_AUDIT_AND_LOCK/sql/p3_postgresql_compatible_ddl_v7.sql",
+  "test_derivative": "50_P3A_CONTRACT_AND_PILOT_V7_IMPLEMENTATION/sql/p3_postgresql_compatible_ddl_v7_test_commit.sql",
+  "governing_source_sha256": "005f2d09bd2a9ca017ef7022c8b59fdd284824658059a47301e0efb81c712dbf",
+  "test_derivative_sha256": "f2d53ce3389a49f2cebd4d1149c7e471c209529a8f574506be57d88278c55016",
+  "source_endswith_rollback": true,
+  "derivative_endswith_commit": true,
+  "changed_executable_lines": [
+    "-ROLLBACK;",
+    "+COMMIT;"
+  ],
+  "exactly_one_changed_line_token": true,
+  "status": "PASS"
+}

@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "corrected_file": "49_P3_PLAN_SIXTH_EXECUTABLE_CLOSURE_AUDIT_AND_LOCK/upstream/P3_LINEAGE_PARTICIPATION_BASELINE_v7.csv",
+  "workset_file": "49_P3_PLAN_SIXTH_EXECUTABLE_CLOSURE_AUDIT_AND_LOCK/upstream/P3_SIGNATURE_WORKSET_v7.csv",
+  "before_sha256": "e044c6be5eacfa8f59eec93d5da8e0237aecd6f98e393a0ce4dde7d51824710b",
+  "after_sha256": "819da9e5740971d098f2172dd5cfa0bc93500fa2bc6e8d1bf0904d49eca93300",
+  "before_counts": {
+    "participation_status": {
+      "CONSTRAINT_ONLY_INCIDENT": 2897,
+      "NO_CURRENT_DIRECT_PAIR_AUTHORITY": 10230,
+      "PROPOSITION_GRAPH_INCIDENT": 399
+    },
+    "signature_requirement": {
+      "FULL_P3A_SIGNATURE": 3296,
+      "DEFER_UNTIL_NEW_AUTHORITY_OR_ATTACHMENT": 10230
+    }
+  },
+  "after_counts": {
+    "participation_status": {
+      "CONSTRAINT_ONLY_INCIDENT": 2897,
+      "NO_CURRENT_DIRECT_PAIR_AUTHORITY": 10230,
+      "PROPOSITION_GRAPH_INCIDENT": 399
+    },
+    "signature_requirement": {
+      "P2_CONSTRAINT_EVIDENCE_PRESERVED": 2897,
+      "DEFER_UNTIL_PROMOTED_OR_NEW_AUTHORITY": 10230,
+      "FULL_P3A_SIGNATURE": 399
+    }
+  },
+  "workset_counts": {
+    "participation_status": {
+      "CONSTRAINT_ONLY_INCIDENT": 2897,
+      "NO_CURRENT_DIRECT_PAIR_AUTHORITY": 10230,
+      "PROPOSITION_GRAPH_INCIDENT": 399
+    },
+    "signature_requirement": {
+      "P2_CONSTRAINT_EVIDENCE_PRESERVED": 2897,
+      "DEFER_UNTIL_PROMOTED_OR_NEW_AUTHORITY": 10230,
+      "FULL_P3A_SIGNATURE": 399
+    }
+  },
+  "mismatched_cells": 13127,
+  "mismatched_rows": 13127,
+  "expected_counts_asserted": {
+    "FULL_P3A_SIGNATURE": 399,
+    "P2_CONSTRAINT_EVIDENCE_PRESERVED": 2897,
+    "DEFER_UNTIL_PROMOTED_OR_NEW_AUTHORITY": 10230
+  }
+}

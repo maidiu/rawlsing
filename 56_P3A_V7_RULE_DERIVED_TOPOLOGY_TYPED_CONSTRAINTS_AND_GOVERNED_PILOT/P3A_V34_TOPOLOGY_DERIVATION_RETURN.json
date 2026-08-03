@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "production_inputs": [
+    "p3_pair_projection",
+    "p3_pair_fact_bundle",
+    "p3_candidate_component",
+    "p3_component_membership",
+    "p3_component_connectivity_edge"
+  ],
+  "forbidden_production_inputs": [
+    "P3_PREFLIGHT_CANDIDATE_INVENTORY_v7.csv",
+    "V32_DIRECT_INTERNAL_AUTHORITY_MISCLASSIFICATION.csv",
+    "V32_ATTACHMENT_BRIDGE_OMISSIONS.csv",
+    "V33_*_REVIEW_CSVS"
+  ],
+  "candidate_count": 141,
+  "origin_distribution": [
+    {
+      "candidate_origin_type": "ATTACHMENT_REVIEW",
+      "count": 22
+    },
+    {
+      "candidate_origin_type": "PROPOSITION_ONLY_SEED",
+      "count": 25
+    },
+    {
+      "candidate_origin_type": "STRICT_RESPONSE_COMPONENT",
+      "count": 94
+    }
+  ],
+  "classification_distribution": [
+    {
+      "candidate_classification": "COLLISION_BEARING_CANDIDATE",
+      "count": 2
+    },
+    {
+      "candidate_classification": "INSUFFICIENT_AUTHORITY_RISK",
+      "count": 139
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/exclusion_promotion.schema.json",
+  "title": "exclusion_promotion",
+  "type": "object",
+  "required": [
+    "candidate_exclusion_id",
+    "canonical_exclusion_id",
+    "excluded_member_ids"
+  ],
+  "properties": {
+    "candidate_exclusion_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^P3EXC-[0-9]{6}$"
+    },
+    "canonical_exclusion_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^P3EXC-[0-9]{6}$"
+    },
+    "excluded_member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,45 @@
+table_or_artifact,field,logical_type,required,key_role,definition,references
+proposition_signature_field,signature_id,TEXT,YES,PK,Stable proposition signature identifier,
+proposition_signature_field,lineage_or_segment_id,TEXT,YES,FK,Subject lineage or segment,source_local_lineage/lineage_segment
+proposition_signature_field,field_name,TEXT,YES,PK_PART,Signature dimension name,controlled vocabulary
+proposition_signature_field,field_value,TEXT,YES,VALUE,Canonical field value,controlled vocabulary
+proposition_signature_field,evidence_state,TEXT,YES,VALUE,"KNOWN, UNRECOVERED, etc.",field_evidence_state
+proposition_signature_field,evidence_id,TEXT,CONDITIONAL,FK,Direct evidence record supporting the field,evidence_record
+proposition_signature_field,confidence,TEXT,YES,VALUE,"HIGH, MEDIUM, or LOW diagnostic confidence",
+candidate_family,candidate_family_id,TEXT,YES,PK,Stable candidate identity allocated by registry,
+candidate_family,component_id,TEXT,YES,FK,Mechanically generated seed component,candidate_component
+candidate_family,candidate_status,TEXT,YES,VALUE,Lifecycle/candidate status,family_lifecycle_status
+candidate_family,canonical_signature_id,TEXT,CONDITIONAL,FK,Proposed proposition signature,proposition_signature
+candidate_family,authority_release_id,TEXT,YES,FK,Release owning current record,authority_release
+candidate_family,evidence_bundle_hash,TEXT,YES,HASH,Hash of frozen evidence bundle,
+pair_fact_bundle,pair_fact_id,TEXT,YES,PK,Stable normalized pair fact,
+pair_fact_bundle,left_lineage_or_segment_id,TEXT,YES,FK,Left endpoint,
+pair_fact_bundle,right_lineage_or_segment_id,TEXT,YES,FK,Right endpoint,
+pair_fact_bundle,relation_type,TEXT,YES,VALUE,Typed P2/P3 relation,pair_relation_type
+pair_fact_bundle,portability_ceiling,TEXT,YES,VALUE,Maximum authority permitted,portability_ceiling
+pair_fact_bundle,source_p2_ruling_id,TEXT,YES,FK,Governing P2 ruling,
+pair_fact_bundle,connectivity_allowed,BOOLEAN,YES,VALUE,Whether this fact may seed family candidates,
+pair_fact_bundle,direct_endpoint_authority,BOOLEAN,YES,VALUE,Always true only for direct rulings,
+collision_scope_registry,collision_id,TEXT,YES,PK,Stable collision record,
+collision_scope_registry,collision_type,TEXT,YES,VALUE,Operation prohibited,collision_type
+collision_scope_registry,scope_type,TEXT,YES,VALUE,Scope of prohibition,collision_scope
+collision_scope_registry,left_object_id,TEXT,YES,FK,Left endpoint,
+collision_scope_registry,right_object_id,TEXT,YES,FK,Right endpoint,
+collision_scope_registry,source_ruling_id,TEXT,YES,FK,Evidence or authority source,
+collision_scope_registry,hard_blocker,BOOLEAN,YES,VALUE,Whether clean/canonical admission is blocked,
+adjudication_decision,adjudication_id,TEXT,YES,PK,Immutable structured decision,
+adjudication_decision,candidate_family_id,TEXT,YES,FK,Candidate under decision,candidate_family
+adjudication_decision,decision_status,TEXT,YES,VALUE,Terminal or doctrine-delta outcome,family_lifecycle_status
+adjudication_decision,accepted_member_ids,JSON,YES,VALUE,Exact authorized members,
+adjudication_decision,excluded_member_ids,JSON,YES,VALUE,Exact excluded members,
+adjudication_decision,variant_assignments,JSON,YES,VALUE,Explicit variant membership,
+adjudication_decision,unresolved_boundaries,JSON,YES,VALUE,Fail-closed remaining boundaries,
+adjudication_decision,rationale,TEXT,YES,VALUE,Human-readable justification,
+adjudication_decision,evidence_bundle_hash,TEXT,YES,HASH,Frozen evidence identity,
+authority_release,release_id,TEXT,YES,PK,Stable authority release ID,
+authority_release,parent_release_id,TEXT,CONDITIONAL,FK,Parent authority release,authority_release
+authority_release,schema_version,TEXT,YES,VALUE,Schema version,
+authority_release,builder_version,TEXT,YES,VALUE,Builder version,
+authority_release,input_manifest_hash,TEXT,YES,HASH,Hash of frozen inputs,
+authority_release,status,TEXT,YES,VALUE,"DRAFT, SHADOW, PROMOTED, ROLLED_BACK",
+authority_release,created_at,TIMESTAMPTZ,YES,VALUE,Release timestamp,

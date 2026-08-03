@@ -1,0 +1,823 @@
+Last login: Thu Jul 30 10:01:26 on ttys002
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+MacBook-Pro:reports matthewsmith$ tree
+.
+├── 35wave_active_response_semantics_contract_inventory.csv
+├── 35wave_response_scale_encoding_ruling_ledger.csv
+├── V550_answer_distribution.csv
+├── V550_branch_co_signature.csv
+├── V550_branch_position_signature.csv
+├── V550_branch_relation_co_signature.csv
+├── V550_cloud_exclusion_audit.csv
+├── V550_country_answer_distribution.csv
+├── V550_indicator_answer_matrix.csv
+├── V550_legacy_leak_report.csv
+├── V550_mapping_gap_report.csv
+├── V550_mapping_status_coverage.csv
+├── V550_outlier_cohort_summary.csv
+├── V550_position_distribution.csv
+├── V550_position_field_coverage.csv
+├── V550_position_indicator_summary.csv
+├── V550_question_response_attitude_cloud.csv
+├── V550_question_universe.csv
+├── V550_question_use_contract.csv
+├── V550_recursive_branch_nodes.csv
+├── V550_response_option_manual_review.csv
+├── V550_response_option_map.csv
+├── V550_response_option_map.csv.gss_only_backup_20260725T072121Z
+├── V550_response_option_map.csv.pre_afro_20260714T202637Z.bak
+├── V550_response_option_map.csv.pre_arab_packet_20260713T223001Z.bak
+├── V550_response_option_map.csv.pre_asian_20260714T202901Z.bak
+├── V550_response_option_map.csv.pre_asian_20260714T203704Z.bak
+├── V550_response_option_map.csv.pre_evs_20260716T002836Z.bak
+├── V550_response_option_map.csv.pre_evs_20260716T003851Z.bak
+├── V550_response_option_map.csv.pre_evs_20260716T004315Z.bak
+├── V550_response_option_map.csv.pre_latin_rebuild_backup
+├── V550_response_option_map.csv.pre_lits_1784218458107672000.bak
+├── V550_response_option_map.csv.pre_lits_v550_repair_1784225434638042000.bak
+├── V550_response_option_map.csv.pre_sa_probe_repair_20260715T211538Z.bak
+├── V550_response_option_map.csv.pre_sa_probe_repair_20260715T212355Z.bak
+├── V550_response_option_map.csv.pre_south_asia_20260715T191450Z.bak
+├── V550_response_option_map.csv.pre_south_asia_20260715T191613Z.bak
+├── V550_response_option_map.csv.pre_wvs_20260716T045359Z.bak
+├── V550_response_option_map_lat2024_fixed.csv
+├── V550_scope_manifest.csv
+├── V550_secondary_indicator_summary.csv
+├── V550_substrate_readiness.csv
+├── V550_underpowered_quarantine.csv
+├── V550_weight_coverage.csv
+├── afrobarometer_R1_directionality_overlay.csv
+├── afrobarometer_R1_first_pass_authority_table.csv
+├── afrobarometer_R1_position_conditioning_overlay.csv
+├── afrobarometer_R1_semantic_authority_overlay.csv
+├── afrobarometer_R5_directionality_overlay.csv
+├── afrobarometer_R5_first_pass_authority_table.csv
+├── afrobarometer_R5_position_conditioning_overlay.csv
+├── afrobarometer_R5_semantic_authority_overlay.csv
+├── afrobarometer_R9_directionality_overlay.csv
+├── afrobarometer_R9_first_pass_authority_table.csv
+├── afrobarometer_R9_position_conditioning_overlay.csv
+├── afrobarometer_R9_semantic_authority_overlay.csv
+├── afrobarometer_response_option_authority.csv
+├── arab_barometer_II_directionality_overlay.csv
+├── arab_barometer_II_first_pass_authority_table.csv
+├── arab_barometer_II_position_conditioning_overlay.csv
+├── arab_barometer_II_semantic_authority_overlay.csv
+├── arab_barometer_I_directionality_overlay.csv
+├── arab_barometer_I_first_pass_authority_table.csv
+├── arab_barometer_I_position_conditioning_overlay.csv
+├── arab_barometer_I_semantic_authority_overlay.csv
+├── arab_barometer_VIII_directionality_overlay.csv
+├── arab_barometer_VIII_first_pass_authority_table.csv
+├── arab_barometer_VIII_position_conditioning_overlay.csv
+├── arab_barometer_VIII_semantic_authority_overlay.csv
+├── arab_barometer_V_directionality_overlay.csv
+├── arab_barometer_V_first_pass_authority_table.csv
+├── arab_barometer_V_position_conditioning_overlay.csv
+├── arab_barometer_V_semantic_authority_overlay.csv
+├── arab_barometer_response_option_authority.csv
+├── asian_barometer_W1_directionality_overlay.csv
+├── asian_barometer_W1_first_pass_authority_table.csv
+├── asian_barometer_W1_position_conditioning_overlay.csv
+├── asian_barometer_W1_semantic_authority_overlay.csv
+├── asian_barometer_W4_directionality_overlay.csv
+├── asian_barometer_W4_first_pass_authority_table.csv
+├── asian_barometer_W4_position_conditioning_overlay.csv
+├── asian_barometer_W4_semantic_authority_overlay.csv
+├── asian_barometer_W5_directionality_overlay.csv
+├── asian_barometer_W5_first_pass_authority_table.csv
+├── asian_barometer_W5_position_conditioning_overlay.csv
+├── asian_barometer_W5_semantic_authority_overlay.csv
+├── asian_barometer_W6_country_variable_crosswalk.csv
+├── asian_barometer_W6_directionality_overlay.csv
+├── asian_barometer_W6_first_pass_authority_table.csv
+├── asian_barometer_W6_position_conditioning_overlay.csv
+├── asian_barometer_W6_semantic_authority_overlay.csv
+├── asian_barometer_response_option_authority.csv
+├── evs_1981_directionality_overlay.csv
+├── evs_1981_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1981_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1981_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_1981_first_pass_authority_table.csv
+├── evs_1981_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── evs_1981_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── evs_1981_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── evs_1981_position_conditioning_overlay.csv
+├── evs_1981_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1981_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1981_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_1981_semantic_authority_overlay.csv
+├── evs_1981_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1981_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1981_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_1990_directionality_overlay.csv
+├── evs_1990_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1990_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1990_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_1990_first_pass_authority_table.csv
+├── evs_1990_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── evs_1990_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── evs_1990_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── evs_1990_position_conditioning_overlay.csv
+├── evs_1990_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1990_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1990_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_1990_semantic_authority_overlay.csv
+├── evs_1990_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1990_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1990_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_1999_directionality_overlay.csv
+├── evs_1999_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1999_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1999_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_1999_first_pass_authority_table.csv
+├── evs_1999_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── evs_1999_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── evs_1999_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── evs_1999_position_conditioning_overlay.csv
+├── evs_1999_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1999_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1999_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_1999_semantic_authority_overlay.csv
+├── evs_1999_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_1999_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_1999_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_2008_directionality_overlay.csv
+├── evs_2008_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_2008_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_2008_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_2008_first_pass_authority_table.csv
+├── evs_2008_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── evs_2008_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── evs_2008_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── evs_2008_position_conditioning_overlay.csv
+├── evs_2008_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_2008_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_2008_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_2008_semantic_authority_overlay.csv
+├── evs_2008_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_2008_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_2008_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_2017_directionality_overlay.csv
+├── evs_2017_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_2017_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_2017_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_2017_first_pass_authority_table.csv
+├── evs_2017_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── evs_2017_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── evs_2017_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── evs_2017_position_conditioning_overlay.csv
+├── evs_2017_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_2017_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_2017_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_2017_semantic_authority_overlay.csv
+├── evs_2017_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── evs_2017_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── evs_2017_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── evs_W1_directionality_authority.csv
+├── evs_W1_directionality_overlay.csv
+├── evs_W1_first_pass_authority_table.csv
+├── evs_W1_position_conditioning_overlay.csv
+├── evs_W1_semantic_authority_overlay.csv
+├── evs_W2_directionality_authority.csv
+├── evs_W2_directionality_overlay.csv
+├── evs_W2_first_pass_authority_table.csv
+├── evs_W2_position_conditioning_overlay.csv
+├── evs_W2_semantic_authority_overlay.csv
+├── evs_W3_directionality_authority.csv
+├── evs_W3_directionality_overlay.csv
+├── evs_W3_first_pass_authority_table.csv
+├── evs_W3_position_conditioning_overlay.csv
+├── evs_W3_semantic_authority_overlay.csv
+├── evs_W4_directionality_authority.csv
+├── evs_W4_directionality_overlay.csv
+├── evs_W4_first_pass_authority_table.csv
+├── evs_W4_position_conditioning_overlay.csv
+├── evs_W4_semantic_authority_overlay.csv
+├── evs_W5_directionality_authority.csv
+├── evs_W5_directionality_overlay.csv
+├── evs_W5_first_pass_authority_table.csv
+├── evs_W5_position_conditioning_overlay.csv
+├── evs_W5_semantic_authority_overlay.csv
+├── evs_country_variable_coverage.csv
+├── evs_response_option_authority.csv
+├── evs_response_option_authority.csv.pre_evs_20260716T003851Z.bak
+├── evs_response_option_authority.csv.pre_evs_20260716T004315Z.bak
+├── gss1972_authority_overlay.csv
+├── gss1972_directionality_overlay.csv
+├── gss1972_driver_mapping_audit.csv
+├── gss1972_first_pass_authority_table.csv
+├── gss1972_handling_spec_v1.0.md
+├── gss1972_position_conditioning_handling_spec_v1.0.md
+├── gss1972_position_conditioning_overlay.csv
+├── gss1972_position_conditioning_review_notes.md
+├── gss1972_semantic_authority_overlay.csv
+├── gss1972_semantic_authority_review_notes.md
+├── gss1973_directionality_overlay.csv
+├── gss1973_first_pass_authority_table.csv
+├── gss1973_position_conditioning_overlay.csv
+├── gss1973_semantic_authority_overlay.csv
+├── gss1984_directionality_overlay.csv
+├── gss1984_first_pass_authority_table.csv
+├── gss1984_position_conditioning_overlay.csv
+├── gss1984_semantic_authority_overlay.csv
+├── gss1993_directionality_overlay.csv
+├── gss1993_first_pass_authority_table.csv
+├── gss1993_position_conditioning_overlay.csv
+├── gss1993_semantic_authority_overlay.csv
+├── gss2002_directionality_overlay.csv
+├── gss2002_first_pass_authority_table.csv
+├── gss2002_position_conditioning_overlay.csv
+├── gss2002_semantic_authority_overlay.csv
+├── gss2010_directionality_overlay.csv
+├── gss2010_first_pass_authority_table.csv
+├── gss2010_position_conditioning_overlay.csv
+├── gss2010_position_conditioning_review_notes.md
+├── gss2010_semantic_authority_overlay.csv
+├── gss2016_directionality_overlay.csv
+├── gss2016_first_pass_authority_table.csv
+├── gss2016_position_conditioning_overlay.csv
+├── gss2016_semantic_authority_overlay.csv
+├── gss2024_directionality_overlay.csv
+├── gss2024_first_pass_authority_table.csv
+├── gss2024_position_conditioning_overlay.csv
+├── gss2024_semantic_authority_overlay.csv
+├── gss_all_eight_longitudinal_relationship_registry.csv
+├── gss_all_eight_row_authority_master.csv
+├── gss_response_option_authority.csv
+├── latinobar_metro_1995_directionality_overlay.csv
+├── latinobar_metro_2011_directionality_overlay.csv
+├── latinobar_metro_2024_directionality_overlay.csv
+├── latinobarometro_2024_directionality_overlay.csv -> /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/latinobarómetro_2024_directionality_overlay.csv
+├── latinobarometro_response_option_authority.csv
+├── latinobarómetro_1995_directionality_overlay.csv
+├── latinobarómetro_1995_first_pass_authority_table.csv
+├── latinobarómetro_1995_position_conditioning_overlay.csv
+├── latinobarómetro_1995_semantic_authority_overlay.csv
+├── latinobarómetro_2011_directionality_overlay.csv
+├── latinobarómetro_2011_first_pass_authority_table.csv
+├── latinobarómetro_2011_position_conditioning_overlay.csv
+├── latinobarómetro_2011_semantic_authority_overlay.csv
+├── latinobarómetro_2024_directionality_overlay.csv
+├── latinobarómetro_2024_first_pass_authority_table.csv
+├── latinobarómetro_2024_position_conditioning_overlay.csv
+├── latinobarómetro_2024_semantic_authority_overlay.csv
+├── lits_2006_directionality_overlay.csv
+├── lits_2006_first_pass_authority_table.csv
+├── lits_2006_position_conditioning_overlay.csv
+├── lits_2006_semantic_authority_overlay.csv
+├── lits_III_directionality_overlay.csv
+├── lits_III_directionality_overlay.csv.pre_lits_1784218452395143000.bak
+├── lits_III_first_pass_authority_table.csv
+├── lits_III_position_conditioning_overlay.csv
+├── lits_III_semantic_authority_overlay.csv
+├── lits_II_directionality_overlay.csv
+├── lits_II_directionality_overlay.csv.pre_lits_1784218452410121000.bak
+├── lits_II_first_pass_authority_table.csv
+├── lits_II_position_conditioning_overlay.csv
+├── lits_II_semantic_authority_overlay.csv
+├── lits_IV_directionality_overlay.csv
+├── lits_IV_directionality_overlay.csv.pre_lits_1784218452422309000.bak
+├── lits_IV_first_pass_authority_table.csv
+├── lits_IV_position_conditioning_overlay.csv
+├── lits_IV_semantic_authority_overlay.csv
+├── lits_I_directionality_overlay.csv
+├── lits_response_option_authority.csv
+├── lits_response_option_authority.csv.pre_lits_v550_repair_1784225429174715000.bak
+├── respondent_wave_schema_template.csv
+├── respondent_wave_semantics_registry.md
+├── respondent_wave_source_registry.md
+├── runtime_filters
+│   ├── lits_2006_runtime_filter.csv
+│   ├── lits_2006_runtime_filter.csv.pre_lits_runtime_1784219055294621000.bak
+│   ├── lits_2006_runtime_filter.json
+│   ├── lits_2006_runtime_filtered_map.csv
+│   ├── lits_2006_v550.log
+│   ├── lits_III_runtime_filter.csv
+│   ├── lits_III_runtime_filter.csv.pre_lits_runtime_1784219055295943000.bak
+│   ├── lits_II_runtime_filter.csv
+│   ├── lits_II_runtime_filter.csv.pre_lits_runtime_1784219055297004000.bak
+│   ├── lits_II_runtime_filtered_map.csv
+│   ├── lits_IV_runtime_filter.csv
+│   └── lits_IV_runtime_filter.csv.pre_lits_runtime_1784219055298020000.bak
+├── south_asia_W1_directionality_overlay.csv
+├── south_asia_W1_directionality_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── south_asia_W1_directionality_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── south_asia_W1_first_pass_authority_table.csv
+├── south_asia_W1_first_pass_authority_table.csv.pre_south_asia_20260715T191450Z.bak
+├── south_asia_W1_first_pass_authority_table.csv.pre_south_asia_20260715T191613Z.bak
+├── south_asia_W1_position_conditioning_overlay.csv
+├── south_asia_W1_position_conditioning_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── south_asia_W1_position_conditioning_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── south_asia_W1_semantic_authority_overlay.csv
+├── south_asia_W1_semantic_authority_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── south_asia_W1_semantic_authority_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── south_asia_W2_directionality_overlay.csv
+├── south_asia_W2_directionality_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── south_asia_W2_directionality_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── south_asia_W2_first_pass_authority_table.csv
+├── south_asia_W2_first_pass_authority_table.csv.pre_south_asia_20260715T191450Z.bak
+├── south_asia_W2_first_pass_authority_table.csv.pre_south_asia_20260715T191613Z.bak
+├── south_asia_W2_position_conditioning_overlay.csv
+├── south_asia_W2_position_conditioning_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── south_asia_W2_position_conditioning_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── south_asia_W2_semantic_authority_overlay.csv
+├── south_asia_W2_semantic_authority_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── south_asia_W2_semantic_authority_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── south_asia_country_variable_coverage.csv
+├── south_asia_response_option_authority.csv
+├── south_asia_response_option_authority.csv.pre_sa_probe_repair_20260715T211538Z.bak
+├── south_asia_response_option_authority.csv.pre_sa_probe_repair_20260715T212355Z.bak
+├── south_asia_response_option_authority.csv.pre_south_asia_20260715T191613Z.bak
+├── wvs_1981_directionality_overlay.csv
+├── wvs_1981_first_pass_authority_table.csv
+├── wvs_1981_position_conditioning_overlay.csv
+├── wvs_1981_semantic_authority_overlay.csv
+├── wvs_2000_directionality_overlay.csv
+├── wvs_2000_first_pass_authority_table.csv
+├── wvs_2000_position_conditioning_overlay.csv
+├── wvs_2000_semantic_authority_overlay.csv
+├── wvs_2017_directionality_overlay.csv
+├── wvs_2017_first_pass_authority_table.csv
+├── wvs_2017_position_conditioning_overlay.csv
+├── wvs_2017_semantic_authority_overlay.csv
+├── wvs_W1_directionality_authority.csv
+├── wvs_W1_directionality_overlay.csv
+├── wvs_W1_directionality_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W1_directionality_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W1_directionality_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W1_directionality_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W1_first_pass_authority_table.csv
+├── wvs_W1_first_pass_authority_table.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W1_first_pass_authority_table.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W1_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W1_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W1_position_conditioning_overlay.csv
+├── wvs_W1_position_conditioning_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W1_position_conditioning_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W1_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W1_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W1_semantic_authority_overlay.csv
+├── wvs_W1_semantic_authority_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W1_semantic_authority_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W1_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W1_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W4_directionality_authority.csv
+├── wvs_W4_directionality_overlay.csv
+├── wvs_W4_directionality_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W4_directionality_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W4_directionality_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W4_directionality_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W4_first_pass_authority_table.csv
+├── wvs_W4_first_pass_authority_table.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W4_first_pass_authority_table.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W4_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W4_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W4_position_conditioning_overlay.csv
+├── wvs_W4_position_conditioning_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W4_position_conditioning_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W4_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W4_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W4_semantic_authority_overlay.csv
+├── wvs_W4_semantic_authority_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W4_semantic_authority_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W4_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W4_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W7_directionality_authority.csv
+├── wvs_W7_directionality_overlay.csv
+├── wvs_W7_directionality_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W7_directionality_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W7_directionality_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W7_directionality_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W7_first_pass_authority_table.csv
+├── wvs_W7_first_pass_authority_table.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W7_first_pass_authority_table.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W7_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W7_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W7_position_conditioning_overlay.csv
+├── wvs_W7_position_conditioning_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W7_position_conditioning_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W7_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W7_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_W7_semantic_authority_overlay.csv
+├── wvs_W7_semantic_authority_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── wvs_W7_semantic_authority_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── wvs_W7_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── wvs_W7_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── wvs_country_variable_coverage.csv
+└── wvs_response_option_authority.csv
+
+2 directories, 403 files
+MacBook-Pro:reports matthewsmith$ tree -a -s
+[      12640]  .
+├── [       6148]  .DS_Store
+├── [      96388]  35wave_active_response_semantics_contract_inventory.csv
+├── [      31388]  35wave_response_scale_encoding_ruling_ledger.csv
+├── [      92056]  V550_answer_distribution.csv
+├── [      15998]  V550_branch_co_signature.csv
+├── [       3629]  V550_branch_position_signature.csv
+├── [      15998]  V550_branch_relation_co_signature.csv
+├── [         52]  V550_cloud_exclusion_audit.csv
+├── [      91729]  V550_country_answer_distribution.csv
+├── [    8191832]  V550_indicator_answer_matrix.csv
+├── [        125]  V550_legacy_leak_report.csv
+├── [          1]  V550_mapping_gap_report.csv
+├── [        125]  V550_mapping_status_coverage.csv
+├── [    1601250]  V550_outlier_cohort_summary.csv
+├── [       9103]  V550_position_distribution.csv
+├── [        125]  V550_position_field_coverage.csv
+├── [     319332]  V550_position_indicator_summary.csv
+├── [       1683]  V550_question_response_attitude_cloud.csv
+├── [      39177]  V550_question_universe.csv
+├── [      33986]  V550_question_use_contract.csv
+├── [     416517]  V550_recursive_branch_nodes.csv
+├── [          1]  V550_response_option_manual_review.csv
+├── [  384872893]  V550_response_option_map.csv
+├── [    6095914]  V550_response_option_map.csv.gss_only_backup_20260725T072121Z
+├── [  362937023]  V550_response_option_map.csv.pre_afro_20260714T202637Z.bak
+├── [  355462691]  V550_response_option_map.csv.pre_arab_packet_20260713T223001Z.bak
+├── [  368088482]  V550_response_option_map.csv.pre_asian_20260714T202901Z.bak
+├── [  406700389]  V550_response_option_map.csv.pre_asian_20260714T203704Z.bak
+├── [  406603376]  V550_response_option_map.csv.pre_evs_20260716T002836Z.bak
+├── [  402156188]  V550_response_option_map.csv.pre_evs_20260716T003851Z.bak
+├── [  402156188]  V550_response_option_map.csv.pre_evs_20260716T004315Z.bak
+├── [  355797782]  V550_response_option_map.csv.pre_latin_rebuild_backup
+├── [  426519480]  V550_response_option_map.csv.pre_lits_1784218458107672000.bak
+├── [  421219339]  V550_response_option_map.csv.pre_lits_v550_repair_1784225434638042000.bak
+├── [  205520896]  V550_response_option_map.csv.pre_sa_probe_repair_20260715T211538Z.bak
+├── [  406608039]  V550_response_option_map.csv.pre_sa_probe_repair_20260715T212355Z.bak
+├── [  406700389]  V550_response_option_map.csv.pre_south_asia_20260715T191450Z.bak
+├── [  406608039]  V550_response_option_map.csv.pre_south_asia_20260715T191613Z.bak
+├── [  402156188]  V550_response_option_map.csv.pre_wvs_20260716T045359Z.bak
+├── [  385266502]  V550_response_option_map_lat2024_fixed.csv
+├── [         51]  V550_scope_manifest.csv
+├── [     131037]  V550_secondary_indicator_summary.csv
+├── [        178]  V550_substrate_readiness.csv
+├── [          1]  V550_underpowered_quarantine.csv
+├── [        125]  V550_weight_coverage.csv
+├── [      62879]  afrobarometer_R1_directionality_overlay.csv
+├── [      54883]  afrobarometer_R1_first_pass_authority_table.csv
+├── [      85705]  afrobarometer_R1_position_conditioning_overlay.csv
+├── [      60514]  afrobarometer_R1_semantic_authority_overlay.csv
+├── [     175351]  afrobarometer_R5_directionality_overlay.csv
+├── [     159829]  afrobarometer_R5_first_pass_authority_table.csv
+├── [     238745]  afrobarometer_R5_position_conditioning_overlay.csv
+├── [     173382]  afrobarometer_R5_semantic_authority_overlay.csv
+├── [     209198]  afrobarometer_R9_directionality_overlay.csv
+├── [     191388]  afrobarometer_R9_first_pass_authority_table.csv
+├── [     288601]  afrobarometer_R9_position_conditioning_overlay.csv
+├── [     206872]  afrobarometer_R9_semantic_authority_overlay.csv
+├── [   15498257]  afrobarometer_response_option_authority.csv
+├── [     260866]  arab_barometer_II_directionality_overlay.csv
+├── [     233386]  arab_barometer_II_first_pass_authority_table.csv
+├── [     342937]  arab_barometer_II_position_conditioning_overlay.csv
+├── [     252975]  arab_barometer_II_semantic_authority_overlay.csv
+├── [      84368]  arab_barometer_I_directionality_overlay.csv
+├── [      73666]  arab_barometer_I_first_pass_authority_table.csv
+├── [     114827]  arab_barometer_I_position_conditioning_overlay.csv
+├── [      81514]  arab_barometer_I_semantic_authority_overlay.csv
+├── [     315252]  arab_barometer_VIII_directionality_overlay.csv
+├── [     292501]  arab_barometer_VIII_first_pass_authority_table.csv
+├── [     443555]  arab_barometer_VIII_position_conditioning_overlay.csv
+├── [     308817]  arab_barometer_VIII_semantic_authority_overlay.csv
+├── [     160380]  arab_barometer_V_directionality_overlay.csv
+├── [     145598]  arab_barometer_V_first_pass_authority_table.csv
+├── [     229566]  arab_barometer_V_position_conditioning_overlay.csv
+├── [     157116]  arab_barometer_V_semantic_authority_overlay.csv
+├── [   11033818]  arab_barometer_response_option_authority.csv
+├── [      82473]  asian_barometer_W1_directionality_overlay.csv
+├── [      74743]  asian_barometer_W1_first_pass_authority_table.csv
+├── [      56885]  asian_barometer_W1_position_conditioning_overlay.csv
+├── [      87027]  asian_barometer_W1_semantic_authority_overlay.csv
+├── [     115338]  asian_barometer_W4_directionality_overlay.csv
+├── [     103609]  asian_barometer_W4_first_pass_authority_table.csv
+├── [      78488]  asian_barometer_W4_position_conditioning_overlay.csv
+├── [     121281]  asian_barometer_W4_semantic_authority_overlay.csv
+├── [     124828]  asian_barometer_W5_directionality_overlay.csv
+├── [     111969]  asian_barometer_W5_first_pass_authority_table.csv
+├── [      84337]  asian_barometer_W5_position_conditioning_overlay.csv
+├── [     130713]  asian_barometer_W5_semantic_authority_overlay.csv
+├── [    1871216]  asian_barometer_W6_country_variable_crosswalk.csv
+├── [     187272]  asian_barometer_W6_directionality_overlay.csv
+├── [     172676]  asian_barometer_W6_first_pass_authority_table.csv
+├── [     138824]  asian_barometer_W6_position_conditioning_overlay.csv
+├── [     197946]  asian_barometer_W6_semantic_authority_overlay.csv
+├── [   48941362]  asian_barometer_response_option_authority.csv
+├── [     171986]  evs_1981_directionality_overlay.csv
+├── [     100798]  evs_1981_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     171986]  evs_1981_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     171986]  evs_1981_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     117151]  evs_1981_first_pass_authority_table.csv
+├── [      24576]  evs_1981_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── [     117151]  evs_1981_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── [     117151]  evs_1981_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── [     159678]  evs_1981_position_conditioning_overlay.csv
+├── [      63150]  evs_1981_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     159678]  evs_1981_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     159678]  evs_1981_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     101890]  evs_1981_semantic_authority_overlay.csv
+├── [      62369]  evs_1981_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     101890]  evs_1981_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     101890]  evs_1981_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     184056]  evs_1990_directionality_overlay.csv
+├── [     108225]  evs_1990_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     184056]  evs_1990_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     184056]  evs_1990_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     125446]  evs_1990_first_pass_authority_table.csv
+├── [      45469]  evs_1990_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── [     125446]  evs_1990_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── [     125446]  evs_1990_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── [     168028]  evs_1990_position_conditioning_overlay.csv
+├── [      80449]  evs_1990_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     168028]  evs_1990_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     168028]  evs_1990_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     107665]  evs_1990_semantic_authority_overlay.csv
+├── [      79628]  evs_1990_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     107665]  evs_1990_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     107665]  evs_1990_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     245864]  evs_1999_directionality_overlay.csv
+├── [     144858]  evs_1999_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     245864]  evs_1999_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     245864]  evs_1999_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     165890]  evs_1999_first_pass_authority_table.csv
+├── [      61265]  evs_1999_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── [     165890]  evs_1999_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── [     165890]  evs_1999_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── [     224083]  evs_1999_position_conditioning_overlay.csv
+├── [     104897]  evs_1999_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     224083]  evs_1999_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     224083]  evs_1999_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     144104]  evs_1999_semantic_authority_overlay.csv
+├── [     103830]  evs_1999_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     144104]  evs_1999_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     144104]  evs_1999_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     219507]  evs_2008_directionality_overlay.csv
+├── [     129499]  evs_2008_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     219507]  evs_2008_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     219507]  evs_2008_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     154960]  evs_2008_first_pass_authority_table.csv
+├── [      54477]  evs_2008_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── [     154960]  evs_2008_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── [     154960]  evs_2008_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── [     208093]  evs_2008_position_conditioning_overlay.csv
+├── [      96932]  evs_2008_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     208093]  evs_2008_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     208093]  evs_2008_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     131137]  evs_2008_semantic_authority_overlay.csv
+├── [      95937]  evs_2008_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     131137]  evs_2008_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     131137]  evs_2008_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     223040]  evs_2017_directionality_overlay.csv
+├── [     130751]  evs_2017_directionality_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     223040]  evs_2017_directionality_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     223040]  evs_2017_directionality_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     161646]  evs_2017_first_pass_authority_table.csv
+├── [      59341]  evs_2017_first_pass_authority_table.csv.pre_evs_20260716T002836Z.bak
+├── [     161646]  evs_2017_first_pass_authority_table.csv.pre_evs_20260716T003851Z.bak
+├── [     161646]  evs_2017_first_pass_authority_table.csv.pre_evs_20260716T004315Z.bak
+├── [     211118]  evs_2017_position_conditioning_overlay.csv
+├── [      99328]  evs_2017_position_conditioning_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     211118]  evs_2017_position_conditioning_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     211118]  evs_2017_position_conditioning_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     135142]  evs_2017_semantic_authority_overlay.csv
+├── [      98339]  evs_2017_semantic_authority_overlay.csv.pre_evs_20260716T002836Z.bak
+├── [     135142]  evs_2017_semantic_authority_overlay.csv.pre_evs_20260716T003851Z.bak
+├── [     135142]  evs_2017_semantic_authority_overlay.csv.pre_evs_20260716T004315Z.bak
+├── [     171986]  evs_W1_directionality_authority.csv
+├── [     171986]  evs_W1_directionality_overlay.csv
+├── [     117151]  evs_W1_first_pass_authority_table.csv
+├── [     159678]  evs_W1_position_conditioning_overlay.csv
+├── [     101890]  evs_W1_semantic_authority_overlay.csv
+├── [     184056]  evs_W2_directionality_authority.csv
+├── [     184056]  evs_W2_directionality_overlay.csv
+├── [     125446]  evs_W2_first_pass_authority_table.csv
+├── [     168028]  evs_W2_position_conditioning_overlay.csv
+├── [     107665]  evs_W2_semantic_authority_overlay.csv
+├── [     245864]  evs_W3_directionality_authority.csv
+├── [     245864]  evs_W3_directionality_overlay.csv
+├── [     165890]  evs_W3_first_pass_authority_table.csv
+├── [     224083]  evs_W3_position_conditioning_overlay.csv
+├── [     144104]  evs_W3_semantic_authority_overlay.csv
+├── [     219507]  evs_W4_directionality_authority.csv
+├── [     219507]  evs_W4_directionality_overlay.csv
+├── [     154960]  evs_W4_first_pass_authority_table.csv
+├── [     208093]  evs_W4_position_conditioning_overlay.csv
+├── [     131137]  evs_W4_semantic_authority_overlay.csv
+├── [     223040]  evs_W5_directionality_authority.csv
+├── [     223040]  evs_W5_directionality_overlay.csv
+├── [     161646]  evs_W5_first_pass_authority_table.csv
+├── [     211118]  evs_W5_position_conditioning_overlay.csv
+├── [     135142]  evs_W5_semantic_authority_overlay.csv
+├── [     705399]  evs_country_variable_coverage.csv
+├── [   47935510]  evs_response_option_authority.csv
+├── [   47935510]  evs_response_option_authority.csv.pre_evs_20260716T003851Z.bak
+├── [   47935510]  evs_response_option_authority.csv.pre_evs_20260716T004315Z.bak
+├── [      48630]  gss1972_authority_overlay.csv
+├── [     167324]  gss1972_directionality_overlay.csv
+├── [       1038]  gss1972_driver_mapping_audit.csv
+├── [     121621]  gss1972_first_pass_authority_table.csv
+├── [       5557]  gss1972_handling_spec_v1.0.md
+├── [       7794]  gss1972_position_conditioning_handling_spec_v1.0.md
+├── [     172227]  gss1972_position_conditioning_overlay.csv
+├── [       3261]  gss1972_position_conditioning_review_notes.md
+├── [     128346]  gss1972_semantic_authority_overlay.csv
+├── [       1928]  gss1972_semantic_authority_review_notes.md
+├── [     263897]  gss1973_directionality_overlay.csv
+├── [     191969]  gss1973_first_pass_authority_table.csv
+├── [     268139]  gss1973_position_conditioning_overlay.csv
+├── [     202030]  gss1973_semantic_authority_overlay.csv
+├── [     465363]  gss1984_directionality_overlay.csv
+├── [     314107]  gss1984_first_pass_authority_table.csv
+├── [     487797]  gss1984_position_conditioning_overlay.csv
+├── [     333163]  gss1984_semantic_authority_overlay.csv
+├── [     515142]  gss1993_directionality_overlay.csv
+├── [     344653]  gss1993_first_pass_authority_table.csv
+├── [     538126]  gss1993_position_conditioning_overlay.csv
+├── [     365519]  gss1993_semantic_authority_overlay.csv
+├── [     770025]  gss2002_directionality_overlay.csv
+├── [     485526]  gss2002_first_pass_authority_table.csv
+├── [     795471]  gss2002_position_conditioning_overlay.csv
+├── [     538616]  gss2002_semantic_authority_overlay.csv
+├── [     623133]  gss2010_directionality_overlay.csv
+├── [     398728]  gss2010_first_pass_authority_table.csv
+├── [     644303]  gss2010_position_conditioning_overlay.csv
+├── [       3049]  gss2010_position_conditioning_review_notes.md
+├── [     436864]  gss2010_semantic_authority_overlay.csv
+├── [     696769]  gss2016_directionality_overlay.csv
+├── [     441213]  gss2016_first_pass_authority_table.csv
+├── [     721235]  gss2016_position_conditioning_overlay.csv
+├── [     486805]  gss2016_semantic_authority_overlay.csv
+├── [     680218]  gss2024_directionality_overlay.csv
+├── [     430964]  gss2024_first_pass_authority_table.csv
+├── [     687267]  gss2024_position_conditioning_overlay.csv
+├── [     478304]  gss2024_semantic_authority_overlay.csv
+├── [     933052]  gss_all_eight_longitudinal_relationship_registry.csv
+├── [   11037002]  gss_all_eight_row_authority_master.csv
+├── [  162061424]  gss_response_option_authority.csv
+├── [      61924]  latinobar_metro_1995_directionality_overlay.csv
+├── [     124207]  latinobar_metro_2011_directionality_overlay.csv
+├── [      72055]  latinobar_metro_2024_directionality_overlay.csv
+├── [        113]  latinobarometro_2024_directionality_overlay.csv -> /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/latinobarómetro_2024_directionality_overlay.csv
+├── [    8569562]  latinobarometro_response_option_authority.csv
+├── [      97940]  latinobarómetro_1995_directionality_overlay.csv
+├── [      84344]  latinobarómetro_1995_first_pass_authority_table.csv
+├── [     138002]  latinobarómetro_1995_position_conditioning_overlay.csv
+├── [      88961]  latinobarómetro_1995_semantic_authority_overlay.csv
+├── [     190833]  latinobarómetro_2011_directionality_overlay.csv
+├── [     165931]  latinobarómetro_2011_first_pass_authority_table.csv
+├── [     268225]  latinobarómetro_2011_position_conditioning_overlay.csv
+├── [     173276]  latinobarómetro_2011_semantic_authority_overlay.csv
+├── [     100952]  latinobarómetro_2024_directionality_overlay.csv
+├── [      87046]  latinobarómetro_2024_first_pass_authority_table.csv
+├── [     137481]  latinobarómetro_2024_position_conditioning_overlay.csv
+├── [      90461]  latinobarómetro_2024_semantic_authority_overlay.csv
+├── [     490156]  lits_2006_directionality_overlay.csv
+├── [     391462]  lits_2006_first_pass_authority_table.csv
+├── [     628782]  lits_2006_position_conditioning_overlay.csv
+├── [     331459]  lits_2006_semantic_authority_overlay.csv
+├── [     564819]  lits_III_directionality_overlay.csv
+├── [     380856]  lits_III_directionality_overlay.csv.pre_lits_1784218452395143000.bak
+├── [     444039]  lits_III_first_pass_authority_table.csv
+├── [     706220]  lits_III_position_conditioning_overlay.csv
+├── [     402139]  lits_III_semantic_authority_overlay.csv
+├── [     295081]  lits_II_directionality_overlay.csv
+├── [     182823]  lits_II_directionality_overlay.csv.pre_lits_1784218452410121000.bak
+├── [     215995]  lits_II_first_pass_authority_table.csv
+├── [     333277]  lits_II_position_conditioning_overlay.csv
+├── [     193225]  lits_II_semantic_authority_overlay.csv
+├── [     543442]  lits_IV_directionality_overlay.csv
+├── [     348509]  lits_IV_directionality_overlay.csv.pre_lits_1784218452422309000.bak
+├── [     399831]  lits_IV_first_pass_authority_table.csv
+├── [     641292]  lits_IV_position_conditioning_overlay.csv
+├── [     365173]  lits_IV_semantic_authority_overlay.csv
+├── [     323052]  lits_I_directionality_overlay.csv
+├── [   21986866]  lits_response_option_authority.csv
+├── [   21949401]  lits_response_option_authority.csv.pre_lits_v550_repair_1784225429174715000.bak
+├── [      29263]  respondent_wave_schema_template.csv
+├── [      40571]  respondent_wave_semantics_registry.md
+├── [       8498]  respondent_wave_source_registry.md
+├── [        448]  runtime_filters
+│   ├── [        898]  lits_2006_runtime_filter.csv
+│   ├── [        898]  lits_2006_runtime_filter.csv.pre_lits_runtime_1784219055294621000.bak
+│   ├── [       1895]  lits_2006_runtime_filter.json
+│   ├── [    1401476]  lits_2006_runtime_filtered_map.csv
+│   ├── [       1820]  lits_2006_v550.log
+│   ├── [       1262]  lits_III_runtime_filter.csv
+│   ├── [       1262]  lits_III_runtime_filter.csv.pre_lits_runtime_1784219055295943000.bak
+│   ├── [       1309]  lits_II_runtime_filter.csv
+│   ├── [       1309]  lits_II_runtime_filter.csv.pre_lits_runtime_1784219055297004000.bak
+│   ├── [    3076431]  lits_II_runtime_filtered_map.csv
+│   ├── [       1381]  lits_IV_runtime_filter.csv
+│   └── [       1381]  lits_IV_runtime_filter.csv.pre_lits_runtime_1784219055298020000.bak
+├── [      34600]  south_asia_W1_directionality_overlay.csv
+├── [      20364]  south_asia_W1_directionality_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── [      34600]  south_asia_W1_directionality_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── [      25160]  south_asia_W1_first_pass_authority_table.csv
+├── [       9977]  south_asia_W1_first_pass_authority_table.csv.pre_south_asia_20260715T191450Z.bak
+├── [      25160]  south_asia_W1_first_pass_authority_table.csv.pre_south_asia_20260715T191613Z.bak
+├── [      34078]  south_asia_W1_position_conditioning_overlay.csv
+├── [      15536]  south_asia_W1_position_conditioning_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── [      34078]  south_asia_W1_position_conditioning_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── [      26633]  south_asia_W1_semantic_authority_overlay.csv
+├── [      15359]  south_asia_W1_semantic_authority_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── [      26633]  south_asia_W1_semantic_authority_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── [      43235]  south_asia_W2_directionality_overlay.csv
+├── [      26910]  south_asia_W2_directionality_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── [      43235]  south_asia_W2_directionality_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── [      32987]  south_asia_W2_first_pass_authority_table.csv
+├── [      16585]  south_asia_W2_first_pass_authority_table.csv.pre_south_asia_20260715T191450Z.bak
+├── [      32987]  south_asia_W2_first_pass_authority_table.csv.pre_south_asia_20260715T191613Z.bak
+├── [      42082]  south_asia_W2_position_conditioning_overlay.csv
+├── [      22328]  south_asia_W2_position_conditioning_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── [      42082]  south_asia_W2_position_conditioning_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── [      34512]  south_asia_W2_semantic_authority_overlay.csv
+├── [      22141]  south_asia_W2_semantic_authority_overlay.csv.pre_south_asia_20260715T191450Z.bak
+├── [      34512]  south_asia_W2_semantic_authority_overlay.csv.pre_south_asia_20260715T191613Z.bak
+├── [      78444]  south_asia_country_variable_coverage.csv
+├── [    1498266]  south_asia_response_option_authority.csv
+├── [    1502929]  south_asia_response_option_authority.csv.pre_sa_probe_repair_20260715T211538Z.bak
+├── [    1498266]  south_asia_response_option_authority.csv.pre_sa_probe_repair_20260715T212355Z.bak
+├── [    1502929]  south_asia_response_option_authority.csv.pre_south_asia_20260715T191613Z.bak
+├── [      82170]  wvs_1981_directionality_overlay.csv
+├── [      59949]  wvs_1981_first_pass_authority_table.csv
+├── [      79861]  wvs_1981_position_conditioning_overlay.csv
+├── [      50246]  wvs_1981_semantic_authority_overlay.csv
+├── [     198987]  wvs_2000_directionality_overlay.csv
+├── [     134741]  wvs_2000_first_pass_authority_table.csv
+├── [     180576]  wvs_2000_position_conditioning_overlay.csv
+├── [     114993]  wvs_2000_semantic_authority_overlay.csv
+├── [     282424]  wvs_2017_directionality_overlay.csv
+├── [     204456]  wvs_2017_first_pass_authority_table.csv
+├── [     275479]  wvs_2017_position_conditioning_overlay.csv
+├── [     174741]  wvs_2017_semantic_authority_overlay.csv
+├── [      82170]  wvs_W1_directionality_authority.csv
+├── [      82170]  wvs_W1_directionality_overlay.csv
+├── [      82170]  wvs_W1_directionality_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [      82170]  wvs_W1_directionality_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [      82170]  wvs_W1_directionality_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [      82170]  wvs_W1_directionality_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [      59949]  wvs_W1_first_pass_authority_table.csv
+├── [      59949]  wvs_W1_first_pass_authority_table.csv.pre_wvs_20260716T062356Z.bak
+├── [      59949]  wvs_W1_first_pass_authority_table.csv.pre_wvs_20260716T082721Z.bak
+├── [      59949]  wvs_W1_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [      59949]  wvs_W1_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [      79861]  wvs_W1_position_conditioning_overlay.csv
+├── [      79861]  wvs_W1_position_conditioning_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [      79861]  wvs_W1_position_conditioning_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [      79861]  wvs_W1_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [      79861]  wvs_W1_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [      50246]  wvs_W1_semantic_authority_overlay.csv
+├── [      50246]  wvs_W1_semantic_authority_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [      50246]  wvs_W1_semantic_authority_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [      50246]  wvs_W1_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [      50246]  wvs_W1_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     198987]  wvs_W4_directionality_authority.csv
+├── [     198987]  wvs_W4_directionality_overlay.csv
+├── [     198987]  wvs_W4_directionality_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [     198987]  wvs_W4_directionality_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [     198987]  wvs_W4_directionality_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [     198987]  wvs_W4_directionality_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     134741]  wvs_W4_first_pass_authority_table.csv
+├── [     134741]  wvs_W4_first_pass_authority_table.csv.pre_wvs_20260716T062356Z.bak
+├── [     134741]  wvs_W4_first_pass_authority_table.csv.pre_wvs_20260716T082721Z.bak
+├── [     134741]  wvs_W4_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [     134741]  wvs_W4_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     180576]  wvs_W4_position_conditioning_overlay.csv
+├── [     180576]  wvs_W4_position_conditioning_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [     180576]  wvs_W4_position_conditioning_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [     180576]  wvs_W4_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [     180576]  wvs_W4_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     114993]  wvs_W4_semantic_authority_overlay.csv
+├── [     114993]  wvs_W4_semantic_authority_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [     114993]  wvs_W4_semantic_authority_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [     114993]  wvs_W4_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [     114993]  wvs_W4_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     282424]  wvs_W7_directionality_authority.csv
+├── [     282424]  wvs_W7_directionality_overlay.csv
+├── [     282424]  wvs_W7_directionality_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [     282424]  wvs_W7_directionality_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [     282424]  wvs_W7_directionality_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [     282424]  wvs_W7_directionality_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     204456]  wvs_W7_first_pass_authority_table.csv
+├── [     204456]  wvs_W7_first_pass_authority_table.csv.pre_wvs_20260716T062356Z.bak
+├── [     204456]  wvs_W7_first_pass_authority_table.csv.pre_wvs_20260716T082721Z.bak
+├── [     204456]  wvs_W7_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [     204456]  wvs_W7_first_pass_authority_table.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     275479]  wvs_W7_position_conditioning_overlay.csv
+├── [     275479]  wvs_W7_position_conditioning_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [     275479]  wvs_W7_position_conditioning_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [     275479]  wvs_W7_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [     275479]  wvs_W7_position_conditioning_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     174741]  wvs_W7_semantic_authority_overlay.csv
+├── [     174741]  wvs_W7_semantic_authority_overlay.csv.pre_wvs_20260716T062356Z.bak
+├── [     174741]  wvs_W7_semantic_authority_overlay.csv.pre_wvs_20260716T082721Z.bak
+├── [     174741]  wvs_W7_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054724Z.bak
+├── [     174741]  wvs_W7_semantic_authority_overlay.csv.pre_wvs_hygiene_20260716T054808Z.bak
+├── [     596454]  wvs_country_variable_coverage.csv
+└── [   32649213]  wvs_response_option_authority.csv
+
+2 directories, 404 files
+MacBook-Pro:reports matthewsmith$ 

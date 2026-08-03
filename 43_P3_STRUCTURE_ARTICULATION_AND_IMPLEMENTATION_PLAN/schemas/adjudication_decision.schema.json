@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing P3 Adjudication Decision",
+  "type": "object",
+  "required": [
+    "adjudication_id",
+    "candidate_family_id",
+    "decision_status",
+    "canonical_proposition",
+    "accepted_members",
+    "excluded_members",
+    "variant_assignments",
+    "collision_dispositions",
+    "unresolved_boundaries",
+    "rationale",
+    "evidence_bundle_hash"
+  ],
+  "properties": {
+    "adjudication_id": {
+      "type": "string",
+      "pattern": "^P3ADJ-[0-9]{6}$"
+    },
+    "candidate_family_id": {
+      "type": "string"
+    },
+    "decision_status": {
+      "type": "string"
+    },
+    "canonical_family_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canonical_proposition": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "accepted_members": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "excluded_members": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "variant_assignments": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "hierarchical_relations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "collision_dispositions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "response_portability_status": {
+      "const": "NOT_AUTHORIZED_BY_P3"
+    },
+    "unresolved_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "supersedes_adjudication_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

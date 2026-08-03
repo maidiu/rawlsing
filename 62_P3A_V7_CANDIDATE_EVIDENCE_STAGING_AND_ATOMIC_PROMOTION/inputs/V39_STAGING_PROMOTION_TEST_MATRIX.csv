@@ -1,0 +1,13 @@
+test_id,surface,mutation_or_case,required_result
+S62-01,stage completeness,Remove one internal-pair row from a staged candidate bundle.,Promotion rejects before canonical candidate revision insertion.
+S62-02,stage hash,Change typed constraint evidence while preserving the staged declared hash.,Stage validation fails canonical hash recomputation.
+S62-03,canonical reconstruction,Insert or omit one canonical child row relative to the staged evidence snapshot.,Pre-commit DB reconstruction mismatch raises and rolls back the entire promotion.
+S62-04,canonical immutability,Attempt to update p3_candidate_revision.evidence_bundle_hash.,Immutable trigger rejects.
+S62-05,snapshot closure,Insert a canonical revision without exactly one matching evidence snapshot.,Deferred constraint fails at commit.
+S62-06,packet convergence,Export each of the four v39 blocker candidates.,DB revision hash = snapshot hash = offline packet hash = draft hash.
+S62-07,all-candidate closure,Recompute every current candidate evidence snapshot.,All candidate revisions independently match their immutable snapshot hash.
+S62-08,idempotent resume,Resume a COMPLETE but unpromoted stage after process interruption.,Promotes exactly once; no duplicate canonical objects.
+S62-09,divergent rerun,Reuse candidate revision ID with a different staged hash.,Hard failure; never treated as ON CONFLICT no-op.
+S62-10,authority isolation,"Query all P3 authority, pilot, lifecycle, and release surfaces while stages exist.",No staging row is visible or countable as an authority object or candidate revision.
+S62-11,promotion rollback,Force a deferred origin/closure trigger failure after canonical inserts begin.,No partial candidate revision or child rows survive.
+S62-12,q01-q54,Execute the complete query surface against the final populated successor release.,No applicable failures; only q01b and q15b remain phase-aware future gates.

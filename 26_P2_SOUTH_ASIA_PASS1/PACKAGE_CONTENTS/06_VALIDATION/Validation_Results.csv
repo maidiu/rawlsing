@@ -1,0 +1,19 @@
+test,status,detail
+exact_node_count,PASS,141 expected 141
+unique_exact_identity,PASS,question implementation IDs unique
+edge_endpoints_exist,PASS,12 accepted edges
+edge_pairs_unique,PASS,no duplicate accepted pair
+accepted_revision_edges_reconcile,PASS,12 accepted revisions all materialized as edges
+authority_partitions_disjoint,PASS,accepted/review/negative pair sets disjoint
+cross_wave_only,PASS,all accepted continuity edges cross waves
+semantic_role_mismatch_explicit,PASS,source-specific check below
+structure_membership_referential_integrity,PASS,15 structures / 76 memberships
+structures_inventory_only,PASS,no structure promoted
+response_gap_reconciliation,PASS,6 gaps
+source_references_present,PASS,source reference surface present
+no_family_authoring,PASS,none authored
+no_live_execution,PASS,catalog-only pass
+referent_false_matches_guarded,PASS,country/family economy and main-earner/respondent occupation blocked
+obvious_cross_code_continuities_recovered,PASS,local government/courts/police/age recovered
+zero_row_ledgers_schema_valid,PASS,negative/same-wave ledgers retain schemas
+semantic_role_mismatch_explicit,PASS,no accepted role mismatch

@@ -1,0 +1,6 @@
+finding_id,severity,surface,finding,resolution
+V31-F001,HIGH,p3_lineage_disposition,subject_type was required by schema/governance but absent from DDL,Restored column and composite FK to object registry
+V31-F002,HIGH,object-reference contract,component connectivity referenced stale pair_fact_id,Corrected to projection_id -> PAIR_PROJECTION
+V31-F003,HIGH,identity contract,PAIR_PROJECTION used invalid/stale CONTENT_ADDRESSED strategy,Corrected to CONTENT_ADDRESSED_DERIVED_ID
+V31-F004,MEDIUM,loader,test release id was schema-invalid for packet JSON,Changed successor execution release to P3-AUTHORITY-2026-08-01-R31
+V31-F005,MEDIUM,packet builder,members_by_source initially grouped by lineage id instead of source family,Corrected to upstream source_family and validator passed

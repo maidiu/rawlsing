@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/variant_promotion.schema.json",
+  "title": "variant_promotion",
+  "type": "object",
+  "required": [
+    "candidate_variant_revision_id",
+    "canonical_variant_revision_id",
+    "member_ids"
+  ],
+  "properties": {
+    "candidate_variant_revision_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^P3VARREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "canonical_variant_revision_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^P3VARREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

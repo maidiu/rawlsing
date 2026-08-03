@@ -1,0 +1,10 @@
+object_type,identity_strategy,idempotency_key,allocation_rule
+IMPORTED_IMPLEMENTATION,INHERITED_UPSTREAM_ID,implementation_id,Use exact P2 implementation ID.
+IMPORTED_SOURCE_LOCAL_LINEAGE,INHERITED_UPSTREAM_ID,lineage_id,Use exact P2 lineage ID.
+PAIR_FACT,CONTENT_ADDRESSED_DERIVED_ID,pair_key + governing_authority_id + mapping_version,"Canonical UTF-8 JSON, sorted keys, SHA-256; display ID uses first 16 hex with collision check."
+CANDIDATE_COMPONENT,CONTENT_ADDRESSED_DERIVED_ID,sorted member IDs + sorted connective pair-fact IDs + build rule version,"Canonical UTF-8 JSON, sorted keys, SHA-256."
+CANDIDATE_FAMILY,REGISTRY_ALLOCATED_DURABLE_ID,initial component identity + candidate origin type,Initial deterministic sorted allocation; append-only after first release.
+CANONICAL_FAMILY,REGISTRY_ALLOCATED_DURABLE_ID,accepting adjudication ID,Allocate new JFAM ID; revisions do not change stable ID.
+FAMILY_VARIANT,REGISTRY_ALLOCATED_DURABLE_ID,owner stable ID + dimension + stable semantic value key,Append-only.
+FAMILY_EXCLUSION,REGISTRY_ALLOCATED_DURABLE_ID,owner stable ID + exclusion type + prohibited operation + stable rule key,Append-only.
+ADJUDICATION,REGISTRY_ALLOCATED_DURABLE_ID,candidate revision ID + decision ordinal,Append-only immutable decision.

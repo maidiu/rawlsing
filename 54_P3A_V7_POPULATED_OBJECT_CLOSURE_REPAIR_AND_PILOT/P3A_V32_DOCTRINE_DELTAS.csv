@@ -1,0 +1,7 @@
+delta_id,surface,change,reason
+D54-001,candidate packet schema,closure_obligations references closure_obligation.schema.json,Remove obligation_id vs closure_obligation_id mismatch.
+D54-002,packet validator,enforce exact UNRULED-to-obligation closure links,Make packet closure reconstructive from DB.
+D54-003,loader,install contract triggers after contract rows load,Prove every governed categorical/object-reference column has its own trigger.
+D54-004,loader,candidate exclusions owned by candidate_family_id,Satisfy p3_family_exclusion owner_object_id contract.
+D54-005,vocabulary,add adjudication_member_disposition=SPLIT,Align controlled vocabulary with DDL check and q53 split semantics.
+D54-006,fixtures,use complete fixture signature and family-level hierarchy endpoints,Keep committed valid fixtures globally valid under q11/q12/q35.

@@ -1,0 +1,49 @@
+{
+  "reviewed_artifact": "Rawlsing_P3A_V39_Section61_Blocker_Delta.zip",
+  "sha256": "08e8d72e61753920b8333617f13817afb6747b3ad087e4bcf5b2e55f1a222952",
+  "bytes": 237648,
+  "zip_entries_claimed_and_observed": 146,
+  "classification": "REAL_BOUNDED_IMPLEMENTATION_CONTRACT_BLOCKER",
+  "not_a_doctrine_blocker": true,
+  "verified_repairs": {
+    "q33_candidate_revision_has_current_stage": "PASS",
+    "candidate_status_events": 141,
+    "candidate_current_stage_rows": 141,
+    "semantic_identity_identity_plus_binding_shape": "PRESENT",
+    "stable_topology_contract_version": "P3_COMPONENT_TOPOLOGY_CONTRACT_V1",
+    "typed_fake_evidence_mutation": "REJECTED",
+    "postgresql_teardown": "PASS"
+  },
+  "verified_blocker": {
+    "status": "BLOCKED_DATABASE_PACKET_HASH_CONVERGENCE",
+    "divergent_packet_count": 4,
+    "candidate_revisions": [
+      {
+        "candidate_revision_id": "P3CANDREV-000179-R0002",
+        "database_candidate_hash": "fe8ec5484a0edacb7da657097b370bd1cf1b61b82cc404dee7629ec3303407f5",
+        "packet_evidence_hash": "36cb485e2c418ef1525dfa5c0ae29630d6fe161c816dbf045b8922fd23cf616c"
+      },
+      {
+        "candidate_revision_id": "P3CANDREV-000188-R0002",
+        "database_candidate_hash": "d6e45a5d225a2ea37825ca23ffd1233d70b3276401375ffe2b10f8e47a022f80",
+        "packet_evidence_hash": "37e228a58a7f9948f3a7f1cc077352e3cc54bf434c0fe46435ba74e5ce544bec"
+      },
+      {
+        "candidate_revision_id": "P3CANDREV-000144-R0002",
+        "database_candidate_hash": "e31ceba2b7c50def51e2871614f4e1eab92215511b141233ce21d9113431785d",
+        "packet_evidence_hash": "0d58406cb1c44ef7ea464705f6dbf759b674ea04ac28796d02f0e5724debb902"
+      },
+      {
+        "candidate_revision_id": "P3CANDREV-000148-R0002",
+        "database_candidate_hash": "0571251d9cc61b1129c7a5507da3c4201fad6dbd8738f5a995255ab389432aed",
+        "packet_evidence_hash": "8ab2c9edfcda7dd647f3d5689f242b963566828f4edee5e96479925c8c8beb8e"
+      }
+    ],
+    "cause": "The canonical candidate revision is inserted before its normalized child evidence rows exist. The loader hashes a partial in-memory summary; the packet builder later hashes the complete persisted evidence surface. Updating the canonical revision after child insertion is correctly forbidden."
+  },
+  "phase_aware_query_failures": [
+    "q01b_postpromotion_pointer",
+    "q15b_no_unadjudicated_at_p3_close"
+  ],
+  "required_solution": "One non-authoritative CandidateEvidenceBundle staging surface plus an atomic promotion transaction and immutable canonical evidence snapshot."
+}

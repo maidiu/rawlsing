@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/closure_obligation.schema.json",
+  "title": "Rawlsing P3 Closure Obligation",
+  "type": "object",
+  "required": [
+    "closure_obligation_id",
+    "candidate_revision_id",
+    "left_id",
+    "right_id",
+    "obligation_type",
+    "status",
+    "authority_release_id"
+  ],
+  "properties": {
+    "closure_obligation_id": {
+      "type": "string",
+      "pattern": "^P3CLOSE-[0-9a-f]{16}$"
+    },
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "left_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "obligation_type": {
+      "enum": [
+        "ATTACHMENT_REVIEW",
+        "DIRECT_COLLISION",
+        "HETEROGENEOUS_LINEAGE",
+        "INCOMPLETE_SIGNATURE",
+        "MERGE_OR_SIBLING_REVIEW",
+        "SIGNATURE_CONFLICT",
+        "UNRESOLVED_PAIR",
+        "UNRULED_INTERNAL_PAIR",
+        "VALUE_PORTABILITY_BOUNDARY"
+      ]
+    },
+    "status": {
+      "enum": [
+        "OPEN",
+        "RESOLVED_ACCEPT",
+        "RESOLVED_SPLIT",
+        "RESOLVED_EXCLUDE",
+        "FAIL_CLOSED"
+      ]
+    },
+    "resolution_adjudication_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^P3ADJ-[0-9]{6}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "RESOLVED_ACCEPT",
+              "RESOLVED_SPLIT",
+              "RESOLVED_EXCLUDE"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "resolution_adjudication_id"
+        ],
+        "properties": {
+          "resolution_adjudication_id": {
+            "type": "string",
+            "pattern": "^P3ADJ-[0-9]{6}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "OPEN",
+              "FAIL_CLOSED"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resolution_adjudication_id": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

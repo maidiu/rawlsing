@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "fixture_release": "P3-AUTHORITY-2026-08-01-R35-FIXTURE",
+  "positive_cases": [
+    {
+      "case": "valid_accepted_fixture_clean_commit",
+      "status": "PASS_COMMITTED_ONCE"
+    },
+    {
+      "case": "valid_split_fixture_clean_commit",
+      "status": "PASS_COMMITTED_ONCE"
+    },
+    {
+      "case": "valid_hierarchy_fixture_clean_commit",
+      "status": "PASS_COMMITTED_ONCE"
+    }
+  ],
+  "idempotency_rerun": {
+    "status": "PASS_NOOP_STATE_MATCH"
+  },
+  "negative_cases": [
+    {
+      "case": "incomplete_split_union",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "INCOMPLETE_SPLIT_UNION"
+    },
+    {
+      "case": "omitted_hierarchy_endpoint",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "OMITTED_HIERARCHY_ENDPOINT"
+    },
+    {
+      "case": "duplicate_dispositions",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "DUPLICATE_DISPOSITIONS"
+    },
+    {
+      "case": "release_mismatch",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "RELEASE_MISMATCH"
+    },
+    {
+      "case": "incomplete_promotion_mapping_after_prerequisites",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "INCOMPLETE_PROMOTION_MAPPING_AFTER_PREREQUISITES"
+    },
+    {
+      "case": "nested_semantic_evidence_mutation_stale_hash",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "NESTED_SEMANTIC_EVIDENCE_MUTATION_STALE_HASH"
+    },
+    {
+      "case": "missing_typed_collision",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "MISSING_TYPED_COLLISION"
+    },
+    {
+      "case": "missing_unresolved_redirect_coordinate_object",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "MISSING_UNRESOLVED_REDIRECT_COORDINATE_OBJECT"
+    },
+    {
+      "case": "direct_pair_fact_mislabeled_unruled",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "DIRECT_PAIR_FACT_MISLABELED_UNRULED"
+    },
+    {
+      "case": "reused_candidate_family_revision_changed_origin",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "REUSED_CANDIDATE_FAMILY_REVISION_CHANGED_ORIGIN"
+    },
+    {
+      "case": "reused_packet_id_after_evidence_change",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "REUSED_PACKET_ID_AFTER_EVIDENCE_CHANGE"
+    },
+    {
+      "case": "changed_build_rule_version_retaining_component_id",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "CHANGED_BUILD_RULE_VERSION_RETAINING_COMPONENT_ID"
+    },
+    {
+      "case": "missing_seed_component_link",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "MISSING_SEED_COMPONENT_LINK"
+    },
+    {
+      "case": "review_preflight_regression_input_dependency",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "REVIEW_PREFLIGHT_REGRESSION_INPUT_DEPENDENCY"
+    },
+    {
+      "case": "pilot_candidate_selected_without_stratum_evidence",
+      "status": "EXPECTED_FAIL",
+      "named_invariant": "PILOT_CANDIDATE_SELECTED_WITHOUT_STRATUM_EVIDENCE"
+    }
+  ],
+  "main_p3a_adjudications": 0,
+  "main_p3a_canonical_families": 0,
+  "fixture_cleanup": "PASS",
+  "teardown_scope": "isolated_fixture_schema"
+}

@@ -1,0 +1,27 @@
+object_type,identity_strategy,idempotency_key,allocation_rule,id_pattern
+IMPORTED_IMPLEMENTATION,INHERITED_UPSTREAM_ID,implementation_id,Use exact P2 implementation ID; never reallocate.,UPSTREAM_EXACT
+IMPORTED_SOURCE_LOCAL_LINEAGE,INHERITED_UPSTREAM_ID,lineage_id,Use exact P2 lineage ID; never reallocate.,UPSTREAM_EXACT
+IMPORTED_SOURCE_STRUCTURE,INHERITED_UPSTREAM_ID,source_structure_id,Use exact governed P2 structure ID.,UPSTREAM_EXACT
+IMPORTED_RESPONSE_CONTRACT,INHERITED_UPSTREAM_ID,upstream_response_contract_id,Use exact upstream response-contract identity where available.,UPSTREAM_EXACT
+LINEAGE_SEGMENT,CONTENT_ADDRESSED_DERIVED_ID,parent_lineage_id + sorted implementation_ids + segment_reason,Canonical JSON SHA-256; display prefix P3SEG plus first 16 hex; collision check uses full hash.,P3SEG-[0-9a-f]{16}
+PROPOSITION_SIGNATURE,CONTENT_ADDRESSED_DERIVED_ID,subject_id + 12 ordered signature fields + evidence states + evidence ids + schema version,Canonical JSON SHA-256; P3SIG plus first 16 hex.,P3SIG-[0-9a-f]{16}
+RESPONSE_CONTRACT_REFERENCE,CONTENT_ADDRESSED_DERIVED_ID,subject_id + upstream_response_contract_id + response_topology + authority artifact/hash,Canonical JSON SHA-256; P3RCR plus first 16 hex.,P3RCR-[0-9a-f]{16}
+STRUCTURAL_CONTEXT_REFERENCE,CONTENT_ADDRESSED_DERIVED_ID,subject_id + source_field + canonical source_value + authority artifact,Canonical JSON SHA-256; P3SCR plus first 16 hex.,P3SCR-[0-9a-f]{16}
+PAIR_FACT,CONTENT_ADDRESSED_DERIVED_ID,canonical endpoint pair + governing authority id + mapping version,Canonical JSON SHA-256; P3PF plus first 16 hex.,P3PF-[0-9a-f]{16}
+COLLISION,CONTENT_ADDRESSED_DERIVED_ID,oriented endpoints + collision type + scope + source authority ids,Canonical JSON SHA-256; P3COL plus first 16 hex.,P3COL-[0-9a-f]{16}
+CANDIDATE_COMPONENT,CONTENT_ADDRESSED_DERIVED_ID,sorted member subject IDs + sorted pair projection IDs + build rule version,Canonical JSON SHA-256 over explicit P3 subject membership and pair projections; never hash unresolved endpoint eligibility.,P3COMP-[0-9a-f]{16}
+CLOSURE_OBLIGATION,CONTENT_ADDRESSED_DERIVED_ID,candidate revision + canonical endpoint pair + obligation type,Canonical JSON SHA-256; P3CLOSE plus first 16 hex.,P3CLOSE-[0-9a-f]{16}
+HYPEREDGE,CONTENT_ADDRESSED_DERIVED_ID,hyperedge type + authority effect + sorted typed participants + governing evidence,Canonical JSON SHA-256; P3HYP plus first 16 hex.,P3HYP-[0-9a-f]{16}
+DEPENDENCY,CONTENT_ADDRESSED_DERIVED_ID,dependent id + authority input id + dependency role + authority release,Canonical JSON SHA-256; P3DEP plus first 16 hex.,P3DEP-[0-9a-f]{16}
+CANDIDATE_PACKET,CONTENT_ADDRESSED_DERIVED_ID,candidate revision id + evidence bundle hash + packet schema version,Canonical JSON SHA-256; P3PKT plus first 16 hex.,P3PKT-[0-9a-f]{16}
+CANDIDATE_FAMILY,REGISTRY_ALLOCATED_DURABLE_ID,"immutable candidate origin key derived from exact components, attachment projections, diagnostic lane, and subject set",Allocate deterministically from sorted origin keys; append-only thereafter.,P3CAND-[0-9]{6}
+CANDIDATE_REVISION,REGISTRY_ALLOCATED_DURABLE_ID,candidate family id + revision ordinal,Immutable revision identity; revisions append and never overwrite.,P3CANDREV-[0-9]{6}-R[0-9]{4}
+FAMILY_VARIANT,REGISTRY_ALLOCATED_DURABLE_ID,owner stable id + dimension + stable semantic value key,Append-only durable variant identity.,P3VAR-[0-9]{6}
+FAMILY_VARIANT_REVISION,REGISTRY_ALLOCATED_DURABLE_ID,variant id + revision ordinal,Immutable release-scoped variant revision.,P3VARREV-[0-9]{6}-R[0-9]{4}
+FAMILY_EXCLUSION,REGISTRY_ALLOCATED_DURABLE_ID,owner stable id + exclusion type + prohibited operation + stable rule key,Append-only durable exclusion identity.,P3EXC-[0-9]{6}
+ADJUDICATION,REGISTRY_ALLOCATED_DURABLE_ID,candidate revision id + decision ordinal,Append-only immutable decision.,P3ADJ-[0-9]{6}
+CANONICAL_FAMILY,REGISTRY_ALLOCATED_DURABLE_ID,accepting adjudication id,Allocate new JFAM identity; revisions never change stable family id.,JFAM-[0-9]{6}
+CANONICAL_FAMILY_REVISION,REGISTRY_ALLOCATED_DURABLE_ID,canonical family id + revision ordinal,Immutable revision identity.,JFAMREV-[0-9]{6}-R[0-9]{4}
+DOCTRINE_DELTA,REGISTRY_ALLOCATED_DURABLE_ID,trigger candidate + doctrine ordinal,Append-only doctrine record.,P3DOC-[0-9]{5}
+FAMILY_GENEALOGY,REGISTRY_ALLOCATED_DURABLE_ID,adjudication id + relation type + predecessor/successor set,Append-only genealogy event.,P3GEN-[0-9]{6}
+PAIR_PROJECTION,CONTENT_ADDRESSED_DERIVED_ID,"canonical(pair_fact_id,left_subject_id,right_subject_id,projection_basis,authority_release_id)",Hash explicit subject-level pair projection after endpoint resolution; never Cartesian-expand eligible segments.,P3PROJ-[0-9a-f]{16}

@@ -1,0 +1,20 @@
+query_id,lifecycle_phase,observed_result,expected_result_at_phase,status,evidence
+q01_pointer_cardinality,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q01b_postpromotion_pointer,POST_PROMOTION,FAIL,NOT_APPLICABLE before promotion,NOT_APPLICABLE,executed before q17 abort
+q02_pointer_has_promoted_event,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q03_no_reflexive_pairs,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q04_proposition_graph_types,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q05_no_path_authority,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q06_one_governing_source,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q07_candidate_membership_unique,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q08_complete_pair_matrix,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q09_component_stored_counts,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q10_clean_candidate_blockers,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q11_family_revision_complete,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q12_rule_exclusion_present,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q13_named_exclusions_when_needed,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q14_no_measurement_leak,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q15_family_adjudication_consistency,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q15b_no_unadjudicated_at_p3_close,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q16_release_event_contiguous,P3A_PRE_PROMOTION,PASS,PASS,PASS,executed before q17 abort
+q17_candidate_event_contiguous,P3A_PRE_PROMOTION,SQLSTATE 42803: candidate_family_id selected while grouped by candidate_revision_id,Executable read-only validation query returns PASS/FAIL row,FAIL,postgres/ddl_validation_queries_stderr.txt

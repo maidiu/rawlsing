@@ -1,0 +1,21 @@
+{
+  "status": "PASS_RELEASED_ONLY_AFTER_EXACT_OUTER_ARCHIVE_VERIFICATION",
+  "outer_archive_filename": "Rawlsing_J_Family_Authority_Strategy_Handoff_v23_20260731.zip",
+  "outer_archive_sha256_policy": "Reported in the release message and detached attestation; intentionally not embedded to avoid self-referential archive hashing.",
+  "checks": {
+    "build_tree_v23_verifier": "118/118 PASS",
+    "inherited_v22_baseline": "66/66 PASS",
+    "type_aware_tree_audit": "PASS",
+    "recursive_archive_instances": 88,
+    "unique_archive_payloads": 77,
+    "document_qa": "33 pages individually inspected; PASS",
+    "outer_zip_crc_integrity": "PASS",
+    "fresh_extraction": "PASS",
+    "byte_for_byte_tree_equivalence": "PASS",
+    "fresh_extraction_v23_verifier": "118/118 PASS",
+    "inherited_v22_baseline_reverified_against_clean_v22_extraction": "66/66 PASS",
+    "fresh_extraction_type_aware_audit": "PASS",
+    "generated_cache_or_bytecode_debris": 0
+  },
+  "release_rule": "If any post-build check fails, this package must not be delivered and this PASS record is void."
+}

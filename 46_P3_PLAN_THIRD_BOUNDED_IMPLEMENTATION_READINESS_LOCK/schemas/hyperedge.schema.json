@@ -1,0 +1,474 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v4/hyperedge.schema.json",
+  "title": "hyperedge",
+  "type": "object",
+  "required": [
+    "hyperedge_id",
+    "hyperedge_type",
+    "authority_effect",
+    "causal_authority",
+    "members",
+    "authority_release_id"
+  ],
+  "properties": {
+    "hyperedge_id": {
+      "type": "string",
+      "pattern": "^P3HYP-[0-9a-f]{16}$"
+    },
+    "hyperedge_type": {
+      "enum": [
+        "BATTERY",
+        "CROSS_SOURCE_BATTERY_ANALOGY",
+        "DERIVED_INDEX_CONSTITUTION",
+        "RESPONSE_CONTRACT_CLASS",
+        "SIBLING_FAMILY_CONSTRUCT",
+        "TARGET_HIERARCHY"
+      ]
+    },
+    "authority_effect": {
+      "enum": [
+        "CONSTITUTION",
+        "DISCOVERY_CONTEXT",
+        "HIERARCHY",
+        "NO_FAMILY_MEMBERSHIP_AUTHORITY",
+        "STRUCTURAL_SUPPORT",
+        "VARIANT_ORGANIZATION"
+      ]
+    },
+    "causal_authority": {
+      "const": false
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "object_id",
+          "participant_role"
+        ],
+        "properties": {
+          "object_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "participant_role": {
+            "enum": [
+              "BROADER_TARGET",
+              "CHILD_FAMILY",
+              "CONSTITUENT_ITEM",
+              "CONSTRUCT_COORDINATE",
+              "DERIVED_INDEX",
+              "FAMILY_VARIANT",
+              "LEFT_STRUCTURE",
+              "MEMBER_MAPPING",
+              "NARROWER_TARGET",
+              "PARENT_PROMPT",
+              "RESPONSE_CONTRACT",
+              "RIGHT_STRUCTURE",
+              "SIBLING_FAMILY",
+              "SOURCE_STRUCTURE"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 2
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "hyperedge_type": {
+            "const": "BATTERY"
+          }
+        },
+        "required": [
+          "hyperedge_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authority_effect": {
+            "const": "STRUCTURAL_SUPPORT"
+          },
+          "members": {
+            "items": {
+              "properties": {
+                "participant_role": {
+                  "enum": [
+                    "PARENT_PROMPT",
+                    "CHILD_FAMILY",
+                    "SOURCE_STRUCTURE"
+                  ]
+                }
+              }
+            },
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "PARENT_PROMPT"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1,
+                "maxContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "CHILD_FAMILY"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "SOURCE_STRUCTURE"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "hyperedge_type": {
+            "const": "CROSS_SOURCE_BATTERY_ANALOGY"
+          }
+        },
+        "required": [
+          "hyperedge_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authority_effect": {
+            "const": "STRUCTURAL_SUPPORT"
+          },
+          "members": {
+            "items": {
+              "properties": {
+                "participant_role": {
+                  "enum": [
+                    "LEFT_STRUCTURE",
+                    "RIGHT_STRUCTURE",
+                    "MEMBER_MAPPING"
+                  ]
+                }
+              }
+            },
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "LEFT_STRUCTURE"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1,
+                "maxContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "RIGHT_STRUCTURE"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1,
+                "maxContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "MEMBER_MAPPING"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "hyperedge_type": {
+            "const": "DERIVED_INDEX_CONSTITUTION"
+          }
+        },
+        "required": [
+          "hyperedge_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authority_effect": {
+            "const": "CONSTITUTION"
+          },
+          "members": {
+            "items": {
+              "properties": {
+                "participant_role": {
+                  "enum": [
+                    "DERIVED_INDEX",
+                    "CONSTITUENT_ITEM"
+                  ]
+                }
+              }
+            },
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "DERIVED_INDEX"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1,
+                "maxContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "CONSTITUENT_ITEM"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "hyperedge_type": {
+            "const": "RESPONSE_CONTRACT_CLASS"
+          }
+        },
+        "required": [
+          "hyperedge_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authority_effect": {
+            "const": "VARIANT_ORGANIZATION"
+          },
+          "members": {
+            "items": {
+              "properties": {
+                "participant_role": {
+                  "enum": [
+                    "RESPONSE_CONTRACT",
+                    "FAMILY_VARIANT"
+                  ]
+                }
+              }
+            },
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "RESPONSE_CONTRACT"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "FAMILY_VARIANT"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "hyperedge_type": {
+            "const": "SIBLING_FAMILY_CONSTRUCT"
+          }
+        },
+        "required": [
+          "hyperedge_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authority_effect": {
+            "const": "NO_FAMILY_MEMBERSHIP_AUTHORITY"
+          },
+          "members": {
+            "items": {
+              "properties": {
+                "participant_role": {
+                  "enum": [
+                    "SIBLING_FAMILY",
+                    "CONSTRUCT_COORDINATE"
+                  ]
+                }
+              }
+            },
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "SIBLING_FAMILY"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 2
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "CONSTRUCT_COORDINATE"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1,
+                "maxContains": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "hyperedge_type": {
+            "const": "TARGET_HIERARCHY"
+          }
+        },
+        "required": [
+          "hyperedge_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "authority_effect": {
+            "const": "HIERARCHY"
+          },
+          "members": {
+            "items": {
+              "properties": {
+                "participant_role": {
+                  "enum": [
+                    "BROADER_TARGET",
+                    "NARROWER_TARGET"
+                  ]
+                }
+              }
+            },
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "BROADER_TARGET"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1,
+                "maxContains": 1
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "participant_role": {
+                      "const": "NARROWER_TARGET"
+                    }
+                  },
+                  "required": [
+                    "participant_role"
+                  ]
+                },
+                "minContains": 1
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

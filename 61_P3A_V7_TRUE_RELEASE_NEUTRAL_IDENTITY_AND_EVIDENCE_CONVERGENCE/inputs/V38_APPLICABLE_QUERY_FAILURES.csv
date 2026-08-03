@@ -1,0 +1,2 @@
+query_or_gate,status,phase_note,source,implementation_cause,required_result
+q33_candidate_revision_has_current_stage,FAIL,,postgres/v38_populated_q01_q54_raw.tsv,"p3a_v38_load.py appends candidate status events, then executes `event_rows = []` and never inserts p3_candidate_status_event rows.",PASS

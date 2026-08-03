@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v5/hierarchy_relation.schema.json",
+  "title": "hierarchy_relation",
+  "type": "object",
+  "required": [
+    "broader_object_id",
+    "narrower_object_id",
+    "relation_role",
+    "evidence_ids"
+  ],
+  "properties": {
+    "broader_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "narrower_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "relation_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

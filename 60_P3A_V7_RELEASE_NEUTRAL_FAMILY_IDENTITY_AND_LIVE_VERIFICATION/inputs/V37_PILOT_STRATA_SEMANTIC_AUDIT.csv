@@ -1,0 +1,12 @@
+stratum,target,eligible_count,selected_count,v37_rule,assessment,status
+clean_multi_source,7,0,0,candidate classification CLEAN and source_count >= 2,VALID_ONLY_IF_CLEAN_CLASSIFICATION_IS_FULLY_EVIDENCED,PASS_OR_HONEST_SHORTFALL
+response_variant,5,0,0,ranking.response_variant_complexity > 0,ZERO_IS_HONEST_BUT_NO_RESPONSE_VARIANT_EVIDENCE_BUILDER_EXISTS,PASS_OR_HONEST_SHORTFALL
+split_required,5,0,0,constant false,HONEST_ZERO; NO_SPLIT_TRIGGER_EVIDENCE,PASS_OR_HONEST_SHORTFALL
+collision_or_nontransitive,5,1,1,hard_blocker collision object exists,EVIDENCE_BACKED,PASS_OR_HONEST_SHORTFALL
+hierarchical_target,4,1,1,any coordinate-constraint row exists,MUST_FILTER_TO_DIRECTIONAL_NESTED_OR_GOVERNED_HIERARCHY; CONSTRUCT_COORDINATE_IS_NOT_HIERARCHY,REQUIRES_NARROWING
+derived_index,3,0,0,constant false,HONEST_ZERO; NO_DERIVED_INDEX_EVIDENCE,PASS_OR_HONEST_SHORTFALL
+heterogeneous_lineage,3,0,0,signature field evidence_state = HETEROGENEOUS,EVIDENCE_BACKED,PASS_OR_HONEST_SHORTFALL
+structure_supported,3,0,0,ranking.structure_support_count > 0,ZERO_IS_HONEST_BUT NO STRUCTURAL SUPPORT BUILDER EXISTS,PASS_OR_HONEST_SHORTFALL
+source_dominated_or_sparse,2,66,2,source_count <= 1 OR lineage_count <= 2,EVIDENCE_BACKED_SCREEN,PASS_OR_HONEST_SHORTFALL
+exact_only_authority,2,3,2,any unresolved-boundary row exists,INVALID_PROXY: UNRESOLVED_EXACT_FOUNDATION IS NOT EXACT_ONLY_AUTHORITY,FAIL_PROXY
+precedence_overlap_conflict,1,1,1,any redirect-boundary row exists,INVALID_PROXY: OTHER_DOMAIN_REDIRECT IS NOT PRECEDENCE_OVERLAP_CONFLICT,FAIL_PROXY

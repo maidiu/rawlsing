@@ -1,0 +1,61 @@
+maximum_manual_candidates: 40
+global_generation_surface:
+  semantic_priority_pairs: 641
+  exact_only_pairs: 17
+  proposition_relation_pairs: 658
+  administrative_metadata_pairs_preflight: 1
+  provisional_substantive_candidate_edges: 657
+selection_goal: Test family construction across substantive proposition authority,
+  while separately retaining the administrative metadata proposition as a non-J-family
+  diagnostic fixture.
+strata:
+- category: clean_multi_source
+  target_count: 7
+- category: response_variant
+  target_count: 5
+- category: split_required
+  target_count: 5
+- category: collision_or_nontransitive
+  target_count: 5
+- category: hierarchical_target
+  target_count: 4
+- category: derived_index
+  target_count: 3
+- category: heterogeneous_lineage
+  target_count: 3
+- category: structure_supported
+  target_count: 3
+- category: source_dominated_or_sparse
+  target_count: 2
+- category: exact_only_authority
+  target_count: 2
+- category: precedence_overlap_conflict
+  target_count: 1
+overlap_allowed: true
+shortfall_rule: Document shortfalls and substitute nearest unrepresented risk; do
+  not pad with easy duplicates.
+ranking_order:
+- candidate_classification
+- hard_collision_count ascending
+- unresolved_closure_obligations ascending
+- signature_completeness descending
+- source_count descending
+- lineage_count descending
+- direct_positive_density descending
+- structure_support descending
+- response_variant_complexity ascending
+manual_authority: Structured human adjudication required; no model, heuristic, score,
+  or graph algorithm may authorize a canonical family.
+preflight_graph_topology:
+  strict_response_edges: 445
+  strict_response_nodes: 304
+  strict_response_components: 94
+  proposition_only_substantive_edges: 212
+  within_strict_component: 1
+  attaches_orphan_to_strict: 85
+  bridges_strict_components: 70
+  both_endpoints_outside_strict: 56
+  proposition_only_seed_components: 25
+  administrative_metadata_proposition_only_edges: 1
+  note: Counts are preflight diagnostics only; P3A recomputes eligibility and topology
+    after signature/segmentation resolution.

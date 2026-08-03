@@ -1,0 +1,51 @@
+contingency,required_response,fail_closed
+Semantic and exact registries overlap,Use semantic-priority authority; preserve exact row as superseded provenance.,YES
+Exact-only pair absent from semantic registry,Use exact-foundation authority under mapping table.,YES
+Upstream origin ruling ID unresolved,Fatal; do not normalize pair.,YES
+Upstream endpoint missing from lineage registry,Fatal; quarantine and block build.,YES
+Schema $ref cannot resolve locally,Fatal; package is not implementable.,YES
+Template fails schema,Fatal; correct schema or template before execution.,YES
+Unknown vocabulary value,Fatal; doctrine delta and migration required.,YES
+Lifecycle classification confused with state,Fatal; use separate fields.,YES
+Candidate component membership changes,Create new content-addressed component; preserve candidate stable ID through revision.,YES
+Durable ID idempotency key repeats with different object,Fatal registry collision.,YES
+New object sorts before existing initial IDs,Append new durable ID; never renumber frozen registry.,YES
+Parent prompt missing,Mark fields UNRECOVERED and fail closed.,YES
+Response dictionary missing,Proposition-only at most; no response authority.,YES
+Lineage contains material drift,Create exact P3 segments or block family use.,YES
+Positive path endpoint unruled,Create closure obligation; no inferred pair authority.,YES
+Positive component contains hard negative,Classify collision-bearing or split.,YES
+Coordinate edge appears in connectivity,Fatal authority leak.,YES
+Superseded exact row appears in connectivity,Fatal precedence violation.,YES
+Candidate lacks named or rule-based exclusion,Cannot accept canonically.,YES
+Family accepted without revision,Fatal; stable family and immutable revision required.,YES
+Ordinary family definition changes,Append revision under same family ID.,YES
+Family splits,Allocate new successor IDs and genealogy; supersede predecessor.,YES
+Families merge,Allocate new successor ID and genealogy; preserve predecessors.,YES
+P2 ruling corrected after P3 release,Compute dependency closure and append new release.,YES
+Vocabulary meaning changes,"Doctrine delta, migration mapping, affected rebuild, regression tests.",YES
+New wave matches lineage but changes proposition,Segment or block; do not average meanings.,YES
+New source fits between existing families,Create new family or hierarchy; do not force attachment.,YES
+Response topology differs,Variant candidate; no P3 value portability.,YES
+P4 requests transformation from family membership,Reject; require P4 compatibility authority.,YES
+P5 requests family-wide strata flattening,Reject; preserve family/variant/implementation/context levels.,YES
+No designated live repository,Do not install; retain shadow package only.,YES
+Shadow output differs unexpectedly,Block promotion and classify every difference.,YES
+Migration partially applies,Rollback transaction completely.,YES
+Source licensing reference missing,Block exportable canonical release until provenance restored.,YES
+Dependency ledger incomplete,Block incremental release and run full impact audit.,YES
+Release snapshot count mismatch,Fatal; do not promote.,YES
+Multiple promoted releases,Fatal uniqueness violation.,YES
+Generated cache or bytecode appears,Remove and rerun fresh-extraction verification.,YES
+Document render has orphan/clipping,"Repair, rerender, reinspect all pages.",YES
+Performance exceeds workstation budget,Optimize joins/components without weakening auditability or changing authority.,YES
+Lineage has no current direct pair authority,"Record NO_CURRENT_DIRECT_PAIR_AUTHORITY; do not infer uniqueness, permanent exclusion, or singleton family.",YES
+Proposition relation concerns administrative/interviewer metadata,Preserve proposition authority in diagnostic lane; exclude from substantive J-family connectivity unless explicit downstream mandate changes.,YES
+Candidate fits multiple risk classes,Use multi-valued diagnostic flags plus one primary review classification; do not force information loss.,YES
+Polymorphic registry reference has wrong object type,Fatal type-contract violation; block build or migration.,YES
+Shadow schema has no promoted pointer before promotion,Pass pre-promotion cardinality gate; require exactly one pointer only at post-promotion gate.,YES
+Candidate revision has no independent lifecycle event history.,Block candidate generation; reconstruct revision-scoped history from immutable revision and event records.,YES
+Proposition-only edge bridges strict components or attaches an orphan.,Emit closure obligation; do not merge or attach automatically.,YES
+Pair endpoint lineage is segmented or heterogeneous.,Require explicit endpoint-resolution record or block the pair fact from candidate construction.,YES
+Component or candidate cannot be reconstructed from persisted edge/link records.,Reject artifact and rebuild from governing pair facts.,YES
+Rollback requires prior superseded release.,"Append successor rollback evidence, reactivate prior release under allowed transition, and update singleton pointer transactionally.",YES

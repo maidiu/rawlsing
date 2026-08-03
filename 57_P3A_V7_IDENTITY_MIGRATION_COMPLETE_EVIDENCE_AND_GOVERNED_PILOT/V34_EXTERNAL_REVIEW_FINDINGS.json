@@ -1,0 +1,97 @@
+{
+  "reviewed_artifact": "Rawlsing_P3A_V34_Section56_Review_Delta.zip",
+  "review_delta_sha256": "a1476337936d19856126178ba35257bcfcffe79f8f29dd7c0a961765f8ebf5cd",
+  "review_delta_bytes": 566411,
+  "complete_v34_zip_independently_hashed": false,
+  "reason": "Only the section-56 review delta was uploaded.",
+  "accepted_progress": {
+    "topology_is_derived_from_populated_projections": true,
+    "review_csvs_are_not_read_by_production_code": true,
+    "strict_components": 94,
+    "proposition_only_seed_components": 25,
+    "attachment_review_groups": 22,
+    "candidate_revisions": 141,
+    "candidate_packets": 40,
+    "draft_decisions": 40,
+    "known_seed_internal_edges_repaired": 10,
+    "known_direct_constraint_rows_persisted": 10,
+    "main_release_canonical_families": 0,
+    "main_release_final_adjudications": 0,
+    "legitimate_phase_overrides": [
+      "q01b_postpromotion_pointer",
+      "q15b_no_unadjudicated_at_p3_close"
+    ]
+  },
+  "blocking_findings": [
+    {
+      "id": "V34-EXT-001",
+      "classification": "DURABLE_CANDIDATE_IDENTITY_REUSED_FOR_CHANGED_ORIGIN",
+      "detail": "All 141 immutable origin keys changed under reused candidate family/revision IDs. All 22 attachment numeric IDs now denote different member sets; the same 22 groups were permuted to different IDs."
+    },
+    {
+      "id": "V34-EXT-002",
+      "classification": "CONTENT_ADDRESSED_PACKET_ID_REUSED_AFTER_EVIDENCE_CHANGE",
+      "detail": "All 40 candidate packets retain their v33 packet IDs while all 40 evidence-bundle hashes changed. Packet IDs are derived only from revision ID, not revision plus evidence hash plus schema version."
+    },
+    {
+      "id": "V34-EXT-003",
+      "classification": "CANDIDATE_COMPONENT_ID_OMITS_BUILD_RULE_VERSION",
+      "detail": "Component IDs hash type, members, projections, and release but omit the build rule version required by P3_IDENTITY_KEY_SPEC_v7.csv."
+    },
+    {
+      "id": "V34-EXT-004",
+      "classification": "UNSELECTED_CANDIDATE_HASHES_ARE_PLACEHOLDERS",
+      "detail": "All 141 candidate revisions are inserted with placeholder evidence hashes; only the 40 packet-selected revisions are updated, leaving 101 placeholder hashes."
+    },
+    {
+      "id": "V34-EXT-005",
+      "classification": "DIRECT_PROPOSITION_AUTHORITY_DROPPED",
+      "detail": "P3CAND-000009 treats the one proposition-only edge internal to a strict component as UNRULED, carries no projection, and creates no required closure obligation."
+    },
+    {
+      "id": "V34-EXT-006",
+      "classification": "TYPED_CONSTRAINTS_NOT_CONNECTED_ACROSS_SURFACES",
+      "detail": "Three new SQL child tables are absent from the 75-table schema dictionary and connected JSON schema surface; their semantic fields are not exported or included in packet hashes."
+    },
+    {
+      "id": "V34-EXT-007",
+      "classification": "REDIRECT_MISCLASSIFIED_AS_HARD_COLLISION",
+      "detail": "REDIRECT_OTHER_DOMAIN is stored as DIRECT_COLLISION, increments hard_collision_count, enters hard_collisions, and causes COLLISION_BEARING_CANDIDATE despite hard_blocker=false."
+    },
+    {
+      "id": "V34-EXT-008",
+      "classification": "PILOT_SELECTION_AND_RANKING_NOT_GOVERNED",
+      "detail": "The production selector uses five broad queries, while summary artifacts claim eleven strata. Ranking columns are populated from unrelated quantities."
+    },
+    {
+      "id": "V34-EXT-009",
+      "classification": "PILOT_SUMMARIES_NOT_REPRODUCIBLY_GENERATED",
+      "detail": "No delivered production code generates the pilot eligibility, selection, substitution, topology, object-count, fixture-summary, or convergence reports consumed by the verifier."
+    },
+    {
+      "id": "V34-EXT-010",
+      "classification": "FIXTURE_REQUIREMENTS_STILL_UNMET",
+      "detail": "Positive duplicate-key exceptions are still treated as PASS_ALREADY_COMMITTED; incomplete promotion fails at missing variant assignment; stale-hash mutation changes top-level hashes only; required new mutations are absent."
+    },
+    {
+      "id": "V34-EXT-011",
+      "classification": "GLOBAL_UNRULED_CLOSURE_NOT_VERIFIED",
+      "detail": "336 UNRULED rows and only 345 total pair obligations conceal one UNRULED direct-authority row without an obligation. Selected packet validation does not cover all 141 candidates."
+    },
+    {
+      "id": "V34-EXT-012",
+      "classification": "STATE_AND_TEARDOWN_EVIDENCE_STALE",
+      "detail": "WORKTREE_STATE.json and EXACT_CONTINUATION.md remain at pre-execution IN_PROGRESS state, and no PostgreSQL teardown proof is delivered in section 56."
+    },
+    {
+      "id": "V34-EXT-013",
+      "classification": "MAIN_RELEASE_MUTATED_IN_PLACE",
+      "detail": "Schema, identity rules, candidate origins, and packets continue to use the inherited R31 release ID rather than an append-only successor release and migration record."
+    }
+  ],
+  "package_review_limit": {
+    "reconstructed_payload_manifest_rows": 2163,
+    "reconstruction_against_prior_deltas_mismatched_paths": 14,
+    "note": "The review delta is not a complete independent v34 package and does not carry every changed inherited path needed to reproduce the claimed full ZIP exactly."
+  }
+}

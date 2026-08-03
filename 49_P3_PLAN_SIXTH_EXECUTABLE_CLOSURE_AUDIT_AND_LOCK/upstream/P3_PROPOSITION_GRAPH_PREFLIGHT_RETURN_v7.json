@@ -1,0 +1,33 @@
+{
+  "authority_status": "DIAGNOSTIC_ONLY_NOT_CANDIDATE_INVENTORY",
+  "total_proposition_authorities": 658,
+  "provisional_substantive_edges": 657,
+  "administrative_metadata_edges": 1,
+  "strict_response_identity": {
+    "edges": 445,
+    "nodes": 304,
+    "components": 94,
+    "largest_component_size": 13
+  },
+  "substantive_proposition_only": {
+    "edges": 212,
+    "within_strict_component": 1,
+    "attaches_orphan_to_strict": 85,
+    "bridges_strict_components": 70,
+    "both_endpoints_outside_strict": 56,
+    "proposition_only_seed_components": 25
+  },
+  "full_substantive_graph": {
+    "edges": 657,
+    "nodes": 397,
+    "components": 112,
+    "largest_component_size": 20
+  },
+  "governing_sequence": [
+    "build strict response components",
+    "classify proposition-only topology",
+    "create proposition-only seed components only outside strict graph",
+    "emit attachment/bridge closure obligations",
+    "generate candidates without automatic transitive merge"
+  ]
+}

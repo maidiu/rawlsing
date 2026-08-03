@@ -1,0 +1,20 @@
+from_status,to_status,allowed,guard
+DISCOVERED,GENERATED_CANDIDATE,YES,Builder materializes membership and diagnostics.
+GENERATED_CANDIDATE,EVIDENCE_COMPLETE,YES,Required proposition signatures and pair evidence are present.
+GENERATED_CANDIDATE,INSUFFICIENT_AUTHORITY,YES,Required evidence cannot be recovered.
+EVIDENCE_COMPLETE,ADJUDICATION_REQUIRED,YES,Candidate packet passes machine closure checks.
+EVIDENCE_COMPLETE,BLOCKED_UNRESOLVED,YES,Essential closure obligations remain unresolved.
+ADJUDICATION_REQUIRED,ACCEPTED_CANONICAL,YES,Structured adjudication authorizes one canonical family.
+ADJUDICATION_REQUIRED,ACCEPTED_WITH_VARIANTS,YES,Structured adjudication authorizes a family with explicit variants.
+ADJUDICATION_REQUIRED,SPLIT_REQUIRED,YES,Connected component must be partitioned into separate candidate families.
+ADJUDICATION_REQUIRED,HIERARCHICAL_RELATION_ONLY,YES,"Relations are hierarchical, not family identity."
+ADJUDICATION_REQUIRED,COLLISION_BEARING,YES,Internal blockers remain and prohibit admission.
+ADJUDICATION_REQUIRED,STRUCTURAL_ANALOGY_ONLY,YES,Only battery or structural analogy survives.
+ADJUDICATION_REQUIRED,INSUFFICIENT_AUTHORITY,YES,Evidence is insufficient for family authority.
+ADJUDICATION_REQUIRED,REJECTED_SEMANTIC_ARTIFACT,YES,Candidate is an inherited semantic artifact.
+ADJUDICATION_REQUIRED,REJECTED,YES,Candidate is semantically invalid.
+ACCEPTED_CANONICAL,SUPERSEDED,YES,Later authority replaces the family.
+ACCEPTED_WITH_VARIANTS,SUPERSEDED,YES,Later authority replaces the family or variant structure.
+ACCEPTED_CANONICAL,DEPRECATED,YES,Family remains historical but is prohibited for new builds.
+ACCEPTED_WITH_VARIANTS,DEPRECATED,YES,Family remains historical but is prohibited for new builds.
+SUPERSEDED,DEPRECATED,YES,Superseded family may also be formally deprecated.

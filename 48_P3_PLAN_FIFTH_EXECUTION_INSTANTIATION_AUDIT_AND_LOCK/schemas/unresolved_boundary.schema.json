@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/unresolved_boundary.schema.json",
+  "title": "unresolved_boundary",
+  "type": "object",
+  "required": [
+    "boundary_id",
+    "left_id",
+    "right_id",
+    "reason",
+    "status"
+  ],
+  "properties": {
+    "boundary_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "left_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "FAIL_CLOSED",
+        "OPEN",
+        "RESOLVED_ACCEPT",
+        "RESOLVED_EXCLUDE",
+        "RESOLVED_SPLIT"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

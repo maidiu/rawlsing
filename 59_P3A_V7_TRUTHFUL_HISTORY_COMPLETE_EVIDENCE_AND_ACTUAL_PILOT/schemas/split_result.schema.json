@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/split_result.schema.json",
+  "title": "split_result",
+  "type": "object",
+  "required": [
+    "result_ordinal",
+    "successor_candidate_family_id",
+    "successor_origin_key",
+    "member_ids",
+    "rationale"
+  ],
+  "properties": {
+    "result_ordinal": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "successor_candidate_family_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^P3CAND-[0-9]{6}$"
+    },
+    "successor_origin_key": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!0{64}$)[0-9a-f]{64}$"
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

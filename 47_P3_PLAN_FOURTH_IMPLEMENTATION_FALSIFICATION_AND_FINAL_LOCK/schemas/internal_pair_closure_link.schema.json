@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v5/internal_pair_closure_link.schema.json",
+  "title": "internal_pair_closure_link",
+  "type": "object",
+  "required": [
+    "candidate_revision_id",
+    "left_object_id",
+    "right_object_id",
+    "closure_obligation_id"
+  ],
+  "properties": {
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "left_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_object_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "closure_obligation_id": {
+      "type": "string",
+      "pattern": "^P3CLOSE-[0-9a-f]{16}$"
+    }
+  },
+  "additionalProperties": false
+}

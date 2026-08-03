@@ -1,0 +1,170 @@
+{
+  "packet_id": "P3PKT-000001",
+  "candidate_family": {
+    "candidate_family_id": "P3CAND-000001",
+    "revision_id": "P3CANDREV-00000001",
+    "component_ids": [
+      "P3COMP-0000000000000001"
+    ],
+    "member_ids": [
+      "p2lineage_EXAMPLE_A",
+      "p2lineage_EXAMPLE_B"
+    ],
+    "canonical_signature_id": "P3SIG-000001",
+    "lifecycle_stage": "ADJUDICATION_REQUIRED",
+    "candidate_classification": "RESPONSE_VARIANT_CANDIDATE",
+    "internal_pair_counts": {
+      "expected_pairs": 1,
+      "direct_positive": 1,
+      "direct_collision": 0,
+      "hierarchical_only": 0,
+      "unruled": 0,
+      "signature_conflict": 0,
+      "signature_compatible": 0
+    },
+    "closure_obligation_ids": [],
+    "variant_ids": [
+      "P3VAR-000001",
+      "P3VAR-000002"
+    ],
+    "exclusion_ids": [
+      "P3EXC-000001"
+    ],
+    "rank_tuple": [
+      "RESPONSE_VARIANT_CANDIDATE",
+      0,
+      0,
+      -2,
+      -2,
+      -1.0,
+      2
+    ],
+    "evidence_bundle_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "authority_release_id": "P3-AUTHORITY-2026-08-01-R1"
+  },
+  "members_by_source": {
+    "SOURCE_A": [
+      "p2lineage_EXAMPLE_A"
+    ],
+    "SOURCE_B": [
+      "p2lineage_EXAMPLE_B"
+    ]
+  },
+  "proposition_signature_matrix": [
+    {
+      "member_id": "p2lineage_EXAMPLE_A",
+      "operator": "TRUST",
+      "target": "POLICE",
+      "modality": "DIRECT_PROPOSITION",
+      "signature_status": "COMPLETE",
+      "signature_id": "P3SIG-000001",
+      "timeframe": "EXPLICITLY_UNSPECIFIED",
+      "population_scope": "SELF",
+      "geographic_scope": "NATIONAL",
+      "polarity": "POSITIVE"
+    },
+    {
+      "member_id": "p2lineage_EXAMPLE_B",
+      "operator": "TRUST",
+      "target": "POLICE",
+      "modality": "DIRECT_PROPOSITION",
+      "signature_status": "COMPLETE",
+      "signature_id": "P3SIG-000001",
+      "timeframe": "EXPLICITLY_UNSPECIFIED",
+      "population_scope": "SELF",
+      "geographic_scope": "NATIONAL",
+      "polarity": "POSITIVE"
+    }
+  ],
+  "response_contract_matrix": [
+    {
+      "member_id": "p2lineage_EXAMPLE_A",
+      "response_topology": "ORDINAL",
+      "categories": 4,
+      "value_portability": "NOT_AUTHORIZED_BY_P3",
+      "response_contract_reference_id": "P3RESPREF-000001"
+    },
+    {
+      "member_id": "p2lineage_EXAMPLE_B",
+      "response_topology": "ORDINAL",
+      "categories": 10,
+      "value_portability": "NOT_AUTHORIZED_BY_P3",
+      "response_contract_reference_id": "P3RESPREF-000002"
+    }
+  ],
+  "internal_pair_matrix": [
+    {
+      "left_id": "p2lineage_EXAMPLE_A",
+      "right_id": "p2lineage_EXAMPLE_B",
+      "pair_state": "DIRECT_POSITIVE",
+      "pair_fact_id": "P3PF-00000001",
+      "collision_ids": [],
+      "closure_obligation_ids": []
+    }
+  ],
+  "hard_collisions": [],
+  "unresolved_pairs": [],
+  "unruled_pairs": [],
+  "closure_obligations": [],
+  "likely_split_points": [],
+  "proposed_variants": [
+    {
+      "variant_id": "P3VAR-000001",
+      "dimension": "RESPONSE_TOPOLOGY",
+      "value": "FOUR_POINT_ORDINAL",
+      "members": [
+        "p2lineage_EXAMPLE_A"
+      ]
+    },
+    {
+      "variant_id": "P3VAR-000002",
+      "dimension": "RESPONSE_TOPOLOGY",
+      "value": "TEN_POINT_ORDINAL",
+      "members": [
+        "p2lineage_EXAMPLE_B"
+      ]
+    }
+  ],
+  "explicit_exclusions": [
+    {
+      "exclusion_id": "P3EXC-000001",
+      "type": "RULE_BASED",
+      "prohibited_operation": "BLOCK_SAME_PROPOSITION",
+      "scope": "FAMILY_WIDE",
+      "rule_or_evidence": "Exclude satisfaction with police performance, contact frequency, corruption perception, and trust in other institutions."
+    }
+  ],
+  "hyperedge_context": [
+    {
+      "hyperedge_type": "SIBLING_FAMILY_CONSTRUCT",
+      "construct": "INSTITUTIONAL_TRUST",
+      "authority_effect": "DISCOVERY_CONTEXT"
+    }
+  ],
+  "strata_horizon_context": [],
+  "exact_evidence_links": [
+    "EVIDENCE-A",
+    "EVIDENCE-B",
+    "P2-RULING-EXAMPLE"
+  ],
+  "evidence_bundle_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "decision_form": {
+    "adjudication_id": "P3ADJ-000001",
+    "candidate_family_id": "P3CAND-000001",
+    "candidate_revision_id": "P3CANDREV-00000001",
+    "decision_status": null,
+    "canonical_family_id": null,
+    "canonical_proposition": null,
+    "accepted_members": [],
+    "excluded_members": [],
+    "variant_assignments": [],
+    "hierarchical_relations": [],
+    "collision_dispositions": [],
+    "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+    "unresolved_boundaries": [],
+    "rationale": "",
+    "evidence_bundle_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "supersedes_adjudication_id": null,
+    "authority_release_id": "P3-AUTHORITY-2026-08-01-R1"
+  }
+}

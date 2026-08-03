@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/candidate_component.schema.json",
+  "title": "Rawlsing P3 Candidate Component",
+  "type": "object",
+  "required": [
+    "component_id",
+    "member_ids",
+    "connectivity_pair_fact_ids",
+    "build_rule_version",
+    "content_hash",
+    "authority_release_id"
+  ],
+  "properties": {
+    "component_id": {
+      "type": "string",
+      "pattern": "^P3COMP-[0-9a-f]{16}$"
+    },
+    "member_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "connectivity_pair_fact_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "build_rule_version": {
+      "type": "string"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

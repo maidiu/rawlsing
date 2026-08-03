@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "root": "/mnt/data/rawlsing_v23_build/Rawlsing_J_Family_Authority_Strategy_Handoff_v23_20260731",
+  "file_count": 1082,
+  "extension_counts": {
+    ".csv": 396,
+    ".docx": 43,
+    ".json": 247,
+    ".md": 88,
+    ".py": 229,
+    ".sql": 7,
+    ".txt": 9,
+    ".yaml": 25,
+    ".zip": 38
+  },
+  "type_parsed_counts": {
+    ".csv": 396,
+    ".docx": 43,
+    ".json": 247,
+    ".py": 229,
+    ".yaml": 25
+  },
+  "recursive_archive_instances": 88,
+  "unique_archive_payloads": 77,
+  "max_archive_depth": 1,
+  "errors": [],
+  "notes": [
+    "ZIP instance count includes every top-level and nested ZIP occurrence; unique payload count deduplicates byte-identical archive payloads.",
+    "DOCX files were checked both as ZIP containers and through python-docx.",
+    "Python source was compiled in memory; no bytecode or cache files were generated."
+  ]
+}

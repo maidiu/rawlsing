@@ -1,0 +1,1 @@
+Rawlsing J Family Authority Strategy Handoff v35. Start with 00_START_HERE/CURRENT_STATE.json, then section 57. V34 is preserved as blocked evidence; v35 is the successor checkpoint for identity migration, complete evidence closure, typed constraints, governed pilot strata, and verifier evidence.

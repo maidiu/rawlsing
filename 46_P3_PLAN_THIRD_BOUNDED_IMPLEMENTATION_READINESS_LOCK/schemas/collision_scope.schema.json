@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v4/collision_scope.schema.json",
+  "title": "collision_scope",
+  "type": "object",
+  "required": [
+    "collision_id",
+    "collision_type",
+    "scope_type",
+    "orientation",
+    "left_id",
+    "right_id",
+    "source_authority_ids",
+    "hard_blocker",
+    "authority_release_id"
+  ],
+  "properties": {
+    "collision_id": {
+      "type": "string",
+      "pattern": "^P3COL-[0-9a-f]{16}$"
+    },
+    "collision_type": {
+      "enum": [
+        "BLOCK_BEHAVIOR_DISPOSITION_MERGE",
+        "BLOCK_DERIVED_DIRECT_MERGE",
+        "BLOCK_GEOGRAPHIC_SCOPE_COLLAPSE",
+        "BLOCK_HETEROGENEOUS_LINEAGE",
+        "BLOCK_OPERATOR_COLLAPSE",
+        "BLOCK_POLARITY_COLLAPSE",
+        "BLOCK_POPULATION_SCOPE_COLLAPSE",
+        "BLOCK_SAME_PROPOSITION",
+        "BLOCK_SAME_VARIANT",
+        "BLOCK_SOURCE_STRUCTURE_INFERENCE",
+        "BLOCK_TARGET_COLLAPSE",
+        "BLOCK_TIMEFRAME_COLLAPSE",
+        "BLOCK_VALUE_PORTABILITY",
+        "INSUFFICIENT_EVIDENCE",
+        "PARENT_CHILD_ONLY",
+        "REDIRECT_SEMANTIC_ARTIFACT"
+      ]
+    },
+    "scope_type": {
+      "enum": [
+        "FAMILY_WIDE",
+        "HISTORICAL_INTERVAL",
+        "IMPLEMENTATION_PAIR",
+        "LINEAGE_PAIR",
+        "SEGMENT_PAIR",
+        "SOURCE_SPECIFIC",
+        "VALUE_PORTABILITY_ONLY",
+        "VARIANT_PAIR"
+      ]
+    },
+    "orientation": {
+      "enum": [
+        "DIRECTIONAL",
+        "SYMMETRIC"
+      ]
+    },
+    "left_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "left_role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "right_role": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_authority_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "historical_interval": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "source_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hard_blocker": {
+      "type": "boolean"
+    },
+    "downstream_effects": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "orientation": {
+            "const": "DIRECTIONAL"
+          }
+        },
+        "required": [
+          "orientation"
+        ]
+      },
+      "then": {
+        "required": [
+          "left_role",
+          "right_role"
+        ],
+        "properties": {
+          "left_role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "right_role": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "orientation": {
+            "const": "SYMMETRIC"
+          }
+        },
+        "required": [
+          "orientation"
+        ]
+      },
+      "then": {
+        "properties": {
+          "left_role": {
+            "type": "null"
+          },
+          "right_role": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}

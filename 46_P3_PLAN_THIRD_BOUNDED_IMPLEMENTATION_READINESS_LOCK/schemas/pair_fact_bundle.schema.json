@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v4/pair_fact_bundle.schema.json",
+  "title": "pair_fact_bundle",
+  "type": "object",
+  "required": [
+    "pair_fact_id",
+    "left_id",
+    "right_id",
+    "orientation",
+    "relation_type",
+    "source_authorities",
+    "target_relation",
+    "operator_relation",
+    "timeframe_relation",
+    "response_relation",
+    "source_portability_ceiling",
+    "p3_portability_ceiling",
+    "proposition_graph_allowed",
+    "j_family_candidate_eligibility",
+    "creates_endpoint_authority",
+    "evidence_ids",
+    "authority_release_id"
+  ],
+  "properties": {
+    "pair_fact_id": {
+      "type": "string",
+      "pattern": "^P3PF-[0-9a-f]{16}$"
+    },
+    "left_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "orientation": {
+      "enum": [
+        "DIRECTIONAL",
+        "SYMMETRIC"
+      ]
+    },
+    "relation_type": {
+      "enum": [
+        "CONSTRUCT_COORDINATE",
+        "EXPLICIT_NEGATIVE",
+        "NESTED_TARGET_RELATION",
+        "PROPOSITION_IDENTITY_ONLY",
+        "PROPOSITION_RESPONSE_IDENTITY",
+        "REDIRECT_OTHER_DOMAIN",
+        "STRUCTURE_MEMBER_ANALOGY",
+        "UNRESOLVED"
+      ]
+    },
+    "source_authorities": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "registry",
+          "authority_id",
+          "authority_role"
+        ],
+        "properties": {
+          "registry": {
+            "enum": [
+              "EXACT_FOUNDATION_CLOSURE",
+              "SEMANTIC_PRIORITY_CLOSURE"
+            ]
+          },
+          "authority_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority_role": {
+            "enum": [
+              "GOVERNING",
+              "SUPERSEDED_PROVENANCE",
+              "SUPPORTING"
+            ]
+          },
+          "superseded_by_authority_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "contains": {
+        "type": "object",
+        "properties": {
+          "authority_role": {
+            "const": "GOVERNING"
+          }
+        },
+        "required": [
+          "authority_role"
+        ]
+      },
+      "minContains": 1,
+      "maxContains": 1
+    },
+    "target_relation": {
+      "anyOf": [
+        {
+          "enum": [
+            "DIFFERENT",
+            "IDENTICAL",
+            "LEFT_NARROWER",
+            "NOT_APPLICABLE",
+            "RIGHT_NARROWER",
+            "UNRECOVERED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "operator_relation": {
+      "anyOf": [
+        {
+          "enum": [
+            "DIFFERENT",
+            "IDENTICAL",
+            "LEFT_NARROWER",
+            "NOT_APPLICABLE",
+            "RIGHT_NARROWER",
+            "UNRECOVERED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "timeframe_relation": {
+      "anyOf": [
+        {
+          "enum": [
+            "DIFFERENT",
+            "IDENTICAL",
+            "LEFT_NARROWER",
+            "NOT_APPLICABLE",
+            "RIGHT_NARROWER",
+            "UNRECOVERED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "response_relation": {
+      "anyOf": [
+        {
+          "enum": [
+            "DIFFERENT",
+            "IDENTICAL",
+            "LEFT_NARROWER",
+            "NOT_APPLICABLE",
+            "RIGHT_NARROWER",
+            "UNRECOVERED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_portability_ceiling": {
+      "type": "string",
+      "minLength": 1
+    },
+    "p3_portability_ceiling": {
+      "enum": [
+        "CONSTRUCT_TARGET_COORDINATE_ONLY",
+        "DOMAIN_COORDINATE_ONLY",
+        "HIERARCHICAL_ONLY",
+        "NO_POSITIVE_AUTHORITY",
+        "QUESTION_PROPOSITION_AND_RESPONSE_CONTRACT",
+        "QUESTION_PROPOSITION_AND_RESPONSE_TOPOLOGY",
+        "QUESTION_PROPOSITION_ONLY"
+      ]
+    },
+    "proposition_graph_allowed": {
+      "type": "boolean"
+    },
+    "j_family_candidate_eligibility": {
+      "enum": [
+        "ADMINISTRATIVE_METADATA_ONLY",
+        "J_FAMILY_CANDIDATE_ELIGIBLE",
+        "NONCONNECTIVE"
+      ]
+    },
+    "creates_endpoint_authority": {
+      "const": false
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "relation_type": {
+            "enum": [
+              "PROPOSITION_RESPONSE_IDENTITY",
+              "PROPOSITION_IDENTITY_ONLY"
+            ]
+          }
+        },
+        "required": [
+          "relation_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "proposition_graph_allowed": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relation_type": {
+            "enum": [
+              "NESTED_TARGET_RELATION",
+              "CONSTRUCT_COORDINATE",
+              "STRUCTURE_MEMBER_ANALOGY",
+              "EXPLICIT_NEGATIVE",
+              "REDIRECT_OTHER_DOMAIN",
+              "UNRESOLVED"
+            ]
+          }
+        },
+        "required": [
+          "relation_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "proposition_graph_allowed": {
+            "const": false
+          },
+          "j_family_candidate_eligibility": {
+            "const": "NONCONNECTIVE"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relation_type": {
+            "const": "NESTED_TARGET_RELATION"
+          }
+        },
+        "required": [
+          "relation_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "orientation": {
+            "const": "DIRECTIONAL"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relation_type": {
+            "enum": [
+              "PROPOSITION_RESPONSE_IDENTITY",
+              "PROPOSITION_IDENTITY_ONLY",
+              "CONSTRUCT_COORDINATE",
+              "STRUCTURE_MEMBER_ANALOGY",
+              "EXPLICIT_NEGATIVE",
+              "REDIRECT_OTHER_DOMAIN",
+              "UNRESOLVED"
+            ]
+          }
+        },
+        "required": [
+          "relation_type"
+        ]
+      },
+      "then": {
+        "properties": {
+          "orientation": {
+            "const": "SYMMETRIC"
+          }
+        }
+      }
+    }
+  ]
+}

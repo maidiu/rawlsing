@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing joint pattern semantics authority (planning v0.1)",
+  "type": "object",
+  "required": [
+    "pattern_semantics_id",
+    "family_concept_id",
+    "rule_ordering",
+    "residual_rule",
+    "test_vectors"
+  ],
+  "properties": {
+    "pattern_semantics_id": {
+      "type": "string"
+    },
+    "family_concept_id": {
+      "type": "string"
+    },
+    "rule_ordering": {
+      "enum": [
+        "explicit_first_match",
+        "explicit_exhaustive_partition"
+      ]
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rule_id",
+          "priority",
+          "conditions",
+          "classification",
+          "joint_claim",
+          "evidence_status"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer"
+          },
+          "conditions": {
+            "type": "object"
+          },
+          "classification": {
+            "type": "string"
+          },
+          "joint_claim": {
+            "type": "string"
+          },
+          "evidence_status": {
+            "enum": [
+              "directional",
+              "neutral_coverage",
+              "mixed_unresolved",
+              "insufficient",
+              "blocked"
+            ]
+          }
+        }
+      }
+    },
+    "residual_rule": {
+      "type": "object"
+    },
+    "neutral_handling": {
+      "type": "string"
+    },
+    "unknown_handling": {
+      "type": "string"
+    },
+    "test_vectors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "input_states",
+          "expected_rule_id",
+          "expected_classification"
+        ]
+      }
+    },
+    "closure_hash": {
+      "type": "string"
+    }
+  }
+}

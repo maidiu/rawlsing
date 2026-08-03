@@ -1,0 +1,62 @@
+{
+  "contract_id": "P3_CANONICAL_SERIALIZATION_CONTRACT_V5",
+  "encoding": "UTF-8",
+  "unicode_normalization": "NFC",
+  "line_endings": "LF",
+  "object_key_order": "lexicographic_by_unicode_code_point_after_NFC",
+  "whitespace": "none_outside_strings",
+  "ensure_ascii": false,
+  "allowed_scalar_types": [
+    "null",
+    "boolean",
+    "integer",
+    "string"
+  ],
+  "forbidden_numeric_types": [
+    "float",
+    "decimal",
+    "NaN",
+    "Infinity",
+    "negative_zero"
+  ],
+  "absent_vs_null": "distinct; include null only when the identity-key specification names the field",
+  "set_like_arrays": "Only fields named in set_like_array_paths may be reordered. Normalize each element recursively, reject duplicates after normalization, then sort by canonical serialized bytes.",
+  "ordered_arrays": "Preserve order exactly.",
+  "hash": "SHA-256 over canonical UTF-8 bytes",
+  "display_id": "object-type prefix plus first 16 lowercase hex; full 64-hex content_hash is mandatory and collisions are fatal",
+  "set_like_array_paths": {
+    "LINEAGE_SEGMENT": [
+      "implementation_ids"
+    ],
+    "PROPOSITION_SIGNATURE": [
+      "fields.*.evidence_ids",
+      "response_topologies"
+    ],
+    "PAIR_FACT": [
+      "source_authority_ids",
+      "evidence_ids"
+    ],
+    "COLLISION": [
+      "source_authority_ids",
+      "downstream_effects"
+    ],
+    "CANDIDATE_COMPONENT": [
+      "member_ids",
+      "connectivity_pair_fact_ids"
+    ],
+    "HYPEREDGE": [
+      "members"
+    ],
+    "CANDIDATE_PACKET": [
+      "exact_evidence_links"
+    ]
+  },
+  "schema_version_in_hash": true,
+  "failure_conditions": [
+    "duplicate normalized set member",
+    "unsupported scalar type",
+    "unpaired surrogate",
+    "ID prefix/full-hash collision",
+    "identity payload missing required key"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v3/candidate_status_event.schema.json",
+  "title": "candidate_status_event",
+  "type": "object",
+  "required": [
+    "candidate_family_id",
+    "event_ordinal",
+    "to_stage",
+    "guard_evidence_id",
+    "authority_release_id"
+  ],
+  "properties": {
+    "candidate_family_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_ordinal": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "from_stage": {
+      "anyOf": [
+        {
+          "enum": [
+            "ADJUDICATION_REQUIRED",
+            "DECIDED",
+            "DEPRECATED",
+            "DISCOVERED",
+            "EVIDENCE_COMPLETE",
+            "GENERATED_CANDIDATE",
+            "SUPERSEDED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "to_stage": {
+      "enum": [
+        "ADJUDICATION_REQUIRED",
+        "DECIDED",
+        "DEPRECATED",
+        "DISCOVERED",
+        "EVIDENCE_COMPLETE",
+        "GENERATED_CANDIDATE",
+        "SUPERSEDED"
+      ]
+    },
+    "guard_evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_release_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

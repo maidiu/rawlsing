@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing P3 Family Exclusion",
+  "type": "object",
+  "required": [
+    "exclusion_id",
+    "candidate_or_family_id",
+    "exclusion_type",
+    "prohibited_operation",
+    "evidence_or_rule",
+    "scope"
+  ],
+  "properties": {
+    "exclusion_id": {
+      "type": "string",
+      "pattern": "^P3EXC-[0-9]{6}$"
+    },
+    "candidate_or_family_id": {
+      "type": "string"
+    },
+    "exclusion_type": {
+      "enum": [
+        "NAMED_MEMBER",
+        "RULE_BASED"
+      ]
+    },
+    "excluded_object_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "prohibited_operation": {
+      "type": "string"
+    },
+    "evidence_or_rule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string"
+    },
+    "tested_surface_complete": {
+      "type": "boolean"
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

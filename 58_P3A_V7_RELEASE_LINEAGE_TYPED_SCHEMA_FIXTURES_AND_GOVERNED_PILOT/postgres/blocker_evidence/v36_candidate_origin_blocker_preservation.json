@@ -1,0 +1,62 @@
+{
+  "status": "PRESERVED_ROLLED_BACK_DIRTY_RUN_EVIDENCE",
+  "captured_at": "2026-08-01T14:56:00-04:00",
+  "database": {
+    "host": "127.0.0.1",
+    "port": 55432,
+    "dbname": "rawlsing_p3a_v36_test",
+    "schema": "p3a_v27_shadow"
+  },
+  "failed_transaction": {
+    "phase": "candidates",
+    "statement": "COMMIT",
+    "sqlstate": "P0001",
+    "exception_class": "psycopg.errors.RaiseException",
+    "error_text": "base candidate requires exactly one component and no attachment projection",
+    "trigger_function": "p3_validate_candidate_origin_deferred",
+    "invariant_function": "p3_assert_candidate_origin(text)",
+    "context": [
+      "PL/pgSQL function p3_assert_candidate_origin(text) line 9 at RAISE",
+      "SQL statement \"SELECT p3_assert_candidate_origin(rid)\"",
+      "PL/pgSQL function p3_validate_candidate_origin_deferred() line 5 at PERFORM"
+    ],
+    "rollback_status": "failed transaction was rolled back by PostgreSQL; post-rollback table visibility is captured separately"
+  },
+  "precommit_diagnostic_sample": {
+    "candidate_origin_type": "STRICT_RESPONSE_COMPONENT",
+    "creation_release": "P3-AUTHORITY-2026-08-01-R36",
+    "allocation_release": "P3-AUTHORITY-2026-08-01-R36 for generated R36 revision object rows",
+    "malformed_rows_visible_before_commit": [
+      {"candidate_family_id": "P3CAND-000218", "candidate_revision_id": "P3CANDREV-000218-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000219", "candidate_revision_id": "P3CANDREV-000219-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000220", "candidate_revision_id": "P3CANDREV-000220-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000221", "candidate_revision_id": "P3CANDREV-000221-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000222", "candidate_revision_id": "P3CANDREV-000222-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000223", "candidate_revision_id": "P3CANDREV-000223-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000224", "candidate_revision_id": "P3CANDREV-000224-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000225", "candidate_revision_id": "P3CANDREV-000225-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000226", "candidate_revision_id": "P3CANDREV-000226-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000227", "candidate_revision_id": "P3CANDREV-000227-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000228", "candidate_revision_id": "P3CANDREV-000228-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000229", "candidate_revision_id": "P3CANDREV-000229-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000230", "candidate_revision_id": "P3CANDREV-000230-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000231", "candidate_revision_id": "P3CANDREV-000231-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000232", "candidate_revision_id": "P3CANDREV-000232-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000233", "candidate_revision_id": "P3CANDREV-000233-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000234", "candidate_revision_id": "P3CANDREV-000234-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000235", "candidate_revision_id": "P3CANDREV-000235-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000236", "candidate_revision_id": "P3CANDREV-000236-R0002", "component_count": 2, "attachment_count": 0},
+      {"candidate_family_id": "P3CAND-000237", "candidate_revision_id": "P3CANDREV-000237-R0002", "component_count": 2, "attachment_count": 0}
+    ],
+    "interpretation": "The observed malformed rows were current R36 successor revisions, not merely historical R0001 shells. The repair therefore must keep the current base-candidate closure rule and correct import/builder boundaries."
+  },
+  "evidence_files": [
+    "v36_pg_log_at_candidate_origin_blocker.log",
+    "v36_dirty_db_schema_dump_after_rollback.sql",
+    "v36_dirty_db_schema_dump_after_rollback.stderr",
+    "v36_dirty_db_visible_rows_after_rollback.txt",
+    "p3a_v36_candidates_clean_return_at_blocker.json",
+    "v36_ddl_install_stdout_at_blocker.txt",
+    "v36_ddl_install_stderr_at_blocker.txt"
+  ]
+}

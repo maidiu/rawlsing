@@ -1,0 +1,129 @@
+2026-08-01 15:43:46.906 EDT [98499] LOG:  starting PostgreSQL 15.14 (Homebrew) on x86_64-apple-darwin22.3.0, compiled by Apple clang version 14.0.3 (clang-1403.0.22.14.1), 64-bit
+2026-08-01 15:43:46.909 EDT [98499] LOG:  listening on IPv4 address "127.0.0.1", port 55432
+2026-08-01 15:43:46.910 EDT [98499] LOG:  listening on Unix socket "/tmp/.s.PGSQL.55432"
+2026-08-01 15:43:46.933 EDT [98502] LOG:  database system was shut down at 2026-08-01 15:07:34 EDT
+2026-08-01 15:43:46.948 EDT [98499] LOG:  database system is ready to accept connections
+2026-08-01 15:44:51.703 EDT [98579] ERROR:  insert or update on table "p3_frozen_historical_candidate_identity" violates foreign key constraint "p3_frozen_historical_candidat_successor_candidate_family_i_fkey"
+2026-08-01 15:44:51.703 EDT [98579] DETAIL:  Key (successor_candidate_family_id)=(P3CAND-000283) is not present in table "p3_candidate_family".
+2026-08-01 15:44:51.703 EDT [98579] STATEMENT:  INSERT INTO p3_frozen_historical_candidate_identity (historical_identity_id,historical_object_type,historical_object_id,historical_family_id,historical_revision_number,allocation_release_id,origin_key,evidence_bundle_hash,evidence_status,unavailable_fields,source_package,source_artifact_sha256,graph_reconstruction_status,reconstruction_unavailable_reason,successor_candidate_family_id,successor_candidate_revision_id,migration_reason,authority_release_id,created_at) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11,$12,$13,$14,$15,$16,$17,$18,now()) ON CONFLICT DO NOTHING
+2026-08-01 15:45:59.622 EDT [98643] ERROR:  new row for relation "p3_candidate_revision_genealogy" violates check constraint "p3_candidate_revision_genealogy_check"
+2026-08-01 15:45:59.622 EDT [98643] DETAIL:  Failing row contains (P3CANDREV-000283-R0001, P3CAND-000283, 1, P3CAND-000142, P3CANDREV-000142-R0001, FROZEN_HISTORY, CHANGED_ORIGIN_NEW_FAMILY, Family origin key changed from exact R35 artifact; allocate new ..., P3-AUTHORITY-2026-08-01-R37).
+2026-08-01 15:45:59.622 EDT [98643] STATEMENT:  INSERT INTO p3_candidate_revision_genealogy (candidate_revision_id,candidate_family_id,revision_number,predecessor_candidate_family_id,predecessor_candidate_revision_id,predecessor_source,genealogy_branch,migration_reason,authority_release_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) ON CONFLICT DO NOTHING
+2026-08-01 15:48:46.582 EDT [98500] LOG:  checkpoint starting: time
+2026-08-01 15:49:45.301 EDT [98871] ERROR:  database "rawlsing_p3a_v37_fixture_test" does not exist
+2026-08-01 15:49:45.301 EDT [98871] STATEMENT:  DROP DATABASE rawlsing_p3a_v37_fixture_test;
+2026-08-01 15:50:44.019 EDT [98970] ERROR:  split successor partition invalid
+2026-08-01 15:50:44.019 EDT [98970] CONTEXT:  PL/pgSQL function p3_assert_split_result_partition(text) line 11 at RAISE
+	SQL statement "SELECT p3_assert_split_result_partition(aid)"
+	PL/pgSQL function p3_validate_adjudication_closure_deferred() line 13 at PERFORM
+2026-08-01 15:50:44.019 EDT [98970] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:50:44.048 EDT [98971] ERROR:  adjudication member partition mismatch: missing 1, extra 0
+2026-08-01 15:50:44.048 EDT [98971] CONTEXT:  PL/pgSQL function p3_assert_adjudication_member_partition(text) line 8 at RAISE
+	SQL statement "SELECT p3_assert_adjudication_member_partition(aid)"
+	PL/pgSQL function p3_validate_adjudication_closure_deferred() line 12 at PERFORM
+2026-08-01 15:50:44.048 EDT [98971] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:50:44.071 EDT [98972] ERROR:  duplicate key value violates unique constraint "p3_adjudication_member_pkey"
+2026-08-01 15:50:44.071 EDT [98972] DETAIL:  Key (adjudication_id, member_object_id)=(P3ADJ-910014, p2lineage_05ad8b1ffbe7f0b676a658a4) already exists.
+2026-08-01 15:50:44.071 EDT [98972] STATEMENT:  INSERT INTO p3_adjudication_member VALUES ($1,$2,'HIERARCHICAL',NULL)
+2026-08-01 15:50:44.082 EDT [98973] ERROR:  Candidate event revision/family/release mismatch
+2026-08-01 15:50:44.082 EDT [98973] CONTEXT:  PL/pgSQL function p3_validate_candidate_status_event() line 5 at RAISE
+2026-08-01 15:50:44.082 EDT [98973] STATEMENT:  
+	        INSERT INTO p3_candidate_status_event
+	          (candidate_family_id,candidate_revision_id,event_ordinal,from_stage,to_stage,guard_evidence_id,occurred_at,authority_release_id)
+	        VALUES ($1,$2,99,'DISCOVERED','ADJUDICATION_REQUIRED','MUTATION_RELEASE_MISMATCH',now(),$3)
+	        
+2026-08-01 15:50:44.105 EDT [98974] ERROR:  Variant acceptance requires variant assignment
+2026-08-01 15:50:44.105 EDT [98974] CONTEXT:  PL/pgSQL function p3_validate_adjudication_completeness() line 16 at RAISE
+2026-08-01 15:50:44.105 EDT [98974] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:51:14.393 EDT [98500] LOG:  checkpoint complete: wrote 4302 buffers (26.3%); 0 WAL file(s) added, 0 removed, 29 recycled; write=147.709 s, sync=0.037 s, total=147.812 s; sync files=1412, longest=0.001 s, average=0.001 s; distance=473446 kB, estimate=473446 kB
+2026-08-01 15:51:14.394 EDT [98500] LOG:  checkpoint starting: immediate force wait
+2026-08-01 15:51:14.402 EDT [98500] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 12 recycled; write=0.001 s, sync=0.001 s, total=0.008 s; sync files=3, longest=0.001 s, average=0.001 s; distance=194023 kB, estimate=445504 kB
+2026-08-01 15:52:12.822 EDT [99102] ERROR:  split successor partition invalid
+2026-08-01 15:52:12.822 EDT [99102] CONTEXT:  PL/pgSQL function p3_assert_split_result_partition(text) line 11 at RAISE
+	SQL statement "SELECT p3_assert_split_result_partition(aid)"
+	PL/pgSQL function p3_validate_adjudication_closure_deferred() line 13 at PERFORM
+2026-08-01 15:52:12.822 EDT [99102] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:52:12.844 EDT [99103] ERROR:  adjudication member partition mismatch: missing 1, extra 0
+2026-08-01 15:52:12.844 EDT [99103] CONTEXT:  PL/pgSQL function p3_assert_adjudication_member_partition(text) line 8 at RAISE
+	SQL statement "SELECT p3_assert_adjudication_member_partition(aid)"
+	PL/pgSQL function p3_validate_adjudication_closure_deferred() line 12 at PERFORM
+2026-08-01 15:52:12.844 EDT [99103] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:52:12.860 EDT [99104] ERROR:  duplicate key value violates unique constraint "p3_adjudication_member_pkey"
+2026-08-01 15:52:12.860 EDT [99104] DETAIL:  Key (adjudication_id, member_object_id)=(P3ADJ-910014, p2lineage_05ad8b1ffbe7f0b676a658a4) already exists.
+2026-08-01 15:52:12.860 EDT [99104] STATEMENT:  INSERT INTO p3_adjudication_member VALUES ($1,$2,'HIERARCHICAL',NULL)
+2026-08-01 15:52:12.870 EDT [99105] ERROR:  Candidate event revision/family/release mismatch
+2026-08-01 15:52:12.870 EDT [99105] CONTEXT:  PL/pgSQL function p3_validate_candidate_status_event() line 5 at RAISE
+2026-08-01 15:52:12.870 EDT [99105] STATEMENT:  
+	        INSERT INTO p3_candidate_status_event
+	          (candidate_family_id,candidate_revision_id,event_ordinal,from_stage,to_stage,guard_evidence_id,occurred_at,authority_release_id)
+	        VALUES ($1,$2,99,'DISCOVERED','ADJUDICATION_REQUIRED','MUTATION_RELEASE_MISMATCH',now(),$3)
+	        
+2026-08-01 15:52:12.888 EDT [99106] ERROR:  Variant acceptance requires variant assignment
+2026-08-01 15:52:12.888 EDT [99106] CONTEXT:  PL/pgSQL function p3_validate_adjudication_completeness() line 16 at RAISE
+2026-08-01 15:52:12.888 EDT [99106] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:52:12.985 EDT [98500] LOG:  checkpoint starting: immediate force wait
+2026-08-01 15:52:12.990 EDT [98500] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 10 recycled; write=0.001 s, sync=0.001 s, total=0.005 s; sync files=4, longest=0.001 s, average=0.001 s; distance=159004 kB, estimate=416854 kB
+2026-08-01 15:52:13.142 EDT [99113] FATAL:  database "rawlsing_p3a_v37_fixture_test" does not exist
+2026-08-01 15:52:52.919 EDT [565] ERROR:  database "rawlsing_p3a_v37_fixture_test" does not exist
+2026-08-01 15:52:52.919 EDT [565] STATEMENT:  DROP DATABASE rawlsing_p3a_v37_fixture_test;
+2026-08-01 15:53:48.899 EDT [652] ERROR:  split successor partition invalid
+2026-08-01 15:53:48.899 EDT [652] CONTEXT:  PL/pgSQL function p3_assert_split_result_partition(text) line 11 at RAISE
+	SQL statement "SELECT p3_assert_split_result_partition(aid)"
+	PL/pgSQL function p3_validate_adjudication_closure_deferred() line 13 at PERFORM
+2026-08-01 15:53:48.899 EDT [652] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:53:48.921 EDT [653] ERROR:  adjudication member partition mismatch: missing 1, extra 0
+2026-08-01 15:53:48.921 EDT [653] CONTEXT:  PL/pgSQL function p3_assert_adjudication_member_partition(text) line 8 at RAISE
+	SQL statement "SELECT p3_assert_adjudication_member_partition(aid)"
+	PL/pgSQL function p3_validate_adjudication_closure_deferred() line 12 at PERFORM
+2026-08-01 15:53:48.921 EDT [653] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:53:48.939 EDT [655] ERROR:  duplicate key value violates unique constraint "p3_adjudication_member_pkey"
+2026-08-01 15:53:48.939 EDT [655] DETAIL:  Key (adjudication_id, member_object_id)=(P3ADJ-910014, p2lineage_05ad8b1ffbe7f0b676a658a4) already exists.
+2026-08-01 15:53:48.939 EDT [655] STATEMENT:  INSERT INTO p3_adjudication_member VALUES ($1,$2,'HIERARCHICAL',NULL)
+2026-08-01 15:53:48.949 EDT [656] ERROR:  Candidate event revision/family/release mismatch
+2026-08-01 15:53:48.949 EDT [656] CONTEXT:  PL/pgSQL function p3_validate_candidate_status_event() line 5 at RAISE
+2026-08-01 15:53:48.949 EDT [656] STATEMENT:  
+	        INSERT INTO p3_candidate_status_event
+	          (candidate_family_id,candidate_revision_id,event_ordinal,from_stage,to_stage,guard_evidence_id,occurred_at,authority_release_id)
+	        VALUES ($1,$2,99,'DISCOVERED','ADJUDICATION_REQUIRED','MUTATION_RELEASE_MISMATCH',now(),$3)
+	        
+2026-08-01 15:53:48.969 EDT [657] ERROR:  Variant acceptance requires variant assignment
+2026-08-01 15:53:48.969 EDT [657] CONTEXT:  PL/pgSQL function p3_validate_adjudication_completeness() line 16 at RAISE
+2026-08-01 15:53:48.969 EDT [657] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:53:49.250 EDT [98500] LOG:  checkpoint starting: immediate force wait
+2026-08-01 15:53:49.255 EDT [98500] LOG:  checkpoint complete: wrote 4 buffers (0.0%); 0 WAL file(s) added, 0 removed, 9 recycled; write=0.001 s, sync=0.001 s, total=0.005 s; sync files=4, longest=0.001 s, average=0.001 s; distance=159053 kB, estimate=391074 kB
+2026-08-01 15:53:49.391 EDT [664] FATAL:  database "rawlsing_p3a_v37_fixture_test" does not exist
+2026-08-01 15:55:30.388 EDT [778] ERROR:  database "rawlsing_p3a_v37_fixture_test" does not exist
+2026-08-01 15:55:30.388 EDT [778] STATEMENT:  DROP DATABASE rawlsing_p3a_v37_fixture_test;
+2026-08-01 15:56:33.120 EDT [865] ERROR:  split successor partition invalid
+2026-08-01 15:56:33.120 EDT [865] CONTEXT:  PL/pgSQL function p3_assert_split_result_partition(text) line 11 at RAISE
+	SQL statement "SELECT p3_assert_split_result_partition(aid)"
+	PL/pgSQL function p3_validate_adjudication_closure_deferred() line 13 at PERFORM
+2026-08-01 15:56:33.120 EDT [865] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:56:33.142 EDT [866] ERROR:  adjudication member partition mismatch: missing 1, extra 0
+2026-08-01 15:56:33.142 EDT [866] CONTEXT:  PL/pgSQL function p3_assert_adjudication_member_partition(text) line 8 at RAISE
+	SQL statement "SELECT p3_assert_adjudication_member_partition(aid)"
+	PL/pgSQL function p3_validate_adjudication_closure_deferred() line 12 at PERFORM
+2026-08-01 15:56:33.142 EDT [866] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:56:33.158 EDT [867] ERROR:  duplicate key value violates unique constraint "p3_adjudication_member_pkey"
+2026-08-01 15:56:33.158 EDT [867] DETAIL:  Key (adjudication_id, member_object_id)=(P3ADJ-910014, p2lineage_05ad8b1ffbe7f0b676a658a4) already exists.
+2026-08-01 15:56:33.158 EDT [867] STATEMENT:  INSERT INTO p3_adjudication_member VALUES ($1,$2,'HIERARCHICAL',NULL)
+2026-08-01 15:56:33.168 EDT [868] ERROR:  Candidate event revision/family/release mismatch
+2026-08-01 15:56:33.168 EDT [868] CONTEXT:  PL/pgSQL function p3_validate_candidate_status_event() line 5 at RAISE
+2026-08-01 15:56:33.168 EDT [868] STATEMENT:  
+	        INSERT INTO p3_candidate_status_event
+	          (candidate_family_id,candidate_revision_id,event_ordinal,from_stage,to_stage,guard_evidence_id,occurred_at,authority_release_id)
+	        VALUES ($1,$2,99,'DISCOVERED','ADJUDICATION_REQUIRED','MUTATION_RELEASE_MISMATCH',now(),$3)
+	        
+2026-08-01 15:56:33.187 EDT [869] ERROR:  Variant acceptance requires variant assignment
+2026-08-01 15:56:33.187 EDT [869] CONTEXT:  PL/pgSQL function p3_validate_adjudication_completeness() line 16 at RAISE
+2026-08-01 15:56:33.187 EDT [869] STATEMENT:  SET CONSTRAINTS ALL IMMEDIATE
+2026-08-01 15:56:33.650 EDT [98500] LOG:  checkpoint starting: immediate force wait
+2026-08-01 15:56:33.655 EDT [98500] LOG:  checkpoint complete: wrote 18 buffers (0.1%); 0 WAL file(s) added, 0 removed, 10 recycled; write=0.001 s, sync=0.001 s, total=0.006 s; sync files=6, longest=0.001 s, average=0.001 s; distance=159056 kB, estimate=367872 kB
+2026-08-01 15:56:33.793 EDT [878] FATAL:  database "rawlsing_p3a_v37_fixture_test" does not exist
+2026-08-01 15:57:24.146 EDT [98499] LOG:  received fast shutdown request
+2026-08-01 15:57:24.147 EDT [98499] LOG:  aborting any active transactions
+2026-08-01 15:57:24.149 EDT [98499] LOG:  background worker "logical replication launcher" (PID 98505) exited with exit code 1
+2026-08-01 15:57:24.151 EDT [98500] LOG:  shutting down
+2026-08-01 15:57:24.151 EDT [98500] LOG:  checkpoint starting: shutdown immediate
+2026-08-01 15:57:24.154 EDT [98500] LOG:  checkpoint complete: wrote 10 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.001 s, sync=0.001 s, total=0.003 s; sync files=6, longest=0.001 s, average=0.001 s; distance=0 kB, estimate=331085 kB
+2026-08-01 15:57:24.165 EDT [98499] LOG:  database system is shut down

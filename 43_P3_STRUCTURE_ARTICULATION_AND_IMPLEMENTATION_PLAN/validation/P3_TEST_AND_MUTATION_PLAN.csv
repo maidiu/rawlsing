@@ -1,0 +1,38 @@
+test_id,test_class,test_definition,required
+P3-T001,example,Clean two-source proposition identity produces one candidate.,YES
+P3-T002,example,Same proposition with different ordinal scales produces response variants and no value mapping.,YES
+P3-T003,example,Trust in police and trust in courts remain separate sibling families.,YES
+P3-T004,example,Past petition signing and willingness to sign remain separate families.,YES
+P3-T005,example,Environment-growth and climate-growth remain separate or hierarchical.,YES
+P3-T006,example,Derived index remains separate from constituent questions.,YES
+P3-T007,example,Structure analogy without proposition authority cannot create a family.,YES
+P3-T008,example,Heterogeneous lineage requires segmentation or blocking.,YES
+P3-T009,property,Adding coordinate edges cannot join components.,YES
+P3-T010,property,Removing a positive edge cannot enlarge a component.,YES
+P3-T011,property,Adding a hard negative cannot improve candidate status.,YES
+P3-T012,property,Reordering input rows cannot change stable IDs or outputs.,YES
+P3-T013,property,All internal candidate pairs equal n*(n-1)/2.,YES
+P3-T014,property,Every unruled internal pair appears in closure obligations.,YES
+P3-T015,property,Every canonical member has implementation-level provenance.,YES
+P3-T016,property,Every accepted family has at least one rule-based exclusion.,YES
+P3-T017,property,A superseded family cannot appear in current release views.,YES
+P3-T018,property,Value-portability blocks survive canonical family acceptance.,YES
+P3-T019,mutation,Corrupt a target and require split or hard failure.,YES
+P3-T020,mutation,Corrupt an operator and prohibit proposition identity.,YES
+P3-T021,mutation,Remove a P2 ruling ID and fail closed.,YES
+P3-T022,mutation,Insert unknown vocabulary code and fail schema validation.,YES
+P3-T023,mutation,Duplicate a normalized object ID and fail.,YES
+P3-T024,mutation,Create a cycle in supersession genealogy and fail.,YES
+P3-T025,mutation,Delete a candidate member evidence record and fail.,YES
+P3-T026,mutation,Change collision scope from value-only to family-wide and force impact recalculation.,YES
+P3-T027,mutation,Allow a coordinate edge into connectivity graph and fail.,YES
+P3-T028,mutation,Attempt direct canonical approval from DISCOVERED and fail.,YES
+P3-T029,mutation,Change artifact dependency without dirty-set propagation and fail.,YES
+P3-T030,mutation,Blank evidence must not satisfy a required gate.,YES
+P3-T031,gold,Pilot clean-equivalence fixtures remain stable unless doctrine delta is explicit.,YES
+P3-T032,gold,Pilot response-variant fixtures remain stable unless doctrine delta is explicit.,YES
+P3-T033,gold,Pilot collision and non-transitive fixtures remain stable unless doctrine delta is explicit.,YES
+P3-T034,gold,Pilot heterogeneous-lineage fixtures remain stable unless doctrine delta is explicit.,YES
+P3-T035,integration,Fresh extraction reproduces all canonical and derived artifact hashes.,YES
+P3-T036,integration,PostgreSQL DDL parses and enforces key/check constraints in test database when installed.,YES
+P3-T037,integration,Shadow release comparison returns exact added/removed/changed families.,YES

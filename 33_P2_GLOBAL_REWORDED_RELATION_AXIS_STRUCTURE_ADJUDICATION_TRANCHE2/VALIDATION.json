@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "exact_axis_18",
+      "status": "PASS"
+    },
+    {
+      "check": "exact_v2_counts",
+      "status": "PASS"
+    },
+    {
+      "check": "semantic_121",
+      "status": "PASS"
+    },
+    {
+      "check": "queue_partition",
+      "status": "PASS"
+    },
+    {
+      "check": "structure_19",
+      "status": "PASS"
+    },
+    {
+      "check": "member_rows_nonzero",
+      "status": "PASS"
+    },
+    {
+      "check": "anomalies_30",
+      "status": "PASS"
+    },
+    {
+      "check": "bridge_lineages",
+      "status": "PASS"
+    },
+    {
+      "check": "sidecar_test",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "exact_target_axis_rulings": 18,
+    "exact_accepted": 270,
+    "exact_rejected": 78,
+    "exact_unresolved": 403,
+    "semantic_pair_rulings": 121,
+    "semantic_pair_statuses": {
+      "ACCEPTED_REWORDED_CROSS_SOURCE_CONTINUITY": 82,
+      "REJECTED_CROSS_SOURCE_FALSE_EQUIVALENCE": 18,
+      "ACCEPTED_CROSS_SOURCE_CONSTRUCT_COORDINATE_ONLY": 7,
+      "ACCEPTED_CROSS_SOURCE_METADATA_FUNCTION_ONLY": 1,
+      "ACCEPTED_CROSS_SOURCE_PROPOSITION_ONLY": 4,
+      "ACCEPTED_CROSS_SOURCE_NESTED_TARGET_RELATION": 3,
+      "UNRESOLVED_REQUIRES_PARENT_OR_POLARITY_EVIDENCE": 6
+    },
+    "semantic_priority_remaining": 18710,
+    "structure_rulings": 19,
+    "structure_statuses": {
+      "ACCEPTED_FULL_MEMBER_LEVEL_STRUCTURE_ANALOGY": 13,
+      "ACCEPTED_PARTIAL_MEMBER_LEVEL_STRUCTURE_ANALOGY": 5,
+      "REJECTED_SHARED_LABEL_WITHOUT_MEMBER_EQUIVALENCE": 1
+    },
+    "member_correspondence_rows": 119,
+    "semantic_reference_resolutions": 30,
+    "bridge_lineages": 13526
+  },
+  "next_pass": "P2_GLOBAL_SEMANTIC_NEIGHBORHOOD_FULL_ADJUDICATION_AND_STRATA_DOCTRINE_RUNTIME_REPAIR"
+}

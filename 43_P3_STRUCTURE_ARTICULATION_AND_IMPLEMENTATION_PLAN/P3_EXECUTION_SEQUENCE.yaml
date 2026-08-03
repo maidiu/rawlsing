@@ -1,0 +1,118 @@
+plan_id: RAWLSING_P3_STRUCTURE_ARTICULATION_IMPLEMENTATION_PLAN_V1
+authority_date: '2026-07-31'
+input_release: Rawlsing_J_Family_Authority_Strategy_Handoff_v20_20260731
+current_state: P2_GLOBAL_CLOSED_P3_PLAN_AUTHORED_EXECUTION_NOT_STARTED
+next_execution_point: P3A_CONTRACT_AND_PILOT_V1_IMPLEMENTATION
+global_controls:
+  p2_inputs_immutable: true
+  p3_may_not_rewrite_p2: true
+  coordinate_edges_create_connectivity: false
+  connectedness_authorizes_family: false
+  family_membership_authorizes_value_harmonization: false
+  automatic_canonical_approval: false
+  live_database_write_mode: PROHIBITED_UNTIL_SHADOW_INSTALL_PHASE
+  new_dbms_required: false
+phases:
+- phase: P3A-0
+  name: Freeze inputs and contracts
+  steps:
+  - Hash and freeze all v20 P2 canonical inputs.
+  - Install controlled vocabularies, schemas, ID registry, lifecycle, and composition
+    doctrine.
+  - Validate that all 641 proposition relations and all constraining P2 records are
+    addressable.
+  exit: Input manifest exact; contracts parse; no P2 mutation.
+- phase: P3A-1
+  name: Normalize P2 authority
+  steps:
+  - Convert direct P2 relation rows to typed lineage-pair fact bundles.
+  - Separate connectivity facts from constraints, redirects, and coordinates.
+  - Bind every fact to P2 ruling IDs and implementation-level evidence.
+  exit: Every proposition relation accounted for exactly once in pair-fact bundles.
+- phase: P3A-2
+  name: Recover proposition signatures
+  steps:
+  - Recover each incident lineage signature from question, parent, response, structure,
+    and lineage evidence.
+  - Record field-level provenance and evidence states.
+  - Detect material lineage heterogeneity and create P3 lineage segments without changing
+    P2 lineages.
+  exit: Every candidate-incident lineage has a complete or explicitly fail-closed
+    signature.
+- phase: P3A-3
+  name: Construct collision authority
+  steps:
+  - Translate P2 negatives and unresolved boundaries into typed, scoped collision
+    records.
+  - Distinguish family, variant, hierarchy, value-portability, interval, and source-specific
+    blockers.
+  - Generate the constraint graph.
+  exit: All candidate-relevant constraints are typed and scoped.
+- phase: P3A-4
+  name: Generate global candidate inventory
+  steps:
+  - Build strict seed components from proposition-plus-response edges.
+  - Attach proposition-only relations as candidate or variant proposals without automatic
+    component merging.
+  - Create complete internal pair matrices and closure obligations.
+  - Partition components where signatures or hard collisions require splits.
+  - Construct only permitted semantic/measurement hyperedges.
+  - Rank candidates lexicographically with hard blockers non-compensable.
+  exit: All 641 proposition relations appear in the global candidate accounting.
+- phase: P3A-5
+  name: Pilot selection and adjudication
+  steps:
+  - Select at most 40 representative candidates by governed sampling rules.
+  - Generate self-contained packets with members, evidence, collisions, unruled pairs,
+    variants, exclusions, and proposed decisions.
+  - Adjudicate each using structured decision records.
+  - Record doctrine deltas and rebuild all affected candidates.
+  exit: Pilot decisions reconstruct from delivered evidence; gold fixtures established.
+- phase: P3A-6
+  name: Pilot acceptance and v22 handoff
+  steps:
+  - Run example, property, mutation, determinism, and no-authority-leak tests.
+  - Verify clean extraction and cumulative handoff.
+  - Decide whether P3 contract scales unchanged or requires doctrine revision.
+  exit: P3 Contract and Pilot v1 accepted.
+- phase: P3B
+  name: Global candidate adjudication
+  steps:
+  - Adjudicate approximately 50 candidate families per fixed tranche.
+  - Issue canonical, variant, split, hierarchy, collision, insufficient, or rejected
+    dispositions.
+  - Update exclusions, genealogy, dependency ledger, and release state each tranche.
+  exit: Every generated candidate has terminal authority.
+- phase: P3C
+  name: P3 closure
+  steps:
+  - Prove all proposition relations, candidates, members, exclusions, collisions,
+    variants, and genealogy reconcile.
+  - Issue canonical family authority release.
+  - Prepare PostgreSQL-compatible migration, shadow installation, comparison, promotion,
+    and rollback artifacts.
+  exit: P3 exit criteria all pass; no measurement authority overreach.
+- phase: P4
+  name: Measurement and encoding compatibility
+  steps:
+  - Classify response-contract compatibility and authorize or prohibit transformations
+    independently of family identity.
+  exit: Measurement authority closed.
+- phase: P5
+  name: Strata, driver, facet, and horizon authority
+  steps:
+  - Map families, variants, and implementations to structural authority; install component-aware
+    bridge in user-designated live repository.
+  exit: Structural authority and bridge validated.
+- phase: P6
+  name: Shadow runtime installation
+  steps:
+  - Install new family authority in shadow namespace; compare V550J/V551J/V552J outputs;
+    promote transactionally or roll back.
+  exit: Runtime authority promoted or blocked with full reconciliation.
+- phase: P7
+  name: Persona and pressure integration
+  steps:
+  - Use certified semantic, measurement, and structural authority in persona and historical-pressure
+    computation.
+  exit: Downstream computations identify exact authority releases.

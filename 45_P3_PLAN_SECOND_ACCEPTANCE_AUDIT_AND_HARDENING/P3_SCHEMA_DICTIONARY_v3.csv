@@ -1,0 +1,318 @@
+table_or_artifact,field,logical_type,required,key_role,definition,references
+p3_authority_release,release_id,TEXT,YES,PK,Release id.,
+p3_authority_release,parent_release_id,TEXT,NO,FK,Parent release id.,p3_authority_release.release_id
+p3_authority_release,schema_version,TEXT,YES,VALUE,Schema version.,
+p3_authority_release,builder_version,TEXT,YES,VALUE,Builder version.,
+p3_authority_release,input_manifest_hash,CHAR(64),YES,VALUE,Input manifest hash.,
+p3_authority_release,created_at,TIMESTAMPTZ,YES,VALUE,Created at.,
+p3_authority_release,object_counts,JSONB,YES,VALUE,Object counts.,
+p3_authority_release,validation_return_hash,CHAR(64),YES,VALUE,Validation return hash.,
+p3_authority_release,migration_artifact,TEXT,NO,VALUE,Migration artifact.,
+p3_authority_release,rollback_artifact,TEXT,NO,VALUE,Rollback artifact.,
+p3_release_status_event,release_id,TEXT,YES,FK,Release id.,p3_authority_release.release_id
+p3_release_status_event,event_ordinal,INTEGER,YES,VALUE,Event ordinal.,
+p3_release_status_event,status,TEXT,YES,VALUE,Status.,
+p3_release_status_event,occurred_at,TIMESTAMPTZ,YES,VALUE,Occurred at.,
+p3_release_status_event,evidence_hash,CHAR(64),YES,VALUE,Evidence hash.,
+p3_runtime_promotion_pointer,singleton_key,BOOLEAN,YES,PK,Singleton key.,
+p3_runtime_promotion_pointer,promoted_release_id,TEXT,YES,FK,Promoted release id.,p3_authority_release.release_id
+p3_runtime_promotion_pointer,promoted_at,TIMESTAMPTZ,YES,VALUE,Promoted at.,
+p3_runtime_promotion_pointer,promotion_evidence_hash,CHAR(64),YES,VALUE,Promotion evidence hash.,
+p3_vocabulary_code,vocabulary_domain,TEXT,YES,VALUE,Vocabulary domain.,
+p3_vocabulary_code,code,TEXT,YES,VALUE,Code.,
+p3_vocabulary_code,introduced_release_id,TEXT,YES,FK,Introduced release id.,p3_authority_release.release_id
+p3_vocabulary_code,retired_release_id,TEXT,NO,FK,Retired release id.,p3_authority_release.release_id
+p3_vocabulary_revision,vocabulary_domain,TEXT,YES,VALUE,Vocabulary domain.,
+p3_vocabulary_revision,code,TEXT,YES,VALUE,Code.,
+p3_vocabulary_revision,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_vocabulary_revision,label,TEXT,YES,VALUE,Label.,
+p3_vocabulary_revision,definition,TEXT,YES,VALUE,Definition.,
+p3_vocabulary_revision,authority_effect,TEXT,NO,VALUE,Authority effect.,
+p3_vocabulary_revision,deprecated,BOOLEAN,YES,VALUE,Deprecated.,
+p3_object_registry,object_id,TEXT,YES,PK,Object id.,
+p3_object_registry,object_type,TEXT,YES,VALUE,Object type.,
+p3_object_registry,identity_strategy,TEXT,YES,VALUE,Identity strategy.,
+p3_object_registry,idempotency_key,TEXT,YES,VALUE,Idempotency key.,
+p3_object_registry,origin_phase,TEXT,YES,VALUE,Origin phase.,
+p3_object_registry,origin_authority_id,TEXT,NO,VALUE,Origin authority id.,
+p3_object_registry,allocation_release_id,TEXT,YES,FK,Allocation release id.,p3_authority_release.release_id
+p3_object_registry,retired_release_id,TEXT,NO,FK,Retired release id.,p3_authority_release.release_id
+p3_object_registry,content_hash,CHAR(64),NO,VALUE,Content hash.,
+p3_object_registry,stable_identity_note,TEXT,YES,VALUE,Stable identity note.,
+p3_upstream_object_reference,object_id,TEXT,YES,PK,Object id.,p3_object_registry.object_id
+p3_upstream_object_reference,upstream_phase,TEXT,YES,VALUE,Upstream phase.,
+p3_upstream_object_reference,source_family,TEXT,NO,VALUE,Source family.,
+p3_upstream_object_reference,license_provenance_state,TEXT,YES,VALUE,License provenance state.,
+p3_upstream_object_reference,upstream_object_type,TEXT,YES,VALUE,Upstream object type.,
+p3_upstream_object_reference,upstream_object_id,TEXT,YES,VALUE,Upstream object id.,
+p3_upstream_object_reference,authority_artifact,TEXT,YES,VALUE,Authority artifact.,
+p3_upstream_object_reference,authority_hash,CHAR(64),YES,VALUE,Authority hash.,
+p3_upstream_object_reference,license_provenance_ref,TEXT,NO,VALUE,License provenance ref.,
+p3_upstream_object_reference,read_only,BOOLEAN,YES,VALUE,Read only.,
+p3_lineage_participation,lineage_id,TEXT,YES,FK,Lineage id.,p3_object_registry.object_id
+p3_lineage_participation,participation_status,TEXT,YES,VALUE,Participation status.,
+p3_lineage_participation,effective_pair_incident_count,INTEGER,YES,VALUE,Effective pair incident count.,
+p3_lineage_participation,proposition_pair_incident_count,INTEGER,YES,VALUE,Proposition pair incident count.,
+p3_lineage_participation,signature_requirement,TEXT,YES,VALUE,Signature requirement.,
+p3_lineage_participation,authority_note,TEXT,NO,VALUE,Authority note.,
+p3_lineage_participation,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_lineage_disposition,subject_id,TEXT,YES,FK,Subject id.,p3_object_registry.object_id
+p3_lineage_disposition,subject_type,TEXT,YES,VALUE,Subject type.,
+p3_lineage_disposition,disposition_status,TEXT,YES,VALUE,Disposition status.,
+p3_lineage_disposition,reason,TEXT,YES,VALUE,Reason.,
+p3_lineage_disposition,evidence_ids,JSONB,YES,VALUE,Evidence ids.,
+p3_lineage_disposition,candidate_family_id,TEXT,NO,VALUE,Candidate family id.,
+p3_lineage_disposition,canonical_family_id,TEXT,NO,VALUE,Canonical family id.,
+p3_lineage_disposition,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_lineage_segment,segment_id,TEXT,YES,PK,Segment id.,p3_object_registry.object_id
+p3_lineage_segment,parent_lineage_id,TEXT,YES,FK,Parent lineage id.,p3_object_registry.object_id
+p3_lineage_segment,segment_reason,TEXT,YES,VALUE,Segment reason.,
+p3_lineage_segment,first_wave,TEXT,NO,VALUE,First wave.,
+p3_lineage_segment,last_wave,TEXT,NO,VALUE,Last wave.,
+p3_lineage_segment,p2_lineage_unchanged,BOOLEAN,YES,VALUE,P2 lineage unchanged.,
+p3_lineage_segment,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_lineage_segment_member,segment_id,TEXT,YES,FK,Segment id.,p3_lineage_segment.segment_id
+p3_lineage_segment_member,implementation_id,TEXT,YES,FK,Implementation id.,p3_object_registry.object_id
+p3_lineage_segment_member,ordinal_position,INTEGER,YES,VALUE,Ordinal position.,
+p3_proposition_signature,signature_id,TEXT,YES,PK,Signature id.,p3_object_registry.object_id
+p3_proposition_signature,subject_id,TEXT,YES,FK,Subject id.,p3_object_registry.object_id
+p3_proposition_signature,signature_status,TEXT,YES,VALUE,Signature status.,
+p3_proposition_signature,content_hash,CHAR(64),YES,VALUE,Content hash.,
+p3_proposition_signature,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_signature_field,signature_id,TEXT,YES,FK,Signature id.,p3_proposition_signature.signature_id
+p3_signature_field,field_name,TEXT,YES,VALUE,Field name.,
+p3_signature_field,field_value,TEXT,NO,VALUE,Field value.,
+p3_signature_field,normalized_value_code,TEXT,NO,VALUE,Normalized value code.,
+p3_signature_field,evidence_state,TEXT,YES,VALUE,Evidence state.,
+p3_signature_field,confidence,TEXT,YES,VALUE,Confidence.,
+p3_signature_field_evidence,signature_id,TEXT,YES,VALUE,Signature id.,
+p3_signature_field_evidence,field_name,TEXT,YES,VALUE,Field name.,
+p3_signature_field_evidence,evidence_type,TEXT,YES,VALUE,Evidence type.,
+p3_signature_field_evidence,evidence_id,TEXT,YES,VALUE,Evidence id.,
+p3_signature_field_evidence,evidence_role,TEXT,YES,VALUE,Evidence role.,
+p3_response_contract_reference,reference_id,TEXT,YES,PK,Reference id.,p3_object_registry.object_id
+p3_response_contract_reference,subject_id,TEXT,YES,FK,Subject id.,p3_object_registry.object_id
+p3_response_contract_reference,upstream_response_contract_id,TEXT,NO,VALUE,Upstream response contract id.,
+p3_response_contract_reference,response_topology,TEXT,YES,VALUE,Response topology.,
+p3_response_contract_reference,response_contract_hash,CHAR(64),NO,VALUE,Response contract hash.,
+p3_response_contract_reference,authority_artifact,TEXT,YES,VALUE,Authority artifact.,
+p3_response_contract_reference,p4_authority,BOOLEAN,YES,VALUE,P4 authority.,
+p3_response_contract_reference,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_structural_context_reference,reference_id,TEXT,YES,PK,Reference id.,p3_object_registry.object_id
+p3_structural_context_reference,subject_id,TEXT,YES,FK,Subject id.,p3_object_registry.object_id
+p3_structural_context_reference,source_field,TEXT,YES,VALUE,Source field.,
+p3_structural_context_reference,source_value,JSONB,NO,VALUE,Source value.,
+p3_structural_context_reference,authority_artifact,TEXT,YES,VALUE,Authority artifact.,
+p3_structural_context_reference,p5_authority,BOOLEAN,YES,VALUE,P5 authority.,
+p3_structural_context_reference,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_pair_fact_bundle,pair_fact_id,TEXT,YES,PK,Pair fact id.,p3_object_registry.object_id
+p3_pair_fact_bundle,left_object_id,TEXT,YES,FK,Left object id.,p3_object_registry.object_id
+p3_pair_fact_bundle,right_object_id,TEXT,YES,FK,Right object id.,p3_object_registry.object_id
+p3_pair_fact_bundle,orientation,TEXT,YES,VALUE,Orientation.,
+p3_pair_fact_bundle,relation_type,TEXT,YES,VALUE,Relation type.,
+p3_pair_fact_bundle,target_relation,TEXT,NO,VALUE,Target relation.,
+p3_pair_fact_bundle,operator_relation,TEXT,NO,VALUE,Operator relation.,
+p3_pair_fact_bundle,timeframe_relation,TEXT,NO,VALUE,Timeframe relation.,
+p3_pair_fact_bundle,response_relation,TEXT,NO,VALUE,Response relation.,
+p3_pair_fact_bundle,source_portability_ceiling,TEXT,YES,VALUE,Source portability ceiling.,
+p3_pair_fact_bundle,p3_portability_ceiling,TEXT,YES,VALUE,P3 portability ceiling.,
+p3_pair_fact_bundle,proposition_graph_allowed,BOOLEAN,YES,VALUE,Proposition graph allowed.,
+p3_pair_fact_bundle,j_family_candidate_eligibility,TEXT,YES,VALUE,J family candidate eligibility.,
+p3_pair_fact_bundle,creates_endpoint_authority,BOOLEAN,YES,VALUE,Creates endpoint authority.,
+p3_pair_fact_bundle,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_pair_fact_source_authority,pair_fact_id,TEXT,YES,FK,Pair fact id.,p3_pair_fact_bundle.pair_fact_id
+p3_pair_fact_source_authority,registry_code,TEXT,YES,VALUE,Registry code.,
+p3_pair_fact_source_authority,authority_id,TEXT,YES,VALUE,Authority id.,
+p3_pair_fact_source_authority,authority_role,TEXT,YES,VALUE,Authority role.,
+p3_pair_fact_source_authority,governing,BOOLEAN,YES,VALUE,Governing.,
+p3_pair_fact_source_authority,superseded_by_authority_id,TEXT,NO,VALUE,Superseded by authority id.,
+p3_pair_fact_evidence,pair_fact_id,TEXT,YES,FK,Pair fact id.,p3_pair_fact_bundle.pair_fact_id
+p3_pair_fact_evidence,side,TEXT,YES,VALUE,Side.,
+p3_pair_fact_evidence,evidence_id,TEXT,YES,VALUE,Evidence id.,
+p3_pair_fact_evidence,evidence_type,TEXT,YES,VALUE,Evidence type.,
+p3_collision_scope_registry,collision_id,TEXT,YES,PK,Collision id.,p3_object_registry.object_id
+p3_collision_scope_registry,collision_type,TEXT,YES,VALUE,Collision type.,
+p3_collision_scope_registry,scope_type,TEXT,YES,VALUE,Scope type.,
+p3_collision_scope_registry,orientation,TEXT,YES,VALUE,Orientation.,
+p3_collision_scope_registry,left_role,TEXT,NO,VALUE,Left role.,
+p3_collision_scope_registry,right_role,TEXT,NO,VALUE,Right role.,
+p3_collision_scope_registry,left_object_id,TEXT,YES,FK,Left object id.,p3_object_registry.object_id
+p3_collision_scope_registry,right_object_id,TEXT,YES,FK,Right object id.,p3_object_registry.object_id
+p3_collision_scope_registry,hard_blocker,BOOLEAN,YES,VALUE,Hard blocker.,
+p3_collision_scope_registry,source_scope,TEXT,NO,VALUE,Source scope.,
+p3_collision_scope_registry,historical_scope,JSONB,NO,VALUE,Historical scope.,
+p3_collision_scope_registry,downstream_effects,JSONB,YES,VALUE,Downstream effects.,
+p3_collision_scope_registry,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_collision_authority_source,collision_id,TEXT,YES,FK,Collision id.,p3_collision_scope_registry.collision_id
+p3_collision_authority_source,source_authority_id,TEXT,YES,VALUE,Source authority id.,
+p3_candidate_component,component_id,TEXT,YES,PK,Component id.,p3_object_registry.object_id
+p3_candidate_component,build_rule_version,TEXT,YES,VALUE,Build rule version.,
+p3_candidate_component,content_hash,CHAR(64),YES,VALUE,Content hash.,
+p3_candidate_component,connectivity_edge_count,INTEGER,YES,VALUE,Connectivity edge count.,
+p3_candidate_component,member_count,INTEGER,YES,VALUE,Member count.,
+p3_candidate_component,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_component_membership,component_id,TEXT,YES,FK,Component id.,p3_candidate_component.component_id
+p3_component_membership,member_object_id,TEXT,YES,FK,Member object id.,p3_object_registry.object_id
+p3_candidate_family,candidate_family_id,TEXT,YES,PK,Candidate family id.,p3_object_registry.object_id
+p3_candidate_family,created_release_id,TEXT,YES,FK,Created release id.,p3_authority_release.release_id
+p3_candidate_revision,candidate_revision_id,TEXT,YES,PK,Candidate revision id.,p3_object_registry.object_id
+p3_candidate_revision,candidate_family_id,TEXT,YES,FK,Candidate family id.,p3_candidate_family.candidate_family_id
+p3_candidate_revision,lifecycle_stage,TEXT,YES,VALUE,Lifecycle stage.,
+p3_candidate_revision,candidate_classification,TEXT,YES,VALUE,Candidate classification.,
+p3_candidate_revision,candidate_origin_type,TEXT,YES,VALUE,Candidate origin type.,
+p3_candidate_revision,canonical_signature_id,TEXT,NO,FK,Canonical signature id.,p3_proposition_signature.signature_id
+p3_candidate_revision,evidence_bundle_hash,CHAR(64),YES,VALUE,Evidence bundle hash.,
+p3_candidate_revision,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_candidate_status_event,candidate_family_id,TEXT,YES,FK,Candidate family id.,p3_candidate_family.candidate_family_id
+p3_candidate_status_event,event_ordinal,INTEGER,YES,VALUE,Event ordinal.,
+p3_candidate_status_event,from_stage,TEXT,NO,VALUE,From stage.,
+p3_candidate_status_event,to_stage,TEXT,YES,VALUE,To stage.,
+p3_candidate_status_event,guard_evidence_id,TEXT,YES,VALUE,Guard evidence id.,
+p3_candidate_status_event,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_candidate_component_link,candidate_revision_id,TEXT,YES,FK,Candidate revision id.,p3_candidate_revision.candidate_revision_id
+p3_candidate_component_link,component_id,TEXT,YES,FK,Component id.,p3_candidate_component.component_id
+p3_candidate_membership,candidate_revision_id,TEXT,YES,FK,Candidate revision id.,p3_candidate_revision.candidate_revision_id
+p3_candidate_membership,member_object_id,TEXT,YES,FK,Member object id.,p3_object_registry.object_id
+p3_candidate_membership,membership_role,TEXT,YES,VALUE,Membership role.,
+p3_candidate_diagnostic_flag,candidate_revision_id,TEXT,YES,FK,Candidate revision id.,p3_candidate_revision.candidate_revision_id
+p3_candidate_diagnostic_flag,flag,TEXT,YES,VALUE,Flag.,
+p3_candidate_diagnostic_flag,evidence_ids,JSONB,YES,VALUE,Evidence ids.,
+p3_candidate_ranking,candidate_revision_id,TEXT,YES,PK,Candidate revision id.,p3_candidate_revision.candidate_revision_id
+p3_candidate_ranking,primary_class_rank,INTEGER,YES,VALUE,Primary class rank.,
+p3_candidate_ranking,hard_collision_count,INTEGER,YES,VALUE,Hard collision count.,
+p3_candidate_ranking,open_obligation_count,INTEGER,YES,VALUE,Open obligation count.,
+p3_candidate_ranking,signature_completeness,NUMERIC,YES,VALUE,Signature completeness.,
+p3_candidate_ranking,source_count,INTEGER,YES,VALUE,Source count.,
+p3_candidate_ranking,lineage_count,INTEGER,YES,VALUE,Lineage count.,
+p3_candidate_ranking,direct_positive_density,NUMERIC,YES,VALUE,Direct positive density.,
+p3_candidate_ranking,structure_support_count,INTEGER,YES,VALUE,Structure support count.,
+p3_candidate_ranking,response_variant_complexity,INTEGER,YES,VALUE,Response variant complexity.,
+p3_candidate_ranking,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_internal_pair_matrix,candidate_revision_id,TEXT,YES,FK,Candidate revision id.,p3_candidate_revision.candidate_revision_id
+p3_internal_pair_matrix,left_object_id,TEXT,YES,FK,Left object id.,p3_object_registry.object_id
+p3_internal_pair_matrix,right_object_id,TEXT,YES,FK,Right object id.,p3_object_registry.object_id
+p3_internal_pair_matrix,pair_state,TEXT,YES,VALUE,Pair state.,
+p3_internal_pair_matrix,direct_pair_fact_id,TEXT,NO,FK,Direct pair fact id.,p3_pair_fact_bundle.pair_fact_id
+p3_internal_pair_matrix,collision_id,TEXT,NO,FK,Collision id.,p3_collision_scope_registry.collision_id
+p3_closure_obligation,closure_obligation_id,TEXT,YES,PK,Closure obligation id.,p3_object_registry.object_id
+p3_closure_obligation,candidate_revision_id,TEXT,YES,FK,Candidate revision id.,p3_candidate_revision.candidate_revision_id
+p3_closure_obligation,left_object_id,TEXT,YES,FK,Left object id.,p3_object_registry.object_id
+p3_closure_obligation,right_object_id,TEXT,YES,FK,Right object id.,p3_object_registry.object_id
+p3_closure_obligation,obligation_type,TEXT,YES,VALUE,Obligation type.,
+p3_closure_obligation,status,TEXT,YES,VALUE,Status.,
+p3_closure_obligation,resolution_adjudication_id,TEXT,NO,VALUE,Resolution adjudication id.,
+p3_closure_obligation,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_family_variant,variant_id,TEXT,YES,PK,Variant id.,p3_object_registry.object_id
+p3_family_variant,owner_object_id,TEXT,YES,FK,Owner object id.,p3_object_registry.object_id
+p3_family_variant,created_release_id,TEXT,YES,FK,Created release id.,p3_authority_release.release_id
+p3_family_variant_revision,variant_revision_id,TEXT,YES,PK,Variant revision id.,p3_object_registry.object_id
+p3_family_variant_revision,variant_id,TEXT,YES,FK,Variant id.,p3_family_variant.variant_id
+p3_family_variant_revision,variant_dimension,TEXT,YES,VALUE,Variant dimension.,
+p3_family_variant_revision,variant_value,TEXT,YES,VALUE,Variant value.,
+p3_family_variant_revision,value_portability_status,TEXT,YES,VALUE,Value portability status.,
+p3_family_variant_revision,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_variant_membership,variant_revision_id,TEXT,YES,FK,Variant revision id.,p3_family_variant_revision.variant_revision_id
+p3_variant_membership,member_object_id,TEXT,YES,FK,Member object id.,p3_object_registry.object_id
+p3_family_exclusion,exclusion_id,TEXT,YES,PK,Exclusion id.,p3_object_registry.object_id
+p3_family_exclusion,owner_object_id,TEXT,YES,FK,Owner object id.,p3_object_registry.object_id
+p3_family_exclusion,exclusion_type,TEXT,YES,VALUE,Exclusion type.,
+p3_family_exclusion,prohibited_operation,TEXT,YES,VALUE,Prohibited operation.,
+p3_family_exclusion,evidence_or_rule,TEXT,YES,VALUE,Evidence or rule.,
+p3_family_exclusion,scope,TEXT,YES,VALUE,Scope.,
+p3_family_exclusion,tested_surface_complete,BOOLEAN,YES,VALUE,Tested surface complete.,
+p3_family_exclusion,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_excluded_object,exclusion_id,TEXT,YES,FK,Exclusion id.,p3_family_exclusion.exclusion_id
+p3_excluded_object,excluded_object_id,TEXT,YES,FK,Excluded object id.,p3_object_registry.object_id
+p3_hyperedge,hyperedge_id,TEXT,YES,PK,Hyperedge id.,p3_object_registry.object_id
+p3_hyperedge,hyperedge_type,TEXT,YES,VALUE,Hyperedge type.,
+p3_hyperedge,authority_effect,TEXT,YES,VALUE,Authority effect.,
+p3_hyperedge,causal_authority,BOOLEAN,YES,VALUE,Causal authority.,
+p3_hyperedge,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_hyperedge_membership,hyperedge_id,TEXT,YES,FK,Hyperedge id.,p3_hyperedge.hyperedge_id
+p3_hyperedge_membership,object_id,TEXT,YES,FK,Object id.,p3_object_registry.object_id
+p3_hyperedge_membership,participant_role,TEXT,YES,VALUE,Participant role.,
+p3_adjudication_decision,adjudication_id,TEXT,YES,PK,Adjudication id.,p3_object_registry.object_id
+p3_adjudication_decision,candidate_revision_id,TEXT,YES,FK,Candidate revision id.,p3_candidate_revision.candidate_revision_id
+p3_adjudication_decision,decision_status,TEXT,YES,VALUE,Decision status.,
+p3_adjudication_decision,canonical_family_id,TEXT,NO,FK,Canonical family id.,p3_object_registry.object_id
+p3_adjudication_decision,canonical_proposition,JSONB,NO,VALUE,Canonical proposition.,
+p3_adjudication_decision,response_portability_status,TEXT,YES,VALUE,Response portability status.,
+p3_adjudication_decision,unresolved_boundaries,JSONB,YES,VALUE,Unresolved boundaries.,
+p3_adjudication_decision,rationale,TEXT,YES,VALUE,Rationale.,
+p3_adjudication_decision,evidence_bundle_hash,CHAR(64),YES,VALUE,Evidence bundle hash.,
+p3_adjudication_decision,supersedes_adjudication_id,TEXT,NO,FK,Supersedes adjudication id.,p3_adjudication_decision.adjudication_id
+p3_adjudication_decision,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_adjudication_decision,created_at,TIMESTAMPTZ,YES,VALUE,Created at.,
+p3_adjudication_member,adjudication_id,TEXT,YES,FK,Adjudication id.,p3_adjudication_decision.adjudication_id
+p3_adjudication_member,member_object_id,TEXT,YES,FK,Member object id.,p3_object_registry.object_id
+p3_adjudication_member,member_disposition,TEXT,YES,VALUE,Member disposition.,
+p3_adjudication_member,variant_revision_id,TEXT,NO,FK,Variant revision id.,p3_family_variant_revision.variant_revision_id
+p3_adjudication_collision_disposition,adjudication_id,TEXT,YES,FK,Adjudication id.,p3_adjudication_decision.adjudication_id
+p3_adjudication_collision_disposition,collision_id,TEXT,YES,FK,Collision id.,p3_collision_scope_registry.collision_id
+p3_adjudication_collision_disposition,disposition,TEXT,YES,VALUE,Disposition.,
+p3_adjudication_collision_disposition,rationale,TEXT,YES,VALUE,Rationale.,
+p3_adjudication_hierarchy_relation,adjudication_id,TEXT,YES,FK,Adjudication id.,p3_adjudication_decision.adjudication_id
+p3_adjudication_hierarchy_relation,broader_object_id,TEXT,YES,FK,Broader object id.,p3_object_registry.object_id
+p3_adjudication_hierarchy_relation,narrower_object_id,TEXT,YES,FK,Narrower object id.,p3_object_registry.object_id
+p3_adjudication_hierarchy_relation,relation_role,TEXT,YES,VALUE,Relation role.,
+p3_canonical_family,canonical_family_id,TEXT,YES,PK,Canonical family id.,p3_object_registry.object_id
+p3_canonical_family,created_by_adjudication_id,TEXT,YES,FK,Created by adjudication id.,p3_adjudication_decision.adjudication_id
+p3_canonical_family,created_release_id,TEXT,YES,FK,Created release id.,p3_authority_release.release_id
+p3_canonical_family,retired_release_id,TEXT,NO,FK,Retired release id.,p3_authority_release.release_id
+p3_canonical_family_revision,family_revision_id,TEXT,YES,PK,Family revision id.,p3_object_registry.object_id
+p3_canonical_family_revision,canonical_family_id,TEXT,YES,FK,Canonical family id.,p3_canonical_family.canonical_family_id
+p3_canonical_family_revision,revision_number,INTEGER,YES,VALUE,Revision number.,
+p3_canonical_family_revision,canonical_signature_id,TEXT,YES,FK,Canonical signature id.,p3_proposition_signature.signature_id
+p3_canonical_family_revision,canonical_proposition,JSONB,YES,VALUE,Canonical proposition.,
+p3_canonical_family_revision,evidence_bundle_hash,CHAR(64),YES,VALUE,Evidence bundle hash.,
+p3_canonical_family_revision,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_canonical_family_membership,family_revision_id,TEXT,YES,FK,Family revision id.,p3_canonical_family_revision.family_revision_id
+p3_canonical_family_membership,member_object_id,TEXT,YES,FK,Member object id.,p3_object_registry.object_id
+p3_canonical_family_membership,variant_revision_id,TEXT,NO,FK,Variant revision id.,p3_family_variant_revision.variant_revision_id
+p3_doctrine_delta,doctrine_delta_id,TEXT,YES,PK,Doctrine delta id.,p3_object_registry.object_id
+p3_doctrine_delta,trigger_candidate_id,TEXT,YES,FK,Trigger candidate id.,p3_candidate_family.candidate_family_id
+p3_doctrine_delta,old_rule,TEXT,NO,VALUE,Old rule.,
+p3_doctrine_delta,new_rule,TEXT,YES,VALUE,New rule.,
+p3_doctrine_delta,required_rebuild_scope,TEXT,YES,VALUE,Required rebuild scope.,
+p3_doctrine_delta,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_doctrine_delta_affected_object,doctrine_delta_id,TEXT,YES,FK,Doctrine delta id.,p3_doctrine_delta.doctrine_delta_id
+p3_doctrine_delta_affected_object,affected_object_id,TEXT,YES,FK,Affected object id.,p3_object_registry.object_id
+p3_family_genealogy,genealogy_id,TEXT,YES,PK,Genealogy id.,p3_object_registry.object_id
+p3_family_genealogy,relation_type,TEXT,YES,VALUE,Relation type.,
+p3_family_genealogy,adjudication_id,TEXT,YES,FK,Adjudication id.,p3_adjudication_decision.adjudication_id
+p3_family_genealogy,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_family_genealogy_member,genealogy_id,TEXT,YES,FK,Genealogy id.,p3_family_genealogy.genealogy_id
+p3_family_genealogy_member,family_id,TEXT,YES,FK,Family id.,p3_canonical_family.canonical_family_id
+p3_family_genealogy_member,genealogy_role,TEXT,YES,VALUE,Genealogy role.,
+p3_dependency_edge,dependency_id,TEXT,YES,PK,Dependency id.,p3_object_registry.object_id
+p3_dependency_edge,dependent_id,TEXT,YES,FK,Dependent id.,p3_object_registry.object_id
+p3_dependency_edge,authority_input_id,TEXT,YES,FK,Authority input id.,p3_object_registry.object_id
+p3_dependency_edge,dependency_role,TEXT,YES,VALUE,Dependency role.,
+p3_dependency_edge,dirty_if_changed,BOOLEAN,YES,VALUE,Dirty if changed.,
+p3_dependency_edge,impact_priority,TEXT,YES,VALUE,Impact priority.,
+p3_dependency_edge,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_release_object_snapshot,release_id,TEXT,YES,FK,Release id.,p3_authority_release.release_id
+p3_release_object_snapshot,object_id,TEXT,YES,FK,Object id.,p3_object_registry.object_id
+p3_release_object_snapshot,content_hash,CHAR(64),YES,VALUE,Content hash.,
+p3_release_change_ledger,release_id,TEXT,YES,FK,Release id.,p3_authority_release.release_id
+p3_release_change_ledger,object_id,TEXT,YES,FK,Object id.,p3_object_registry.object_id
+p3_release_change_ledger,change_type,TEXT,YES,VALUE,Change type.,
+p3_release_change_ledger,prior_content_hash,CHAR(64),NO,VALUE,Prior content hash.,
+p3_release_change_ledger,content_hash,CHAR(64),YES,VALUE,Content hash.,
+p3_release_change_ledger,reason,TEXT,NO,VALUE,Reason.,
+p3_failure_ledger,failure_id,TEXT,YES,PK,Failure id.,
+p3_failure_ledger,build_run_id,TEXT,YES,VALUE,Build run id.,
+p3_failure_ledger,severity,TEXT,YES,VALUE,Severity.,
+p3_failure_ledger,object_id,TEXT,NO,FK,Object id.,p3_object_registry.object_id
+p3_failure_ledger,failure_code,TEXT,YES,VALUE,Failure code.,
+p3_failure_ledger,message,TEXT,YES,VALUE,Message.,
+p3_failure_ledger,source_artifact,TEXT,NO,VALUE,Source artifact.,
+p3_failure_ledger,created_at,TIMESTAMPTZ,YES,VALUE,Created at.,
+p3_object_reference_type_contract,table_name,TEXT,YES,VALUE,Table name.,
+p3_object_reference_type_contract,column_name,TEXT,YES,VALUE,Column name.,
+p3_object_reference_type_contract,allowed_object_types,TEXT[],YES,VALUE,Allowed object types.,
+p3_object_reference_type_contract,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id
+p3_categorical_field_binding,table_name,TEXT,YES,VALUE,Table name.,
+p3_categorical_field_binding,column_name,TEXT,YES,VALUE,Column name.,
+p3_categorical_field_binding,vocabulary_domain,TEXT,YES,VALUE,Vocabulary domain.,
+p3_categorical_field_binding,authority_release_id,TEXT,YES,FK,Authority release id.,p3_authority_release.release_id

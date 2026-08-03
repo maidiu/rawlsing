@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v5/adjudication_decision_draft.schema.json",
+  "title": "adjudication_decision_draft",
+  "type": "object",
+  "required": [
+    "adjudication_id",
+    "candidate_family_id",
+    "candidate_revision_id",
+    "decision_ordinal",
+    "accepted_members",
+    "excluded_members",
+    "variant_assignments",
+    "split_points",
+    "hierarchical_relations",
+    "collision_dispositions",
+    "unresolved_boundaries",
+    "response_portability_status",
+    "evidence_bundle_hash",
+    "authority_release_id"
+  ],
+  "properties": {
+    "adjudication_id": {
+      "type": "string",
+      "pattern": "^P3ADJ-[0-9]{6}$"
+    },
+    "candidate_family_id": {
+      "type": "string",
+      "pattern": "^P3CAND-[0-9]{6}$"
+    },
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "decision_status": {
+      "anyOf": [
+        {
+          "enum": [
+            "ACCEPTED_CANONICAL",
+            "ACCEPTED_WITH_VARIANTS",
+            "BLOCKED_UNRESOLVED",
+            "HIERARCHICAL_RELATION_ONLY",
+            "INSUFFICIENT_AUTHORITY",
+            "REJECTED",
+            "REJECTED_SEMANTIC_ARTIFACT",
+            "SPLIT_REQUIRED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "canonical_family_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^JFAM-[0-9]{6}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "canonical_proposition": {
+      "anyOf": [
+        {
+          "$ref": "https://rawlsing.local/schemas/p3/v5/canonical_proposition.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "accepted_members": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "excluded_members": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "variant_assignments": {
+      "type": "array",
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v5/variant_assignment.schema.json"
+      }
+    },
+    "hierarchical_relations": {
+      "type": "array",
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v5/hierarchy_relation.schema.json"
+      }
+    },
+    "collision_dispositions": {
+      "type": "array",
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v5/collision_disposition.schema.json"
+      }
+    },
+    "response_portability_status": {
+      "const": "NOT_AUTHORIZED_BY_P3"
+    },
+    "unresolved_boundaries": {
+      "type": "array",
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v5/unresolved_boundary.schema.json"
+      }
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "evidence_bundle_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "supersedes_adjudication_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^P3ADJ-[0-9]{6}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    },
+    "split_points": {
+      "type": "array",
+      "items": {
+        "$ref": "https://rawlsing.local/schemas/p3/v5/split_point.schema.json"
+      }
+    },
+    "decision_ordinal": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "additionalProperties": false
+}

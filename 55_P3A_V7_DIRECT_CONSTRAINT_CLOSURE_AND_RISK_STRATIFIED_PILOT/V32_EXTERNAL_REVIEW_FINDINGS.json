@@ -1,0 +1,90 @@
+{
+  "reviewed_input": "Rawlsing_P3A_V32_Section54_Review_Delta.zip",
+  "complete_v32_zip_independently_hashed": false,
+  "reason": "Only the section-54 review delta was uploaded in the active runtime.",
+  "accepted_evidence": {
+    "three_packets_validate_with_delivered_v32_validator": true,
+    "q01b_phase_override_is_legitimate": true,
+    "q15b_phase_override_is_legitimate": true,
+    "closure_counts_are_internally_reconciled": {
+      "unruled_pairs": 346,
+      "closure_obligations": 346,
+      "closure_links": 346
+    },
+    "topology_counts_reported": {
+      "strict": 94,
+      "proposition_only_seed": 25,
+      "attachment_review": 22,
+      "total": 141
+    }
+  },
+  "blocking_findings": [
+    {
+      "id": "V32-EXT-001",
+      "classification": "DIRECT_AUTHORITY_DROPPED_AS_UNRULED",
+      "count": 10,
+      "detail": "Ten candidate internal pairs have direct governing P2 authority but are persisted/exported as UNRULED with pair_fact_id and pair_projection_id null."
+    },
+    {
+      "id": "V32-EXT-002",
+      "classification": "ATTACHMENT_ORIGIN_PROVENANCE_INCOMPLETE",
+      "candidate": "P3CAND-000136",
+      "expected_cross_meta_proposition_projections": 47,
+      "persisted_attachment_projections": 6,
+      "omitted_strict_component_bridge_projections": 41
+    },
+    {
+      "id": "V32-EXT-003",
+      "classification": "PREFLIGHT_INVENTORY_INSTANTIATED_NOT_RECOMPUTED",
+      "detail": "load_candidates reads P3_PREFLIGHT_CANDIDATE_INVENTORY_v7.csv directly even though the governing rules call it diagnostic-only and require recomputation from resolved subjects and projections."
+    },
+    {
+      "id": "V32-EXT-004",
+      "classification": "CONSTRAINT_GRAPH_NOT_PROJECTED_INTO_CANDIDATES",
+      "detail": "The builder loads 19,175 pair facts but candidate matrices/packets use only the 657 proposition projections; collision, unresolved, redirect, coordinate, hierarchy, and other candidate-relevant constraints are not reconstructed."
+    },
+    {
+      "id": "V32-EXT-005",
+      "classification": "CLEAN_CLASSIFICATION_IGNORES_FAIL_CLOSED_SIGNATURES",
+      "detail": "All 399 signatures remain PARTIAL_FAIL_CLOSED/UNRECOVERED, while the deterministic builder labels 79 candidates CLEAN_CANDIDATE based only on pair completeness."
+    },
+    {
+      "id": "V32-EXT-006",
+      "classification": "PILOT_NOT_EXECUTED_UNDER_GOVERNING_RULES",
+      "detail": "The pilot is a 40-row index selected by origin order, not the target risk strata; only three packets and draft decisions exist.",
+      "selected_origins": {
+        "ATTACHMENT_REVIEW": 22,
+        "PROPOSITION_ONLY_SEED": 18,
+        "STRICT_RESPONSE_COMPONENT": 0
+      }
+    },
+    {
+      "id": "V32-EXT-007",
+      "classification": "FIXTURE_ISOLATION_AND_MUTATION_COVERAGE_INSUFFICIENT",
+      "detail": "Positive canonical fixtures commit in the same R32 release/schema; the incomplete-promotion case fails before the named invariant, and the stale-hash mutation changes only the top-level hash."
+    },
+    {
+      "id": "V32-EXT-008",
+      "classification": "VERIFIER_DERIVES_PASS_FROM_SUMMARY_FILES",
+      "detail": "verify_handoff_v32 checks manifests plus closure/query summary JSONs; it does not independently verify topology recomputation, direct constraints, 40 pilot packets, fixture isolation, or package hygiene."
+    }
+  ],
+  "nonblocking_but_required_repairs": [
+    {
+      "id": "V32-EXT-009",
+      "classification": "BYTECODE_DEBRIS",
+      "count": 5,
+      "detail": "Five __pycache__/*.pyc files are manifested in the final package."
+    },
+    {
+      "id": "V32-EXT-010",
+      "classification": "INVALID_CSV_PREAMBLE",
+      "detail": "P3A_V32_PILOT_CANDIDATE_INDEX.csv and P3A_V32_DATABASE_PACKET_CONVERGENCE.csv begin with a standalone SET line."
+    },
+    {
+      "id": "V32-EXT-011",
+      "classification": "COUNT_SURFACE_CONTRADICTION",
+      "detail": "P3A_V32_OBJECT_COUNTS.json reports 496 response references in generated rows while the populated DB diagnostic reports 397 persisted references."
+    }
+  ]
+}

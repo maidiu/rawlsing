@@ -1,0 +1,2005 @@
+[
+  {
+    "family": "Afrobarometer",
+    "wave": "Round 1",
+    "table_name": "respondentsDemoAfroBarR1",
+    "kind": "income",
+    "canonical_source": "povinc",
+    "canonical_question_text": "",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "Afrobarometer",
+    "wave": "Round 5",
+    "table_name": "respondentsDemoAfroBarR5",
+    "kind": "income",
+    "canonical_source": "Q8E",
+    "canonical_question_text": "",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "LIVEDPOVERTY",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "proxy_only",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "Afrobarometer",
+    "wave": "Round 9",
+    "table_name": "respondentsDemoAfroBarR9",
+    "kind": "income",
+    "canonical_source": "LIVEDPOVERTY_CAT",
+    "canonical_question_text": "",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "LIVEDPOVERTY",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "proxy_only",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "Q6E",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "Q8E",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "age",
+    "canonical_source": "age",
+    "canonical_question_text": "",
+    "canonical_scale": "integer ratio scale",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "age_r",
+        "question_text": "",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "age_r2",
+        "question_text": "",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v551",
+        "question_text": "",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v551_r",
+        "question_text": "",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v558",
+        "question_text": "",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "education",
+    "canonical_source": "v304",
+    "canonical_question_text": "",
+    "canonical_scale": "ordinal / sometimes years-of-schooling equivalent",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v304_r",
+        "question_text": "",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v305_se",
+        "question_text": "",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v303_r",
+        "question_text": "",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v551",
+        "question_text": "",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "employment",
+    "canonical_source": "v561",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v564",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v565",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v566",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v567",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v568",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v571",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "household",
+    "canonical_source": "v552",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical / source-specific",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v554",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v555",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v556",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v557",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v558",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v570",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "identity",
+    "canonical_source": "v571_cs",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "income",
+    "canonical_source": "v570_cs",
+    "canonical_question_text": "",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v570_r",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v570",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "marital",
+    "canonical_source": "v355",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v293",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v294",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v295",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v296",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v297",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "region",
+    "canonical_source": "v569",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v156",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "religion",
+    "canonical_source": "v572",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v571_cs",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v571",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "sex_gender",
+    "canonical_source": "v567",
+    "canonical_question_text": "",
+    "canonical_scale": "binary nominal",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v426",
+        "question_text": "",
+        "scale": "binary nominal",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1981",
+    "table_name": "respondentsDemoEVS1981",
+    "kind": "urban_rural",
+    "canonical_source": "v568",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v653_us",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "age",
+    "canonical_source": "v292",
+    "canonical_question_text": "",
+    "canonical_scale": "integer ratio scale",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "age",
+        "question_text": "",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v303",
+        "question_text": "",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v303_r",
+        "question_text": "",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "class",
+    "canonical_source": "o49",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v321_se",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "education",
+    "canonical_source": "v304",
+    "canonical_question_text": "",
+    "canonical_scale": "ordinal / sometimes years-of-schooling equivalent",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v304_r",
+        "question_text": "",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v304_se",
+        "question_text": "",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v303_r",
+        "question_text": "",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "employment",
+    "canonical_source": "v306",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v311",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v311_2",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v311_3",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v312",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v315",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v316",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v317",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v318",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "household",
+    "canonical_source": "v298",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical / source-specific",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v299_gr",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v302",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v305",
+        "question_text": "",
+        "scale": "categorical / source-specific",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "income",
+    "canonical_source": "v320_r",
+    "canonical_question_text": "",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v320_cs",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v320_ppp",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v320",
+        "question_text": "",
+        "scale": "ordinal / interval proxy depending source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "language",
+    "canonical_source": "language",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "marital",
+    "canonical_source": "v296",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v293",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v294",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v295",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v297",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "region",
+    "canonical_source": "v323",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v322",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "religion",
+    "canonical_source": "v101",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v102",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v103",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v104",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v105",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v106",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v110",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v124",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v126",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v130",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v131",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v132",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v137",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "v172",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "sex_gender",
+    "canonical_source": "v291",
+    "canonical_question_text": "",
+    "canonical_scale": "binary nominal",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "v567",
+        "question_text": "",
+        "scale": "binary nominal",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "EVS",
+    "wave": "1999",
+    "table_name": "respondentsDemoEVS1999",
+    "kind": "urban_rural",
+    "canonical_source": "v322",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "1972",
+    "table_name": "respondentsDemoGSS1972",
+    "kind": "income",
+    "canonical_source": "coninc",
+    "canonical_question_text": "family income in constant dollars",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "1972",
+    "table_name": "respondentsDemoGSS1972",
+    "kind": "survey_weight",
+    "canonical_source": "wtssps",
+    "canonical_question_text": "person post-stratification weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "wtssall",
+        "question_text": "weight variable",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "GSS",
+    "wave": "1973",
+    "table_name": "respondentsDemoGSS1973",
+    "kind": "income",
+    "canonical_source": "coninc",
+    "canonical_question_text": "family income in constant dollars",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "1973",
+    "table_name": "respondentsDemoGSS1973",
+    "kind": "survey_weight",
+    "canonical_source": "wtssps",
+    "canonical_question_text": "person post-stratification weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "wtssall",
+        "question_text": "weight variable",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "GSS",
+    "wave": "1984",
+    "table_name": "respondentsDemoGSS1984",
+    "kind": "income",
+    "canonical_source": "coninc",
+    "canonical_question_text": "family income in constant dollars",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "1984",
+    "table_name": "respondentsDemoGSS1984",
+    "kind": "survey_weight",
+    "canonical_source": "wtssps",
+    "canonical_question_text": "person post-stratification weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "wtssall",
+        "question_text": "weight variable",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "GSS",
+    "wave": "1993",
+    "table_name": "respondentsDemoGSS1993",
+    "kind": "income",
+    "canonical_source": "coninc",
+    "canonical_question_text": "family income in constant dollars",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "1993",
+    "table_name": "respondentsDemoGSS1993",
+    "kind": "survey_weight",
+    "canonical_source": "wtssps",
+    "canonical_question_text": "person post-stratification weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "wtssall",
+        "question_text": "weight variable",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "GSS",
+    "wave": "2002",
+    "table_name": "respondentsDemoGSS2002",
+    "kind": "income",
+    "canonical_source": "coninc",
+    "canonical_question_text": "family income in constant dollars",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "2002",
+    "table_name": "respondentsDemoGSS2002",
+    "kind": "survey_weight",
+    "canonical_source": "wtssps",
+    "canonical_question_text": "person post-stratification weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "wtssall",
+        "question_text": "weight variable",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "GSS",
+    "wave": "2010",
+    "table_name": "respondentsDemoGSS2010",
+    "kind": "income",
+    "canonical_source": "coninc",
+    "canonical_question_text": "family income in constant dollars",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "2010",
+    "table_name": "respondentsDemoGSS2010",
+    "kind": "survey_weight",
+    "canonical_source": "wtssps",
+    "canonical_question_text": "person post-stratification weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "wtssnrps",
+        "question_text": "person post-stratification weight, nonrespondents adjusted",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "wtssall",
+        "question_text": "weight variable",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "GSS",
+    "wave": "2016",
+    "table_name": "respondentsDemoGSS2016",
+    "kind": "income",
+    "canonical_source": "coninc",
+    "canonical_question_text": "family income in constant dollars",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "2016",
+    "table_name": "respondentsDemoGSS2016",
+    "kind": "survey_weight",
+    "canonical_source": "wtssps",
+    "canonical_question_text": "person post-stratification weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "wtssnrps",
+        "question_text": "person post-stratification weight, nonrespondents adjusted",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "wtssall",
+        "question_text": "weight variable",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "GSS",
+    "wave": "2024",
+    "table_name": "respondentsDemoGSS2024",
+    "kind": "income",
+    "canonical_source": "coninc",
+    "canonical_question_text": "family income in constant dollars",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "GSS",
+    "wave": "2024",
+    "table_name": "respondentsDemoGSS2024",
+    "kind": "survey_weight",
+    "canonical_source": "wtssps",
+    "canonical_question_text": "person post-stratification weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "wtssnrps",
+        "question_text": "person post-stratification weight, nonrespondents adjusted",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "2006",
+    "table_name": "respondentsDemoLiTS2006",
+    "kind": "education",
+    "canonical_source": "q501",
+    "canonical_question_text": "highest educational degree obtained (1-6)",
+    "canonical_scale": "ordinal / sometimes years-of-schooling equivalent",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "2006",
+    "table_name": "respondentsDemoLiTS2006",
+    "kind": "region",
+    "canonical_source": "region",
+    "canonical_question_text": "region",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "country",
+        "question_text": "country",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "2006",
+    "table_name": "respondentsDemoLiTS2006",
+    "kind": "religion",
+    "canonical_source": "q706",
+    "canonical_question_text": "religion",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "2006",
+    "table_name": "respondentsDemoLiTS2006",
+    "kind": "survey_weight",
+    "canonical_source": "weight_0",
+    "canonical_question_text": "democratic weight",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "weight_1",
+        "question_text": "crude democratic weight",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "weight_2",
+        "question_text": "federalist weight",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "2006",
+    "table_name": "respondentsDemoLiTS2006",
+    "kind": "urban_rural",
+    "canonical_source": "town",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "region",
+        "question_text": "region",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "age",
+    "canonical_source": "respondentage",
+    "canonical_question_text": "LiTS II administrative respondentage   numeric 4 unknown %9.0g 0    administrative / derived metadata",
+    "canonical_scale": "integer ratio scale",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "Select_0",
+        "question_text": "Q.104 Age of selected respondent",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "education",
+    "canonical_source": "q515",
+    "canonical_question_text": "q515 - What is the highest level of education you already completed?",
+    "canonical_scale": "ordinal / sometimes years-of-schooling equivalent",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "employment",
+    "canonical_source": "q528",
+    "canonical_question_text": "q528 - Would you be willing to move elsewhere in our country for employment reas",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q529",
+        "question_text": "q529 - Would you be willing to move abroad for employment reasons?",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q813a",
+        "question_text": "Q.813a What was the result of this application?: Unemployment benefit",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q814a",
+        "question_text": "Q.814a Has your household received its first payment?: Unemployment benefit",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q815a",
+        "question_text": "q815a - How many months did it take to receive the first payment?: Unemployment",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q816a",
+        "question_text": "Q.816a How helpful was this support?: Unemployment benefit",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "income",
+    "canonical_source": "q501",
+    "canonical_question_text": "q501 - Did you work for income during the past 12 months?",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "language",
+    "canonical_source": "select",
+    "canonical_question_text": "select - ENTER ID CODE OF HOUSEHOLD MEMBER RANDOMLY SELECTED TO ANSWER SECTIONS",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "select2",
+        "question_text": "select2 - ENTER ID CODE OF KNOWLEDGEABLE HOUSEHOLD MEMBER WHO WILL ANSWER SECTIO",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "marital",
+    "canonical_source": "q701",
+    "canonical_question_text": "q701 - What is your present marital status?",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "region",
+    "canonical_source": "region",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "country0",
+        "question_text": "Region",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "country",
+        "question_text": "country - Country code{nonull}{noblanks}",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "religion",
+    "canonical_source": "q716",
+    "canonical_question_text": "q716 - What is your religion?",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "sex_gender",
+    "canonical_source": "respondentgender",
+    "canonical_question_text": "LiTS II administrative respondentgender   numeric 4 unknown %9.0g 0    administrative / derived metadata",
+    "canonical_scale": "binary nominal",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "Select_r",
+        "question_text": "Q.102 Gender of selected respondent",
+        "scale": "binary nominal",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "survey_weight",
+    "canonical_source": "weight",
+    "canonical_question_text": "Democratic weight: Each country's weights add up to its population",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "xcweight",
+        "question_text": "Federalist weight: Each country's weights add up to one",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "xc_weight",
+        "question_text": "",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "II",
+    "table_name": "respondentsDemoLiTSII",
+    "kind": "urban_rural",
+    "canonical_source": "country0",
+    "canonical_question_text": "Region",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "region",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "country",
+        "question_text": "country - Country code{nonull}{noblanks}",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "age",
+    "canonical_source": "age_pr",
+    "canonical_question_text": "Age of the primary respondent",
+    "canonical_scale": "integer ratio scale",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "age_sr",
+        "question_text": "Age of the secondary respondent",
+        "scale": "integer ratio scale",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "education",
+    "canonical_source": "q109_1",
+    "canonical_question_text": "Highest education completed - primary respondent",
+    "canonical_scale": "ordinal / sometimes years-of-schooling equivalent",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q109_2",
+        "question_text": "Highest education completed - secondary respondent",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q109_3",
+        "question_text": "Highest education completed - sections 1 and 2 respondent",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "employment",
+    "canonical_source": "q501",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q502",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q503",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q504",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q505",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q506",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q507",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "income",
+    "canonical_source": "q223",
+    "canonical_question_text": "Household net monthly income",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "language",
+    "canonical_source": "q106_1",
+    "canonical_question_text": "Main language - primary respondent",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q106_2",
+        "question_text": "Main language - secondary respondent",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q106_3",
+        "question_text": "Main language - sections 1 and 2 respondent",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "marital",
+    "canonical_source": "q107_1",
+    "canonical_question_text": "Marital status - primary respondent",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q107_2",
+        "question_text": "Marital status - secondary respondent",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q107_3",
+        "question_text": "Marital status - sections 1 and 2 respondent",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "region",
+    "canonical_source": "region",
+    "canonical_question_text": "",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "country",
+        "question_text": "Country",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "religion",
+    "canonical_source": "q922",
+    "canonical_question_text": "Religion of the respondent",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "sex_gender",
+    "canonical_source": "gender_pr",
+    "canonical_question_text": "Gender of the primary respondent",
+    "canonical_scale": "binary nominal",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "gender_sr",
+        "question_text": "Gender of the secondary respondent",
+        "scale": "binary nominal",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "survey_weight",
+    "canonical_source": "weight_population",
+    "canonical_question_text": "Survey weights that add up to population totals",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "weight_sample",
+        "question_text": "Survey weights that add up to number of interviews conducted",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "weight_one",
+        "question_text": "Survey weights that add up to one",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "III",
+    "table_name": "respondentsDemoLiTSIII",
+    "kind": "urban_rural",
+    "canonical_source": "urban",
+    "canonical_question_text": "Urbanity status",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "town",
+        "question_text": "Town/Village",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "education",
+    "canonical_source": "q109b",
+    "canonical_question_text": "Highest level of education obtained - Primary respondent",
+    "canonical_scale": "ordinal / sometimes years-of-schooling equivalent",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q109a",
+        "question_text": "Highest level of education obtained - Knowledgeable respondent",
+        "scale": "ordinal / sometimes years-of-schooling equivalent",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "employment",
+    "canonical_source": "q310",
+    "canonical_question_text": "Employment status - main job",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q701",
+        "question_text": "Employment status before the pandemic",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q604",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "q605",
+        "question_text": "Reason for not buying anything online in th last 3 months",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "income",
+    "canonical_source": "q225",
+    "canonical_question_text": "Household monthly income",
+    "canonical_scale": "ordinal / interval proxy depending source",
+    "canonical_relation": "canonical",
+    "fallbacks": []
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "language",
+    "canonical_source": "q106b",
+    "canonical_question_text": "Main language - Primary respondent",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q106a",
+        "question_text": "Main language - Knowledgeable respondent",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "marital",
+    "canonical_source": "q107b",
+    "canonical_question_text": "Marital status - Primary respondent",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q107a",
+        "question_text": "Marital status - Knowledgeable respondent",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "region",
+    "canonical_source": "region",
+    "canonical_question_text": "Region",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "region_name",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "country",
+        "question_text": "Country",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "religion",
+    "canonical_source": "q814",
+    "canonical_question_text": "Religion",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "q814b",
+        "question_text": "Importance of religion",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "survey_weight",
+    "canonical_source": "weight_pop",
+    "canonical_question_text": "Final weight - scaled to the 18+ population",
+    "canonical_scale": "continuous positive weight; survey-design adjusted",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "weight",
+        "question_text": "Final weight",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      },
+      {
+        "source_var": "weight_pop_trt",
+        "question_text": "Final weight - TR with top up sample - scaled to the 18+ population",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "Turkey top-up variant; no documented exact normalization to base country-pop weight"
+      },
+      {
+        "source_var": "weight_trt",
+        "question_text": "Final weight - TR with top up sample",
+        "scale": "continuous positive weight; survey-design adjusted",
+        "relation": "alternate_weight_definition",
+        "convertible_to_canonical": false,
+        "conversion_method": "Turkey top-up variant; no documented exact normalization to base country-pop weight"
+      }
+    ]
+  },
+  {
+    "family": "LiTS",
+    "wave": "IV",
+    "table_name": "respondentsDemoLiTSIV",
+    "kind": "urban_rural",
+    "canonical_source": "urbanity",
+    "canonical_question_text": "Urbanity",
+    "canonical_scale": "categorical; nominal unless coded ordinal in source",
+    "canonical_relation": "canonical",
+    "fallbacks": [
+      {
+        "source_var": "urban",
+        "question_text": "",
+        "scale": "categorical; nominal unless coded ordinal in source",
+        "relation": "fallback_alias",
+        "convertible_to_canonical": false,
+        "conversion_method": "no safe conversion documented"
+      }
+    ]
+  }
+]

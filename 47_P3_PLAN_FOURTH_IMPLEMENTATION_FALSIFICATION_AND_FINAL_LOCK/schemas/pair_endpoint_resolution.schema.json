@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v5/pair_endpoint_resolution.schema.json",
+  "title": "pair_endpoint_resolution",
+  "type": "object",
+  "required": [
+    "pair_fact_id",
+    "endpoint_side",
+    "original_lineage_id",
+    "resolution_status",
+    "resolved_subject_ids",
+    "evidence_ids",
+    "authority_release_id"
+  ],
+  "properties": {
+    "pair_fact_id": {
+      "type": "string",
+      "pattern": "^P3PF-[0-9a-f]{16}$"
+    },
+    "endpoint_side": {
+      "enum": [
+        "LEFT",
+        "RIGHT"
+      ]
+    },
+    "original_lineage_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resolution_status": {
+      "enum": [
+        "ORIGINAL_LINEAGE",
+        "SEGMENT_BOUND",
+        "BLOCKED_HETEROGENEOUS",
+        "FAIL_CLOSED_UNRESOLVED"
+      ]
+    },
+    "resolved_subject_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "resolution_status": {
+            "enum": [
+              "ORIGINAL_LINEAGE",
+              "SEGMENT_BOUND"
+            ]
+          }
+        },
+        "required": [
+          "resolution_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resolved_subject_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "resolution_status": {
+            "enum": [
+              "BLOCKED_HETEROGENEOUS",
+              "FAIL_CLOSED_UNRESOLVED"
+            ]
+          }
+        },
+        "required": [
+          "resolution_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "resolved_subject_ids": {
+            "maxItems": 0
+          },
+          "evidence_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

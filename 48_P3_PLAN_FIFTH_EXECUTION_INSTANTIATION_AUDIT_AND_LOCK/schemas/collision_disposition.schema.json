@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v6/collision_disposition.schema.json",
+  "title": "collision_disposition",
+  "type": "object",
+  "required": [
+    "collision_id",
+    "disposition",
+    "rationale"
+  ],
+  "properties": {
+    "collision_id": {
+      "type": "string",
+      "pattern": "^P3COL-[0-9a-f]{16}$"
+    },
+    "disposition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

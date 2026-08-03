@@ -1,0 +1,41 @@
+gate_id,gate_name,requirement,severity
+P3-G001,Input freeze,All v20 P2 canonical inputs have recorded hashes and are unchanged.,FATAL
+P3-G002,P2 accounting,All 641 proposition relations appear exactly once in normalized accounting.,FATAL
+P3-G003,No coordinate connectivity,No coordinate relation creates candidate connectivity.,FATAL
+P3-G004,No redirect connectivity,No redirect relation creates candidate connectivity.,FATAL
+P3-G005,No negative connectivity,No negative relation creates candidate connectivity.,FATAL
+P3-G006,No unresolved connectivity,No unresolved relation creates candidate connectivity.,FATAL
+P3-G007,Direct authority only,Every pair fact cites a direct P2 ruling ID.,FATAL
+P3-G008,Implementation traceability,Every lineage/segment member traces to implementation evidence.,FATAL
+P3-G009,Signature provenance,Every known signature field has evidence type and evidence ID.,FATAL
+P3-G010,Blank-state discipline,"Blank, unspecified, unrecovered, heterogeneous, and conflicting states are not conflated.",FATAL
+P3-G011,Lineage immutability,P3 segmentation does not alter P2 source-local lineage authority.,FATAL
+P3-G012,Composition discipline,No path creates new endpoint pair authority.,FATAL
+P3-G013,Complete internal pair matrix,Every possible internal candidate pair has one explicit state.,FATAL
+P3-G014,Closure obligations,"Every unruled, negative, unresolved, heterogeneous, or conflicting internal pair creates a closure obligation.",FATAL
+P3-G015,Hard blockers,Any internal BLOCK_SAME_PROPOSITION prevents clean/canonical status.,FATAL
+P3-G016,Variant blockers,BLOCK_SAME_VARIANT forces distinct variants or a split.,FATAL
+P3-G017,Portability separation,Family acceptance never grants value portability.,FATAL
+P3-G018,Derived/direct separation,Derived indices cannot absorb constituent direct questions.,FATAL
+P3-G019,Target preservation,Distinct material targets cannot be merged absent direct governing doctrine.,FATAL
+P3-G020,Operator preservation,Distinct operators cannot be merged as one proposition.,FATAL
+P3-G021,Modality preservation,"Behavior, willingness, intention, evaluation, and belief remain distinct by default.",FATAL
+P3-G022,Time/scope preservation,"Meaningful timeframe, population, and geographic differences remain explicit.",FATAL
+P3-G023,Response variant clarity,Response topology differences are explicit and carry no inferred value mapping.,FATAL
+P3-G024,Explicit exclusion surface,Every accepted candidate has named and rule-based exclusions.,FATAL
+P3-G025,Stable identity,Object IDs do not depend on row order or current membership hashes.,FATAL
+P3-G026,Append-only decisions,Corrections append decisions and preserve historical authority.,FATAL
+P3-G027,Genealogy validity,"Splits, merges, supersessions, and deprecations form valid acyclic chains.",FATAL
+P3-G028,Doctrine delta,"General rule changes have triggers, affected scope, rebuild scope, and tests.",FATAL
+P3-G029,Dependency completeness,Every canonical/derived artifact declares authority dependencies.,FATAL
+P3-G030,Deterministic rebuild,Canonical and derived artifacts reproduce hash-identically under fixed inputs.,FATAL
+P3-G031,Row-order invariance,"Input row permutation does not change object IDs, components, or decisions.",FATAL
+P3-G032,Failure observability,Every blocked or incomplete operation emits a machine-readable failure ledger row.,FATAL
+P3-G033,Pilot representativeness,Pilot spans the governed risk categories or documents justified shortfalls.,FATAL
+P3-G034,Evidence reconstruction,Every pilot decision can be reconstructed from delivered evidence alone.,FATAL
+P3-G035,No automatic authority,"No score, model, or graph output directly writes canonical family authority.",FATAL
+P3-G036,Canonical/derived separation,Derived diagnostics are reproducible and are not the sole home of decisions.,FATAL
+P3-G037,No DBMS overbuild,Pilot requires no external service or new DBMS.,FATAL
+P3-G038,PostgreSQL compatibility,Canonical schemas have PK/FK/uniqueness/check/release semantics.,FATAL
+P3-G039,Licensing provenance,Member source and licensing provenance remain reconstructible.,FATAL
+P3-G040,P3 mandate,"No measurement, causal, strata-direction, respondent, or runtime authority is inferred beyond P3.",FATAL

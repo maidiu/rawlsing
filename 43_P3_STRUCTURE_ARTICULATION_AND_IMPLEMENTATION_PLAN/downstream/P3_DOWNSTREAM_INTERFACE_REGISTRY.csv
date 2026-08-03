@@ -1,0 +1,8 @@
+interface,inputs,outputs,invariant
+P4_RESPONSE_COMPATIBILITY,"family_id, variant_id, response_contract_id","compatibility_class, transformation_authority, prohibited_mapping",Family identity never grants mapping.
+P5_STRATA_ASSIGNMENT,"subject_type, subject_id, context, evidence","stratum, role, horizon, authority_status","Assignments may occur at family, variant, or implementation level."
+P5_COMPONENT_BRIDGE,certified packet/component identities,component-level strata/horizon enrichment,Install only in designated live repository.
+P6_SHADOW_INSTALL,"authority_release, migrations, current runtime snapshot","comparison report, promotion/rollback decision",No direct replacement.
+P7_PERSONA_PRESSURE,"family release, measurement release, strata release",versioned simulation inputs and outputs,Every output names exact authority releases.
+NEW_WAVE_ATTACHMENT,new implementation and source-local lineage proposal,"attach, new variant, segment, split, or block",Incremental dirty-set rebuild only.
+P2_CORRECTION_IMPACT,corrected P2 ruling ID,"affected candidates, families, releases, runtime artifacts",Append-only release; historical reproducibility preserved.

@@ -1,0 +1,41 @@
+{
+  "release": "Rawlsing_J_Family_Authority_Strategy_Handoff_v21_20260731",
+  "status": "READY_FOR_FINAL_ARCHIVE_TEST",
+  "build_tree_files_before_self_report": 921,
+  "expected_final_tree_files": 922,
+  "p3_plan_verifier": {
+    "status": "PASS",
+    "checks_passed": 41,
+    "checks_total": 41
+  },
+  "inherited_v20_verifier": {
+    "status": "PASS",
+    "checks_passed": 34,
+    "checks_total": 34
+  },
+  "provisional_archive": {
+    "filename": "Rawlsing_J_Family_Authority_Strategy_Handoff_v21_20260731_PROVISIONAL.zip",
+    "bytes": 217226778,
+    "sha256": "bd7620dbd84395e9adf3f5ccad659b1fa5184e9ff35d5e281248b5b8ee529432",
+    "zip_integrity": "PASS",
+    "fresh_extraction_verifier": "41/41 PASS",
+    "tree_equivalence": "921/921 byte-identical"
+  },
+  "document_qa": {
+    "central_plan_pages": 26,
+    "master_handoff_pages": 3,
+    "visual_inspection": "PASS_ALL_29_PAGES",
+    "blank_or_orphan_pages": 0,
+    "clipping_or_overlap": 0,
+    "accessibility_findings": 0
+  },
+  "manifest_exclusions": [
+    "PACKAGE_INDEX.csv",
+    "SHA256SUMS.csv",
+    "43_P3_STRUCTURE_ARTICULATION_AND_IMPLEMENTATION_PLAN/validation/V21_CUMULATIVE_VERIFIER_RETURN.json",
+    "43_P3_STRUCTURE_ARTICULATION_AND_IMPLEMENTATION_PLAN/FINAL_RELEASE_GATE_RETURN.json"
+  ],
+  "self_reference_note": "The final release return and live verifier return are excluded from hash manifests to prevent recursive self-hashing. Final outer-archive integrity, final fresh-extraction verification, and the outer SHA-256 are reported externally after this file is frozen.",
+  "authority_boundary": "P3 plan authored; P3 execution and canonical J-family authority remain unstarted.",
+  "next_pass": "P3A_CONTRACT_AND_PILOT_V1_IMPLEMENTATION"
+}

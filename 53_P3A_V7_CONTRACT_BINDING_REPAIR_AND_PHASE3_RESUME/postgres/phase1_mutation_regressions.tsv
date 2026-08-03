@@ -1,0 +1,26 @@
+?column?	case
+baseline_q20	PASS
+(1 row)
+DROP TRIGGER
+?column?	case
+drop_one_vocab_q20	FAIL
+(1 row)
+CALL
+?column?	case
+restored_q20	PASS
+(1 row)
+?column?	case
+baseline_q21	PASS
+(1 row)
+SET
+?column?	case
+baseline_q21_retry	PASS
+(1 row)
+DROP TRIGGER
+?column?	case
+drop_projection_type_q21	FAIL
+(1 row)
+CALL
+?column?	case
+restored_q21_retry	PASS
+(1 row)

@@ -1,0 +1,89 @@
+# Rawlsing v5 Structural Antagonism Registry Seed v3
+
+source_families:
+  GSS:
+    role: "U.S. hegemonic-core domestic contradiction layer."
+    waves: [1972, 1973, 1984, 1993, 2002, 2010, 2016, 2024]
+    forbidden_overread: "Do not treat GSS as universal modern baseline."
+  LiTS:
+    role: "Post-socialist transition / market-restoration / informal-payment / austerity / polycrisis wound layer."
+    waves: [2006, II, III, IV]
+    forbidden_overread: "Do not treat LiTS as generic Eastern European values or nostalgia."
+
+top_level_driver_policy:
+  rule: "No new top-level driver unless driver + facet + relation axis + target + strata cannot express the concept."
+  stable_drivers:
+    - authorityStyle
+    - trustEcology
+    - materialSecurity
+    - imperialAlignment
+    - genderFamilyOrder
+    - religiousMoralOrder
+    - outgroupBoundary
+    - civicAgency
+    - mediaEpistemicField
+    - historicalMemory
+    - corruptionStateCapacity
+    - environmentalRelation
+
+must_create_files:
+  - data/final_codebooks/structural_registries/structural_domain_registry.yaml
+  - data/final_codebooks/structural_registries/driver_facet_registry.yaml
+  - data/final_codebooks/structural_registries/structural_question_blocks.yaml
+  - data/final_codebooks/structural_registries/relation_axes.yaml
+  - data/final_codebooks/structural_registries/entity_actor_registry.yaml
+  - data/final_codebooks/structural_registries/strata_interaction_registry.yaml
+  - data/final_codebooks/structural_registries/structural_channel_rules.yaml
+  - data/final_codebooks/structural_registries/contradiction_tensor_rules.yaml
+
+P0_GSS_blocks:
+  GSS_RACE_RACIAL_ORDER_MATRIX:
+    driver_id: outgroupBoundary
+    driver_facet_id: racial_order_matrix
+    structural_domain_id: race_class_state_boundary_vs_civic_universality
+  GSS_ABORTION_BODILY_AUTONOMY_MATRIX:
+    driver_id: genderFamilyOrder
+    driver_facet_id: abortion_condition_intensity_bodily_autonomy
+    structural_domain_id: gender_family_hierarchy_vs_personal_autonomy
+  GSS_RELIGION_CHRISTIAN_MORAL_AUTHORITY_MATRIX:
+    driver_id: religiousMoralOrder
+    driver_facet_id: christian_moral_authority_role_separation
+    structural_domain_id: religious_moral_order_vs_secular_pluralism
+  GSS_CIVIL_LIBERTIES_TARGET_TOLERANCE_MATRIX:
+    driver_id: civicAgency
+    driver_facet_id: civil_liberties_target_tolerance
+    structural_domain_id: democratic_voice_vs_authoritarian_stability
+  GSS_GUNS_CRIME_PUNISHMENT_SECURITY_MATRIX:
+    driver_id: authorityStyle
+    driver_facet_id: gun_security_punitive_order
+    structural_domain_id: state_legitimacy_vs_coercive_exposure
+  GSS_CLASS_WELFARE_STATE_MARKET_MATRIX:
+    driver_id: materialSecurity
+    driver_facet_id: welfare_state_market_ideology
+    structural_domain_id: class_material_security_vs_market_dependence
+  GSS_INSTITUTIONAL_CONFIDENCE_PARTISAN_FIELD_MATRIX:
+    driver_id: trustEcology
+    driver_facet_id: institutional_trust_partisan_polarization
+    structural_domain_id: trust_ecology
+
+P0_LiTS_blocks:
+  LITS_TRANSITION_MEMORY_1989_MATRIX:
+    driver_id: historicalMemory
+    driver_facet_id: post_socialist_transition_memory_1989
+    structural_domain_id: transition_memory_market_restoration
+  LITS_MARKET_PLANNED_PRIVATIZATION_MATRIX:
+    driver_id: materialSecurity
+    driver_facet_id: market_planned_economy_preference
+    structural_domain_id: transition_memory_market_restoration
+  LITS_INFORMAL_PAYMENT_PUBLIC_SERVICE_MATRIX:
+    driver_id: corruptionStateCapacity
+    driver_facet_id: informal_payment_public_service_access
+    structural_domain_id: corruption_clientelism_vs_public_goods_universality
+  LITS_AUSTERITY_HOUSEHOLD_SHOCK_MATRIX:
+    driver_id: materialSecurity
+    driver_facet_id: austerity_household_shock
+    structural_domain_id: class_material_security_vs_market_dependence
+  LITS_PUBLIC_GOODS_TAX_SACRIFICE_MATRIX:
+    driver_id: materialSecurity
+    driver_facet_id: public_goods_tax_sacrifice
+    structural_domain_id: environment_development_tradeoff

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/family_genealogy.schema.json",
+  "title": "Rawlsing P3 Family Genealogy",
+  "type": "object",
+  "required": [
+    "genealogy_id",
+    "relation_type",
+    "predecessor_family_ids",
+    "successor_family_ids",
+    "reason",
+    "adjudication_id",
+    "authority_release_id"
+  ],
+  "properties": {
+    "genealogy_id": {
+      "type": "string",
+      "pattern": "^P3GEN-[0-9]{6}$"
+    },
+    "relation_type": {
+      "enum": [
+        "SPLIT",
+        "MERGE",
+        "SUPERSEDE",
+        "DEPRECATE"
+      ]
+    },
+    "predecessor_family_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "successor_family_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adjudication_id": {
+      "type": "string"
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

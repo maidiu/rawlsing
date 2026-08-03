@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "classification": "identity-contract clarification/migration",
+  "release_neutral_family_identity": {
+    "projection_semantic_fingerprint": "pair_fact_id + resolved endpoints + projection_basis; excludes authority_release_id",
+    "component_semantic_fingerprint": "component_type + sorted subjects + sorted projection semantic fingerprints + build_rule_contract_version",
+    "family_semantic_origin_key": "origin lane + sorted subjects + component semantic fingerprints + attachment projection semantic fingerprints"
+  },
+  "release_scoped_revision_evidence": "candidate revisions retain concrete component/projection IDs and R38 evidence hash",
+  "migration_rule": "R35 P3CAND-000142..000282 preserved; R38 appends R0002; v37 P3CAND-000283..000423 frozen as blocked churn identities"
+}

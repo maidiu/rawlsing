@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v7/candidate_status_event.schema.json",
+  "title": "candidate_status_event",
+  "type": "object",
+  "required": [
+    "candidate_family_id",
+    "candidate_revision_id",
+    "event_ordinal",
+    "to_stage",
+    "guard_evidence_id",
+    "authority_release_id",
+    "occurred_at"
+  ],
+  "properties": {
+    "candidate_family_id": {
+      "type": "string",
+      "pattern": "^P3CAND-[0-9]{6}$"
+    },
+    "event_ordinal": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "from_stage": {
+      "anyOf": [
+        {
+          "enum": [
+            "ADJUDICATION_REQUIRED",
+            "DECIDED",
+            "DEPRECATED",
+            "DISCOVERED",
+            "EVIDENCE_COMPLETE",
+            "GENERATED_CANDIDATE",
+            "SUPERSEDED"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "to_stage": {
+      "enum": [
+        "ADJUDICATION_REQUIRED",
+        "DECIDED",
+        "DEPRECATED",
+        "DISCOVERED",
+        "EVIDENCE_COMPLETE",
+        "GENERATED_CANDIDATE",
+        "SUPERSEDED"
+      ]
+    },
+    "guard_evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-[0-9]{4}-[0-9]{2}-[0-9]{2}-R[0-9]+$"
+    },
+    "candidate_revision_id": {
+      "type": "string",
+      "pattern": "^P3CANDREV-[0-9]{6}-R[0-9]{4}$"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,30 @@
+{
+  "claimed_release": {
+    "release_id": "P3-AUTHORITY-2026-08-01-R35",
+    "parent_release_id": "P3-AUTHORITY-2026-08-01-R31",
+    "status_source": "root VALIDATION.json and CURRENT_STATE.json"
+  },
+  "delivered_loader_behavior": {
+    "parent_release_id_inserted": null,
+    "builder_version": "p3a-phase3-loader-v30",
+    "migration_artifact": "52_P3A_V7_PHASE3_OBJECT_GRAPH_AND_VERTICAL_SLICE",
+    "release_status_event_insert_present": false,
+    "release_change_ledger_insert_present": false
+  },
+  "live_count_evidence": {
+    "candidate_revisions_total_all_releases": 141,
+    "candidate_revision_range": [
+      "P3CANDREV-000142-R0001",
+      "P3CANDREV-000282-R0001"
+    ],
+    "prior_candidate_revisions_000001_to_000141_present": false,
+    "explanation": "P3A_V35_OBJECT_COUNTS.json is generated from SELECT * FROM p3_candidate_revision without release filtering and reports only 141 revisions, IDs 142-282."
+  },
+  "verdict": "NUMERIC_OFFSET_IS_NOT_APPEND_ONLY_MIGRATION",
+  "required_correction": [
+    "Preserve/import prior release, candidate-family, candidate-revision, component, and packet identities as historical rows.",
+    "Create an explicit successor release with the correct parent, lifecycle events, and release-change ledger.",
+    "For unchanged candidate origins, append successor revisions rather than allocating another family.",
+    "Do not claim migration from a CSV-only mapping while the prior identities are absent from PostgreSQL."
+  ]
+}

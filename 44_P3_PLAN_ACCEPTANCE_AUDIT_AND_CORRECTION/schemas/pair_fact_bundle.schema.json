@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/pair_fact_bundle.schema.json",
+  "title": "Rawlsing P3 Pair Fact Bundle",
+  "type": "object",
+  "required": [
+    "pair_fact_id",
+    "left_id",
+    "right_id",
+    "orientation",
+    "relation_type",
+    "source_authorities",
+    "p3_portability_ceiling",
+    "connectivity_allowed",
+    "creates_endpoint_authority",
+    "authority_release_id"
+  ],
+  "properties": {
+    "pair_fact_id": {
+      "type": "string",
+      "pattern": "^P3PF-[0-9]{8}$"
+    },
+    "left_id": {
+      "type": "string"
+    },
+    "right_id": {
+      "type": "string"
+    },
+    "orientation": {
+      "enum": [
+        "SYMMETRIC",
+        "DIRECTIONAL"
+      ]
+    },
+    "relation_type": {
+      "enum": [
+        "PROPOSITION_RESPONSE_IDENTITY",
+        "PROPOSITION_IDENTITY_ONLY",
+        "NESTED_TARGET_RELATION",
+        "CONSTRUCT_COORDINATE",
+        "STRUCTURE_MEMBER_ANALOGY",
+        "EXPLICIT_NEGATIVE",
+        "REDIRECT_OTHER_DOMAIN",
+        "UNRESOLVED"
+      ]
+    },
+    "source_authorities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "registry",
+          "authority_id",
+          "governing"
+        ],
+        "properties": {
+          "registry": {
+            "enum": [
+              "SEMANTIC_PRIORITY_CLOSURE",
+              "EXACT_FOUNDATION_CLOSURE"
+            ]
+          },
+          "authority_id": {
+            "type": "string"
+          },
+          "governing": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "target_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operator_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeframe_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "response_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_portability_ceiling": {
+      "type": "string"
+    },
+    "p3_portability_ceiling": {
+      "enum": [
+        "QUESTION_PROPOSITION_AND_RESPONSE_CONTRACT",
+        "QUESTION_PROPOSITION_AND_RESPONSE_TOPOLOGY",
+        "QUESTION_PROPOSITION_ONLY",
+        "DOMAIN_COORDINATE_ONLY",
+        "CONSTRUCT_TARGET_COORDINATE_ONLY",
+        "HIERARCHICAL_ONLY",
+        "NO_POSITIVE_AUTHORITY"
+      ]
+    },
+    "connectivity_allowed": {
+      "type": "boolean"
+    },
+    "creates_endpoint_authority": {
+      "const": false
+    },
+    "evidence_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 2
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

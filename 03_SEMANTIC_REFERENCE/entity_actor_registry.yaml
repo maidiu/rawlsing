@@ -1,0 +1,93 @@
+version: v1_seed
+scope: GSS_2010_first_pass_entity_registry
+notes:
+  - "This registry is the target/entity spine for the GSS 2010 structural pass."
+  - "It is seeded from the old architecture directives and the live GSS relation proxy."
+categories:
+  institutions:
+    - president
+    - prime_minister
+    - parliament
+    - congress
+    - courts
+    - police
+    - military
+    - civil_service
+    - tax_authority
+    - political_parties
+    - electoral_commission
+    - religious_leaders
+    - traditional_leaders
+    - unions
+    - major_companies
+    - banks
+    - media
+    - science
+    - medicine
+    - schools
+    - public_health_system
+  external_actors:
+    - USA
+    - China
+    - Russia
+    - EU
+    - UN
+    - NATO
+    - IMF
+    - World_Bank
+    - Israel
+    - Palestine
+    - Iran
+    - Saudi_Arabia
+    - UAE
+    - Qatar
+    - Turkey
+    - Japan
+    - India
+    - foreign_investors
+  social_targets:
+    - Black_people
+    - white_people
+    - immigrants
+    - refugees
+    - Muslims
+    - Jews
+    - Roma
+    - queer_people
+    - people_with_HIV_AIDS
+    - women
+    - men
+    - welfare_recipients
+    - racialized_minorities
+    - ethnic_group
+    - tribe
+    - sect
+    - caste
+    - class
+    - labor_union_members
+  policy_targets:
+    - welfare
+    - taxes
+    - abortion
+    - guns
+    - death_penalty
+    - public_spending
+    - privatization
+    - planned_economy
+    - market_economy
+    - immigration
+    - foreign_aid
+    - military_spending
+    - free_speech
+    - sex_education
+    - public_prayer
+    - civil_liberties
+    - affirmative_action
+    - healthcare
+    - climate_policy
+    - science_policy
+  generic_aliases:
+    target_not_applicable:
+      description: "Use only when the question does not naturally take a target."
+    infer_target:
+      description: "Temporary fallback only; should be resolved during the structural pass."

@@ -1,0 +1,28 @@
+OPENLDAP_2.5 {
+  global:
+    ldap_memfree;
+    ldap_count_entries;
+    ldap_get_option;
+    ldap_initialize;
+    ldap_simple_bind_s;
+    ldap_first_entry;
+    ldap_free_urldesc;
+    ldap_dn2domain;
+    ldap_search_s;
+    ldap_err2string;
+    ldap_unbind;
+    ldap_url_parse;
+    ldap_unbind_s;
+    ldap_set_option;
+    ldap_start_tls_s;
+    ldap_msgfree;
+    ldap_get_dn;
+    ldap_domain2hostlist;
+    ldap_get_values_len;
+    ldap_init;
+    ldap_result;
+    ldap_search_st;
+    ldap_simple_bind;
+    ldap_value_free_len;
+  local: *;
+};

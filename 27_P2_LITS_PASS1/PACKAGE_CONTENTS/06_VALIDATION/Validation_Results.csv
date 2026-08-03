@@ -1,0 +1,21 @@
+test,status,detail
+exact_node_count,PASS,4434 expected 4434
+unique_exact_identity,PASS,question implementation IDs unique
+edge_endpoints_exist,PASS,133 accepted edges
+edge_pairs_unique,PASS,no duplicate accepted pair
+accepted_revision_edges_reconcile,PASS,75 accepted revisions all materialized as edges
+authority_partitions_disjoint,PASS,accepted/review/negative pair sets disjoint
+cross_wave_only,PASS,all accepted continuity edges cross waves
+semantic_role_mismatch_explicit,PASS,source-specific check below
+structure_membership_referential_integrity,PASS,882 structures / 7878 memberships
+structures_inventory_only,PASS,no structure promoted
+response_gap_reconciliation,PASS,1371 gaps
+source_references_present,PASS,source reference surface present
+no_family_authoring,PASS,none authored
+no_live_execution,PASS,catalog-only pass
+false_same_code_revisions_blocked,PASS,rent/repayment and economic/political blocked
+roster_slot_continuity_recovered,PASS,12 gender roster slots recovered
+roster_code_reuse_guarded,PASS,gender -> household-presence reuse blocked
+semantic_role_mismatch_explicit,PASS,6 reconciliations / 6 mismatch edges
+case_sensitive_collision_controls_present,PASS,identifier collision audit retained
+repeated_group_controls_present,PASS,repeated/multiselect audit retained

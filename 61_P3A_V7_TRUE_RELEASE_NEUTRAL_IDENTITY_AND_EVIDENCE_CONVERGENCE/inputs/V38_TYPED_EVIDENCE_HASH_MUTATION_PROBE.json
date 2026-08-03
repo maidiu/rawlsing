@@ -1,0 +1,21 @@
+{
+  "source_packet": "P3PKT-659716dbe0ea7465_P3CAND-000188.json",
+  "candidate_revision_id": "P3CANDREV-000188-R0002",
+  "mutation": {
+    "field": "typed_coordinate_constraints[0].evidence_ids",
+    "before": [
+      "P3PF-c4d115dadc679566"
+    ],
+    "after": [
+      "FAKE_EVIDENCE_ID_NOT_IN_GOVERNING_PAIR_AUTHORITY"
+    ],
+    "packet_id_changed": false,
+    "candidate_evidence_hash_changed": false,
+    "decision_evidence_hash_changed": false
+  },
+  "shipped_validator_returncode": 0,
+  "shipped_validator_stdout": "{\n  \"status\": \"PASS\",\n  \"members\": 3,\n  \"internal_pairs\": 3,\n  \"decision_status\": null,\n  \"evidence_bundle_hash\": \"1542bb830e04c27b8a9a99e9209c8c2d67fc1b4a177209d1565e4dfca696eef1\"\n}\n",
+  "validator_passed": true,
+  "cause": "Both revision_evidence_hash() and packet evidence_surface() omit typed constraint semantic fields and governing evidence IDs.",
+  "verdict": "TYPED_CONSTRAINT_EVIDENCE_CAN_CHANGE_WITHOUT_EVIDENCE_HASH_CHANGE"
+}

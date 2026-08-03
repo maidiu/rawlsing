@@ -1,0 +1,63 @@
+{
+  "reviewed_delta": "Rawlsing_P3A_V37_Section59_Review_Delta.zip",
+  "delta_sha256": "297a745ae5eb8a977cf82edb02d2fe2bc49f6a488a2e2ca1a914fd663d0a3051",
+  "delta_bytes": 2968669,
+  "accepted_progress": {
+    "historical_shell_current_revision_boundary": "MECHANICALLY_WORKING",
+    "r35_review_csv_values_match_v35_values": "YES_BUT_SOURCE_IS_NON_GOVERNING_REVIEW_ARTIFACT",
+    "current_candidate_origin_trigger": "PASS",
+    "typed_redirect_stripping_probe": "FAILS_AS_REQUIRED",
+    "all_141_hashes_run_through_packet_evidence_builder": true,
+    "pilot_packets_and_drafts": 7,
+    "fixture_database_teardown": true,
+    "postgresql_teardown": true
+  },
+  "blocking_findings": [
+    {
+      "id": "V37-EXT-001",
+      "classification": "GOVERNING_IDENTITY_KEY_CONTRADICTION",
+      "detail": "Release-scoped pair projection IDs feed component IDs, which feed family origin keys. A release-only change therefore forces every family origin to change."
+    },
+    {
+      "id": "V37-EXT-002",
+      "classification": "REVIEW_CSV_USED_AS_PRODUCTION_AUTHORITY",
+      "detail": "Historical import reads the supplied V36 review CSV directly despite the brief restricting it to regression use."
+    },
+    {
+      "id": "V37-EXT-003",
+      "classification": "HISTORICAL_SOURCE_PROVENANCE_FALSE",
+      "detail": "R35 rows cite the review audit as the exact prior artifact; R31 rows are blanket UNKNOWN without a cumulative source-recoverability audit."
+    },
+    {
+      "id": "V37-EXT-004",
+      "classification": "IMMUTABLE_CANDIDATE_HASH_MUTATED_AFTER_INSERT",
+      "detail": "The loader inserts a partial hash; --finalize-hashes later updates every candidate revision."
+    },
+    {
+      "id": "V37-EXT-005",
+      "classification": "V37_QUERY_MATRIX_REUSES_V35_EXECUTION",
+      "detail": "p3a_v37_reports.py parses section-57 v35_populated_q01_q54_raw.tsv rather than executing q01-q54 against R37."
+    },
+    {
+      "id": "V37-EXT-006",
+      "classification": "RELEASE_CHANGE_LEDGER_NOT_REPRODUCIBLE",
+      "detail": "53,611 ledger rows are delivered, but no delivered production code inserts or derives them."
+    },
+    {
+      "id": "V37-EXT-007",
+      "classification": "PILOT_EXACT_ONLY_AND_PRECEDENCE_STRATA_REMAIN_PROXIES",
+      "detail": "Unresolved exact authority is labelled exact-only; other-domain redirect is labelled precedence-overlap conflict."
+    },
+    {
+      "id": "V37-EXT-008",
+      "classification": "FIXTURE_RUNNER_ACCEPTS_WRONG_FAILURE",
+      "detail": "Negative cases accept any exception; incomplete-promotion mapping still fails at missing variant assignment."
+    },
+    {
+      "id": "V37-EXT-009",
+      "classification": "REPORT_BUILDER_IS_NONPORTABLE_AND_STALE",
+      "detail": "p3a_v37_reports.py hardcodes the local workspace/DSN and writes stale F57/D57 findings while claiming v37."
+    }
+  ],
+  "status": "BLOCKED_IDENTITY_KEY_AND_REPRODUCIBILITY_CONTRACT_DEFECT"
+}

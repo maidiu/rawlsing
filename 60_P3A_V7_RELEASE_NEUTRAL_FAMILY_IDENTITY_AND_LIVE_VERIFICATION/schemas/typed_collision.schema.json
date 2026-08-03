@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "typed_collision.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "collision_id": {
+      "type": "string",
+      "pattern": "^P3COL-[0-9a-f]{16}$"
+    },
+    "collision_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "orientation": {
+      "type": "string",
+      "enum": [
+        "SYMMETRIC",
+        "DIRECTIONAL"
+      ]
+    },
+    "left_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "right_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "hard_blocker": {
+      "type": "boolean"
+    },
+    "source_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "historical_scope": {},
+    "downstream_effects": {
+      "type": "array"
+    },
+    "authority_release_id": {
+      "type": "string",
+      "pattern": "^P3-AUTHORITY-2026-08-01-R[0-9]+$"
+    }
+  },
+  "required": [
+    "collision_id",
+    "collision_type",
+    "scope_type",
+    "orientation",
+    "left_id",
+    "right_id",
+    "hard_blocker",
+    "source_scope",
+    "historical_scope",
+    "downstream_effects",
+    "authority_release_id"
+  ]
+}

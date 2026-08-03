@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/doctrine_delta.schema.json",
+  "title": "Rawlsing P3 Doctrine Delta",
+  "type": "object",
+  "required": [
+    "doctrine_delta_id",
+    "trigger_candidate_id",
+    "old_rule",
+    "new_rule",
+    "affected_object_ids",
+    "required_rebuild_scope",
+    "tests_added",
+    "authority_release_id"
+  ],
+  "properties": {
+    "doctrine_delta_id": {
+      "type": "string",
+      "pattern": "^P3DOC-[0-9]{5}$"
+    },
+    "trigger_candidate_id": {
+      "type": "string"
+    },
+    "old_rule": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "new_rule": {
+      "type": "string",
+      "minLength": 1
+    },
+    "affected_object_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "required_rebuild_scope": {
+      "enum": [
+        "CANDIDATE_LOCAL",
+        "COMPONENT_LOCAL",
+        "AFFECTED_DEPENDENCIES",
+        "GLOBAL_CANDIDATE_INVENTORY",
+        "FULL_P3_AUTHORITY"
+      ]
+    },
+    "tests_added": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

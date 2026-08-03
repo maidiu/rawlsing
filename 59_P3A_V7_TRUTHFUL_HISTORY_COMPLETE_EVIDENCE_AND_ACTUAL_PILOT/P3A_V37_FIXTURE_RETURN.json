@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "release_id": "P3-AUTHORITY-2026-08-01-R37-FIXTURE",
+  "results": [
+    {
+      "case": "valid_accepted_fixture",
+      "status": "PASS",
+      "expect_pass": true
+    },
+    {
+      "case": "valid_split_fixture",
+      "status": "PASS",
+      "expect_pass": true
+    },
+    {
+      "case": "valid_hierarchy_fixture",
+      "status": "PASS",
+      "expect_pass": true
+    },
+    {
+      "case": "mutation_incomplete_split_union",
+      "status": "EXPECTED_FAIL",
+      "expect_pass": false,
+      "error": "split successor partition invalid\nCONTEXT:  PL/pgSQL function p3_assert_split_result_partition(text) line 11 at RAISE\nSQL statement \"SELECT p3_assert_split_result_partition(aid)\"\nPL/pgSQL function p3_validate_adjudication_closure_deferred() line 13 at PERFORM"
+    },
+    {
+      "case": "mutation_omitted_hierarchy_endpoint",
+      "status": "EXPECTED_FAIL",
+      "expect_pass": false,
+      "error": "adjudication member partition mismatch: missing 1, extra 0\nCONTEXT:  PL/pgSQL function p3_assert_adjudication_member_partition(text) line 8 at RAISE\nSQL statement \"SELECT p3_assert_adjudication_member_partition(aid)\"\nPL/pgSQL function p3_validate_adjudication_closure_deferred() line 12 at PERFORM"
+    },
+    {
+      "case": "mutation_duplicate_dispositions",
+      "status": "EXPECTED_FAIL",
+      "expect_pass": false,
+      "error": "duplicate key value violates unique constraint \"p3_adjudication_member_pkey\"\nDETAIL:  Key (adjudication_id, member_object_id)=(P3ADJ-910014, p2lineage_05ad8b1ffbe7f0b676a658a4) already exists."
+    },
+    {
+      "case": "mutation_release_mismatch",
+      "status": "EXPECTED_FAIL",
+      "expect_pass": false,
+      "error": "Candidate event revision/family/release mismatch\nCONTEXT:  PL/pgSQL function p3_validate_candidate_status_event() line 5 at RAISE"
+    },
+    {
+      "case": "mutation_incomplete_promotion_mapping",
+      "status": "EXPECTED_FAIL",
+      "expect_pass": false,
+      "error": "Variant acceptance requires variant assignment\nCONTEXT:  PL/pgSQL function p3_validate_adjudication_completeness() line 16 at RAISE"
+    },
+    {
+      "case": "mutation_stale_evidence_hash",
+      "status": "EXPECTED_FAIL",
+      "expect_pass": false,
+      "returncode": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"error\": \"evidence bundle hash does not recompute from full delivered evidence\"\n}\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/matthewsmith/Desktop/Rawlsing/rawlsing_p3a_v31_execution/work/Rawlsing_J_Family_Authority_Strategy_Handoff_v37_WORKING/59_P3A_V7_TRUTHFUL_HISTORY_COMPLETE_EVIDENCE_AND_ACTUAL_PILOT/validation/validate_p3_candidate_packet_v37.py\", line 281, in <module>\n    try: print(json.dumps(validate_packet(sys.argv[1],sys.argv[2] if len(sys.argv)>2 else None),indent=2))\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/Desktop/Rawlsing/rawlsing_p3a_v31_execution/work/Rawlsing_J_Family_Authority_Strategy_Handoff_v37_WORKING/59_P3A_V7_TRUTHFUL_HISTORY_COMPLETE_EVIDENCE_AND_ACTUAL_PILOT/validation/validate_p3_candidate_packet_v37.py\", line 74, in validate_packet\n    if computed_hash!=p['evidence_bundle_hash']: fail('evidence bundle hash does not recompute from full delivered evidence')\n                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/Desktop/Rawlsing/rawlsing_p3a_v31_execution/work/Rawlsing_J_Family_Authority_Strategy_Handoff_v37_WORKING/59_P3A_V7_TRUTHFUL_HISTORY_COMPLETE_EVIDENCE_AND_ACTUAL_PILOT/validation/validate_p3_candidate_packet_v37.py\", line 14, in fail\n    def fail(msg): raise ValueError(msg)\n                   ^^^^^^^^^^^^^^^^^^^^^\nValueError: evidence bundle hash does not recompute from full delivered evidence\n"
+    }
+  ]
+}

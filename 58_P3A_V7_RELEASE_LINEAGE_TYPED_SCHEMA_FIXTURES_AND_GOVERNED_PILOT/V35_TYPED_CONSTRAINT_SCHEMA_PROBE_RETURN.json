@@ -1,0 +1,33 @@
+{
+  "source_candidate": "P3CAND-000187",
+  "source_packet": "P3PKT-1c80411ddb732eb8_P3CAND-000187.json",
+  "mutation": {
+    "typed_redirect_boundaries_before": [
+      "candidate_revision_id",
+      "left_id",
+      "right_id",
+      "projection_id",
+      "redirect_scope",
+      "evidence_ids",
+      "authority_release_id"
+    ],
+    "typed_redirect_boundaries_after": [
+      "left_id",
+      "right_id"
+    ],
+    "hash_recomputed": true,
+    "packet_id_recomputed": true,
+    "decision_hash_recomputed": true
+  },
+  "shipped_validator_result": {
+    "status": "PASS",
+    "returncode": 0,
+    "evidence_bundle_hash": "9ed5e7a8c03d304a23af2e2a0198e34705044c586bbff4ba94cf4bb093fd515b"
+  },
+  "cause": [
+    "candidate_packet.schema.json defines typed constraint arrays as arbitrary objects.",
+    "validate_p3_candidate_packet_v32.py checks only endpoint-set reconciliation for redirect objects.",
+    "The new SQL typed-constraint tables are absent from the connected schema dictionary and dedicated JSON-schema surface."
+  ],
+  "verdict": "TYPED_CONSTRAINT_SEMANTICS_CAN_BE_DELETED_WITHOUT_VALIDATION_FAILURE"
+}

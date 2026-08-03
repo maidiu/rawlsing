@@ -1,0 +1,63 @@
+artifact,class,function,first_phase,required_for_phase_close
+P3_CONTROLLED_VOCABULARIES_v2.csv,CANONICAL,Controlled categorical values and doctrine,P3A,YES
+P3_RELATION_COMPOSITION_MATRIX_v2.csv,CANONICAL,Path composition and non-inference doctrine,P3A,YES
+P3_LIFECYCLE_STATE_MACHINE_v2.csv,CANONICAL,Lifecycle stages separate from candidate classification,P3A,YES
+P3_EVIDENCE_SUFFICIENCY_MATRIX_v2.csv,CANONICAL,Minimum authority evidence gates,P3A,YES
+upstream/P3_UPSTREAM_AUTHORITY_PRECEDENCE.csv,CANONICAL_INPUT_CONTRACT,Registry precedence,P3A,YES
+upstream/P3_P2_TO_P3_AUTHORITY_MAPPING.csv,CANONICAL_INPUT_CONTRACT,Upstream-to-P3 typed mapping,P3A,YES
+upstream/P3_EFFECTIVE_UPSTREAM_PAIR_AUTHORITY_SURFACE.csv,CANONICAL_INPUT_AUDIT,"19,175 effective direct pair authorities",P3A,YES
+p3_object_id_registry.csv,CANONICAL,Stable IDs and identity strategies,P3A,YES
+p3_upstream_object_references.csv,CANONICAL,"Read-only imported P2 objects, provenance, and licensing refs",P3A,YES
+p3_lineage_segments.csv,CANONICAL,P3-only segmentation of heterogeneous P2 lineages,P3A,YES
+p3_lineage_segment_memberships.csv,CANONICAL,Exact implementation membership of each segment,P3A,YES
+p3_proposition_signatures.csv,CANONICAL,Signature identity/status per lineage or segment,P3A,YES
+p3_signature_fields.csv,CANONICAL,One row per proposition-signature dimension,P3A,YES
+p3_signature_field_evidence.csv,CANONICAL,Field-level evidence provenance,P3A,YES
+p3_response_contract_references.csv,CANONICAL_REFERENCE,Upstream response contract/topology references; no P4 authority,P3A,YES
+p3_structural_context_references.csv,CANONICAL_REFERENCE,Upstream strata/horizon evidence passthrough; no P5 authority,P3A,YES
+p3_pair_fact_bundles.csv,CANONICAL,Normalized effective direct pair authority,P3A,YES
+p3_pair_fact_source_authorities.csv,CANONICAL,All supporting/superseded P2 ruling links,P3A,YES
+p3_pair_fact_evidence.csv,CANONICAL,Two-sided implementation evidence,P3A,YES
+p3_collision_scope_registry.csv,CANONICAL,Typed/scoped prohibitions,P3A,YES
+p3_collision_authority_sources.csv,CANONICAL,P2 authority sources for each collision,P3A,YES
+p3_strict_seed_components.csv,DERIVED,Components from strongest connective edges,P3A,YES
+p3_component_memberships.csv,DERIVED,Exact seed component membership,P3A,YES
+p3_candidate_families.csv,CANONICAL,Stable candidate objects,P3A,YES
+p3_candidate_revisions.csv,CANONICAL,Release-scoped candidate classification/evidence,P3A,YES
+p3_candidate_memberships.csv,CANONICAL,Candidate members by revision,P3A,YES
+p3_candidate_status_events.csv,CANONICAL,Append-only lifecycle transitions,P3A,YES
+p3_internal_pair_matrix.csv,DERIVED_GOVERNED,Complete internal pair state per candidate revision,P3A,YES
+p3_closure_obligations.csv,CANONICAL,Every unruled/conflict/incomplete obligation,P3A,YES
+p3_candidate_variants.csv,CANONICAL,Stable variant objects,P3A/P3B,YES
+p3_candidate_variant_revisions.csv,CANONICAL,Release-scoped variant definitions,P3A/P3B,YES
+p3_variant_memberships.csv,CANONICAL,Exact member assignments,P3A/P3B,YES
+p3_family_exclusions.csv,CANONICAL,Named/rule-based exclusions,P3A/P3B,YES
+p3_hyperedges.csv,CANONICAL,Permitted P3 n-ary relations,P3A/P3B,YES
+p3_hyperedge_memberships.csv,CANONICAL,Hyperedge members and roles,P3A/P3B,YES
+p3_candidate_rankings.csv,DERIVED,Lexicographic review queue,P3A/P3B,YES
+p3_candidate_packets/*.json,CANONICAL_EVIDENCE_BUNDLE,Self-contained review packets,P3A/P3B,YES
+p3_adjudication_decisions.csv,CANONICAL,Immutable human decisions,P3A/P3B,YES
+p3_adjudication_members.csv,CANONICAL,Member dispositions,P3A/P3B,YES
+p3_adjudication_collision_dispositions.csv,CANONICAL,Collision resolutions,P3A/P3B,YES
+p3_adjudication_hierarchy_relations.csv,CANONICAL,Directional hierarchy decisions,P3A/P3B,YES
+p3_canonical_families.csv,CANONICAL,Stable canonical family identities,P3B/P3C,YES
+p3_canonical_family_revisions.csv,CANONICAL,Release-scoped proposition definitions,P3B/P3C,YES
+p3_canonical_family_memberships.csv,CANONICAL,Exact members by family revision,P3B/P3C,YES
+p3_doctrine_deltas.csv,CANONICAL,General doctrine changes,P3A/P3B,YES
+p3_family_genealogy.csv,CANONICAL,Split/merge/supersession/deprecation,P3B/P3C,YES
+p3_dependency_edges.csv,CANONICAL,Object/artifact blast-radius graph,P3A,YES
+p3_authority_releases.csv,CANONICAL,Versioned release identity,P3A/P3C,YES
+p3_release_status_events.csv,CANONICAL,Append-only release lifecycle,P3A/P3C,YES
+p3_release_object_snapshot.csv,CANONICAL,Objects included in each release,P3A/P3C,YES
+p3_release_change_ledger.csv,CANONICAL,Added/revised/superseded/deprecated objects,P3A/P3C,YES
+p3_failure_ledger.csv,CANONICAL,Machine-readable failures/warnings,ALL,YES
+p3_validation_return.json,CANONICAL,Acceptance results,ALL,YES
+P3_CATEGORICAL_FIELD_VOCAB_BINDINGS_v2.csv,CANONICAL_CONTRACT,Binds each finite categorical field to one vocabulary domain,P3A,YES
+P3_JSON_SCHEMA_REGISTRY_v2.csv,CANONICAL_CONTRACT,"Offline schema identities, hashes, and reference graph",P3A,YES
+P3_UPSTREAM_DOWNSTREAM_COMPATIBILITY_MATRIX_v2.csv,CANONICAL_CONTRACT,Explicit upstream and downstream interface boundaries,P3A,YES
+sql/P3_DDL_VALIDATION_QUERIES_v2.sql,INSTALLATION_VALIDATION,Read-only shadow-schema validation queries,P6,YES
+sql/P3_SHADOW_MIGRATION_SKELETON_v2.sql,INSTALLATION_PROTOCOL,Fail-closed migration/promotion/rollback sequence,P6,YES
+validation/verify_handoff_v22.py,VALIDATOR,Deep cross-contract and upstream/downstream compatibility verifier,P3A,YES
+validation/INHERITED_V21_PAYLOAD_HASHES.csv,PROVENANCE_VALIDATION,Hashes inherited v21 payload outside superseded controls,P3A,YES
+validation/P3_DOCUMENT_QA_RETURN_v2.json,VALIDATION_RETURN,Rendered-document and accessibility return,P3A,YES
+P3_PLAN_ACCEPTANCE_AUDIT_AND_CORRECTION_REPORT.md,AUDIT_REPORT,Hostile implementation acceptance findings and corrections,P3A,YES

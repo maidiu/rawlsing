@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rawlsing.local/schemas/p3/v2/collision_scope.schema.json",
+  "title": "Rawlsing P3 Collision Scope",
+  "type": "object",
+  "required": [
+    "collision_id",
+    "collision_type",
+    "scope_type",
+    "left_id",
+    "right_id",
+    "source_authority_ids",
+    "hard_blocker",
+    "authority_release_id"
+  ],
+  "properties": {
+    "collision_id": {
+      "type": "string",
+      "pattern": "^P3COL-[0-9]{8}$"
+    },
+    "collision_type": {
+      "type": "string"
+    },
+    "scope_type": {
+      "type": "string"
+    },
+    "left_id": {
+      "type": "string"
+    },
+    "right_id": {
+      "type": "string"
+    },
+    "source_authority_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "historical_interval": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "source_scope": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hard_blocker": {
+      "type": "boolean"
+    },
+    "downstream_effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "authority_release_id": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

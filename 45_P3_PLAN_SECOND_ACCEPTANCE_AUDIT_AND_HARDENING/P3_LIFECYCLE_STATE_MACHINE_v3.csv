@@ -1,0 +1,8 @@
+from_stage,to_stage,allowed,guard
+DISCOVERED,GENERATED_CANDIDATE,YES,"Builder materializes candidate identity, membership, and diagnostics."
+GENERATED_CANDIDATE,EVIDENCE_COMPLETE,YES,"Required signatures, pair matrix, constraints, and closure rows exist."
+EVIDENCE_COMPLETE,ADJUDICATION_REQUIRED,YES,Candidate packet passes machine closure and evidence gates.
+ADJUDICATION_REQUIRED,DECIDED,YES,Immutable structured adjudication is recorded.
+DECIDED,SUPERSEDED,YES,Later release replaces current family/candidate use.
+DECIDED,DEPRECATED,YES,Historical object remains queryable but barred from new builds.
+SUPERSEDED,DEPRECATED,YES,Superseded object is formally barred from new builds.
