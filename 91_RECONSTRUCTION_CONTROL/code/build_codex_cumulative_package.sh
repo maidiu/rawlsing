@@ -96,7 +96,7 @@ jit=off
 CFG
 fi
 if ! "$BIN/pg_isready" -h 127.0.0.1 -p "$PGPORT" -U oai >/dev/null 2>&1; then
-  run_pg "$BIN/pg_ctl" -D "$PGDATA" -l "$HERE/postgresql.log" start
+  run_pg "$BIN/pg_ctl" -D "$PGDATA" -l "$PGDATA/postgresql.log" start
 fi
 "$BIN/pg_isready" -h 127.0.0.1 -p "$PGPORT" -U oai
 echo "PostgreSQL ready on 127.0.0.1:$PGPORT"
