@@ -39,6 +39,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--run-id", default=None)
     parser.add_argument("--output-root", default=str(ROOT / "data" / "ddm_repository_copy" / "v550"))
     parser.add_argument("--min-cell-n", type=int, default=50)
+    parser.add_argument("--shared-respondent-substrate-mode", default="off", choices=("off", "write"))
+    parser.add_argument("--joint-configuration-registry-path", default=None)
+    parser.add_argument("--joint-configuration-id", action="append", default=[])
     parser.add_argument("--require-db", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--static-only", action="store_true", default=False)
     parser.add_argument(
@@ -56,6 +59,17 @@ def make_run_id() -> str:
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     digest = hashlib.sha1(stamp.encode("utf-8")).hexdigest()[:8]
     return f"v550_{stamp}_{digest}"
+
+
+def _append_shared_substrate_command_args(cmd: str, args: argparse.Namespace) -> str:
+    if args.shared_respondent_substrate_mode != "off":
+        cmd += f" --shared-respondent-substrate-mode {args.shared_respondent_substrate_mode}"
+        cmd += " --v550-prepared-substrate-mode country"
+    if args.joint_configuration_registry_path:
+        cmd += f" --joint-configuration-registry-path {args.joint_configuration_registry_path}"
+    for joint_configuration_id in args.joint_configuration_id:
+        cmd += f" --joint-configuration-id {joint_configuration_id}"
+    return cmd
 
 
 def _clean_text(value: object) -> str:
@@ -344,6 +358,7 @@ def main() -> int:
             )
             if row.canonical_wave and str(row.canonical_wave) != str(row.wave):
                 cmd += f" --canonical-wave {row.canonical_wave}"
+            cmd = _append_shared_substrate_command_args(cmd, args)
             rows.append(
                 {
                     "run_id": run_id,
@@ -365,6 +380,9 @@ def main() -> int:
                     "skip_by_default": bool(row.skip_by_default),
                     "skip_reason": row.skip_reason,
                     "estimated_question_count": int(row.estimated_question_count),
+                    "shared_respondent_substrate_mode": args.shared_respondent_substrate_mode,
+                    "joint_configuration_registry_path": args.joint_configuration_registry_path or "",
+                    "joint_configuration_ids": list(args.joint_configuration_id),
                     "output_dir": str(output_root / "shard_runs" / run_id / shard_id),
                     "command": cmd,
                 }
@@ -381,6 +399,9 @@ def main() -> int:
             "db_used": conn is not None,
             "filters": filters,
             "thresholds": {"min_cell_n": args.min_cell_n},
+            "shared_respondent_substrate_mode": args.shared_respondent_substrate_mode,
+            "joint_configuration_registry_path": args.joint_configuration_registry_path or "",
+            "joint_configuration_ids": list(args.joint_configuration_id),
             "shards": rows,
         }
 
@@ -398,6 +419,8 @@ def main() -> int:
                     "shard_count": int(len(plan_df)),
                     "non_skipped_shard_count": int(len(commands)),
                     "db_used": conn is not None,
+                    "shared_respondent_substrate_mode": args.shared_respondent_substrate_mode,
+                    "joint_configuration_registry_path": args.joint_configuration_registry_path or "",
                     "success": True,
                 },
                 indent=2,

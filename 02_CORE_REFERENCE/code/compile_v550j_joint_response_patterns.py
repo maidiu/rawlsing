@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import sys
 import threading
 from collections import Counter
@@ -30,6 +31,10 @@ from data.ddm_build_copy.ddm_v550_response_options import response_semantics_con
 from data.ddm_build_copy.ddm_v550_schema import write_schema_json
 from data.ddm_build_copy.ddm_v550_shared_cache import cache_entry, cache_signature, load_cached_frame, shared_cache_root, write_cached_frame
 from data.ddm_build_copy.ddm_v550_storage import atomic_write_json, connect_from_env, read_table_any
+from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import (
+    logical_shared_substrate_hash,
+    validate_shared_respondent_substrate,
+)
 from data.ddm_build_copy.ddm_run_provenance import capture_run_provenance
 from data.ddm_build_copy.ddm_v550j_joint_patterns import (
     V550J_ASSOCIATION_CANDIDATE_TRACE_COLUMNS,
@@ -118,6 +123,9 @@ def parse_args() -> argparse.Namespace:
         choices=("prepared_required", "prepared_or_build", "prepared_or_forensic_fallback", "forensic_reharmonize"),
         help="Control prepared-substrate behavior for V550J.",
     )
+    parser.add_argument("--prepared-substrate-path", default=None, help="Explicit shared/prepared respondent substrate Parquet path.")
+    parser.add_argument("--prepared-substrate-manifest-path", default=None, help="Explicit shared/prepared respondent substrate manifest path.")
+    parser.add_argument("--forbid-database-access", action="store_true", help="Reject every code path that would open PostgreSQL.")
     parser.add_argument("--association-fetch-chunk-size", type=int, default=25000, help="Chunk size for association-context SQL fetches; set <=0 to disable chunking.")
     parser.add_argument("--verbose", action="store_true")
     return parser.parse_args()
@@ -1089,6 +1097,31 @@ def _load_all_countries_context_slice(
 
 def main() -> int:
     args = parse_args()
+    explicit_prepared_frame: pd.DataFrame | None = None
+    explicit_prepared_manifest: dict[str, Any] = {}
+    if args.forbid_database_access:
+        if args.db_url:
+            raise RuntimeError("V550J_DATABASE_ACCESS_FORBIDDEN: --db-url is not allowed")
+        if os.environ.get("DATABASE_URL"):
+            raise RuntimeError("V550J_DATABASE_ACCESS_FORBIDDEN: DATABASE_URL is not allowed")
+        if args.v550j_substrate_mode != "prepared_required":
+            raise RuntimeError("V550J_DATABASE_ACCESS_FORBIDDEN: prepared_required is mandatory")
+        if not args.prepared_substrate_path or not args.prepared_substrate_manifest_path:
+            raise RuntimeError("V550J_DATABASE_ACCESS_FORBIDDEN: explicit prepared substrate path and manifest are required")
+        if not Path(args.prepared_substrate_path).exists():
+            raise RuntimeError(f"V550J_DATABASE_ACCESS_FORBIDDEN: prepared substrate missing: {args.prepared_substrate_path}")
+        if not Path(args.prepared_substrate_manifest_path).exists():
+            raise RuntimeError(f"V550J_DATABASE_ACCESS_FORBIDDEN: prepared substrate manifest missing: {args.prepared_substrate_manifest_path}")
+        if not Path(args.response_option_map).exists():
+            raise RuntimeError("V550J_DATABASE_ACCESS_FORBIDDEN: response-option map artifact is required")
+        explicit_prepared_manifest = json.loads(Path(args.prepared_substrate_manifest_path).read_text(encoding="utf-8"))
+        explicit_prepared_frame = pd.read_parquet(Path(args.prepared_substrate_path))
+        explicit_validation = validate_shared_respondent_substrate(explicit_prepared_frame, explicit_prepared_manifest)
+        if explicit_validation["validation_status"] != "pass":
+            raise RuntimeError(f"V550J_DATABASE_ACCESS_FORBIDDEN: prepared substrate validation failed: {explicit_validation['validation_message']}")
+        manifest_hash = str(explicit_prepared_manifest.get("content_hash", "")).strip()
+        if manifest_hash and logical_shared_substrate_hash(explicit_prepared_frame) != manifest_hash:
+            raise RuntimeError("V550J_DATABASE_ACCESS_FORBIDDEN: prepared substrate content hash mismatch")
     diagnostics_enabled = bool(args.with_diagnostics)
     publish_association_lanes = {lane.strip() for lane in str(args.publish_association_lanes or "").split(",") if lane.strip()}
     association_support_threshold_override = (
@@ -1119,7 +1152,8 @@ def main() -> int:
 
     load_inputs_started = monotonic()
     progress.stage(1, 6, "Load shard inputs", "starting")
-    load_dotenv(Path(args.env_file))
+    if not args.forbid_database_access:
+        load_dotenv(Path(args.env_file))
     shard_dir = Path(args.v550_shard_dir)
     if not shard_dir.exists():
         raise RuntimeError(f"Shard directory does not exist: {shard_dir}")
@@ -1254,6 +1288,8 @@ def main() -> int:
 
     def _ensure_db_conn():
         nonlocal conn
+        if args.forbid_database_access:
+            raise RuntimeError("V550J_DATABASE_ACCESS_FORBIDDEN: attempted PostgreSQL connection after no-DB gate")
         if conn is not None:
             return conn
         try:
@@ -1460,8 +1496,8 @@ def main() -> int:
                 "Process families",
                 f"family {active_family_index}/{active_family_total}: {family_id} country={country_code} loading context",
             )
-            association_db_conn = _ensure_db_conn()
-            facet_ready_view_name = _facet_ready_view_name(association_db_conn)
+            association_db_conn = None if explicit_prepared_frame is not None else _ensure_db_conn()
+            facet_ready_view_name = "" if association_db_conn is None else _facet_ready_view_name(association_db_conn)
             country_questions = family_questions.copy()
             country_questions["country_code"] = country_code
             country_questions["raw_wave"] = country_questions.get("wave", "").astype(str)
@@ -1499,17 +1535,25 @@ def main() -> int:
                 f"family {active_family_index}/{active_family_total}: {family_id} country={country_code} loading cached country slice",
                 every=5.0,
             ):
-                cached_country_frame = _load_cached_country_slice(
-                    source=source_value,
-                    waves=wave_values or [""],
-                    country_code=country_code,
-                    response_semantics_contract_hash=semantics_contract,
-                    db_conn=association_db_conn,
-                    view_name=facet_ready_view_name,
-                    chunk_size=int(args.association_fetch_chunk_size),
-                    progress=progress,
-                    var_codes=country_var_codes,
-                )
+                if explicit_prepared_frame is not None:
+                    prepared_scope = explicit_prepared_frame.copy()
+                    if "country_code_norm" in prepared_scope.columns:
+                        prepared_scope = prepared_scope[prepared_scope["country_code_norm"].fillna("").astype(str).str.upper() == str(country_code).upper()].copy()
+                    if "var_code_norm" in prepared_scope.columns:
+                        prepared_scope = prepared_scope[prepared_scope["var_code_norm"].fillna("").astype(str).str.upper().isin({code.upper() for code in country_var_codes})].copy()
+                    cached_country_frame = prepared_scope.reset_index(drop=True)
+                else:
+                    cached_country_frame = _load_cached_country_slice(
+                        source=source_value,
+                        waves=wave_values or [""],
+                        country_code=country_code,
+                        response_semantics_contract_hash=semantics_contract,
+                        db_conn=association_db_conn,
+                        view_name=facet_ready_view_name,
+                        chunk_size=int(args.association_fetch_chunk_size),
+                        progress=progress,
+                        var_codes=country_var_codes,
+                    )
             if cached_country_frame is not None:
                 progress.stage(
                     3,
@@ -1531,6 +1575,8 @@ def main() -> int:
                     cached_country_frame = cached_country_frame.set_index("var_code", drop=False)
                 question_row_cache = {country_code: cached_country_frame}
             else:
+                if args.forbid_database_access:
+                    raise RuntimeError(f"V550J_DATABASE_ACCESS_FORBIDDEN: no prepared substrate rows for {family_id} {country_code}")
                 with progress.heartbeat(
                     3,
                     6,
@@ -1552,24 +1598,33 @@ def main() -> int:
                 if (cached_country_frame is not None and not cached_country_frame.empty) or args.v550j_substrate_mode == "prepared_required":
                     source_frame_for_loader = cached_country_frame.reset_index(drop=True) if cached_country_frame is not None and not cached_country_frame.empty else pd.DataFrame()
                     prepared_started = monotonic()
-                    prepared_country_frame, prepared_manifest = load_or_build_v550j_prepared_substrate(
-                        run_id=run_id,
-                        source=source_value,
-                        source_id=source_value,
-                        wave=wave_values[0] if wave_values else "",
-                        canonical_wave=wave_values[-1] if wave_values else "",
-                        country_code=country_code,
-                        source_frame=source_frame_for_loader,
-                        semantics_lookup=semantics_lookup,
-                        response_semantics_contract_hash=semantics_contract,
-                        output_root=Path(args.output_root),
-                        question_family_registry_hash=_stable_hash(registry),
-                        authority_compendium_hash=semantics_contract,
-                        view_schema_hash=_stable_hash({"columns": list(cached_country_frame.columns)}),
-                        compiler_version=V550J_SCHEMA_VERSION,
-                        substrate_mode=args.v550j_substrate_mode,
-                        progress=progress,
-                    )
+                    if explicit_prepared_frame is not None:
+                        prepared_country_frame = source_frame_for_loader
+                        prepared_manifest = {
+                            **explicit_prepared_manifest,
+                            "cache_loaded": True,
+                            "explicit_prepared_substrate_path": str(args.prepared_substrate_path),
+                            "explicit_prepared_substrate_manifest_path": str(args.prepared_substrate_manifest_path),
+                        }
+                    else:
+                        prepared_country_frame, prepared_manifest = load_or_build_v550j_prepared_substrate(
+                            run_id=run_id,
+                            source=source_value,
+                            source_id=source_value,
+                            wave=wave_values[0] if wave_values else "",
+                            canonical_wave=wave_values[-1] if wave_values else "",
+                            country_code=country_code,
+                            source_frame=source_frame_for_loader,
+                            semantics_lookup=semantics_lookup,
+                            response_semantics_contract_hash=semantics_contract,
+                            output_root=Path(args.output_root),
+                            question_family_registry_hash=_stable_hash(registry),
+                            authority_compendium_hash=semantics_contract,
+                            view_schema_hash=_stable_hash({"columns": list(cached_country_frame.columns)}),
+                            compiler_version=V550J_SCHEMA_VERSION,
+                            substrate_mode=args.v550j_substrate_mode,
+                            progress=progress,
+                        )
                     if args.v550j_substrate_mode == "prepared_required" and prepared_country_frame.empty:
                         raise RuntimeError(f"Prepared substrate is required but empty for {family_id} {country_code}")
                     _record_stage(

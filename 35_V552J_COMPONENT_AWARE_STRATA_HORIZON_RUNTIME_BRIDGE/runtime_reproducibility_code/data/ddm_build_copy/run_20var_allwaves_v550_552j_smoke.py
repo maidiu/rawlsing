@@ -1392,6 +1392,7 @@ def run_v550_shard(
     country: str,
     filter_path: str,
     output_root: str,
+    registry_path: str | None = None,
     config: RuntimeConfig = DEFAULT_CONFIG,
 ) -> dict[str, Any]:
     cmd = [
@@ -1414,6 +1415,11 @@ def run_v550_shard(
         "--finalize-source", "memory",
         "--no-write-csv",
     ]
+    if registry_path:
+        cmd.extend([
+            "--shared-respondent-substrate-mode", "write",
+            "--joint-configuration-registry-path", registry_path,
+        ])
     if country:
         cmd.extend(["--country", country])
     if config.db_url:
@@ -1467,6 +1473,8 @@ def run_v550j(
     output_root: str,
     registry_path: str,
     response_map_path: str,
+    prepared_substrate_path: str | None = None,
+    prepared_substrate_manifest_path: str | None = None,
     config: RuntimeConfig = DEFAULT_CONFIG,
 ) -> dict[str, Any]:
     cmd = [
@@ -1483,7 +1491,14 @@ def run_v550j(
         "--no-write-csv",
         "--with-diagnostics",
     ]
-    if config.db_url:
+    if prepared_substrate_path and prepared_substrate_manifest_path:
+        cmd.extend([
+            "--v550j-substrate-mode", "prepared_required",
+            "--prepared-substrate-path", prepared_substrate_path,
+            "--prepared-substrate-manifest-path", prepared_substrate_manifest_path,
+            "--forbid-database-access",
+        ])
+    elif config.db_url:
         cmd.extend(["--db-url", config.db_url])
     if config.association_mode != "off":
         if config.association_lane_registry:
@@ -1607,8 +1622,11 @@ def run_wave(
 
     _log(f"WAVE {family} {wave} ({country}) — {len(selected_vars)} variables")
     shard_dir = Path(output_root) / "v550" / "shard_runs" / run_id / shard_id
+    authority = resolve_joint_authority(config, family, wave, selected_vars)
+    result["joint_branch"]["authority"] = authority
 
-    raw = run_v550_shard(run_id, shard_id, family, wave, country, filter_path, str(Path(output_root) / "v550"), config)
+    registry_path_for_v550 = authority["registry_path"] if authority.get("applicable") and config.joint_mode != "off" else None
+    raw = run_v550_shard(run_id, shard_id, family, wave, country, filter_path, str(Path(output_root) / "v550"), registry_path_for_v550, config)
     if raw["exit_code"] != 0:
         result["stages"]["v550"] = _stage_result(raw)
         return _fail(result, "v550_process", raw.get("stderr_tail") or "v550_nonzero_exit")
@@ -1655,8 +1673,6 @@ def run_wave(
     result["base_spine_passed"] = True
     result["acceptance_boundary"] = "base_spine"
 
-    authority = resolve_joint_authority(config, family, wave, selected_vars)
-    result["joint_branch"]["authority"] = authority
     if config.joint_mode == "off":
         result["joint_branch"]["status"] = "disabled_by_explicit_mode"
         result["joint_branch"]["reason"] = "joint_mode_off"
@@ -1671,7 +1687,28 @@ def run_wave(
         return result
 
     v550j_root = Path(output_root) / "v550j"
-    raw = run_v550j(run_id, str(shard_dir), filter_path, str(v550j_root), authority["registry_path"], str(response_map_path), config)
+    substrate_manifests = sorted((shard_dir / "checkpoints/respondent_substrate").glob("source=*/wave=*/country_code=*/v550_shared_respondent_substrate_manifest.json"))
+    if not substrate_manifests:
+        return _fail(result, "shared_respondent_substrate_gate", "missing_shared_respondent_substrate_manifest")
+    substrate_manifest = substrate_manifests[0]
+    substrate_parquet = substrate_manifest.with_name("v550_shared_respondent_substrate.parquet")
+    if not substrate_parquet.exists():
+        return _fail(result, "shared_respondent_substrate_gate", "missing_shared_respondent_substrate_parquet")
+    result["joint_branch"]["shared_respondent_substrate"] = {
+        "parquet_path": str(substrate_parquet),
+        "manifest_path": str(substrate_manifest),
+    }
+    raw = run_v550j(
+        run_id,
+        str(shard_dir),
+        filter_path,
+        str(v550j_root),
+        authority["registry_path"],
+        str(response_map_path),
+        str(substrate_parquet),
+        str(substrate_manifest),
+        config,
+    )
     v550j_artifact_root = v550j_root / "runs" / run_id / shard_id / "joint_patterns"
     if raw["exit_code"] != 0:
         result["stages"]["v550j"] = _stage_result(raw)

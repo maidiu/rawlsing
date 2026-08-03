@@ -189,6 +189,7 @@ class V550ShardPaths:
     checkpoints: Path = field(init=False)
     questions_checkpoints: Path = field(init=False)
     tables_checkpoints: Path = field(init=False)
+    respondent_substrate: Path = field(init=False)
     core: Path = field(init=False)
     distributions: Path = field(init=False)
     determinicity: Path = field(init=False)
@@ -209,6 +210,7 @@ class V550ShardPaths:
         self.checkpoints = self.shard_path / "checkpoints"
         self.questions_checkpoints = self.checkpoints / "questions"
         self.tables_checkpoints = self.checkpoints / "tables"
+        self.respondent_substrate = self.checkpoints / "respondent_substrate"
         self.core = self.shard_path / "core"
         self.distributions = self.shard_path / "distributions"
         self.determinicity = self.shard_path / "determinicity"
@@ -226,6 +228,7 @@ class V550ShardPaths:
             self.checkpoints,
             self.questions_checkpoints,
             self.tables_checkpoints,
+            self.respondent_substrate,
             self.core,
             self.distributions,
             self.determinicity,

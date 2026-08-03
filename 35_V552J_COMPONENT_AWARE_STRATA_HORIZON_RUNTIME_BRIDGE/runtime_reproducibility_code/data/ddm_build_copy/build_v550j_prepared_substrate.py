@@ -14,76 +14,25 @@ from data.ddm_build_copy.build_determinicity_repository_v550 import _harmonize_q
 from data.ddm_build_copy.ddm_v550_manifest import utc_now
 from data.ddm_build_copy.ddm_v550_schema import write_schema_json
 from data.ddm_build_copy.ddm_v550_storage import atomic_write_json
+from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import (
+    PREPARED_SUBSTRATE_REQUIRED_COLUMNS as SHARED_PREPARED_SUBSTRATE_REQUIRED_COLUMNS,
+    SHARED_SUBSTRATE_REQUIRED_COLUMNS,
+    SHARED_SUBSTRATE_SCHEMA_VERSION,
+    canonicalize_shared_respondent_substrate,
+    load_shared_respondent_substrate,
+    logical_shared_substrate_hash,
+    shared_substrate_cache_signature_matches,
+    shared_substrate_paths,
+    validate_shared_respondent_substrate,
+    write_shared_respondent_substrate_atomic,
+)
 from data.ddm_build_copy.ddm_v550j_joint_patterns import _family_item_map
 
 
-SUBSTRATE_SCHEMA_VERSION = "v1"
+SUBSTRATE_SCHEMA_VERSION = SHARED_SUBSTRATE_SCHEMA_VERSION
 DEFAULT_PREPARED_CACHE_ROOT = Path("data/ddm_repository_copy/v550j/cache/prepared_response_substrate")
 
-PREPARED_SUBSTRATE_REQUIRED_COLUMNS = [
-    "run_id",
-    "source",
-    "source_id",
-    "wave",
-    "canonical_wave",
-    "country_code",
-    "respondent_id",
-    "respondent_id_norm",
-    "weight_value",
-    "weight_status",
-    "var_code",
-    "var_code_norm",
-    "question_id",
-    "question_text",
-    "response_value",
-    "response_value_normalized",
-    "response_value_norm",
-    "response_label",
-    "normalized_response_label",
-    "response_direction",
-    "polarity",
-    "is_missing",
-    "is_dk",
-    "is_refusal",
-    "is_iap",
-    "is_valid_substantive_response",
-    "semantic_response_role",
-    "semantic_response_role_status",
-    "response_semantics_authority_source",
-    "semantic_response_role_authority",
-    "directionality_status",
-    "directionality_authority_source",
-    "directionality_basis_source",
-    "target_entity_id",
-    "target_domain",
-    "target_condition_label",
-    "target_group_label",
-    "permission_domain",
-    "target_resolution_grain",
-    "target_resolution_status",
-    "target_resolution_authority_source",
-    "target_resolution_basis_source",
-    "semantic_role",
-    "v551_evidence_role",
-    "mapping_status",
-    "source_structure_classification",
-    "question_type",
-    "handling_rule",
-    "recommended_computation",
-    "source_structure_basis",
-    "source_structure_confidence",
-    "source_structure_source",
-    "source_structure_fields_joined",
-    "is_substantive",
-    "not_direct_evidence",
-    "allowed_as_association_feature",
-    "allowed_as_attitude_cloud_feature",
-    "association_lane",
-    "source_norm",
-    "wave_norm",
-    "canonical_wave_norm",
-    "country_code_norm",
-]
+PREPARED_SUBSTRATE_REQUIRED_COLUMNS = SHARED_PREPARED_SUBSTRATE_REQUIRED_COLUMNS
 
 
 def _clean(value: Any) -> str:

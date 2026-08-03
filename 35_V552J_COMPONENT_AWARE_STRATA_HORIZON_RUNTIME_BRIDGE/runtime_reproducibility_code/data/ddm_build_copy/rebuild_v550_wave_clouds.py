@@ -46,6 +46,7 @@ from data.ddm_build_copy.ddm_v550_manifest import utc_now
 from data.ddm_build_copy.ddm_v550_readiness import load_scope_manifest
 from data.ddm_build_copy.ddm_v550_schema import forbidden_cloud_feature_row_count, validate_no_forbidden_cloud_features
 from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, load_env_database_url, read_table_any, try_connect_database, write_table
+from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import SharedSubstratePaths, load_shared_respondent_substrate
 
 DEFAULT_ENV_FILE = ROOT / ".env"
 DEFAULT_OUTPUT_ROOT = ROOT / "data" / "ddm_repository_copy" / "v550"
@@ -83,10 +84,35 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Ignore any existing cached country slices and refresh them from the database.",
     )
+    parser.add_argument("--prepared-substrate-root", default=None, help="Shared respondent substrate root. Defaults to shard checkpoints/respondent_substrate.")
+    parser.add_argument("--forbid-database-access", action="store_true", help="Reject replay paths that would query PostgreSQL.")
     parser.add_argument("--overwrite", action="store_true", default=True)
     parser.add_argument("--no-overwrite", dest="overwrite", action="store_false")
     parser.add_argument("--verbose", action="store_true")
     return parser.parse_args()
+
+
+def _load_shared_substrate_cache(root: Path) -> dict[str, pd.DataFrame]:
+    cache: dict[str, pd.DataFrame] = {}
+    for manifest_path in sorted(root.glob("source=*/wave=*/country_code=*/v550_shared_respondent_substrate_manifest.json")):
+        substrate_root = manifest_path.parent
+        paths = SharedSubstratePaths(
+            root=substrate_root,
+            parquet_path=substrate_root / "v550_shared_respondent_substrate.parquet",
+            schema_path=substrate_root / "v550_shared_respondent_substrate.schema.json",
+            manifest_path=manifest_path,
+            validation_path=substrate_root / "v550_shared_respondent_substrate_validation.json",
+            complete_path=substrate_root / "COMPLETE",
+        )
+        frame, _manifest, _validation = load_shared_respondent_substrate(paths)
+        country_values = sorted({str(value).strip().upper() for value in frame.get("country_code_norm", frame.get("country_code", pd.Series(dtype="object"))).dropna() if str(value).strip()})
+        if "var_code" in frame.columns:
+            frame = frame.copy()
+            frame["var_code"] = frame["var_code"].astype(str).str.upper()
+            frame = frame.set_index("var_code", drop=False)
+        for country_code in country_values:
+            cache[country_code] = frame
+    return cache
 
 
 def _load_question_rows_from_checkpoints(qdir: Path) -> pd.DataFrame:
@@ -306,9 +332,7 @@ def main() -> int:
     output_root = Path(args.output_root)
     shard_paths = V550ShardPaths(root=output_root, run_id=args.run_id, shard_id=args.shard_id)
     shard_paths.ensure()
-    conn, err = try_connect_database(load_env_database_url(Path(args.env_file), args.db_url))
-    if conn is None:
-        raise SystemExit(f"[V550_SHARD_DB_UNAVAILABLE] Could not connect to Postgres using {args.env_file} or --db-url. Original error: {err}")
+    conn = None
 
     try:
         canonical_wave = str(args.canonical_wave or canonical_wave_label(args.source, args.wave))
@@ -338,7 +362,18 @@ def main() -> int:
             for _, row in readiness_df.iterrows():
                 readiness_lookup[(str(row["source"]), str(row["wave"]), str(row["country_code"]))] = row
 
-        if args.verbose:
+        substrate_root = Path(args.prepared_substrate_root) if args.prepared_substrate_root else shard_paths.respondent_substrate
+        question_row_cache: dict[str, pd.DataFrame] = _load_shared_substrate_cache(substrate_root)
+        if args.verbose and question_row_cache:
+            _log_progress(progress_started, f"loaded shared respondent substrate cache: countries={len(question_row_cache)}")
+        respondent_cache_source = "shared_respondent_substrate" if question_row_cache else "postgres_legacy_replay"
+
+        if args.verbose and not question_row_cache:
+            if args.forbid_database_access:
+                raise SystemExit("[V550_CLOUD_REPLAY_DATABASE_ACCESS_FORBIDDEN] shared respondent substrate is required")
+            conn, err = try_connect_database(load_env_database_url(Path(args.env_file), args.db_url))
+            if conn is None:
+                raise SystemExit(f"[V550_SHARD_DB_UNAVAILABLE] Could not connect to Postgres using {args.env_file} or --db-url. Original error: {err}")
             sample_rows = question_rows.head(3)
             for idx, qrow in enumerate(sample_rows.itertuples(index=False), start=1):
                 qrow_series = pd.Series(qrow._asdict())
@@ -348,9 +383,14 @@ def main() -> int:
                     f"sample question {idx}: source={qrow_series.get('source', '')} wave={qrow_series.get('canonical_wave', '')} country={qrow_series.get('country_code', '')} var={qrow_series.get('var_code', '')} rows={sample_count}",
                 )
 
-        question_row_cache: dict[str, pd.DataFrame] = {}
         source_values = {str(value) for value in question_rows["source"].dropna().astype(str) if str(value).strip()}
-        if len(source_values) == 1:
+        if not question_row_cache and len(source_values) == 1:
+            if args.forbid_database_access:
+                raise SystemExit("[V550_CLOUD_REPLAY_DATABASE_ACCESS_FORBIDDEN] shared respondent substrate is required")
+            if conn is None:
+                conn, err = try_connect_database(load_env_database_url(Path(args.env_file), args.db_url))
+                if conn is None:
+                    raise SystemExit(f"[V550_SHARD_DB_UNAVAILABLE] Could not connect to Postgres using {args.env_file} or --db-url. Original error: {err}")
             source = next(iter(source_values))
             country_codes = sorted({str(value) for value in question_rows["country_code"].dropna().astype(str) if str(value).strip()})
             wave_clause = " OR ".join([f"canonical_wave = {_sql_literal(value)}" for value in _wave_candidates_for_replay(question_rows.iloc[0], requested_wave, canonical_wave)])
@@ -385,7 +425,7 @@ def main() -> int:
                     _write_prefetch_cache(cache_path, df.reset_index(drop=True))
                 if progress_started is not None:
                     _log_progress(progress_started, f"prefetched response slice for country {country_code}: {len(df)} rows")
-        else:
+        elif not question_row_cache:
             raise SystemExit("[V550_CLOUD_REPLAY_UNSAFE] question rows span multiple sources; replay helper expects exactly one source.")
         branch_files_written = 0
         cloud_files_written = 0
@@ -481,6 +521,8 @@ def main() -> int:
             "question_response_attitude_cloud_status": "disabled_until_cross_question_engine" if attitude_cloud.empty else "prototype_diagnostic",
             "cloud_exclusion_rows": int(len(cloud_exclusion_audit)),
             "prefetch_cache_dir": str(prefetch_cache_dir),
+            "respondent_cache_source": respondent_cache_source,
+            "db_used": respondent_cache_source == "postgres_legacy_replay",
             "prefetch_cache_refresh": bool(args.refresh_prefetch_cache),
             "prefetch_cache_files": int(len(list(prefetch_cache_dir.glob("*.parquet")))) if prefetch_cache_dir.exists() else 0,
             "updated_at": utc_now(),
@@ -490,7 +532,8 @@ def main() -> int:
             _log_progress(progress_started, f"cloud replay complete: branch_co_signature={len(branch_co_sig)} question_response_attitude_cloud={len(attitude_cloud)}")
         return 0
     finally:
-        conn.close()
+        if conn is not None:
+            conn.close()
 
 
 if __name__ == "__main__":

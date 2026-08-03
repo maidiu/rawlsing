@@ -117,6 +117,23 @@ def parse_args() -> argparse.Namespace:
         help="Forward a stop-after-stage request to each shard worker. Currently only stage 4 is supported.",
     )
     parser.add_argument(
+        "--shared-respondent-substrate-mode",
+        default="off",
+        choices=("off", "write"),
+        help="Forward shared respondent substrate mode to each shard worker.",
+    )
+    parser.add_argument(
+        "--joint-configuration-registry-path",
+        default=None,
+        help="Forward a bounded V550J registry path to each shard worker.",
+    )
+    parser.add_argument(
+        "--joint-configuration-id",
+        action="append",
+        default=[],
+        help="Forward a selected joint configuration id to each shard worker. May be repeated.",
+    )
+    parser.add_argument(
         "--restart-incomplete",
         action=argparse.BooleanOptionalAction,
         default=True,
@@ -191,6 +208,9 @@ def _build_command(
     readiness_artifact: str | None,
     readiness_output_root: str | None,
     stop_after_stage: int,
+    shared_respondent_substrate_mode: str,
+    joint_configuration_registry_path: str | None,
+    joint_configuration_ids: list[str],
     resume: bool,
     overwrite_shard: bool,
     write_csv: bool,
@@ -234,6 +254,14 @@ def _build_command(
         cmd.extend(["--readiness-output-root", readiness_output_root])
     if stop_after_stage > 0:
         cmd.extend(["--stop-after-stage", str(stop_after_stage)])
+    if shared_respondent_substrate_mode != "off":
+        cmd.extend(["--shared-respondent-substrate-mode", shared_respondent_substrate_mode])
+        if "--v550-prepared-substrate-mode" not in cmd:
+            cmd.extend(["--v550-prepared-substrate-mode", "country"])
+    if joint_configuration_registry_path:
+        cmd.extend(["--joint-configuration-registry-path", joint_configuration_registry_path])
+    for joint_configuration_id in joint_configuration_ids:
+        cmd.extend(["--joint-configuration-id", joint_configuration_id])
     if write_csv:
         cmd.append("--write-csv")
     else:
@@ -784,6 +812,9 @@ def main() -> int:
             readiness_artifact=args.readiness_artifact,
             readiness_output_root=args.readiness_output_root,
             stop_after_stage=args.stop_after_stage,
+            shared_respondent_substrate_mode=args.shared_respondent_substrate_mode,
+            joint_configuration_registry_path=args.joint_configuration_registry_path,
+            joint_configuration_ids=args.joint_configuration_id,
             resume=should_resume,
             overwrite_shard=should_overwrite,
             write_csv=args.write_csv,

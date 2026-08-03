@@ -55,6 +55,7 @@ from data.ddm_build_copy.build_determinicity_wave_shard_v550 import _missing_que
 from data.ddm_build_copy.ddm_v550_response_options import response_semantics_contract_hash
 from data.ddm_build_copy.ddm_v550_schema import V551_BRIDGE_INDEX_SCHEMA
 from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, atomic_write_json, load_env_database_url, try_connect_database, write_table
+from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import SharedSubstratePaths, load_shared_respondent_substrate
 from data.ddm_build_copy.ddm_v550_validation import validate_v551_bridge_rows
 from data.ddm_build_copy.ddm_v550_validation import validate_attitude_cloud_rows, validate_position_signature_rows, validate_relation_signature_rows
 
@@ -109,6 +110,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--min-branch-n", type=int, default=50)
     parser.add_argument("--max-depth", type=int, default=3)
     parser.add_argument("--v550-prepared-substrate-mode", default="off", choices=("off", "country", "chunked"))
+    parser.add_argument("--prepared-substrate-root", default=None, help="Shared respondent substrate root. Defaults to shard checkpoints/respondent_substrate.")
+    parser.add_argument("--forbid-database-access", action="store_true", help="Reject recovery paths that would query PostgreSQL.")
     parser.add_argument("--cloud-mode", default="auto", choices=("auto", "full", "off", "share"))
     parser.add_argument("--cloud-max-branch-rows", type=int, default=1000)
     parser.add_argument("--cloud-max-branch-share", type=float, default=None)
@@ -144,6 +147,32 @@ def parse_args() -> argparse.Namespace:
         help="Do not rewrite shard_status.json.",
     )
     return parser.parse_args()
+
+
+def _load_shared_substrate_cache(root: Path) -> dict[str, pd.DataFrame]:
+    cache: dict[str, pd.DataFrame] = {}
+    for manifest_path in sorted(root.glob("source=*/wave=*/country_code=*/v550_shared_respondent_substrate_manifest.json")):
+        substrate_root = manifest_path.parent
+        paths = SharedSubstratePaths(
+            root=substrate_root,
+            parquet_path=substrate_root / "v550_shared_respondent_substrate.parquet",
+            schema_path=substrate_root / "v550_shared_respondent_substrate.schema.json",
+            manifest_path=manifest_path,
+            validation_path=substrate_root / "v550_shared_respondent_substrate_validation.json",
+            complete_path=substrate_root / "COMPLETE",
+        )
+        frame, _manifest, _validation = load_shared_respondent_substrate(paths)
+        if "country_code_norm" in frame.columns:
+            country_values = sorted({str(value).strip().upper() for value in frame["country_code_norm"].dropna() if str(value).strip()})
+        else:
+            country_values = sorted({str(value).strip().upper() for value in frame.get("country_code", pd.Series(dtype="object")).dropna() if str(value).strip()})
+        if "var_code" in frame.columns:
+            frame = frame.copy()
+            frame["var_code"] = frame["var_code"].astype(str).str.upper()
+            frame = frame.set_index("var_code", drop=False)
+        for country_code in country_values:
+            cache[country_code] = frame
+    return cache
 
 
 def _load_checkpoint_frame(table_dir: Path) -> pd.DataFrame:
@@ -377,6 +406,8 @@ def main() -> int:
     wave_tables: dict[str, pd.DataFrame]
     response_review = pd.DataFrame()
     question_row_cache = pd.DataFrame()
+    respondent_cache_source = "not_loaded"
+    respondent_cache_db_used = False
     bridge_meta: dict[str, Any]
     bridge_frame = pd.DataFrame(columns=V551_BRIDGE_INDEX_SCHEMA["required_columns"])
     bridge_issues: list[dict[str, Any]] = []
@@ -422,28 +453,40 @@ def main() -> int:
 
         if args.verbose:
             _log_progress(progress_started, "loading respondent cache for downstream outputs")
-        conn = None
-        try:
-            db_url = load_env_database_url(Path(args.env_file), args.db_url)
-            if not db_url:
-                raise RuntimeError("DATABASE_URL is missing. Provide --db-url or a valid --env-file.")
-            conn, err = try_connect_database(db_url)
-            if conn is None:
-                raise RuntimeError(f"Could not connect to Postgres using --db-url/--env-file. Original error: {err}")
-            question_row_cache = _prefetch_question_rows_by_country(conn, question_rows, progress_started)
-            question_row_cache, _prepared_stats = _prepare_v550_question_row_cache(
-                question_row_cache,
-                semantics_lookup,
-                response_semantics_contract_hash=response_semantics_contract,
-                mode=args.v550_prepared_substrate_mode,
-                progress_started=progress_started,
-            )
-        finally:
-            if conn is not None:
-                try:
-                    conn.close()
-                except Exception:
-                    pass
+        substrate_root = Path(args.prepared_substrate_root) if args.prepared_substrate_root else shard_paths.respondent_substrate
+        question_row_cache = _load_shared_substrate_cache(substrate_root)
+        if not question_row_cache:
+            if args.forbid_database_access:
+                raise RuntimeError("V550_RECOVERY_DATABASE_ACCESS_FORBIDDEN: shared respondent substrate is required")
+            conn = None
+            try:
+                db_url = load_env_database_url(Path(args.env_file), args.db_url)
+                if not db_url:
+                    raise RuntimeError("DATABASE_URL is missing. Provide --db-url or a valid --env-file.")
+                conn, err = try_connect_database(db_url)
+                if conn is None:
+                    raise RuntimeError(f"Could not connect to Postgres using --db-url/--env-file. Original error: {err}")
+                question_row_cache = _prefetch_question_rows_by_country(conn, question_rows, progress_started)
+                respondent_cache_source = "postgres_legacy_replay"
+                respondent_cache_db_used = True
+                question_row_cache, _prepared_stats = _prepare_v550_question_row_cache(
+                    question_row_cache,
+                    semantics_lookup,
+                    response_semantics_contract_hash=response_semantics_contract,
+                    mode=args.v550_prepared_substrate_mode,
+                    progress_started=progress_started,
+                )
+            finally:
+                if conn is not None:
+                    try:
+                        conn.close()
+                    except Exception:
+                        pass
+        else:
+            respondent_cache_source = "shared_respondent_substrate"
+            respondent_cache_db_used = False
+            if args.verbose:
+                _log_progress(progress_started, f"loaded shared respondent substrate cache: countries={len(question_row_cache)}")
 
         if args.verbose:
             _log_progress(progress_started, "loading checkpoint tables for core/bridge/post-question rebuild")
@@ -720,7 +763,13 @@ def main() -> int:
         completed_at=utc_now(),
         success=all_questions_completed,
         output_root=output_root,
-        inputs={"checkpoint_replay": True, "db_used": True, "response_option_map": args.response_option_map or "built", "filters": {"country": countries}},
+        inputs={
+            "checkpoint_replay": True,
+            "db_used": respondent_cache_db_used,
+            "respondent_cache_source": respondent_cache_source,
+            "response_option_map": args.response_option_map or "built",
+            "filters": {"country": countries},
+        },
         rows_by_table=row_counts,
         warnings=[f"{w['wave_source']} {w['wave']}: {w['code']} - {w['message']}" for w in wave_warnings],
         errors=[],

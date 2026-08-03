@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import faulthandler
+import hashlib
 import json
 import re
 import sys
@@ -15,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+import yaml
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -98,6 +100,14 @@ from data.ddm_build_copy.ddm_v550_schema import (
     validate_shard_manifest,
 )
 from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, atomic_write_json, load_env_database_url, read_table_any, try_connect_database, write_table
+from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import (
+    SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION,
+    SHARED_SUBSTRATE_SCHEMA_VERSION,
+    canonicalize_shared_respondent_substrate,
+    resolve_shared_substrate_requirements,
+    shared_substrate_paths,
+    write_shared_respondent_substrate_atomic,
+)
 from data.ddm_build_copy.ddm_v550_validation import validate_attitude_cloud_rows, validate_position_signature_rows, validate_relation_signature_rows, validate_v551_bridge_rows
 from data.ddm_build_copy.ddm_v550_shards import shard_id_for
 from data.ddm_build_copy.ddm_v550_support import DEFAULT_SUPPORT_CAP
@@ -814,6 +824,23 @@ def parse_args() -> argparse.Namespace:
         help="Pre-harmonize the shared question cache once per country or in chunks before the question loop. 'off' preserves the legacy hot path.",
     )
     parser.add_argument(
+        "--shared-respondent-substrate-mode",
+        default="off",
+        choices=("off", "write"),
+        help="Write a permission-restricted shared V550/V550J respondent substrate from the one-query V550 extraction cache.",
+    )
+    parser.add_argument(
+        "--joint-configuration-registry-path",
+        default=None,
+        help="Bounded V550J registry used to extend the V550 extraction set with joint-required variables.",
+    )
+    parser.add_argument(
+        "--joint-configuration-id",
+        action="append",
+        default=[],
+        help="Optional joint configuration id filter; may be repeated.",
+    )
+    parser.add_argument(
         "--finalize-source",
         default="auto",
         choices=("auto", "memory", "checkpoint"),
@@ -1188,9 +1215,52 @@ def main() -> int:
 
         _log_progress(progress_started, "building question list 1/1")
         wave_question_rows = _build_question_list(scope_df, wave_question_mapping_df, args.limit_questions)
+        shared_selection: dict[str, Any] = {
+            "base_question_rows": wave_question_rows,
+            "joint_required_question_rows": pd.DataFrame(),
+            "union_question_rows": wave_question_rows,
+            "base_var_codes": wave_question_rows["var_code"].dropna().astype(str).str.upper().drop_duplicates().tolist() if "var_code" in wave_question_rows.columns else [],
+            "joint_required_var_codes": [],
+            "union_var_codes": wave_question_rows["var_code"].dropna().astype(str).str.upper().drop_duplicates().tolist() if "var_code" in wave_question_rows.columns else [],
+            "base_only_var_codes": wave_question_rows["var_code"].dropna().astype(str).str.upper().drop_duplicates().tolist() if "var_code" in wave_question_rows.columns else [],
+            "joint_only_var_codes": [],
+            "overlap_var_codes": [],
+            "joint_configuration_ids_by_var": {},
+            "applicable_joint_configuration_ids": [],
+        }
+        extraction_question_rows = wave_question_rows
+        joint_registry_hash = ""
+        joint_authority_release_id = ""
+        p3_authority_release_id = ""
+        if args.shared_respondent_substrate_mode != "off":
+            if args.v550_prepared_substrate_mode == "off":
+                raise RuntimeError("[V550_SHARED_SUBSTRATE_REQUIRES_PREPARED_CACHE] Use --v550-prepared-substrate-mode country or chunked.")
+            if args.joint_configuration_registry_path:
+                registry_path = Path(args.joint_configuration_registry_path)
+                registry = yaml.safe_load(registry_path.read_text(encoding="utf-8"))
+                if not isinstance(registry, dict):
+                    raise RuntimeError(f"Invalid joint configuration registry: {registry_path}")
+                joint_registry_hash = hashlib.sha256(json.dumps(registry, sort_keys=True, separators=(",", ":"), ensure_ascii=False, default=str).encode("utf-8")).hexdigest()
+                shared_selection = resolve_shared_substrate_requirements(
+                    wave_question_rows,
+                    registry,
+                    source=args.source,
+                    canonical_wave=canonical_wave,
+                    selected_configuration_ids=args.joint_configuration_id,
+                )
+                extraction_question_rows = shared_selection["union_question_rows"]
+                joint_authority_release_id = str(shared_selection.get("joint_configuration_authority_release_id", ""))
+                p3_authority_release_id = str(shared_selection.get("p3_authority_release_id", ""))
+                _log_progress(
+                    progress_started,
+                    "shared substrate selection: "
+                    f"base={len(shared_selection['base_var_codes'])} "
+                    f"joint_required={len(shared_selection['joint_required_var_codes'])} "
+                    f"union={len(shared_selection['union_var_codes'])}",
+                )
         scoped_response_map = _filter_response_map_for_wave(
             response_map,
-            wave_question_rows,
+            extraction_question_rows,
             source=args.source,
             wave=args.wave,
             canonical_wave=canonical_wave,
@@ -1214,7 +1284,7 @@ def main() -> int:
         if args.verbose:
             print(f"[v550shard +{time.monotonic() - progress_started:0.0f}s] questions={len(wave_question_rows)} countries={len(wave_country_filters)}", flush=True)
         _log_progress(progress_started, "processing questions 1/1")
-        question_row_cache = _prefetch_question_rows_by_country(conn, wave_question_rows, progress_started)
+        question_row_cache = _prefetch_question_rows_by_country(conn, extraction_question_rows, progress_started)
         _log_progress(progress_started, f"using shared response-country cache for question rows: countries={len(question_row_cache)}")
         question_row_cache, prepared_cache_stats = _prepare_v550_question_row_cache(
             question_row_cache,
@@ -1224,6 +1294,75 @@ def main() -> int:
             progress_started=progress_started,
         )
         prepared_substrate_mode = args.v550_prepared_substrate_mode != "off"
+        shared_substrate_outputs: list[dict[str, Any]] = []
+        if args.shared_respondent_substrate_mode == "write":
+            for country_code, country_frame in question_row_cache.items():
+                frame_for_substrate = country_frame.reset_index(drop=True) if hasattr(country_frame, "reset_index") else pd.DataFrame()
+                canonical_frame = canonicalize_shared_respondent_substrate(
+                    frame_for_substrate,
+                    run_id=args.run_id,
+                    shard_id=args.shard_id,
+                    source=args.source,
+                    source_id=args.source,
+                    wave=args.wave,
+                    canonical_wave=canonical_wave,
+                    country_code=str(country_code),
+                    base_var_codes=shared_selection["base_var_codes"],
+                    joint_required_var_codes=shared_selection["joint_required_var_codes"],
+                    joint_configuration_ids_by_var=shared_selection.get("joint_configuration_ids_by_var", {}),
+                )
+                paths = shared_substrate_paths(
+                    shard_paths.respondent_substrate,
+                    source=args.source,
+                    canonical_wave=canonical_wave,
+                    country_code=str(country_code),
+                )
+                manifest = write_shared_respondent_substrate_atomic(
+                    canonical_frame,
+                    paths,
+                    manifest_fields={
+                        "run_id": args.run_id,
+                        "shard_id": args.shard_id,
+                        "source": args.source,
+                        "source_id": args.source,
+                        "wave": args.wave,
+                        "canonical_wave": canonical_wave,
+                        "country_code": str(country_code),
+                        "response_semantics_contract_hash": response_semantics_contract,
+                        "question_family_registry_hash": joint_registry_hash,
+                        "joint_configuration_authority_release_id": joint_authority_release_id,
+                        "p3_authority_release_id": p3_authority_release_id,
+                        "respondent_relation_schema_hash": "",
+                        "schema_version": SHARED_SUBSTRATE_SCHEMA_VERSION,
+                        "execution_contract_version": SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION,
+                    },
+                    base_var_codes=shared_selection["base_var_codes"],
+                    joint_required_var_codes=shared_selection["joint_required_var_codes"],
+                )
+                shared_substrate_outputs.append(
+                    {
+                        "country_code": str(country_code),
+                        "parquet_path": str(paths.parquet_path),
+                        "manifest_path": str(paths.manifest_path),
+                        "validation_path": str(paths.validation_path),
+                        "complete_path": str(paths.complete_path),
+                        "content_hash": manifest.get("content_hash"),
+                        "row_count": manifest.get("row_count"),
+                    }
+                )
+            _write_json_report(
+                shard_paths.respondent_substrate / "shared_respondent_substrate_selection_audit.json",
+                {
+                    "run_id": args.run_id,
+                    "shard_id": args.shard_id,
+                    "base_var_codes": shared_selection["base_var_codes"],
+                    "joint_required_var_codes": shared_selection["joint_required_var_codes"],
+                    "union_var_codes": shared_selection["union_var_codes"],
+                    "overlap_var_codes": shared_selection["overlap_var_codes"],
+                    "joint_only_var_codes": shared_selection["joint_only_var_codes"],
+                    "outputs": shared_substrate_outputs,
+                },
+            )
         reset_attitude_cloud_state()
 
         completed_questions = 0
@@ -1808,6 +1947,13 @@ def main() -> int:
         manifest["response_option_map_row_count"] = int(len(scoped_response_map))
         manifest["response_option_map_artifact"] = str(shard_paths.core / "response_option_map.parquet")
         manifest["v550_prepared_substrate_mode"] = args.v550_prepared_substrate_mode
+        manifest["shared_respondent_substrate_mode"] = args.shared_respondent_substrate_mode
+        manifest["shared_respondent_substrate_outputs"] = shared_substrate_outputs
+        manifest["shared_respondent_substrate_base_var_codes"] = shared_selection["base_var_codes"]
+        manifest["shared_respondent_substrate_joint_required_var_codes"] = shared_selection["joint_required_var_codes"]
+        manifest["shared_respondent_substrate_union_var_codes"] = shared_selection["union_var_codes"]
+        manifest["shared_respondent_substrate_overlap_var_codes"] = shared_selection["overlap_var_codes"]
+        manifest["shared_respondent_substrate_joint_only_var_codes"] = shared_selection["joint_only_var_codes"]
         manifest["v550_harmonization_call_count_prepared"] = int(prepared_cache_stats["v550_harmonization_call_count_prepared"])
         manifest["v550_harmonization_row_count_prepared"] = int(prepared_cache_stats["v550_harmonization_row_count_prepared"])
         manifest["v550_harmonization_call_count_per_question"] = int(prepared_cache_stats["v550_harmonization_call_count_per_question"] + harmonization_call_count_hot_path)
