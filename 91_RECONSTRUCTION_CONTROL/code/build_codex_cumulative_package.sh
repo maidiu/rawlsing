@@ -21,8 +21,12 @@ DUMP_NAME="$(basename "$DUMP_PATH")"
 git -C "$ROOT" bundle create "$BUNDLE" --all
 GIT_PAGER=cat PAGER=cat TERM=dumb git -C "$ROOT" bundle verify "$BUNDLE" > "$STAGE/verification/GIT_BUNDLE_VERIFY.txt" 2>&1
 # Git-tracked tree only; full history is carried by the bundle.
-git -C "$ROOT" archive --format=tar HEAD | zstd -T0 -19 -q -o "$STAGE/payload/repository.tar.zst"
-tar --zstd -cf "$STAGE/payload/runtime.tar.zst" -C "$(dirname "$RUNTIME_DIR")" "$(basename "$RUNTIME_DIR")"
+git -C "$ROOT" archive --format=tar HEAD | zstd -T0 -6 -q -o "$STAGE/payload/repository.tar.zst"
+if [[ -f "${RUNTIME_DIR}.tar.zst" ]]; then
+  cp "${RUNTIME_DIR}.tar.zst" "$STAGE/payload/runtime.tar.zst"
+else
+  tar -cf - -C "$(dirname "$RUNTIME_DIR")" "$(basename "$RUNTIME_DIR")" | zstd -T0 -3 -q -o "$STAGE/payload/runtime.tar.zst"
+fi
 cp "$DUMP_PATH" "$STAGE/payload/$DUMP_NAME"
 META="$ROOT/91_RECONSTRUCTION_CONTROL/package_metadata/$CHECKPOINT"
 if [[ -d "$META" ]]; then cp -a "$META"/. "$STAGE"/; fi
@@ -73,7 +77,7 @@ cat > "$STAGE/verification/PACKAGE_RETURN.json" <<EOF
 }
 EOF
 rm -f "$OUTPUT_ZIP"
-(cd "$WORK" && zip -q -r -9 "$OUTPUT_ZIP" "$BASE")
+(cd "$WORK" && zip -q -r -0 "$OUTPUT_ZIP" "$BASE")
 unzip -tq "$OUTPUT_ZIP" > "${OUTPUT_ZIP}.unzip_test.txt"
 sha256sum "$OUTPUT_ZIP" > "${OUTPUT_ZIP}.sha256"
 echo "$OUTPUT_ZIP"
