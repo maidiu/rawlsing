@@ -1,0 +1,45 @@
+{
+  "database_state_persisted": false,
+  "failed": 0,
+  "method": "Each mutation ran in a separate transaction with trigger suppression limited to mutation construction; the governed assertion was then invoked explicitly and the transaction rolled back.",
+  "mutation_count": 5,
+  "mutations": [
+    {
+      "expected_failure_fragment": "lacks 1 collision dispositions",
+      "failure_was_rejected": true,
+      "mutation": "missing_collision_disposition",
+      "observed_error": "accepted collision-bearing candidate lacks 1 collision dispositions\nCONTEXT:  PL/pgSQL function p3_assert_replay_evidence_closure(text) line 10 at RAISE",
+      "status": "PASS"
+    },
+    {
+      "expected_failure_fragment": "lacks 1 stronger-boundary resolutions",
+      "failure_was_rejected": true,
+      "mutation": "missing_stronger_boundary_resolution",
+      "observed_error": "accepted candidate lacks 1 stronger-boundary resolutions\nCONTEXT:  PL/pgSQL function p3_assert_replay_evidence_closure(text) line 17 at RAISE",
+      "status": "PASS"
+    },
+    {
+      "expected_failure_fragment": "leaves 1 baseline pair obligations unresolved",
+      "failure_was_rejected": true,
+      "mutation": "missing_pair_obligation_resolution",
+      "observed_error": "adjudication P3ADJ-000001 leaves 1 baseline pair obligations unresolved\nCONTEXT:  PL/pgSQL function p3_assert_replay_evidence_closure(text) line 7 at RAISE",
+      "status": "PASS"
+    },
+    {
+      "expected_failure_fragment": "canonical revision is not predecessor union disjoint accepts",
+      "failure_was_rejected": true,
+      "mutation": "broken_predecessor_union",
+      "observed_error": "canonical revision is not predecessor union disjoint accepts: missing 1, extra 0\nCONTEXT:  PL/pgSQL function p3_assert_canonical_promotion_closure(text) line 18 at RAISE",
+      "status": "PASS"
+    },
+    {
+      "expected_failure_fragment": "split successor partition invalid",
+      "failure_was_rejected": true,
+      "mutation": "incomplete_split_partition",
+      "observed_error": "split successor partition invalid\nCONTEXT:  PL/pgSQL function p3_assert_split_result_partition(text) line 11 at RAISE",
+      "status": "PASS"
+    }
+  ],
+  "passed": 5,
+  "status": "PASS"
+}

@@ -25,3 +25,13 @@
 - Independently established 111 proposition-family member sets through two reviewed cross-component convergences and one direct/constructed prayer partition.
 - Corrected the corrupted recovery claim: candidate 273 is business-and-industry management and extends family 219.
 - No P3C adjudication rows have yet been written to PostgreSQL.
+
+## 2026-08-02 — Section 84 governed P3C replay closed
+
+- Installed the narrow P3C replay contract at R41 and replayed 143 decisions through promoted release R184.
+- Closed 345/345 obligations; produced 111 canonical families, 142 revisions, 397 current members, 464 response-form variants, 153 replay exclusions, 2 collision dispositions, 10 stronger-boundary resolutions, and 2 exact split successors.
+- Added deterministic validation hashes, deterministic release timestamps, and complete change-ledger coverage for all 2,455 replay-allocated objects.
+- Post-close query matrix 56/56 PASS; structural verifier 37/37 PASS; mutation suite 5/5 PASS.
+- Two independent clean databases matched across all 93 public table row sets.
+- Custom-format checkpoint dump restored with all 93 table row sets identical and regenerated all authority exports byte-for-byte.
+- P3C is closed. Next: canonical non-GSS J-family authority in the existing GSS-compatible schema.

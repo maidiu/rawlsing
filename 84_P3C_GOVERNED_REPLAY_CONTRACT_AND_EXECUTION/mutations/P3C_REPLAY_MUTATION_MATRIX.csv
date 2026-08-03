@@ -1,0 +1,11 @@
+mutation,status,failure_was_rejected,expected_failure_fragment,observed_error
+missing_collision_disposition,PASS,True,lacks 1 collision dispositions,"accepted collision-bearing candidate lacks 1 collision dispositions
+CONTEXT:  PL/pgSQL function p3_assert_replay_evidence_closure(text) line 10 at RAISE"
+missing_stronger_boundary_resolution,PASS,True,lacks 1 stronger-boundary resolutions,"accepted candidate lacks 1 stronger-boundary resolutions
+CONTEXT:  PL/pgSQL function p3_assert_replay_evidence_closure(text) line 17 at RAISE"
+missing_pair_obligation_resolution,PASS,True,leaves 1 baseline pair obligations unresolved,"adjudication P3ADJ-000001 leaves 1 baseline pair obligations unresolved
+CONTEXT:  PL/pgSQL function p3_assert_replay_evidence_closure(text) line 7 at RAISE"
+broken_predecessor_union,PASS,True,canonical revision is not predecessor union disjoint accepts,"canonical revision is not predecessor union disjoint accepts: missing 1, extra 0
+CONTEXT:  PL/pgSQL function p3_assert_canonical_promotion_closure(text) line 18 at RAISE"
+incomplete_split_partition,PASS,True,split successor partition invalid,"split successor partition invalid
+CONTEXT:  PL/pgSQL function p3_assert_split_result_partition(text) line 11 at RAISE"
