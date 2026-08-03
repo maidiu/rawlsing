@@ -1,0 +1,722 @@
+;
+; Archive created at 2026-08-03 00:43:27 UTC
+;     dbname: rawlsing_p3c_work
+;     TOC Entries: 711
+;     Compression: -1
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 15.18 (Debian 15.18-1.pgdg12+1)
+;     Dumped by pg_dump version: 15.18 (Debian 15.18-1.pgdg12+1)
+;
+;
+; Selected TOC Entries:
+;
+7; 2615 16422 SCHEMA - p3a_build_stage oai
+2; 3079 16385 EXTENSION - pgcrypto 
+4625; 0 0 COMMENT - EXTENSION pgcrypto 
+374; 1255 18416 FUNCTION public p3_assert_adjudication_member_partition(text) oai
+373; 1255 18415 FUNCTION public p3_assert_candidate_origin(text) oai
+376; 1255 18418 FUNCTION public p3_assert_canonical_promotion_closure(text) oai
+375; 1255 18417 FUNCTION public p3_assert_split_result_partition(text) oai
+356; 1255 18313 FUNCTION public p3_enforce_identity_contract() oai
+344; 1255 18312 FUNCTION public p3_enforce_object_reference_type() oai
+343; 1255 18311 FUNCTION public p3_enforce_vocab_code() oai
+342; 1255 18323 FUNCTION public p3_forbid_update_delete() oai
+359; 1255 18316 FUNCTION public p3_guard_object_registry_mutation() oai
+369; 1255 18327 PROCEDURE public p3_install_contract_triggers(text) oai
+378; 1255 18428 FUNCTION public p3_validate_adjudication_closure_deferred() oai
+363; 1255 18319 FUNCTION public p3_validate_adjudication_completeness() oai
+377; 1255 18419 FUNCTION public p3_validate_candidate_origin_deferred() oai
+370; 1255 18382 FUNCTION public p3_validate_candidate_snapshot_closure() oai
+360; 1255 18324 FUNCTION public p3_validate_candidate_status_event() oai
+361; 1255 18317 FUNCTION public p3_validate_component_closure() oai
+371; 1255 18393 FUNCTION public p3_validate_family_semantic_origin_key() oai
+364; 1255 18320 FUNCTION public p3_validate_genealogy_cardinality() oai
+358; 1255 18315 FUNCTION public p3_validate_hyperedge_cardinality() oai
+357; 1255 18314 FUNCTION public p3_validate_hyperedge_member_type() oai
+362; 1255 18318 FUNCTION public p3_validate_internal_pair_closure() oai
+365; 1255 18321 FUNCTION public p3_validate_pair_endpoint_resolution() oai
+372; 1255 18413 FUNCTION public p3_validate_pair_projection() oai
+368; 1255 18326 FUNCTION public p3_validate_promotion_pointer() oai
+367; 1255 18325 FUNCTION public p3_validate_release_status_event() oai
+366; 1255 18322 FUNCTION public p3_validate_segment_membership() oai
+248; 1259 17114 TABLE p3a_build_stage candidate_evidence_bundle oai
+278; 1259 17792 TABLE public p3_adjudication_collision_disposition oai
+276; 1259 17729 TABLE public p3_adjudication_decision oai
+279; 1259 17809 TABLE public p3_adjudication_hierarchy_relation oai
+277; 1259 17769 TABLE public p3_adjudication_member oai
+281; 1259 17844 TABLE public p3_adjudication_split_member oai
+280; 1259 17831 TABLE public p3_adjudication_split_point oai
+283; 1259 17886 TABLE public p3_adjudication_split_result oai
+284; 1259 17907 TABLE public p3_adjudication_split_result_member oai
+282; 1259 17862 TABLE public p3_adjudication_unresolved_boundary oai
+216; 1259 16423 TABLE public p3_authority_release oai
+259; 1259 17349 TABLE public p3_candidate_attachment_projection oai
+241; 1259 16946 TABLE public p3_candidate_component oai
+257; 1259 17308 TABLE public p3_candidate_component_link oai
+253; 1259 17209 TABLE public p3_candidate_component_semantic_binding oai
+252; 1259 17197 TABLE public p3_candidate_component_semantic_identity oai
+260; 1259 17372 TABLE public p3_candidate_diagnostic_flag oai
+247; 1259 17095 TABLE public p3_candidate_evidence_snapshot oai
+244; 1259 17006 TABLE public p3_candidate_family oai
+249; 1259 17127 TABLE public p3_candidate_family_origin_ledger oai
+254; 1259 17231 TABLE public p3_candidate_family_semantic_origin oai
+301; 1259 18273 TABLE public p3_candidate_lifecycle_transition oai
+258; 1259 17325 TABLE public p3_candidate_membership oai
+261; 1259 17385 TABLE public p3_candidate_ranking oai
+246; 1259 17058 TABLE public p3_candidate_revision oai
+256; 1259 17285 TABLE public p3_candidate_status_event oai
+305; 1259 18408 VIEW public p3_candidate_revision_current_stage oai
+255; 1259 17259 TABLE public p3_candidate_revision_genealogy oai
+287; 1259 17972 TABLE public p3_canonical_family oai
+289; 1259 18039 TABLE public p3_canonical_family_membership oai
+288; 1259 17999 TABLE public p3_canonical_family_revision oai
+299; 1259 18249 TABLE public p3_categorical_field_binding oai
+267; 1259 17529 TABLE public p3_closure_obligation oai
+240; 1259 16934 TABLE public p3_collision_authority_source oai
+239; 1259 16903 TABLE public p3_collision_scope_registry oai
+243; 1259 16984 TABLE public p3_component_connectivity_edge oai
+242; 1259 16967 TABLE public p3_component_membership oai
+218; 1259 16454 TABLE public p3_runtime_promotion_pointer oai
+304; 1259 18404 VIEW public p3_current_promoted_release oai
+294; 1259 18156 TABLE public p3_dependency_edge oai
+290; 1259 18076 TABLE public p3_doctrine_delta oai
+291; 1259 18098 TABLE public p3_doctrine_delta_affected_object oai
+273; 1259 17676 TABLE public p3_excluded_object oai
+286; 1259 17948 TABLE public p3_exclusion_promotion oai
+297; 1259 18224 TABLE public p3_failure_ledger oai
+272; 1259 17652 TABLE public p3_family_exclusion oai
+292; 1259 18115 TABLE public p3_family_genealogy oai
+293; 1259 18138 TABLE public p3_family_genealogy_member oai
+269; 1259 17583 TABLE public p3_family_variant oai
+270; 1259 17605 TABLE public p3_family_variant_revision oai
+245; 1259 17023 TABLE public p3_frozen_historical_candidate_identity oai
+274; 1259 17693 TABLE public p3_hyperedge oai
+275; 1259 17712 TABLE public p3_hyperedge_membership oai
+303; 1259 18297 TABLE public p3_hyperedge_role_type_contract oai
+300; 1259 18261 TABLE public p3_identity_key_contract oai
+223; 1259 16546 TABLE public p3_imported_lineage_membership oai
+268; 1259 17566 TABLE public p3_internal_pair_closure oai
+263; 1259 17441 TABLE public p3_internal_pair_collision oai
+266; 1259 17505 TABLE public p3_internal_pair_coordinate_constraint oai
+262; 1259 17411 TABLE public p3_internal_pair_matrix oai
+265; 1259 17482 TABLE public p3_internal_pair_redirect_boundary oai
+264; 1259 17458 TABLE public p3_internal_pair_unresolved_boundary oai
+225; 1259 16592 TABLE public p3_lineage_disposition oai
+224; 1259 16573 TABLE public p3_lineage_participation oai
+226; 1259 16618 TABLE public p3_lineage_segment oai
+227; 1259 16641 TABLE public p3_lineage_segment_member oai
+298; 1259 18237 TABLE public p3_object_reference_type_contract oai
+221; 1259 16506 TABLE public p3_object_registry oai
+236; 1259 16825 TABLE public p3_pair_endpoint_resolution oai
+237; 1259 16850 TABLE public p3_pair_endpoint_resolved_subject oai
+233; 1259 16763 TABLE public p3_pair_fact_bundle oai
+235; 1259 16812 TABLE public p3_pair_fact_evidence oai
+234; 1259 16798 TABLE public p3_pair_fact_source_authority oai
+238; 1259 16867 TABLE public p3_pair_projection oai
+251; 1259 17175 TABLE public p3_pair_projection_semantic_binding oai
+250; 1259 17148 TABLE public p3_pair_projection_semantic_identity oai
+228; 1259 16661 TABLE public p3_proposition_signature oai
+296; 1259 18204 TABLE public p3_release_change_ledger oai
+302; 1259 18285 TABLE public p3_release_lifecycle_transition oai
+295; 1259 18186 TABLE public p3_release_object_snapshot oai
+217; 1259 16439 TABLE public p3_release_status_event oai
+231; 1259 16714 TABLE public p3_response_contract_reference oai
+229; 1259 16687 TABLE public p3_signature_field oai
+230; 1259 16702 TABLE public p3_signature_field_evidence oai
+232; 1259 16739 TABLE public p3_structural_context_reference oai
+222; 1259 16529 TABLE public p3_upstream_object_reference oai
+271; 1259 17635 TABLE public p3_variant_membership oai
+285; 1259 17924 TABLE public p3_variant_promotion oai
+219; 1259 16471 TABLE public p3_vocabulary_code oai
+220; 1259 16488 TABLE public p3_vocabulary_revision oai
+4563; 0 17114 TABLE DATA p3a_build_stage candidate_evidence_bundle oai
+4593; 0 17792 TABLE DATA public p3_adjudication_collision_disposition oai
+4591; 0 17729 TABLE DATA public p3_adjudication_decision oai
+4594; 0 17809 TABLE DATA public p3_adjudication_hierarchy_relation oai
+4592; 0 17769 TABLE DATA public p3_adjudication_member oai
+4596; 0 17844 TABLE DATA public p3_adjudication_split_member oai
+4595; 0 17831 TABLE DATA public p3_adjudication_split_point oai
+4598; 0 17886 TABLE DATA public p3_adjudication_split_result oai
+4599; 0 17907 TABLE DATA public p3_adjudication_split_result_member oai
+4597; 0 17862 TABLE DATA public p3_adjudication_unresolved_boundary oai
+4531; 0 16423 TABLE DATA public p3_authority_release oai
+4574; 0 17349 TABLE DATA public p3_candidate_attachment_projection oai
+4556; 0 16946 TABLE DATA public p3_candidate_component oai
+4572; 0 17308 TABLE DATA public p3_candidate_component_link oai
+4568; 0 17209 TABLE DATA public p3_candidate_component_semantic_binding oai
+4567; 0 17197 TABLE DATA public p3_candidate_component_semantic_identity oai
+4575; 0 17372 TABLE DATA public p3_candidate_diagnostic_flag oai
+4562; 0 17095 TABLE DATA public p3_candidate_evidence_snapshot oai
+4559; 0 17006 TABLE DATA public p3_candidate_family oai
+4564; 0 17127 TABLE DATA public p3_candidate_family_origin_ledger oai
+4569; 0 17231 TABLE DATA public p3_candidate_family_semantic_origin oai
+4616; 0 18273 TABLE DATA public p3_candidate_lifecycle_transition oai
+4573; 0 17325 TABLE DATA public p3_candidate_membership oai
+4576; 0 17385 TABLE DATA public p3_candidate_ranking oai
+4561; 0 17058 TABLE DATA public p3_candidate_revision oai
+4570; 0 17259 TABLE DATA public p3_candidate_revision_genealogy oai
+4571; 0 17285 TABLE DATA public p3_candidate_status_event oai
+4602; 0 17972 TABLE DATA public p3_canonical_family oai
+4604; 0 18039 TABLE DATA public p3_canonical_family_membership oai
+4603; 0 17999 TABLE DATA public p3_canonical_family_revision oai
+4614; 0 18249 TABLE DATA public p3_categorical_field_binding oai
+4582; 0 17529 TABLE DATA public p3_closure_obligation oai
+4555; 0 16934 TABLE DATA public p3_collision_authority_source oai
+4554; 0 16903 TABLE DATA public p3_collision_scope_registry oai
+4558; 0 16984 TABLE DATA public p3_component_connectivity_edge oai
+4557; 0 16967 TABLE DATA public p3_component_membership oai
+4609; 0 18156 TABLE DATA public p3_dependency_edge oai
+4605; 0 18076 TABLE DATA public p3_doctrine_delta oai
+4606; 0 18098 TABLE DATA public p3_doctrine_delta_affected_object oai
+4588; 0 17676 TABLE DATA public p3_excluded_object oai
+4601; 0 17948 TABLE DATA public p3_exclusion_promotion oai
+4612; 0 18224 TABLE DATA public p3_failure_ledger oai
+4587; 0 17652 TABLE DATA public p3_family_exclusion oai
+4607; 0 18115 TABLE DATA public p3_family_genealogy oai
+4608; 0 18138 TABLE DATA public p3_family_genealogy_member oai
+4584; 0 17583 TABLE DATA public p3_family_variant oai
+4585; 0 17605 TABLE DATA public p3_family_variant_revision oai
+4560; 0 17023 TABLE DATA public p3_frozen_historical_candidate_identity oai
+4589; 0 17693 TABLE DATA public p3_hyperedge oai
+4590; 0 17712 TABLE DATA public p3_hyperedge_membership oai
+4618; 0 18297 TABLE DATA public p3_hyperedge_role_type_contract oai
+4615; 0 18261 TABLE DATA public p3_identity_key_contract oai
+4538; 0 16546 TABLE DATA public p3_imported_lineage_membership oai
+4583; 0 17566 TABLE DATA public p3_internal_pair_closure oai
+4578; 0 17441 TABLE DATA public p3_internal_pair_collision oai
+4581; 0 17505 TABLE DATA public p3_internal_pair_coordinate_constraint oai
+4577; 0 17411 TABLE DATA public p3_internal_pair_matrix oai
+4580; 0 17482 TABLE DATA public p3_internal_pair_redirect_boundary oai
+4579; 0 17458 TABLE DATA public p3_internal_pair_unresolved_boundary oai
+4540; 0 16592 TABLE DATA public p3_lineage_disposition oai
+4539; 0 16573 TABLE DATA public p3_lineage_participation oai
+4541; 0 16618 TABLE DATA public p3_lineage_segment oai
+4542; 0 16641 TABLE DATA public p3_lineage_segment_member oai
+4613; 0 18237 TABLE DATA public p3_object_reference_type_contract oai
+4536; 0 16506 TABLE DATA public p3_object_registry oai
+4551; 0 16825 TABLE DATA public p3_pair_endpoint_resolution oai
+4552; 0 16850 TABLE DATA public p3_pair_endpoint_resolved_subject oai
+4548; 0 16763 TABLE DATA public p3_pair_fact_bundle oai
+4550; 0 16812 TABLE DATA public p3_pair_fact_evidence oai
+4549; 0 16798 TABLE DATA public p3_pair_fact_source_authority oai
+4553; 0 16867 TABLE DATA public p3_pair_projection oai
+4566; 0 17175 TABLE DATA public p3_pair_projection_semantic_binding oai
+4565; 0 17148 TABLE DATA public p3_pair_projection_semantic_identity oai
+4543; 0 16661 TABLE DATA public p3_proposition_signature oai
+4611; 0 18204 TABLE DATA public p3_release_change_ledger oai
+4617; 0 18285 TABLE DATA public p3_release_lifecycle_transition oai
+4610; 0 18186 TABLE DATA public p3_release_object_snapshot oai
+4532; 0 16439 TABLE DATA public p3_release_status_event oai
+4546; 0 16714 TABLE DATA public p3_response_contract_reference oai
+4533; 0 16454 TABLE DATA public p3_runtime_promotion_pointer oai
+4544; 0 16687 TABLE DATA public p3_signature_field oai
+4545; 0 16702 TABLE DATA public p3_signature_field_evidence oai
+4547; 0 16739 TABLE DATA public p3_structural_context_reference oai
+4537; 0 16529 TABLE DATA public p3_upstream_object_reference oai
+4586; 0 17635 TABLE DATA public p3_variant_membership oai
+4600; 0 17924 TABLE DATA public p3_variant_promotion oai
+4534; 0 16471 TABLE DATA public p3_vocabulary_code oai
+4535; 0 16488 TABLE DATA public p3_vocabulary_revision oai
+3863; 2606 17126 CONSTRAINT p3a_build_stage candidate_evidence_bundle candidate_evidence_bundle_candidate_revision_id_evidence_bu_key oai
+3865; 2606 17124 CONSTRAINT p3a_build_stage candidate_evidence_bundle candidate_evidence_bundle_pkey oai
+3939; 2606 17798 CONSTRAINT public p3_adjudication_collision_disposition p3_adjudication_collision_disposition_pkey oai
+3933; 2606 17742 CONSTRAINT public p3_adjudication_decision p3_adjudication_decision_candidate_revision_id_decision_ord_key oai
+3935; 2606 17740 CONSTRAINT public p3_adjudication_decision p3_adjudication_decision_pkey oai
+3941; 2606 17815 CONSTRAINT public p3_adjudication_hierarchy_relation p3_adjudication_hierarchy_relation_pkey oai
+3937; 2606 17776 CONSTRAINT public p3_adjudication_member p3_adjudication_member_pkey oai
+3945; 2606 17851 CONSTRAINT public p3_adjudication_split_member p3_adjudication_split_member_pkey oai
+3943; 2606 17838 CONSTRAINT public p3_adjudication_split_point p3_adjudication_split_point_pkey oai
+3949; 2606 17896 CONSTRAINT public p3_adjudication_split_result p3_adjudication_split_result_adjudication_id_successor_cand_key oai
+3953; 2606 17913 CONSTRAINT public p3_adjudication_split_result_member p3_adjudication_split_result_member_pkey oai
+3951; 2606 17894 CONSTRAINT public p3_adjudication_split_result p3_adjudication_split_result_pkey oai
+3947; 2606 17870 CONSTRAINT public p3_adjudication_unresolved_boundary p3_adjudication_unresolved_boundary_pkey oai
+3772; 2606 16433 CONSTRAINT public p3_authority_release p3_authority_release_pkey oai
+3893; 2606 17356 CONSTRAINT public p3_candidate_attachment_projection p3_candidate_attachment_projection_pkey oai
+3889; 2606 17314 CONSTRAINT public p3_candidate_component_link p3_candidate_component_link_pkey oai
+3841; 2606 16956 CONSTRAINT public p3_candidate_component p3_candidate_component_pkey oai
+3879; 2606 17215 CONSTRAINT public p3_candidate_component_semantic_binding p3_candidate_component_semantic_binding_pkey oai
+3877; 2606 17208 CONSTRAINT public p3_candidate_component_semantic_identity p3_candidate_component_semantic_identity_pkey oai
+3895; 2606 17379 CONSTRAINT public p3_candidate_diagnostic_flag p3_candidate_diagnostic_flag_pkey oai
+3861; 2606 17103 CONSTRAINT public p3_candidate_evidence_snapshot p3_candidate_evidence_snapshot_pkey oai
+3867; 2606 17137 CONSTRAINT public p3_candidate_family_origin_ledger p3_candidate_family_origin_le_authority_release_id_family_o_key oai
+3869; 2606 17135 CONSTRAINT public p3_candidate_family_origin_ledger p3_candidate_family_origin_ledger_pkey oai
+3847; 2606 17012 CONSTRAINT public p3_candidate_family p3_candidate_family_pkey oai
+3881; 2606 17241 CONSTRAINT public p3_candidate_family_semantic_origin p3_candidate_family_semantic_origin_pkey oai
+3883; 2606 17243 CONSTRAINT public p3_candidate_family_semantic_origin p3_candidate_family_semantic_origin_semantic_origin_key_key oai
+3999; 2606 18279 CONSTRAINT public p3_candidate_lifecycle_transition p3_candidate_lifecycle_transi_from_stage_to_stage_authority_key oai
+3891; 2606 17333 CONSTRAINT public p3_candidate_membership p3_candidate_membership_pkey oai
+3897; 2606 17400 CONSTRAINT public p3_candidate_ranking p3_candidate_ranking_pkey oai
+3853; 2606 17074 CONSTRAINT public p3_candidate_revision p3_candidate_revision_authority_release_id_origin_key_key oai
+3855; 2606 17072 CONSTRAINT public p3_candidate_revision p3_candidate_revision_candidate_family_id_authority_release_key oai
+3857; 2606 17070 CONSTRAINT public p3_candidate_revision p3_candidate_revision_candidate_family_id_revision_number_key oai
+3885; 2606 17269 CONSTRAINT public p3_candidate_revision_genealogy p3_candidate_revision_genealogy_pkey oai
+3859; 2606 17068 CONSTRAINT public p3_candidate_revision p3_candidate_revision_pkey oai
+3887; 2606 17292 CONSTRAINT public p3_candidate_status_event p3_candidate_status_event_pkey oai
+3973; 2606 18045 CONSTRAINT public p3_canonical_family_membership p3_canonical_family_membership_pkey oai
+3963; 2606 17978 CONSTRAINT public p3_canonical_family p3_canonical_family_pkey oai
+3965; 2606 18013 CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_canonical_family_id_authority__key oai
+3967; 2606 18011 CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_canonical_family_id_revision_n_key oai
+3969; 2606 18009 CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_created_by_adjudication_id_key oai
+3971; 2606 18007 CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_pkey oai
+3995; 2606 18255 CONSTRAINT public p3_categorical_field_binding p3_categorical_field_binding_pkey oai
+3909; 2606 17540 CONSTRAINT public p3_closure_obligation p3_closure_obligation_candidate_revision_id_left_object_id__key oai
+3911; 2606 17538 CONSTRAINT public p3_closure_obligation p3_closure_obligation_pkey oai
+3839; 2606 16940 CONSTRAINT public p3_collision_authority_source p3_collision_authority_source_pkey oai
+3837; 2606 16913 CONSTRAINT public p3_collision_scope_registry p3_collision_scope_registry_pkey oai
+3845; 2606 16990 CONSTRAINT public p3_component_connectivity_edge p3_component_connectivity_edge_pkey oai
+3843; 2606 16973 CONSTRAINT public p3_component_membership p3_component_membership_pkey oai
+3983; 2606 18165 CONSTRAINT public p3_dependency_edge p3_dependency_edge_dependent_id_authority_input_id_dependen_key oai
+3985; 2606 18163 CONSTRAINT public p3_dependency_edge p3_dependency_edge_pkey oai
+3977; 2606 18104 CONSTRAINT public p3_doctrine_delta_affected_object p3_doctrine_delta_affected_object_pkey oai
+3975; 2606 18082 CONSTRAINT public p3_doctrine_delta p3_doctrine_delta_pkey oai
+3927; 2606 17682 CONSTRAINT public p3_excluded_object p3_excluded_object_pkey oai
+3959; 2606 17956 CONSTRAINT public p3_exclusion_promotion p3_exclusion_promotion_canonical_exclusion_id_key oai
+3961; 2606 17954 CONSTRAINT public p3_exclusion_promotion p3_exclusion_promotion_pkey oai
+3991; 2606 18231 CONSTRAINT public p3_failure_ledger p3_failure_ledger_pkey oai
+3925; 2606 17660 CONSTRAINT public p3_family_exclusion p3_family_exclusion_pkey oai
+3981; 2606 18145 CONSTRAINT public p3_family_genealogy_member p3_family_genealogy_member_pkey oai
+3979; 2606 18122 CONSTRAINT public p3_family_genealogy p3_family_genealogy_pkey oai
+3915; 2606 17589 CONSTRAINT public p3_family_variant p3_family_variant_pkey oai
+3917; 2606 17615 CONSTRAINT public p3_family_variant_revision p3_family_variant_revision_pkey oai
+3919; 2606 17619 CONSTRAINT public p3_family_variant_revision p3_family_variant_revision_variant_id_authority_release_id_key oai
+3921; 2606 17617 CONSTRAINT public p3_family_variant_revision p3_family_variant_revision_variant_id_revision_number_key oai
+3849; 2606 17042 CONSTRAINT public p3_frozen_historical_candidate_identity p3_frozen_historical_candidat_historical_object_type_histor_key oai
+3851; 2606 17040 CONSTRAINT public p3_frozen_historical_candidate_identity p3_frozen_historical_candidate_identity_pkey oai
+3931; 2606 17718 CONSTRAINT public p3_hyperedge_membership p3_hyperedge_membership_pkey oai
+3929; 2606 17701 CONSTRAINT public p3_hyperedge p3_hyperedge_pkey oai
+4003; 2606 18305 CONSTRAINT public p3_hyperedge_role_type_contract p3_hyperedge_role_type_contract_pkey oai
+3997; 2606 18267 CONSTRAINT public p3_identity_key_contract p3_identity_key_contract_pkey oai
+3794; 2606 16555 CONSTRAINT public p3_imported_lineage_membership p3_imported_lineage_membershi_implementation_id_authority_r_key oai
+3796; 2606 16557 CONSTRAINT public p3_imported_lineage_membership p3_imported_lineage_membershi_lineage_id_ordinal_position_a_key oai
+3798; 2606 16553 CONSTRAINT public p3_imported_lineage_membership p3_imported_lineage_membership_pkey oai
+3913; 2606 17572 CONSTRAINT public p3_internal_pair_closure p3_internal_pair_closure_pkey oai
+3901; 2606 17447 CONSTRAINT public p3_internal_pair_collision p3_internal_pair_collision_pkey oai
+3907; 2606 17513 CONSTRAINT public p3_internal_pair_coordinate_constraint p3_internal_pair_coordinate_constraint_pkey oai
+3899; 2606 17420 CONSTRAINT public p3_internal_pair_matrix p3_internal_pair_matrix_pkey oai
+3905; 2606 17489 CONSTRAINT public p3_internal_pair_redirect_boundary p3_internal_pair_redirect_boundary_pkey oai
+3903; 2606 17466 CONSTRAINT public p3_internal_pair_unresolved_boundary p3_internal_pair_unresolved_boundary_pkey oai
+3802; 2606 16602 CONSTRAINT public p3_lineage_disposition p3_lineage_disposition_pkey oai
+3800; 2606 16581 CONSTRAINT public p3_lineage_participation p3_lineage_participation_pkey oai
+3806; 2606 16648 CONSTRAINT public p3_lineage_segment_member p3_lineage_segment_member_pkey oai
+3808; 2606 16650 CONSTRAINT public p3_lineage_segment_member p3_lineage_segment_member_segment_id_ordinal_position_key oai
+3804; 2606 16625 CONSTRAINT public p3_lineage_segment p3_lineage_segment_pkey oai
+3993; 2606 18243 CONSTRAINT public p3_object_reference_type_contract p3_object_reference_type_contract_pkey oai
+3784; 2606 16516 CONSTRAINT public p3_object_registry p3_object_registry_idempotency_key_key oai
+3786; 2606 16518 CONSTRAINT public p3_object_registry p3_object_registry_object_id_object_type_key oai
+3788; 2606 16514 CONSTRAINT public p3_object_registry p3_object_registry_pkey oai
+3829; 2606 16834 CONSTRAINT public p3_pair_endpoint_resolution p3_pair_endpoint_resolution_pkey oai
+3831; 2606 16856 CONSTRAINT public p3_pair_endpoint_resolved_subject p3_pair_endpoint_resolved_subject_pkey oai
+3822; 2606 16777 CONSTRAINT public p3_pair_fact_bundle p3_pair_fact_bundle_pkey oai
+3827; 2606 16819 CONSTRAINT public p3_pair_fact_evidence p3_pair_fact_evidence_pkey oai
+3825; 2606 16805 CONSTRAINT public p3_pair_fact_source_authority p3_pair_fact_source_authority_pkey oai
+3833; 2606 16877 CONSTRAINT public p3_pair_projection p3_pair_projection_pair_fact_id_left_subject_id_right_subje_key oai
+3835; 2606 16875 CONSTRAINT public p3_pair_projection p3_pair_projection_pkey oai
+3875; 2606 17181 CONSTRAINT public p3_pair_projection_semantic_binding p3_pair_projection_semantic_binding_pkey oai
+3871; 2606 17159 CONSTRAINT public p3_pair_projection_semantic_identity p3_pair_projection_semantic_i_pair_fact_id_left_subject_id__key oai
+3873; 2606 17157 CONSTRAINT public p3_pair_projection_semantic_identity p3_pair_projection_semantic_identity_pkey oai
+3810; 2606 16669 CONSTRAINT public p3_proposition_signature p3_proposition_signature_pkey oai
+3812; 2606 16671 CONSTRAINT public p3_proposition_signature p3_proposition_signature_subject_id_authority_release_id_key oai
+3989; 2606 18213 CONSTRAINT public p3_release_change_ledger p3_release_change_ledger_pkey oai
+4001; 2606 18291 CONSTRAINT public p3_release_lifecycle_transition p3_release_lifecycle_transiti_from_status_to_status_authori_key oai
+3987; 2606 18193 CONSTRAINT public p3_release_object_snapshot p3_release_object_snapshot_pkey oai
+3774; 2606 16448 CONSTRAINT public p3_release_status_event p3_release_status_event_pkey oai
+3818; 2606 16723 CONSTRAINT public p3_response_contract_reference p3_response_contract_reference_pkey oai
+3776; 2606 16463 CONSTRAINT public p3_runtime_promotion_pointer p3_runtime_promotion_pointer_pkey oai
+3778; 2606 16465 CONSTRAINT public p3_runtime_promotion_pointer p3_runtime_promotion_pointer_promoted_release_id_key oai
+3816; 2606 16708 CONSTRAINT public p3_signature_field_evidence p3_signature_field_evidence_pkey oai
+3814; 2606 16696 CONSTRAINT public p3_signature_field p3_signature_field_pkey oai
+3820; 2606 16747 CONSTRAINT public p3_structural_context_reference p3_structural_context_reference_pkey oai
+3790; 2606 16538 CONSTRAINT public p3_upstream_object_reference p3_upstream_object_reference_pkey oai
+3792; 2606 16540 CONSTRAINT public p3_upstream_object_reference p3_upstream_object_reference_upstream_phase_upstream_object_key oai
+3923; 2606 17641 CONSTRAINT public p3_variant_membership p3_variant_membership_pkey oai
+3955; 2606 17932 CONSTRAINT public p3_variant_promotion p3_variant_promotion_canonical_variant_revision_id_key oai
+3957; 2606 17930 CONSTRAINT public p3_variant_promotion p3_variant_promotion_pkey oai
+3780; 2606 16477 CONSTRAINT public p3_vocabulary_code p3_vocabulary_code_pkey oai
+3782; 2606 16495 CONSTRAINT public p3_vocabulary_revision p3_vocabulary_revision_pkey oai
+3823; 1259 16811 INDEX public p3_pair_fact_one_governing_source oai
+4348; 2620 18376 TRIGGER public p3_adjudication_collision_disposition p3_adjudication_collision_immutable oai
+4338; 2620 18360 TRIGGER public p3_adjudication_decision p3_adjudication_decision_complete oai
+4339; 2620 18374 TRIGGER public p3_adjudication_decision p3_adjudication_decision_immutable oai
+4349; 2620 18364 TRIGGER public p3_adjudication_hierarchy_relation p3_adjudication_hierarchy_complete oai
+4350; 2620 18377 TRIGGER public p3_adjudication_hierarchy_relation p3_adjudication_hierarchy_immutable oai
+4343; 2620 18362 TRIGGER public p3_adjudication_member p3_adjudication_member_complete oai
+4344; 2620 18375 TRIGGER public p3_adjudication_member p3_adjudication_member_immutable oai
+4367; 2620 18435 TRIGGER public p3_canonical_family_membership p3_adjudication_partition_canonical_closure oai
+4340; 2620 18429 TRIGGER public p3_adjudication_decision p3_adjudication_partition_decision_closure oai
+4365; 2620 18439 TRIGGER public p3_exclusion_promotion p3_adjudication_partition_exclusion_promotion_closure oai
+4345; 2620 18431 TRIGGER public p3_adjudication_member p3_adjudication_partition_member_closure oai
+4362; 2620 18433 TRIGGER public p3_adjudication_split_result_member p3_adjudication_partition_split_closure oai
+4364; 2620 18437 TRIGGER public p3_variant_promotion p3_adjudication_partition_variant_promotion_closure oai
+4353; 2620 18366 TRIGGER public p3_adjudication_split_point p3_adjudication_split_complete oai
+4355; 2620 18379 TRIGGER public p3_adjudication_split_member p3_adjudication_split_member_immutable oai
+4354; 2620 18378 TRIGGER public p3_adjudication_split_point p3_adjudication_split_point_immutable oai
+4358; 2620 18368 TRIGGER public p3_adjudication_unresolved_boundary p3_adjudication_unresolved_complete oai
+4359; 2620 18380 TRIGGER public p3_adjudication_unresolved_boundary p3_adjudication_unresolved_immutable oai
+4292; 2620 18398 TRIGGER public p3_candidate_component_semantic_binding p3_candidate_component_semantic_binding_immutable oai
+4291; 2620 18397 TRIGGER public p3_candidate_component_semantic_identity p3_candidate_component_semantic_identity_immutable oai
+4296; 2620 18401 TRIGGER public p3_candidate_status_event p3_candidate_event_immutable oai
+4287; 2620 18385 TRIGGER public p3_candidate_evidence_snapshot p3_candidate_evidence_snapshot_immutable oai
+4288; 2620 18391 TRIGGER public p3_candidate_family_origin_ledger p3_candidate_family_origin_ledger_immutable oai
+4293; 2620 18399 TRIGGER public p3_candidate_family_semantic_origin p3_candidate_family_semantic_origin_immutable oai
+4307; 2620 18424 TRIGGER public p3_candidate_attachment_projection p3_candidate_origin_attachment_closure oai
+4301; 2620 18422 TRIGGER public p3_candidate_component_link p3_candidate_origin_component_closure oai
+4302; 2620 18426 TRIGGER public p3_candidate_membership p3_candidate_origin_member_closure oai
+4282; 2620 18420 TRIGGER public p3_candidate_revision p3_candidate_origin_revision_closure oai
+4295; 2620 18392 TRIGGER public p3_candidate_revision_genealogy p3_candidate_revision_genealogy_immutable oai
+4283; 2620 18381 TRIGGER public p3_candidate_revision p3_candidate_revision_immutable oai
+4284; 2620 18383 TRIGGER public p3_candidate_revision p3_candidate_snapshot_closure oai
+4297; 2620 18357 TRIGGER public p3_candidate_status_event p3_candidate_status_event_validate oai
+4366; 2620 18389 TRIGGER public p3_canonical_family_revision p3_canonical_family_revision_immutable oai
+4278; 2620 18334 TRIGGER public p3_component_connectivity_edge p3_component_edge_closure oai
+4275; 2620 18330 TRIGGER public p3_candidate_component p3_component_header_closure oai
+4276; 2620 18332 TRIGGER public p3_component_membership p3_component_member_closure oai
+4369; 2620 18402 TRIGGER public p3_doctrine_delta p3_doctrine_delta_immutable oai
+4328; 2620 18387 TRIGGER public p3_family_exclusion p3_family_exclusion_immutable oai
+4371; 2620 18403 TRIGGER public p3_family_genealogy p3_family_genealogy_immutable oai
+4294; 2620 18394 TRIGGER public p3_candidate_family_semantic_origin p3_family_semantic_origin_key_validate oai
+4281; 2620 18390 TRIGGER public p3_frozen_historical_candidate_identity p3_frozen_historical_candidate_identity_immutable oai
+4372; 2620 18370 TRIGGER public p3_family_genealogy p3_genealogy_header_cardinality oai
+4374; 2620 18372 TRIGGER public p3_family_genealogy_member p3_genealogy_member_cardinality oai
+4332; 2620 18355 TRIGGER public p3_hyperedge p3_hyperedge_cardinality_after_header oai
+4333; 2620 18388 TRIGGER public p3_hyperedge p3_hyperedge_immutable oai
+4336; 2620 18353 TRIGGER public p3_hyperedge_membership p3_hyperedge_member_cardinality oai
+4337; 2620 18352 TRIGGER public p3_hyperedge_membership p3_hyperedge_member_type_validate oai
+4315; 2620 18348 TRIGGER public p3_internal_pair_collision p3_internal_pair_collision_closure oai
+4311; 2620 18336 TRIGGER public p3_internal_pair_matrix p3_internal_pair_header_closure oai
+4303; 2620 18338 TRIGGER public p3_candidate_membership p3_internal_pair_member_closure oai
+4321; 2620 18350 TRIGGER public p3_internal_pair_closure p3_internal_pair_obligation_closure oai
+4220; 2620 18328 TRIGGER public p3_object_registry p3_object_registry_identity_validate oai
+4221; 2620 18329 TRIGGER public p3_object_registry p3_object_registry_mutation_guard oai
+4261; 2620 18344 TRIGGER public p3_pair_endpoint_resolution p3_pair_endpoint_header_closure oai
+4264; 2620 18346 TRIGGER public p3_pair_endpoint_resolved_subject p3_pair_endpoint_subject_closure oai
+4290; 2620 18396 TRIGGER public p3_pair_projection_semantic_binding p3_pair_projection_semantic_binding_immutable oai
+4289; 2620 18395 TRIGGER public p3_pair_projection_semantic_identity p3_pair_projection_semantic_identity_immutable oai
+4266; 2620 18414 TRIGGER public p3_pair_projection p3_pair_projection_validate oai
+4219; 2620 18359 TRIGGER public p3_runtime_promotion_pointer p3_promotion_pointer_validate oai
+4216; 2620 18400 TRIGGER public p3_release_status_event p3_release_event_immutable oai
+4217; 2620 18358 TRIGGER public p3_release_status_event p3_release_status_event_validate oai
+4232; 2620 18342 TRIGGER public p3_lineage_segment p3_segment_header_nonempty oai
+4235; 2620 18340 TRIGGER public p3_lineage_segment_member p3_segment_member_subset oai
+4323; 2620 18524 TRIGGER public p3_family_variant p3_type_0cef6345bad4b6d5 oai
+4329; 2620 18526 TRIGGER public p3_family_exclusion p3_type_10008172d2238ff8 oai
+4277; 2620 18518 TRIGGER public p3_component_membership p3_type_14fba0b351e0aa23 oai
+4247; 2620 18514 TRIGGER public p3_pair_fact_bundle p3_type_157ed629260ca678 oai
+4322; 2620 18542 TRIGGER public p3_internal_pair_closure p3_type_16954c6d98f388d4 oai
+4267; 2620 18544 TRIGGER public p3_pair_projection p3_type_1f2e585b1974338f oai
+4236; 2620 18509 TRIGGER public p3_lineage_segment_member p3_type_28b00844ed620a0c oai
+4368; 2620 18531 TRIGGER public p3_canonical_family_membership p3_type_2b52b7f318e16149 oai
+4327; 2620 18525 TRIGGER public p3_variant_membership p3_type_2cfd50ad8a41f63c oai
+4279; 2620 18539 TRIGGER public p3_component_connectivity_edge p3_type_30a5d552a0e5568c oai
+4360; 2620 18534 TRIGGER public p3_adjudication_unresolved_boundary p3_type_3103f00003de15cc oai
+4351; 2620 18530 TRIGGER public p3_adjudication_hierarchy_relation p3_type_3b934bac3ecd639c oai
+4270; 2620 18516 TRIGGER public p3_collision_scope_registry p3_type_40bdafcb8da2a4a3 oai
+4237; 2620 18511 TRIGGER public p3_proposition_signature p3_type_54836a5c21114597 oai
+4312; 2620 18520 TRIGGER public p3_internal_pair_matrix p3_type_5a37e755d8e24bab oai
+4271; 2620 18517 TRIGGER public p3_collision_scope_registry p3_type_6e201ce0310e2313 oai
+4226; 2620 18535 TRIGGER public p3_imported_lineage_membership p3_type_712879ecf639d0f2 oai
+4313; 2620 18521 TRIGGER public p3_internal_pair_matrix p3_type_77f3e1c5fb74fa76 oai
+4308; 2620 18546 TRIGGER public p3_candidate_attachment_projection p3_type_7ce9cb8da011e81d oai
+4233; 2620 18508 TRIGGER public p3_lineage_segment p3_type_80a6ccb7eed4bb1f oai
+4331; 2620 18527 TRIGGER public p3_excluded_object p3_type_85c5985e5d3f6012 oai
+4304; 2620 18519 TRIGGER public p3_candidate_membership p3_type_962b97d699a38cd1 oai
+4361; 2620 18533 TRIGGER public p3_adjudication_unresolved_boundary p3_type_a23253f8cbc970ba oai
+4363; 2620 18547 TRIGGER public p3_adjudication_split_result_member p3_type_a30a4e1b2da91ac0 oai
+4317; 2620 18523 TRIGGER public p3_closure_obligation p3_type_a3fbae85eefd9a61 oai
+4229; 2620 18510 TRIGGER public p3_lineage_disposition p3_type_a63242f4a7a1c685 oai
+4227; 2620 18536 TRIGGER public p3_imported_lineage_membership p3_type_a6b10f2c36968e05 oai
+4352; 2620 18529 TRIGGER public p3_adjudication_hierarchy_relation p3_type_a8f88ca9547e225e oai
+4298; 2620 18543 TRIGGER public p3_candidate_status_event p3_type_aaeb973c461da5fb oai
+4318; 2620 18522 TRIGGER public p3_closure_obligation p3_type_b279804675492dc3 oai
+4356; 2620 18532 TRIGGER public p3_adjudication_split_member p3_type_b9270734e4501dfa oai
+4265; 2620 18538 TRIGGER public p3_pair_endpoint_resolved_subject p3_type_bbd7802a9c0fcea7 oai
+4346; 2620 18528 TRIGGER public p3_adjudication_member p3_type_bbdaa2f835e9bc13 oai
+4268; 2620 18545 TRIGGER public p3_pair_projection p3_type_bf006ab7bf2eb277 oai
+4244; 2620 18512 TRIGGER public p3_response_contract_reference p3_type_c367eddbb0f1e94a oai
+4316; 2620 18541 TRIGGER public p3_internal_pair_collision p3_type_c949655f9d1822a9 oai
+4262; 2620 18537 TRIGGER public p3_pair_endpoint_resolution p3_type_dd9c0060092b512d oai
+4280; 2620 18540 TRIGGER public p3_component_connectivity_edge p3_type_e24b2fadf00556a4 oai
+4248; 2620 18515 TRIGGER public p3_pair_fact_bundle p3_type_e3b6e4179f9f2a14 oai
+4246; 2620 18513 TRIGGER public p3_structural_context_reference p3_type_e4e70b4142a5c5b0 oai
+4324; 2620 18386 TRIGGER public p3_family_variant_revision p3_variant_revision_immutable oai
+4239; 2620 18451 TRIGGER public p3_signature_field p3_vocab_07fe2f6e9182ecbd oai
+4230; 2620 18448 TRIGGER public p3_lineage_disposition p3_vocab_0c7261155b4b23a9 oai
+4330; 2620 18483 TRIGGER public p3_family_exclusion p3_vocab_0f213941ed51d3af oai
+4285; 2620 18472 TRIGGER public p3_candidate_revision p3_vocab_12ed79e43b76148e oai
+4341; 2620 18487 TRIGGER public p3_adjudication_decision p3_vocab_180b99d603bd9d2d oai
+4222; 2620 18442 TRIGGER public p3_object_registry p3_vocab_222af508c7b766bb oai
+4299; 2620 18474 TRIGGER public p3_candidate_status_event p3_vocab_2c05f8c57c5c44c6 oai
+4249; 2620 18462 TRIGGER public p3_pair_fact_bundle p3_vocab_31e4d72138167cb9 oai
+4259; 2620 18467 TRIGGER public p3_pair_fact_evidence p3_vocab_37b1032aacfcd6e9 oai
+4250; 2620 18463 TRIGGER public p3_pair_fact_bundle p3_vocab_381712017c75a496 oai
+4325; 2620 18481 TRIGGER public p3_family_variant_revision p3_vocab_3b5fedcae76c67ac oai
+4382; 2620 18499 TRIGGER public p3_release_lifecycle_transition p3_vocab_3d1fe397656eba30 oai
+4245; 2620 18456 TRIGGER public p3_response_contract_reference p3_vocab_3dfe81d9200d7b78 oai
+4251; 2620 18459 TRIGGER public p3_pair_fact_bundle p3_vocab_3f577a823c9977bc oai
+4224; 2620 18445 TRIGGER public p3_upstream_object_reference p3_vocab_42af4b016d8c9955 oai
+4384; 2620 18502 TRIGGER public p3_hyperedge_role_type_contract p3_vocab_449f85191b6558dc oai
+4272; 2620 18471 TRIGGER public p3_collision_scope_registry p3_vocab_473e841fea9f33e6 oai
+4252; 2620 18464 TRIGGER public p3_pair_fact_bundle p3_vocab_48f65fcd403742ee oai
+4326; 2620 18482 TRIGGER public p3_family_variant_revision p3_vocab_4947b3288b9edd43 oai
+4300; 2620 18475 TRIGGER public p3_candidate_status_event p3_vocab_52126c334b7706e4 oai
+4376; 2620 18492 TRIGGER public p3_dependency_edge p3_vocab_5e708f09afcb18fa oai
+4334; 2620 18484 TRIGGER public p3_hyperedge p3_vocab_5f13e1652eeb0f32 oai
+4228; 2620 18446 TRIGGER public p3_lineage_participation p3_vocab_61ca9a427350f298 oai
+4380; 2620 18497 TRIGGER public p3_candidate_lifecycle_transition p3_vocab_6374919003c6f05d oai
+4377; 2620 18493 TRIGGER public p3_dependency_edge p3_vocab_6587d17bbefaf004 oai
+4242; 2620 18455 TRIGGER public p3_signature_field_evidence p3_vocab_66730f7dd3351ad1 oai
+4260; 2620 18468 TRIGGER public p3_pair_fact_evidence p3_vocab_6c67951a2abb6a55 oai
+4305; 2620 18476 TRIGGER public p3_candidate_membership p3_vocab_7496322186b3d356 oai
+4269; 2620 18505 TRIGGER public p3_pair_projection p3_vocab_74bb5a4d8c2b5e24 oai
+4273; 2620 18469 TRIGGER public p3_collision_scope_registry p3_vocab_84b539dfb913a702 oai
+4257; 2620 18466 TRIGGER public p3_pair_fact_source_authority p3_vocab_87a14cf7ec7471e2 oai
+4385; 2620 18500 TRIGGER public p3_hyperedge_role_type_contract p3_vocab_88cc9e07124436be oai
+4234; 2620 18449 TRIGGER public p3_lineage_segment p3_vocab_89518042dc01538e oai
+4274; 2620 18470 TRIGGER public p3_collision_scope_registry p3_vocab_8c3a3bfca358a255 oai
+4378; 2620 18494 TRIGGER public p3_release_change_ledger p3_vocab_8e81c54df0b86032 oai
+4243; 2620 18454 TRIGGER public p3_signature_field_evidence p3_vocab_9af2718e17c54910 oai
+4253; 2620 18457 TRIGGER public p3_pair_fact_bundle p3_vocab_9d0b4aaef41386d3 oai
+4218; 2620 18441 TRIGGER public p3_release_status_event p3_vocab_a288a9ebfa66569a oai
+4347; 2620 18488 TRIGGER public p3_adjudication_member p3_vocab_a810fa0b2a89b486 oai
+4314; 2620 18478 TRIGGER public p3_internal_pair_matrix p3_vocab_a84080c3d454fb22 oai
+4379; 2620 18495 TRIGGER public p3_failure_ledger p3_vocab_a9ed33cead7f799f oai
+4254; 2620 18460 TRIGGER public p3_pair_fact_bundle p3_vocab_ac723dd88cb83a1c oai
+4375; 2620 18490 TRIGGER public p3_family_genealogy_member p3_vocab_b1a748253280fdbb oai
+4258; 2620 18465 TRIGGER public p3_pair_fact_source_authority p3_vocab_b26a4e922427ebc1 oai
+4240; 2620 18453 TRIGGER public p3_signature_field p3_vocab_b446a47223d71e0a oai
+4306; 2620 18506 TRIGGER public p3_candidate_membership p3_vocab_b63a86e15199f583 oai
+4319; 2620 18480 TRIGGER public p3_closure_obligation p3_vocab_b66797b59f326cf7 oai
+4342; 2620 18486 TRIGGER public p3_adjudication_decision p3_vocab_b9b02d01d2ea6d6d oai
+4231; 2620 18447 TRIGGER public p3_lineage_disposition p3_vocab_be3e63445f8fe212 oai
+4309; 2620 18507 TRIGGER public p3_candidate_attachment_projection p3_vocab_bff214a08e98de25 oai
+4320; 2620 18479 TRIGGER public p3_closure_obligation p3_vocab_c2bcd0648d9c092e oai
+4370; 2620 18491 TRIGGER public p3_doctrine_delta p3_vocab_c49cb0b874c29fdf oai
+4238; 2620 18450 TRIGGER public p3_proposition_signature p3_vocab_c52b0f2d229b3cb7 oai
+4263; 2620 18504 TRIGGER public p3_pair_endpoint_resolution p3_vocab_c7a6ec8f20472200 oai
+4383; 2620 18498 TRIGGER public p3_release_lifecycle_transition p3_vocab_c88f89ec9953062c oai
+4310; 2620 18477 TRIGGER public p3_candidate_diagnostic_flag p3_vocab_cec7b67e3ec2c81b oai
+4223; 2620 18443 TRIGGER public p3_object_registry p3_vocab_d1c32bee63d67a54 oai
+4286; 2620 18473 TRIGGER public p3_candidate_revision p3_vocab_d2d7c618ca113de6 oai
+4386; 2620 18501 TRIGGER public p3_hyperedge_role_type_contract p3_vocab_d62b41158bc478a1 oai
+4357; 2620 18503 TRIGGER public p3_adjudication_split_member p3_vocab_d682f8cec5c2cf43 oai
+4255; 2620 18458 TRIGGER public p3_pair_fact_bundle p3_vocab_e4fa091657ebe25e oai
+4241; 2620 18452 TRIGGER public p3_signature_field p3_vocab_e54a2ff65332542c oai
+4335; 2620 18485 TRIGGER public p3_hyperedge p3_vocab_e5d3a771c6be0e29 oai
+4381; 2620 18496 TRIGGER public p3_candidate_lifecycle_transition p3_vocab_e7d157ba27f286aa oai
+4256; 2620 18461 TRIGGER public p3_pair_fact_bundle p3_vocab_eca44de80e100f79 oai
+4225; 2620 18444 TRIGGER public p3_upstream_object_reference p3_vocab_fa00340c36e3e8a0 oai
+4373; 2620 18489 TRIGGER public p3_family_genealogy p3_vocab_fbb0811c3930bb77 oai
+4149; 2606 18066 FK CONSTRAINT public p3_adjudication_decision p3_adjudication_canonical_family_fk oai
+4158; 2606 17799 FK CONSTRAINT public p3_adjudication_collision_disposition p3_adjudication_collision_disposition_adjudication_id_fkey oai
+4159; 2606 17804 FK CONSTRAINT public p3_adjudication_collision_disposition p3_adjudication_collision_disposition_collision_id_fkey oai
+4150; 2606 17743 FK CONSTRAINT public p3_adjudication_decision p3_adjudication_decision_adjudication_id_fkey oai
+4151; 2606 17763 FK CONSTRAINT public p3_adjudication_decision p3_adjudication_decision_authority_release_id_fkey oai
+4152; 2606 17748 FK CONSTRAINT public p3_adjudication_decision p3_adjudication_decision_candidate_revision_id_fkey oai
+4153; 2606 17753 FK CONSTRAINT public p3_adjudication_decision p3_adjudication_decision_canonical_family_id_fkey oai
+4154; 2606 17758 FK CONSTRAINT public p3_adjudication_decision p3_adjudication_decision_supersedes_adjudication_id_fkey oai
+4160; 2606 17816 FK CONSTRAINT public p3_adjudication_hierarchy_relation p3_adjudication_hierarchy_relation_adjudication_id_fkey oai
+4161; 2606 17821 FK CONSTRAINT public p3_adjudication_hierarchy_relation p3_adjudication_hierarchy_relation_broader_object_id_fkey oai
+4162; 2606 17826 FK CONSTRAINT public p3_adjudication_hierarchy_relation p3_adjudication_hierarchy_relation_narrower_object_id_fkey oai
+4155; 2606 17777 FK CONSTRAINT public p3_adjudication_member p3_adjudication_member_adjudication_id_fkey oai
+4156; 2606 17782 FK CONSTRAINT public p3_adjudication_member p3_adjudication_member_member_object_id_fkey oai
+4157; 2606 17787 FK CONSTRAINT public p3_adjudication_member p3_adjudication_member_variant_revision_id_fkey oai
+4164; 2606 17857 FK CONSTRAINT public p3_adjudication_split_member p3_adjudication_split_member_adjudication_id_split_ordinal_fkey oai
+4165; 2606 17852 FK CONSTRAINT public p3_adjudication_split_member p3_adjudication_split_member_member_object_id_fkey oai
+4163; 2606 17839 FK CONSTRAINT public p3_adjudication_split_point p3_adjudication_split_point_adjudication_id_fkey oai
+4171; 2606 17919 FK CONSTRAINT public p3_adjudication_split_result_member p3_adjudication_split_result__adjudication_id_result_ordin_fkey oai
+4169; 2606 17897 FK CONSTRAINT public p3_adjudication_split_result p3_adjudication_split_result_adjudication_id_fkey oai
+4172; 2606 17914 FK CONSTRAINT public p3_adjudication_split_result_member p3_adjudication_split_result_member_member_object_id_fkey oai
+4170; 2606 17902 FK CONSTRAINT public p3_adjudication_split_result p3_adjudication_split_result_successor_candidate_family_id_fkey oai
+4166; 2606 17871 FK CONSTRAINT public p3_adjudication_unresolved_boundary p3_adjudication_unresolved_boundary_adjudication_id_fkey oai
+4167; 2606 17876 FK CONSTRAINT public p3_adjudication_unresolved_boundary p3_adjudication_unresolved_boundary_left_object_id_fkey oai
+4168; 2606 17881 FK CONSTRAINT public p3_adjudication_unresolved_boundary p3_adjudication_unresolved_boundary_right_object_id_fkey oai
+4004; 2606 16434 FK CONSTRAINT public p3_authority_release p3_authority_release_parent_release_id_fkey oai
+4103; 2606 17367 FK CONSTRAINT public p3_candidate_attachment_projection p3_candidate_attachment_projection_authority_release_id_fkey oai
+4104; 2606 17357 FK CONSTRAINT public p3_candidate_attachment_projection p3_candidate_attachment_projection_candidate_revision_id_fkey oai
+4105; 2606 17362 FK CONSTRAINT public p3_candidate_attachment_projection p3_candidate_attachment_projection_projection_id_fkey oai
+4060; 2606 16962 FK CONSTRAINT public p3_candidate_component p3_candidate_component_authority_release_id_fkey oai
+4061; 2606 16957 FK CONSTRAINT public p3_candidate_component p3_candidate_component_component_id_fkey oai
+4098; 2606 17315 FK CONSTRAINT public p3_candidate_component_link p3_candidate_component_link_candidate_revision_id_fkey oai
+4099; 2606 17320 FK CONSTRAINT public p3_candidate_component_link p3_candidate_component_link_component_id_fkey oai
+4086; 2606 17226 FK CONSTRAINT public p3_candidate_component_semantic_binding p3_candidate_component_semantic_bindi_authority_release_id_fkey oai
+4087; 2606 17221 FK CONSTRAINT public p3_candidate_component_semantic_binding p3_candidate_component_semantic_bindi_semantic_fingerprint_fkey oai
+4088; 2606 17216 FK CONSTRAINT public p3_candidate_component_semantic_binding p3_candidate_component_semantic_binding_component_id_fkey oai
+4106; 2606 17380 FK CONSTRAINT public p3_candidate_diagnostic_flag p3_candidate_diagnostic_flag_candidate_revision_id_fkey oai
+4076; 2606 17109 FK CONSTRAINT public p3_candidate_evidence_snapshot p3_candidate_evidence_snapshot_authority_release_id_fkey oai
+4077; 2606 17104 FK CONSTRAINT public p3_candidate_evidence_snapshot p3_candidate_evidence_snapshot_candidate_revision_id_fkey oai
+4067; 2606 17013 FK CONSTRAINT public p3_candidate_family p3_candidate_family_candidate_family_id_fkey oai
+4068; 2606 17018 FK CONSTRAINT public p3_candidate_family p3_candidate_family_created_release_id_fkey oai
+4078; 2606 17143 FK CONSTRAINT public p3_candidate_family_origin_ledger p3_candidate_family_origin_ledger_authority_release_id_fkey oai
+4079; 2606 17138 FK CONSTRAINT public p3_candidate_family_origin_ledger p3_candidate_family_origin_ledger_candidate_family_id_fkey oai
+4089; 2606 17254 FK CONSTRAINT public p3_candidate_family_semantic_origin p3_candidate_family_semantic_origin_authority_release_id_fkey oai
+4090; 2606 17244 FK CONSTRAINT public p3_candidate_family_semantic_origin p3_candidate_family_semantic_origin_candidate_family_id_fkey oai
+4091; 2606 17249 FK CONSTRAINT public p3_candidate_family_semantic_origin p3_candidate_family_semantic_origin_candidate_revision_id_fkey oai
+4213; 2606 18280 FK CONSTRAINT public p3_candidate_lifecycle_transition p3_candidate_lifecycle_transition_authority_release_id_fkey oai
+4100; 2606 17344 FK CONSTRAINT public p3_candidate_membership p3_candidate_membership_authority_release_id_fkey oai
+4101; 2606 17334 FK CONSTRAINT public p3_candidate_membership p3_candidate_membership_candidate_revision_id_fkey oai
+4102; 2606 17339 FK CONSTRAINT public p3_candidate_membership p3_candidate_membership_member_object_id_fkey oai
+4107; 2606 17406 FK CONSTRAINT public p3_candidate_ranking p3_candidate_ranking_authority_release_id_fkey oai
+4108; 2606 17401 FK CONSTRAINT public p3_candidate_ranking p3_candidate_ranking_candidate_revision_id_fkey oai
+4072; 2606 17090 FK CONSTRAINT public p3_candidate_revision p3_candidate_revision_authority_release_id_fkey oai
+4073; 2606 17080 FK CONSTRAINT public p3_candidate_revision p3_candidate_revision_candidate_family_id_fkey oai
+4074; 2606 17075 FK CONSTRAINT public p3_candidate_revision p3_candidate_revision_candidate_revision_id_fkey oai
+4075; 2606 17085 FK CONSTRAINT public p3_candidate_revision p3_candidate_revision_canonical_signature_id_fkey oai
+4092; 2606 17280 FK CONSTRAINT public p3_candidate_revision_genealogy p3_candidate_revision_genealogy_authority_release_id_fkey oai
+4093; 2606 17275 FK CONSTRAINT public p3_candidate_revision_genealogy p3_candidate_revision_genealogy_candidate_family_id_fkey oai
+4094; 2606 17270 FK CONSTRAINT public p3_candidate_revision_genealogy p3_candidate_revision_genealogy_candidate_revision_id_fkey oai
+4095; 2606 17303 FK CONSTRAINT public p3_candidate_status_event p3_candidate_status_event_authority_release_id_fkey oai
+4096; 2606 17293 FK CONSTRAINT public p3_candidate_status_event p3_candidate_status_event_candidate_family_id_fkey oai
+4097; 2606 17298 FK CONSTRAINT public p3_candidate_status_event p3_candidate_status_event_candidate_revision_id_fkey oai
+4179; 2606 17979 FK CONSTRAINT public p3_canonical_family p3_canonical_family_canonical_family_id_fkey oai
+4180; 2606 17984 FK CONSTRAINT public p3_canonical_family p3_canonical_family_created_by_adjudication_id_fkey oai
+4181; 2606 17989 FK CONSTRAINT public p3_canonical_family p3_canonical_family_created_release_id_fkey oai
+4188; 2606 18046 FK CONSTRAINT public p3_canonical_family_membership p3_canonical_family_membership_family_revision_id_fkey oai
+4189; 2606 18051 FK CONSTRAINT public p3_canonical_family_membership p3_canonical_family_membership_member_object_id_fkey oai
+4190; 2606 18056 FK CONSTRAINT public p3_canonical_family_membership p3_canonical_family_membership_variant_revision_id_fkey oai
+4182; 2606 17994 FK CONSTRAINT public p3_canonical_family p3_canonical_family_retired_release_id_fkey oai
+4183; 2606 18034 FK CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_authority_release_id_fkey oai
+4184; 2606 18019 FK CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_canonical_family_id_fkey oai
+4185; 2606 18024 FK CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_canonical_signature_id_fkey oai
+4186; 2606 18029 FK CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_created_by_adjudication_id_fkey oai
+4187; 2606 18014 FK CONSTRAINT public p3_canonical_family_revision p3_canonical_family_revision_family_revision_id_fkey oai
+4211; 2606 18256 FK CONSTRAINT public p3_categorical_field_binding p3_categorical_field_binding_authority_release_id_fkey oai
+4124; 2606 17561 FK CONSTRAINT public p3_closure_obligation p3_closure_obligation_authority_release_id_fkey oai
+4125; 2606 17546 FK CONSTRAINT public p3_closure_obligation p3_closure_obligation_candidate_revision_id_fkey oai
+4126; 2606 17541 FK CONSTRAINT public p3_closure_obligation p3_closure_obligation_closure_obligation_id_fkey oai
+4127; 2606 17551 FK CONSTRAINT public p3_closure_obligation p3_closure_obligation_left_object_id_fkey oai
+4128; 2606 17556 FK CONSTRAINT public p3_closure_obligation p3_closure_obligation_right_object_id_fkey oai
+4129; 2606 18061 FK CONSTRAINT public p3_closure_obligation p3_closure_resolution_adjudication_fk oai
+4059; 2606 16941 FK CONSTRAINT public p3_collision_authority_source p3_collision_authority_source_collision_id_fkey oai
+4055; 2606 16929 FK CONSTRAINT public p3_collision_scope_registry p3_collision_scope_registry_authority_release_id_fkey oai
+4056; 2606 16914 FK CONSTRAINT public p3_collision_scope_registry p3_collision_scope_registry_collision_id_fkey oai
+4057; 2606 16919 FK CONSTRAINT public p3_collision_scope_registry p3_collision_scope_registry_left_object_id_fkey oai
+4058; 2606 16924 FK CONSTRAINT public p3_collision_scope_registry p3_collision_scope_registry_right_object_id_fkey oai
+4064; 2606 17001 FK CONSTRAINT public p3_component_connectivity_edge p3_component_connectivity_edge_authority_release_id_fkey oai
+4065; 2606 16991 FK CONSTRAINT public p3_component_connectivity_edge p3_component_connectivity_edge_component_id_fkey oai
+4066; 2606 16996 FK CONSTRAINT public p3_component_connectivity_edge p3_component_connectivity_edge_projection_id_fkey oai
+4062; 2606 16974 FK CONSTRAINT public p3_component_membership p3_component_membership_component_id_fkey oai
+4063; 2606 16979 FK CONSTRAINT public p3_component_membership p3_component_membership_member_object_id_fkey oai
+4201; 2606 18176 FK CONSTRAINT public p3_dependency_edge p3_dependency_edge_authority_input_id_fkey oai
+4202; 2606 18181 FK CONSTRAINT public p3_dependency_edge p3_dependency_edge_authority_release_id_fkey oai
+4203; 2606 18166 FK CONSTRAINT public p3_dependency_edge p3_dependency_edge_dependency_id_fkey oai
+4204; 2606 18171 FK CONSTRAINT public p3_dependency_edge p3_dependency_edge_dependent_id_fkey oai
+4194; 2606 18110 FK CONSTRAINT public p3_doctrine_delta_affected_object p3_doctrine_delta_affected_object_affected_object_id_fkey oai
+4195; 2606 18105 FK CONSTRAINT public p3_doctrine_delta_affected_object p3_doctrine_delta_affected_object_doctrine_delta_id_fkey oai
+4191; 2606 18093 FK CONSTRAINT public p3_doctrine_delta p3_doctrine_delta_authority_release_id_fkey oai
+4192; 2606 18083 FK CONSTRAINT public p3_doctrine_delta p3_doctrine_delta_doctrine_delta_id_fkey oai
+4193; 2606 18088 FK CONSTRAINT public p3_doctrine_delta p3_doctrine_delta_trigger_candidate_id_fkey oai
+4143; 2606 17688 FK CONSTRAINT public p3_excluded_object p3_excluded_object_excluded_object_id_fkey oai
+4144; 2606 17683 FK CONSTRAINT public p3_excluded_object p3_excluded_object_exclusion_id_fkey oai
+4176; 2606 17957 FK CONSTRAINT public p3_exclusion_promotion p3_exclusion_promotion_adjudication_id_fkey oai
+4177; 2606 17962 FK CONSTRAINT public p3_exclusion_promotion p3_exclusion_promotion_candidate_exclusion_id_fkey oai
+4178; 2606 17967 FK CONSTRAINT public p3_exclusion_promotion p3_exclusion_promotion_canonical_exclusion_id_fkey oai
+4209; 2606 18232 FK CONSTRAINT public p3_failure_ledger p3_failure_ledger_object_id_fkey oai
+4140; 2606 17671 FK CONSTRAINT public p3_family_exclusion p3_family_exclusion_authority_release_id_fkey oai
+4141; 2606 17661 FK CONSTRAINT public p3_family_exclusion p3_family_exclusion_exclusion_id_fkey oai
+4142; 2606 17666 FK CONSTRAINT public p3_family_exclusion p3_family_exclusion_owner_object_id_fkey oai
+4196; 2606 18128 FK CONSTRAINT public p3_family_genealogy p3_family_genealogy_adjudication_id_fkey oai
+4197; 2606 18133 FK CONSTRAINT public p3_family_genealogy p3_family_genealogy_authority_release_id_fkey oai
+4198; 2606 18123 FK CONSTRAINT public p3_family_genealogy p3_family_genealogy_genealogy_id_fkey oai
+4199; 2606 18151 FK CONSTRAINT public p3_family_genealogy_member p3_family_genealogy_member_family_id_fkey oai
+4200; 2606 18146 FK CONSTRAINT public p3_family_genealogy_member p3_family_genealogy_member_genealogy_id_fkey oai
+4132; 2606 17600 FK CONSTRAINT public p3_family_variant p3_family_variant_created_release_id_fkey oai
+4133; 2606 17595 FK CONSTRAINT public p3_family_variant p3_family_variant_owner_object_id_fkey oai
+4135; 2606 17630 FK CONSTRAINT public p3_family_variant_revision p3_family_variant_revision_authority_release_id_fkey oai
+4136; 2606 17625 FK CONSTRAINT public p3_family_variant_revision p3_family_variant_revision_variant_id_fkey oai
+4137; 2606 17620 FK CONSTRAINT public p3_family_variant_revision p3_family_variant_revision_variant_revision_id_fkey oai
+4134; 2606 17590 FK CONSTRAINT public p3_family_variant p3_family_variant_variant_id_fkey oai
+4069; 2606 17048 FK CONSTRAINT public p3_frozen_historical_candidate_identity p3_frozen_historical_candidat_successor_candidate_family_i_fkey oai
+4070; 2606 17043 FK CONSTRAINT public p3_frozen_historical_candidate_identity p3_frozen_historical_candidate_ident_allocation_release_id_fkey oai
+4071; 2606 17053 FK CONSTRAINT public p3_frozen_historical_candidate_identity p3_frozen_historical_candidate_identi_authority_release_id_fkey oai
+4145; 2606 17707 FK CONSTRAINT public p3_hyperedge p3_hyperedge_authority_release_id_fkey oai
+4146; 2606 17702 FK CONSTRAINT public p3_hyperedge p3_hyperedge_hyperedge_id_fkey oai
+4147; 2606 17719 FK CONSTRAINT public p3_hyperedge_membership p3_hyperedge_membership_hyperedge_id_fkey oai
+4148; 2606 17724 FK CONSTRAINT public p3_hyperedge_membership p3_hyperedge_membership_object_id_fkey oai
+4215; 2606 18306 FK CONSTRAINT public p3_hyperedge_role_type_contract p3_hyperedge_role_type_contract_authority_release_id_fkey oai
+4212; 2606 18268 FK CONSTRAINT public p3_identity_key_contract p3_identity_key_contract_authority_release_id_fkey oai
+4014; 2606 16568 FK CONSTRAINT public p3_imported_lineage_membership p3_imported_lineage_membership_authority_release_id_fkey oai
+4015; 2606 16563 FK CONSTRAINT public p3_imported_lineage_membership p3_imported_lineage_membership_implementation_id_fkey oai
+4016; 2606 16558 FK CONSTRAINT public p3_imported_lineage_membership p3_imported_lineage_membership_lineage_id_fkey oai
+4130; 2606 17578 FK CONSTRAINT public p3_internal_pair_closure p3_internal_pair_closure_candidate_revision_id_left_object_fkey oai
+4131; 2606 17573 FK CONSTRAINT public p3_internal_pair_closure p3_internal_pair_closure_closure_obligation_id_fkey oai
+4113; 2606 17453 FK CONSTRAINT public p3_internal_pair_collision p3_internal_pair_collision_candidate_revision_id_left_obje_fkey oai
+4114; 2606 17448 FK CONSTRAINT public p3_internal_pair_collision p3_internal_pair_collision_collision_id_fkey oai
+4121; 2606 17524 FK CONSTRAINT public p3_internal_pair_coordinate_constraint p3_internal_pair_coordinate_c_candidate_revision_id_left_o_fkey oai
+4122; 2606 17519 FK CONSTRAINT public p3_internal_pair_coordinate_constraint p3_internal_pair_coordinate_constrain_authority_release_id_fkey oai
+4123; 2606 17514 FK CONSTRAINT public p3_internal_pair_coordinate_constraint p3_internal_pair_coordinate_constraint_projection_id_fkey oai
+4109; 2606 17421 FK CONSTRAINT public p3_internal_pair_matrix p3_internal_pair_matrix_candidate_revision_id_fkey oai
+4110; 2606 17436 FK CONSTRAINT public p3_internal_pair_matrix p3_internal_pair_matrix_direct_pair_projection_id_fkey oai
+4111; 2606 17426 FK CONSTRAINT public p3_internal_pair_matrix p3_internal_pair_matrix_left_object_id_fkey oai
+4112; 2606 17431 FK CONSTRAINT public p3_internal_pair_matrix p3_internal_pair_matrix_right_object_id_fkey oai
+4118; 2606 17500 FK CONSTRAINT public p3_internal_pair_redirect_boundary p3_internal_pair_redirect_bou_candidate_revision_id_left_o_fkey oai
+4119; 2606 17495 FK CONSTRAINT public p3_internal_pair_redirect_boundary p3_internal_pair_redirect_boundary_authority_release_id_fkey oai
+4120; 2606 17490 FK CONSTRAINT public p3_internal_pair_redirect_boundary p3_internal_pair_redirect_boundary_projection_id_fkey oai
+4115; 2606 17477 FK CONSTRAINT public p3_internal_pair_unresolved_boundary p3_internal_pair_unresolved_b_candidate_revision_id_left_o_fkey oai
+4116; 2606 17472 FK CONSTRAINT public p3_internal_pair_unresolved_boundary p3_internal_pair_unresolved_boundary_authority_release_id_fkey oai
+4117; 2606 17467 FK CONSTRAINT public p3_internal_pair_unresolved_boundary p3_internal_pair_unresolved_boundary_projection_id_fkey oai
+4019; 2606 16613 FK CONSTRAINT public p3_lineage_disposition p3_lineage_disposition_authority_release_id_fkey oai
+4020; 2606 18071 FK CONSTRAINT public p3_lineage_disposition p3_lineage_disposition_canonical_family_fk oai
+4021; 2606 16608 FK CONSTRAINT public p3_lineage_disposition p3_lineage_disposition_canonical_family_id_fkey oai
+4022; 2606 16603 FK CONSTRAINT public p3_lineage_disposition p3_lineage_disposition_subject_id_fkey oai
+4017; 2606 16587 FK CONSTRAINT public p3_lineage_participation p3_lineage_participation_authority_release_id_fkey oai
+4018; 2606 16582 FK CONSTRAINT public p3_lineage_participation p3_lineage_participation_lineage_id_fkey oai
+4023; 2606 16636 FK CONSTRAINT public p3_lineage_segment p3_lineage_segment_authority_release_id_fkey oai
+4026; 2606 16656 FK CONSTRAINT public p3_lineage_segment_member p3_lineage_segment_member_implementation_id_fkey oai
+4027; 2606 16651 FK CONSTRAINT public p3_lineage_segment_member p3_lineage_segment_member_segment_id_fkey oai
+4024; 2606 16631 FK CONSTRAINT public p3_lineage_segment p3_lineage_segment_parent_lineage_id_fkey oai
+4025; 2606 16626 FK CONSTRAINT public p3_lineage_segment p3_lineage_segment_segment_id_fkey oai
+4210; 2606 18244 FK CONSTRAINT public p3_object_reference_type_contract p3_object_reference_type_contract_authority_release_id_fkey oai
+4011; 2606 16519 FK CONSTRAINT public p3_object_registry p3_object_registry_allocation_release_id_fkey oai
+4012; 2606 16524 FK CONSTRAINT public p3_object_registry p3_object_registry_retired_release_id_fkey oai
+4045; 2606 16845 FK CONSTRAINT public p3_pair_endpoint_resolution p3_pair_endpoint_resolution_authority_release_id_fkey oai
+4046; 2606 16840 FK CONSTRAINT public p3_pair_endpoint_resolution p3_pair_endpoint_resolution_original_lineage_id_fkey oai
+4047; 2606 16835 FK CONSTRAINT public p3_pair_endpoint_resolution p3_pair_endpoint_resolution_pair_fact_id_fkey oai
+4048; 2606 16862 FK CONSTRAINT public p3_pair_endpoint_resolved_subject p3_pair_endpoint_resolved_subje_pair_fact_id_endpoint_side_fkey oai
+4049; 2606 16857 FK CONSTRAINT public p3_pair_endpoint_resolved_subject p3_pair_endpoint_resolved_subject_resolved_subject_id_fkey oai
+4039; 2606 16793 FK CONSTRAINT public p3_pair_fact_bundle p3_pair_fact_bundle_authority_release_id_fkey oai
+4040; 2606 16783 FK CONSTRAINT public p3_pair_fact_bundle p3_pair_fact_bundle_left_object_id_fkey oai
+4041; 2606 16778 FK CONSTRAINT public p3_pair_fact_bundle p3_pair_fact_bundle_pair_fact_id_fkey oai
+4042; 2606 16788 FK CONSTRAINT public p3_pair_fact_bundle p3_pair_fact_bundle_right_object_id_fkey oai
+4044; 2606 16820 FK CONSTRAINT public p3_pair_fact_evidence p3_pair_fact_evidence_pair_fact_id_fkey oai
+4043; 2606 16806 FK CONSTRAINT public p3_pair_fact_source_authority p3_pair_fact_source_authority_pair_fact_id_fkey oai
+4050; 2606 16898 FK CONSTRAINT public p3_pair_projection p3_pair_projection_authority_release_id_fkey oai
+4051; 2606 16888 FK CONSTRAINT public p3_pair_projection p3_pair_projection_left_subject_id_fkey oai
+4052; 2606 16883 FK CONSTRAINT public p3_pair_projection p3_pair_projection_pair_fact_id_fkey oai
+4053; 2606 16878 FK CONSTRAINT public p3_pair_projection p3_pair_projection_projection_id_fkey oai
+4054; 2606 16893 FK CONSTRAINT public p3_pair_projection p3_pair_projection_right_subject_id_fkey oai
+4083; 2606 17192 FK CONSTRAINT public p3_pair_projection_semantic_binding p3_pair_projection_semantic_binding_authority_release_id_fkey oai
+4084; 2606 17182 FK CONSTRAINT public p3_pair_projection_semantic_binding p3_pair_projection_semantic_binding_projection_id_fkey oai
+4085; 2606 17187 FK CONSTRAINT public p3_pair_projection_semantic_binding p3_pair_projection_semantic_binding_semantic_fingerprint_fkey oai
+4080; 2606 17165 FK CONSTRAINT public p3_pair_projection_semantic_identity p3_pair_projection_semantic_identity_left_subject_id_fkey oai
+4081; 2606 17160 FK CONSTRAINT public p3_pair_projection_semantic_identity p3_pair_projection_semantic_identity_pair_fact_id_fkey oai
+4082; 2606 17170 FK CONSTRAINT public p3_pair_projection_semantic_identity p3_pair_projection_semantic_identity_right_subject_id_fkey oai
+4028; 2606 16682 FK CONSTRAINT public p3_proposition_signature p3_proposition_signature_authority_release_id_fkey oai
+4029; 2606 16672 FK CONSTRAINT public p3_proposition_signature p3_proposition_signature_signature_id_fkey oai
+4030; 2606 16677 FK CONSTRAINT public p3_proposition_signature p3_proposition_signature_subject_id_fkey oai
+4207; 2606 18219 FK CONSTRAINT public p3_release_change_ledger p3_release_change_ledger_object_id_fkey oai
+4208; 2606 18214 FK CONSTRAINT public p3_release_change_ledger p3_release_change_ledger_release_id_fkey oai
+4214; 2606 18292 FK CONSTRAINT public p3_release_lifecycle_transition p3_release_lifecycle_transition_authority_release_id_fkey oai
+4205; 2606 18199 FK CONSTRAINT public p3_release_object_snapshot p3_release_object_snapshot_object_id_fkey oai
+4206; 2606 18194 FK CONSTRAINT public p3_release_object_snapshot p3_release_object_snapshot_release_id_fkey oai
+4005; 2606 16449 FK CONSTRAINT public p3_release_status_event p3_release_status_event_release_id_fkey oai
+4033; 2606 16734 FK CONSTRAINT public p3_response_contract_reference p3_response_contract_reference_authority_release_id_fkey oai
+4034; 2606 16724 FK CONSTRAINT public p3_response_contract_reference p3_response_contract_reference_reference_id_fkey oai
+4035; 2606 16729 FK CONSTRAINT public p3_response_contract_reference p3_response_contract_reference_subject_id_fkey oai
+4006; 2606 16466 FK CONSTRAINT public p3_runtime_promotion_pointer p3_runtime_promotion_pointer_promoted_release_id_fkey oai
+4032; 2606 16709 FK CONSTRAINT public p3_signature_field_evidence p3_signature_field_evidence_signature_id_field_name_fkey oai
+4031; 2606 16697 FK CONSTRAINT public p3_signature_field p3_signature_field_signature_id_fkey oai
+4036; 2606 16758 FK CONSTRAINT public p3_structural_context_reference p3_structural_context_reference_authority_release_id_fkey oai
+4037; 2606 16748 FK CONSTRAINT public p3_structural_context_reference p3_structural_context_reference_reference_id_fkey oai
+4038; 2606 16753 FK CONSTRAINT public p3_structural_context_reference p3_structural_context_reference_subject_id_fkey oai
+4013; 2606 16541 FK CONSTRAINT public p3_upstream_object_reference p3_upstream_object_reference_object_id_fkey oai
+4138; 2606 17647 FK CONSTRAINT public p3_variant_membership p3_variant_membership_member_object_id_fkey oai
+4139; 2606 17642 FK CONSTRAINT public p3_variant_membership p3_variant_membership_variant_revision_id_fkey oai
+4173; 2606 17933 FK CONSTRAINT public p3_variant_promotion p3_variant_promotion_adjudication_id_fkey oai
+4174; 2606 17938 FK CONSTRAINT public p3_variant_promotion p3_variant_promotion_candidate_variant_revision_id_fkey oai
+4175; 2606 17943 FK CONSTRAINT public p3_variant_promotion p3_variant_promotion_canonical_variant_revision_id_fkey oai
+4007; 2606 16478 FK CONSTRAINT public p3_vocabulary_code p3_vocabulary_code_introduced_release_id_fkey oai
+4008; 2606 16483 FK CONSTRAINT public p3_vocabulary_code p3_vocabulary_code_retired_release_id_fkey oai
+4009; 2606 16496 FK CONSTRAINT public p3_vocabulary_revision p3_vocabulary_revision_authority_release_id_fkey oai
+4010; 2606 16501 FK CONSTRAINT public p3_vocabulary_revision p3_vocabulary_revision_vocabulary_domain_code_fkey oai
