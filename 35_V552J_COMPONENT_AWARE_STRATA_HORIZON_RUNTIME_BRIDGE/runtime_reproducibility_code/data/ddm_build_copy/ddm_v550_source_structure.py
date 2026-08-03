@@ -9,6 +9,7 @@ population audit.
 from __future__ import annotations
 
 from dataclasses import dataclass
+import os
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -390,7 +391,8 @@ def source_structure_review_required(row: Mapping[str, Any], classification: str
 
 
 def load_question_structure_register(path: Path | None = None) -> pd.DataFrame:
-    resolved = Path(path or DEFAULT_STRUCTURE_REGISTER)
+    override = os.environ.get("DDM_QUESTION_STRUCTURE_REGISTER", "").strip()
+    resolved = Path(path or override or DEFAULT_STRUCTURE_REGISTER)
     if not resolved.exists():
         return pd.DataFrame()
     frame = pd.read_csv(resolved, low_memory=False)

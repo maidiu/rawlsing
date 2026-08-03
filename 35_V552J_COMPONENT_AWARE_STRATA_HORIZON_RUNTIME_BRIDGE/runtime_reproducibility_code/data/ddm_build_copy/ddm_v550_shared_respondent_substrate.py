@@ -256,8 +256,8 @@ def resolve_shared_substrate_requirements(
 ) -> dict[str, Any]:
     """Resolve base and bounded-V550J joint-required extraction surfaces."""
     require_executable_registry_status(registry.get("status"))
-    require_p3_authority_release(registry.get("p3_authority_release_id"))
-    require_joint_configuration_authority_release(registry.get("joint_configuration_authority_release_id"))
+    p3_release = require_p3_authority_release(registry.get("p3_authority_release_id"))
+    joint_release = require_joint_configuration_authority_release(registry.get("joint_configuration_authority_release_id"))
 
     selected = {str(value).strip() for value in selected_configuration_ids or [] if _clean(value)}
     base_rows = base_question_rows.copy()

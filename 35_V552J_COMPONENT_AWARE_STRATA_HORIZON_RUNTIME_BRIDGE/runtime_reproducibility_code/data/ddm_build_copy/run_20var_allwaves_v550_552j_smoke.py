@@ -207,7 +207,10 @@ def _run(
     env = os.environ.copy()
     env["PYTHONPATH"] = str(config.repo_root)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    if config.db_url:
+    forbid_database_access = "--forbid-database-access" in {str(part) for part in cmd}
+    if forbid_database_access:
+        env.pop("DATABASE_URL", None)
+    elif config.db_url:
         env["DATABASE_URL"] = config.db_url
     env["DDM_QSM_RELATION"] = config.qsm_relation
     env["DDM_CANONICAL_REGISTRY_RELATION"] = config.canonical_registry_relation
@@ -895,12 +898,22 @@ def summarize_v551_functional_gate(path: str | Path) -> dict[str, Any]:
 
 
 def summarize_v552_functional_gate(path: str | Path) -> dict[str, Any]:
-    payload = _load_json(path)
-    atom_rows = int(payload.get("atoms_row_count") or 0)
-    status = str(payload.get("final_status") or "")
-    structural_ready = status.upper() == "STATUS: READY_V552_STRUCTURAL_HANDOFF"
+    manifest_path = Path(path)
+    payload = _load_json(manifest_path)
     if not payload:
-        failure_reason = "missing_v552_input_provenance_manifest"
+        current_manifest = manifest_path.with_name("manifest.json")
+        payload = _load_json(current_manifest)
+        if payload:
+            manifest_path = current_manifest
+    atom_rows = int(payload.get("atoms_row_count") or payload.get("input_atom_rows") or 0)
+    status = str(payload.get("final_status") or payload.get("status") or "")
+    normalized_status = status.upper().removeprefix("STATUS: ").strip()
+    structural_ready = normalized_status in {
+        "READY_V552_STRUCTURAL_HANDOFF",
+        "READY_V552_STRUCTURAL_PRESSURE_CONTRACT",
+    }
+    if not payload:
+        failure_reason = "missing_v552_manifest"
     elif atom_rows <= 0:
         failure_reason = "v552_atoms_row_count_zero"
     elif status.upper() == "STATUS: NOT_READY_STRUCTURAL_GROUPING_MISSING":
@@ -912,8 +925,8 @@ def summarize_v552_functional_gate(path: str | Path) -> dict[str, Any]:
     else:
         failure_reason = ""
     return {
-        "manifest_path": str(path),
-        "manifest_exists": Path(path).exists(),
+        "manifest_path": str(manifest_path),
+        "manifest_exists": manifest_path.exists(),
         "final_status": status,
         "atoms_row_count": atom_rows,
         "passed": not failure_reason,
