@@ -66,19 +66,21 @@ LIB3="$KIT/usr/lib/postgresql/15/lib"
 COMP="$HERE/offline_runtime/runtime_compat"
 SHARE="$KIT/usr/share/postgresql/15"
 PGDATA="${PGDATA:-$HERE/postgresql_data}"
-PGSOCK="${PGSOCK:-$HERE/postgresql_socket}"
+PGSOCK="${PGSOCK:-/tmp}"
 PGPORT="${PGPORT:-55432}"
 export PATH="$BIN:$PATH"
 export LD_LIBRARY_PATH="$COMP:$LIB1:$LIB2:$LIB3:${LD_LIBRARY_PATH:-}"
 export PGSHARE="$SHARE"
-mkdir -p "$PGDATA" "$PGSOCK"
+mkdir -p "$PGDATA"
+if [[ "$PGSOCK" != "/tmp" ]]; then mkdir -p "$PGSOCK"; fi
 run_pg() {
   if [[ "$(id -u)" -eq 0 ]]; then
     if ! id oai >/dev/null 2>&1; then
       echo 'PostgreSQL cannot run as root and no oai user exists. Run this script as a non-root user.' >&2
       exit 2
     fi
-    chown -R oai:oai "$PGDATA" "$PGSOCK"
+    chown -R oai:oai "$PGDATA"
+    if [[ "$PGSOCK" != "/tmp" ]]; then chown -R oai:oai "$PGSOCK"; fi
     runuser -u oai -- env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" PGSHARE="$PGSHARE" "$@"
   else
     "$@"
