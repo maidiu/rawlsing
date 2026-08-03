@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "release_id": "P3-AUTHORITY-2026-08-01-R40",
+  "counts": {
+    "lineage_objects": 13526,
+    "implementation_objects": 18276,
+    "imported_memberships": 18276,
+    "pair_facts": 19175,
+    "pair_endpoint_resolutions": 38350,
+    "candidate_components": 119,
+    "candidate_revisions_r40": 141,
+    "candidate_snapshots_r40": 141,
+    "closure_obligations": 345
+  },
+  "expected_counts": {
+    "lineage_objects": 13526,
+    "implementation_objects": 18276,
+    "imported_memberships": 18276,
+    "pair_facts": 19175,
+    "pair_endpoint_resolutions": 38350,
+    "candidate_components": 119,
+    "candidate_revisions_r40": 141,
+    "candidate_snapshots_r40": 141,
+    "closure_obligations": 345
+  },
+  "candidate_hash_matches": 141,
+  "candidate_hash_total": 141,
+  "query_matrix_pass": 54,
+  "query_matrix_fail": [
+    "q01b_postpromotion_pointer",
+    "q15b_no_unadjudicated_at_p3_close"
+  ],
+  "applicable_query_failures": [],
+  "packet_status": "PASS",
+  "fixture_status": "PASS",
+  "inherited_verifier_status": "PASS",
+  "failures": [],
+  "inputs": {
+    "inherited_hash_manifest_sha256": "6d2e8b24d31202391602fd3cd8af12a0cd6e46308995eab4aea966ce4caf846a",
+    "ddl_sha256": "c021a5950f35b3595668a71be9f03359a440354fdef455e2946f818151fb57ff"
+  }
+}

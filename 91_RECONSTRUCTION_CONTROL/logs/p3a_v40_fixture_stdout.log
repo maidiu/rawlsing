@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "release_neutral_family_origin_unchanged",
+      "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "R35 families preserved with R40 successor revisions",
+      "detail": "preserved=141"
+    },
+    {
+      "case": "changed_semantic_origin_requires_new_family",
+      "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "semantic member change changes origin key",
+      "detail": ""
+    },
+    {
+      "case": "attempted_candidate_hash_update",
+      "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "candidate revision update blocked by trigger",
+      "detail": "P3 append-only authority table p3_candidate_revision rejects UPDATE\nCONTEXT:  PL/pgSQL function p3_forbid_update_delete() line 3 at RAISE"
+    },
+    {
+      "case": "production_dependency_on_review_csv",
+      "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "review CSV is not a production input",
+      "detail": ""
+    },
+    {
+      "case": "relabelled_old_query_output_as_current",
+      "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "query evidence source is live R40",
+      "detail": ""
+    },
+    {
+      "case": "release_ledger_row_with_no_prior_basis",
+      "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "UNCHANGED_REFERENCE requires prior hash",
+      "detail": "blank_prior_hash=0"
+    },
+    {
+      "case": "v37_blocked_identity_not_current",
+      "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "blocked v37 identities do not become runtime candidate revisions",
+      "detail": "fabricated=0"
+    }
+  ]
+}

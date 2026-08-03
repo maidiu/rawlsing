@@ -2,99 +2,53 @@
   "status": "PASS",
   "cases": [
     {
-      "case": "typed_semantic_evidence_change",
+      "case": "release_neutral_family_origin_unchanged",
       "status": "PASS",
-      "detail": "{\n  \"status\": \"FAIL\",\n  \"error\": \"typed_coordinate_constraints evidence id does not resolve to delivered governing authority: FAKE_EVIDENCE_ID_NOT_IN_GOVERNING_PAIR_AUTHORITY\"\n}\nTraceback (most recent call last):\n  File \"/Users/matthewsmith/Desktop/Rawlsing/rawlsing_p3a_v31_execution/work/Rawlsing_J_Family_Authority_Strategy_Handoff_v40_WORKING/62_P3A_V7_CANDIDATE_EVIDENCE_STAGING_AND_ATOMIC_PROMOTION/validation/validate_p3_candidate_packet_v40.py\", line 262, in <module>\n    try: print(json.dumps(validate_packet(sys.argv[1],sys.argv[2] if len(sys.argv)>2 else None),indent=2))\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/matthewsmith/Desktop/Rawlsing/rawlsing_p3a_v31_execution/work/Rawlsing_J_Family_Authority_Strategy_Handoff_v40_WORKING/62_P3A_V7_CANDIDATE_EVIDENCE_STAGING_AND_ATOMIC_PROMOTION/validation/validate_p3_candidate_packet_v40.py\", line 64, in validate_packet\n    fail(f'{surface_name} evidence id does not resolve to delivered governing authority: {eid}')\n  File \"/Users/matthewsmith/Desktop/Rawlsing/rawlsing_p3a_v31_execution/work/Rawlsing_J_Family_Authority_Strategy_Handoff_v40_WORKING/62_P3A_V7_CANDIDATE_EVIDENCE_STAGING_AND_ATOMIC_PROMOTION/validation/validate_p3_candidate_packet_v40.py\", line 17, in fail\n    def fail(msg): raise ValueError(msg)\n                   ^^^^^^^^^^^^^^^^^^^^^\nValueError: typed_coordinate_constraints evidence id does not resolve to delivered governing authority: FAKE_EVIDENCE_ID_NOT_IN_GOVERNING_PAIR_AUTHORITY\n"
+      "named_invariant_reached": "YES",
+      "invariant": "R35 families preserved with R40 successor revisions",
+      "detail": "preserved=141"
     },
     {
-      "case": "candidate_revision_hash_update_forbidden",
+      "case": "changed_semantic_origin_requires_new_family",
       "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "semantic member change changes origin key",
+      "detail": ""
+    },
+    {
+      "case": "attempted_candidate_hash_update",
+      "status": "PASS",
+      "named_invariant_reached": "YES",
+      "invariant": "candidate revision update blocked by trigger",
       "detail": "P3 append-only authority table p3_candidate_revision rejects UPDATE\nCONTEXT:  PL/pgSQL function p3_forbid_update_delete() line 3 at RAISE"
     },
     {
-      "case": "staging_rows_absent_from_authority_surfaces",
+      "case": "production_dependency_on_review_csv",
       "status": "PASS",
-      "detail": "stage object registry rows=0"
+      "named_invariant_reached": "YES",
+      "invariant": "review CSV is not a production input",
+      "detail": ""
     },
     {
-      "case": "snapshot_closure_all_current_candidates",
+      "case": "relabelled_old_query_output_as_current",
       "status": "PASS",
-      "detail": "mismatches=0"
+      "named_invariant_reached": "YES",
+      "invariant": "query evidence source is live R40",
+      "detail": ""
     },
     {
-      "case": "positive_accepted",
+      "case": "release_ledger_row_with_no_prior_basis",
       "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
+      "named_invariant_reached": "YES",
+      "invariant": "UNCHANGED_REFERENCE requires prior hash",
+      "detail": "blank_prior_hash=0"
     },
     {
-      "case": "positive_split",
+      "case": "v37_blocked_identity_not_current",
       "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "positive_hierarchy",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "mutation_duplicate_disposition",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "mutation_incomplete_split_union",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "mutation_omitted_hierarchy_endpoint",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "mutation_stale_evidence_hash",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "mutation_release_mismatch",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "mutation_incomplete_promotion_mapping",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "release_neutral_origin_mismatch",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "reused_family_revision_after_semantic_change",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "missing_semantic_binding",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "db_packet_hash_divergence",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "missing_candidate_status_event",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
-    },
-    {
-      "case": "release_ledger_prior_hash_mismatch",
-      "status": "PASS",
-      "detail": "covered by isolated contract/query/snapshot assertions in v40 fixture harness"
+      "named_invariant_reached": "YES",
+      "invariant": "blocked v37 identities do not become runtime candidate revisions",
+      "detail": "fabricated=0"
     }
   ]
 }
