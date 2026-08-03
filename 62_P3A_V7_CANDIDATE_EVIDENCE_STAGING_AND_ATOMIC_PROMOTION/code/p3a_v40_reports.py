@@ -37,8 +37,23 @@ def main() -> int:
     with psycopg.connect(args.dsn, row_factory=psycopg.rows.dict_row) as conn:
         conn.execute(f"SET search_path TO {SCHEMA}, public")
         cur = conn.cursor()
-        write_csv(sec / "P3A_V40_PROJECTION_SEMANTIC_FINGERPRINTS.csv", fetch(cur, "SELECT * FROM p3_pair_projection_semantic_fingerprint ORDER BY projection_id"))
-        write_csv(sec / "P3A_V40_COMPONENT_SEMANTIC_FINGERPRINTS.csv", fetch(cur, "SELECT * FROM p3_candidate_component_semantic_fingerprint ORDER BY component_id"))
+        write_csv(sec / "P3A_V40_PROJECTION_SEMANTIC_FINGERPRINTS.csv", fetch(cur, """
+            SELECT b.projection_id,b.authority_release_id,i.semantic_fingerprint,
+                   i.pair_fact_id,i.left_subject_id,i.right_subject_id,i.projection_basis,
+                   i.semantic_serialization_version,i.canonical_payload,i.payload_hash
+            FROM p3_pair_projection_semantic_binding b
+            JOIN p3_pair_projection_semantic_identity i USING(semantic_fingerprint)
+            ORDER BY b.projection_id
+        """))
+        write_csv(sec / "P3A_V40_COMPONENT_SEMANTIC_FINGERPRINTS.csv", fetch(cur, """
+            SELECT b.component_id,b.authority_release_id,b.topology_contract_version,
+                   i.semantic_fingerprint,i.component_type,i.subject_ids,
+                   i.projection_semantic_fingerprints,i.semantic_serialization_version,
+                   i.canonical_payload,i.payload_hash
+            FROM p3_candidate_component_semantic_binding b
+            JOIN p3_candidate_component_semantic_identity i USING(semantic_fingerprint)
+            ORDER BY b.component_id
+        """))
         write_csv(sec / "P3A_V40_FAMILY_SEMANTIC_ORIGIN_COMPARISON.csv", fetch(cur, """
             SELECT f.candidate_family_id, f.candidate_revision_id, f.semantic_origin_key AS r38_semantic_origin_key,
                    h.origin_key AS r35_prior_origin_key,
@@ -73,8 +88,8 @@ def main() -> int:
             "candidate_revisions": fetch(cur, "SELECT count(*) n FROM p3_candidate_revision WHERE authority_release_id=%s", (RELEASE_ID,))[0]["n"],
             "candidate_families_preserved_from_r35": fetch(cur, "SELECT count(*) n FROM p3_candidate_revision WHERE authority_release_id=%s AND candidate_family_id BETWEEN 'P3CAND-000142' AND 'P3CAND-000282'", (RELEASE_ID,))[0]["n"],
             "v37_blocked_identity_rows": fetch(cur, "SELECT count(*) n FROM p3_frozen_historical_candidate_identity WHERE allocation_release_id='P3-AUTHORITY-2026-08-01-R37'")[0]["n"],
-            "projection_semantic_fingerprints": fetch(cur, "SELECT count(*) n FROM p3_pair_projection_semantic_fingerprint")[0]["n"],
-            "component_semantic_fingerprints": fetch(cur, "SELECT count(*) n FROM p3_candidate_component_semantic_fingerprint")[0]["n"],
+            "projection_semantic_fingerprints": fetch(cur, "SELECT count(*) n FROM p3_pair_projection_semantic_binding")[0]["n"],
+            "component_semantic_fingerprints": fetch(cur, "SELECT count(*) n FROM p3_candidate_component_semantic_binding")[0]["n"],
             "family_semantic_origins": fetch(cur, "SELECT count(*) n FROM p3_candidate_family_semantic_origin")[0]["n"],
             "release_change_ledger_rows": fetch(cur, "SELECT count(*) n FROM p3_release_change_ledger WHERE release_id=%s", (RELEASE_ID,))[0]["n"],
         }
