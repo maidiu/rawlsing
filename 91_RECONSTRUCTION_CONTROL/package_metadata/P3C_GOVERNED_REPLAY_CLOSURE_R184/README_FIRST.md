@@ -29,4 +29,4 @@ Candidate 273 is business-and-industry management, not prayer. The lost-chat rec
 
 ## Exact next action
 
-Restore the database, run the Section 84 verifier, then generate canonical non-GSS J-family authority files in the existing GSS-compatible schema. Continue through V550J, V551J, and V552J without reopening P3C unless a concrete invariant fails.
+Run the five packaged helpers (`unpack_payloads.sh`, `setup_python.sh`, `start_postgresql.sh`, `restore_database.sh`, and `verify_restored_checkpoint.sh`), then generate canonical non-GSS J-family authority files in the existing GSS-compatible schema. Continue through V550J, V551J, and V552J without reopening P3C unless a concrete invariant fails.
