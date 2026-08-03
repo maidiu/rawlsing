@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rawlsing.layer1.run_plan.v1",
+  "title": "Rawlsing Layer-1 35-wave audit run plan",
+  "type": "object",
+  "required": ["schema_version", "scope_count", "min_vars", "target_vars", "max_vars", "scopes"],
+  "properties": {
+    "schema_version": {"const": "rawlsing.layer1.run_plan.v1"},
+    "scope_count": {"type": "integer", "minimum": 1, "maximum": 35},
+    "min_vars": {"type": "integer", "minimum": 1},
+    "target_vars": {"type": "integer", "minimum": 1},
+    "max_vars": {"type": "integer", "minimum": 1},
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_family", "wave", "country_code", "selected_variables", "selected_variable_count"],
+        "properties": {
+          "source_family": {"type": "string", "minLength": 1},
+          "wave": {"type": "string", "minLength": 1},
+          "country_code": {"type": "string", "minLength": 1},
+          "selected_variables": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+          "selected_variable_count": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  }
+}

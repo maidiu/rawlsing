@@ -1,0 +1,110 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: 277bd4cc7c510aca10e85930949fd50a8a1175c5f83bac74cc93b86d08c55902
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-LATINOBAROMETRO-2024-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: e26f3b1ea1ca0cbfc96f55ad080cfaaace2601fe46f9b6544b3bc8ffc6f0c499
+  eligible_waves:
+  - '2024'
+  family_id: JCFG-LAYER1-LATINOBAROMETRO-2024-SELECTED-AUDIT
+  family_label: Latinobarómetro 2024 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - country_or_split_variant
+      - directional_relation
+      - missingness_semantics
+      - position_coordinate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.ae66c3e19d5aa33c2abd
+      question_implementation_id: question_impl.phase0.ae66c3e19d5aa33c2abd
+      question_text: How devout are you?
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: relation_evidence
+      semantic_subrole: subjective_attitude_evaluation_frequency_or_intention
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: S1.A
+    - directional_certification_status: CERTIFIED
+      item_order: 3
+      item_role: attitude_relation_item
+      morphology_tags:
+      - binary
+      - country_or_split_variant
+      - directional_relation
+      - missingness_semantics
+      - position_coordinate
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0782bc52f2ad0e22aaa1
+      question_implementation_id: question_impl.phase0.0782bc52f2ad0e22aaa1
+      question_text: Do you approve or disapprove of the way (president´s name) is
+        leading the country? (TICK ONE ANSWER)
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_contrast
+      semantic_role: relation_evidence
+      semantic_subrole: subjective_attitude_evaluation_frequency_or_intention
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q15STGBS
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - country_or_split_variant
+      - missingness_semantics
+      - multiselect_or_repeated
+      - ordinal
+      - position_coordinate
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.132fc7ddc157fdfe118d
+      question_implementation_id: question_impl.phase0.132fc7ddc157fdfe118d
+      question_text: 'If you had to choose, which one of the things on this card would
+        you say is most important: 1) Concentrate power in one leader 2) Distribute
+        power in several institutions 3) Press not question power 4) Political and
+        civil liberties guaranteed'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: ranking_or_multiselect
+      semantic_role: structural_context
+      semantic_subrole: ranking_multiselect_nominal_target_tradeoff_or_coordinate
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q37STB
+  joint_configuration_id: JCFG-LAYER1-LATINOBAROMETRO-2024-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: Latinobarómetro
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: Latinobarómetro
+status: governed

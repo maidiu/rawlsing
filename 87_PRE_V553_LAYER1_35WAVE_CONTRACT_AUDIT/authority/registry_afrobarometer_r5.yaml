@@ -1,0 +1,110 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: 61e742a866db70616a46e84b9b392006dc07293e21d0b7636459f63d3a2e7ccd
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-AFROBAROMETER-R5-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 7c787418cf12b5b733b554e6008ae9c3c4a132a038c116862390a17b4ed8194b
+  eligible_waves:
+  - R5
+  family_id: JCFG-LAYER1-AFROBAROMETER-R5-SELECTED-AUDIT
+  family_label: Afrobarometer R5 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - country_or_split_variant
+      - missingness_semantics
+      - nominal
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.ffae7fae6cb40b4c6f5b
+      question_implementation_id: question_impl.phase0.ffae7fae6cb40b4c6f5b
+      question_text: 'The opinions of Islamic jurists and religious scholars differ
+        with regard to their interpretations of certain issues in Islam. What extent
+        you agree or disagree with each of the following statements: Religious leaders
+        like imams, preachers and priests should not interfere in voters'' decisions
+        in elections?'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_scale
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q41C_ARB
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - derived_or_recoded
+      - position_coordinate
+      - review_or_authority_gap
+      - routed_or_conditional
+      - scalar
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.8b81f45fe1d90e95f768
+      question_implementation_id: question_impl.phase0.8b81f45fe1d90e95f768
+      question_text: Lived Poverty Index (average index of 5 poverty items)
+      response_binding_status: blocked_response_authority_gap
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: context_index
+      semantic_role: structural_or_derived_context
+      semantic_subrole: observed_environment_or_derived_index
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: LivedPoverty
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: source_context_item
+      morphology_tags:
+      - missingness_semantics
+      - nominal
+      - ordinal
+      - position_coordinate
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.01d1cc9a97f2d005d490
+      question_implementation_id: question_impl.phase0.01d1cc9a97f2d005d490
+      question_text: 'Over the past year, how often, if ever, have you or anyone in
+        your family gone without: Enough clean water for home use?'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: ordinal_context
+      semantic_role: demographic_material_or_identity_context
+      semantic_subrole: demographic_material_identity_or_status
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q8B
+  joint_configuration_id: JCFG-LAYER1-AFROBAROMETER-R5-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: Afrobarometer
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: Afrobarometer
+status: governed

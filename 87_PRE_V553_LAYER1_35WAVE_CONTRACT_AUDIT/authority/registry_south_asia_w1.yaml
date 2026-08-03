@@ -1,0 +1,100 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: 406da5c901d41fe161e9738fb590d1050392fe401c442e8dec46f2be99e2ea07
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-SOUTH-ASIA-W1-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 459275f0875cc3439cdc58cf3c0ef17679f3c002ee0322255a927e5c9fb67415
+  eligible_waves:
+  - W1
+  family_id: JCFG-LAYER1-SOUTH-ASIA-W1-SELECTED-AUDIT
+  family_label: South Asia W1 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - missingness_semantics
+      - pressure_linkage_candidate
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.09c8e496e3bfd3bad25a
+      question_implementation_id: question_impl.phase0.09c8e496e3bfd3bad25a
+      question_text: 'C-13a: (Q24(a)) How much trust you have in Central/National
+        Govt.?'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_scale
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: c13a
+    - directional_certification_status: CERTIFIED
+      item_order: 3
+      item_role: attitude_relation_item
+      morphology_tags:
+      - binary
+      - missingness_semantics
+      - pressure_linkage_candidate
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.8fe6315a4112e7eed60c
+      question_implementation_id: question_impl.phase0.8fe6315a4112e7eed60c
+      question_text: 'C-19: (Q30) Do you think your vote has effect on how things
+        are run in our country or do you think your vote makes no difference?'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_contrast
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_scale
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: c19
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - position_coordinate
+      - review_or_authority_gap
+      - routed_or_conditional
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.01879af9828cfbfddab5
+      question_implementation_id: question_impl.phase0.01879af9828cfbfddab5
+      question_text: 'D-18k: (B9(k)) Goat/Sheep'
+      response_binding_status: blocked_response_authority_gap
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: continuous_context
+      semantic_role: demographic_material_or_identity_context
+      semantic_subrole: demographic_material_identity_or_status
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: d18k
+  joint_configuration_id: JCFG-LAYER1-SOUTH-ASIA-W1-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: South Asia
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: South Asia
+status: governed

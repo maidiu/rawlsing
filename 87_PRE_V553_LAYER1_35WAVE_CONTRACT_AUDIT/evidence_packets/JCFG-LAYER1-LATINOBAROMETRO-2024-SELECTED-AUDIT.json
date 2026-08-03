@@ -1,0 +1,101 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-LATINOBAROMETRO-2024-SELECTED-AUDIT",
+  "candidate_hash": "0e3133076860fb4c29329a6502cda0d8d945fdcd0acdea94fea22c30aa6a3599",
+  "complete_source_structure_members": [
+    "S1.A",
+    "Q37STB",
+    "Q15STGBS"
+  ],
+  "country_code": "GT",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "directional_relation",
+        "missingness_semantics",
+        "position_coordinate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.ae66c3e19d5aa33c2abd",
+      "question_implementation_id": "question_impl.phase0.ae66c3e19d5aa33c2abd",
+      "question_text": "How devout are you?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "relation_evidence",
+      "semantic_subrole": "subjective_attitude_evaluation_frequency_or_intention",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "S1.A"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "multiselect_or_repeated",
+        "ordinal",
+        "position_coordinate",
+        "structural_context"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.132fc7ddc157fdfe118d",
+      "question_implementation_id": "question_impl.phase0.132fc7ddc157fdfe118d",
+      "question_text": "If you had to choose, which one of the things on this card would you say is most important: 1) Concentrate power in one leader 2) Distribute power in several institutions 3) Press not question power 4) Political and civil liberties guaranteed",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "ranking_or_multiselect",
+      "semantic_role": "structural_context",
+      "semantic_subrole": "ranking_multiselect_nominal_target_tradeoff_or_coordinate",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q37STB"
+    },
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 3,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "binary",
+        "country_or_split_variant",
+        "directional_relation",
+        "missingness_semantics",
+        "position_coordinate"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.0782bc52f2ad0e22aaa1",
+      "question_implementation_id": "question_impl.phase0.0782bc52f2ad0e22aaa1",
+      "question_text": "Do you approve or disapprove of the way (president´s name) is leading the country? (TICK ONE ANSWER)",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_contrast",
+      "semantic_role": "relation_evidence",
+      "semantic_subrole": "subjective_attitude_evaluation_frequency_or_intention",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q15STGBS"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "S1.A",
+    "Q37STB",
+    "Q15STGBS"
+  ],
+  "source_family": "Latinobarómetro",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "2024"
+}

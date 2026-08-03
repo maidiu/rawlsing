@@ -1,0 +1,100 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-ARAB-BAROMETER-VIII-SELECTED-AUDIT",
+  "candidate_hash": "b4d2a799eb2d84de4553d8ac489b0d949ea971bb177e94a9dabebe49640a0b10",
+  "complete_source_structure_members": [
+    "Q103",
+    "QGAZA1_5",
+    "Q1021"
+  ],
+  "country_code": "LB",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "binary",
+        "country_or_split_variant",
+        "missingness_semantics",
+        "pressure_linkage_candidate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.0e9f1441967dcf5da51f",
+      "question_implementation_id": "question_impl.phase0.0e9f1441967dcf5da51f",
+      "question_text": "Generally speaking, would you say that \"Most people can be trusted\" or \"that you must be very careful in dealing with people\"?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_contrast",
+      "semantic_role": "attitude_perception_evaluation_or_intention",
+      "semantic_subrole": "certified_directional_subjective_binary",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q103"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "multiselect_or_repeated",
+        "position_coordinate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.00a9ca0e0a611b3c66c8",
+      "question_implementation_id": "question_impl.phase0.00a9ca0e0a611b3c66c8",
+      "question_text": "Act of terrorism: Israel's demand that more than a million Gazan civilians leave the northern cities in the Gaza Strip",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "multiselect",
+      "semantic_role": "behavioral_or_demographic_context",
+      "semantic_subrole": "multi_response_dummy",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "QGAZA1_5"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "missingness_semantics",
+        "nominal",
+        "nondirectional_relation",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.08ec34fee1781d4bce42",
+      "question_implementation_id": "question_impl.phase0.08ec34fee1781d4bce42",
+      "question_text": "Which of the following best describes your main source of monthly income?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "nominal_choice",
+      "semantic_role": "preference_target_or_relation",
+      "semantic_subrole": "nominal_target_tradeoff_or_category",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q1021"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "Q103",
+    "QGAZA1_5",
+    "Q1021"
+  ],
+  "source_family": "Arab Barometer",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "VIII"
+}

@@ -1,0 +1,106 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: d2e87845597e720f86a63b28b287cce3a22037bcd59bf1ed0b7b8c98776f4691
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-WVS-W7-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 0f0ceef7b6aa0464197a5f7ac98ecc30c2e0f0cdf5fb39bf14afeddf5f032c56
+  eligible_waves:
+  - W7
+  family_id: JCFG-LAYER1-WVS-W7-SELECTED-AUDIT
+  family_label: WVS W7 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - directional_relation
+      - missingness_semantics
+      - nominal
+      - position_coordinate
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0c177ec9e381a5693986
+      question_implementation_id: question_impl.phase0.0c177ec9e381a5693986
+      question_text: It is a duty towards society to have children
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: RELATION_EVIDENCE
+      semantic_subrole: evaluative_or_value_orientation
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q37
+    - directional_certification_status: CERTIFIED
+      item_order: 3
+      item_role: attitude_relation_item
+      morphology_tags:
+      - binary
+      - directional_relation
+      - missingness_semantics
+      - nominal
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.06f1066cfaa1ae96f339
+      question_implementation_id: question_impl.phase0.06f1066cfaa1ae96f339
+      question_text: Increases the risks of terrorism
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_contrast
+      semantic_role: RELATION_EVIDENCE
+      semantic_subrole: evaluative_or_value_orientation
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q126
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - derived_or_recoded
+      - ordinal
+      - position_coordinate
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.13594936e60e06ed1d48
+      question_implementation_id: question_impl.phase0.13594936e60e06ed1d48
+      question_text: BTI regime type (5 groups) [Bertelsmann Stiftung, 2018]
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: context_index
+      semantic_role: STRUCTURAL_CONTEXT
+      semantic_subrole: derived_or_external_context
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: btiregime
+  joint_configuration_id: JCFG-LAYER1-WVS-W7-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: WVS
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: WVS
+status: governed

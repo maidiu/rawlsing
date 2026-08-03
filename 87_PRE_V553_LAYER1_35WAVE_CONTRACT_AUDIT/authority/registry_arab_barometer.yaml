@@ -1,0 +1,402 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: abf6eb95d59699062521f1b9115ea21aba2558dd694e59428ca8fe8d6d373260
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-ARAB-BAROMETER-I-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: ab7138fe669f008aec00ec69ef73a8de3993f18f805b93815ad39ebe0ab7219d
+  eligible_waves:
+  - I
+  family_id: JCFG-LAYER1-ARAB-BAROMETER-I-SELECTED-AUDIT
+  family_label: Arab Barometer I Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - country_or_split_variant
+      - missingness_semantics
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.3ad685c225c26e02da25
+      question_implementation_id: question_impl.phase0.3ad685c225c26e02da25
+      question_text: Harmful effects of US and Western cultural exposure on [respondent's
+        country]
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_scale
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: q609
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: attitude_relation_item
+      morphology_tags:
+      - missingness_semantics
+      - nominal
+      - nondirectional_relation
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.4d30d96ebd2305f02f47
+      question_implementation_id: question_impl.phase0.4d30d96ebd2305f02f47
+      question_text: Marital status
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: nominal_choice
+      semantic_role: preference_target_or_relation
+      semantic_subrole: nominal_target_tradeoff_or_category
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: q709
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - missingness_semantics
+      - ordinal
+      - position_coordinate
+      - routed_or_conditional
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.075e79e701d0c4f8a90c
+      question_implementation_id: question_impl.phase0.075e79e701d0c4f8a90c
+      question_text: 'Terrorism classification: Amman hotel explosions'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: ordinal_context
+      semantic_role: demographic_material_or_behavioral_context
+      semantic_subrole: demographic_material_status_or_behavior
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: q6031
+  joint_configuration_id: JCFG-LAYER1-ARAB-BAROMETER-I-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: Arab Barometer
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-ARAB-BAROMETER-II-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 1d2507d72dc0f197ad319e15f563bcb105bed9b1ed95662c5cbffde5c310d8ea
+  eligible_waves:
+  - II
+  family_id: JCFG-LAYER1-ARAB-BAROMETER-II-SELECTED-AUDIT
+  family_label: Arab Barometer II Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - country_or_split_variant
+      - missingness_semantics
+      - nominal
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.03a5c617d9f4809775a5
+      question_implementation_id: question_impl.phase0.03a5c617d9f4809775a5
+      question_text: sa3047 In general, to what extent is it important to you that
+        [Insert] in deciding who to vote for in elections, whether the municipal elections?
+        7. The candidate's wealth.
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_scale
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: sa3047
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - binary
+      - country_or_split_variant
+      - missingness_semantics
+      - nominal
+      - position_coordinate
+      - routed_or_conditional
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.02cca4882fc9387d36c1
+      question_implementation_id: question_impl.phase0.02cca4882fc9387d36c1
+      question_text: eg8113 In your opinion, will the revolution succeed in achieving
+        (Insert)? 3. Better economic opportunities.
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_factual
+      semantic_role: behavior_exposure_context
+      semantic_subrole: reported_fact_or_status
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: eg8113
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: source_context_item
+      morphology_tags:
+      - country_or_split_variant
+      - missingness_semantics
+      - nominal
+      - ordinal
+      - position_coordinate
+      - routed_or_conditional
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.06e7d974ed6d3264fc78
+      question_implementation_id: question_impl.phase0.06e7d974ed6d3264fc78
+      question_text: eg801 During the protests in Egypt between January 25 and February
+        11, was your position closer to...?
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: ordinal_context
+      semantic_role: behavior_exposure_context
+      semantic_subrole: reported_behavior_exposure_or_participation
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: eg801
+  joint_configuration_id: JCFG-LAYER1-ARAB-BAROMETER-II-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: Arab Barometer
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-ARAB-BAROMETER-V-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 2de0b5e3d9a416088eb4a2de2c299879bd1aed28b0d0f34b7796d7be5984fdf1
+  eligible_waves:
+  - V
+  family_id: JCFG-LAYER1-ARAB-BAROMETER-V-SELECTED-AUDIT
+  family_label: Arab Barometer V Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - binary
+      - country_or_split_variant
+      - missingness_semantics
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.5ed1ca9de4c1d74ee670
+      question_implementation_id: question_impl.phase0.5ed1ca9de4c1d74ee670
+      question_text: Generally speaking, would you say that “Most people can be trusted”
+        or “that you must be very careful in dealing with people”?
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_contrast
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_binary
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q103
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: attitude_relation_item
+      morphology_tags:
+      - country_or_split_variant
+      - missingness_semantics
+      - nominal
+      - nondirectional_relation
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.00d9e2b81ad1110b822f
+      question_implementation_id: question_impl.phase0.00d9e2b81ad1110b822f
+      question_text: 'Which of the following statements comes closest to your view?
+        Statement 1: The best way to reduce poverty is to increase your taxes so the
+        government can help the poor through social spending. Statement 2: The best
+        way to reduce poverty is to encourage people like yourself to pay more sadaqa
+        for charitable distribution.'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: nominal_choice
+      semantic_role: preference_target_or_relation
+      semantic_subrole: nominal_target_tradeoff_or_category
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q265
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - country_or_split_variant
+      - multiselect_or_repeated
+      - position_coordinate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.00cd0e559ef2d9fa8288
+      question_implementation_id: question_impl.phase0.00cd0e559ef2d9fa8288
+      question_text: 'MIGRATION: REASON: DON''T KNOW'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: multiselect
+      semantic_role: behavioral_or_demographic_context
+      semantic_subrole: multi_response_dummy
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q104A_98
+  joint_configuration_id: JCFG-LAYER1-ARAB-BAROMETER-V-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: Arab Barometer
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-ARAB-BAROMETER-VIII-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: af3b0603380b86e610fd39c7432b42e821395cd16b6b1a61c44c76b1b2f06a21
+  eligible_waves:
+  - VIII
+  family_id: JCFG-LAYER1-ARAB-BAROMETER-VIII-SELECTED-AUDIT
+  family_label: Arab Barometer VIII Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - binary
+      - country_or_split_variant
+      - missingness_semantics
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0e9f1441967dcf5da51f
+      question_implementation_id: question_impl.phase0.0e9f1441967dcf5da51f
+      question_text: Generally speaking, would you say that "Most people can be trusted"
+        or "that you must be very careful in dealing with people"?
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_contrast
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_binary
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q103
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: attitude_relation_item
+      morphology_tags:
+      - missingness_semantics
+      - nominal
+      - nondirectional_relation
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.08ec34fee1781d4bce42
+      question_implementation_id: question_impl.phase0.08ec34fee1781d4bce42
+      question_text: Which of the following best describes your main source of monthly
+        income?
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: nominal_choice
+      semantic_role: preference_target_or_relation
+      semantic_subrole: nominal_target_tradeoff_or_category
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q1021
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - country_or_split_variant
+      - multiselect_or_repeated
+      - position_coordinate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.00a9ca0e0a611b3c66c8
+      question_implementation_id: question_impl.phase0.00a9ca0e0a611b3c66c8
+      question_text: 'Act of terrorism: Israel''s demand that more than a million
+        Gazan civilians leave the northern cities in the Gaza Strip'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: multiselect
+      semantic_role: behavioral_or_demographic_context
+      semantic_subrole: multi_response_dummy
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: QGAZA1_5
+  joint_configuration_id: JCFG-LAYER1-ARAB-BAROMETER-VIII-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: Arab Barometer
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: Arab Barometer
+status: governed

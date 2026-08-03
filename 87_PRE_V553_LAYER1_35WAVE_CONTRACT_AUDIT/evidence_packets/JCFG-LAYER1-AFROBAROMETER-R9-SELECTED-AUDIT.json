@@ -1,0 +1,98 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-AFROBAROMETER-R9-SELECTED-AUDIT",
+  "candidate_hash": "68b54dbf65a8336926f5d31e8ca0918db864f463ac89bd1b8261690c2e3f9092",
+  "complete_source_structure_members": [
+    "Q47A",
+    "DemandDemo",
+    "Q25"
+  ],
+  "country_code": "SZ",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "ordinal",
+        "pressure_linkage_candidate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.0d397b86f6b35d39da55",
+      "question_implementation_id": "question_impl.phase0.0d397b86f6b35d39da55",
+      "question_text": "Do you approve or disapprove of the way the following people have performed their jobs over the past 12 months, or haven't you heard enough about them to say: [President] [Uhuru Kenyatta]?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "attitude_perception_evaluation_or_intention",
+      "semantic_subrole": "certified_directional_subjective_scale",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q47A"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "derived_or_recoded",
+        "nominal",
+        "position_coordinate",
+        "structural_context"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.b7271c3efb72a652cf68",
+      "question_implementation_id": "question_impl.phase0.b7271c3efb72a652cf68",
+      "question_text": "Demand for Democracy (additive index of 4 democratic commitments: support (1,2=0)(3=1)(else=sysmis) + reject (5,4,3,9=0)(2,1=1)(else=sysmis)",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "context_index",
+      "semantic_role": "structural_or_derived_context",
+      "semantic_subrole": "observed_environment_or_derived_index",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "DemandDemo"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "selected_audit_item",
+      "morphology_tags": [
+        "binary",
+        "country_or_split_variant",
+        "missingness_semantics",
+        "ordinal"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.0c85974704cf3eaeb501",
+      "question_implementation_id": "question_impl.phase0.0c85974704cf3eaeb501",
+      "question_text": "Which of the following statements is closest to your view? Choose Statement 1 or Statement 2. Statement 1: Political parties create division and confusion; it is therefore unnecessary to have many political parties in [Kenya]. Statement 2: Many political parties are needed to make sure that [Kenyans] have real choices in who governs them.",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_tradeoff",
+      "semantic_role": "preference_target_tradeoff_or_ranking",
+      "semantic_subrole": "forced_tradeoff_ranking_target_or_identity",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q25"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "Q47A",
+    "DemandDemo",
+    "Q25"
+  ],
+  "source_family": "Afrobarometer",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "R9"
+}

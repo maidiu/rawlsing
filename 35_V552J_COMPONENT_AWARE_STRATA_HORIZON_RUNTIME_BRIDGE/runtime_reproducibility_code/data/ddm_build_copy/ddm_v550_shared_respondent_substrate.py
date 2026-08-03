@@ -15,14 +15,17 @@ import pandas as pd
 
 from data.ddm_build_copy.ddm_v550_schema import write_schema_json
 from data.ddm_build_copy.ddm_survey_identity import canonical_wave_key, family_keys_equal
+from data.ddm_build_copy.ddm_v550j_registry_contract import (
+    require_executable_registry_status,
+    require_joint_configuration_authority_release,
+    require_p3_authority_release,
+)
 
 
 SHARED_SUBSTRATE_SCHEMA_VERSION = "v1"
 SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION = "v550-v550j-coexecution-v1"
 SHARED_SUBSTRATE_BASENAME = "v550_shared_respondent_substrate"
 REQUIRED_P3_AUTHORITY_RELEASE_ID = "P3-AUTHORITY-2026-08-02-R184"
-REQUIRED_JOINT_CONFIGURATION_AUTHORITY_RELEASE_ID = "V550J-BOUNDED-AUTHORITY-2026-08-02-R1"
-EXECUTABLE_JOINT_REGISTRY_STATUSES = {"active", "approved", "certified", "governed"}
 
 PREPARED_SUBSTRATE_REQUIRED_COLUMNS = [
     "run_id",
@@ -252,15 +255,9 @@ def resolve_shared_substrate_requirements(
     selected_configuration_ids: Iterable[Any] | None = None,
 ) -> dict[str, Any]:
     """Resolve base and bounded-V550J joint-required extraction surfaces."""
-    status = _clean(registry.get("status")).lower()
-    if status not in EXECUTABLE_JOINT_REGISTRY_STATUSES:
-        raise RuntimeError(f"joint registry is not executable: status={status or 'missing'}")
-    p3_release = _clean(registry.get("p3_authority_release_id"))
-    joint_release = _clean(registry.get("joint_configuration_authority_release_id"))
-    if p3_release != REQUIRED_P3_AUTHORITY_RELEASE_ID:
-        raise RuntimeError(f"unexpected P3 authority release: {p3_release}")
-    if joint_release != REQUIRED_JOINT_CONFIGURATION_AUTHORITY_RELEASE_ID:
-        raise RuntimeError(f"unexpected joint-configuration authority release: {joint_release}")
+    require_executable_registry_status(registry.get("status"))
+    require_p3_authority_release(registry.get("p3_authority_release_id"))
+    require_joint_configuration_authority_release(registry.get("joint_configuration_authority_release_id"))
 
     selected = {str(value).strip() for value in selected_configuration_ids or [] if _clean(value)}
     base_rows = base_question_rows.copy()

@@ -38,6 +38,11 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from data.ddm_build_copy.ddm_v550j_registry_contract import (
+    EXECUTABLE_JOINT_REGISTRY_STATUSES,
+    registry_status_is_executable,
+)
+
 DEFAULT_JOINT_REGISTRY = REPO_ROOT / "data/ddm_build_copy/manifests/question_family_registry.yaml"
 DEFAULT_RESPONSE_OPTION_MAP = REPO_ROOT / "data/ddm_build_copy/reports/V550_response_option_map.csv"
 DEFAULT_RESPONSE_MAP_BUILD_INPUTS = (
@@ -1104,12 +1109,16 @@ def _wave_aliases(family: str, wave: str) -> list[str]:
 
 def _registry_var_codes(payload: dict[str, Any], family: str, wave: str) -> dict[str, list[str]]:
     source_family = str(payload.get("source_family") or "")
-    if source_family and _norm(source_family) != _norm(family):
+    aggregate_sources = {"alllayer1scopes", "allscopes", "all"}
+    if source_family and _norm(source_family) not in {_norm(family), *aggregate_sources}:
         return {}
     wave_keys = {_norm(value) for value in _wave_aliases(family, wave)}
     output: dict[str, list[str]] = {}
     for family_cfg in payload.get("families") or []:
         if not isinstance(family_cfg, dict):
+            continue
+        family_source = str(family_cfg.get("source_family") or source_family)
+        if family_source and _norm(family_source) not in {_norm(family), *aggregate_sources}:
             continue
         eligible = family_cfg.get("eligible_waves") or []
         if eligible and not ({_norm(value) for value in eligible} & wave_keys):
@@ -1128,16 +1137,13 @@ def _registry_var_codes(payload: dict[str, Any], family: str, wave: str) -> dict
     return output
 
 
-EXECUTABLE_JOINT_REGISTRY_STATUSES = {"draft", "active", "approved", "certified", "governed"}
-
-
 def _joint_registry_payload_hash(payload: dict[str, Any]) -> str:
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
 def _joint_registry_status_is_executable(value: Any) -> bool:
-    return str(value or "").strip().lower() in EXECUTABLE_JOINT_REGISTRY_STATUSES
+    return registry_status_is_executable(value)
 
 
 def resolve_joint_authority(config: RuntimeConfig, family: str, wave: str, selected_vars: Iterable[str] | None = None) -> dict[str, Any]:

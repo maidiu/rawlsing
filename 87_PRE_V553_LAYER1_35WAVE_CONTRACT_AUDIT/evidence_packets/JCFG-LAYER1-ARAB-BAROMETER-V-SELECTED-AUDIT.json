@@ -1,0 +1,101 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-ARAB-BAROMETER-V-SELECTED-AUDIT",
+  "candidate_hash": "71690e7e37bc713aca550e274d50d343d1d9e923dab2522d8ebca7f916676668",
+  "complete_source_structure_members": [
+    "Q103",
+    "Q104A_98",
+    "Q265"
+  ],
+  "country_code": "QA",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "binary",
+        "country_or_split_variant",
+        "missingness_semantics",
+        "pressure_linkage_candidate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.5ed1ca9de4c1d74ee670",
+      "question_implementation_id": "question_impl.phase0.5ed1ca9de4c1d74ee670",
+      "question_text": "Generally speaking, would you say that “Most people can be trusted” or “that you must be very careful in dealing with people”?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_contrast",
+      "semantic_role": "attitude_perception_evaluation_or_intention",
+      "semantic_subrole": "certified_directional_subjective_binary",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q103"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "multiselect_or_repeated",
+        "position_coordinate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.00cd0e559ef2d9fa8288",
+      "question_implementation_id": "question_impl.phase0.00cd0e559ef2d9fa8288",
+      "question_text": "MIGRATION: REASON: DON'T KNOW",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "multiselect",
+      "semantic_role": "behavioral_or_demographic_context",
+      "semantic_subrole": "multi_response_dummy",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q104A_98"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "nominal",
+        "nondirectional_relation",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.00d9e2b81ad1110b822f",
+      "question_implementation_id": "question_impl.phase0.00d9e2b81ad1110b822f",
+      "question_text": "Which of the following statements comes closest to your view? Statement 1: The best way to reduce poverty is to increase your taxes so the government can help the poor through social spending. Statement 2: The best way to reduce poverty is to encourage people like yourself to pay more sadaqa for charitable distribution.",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "nominal_choice",
+      "semantic_role": "preference_target_or_relation",
+      "semantic_subrole": "nominal_target_tradeoff_or_category",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q265"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "Q103",
+    "Q104A_98",
+    "Q265"
+  ],
+  "source_family": "Arab Barometer",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "V"
+}

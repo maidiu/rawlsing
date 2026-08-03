@@ -1,0 +1,105 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: 4e1d7c52a4f0c68704f8aa834a03c023976fec7fe406b1797b57c1fc1b45e818
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-LITS-2006-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 7c924dcec83b8a32068a48913aa32013c44f6d791a8198a4ffffddd8c9d369b1
+  eligible_waves:
+  - '2006'
+  family_id: JCFG-LAYER1-LITS-2006-SELECTED-AUDIT
+  family_label: LiTS 2006 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - directional_relation
+      - missingness_semantics
+      - multiselect_or_repeated
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0d0024e7bb89e87f1f42
+      question_implementation_id: question_impl.phase0.0d0024e7bb89e87f1f42
+      question_text: attitude towards reducing present income inequality
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: RELATION_EVIDENCE
+      semantic_subrole: subjective_evaluation_attitude_perception_or_intention
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: q301_10
+    nominal_configuration_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: nominal_configuration_item
+      morphology_tags:
+      - nominal
+      - position_coordinate
+      - review_or_authority_gap
+      - routed_or_conditional
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.08086ae8c1b3dfbd3d4f
+      question_implementation_id: question_impl.phase0.08086ae8c1b3dfbd3d4f
+      question_text: region
+      response_binding_status: blocked_response_authority_gap
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: nominal_choice
+      semantic_role: POSITION_COORDINATE
+      semantic_subrole: geographic_position
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: region
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - binary
+      - multiselect_or_repeated
+      - position_coordinate
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.01cb367a417c8db36f68
+      question_implementation_id: question_impl.phase0.01cb367a417c8db36f68
+      question_text: worked in a different country w.r.t the country living now, job
+        H (life history)
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_factual
+      semantic_role: STRUCTURAL_CONTEXT
+      semantic_subrole: behavior_exposure_or_life_history
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: q602b4h
+  joint_configuration_id: JCFG-LAYER1-LITS-2006-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: LiTS
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: LiTS
+status: governed

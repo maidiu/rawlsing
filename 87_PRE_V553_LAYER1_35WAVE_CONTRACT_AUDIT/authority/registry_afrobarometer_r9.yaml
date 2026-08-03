@@ -1,0 +1,111 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: daf99533efc67e0bc0cdaad33170a9f35b9e737510cdc52d2fa1d6139c5cf944
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-AFROBAROMETER-R9-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 0c8c7bd883aa80861a150e5f31619998c095ae85584e4326eccd45cb45dca3c4
+  eligible_waves:
+  - R9
+  family_id: JCFG-LAYER1-AFROBAROMETER-R9-SELECTED-AUDIT
+  family_label: Afrobarometer R9 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - country_or_split_variant
+      - missingness_semantics
+      - ordinal
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0d397b86f6b35d39da55
+      question_implementation_id: question_impl.phase0.0d397b86f6b35d39da55
+      question_text: 'Do you approve or disapprove of the way the following people
+        have performed their jobs over the past 12 months, or haven''t you heard enough
+        about them to say: [President] [Uhuru Kenyatta]?'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_scale
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q47A
+    selected_audit_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: selected_audit_item
+      morphology_tags:
+      - binary
+      - country_or_split_variant
+      - missingness_semantics
+      - ordinal
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0c85974704cf3eaeb501
+      question_implementation_id: question_impl.phase0.0c85974704cf3eaeb501
+      question_text: 'Which of the following statements is closest to your view? Choose
+        Statement 1 or Statement 2. Statement 1: Political parties create division
+        and confusion; it is therefore unnecessary to have many political parties
+        in [Kenya]. Statement 2: Many political parties are needed to make sure that
+        [Kenyans] have real choices in who governs them.'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_tradeoff
+      semantic_role: preference_target_tradeoff_or_ranking
+      semantic_subrole: forced_tradeoff_ranking_target_or_identity
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: Q25
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - derived_or_recoded
+      - nominal
+      - position_coordinate
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.b7271c3efb72a652cf68
+      question_implementation_id: question_impl.phase0.b7271c3efb72a652cf68
+      question_text: 'Demand for Democracy (additive index of 4 democratic commitments:
+        support (1,2=0)(3=1)(else=sysmis) + reject (5,4,3,9=0)(2,1=1)(else=sysmis)'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: context_index
+      semantic_role: structural_or_derived_context
+      semantic_subrole: observed_environment_or_derived_index
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: DemandDemo
+  joint_configuration_id: JCFG-LAYER1-AFROBAROMETER-R9-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: Afrobarometer
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: Afrobarometer
+status: governed

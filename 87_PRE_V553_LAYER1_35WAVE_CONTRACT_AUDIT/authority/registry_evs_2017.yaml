@@ -1,0 +1,108 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: 3549137a73bd7b2fc813e6c184077f577a6fd3f096b3cd59b8b23190b2944b8a
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-EVS-2017-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 269ec0ce6b1b10a6b684feaea51ce2576e3b965b01aa949dd63333a4eb83fab8
+  eligible_waves:
+  - '2017'
+  family_id: JCFG-LAYER1-EVS-2017-SELECTED-AUDIT
+  family_label: EVS 2017 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 2
+      item_role: attitude_relation_item
+      morphology_tags:
+      - binary
+      - directional_relation
+      - missingness_semantics
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.1982b05159c3148cefad
+      question_implementation_id: question_impl.phase0.1982b05159c3148cefad
+      question_text: 'do you believe in: God'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_contrast
+      semantic_role: RELATION_EVIDENCE
+      semantic_subrole: religious_or_spiritual_orientation
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: v57
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 1
+      item_role: source_context_item
+      morphology_tags:
+      - missingness_semantics
+      - multiselect_or_repeated
+      - position_coordinate
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.2ba062c4c3056949531c
+      question_implementation_id: question_impl.phase0.2ba062c4c3056949531c
+      question_text: 'learn children at home: feeling of responsibility'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: multiselect_child
+      semantic_role: STRUCTURAL_CONTEXT
+      semantic_subrole: multiselect_value_or_target_selection
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: v88
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: source_context_item
+      morphology_tags:
+      - derived_or_recoded
+      - missingness_semantics
+      - nominal
+      - position_coordinate
+      - routed_or_conditional
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.00d938af64a25bb1a7ee
+      question_implementation_id: question_impl.phase0.00d938af64a25bb1a7ee
+      question_text: age recoded (3 intervals)
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: context_index
+      semantic_role: STRUCTURAL_CONTEXT
+      semantic_subrole: derived_or_recoded_context
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: age_r2
+  joint_configuration_id: JCFG-LAYER1-EVS-2017-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: EVS
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: EVS
+status: governed

@@ -1,0 +1,110 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: 434addf8ff54a79462d8970f4c123d06922fa8f9fc83f34294590f91676096a4
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-GSS-2002-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 1368a29dfcee92d0a273dbb5aca28c0df918fa27a00eaf0cc38f61cd79cb5ae4
+  eligible_waves:
+  - '2002'
+  family_id: JCFG-LAYER1-GSS-2002-SELECTED-AUDIT
+  family_label: GSS 2002 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - binary
+      - directional_relation
+      - missingness_semantics
+      - position_coordinate
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.054480f42285086ab2e8
+      question_implementation_id: question_impl.phase0.054480f42285086ab2e8
+      question_text: should child be forced by law to admit to a hosp
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_contrast
+      semantic_role: RELATION_EVIDENCE
+      semantic_subrole: construct_relative_attitude_evaluation_perception_intention_expectation_or_proposition_endorsement
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: forcehos
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED_CONTEXT
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - missingness_semantics
+      - nominal
+      - position_coordinate
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.02b4e9afa02fe28a5ab2
+      question_implementation_id: question_impl.phase0.02b4e9afa02fe28a5ab2
+      question_text: sex of sex partner's in last year
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: nominal_context
+      semantic_role: STRUCTURAL_CONTEXT
+      semantic_subrole: reported_behavior_exposure_fact_identity_or_position
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: sexsex
+    - directional_certification_status: NOT_CERTIFIED_CONTEXT
+      item_order: 3
+      item_role: source_context_item
+      morphology_tags:
+      - missingness_semantics
+      - ordinal
+      - position_coordinate
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0450daa76d7b265f47d8
+      question_implementation_id: question_impl.phase0.0450daa76d7b265f47d8
+      question_text: the job security is good
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: ordinal_context
+      semantic_role: STRUCTURAL_CONTEXT
+      semantic_subrole: employment_status_occupation_quantity_or_material_position
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: jobsecok
+  joint_configuration_id: JCFG-LAYER1-GSS-2002-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: GSS
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: GSS
+status: governed

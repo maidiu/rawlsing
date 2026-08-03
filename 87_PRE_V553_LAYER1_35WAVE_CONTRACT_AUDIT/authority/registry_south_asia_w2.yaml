@@ -1,0 +1,105 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: 519ccabff6a5a6a4352272dc0c862195cd25b77bb36711fdff0b366edded102f
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-SOUTH-ASIA-W2-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 2d2716738da7fc483567ee67066341bf5599a05ab7b23170d9086355dea98aa4
+  eligible_waves:
+  - W2
+  family_id: JCFG-LAYER1-SOUTH-ASIA-W2-SELECTED-AUDIT
+  family_label: South Asia W2 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - missingness_semantics
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - scalar
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.07ffccc108c7d31132ea
+      question_implementation_id: question_impl.phase0.07ffccc108c7d31132ea
+      question_text: 'GB2: How would you describe the change in the economic condition
+        of our country over the last few years? Is it Better, About the same or worse?'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: scalar
+      semantic_role: attitude_perception_evaluation_or_intention
+      semantic_subrole: certified_directional_subjective_scale
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: GB2
+    selected_audit_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: selected_audit_item
+      morphology_tags:
+      - binary
+      - missingness_semantics
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0ed35e85c180d609eab4
+      question_implementation_id: question_impl.phase0.0ed35e85c180d609eab4
+      question_text: 'GB19: Let?s talk for a moment about the kind of government you
+        would like to have in this country, which of the followings statements do
+        you agree with most?'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_tradeoff
+      semantic_role: preference_target_tradeoff_or_ranking
+      semantic_subrole: forced_tradeoff_ranking_target_or_affiliation
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: GB19
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - missingness_semantics
+      - ordinal
+      - position_coordinate
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.13f28ebe004fcbea2af8
+      question_implementation_id: question_impl.phase0.13f28ebe004fcbea2af8
+      question_text: 'GBC17c: In the past three (3) years, have you once, or more
+        than once, never Contact officials of political parties or other political
+        organizations because of personal, family, or neighbourhood problems, or problems
+        with government officials and policies?'
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: ordinal_context
+      semantic_role: behavior_participation_exposure_context
+      semantic_subrole: reported_behavior_participation_or_exposure
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: GBC17c
+  joint_configuration_id: JCFG-LAYER1-SOUTH-ASIA-W2-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: South Asia
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: South Asia
+status: governed

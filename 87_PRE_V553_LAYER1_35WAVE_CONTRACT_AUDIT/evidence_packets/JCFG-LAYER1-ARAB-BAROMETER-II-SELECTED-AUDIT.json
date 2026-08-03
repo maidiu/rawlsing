@@ -1,0 +1,102 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-ARAB-BAROMETER-II-SELECTED-AUDIT",
+  "candidate_hash": "b4f22cf10c67c3430ed402efce1024d1b5fc405c87f525684fef41cccb80195d",
+  "complete_source_structure_members": [
+    "sa3047",
+    "eg8113",
+    "eg801"
+  ],
+  "country_code": "JO",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "nominal",
+        "pressure_linkage_candidate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.03a5c617d9f4809775a5",
+      "question_implementation_id": "question_impl.phase0.03a5c617d9f4809775a5",
+      "question_text": "sa3047 In general, to what extent is it important to you that [Insert] in deciding who to vote for in elections, whether the municipal elections? 7. The candidate's wealth.",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "attitude_perception_evaluation_or_intention",
+      "semantic_subrole": "certified_directional_subjective_scale",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "sa3047"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "binary",
+        "country_or_split_variant",
+        "missingness_semantics",
+        "nominal",
+        "position_coordinate",
+        "routed_or_conditional"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.02cca4882fc9387d36c1",
+      "question_implementation_id": "question_impl.phase0.02cca4882fc9387d36c1",
+      "question_text": "eg8113 In your opinion, will the revolution succeed in achieving (Insert)? 3. Better economic opportunities.",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_factual",
+      "semantic_role": "behavior_exposure_context",
+      "semantic_subrole": "reported_fact_or_status",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "eg8113"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "nominal",
+        "ordinal",
+        "position_coordinate",
+        "routed_or_conditional"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.06e7d974ed6d3264fc78",
+      "question_implementation_id": "question_impl.phase0.06e7d974ed6d3264fc78",
+      "question_text": "eg801 During the protests in Egypt between January 25 and February 11, was your position closer to...?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "ordinal_context",
+      "semantic_role": "behavior_exposure_context",
+      "semantic_subrole": "reported_behavior_exposure_or_participation",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "eg801"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "sa3047",
+    "eg8113",
+    "eg801"
+  ],
+  "source_family": "Arab Barometer",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "II"
+}

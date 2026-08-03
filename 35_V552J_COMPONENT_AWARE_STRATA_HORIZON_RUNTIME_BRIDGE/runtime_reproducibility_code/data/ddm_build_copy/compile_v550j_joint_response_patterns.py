@@ -50,6 +50,10 @@ from data.ddm_build_copy.ddm_v550j_joint_patterns import (
     _to_bool,
 )
 from data.ddm_build_copy.ddm_v550j_registry_classifier import AssociationLaneRegistry
+from data.ddm_build_copy.ddm_v550j_registry_contract import (
+    EXECUTABLE_JOINT_REGISTRY_STATUSES,
+    registry_status_is_executable,
+)
 from data.ddm_build_copy.ddm_survey_identity import (
     SurveyIdentityError,
     canonical_family_key,
@@ -66,7 +70,6 @@ DEFAULT_RESPONSE_OPTION_MAP = DEFAULT_REPORTS_DIR / "V550_response_option_map.cs
 DEFAULT_ASSOCIATION_THRESHOLD_PROFILES = (
     ROOT / "data" / "ddm_registries" / "association_threshold_profiles.yaml"
 )
-EXECUTABLE_JOINT_REGISTRY_STATUSES = {"active", "approved", "certified", "governed"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -176,7 +179,7 @@ def _safe_clean(value: Any) -> str:
     return "" if text.lower() in {"nan", "none"} else text
 
 def _registry_status_is_executable(value: Any) -> bool:
-    return _safe_clean(value).lower() in EXECUTABLE_JOINT_REGISTRY_STATUSES
+    return registry_status_is_executable(value)
 
 
 def _validate_bounded_authority_registry(registry: dict[str, Any]) -> dict[str, int]:

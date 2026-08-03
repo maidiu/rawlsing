@@ -1,0 +1,107 @@
+authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+content_hash: ec4c83ff5dbe6d13b9a0e13940a60de783dd0287cf83cdb5c36dde670bba0044
+families:
+- authority_metadata:
+    joint_configuration_adjudication_id: ADJ-JCFG-LAYER1-WVS-W4-SELECTED-AUDIT
+    joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+    layer1_authority_scope: LAYER1_35_WAVE_PRE_V553_CONTRACT_AUDIT
+    p2_source_structure_effect: DISCOVERY_EVIDENCE_ONLY
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_PRESENT_NOT_JOINT_CONFIGURATION_AUTHORITY
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  authorized_inference: bounded respondent-level joint configuration for pre-V553
+    contract-audit execution only
+  boundary_rules:
+  - boundary_pattern_type: bounded_audit_cooccurrence
+  content_hash: 8b086e6f62d8f9e891bf2d11a3142ca4fc3a13692d10c5c9c060ca94453034e0
+  eligible_waves:
+  - W4
+  family_id: JCFG-LAYER1-WVS-W4-SELECTED-AUDIT
+  family_label: WVS W4 Layer-1 bounded audit configuration
+  family_structure_type: layer1_selected_audit_configuration
+  family_type: layer1_bounded_source_native_configuration
+  forbidden_inferences:
+  - production completeness
+  - cross-source response portability
+  - P3C proposition family implies V550J joint configuration
+  item_role_groups:
+    attitude_relation_item:
+    - directional_certification_status: CERTIFIED
+      item_order: 1
+      item_role: attitude_relation_item
+      morphology_tags:
+      - binary
+      - directional_relation
+      - missingness_semantics
+      - nominal
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.0052c5d24775e6587ead
+      question_implementation_id: question_impl.phase0.0052c5d24775e6587ead
+      question_text: Do you believe people have a soul?
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: binary_contrast
+      semantic_role: RELATION_EVIDENCE
+      semantic_subrole: religious_or_spiritual_orientation
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: V193
+    source_context_item:
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 2
+      item_role: source_context_item
+      morphology_tags:
+      - derived_or_recoded
+      - missingness_semantics
+      - position_coordinate
+      - routed_or_conditional
+      - scalar
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.180eda2b975ffe63c197
+      question_implementation_id: question_impl.phase0.180eda2b975ffe63c197
+      question_text: DEFIANCE.- Welzel defiance sub-index
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: context_index
+      semantic_role: STRUCTURAL_CONTEXT
+      semantic_subrole: derived_or_recoded_context
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: DEFIANCE
+    - directional_certification_status: NOT_CERTIFIED
+      item_order: 3
+      item_role: source_context_item
+      morphology_tags:
+      - missingness_semantics
+      - multiselect_or_repeated
+      - nominal
+      - pressure_linkage_candidate
+      - routed_or_conditional
+      - structural_context
+      p3_annotation_status: NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT
+      question_concept_id: question.phase0.00b0456a7f6a7ff59295
+      question_implementation_id: question_impl.phase0.00b0456a7f6a7ff59295
+      question_text: Good job security 1 2
+      response_binding_status: bound
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+      response_topology: multiselect_child
+      semantic_role: STRUCTURAL_CONTEXT
+      semantic_subrole: multiselect_value_or_target_selection
+      source_local_status: SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER
+      var_code: V88
+  joint_configuration_id: JCFG-LAYER1-WVS-W4-SELECTED-AUDIT
+  minimum_items_answered: 2
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+  response_portability_status: NOT_AUTHORIZED_BY_P3
+  source_family: WVS
+  target_resolution_rules:
+  - target_resolution_status: bounded_audit_source_native_item
+joint_configuration_authority_release_id: V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+response_portability_status: NOT_AUTHORIZED_BY_P3
+schema_version: v550j-question-family-registry-layer1-audit-v1
+source_family: WVS
+status: governed

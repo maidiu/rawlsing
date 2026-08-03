@@ -1,0 +1,100 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-AFROBAROMETER-R5-SELECTED-AUDIT",
+  "candidate_hash": "85b8748c0681729896c6f86c2525d19c9d71e8e625f6bea5a6e77d41498d76c8",
+  "complete_source_structure_members": [
+    "Q41C_ARB",
+    "LivedPoverty",
+    "Q8B"
+  ],
+  "country_code": "SL",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "nominal",
+        "pressure_linkage_candidate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.ffae7fae6cb40b4c6f5b",
+      "question_implementation_id": "question_impl.phase0.ffae7fae6cb40b4c6f5b",
+      "question_text": "The opinions of Islamic jurists and religious scholars differ with regard to their interpretations of certain issues in Islam. What extent you agree or disagree with each of the following statements: Religious leaders like imams, preachers and priests should not interfere in voters' decisions in elections?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "attitude_perception_evaluation_or_intention",
+      "semantic_subrole": "certified_directional_subjective_scale",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q41C_ARB"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "derived_or_recoded",
+        "position_coordinate",
+        "review_or_authority_gap",
+        "routed_or_conditional",
+        "scalar",
+        "structural_context"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.8b81f45fe1d90e95f768",
+      "question_implementation_id": "question_impl.phase0.8b81f45fe1d90e95f768",
+      "question_text": "Lived Poverty Index (average index of 5 poverty items)",
+      "response_binding_status": "blocked_response_authority_gap",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "context_index",
+      "semantic_role": "structural_or_derived_context",
+      "semantic_subrole": "observed_environment_or_derived_index",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "LivedPoverty"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "missingness_semantics",
+        "nominal",
+        "ordinal",
+        "position_coordinate"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.01d1cc9a97f2d005d490",
+      "question_implementation_id": "question_impl.phase0.01d1cc9a97f2d005d490",
+      "question_text": "Over the past year, how often, if ever, have you or anyone in your family gone without: Enough clean water for home use?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "ordinal_context",
+      "semantic_role": "demographic_material_or_identity_context",
+      "semantic_subrole": "demographic_material_identity_or_status",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "Q8B"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "Q41C_ARB",
+    "LivedPoverty",
+    "Q8B"
+  ],
+  "source_family": "Afrobarometer",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "R5"
+}

@@ -1,0 +1,98 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-LITS-2006-SELECTED-AUDIT",
+  "candidate_hash": "10278f7bf37127f9bc8328d9603d0b2486945a973972488134fbce018ae4ba08",
+  "complete_source_structure_members": [
+    "q301_10",
+    "q602b4h",
+    "region"
+  ],
+  "country_code": "BY",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "directional_relation",
+        "missingness_semantics",
+        "multiselect_or_repeated",
+        "pressure_linkage_candidate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.0d0024e7bb89e87f1f42",
+      "question_implementation_id": "question_impl.phase0.0d0024e7bb89e87f1f42",
+      "question_text": "attitude towards reducing present income inequality",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "RELATION_EVIDENCE",
+      "semantic_subrole": "subjective_evaluation_attitude_perception_or_intention",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "q301_10"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "binary",
+        "multiselect_or_repeated",
+        "position_coordinate",
+        "structural_context"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.01cb367a417c8db36f68",
+      "question_implementation_id": "question_impl.phase0.01cb367a417c8db36f68",
+      "question_text": "worked in a different country w.r.t the country living now, job H (life history)",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_factual",
+      "semantic_role": "STRUCTURAL_CONTEXT",
+      "semantic_subrole": "behavior_exposure_or_life_history",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "q602b4h"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "nominal_configuration_item",
+      "morphology_tags": [
+        "nominal",
+        "position_coordinate",
+        "review_or_authority_gap",
+        "routed_or_conditional"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.08086ae8c1b3dfbd3d4f",
+      "question_implementation_id": "question_impl.phase0.08086ae8c1b3dfbd3d4f",
+      "question_text": "region",
+      "response_binding_status": "blocked_response_authority_gap",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "nominal_choice",
+      "semantic_role": "POSITION_COORDINATE",
+      "semantic_subrole": "geographic_position",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "region"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "q301_10",
+    "q602b4h",
+    "region"
+  ],
+  "source_family": "LiTS",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "2006"
+}

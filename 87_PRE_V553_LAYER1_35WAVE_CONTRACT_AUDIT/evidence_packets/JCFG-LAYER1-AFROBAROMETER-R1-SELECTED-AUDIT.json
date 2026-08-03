@@ -1,0 +1,96 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-AFROBAROMETER-R1-SELECTED-AUDIT",
+  "candidate_hash": "1989b40183be97a7c91ac1bb9f017f28dd0072884bce3b4aa1b3f20a8e493f93",
+  "complete_source_structure_members": [
+    "dmpsat",
+    "pidcls",
+    "marrsk"
+  ],
+  "country_code": "BF",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "missingness_semantics",
+        "ordinal",
+        "pressure_linkage_candidate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.735c84f8a25b170a695a",
+      "question_implementation_id": "question_impl.phase0.735c84f8a25b170a695a",
+      "question_text": "Satisfaction with democracy",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "attitude_perception_evaluation_or_intention",
+      "semantic_subrole": "certified_directional_subjective_scale",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "dmpsat"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "binary",
+        "missingness_semantics",
+        "position_coordinate",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.57853a06c65ccce8c2a2",
+      "question_implementation_id": "question_impl.phase0.57853a06c65ccce8c2a2",
+      "question_text": "Close to party",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_factual",
+      "semantic_role": "reported_fact_or_status_context",
+      "semantic_subrole": "factual_yes_no",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "pidcls"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "nominal_configuration_item",
+      "morphology_tags": [
+        "missingness_semantics",
+        "nominal",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.0b4960ea8351c9499d36",
+      "question_implementation_id": "question_impl.phase0.0b4960ea8351c9499d36",
+      "question_text": "Is A) starting a new business too financially risky or B) should people invest or borrow if they have a good business idea?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "nominal_choice",
+      "semantic_role": "substantive_nominal_choice",
+      "semantic_subrole": "substantive_choice_without_scalar_axis",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "marrsk"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "dmpsat",
+    "pidcls",
+    "marrsk"
+  ],
+  "source_family": "Afrobarometer",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "R1"
+}

@@ -1,0 +1,97 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-ASIAN-BAROMETER-W1-SELECTED-AUDIT",
+  "candidate_hash": "a8ada64c247d1df3fa7b125cc79f090e5a400b99a34915cf94a0ce7723820423",
+  "complete_source_structure_members": [
+    "q101",
+    "se012bmo",
+    "q111"
+  ],
+  "country_code": "PH",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "pressure_linkage_candidate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.037938094e67edb59c67",
+      "question_implementation_id": "question_impl.phase0.037938094e67edb59c67",
+      "question_text": "To what extent would you want our country to be democratic now?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "attitude_perception_evaluation_or_intention",
+      "semantic_subrole": "certified_directional_subjective_scale",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "q101"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "ordinal",
+        "position_coordinate"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.0236592da072e490107d",
+      "question_implementation_id": "question_impl.phase0.0236592da072e490107d",
+      "question_text": "employment",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "ordinal_context",
+      "semantic_role": "demographic_material_or_identity_context",
+      "semantic_subrole": "demographic_material_identity_or_status",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "se012bmo"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "nominal_configuration_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "nominal",
+        "routed_or_conditional"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.01c9f7cc9b2a8a95be02",
+      "question_implementation_id": "question_impl.phase0.01c9f7cc9b2a8a95be02",
+      "question_text": "Economic development- is better than before?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "nominal_choice",
+      "semantic_role": "uncertified_substantive_choice",
+      "semantic_subrole": "categorical_or_ordered_without_certified_poles",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "q111"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "q101",
+    "se012bmo",
+    "q111"
+  ],
+  "source_family": "Asian Barometer",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "W1"
+}

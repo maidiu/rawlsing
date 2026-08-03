@@ -1,0 +1,101 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-LATINOBAROMETRO-2011-SELECTED-AUDIT",
+  "candidate_hash": "64c0f304ae8d91b2248a5b6e5d43d7da7c5599ffc1f644164010a31e7fb7f8a5",
+  "complete_source_structure_members": [
+    "P2ST",
+    "P70ST_D",
+    "P26NE_E"
+  ],
+  "country_code": "GT",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 1,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "multiselect_or_repeated",
+        "ordinal",
+        "position_coordinate",
+        "routed_or_conditional",
+        "structural_context"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.1b46a5c99adcdbe39980",
+      "question_implementation_id": "question_impl.phase0.1b46a5c99adcdbe39980",
+      "question_text": "In your opinion, which is the most important problem in the country?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "ranking_or_multiselect",
+      "semantic_role": "structural_context",
+      "semantic_subrole": "ranking_multiselect_nominal_target_tradeoff_or_coordinate",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "P2ST"
+    },
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 2,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "directional_relation",
+        "missingness_semantics",
+        "position_coordinate",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.03b26d7ee7a2a08025b3",
+      "question_implementation_id": "question_impl.phase0.03b26d7ee7a2a08025b3",
+      "question_text": "Number of days you read news in Internet",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "relation_evidence",
+      "semantic_subrole": "subjective_attitude_evaluation_frequency_or_intention",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "P70ST_D"
+    },
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 3,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "binary",
+        "country_or_split_variant",
+        "directional_relation",
+        "missingness_semantics",
+        "position_coordinate"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.0637817f0e5768125c12",
+      "question_implementation_id": "question_impl.phase0.0637817f0e5768125c12",
+      "question_text": "How would you say State secondary education works?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_contrast",
+      "semantic_role": "relation_evidence",
+      "semantic_subrole": "subjective_attitude_evaluation_frequency_or_intention",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "P26NE_E"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "P2ST",
+    "P70ST_D",
+    "P26NE_E"
+  ],
+  "source_family": "Latinobarómetro",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "2011"
+}

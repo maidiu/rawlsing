@@ -1,0 +1,101 @@
+{
+  "candidate_configuration_id": "JCFG-LAYER1-LATINOBAROMETRO-1995-SELECTED-AUDIT",
+  "candidate_hash": "5b276cdc092f75d9fda1479d8430ca8c4ba52d90238e3ab153c03f44d54776f5",
+  "complete_source_structure_members": [
+    "p44b",
+    "p69",
+    "p63"
+  ],
+  "country_code": "BR",
+  "historical_gss_registry_overlap": "NOT_APPLICABLE",
+  "originating_p2_source_structure_ids": [
+    "LAYER1_SELECTION_INTERSECTION_P2_DISCOVERY_EVIDENCE_ONLY"
+  ],
+  "p3_authority_effect": "PROPOSITION_ANNOTATION_ONLY_NOT_JOINT_CONFIGURATION_AUTHORITY",
+  "question_items": [
+    {
+      "directional_certification_status": "CERTIFIED",
+      "item_order": 1,
+      "item_role": "attitude_relation_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "directional_relation",
+        "missingness_semantics",
+        "position_coordinate",
+        "routed_or_conditional",
+        "scalar"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.01bfa73fdc2038524285",
+      "question_implementation_id": "question_impl.phase0.01bfa73fdc2038524285",
+      "question_text": "what is your impression of the United States involvement in [nation]?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "scalar",
+      "semantic_role": "relation_evidence",
+      "semantic_subrole": "subjective_attitude_evaluation_frequency_or_intention",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "p44b"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 2,
+      "item_role": "source_context_item",
+      "morphology_tags": [
+        "country_or_split_variant",
+        "missingness_semantics",
+        "multiselect_or_repeated",
+        "ordinal",
+        "position_coordinate",
+        "structural_context"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.065d74ad3e504b57f799",
+      "question_implementation_id": "question_impl.phase0.065d74ad3e504b57f799",
+      "question_text": "Which would you say is most important: a stable economy, progress towards a less impersonal and more human society, progress towards a society in which ideas count for more than money, or beating crime?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "ranking_or_multiselect",
+      "semantic_role": "structural_context",
+      "semantic_subrole": "ranking_multiselect_nominal_target_tradeoff_or_coordinate",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "p69"
+    },
+    {
+      "directional_certification_status": "NOT_CERTIFIED",
+      "item_order": 3,
+      "item_role": "selected_audit_item",
+      "morphology_tags": [
+        "binary",
+        "country_or_split_variant",
+        "missingness_semantics",
+        "position_coordinate",
+        "review_or_authority_gap"
+      ],
+      "p3_annotation_status": "NO_P3C_PROPOSITION_MEMBERSHIP_IN_LAYER1_AUDIT_INPUT",
+      "question_concept_id": "question.phase0.9424113493e727e95cb3",
+      "question_implementation_id": "question_impl.phase0.9424113493e727e95cb3",
+      "question_text": "Do you think that people usually say what they think when asked about politics?",
+      "response_binding_status": "bound",
+      "response_portability_status": "NOT_AUTHORIZED_BY_P3",
+      "response_topology": "binary_contrast",
+      "semantic_role": "blocked_review",
+      "semantic_subrole": "source_conflict",
+      "source_local_status": "SOURCE_LOCAL_JOINT_CONFIGURATION_MEMBER",
+      "var_code": "p63"
+    }
+  ],
+  "risk_flags": [
+    "BOUNDED_AUDIT_AUTHORITY",
+    "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  ],
+  "section85_overlap": "NONE",
+  "selected_member_variables": [
+    "p44b",
+    "p69",
+    "p63"
+  ],
+  "source_family": "Latinobarómetro",
+  "source_structure_evidence_status": "P2_DISCOVERY_EVIDENCE_ONLY_NOT_AUTHORITY",
+  "wave": "1995"
+}
