@@ -22,11 +22,9 @@ git -C "$ROOT" bundle create "$BUNDLE" --all
 GIT_PAGER=cat PAGER=cat TERM=dumb git -C "$ROOT" bundle verify "$BUNDLE" > "$STAGE/verification/GIT_BUNDLE_VERIFY.txt" 2>&1
 # Git-tracked tree only; full history is carried by the bundle.
 git -C "$ROOT" archive --format=tar --prefix=repository/ HEAD | zstd -T0 -6 -q -o "$STAGE/payload/repository.tar.zst"
-if [[ -f "${RUNTIME_DIR}.tar.zst" ]]; then
-  cp "${RUNTIME_DIR}.tar.zst" "$STAGE/payload/runtime.tar.zst"
-else
-  tar -cf - -C "$(dirname "$RUNTIME_DIR")" "$(basename "$RUNTIME_DIR")" | zstd -T0 -3 -q -o "$STAGE/payload/runtime.tar.zst"
-fi
+# Build the runtime archive from the requested directory every time. Cached archives
+# are not trusted because their internal top-level name may differ from RUNTIME_DIR.
+tar -cf - -C "$(dirname "$RUNTIME_DIR")" "$(basename "$RUNTIME_DIR")" | zstd -T0 -3 -q -o "$STAGE/payload/runtime.tar.zst"
 cp "$DUMP_PATH" "$STAGE/payload/$DUMP_NAME"
 META="$ROOT/91_RECONSTRUCTION_CONTROL/package_metadata/$CHECKPOINT"
 if [[ -d "$META" ]]; then cp -a "$META"/. "$STAGE"/; fi
