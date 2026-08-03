@@ -1,3 +1,5 @@
+> **Superseded execution order (2026-08-03):** Do not run the live respondent canaries yet. Section 86 now governs the next step: first implement the V550 shared respondent substrate and V550J no-database co-execution contract, then prove the structure with synthetic data. The live-canary instructions below remain the later empirical gate after Section 86 is complete.
+
 # Exact continuation
 
 1. Restore/checkout the Section 85 cumulative checkpoint.

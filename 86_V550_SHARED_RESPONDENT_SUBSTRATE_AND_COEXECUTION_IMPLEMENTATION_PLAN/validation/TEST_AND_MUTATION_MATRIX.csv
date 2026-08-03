@@ -1,0 +1,51 @@
+id,category,test,expected_result
+T01,unit,Canonical logical hash is independent of row order,PASS same hash
+T02,unit,Canonical logical hash preserves duplicate multiplicity,PASS changed hash when multiplicity changes
+T03,unit,Base joint and union set equations,PASS exact sets
+T04,unit,Joint-only items are absent from ordinary V550 processing list,PASS
+T05,unit,Governed registry resolver rejects draft registry,REJECT
+T06,unit,Governed registry resolver rejects stale Section 85 authority release,REJECT
+T07,unit,Atomic writer writes COMPLETE last,PASS
+T08,unit,Loader rejects missing COMPLETE,REJECT
+T09,unit,Loader rejects Parquet SHA mismatch,REJECT
+T10,unit,Loader rejects logical content hash mismatch,REJECT
+T11,unit,Loader rejects response semantics hash mismatch,REJECT
+T12,unit,Loader rejects registry hash mismatch,REJECT
+T13,unit,Loader rejects source wave or country mismatch,REJECT
+T14,unit,Scalar duplicate response key detection,REJECT unauthorized duplicate
+T15,privacy,Shared respondent substrate never writes CSV,PASS no CSV
+T16,privacy,Logs contain no raw respondent values or IDs,PASS
+T17,integration,Fresh one-country run calls respondent query once,PASS query count 1
+T18,integration,Two-country run calls respondent query once per country,PASS query count 2
+T19,integration,V550 base outputs use base set only,PASS
+T20,integration,Shared substrate contains base and joint-required union,PASS
+T21,integration,V550J explicit prepared_required path compiles,PASS
+T22,integration,V550J --forbid-database-access with connection functions patched to fail,PASS no call
+T23,integration,V550J missing explicit prepared substrate under prepared_required,REJECT
+T24,integration,Exact checkpoint resume performs zero respondent queries,PASS query count 0
+T25,integration,V550J rerun performs zero respondent queries,PASS query count 0
+T26,integration,Bridge checkpoint recovery uses shared substrate,PASS query count 0
+T27,integration,Cloud checkpoint recovery uses shared substrate,PASS query count 0
+T28,regression,Legacy V550 mode with shared substrate off remains output-compatible,PASS
+T29,regression,Existing V550J test suite,PASS existing baseline
+T30,regression,Section 85 bounded adapter tests,PASS existing baseline
+T31,regression,Section 85 self-contained 14-file reproduction,PASS identical hashes
+M01,mutation,Delete one J-required variable from union selection,REJECT before query or compile
+M02,mutation,Inject ungoverned variable into union selection,REJECT
+M03,mutation,Change one response semantics authority row,REJECT stale cache
+M04,mutation,Change one registry item role,REJECT stale registry hash
+M05,mutation,Change P3 release ID,REJECT
+M06,mutation,Change Section 85 adjudication-set hash,REJECT
+M07,mutation,Remove respondent_id_norm from substantive row,REJECT
+M08,mutation,Remove var_code_norm,REJECT
+M09,mutation,Alter response_value_norm,REJECT logical hash
+M10,mutation,Remove COMPLETE marker,REJECT
+M11,mutation,Pass db-url with --forbid-database-access,REJECT
+M12,mutation,Force V550J database fallback from coexecution path,REJECT
+M13,mutation,Write respondent CSV,REJECT test gate
+M14,mutation,Use union set as ordinary V550 base list,REJECT base fixture gate
+M15,mutation,Promote shard after requested V550J failure,REJECT promotable false
+M16,mutation,Package respondent substrate in cumulative ZIP,REJECT package privacy gate
+E01,end_to_end,Synthetic nine-configuration V550 to V550J to V551J to V552J,PASS association off
+P01,package,Fresh extraction verifies hashes and clone commit,PASS
+P02,package,Cumulative package contains no real respondent substrate,PASS
