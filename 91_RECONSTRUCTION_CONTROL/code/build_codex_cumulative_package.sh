@@ -24,6 +24,8 @@ git bundle verify "$BUNDLE" > "$STAGE/verification/GIT_BUNDLE_VERIFY.txt" 2>&1
 git -C "$ROOT" archive --format=tar HEAD | zstd -T0 -19 -q -o "$STAGE/payload/repository.tar.zst"
 tar --zstd -cf "$STAGE/payload/runtime.tar.zst" -C "$(dirname "$RUNTIME_DIR")" "$(basename "$RUNTIME_DIR")"
 cp "$DUMP_PATH" "$STAGE/payload/$DUMP_NAME"
+META="$ROOT/91_RECONSTRUCTION_CONTROL/package_metadata/$CHECKPOINT"
+if [[ -d "$META" ]]; then cp -a "$META"/. "$STAGE"/; fi
 
 cat > "$STAGE/unpack_payloads.sh" <<'EOF'
 #!/usr/bin/env bash
