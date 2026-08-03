@@ -17,3 +17,11 @@
 - P3A fixture lifecycle PASS.
 - Packaged v40 verifier PASS.
 - Independent reconstruction verifier: 141/141 historical candidate hashes match exactly.
+
+## 2026-08-02 — Section 83 evidence-first P3C inventory
+
+- Generated the full candidate inventory from the clean P3A v40 database and frozen P2 lineage registry.
+- Reproduced 141 candidates, 496 membership occurrences, 397 unique lineages, 112 shared-member components, and 345 open obligations.
+- Independently established 111 proposition-family member sets through two reviewed cross-component convergences and one direct/constructed prayer partition.
+- Corrected the corrupted recovery claim: candidate 273 is business-and-industry management and extends family 219.
+- No P3C adjudication rows have yet been written to PostgreSQL.
