@@ -19,7 +19,7 @@ BUNDLE="$STAGE/payload/Rawlsing_${CHECKPOINT}.bundle"
 DUMP_NAME="$(basename "$DUMP_PATH")"
 
 git -C "$ROOT" bundle create "$BUNDLE" --all
-GIT_PAGER=cat PAGER=cat TERM=dumb git bundle verify "$BUNDLE" > "$STAGE/verification/GIT_BUNDLE_VERIFY.txt" 2>&1
+GIT_PAGER=cat PAGER=cat TERM=dumb git -C "$ROOT" bundle verify "$BUNDLE" > "$STAGE/verification/GIT_BUNDLE_VERIFY.txt" 2>&1
 # Git-tracked tree only; full history is carried by the bundle.
 git -C "$ROOT" archive --format=tar HEAD | zstd -T0 -19 -q -o "$STAGE/payload/repository.tar.zst"
 tar --zstd -cf "$STAGE/payload/runtime.tar.zst" -C "$(dirname "$RUNTIME_DIR")" "$(basename "$RUNTIME_DIR")"
