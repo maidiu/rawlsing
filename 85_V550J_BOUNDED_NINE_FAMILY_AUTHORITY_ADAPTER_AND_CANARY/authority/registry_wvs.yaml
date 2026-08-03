@@ -1,0 +1,85 @@
+registry_version: bounded-r184-v1
+source_family: WVS
+status: governed
+scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+joint_configuration_adjudication_set_hash: 3f10c787fe15e4c7efaab7654af6494e6a750cd11ac59a7794d0441707a28b7d
+response_portability_status: NOT_AUTHORIZED_BY_P3
+families:
+- family_id: JCFG-WVS-W1-CHILD-QUALITIES
+  joint_configuration_id: JCFG-WVS-W1-CHILD-QUALITIES
+  source_family: WVS
+  family_type: multiselect_child_quality_configuration
+  family_structure_type: multiselect_child_quality_configuration
+  expected_multi_target: true
+  family_label: WVS important-child-qualities canary pair
+  eligible_waves:
+  - W1
+  minimum_items_answered: 2
+  authority_metadata:
+    scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    p2_source_structure_id: wvs_structure_c4f94fa98e17c785b1c4
+    p2_authority_effect: P2_DISCOVERY_EVIDENCE_ONLY_NOT_J_FAMILY_AUTHORITY
+    joint_configuration_adjudication_id: V550JADJ-0009
+    joint_configuration_decision_status: ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION
+    joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+    authority_basis_status: HUMAN_ADJUDICATED_FROM_EXACT_SOURCE_EVIDENCE
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_MEMBERSHIP_EXISTS
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+    configuration_authority_status: GOVERNED_BOUNDED_CANARY_ONLY
+    adjudication_rationale: The two variables are children of the same important-child-qualities
+      multiselect battery and share its binary child-item topology. The bounded authority
+      records their co-selection pattern only.
+    authorized_inference: Unsigned co-selection configuration for the two listed qualities.
+    forbidden_inferences:
+    - support/opposition scoring
+    - quality equivalence
+    - complete battery representation
+    - cross-source portability
+  item_role_groups:
+    religious_faith_child_quality:
+    - var_code: V22
+      condition_label: 'Important child qualities: religious faith'
+      joint_configuration_adjudication_id: V550JADJ-0009
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_25c6149035e673f9bf526462
+      question_implementation_id: question_impl.phase0.dbb84e497caefed71b3f
+      p2_source_structure_id: wvs_structure_c4f94fa98e17c785b1c4
+      p3_canonical_family_id: JFAM-000183
+      p3_current_family_revision_id: JFAMREV-000183-R0001
+      p3_variant_revision_id: P3VARREV-000317-R0001
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: BOUND_TO_CURRENT_CANONICAL_FAMILY
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    obedience_child_quality:
+    - var_code: V24
+      condition_label: 'Important child qualities: obedience'
+      joint_configuration_adjudication_id: V550JADJ-0009
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_22c500f8bb7b47e728ef7308
+      question_implementation_id: question_impl.phase0.367e5b1cc81ec7a017bb
+      p2_source_structure_id: wvs_structure_c4f94fa98e17c785b1c4
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+  - applies_to_roles:
+    - religious_faith_child_quality
+    - obedience_child_quality
+    target_entity_template: jcfg-wvs-w1-child-qualities_{condition_label}
+    target_domain: multiselect_child_quality_configuration
+    target_group_label_from: condition_label
+    target_resolution_grain: condition_label
+    target_resolution_status: bounded_registry_resolved_item
+    target_resolution_authority_source: bounded_v550j_registry.item_role_groups
+    target_resolution_basis_source: P2 source structure plus exact source-wave variable
+      binding
+  boundary_rules: []
+registry_content_hash: b3086ee4996f4cc7c67f3ad1649992029eb9ab5a4b670c359d6e78afbce3ba72

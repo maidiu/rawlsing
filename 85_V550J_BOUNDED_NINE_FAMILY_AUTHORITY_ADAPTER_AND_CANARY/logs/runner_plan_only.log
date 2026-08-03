@@ -1,0 +1,24 @@
+{
+  "status": "PASS_PLAN_ONLY",
+  "preflight": {
+    "status": "PASS_PLAN_READY",
+    "scope_count": 9,
+    "database_url_supplied": false,
+    "database_required_for_execution": true,
+    "python_executable": "/opt/pyvenv/bin/python3",
+    "required_modules": {
+      "pandas": true,
+      "yaml": true,
+      "pyarrow": false
+    },
+    "compilers": {
+      "v550j": "/mnt/data/rawlsing_reconstruction/Rawlsing_J_Family_Authority_Strategy/02_CORE_REFERENCE/code/compile_v550j_joint_response_patterns.py",
+      "v551j": "/mnt/data/rawlsing_reconstruction/Rawlsing_J_Family_Authority_Strategy/02_CORE_REFERENCE/code/compile_v551j_joint_evidence_packets.py",
+      "v552j": "/mnt/data/rawlsing_reconstruction/Rawlsing_J_Family_Authority_Strategy/02_CORE_REFERENCE/code/compile_v552j_runtime_safe_structural_handoff.py"
+    },
+    "authority_scope": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+    "production_completeness_claim": "NO_PRODUCTION_COMPLETENESS_CLAIM",
+    "association_mode": "off"
+  },
+  "scope_count": 9
+}

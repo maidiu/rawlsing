@@ -61,7 +61,7 @@ DEFAULT_RESPONSE_OPTION_MAP = DEFAULT_REPORTS_DIR / "V550_response_option_map.cs
 DEFAULT_ASSOCIATION_THRESHOLD_PROFILES = (
     ROOT / "data" / "ddm_registries" / "association_threshold_profiles.yaml"
 )
-EXECUTABLE_JOINT_REGISTRY_STATUSES = {"draft", "active", "approved", "certified", "governed"}
+EXECUTABLE_JOINT_REGISTRY_STATUSES = {"active", "approved", "certified", "governed"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -169,6 +169,95 @@ def _safe_clean(value: Any) -> str:
 
 def _registry_status_is_executable(value: Any) -> bool:
     return _safe_clean(value).lower() in EXECUTABLE_JOINT_REGISTRY_STATUSES
+
+
+def _validate_bounded_authority_registry(registry: dict[str, Any]) -> dict[str, int]:
+    """Fail closed on bounded R184-to-V550J authority metadata.
+
+    Legacy registries without ``scope_id`` remain readable, but any registry that
+    claims bounded authority must carry exact source-local and P3 provenance.
+    This validation does not authorize response portability.
+    """
+    scope_id = _safe_clean(registry.get("scope_id"))
+    if not scope_id:
+        return {"bounded_family_count": 0, "bounded_item_count": 0, "p3_bound_item_count": 0}
+    status = _safe_clean(registry.get("status")).lower()
+    if status != "governed":
+        raise RuntimeError(f"Bounded authority registry must be governed, got {status or 'missing'}")
+    if _safe_clean(registry.get("production_completeness_claim")) != "NO_PRODUCTION_COMPLETENESS_CLAIM":
+        raise RuntimeError("Bounded authority registry must explicitly deny production completeness")
+    if _safe_clean(registry.get("response_portability_status")) != "NOT_AUTHORIZED_BY_P3":
+        raise RuntimeError("P3 proposition identity does not authorize response portability")
+    release_id = _safe_clean(registry.get("p3_authority_release_id"))
+    if not release_id:
+        raise RuntimeError("Bounded authority registry is missing p3_authority_release_id")
+    joint_release_id = _safe_clean(registry.get("joint_configuration_authority_release_id"))
+    if not joint_release_id:
+        raise RuntimeError("Bounded authority registry is missing joint_configuration_authority_release_id")
+    if not _safe_clean(registry.get("joint_configuration_adjudication_set_hash")):
+        raise RuntimeError("Bounded authority registry is missing its adjudication-set hash")
+    families = registry.get("families") or []
+    seen_configuration_ids: set[str] = set()
+    item_count = 0
+    p3_bound_count = 0
+    for family in families:
+        if not isinstance(family, dict):
+            raise RuntimeError("Bounded authority registry family entries must be mappings")
+        configuration_id = _safe_clean(family.get("joint_configuration_id"))
+        if not configuration_id or configuration_id != _safe_clean(family.get("family_id")):
+            raise RuntimeError("Bounded family_id must equal a non-empty joint_configuration_id")
+        if configuration_id in seen_configuration_ids:
+            raise RuntimeError(f"Duplicate joint_configuration_id: {configuration_id}")
+        seen_configuration_ids.add(configuration_id)
+        metadata = family.get("authority_metadata") or {}
+        if _safe_clean(metadata.get("configuration_authority_status")) != "GOVERNED_BOUNDED_CANARY_ONLY":
+            raise RuntimeError(f"{configuration_id}: missing governed bounded authority status")
+        adjudication_id = _safe_clean(metadata.get("joint_configuration_adjudication_id"))
+        if not adjudication_id:
+            raise RuntimeError(f"{configuration_id}: missing bounded joint-configuration adjudication")
+        if _safe_clean(metadata.get("joint_configuration_authority_release_id")) != joint_release_id:
+            raise RuntimeError(f"{configuration_id}: stale or mismatched joint-configuration authority release")
+        if _safe_clean(metadata.get("joint_configuration_decision_status")) not in {"ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION", "ACCEPTED_EXISTING_GSS_EXECUTABLE_CONTROL"}:
+            raise RuntimeError(f"{configuration_id}: unaccepted joint-configuration decision")
+        if _safe_clean(metadata.get("authority_basis_status")) != "HUMAN_ADJUDICATED_FROM_EXACT_SOURCE_EVIDENCE":
+            raise RuntimeError(f"{configuration_id}: discovery structure was not separately adjudicated")
+        p2_effect = _safe_clean(metadata.get("p2_authority_effect"))
+        if p2_effect not in {"P2_DISCOVERY_EVIDENCE_ONLY_NOT_J_FAMILY_AUTHORITY", "EXISTING_GSS_IMPLEMENTATION_REFERENCE"}:
+            raise RuntimeError(f"{configuration_id}: P2 discovery evidence was improperly promoted to authority")
+        if _safe_clean(metadata.get("p2_source_structure_id")) == "":
+            raise RuntimeError(f"{configuration_id}: missing P2 source structure provenance")
+        if _safe_clean(metadata.get("p3_authority_release_id")) != release_id:
+            raise RuntimeError(f"{configuration_id}: stale or mismatched P3 release")
+        if _safe_clean(metadata.get("response_portability_status")) != "NOT_AUTHORIZED_BY_P3":
+            raise RuntimeError(f"{configuration_id}: unauthorized response portability")
+        seen_vars: set[str] = set()
+        for item in _family_item_map(family):
+            var_code = _safe_clean(item.get("var_code")).upper()
+            if var_code in seen_vars:
+                raise RuntimeError(f"{configuration_id}: duplicate var_code {var_code}")
+            seen_vars.add(var_code)
+            item_count += 1
+            if not _safe_clean(item.get("p2_lineage_id")) or not _safe_clean(item.get("question_implementation_id")):
+                raise RuntimeError(f"{configuration_id}/{var_code}: missing source-local lineage provenance")
+            if _safe_clean(item.get("joint_configuration_adjudication_id")) != adjudication_id:
+                raise RuntimeError(f"{configuration_id}/{var_code}: adjudication provenance mismatch")
+            if _safe_clean(item.get("joint_configuration_authority_release_id")) != joint_release_id:
+                raise RuntimeError(f"{configuration_id}/{var_code}: joint-authority release mismatch")
+            if _safe_clean(item.get("p2_source_structure_id")) != _safe_clean(metadata.get("p2_source_structure_id")):
+                raise RuntimeError(f"{configuration_id}/{var_code}: source-structure provenance mismatch")
+            membership_status = _safe_clean(item.get("p3_membership_status"))
+            if membership_status == "BOUND_TO_CURRENT_CANONICAL_FAMILY":
+                required = ("p3_canonical_family_id", "p3_current_family_revision_id", "p3_variant_revision_id")
+                if any(not _safe_clean(item.get(field)) for field in required):
+                    raise RuntimeError(f"{configuration_id}/{var_code}: incomplete current P3 membership")
+                if _safe_clean(item.get("p3_authority_release_id")) != release_id:
+                    raise RuntimeError(f"{configuration_id}/{var_code}: stale P3 item release")
+                p3_bound_count += 1
+            elif membership_status != "SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE":
+                raise RuntimeError(f"{configuration_id}/{var_code}: ungoverned P3 membership status {membership_status or 'missing'}")
+            if _safe_clean(item.get("response_portability_status")) != "NOT_AUTHORIZED_BY_P3":
+                raise RuntimeError(f"{configuration_id}/{var_code}: unauthorized item response portability")
+    return {"bounded_family_count": len(seen_configuration_ids), "bounded_item_count": item_count, "p3_bound_item_count": p3_bound_count}
 
 
 
@@ -1098,6 +1187,7 @@ def main() -> int:
     families = registry.get("families", [])
     if not isinstance(families, list):
         raise RuntimeError("question_family_registry.yaml is malformed: families must be a list")
+    bounded_authority_validation = _validate_bounded_authority_registry(registry)
 
     association_mode_enabled = args.association_mode != "off"
     association_lane_registry = AssociationLaneRegistry(

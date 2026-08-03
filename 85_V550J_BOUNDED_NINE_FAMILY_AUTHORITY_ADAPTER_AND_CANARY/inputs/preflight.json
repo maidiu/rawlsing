@@ -1,0 +1,1187 @@
+{
+  "passed": true,
+  "blockers": [],
+  "warnings": [],
+  "module_status": {
+    "pandas": true,
+    "pyarrow": true,
+    "psycopg2": true,
+    "dotenv": true,
+    "yaml": true
+  },
+  "db_url_present": true,
+  "env_file": "/Users/matthewsmith/Desktop/Rawlsing/.env",
+  "qsm_relation": "question_structural_mapping",
+  "canonical_registry_relation": "rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry",
+  "response_option_map": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/V550_response_option_map.csv",
+  "response_map_builder_missing_inputs": [],
+  "database_contract": {
+    "checked": true,
+    "passed": true,
+    "relations": {
+      "qsm_relation": {
+        "requested": "question_structural_mapping",
+        "resolved": "question_structural_mapping",
+        "columns": [
+          "channel_affordances",
+          "display_text",
+          "does_not_measure",
+          "driver_facet_id",
+          "driver_id",
+          "evidence_kind",
+          "final_driver_label",
+          "final_driver_origin",
+          "final_driver_scope",
+          "forbidden_inference",
+          "legacy_final_driver_id",
+          "loaded_at",
+          "mapping_status",
+          "question_block_id",
+          "question_id",
+          "relation_axis_id",
+          "review_notes",
+          "source",
+          "strata_relevance",
+          "structural_domain_id",
+          "target_entity_id",
+          "var_code",
+          "wave"
+        ],
+        "missing_columns": []
+      },
+      "canonical_registry_relation": {
+        "requested": "rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry",
+        "resolved": "rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry",
+        "columns": [
+          "allowed_as_v551_relation_evidence",
+          "authority_row_identity",
+          "authority_semantic_role",
+          "authority_source_path",
+          "canonical_source",
+          "canonical_var_code",
+          "canonical_wave",
+          "current_directional_atom_eligible",
+          "directional_certification_status",
+          "disposition",
+          "future_topology_evidence_eligible",
+          "module_guess",
+          "normalized_var_key",
+          "question_id",
+          "question_text",
+          "response_topology"
+        ],
+        "missing_columns": []
+      }
+    },
+    "error": ""
+  },
+  "joint_registry_paths_existing": [
+    "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/manifests/question_family_registry.yaml"
+  ],
+  "joint_registry_paths_missing": [],
+  "joint_authority_coverage": {
+    "required_scope_count": 9,
+    "covered_scope_count": 1,
+    "missing_scope_count": 8,
+    "covered_scopes": [
+      {
+        "source": "GSS",
+        "wave": "2010",
+        "country_code": "US",
+        "reason": "explicit_joint_registry_applies",
+        "registry_path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/manifests/question_family_registry.yaml",
+        "registry_status": "draft",
+        "candidate_var_count": 25
+      }
+    ],
+    "missing_scopes": [
+      {
+        "source": "Afrobarometer",
+        "wave": "R1",
+        "country_code": "LS",
+        "reason": "no_explicit_joint_registry_for_family_wave",
+        "registry_path": "",
+        "registry_status": "",
+        "candidate_var_count": 0
+      },
+      {
+        "source": "Arab Barometer",
+        "wave": "I",
+        "country_code": "YE",
+        "reason": "no_explicit_joint_registry_for_family_wave",
+        "registry_path": "",
+        "registry_status": "",
+        "candidate_var_count": 0
+      },
+      {
+        "source": "Asian Barometer",
+        "wave": "W1",
+        "country_code": "PH",
+        "reason": "no_explicit_joint_registry_for_family_wave",
+        "registry_path": "",
+        "registry_status": "",
+        "candidate_var_count": 0
+      },
+      {
+        "source": "EVS",
+        "wave": "1981",
+        "country_code": "BE",
+        "reason": "no_explicit_joint_registry_for_family_wave",
+        "registry_path": "",
+        "registry_status": "",
+        "candidate_var_count": 0
+      },
+      {
+        "source": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "country_code": "BR",
+        "reason": "no_explicit_joint_registry_for_family_wave",
+        "registry_path": "",
+        "registry_status": "",
+        "candidate_var_count": 0
+      },
+      {
+        "source": "LiTS",
+        "wave": "2006",
+        "country_code": "BY",
+        "reason": "no_explicit_joint_registry_for_family_wave",
+        "registry_path": "",
+        "registry_status": "",
+        "candidate_var_count": 0
+      },
+      {
+        "source": "South Asia",
+        "wave": "W1",
+        "country_code": "IN",
+        "reason": "no_explicit_joint_registry_for_family_wave",
+        "registry_path": "",
+        "registry_status": "",
+        "candidate_var_count": 0
+      },
+      {
+        "source": "WVS",
+        "wave": "W1",
+        "country_code": "SE",
+        "reason": "no_explicit_joint_registry_for_family_wave",
+        "registry_path": "",
+        "registry_status": "",
+        "candidate_var_count": 0
+      }
+    ],
+    "missing_by_family": {
+      "Afrobarometer": [
+        "R1"
+      ],
+      "Arab Barometer": [
+        "I"
+      ],
+      "Asian Barometer": [
+        "W1"
+      ],
+      "EVS": [
+        "1981"
+      ],
+      "Latinobar\u00f3metro": [
+        "1995"
+      ],
+      "LiTS": [
+        "2006"
+      ],
+      "South Asia": [
+        "W1"
+      ],
+      "WVS": [
+        "W1"
+      ]
+    },
+    "full_chain_authority_complete": false
+  },
+  "overlay_authority_coverage": {
+    "scope_count": 9,
+    "types": {
+      "first_pass_authority": {
+        "root": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports",
+        "covered_count": 9,
+        "missing_count": 0,
+        "invalid_count": 0,
+        "covered_scopes": [
+          {
+            "survey_family": "Afrobarometer",
+            "wave": "R1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_R1_first_pass_authority_table.csv",
+            "row_count": 144,
+            "message": "Loaded 144 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_R1_first_pass_authority_table.csv"
+          },
+          {
+            "survey_family": "Arab Barometer",
+            "wave": "I",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/arab_barometer_I_first_pass_authority_table.csv",
+            "row_count": 181,
+            "message": "Loaded 181 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/arab_barometer_I_first_pass_authority_table.csv"
+          },
+          {
+            "survey_family": "Asian Barometer",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/asian_barometer_W1_first_pass_authority_table.csv",
+            "row_count": 217,
+            "message": "Loaded 217 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/asian_barometer_W1_first_pass_authority_table.csv"
+          },
+          {
+            "survey_family": "EVS",
+            "wave": "1981",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/evs_W1_first_pass_authority_table.csv",
+            "row_count": 370,
+            "message": "Loaded 370 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/evs_W1_first_pass_authority_table.csv"
+          },
+          {
+            "survey_family": "GSS",
+            "wave": "2010",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/gss2010_first_pass_authority_table.csv",
+            "row_count": 922,
+            "message": "Loaded 922 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/gss2010_first_pass_authority_table.csv"
+          },
+          {
+            "survey_family": "Latinobar\u00f3metro",
+            "wave": "1995",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/latinobar\u00f3metro_1995_first_pass_authority_table.csv",
+            "row_count": 203,
+            "message": "Loaded 203 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/latinobar\u00f3metro_1995_first_pass_authority_table.csv"
+          },
+          {
+            "survey_family": "LiTS",
+            "wave": "2006",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/lits_2006_first_pass_authority_table.csv",
+            "row_count": 1198,
+            "message": "Loaded 1198 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/lits_2006_first_pass_authority_table.csv"
+          },
+          {
+            "survey_family": "South Asia",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/south_asia_W1_first_pass_authority_table.csv",
+            "row_count": 68,
+            "message": "Loaded 68 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/south_asia_W1_first_pass_authority_table.csv"
+          },
+          {
+            "survey_family": "WVS",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/wvs_W1_first_pass_authority_table.csv",
+            "row_count": 188,
+            "message": "Loaded 188 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/wvs_W1_first_pass_authority_table.csv"
+          }
+        ],
+        "missing_scopes": [],
+        "invalid_scopes": []
+      },
+      "semantic_authority": {
+        "root": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports",
+        "covered_count": 9,
+        "missing_count": 0,
+        "invalid_count": 0,
+        "covered_scopes": [
+          {
+            "survey_family": "Afrobarometer",
+            "wave": "R1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_R1_semantic_authority_overlay.csv",
+            "row_count": 144,
+            "message": "Loaded 144 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_R1_semantic_authority_overlay.csv"
+          },
+          {
+            "survey_family": "Arab Barometer",
+            "wave": "I",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/arab_barometer_I_semantic_authority_overlay.csv",
+            "row_count": 181,
+            "message": "Loaded 181 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/arab_barometer_I_semantic_authority_overlay.csv"
+          },
+          {
+            "survey_family": "Asian Barometer",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/asian_barometer_W1_semantic_authority_overlay.csv",
+            "row_count": 217,
+            "message": "Loaded 217 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/asian_barometer_W1_semantic_authority_overlay.csv"
+          },
+          {
+            "survey_family": "EVS",
+            "wave": "1981",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/evs_W1_semantic_authority_overlay.csv",
+            "row_count": 370,
+            "message": "Loaded 370 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/evs_W1_semantic_authority_overlay.csv"
+          },
+          {
+            "survey_family": "GSS",
+            "wave": "2010",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/gss2010_semantic_authority_overlay.csv",
+            "row_count": 922,
+            "message": "Loaded 922 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/gss2010_semantic_authority_overlay.csv"
+          },
+          {
+            "survey_family": "Latinobar\u00f3metro",
+            "wave": "1995",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/latinobar\u00f3metro_1995_semantic_authority_overlay.csv",
+            "row_count": 203,
+            "message": "Loaded 203 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/latinobar\u00f3metro_1995_semantic_authority_overlay.csv"
+          },
+          {
+            "survey_family": "LiTS",
+            "wave": "2006",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/lits_2006_semantic_authority_overlay.csv",
+            "row_count": 1198,
+            "message": "Loaded 1198 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/lits_2006_semantic_authority_overlay.csv"
+          },
+          {
+            "survey_family": "South Asia",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/south_asia_W1_semantic_authority_overlay.csv",
+            "row_count": 68,
+            "message": "Loaded 68 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/south_asia_W1_semantic_authority_overlay.csv"
+          },
+          {
+            "survey_family": "WVS",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/wvs_W1_semantic_authority_overlay.csv",
+            "row_count": 188,
+            "message": "Loaded 188 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/wvs_W1_semantic_authority_overlay.csv"
+          }
+        ],
+        "missing_scopes": [],
+        "invalid_scopes": []
+      },
+      "position_conditioning": {
+        "root": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports",
+        "covered_count": 9,
+        "missing_count": 0,
+        "invalid_count": 0,
+        "covered_scopes": [
+          {
+            "survey_family": "Afrobarometer",
+            "wave": "R1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_R1_position_conditioning_overlay.csv",
+            "row_count": 144,
+            "message": "Loaded 144 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/afrobarometer_R1_position_conditioning_overlay.csv"
+          },
+          {
+            "survey_family": "Arab Barometer",
+            "wave": "I",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/arab_barometer_I_position_conditioning_overlay.csv",
+            "row_count": 181,
+            "message": "Loaded 181 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/arab_barometer_I_position_conditioning_overlay.csv"
+          },
+          {
+            "survey_family": "Asian Barometer",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/asian_barometer_W1_position_conditioning_overlay.csv",
+            "row_count": 217,
+            "message": "Loaded 217 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/asian_barometer_W1_position_conditioning_overlay.csv"
+          },
+          {
+            "survey_family": "EVS",
+            "wave": "1981",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/evs_W1_position_conditioning_overlay.csv",
+            "row_count": 370,
+            "message": "Loaded 370 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/evs_W1_position_conditioning_overlay.csv"
+          },
+          {
+            "survey_family": "GSS",
+            "wave": "2010",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/gss2010_position_conditioning_overlay.csv",
+            "row_count": 922,
+            "message": "Loaded 922 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/gss2010_position_conditioning_overlay.csv"
+          },
+          {
+            "survey_family": "Latinobar\u00f3metro",
+            "wave": "1995",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/latinobar\u00f3metro_1995_position_conditioning_overlay.csv",
+            "row_count": 203,
+            "message": "Loaded 203 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/latinobar\u00f3metro_1995_position_conditioning_overlay.csv"
+          },
+          {
+            "survey_family": "LiTS",
+            "wave": "2006",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/lits_2006_position_conditioning_overlay.csv",
+            "row_count": 1198,
+            "message": "Loaded 1198 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/lits_2006_position_conditioning_overlay.csv"
+          },
+          {
+            "survey_family": "South Asia",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/south_asia_W1_position_conditioning_overlay.csv",
+            "row_count": 68,
+            "message": "Loaded 68 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/south_asia_W1_position_conditioning_overlay.csv"
+          },
+          {
+            "survey_family": "WVS",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/wvs_W1_position_conditioning_overlay.csv",
+            "row_count": 188,
+            "message": "Loaded 188 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/wvs_W1_position_conditioning_overlay.csv"
+          }
+        ],
+        "missing_scopes": [],
+        "invalid_scopes": []
+      },
+      "directionality": {
+        "root": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority",
+        "covered_count": 9,
+        "missing_count": 0,
+        "invalid_count": 0,
+        "covered_scopes": [
+          {
+            "survey_family": "Afrobarometer",
+            "wave": "R1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/afrobarometer_R1_directionality_authority.csv",
+            "row_count": 144,
+            "message": "Loaded 144 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/afrobarometer_R1_directionality_authority.csv"
+          },
+          {
+            "survey_family": "Arab Barometer",
+            "wave": "I",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/arab_barometer_I_directionality_authority.csv",
+            "row_count": 181,
+            "message": "Loaded 181 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/arab_barometer_I_directionality_authority.csv"
+          },
+          {
+            "survey_family": "Asian Barometer",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/asian_barometer_W1_directionality_authority.csv",
+            "row_count": 217,
+            "message": "Loaded 217 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/asian_barometer_W1_directionality_authority.csv"
+          },
+          {
+            "survey_family": "EVS",
+            "wave": "1981",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/evs_1981_directionality_authority.csv",
+            "row_count": 370,
+            "message": "Loaded 370 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/evs_1981_directionality_authority.csv"
+          },
+          {
+            "survey_family": "GSS",
+            "wave": "2010",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/gss2010_directionality_authority.csv",
+            "row_count": 922,
+            "message": "Loaded 922 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/gss2010_directionality_authority.csv"
+          },
+          {
+            "survey_family": "Latinobar\u00f3metro",
+            "wave": "1995",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/latinobar_metro_1995_directionality_authority.csv",
+            "row_count": 203,
+            "message": "Loaded 203 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/latinobar_metro_1995_directionality_authority.csv"
+          },
+          {
+            "survey_family": "LiTS",
+            "wave": "2006",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/lits_2006_directionality_authority.csv",
+            "row_count": 1198,
+            "message": "Loaded 1198 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/lits_2006_directionality_authority.csv"
+          },
+          {
+            "survey_family": "South Asia",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/south_asia_W1_directionality_overlay.csv",
+            "row_count": 68,
+            "message": "Loaded 68 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/south_asia_W1_directionality_overlay.csv"
+          },
+          {
+            "survey_family": "WVS",
+            "wave": "W1",
+            "status": "FOUND",
+            "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/wvs_1981_directionality_authority.csv",
+            "row_count": 188,
+            "message": "Loaded 188 rows from /Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority/wvs_1981_directionality_authority.csv"
+          }
+        ],
+        "missing_scopes": [],
+        "invalid_scopes": []
+      }
+    }
+  },
+  "selected_variable_errors": [],
+  "selected_variables_by_scope": [
+    {
+      "survey_family": "Afrobarometer",
+      "wave": "R1",
+      "country_code": "LS",
+      "selected_variables": [
+        "nidchl",
+        "pfpsaf",
+        "sparet",
+        "refnumb",
+        "pfpcrm",
+        "parcam",
+        "demoe1",
+        "marcdt",
+        "marcom",
+        "sapknw",
+        "pfgmp",
+        "pfrass",
+        "sapmin",
+        "unemp",
+        "marrsk",
+        "africawt",
+        "mip1",
+        "pfeerd",
+        "dememp",
+        "mip2"
+      ]
+    },
+    {
+      "survey_family": "Arab Barometer",
+      "wave": "I",
+      "country_code": "YE",
+      "selected_variables": [
+        "q5053",
+        "q254",
+        "q6033",
+        "q2572",
+        "q249onlypalestine",
+        "q207",
+        "q2553",
+        "q2571",
+        "q708",
+        "q706",
+        "q301",
+        "q2514",
+        "q714a",
+        "q601",
+        "q2463",
+        "q5052",
+        "q249withoutpalestine",
+        "q222",
+        "q2312",
+        "q216"
+      ]
+    },
+    {
+      "survey_family": "Asian Barometer",
+      "wave": "W1",
+      "country_code": "PH",
+      "selected_variables": [
+        "q116e",
+        "q018_4",
+        "q052",
+        "q096",
+        "q093",
+        "se012bmo",
+        "q075",
+        "q119",
+        "q117",
+        "ir007_1",
+        "q122",
+        "q109",
+        "q065",
+        "q072",
+        "q148",
+        "q097_1",
+        "ir004",
+        "ir007_2",
+        "q028",
+        "q111"
+      ]
+    },
+    {
+      "survey_family": "EVS",
+      "wave": "1981",
+      "country_code": "BE",
+      "selected_variables": [
+        "v529",
+        "v472",
+        "v466",
+        "v156",
+        "v251",
+        "v514",
+        "v432",
+        "v230",
+        "v266",
+        "v123",
+        "v465",
+        "v517",
+        "v530",
+        "v252",
+        "cntry_y",
+        "v433",
+        "v471",
+        "v538",
+        "v352",
+        "v430"
+      ]
+    },
+    {
+      "survey_family": "GSS",
+      "wave": "2010",
+      "country_code": "US",
+      "selected_variables": [
+        "sex",
+        "abnomore",
+        "spanking",
+        "vote04",
+        "divlaw",
+        "intrace2",
+        "away10",
+        "old13",
+        "intyrs",
+        "abdefect",
+        "abany",
+        "absingle",
+        "teens",
+        "abrape",
+        "expdesgn",
+        "ethnic",
+        "helppoor",
+        "pubdecid",
+        "maoccstatus",
+        "abhlth"
+      ]
+    },
+    {
+      "survey_family": "Latinobar\u00f3metro",
+      "wave": "1995",
+      "country_code": "BR",
+      "selected_variables": [
+        "s7",
+        "p13",
+        "p58a",
+        "p54i",
+        "s13a",
+        "s4",
+        "p4",
+        "p60g",
+        "p27m",
+        "p27g",
+        "p63",
+        "s11a",
+        "p61a3",
+        "p61a1",
+        "p27e",
+        "s13h",
+        "p71a",
+        "p12",
+        "p53",
+        "p48"
+      ]
+    },
+    {
+      "survey_family": "LiTS",
+      "wave": "2006",
+      "country_code": "BY",
+      "selected_variables": [
+        "q413c",
+        "q602b5j",
+        "q602b3m3",
+        "q801b",
+        "q6058_8",
+        "q102_12",
+        "q602b1k",
+        "q602e_1",
+        "q602l_18",
+        "q315_2",
+        "q301_11",
+        "q301_8",
+        "q507",
+        "q403d_12",
+        "q301_1",
+        "q6053_19",
+        "q6053_10",
+        "q6055_17",
+        "q6059_1",
+        "q210a4"
+      ]
+    },
+    {
+      "survey_family": "South Asia",
+      "wave": "W1",
+      "country_code": "IN",
+      "selected_variables": [
+        "b4",
+        "c13h",
+        "b2",
+        "d10",
+        "b3",
+        "c18a",
+        "c22",
+        "c31c",
+        "c29",
+        "b7",
+        "c2",
+        "d18f",
+        "b8",
+        "d1",
+        "b9",
+        "c6",
+        "c1",
+        "c13f",
+        "c20d",
+        "c21"
+      ]
+    },
+    {
+      "survey_family": "WVS",
+      "wave": "W1",
+      "country_code": "SE",
+      "selected_variables": [
+        "V189",
+        "V123",
+        "V24",
+        "V232",
+        "V89",
+        "WEIGHT4A",
+        "EQUALITY",
+        "I_RELIGIMP",
+        "V234",
+        "S001",
+        "V11",
+        "V113",
+        "V117",
+        "V22",
+        "N_REGION_ISO",
+        "V220",
+        "V190",
+        "V2",
+        "I_DIVORLIB",
+        "V197"
+      ]
+    }
+  ],
+  "structural_registry_coverage": {
+    "checked": true,
+    "scopes": [
+      {
+        "survey_family": "Afrobarometer",
+        "wave": "R1",
+        "country_code": "LS",
+        "selected_variable_count": 20,
+        "qsm_row_count": 143,
+        "qsm_var_count": 143,
+        "canonical_registry_row_count": 144,
+        "canonical_registry_var_count": 144,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "Afrobarometer",
+            "wave": "R1",
+            "rows": 143,
+            "vars": 143
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "Afrobarometer",
+            "wave": "R1",
+            "rows": 144,
+            "vars": 144
+          }
+        ]
+      },
+      {
+        "survey_family": "Arab Barometer",
+        "wave": "I",
+        "country_code": "YE",
+        "selected_variable_count": 20,
+        "qsm_row_count": 181,
+        "qsm_var_count": 181,
+        "canonical_registry_row_count": 181,
+        "canonical_registry_var_count": 181,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "Arab Barometer",
+            "wave": "W1",
+            "rows": 181,
+            "vars": 181
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "Arab Barometer",
+            "wave": "I",
+            "rows": 181,
+            "vars": 181
+          }
+        ]
+      },
+      {
+        "survey_family": "Asian Barometer",
+        "wave": "W1",
+        "country_code": "PH",
+        "selected_variable_count": 20,
+        "qsm_row_count": 217,
+        "qsm_var_count": 217,
+        "canonical_registry_row_count": 217,
+        "canonical_registry_var_count": 217,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "Asian Barometer",
+            "wave": "W1",
+            "rows": 217,
+            "vars": 217
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "Asian Barometer",
+            "wave": "W1",
+            "rows": 217,
+            "vars": 217
+          }
+        ]
+      },
+      {
+        "survey_family": "EVS",
+        "wave": "1981",
+        "country_code": "BE",
+        "selected_variable_count": 20,
+        "qsm_row_count": 370,
+        "qsm_var_count": 370,
+        "canonical_registry_row_count": 370,
+        "canonical_registry_var_count": 370,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "EVS",
+            "wave": "W1",
+            "rows": 370,
+            "vars": 370
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "EVS",
+            "wave": "1981",
+            "rows": 370,
+            "vars": 370
+          }
+        ]
+      },
+      {
+        "survey_family": "GSS",
+        "wave": "2010",
+        "country_code": "US",
+        "selected_variable_count": 20,
+        "qsm_row_count": 922,
+        "qsm_var_count": 922,
+        "canonical_registry_row_count": 922,
+        "canonical_registry_var_count": 922,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "GSS",
+            "wave": "2010",
+            "rows": 922,
+            "vars": 922
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "GSS",
+            "wave": "2010",
+            "rows": 922,
+            "vars": 922
+          }
+        ]
+      },
+      {
+        "survey_family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "country_code": "BR",
+        "selected_variable_count": 20,
+        "qsm_row_count": 188,
+        "qsm_var_count": 188,
+        "canonical_registry_row_count": 203,
+        "canonical_registry_var_count": 203,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "Latinobar\u00f3metro",
+            "wave": "1995",
+            "rows": 188,
+            "vars": 188
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "Latinobar\u00f3metro",
+            "wave": "1995",
+            "rows": 203,
+            "vars": 203
+          }
+        ]
+      },
+      {
+        "survey_family": "LiTS",
+        "wave": "2006",
+        "country_code": "BY",
+        "selected_variable_count": 20,
+        "qsm_row_count": 1198,
+        "qsm_var_count": 1198,
+        "canonical_registry_row_count": 1198,
+        "canonical_registry_var_count": 1198,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "LiTS",
+            "wave": "2006",
+            "rows": 1198,
+            "vars": 1198
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "LiTS",
+            "wave": "2006",
+            "rows": 1198,
+            "vars": 1198
+          }
+        ]
+      },
+      {
+        "survey_family": "South Asia",
+        "wave": "W1",
+        "country_code": "IN",
+        "selected_variable_count": 20,
+        "qsm_row_count": 68,
+        "qsm_var_count": 68,
+        "canonical_registry_row_count": 68,
+        "canonical_registry_var_count": 68,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "South Asia",
+            "wave": "W1",
+            "rows": 68,
+            "vars": 68
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "South Asia",
+            "wave": "W1",
+            "rows": 68,
+            "vars": 68
+          }
+        ]
+      },
+      {
+        "survey_family": "WVS",
+        "wave": "W1",
+        "country_code": "SE",
+        "selected_variable_count": 20,
+        "qsm_row_count": 188,
+        "qsm_var_count": 188,
+        "canonical_registry_row_count": 188,
+        "canonical_registry_var_count": 188,
+        "qsm_selected_overlap": 20,
+        "canonical_registry_selected_overlap": 20,
+        "selected_relation_eligible_count": 0,
+        "selected_relation_missing_structural_count": 0,
+        "qsm_identifiers_present": [
+          {
+            "source": "WVS",
+            "wave": "W1",
+            "rows": 188,
+            "vars": 188
+          }
+        ],
+        "canonical_identifiers_present": [
+          {
+            "source": "WVS",
+            "wave": "W1",
+            "rows": 188,
+            "vars": 188
+          }
+        ]
+      }
+    ],
+    "missing_scope_count": 0,
+    "missing_selected_relation_count": 0,
+    "error": ""
+  },
+  "selected_response_coverage": {
+    "checked": true,
+    "scopes": [
+      {
+        "survey_family": "Afrobarometer",
+        "wave": "R1",
+        "country_code": "LS",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 20,
+        "respondents_with_selected_responses": 1177
+      },
+      {
+        "survey_family": "Arab Barometer",
+        "wave": "I",
+        "country_code": "YE",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 20,
+        "respondents_with_selected_responses": 717
+      },
+      {
+        "survey_family": "Asian Barometer",
+        "wave": "W1",
+        "country_code": "PH",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 16,
+        "respondents_with_selected_responses": 1200
+      },
+      {
+        "survey_family": "EVS",
+        "wave": "1981",
+        "country_code": "BE",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 20,
+        "respondents_with_selected_responses": 1145
+      },
+      {
+        "survey_family": "GSS",
+        "wave": "2010",
+        "country_code": "US",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 19,
+        "respondents_with_selected_responses": 2044
+      },
+      {
+        "survey_family": "Latinobar\u00f3metro",
+        "wave": "1995",
+        "country_code": "BR",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 20,
+        "respondents_with_selected_responses": 1200
+      },
+      {
+        "survey_family": "LiTS",
+        "wave": "2006",
+        "country_code": "BY",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 16,
+        "respondents_with_selected_responses": 1000
+      },
+      {
+        "survey_family": "South Asia",
+        "wave": "W1",
+        "country_code": "IN",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 20,
+        "respondents_with_selected_responses": 2055
+      },
+      {
+        "survey_family": "WVS",
+        "wave": "W1",
+        "country_code": "SE",
+        "selected_variable_count": 20,
+        "selected_response_overlap": 16,
+        "respondents_with_selected_responses": 954
+      }
+    ],
+    "missing_selected_response_count": 0,
+    "error": ""
+  },
+  "association_mode": "off",
+  "joint_mode": "off",
+  "readiness_mode": "full",
+  "requested_scope_count": 9,
+  "requested_scopes": [
+    {
+      "survey_family": "Afrobarometer",
+      "wave": "R1",
+      "country_code": "LS"
+    },
+    {
+      "survey_family": "Arab Barometer",
+      "wave": "I",
+      "country_code": "YE"
+    },
+    {
+      "survey_family": "Asian Barometer",
+      "wave": "W1",
+      "country_code": "PH"
+    },
+    {
+      "survey_family": "EVS",
+      "wave": "1981",
+      "country_code": "BE"
+    },
+    {
+      "survey_family": "GSS",
+      "wave": "2010",
+      "country_code": "US"
+    },
+    {
+      "survey_family": "Latinobar\u00f3metro",
+      "wave": "1995",
+      "country_code": "BR"
+    },
+    {
+      "survey_family": "LiTS",
+      "wave": "2006",
+      "country_code": "BY"
+    },
+    {
+      "survey_family": "South Asia",
+      "wave": "W1",
+      "country_code": "IN"
+    },
+    {
+      "survey_family": "WVS",
+      "wave": "W1",
+      "country_code": "SE"
+    }
+  ],
+  "explicit_wave_count": 36
+}

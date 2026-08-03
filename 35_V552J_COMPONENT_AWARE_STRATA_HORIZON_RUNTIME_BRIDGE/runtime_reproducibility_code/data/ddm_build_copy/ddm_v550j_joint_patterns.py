@@ -1446,13 +1446,15 @@ def _family_item_map(family_cfg: dict[str, Any]) -> list[dict[str, Any]]:
             item_code = _clean(item.get("var_code"))
             if not item_code:
                 continue
-            items.append(
+            normalized_item = dict(item)
+            normalized_item.update(
                 {
                     "var_code": item_code,
                     "item_role": _clean(item_role) or "target_case",
                     "condition_label": _clean(item.get("condition_label")),
                 }
             )
+            items.append(normalized_item)
     return items
 
 
