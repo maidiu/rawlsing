@@ -3758,8 +3758,34 @@ class V552IntensityRepresentationResolution:
     reason: str
 
 
+def _source_response_intensity(row: Mapping[str, Any]) -> tuple[float | None, str]:
+    """Return the governed source-scale value and the field/derivation that supplied it.
+
+    V551 v2.1 historically overwrote explicit neutral coordinates with zero.  The
+    original ordinal contract is still sufficient to reconstruct the axis coordinate
+    exactly, so old artifacts remain replayable while new artifacts carry
+    `authority_response_intensity` directly.
+    """
+    authority_intensity = _finite_float(row.get("authority_response_intensity"))
+    if authority_intensity is not None:
+        return authority_intensity, "authority_response_intensity"
+    rank = _finite_float(row.get("ordinal_rank"))
+    scale_min = _finite_float(row.get("scale_min"))
+    scale_max = _finite_float(row.get("scale_max"))
+    direction = _clean(row.get("scale_direction")).casefold()
+    if rank is not None and scale_min is not None and scale_max is not None and scale_max > scale_min and direction in {"ascending", "descending"}:
+        coordinate = (rank - scale_min) / (scale_max - scale_min)
+        if direction == "descending":
+            coordinate = 1.0 - coordinate
+        return max(0.0, min(1.0, float(coordinate))), "ordinal_scale_coordinate"
+    legacy_intensity = _finite_float(row.get("response_intensity"))
+    if legacy_intensity is not None:
+        return legacy_intensity, "response_intensity"
+    return None, "missing"
+
+
 def _normalized_response_intensity(row: Mapping[str, Any]) -> tuple[float | None, str]:
-    intensity = _finite_float(row.get("response_intensity"))
+    intensity, _ = _source_response_intensity(row)
     if intensity is None:
         return None, "missing_response_intensity"
     if intensity < V552_NORMALIZED_INTENSITY_MIN - V552_EPSILON or intensity > V552_NORMALIZED_INTENSITY_MAX + V552_EPSILON:
@@ -3977,6 +4003,15 @@ def build_v552_pressure_component_index(atoms: pd.DataFrame, run_id: str = "") -
             upstream_eligible = _bool(base.get("v552_pressure_component_eligible")) and upstream_status == "ELIGIBLE"
             if upstream_status == "REVIEW_REQUIRED":
                 comp_status, reason = "REVIEW_REQUIRED_UPSTREAM", _clean(base.get("v552_pressure_component_ineligibility_reason")) or "review_required_component"
+            elif upstream_status == "COVERAGE_ONLY_NEUTRAL":
+                # Neutral categories are not directional evidence, but they are a lawful
+                # zero-valued part of the response distribution and must remain in the
+                # denominator/mass.  Treating them as an ineligible component made every
+                # otherwise valid odd-point scale non-computable.
+                if transform.reason:
+                    comp_status, reason = "BLOCKED_INVALID_NEUTRAL_COMPONENT", transform.reason
+                else:
+                    comp_status, reason = "COVERAGE_ONLY_NEUTRAL_COMPONENT", ""
             elif not upstream_eligible:
                 comp_status, reason = "INELIGIBLE_UPSTREAM_PERMISSION", _clean(base.get("v552_pressure_component_ineligibility_reason")) or "ineligible_component_present"
             elif transform.reason:
@@ -4020,6 +4055,8 @@ def build_v552_pressure_component_index(atoms: pd.DataFrame, run_id: str = "") -
                 "response_direction": _clean(base.get("response_direction")),
                 "response_direction_sign": transform.direction_sign,
                 "response_intensity": _finite_float(base.get("response_intensity")),
+                "authority_response_intensity": _finite_float(base.get("authority_response_intensity")),
+                "source_intensity_field": _source_response_intensity(base)[1],
                 "source_intensity_zero": transform.source_intensity_zero,
                 "scale_min": _finite_float(base.get("scale_min")),
                 "scale_max": _finite_float(base.get("scale_max")),
@@ -4051,7 +4088,7 @@ def build_v552_pressure_component_index(atoms: pd.DataFrame, run_id: str = "") -
                 "distribution_weight_basis": "none",
                 "distribution_weight_raw": None,
                 "distribution_weight_normalized": None,
-                "component_pressure_eligible": comp_status == "ELIGIBLE_TRANSFORMED_COMPONENT",
+                "component_pressure_eligible": comp_status in {"ELIGIBLE_TRANSFORMED_COMPONENT", "COVERAGE_ONLY_NEUTRAL_COMPONENT"},
                 "component_pressure_status": comp_status,
                 "component_pressure_ineligibility_reason": reason,
                 "semantic_identity_signature": _clean(base.get("semantic_identity_signature")),
@@ -4102,7 +4139,8 @@ def build_v552_pressure_observation_index(atoms: pd.DataFrame, component_index: 
         identity_hash = _stable_hash_v21(_observation_identity(first))
         reasons: list[str] = []
         review_count = int(comp_group["component_pressure_status"].eq("REVIEW_REQUIRED_UPSTREAM").sum())
-        eligible_count = int(comp_group["component_pressure_status"].eq("ELIGIBLE_TRANSFORMED_COMPONENT").sum())
+        computable_statuses = {"ELIGIBLE_TRANSFORMED_COMPONENT", "COVERAGE_ONLY_NEUTRAL_COMPONENT"}
+        eligible_count = int(comp_group["component_pressure_status"].isin(computable_statuses).sum())
         ineligible_count = int(len(comp_group) - eligible_count - review_count)
         if review_count:
             reasons.append("review_required_component")
@@ -4674,7 +4712,13 @@ def validate_v552_v2_1_output_contract(outputs: Mapping[str, pd.DataFrame]) -> l
     observations = outputs.get("v552_pressure_observation_index", pd.DataFrame())
     facts = outputs.get("v552_structural_fact_index", pd.DataFrame())
     temporal = outputs.get("v552_temporal_key_source_index", pd.DataFrame())
-    handoff = outputs.get("v552_to_v552j_handoff_index", pd.DataFrame())
+    # The current readiness contract counts the exact pressure-observation handoff,
+    # not the older aggregate structural handoff.  Comparing different grains made
+    # otherwise valid V552 outputs self-block at final validation.
+    handoff = outputs.get(
+        "v552_to_v552j_pressure_observation_handoff_index",
+        outputs.get("v552_to_v552j_handoff_index", pd.DataFrame()),
+    )
     readiness = outputs.get("v552_readiness_report", pd.DataFrame())
     allowed_pressure_measure_classes = {
         "single_question_scale_aware_directional_distribution_pressure",

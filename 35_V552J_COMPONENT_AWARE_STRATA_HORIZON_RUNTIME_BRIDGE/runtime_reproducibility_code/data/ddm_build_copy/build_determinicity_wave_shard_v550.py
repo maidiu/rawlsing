@@ -110,6 +110,7 @@ from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import (
     SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION,
     SHARED_SUBSTRATE_SCHEMA_VERSION,
     canonicalize_shared_respondent_substrate,
+    enrich_shared_respondent_substrate_with_question_use_contract,
     resolve_shared_substrate_requirements,
     shared_substrate_paths,
     write_shared_respondent_substrate_atomic,
@@ -1330,74 +1331,42 @@ def main() -> int:
         )
         prepared_substrate_mode = args.v550_prepared_substrate_mode != "off"
         shared_substrate_outputs: list[dict[str, Any]] = []
+        shared_substrate_pending: list[dict[str, Any]] = []
         if args.shared_respondent_substrate_mode == "write":
-            for country_code, country_frame in question_row_cache.items():
-                frame_for_substrate = country_frame.reset_index(drop=True) if hasattr(country_frame, "reset_index") else pd.DataFrame()
-                canonical_frame = canonicalize_shared_respondent_substrate(
-                    frame_for_substrate,
-                    run_id=args.run_id,
-                    shard_id=args.shard_id,
-                    source=args.source,
-                    source_id=args.source,
-                    wave=args.wave,
-                    canonical_wave=canonical_wave,
-                    country_code=str(country_code),
-                    base_var_codes=shared_selection["base_var_codes"],
-                    joint_required_var_codes=shared_selection["joint_required_var_codes"],
-                    joint_configuration_ids_by_var=shared_selection.get("joint_configuration_ids_by_var", {}),
-                )
+            # The respondent cache exists before the finalized question-use contract.
+            # Keep only lightweight bindings here and promote the substrate after QUC
+            # compilation, so no COMPLETE artifact can silently contain blank/false
+            # question authority defaults.
+            for country_code in question_row_cache:
                 paths = shared_substrate_paths(
                     shard_paths.respondent_substrate,
                     source=args.source,
                     canonical_wave=canonical_wave,
                     country_code=str(country_code),
                 )
-                manifest = write_shared_respondent_substrate_atomic(
-                    canonical_frame,
-                    paths,
-                    manifest_fields={
-                        "run_id": args.run_id,
-                        "shard_id": args.shard_id,
-                        "source": args.source,
-                        "source_id": args.source,
-                        "wave": args.wave,
-                        "canonical_wave": canonical_wave,
-                        "country_code": str(country_code),
-                        "response_semantics_contract_hash": response_semantics_contract,
-                        "question_family_registry_hash": joint_registry_hash,
-                        "joint_configuration_authority_release_id": joint_authority_release_id,
-                        "p3_authority_release_id": p3_authority_release_id,
-                        "respondent_relation_schema_hash": "",
-                        "schema_version": SHARED_SUBSTRATE_SCHEMA_VERSION,
-                        "execution_contract_version": SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION,
-                    },
-                    base_var_codes=shared_selection["base_var_codes"],
-                    joint_required_var_codes=shared_selection["joint_required_var_codes"],
-                )
-                shared_substrate_outputs.append(
+                shared_substrate_pending.append(
                     {
                         "country_code": str(country_code),
-                        "parquet_path": str(paths.parquet_path),
-                        "manifest_path": str(paths.manifest_path),
-                        "validation_path": str(paths.validation_path),
-                        "complete_path": str(paths.complete_path),
-                        "content_hash": manifest.get("content_hash"),
-                        "row_count": manifest.get("row_count"),
+                        "country_cache_key": country_code,
+                        "paths": paths,
+                        "manifest_fields": {
+                            "run_id": args.run_id,
+                            "shard_id": args.shard_id,
+                            "source": args.source,
+                            "source_id": args.source,
+                            "wave": args.wave,
+                            "canonical_wave": canonical_wave,
+                            "country_code": str(country_code),
+                            "response_semantics_contract_hash": response_semantics_contract,
+                            "question_family_registry_hash": joint_registry_hash,
+                            "joint_configuration_authority_release_id": joint_authority_release_id,
+                            "p3_authority_release_id": p3_authority_release_id,
+                            "respondent_relation_schema_hash": "",
+                            "schema_version": SHARED_SUBSTRATE_SCHEMA_VERSION,
+                            "execution_contract_version": SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION,
+                        },
                     }
                 )
-            _write_json_report(
-                shard_paths.respondent_substrate / "shared_respondent_substrate_selection_audit.json",
-                {
-                    "run_id": args.run_id,
-                    "shard_id": args.shard_id,
-                    "base_var_codes": shared_selection["base_var_codes"],
-                    "joint_required_var_codes": shared_selection["joint_required_var_codes"],
-                    "union_var_codes": shared_selection["union_var_codes"],
-                    "overlap_var_codes": shared_selection["overlap_var_codes"],
-                    "joint_only_var_codes": shared_selection["joint_only_var_codes"],
-                    "outputs": shared_substrate_outputs,
-                },
-            )
         reset_attitude_cloud_state()
 
         completed_questions = 0
@@ -1784,6 +1753,85 @@ def main() -> int:
             wave_tables["question_response_attitude_cloud"] = pd.DataFrame(columns=QUESTION_RESPONSE_ATTITUDE_CLOUD_COLUMNS)
 
         wave_tables["branch_co_signature"] = wave_tables["branch_relation_co_signature"].copy()
+
+        if shared_substrate_pending:
+            quc_frame = wave_tables.get("question_use_contract", pd.DataFrame()).copy()
+            substrate_enrichment_reports: list[dict[str, Any]] = []
+            for pending in shared_substrate_pending:
+                country_code = pending["country_code"]
+                country_frame = question_row_cache.get(pending["country_cache_key"], pd.DataFrame())
+                frame_for_substrate = (
+                    country_frame.reset_index(drop=True)
+                    if hasattr(country_frame, "reset_index")
+                    else pd.DataFrame()
+                )
+                canonical_frame = canonicalize_shared_respondent_substrate(
+                    frame_for_substrate,
+                    run_id=args.run_id,
+                    shard_id=args.shard_id,
+                    source=args.source,
+                    source_id=args.source,
+                    wave=args.wave,
+                    canonical_wave=canonical_wave,
+                    country_code=country_code,
+                    base_var_codes=shared_selection["base_var_codes"],
+                    joint_required_var_codes=shared_selection["joint_required_var_codes"],
+                    joint_configuration_ids_by_var=shared_selection.get("joint_configuration_ids_by_var", {}),
+                )
+                enriched_frame, enrichment = enrich_shared_respondent_substrate_with_question_use_contract(
+                    canonical_frame,
+                    quc_frame,
+                    country_code=country_code,
+                )
+                if enrichment["unjoined_row_count"]:
+                    raise RuntimeError(
+                        "shared respondent substrate QUC enrichment incomplete for "
+                        f"country={country_code}: unjoined_rows={enrichment['unjoined_row_count']} "
+                        f"vars={enrichment['unjoined_var_codes'][:20]}"
+                    )
+                manifest_fields = dict(pending["manifest_fields"])
+                manifest_fields.update(
+                    {
+                        "question_use_contract_enrichment_status": enrichment["enrichment_status"],
+                        "question_use_contract_row_count": enrichment["question_use_contract_row_count"],
+                        "question_use_contract_hashes": enrichment["question_use_contract_hashes"],
+                    }
+                )
+                paths = pending["paths"]
+                manifest = write_shared_respondent_substrate_atomic(
+                    enriched_frame,
+                    paths,
+                    manifest_fields=manifest_fields,
+                    base_var_codes=shared_selection["base_var_codes"],
+                    joint_required_var_codes=shared_selection["joint_required_var_codes"],
+                )
+                shared_substrate_outputs.append(
+                    {
+                        "country_code": country_code,
+                        "parquet_path": str(paths.parquet_path),
+                        "manifest_path": str(paths.manifest_path),
+                        "validation_path": str(paths.validation_path),
+                        "complete_path": str(paths.complete_path),
+                        "content_hash": manifest.get("content_hash"),
+                        "row_count": manifest.get("row_count"),
+                        "question_use_contract_enrichment_status": enrichment["enrichment_status"],
+                    }
+                )
+                substrate_enrichment_reports.append({"country_code": country_code, **enrichment})
+            _write_json_report(
+                shard_paths.respondent_substrate / "shared_respondent_substrate_selection_audit.json",
+                {
+                    "run_id": args.run_id,
+                    "shard_id": args.shard_id,
+                    "base_var_codes": shared_selection["base_var_codes"],
+                    "joint_required_var_codes": shared_selection["joint_required_var_codes"],
+                    "union_var_codes": shared_selection["union_var_codes"],
+                    "overlap_var_codes": shared_selection["overlap_var_codes"],
+                    "joint_only_var_codes": shared_selection["joint_only_var_codes"],
+                    "question_use_contract_enrichment_reports": substrate_enrichment_reports,
+                    "outputs": shared_substrate_outputs,
+                },
+            )
 
         _log_progress(
             progress_started,

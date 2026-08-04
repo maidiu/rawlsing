@@ -22,8 +22,8 @@ from data.ddm_build_copy.ddm_v550j_registry_contract import (
 )
 
 
-SHARED_SUBSTRATE_SCHEMA_VERSION = "v1"
-SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION = "v550-v550j-coexecution-v1"
+SHARED_SUBSTRATE_SCHEMA_VERSION = "v2"
+SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION = "v550-v550j-coexecution-v2"
 SHARED_SUBSTRATE_BASENAME = "v550_shared_respondent_substrate"
 REQUIRED_P3_AUTHORITY_RELEASE_ID = "P3-AUTHORITY-2026-08-02-R184"
 
@@ -72,6 +72,26 @@ PREPARED_SUBSTRATE_REQUIRED_COLUMNS = [
     "target_resolution_basis_source",
     "semantic_role",
     "v551_evidence_role",
+    "question_use_contract_joined",
+    "question_use_contract_hash",
+    "allowed_as_response_distribution",
+    "allowed_as_position_distribution",
+    "allowed_as_context_distribution",
+    "allowed_as_v551_relation_evidence",
+    "allowed_as_temporal_pressure_indicator",
+    "allowed_as_runtime_persona_evidence",
+    "semantic_role_authority_status",
+    "response_semantics_authority_status",
+    "directionality_authority_status",
+    "structural_mapping_status",
+    "eligibility_gate_status",
+    "eligibility_failed_gates",
+    "question_block_id",
+    "structural_domain_id",
+    "relation_axis_id",
+    "driver_id",
+    "driver_facet_id",
+    "target_entity_rule",
     "mapping_status",
     "source_structure_classification",
     "question_type",
@@ -142,6 +162,213 @@ def _normalize_code_series(series: pd.Series) -> pd.Series:
     cleaned = cleaned.mask(cleaned.str.lower().isin({"nan", "none", "null"}), "")
     cleaned = cleaned.str.replace(r"\.0+$", "", regex=True)
     return cleaned
+
+
+def _as_bool(value: Any, default: bool = False) -> bool:
+    if value is None:
+        return default
+    try:
+        if pd.isna(value):
+            return default
+    except Exception:
+        pass
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return bool(value)
+    text = str(value).strip().casefold()
+    if text in {"1", "true", "t", "yes", "y"}:
+        return True
+    if text in {"0", "false", "f", "no", "n", "", "none", "null", "nan"}:
+        return False
+    return default
+
+
+QUESTION_USE_CONSERVATION_COLUMNS = [
+    "semantic_role",
+    "v551_evidence_role",
+    "question_use_contract_hash",
+    "allowed_as_response_distribution",
+    "allowed_as_position_distribution",
+    "allowed_as_context_distribution",
+    "allowed_as_v551_relation_evidence",
+    "allowed_as_temporal_pressure_indicator",
+    "allowed_as_runtime_persona_evidence",
+    "semantic_role_authority_status",
+    "response_semantics_authority_status",
+    "directionality_authority_status",
+    "structural_mapping_status",
+    "eligibility_gate_status",
+    "eligibility_failed_gates",
+    "question_type",
+    "handling_rule",
+    "recommended_computation",
+    "mapping_status",
+    "question_block_id",
+    "structural_domain_id",
+    "relation_axis_id",
+    "target_entity_id",
+    "driver_id",
+    "driver_facet_id",
+    "target_entity_rule",
+    "final_driver_scope",
+    "source_structure_classification",
+    "source_structure_basis",
+    "source_structure_confidence",
+    "source_structure_source",
+    "source_structure_fields_joined",
+]
+QUESTION_USE_BOOLEAN_COLUMNS = {
+    "allowed_as_response_distribution",
+    "allowed_as_position_distribution",
+    "allowed_as_context_distribution",
+    "allowed_as_v551_relation_evidence",
+    "allowed_as_temporal_pressure_indicator",
+    "allowed_as_runtime_persona_evidence",
+    "source_structure_fields_joined",
+}
+
+
+def _contract_value(column: str, value: Any) -> Any:
+    if column in QUESTION_USE_BOOLEAN_COLUMNS:
+        return _as_bool(value, False)
+    return _clean(value)
+
+
+def enrich_shared_respondent_substrate_with_question_use_contract(
+    frame: pd.DataFrame,
+    question_use_contract: pd.DataFrame,
+    *,
+    country_code: str = "",
+) -> tuple[pd.DataFrame, dict[str, Any]]:
+    """Attach finalized question authority to the respondent substrate.
+
+    The shared substrate is extracted before question-use compilation, but must not
+    be promoted as COMPLETE until the finalized QUC has been joined.  Exact
+    question-id + variable matches are preferred; a variable-only fallback is used
+    only when the QUC has one unambiguous row for that variable.
+    """
+    out = frame.copy()
+    if "var_code_norm" not in out.columns:
+        out["var_code_norm"] = _normalize_code_series(out.get("var_code", pd.Series("", index=out.index))).str.upper()
+    if "question_id" not in out.columns:
+        out["question_id"] = ""
+    out["_question_id_norm"] = _normalize_code_series(out["question_id"]).str.upper()
+
+    quc = question_use_contract.copy() if question_use_contract is not None else pd.DataFrame()
+    if not quc.empty and country_code and "country_code" in quc.columns:
+        country_norm = _clean(country_code).upper()
+        scoped = quc[_normalize_code_series(quc["country_code"]).str.upper().eq(country_norm)]
+        if not scoped.empty:
+            quc = scoped.copy()
+    if "var_code" not in quc.columns:
+        quc["var_code"] = ""
+    if "question_id" not in quc.columns:
+        quc["question_id"] = ""
+    quc["_var_code_norm"] = _normalize_code_series(quc["var_code"]).str.upper()
+    quc["_question_id_norm"] = _normalize_code_series(quc["question_id"]).str.upper()
+
+    exact: dict[tuple[str, str], dict[str, Any]] = {}
+    by_var_candidates: dict[str, list[dict[str, Any]]] = {}
+    conflicts: list[str] = []
+    for record in quc.to_dict(orient="records"):
+        var_key = _clean(record.get("_var_code_norm"))
+        question_key = _clean(record.get("_question_id_norm"))
+        if not var_key:
+            continue
+        normalized = {column: _contract_value(column, record.get(column)) for column in QUESTION_USE_CONSERVATION_COLUMNS}
+        normalized["var_code_norm"] = var_key
+        normalized["question_id_norm"] = question_key
+        if question_key:
+            key = (question_key, var_key)
+            prior = exact.get(key)
+            if prior is not None and prior != normalized:
+                conflicts.append(f"conflicting_exact_quc:{question_key}:{var_key}")
+            else:
+                exact[key] = normalized
+        by_var_candidates.setdefault(var_key, []).append(normalized)
+    if conflicts:
+        raise RuntimeError("shared substrate QUC enrichment is ambiguous: " + ";".join(sorted(set(conflicts))[:20]))
+
+    by_var: dict[str, dict[str, Any]] = {}
+    for var_key, candidates in by_var_candidates.items():
+        unique_payloads = {json.dumps(candidate, sort_keys=True, default=str) for candidate in candidates}
+        if len(unique_payloads) == 1:
+            by_var[var_key] = candidates[0]
+
+    joined = 0
+    exact_joined = 0
+    fallback_joined = 0
+    missing_vars: set[str] = set()
+    payloads: list[dict[str, Any] | None] = []
+    for row in out.to_dict(orient="records"):
+        var_key = _clean(row.get("var_code_norm")).upper()
+        question_key = _clean(row.get("_question_id_norm")).upper()
+        payload = exact.get((question_key, var_key)) if question_key else None
+        if payload is not None:
+            exact_joined += 1
+        else:
+            payload = by_var.get(var_key)
+            if payload is not None:
+                fallback_joined += 1
+        if payload is None:
+            missing_vars.add(var_key)
+        else:
+            joined += 1
+        payloads.append(payload)
+
+    for column in QUESTION_USE_CONSERVATION_COLUMNS:
+        values = []
+        for current, payload in zip(out[column] if column in out.columns else [None] * len(out), payloads):
+            current_value = _contract_value(column, current)
+            if payload is None:
+                values.append(current_value)
+            else:
+                payload_value = payload.get(column, current_value)
+                # Target resolution can be response-category specific.  A blank
+                # question-level QUC target must not erase a more specific value
+                # already carried by the harmonized response row.
+                if column == "target_entity_id" and not _clean(payload_value) and _clean(current_value):
+                    values.append(current_value)
+                else:
+                    values.append(payload_value)
+        out[column] = values
+    out["question_use_contract_joined"] = [payload is not None for payload in payloads]
+
+    for flag in ["is_missing", "is_dk", "is_refusal", "is_iap"]:
+        if flag not in out.columns:
+            out[flag] = False
+        out[flag] = out[flag].map(lambda value: _as_bool(value, False))
+    response_nonempty = _normalize_code_series(out.get("response_value_norm", out.get("response_value_normalized", pd.Series("", index=out.index)))).ne("")
+    out["is_valid_substantive_response"] = (
+        response_nonempty
+        & ~out["is_missing"]
+        & ~out["is_dk"]
+        & ~out["is_refusal"]
+        & ~out["is_iap"]
+    )
+    if "is_substantive" in out.columns:
+        existing_substantive = out["is_substantive"].map(lambda value: _as_bool(value, False))
+    else:
+        existing_substantive = pd.Series(False, index=out.index)
+    response_allowed = out.get("allowed_as_response_distribution", pd.Series(False, index=out.index)).map(lambda value: _as_bool(value, False))
+    context_allowed = out.get("allowed_as_context_distribution", pd.Series(False, index=out.index)).map(lambda value: _as_bool(value, False))
+    out["is_substantive"] = existing_substantive | response_allowed | context_allowed
+    out = out.drop(columns=["_question_id_norm"], errors="ignore")
+    report = {
+        "row_count": int(len(out)),
+        "joined_row_count": int(joined),
+        "exact_joined_row_count": int(exact_joined),
+        "variable_fallback_joined_row_count": int(fallback_joined),
+        "unjoined_row_count": int(len(out) - joined),
+        "unjoined_var_codes": sorted(value for value in missing_vars if value),
+        "question_use_contract_row_count": int(len(quc)),
+        "question_use_contract_hashes": sorted({
+            _clean(value) for value in quc.get("question_use_contract_hash", pd.Series(dtype=object)) if _clean(value)
+        }),
+        "enrichment_status": "PASS" if joined == len(out) else "PARTIAL_UNJOINED_ROWS",
+    }
+    return out.reindex(columns=list(dict.fromkeys(SHARED_SUBSTRATE_REQUIRED_COLUMNS + list(out.columns)))).reset_index(drop=True), report
 
 
 def _json_hash(payload: Any) -> str:
@@ -390,6 +617,26 @@ def canonicalize_shared_respondent_substrate(
         "target_resolution_basis_source": "",
         "semantic_role": "",
         "v551_evidence_role": "",
+        "question_use_contract_joined": False,
+        "question_use_contract_hash": "",
+        "allowed_as_response_distribution": False,
+        "allowed_as_position_distribution": False,
+        "allowed_as_context_distribution": False,
+        "allowed_as_v551_relation_evidence": False,
+        "allowed_as_temporal_pressure_indicator": False,
+        "allowed_as_runtime_persona_evidence": False,
+        "semantic_role_authority_status": "MISSING",
+        "response_semantics_authority_status": "MISSING",
+        "directionality_authority_status": "MISSING",
+        "structural_mapping_status": "MISSING",
+        "eligibility_gate_status": "MISSING",
+        "eligibility_failed_gates": "",
+        "question_block_id": "",
+        "structural_domain_id": "",
+        "relation_axis_id": "",
+        "driver_id": "",
+        "driver_facet_id": "",
+        "target_entity_rule": "",
         "mapping_status": "",
         "source_structure_classification": "",
         "question_type": "",
@@ -438,13 +685,20 @@ def canonicalize_shared_respondent_substrate(
         "is_refusal",
         "is_iap",
         "is_valid_substantive_response",
+        "question_use_contract_joined",
         "source_structure_fields_joined",
         "is_substantive",
         "not_direct_evidence",
+        "allowed_as_response_distribution",
+        "allowed_as_position_distribution",
+        "allowed_as_context_distribution",
+        "allowed_as_v551_relation_evidence",
+        "allowed_as_temporal_pressure_indicator",
+        "allowed_as_runtime_persona_evidence",
         "allowed_as_association_feature",
         "allowed_as_attitude_cloud_feature",
     ]:
-        out[column] = out[column].fillna(False).map(bool)
+        out[column] = out[column].map(lambda value: _as_bool(value, False))
     out["source_norm"] = _normalize_code_series(out["source"]).str.upper()
     out["wave_norm"] = _normalize_code_series(out["wave"]).str.upper()
     out["canonical_wave_norm"] = _normalize_code_series(out["canonical_wave"]).str.upper()

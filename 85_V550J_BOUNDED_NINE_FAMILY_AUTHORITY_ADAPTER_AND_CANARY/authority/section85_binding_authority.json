@@ -1,0 +1,107 @@
+{
+  "artifact_authority_csv": "section85_stage_artifact_authority.csv",
+  "authority_id": "SECTION85_STAGE_ARTIFACT_AUTHORITY_R1_20260804",
+  "compatibility_rules": [
+    {
+      "consumer": "V552J or current Section 85 gate",
+      "current_equivalent": "v551j_review_surface.parquet",
+      "expected": "v551j_reviewable_evidence_sidecar.parquet",
+      "rule": "Accept only through adapter after schema compatibility check; do not fail solely on old filename."
+    },
+    {
+      "consumer": "V552J or current Section 85 gate",
+      "current_equivalent": "v551j_readiness_report.json + v551j_packet_contract_validation_report.json",
+      "expected": "v551j_certification_readiness_report.json",
+      "rule": "Derive if required fields are present; otherwise fail as semantic absence."
+    },
+    {
+      "consumer": "V552J or current Section 85 gate",
+      "current_equivalent": "v551j_readiness_report.json",
+      "expected": "v551j_review_readiness_report.json",
+      "rule": "Derive if review counts/status fields are present."
+    },
+    {
+      "consumer": "V552J or current Section 85 gate",
+      "current_equivalent": "v551j_packet_contract_validation_report.json + v551j_readiness_report.json",
+      "expected": "v551j_packet_readiness_report.json",
+      "rule": "Derive if candidate/component/certified counts and contract flags are present."
+    }
+  ],
+  "database_bindings": {
+    "canonical_registry_relation": {
+      "canonical": "rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry"
+    },
+    "qsm_relation": {
+      "canonical": "question_structural_mapping",
+      "forbidden_stale": [
+        "rawlsing_authority_reconcile_ar_20260719t213835z.question_structural_mapping"
+      ]
+    },
+    "response_long_relation": {
+      "fallback": "public.v_ddm_response_long_facet_ready",
+      "fallback_requires_audit": true,
+      "preferred": "public.v_ddm_response_long_facet_ready_authority"
+    }
+  },
+  "governing_commit": "d49e55c9f2df86c5412be8759b9ad6ca86778262",
+  "privacy_rules": {
+    "raw_responses": "forbidden in Git and ordinary diagnostic packages",
+    "respondent_substrate": "runtime_private; never include in nonrespondent handoff packages"
+  },
+  "scope": "Bounded nine-family Section 85 V550/V550J/V551/V551J/V552/V552J diagnostic orchestration references.",
+  "source_family_aliases": {
+    "Afrobarometer": [
+      "Afrobarometer",
+      "AFRO",
+      "Afro Barometer"
+    ],
+    "Arab Barometer": [
+      "Arab Barometer",
+      "Arab_Barometer",
+      "ARB",
+      "ArabBarometer"
+    ],
+    "Asian Barometer": [
+      "Asian Barometer",
+      "Asian_Barometer",
+      "AsianBarometer"
+    ],
+    "EVS": [
+      "EVS",
+      "European Values Study"
+    ],
+    "GSS": [
+      "GSS",
+      "General Social Survey"
+    ],
+    "Latinobarómetro": [
+      "Latinobarómetro",
+      "Latinobarometro",
+      "Latinobarometró",
+      "Latin Barometer"
+    ],
+    "LiTS": [
+      "LiTS",
+      "Life in Transition Survey"
+    ],
+    "South Asia": [
+      "South Asia",
+      "South_Asia",
+      "SAS"
+    ],
+    "WVS": [
+      "WVS",
+      "World Values Survey"
+    ]
+  },
+  "stage_order": [
+    "database",
+    "section85_authority",
+    "v550",
+    "v550j",
+    "v551",
+    "v551j",
+    "v552",
+    "v552j"
+  ]
+}

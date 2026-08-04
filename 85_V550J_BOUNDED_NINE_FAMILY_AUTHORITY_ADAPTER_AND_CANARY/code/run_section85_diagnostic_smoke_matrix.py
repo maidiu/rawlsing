@@ -23,6 +23,7 @@ import yaml
 SECTION = Path("85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY")
 RUNTIME = Path("35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code")
 BASE_MODULE_DIR = RUNTIME / "data/ddm_build_copy"
+BINDING_AUTHORITY_RELATIVE = SECTION / "authority/section85_binding_authority.json"
 DEFAULT_QSM_RELATION = "question_structural_mapping"
 DEFAULT_CANONICAL_REGISTRY_RELATION = "rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry"
 
@@ -80,6 +81,17 @@ def load_json(path: Path) -> dict[str, Any]:
     except Exception:
         return {}
     return payload if isinstance(payload, dict) else {}
+
+
+def load_binding_authority(repo_root: Path) -> dict[str, Any]:
+    payload = load_json(repo_root / BINDING_AUTHORITY_RELATIVE)
+    return payload if payload else {
+        "database_bindings": {
+            "qsm_relation": {"canonical": DEFAULT_QSM_RELATION},
+            "canonical_registry_relation": {"canonical": DEFAULT_CANONICAL_REGISTRY_RELATION},
+            "response_long_relation": {"preferred": "public.v_ddm_response_long_facet_ready_authority"},
+        }
+    }
 
 
 def write_json(path: Path, payload: Any) -> None:
@@ -310,15 +322,12 @@ def main() -> int:
     parser.add_argument("--question-structure-register", type=Path, required=True)
     parser.add_argument(
         "--qsm-relation",
-        default=os.environ.get("DDM_QSM_RELATION", DEFAULT_QSM_RELATION),
+        default=os.environ.get("DDM_QSM_RELATION"),
         help="Question structural mapping relation. Defaults to the same public relation proven by Section 85 preflight.",
     )
     parser.add_argument(
         "--canonical-registry-relation",
-        default=os.environ.get(
-            "DDM_CANONICAL_REGISTRY_RELATION",
-            DEFAULT_CANONICAL_REGISTRY_RELATION,
-        ),
+        default=os.environ.get("DDM_CANONICAL_REGISTRY_RELATION"),
         help="Canonical question registry relation.",
     )
     parser.add_argument("--only-scope", action="append", default=[])
@@ -326,9 +335,19 @@ def main() -> int:
 
     repo = args.repo_root.resolve()
     os.chdir(repo)
+    binding_authority = load_binding_authority(repo)
+    db_bindings = binding_authority.get("database_bindings", {}) if isinstance(binding_authority.get("database_bindings"), dict) else {}
+    if not args.qsm_relation:
+        args.qsm_relation = (db_bindings.get("qsm_relation") or {}).get("canonical") or DEFAULT_QSM_RELATION
+    if not args.canonical_registry_relation:
+        args.canonical_registry_relation = (
+            (db_bindings.get("canonical_registry_relation") or {}).get("canonical")
+            or DEFAULT_CANONICAL_REGISTRY_RELATION
+        )
     output = args.output_root.resolve()
     reports = output / "reports"
     reports.mkdir(parents=True, exist_ok=True)
+    write_json(reports / "SECTION85_BINDING_AUTHORITY_USED.json", binding_authority)
 
     base = load_base(repo)
     db_url = read_env_database_url(args.env_file)
@@ -372,6 +391,8 @@ def main() -> int:
         "response_option_map": str(args.response_option_map),
         "question_structure_register": str(args.question_structure_register),
         "runtime_repo_root": str(runtime),
+        "binding_authority_path": str((repo / BINDING_AUTHORITY_RELATIVE).resolve()),
+        "binding_authority_id": binding_authority.get("authority_id", ""),
         "qsm_relation_requested": args.qsm_relation,
         "qsm_relation_resolved": database_contract.get("relations", {}).get("qsm_relation", {}).get("resolved", ""),
         "canonical_registry_relation_requested": args.canonical_registry_relation,
@@ -412,15 +433,23 @@ def main() -> int:
     for result in results:
         fc = result.get("functional_checks", {})
         gate = result.get("current_v551j_gate", {})
+        lanes = result.get("lane_status", {})
         matrix_rows.append({
             "configuration_id": result.get("configuration_id", ""),
             "scope": result.get("scope_dir", ""),
             "selected_variable_count": result.get("selected_variable_count", ""),
+            "diagnostic_capture_complete": result.get("diagnostic_capture_complete", False),
+            "acceptance_boundary": result.get("acceptance_boundary", ""),
+            "base_lane_status": lanes.get("base_relation_pressure", {}).get("status", ""),
+            "joint_pattern_lane_status": lanes.get("joint_patterns", {}).get("status", ""),
+            "joint_evidence_lane_status": lanes.get("joint_evidence", {}).get("status", ""),
+            "integration_lane_status": lanes.get("integration", {}).get("status", ""),
             "closure_variable_count": len(json.loads(next((x["member_variables"] for x in inventory if x["configuration_id"] == result.get("configuration_id")), "[]"))),
             "v550_status": result.get("stages", {}).get("v550", {}).get("exit_code", ""),
             "quc_relation_evidence_count": fc.get("v550_quc", {}).get("relation_rows", ""),
             "v551_atom_count": fc.get("v551", {}).get("atom_rows", ""),
-            "v552_pressure_observation_count": fc.get("v552", {}).get("pressure_observation_rows", fc.get("v552", {}).get("atoms_row_count", "")),
+            "v552_pressure_observation_count": fc.get("v552", {}).get("pressure_observation_rows", ""),
+            "v552_pressure_linkage_eligible_count": fc.get("v552", {}).get("pressure_linkage_eligible_rows", ""),
             "v550j_pattern_count": fc.get("v550j", {}).get("pattern_rows", ""),
             "v550j_component_count": summarize_rows(output / "live_outputs/v550j/runs" / result.get("run_id", "") / f"{result.get('survey_family')}_{result.get('wave_id')}_{result.get('country')}" / "joint_patterns/joint_response_pattern_item_index.parquet"),
             "v551j_candidate_count": gate.get("candidate_packet_count", ""),
@@ -428,6 +457,13 @@ def main() -> int:
             "v551j_review_count": gate.get("review_required_packet_count", ""),
             "v551j_blocked_count": gate.get("blocked_packet_count", ""),
             "v552j_status": fc.get("v552j", {}).get("status", ""),
+            "v552j_pressure_observation_count": fc.get("v552j", {}).get("pressure_observation_rows", ""),
+            "v552j_exact_link_count": fc.get("v552j", {}).get("exact_link_rows", ""),
+            "v552j_certified_link_count": fc.get("v552j", {}).get("certified_link_rows", ""),
+            "v552j_review_link_count": fc.get("v552j", {}).get("review_link_rows", ""),
+            "v552j_unlinked_pressure_count": fc.get("v552j", {}).get("unlinked_pressure_rows", ""),
+            "v552j_pressure_conservation_violation_count": fc.get("v552j", {}).get("pressure_conservation_violation_count", ""),
+            "blocking_event_count": len(result.get("blocking_events", [])),
             "first_failing_stage": result.get("failure_stage", ""),
             "exact_error_or_validation_issue": result.get("functional_failure_reason", "") or gate.get("issues_json", ""),
         })
@@ -455,7 +491,7 @@ def main() -> int:
     write_csv(package_root / "PRIVACY_RETURN.csv", privacy, ["path", "action", "reason"])
     all_files = [{"relative_path": p.relative_to(package_root).as_posix(), "size_bytes": p.stat().st_size, "sha256": sha256_file(p)} for p in sorted(package_root.rglob("*")) if p.is_file()]
     write_csv(package_root / "SHA256_MANIFEST.csv", all_files, ["relative_path", "size_bytes", "sha256"])
-    zip_path = output / "Rawlsing_Section85_Nine_Family_Diagnostic_Smoke_6ba0d67.zip"
+    zip_path = output / f"Rawlsing_Section85_Nine_Family_Diagnostic_Smoke_{commit[:7]}.zip"
     if zip_path.exists():
         zip_path.unlink()
     shutil.make_archive(str(zip_path.with_suffix("")), "zip", package_root)

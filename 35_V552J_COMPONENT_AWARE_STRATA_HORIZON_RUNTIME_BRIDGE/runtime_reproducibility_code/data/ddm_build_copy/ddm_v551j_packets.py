@@ -1397,6 +1397,23 @@ def validate_governed_input_scope(
     return pd.DataFrame(rows).reindex(columns=V551J_INPUT_SCOPE_AUDIT_SCHEMA["required_columns"]), list(dict.fromkeys(issues))
 
 
+def _v2_component_denominator_requirement(record: Mapping[str, Any]) -> tuple[bool, str]:
+    """Return whether a component must carry a V551 respondent denominator.
+
+    V551 denominators belong to matched relation evidence.  Governed context,
+    special/missing, and explained nonrelation components remain valid with typed
+    denominator absence and must not globally invalidate a packet contract.
+    """
+    contribution = _clean(record.get("component_certification_contribution"))
+    matched_relation = (
+        _clean(record.get("v551_atom_match_status")).startswith("MATCHED")
+        and bool(record.get("v551_allowed_as_v551_relation_evidence", False))
+    )
+    if contribution == "relation_component" or matched_relation:
+        return True, "RELATION_COMPONENT_DENOMINATOR_REQUIRED"
+    return False, "NOT_APPLICABLE_NONRELATION_COMPONENT"
+
+
 def _v2_packet_status(pattern: Mapping[str, Any], comps: pd.DataFrame, relation_signature: Mapping[str, Any]) -> tuple[str, str, list[str], list[str], dict[str, str]]:
     blockers: list[str] = []
     reviews: list[str] = []
@@ -1725,6 +1742,8 @@ def build_v551j_joint_outputs_v2(
             "issue_code": "" if record.get("target_layer_relation_status") != "EXPLICIT_SAME_NAMESPACE_CONFLICT" else "explicit_target_conflict",
             "created_at": utc_now(), "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3",
         })
+        denominator_required, denominator_requirement_status = _v2_component_denominator_requirement(record)
+        denominator_present = _v2_scalar(record.get("v551_n_respondents")) is not None
         denominator_rows.append({
             "run_id": run_id, "packet_id": record.get("packet_id"), "pattern_id": record.get("pattern_id"),
             "v551_empirical_distribution_id": record.get("v551_empirical_distribution_id"),
@@ -1732,8 +1751,12 @@ def build_v551j_joint_outputs_v2(
             "component_denominator_sum_used_as_joint_n": False,
             "component_denominator_substitution_detected": False,
             "component_denominator_equality_required_across_questions": False,
-            "denominator_status": "PASS" if _v2_scalar(record.get("v551_n_respondents")) is not None else "DENOMINATOR_GAP",
-            "issue_code": "" if _v2_scalar(record.get("v551_n_respondents")) is not None else "missing_v551_n_respondents",
+            "denominator_status": (
+                "PASS" if denominator_required and denominator_present
+                else "DENOMINATOR_GAP" if denominator_required
+                else denominator_requirement_status
+            ),
+            "issue_code": "missing_v551_n_respondents" if denominator_required and not denominator_present else "",
             "created_at": utc_now(), "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3",
         })
     measurement_audit = pd.DataFrame(measurement_rows).reindex(columns=V551J_MEASUREMENT_SEPARATION_AUDIT_SCHEMA["required_columns"])
@@ -1769,7 +1792,12 @@ def build_v551j_joint_outputs_v2(
             null_mask = candidate[column].isna() | candidate[column].astype(str).eq("")
         else:
             null_mask = candidate[column].isna()
-        if null_mask.any() and column not in {"packet_contract_hash", "review_reason_codes_json", "blocking_reason_codes_json"}:
+        if column in {"component_question_denominator_min", "component_question_denominator_max"}:
+            relation_required = pd.to_numeric(candidate.get("matched_relation_component_count", 0), errors="coerce").fillna(0).gt(0)
+            invalid_null_mask = null_mask & relation_required
+            if invalid_null_mask.any():
+                validation_issues.append(f"null_packet_column:{column}:{int(invalid_null_mask.sum())}")
+        elif null_mask.any() and column not in {"packet_contract_hash", "review_reason_codes_json", "blocking_reason_codes_json"}:
             validation_issues.append(f"null_packet_column:{column}:{int(null_mask.sum())}")
     comparison_issue_count = int(comparison_audit["issue_code"].fillna("").astype(str).ne("").sum()) if not comparison_audit.empty else 0
     if comparison_issue_count:

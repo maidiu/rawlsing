@@ -861,6 +861,15 @@ def _iter_quc_rows(quc_path: Path) -> Iterable[dict[str, Any]]:
         return list(csv.DictReader(handle))
 
 
+def _parquet_rows(path: Path) -> int:
+    if not path.exists():
+        return 0
+    try:
+        return int(len(pd.read_parquet(path)))
+    except Exception:
+        return 0
+
+
 def summarize_quc_functional_gate(quc_path: str | Path) -> dict[str, Any]:
     quc_path = Path(quc_path)
     summary: dict[str, Any] = {
@@ -964,6 +973,8 @@ def summarize_v552_functional_gate(path: str | Path) -> dict[str, Any]:
         if payload:
             manifest_path = current_manifest
     atom_rows = int(payload.get("atoms_row_count") or payload.get("input_atom_rows") or 0)
+    pressure_rows = int(payload.get("pressure_observation_rows") or payload.get("pressure_observation_candidate_count") or 0)
+    pressure_linkage_rows = int(payload.get("pressure_linkage_eligible_rows") or payload.get("pressure_linkage_eligible_count") or 0)
     status = str(payload.get("final_status") or payload.get("status") or "")
     normalized_status = status.upper().removeprefix("STATUS: ").strip()
     structural_ready = normalized_status in {
@@ -987,6 +998,8 @@ def summarize_v552_functional_gate(path: str | Path) -> dict[str, Any]:
         "manifest_exists": manifest_path.exists(),
         "final_status": status,
         "atoms_row_count": atom_rows,
+        "pressure_observation_rows": pressure_rows,
+        "pressure_linkage_eligible_rows": pressure_linkage_rows,
         "passed": not failure_reason,
         "failure_reason": failure_reason,
     }
@@ -1042,75 +1055,145 @@ def summarize_v550j_functional_gate(path: str | Path) -> dict[str, Any]:
     }
 
 def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
+    """Summarize the current V551J v2.2.3 contract without legacy filename assumptions.
+
+    A valid review/context-only packet surface is a successful diagnostic artifact even
+    when no packet is certified for V552J.  `certified_ready` remains the stricter
+    downstream-authority flag.
+    """
     root_path = Path(root)
-    packet_path = root_path / "manifest/v551j_packet_readiness_report.json"
-    review_path = root_path / "manifest/v551j_review_readiness_report.json"
-    cert_path = root_path / "manifest/v551j_certification_readiness_report.json"
+    readiness_path = root_path / "manifest/v551j_readiness_report.json"
+    contract_path = root_path / "manifest/v551j_packet_contract_validation_report.json"
+    manifest_path = root_path / "manifest/manifest.json"
     provenance_path = root_path / "manifest/v551j_input_provenance_manifest.json"
-    certified_index_path = root_path / "packets/v551j_certified_packet_index.parquet"
-    reviewable_sidecar_path = root_path / "packets/v551j_reviewable_evidence_sidecar.parquet"
+    candidate_path = root_path / "packets/v551j_joint_packet_candidate_index.parquet"
+    component_path = root_path / "packets/v551j_joint_component_index.parquet"
+    certified_joint_path = root_path / "packets/v551j_certified_joint_packet_index.parquet"
+    certified_alias_path = root_path / "packets/v551j_certified_packet_index.parquet"
+    review_surface_path = root_path / "packets/v551j_review_surface.parquet"
 
-    packet = _load_json(packet_path)
-    review = _load_json(review_path)
-    cert = _load_json(cert_path)
+    readiness = _load_json(readiness_path)
+    contract = _load_json(contract_path)
+    manifest = _load_json(manifest_path)
     provenance = _load_json(provenance_path)
+    manifest_counts = manifest.get("row_counts", {}) if isinstance(manifest.get("row_counts"), dict) else {}
 
-    packet_rows = int(packet.get("candidate_packet_rows") or 0)
-    review_rows = int(review.get("review_surface_rows") or 0)
-    certified_rows = int(cert.get("certified_packet_rows") or 0)
-    packet_status = str(packet.get("final_status") or "")
-    review_status = str(review.get("final_status") or "")
-    certification_status = str(cert.get("final_status") or "")
-    provenance_status = str(provenance.get("final_status") or "")
+    candidate_rows = int(
+        readiness.get("candidate_packet_count")
+        or manifest_counts.get("candidate")
+        or _parquet_rows(candidate_path)
+        or 0
+    )
+    component_rows = int(
+        readiness.get("component_row_count")
+        or manifest_counts.get("component")
+        or _parquet_rows(component_path)
+        or 0
+    )
+    certified_rows = int(
+        readiness.get("certified_packet_count")
+        or manifest_counts.get("certified")
+        or _parquet_rows(certified_joint_path)
+        or _parquet_rows(certified_alias_path)
+        or 0
+    )
+    review_rows = int(
+        readiness.get("review_required_packet_count")
+        or manifest_counts.get("review")
+        or _parquet_rows(review_surface_path)
+        or 0
+    )
+    context_rows = int(readiness.get("context_only_packet_count") or 0)
+    blocked_rows = int(readiness.get("blocked_packet_count") or 0)
+    final_status = str(readiness.get("final_status") or provenance.get("final_status") or "")
+    candidate_contract_valid = _truthy(
+        contract.get("candidate_contract_valid")
+        if "candidate_contract_valid" in contract
+        else readiness.get("candidate_contract_valid")
+    )
+    component_contract_valid = _truthy(
+        contract.get("component_contract_valid")
+        if "component_contract_valid" in contract
+        else readiness.get("component_contract_valid")
+    )
+    ready_for_review = _truthy(readiness.get("ready_for_review"))
+    ready_for_v552j = _truthy(readiness.get("ready_for_v552j_joint_evidence"))
 
     required_artifacts = {
-        "packet_readiness": packet_path,
-        "review_readiness": review_path,
-        "certification_readiness": cert_path,
+        "readiness": readiness_path,
+        "packet_contract_validation": contract_path,
+        "manifest": manifest_path,
         "input_provenance": provenance_path,
-        "certified_packet_index": certified_index_path,
-        "reviewable_evidence_sidecar": reviewable_sidecar_path,
+        "candidate_packet_index": candidate_path,
+        "component_index": component_path,
+        "certified_joint_packet_index": certified_joint_path,
+        "review_surface": review_surface_path,
     }
     missing_artifacts = [name for name, path in required_artifacts.items() if not path.exists()]
+    diagnostic_statuses = {
+        "READY_V551J_JOINT_EVIDENCE_CONTRACT",
+        "PARTIAL_READY_V551J_REVIEW_ONLY",
+        "PARTIAL_READY_V551J_CONTEXT_ONLY",
+    }
+    contract_valid = candidate_contract_valid and component_contract_valid
+    diagnostic_contract_valid = bool(
+        not missing_artifacts
+        and contract_valid
+        and candidate_rows > 0
+        and component_rows > 0
+        and final_status in diagnostic_statuses
+    )
+    certified_ready = bool(
+        diagnostic_contract_valid
+        and final_status == "READY_V551J_JOINT_EVIDENCE_CONTRACT"
+        and ready_for_v552j
+        and certified_rows > 0
+    )
+    review_or_context_ready = bool(
+        diagnostic_contract_valid
+        and (ready_for_review or review_rows > 0 or context_rows > 0)
+    )
 
     if missing_artifacts:
         failure_reason = "v551j_missing_required_artifacts:" + ",".join(missing_artifacts)
-    elif packet_status.upper().startswith("NOT_READY"):
-        failure_reason = "v551j_packet_readiness_blocked"
-    elif packet_rows <= 0:
+    elif not candidate_contract_valid:
+        failure_reason = "v551j_candidate_contract_invalid"
+    elif not component_contract_valid:
+        failure_reason = "v551j_component_contract_invalid"
+    elif candidate_rows <= 0:
         failure_reason = "v551j_candidate_packet_rows_zero"
-    elif review_status.upper().startswith("NOT_READY"):
-        failure_reason = "v551j_review_readiness_blocked"
-    elif review_rows <= 0:
-        failure_reason = "v551j_review_surface_rows_zero"
-    elif certification_status.upper().startswith("NOT_READY"):
-        failure_reason = "v551j_certification_readiness_blocked"
-    elif certified_rows <= 0:
-        failure_reason = "v551j_certified_packet_rows_zero"
-    elif not certification_status.upper().startswith("READY_V551J_EVIDENCE_CERTIFIED"):
-        failure_reason = "v551j_certification_status_unrecognized"
-    elif provenance_status.upper().startswith("NOT_READY"):
-        failure_reason = "v551j_provenance_readiness_blocked"
-    elif provenance_status != certification_status:
-        failure_reason = "v551j_provenance_certification_status_mismatch"
+    elif component_rows <= 0:
+        failure_reason = "v551j_component_rows_zero"
+    elif final_status not in diagnostic_statuses:
+        failure_reason = "v551j_status_not_diagnostically_ready:" + (final_status or "missing")
     else:
         failure_reason = ""
 
     return {
         "root": str(root_path),
-        "packet_status": packet_status,
-        "review_status": review_status,
-        "certification_status": certification_status,
-        "provenance_status": provenance_status,
-        "candidate_packet_rows": packet_rows,
+        "final_status": final_status,
+        "packet_status": final_status,
+        "review_status": final_status,
+        "certification_status": final_status,
+        "provenance_status": str(provenance.get("final_status") or final_status),
+        "candidate_packet_rows": candidate_rows,
+        "component_rows": component_rows,
         "review_surface_rows": review_rows,
+        "context_only_packet_rows": context_rows,
+        "blocked_packet_rows": blocked_rows,
         "certified_packet_rows": certified_rows,
+        "candidate_contract_valid": candidate_contract_valid,
+        "component_contract_valid": component_contract_valid,
+        "ready_for_review": ready_for_review,
+        "ready_for_v552j_joint_evidence": ready_for_v552j,
+        "diagnostic_contract_valid": diagnostic_contract_valid,
+        "certified_ready": certified_ready,
+        "review_or_context_ready": review_or_context_ready,
         "required_artifacts": {name: str(path) for name, path in required_artifacts.items()},
         "missing_required_artifacts": missing_artifacts,
-        "passed": not failure_reason,
+        "passed": diagnostic_contract_valid,
         "failure_reason": failure_reason,
     }
-
 
 def summarize_v552j_functional_gate(path: str | Path) -> dict[str, Any]:
     payload = _load_json(path)
@@ -1122,7 +1205,11 @@ def summarize_v552j_functional_gate(path: str | Path) -> dict[str, Any]:
         missing_list = json.loads(missing_required) if isinstance(missing_required, str) else list(missing_required or [])
     except Exception:
         missing_list = [str(missing_required)]
-    passed = bool(payload) and adapter_ready and probe_ready and not status.upper().startswith("BLOCKED") and not missing_list
+    exact_pressure_ready = status in {
+        "READY_V552J_EXACT_PRESSURE_HANDOFF",
+        "PARTIAL_READY_V552J_EXACT_PRESSURE_HANDOFF_WITH_STRUCTURAL_GAPS",
+    }
+    passed = bool(payload) and adapter_ready and (probe_ready or exact_pressure_ready) and not status.upper().startswith("BLOCKED") and not missing_list
     return {
         "readiness_path": str(path),
         "readiness_exists": Path(path).exists(),
@@ -1130,7 +1217,13 @@ def summarize_v552j_functional_gate(path: str | Path) -> dict[str, Any]:
         "adapter_preflight_ready": adapter_ready,
         "ready_for_v553_probe": probe_ready,
         "ready_for_v553_temporal_field": _truthy(payload.get("ready_for_v553_temporal_field")),
-        "packet_rows": int(payload.get("packet_rows") or 0),
+        "packet_rows": int(payload.get("packet_rows") or payload.get("pressure_observation_rows") or 0),
+        "pressure_observation_rows": int(payload.get("pressure_observation_rows") or 0),
+        "exact_link_rows": int(payload.get("exact_link_rows") or 0),
+        "certified_link_rows": int(payload.get("certified_link_rows") or 0),
+        "review_link_rows": int(payload.get("review_link_rows") or 0),
+        "unlinked_pressure_rows": int(payload.get("unlinked_pressure_rows") or 0),
+        "pressure_conservation_violation_count": int(payload.get("pressure_conservation_violation_count") or 0),
         "missing_required_inputs": missing_list,
         "passed": passed,
         "failure_reason": "" if passed else ("missing_v552j_readiness" if not payload else "v552j_semantic_gate_blocked"),
@@ -1602,6 +1695,7 @@ V552J_EXTRA_FILES = {
     "--v552-known-absence-register-path": "v552_known_absence_register.parquet",
     "--v552-structural-fact-index-path": "v552_structural_fact_index.parquet",
     "--v552-temporal-key-source-index-path": "v552_temporal_key_source_index.parquet",
+    "--v552-pressure-observation-handoff-path": "v552_to_v552j_pressure_observation_handoff_index.parquet",
 }
 
 
@@ -1652,14 +1746,18 @@ def run_v552j(
     v552_structural_dir: str,
     config: RuntimeConfig = DEFAULT_CONFIG,
 ) -> dict[str, Any]:
+    structural_root = Path(v552_structural_dir)
     cmd = [
         sys.executable,
-        _abs("data/ddm_build_copy/compile_v552j_runtime_safe_structural_handoff.py", config),
+        _abs("data/ddm_build_copy/compile_v552j_exact_pressure_handoff.py", config),
         "--run-id", shard_id,
         "--v551j-run-root", v551j_run_root,
+        "--v552-pressure-observation-handoff-path", str(structural_root / "v552_to_v552j_pressure_observation_handoff_index.parquet"),
+        "--v552-structural-fact-index-path", str(structural_root / "v552_structural_fact_index.parquet"),
+        "--v552-temporal-key-source-index-path", str(structural_root / "v552_temporal_key_source_index.parquet"),
         "--output-root", output_root,
+        "--no-write-csv",
     ]
-    _append_existing_context(cmd, v552_structural_dir, {**V552_CONTEXT_FILES, **V552J_EXTRA_FILES})
     return _invoke_run(cmd, timeout_sec=1800, config=config)
 
 
@@ -1680,6 +1778,12 @@ def run_wave(
     selected_vars: list[str],
     config: RuntimeConfig = DEFAULT_CONFIG,
 ) -> dict[str, Any]:
+    """Run the base and joint lanes independently.
+
+    In diagnostic mode, a governed semantic block is preserved as evidence and does
+    not prevent the other lane from running.  Process/configuration failures at V550
+    remain fatal because all downstream lanes depend on that substrate.
+    """
     run_id = f"{_family_wave_id(family, wave)}_{run_ts}"
     shard_id = f"{family}_{wave}" + (f"_{country}" if country else "")
     result: dict[str, Any] = {
@@ -1692,11 +1796,34 @@ def run_wave(
         "stages": {},
         "functional_checks": {},
         "joint_branch": {},
+        "lane_status": {
+            "base_relation_pressure": {"status": "NOT_RUN", "blockers": []},
+            "joint_patterns": {"status": "NOT_RUN", "blockers": []},
+            "joint_evidence": {"status": "NOT_RUN", "blockers": []},
+            "integration": {"status": "NOT_RUN", "blockers": []},
+        },
+        "blocking_events": [],
         "base_spine_passed": False,
         "full_chain_passed": False,
+        "diagnostic_capture_complete": False,
         "acceptance_boundary": "none",
         "passed": False,
     }
+
+    def record_block(lane: str, stage: str, reason: str) -> None:
+        reason = str(reason or "blocked")
+        result["blocking_events"].append({"lane": lane, "stage": stage, "reason": reason})
+        lane_row = result["lane_status"][lane]
+        lane_row["status"] = "BLOCKED"
+        lane_row.setdefault("blockers", []).append({"stage": stage, "reason": reason})
+        if not result.get("failure_stage"):
+            result["failure_stage"] = stage
+            result["functional_failure_reason"] = reason
+
+    def hard_fail(stage: str, reason: str) -> dict[str, Any]:
+        record_block("base_relation_pressure", stage, reason)
+        result["passed"] = False
+        return result
 
     _log(f"WAVE {family} {wave} ({country}) — {len(selected_vars)} variables")
     shard_dir = Path(output_root) / "v550" / "shard_runs" / run_id / shard_id
@@ -1707,139 +1834,197 @@ def run_wave(
     raw = run_v550_shard(run_id, shard_id, family, wave, country, filter_path, str(Path(output_root) / "v550"), registry_path_for_v550, config)
     if raw["exit_code"] != 0:
         result["stages"]["v550"] = _stage_result(raw)
-        return _fail(result, "v550_process", raw.get("stderr_tail") or "v550_nonzero_exit")
+        return hard_fail("v550_process", raw.get("stderr_tail") or "v550_nonzero_exit")
     v550_gate = summarize_v550_manifest_gate(shard_dir / "manifest.json")
     result["stages"]["v550"] = _stage_result(raw, v550_gate)
     result["functional_checks"]["v550_manifest"] = v550_gate
     if not v550_gate["passed"]:
-        return _fail(result, "v550_manifest_gate", v550_gate["failure_reason"])
+        return hard_fail("v550_manifest_gate", v550_gate["failure_reason"])
 
     quc_gate = summarize_quc_functional_gate(shard_dir / "core/question_use_contract.parquet")
     result["functional_checks"]["v550_quc"] = quc_gate
     if not quc_gate["passed"]:
-        return _fail(result, "v550_quc_gate", quc_gate["failure_reason"])
+        return hard_fail("v550_quc_gate", quc_gate["failure_reason"])
 
     response_map_path = shard_dir / "core/response_option_map.parquet"
     if not response_map_path.exists():
-        return _fail(result, "v550_response_semantics_contract", "missing_scoped_response_option_map_artifact")
+        return hard_fail("v550_response_semantics_contract", "missing_scoped_response_option_map_artifact")
 
     bridge_path = shard_dir / "bridge/v551_bridge_index.parquet"
     quc_path = shard_dir / "core/question_use_contract.parquet"
     v551_root = Path(output_root) / "v551"
-    raw = run_v551(shard_id, str(bridge_path), str(quc_path), str(response_map_path), str(v551_root), config)
-    if raw["exit_code"] != 0:
-        result["stages"]["v551"] = _stage_result(raw)
-        return _fail(result, "v551_process", raw.get("stderr_tail") or "v551_nonzero_exit")
-    v551_gate = summarize_v551_functional_gate(v551_root / shard_id / "manifest.json")
-    result["stages"]["v551"] = _stage_result(raw, v551_gate)
-    result["functional_checks"]["v551"] = v551_gate
-    if not v551_gate["passed"]:
-        return _fail(result, "v551_gate", v551_gate["failure_reason"])
-
     atoms_path = v551_root / shard_id / "relation_evidence_atoms.parquet"
     v552_root = Path(output_root) / "v552"
-    raw = run_v552(shard_id, str(atoms_path), str(v552_root), config)
-    if raw["exit_code"] != 0:
-        result["stages"]["v552"] = _stage_result(raw)
-        return _fail(result, "v552_process", raw.get("stderr_tail") or "v552_nonzero_exit")
-    v552_gate = summarize_v552_functional_gate(v552_root / shard_id / "manifest/v552_input_provenance_manifest.json")
-    result["stages"]["v552"] = _stage_result(raw, v552_gate)
-    result["functional_checks"]["v552"] = v552_gate
-    if not v552_gate["passed"]:
-        return _fail(result, "v552_gate", v552_gate["failure_reason"])
-
-    result["base_spine_passed"] = True
-    result["acceptance_boundary"] = "base_spine"
-
-    if config.joint_mode == "off":
-        result["joint_branch"]["status"] = "disabled_by_explicit_mode"
-        result["joint_branch"]["reason"] = "joint_mode_off"
-        result["passed"] = True
-        return result
-    if not authority.get("applicable"):
-        result["joint_branch"]["status"] = "authority_missing"
-        result["joint_branch"]["reason"] = authority.get("reason", "joint_authority_missing")
-        if config.joint_mode == "required":
-            return _fail(result, "joint_authority_gate", result["joint_branch"]["reason"] or "joint_authority_missing")
-        result["passed"] = True
-        return result
-
-    v550j_root = Path(output_root) / "v550j"
-    substrate_manifests = sorted((shard_dir / "checkpoints/respondent_substrate").glob("source=*/wave=*/country_code=*/v550_shared_respondent_substrate_manifest.json"))
-    if not substrate_manifests:
-        return _fail(result, "shared_respondent_substrate_gate", "missing_shared_respondent_substrate_manifest")
-    substrate_manifest = substrate_manifests[0]
-    substrate_parquet = substrate_manifest.with_name("v550_shared_respondent_substrate.parquet")
-    if not substrate_parquet.exists():
-        return _fail(result, "shared_respondent_substrate_gate", "missing_shared_respondent_substrate_parquet")
-    result["joint_branch"]["shared_respondent_substrate"] = {
-        "parquet_path": str(substrate_parquet),
-        "manifest_path": str(substrate_manifest),
-    }
-    raw = run_v550j(
-        run_id,
-        str(shard_dir),
-        filter_path,
-        str(v550j_root),
-        authority["registry_path"],
-        str(response_map_path),
-        str(substrate_parquet),
-        str(substrate_manifest),
-        config,
-    )
-    v550j_artifact_root = v550j_root / "runs" / run_id / shard_id / "joint_patterns"
-    if raw["exit_code"] != 0:
-        result["stages"]["v550j"] = _stage_result(raw)
-        return _fail(result, "v550j_process", raw.get("stderr_tail") or "v550j_nonzero_exit")
-    v550j_gate = summarize_v550j_functional_gate(v550j_artifact_root / "v550j_manifest.json")
-    result["stages"]["v550j"] = _stage_result(raw, v550j_gate)
-    result["functional_checks"]["v550j"] = v550j_gate
-    if not v550j_gate["passed"]:
-        return _fail(result, "v550j_gate", v550j_gate["failure_reason"])
-
-    pattern_index = v550j_artifact_root / "joint_response_pattern_index.parquet"
-    meaning_summary = v550j_artifact_root / "joint_pattern_meaning_summary.parquet"
     v552_structural_dir = v552_root / shard_id / "structural"
-    v551j_root = Path(output_root) / "v551j"
-    raw = run_v551j(shard_id, str(atoms_path), str(pattern_index), str(meaning_summary), str(v551j_root), str(v552_structural_dir), config, str(authority["registry_path"]))
-    v551j_run_root = v551j_root / shard_id
-    if raw["exit_code"] != 0:
-        result["stages"]["v551j"] = _stage_result(raw)
-        return _fail(result, "v551j_process", raw.get("stderr_tail") or "v551j_nonzero_exit")
-    v551j_gate = summarize_v551j_functional_gate(v551j_run_root)
-    result["stages"]["v551j"] = _stage_result(raw, v551j_gate)
-    result["functional_checks"]["v551j"] = v551j_gate
-    if not v551j_gate["passed"]:
-        return _fail(result, "v551j_gate", v551j_gate["failure_reason"])
 
-    v552j_root = Path(output_root) / "v552j"
-    raw = run_v552j(shard_id, str(v551j_run_root), str(v552j_root), str(v552_structural_dir), config)
-    v552j_readiness = v552j_root / shard_id / "manifest/v552j_readiness_report.json"
+    # Base relation/pressure lane.  Preserve semantic blocks and continue in diagnostic mode.
+    v551_ok = False
+    raw = run_v551(shard_id, str(bridge_path), str(quc_path), str(response_map_path), str(v551_root), config)
+    v551_manifest_path = v551_root / shard_id / "manifest.json"
+    v551_gate = summarize_v551_functional_gate(v551_manifest_path) if v551_manifest_path.exists() else {
+        "passed": False, "failure_reason": "missing_v551_manifest", "manifest_path": str(v551_manifest_path)
+    }
+    result["stages"]["v551"] = _stage_result(raw, v551_gate)
+    result["functional_checks"]["v551"] = v551_gate
     if raw["exit_code"] != 0:
-        result["stages"]["v552j"] = _stage_result(raw)
-        return _fail(result, "v552j_process", raw.get("stderr_tail") or "v552j_nonzero_exit")
-    v552j_gate = summarize_v552j_functional_gate(v552j_readiness)
-    result["stages"]["v552j"] = _stage_result(raw, v552j_gate)
-    result["functional_checks"]["v552j"] = v552j_gate
-    if not v552j_gate["passed"]:
-        return _fail(result, "v552j_gate", v552j_gate["failure_reason"])
+        record_block("base_relation_pressure", "v551_process", raw.get("stderr_tail") or "v551_nonzero_exit")
+        if not config.diagnostic_continue:
+            return result
+    elif not v551_gate.get("passed"):
+        record_block("base_relation_pressure", "v551_gate", v551_gate.get("failure_reason") or "v551_semantic_gate_blocked")
+        if not config.diagnostic_continue:
+            return result
+    else:
+        v551_ok = True
 
-    result["joint_branch"]["status"] = "passed"
-    result["full_chain_passed"] = True
-    result["acceptance_boundary"] = "full_v550_to_v552j_chain"
-    result["passed"] = True
+    v552_ok = False
+    if atoms_path.exists():
+        raw = run_v552(shard_id, str(atoms_path), str(v552_root), config)
+        v552_manifest_path = v552_root / shard_id / "manifest/v552_input_provenance_manifest.json"
+        v552_gate = summarize_v552_functional_gate(v552_manifest_path) if v552_manifest_path.exists() else {
+            "passed": False, "failure_reason": "missing_v552_manifest", "manifest_path": str(v552_manifest_path)
+        }
+        result["stages"]["v552"] = _stage_result(raw, v552_gate)
+        result["functional_checks"]["v552"] = v552_gate
+        if raw["exit_code"] != 0:
+            semantic_reason = v552_gate.get("failure_reason") or raw.get("stderr_tail") or "v552_nonzero_exit"
+            record_block("base_relation_pressure", "v552_contract", semantic_reason)
+            if not config.diagnostic_continue:
+                return result
+        elif not v552_gate.get("passed"):
+            record_block("base_relation_pressure", "v552_gate", v552_gate.get("failure_reason") or "v552_semantic_gate_blocked")
+            if not config.diagnostic_continue:
+                return result
+        else:
+            v552_ok = True
+    else:
+        record_block("base_relation_pressure", "v552_not_run", "missing_v551_atoms_artifact")
+        result["stages"]["v552"] = {"status": "NOT_RUN", "reason": "missing_v551_atoms_artifact"}
+
+    if v551_ok and v552_ok:
+        result["base_spine_passed"] = True
+        result["lane_status"]["base_relation_pressure"]["status"] = "READY"
+        result["acceptance_boundary"] = "base_spine"
+
+    # Joint-pattern lane is independent of V551/V552 semantic readiness.
+    if config.joint_mode == "off":
+        result["joint_branch"].update({"status": "disabled_by_explicit_mode", "reason": "joint_mode_off"})
+        result["lane_status"]["joint_patterns"]["status"] = "NOT_APPLICABLE"
+    elif not authority.get("applicable"):
+        reason = authority.get("reason", "joint_authority_missing")
+        result["joint_branch"].update({"status": "authority_missing", "reason": reason})
+        record_block("joint_patterns", "joint_authority_gate", reason)
+        if config.joint_mode == "required" and not config.diagnostic_continue:
+            return result
+    else:
+        v550j_root = Path(output_root) / "v550j"
+        substrate_manifests = sorted((shard_dir / "checkpoints/respondent_substrate").glob("source=*/wave=*/country_code=*/v550_shared_respondent_substrate_manifest.json"))
+        if not substrate_manifests:
+            record_block("joint_patterns", "shared_respondent_substrate_gate", "missing_shared_respondent_substrate_manifest")
+        else:
+            substrate_manifest = substrate_manifests[0]
+            substrate_parquet = substrate_manifest.with_name("v550_shared_respondent_substrate.parquet")
+            if not substrate_parquet.exists():
+                record_block("joint_patterns", "shared_respondent_substrate_gate", "missing_shared_respondent_substrate_parquet")
+            else:
+                result["joint_branch"]["shared_respondent_substrate"] = {
+                    "parquet_path": str(substrate_parquet), "manifest_path": str(substrate_manifest),
+                }
+                raw = run_v550j(
+                    run_id, str(shard_dir), filter_path, str(v550j_root), authority["registry_path"],
+                    str(response_map_path), str(substrate_parquet), str(substrate_manifest), config,
+                )
+                v550j_artifact_root = v550j_root / "runs" / run_id / shard_id / "joint_patterns"
+                v550j_gate = summarize_v550j_functional_gate(v550j_artifact_root / "v550j_manifest.json") if (v550j_artifact_root / "v550j_manifest.json").exists() else {
+                    "passed": False, "failure_reason": "missing_v550j_manifest"
+                }
+                result["stages"]["v550j"] = _stage_result(raw, v550j_gate)
+                result["functional_checks"]["v550j"] = v550j_gate
+                if raw["exit_code"] != 0:
+                    record_block("joint_patterns", "v550j_process", raw.get("stderr_tail") or "v550j_nonzero_exit")
+                elif not v550j_gate.get("passed"):
+                    record_block("joint_patterns", "v550j_gate", v550j_gate.get("failure_reason") or "v550j_semantic_gate_blocked")
+                else:
+                    result["lane_status"]["joint_patterns"]["status"] = "READY"
+                    result["joint_branch"]["status"] = "joint_patterns_ready"
+
+                    # V551J can validly produce certified, review-only, or context-only packets.
+                    pattern_index = v550j_artifact_root / "joint_response_pattern_index.parquet"
+                    meaning_summary = v550j_artifact_root / "joint_pattern_meaning_summary.parquet"
+                    if atoms_path.exists():
+                        v551j_root = Path(output_root) / "v551j"
+                        raw = run_v551j(
+                            shard_id, str(atoms_path), str(pattern_index), str(meaning_summary),
+                            str(v551j_root), str(v552_structural_dir), config, str(authority["registry_path"]),
+                        )
+                        v551j_run_root = v551j_root / shard_id
+                        v551j_gate = summarize_v551j_functional_gate(v551j_run_root)
+                        result["stages"]["v551j"] = _stage_result(raw, v551j_gate)
+                        result["functional_checks"]["v551j"] = v551j_gate
+                        if raw["exit_code"] != 0:
+                            record_block("joint_evidence", "v551j_process", raw.get("stderr_tail") or "v551j_nonzero_exit")
+                        elif not v551j_gate.get("passed"):
+                            record_block("joint_evidence", "v551j_gate", v551j_gate.get("failure_reason") or "v551j_contract_blocked")
+                        else:
+                            result["lane_status"]["joint_evidence"]["status"] = (
+                                "CERTIFIED_READY" if v551j_gate.get("certified_ready") else "VALID_REVIEW_OR_CONTEXT"
+                            )
+
+                            # V552J owns preservation of valid V552 pressure even when joint context is absent.
+                            if v552_structural_dir.exists():
+                                v552j_root = Path(output_root) / "v552j"
+                                raw = run_v552j(shard_id, str(v551j_run_root), str(v552j_root), str(v552_structural_dir), config)
+                                v552j_readiness = v552j_root / shard_id / "manifest/v552j_readiness_report.json"
+                                v552j_gate = summarize_v552j_functional_gate(v552j_readiness)
+                                result["stages"]["v552j"] = _stage_result(raw, v552j_gate)
+                                result["functional_checks"]["v552j"] = v552j_gate
+                                if raw["exit_code"] != 0:
+                                    record_block("integration", "v552j_process", raw.get("stderr_tail") or "v552j_nonzero_exit")
+                                elif not v552j_gate.get("passed"):
+                                    record_block("integration", "v552j_gate", v552j_gate.get("failure_reason") or "v552j_semantic_gate_blocked")
+                                else:
+                                    result["lane_status"]["integration"]["status"] = "READY"
+                            else:
+                                record_block("integration", "v552j_not_run", "missing_v552_structural_output")
+                    else:
+                        record_block("joint_evidence", "v551j_not_run", "missing_v551_atoms_artifact")
+
+    v551j_gate = result.get("functional_checks", {}).get("v551j", {})
+    v552j_gate = result.get("functional_checks", {}).get("v552j", {})
+    result["full_chain_passed"] = bool(
+        result["lane_status"]["joint_patterns"]["status"] == "READY"
+        and v551j_gate.get("certified_ready")
+        and result["lane_status"]["integration"]["status"] == "READY"
+        and v552j_gate.get("passed")
+    )
+    result["diagnostic_capture_complete"] = bool(
+        result.get("functional_checks", {}).get("v550_manifest", {}).get("passed")
+        and result.get("functional_checks", {}).get("v550_quc", {}).get("passed")
+        and result["lane_status"]["joint_patterns"]["status"] in {"READY", "NOT_APPLICABLE"}
+    )
+    if result["full_chain_passed"]:
+        result["acceptance_boundary"] = "full_v550_to_v552j_chain"
+    elif config.diagnostic_continue and result["diagnostic_capture_complete"]:
+        result["acceptance_boundary"] = "diagnostic_capture"
+
+    result["passed"] = result["diagnostic_capture_complete"] if config.diagnostic_continue else result["full_chain_passed"]
     return result
-
 
 def write_summaries(results: list[dict[str, Any]], output_root: str, run_ts: str, canary_only: bool, preflight: dict[str, Any] | None = None) -> None:
     report_dir = Path(output_root) / "reports"
     report_dir.mkdir(parents=True, exist_ok=True)
     fields = [
         "survey_family", "wave_id", "country", "selected_variable_count", "passed", "failure_stage",
-        "functional_failure_reason", "base_spine_passed", "full_chain_passed", "acceptance_boundary",
-        "joint_branch_status", "joint_branch_reason", "v550_exit", "v551_exit",
-        "v552_exit", "v550j_exit", "v551j_exit", "v552j_exit", "v551_atom_rows", "v552_atom_rows",
-        "v550j_pattern_rows", "v551j_certified_rows", "v552j_status", "v552j_probe_ready",
+        "functional_failure_reason", "base_spine_passed", "full_chain_passed", "diagnostic_capture_complete",
+        "acceptance_boundary", "base_lane_status", "joint_pattern_lane_status", "joint_evidence_lane_status",
+        "integration_lane_status", "blocking_event_count", "joint_branch_status", "joint_branch_reason",
+        "v550_exit", "v551_exit", "v552_exit", "v550j_exit", "v551j_exit", "v552j_exit",
+        "v551_atom_rows", "v552_atom_rows", "v552_pressure_observation_rows", "v552_final_status", "v550j_pattern_rows",
+        "v551j_candidate_rows", "v551j_component_rows", "v551j_certified_rows", "v551j_review_rows",
+        "v551j_context_rows", "v551j_diagnostic_contract_valid", "v551j_certified_ready",
+        "v552j_status", "v552j_pressure_observation_rows", "v552j_exact_link_rows",
+        "v552j_certified_link_rows", "v552j_review_link_rows", "v552j_unlinked_pressure_rows",
+        "v552j_pressure_conservation_violation_count", "v552j_probe_ready",
     ]
     with (report_dir / "smoke_summary.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
@@ -1858,7 +2043,13 @@ def write_summaries(results: list[dict[str, Any]], output_root: str, run_ts: str
                 "functional_failure_reason": result.get("functional_failure_reason", ""),
                 "base_spine_passed": result.get("base_spine_passed", False),
                 "full_chain_passed": result.get("full_chain_passed", False),
+                "diagnostic_capture_complete": result.get("diagnostic_capture_complete", False),
                 "acceptance_boundary": result.get("acceptance_boundary", "none"),
+                "base_lane_status": result.get("lane_status", {}).get("base_relation_pressure", {}).get("status", ""),
+                "joint_pattern_lane_status": result.get("lane_status", {}).get("joint_patterns", {}).get("status", ""),
+                "joint_evidence_lane_status": result.get("lane_status", {}).get("joint_evidence", {}).get("status", ""),
+                "integration_lane_status": result.get("lane_status", {}).get("integration", {}).get("status", ""),
+                "blocking_event_count": len(result.get("blocking_events", [])),
                 "joint_branch_status": joint.get("status", ""),
                 "joint_branch_reason": joint.get("reason", ""),
                 "v550_exit": stages.get("v550", {}).get("exit_code", ""),
@@ -1869,9 +2060,23 @@ def write_summaries(results: list[dict[str, Any]], output_root: str, run_ts: str
                 "v552j_exit": stages.get("v552j", {}).get("exit_code", ""),
                 "v551_atom_rows": checks.get("v551", {}).get("atom_rows", ""),
                 "v552_atom_rows": checks.get("v552", {}).get("atoms_row_count", ""),
+                "v552_pressure_observation_rows": checks.get("v552", {}).get("pressure_observation_rows", ""),
+                "v552_final_status": checks.get("v552", {}).get("final_status", ""),
                 "v550j_pattern_rows": checks.get("v550j", {}).get("pattern_rows", ""),
+                "v551j_candidate_rows": checks.get("v551j", {}).get("candidate_packet_rows", ""),
+                "v551j_component_rows": checks.get("v551j", {}).get("component_rows", ""),
                 "v551j_certified_rows": checks.get("v551j", {}).get("certified_packet_rows", ""),
+                "v551j_review_rows": checks.get("v551j", {}).get("review_surface_rows", ""),
+                "v551j_context_rows": checks.get("v551j", {}).get("context_only_packet_rows", ""),
+                "v551j_diagnostic_contract_valid": checks.get("v551j", {}).get("diagnostic_contract_valid", ""),
+                "v551j_certified_ready": checks.get("v551j", {}).get("certified_ready", ""),
                 "v552j_status": checks.get("v552j", {}).get("status", ""),
+                "v552j_pressure_observation_rows": checks.get("v552j", {}).get("pressure_observation_rows", ""),
+                "v552j_exact_link_rows": checks.get("v552j", {}).get("exact_link_rows", ""),
+                "v552j_certified_link_rows": checks.get("v552j", {}).get("certified_link_rows", ""),
+                "v552j_review_link_rows": checks.get("v552j", {}).get("review_link_rows", ""),
+                "v552j_unlinked_pressure_rows": checks.get("v552j", {}).get("unlinked_pressure_rows", ""),
+                "v552j_pressure_conservation_violation_count": checks.get("v552j", {}).get("pressure_conservation_violation_count", ""),
                 "v552j_probe_ready": checks.get("v552j", {}).get("ready_for_v553_probe", ""),
             })
     payload = {"run_ts": run_ts, "preflight": preflight or {}, "results": results}
@@ -1889,13 +2094,15 @@ def write_summaries(results: list[dict[str, Any]], output_root: str, run_ts: str
         f"**Run:** {run_ts}",
         f"**Scope:** {scope_label}",
         "**Base spine:** V550 → V551 → V552",
-        "**Full-chain acceptance:** V550J → V551J → V552J is required for every wave unless a diagnostic base-only mode was explicitly selected",
+        "**Diagnostic acceptance:** V550/QUC plus the independently runnable joint-pattern lane; semantic blocks are preserved rather than hiding other lanes",
+        "**Full-chain acceptance:** certified V551J context plus V552J integration remains the stricter production boundary",
         "",
         "## Summary",
         "",
         f"- Waves attempted: {total}",
         f"- Base spines passed: {base_passed}",
         f"- Full V550→V552J chains passed: {full_chain_passed}",
+        f"- Diagnostic captures completed: {sum(bool(row.get('diagnostic_capture_complete')) for row in results)}",
         f"- Waves passed at the selected acceptance boundary: {passed}",
         f"- Waves failed: {failed}",
         "",
