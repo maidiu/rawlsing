@@ -334,7 +334,41 @@ def _load_wave_question_mapping(conn, wave_source: str, wave_wave: str) -> pd.Da
             WHERE source = %(source)s AND wave = ANY(%(waves)s)
             ORDER BY var_code, loaded_at DESC
         """
-        return pd.read_sql_query(sql, conn, params={"source": wave_source, "waves": wave_candidates})
+        exact = pd.read_sql_query(sql, conn, params={"source": wave_source, "waves": wave_candidates})
+
+        # The normalized authority tables preserve source-native labels in some
+        # waves (for example, ``World Values Survey`` rather than ``WVS``).
+        # Preflight already treats those as the same survey family; V550 must
+        # use the same canonical family identity rather than silently becoming
+        # GSS-only through exact source-string equality. Query the wave slice
+        # and merge every row belonging to the same canonical family so a
+        # partially populated exact label cannot hide additional alias rows.
+        fallback_sql = f"""
+            SELECT {", ".join(select_columns)}
+            FROM {qsm_rel}
+            WHERE wave = ANY(%(waves)s)
+            ORDER BY source, var_code, loaded_at DESC
+        """
+        candidates = pd.read_sql_query(fallback_sql, conn, params={"waves": wave_candidates})
+        requested_family = canonical_family_key(wave_source)
+        if not candidates.empty and "source" in candidates.columns:
+            matched = candidates[
+                candidates["source"].map(lambda value: canonical_family_key(value) == requested_family)
+            ].copy()
+        else:
+            matched = candidates.iloc[0:0].copy()
+
+        combined = pd.concat([exact, matched], ignore_index=True, sort=False)
+        if combined.empty:
+            return combined
+        combined["source"] = str(wave_source)
+        combined["wave"] = str(wave_wave)
+        dedupe_columns = [column for column in select_columns if column in combined.columns]
+        combined = combined.drop_duplicates(subset=dedupe_columns, keep="first")
+        sort_columns = [column for column in ("var_code", "loaded_at") if column in combined.columns]
+        if sort_columns:
+            combined = combined.sort_values(sort_columns, ascending=[True] + [False] * (len(sort_columns) - 1), kind="mergesort")
+        return combined.reset_index(drop=True)
 
     frame = cached_query_frame(
         "mapping",
