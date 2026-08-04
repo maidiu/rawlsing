@@ -100,6 +100,11 @@ from data.ddm_build_copy.ddm_v550_schema import (
     validate_shard_manifest,
 )
 from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, atomic_write_json, load_env_database_url, read_table_any, try_connect_database, write_table
+from data.ddm_build_copy.ddm_v550_response_relation import (
+    AUTO_RESPONSE_RELATION,
+    load_scope_manifest_from_response_relation,
+    resolve_response_relation,
+)
 from data.ddm_build_copy.ddm_v550_shared_respondent_substrate import (
     SHARED_SUBSTRATE_EXECUTION_CONTRACT_VERSION,
     SHARED_SUBSTRATE_SCHEMA_VERSION,
@@ -779,6 +784,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--country", action="append", default=[])
     parser.add_argument("--db-url", default=None)
     parser.add_argument("--env-file", default=str(DEFAULT_ENV_FILE))
+    parser.add_argument(
+        "--response-long-relation",
+        default=os.environ.get("DDM_RESPONSE_LONG_RELATION", AUTO_RESPONSE_RELATION),
+        help="Respondent-long view to consume. Use auto to prefer the authority-enriched view when present.",
+    )
     parser.add_argument("--response-option-map", default=None)
     parser.add_argument("--respondent-schema-template", default=str(DEFAULT_RESPONDENT_SCHEMA))
     parser.add_argument("--output-root", default=str(ROOT / "data" / "ddm_repository_copy" / "v550"))
@@ -1078,6 +1088,14 @@ def main() -> int:
         if conn is None:
             raise RuntimeError(f"[V550_SHARD_DB_UNAVAILABLE] Could not connect to Postgres using {args.env_file} or --db-url. Original error: {err}")
 
+        response_relation_contract = resolve_response_relation(conn, args.response_long_relation)
+        os.environ["DDM_RESPONSE_LONG_RELATION"] = str(response_relation_contract["relation"])
+        _log_progress(
+            progress_started,
+            "respondent relation resolved: "
+            f"{response_relation_contract['relation']} mode={response_relation_contract['selection_mode']}",
+        )
+
         _log_progress(progress_started, "loading scope manifest")
         if readiness_bundle is not None and not readiness_scope_df.empty:
             scope_df = readiness_scope_df.copy()
@@ -1091,8 +1109,23 @@ def main() -> int:
                 progress_started=progress_started,
                 log_prefix=f"scope[{args.source}/{args.wave}]",
             )
+            if scope_df.empty:
+                _log_progress(
+                    progress_started,
+                    "base respondent scope lookup returned zero rows; retrying against resolved respondent relation",
+                )
+                scope_df = load_scope_manifest_from_response_relation(
+                    conn,
+                    str(response_relation_contract["relation"]),
+                    requested_source=args.source,
+                    requested_wave=args.wave,
+                    countries=[c for c in args.country if c],
+                )
         if scope_df.empty:
-            raise RuntimeError(f"[V550_NO_SHARDS_DISCOVERED] No source/wave rows matched {args.source}/{args.wave}. Check the shard plan and live DB coverage.")
+            raise RuntimeError(
+                f"[V550_NO_SHARDS_DISCOVERED] No source/wave rows matched {args.source}/{args.wave} "
+                f"in survey_microdata_respondents or {response_relation_contract['relation']}."
+            )
         if canonical_wave != args.wave:
             scope_df = scope_df.copy()
             # Do not rename scope wave to canonical_wave: the facet-ready view
@@ -1103,6 +1136,7 @@ def main() -> int:
             # scope_df["wave"] = canonical_wave
         _log_progress(progress_started, f"writing shard scope parquet: {shard_paths.shard_path / 'shard_scope.parquet'}")
         scope_df.to_parquet(shard_paths.shard_path / "shard_scope.parquet", index=False)
+        atomic_write_json(shard_paths.audit / "respondent_relation_binding.json", response_relation_contract)
         _log_progress(progress_started, "shard scope parquet written")
         _log_progress(progress_started, f"scope manifest loaded: {len(scope_df)} scope rows")
         _log_progress(progress_started, "verifying facet-ready view contract")

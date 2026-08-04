@@ -42,6 +42,10 @@ from data.ddm_build_copy.ddm_v550j_registry_contract import (
     EXECUTABLE_JOINT_REGISTRY_STATUSES,
     registry_status_is_executable,
 )
+from data.ddm_build_copy.ddm_v550_response_relation import (
+    AUTO_RESPONSE_RELATION,
+    choose_response_relation,
+)
 
 DEFAULT_JOINT_REGISTRY = REPO_ROOT / "data/ddm_build_copy/manifests/question_family_registry.yaml"
 DEFAULT_RESPONSE_OPTION_MAP = REPO_ROOT / "data/ddm_build_copy/reports/V550_response_option_map.csv"
@@ -143,6 +147,7 @@ class RuntimeConfig(NamedTuple):
     joint_mode: str = "required"
     readiness_mode: str = "full"
     diagnostic_continue: bool = False
+    response_long_relation: str = AUTO_RESPONSE_RELATION
 
 
 DEFAULT_CONFIG = RuntimeConfig()
@@ -214,6 +219,8 @@ def _run(
         env["DATABASE_URL"] = config.db_url
     env["DDM_QSM_RELATION"] = config.qsm_relation
     env["DDM_CANONICAL_REGISTRY_RELATION"] = config.canonical_registry_relation
+    if config.response_long_relation and config.response_long_relation.lower() != AUTO_RESPONSE_RELATION:
+        env["DDM_RESPONSE_LONG_RELATION"] = config.response_long_relation
     display_cmd = " ".join(_redact(str(part)) for part in cmd)
     _log(f"  RUN: {display_cmd[:500]}")
     started = time.monotonic()
@@ -353,8 +360,52 @@ def inspect_database_contract(config: RuntimeConfig, db_url: str) -> dict[str, A
                         row["columns"] = sorted(columns)
                         row["missing_columns"] = sorted(required_columns - columns)
                     result["relations"][label] = row
+
+                cur.execute(
+                    """SELECT table_schema || '.' || table_name
+                       FROM information_schema.views
+                       WHERE table_name IN ('v_ddm_response_long_facet_ready_authority', 'v_ddm_response_long_facet_ready')
+                       ORDER BY table_schema, table_name"""
+                )
+                available_response_relations = {str(row[0]) for row in cur.fetchall()}
+                try:
+                    resolved_response_relation = choose_response_relation(
+                        available_response_relations,
+                        config.response_long_relation,
+                    )
+                    cur.execute(
+                        """SELECT attname
+                           FROM pg_attribute
+                           WHERE attrelid = to_regclass(%s)
+                             AND attnum > 0
+                             AND NOT attisdropped""",
+                        (resolved_response_relation,),
+                    )
+                    response_columns = {str(item[0]) for item in cur.fetchall()}
+                    required_response_columns = {
+                        "respondent_id", "source", "wave", "canonical_wave", "country_code", "var_code"
+                    }
+                    result["relations"]["response_long_relation"] = {
+                        "requested": config.response_long_relation,
+                        "resolved": resolved_response_relation,
+                        "available": sorted(available_response_relations),
+                        "columns": sorted(response_columns),
+                        "missing_columns": sorted(required_response_columns - response_columns),
+                    }
+                except Exception as exc:
+                    result["relations"]["response_long_relation"] = {
+                        "requested": config.response_long_relation,
+                        "resolved": "",
+                        "available": sorted(available_response_relations),
+                        "columns": [],
+                        "missing_columns": [],
+                        "error": str(exc),
+                    }
         result["checked"] = True
-        result["passed"] = all(row["resolved"] and not row["missing_columns"] for row in result["relations"].values())
+        result["passed"] = all(
+            row.get("resolved") and not row.get("missing_columns") and not row.get("error")
+            for row in result["relations"].values()
+        )
     except Exception as exc:
         result["checked"] = True
         result["error"] = str(exc)
@@ -503,6 +554,13 @@ def inspect_selected_response_coverage(
         conn = _connect_database_for_preflight(config, db_url)
         if conn is None:
             return result
+        response_relation = (
+            inspect_database_contract(config, db_url)
+            .get("relations", {})
+            .get("response_long_relation", {})
+            .get("resolved")
+            or "public.v_ddm_response_long_facet_ready"
+        )
         with conn.cursor() as cur:
             for family, wave, country in waves:
                 country = country or COUNTRY_MAP.get(family, {}).get(wave, "")
@@ -515,7 +573,7 @@ def inspect_selected_response_coverage(
                 if selected_keys:
                     cur.execute(
                         f"""SELECT COUNT(DISTINCT respondent_id), COUNT(DISTINCT {_sql_normalized('var_code')})
-                            FROM v_ddm_response_long_facet_ready
+                            FROM {response_relation}
                             WHERE {_sql_normalized('source')} = ANY(%s)
                               AND ({_sql_normalized('wave')} = ANY(%s) OR {_sql_normalized('canonical_wave')} = ANY(%s))
                               AND country_code = %s
@@ -1426,6 +1484,7 @@ def run_v550_shard(
         "--question-filter-file", filter_path,
         "--limit-questions", "20",
         "--env-file", str(config.env_file),
+        "--response-long-relation", str(config.response_long_relation),
         "--first-pass-authority-dir", str(config.first_pass_authority_dir),
         "--semantic-authority-dir", str(config.semantic_authority_dir),
         "--position-conditioning-authority-dir", str(config.position_conditioning_authority_dir),
@@ -1883,6 +1942,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--db-url", default="")
     parser.add_argument("--qsm-relation", default=os.environ.get("DDM_QSM_RELATION", DEFAULT_QSM_RELATION))
     parser.add_argument("--canonical-registry-relation", default=os.environ.get("DDM_CANONICAL_REGISTRY_RELATION", DEFAULT_CANONICAL_REGISTRY_RELATION))
+    parser.add_argument(
+        "--response-long-relation",
+        default=os.environ.get("DDM_RESPONSE_LONG_RELATION", AUTO_RESPONSE_RELATION),
+        help="Respondent-long relation for V550. 'auto' prefers the authority-enriched view when present.",
+    )
     parser.add_argument("--response-option-map", default=None)
     parser.add_argument("--joint-registry", action="append", default=None)
     parser.add_argument("--joint-mode", choices=("auto", "required", "off"), default="required")
@@ -1923,6 +1987,7 @@ def _config_from_args(args: argparse.Namespace) -> RuntimeConfig:
         joint_mode=args.joint_mode,
         readiness_mode=args.readiness_mode,
         diagnostic_continue=args.diagnostic_continue,
+        response_long_relation=args.response_long_relation,
     )
 
 
