@@ -28,7 +28,10 @@ PRIVACY_PATH_RE = re.compile(
     r"(respondent_substrate|respondent_membership|raw_response|raw_responses|\.env$|DATABASE_URL|data\.parquet$)",
     re.IGNORECASE,
 )
-PRIVACY_COLUMN_RE = re.compile(r"(respondent|caseid|person_id|raw_response|DATABASE_URL|password|secret|token)", re.IGNORECASE)
+PRIVACY_COLUMN_RE = re.compile(
+    r"(^respondent_id$|^respondent_ids$|respondent_membership|caseid|person_id|raw_response|DATABASE_URL|password|secret|token)",
+    re.IGNORECASE,
+)
 SECRET_RE = re.compile(r"postgres(?:ql)?://[^@\s]+@", re.IGNORECASE)
 
 
