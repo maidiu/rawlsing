@@ -23,6 +23,8 @@ import yaml
 SECTION = Path("85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY")
 RUNTIME = Path("35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code")
 BASE_MODULE_DIR = RUNTIME / "data/ddm_build_copy"
+DEFAULT_QSM_RELATION = "question_structural_mapping"
+DEFAULT_CANONICAL_REGISTRY_RELATION = "rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry"
 
 PRIVACY_PATH_RE = re.compile(
     r"(respondent_substrate|respondent_membership|raw_response|raw_responses|\.env$|DATABASE_URL|data\.parquet$)",
@@ -306,6 +308,19 @@ def main() -> int:
     parser.add_argument("--env-file", type=Path, required=True)
     parser.add_argument("--response-option-map", type=Path, required=True)
     parser.add_argument("--question-structure-register", type=Path, required=True)
+    parser.add_argument(
+        "--qsm-relation",
+        default=os.environ.get("DDM_QSM_RELATION", DEFAULT_QSM_RELATION),
+        help="Question structural mapping relation. Defaults to the same public relation proven by Section 85 preflight.",
+    )
+    parser.add_argument(
+        "--canonical-registry-relation",
+        default=os.environ.get(
+            "DDM_CANONICAL_REGISTRY_RELATION",
+            DEFAULT_CANONICAL_REGISTRY_RELATION,
+        ),
+        help="Canonical question registry relation.",
+    )
     parser.add_argument("--only-scope", action="append", default=[])
     args = parser.parse_args()
 
@@ -322,8 +337,8 @@ def main() -> int:
         repo_root=runtime,
         env_file=args.env_file.resolve(),
         db_url=db_url,
-        qsm_relation="rawlsing_authority_reconcile_ar_20260719t213835z.question_structural_mapping",
-        canonical_registry_relation="rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry",
+        qsm_relation=args.qsm_relation,
+        canonical_registry_relation=args.canonical_registry_relation,
         response_option_map=args.response_option_map.resolve(),
         joint_registry_paths=tuple((repo / SECTION / "authority" / f"registry_{source_slug(row['source_family'])}.yaml").resolve() for row in csv.DictReader((repo / SECTION / "authority/bounded_nine_scope_manifest.csv").open())),
         association_lane_registry=runtime / "data/ddm_registries/association_lane_registry.yaml",
@@ -339,6 +354,14 @@ def main() -> int:
     )
     os.environ["DDM_QUESTION_STRUCTURE_REGISTER"] = str(args.question_structure_register.resolve())
 
+    database_contract = base.inspect_database_contract(config, db_url)
+    write_json(reports / "DATABASE_RELATION_BINDING.json", database_contract)
+    if not database_contract.get("checked") or not database_contract.get("passed"):
+        raise RuntimeError(
+            "database_relation_preflight_failed:"
+            + json.dumps(database_contract, sort_keys=True, default=str)
+        )
+
     commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
     status = subprocess.check_output(["git", "status", "--short"], cwd=repo, text=True)
     write_json(reports / "CURRENT_STATE_CAPTURE.json", {
@@ -349,6 +372,11 @@ def main() -> int:
         "response_option_map": str(args.response_option_map),
         "question_structure_register": str(args.question_structure_register),
         "runtime_repo_root": str(runtime),
+        "qsm_relation_requested": args.qsm_relation,
+        "qsm_relation_resolved": database_contract.get("relations", {}).get("qsm_relation", {}).get("resolved", ""),
+        "canonical_registry_relation_requested": args.canonical_registry_relation,
+        "canonical_registry_relation_resolved": database_contract.get("relations", {}).get("canonical_registry_relation", {}).get("resolved", ""),
+        "response_long_relation_resolved": database_contract.get("relations", {}).get("response_long_relation", {}).get("resolved", ""),
     })
     inventory, surfaces = section85_inventory(repo)
     write_csv(reports / "SECTION85_CONFIGURATION_INVENTORY.csv", inventory, list(inventory[0]))
