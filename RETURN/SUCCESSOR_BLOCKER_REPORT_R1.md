@@ -1,25 +1,13 @@
-# Phase-D Successor Archetype Conformance
+# Successor Anti-Erase Retry R2 Return
 
-Terminal: BLOCKED_SUCCESSOR_ARCHETYPE_CONFORMANCE
+Terminal: `BLOCKED_SUCCESSOR_ARCHETYPE_CONFORMANCE`
 
-The frozen candidate order was verified before candidate-specific execution:
+The corrected R2 preflight passed. The encoded wrapper SHA was recorded only as a diagnostic transport value; it was not used as a gate. The materialized response-option projection matched the governing CSV SHA, with 69 rows covering 12 frozen variables. The frozen candidate-order SHA also matched.
 
-5ae32c7cdfd68d3e0c1816abd85fc6f77387f65a383e5b860d2ab9cf814235b2
+All 11 anti-erase candidates were executed in exact frozen rank order. V550 completed for each candidate using an additive temporary response-option map, and V550J completed with `prepared_required` and `--forbid-database-access`. Every candidate's lawful `joint_patterns` surface contained zero rows. No candidate therefore instantiated `empirical_survives_semantic_block_or_absence`; no empirical observation was fabricated or promoted into semantic authority.
 
-The local-block candidate instantiated from the frozen structural proof:
+The prior GSS SCIORDER local-block ladder was carried forward unchanged and was not rerun. The unchanged validator accepts that carried-forward archetype. The only remaining validator failure is:
 
-- GSS 2010 J3R3-T01-3d0a21c8b63a47ea88ad::SPLIT_EMPTY_INTERSECTION
-- SCIORDER allowed sets: {1,3,5,7}, {1,3,5,7}, {2,4,6,8}
-- full intersection: empty
-- empirical posture: BLOCKED_LOCAL
-- routing status: STRUCTURALLY_IMPOSSIBLE_LOCAL
+`missing successor conformance: empirical_survives_semantic_block_or_absence`
 
-The anti-erase ladder exhausted all 11 candidates in exact frozen rank order.
-No candidate instantiated because the exact LiTS II and Asian Barometer W4
-candidate slices lack governed response-option authority. The rank-1 V550
-attempt failed closed with:
-
-V550_RESPONSE_SEMANTICS_EMPTY
-
-No empirical relation was fabricated, no semantic authority was changed, and
-no V552/V552J/V553+ or 35-wave execution was performed.
+No V552, V552J, V553+, or 35-wave execution was performed.
