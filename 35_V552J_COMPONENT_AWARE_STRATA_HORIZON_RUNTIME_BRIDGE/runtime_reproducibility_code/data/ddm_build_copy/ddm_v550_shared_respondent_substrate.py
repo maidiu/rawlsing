@@ -479,6 +479,7 @@ def resolve_shared_substrate_requirements(
     *,
     source: str,
     canonical_wave: str,
+    full_question_rows: pd.DataFrame | None = None,
     selected_configuration_ids: Iterable[Any] | None = None,
 ) -> dict[str, Any]:
     """Resolve base and bounded-V550J joint-required extraction surfaces."""
@@ -488,11 +489,12 @@ def resolve_shared_substrate_requirements(
 
     selected = {str(value).strip() for value in selected_configuration_ids or [] if _clean(value)}
     base_rows = base_question_rows.copy()
+    authority_rows = (full_question_rows if full_question_rows is not None else base_question_rows).copy()
     if "var_code" not in base_rows.columns:
         base_rows["var_code"] = ""
     base_rows["var_code_norm"] = _normalize_code_series(base_rows["var_code"]).str.upper()
     base_var_codes = _ordered_unique(base_rows["var_code_norm"])
-    base_by_key = {_row_identity_key(row): row.to_dict() for _, row in base_rows.iterrows() if _row_identity_key(row)}
+    authority_by_key = {_row_identity_key(row): row.to_dict() for _, row in authority_rows.iterrows() if _row_identity_key(row)}
 
     scope_wave = canonical_wave_key(source, canonical_wave)
     registry_source = _clean(registry.get("source_family"))
@@ -514,7 +516,11 @@ def resolve_shared_substrate_requirements(
             var_code = _clean(item.get("var_code") or item.get("var_name") or item.get("variable_id")).upper()
             if not var_code:
                 continue
-            source_row = dict(base_by_key.get(var_code, {}))
+            source_row = dict(authority_by_key.get(var_code, {}))
+            if not source_row:
+                raise RuntimeError(
+                    f"joint-only registry member has no governed full-wave mapping: {source}/{canonical_wave}/{var_code}"
+                )
             source_row.update(
                 {
                     "var_code": source_row.get("var_code") or var_code,

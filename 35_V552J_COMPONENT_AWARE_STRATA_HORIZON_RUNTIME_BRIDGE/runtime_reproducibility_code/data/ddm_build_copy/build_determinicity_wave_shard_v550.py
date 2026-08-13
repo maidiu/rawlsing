@@ -1258,6 +1258,7 @@ def main() -> int:
         mapping_started = time.monotonic()
         wave_question_mapping_df = _load_wave_question_mapping(conn, args.source, args.wave)
         _log_progress(progress_started, f"question mappings loaded: {len(wave_question_mapping_df)} rows in {time.monotonic() - mapping_started:0.1f}s")
+        full_wave_question_rows = _build_question_list(scope_df, wave_question_mapping_df, None)
         if question_filter:
             wave_question_mapping_df = _apply_question_filter_exact_first(
                 wave_question_mapping_df,
@@ -1340,6 +1341,7 @@ def main() -> int:
                     registry,
                     source=args.source,
                     canonical_wave=canonical_wave,
+                    full_question_rows=full_wave_question_rows,
                     selected_configuration_ids=args.joint_configuration_id,
                 )
                 extraction_question_rows = shared_selection["union_question_rows"]
@@ -1814,6 +1816,66 @@ def main() -> int:
 
         if shared_substrate_pending:
             quc_frame = wave_tables.get("question_use_contract", pd.DataFrame()).copy()
+            # Joint-only members are intentionally outside the ordinary V550
+            # question loop.  They still require complete governed QUC rows for
+            # shared-substrate enrichment, so compile those rows in a separate
+            # authority-only lane without adding them to V550/V551 outputs.
+            joint_quc_rows: list[dict[str, Any]] = []
+            base_var_set = {str(value).strip().upper() for value in shared_selection["base_var_codes"]}
+            joint_only_rows = shared_selection.get("joint_required_question_rows", pd.DataFrame())
+            if not joint_only_rows.empty:
+                joint_only_rows = joint_only_rows[
+                    ~joint_only_rows["var_code"].fillna("").astype(str).str.upper().isin(base_var_set)
+                ].copy()
+            for _, joint_qrow in joint_only_rows.iterrows():
+                country_code = str(joint_qrow.get("country_code", "")).strip()
+                cached = question_row_cache.get(country_code, pd.DataFrame())
+                joint_df = _question_rows_from_cache(joint_qrow, question_row_cache)
+                if joint_df.empty:
+                    joint_df = _question_rows(conn, joint_qrow, {}, response_semantics_contract_hash=response_semantics_contract)
+                if joint_df.empty:
+                    raise RuntimeError(
+                        f"joint-only respondent rows unavailable for governed QUC enrichment: "
+                        f"{args.source}/{args.wave}/{country_code}/{joint_qrow.get('var_code', '')}"
+                    )
+                qmeta = _summary_question_meta(
+                    joint_df,
+                    joint_qrow,
+                    readiness_lookup.get((joint_qrow.get("source", args.source), joint_qrow.get("canonical_wave", canonical_wave), country_code)),
+                )
+                qmeta["run_id"] = args.run_id
+                qmeta["shard_id"] = args.shard_id
+                source_structure_row, source_structure_join_key, source_structure_join_confidence = match_source_structure_row(
+                    {**joint_qrow.to_dict(), **qmeta}, source_structure_register
+                )
+                joint_qmeta = {**qmeta, **source_structure_row}
+                joint_qmeta["source_structure_join_key"] = source_structure_join_key
+                joint_qmeta["source_structure_join_confidence"] = source_structure_join_confidence
+                contract = build_question_use_contract(
+                    pd.DataFrame([{
+                        **joint_qmeta,
+                        "source_structure_fields_joined": bool(joint_qmeta.get("source_structure_fields_joined", False)),
+                        "question_type": joint_qrow.get("question_type", joint_qmeta.get("question_type", "")),
+                        "handling_rule": joint_qrow.get("handling_rule", joint_qmeta.get("handling_rule", "")),
+                        "recommended_computation": joint_qrow.get("recommended_computation", joint_qmeta.get("recommended_computation", "")),
+                        "final_driver_scope": joint_qrow.get("final_driver_scope", joint_qmeta.get("final_driver_scope", "")),
+                        "source_structure_classification": joint_qrow.get("source_structure_classification", joint_qmeta.get("source_structure_classification", "")),
+                    }]),
+                    gss_first_pass_authority_path=Path(args.first_pass_authority_dir) if args.first_pass_authority_dir else None,
+                    gss_semantic_authority_path=Path(args.semantic_authority_dir) if args.semantic_authority_dir else None,
+                    gss_position_conditioning_path=Path(args.position_conditioning_authority_dir) if args.position_conditioning_authority_dir else None,
+                    directionality_authority_path=Path(args.directionality_authority_dir) if args.directionality_authority_dir else None,
+                    survey_family=args.source,
+                    canonical_wave=canonical_wave,
+                )
+                if contract.empty:
+                    raise RuntimeError(
+                        f"joint-only governed QUC compilation produced no row: "
+                        f"{args.source}/{args.wave}/{country_code}/{joint_qrow.get('var_code', '')}"
+                    )
+                joint_quc_rows.append(contract.iloc[0].to_dict())
+            if joint_quc_rows:
+                quc_frame = pd.concat([quc_frame, pd.DataFrame(joint_quc_rows)], ignore_index=True, sort=False)
             substrate_enrichment_reports: list[dict[str, Any]] = []
             for pending in shared_substrate_pending:
                 country_code = pending["country_code"]
