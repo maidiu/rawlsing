@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "staleness_law": "Accepted historical receipts remain immutable. Impact may mark active use stale_pending_revalidation; it does not rewrite history.",
+  "classes": {
+    "C0_IMPLEMENTATION": {"requires_vozhd":false,"description":"Semantics-preserving implementation/performance/serialization/test repair.","revalidate":["changed node tests","direct consumer seam tests","named court predicate affected by code path"],"must_not":["reopen upstream semantic authority","change thresholds/validator meaning"]},
+    "C1_INTERFACE": {"requires_vozhd":false,"description":"Handoff/schema shape change with unchanged semantic authority.","revalidate":["producer","direct consumers","descendant receipts that consume changed fields"],"status_effect":"affected active descendant receipts become STALE_PENDING_REVALIDATION, not historically invalid","must_not":["change semantic role/meaning under guise of schema repair"]},
+    "C2_AUTHORITY": {"requires_vozhd":true,"description":"Successor semantic/routing/measurement/strata authority.","revalidate":["all active receipts that cite superseded authority, scoped to affected identities"],"status_effect":"append successor authority; never mutate frozen release","must_not":["retroactively rewrite frozen decisions"]},
+    "C3_ARCHITECTURE": {"requires_vozhd":true,"description":"Layer ownership, gate predicate, inference ceiling, privacy or jurisdiction change.","revalidate":["affected stage and all execution descendants under new architecture"],"status_effect":"new architecture version and explicit migration/differential required","must_not":["hide architecture change inside implementation patch"]},
+    "C4_DATA_EXECUTION": {"requires_vozhd":false,"description":"Extraction/input/scope execution correction under unchanged authority.","revalidate":["exact affected scopes","their derived descendants"],"status_effect":"unaffected scopes stay accepted","must_not":["reinterpret source meaning","globalize local correction without evidence"]}
+  },
+  "frontier_rule": "Every work item must name the exact acceptance predicate it advances. An upstream repair lane is legal only when a demonstrated defect blocks that predicate.",
+  "rollback_rule": "Promote by pointer after differential acceptance; rollback by pointer to last compatible receipt. Never erase receipts."
+}

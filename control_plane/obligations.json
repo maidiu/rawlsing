@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "law": "Obligations are append-only until an explicit successor receipt dispositions them.",
+  "items": [
+    {"id":"JOB3_R3_SCOPE_DEFECT_SUCCESSORS","class":"FROZEN_SUCCESSOR_OBLIGATION","count":125,"source":"JOB3_R3_FROZEN_TOPOLOGY","status":"OPEN","rule":"Do not mutate Job3-R3 denominator or terminal decisions."},
+    {"id":"JOB3_R3_BLOCKED_EVIDENCE_SUCCESSORS","class":"FROZEN_SUCCESSOR_OBLIGATION","count":15,"source":"JOB3_R3_FROZEN_TOPOLOGY","status":"OPEN","rule":"BLOCKED remains terminal uncertainty until explicit successor evidence exists."},
+    {"id":"PHASE_D_PREPARED_SUBSTRATE_FIXTURE_BUG","class":"C0_IMPLEMENTATION_TECHNICAL_DEBT","count":1,"path":"phase_d/tests/test_prepared_substrate_probe.py","status":"OPEN_NONBLOCKING","description":"Existing fixture overwrites var_code_norm while converting long-form input and fails before exercising Phase-D closeout.","rule":"Fix with regression proof when economically relevant; it does not reopen PHASE_D_GATE_CLOSED."}
+  ]
+}

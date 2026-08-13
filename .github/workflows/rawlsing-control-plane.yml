@@ -1,0 +1,25 @@
+name: Rawlsing control-plane court
+on:
+  push:
+    paths:
+      - "RAWLSING_CONTROL_PLANE.md"
+      - "control_plane/**"
+      - ".github/workflows/rawlsing-control-plane.yml"
+  pull_request:
+    paths:
+      - "RAWLSING_CONTROL_PLANE.md"
+      - "control_plane/**"
+      - ".github/workflows/rawlsing-control-plane.yml"
+jobs:
+  repo-static-court:
+    name: Repo-static control integrity (not empirical readiness)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify control plane
+        run: python3 control_plane/rawlsingctl.py verify --tier repo
+      - name: Run control-plane tests
+        run: python3 -m unittest discover -s control_plane/tests -p "test_*.py"

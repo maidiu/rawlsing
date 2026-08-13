@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "receipt_id": "PHASE_D_CLOSEOUT_20260813",
+  "immutable": true,
+  "stage": "PHASE_D",
+  "terminal": "PHASE_D_GATE_CLOSED",
+  "accepted": true,
+  "pipeline_code_commit": "350986521ebbc13b552d4b6542423a65c267041a",
+  "parent_pipeline_commit": "479dbc762fd6e6c03b8f3fe3906b504ff482b822",
+  "authority_refs": ["R6_FORWARD_HANDOFF","M6_TERMINAL","PHASE_D_M5_CONTRACT","PHASE_D_FROZEN_CANDIDATE_ORDER"],
+  "report": {"path":"phase_d/successor_archetype_conformance/CLOSEOUT_REPORT_R1.md","git_blob_sha":"da5691ce0b970adb9822ba481131026c6da305c8"},
+  "real_data_archetypes": [
+    {"archetype":"empirical_survives_semantic_block_or_absence","candidate":"O12C3-170d6968c83720edbae8f80a","scope":"LiTS / II / SE","semantic_posture":"BLOCKED_TYPED_RELATION","empirical_posture":"OBSERVED","approved_surface":"question_response_attitude_cloud","rank_attempted":1,"terminal":"ARCHETYPE_INSTANTIATED"},
+    {"archetype":"local_block_preserved","scope":"GSS 2010","basis":"SCIORDER exact split-sample empty intersection","terminal":"ARCHETYPE_INSTANTIATED","note":"carried-forward frozen real routing proof; unchanged validator accepted it"}
+  ],
+  "verification": {"closeout_tests_passed":9,"capsule_validator":"CAPSULE_VALID PASS","capsule_file_count":23,"pseudonymous_respondents":900,"capsule_rows":1800,"successor_validator":"PHASE_D_GATE_CLOSED","successor_validator_errors":0,"executed_return_rows":2,"privacy":"PASS"},
+  "hashes": {"frozen_candidate_order_sha256":"5ae32c7cdfd68d3e0c1816abd85fc6f77387f65a383e5b860d2ab9cf814235b2","capsule_manifest_sha256":"425cc1bf6cac194a81ec01045c82ad9c3e8d0ed554ec78875e50e40299697b5c"},
+  "allowed_claims": ["Phase-D successor archetype gate is closed","semantic BLOCKED can coexist with lawful empirical OBSERVED without promotion","genuine local routing block is preserved"],
+  "forbidden_claims": ["V552 accepted","V553+ ready","35-wave pipeline ready","M6 historical terminal was green"],
+  "known_nonblocking_debt": ["PHASE_D_PREPARED_SUBSTRATE_FIXTURE_BUG"]
+}
