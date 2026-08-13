@@ -52,7 +52,7 @@ def main()->int:
             returns.append({"source_family":fam,"wave":wave,"country_code":country,"terminal_status":"PASS_BLOCKED_LOCAL","respondent_universe_status":"BLOCKED","v550_base_status":"BLOCKED","position_distribution_status":"BLOCKED","recursive_branch_status":"BLOCKED","attitude_cloud_status":"BLOCKED","v550j_fused_status":"BLOCKED","v551_status":"BLOCKED","v551j_status":"BLOCKED","strata_horizon_status":"BLOCKED","blocked_code":"LOCAL_SCOPE_OUTPUT_NOT_FOUND","blocked_detail":"No bounded smoke output directory could be resolved for this family.","evidence_refs_json":"[]","notes":"Fail-closed; semantic authority is not erased."})
             for d in DIMS: gate.append({"source_family":fam,"wave":wave,"country_code":country,"gate_dimension":d,"status":"BLOCKED","evidence_count":0,"blocker_code":"LOCAL_SCOPE_OUTPUT_NOT_FOUND","evidence_refs_json":"[]","notes":""})
             fused_all=False; continue
-        ev,scan=compile_scope(sr,top,blk,fam,wave,country); all_ev.append(ev); fused_all &= bool(scan["fused_manifest_verified"])
+        ev,scan=compile_scope(sr,top,blk,fam,wave,country,a.authority_dir); all_ev.append(ev); fused_all &= bool(scan["fused_manifest_verified"])
         refs=ev.evidence_id.tolist(); observed=int((ev.empirical_cotravel_posture=="OBSERVED").sum()) if len(ev) else 0
         terminal="PASS_POSITIVE" if observed and (ev.semantic_relation_posture.eq("GOVERNED_POSITIVE") & ev.empirical_cotravel_posture.eq("OBSERVED")).any() else "PASS_EMPIRICAL_ONLY" if observed else "PASS_BLOCKED_LOCAL"
         block_code="" if terminal!="PASS_BLOCKED_LOCAL" else "NO_EXACT_EMPIRICAL_SEMANTIC_LINK_IN_BOUNDED_SCOPE"

@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import pandas as pd
+import yaml
 
 PRIVACY_PATH_RE = re.compile(r"(respondent_substrate|respondent_membership|raw_response|raw_responses|\.env$|data\.parquet$)", re.I)
 IMPL_RE = re.compile(r"question_impl\.[A-Za-z0-9_.:-]+")
@@ -32,7 +33,7 @@ EVIDENCE_COLUMNS = [
     "empirical_cotravel_posture","respondent_universe_status","routing_status","association_mode","association_metric",
     "association_score","p_value","q_value","n_unweighted","weighted_n","kish_ess","design_grade",
     "position_context_status","position_signature","strata_context_status","strata_ids_json","horizon_id",
-    "uncertainty_status","downstream_eligibility_json","inference_ceiling","prohibited_inference","provenance_refs_json"
+    "uncertainty_status","downstream_eligibility_json","inference_ceiling","prohibited_inference","provenance_refs_json","implementation_resolution_basis","implementation_resolution_ref"
 ]
 
 @dataclass
@@ -47,6 +48,8 @@ class RowEvidence:
     kish_ess: float | None
     strata_ids: list[str]
     horizon_id: str | None
+    resolution_basis: str = "UNRESOLVED"
+    resolution_ref: str = ""
 
 
 def _clean(v: Any) -> str:
@@ -68,13 +71,42 @@ def _json_list(value: Any) -> list[str]:
     return [m.group(0) for m in IMPL_RE.finditer(s)]
 
 
-def _impls_from_row(row: pd.Series) -> set[str]:
+def _impls_from_row(row: pd.Series, family_impls=None, item_crosswalk=None):
     out: set[str] = set()
     for value in row.tolist():
         s = _clean(value)
         if not s: continue
         out.update(m.group(0) for m in IMPL_RE.finditer(s))
-    return out
+    if out: return out, "LITERAL_IMPLEMENTATION_ID", "literal:question_impl"
+    for key in ("joint_configuration_id", "family_id"):
+        value = _clean(row.get(key, ""))
+        if value and value in (family_impls or {}): return set(family_impls[value]), "JOINT_REGISTRY_CONFIGURATION_CROSSWALK", f"{key}:{value}"
+    for key in ("var_code", "question_id"):
+        value = _clean(row.get(key, ""))
+        if value and value.upper() in (item_crosswalk or {}): return {item_crosswalk[value.upper()]}, "EXACT_GOVERNED_ITEM_CROSSWALK", f"{key}:{value}"
+    return set(), "UNRESOLVED", ""
+
+def _registry_maps(registry_dir, source, wave):
+    family_impls, item_crosswalk = {}, {}
+    if not registry_dir: return family_impls, item_crosswalk
+    key = re.sub(r"[^a-z0-9]+", "_", source.lower()).strip("_")
+    candidates = [p for p in sorted(Path(registry_dir).glob("registry_*.yaml")) if key in p.stem or key.replace("_", "") in p.stem.replace("_", "")]
+    if not candidates: return family_impls, item_crosswalk
+    payload = yaml.safe_load(candidates[0].read_text(encoding="utf-8")) or {}
+    for family in payload.get("families", []):
+        waves = {str(x).lower() for x in family.get("eligible_waves", [])}
+        if waves and str(wave).lower() not in waves: continue
+        ids=set()
+        for group in (family.get("item_role_groups") or {}).values():
+            for item in group or []:
+                impl=_clean(item.get("question_implementation_id")); var=_clean(item.get("var_code"))
+                if impl:
+                    ids.add(impl)
+                    if var: item_crosswalk[var.upper()]=impl
+        for key2 in ("family_id","joint_configuration_id"):
+            value=_clean(family.get(key2))
+            if value and ids: family_impls[value]=ids
+    return family_impls, item_crosswalk
 
 
 def _first_numeric(row: pd.Series, names: Iterable[str], kind=float):
@@ -108,10 +140,11 @@ def _read_frame(path: Path) -> pd.DataFrame:
     return pd.DataFrame()
 
 
-def scan_scope(scope_root: Path) -> tuple[list[RowEvidence], dict[str, Any]]:
+def scan_scope(scope_root: Path, registry_dir=None, source="", wave="") -> tuple[list[RowEvidence], dict[str, Any]]:
     rows: list[RowEvidence] = []
     manifest_text: list[str] = []
     position_seen = False; branch_seen = False; cloud_seen = False; joint_seen = False
+    family_impls, item_crosswalk = _registry_maps(registry_dir, source, wave)
     for path in sorted(scope_root.rglob("*")):
         if not path.is_file() or PRIVACY_PATH_RE.search(path.as_posix()): continue
         rel = path.relative_to(scope_root).as_posix()
@@ -127,7 +160,7 @@ def scan_scope(scope_root: Path) -> tuple[list[RowEvidence], dict[str, Any]]:
         cloud_seen |= lane == "ATTITUDE_CLOUD"
         joint_seen |= lane == "JOINT_RESPONSE_CONFIGURATION"
         for idx, row in df.iterrows():
-            impls = _impls_from_row(row)
+            impls, resolution_basis, resolution_ref = _impls_from_row(row, family_impls, item_crosswalk)
             if len(impls) < 1: continue
             strata = []
             for c in ["strata_id","stratum_id","strata_ids_json"]:
@@ -141,6 +174,7 @@ def scan_scope(scope_root: Path) -> tuple[list[RowEvidence], dict[str, Any]]:
                 path=rel,row_index=int(idx),impl_ids=impls,empirical_id=_empirical_id(row,rel,int(idx)),lane=lane,
                 n_unweighted=_first_numeric(row,SUPPORT_COLUMNS,int),weighted_n=_first_numeric(row,WEIGHTED_COLUMNS,float),
                 kish_ess=_first_numeric(row,ESS_COLUMNS,float),strata_ids=sorted(set(strata)),horizon_id=horizon,
+                resolution_basis=resolution_basis, resolution_ref=resolution_ref,
             ))
     text = "\n".join(manifest_text).lower()
     fused = ("prepared_required" in text and ("forbid_database_access" in text or "forbid-database-access" in text or '"database_access_forbidden": true' in text))
@@ -175,8 +209,8 @@ def _base_row(source: str, wave: str, country: str, fused: bool) -> dict[str, An
     }
 
 
-def compile_scope(scope_root: Path, topology: pd.DataFrame, blocked: pd.DataFrame, source: str, wave: str, country: str) -> tuple[pd.DataFrame, dict[str, Any]]:
-    empirical_rows, scan = scan_scope(scope_root)
+def compile_scope(scope_root: Path, topology: pd.DataFrame, blocked: pd.DataFrame, source: str, wave: str, country: str, registry_dir=None) -> tuple[pd.DataFrame, dict[str, Any]]:
+    empirical_rows, scan = scan_scope(scope_root, registry_dir, source, wave)
     base = _base_row(source,wave,country,scan["fused_manifest_verified"])
     out: list[dict[str, Any]] = []
     matched_empirical: set[tuple[str,int]] = set()
@@ -238,6 +272,8 @@ def compile_scope(scope_root: Path, topology: pd.DataFrame, blocked: pd.DataFram
             "strata_ids_json":json.dumps(er.strata_ids),"horizon_id":er.horizon_id or "","downstream_eligibility_json":json.dumps(["APP_GATE_A_EVIDENCE"]),
             "provenance_refs_json":json.dumps([f"empirical:{er.path}#row={er.row_index}"])
         })
+        row["implementation_resolution_basis"] = er.resolution_basis
+        row["implementation_resolution_ref"] = er.resolution_ref
         out.append(row)
 
     df=pd.DataFrame(out)

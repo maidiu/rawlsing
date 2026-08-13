@@ -19,6 +19,16 @@ def test_positive_and_empirical_only(tmp_path):
     assert ((ev.semantic_relation_posture=='GOVERNED_POSITIVE') & (ev.empirical_cotravel_posture=='OBSERVED')).any()
     assert ((ev.semantic_relation_posture=='NO_GOVERNED_TYPED_RELATION') & (ev.empirical_cotravel_posture=='OBSERVED')).any()
 
+def test_family_id_uses_exact_governed_registry_members(tmp_path):
+    scope=tmp_path/'scope'; scope.mkdir(); auth=tmp_path/'authority'; auth.mkdir()
+    pd.DataFrame([{'family_id':'JCFG-X','pattern_id':'p1','n_unweighted':'50'}]).to_csv(scope/'joint_patterns.csv',index=False)
+    (scope/'manifest.json').write_text(json.dumps({'v550j_substrate_mode':'prepared_required','forbid_database_access':True}))
+    (auth/'registry_gss.yaml').write_text('''source_family: GSS\nstatus: governed\nfamilies:\n- family_id: JCFG-X\n  eligible_waves: [2010]\n  item_role_groups:\n    items:\n    - var_code: A\n      question_implementation_id: question_impl.a\n    - var_code: B\n      question_implementation_id: question_impl.b\n''')
+    top=pd.DataFrame([{'authority_id':'A1','source_family':'GSS','wave':'2010','rule_id':'T01','relation_type':'T','member_implementation_ids_json':json.dumps(['question_impl.a','question_impl.b'])}])
+    blk=pd.DataFrame(columns=['source_family','active_wave','implementation_ids','candidate_id','rule_id'])
+    ev,_=compile_scope(scope,top,blk,'GSS','2010','US',auth)
+    assert ((ev.semantic_relation_posture=='GOVERNED_POSITIVE') & (ev.empirical_cotravel_posture=='OBSERVED')).any()
+
 def test_blocked_semantic_does_not_erase_empirical_and_partial_does_not_promote(tmp_path):
     scope=tmp_path/'scope'; scope.mkdir()
     pd.DataFrame([
