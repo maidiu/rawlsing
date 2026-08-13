@@ -1,0 +1,25 @@
+{
+  "scope": "EVS|1981|BE",
+  "parent_canonical_map_sha256": "971abaeaa334ab7025f7619d88da196567ac0f5314ecf5f97e745f82601eaaab",
+  "governed_candidate_scope_rows": 163,
+  "governed_candidate_variables": 20,
+  "identity_precedence_selection": {
+    "admitted_response_authority_variables": ["cntry_y", "v471", "v472", "v514", "v517"],
+    "admitted_variable_count": 5,
+    "admitted_rows_before_emission": 44,
+    "basis": "question-use authority and joint-registry response-authority requirement"
+  },
+  "emitted_execution_contract_rows": 44,
+  "row_accounting": [
+    {"stage": "parent_canonical_map", "rows": 357324, "basis": "pinned global canonical map"},
+    {"stage": "exact EVS scoped candidate map", "rows": 163, "basis": "EVS source-file wave resolution to canonical wave 1981"},
+    {"stage": "selected-variable candidates", "rows": 163, "basis": "20 governed EVS W1 selected variables"},
+    {"stage": "identity-precedence authority admission", "rows": 44, "basis": "5 variables require response authority; 15 are governed administrative/context/weight variables"},
+    {"stage": "fallback coherence/deduplication", "rows": 44, "basis": "one deterministic emitted row per admitted source variable/value authority row; no semantic row loss"},
+    {"stage": "final V550 response_option_map artifact", "rows": 44, "basis": "same 44-row execution contract"}
+  ],
+  "inapplicable_selected_variables": ["v123", "v156", "v230", "v251", "v252", "v266", "v352", "v430", "v432", "v433", "v465", "v466", "v529", "v530", "v538"],
+  "semantic_loss_detected": false,
+  "canonical_parent_modified": false,
+  "final_artifact": "data/ddm_repository_copy/phase_d_m6_smoke/20260813T143826Z/evs_1981_BE/v550/shard_runs/evs_1981_20260813T143826Z/EVS_1981_BE/core/response_option_map.parquet"
+}
