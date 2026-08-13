@@ -152,6 +152,17 @@ def scan_scope(scope_root: Path, registry_dir=None, source="", wave="") -> tuple
             try: manifest_text.append(path.read_text(encoding="utf-8", errors="ignore"))
             except Exception: pass
         if path.suffix.lower() not in {".csv", ".parquet"}: continue
+        # Core QUC/response-map and bridge transport tables are deterministic
+        # V550 inputs, not positioned empirical evidence. Reading them here
+        # creates a large, redundant row scan and can swamp the aggregator.
+        # Evidence remains sourced from the diagnostic/joint, distribution,
+        # position, branch, cloud, and audit surfaces below.
+        if any(part.lower() in {"core", "bridge", "filters", "checkpoints"} for part in path.relative_to(scope_root).parts[:-1]):
+            continue
+        parts = {part.lower() for part in path.relative_to(scope_root).parts[:-1]}
+        evidence_surface = "joint_patterns" in parts
+        if not evidence_surface:
+            continue
         try: df = _read_frame(path)
         except Exception: continue
         lane = _lane(rel, df.columns)
