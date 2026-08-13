@@ -2699,15 +2699,9 @@ def build_question_use_contract_row(
         uses = allowed_uses_for_role(final_semantic_role)
     if not current_directional_atom_eligible:
         uses["allowed_as_v551_relation_evidence"] = False
-        uses["allowed_as_branch_relation_cosignature"] = False
-        uses["allowed_as_attitude_cloud_anchor"] = False
-        uses["allowed_as_attitude_cloud_feature"] = False
         uses["allowed_as_runtime_persona_evidence"] = False
         uses["allowed_as_temporal_pressure_indicator"] = False
     if _attitude_cloud_semantics_blocked(row, role, semantic_detail):
-        uses["allowed_as_attitude_cloud_anchor"] = False
-        uses["allowed_as_attitude_cloud_feature"] = False
-        uses["allowed_as_branch_relation_cosignature"] = False
         uses["allowed_as_v551_relation_evidence"] = False
         uses["allowed_as_runtime_persona_evidence"] = False
     out = {
@@ -2775,6 +2769,7 @@ def build_question_use_contract_row(
         "response_semantics_status": _clean(row.get("response_semantics_status")),
         "response_semantics_source": _clean(row.get("response_semantics_source")),
         "response_semantics_contract_hash": _clean(row.get("response_semantics_contract_hash")),
+        "question_use_contract_joined": _to_bool(row.get("question_use_contract_joined")),
         "runtime_authority_status": _clean(row.get("runtime_authority_status")) or MISSING,
         "temporal_authority_status": _clean(row.get("temporal_authority_status")) or MISSING,
         "gss2010_structural_overlay_used": structural_overlay_used,

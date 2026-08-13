@@ -1,0 +1,585 @@
+{
+  "name": "branch_co_signature",
+  "run_id": "lits_ii_successor_retry_rank1_min",
+  "row_count": 0,
+  "column_count": 144,
+  "columns": [
+    {
+      "name": "run_id",
+      "dtype": "string"
+    },
+    {
+      "name": "source",
+      "dtype": "string"
+    },
+    {
+      "name": "source_family",
+      "dtype": "string"
+    },
+    {
+      "name": "wave",
+      "dtype": "string"
+    },
+    {
+      "name": "canonical_wave",
+      "dtype": "string"
+    },
+    {
+      "name": "country_code",
+      "dtype": "string"
+    },
+    {
+      "name": "survey_year",
+      "dtype": "int64"
+    },
+    {
+      "name": "canonical_var_name",
+      "dtype": "string"
+    },
+    {
+      "name": "source_var_name",
+      "dtype": "string"
+    },
+    {
+      "name": "source_var_names",
+      "dtype": "string"
+    },
+    {
+      "name": "source_mapping_type",
+      "dtype": "string"
+    },
+    {
+      "name": "source_mapping_authority",
+      "dtype": "string"
+    },
+    {
+      "name": "var_code",
+      "dtype": "string"
+    },
+    {
+      "name": "var_name",
+      "dtype": "string"
+    },
+    {
+      "name": "question_id",
+      "dtype": "string"
+    },
+    {
+      "name": "question_text",
+      "dtype": "string"
+    },
+    {
+      "name": "driver_id",
+      "dtype": "string"
+    },
+    {
+      "name": "driver_facet_id",
+      "dtype": "string"
+    },
+    {
+      "name": "relation_axis_id",
+      "dtype": "string"
+    },
+    {
+      "name": "target_entity_id",
+      "dtype": "string"
+    },
+    {
+      "name": "mapping_status",
+      "dtype": "string"
+    },
+    {
+      "name": "legacy_final_driver_id",
+      "dtype": "string"
+    },
+    {
+      "name": "legacy_driver_leak_flag",
+      "dtype": "bool"
+    },
+    {
+      "name": "question_type",
+      "dtype": "string"
+    },
+    {
+      "name": "handling_rule",
+      "dtype": "string"
+    },
+    {
+      "name": "recommended_computation",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_classification",
+      "dtype": "string"
+    },
+    {
+      "name": "response_direction",
+      "dtype": "string"
+    },
+    {
+      "name": "response_intensity",
+      "dtype": "string"
+    },
+    {
+      "name": "polarity",
+      "dtype": "string"
+    },
+    {
+      "name": "ordinal_rank",
+      "dtype": "string"
+    },
+    {
+      "name": "scale_min",
+      "dtype": "string"
+    },
+    {
+      "name": "scale_max",
+      "dtype": "string"
+    },
+    {
+      "name": "scale_direction",
+      "dtype": "string"
+    },
+    {
+      "name": "directionality_status",
+      "dtype": "string"
+    },
+    {
+      "name": "response_family",
+      "dtype": "string"
+    },
+    {
+      "name": "response_semantics_status",
+      "dtype": "string"
+    },
+    {
+      "name": "response_semantics_source",
+      "dtype": "string"
+    },
+    {
+      "name": "response_semantics_contract_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "has_response_option_map",
+      "dtype": "bool"
+    },
+    {
+      "name": "response_option_confidence_min",
+      "dtype": "string"
+    },
+    {
+      "name": "response_option_confidence_max",
+      "dtype": "string"
+    },
+    {
+      "name": "n_response_rows",
+      "dtype": "int64"
+    },
+    {
+      "name": "n_respondents",
+      "dtype": "int64"
+    },
+    {
+      "name": "n_countries",
+      "dtype": "int64"
+    },
+    {
+      "name": "weight_status",
+      "dtype": "string"
+    },
+    {
+      "name": "readiness_status",
+      "dtype": "string"
+    },
+    {
+      "name": "dominant_response_value",
+      "dtype": "string"
+    },
+    {
+      "name": "dominant_response_pct",
+      "dtype": "double"
+    },
+    {
+      "name": "created_at",
+      "dtype": "string"
+    },
+    {
+      "name": "shard_id",
+      "dtype": "string"
+    },
+    {
+      "name": "question_type_structural_role",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_basis",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_confidence",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_review_required",
+      "dtype": "bool"
+    },
+    {
+      "name": "source_structure_source",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_fields_joined",
+      "dtype": "bool"
+    },
+    {
+      "name": "source_structure_join_key",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_join_confidence",
+      "dtype": "string"
+    },
+    {
+      "name": "response_topology",
+      "dtype": "string"
+    },
+    {
+      "name": "future_evidence_eligible",
+      "dtype": "bool"
+    },
+    {
+      "name": "future_topology_evidence_eligible",
+      "dtype": "bool"
+    },
+    {
+      "name": "current_directional_atom_eligible",
+      "dtype": "bool"
+    },
+    {
+      "name": "directional_certification_status",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_role",
+      "dtype": "string"
+    },
+    {
+      "name": "v551_evidence_role",
+      "dtype": "string"
+    },
+    {
+      "name": "review_required",
+      "dtype": "bool"
+    },
+    {
+      "name": "disallowed_reason",
+      "dtype": "string"
+    },
+    {
+      "name": "manual_override_used",
+      "dtype": "bool"
+    },
+    {
+      "name": "manual_override_basis",
+      "dtype": "string"
+    },
+    {
+      "name": "manual_override_reason",
+      "dtype": "string"
+    },
+    {
+      "name": "itinerary_review_priority",
+      "dtype": "string"
+    },
+    {
+      "name": "itinerary_manual_designation_required",
+      "dtype": "bool"
+    },
+    {
+      "name": "itinerary_primary_docs",
+      "dtype": "string"
+    },
+    {
+      "name": "itinerary_secondary_docs",
+      "dtype": "string"
+    },
+    {
+      "name": "itinerary_review_notes",
+      "dtype": "string"
+    },
+    {
+      "name": "authority_table_used",
+      "dtype": "bool"
+    },
+    {
+      "name": "authority_table_basis",
+      "dtype": "string"
+    },
+    {
+      "name": "authority_semantic_lane",
+      "dtype": "string"
+    },
+    {
+      "name": "authority_semantic_role",
+      "dtype": "string"
+    },
+    {
+      "name": "authority_evidence_lane",
+      "dtype": "string"
+    },
+    {
+      "name": "authority_designation_confidence",
+      "dtype": "string"
+    },
+    {
+      "name": "authority_review_required",
+      "dtype": "bool"
+    },
+    {
+      "name": "question_directionality_authority_used",
+      "dtype": "bool"
+    },
+    {
+      "name": "question_directionality_authority_status",
+      "dtype": "string"
+    },
+    {
+      "name": "gss2010_structural_overlay_used",
+      "dtype": "bool"
+    },
+    {
+      "name": "gss2010_structural_overlay_basis",
+      "dtype": "string"
+    },
+    {
+      "name": "gss2010_structural_overlay_review_required",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_response_distribution",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_position_distribution",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_context_distribution",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_demographic_predictor",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_branch_splitter",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_branch_position_signature",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_branch_relation_cosignature",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_attitude_cloud_anchor",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_attitude_cloud_feature",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_v551_relation_evidence",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_parent_prior_coordinate",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_temporal_pressure_indicator",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_runtime_persona_evidence",
+      "dtype": "bool"
+    },
+    {
+      "name": "question_block_id",
+      "dtype": "string"
+    },
+    {
+      "name": "structural_domain_id",
+      "dtype": "string"
+    },
+    {
+      "name": "target_entity_rule",
+      "dtype": "string"
+    },
+    {
+      "name": "final_driver_scope",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_subrole",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_tags",
+      "dtype": "string"
+    },
+    {
+      "name": "directionality_policy",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_confidence",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_note",
+      "dtype": "string"
+    },
+    {
+      "name": "position_conditioning",
+      "dtype": "string"
+    },
+    {
+      "name": "position_modifiers",
+      "dtype": "string"
+    },
+    {
+      "name": "conditional_strata_weights",
+      "dtype": "string"
+    },
+    {
+      "name": "horizon_affordance",
+      "dtype": "string"
+    },
+    {
+      "name": "position_conditioning_note",
+      "dtype": "string"
+    },
+    {
+      "name": "position_conditioning_confidence",
+      "dtype": "string"
+    },
+    {
+      "name": "question_use_contract_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "question_use_contract_joined",
+      "dtype": "bool"
+    },
+    {
+      "name": "branch_id",
+      "dtype": "string"
+    },
+    {
+      "name": "branch_key",
+      "dtype": "string"
+    },
+    {
+      "name": "anchor_question_id",
+      "dtype": "string"
+    },
+    {
+      "name": "feature_rank",
+      "dtype": "int64"
+    },
+    {
+      "name": "predictor_family",
+      "dtype": "string"
+    },
+    {
+      "name": "feature_role",
+      "dtype": "string"
+    },
+    {
+      "name": "support_status",
+      "dtype": "string"
+    },
+    {
+      "name": "confidence_tier",
+      "dtype": "string"
+    },
+    {
+      "name": "cloud_lane_artifact",
+      "dtype": "bool"
+    },
+    {
+      "name": "diagnostic_artifact",
+      "dtype": "bool"
+    },
+    {
+      "name": "not_direct_evidence",
+      "dtype": "bool"
+    },
+    {
+      "name": "evidence_role",
+      "dtype": "string"
+    },
+    {
+      "name": "artifact_status",
+      "dtype": "string"
+    },
+    {
+      "name": "feature_name",
+      "dtype": "string"
+    },
+    {
+      "name": "feature_kind",
+      "dtype": "string"
+    },
+    {
+      "name": "demographic_feature_excluded_flag",
+      "dtype": "bool"
+    },
+    {
+      "name": "feature_value",
+      "dtype": "string"
+    },
+    {
+      "name": "association_score",
+      "dtype": "double"
+    },
+    {
+      "name": "association_metric",
+      "dtype": "string"
+    },
+    {
+      "name": "normalized_mutual_information",
+      "dtype": "double"
+    },
+    {
+      "name": "cramers_v",
+      "dtype": "double"
+    },
+    {
+      "name": "n_unweighted",
+      "dtype": "int64"
+    },
+    {
+      "name": "n_unique_feature_values",
+      "dtype": "int64"
+    },
+    {
+      "name": "n_unique_response_values",
+      "dtype": "int64"
+    },
+    {
+      "name": "target_dominant_response",
+      "dtype": "string"
+    },
+    {
+      "name": "target_dominant_response_share",
+      "dtype": "double"
+    }
+  ],
+  "description": "V550 shard branch_co_signature output."
+}

@@ -84,6 +84,15 @@ def _impls_from_row(row: pd.Series, family_impls=None, item_crosswalk=None):
     for key in ("var_code", "question_id"):
         value = _clean(row.get(key, ""))
         if value and value.upper() in (item_crosswalk or {}): return {item_crosswalk[value.upper()]}, "EXACT_GOVERNED_ITEM_CROSSWALK", f"{key}:{value}"
+    resolved = set()
+    refs = []
+    for key in ("anchor_var_code", "cotravelling_var_code", "candidate_var_code"):
+        value = _clean(row.get(key, ""))
+        if value and value.upper() in (item_crosswalk or {}):
+            resolved.add(item_crosswalk[value.upper()])
+            refs.append(f"{key}:{value}")
+    if resolved:
+        return resolved, "EXACT_GOVERNED_ITEM_CROSSWALK", ";".join(refs)
     return set(), "UNRESOLVED", ""
 
 def _registry_maps(registry_dir, source, wave):
@@ -166,6 +175,7 @@ def scan_scope(scope_root: Path, registry_dir=None, source="", wave="") -> tuple
             "branch_relation_co_signature",
             "branch_co_signature",
             "question_response_attitude_cloud",
+            "joint_patterns",
         }
         evidence_surface = "joint_patterns" in parts or artifact_name in evidence_names
         if not evidence_surface:

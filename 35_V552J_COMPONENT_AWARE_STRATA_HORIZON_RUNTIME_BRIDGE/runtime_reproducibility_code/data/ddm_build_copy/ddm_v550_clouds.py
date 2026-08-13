@@ -483,7 +483,7 @@ def _attitude_cloud_semantics_allowed(status: str) -> bool:
     normalized = str(status or "").strip().lower()
     if not normalized:
         normalized = "observed_only"
-    return normalized in {"curated", "observed_only", "matched", "observed"}
+    return normalized in {"curated", "observed_only", "matched", "observed", "active"}
 
 
 def _attitude_cloud_semantics_blocked(question_meta: dict[str, Any]) -> bool:
@@ -494,6 +494,17 @@ def _attitude_cloud_semantics_blocked(question_meta: dict[str, Any]) -> bool:
     target_entity_id = str(question_meta.get("target_entity_id", "") or "").strip().lower()
     semantic_subrole = str(question_meta.get("semantic_subrole", "") or "").strip().lower()
     semantic_role = str(question_meta.get("semantic_role", "") or "").strip().lower()
+    diagnostic_allowed = bool(
+        question_meta.get("response_semantics_contract_hash")
+        and question_meta.get("allowed_as_attitude_cloud_feature")
+        and semantic_role in {"relation_evidence", "structural_context"}
+        and final_driver_scope != "metadata"
+    )
+    if diagnostic_allowed:
+        # Diagnostic permissions are deliberately independent of typed
+        # relation certification and structural axis resolution. Technical,
+        # administrative, and missingness roles remain excluded below.
+        return False
     if source_structure_classification in {"respondent_position_coordinate", "continuous_position_coordinate", "position_coordinate", "structural_context"}:
         return True
     if final_driver_scope in {"metadata"}:
@@ -504,8 +515,16 @@ def _attitude_cloud_semantics_blocked(question_meta: dict[str, Any]) -> bool:
         return True
     if target_entity_id in {"", "context_not_applicable"}:
         return True
-    if semantic_role in {"position_coordinate", "structural_context", "administrative_metadata", "missingness_signal"}:
+    if semantic_role in {"position_coordinate", "administrative_metadata", "missingness_signal"}:
         return True
+    # Structural context can be retained as a diagnostic co-travelling
+    # feature when explicitly permitted and backed by a response contract. It
+    # remains non-directional and cannot become V551 relation evidence.
+    if semantic_role == "structural_context":
+        return not bool(
+            question_meta.get("allowed_as_attitude_cloud_feature")
+            and question_meta.get("response_semantics_contract_hash")
+        )
     if semantic_subrole in {
         "geographic_region_coordinate",
         "geographic_place_size_coordinate",
@@ -729,11 +748,24 @@ def _emit_attitude_cloud_pair(anchor_df: pd.DataFrame, anchor_meta: dict[str, An
         return []
     if not anchor_meta.get("question_use_contract_joined") or not candidate_meta.get("question_use_contract_joined"):
         return []
-    if not anchor_meta.get("source_structure_fields_joined") or not candidate_meta.get("source_structure_fields_joined"):
+    # Structural mapping is required for V551 semantic evidence, but is not
+    # required to observe a diagnostic same-respondent co-travel row. The
+    # explicit diagnostic permissions and response contracts still apply.
+    if (
+        not anchor_meta.get("source_structure_fields_joined")
+        or not candidate_meta.get("source_structure_fields_joined")
+    ) and not (
+        anchor_meta.get("allowed_as_attitude_cloud_anchor")
+        and candidate_meta.get("allowed_as_attitude_cloud_feature")
+        and anchor_meta.get("response_semantics_contract_hash")
+        and candidate_meta.get("response_semantics_contract_hash")
+    ):
         return []
     if not anchor_meta.get("allowed_as_attitude_cloud_anchor") or not candidate_meta.get("allowed_as_attitude_cloud_feature"):
         return []
-    if anchor_meta.get("semantic_role") != "RELATION_EVIDENCE" or candidate_meta.get("semantic_role") != "RELATION_EVIDENCE":
+    if anchor_meta.get("semantic_role") != "RELATION_EVIDENCE":
+        return []
+    if candidate_meta.get("semantic_role") not in {"RELATION_EVIDENCE", "STRUCTURAL_CONTEXT"}:
         return []
     return [
         {

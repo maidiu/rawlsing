@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from datetime import date, datetime, timezone
 from pathlib import Path
-import json, logging, os, re, sys, time, warnings
+import hashlib, json, logging, os, re, sys, time, warnings
 from typing import Any
 
 import numpy as np

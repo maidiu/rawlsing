@@ -262,9 +262,18 @@ def derive_question_use_eligibility(row: Mapping[str, Any]) -> dict[str, Any]:
         and not review_required
     )
     uses["allowed_as_branch_position_signature"] = uses["allowed_as_demographic_predictor"]
-    uses["allowed_as_branch_relation_cosignature"] = v551
-    uses["allowed_as_attitude_cloud_anchor"] = v551
-    uses["allowed_as_attitude_cloud_feature"] = v551
+    # Diagnostic co-travel is separate from V551 certification. It requires a
+    # governed response contract and an allowed substantive/context role, but
+    # a semantic block must not erase lawful same-respondent observation.
+    diagnostic_observable = bool(
+        not forbidden
+        and _clean(row.get("response_semantics_contract_hash"))
+        and _clean(row.get("response_topology")).lower()
+        not in {"", "administrative_context", "missingness_control"}
+    )
+    uses["allowed_as_branch_relation_cosignature"] = bool(diagnostic_observable and relation)
+    uses["allowed_as_attitude_cloud_anchor"] = bool(diagnostic_observable and relation)
+    uses["allowed_as_attitude_cloud_feature"] = bool(diagnostic_observable and (relation or context))
     uses["allowed_as_v551_relation_evidence"] = v551
     uses["allowed_as_parent_prior_coordinate"] = uses["allowed_as_demographic_predictor"]
     uses["allowed_as_temporal_pressure_indicator"] = (
