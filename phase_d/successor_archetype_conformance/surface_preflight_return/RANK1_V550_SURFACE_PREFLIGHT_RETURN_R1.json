@@ -1,0 +1,88 @@
+{
+  "terminal": "RANK1_V550_SURFACES_ABSENT",
+  "ancestry_commit": "93fbd1ee96dcc167d578de454ea6cd9bd67d668a",
+  "execution_commit": "5b0a89474d17ba962fdaf099d7e1df8bf154cffa",
+  "candidate": {
+    "frozen_rank": 1,
+    "candidate_key": "O12C3-170d6968c83720edbae8f80a",
+    "source_family": "LiTS",
+    "wave": "II",
+    "country_code": "SE",
+    "variables": ["q306c", "q305_1"],
+    "implementation_ids": [
+      "question_impl.phase0.54dc36b801f9ed1afa95",
+      "question_impl.phase0.8933c50db39510c76cd8"
+    ]
+  },
+  "frozen_candidate_order": {
+    "path": "phase_d/successor_archetype_conformance/freeze/FROZEN_CANDIDATE_ORDER_R1.csv",
+    "sha256": "5ae32c7cdfd68d3e0c1816abd85fc6f77387f65a383e5b860d2ab9cf814235b2",
+    "verified": true
+  },
+  "matcher": {
+    "path": "phase_d/code/compile_positioned_relational_evidence.py",
+    "sha256_at_current_head": "ed242f8b14eefefb72e3290511ba6f7f0065219f38cb491539c876a0ea1541b1",
+    "sha256_at_93fbd1ee": "ed242f8b14eefefb72e3290511ba6f7f0065219f38cb491539c876a0ea1541b1",
+    "unchanged": true
+  },
+  "bounded_v550_scope": {
+    "scope_root": "/tmp/successor_run/lits_ii_retry_result_1_min/v550/shard_runs/lits_ii_successor_retry_rank1_min/LiTS_II_SE",
+    "run_id": "lits_ii_successor_retry_rank1_min",
+    "prepared_substrate_manifest": "checkpoints/respondent_substrate/source=LiTS/wave=II/country_code=SE/v550_shared_respondent_substrate_manifest.json",
+    "prepared_rows": 4500,
+    "distinct_respondents": 900,
+    "q306c_respondents": 900,
+    "q305_1_respondents": 900,
+    "both_governed_nonmissing_respondents": 838,
+    "identity_key": "respondent_id_norm",
+    "prepared_required": true,
+    "database_access_forbidden": true,
+    "same_respondent_manifest_verified": true
+  },
+  "authorized_native_v550_surface_inventory": [
+    {
+      "surface": "branch_relation_co_signature",
+      "relative_path": "clouds/branch_relation_co_signature.parquet",
+      "physical_size_bytes": 74112,
+      "aggregate_row_count": 0,
+      "materialized_lawful_evidence": false
+    },
+    {
+      "surface": "branch_co_signature",
+      "relative_path": "clouds/branch_co_signature.parquet",
+      "physical_size_bytes": 74112,
+      "aggregate_row_count": 0,
+      "materialized_lawful_evidence": false
+    },
+    {
+      "surface": "question_response_attitude_cloud",
+      "relative_path": "clouds/question_response_attitude_cloud.parquet",
+      "physical_size_bytes": 37711,
+      "aggregate_row_count": 0,
+      "materialized_lawful_evidence": false
+    }
+  ],
+  "matcher_result": {
+    "executed": false,
+    "reason": "The three authorized native V550 surfaces were emitted as zero-row schemas. There was no lawful empirical row to scan for exact co-occurrence of the frozen implementation IDs.",
+    "exact_match": false,
+    "negative_empirical_result": false
+  },
+  "boundary_confirmations": {
+    "v550j_used": false,
+    "database_opened": false,
+    "rank2_executed": false,
+    "v552_started": false,
+    "v552j_started": false,
+    "v553_started": false,
+    "successor_validator_changed": false
+  },
+  "privacy": {
+    "result": "PASS",
+    "respondent_rows": false,
+    "respondent_ids": false,
+    "raw_response_values": false,
+    "database_material": false,
+    "secrets": false
+  }
+}
