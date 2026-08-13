@@ -157,10 +157,17 @@ def scan_scope(scope_root: Path, registry_dir=None, source="", wave="") -> tuple
         # creates a large, redundant row scan and can swamp the aggregator.
         # Evidence remains sourced from the diagnostic/joint, distribution,
         # position, branch, cloud, and audit surfaces below.
-        if any(part.lower() in {"core", "bridge", "filters", "checkpoints"} for part in path.relative_to(scope_root).parts[:-1]):
+        rel_parts = path.relative_to(scope_root).parts
+        if any(part.lower() in {"core", "bridge", "filters"} for part in rel_parts[:-1]):
             continue
-        parts = {part.lower() for part in path.relative_to(scope_root).parts[:-1]}
-        evidence_surface = "joint_patterns" in parts
+        parts = {part.lower() for part in rel_parts[:-1]}
+        artifact_name = path.stem.lower()
+        evidence_names = {
+            "branch_relation_co_signature",
+            "branch_co_signature",
+            "question_response_attitude_cloud",
+        }
+        evidence_surface = "joint_patterns" in parts or artifact_name in evidence_names
         if not evidence_surface:
             continue
         try: df = _read_frame(path)
