@@ -1062,7 +1062,6 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
     downstream-authority flag.
     """
     root_path = Path(root)
-<<<<<<< ours
     readiness_path = root_path / "manifest/v551j_readiness_report.json"
     contract_path = root_path / "manifest/v551j_packet_contract_validation_report.json"
     manifest_path = root_path / "manifest/manifest.json"
@@ -1076,31 +1075,9 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
     readiness = _load_json(readiness_path)
     contract = _load_json(contract_path)
     manifest = _load_json(manifest_path)
-=======
-    current_readiness_path = root_path / "manifest/v551j_readiness_report.json"
-    current_contract_path = root_path / "manifest/v551j_packet_contract_validation_report.json"
-    manifest_path = root_path / "manifest/manifest.json"
-    packet_path = root_path / "manifest/v551j_packet_readiness_report.json"
-    review_path = root_path / "manifest/v551j_review_readiness_report.json"
-    cert_path = root_path / "manifest/v551j_certification_readiness_report.json"
-    provenance_path = root_path / "manifest/v551j_input_provenance_manifest.json"
-    certified_index_path = root_path / "packets/v551j_certified_joint_packet_index.parquet"
-    legacy_certified_index_path = root_path / "packets/v551j_certified_packet_index.parquet"
-    reviewable_sidecar_path = root_path / "packets/v551j_review_surface.parquet"
-    legacy_reviewable_sidecar_path = root_path / "packets/v551j_reviewable_evidence_sidecar.parquet"
-    candidate_index_path = root_path / "packets/v551j_joint_packet_candidate_index.parquet"
-
-    current_readiness = _load_json(current_readiness_path)
-    current_contract = _load_json(current_contract_path)
-    manifest = _load_json(manifest_path)
-    packet = _load_json(packet_path) or current_readiness
-    review = _load_json(review_path) or current_readiness
-    cert = _load_json(cert_path) or current_readiness
->>>>>>> theirs
     provenance = _load_json(provenance_path)
     manifest_counts = manifest.get("row_counts", {}) if isinstance(manifest.get("row_counts"), dict) else {}
 
-<<<<<<< ours
     candidate_rows = int(
         readiness.get("candidate_packet_count")
         or manifest_counts.get("candidate")
@@ -1151,55 +1128,6 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
         "component_index": component_path,
         "certified_joint_packet_index": certified_joint_path,
         "review_surface": review_surface_path,
-=======
-    manifest_counts = manifest.get("row_counts", {}) if isinstance(manifest.get("row_counts"), dict) else {}
-    certified_index_resolved = certified_index_path if certified_index_path.exists() else legacy_certified_index_path
-    reviewable_sidecar_resolved = reviewable_sidecar_path if reviewable_sidecar_path.exists() else legacy_reviewable_sidecar_path
-    packet_rows = int(
-        packet.get("candidate_packet_rows")
-        or packet.get("candidate_packet_count")
-        or manifest_counts.get("candidate")
-        or _parquet_rows(candidate_index_path)
-        or 0
-    )
-    review_rows = int(
-        review.get("review_surface_rows")
-        or manifest_counts.get("review")
-        or _parquet_rows(reviewable_sidecar_path)
-        or _parquet_rows(legacy_reviewable_sidecar_path)
-        or 0
-    )
-    certified_rows = int(
-        cert.get("certified_packet_rows")
-        or cert.get("certified_packet_count")
-        or manifest_counts.get("certified")
-        or _parquet_rows(certified_index_resolved)
-        or 0
-    )
-    packet_status = str(packet.get("final_status") or "")
-    review_status = str(review.get("final_status") or "")
-    certification_status = str(cert.get("final_status") or "")
-    provenance_status = str(provenance.get("final_status") or packet_status or "")
-    candidate_contract_valid = _truthy(
-        packet.get("candidate_contract_valid")
-        if "candidate_contract_valid" in packet
-        else current_contract.get("candidate_contract_valid")
-    )
-    component_contract_valid = _truthy(
-        packet.get("component_contract_valid")
-        if "component_contract_valid" in packet
-        else current_contract.get("component_contract_valid")
-    )
-
-    required_artifacts = {
-        "current_readiness": current_readiness_path,
-        "packet_contract_validation": current_contract_path,
-        "manifest": manifest_path,
-        "input_provenance": provenance_path,
-        "candidate_packet_index": candidate_index_path,
-        "certified_packet_index": certified_index_resolved,
-        "reviewable_evidence_sidecar": reviewable_sidecar_resolved,
->>>>>>> theirs
     }
     missing_artifacts = [name for name, path in required_artifacts.items() if not path.exists()]
     diagnostic_statuses = {
@@ -1232,13 +1160,7 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
         failure_reason = "v551j_candidate_contract_invalid"
     elif not component_contract_valid:
         failure_reason = "v551j_component_contract_invalid"
-<<<<<<< ours
     elif candidate_rows <= 0:
-=======
-    elif packet_status.upper().startswith("NOT_READY"):
-        failure_reason = "v551j_packet_readiness_blocked"
-    elif packet_rows <= 0:
->>>>>>> theirs
         failure_reason = "v551j_candidate_packet_rows_zero"
     elif component_rows <= 0:
         failure_reason = "v551j_component_rows_zero"
@@ -1268,26 +1190,8 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
         "certified_ready": certified_ready,
         "review_or_context_ready": review_or_context_ready,
         "required_artifacts": {name: str(path) for name, path in required_artifacts.items()},
-        "compatibility_aliases": {
-            "legacy_packet_readiness": str(packet_path),
-            "legacy_review_readiness": str(review_path),
-            "legacy_certification_readiness": str(cert_path),
-            "legacy_certified_packet_index": str(legacy_certified_index_path),
-            "legacy_reviewable_evidence_sidecar": str(legacy_reviewable_sidecar_path),
-            "current_readiness": str(current_readiness_path),
-            "current_packet_contract_validation": str(current_contract_path),
-            "current_candidate_packet_index": str(candidate_index_path),
-            "current_review_surface": str(reviewable_sidecar_path),
-            "current_certified_joint_packet_index": str(certified_index_path),
-        },
         "missing_required_artifacts": missing_artifacts,
-<<<<<<< ours
         "passed": diagnostic_contract_valid,
-=======
-        "candidate_contract_valid": candidate_contract_valid,
-        "component_contract_valid": component_contract_valid,
-        "passed": not failure_reason,
->>>>>>> theirs
         "failure_reason": failure_reason,
     }
 
