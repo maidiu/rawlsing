@@ -1,0 +1,799 @@
+# Numeric Formula Registry
+#
+# This registry is the machine-readable authority for numeric-first wrappers and
+# composite scores. Every emitted score or thresholded wrapper should be able to
+# point back to one of these entries.
+
+registry_version: "v1"
+doctrine: "Numbers first; categories route; wrappers explain; audits forbid."
+status: draft
+component_polarity_definition: "effect_on_output_score, not evidentiary goodness"
+
+required_formula_fields:
+  - formula_id
+  - formula_version
+  - output_field
+  - score_family
+  - score_interpretation
+  - scale
+  - higher_is_better
+  - decision_role
+  - inputs
+  - input_scales
+  - denominator_policy
+  - null_policy
+  - formula_expression
+  - implementation_function
+  - thresholds
+  - allowed_artifacts
+
+score_families:
+  support_adequacy:
+    comparable_only_within_family: true
+    higher_is_better: true
+  prevalence:
+    comparable_only_within_family: true
+    higher_is_better: true
+  confidence:
+    comparable_only_within_family: true
+    higher_is_better: true
+  directness:
+    comparable_only_within_family: true
+    higher_is_better: true
+  association_strength:
+    comparable_only_within_family: true
+    higher_is_better: true
+  risk_penalty:
+    comparable_only_within_family: true
+    higher_is_better: false
+  contradiction_strength:
+    comparable_only_within_family: true
+    higher_is_better: true
+  directionality:
+    comparable_only_within_family: true
+    higher_is_better: true
+  resolution:
+    comparable_only_within_family: true
+    higher_is_better: true
+
+hard_gate_policy:
+  hard_gates_override_scores: true
+  blocked_rows_may_emit_scores_for_diagnostics: true
+  blocked_rows_must_not_be_eligible_for_downstream_evidence: true
+  category_only_evidence_must_fail_closed: true
+
+formulas:
+  - formula_id: support_score_v1
+    formula_version: "v1"
+    output_field: support_score
+    score_family: support_adequacy
+    score_interpretation: "Continuous proximity to minimum empirical support adequacy; threshold clearance is handled separately."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: eligibility
+    inputs:
+      - support_n_unweighted
+      - support_n_weighted
+      - support_ratio_margin
+      - support_ratio
+      - effective_n
+    metadata_inputs:
+      - support_threshold
+    denominator_policy: "support_threshold"
+    null_policy: "missing if counts or threshold unavailable"
+    formula_expression: "clamp(0, 100, 100 * min(1, support_ratio) + 10 * sign(support_ratio_margin))"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.support_score_v1"
+    input_scales:
+      support_n_unweighted: count
+      support_n_weighted: count
+      support_ratio_margin: ratio
+      support_ratio: ratio
+      effective_n: count
+      support_threshold: count
+    component_polarity:
+      support_n_unweighted: positive
+      support_n_weighted: positive
+      support_ratio_margin: positive
+      support_ratio: positive
+      effective_n: positive
+    hard_gate_rules:
+      - "support_n_unweighted == 0 -> blocked_zero_support"
+      - "support_threshold is null -> blocked_missing_threshold"
+    thresholds:
+      low: 25
+      medium: 50
+      high: 75
+    monotonicity_expectations:
+      - "higher support_ratio should not lower support_score"
+      - "larger support_ratio_margin should not lower support_score"
+    allowed_artifacts:
+      - v550
+      - v551
+      - v552
+      - v550j
+      - v553
+
+  - formula_id: prevalence_score_v1
+    formula_version: "v1"
+    output_field: prevalence_score
+    score_family: prevalence
+    score_interpretation: "How common this response/pattern is in the relevant population."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: context
+    inputs:
+      - population_share
+      - n_unweighted
+      - n_weighted
+      - effective_n
+    denominator_policy: "population_or_wave_total"
+    null_policy: "missing if prevalence basis unavailable"
+    formula_expression: "clamp(0, 100, 100 * population_share)"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.prevalence_score_v1"
+    input_scales:
+      population_share: ratio
+      n_unweighted: count
+      n_weighted: count
+      effective_n: count
+    component_polarity:
+      population_share: positive
+      n_unweighted: positive
+      n_weighted: positive
+      effective_n: positive
+    thresholds:
+      low: 20
+      medium: 50
+      high: 80
+    monotonicity_expectations:
+      - "higher population_share should not lower prevalence_score"
+    allowed_artifacts:
+      - v550
+      - v550j
+      - v553
+
+  - formula_id: pattern_probability_v1
+    formula_version: "v1"
+    output_field: pattern_probability
+    score_family: prevalence
+    score_interpretation: "Share of respondents in the family that realize this exact joint pattern."
+    scale: "0-1"
+    higher_is_better: true
+    decision_role: context
+    inputs:
+      - pattern_count
+      - family_respondent_count
+    denominator_policy: "family_respondent_count"
+    null_policy: "missing if family denominator unavailable"
+    formula_expression: "clamp(0, 1, pattern_count / family_respondent_count)"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.pattern_probability_v1"
+    input_scales:
+      pattern_count: count
+      family_respondent_count: count
+    component_polarity:
+      pattern_count: positive
+      family_respondent_count: positive
+    thresholds:
+      low: 0.05
+      medium: 0.15
+      high: 0.30
+    monotonicity_expectations:
+      - "higher pattern_count should not lower pattern_probability"
+    allowed_artifacts:
+      - v550j
+      - v553
+
+  - formula_id: completion_rate_v1
+    formula_version: "v1"
+    output_field: completion_rate
+    score_family: prevalence
+    score_interpretation: "Fraction of approved family items answered by the respondent pattern."
+    scale: "0-1"
+    higher_is_better: true
+    decision_role: context
+    inputs:
+      - n_items_answered
+      - n_family_items
+    denominator_policy: "family_item_count"
+    null_policy: "missing if family item count unavailable"
+    formula_expression: "clamp(0, 1, n_items_answered / n_family_items)"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.completion_rate_v1"
+    input_scales:
+      n_items_answered: count
+      n_family_items: count
+    component_polarity:
+      n_items_answered: positive
+      n_family_items: positive
+    thresholds:
+      low: 0.50
+      medium: 0.70
+      high: 0.90
+    monotonicity_expectations:
+      - "higher n_items_answered should not lower completion_rate"
+    allowed_artifacts:
+      - v550j
+      - v553
+
+  - formula_id: missingness_rate_v1
+    formula_version: "v1"
+    output_field: missingness_rate
+    score_family: risk_penalty
+    score_interpretation: "Fraction of approved family items not answered by the respondent pattern."
+    scale: "0-1"
+    higher_is_better: false
+    decision_role: penalty
+    inputs:
+      - completion_rate
+    denominator_policy: "family_item_count"
+    null_policy: "missing if completion rate unavailable"
+    formula_expression: "clamp(0, 1, 1 - completion_rate)"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.missingness_rate_v1"
+    input_scales:
+      completion_rate: ratio
+    component_polarity:
+      completion_rate: negative
+    thresholds:
+      low: 0.20
+      medium: 0.40
+      high: 0.60
+    monotonicity_expectations:
+      - "higher completion_rate should not raise missingness_rate"
+    allowed_artifacts:
+      - v550j
+      - v553
+
+  - formula_id: effective_n_v1
+    formula_version: "v1"
+    output_field: effective_n
+    score_family: confidence
+    score_interpretation: "Kish-style effective sample size for the respondent pattern."
+    scale: "count"
+    higher_is_better: true
+    decision_role: context
+    inputs:
+      - sum_weights
+      - sum_weight_squares
+    denominator_policy: "sum_weight_squares"
+    null_policy: "missing if weights unavailable"
+    formula_expression: "(sum_weights * sum_weights) / sum_weight_squares"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.effective_n_v1"
+    input_scales:
+      sum_weights: count
+      sum_weight_squares: count
+    component_polarity:
+      sum_weights: positive
+      sum_weight_squares: negative
+    thresholds:
+      low: 25
+      medium: 50
+      high: 100
+    monotonicity_expectations:
+      - "higher sum_weights should not lower effective_n"
+    allowed_artifacts:
+      - v550j
+      - v553
+
+  - formula_id: effective_n_ratio_v1
+    formula_version: "v1"
+    output_field: effective_n_ratio
+    score_family: confidence
+    score_interpretation: "Effective sample size relative to unweighted respondent count."
+    scale: "0-1"
+    higher_is_better: true
+    decision_role: context
+    inputs:
+      - effective_n
+      - n_unweighted
+    denominator_policy: "n_unweighted"
+    null_policy: "missing if unweighted count unavailable"
+    formula_expression: "clamp(0, 1, effective_n / n_unweighted)"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.effective_n_ratio_v1"
+    input_scales:
+      effective_n: count
+      n_unweighted: count
+    component_polarity:
+      effective_n: positive
+      n_unweighted: positive
+    thresholds:
+      low: 0.50
+      medium: 0.75
+      high: 0.90
+    monotonicity_expectations:
+      - "higher effective_n should not lower effective_n_ratio"
+    allowed_artifacts:
+      - v550j
+      - v553
+
+  - formula_id: confidence_score_v1
+    formula_version: "v1"
+    output_field: confidence_score
+    score_family: confidence
+    score_interpretation: "Composite evidence confidence after hard gates pass."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: routing_and_display
+    inputs:
+      - confidence_component_support
+      - confidence_component_mapping
+      - confidence_component_directionality
+      - confidence_component_weight
+      - confidence_component_missingness
+    gate_inputs:
+      - forbidden_downstream_use
+      - mapping_authority_score
+    denominator_policy: "component_mean_or_weighted_mean"
+    null_policy: "missing if required components unavailable"
+    formula_expression: "weighted_mean([confidence_component_support, confidence_component_mapping, confidence_component_directionality, confidence_component_weight, confidence_component_missingness])"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.confidence_score_v1"
+    input_scales:
+      confidence_component_support: 0-100
+      confidence_component_mapping: 0-100
+      confidence_component_directionality: 0-100
+      confidence_component_weight: 0-100
+      confidence_component_missingness: 0-100
+      forbidden_downstream_use: boolean
+      mapping_authority_score: 0-100
+    component_polarity:
+      confidence_component_support: positive
+      confidence_component_mapping: positive
+      confidence_component_directionality: positive
+      confidence_component_weight: positive
+      confidence_component_missingness: positive
+    hard_gate_rules:
+      - "forbidden_downstream_use == true -> blocked"
+      - "mapping_authority_score below threshold -> demote"
+    thresholds:
+      low: 35
+      medium: 65
+      high: 85
+    monotonicity_expectations:
+      - "higher support component should not lower confidence_score"
+      - "higher mapping component should not lower confidence_score"
+    allowed_artifacts:
+      - v550
+      - v551
+      - v552
+      - v550j
+      - v553
+
+  - formula_id: readiness_score_v1
+    formula_version: "v1"
+    output_field: readiness_score
+    score_family: support_adequacy
+    score_interpretation: "Operational readiness to route the row forward."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: routing
+    inputs:
+      - respondent_count_ratio
+      - mapped_row_ratio
+      - position_coverage_ratio
+      - weight_coverage_ratio
+    denominator_policy: "min_cell_or_wave_total"
+    null_policy: "missing if respondent or mapping coverage unavailable"
+    formula_expression: "weighted_mean([respondent_count_ratio, mapped_row_ratio, position_coverage_ratio, weight_coverage_ratio]) * 100"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.readiness_score_v1"
+    input_scales:
+      respondent_count_ratio: ratio
+      mapped_row_ratio: ratio
+      position_coverage_ratio: ratio
+      weight_coverage_ratio: ratio
+    component_polarity:
+      respondent_count_ratio: positive
+      mapped_row_ratio: positive
+      position_coverage_ratio: positive
+      weight_coverage_ratio: positive
+    thresholds:
+      low: 40
+      medium: 70
+      high: 90
+    monotonicity_expectations:
+      - "higher respondent_count_ratio should not lower readiness_score"
+      - "higher mapped_row_ratio should not lower readiness_score"
+    allowed_artifacts:
+      - v550
+      - v553
+
+  - formula_id: weight_validity_score_v1
+    formula_version: "v1"
+    output_field: weight_validity_score
+    score_family: support_adequacy
+    score_interpretation: "Whether weights are valid enough to support weighted inference."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: eligibility
+    inputs:
+      - weight_nonnull_ratio
+      - weight_positive_ratio
+      - weight_variability_score
+      - weight_concentration_risk_score
+      - effective_n_ratio
+    gate_inputs:
+      - weight_status
+      - weighted_count_validation_passed
+    denominator_policy: "total_rows"
+    null_policy: "missing if weights absent"
+    formula_expression: "weighted_mean([weight_nonnull_ratio, weight_positive_ratio, weight_variability_score, 1 - weight_concentration_risk_score, effective_n_ratio]) * 100"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.weight_validity_score_v1"
+    input_scales:
+      weight_nonnull_ratio: ratio
+      weight_positive_ratio: ratio
+      weight_variability_score: ratio
+      weight_concentration_risk_score: ratio
+      effective_n_ratio: ratio
+      weight_status: categorical
+      weighted_count_validation_passed: boolean
+    component_polarity:
+      weight_nonnull_ratio: positive
+      weight_positive_ratio: positive
+      weight_variability_score: positive
+      weight_concentration_risk_score: negative
+      effective_n_ratio: positive
+    hard_gate_rules:
+      - "weight_status == weighted and weighted_count_validation_passed == false -> blocked_weight_fallback_required"
+    thresholds:
+      low: 25
+      medium: 60
+      high: 85
+    monotonicity_expectations:
+      - "higher positive weight ratio should not lower weight_validity_score"
+    allowed_artifacts:
+      - v550
+      - v550j
+      - v553
+
+  - formula_id: association_strength_score_v1
+    formula_version: "v1"
+    output_field: association_strength_score
+    score_family: association_strength
+    score_interpretation: "Magnitude of association after support and overlap checks."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: ranking
+    inputs:
+      - p_response_given_anchor
+      - p_response_baseline
+      - difference_from_baseline
+      - lift
+      - log_lift_capped
+      - mutual_information
+      - normalized_mutual_information
+      - n_overlap
+      - support_ratio
+      - association_reliability_ratio
+    denominator_policy: "overlap_or_anchor_support"
+    null_policy: "missing if overlap or probabilities unavailable"
+    formula_expression: "weighted_mean([normalized_mutual_information, min(1, abs(difference_from_baseline)), min(1, log_lift_capped), support_ratio, association_reliability_ratio]) * 100"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.association_strength_score_v1"
+    input_scales:
+      p_response_given_anchor: ratio
+      p_response_baseline: ratio
+      difference_from_baseline: ratio
+      lift: ratio
+      log_lift_capped: ratio
+      mutual_information: raw
+      normalized_mutual_information: ratio
+      n_overlap: count
+      support_ratio: ratio
+      association_reliability_ratio: ratio
+    component_polarity:
+      p_response_given_anchor: positive
+      p_response_baseline: negative
+      difference_from_baseline: signed
+      lift: positive
+      log_lift_capped: positive
+      mutual_information: positive
+      normalized_mutual_information: positive
+      n_overlap: positive
+      support_ratio: positive
+      association_reliability_ratio: positive
+    hard_gate_rules:
+      - "n_overlap == 0 -> blocked_no_overlap"
+    thresholds:
+      low: 20
+      medium: 55
+      high: 80
+    monotonicity_expectations:
+      - "higher mutual_information should not lower association_strength_score"
+      - "higher normalized_mutual_information should not lower association_strength_score"
+    allowed_artifacts:
+      - v550
+      - v550j
+      - v553
+
+  - formula_id: cardinality_pressure_score_v1
+    formula_version: "v1"
+    output_field: cardinality_pressure_score
+    score_family: risk_penalty
+    score_interpretation: "Risk penalty for high-cardinality surfaces that are hard to interpret or stabilize."
+    scale: "0-100"
+    higher_is_better: false
+    decision_role: penalty
+    inputs:
+      - feature_cardinality
+      - response_cardinality
+      - cardinality_threshold
+      - cardinality_ratio
+    denominator_policy: "threshold_or_unique_value_count"
+    null_policy: "missing if unique counts unavailable"
+    formula_expression: "clamp(0, 100, 100 * cardinality_ratio)"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.cardinality_pressure_score_v1"
+    input_scales:
+      feature_cardinality: count
+      response_cardinality: count
+      cardinality_threshold: count
+      cardinality_ratio: ratio
+    component_polarity:
+      feature_cardinality: positive
+      response_cardinality: positive
+      cardinality_threshold: negative
+      cardinality_ratio: positive
+    thresholds:
+      low: 30
+      medium: 60
+      high: 85
+    monotonicity_expectations:
+      - "higher cardinality_ratio should not lower cardinality_pressure_score"
+    allowed_artifacts:
+      - v550
+      - v553
+
+  - formula_id: directionality_score_v1
+    formula_version: "v1"
+    output_field: directionality_score
+    score_family: directionality
+    score_interpretation: "Strength and authority of signed direction in the row."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: routing_and_display
+    inputs:
+      - positive_directional_mass_score
+      - negative_directional_mass_score
+      - neutral_directional_mass
+      - directionality_coverage
+      - directionality_margin
+    denominator_policy: "directional_mass_total"
+    null_policy: "missing if signed mass unavailable"
+    formula_expression: "weighted_mean([directionality_coverage, abs(directionality_margin), positive_directional_mass_score, negative_directional_mass_score]) * 100"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.directionality_score_v1"
+    input_scales:
+      positive_directional_mass_score: ratio
+      negative_directional_mass_score: ratio
+      neutral_directional_mass: ratio
+      directionality_coverage: ratio
+      directionality_margin: ratio
+    component_polarity:
+      positive_directional_mass_score: positive
+      negative_directional_mass_score: positive
+      neutral_directional_mass: neutral
+      directionality_coverage: positive
+      directionality_margin: positive
+    thresholds:
+      low: 20
+      medium: 55
+      high: 80
+    monotonicity_expectations:
+      - "higher directionality_coverage should not lower directionality_score"
+    allowed_artifacts:
+      - v551
+      - v552
+      - v553
+
+  - formula_id: contradiction_score_v1
+    formula_version: "v1"
+    output_field: strict_contradiction_score
+    score_family: contradiction_strength
+    score_interpretation: "Strict contradiction strength only from the tensor-like cross-axis gate."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: ranking
+    inputs:
+      - cross_axis_opposition_ratio
+      - positive_atom_support_score
+      - negative_atom_support_score
+      - support_ratio
+      - directionality_coverage
+      - respondent_joint_pattern_support_score
+    metadata_inputs:
+      - same_axis_mixture_score
+    gate_inputs:
+      - strict_tensor_gate_passed
+    denominator_policy: "cross_axis_or_tensor_support"
+    null_policy: "missing if strict contradiction inputs unavailable"
+    formula_expression: "weighted_mean([cross_axis_opposition_ratio, positive_atom_support_score, negative_atom_support_score, support_ratio, directionality_coverage, respondent_joint_pattern_support_score]) * 100"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.strict_contradiction_score_v1"
+    input_scales:
+      cross_axis_opposition_ratio: ratio
+      positive_atom_support_score: ratio
+      negative_atom_support_score: ratio
+      support_ratio: ratio
+      directionality_coverage: ratio
+      respondent_joint_pattern_support_score: ratio
+      same_axis_mixture_score: 0-100
+      strict_tensor_gate_passed: boolean
+    component_polarity:
+      cross_axis_opposition_ratio: positive
+      positive_atom_support_score: positive
+      negative_atom_support_score: positive
+      support_ratio: positive
+      directionality_coverage: positive
+      respondent_joint_pattern_support_score: positive
+    hard_gate_rules:
+      - "strict_tensor_gate_passed == false -> blocked_no_strict_tensor"
+    allowed_source_artifacts:
+      - contradiction_tensor
+      - respondent_joint_pattern_index
+    forbidden_source_artifacts_for_strict:
+      - contradiction_surface
+    thresholds:
+      low: 25
+      medium: 60
+      high: 85
+    monotonicity_expectations:
+      - "higher opposing mass should not lower strict_contradiction_score"
+    allowed_artifacts:
+      - v552
+      - v553
+
+  - formula_id: semantic_resolution_score_v1
+    formula_version: "v1"
+    output_field: semantic_resolution_score
+    score_family: resolution
+    score_interpretation: "How well the row resolves to a registry-authorized semantic object."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: mapping
+    inputs:
+      - registry_match_score
+      - mapping_authority_score
+      - inference_rule_confidence
+    gate_inputs:
+      - requires_registry_resolution
+    denominator_policy: "registry_and_mapping_authority"
+    null_policy: "missing if registry basis unavailable"
+    formula_expression: "weighted_mean([registry_match_score, mapping_authority_score, inference_rule_confidence])"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.semantic_resolution_score_v1"
+    input_scales:
+      registry_match_score: 0-100
+      mapping_authority_score: 0-100
+      inference_rule_confidence: 0-100
+      requires_registry_resolution: boolean
+    component_polarity:
+      registry_match_score: positive
+      mapping_authority_score: positive
+      inference_rule_confidence: positive
+    hard_gate_rules:
+      - "requires_registry_resolution == true and registry_match_score below threshold -> blocked_pending_registry"
+    thresholds:
+      low: 30
+      medium: 65
+      high: 90
+    monotonicity_expectations:
+      - "higher registry_match_score should not lower semantic_resolution_score"
+    allowed_artifacts:
+      - v551
+      - v552
+      - v553
+
+  - formula_id: priority_score_v1
+    formula_version: "v1"
+    output_field: priority_score
+    score_family: support_adequacy
+    score_interpretation: "Retrieval usefulness, not truth strength."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: retrieval
+    inputs:
+      - priority_component_support
+      - priority_component_determinicity
+      - priority_component_association
+      - priority_component_mapping
+      - priority_component_temporal_comparability
+    denominator_policy: "weighted_component_mean"
+    null_policy: "missing if priority components unavailable"
+    formula_expression: "weighted_mean([priority_component_support, priority_component_determinicity, priority_component_association, priority_component_mapping, priority_component_temporal_comparability])"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.priority_score_v1"
+    input_scales:
+      priority_component_support: 0-100
+      priority_component_determinicity: 0-100
+      priority_component_association: 0-100
+      priority_component_mapping: 0-100
+      priority_component_temporal_comparability: 0-100
+    component_polarity:
+      priority_component_support: positive
+      priority_component_determinicity: positive
+      priority_component_association: positive
+      priority_component_mapping: positive
+      priority_component_temporal_comparability: positive
+    thresholds:
+      low: 30
+      medium: 60
+      high: 85
+    monotonicity_expectations:
+      - "higher support component should not lower priority_score"
+      - "higher association component should not lower priority_score"
+    allowed_artifacts:
+      - v553
+
+  - formula_id: slice_match_score_v1
+    formula_version: "v1"
+    output_field: slice_match_score
+    score_family: resolution
+    score_interpretation: "How closely a requested slice matches available evidence."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: routing
+    inputs:
+      - fields_requested_count
+      - fields_matched_count
+      - fields_dropped_count
+      - field_weighted_match_ratio
+      - relaxation_depth
+      - support_penalty
+      - confidence_penalty
+    denominator_policy: "requested_fields_count"
+    null_policy: "missing if field counts unavailable"
+    formula_expression: "weighted_mean([field_weighted_match_ratio, 1 - relaxation_depth, 1 - support_penalty, 1 - confidence_penalty]) * 100"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.slice_match_score_v1"
+    input_scales:
+      fields_requested_count: count
+      fields_matched_count: count
+      fields_dropped_count: count
+      field_weighted_match_ratio: ratio
+      relaxation_depth: ratio
+      support_penalty: ratio
+      confidence_penalty: ratio
+    component_polarity:
+      fields_requested_count: positive
+      fields_matched_count: positive
+      fields_dropped_count: negative
+      field_weighted_match_ratio: positive
+      relaxation_depth: negative
+      support_penalty: negative
+      confidence_penalty: negative
+    thresholds:
+      low: 35
+      medium: 70
+      high: 92
+    monotonicity_expectations:
+      - "higher field_weighted_match_ratio should not lower slice_match_score"
+    allowed_artifacts:
+      - v553
+
+  - formula_id: temporal_comparability_score_v1
+    formula_version: "v1"
+    output_field: temporal_comparability_score
+    score_family: resolution
+    score_interpretation: "How safely two waves can be compared."
+    scale: "0-100"
+    higher_is_better: true
+    decision_role: comparison
+    inputs:
+      - same_var_score
+      - family_overlap_score
+      - wording_harmonization_score
+      - event_context_coverage_score
+    metadata_inputs:
+      - event_override_score
+    denominator_policy: "wave_pair_or_family_overlap"
+    null_policy: "missing if comparability basis unavailable"
+    formula_expression: "weighted_mean([same_var_score, family_overlap_score, wording_harmonization_score, event_context_coverage_score])"
+    implementation_function: "data.ddm_build_copy.numeric_formulas.temporal_comparability_score_v1"
+    input_scales:
+      same_var_score: 0-100
+      family_overlap_score: 0-100
+      wording_harmonization_score: 0-100
+      event_context_coverage_score: 0-100
+      event_override_score: 0-100
+    component_polarity:
+      same_var_score: positive
+      family_overlap_score: positive
+      wording_harmonization_score: positive
+      event_context_coverage_score: positive
+    thresholds:
+      low: 25
+      medium: 60
+      high: 85
+    monotonicity_expectations:
+      - "higher wording_harmonization_score should not lower temporal_comparability_score"
+    allowed_artifacts:
+      - v553
