@@ -23,5 +23,25 @@
   },
   "post_repair_progress": "V550 reached question processing and completed questions 1-6 before stop",
   "post_repair_hot_stack": "data/ddm_build_copy/ddm_survey_identity.py:_token line 33 inside regex substitution, during V550 question processing; not full-map semantic indexing",
-  "post_repair_output_root": "data/ddm_repository_copy/phase_d_m6_smoke/20260813T111000Z/evs_1981_BE"
+  "post_repair_output_root": "data/ddm_repository_copy/phase_d_m6_smoke/20260813T111000Z/evs_1981_BE",
+  "perf1c": {
+    "status": "PASS",
+    "evs_scoped_rows": 163,
+    "original_wave_populated": 0,
+    "original_canonical_wave_populated": 0,
+    "effective_wave_populated": 163,
+    "resolution_basis": "EXACT_SOURCE_FILE_WAVE",
+    "scoped_semantics_index_key_count": 6520,
+    "parent_sha256": "971abaeaa334ab7025f7619d88da196567ac0f5314ecf5f97e745f82601eaaab",
+    "post_repair_result": {
+      "status": "BLOCKED_SECOND_HOTSPOT",
+      "effective_wave_resolution_basis_count": {
+        "EXACT_SOURCE_FILE_WAVE": 163
+      },
+      "scoped_semantics_index_key_count": 6520,
+      "progress": "question processing reached questions 1-6",
+      "repeated_stack": "pandas dtype/indexing and subsequent ddm_survey_identity._token regex path during per-question processing; full-map index no longer hot",
+      "downstream_stages_run": false
+    }
+  }
 }

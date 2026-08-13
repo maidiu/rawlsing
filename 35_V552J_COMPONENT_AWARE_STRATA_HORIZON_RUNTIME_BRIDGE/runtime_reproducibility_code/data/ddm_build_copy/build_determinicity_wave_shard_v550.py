@@ -458,6 +458,22 @@ def assert_response_authority_match_gate(audit: pd.DataFrame) -> None:
         raise RuntimeError(f"[V550_REQUIRED_RESPONSE_AUTHORITY_MISSING] {len(blocked)} selected questions require response-option authority but did not match: {sample}")
 
 
+def assert_scoped_response_semantics_index_gate(response_map: pd.DataFrame, lookup: dict) -> None:
+    if response_map.empty or lookup:
+        return
+    original_wave = sum(bool(_semantic_clean(v)) for v in response_map.get("wave", pd.Series(dtype=object)))
+    original_canonical = sum(bool(_semantic_clean(v)) for v in response_map.get("canonical_wave", pd.Series(dtype=object)))
+    effective_wave = sum(bool(_semantic_clean(v)) for v in response_map.get("v550_response_map_effective_canonical_wave", pd.Series(dtype=object)))
+    variable_count = response_map.get("var_code", pd.Series(dtype=object)).astype(str).replace({"nan": ""}).replace("", pd.NA).nunique(dropna=True)
+    value_count = response_map.get("value_code_normalized", pd.Series(dtype=object)).astype(str).replace({"nan": ""}).replace("", pd.NA).nunique(dropna=True)
+    raise RuntimeError(
+        "[V550_SCOPED_RESPONSE_SEMANTICS_INDEX_EMPTY] "
+        f"scoped_rows={len(response_map)} original_wave_populated={original_wave} "
+        f"original_canonical_wave_populated={original_canonical} effective_wave_populated={effective_wave} "
+        f"variable_count={variable_count} response_value_count={value_count} index_key_count={len(lookup)}"
+    )
+
+
 def _lookup_response_semantics_sign_safe(response_map: pd.DataFrame) -> dict[tuple[str, str, str, str], dict[str, Any]]:
     """Build symmetric family/wave/variable keys while preserving response signs."""
     lookup: dict[tuple[str, str, str, str], dict[str, Any]] = {}
@@ -475,8 +491,16 @@ def _lookup_response_semantics_sign_safe(response_map: pd.DataFrame) -> dict[tup
 
         raw_wave = _semantic_clean(row_dict.get("wave"))
         canonical_wave = _semantic_clean(row_dict.get("canonical_wave"))
-        wave_tokens: list[Any] = [raw_wave, canonical_wave]
-        for token in [raw_wave, canonical_wave]:
+        effective_wave = (
+            _semantic_clean(row_dict.get("v550_response_map_effective_canonical_wave"))
+            or canonical_wave
+            or raw_wave
+            or _semantic_clean(row_dict.get("_v550_derived_canonical_wave"))
+        )
+        if not canonical_wave and not raw_wave and effective_wave:
+            canonical_wave = effective_wave
+        wave_tokens: list[Any] = [raw_wave, canonical_wave, effective_wave]
+        for token in [raw_wave, canonical_wave, effective_wave]:
             if not token:
                 continue
             wave_tokens.extend([
@@ -618,6 +642,30 @@ def _filter_response_map_for_wave(
             wave_mask |= frame[column].map(lambda value: bool(_wave_identity_variants(source, value) & wave_tokens))
 
     scoped = frame.loc[source_mask & wave_mask].copy()
+    if not scoped.empty:
+        def _effective_identity(row: pd.Series) -> pd.Series:
+            source_value = _semantic_clean(row.get("source_family")) or _semantic_clean(row.get("source"))
+            original_canonical = _semantic_clean(row.get("canonical_wave"))
+            original_raw = _semantic_clean(row.get("wave"))
+            derived = _semantic_clean(row.get("_v550_derived_canonical_wave"))
+            if original_canonical:
+                effective_wave, basis = original_canonical, "ORIGINAL_CANONICAL_WAVE"
+            elif original_raw:
+                effective_wave, basis = canonical_wave_key(source, original_raw), "RAW_WAVE_CANONICALIZED"
+            elif derived:
+                effective_wave, basis = derived, "EXACT_SOURCE_FILE_WAVE"
+            else:
+                effective_wave, basis = "", "UNRESOLVED"
+            return pd.Series({
+                "v550_response_map_effective_source_family": source_value,
+                "v550_response_map_effective_canonical_wave": effective_wave,
+                "v550_response_map_wave_resolution_basis": basis,
+            })
+        scoped[[
+            "v550_response_map_effective_source_family",
+            "v550_response_map_effective_canonical_wave",
+            "v550_response_map_wave_resolution_basis",
+        ]] = scoped.apply(_effective_identity, axis=1)
     if scoped.empty or not authority_identity_columns or not live_identity_columns:
         filtered = scoped
     else:
@@ -1399,6 +1447,7 @@ def main() -> int:
         semantics_lookup = _lookup_response_semantics_sign_safe(scoped_response_map)
         scoped_index_elapsed = time.monotonic() - scoped_index_started
         scoped_index_key_count = len(semantics_lookup)
+        assert_scoped_response_semantics_index_gate(scoped_response_map, semantics_lookup)
         wave_source_structure_audit = build_source_structure_population_audit(wave_question_rows, source_structure_register)
         validation_dir = DEFAULT_VALIDATION_ROOT / f"{_slugify(args.source)}_{_slugify(args.wave)}"
         write_source_structure_population_audit(wave_source_structure_audit, validation_dir / "source_structure_population_audit.csv")
