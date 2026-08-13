@@ -23,6 +23,7 @@ import yaml
 SECTION = Path("85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY")
 RUNTIME = Path("35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code")
 BASE_MODULE_DIR = RUNTIME / "data/ddm_build_copy"
+BINDING_AUTHORITY_RELATIVE = SECTION / "authority/section85_binding_authority.json"
 DEFAULT_QSM_RELATION = "question_structural_mapping"
 DEFAULT_CANONICAL_REGISTRY_RELATION = "rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry"
 
@@ -80,6 +81,17 @@ def load_json(path: Path) -> dict[str, Any]:
     except Exception:
         return {}
     return payload if isinstance(payload, dict) else {}
+
+
+def load_binding_authority(repo_root: Path) -> dict[str, Any]:
+    payload = load_json(repo_root / BINDING_AUTHORITY_RELATIVE)
+    return payload if payload else {
+        "database_bindings": {
+            "qsm_relation": {"canonical": DEFAULT_QSM_RELATION},
+            "canonical_registry_relation": {"canonical": DEFAULT_CANONICAL_REGISTRY_RELATION},
+            "response_long_relation": {"preferred": "public.v_ddm_response_long_facet_ready_authority"},
+        }
+    }
 
 
 def write_json(path: Path, payload: Any) -> None:
@@ -310,15 +322,12 @@ def main() -> int:
     parser.add_argument("--question-structure-register", type=Path, required=True)
     parser.add_argument(
         "--qsm-relation",
-        default=os.environ.get("DDM_QSM_RELATION", DEFAULT_QSM_RELATION),
+        default=os.environ.get("DDM_QSM_RELATION"),
         help="Question structural mapping relation. Defaults to the same public relation proven by Section 85 preflight.",
     )
     parser.add_argument(
         "--canonical-registry-relation",
-        default=os.environ.get(
-            "DDM_CANONICAL_REGISTRY_RELATION",
-            DEFAULT_CANONICAL_REGISTRY_RELATION,
-        ),
+        default=os.environ.get("DDM_CANONICAL_REGISTRY_RELATION"),
         help="Canonical question registry relation.",
     )
     parser.add_argument("--only-scope", action="append", default=[])
@@ -326,9 +335,19 @@ def main() -> int:
 
     repo = args.repo_root.resolve()
     os.chdir(repo)
+    binding_authority = load_binding_authority(repo)
+    db_bindings = binding_authority.get("database_bindings", {}) if isinstance(binding_authority.get("database_bindings"), dict) else {}
+    if not args.qsm_relation:
+        args.qsm_relation = (db_bindings.get("qsm_relation") or {}).get("canonical") or DEFAULT_QSM_RELATION
+    if not args.canonical_registry_relation:
+        args.canonical_registry_relation = (
+            (db_bindings.get("canonical_registry_relation") or {}).get("canonical")
+            or DEFAULT_CANONICAL_REGISTRY_RELATION
+        )
     output = args.output_root.resolve()
     reports = output / "reports"
     reports.mkdir(parents=True, exist_ok=True)
+    write_json(reports / "SECTION85_BINDING_AUTHORITY_USED.json", binding_authority)
 
     base = load_base(repo)
     db_url = read_env_database_url(args.env_file)
@@ -372,6 +391,8 @@ def main() -> int:
         "response_option_map": str(args.response_option_map),
         "question_structure_register": str(args.question_structure_register),
         "runtime_repo_root": str(runtime),
+        "binding_authority_path": str((repo / BINDING_AUTHORITY_RELATIVE).resolve()),
+        "binding_authority_id": binding_authority.get("authority_id", ""),
         "qsm_relation_requested": args.qsm_relation,
         "qsm_relation_resolved": database_contract.get("relations", {}).get("qsm_relation", {}).get("resolved", ""),
         "canonical_registry_relation_requested": args.canonical_registry_relation,
