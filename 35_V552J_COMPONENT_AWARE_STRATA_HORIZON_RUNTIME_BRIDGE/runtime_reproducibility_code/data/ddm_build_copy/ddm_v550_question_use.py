@@ -20,6 +20,7 @@ import re
 import pandas as pd
 
 from data.ddm_build_copy.ddm_v550_source_structure import _is_ses_relation_evidence
+from data.ddm_build_copy.ddm_v550_deep_question_authority import load_deep_question_authority
 from data.ddm_build_copy.ddm_v550_family_overlay import (
     canonical_family_key,
     family_keys_equal,
@@ -293,6 +294,16 @@ QUESTION_USE_CONTRACT_HASH_COLUMNS = [
     "authority_evidence_lane",
     "authority_designation_confidence",
     "authority_review_required",
+    "deep_question_authority_used",
+    "deep_question_authority_version",
+    "deep_question_authority_binding_path",
+    "deep_question_authority_binding_sha256",
+    "deep_question_authority_row_sha256",
+    "deep_question_authority_source_catalog_path",
+    "deep_question_authority_source_catalog_sha256",
+    "deep_question_authority_exact_identity_sha256",
+    "deep_question_authority_status",
+    "deep_question_authority_review_status",
     "question_directionality_authority_used",
     "question_directionality_authority_status",
     "gss2010_structural_overlay_used",
@@ -2198,7 +2209,17 @@ def build_question_use_contract(
             "authority_evidence_lane",
             "authority_designation_confidence",
             "authority_review_required",
-    "question_directionality_authority_used",
+            "deep_question_authority_used",
+            "deep_question_authority_version",
+            "deep_question_authority_binding_path",
+            "deep_question_authority_binding_sha256",
+            "deep_question_authority_row_sha256",
+            "deep_question_authority_source_catalog_path",
+            "deep_question_authority_source_catalog_sha256",
+            "deep_question_authority_exact_identity_sha256",
+            "deep_question_authority_status",
+            "deep_question_authority_review_status",
+            "question_directionality_authority_used",
     "question_directionality_authority_status",
             "gss2010_structural_overlay_used",
             "gss2010_structural_overlay_basis",
@@ -2324,6 +2345,7 @@ def build_question_use_contract(
     semantic_authority = sem_r.data_frame if sem_r.status == "FOUND" else None
     position_conditioning_overlay = pos_r.data_frame if pos_r.status == "FOUND" else None
     directionality_overlay = dir_r.data_frame if dir_r.status == "FOUND" else None
+    deep_question_authority = load_deep_question_authority(survey_family, canonical_wave)
     structural_overlay = None
     if identity.source_key == "gss" and identity.canonical_wave == "2010":
         structural_overlay = load_gss2010_structural_overlay(gss2010_structural_overlay_path)
@@ -2338,6 +2360,7 @@ def build_question_use_contract(
             semantic_authority=semantic_authority,
             position_conditioning_overlay=position_conditioning_overlay,
             directionality_overlay=directionality_overlay,
+            deep_question_authority=deep_question_authority,
             survey_family=survey_family,
             canonical_wave=canonical_wave,
         )
@@ -2369,6 +2392,7 @@ def build_question_use_contract_row(
     semantic_authority: pd.DataFrame | None = None,
     position_conditioning_overlay: pd.DataFrame | None = None,
     directionality_overlay: pd.DataFrame | None = None,
+    deep_question_authority: pd.DataFrame | None = None,
     survey_family: str = "",
     canonical_wave: str = "",
 ) -> dict[str, Any]:
@@ -2442,6 +2466,8 @@ def build_question_use_contract_row(
             search_roots=overlay_root(directionality_authority_path),
         )
         directionality_overlay = dir_r.data_frame if dir_r and dir_r.status == "FOUND" else None
+    if deep_question_authority is None:
+        deep_question_authority = load_deep_question_authority(survey_family, canonical_wave)
     if ses_relation_evidence:
         # Derived SES / spouse-structure families are substantive relation evidence,
         # not open-text or blank source-structure rows.
@@ -2459,6 +2485,27 @@ def build_question_use_contract_row(
         authority_review_required,
         authority_semantic_status,
     ) = _apply_authority_designation(row, authority)
+    deep_authority_used = False
+    deep_authority_row: dict[str, Any] = {}
+    if not authority_used and deep_question_authority is not None and not deep_question_authority.empty:
+        (
+            authority_role,
+            authority_uses,
+            authority_used,
+            authority_basis,
+            authority_lane,
+            authority_semantic_role,
+            authority_evidence_lane,
+            authority_confidence,
+            authority_review_required,
+            authority_semantic_status,
+        ) = _apply_authority_designation(row, deep_question_authority)
+        if authority_used:
+            deep_authority_used = True
+            authority_basis = "p2_deep_question_authority_35wave_v1"
+            matched = _overlay_candidate_frame(row, deep_question_authority)
+            if len(matched) == 1:
+                deep_authority_row = matched.iloc[0].to_dict()
     uses = allowed_uses_for_role(role)
     if authority_used:
         role = authority_role
@@ -2504,6 +2551,10 @@ def build_question_use_contract_row(
     # semantic role or downstream permission.
     semantic_detail = infer_semantic_detail({**row, "semantic_role": role})
     semantic_overlay_fields, semantic_overlay_used = _apply_semantic_detail_overlay({**row, "semantic_role": role}, semantic_authority)
+    if not semantic_overlay_used and deep_question_authority is not None and not deep_question_authority.empty:
+        semantic_overlay_fields, semantic_overlay_used = _apply_semantic_detail_overlay(
+            {**row, "semantic_role": role}, deep_question_authority
+        )
     semantic_detail_authority_status = (
         normalize_authority_status(
             semantic_overlay_fields.pop(
@@ -2530,6 +2581,10 @@ def build_question_use_contract_row(
         {**row, "semantic_role": role},
         position_conditioning_overlay,
     )
+    if not position_conditioning_overlay_used and deep_question_authority is not None and not deep_question_authority.empty:
+        position_conditioning_overlay_fields, position_conditioning_overlay_used = _apply_position_conditioning_overlay(
+            {**row, "semantic_role": role}, deep_question_authority
+        )
     position_conditioning_authority_status = (
         normalize_authority_status(
             position_conditioning_overlay_fields.pop(
@@ -2564,6 +2619,10 @@ def build_question_use_contract_row(
         {**row, "semantic_role": final_semantic_role},
         directionality_overlay,
     )
+    if not question_directionality_authority_used and deep_question_authority is not None and not deep_question_authority.empty:
+        question_directionality_fields, question_directionality_authority_used = _apply_question_directionality_overlay(
+            {**row, "semantic_role": final_semantic_role}, deep_question_authority
+        )
     if question_directionality_authority_used:
         overlay_topology = _clean(question_directionality_fields.get("response_topology"))
         if overlay_topology:
@@ -2687,11 +2746,25 @@ def build_question_use_contract_row(
         "authority_evidence_lane": authority_evidence_lane,
         "authority_designation_confidence": authority_confidence,
         "authority_review_required": authority_review_required,
+        "deep_question_authority_used": deep_authority_used,
+        "deep_question_authority_version": _clean(deep_authority_row.get("authority_version")),
+        "deep_question_authority_binding_path": _clean(deep_question_authority.attrs.get("authority_artifact_path")) if deep_question_authority is not None else "",
+        "deep_question_authority_binding_sha256": _clean(deep_question_authority.attrs.get("authority_artifact_sha256")) if deep_question_authority is not None else "",
+        "deep_question_authority_row_sha256": _clean(deep_authority_row.get("authority_row_sha256")),
+        "deep_question_authority_source_catalog_path": _clean(deep_authority_row.get("source_catalog_path")),
+        "deep_question_authority_source_catalog_sha256": _clean(deep_authority_row.get("source_catalog_sha256")),
+        "deep_question_authority_exact_identity_sha256": _clean(deep_authority_row.get("exact_identity_sha256")),
+        "deep_question_authority_status": _clean(deep_authority_row.get("authority_status")),
+        "deep_question_authority_review_status": _clean(deep_authority_row.get("deep_review_status")),
         "question_directionality_authority_used": question_directionality_authority_used,
         "question_directionality_authority_status": "FOUND" if question_directionality_authority_used else "MISSING",
         "semantic_detail_authority_status": semantic_detail_authority_status,
         "semantic_detail_basis": (
-            "explicit_family_semantic_authority_overlay"
+            (
+                "p2_deep_question_authority_35wave_v1"
+                if deep_authority_used and semantic_detail_authority_status == CERTIFIED
+                else "explicit_family_semantic_authority_overlay"
+            )
             if semantic_detail_authority_status == CERTIFIED
             else "non_authoritative_heuristic_or_uncertified_overlay"
         ),
