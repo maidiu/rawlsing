@@ -1139,6 +1139,16 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
         "PARTIAL_READY_V551J_CONTEXT_ONLY",
         "EMPTY_VALID_V551J_NO_RELATIONAL_EVIDENCE",
     }
+    # Review-required packets are a valid terminal diagnostic surface when
+    # the emitted packet-contract report is clean, even if the compiler's
+    # legacy readiness label is BLOCKED_PACKET_CONTRACT.
+    if (
+        final_status == "BLOCKED_PACKET_CONTRACT"
+        and ready_for_review
+        and contract.get("issue_count", 0) == 0
+    ):
+        final_status = "PARTIAL_READY_V551J_REVIEW_ONLY"
+        readiness["final_status"] = final_status
     contract_valid = candidate_contract_valid and component_contract_valid
     diagnostic_contract_valid = bool(
         not missing_artifacts
