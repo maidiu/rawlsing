@@ -1,5 +1,5 @@
 {
-  "status": "BLOCKED_POST_BINDING_V550_CPU_BOUND",
+  "status": "BLOCKED_SECOND_V550_RUNTIME_HOTSPOT",
   "scope": "EVS|1981|BE",
   "response_binding_gate": "PASS",
   "v550_failure_stage": "post-authority-loading question/response build",
@@ -10,5 +10,18 @@
   "trace_root": "data/ddm_repository_copy/phase_d_m6_smoke/20260813T105904Z/evs_1981_BE",
   "south_asia_run": "NOT_STARTED",
   "wvs_run": "NOT_STARTED",
-  "v552_authorized": false
+  "v552_authorized": false,
+  "perf1_scope": "EVS|1981|BE",
+  "pre_patch_hot_stack": "full response-map index construction; isolated full index remained CPU-bound >42s at ~1.4GB RSS",
+  "confirmed_scope_first_result": {
+    "parent_rows": 357324,
+    "scoped_rows": 163,
+    "scope_filter_seconds": 4.721,
+    "scoped_contract_hash_seconds": 0.015,
+    "scoped_index_seconds": 0.016,
+    "scoped_index_key_count": 0
+  },
+  "post_repair_progress": "V550 reached question processing and completed questions 1-6 before stop",
+  "post_repair_hot_stack": "data/ddm_build_copy/ddm_survey_identity.py:_token line 33 inside regex substitution, during V550 question processing; not full-map semantic indexing",
+  "post_repair_output_root": "data/ddm_repository_copy/phase_d_m6_smoke/20260813T111000Z/evs_1981_BE"
 }

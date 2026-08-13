@@ -1325,12 +1325,6 @@ def main() -> int:
         else:
             response_review = pd.DataFrame()
             response_manifest = {"option_rows": len(response_map), "manual_review_rows": 0, "warnings": ["Loaded response option map from supplied path."]}
-        response_semantics_contract = response_semantics_contract_hash(response_map) if not response_map.empty else ""
-        # Use the repository's symmetric response-semantics indexer.  It
-        # indexes both raw and canonical wave columns, plus family/wave/var/value
-        # aliases, so EVS 1981 authority (canonical W1) cannot degrade to
-        # observed-only semantics when live rows carry W1.
-        semantics_lookup = _lookup_response_semantics_sign_safe(response_map)
         source_structure_register = load_question_structure_register()
 
         _log_progress(progress_started, "building question list 1/1")
@@ -1379,6 +1373,7 @@ def main() -> int:
                     f"joint_required={len(shared_selection['joint_required_var_codes'])} "
                     f"union={len(shared_selection['union_var_codes'])}",
                 )
+        scope_filter_started = time.monotonic()
         scoped_response_map = _filter_response_map_for_wave(
             response_map,
             extraction_question_rows,
@@ -1386,6 +1381,7 @@ def main() -> int:
             wave=args.wave,
             canonical_wave=canonical_wave,
         )
+        response_map_scope_elapsed = time.monotonic() - scope_filter_started
         response_match_audit = build_response_authority_match_audit(wave_question_rows, scoped_response_map)
         assert_response_authority_match_gate(response_match_audit)
         if scoped_response_map.empty:
@@ -1393,10 +1389,16 @@ def main() -> int:
                 f"[V550_RESPONSE_SEMANTICS_EMPTY] No response-option authority rows matched "
                 f"{args.source}/{args.wave} after exact question filtering."
             )
-        scoped_response_semantics_contract = response_semantics_contract_hash(scoped_response_map)
-        if scoped_response_semantics_contract != response_semantics_contract:
-            response_semantics_contract = scoped_response_semantics_contract
-            semantics_lookup = _lookup_response_semantics_sign_safe(scoped_response_map)
+        scoped_contract_started = time.monotonic()
+        response_semantics_contract = response_semantics_contract_hash(scoped_response_map)
+        scoped_contract_elapsed = time.monotonic() - scoped_contract_started
+        scoped_index_started = time.monotonic()
+        # Build the runtime index only from the exact governed execution view.
+        # The canonical parent remains pinned in the authority receipt; the
+        # global alias index is neither needed nor safe to construct here.
+        semantics_lookup = _lookup_response_semantics_sign_safe(scoped_response_map)
+        scoped_index_elapsed = time.monotonic() - scoped_index_started
+        scoped_index_key_count = len(semantics_lookup)
         wave_source_structure_audit = build_source_structure_population_audit(wave_question_rows, source_structure_register)
         validation_dir = DEFAULT_VALIDATION_ROOT / f"{_slugify(args.source)}_{_slugify(args.wave)}"
         write_source_structure_population_audit(wave_source_structure_audit, validation_dir / "source_structure_population_audit.csv")
@@ -2173,6 +2175,12 @@ def main() -> int:
         )
         manifest["response_semantics_contract_hash"] = response_semantics_contract
         manifest["response_option_map_row_count"] = int(len(scoped_response_map))
+        manifest["response_map_parent_rows"] = int(len(response_map))
+        manifest["scoped_response_map_rows"] = int(len(scoped_response_map))
+        manifest["response_map_scope_elapsed"] = response_map_scope_elapsed
+        manifest["scoped_contract_hash_elapsed"] = scoped_contract_elapsed
+        manifest["scoped_semantics_index_elapsed"] = scoped_index_elapsed
+        manifest["scoped_semantics_index_key_count"] = int(scoped_index_key_count)
         manifest["response_option_map_artifact"] = str(shard_paths.core / "response_option_map.parquet")
         manifest["v550_prepared_substrate_mode"] = args.v550_prepared_substrate_mode
         manifest["shared_respondent_substrate_mode"] = args.shared_respondent_substrate_mode
