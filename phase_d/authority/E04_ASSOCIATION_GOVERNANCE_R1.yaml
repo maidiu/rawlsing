@@ -1,0 +1,51 @@
+contract_id: E04_ASSOCIATION_GOVERNANCE_R1
+status: FROZEN_POLICY__PRODUCTION_ACTIVATION_DISABLED_BY_DEFAULT
+purpose: Govern when same-respondent empirical association may be diagnostic, review,
+  or production evidence without creating semantic truth or personality claims.
+association_modes:
+  'OFF': No association outputs may affect downstream evidence.
+  DIAGNOSTIC: Raw association outputs may be emitted/inspected; never alter accepted
+    default evidence or production outputs.
+  REVIEW_ONLY: Association passed routing/universe/minimum-support checks and may
+    enter human/machine review packets; cannot become production evidence.
+  PRODUCTION_ACTIVE: Allowed only when all production gates below are machine-proven
+    for the exact wave/universe/association family. This pack does not activate it.
+default_mode: DIAGNOSTIC
+lanes:
+  POSITION_COORDINATE:
+    may_condition: true
+    may_be_attitude_cloud_feature: false
+    may_be_personality_fact: false
+  ATTITUDE_RESPONSE:
+    may_condition: true
+    may_be_attitude_cloud_feature: true
+    may_be_personality_fact: false
+  CONTEXT_ROUTING:
+    may_condition: true
+    may_be_attitude_cloud_feature: false
+    may_be_personality_fact: false
+  JOINT_RESPONSE_CONFIGURATION:
+    may_condition: true
+    may_be_attitude_cloud_feature: false
+    may_be_personality_fact: false
+  TYPED_SEMANTIC_RELATION:
+    is_empirical_association_lane: false
+    may_create_empirical_cotravel: false
+same_respondent_law: Association requires exact same respondent universe/join key and routing compatibility.
+observability_support:
+  current_v550_formula: ceil(0.005 * total_respondents), clipped to [2,30]; if total missing use 30
+  role: MINIMUM_OBSERVABILITY_ONLY
+  prohibition: This support threshold is not a significance test, not a confidence interval, and not production activation.
+weights_and_design:
+  production_allowed_design_grades:
+  - FULL_SURVEY_DESIGN
+  - SRS_EXPLICITLY_AUTHORIZED
+multiple_testing:
+  method: Benjamini-Hochberg FDR over valid design-aware p-values within each family.
+  production_q_max: 0.05
+hard_prohibitions:
+- association may not create or negate a typed semantic relation
+- typed relation absence/block may not suppress empirical co-travel
+- demographic/structural coordinates may not become attitude-cloud features
+- association may not be interpreted as causality
+- association may not be interpreted as an individual personality/belief assignment
