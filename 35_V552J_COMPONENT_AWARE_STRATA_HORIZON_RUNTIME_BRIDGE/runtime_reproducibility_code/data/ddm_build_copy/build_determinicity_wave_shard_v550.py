@@ -26,7 +26,7 @@ if str(ROOT) not in sys.path:
 
 from data.ddm_build_copy.build_response_option_map_v550 import build_response_option_map
 from data.ddm_build_copy.build_source_structure_validator import canonical_wave_label
-from data.ddm_build_copy.ddm_v550_family_overlay import canonical_family_key, canonical_wave_key, wave_aliases
+from data.ddm_build_copy.ddm_v550_family_overlay import canonical_family_key, canonical_wave_key, load_family_overlay, wave_aliases
 from data.ddm_build_copy.build_determinicity_repository_v550 import (
     CHECKPOINT_COMPLETE_SUFFIX,
     CHECKPOINT_ROOT_NAME,
@@ -130,6 +130,61 @@ def _semantic_clean(value: Any) -> str:
         pass
     text = str(value).strip()
     return "" if text.lower() in {"nan", "none"} else text
+
+
+def _file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _build_authority_receipt(args: argparse.Namespace, question_relation_authority: Any, response_map: pd.DataFrame) -> dict[str, Any]:
+    """Record authority decisions made by the real V550 builder."""
+    overlay_specs = {
+        "first_pass_authority": args.first_pass_authority_dir,
+        "semantic_authority": args.semantic_authority_dir,
+        "position_conditioning": args.position_conditioning_authority_dir,
+        "directionality": args.directionality_authority_dir,
+    }
+    overlays: dict[str, dict[str, Any]] = {}
+    for overlay_type, directory in overlay_specs.items():
+        loaded = load_family_overlay(
+            args.source,
+            args.canonical_wave or args.wave,
+            overlay_type,
+            required=False,
+            search_roots=[Path(directory)] if directory else None,
+        )
+        detail: dict[str, Any] = {
+            "status": loaded.status,
+            "path": loaded.path or "",
+            "row_count": int(loaded.row_count or 0),
+            "columns": list(loaded.columns or []),
+            "message": loaded.message or "",
+        }
+        if loaded.path and Path(loaded.path).is_file():
+            detail["sha256"] = _file_sha256(Path(loaded.path))
+        overlays[overlay_type] = detail
+    response_map_path = Path(args.response_option_map) if args.response_option_map else None
+    return {
+        "authority_resolution_owner": "v550_shard_builder",
+        "source": args.source,
+        "wave": args.wave,
+        "canonical_wave": args.canonical_wave or args.wave,
+        "question_relation_authority": {
+            "path": str(question_relation_authority.path),
+            "sha256": question_relation_authority.file_sha256,
+            "row_count": len(question_relation_authority.rows),
+        },
+        "overlays": overlays,
+        "response_option_map": {
+            "path": str(response_map_path) if response_map_path else "built_by_v550",
+            "sha256": _file_sha256(response_map_path) if response_map_path and response_map_path.is_file() else "",
+            "row_count": int(len(response_map)),
+        },
+    }
 
 
 def _ordered_semantic_variants(values: list[Any], *, identifier: bool = False) -> list[str]:
@@ -785,6 +840,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--canonical-wave", default=None)
     parser.add_argument("--country", action="append", default=[])
     parser.add_argument("--db-url", default=None)
+    parser.add_argument("--authority-root", default=os.getenv("DDM_AUTHORITY_ROOT", ""), help="Installed authority root containing bindings/ and reports/.")
     parser.add_argument("--env-file", default=str(DEFAULT_ENV_FILE))
     parser.add_argument(
         "--response-long-relation",
@@ -1051,6 +1107,8 @@ def _load_readiness_bundle(readiness_root: Path) -> tuple[pd.DataFrame, pd.DataF
 
 def main() -> int:
     args = parse_args()
+    if args.authority_root:
+        os.environ["DDM_AUTHORITY_ROOT"] = str(Path(args.authority_root).expanduser().resolve())
     _require_readiness_artifact(args)
     canonical_wave = str(args.canonical_wave or canonical_wave_label(args.source, args.wave))
     question_filter = _load_question_filter(args.question_filter_file)

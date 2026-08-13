@@ -247,14 +247,20 @@ def _bridge_additional_fields(
     bridge_evidence_lane: str,
     n_respondents: Any,
 ) -> dict[str, Any]:
+    quc_owned_fields = {"semantic_role", "semantic_subrole", "semantic_role_authority_status", "current_directional_atom_eligible", "directional_certification_status", "directionality_authority_status", "structural_mapping_status", "driver_id", "driver_facet_id", "question_block_id", "structural_domain_id", "relation_axis_id", "target_entity_id", "allowed_as_v551_relation_evidence", "v551_evidence_role", "mapping_status", "source_structure_source", "source_structure_basis", "source_structure_confidence", "source_structure_fields_joined", "source_structure_review_required", "review_required", "manual_review_required", "manual_review_flag"}
+    authority_conflicts: list[dict[str, Any]] = []
+
     def contract_or_row(*names: str, default: Any = "") -> Any:
-        value = _row_value(row, *names, default="")
-        if str(value).strip() not in {"", "nan", "none"}:
-            return value
         if question_contract_row is not None:
             contract_value = _row_value(question_contract_row, *names, default="")
             if str(contract_value).strip() not in {"", "nan", "none"}:
+                candidate_value = _row_value(row, *names, default="")
+                if names[0] in quc_owned_fields and str(candidate_value).strip() not in {"", "nan", "none"} and str(candidate_value) != str(contract_value):
+                    authority_conflicts.append({"field": names[0], "candidate_value": candidate_value, "quc_value": contract_value, "conflict_class": "STALE_CANDIDATE_AUTHORITY_OVERRIDDEN_BY_CURRENT_QUC"})
                 return contract_value
+        value = _row_value(row, *names, default="")
+        if str(value).strip() not in {"", "nan", "none"}:
+            return value
         return default
 
     role_uses = allowed_uses_for_role(semantic_role)
@@ -269,7 +275,7 @@ def _bridge_additional_fields(
     is_inapplicable = _to_bool(contract_or_row("is_inapplicable", default=False))
     explicit_special = _to_bool(contract_or_row("is_special", default=False))
     is_special = explicit_special or is_missing or is_dk or is_refusal or is_iap or is_not_asked or is_inapplicable
-    return {
+    result = {
         "survey_year": survey_year,
         "analysis_scope": contract_or_row("analysis_scope", default="country"),
         "source_row_hash": row_hash,
@@ -432,6 +438,8 @@ def _bridge_additional_fields(
         "provenance_basis": contract_or_row("provenance_basis", default=""),
         "created_at": contract_or_row("created_at", default=utc_now()),
     }
+    result["authority_merge_conflicts"] = json.dumps(authority_conflicts, sort_keys=True)
+    return result
 
 
 def _bridge_evidence_lane_for_source_table(source_table: str) -> str:
@@ -814,14 +822,14 @@ def _base_bridge_row(
     }
     row_hash = _stable_hash(payload)
     existing_semantic_role = _row_value(row, "semantic_role", default="")
-    if existing_semantic_role:
-        semantic_role = existing_semantic_role
-    elif question_contract_row and _row_value(
+    if question_contract_row and _row_value(
         question_contract_row, "semantic_role", default=""
     ):
         semantic_role = _row_value(
             question_contract_row, "semantic_role", default="UNKNOWN"
         )
+    elif existing_semantic_role:
+        semantic_role = existing_semantic_role
     elif _is_ses_relation_evidence(row):
         # SES/spouse-structure rows are a governed GSS exception already
         # recognized by the source-structure classifier. Preserve that

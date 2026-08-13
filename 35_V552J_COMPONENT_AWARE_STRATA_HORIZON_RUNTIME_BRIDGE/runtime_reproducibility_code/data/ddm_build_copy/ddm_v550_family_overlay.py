@@ -23,6 +23,7 @@ from data.ddm_build_copy.ddm_survey_identity import (
 )
 
 ROOT = Path(__file__).resolve().parents[2]
+AUTHORITY_ROOT_ENV = "DDM_AUTHORITY_ROOT"
 
 OVERLAY_TYPES = [
     "semantic_authority",
@@ -77,6 +78,9 @@ class OverlayLoadResult:
 def _search_roots() -> list[Path]:
     # ``data/ddm_build`` is an immutable legacy tree and is never an authority
     # fallback for active execution.
+    configured = os.getenv(AUTHORITY_ROOT_ENV, "").strip()
+    if configured:
+        return [Path(configured).expanduser().resolve() / "reports"]
     return [ROOT / "data" / "ddm_build_copy" / "reports"]
 
 

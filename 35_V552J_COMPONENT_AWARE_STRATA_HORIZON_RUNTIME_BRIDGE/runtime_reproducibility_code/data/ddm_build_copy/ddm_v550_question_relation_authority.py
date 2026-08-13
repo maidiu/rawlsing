@@ -30,6 +30,7 @@ DEFAULT_AUTHORITY_PATH = (
     / "question_relation_registry_35wave_active_v1.csv"
 )
 AUTHORITY_PATH_ENV = "RAWLSING_QUESTION_RELATION_AUTHORITY_PATH"
+AUTHORITY_ROOT_ENV = "DDM_AUTHORITY_ROOT"
 
 DIRECTIONAL_STATUS = "GOVERNED_DIRECTIONAL"
 NEUTRAL_COVERAGE_STATUS = "GOVERNED_NEUTRAL_COVERAGE"
@@ -294,6 +295,9 @@ def active_authority_path(path: Path | str | None = None) -> Path:
     env = os.getenv(AUTHORITY_PATH_ENV, "").strip()
     if env:
         return Path(env).expanduser().resolve()
+    root = os.getenv(AUTHORITY_ROOT_ENV, "").strip()
+    if root:
+        return Path(root).expanduser().resolve() / "bindings" / "question_relation_registry_35wave_active_v1.csv"
     return DEFAULT_AUTHORITY_PATH.resolve()
 
 
@@ -622,6 +626,19 @@ def apply_question_relation_authority(
 
     row = resolution.authority_row
     if row is None:
+        quc_is_certified = (
+            str(output.get("semantic_role_authority_status", "")).strip().upper() == "CERTIFIED"
+            and str(output.get("semantic_role", "")).strip().upper() == "RELATION_EVIDENCE"
+            and _bool(output.get("current_directional_atom_eligible"))
+            and _bool(output.get("allowed_as_v551_relation_evidence"))
+            and str(output.get("structural_mapping_status", "")).strip().upper() == "COMPLETE"
+        )
+        if quc_is_certified:
+            output["question_relation_authority_resolution"] = "QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH"
+            output["question_relation_coverage_eligible"] = True
+            output["question_relation_pressure_eligible"] = True
+            output["question_relation_registry_match"] = False
+            return output
         _clear_structural_coordinates(output)
         output.update(
             {
