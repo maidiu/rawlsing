@@ -1,0 +1,74 @@
+{
+  "terminal": "BLOCKED_V550J_FAMILY_AUTHORITY_ABSENT",
+  "authority_commit": "695eb5179c868534a910f5dd98061e94479be165",
+  "candidate": {
+    "frozen_rank": 1,
+    "source_family": "LiTS",
+    "wave": "II",
+    "country": "SE",
+    "required_variables": ["q306c", "q305_1"]
+  },
+  "wrong_registry": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Codex_Ready_Cumulative_V550_Shared_Substrate_R2_babb256_20260803/repository/87_PRE_V553_LAYER1_35WAVE_CONTRACT_AUDIT/authority/registry_lits_ii.yaml",
+    "classification": "bounded_prior_layer1_audit_fixture",
+    "family_id": "JCFG-LAYER1-LITS-II-SELECTED-AUDIT",
+    "variables": ["q326e", "q708", "q802ai"],
+    "authority_release": "V550J-LAYER1-AUDIT-AUTHORITY-2026-08-03-R1",
+    "completeness_claim": "NO_PRODUCTION_COMPLETENESS_CLAIM",
+    "selection_mode": "explicitly supplied runner registry"
+  },
+  "candidate_authority_search": {
+    "review_only_registry": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/joint_family_review_queue_recovered/review_only_registries/lits_question_family_registry.review_only.yaml",
+      "status": "review_only",
+      "execution_eligible": false,
+      "family_id": "candidate_lits_ii_q306_subjective_yes_no",
+      "members": ["q306a", "q306b", "q306c", "q306d"],
+      "missing_contract_fields": [
+        "family_structure_type",
+        "minimum_items_answered",
+        "boundary_rules",
+        "response_role_rules",
+        "target_resolution_rules",
+        "item_role_assignments",
+        "condition_labels",
+        "validated_waves"
+      ],
+      "result": "not executable authority"
+    },
+    "installed_lits_ii_surfaces": {
+      "semantic_overlay": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/lits_II_semantic_authority_overlay.csv",
+      "directionality_overlay": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports/lits_II_directionality_overlay.csv",
+      "q306c": {
+        "semantic_role": "RELATION_EVIDENCE",
+        "directionality_status": "CERTIFIED",
+        "directionality_policy": "signed_source_defined_scale"
+      },
+      "q305_1": {
+        "semantic_role": "STRUCTURAL_CONTEXT",
+        "directionality_status": "NOT_CERTIFIED",
+        "directionality_policy": "preserve_unsigned_topology"
+      },
+      "result": "per-variable authority exists; executable V550J family authority does not"
+    },
+    "association_lane_registry": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/data/ddm_registries/association_lane_registry.yaml",
+      "result": "association-lane rules only; not a V550J family registry"
+    }
+  },
+  "decision": {
+    "v550j_run": "not_started",
+    "reason": "No exact governed executable family registry binds q306c and q305_1 with the required V550J contract. The review-only candidate cannot be promoted or used as runtime authority.",
+    "no_semantics_invented": true,
+    "no_database_access": true,
+    "v552_started": false,
+    "v552j_started": false,
+    "v553_started": false
+  },
+  "privacy": {
+    "respondent_rows_in_return": false,
+    "identifiers_in_return": false,
+    "database_files_in_return": false,
+    "secrets_in_return": false
+  }
+}
