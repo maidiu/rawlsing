@@ -20,7 +20,7 @@ def _coerce_support_total(value: Any) -> float | None:
     try:
         if value is None:
             return None
-        parsed = pd.to_numeric(pd.Series([value]), errors="coerce").iloc[0]
+        parsed = pd.to_numeric(value, errors="coerce")
         if pd.isna(parsed):
             return None
         total = float(parsed)
@@ -72,7 +72,7 @@ def support_status_from_count(
     support_cap: int = DEFAULT_SUPPORT_CAP,
     support_floor: int = DEFAULT_SUPPORT_FLOOR,
 ) -> str:
-    parsed = pd.to_numeric(pd.Series([support_count]), errors="coerce").iloc[0]
+    parsed = pd.to_numeric(support_count, errors="coerce")
     if pd.isna(parsed):
         return "not_applicable" if str(lane or "").strip().lower() in STRUCTURAL_LANES else "missing_support"
     support = float(parsed)

@@ -194,10 +194,11 @@ def _question_respondent_lookup(question_universe: pd.DataFrame | None) -> dict[
     return lookup
 
 
-def _wave_lookup_variants(source: Any, wave: Any) -> list[str]:
-    family = canonical_family_key(source)
+@lru_cache(maxsize=4096)
+def _wave_lookup_variants_cached(source_text: str, wave_text: str) -> tuple[str, ...]:
+    family = canonical_family_key(source_text)
     tokens: list[str] = []
-    for token in [wave, canonical_wave_key(family, wave), *wave_aliases(family, wave)]:
+    for token in [wave_text, canonical_wave_key(family, wave_text), *wave_aliases(family, wave_text)]:
         cleaned = str(token or "").strip()
         if cleaned:
             tokens.append(cleaned)
@@ -211,7 +212,11 @@ def _wave_lookup_variants(source: Any, wave: Any) -> list[str]:
         if marker and marker not in seen:
             seen.add(marker)
             out.append(token.strip())
-    return out
+    return tuple(out)
+
+
+def _wave_lookup_variants(source: Any, wave: Any) -> list[str]:
+    return list(_wave_lookup_variants_cached(str(source or ""), str(wave or "")))
 
 
 def _question_contract_lookup(question_use_contract: pd.DataFrame | None) -> dict[tuple[str, str, str], dict[str, Any]]:

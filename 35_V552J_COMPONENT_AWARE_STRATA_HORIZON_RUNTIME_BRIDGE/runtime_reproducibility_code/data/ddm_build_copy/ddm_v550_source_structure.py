@@ -9,6 +9,7 @@ population audit.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 import os
 from pathlib import Path
 from typing import Any, Mapping
@@ -213,6 +214,11 @@ def _join_confidence_to_source_structure_confidence(join_confidence: str) -> str
     return "medium"
 
 
+@lru_cache(maxsize=65536)
+def _normalized_join_key_cached(cleaned: str) -> str:
+    return re.sub(r"_+", "_", _JOIN_KEY_PATTERN.sub("_", cleaned)).strip("_")
+
+
 def _normalized_join_key(value: Any) -> str:
     """Normalize join-like identifiers so punctuation-delimited waves still match.
 
@@ -224,8 +230,7 @@ def _normalized_join_key(value: Any) -> str:
     cleaned = _clean(value).lower()
     if not cleaned:
         return ""
-    cleaned = _JOIN_KEY_PATTERN.sub("_", cleaned)
-    return re.sub(r"_+", "_", cleaned).strip("_")
+    return _normalized_join_key_cached(cleaned)
 
 
 def _normalized_question_id(value: Any) -> str:

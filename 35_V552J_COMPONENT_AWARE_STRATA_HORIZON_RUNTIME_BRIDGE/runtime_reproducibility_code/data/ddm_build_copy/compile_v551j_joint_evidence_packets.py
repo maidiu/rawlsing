@@ -278,7 +278,13 @@ def main() -> int:
     outputs["readiness_report"]["blocked_packet_count"] = int(finalized_candidate["certification_status"].astype(str).str.startswith("BLOCKED").sum())
     outputs["readiness_report"]["ready_for_review"] = bool(outputs["readiness_report"]["review_required_packet_count"])
     outputs["readiness_report"]["ready_for_v552j_joint_evidence"] = bool(len(certified)) and bool(outputs["packet_contract_validation_report"].get("candidate_contract_valid"))
-    outputs["readiness_report"]["final_status"] = "READY_V551J_JOINT_EVIDENCE_CONTRACT" if outputs["readiness_report"]["ready_for_v552j_joint_evidence"] else "BLOCKED_PACKET_CONTRACT"
+    outputs["readiness_report"]["final_status"] = (
+        "READY_V551J_JOINT_EVIDENCE_CONTRACT"
+        if outputs["readiness_report"]["ready_for_v552j_joint_evidence"]
+        else "EMPTY_VALID_V551J_NO_RELATIONAL_EVIDENCE"
+        if not atoms.shape[0] and not pattern_index.shape[0]
+        else "BLOCKED_PACKET_CONTRACT"
+    )
     validation_issues = []
     if str(outputs["readiness_report"].get("registry_contract_status")) != "MATCHED_GOVERNED_REGISTRY_HASH":
         validation_issues.append("registry_hash_mismatch")

@@ -508,6 +508,9 @@ def _safe_weight_status(series: pd.Series | None) -> str:
 def _clean(value: Any) -> str:
     if value is None:
         return ""
+    if isinstance(value, str):
+        text = value.strip()
+        return "" if text.lower() in {"nan", "none"} else text
     try:
         if pd.isna(value):
             return ""

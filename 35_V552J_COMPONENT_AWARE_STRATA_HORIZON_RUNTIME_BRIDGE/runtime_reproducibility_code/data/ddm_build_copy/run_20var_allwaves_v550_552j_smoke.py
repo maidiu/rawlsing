@@ -953,14 +953,15 @@ def summarize_v550_manifest_gate(path: str | Path) -> dict[str, Any]:
 def summarize_v551_functional_gate(path: str | Path) -> dict[str, Any]:
     payload = _load_json(path)
     atom_rows = int(payload.get("atom_rows") or 0)
+    empty_valid = payload.get("status") == "BLOCKED_V551_NO_RELATION_EVIDENCE_ATOMS" and int(payload.get("bridge_rows") or 0) > 0
     return {
         "manifest_path": str(path),
         "manifest_exists": Path(path).exists(),
         "status": payload.get("status", ""),
         "candidate_bridge_rows": int(payload.get("candidate_bridge_rows") or 0),
         "atom_rows": atom_rows,
-        "passed": bool(payload) and atom_rows > 0,
-        "failure_reason": "" if payload and atom_rows > 0 else ("missing_v551_manifest" if not payload else "v551_atom_rows_zero"),
+        "passed": bool(payload) and (atom_rows > 0 or empty_valid),
+        "failure_reason": "" if payload and (atom_rows > 0 or empty_valid) else ("missing_v551_manifest" if not payload else "v551_atom_rows_zero"),
     }
 
 
@@ -1032,6 +1033,8 @@ def summarize_v550j_functional_gate(path: str | Path) -> dict[str, Any]:
         failure_reason = "v550j_family_registry_not_applicable"
     elif readiness_status == "failed_validation" or blocking_issues:
         failure_reason = "v550j_source_wave_readiness_blocked"
+    elif pattern_rows <= 0 and readiness_status == "diagnostic_only_no_publishable_rows":
+        failure_reason = ""
     elif pattern_rows <= 0:
         failure_reason = "v550j_pattern_rows_zero"
     elif meaning_rows <= 0:
@@ -1134,13 +1137,13 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
         "READY_V551J_JOINT_EVIDENCE_CONTRACT",
         "PARTIAL_READY_V551J_REVIEW_ONLY",
         "PARTIAL_READY_V551J_CONTEXT_ONLY",
+        "EMPTY_VALID_V551J_NO_RELATIONAL_EVIDENCE",
     }
     contract_valid = candidate_contract_valid and component_contract_valid
     diagnostic_contract_valid = bool(
         not missing_artifacts
         and contract_valid
-        and candidate_rows > 0
-        and component_rows > 0
+        and (candidate_rows > 0 and component_rows > 0 or final_status == "EMPTY_VALID_V551J_NO_RELATIONAL_EVIDENCE")
         and final_status in diagnostic_statuses
     )
     certified_ready = bool(
@@ -1160,9 +1163,9 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
         failure_reason = "v551j_candidate_contract_invalid"
     elif not component_contract_valid:
         failure_reason = "v551j_component_contract_invalid"
-    elif candidate_rows <= 0:
+    elif candidate_rows <= 0 and final_status != "EMPTY_VALID_V551J_NO_RELATIONAL_EVIDENCE":
         failure_reason = "v551j_candidate_packet_rows_zero"
-    elif component_rows <= 0:
+    elif component_rows <= 0 and final_status != "EMPTY_VALID_V551J_NO_RELATIONAL_EVIDENCE":
         failure_reason = "v551j_component_rows_zero"
     elif final_status not in diagnostic_statuses:
         failure_reason = "v551j_status_not_diagnostically_ready:" + (final_status or "missing")

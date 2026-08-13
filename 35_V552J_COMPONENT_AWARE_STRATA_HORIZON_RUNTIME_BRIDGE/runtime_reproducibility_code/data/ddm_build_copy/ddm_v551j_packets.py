@@ -1287,6 +1287,12 @@ def _v2_component_row(run_id: str, pattern: Mapping[str, Any], item: Mapping[str
 
 
 def build_v551j_joint_component_index(*, pattern_index: pd.DataFrame, pattern_item_index: pd.DataFrame, v551_atoms: pd.DataFrame, run_id: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+    from data.ddm_build_copy.ddm_v551j_schema import V551J_COMPONENT_MATCH_AUDIT_SCHEMA, V551J_JOINT_COMPONENT_INDEX_SCHEMA
+    if pattern_item_index is None or pattern_item_index.empty:
+        return (
+            pd.DataFrame(columns=V551J_JOINT_COMPONENT_INDEX_SCHEMA["required_columns"]),
+            pd.DataFrame(columns=V551J_COMPONENT_MATCH_AUDIT_SCHEMA["required_columns"]),
+        )
     component_rows: list[dict[str, Any]] = []
     audit_rows: list[dict[str, Any]] = []
     patterns = {str(row.get("pattern_id")): row for row in pattern_index.to_dict("records")}
@@ -1307,7 +1313,6 @@ def build_v551j_joint_component_index(*, pattern_index: pd.DataFrame, pattern_it
             "candidate_atom_count": int(len(candidates)), "effective_atom_count": 1 if match_status.startswith("MATCHED") else 0,
             "audit_reason_codes_json": _v2_json(reasons), "created_at": utc_now(), "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3",
         })
-    from data.ddm_build_copy.ddm_v551j_schema import V551J_COMPONENT_MATCH_AUDIT_SCHEMA, V551J_JOINT_COMPONENT_INDEX_SCHEMA
     return (
         pd.DataFrame(component_rows).reindex(columns=V551J_JOINT_COMPONENT_INDEX_SCHEMA["required_columns"]),
         pd.DataFrame(audit_rows).reindex(columns=V551J_COMPONENT_MATCH_AUDIT_SCHEMA["required_columns"]),
@@ -1342,6 +1347,8 @@ def validate_governed_input_scope(
 
     def _status(source_values: list[str], wave_values: list[str], country_values: list[str]) -> tuple[str, list[str]]:
         row_issues: list[str] = []
+        if not source_values and not wave_values and not country_values and expected_source and expected_wave and expected_country:
+            return "PASS", []
         if not source_values or not wave_values or not country_values:
             row_issues.append("scope_contract_unresolved")
         if source_values and source_values != [expected_source]:
@@ -1387,7 +1394,10 @@ def validate_governed_input_scope(
     item_joined = pattern_items.merge(parent_scope, on="pattern_id", how="left", indicator=True) if "pattern_id" in pattern_items.columns else pattern_items.copy()
     item_issues = ["item_to_pattern_coverage_mismatch"] if not item_joined.empty and (("_merge" not in item_joined.columns) or item_joined["_merge"].astype(str).ne("both").any()) else []
     _append("v550j_pattern_item_index", item_joined, _values(item_joined, "source_family"), _values(item_joined, "canonical_wave"), _values(item_joined, "country_code"), item_issues)
-    if "pattern_id" not in relation_signatures.columns:
+    if relation_signatures.empty:
+        relation_joined = relation_signatures.copy()
+        relation_issues = []
+    elif "pattern_id" not in relation_signatures.columns:
         relation_joined = relation_signatures.copy()
         relation_issues = ["scope_contract_unresolved"]
     else:
@@ -1765,9 +1775,20 @@ def build_v551j_joint_outputs_v2(
     denominator_audit = pd.DataFrame(denominator_rows).reindex(columns=V551J_DENOMINATOR_SEPARATION_AUDIT_SCHEMA["required_columns"])
     cert_audit = pd.DataFrame(cert_audit_rows).reindex(columns=V551J_CERTIFICATION_AUDIT_SCHEMA["required_columns"])
     rejection_audit = pd.DataFrame(rejection_rows).reindex(columns=V551J_CERTIFICATION_REJECTION_AUDIT_SCHEMA["required_columns"])
-    expected_source = _clean(candidate["source_family"].iloc[0]) if not candidate.empty else ""
-    expected_wave = _clean(candidate["canonical_wave"].iloc[0]) if not candidate.empty else ""
-    expected_country = _clean(candidate["country_code"].iloc[0]) if not candidate.empty else ""
+    expected_source = _clean(candidate["source_family"].iloc[0]) if not candidate.empty else _clean(manifest.get("source_family") or manifest.get("source"))
+    expected_wave = _clean(candidate["canonical_wave"].iloc[0]) if not candidate.empty else _clean(readiness.get("canonical_wave") or readiness.get("wave"))
+    expected_country = _clean(candidate["country_code"].iloc[0]) if not candidate.empty else _clean(readiness.get("country_code") or manifest.get("country_code"))
+    # Empty V550J/V551 surfaces are valid, but scope validation still needs
+    # the governed execution identity. Prefer the shard identity when the
+    # readiness report carries a display alias such as EVS W1 instead of the
+    # canonical execution wave used by the run.
+    shard_id = _clean(manifest.get("shard_id") or run_id)
+    if shard_id and expected_source and expected_country:
+        prefix = expected_source.replace(" ", "_") + "_"
+        if shard_id.startswith(prefix) and shard_id.endswith("_" + expected_country):
+            shard_wave = shard_id[len(prefix) : -(len(expected_country) + 1)]
+            if shard_wave:
+                expected_wave = shard_wave
     scope_audit, scope_issues = validate_governed_input_scope(
         run_id=run_id,
         atoms=atoms,
@@ -1829,7 +1850,7 @@ def build_v551j_joint_outputs_v2(
     candidate_contract_valid = bool(validation_report.iloc[0]["candidate_contract_valid"])
     component_contract_valid = bool(validation_report.iloc[0]["component_contract_valid"])
     final_status = "READY_V551J_JOINT_EVIDENCE_CONTRACT" if certified_count and candidate_contract_valid and component_contract_valid else "BLOCKED_PACKET_CONTRACT" if validation_issues else "PARTIAL_READY_V551J_REVIEW_ONLY" if review_count or blocked_count else "PARTIAL_READY_V551J_CONTEXT_ONLY" if context_count else "BLOCKED_V551J_NO_CANDIDATE_PATTERNS"
-    readiness_report = {"run_id": run_id, "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3", "source_family": _clean(candidate["source_family"].iloc[0]) if not candidate.empty else "", "canonical_wave": _clean(candidate["canonical_wave"].iloc[0]) if not candidate.empty else "", "country_code": _clean(candidate["country_code"].iloc[0]) if not candidate.empty else "", "input_pattern_count": int(len(pattern_index)), "input_pattern_item_count": int(len(pattern_item_index)), "candidate_packet_count": int(len(candidate)), "component_row_count": int(len(component_df)), "certified_packet_count": certified_count if candidate_contract_valid and component_contract_valid else 0, "certified_with_context_count": int(candidate["certification_status"].astype(str).eq("CERTIFIED_JOINT_RELATION_EVIDENCE_WITH_CONTEXT").sum()) if not candidate.empty and candidate_contract_valid else 0, "review_required_packet_count": review_count, "context_only_packet_count": context_count, "blocked_packet_count": blocked_count, "ambiguous_component_count": int(candidate["ambiguous_component_count"].sum()) if not candidate.empty else 0, "cross_contract_conflict_count": int(candidate["cross_contract_conflict_count"].sum()) if not candidate.empty else 0, "measurement_separation_violation_count": int((measurement_audit["measurement_separation_status"].astype(str) != "PASS").sum()) if not measurement_audit.empty else 0, "registry_contract_status": registry_audit.iloc[0]["registry_contract_status"], "scope_contract_status": "PASS" if not scope_issues else "FAIL_SCOPE_MISMATCH", "candidate_contract_valid": candidate_contract_valid, "component_contract_valid": component_contract_valid, "ready_for_review": bool(len(review_surface)), "ready_for_v552j_joint_evidence": bool(certified_count and candidate_contract_valid and component_contract_valid), "ready_for_v553": False, "final_status": final_status, "blockers_json": _v2_json(validation_issues), "warnings_json": _v2_json([f"deprecated_v552_inputs_supplied={deprecated_v552_inputs_supplied}", f"v550j_original_readiness={readiness.get('readiness_status', '')}"]), "created_at": utc_now()}
+    readiness_report = {"run_id": run_id, "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3", "source_family": expected_source, "canonical_wave": expected_wave, "country_code": expected_country, "input_pattern_count": int(len(pattern_index)), "input_pattern_item_count": int(len(pattern_item_index)), "candidate_packet_count": int(len(candidate)), "component_row_count": int(len(component_df)), "certified_packet_count": certified_count if candidate_contract_valid and component_contract_valid else 0, "certified_with_context_count": int(candidate["certification_status"].astype(str).eq("CERTIFIED_JOINT_RELATION_EVIDENCE_WITH_CONTEXT").sum()) if not candidate.empty and candidate_contract_valid else 0, "review_required_packet_count": review_count, "context_only_packet_count": context_count, "blocked_packet_count": blocked_count, "ambiguous_component_count": int(candidate["ambiguous_component_count"].sum()) if not candidate.empty else 0, "cross_contract_conflict_count": int(candidate["cross_contract_conflict_count"].sum()) if not candidate.empty else 0, "measurement_separation_violation_count": int((measurement_audit["measurement_separation_status"].astype(str) != "PASS").sum()) if not measurement_audit.empty else 0, "registry_contract_status": registry_audit.iloc[0]["registry_contract_status"], "scope_contract_status": "PASS" if not scope_issues else "FAIL_SCOPE_MISMATCH", "candidate_contract_valid": candidate_contract_valid, "component_contract_valid": component_contract_valid, "ready_for_review": bool(len(review_surface)), "ready_for_v552j_joint_evidence": bool(certified_count and candidate_contract_valid and component_contract_valid), "ready_for_v553": False, "final_status": final_status, "blockers_json": _v2_json(validation_issues), "warnings_json": _v2_json([f"deprecated_v552_inputs_supplied={deprecated_v552_inputs_supplied}", f"v550j_original_readiness={readiness.get('readiness_status', '')}"]), "created_at": utc_now()}
     return {
         "candidate": candidate, "component": component_df, "certified": certified, "review_surface": review_surface,
         "pattern_context_sidecar": context_sidecar, "association_context_sidecar": assoc_sidecar, "position_context_sidecar": pos_sidecar,
