@@ -572,8 +572,33 @@ def _filter_response_map_for_wave(
         return pd.DataFrame(columns=list(response_map.columns) if response_map is not None else [])
 
     frame = response_map.copy()
+    # Some governed rows in the canonical map were compiled from codebooks
+    # whose dataset metadata did not carry wave/canonical_wave.  Recover the
+    # wave only from that row's exact source-file basename; never treat a
+    # family-only row as belonging to the requested wave.
+    if "source_file" in frame.columns:
+        def _file_wave(value: Any) -> str:
+            name = Path(_semantic_clean(value)).name.lower()
+            if not name:
+                return ""
+            patterns = (
+                (r"evs\s+wave\s+1.*1981", "1981"),
+                (r"south\s+asia\s+wave\s+1", "W1"),
+                (r"south\s+asia\s+wave\s+2", "W2"),
+                (r"world\s+values\s+survey\s+wave\s+1", "W1"),
+                (r"world\s+values\s+survey\s+wave\s+4", "W4"),
+                (r"world\s+values\s+survey\s+wave\s+7", "W7"),
+            )
+            for pattern, result in patterns:
+                if re.search(pattern, name):
+                    return result
+            return ""
+            return ""
     source_columns = [c for c in ("source_family", "source", "survey_family") if c in frame.columns]
     wave_columns = [c for c in ("canonical_wave", "wave", "wave_id") if c in frame.columns]
+    if "source_file" in frame.columns:
+        frame["_v550_derived_canonical_wave"] = frame["source_file"].map(_file_wave)
+        wave_columns = [*wave_columns, "_v550_derived_canonical_wave"]
     authority_identity_columns = [c for c in ("question_id", "item_id", "var_code", "var_name", "variable_id", "canonical_var_code") if c in frame.columns]
     live_identity_columns = [c for c in ("question_id", "item_id", "var_code", "var_name", "variable_id", "canonical_var_code") if c in wave_question_rows.columns]
 
