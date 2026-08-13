@@ -17,8 +17,9 @@ The first local execution lawfully instantiated the GSS local-block archetype an
 5. `freeze/FROZEN_CANDIDATE_ORDER_R1.csv`
 6. `authority/RESPONSE_SEMANTICS_PROJECTION_PROVENANCE_R1.md`
 7. `authority/ANTI_ERASE_RESPONSE_OPTION_AUTHORITY_R1.metadata.json`
-8. `execution/ANTI_ERASE_RETRY_R1.md`
-9. `validation/validate_phase_d_successor_archetype_return.py`
+8. `execution/LOCAL_RUNTIME_COMPATIBILITY_R1.md`
+9. `execution/ANTI_ERASE_RETRY_R1.md`
+10. `validation/validate_phase_d_successor_archetype_return.py`
 
 ## Current execution boundary
 
