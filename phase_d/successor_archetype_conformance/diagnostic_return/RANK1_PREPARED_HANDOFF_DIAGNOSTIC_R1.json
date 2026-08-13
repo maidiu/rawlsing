@@ -1,0 +1,125 @@
+{
+  "terminal_classification": "POSITIVE_INTERSECTION__V550J_ZERO_AT_IDENTIFIED_STAGE",
+  "candidate_id": "O12C3-170d6968c83720edbae8f80a",
+  "source": "LiTS",
+  "wave": "II",
+  "variables": [
+    "q306c",
+    "q305_1"
+  ],
+  "frozen_candidate_order_sha256": "5ae32c7cdfd68d3e0c1816abd85fc6f77387f65a383e5b860d2ab9cf814235b2",
+  "materialized_response_projection_sha256": "d9bcc4e9cf80c6e70fdf38d7fd260c5b60f4f8a4696fbea0c8e6d4fbff5ee1f7",
+  "stage_a": {
+    "prepared_rows": 4500,
+    "distinct_respondent_identities": 900,
+    "q306c_rows": 900,
+    "q306c_distinct_respondents": 900,
+    "q305_1_rows": 900,
+    "q305_1_distinct_respondents": 900,
+    "distinct_respondents_with_both_variables": 838,
+    "distinct_respondents_with_nonmissing_governed_values_both": 838,
+    "source_wave_scope_identifiers": [
+      {
+        "source": "LiTS",
+        "wave": "II",
+        "canonical_wave": "II",
+        "country_code": "SE"
+      }
+    ],
+    "respondent_identity_fields_used": [
+      "respondent_id_norm"
+    ],
+    "prepared_representation": "long-form variable/value rows joined by respondent_id_norm",
+    "prepared_row_shape": {
+      "rows": 4500,
+      "columns": 145
+    },
+    "v550_contract_status": "PASS",
+    "prepared_manifest_contract": {
+      "row_count": 4500,
+      "respondent_count": 900,
+      "var_count": 5,
+      "validation_status": "pass",
+      "question_use_contract_enrichment_status": "PASS"
+    }
+  },
+  "stage_b": {
+    "executed": true,
+    "execution_mode": "prepared_required",
+    "database_access_forbidden": true,
+    "positive_stage_a_intersection_rows": 838,
+    "positive_stage_a_intersection_respondents": 838,
+    "transitions": [
+      {
+        "stage": "prepared_input_received",
+        "function": "compile_v550j_joint_response_patterns.main",
+        "before": 4500,
+        "after": 4500,
+        "condition": "explicit prepared substrate loaded and validated"
+      },
+      {
+        "stage": "prepared_respondent_population",
+        "function": "compile_v550j_joint_response_patterns.main",
+        "before": 900,
+        "after": 900,
+        "condition": "respondent_id_norm distinct count"
+      },
+      {
+        "stage": "candidate_family_registry_discovery",
+        "function": "compile_v550j_joint_response_patterns.active_families",
+        "before": 1,
+        "after": 0,
+        "condition": "registry family must have at least one family item whose var_code is present in the filtered question_use_contract; registry item vars are q326e,q708,q802ai, while candidate contract vars are q305_1,q306c"
+      },
+      {
+        "stage": "family_question_filter",
+        "function": "compile_v550j_joint_response_patterns.main: family_questions",
+        "before": 0,
+        "after": 0,
+        "condition": "no approved family questions remained; family skipped with issue_type=family_not_found_in_contract"
+      },
+      {
+        "stage": "joint_pattern_compilation",
+        "function": "compile_v550j_joint_patterns.compile_v550j_family_tables",
+        "before": 0,
+        "after": 0,
+        "condition": "not reached because active_families was empty"
+      }
+    ],
+    "v550j_table_counts": {
+      "joint_response_pattern_index": 0,
+      "joint_response_pattern_item_index": 0,
+      "question_family_boundary_pattern_index": 0,
+      "joint_pattern_position_signature": 0,
+      "joint_pattern_relation_signature": 0,
+      "joint_pattern_respondent_membership": 0,
+      "joint_pattern_audit": 0,
+      "joint_pattern_association_index": 0,
+      "joint_pattern_association_review_surface": 0,
+      "joint_pattern_meaning_summary": 0,
+      "joint_pattern_association_candidate_trace": 0,
+      "joint_pattern_association_eligibility_funnel": 0
+    },
+    "v550j_readiness_status": "diagnostic_only_no_publishable_rows",
+    "first_zero_stage": "candidate_family_registry_discovery",
+    "first_zero_rule": "active_families requires registry applicability and a family configuration whose item variables overlap the filtered question contract; the single LiTS II registry family has q326e,q708,q802ai, with zero overlap against q306c,q305_1.",
+    "registry_family_count": 1,
+    "registry_item_variables": [
+      "Q326E",
+      "Q708",
+      "Q802AI"
+    ],
+    "filtered_question_contract_variables": [
+      "Q305_1",
+      "Q306C"
+    ],
+    "registry_contract_overlap": [],
+    "family_registry_status": "applicable",
+    "no_response_or_routing_rule_was_reached": true
+  },
+  "privacy": {
+    "respondent_level_rows_included": false,
+    "respondent_ids_included": false,
+    "raw_values_included": false
+  }
+}
