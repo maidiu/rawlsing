@@ -6,6 +6,10 @@
 
 This artifact repairs the `V550_RESPONSE_SEMANTICS_EMPTY` input gap exposed by the first successor archetype-conformance run. It does **not** change the frozen candidate ladder, Job3 semantic posture, routing truth, M6 ancestry, or Phase-D validator semantics.
 
+## Transport clarification
+
+The encoded `.b64` wrapper is a transport representation. The materialized CSV is the governing frozen payload. See `../execution/PREFLIGHT_TRANSPORT_NOTE_R2.md` for the active retry clarification. The existing materialized CSV SHA-256 remains the authoritative byte-level integrity pin.
+
 ## Backward authority check
 
 The cumulative R5 architecture already requires a canonical V550 response-option map before determinicity and defines one row per source/wave/variable/value option. It explicitly forbids trusting numeric response values without response-option provenance and gives `pdf_response_text` as a lawful option source. No prior governed response-option mapping for these exact twelve frozen anti-erase variables was found in the R5 or R10H packaged ancestry inspected for this repair.
@@ -62,10 +66,6 @@ The `low` confidence value is intentional: R5's frozen V550 confidence law assig
 Materialized CSV SHA-256:
 
 `d9bcc4e9cf80c6e70fdf38d7fd260c5b60f4f8a4696fbea0c8e6d4fbff5ee1f7`
-
-GitHub sidecar SHA-256:
-
-`650ea4da5c687f692f8abae51094e312de2f7add2e31cc204e41b54e82620d97`
 
 ## Scope lock
 
