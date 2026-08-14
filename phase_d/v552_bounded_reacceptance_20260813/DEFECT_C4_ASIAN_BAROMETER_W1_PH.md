@@ -1,10 +1,10 @@
-# V552 Blocker C4: Asian Barometer W1/PH Source Contract
+# Superseded Asian Barometer W1/PH Finding
 
-## Terminal blocker
+## Status
 
-`Asian Barometer_W1_PH` remains `BLOCKED_V552_OUTPUT_CONTRACT` after the C0 repair. All four selected distributions have certified upstream directionality metadata, but each contains `scale_direction=descending` together with semantic response directions that the V552 signed-component consistency check rejects. The compiler therefore produces `no_eligible_components|direction_scale_inconsistency` for every distribution.
+The original C4 classification was disproven by the required scale differential. The source authority and semantic directions are coherent; the V552 implementation had incorrectly allowed the ordinal fallback to override supplied response-scale coordinates.
 
-The resulting readiness is:
+The original blocked readiness was:
 
 - pressure candidates: 4
 - observed pressure: 0
@@ -13,10 +13,10 @@ The resulting readiness is:
 - input contract: PASS
 - semantic/scale consistency: BLOCKED
 
-## Why execution stops
+## Resolution
 
-The failure is in the governed input contract, not in V552J and not in the validator. Correcting it requires deciding whether the source scale direction or the certified semantic direction is authoritative, or supplying a reconciled authority row. The bounded task forbids inferring or rewriting that authority. V552J is therefore not run.
+The narrow V552 transform repair resolved the issue without changing authority. See `ASIAN_W1_PH_SCALE_DIAGNOSIS.md`.
 
-## Required next action
+## Historical record
 
-Resolve the four Asian Barometer W1/PH distributions in the upstream governed atom/scale authority, then rerun the same frozen V552 scope. Do not suppress the inconsistency or treat zero observed pressure as acceptance.
+This file is retained as the initial differential finding and is superseded by the source-native diagnosis.

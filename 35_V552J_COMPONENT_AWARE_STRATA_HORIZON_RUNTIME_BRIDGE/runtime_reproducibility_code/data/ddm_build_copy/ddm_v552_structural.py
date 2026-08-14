@@ -3769,6 +3769,18 @@ def _source_response_intensity(row: Mapping[str, Any]) -> tuple[float | None, st
     authority_intensity = _finite_float(row.get("authority_response_intensity"))
     if authority_intensity is not None:
         return authority_intensity, "authority_response_intensity"
+    # A supplied response_intensity is already the governed source-scale
+    # coordinate.  The ordinal reconstruction is only a compatibility
+    # fallback for inherited atoms that do not carry that coordinate.
+    legacy_intensity = _finite_float(row.get("response_intensity"))
+    # Some inherited v2.1 atoms encoded neutral categories as a legacy zero
+    # magnitude.  If an ordinal source coordinate is available, recover the
+    # neutral midpoint rather than turning that legacy zero into canonical -1.
+    if legacy_intensity is not None and not (
+        _clean(row.get("response_direction")).casefold() == "neutral"
+        and abs(legacy_intensity) <= V552_EPSILON
+    ):
+        return legacy_intensity, "response_intensity"
     rank = _finite_float(row.get("ordinal_rank"))
     scale_min = _finite_float(row.get("scale_min"))
     scale_max = _finite_float(row.get("scale_max"))
@@ -3778,9 +3790,6 @@ def _source_response_intensity(row: Mapping[str, Any]) -> tuple[float | None, st
         if direction == "descending":
             coordinate = 1.0 - coordinate
         return max(0.0, min(1.0, float(coordinate))), "ordinal_scale_coordinate"
-    legacy_intensity = _finite_float(row.get("response_intensity"))
-    if legacy_intensity is not None:
-        return legacy_intensity, "response_intensity"
     return None, "missing"
 
 

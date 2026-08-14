@@ -2,7 +2,7 @@
 
 ## Terminal
 
-`V552_REACCEPTANCE_BLOCKED`
+`V552_BOUNDED_ACCEPTED__V552J_BLOCKED`
 
 ## Frozen execution
 
@@ -25,7 +25,8 @@ Eight scopes pass `READY_V552_STRUCTURAL_PRESSURE_CONTRACT` after the bounded C0
 ## Gates
 
 - Focused pre-V553 wiring tests: 11 passed.
-- V552 accepted: NO, because one frozen scope is blocked.
-- V552J executed: NO, correctly gated by V552 acceptance.
+- V552 accepted: YES, 9/9 scopes pass with zero invalid output-contract rows.
+- V552J executed: attempted at the original handoff court and blocked by the existing V551J artifact contract; no pressure or authority was altered.
 - V553+: not started.
 - Respondent-level artifacts: not committed.
+- V553 was not executed.
