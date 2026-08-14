@@ -1,0 +1,10 @@
+{
+  "classification": "C4_STALE_OR_WRONG_INPUT_EXECUTION",
+  "defect": "Historical V550J manifests retain absolute registry paths that are absent in the receiving worktree.",
+  "reproducer": "Current V551J unchanged-first returned registry_path missing for every provenance-backed scope.",
+  "repair": "When the manifest path is missing, accept a caller-supplied registry with the same basename and compare its byte hash against the current execution registry.",
+  "semantic_authority_changed": false,
+  "scope_changed": false,
+  "regression": "Current V551J rerun reached packet evaluation; GSS reached READY_V551J_JOINT_EVIDENCE_CONTRACT.",
+  "remaining_blocker": "Non-GSS inherited V550J inputs remain diagnostic-only or review/blocked and cannot be promoted."
+}

@@ -1,0 +1,45 @@
+{
+  "git_head": "8b7aa5e978a3e98caea68c0197684488de1dd45d",
+  "v552_status": "9/9 PASS, 0 invalid",
+  "implementations": [
+    {
+      "path": "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code/data/ddm_build_copy/compile_v551j_joint_evidence_packets.py",
+      "sha256": "a8f5eb0ed0ea6fe90c9c7ecb9cdcb79cc25411ecc9e8bab23c23fdefe449b219"
+    },
+    {
+      "path": "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code/data/ddm_build_copy/ddm_v551j_packets.py",
+      "sha256": "7c54bcdc8a9d922bb4595565d4d42d55f7c45d5c12480444d929b3d82a808af5"
+    },
+    {
+      "path": "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code/data/ddm_build_copy/ddm_v551j_contract.py",
+      "sha256": "f40eea1c1d4c6ceba5c639a7e304f05d7f859d51f629f483517a7e9bfb75236e"
+    },
+    {
+      "path": "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code/data/ddm_build_copy/ddm_v551j_schema.py",
+      "sha256": "82858e2533885e6357be63db09c346d8937425da8d76377dde3e582afd9f4cf4"
+    },
+    {
+      "path": "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code/data/ddm_build_copy/compile_v552j_runtime_safe_structural_handoff.py",
+      "sha256": "ac265a83a8ffe02d8e505e1a6c747b88be3eb215def8a74f2a6b4d8b8a7f2bcf"
+    },
+    {
+      "path": "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code/data/ddm_build_copy/ddm_v552j_handoff.py",
+      "sha256": "75a321eb1f68ea08e985fed947cf28c312dda398f74f215b525fc35ba53a5441"
+    }
+  ],
+  "required_v551j_outputs": [
+    "packets/v551j_certified_packet_index.parquet",
+    "packets/v551j_reviewable_evidence_sidecar.parquet",
+    "manifest/v551j_certification_readiness_report.json",
+    "manifest/v551j_review_readiness_report.json",
+    "manifest/v551j_packet_readiness_report.json",
+    "manifest/v551j_input_provenance_manifest.json"
+  ],
+  "v551j_compiler_version": "v551j_joint_evidence_contract_v2_2_3",
+  "v552j_input_rule": "accepted V552 pressure plus current V551J output; no pressure recomputation",
+  "readiness_predicates": [
+    "current contract valid",
+    "certified/review/blocked lanes preserved",
+    "no runtime or pressure authority"
+  ]
+}

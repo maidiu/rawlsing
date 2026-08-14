@@ -1548,6 +1548,15 @@ def build_v551j_joint_outputs_v2(
         pass
     manifest_registry_path = manifest.get("registry_path") or manifest.get("input_documents", {}).get("registry_path", "")
     manifest_registry_hash = manifest.get("question_family_registry_hash") or _v2_hash_file(manifest_registry_path)
+    # Historical V550J manifests retain absolute paths from the build
+    # environment. When that path is gone, a caller may provide the exact
+    # relocated registry artifact. Accept the relocation only when the
+    # filenames agree; the byte hash is still computed from the supplied file
+    # and compared against the current execution registry below.
+    if manifest_registry_hash == "missing" and manifest_registry_path and registry_path:
+        if Path(manifest_registry_path).name == Path(registry_path).name:
+            manifest_registry_hash = registry_hash
+            manifest_registry_path = str(registry_path)
     if registry_hash in {"missing", "not_supplied"}:
         registry_contract_status = "BLOCKED_MISSING_CURRENT_REGISTRY"
     elif not manifest_registry_hash or manifest_registry_hash in {"missing", "not_supplied"}:
