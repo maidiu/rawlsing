@@ -1,0 +1,16 @@
+{
+  "status": "PRESELECTED_35WAVE_20VAR_NO_LIVENESS",
+  "inventory_sha256": "bc011a93e42d2de9997cea6754c5885cacc1813e341398453f4a165b52746b35",
+  "inventory_rows": 18511,
+  "scope_count": 35,
+  "selected_rows": 700,
+  "wave_aliases": {
+    "EVS:1981": "W1",
+    "EVS:1999": "W3",
+    "Arab Barometer:I": "W1",
+    "Arab Barometer:II": "W2",
+    "Arab Barometer:V": "W5",
+    "Arab Barometer:VIII": "W8"
+  },
+  "selection_rule": "deterministic inventory fill; no PostgreSQL liveness query; liveness remains a downstream V550 gate"
+}
