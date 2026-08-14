@@ -90,7 +90,10 @@ def _write_frame(root: Path, schemas: Path, name: str, frame: pd.DataFrame, *, w
     csv_path = root / f"{name}.csv"
     parquet_path = root / f"{name}.parquet"
     if write_csv:
-        frame.to_csv(csv_path, index=False)
+        # Acceptance validation reconstructs contracts from the persisted CSV.
+        # Preserve IEEE-754 values so that persistence cannot change governed
+        # weights, signed summaries, or pressure magnitudes.
+        frame.to_csv(csv_path, index=False, float_format="%.17g")
     if write_parquet:
         frame.to_parquet(parquet_path, index=False)
     _write_json(schemas / f"{name}.schema.json", dataframe_schema_json(frame, name=name, run_id=root.parent.name))
@@ -143,7 +146,7 @@ def main() -> int:
     atoms_hash = _hash_file(atoms_path)
     atoms_csv_path = manifest_dir / "v552_input_atoms.csv"
     atoms_parquet_path = manifest_dir / "v552_input_atoms.parquet"
-    atoms.to_csv(atoms_csv_path, index=False)
+    atoms.to_csv(atoms_csv_path, index=False, float_format="%.17g")
     atoms.to_parquet(atoms_parquet_path, index=False)
     input_contract = validate_v552_v551_input_contract(atoms)
     _write_json(manifest_dir / "v552_input_contract_report.json", input_contract)

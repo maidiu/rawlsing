@@ -19,7 +19,7 @@ from data.ddm_build_copy.ddm_v552_contract import (
     v552_canonical_value,
 )
 from data.ddm_build_copy.ddm_v552_structural import (
-    V552_EPSILON,
+V552_EPSILON,
     V552_HANDOFF_SCHEMA_VERSION,
     V552_NORMALIZED_INTENSITY_MAX,
     V552_NORMALIZED_INTENSITY_MIN,
@@ -42,6 +42,12 @@ from data.ddm_build_copy.ddm_v552_structural import (
     validate_v552_v551_input_contract,
 )
 
+# Persisted V552 inputs can carry source-authorized normalized coordinates at
+# six-decimal precision.  Validation may therefore compare a persisted
+# reconstruction within one source-coordinate micro-unit, while the compiler
+# itself retains the stricter contract epsilon for classification decisions.
+V552_PERSISTED_NUMERIC_EPSILON = 1e-6
+
 EXPECTED_PRESSURE_SCALE_MIN = "-1"
 EXPECTED_PRESSURE_SCALE_MAX = "1"
 
@@ -60,7 +66,7 @@ def _canon(value: Any) -> str:
     return str(v552_canonical_value(value))
 
 
-def _close(a: Any, b: Any, eps: float = V552_EPSILON) -> bool:
+def _close(a: Any, b: Any, eps: float = V552_PERSISTED_NUMERIC_EPSILON) -> bool:
     av = pd.to_numeric(pd.Series([a]), errors="coerce").iloc[0]
     bv = pd.to_numeric(pd.Series([b]), errors="coerce").iloc[0]
     if pd.isna(av) and pd.isna(bv):
@@ -342,7 +348,7 @@ def validate_v552_v2_1_4_outputs(
                 _issue(issues, "direction_scale_consistency_mismatch", str(atom.get("atom_id")))
             got = pd.to_numeric(pd.Series([cd.get("canonical_signed_component")]), errors="coerce").iloc[0]
             exp = transform.canonical_signed_component
-            if exp is not None and (pd.isna(got) or abs(float(got) - float(exp)) > V552_EPSILON):
+            if exp is not None and (pd.isna(got) or abs(float(got) - float(exp)) > V552_PERSISTED_NUMERIC_EPSILON):
                 _issue(issues, "canonical_signed_component_mismatch", str(atom.get("atom_id")))
         for _, comp in comp_group.iterrows():
             atom_id = str(comp.get("source_atom_id"))
@@ -377,7 +383,7 @@ def validate_v552_v2_1_4_outputs(
             if abs(recomputed) <= V552_EPSILON:
                 recomputed = 0.0
             got = pd.to_numeric(pd.Series([d.get("pressure_score")]), errors="coerce").iloc[0]
-            if pd.isna(got) or abs(float(got) - recomputed) > V552_EPSILON:
+            if pd.isna(got) or abs(float(got) - recomputed) > V552_PERSISTED_NUMERIC_EPSILON:
                 _issue(issues, "pressure_score_recomputation_mismatch", str(obs_id))
         expected_class = _pressure_measure_class_for_status(d.get("pressure_score"), surface_status)
         if expected_class != d.get("pressure_measure_class"):
