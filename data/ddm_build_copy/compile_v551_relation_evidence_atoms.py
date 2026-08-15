@@ -31,6 +31,10 @@ from data.ddm_build_copy.ddm_v551_atoms import (
     validate_v551_atom_contract,
     validate_v551_bridge_input_contract,
 )
+from data.ddm_build_copy.ddm_v551_directionality_expectation import (
+    build_v551_directionality_stamp_audit,
+    summarize_v551_directionality_stamp_coverage,
+)
 from data.ddm_build_copy.ddm_run_provenance import capture_run_provenance
 from data.ddm_build_copy.ddm_v550_schema import V551_ATOM_EXCLUSION_AUDIT_SCHEMA, V551_BLOCKED_SIGNAL_AUDIT_SCHEMA, V551_LINEAGE_BASIS_AUDIT_SCHEMA, V551_NUMERIC_WRAPPER_AUDIT_SCHEMA, V551_PRESSURE_COMPONENT_AUDIT_SCHEMA, V551_RELATION_EVIDENCE_ATOMS_SCHEMA, V551_RELATION_REVIEW_SURFACE_SCHEMA, dataframe_schema_json, write_schema_json
 
@@ -240,6 +244,22 @@ def main() -> int:
     if input_contract["status"] != "PASS":
         raise RuntimeError("BLOCKED_V551_MISSING_BRIDGE_CONTRACT: " + ", ".join(input_contract["missing_columns"]))
 
+    # Directionality completeness has its own authority-defined denominator.
+    # Only substantive response rows whose variable/question contract says a
+    # current directional atom is applicable are audited here.  Row-level
+    # success fields are deliberately excluded from denominator selection.
+    directionality_stamp_audit = build_v551_directionality_stamp_audit(bridge)
+    directionality_stamp_summary = summarize_v551_directionality_stamp_coverage(
+        directionality_stamp_audit
+    )
+    _write_json(
+        run_dir / "v551_directionality_stamp_coverage_report.json",
+        {"run_id": args.run_id, **directionality_stamp_summary, "schema_version": "v2.1"},
+    )
+    directionality_missing_stamp_rows = int(
+        directionality_stamp_summary["directionality_missing_stamp_rows"]
+    )
+
     progress("loading auxiliary inputs")
     question_use_contract = _read_table(Path(args.question_use_contract_path)) if args.question_use_contract_path else pd.DataFrame()
     source_structure_audit = _read_table(Path(args.source_structure_audit_path)) if args.source_structure_audit_path else pd.DataFrame()
@@ -320,6 +340,7 @@ def main() -> int:
         relation_review_surface.to_csv(run_dir / "relation_review_surface.csv", index=False)
         blocked_signal_audit.to_csv(run_dir / "blocked_signal_audit.csv", index=False)
         eligible_bridge_atom_coverage_audit.to_csv(run_dir / "eligible_bridge_atom_coverage_audit.csv", index=False)
+        directionality_stamp_audit.to_csv(run_dir / "directionality_stamp_audit.csv", index=False)
         candidate_bridge.to_csv(run_dir / "certification_candidate_bridge.csv", index=False)
         exclusion_summary.to_csv(run_dir / "exclusion_summary.csv", index=False)
         exclusion_samples.to_csv(run_dir / "exclusion_samples.csv", index=False)
@@ -333,6 +354,7 @@ def main() -> int:
         relation_review_surface.to_parquet(run_dir / "relation_review_surface.parquet", index=False)
         blocked_signal_audit.to_parquet(run_dir / "blocked_signal_audit.parquet", index=False)
         eligible_bridge_atom_coverage_audit.to_parquet(run_dir / "eligible_bridge_atom_coverage_audit.parquet", index=False)
+        directionality_stamp_audit.to_parquet(run_dir / "directionality_stamp_audit.parquet", index=False)
         candidate_bridge.to_parquet(run_dir / "certification_candidate_bridge.parquet", index=False)
         exclusion_summary.to_parquet(run_dir / "exclusion_summary.parquet", index=False)
         exclusion_samples.to_parquet(run_dir / "exclusion_samples.parquet", index=False)
@@ -346,6 +368,7 @@ def main() -> int:
     write_schema_json(run_dir / "schemas" / "relation_review_surface.schema.json", relation_review_surface, name="relation_review_surface", run_id=args.run_id)
     write_schema_json(run_dir / "schemas" / "blocked_signal_audit.schema.json", blocked_signal_audit, name="blocked_signal_audit", run_id=args.run_id)
     write_schema_json(run_dir / "schemas" / "eligible_bridge_atom_coverage_audit.schema.json", eligible_bridge_atom_coverage_audit, name="eligible_bridge_atom_coverage_audit", run_id=args.run_id)
+    write_schema_json(run_dir / "schemas" / "directionality_stamp_audit.schema.json", directionality_stamp_audit, name="directionality_stamp_audit", run_id=args.run_id)
     write_schema_json(run_dir / "schemas" / "certification_candidate_bridge.schema.json", candidate_bridge, name="certification_candidate_bridge", run_id=args.run_id)
     write_schema_json(run_dir / "schemas" / "exclusion_summary.schema.json", exclusion_summary, name="exclusion_summary", run_id=args.run_id)
     write_schema_json(run_dir / "schemas" / "exclusion_samples.schema.json", exclusion_samples, name="exclusion_samples", run_id=args.run_id)
@@ -385,6 +408,8 @@ def main() -> int:
         )
     if input_contract["status"] != "PASS":
         readiness_status = "BLOCKED_V551_MISSING_BRIDGE_CONTRACT"
+    elif directionality_missing_stamp_rows:
+        readiness_status = "BLOCKED_V551_DIRECTIONAL_STAMP_COVERAGE"
     elif unresolved_signed_projection_rows:
         readiness_status = "NOT_READY_V551_UNRESOLVED_SIGNED_PROJECTION"
     elif atom_contract_issues:
@@ -398,11 +423,12 @@ def main() -> int:
     readiness = {
         "run_id": args.run_id,
         "status": readiness_status,
-        "ready_for_v552_relation_structure": bool(len(atoms) > 0 and atom_contract_invalid_rows == 0 and eligible_bridge_missing_atom_rows == 0 and unresolved_signed_projection_rows == 0),
-        "ready_for_v552_pressure_compilation": bool(pressure_eligible_rows > 0 and atom_contract_invalid_rows == 0 and eligible_bridge_missing_atom_rows == 0 and unresolved_signed_projection_rows == 0),
+        "ready_for_v552_relation_structure": bool(len(atoms) > 0 and directionality_missing_stamp_rows == 0 and atom_contract_invalid_rows == 0 and eligible_bridge_missing_atom_rows == 0 and unresolved_signed_projection_rows == 0),
+        "ready_for_v552_pressure_compilation": bool(pressure_eligible_rows > 0 and directionality_missing_stamp_rows == 0 and atom_contract_invalid_rows == 0 and eligible_bridge_missing_atom_rows == 0 and unresolved_signed_projection_rows == 0),
         "bridge_rows": int(len(bridge)),
         "candidate_bridge_rows": int(len(candidate_bridge)),
         "relation_evidence_atom_rows": int(len(atoms)),
+        **directionality_stamp_summary,
         "eligible_bridge_missing_atom_rows": eligible_bridge_missing_atom_rows,
         "pressure_component_eligible_rows": pressure_eligible_rows,
         "pressure_component_ineligible_rows": pressure_ineligible_rows,
@@ -441,6 +467,7 @@ def main() -> int:
         "numeric_wrapper_audit_rows": int(len(numeric_wrapper_audit)),
         "relation_review_surface_rows": int(len(relation_review_surface)),
         "blocked_signal_audit_rows": int(len(blocked_signal_audit)),
+        **directionality_stamp_summary,
         "pressure_component_eligible_rows": pressure_eligible_rows,
         "pressure_component_ineligible_rows": pressure_ineligible_rows,
         "pressure_component_review_required_rows": pressure_review_rows,
@@ -462,6 +489,7 @@ def main() -> int:
         "relation_evidence_atoms_hash": _frame_hash(atoms),
         "pressure_component_audit_hash": _frame_hash(pressure_component_audit),
         "lineage_basis_audit_hash": _frame_hash(lineage_basis_audit),
+        "directionality_stamp_audit_hash": _frame_hash(directionality_stamp_audit),
         "schema_version": "v2.1",
         "created_at": pd.Timestamp.utcnow().isoformat(),
         **provenance,
@@ -483,6 +511,7 @@ def main() -> int:
         "numeric_wrapper_audit_rows": int(len(numeric_wrapper_audit)),
         "relation_review_surface_rows": int(len(relation_review_surface)),
         "blocked_signal_audit_rows": int(len(blocked_signal_audit)),
+        **directionality_stamp_summary,
         "elapsed_seconds": round(time.monotonic() - profile_started, 3),
         "write_csv": bool(args.write_csv),
         "write_parquet": bool(args.write_parquet),
@@ -495,6 +524,8 @@ def main() -> int:
         print(json.dumps(manifest, indent=2, ensure_ascii=False))
         print(json.dumps(performance_profile, indent=2, ensure_ascii=False))
     progress("done")
+    if directionality_missing_stamp_rows:
+        raise RuntimeError("BLOCKED_V551_DIRECTIONAL_STAMP_COVERAGE")
     if unresolved_signed_projection_rows:
         raise RuntimeError("NOT_READY_V551_UNRESOLVED_SIGNED_PROJECTION")
     if atom_contract_issues:
