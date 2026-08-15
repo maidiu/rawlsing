@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QUESTION_APPLICABILITY_PREDICATE_AUTHORITY",
+  "type": "object",
+  "required": ["authority_version", "rows"],
+  "properties": {
+    "authority_version": {"const": "question_applicability_predicate_authority_v1"},
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["applicability_authority_id", "source_family", "wave", "question_implementation_id", "applicability_class", "predicate", "authority_status", "prohibited_fallback", "closure_hash"],
+        "properties": {
+          "applicability_authority_id": {"type": "string"},
+          "source_family": {"type": "string"},
+          "wave": {"type": "string"},
+          "country_module_scope": {"type": "string"},
+          "question_implementation_id": {"type": "string"},
+          "source_variable_code": {"type": "string"},
+          "applicability_class": {"enum": ["UNIVERSAL_WITHIN_SCOPE", "COUNTRY_SPECIFIC", "MODULE_SPECIFIC", "SPLIT_FORM", "RANDOMIZED_FORM", "PARENT_FILTERED", "NOT_ASKED_IF", "PRIOR_ANSWER_GATE", "DEMOGRAPHIC_STATUS_GATE", "INTERVIEWER_MODULE_GATE", "OPTIONAL_COUNTRY_ITEM", "STRUCTURAL_NONAPPLICABILITY", "EXPLICIT_UNKNOWN_UNRESOLVED"]},
+          "predicate": {"type": "object"},
+          "parent_or_gating_question_ids": {"type": "array"},
+          "permitted_respondent_universe": {"type": "string"},
+          "authority_status": {"enum": ["SOURCE_EXPLICIT", "FAIL_CLOSED_UNRESOLVED"]},
+          "source_authority_path": {"type": "string"},
+          "source_sha256": {"type": "string"},
+          "source_locator": {"type": "string"},
+          "supporting_excerpt_or_rule": {"type": "string"},
+          "unresolved_reason": {"type": "string"},
+          "prohibited_fallback": {"const": "DO_NOT_INFER_APPLICABILITY_FROM_COLUMN_EXISTENCE_OR_EMPIRICAL_COOCCURRENCE"},
+          "closure_hash": {"pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "active_processes": [],
+  "bounded_v550j_smoke_status": "PRESERVED_AS_SMOKE_ONLY_NOT_AUTHORITY",
+  "database": {
+    "closure_counts": {
+      "active_families": 162,
+      "active_member_objects": 437,
+      "active_membership_rows": 437,
+      "active_revisions": 162,
+      "candidate_signature_subject_owned": 162,
+      "candidate_with_component": 162,
+      "candidate_with_memberships": 162,
+      "candidate_with_snapshot": 162,
+      "canonical_signature_subject_owned": 162,
+      "canonical_with_adjudication": 162,
+      "canonical_with_candidate_revision": 162
+    },
+    "parent_chain_ok": true,
+    "r184_immutability_result": {
+      "basis": "R184 release row remains present with original parent/schema/builder/object_counts; GSS child and repairs are append-only descendants.",
+      "r184_release_row": {
+        "builder_version": "p3c-governed-replay-v1",
+        "object_counts": {
+          "decision_ordinal": 143
+        },
+        "parent_release_id": "P3-AUTHORITY-2026-08-02-R183",
+        "present": true,
+        "schema_version": "p3-v7-p3c-governed-replay-v1",
+        "validation_return_hash": "7910ee44dfa8620fd83a01a8a86d5178676ed2c05240939f4273195fc741e915"
+      },
+      "status": "PASS"
+    },
+    "relationship_counts_ok": true,
+    "release_rows": {
+      "P3-AUTHORITY-2026-08-02-R184": {
+        "builder_version": "p3c-governed-replay-v1",
+        "object_counts": {
+          "decision_ordinal": 143
+        },
+        "parent_release_id": "P3-AUTHORITY-2026-08-02-R183",
+        "present": true,
+        "schema_version": "p3-v7-p3c-governed-replay-v1",
+        "validation_return_hash": "7910ee44dfa8620fd83a01a8a86d5178676ed2c05240939f4273195fc741e915"
+      },
+      "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD": {
+        "builder_version": "r4-p3c-child-promoter-v1",
+        "object_counts": {
+          "components": 162,
+          "existing_family_attachments": 16,
+          "new_families": 146,
+          "payload_memberships": 413,
+          "revisions": 162
+        },
+        "parent_release_id": "P3-AUTHORITY-2026-08-02-R184",
+        "present": true,
+        "schema_version": "p3-v7",
+        "validation_return_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R1": {
+        "builder_version": "r4-p3c-signature-subject-repair-v1",
+        "object_counts": {
+          "adjudications": 12,
+          "candidate_revisions": 12,
+          "canonical_revisions": 12,
+          "inherited_components": 150,
+          "proposition_signatures": 24,
+          "repair_scope": 12
+        },
+        "parent_release_id": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD",
+        "present": true,
+        "schema_version": "p3-v7",
+        "validation_return_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R2": {
+        "builder_version": "r4-p3c-canonical-signature-subject-repair-v2",
+        "object_counts": {
+          "canonical_revisions": 150,
+          "canonical_signatures": 150,
+          "parent_release": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R1"
+        },
+        "parent_release_id": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R1",
+        "present": true,
+        "schema_version": "p3-v7",
+        "validation_return_hash": "cc8458aa417ad733c00c50020ab3977c3867408d3b68bb447db875e076b2cae8"
+      }
+    },
+    "repair_r2_ledger_rows": 1482,
+    "repair_r2_snapshot_rows": 1482,
+    "repair_r2_status_events": 4
+  },
+  "downstream_j_series_status": "NOT_RUN_AUTHORITY_NOT_YET_BUILT",
+  "gates": {
+    "deterministic_rebuild_pass": true,
+    "no_active_upstream_or_j_processes": true,
+    "r184_immutability_pass": true,
+    "registry_family_count_162": true,
+    "registry_mapping_rows_present": true,
+    "registry_normalization_pass": true,
+    "relationship_closure_162": true,
+    "release_parent_chain": true
+  },
+  "generated_at": "2026-08-06T07:35:48.340935+00:00",
+  "p3c_native_closure": "PASS",
+  "registry": {
+    "audit_path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/gss_p3c_repair_r1_question_family_registry_audit.csv",
+    "audit_rows": 361,
+    "audit_sha256": "069f474a334365615e4adb7afecd63551c3fd74df081f1fd34c86958b9e27588",
+    "authority_release_id": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R2",
+    "declared_registry_sha256": "5290cbf16594c44bc1ac5a38940cd325fb91bc46b3625e7523b1ac36aa0ec756",
+    "deterministic_rebuild": {
+      "status": "PASS",
+      "stdout": "{\n  \"output_path\": \"/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/tmpq648v2o0/registry.yaml\",\n  \"audit_output_path\": \"/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/tmpq648v2o0/audit.csv\",\n  \"family_count\": 162,\n  \"registry_sha256\": \"5290cbf16594c44bc1ac5a38940cd325fb91bc46b3625e7523b1ac36aa0ec756\",\n  \"audit_rows\": 361\n}"
+    },
+    "family_count": 162,
+    "normalization_report": {
+      "gss": {
+        "authority_release_id": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R2",
+        "declared_family_count": 162,
+        "families_missing_items": [],
+        "family_count": 162,
+        "item_count": 361,
+        "item_keys": [
+          "condition_label",
+          "p3_member_object_id",
+          "representative_text",
+          "var_code"
+        ],
+        "items_missing_required_fields": [],
+        "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/gss_p3c_repair_r1_question_family_registry.yaml",
+        "registry_version": "gss_p3c_repair_r1_executable",
+        "roles": [
+          "canonical_member"
+        ],
+        "source_family": "GSS",
+        "status": "governed"
+      },
+      "gss_audit": {
+        "missing_required_fields": [],
+        "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/gss_p3c_repair_r1_question_family_registry_audit.csv",
+        "rows": 361,
+        "unique_families": 162,
+        "unique_lineages": 361,
+        "unique_var_codes": 361
+      },
+      "non_gss": [
+        {
+          "authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+          "declared_family_count": null,
+          "families_missing_items": [],
+          "family_count": 28,
+          "item_count": 36,
+          "item_keys": [
+            "condition_label",
+            "p3_member_object_id",
+            "representative_text",
+            "var_code"
+          ],
+          "items_missing_required_fields": [],
+          "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/afrobarometer_p3c_r184_question_family_registry.yaml",
+          "registry_version": "p3c_r184_v1",
+          "roles": [
+            "canonical_member"
+          ],
+          "source_family": "Afrobarometer",
+          "status": "governed"
+        },
+        {
+          "authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+          "declared_family_count": null,
+          "families_missing_items": [],
+          "family_count": 28,
+          "item_count": 46,
+          "item_keys": [
+            "condition_label",
+            "p3_member_object_id",
+            "representative_text",
+            "var_code"
+          ],
+          "items_missing_required_fields": [],
+          "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/arab_barometer_p3c_r184_question_family_registry.yaml",
+          "registry_version": "p3c_r184_v1",
+          "roles": [
+            "canonical_member"
+          ],
+          "source_family": "Arab Barometer",
+          "status": "governed"
+        },
+        {
+          "authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+          "declared_family_count": null,
+          "families_missing_items": [],
+          "family_count": 30,
+          "item_count": 54,
+          "item_keys": [
+            "condition_label",
+            "p3_member_object_id",
+            "representative_text",
+            "var_code"
+          ],
+          "items_missing_required_fields": [],
+          "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/asian_barometer_p3c_r184_question_family_registry.yaml",
+          "registry_version": "p3c_r184_v1",
+          "roles": [
+            "canonical_member"
+          ],
+          "source_family": "Asian Barometer",
+          "status": "governed"
+        },
+        {
+          "authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+          "declared_family_count": null,
+          "families_missing_items": [],
+          "family_count": 58,
+          "item_count": 202,
+          "item_keys": [
+            "condition_label",
+            "p3_member_object_id",
+            "representative_text",
+            "var_code"
+          ],
+          "items_missing_required_fields": [],
+          "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/evs_p3c_r184_question_family_registry.yaml",
+          "registry_version": "p3c_r184_v1",
+          "roles": [
+            "canonical_member"
+          ],
+          "source_family": "EVS",
+          "status": "governed"
+        },
+        {
+          "authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+          "declared_family_count": null,
+          "families_missing_items": [],
+          "family_count": 18,
+          "item_count": 34,
+          "item_keys": [
+            "condition_label",
+            "p3_member_object_id",
+            "representative_text",
+            "var_code"
+          ],
+          "items_missing_required_fields": [],
+          "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/latinobar_metro_p3c_r184_question_family_registry.yaml",
+          "registry_version": "p3c_r184_v1",
+          "roles": [
+            "canonical_member"
+          ],
+          "source_family": "Latinobar\u00f3metro",
+          "status": "governed"
+        },
+        {
+          "authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+          "declared_family_count": null,
+          "families_missing_items": [],
+          "family_count": 28,
+          "item_count": 49,
+          "item_keys": [
+            "condition_label",
+            "p3_member_object_id",
+            "representative_text",
+            "var_code"
+          ],
+          "items_missing_required_fields": [],
+          "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/lits_p3c_r184_question_family_registry.yaml",
+          "registry_version": "p3c_r184_v1",
+          "roles": [
+            "canonical_member"
+          ],
+          "source_family": "LiTS",
+          "status": "governed"
+        },
+        {
+          "authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+          "declared_family_count": null,
+          "families_missing_items": [],
+          "family_count": 22,
+          "item_count": 27,
+          "item_keys": [
+            "condition_label",
+            "p3_member_object_id",
+            "representative_text",
+            "var_code"
+          ],
+          "items_missing_required_fields": [],
+          "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/south_asia_p3c_r184_question_family_registry.yaml",
+          "registry_version": "p3c_r184_v1",
+          "roles": [
+            "canonical_member"
+          ],
+          "source_family": "South Asia",
+          "status": "governed"
+        },
+        {
+          "authority_release_id": "P3-AUTHORITY-2026-08-02-R184",
+          "declared_family_count": null,
+          "families_missing_items": [],
+          "family_count": 74,
+          "item_count": 112,
+          "item_keys": [
+            "condition_label",
+            "p3_member_object_id",
+            "representative_text",
+            "var_code"
+          ],
+          "items_missing_required_fields": [],
+          "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/wvs_p3c_r184_question_family_registry.yaml",
+          "registry_version": "p3c_r184_v1",
+          "roles": [
+            "canonical_member"
+          ],
+          "source_family": "WVS",
+          "status": "governed"
+        }
+      ],
+      "parity": {
+        "expected_item_keys": [
+          "condition_label",
+          "p3_member_object_id",
+          "representative_text",
+          "var_code"
+        ],
+        "expected_role": "canonical_member",
+        "gss_item_keys_match_non_gss": true,
+        "gss_roles_match_non_gss": true,
+        "non_gss_registry_count": 8
+      },
+      "status": "pass"
+    },
+    "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/gss_p3c_repair_r1_question_family_registry.yaml",
+    "runtime_dependency_check": {
+      "basis": "Installed registry is self-contained YAML plus audit sidecar; R4 source authority is used at build time, not loaded by runtime.",
+      "runtime_source_constraint": "installed_registry_only_no_r4_source_runtime_dependency",
+      "status": "PASS"
+    },
+    "sha256": "edace7c6ea09fe1442efc110c4ab7aa7b1055e4025a00db907938a7e94078965",
+    "unique_lineages": 361,
+    "unique_var_codes": 361,
+    "wave_mapping_coverage": {
+      "1972": 39,
+      "1973": 88,
+      "1984": 152,
+      "1993": 132,
+      "2002": 159,
+      "2010": 164,
+      "2016": 182,
+      "2024": 210
+    }
+  },
+  "release_ids": {
+    "active_release": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R2",
+    "canonical_signature_repair_r2": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R2",
+    "gss_child": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD",
+    "r184_parent": "P3-AUTHORITY-2026-08-02-R184",
+    "signature_repair_r1": "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R1"
+  },
+  "schema_version": "GSS_P3C_NATIVE_CLOSURE_RETURN_R1"
+}

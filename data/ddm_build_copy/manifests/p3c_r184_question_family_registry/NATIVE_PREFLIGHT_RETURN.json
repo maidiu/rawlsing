@@ -1,0 +1,139 @@
+{
+  "schema_version": "NATIVE_PREFLIGHT_RETURN_R1",
+  "status": "READY_FOR_ISOLATED_WORKTREE_RECONSTRUCTION",
+  "generated_at": "2026-08-06T07:58:07+00:00",
+  "gss_p3c_native_closure_return": {
+    "path": "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/GSS_P3C_NATIVE_CLOSURE_RETURN.json",
+    "sha256": "c21333897b02569079839927042a2bdd619688ad4c1675c2bb5b6abf83da8c34",
+    "status": "PASS"
+  },
+  "git": {
+    "root": "/Users/matthewsmith/Desktop/Rawlsing",
+    "is_git_repository": false,
+    "actual_repository": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Codex_Ready_Cumulative_V550_Shared_Substrate_R2_babb256_20260803/repository",
+    "head": "d49e55c9f2df86c5412be8759b9ad6ca86778262",
+    "contains_packaged_baseline": false,
+    "baseline_5b500e1": "5b500e160f964f4d47895080ee5673e91713223a",
+    "divergence_note": "Live Rawlsing root is not a Git repository. The only discovered git repo (V550 Shared Substrate R2 transfer repo) has HEAD d49e55c which is an ancestor of the packaged baseline 5b500e1 (baseline is 3 commits ahead of discovered HEAD; merge-base == discovered HEAD). The code under data/ddm_build_copy is not under version control. Per 03_WORKTREE_AND_GIT_SAFETY.md 'Root is not a Git repository' case: create a versioned staging repository in a NEW directory, never around the live root, and record file-source hashes and copy provenance. Do not move the live root into Git.",
+    "dirty": true,
+    "worktree_note": "Discovered repo is a transfer/shared-substrate repo with a detached HEAD; reconstructed repo is 5b-descendant of packaged baseline is via /private/tmp detached worktrees only.",
+    "branches": [
+      "rawlsing-v550-shared-substrate-transfer (HEAD)",
+      "remotes/origin/rawlsing-v550-shared-substrate-transfer",
+      "remotes/origin/reconstruction/v550j-bounded-adapter"
+    ],
+    "worktrees": [
+      "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Codex_Ready_Cumulative_V550_Shared_Substrate_R2_babb256_20260803/repository",
+      "/private/tmp/rawlsing_pre553_97c3b75 (prunable detached 97c3b75)",
+      "/private/tmp/rawlsing_pre553_acbba91 (prunable detached acbba91)",
+      "/private/tmp/rawlsing_v550_5b500e1 (prunable detached 5b500e1)"
+    ],
+    "remotes": [
+      "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Codex_Ready_Cumulative_V550_Shared_Substrate_R2_babb256_20260803/payload/Rawlsing_V550_SHARED_SUBSTRATE_R2_babb256.bundle (origin)"
+    ],
+    "newer_commits": [
+      "HEAD d49e55c is 3 commits behind packaged baseline 5b500e1; baseline is not contained in discovered repo"
+    ]
+  },
+  "databases": [
+    {
+      "name": "rawlsing_p3c_gss_r184",
+      "role": "postgres",
+      "host": "127.0.0.1",
+      "port": 5432,
+      "server_version": "15.4",
+      "extensions": "plpgsql,pgcrypto",
+      "role_on_schema": "authority",
+      "purpose": "P3C authority/provenance database",
+      "authority_releases_present": true,
+      "active_promotion_pointer": "P3-AUTHORITY-2026-08-02-R184",
+      "release_rows_total": 151,
+      "gss_child_releases": [
+        "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD",
+        "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R1",
+        "P3-AUTHORITY-2026-08-05-R4-GSS-CHILD-SIGREPAIR-R2 (PROMOTED, latest)"
+      ],
+      "release_p2_status": "IMMUTABLE",
+      "v550j_tables_present": false,
+      "rebuild_evidence_present": true,
+      "relationship_closure_162": true
+    },
+    {
+      "name": "Rawlsing (reports/WVS)",
+      "role": "postgres",
+      "host": "127.0.0.1",
+      "port": 5432,
+      "server_version": "15.4",
+      "purpose": "source/reporting databases"
+    }
+  ],
+  "runtime_code_paths": [
+    "data/ddm_build_copy/compile_v550j_joint_response_patterns.py",
+    "data/ddm_build_copy/compile_v551j_joint_evidence_packets.py",
+    "data/ddm_build_copy/compile_v552j_runtime_safe_structural_handoff.py",
+    "data/ddm_build_copy/ddm_v550_source_structure.py",
+    "data/ddm_build_copy/build_v550_source_structure_population.py",
+    "Rawlsing_J_Family_Authority_Strategy_Handoff_v27_20260801/02_CORE_REFERENCE/code/compile_v550j_joint_response_patterns.py",
+    "Rawlsing_J_Family_Authority_Strategy_Handoff_v27_20260801/02_CORE_REFERENCE/code/compile_v551j_joint_evidence_packets.py",
+    "Rawlsing_J_Family_Authority_Strategy_Handoff_v27_20260801/02_CORE_REFERENCE/code/compile_v552j_runtime_safe_structural_handoff.py",
+    "Rawlsing_Codex_Ready_Cumulative_V550_Shared_Substrate_R2_babb256_20260803/repository/02_CORE_REFERENCE/code/compile_v550j_joint_response_patterns.py"
+  ],
+  "authority_paths": [
+    "Rawlsing_GSS_P3C_Joint_Authority_12_NATIVE_RECONSTRUCTION_AND_IMPLEMENTATION_RUNBOOK_R1/PAYLOAD/18_NATIVE_RECONSTRUCTION_AND_IMPLEMENTATION_RUNBOOK/V550J_AUTHORITY_SCHEMA_R1.json",
+    "Rawlsing_GSS_P3C_Joint_Authority_12_NATIVE_RECONSTRUCTION_AND_IMPLEMENTATION_RUNBOOK_R1/PAYLOAD/18_NATIVE_RECONSTRUCTION_AND_IMPLEMENTATION_RUNBOOK/NATIVE_PREFLIGHT_RETURN_SCHEMA.json",
+    "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/gss_p3c_repair_r1_question_family_registry.yaml",
+    "data/ddm_build_copy/manifests/p3c_r184_question_family_registry/gss_p3c_repair_r1_question_family_registry_audit.csv"
+  ],
+  "source_evidence_paths": [
+    {
+      "type": "raw_source_structure_count",
+      "value": 2499
+    },
+    {
+      "type": "raw_membership_rows",
+      "value": 15990
+    },
+    {
+      "type": "source_structure_iterations",
+      "paths": [
+        "Rawlsing_J_Family_Authority_Strategy_Handoff_v27_20260801/09_P2_GSS_PASS1/Rawlsing_P2_GSS_Source_Structure_Inventory_v1.csv",
+        "Rawlsing_J_Family_Authority_Strategy_Handoff_v27_20260801/12_P2_EVS_PASS1/Rawlsing_P2_EVS_Source_Structure_Inventory_v1.csv",
+        "Rawlsing_J_Family_Authority_Strategy_Handoff_v27_20260801/19_P2_AFROBAROMETER_PASS1/Rawlsing_P2_Afrobarometer_Source_Structure_Inventory_v1.csv",
+        "Rawlsing_J_Family_Authority_Strategy_Handoff_v27_20260801/15_P2_ARAB_BAROMETER_PASS1/Rawlsing_P2_Arab_Barometer_Source_Structure_Inventory_v1.csv",
+        "Rawlsing_J_Family_Authority_Strategy_Handoff_v27_20260801/32_P2_GLOBAL_CROSS_SOURCE_RECONCILIATION_TRANCHE1/Rawlsing_P2_Normalized_Source_Structure_Registry_v1.csv"
+      ]
+    },
+    {
+      "type": "codebooks_questionnaires",
+      "status": "present"
+    },
+    {
+      "type": "p2_authority",
+      "status": "present"
+    },
+    {
+      "type": "gss_p3c_r184_registry",
+      "status": "present"
+    },
+    {
+      "type": "p3c_release_per_member_annotations",
+      "status": "present"
+    },
+    {
+      "type": "source_native_structural_evidence",
+      "status": "present"
+    }
+  ],
+  "respondent_data_roots_recorded_only": [
+    "data/Data/EVS 1981.sav",
+    "data/Data/EVS 1999.sav",
+    "data/Data/EVS 2017.sav",
+    "data/Data/LiTS_I.dta",
+    "data/Data/LiTS_II.dta",
+    "data/Data/LiTS_III.dta",
+    "data/Data/LiTS_IV.dta",
+    "data/EVS/"
+  ],
+  "blockers": [],
+  "recommended_isolated_worktree": "Create a new staging repository in a new directory (NOT around the live root) at ../rawlsing-v550j-authority-reconstruct-20260806, branching from current discovered native codebase data/ddm_build_copy, copying R9 runbook and CORE_REFERENCE code, and apply file-source hashes + copy provenance. Preserve all newer/uncommitted native work."
+}

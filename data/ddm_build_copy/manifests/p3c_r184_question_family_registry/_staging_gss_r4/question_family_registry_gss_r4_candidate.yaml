@@ -1,0 +1,3329 @@
+registry_version: r4_gss_p3c_candidate_v1
+source_family: GSS
+status: candidate_non_executable
+authority_release: P3-AUTHORITY-2026-08-02-R184-parent-pending-child
+authority_source: R4 full semantic authority plus final-14 semantic resolution
+families:
+- family_id: JFAM-000146
+  family_label: gssfullcomponentr1_0083c6320d1c62938873b456
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0597ffb70d7d77c2755d67c7
+    - p2lineage_2c3603d280665969359747e6
+    - p2lineage_2cb022300b7ee878f45197f8
+    - p2lineage_55eb2ef10c69b6704a795db5
+    - p2lineage_5c5851f34e91bc2f2e4181ff
+    - p2lineage_650c9f21a8a0790a938c0466
+    - p2lineage_78ff7e86889e7522b9e883c0
+    - p2lineage_8e9b7d7f93925bf8830af2ff
+    - p2lineage_a1d330361d89c312490ca396
+    - p2lineage_ced6c0ff860e459ad6b392c2
+    - p2lineage_602cd3c34c6c516ad24b715f
+    - p2lineage_f44c7c56c6d19620b5c3c93a
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: armed_forces
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_0083c6320d1c62938873b456
+  r4_decision: ATTACH_ALL_MEMBERS_TO_EXISTING_FAMILY
+  r4_semantic_signature_sha256: 9bd03e3c560b7f1513fe811e62cad5f189cdb606885ea62e75c6c26840127b23
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_00e147950a14de639088096c
+  family_label: national_spending_poor_welfare_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1c5406c0457922d556c33da9
+    - p2lineage_84053597cc3d3035a29d5d33
+    - p2lineage_e36c78a9c1964a7a8ff482c6
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: welfare_and_assistance_to_the_poor
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_00e147950a14de639088096c
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: a19c94b7f16c2b3fb93eef451fcc9ae1b49d66502c869e7ea4bada7c293ef783
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_026a112184c0068093942f0d
+  family_label: gssfullcomponentr1_026a112184c0068093942f0d
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_456fe66ddb2d93b16ea5ae39
+    - p2lineage_5402d8bf00db716e63f54f4c
+    - p2lineage_9dfab7ea033516059f1e28a3
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: organized_labor
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_026a112184c0068093942f0d
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: e6988a7c5be6ae6883888686342f0fc8499648362609a228b3e7bd7d37c20d10
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_04a7bbec2e59ace9f70d2e22
+  family_label: us_citizenship_if_foreign_born
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1b405c8287246de28a9b7f34
+    - p2lineage_4a20656a291ed3fd5381db9b
+  response_role_rules:
+    operator: status_indicator
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_us_citizenship_if_foreign_born
+  boundary_rules:
+    axis: citizenship_status
+    conditional_scope: foreign_born_only
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_04a7bbec2e59ace9f70d2e22
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 5d2a4a46d9c27808a7c282f4c5bde725afe02b30b7b57912614d832f1eb01d85
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_06d67a27d8ebdbb7add6fe9b
+  family_label: respondent_income
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_29241fc2fdfb85871af87263
+    - p2lineage_9bed2e14bfbed3e65ad3585f
+    - p2lineage_d00ae847921afc0b34abb0b3
+    - p2lineage_da547f25c8316de70aa0dcc8
+    - p2lineage_de0e418cdadccc4e1fd35962
+    - p2lineage_fa9040fee9065d8977fcecb7
+  response_role_rules:
+    operator: income_category_or_amount
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_personal_income
+  boundary_rules:
+    axis: income_measure
+    conditional_scope: personal_income
+    temporal_scope: reference_period_source_native
+  r4_component_id: gssfullcomponentr1_06d67a27d8ebdbb7add6fe9b
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 80ea6e27a8b3f4e5a6b2dd3fc8d36446013d82dc44c719932c3f1d16ca2999bf
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_07d1ba7286a13c274ee9df15
+  family_label: political_attack_police
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3c75242336c89f2e3d730890
+    - p2lineage_bd729fc6c71c928a1d77be41
+  response_role_rules:
+    operator: approval
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: police_striking_citizen_attacking_police_with_fists
+  boundary_rules:
+    axis: police_use_of_force_legitimacy
+    conditional_scope: police_force_scenario
+    temporal_scope: hypothetical
+  r4_component_id: gssfullcomponentr1_07d1ba7286a13c274ee9df15
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 9b30e25e4c153d1bb65d66af4070afe380c6a16433bfd8f222358c0ef4402c12
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_0a62d2f32d4ba7d914d42158
+  family_label: criminal_courts
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_749823fda14cf088c4c0c727
+    - p2lineage_a9dd2e359ace8ea342663709
+    - p2lineage_ea7d5415025761eec0666ade
+  response_role_rules:
+    operator: too_harsh_about_right_not_harsh_enough
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: courts_treatment_of_criminals
+  boundary_rules:
+    axis: criminal_justice_punitiveness
+    conditional_scope: courts_dealing_with_criminals
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_0a62d2f32d4ba7d914d42158
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 92d524b2f2d5c63ad8fed8a66d70ab23bc904746a6f7cf57678e1d587e834d3e
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_0b738dc572430816e417d0bd
+  family_label: greenhouse_danger
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_81daf9223886a26e0a17530f
+    - p2lineage_c322893eb7085e24d53e48a7
+  response_role_rules:
+    operator: danger_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: greenhouse_effect_danger_to_environment
+  boundary_rules:
+    axis: environmental_risk_perception
+    conditional_scope: greenhouse_effect
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_0b738dc572430816e417d0bd
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d3bd2cb4c3b0bfc6e4b0389889caa6cb6351072c50f5ade59676b790535168b6
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_0ca3033ffac351107a5ab79f
+  family_label: helpfulness_general
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_4016ff94fce5066839bb723c
+    - p2lineage_4a8221b0f56c67e5489b5c6c
+    - p2lineage_6d8ab817f58aed6d1b188419
+  response_role_rules:
+    operator: bipolar_helpfulness_evaluation
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: people_in_general
+  boundary_rules:
+    axis: generalized_social_helpfulness
+    conditional_scope: helpful_vs_look_out_for_self
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_0ca3033ffac351107a5ab79f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: ba9f40ba85b95b0a5f801579860f5d5a0442c889ccd2d3fad7da7c94c096211f
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_1031a6758d1d1860b09f5852
+  family_label: suicide_bankrupt
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_09ed4e0caebdca33737d8613
+    - p2lineage_ef638860e2ede38948c10684
+  response_role_rules:
+    operator: circumstance_right_or_acceptability
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: suicide_when_bankrupt
+  boundary_rules:
+    axis: suicide_right_to_die
+    conditional_scope: suicide_when_bankrupt
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_1031a6758d1d1860b09f5852
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 3a979cdfd5ecbd7236942e6ad0ff6bd00f0092b8d3aed0ac958493ed2bed8285
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_113d745c77e0da88d68ae757
+  family_label: diploma_ged_other
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0a6da3abc72b90f887fedf19
+    - p2lineage_8e2c44a291a0dec8ee3635ee
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_high_school_credential_type
+  boundary_rules:
+    axis: education_credential
+    conditional_scope: diploma_ged_or_other
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_113d745c77e0da88d68ae757
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 3c508ca98f5dc70a8b086528c62405795cd29d77c25fea16236e0ebdaf5dcd75
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_118b28014c9c88dfcdce6451
+  family_label: women_job_discrimination
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_12d73fa3c7385f762c5a42f7
+    - p2lineage_7c196fecd86afd9c22888ec0
+    - p2lineage_ef1d51bf6b53b897639383c5
+  response_role_rules:
+    operator: agreement_or_position
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: woman_denied_job_or_promotion
+  boundary_rules:
+    axis: gender_discrimination_expectation
+    conditional_scope: gender_employment_statement
+    temporal_scope: general
+  r4_component_id: gssfullcomponentr1_118b28014c9c88dfcdce6451
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 7c0e398636efd15ff038c0e8239a810557d664086b029568de2b5613941f35db
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_11efa4fdaa6714551260aad3
+  family_label: gssfullcomponentr1_11efa4fdaa6714551260aad3
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2356ede1e54238934ff5d1b7
+    - p2lineage_4d6c89304ae88c3896dcea41
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: executive_branch_of_federal_government
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_11efa4fdaa6714551260aad3
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 2e2aa565f73950cadd920b4c3adbd25654db1ea7c5a55863bbde2d88822199b3
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_12854c178a2b1a40c7f36a6a
+  family_label: child_quality_clean
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2c8ef834c220d9216d58a465
+    - p2lineage_9c75fb7421b335fcdc6f98db
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: neat_and_clean
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_12854c178a2b1a40c7f36a6a
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 7b5a8de1b009804fbb224a9db5a11c43228c2d9259e9de150506064478091103
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_13e028774d24470b09cf7fbe
+  family_label: gssfullcomponentr1_13e028774d24470b09cf7fbe
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_307be2612f24efc57c97d75b
+    - p2lineage_48b3cefbb490ba6ad35c828b
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: scientific_community
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_13e028774d24470b09cf7fbe
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 0f76863f0b9066879c2a8257ff60af9da2a10ae7bc015d7f096a24a1119f8303
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_14098e8f9bf26f73da0e5d33
+  family_label: child_quality_control
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3ebc92c90075a2cf182fad72
+    - p2lineage_f10e9c03e6d5c880439f9bbf
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: self_control
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_14098e8f9bf26f73da0e5d33
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 5697021f394cd9ca03c46552e5329a9eb9add4780816bc13e38794f015783871
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_1421638611acad2d36eb9d11
+  family_label: self_solve_web_problem
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_8bb6e0407bdc786dd219b7e3
+    - p2lineage_db7dc06826e8076ac14db1f5
+  response_role_rules:
+    operator: experience_indicator
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_solved_web_problem_without_help
+  boundary_rules:
+    axis: digital_problem_solving
+    conditional_scope: web_problem_solving
+    temporal_scope: past_or_general
+  r4_component_id: gssfullcomponentr1_1421638611acad2d36eb9d11
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d23c6a78ebcf1dfda117b61c0a6226839648fca5705656f889456ddb2fe6102d
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_16690d1296076e50639a2999
+  family_label: children_in_household
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_c585e213acf2e1c4d0aa9db0
+    - p2lineage_d2dfb7bf50078b8c1f4ce64c
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: children_under_age_18_in_household
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: age_under_18
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_16690d1296076e50639a2999
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 69d87855942c88bab50376d295792b7263fbffe3467e58f48fca3feaef5cf2a9
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_169fe6ddf8a53069c9db6b22
+  family_label: gssfullcomponentr1_169fe6ddf8a53069c9db6b22
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_b5b33c151f1c44165113de02
+    - p2lineage_bc7f59e50c876aa93bf7bc4e
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: major_companies
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_169fe6ddf8a53069c9db6b22
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8803bcdded795171537e1d79caec02e8e9d2ca0bda2afba5c2393ae77db0a02b
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_19555d82d940e9e2185093bf
+  family_label: national_spending_foreign_aid_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_5c36d5a0380307c4aa7837c4
+    - p2lineage_90fda23fbc9182a3ef1ba76f
+    - p2lineage_db6b85214f67065076019b59
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: foreign_aid_and_assistance_to_other_countries
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_19555d82d940e9e2185093bf
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: b159508a0cd9cdbcd01fa9edfe1195e1f5cf4780b1349eba8df8268c342155d7
+- family_id: JFAM-000233
+  family_label: gssfullcomponentr1_19752713680f173fc2f68ac6
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_c1be297a97874c96012839a3
+    - p2lineage_ecdb4b9096223bcdcb0221c3
+  response_role_rules:
+    operator: satisfaction_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: household_financial_situation
+  boundary_rules:
+    axis: financial_satisfaction
+    conditional_scope: household_finances
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_19752713680f173fc2f68ac6
+  r4_decision: INHERIT_EXISTING_FAMILY_IDENTITY
+  r4_semantic_signature_sha256: 389326d96b846a11db2c250ab28ddd1b002b57fb94041dc8e9d7e1ef3eaab158
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_224cce32ea5e1b2826f54792
+  family_label: abortion_defect
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_01bdc8b694e6721cc81c7924
+    - p2lineage_639a0997464b39d19a7eb44f
+  response_role_rules:
+    operator: circumstance_permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: pregnancy_serious_fetal_defect
+  boundary_rules:
+    axis: abortion_permission
+    conditional_scope: pregnancy_serious_fetal_defect
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_224cce32ea5e1b2826f54792
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 70dcd81a76d8a47df5937463d065d35fdea75da8c868506e59e7d23b3b3fcf59
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_231abf11dc196f1ec080564f
+  family_label: abortion_no_more_children
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_5664ff0044b0691645d96b3b
+    - p2lineage_d6e598fe495d27cddf6058aa
+  response_role_rules:
+    operator: circumstance_permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: pregnancy_married_woman_wants_no_more_children
+  boundary_rules:
+    axis: abortion_permission
+    conditional_scope: pregnancy_married_woman_wants_no_more_children
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_231abf11dc196f1ec080564f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 7231dc62664a63eaa4d6090480fbc2303665bfc83b54b90ca4f8a05485dbc72f
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_2395c716b959ab55af4ab8ec
+  family_label: children_living_standard
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3e5792bdb979e1ef89105922
+    - p2lineage_810777689c5c25b333b6beef
+    - p2lineage_d322f00cd2951d3c7b2297c7
+  response_role_rules:
+    operator: comparison
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_children_relative_to_respondent
+  boundary_rules:
+    axis: intergenerational_living_standard_comparison
+    conditional_scope: respondent_children
+    temporal_scope: future_or_intergenerational
+  r4_component_id: gssfullcomponentr1_2395c716b959ab55af4ab8ec
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: a8d62e3e538e6f274c8247566a36599e0f6265eeda0c4833c8cdd8f07ac962a0
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_23acb7636caa5eab8b9e8f4f
+  family_label: gssfullcomponentr1_23acb7636caa5eab8b9e8f4f
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_369ba4d70c0bba89b2bb8fbc
+    - p2lineage_e8af484facd8d35b26e67761
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: organized_religion
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_23acb7636caa5eab8b9e8f4f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 90f3b1f3ffb0e3b27883399796bee2dd1390403ad4d0c19c47f86b8923982412
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_25edcc2fa2e5f029fab046f9
+  family_label: race_second_mention
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_c1607645c560fccaa3331a5d
+    - p2lineage_ef59c24aa2a01bc847e40940
+  response_role_rules:
+    operator: category_selection
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_race_mention_2
+  boundary_rules:
+    axis: racial_identity
+    conditional_scope: ordered_mention_slot_2
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_25edcc2fa2e5f029fab046f9
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 386c29f04bc6b64a4bfd9f780e9757c7baae6225f7f534f4b2b9e88642a70c44
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_2745590e32a10bb5a06e7778
+  family_label: national_spending_crime_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_6c098bc9bb1d6102bee4f003
+    - p2lineage_a132c5731ab85e80b1d8c7e9
+    - p2lineage_c9692a8996729cb4d646f362
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: crime_control_and_law_enforcement
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_2745590e32a10bb5a06e7778
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: cc85a0a9aae669e3ec0119cae61581adb3d07d7bfc8c50a58ee6e59237a46e4a
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_277e38c162012567f636aa2d
+  family_label: move_within_us_for_work
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_04a88c317bead416c134eb32
+    - p2lineage_37f91e5284988c6714cb7e34
+  response_role_rules:
+    operator: willingness
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: move_within_united_states_for_work
+  boundary_rules:
+    axis: labor_mobility_willingness
+    conditional_scope: work_opportunity
+    temporal_scope: prospective
+  r4_component_id: gssfullcomponentr1_277e38c162012567f636aa2d
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: dacee6b3635e4a5d00cb8fb36532e05869c5f6bef917bbca88cfdccff8e10317
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_2b073f31b7ffb2c3aedf81d4
+  family_label: incurable_patient_die
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_4fbab023c32a4c7d79690ce8
+    - p2lineage_e59066888f2259a8625db3aa
+  response_role_rules:
+    operator: permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: allowing_incurable_patient_to_die
+  boundary_rules:
+    axis: euthanasia_policy
+    conditional_scope: incurable_patient_scenario
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_2b073f31b7ffb2c3aedf81d4
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 82fc8710ec49b7a8702fef03cebb7ecc40055368ea799d375e6b2acc59609e62
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_2f598def9c222ad1a32d9f32
+  family_label: child_quality_considerate
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_90b93f5fd862313df8e07249
+    - p2lineage_bba28bf9598b41706bdd9182
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: considerate_of_others
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_2f598def9c222ad1a32d9f32
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: f0292371710f213d922529352e2548d0ab7745cc4257b39936cc570e59099377
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_2fd7b52624ba070901c7cb60
+  family_label: gssfullcomponentr1_2fd7b52624ba070901c7cb60
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_58a3588c81bc661f2e62d761
+    - p2lineage_ff18ec2bf72ac4bd8865aa7d
+  response_role_rules:
+    operator: duration
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: work_computer_email
+  boundary_rules:
+    axis: internet_activity_duration
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_2fd7b52624ba070901c7cb60
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: c48d1a52bff8564132b8d7113082aacf5015e560c264a0ebb74eb94123d94e4e
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_3061ad6a408c06e0f481954b
+  family_label: relation_to_household_head
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_44c36debc3e188b834e2fbc3
+    - p2lineage_5743bfdd3a1ae4ba7e609d4d
+  response_role_rules:
+    operator: relationship_category
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_to_household_head
+  boundary_rules:
+    axis: household_relationship
+    conditional_scope: household_head_relation
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_3061ad6a408c06e0f481954b
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: ac2c494e034795caf6b3a164b1c3376cc23cb790571d02f91dea998f4a911a2a
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_31970e1dae62557ee4aa7f08
+  family_label: sibling_count
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_170214edef1e9e5cf4dfa58a
+    - p2lineage_41be2d744da4f2287bc97f6f
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: siblings_including_step_and_adopted
+  boundary_rules:
+    axis: family_composition
+    conditional_scope: siblings
+    temporal_scope: lifetime_family_structure
+  r4_component_id: gssfullcomponentr1_31970e1dae62557ee4aa7f08
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: a5fb56a4a752bb5bc4dd22d59147ea34853bcd76e72aa56b7ecd8e90867b1249
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_35534107f03ebac44a344c05
+  family_label: specific_denomination
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_56db47e8d23b275cf8597235
+    - p2lineage_70487b917de94df04baacd30
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_specific_denomination
+  boundary_rules:
+    axis: religious_affiliation
+    conditional_scope: respondent_religion
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_35534107f03ebac44a344c05
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 7a6f43bba0db5ecbda8edb9b98ec1024ed4fc19cd6c555f08e2c1a9a53eb93d1
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_35a8a82a813965fcdacb3b3c
+  family_label: gssfullcomponentr1_35a8a82a813965fcdacb3b3c
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_454c8635ad97089020972b32
+    - p2lineage_d0072cdbe39240c0b23ee0c9
+  response_role_rules:
+    operator: discrimination_cause_binary
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: group_differences
+  boundary_rules:
+    axis: group_difference_discrimination_attribution
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_35a8a82a813965fcdacb3b3c
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: bd42f097f14bb2039d726657713130aacc78dbc67d0d9031cf60493ce972d33d
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_35b3d5b4ab116c1a0e0a9240
+  family_label: abortion_any_reason
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_8a0e763bcd5da9254d39bb44
+    - p2lineage_ad9d097fefd6086c987c98fa
+  response_role_rules:
+    operator: circumstance_permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: pregnancy_woman_wants_abortion_for_any_reason
+  boundary_rules:
+    axis: abortion_permission
+    conditional_scope: pregnancy_woman_wants_abortion_for_any_reason
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_35b3d5b4ab116c1a0e0a9240
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8ee41ccb235b609a7b4fce5339158603083b28922b89fb1cb1227453c00a2c64
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_3674aea16d28eec508f94ace
+  family_label: household_relation_14
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_10313ad84b64f8b25f3c7ccd
+    - p2lineage_ac155cb32499627e83ece5f5
+  response_role_rules:
+    operator: relationship_category
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: person_slot_14_to_household_head
+  boundary_rules:
+    axis: household_relationship
+    conditional_scope: household_person_slot_14
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_3674aea16d28eec508f94ace
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 2d9f6d44b4c925b9b84a007c9b2ee1ae9f800387e75e2644281b9aab540b5f31
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_3afbbecf2444989a65059a74
+  family_label: gssfullcomponentr1_3afbbecf2444989a65059a74
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_397a25cda878a0f0a262508c
+    - p2lineage_90c84738272c24728fe71235
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: banks_and_financial_institutions
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_3afbbecf2444989a65059a74
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 9c9887dfb049e619cb1d4f952b6e655734a6daa379fbe82eeb1ebb80478c5a7a
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_3b03acd00d5be3ad835f3633
+  family_label: last_hiv_test_location
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_7ae4f5c82139736eac7f18ee
+    - p2lineage_d0095a342df07bab97bdcf81
+  response_role_rules:
+    operator: location_category
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: location_of_last_hiv_test
+  boundary_rules:
+    axis: health_service_use
+    conditional_scope: last_hiv_test
+    temporal_scope: most_recent
+  r4_component_id: gssfullcomponentr1_3b03acd00d5be3ad835f3633
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 925f3fe73462cd43ca808764933c9c03d87f768e8b7fd954d228517773e71ecf
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_3b8a892ba288140319b30f23
+  family_label: adults_in_household
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0d23bf456474373fc8d3a5e8
+    - p2lineage_b010f697613b6f2706a60d63
+    - p2lineage_f726d2448ebfed16bb55568e
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: adults_age_18_plus_in_household
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: age_18_plus
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_3b8a892ba288140319b30f23
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8e13d25de4c36982c24c933d95ca8e3f27fa8e8123d40438ab2ce69011515956
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_3e0d9178991f547a8ed155e7
+  family_label: gssfullcomponentr1_3e0d9178991f547a8ed155e7
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1e9b3bc43542ef20c5206500
+    - p2lineage_cfb521935568637320c1b6cd
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: press
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_3e0d9178991f547a8ed155e7
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 091531268b69781884d13f0f0098eb14dd29fdf35178476e7f46cc7f2c5a7abc
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_44599a129e6b0da2edb95427
+  family_label: preteen_household_count
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0d40df38721c468916f742b8
+    - p2lineage_edcad6e08018613963cf5452
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: children_age_6_to_12_in_household
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: age_6_to_12
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_44599a129e6b0da2edb95427
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8ed01b1702d468e9d82c9c78922c82c6163393154e1614f18d45de1e8d494735
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_4734b3e6113b38830901fbe6
+  family_label: total_family_income
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_6f55247200bcfadc64f04f68
+    - p2lineage_82ab72b2c3d31a6a47714f51
+    - p2lineage_8a9e12f0812c56b79222a6c6
+    - p2lineage_a7725445cbe728e5b99df4f8
+    - p2lineage_c7b83fec0f13411d5e41c326
+    - p2lineage_d046c873874665efd3a4e936
+    - p2lineage_f548a2f6c406b53b2e45f9f5
+  response_role_rules:
+    operator: income_category_or_amount
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_family
+    target: total_family_income
+  boundary_rules:
+    axis: income_measure
+    conditional_scope: family_income
+    temporal_scope: reference_period_source_native
+  r4_component_id: gssfullcomponentr1_4734b3e6113b38830901fbe6
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 1c088ef96113e519c4e4ebd629b90dbaf077f906afcb4a123f052034e56a263f
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_473feb008a556b669400fd17
+  family_label: working_hours_decision
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_5725fe908bc8716a3ad494a7
+    - p2lineage_ebb6ea202919ea1f40b0af6c
+  response_role_rules:
+    operator: decision_control_category
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: how_respondent_working_hours_are_decided
+  boundary_rules:
+    axis: work_schedule_control
+    conditional_scope: employed_respondent
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_473feb008a556b669400fd17
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d81769615fca80b5885f5c38f051d7bef380a79000d1c54c6509c1146586fe21
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_4b0ce589ebd3181c68c186f1
+  family_label: gssfullcomponentr1_4b0ce589ebd3181c68c186f1
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_b041bf6c911eadac25b47a81
+    - p2lineage_c261240ed26f57e28024c78d
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: education_system
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_4b0ce589ebd3181c68c186f1
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d808f80445233ed8ccf7634ea359ccf75ab38e1469abd9574cd408dde4ff34a3
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_4be8e4af5ebce0494e6be0d6
+  family_label: muslim_clergy_speech
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_079020c539f9220c520aa38c
+    - p2lineage_3844e7b7b7bda81a2fb4b3ca
+  response_role_rules:
+    operator: permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: anti_american_muslim_clergy_public_speech
+  boundary_rules:
+    axis: civil_liberties_tolerance
+    conditional_scope: civil_liberties_speech_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_4be8e4af5ebce0494e6be0d6
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 77cd5253ecd76e13775c14d7a9d310818161bdcd5efadcaa605515db15ddbff7
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_4cdc97cff503fc5cb83f437f
+  family_label: adhd_knowledge
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2c24a8df6788e21974c1277b
+    - p2lineage_dd85f77822a9a06cbb5315dc
+  response_role_rules:
+    operator: knowledge_assessment
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: adhd
+  boundary_rules:
+    axis: health_condition_knowledge
+    conditional_scope: open_or_coded_knowledge_response
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_4cdc97cff503fc5cb83f437f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 470f4802377087e45e50e25b796158173d6e5e10a6b42354e346209911a0482f
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_4dbbce507db5097eaa965146
+  family_label: national_spending_black_assistance_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0a60399d44e4e772420ebba8
+    - p2lineage_3280e550866f52dfd066e078
+    - p2lineage_421577f78d228b7d3a82a8f2
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: conditions_of_black_people
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_4dbbce507db5097eaa965146
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 9f3fb9f8834fcbb695f03e96b7d05426befc1f93a90d42ddfff443fb30e8a85d
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_507eec18cea9684c2fcec165
+  family_label: bible_view
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_083d591a581a8326304c4e0a
+    - p2lineage_2123d4b0eeba996221424e45
+    - p2lineage_9108e2638e88b880f37f1cdd
+    - p2lineage_cb54494f67a2ddc49721aac5
+  response_role_rules:
+    operator: belief_classification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: bible_status
+  boundary_rules:
+    axis: scripture_belief
+    conditional_scope: bible_view_response_categories
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_507eec18cea9684c2fcec165
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: f4a35a518b474979495bf664ad5aebe12ca9d31bde8b4bc5e9b27c80f230c60a
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_539c580b6471d955f96fa2ae
+  family_label: marijuana_legalization
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2ec4beaa78ef93c0b410cba3
+    - p2lineage_452c2f50221b37b915e33d04
+    - p2lineage_6a8b702c796361b33f38f14e
+  response_role_rules:
+    operator: support_or_oppose
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: marijuana_legalization
+  boundary_rules:
+    axis: drug_policy
+    conditional_scope: legalization_policy
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_539c580b6471d955f96fa2ae
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 6acefbca4a51873990b105748f1deacef387b8133039d4cbf86343239f57f52c
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_5571d3a1694327effde94976
+  family_label: family_generations
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1553a60e339b8965777468bc
+    - p2lineage_46f893acae55bcd291c19ff2
+    - p2lineage_a9f2fa45f544a6fe163b79b9
+    - p2lineage_e1813ec9c537418e7b1773c0
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: family_generations_in_household
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: family_generations
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_5571d3a1694327effde94976
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: a6e300b18664ee996e188f5cd96dca38cb3cdb9179f1d8065d071d7df791a3f8
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_55910d1df7312c53c513074c
+  family_label: gssfullcomponentr1_55910d1df7312c53c513074c
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_b58895db26e23654ffdad88a
+    - p2lineage_cb44ea88a8af6c6c4f124c0b
+  response_role_rules:
+    operator: duration
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: other_computer_email
+  boundary_rules:
+    axis: internet_activity_duration
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_55910d1df7312c53c513074c
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 74b147787641f9967c509ee7f94a1bec62993a108ebf5b20792944767dd97a27
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_55cfa29a66c2c563c24d7b1f
+  family_label: gssfullcomponentr1_55cfa29a66c2c563c24d7b1f
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3f5a6653ef745b447ffa998f
+    - p2lineage_c72c5e69eb71fdb31f889e82
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: united_states_supreme_court
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_55cfa29a66c2c563c24d7b1f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d226895157a103d67a6e5a7da4d0adadba2175ac0f9521ed3f86c1535c68a347
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_560c76413cb040e559109f96
+  family_label: gssfullcomponentr1_560c76413cb040e559109f96
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0b758fa6a1e301850de10a31
+    - p2lineage_80cfc3d38ba18433b885ed8c
+  response_role_rules:
+    operator: duration
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: other_computer:weekly
+  boundary_rules:
+    axis: internet_use_duration
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_560c76413cb040e559109f96
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 154d14331dbb9473b1a8100a23c02799b6782b3a0f5302c112b01abc2a01361c
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_57b70de7d7875789f96becf8
+  family_label: getting_ahead
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_022a8fe567454fd4a55143dd
+    - p2lineage_408d83546373ead165e5a47f
+    - p2lineage_f6fff34ec746a77d0f4b85a9
+  response_role_rules:
+    operator: bipolar_causal_attribution
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: how_people_get_ahead
+  boundary_rules:
+    axis: mobility_causal_belief
+    conditional_scope: hard_work_vs_luck_or_help
+    temporal_scope: general
+  r4_component_id: gssfullcomponentr1_57b70de7d7875789f96becf8
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 4a5b47ac33950ac1952b74d5d831ebc661e593fc3a96fee17fcd7f58a1cbe9e0
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_57e83f349132db53d150634b
+  family_label: online_science_info_source
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_4cdac32ac453ea79f5a594aa
+    - p2lineage_91c19b8c30b75d8a18a88c12
+  response_role_rules:
+    operator: source_selection
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: online_source_for_science_information
+  boundary_rules:
+    axis: information_source_selection
+    conditional_scope: online_information_source
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_57e83f349132db53d150634b
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 4719e5fd747e3af6b6a65884ad4ed30f6cc78143d5b0b726d54caceeab186f9e
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_5bcc0e998cbf94b7e908f73e
+  family_label: gssfullcomponentr1_5bcc0e998cbf94b7e908f73e
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_d04f7ee5804d761ce15698ba
+    - p2lineage_e5ad12aa7e2b3982a58d1b5f
+  response_role_rules:
+    operator: duration
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: internet_general:weekly
+  boundary_rules:
+    axis: internet_use_duration
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_5bcc0e998cbf94b7e908f73e
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 3f296505845efb6f376a34fb232dae45b956d93ad4be17a03fb33215028618e8
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_5e613fa300672941b029893a
+  family_label: communist_library
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3a06ba9b949ed28284a21096
+    - p2lineage_c907a37480a2fe81ab72a916
+  response_role_rules:
+    operator: permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: communist_authored_book_in_public_library
+  boundary_rules:
+    axis: civil_liberties_tolerance
+    conditional_scope: civil_liberties_library_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_5e613fa300672941b029893a
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: f52e1db07061dc4648abd28972b4f92860e6582a8299d1da6605ad109e075729
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_6071c38db4c2a9151a65698f
+  family_label: household_population
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3d1bc780b5ce3d8ef34153fc
+    - p2lineage_6db5cbda5f10019a880e9887
+    - p2lineage_a61010a217bdb334950a7089
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: persons_in_household
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: total_household_population
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_6071c38db4c2a9151a65698f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d92c37b5b82452f583231ea1bc968eb53c93942fcfe49b671bff87c654aaee43
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_629993b9110767a0e56c1bce
+  family_label: child_quality_honest
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_dd0ad61d8a2a17bd35aed1d1
+    - p2lineage_f8ad8f376fd5a9107aa77c2f
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: honesty
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_629993b9110767a0e56c1bce
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: e875b2ba97615fb8e8e4a3c26cb9709443c7957afa719c725941aabc0cfebff4
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_62f870cdaa9a8de553b12eea
+  family_label: race_first_mention
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0e63f18ab2724553e8e8d392
+    - p2lineage_c3a3bacc663aec2441c2cfc4
+  response_role_rules:
+    operator: category_selection
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_race_mention_1
+  boundary_rules:
+    axis: racial_identity
+    conditional_scope: ordered_mention_slot_1
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_62f870cdaa9a8de553b12eea
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 95416bd80c57499a2130f4aa10a1c1de8ff86ce061340fee28949bbf5357afa6
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_637235b32952a25c851b4fb7
+  family_label: space_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_20c4c8fd3ae43dd7a1df703e
+    - p2lineage_a4f1db8bbb9af7059a5c4839
+    - p2lineage_b49c6a529ac9ffc1e54d7b35
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: space_exploration_program
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_637235b32952a25c851b4fb7
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: e243bed2ed6d5906012fec6c14e9c2a341d33473e7aa18947402e51d24e26b13
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_64fd04987cdba5868e337dff
+  family_label: most_important_issue
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_183589e0f6281c57938f9830
+    - p2lineage_7ebd4439ff0197c72ae5faa5
+  response_role_rules:
+    operator: primary_issue_selection
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: most_important_issue_for_america
+  boundary_rules:
+    axis: national_problem_priority
+    conditional_scope: open_or_coded_issue_response
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_64fd04987cdba5868e337dff
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: e8f51cf9d5a2260da31fb34e9d0c120ebb489b9fb3a5f62df2ce5300167208fa
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_6579d21a5216b096f1c411ff
+  family_label: college_major_2
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_449cc68c1034755b8c1a4b3a
+    - p2lineage_7a429e309e83bc9157da7cd4
+    - p2lineage_eafadd47d2984785a775d258
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_second_college_major
+  boundary_rules:
+    axis: education_field
+    conditional_scope: ordered_major_slot_2
+    temporal_scope: retrospective
+  r4_component_id: gssfullcomponentr1_6579d21a5216b096f1c411ff
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d8f0c5a1a02a06bb2874830bc0ef29c9d69968084a0c05067ef495fc032a3e8e
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_6790388061f36351757c25fb
+  family_label: child_quality_gender_role
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_9dfff1d421df08b850dac1a3
+    - p2lineage_b883c1e4836989e6d26c32ed
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: gender_role_conformity
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_6790388061f36351757c25fb
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 63393af87143033751e26dc73fc31be6b9fa33debcc8ad5d013629725a7a5de8
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_67f45d4db5b09602ee159522
+  family_label: left_right_position
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_c65286e3243ed0286ae3e2ce
+    - p2lineage_f98e2b8a69fc298adb06bee2
+  response_role_rules:
+    operator: self_placement
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_left_right_position
+  boundary_rules:
+    axis: political_ideology
+    conditional_scope: left_right_scale
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_67f45d4db5b09602ee159522
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 55245bb65c0b3eec7d8f65e5551f17e18b50d191bcfba2c149ebe8567424d160
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_6a64590d90f952576ecfdd9b
+  family_label: abortion_health
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2d252646d8b278837026916a
+    - p2lineage_6eb15213aa7dc0324c5767d8
+  response_role_rules:
+    operator: circumstance_permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: pregnancy_woman_health_seriously_endangered
+  boundary_rules:
+    axis: abortion_permission
+    conditional_scope: pregnancy_woman_health_seriously_endangered
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_6a64590d90f952576ecfdd9b
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 9ab6f618cdc6c67205c2fcad30f0e6d747402f7d93d56b3391a6c5901c67a1d5
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_6a7601b9de62c7d7f38d6af4
+  family_label: abortion_poverty
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_5634a65b0c643ced592b2750
+    - p2lineage_a1bcfb7983d99b4e4b2d7f45
+  response_role_rules:
+    operator: circumstance_permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: pregnancy_low_income_cannot_afford_more_children
+  boundary_rules:
+    axis: abortion_permission
+    conditional_scope: pregnancy_low_income_cannot_afford_more_children
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_6a7601b9de62c7d7f38d6af4
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 7146a16a8320c9001586b5bf580763683696f936685c1e8cecbbc396a72422b4
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_6dbe8efbea88d67dd67d52b0
+  family_label: partner_denomination
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_9cbb3343c90c45b1c94d6d8f
+    - p2lineage_b22234f09857c8a42dfba70c
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: cohabiting_partner
+    target: cohabiting_partner_denomination
+  boundary_rules:
+    axis: religious_affiliation
+    conditional_scope: partner_religion
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_6dbe8efbea88d67dd67d52b0
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: cd38ec1eedeacf831ff639e511d1c61842e5395d7bb5e34e3523828f4d2ccf27
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_704a28441c94ef4d3c0aadef
+  family_label: household_relation_12
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_988c41d5e3e9cd58281c6d67
+    - p2lineage_b547db91bd4b11e768176257
+  response_role_rules:
+    operator: relationship_category
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: person_slot_12_to_household_head
+  boundary_rules:
+    axis: household_relationship
+    conditional_scope: household_person_slot_12
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_704a28441c94ef4d3c0aadef
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 6ae288b2ad33130176127a816e4b045596889e787efb444063402518d92f9151
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_73dfbf49a7683bc47505ef00
+  family_label: highways_bridges_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_761e5d2cc79b5d504aaca6e2
+    - p2lineage_abc95f403c56574e78196e48
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: highways_and_bridges
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_73dfbf49a7683bc47505ef00
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: a9e97693932da630cdffb01a1b9dbcfde684da02d18c98521fac091dbc4fe3ab
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_74135e146ef8016cddc39d7a
+  family_label: hispanic_specific
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3dd6969af9aa8db6d022cb6a
+    - p2lineage_be9edaf04a685cb14cbd0c66
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_specific_hispanic_origin
+  boundary_rules:
+    axis: ethnic_identity
+    conditional_scope: hispanic_origin_detail
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_74135e146ef8016cddc39d7a
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: b12d8bca793f0415961c4bb3969cf8affe6ca047a8abdb475893abf6b6311aed
+- family_id: JFAM-000215
+  family_label: gssfullcomponentr1_7508c5eee04c8ae5e06f1af8
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_68943b43b57a0ef79f4edf60
+    - p2lineage_e6c9d31aa3a98bf25dfa8f47
+  response_role_rules:
+    operator: agreement
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: environmental_threats_are_exaggerated
+  boundary_rules:
+    axis: environmental_threat_belief
+    conditional_scope: environmental_attitude_statement
+    temporal_scope: general
+  r4_component_id: gssfullcomponentr1_7508c5eee04c8ae5e06f1af8
+  r4_decision: INHERIT_EXISTING_FAMILY_IDENTITY
+  r4_semantic_signature_sha256: e30ade59bfb7fbe0a7301c3d5ab238d7d274a405fd54e64998da3483b3a3faef
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_75ba1d9d64cee7dec6909003
+  family_label: national_spending_mass_transit_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_00525d3e9269348317f62e1b
+    - p2lineage_71c7c3b5ba1848a9307109ce
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: mass_transportation
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_75ba1d9d64cee7dec6909003
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: c9d1897294d73ff132cd02fe1660b9c2cdfdfad5b50ec12624ab2832af75d481
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_75e05931d326d0dec14d2dcc
+  family_label: national_spending_health_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_12bdbdbd515f61cd6cebf859
+    - p2lineage_4677f8953d710e17bc0a6b35
+    - p2lineage_a5210c8b995e5c51afc6370f
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: national_health
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_75e05931d326d0dec14d2dcc
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 4b659a51eb52a53b861bfa7729dc9340cc6ed7099cbf926a03ce1aba24a035cb
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_767270da0880c6e485143883
+  family_label: self_employed_employee_count
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2e460d00f725b62d2262cc91
+    - p2lineage_9987617304fb553ea703e461
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: employees_of_self_employed_respondent
+  boundary_rules:
+    axis: employment_structure
+    conditional_scope: self_employed_only
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_767270da0880c6e485143883
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 2b359f6956c2a5c0c96da57c9f7cb2acc5249cc923b80599d770e856771c918e
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_779a0c446a3d8138c1132c25
+  family_label: gssfullcomponentr1_779a0c446a3d8138c1132c25
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_138b3b9ba1c744ead54a21d3
+    - p2lineage_21a0228402d792b268b3978e
+    - p2lineage_e646f383ec06fe8e2c859b8b
+  response_role_rules:
+    operator: women_unsuited_agreement
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: women_in_politics
+  boundary_rules:
+    axis: gender_political_suitability
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_779a0c446a3d8138c1132c25
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: b04b075ed9ecffb59f03db5e38cca955f3372cba68d18c15a0d324a794cc7752
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_7a3b0a0b1534b9055499d1a4
+  family_label: racial_difference_education
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_497d3ecf774be94c3dafd727
+    - p2lineage_f85bf4b38e2dddc5d0f8f730
+  response_role_rules:
+    operator: cause_endorsement
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: racial_differences_due_to_lack_of_education
+  boundary_rules:
+    axis: racial_inequality_causal_attribution
+    conditional_scope: racial_difference_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_7a3b0a0b1534b9055499d1a4
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d50ff19dfecbb529ab5f25559221fee9072928f72cc714448dae8a5b08ab8000
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_7a9f34898bd44b0ef5a72139
+  family_label: gssfullcomponentr1_7a9f34898bd44b0ef5a72139
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3988e569a133f79e89ca12b0
+    - p2lineage_d923d7aabb1b4344099b4052
+  response_role_rules:
+    operator: duration
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: internet_general:weekday
+  boundary_rules:
+    axis: internet_use_duration
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_7a9f34898bd44b0ef5a72139
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 9173cd7eb45a690aa80cf00b80aaca7485c9a657500a2eaf5e0807c8852f8317
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_7ab61f983f75a58a26d5be72
+  family_label: child_quality_judgment
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3495facc4fd9c049fe9a76c7
+    - p2lineage_8d2a4eb918a7d6e4823b22ee
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: good_sense_and_sound_judgment
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_7ab61f983f75a58a26d5be72
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 542a612f1a42d6c4f087f3c753ada8a856f4110f4ef96ea964acf51ea37644c5
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_7c85e5b296bd1578dc16726d
+  family_label: subjective_class
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_419f98005aed5b0442f2d959
+    - p2lineage_624db0316978699845923edb
+  response_role_rules:
+    operator: self_placement
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_subjective_social_class
+  boundary_rules:
+    axis: social_class_identity
+    conditional_scope: subjective_class
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_7c85e5b296bd1578dc16726d
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 1419ef701a0efa9cab37cf0fcdbbc94b612839b9a15419b55773320a57cdace9
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_7f773d36e7ec884ca28ce1ed
+  family_label: gssfullcomponentr1_7f773d36e7ec884ca28ce1ed
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_9f889717e21153c9a6cc7561
+    - p2lineage_eb90a78436d67d7401680f4c
+  response_role_rules:
+    operator: duration
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: email_general
+  boundary_rules:
+    axis: internet_activity_duration
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_7f773d36e7ec884ca28ce1ed
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 697153f7bafa01104c5d126e440b6aa197f0e5abf439d9c55ed2c3e737046bc4
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_827cb4cd4661a2f9fdc1d597
+  family_label: communist_teacher
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_341e55ea8d5f811120a9976d
+    - p2lineage_4ae2d24c0e8950af6b30bf78
+  response_role_rules:
+    operator: dismissal_or_retention
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: communist_college_teacher_employment
+  boundary_rules:
+    axis: civil_liberties_tolerance
+    conditional_scope: civil_liberties_teacher_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_827cb4cd4661a2f9fdc1d597
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 3b08d443f613f9ae4f316cd061819b4ad880e4329e685de9ea170abc4d632b8b
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_8332f0c56e42c1cbf2b04db1
+  family_label: child_quality_responsible
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_47a58fcb7a8ae17c5e06597b
+    - p2lineage_fe85500d6872ca4340a239cc
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: responsibility
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_8332f0c56e42c1cbf2b04db1
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 02036d82c5cb98e9f4e509f5267464b9f280567bfe190235daa8c8322fb92e49
+- family_id: JFAM-000200
+  family_label: same_sex_marriage
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2cbf28483fef5b14c7a5df50
+    - p2lineage_411ef1a9a00e46e9c6e05bb9
+    - p2lineage_643d68b871ee4eacb701e48e
+    - p2lineage_b4615fe0533f9ef7387d8212
+  response_role_rules:
+    operator: support_or_oppose
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: same_sex_couples_right_to_marry
+  boundary_rules:
+    axis: same_sex_marriage_rights
+    conditional_scope: marriage_rights_policy
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_83f23029ab7a454eec4f0ffc
+  r4_decision: ATTACH_SUBSET
+  r4_semantic_signature_sha256: fe19258810b5fe2908c8903326221f7ce56f19c0b5170142f9805ec70e62147c
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_8571c1fbedb92dbcc6235d84
+  family_label: national_spending_national_defense_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_52d0a5651cd96c7caa0adb8b
+    - p2lineage_9f3114e1bd345c433e47fd04
+    - p2lineage_d7e76180ccf2eb219cb74c34
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: military_armaments_and_national_defense
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_8571c1fbedb92dbcc6235d84
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8164e64f5d2037283903a555c4ad057d1002711da48b261ac5907bb433dfcf49
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_86741f887df1564be90f506a
+  family_label: communist_speech
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1a6f5f84fdd3d53af81675d7
+    - p2lineage_6214459b1dfd622d1b3d4845
+  response_role_rules:
+    operator: permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: communist_public_speech
+  boundary_rules:
+    axis: civil_liberties_tolerance
+    conditional_scope: civil_liberties_speech_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_86741f887df1564be90f506a
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: e1675c0c322098f6af8eb424c85c579da86fbf2f22b7199a3cfb3670f906b9b4
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_8a55dd4068e74fb23d0576ca
+  family_label: dwelling_type
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_92c9eccd1d58d72e472b0d8a
+    - p2lineage_9bc3fceca1a71950427b3cd3
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: respondent_dwelling_structure_type
+  boundary_rules:
+    axis: housing_structure
+    conditional_scope: dwelling_structure
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_8a55dd4068e74fb23d0576ca
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: caf9876e65b88b56cce773975c6ddfc902a85abd744b84397f9195c4e34a1f0c
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_8aa1b765746c031d710545d7
+  family_label: spouse_denomination
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_5f35200537f694bec04baca7
+    - p2lineage_ee5834fadf91288b0b6e6829
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: spouse
+    target: spouse_specific_denomination
+  boundary_rules:
+    axis: religious_affiliation
+    conditional_scope: spouse_religion
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_8aa1b765746c031d710545d7
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: a5d72f275eb37c3a05b2303e31ed59f0cdc6fff7058e1e731b36c2d174b746c3
+- family_id: JFAM-000173
+  family_label: gssfullcomponentr1_8aa54e6b25b7d8e43600257b
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1c484420d94f5c81cf452b20
+    - p2lineage_1e19fd89adec4a7f7f10398e
+    - p2lineage_2f196c93644de55ed91cec67
+    - p2lineage_38b60e9974a187085e41c25d
+    - p2lineage_5e937ad4479b78c6bc25486a
+    - p2lineage_67c0a1c047202354c2242fdb
+    - p2lineage_702983e31027109ed533add7
+    - p2lineage_7c5c8e9f5b2160d1d3be196a
+    - p2lineage_87296931e17a0ac37f8ce734
+    - p2lineage_93cc9e2d91f406bc02960c07
+    - p2lineage_9d9484bf2eba90567b60d0f3
+    - p2lineage_d9bf14feabb19316a0a9b11b
+    - p2lineage_c225ddfb5e33f7d474d5fc80
+    - p2lineage_c698052389e711ff186610d5
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: national_legislature
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_8aa54e6b25b7d8e43600257b
+  r4_decision: ATTACH_ALL_MEMBERS_TO_EXISTING_FAMILY
+  r4_semantic_signature_sha256: 3a226a7d34c753f881f5532d17d098d4bf5826b9cb5f6be2cfb1d1517edc3d45
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_947b98ab20d00bc57ebc6ae4
+  family_label: household_type_condensed
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_032a10afe7fac215018dec40
+    - p2lineage_13474a5d140369d20913969a
+    - p2lineage_190ba3e83bf2b3d6337a8c85
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: condensed_household_type
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: condensed_household_type
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_947b98ab20d00bc57ebc6ae4
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: dd9220dc06eacfad72600f37ff3010acfe3e0041a7221d12b309e15d93c683dc
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_9507dcab18757e97657bc24b
+  family_label: science_information_source
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_21efb3876a369b9e0192711b
+    - p2lineage_9fc7f5ae26a7c77f39bdc172
+  response_role_rules:
+    operator: primary_source_selection
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: main_source_of_science_and_technology_information
+  boundary_rules:
+    axis: information_source_selection
+    conditional_scope: science_information_source
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_9507dcab18757e97657bc24b
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 24fd62343e4bd5f0a908ab5102a1694ef8bb4b079a690fe60037609eb67f16cc
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_961d02bd2c4fb3cbcb4cb264
+  family_label: other_language_slot_2
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_87ae51f50818e9d9f5255522
+    - p2lineage_ec31e54a13816d94d2bd06d0
+  response_role_rules:
+    operator: category_selection
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_other_language_slot_2
+  boundary_rules:
+    axis: language_repertoire
+    conditional_scope: ordered_language_slot_2
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_961d02bd2c4fb3cbcb4cb264
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 670639dcc776ad6fb68675c0445c160e1aef5d4bf520ff5065a63335e032d784
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_963bacf278bb0e0ed3fdae84
+  family_label: college_major_1
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_7fa7412661bdd64cde3b3493
+    - p2lineage_a01f326e8cf7951758a5df5c
+    - p2lineage_dde145ac51bf8f3b00e851dc
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_first_college_major
+  boundary_rules:
+    axis: education_field
+    conditional_scope: ordered_major_slot_1
+    temporal_scope: retrospective
+  r4_component_id: gssfullcomponentr1_963bacf278bb0e0ed3fdae84
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 7b87983d8a47a892ec86141b9c8763e275644f37a6494d63c85858d7ee6197a6
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_97ce0e2f46ed76ac1ecb43d4
+  family_label: child_quality_interest
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1ace8e3de8768c9b95bead01
+    - p2lineage_1c35b119a3dc0bafcedd2fee
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: interest_in_how_and_why_things_happen
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_97ce0e2f46ed76ac1ecb43d4
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: c6339b7e5668ec36d22da85f686e2c0b6b8a1d081f41e2a9511b6b038b164146
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_985129d79358627364e459fb
+  family_label: gssfullcomponentr1_985129d79358627364e459fb
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_9edd9111a64bcb245dadc9d4
+    - p2lineage_a394330185950441a247a1bb
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: child_quality
+  boundary_rules:
+    axis: child_quality_good_manners
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_985129d79358627364e459fb
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 5136b321f3c69fc3f43b10ba5b41bf87f37871e30f56c526705b54269f27e5b2
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_9a20f2f60613ddb8eab5a6ac
+  family_label: unrelated_household_count
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_36509fc685fec7fcf431aa05
+    - p2lineage_e918a93ed1afe1c7df73469a
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: household_members_not_related_to_respondent
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: unrelated_members
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_9a20f2f60613ddb8eab5a6ac
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: b6af7e9424a0d2e5cbeb475688ca7c7cfdee65a5c1548a4a71d2e8f1f0b38f43
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_9d573b2b93b671f088d02d96
+  family_label: child_quality_studious
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_9b5ca5db4c4a067b57b33073
+    - p2lineage_ad16c01ab5c18e52fc6b6217
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: good_student
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_9d573b2b93b671f088d02d96
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: ea97f37169ac8f6c5da85f8a5445198338eccfe3006c4a2e5a148d884fde3c04
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_a05a63086d9535f4c7f9f213
+  family_label: abortion_rape
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_7327e9857bf33d69a3737e87
+    - p2lineage_c232ac8a4566734ba2b3a360
+  response_role_rules:
+    operator: circumstance_permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: pregnancy_resulting_from_rape
+  boundary_rules:
+    axis: abortion_permission
+    conditional_scope: pregnancy_resulting_from_rape
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_a05a63086d9535f4c7f9f213
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 483616de24b09c327ce3ebfa099affb34e7e805ef6ede94426f8074cd41404f6
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_a0a59dc0004d47372e214cf2
+  family_label: x_rated_movie_past_year
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_7a25c83691dfa580e4319503
+    - p2lineage_a8b5ef34871ff776f997257e
+  response_role_rules:
+    operator: past_year_experience_indicator
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: viewed_x_rated_movie_or_pornography_past_year
+  boundary_rules:
+    axis: sexual_media_behavior
+    conditional_scope: media_exposure
+    temporal_scope: past_year
+  r4_component_id: gssfullcomponentr1_a0a59dc0004d47372e214cf2
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 08468c94dd00d2761c6474ea554b3dd8f173984bd55d270ce0fe86c5bec1a236
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_a163539b108e2e39cda22f70
+  family_label: police_striking_approval
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0eac89ad12f5f6a2e1f83785
+    - p2lineage_45eb164e243321865c1de7ee
+  response_role_rules:
+    operator: approval
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: police_striking_citizen_general
+  boundary_rules:
+    axis: police_use_of_force_legitimacy
+    conditional_scope: general_police_force_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_a163539b108e2e39cda22f70
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 62e2df23739b3ca7f1267395207b16c4fcdc2c0497ae5f7c48c539b46de2d284
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_a16ea84451a1c395f0ffb15f
+  family_label: national_spending_big_city_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2312d3e0d3a051bb03a6746c
+    - p2lineage_8ca5912c45ca8ef4a83fab2a
+    - p2lineage_bd900b802b6725d68e47b88e
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: problems_of_big_cities
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_a16ea84451a1c395f0ffb15f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8de77f7af72c887439ee64048571abaa125994c7470c55636d48f21b4259a2d1
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_a17d12f265301d022e31f92f
+  family_label: move_outside_us_for_work
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1f4da5a7f32fbf3697d32bf4
+    - p2lineage_ad3c37bc2520aaa0d7a8b4b9
+  response_role_rules:
+    operator: willingness
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: move_outside_united_states_for_work
+  boundary_rules:
+    axis: labor_mobility_willingness
+    conditional_scope: work_opportunity
+    temporal_scope: prospective
+  r4_component_id: gssfullcomponentr1_a17d12f265301d022e31f92f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d919161db31131030a4025aca48bdc0eadb8504c7eec0c55f66d699e10d029cd
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_a188ab996d28dfd8b7698988
+  family_label: region_age_16
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_5999ef5e2965813522b57eb6
+    - p2lineage_fa168289b64644626aac9a8f
+  response_role_rules:
+    operator: region_category
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: region_of_residence_at_age_16
+  boundary_rules:
+    axis: geographic_origin_context
+    conditional_scope: residence_region
+    temporal_scope: age_16
+  r4_component_id: gssfullcomponentr1_a188ab996d28dfd8b7698988
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 9026bc47e84881c87275be4d8cb1dba6397bb51e2a62a9e9d85da419ad2e50d7
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_a5e6e91452e7c2b9f286a2d4
+  family_label: racist_speech
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_80af8dcbd20ffe109a20ed71
+    - p2lineage_e046340f9010d5886c245a4e
+  response_role_rules:
+    operator: permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: racist_public_speech
+  boundary_rules:
+    axis: civil_liberties_tolerance
+    conditional_scope: civil_liberties_speech_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_a5e6e91452e7c2b9f286a2d4
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8f1cc1738375d41f55b2403867cba31482c8e8439097abc206932b61d52db85b
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_a7972a5da90075580f47f20c
+  family_label: job_satisfaction_general
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2e838d67a12990e5b1dd0f91
+    - p2lineage_a783e76ec48a50f90a51ed58
+  response_role_rules:
+    operator: satisfaction_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_job_in_general
+  boundary_rules:
+    axis: job_satisfaction
+    conditional_scope: employed_respondent
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_a7972a5da90075580f47f20c
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: f3605132df3016d00585ab4475787a1b29ec6dce7819da34695f428e7d2dcd26
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_abcce4323ec67429220cfd92
+  family_label: muslim_clergy_library
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_17f59983559ffb6855d66849
+    - p2lineage_92cf946562cad04d15f8d364
+  response_role_rules:
+    operator: permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: anti_american_muslim_clergy_books_in_library
+  boundary_rules:
+    axis: civil_liberties_tolerance
+    conditional_scope: civil_liberties_library_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_abcce4323ec67429220cfd92
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8fcf968fc75bd8c0c23c2c41885b774ebae5c2daf440459ae86aaad1cd2617b5
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_abdc94c5a18cddf2a2ef2ac9
+  family_label: racial_difference_will
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2f282a9cab5965864a02c9d0
+    - p2lineage_626c0dd4387a38e17269f9b2
+  response_role_rules:
+    operator: cause_endorsement
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: racial_differences_due_to_lack_of_will
+  boundary_rules:
+    axis: racial_inequality_causal_attribution
+    conditional_scope: racial_difference_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_abdc94c5a18cddf2a2ef2ac9
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 3143f89a49349035065d3c94a4a2d12c54b1cda5802837eda62461cbf2ea7178
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_ac468ccf1f7644d441463cca
+  family_label: open_housing_vote
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_9ab9ac55b17b469e2891b28f
+    - p2lineage_cc3e1e55dda531955aa22ebe
+  response_role_rules:
+    operator: vote_choice_or_support
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: open_housing_law
+  boundary_rules:
+    axis: racial_housing_policy
+    conditional_scope: community_vote
+    temporal_scope: hypothetical
+  r4_component_id: gssfullcomponentr1_ac468ccf1f7644d441463cca
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: e7dacb7a1174bcf0969b33ddac8616ff19540efb6c4ed0a2251199ab3e614b18
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_af2b561f9a95f8dce3408c36
+  family_label: national_spending_drug_addiction_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1013da84fa7914db6cf10d2c
+    - p2lineage_808e28c54d04292fca48c501
+    - p2lineage_c6ff82bc769af232ac7b182b
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: drug_addiction_treatment_and_reduction
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_af2b561f9a95f8dce3408c36
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: aa408023345fd209181fac055065d0d067974fca00df3f481e0e53936169c368
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_afa9e4e79d1c5730e02479bd
+  family_label: police_vulgar_abuse
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_6eecf92a92f46fe28abe030d
+    - p2lineage_b4ccea424170d33eb193ba91
+  response_role_rules:
+    operator: approval
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: police_striking_citizen_after_vulgar_or_obscene_language
+  boundary_rules:
+    axis: police_use_of_force_legitimacy
+    conditional_scope: police_force_scenario
+    temporal_scope: hypothetical
+  r4_component_id: gssfullcomponentr1_afa9e4e79d1c5730e02479bd
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: a6b6bdf6cdaf8b789d493494da596f6147e23d689e85c1b75ca0f768956ee790
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_b0dad7241547ff54fceaffbf
+  family_label: national_spending_education_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_4cdc39f494ebb4a6ae9fdea6
+    - p2lineage_8d7e18f078ff34f5ef3061f5
+    - p2lineage_f9b6a39f92ea6bf7cb7c57db
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: education_system
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_b0dad7241547ff54fceaffbf
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8058bafc13e5f6a9476cc0cdc4a774218a25ec60caf1f70e15841500d82cedcf
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_b19cea31974a5a8998b3bc33
+  family_label: abortion_not_married
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_88c9ec1cabb9e2b4cf482110
+    - p2lineage_bde1698ad92d11934490ff6f
+  response_role_rules:
+    operator: circumstance_permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: pregnancy_unmarried_woman
+  boundary_rules:
+    axis: abortion_permission
+    conditional_scope: pregnancy_unmarried_woman
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_b19cea31974a5a8998b3bc33
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: fedd69e657e031429ce57f66fadf625d23f0088b11c629594891981433402da4
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_b60afb4eb17a5422c656e7b1
+  family_label: fairness_general
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2511a459a210430ad9ce479e
+    - p2lineage_60fecc829a05331a53ac2914
+    - p2lineage_9f95e8605c29269546a62779
+  response_role_rules:
+    operator: bipolar_fairness_evaluation
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: people_in_general
+  boundary_rules:
+    axis: generalized_social_fairness
+    conditional_scope: fair_vs_take_advantage
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_b60afb4eb17a5422c656e7b1
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d95d984c3fc1d911a2159499d8876b6cfae2356e4ed3eda00a647e08dd5fb58a
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_b60c232c4e82bfdf6c3fe867
+  family_label: other_language_slot_1
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_74605bbec34a3c63fe2108e1
+    - p2lineage_aca2d344344bee209cf25128
+  response_role_rules:
+    operator: category_selection
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_other_language_slot_1
+  boundary_rules:
+    axis: language_repertoire
+    conditional_scope: ordered_language_slot_1
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_b60c232c4e82bfdf6c3fe867
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 3fb3dc7c680dc2b49063cd3e37b9bfd762d929ea261533b9dfd1d557ab5d9df1
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_b6d73c7f8b15314db037db03
+  family_label: national_spending_environment_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1cdae3b92fea9687afa93072
+    - p2lineage_41e8bb9e47293e452c3145a7
+    - p2lineage_83999bf3f79d874e4e690981
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: environmental_protection
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_b6d73c7f8b15314db037db03
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: b913334464fc548bd5298f2e1d1a9a4d14c92dff3a59d801768689f5cb5fa49f
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_b874b4b511ec8beda942974f
+  family_label: gssfullcomponentr1_b874b4b511ec8beda942974f
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_6e1033b8e118244c9be1855c
+    - p2lineage_74ac4eefecb9f479ed27910b
+  response_role_rules:
+    operator: duration
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: internet_general:weekend
+  boundary_rules:
+    axis: internet_use_duration
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_b874b4b511ec8beda942974f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 3f4691c64046858133e7eb8c2bec78058bb5e459bbfe4bc125b35183f4ed1d18
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_bbce4c6d5c0a7f928b4daf33
+  family_label: age_first_child
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2b28faefaabf580edb34714e
+    - p2lineage_7320f48ba79847cbb8e8c887
+  response_role_rules:
+    operator: age_value
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_age_at_first_child_birth
+  boundary_rules:
+    axis: life_course_timing
+    conditional_scope: first_child_birth
+    temporal_scope: retrospective_lifetime
+  r4_component_id: gssfullcomponentr1_bbce4c6d5c0a7f928b4daf33
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 74fabe2beccf39a4c23eb906fc354eda72100799e6c770fb1bd19c1a38ac0af0
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_beab1999036426142a28cb37
+  family_label: known_suicides_lifetime
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_206346bdac2b57dfd5e997b9
+    - p2lineage_3071e8e9f650db0dbe826ae8
+  response_role_rules:
+    operator: lifetime_count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: people_respondent_knows_who_died_by_suicide
+  boundary_rules:
+    axis: suicide_exposure
+    conditional_scope: known_people
+    temporal_scope: lifetime
+  r4_component_id: gssfullcomponentr1_beab1999036426142a28cb37
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 754c1f7b852a5db1aadad0a203f854da9a97933398de441af3d2f9e89069c7f4
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_c0924cb7e25902695e586124
+  family_label: gssfullcomponentr1_c0924cb7e25902695e586124
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_566cd6122338421e07839446
+    - p2lineage_e365dcd95bd8f0f55bd0b74a
+  response_role_rules:
+    operator: prospective_intention
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: elections_general
+  boundary_rules:
+    axis: vote_intention
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_c0924cb7e25902695e586124
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 4e4171688d3a7b574d8abc53e321278aacf4d9b380025fcad078822851aaaead
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_c3e1cfb85cfe45d68c9b51f9
+  family_label: life_after_death
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_2f4e24b6c95b9da1e323e075
+    - p2lineage_852570d46e86a5919049678a
+    - p2lineage_fc4d089d1cf6c38b6204b2fa
+  response_role_rules:
+    operator: belief_indicator
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: life_after_death
+  boundary_rules:
+    axis: afterlife_belief
+    conditional_scope: afterlife_belief
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_c3e1cfb85cfe45d68c9b51f9
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: aca3d941d7204215467e3f7a47d5870e41143708c7e74da39a3864cdb1a5f1c5
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_c61cd09afcbe3eeff174a6ac
+  family_label: parks_recreation_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_5331b5567b5722afcec5c971
+    - p2lineage_87685c014ac6b7045ec98d62
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: parks_and_recreation
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_c61cd09afcbe3eeff174a6ac
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d9ed2f0074c96717239b471cf4c6e7c934be93f9a1e56f14b3ca54a83bf50291
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_cf72befa8a813b36d9f76b76
+  family_label: gssfullcomponentr1_cf72befa8a813b36d9f76b76
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0e5636efb6dbcd27ea717c25
+    - p2lineage_f701e0f8d769af4e02a32b86
+  response_role_rules:
+    operator: institutional_trust_or_confidence_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: medicine
+  boundary_rules:
+    axis: institutional_trust
+    conditional_scope: institutional_confidence_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_cf72befa8a813b36d9f76b76
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 39e506871385934de578b18feb5780efb42febe676ee4f218375842011ba7b93
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_cf83ae21d14e46e843b79ab3
+  family_label: family_earners
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_54af07284bc6c114f35fbbcd
+    - p2lineage_a9532f5b936e2a449b525c4a
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_family
+    target: family_members_who_earned_money
+  boundary_rules:
+    axis: household_economic_composition
+    conditional_scope: family_earners
+    temporal_scope: reference_period_source_native
+  r4_component_id: gssfullcomponentr1_cf83ae21d14e46e843b79ab3
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: f250051ccf021b612790a900b531713126b6bf6b2e82513be811a158816183a3
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_d3c0efd693b50d5668b861bc
+  family_label: national_spending_social_security_spending
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_4e48c1ebd6cee3a8c843eb11
+    - p2lineage_a7f3921b2ee36f33f4f6b734
+  response_role_rules:
+    operator: too_little_about_right_too_much
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: social_security
+  boundary_rules:
+    axis: government_spending_adequacy
+    conditional_scope: national_spending_battery
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_d3c0efd693b50d5668b861bc
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: f86b1989161ab9d55a60c3ac5ab2780be659805110690d925a5b9ff333e5663b
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_d5ea3b8df27e10fd77a35057
+  family_label: racial_difference_upbringing
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_7d365b9258c111e36efad08c
+    - p2lineage_f1f4c1c09eb5ae4a38b842f1
+  response_role_rules:
+    operator: cause_endorsement
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: racial_differences_due_to_upbringing
+  boundary_rules:
+    axis: racial_inequality_causal_attribution
+    conditional_scope: racial_difference_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_d5ea3b8df27e10fd77a35057
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: ac387f34311c42bd37c3e8fc625a73b910ac1c6dde3a961e6a02ad7a2e4fda17
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_d79a528cdba5b0789728ec14
+  family_label: immigrants_crime
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_3a31f64b2be60bea5a71efb6
+    - p2lineage_71aac2c1ef1e91bbdb457696
+  response_role_rules:
+    operator: agreement_or_position
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: immigrants_effect_on_crime_rates
+  boundary_rules:
+    axis: immigration_attitude
+    conditional_scope: immigration_attitude_statement
+    temporal_scope: general
+  r4_component_id: gssfullcomponentr1_d79a528cdba5b0789728ec14
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: ed289f3b91166ebd86d0bc828cd7981582829718483e55d57ab26c6e4556a86c
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_d93d570e2752b8eb388978b2
+  family_label: school_bible_prayer
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_087eac95b2a4dabc39e65c85
+    - p2lineage_29bd8a7833bf4887707bf685
+    - p2lineage_deb7d45044e5db50c86e0a02
+  response_role_rules:
+    operator: support_or_oppose
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: bible_prayer_in_public_schools
+  boundary_rules:
+    axis: school_prayer_policy
+    conditional_scope: public_school_policy
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_d93d570e2752b8eb388978b2
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 347d71d89a2ef7bcfb1f16740b242ff59debb2765555d4792949824058f5ad67
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_db740998d26238e8f0f804ae
+  family_label: household_relation_13
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_454001baa714a5efc0f0b384
+    - p2lineage_a4484199e47e4dab1196eecb
+  response_role_rules:
+    operator: relationship_category
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: person_slot_13_to_household_head
+  boundary_rules:
+    axis: household_relationship
+    conditional_scope: household_person_slot_13
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_db740998d26238e8f0f804ae
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: b886d6d82ec5b2b37ff58046071bf040d855d0a26baa005be49fff141a6f3109
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_e18ffcc6ec739e9df6e15368
+  family_label: gssfullcomponentr1_e18ffcc6ec739e9df6e15368
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_15251718a4fe1471ab036d77
+    - p2lineage_8d0b4446243f1582a2cfd2a8
+  response_role_rules:
+    operator: duration
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: work_computer:weekly
+  boundary_rules:
+    axis: internet_use_duration
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_e18ffcc6ec739e9df6e15368
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 0204011a8bbd7341fc4a152d42badd6a9510fafa92f34dd2852b8f395cb4abdb
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_e48d7ad7c121dcdb8b8948a0
+  family_label: supervisor_has_supervisor
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_84b0c945d3d529da41ce9686
+    - p2lineage_bf413bc0315bea6bd0f6697e
+  response_role_rules:
+    operator: status_indicator
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_supervisor_has_supervisor
+  boundary_rules:
+    axis: workplace_hierarchy
+    conditional_scope: employed_respondent
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_e48d7ad7c121dcdb8b8948a0
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: a35b100cd3e11bb099e207b1a7cefec22d533c9d13f7eff7776ea35b712c3877
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_e646d161b735fde10dccc14b
+  family_label: racist_library
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_8f17bff4451fc8717389a162
+    - p2lineage_d8997f042e06e2f4796abe66
+  response_role_rules:
+    operator: permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: racist_authored_book_in_public_library
+  boundary_rules:
+    axis: civil_liberties_tolerance
+    conditional_scope: civil_liberties_library_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_e646d161b735fde10dccc14b
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: c36f28eacf79df76decc00793dc5c5d99f184f459fb21bd35750bd4c6b689a96
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_e85d7ccf33766dc609e449f7
+  family_label: teen_household_count
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_9c05ab7125e50e9355727989
+    - p2lineage_fcd039091b1c7bcb3dc0f977
+    - p2lineage_fff437335c7289d86505afc5
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: children_age_13_to_17_in_household
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: age_13_to_17
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_e85d7ccf33766dc609e449f7
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: b588b17854d91eee1da498316057415f41a6e1a7a8b70b7acb777439a1a4b67b
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_e8edfa6a9f9a10549ca983b9
+  family_label: race_third_mention
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1daa8ab59449577affaf2f80
+    - p2lineage_3c195c961e67426cf393adc2
+  response_role_rules:
+    operator: category_selection
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_race_mention_3
+  boundary_rules:
+    axis: racial_identity
+    conditional_scope: ordered_mention_slot_3
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_e8edfa6a9f9a10549ca983b9
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 2ba457bd5a48b5646b08cfad112e2a29b3730049d2c8fe5b021e95e864e6f34b
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_e95126d5b72a6302f2249d83
+  family_label: suicide_incurable
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_73df8abcfc7fbf9f0f2f54b8
+    - p2lineage_7e4ba59f123ffcd5c24c3ff9
+  response_role_rules:
+    operator: circumstance_right_or_acceptability
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: suicide_when_incurably_ill
+  boundary_rules:
+    axis: suicide_right_to_die
+    conditional_scope: suicide_when_incurably_ill
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_e95126d5b72a6302f2249d83
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: e950748598f8cdb6c30aa9f8948af1596af502be95191a286ef14ad3f9671873
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_e9ccb92fd94b7428b45a899c
+  family_label: anti_religionist_speech
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_114af406261714d7616f88eb
+    - p2lineage_b8593acb4f48a419afb1c256
+  response_role_rules:
+    operator: permission
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: anti_religionist_public_speech
+  boundary_rules:
+    axis: civil_liberties_tolerance
+    conditional_scope: civil_liberties_speech_item
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_e9ccb92fd94b7428b45a899c
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d6cbfdb75d4c4823e652c89f865d1a95872f499c32c0e9980075f4c352af42ab
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_ead394c92f18ac5e6764398b
+  family_label: divorce_laws
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_449d8e61e878d5875892f477
+    - p2lineage_926cb0dc8c168b393fe3a4e5
+    - p2lineage_eb3bf94291f298ca81a2e733
+  response_role_rules:
+    operator: easier_same_more_difficult
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: ease_of_obtaining_divorce
+  boundary_rules:
+    axis: divorce_law_policy
+    conditional_scope: comparative_to_current_law
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_ead394c92f18ac5e6764398b
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: d25092e5be2e7aa4e53d9bc5dc4094bf5a86dfd4082c1a4903a5a74980379038
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_eb9cffeb27ebe5ffa56c50b9
+  family_label: child_quality_amicable
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_b39961cb635b15cd40d14c8d
+    - p2lineage_d32d0f48760a63e7aa1f01cd
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: gets_along_with_other_children
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_eb9cffeb27ebe5ffa56c50b9
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 6cd5c7d6f5958952eaa143bdd3cf9fa7957a031fd1abd70538da10f26874030f
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_ec7ac32cfc913e122d258d96
+  family_label: child_quality_success
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_1d8deebba9f510162ef69a9d
+    - p2lineage_e5b6c8ea844dac166522c67d
+  response_role_rules:
+    operator: desirability_rank
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: tries_hard_to_succeed
+  boundary_rules:
+    axis: child_quality_desirability
+    conditional_scope: child_quality_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_ec7ac32cfc913e122d258d96
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 07f6e7367ecbab161cf550cf89715da0214324988630ef93bf43405b12013021
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_ef926e7734dca1a9788c308b
+  family_label: household_relation_11
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0e1a755f4fc835199081f73c
+    - p2lineage_9096bc480605cb4feca5c363
+  response_role_rules:
+    operator: relationship_category
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: person_slot_11_to_household_head
+  boundary_rules:
+    axis: household_relationship
+    conditional_scope: household_person_slot_11
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_ef926e7734dca1a9788c308b
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 887978335b4a0ed22bd52f8479fc0c0a008e46a8611fcffcf004fd955eba9fb6
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_f127d7a957bc94c2b43fb9e2
+  family_label: raised_denomination
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0e4e52a567ddb28b98b465e8
+    - p2lineage_81b1be9f90654a93e1d2a86e
+  response_role_rules:
+    operator: category_identification
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_denomination_raised_in
+  boundary_rules:
+    axis: religious_upbringing
+    conditional_scope: raised_religion
+    temporal_scope: childhood
+  r4_component_id: gssfullcomponentr1_f127d7a957bc94c2b43fb9e2
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 82b9fa2b7d44485cd6c9e48da99d42f340b991192f536016de4c3ad541886f64
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_f29bc6febbdd567cde3cc474
+  family_label: babies_household_count
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_254154c15385f95fc92c56d5
+    - p2lineage_cdb55adfacf2502324ef64d5
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent_household
+    target: children_under_age_6_in_household
+  boundary_rules:
+    axis: household_composition
+    conditional_scope: age_under_6
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_f29bc6febbdd567cde3cc474
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: f844575e2a3dc752f35c56837d6dcaf61bddd762055005f8236f82adab0d8df5
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_f3521a16e96d6a1bfd615a98
+  family_label: past_year_sex_partners
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_515a87248d1aa8ab53046cf9
+    - p2lineage_9a9b0027c348ae1df368dd12
+  response_role_rules:
+    operator: count
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_sex_partners_past_year
+  boundary_rules:
+    axis: sexual_behavior
+    conditional_scope: sex_partner_count
+    temporal_scope: past_year
+  r4_component_id: gssfullcomponentr1_f3521a16e96d6a1bfd615a98
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: b28bbbb39e2c69b2443569e21f7750ca09152760210dd9224abd0f0433105e47
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_f53450cb4e2071f41df3f63f
+  family_label: religious_affiliation_strength
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_01496eabac6c5bc876418189
+    - p2lineage_5509685d4a4332a74b34ff3b
+    - p2lineage_f9b4f323f92ac757b1d14e6c
+  response_role_rules:
+    operator: strength_rating
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: respondent_religious_affiliation
+  boundary_rules:
+    axis: religious_affiliation_intensity
+    conditional_scope: religious_affiliation
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_f53450cb4e2071f41df3f63f
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 0bb73ed138507eec829d69b2149f3a1cf2f127d204aec046479e050b6108a9a0
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_f79bafc11f7d2f2b62fdaea4
+  family_label: gssfullcomponentr1_f79bafc11f7d2f2b62fdaea4
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_0e20479012ca92c5fdd742aa
+    - p2lineage_ea3a4de2d3898ff13cb3b5ff
+  response_role_rules:
+    operator: self_assessed_skill
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: internet_general
+  boundary_rules:
+    axis: internet_skill
+    conditional_scope: null
+    temporal_scope: current
+  r4_component_id: gssfullcomponentr1_f79bafc11f7d2f2b62fdaea4
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 431a1f89faee5cd82aee5865200cf8210753ff77255284bfc9be4694f6169329
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_fa504c2da6858fb736cb94d6
+  family_label: suicide_tired_living
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_5257a3dd15d1571b7d74740c
+    - p2lineage_f23d400d16e44fd5dbc7ce4c
+  response_role_rules:
+    operator: circumstance_right_or_acceptability
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: suicide_when_tired_of_living
+  boundary_rules:
+    axis: suicide_right_to_die
+    conditional_scope: suicide_when_tired_of_living
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_fa504c2da6858fb736cb94d6
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 8366502f41207553694a6477752b1be6afdf168571875dfe2f2e6400f9cdf0c1
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_fceeff62dd72d8389eed3e03
+  family_label: aged_live_children
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_7c172af0732ef35e3931d50a
+    - p2lineage_d8f1c23fe00b4c57df7faaab
+  response_role_rules:
+    operator: agreement_or_position
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: older_people_living_with_their_children
+  boundary_rules:
+    axis: intergenerational_living_norm
+    conditional_scope: normative_statement
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_fceeff62dd72d8389eed3e03
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 48ff20381ae3fcec175a774dfd1eab2e01d74686e041c11a7957d90f7063c2cf
+- family_id: PROVISIONAL::gssfullfamily::gssfullcomponentr1_feee588023ece35322047e6c
+  family_label: racial_difference_inborn
+  family_type: QUESTION_PROPOSITION
+  family_structure_type: SOURCE_NATIVE_PROPOSITION
+  eligible_waves: []
+  item_role_groups:
+    RELATION_EVIDENCE:
+    - p2lineage_79591090711dd41423a3e1ea
+    - p2lineage_db7d0839b357b696caacb818
+  response_role_rules:
+    operator: cause_endorsement
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+    subject: respondent
+    target: racial_differences_due_to_inborn_learning_ability
+  boundary_rules:
+    axis: racial_inequality_causal_attribution
+    conditional_scope: racial_difference_battery
+    temporal_scope: unspecified
+  r4_component_id: gssfullcomponentr1_feee588023ece35322047e6c
+  r4_decision: ACCEPT_NEW_FAMILY
+  r4_semantic_signature_sha256: 9884ff63d2cd5885afbd72512f7d66c639422f75f0f6ed1e7c461bda3d973c6e
