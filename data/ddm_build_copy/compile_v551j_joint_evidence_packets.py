@@ -136,6 +136,8 @@ V551_V3_REQUIRED_COLUMNS = {
         "compiler_version",
     },
 }
+V550J_PRODUCER_SCHEMA_VERSION = "v1"
+V550J_PRODUCER_COMPILER_VERSION = "v550j_joint_response_patterns_producer_v1"
 V550J_TABLE_INPUTS = {
     "joint_response_pattern_index": "v550j_pattern_index_path",
     "joint_response_pattern_item_index": "v550j_pattern_item_index_path",
@@ -249,6 +251,25 @@ def _read_json_object(path: str | Path, label: str) -> dict[str, Any]:
     return payload
 
 
+def _scope_from_producer_payload(payload: dict[str, Any], label: str) -> dict[str, Any]:
+    scope = payload.get("producer_scope_identity")
+    if not isinstance(scope, dict):
+        raise BoundaryContractError(f"{label}_PRODUCER_SCOPE_IDENTITY_MISSING")
+    countries_raw = scope.get("country_codes") or payload.get("country_codes") or []
+    if not isinstance(countries_raw, list):
+        raise BoundaryContractError(f"{label}_COUNTRY_CODES_MALFORMED")
+    return {
+        "run_id": _clean(scope.get("run_id") or payload.get("producer_run_id") or payload.get("run_id")),
+        "source": _clean(scope.get("source") or payload.get("source")),
+        "wave": _clean(scope.get("canonical_wave") or scope.get("wave") or payload.get("canonical_wave") or payload.get("wave")),
+        "canonical_wave": _clean(scope.get("canonical_wave") or scope.get("wave") or payload.get("canonical_wave") or payload.get("wave")),
+        "country_code": _clean(scope.get("country_code") or payload.get("country_code")),
+        "country_codes": sorted({_clean(value) for value in countries_raw if _clean(value)}),
+        "shard_id": _clean(scope.get("shard_id") or payload.get("shard_id")),
+        "scope_kind": _clean(scope.get("scope_kind")) or ("shard" if _clean(scope.get("shard_id") or payload.get("shard_id")) else "country"),
+    }
+
+
 def _expected_v551_scope(
     run_id: str,
     pattern_index: pd.DataFrame,
@@ -256,33 +277,62 @@ def _expected_v551_scope(
     v550j_manifest_path: str | Path | None = None,
 ) -> dict[str, Any]:
     frames = (pattern_index, pattern_item_index)
+    manifest_scope: dict[str, Any] = {}
+    if v550j_manifest_path:
+        manifest = _read_json_object(v550j_manifest_path, "V550J_MANIFEST")
+        raw_scope = manifest.get("producer_scope_identity")
+        if isinstance(raw_scope, dict):
+            manifest_scope = _scope_from_producer_payload(manifest, "V550J_MANIFEST")
+        else:
+            manifest_scope = {
+                "run_id": _clean(manifest.get("run_id")),
+                "source": _clean(manifest.get("source")),
+                "wave": _clean(manifest.get("canonical_wave") or manifest.get("wave")),
+                "canonical_wave": _clean(manifest.get("canonical_wave") or manifest.get("wave")),
+                "country_code": _clean(manifest.get("country_code")),
+                "country_codes": sorted({_clean(value) for value in (manifest.get("country_codes") or []) if _clean(value)}) if isinstance(manifest.get("country_codes") or [], list) else [],
+                "shard_id": _clean(manifest.get("shard_id")),
+                "scope_kind": "shard" if _clean(manifest.get("shard_id")) else "country",
+            }
+        if manifest_scope["run_id"] and manifest_scope["run_id"] != run_id:
+            raise BoundaryContractError(
+                f"V550J_MANIFEST_RUN_ID_MISMATCH:expected={run_id}:actual={manifest_scope['run_id']}"
+            )
+
     for frame in frames:
         if frame.empty or "run_id" not in frame.columns:
             continue
         observed = sorted({_clean(value) for value in frame["run_id"].tolist() if _clean(value)})
         if observed and observed != [run_id]:
             raise RuntimeError(f"V551J_V550J_RUN_IDENTITY_MISMATCH:expected={run_id}:observed={observed}")
-    source = _single_scope_value(frames, ("source_family", "source", "source_id"), "source")
-    wave = _single_scope_value(frames, ("canonical_wave", "wave"), "wave")
-    country_codes = _scope_values(frames, ("country_code",))
-    if not country_codes:
-        raise RuntimeError("V551J_V550J_SCOPE_MISSING:country_code")
 
-    shard_id = ""
-    if v550j_manifest_path:
-        manifest = _read_json_object(v550j_manifest_path, "V550J_MANIFEST")
-        manifest_run = _clean(manifest.get("run_id"))
-        if manifest_run != run_id:
-            raise BoundaryContractError(
-                f"V550J_MANIFEST_RUN_ID_MISMATCH:expected={run_id}:actual={manifest_run or '<missing>'}"
-            )
-        manifest_source = _clean(manifest.get("source"))
-        if manifest_source and manifest_source != source:
-            raise BoundaryContractError(
-                f"V550J_MANIFEST_SOURCE_MISMATCH:expected={source}:actual={manifest_source}"
-            )
-        shard_id = _clean(manifest.get("shard_id"))
+    source_values = _scope_values(frames, ("source_family", "source", "source_id"))
+    wave_values = _scope_values(frames, ("canonical_wave", "wave"))
+    country_values = _scope_values(frames, ("country_code",))
+    if len(source_values) > 1:
+        raise RuntimeError(f"V551J_V550J_SCOPE_NOT_SINGULAR:source:{source_values[:8]}")
+    if len(wave_values) > 1:
+        raise RuntimeError(f"V551J_V550J_SCOPE_NOT_SINGULAR:wave:{wave_values[:8]}")
 
+    source = source_values[0] if source_values else _clean(manifest_scope.get("source"))
+    wave = wave_values[0] if wave_values else _clean(manifest_scope.get("wave"))
+    country_codes = country_values or list(manifest_scope.get("country_codes") or [])
+    if not country_codes and _clean(manifest_scope.get("country_code")):
+        country_codes = [_clean(manifest_scope.get("country_code"))]
+    shard_id = _clean(manifest_scope.get("shard_id"))
+    if not source:
+        raise RuntimeError("V551J_V550J_SCOPE_MISSING:source")
+    if not wave:
+        raise RuntimeError("V551J_V550J_SCOPE_MISSING:wave")
+    if source_values and manifest_scope.get("source") and source != manifest_scope["source"]:
+        raise BoundaryContractError("V550J_FRAME_MANIFEST_SOURCE_MISMATCH")
+    if wave_values and manifest_scope.get("wave") and wave != manifest_scope["wave"]:
+        raise BoundaryContractError("V550J_FRAME_MANIFEST_WAVE_MISMATCH")
+    manifest_countries = sorted(manifest_scope.get("country_codes") or [])
+    if country_values and manifest_countries and sorted(country_values) != manifest_countries:
+        raise BoundaryContractError(
+            f"V550J_FRAME_MANIFEST_COUNTRY_SCOPE_MISMATCH:frames={sorted(country_values)}:manifest={manifest_countries}"
+        )
     if len(country_codes) > 1 and not shard_id:
         raise BoundaryContractError(
             f"V551J_MULTI_COUNTRY_SCOPE_REQUIRES_V550J_SHARD_ID:countries={country_codes}"
@@ -292,8 +342,8 @@ def _expected_v551_scope(
         "source": source,
         "wave": wave,
         "canonical_wave": wave,
-        "country_code": country_codes[0] if len(country_codes) == 1 and not shard_id else "",
-        "country_codes": country_codes,
+        "country_code": _clean(manifest_scope.get("country_code")) if shard_id else (country_codes[0] if len(country_codes) == 1 else ""),
+        "country_codes": sorted(country_codes),
         "shard_id": shard_id,
         "scope_kind": "shard" if shard_id else "country",
     }
@@ -630,23 +680,66 @@ def _verify_v550j_producer_surface(
 ) -> dict[str, Any]:
     manifest = _read_json_object(manifest_path, "V550J_MANIFEST")
     readiness = _read_json_object(readiness_path, "V550J_READINESS")
-    if _clean(manifest.get("run_id")) != run_id:
-        raise BoundaryContractError("V550J_MANIFEST_RUN_ID_MISMATCH")
-    if _clean(readiness.get("run_id")) != run_id:
-        raise BoundaryContractError("V550J_READINESS_RUN_ID_MISMATCH")
-    manifest_source = _clean(manifest.get("source"))
-    if manifest_source and manifest_source != expected_scope["source"]:
-        raise BoundaryContractError("V550J_MANIFEST_SOURCE_MISMATCH")
-    readiness_source = _clean(readiness.get("source"))
-    if readiness_source and readiness_source != expected_scope["source"]:
-        raise BoundaryContractError("V550J_READINESS_SOURCE_MISMATCH")
-    manifest_shard = _clean(manifest.get("shard_id"))
-    if expected_scope["shard_id"] and manifest_shard != expected_scope["shard_id"]:
-        raise BoundaryContractError("V550J_MANIFEST_SHARD_ID_MISMATCH")
+
+    states = {}
+    scopes = {}
+    for label, payload in (("V550J_MANIFEST", manifest), ("V550J_READINESS", readiness)):
+        contract_version = _clean(payload.get("contract_version"))
+        boundary_version = _clean(payload.get("boundary_contract_version"))
+        if contract_version != PIPELINE_BOUNDARY_CONTRACT_VERSION or boundary_version != PIPELINE_BOUNDARY_CONTRACT_VERSION:
+            raise BoundaryContractError(
+                f"{label}_CONTRACT_VERSION_MISMATCH:expected={PIPELINE_BOUNDARY_CONTRACT_VERSION}:contract={contract_version or '<missing>'}:boundary={boundary_version or '<missing>'}"
+            )
+        if _clean(payload.get("schema_version")) != V550J_PRODUCER_SCHEMA_VERSION:
+            raise BoundaryContractError(
+                f"{label}_SCHEMA_VERSION_MISMATCH:expected={V550J_PRODUCER_SCHEMA_VERSION}:actual={_clean(payload.get('schema_version')) or '<missing>'}"
+            )
+        if _clean(payload.get("compiler_version")) != V550J_PRODUCER_COMPILER_VERSION:
+            raise BoundaryContractError(
+                f"{label}_COMPILER_VERSION_MISMATCH:expected={V550J_PRODUCER_COMPILER_VERSION}:actual={_clean(payload.get('compiler_version')) or '<missing>'}"
+            )
+        state = boundary_state_from_payload(payload)
+        if state.run_integrity_status != "PASS":
+            raise BoundaryContractError(f"{label}_RUN_INTEGRITY_NOT_PASS:{state.run_integrity_status}")
+        states[label] = state
+        scopes[label] = _scope_from_producer_payload(payload, label)
+
+    manifest_state = states["V550J_MANIFEST"]
+    readiness_state = states["V550J_READINESS"]
+    if (
+        manifest_state.evidence_status != readiness_state.evidence_status
+        or manifest_state.downstream_permission_status != readiness_state.downstream_permission_status
+    ):
+        raise BoundaryContractError(
+            "V550J_PRODUCER_STATE_DISAGREEMENT:"
+            f"manifest={manifest_state.evidence_status}/{manifest_state.downstream_permission_status}:"
+            f"readiness={readiness_state.evidence_status}/{readiness_state.downstream_permission_status}"
+        )
+
+    for label, scope in scopes.items():
+        if scope["run_id"] != run_id:
+            raise BoundaryContractError(f"{label}_RUN_ID_MISMATCH:expected={run_id}:actual={scope['run_id'] or '<missing>'}")
+        if scope["source"] != expected_scope["source"]:
+            raise BoundaryContractError(f"{label}_SOURCE_MISMATCH:expected={expected_scope['source']}:actual={scope['source'] or '<missing>'}")
+        if scope["wave"] != expected_scope["wave"]:
+            raise BoundaryContractError(f"{label}_WAVE_MISMATCH:expected={expected_scope['wave']}:actual={scope['wave'] or '<missing>'}")
+        if expected_scope["shard_id"] and scope["shard_id"] != expected_scope["shard_id"]:
+            raise BoundaryContractError(f"{label}_SHARD_ID_MISMATCH:expected={expected_scope['shard_id']}:actual={scope['shard_id'] or '<missing>'}")
+        if expected_scope["country_codes"] and scope["country_codes"] and scope["country_codes"] != expected_scope["country_codes"]:
+            raise BoundaryContractError(
+                f"{label}_COUNTRY_SCOPE_MISMATCH:expected={expected_scope['country_codes']}:actual={scope['country_codes']}"
+            )
 
     declared_tables = manifest.get("tables") or {}
     if not isinstance(declared_tables, dict):
         raise BoundaryContractError("V550J_MANIFEST_TABLE_DECLARATIONS_MALFORMED")
+    canonical_names = manifest.get("canonical_artifact_names") or []
+    if not isinstance(canonical_names, list):
+        raise BoundaryContractError("V550J_CANONICAL_ARTIFACT_NAMES_MALFORMED")
+    missing_canonical = sorted(set(table_inputs) - {str(value) for value in canonical_names})
+    if missing_canonical:
+        raise BoundaryContractError("V550J_CANONICAL_ARTIFACT_SET_INCOMPLETE:" + ",".join(missing_canonical))
+
     table_report: dict[str, Any] = {}
     for table_name, (supplied_path, frame) in table_inputs.items():
         declaration = declared_tables.get(table_name)
@@ -655,9 +748,25 @@ def _verify_v550j_producer_surface(
         declared_path = _clean(declaration.get("parquet_path"))
         if not declared_path:
             raise BoundaryContractError(f"V550J_TABLE_PARQUET_PATH_MISSING:{table_name}")
+        if Path(declared_path).suffix.lower() != ".parquet":
+            raise BoundaryContractError(f"V550J_TABLE_CANONICAL_PARQUET_REQUIRED:{table_name}:{declared_path}")
         if Path(declared_path).resolve() != Path(supplied_path).resolve():
             raise BoundaryContractError(
                 f"V550J_TABLE_PATH_MISMATCH:{table_name}:declared={declared_path}:supplied={supplied_path}"
+            )
+        if _clean(declaration.get("artifact_kind")) != "canonical":
+            raise BoundaryContractError(f"V550J_TABLE_ARTIFACT_KIND_NOT_CANONICAL:{table_name}")
+        if _clean(declaration.get("schema_version")) != V550J_PRODUCER_SCHEMA_VERSION:
+            raise BoundaryContractError(f"V550J_TABLE_SCHEMA_VERSION_MISMATCH:{table_name}")
+        if _clean(declaration.get("compiler_version")) != V550J_PRODUCER_COMPILER_VERSION:
+            raise BoundaryContractError(f"V550J_TABLE_COMPILER_VERSION_MISMATCH:{table_name}")
+        declared_hash = _clean(declaration.get("artifact_file_sha256")).lower()
+        if not re.fullmatch(r"[0-9a-f]{64}", declared_hash):
+            raise BoundaryContractError(f"V550J_TABLE_ARTIFACT_FILE_SHA256_MISSING_OR_INVALID:{table_name}")
+        actual_hash = file_hash(supplied_path)
+        if actual_hash != declared_hash:
+            raise BoundaryContractError(
+                f"V550J_TABLE_ARTIFACT_FILE_SHA256_MISMATCH:{table_name}:expected={declared_hash}:actual={actual_hash}"
             )
         declared_rows = declaration.get("rows")
         if declared_rows is None or int(declared_rows) != len(frame):
@@ -667,9 +776,30 @@ def _verify_v550j_producer_surface(
         table_report[table_name] = {
             "path": str(Path(supplied_path)),
             "row_count": int(len(frame)),
-            "observed_artifact_file_sha256": file_hash(supplied_path),
-            "producer_declared_artifact_file_sha256": None,
+            "artifact_file_sha256": actual_hash,
+            "producer_declared_artifact_file_sha256": declared_hash,
+            "hash_status": "MATCHED_PRODUCER_DECLARATION",
         }
+
+    row_counts = [int(item["row_count"]) for item in table_report.values()]
+    evidence = manifest_state.evidence_status
+    permission = manifest_state.downstream_permission_status
+    if evidence == "PRESENT":
+        if permission != "ALLOW" or any(count <= 0 for count in row_counts):
+            raise BoundaryContractError(
+                f"V550J_PRESENT_STATE_INCOMPLETE_OR_NOT_ALLOWED:rows={row_counts}:permission={permission}"
+            )
+    elif evidence in {"VALID_EMPTY", "NOT_APPLICABLE"}:
+        if any(count != 0 for count in row_counts):
+            raise BoundaryContractError(f"V550J_EMPTY_STATE_CONTRADICTS_NONEMPTY_TABLES:rows={row_counts}")
+        if permission not in {"NOT_APPLICABLE", "DENY"}:
+            raise BoundaryContractError(f"V550J_EMPTY_STATE_INVALID_PERMISSION:{permission}")
+    elif evidence == "APPLICABLE_UNRESOLVED":
+        if permission != "DENY":
+            raise BoundaryContractError(f"V550J_UNRESOLVED_STATE_INVALID_PERMISSION:{permission}")
+    else:
+        raise BoundaryContractError(f"V550J_PRODUCER_EVIDENCE_STATUS_UNSUPPORTED:{evidence}")
+
     return {
         "run_id": run_id,
         "source": expected_scope["source"],
@@ -678,9 +808,16 @@ def _verify_v550j_producer_surface(
         "shard_id": expected_scope["shard_id"],
         "manifest_sha256": file_hash(manifest_path),
         "readiness_sha256": file_hash(readiness_path),
+        "producer_contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+        "producer_schema_version": V550J_PRODUCER_SCHEMA_VERSION,
+        "producer_compiler_version": V550J_PRODUCER_COMPILER_VERSION,
+        "producer_run_integrity_status": manifest_state.run_integrity_status,
+        "producer_evidence_status": evidence,
+        "producer_downstream_permission_status": permission,
+        "producer_state_detail": _clean(manifest.get("producer_state_detail")),
         "manifest_validation_status": _clean(manifest.get("validation_status")),
         "readiness_status": _clean(readiness.get("readiness_status")),
-        "producer_artifact_hash_contract_status": "LEGACY_V550J_PRODUCER_DOES_NOT_DECLARE_ARTIFACT_FILE_SHA256",
+        "producer_artifact_hash_contract_status": "PRODUCER_DECLARED_ARTIFACT_FILE_SHA256_VERIFIED",
         "tables": table_report,
     }
 
@@ -698,6 +835,110 @@ def _clear_v551j_stage_outputs(output_dirs: dict[str, Path]) -> None:
     if sidecar_dir.exists():
         shutil.rmtree(sidecar_dir)
     sidecar_dir.mkdir(parents=True, exist_ok=True)
+
+
+def _write_v550j_typed_stop(
+    *,
+    args: argparse.Namespace,
+    output_dirs: dict[str, Path],
+    surface_report: dict[str, Any],
+    started: float,
+) -> int:
+    upstream_evidence = surface_report["producer_evidence_status"]
+    upstream_permission = surface_report["producer_downstream_permission_status"]
+    if upstream_evidence in {"VALID_EMPTY", "NOT_APPLICABLE"}:
+        final_status = "VALID_EMPTY_V551J_NO_V550J_JOINT_EVIDENCE"
+        evidence_status = "VALID_EMPTY"
+        downstream_permission_status = "NOT_APPLICABLE"
+        exit_code = 0
+        blockers: list[str] = []
+    else:
+        final_status = "BLOCKED_V550J_APPLICABLE_UNRESOLVED"
+        evidence_status = "APPLICABLE_UNRESOLVED"
+        downstream_permission_status = "DENY"
+        exit_code = 1 if args.strict else 0
+        blockers = ["v550j_applicable_but_unresolved"]
+    readiness = {
+        "contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+        "run_id": args.run_id,
+        "schema_version": "v2.2.3",
+        "compiler_version": V551J_COMPILER_VERSION,
+        "final_status": final_status,
+        "run_integrity_status": "PASS",
+        "evidence_status": evidence_status,
+        "downstream_permission_status": downstream_permission_status,
+        "candidate_packet_count": 0,
+        "certified_packet_count": 0,
+        "review_required_packet_count": 0,
+        "blocked_packet_count": 0,
+        "ready_for_review": upstream_evidence == "APPLICABLE_UNRESOLVED",
+        "ready_for_v552j_joint_evidence": False,
+        "ready_for_v553": False,
+        "v550j_upstream_contract_status": surface_report.get("producer_state_detail"),
+        "blockers_json": json.dumps(blockers, sort_keys=True),
+        "created_at": utc_now(),
+    }
+    provenance = {
+        "run_id": args.run_id,
+        "schema_version": "v2.2.3",
+        "compiler_version": V551J_COMPILER_VERSION,
+        "row_counts": {
+            "candidate": 0,
+            "component": 0,
+            "certified": 0,
+            "review_surface": 0,
+        },
+        "final_status": final_status,
+        "v550j_producer_surface_report": surface_report,
+        "elapsed_seconds": round(monotonic() - started, 3),
+        "output_artifacts": {},
+    }
+    write_json_artifact(output_dirs["manifest"] / "v550j_upstream_contract_report.json", surface_report)
+    write_json_artifact(output_dirs["manifest"] / "v551j_input_contract_report.json", {
+        "run_id": args.run_id,
+        "schema_version": "v2.2.3",
+        "compiler_version": V551J_COMPILER_VERSION,
+        "required_inputs_status": "PASS",
+        "v550j_input_contract_status": final_status,
+        "v550j_producer_surface_report": surface_report,
+    })
+    write_json_artifact(output_dirs["manifest"] / "v551j_packet_contract_validation_report.json", {
+        "run_id": args.run_id,
+        "candidate_contract_valid": upstream_evidence in {"VALID_EMPTY", "NOT_APPLICABLE"},
+        "component_contract_valid": upstream_evidence in {"VALID_EMPTY", "NOT_APPLICABLE"},
+        "issue_count": len(blockers),
+        "issues_json": json.dumps(blockers, sort_keys=True),
+        "validation_status": "valid_empty_upstream" if not blockers else "blocked_upstream_unresolved",
+    })
+    write_json_artifact(output_dirs["manifest"] / "v551j_readiness_report.json", readiness)
+    write_json_artifact(output_dirs["manifest"] / "v551j_input_provenance_manifest.json", provenance)
+    write_json_artifact(output_dirs["manifest"] / "manifest.json", {
+        "contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+        "boundary_contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+        "producer_run_id": args.run_id,
+        "run_id": args.run_id,
+        "source": surface_report.get("source", ""),
+        "wave": surface_report.get("wave", ""),
+        "canonical_wave": surface_report.get("wave", ""),
+        "country_code": "",
+        "shard_id": surface_report.get("shard_id", ""),
+        "schema_version": "v2.2.3",
+        "compiler_version": V551J_COMPILER_VERSION,
+        "final_status": final_status,
+        "run_integrity_status": "PASS",
+        "evidence_status": evidence_status,
+        "downstream_permission_status": downstream_permission_status,
+        "ready_for_v552j_joint_evidence": False,
+        "ready_for_v553": False,
+        "row_counts": provenance["row_counts"],
+        "artifacts": [],
+        "output_artifacts": {},
+        "v550j_upstream_manifest_sha256": surface_report.get("manifest_sha256"),
+        "v550j_upstream_hash_contract_status": surface_report.get("producer_artifact_hash_contract_status"),
+        "created_at": utc_now(),
+    })
+    print(final_status)
+    return exit_code
 
 
 def _write_v551_typed_stop(
@@ -886,7 +1127,12 @@ def main() -> int:
         "v550j_readiness_report_path": args.v550j_readiness_report_path,
         "registry_path": args.registry_path,
     }
-    missing_required = [name for name, path in required_paths.items() if not path or not Path(path).exists()]
+    v550j_required_paths = {
+        name: path
+        for name, path in required_paths.items()
+        if name.startswith("v550j_")
+    }
+    missing_required = [name for name, path in v550j_required_paths.items() if not path or not Path(path).exists()]
     if missing_required:
         write_json_artifact(output_dirs["manifest"] / "v551j_readiness_report.json", {
             "contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
@@ -928,6 +1174,41 @@ def main() -> int:
             "joint_pattern_relation_signature": (args.v550j_relation_signature_path, relation_signature),
         },
     )
+    if (
+        v550j_surface_report["producer_evidence_status"] != "PRESENT"
+        or v550j_surface_report["producer_downstream_permission_status"] != "ALLOW"
+    ):
+        return _write_v550j_typed_stop(
+            args=args,
+            output_dirs=output_dirs,
+            surface_report=v550j_surface_report,
+            started=started,
+        )
+
+    remaining_required = {
+        name: path
+        for name, path in required_paths.items()
+        if not name.startswith("v550j_")
+    }
+    missing_required = [name for name, path in remaining_required.items() if not path or not Path(path).exists()]
+    if missing_required:
+        write_json_artifact(output_dirs["manifest"] / "v551j_readiness_report.json", {
+            "contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+            "run_id": args.run_id,
+            "schema_version": "v2.2.3",
+            "compiler_version": V551J_COMPILER_VERSION,
+            "final_status": "BLOCKED_V551J_MISSING_REQUIRED_INPUTS",
+            "run_integrity_status": "FAIL",
+            "evidence_status": "APPLICABLE_UNRESOLVED",
+            "downstream_permission_status": "DENY",
+            "blockers_json": missing_required,
+            "ready_for_v552j_joint_evidence": False,
+            "ready_for_v553": False,
+            "created_at": utc_now(),
+        })
+        print("BLOCKED_V551J_MISSING_REQUIRED_INPUTS")
+        return 1
+
     v551_bundle = _verify_v551_v3_bundle(
         run_id=args.run_id,
         manifest_path=v551_manifest_path,
@@ -1088,7 +1369,7 @@ def main() -> int:
     outputs["readiness_report"]["v551_upstream_evidence_status"] = v551_bundle["report"]["effective_evidence_status"]
     outputs["readiness_report"]["v551_upstream_downstream_permission_status"] = v551_bundle["report"]["effective_downstream_permission_status"]
     outputs["readiness_report"]["v551_upstream_manifest_sha256"] = v551_bundle["report"]["producer_manifest_sha256"]
-    outputs["readiness_report"]["v550j_producer_surface_status"] = "VERIFIED_SCOPE_AND_DECLARED_PATHS"
+    outputs["readiness_report"]["v550j_producer_surface_status"] = "VERIFIED_TYPED_PRODUCER_BOUNDARY"
     validation_issues = []
     if str(outputs["readiness_report"].get("registry_contract_status")) != "MATCHED_GOVERNED_REGISTRY_HASH":
         validation_issues.append("registry_hash_mismatch")
@@ -1329,6 +1610,12 @@ def main() -> int:
         "v551_upstream_evidence_status": v551_bundle["report"]["effective_evidence_status"],
         "v551_upstream_downstream_permission_status": v551_bundle["report"]["effective_downstream_permission_status"],
         "v551_upstream_manifest_sha256": v551_bundle["report"]["producer_manifest_sha256"],
+        "v550j_upstream_contract_version": v550j_surface_report["producer_contract_version"],
+        "v550j_upstream_schema_version": v550j_surface_report["producer_schema_version"],
+        "v550j_upstream_compiler_version": v550j_surface_report["producer_compiler_version"],
+        "v550j_upstream_run_integrity_status": v550j_surface_report["producer_run_integrity_status"],
+        "v550j_upstream_evidence_status": v550j_surface_report["producer_evidence_status"],
+        "v550j_upstream_downstream_permission_status": v550j_surface_report["producer_downstream_permission_status"],
         "v550j_upstream_manifest_sha256": v550j_surface_report["manifest_sha256"],
         "v550j_upstream_hash_contract_status": v550j_surface_report["producer_artifact_hash_contract_status"],
         "created_at": utc_now(),
