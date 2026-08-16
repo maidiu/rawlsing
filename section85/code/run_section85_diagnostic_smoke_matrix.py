@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""Typed-state entrypoint for the bounded Section 85 diagnostic smoke matrix.
+"""G4 exact-producer entrypoint for the bounded Section 85 diagnostic matrix.
 
-The pre-G2 diagnostic implementation is preserved byte-for-byte in
-`_legacy_run_section85_diagnostic_smoke_matrix.py` so its inventory, privacy,
-packaging and database-diagnostic behavior does not drift during W01-B. This
-entrypoint replaces only Section85's obsolete producer-consumer assumptions:
-V551 uses the frozen G2 v3.0 CLI/manifest/artifact contract, while V551J and
-V552J use the shared typed boundary and fail closed until their final producer
-hooks merge.
+The pre-G2 diagnostic implementation remains delegated to
+`_legacy_run_section85_diagnostic_smoke_matrix.py` for inventory, privacy,
+packaging and database diagnostics.  Section85 overrides only its owned
+producer-consumer boundary: V551 stays on the resolved v3 contract, while
+V551J and V552J now bind the exact G4 producer versions, scope identity,
+manifest-declared canonical Parquet bytes and serialized SHA-256 values.
 """
 from __future__ import annotations
 
@@ -21,7 +20,14 @@ CODE_DIR = Path(__file__).resolve().parent
 if str(CODE_DIR) not in sys.path:
     sys.path.insert(0, str(CODE_DIR))
 
-from section85_typed_state import typed_stage_gate, verify_v551_artifact_files  # noqa: E402
+from section85_exact_producer_state import (  # noqa: E402
+    V551J_COMPILER_VERSION,
+    V551J_SCHEMA_VERSION,
+    V552J_COMPILER_VERSION,
+    V552J_SCHEMA_VERSION,
+    exact_producer_gate,
+)
+from section85_typed_state import verify_v551_artifact_files  # noqa: E402
 
 LEGACY_IMPLEMENTATION = CODE_DIR / "_legacy_run_section85_diagnostic_smoke_matrix.py"
 
@@ -36,17 +42,30 @@ def _load_json(path: Path) -> dict[str, Any]:
     return payload if isinstance(payload, dict) else {}
 
 
-def _typed_operation_summary(payload: dict[str, Any], *, stage: str) -> dict[str, Any]:
-    typed = typed_stage_gate(payload, stage=stage)
-    passed = bool(typed["typed_contract_valid"] and typed["integrity_pass"] and typed["operation_permitted"])
-    if not typed["typed_contract_valid"]:
-        reason = typed.get("failure_reason", f"{stage}_typed_contract_invalid")
-    elif not typed["integrity_pass"]:
+def _exact_operation_summary(
+    manifest_path: str | Path,
+    *,
+    stage: str,
+    expected_identity: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    typed = exact_producer_gate(
+        manifest_path,
+        stage=stage,
+        expected_identity=expected_identity,
+    )
+    passed = bool(
+        typed.get("typed_contract_valid")
+        and typed.get("integrity_pass")
+        and typed.get("operation_permitted")
+    )
+    if not typed.get("typed_contract_valid"):
+        reason = typed.get("failure_reason", f"{stage}_exact_producer_contract_invalid")
+    elif not typed.get("integrity_pass"):
         reason = f"{stage}_run_integrity_failed"
-    elif not typed["operation_permitted"]:
+    elif not typed.get("operation_permitted"):
         reason = (
             f"{stage}_evidence_permission:"
-            f"{typed['evidence_status']}/{typed['downstream_permission_status']}"
+            f"{typed.get('evidence_status', '')}/{typed.get('downstream_permission_status', '')}"
         )
     else:
         reason = ""
@@ -54,7 +73,7 @@ def _typed_operation_summary(payload: dict[str, Any], *, stage: str) -> dict[str
 
 
 def summarize_v551_functional_gate(path: str | Path) -> dict[str, Any]:
-    """Section85 V551 v3.0 gate: bytes/integrity first, typed evidence second."""
+    """Preserve the already-resolved Section85 V551 v3.0 boundary."""
     manifest_path = Path(path)
     payload = _load_json(manifest_path)
     if not payload:
@@ -90,6 +109,7 @@ def summarize_v551_functional_gate(path: str | Path) -> dict[str, Any]:
 
     verified_atoms = contract["verified_artifacts"]["relation_evidence_atoms"]
     passed = bool(contract["integrity_pass"] and contract["operation_permitted"])
+    reason = ""
     if not contract["integrity_pass"]:
         reason = "v551_run_integrity_failed"
     elif not contract["operation_permitted"]:
@@ -97,13 +117,12 @@ def summarize_v551_functional_gate(path: str | Path) -> dict[str, Any]:
             "v551_evidence_permission:"
             f"{contract['evidence_status']}/{contract['downstream_permission_status']}"
         )
-    else:
-        reason = ""
     return {
         "manifest_path": str(manifest_path),
         "manifest_exists": True,
         "contract_version": contract["contract_version"],
         "schema_version": contract["schema_version"],
+        "compiler_version": contract.get("compiler_version", ""),
         "run_integrity_status": contract["run_integrity_status"],
         "evidence_status": contract["evidence_status"],
         "downstream_permission_status": contract["downstream_permission_status"],
@@ -118,26 +137,31 @@ def summarize_v551_functional_gate(path: str | Path) -> dict[str, Any]:
     }
 
 
-def current_v551j_gate(v551j_root: Path) -> dict[str, Any]:
-    """Consume only typed V551J producer state as executable acceptance.
-
-    Legacy counts and validation reports remain diagnostic context. They cannot
-    establish run integrity or downstream permission. Until W03-B merges a
-    rawlsing_pipeline_boundary_v1 V551J manifest, this gate fails closed with an
-    explicit G3B hook requirement.
-    """
-    manifest = _load_json(v551j_root / "manifest/manifest.json")
-    readiness = _load_json(v551j_root / "manifest/v551j_readiness_report.json")
-    validation = _load_json(v551j_root / "manifest/v551j_packet_contract_validation_report.json")
-    typed = _typed_operation_summary(manifest, stage="v551j")
-
-    candidate_count = readiness.get("candidate_packet_count", manifest.get("row_counts", {}).get("candidate", 0))
-    component_count = readiness.get("component_row_count", manifest.get("row_counts", {}).get("component", 0))
-    certified_count = readiness.get("certified_packet_count", manifest.get("row_counts", {}).get("certified", 0))
+def current_v551j_gate(
+    v551j_root: Path,
+    *,
+    expected_identity: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Exact V551J v2.2.3 producer gate; legacy reports are diagnostics only."""
+    manifest_path = v551j_root / "manifest" / "manifest.json"
+    readiness = _load_json(v551j_root / "manifest" / "v551j_readiness_report.json")
+    validation = _load_json(v551j_root / "manifest" / "v551j_packet_contract_validation_report.json")
+    typed = _exact_operation_summary(
+        manifest_path,
+        stage="v551j",
+        expected_identity=expected_identity,
+    )
+    manifest = _load_json(manifest_path)
+    row_counts = manifest.get("row_counts", {}) if isinstance(manifest.get("row_counts"), dict) else {}
+    candidate_count = readiness.get("candidate_packet_count", row_counts.get("candidate", 0))
+    component_count = readiness.get("component_row_count", row_counts.get("component", 0))
+    certified_count = readiness.get("certified_packet_count", row_counts.get("certified", 0))
     issues_json = validation.get("issues_json", "[]")
     return {
         **typed,
-        "hook_status": "ACTIVE_TYPED_PRODUCER_CONTRACT" if typed["typed_contract_valid"] else "AWAITING_G3B_PRODUCER_HOOK",
+        "hook_status": "ACTIVE_G4_EXACT_PRODUCER_CONTRACT",
+        "expected_schema_version": V551J_SCHEMA_VERSION,
+        "expected_compiler_version": V551J_COMPILER_VERSION,
         "candidate_packet_count": candidate_count,
         "component_row_count": component_count,
         "certified_packet_count": certified_count,
@@ -147,8 +171,14 @@ def current_v551j_gate(v551j_root: Path) -> dict[str, Any]:
         "issues_json": issues_json,
         "legacy_diagnostics": {
             "final_status": readiness.get("final_status") or manifest.get("final_status", ""),
-            "candidate_contract_valid": readiness.get("candidate_contract_valid", validation.get("candidate_contract_valid", False)),
-            "component_contract_valid": readiness.get("component_contract_valid", validation.get("component_contract_valid", False)),
+            "ready_for_review": readiness.get("ready_for_review"),
+            "ready_for_v552j_joint_evidence": readiness.get("ready_for_v552j_joint_evidence"),
+            "candidate_contract_valid": readiness.get(
+                "candidate_contract_valid", validation.get("candidate_contract_valid", False)
+            ),
+            "component_contract_valid": readiness.get(
+                "component_contract_valid", validation.get("component_contract_valid", False)
+            ),
             "issues_json": issues_json,
         },
     }
@@ -158,24 +188,47 @@ def summarize_v551j_functional_gate(root: str | Path) -> dict[str, Any]:
     return current_v551j_gate(Path(root))
 
 
-def summarize_v552j_functional_gate(path: str | Path) -> dict[str, Any]:
-    readiness_path = Path(path)
-    typed = _typed_operation_summary(_load_json(readiness_path), stage="v552j")
+def _v552j_manifest_from_gate_path(path: str | Path) -> Path:
+    supplied = Path(path)
+    if supplied.name == "manifest.json" and supplied.parent.name != "manifest":
+        return supplied
+    if supplied.parent.name == "manifest":
+        return supplied.parent.parent / "manifest.json"
+    if supplied.is_dir():
+        return supplied / "manifest.json"
+    return supplied.parent / "manifest.json"
+
+
+def summarize_v552j_functional_gate(
+    path: str | Path,
+    *,
+    expected_identity: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    manifest_path = _v552j_manifest_from_gate_path(path)
+    typed = _exact_operation_summary(
+        manifest_path,
+        stage="v552j",
+        expected_identity=expected_identity,
+    )
     return {
         **typed,
-        "readiness_path": str(readiness_path),
-        "readiness_exists": readiness_path.exists(),
+        "manifest_path": str(manifest_path),
+        "manifest_exists": manifest_path.exists(),
         "status": (
-            f"{typed['run_integrity_status']}/"
-            f"{typed['evidence_status']}/"
-            f"{typed['downstream_permission_status']}"
+            f"{typed.get('run_integrity_status', '')}/"
+            f"{typed.get('evidence_status', '')}/"
+            f"{typed.get('downstream_permission_status', '')}"
         ),
-        "hook_status": "ACTIVE_TYPED_PRODUCER_CONTRACT" if typed["typed_contract_valid"] else "AWAITING_G4_PRODUCER_HOOK",
+        "hook_status": "ACTIVE_G4_EXACT_PRODUCER_CONTRACT",
+        "expected_schema_version": V552J_SCHEMA_VERSION,
+        "expected_compiler_version": V552J_COMPILER_VERSION,
+        "observed_zero_count": typed.get("observed_zero_count", 0),
+        "measurement_state": typed.get("measurement_state", typed.get("evidence_status", "")),
     }
 
 
 def _normalize_typed_wave_result(result: dict[str, Any]) -> dict[str, Any]:
-    """Prevent typed no-evidence states from being reported as run/compiler failure."""
+    """Keep producer integrity distinct from evidence-operation permission."""
     failure_stage = str(result.get("failure_stage") or "")
     check_name = {
         "v551_gate": "v551",
@@ -201,7 +254,7 @@ def _normalize_typed_wave_result(result: dict[str, Any]) -> dict[str, Any]:
 
 
 def _patch_base_module(base):
-    """Patch only the module instance loaded by Section85; never mutate W05 source."""
+    """Patch only the module instance loaded by Section85; W05 source is untouched."""
     impl = getattr(base, "_impl", None)
     if impl is None:
         raise RuntimeError("SECTION85_BASE_SMOKE_IMPLEMENTATION_MODULE_MISSING")
@@ -214,7 +267,8 @@ def _patch_base_module(base):
         output_root: str,
         config,
     ) -> dict[str, Any]:
-        del quc_path, response_map_path  # V551 v3.0 consumes the frozen bridge contract directly.
+        # Preserved W01-B adapter.  This is not expanded into W05-final work.
+        del quc_path, response_map_path
         cmd = [
             sys.executable,
             impl._abs("data/ddm_build_copy/compile_v551_relation_evidence_atoms.py", config),
