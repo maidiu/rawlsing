@@ -11,6 +11,7 @@ from data.ddm_build_copy.ddm_v550_response_semantics_authority import (
     BINDING_PATH,
     EXPECTED_ACTIVE_BINDINGS,
     EXPECTED_DISTINCT_CONTRACTS,
+    assert_v551_applicable_contract_compatibility,
     bind_governed_response_semantics_contracts,
     load_response_semantics_contract_bindings,
     load_v551_registry_key_set,
@@ -136,6 +137,27 @@ def test_unknown_or_incomplete_governed_semantics_fail_closed():
     assert bound["manual_review_reason"].str.contains(
         "governed_response_semantics_substantive_count_mismatch"
     ).all()
+
+
+def test_prebuilt_exact_governed_identity_is_preserved():
+    frame = _rows("dememp", 4, special=1)
+    frame["response_semantics_contract_hash"] = AFRO_R1["dememp"]
+    frame["response_semantics_authority_status"] = "CERTIFIED"
+
+    bound, summary = bind_governed_response_semantics_contracts(frame, live_build=False)
+
+    assert summary["preserved_groups"] == 1
+    assert summary["unresolved_groups"] == 0
+    assert set(bound["response_semantics_contract_hash"]) == {AFRO_R1["dememp"]}
+
+
+def test_bound_applicable_rows_pass_mechanical_v551_consumer_key_check():
+    frame = pd.concat([_rows("dememp", 4), _rows("pfeerd", 5)], ignore_index=True)
+    bound, summary = bind_governed_response_semantics_contracts(frame, live_build=True)
+    assert summary["unresolved_groups"] == 0
+
+    result = assert_v551_applicable_contract_compatibility(bound)
+    assert result == {"applicable_groups": 2, "unresolved_groups": 0}
 
 
 def test_prebuilt_conflicting_identity_fails_closed_instead_of_family_fallback():
