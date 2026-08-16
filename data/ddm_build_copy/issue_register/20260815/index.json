@@ -8,6 +8,7 @@
   "procedure_required": true,
   "worker_plan_path": "data/ddm_build_copy/issue_register/20260815/WORKER_PLAN.json",
   "worker_guide_path": "data/ddm_build_copy/issue_register/20260815/WORKER_GUIDE.md",
+  "g0_launch_prompts_path": "data/ddm_build_copy/issue_register/20260815/G0_LAUNCH_PROMPTS.md",
   "worker_plan_required_for_parallel_execution": true,
   "worker_plan_sha256": "dab81301cce9c7cb800e918d784ad1e1dd78d54f137584eb5293d3658c8bfb21",
   "integration_branch": "agent/v550-v552j-repair-integration",
@@ -36,7 +37,8 @@
     "promoted_or_superseded_deferred": 1,
     "effective_deferred": 5,
     "closed_findings": 7,
-    "primary_worker_owners_plus_vozhd": 7
+    "primary_worker_owners_plus_vozhd": 7,
+    "g0_worker_branches": 5
   },
   "superseded_mandatory_issue_ids": {
     "V550-004": "False current defect; August runtime loader is already cached. See CLOSED-007."
@@ -52,6 +54,7 @@
     "Apply superseded_mandatory_issue_ids and superseded_deferred_issue_ids before computing active work.",
     "Read closed.json before implementation so disproven findings are not reintroduced.",
     "For parallel execution, read WORKER_PLAN.json and WORKER_GUIDE.md before claiming or editing any issue.",
+    "For the first released cohort, use G0_LAUNCH_PROMPTS.md; do not launch later phases before their gate.",
     "Workers may act only on their assigned primary issue IDs and write domains unless Vozhd explicitly reassigns ownership.",
     "Original shards remain immutable evidence; worker plan/guide schedule their execution but do not alter issue meaning."
   ],
@@ -59,6 +62,7 @@
     "PROCEDURE.md": "required execution procedure",
     "WORKER_PLAN.json": "required machine-readable dependency/ownership plan for parallel execution",
     "WORKER_GUIDE.md": "required human execution/launch guide for parallel execution",
+    "G0_LAUNCH_PROMPTS.md": "copy-paste launch prompts for currently released G0 workers",
     "issues_src.json": 3,
     "issues_src_2.json": 2,
     "issues_v550.json": 6,
