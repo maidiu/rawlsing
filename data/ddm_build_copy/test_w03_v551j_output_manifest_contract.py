@@ -23,3 +23,10 @@ def test_v551j_output_manifest_carries_shared_typed_boundary_and_file_hashes() -
     assert '"downstream_permission_status": outputs["readiness_report"].get("downstream_permission_status")' in source
     assert '"artifact_file_sha256": artifact_hash' in source
     assert 'raise BoundaryContractError("PARQUET_CANONICAL_OUTPUT_REQUIRED")' in source
+
+
+def test_v551j_consumes_verified_producer_declared_v550j_hashes() -> None:
+    source = MODULE.read_text(encoding="utf-8")
+    assert "PRODUCER_DECLARED_ARTIFACT_FILE_SHA256_VERIFIED" in source
+    assert "V550J_TABLE_ARTIFACT_FILE_SHA256_MISMATCH" in source
+    assert "LEGACY_V550J_PRODUCER_DOES_NOT_DECLARE_ARTIFACT_FILE_SHA256" not in source
