@@ -1,6 +1,6 @@
 # Section 85 Binding Authority
 
-This directory now contains the canonical binding surface for bounded Section 85
+This directory contains the canonical binding surface for bounded Section 85
 diagnostic orchestration. Runners and gates should read these files before
 assuming database relation names, source aliases, stage output locations, or
 legacy artifact names.
@@ -9,13 +9,30 @@ legacy artifact names.
 
 - `section85_binding_authority.json`
   Governing DB relation bindings, source-family aliases, stage order,
-  V551J compatibility aliases, and privacy rules.
+  V551J compatibility aliases, privacy rules, and the mandatory repository-
+  relative path rebase for the retained 2026-08-04 artifact ledger.
 
 - `section85_stage_artifact_authority.csv`
   Per-scope, per-stage artifact references for the nine-family 20-variable
-  diagnostic surface. Rows include the canonical reference path, the latest
-  observed path when available from the 2026-08-04 rerun evidence, and SHA-256
-  for observed artifacts.
+  diagnostic surface. Rows include the reference path recorded by the original
+  Section 85 package, the latest observed path when available from the
+  2026-08-04 rerun evidence, and SHA-256 for observed artifacts.
+
+## Repository-relative path rule
+
+The curated source transfer moved this package to `section85/`. The artifact
+ledger is retained as historical evidence, so some rows still carry the former
+package prefix and historical Desktop observation paths. Neither is executable
+authority.
+
+Before a ledger `canonical_reference` is used as a path, consumers must apply
+`canonical_reference_rebase` from `section85_binding_authority.json`. The exact
+legacy package prefix maps to `section85/`; if a legacy prefix survives
+normalization, execution must fail closed. `observed_latest_path` is provenance
+only and must never be used to discover current artifacts.
+
+Active Section 85 code, tests, and execution instructions use repository-relative
+`section85/`, `data/ddm_build_copy/`, and `data/ddm_registries/` paths only.
 
 ## Mandatory Database Bindings
 
