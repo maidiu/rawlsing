@@ -1,0 +1,75 @@
+{
+  "schema": "section85_typed_stage_contract_v2",
+  "contract_id": "SECTION85_TYPED_STAGE_CONTRACT_R2_20260816",
+  "shared_boundary_contract_version": "rawlsing_pipeline_boundary_v1",
+  "historical_artifact_ledger_role": "PROVENANCE_ONLY_NOT_READINESS_AUTHORITY",
+  "global_rules": {
+    "json_object_presence_is_readiness": false,
+    "row_count_nonzero_is_run_integrity": false,
+    "legacy_ready_booleans_are_authoritative": false,
+    "required_machine_output_format": "parquet",
+    "producer_boundary": [
+      "supported typed producer contract version",
+      "run_integrity_status=PASS",
+      "exact producer run and source/wave/country-or-shard identity",
+      "producer-declared artifact_file_sha256 for every consumed canonical artifact",
+      "artifact readability and schema validity"
+    ]
+  },
+  "stage_contracts": {
+    "v551": {
+      "status": "ACTIVE_G2_FROZEN",
+      "producer_schema_version": "v3.0",
+      "producer_boundary_contract_version": "rawlsing_pipeline_boundary_v1",
+      "canonical_artifacts": [
+        "directional_candidate_adjudication.parquet",
+        "relation_evidence_atoms.parquet",
+        "directional_distribution_coverage.parquet"
+      ],
+      "atom_row_count_is_integrity_gate": false,
+      "typed_evidence_rules": {
+        "PRESENT": "Run integrity may PASS and evidence-dependent downstream permission may ALLOW.",
+        "NOT_APPLICABLE": "Run integrity may PASS with zero atoms; evidence-dependent operation is not applicable.",
+        "APPLICABLE_UNRESOLVED": "Run integrity may PASS with zero promotable atoms; repair debt remains explicit and downstream evidence-dependent permission is DENY."
+      },
+      "section85_acceptance": "Validate producer contract, identity, canonical artifact declarations/file hashes and typed state. Never require relation_evidence_atoms row_count > 0 for integrity."
+    },
+    "v551j": {
+      "status": "AWAITING_G3B_PRODUCER_HOOK",
+      "required_hook": [
+        "producer document using rawlsing_pipeline_boundary_v1",
+        "exact final V551J schema/contract version",
+        "run_integrity_status, evidence_status and downstream_permission_status",
+        "producer run/source/wave/country-or-shard identity",
+        "producer-declared artifact_file_sha256 values for canonical V551J artifacts"
+      ],
+      "forbidden_interim_authority": [
+        "ready_for_review boolean",
+        "ready_for_v552j_joint_evidence boolean",
+        "certified packet row count > 0",
+        "review row count > 0"
+      ],
+      "no_guessed_producer_semantics": true
+    },
+    "v552": {
+      "status": "AWAITING_G3A_PRODUCER_HOOK",
+      "required_hook": [
+        "producer document using rawlsing_pipeline_boundary_v1",
+        "exact final V552 schema/contract version and producer artifact inventory"
+      ],
+      "no_guessed_producer_semantics": true
+    },
+    "v552j": {
+      "status": "AWAITING_G4_PRODUCER_HOOK",
+      "required_hook": [
+        "producer document using rawlsing_pipeline_boundary_v1",
+        "exact final V552J schema/contract version",
+        "run_integrity_status, evidence_status and downstream_permission_status",
+        "producer run/source/wave/country-or-shard identity",
+        "producer-declared artifact_file_sha256 values for canonical V552J artifacts"
+      ],
+      "nonempty_readiness_document_is_readiness": false,
+      "no_guessed_producer_semantics": true
+    }
+  }
+}
