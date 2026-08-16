@@ -18,6 +18,11 @@
     "v553_v558_findings": "Record immediately but keep DEFERRED until the V553->V558 vertical/horizontal phase begins.",
     "deferred_findings_do_not_block_current_smokes": true
   },
+  "current_smoke_status": {
+    "known_open_static_blockers_through_v552j": 0,
+    "next_action": "Run respondent-backed V550->V552J smokes and add any newly observed runtime defects to this register.",
+    "runtime_pass_not_yet_claimed": true
+  },
   "issues": [
     {
       "issue_id": "POSTG5-001",
@@ -33,21 +38,25 @@
       "issue_id": "POSTG5-002",
       "boundary": "V550->V551",
       "title": "raw response direction is elided before V551 signed projection",
-      "status": "OPEN_PROVEN",
+      "status": "RESOLVED_MERGED",
       "severity": "BLOCKING",
-      "evidence": "The V550 bridge explicitly publishes response_direction as blank/NOT_PROJECTED_V550, while V551 _raw_direction() consumes response_direction and makes a candidate NONPROMOTABLE_REPAIRABLE when it is blank.",
-      "required_resolution": "Separate raw response-category direction authority from V551-owned signed projection. V550 must transmit the authoritative raw directional input without computing V551 signed side/magnitude; do not weaken V551.",
-      "blocks_next_smoke": true
+      "evidence": "The V550 bridge previously blanked response_direction even when matched governed response-option semantics supplied an authoritative raw category direction; V551 then rejected otherwise applicable candidates for missing_certified_response_direction.",
+      "resolution": "PR #25 preserves already-governed raw response-category direction only for matched non-special direct-response rows, while leaving V551 sole owner of signed side/magnitude/projection.",
+      "merge_sha": "b4ee13cd14450a1fe83930cab8e4e3ceee453a74",
+      "blocks_next_smoke": false,
+      "validation_note": "Worker reported 25 focused tests passed; no respondent-backed canary was executed, and no repository workflow run was attached to the reviewed head SHA."
     },
     {
       "issue_id": "POSTG5-003",
       "boundary": "V550 response semantics->V551 scale authority",
       "title": "response_semantics_contract_hash identity grain differs on the live-built response-map path",
-      "status": "OPEN_PROVEN_LIVE_BUILD_PATH",
+      "status": "RESOLVED_MERGED",
       "severity": "BLOCKING",
-      "evidence": "ddm_v550_response_options.response_semantics_contract_hash hashes an entire response-map frame and build_response_option_map stamps that one hash onto every row, while V551 scale authority performs exact lookup against 145 distinct response_semantics_contract_hash registry identities.",
-      "required_resolution": "Bind the canonical V550 response-semantics producer to the same exact contract identities used by the frozen V551 scale registry. Verify the actual smoke/canary response-map hashes against the registry before rerunning.",
-      "blocks_next_smoke": true
+      "evidence": "The old live V550 builder used a whole-map digest as response_semantics_contract_hash, while V551 exact-matches row/question-level governed packet identities against a frozen 145-key registry.",
+      "resolution": "PR #26 separates map content identity from semantic-contract identity and binds 236 certified active question bindings to the exact inherited 145 frozen V551 contract keys, failing closed on unresolved/conflicting live semantics.",
+      "merge_sha": "395923ee9b1922452c3e54cb80598d5f60d9b92e",
+      "blocks_next_smoke": false,
+      "validation_note": "Worker reported a focused contract harness of 13 passed / 1 skipped (Parquet engine unavailable); no respondent-backed Lesotho smoke was claimed. Afrobarometer R1 has six explicit certified contract bindings for next-smoke preflight."
     },
     {
       "issue_id": "POSTG5-004",
