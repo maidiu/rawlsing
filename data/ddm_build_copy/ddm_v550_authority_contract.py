@@ -17,6 +17,16 @@ MISSING = "MISSING"
 CONFLICT = "CONFLICT"
 NOT_APPLICABLE = "NOT_APPLICABLE"
 
+APPLICABLE_BY_AUTHORITY = "APPLICABLE_BY_AUTHORITY"
+NOT_APPLICABLE_BY_AUTHORITY = "NOT_APPLICABLE_BY_AUTHORITY"
+APPLICABILITY_UNRESOLVED = "APPLICABILITY_UNRESOLVED"
+DIRECTIONAL_APPLICABILITY_STATUSES = {
+    APPLICABLE_BY_AUTHORITY,
+    NOT_APPLICABLE_BY_AUTHORITY,
+    APPLICABILITY_UNRESOLVED,
+}
+CURRENT_DIRECTIONAL_ATOM_TOPOLOGIES = {"scalar", "binary_contrast"}
+
 AUTHORITY_STATUSES = {
     CERTIFIED,
     REVIEW_REQUIRED,
@@ -132,17 +142,44 @@ def response_semantics_authority_status(row: Mapping[str, Any]) -> str:
 
 
 def directionality_authority_status(row: Mapping[str, Any]) -> str:
-    explicit = normalize_authority_status(
-        row.get("directionality_authority_status")
-    )
-    if explicit != MISSING:
+    """Return only governing directionality authority, never row-level certification.
+
+    ``directional_certification_status`` is a promotability/evidence state.  It
+    may be inferred from a response row and therefore cannot be promoted into
+    the immutable applicability denominator.
+    """
+    return normalize_authority_status(row.get("directionality_authority_status"))
+
+
+def derive_directional_applicability_status(row: Mapping[str, Any]) -> str:
+    """Derive the immutable current-directional applicability denominator.
+
+    Applicability is defined only by governing question/directionality
+    authority plus the question's semantic role/topology.  Response-map
+    success, response intensity, row-level directional certification,
+    structural completeness, support, and review/promotability gates are
+    deliberately excluded.
+    """
+    explicit = _clean(row.get("directional_applicability_status")).upper()
+    if explicit in DIRECTIONAL_APPLICABILITY_STATUSES:
         return explicit
-    directional_status = normalize_authority_status(
-        row.get("directional_certification_status")
-    )
-    if directional_status != MISSING:
-        return directional_status
-    return MISSING
+
+    role = _clean(row.get("semantic_role")).upper()
+    topology = _clean(row.get("response_topology")).lower()
+    authority_status = directionality_authority_status(row)
+
+    if authority_status == NOT_APPLICABLE:
+        return NOT_APPLICABLE_BY_AUTHORITY
+    if role and role != "RELATION_EVIDENCE":
+        return NOT_APPLICABLE_BY_AUTHORITY
+    if topology and topology not in CURRENT_DIRECTIONAL_ATOM_TOPOLOGIES:
+        return NOT_APPLICABLE_BY_AUTHORITY
+
+    if not role or not topology:
+        return APPLICABILITY_UNRESOLVED
+    if authority_status == CERTIFIED:
+        return APPLICABLE_BY_AUTHORITY
+    return APPLICABILITY_UNRESOLVED
 
 
 def structural_mapping_status(row: Mapping[str, Any]) -> str:
@@ -196,6 +233,7 @@ def derive_question_use_eligibility(row: Mapping[str, Any]) -> dict[str, Any]:
     semantic_status = semantic_role_authority_status(row)
     response_status = response_semantics_authority_status(row)
     direction_status = directionality_authority_status(row)
+    applicability_status = derive_directional_applicability_status(row)
     mapping_status = structural_mapping_status(row)
     review_required = any(
         _bool(row.get(field))
@@ -218,21 +256,16 @@ def derive_question_use_eligibility(row: Mapping[str, Any]) -> dict[str, Any]:
     context = role == "STRUCTURAL_CONTEXT"
     semantic_certified = semantic_status == CERTIFIED
     response_certified = response_status == CERTIFIED
-    direction_certified = direction_status == CERTIFIED
+    direction_applicable = applicability_status == APPLICABLE_BY_AUTHORITY
     structure_complete = mapping_status == "COMPLETE"
-    current_topology = _clean(row.get("response_topology")).lower() in {
-        "scalar",
-        "binary_contrast",
-    }
 
     failed: list[str] = []
     for condition, reason in (
         (relation, "semantic_role_not_relation_evidence"),
         (semantic_certified, f"semantic_role_authority_{semantic_status.lower()}"),
         (response_certified, f"response_semantics_authority_{response_status.lower()}"),
-        (direction_certified, f"directionality_authority_{direction_status.lower()}"),
+        (direction_applicable, f"directional_applicability_{applicability_status.lower()}"),
         (structure_complete, f"structural_mapping_{mapping_status.lower()}"),
-        (current_topology, "unsupported_current_response_topology"),
         (not review_required, "review_required"),
         (not forbidden, "forbidden_semantic_role"),
     ):
@@ -278,9 +311,10 @@ def derive_question_use_eligibility(row: Mapping[str, Any]) -> dict[str, Any]:
         "semantic_role_authority_status": semantic_status,
         "response_semantics_authority_status": response_status,
         "directionality_authority_status": direction_status,
+        "directional_applicability_status": applicability_status,
         "structural_mapping_status": mapping_status,
         "runtime_authority_status": runtime_authority,
         "eligibility_gate_status": CERTIFIED if v551 else NOT_CERTIFIED,
         "eligibility_failed_gates": "|".join(dict.fromkeys(failed)),
-        "current_directional_atom_eligible": bool(v551),
+        "current_directional_atom_eligible": bool(direction_applicable),
     }
