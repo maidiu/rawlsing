@@ -881,7 +881,17 @@ def _base_bridge_row(
             or str(response_family).strip().lower() in {"numeric_scale", "numeric_quantity", "count", "count_scale"}
         ):
             response_intensity = numeric_normalized
-    response_direction = ""
+    # Transport only the authoritative raw response-category direction already
+    # present on a matched V550 response-option row. This is not a signed
+    # projection: V551 still owns side, magnitude, rule application, and final
+    # adjudication. Question-level polarity/certification cannot manufacture a
+    # category direction here.
+    raw_response_direction = str(_row_value(row, "response_direction", default="") or "").strip().lower()
+    response_direction = (
+        raw_response_direction
+        if direct_relation_table and response_option_map_matched and not is_special_row
+        else ""
+    )
     polarity = ""
     scale_direction = ""
     directionality_status = "NOT_PROJECTED_V550"
