@@ -5,6 +5,13 @@
   "typed_stage_contract": "section85_typed_stage_contract.json",
   "typed_stage_contract_role": "active_stage_integrity_evidence_permission_authority",
   "authority_id": "SECTION85_TYPED_STAGE_BINDING_AUTHORITY_R2_20260816",
+  "active_runners": {
+    "bounded_nine": "section85/code/run_bounded_nine_v550j_v551j_v552j.py",
+    "diagnostic_smoke": "section85/code/run_section85_diagnostic_smoke_matrix.py"
+  },
+  "legacy_implementation_policy": {
+    "section85/code/_legacy_run_section85_diagnostic_smoke_matrix.py": "NON_EXECUTABLE_REFERENCE_IMPLEMENTATION; loaded only through the active typed diagnostic entrypoint, which replaces its V551J gate before main() executes"
+  },
   "canonical_reference_rebase": {
     "canonical_prefix": "section85/",
     "legacy_prefix": "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/",
