@@ -24,6 +24,8 @@ SCOPE = {
     "source": "EVS",
     "wave": "2017",
     "country_code": "DE",
+    "country_codes": ["DE"],
+    "shard_id": "",
 }
 
 
