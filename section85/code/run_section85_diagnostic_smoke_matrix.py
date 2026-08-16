@@ -20,9 +20,8 @@ import pandas as pd
 import yaml
 
 
-SECTION = Path("85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY")
-RUNTIME = Path("35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE/runtime_reproducibility_code")
-BASE_MODULE_DIR = RUNTIME / "data/ddm_build_copy"
+SECTION = Path("section85")
+BASE_MODULE_DIR = Path("data/ddm_build_copy")
 BINDING_AUTHORITY_RELATIVE = SECTION / "authority/section85_binding_authority.json"
 DEFAULT_QSM_RELATION = "question_structural_mapping"
 DEFAULT_CANONICAL_REGISTRY_RELATION = "rawlsing_authority_reconcile_ar_20260719t213835z.canonical_question_registry"
@@ -109,7 +108,6 @@ def write_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> None
 
 
 def load_base(repo_root: Path):
-    sys.path.insert(0, str((repo_root / RUNTIME).resolve()))
     sys.path.insert(0, str((repo_root / BASE_MODULE_DIR).resolve()))
     import run_20var_allwaves_v550_552j_smoke as base
 
@@ -351,7 +349,7 @@ def main() -> int:
 
     base = load_base(repo)
     db_url = read_env_database_url(args.env_file)
-    runtime = (repo / RUNTIME).resolve()
+    runtime = repo
     config = base.RuntimeConfig(
         repo_root=runtime,
         env_file=args.env_file.resolve(),
@@ -360,12 +358,12 @@ def main() -> int:
         canonical_registry_relation=args.canonical_registry_relation,
         response_option_map=args.response_option_map.resolve(),
         joint_registry_paths=tuple((repo / SECTION / "authority" / f"registry_{source_slug(row['source_family'])}.yaml").resolve() for row in csv.DictReader((repo / SECTION / "authority/bounded_nine_scope_manifest.csv").open())),
-        association_lane_registry=runtime / "data/ddm_registries/association_lane_registry.yaml",
-        association_threshold_profiles=runtime / "data/ddm_registries/association_threshold_profiles.yaml",
-        first_pass_authority_dir=Path("/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports"),
-        semantic_authority_dir=Path("/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports"),
-        position_conditioning_authority_dir=Path("/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/reports"),
-        directionality_authority_dir=Path("/Users/matthewsmith/Desktop/Rawlsing/data/ddm_build_copy/directionality_authority"),
+        association_lane_registry=repo / "data/ddm_registries/association_lane_registry.yaml",
+        association_threshold_profiles=repo / "data/ddm_registries/association_threshold_profiles.yaml",
+        first_pass_authority_dir=repo / "data/ddm_build_copy/reports",
+        semantic_authority_dir=repo / "data/ddm_build_copy/reports",
+        position_conditioning_authority_dir=repo / "data/ddm_build_copy/reports",
+        directionality_authority_dir=repo / "data/ddm_build_copy/directionality_authority",
         association_mode="off",
         joint_mode="required",
         readiness_mode="full",
