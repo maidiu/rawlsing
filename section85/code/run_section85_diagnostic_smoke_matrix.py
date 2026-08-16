@@ -174,6 +174,32 @@ def summarize_v552j_functional_gate(path: str | Path) -> dict[str, Any]:
     }
 
 
+def _normalize_typed_wave_result(result: dict[str, Any]) -> dict[str, Any]:
+    """Prevent typed no-evidence states from being reported as run/compiler failure."""
+    failure_stage = str(result.get("failure_stage") or "")
+    check_name = {
+        "v551_gate": "v551",
+        "v551j_gate": "v551j",
+        "v552j_gate": "v552j",
+    }.get(failure_stage)
+    if not check_name:
+        if result.get("passed"):
+            result.setdefault("run_integrity_status", "PASS")
+        return result
+
+    gate = (result.get("functional_checks") or {}).get(check_name) or {}
+    if gate.get("integrity_pass") is True and gate.get("operation_permitted") is False:
+        result["run_integrity_status"] = "PASS"
+        result["evidence_status"] = gate.get("evidence_status", "")
+        result["downstream_permission_status"] = gate.get("downstream_permission_status", "")
+        result["evidence_operation_status"] = "NOT_PERMITTED"
+        result["typed_outcome"] = "INTEGRITY_PASS_EVIDENCE_OPERATION_NOT_PERMITTED"
+        result["failure_stage"] = "typed_evidence_permission_gate"
+    elif gate.get("integrity_pass") is False:
+        result["run_integrity_status"] = "FAIL"
+    return result
+
+
 def _patch_base_module(base):
     """Patch only the module instance loaded by Section85; never mutate W05 source."""
     impl = getattr(base, "_impl", None)
@@ -199,6 +225,11 @@ def _patch_base_module(base):
         ]
         return impl._invoke_run(cmd, timeout_sec=1800, config=config)
 
+    original_run_wave = base.run_wave
+
+    def typed_run_wave(*args, **kwargs):
+        return _normalize_typed_wave_result(original_run_wave(*args, **kwargs))
+
     impl.run_v551 = run_v551_v3
     impl.summarize_v551_functional_gate = summarize_v551_functional_gate
     impl.summarize_v551j_functional_gate = summarize_v551j_functional_gate
@@ -207,6 +238,7 @@ def _patch_base_module(base):
     base.summarize_v551_functional_gate = summarize_v551_functional_gate
     base.summarize_v551j_functional_gate = summarize_v551j_functional_gate
     base.summarize_v552j_functional_gate = summarize_v552j_functional_gate
+    base.run_wave = typed_run_wave
     return base
 
 
