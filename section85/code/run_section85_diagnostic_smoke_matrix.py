@@ -50,6 +50,7 @@ def current_v551j_gate(v551j_root: Path) -> dict[str, Any]:
     candidate_count = readiness.get("candidate_packet_count", manifest.get("row_counts", {}).get("candidate", 0))
     component_count = readiness.get("component_row_count", manifest.get("row_counts", {}).get("component", 0))
     certified_count = readiness.get("certified_packet_count", manifest.get("row_counts", {}).get("certified", 0))
+    issues_json = validation.get("issues_json", "[]")
     return {
         **typed,
         "hook_status": "ACTIVE_TYPED_PRODUCER_CONTRACT" if typed["typed_contract_valid"] else "AWAITING_G3B_PRODUCER_HOOK",
@@ -58,11 +59,12 @@ def current_v551j_gate(v551j_root: Path) -> dict[str, Any]:
         "certified_packet_count": certified_count,
         "review_required_packet_count": readiness.get("review_required_packet_count", 0),
         "blocked_packet_count": readiness.get("blocked_packet_count", 0),
+        "issues_json": issues_json,
         "legacy_diagnostics": {
             "final_status": readiness.get("final_status") or manifest.get("final_status", ""),
             "candidate_contract_valid": readiness.get("candidate_contract_valid", validation.get("candidate_contract_valid", False)),
             "component_contract_valid": readiness.get("component_contract_valid", validation.get("component_contract_valid", False)),
-            "issues_json": validation.get("issues_json", "[]"),
+            "issues_json": issues_json,
         },
     }
 
