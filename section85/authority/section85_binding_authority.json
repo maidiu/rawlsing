@@ -1,38 +1,45 @@
 {
   "artifact_authority_csv": "section85_stage_artifact_authority.csv",
-  "artifact_authority_csv_role": "historical_observation_ledger_with_rebased_active_references",
-  "authority_id": "SECTION85_STAGE_ARTIFACT_AUTHORITY_R1_20260804",
+  "artifact_authority_csv_role": "historical_observation_ledger_only_not_readiness_authority",
+  "historical_artifact_ledger_readiness_rules_executable": false,
+  "typed_stage_contract": "section85_typed_stage_contract.json",
+  "typed_stage_contract_role": "active_stage_integrity_evidence_permission_authority",
+  "authority_id": "SECTION85_TYPED_STAGE_BINDING_AUTHORITY_R2_20260816",
+  "active_runners": {
+    "bounded_nine": "section85/code/run_bounded_nine_v550j_v551j_v552j.py",
+    "diagnostic_smoke": "section85/code/run_section85_diagnostic_smoke_matrix.py"
+  },
+  "legacy_implementation_policy": {
+    "section85/code/_legacy_run_section85_diagnostic_smoke_matrix.py": "NON_EXECUTABLE_REFERENCE_IMPLEMENTATION; loaded only through the active typed diagnostic entrypoint, which replaces the Section85-loaded V551 invocation/gate, V551J gate, and V552J gate before main() executes"
+  },
   "canonical_reference_rebase": {
     "canonical_prefix": "section85/",
     "legacy_prefix": "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/",
     "legacy_prefix_is_executable": false,
-    "rule": "Before any authority row is used as an executable path, replace the exact legacy prefix with the canonical repository-relative section85/ prefix. A consumer that observes the legacy prefix after normalization must fail closed."
+    "rule": "Before any historical authority row is used as a path reference, replace the exact legacy prefix with the canonical repository-relative section85/ prefix. A consumer that observes the legacy prefix after normalization must fail closed. Historical artifact-ledger readiness text is never executable authority."
   },
   "observed_latest_path_policy": "Historical observed_latest_path values are provenance only. They are never executable authority and must never be used to resolve current files.",
-  "compatibility_rules": [
+  "legacy_v551j_compatibility_notes_authoritative": false,
+  "legacy_v551j_compatibility_notes": [
     {
-      "consumer": "V552J or current Section 85 gate",
-      "current_equivalent": "v551j_review_surface.parquet",
-      "expected": "v551j_reviewable_evidence_sidecar.parquet",
-      "rule": "Accept only through adapter after schema compatibility check; do not fail solely on old filename."
+      "legacy_expected": "v551j_reviewable_evidence_sidecar.parquet",
+      "historical_current_equivalent": "v551j_review_surface.parquet",
+      "rule": "Historical filename compatibility only. It cannot establish run integrity, evidence status, downstream permission, artifact identity, or producer version."
     },
     {
-      "consumer": "V552J or current Section 85 gate",
-      "current_equivalent": "v551j_readiness_report.json + v551j_packet_contract_validation_report.json",
-      "expected": "v551j_certification_readiness_report.json",
-      "rule": "Derive if required fields are present; otherwise fail as semantic absence."
+      "legacy_expected": "v551j_certification_readiness_report.json",
+      "historical_current_equivalent": "v551j_readiness_report.json + v551j_packet_contract_validation_report.json",
+      "rule": "Historical diagnostic compatibility only. Legacy readiness booleans and packet cardinality are not current Section 85 acceptance authority."
     },
     {
-      "consumer": "V552J or current Section 85 gate",
-      "current_equivalent": "v551j_readiness_report.json",
-      "expected": "v551j_review_readiness_report.json",
-      "rule": "Derive if review counts/status fields are present."
+      "legacy_expected": "v551j_review_readiness_report.json",
+      "historical_current_equivalent": "v551j_readiness_report.json",
+      "rule": "Historical diagnostic compatibility only. Await the G3B typed V551J producer contract for executable acceptance semantics."
     },
     {
-      "consumer": "V552J or current Section 85 gate",
-      "current_equivalent": "v551j_packet_contract_validation_report.json + v551j_readiness_report.json",
-      "expected": "v551j_packet_readiness_report.json",
-      "rule": "Derive if candidate/component/certified counts and contract flags are present."
+      "legacy_expected": "v551j_packet_readiness_report.json",
+      "historical_current_equivalent": "v551j_packet_contract_validation_report.json + v551j_readiness_report.json",
+      "rule": "Historical diagnostic compatibility only. Await the G3B typed V551J producer contract for executable acceptance semantics."
     }
   ],
   "database_bindings": {
@@ -51,7 +58,7 @@
       "preferred": "public.v_ddm_response_long_facet_ready_authority"
     }
   },
-  "governing_commit": "d49e55c9f2df86c5412be8759b9ad6ca86778262",
+  "governing_commit": "1931eabbbec38d8518192ac0ee97b5f5ade515ec",
   "privacy_rules": {
     "raw_responses": "forbidden in Git and ordinary diagnostic packages",
     "respondent_substrate": "runtime_private; never include in nonrespondent handoff packages"
