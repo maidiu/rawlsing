@@ -2,31 +2,28 @@
   "schema": "rawlsing_v550_v552j_gate_status_v1",
   "register_revision_sha256": "b89bffbde1ece404c6a21af218764654bab3b034b75951339d1b16d116c3aa72",
   "integration_branch": "agent/v550-v552j-repair-integration",
-  "integration_commit_before_gate_record": "0882099f8ac6f5766a9484f145bec9d13169455a",
+  "integration_commit_before_gate_record": "f52a84ac1d73452a53260ff5e1acb4f1fb1a56b2",
   "merged_worker_prs": [
     {"worker":"W01-A","pr":8,"merge_commit":"a36e1c9dd25b5cffbe0a7b20c518ceb0e0db95d7","issues":["SRC-002","SRC-004","ORCH-009"]},
     {"worker":"W02-A","pr":9,"merge_commit":"985f6ec4c50e1078c5627d09c981467af862f9b3","issues":["V550-001","V550-002","V550-003","V550-005","V550-006"]},
     {"worker":"W03-A","pr":11,"merge_commit":"1b039c260c8714cc5174e8e70342db2d9e6e0d61","issues":["V550J-001","V550J-002","V550J-003"]},
     {"worker":"W05-A","pr":10,"merge_commit":"7d4703148057fe1d2fdd7bbf94df306abf8b21de","issues_terminal":["SRC-005","LIN-005","LIN-006","LIN-009","LIN-011","ORCH-005","ORCH-006"],"issues_partial":["LIN-007","LIN-008","ORCH-007","ORCH-008"]},
-    {"worker":"W06-A","pr":7,"merge_commit":"0882099f8ac6f5766a9484f145bec9d13169455a","issues_partial":["ORCH-004"],"watchers":["WATCH-001","WATCH-002","WATCH-006"]}
+    {"worker":"W06-A","pr":7,"merge_commit":"0882099f8ac6f5766a9484f145bec9d13169455a","issues_partial":["ORCH-004"],"watchers":["WATCH-001","WATCH-002","WATCH-006"]},
+    {"worker":"W04-A","pr":12,"merge_commit":"f52a84ac1d73452a53260ff5e1acb4f1fb1a56b2","issues":["SRC-003","V551-001","V551-002","V551-003","V551-004","V551-005","V551-006","V551-007","V551-008","V551-009","V551-010","V551-011","V551-012","V551-013","V551-014","V551-015","V551-016","V551-017"],"contract":"V551 v3.0 + rawlsing_pipeline_boundary_v1"}
   ],
   "gates": {
     "G0": "PASS",
-    "G1A": {
+    "G1A": {"status":"PASS","basis":["SRC-002 merged via PR 8","W02-A merged via PR 9"]},
+    "G1B": {"status":"PASS","basis":["SRC-004 merged via PR 8","W03-A merged via PR 11"]},
+    "G2": {
       "status":"PASS",
-      "basis":["SRC-002 merged via PR 8","W02-A merged via PR 9"],
-      "releases":["W04-A"]
+      "basis":["W04-A canonical V551 v3.0 merged via PR 12","shared boundary-contract review blockers closed"],
+      "releases":["W02-B","W03-B","W01-B partial/final-by-later-gates","W05-B partial/final-by-G4","W06-A2 ORCH-004 closure"]
     },
-    "G1B": {
-      "status":"PASS",
-      "basis":["SRC-004 merged via PR 8","W03-A merged via PR 11"],
-      "releases":["W03-B only after G2"]
-    },
-    "G2": "BLOCKED_AWAITING_W04_A",
-    "G3A": "BLOCKED_AWAITING_G2_AND_W02_B",
-    "G3B": "BLOCKED_AWAITING_G2_AND_W03_B",
-    "G4": "BLOCKED",
+    "G3A": "BLOCKED_AWAITING_W02_B",
+    "G3B": "BLOCKED_AWAITING_W03_B",
+    "G4": "BLOCKED_AWAITING_G3A_G3B_AND_W06_B",
     "G5": "BLOCKED"
   },
-  "next_action": "Launch W04-A from a branch created from this post-G1 integration state."
+  "next_action": "Launch the G2 parallel wave from the post-G2 integration commit: W02-B/V552, W03-B/V551J, W01-B Section85 adaptation, W05-B lineage/orchestration adaptation, and W06-A2 extraction-audit closure."
 }
