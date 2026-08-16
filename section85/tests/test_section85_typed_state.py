@@ -22,6 +22,14 @@ def load_helper():
     return module
 
 
+def load_bounded():
+    spec = importlib.util.spec_from_file_location("section85_bounded", BOUNDED)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def artifact(name: str, rows: int) -> dict:
     return {
         "artifact": name,
@@ -31,6 +39,15 @@ def artifact(name: str, rows: int) -> dict:
         "artifact_file_sha256": "a" * 64,
         "logical_content_sha256": "b" * 64,
         "schema_version": "v3.0",
+    }
+
+
+def typed_document(*, evidence: str = "PRESENT", permission: str = "ALLOW") -> dict:
+    return {
+        "contract_version": "rawlsing_pipeline_boundary_v1",
+        "run_integrity_status": "PASS",
+        "evidence_status": evidence,
+        "downstream_permission_status": permission,
     }
 
 
@@ -65,6 +82,21 @@ def v551_manifest(*, evidence: str, permission: str, candidates: int, promotable
             artifact("directional_distribution_coverage", 0 if candidates == 0 else 1),
         ],
     }
+
+
+def write_gate_documents(tmp_path: Path, *, v552j: dict) -> dict:
+    payloads = {
+        "v550j_manifest": {"success": True, "validation_status": "pass"},
+        "v550j_readiness": {"family_registry_status": "applicable", "blocking_issues": []},
+        "v551j_manifest": typed_document(),
+        "v552j_readiness": v552j,
+    }
+    outputs: dict[str, str] = {}
+    for name, payload in payloads.items():
+        path = tmp_path / f"{name}.json"
+        path.write_text(json.dumps(payload), encoding="utf-8")
+        outputs[name] = str(path)
+    return {"expected_outputs": outputs}
 
 
 def test_v551_zero_promotable_repair_debt_keeps_integrity_pass() -> None:
@@ -139,12 +171,7 @@ def test_nonempty_blocked_v552j_document_never_passes_typed_gate() -> None:
 def test_typed_v552j_no_evidence_can_pass_integrity_without_operation_permission() -> None:
     helper = load_helper()
     gate = helper.typed_stage_gate(
-        {
-            "contract_version": "rawlsing_pipeline_boundary_v1",
-            "run_integrity_status": "PASS",
-            "evidence_status": "NOT_APPLICABLE",
-            "downstream_permission_status": "NOT_APPLICABLE",
-        },
+        typed_document(evidence="NOT_APPLICABLE", permission="NOT_APPLICABLE"),
         stage="v552j",
     )
     assert gate["typed_contract_valid"] is True
@@ -153,12 +180,41 @@ def test_typed_v552j_no_evidence_can_pass_integrity_without_operation_permission
     assert gate["valid_nonpresent_evidence_state"] is True
 
 
+def test_bounded_gate_rejects_nonempty_blocked_v552j_document(tmp_path: Path) -> None:
+    bounded = load_bounded()
+    entry = write_gate_documents(
+        tmp_path,
+        v552j={"status": "BLOCKED_V552J_INPUT_INVALID", "blocking_issues": ["bad input"]},
+    )
+    v551j_state, v552j_state, checks = bounded._typed_functional_gate(entry)
+    assert v551j_state["integrity_pass"] is True
+    assert v552j_state["typed_contract_valid"] is False
+    assert v552j_state["integrity_pass"] is False
+    assert checks["v552j_typed_contract_valid"] is False
+    assert checks["v552j_run_integrity_pass"] is False
+
+
+def test_bounded_gate_preserves_typed_no_evidence_as_integrity_pass_not_permission(tmp_path: Path) -> None:
+    bounded = load_bounded()
+    entry = write_gate_documents(
+        tmp_path,
+        v552j=typed_document(evidence="NOT_APPLICABLE", permission="NOT_APPLICABLE"),
+    )
+    v551j_state, v552j_state, checks = bounded._typed_functional_gate(entry)
+    assert all(checks.values())
+    assert v551j_state["operation_permitted"] is True
+    assert v552j_state["integrity_pass"] is True
+    assert v552j_state["operation_permitted"] is False
+
+
 def test_section85_authority_replaces_nonzero_atom_rule_with_typed_contract() -> None:
     binding = json.loads(AUTHORITY.read_text(encoding="utf-8"))
     typed = json.loads(TYPED_CONTRACT.read_text(encoding="utf-8"))
     assert binding["typed_stage_contract"] == "section85_typed_stage_contract.json"
     assert binding["artifact_authority_csv_role"] == "historical_observation_ledger_only_not_readiness_authority"
     assert binding["historical_artifact_ledger_readiness_rules_executable"] is False
+    assert binding["active_runners"]["bounded_nine"].endswith("run_bounded_nine_v550j_v551j_v552j.py")
+    assert binding["active_runners"]["diagnostic_smoke"].endswith("run_section85_diagnostic_smoke_matrix.py")
     assert typed["global_rules"]["row_count_nonzero_is_run_integrity"] is False
     assert typed["stage_contracts"]["v551"]["atom_row_count_is_integrity_gate"] is False
     assert typed["stage_contracts"]["v551"]["status"] == "ACTIVE_G2_FROZEN"
