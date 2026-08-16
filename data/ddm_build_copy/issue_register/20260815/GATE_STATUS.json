@@ -2,38 +2,58 @@
   "schema": "rawlsing_v550_v552j_gate_status_v1",
   "register_revision_sha256": "b89bffbde1ece404c6a21af218764654bab3b034b75951339d1b16d116c3aa72",
   "integration_branch": "agent/v550-v552j-repair-integration",
-  "integration_commit_before_gate_record": "529533886a363900ee4a1c4d76b85b1deedf7532",
+  "integration_commit_before_gate_record": "f281f8f6af36e0cd5515647b94b950defef2bdf3",
   "merged_worker_prs": [
-    {"worker":"W01-A","pr":8,"merge_commit":"a36e1c9dd25b5cffbe0a7b20c518ceb0e0db95d7","issues":["SRC-002","SRC-004","ORCH-009"]},
-    {"worker":"W02-A","pr":9,"merge_commit":"985f6ec4c50e1078c5627d09c981467af862f9b3","issues":["V550-001","V550-002","V550-003","V550-005","V550-006"]},
-    {"worker":"W03-A","pr":11,"merge_commit":"1b039c260c8714cc5174e8e70342db2d9e6e0d61","issues":["V550J-001","V550J-002","V550J-003"]},
-    {"worker":"W05-A","pr":10,"merge_commit":"7d4703148057fe1d2fdd7bbf94df306abf8b21de","issues_terminal":["SRC-005","LIN-005","LIN-006","LIN-009","LIN-011","ORCH-005","ORCH-006"],"issues_partial":["LIN-007","LIN-008","ORCH-007","ORCH-008"]},
-    {"worker":"W06-A","pr":7,"merge_commit":"0882099f8ac6f5766a9484f145bec9d13169455a","issues_partial":["ORCH-004"],"watchers":["WATCH-001","WATCH-002","WATCH-006"]},
-    {"worker":"W04-A","pr":12,"merge_commit":"f52a84ac1d73452a53260ff5e1acb4f1fb1a56b2","issues":["SRC-003","V551-001","V551-002","V551-003","V551-004","V551-005","V551-006","V551-007","V551-008","V551-009","V551-010","V551-011","V551-012","V551-013","V551-014","V551-015","V551-016","V551-017"],"contract":"V551 v3.0 + rawlsing_pipeline_boundary_v1"},
-    {"worker":"W02-B","pr":17,"merge_commit":"91f1a82e67b53ef3eeeacf9c2ed8b9b26cd26ea0","issues":["V552-001","V552-002","V552-003","V552-004","V552-005","V552-006","V552-007"],"contract":"V552 v3 producer-bound to V551 v3"},
-    {"worker":"W06-A2","pr":13,"merge_commit":"0e9a7a994c7facf922dbc9a072e3d802f8e84999","issues":["ORCH-004"]},
-    {"worker":"W01-B","pr":16,"merge_commit":"67b4ba8c5c9367ab06b2ee4ccb86d83445decc49","issues_terminal":["ORCH-002"],"issues_partial":["ORCH-003","ORCH-010"]},
-    {"worker":"W05-B","pr":14,"merge_commit":"216454dd599c04de125606c6ceb8cf5a69dc2580","issues_terminal":["LIN-003"],"issues_partial":["LIN-001","LIN-002","LIN-004","LIN-007","LIN-008","LIN-010","ORCH-001","ORCH-007","ORCH-008"]},
-    {"worker":"W03-B","pr":15,"merge_commit":"167de1659a0fd6c6996eb6ec5230f7ab0fbbc5dd","issues":["V551J-001","V551J-002","V551J-003","V551J-004","V551J-005"],"contract":"V551J producer-bound to V551 v3 + hashed typed V550J producer boundary"},
-    {"worker":"W06-B","pr":18,"merge_commit":"598ec25ad1563418503213119115919cf258c8c2","issues":["V552J-001","V552J-002","V552J-003","V552J-004"],"contract":"V552J producer-bound exact-scope join of V551J + V552"},
-    {"worker":"W06-C","pr":19,"merge_commit":"4f2d61746a611079f88cfff7d4531eb367668c0f","issues":[],"evidence":"bounded EVS exact-scope canary + typed-state/downstream regression; respondent-backed EVS and generated 35-wave sweep unavailable"},
-    {"worker":"W01-final","pr":20,"merge_commit":"4ec1d2b727a2d7416959f5768ad06b913646efdf","issues":["ORCH-003","ORCH-010"]},
-    {"worker":"W05-final","pr":21,"merge_commit":"529533886a363900ee4a1c4d76b85b1deedf7532","issues":["LIN-001","LIN-002","LIN-004","LIN-007","LIN-008","LIN-010","ORCH-001","ORCH-007","ORCH-008"]}
+    {"worker":"W01-A","pr":8,"merge_commit":"a36e1c9dd25b5cffbe0a7b20c518ceb0e0db95d7"},
+    {"worker":"W02-A","pr":9,"merge_commit":"985f6ec4c50e1078c5627d09c981467af862f9b3"},
+    {"worker":"W05-A","pr":10,"merge_commit":"7d4703148057fe1d2fdd7bbf94df306abf8b21de"},
+    {"worker":"W03-A","pr":11,"merge_commit":"1b039c260c8714cc5174e8e70342db2d9e6e0d61"},
+    {"worker":"W04-A","pr":12,"merge_commit":"f52a84ac1d73452a53260ff5e1acb4f1fb1a56b2"},
+    {"worker":"W06-A2","pr":13,"merge_commit":"0e9a7a994c7facf922dbc9a072e3d802f8e84999"},
+    {"worker":"W05-B","pr":14,"merge_commit":"216454dd599c04de125606c6ceb8cf5a69dc2580"},
+    {"worker":"W03-B","pr":15,"merge_commit":"167de1659a0fd6c6996eb6ec5230f7ab0fbbc5dd"},
+    {"worker":"W01-B","pr":16,"merge_commit":"67b4ba8c5c9367ab06b2ee4ccb86d83445decc49"},
+    {"worker":"W02-B","pr":17,"merge_commit":"91f1a82e67b53ef3eeeacf9c2ed8b9b26cd26ea0"},
+    {"worker":"W06-B","pr":18,"merge_commit":"598ec25ad1563418503213119115919cf258c8c2"},
+    {"worker":"W06-C","pr":19,"merge_commit":"4f2d61746a611079f88cfff7d4531eb367668c0f"},
+    {"worker":"W01-final","pr":20,"merge_commit":"4ec1d2b727a2d7416959f5768ad06b913646efdf"},
+    {"worker":"W05-final","pr":21,"merge_commit":"529533886a363900ee4a1c4d76b85b1deedf7532"},
+    {"worker":"W03-final-scope","pr":22,"merge_commit":"1dbcf161df51dfa251bba71a5dce3dacd613757b","assisted_integration_issue":"SRC-001"}
+  ],
+  "vozhd_final_integration_commits": [
+    {"commit":"4f2c0f85378444f18850b1782fef4b6032c53181","purpose":"V552J exact shard coherence when country is also present"},
+    {"commit":"cc2f301d70906fd9017cd0197d49b4c8ef3e3f9d","purpose":"actual V552J comparator regression"},
+    {"commit":"39684ed541f8ac66a7ab7a7d06fc03ac57f30665","purpose":"67/67 resolution ledger"},
+    {"commit":"f281f8f6af36e0cd5515647b94b950defef2bdf3","purpose":"SRC-001 reconciliation record"}
   ],
   "gates": {
-    "G0": "PASS",
-    "G1A": {"status":"PASS","basis":["SRC-002 merged via PR 8","W02-A merged via PR 9"]},
-    "G1B": {"status":"PASS","basis":["SRC-004 merged via PR 8","W03-A merged via PR 11"]},
-    "G2": {"status":"PASS","basis":["W04-A canonical V551 v3.0 merged via PR 12","shared boundary-contract review blockers closed"]},
-    "G3A": {"status":"PASS","basis":["W02-B canonical V552 repair merged via PR 17"]},
-    "G3B": {"status":"PASS","basis":["W03-B V551J merged via PR 15","G3B V550J producer-boundary amendment closed"]},
-    "G4": {"status":"PASS","basis":["W06-B V552J exact-scope producer-bound join merged via PR 18"]},
+    "G0": {"status":"PASS"},
+    "G1A": {"status":"PASS"},
+    "G1B": {"status":"PASS"},
+    "G2": {"status":"PASS"},
+    "G3A": {"status":"PASS"},
+    "G3B": {"status":"PASS"},
+    "G4": {"status":"PASS"},
     "G5": {
-      "status":"BLOCKED_SRC001_SCOPE_IDENTITY_RECONCILIATION",
-      "completed":["W01-final ORCH-003/ORCH-010 merged","W05-final cross-stage closures merged","W06-C final regression merged"],
-      "blocker":"For a governed single-country shard, V550/V551/V552 preserve the singleton country_code plus shard_id, while V550J/V551J currently preserve the country only in country_codes[] and publish blank country_code. V552J correctly rejects this exact-scope disagreement. SRC-001 requires reconciliation rather than weakening V552J scope checks.",
-      "required_fix":"V551J must preserve an already-verified singleton country_code from V550J country_codes/frame scope alongside shard_id; multi-country shards remain shard-only. Then re-run focused producer-to-V552J scope regressions and complete SRC-001/67-issue accounting."
+      "status":"PASS",
+      "basis":[
+        "all 67 effective mandatory issues terminally RESOLVED in RESOLUTION_LEDGER.json",
+        "SRC-001 main/runtime reconciliation terminally recorded",
+        "W01-final Section85 exact producer binding merged",
+        "W05-final cross-stage lineage/orchestration closure merged",
+        "W06-C bounded EVS/typed-state/downstream negative-control regression merged",
+        "final single-country V551J/V552J scope seam repaired without weakening exact matching"
+      ],
+      "validation_limitation":"No respondent-backed EVS end-to-end run or generated real-data CLOSED_35_WAVES producer sweep was executable in the connected worker environments. G5 PASS is code/contract/integration acceptance and does not assert those unexecuted full-data runs."
     }
   },
-  "next_action": "Launch the narrowly scoped W03 final scope-identity amendment from the current integration state. After it merges, Vozhd completes SRC-001 reconciliation, terminal 67-issue accounting, and final G5 adjudication."
+  "terminal_accounting": {
+    "effective_mandatory":67,
+    "resolved":67,
+    "deferred_monitored":5,
+    "closed_findings":7,
+    "superseded_mandatory":["V550-004"],
+    "superseded_deferred":["WATCH-004"]
+  },
+  "next_action": "Merge agent/v550-v552j-repair-integration to main. Preserve the explicit full-data validation limitation for the next runtime-capable execution environment."
 }
