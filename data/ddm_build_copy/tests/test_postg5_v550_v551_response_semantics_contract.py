@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-
 import pandas as pd
 import pytest
 
@@ -19,6 +18,57 @@ from data.ddm_build_copy.ddm_v550_response_semantics_authority import (
     response_option_map_content_sha256,
 )
 from data.ddm_build_copy.ddm_v550_response_options import response_semantics_contract_hash
+
+
+LEGACY_SEMANTIC_COLUMNS = [
+    "source",
+    "wave",
+    "canonical_wave",
+    "var_name",
+    "var_code",
+    "value_code_normalized",
+    "value_label_clean",
+    "option_group",
+    "is_substantive",
+    "is_missing",
+    "is_dk",
+    "is_refusal",
+    "is_iap",
+    "is_not_asked",
+    "is_inapplicable",
+    "response_family",
+    "response_direction",
+    "response_intensity",
+    "polarity",
+    "ordinal_rank",
+    "scale_min",
+    "scale_max",
+    "scale_direction",
+    "directionality_status",
+    "normalization_confidence",
+]
+
+
+def _legacy_whole_frame_response_semantics_hash(frame: pd.DataFrame) -> str:
+    if frame.empty:
+        payload = {"rows": 0, "columns": []}
+    else:
+        available = [column for column in LEGACY_SEMANTIC_COLUMNS if column in frame.columns]
+        semantic_frame = frame.loc[:, available].copy() if available else pd.DataFrame()
+        if not semantic_frame.empty:
+            semantic_frame = semantic_frame.fillna("").astype(str)
+            semantic_frame = semantic_frame.sort_values(list(semantic_frame.columns)).reset_index(drop=True)
+            payload = {
+                "rows": int(len(semantic_frame)),
+                "columns": list(semantic_frame.columns),
+                "records": semantic_frame.to_dict(orient="records"),
+            }
+        else:
+            payload = {"rows": int(len(frame)), "columns": list(frame.columns)}
+    raw = json.dumps(
+        payload, sort_keys=True, ensure_ascii=False, default=str
+    ).encode("utf-8")
+    return hashlib.sha256(raw).hexdigest()
 
 
 AFRO_R1 = {
@@ -94,6 +144,18 @@ def test_binding_authority_matches_frozen_v551_registry_key_set_mechanically():
     assert len(bindings) == EXPECTED_ACTIVE_BINDINGS == 236
     assert len(emitted) == EXPECTED_DISTINCT_CONTRACTS == 145
     assert emitted == set(registry_keys)
+
+
+def test_legacy_live_build_whole_frame_hash_cannot_be_v551_exact_contract_key():
+    frame = pd.concat([_rows("dememp", 4), _rows("pfeerd", 5)], ignore_index=True)
+    legacy_hash = _legacy_whole_frame_response_semantics_hash(frame)
+    legacy_stamped = frame.copy()
+    legacy_stamped["response_semantics_contract_hash"] = legacy_hash
+
+    assert legacy_stamped["response_semantics_contract_hash"].nunique() == 1
+    assert legacy_hash not in load_v551_registry_key_set()
+    assert legacy_hash not in {AFRO_R1["dememp"], AFRO_R1["pfeerd"]}
+    assert AFRO_R1["dememp"] != AFRO_R1["pfeerd"]
 
 
 def test_whole_frame_content_hash_is_artifact_identity_not_v551_contract_key():
