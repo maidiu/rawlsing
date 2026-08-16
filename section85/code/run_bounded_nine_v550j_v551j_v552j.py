@@ -14,6 +14,12 @@ import unicodedata
 from pathlib import Path
 from typing import Any
 
+CODE_DIR = Path(__file__).resolve().parent
+if str(CODE_DIR) not in sys.path:
+    sys.path.insert(0, str(CODE_DIR))
+
+from section85_typed_state import typed_stage_gate  # noqa: E402
+
 
 def norm(value: str) -> str:
     return unicodedata.normalize("NFC", str(value)).casefold()
@@ -106,9 +112,10 @@ def load_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return {}
+    return payload if isinstance(payload, dict) else {}
 
 
 def build_plan(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str, Any]]:
@@ -176,6 +183,9 @@ def build_plan(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
         if db_url:
             v550j.extend(["--db-url", db_url])
 
+        # The V551J producer CLI is owned by W03-B. Its final G3B producer-bound
+        # input hooks are intentionally not guessed here; this command remains the
+        # current G2 invocation until that worker merges.
         v551j = [
             sys.executable, str(compilers["v551j"]),
             "--run-id", shard_id,
@@ -190,7 +200,6 @@ def build_plan(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
             "--output-root", str(v551j_output_root),
             "--emit-review-surface", "--emit-certified-index", "--no-write-csv", "--write-parquet", "--strict",
         ]
-        # Only V552 base context is relevant to V551J; append the known subset.
         for flag, filename in {
             "--v552-question-semantic-hierarchy-path": "question_semantic_hierarchy.parquet",
             "--v552-structural-channel-index-path": "structural_channel_index.parquet",
@@ -205,6 +214,8 @@ def build_plan(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
             if path.exists():
                 v551j.extend([flag, str(path)])
 
+        # W06-B owns the final V552J producer hook. Preserve the current command
+        # until G4 rather than guessing its future manifest/CLI contract.
         v552j = [
             sys.executable, str(compilers["v552j"]),
             "--run-id", shard_id,
@@ -231,6 +242,7 @@ def build_plan(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
             "expected_outputs": {
                 "v550j_manifest": str(v550j_artifacts / "v550j_manifest.json"),
                 "v550j_readiness": str(v550j_artifacts / "v550j_source_wave_readiness_report.json"),
+                "v551j_manifest": str(v551j_run_root / "manifest" / "manifest.json"),
                 "v551j_readiness": str(v551j_run_root / "manifest" / "v551j_readiness_report.json"),
                 "v552j_readiness": str(v552j_output_root / shard_id / "manifest" / "v552j_readiness_report.json"),
             },
@@ -247,8 +259,32 @@ def build_plan(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str
         "authority_scope": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
         "production_completeness_claim": "NO_PRODUCTION_COMPLETENESS_CLAIM",
         "association_mode": "off",
+        "section85_typed_state_contract": "rawlsing_pipeline_boundary_v1",
+        "v551j_acceptance_hook": "AWAITING_G3B_PRODUCER_HOOK",
+        "v552j_acceptance_hook": "AWAITING_G4_PRODUCER_HOOK",
     }
     return plan, preflight
+
+
+def _typed_functional_gate(entry: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any], dict[str, bool]]:
+    v550j_manifest = load_json(Path(entry["expected_outputs"]["v550j_manifest"]))
+    v550j_ready = load_json(Path(entry["expected_outputs"]["v550j_readiness"]))
+    v551j_manifest = load_json(Path(entry["expected_outputs"]["v551j_manifest"]))
+    v552j_document = load_json(Path(entry["expected_outputs"]["v552j_readiness"]))
+
+    v551j_state = typed_stage_gate(v551j_manifest, stage="v551j")
+    v552j_state = typed_stage_gate(v552j_document, stage="v552j")
+    checks = {
+        "v550j_success": bool(v550j_manifest.get("success")),
+        "v550j_validation_pass": str(v550j_manifest.get("validation_status", "")).lower() == "pass",
+        "v550j_registry_applicable": v550j_ready.get("family_registry_status") == "applicable",
+        "v550j_not_blocked": not v550j_ready.get("blocking_issues"),
+        "v551j_typed_contract_valid": bool(v551j_state["typed_contract_valid"]),
+        "v551j_run_integrity_pass": bool(v551j_state["integrity_pass"]),
+        "v552j_typed_contract_valid": bool(v552j_state["typed_contract_valid"]),
+        "v552j_run_integrity_pass": bool(v552j_state["integrity_pass"]),
+    }
+    return v551j_state, v552j_state, checks
 
 
 def main() -> int:
@@ -292,38 +328,70 @@ def main() -> int:
             run = invoke(entry["commands"][stage], cwd=args.repo_root, log_path=args.output_root / "logs" / scope / f"{stage}.log", timeout=args.timeout_seconds, env=environment)
             result["stages"][stage] = run
             if run["exit_code"] != 0:
-                result.update({"status": "FAIL", "failure_stage": stage, "failure_reason": run["stderr_tail"] or run["stdout_tail"]})
+                result.update({
+                    "status": "FAIL",
+                    "run_integrity_status": "FAIL",
+                    "failure_stage": stage,
+                    "failure_reason": run["stderr_tail"] or run["stdout_tail"],
+                })
                 failed = True
                 break
+
         if not failed:
-            v550j_manifest = load_json(Path(entry["expected_outputs"]["v550j_manifest"]))
-            v550j_ready = load_json(Path(entry["expected_outputs"]["v550j_readiness"]))
-            v551j_ready = load_json(Path(entry["expected_outputs"]["v551j_readiness"]))
-            v552j_ready = load_json(Path(entry["expected_outputs"]["v552j_readiness"]))
-            checks = {
-                "v550j_success": bool(v550j_manifest.get("success")),
-                "v550j_validation_pass": str(v550j_manifest.get("validation_status", "")).lower() == "pass",
-                "v550j_registry_applicable": v550j_ready.get("family_registry_status") == "applicable",
-                "v550j_not_blocked": not v550j_ready.get("blocking_issues"),
-                "v551j_ready_for_v552j": bool(v551j_ready.get("ready_for_v552j_joint_evidence")),
-                "v552j_readiness_present": bool(v552j_ready),
-            }
+            v551j_state, v552j_state, checks = _typed_functional_gate(entry)
+            result["typed_stage_states"] = {"v551j": v551j_state, "v552j": v552j_state}
             result["functional_checks"] = checks
-            result["status"] = "PASS" if all(checks.values()) else "FAIL"
-            if result["status"] == "FAIL":
-                result["failure_stage"] = "functional_gate"
+            integrity_pass = all(checks.values())
+            evidence_operation_permitted = bool(v551j_state["operation_permitted"] and v552j_state["operation_permitted"])
+            result["run_integrity_status"] = "PASS" if integrity_pass else "FAIL"
+            result["evidence_operation_status"] = "PERMITTED" if evidence_operation_permitted else "NOT_PERMITTED"
+
+            if not integrity_pass:
+                result["status"] = "FAIL"
+                result["failure_stage"] = "typed_integrity_gate"
                 result["failure_reason"] = ",".join(name for name, passed in checks.items() if not passed)
                 failed = True
+            elif not evidence_operation_permitted:
+                result["status"] = "NO_EVIDENCE_PERMISSION"
+                result["failure_stage"] = "typed_evidence_permission_gate"
+                blocked = []
+                if not v551j_state["operation_permitted"]:
+                    blocked.append(
+                        "v551j:"
+                        + v551j_state["evidence_status"]
+                        + "/"
+                        + v551j_state["downstream_permission_status"]
+                    )
+                if not v552j_state["operation_permitted"]:
+                    blocked.append(
+                        "v552j:"
+                        + v552j_state["evidence_status"]
+                        + "/"
+                        + v552j_state["downstream_permission_status"]
+                    )
+                result["failure_reason"] = ",".join(blocked)
+                failed = True
+            else:
+                result["status"] = "PASS"
+
         results.append(result)
         (reports / "bounded_nine_canary_partial_return.json").write_text(json.dumps({"preflight": preflight, "results": results}, indent=2) + "\n", encoding="utf-8")
         if failed and not args.continue_on_failure:
             break
 
     status = "PASS_BOUNDED_NINE_J_CHAIN" if len(results) == len(plan) and all(row.get("status") == "PASS" for row in results) else "FAIL_BOUNDED_NINE_J_CHAIN"
-    final = {"status": status, "preflight": preflight, "attempted_scope_count": len(results), "planned_scope_count": len(plan), "passed_scope_count": sum(row.get("status") == "PASS" for row in results), "results": results}
+    final = {
+        "status": status,
+        "preflight": preflight,
+        "attempted_scope_count": len(results),
+        "planned_scope_count": len(plan),
+        "passed_scope_count": sum(row.get("status") == "PASS" for row in results),
+        "integrity_pass_scope_count": sum(row.get("run_integrity_status") == "PASS" for row in results),
+        "results": results,
+    }
     (reports / "BOUNDED_NINE_J_CHAIN_RETURN.json").write_text(json.dumps(final, indent=2) + "\n", encoding="utf-8")
     with (reports / "bounded_nine_j_chain_summary.csv").open("w", encoding="utf-8", newline="") as handle:
-        fields = ["source_family", "wave", "country_code", "scope_dir", "joint_configuration_id", "status", "failure_stage", "failure_reason"]
+        fields = ["source_family", "wave", "country_code", "scope_dir", "joint_configuration_id", "status", "run_integrity_status", "evidence_operation_status", "failure_stage", "failure_reason"]
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for row in results:
