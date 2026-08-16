@@ -333,6 +333,17 @@ def _expected_v551_scope(
         raise BoundaryContractError(
             f"V550J_FRAME_MANIFEST_COUNTRY_SCOPE_MISMATCH:frames={sorted(country_values)}:manifest={manifest_countries}"
         )
+    country_codes = sorted(country_codes)
+    manifest_country_code = _clean(manifest_scope.get("country_code"))
+    if manifest_country_code:
+        if len(country_codes) != 1:
+            raise BoundaryContractError(
+                f"V550J_MANIFEST_MULTI_COUNTRY_SCALAR_COUNTRY_FORBIDDEN:country_code={manifest_country_code}:countries={country_codes}"
+            )
+        if manifest_country_code != country_codes[0]:
+            raise BoundaryContractError(
+                f"V550J_MANIFEST_COUNTRY_CODE_SCOPE_MISMATCH:country_code={manifest_country_code}:countries={country_codes}"
+            )
     if len(country_codes) > 1 and not shard_id:
         raise BoundaryContractError(
             f"V551J_MULTI_COUNTRY_SCOPE_REQUIRES_V550J_SHARD_ID:countries={country_codes}"
@@ -342,8 +353,8 @@ def _expected_v551_scope(
         "source": source,
         "wave": wave,
         "canonical_wave": wave,
-        "country_code": _clean(manifest_scope.get("country_code")) if shard_id else (country_codes[0] if len(country_codes) == 1 else ""),
-        "country_codes": sorted(country_codes),
+        "country_code": country_codes[0] if len(country_codes) == 1 else "",
+        "country_codes": country_codes,
         "shard_id": shard_id,
         "scope_kind": "shard" if shard_id else "country",
     }
