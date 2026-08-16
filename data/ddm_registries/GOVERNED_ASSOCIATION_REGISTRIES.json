@@ -4,7 +4,7 @@
   "registries": [
     {
       "path": "data/ddm_registries/association_lane_registry.yaml",
-      "delivery": "repository_exact_bytes",
+      "delivery": "external_governed_dependency",
       "required_for_association_modes": ["publishable", "review", "diagnostic"],
       "sha256": "1848ae6b1c0823cfe7d34e34f71076543484a67a4721ea4de0d9ffef25b5d138",
       "size_bytes": 5539418,
@@ -20,5 +20,5 @@
     }
   ],
   "materializer": "data/ddm_registries/materialize_governed_association_registries.py",
-  "provenance_note": "Pinned hashes are the definitive dependency-ledger values. Both governed registries are installed as exact repository bytes. The materializer remains fail-closed and may only repair a missing/conflicting lane from a byte-identical retained source."
+  "provenance_note": "Pinned hashes are the definitive dependency-ledger values. The lane registry is intentionally not regenerated or substituted; a checkout must receive those exact governed bytes from the retained authority store before governed association execution."
 }
