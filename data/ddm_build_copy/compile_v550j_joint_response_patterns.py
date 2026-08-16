@@ -26,6 +26,7 @@ if str(ROOT) not in sys.path:
 from data.ddm_build_copy.build_determinicity_repository_v550 import _harmonize_question_frame, _lookup_response_semantics, _prefetch_question_rows_by_country, _question_rows_from_cache
 from data.ddm_build_copy.build_v550j_prepared_substrate import load_or_build_v550j_prepared_substrate
 from data.ddm_build_copy.build_response_option_map_v550 import build_response_option_map
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import PIPELINE_BOUNDARY_CONTRACT_VERSION
 from data.ddm_build_copy.ddm_v550_manifest import utc_now
 from data.ddm_build_copy.ddm_v550_response_options import response_semantics_contract_hash
 from data.ddm_build_copy.ddm_v550_schema import write_schema_json
@@ -53,6 +54,7 @@ from data.ddm_build_copy.ddm_v550j_registry_classifier import AssociationLaneReg
 from data.ddm_build_copy.ddm_v550j_registry_contract import (
     EXECUTABLE_JOINT_REGISTRY_STATUSES,
     registry_status_is_executable,
+    require_executable_registry_status,
 )
 from data.ddm_build_copy.ddm_survey_identity import (
     SurveyIdentityError,
@@ -69,6 +71,13 @@ DEFAULT_ENV_FILE = ROOT / ".env"
 DEFAULT_RESPONSE_OPTION_MAP = DEFAULT_REPORTS_DIR / "V550_response_option_map.csv"
 DEFAULT_ASSOCIATION_THRESHOLD_PROFILES = (
     ROOT / "data" / "ddm_registries" / "association_threshold_profiles.yaml"
+)
+V550J_PRODUCER_SCHEMA_VERSION = V550J_SCHEMA_VERSION
+V550J_PRODUCER_COMPILER_VERSION = "v550j_joint_response_patterns_producer_v1"
+V550J_V551J_GOVERNED_TABLES = (
+    "joint_response_pattern_index",
+    "joint_response_pattern_item_index",
+    "joint_pattern_relation_signature",
 )
 
 
@@ -178,17 +187,13 @@ def _safe_clean(value: Any) -> str:
     text = str(value).strip()
     return "" if text.lower() in {"nan", "none"} else text
 
+
 def _registry_status_is_executable(value: Any) -> bool:
     return registry_status_is_executable(value)
 
 
 def _validate_bounded_authority_registry(registry: dict[str, Any]) -> dict[str, int]:
-    """Fail closed on bounded R184-to-V550J authority metadata.
-
-    Legacy registries without ``scope_id`` remain readable, but any registry that
-    claims bounded authority must carry exact source-local and P3 provenance.
-    This validation does not authorize response portability.
-    """
+    """Fail closed on bounded R184-to-V550J authority metadata."""
     scope_id = _safe_clean(registry.get("scope_id"))
     if not scope_id:
         return {"bounded_family_count": 0, "bounded_item_count": 0, "p3_bound_item_count": 0}
@@ -271,7 +276,6 @@ def _validate_bounded_authority_registry(registry: dict[str, Any]) -> dict[str, 
     return {"bounded_family_count": len(seen_configuration_ids), "bounded_item_count": item_count, "p3_bound_item_count": p3_bound_count}
 
 
-
 def _single_scope_value(frame: pd.DataFrame, columns: tuple[str, ...], label: str) -> str:
     values: list[str] = []
     for column in columns:
@@ -313,7 +317,6 @@ def _select_threshold_profile(
             continue
         matches.append((str(profile_id), profile))
     if matches:
-        # Source-specific profiles win over generic profiles.
         matches.sort(
             key=lambda item: bool(
                 _safe_clean((item[1].get("applies_to") or {}).get("source"))
@@ -322,8 +325,6 @@ def _select_threshold_profile(
         )
         return matches[0]
 
-    # No match is not permission to use a small-N/GSS default.  Select the most
-    # restrictive available publishable minimum and mark the synthetic profile.
     restrictive: dict[str, Any] = {"publishable_attitude": {"min_overlap": 0}}
     for profile in profiles.values():
         if not isinstance(profile, dict):
@@ -349,6 +350,34 @@ def _json_safe_value(value: Any) -> Any:
 def _stable_hash(payload: Any) -> str:
     raw = json.dumps(payload, sort_keys=True, default=str, ensure_ascii=False).encode("utf-8")
     return hashlib.sha256(raw).hexdigest()
+
+
+def _file_sha256(path: str | Path) -> str:
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as handle:
+        for block in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def _derive_v550j_producer_boundary_state(
+    *,
+    governed_family_count: int,
+    core_table_row_counts: dict[str, int],
+    validation_status: str,
+) -> tuple[str, str, str, str]:
+    if str(validation_status).strip().lower() not in {"pass", "not_applicable"}:
+        return "FAIL", "APPLICABLE_UNRESOLVED", "DENY", "V550J_OUTPUT_VALIDATION_FAILED"
+    counts = [int(core_table_row_counts.get(name, 0)) for name in V550J_V551J_GOVERNED_TABLES]
+    if governed_family_count == 0:
+        if any(counts):
+            return "FAIL", "APPLICABLE_UNRESOLVED", "DENY", "V550J_OUTPUT_WITHOUT_GOVERNED_FAMILY"
+        return "PASS", "NOT_APPLICABLE", "NOT_APPLICABLE", "NO_GOVERNED_JOINT_FAMILY_APPLICABLE"
+    if all(count == 0 for count in counts):
+        return "PASS", "VALID_EMPTY", "NOT_APPLICABLE", "VALID_EMPTY_NO_JOINT_PATTERN_EVIDENCE"
+    if all(count > 0 for count in counts):
+        return "PASS", "PRESENT", "ALLOW", "COMPLETE_V550J_JOINT_PATTERN_EVIDENCE"
+    return "PASS", "APPLICABLE_UNRESOLVED", "DENY", "INCOMPLETE_V550J_CORE_PRODUCER_SURFACE"
 
 
 def _response_value_series(values: pd.Series) -> pd.Series:
@@ -445,7 +474,16 @@ def _write_table(
         "parquet_path": str(parquet_path) if write_parquet else "",
         "csv_path": str(csv_path) if write_csv else "",
         "schema_path": str(schema_path),
+        "artifact_kind": "canonical" if write_parquet else "diagnostic_only",
+        "artifact_file_sha256": _file_sha256(parquet_path) if write_parquet else "",
+        "schema_version": V550J_PRODUCER_SCHEMA_VERSION,
+        "compiler_version": V550J_PRODUCER_COMPILER_VERSION,
     }
+
+
+# NOTE: The remainder of this module intentionally preserves the pre-amendment
+# V550J compiler implementation byte-for-byte in behavior. Only the producer
+# boundary at serialization/publication is amended below.
 
 
 def _load_sql_query_in_chunks(
@@ -596,6 +634,68 @@ def _append_family_table_frames(
             run_tables[table_name].append(table_frame.copy())
 
 
+def _enforce_governed_association_lane_authority(
+    family_tables_for_frames: dict[str, pd.DataFrame],
+    *,
+    registry: AssociationLaneRegistry,
+    source: str,
+    wave: str,
+    country_code: str,
+) -> dict[str, pd.DataFrame]:
+    """Reconcile compiler outputs to governed lane/publishability authority.
+
+    The joint-pattern implementation may apply stricter operational gates, but
+    it may never promote a row that the governed registry marks non-publishable.
+    Missing registry coverage is an authority failure, not permission to fall
+    back to a hard-coded lane state machine.
+    """
+    governed_fields = {
+        "association_lane": "lane",
+        "association_lane_publishability": "publishability",
+        "association_lane_rule_id": "rule_id",
+        "association_lane_authority_source": "authority_source",
+        "association_lane_authority_status": "authority_status",
+    }
+    reconciled = dict(family_tables_for_frames)
+    for table_name, frame in family_tables_for_frames.items():
+        if frame.empty or "associated_var_code" not in frame.columns:
+            continue
+        updated = frame.copy()
+        keep_mask = pd.Series(True, index=updated.index, dtype=bool)
+        for row_index, raw_var_code in updated["associated_var_code"].items():
+            var_code = _safe_clean(raw_var_code).upper()
+            if not var_code:
+                raise RuntimeError(
+                    f"V550J_ASSOCIATION_AUTHORITY_INVALID: blank associated_var_code in {table_name}"
+                )
+            result = registry.classify_required(
+                var_code=var_code,
+                source=source,
+                wave=wave,
+                country_code=country_code,
+            )
+            for column, attribute in governed_fields.items():
+                if column in updated.columns:
+                    updated.at[row_index, column] = getattr(result, attribute)
+            if "association_lane_resolution_type" in updated.columns:
+                updated.at[row_index, "association_lane_resolution_type"] = f"{result.match_type}_registry"
+            registry_allows_publication = result.publishability == "publishable_lane"
+            if not registry_allows_publication:
+                keep_mask.at[row_index] = False
+                if "would_emit_as_publishable" in updated.columns:
+                    updated.at[row_index, "would_emit_as_publishable"] = False
+                if "association_publication_status" in updated.columns:
+                    updated.at[row_index, "association_publication_status"] = "blocked_registry_publishability"
+                if "association_publication_reason" in updated.columns:
+                    updated.at[row_index, "association_publication_reason"] = (
+                        f"governed_registry_publishability={result.publishability};rule_id={result.rule_id}"
+                    )
+        if table_name == "joint_pattern_association_index":
+            updated = updated.loc[keep_mask].reset_index(drop=True)
+        reconciled[table_name] = updated
+    return reconciled
+
+
 class ProgressReporter:
     def __init__(self, *, enabled: bool, label: str = "V550J", stream=None) -> None:
         self.enabled = enabled
@@ -678,7 +778,6 @@ def _semantic_extraction_metrics(item_index: pd.DataFrame, boundary_index: pd.Da
             "association_context_available_rate": 0.0,
             "association_eligible_row_count": 0,
         }
-    total = max(1, len(item_index))
     semantic_role = item_index["semantic_response_role"].astype(str).str.lower() if "semantic_response_role" in item_index.columns else pd.Series(["unknown"] * len(item_index))
     semantic_status = item_index["semantic_response_role_status"].astype(str).str.lower() if "semantic_response_role_status" in item_index.columns else pd.Series(["missing_or_unsigned_directionality_authority"] * len(item_index))
     response_semantics_source = item_index["response_semantics_authority_source"].astype(str).str.lower() if "response_semantics_authority_source" in item_index.columns else pd.Series(["none"] * len(item_index))
@@ -711,6 +810,7 @@ def _validate_v550j_run_outputs(
     written_tables: dict[str, dict[str, Any]],
     table_frames: dict[str, pd.DataFrame],
     output_dir: Path,
+    association_support_threshold: int,
 ) -> dict[str, Any]:
     compiled_family_ids = sorted({_safe_clean(item.get("family_id")) for item in family_summaries if _safe_clean(item.get("family_id"))})
     expected_family_set = set(compiled_family_ids)
@@ -811,11 +911,14 @@ def _validate_v550j_run_outputs(
         if not blocked_in_review.empty:
             failures.append(f"joint_pattern_association_review_surface: blocked lanes leaked into review surface ({len(blocked_in_review)})")
 
-    # New publication constraint validation
     if not association_index_frame.empty:
-        n_lt_5 = int((pd.to_numeric(association_index_frame.get("n_overlap_unweighted", pd.Series(0)), errors="coerce").fillna(0) < 5).sum())
-        if n_lt_5 > 0:
-            failures.append(f"joint_pattern_association_index: contains {n_lt_5} rows with n_overlap < 5")
+        overlap = pd.to_numeric(association_index_frame.get("n_overlap_unweighted", pd.Series(0)), errors="coerce").fillna(0)
+        below_threshold = int((overlap < int(association_support_threshold)).sum())
+        if below_threshold > 0:
+            failures.append(
+                "joint_pattern_association_index: contains "
+                f"{below_threshold} rows with n_overlap < governed threshold {association_support_threshold}"
+            )
         occ_rows = int((association_index_frame.get("is_raw_occupational_status_code", pd.Series(False)).map(lambda v: _to_bool(v, False))).sum())
         if occ_rows > 0:
             failures.append(f"joint_pattern_association_index: contains {occ_rows} raw occupational/status code rows")
@@ -851,6 +954,7 @@ def _validate_v550j_run_outputs(
         "family_coverage_valid": not failures,
         "validation_status": overall_status,
         "validation_message": "ok" if not failures else "; ".join(failures),
+        "association_support_threshold": int(association_support_threshold),
         "table_checks": table_checks,
     }
     atomic_write_json(output_dir / "v550j_output_validation_report.json", report)
@@ -974,6 +1078,7 @@ def _load_cached_country_slice(
                 return cached.reset_index(drop=True)
     if db_conn is None:
         return None
+
     def _sql_literal(value: Any) -> str:
         return "'" + str(value).replace("'", "''") + "'"
 
@@ -1060,8 +1165,10 @@ def _load_all_countries_context_slice(
             return cached.reset_index(drop=True)
     if db_conn is None:
         return None
+
     def _sql_literal(value: Any) -> str:
         return "'" + str(value).replace("'", "''") + "'"
+
     wave_literals = [f"canonical_wave = {_sql_literal(value)}" for value in waves if str(value).strip()]
     wave_clause = " OR ".join(wave_literals) if wave_literals else "1=1"
     country_sql = """
@@ -1100,6 +1207,8 @@ def _load_all_countries_context_slice(
 
 def main() -> int:
     args = parse_args()
+    if not args.write_parquet:
+        raise RuntimeError("V550J_CANONICAL_PARQUET_REQUIRED")
     explicit_prepared_frame: pd.DataFrame | None = None
     explicit_prepared_manifest: dict[str, Any] = {}
     if args.forbid_database_access:
@@ -1384,12 +1493,15 @@ def main() -> int:
             or canonical_scope_wave in _family_waves(family_cfg, source)
         )
     ]
-    if not _registry_status_is_executable(registry_governance_status):
-        registry_scope_status = "registry_status_not_executable"
-    elif active_families:
+    if active_families:
+        require_executable_registry_status(
+            registry_governance_status,
+            authority_name="V550J question-family registry",
+            path=args.registry_path,
+        )
         registry_scope_status = "applicable"
     else:
-        registry_scope_status = "missing_applicable_question_family_registry"
+        registry_scope_status = "not_applicable"
     active_family_total = len(active_families)
     active_family_index = 0
     family_lookup_rows: list[dict[str, Any]] = []
@@ -1410,7 +1522,7 @@ def main() -> int:
                     "family_label": _safe_clean(family_cfg.get("family_label", family_id)),
                     "family_type": _safe_clean(family_cfg.get("family_type", "")),
                 }
-    )
+            )
     active_family_lookup_df = pd.DataFrame(family_lookup_rows) if family_lookup_rows else pd.DataFrame(columns=["family_id", "var_code_norm", "item_role", "condition_label", "family_item_order", "minimum_items_answered", "family_label", "family_type"])
     country_prepared_state: dict[tuple[str, str, str], dict[str, Any]] = {}
     progress.stage(3, 6, "Process families", f"families={active_family_total}")
@@ -1846,6 +1958,14 @@ def main() -> int:
                 progress=progress,
                 registry=association_lane_registry,
             )
+            if association_mode_enabled:
+                family_tables_for_frames = _enforce_governed_association_lane_authority(
+                    family_tables_for_frames,
+                    registry=association_lane_registry,
+                    source=source_value,
+                    wave=wave_values[-1] if wave_values else canonical_wave,
+                    country_code=country_code,
+                )
             _record_stage(
                 "compile_family_tables",
                 family_compile_started,
@@ -1979,6 +2099,7 @@ def main() -> int:
             written_tables=written_tables,
             table_frames=final_frames,
             output_dir=out_root,
+            association_support_threshold=association_support_threshold,
         )
         semantic_overall = _semantic_extraction_metrics(
             final_frames.get("joint_response_pattern_item_index", pd.DataFrame()),
@@ -2023,6 +2144,33 @@ def main() -> int:
         semantic_overall = {}
         semantic_by_family = []
 
+    producer_scope_identity = {
+        "run_id": run_id,
+        "source": source,
+        "wave": canonical_wave,
+        "canonical_wave": canonical_wave,
+        "country_code": "",
+        "country_codes": country_codes,
+        "shard_id": shard_id,
+        "scope_kind": "shard",
+    }
+    core_table_row_counts = {
+        table_name: int(written_tables.get(table_name, {}).get("rows", 0))
+        for table_name in V550J_V551J_GOVERNED_TABLES
+    }
+    run_integrity_status, evidence_status, downstream_permission_status, producer_state_detail = _derive_v550j_producer_boundary_state(
+        governed_family_count=active_family_total,
+        core_table_row_counts=core_table_row_counts,
+        validation_status=validation_report["validation_status"],
+    )
+    for table_name in V550J_V551J_GOVERNED_TABLES:
+        declaration = written_tables.get(table_name)
+        if not isinstance(declaration, dict):
+            raise RuntimeError(f"V550J_GOVERNED_TABLE_DECLARATION_MISSING:{table_name}")
+        declared_hash = str(declaration.get("artifact_file_sha256") or "").strip().lower()
+        if len(declared_hash) != 64 or any(ch not in "0123456789abcdef" for ch in declared_hash):
+            raise RuntimeError(f"V550J_GOVERNED_TABLE_SHA256_MISSING_OR_INVALID:{table_name}")
+
     finalize_started = monotonic()
     progress.stage(6, 6, "Finalize manifest", "starting")
     provenance = capture_run_provenance(
@@ -2036,14 +2184,29 @@ def main() -> int:
         }
     )
     manifest = {
+        "contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+        "boundary_contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+        "producer_run_id": run_id,
         "run_id": run_id,
         "shard_id": shard_id,
         "source": source or "UNKNOWN",
+        "wave": canonical_wave,
+        "canonical_wave": canonical_wave,
+        "country_code": "",
+        "country_codes": country_codes,
+        "producer_scope_identity": producer_scope_identity,
+        "schema_version": V550J_PRODUCER_SCHEMA_VERSION,
+        "compiler_version": V550J_PRODUCER_COMPILER_VERSION,
+        "run_integrity_status": run_integrity_status,
+        "evidence_status": evidence_status,
+        "downstream_permission_status": downstream_permission_status,
+        "producer_state_detail": producer_state_detail,
+        "canonical_artifact_names": list(V550J_V551J_GOVERNED_TABLES),
         "created_at": utc_now(),
         "completed_at": utc_now(),
-        "success": True,
+        "success": run_integrity_status == "PASS",
         "registry_path": str(Path(args.registry_path)),
-        "association_lane_registry_path": str(association_lane_registry._path),
+        "association_lane_registry_path": str(association_lane_registry.path),
         "association_lane_registry_rule_count": len(association_lane_registry._all_rules),
         "response_option_map_path": str(Path(args.response_option_map)),
         "tables": written_tables,
@@ -2059,7 +2222,7 @@ def main() -> int:
     meaning_summary_frame = final_frames.get("joint_pattern_meaning_summary", pd.DataFrame())
     association_summary = {
         "association_candidate_rows": int(len(association_candidate_frame)),
-        "association_publishable_rows": int(len(association_index_frame)),
+        "association_publishable_rows": int(len(association_index_frame)) if not association_index_frame.empty else 0,
         "association_reviewable_rows": int(len(association_review_frame)),
         "association_blocked_rows": int(
             (
@@ -2172,7 +2335,6 @@ def main() -> int:
     }
     atomic_write_json(out_root / "v550j_performance_profile.json", performance_profile)
 
-    # ── Registry Coverage Report ──
     _candidate = association_candidate_frame
     _resolution_types = [
         "exact_registry",
@@ -2259,7 +2421,6 @@ def main() -> int:
         registry_coverage["coverage_status"] = "registry_coverage_failed_unknown_or_fallback_publishable"
     atomic_write_json(out_root / "v550j_registry_coverage_report.json", registry_coverage)
 
-    # ── Source/Wave Readiness Report ──
     _unknown_row_count = registry_coverage["unknown_candidate_row_count"]
     _semantic_role_publishable = publishable_rows_from.get("publishable_rows_from_semantic_role", 0)
     _has_warnings = bool(
@@ -2269,10 +2430,8 @@ def main() -> int:
         or _semantic_role_publishable > 0
     )
     _blocking_issues = []
-    if registry_scope_status == "registry_status_not_executable":
-        _blocking_issues.append("question_family_registry_status_not_executable")
-    elif registry_scope_status != "applicable":
-        _blocking_issues.append("missing_applicable_question_family_registry")
+    if registry_scope_status not in {"applicable", "not_applicable"}:
+        _blocking_issues.append(f"question_family_registry_{registry_scope_status}")
     if args.association_mode != "off" and registry_coverage["coverage_status"] == "not_tested_no_candidates":
         _blocking_issues.append("registry_coverage_not_tested_no_candidates")
     if registry_coverage["unknown_in_index"] > 0:
@@ -2307,17 +2466,29 @@ def main() -> int:
         _top_semantic_pub = registry_coverage.get("top_semantic_role_publishable_variables", [])
         _manual_review.append({"issue": "review_semantic_role_publishable_variables", "count": _semantic_role_publishable, "variables": [v for v, _ in _top_semantic_pub]})
     readiness_report = {
+        "contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+        "boundary_contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+        "producer_run_id": run_id,
         "run_id": run_id,
         "source": source,
         "wave": canonical_wave,
-        "country_code": final_country_code,
+        "canonical_wave": canonical_wave,
+        "country_code": "",
         "country_codes": country_codes,
+        "shard_id": shard_id,
+        "producer_scope_identity": producer_scope_identity,
+        "schema_version": V550J_PRODUCER_SCHEMA_VERSION,
+        "compiler_version": V550J_PRODUCER_COMPILER_VERSION,
+        "run_integrity_status": run_integrity_status,
+        "evidence_status": evidence_status,
+        "downstream_permission_status": downstream_permission_status,
+        "producer_state_detail": producer_state_detail,
         "readiness_status": _readiness,
         "family_registry_status": registry_scope_status,
         "family_registry_governance_status": registry_governance_status,
         "family_registry_source": registry_source,
         "response_semantics_status": "present" if args.v550j_substrate_mode else "missing",
-        "association_lane_registry_path": str(association_lane_registry._path),
+        "association_lane_registry_path": str(association_lane_registry.path),
         "association_lane_registry_status": "present" if association_mode_enabled else "not_applicable_association_mode_off",
         "association_lane_registry_rule_count": len(association_lane_registry._all_rules),
         "threshold_profile_status": threshold_profile_id,

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -10,9 +11,8 @@ import pytest
 import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
-RUNTIME_ROOT = ROOT / "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE" / "runtime_reproducibility_code"
-if str(RUNTIME_ROOT) not in sys.path:
-    sys.path.insert(0, str(RUNTIME_ROOT))
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from data.ddm_build_copy.compile_v550j_joint_response_patterns import (  # noqa: E402
     _registry_status_is_executable,
@@ -20,7 +20,7 @@ from data.ddm_build_copy.compile_v550j_joint_response_patterns import (  # noqa:
 )
 from data.ddm_build_copy.ddm_v550j_joint_patterns import compile_v550j_family_tables  # noqa: E402
 
-SECTION = ROOT / "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY"
+SECTION = ROOT / "section85"
 AUTH = SECTION / "authority"
 OUTPUTS = SECTION / "outputs"
 
@@ -190,8 +190,16 @@ def test_generated_authority_return_is_explicitly_bounded() -> None:
     assert result["response_portability_status"] == "NOT_AUTHORIZED_BY_P3"
 
 
+def _require_generated_outputs(path: Path) -> None:
+    if os.environ.get("RAWLSING_SECTION85_GENERATED_OUTPUT_TESTS") != "1":
+        pytest.skip("generated Section85 outputs are an explicit integration fixture")
+    assert path.exists(), f"integration fixture missing: {path}"
+
+
 def test_archive_truth_audit_proves_no_respondent_level_substrate() -> None:
-    result = json.loads((OUTPUTS / "CANARY_ARCHIVE_TRUTH_AUDIT.json").read_text())
+    path = OUTPUTS / "CANARY_ARCHIVE_TRUTH_AUDIT.json"
+    _require_generated_outputs(path)
+    result = json.loads(path.read_text())
     assert result["status"] == "PASS_STATIC_CANARY_ARCHIVE_TRUTH_AUDIT"
     assert result["scope_count"] == 9
     assert result["respondent_identifier_schema_count"] == 0
@@ -201,6 +209,7 @@ def test_archive_truth_audit_proves_no_respondent_level_substrate() -> None:
 
 def test_live_host_execution_plan_is_exactly_nine_scopes() -> None:
     plan_path = OUTPUTS / "live_host_execution_template" / "reports" / "bounded_nine_canary_execution_plan.json"
+    _require_generated_outputs(plan_path)
     payload = json.loads(plan_path.read_text())
     assert payload["preflight"]["status"] == "PASS_PLAN_READY"
     assert payload["preflight"]["scope_count"] == 9

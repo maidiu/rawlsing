@@ -1,335 +1,231 @@
 #!/usr/bin/env python3
+"""G4 exact-producer entrypoint for the bounded Section 85 J-chain canary.
+
+The G2 implementation is retained in
+`_g2_run_bounded_nine_v550j_v551j_v552j.py`.  This entrypoint changes only the
+producer/consumer contract surface now frozen at G4: V551J consumes the exact
+V551 v3 manifest and V552J consumes exact V551J + V552 producer manifests;
+functional acceptance verifies exact producer versions, identity, canonical
+Parquet bytes and producer-declared serialized SHA-256 values.
+"""
 from __future__ import annotations
 
-import argparse
-import csv
 import importlib.util
 import json
-import os
-import shlex
-import subprocess
 import sys
-import time
-import unicodedata
 from pathlib import Path
 from typing import Any
 
+CODE_DIR = Path(__file__).resolve().parent
+if str(CODE_DIR) not in sys.path:
+    sys.path.insert(0, str(CODE_DIR))
 
-def norm(value: str) -> str:
-    return unicodedata.normalize("NFC", str(value)).casefold()
+from section85_exact_producer_state import (  # noqa: E402
+    V551J_COMPILER_VERSION,
+    V551J_SCHEMA_VERSION,
+    V552J_COMPILER_VERSION,
+    V552J_SCHEMA_VERSION,
+    exact_producer_gate,
+)
+from section85_typed_state import verify_v551_artifact_files  # noqa: E402
 
-
-def resolve_child(root: Path, wanted: str) -> Path:
-    exact = root / wanted
-    if exact.exists():
-        return exact
-    candidates = [path for path in root.iterdir() if norm(path.name) == norm(wanted)] if root.exists() else []
-    if len(candidates) != 1:
-        raise RuntimeError(f"Cannot resolve {wanted!r} under {root}; candidates={candidates}")
-    return candidates[0]
-
-
-def find_script(repo_root: Path, name: str) -> Path:
-    candidates = [
-        repo_root / "data" / "ddm_build_copy" / name,
-        repo_root / "02_CORE_REFERENCE" / "code" / name,
-        repo_root / "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE" / "runtime_reproducibility_code" / "data" / "ddm_build_copy" / name,
-    ]
-    for path in candidates:
-        if path.exists():
-            return path.resolve()
-    raise FileNotFoundError(f"Missing compiler {name}; searched {candidates}")
+LEGACY_IMPLEMENTATION = CODE_DIR / "_g2_run_bounded_nine_v550j_v551j_v552j.py"
 
 
-def read_manifest(path: Path) -> list[dict[str, str]]:
-    with path.open(encoding="utf-8", newline="") as handle:
-        return list(csv.DictReader(handle))
+def _load_implementation():
+    spec = importlib.util.spec_from_file_location("section85_bounded_g2", LEGACY_IMPLEMENTATION)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"SECTION85_BOUNDED_G2_IMPLEMENTATION_UNLOADABLE:{LEGACY_IMPLEMENTATION}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
-def source_slug(source: str) -> str:
-    return {
-        "Afrobarometer": "afrobarometer",
-        "Arab Barometer": "arab_barometer",
-        "Asian Barometer": "asian_barometer",
-        "EVS": "evs",
-        "GSS": "gss",
-        "Latinobarómetro": "latinobarometro",
-        "LiTS": "lits",
-        "South Asia": "south_asia",
-        "WVS": "wvs",
-    }[source]
-
-
-def invoke(command: list[str], *, cwd: Path, log_path: Path, timeout: int, env: dict[str, str]) -> dict[str, Any]:
-    log_path.parent.mkdir(parents=True, exist_ok=True)
-    started = time.time()
-    completed = subprocess.run(command, cwd=cwd, env=env, text=True, capture_output=True, timeout=timeout)
-    elapsed = round(time.time() - started, 3)
-    log_path.write_text(
-        "$ " + shlex.join(command) + "\n\n--- STDOUT ---\n" + completed.stdout + "\n--- STDERR ---\n" + completed.stderr,
-        encoding="utf-8",
-    )
-    return {
-        "exit_code": completed.returncode,
-        "elapsed_seconds": elapsed,
-        "command": command,
-        "log_path": str(log_path),
-        "stdout_tail": completed.stdout[-4000:],
-        "stderr_tail": completed.stderr[-4000:],
-    }
-
-
-def optional_context_args(structural_dir: Path) -> list[str]:
-    mapping = {
-        "--v552-question-semantic-hierarchy-path": "question_semantic_hierarchy.parquet",
-        "--v552-structural-channel-index-path": "structural_channel_index.parquet",
-        "--v552-relation-axis-pressure-path": "relation_axis_pressure.parquet",
-        "--v552-target-entity-pressure-path": "target_entity_pressure.parquet",
-        "--v552-driver-facet-pressure-path": "driver_facet_pressure.parquet",
-        "--v552-contradiction-surface-path": "contradiction_surface.parquet",
-        "--v552-horizon-constraint-index-path": "horizon_constraint_index.parquet",
-        "--v552-parent-prior-manifest-path": "parent_prior_manifest.parquet",
-        "--v552-artifact-authority-index-path": "v552_artifact_authority_index.parquet",
-        "--v552-known-absence-register-path": "v552_known_absence_register.parquet",
-        "--v552-structural-fact-index-path": "v552_structural_fact_index.parquet",
-        "--v552-temporal-key-source-index-path": "v552_temporal_key_source_index.parquet",
-    }
-    args: list[str] = []
-    for flag, filename in mapping.items():
-        path = structural_dir / filename
-        if path.exists():
-            args.extend([flag, str(path)])
-    return args
-
-
-def load_json(path: Path) -> dict[str, Any]:
+def _load_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return {}
+    return payload if isinstance(payload, dict) else {}
 
 
-def build_plan(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    repo = args.repo_root.resolve()
-    section = args.section.resolve()
-    canary = args.canary_root.resolve()
-    output = args.output_root.resolve()
-    manifest_rows = read_manifest(section / "authority" / "bounded_nine_scope_manifest.csv")
-    requested = {norm(value) for value in args.scope} if args.scope else set()
-    if requested:
-        manifest_rows = [row for row in manifest_rows if norm(row["scope_dir"]) in requested or norm(row["source_family"]) in requested]
-        if not manifest_rows:
-            raise RuntimeError(f"No scopes match --scope values {args.scope}")
+def _resolve_manifest(run_root: Path, stage: str) -> Path:
+    candidates = [run_root / "manifest.json", run_root / "manifest" / "manifest.json"]
+    existing = [path.resolve() for path in candidates if path.exists()]
+    unique = list(dict.fromkeys(existing))
+    if len(unique) != 1:
+        raise RuntimeError(
+            f"SECTION85_{stage.upper()}_EXACT_MANIFEST_REQUIRED:root={run_root}:candidates={unique}"
+        )
+    return unique[0]
 
-    compilers = {
-        "v550j": find_script(repo, "compile_v550j_joint_response_patterns.py"),
-        "v551j": find_script(repo, "compile_v551j_joint_evidence_packets.py"),
-        "v552j": find_script(repo, "compile_v552j_runtime_safe_structural_handoff.py"),
+
+def _run_root_for_manifest(manifest_path: Path) -> Path:
+    return manifest_path.parent.parent if manifest_path.parent.name == "manifest" else manifest_path.parent
+
+
+def _flag_value(command: list[str], flag: str) -> str:
+    try:
+        index = command.index(flag)
+        return command[index + 1]
+    except (ValueError, IndexError) as exc:
+        raise RuntimeError(f"SECTION85_COMMAND_FLAG_MISSING:{flag}") from exc
+
+
+def _expected_identity(entry: dict[str, Any], run_id: str) -> dict[str, str]:
+    return {
+        "run_id": run_id,
+        "source": str(entry.get("source_family") or ""),
+        "wave": str(entry.get("wave") or ""),
+        "country_code": str(entry.get("country_code") or ""),
+        "shard_id": str(entry.get("shard_id") or ""),
     }
-    env_file = args.env_file.resolve() if args.env_file else repo / ".env"
-    db_url = args.db_url or os.environ.get("DATABASE_URL", "")
-    plan: list[dict[str, Any]] = []
 
-    for row in manifest_rows:
-        scope = row["scope_dir"]
-        shard_matches = list(canary.glob(f"v550/shard_runs/*/{scope}"))
-        if len(shard_matches) != 1:
-            shard_matches = []
-            for parent in (canary / "v550" / "shard_runs").iterdir():
-                try:
-                    shard_matches.append(resolve_child(parent, scope))
-                except RuntimeError:
-                    pass
-        if len(shard_matches) != 1:
-            raise RuntimeError(f"Expected one V550 shard for {scope}, found {shard_matches}")
-        shard_dir = shard_matches[0].resolve()
-        run_id = shard_dir.parent.name
-        shard_id = shard_dir.name
-        filter_path = (section / "inputs" / row["filter_file"]).resolve()
-        registry = (section / "authority" / f"registry_{source_slug(row['source_family'])}.yaml").resolve()
-        response_map = (shard_dir / "core" / "response_option_map.parquet").resolve()
-        v551_scope = resolve_child(canary / "v551", scope)
-        atoms = (v551_scope / "relation_evidence_atoms.parquet").resolve()
-        v552_scope = resolve_child(canary / "v552", scope)
-        structural_dir = v552_scope / "structural"
 
-        v550j_output_root = output / "v550j"
-        v550j_artifacts = v550j_output_root / "runs" / run_id / shard_id / "joint_patterns"
-        v551j_output_root = output / "v551j"
-        v551j_run_root = v551j_output_root / shard_id
-        v552j_output_root = output / "v552j"
+def _assert_v551_identity(contract: dict[str, Any], expected: dict[str, str]) -> None:
+    for key in ("producer_run_id", "source", "wave"):
+        want_key = "run_id" if key == "producer_run_id" else key
+        if expected[want_key] and str(contract.get(key) or "") != expected[want_key]:
+            raise RuntimeError(
+                f"SECTION85_V551_SCOPE_MISMATCH:{want_key}:"
+                f"expected={expected[want_key]}:actual={contract.get(key, '')}"
+            )
+    if expected["country_code"]:
+        if str(contract.get("country_code") or "") != expected["country_code"]:
+            raise RuntimeError("SECTION85_V551_SCOPE_MISMATCH:country_code")
+    elif expected["shard_id"] and str(contract.get("shard_id") or "") != expected["shard_id"]:
+        raise RuntimeError("SECTION85_V551_SCOPE_MISMATCH:shard_id")
 
-        v550j = [
-            sys.executable, str(compilers["v550j"]),
-            "--v550-shard-dir", str(shard_dir),
-            "--output-root", str(v550j_output_root),
-            "--registry-path", str(registry),
-            "--response-option-map", str(response_map),
-            "--question-filter-file", str(filter_path),
-            "--env-file", str(env_file),
-            "--association-mode", "off",
-            "--v550j-substrate-mode", args.substrate_mode,
-            "--no-progress", "--no-write-csv", "--write-parquet", "--with-diagnostics",
-        ]
-        if db_url:
-            v550j.extend(["--db-url", db_url])
+
+def build_plan(args, *, legacy=None) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    """Rebind the retained G2 plan to the exact merged G4 producer CLIs."""
+    legacy = legacy or _load_implementation()
+    plan, preflight = legacy.build_plan(args)
+    repo = args.repo_root.resolve()
+
+    for entry in plan:
+        # The V550 shard parent is the inherited pipeline run identity.  The old
+        # G2 runner used shard_id as a temporary J-stage run id; G4 producers do
+        # not permit that alias.
+        inherited_run_id = str(entry["run_id"])
+        expected = _expected_identity(entry, inherited_run_id)
+
+        v551_scope = Path(entry["v551_atoms_path"]).resolve().parent
+        v551_manifest = _resolve_manifest(v551_scope, "v551")
+        v551_payload = _load_json(v551_manifest)
+        if not v551_payload:
+            raise RuntimeError(f"SECTION85_V551_MANIFEST_UNREADABLE:{v551_manifest}")
+        v551_contract = verify_v551_artifact_files(v551_payload, _run_root_for_manifest(v551_manifest))
+        _assert_v551_identity(v551_contract, expected)
+        v551_atoms = Path(v551_contract["verified_artifacts"]["relation_evidence_atoms"]["path"]).resolve()
+
+        v552_scope = Path(entry["v552_structural_context_dir"]).resolve().parent
+        v552_manifest = _resolve_manifest(v552_scope, "v552")
+
+        old_v551j = entry["commands"]["v551j"]
+        v551j_output_root = Path(_flag_value(old_v551j, "--output-root")).resolve()
+        v551j_manifest = v551j_output_root / inherited_run_id / "manifest" / "manifest.json"
 
         v551j = [
-            sys.executable, str(compilers["v551j"]),
-            "--run-id", shard_id,
-            "--v551-atoms-path", str(atoms),
-            "--v550j-pattern-index-path", str(v550j_artifacts / "joint_response_pattern_index.parquet"),
-            "--v550j-pattern-item-index-path", str(v550j_artifacts / "joint_response_pattern_item_index.parquet"),
-            "--v550j-relation-signature-path", str(v550j_artifacts / "joint_pattern_relation_signature.parquet"),
-            "--v550j-manifest-path", str(v550j_artifacts / "v550j_manifest.json"),
-            "--v550j-readiness-report-path", str(v550j_artifacts / "v550j_source_wave_readiness_report.json"),
-            "--v550j-meaning-summary-path", str(v550j_artifacts / "joint_pattern_meaning_summary.parquet"),
-            "--registry-path", str(registry),
+            sys.executable,
+            str(legacy.find_script(repo, "compile_v551j_joint_evidence_packets.py")),
+            "--run-id", inherited_run_id,
+            "--v551-atoms-path", str(v551_atoms),
+            "--v551-manifest-path", str(v551_manifest),
+            "--v550j-pattern-index-path", _flag_value(old_v551j, "--v550j-pattern-index-path"),
+            "--v550j-pattern-item-index-path", _flag_value(old_v551j, "--v550j-pattern-item-index-path"),
+            "--v550j-relation-signature-path", _flag_value(old_v551j, "--v550j-relation-signature-path"),
+            "--v550j-manifest-path", _flag_value(old_v551j, "--v550j-manifest-path"),
+            "--v550j-readiness-report-path", _flag_value(old_v551j, "--v550j-readiness-report-path"),
+            "--v550j-meaning-summary-path", _flag_value(old_v551j, "--v550j-meaning-summary-path"),
+            "--registry-path", _flag_value(old_v551j, "--registry-path"),
             "--output-root", str(v551j_output_root),
-            "--emit-review-surface", "--emit-certified-index", "--no-write-csv", "--write-parquet", "--strict",
+            "--emit-review-surface", "--emit-certified-index",
+            "--no-write-csv", "--write-parquet", "--strict",
         ]
-        # Only V552 base context is relevant to V551J; append the known subset.
-        for flag, filename in {
-            "--v552-question-semantic-hierarchy-path": "question_semantic_hierarchy.parquet",
-            "--v552-structural-channel-index-path": "structural_channel_index.parquet",
-            "--v552-relation-axis-pressure-path": "relation_axis_pressure.parquet",
-            "--v552-target-entity-pressure-path": "target_entity_pressure.parquet",
-            "--v552-driver-facet-pressure-path": "driver_facet_pressure.parquet",
-            "--v552-contradiction-surface-path": "contradiction_surface.parquet",
-            "--v552-horizon-constraint-index-path": "horizon_constraint_index.parquet",
-            "--v552-parent-prior-manifest-path": "parent_prior_manifest.parquet",
-        }.items():
-            path = structural_dir / filename
-            if path.exists():
-                v551j.extend([flag, str(path)])
 
+        old_v552j = entry["commands"]["v552j"]
+        v552j_output_root = Path(_flag_value(old_v552j, "--output-root")).resolve()
+        v552j_manifest = v552j_output_root / inherited_run_id / "manifest.json"
+        v552j_readiness = v552j_output_root / inherited_run_id / "manifest" / "v552j_readiness_report.json"
         v552j = [
-            sys.executable, str(compilers["v552j"]),
-            "--run-id", shard_id,
-            "--v551j-run-root", str(v551j_run_root),
+            sys.executable,
+            str(legacy.find_script(repo, "compile_v552j_structural_handoff.py")),
+            "--run-id", inherited_run_id,
+            "--v551j-manifest-path", str(v551j_manifest),
+            "--v552-manifest-path", str(v552_manifest),
             "--output-root", str(v552j_output_root),
-            "--write-parquet", "--no-write-csv", "--strict",
-        ] + optional_context_args(structural_dir)
+            "--write-parquet", "--no-write-csv",
+        ]
 
-        plan.append({
-            "source_family": row["source_family"],
-            "wave": row["wave"],
-            "country_code": row["country_code"],
-            "scope_dir": scope,
-            "run_id": run_id,
-            "shard_id": shard_id,
-            "joint_configuration_id": row["joint_configuration_id"],
-            "v550_shard_dir": str(shard_dir),
-            "filter_path": str(filter_path),
-            "registry_path": str(registry),
-            "response_option_map_path": str(response_map),
-            "v551_atoms_path": str(atoms),
-            "v552_structural_context_dir": str(structural_dir),
-            "commands": {"v550j": v550j, "v551j": v551j, "v552j": v552j},
-            "expected_outputs": {
-                "v550j_manifest": str(v550j_artifacts / "v550j_manifest.json"),
-                "v550j_readiness": str(v550j_artifacts / "v550j_source_wave_readiness_report.json"),
-                "v551j_readiness": str(v551j_run_root / "manifest" / "v551j_readiness_report.json"),
-                "v552j_readiness": str(v552j_output_root / shard_id / "manifest" / "v552j_readiness_report.json"),
-            },
-        })
+        entry["commands"]["v551j"] = v551j
+        entry["commands"]["v552j"] = v552j
+        entry["v551_atoms_path"] = str(v551_atoms)
+        entry["v551_manifest_path"] = str(v551_manifest)
+        entry["v552_manifest_path"] = str(v552_manifest)
+        entry["producer_run_id"] = inherited_run_id
+        entry["expected_producer_identity"] = expected
+        entry["expected_outputs"]["v551j_manifest"] = str(v551j_manifest)
+        entry["expected_outputs"]["v552j_manifest"] = str(v552j_manifest)
+        entry["expected_outputs"]["v552j_readiness"] = str(v552j_readiness)
 
-    preflight = {
-        "status": "PASS_PLAN_READY" if plan else "FAIL_EMPTY_PLAN",
-        "scope_count": len(plan),
-        "database_url_supplied": bool(db_url),
-        "database_required_for_execution": True,
-        "python_executable": sys.executable,
-        "required_modules": {name: importlib.util.find_spec(name) is not None for name in ("pandas", "yaml", "pyarrow")},
-        "compilers": {key: str(value) for key, value in compilers.items()},
-        "authority_scope": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
-        "production_completeness_claim": "NO_PRODUCTION_COMPLETENESS_CLAIM",
-        "association_mode": "off",
-    }
+    preflight.update(
+        {
+            "section85_typed_state_contract": "rawlsing_pipeline_boundary_v1",
+            "v551j_acceptance_hook": "ACTIVE_G4_EXACT_PRODUCER_CONTRACT",
+            "v551j_schema_version": V551J_SCHEMA_VERSION,
+            "v551j_compiler_version": V551J_COMPILER_VERSION,
+            "v552j_acceptance_hook": "ACTIVE_G4_EXACT_PRODUCER_CONTRACT",
+            "v552j_schema_version": V552J_SCHEMA_VERSION,
+            "v552j_compiler_version": V552J_COMPILER_VERSION,
+        }
+    )
     return plan, preflight
 
 
+def _typed_functional_gate(entry: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any], dict[str, bool]]:
+    """Exact G4 gate: typed state + version + identity + manifest-declared bytes."""
+    outputs = entry["expected_outputs"]
+    v550j_manifest = _load_json(Path(outputs["v550j_manifest"]))
+    v550j_ready = _load_json(Path(outputs["v550j_readiness"]))
+    expected = entry.get("expected_producer_identity") or _expected_identity(
+        entry, str(entry.get("producer_run_id") or entry.get("run_id") or "")
+    )
+
+    v551j_state = exact_producer_gate(
+        outputs["v551j_manifest"], stage="v551j", expected_identity=expected
+    )
+    v552j_state = exact_producer_gate(
+        outputs["v552j_manifest"], stage="v552j", expected_identity=expected
+    )
+    checks = {
+        "v550j_success": bool(v550j_manifest.get("success")),
+        "v550j_validation_pass": str(v550j_manifest.get("validation_status", "")).lower() == "pass",
+        "v550j_registry_applicable": v550j_ready.get("family_registry_status") == "applicable",
+        "v550j_not_blocked": not v550j_ready.get("blocking_issues"),
+        "v551j_exact_producer_contract_valid": bool(v551j_state["typed_contract_valid"]),
+        "v551j_run_integrity_pass": bool(v551j_state["integrity_pass"]),
+        "v552j_exact_producer_contract_valid": bool(v552j_state["typed_contract_valid"]),
+        "v552j_run_integrity_pass": bool(v552j_state["integrity_pass"]),
+    }
+    return v551j_state, v552j_state, checks
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run the exact bounded nine-source V550J -> V551J -> V552J canary on a live respondent database.")
-    parser.add_argument("--repo-root", type=Path, required=True)
-    parser.add_argument("--section", type=Path, required=True)
-    parser.add_argument("--canary-root", type=Path, required=True)
-    parser.add_argument("--output-root", type=Path, required=True)
-    parser.add_argument("--db-url", default="")
-    parser.add_argument("--env-file", type=Path, default=None)
-    parser.add_argument("--scope", action="append", default=[])
-    parser.add_argument("--plan-only", action="store_true")
-    parser.add_argument("--continue-on-failure", action="store_true")
-    parser.add_argument("--timeout-seconds", type=int, default=3600)
-    parser.add_argument("--substrate-mode", choices=("prepared_required", "prepared_or_build", "prepared_or_forensic_fallback", "forensic_reharmonize"), default="prepared_or_build")
-    args = parser.parse_args()
+    legacy = _load_implementation()
+    legacy_build_plan = legacy.build_plan
 
-    args.output_root.mkdir(parents=True, exist_ok=True)
-    plan, preflight = build_plan(args)
-    reports = args.output_root / "reports"
-    reports.mkdir(parents=True, exist_ok=True)
-    (reports / "bounded_nine_canary_execution_plan.json").write_text(json.dumps({"preflight": preflight, "plan": plan}, indent=2) + "\n", encoding="utf-8")
+    def g4_build_plan(args):
+        shim = type("LegacyShim", (), {})()
+        shim.build_plan = legacy_build_plan
+        shim.find_script = legacy.find_script
+        return build_plan(args, legacy=shim)
 
-    if args.plan_only:
-        print(json.dumps({"status": "PASS_PLAN_ONLY", "preflight": preflight, "scope_count": len(plan)}, indent=2))
-        return 0
-    if not preflight["database_url_supplied"] and not (args.env_file and args.env_file.exists()) and not os.environ.get("DATABASE_URL"):
-        raise RuntimeError("LIVE_RESPONDENT_DATABASE_REQUIRED: supply --db-url, DATABASE_URL, or an --env-file containing DATABASE_URL")
-    missing_modules = [name for name, present in preflight["required_modules"].items() if not present]
-    if missing_modules:
-        raise RuntimeError("MISSING_RUNTIME_MODULES: " + ",".join(missing_modules))
-
-    environment = os.environ.copy()
-    results: list[dict[str, Any]] = []
-    for entry in plan:
-        scope = entry["scope_dir"]
-        result: dict[str, Any] = {key: entry[key] for key in ("source_family", "wave", "country_code", "scope_dir", "run_id", "shard_id", "joint_configuration_id")}
-        result["stages"] = {}
-        failed = False
-        for stage in ("v550j", "v551j", "v552j"):
-            run = invoke(entry["commands"][stage], cwd=args.repo_root, log_path=args.output_root / "logs" / scope / f"{stage}.log", timeout=args.timeout_seconds, env=environment)
-            result["stages"][stage] = run
-            if run["exit_code"] != 0:
-                result.update({"status": "FAIL", "failure_stage": stage, "failure_reason": run["stderr_tail"] or run["stdout_tail"]})
-                failed = True
-                break
-        if not failed:
-            v550j_manifest = load_json(Path(entry["expected_outputs"]["v550j_manifest"]))
-            v550j_ready = load_json(Path(entry["expected_outputs"]["v550j_readiness"]))
-            v551j_ready = load_json(Path(entry["expected_outputs"]["v551j_readiness"]))
-            v552j_ready = load_json(Path(entry["expected_outputs"]["v552j_readiness"]))
-            checks = {
-                "v550j_success": bool(v550j_manifest.get("success")),
-                "v550j_validation_pass": str(v550j_manifest.get("validation_status", "")).lower() == "pass",
-                "v550j_registry_applicable": v550j_ready.get("family_registry_status") == "applicable",
-                "v550j_not_blocked": not v550j_ready.get("blocking_issues"),
-                "v551j_ready_for_v552j": bool(v551j_ready.get("ready_for_v552j_joint_evidence")),
-                "v552j_readiness_present": bool(v552j_ready),
-            }
-            result["functional_checks"] = checks
-            result["status"] = "PASS" if all(checks.values()) else "FAIL"
-            if result["status"] == "FAIL":
-                result["failure_stage"] = "functional_gate"
-                result["failure_reason"] = ",".join(name for name, passed in checks.items() if not passed)
-                failed = True
-        results.append(result)
-        (reports / "bounded_nine_canary_partial_return.json").write_text(json.dumps({"preflight": preflight, "results": results}, indent=2) + "\n", encoding="utf-8")
-        if failed and not args.continue_on_failure:
-            break
-
-    status = "PASS_BOUNDED_NINE_J_CHAIN" if len(results) == len(plan) and all(row.get("status") == "PASS" for row in results) else "FAIL_BOUNDED_NINE_J_CHAIN"
-    final = {"status": status, "preflight": preflight, "attempted_scope_count": len(results), "planned_scope_count": len(plan), "passed_scope_count": sum(row.get("status") == "PASS" for row in results), "results": results}
-    (reports / "BOUNDED_NINE_J_CHAIN_RETURN.json").write_text(json.dumps(final, indent=2) + "\n", encoding="utf-8")
-    with (reports / "bounded_nine_j_chain_summary.csv").open("w", encoding="utf-8", newline="") as handle:
-        fields = ["source_family", "wave", "country_code", "scope_dir", "joint_configuration_id", "status", "failure_stage", "failure_reason"]
-        writer = csv.DictWriter(handle, fieldnames=fields)
-        writer.writeheader()
-        for row in results:
-            writer.writerow({field: row.get(field, "") for field in fields})
-    print(json.dumps(final, indent=2))
-    return 0 if status.startswith("PASS") else 1
+    legacy.build_plan = g4_build_plan
+    legacy._typed_functional_gate = _typed_functional_gate
+    return int(legacy.main())
 
 
 if __name__ == "__main__":

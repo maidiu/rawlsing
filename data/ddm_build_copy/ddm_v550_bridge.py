@@ -16,7 +16,7 @@ from typing import Any
 
 import pandas as pd
 
-from data.ddm_build_copy.ddm_v550_io import EXPLICIT_DIRECTIONAL_RESPONSE_FAMILIES, infer_response_direction, infer_response_family, infer_response_intensity, infer_scale_direction
+from data.ddm_build_copy.ddm_v550_io import EXPLICIT_DIRECTIONAL_RESPONSE_FAMILIES, infer_response_family
 from data.ddm_build_copy.ddm_v550_source_structure import _is_ses_relation_evidence, _normalized_join_key
 from data.ddm_build_copy.ddm_v550_manifest import utc_now
 from data.ddm_build_copy.ddm_v550_question_use import allowed_uses_for_role, evidence_role_for_semantic_role, infer_semantic_role
@@ -247,7 +247,7 @@ def _bridge_additional_fields(
     bridge_evidence_lane: str,
     n_respondents: Any,
 ) -> dict[str, Any]:
-    quc_owned_fields = {"semantic_role", "semantic_subrole", "semantic_role_authority_status", "current_directional_atom_eligible", "directional_certification_status", "directionality_authority_status", "structural_mapping_status", "driver_id", "driver_facet_id", "question_block_id", "structural_domain_id", "relation_axis_id", "target_entity_id", "allowed_as_v551_relation_evidence", "v551_evidence_role", "mapping_status", "source_structure_source", "source_structure_basis", "source_structure_confidence", "source_structure_fields_joined", "source_structure_review_required", "review_required", "manual_review_required", "manual_review_flag"}
+    quc_owned_fields = {"semantic_role", "semantic_subrole", "semantic_role_authority_status", "current_directional_atom_eligible", "directional_applicability_status", "directional_certification_status", "directionality_authority_status", "structural_mapping_status", "driver_id", "driver_facet_id", "question_block_id", "structural_domain_id", "relation_axis_id", "target_entity_id", "allowed_as_v551_relation_evidence", "v551_evidence_role", "mapping_status", "source_structure_source", "source_structure_basis", "source_structure_confidence", "source_structure_fields_joined", "source_structure_review_required", "review_required", "manual_review_required", "manual_review_flag"}
     authority_conflicts: list[dict[str, Any]] = []
 
     def contract_or_row(*names: str, default: Any = "") -> Any:
@@ -285,6 +285,7 @@ def _bridge_additional_fields(
         "future_evidence_eligible": _to_bool(contract_or_row("future_evidence_eligible", default=False)),
         "future_topology_evidence_eligible": _to_bool(contract_or_row("future_topology_evidence_eligible", default=contract_or_row("future_evidence_eligible", default=False))),
         "current_directional_atom_eligible": _to_bool(contract_or_row("current_directional_atom_eligible", default=False)),
+        "directional_applicability_status": contract_or_row("directional_applicability_status", default="APPLICABILITY_UNRESOLVED"),
         "directional_certification_status": (
             str(contract_or_row("directional_certification_status", default="")).strip()
             or ("NOT_CERTIFIED_SPECIAL" if _to_bool(_row_value(row, "is_special", default=False)) else "NOT_CERTIFIED")
@@ -649,8 +650,6 @@ def _apply_v551_eligibility(bridge: pd.DataFrame) -> pd.DataFrame:
     bridge["v551_persona_packet_eligible"] = semantic_role.isin(
         ["RELATION_EVIDENCE", "STRUCTURAL_CONTEXT", "POSITION_COORDINATE"]
     ) & allowed_persona & contract_joined
-    # The generic flag is intentionally the direct-relation gate.  Other lanes
-    # have dedicated fields and must not be counted as V551 relation atoms.
     bridge["v551_eligible"] = bridge["v551_relation_evidence_eligible"]
 
     failed_by_index: dict[Any, list[str]] = {}
@@ -695,8 +694,6 @@ def _apply_v551_eligibility(bridge: pd.DataFrame) -> pd.DataFrame:
             failures.append("semantic_role_not_relation_evidence")
         if not visible.loc[idx]:
             failures.append("v551_not_visible")
-
-        # Preserve deterministic ordering while removing duplicates.
         failures = list(dict.fromkeys(failures))
         failed_by_index[idx] = failures
 
@@ -822,22 +819,13 @@ def _base_bridge_row(
     }
     row_hash = _stable_hash(payload)
     existing_semantic_role = _row_value(row, "semantic_role", default="")
-    if question_contract_row and _row_value(
-        question_contract_row, "semantic_role", default=""
-    ):
-        semantic_role = _row_value(
-            question_contract_row, "semantic_role", default="UNKNOWN"
-        )
+    if question_contract_row and _row_value(question_contract_row, "semantic_role", default=""):
+        semantic_role = _row_value(question_contract_row, "semantic_role", default="UNKNOWN")
     elif existing_semantic_role:
         semantic_role = existing_semantic_role
     elif _is_ses_relation_evidence(row):
-        # SES/spouse-structure rows are a governed GSS exception already
-        # recognized by the source-structure classifier. Preserve that
-        # classification in the bridge instead of downgrading it to UNKNOWN.
         semantic_role = "RELATION_EVIDENCE"
     else:
-        # The bridge is not a second semantic classifier.  A missing contract
-        # role remains unknown and therefore ineligible.
         semantic_role = "UNKNOWN"
     if source_table == "position_distribution":
         semantic_role = "POSITION_COORDINATE"
@@ -870,6 +858,10 @@ def _base_bridge_row(
             row_hash[:16],
         ]
     )
+
+    # V550 owns only the source/neutral coordinate. It must not project a
+    # canonical signed side, polarity, or signed intensity. V551 performs that
+    # exact-response adjudication using the response-scale authority.
     response_intensity = _row_value(row, "response_intensity", default=None)
     special_flags = [
         _to_bool(_row_value(row, "is_special", default=False)),
@@ -884,39 +876,24 @@ def _base_bridge_row(
     if direct_relation_table and not is_special_row and _safe_float(response_intensity) is None:
         numeric_normalized = _safe_float(response_normalized)
         numeric_label = _safe_float(response_label)
-        if numeric_normalized is not None and (numeric_label is not None or str(response_family).strip().lower() in {"numeric_scale", "numeric_quantity", "count", "count_scale"}):
+        if numeric_normalized is not None and (
+            numeric_label is not None
+            or str(response_family).strip().lower() in {"numeric_scale", "numeric_quantity", "count", "count_scale"}
+        ):
             response_intensity = numeric_normalized
-    response_direction = _row_value(row, "response_direction", default="")
-    polarity = _row_value(row, "polarity", default="")
-    scale_direction = _row_value(row, "scale_direction", default="")
-    directionality_status = _row_value(row, "directionality_status", default="unknown")
+    response_direction = ""
+    polarity = ""
+    scale_direction = ""
+    directionality_status = "NOT_PROJECTED_V550"
     ordinal_rank = _row_value(row, "ordinal_rank", default=None)
     scale_min = _row_value(row, "scale_min", default=None)
     scale_max = _row_value(row, "scale_max", default=None)
     if is_special_row:
-        response_direction = ""
         response_intensity = None
-        polarity = ""
-        scale_direction = ""
         directionality_status = "NOT_CERTIFIED_SPECIAL"
         ordinal_rank = None
         scale_min = None
         scale_max = None
-    else:
-        directionality_overlay_row = _directionality_overlay_match(row, directionality_overlay_lookup or {})
-        response_direction, response_intensity, polarity, scale_direction, directionality_status = _apply_directionality_overlay(
-            response_family=response_family,
-            response_label=response_label,
-            response_direction=response_direction,
-            response_intensity=response_intensity,
-            polarity=polarity,
-            scale_direction=scale_direction,
-            directionality_status=directionality_status,
-            ordinal_rank=ordinal_rank,
-            scale_min=scale_min,
-            scale_max=scale_max,
-            overlay_row=directionality_overlay_row,
-        )
 
     bridge_row = {
         "run_id": run_id,
@@ -947,9 +924,6 @@ def _base_bridge_row(
         "support_n_unweighted": _row_value(row, "n_unweighted", default=None),
         "support_n_weighted": _row_value(row, "n_weighted", default=None),
         "support_n_total": _row_value(row, "n_total", default=None),
-        # Canonical bridge schema fields.  The support_* aliases are retained for
-        # backwards compatibility, but streaming construction only preserves
-        # required schema columns.
         "n_unweighted": _row_value(row, "n_unweighted", default=None),
         "n_weighted": _row_value(row, "n_weighted", default=None),
         "pct_unweighted": _row_value(row, "pct_unweighted", default=None),
@@ -1025,9 +999,7 @@ def _base_bridge_row(
 
 
 # The active 35-wave question-relation authority is resolved generically by
-# ddm_v550_question_relation_authority.  Family/question dictionaries are forbidden.
-
-
+# ddm_v550_question_relation_authority. Family/question dictionaries are forbidden.
 # No embedded question-specific relation authority.
 
 
@@ -1183,7 +1155,6 @@ def _cached_directionality_overlay_frame(path_text: str) -> pd.DataFrame:
 
 
 def _resolved_gss_directionality_directory(directory: Path | None = None) -> Path:
-    """Resolve the active governed directionality authority directory."""
     return DEFAULT_GSS_FIRST_PASS_AUTHORITY_DIR if directory is None else Path(directory)
 
 
@@ -1198,31 +1169,15 @@ def load_gss_directionality_overlay(directory: Path | None = None, canonical_wav
 
 
 def _exact_directionality_identifier_key(value: Any) -> str:
-    """Return the case-preserving physical identifier used by the source.
-
-    Exact source identifiers are authoritative and may differ by case or
-    punctuation (for example ``Duration1`` versus ``DURATION1`` or
-    ``ir3a_6_other`` versus ``ir3a_6_other_``).  Case-folding and punctuation
-    normalization belong only to the unique-fallback lookup.
-    """
     return str(value or "").strip()
 
 
 def _directionality_overlay_index(overlay: pd.DataFrame | None) -> dict[str, Any]:
-    """Build collision-aware exact and normalized directionality lookups.
-
-    Exact source identifiers are authoritative.  Normalized identifiers are a
-    fallback only when they resolve to exactly one exact source identifier.
-    Collisions are retained explicitly so an attempted normalized-only match
-    fails closed instead of selecting an arbitrary overlay row.
-    """
     empty = {"exact": {}, "normalized": {}, "normalized_collisions": {}}
     if overlay is None or overlay.empty:
         return empty
-
     exact_lookup: dict[tuple[str, str, str], dict[str, Any]] = {}
     normalized_candidates: dict[tuple[str, str, str], dict[str, dict[str, Any]]] = {}
-
     for row in overlay.itertuples(index=False):
         row_dict = row._asdict()
         source_raw = _row_value(row_dict, "source")
@@ -1232,11 +1187,9 @@ def _directionality_overlay_index(overlay: pd.DataFrame | None) -> dict[str, Any
         raw_var_name = str(_row_value(row_dict, "var_name", default="")).strip()
         exact_var_name = _exact_directionality_identifier_key(raw_var_name)
         normalized_var_name = _normalized_join_key(raw_var_name)
-
         for wave_key in {wave, canonical_wave}:
             if not source or not wave_key or not exact_var_name:
                 continue
-
             exact_key = (source, wave_key, exact_var_name)
             existing_exact = exact_lookup.get(exact_key)
             if existing_exact is not None and existing_exact != row_dict:
@@ -1245,11 +1198,9 @@ def _directionality_overlay_index(overlay: pd.DataFrame | None) -> dict[str, Any
                     f"source={source} wave={wave_key} var_name={raw_var_name}"
                 )
             exact_lookup[exact_key] = row_dict
-
             if normalized_var_name:
                 normalized_key = (source, wave_key, normalized_var_name)
                 normalized_candidates.setdefault(normalized_key, {})[exact_var_name] = row_dict
-
     normalized_lookup: dict[tuple[str, str, str], dict[str, Any]] = {}
     normalized_collisions: dict[tuple[str, str, str], tuple[str, ...]] = {}
     for key, candidates in normalized_candidates.items():
@@ -1257,7 +1208,6 @@ def _directionality_overlay_index(overlay: pd.DataFrame | None) -> dict[str, Any
             normalized_lookup[key] = next(iter(candidates.values()))
         else:
             normalized_collisions[key] = tuple(sorted(candidates))
-
     return {
         "exact": exact_lookup,
         "normalized": normalized_lookup,
@@ -1268,38 +1218,26 @@ def _directionality_overlay_index(overlay: pd.DataFrame | None) -> dict[str, Any
 def _directionality_overlay_match(record: Any, overlay_lookup: dict[str, Any]) -> dict[str, Any] | None:
     if not overlay_lookup:
         return None
-
     source_raw = _row_value(record, "source", "source_family")
     source = canonical_family_key(source_raw)
     wave = canonical_wave_key(source_raw, _row_value(record, "wave"))
     canonical_wave = canonical_wave_key(source_raw, _row_value(record, "canonical_wave"))
     wave_keys = [key for key in (wave, canonical_wave) if key]
-
-    # Read each identifier independently.  Using fallback-style _row_value with
-    # several names would discard a more exact source identifier in another
-    # column and could reintroduce punctuation collisions.
     raw_identifiers: list[str] = []
     for field_name in ("var_code", "var_name", "question_id", "source_var_name"):
         raw_value = _row_value(record, field_name, default="")
         cleaned = str(raw_value or "").strip()
         if cleaned and cleaned not in raw_identifiers:
             raw_identifiers.append(cleaned)
-
     exact_lookup = overlay_lookup.get("exact", {})
     normalized_lookup = overlay_lookup.get("normalized", {})
     normalized_collisions = overlay_lookup.get("normalized_collisions", {})
-
-    # Exact matching is authoritative and preserves meaningful punctuation,
-    # including a trailing underscore.
     for raw_identifier in raw_identifiers:
         exact_identifier = _exact_directionality_identifier_key(raw_identifier)
         for wave_key in wave_keys:
             key = (source, wave_key, exact_identifier)
             if all(key) and key in exact_lookup:
                 return exact_lookup[key]
-
-    # Normalized matching remains available for harmless punctuation/case
-    # variants, but only when the normalized key is unique in the overlay.
     for raw_identifier in raw_identifiers:
         normalized_identifier = _normalized_join_key(raw_identifier)
         for wave_key in wave_keys:
@@ -1316,6 +1254,7 @@ def _directionality_overlay_match(record: Any, overlay_lookup: dict[str, Any]) -
             if key in normalized_lookup:
                 return normalized_lookup[key]
     return None
+
 
 def _directionality_family_hint(overlay_row: dict[str, Any]) -> str:
     family = str(_row_value(overlay_row, "response_family_expectation", default="")).strip().lower()
@@ -1345,37 +1284,15 @@ def _apply_directionality_overlay(
     scale_max: Any,
     overlay_row: dict[str, Any] | None,
 ) -> tuple[str, Any, str, str, str]:
-    if overlay_row is None:
-        return response_direction, response_intensity, polarity, scale_direction, directionality_status
+    """Compatibility helper only: V550 must never create canonical projection.
 
-    signed_status = str(_row_value(overlay_row, "signed_polarity_status", "directionality_policy", default="")).strip().lower()
-    action = str(_row_value(overlay_row, "bridge_directionality_action", default="")).strip().lower()
-    manual_review_required = _to_bool(_row_value(overlay_row, "manual_review_required", default=False))
-    unsigned_statuses = {
-        "unsigned_context",
-        "unsigned_identity",
-        "unsigned_metadata",
-        "unsigned_coding",
-        "blocked_unsigned",
-    }
-    if action in {"force_unsigned", "context_only"} or signed_status in unsigned_statuses:
-        if not response_direction or str(response_direction).strip().lower() in {"unknown", "nan", "none"}:
-            return "", response_intensity, polarity, scale_direction, "forced_unsigned_by_directionality_overlay"
-        return response_direction, response_intensity, polarity or response_direction, scale_direction, "forced_unsigned_by_directionality_overlay"
-
-    if not signed_status.startswith("signed") and signed_status != "conditionally_signed_coordinate":
-        if manual_review_required:
-            return response_direction, response_intensity, polarity, scale_direction, "manual_review_required_by_directionality_overlay"
-        return response_direction, response_intensity, polarity, scale_direction, directionality_status
-
-    if response_direction and str(response_direction).strip().lower() not in {"unknown", "nan", "none"}:
-        updated_polarity = polarity or response_direction
-        updated_scale_direction = scale_direction or infer_scale_direction(response_family)
-        return response_direction, response_intensity, updated_polarity, updated_scale_direction, "certified_response_option_authority"
-
-    if manual_review_required:
-        return response_direction, response_intensity, polarity, scale_direction, "manual_review_required_by_directionality_overlay"
-    return response_direction, response_intensity, polarity, scale_direction, "overlay_signed_without_category_authority"
+    The historical helper name remains import-compatible, but signed inputs are
+    stripped and neutral/source intensity is returned unchanged. Exact signed
+    adjudication belongs to V551.
+    """
+    if overlay_row is not None and _to_bool(_row_value(overlay_row, "manual_review_required", default=False)):
+        return "", response_intensity, "", "", "manual_review_required_by_directionality_overlay"
+    return "", response_intensity, "", "", "NOT_PROJECTED_V550"
 
 
 def _normalize_bridge_frame(frame: pd.DataFrame, *, survey_year_is_numeric: bool) -> pd.DataFrame:
@@ -1384,8 +1301,6 @@ def _normalize_bridge_frame(frame: pd.DataFrame, *, survey_year_is_numeric: bool
     out = frame.copy()
     if "survey_year" in out.columns:
         survey_year_series = out["survey_year"]
-        # Keep year-like shards numeric, but preserve label-style shards such as
-        # R1/W1/II as text so a shard never flips dtype between bridge tables.
         if survey_year_is_numeric:
             out["survey_year"] = pd.to_numeric(survey_year_series, errors="coerce").astype("Int64")
         else:
@@ -1395,64 +1310,21 @@ def _normalize_bridge_frame(frame: pd.DataFrame, *, survey_year_is_numeric: bool
                 else str(value).strip()
             )
     for column in [
-        "n_respondents",
-        "ordinal_rank",
-        "scale_min",
-        "scale_max",
-        "n_unweighted",
-        "support_threshold",
-        "n_atoms",
-        "n_unweighted_total",
-        "branch_depth",
+        "n_respondents", "ordinal_rank", "scale_min", "scale_max", "n_unweighted",
+        "support_threshold", "n_atoms", "n_unweighted_total", "branch_depth",
     ]:
         if column in out.columns:
             out[column] = pd.to_numeric(out[column], errors="coerce").astype("Int64")
     for column in [
-        "n_weighted",
-        "n_weighted_total",
-        "pct_unweighted",
-        "pct_weighted",
-        "pressure_score",
-        "directionality_coverage",
-        "response_intensity",
-        "response_option_confidence_min",
-        "response_option_confidence_max",
-        "support_ratio",
-        "support_ratio_margin",
-        "support_score",
-        "population_share",
+        "n_weighted", "n_weighted_total", "pct_unweighted", "pct_weighted",
+        "pressure_score", "directionality_coverage", "response_intensity",
+        "response_option_confidence_min", "response_option_confidence_max",
+        "support_ratio", "support_ratio_margin", "support_score", "population_share",
         "prevalence_score",
     ]:
         if column in out.columns:
             out[column] = pd.to_numeric(out[column], errors="coerce").astype("float64")
     return out
-
-
-def _is_numeric_only_label(value: Any) -> bool:
-    text = str(value or "").strip()
-    if not text:
-        return False
-    if not re.fullmatch(r"[+-]?(?:\d+(?:\.\d+)?|\.\d+)", text):
-        return False
-    return True
-
-
-def _response_family_allows_numeric_only_label(value: Any) -> bool:
-    family = str(value or "").strip().lower()
-    if not family:
-        return False
-    if family in NUMERIC_ONLY_LABEL_ALLOWED_FAMILIES:
-        return True
-    return family.endswith("_scale") or any(token in family for token in {"numeric", "quantity", "count"})
-
-
-def _numeric_only_label_allowed(bridge: pd.DataFrame) -> pd.Series:
-    if bridge.empty:
-        return pd.Series(dtype=bool, index=bridge.index)
-    numeric_only = bridge.get("response_label", pd.Series([""] * len(bridge), index=bridge.index)).apply(_is_numeric_only_label)
-    family_allowed = bridge.get("response_family", pd.Series([""] * len(bridge), index=bridge.index)).apply(_response_family_allows_numeric_only_label)
-    high_confidence = bridge.get("normalization_confidence", pd.Series([""] * len(bridge), index=bridge.index)).fillna("").astype(str).str.strip().str.lower().eq("high")
-    return numeric_only & family_allowed & high_confidence
 
 
 def _bool_series(df: pd.DataFrame, column: str, default: bool) -> pd.Series:
@@ -1489,7 +1361,6 @@ def _directionality_overlay_lookup_for_frame(
     *,
     directionality_authority_dir: Path | None,
 ) -> dict[str, Any]:
-    """Load the governed directionality rows for every explicit scope in a frame."""
     if frame is None or frame.empty:
         return _directionality_overlay_index(None)
     overlays: list[pd.DataFrame] = []
@@ -1587,7 +1458,7 @@ def build_v551_bridge_index_for_shard(
         if df is None or df.empty:
             _log_progress(progress_started, f"bridge shard {shard_id}: {table_name}{_process_label(table_name)} is empty")
             continue
-            _log_progress(progress_started, f"bridge shard {shard_id}: starting {table_name}{_process_label(table_name)}")
+        _log_progress(progress_started, f"bridge shard {shard_id}: starting {table_name}{_process_label(table_name)}")
         frame = build_v551_bridge_index_for_table(
             df,
             run_id=run_id,
@@ -1618,59 +1489,31 @@ def build_v551_bridge_index_for_shard(
 
 def build_bridge_lane_audits(bridge: pd.DataFrame) -> dict[str, pd.DataFrame]:
     empirical_columns = [
-        "source",
-        "wave",
-        "canonical_wave",
-        "source_table",
-        "bridge_evidence_lane",
-        "question_id",
-        "var_code",
-        "source_row_hash",
-        "support_status",
-        "response_semantics_status",
-        "response_semantics_source",
-        "response_semantics_contract_hash",
-        "source_structure_source",
-        "source_structure_basis",
-        "source_structure_confidence",
-        "v551_eligible",
-        "v551_exclusion_reason",
-        "v551_failed_gates",
-        "v551_failed_gate_count",
+        "source", "wave", "canonical_wave", "source_table", "bridge_evidence_lane",
+        "question_id", "var_code", "source_row_hash", "support_status",
+        "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash",
+        "source_structure_source", "source_structure_basis", "source_structure_confidence",
+        "v551_eligible", "v551_exclusion_reason", "v551_failed_gates", "v551_failed_gate_count",
     ]
     support_quarantine_columns = [
-        "source",
-        "wave",
-        "canonical_wave",
-        "source_table",
-        "bridge_evidence_lane",
-        "question_id",
-        "var_code",
-        "support_status",
-        "n_unweighted",
-        "response_semantics_status",
-        "response_semantics_source",
-        "response_semantics_contract_hash",
-        "source_structure_source",
-        "source_structure_basis",
-        "source_structure_confidence",
-        "v551_relation_evidence_eligible",
-        "v551_exclusion_reason",
-        "v551_failed_gates",
-        "v551_failed_gate_count",
+        "source", "wave", "canonical_wave", "source_table", "bridge_evidence_lane",
+        "question_id", "var_code", "support_status", "n_unweighted",
+        "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash",
+        "source_structure_source", "source_structure_basis", "source_structure_confidence",
+        "v551_relation_evidence_eligible", "v551_exclusion_reason", "v551_failed_gates", "v551_failed_gate_count",
     ]
     if bridge.empty:
         empty_lane_counts = pd.DataFrame(columns=["source", "wave", "canonical_wave", "source_table", "bridge_evidence_lane", "row_count", "v551_relation_evidence_eligible_count", "v551_conditional_determinicity_eligible_count"])
         empty_exclusion_by_lane = pd.DataFrame(columns=["source", "wave", "canonical_wave", "bridge_evidence_lane", "v551_exclusion_reason", "row_count"])
-        empty_direct = pd.DataFrame(columns=["source", "wave", "question_id", "var_code", "response_value_normalized", "normalized_response_label", "response_family", "n_unweighted", "support_status", "response_option_map_matched", "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash", "normalization_confidence", "is_substantive", "is_special", "source_structure_source", "source_structure_basis", "source_structure_confidence", "source_structure_fields_joined", "question_use_contract_joined", "response_topology", "future_evidence_eligible", "future_topology_evidence_eligible", "current_directional_atom_eligible", "directional_certification_status", "v551_relation_evidence_eligible", "v551_exclusion_reason", "v551_failed_gates", "v551_failed_gate_count"])
-        empty_derived = pd.DataFrame(columns=["source", "wave", "source_table", "question_id", "var_code", "predictor_field", "predictor_value", "response_value_normalized", "n_unweighted", "support_status", "bridge_evidence_lane", "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash", "source_structure_source", "source_structure_basis", "source_structure_confidence", "future_topology_evidence_eligible", "current_directional_atom_eligible", "directional_certification_status", "v551_relation_evidence_eligible", "v551_conditional_determinicity_eligible", "reason_not_direct_relation_evidence", "v551_failed_gates", "v551_failed_gate_count"])
+        empty_direct = pd.DataFrame(columns=["source", "wave", "question_id", "var_code", "response_value_normalized", "normalized_response_label", "response_family", "n_unweighted", "support_status", "response_option_map_matched", "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash", "normalization_confidence", "is_substantive", "is_special", "source_structure_source", "source_structure_basis", "source_structure_confidence", "source_structure_fields_joined", "question_use_contract_joined", "response_topology", "future_evidence_eligible", "future_topology_evidence_eligible", "current_directional_atom_eligible", "directional_applicability_status", "directional_certification_status", "v551_relation_evidence_eligible", "v551_exclusion_reason", "v551_failed_gates", "v551_failed_gate_count"])
+        empty_derived = pd.DataFrame(columns=["source", "wave", "source_table", "question_id", "var_code", "predictor_field", "predictor_value", "response_value_normalized", "n_unweighted", "support_status", "bridge_evidence_lane", "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash", "source_structure_source", "source_structure_basis", "source_structure_confidence", "future_topology_evidence_eligible", "current_directional_atom_eligible", "directional_applicability_status", "directional_certification_status", "v551_relation_evidence_eligible", "v551_conditional_determinicity_eligible", "reason_not_direct_relation_evidence", "v551_failed_gates", "v551_failed_gate_count"])
         empty_underpowered = pd.DataFrame(columns=["source", "wave", "source_table", "question_id", "var_code", "bridge_evidence_lane", "support_status", "n_unweighted", "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash", "source_structure_source", "source_structure_basis", "source_structure_confidence", "v551_relation_evidence_eligible", "v551_exclusion_reason", "v551_failed_gates", "v551_failed_gate_count"])
         empty_zero_support = pd.DataFrame(columns=["source", "wave", "source_table", "question_id", "var_code", "bridge_evidence_lane", "support_status", "n_unweighted", "response_family", "response_label", "normalized_response_label"])
         empty_empirical = pd.DataFrame(columns=empirical_columns)
         empty_candidate = pd.DataFrame(columns=empty_direct.columns)
         empty_derived_index = pd.DataFrame(columns=empty_derived.columns)
         empty_support_quarantine = pd.DataFrame(columns=support_quarantine_columns)
-        empty_response_semantics = pd.DataFrame(columns=["source", "wave", "canonical_wave", "country_code", "source_table", "question_id", "var_code", "response_value_normalized", "response_label", "normalized_response_label", "response_family", "response_direction", "response_intensity", "polarity", "ordinal_rank", "scale_min", "scale_max", "scale_direction", "directionality_status", "response_topology", "future_evidence_eligible", "future_topology_evidence_eligible", "current_directional_atom_eligible", "directional_certification_status", "bridge_evidence_lane", "support_status", "is_substantive", "is_special", "response_option_map_matched", "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash", "source_structure_source", "source_structure_basis", "source_structure_confidence", "normalization_confidence", "v551_failed_gates", "v551_failed_gate_count"])
+        empty_response_semantics = pd.DataFrame(columns=["source", "wave", "canonical_wave", "country_code", "source_table", "question_id", "var_code", "response_value_normalized", "response_label", "normalized_response_label", "response_family", "response_direction", "response_intensity", "polarity", "ordinal_rank", "scale_min", "scale_max", "scale_direction", "directionality_status", "response_topology", "future_evidence_eligible", "future_topology_evidence_eligible", "current_directional_atom_eligible", "directional_applicability_status", "directional_certification_status", "bridge_evidence_lane", "support_status", "is_substantive", "is_special", "response_option_map_matched", "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash", "source_structure_source", "source_structure_basis", "source_structure_confidence", "normalization_confidence", "v551_failed_gates", "v551_failed_gate_count"])
         return {
             "bridge_lane_counts": empty_lane_counts,
             "bridge_exclusion_reason_by_lane": empty_exclusion_by_lane,
@@ -1699,7 +1542,6 @@ def build_bridge_lane_audits(bridge: pd.DataFrame) -> dict[str, pd.DataFrame]:
         )
         .reset_index()
     )
-
     exclusion_by_lane = (
         frame.loc[~_bool_series(frame, "v551_eligible", False)]
         .groupby(["source", "wave", "canonical_wave", "bridge_evidence_lane", "v551_exclusion_reason"], dropna=False, sort=True)
@@ -1709,44 +1551,17 @@ def build_bridge_lane_audits(bridge: pd.DataFrame) -> dict[str, pd.DataFrame]:
 
     direct = frame.loc[frame["bridge_evidence_lane"].eq("direct_relation_response")].copy()
     if not direct.empty:
-        direct = direct[
-            [
-                col
-                for col in [
-                    "source",
-                    "wave",
-                    "question_id",
-                    "var_code",
-                    "response_value_normalized",
-                    "normalized_response_label",
-                    "response_family",
-                    "n_unweighted",
-                    "support_status",
-                    "response_option_map_matched",
-                    "response_semantics_status",
-                    "response_semantics_source",
-                    "response_semantics_contract_hash",
-                    "normalization_confidence",
-                    "is_substantive",
-                    "is_special",
-                    "source_structure_source",
-                    "source_structure_basis",
-                    "source_structure_confidence",
-                    "source_structure_fields_joined",
-                    "question_use_contract_joined",
-                    "response_topology",
-                    "future_evidence_eligible",
-                    "future_topology_evidence_eligible",
-                    "current_directional_atom_eligible",
-                    "directional_certification_status",
-                    "v551_relation_evidence_eligible",
-                    "v551_exclusion_reason",
-                    "v551_failed_gates",
-                    "v551_failed_gate_count",
-                ]
-                if col in direct.columns
-            ]
-        ].copy()
+        direct = direct[[col for col in [
+            "source", "wave", "question_id", "var_code", "response_value_normalized",
+            "normalized_response_label", "response_family", "n_unweighted", "support_status",
+            "response_option_map_matched", "response_semantics_status", "response_semantics_source",
+            "response_semantics_contract_hash", "normalization_confidence", "is_substantive", "is_special",
+            "source_structure_source", "source_structure_basis", "source_structure_confidence",
+            "source_structure_fields_joined", "question_use_contract_joined", "response_topology",
+            "future_evidence_eligible", "future_topology_evidence_eligible", "current_directional_atom_eligible",
+            "directional_applicability_status", "directional_certification_status", "v551_relation_evidence_eligible",
+            "v551_exclusion_reason", "v551_failed_gates", "v551_failed_gate_count",
+        ] if col in direct.columns]].copy()
 
     derived = frame.loc[frame["bridge_evidence_lane"].eq("derived_determinicity")].copy()
     if not derived.empty:
@@ -1755,142 +1570,47 @@ def build_bridge_lane_audits(bridge: pd.DataFrame) -> dict[str, pd.DataFrame]:
             predictor_value=derived.get("driver_facet_id", pd.Series([""] * len(derived), index=derived.index)).fillna("").astype(str),
             reason_not_direct_relation_evidence=derived.get("v551_exclusion_reason", pd.Series([""] * len(derived), index=derived.index)).fillna("").astype(str),
         )
-        derived = derived[
-            [
-                col
-                for col in [
-                    "source",
-                    "wave",
-                    "source_table",
-                    "question_id",
-                    "var_code",
-                    "predictor_field",
-                    "predictor_value",
-                    "response_value_normalized",
-                    "n_unweighted",
-                    "support_status",
-                    "bridge_evidence_lane",
-                    "response_semantics_status",
-                    "response_semantics_source",
-                    "response_semantics_contract_hash",
-                    "source_structure_source",
-                    "source_structure_basis",
-                    "source_structure_confidence",
-                    "v551_relation_evidence_eligible",
-                    "v551_conditional_determinicity_eligible",
-                    "reason_not_direct_relation_evidence",
-                    "v551_failed_gates",
-                    "v551_failed_gate_count",
-                ]
-                if col in derived.columns
-            ]
-        ].copy()
+        derived = derived[[col for col in [
+            "source", "wave", "source_table", "question_id", "var_code", "predictor_field", "predictor_value",
+            "response_value_normalized", "n_unweighted", "support_status", "bridge_evidence_lane",
+            "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash",
+            "source_structure_source", "source_structure_basis", "source_structure_confidence",
+            "v551_relation_evidence_eligible", "v551_conditional_determinicity_eligible",
+            "reason_not_direct_relation_evidence", "v551_failed_gates", "v551_failed_gate_count",
+        ] if col in derived.columns]].copy()
 
     underpowered = frame.loc[frame["support_status"].isin(["underpowered", "zero_support", "missing_support"]) | frame["bridge_evidence_lane"].eq("audit_quarantine")].copy()
     if not underpowered.empty:
-        underpowered = underpowered[
-            [
-                col
-                for col in [
-                    "source",
-                    "wave",
-                    "source_table",
-                    "question_id",
-                    "var_code",
-                    "bridge_evidence_lane",
-                    "support_status",
-                    "n_unweighted",
-                    "response_semantics_status",
-                    "response_semantics_source",
-                    "response_semantics_contract_hash",
-                    "source_structure_source",
-                    "source_structure_basis",
-                    "source_structure_confidence",
-                    "v551_relation_evidence_eligible",
-                    "v551_exclusion_reason",
-                    "v551_failed_gates",
-                    "v551_failed_gate_count",
-                ]
-                if col in underpowered.columns
-            ]
-        ].copy()
+        underpowered = underpowered[[col for col in [
+            "source", "wave", "source_table", "question_id", "var_code", "bridge_evidence_lane",
+            "support_status", "n_unweighted", "response_semantics_status", "response_semantics_source",
+            "response_semantics_contract_hash", "source_structure_source", "source_structure_basis",
+            "source_structure_confidence", "v551_relation_evidence_eligible", "v551_exclusion_reason",
+            "v551_failed_gates", "v551_failed_gate_count",
+        ] if col in underpowered.columns]].copy()
 
     zero_support = frame.loc[(frame["source_table"].eq("indicator_answer_matrix")) & (frame["support_status"].eq("zero_support"))].copy()
     if not zero_support.empty:
-        zero_support = zero_support[
-            [
-                col
-                for col in [
-                    "source",
-                    "wave",
-                    "source_table",
-                    "question_id",
-                    "var_code",
-                    "bridge_evidence_lane",
-                    "support_status",
-                    "n_unweighted",
-                    "response_family",
-                    "response_label",
-                    "normalized_response_label",
-                    "response_semantics_status",
-                    "response_semantics_source",
-                    "response_semantics_contract_hash",
-                    "source_structure_source",
-                    "source_structure_basis",
-                    "source_structure_confidence",
-                ]
-                if col in zero_support.columns
-            ]
-        ].copy()
+        zero_support = zero_support[[col for col in [
+            "source", "wave", "source_table", "question_id", "var_code", "bridge_evidence_lane", "support_status",
+            "n_unweighted", "response_family", "response_label", "normalized_response_label",
+            "response_semantics_status", "response_semantics_source", "response_semantics_contract_hash",
+            "source_structure_source", "source_structure_basis", "source_structure_confidence",
+        ] if col in zero_support.columns]].copy()
 
     response_semantics = frame.loc[frame["bridge_evidence_lane"].eq("direct_relation_response") | frame["bridge_evidence_lane"].eq("derived_determinicity")].copy()
     if not response_semantics.empty:
-        response_semantics = response_semantics[
-            [
-                col
-                for col in [
-                    "source",
-                    "wave",
-                    "canonical_wave",
-                    "country_code",
-                    "source_table",
-                    "question_id",
-                    "var_code",
-                    "response_value_normalized",
-                    "response_label",
-                    "normalized_response_label",
-                    "response_family",
-                    "response_direction",
-                    "response_intensity",
-                    "polarity",
-                    "ordinal_rank",
-                    "scale_min",
-                    "scale_max",
-                    "scale_direction",
-                    "directionality_status",
-                    "bridge_evidence_lane",
-                    "support_status",
-                    "is_substantive",
-                    "is_special",
-                    "response_option_map_matched",
-                    "response_semantics_status",
-                    "response_semantics_source",
-                    "response_semantics_contract_hash",
-                    "source_structure_source",
-                    "source_structure_basis",
-                    "source_structure_confidence",
-                    "response_topology",
-                    "future_evidence_eligible",
-                    "future_topology_evidence_eligible",
-                    "current_directional_atom_eligible",
-                    "directional_certification_status",
-                    "normalization_confidence",
-                    "v551_failed_gates",
-                    "v551_failed_gate_count",
-                ]
-                if col in response_semantics.columns
-            ]
-        ].copy()
+        response_semantics = response_semantics[[col for col in [
+            "source", "wave", "canonical_wave", "country_code", "source_table", "question_id", "var_code",
+            "response_value_normalized", "response_label", "normalized_response_label", "response_family",
+            "response_direction", "response_intensity", "polarity", "ordinal_rank", "scale_min", "scale_max",
+            "scale_direction", "directionality_status", "bridge_evidence_lane", "support_status", "is_substantive",
+            "is_special", "response_option_map_matched", "response_semantics_status", "response_semantics_source",
+            "response_semantics_contract_hash", "source_structure_source", "source_structure_basis",
+            "source_structure_confidence", "response_topology", "future_evidence_eligible",
+            "future_topology_evidence_eligible", "current_directional_atom_eligible", "directional_applicability_status",
+            "directional_certification_status", "normalization_confidence", "v551_failed_gates", "v551_failed_gate_count",
+        ] if col in response_semantics.columns]].copy()
 
     empirical_object_index = frame[[col for col in empirical_columns if col in frame.columns]].copy()
     v551_relation_candidate_index = direct.copy()
@@ -1903,7 +1623,6 @@ def build_bridge_lane_audits(bridge: pd.DataFrame) -> dict[str, pd.DataFrame]:
         ignore_index=True,
         sort=False,
     )
-
     return {
         "bridge_lane_counts": lane_counts,
         "bridge_exclusion_reason_by_lane": exclusion_by_lane,
@@ -1939,25 +1658,18 @@ def build_bridge_causal_summary(
     max_pairs: int = 25,
     examples_per_reason: int = 5,
 ) -> dict[str, Any]:
-    """Summarize how bridge gates fail together for quick causal inspection."""
     if bridge.empty:
         return {
             "bridge_rows": 0,
             "eligible_rows": 0,
             "excluded_rows": 0,
             "direct_relation_response": {
-                "row_count": 0,
-                "eligible_rows": 0,
-                "excluded_rows": 0,
-                "failed_gate_counts": {},
-                "failed_gate_count_histogram": {},
-                "rows_with_multiple_failed_gates": 0,
-                "top_gate_pairs": [],
-                "exclusion_reason_counts": {},
-                "reason_examples": {},
+                "row_count": 0, "eligible_rows": 0, "excluded_rows": 0,
+                "failed_gate_counts": {}, "failed_gate_count_histogram": {},
+                "rows_with_multiple_failed_gates": 0, "top_gate_pairs": [],
+                "exclusion_reason_counts": {}, "reason_examples": {},
             },
         }
-
     bridge_frame = bridge.copy()
     bridge_frame["bridge_evidence_lane"] = bridge_frame.get(
         "bridge_evidence_lane", pd.Series(["unknown"] * len(bridge_frame), index=bridge_frame.index)
@@ -1972,25 +1684,18 @@ def build_bridge_causal_summary(
         bridge_frame.get("v551_failed_gate_count", pd.Series([0] * len(bridge_frame), index=bridge_frame.index)),
         errors="coerce",
     ).fillna(0).astype(int)
-
     direct = bridge_frame.loc[bridge_frame["bridge_evidence_lane"].eq("direct_relation_response")].copy()
     if direct.empty:
         direct_payload = {
-            "row_count": 0,
-            "eligible_rows": 0,
-            "excluded_rows": 0,
-            "failed_gate_counts": {},
-            "failed_gate_count_histogram": {},
-            "rows_with_multiple_failed_gates": 0,
-            "top_gate_pairs": [],
-            "exclusion_reason_counts": {},
-            "reason_examples": {},
+            "row_count": 0, "eligible_rows": 0, "excluded_rows": 0,
+            "failed_gate_counts": {}, "failed_gate_count_histogram": {},
+            "rows_with_multiple_failed_gates": 0, "top_gate_pairs": [],
+            "exclusion_reason_counts": {}, "reason_examples": {},
         }
     else:
         failed_gate_counts: Counter[str] = Counter()
         pair_counts: Counter[tuple[str, str]] = Counter()
         reason_examples: dict[str, list[dict[str, Any]]] = {}
-
         for row in direct.itertuples(index=False):
             gates = sorted(set(_failed_gate_list(row)))
             for gate in gates:
@@ -2002,16 +1707,13 @@ def build_bridge_causal_summary(
             reason = str(reason).strip() or ("eligible" if _to_bool(_row_value(row, "v551_eligible", default=False)) else "missing_mapping_or_non_substantive")
             samples = reason_examples.setdefault(reason, [])
             if len(samples) < examples_per_reason:
-                samples.append(
-                    {
-                        "question_id": _row_value(row, "question_id", default=""),
-                        "var_code": _row_value(row, "var_code", default=""),
-                        "support_status": _row_value(row, "support_status", default=""),
-                        "n_unweighted": _json_int(_row_value(row, "n_unweighted", default=None), default=0),
-                        "failed_gates": gates,
-                    }
-                )
-
+                samples.append({
+                    "question_id": _row_value(row, "question_id", default=""),
+                    "var_code": _row_value(row, "var_code", default=""),
+                    "support_status": _row_value(row, "support_status", default=""),
+                    "n_unweighted": _json_int(_row_value(row, "n_unweighted", default=None), default=0),
+                    "failed_gates": gates,
+                })
         top_pairs = [
             {"gate_a": pair[0], "gate_b": pair[1], "row_count": int(count)}
             for pair, count in pair_counts.most_common(max_pairs)
@@ -2027,7 +1729,6 @@ def build_bridge_causal_summary(
             "exclusion_reason_counts": {reason: int(count) for reason, count in direct["v551_exclusion_reason"].fillna("").replace("", "<eligible>").value_counts().items()},
             "reason_examples": reason_examples,
         }
-
     lane_counts = (
         bridge_frame.groupby("bridge_evidence_lane", dropna=False, sort=True)
         .agg(
@@ -2041,7 +1742,6 @@ def build_bridge_causal_summary(
         reason: int(count)
         for reason, count in bridge_frame["v551_exclusion_reason"].fillna("").replace("", "<eligible>").value_counts().items()
     }
-
     return {
         "bridge_rows": int(len(bridge_frame)),
         "eligible_rows": int(_bool_series(bridge_frame, "v551_eligible", False).sum()),
@@ -2218,30 +1918,17 @@ def write_v551_bridge_index_for_shard(
 
 
 def _validation_semantics_compatibility_frame(df: pd.DataFrame) -> pd.DataFrame:
-    """Translate stronger packet certification into the legacy validator vocabulary.
-
-    The persisted bridge rows retain their source-native status (for example,
-    ``certified``).  The unchanged legacy validator predates manual packet
-    authority and only recognizes the word ``curated``.  For validation only,
-    packet-certified rows are presented as curated when every authority guard is
-    satisfied.  Observed-only, heuristic, unmatched, or provenance-free rows are
-    never upgraded.
-    """
     if df is None or df.empty or "response_semantics_status" not in df.columns:
         return df
-
     validation_df = df.copy()
     status = validation_df["response_semantics_status"].fillna("").astype(str).str.strip().str.lower()
     source = validation_df.get(
-        "response_semantics_source",
-        pd.Series([""] * len(validation_df), index=validation_df.index),
+        "response_semantics_source", pd.Series([""] * len(validation_df), index=validation_df.index)
     ).fillna("").astype(str).str.strip().str.lower()
     contract_hash = validation_df.get(
-        "response_semantics_contract_hash",
-        pd.Series([""] * len(validation_df), index=validation_df.index),
+        "response_semantics_contract_hash", pd.Series([""] * len(validation_df), index=validation_df.index)
     ).fillna("").astype(str).str.strip()
     matched = _bool_series(validation_df, "response_option_map_matched", False)
-
     packet_certified = (
         status.isin({"certified", "certified_manual_packet"})
         & source.str.endswith("_manual_authority_packet")
@@ -2257,7 +1944,6 @@ def validate_bridge_df(df: pd.DataFrame) -> list[str]:
 
 
 def _load_all_wave_directionality(directory):
-    """Load all GSS directionality overlays from directory, once per unique wave."""
     import pandas as pd, re
     from pathlib import Path
     from .ddm_v550_family_overlay import load_family_overlay

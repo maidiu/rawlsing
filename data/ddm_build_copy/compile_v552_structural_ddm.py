@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Compile V552 structural-pressure contract v2.1 artifacts from V551 v2.1 atoms."""
-
+"""Compile canonical V552 v3 structural pressure from the V551 v3 producer bundle."""
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import shutil
 import sys
-import time
+import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -17,304 +17,421 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from data.ddm_build_copy.ddm_run_provenance import capture_run_provenance
-from data.ddm_build_copy.ddm_v550_schema import dataframe_schema_json
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    PIPELINE_BOUNDARY_CONTRACT_VERSION,
+    atomic_write_json,
+    boundary_state_from_payload,
+    inspect_artifact,
+    publish_staged_directory,
+    read_status_document,
+    require_canonical_parquet,
+    sha256_file,
+    validate_machine_output_policy,
+    verify_exact_identity,
+)
 from data.ddm_build_copy.ddm_v552_structural import (
-    V552_HANDOFF_SCHEMA_VERSION,
+    V551_COMPILER_VERSION,
+    V551_SCHEMA_VERSION,
+    V552_COMPILER_VERSION,
     V552_SCHEMA_VERSION,
-    _fact_index,
-    _handoff,
-    _pressure_observation_handoff,
-    _temporal_key_index,
+    apply_v552_downstream_permission,
     build_v552_structural_outputs,
     validate_v552_v551_input_contract,
 )
-from data.ddm_build_copy.ddm_v552_contract import recompute_v552_v2_1_4_pressure_measurement_hash
-from data.ddm_build_copy.ddm_v552_validation import validate_v552_v2_1_4_outputs, validate_written_v552_artifacts
+from data.ddm_build_copy.ddm_v552_validation import validate_v552_v2_1_4_outputs
 
 DEFAULT_OUTPUT_ROOT = ROOT / "data" / "ddm_repository_copy" / "v552" / "runs"
+V551_CANONICAL_FILES = {
+    "directional_candidate_adjudication": "directional_candidate_adjudication.parquet",
+    "relation_evidence_atoms": "relation_evidence_atoms.parquet",
+    "directional_distribution_coverage": "directional_distribution_coverage.parquet",
+}
+AUDIT_ARTIFACTS = {
+    "v552_intensity_representation_resolution_audit",
+    "v552_pressure_observation_audit",
+    "v552_directionality_coverage_audit",
+    "v552_directionality_gap_surface",
+    "v552_status_pressure_review_surface",
+    "conditional_determinicity_status_audit",
+}
+MANIFEST_ARTIFACTS = {
+    "v552_readiness_report",
+    "v552_to_v552j_handoff_index",
+    "v552_to_v552j_pressure_observation_handoff_index",
+    "v552_artifact_authority_index",
+    "v552_known_absence_register",
+}
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Compile V552 structural-pressure contract v2.1 artifacts.")
-    parser.add_argument("--run-id", required=True)
-    parser.add_argument("--atoms-path", required=True)
-    parser.add_argument("--conditional-determinicity-path", default=None)
-    parser.add_argument("--output-root", default=str(DEFAULT_OUTPUT_ROOT))
-    parser.add_argument("--strict-handoff", dest="strict_handoff", action="store_true", default=True)
-    parser.add_argument("--no-strict-handoff", dest="strict_handoff", action="store_false")
-    parser.add_argument("--write-csv", action="store_true", default=False)
-    parser.add_argument("--no-write-csv", dest="write_csv", action="store_false")
-    parser.add_argument("--write-parquet", action="store_true", default=True)
-    parser.add_argument("--no-write-parquet", dest="write_parquet", action="store_false")
-    parser.add_argument("--verbose", action="store_true")
-    parser.add_argument("--progress", dest="progress", action="store_true", default=True)
-    parser.add_argument("--no-progress", dest="progress", action="store_false")
-    return parser.parse_args()
-
-
-def _read_table(path: Path) -> pd.DataFrame:
-    if not path.exists():
-        raise FileNotFoundError(str(path))
-    if path.suffix.lower() == ".csv":
-        return pd.read_csv(path, low_memory=False)
+def _read_frame(path: Path) -> pd.DataFrame:
+    require_canonical_parquet(path)
     return pd.read_parquet(path)
 
 
-def _hash_file(path: Path) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for block in iter(lambda: f.read(1024 * 1024), b""):
-            h.update(block)
-    return h.hexdigest()
-
-
-def _frame_hash(frame: pd.DataFrame) -> str:
+def _logical_hash(frame: pd.DataFrame) -> str:
     if frame.empty:
-        return "empty"
-    out = frame.copy()
-    for column in out.columns:
-        out[column] = out[column].fillna("").astype(str)
-    out = out.sort_values(list(out.columns), kind="mergesort").reset_index(drop=True)
-    return hashlib.sha256(out.to_csv(index=False).encode("utf-8")).hexdigest()
+        return hashlib.sha256(b"").hexdigest()
+    work = frame.copy()
+    for column in work.columns:
+        work[column] = work[column].fillna("").astype(str)
+    work = work.sort_values(list(work.columns), kind="mergesort").reset_index(drop=True)
+    return hashlib.sha256(work.to_csv(index=False).encode("utf-8")).hexdigest()
 
 
-def _write_json(path: Path, payload: dict[str, Any]) -> None:
+def _clean(value: Any) -> str:
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except Exception:
+        pass
+    text = str(value).strip()
+    return "" if text.lower() in {"nan", "none", "null"} else text
+
+
+def _artifact_declarations(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    raw = payload.get("artifacts") or []
+    return [dict(row) for row in raw if isinstance(row, dict)] if isinstance(raw, list) else []
+
+
+def _manifest_parquet_declaration(payload: dict[str, Any], artifact_name: str, filename: str) -> dict[str, Any]:
+    matches = []
+    for row in _artifact_declarations(payload):
+        name = _clean(row.get("artifact") or row.get("name"))
+        path = _clean(row.get("path") or row.get("relative_path"))
+        if (name == artifact_name or path == filename) and path.endswith(".parquet"):
+            matches.append(row)
+    if len(matches) != 1:
+        raise RuntimeError(f"BLOCKED_V552_V551_ARTIFACT_DECLARATION_COUNT:{artifact_name}:{len(matches)}")
+    declaration = matches[0]
+    if _clean(declaration.get("path") or declaration.get("relative_path")) != filename:
+        raise RuntimeError(f"BLOCKED_V552_V551_ARTIFACT_PATH_MISMATCH:{artifact_name}")
+    if _clean(declaration.get("schema_version")) != V551_SCHEMA_VERSION:
+        raise RuntimeError(f"BLOCKED_V552_V551_ARTIFACT_SCHEMA_MISMATCH:{artifact_name}")
+    return declaration
+
+
+def _verify_declared_artifact(base: Path, declaration: dict[str, Any]) -> Path:
+    rel = _clean(declaration.get("path") or declaration.get("relative_path"))
+    path = require_canonical_parquet(base / rel)
+    inspection = inspect_artifact(path)
+    if not inspection.exists or not inspection.readable:
+        raise RuntimeError(f"BLOCKED_V552_V551_ARTIFACT_UNREADABLE:{rel}:{inspection.error}")
+    declared_hash = _clean(declaration.get("artifact_file_sha256")).lower()
+    if len(declared_hash) != 64 or inspection.artifact_file_sha256.lower() != declared_hash:
+        raise RuntimeError(
+            f"BLOCKED_V552_V551_ARTIFACT_HASH_MISMATCH:{rel}:expected={declared_hash}:actual={inspection.artifact_file_sha256.lower()}"
+        )
+    declared_rows = declaration.get("row_count")
+    if declared_rows is not None and int(declared_rows) != int(inspection.row_count or 0):
+        raise RuntimeError(f"BLOCKED_V552_V551_ARTIFACT_ROW_COUNT_MISMATCH:{rel}")
+    return path
+
+
+def _scope_from_manifest(payload: dict[str, Any]) -> dict[str, str]:
+    scope_raw = payload.get("producer_scope_identity")
+    scope = dict(scope_raw) if isinstance(scope_raw, dict) else {}
+    source = _clean(scope.get("source") or payload.get("source"))
+    wave = _clean(scope.get("canonical_wave") or scope.get("wave") or payload.get("canonical_wave") or payload.get("wave"))
+    country = _clean(scope.get("country_code") or payload.get("country_code"))
+    shard = _clean(scope.get("shard_id") or payload.get("shard_id"))
+    if not source or not wave:
+        raise RuntimeError("BLOCKED_V552_V551_SCOPE_IDENTITY_INCOMPLETE")
+    if not country and not shard:
+        raise RuntimeError("BLOCKED_V552_V551_SCOPE_GRAIN_MISSING")
+    scope_kind = _clean(scope.get("scope_kind")) or ("shard" if shard else "country")
+    if scope_kind == "country" and not country:
+        raise RuntimeError("BLOCKED_V552_V551_COUNTRY_SCOPE_IDENTITY_MISSING")
+    if scope_kind == "shard" and not shard:
+        raise RuntimeError("BLOCKED_V552_V551_SHARD_SCOPE_IDENTITY_MISSING")
+    return {"source": source, "wave": wave, "canonical_wave": wave, "country_code": country, "shard_id": shard, "scope_kind": scope_kind}
+
+
+def _verify_frame_scope(frame: pd.DataFrame, *, run_id: str, scope: dict[str, str], label: str) -> None:
+    if frame.empty:
+        return
+    expected = {"run_id": run_id, "source": scope["source"], "canonical_wave": scope["canonical_wave"]}
+    if scope["country_code"]:
+        expected["country_code"] = scope["country_code"]
+    for column, want in expected.items():
+        if column not in frame.columns:
+            raise RuntimeError(f"BLOCKED_V552_{label.upper()}_SCOPE_COLUMN_MISSING:{column}")
+        observed = {_clean(value) for value in frame[column].tolist() if _clean(value)}
+        if observed != {want}:
+            raise RuntimeError(f"BLOCKED_V552_{label.upper()}_SCOPE_MISMATCH:{column}:expected={want}:observed={sorted(observed)}")
+
+
+def verify_v551_producer_bundle(
+    *,
+    run_id: str,
+    manifest_path: Path,
+    atoms_path: Path | None = None,
+    coverage_path: Path | None = None,
+    adjudication_path: Path | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict[str, Any]]:
+    document = read_status_document(manifest_path)
+    if not document.exists or not document.readable:
+        raise RuntimeError(f"BLOCKED_V552_V551_MANIFEST_UNREADABLE:{document.error}")
+    payload = document.payload
+    state = boundary_state_from_payload(payload)
+    if state.run_integrity_status != "PASS":
+        raise RuntimeError("BLOCKED_V552_V551_RUN_INTEGRITY_NOT_PASS")
+    if _clean(payload.get("schema_version")) != V551_SCHEMA_VERSION or _clean(payload.get("compiler_version")) != V551_COMPILER_VERSION:
+        raise RuntimeError("BLOCKED_V552_UNSUPPORTED_V551_CONTRACT_VERSION")
+    if _clean((payload.get("contract_boundary") or {}).get("canonical_signed_projection_owner")) != "V551":
+        raise RuntimeError("BLOCKED_V552_V551_PROJECTION_OWNER_CONTRACT")
+    verify_exact_identity(payload, run_id=run_id)
+    scope = _scope_from_manifest(payload)
+    verify_exact_identity(
+        payload,
+        run_id=run_id,
+        source=scope["source"],
+        wave=scope["canonical_wave"],
+        country_code=scope["country_code"],
+        shard_id=scope["shard_id"],
+    )
+    base = manifest_path.parent
+    declarations = {
+        name: _manifest_parquet_declaration(payload, name, filename)
+        for name, filename in V551_CANONICAL_FILES.items()
+    }
+    declared_paths = {name: _verify_declared_artifact(base, declaration) for name, declaration in declarations.items()}
+    explicit = {
+        "relation_evidence_atoms": atoms_path,
+        "directional_distribution_coverage": coverage_path,
+        "directional_candidate_adjudication": adjudication_path,
+    }
+    for name, path in explicit.items():
+        if path is not None and path.resolve() != declared_paths[name].resolve():
+            raise RuntimeError(f"BLOCKED_V552_EXPLICIT_V551_PATH_NOT_MANIFEST_DECLARED:{name}")
+    atoms = _read_frame(declared_paths["relation_evidence_atoms"])
+    coverage = _read_frame(declared_paths["directional_distribution_coverage"])
+    adjudication = _read_frame(declared_paths["directional_candidate_adjudication"])
+    for label, frame in (("atoms", atoms), ("coverage", coverage), ("adjudication", adjudication)):
+        _verify_frame_scope(frame, run_id=run_id, scope=scope, label=label)
+    contract = validate_v552_v551_input_contract(atoms, coverage, adjudication, run_id=run_id)
+    if contract["status"] != "PASS":
+        raise RuntimeError(contract["status"] + ":" + "|".join(contract["errors"]))
+    if int(payload.get("atom_count", -1)) != len(atoms):
+        raise RuntimeError("BLOCKED_V552_V551_MANIFEST_ATOM_COUNT_MISMATCH")
+    if int(payload.get("distribution_coverage_rows", -1)) != len(coverage):
+        raise RuntimeError("BLOCKED_V552_V551_MANIFEST_COVERAGE_COUNT_MISMATCH")
+    if int(payload.get("candidate_count", -1)) != len(adjudication):
+        raise RuntimeError("BLOCKED_V552_V551_MANIFEST_ADJUDICATION_COUNT_MISMATCH")
+    if state.evidence_status == "NOT_APPLICABLE" and (len(atoms) or len(coverage) or len(adjudication)):
+        raise RuntimeError("BLOCKED_V552_V551_NOT_APPLICABLE_WITH_NONEMPTY_CANONICAL_SURFACES")
+    if state.evidence_status == "APPLICABLE_UNRESOLVED" and (len(atoms) != 0 or len(coverage) == 0 or len(adjudication) == 0):
+        raise RuntimeError("BLOCKED_V552_V551_UNRESOLVED_STATE_SHAPE_MISMATCH")
+    return atoms, coverage, adjudication, {
+        "manifest": payload,
+        "manifest_path": str(manifest_path),
+        "manifest_file_sha256": sha256_file(manifest_path),
+        "scope": scope,
+        "state": {
+            "run_integrity_status": state.run_integrity_status,
+            "evidence_status": state.evidence_status,
+            "downstream_permission_status": state.downstream_permission_status,
+        },
+        "artifact_paths": {name: str(path) for name, path in declared_paths.items()},
+        "artifact_file_sha256": {name: _clean(declarations[name].get("artifact_file_sha256")) for name in declarations},
+    }
+
+
+def _artifact_subdir(name: str) -> str:
+    if name in AUDIT_ARTIFACTS or name.endswith("_audit"):
+        return "audits"
+    if name in MANIFEST_ARTIFACTS:
+        return "manifest"
+    return "structural"
+
+
+def _write_parquet(frame: pd.DataFrame, path: Path, name: str) -> dict[str, Any]:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    frame.to_parquet(path, index=False)
+    return {
+        "artifact": name,
+        "path": str(path.relative_to(path.parents[1])),
+        "artifact_kind": "canonical",
+        "row_count": len(frame),
+        "artifact_file_sha256": sha256_file(path),
+        "logical_content_sha256": _logical_hash(frame),
+        "schema_version": V552_SCHEMA_VERSION,
+    }
 
 
-def _write_frame(root: Path, schemas: Path, name: str, frame: pd.DataFrame, *, write_csv: bool, write_parquet: bool) -> dict[str, Any]:
+def _write_csv(frame: pd.DataFrame, path: Path, name: str) -> dict[str, Any]:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    frame.to_csv(path, index=False)
+    return {
+        "artifact": name,
+        "path": str(path.relative_to(path.parents[1])),
+        "artifact_kind": "diagnostic_csv",
+        "row_count": len(frame),
+        "artifact_file_sha256": sha256_file(path),
+        "logical_content_sha256": _logical_hash(frame),
+        "schema_version": V552_SCHEMA_VERSION,
+    }
+
+
+def compile_v552_run(
+    *,
+    run_id: str,
+    v551_manifest_path: str | Path,
+    atoms_path: str | Path | None = None,
+    coverage_path: str | Path | None = None,
+    adjudication_path: str | Path | None = None,
+    conditional_determinicity_path: str | Path | None = None,
+    output_root: str | Path = DEFAULT_OUTPUT_ROOT,
+    strict_handoff: bool = True,
+    write_parquet: bool = True,
+    write_csv: bool = False,
+) -> dict[str, Any]:
+    validate_machine_output_policy(write_parquet=write_parquet, write_csv=write_csv)
+    manifest_path = Path(v551_manifest_path)
+    atoms, coverage, adjudication, producer = verify_v551_producer_bundle(
+        run_id=run_id,
+        manifest_path=manifest_path,
+        atoms_path=Path(atoms_path) if atoms_path else None,
+        coverage_path=Path(coverage_path) if coverage_path else None,
+        adjudication_path=Path(adjudication_path) if adjudication_path else None,
+    )
+    conditional = None
+    if conditional_determinicity_path:
+        conditional_path = require_canonical_parquet(Path(conditional_determinicity_path))
+        conditional = pd.read_parquet(conditional_path)
+    outputs = build_v552_structural_outputs(
+        atoms,
+        coverage,
+        adjudication,
+        conditional,
+        run_id=run_id,
+    )
+    if isinstance(outputs.get("v552_readiness_report"), pd.DataFrame) and not outputs["v552_readiness_report"].empty:
+        outputs["v552_readiness_report"].loc[:, "producer_manifest_sha256"] = producer["manifest_file_sha256"]
+        outputs["v552_readiness_report"].loc[:, "boundary_contract_version"] = PIPELINE_BOUNDARY_CONTRACT_VERSION
+    apply_v552_downstream_permission(outputs, allow_downstream=strict_handoff)
+    issues = validate_v552_v2_1_4_outputs(
+        outputs,
+        input_atoms=atoms,
+        directional_coverage=coverage,
+        directional_adjudication=adjudication,
+        execution_mode="acceptance" if strict_handoff else "diagnostic",
+        written_artifacts=None,
+    )
+    if issues:
+        raise RuntimeError("BLOCKED_V552_OUTPUT_CONTRACT_INVALID:" + ";".join(issue.code for issue in issues))
+    readiness = outputs["v552_readiness_report"].iloc[0].to_dict()
+    readiness_integrity = _clean(readiness.get("run_integrity_status"))
+    if readiness_integrity != "PASS":
+        raise RuntimeError("BLOCKED_V552_INTERNAL_RUN_INTEGRITY")
+    evidence_status = _clean(readiness.get("evidence_status"))
+    permission_status = _clean(readiness.get("downstream_permission_status"))
+    if not strict_handoff and permission_status == "ALLOW":
+        raise RuntimeError("BLOCKED_V552_DIAGNOSTIC_MODE_PERMISSION_LEAK")
+
+    root = Path(output_root)
     root.mkdir(parents=True, exist_ok=True)
-    schemas.mkdir(parents=True, exist_ok=True)
-    csv_path = root / f"{name}.csv"
-    parquet_path = root / f"{name}.parquet"
-    if write_csv:
-        frame.to_csv(csv_path, index=False)
-    if write_parquet:
-        frame.to_parquet(parquet_path, index=False)
-    _write_json(schemas / f"{name}.schema.json", dataframe_schema_json(frame, name=name, run_id=root.parent.name))
-    return {
-        "rows": int(len(frame)),
-        "csv_path": str(csv_path),
-        "parquet_path": str(parquet_path),
-        "hash": _frame_hash(frame),
-    }
+    final_dir = root / run_id
+    staging_dir = Path(tempfile.mkdtemp(prefix=f".{run_id}.v552-stage-", dir=str(root)))
+    try:
+        artifacts: list[dict[str, Any]] = []
+        for name, frame in outputs.items():
+            if name.startswith("_") or not isinstance(frame, pd.DataFrame):
+                continue
+            subdir = _artifact_subdir(name)
+            artifacts.append(_write_parquet(frame, staging_dir / subdir / f"{name}.parquet", name))
+            if write_csv:
+                artifacts.append(_write_csv(frame, staging_dir / subdir / f"{name}.csv", name))
+        manifest = {
+            "contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+            "boundary_contract_version": PIPELINE_BOUNDARY_CONTRACT_VERSION,
+            "producer_run_id": run_id,
+            "run_id": run_id,
+            "source": producer["scope"]["source"],
+            "wave": producer["scope"]["wave"],
+            "canonical_wave": producer["scope"]["canonical_wave"],
+            "country_code": producer["scope"]["country_code"],
+            "shard_id": producer["scope"]["shard_id"],
+            "producer_scope_identity": producer["scope"],
+            "schema_version": V552_SCHEMA_VERSION,
+            "compiler_version": V552_COMPILER_VERSION,
+            "run_integrity_status": "PASS",
+            "evidence_status": evidence_status,
+            "downstream_permission_status": permission_status,
+            "execution_mode": "acceptance" if strict_handoff else "diagnostic",
+            "artifacts": artifacts,
+            "upstream_v551": {
+                "manifest_path": producer["manifest_path"],
+                "manifest_file_sha256": producer["manifest_file_sha256"],
+                "schema_version": V551_SCHEMA_VERSION,
+                "compiler_version": V551_COMPILER_VERSION,
+                "run_integrity_status": producer["state"]["run_integrity_status"],
+                "evidence_status": producer["state"]["evidence_status"],
+                "downstream_permission_status": producer["state"]["downstream_permission_status"],
+                "artifact_file_sha256": producer["artifact_file_sha256"],
+            },
+            "contract_boundary": {
+                "canonical_signed_projection_owner": "V551",
+                "v552_reinterprets_scale_geometry": False,
+                "selected_surface_partiality_may_conditionally_normalize_only_when_adjudication_complete": True,
+                "unresolved_directional_mass_may_be_renormalized": False,
+                "valid_empty_is_run_failure": False,
+                "measurement_evidence_independent_of_invocation_permission": True,
+            },
+        }
+        atomic_write_json(staging_dir / "manifest.json", manifest)
+        publish_staged_directory(staging_dir, final_dir)
+        return manifest
+    except Exception:
+        if staging_dir.exists():
+            shutil.rmtree(staging_dir, ignore_errors=True)
+        raise
 
 
-def _scale_encoding_report(component_index: pd.DataFrame) -> dict[str, Any]:
-    representation_class_counts = component_index.get("source_intensity_representation_class", pd.Series(dtype=str)).fillna("").astype(str).value_counts().to_dict()
-    representation_status_counts = component_index.get("source_intensity_representation_status", pd.Series(dtype=str)).fillna("").astype(str).value_counts().to_dict()
-    return {
-        "status": "PASS",
-        "candidate_component_rows": int(len(component_index)),
-        "component_index_rows": int(len(component_index)),
-        "encoding_class_counts": component_index.get("scale_encoding_class", pd.Series(dtype=str)).fillna("").astype(str).value_counts().to_dict(),
-        "intensity_representation_class_counts": representation_class_counts,
-        "intensity_representation_status_counts": representation_status_counts,
-        "resolved_intensity_representation_component_rows": int(component_index.get("source_intensity_representation_status", pd.Series(dtype=str)).fillna("").astype(str).eq("EXACT_UNIQUE_DISTRIBUTION_RESOLUTION").sum()),
-        "scale_direction_token_counts": component_index.get("scale_direction", pd.Series(dtype=str)).fillna("").astype(str).value_counts().to_dict(),
-        "scale_encoding_status_counts": component_index.get("scale_encoding_status", pd.Series(dtype=str)).fillna("").astype(str).value_counts().to_dict(),
-        "direction_scale_consistency_status_counts": component_index.get("direction_scale_consistency_status", pd.Series(dtype=str)).fillna("").astype(str).value_counts().to_dict(),
-        "source_intensity_zero_count": int(component_index.get("source_intensity_zero", pd.Series(dtype=bool)).fillna(False).astype(bool).sum()) if not component_index.empty else 0,
-        "canonical_signed_zero_count": int(component_index.get("canonical_signed_component_zero", pd.Series(dtype=bool)).fillna(False).astype(bool).sum()) if not component_index.empty else 0,
-        "unknown_scale_direction_tokens": sorted(set(component_index.loc[component_index.get("scale_encoding_class", pd.Series(dtype=str)).fillna("").astype(str).isin(["UNKNOWN", "UNRESOLVED"]), "scale_direction"].fillna("").astype(str).tolist())) if not component_index.empty and "scale_encoding_class" in component_index.columns else [],
-        "superseded_formula_usage_count": 0,
-        "axis_coordinate_raw_direction_times_intensity_usage_count": 0,
-    }
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--run-id", required=True)
+    parser.add_argument("--v551-manifest-path")
+    parser.add_argument("--atoms-path")
+    parser.add_argument("--coverage-path")
+    parser.add_argument("--adjudication-path")
+    parser.add_argument("--conditional-determinicity-path")
+    parser.add_argument("--output-root", default=str(DEFAULT_OUTPUT_ROOT))
+    parser.add_argument("--strict-handoff", dest="strict_handoff", action="store_true", default=True)
+    parser.add_argument("--no-strict-handoff", dest="strict_handoff", action="store_false")
+    parser.add_argument("--diagnostic-only", action="store_true")
+    parser.add_argument("--write-parquet", dest="write_parquet", action="store_true", default=True)
+    parser.add_argument("--no-write-parquet", dest="write_parquet", action="store_false")
+    parser.add_argument("--write-csv", dest="write_csv", action="store_true", default=False)
+    parser.add_argument("--no-write-csv", dest="write_csv", action="store_false")
+    return parser.parse_args()
+
+
+def _resolve_manifest_path(args: argparse.Namespace) -> Path:
+    if args.v551_manifest_path:
+        return Path(args.v551_manifest_path)
+    if args.atoms_path:
+        return Path(args.atoms_path).resolve().parent / "manifest.json"
+    raise RuntimeError("BLOCKED_V552_V551_MANIFEST_PATH_REQUIRED")
 
 
 def main() -> int:
     args = parse_args()
-    started = time.monotonic()
-    run_dir = Path(args.output_root) / args.run_id
-    structural_dir = run_dir / "structural"
-    audit_dir = run_dir / "audits"
-    manifest_dir = run_dir / "manifest"
-    schema_dir = run_dir / "schemas"
-    for p in [structural_dir, audit_dir, manifest_dir, schema_dir]:
-        p.mkdir(parents=True, exist_ok=True)
-
-    atoms_path = Path(args.atoms_path)
-    if not atoms_path.exists():
-        print("BLOCKED_V552_MISSING_ATOMS_PATH")
-        return 1
-    atoms = _read_table(atoms_path)
-    atoms_hash = _hash_file(atoms_path)
-    atoms_csv_path = manifest_dir / "v552_input_atoms.csv"
-    atoms_parquet_path = manifest_dir / "v552_input_atoms.parquet"
-    atoms.to_csv(atoms_csv_path, index=False)
-    atoms.to_parquet(atoms_parquet_path, index=False)
-    input_contract = validate_v552_v551_input_contract(atoms)
-    _write_json(manifest_dir / "v552_input_contract_report.json", input_contract)
-    if input_contract["status"] != "PASS":
-        print(input_contract["status"])
-        return 1
-
-    outputs = build_v552_structural_outputs(atoms, None, run_id=args.run_id)
-    if "v552_readiness_report" in outputs and not outputs["v552_readiness_report"].empty:
-        provisional_status = "READY_V552_STRUCTURAL_PRESSURE_CONTRACT" if args.strict_handoff else "DIAGNOSTIC_V552_NO_STRICT_NOT_READY"
-        outputs["v552_readiness_report"].loc[:, "status"] = provisional_status
-        outputs["v552_readiness_report"].loc[:, "final_status"] = provisional_status
-        outputs["v552_readiness_report"].loc[:, "v552_compile_status"] = provisional_status
-    initial_issues = validate_v552_v2_1_4_outputs(
-        input_atoms=atoms,
-        components=outputs.get("v552_pressure_component_index", pd.DataFrame()),
-        observations=outputs.get("v552_pressure_observation_index", pd.DataFrame()),
-        structural_facts=outputs.get("v552_structural_fact_index", pd.DataFrame()),
-        temporal_sources=outputs.get("v552_temporal_key_source_index", pd.DataFrame()),
-        pressure_handoff=outputs.get("v552_to_v552j_pressure_observation_handoff_index", pd.DataFrame()),
-        readiness=outputs.get("v552_readiness_report", pd.DataFrame()),
-        execution_mode="acceptance" if args.strict_handoff else "diagnostic",
+    manifest = compile_v552_run(
+        run_id=args.run_id,
+        v551_manifest_path=_resolve_manifest_path(args),
+        atoms_path=args.atoms_path,
+        coverage_path=args.coverage_path,
+        adjudication_path=args.adjudication_path,
+        conditional_determinicity_path=args.conditional_determinicity_path,
+        output_root=args.output_root,
+        strict_handoff=bool(args.strict_handoff and not args.diagnostic_only),
+        write_parquet=args.write_parquet,
+        write_csv=args.write_csv,
     )
-    if initial_issues or not args.strict_handoff:
-        blocked_status = "BLOCKED_V552_OUTPUT_CONTRACT" if args.strict_handoff else "DIAGNOSTIC_V552_NO_STRICT_NOT_READY"
-        for frame_name in [
-            "v552_pressure_observation_index",
-            "v552_structural_fact_index",
-            "v552_temporal_key_source_index",
-            "v552_to_v552j_handoff_index",
-            "v552_to_v552j_pressure_observation_handoff_index",
-        ]:
-            frame = outputs.get(frame_name)
-            if isinstance(frame, pd.DataFrame) and not frame.empty:
-                for col in [
-                    "v552j_pressure_linkage_eligible",
-                    "v552j_structural_context_eligible",
-                    "v553_probe_candidate_after_v552j",
-                    "pressure_anchor_candidate_after_v552j",
-                    "allowed_for_v552j",
-                    "allowed_for_v553_probe",
-                    "ready_for_v552j_inspection",
-                    "ready_for_v553_after_v552j",
-                    "direct_v553_authorization",
-                    "temporal_authority",
-                    "runtime_authority",
-                ]:
-                    if col in frame.columns:
-                        frame.loc[:, col] = False
-                for col in ["allowed_for_v553_temporal_field", "ready_for_v553_direct"]:
-                    if col in frame.columns:
-                        frame.loc[:, col] = False
-                if "allowed_v552j_use" in frame.columns:
-                    frame.loc[:, "allowed_v552j_use"] = "not_authorized"
-                if "allowed_downstream_use" in frame.columns:
-                    frame.loc[:, "allowed_downstream_use"] = "not_authorized"
-        if "v552_readiness_report" in outputs and not outputs["v552_readiness_report"].empty:
-            outputs["v552_readiness_report"].loc[:, "status"] = blocked_status
-            outputs["v552_readiness_report"].loc[:, "final_status"] = blocked_status
-            outputs["v552_readiness_report"].loc[:, "v552_compile_status"] = blocked_status
-            outputs["v552_readiness_report"].loc[:, "ready_for_v552j_structural_inspection"] = False
-            outputs["v552_readiness_report"].loc[:, "ready_for_v552j_pressure_linkage"] = False
-            outputs["v552_readiness_report"].loc[:, "ready_for_v552j_inspection"] = False
-            outputs["v552_readiness_report"].loc[:, "ready_for_v553_direct"] = False
-            outputs["v552_readiness_report"].loc[:, "ready_for_v553_after_v552j"] = False
-            outputs["v552_readiness_report"].loc[:, "pressure_linkage_eligible_count"] = 0
-            outputs["v552_readiness_report"].loc[:, "v552_v552j_handoff_readiness"] = "not_authorized"
-        observations = outputs.get("v552_pressure_observation_index", pd.DataFrame())
-        components = outputs.get("v552_pressure_component_index", pd.DataFrame())
-        for idx, obs in observations.iterrows():
-            comp_group = components[components["v552_pressure_observation_id"].astype(str).eq(str(obs.get("v552_pressure_observation_id")))]
-            observations.loc[idx, "pressure_measurement_hash"] = recompute_v552_v2_1_4_pressure_measurement_hash(observations.loc[idx].to_dict(), comp_group.to_dict("records"))
-        outputs["v552_structural_fact_index"] = _fact_index(observations, outputs, outputs.get("contradiction_tensor", pd.DataFrame()), args.run_id)
-        outputs["v552_temporal_key_source_index"] = _temporal_key_index(outputs["v552_structural_fact_index"], args.run_id)
-        outputs["v552_to_v552j_handoff_index"] = _handoff(outputs, args.run_id)
-        outputs["v552_to_v552j_pressure_observation_handoff_index"] = _pressure_observation_handoff(observations, components, args.run_id)
-    final_mode = "strict_blocked" if args.strict_handoff and initial_issues else ("diagnostic" if not args.strict_handoff else "acceptance")
-    validation_issues = validate_v552_v2_1_4_outputs(
-        input_atoms=atoms,
-        components=outputs.get("v552_pressure_component_index", pd.DataFrame()),
-        observations=outputs.get("v552_pressure_observation_index", pd.DataFrame()),
-        structural_facts=outputs.get("v552_structural_fact_index", pd.DataFrame()),
-        temporal_sources=outputs.get("v552_temporal_key_source_index", pd.DataFrame()),
-        pressure_handoff=outputs.get("v552_to_v552j_pressure_observation_handoff_index", pd.DataFrame()),
-        readiness=outputs.get("v552_readiness_report", pd.DataFrame()),
-        execution_mode=final_mode,
-    )
-    outputs["v552_validation_issue_report"] = pd.DataFrame([issue.__dict__ for issue in validation_issues], columns=["token", "detail"])
-    if "v552_readiness_report" in outputs and not outputs["v552_readiness_report"].empty:
-        outputs["v552_readiness_report"].loc[:, "invalid_output_contract_rows"] = len(validation_issues)
-    component_index = outputs["v552_pressure_component_index"]
-    scale_report = _scale_encoding_report(component_index)
-    _write_json(manifest_dir / "v552_scale_encoding_report.json", scale_report)
-
-    artifact_info: dict[str, Any] = {}
-    audit_names = {"v552_pressure_observation_audit", "v552_directionality_coverage_audit", "v552_directionality_gap_surface", "v552_status_pressure_review_surface", "conditional_determinicity_status_audit"}
-    manifest_names = {"v552_readiness_report"}
-    for name, frame in outputs.items():
-        if name.startswith("_") or not isinstance(frame, pd.DataFrame):
-            continue
-        target = manifest_dir if name in manifest_names else audit_dir if name in audit_names else structural_dir
-        artifact_info[name] = _write_frame(target, schema_dir, name, frame, write_csv=args.write_csv, write_parquet=args.write_parquet)
-
-    written_issues: list[Any] = []
-    written_audit = pd.DataFrame()
-    if args.write_csv and args.write_parquet:
-        written_issues, written_audit = validate_written_v552_artifacts(
-            run_directory=run_dir,
-            atoms_csv_path=atoms_csv_path,
-            atoms_parquet_path=atoms_parquet_path,
-            execution_mode=final_mode,
-        )
-        outputs["v552_written_artifact_reproducibility_audit"] = written_audit
-        _write_frame(structural_dir, schema_dir, "v552_written_artifact_reproducibility_audit", written_audit, write_csv=args.write_csv, write_parquet=args.write_parquet)
-        if written_issues:
-            outputs["v552_validation_issue_report"] = pd.DataFrame([issue.__dict__ for issue in written_issues], columns=["token", "detail"])
-            if "v552_readiness_report" in outputs and not outputs["v552_readiness_report"].empty:
-                outputs["v552_readiness_report"].loc[:, "invalid_output_contract_rows"] = len(written_issues)
-                if args.strict_handoff:
-                    outputs["v552_readiness_report"].loc[:, "status"] = "BLOCKED_V552_OUTPUT_CONTRACT"
-                    outputs["v552_readiness_report"].loc[:, "final_status"] = "BLOCKED_V552_OUTPUT_CONTRACT"
-                    outputs["v552_readiness_report"].loc[:, "v552_compile_status"] = "BLOCKED_V552_OUTPUT_CONTRACT"
-            _write_frame(structural_dir, schema_dir, "v552_validation_issue_report", outputs["v552_validation_issue_report"], write_csv=args.write_csv, write_parquet=args.write_parquet)
-            _write_frame(manifest_dir, schema_dir, "v552_readiness_report", outputs["v552_readiness_report"], write_csv=args.write_csv, write_parquet=args.write_parquet)
-
-    readiness_df = outputs["v552_readiness_report"]
-    readiness = readiness_df.iloc[0].to_dict() if not readiness_df.empty else {
-        "status": "BLOCKED_V552_OUTPUT_CONTRACT_INVALID",
-        "schema_version": V552_SCHEMA_VERSION,
-    }
-    _write_json(manifest_dir / "v552_readiness_report.json", readiness)
-
-    manifest = {
-        "run_id": args.run_id,
-        "status": readiness["status"],
-        "schema_version": V552_SCHEMA_VERSION,
-        "compiler_version": V552_HANDOFF_SCHEMA_VERSION,
-        "input_contract_status": input_contract["status"],
-        "atoms_path": str(atoms_path),
-        "atoms_input_hash": atoms_hash,
-        "input_atom_rows": int(len(atoms)),
-        "pressure_observation_rows": int(len(outputs["v552_pressure_observation_index"])),
-        "observed_pressure_rows": int(readiness.get("observed_pressure_count", 0) + readiness.get("observed_zero_pressure_count", 0)),
-        "pressure_linkage_eligible_rows": int(readiness.get("pressure_linkage_eligible_count", 0)),
-        "noncomputable_pressure_rows": int(readiness.get("noncomputable_pressure_count", 0)),
-        "review_required_pressure_rows": int(readiness.get("review_required_pressure_count", 0)),
-        "contradiction_rows": int(readiness.get("contradiction_row_count", 0)),
-        "structural_channel_rows": int(readiness.get("structural_channel_count", 0)),
-        "allowed_for_v553_temporal_field_rows": 0,
-        "output_artifact_count": int(readiness.get("output_artifact_count", 0)),
-        "handoff_index_rows": int(readiness.get("handoff_index_rows", 0)),
-        "comparability_key_count": int(readiness.get("comparability_key_count", 0)),
-        "category_empirical_object_count": int(readiness.get("category_empirical_object_count", 0)),
-        "unique_empirical_distribution_count": int(readiness.get("unique_empirical_distribution_count", 0)),
-        "artifacts": artifact_info,
-        "elapsed_seconds": round(time.monotonic() - started, 3),
-        **capture_run_provenance(input_documents={"atoms_path": args.atoms_path}),
-    }
-    _write_json(manifest_dir / "manifest.json", manifest)
-    (run_dir / "v552_performance_profile.json").write_text(json.dumps({
-        "run_id": args.run_id,
-        "compiler_name": "compile_v552_structural_ddm",
-        "compiler_version": V552_HANDOFF_SCHEMA_VERSION,
-        "elapsed_seconds": manifest["elapsed_seconds"],
-        "input_rows": int(len(atoms)),
-        "output_rows": int(sum(info["rows"] for info in artifact_info.values())),
-        "final_status": readiness["status"],
-    }, indent=2), encoding="utf-8")
-
-    print(readiness["status"])
-    return 1 if str(readiness["status"]).startswith("BLOCKED_") else 0
+    print(json.dumps(manifest, indent=2, ensure_ascii=False))
+    return 0
 
 
 if __name__ == "__main__":
