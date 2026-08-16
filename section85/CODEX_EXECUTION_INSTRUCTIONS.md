@@ -2,6 +2,19 @@
 
 # Codex execution instructions — bounded nine-source J-chain
 
+## Current typed-state gate status
+
+Section 85 acceptance now consumes `rawlsing_pipeline_boundary_v1` typed producer
+state. It does **not** infer readiness from nonzero row counts, legacy readiness
+booleans, or the mere presence of a JSON document.
+
+At Gate G2, V551 v3.0 is frozen and its Section 85 consumer contract is active.
+The final V551J and V552J producer-bound acceptance hooks are still gated by G3B
+and G4 respectively. Until those producer contracts merge, the bounded runner is
+expected to fail closed at the typed acceptance gate rather than reinterpret the
+legacy readiness documents. Do not weaken that gate to make the historical
+canary pass.
+
 ## 1. Preserve the verified parent checkpoint
 
 Keep the R184 checkpoint ZIP and restored database unchanged as rollback authority. Create a new branch from the Section 85 commit and a separate output directory for the canary.
@@ -59,7 +72,7 @@ python3 section85/code/run_bounded_nine_v550j_v551j_v552j.py \
   --plan-only
 ```
 
-Inspect `reports/bounded_nine_canary_execution_plan.json`. It must contain exactly nine scopes and association mode `off`.
+Inspect `reports/bounded_nine_canary_execution_plan.json`. It must contain exactly nine scopes and association mode `off`. The preflight also records whether the V551J and V552J typed producer hooks are still awaiting G3B/G4.
 
 ## 6. Execute the GSS control first
 
@@ -73,7 +86,10 @@ python3 section85/code/run_bounded_nine_v550j_v551j_v552j.py \
   --scope GSS
 ```
 
-Stop and preserve evidence on any failed gate.
+Stop and preserve evidence on any failed gate. A typed producer may have
+`run_integrity_status=PASS` while an evidence-dependent operation remains
+unpermitted; the runner records those as separate states rather than relabeling
+the run as corrupt.
 
 ## 7. Execute eight non-GSS canaries
 
@@ -89,5 +105,9 @@ live respondent rows
 → V551J joint-evidence packet/certification contract
 → V552J runtime-safe structural handoff
 ```
+
+For V551J and V552J, completion means typed producer integrity plus the required
+operation-specific downstream permission under the final merged producer
+contract. A nonempty report or positive row count is insufficient.
 
 No full 35-wave canonical files may be generated. No production-completeness claim is authorized.
