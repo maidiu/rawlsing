@@ -6,9 +6,15 @@
   "revision_2_sha256": "b89bffbde1ece404c6a21af218764654bab3b034b75951339d1b16d116c3aa72",
   "procedure_path": "data/ddm_build_copy/issue_register/20260815/PROCEDURE.md",
   "procedure_required": true,
+  "worker_plan_path": "data/ddm_build_copy/issue_register/20260815/WORKER_PLAN.json",
+  "worker_guide_path": "data/ddm_build_copy/issue_register/20260815/WORKER_GUIDE.md",
+  "worker_plan_required_for_parallel_execution": true,
+  "worker_plan_sha256": "dab81301cce9c7cb800e918d784ad1e1dd78d54f137584eb5293d3658c8bfb21",
+  "integration_branch": "agent/v550-v552j-repair-integration",
   "anchors": {
     "git_main_commit_at_base_register_freeze": "a819fb35337ea28c4a83352d0040030b3da83a7a",
     "register_procedure_commit": "2ff71cbd00f0ffdd45f5559fa4ff50db202f0377",
+    "worker_plan_planning_base_commit": "ce76af9170727924768255cd7df63fa7298b6633",
     "desktop_snapshot_commit": "e2afe02f90eddad3a24555d088e4745e41b1ffaa",
     "runtime_stamp_gate_tip": "9838527e72ac39259a08a095c883756c1db28b1f",
     "intermediate_stamp_commit": "1a61c119248b1cd287abf878b396fbfcf75a63ee",
@@ -29,7 +35,8 @@
     "base_deferred": 6,
     "promoted_or_superseded_deferred": 1,
     "effective_deferred": 5,
-    "closed_findings": 7
+    "closed_findings": 7,
+    "primary_worker_owners_plus_vozhd": 7
   },
   "superseded_mandatory_issue_ids": {
     "V550-004": "False current defect; August runtime loader is already cached. See CLOSED-007."
@@ -37,17 +44,21 @@
   "superseded_deferred_issue_ids": {
     "WATCH-004": "Promoted/reframed as mandatory V550J-003 after exhaustive main/runtime reconciliation."
   },
-  "status": "FROZEN_ACTIONABLE_REGISTER_REVISION_2",
-  "purpose": "Single machine-readable canonical issue universe for confirmed V550–V552J repair work. Revision 2 extends the original 2026-08-15 register after exhaustive re-audit; it does not create a parallel audit authority.",
+  "status": "FROZEN_ACTIONABLE_REGISTER_REVISION_2_WITH_WORKER_DAG",
+  "purpose": "Single machine-readable canonical issue universe for confirmed V550–V552J repair work. Revision 2 extends the original register after exhaustive re-audit; WORKER_PLAN.json partitions the same 67 active issues for parallel execution and does not create a parallel authority.",
   "load_rule": [
     "Read PROCEDURE.md first.",
     "Load every issues_*.json shard listed in files below, including numbered continuation shards.",
-    "Apply superseded_mandatory_issue_ids and superseded_deferred_issue_ids from this index before computing active work.",
+    "Apply superseded_mandatory_issue_ids and superseded_deferred_issue_ids before computing active work.",
     "Read closed.json before implementation so disproven findings are not reintroduced.",
-    "Original shards remain immutable evidence; continuation shards extend the same register."
+    "For parallel execution, read WORKER_PLAN.json and WORKER_GUIDE.md before claiming or editing any issue.",
+    "Workers may act only on their assigned primary issue IDs and write domains unless Vozhd explicitly reassigns ownership.",
+    "Original shards remain immutable evidence; worker plan/guide schedule their execution but do not alter issue meaning."
   ],
   "files": {
     "PROCEDURE.md": "required execution procedure",
+    "WORKER_PLAN.json": "required machine-readable dependency/ownership plan for parallel execution",
+    "WORKER_GUIDE.md": "required human execution/launch guide for parallel execution",
     "issues_src.json": 3,
     "issues_src_2.json": 2,
     "issues_v550.json": 6,
