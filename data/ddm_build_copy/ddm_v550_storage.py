@@ -15,7 +15,7 @@ from typing import Any, Iterable
 
 import pandas as pd
 
-from data.ddm_build_copy.ddm_v550_schema import write_schema_json
+from data.ddm_build_copy.ddm_v550_schema import QUESTION_USE_CONTRACT_SCHEMA, write_schema_json
 
 
 def utc_now() -> str:
@@ -261,6 +261,17 @@ def ensure_directories(root: Path, run_id: str) -> V550Paths:
     return paths
 
 
+def _canonicalize_empty_table_schema(df: pd.DataFrame, table_name: str) -> pd.DataFrame:
+    """Widen valid-empty QUC output to its canonical required schema before serialization."""
+    if not df.empty or table_name != "question_use_contract":
+        return df
+    columns = list(dict.fromkeys([
+        *df.columns,
+        *QUESTION_USE_CONTRACT_SCHEMA["required_columns"],
+    ]))
+    return df.reindex(columns=columns)
+
+
 def write_table(
     df: pd.DataFrame,
     *,
@@ -274,6 +285,7 @@ def write_table(
     extra_schema: dict[str, Any] | None = None,
     arrow_schema: Any = None,
 ) -> dict[str, Any]:
+    df = _canonicalize_empty_table_schema(df, table_name)
     layer_dir = {
         "core": paths.core,
         "distributions": paths.distributions,
