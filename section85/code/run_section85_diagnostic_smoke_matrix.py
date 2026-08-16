@@ -30,6 +30,7 @@ from section85_exact_producer_state import (  # noqa: E402
 from section85_typed_state import verify_v551_artifact_files  # noqa: E402
 
 LEGACY_IMPLEMENTATION = CODE_DIR / "_legacy_run_section85_diagnostic_smoke_matrix.py"
+_ACTIVE_EXPECTED_IDENTITY: dict[str, str] | None = None
 
 
 def _load_json(path: Path) -> dict[str, Any]:
@@ -149,7 +150,7 @@ def current_v551j_gate(
     typed = _exact_operation_summary(
         manifest_path,
         stage="v551j",
-        expected_identity=expected_identity,
+        expected_identity=expected_identity or _ACTIVE_EXPECTED_IDENTITY,
     )
     manifest = _load_json(manifest_path)
     row_counts = manifest.get("row_counts", {}) if isinstance(manifest.get("row_counts"), dict) else {}
@@ -208,7 +209,7 @@ def summarize_v552j_functional_gate(
     typed = _exact_operation_summary(
         manifest_path,
         stage="v552j",
-        expected_identity=expected_identity,
+        expected_identity=expected_identity or _ACTIVE_EXPECTED_IDENTITY,
     )
     return {
         **typed,
@@ -279,16 +280,71 @@ def _patch_base_module(base):
         ]
         return impl._invoke_run(cmd, timeout_sec=1800, config=config)
 
+    def run_v551j_g4(
+        shard_id: str, atoms_path: str, pattern_index_path: str, meaning_summary_path: str,
+        output_root: str, v552_structural_dir: str, config, registry_path: str | None = None,
+    ) -> dict[str, Any]:
+        del v552_structural_dir
+        pattern_root = Path(pattern_index_path).parent
+        v551_manifest = Path(atoms_path).parent / "manifest.json"
+        cmd = [
+            sys.executable, impl._abs("data/ddm_build_copy/compile_v551j_joint_evidence_packets.py", config),
+            "--run-id", shard_id,
+            "--v551-atoms-path", atoms_path,
+            "--v551-manifest-path", str(v551_manifest),
+            "--v550j-pattern-index-path", pattern_index_path,
+            "--v550j-pattern-item-index-path", str(pattern_root / "joint_response_pattern_item_index.parquet"),
+            "--v550j-relation-signature-path", str(pattern_root / "joint_pattern_relation_signature.parquet"),
+            "--v550j-manifest-path", str(pattern_root / "v550j_manifest.json"),
+            "--v550j-readiness-report-path", str(pattern_root / "v550j_source_wave_readiness_report.json"),
+            "--v550j-meaning-summary-path", meaning_summary_path,
+            "--registry-path", str(registry_path or impl.DEFAULT_JOINT_REGISTRY),
+            "--output-root", output_root,
+            "--emit-review-surface", "--emit-certified-index",
+            "--no-write-csv", "--write-parquet", "--strict",
+        ]
+        return impl._invoke_run(cmd, timeout_sec=1800, config=config)
+
+    def run_v552j_g4(
+        shard_id: str, v551j_run_root: str, output_root: str, v552_structural_dir: str, config,
+    ) -> dict[str, Any]:
+        cmd = [
+            sys.executable, impl._abs("data/ddm_build_copy/compile_v552j_structural_handoff.py", config),
+            "--run-id", shard_id,
+            "--v551j-manifest-path", str(Path(v551j_run_root) / "manifest" / "manifest.json"),
+            "--v552-manifest-path", str(Path(v552_structural_dir).parent / "manifest.json"),
+            "--output-root", output_root,
+            "--write-parquet", "--no-write-csv",
+        ]
+        return impl._invoke_run(cmd, timeout_sec=1800, config=config)
+
     original_run_wave = base.run_wave
 
     def typed_run_wave(*args, **kwargs):
-        return _normalize_typed_wave_result(original_run_wave(*args, **kwargs))
+        global _ACTIVE_EXPECTED_IDENTITY
+        family = str(args[0] if len(args) > 0 else kwargs.get("family", ""))
+        wave = str(args[1] if len(args) > 1 else kwargs.get("wave", ""))
+        country = str(args[2] if len(args) > 2 else kwargs.get("country", ""))
+        run_id = f"{family}_{wave}" + (f"_{country}" if country else "")
+        previous = _ACTIVE_EXPECTED_IDENTITY
+        _ACTIVE_EXPECTED_IDENTITY = {
+            "run_id": run_id, "source": family, "wave": wave,
+            "country_code": country, "shard_id": "",
+        }
+        try:
+            return _normalize_typed_wave_result(original_run_wave(*args, **kwargs))
+        finally:
+            _ACTIVE_EXPECTED_IDENTITY = previous
 
     impl.run_v551 = run_v551_v3
+    impl.run_v551j = run_v551j_g4
+    impl.run_v552j = run_v552j_g4
     impl.summarize_v551_functional_gate = summarize_v551_functional_gate
     impl.summarize_v551j_functional_gate = summarize_v551j_functional_gate
     impl.summarize_v552j_functional_gate = summarize_v552j_functional_gate
     base.run_v551 = run_v551_v3
+    base.run_v551j = run_v551j_g4
+    base.run_v552j = run_v552j_g4
     base.summarize_v551_functional_gate = summarize_v551_functional_gate
     base.summarize_v551j_functional_gate = summarize_v551j_functional_gate
     base.summarize_v552j_functional_gate = summarize_v552j_functional_gate
