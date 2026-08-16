@@ -4,7 +4,11 @@
 Loads association_lane_registry.yaml at startup and provides
 scoped lane/publishability/authority classification.
 Rules are filtered by source, wave, and country_code at load time.
-Precedence: exact > prefix > regex > (fallback to hardcoded classifier).
+Precedence: exact > prefix > regex.
+
+``classify()`` remains available for non-executable probing. Executable
+consumers must use ``classify_required()`` so missing governed association
+authority cannot fall through to a hard-coded classifier.
 """
 
 from __future__ import annotations
@@ -22,6 +26,7 @@ from data.ddm_build_copy.ddm_survey_identity import (
     require_survey_identity,
     wave_ordinal,
 )
+from data.ddm_build_copy.ddm_v550j_registry_contract import RegistryAuthorityError
 
 DEFAULT_REGISTRY_PATH = (
     Path(__file__).resolve().parents[2] / "data" / "ddm_registries" / "association_lane_registry.yaml"
@@ -68,17 +73,60 @@ class AssociationLaneRegistry:
         self._all_rules: list[RegistryRule] = []
         self._loaded = False
 
+    @property
+    def path(self) -> Path:
+        return self._path
+
     def load(self) -> None:
         if not self._path.exists():
-            raise FileNotFoundError(f"Association lane registry not found: {self._path}")
+            raise RegistryAuthorityError(
+                "association_lane_registry_missing",
+                f"Association lane registry not found: {self._path}",
+                authority_name="V550J association lane registry",
+                path=self._path,
+            )
         with open(self._path, "r") as f:
             data = yaml.safe_load(f)
-        raw_rules = (data or {}).get("rules", [])
+        if not isinstance(data, dict):
+            raise RegistryAuthorityError(
+                "association_lane_registry_invalid",
+                f"Association lane registry must be a mapping: {self._path}",
+                authority_name="V550J association lane registry",
+                path=self._path,
+            )
+        raw_rules = data.get("rules", [])
+        if not isinstance(raw_rules, list):
+            raise RegistryAuthorityError(
+                "association_lane_registry_invalid",
+                f"Association lane registry rules must be a list: {self._path}",
+                authority_name="V550J association lane registry",
+                path=self._path,
+            )
         self._all_rules = []
-        for rule in raw_rules:
+        for index, rule in enumerate(raw_rules):
+            if not isinstance(rule, dict):
+                raise RegistryAuthorityError(
+                    "association_lane_registry_rule_invalid",
+                    f"Association lane registry rule {index} is not a mapping",
+                    authority_name="V550J association lane registry",
+                    path=self._path,
+                )
+            rule_id = str(rule.get("rule_id", "")).strip()
+            lane = str(rule.get("association_lane", "")).strip()
+            publishability = str(rule.get("association_lane_publishability", "")).strip()
+            if not rule_id or not lane or not publishability:
+                raise RegistryAuthorityError(
+                    "association_lane_registry_rule_incomplete",
+                    (
+                        f"Association lane registry rule {index} is missing rule_id, "
+                        "association_lane, or association_lane_publishability"
+                    ),
+                    authority_name="V550J association lane registry",
+                    path=self._path,
+                )
             self._all_rules.append(
                 RegistryRule(
-                    rule_id=str(rule.get("rule_id", "")),
+                    rule_id=rule_id,
                     source=str(rule.get("source", "")),
                     wave_start=_maybe_int(rule.get("wave_start")),
                     wave_end=_maybe_int(rule.get("wave_end")),
@@ -86,10 +134,8 @@ class AssociationLaneRegistry:
                     match_type=str(rule.get("match_type", "exact")),
                     var_code=rule.get("var_code"),
                     var_code_pattern=rule.get("var_code_pattern"),
-                    association_lane=str(rule.get("association_lane", "unknown_association_lane")),
-                    association_lane_publishability=str(
-                        rule.get("association_lane_publishability", "diagnostic_only_lane")
-                    ),
+                    association_lane=lane,
+                    association_lane_publishability=publishability,
                     authority_source=str(rule.get("authority_source", "registry")),
                     authority_status=str(rule.get("authority_status", "manual_registry_rule")),
                     notes=rule.get("notes"),
@@ -120,7 +166,7 @@ class AssociationLaneRegistry:
     ) -> RegistryResult | None:
         """Return RegistryResult for var_code, or None if no registry rule matches.
 
-        Precedence: exact > prefix > regex.  Falls out on first match within a type.
+        Precedence: exact > prefix > regex. Falls out on first match within a type.
         """
         code = str(var_code).strip().upper()
         if not code:
@@ -151,6 +197,24 @@ class AssociationLaneRegistry:
                     continue
 
         return None
+
+    def classify_required(
+        self, var_code: str, source: str, wave: str | int, country_code: str
+    ) -> RegistryResult:
+        """Return governed classification or fail closed when authority is absent."""
+        result = self.classify(var_code, source, wave, country_code)
+        if result is None:
+            raise RegistryAuthorityError(
+                "association_lane_authority_missing",
+                (
+                    "No governed association-lane rule matches "
+                    f"var_code={str(var_code).strip()} source={source} wave={wave} "
+                    f"country_code={country_code}"
+                ),
+                authority_name="V550J association lane registry",
+                path=self._path,
+            )
+        return result
 
 
 def _rule_applies(rule: RegistryRule, source_key: str, wave_int: int, country: str) -> bool:
