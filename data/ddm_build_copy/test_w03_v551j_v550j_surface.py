@@ -203,6 +203,17 @@ def test_v550j_missing_typed_state_fails_closed(tmp_path: Path) -> None:
         _verify(manifest, readiness, frames)
 
 
+def test_v550j_unknown_evidence_status_fails_closed(tmp_path: Path) -> None:
+    manifest, readiness, frames = _write_surface(tmp_path)
+    for path in (manifest, readiness):
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload["evidence_status"] = "UNKNOWN_PRODUCER_STATE"
+        path.write_text(json.dumps(payload), encoding="utf-8")
+
+    with pytest.raises(BoundaryContractError, match="EVIDENCE_STATUS_INVALID"):
+        _verify(manifest, readiness, frames)
+
+
 def test_v550j_nonpass_run_integrity_fails_closed(tmp_path: Path) -> None:
     manifest, readiness, frames = _write_surface(
         tmp_path,
@@ -212,6 +223,18 @@ def test_v550j_nonpass_run_integrity_fails_closed(tmp_path: Path) -> None:
     )
 
     with pytest.raises(BoundaryContractError, match="V550J_MANIFEST_RUN_INTEGRITY_NOT_PASS"):
+        _verify(manifest, readiness, frames)
+
+
+def test_v550j_wrong_producer_run_fails_closed(tmp_path: Path) -> None:
+    manifest, readiness, frames = _write_surface(tmp_path)
+    payload = json.loads(manifest.read_text(encoding="utf-8"))
+    payload["producer_run_id"] = "other-run"
+    payload["run_id"] = "other-run"
+    payload["producer_scope_identity"]["run_id"] = "other-run"
+    manifest.write_text(json.dumps(payload), encoding="utf-8")
+
+    with pytest.raises(BoundaryContractError, match="V550J_MANIFEST_RUN_ID_MISMATCH"):
         _verify(manifest, readiness, frames)
 
 
