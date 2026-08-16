@@ -33,7 +33,7 @@ def test_section85_patch_uses_exact_v551_v3_cli() -> None:
         summarize_v551j_functional_gate=lambda path: {},
         summarize_v552j_functional_gate=lambda path: {},
     )
-    base = SimpleNamespace(_impl=impl)
+    base = SimpleNamespace(_impl=impl, run_wave=lambda *args, **kwargs: {"passed": True})
     diagnostic._patch_base_module(base)
 
     result = impl.run_v551(
@@ -100,3 +100,27 @@ def test_v551_zero_atoms_preserves_integrity_but_denies_evidence_operation(tmp_p
     assert gate["operation_permitted"] is False
     assert gate["passed"] is False
     assert gate["failure_reason"] == "v551_evidence_permission:APPLICABLE_UNRESOLVED/DENY"
+
+
+def test_wave_result_keeps_integrity_pass_distinct_from_evidence_permission() -> None:
+    diagnostic = load_diagnostic()
+    result = diagnostic._normalize_typed_wave_result(
+        {
+            "passed": False,
+            "failure_stage": "v551_gate",
+            "functional_failure_reason": "v551_evidence_permission:APPLICABLE_UNRESOLVED/DENY",
+            "functional_checks": {
+                "v551": {
+                    "integrity_pass": True,
+                    "operation_permitted": False,
+                    "evidence_status": "APPLICABLE_UNRESOLVED",
+                    "downstream_permission_status": "DENY",
+                }
+            },
+        }
+    )
+    assert result["passed"] is False
+    assert result["run_integrity_status"] == "PASS"
+    assert result["evidence_operation_status"] == "NOT_PERMITTED"
+    assert result["typed_outcome"] == "INTEGRITY_PASS_EVIDENCE_OPERATION_NOT_PERMITTED"
+    assert result["failure_stage"] == "typed_evidence_permission_gate"
