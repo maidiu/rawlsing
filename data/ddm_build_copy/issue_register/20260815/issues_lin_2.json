@@ -1,0 +1,125 @@
+{
+  "schema": "rawlsing_issue_group_v2",
+  "freeze_date": "2026-08-15",
+  "base_register_sha256": "5004f95a7f2505b109b9ffe1aebc34693e44407c8d2bf2d54dc422aaf816c0f6",
+  "issues": [
+    {
+      "id": "LIN-007",
+      "title": "Stage run IDs are caller labels rather than verified properties of producer inputs",
+      "group": "Lineage / run identity",
+      "severity": "CRITICAL",
+      "affected": "V551, V551J, V552, V552J stage boundaries and manifests",
+      "defect": "Several compilers accept arbitrary `--run-id`/root paths without proving that embedded producer run IDs and source scope are singular and equal. V551 can write run B from bridge rows identifying run A; V551J can combine V551 and V550J outputs that share source/wave/country but not upstream V550 run; V552/V552J likewise do not consistently bind embedded producer identity to directory run ID.",
+      "evidence": "Cross-stage run-identity trace during exhaustive audit.",
+      "consequence": "Even perfectly run-ID-scoped directories do not establish lineage; individually valid artifacts from distinct executions can be fused under one output run label.",
+      "required": "Make producer-run identity and source/wave/country/shard scope explicit, singular, and verified at every stage boundary. Output run identity must be derived/bound to producer identity, not merely trusted from CLI naming.",
+      "tests": [
+        "Mixed producer run IDs are rejected before semantic joins.",
+        "CLI run ID mismatch with embedded producer identity is a typed integrity failure."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/compile_v551_relation_evidence_atoms.py",
+        "data/ddm_build_copy/compile_v551j_joint_evidence_packets.py",
+        "data/ddm_build_copy/compile_v552_structural_ddm.py",
+        "data/ddm_build_copy/compile_v552j_structural_handoff.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-RUN-001",
+      "origin_fingerprint": "7a4fdc2aa01e914b771551f06dff720f9098017ac8ce08d16ba12f14ad64ea63",
+      "fingerprint": "ce34bee433493d718983053260d9a7dc7e32765e19921b74dbc91beefd8bffcf"
+    },
+    {
+      "id": "LIN-008",
+      "title": "Producer-declared failure/integrity is not binding on downstream consumption",
+      "group": "Lineage / producer boundary",
+      "severity": "CRITICAL",
+      "affected": "V550J→V551J; V551→V552/V551J; V551J/V552→V552J",
+      "defect": "Consumers often validate path existence or table shape but do not require a successful producer integrity/readiness state plus producer-declared artifact hash and compatible contract version. V550J can report `failed_validation` yet still exit 0; V551J reads the report but does not gate on it. Similar weak binding exists for V551 atoms into V552 and V551J/V552 inputs into V552J.",
+      "evidence": "Producer/consumer boundary trace and existing tautological/self-hash findings.",
+      "consequence": "A producer that explicitly declared itself invalid—or a substituted/stale artifact with plausible columns—can become semantic input downstream.",
+      "required": "Standardize every boundary on: producer run integrity PASS, exact producer-declared artifact-file hash, supported contract version, and exact run/scope identity. Shape validation is additional, not a substitute.",
+      "tests": [
+        "Failed producer run cannot feed downstream semantic compilation.",
+        "Tampered/substituted artifact with valid-looking schema fails producer hash verification."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/compile_v550j_joint_response_patterns.py",
+        "data/ddm_build_copy/compile_v551j_joint_evidence_packets.py",
+        "data/ddm_build_copy/compile_v552_structural_ddm.py",
+        "data/ddm_build_copy/compile_v552j_structural_handoff.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-BOUNDARY-001",
+      "origin_fingerprint": "9f42ff3f795e863fe8bc033b72ee7af077f5baf463ea38a9521d30d474bf5498",
+      "fingerprint": "467c26541a7a698422763e36176cdf19e47dc6a0c0cdd7071e112080a58a273e"
+    },
+    {
+      "id": "LIN-009",
+      "title": "Lineage resolver can select V550J from a different run than V550/V551",
+      "group": "Lineage / run identity",
+      "severity": "CRITICAL",
+      "affected": "resolve_pipeline_lineage.py V550/V550J candidate selection",
+      "defect": "The resolver selects a V550 shard and derives its run ID, but chooses V550J independently with a broad source-wave/mtime search rather than requiring the selected V550 run ID. V551 onward are then tied back to the V550 run.",
+      "evidence": "Exhaustive lineage selection trace.",
+      "consequence": "A certified lineage can splice a joint-evidence stage from a different execution into the V550/V551/V552 chain.",
+      "required": "Select all run-coupled stages from the same verified producer-run identity. Never use independent newest-by-mtime selection for a stage participating in one lineage.",
+      "tests": [
+        "Candidate lineage with mismatched V550/V550J run IDs is rejected.",
+        "Resolver selects one coherent run graph, not per-stage newest files."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/resolve_pipeline_lineage.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-LIN-001",
+      "origin_fingerprint": "172fb4240ab3daedbc68fb6afe0ec95cd59adeaeb0d8a320f848b306c87354eb",
+      "fingerprint": "abe345cec8f6b016302050ab09173aa45d22cb32bb2966a855cb7287435344a1"
+    },
+    {
+      "id": "LIN-010",
+      "title": "Dead V552 architecture still defines required artifacts in live lineage/preflight",
+      "group": "Lineage / stale contract",
+      "severity": "CRITICAL",
+      "affected": "resolve_pipeline_lineage.py; compile_v5_paired_wave_preflight.py vs effective V552 compiler",
+      "defect": "Live consumers require `manifest/v552_input_provenance_manifest.json`, but the effective V552 compiler does not write it; that artifact belongs to the shadowed/dead earlier V552 builder architecture.",
+      "evidence": "Producer/consumer artifact-name closure across effective V552 builder, lineage resolver, and paired-wave preflight.",
+      "consequence": "A correct live V552 run can be rejected for omitting an artifact that no live producer creates; dead architecture continues to govern orchestration.",
+      "required": "Remove/replace ghost artifact requirements everywhere with the current versioned V552 producer manifest and producer-declared hashes. Search the entire active consumer surface for the old artifact name.",
+      "tests": [
+        "Fresh effective V552 output satisfies lineage and paired-wave preflight without legacy ghost files.",
+        "No active consumer requires `v552_input_provenance_manifest.json` unless a compatibility adapter actually produces it."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/resolve_pipeline_lineage.py",
+        "data/ddm_build_copy/compile_v5_paired_wave_preflight.py",
+        "data/ddm_build_copy/compile_v552_structural_ddm.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-LIN-002",
+      "origin_fingerprint": "e923c3c9f23260da88e1f01a44904350bc8f563046c57478478d70e82e876811",
+      "fingerprint": "e139dab3671ac6fee8a86becff563a822de05bdd99cfe25657c358b88186b1c0"
+    },
+    {
+      "id": "LIN-011",
+      "title": "Unreadable or missing readiness status fails open",
+      "group": "Lineage / integrity",
+      "severity": "CRITICAL",
+      "affected": "resolve_pipeline_lineage.py readiness parsing and candidate usability",
+      "defect": "The resolver only rejects a non-ready candidate when it successfully parses a nonempty status string. Corrupt/unparseable readiness yields blank status during gating and can be returned usable with status `unknown`. One V552 path also points the JSON status reader at a Parquet file.",
+      "evidence": "Constructed malformed readiness JSON with require_ready=True returned usable=True/status=unknown; static trace found V552 readiness Parquet/JSON mismatch.",
+      "consequence": "Corrupt status metadata is treated more permissively than an honest BLOCKED status, allowing failed/unverifiable producers into the lineage.",
+      "required": "Required producer readiness/integrity must fail closed when missing, unreadable, wrong format, or unknown for the declared contract version. Parse typed manifest enums; legacy adapters must be explicit.",
+      "tests": [
+        "Malformed required readiness file is unusable.",
+        "Wrong-format status path is detected as integrity failure, not `unknown` usability."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/resolve_pipeline_lineage.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-LIN-003",
+      "origin_fingerprint": "fe25a12011f31313c217876d0251da976ae3035b88de99a8ce86861a38344205",
+      "fingerprint": "6b27e89b28c5b34a2f5750547fbc18f43615d6c99fe66bb58657e509f8a6ed1b"
+    }
+  ]
+}

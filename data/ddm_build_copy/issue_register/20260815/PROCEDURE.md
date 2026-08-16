@@ -2,244 +2,349 @@
 
 ## Purpose
 
-This directory is the execution authority for the confirmed V550–V552J repair set frozen on 2026-08-15. It is a task register, not semantic authority. Use it to prevent confirmed defects from being lost, duplicated, reopened without evidence, or silently replaced by a new redesign.
+This directory is the single execution register for the confirmed V550–V552J repair closure. It is a task register, not semantic authority.
 
-The governing issue-set fingerprint is:
+Base issue-set fingerprint:
 
 `5004f95a7f2505b109b9ffe1aebc34693e44407c8d2bf2d54dc422aaf816c0f6`
 
-## Source precedence
+Exhaustive-audit revision fingerprint:
 
-For files in this repair closure, do **not** assume GitHub `main` is the best implementation merely because it is `main`.
+`b89bffbde1ece404c6a21af218764654bab3b034b75951339d1b16d116c3aa72`
+
+`index.json` is the canonical entrypoint. Read it before doing any work.
+
+## How to load the register
+
+1. Read `index.json`.
+2. Read this procedure.
+3. Load **every** `issues_*.json` file listed by `index.json`, including numbered continuation shards such as `issues_src_2.json` and `issues_v551_3.json`.
+4. Apply the supersession maps in `index.json` before calculating active work.
+5. Read `closed.json` so disproven findings are not reintroduced.
+6. Read `deferred.json` for boundary awareness, excluding any entry promoted/superseded by `index.json`.
+7. Use `file_hashes.json` and pinned hashes in `index.json` as byte-level anchors.
+
+The original issue shards are immutable evidence. Numbered continuation shards are **not a separate audit or authority**; they extend this same register after further hostile review. Do not create a parallel issue universe.
+
+## Governing objective
+
+The objective is to **make the pipeline we have work**.
+
+Do not reconstruct Rawlsing from historical output packages. Do not redesign unrelated stages. Do not assume that an older accepted checkpoint is globally better than later runtime code. Do not assume that either current GitHub `main` or the August runtime donor is globally better than the other.
+
+### Source/integration precedence
 
 Use this order:
 
 1. Explicit governed semantic/measurement authority and later owner rulings.
-2. The newest actual August runtime implementation (`data/ddm_build_copy` lineage represented by Desktop snapshot `e2afe02...`, plus later V551 stamp-gate work through `9838527...`) as the default implementation baseline.
-3. Accepted late-July packages as regression oracles: they prove previously accepted properties, but are not automatically newer or better than the August runtime.
-4. GitHub `main` as the integration destination; preserve main-only improvements after file-by-file reconciliation.
-5. Historical output packages only when a disputed behavior, hash, or regression cannot be resolved from the above. Do not start a broad archaeology project by default.
+2. For every touched implementation file, compare current `main` and the August runtime lineage file-by-file and function-by-function.
+3. Preserve every proven improvement from either lineage unless it conflicts with higher authority.
+4. Use accepted late-July packages as regression oracles: they prove previously accepted properties but are not automatic restore targets.
+5. Search historical outputs only when a disputed behavior/hash cannot be resolved above.
+6. **Never wholesale-copy either `main` or the runtime donor over the other.**
 
-For V551 specifically, the accepted July core SHA-256 is `1339fb9197a622c130d64e256c396be43e02c9742424a9c8ec5629b161d2972c`; the August runtime copy is essentially that implementation plus a small later response-family fallback. Do not restore the July file wholesale: preserve useful later work, remove proven regressions, and fix defects shared by both.
+Known preservation requirements from the exhaustive reconciliation include:
+
+From current `main`, preserve unless specifically superseded:
+- shared V550/V550J respondent-substrate machinery;
+- bounded V550J governed-authority/prepared-substrate validation;
+- the stricter rule that `draft` is not silently executable authority;
+- main-only V550 response-relation/shared-substrate/registry-contract modules;
+- current-contract smoke adapters where they are aligned with live producers.
+
+From the August runtime lineage, preserve unless specifically superseded:
+- the governed `CLOSED_35_WAVES` scope and Asian Barometer W6 exclusion;
+- QRA/authority-receipt work;
+- accepted scale-v5 V551 and the exact response-scale registry/manifest;
+- low-support handling fixes;
+- V551J signed-component and compatibility-adapter work;
+- V551 directionality-stamp helper after fixing its contaminated applicability denominator.
+
+For V551 specifically, the accepted July core SHA-256 is:
+`1339fb9197a622c130d64e256c396be43e02c9742424a9c8ec5629b161d2972c`
+
+The August runtime V551 is the same core lineage plus a small later response-family fallback. Do not restore the July file wholesale: preserve useful later work, remove proven regressions, and fix defects shared by both.
 
 ## Register classes
 
-- `issues_*.json`: mandatory confirmed defects. Every entry must receive a terminal resolution before this repair program is complete.
-- `deferred.json`: confirmed risks explicitly outside the current mandatory repair boundary. Do not expand them into required work unless a mandatory fix or regression test proves they block correctness.
-- `closed.json`: findings already resolved, disproven, or determined not to be current runtime defects. Do not reopen them without new concrete evidence.
-- `file_hashes.json`: known byte-level anchors for touched or compared files.
+- `issues_*.json`: mandatory confirmed defects. Every active entry must receive a terminal resolution.
+- `deferred.json`: confirmed risks outside the current mandatory boundary unless promoted by `index.json` or proven blocking.
+- `closed.json`: disproven/resolved/non-defect findings. Do not reopen without new concrete evidence.
+- `file_hashes.json`: byte-level comparison anchors.
 
-The frozen issue shards are evidence. **Do not edit them in place to mark progress.** Record implementation progress in a separate resolution ledger so the original finding remains immutable.
+Do **not** edit issue records in place to mark progress. Record implementation progress in a separate machine-readable resolution ledger keyed by issue ID + fingerprint. The issue universe remains frozen evidence.
 
-## Operating rule
+## Per-file classification before editing
 
-The objective is to **make the pipeline we have work**, not to reconstruct Rawlsing from historical packages and not to redesign unrelated stages.
+For every touched file/behavior, classify the delta as:
 
-For every touched behavior, classify the state as one of:
+- `KEEP_MAIN`
+- `KEEP_RUNTIME`
+- `REMOVE_REGRESSION`
+- `FIX_SHARED_DEFECT`
+- `IMPLEMENT_NEW_REQUIREMENT`
+- `DEFER`
 
-- `KEEP_CURRENT`: later runtime behavior is valid and must survive.
-- `REMOVE_REGRESSION`: later behavior violates accepted/governed semantics.
-- `FIX_SHARED_DEFECT`: defect exists in both accepted checkpoint and current runtime.
-- `IMPLEMENT_NEW_REQUIREMENT`: required architecture/contract does not yet exist in either.
-- `DEFER`: real issue, outside current repair boundary and not blocking the mandatory closure.
-
-Never replace an entire file with an older accepted copy merely because that copy passed an earlier acceptance run.
-
-## Preflight before editing
-
-1. Read `index.json`.
-2. Read the issue shard(s) for the stage being changed.
-3. Read `closed.json` so disproven findings are not reintroduced.
-4. Read relevant entries in `deferred.json` to understand boundaries without expanding scope.
-5. Confirm the current Git `main` commit and the relevant runtime/donor file hashes before editing.
-6. For each touched file, record: current-main hash, August-runtime hash, accepted historical hash if known, and the chosen baseline/rationale.
-7. If a hash differs from the register, stop only long enough to determine whether the file legitimately advanced; do not assume corruption and do not revert automatically.
+Record current-main hash, August-runtime hash, accepted historical hash when known, chosen implementation source, and rationale.
 
 ## Required implementation order
 
-Work in dependency order unless a test-only change is needed earlier:
+Work in dependency order unless a test-only patch is needed earlier:
 
-1. **Source/integration contract** — reconcile `main` with the August runtime for files actually touched; restore exact governed authority files required by runtime contracts.
-2. **V550 boundary** — separate pure directional applicability from promotability; preserve raw response coordinates and exact upstream authority/provenance; remove downstream semantic ownership that belongs to V551.
-3. **V551** — make V551 the canonical directional adjudication/projection boundary; eliminate forbidden inference; preserve neutral raw values; produce typed candidate adjudication, clean promotable atoms, distribution coverage, and run integrity.
-4. **V551J** — consume the new V551 producer contract; distinguish known V551 repair debt from unexplained missing atoms; retain valid neutral and low-support review semantics; enforce producer hashes/versions.
-5. **V552** — modify only the effective/live builder first; consume canonical V551 signed projection instead of re-solving scale semantics; separate intentional selected-surface partiality from unresolved adjudication debt; split integrity, evidence state, and downstream permission.
-6. **V552J** — remove synthetic unknown objects and absence-to-zero aggregate scoring; preserve typed absence.
-7. **Lineage/orchestration/Section85/smokes** — replace `nonempty == valid` and status-substring gates with artifact integrity, producer contract, typed evidence state, and operation-specific sufficiency.
-8. **Downstream regression** — verify V553–V558 do not collapse `OBSERVED_ZERO`, `NO_APPLICABLE_EVIDENCE`, and `APPLICABLE_BUT_UNRESOLVED`. Patch only proven leaks.
+1. **Source/integration closure**
+   - reconcile touched main/runtime files;
+   - restore or explicitly externalize exact governed dependencies;
+   - repair default lineage dependency closure;
+   - enforce governed 35-wave scope.
+2. **V550 boundary**
+   - separate pure directional applicability from promotability;
+   - preserve raw coordinates and upstream authority/provenance;
+   - remove canonical signed-projection ownership from V550.
+3. **V550J**
+   - preserve main's stricter authority-status semantics;
+   - resolve the shipped-draft/default contradiction;
+   - bind governed association lane publishability and actual statistical thresholds;
+   - restore conditional association registries or explicit external dependency contract.
+4. **V551**
+   - sole canonical directional adjudication/projection boundary;
+   - remove forbidden inference;
+   - preserve neutral raw values;
+   - fix stratified distribution identity/deduplication;
+   - emit typed candidate adjudication, clean promotable atoms, coverage, and run integrity.
+5. **V551J**
+   - consume V551 producer manifest + atoms + adjudication/coverage;
+   - distinguish known repair debt from unexplained missing atoms;
+   - preserve neutral and low-support review semantics;
+   - preserve/replace required compatibility adapters atomically.
+6. **V552**
+   - modify only the effective/live builder first;
+   - consume canonical V551 signed projection;
+   - distinguish selected-surface partiality from unresolved adjudication debt;
+   - split integrity, evidence state, and downstream permission;
+   - remove ghost/dead V552 contract requirements from consumers.
+7. **V552J**
+   - no synthetic unknown object;
+   - no absence→0 aggregate scores;
+   - hard scope identity before structural matching;
+   - producer-bound inputs only.
+8. **Lineage/orchestration/Section85**
+   - replace `nonempty == valid`, free-text substring readiness, and path-exists gates;
+   - bind all stages to one coherent producer-run graph;
+   - repair Section85 path rebasing;
+   - make all-wave scope authority-derived and joint stages applicability-scoped;
+   - make serialization contract truthful and stale-artifact-safe.
+9. **Downstream regression only**
+   - verify V553–V558 do not collapse `OBSERVED_ZERO`, `NO_APPLICABLE_EVIDENCE`, and `APPLICABLE_BUT_UNRESOLVED`;
+   - patch only proven leaks.
 
 Do not start the next semantic stage while producer/consumer contract versions are internally inconsistent.
 
 ## V551 design invariant
 
-The governing architecture is:
+> **V551 adjudicates candidates; atoms are individually promotable; distributions carry completeness; the run carries integrity.**
 
-> V551 adjudicates candidates; atoms are individually promotable; distributions carry completeness; the run carries integrity.
+Keep those grains separate.
 
-Keep these grains separate.
-
-The canonical V551 surfaces should be no more than necessary:
-
-- directional candidate adjudication (one row per applicable candidate; outcome, reason, provenance),
-- clean relation-evidence atoms (promotable only),
-- directional distribution coverage/completeness,
+Canonical V551 authority should reduce to:
+- directional candidate adjudication: one row per applicable candidate, outcome/reason/provenance;
+- clean relation-evidence atoms: promotable only;
+- directional distribution coverage/completeness;
 - run manifest/integrity.
 
-Legacy diagnostics may remain as compatibility views only where a real consumer still exists. Do not create multiple authoritative artifacts that encode the same decision independently.
+Legacy diagnostics may remain only as derived compatibility views where a real consumer still requires them.
 
 ## Core semantic invariants
 
 ### Neutral
 
 Certified neutral means:
+- preserve raw/source `response_intensity` exactly, including midpoint coordinates such as `0.5`, or missing if source coordinate is absent;
+- canonical signed side = `neutral`;
+- canonical signed intensity = `0.0`;
+- neutral counts as represented mass;
+- neutral contributes zero signed pressure;
+- neutral remains valid relation evidence;
+- never infer neutral from missing directionality.
 
-- preserve raw/source `response_intensity` exactly (including midpoint coordinates such as `0.5`, or missing if the source has no numeric coordinate),
-- canonical signed side = `neutral`,
-- canonical signed intensity = `0.0`,
-- neutral counts as represented mass,
-- neutral contributes zero signed pressure,
-- neutral is valid relation evidence and must not become +/- pressure.
-
-Do not infer neutral from missing directionality.
-
-### Missing/unresolved
+### Missing / unresolved
 
 Never convert these into authoritative numeric zero:
-
-- no applicable directional evidence,
-- applicable evidence with unresolved authority/projection,
-- missing structural/pressure observation,
+- no applicable directional evidence;
+- applicable evidence with unresolved authority/projection;
+- missing structural/pressure observation;
 - no V552J constraint observations.
 
-`OBSERVED_ZERO`, `NO_APPLICABLE_EVIDENCE`, and `APPLICABLE_BUT_UNRESOLVED` are distinct states throughout the chain.
+`OBSERVED_ZERO`, `NO_APPLICABLE_EVIDENCE`, and `APPLICABLE_BUT_UNRESOLVED` are distinct throughout the chain.
 
 ### Projection authority
 
-- V551 owns canonical signed projection.
-- Load and validate the governed response-scale registry/manifest once per run.
-- Use exact response-semantics-contract authority.
-- No response-family fallback, generic midpoint inference, raw-sign inference, or fabricated +/- magnitude.
-- V552 consumes the V551 signed representation and does not independently reinterpret raw scale geometry.
+- V551 alone owns canonical signed projection.
+- Validate exact response-scale registry + manifest once per run.
+- Exact `response_semantics_contract_hash` authority only.
+- No response-family fallback, midpoint inference, raw-sign inference, or fabricated +/- magnitude.
+- V552 consumes V551 signed fields and does not independently reinterpret scale geometry.
 
 ### Applicability vs promotability
 
-Directional applicability must be authority-defined upstream and immutable. It must not be overwritten by row-level response-map success, structural completeness, support, review state, or V551 promotability.
+Directional applicability is immutable authority-defined upstream state and must not be overwritten by response-map success, structural completeness, support, review state, or V551 promotability.
 
-Use typed outcomes rather than overloaded booleans:
-
+At minimum:
 - `APPLICABLE_BY_AUTHORITY`
 - `NOT_APPLICABLE_BY_AUTHORITY`
 - `APPLICABILITY_UNRESOLVED`
 
-Candidate adjudication likewise must distinguish at least:
-
+Candidate adjudication at minimum:
 - `PROMOTABLE`
 - `NONPROMOTABLE_REPAIRABLE`
 - `NOT_APPLICABLE`
 
-Run-integrity failure is a separate level.
+Run-integrity failure is a different level.
 
 ### Completeness
 
-Keep two dimensions separate:
+Keep these independent:
+- selected/source-surface completeness;
+- directional-adjudication completeness.
 
-- selected/source surface completeness (`COMPLETE_SELECTED_SURFACE` vs intentional selected-category partiality),
-- directional adjudication completeness (`COMPLETE`, `PARTIAL_UNRESOLVED`, `NO_PROMOTABLE_DIRECTIONAL_EVIDENCE`, `NOT_APPLICABLE`).
+Intentional selected-category partiality may use conditional normalization only when adjudication inside the selected surface is complete. Unresolved repair debt must never be renormalized away.
 
-A lawful intentionally partial selected surface may retain conditional normalization. Unresolved adjudication debt must never be silently renormalized away.
-
-Enforce conservation at exact distribution grain:
-
+Enforce:
 `directionally_applicable = promotable + nonpromotable_directional`
 
-and preserve weighted/unweighted unresolved mass explicitly.
+Preserve weighted and unweighted unresolved mass explicitly.
+
+### Identity and scope
+
+Before any semantic or fuzzy structural match, require exact producer/scope identity appropriate to the contract:
+- producer run ID;
+- source;
+- wave;
+- country/shard;
+- exact empirical/distribution identity where applicable.
+
+A semantic score may never bridge a failed scope-identity check.
+
+Stage `--run-id` is not proof of lineage. Embedded producer identity and producer manifest must agree with the output/run identity.
+
+### Producer boundary
+
+Every semantic consumer must verify:
+1. producer run-integrity PASS;
+2. exact supported producer contract/schema version;
+3. exact producer-declared **artifact-file SHA-256** for consumed bytes;
+4. exact producer run/scope identity;
+5. artifact readability/schema validity.
+
+Shape alone, path existence, self-hashing, or nonblank contract fields are insufficient.
+
+Distinguish logical/DataFrame hashes from serialized artifact-file hashes with different field names.
+
+Required producer status that is missing, malformed, wrong-format, or unknown fails closed.
+
+### Serialization and filesystem integrity
+
+Choose one real contract:
+- either Parquet is mandatory for governed pipeline execution, or
+- consumers discover and verify the producer-declared artifact format/path/hash.
+
+Do not advertise modes the immediate consumer cannot read.
+
+Run publication must be transactional/fresh or stage-owned stale artifacts must be removed before publication. Reusing a run ID may never leave an older disabled-format artifact visible as current.
 
 ## Per-issue execution protocol
 
-For each mandatory issue ID:
+For each active mandatory issue:
 
 1. Load the issue record and verify its fingerprint.
-2. Confirm that the cited behavior still exists in the current working baseline.
-3. Classify it as `REMOVE_REGRESSION`, `FIX_SHARED_DEFECT`, or `IMPLEMENT_NEW_REQUIREMENT` (or document why it is already fixed by a prior issue in the same patch).
-4. Make the smallest coherent producer/consumer change that resolves the defect without reintroducing a closed finding.
-5. Run the issue's minimum acceptance tests plus relevant neighboring contract tests.
-6. Record the resolution in a separate machine-readable resolution ledger with:
-   - issue ID and issue fingerprint,
-   - resolution status,
-   - files changed,
-   - before/after SHA-256,
-   - commit SHA,
-   - tests run and result,
-   - intended ID/hash changes,
-   - any dependent issue IDs resolved by the same change.
-7. An issue may be marked complete only when its required producer/consumer contract and acceptance tests agree.
+2. Confirm the cited behavior still exists in the working baseline.
+3. Classify it under the per-file categories above.
+4. Make the smallest coherent producer + schema + validator + immediate-consumer change.
+5. Run the issue's minimum tests and neighboring contract tests.
+6. Record in the resolution ledger:
+   - issue ID and issue fingerprint;
+   - terminal status;
+   - files changed;
+   - before/after SHA-256;
+   - commit SHA;
+   - tests run/results;
+   - intended identity/hash changes;
+   - dependent issue IDs resolved by same patch.
+7. Mark complete only when producer, consumer, validator, and tests agree.
 
-If one code change resolves several issue IDs, record that explicitly; do not duplicate code to create one patch per issue.
+One code change may resolve multiple IDs; record that rather than duplicating implementation.
 
 ## Git discipline
 
-- Do semantic implementation on a dedicated working branch based on the chosen integration base; do not mechanically merge disconnected historical lineages.
-- Preserve main-only improvements unless they directly conflict with governed semantics.
-- Commit coherent dependency slices (producer + schema + validator + immediate consumers) rather than isolated half-contract changes.
-- Before each commit, run focused tests and inspect the diff for unrelated source transfer.
-- Acceptance evidence must point to the Git commit and relevant artifact/authority hashes. A ZIP in `outputs/` is not an installed implementation.
-- Do not update governed semantic/authority registries merely to make tests pass.
+- Use a dedicated implementation branch when semantic repairs begin.
+- Do not mechanically merge disconnected histories.
+- Preserve main-only and runtime-only improvements unless superseded by authority.
+- Commit coherent dependency slices rather than half-contract changes.
+- Inspect each diff for unrelated source transfer.
+- Acceptance evidence must point to Git commit + exact governed authority/artifact hashes.
+- A ZIP in `outputs/` is not an installed implementation.
+- Do not mutate governed semantic registries merely to make tests pass.
 
 ## Test order
 
 At minimum:
 
-1. unit/contract tests for the changed issue IDs,
-2. compile/import checks,
-3. V550/V551 neutral, missing-direction, missing-intensity, authority-mismatch, and sibling-survival tests,
-4. V551 coverage/conservation tests,
-5. V551J neutral/low-support/repair-debt/local-packet tests,
-6. V552 neutral-mass, true-zero, unresolved-not-zero, selected-partial vs repair-partial tests,
-7. V552J no-input typed-absence tests,
-8. lineage/smoke/Section85 valid-empty and valid-nonempty tests,
-9. bounded 35-wave differential using existing upstream shards where possible,
-10. EVS 1999/Iceland regression canary,
-11. broader V550→V552J smoke,
-12. V553–V558 regression for typed evidence-state preservation.
+1. unit/contract tests for changed IDs;
+2. compile/import checks;
+3. source/dependency closure tests;
+4. V550 applicability and neutral/missing projection-boundary tests;
+5. V550J governed-lane publishability and dynamic-threshold tests;
+6. V551 neutral, missing-direction/intensity, authority mismatch, sibling survival, stratum identity, and conservation tests;
+7. V551J neutral/low-support/repair-debt/run-coherence/producer-hash tests;
+8. V552 neutral mass, true zero, unresolved-not-zero, selected-partial vs repair-partial, producer-hash tests;
+9. V552J typed absence and wrong-source/wave/country structural-match rejection;
+10. lineage malformed-readiness fail-closed, same-run coherence, valid-empty vs corrupt tests;
+11. Section85 tests from a clean checkout with no old path alias or Desktop outputs;
+12. governed **35-wave** differential using existing upstream shards where possible;
+13. EVS 1999/Iceland canary;
+14. broader V550→V552J smoke with joint stages applicability-scoped;
+15. V553–V558 typed-state preservation regression.
 
 Do not require a full V550 rebuild merely to validate V551 if existing governed V550 shards are sufficient.
 
 ## Stop conditions
 
-Stop semantic expansion and report a blocker only for conditions that make safe adjudication impossible, such as:
+Stop semantic execution only for unsafe conditions such as:
+- missing required governed authority;
+- authority/manifest hash mismatch;
+- missing/corrupt producer schema;
+- producer integrity failure;
+- incompatible contract version;
+- exact run/scope identity contradiction;
+- unresolvable duplicate identity conflict;
+- invalid emitted clean-atom contract;
+- compiler invariant failure.
 
-- missing required governed authority,
-- authority/manifest hash mismatch,
-- missing required producer schema,
-- corrupt or contradictory identity authority,
-- unresolvable duplicate identity conflict,
-- invalid emitted clean-atom contract,
-- compiler invariant violation.
+A bad candidate, zero promotable atoms, zero review rows, zero certified packets, or zero V552/V552J evidence rows is **not by itself** a failed run.
 
-A bad candidate, zero promotable atoms, zero review rows, zero certified packets, or zero V552/V552J evidence rows is **not by itself a failed run**.
+## Explicit supersessions in revision 2
 
-## Non-goals for this repair
+- `V550-004` is inactive: the runtime V550 registry loader is already cached. See `CLOSED-007`.
+- `WATCH-004` is no longer deferred: its integrated current-main/runtime form is mandatory `V550J-003`.
 
-Unless a mandatory issue proves otherwise, do not expand scope into:
+## Non-goals
 
-- wholesale historical-output archaeology,
-- redesign of run-coupled IDs,
-- re-governance of the V550J draft family registry,
-- full-survey expansion of the bounded question authority,
-- broad V553–V558 redesign,
-- cleanup of every duplicate/dead helper unrelated to effective execution,
-- resurrecting historical `data/ddm_build/`.
+Unless a mandatory issue proves otherwise:
+- no wholesale historical-output archaeology;
+- no redesign of run-coupled semantic IDs beyond enforcing coherent producer identity;
+- no full-survey expansion of bounded question authority;
+- no broad V553–V558 redesign;
+- no cleanup of every dead/duplicate helper unrelated to effective execution;
+- no resurrection of historical `data/ddm_build/`.
 
 ## Completion condition
 
-This repair program is complete when:
+Complete only when:
+- all **effective mandatory** IDs from `index.json` have terminal resolution records;
+- no closed finding is reintroduced;
+- deferred findings remain deferred or are promoted with evidence;
+- producer/consumer versions reject incompatible old/new mixing;
+- the bounded differential/smoke suite passes under typed integrity/evidence semantics;
+- all intentional identity/hash changes are explained;
+- final Git commits and exact authority/artifact hashes are in the resolution ledger.
 
-- every mandatory issue ID has a terminal resolution record,
-- no closed finding has been reintroduced,
-- deferred issues remain explicitly deferred or are promoted with documented evidence,
-- producer/consumer versions reject incompatible old/new mixing,
-- the bounded differential and smoke suite pass according to typed integrity/evidence semantics,
-- all intentional identity/hash changes are explained,
-- the final Git commit(s) and exact authority/artifact hashes are recorded in the resolution ledger.
-
-At that point, update the machine-readable resolution ledger; **do not rewrite the frozen issue shards to make the history look cleaner.**
+Do not rewrite frozen issue history to make it look cleaner.

@@ -1,0 +1,52 @@
+{
+  "schema": "rawlsing_issue_group_v2",
+  "freeze_date": "2026-08-15",
+  "base_register_sha256": "5004f95a7f2505b109b9ffe1aebc34693e44407c8d2bf2d54dc422aaf816c0f6",
+  "issues": [
+    {
+      "id": "SRC-004",
+      "title": "Governed V550J association registries are omitted from the Git source transfer",
+      "group": "Source / integration",
+      "severity": "BLOCKING INTEGRATION",
+      "affected": "data/ddm_registries/association_lane_registry.yaml; data/ddm_registries/association_threshold_profiles.yaml; V550J direct CLI",
+      "defect": "The V550J compiler defaults to association_mode=publishable and expects two governed registry files that are absent from both audited Git source trees. Historical successful Desktop runs and the definitive dependency ledger show these were real installed runtime authorities, not optional archaeology.",
+      "evidence": "Historical V550J manifests loaded `data/ddm_registries/association_lane_registry.yaml` with 13,185 rules. Definitive ledger pins association lane registry SHA-256 1848ae6b1c0823cfe7d34e34f71076543484a67a4721ea4de0d9ffef25b5d138 and threshold profiles SHA-256 8d4e11b507bb4626e4c08fe508b0ea1fd196cfdeb211f90fb08634ac0c82259b.",
+      "consequence": "A default source checkout can invoke a governed mode whose required authority files are invisible, making reproducibility and direct V550J execution depend on external Desktop state.",
+      "required": "Restore the exact governed registry bytes to the canonical source boundary or explicitly declare/materialize them as external governed dependencies. Never silently fall back to hard-coded policy when governed files are missing.",
+      "tests": [
+        "Exact restored hashes match the pinned values.",
+        "association_mode=publishable fails closed when required governed registries are unavailable."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/compile_v550j_joint_response_patterns.py",
+        "data/ddm_build_copy/ddm_v550j_registry_classifier.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-SRC-001",
+      "origin_fingerprint": "6c87e30095757f112781bee8290466e585249875772cad9a99287683dffc0b17",
+      "fingerprint": "1364042e5eba0a3d173896f0de0564775bd3e3901440562ca2466e724044135f"
+    },
+    {
+      "id": "SRC-005",
+      "title": "Default lineage resolver references a missing dependency ledger",
+      "group": "Source / integration",
+      "severity": "BLOCKING EXECUTION",
+      "affected": "data/ddm_build_copy/resolve_pipeline_lineage.py default dependency-ledger path",
+      "defect": "The lineage resolver defaults to `docs/architecture_control/reports/rawlsing_manual_pipeline_recovery_spec_through_v554.json`, but that file is absent from both audited source trees and from the supplied output-tree census.",
+      "evidence": "A default lineage-resolver invocation raises FileNotFoundError before resolving any stage unless a caller supplies another ledger path.",
+      "consequence": "The canonical source checkout cannot run its default lineage command and silently depends on an unshipped file.",
+      "required": "Either install the exact governed dependency ledger at the declared path or remove the fake default and require an explicit external ledger path with hash/provenance. The default invocation must be self-consistent.",
+      "tests": [
+        "Default lineage invocation reaches lineage resolution without FileNotFoundError.",
+        "If ledger is external, absent/unverified ledger fails with a typed dependency error before any candidate is called usable."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/resolve_pipeline_lineage.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-SRC-002",
+      "origin_fingerprint": "6d9a95f9a4d5d51945c8870e778b9427d8e5233f3707d65b324089c82bd2676e",
+      "fingerprint": "0a683855c0e4d7ef8af57bcd2ad3419072fd2e0d7eff52c85e53a11223c792b7"
+    }
+  ]
+}

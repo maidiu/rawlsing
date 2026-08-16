@@ -1,0 +1,150 @@
+{
+  "schema": "rawlsing_issue_group_v2",
+  "freeze_date": "2026-08-15",
+  "base_register_sha256": "5004f95a7f2505b109b9ffe1aebc34693e44407c8d2bf2d54dc422aaf816c0f6",
+  "issues": [
+    {
+      "id": "ORCH-005",
+      "title": "All-wave smoke enumerates 36 waves while active authority is closed at 35",
+      "group": "Lineage / orchestration",
+      "severity": "CRITICAL",
+      "affected": "run_20var_allwaves_v550_552j_smoke.py vs governed wave registry/QRA",
+      "defect": "Current main smoke includes 36 waves including Asian Barometer W6, while the governed runtime wave registry is explicitly CLOSED_35_WAVES and current question-relation authority excludes Asian W6 from active governed scope.",
+      "evidence": "Main/runtime reconciliation and authority-scope count: governed Asian waves are W1/W4/W5; W6 is excluded.",
+      "consequence": "The acceptance harness asks the pipeline to execute a wave its authority layer says must not enter the active universe.",
+      "required": "Use the governed 35-wave registry as the smoke scope source instead of a divergent hard-coded list. Asian W6 must remain excluded unless authority is explicitly reopened.",
+      "tests": [
+        "Smoke scope exactly equals governed active-wave registry.",
+        "Asian Barometer W6 is absent under current authority."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/run_20var_allwaves_v550_552j_smoke.py",
+        "data/ddm_build_copy/ddm_v550_question_relation_authority.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-ORCH-001",
+      "origin_fingerprint": "b3f46d6ab8f009214eb53abee2e8a529e8b4bae54879b0736a50931676fc9c55",
+      "fingerprint": "bc37a2ed3351db0e53f072963f4ec48436e47f57c51f6f8ede8a9941e059e131"
+    },
+    {
+      "id": "ORCH-006",
+      "title": "Default all-wave smoke requires joint-family authority the project does not possess",
+      "group": "Lineage / orchestration",
+      "severity": "CRITICAL",
+      "affected": "run_20var_allwaves_v550_552j_smoke.py default --joint-mode required",
+      "defect": "The default all-wave harness requires every governed wave to have executable V550J family authority. The default family registry does not cover the all-wave universe; executable coverage was 8/35 in the permissive runtime interpretation and 0/36 in current main because main correctly rejects draft registry status.",
+      "evidence": "Executed/derived joint-authority coverage during exhaustive audit.",
+      "consequence": "The default acceptance harness is structurally incapable of passing before reaching most pipeline semantics; absence of optional/applicability-scoped joint authority is mislabeled as pipeline failure.",
+      "required": "Separate base V550→V552J universality from V550J/V551J applicability. Joint stages should run where governed family authority exists and report typed not-applicable/coverage debt elsewhere; do not require nonexistent authority globally.",
+      "tests": [
+        "Default all-wave smoke can run the governed 35-wave base universe without requiring nonexistent joint-family definitions.",
+        "Joint authority coverage is reported explicitly and only gates applicable scopes."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/run_20var_allwaves_v550_552j_smoke.py",
+        "data/ddm_build_copy/manifests/question_family_registry.yaml"
+      ],
+      "note": "",
+      "origin_id": "AUD2-ORCH-002",
+      "origin_fingerprint": "39b16e964dac508f2d544954b5c6b3258e5f4e44e240c3d57957166156e7d02f",
+      "fingerprint": "fa13f79f6eff16bcdacb2224fc221d980095a290683a20e4c9002a59a159e8cd"
+    },
+    {
+      "id": "ORCH-007",
+      "title": "Compilers advertise CSV-only/no-Parquet modes that the pipeline cannot honor",
+      "group": "Lineage / serialization contract",
+      "severity": "HIGH",
+      "affected": "V550J/V551/V551J/V552/V552J CLI write-format flags and downstream consumers",
+      "defect": "Relevant compilers expose `--no-write-parquet`, but lineage/smoke/consumers hard-code Parquet paths. V552 even unconditionally writes `manifest/v552_input_atoms.parquet` before its governed output loop, so the advertised switch is not internally truthful. V552J can read CSV fallback and then separately block because the Parquet path is absent.",
+      "evidence": "Format-contract trace across producer CLIs and immediate consumers.",
+      "consequence": "Operator-visible configuration can create unsupported or internally contradictory runs; output-format choice becomes accidental semantic availability.",
+      "required": "Choose one real contract: either Parquet is mandatory for governed pipeline runs and fake flexibility is removed, or consumers resolve artifacts from producer manifests and support each advertised format consistently.",
+      "tests": [
+        "Every advertised write-format mode is consumable end-to-end, or unsupported modes are removed/rejected.",
+        "V552 `--no-write-parquet` has one unambiguous behavior."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/compile_v550j_joint_response_patterns.py",
+        "data/ddm_build_copy/compile_v551_relation_evidence_atoms.py",
+        "data/ddm_build_copy/compile_v551j_joint_evidence_packets.py",
+        "data/ddm_build_copy/compile_v552_structural_ddm.py",
+        "data/ddm_build_copy/compile_v552j_structural_handoff.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-FMT-001",
+      "origin_fingerprint": "fe499ba82d99e17aa3e1c712844eb0ea18b747b63b86c010afcb1df715be3e6d",
+      "fingerprint": "95362d391873d8a3c627ab9fd8146b19125921494fc25d835fefabd5888c088c"
+    },
+    {
+      "id": "ORCH-008",
+      "title": "Reusing a run directory can make consumers ingest stale artifacts from a previous execution",
+      "group": "Lineage / filesystem integrity",
+      "severity": "CRITICAL",
+      "affected": "Stage writers using existing run directories + consumers preferring/hard-coding prior-format files",
+      "defect": "Run directories are reused non-transactionally and disabling an output format does not remove an older copy. A rerun under the same run ID can therefore leave stale Parquet beside newly written CSV; downstream consumers that prefer/hard-code Parquet can ingest the previous execution's bytes.",
+      "evidence": "Static writer/reader path trace. A runtime Parquet microtest could not execute in the audit environment because pyarrow was unavailable; the filesystem selection path itself is deterministic.",
+      "consequence": "Fresh outputs can be silently contaminated by stale artifacts while directory/run names still look correct.",
+      "required": "Use fresh/transactional run directories or atomically clear/replace stage-owned artifacts before publication. Consumers must bind to producer-manifest-declared artifact hashes rather than discover files by preferred extension.",
+      "tests": [
+        "Rerunning same run ID cannot leave a disabled-format artifact visible as current.",
+        "Consumer reads only producer-declared current artifact hashes."
+      ],
+      "source_refs": [
+        "data/ddm_build_copy/compile_v551_relation_evidence_atoms.py",
+        "data/ddm_build_copy/compile_v552_structural_ddm.py",
+        "data/ddm_build_copy/compile_v552j_structural_handoff.py"
+      ],
+      "note": "Static defect confirmed; pyarrow absence prevented one optional execution reproduction.",
+      "origin_id": "AUD2-IO-001",
+      "origin_fingerprint": "a2df08c374a5480418d58b8118fd276f8e0214abec889fd687fb3e0ade08bcbf",
+      "fingerprint": "b4d811261310432305798e22fb9de4313abe178c2f1b0fec4c0a3b6c126c25c8"
+    },
+    {
+      "id": "ORCH-009",
+      "title": "Section85 source transfer did not rebase old package paths",
+      "group": "Lineage / orchestration",
+      "severity": "HIGH",
+      "affected": "section85 code/tests/docs/authority metadata",
+      "defect": "The curated transfer moved the package under `section85/`, but runners, tests, execution instructions, and authority metadata still reference the former `85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/...` root; the diagnostic smoke runner also hard-codes Desktop absolute authority paths.",
+      "evidence": "With repo PYTHONPATH, 15/16 Section85 tests failed on nonexistent old paths. Temporary path alias made 14/16 pass; the remaining two depend on excluded generated outputs.",
+      "consequence": "Regression safeguards for main-only V550J authority features are effectively broken, and bounded diagnostic execution depends on obsolete filesystem layout/Desktop state.",
+      "required": "Rebase all Section85 internal paths to repository-relative `section85/` locations; remove Desktop absolute paths; convert the two generated-output-dependent tests to fixtures or explicit integration tests.",
+      "tests": [
+        "Section85 tests run from clean checkout without path alias or Desktop files.",
+        "No active Section85 code/authority metadata references the obsolete package prefix."
+      ],
+      "source_refs": [
+        "section85/code/run_section85_diagnostic_smoke_matrix.py",
+        "section85/authority/section85_stage_artifact_authority.csv",
+        "section85/validation"
+      ],
+      "note": "",
+      "origin_id": "AUD2-SEC85-001",
+      "origin_fingerprint": "0f51cced2ee82a97c1da385c7dcccffcabb3ec5dd64da614b4dfaa22d116ccdb",
+      "fingerprint": "488c01dbfe4dbe6e210ab1b3a7d03c043a2ccb89d1931479eb505005158efbc9"
+    },
+    {
+      "id": "ORCH-010",
+      "title": "Section85 bounded gate treats presence of any V552J readiness document as success",
+      "group": "Lineage / orchestration",
+      "severity": "HIGH",
+      "affected": "Section85 bounded-nine functional gate",
+      "defect": "The gate computes `v552j_readiness_present = bool(v552j_ready)`, so a nonempty readiness object that explicitly says BLOCKED still satisfies the presence check.",
+      "evidence": "Exhaustive Section85 gate trace.",
+      "consequence": "A blocked V552J run can satisfy a bounded functional acceptance condition solely because its failure report exists.",
+      "required": "Parse and require the typed compatible V552J run-integrity/evidence/permission state. File/object presence is not readiness.",
+      "tests": [
+        "BLOCKED V552J readiness never passes the gate.",
+        "Valid no-evidence state can pass integrity while remaining correctly non-sufficient for evidence-dependent operations."
+      ],
+      "source_refs": [
+        "section85/code/run_bounded_nine_v550j_v551j_v552j.py",
+        "section85/code/run_section85_diagnostic_smoke_matrix.py"
+      ],
+      "note": "",
+      "origin_id": "AUD2-SEC85-002",
+      "origin_fingerprint": "ff19347673ebab8af2e5a9252f65ac9159aa6183f87b6a9222fc4818e1bfe6ad",
+      "fingerprint": "d2529567210710a8b8e6253634c2a3beb4966a3e246cfb067cef7fcd011c2fcc"
+    }
+  ]
+}
