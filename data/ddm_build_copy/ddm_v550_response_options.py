@@ -34,6 +34,10 @@ from data.ddm_build_copy.ddm_v550_io import (
     is_special_label,
 )
 from data.ddm_build_copy.ddm_v550_family_overlay import canonical_family_key, canonical_wave_key, wave_aliases
+from data.ddm_build_copy.ddm_v550_response_semantics_authority import (
+    bind_governed_response_semantics_contracts,
+    response_option_map_content_sha256,
+)
 
 
 def _row_value(row: pd.Series, *names: str) -> str:
@@ -126,56 +130,15 @@ def _safe_int(value: str) -> int | None:
 
 
 def response_semantics_contract_hash(frame: pd.DataFrame) -> str:
-    if frame.empty:
-        payload = {"rows": 0, "columns": []}
-    else:
-        semantic_columns = [
-            "source",
-            "wave",
-            "canonical_wave",
-            "var_name",
-            "var_code",
-            "value_code_normalized",
-            "value_label_clean",
-            "option_group",
-            "is_substantive",
-            "is_missing",
-            "is_dk",
-            "is_refusal",
-            "is_iap",
-            "is_not_asked",
-            "is_inapplicable",
-            "response_family",
-            "response_direction",
-            "response_intensity",
-            "polarity",
-            "ordinal_rank",
-            "scale_min",
-            "scale_max",
-            "scale_direction",
-            "directionality_status",
-            "normalization_confidence",
-        ]
-        available = [col for col in semantic_columns if col in frame.columns]
-        semantic_frame = frame.loc[:, available].copy() if available else pd.DataFrame()
-        if not semantic_frame.empty:
-            semantic_frame = semantic_frame.fillna("").astype(str)
-            semantic_frame = semantic_frame.sort_values(list(semantic_frame.columns)).reset_index(drop=True)
-            payload = {
-                "rows": int(len(semantic_frame)),
-                "columns": list(semantic_frame.columns),
-                "records": semantic_frame.to_dict(orient="records"),
-            }
-        else:
-            payload = {"rows": int(len(frame)), "columns": list(frame.columns)}
-    raw = json.dumps(payload, sort_keys=True, ensure_ascii=False, default=str).encode("utf-8")
-    return hashlib.sha256(raw).hexdigest()
-    if pd.isna(num):
-        return None
-    try:
-        return int(num)
-    except Exception:
-        return None
+    """Deprecated map-level semantic-hash compatibility hook.
+
+    A V551 response-semantics contract identity is inherited from frozen
+    governed response-option authority at exact question grain.  It is never a
+    digest of an arbitrary response-option-map DataFrame.  Returning blank is
+    intentional: legacy global/scoped callers must not manufacture a semantic
+    identity when no exact governed row-level identity is present.
+    """
+    return ""
 
 
 def _resolve_requested_codebook_files(codebook_roots: list[Path], only_codebooks: list[str] | None) -> list[Path]:
@@ -554,14 +517,23 @@ def build_response_option_map(
             )
 
     out = pd.DataFrame(list(seen.values()))
+    binding_summary = {
+        "applicable_groups": 0,
+        "bound_groups": 0,
+        "preserved_groups": 0,
+        "review_required_groups": 0,
+        "unresolved_groups": 0,
+    }
     if not out.empty:
         out = out.sort_values(["source", "wave", "var_name", "value_code_raw", "value_label_clean"]).reset_index(drop=True)
-        contract_hash = response_semantics_contract_hash(out)
-        out["response_semantics_status"] = "curated"
-        out["response_semantics_source"] = "response_option_map"
-        out["response_semantics_contract_hash"] = contract_hash
-    else:
-        contract_hash = ""
+        out["response_semantics_status"] = "UNRESOLVED_LIVE_BUILD"
+        out["response_semantics_source"] = "response_option_map_live_build"
+        out["response_semantics_contract_hash"] = ""
+        out, binding_summary = bind_governed_response_semantics_contracts(
+            out,
+            live_build=True,
+        )
+    content_hash = response_option_map_content_sha256(out)
     review = pd.DataFrame(review_rows)
     if not review.empty:
         review = review.drop_duplicates(subset=["source", "wave", "var_name", "question_id", "manual_review_reason"]).reset_index(drop=True)
@@ -576,7 +548,11 @@ def build_response_option_map(
         "warnings": [
             "Codebook-derived response options were parsed conservatively.",
             "Manual review rows are retained instead of being silently dropped.",
+            "response_semantics_contract_hash is a row-level governed packet identity; whole-map content hashes are never used as V551 contract keys.",
         ],
-        "response_semantics_contract_hash": contract_hash,
+        "response_semantics_contract_hash": "",
+        "response_option_map_content_sha256": content_hash,
+        "response_semantics_contract_identity_scope": "row_level_governed_packet",
+        "response_semantics_contract_binding": binding_summary,
     }
     return out, review, manifest
