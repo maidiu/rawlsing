@@ -1,6 +1,14 @@
 {
   "artifact_authority_csv": "section85_stage_artifact_authority.csv",
+  "artifact_authority_csv_role": "historical_observation_ledger_with_rebased_active_references",
   "authority_id": "SECTION85_STAGE_ARTIFACT_AUTHORITY_R1_20260804",
+  "canonical_reference_rebase": {
+    "canonical_prefix": "section85/",
+    "legacy_prefix": "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/",
+    "legacy_prefix_is_executable": false,
+    "rule": "Before any authority row is used as an executable path, replace the exact legacy prefix with the canonical repository-relative section85/ prefix. A consumer that observes the legacy prefix after normalization must fail closed."
+  },
+  "observed_latest_path_policy": "Historical observed_latest_path values are provenance only. They are never executable authority and must never be used to resolve current files.",
   "compatibility_rules": [
     {
       "consumer": "V552J or current Section 85 gate",
