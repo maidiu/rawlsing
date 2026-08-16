@@ -49,8 +49,10 @@ def _coherent_scope(run_id:str,a:Mapping[str,str],b:Mapping[str,str])->dict[str,
         if a[k]!=b[k]:raise BoundaryContractError(f"V552J_CROSS_SCOPE_MISMATCH:{k}:v551j={a[k]}:v552={b[k]}")
     if a["country_code"] or b["country_code"]:
         if not a["country_code"] or not b["country_code"] or a["country_code"]!=b["country_code"]:raise BoundaryContractError("V552J_CROSS_SCOPE_MISMATCH:country")
+        if a["shard_id"] and b["shard_id"] and a["shard_id"]!=b["shard_id"]:raise BoundaryContractError("V552J_CROSS_SCOPE_MISMATCH:shard")
     elif not (a["shard_id"] and b["shard_id"] and a["shard_id"]==b["shard_id"]):raise BoundaryContractError("V552J_CROSS_SCOPE_MISMATCH:shard")
-    return {"run_id":run_id,"source":b["source"],"wave":b["wave"],"canonical_wave":b["wave"],"country_code":b["country_code"] or a["country_code"],"shard_id":b["shard_id"] if b["shard_id"]==a["shard_id"] else "","scope_kind":"country" if (a["country_code"] or b["country_code"]) else "shard"}
+    shard_id=b["shard_id"] if b["shard_id"] and b["shard_id"]==a["shard_id"] else ""
+    return {"run_id":run_id,"source":b["source"],"wave":b["wave"],"canonical_wave":b["wave"],"country_code":b["country_code"] or a["country_code"],"shard_id":shard_id,"scope_kind":"shard" if shard_id else "country"}
 
 def _artifact_declarations(p:Mapping[str,Any])->list[dict[str,Any]]:
     raw=p.get("artifacts") or []
