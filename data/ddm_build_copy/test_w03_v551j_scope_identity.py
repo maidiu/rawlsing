@@ -48,7 +48,7 @@ def test_v550j_pattern_run_must_match_requested_run() -> None:
 
 
 def test_supplied_atoms_must_be_exact_producer_declared_file(tmp_path: Path) -> None:
-    scope = {"run_id": "r1", "source": "EVS", "wave": "2017", "country_code": "DE"}
+    scope = {"run_id": "r1", "source": "EVS", "wave": "2017", "country_code": "DE", "country_codes": ["DE"], "shard_id": ""}
     adjudication = pd.DataFrame([
         {
             "run_id": "r1",
