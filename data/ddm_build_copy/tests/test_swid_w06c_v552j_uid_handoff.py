@@ -135,6 +135,27 @@ def test_uid_scope_is_required_before_semantic_matching():
     assert result["join_audit"].iloc[0]["join_status"] == "UNRESOLVED_NO_STRUCTURAL_MATCH"
 
 
+@pytest.mark.parametrize("missing_uid", ["source_family_uid", "wave_uid"])
+def test_resolvable_labels_do_not_rescue_missing_frame_uid(missing_uid):
+    scope = {"run_id": "run-c", "source": "Arab Barometer", "wave": "W1", "canonical_wave": "W1",
+             "source_family_uid": PAIR[0], "wave_uid": PAIR[1], "country_code": "EGY", "shard_id": ""}
+    row = {"run_id": "run-c", "source": "Arab Barometer", "wave": "Wave 1", "canonical_wave": "I",
+           "source_family_uid": PAIR[0], "wave_uid": PAIR[1], "country_code": "EGY"}
+    row[missing_uid] = ""
+    with pytest.raises(BoundaryContractError):
+        _verify_frame_scope(pd.DataFrame([row]), scope, "UID_REQUIRED")
+
+
+def test_actual_builder_rejects_country_mismatch_even_with_same_shard():
+    a, b = _states()
+    packet = _packet(country_code="EGY", shard_id="shared-shard")
+    fact = _fact(country_code="TUN", shard_id="shared-shard")
+    result = build_v552j_join(run_id="run-c", v551j_certified=pd.DataFrame([packet]), v551j_review=pd.DataFrame(),
+                              v552_structural_facts=pd.DataFrame([fact]), v552_temporal_keys=pd.DataFrame(),
+                              v551j_state=a, v552_state=b)
+    assert result["join_index"].empty
+
+
 def test_manifest_and_cross_producer_scope_use_uid_pair_and_preserve_boundaries():
     payload = {"contract_version": "rawlsing_pipeline_boundary_v1", "run_id": "run-c", "producer_run_id": "run-c",
                "source": "Arab Barometer", "wave": "W1", "canonical_wave": "I", "source_family_uid": PAIR[0],

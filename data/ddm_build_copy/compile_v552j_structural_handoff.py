@@ -96,6 +96,13 @@ def _verify_and_read_declared(manifest:Path,d:Mapping[str,Any],*,label:str,expec
 
 def _verify_frame_scope(df:pd.DataFrame,scope:Mapping[str,str],label:str)->None:
     if df.empty:return
+    for col in ("source_family_uid","wave_uid"):
+        want=_clean(scope.get(col))
+        if col not in df:raise BoundaryContractError(f"{label}_SCOPE_COLUMN_MISSING:{col}")
+        if not want:raise BoundaryContractError(f"{label}_EXPECTED_UID_MISSING:{col}")
+        values=[_clean(v) for v in df[col]]
+        if any(not value for value in values):raise BoundaryContractError(f"{label}_UID_VALUE_MISSING:{col}")
+        if set(values)!={want}:raise BoundaryContractError(f"{label}_UID_SCOPE_MISMATCH:{col}:expected={want}:observed={sorted(set(values))}")
     checks={"run_id":scope["run_id"]}
     if scope.get("country_code"):checks["country_code"]=scope["country_code"]
     if scope.get("shard_id"):checks["shard_id"]=scope["shard_id"]

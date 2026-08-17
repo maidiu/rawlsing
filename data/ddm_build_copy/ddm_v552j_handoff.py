@@ -59,9 +59,11 @@ def _scope_identity(row: Mapping[str,Any]|pd.Series)->dict[str,str]:
 def _same_scope(packet: Mapping[str,Any]|pd.Series,fact: Mapping[str,Any]|pd.Series)->bool:
     p,f=_scope_identity(packet),_scope_identity(fact)
     if any(not p[k] or not f[k] or p[k]!=f[k] for k in ("run_id","source_family_uid","wave_uid")):return False
+    if p["country_code"] or f["country_code"]:
+        if not p["country_code"] or not f["country_code"] or p["country_code"]!=f["country_code"]:return False
     if bool(p["shard_id"]) != bool(f["shard_id"]):return False
-    if p["shard_id"]:return p["shard_id"]==f["shard_id"]
-    return bool(p["country_code"] and f["country_code"] and p["country_code"]==f["country_code"])
+    if p["shard_id"] and p["shard_id"]!=f["shard_id"]:return False
+    return True
 
 def _semantic_values(row: Mapping[str,Any]|pd.Series,plural:str,singular:str)->set[str]:
     vals=set(_parse_json_array(row.get(plural))); one=_clean(row.get(singular))
