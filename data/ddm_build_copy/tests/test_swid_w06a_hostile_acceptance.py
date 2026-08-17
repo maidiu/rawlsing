@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import importlib
 import inspect
 import json
@@ -15,7 +16,6 @@ from data.ddm_build_copy import ddm_pipeline_boundary_contract as boundary
 from data.ddm_build_copy import ddm_survey_identity as legacy_identity
 from data.ddm_build_copy import ddm_v550_family_overlay as overlay
 from data.ddm_build_copy import ddm_v550_shards as shards
-from data.ddm_build_copy import build_v550j_prepared_substrate as v550j_cache
 from data.ddm_build_copy import ddm_v550j_joint_patterns as v550j_patterns
 from data.ddm_build_copy import ddm_v551j_contract as v551j_contract
 from data.ddm_build_copy import ddm_v552_structural as v552
@@ -28,6 +28,18 @@ AUTHORITY = ROOT / "data" / "ddm_build_copy" / "bindings" / "question_relation_r
 
 def _fixture(name: str) -> dict[str, Any]:
     return json.loads((FIXTURES / name).read_text(encoding="utf-8"))
+
+
+
+def _function_source_from_file(path: Path, function_name: str) -> str:
+    source = path.read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name == function_name:
+            lines = source.splitlines()
+            end_lineno = getattr(node, "end_lineno", node.lineno)
+            return "\n".join(lines[node.lineno - 1:end_lineno])
+    raise AssertionError(f"function {function_name!r} not found in {path}")
 
 
 def _mapping(value: Any) -> dict[str, Any]:
@@ -94,14 +106,14 @@ def _resolve_future(source: str, wave: str, country: str = "") -> dict[str, Any]
     return _mapping(value)
 
 
-def _uids_or_xfail(source: str, aliases: list[str]) -> list[tuple[str, str]]:
+def _uid_pairs(source: str, aliases: list[str]) -> list[tuple[str, str]]:
     identities = [_resolve_future(source, alias) for alias in aliases]
     pairs: list[tuple[str, str]] = []
     for identity in identities:
         source_uid = str(identity.get("source_family_uid") or identity.get("source_uid") or "").strip()
         wave_uid = str(identity.get("wave_uid") or "").strip()
-        if not source_uid or not wave_uid:
-            pytest.xfail("SWID-001: current resolver has no governed source_family_uid + wave_uid contract yet")
+        assert source_uid, "SWID-001: governed source_family_uid must be populated"
+        assert wave_uid, "SWID-001: governed wave_uid must be populated"
         pairs.append((source_uid, wave_uid))
     return pairs
 
@@ -160,7 +172,7 @@ class TestSWIDW06AAliasKernel:
     )
     def test_aliases_resolve_to_one_governed_uid(self, case_key: str) -> None:
         case = _fixture("identity_alias_cases.json")[case_key]
-        pairs = _uids_or_xfail(case["source"], case["aliases"])
+        pairs = _uid_pairs(case["source"], case["aliases"])
         assert len(set(pairs)) == 1
 
     def test_latinobarometro_nfc_nfd_and_sanctioned_unaccented_family_alias(self) -> None:
@@ -172,8 +184,8 @@ class TestSWIDW06AAliasKernel:
             identity = _resolve_future(source, case["wave"])
             source_uid = str(identity.get("source_family_uid") or identity.get("source_uid") or "").strip()
             wave_uid = str(identity.get("wave_uid") or "").strip()
-            if not source_uid or not wave_uid:
-                pytest.xfail("SWID-001/SWID-021: UID kernel not yet present on G0")
+            assert source_uid, "SWID-001/SWID-021: source_family_uid must be populated"
+            assert wave_uid, "SWID-001/SWID-021: wave_uid must be populated"
             pairs.append((source_uid, wave_uid))
         assert len(set(pairs)) == 1
 
@@ -189,8 +201,7 @@ class TestSWIDW06AAliasKernel:
 
         identity = _resolve_future(case["source"], "W6")
         governance = _governance_value(identity)
-        if not governance:
-            pytest.xfail("SWID-015: current resolver recognizes W6 but does not expose governed membership")
+        assert governance, "SWID-015: recognized W6 must expose governed membership"
         assert governance.upper() not in {"CLOSED_35_MEMBER", "PRODUCTION", "EXECUTABLE", "ALLOW"}
 
     def test_general_v550_planner_cannot_make_asian_w6_executable(self, tmp_path: Path) -> None:
@@ -206,66 +217,38 @@ class TestSWIDW06AAliasKernel:
             and str(row.get("governed_membership") or row.get("production_scope_status") or "").upper()
             in {"", "CLOSED_35_MEMBER", "PRODUCTION", "EXECUTABLE", "ALLOW"}
         ]
-        if executable:
-            pytest.xfail("SWID-005: G0 general V550 planner can emit Asian Barometer W6 without CLOSED_35 authorization")
-        assert not executable
+        assert not executable, "SWID-005: V550 planner must deny Asian Barometer W6 execution"
 
 
 class TestSWIDW06ARedundantIdentity:
     def test_equivalent_redundant_wave_representations_are_accepted_as_one_uid(self) -> None:
         case = _fixture("redundant_identity_cases.json")["equivalent_wave"]
         assert legacy_identity.waves_equivalent(case["source"], case["wave"], case["canonical_wave"])
-        source = inspect.getsource(boundary.verify_exact_identity)
-        if "wave_uid" not in source and "coher" not in source.lower():
-            pytest.xfail("SWID-008/SWID-017: boundary still validates first populated spelling rather than UID coherence")
-        boundary.verify_exact_identity(case, run_id="run", source="EVS", wave="1981")
+        resolved = boundary.verify_exact_identity(
+            {"run_id": "run", **case},
+            run_id="run",
+            source="EVS",
+            wave="1981",
+        )
+        assert resolved["source_family_uid"]
+        assert resolved["wave_uid"]
 
     def test_contradictory_redundant_wave_fields_fail_closed(self) -> None:
         case = {"run_id": "run", **_fixture("redundant_identity_cases.json")["contradictory_wave"]}
-        try:
+        with pytest.raises(boundary.BoundaryContractError):
             boundary.verify_exact_identity(case, run_id="run", source="EVS", wave="1981")
-        except boundary.BoundaryContractError:
-            return
-        pytest.xfail("SWID-017: verify_exact_identity accepts wave=1981 with contradictory canonical_wave=W2")
 
     def test_contradictory_source_and_source_family_fail_closed(self) -> None:
         case = {"run_id": "run", **_fixture("redundant_identity_cases.json")["contradictory_source"]}
-        try:
+        with pytest.raises(boundary.BoundaryContractError):
             boundary.verify_exact_identity(case, run_id="run", source="EVS", wave="1981")
-        except boundary.BoundaryContractError:
-            return
-        pytest.xfail("SWID-017: verify_exact_identity accepts source=EVS with contradictory source_family=Arab Barometer")
 
     def test_redundant_frame_identity_requires_all_populated_representations_to_agree(self) -> None:
         frame = pd.DataFrame([
             {"source": "EVS", "source_family": "Arab Barometer", "wave": "1981", "canonical_wave": "W1"}
         ])
-        candidates = []
-        for module_name in (
-            "data.ddm_build_copy.ddm_pipeline_boundary_contract",
-            "data.ddm_build_copy.ddm_pipeline_boundary_consumer",
-            "data.ddm_build_copy.ddm_pipeline_final_contracts",
-        ):
-            try:
-                module = importlib.import_module(module_name)
-            except ModuleNotFoundError:
-                continue
-            for name in dir(module):
-                lowered = name.lower()
-                if callable(getattr(module, name, None)) and "identity" in lowered and "frame" in lowered and ("coher" in lowered or "verify" in lowered or "validate" in lowered):
-                    candidates.append(getattr(module, name))
-        if not candidates:
-            pytest.xfail("SWID-017: no shared frame identity-coherence validator exists on G0")
-        for fn in candidates:
-            try:
-                result = fn(frame)
-            except Exception:
-                return
-            if result is False:
-                return
-            if isinstance(result, Mapping) and str(result.get("status", "")).upper() in {"FAIL", "BLOCKED", "INVALID"}:
-                return
-        pytest.fail("a redundant-identity frame with contradictory source representations was accepted")
+        with pytest.raises(boundary.BoundaryContractError):
+            boundary.verify_frame_source_wave_identity_coherence(frame)
 
 
 class TestSWIDW06ACacheAndAuthority:
@@ -278,13 +261,16 @@ class TestSWIDW06ACacheAndAuthority:
         assert old["run_id"] != current["run_id"]
 
     def test_v550j_prepared_cache_must_bind_current_uid_scope_or_reject(self) -> None:
-        cache_source = inspect.getsource(v550j_cache._cache_signature_matches)
-        load_source = inspect.getsource(v550j_cache.load_or_build_v550j_prepared_substrate)
+        cache_path = ROOT / "data" / "ddm_build_copy" / "build_v550j_prepared_substrate.py"
+        cache_source = _function_source_from_file(cache_path, "_cache_signature_matches")
+        load_source = _function_source_from_file(cache_path, "load_or_build_v550j_prepared_substrate")
+        combined = cache_source + load_source
         required = ("wave_uid", "source_family_uid", "identity_contract_version")
-        if not all(token in cache_source + load_source for token in required):
-            pytest.xfail("SWID-018: G0 prepared-cache signature/reuse path is not bound to UID + identity contract version")
-        assert "country_code" in cache_source + load_source
-        assert any(token in (cache_source + load_source).lower() for token in ("rebind", "mismatch", "reject", "fail"))
+        assert all(token in combined for token in required), (
+            "SWID-018: prepared-cache signature/reuse path must bind UID + identity contract version"
+        )
+        assert "country_code" in combined
+        assert any(token in combined.lower() for token in ("rebind", "mismatch", "reject", "fail"))
 
     def test_alias_shadow_authority_with_divergent_bytes_fails_closed(self) -> None:
         shadow = FIXTURES / "alias_shadow"
@@ -301,8 +287,9 @@ class TestSWIDW06ACacheAndAuthority:
             return
         status = str(getattr(result, "status", "")).upper()
         message = str(getattr(result, "message", "")).lower()
-        if status == "FOUND":
-            pytest.xfail("SWID-022: loader returns first alias-named authority file instead of detecting divergent duplicate content")
+        assert status != "FOUND", (
+            "SWID-022: divergent UID-equivalent authority candidates must not resolve by first match"
+        )
         assert any(token in status + " " + message for token in ("CONFLICT", "DIVERG", "DUPLICATE", "SHADOW"))
 
     def test_review_only_overlay_generation_cannot_self_certify(self) -> None:
@@ -331,8 +318,7 @@ class TestSWIDW06ALegacyPhysicalAndLogicalIdentity:
         for source in sources:
             identity = _resolve_future(source, "1995")
             token = _uid_physical_token(identity)
-            if not token:
-                pytest.xfail("SWID-021: versioned ASCII-safe UID physical token not yet exposed by G0 identity kernel")
+            assert token, "SWID-021: versioned ASCII-safe UID physical token must be exposed"
             _assert_ascii_token(token)
             tokens.append(token)
         assert len(set(tokens)) == 1
@@ -368,7 +354,8 @@ class TestSWIDW06ALegacyPhysicalAndLogicalIdentity:
         assert "wave_uid" not in legacy_observation_body and "source_family_uid" not in legacy_observation_body
 
         combined = pattern_source + packet_source + v552_source
-        if "source_family_uid" not in combined or "wave_uid" not in combined:
-            pytest.xfail("SWID-020/IC-008: no additive UID-native logical identity namespace has landed yet")
+        assert "source_family_uid" in combined and "wave_uid" in combined, (
+            "SWID-020/IC-008: additive UID-native logical identity namespace must exist"
+        )
         uid_lines = [line.lower() for line in combined.splitlines() if "wave_uid" in line or "source_family_uid" in line]
         assert any("version" in line or "uid" in line for line in uid_lines)
