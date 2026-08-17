@@ -26,6 +26,71 @@
         "baseline-vs-new ddm_survey_identity differential: 17694 assertions PASS"
       ],
       "validation_note": "No GitHub workflow run or respondent-backed canary attached. Kernel inspected by Vozhd before merge. Primary SWIDs remain partial until assigned ingress/stage/boundary hooks land."
+    },
+    {
+      "worker_id": "W05",
+      "phase_id": "W05-A",
+      "base_commit": "7b1f47357e7da19c043f2ae0abff427e92aaea32",
+      "branch": "agent/swid-w05-boundary-a",
+      "primary_issue_ids": ["SWID-008", "SWID-017"],
+      "issue_status": "PARTIAL_AWAITING_CROSS_HOOK",
+      "worker_head_sha": "7afc093164ef62ebc4b4cbe2080c4b5800803fd2",
+      "draft_pr": 30,
+      "integration_merge_sha": "4cb28f24e941603d37d2e9e30eba35b62aafbde0",
+      "containment": {
+        "no_unowned_files_changed": true,
+        "changed_paths_reviewed": 3,
+        "terrain_result": "PASS"
+      },
+      "contract_result": "SHARED_UID_COHERENCE_BOUNDARY_COMPLETE",
+      "validation_note": "Every populated redundant source/wave representation is resolved to one governed UID pair or fails closed. Independent run/country/shard/schema/hash laws remain intact. Stage-local hooks remain assigned downstream."
+    },
+    {
+      "worker_id": "W02",
+      "phase_id": "W02-A",
+      "base_commit": "7b1f47357e7da19c043f2ae0abff427e92aaea32",
+      "branch": "agent/swid-w02-authority-ingress-a",
+      "primary_issue_ids": ["SWID-002", "SWID-004", "SWID-009", "SWID-010", "SWID-014", "SWID-023", "SWID-024"],
+      "issue_status": "PARTIAL_AWAITING_CROSS_HOOK",
+      "worker_head_sha": "71f1d4509753c2e509828b65a1510e85f1a1bc7e",
+      "vozhd_exact_blob_rebase_sha": "e16ec8747015bc141b3dc0dc0d9e879e21132cce",
+      "draft_pr": 31,
+      "integration_merge_sha": "2621567e151529c0d09c788ec0fcd473ac925b94",
+      "containment": {
+        "no_unowned_files_changed": true,
+        "effective_changed_paths_reviewed": 14,
+        "allowlisted_blob_paths_replayed": 15,
+        "terrain_result": "PASS"
+      },
+      "contract_result": "AUTHORITY_INGRESS_AND_RAW_DB_UID_SURFACE_COMPLETE",
+      "tests_reported": [
+        "W02 executable contract harness: 10 passed, 2 deselected large exact-byte fixtures",
+        "active QRA direct check: 700 rows / exact 35 source-wave pairs / Asian W6 absent",
+        "restored companion Git blob identities match pinned runtime blobs"
+      ],
+      "validation_note": "Vozhd replayed the exact reviewed W02 blobs onto the post-W05 integration tree because the PR base was stale; no hand-edited conflict resolution or semantic modification occurred. Raw DB source/wave remain query coordinates; UID/display/governance fields are additive. Downstream V550 hooks remain assigned to W03-A."
+    },
+    {
+      "worker_id": "W06",
+      "phase_id": "W06-A",
+      "base_commit": "7b1f47357e7da19c043f2ae0abff427e92aaea32",
+      "branch": "agent/swid-w06-qa-a",
+      "primary_issue_ids": [],
+      "issue_status": "HARNESS_COMPLETE_REBASE_REQUIRED_AT_G7",
+      "worker_head_sha": "8be37d5c78ff39e97700323ae1a7eb4222958064",
+      "vozhd_exact_blob_rebase_sha": "10cd02f9626f8b2aec5e4c0e43a07416325c130a",
+      "draft_pr": 28,
+      "integration_merge_sha": "7350f118395f677c62e4bc66ced579bcf8e7480d",
+      "containment": {
+        "no_unowned_files_changed": true,
+        "changed_paths_reviewed": 7,
+        "terrain_result": "PASS_TESTS_FIXTURES_ONLY"
+      },
+      "tests_reported": [
+        "post-W01 hostile harness: 16 PASS, 8 XFAIL, 0 XPASS, 0 FAIL",
+        "py_compile: PASS"
+      ],
+      "validation_note": "Harness property lookup repair accepted and exact test/fixture bytes rebased onto integrated G2 state. Remaining xfails correspond to registered later-phase SWIDs; W06-B was not begun. G7 still requires rebasing/rerunning the harness against the fully migrated implementation."
     }
   ],
   "gate_events": [
@@ -52,7 +117,31 @@
         "W01 containment PASS: exactly four W01-owned paths changed"
       ],
       "releases": ["W02-A", "W05-A"],
-      "note": "W06-A remains separately pending one harness compatibility fix and rebase/retest; it does not block G1."
+      "note": "W06-A remained independently active as the tests-only hostile harness."
+    },
+    {
+      "gate": "G2A",
+      "status": "SATISFIED",
+      "evidence": [
+        "W02-A PR=31",
+        "W02-A reviewed_worker_head=71f1d4509753c2e509828b65a1510e85f1a1bc7e",
+        "W02-A exact-blob rebase=e16ec8747015bc141b3dc0dc0d9e879e21132cce",
+        "W02-A integration_merge_sha=2621567e151529c0d09c788ec0fcd473ac925b94",
+        "portable/hash-bound exact CLOSED_35 authority ingress and additive UID DB identity surface installed; raw respondent wave preserved"
+      ],
+      "means": "portable/hash-bound authority ingress + DB identity surface ready"
+    },
+    {
+      "gate": "G2B",
+      "status": "SATISFIED",
+      "evidence": [
+        "W05-A PR=30",
+        "W05-A reviewed_head=7afc093164ef62ebc4b4cbe2080c4b5800803fd2",
+        "W05-A integration_merge_sha=4cb28f24e941603d37d2e9e30eba35b62aafbde0",
+        "shared UID coherence contract verifies every populated representation and preserves independent exact producer-boundary checks"
+      ],
+      "means": "shared UID coherence/boundary contract ready",
+      "combined_release_after_G2A_and_G2B": ["W03-A"]
     }
   ]
 }

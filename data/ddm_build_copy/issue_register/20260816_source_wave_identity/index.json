@@ -36,11 +36,13 @@
     "static_fixed_point_reached": true,
     "runtime_pass_not_claimed": true
   },
-  "current_phase": "G2_AUTHORITY_INGRESS_AND_SHARED_BOUNDARY",
-  "completed_phases": ["W01-A"],
-  "released_phases": ["W02-A", "W05-A"],
-  "pending_repair_retest": ["W06-A"],
-  "blocked_phases": ["W03-A", "W03-B", "W04-A", "W04-B", "W06-B", "W06-C", "W06-D", "W05-B", "W02-B"],
+  "current_phase": "W03_A_V550_IDENTITY_TRANSPORT",
+  "completed_phases": ["W01-A", "W02-A", "W05-A", "W06-A"],
+  "released_phases": ["W03-A"],
+  "blocked_phases": ["W03-B", "W04-A", "W04-B", "W06-B", "W06-C", "W06-D", "W05-B", "W02-B"],
   "g1_kernel_merge_sha": "3a5a869b49693817e83b8391113ca08bb7a17f81",
-  "next_gates": ["G2A_AUTHORITY_INGRESS_COMPLETE", "G2B_SHARED_BOUNDARY_COMPLETE"]
+  "g2a_authority_ingress_merge_sha": "2621567e151529c0d09c788ec0fcd473ac925b94",
+  "g2b_shared_boundary_merge_sha": "4cb28f24e941603d37d2e9e30eba35b62aafbde0",
+  "w06a_harness_merge_sha": "7350f118395f677c62e4bc66ced579bcf8e7480d",
+  "next_gate": "G3_V550_IDENTITY_TRANSPORT_COMPLETE"
 }
