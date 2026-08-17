@@ -36,6 +36,8 @@
     "static_fixed_point_reached": true,
     "runtime_pass_not_claimed": true
   },
-  "current_phase": "G0_GOVERNANCE_FROZEN",
-  "next_gate": "G1_IDENTITY_KERNEL"
+  "current_phase": "G1_IDENTITY_KERNEL",
+  "released_phases": ["W01-A", "W06-A"],
+  "blocked_until_g1": ["W02-A", "W05-A", "W03-A", "W03-B", "W04-A", "W04-B", "W06-B", "W06-C", "W06-D", "W05-B", "W02-B"],
+  "next_gate": "G1_IDENTITY_KERNEL_COMPLETE"
 }

@@ -4,5 +4,18 @@
   "issue_set_sha256": "8a6d1cb2e7f669080d09d5c0e4e1c635e008634eca47488ce9673b296ae8653c",
   "integration_branch": "agent/source-wave-identity-repair-integration",
   "entries": [],
-  "gate_events": [{"gate":"G0","status":"PLANNED_PENDING_COMMIT","evidence":[]}]
+  "gate_events": [
+    {
+      "gate": "G0",
+      "status": "SATISFIED",
+      "evidence": [
+        "governance_commit=6a908c731ce7860fa88b5744df1881b27437d129",
+        "planning_base_main=25a63e08b0fcf7ef3dfc9de0c7b03325d26d918a",
+        "issue_set_sha256=8a6d1cb2e7f669080d09d5c0e4e1c635e008634eca47488ce9673b296ae8653c",
+        "PLAN_VALIDATION: all 27 issues assigned exactly once; all simultaneously releasable phase pairs have zero exact write-entry overlap",
+        "branch diff at governance freeze contained only data/ddm_build_copy/issue_register/20260816_source_wave_identity/**"
+      ],
+      "releases": ["W01-A", "W06-A"]
+    }
+  ]
 }
