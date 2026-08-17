@@ -10,6 +10,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
+from data.ddm_build_copy.build_determinicity_repository_v550 import _build_question_list
 from data.ddm_build_copy.ddm_pipeline_boundary_contract import BoundaryContractError
 from data.ddm_build_copy.ddm_source_wave_identity import (
     GlobalWaveResolutionError,
@@ -18,6 +19,7 @@ from data.ddm_build_copy.ddm_source_wave_identity import (
     resolve_source_wave_identity,
     resolve_wave_identity,
 )
+from data.ddm_build_copy.ddm_survey_identity import SurveyIdentityError
 from data.ddm_build_copy.ddm_v550_manifest import build_shard_manifest
 from data.ddm_build_copy.ddm_v550_question_use import _select_itinerary
 from data.ddm_build_copy.ddm_v550_readiness import _attach_governed_scope_identity
@@ -239,10 +241,6 @@ def test_shard_manifest_carries_uid_additively_without_changing_shard_id(tmp_pat
     assert manifest["wave_uid"] == resolve_source_wave_identity("EVS", "W1").wave_uid
 
 
-@pytest.mark.xfail(
-    strict=True,
-    reason="SWID-016 local selector seam remains explicit: whole-file connector replacement is unsafe for the large semantic authority module",
-)
 def test_itinerary_gate_matches_evs_1981_and_w1_by_governed_uid() -> None:
     itinerary = pd.DataFrame([
         {
@@ -259,6 +257,22 @@ def test_itinerary_gate_matches_evs_1981_and_w1_by_governed_uid() -> None:
     selected = _select_itinerary({"source": "EVS", "canonical_wave": "W1"}, itinerary)
     assert selected["manual_designation_required"] is True
     assert selected["review_priority"] == "high"
+    assert selected["itinerary_wave"] == "1981"
+    assert selected["itinerary_canonical_wave"] == "W1"
+    assert selected["itinerary_wave_uid"] == resolve_source_wave_identity("EVS", "W1").wave_uid
+
+
+def test_itinerary_gate_identity_failure_fails_closed() -> None:
+    itinerary = pd.DataFrame([
+        {
+            "source": "EVS",
+            "wave": "NOT_A_GOVERNED_WAVE",
+            "review_priority": "high",
+            "manual_designation_required": True,
+        }
+    ])
+    with pytest.raises(SurveyIdentityError):
+        _select_itinerary({"source": "EVS", "canonical_wave": "W1"}, itinerary)
 
 
 def test_true_absence_of_itinerary_row_retains_optional_default() -> None:
@@ -267,3 +281,128 @@ def test_true_absence_of_itinerary_row_retains_optional_default() -> None:
     ])
     selected = _select_itinerary({"source": "EVS", "canonical_wave": "W3"}, itinerary)
     assert selected["manual_designation_required"] is False
+
+
+@pytest.mark.parametrize(
+    "scope_source,scope_wave,mapping_source,mapping_wave",
+    [
+        ("Arab Barometer", "I", "Arab Barometer", "W1"),
+        ("Arab Barometer", "I", "Arab Barometer", "Wave 1"),
+        ("Arab Barometer", "I", "Arab Barometer", "1"),
+        ("EVS", "1981", "EVS", "W1"),
+        ("EVS", "1999", "EVS", "W3"),
+        ("Afrobarometer", "R1", "Afrobarometer", "ROUND1"),
+        ("Afrobarometer", "R1", "Afrobarometer", "Round 1"),
+        (
+            unicodedata.normalize("NFC", "Latinobarómetro"),
+            "1995",
+            unicodedata.normalize("NFD", "Latinobarómetro"),
+            "1995",
+        ),
+        ("Latinobarometro", "1995", "Latinobarómetro", "1995"),
+    ],
+)
+def test_build_question_list_join_is_source_wave_uid_alias_invariant(
+    scope_source: str,
+    scope_wave: str,
+    mapping_source: str,
+    mapping_wave: str,
+) -> None:
+    scope = pd.DataFrame([
+        {
+            "source": scope_source,
+            "wave": scope_wave,
+            "country_code": "XX",
+            "respondents": 10,
+        }
+    ])
+    mapping = pd.DataFrame([
+        {
+            "source": mapping_source,
+            "wave": mapping_wave,
+            "var_code": "Q1",
+            "question_id": "Q1",
+            "question_block_id": "B1",
+            "driver_id": "D1",
+            "driver_facet_id": "F1",
+            "relation_axis_id": "R1",
+            "target_entity_id": "T1",
+            "mapping_status": "mapped",
+            "legacy_final_driver_id": "",
+            "question_type": "single_choice",
+            "handling_rule": "",
+            "recommended_computation": "",
+            "final_driver_scope": "",
+            "source_structure_classification": "substantive_single_choice",
+        }
+    ])
+    out = _build_question_list(scope, mapping, None)
+    expected = resolve_source_wave_identity(scope_source, scope_wave, require_closed_35=True)
+    assert len(out) == 1
+    assert out.loc[0, "var_code"] == "Q1"
+    assert out.loc[0, "source"] == scope_source
+    assert out.loc[0, "raw_db_source"] == scope_source
+    assert out.loc[0, "raw_wave"] == scope_wave
+    assert out.loc[0, "raw_db_wave"] == scope_wave
+    assert out.loc[0, "source_family_uid"] == expected.source_family_uid
+    assert out.loc[0, "wave_uid"] == expected.wave_uid
+
+
+def test_build_question_list_uses_preserved_raw_db_wave_when_display_wave_is_present() -> None:
+    identity = resolve_source_wave_identity("EVS", "1981", require_closed_35=True)
+    scope = pd.DataFrame([
+        {
+            "source": "EVS",
+            "wave": "W1",
+            "raw_db_source": "EVS",
+            "raw_db_wave": "1981",
+            "canonical_display_source": identity.canonical_display_source,
+            "canonical_display_wave": identity.canonical_display_wave,
+            "source_family_uid": identity.source_family_uid,
+            "wave_uid": identity.wave_uid,
+            "country_code": "IS",
+            "respondents": 10,
+        }
+    ])
+    mapping = pd.DataFrame([
+        {
+            "source": "EVS",
+            "wave": "W1",
+            "var_code": "Q1",
+            "question_id": "Q1",
+            "question_block_id": "B1",
+            "driver_id": "D1",
+            "driver_facet_id": "F1",
+            "relation_axis_id": "R1",
+            "target_entity_id": "T1",
+            "mapping_status": "mapped",
+            "legacy_final_driver_id": "",
+        }
+    ])
+    out = _build_question_list(scope, mapping, None)
+    assert len(out) == 1
+    assert out.loc[0, "raw_db_wave"] == "1981"
+    assert out.loc[0, "raw_wave"] == "1981"
+    assert out.loc[0, "canonical_wave"] == "W1"
+
+
+def test_build_question_list_redundant_identity_contradiction_fails_closed() -> None:
+    scope = pd.DataFrame([
+        {
+            "source": "EVS",
+            "wave": "1981",
+            "canonical_wave": "W3",
+            "country_code": "IS",
+            "respondents": 10,
+        }
+    ])
+    mapping = pd.DataFrame([
+        {
+            "source": "EVS",
+            "wave": "1981",
+            "var_code": "Q1",
+            "question_id": "Q1",
+        }
+    ])
+    with pytest.raises(BoundaryContractError):
+        _build_question_list(scope, mapping, None)
