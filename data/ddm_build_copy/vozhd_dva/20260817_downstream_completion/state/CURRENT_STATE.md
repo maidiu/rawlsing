@@ -47,15 +47,21 @@ Sessions:
 - S06 V558→V3
 - S07 V3→V2
 
-Each seam uses independent forward/backward reasoning; S02/S03 may also use a hostile critic. Breakout proposals are advisory until Vozhd Dva reconciles them in `schematics/synthesis/`.
+**Sequencing law:** one seam at a time. Within the active seam, forward/backward workers may break out concurrently, with a hostile critic where needed. Vozhd Dva reconvenes and freezes that seam before the next seam launches. The accepted output of one seam becomes the frozen upstream input law of the next.
+
+Current schematic readiness:
+- S00: ready after R0-01 integrity closeout.
+- S01–S07: blocked on the immediately preceding seam's Vozhd synthesis.
+
+Breakout proposals are advisory until Vozhd Dva reconciles them in `schematics/synthesis/`.
 
 ## Immediate next actions
 
 1. Close the narrow R0-01 fail-closed integrity concern and integrate its lawful V553 consumer repair/findings.
-2. Launch schematic breakouts from `schematics/SESSION_INDEX.md`, prioritizing S00–S05 while allowing S06/S07 consumer-side work in parallel.
-3. Reconvene in upstream-to-downstream order; adjacent seams with shared grains may be adjudicated together.
-4. Record accepted seam contracts in `schematics/synthesis/` and update `CAPABILITY_MATRIX.md`.
-5. Only then produce the finite Wave-1 implementation register and worker packets.
+2. Construct and launch only the S00 breakout packet(s): forward-from-V552J and backward-from-V554 perspectives.
+3. Reconvene S00, adjudicate the lawful V552J→V553 transformation, and record the accepted S00 seam contract in `schematics/synthesis/`.
+4. Promote S01 to ready using the accepted S00 output as its upstream law; repeat serially through S07.
+5. After S07 synthesis, update `CAPABILITY_MATRIX.md` and produce the finite Wave-1 implementation register and worker packets.
 
 ## Restart instruction
 
@@ -66,6 +72,6 @@ A future Vozhd Dva chat should read, in order:
 4. `schematics/README.md`
 5. `schematics/SESSION_INDEX.md`
 6. `integration/WAVE_0_INTAKE_LEDGER.md`
-7. only the specific seam/worker/review files required for the next action.
+7. only the active seam/worker/review files required for the next action.
 
 Do not reconstruct project state from chat history when the control-room state is available.
