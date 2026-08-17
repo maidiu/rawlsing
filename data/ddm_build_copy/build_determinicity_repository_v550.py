@@ -23,6 +23,8 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import validate_source_wave_identity_coherence
+from data.ddm_build_copy.ddm_source_wave_identity import resolve_source_wave_identity
 from data.ddm_build_copy.ddm_v550_branching import (
     SECONDARY_INDICATOR_SUMMARY_COLUMNS,
     branch_nodes_rows,
@@ -229,8 +231,14 @@ def _load_response_option_map(path: str | None) -> pd.DataFrame:
 
 _QUESTION_LIST_COLUMNS = [
     "source",
+    "raw_db_source",
     "raw_wave",
+    "raw_db_wave",
     "canonical_wave",
+    "canonical_display_source",
+    "canonical_display_wave",
+    "source_family_uid",
+    "wave_uid",
     "country_code",
     "var_code",
     "question_id",
@@ -265,34 +273,121 @@ def _wave_match_candidates(source: str, raw_wave: str) -> list[str]:
     return candidates
 
 
+def _clean_identity_value(value: Any) -> str:
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except Exception:
+        pass
+    text = str(value).strip()
+    return "" if text.lower() in {"", "nan", "none", "null"} else text
+
+
+def _attach_question_list_identity(
+    frame: pd.DataFrame,
+    *,
+    context: str,
+    prefer_raw_db_coordinates: bool,
+) -> pd.DataFrame:
+    """Attach one governed UID pair to each row and fail on redundant contradictions."""
+    if frame.empty:
+        return frame.copy()
+    rows: list[dict[str, Any]] = []
+    for index, raw in frame.iterrows():
+        row = raw.to_dict()
+        source = _clean_identity_value(
+            row.get("raw_db_source") if prefer_raw_db_coordinates else row.get("source")
+        ) or _clean_identity_value(row.get("source"))
+        wave = _clean_identity_value(
+            row.get("raw_db_wave") if prefer_raw_db_coordinates else row.get("wave")
+        ) or _clean_identity_value(row.get("wave"))
+        if not source or not wave:
+            raise RuntimeError(
+                f"V550_QUESTION_LIST_IDENTITY_MISSING:{context}:row={index}:source={source!r}:wave={wave!r}"
+            )
+        coherence = validate_source_wave_identity_coherence(
+            row,
+            expected_source=source,
+            expected_wave=wave,
+            require_complete=True,
+        )
+        production_identity = resolve_source_wave_identity(
+            coherence.canonical_display_source,
+            coherence.canonical_display_wave,
+            require_closed_35=True,
+        )
+        if (
+            production_identity.source_family_uid != coherence.source_family_uid
+            or production_identity.wave_uid != coherence.wave_uid
+        ):
+            raise RuntimeError(
+                f"V550_QUESTION_LIST_UID_CONTRADICTION:{context}:row={index}:"
+                f"coherence={coherence.source_family_uid}|{coherence.wave_uid}:"
+                f"production={production_identity.source_family_uid}|{production_identity.wave_uid}"
+            )
+        row["canonical_display_source"] = coherence.canonical_display_source
+        row["canonical_display_wave"] = coherence.canonical_display_wave
+        row["source_family_uid"] = coherence.source_family_uid
+        row["wave_uid"] = coherence.wave_uid
+        rows.append(row)
+    return pd.DataFrame(rows)
+
+
 def _build_question_list(scope_df: pd.DataFrame, mapping_df: pd.DataFrame, max_questions: int | None) -> pd.DataFrame:
     if scope_df.empty or mapping_df.empty:
         return pd.DataFrame({col: pd.Series(dtype="object") for col in _QUESTION_LIST_COLUMNS})
-    scope = scope_df.rename(columns={"wave": "raw_wave"}).copy()
-    scope["source"] = scope["source"].astype(str)
-    scope["raw_wave"] = scope["raw_wave"].astype(str)
-    scope["canonical_wave"] = scope.apply(lambda row: canonical_wave_label(str(row["source"]), str(row["raw_wave"])), axis=1)
+
+    scope = scope_df.copy()
+    scope["raw_db_source"] = scope.apply(
+        lambda row: _clean_identity_value(row.get("raw_db_source")) or _clean_identity_value(row.get("source")),
+        axis=1,
+    )
+    scope["raw_db_wave"] = scope.apply(
+        lambda row: _clean_identity_value(row.get("raw_db_wave")) or _clean_identity_value(row.get("wave")),
+        axis=1,
+    )
+    scope = _attach_question_list_identity(
+        scope,
+        context="scope",
+        prefer_raw_db_coordinates=True,
+    )
     scope["country_code"] = scope["country_code"].astype(str)
-    scope["wave_match"] = scope.apply(lambda row: _wave_match_candidates(str(row["source"]), str(row["raw_wave"])), axis=1)
-    scope = scope.explode("wave_match", ignore_index=True)
-    scope["wave_match"] = scope["wave_match"].astype(str)
-    mapping = mapping_df.copy()
-    mapping["source"] = mapping["source"].astype(str)
-    mapping["raw_wave"] = mapping["wave"].astype(str)
-    mapping["canonical_wave"] = mapping.apply(lambda row: canonical_wave_label(str(row["source"]), str(row["raw_wave"])), axis=1)
-    mapping["wave_match"] = mapping.apply(lambda row: _wave_match_candidates(str(row["source"]), str(row["raw_wave"])), axis=1)
-    mapping = mapping.explode("wave_match", ignore_index=True)
-    mapping["wave_match"] = mapping["wave_match"].astype(str)
-    merged = scope.merge(mapping, on=["source", "wave_match"], how="inner", suffixes=("_scope", "_mapping"))
-    merged["raw_wave"] = merged["raw_wave_scope"].astype(str)
-    merged["canonical_wave"] = merged["canonical_wave_scope"].astype(str)
-    merged["mapping_wave"] = merged["canonical_wave_mapping"].astype(str)
+    scope_join = scope[
+        [
+            "source_family_uid",
+            "wave_uid",
+            "country_code",
+            "raw_db_source",
+            "raw_db_wave",
+            "canonical_display_source",
+            "canonical_display_wave",
+        ]
+    ].drop_duplicates()
+
+    mapping = _attach_question_list_identity(
+        mapping_df.copy(),
+        context="question_structural_mapping",
+        prefer_raw_db_coordinates=False,
+    )
+
+    merged = scope_join.merge(
+        mapping,
+        on=["source_family_uid", "wave_uid"],
+        how="inner",
+        suffixes=("_scope", "_mapping"),
+    )
+    merged["source"] = merged["raw_db_source"].astype(str)
+    merged["raw_wave"] = merged["raw_db_wave"].astype(str)
+    merged["canonical_wave"] = merged["canonical_display_wave_scope"].astype(str)
+    merged["canonical_display_source"] = merged["canonical_display_source_scope"].astype(str)
+    merged["canonical_display_wave"] = merged["canonical_display_wave_scope"].astype(str)
     merged["question_rows"] = 0
     merged["n_respondents"] = 0
     for column in _QUESTION_LIST_COLUMNS:
         if column not in merged.columns:
             merged[column] = pd.NA
-    merged = merged.drop(columns=[col for col in ["raw_wave_scope", "raw_wave_mapping", "wave_match", "canonical_wave_scope", "canonical_wave_mapping"] if col in merged.columns])
     merged = merged[_QUESTION_LIST_COLUMNS].drop_duplicates()
     merged = merged.sort_values(["source", "canonical_wave", "country_code", "var_code"]).reset_index(drop=True)
     if max_questions is not None and len(merged) > max_questions:
@@ -630,10 +725,10 @@ def _lookup_response_semantics(response_map: pd.DataFrame) -> dict[tuple[str, st
         source = _first_clean_value(row_dict.get("source_family"), row_dict.get("source"))
         waves = [row_dict.get("wave", ""), row_dict.get("canonical_wave", "")]
         var_code = _first_clean_value(
-            row_dict.get("var_name"),
-            row_dict.get("var_code"),
-            row_dict.get("question_id"),
-            row_dict.get("variable_id"),
+            row_dict.get("var_name", ""),
+            row_dict.get("var_code", ""),
+            row_dict.get("question_id", ""),
+            row_dict.get("variable_id", ""),
         )
         values = [
             row_dict.get("value_code_normalized", ""),
@@ -653,8 +748,6 @@ def _lookup_response_semantics(response_map: pd.DataFrame) -> dict[tuple[str, st
             if existing is None:
                 lookup[key] = row_dict
                 continue
-            # Prefer the row carrying explicit packet provenance over a generic
-            # or observed-only row if aliases collapse onto the same key.
             existing_status = _clean(existing.get("response_semantics_status", "")).lower()
             candidate_status = _clean(row_dict.get("response_semantics_status", "")).lower()
             if existing_status in {"", "observed_only"} and candidate_status not in {"", "observed_only"}:

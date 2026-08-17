@@ -7,6 +7,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import validate_source_wave_identity_coherence
+from data.ddm_build_copy.ddm_source_wave_identity import resolve_source_wave_identity
+
+
+V550_MANIFEST_IDENTITY_TRANSPORT_VERSION = "v550-source-wave-uid-1"
+
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -93,6 +99,22 @@ def build_shard_manifest(
     v551_excluded_count: int,
     promotable: bool,
 ) -> dict[str, Any]:
+    identity = resolve_source_wave_identity(source, wave, require_closed_35=True)
+    coherence = validate_source_wave_identity_coherence(
+        {
+            "source": source,
+            "source_family": source_family,
+            "wave": wave,
+            "canonical_wave": canonical_wave,
+            "source_family_uid": identity.source_family_uid,
+            "wave_uid": identity.wave_uid,
+        },
+        expected_source=source,
+        expected_wave=wave,
+        expected_source_family_uid=identity.source_family_uid,
+        expected_wave_uid=identity.wave_uid,
+        require_complete=True,
+    )
     return {
         "run_id": run_id,
         "shard_id": shard_id,
@@ -100,6 +122,15 @@ def build_shard_manifest(
         "source_family": source_family,
         "wave": wave,
         "canonical_wave": canonical_wave,
+        "raw_db_source": source,
+        "raw_db_wave": wave,
+        "canonical_display_source": coherence.canonical_display_source,
+        "canonical_display_wave": coherence.canonical_display_wave,
+        "source_family_uid": coherence.source_family_uid,
+        "wave_uid": coherence.wave_uid,
+        "governance_state": identity.governance_state,
+        "closed_35_member": bool(identity.closed_35_member),
+        "identity_transport_version": V550_MANIFEST_IDENTITY_TRANSPORT_VERSION,
         "created_at": created_at,
         "completed_at": completed_at,
         "success": success,

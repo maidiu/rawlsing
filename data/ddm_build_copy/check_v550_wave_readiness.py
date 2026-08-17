@@ -16,9 +16,9 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from data.ddm_build_copy.build_determinicity_repository_v550 import _assert_facet_ready_view_contract
-from data.ddm_build_copy.build_source_structure_validator import canonical_wave_label
 from data.ddm_build_copy.ddm_v550_readiness import build_readiness, load_scope_manifest
 from data.ddm_build_copy.ddm_v550_process_guard import claim_readiness_lock, release_readiness_lock
+from data.ddm_build_copy.ddm_v550_shards import require_v550_execution_identity, v550_identity_fields
 from data.ddm_build_copy.ddm_v550_storage import V550ShardPaths, atomic_write_json, load_env_database_url, try_connect_database, write_table
 
 DEFAULT_ENV_FILE = ROOT / ".env"
@@ -32,6 +32,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--shard-id", required=True)
     parser.add_argument("--source", required=True)
     parser.add_argument("--wave", required=True)
+    parser.add_argument("--source-family-uid", default="")
+    parser.add_argument("--wave-uid", default="")
     parser.add_argument("--country", action="append", default=[])
     parser.add_argument("--db-url", default=None)
     parser.add_argument("--env-file", default=str(DEFAULT_ENV_FILE))
@@ -63,6 +65,13 @@ def _write_table_bundle(paths: V550ShardPaths, table_name: str, df: pd.DataFrame
 
 def main() -> int:
     args = parse_args()
+    identity = require_v550_execution_identity(
+        args.source,
+        args.wave,
+        expected_source_family_uid=args.source_family_uid,
+        expected_wave_uid=args.wave_uid,
+    )
+    identity_fields = v550_identity_fields(args.source, args.wave)
     if args.verbose:
         import faulthandler
 
@@ -94,6 +103,8 @@ def main() -> int:
             "run_id": args.run_id,
             "shard_id": args.shard_id,
             "status": "running",
+            "source_family_uid": identity.source_family_uid,
+            "wave_uid": identity.wave_uid,
             "updated_at": pd.Timestamp.utcnow().isoformat(),
         },
     )
@@ -106,7 +117,6 @@ def main() -> int:
         if conn is None:
             raise RuntimeError(f"[V550_SHARD_DB_UNAVAILABLE] Could not connect to Postgres using {args.env_file} or --db-url. Original error: {err}")
 
-        canonical_wave = canonical_wave_label(args.source, args.wave)
         print(f"[v550readiness +0s] loading scope manifest for {args.source}/{args.wave}", flush=True)
         scope_df = load_scope_manifest(
             conn,
@@ -118,10 +128,10 @@ def main() -> int:
         )
         if scope_df.empty:
             raise RuntimeError(f"[V550_NO_SHARDS_DISCOVERED] No source/wave rows matched {args.source}/{args.wave}. Check the shard plan and live DB coverage.")
-
-        if canonical_wave != args.wave:
-            scope_df = scope_df.copy()
-            scope_df["wave"] = canonical_wave
+        # `wave` remains the raw respondent/database coordinate. Governed display
+        # identity travels additively and must never overwrite the DB lookup key.
+        for key, value in identity_fields.items():
+            scope_df[key] = value
 
         _write_table_bundle(paths, "readiness_scope", scope_df, "core")
         print(f"[v550readiness +{time.monotonic() - progress_started:0.0f}s] verifying facet-ready view contract", flush=True)
@@ -136,7 +146,7 @@ def main() -> int:
             scope_df,
             min_cell_n=args.min_cell_n,
             source_filters=[args.source],
-            wave_filters=[canonical_wave],
+            wave_filters=[args.wave],
             country_filters=country_filters,
             progress_started=progress_started,
             log_prefix=f"full_readiness[{args.source}/{args.wave}]",
@@ -157,6 +167,8 @@ def main() -> int:
             "shard_id": args.shard_id,
             "source": args.source,
             "wave": args.wave,
+            "canonical_wave": identity.canonical_display_wave,
+            **identity_fields,
             "country_filters": country_filters,
             "min_cell_n": args.min_cell_n,
             "scope_rows": int(len(scope_df)),
@@ -179,6 +191,8 @@ def main() -> int:
                 "shard_id": args.shard_id,
                 "status": "success",
                 "success": True,
+                "source_family_uid": identity.source_family_uid,
+                "wave_uid": identity.wave_uid,
                 "updated_at": pd.Timestamp.utcnow().isoformat(),
                 "manifest": str(manifest_path),
             },
@@ -193,6 +207,8 @@ def main() -> int:
                 "shard_id": args.shard_id,
                 "status": "failed",
                 "success": False,
+                "source_family_uid": identity.source_family_uid,
+                "wave_uid": identity.wave_uid,
                 "error": str(exc),
                 "updated_at": pd.Timestamp.utcnow().isoformat(),
             },

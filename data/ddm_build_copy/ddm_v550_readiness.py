@@ -10,6 +10,7 @@ from typing import Any, Iterable
 
 import pandas as pd
 
+from data.ddm_build_copy.ddm_source_wave_identity import resolve_source_wave_identity
 from data.ddm_build_copy.ddm_v550_io import clean_text
 from data.ddm_build_copy.ddm_v550_metrics import dominant_response
 from data.ddm_build_copy.ddm_v550_shared_cache import cached_query_frame, shared_cache_root
@@ -64,6 +65,59 @@ def _sql_filter_clause(
         clauses.append(f"{country_col} = ANY(%(countries)s)")
         params["countries"] = country_filters
     return " AND ".join(clauses), params
+
+
+def _attach_governed_scope_identity(
+    frame: pd.DataFrame,
+    *,
+    require_production_membership: bool,
+) -> pd.DataFrame:
+    """Attach UID identity to raw DB scope rows without rewriting coordinates."""
+    out = frame.copy()
+    identity_columns = [
+        "raw_db_source",
+        "raw_db_wave",
+        "canonical_display_source",
+        "canonical_display_wave",
+        "source_family_uid",
+        "wave_uid",
+        "governance_state",
+        "closed_35_member",
+    ]
+    if out.empty:
+        for column in identity_columns:
+            if column not in out.columns:
+                out[column] = pd.Series(dtype="bool" if column == "closed_35_member" else "object")
+        return out
+    if "source" not in out.columns or "wave" not in out.columns:
+        raise RuntimeError("[V550_SCOPE_IDENTITY_COLUMNS_MISSING] source and wave are required at DB ingress")
+
+    rows: list[dict[str, Any]] = []
+    for raw in out.to_dict(orient="records"):
+        source = str(raw.get("source") or "").strip()
+        wave = str(raw.get("wave") or "").strip()
+        if not source or not wave:
+            raise RuntimeError("[V550_SCOPE_IDENTITY_VALUE_MISSING] source and wave must be nonblank at DB ingress")
+        identity = resolve_source_wave_identity(
+            source,
+            wave,
+            require_closed_35=require_production_membership,
+        )
+        row = dict(raw)
+        row.update(
+            {
+                "raw_db_source": source,
+                "raw_db_wave": wave,
+                "canonical_display_source": identity.canonical_display_source,
+                "canonical_display_wave": identity.canonical_display_wave,
+                "source_family_uid": identity.source_family_uid,
+                "wave_uid": identity.wave_uid,
+                "governance_state": identity.governance_state,
+                "closed_35_member": bool(identity.closed_35_member),
+            }
+        )
+        rows.append(row)
+    return pd.DataFrame(rows)
 
 
 def load_scope_manifest(
@@ -125,6 +179,14 @@ def load_scope_manifest(
         print(f"[v550b +0s] {log_prefix}: fetched {len(df)} rows", flush=True)
         print(f"[v550b +0s] {log_prefix}: resetting index", flush=True)
     df = df.reset_index(drop=True)
+    explicit_execution_scope = (
+        len({str(value).strip() for value in source_filters or [] if str(value).strip()}) == 1
+        and len({str(value).strip() for value in wave_filters or [] if str(value).strip()}) == 1
+    )
+    df = _attach_governed_scope_identity(
+        df,
+        require_production_membership=explicit_execution_scope,
+    )
     if progress_started is not None:
         print(f"[v550b +0s] {log_prefix}: returning scope dataframe", flush=True)
     return df
