@@ -92,6 +92,8 @@ def verify_producer_boundary_manifest(
     wave: str = "",
     country_code: str = "",
     shard_id: str = "",
+    source_family_uid: str = "",
+    wave_uid: str = "",
     required_artifacts: Iterable[str] = (),
     required_schema_version: str = "",
     required_compiler_version: str = "",
@@ -102,6 +104,10 @@ def verify_producer_boundary_manifest(
     A producer may be healthy while declaring that the next semantic operation
     is not applicable or is blocked by unresolved evidence.  ``require_downstream_permission``
     is therefore an explicit consumer choice rather than an integrity shortcut.
+
+    Source/wave labels are resolved at ingress through the governed W01 kernel.
+    Exact machine scope is the coherent source_family_uid + wave_uid pair; all
+    populated historical/canonical sibling representations must agree with it.
     """
     manifest = read_status_document(manifest_path)
     if not manifest.exists:
@@ -142,6 +148,8 @@ def verify_producer_boundary_manifest(
         wave=wave,
         country_code=country_code,
         shard_id=shard_id,
+        source_family_uid=source_family_uid,
+        wave_uid=wave_uid,
     )
     declarations = _artifact_declarations(payload)
     by_path = {
@@ -201,6 +209,8 @@ def verify_v551_v3_producer_manifest(
     wave: str,
     country_code: str = "",
     shard_id: str = "",
+    source_family_uid: str = "",
+    wave_uid: str = "",
 ) -> ProducerBoundaryVerification:
     """Verify the merged V551 v3.0 producer contract exactly."""
     verified = verify_producer_boundary_manifest(
@@ -210,6 +220,8 @@ def verify_v551_v3_producer_manifest(
         wave=wave,
         country_code=country_code,
         shard_id=shard_id,
+        source_family_uid=source_family_uid,
+        wave_uid=wave_uid,
         required_artifacts=V551_V3_CANONICAL_ARTIFACTS,
         required_schema_version=V551_V3_SCHEMA_VERSION,
         required_compiler_version=V551_V3_COMPILER_VERSION,
