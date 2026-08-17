@@ -4,118 +4,143 @@
 **Status:** COMPLETE_WITH_FINDINGS  
 **Branch:** `agent/vozhd-dva-r0-01-v553-v554`  
 **Base SHA:** `958983139b8f75dc5cda65d5bf71b376d17820df`  
-**Implementation head audited:** `813ccc166076cf5058c14674506dfe311d9416a8`  
+**Implementation head audited:** `b24a758133985f894548c3d50db9bb1536cc9b4b`  
 **Draft PR:** #39 → `agent/vozhd-dva-wave0-integration`
 
 ## 1. Repair performed
 
-`POSTG5-004` was reproduced exactly. Canonical V552J publishes the current structural join/input/handoff surface (`v552j_structural_join_index.parquet`, `v552j_v553_input_index.parquet`, `v552j_to_v553_handoff_index.parquet`, `v552j_v553_handoff_manifest.json`), while the pre-repair V553 wave-harmonization bundle still attempted `packets/v552j_structural_handoff_packet.json` to recover structural/provenance context.
+`POSTG5-004` remains repaired on the V553 consumer side. Canonical V552J publishes the current structural join/input/handoff surface; V553 no longer requires or recreates `packets/v552j_structural_handoff_packet.json`. No V550–V552J file and no V554 production-semantic file was modified.
 
-The repair is entirely V553-side:
+The Vozhd Dva review of PR #39 identified one defect in the first repair: the new adapter treated path existence as sufficient evidence of a canonical surface and converted Parquet read failures into empty frames. That could collapse corruption or partial publication into apparent emptiness.
 
-- added `ddm_v553_canonical_harmonization.py`, which builds the V553 wave bundle directly from the current V552J input/handoff indexes plus readiness/handoff manifests;
-- canonical structural inventories now come from V552J fields themselves (`relation_axis_id`, `target_entity_id`, `driver_facet_id`, `structural_channel_id`, `horizon_constraint_id`, including JSON-list variants where present);
-- V552J readiness, downstream permission, blocker count/breakdown, and canonical artifact paths are retained in the V553 wave table/report;
-- both supported V553 harmonization compilers now route through the canonical consumer adapter;
-- the active repaired path does not call the old `_load_wave_bundle` and therefore does not read the deleted structural-handoff packet;
-- no V550–V552J file and no V554 production-semantic file was modified.
+The review correction makes the V552J→V553 trust boundary fail closed. `ddm_v553_canonical_harmonization.py` now requires and verifies the full V552J publication needed at this boundary:
 
-The old implementation module still contains the historical loader as a shadow/internal path. That is not used by the repaired compile entrypoints; removing or hard-disabling retained shadow interfaces belongs with the already-deferred `POSTG5-005` consolidation rather than this worker extending its write domain.
+- `manifest.json` with the frozen pipeline-boundary contract, V552J schema/compiler versions, PASS run integrity, coherent producer identity, and the exact canonical artifact-name set;
+- `packets/v552j_structural_join_index.parquet` as declared canonical output;
+- `audits/v552j_join_audit.parquet` as declared canonical output;
+- `packets/v552j_v553_input_index.parquet` as the declared V553 compatibility input;
+- `packets/v552j_to_v553_handoff_index.parquet` as the declared V553 compatibility handoff;
+- `manifest/v552j_readiness_report.json`;
+- `manifest/v552j_v553_handoff_manifest.json`.
+
+For each required Parquet artifact the adapter checks declaration count, exact path and artifact kind, schema/compiler version, producer-declared SHA-256, producer-declared row count, full readability, required columns, row-level schema/compiler identity, and run/source/wave/country scope. It also requires the structural-join, V553-input, and V553-handoff row counts to agree, requires the two V553 compatibility indexes to be identical, and checks the handoff-manifest input path and probe/temporal row counts against the verified index.
+
+The boundary now classifies transport state explicitly:
+
+- `VALID_PRESENT` — complete verified publication with V553 rows;
+- `VALID_EMPTY` — complete verified publication with zero join/input/handoff rows;
+- `MISSING` — required root/document/artifact absent;
+- `UNREADABLE_OR_CORRUPT` — required document/artifact exists but cannot be parsed/read;
+- `SCHEMA_INVALID` — declaration, version, required-column, identity-shape, or handoff-manifest schema is invalid;
+- `INTEGRITY_INVALID` — hash, row-count, state, scope, or cross-artifact consistency fails.
+
+Only `VALID_PRESENT` and `VALID_EMPTY` set `surface_valid=true`. Invalid statuses set both `surface_valid=false` and `surface_present=false`, and the supported V553 harmonization build raises `V553CanonicalSurfaceError` before producing a V553 report. Path existence therefore cannot authorize the surface.
+
+`VALID_EMPTY` remains distinct from failure: it is transport-valid but is marked `valid_empty_v552j_surface` rather than being promoted to a complete semantic wave.
+
+The supported compile entrypoints remain routed through this canonical adapter. The historical packet loader remains only in the retained shadow implementation and is still covered by `POSTG5-005` rather than being reopened here.
 
 ## 2. Tests and executable evidence
 
-A focused regression test was added at `data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py`. Its fixture creates only:
+The focused regression file is `data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py`.
 
-- `packets/v552j_v553_input_index.parquet`;
-- `packets/v552j_to_v553_handoff_index.parquet`;
-- `manifest/v552j_readiness_report.json`;
-- `manifest/v552j_v553_handoff_manifest.json`;
-- the three V553 authority-overlay fixtures.
+Its positive fixture now reproduces the current V552J publication contract rather than merely dropping two Parquet files into place. It builds the producer manifest with hashed declarations, canonical join/audit artifacts, both V553 compatibility indexes, readiness, and V553 handoff manifest, while explicitly asserting that the obsolete structural-handoff packet does not exist.
 
-It explicitly asserts that `packets/v552j_structural_handoff_packet.json` does not exist, then verifies that V553 receives the canonical relation/target/driver/channel/horizon identities and declares the obsolete packet unnecessary. A second test verifies both compile entrypoints import the canonical consumer.
+Adversarial coverage proves:
+
+1. a complete verified publication is accepted and preserves relation/target/driver/channel/horizon identity;
+2. a complete zero-row publication is classified `VALID_EMPTY`, not missing;
+3. deleting one required canonical handoff index yields `MISSING` and the V553 build raises;
+4. corrupting the canonical V553 input index yields `UNREADABLE_OR_CORRUPT` and the V553 build raises;
+5. a simulated permission/read failure on the canonical handoff index yields `UNREADABLE_OR_CORRUPT` and the V553 build raises;
+6. removing a required index column while updating the file hash/row count still yields `SCHEMA_INVALID` and the V553 build raises;
+7. leaving both index paths present while corrupting `manifest.json` cannot produce a valid/present surface;
+8. both supported V553 compile entrypoints still import the canonical adapter.
 
 Execution evidence available in this worker environment:
 
-- `python -m py_compile` on the exact new adapter and focused test source: **PASS**.
-- standalone execution harness against the exact adapter source, with canonical indexes/manifests and no legacy packet: **PASS** (`PASS: canonical indexes drive adapter with no legacy packet`).
-- repository pytest: **NOT RUN in this environment** because the GitHub connector does not provide a working repository checkout and PR #39 has no configured Actions run/status. This is recorded rather than represented as a pass.
+- `python -m py_compile /mnt/data/r0_01_fix/ddm_v553_canonical_harmonization.py /mnt/data/r0_01_fix/test_postg5_v552j_v553_consumer_contract.py`: **PASS**.
+- `PYTHONPATH=/mnt/data/r0_01_fix/mini pytest -q data/ddm_build_copy/tests/test_postg5_v552j_v553_consumer_contract.py`: **PASS — 8 passed in 0.08s**. The mini package used the exact updated adapter/test source and contract-compatible stubs for the unavailable repository checkout; the adversarial boundary behavior itself executed.
+- repository-root pytest on the connected GitHub checkout: **NOT RUN** because this environment exposes the repository through the GitHub connector rather than a network-authenticated working tree, and PR #39 has no GitHub Actions run/status. This limitation is stated rather than converted into a pass.
 
 ## 3. V552J → V553 contract actually observed
 
-| V552J information/state | Canonical producer surface | V553 repaired consumption | Preservation |
+| V552J information/state | Producer surface | V553 repaired consumption | Preservation |
 |---|---|---|---|
-| scope identity | input/handoff indexes + manifests | source/family, wave/canonical wave, country | preserved |
-| structural identity | `relation_axis_id`, `target_entity_id`, `driver_facet_id`, `structural_channel_id`, `horizon_constraint_id` | per-wave structural inventories; later sparse temporal-key logic | preserved at entry |
-| semantic identity | `semantic_signature` and governed semantic fields | temporal-key profile / comparable-key construction | preserved in sparse path |
-| structural provenance | V552 structural fact IDs, temporal-key-source IDs, lane/grain, V552J packet/input IDs | V553 temporal-key basis and observation/provenance fields | preserved in sparse path |
-| permission | `read_permission`, `single_wave_probe_allowed`, `temporal_field_allowed`, `ready_for_v553`, `ready_for_runtime_consumption` | key authority/candidate/probe status and V552J handoff authority context | preserved materially |
-| comparability | `comparability_status`, `comparability_required`, blockers | comparable-key authorization, noncomparability/absence registers | preserved materially |
-| temporal obligation | `must_temporalize`, `temporal_anchor_required` | temporal key/anchor and authorization logic | preserved materially |
-| measured structural pressure | score/value/status and measurement evidence on canonical rows | sparse observation/pressure representations | preserved where authorized |
-| negative/blocked state | blocker reason, unresolved structural dimension, probe-only permission, audit lane | probe/fallback keys, blocker classes, noncomparability/absence registers | preserved as typed non-readiness rather than generic emptiness |
-| V552J readiness/blockers | readiness + V553 handoff manifests | wave table/report readiness, handoff authority, blocker context | preserved by repair |
+| publication integrity | main manifest declarations, hashes, row counts, versions | fail-closed surface verification | preserved and enforced |
+| typed empty vs failure | typed state + verified zero-row artifacts | `VALID_EMPTY` distinct from missing/corrupt/schema-invalid | preserved |
+| scope identity | manifest + indexes | run/source/wave/country checked before use | preserved/enforced |
+| structural identity | relation/target/driver/channel/horizon fields | per-wave structural inventories; later sparse temporal-key logic | preserved at entry |
+| structural provenance | V552 structural fact IDs, temporal-key-source IDs, lanes/grain, V552J packet/input IDs | V553 temporal-key basis and sparse provenance | preserved in sparse path |
+| permission | read/probe/temporal-field/runtime permission fields | key authority/candidate/probe status and handoff authority context | preserved materially |
+| comparability | comparability requirement/status and blockers | comparable-key authorization and noncomparability handling | preserved materially |
+| temporal obligation | must-temporalize / anchor-required | temporal key/anchor authorization logic | preserved materially |
+| negative/blocked state | blocker reason, unresolved/probe-only/audit states | probe/fallback keys and blocker classes | preserved as typed non-readiness |
+| readiness/handoff state | readiness + V553 handoff manifests | state-coherent boundary context | preserved and cross-checked |
 
-The significant architectural fact is that `ddm_v553_temporal_pressure.py` already contains a much richer canonical-aware sparse-key path than the old harmonization loader suggested: it carries exact structural dimensions, V552/V552J lineage, permission classes, comparability, probe-vs-field authorization, and known-unknown/absence states. `POSTG5-004` was therefore a consumer-entry mismatch, not evidence that V552J needed another packet.
+The significant architectural fact remains unchanged: `ddm_v553_temporal_pressure.py` already contains a richer canonical-aware sparse-key path carrying exact structural dimensions, V552/V552J lineage, permission classes, comparability, probe-vs-field authorization, and typed known-unknown states. `POSTG5-004` was a V553 entry-contract defect; it did not justify recreating a V552J legacy packet.
 
 ## 4. V553 → V554 preservation/loss trace
 
 | Information/state | V553 production | Current V554 consumption/transformation | Finding |
 |---|---|---|---|
-| year/wave temporal coordinate | wave anchors, sparse observations, country-year pressure rows | regional seed rows consume year/wave context | substantially preserved |
-| pressure point/band/status | country-year pressure field and component breakdown | V554 derives bounded seed strength/readiness | transformed, but aggregate |
-| exact relation/target/driver/channel/horizon identity | sparse temporal-key/observation surfaces retain exact governed IDs | current regional-seed path does not carry the exact sparse structural key set | **loss** |
-| comparable temporal key / key grain / semantic signature | V553 comparable-key and temporal-key indexes | not represented in current regional seed contract | **loss** |
-| V552/V552J packet/fact/temporal-key lineage | sparse V553 basis/provenance fields | not propagated into regional seed rows | **loss** |
-| permission and comparability state | temporal authority ledger, candidate/blocker classes, absence/noncomparability registers | V554 seed readiness compresses these into a much thinner readiness/seed surface | **conflation risk** |
+| year/wave coordinate | wave anchors, sparse observations, country-year pressure rows | regional seed rows consume year/wave context | substantially preserved |
+| pressure point/band/status | country-year pressure field/component breakdown | bounded seed strength/readiness | transformed, aggregate |
+| exact relation/target/driver/channel/horizon identity | sparse temporal-key/observation surfaces | current regional-seed path does not carry the exact sparse key set | **loss** |
+| comparable temporal key / grain / semantic signature | V553 comparable-key and temporal-key indexes | not represented in current regional seed contract | **loss** |
+| V552/V552J lineage | sparse V553 basis/provenance | not propagated into regional seed rows | **loss** |
+| permission/comparability state | authority ledger, blocker classes, absence/noncomparability registers | compressed into thinner seed readiness | **conflation risk** |
 | negative authority / known unknown / absence | explicit V553 typed registers | no equally typed V554 seed representation | **loss/conflation risk** |
-| uncertainty/confidence | V553 anchor confidence, penalties, authority state | some confidence/penalty survives aggregate pressure path | partially preserved |
-| persistence/drift/rupture | V553 has temporal comparison machinery and rupture/event slots, but rupture slots are presently reserved/not supplied | V554 has no strong typed rupture/persistence lineage from the authoritative sparse surface | **semantic gap** |
-| structural identity in aggregate country-year path | `_shared_structural_axis_fields` synthesizes `shared_*::<semantic_signature>` identifiers | V554 can receive these aggregate placeholders rather than exact upstream structural identities | **unjustified reconstruction/placeholder hazard** |
+| uncertainty/confidence | anchor confidence, penalties, authority state | some survives aggregate pressure path | partially preserved |
+| persistence/drift/rupture | temporal comparison machinery; event slots often reserved/not supplied | no strong typed lineage into V554 | **semantic gap** |
+| structural identity in aggregate path | synthetic `shared_*::<semantic_signature>` identifiers | can reach V554 instead of exact upstream IDs | **placeholder hazard** |
 
-The critical split is between two V553 surfaces. The sparse temporal path is already capable of carrying much of the information later vertical slices require. The older country-year aggregate path reduces that structure into point estimates, bands, confidence penalties, and synthetic shared-axis identifiers. V554's present seed contract leans on the aggregate path, so information that exists in V553 can still be starved before later mediation/pressure-flow stages.
+The Vozhd review explicitly accepted these semantic audit findings for later synthesis. No V554 production semantics were changed in this fix.
 
-## 5. Fields/states later vertical slices need preserved
+## 5. Producer-consumer obligations retained for later vertical slices
 
-Vozhd Dva should treat the following as producer-consumer obligations rather than optional diagnostic metadata:
+V553→V554 must preserve, or losslessly transform with reversible lineage:
 
-- stable temporal/comparable key plus explicit key grain;
+- stable temporal/comparable key plus key grain;
 - source/country/wave/year and historical anchor identity;
 - exact authorized relation/target/driver/channel/horizon IDs;
-- semantic signature needed to interpret structural continuity;
-- pressure value/component information with direction/magnitude only where actually authorized;
+- semantic signature;
+- pressure/component state with direction/magnitude only where authorized;
 - confidence/uncertainty and interpolation status;
-- comparability and noncomparability state;
+- comparability/noncomparability;
 - absence, blocked, probe-only, unresolved, audit-only, and negative-authority states as distinct values;
-- V552 structural fact / temporal-key-source lineage and V552J packet/input lineage;
-- persistence/drift/rupture/event status once authority exists, without inventing event semantics when it does not.
+- V552 structural-fact / temporal-key-source lineage and V552J packet/input lineage;
+- persistence/drift/rupture/event state once authority exists, without inventing missing event semantics.
 
-V554 may transform these into bounded affordances. It should not have to reconstruct them from labels, synthesized axis names, or a scalar pressure score.
-
-## 6. Cross-hooks for Vozhd Dva
+## 6. Remaining cross-hooks for Vozhd Dva
 
 ### R0-01-XH001 — retained shadow orchestration (`POSTG5-005`)
 
-The retained thin/orchestration specification still names the obsolete `v552j_structural_handoff_packet` contract in a V553 dependency path. This is outside R0-01's authorized production domain and is already covered by the deferred shadow-interface cleanup issue. It is a regression risk: the supported V553 compilers are repaired, but a later orchestration path must not be allowed to reactivate the superseded interface.
+A retained thin/orchestration specification still names the obsolete `v552j_structural_handoff_packet` dependency. The supported V553 compilers are repaired and fail closed, but the shadow path remains a future regression risk.
 
-**Needed:** remove, hard-disable, or contract-test the stale orchestration/shadow path during vertical/horizontal consolidation.
+**Needed:** remove, hard-disable, or contract-test the stale orchestration path during vertical/horizontal consolidation.
 
 ### R0-01-XH002 — authoritative sparse V553 surface must reach V554
 
-V554/later stages need a governed consumer contract for the V553 sparse temporal/key/authority surface, or an explicitly lossless transformation of it. The current aggregate seed route is not sufficient to preserve exact structural identity, typed noncomparability/absence, and upstream lineage.
+Current V554/later paths do not carry the full sparse V553 structural key, typed noncomparability/absence state, and upstream lineage.
 
-**Needed:** Vozhd Dva adjudication of the minimum V553→V554 typed handoff before broad semantic deepening.
+**Needed:** adjudicate the minimum governed V553→V554 typed handoff before broad semantic deepening.
 
 ### R0-01-XH003 — rupture/persistence semantics
 
-V553 reserves rupture/event structure but current authority is often `not_supplied`/`reserved_not_filled`. Later stages need persistence/drift/rupture distinctions, but they may not manufacture rupture from temporal distance or pressure deltas alone.
+V553 reserves rupture/event structure but event authority is often not supplied. Later stages need persistence/drift/rupture without manufacturing rupture from temporal distance or pressure deltas.
 
-**Needed:** define the authorized event/rupture source and preservation contract in a later vertical slice; keep unknown distinct until then.
+**Needed:** define the authorized event/rupture source and preservation contract in a later vertical slice.
+
+No new cross-hook was created by the fail-closed review correction.
 
 ## Terminal summary
 
-- `POSTG5-004`: repaired on V553 consumer side.
-- Canonical V552J indexes/manifests drive the supported V553 harmonization path without the obsolete packet.
-- Focused regression coverage added; local syntax and standalone adapter execution pass; no repository CI exists for PR #39.
-- V554 production semantics untouched.
-- Three downstream cross-hooks returned for Vozhd Dva adjudication, with the principal one being preservation of V553's authoritative sparse temporal/structural surface through V554.
+- `POSTG5-004`: repaired on the V553 consumer side; V552J remains untouched.
+- Vozhd review fail-closed concern: **resolved** at implementation head `b24a758133985f894548c3d50db9bb1536cc9b4b`.
+- Missing, unreadable/corrupt, schema-invalid, integrity-invalid, valid-empty, and valid-present surfaces are now distinct.
+- Path existence cannot imply a valid canonical consumer surface.
+- The full required V552J publication/manifest set is verified before V553 accepts the boundary.
+- Focused adversarial executable harness: **8/8 passed**.
+- V554 production semantics remain untouched; the previously accepted semantic cross-hooks remain for Vozhd synthesis.
 - Draft PR #39 remains open and unmerged.
