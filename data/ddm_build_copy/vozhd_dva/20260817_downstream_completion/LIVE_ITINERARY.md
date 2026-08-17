@@ -1,100 +1,97 @@
 # Live Itinerary
 
-**Status:** S00_READY_TO_LAUNCH  
+**Status:** `S00_ADJUDICATED__S01_PREP`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
-## Wave 0
+## Completed
 
-Closed. R0-01 through R0-05 have been reviewed and integrated back to canonical `main` through PR #40 (`1bbfb62791a583ab9ab7d21f5a0d76b4617b8f89`).
+### Wave 0
 
-R0-01's returned fix is accepted: the V552J→V553 consumer boundary now fails closed on missing, unreadable/corrupt, schema-invalid, and integrity-invalid canonical publications while preserving valid-empty as distinct from failure.
+Closed and integrated. V550–V552J remain closed by default; POSTG5-004 is repaired fail-closed on the V553 consumer side.
+
+### S00 — V553 exploration
+
+Completed:
+- S00-B / PR #43 — accepted.
+- S00-F / PR #44 — accepted.
+- worker results integrated to `main` at `7db3dfbab6d2497da50c496cb2de76a5d7cee083`.
+- conflicted aggregate PR #45 closed to avoid stale control-room overwrites.
+- Vozhd ruling written: `schematics/synthesis/S00_V552J_TO_V553_RULING.md`.
+- cumulative map updated through accepted V553 objects.
+
+Core S00 result:
+- V552 factual measurement;
+- V552J permission/join;
+- certified earlier authority for comparability inputs;
+- V553 unique temporal relation;
+- V554/later stages may compose earlier outputs directly with V553 rather than depend on serial repackaging.
+
+## Reporting correction after S00
+
+S00 worker reports were useful but too granular for repetition.
+
+Future exploration keeps deep investigation but returns compact decision-bearing artifacts under:
+- `schematics/TRANSFORMATION_METHOD.md`
+- `schematics/BOUNDARY_SESSION_TEMPLATE.md`
+
+Normal return limits:
+- ≤12 need/reuse rows;
+- ≤8 residual-obligation bullets;
+- ≤6 output object families;
+- ≤5 defects;
+- ≤3 unresolved forks;
+- 2 worked cases.
 
 ## Immediate sequence
 
-### 1. Launch S00 only
+### 1. Prepare S01 only
 
-Session:
-`S00 V552J → V553`
+Current transformation: **V554**.  
+Backward consumer: **V555**.
 
-Workspace:
-`schematics/sessions/S00_V552J_TO_V553/`
+S01 asks:
 
-Run two independent breakout workers concurrently:
-- **S00-F:** forward from V552J authority.
-- **S00-B:** backward from V554 need.
+`cumulative upstream map + V555 total need`
+`→ what V555 can already reuse directly`
+`→ residual meaning requiring V554`
+`→ V554 selected inputs`
+`→ V554 unique transformation/new outputs`
+`→ composed V555 input sufficiency`
 
-Both workers:
-- start from the same pinned S00 packet snapshot;
-- make no production edits;
-- do not read one another's results before submission;
-- write only their assigned `RESULT.md` and `RESULT.json`;
-- open draft PRs to `agent/vozhd-dva-s00-integration`.
+Create two compact independent breakout packets:
+- **S01-F:** forward from cumulative upstream material + accepted V553 objects into V554's lawful capability.
+- **S01-B:** backward from V555 total need, subtracting lawful direct reuse to isolate V554's residual obligation.
 
-### 2. Intake both S00 returns
+No third critic unless the two returns expose a concrete authority collision or inference hazard that needs independent adjudication.
 
-Vozhd Dva reviews each report for:
-- fidelity to actual upstream/downstream code;
-- stage jurisdiction;
-- explicit preserve/derive/drop/forbid/unresolved law;
-- forward ceiling vs backward floor;
-- object-grain disagreements;
-- unsupported invention;
-- concrete implementation consequences.
+### 2. Reconvene S01
 
-No worker-local schema becomes project law by merge.
+Vozhd compares only decision-bearing conclusions, freezes V554's unique output contribution, updates the cumulative map, and promotes S02.
 
-### 3. Reconvene S00
+### 3. Continue serial adjudication
 
-Write the authoritative ruling to:
-`schematics/synthesis/S00_V552J_TO_V553_RULING.md`
+`S01 synthesis → S02 → synthesis → ... → S07`
 
-Freeze only:
-- lawful V552J intake object(s)/grain;
-- V553-authorized temporal operation;
-- minimum V553 output grain;
-- preservation/transformation ledger;
-- current seam defects;
-- implementation obligations/tests;
-- exact V553 output contract for S01.
+Serial adjudication does not imply serial-only data consumption.
 
-### 4. Promote S01 only after S00 is adjudicated
+### 4. Implementation
 
-S01 remains blocked until the S00 ruling is `VOZHD_ADJUDICATED` and its accepted V553 output is inserted into the S01 context envelope as frozen upstream law.
-
-### 5. Continue serially through S07
-
-`S00 synthesis → S01 → synthesis → S02 → ... → S07 synthesis`
-
-Within a seam, parallel independent thought is allowed. Across seams, speculative parallel architecture is prohibited.
-
-### 6. Implementation only after schematic chain
-
-After S07 synthesis:
+After the bounded schematic chain is sufficiently frozen:
 - update `CAPABILITY_MATRIX.md`;
-- generate finite non-overlapping implementation packets;
-- implement against accepted seam contracts;
+- issue finite implementation packets;
+- implement against accepted contracts;
 - use the Wave-0 vertical harness as standing semantic court;
-- qualify horizontally only after representative vertical continuity works.
+- qualify horizontally after representative vertical continuity passes.
 
 ## Active risks
 
-- Schematic sessions must terminate in implementable rulings, not ontology encyclopedias.
-- Backward consumer need cannot authorize unsupported upstream invention.
-- Forward evidence ceilings cannot be used as an excuse to discard distinctions downstream demonstrably needs when those distinctions already exist upstream.
-- Aggregate convenience representations may not silently replace richer canonical identity.
-- S01 and later sessions must remain blocked until their immediate upstream seam is frozen.
+- architecture work becoming documentation work rather than contract resolution;
+- aggregate convenience surfaces displacing exact authority;
+- downstream need being used to invent unsupported upstream meaning;
+- duplicated serial repackaging despite lawful DAG reuse;
+- stage-specific derived meaning losing lineage/negative authority.
 
-## Decision log
+## Next Vozhd action
 
-- 2026-08-17: adopted bounded verticalization rather than serial isolated stage completion.
-- 2026-08-17: affirmed Enneagram-like attractor formation as intended design; V556 structural prerequisites/topology, V3 actor-specific realization.
-- 2026-08-17: completed Wave-0 reconnaissance/harness work and integrated it to main.
-- 2026-08-17: accepted R0-01 fail-closed V552J→V553 repair.
-- 2026-08-17: established schematic transformation layer.
-- 2026-08-17: changed schematic execution to one seam at a time, with parallel thought only inside the active seam.
-- 2026-08-17: prepared S00 forward/backward breakout packets; later seams remain blocked.
-
-## Next Vozhd Dva action
-
-Launch S00-F and S00-B from their pinned branches. When both return, reconvene S00 before doing anything with S01.
+Build the two compact S01 breakout handoffs from the S00 ruling and cumulative map. Do not launch S02.
