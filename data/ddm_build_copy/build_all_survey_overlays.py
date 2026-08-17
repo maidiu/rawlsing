@@ -18,6 +18,7 @@ sys.path.insert(0, str(REPO))
 from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
     BoundaryContractError,
     validate_source_wave_identity_coherence,
+    verify_frame_source_wave_identity_coherence,
 )
 from data.ddm_build_copy.ddm_source_wave_identity import (
     ProductionMembershipError,
@@ -484,7 +485,7 @@ def build_for_survey(
 
 
 def update_index():
-    """Rebuild the review-only directionality index from row identity, not filenames."""
+    """Rebuild the review-only directionality index from coherent row identity."""
     index_rows = []
     for path in sorted(AUTH_DIR.glob("*_directionality_authority.csv")):
         try:
@@ -521,15 +522,20 @@ def update_index():
             raise RuntimeError(f"REVIEW_OVERLAY_INDEX_MIXED_UID_SCOPE:{path}")
         source_uid = next(iter(source_uids))
         wave_uid = next(iter(wave_uids))
-        identity = resolve_source_wave_identity(
-            str(df.iloc[0].get("canonical_display_source") or df.iloc[0].get("source") or ""),
-            str(df.iloc[0].get("canonical_display_wave") or df.iloc[0].get("wave") or ""),
-        )
-        if identity.source_family_uid != source_uid or identity.wave_uid != wave_uid:
-            raise RuntimeError(f"REVIEW_OVERLAY_INDEX_UID_CONTRADICTION:{path}")
+        try:
+            coherence = verify_frame_source_wave_identity_coherence(
+                df,
+                expected_source_family_uid=source_uid,
+                expected_wave_uid=wave_uid,
+                allow_empty=False,
+            )
+        except BoundaryContractError as exc:
+            raise RuntimeError(
+                f"REVIEW_OVERLAY_INDEX_IDENTITY_CONTRADICTION:{path}:{exc}"
+            ) from exc
         index_rows.append({
-            "source": identity.canonical_display_source,
-            "wave": identity.canonical_display_wave,
+            "source": coherence["canonical_display_source"],
+            "wave": coherence["canonical_display_wave"],
             "source_family_uid": source_uid,
             "wave_uid": wave_uid,
             "file_name": path.name,
