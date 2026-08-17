@@ -7,7 +7,7 @@ from typing import Any, Mapping
 import pandas as pd
 ROOT=Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
-from data.ddm_build_copy.ddm_pipeline_boundary_contract import PIPELINE_BOUNDARY_CONTRACT_VERSION,BoundaryContractError,atomic_write_json,boundary_state_from_payload,inspect_artifact,publish_staged_directory,read_status_document,require_canonical_parquet,sha256_file,validate_machine_output_policy
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import PIPELINE_BOUNDARY_CONTRACT_VERSION,BoundaryContractError,atomic_write_json,boundary_state_from_payload,inspect_artifact,publish_staged_directory,read_status_document,require_canonical_parquet,sha256_file,validate_machine_output_policy,verify_manifest_source_wave_identity_coherence,verify_frame_source_wave_identity_coherence
 from data.ddm_build_copy.ddm_v551j_schema import V551J_COMPILER_VERSION,V551J_SCHEMA_VERSION
 from data.ddm_build_copy.ddm_v552_structural import V552_COMPILER_VERSION,V552_SCHEMA_VERSION
 from data.ddm_build_copy.ddm_v552j_handoff import V552J_JOIN_COMPILER_VERSION,V552J_JOIN_SCHEMA_VERSION,build_v552j_join
@@ -38,21 +38,26 @@ def _read_manifest(path:Path,label:str):
 
 def _scope_from_manifest(p:Mapping[str,Any],label:str)->dict[str,str]:
     raw=p.get("producer_scope_identity"); n=dict(raw) if isinstance(raw,Mapping) else {}
-    scope={"run_id":_clean(n.get("run_id") or p.get("producer_run_id") or p.get("run_id")),"source":_clean(n.get("source") or p.get("source")),"wave":_clean(n.get("canonical_wave") or n.get("wave") or p.get("canonical_wave") or p.get("wave")),"country_code":_clean(n.get("country_code") or p.get("country_code")),"shard_id":_clean(n.get("shard_id") or p.get("shard_id"))}
+    source_uid=_clean(n.get("source_family_uid") or p.get("source_family_uid")); wave_uid=_clean(n.get("wave_uid") or p.get("wave_uid"))
+    try:
+        coherence=verify_manifest_source_wave_identity_coherence(p,expected_source_family_uid=source_uid,expected_wave_uid=wave_uid)
+    except Exception as exc:
+        raise BoundaryContractError(f"{label}_SOURCE_WAVE_IDENTITY_INVALID:{exc}") from exc
+    if label=="V552" and (not source_uid or not wave_uid):raise BoundaryContractError("V552_EXPLICIT_UID_SCOPE_REQUIRED")
+    scope={"run_id":_clean(n.get("run_id") or p.get("producer_run_id") or p.get("run_id")),"source":_clean(n.get("source") or p.get("source")) or coherence.canonical_display_source,"wave":_clean(n.get("canonical_wave") or n.get("wave") or p.get("canonical_wave") or p.get("wave")) or coherence.canonical_display_wave,"canonical_wave":coherence.canonical_display_wave,"source_family_uid":coherence.source_family_uid,"wave_uid":coherence.wave_uid,"country_code":_clean(n.get("country_code") or p.get("country_code")),"shard_id":_clean(n.get("shard_id") or p.get("shard_id"))}
     if not scope["run_id"] or not scope["source"] or not scope["wave"]:raise BoundaryContractError(f"{label}_SCOPE_IDENTITY_INCOMPLETE")
     if not scope["country_code"] and not scope["shard_id"]:raise BoundaryContractError(f"{label}_COUNTRY_OR_SHARD_IDENTITY_REQUIRED")
     return scope
 
 def _coherent_scope(run_id:str,a:Mapping[str,str],b:Mapping[str,str])->dict[str,str]:
     if a["run_id"]!=run_id or b["run_id"]!=run_id:raise BoundaryContractError(f"V552J_CROSS_RUN_MISMATCH:cli={run_id}:v551j={a['run_id']}:v552={b['run_id']}")
-    for k in ("source","wave"):
-        if a[k]!=b[k]:raise BoundaryContractError(f"V552J_CROSS_SCOPE_MISMATCH:{k}:v551j={a[k]}:v552={b[k]}")
+    for k in ("source_family_uid","wave_uid"):
+        if not a[k] or not b[k] or a[k]!=b[k]:raise BoundaryContractError(f"V552J_CROSS_SCOPE_MISMATCH:{k}:v551j={a[k]}:v552={b[k]}")
     if a["country_code"] or b["country_code"]:
         if not a["country_code"] or not b["country_code"] or a["country_code"]!=b["country_code"]:raise BoundaryContractError("V552J_CROSS_SCOPE_MISMATCH:country")
-        if a["shard_id"] and b["shard_id"] and a["shard_id"]!=b["shard_id"]:raise BoundaryContractError("V552J_CROSS_SCOPE_MISMATCH:shard")
-    elif not (a["shard_id"] and b["shard_id"] and a["shard_id"]==b["shard_id"]):raise BoundaryContractError("V552J_CROSS_SCOPE_MISMATCH:shard")
-    shard_id=b["shard_id"] if b["shard_id"] and b["shard_id"]==a["shard_id"] else ""
-    return {"run_id":run_id,"source":b["source"],"wave":b["wave"],"canonical_wave":b["wave"],"country_code":b["country_code"] or a["country_code"],"shard_id":shard_id,"scope_kind":"shard" if shard_id else "country"}
+    if bool(a["shard_id"]) != bool(b["shard_id"]):raise BoundaryContractError("V552J_CROSS_SCOPE_MISMATCH:shard_grain")
+    if a["shard_id"] and a["shard_id"]!=b["shard_id"]:raise BoundaryContractError("V552J_CROSS_SCOPE_MISMATCH:shard")
+    return {"run_id":run_id,"source":b["source"],"wave":b["wave"],"canonical_wave":b["canonical_wave"],"source_family_uid":b["source_family_uid"],"wave_uid":b["wave_uid"],"country_code":b["country_code"] or a["country_code"],"shard_id":b["shard_id"],"scope_kind":"shard" if b["shard_id"] else "country"}
 
 def _artifact_declarations(p:Mapping[str,Any])->list[dict[str,Any]]:
     raw=p.get("artifacts") or []
@@ -91,13 +96,15 @@ def _verify_and_read_declared(manifest:Path,d:Mapping[str,Any],*,label:str,expec
 
 def _verify_frame_scope(df:pd.DataFrame,scope:Mapping[str,str],label:str)->None:
     if df.empty:return
-    checks={"run_id":scope["run_id"],"source":scope["source"],"canonical_wave":scope["wave"]}
-    checks["country_code" if scope.get("country_code") else "shard_id"]=scope.get("country_code") or scope.get("shard_id")
+    checks={"run_id":scope["run_id"]}
+    if scope.get("country_code"):checks["country_code"]=scope["country_code"]
+    if scope.get("shard_id"):checks["shard_id"]=scope["shard_id"]
     for col,want in checks.items():
-        use="source_family" if col=="source" and col not in df and "source_family" in df else col
-        if use not in df:raise BoundaryContractError(f"{label}_SCOPE_COLUMN_MISSING:{col}")
-        got={_clean(v) for v in df[use] if _clean(v)}
+        if col not in df:raise BoundaryContractError(f"{label}_SCOPE_COLUMN_MISSING:{col}")
+        got={_clean(v) for v in df[col] if _clean(v)}
         if got!={want}:raise BoundaryContractError(f"{label}_SCOPE_MISMATCH:{col}:expected={want}:observed={sorted(got)}")
+    try:verify_frame_source_wave_identity_coherence(df,expected_source_family_uid=scope["source_family_uid"],expected_wave_uid=scope["wave_uid"],allow_empty=False)
+    except Exception as exc:raise BoundaryContractError(f"{label}_UID_SCOPE_INVALID:{exc}") from exc
 
 def verify_v551j_producer_bundle(manifest_path:str|Path,*,run_id:str)->dict[str,Any]:
     path=Path(manifest_path); p,state=_read_manifest(path,"V551J")
@@ -155,6 +162,7 @@ def compile_v552j_run(*,run_id:str,v551j_manifest_path:str|Path,v552_manifest_pa
         if write_csv:artifacts += [_write_csv(join,staging/"packets"/"v552j_structural_join_index.csv",artifact="v552j_structural_join_index"),_write_csv(audit,staging/"audits"/"v552j_join_audit.csv",artifact="v552j_join_audit")]
         readiness={"contract_version":PIPELINE_BOUNDARY_CONTRACT_VERSION,"boundary_contract_version":PIPELINE_BOUNDARY_CONTRACT_VERSION,"producer_run_id":run_id,"run_id":run_id,"source":scope["source"],"wave":scope["wave"],"canonical_wave":scope["canonical_wave"],"country_code":scope["country_code"],"shard_id":scope["shard_id"],"producer_scope_identity":scope,"schema_version":V552J_JOIN_SCHEMA_VERSION,"compiler_version":V552J_JOIN_COMPILER_VERSION,**state,**metrics,"primary_row_count":len(join),"v552_structural_fact_index_path":b["artifact_paths"]["v552_structural_fact_index"],"v552_temporal_key_source_index_path":b["artifact_paths"]["v552_temporal_key_source_index"],"constraint_evidence_status":"PRESENT" if metrics["constraint_count"] else "VALID_EMPTY","observed_zero_is_measurement_not_absence":True,"created_from_verified_producers":True}
         manifest={**readiness,"artifacts":artifacts,"canonical_artifact_names":["v552j_structural_join_index","v552j_join_audit"],"upstream_v551j":{"manifest_path":a["manifest_path"],"manifest_file_sha256":a["manifest_sha256"],"schema_version":V551J_SCHEMA_VERSION,"compiler_version":V551J_COMPILER_VERSION,**a["state"]},"upstream_v552":{"manifest_path":b["manifest_path"],"manifest_file_sha256":b["manifest_sha256"],"schema_version":V552_SCHEMA_VERSION,"compiler_version":V552_COMPILER_VERSION,**b["state"]},"contract_boundary":{"synthetic_unknown_primary_rows_allowed":False,"missing_constraint_metrics_are_zero":False,"structural_matching_requires_exact_scope_before_semantic_score":True,"observed_zero_distinct_from_absence_or_unresolved":True,"canonical_machine_format":"parquet"}}
+        readiness.update(source_family_uid=scope["source_family_uid"],wave_uid=scope["wave_uid"]);manifest.update(source_family_uid=scope["source_family_uid"],wave_uid=scope["wave_uid"],producer_scope_identity=scope)
         atomic_write_json(staging/"manifest.json",manifest);atomic_write_json(staging/"manifest"/"v552j_readiness_report.json",readiness);atomic_write_json(staging/"manifest"/"v552j_runtime_handoff_manifest.json",manifest);atomic_write_json(staging/"manifest"/"v552j_v553_handoff_manifest.json",{**readiness,"v553_input_index_path":"packets/v552j_v553_input_index.parquet","v553_probe_row_count":int(join["ready_for_v553_probe"].map(bool).sum()) if not join.empty else 0,"v553_temporal_field_row_count":0});publish_staged_directory(staging,final);return manifest
     except Exception:
         if staging.exists():shutil.rmtree(staging,ignore_errors=True)
