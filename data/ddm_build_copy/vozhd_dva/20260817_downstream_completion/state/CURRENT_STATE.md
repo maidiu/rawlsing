@@ -53,10 +53,16 @@ Breakouts:
 
 Both are production-code read-only and return `RESULT.md` + `RESULT.json` in their own cells.
 
-Branch plan:
+### Pinned S00 branch snapshot
+
+Exact base SHA: `5eb67683a5a21327da6a7516216616ff5d12c7fe`
+
+Pre-created branches from that exact SHA:
 - integration: `agent/vozhd-dva-s00-integration`
 - forward: `agent/vozhd-dva-s00-forward-v552j`
 - backward: `agent/vozhd-dva-s00-backward-v554`
+
+Workers must use the pre-created branches; do not recreate them from a later `main` head.
 
 Launch/return map:
 `schematics/sessions/S00_V552J_TO_V553/LAUNCH_INDEX.md`
