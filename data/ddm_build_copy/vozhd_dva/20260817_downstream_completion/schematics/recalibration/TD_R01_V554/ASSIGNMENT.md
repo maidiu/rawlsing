@@ -3,7 +3,7 @@
 **Worker role:** terminal-demand architecture Rabochii  
 **Stage under study:** V554  
 **Authority:** advisory architecture recalibration; no production code  
-**Launch status:** **READY — TD-R00 V553 accepted and banked via PR #52.**
+**Launch status:** **READY — TD-R00 V553 accepted and banked via PR #52; runtime-prior consumer exploration now mandatory input.**
 
 ## Accepted upstream architecture base
 
@@ -25,19 +25,21 @@ Binding upstream distinctions for TD-R01:
 
 ## Governing whole-picture / bounded-jurisdiction law
 
-This pass is governed by **both**:
+This pass is governed by **three** whole-system inputs:
 
 1. `TERMINAL_DEMAND_ENVELOPE.md` — the complete Rawlsing destination;
-2. `ARCHITECTURE_PASS_LAW.md` — how to understand that entire system while architecting only V554's bounded transformation.
+2. `ARCHITECTURE_PASS_LAW.md` — how to understand that entire system while architecting only V554's bounded transformation;
+3. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md` — the concrete terminal-consumer model for how stage-owned semantic objects become a V558-published `StructuralPriorRepository`, are resolved by time/geography/generated position state, and reach V3 as `ResolvedStructuralContext`.
 
-You are designing **one bounded organ of the complete Rawlsing system**. You must understand the finished nine-strata inter-pressuring person-generation machine, V556 pressure-flow, V3 developmental causality/orientation/attractors, genealogy and V2 expression deeply enough to detect starvation. That does not authorize V554 to create mediation routes, pressure-flow topology, actor orientation, actor histories, attractor realization or phenomenology.
+You are designing **one bounded organ of the complete Rawlsing system**. You must understand the finished nine-strata inter-pressuring person-generation machine, V556 pressure-flow, V3 developmental causality/orientation/attractors, genealogy and V2 expression deeply enough to detect starvation. That does not authorize V554 to create mediation routes, pressure-flow topology, actor orientation, actor histories, attractor realization, runtime context selection, or phenomenology.
 
 Your governing equation is:
 
 `WHOLE TERMINAL DEMAND`
 `+ CUMULATIVE LAWFUL UPSTREAM MATERIAL THROUGH ACCEPTED TD-R00 V553`
+`+ RUNTIME-PRIOR / CONTEXT-RESOLVER CONSUMER REQUIREMENTS`
 `- WHAT LATER STAGES CAN REUSE DIRECTLY FROM EARLIER AUTHORITY`
-`- WHAT V555/V556/V3/V2 THEMSELVES OWN`
+`- WHAT V555/V556/V557/V558/V3/V2 THEMSELVES OWN`
 `= V554'S BOUNDED ARCHITECTURAL OBLIGATION`
 
 For **every terminal capability**, classify V554's relationship using the taxonomy in `ARCHITECTURE_PASS_LAW.md`:
@@ -54,37 +56,67 @@ No terminal capability may remain implicit or unclassified.
 
 Your final result must include the full architecture checksum required by `ARCHITECTURE_PASS_LAW.md`, plus its no-starvation and no-bloat proofs.
 
+## Runtime-prior consumer obligation
+
+The remaining V553–V558 architecture is no longer allowed to reason only toward an abstract statement that “V558 supplies V3 priors.” The concrete terminal consumer is now:
+
+```text
+V550–V556 governed semantic DAG
+→ V557 lossless runtime-authorized preservation + governance
+→ V558 stage-agnostic StructuralPriorRepository
+→ ContextResolver(query_time, location, generated_position_bindings)
+→ ResolvedStructuralContext
+→ V3
+```
+
+V554 does **not** own the linker, repository or resolver. It must ensure that its unique meaning and required references remain machine-resolvable by them.
+
+In particular, TD-R01 must test whether the V554 architecture permits a later resolver to:
+
+- determine whether an affordance is applicable from exact time/geography/structural-position bindings without descriptive-text rematching;
+- distinguish an affordance that is positively usable from one that remains conditional because V3 has not yet generated a required sect/class/party/household/family/institution position;
+- preserve exact V552/V552J/V553 semantic, permission and temporal lineage while doing so;
+- leave temporal proxy selection (`DIRECT_TEMPORAL_SUPPORT`, `LATEST_PRIOR_OBSERVATION_PROXY`, `EARLIEST_POST_QUERY_PROXY`, `NO_LAWFUL_TEMPORAL_ANCHOR`) entirely to the later runtime resolver rather than manufacturing historical observations or interpolation inside V554;
+- support hierarchical stratum applicability without converting higher-stratum facts into false lower-level geographic estimates;
+- expose typed unresolved runtime-position requirements rather than guessing an actor position to make the handoff complete.
+
+The worker must state explicitly which V554 fields/references a future `ContextResolver` needs and why, while keeping resolution policy downstream.
+
 ## Purpose
 
-Re-run the V554 maximal architecture-imagination pass from the full Rawlsing terminal demand envelope, using accepted TD-R00 V553 architecture as the actual upstream hypothesis.
+Re-run the V554 maximal architecture-imagination pass from the full Rawlsing terminal demand envelope, using accepted TD-R00 V553 architecture as the actual upstream hypothesis and the runtime-prior/context-resolution exploration as the concrete downstream consumer model.
 
-PRE-S01/PRE-S01.5 remain evidence. Their code excavation, current-topology findings and category-boundary cleanup are not discarded. This pass asks whether the four-semantic-family + one-boundary V554 model is actually sufficient for the finished nine-strata inter-pressuring structural-personhood system, not merely for an immediate V555 consumer.
+PRE-S01/PRE-S01.5 remain evidence. Their code excavation, current-topology findings and category-boundary cleanup are not discarded. This pass asks whether the four-semantic-family + one-boundary V554 model is actually sufficient for the finished nine-strata inter-pressuring structural-personhood system and its runtime structural-context resolver, not merely for an immediate V555 consumer.
 
 ## Read first
 
 1. `TERMINAL_DEMAND_ENVELOPE.md`.
 2. `ARCHITECTURE_PASS_LAW.md`.
-3. `CAPABILITY_MATRIX.md`.
-4. `STRATEGY_AND_GATES.md`.
-5. accepted TD-R00 V553 `RESULT.md` + `RESULT.json`.
-6. amended `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md` for Vozhd decisions and implementation-facing interpretation.
-7. PRE-S01 V554 excavation `RESULT.md` + `RESULT.json`.
-8. PRE-S01.5 V554 maximal architecture `RESULT.md` + `RESULT.json`.
-9. Wave-0 R0-02 V555 findings.
-10. Wave-0 R0-03 V556/attractor findings.
-11. current V554/V555 implementation and tests only as needed.
+3. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`.
+4. `CAPABILITY_MATRIX.md`.
+5. `STRATEGY_AND_GATES.md`.
+6. accepted TD-R00 V553 `RESULT.md` + `RESULT.json`.
+7. amended `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md` for Vozhd decisions and implementation-facing interpretation.
+8. PRE-S01 V554 excavation `RESULT.md` + `RESULT.json`.
+9. PRE-S01.5 V554 maximal architecture `RESULT.md` + `RESULT.json`.
+10. Wave-0 R0-02 V555 findings.
+11. Wave-0 R0-03 V556/attractor findings.
+12. Wave-0 R0-04 V557/V558 runtime-contract findings.
+13. current V554/V555 implementation and tests only as needed.
 
 ## Central question
 
 `FULL TERMINAL RAWLSING DEMAND`
 `+ ACCEPTED TERMINAL-DEMAND-READY V553 ARCHITECTURE`
+`+ RUNTIME STRUCTURAL PRIOR / CONTEXT RESOLUTION CONTRACT`
 `+ EXISTING PRE-S01/PRE-S01.5 EVIDENCE`
 `+ CURRENT V554/V555 CODE`
-`→ what can V555/V556/V3 reuse directly from earlier producers?`
+`→ what can V555/V556/V557/V558/V3 reuse directly from earlier producers?`
 `→ what unique downstream-use / affordance meaning must V554 create?`
 `→ what structural identities/relations must V554 preserve even if V555's current code does not consume them?`
+`→ what must remain machine-addressable so a later ContextResolver can select lawful priors by time/geography/generated position?`
 `→ what terminal requirements belong entirely downstream?`
-`→ does the existing V554 blueprint starve nine-strata inter-pressure, orientation-to-strata, Horizon, mediation, pressure-flow or attractor formation?`
+`→ does the existing V554 blueprint starve nine-strata inter-pressure, orientation-to-strata, Horizon, mediation, pressure-flow, attractor formation or runtime context resolution?`
 `→ what is the smallest terminal-demand-sufficient V554 architecture?`
 
 ## Mandatory work
@@ -110,7 +142,9 @@ Determine specifically whether V554 needs to preserve or expose any additional e
 - orientation-to-strata prerequisites;
 - later mediation / pressure-flow / attractor construction;
 - temporal relation/limit identity inherited from V553;
-- exact V552/V552J producer/admission/use-permission lineage and reference-contract version.
+- exact V552/V552J producer/admission/use-permission lineage and reference-contract version;
+- time/geography/position applicability keys needed by the future stage-agnostic runtime-prior resolver;
+- explicit runtime-position requirements that must survive unresolved until V3 generates those positions.
 
 Do not make V554 own those meanings when direct governed reuse from V550–V553 is sufficient. The preferred solution to terminal demand is lawful reference composition, not serial duplication.
 
@@ -125,6 +159,21 @@ If proposing any V554-created `AFFORDANCE_RELATION`, prove all three:
 
 Absent all three, keep `AFFORDANCE_RELATION` disabled/valid-empty and leave newly created cross-key structural interactions downstream.
 
+### Required runtime-resolver adjudication
+
+For each V554 semantic family and B1, state:
+
+| V554 family/boundary | Resolver use | Required query/applicability refs | Can remain direct upstream reuse? | Runtime-position dependency | Starvation risk |
+
+Prove that later runtime resolution can distinguish:
+- applicable now;
+- conditionally applicable pending generated runtime position;
+- structurally blocked/denied;
+- unresolved/missing authority;
+- temporally proxy-resolved downstream without V554 pretending the proxy was observed at query time.
+
+V554 itself must not select `EARLIEST_POST_BIRTH_ANCHOR` or any other runtime temporal proxy.
+
 ## Required output
 
 Produce a new superseding V554 architecture snapshot for later binding S01/implementation purposes. Include:
@@ -137,21 +186,23 @@ Produce a new superseding V554 architecture snapshot for later binding S01/imple
 6. orientation-to-strata prerequisite handling;
 7. Absolute Horizon handling;
 8. mediation / pressure-flow / attractor backward-demand map;
-9. re-evaluation of four semantic families + B1;
-10. exact required reference classes on each family/boundary object, explicitly accounting for TD-R00 `GOVERNED_STRUCTURAL_REFERENCE_SET` and lawful direct DAG reuse;
-11. component/artifact/completion-court delta;
-12. no-starvation/no-bloat proof for every proposed primary family/component/boundary family;
-13. five implementation-packet delta;
-14. PRE-S01.5 conclusions confirmed;
-15. PRE-S01.5 conclusions superseded;
-16. one multi-strata ordinary case and one hostile downstream-starvation case;
-17. explicit cross-key interaction ownership verdict;
-18. required final architecture statement from `ARCHITECTURE_PASS_LAW.md`:
+9. explicit runtime-prior/context-resolver support map;
+10. re-evaluation of four semantic families + B1;
+11. exact required reference classes on each family/boundary object, explicitly accounting for TD-R00 `GOVERNED_STRUCTURAL_REFERENCE_SET`, lawful direct DAG reuse and future resolver queryability;
+12. component/artifact/completion-court delta;
+13. no-starvation/no-bloat proof for every proposed primary family/component/boundary family;
+14. five implementation-packet delta;
+15. PRE-S01.5 conclusions confirmed;
+16. PRE-S01.5 conclusions superseded;
+17. one multi-strata ordinary case and one hostile downstream-starvation case;
+18. one runtime-resolver case in which a required actor position is still unbound and V554 must preserve the requirement without guessing the position;
+19. explicit cross-key interaction ownership verdict;
+20. required final architecture statement from `ARCHITECTURE_PASS_LAW.md`:
    - `THIS STAGE IS RESPONSIBLE FOR`
    - `THIS STAGE IS NOT RESPONSIBLE FOR`
    - `TERMINAL CAPABILITIES PROTECTED`
    - `OPEN MISSING AUTHORITY`;
-19. final verdict `V554_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
+21. final verdict `V554_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
 
 ## Deliverables
 
@@ -172,4 +223,7 @@ Commit to the assigned branch and open a draft PR against `main`.
 - no moving later-stage semantics into V554 merely because the worker understands the whole system;
 - no reconstructing structural direction from temporal delta sign;
 - no collapsing simultaneous exact pressure keys;
-- no treating missing explicit Absolute-Horizon authority as permission to infer it.
+- no treating missing explicit Absolute-Horizon authority as permission to infer it;
+- no runtime temporal proxy selection inside V554;
+- no geographic relabeling of higher-stratum priors as lower-stratum estimates;
+- no guessing runtime actor positions to satisfy applicability.
