@@ -7,7 +7,8 @@ This file is the navigation surface for Vozhd Dva. A future Vozhd Dva chat shoul
 Root files are Vozhd-Dva-facing and may refer to the whole project:
 
 - `README.md` — mission and governing principles.
-- `TERMINAL_DEMAND_ENVELOPE.md` — explicit finished-system demand lens that every maximal architecture pass must test against: nine strata, inter-pressure, mediation, orientation-to-strata, Absolute Horizon, pressure-flow, attractors, V3 causality, genealogy, V2 and epistemic separation.
+- `TERMINAL_DEMAND_ENVELOPE.md` — explicit finished-system demand lens: nine strata, inter-pressure, mediation, orientation-to-strata, Absolute Horizon, pressure-flow, attractors, V3 causality, genealogy, V2 and epistemic separation.
+- `ARCHITECTURE_PASS_LAW.md` — formal whole-picture / bounded-jurisdiction law for every maximal architecture pass; defines four simultaneous views, disposition taxonomy, architecture checksum, no-starvation and no-bloat tests.
 - `STRATEGY_AND_GATES.md` — execution strategy and gate sequence.
 - `CONSTRAINTS_PRIORITIES.md` — scope, authority, economy, and anti-sprawl law.
 - `CAPABILITY_MATRIX.md` — cross-stage capability requirements and vertical slices.
@@ -15,7 +16,7 @@ Root files are Vozhd-Dva-facing and may refer to the whole project:
 - `LIVE_ITINERARY.md` — live sequence and near-term execution state.
 - `state/CURRENT_STATE.md` — compact restart snapshot; update whenever project state materially changes.
 
-The terminal envelope does not make every stage own the whole system. It forces architecture workers to prove that their local stage neither starves nor illicitly pre-instantiates the terminal design.
+The terminal envelope and architecture-pass law do not make every stage own the whole system. They force architecture workers to understand the complete machine while proving their local stage neither starves later capabilities nor pre-instantiates downstream semantics.
 
 ## Schematic transformation layer — what each stage actually does to upstream reality
 
@@ -33,7 +34,7 @@ Contents:
 - `schematics/synthesis/` — Vozhd-only reconciliation and accepted seam rulings;
 - `schematics/recalibration/` — architecture-imagination reruns that test already excavated stages against the explicit terminal demand envelope without repeating unnecessary code archaeology.
 
-Schematic workers may reason beyond their seam only enough to understand upstream authority and downstream need. Maximal architecture workers must additionally work backward from `TERMINAL_DEMAND_ENVELOPE.md`. They do not acquire implementation jurisdiction. Worker-local proposals become system law only after Vozhd synthesis.
+Schematic workers may reason beyond their seam only enough to understand upstream authority and downstream need. Maximal architecture workers must additionally work backward from `TERMINAL_DEMAND_ENVELOPE.md` under `ARCHITECTURE_PASS_LAW.md`. They do not acquire implementation jurisdiction. Worker-local proposals become system law only after Vozhd synthesis.
 
 ## Prong spaces — bounded shared context
 
@@ -86,7 +87,8 @@ A review should answer:
 - Did the work satisfy its assignment?
 - Does it preserve upstream authority?
 - Does it satisfy downstream consumers?
-- Does it satisfy the relevant terminal-demand obligations without importing downstream ontology into the wrong stage?
+- Does it satisfy the applicable terminal-demand obligations under the whole-picture/bounded-jurisdiction law?
+- Did it move downstream semantics into the current stage merely because the worker knew the whole system?
 - Did it introduce semantic loss or a new cross-prong dependency?
 - Is it ACCEPT / ACCEPT_WITH_FOLLOWUP / RETURN_FOR_FIX / REJECT / DEFER?
 
@@ -100,7 +102,7 @@ When a worker result changes the system, Vozhd Dva updates, in order as needed:
 3. Vozhd schematic synthesis/ruling;
 4. integration ledger;
 5. affected prong state;
-6. capability/strategy/terminal-demand files if architecture changed;
+6. capability/strategy/terminal-demand/method files if architecture changed;
 7. `state/CURRENT_STATE.md`;
 8. `LIVE_ITINERARY.md`.
 
