@@ -1,0 +1,41 @@
+{
+  "register_id": "SWID_REPAIR_20260816",
+  "created_date": "2026-08-16",
+  "planning_base_main": "25a63e08b0fcf7ef3dfc9de0c7b03325d26d918a",
+  "integration_branch": "agent/source-wave-identity-repair-integration",
+  "governing_scope": "Source/wave machine identity repair across current V550→V552J pipeline and the authority/orchestration surfaces required to execute it.",
+  "historical_register_mutation_forbidden": true,
+  "historical_registers": [
+    "data/ddm_build_copy/issue_register/20260815",
+    "data/ddm_build_copy/issue_register/20260816"
+  ],
+  "supersedes_prior_next_action_only": {
+    "path": "data/ddm_build_copy/issue_register/20260816/index.json",
+    "stale_statement": "known_open_static_blockers_through_v552j = 0; next action respondent-backed smoke",
+    "replacement": "27-issue fixed-point identity register; repair before smoke"
+  },
+  "issue_set_sha256": "8a6d1cb2e7f669080d09d5c0e4e1c635e008634eca47488ce9673b296ae8653c",
+  "files": {
+    "issues": "issues_swid.json",
+    "procedure": "PROCEDURE.md",
+    "worker_plan": "WORKER_PLAN.json",
+    "worker_guide": "WORKER_GUIDE.md",
+    "g0_launch_prompts": "G0_LAUNCH_PROMPTS.md",
+    "all_phase_launch_prompts": "LAUNCH_PROMPTS.md",
+    "deferred": "deferred.json",
+    "closed": "closed.json",
+    "audit_provenance": "AUDIT_PROVENANCE.json",
+    "resolution_ledger": "RESOLUTION_LEDGER.json",
+    "cross_hooks": "CROSS_HOOK_MATRIX.csv"
+  },
+  "coverage": {
+    "issues_total": 27,
+    "mandatory_active": 26,
+    "deferred": 1,
+    "primary_assignment_unique": true,
+    "static_fixed_point_reached": true,
+    "runtime_pass_not_claimed": true
+  },
+  "current_phase": "G0_GOVERNANCE_FROZEN",
+  "next_gate": "G1_IDENTITY_KERNEL"
+}

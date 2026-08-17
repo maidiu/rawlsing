@@ -1,0 +1,14 @@
+{
+  "issue_count": 27,
+  "issue_set_sha256": "8a6d1cb2e7f669080d09d5c0e4e1c635e008634eca47488ce9673b296ae8653c",
+  "all_issues_assigned_exactly_once": true,
+  "parallel_exact_write_entry_overlap_checks": [
+    {"phase_a":"W01-A","phase_b":"W06-A","exact_write_entry_overlap":[],"pass":true},
+    {"phase_a":"W02-A","phase_b":"W05-A","exact_write_entry_overlap":[],"pass":true},
+    {"phase_a":"W03-B","phase_b":"W04-A","exact_write_entry_overlap":[],"pass":true},
+    {"phase_a":"W06-B","phase_b":"W04-B","exact_write_entry_overlap":[],"pass":true},
+    {"phase_a":"W05-B","phase_b":"W02-B","exact_write_entry_overlap":[],"pass":true}
+  ],
+  "json_parse_pass": true,
+  "simultaneously_releasable_pairs_checked": ["W01-A + W06-A","W02-A + W05-A","W03-B + W04-A","W06-B + W04-B","W05-B + W02-B"]
+}

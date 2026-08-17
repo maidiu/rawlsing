@@ -1,0 +1,13 @@
+# Source/Wave Identity Repair — G0 Launch Prompts
+
+**Gate G0 releases only W01-A and W06-A. Do not launch W02/W03/W04/W05 production phases yet.**
+
+All workers target `agent/source-wave-identity-repair-integration` and must start from its current G0 head.
+
+## W01-A — Identity kernel
+
+> You are Rawlsing source/wave identity repair worker **W01**, phase **W01-A**. Work in `maidiu/rawlsing` on branch `agent/swid-w01-identity-kernel-a`, created from the current head of `agent/source-wave-identity-repair-integration`. Read `data/ddm_build_copy/issue_register/20260816_source_wave_identity/index.json`, `PROCEDURE.md`, `WORKER_PLAN.json`, `WORKER_GUIDE.md`, `issues_swid.json`, `deferred.json`, `closed.json`, and `AUDIT_PROVENANCE.json`. Your primary issues are **SWID-001, SWID-003, SWID-015, SWID-021**. Your write terrain is exactly the W01-A file list in `WORKER_PLAN.json`; it does not include source-structure builders, V550 execution, DB, J stages, V551+, or orchestration. Build the single family-scoped UID identity kernel and explicit governed-membership state. Preserve raw/display/key forms as attributes. Global bare-wave resolution must fail. Define a versioned ASCII-safe UID-native physical token but do not rename historical artifacts. QRA may delegate identity resolution only; do not change question/relation semantics. Run 35-wave × alias, ambiguity, exclusion, Unicode and compatibility tests. Commit and open a **draft PR against `agent/source-wave-identity-repair-integration`**. Return the required machine-readable report with `no_unowned_files_changed=true`. Do not begin W01-B; there is no W01-B in this campaign.
+
+## W06-A — Adversarial QA harness, tests only
+
+> You are Rawlsing source/wave identity repair worker **W06**, phase **W06-A**. Work on branch `agent/swid-w06-qa-a` from the current head of `agent/source-wave-identity-repair-integration`. Read the full register load order. **This phase is tests/fixtures only. You may not edit production code.** Build adversarial fixtures and tests covering Arab `I/W1/Wave 1/1`, EVS `1981/W1` and `1999/W3`, Afro `R1/ROUND1/Round 1`, NFC/NFD Latinobarómetro, Asian Barometer W6 exclusion, contradictory redundant identity fields, stale V550J cache identity, alias-shadow authority files, and legacy physical IDs/paths. Tests may initially xfail or document current failure only where the harness itself is correct; do not patch failures. Your write terrain is exactly `tests/test_swid_w06a_*.py` and `tests/fixtures/swid/**`. Commit and open a **draft PR against `agent/source-wave-identity-repair-integration`**. Return any production defect as `CROSS_TERRAIN_FINDING`, never as a patch.
