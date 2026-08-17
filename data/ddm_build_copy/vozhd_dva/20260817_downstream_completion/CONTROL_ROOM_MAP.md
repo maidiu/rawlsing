@@ -6,6 +6,7 @@ This file is the navigation surface for Vozhd Dva. A future Vozhd Dva chat shoul
 
 Root files are Vozhd-Dva-facing and may refer to the whole project:
 
+- `VOZHD_DVA_HANDOFF.md` — **read first in a fresh Vozhd Dva chat**; operating identity, doctrine, current campaign context, review law, worker-coordination law and exact restart/next-action protocol.
 - `README.md` — mission and governing principles.
 - `TERMINAL_DEMAND_ENVELOPE.md` — explicit finished-system demand lens: nine strata, inter-pressure, mediation, orientation-to-strata, Absolute Horizon, pressure-flow, attractors, V3 causality, genealogy, V2 and epistemic separation.
 - `ARCHITECTURE_PASS_LAW.md` — formal whole-picture / bounded-jurisdiction law for every maximal architecture pass; defines four simultaneous views, disposition taxonomy, architecture checksum, no-starvation and no-bloat tests.
@@ -14,7 +15,7 @@ Root files are Vozhd-Dva-facing and may refer to the whole project:
 - `CAPABILITY_MATRIX.md` — cross-stage capability requirements and vertical slices.
 - `WORKSTREAMS_AND_DELEGATION.md` — current prongs and concurrency model.
 - `LIVE_ITINERARY.md` — live sequence and near-term execution state.
-- `state/CURRENT_STATE.md` — compact restart snapshot; update whenever project state materially changes.
+- `state/CURRENT_STATE.md` — compact restart snapshot; this overrides stale status details in the longer handoff whenever project state changes.
 
 The terminal envelope and architecture-pass law do not make every stage own the whole system. They force architecture workers to understand the complete machine while proving their local stage neither starves later capabilities nor pre-instantiates downstream semantics.
 
@@ -92,6 +93,8 @@ A review should answer:
 - Did it introduce semantic loss or a new cross-prong dependency?
 - Is it ACCEPT / ACCEPT_WITH_FOLLOWUP / RETURN_FOR_FIX / REJECT / DEFER?
 
+If the disposition is `RETURN_FOR_FIX`, Vozhd must tell the user immediately and provide the exact paste-ready continuation prompt in that same response.
+
 ## State discipline
 
 There must always be one compact current-state snapshot in `state/CURRENT_STATE.md`. Historical detail belongs in the relevant cell/prong/review/schematic session, not in the restart snapshot.
@@ -104,6 +107,7 @@ When a worker result changes the system, Vozhd Dva updates, in order as needed:
 5. affected prong state;
 6. capability/strategy/terminal-demand/method files if architecture changed;
 7. `state/CURRENT_STATE.md`;
-8. `LIVE_ITINERARY.md`.
+8. `LIVE_ITINERARY.md`;
+9. `VOZHD_DVA_HANDOFF.md` only when the durable operating doctrine or major campaign topology changes; do not rewrite it for ordinary status churn.
 
 Implementation packets must cite the accepted local seam ruling and the applicable terminal-demand-ready architecture snapshot. The goal is that no future Vozhd Dva has to reconstruct the project from chat history or random PRs.
