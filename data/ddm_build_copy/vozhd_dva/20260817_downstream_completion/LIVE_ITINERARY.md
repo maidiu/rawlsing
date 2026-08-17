@@ -1,91 +1,88 @@
 # Live Itinerary
 
-**Status:** `V553_BUILD_WAITING_UPSTREAM_IDENTITY__PRE_S01_ADVISORY_READY`  
+**Status:** `TD_R00_V553_ACCEPTED__TD_R01_V554_READY__V553_BUILD_WAITING_TERMINAL_SWID`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
 ## Completed
 
-- Wave 0 closed.
-- S00 forward/backward excavations completed and adjudicated.
-- S00.5 V553 architecture build-out completed and accepted via PR #46 / merge `9088a44e75de03faeefbd42d68d1d6c54c478377`.
-- V553 completion implementation ruling frozen.
-- Five sequential V553 implementation packet assignments written under `integration/V553_COMPLETION/`.
+- Wave 0 reconnaissance closed.
+- S00 V552J→V553 seam excavated and adjudicated.
+- S00.5 V553 maximal architecture completed as prior architecture evidence.
+- TD-R00 V553 terminal-demand recalibration completed, reviewed by Vozhd, accepted, and merged via PR #52 at `3ad2dbf586e4f2212ecf9c75cb3fdae85cd80d59`.
+- Accepted result: `V553_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS` with preservation hardening and no new semantic family/component.
+- `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md` amended for TD-R00.
+- All five V553 implementation packet assignments amended; topology remains P1→P5.
+- TD-R01 V554 assignment refreshed to consume accepted TD-R00 law.
 
-## Binding V553 build sequence
+## Binding V553 implementation sequence
 
 `P1 Admission/Authority`
-`→ P2 Exact Sparse Core`
-`→ P3 Relations/Limits`
+`→ P2 Exact Sparse Core + GOVERNED_STRUCTURAL_REFERENCE_SET`
+`→ P3 Relations/Limits + direction/noncollapse law`
 `→ P4 Publication Consolidation`
-`→ P5 Exact Handoff/Completion Court`
+`→ P5 Exact Handoff + G01–G18 Completion Court`
 
-Binding S01 is blocked until `V553_COMPLETE_FOR_V554 = PASS`.
+This implementation track remains blocked until the separate source/wave identity campaign terminally merges to `main` and Vozhd completes the final narrow upstream-identity delta check.
 
-## Immediate binding dependency
+## Accepted V553 terminal-demand law
 
-Do not launch P1 from the current pre-terminal upstream identity state.
+- exact sparse temporal identity remains primary;
+- V552 factual ownership and V552J admission/use ownership remain complementary;
+- `GOVERNED_STRUCTURAL_REFERENCE_SET` is preservation/reference machinery, not a fifth semantic family;
+- `identity_basis_refs` and `contextual_terminal_refs` are distinct;
+- governed finite-stratum mappings are preserved as `0..n` role-qualified refs without invention;
+- explicit Absolute-Horizon designation is never inferred from religion/ideology/generic Horizon context;
+- structural source→target direction is not temporal-delta direction;
+- simultaneous exact pressure keys may not be collapsed or converted into invented conflict/counter-pressure semantics;
+- V553 creates no new cross-key interaction topology;
+- persistence/drift/rupture-candidate qualitative annotations remain disabled absent governed deterministic rule;
+- aggregate country-year output remains secondary/reversible only;
+- no canonical interpolation, readiness-derived pressure, persona, biography, psyche, Enneagram or runtime actor semantics.
 
-The separate source/wave identity repair campaign is still modifying V552/V552J/overlay identity surfaces. V553's exact admission/coherence/comparability architecture must consume the finalized governed UID contract.
+## Active architecture track
 
-When SWID lands:
-1. compare the final V552/V552J/overlay identity contract against frozen S00.5 assumptions;
-2. if compatible, pin the new `main` SHA;
-3. create V553 completion integration + P1 branches;
-4. launch P1 immediately;
-5. proceed packet-by-packet after review.
-
-## Parallel advisory reconnaissance track
-
-Waiting for the binding dependency does **not** require downstream thinking to stop.
-
-Advisory law:
-`schematics/advisory/README.md`
-
-Current advisory target:
-`PRE-S01 V554`
+### TD-R01 — V554 Terminal-Demand Architecture Recalibration
 
 Assignment:
-`schematics/advisory/PRE_S01_V554/ASSIGNMENT.md`
+`schematics/recalibration/TD_R01_V554/ASSIGNMENT.md`
 
-This worker may deeply inspect:
-- cumulative upstream materials available to V554;
-- accepted/intended V553 temporal outputs;
-- complete current V554 topology;
-- V555 total downstream need;
-- what V555 can already reuse directly from earlier stages;
-- likely residual V554 responsibility;
-- provisional peak V554 architecture/handoff/readiness;
-- current defects and later binding questions.
+Status: **READY TO LAUNCH** after branch refresh from the accepted current `main` state.
 
-It is production-read-only and explicitly pre-adjudication.
+TD-R01 must test PRE-S01/PRE-S01.5 against the full terminal envelope and accepted V553 reference law. In particular it must adjudicate whether V554's prior four-semantic-family + B1 architecture is sufficient, what can be direct DAG reuse, what exact refs must survive, and whether any `AFFORDANCE_RELATION` is genuinely V554-owned or should remain disabled while new structural interaction topology stays downstream.
 
-Advisory sequence after review:
-`PRE-S01 V554 → PRE-S02 V555 → PRE-S03 V556 → PRE-S04/05 V557-V558 → PRE-S06 V3 → PRE-S07 V2/app`
+Required terminal verdict:
+`V554_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
 
-Each later advisory excavation waits for review of the prior one so provisional understanding accumulates coherently.
+## Blocked downstream architecture
 
-## Advisory reuse rule
+PRE-S02 V555 remains **PAUSED**. Do not launch it until TD-R01 returns and Vozhd accepts/banks terminal-demand-ready V554 architecture. Then refresh PRE-S02 against accepted V553/V554 targets rather than repeating prior archaeology blindly.
 
-When the relevant binding upstream stage becomes complete:
+Expected architecture sequence after TD-R01 acceptance:
+`refresh PRE-S02 V555 excavation`
+`→ PRE-S02.5 V555 maximal architecture`
+`→ PRE-S03 V556 excavation`
+`→ PRE-S03.5 V556 maximal architecture`
+`→ V557/V558 boundary architecture`
+`→ V3`
+`→ genealogy/household runtime`
+`→ V2`
+`→ app/demo`
 
-`advisory excavation + final upstream contract → narrow delta check`
+Preserve dependencies, not ceremonial stage names, if later accepted architecture proves a cleaner bounded decomposition.
 
-If no material contradiction exists, reuse the excavation and perform only the binding adjudication still necessary. Do not redo the research for ceremony.
+## Independent upstream watch
 
-## Implementation law
+Source/wave identity PR #27 remains the binding dependency for V553 production implementation until terminally merged. Its status does not block TD-R01 architecture work.
 
-- V553 is a repair/promotion of strong existing code, not a greenfield rewrite.
-- Exact sparse temporal identity is primary.
-- V552 measured facts and V552J admission authority remain complementary upstream owners.
-- Certified comparability is explicit; no confidence/file/readiness fallback.
-- Aggregate country-year output is secondary/reversible only.
-- No canonical interpolation.
-- No readiness/probe-derived pressure.
-- No persona/biography/psyche/cohort-development/Enneagram/runtime semantics in V553.
+When PR #27 terminally lands:
+1. re-fetch final V552/V552J/overlay identity contract;
+2. run narrow S00 + TD-R00 delta check;
+3. pin the exact new `main` SHA;
+4. create V553 completion integration + P1 branches;
+5. launch P1 only;
+6. proceed sequentially after Vozhd review.
 
-## Next Vozhd actions
+## Immediate Vozhd action
 
-Two things may proceed independently:
-1. wait for and immediately act on the terminal SWID merge for the binding V553 implementation track;
-2. launch PRE-S01 V554 advisory reconnaissance now.
+Create/refresh the TD-R01 branch from current accepted `main` and launch **TD-R01 V554 only**.
