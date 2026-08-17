@@ -4,11 +4,11 @@
 
 ## Mission
 
-Promote the exact sparse V553 path to canonical semantic authority for `TEMPORAL_KEY` and `TEMPORAL_OBSERVATION`, with strict V552J↔V552 fact/scope coherence and finalized source/wave identity preservation.
+Promote the exact sparse V553 path to canonical semantic authority for `TEMPORAL_KEY` and `TEMPORAL_OBSERVATION`, with strict V552J↔V552 fact/scope coherence, finalized source/wave identity preservation, and the accepted TD-R00 terminal reference contract.
 
 ## Base law
 
-Read the V553 implementation ruling, S00.5 result, S00 ruling, P1 accepted result, and finalized upstream identity contract.
+Read, in order: the V553 implementation ruling; TD-R00 `RESULT.md` + `RESULT.json`; S00.5 result; S00 ruling; P1 accepted result; finalized upstream identity contract.
 
 ## Authorized terrain
 
@@ -30,23 +30,33 @@ Do not alter V552/V552J producer semantics.
 - Preserve measured zero as an observed value.
 - Represent missing/blocked/noncomparable states separately; do not create semantic values for them.
 - Make sparse key/observation schemas explicitly primary.
+- **TD-R00 amendment:** freeze and implement `GOVERNED_STRUCTURAL_REFERENCE_SET` as a required field/reference contract, not a fifth semantic family.
+- **TD-R00 amendment:** separate `identity_basis_refs` from `contextual_terminal_refs`; contextual terminal refs may survive without silently changing temporal-key identity unless governed comparison authority says they are identity-defining.
+- **TD-R00 amendment:** preserve exact relation-axis, source/driver-position, target/receiving-position, structural-channel, semantic/directionality/position/use authority refs and inherited relation/incompatibility refs where supplied upstream.
+- **TD-R00 amendment:** preserve 0..n role-qualified finite-stratum refs without forcing singular cardinality; preserve generic Horizon refs separately; explicit `absolute_horizon_authority_refs` may be populated only from governed designation authority.
+- **TD-R00 amendment:** carry `reference_contract_version` and exact producer/association lineage so later stages can reach original authority rather than rematch labels.
 
 ## Proof required
 
 - V552J authorizes fact A while direct V552 exposes conflicting fact B → hard fail, no rematch.
 - stable key identity across compatible waves;
-- key identity changes or comparison blocks when governed structural identity differs;
-- exact nonblank source/wave UID propagation through key/observation lineage where the finalized contract requires it;
+- key identity changes or comparison blocks when governed identity-basis authority differs;
+- contextual-terminal-only ref differences do not silently alter key identity absent governing rule;
+- exact nonblank source/wave UID propagation where required;
 - one exact fact per observation;
 - measured zero remains zero and is not gap/absence;
-- readiness/probe scores cannot populate structural pressure.
+- readiness/probe scores cannot populate structural pressure;
+- multi-valued governed stratum refs survive cardinality-preserving;
+- explicit absence of Absolute-Horizon designation remains empty/absent rather than inferred;
+- structural direction refs survive independently of any later temporal-delta direction.
 
 ## Prohibited
 
 - no relation/delta completion beyond what is necessary to keep code compiling;
 - no aggregate projection redesign;
 - no V554 consumer changes;
-- no invented qualitative thresholds or event causation.
+- no invented qualitative thresholds or event causation;
+- no stratum/Horizon assignment or cross-key conflict derivation.
 
 ## Return
 
