@@ -98,6 +98,102 @@ def _clean(value: Any) -> str:
     return "" if value is None else str(value).strip()
 
 
+def _compat_source_family(source_family: Any) -> str:
+    """Normalize only the historical V550 compatibility source label."""
+    raw = _clean(source_family)
+    return {
+        "Afro Barometer": "Afrobarometer",
+        "Afrobarometer": "Afrobarometer",
+        "Arab Barometer": "Arab Barometer",
+        "Asian Barometer": "Asian Barometer",
+        "EVS": "EVS",
+        "GSS": "GSS",
+        "Latinobarometro": "Latinobarómetro",
+        "Latinobarómetro": "Latinobarómetro",
+        "LiTS": "LiTS",
+        "South Asia": "South Asia",
+        "WVS": "WVS",
+        "World Values Survey": "WVS",
+    }.get(raw, raw)
+
+
+def canonical_wave_label(source_family: Any, raw_wave: Any) -> str:
+    """Return the frozen V550 compatibility/provenance wave label.
+
+    This helper intentionally does not establish source/wave machine identity or
+    production authorization.  Those remain owned by the governed UID kernel.
+    Its only job is to preserve historical V550 spellings for active consumers.
+    """
+    source_family = _compat_source_family(source_family)
+    raw_wave = _clean(raw_wave)
+    if source_family == "Arab Barometer":
+        return {
+            "I": "W1",
+            "II": "W2",
+            "III": "W3",
+            "IV": "W4",
+            "V": "W5",
+            "VI_pt_i": "W6a",
+            "VI_pt_ii": "W6b",
+            "VI_pt_iii": "W6c",
+            "VII": "W7",
+            "VIII": "W8",
+            "Wave 1": "W1",
+            "Wave 2": "W2",
+            "Wave 5": "W5",
+            "Wave 8": "W8",
+        }.get(raw_wave, raw_wave)
+    if source_family == "Afrobarometer":
+        return {
+            "Round 1": "R1",
+            "Round 5": "R5",
+            "Round 9": "R9",
+            "R1": "R1",
+            "R5": "R5",
+            "R9": "R9",
+        }.get(raw_wave, raw_wave)
+    if source_family == "Asian Barometer":
+        return {
+            "Wave 1": "W1",
+            "W1": "W1",
+            "Wave 4": "W4",
+            "W4": "W4",
+            "Wave 5": "W5",
+            "W5": "W5",
+            "Wave 6": "W6",
+            "W6": "W6",
+        }.get(raw_wave, "W6" if raw_wave.startswith("Wave 6") else raw_wave)
+    if source_family == "South Asia":
+        return {"Wave 1": "W1", "W1": "W1", "Wave 2": "W2", "W2": "W2"}.get(raw_wave, raw_wave)
+    if source_family == "Latinobarómetro":
+        return {"1995": "1995", "2011": "2011", "2024": "2024"}.get(raw_wave, raw_wave)
+    if source_family == "EVS":
+        return {
+            "1981": "W1",
+            "1990": "1990",
+            "1999": "W3",
+            "2008": "2008",
+            "2017": "2017",
+            "W1": "W1",
+            "W2": "1990",
+            "W3": "W3",
+            "W4": "2008",
+            "W5": "2017",
+            "TREND": "TREND",
+        }.get(raw_wave, raw_wave)
+    if source_family == "WVS":
+        return {
+            "Wave 1": "W1", "W1": "W1",
+            "Wave 4": "W4", "W4": "W4",
+            "Wave 7": "W7", "W7": "W7",
+        }.get(raw_wave, raw_wave)
+    if source_family == "GSS":
+        return raw_wave
+    if source_family == "LiTS":
+        return {"2006": "2006", "I": "2006", "II": "II", "III": "III", "IV": "IV"}.get(raw_wave, raw_wave)
+    return raw_wave
+
+
 def _truthy(value: Any) -> bool:
     return _clean(value).lower() in {"1", "true", "yes", "y"}
 

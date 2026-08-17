@@ -380,7 +380,10 @@ def _build_question_list(scope_df: pd.DataFrame, mapping_df: pd.DataFrame, max_q
     )
     merged["source"] = merged["raw_db_source"].astype(str)
     merged["raw_wave"] = merged["raw_db_wave"].astype(str)
-    merged["canonical_wave"] = merged["canonical_display_wave_scope"].astype(str)
+    merged["canonical_wave"] = merged.apply(
+        lambda row: canonical_wave_label(row["raw_db_source"], row["raw_db_wave"]),
+        axis=1,
+    )
     merged["canonical_display_source"] = merged["canonical_display_source_scope"].astype(str)
     merged["canonical_display_wave"] = merged["canonical_display_wave_scope"].astype(str)
     merged["question_rows"] = 0
