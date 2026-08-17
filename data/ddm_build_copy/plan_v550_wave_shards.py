@@ -133,6 +133,13 @@ def _execution_identity_or_none(source: str, wave: str):
         return None
 
 
+def _execution_command_prefix(identity) -> str:
+    return (
+        f"V550_SOURCE_FAMILY_UID={identity.source_family_uid} "
+        f"V550_WAVE_UID={identity.wave_uid} "
+    )
+
+
 def _static_plan_from_template(template_path: Path, run_id: str) -> pd.DataFrame:
     if not template_path.exists():
         return pd.DataFrame()
@@ -206,10 +213,10 @@ def _static_plan_from_template(template_path: Path, run_id: str) -> pd.DataFrame
                 "output_dir": str(ROOT / "data" / "ddm_repository_copy" / "v550" / "shard_runs" / run_id / shard_id),
                 "shard_id": shard_id,
                 "command": (
-                    "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
-                    f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
-                    f"--source-family-uid {identity.source_family_uid} --wave-uid {identity.wave_uid} "
-                    "--write-csv --write-parquet --verbose"
+                    _execution_command_prefix(identity)
+                    + "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
+                    + f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
+                    + "--write-csv --write-parquet --verbose"
                 ),
             }
         )
@@ -299,10 +306,10 @@ def _db_launchable_plan(conn, run_id: str, filters: dict[str, list[str]]) -> pd.
                 "output_dir": str(ROOT / "data" / "ddm_repository_copy" / "v550" / "shard_runs" / run_id / shard_id),
                 "shard_id": shard_id,
                 "command": (
-                    "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
-                    f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
-                    f"--source-family-uid {identity.source_family_uid} --wave-uid {identity.wave_uid} "
-                    "--write-csv --write-parquet --verbose"
+                    _execution_command_prefix(identity)
+                    + "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
+                    + f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
+                    + "--write-csv --write-parquet --verbose"
                 ),
             }
         )
@@ -415,10 +422,10 @@ def main() -> int:
                     f"[V550_HISTORICAL_SHARD_ID_MISMATCH] expected={expected_legacy_shard_id} actual={shard_id}"
                 )
             cmd = (
-                "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
-                f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
-                f"--source-family-uid {identity.source_family_uid} --wave-uid {identity.wave_uid} "
-                "--write-csv --write-parquet --verbose"
+                _execution_command_prefix(identity)
+                + "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
+                + f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
+                + "--write-csv --write-parquet --verbose"
             )
             if row.canonical_wave and str(row.canonical_wave) != wave:
                 cmd += f" --canonical-wave {row.canonical_wave}"
