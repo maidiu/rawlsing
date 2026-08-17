@@ -226,16 +226,9 @@ WITH weight_pick AS (
 )
 SELECT
     r.id AS respondent_id,
-    r.source AS raw_db_source,
-    r.wave AS raw_db_wave,
     r.source,
     r.wave,
-    qsm.canonical_display_source,
     qsm.canonical_display_wave AS canonical_wave,
-    qsm.source_family_uid,
-    qsm.wave_uid,
-    qsm.governance_state AS source_wave_governance_state,
-    qsm.closed_35_member AS source_wave_closed_35_member,
     r.country_code,
     r.survey_year,
 
@@ -289,7 +282,15 @@ SELECT
          AND COALESCE(qsm.driver_facet_id, '') = ''
         THEN TRUE
         ELSE FALSE
-    END AS legacy_driver_leak_flag
+    END AS legacy_driver_leak_flag,
+
+    r.source AS raw_db_source,
+    r.wave AS raw_db_wave,
+    qsm.canonical_display_source,
+    qsm.source_family_uid,
+    qsm.wave_uid,
+    qsm.governance_state AS source_wave_governance_state,
+    qsm.closed_35_member AS source_wave_closed_35_member
 FROM survey_microdata_responses resp
 JOIN survey_microdata_respondents r
     ON r.id = resp.respondent_id
