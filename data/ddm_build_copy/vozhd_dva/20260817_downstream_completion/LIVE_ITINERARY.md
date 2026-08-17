@@ -1,97 +1,98 @@
 # Live Itinerary
 
-**Status:** `S00_ADJUDICATED__S01_PREP`  
+**Status:** `S00_5_V553_ARCHITECTURE_ACTIVE`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
 ## Completed
 
-### Wave 0
+Wave 0 is closed and integrated. S00 is `VOZHD_ADJUDICATED`.
 
-Closed and integrated. V550–V552J remain closed by default; POSTG5-004 is repaired fail-closed on the V553 consumer side.
+Accepted S00 evidence:
+- S00-F / PR #44 — forward excavation of upstream availability and V553 capability.
+- S00-B / PR #43 — backward excavation of V554 total need and V553 residual obligation.
 
-### S00 — V553 exploration
+Authoritative ruling:
+`schematics/synthesis/S00_V552J_TO_V553_RULING.md`
 
-Completed:
-- S00-B / PR #43 — accepted.
-- S00-F / PR #44 — accepted.
-- worker results integrated to `main` at `7db3dfbab6d2497da50c496cb2de76a5d7cee083`.
-- conflicted aggregate PR #45 closed to avoid stale control-room overwrites.
-- Vozhd ruling written: `schematics/synthesis/S00_V552J_TO_V553_RULING.md`.
-- cumulative map updated through accepted V553 objects.
-
-Core S00 result:
-- V552 factual measurement;
-- V552J permission/join;
-- certified earlier authority for comparability inputs;
-- V553 unique temporal relation;
-- V554/later stages may compose earlier outputs directly with V553 rather than depend on serial repackaging.
-
-## Reporting correction after S00
-
-S00 worker reports were useful but too granular for repetition.
-
-Future exploration keeps deep investigation but returns compact decision-bearing artifacts under:
-- `schematics/TRANSFORMATION_METHOD.md`
-- `schematics/BOUNDARY_SESSION_TEMPLATE.md`
-
-Normal return limits:
-- ≤12 need/reuse rows;
-- ≤8 residual-obligation bullets;
-- ≤6 output object families;
-- ≤5 defects;
-- ≤3 unresolved forks;
-- 2 worked cases.
+The S00 result freezes V553 as the producer of governed exact-key temporal structural relations while allowing later stages to reuse earlier V552/V552J/authority objects directly for meanings those producers still own.
 
 ## Immediate sequence
 
-### 1. Prepare S01 only
+### 1. Run S00.5 — V553 architecture build-out
 
-Current transformation: **V554**.  
-Backward consumer: **V555**.
+Worker branch:
+`agent/vozhd-dva-s00-5-v553-architecture`
 
-S01 asks:
+Assignment:
+`data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/sessions/S00_5_V553_ARCHITECTURE/ASSIGNMENT.md`
 
-`cumulative upstream map + V555 total need`
-`→ what V555 can already reuse directly`
-`→ residual meaning requiring V554`
-`→ V554 selected inputs`
-`→ V554 unique transformation/new outputs`
-`→ composed V555 input sufficiency`
+This worker must begin from **both accepted S00 excavations** and the Vozhd ruling, then inspect the complete current V553 implementation/test surface.
 
-Create two compact independent breakout packets:
-- **S01-F:** forward from cumulative upstream material + accepted V553 objects into V554's lawful capability.
-- **S01-B:** backward from V555 total need, subtracting lawful direct reuse to isolate V554's residual obligation.
+Its goal is not more ontology. It must determine the target production architecture needed to bring V553 to peak implementation quality and V554 readiness:
+- current topology and canonical/parallel/legacy paths;
+- keep/promote/repair/merge/demote/deprecate decisions;
+- target internal components;
+- canonical sparse/aggregate relationship;
+- canonical artifacts and manifest/readiness model;
+- authority and identity precedence;
+- implementation gap matrix;
+- dependency-ordered implementation packets;
+- completion tests and `V553_COMPLETE_FOR_V554` gate.
 
-No third critic unless the two returns expose a concrete authority collision or inference hazard that needs independent adjudication.
+Production code remains read-only in S00.5.
 
-### 2. Reconvene S01
+### 2. Vozhd adjudicates S00.5
 
-Vozhd compares only decision-bearing conclusions, freezes V554's unique output contribution, updates the cumulative map, and promotes S02.
+Convert the returned architecture into the smallest finite implementation program. Do not automatically accept new modules/artifacts where existing V553 code can be promoted or repaired.
 
-### 3. Continue serial adjudication
+Expected implementation packet count: roughly 3–6 unless the returned dependency graph proves otherwise.
 
-`S01 synthesis → S02 → synthesis → ... → S07`
+### 3. Build V553
 
-Serial adjudication does not imply serial-only data consumption.
+Launch bounded workers against non-overlapping write domains.
 
-### 4. Implementation
+Prioritize foundational authority/identity/artifact decisions before downstream consumer wiring. Parallelize only packets whose outputs do not define one another's contracts.
 
-After the bounded schematic chain is sufficiently frozen:
-- update `CAPABILITY_MATRIX.md`;
-- issue finite implementation packets;
-- implement against accepted contracts;
-- use the Wave-0 vertical harness as standing semantic court;
-- qualify horizontally after representative vertical continuity passes.
+### 4. Run V553 completion court
+
+Require fast deterministic proof of:
+- V552J↔V552 fact/scope coherence fail-closed;
+- exact sparse temporal identity;
+- lawful temporal observations and deltas;
+- noncomparability/gap/zero/absence distinctions;
+- aggregate projections secondary to sparse authority;
+- rupture-candidate/event-causation separation;
+- V554 composed consumption;
+- relevant Wave-0 vertical XFAILs promoted only when production hooks truly satisfy them.
+
+Do not conflate this with later 35-wave horizontal qualification.
+
+### 5. Launch S01 only after V553 completion
+
+S01 is paused until `V553_COMPLETE_FOR_V554 = PASS`.
+
+Then proceed:
+`S01 V554 → synthesis/build as required → S02 → ... → S07`
 
 ## Active risks
 
-- architecture work becoming documentation work rather than contract resolution;
-- aggregate convenience surfaces displacing exact authority;
-- downstream need being used to invent unsupported upstream meaning;
-- duplicated serial repackaging despite lawful DAG reuse;
-- stage-specific derived meaning losing lineage/negative authority.
+- Do not turn S00.5 into another ontology excavation. It must terminate in implementation architecture and packets.
+- Do not throw away strong existing V553 sparse code merely to produce a cleaner greenfield design.
+- Do not preserve aggregate/legacy paths as co-equal authority merely because they already exist.
+- Do not make V553 serialize upstream material V554 can lawfully reuse directly.
+- Do not allow readiness/probe or aggregate convenience values to become structural-pressure authority.
+- Do not launch S01 against a V553 architecture we already know is incomplete.
+
+## Decision log
+
+- 2026-08-17: Wave 0 completed and integrated.
+- 2026-08-17: S00 forward/backward excavation completed and adjudicated.
+- 2026-08-17: adopted governed DAG reuse rather than strict serial-only consumption.
+- 2026-08-17: exact sparse V553 temporal objects frozen as primary temporal authority; aggregates secondary.
+- 2026-08-17: reporting method compacted after S00.
+- 2026-08-17: inserted S00.5 V553 architecture/build-out before S01 so V554 is designed against an intentionally completed V553 rather than current mixed scaffolding.
 
 ## Next Vozhd action
 
-Build the two compact S01 breakout handoffs from the S00 ruling and cumulative map. Do not launch S02.
+Launch the single S00.5 architecture worker. When it returns, adjudicate its build plan before any V553 implementation or S01 work.
