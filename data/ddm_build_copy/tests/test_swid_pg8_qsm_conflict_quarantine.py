@@ -53,6 +53,18 @@ def test_real_defect_shape_is_one_uid_normalized_conflict_and_both_are_quarantin
     assert {row[9] for row in published} == {"NEIGHBOR"}
 
 
+def test_same_exact_raw_key_divergence_is_seen_before_richer_row_deduplication():
+    records = [
+        _candidate("SAME_VAR", "metadata::semantic_first", "accepted_context_only", "context"),
+        _candidate("SAME_VAR", "idio::semantic_second", "accepted_existing_mapping", ""),
+    ]
+    candidates = db.create_question_mapping_rows(pd.DataFrame(records))
+    assert len(candidates) == 2
+    published, quarantined = db.quarantine_conflicting_question_mapping_rows(candidates)
+    assert published == []
+    assert quarantined == [("sf_lits_v1", "wv_lits_iii_v1", "SAME_VAR")]
+
+
 def test_quarantine_is_independent_of_candidate_order():
     records = [
         _candidate("DURATION1", "metadata::semantic_duration1", "accepted_context_only", "context"),

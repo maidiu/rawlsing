@@ -598,7 +598,8 @@ def assert_no_conflicting_qsm_uid_rows(conn) -> None:
 
 
 def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
-    rows: dict[tuple[str, str, str], tuple[Any, ...]] = {}
+    """Extract every source-master candidate without semantic precedence."""
+    rows: list[tuple[Any, ...]] = []
     for r in df.itertuples(index=False):
         source = clean(getattr(r, "source", ""))
         wave = clean(getattr(r, "wave", ""))
@@ -644,17 +645,27 @@ def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
             clean(getattr(r, "does_not_measure", "")),
             clean(getattr(r, "review_notes", "")),
         )
-        key = (source, wave, var_code)
-        if key not in rows:
-            rows[key] = row
+        rows.append(row)
+    return rows
+
+
+def deduplicate_question_mapping_rows(
+    rows: Iterable[tuple[Any, ...]],
+) -> list[tuple[Any, ...]]:
+    """Deduplicate only after semantic-conflict groups have been removed."""
+    deduplicated: dict[tuple[str, str, str], tuple[Any, ...]] = {}
+    for row in rows:
+        key = (clean(row[0]), clean(row[1]), clean(row[9]))
+        if key not in deduplicated:
+            deduplicated[key] = row
             continue
-        existing = rows[key]
+        existing = deduplicated[key]
         # Prefer the row with the richer mapping signal.
         existing_score = sum(1 for v in existing if isinstance(v, str) and v)
         new_score = sum(1 for v in row if isinstance(v, str) and v)
         if new_score >= existing_score:
-            rows[key] = row
-    return list(rows.values())
+            deduplicated[key] = row
+    return list(deduplicated.values())
 
 
 def ensure_question_mapping(cur) -> None:
@@ -664,7 +675,8 @@ def ensure_question_mapping(cur) -> None:
 def load_question_mapping(conn) -> int:
     df = load_questions_master()
     candidate_rows = create_question_mapping_rows(df)
-    rows, quarantined_keys = quarantine_conflicting_question_mapping_rows(candidate_rows)
+    conflict_free_rows, quarantined_keys = quarantine_conflicting_question_mapping_rows(candidate_rows)
+    rows = deduplicate_question_mapping_rows(conflict_free_rows)
     print(f"QSM semantic conflicts quarantined: {len(quarantined_keys)}", flush=True)
     for source_family_uid, wave_uid, var_code in quarantined_keys:
         print(f"{source_family_uid}|{wave_uid}|{var_code}", flush=True)
