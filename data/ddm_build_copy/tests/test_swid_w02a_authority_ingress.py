@@ -237,7 +237,7 @@ def test_qsr_identity_context_preserves_raw_display_and_uid_separately():
     assert context["raw_path"].startswith("/Users/")
 
 
-def test_db_mapping_preserves_raw_query_wave_while_adding_evs_uid_and_display():
+def test_db_mapping_preserves_qsm_compatibility_wave_beside_uid_and_respondent_uid_join():
     frame = pd.DataFrame([{
         "source": "EVS", "wave": "W1", "var_name": "Q1", "display_text": "Example",
         "final_driver_id": "driver-1", "mapping_status": "accepted_existing_mapping",
@@ -250,9 +250,16 @@ def test_db_mapping_preserves_raw_query_wave_while_adding_evs_uid_and_display():
     assert row[4] == "EVS"
     assert row[5] == "1981"
     sql = db.FACET_READY_VIEW_SQL
-    assert "r.wave AS raw_db_wave" in sql
-    assert "q.wave = COALESCE(r.wave, '')" in sql
+    assert "rsi.raw_db_source = r.source" in sql
+    assert "rsi.raw_db_wave = COALESCE(r.wave, '')" in sql
+    assert "q.source_family_uid = rsi.source_family_uid" in sql
+    assert "q.wave_uid = rsi.wave_uid" in sql
+    assert "NULLIF(rsi.wave_uid, '') IS NULL" in sql
+    assert "NULLIF(q.wave_uid, '') IS NULL" in sql
+    assert "COALESCE(q.wave, '') = ''" in sql
+    assert "q.wave = COALESCE(r.wave, '')" not in sql
     assert "q.canonical_display_wave = COALESCE(r.wave, '')" not in sql
+    assert "r.wave AS raw_db_wave" in sql
 
 
 def test_db_identity_normalization_does_not_mutate_question_mapping_semantics():

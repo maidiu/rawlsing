@@ -7,7 +7,7 @@ HISTORICAL_PREFIX = (
     "r.id AS respondent_id",
     "r.source,",
     "r.wave,",
-    "qsm.canonical_display_wave AS canonical_wave",
+    "rsi.canonical_display_wave AS canonical_wave",
     "r.country_code",
     "r.survey_year",
     "resp.var_code",
@@ -46,11 +46,11 @@ HISTORICAL_PREFIX = (
 ADDITIVE_FIELDS = (
     "r.source AS raw_db_source",
     "r.wave AS raw_db_wave",
-    "qsm.canonical_display_source",
-    "qsm.source_family_uid",
-    "qsm.wave_uid",
-    "qsm.governance_state AS source_wave_governance_state",
-    "qsm.closed_35_member AS source_wave_closed_35_member",
+    "rsi.canonical_display_source",
+    "rsi.source_family_uid",
+    "rsi.wave_uid",
+    "rsi.governance_state AS source_wave_governance_state",
+    "rsi.closed_35_member AS source_wave_closed_35_member",
 )
 
 
@@ -69,21 +69,21 @@ def test_facet_ready_view_is_additive_after_frozen_historical_prefix():
     assert min(additive_positions) > max(positions)
 
 
-def test_facet_ready_view_preserves_raw_coordinates_and_qsm_identity_provenance():
+def test_facet_ready_view_preserves_raw_coordinates_and_governed_identity_provenance():
     sql = db.FACET_READY_VIEW_SQL
     body = _select_body()
 
     assert "r.source AS raw_db_source" in body
     assert "r.wave AS raw_db_wave" in body
-    assert "qsm.canonical_display_wave AS canonical_wave" in body
-    assert "qsm.canonical_display_source" in body
-    assert "qsm.source_family_uid" in body
-    assert "qsm.wave_uid" in body
-    assert "qsm.governance_state AS source_wave_governance_state" in body
-    assert "qsm.closed_35_member AS source_wave_closed_35_member" in body
+    assert "rsi.canonical_display_wave AS canonical_wave" in body
+    assert "rsi.canonical_display_source" in body
+    assert "rsi.source_family_uid" in body
+    assert "rsi.wave_uid" in body
+    assert "rsi.governance_state AS source_wave_governance_state" in body
+    assert "rsi.closed_35_member AS source_wave_closed_35_member" in body
 
     assert "q.source_family_uid" in sql
     assert "q.wave_uid" in sql
-    assert "q.canonical_display_source" in sql
-    assert "q.canonical_display_wave" in sql
-    assert "q.wave = COALESCE(r.wave, '')" in sql
+    assert "q.canonical_display_source" not in sql
+    assert "q.canonical_display_wave" not in sql
+    assert "q.wave = COALESCE(r.wave, '')" not in sql
