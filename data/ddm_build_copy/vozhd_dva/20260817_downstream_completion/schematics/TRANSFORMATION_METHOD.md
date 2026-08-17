@@ -4,15 +4,48 @@ For every current stage `B` with downstream consumer `C`, do not assume the imme
 
 The governing sequence is:
 
-`UPSTREAM AVAILABILITY → DOWNSTREAM REQUIREMENT → LAWFUL INTAKE SELECTION → STAGE-SPECIFIC TRANSFORMATION → REACHABLE OUTPUT ENVELOPE → REQUIRED OUTPUT CONTRACT`
+`CUMULATIVE UPSTREAM MAP → UPSTREAM AVAILABILITY → DOWNSTREAM REQUIREMENT → LAWFUL INTAKE SELECTION → STAGE-SPECIFIC TRANSFORMATION → REACHABLE OUTPUT ENVELOPE → REQUIRED OUTPUT CONTRACT → UPDATED CUMULATIVE MAP`
 
 The accepted contract is the minimum semantically complete output that both:
 1. B can lawfully create from available upstream authority; and
 2. C actually needs in order to perform its own assigned transformation without guessing, reaching behind B, or forcing B to perform C's work.
 
+## 0. Cumulative upstream map inheritance
+
+Every schematic session inherits the accepted cumulative map from all prior adjudicated seams.
+
+The map is additive. It retains:
+- upstream producer/stage and object identity;
+- what semantic/authority material was available at that point;
+- how later stages transformed, preserved, aggregated, or blocked it;
+- stable provenance/lineage links;
+- epistemic, permission, absence, uncertainty, and noncomparability states;
+- whether the material remains directly consumable, context-only, lineage-only, superseded, or forbidden for the current stage.
+
+When a stage is adjudicated, its accepted outputs are added to the same map. Thus:
+
+`upstream-of-V553 map + accepted V553 outputs = inherited S01 map`
+
+`inherited S01 map + accepted V554 outputs = inherited S02 map`
+
+and so on through the chain.
+
+**Availability is not consumption permission.** A later stage may know that an earlier object exists and retain its lineage without being authorized to read or reinterpret that earlier object directly. Every session therefore derives an explicit `ADMISSIBLE_INTAKE_SET` from the cumulative map.
+
+For every mapped surface/object, carry a current-stage jurisdiction such as:
+- `DIRECT_INPUT_ALLOWED`;
+- `CONTEXT_ALLOWED`;
+- `LINEAGE_ONLY`;
+- `SUPERSEDED_BY_TRANSFORMED_OBJECT`;
+- `SHOULD_BE_CARRIED_THROUGH_HANDOFF`;
+- `DIRECT_REACH_BACK_FORBIDDEN`;
+- `UNRESOLVED`.
+
+The cumulative map exists to prevent information amnesia and accidental reinvention, not to authorize arbitrary cross-stage reach-back.
+
 ## 1. Upstream availability envelope
 
-Inventory the richest lawful objects, authorities, and contexts available anywhere upstream that B could potentially consume. Start from actual canonical implementation outputs and concrete dependencies, not an imagined neat serial interface.
+Starting from the inherited cumulative map, inventory the richest lawful objects, authorities, and contexts available anywhere upstream that B could potentially consume. Start from actual canonical implementation outputs and concrete dependencies, not an imagined neat serial interface.
 
 For every available surface record:
 - producer/stage;
@@ -25,7 +58,8 @@ For every available surface record:
 - uncertainty/confidence;
 - absence, noncomparability, blockers, permissions, negative authority;
 - whether B currently consumes it;
-- whether it arrives through the immediate handoff or by direct reach-back.
+- whether it arrives through the immediate handoff or by direct reach-back;
+- its inherited current-stage jurisdiction from the cumulative map.
 
 Classify its possible jurisdiction as one of:
 - `PRIMARY_HANDOFF`;
@@ -55,7 +89,7 @@ This defines the **backward floor**: the minimum semantically complete input C n
 
 ## 3. Lawful intake selection for B
 
-Now determine which parts of the upstream availability envelope B should actually consume.
+Now determine which parts of the upstream availability envelope B should actually consume. This produces the stage's `ADMISSIBLE_INTAKE_SET`.
 
 For each downstream-required information class ask:
 - is it already present in the immediate governed handoff?
@@ -63,6 +97,7 @@ For each downstream-required information class ask:
 - is the direct co-input genuinely necessary, or does its necessity expose a handoff gap?
 - is the source semantic payload, authority context, provenance context, or validation context?
 - if multiple upstream surfaces appear to provide the same meaning, which one is authoritative and what are the others allowed to do?
+- does the inherited cumulative map permit direct consumption, context use, or lineage-only visibility?
 
 If richer governed information exists upstream but current B consumes a lossy compatibility surface, record a seam defect rather than designing around the loss.
 
@@ -112,6 +147,8 @@ The required output contract is the minimum object set that:
 
 If B can lawfully produce useful information that C does not currently require but a named later capability does require, preserve it when dropping it here would force downstream reconstruction. Record that downstream consumer explicitly.
 
+After adjudication, add the accepted B outputs to the cumulative upstream map with their source lineage and the jurisdiction they should have for the next stage.
+
 ## 7. Preservation / transformation ledger
 
 Classify each important incoming distinction as:
@@ -141,7 +178,7 @@ For every downstream requirement compare the backward floor with the forward cei
 
 At least two concrete examples should travel through:
 
-`upstream availability → selected inputs → B operation → reachable outputs → downstream-required subset`
+`cumulative upstream map → upstream availability → admissible intake → B operation → reachable outputs → downstream-required subset → updated cumulative map`
 
 Prefer one ordinary and one adversarial/ambiguous case.
 
@@ -154,20 +191,24 @@ Test at least:
 - noncomparability;
 - temporal drift/rupture uncertainty where relevant;
 - duplicate/competing upstream authorities;
+- illicit direct reach-back despite lineage visibility;
 - direct structure-to-person/personality inference pressure.
 
 ## 11. Session termination
 
 A session ends with only:
-1. accepted upstream availability/intake map;
-2. accepted downstream demand map;
-3. accepted stage transformation equation;
-4. accepted reachable output envelope;
-5. required downstream output contract;
-6. preserve/derive/drop/forbid/unresolved ledger;
-7. concrete seam/reach-back defects;
-8. implementable producer/consumer obligations;
-9. unresolved questions requiring Vozhd adjudication;
-10. adjacent seams that must be informed.
+1. inherited cumulative upstream map confirmed/corrected;
+2. accepted upstream availability/intake map;
+3. accepted downstream demand map;
+4. accepted `ADMISSIBLE_INTAKE_SET`;
+5. accepted stage transformation equation;
+6. accepted reachable output envelope;
+7. required downstream output contract;
+8. updated cumulative map including accepted stage outputs;
+9. preserve/derive/drop/forbid/unresolved ledger;
+10. concrete seam/reach-back defects;
+11. implementable producer/consumer obligations;
+12. unresolved questions requiring Vozhd adjudication;
+13. adjacent seams that must be informed.
 
 No production implementation begins merely because a breakout worker proposes a schema.
