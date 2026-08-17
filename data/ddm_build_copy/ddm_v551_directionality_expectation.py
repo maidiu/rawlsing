@@ -4,10 +4,12 @@ from __future__ import annotations
 from typing import Any
 import pandas as pd
 
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import BoundaryContractError, verify_frame_source_wave_identity_coherence
+
 APPLICABLE_BY_AUTHORITY="APPLICABLE_BY_AUTHORITY"
 APPROVED_DIRECT_RELATION_SOURCE_TABLES={"answer_distribution","country_answer_distribution"}
 CERTIFIED_RESPONSE_DIRECTIONS={"agree","disagree","graded","intermediate","negative","neutral","oppose","positive","support"}
-AUDIT_COLUMNS=["source","source_family","wave","canonical_wave","country_code","question_id","var_code","position_field","position_value","source_table","response_value_raw","response_value_normalized","response_label","source_row_hash","directional_applicability_status","directionality_authority_status","response_option_map_matched","response_direction","response_intensity","directionality_stamp_status","directionality_stamp_failure_reason"]
+AUDIT_COLUMNS=["source","source_family","source_family_uid","wave","canonical_wave","wave_uid","country_code","question_id","var_code","position_field","position_value","source_table","response_value_raw","response_value_normalized","response_label","source_row_hash","directional_applicability_status","directionality_authority_status","response_option_map_matched","response_direction","response_intensity","directionality_stamp_status","directionality_stamp_failure_reason"]
 
 def _clean(v:Any)->str:
     if v is None:return ""
@@ -28,6 +30,12 @@ def build_v551_directionality_expected_bridge(bridge:pd.DataFrame)->pd.DataFrame
     required={"directional_applicability_status","bridge_evidence_lane","source_table","is_substantive","is_missing","is_special"}
     missing=sorted(required-set(bridge.columns))
     if missing: raise ValueError("BLOCKED_V551_MISSING_DIRECTIONAL_EXPECTATION_CONTRACT:"+",".join(missing))
+    uid_columns={"source_family_uid","wave_uid"};declared=uid_columns&set(bridge.columns)
+    if declared:
+        missing_uid=sorted(uid_columns-set(bridge.columns))
+        if missing_uid:raise ValueError("BLOCKED_V551_UID_IDENTITY_INCOMPLETE:"+",".join(missing_uid))
+        try:verify_frame_source_wave_identity_coherence(bridge,allow_empty=True)
+        except BoundaryContractError as exc:raise ValueError("BLOCKED_V551_SOURCE_WAVE_IDENTITY:"+str(exc)) from exc
     if bridge.empty:return bridge.copy()
     mask=(bridge.directional_applicability_status.fillna("").astype(str).str.upper().eq(APPLICABLE_BY_AUTHORITY)&bridge.bridge_evidence_lane.fillna("").astype(str).eq("direct_relation_response")&bridge.source_table.fillna("").astype(str).isin(APPROVED_DIRECT_RELATION_SOURCE_TABLES)&bridge.is_substantive.map(_bool)&~bridge.is_missing.map(_bool)&~bridge.is_special.map(_bool))
     out=bridge.loc[mask].copy().reset_index(drop=True);out["v551_directionality_expected"]=True;return out
