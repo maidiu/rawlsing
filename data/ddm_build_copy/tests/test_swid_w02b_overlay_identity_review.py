@@ -1,11 +1,24 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import importlib.util
 import json
+import sys
+import types
 from pathlib import Path
 
 import pandas as pd
 import pytest
+
+# Batch review generation gates identity before opening Postgres. Keep these
+# focused tests collectible on hosts that do not install the optional DB client;
+# no live DB call is claimed or simulated.
+if importlib.util.find_spec("psycopg2") is None:
+    psycopg2_stub = types.ModuleType("psycopg2")
+    psycopg2_stub.connect = lambda *_args, **_kwargs: (_ for _ in ()).throw(
+        RuntimeError("psycopg2 unavailable in unit-test environment")
+    )
+    sys.modules["psycopg2"] = psycopg2_stub
 
 from data.ddm_build_copy.ddm_source_wave_identity import ProductionMembershipError
 from data.ddm_build_copy.ddm_v550_family_overlay import (
