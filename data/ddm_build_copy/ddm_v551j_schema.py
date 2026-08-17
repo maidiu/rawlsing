@@ -567,6 +567,9 @@ V551J_CERTIFICATION_AUDIT_SCHEMA = {
         "wave",
         "canonical_wave",
         "country_code",
+        "source_family_uid",
+        "wave_uid",
+        "uid_key",
         "gate_identity_pass",
         "gate_lifecycle_pass",
         "gate_authority_pass",
@@ -592,6 +595,9 @@ V551J_CERTIFICATION_REJECTION_AUDIT_SCHEMA = {
         "wave",
         "canonical_wave",
         "country_code",
+        "source_family_uid",
+        "wave_uid",
+        "uid_key",
         "certification_blocker_code",
         "certification_blocker_detail",
         "gate_identity_pass",
@@ -736,7 +742,7 @@ V551J_V2_FORBIDDEN_CLAIM_IDS = V551J_FORBIDDEN_CLAIM_IDS + [
 V551J_JOINT_PACKET_CANDIDATE_INDEX_SCHEMA = {
     "required_columns": [
         "run_id", "packet_id", "packet_contract_hash", "pattern_id", "family_id", "family_label", "family_type", "family_structure_type",
-        "source", "source_family", "wave", "canonical_wave", "country_code", "survey_year", "created_at", "schema_version", "compiler_version",
+        "source", "source_family", "wave", "canonical_wave", "country_code", "source_family_uid", "wave_uid", "uid_key", "uid_native_packet_id_v1", "cross_wave_homology_key_v1", "survey_year", "created_at", "schema_version", "compiler_version",
         "v551_schema_version", "v551_input_artifact_hash", "v550j_schema_version", "v550j_manifest_hash", "v550j_readiness_report_hash",
         "question_family_registry_path", "question_family_registry_hash", "question_family_registry_status", "v550j_input_contract_status",
         "pattern_item_count", "matched_relation_component_count", "matched_context_component_count", "special_or_missing_component_count",
@@ -764,7 +770,7 @@ V551J_JOINT_PACKET_CANDIDATE_INDEX_SCHEMA = {
 V551J_JOINT_COMPONENT_INDEX_SCHEMA = {
     "required_columns": [
         "run_id", "packet_id", "pattern_id", "family_id", "item_order", "component_id", "component_contract_hash",
-        "source", "source_family", "canonical_wave", "country_code", "v550j_item_var_code", "v550j_item_question_id",
+        "source", "source_family", "canonical_wave", "country_code", "source_family_uid", "wave_uid", "uid_key", "uid_native_component_id_v1", "v550j_item_var_code", "v550j_item_question_id",
         "v550j_item_role", "v550j_item_condition_label", "v550j_item_response_value_normalized", "v550j_item_response_label",
         "v550j_item_normalized_response_label", "v550j_item_response_direction", "v550j_item_response_intensity", "v550j_item_polarity",
         "v550j_item_directionality_authority_status", "v550j_item_directionality_authority_source", "v550j_item_response_semantics_authority_status",

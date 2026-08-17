@@ -47,9 +47,6 @@ EXPECTED_V551J_TABLES = {
 PACKET_COMPARE_FIELDS = [
     "packet_type",
     "packet_status",
-    "source",
-    "wave",
-    "canonical_wave",
     "country_code",
     "confidence_tier",
     "support_status",
@@ -122,12 +119,19 @@ KNOWN_ABSENCE_FIELDS = [
 
 IDENTITY_FIELDS = [
     "packet_id",
+    "source_family_uid",
+    "wave_uid",
     "source",
     "wave",
     "canonical_wave",
     "country_code",
     "source_artifact_ids_json",
 ]
+
+WAVE_LOCAL_IDENTITY_FIELDS = {
+    "packet_id", "source_family_uid", "wave_uid", "source", "wave",
+    "canonical_wave", "source_artifact_ids_json",
+}
 
 
 def _clean(value: Any) -> str:
@@ -236,9 +240,12 @@ def _frame_to_rows(frame: pd.DataFrame) -> dict[str, dict[str, Any]]:
         return {}
     rows: dict[str, dict[str, Any]] = {}
     for row in frame.to_dict(orient="records"):
-        packet_id = _clean(row.get("packet_id"))
-        if packet_id:
-            rows[packet_id] = row
+        comparison_key = _clean(row.get("cross_wave_homology_key_v1"))
+        if not comparison_key:
+            raise ValueError("V551J cross-wave comparison requires cross_wave_homology_key_v1")
+        if comparison_key in rows:
+            raise ValueError(f"ambiguous duplicate cross-wave homology key: {comparison_key}")
+        rows[comparison_key] = row
     return rows
 
 
@@ -262,23 +269,24 @@ def _pack_table_rows(
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     left_rows = _frame_to_rows(left_bundle["candidate_trace"])
     right_rows = _frame_to_rows(right_bundle["candidate_trace"])
-    packet_ids = sorted(set(left_rows) | set(right_rows))
+    homology_keys = sorted(set(left_rows) | set(right_rows))
 
     packet_diff_rows: list[dict[str, Any]] = []
     authority_diff_rows: list[dict[str, Any]] = []
     affordance_diff_rows: list[dict[str, Any]] = []
     known_absence_diff_rows: list[dict[str, Any]] = []
 
-    for packet_id in packet_ids:
-        left_row = left_rows.get(packet_id)
-        right_row = right_rows.get(packet_id)
+    for homology_key in homology_keys:
+        left_row = left_rows.get(homology_key)
+        right_row = right_rows.get(homology_key)
+        packet_id = _clean((left_row or right_row or {}).get("packet_id"))
         presence = "shared"
         if left_row is None:
             presence = "right_only"
         elif right_row is None:
             presence = "left_only"
 
-        changed_fields = _diff_fields(left_row, right_row, PACKET_COMPARE_FIELDS + IDENTITY_FIELDS)
+        changed_fields = _diff_fields(left_row, right_row, PACKET_COMPARE_FIELDS)
         left_packet_type = _clean((left_row or {}).get("packet_type"))
         right_packet_type = _clean((right_row or {}).get("packet_type"))
         left_support = _clean((left_row or {}).get("support_status"))
@@ -299,6 +307,7 @@ def _pack_table_rows(
                 "left_run_root": left_bundle["run_root"],
                 "right_run_root": right_bundle["run_root"],
                 "packet_id": packet_id,
+                "cross_wave_homology_key_v1": homology_key,
                 "packet_type_left": left_packet_type,
                 "packet_type_right": right_packet_type,
                 "packet_presence_status": presence,

@@ -8,8 +8,19 @@ import json
 import math
 from typing import Any, Mapping, Sequence
 
+from data.ddm_build_copy.ddm_source_wave_identity import (
+    SourceWaveIdentityError,
+    resolve_source_wave_identity,
+)
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    BoundaryContractError,
+    validate_source_wave_identity_coherence,
+)
+
 V551J_PACKET_IDENTITY_NAMESPACE = "v551j_packet_identity_v2_2_2"
 V551J_COMPONENT_IDENTITY_NAMESPACE = "v551j_component_identity_v2_2_2"
+V551J_UID_IDENTITY_NAMESPACE = "v551j_uid_identity_v1"
+V551J_HOMOLOGY_NAMESPACE = "v551j_cross_wave_homology_v1"
 V551J_PACKET_CONTRACT_NAMESPACE = "v551j_packet_contract_v2_2_3"
 V551J_STANCE_TO_DIRECTION = {
     "support": "positive",
@@ -100,6 +111,88 @@ def identity_response_scalar(value: Any) -> Any:
 
 def bool_value(value: Any) -> bool:
     return str(value).strip().lower() in {"true", "1", "yes", "y"}
+
+
+def resolve_v551j_scope_identity(row: Mapping[str, Any], *, require_closed_35: bool = False) -> dict[str, Any]:
+    """Resolve and validate every populated source/wave representation.
+
+    Legacy labels remain in the returned payload. They are checked against the
+    shared UID authority and never used as an alternative identity source.
+    """
+    if not clean(row.get("source")) and not clean(row.get("source_family")):
+        raise SourceWaveIdentityError("V551J scope requires populated source representation")
+    if not clean(row.get("wave")) and not clean(row.get("canonical_wave")):
+        raise SourceWaveIdentityError("V551J scope requires populated wave representation")
+    try:
+        coherence = validate_source_wave_identity_coherence(
+            row,
+            require_complete=True,
+        )
+    except BoundaryContractError as exc:
+        raise SourceWaveIdentityError(str(exc)) from exc
+    identity = resolve_source_wave_identity(
+        coherence.canonical_display_source,
+        coherence.canonical_display_wave,
+        require_closed_35=require_closed_35,
+    )
+    return {
+        "source_family_uid": identity.source_family_uid,
+        "wave_uid": identity.wave_uid,
+        "canonical_display_source": identity.canonical_display_source,
+        "canonical_display_wave": identity.canonical_display_wave,
+        "governance_state": identity.governance_state,
+        "closed_35_member": identity.closed_35_member,
+        "uid_key": identity.uid_key,
+    }
+
+
+def recompute_v551j_uid_native_packet_id(packet: Mapping[str, Any], *, identity: Mapping[str, Any] | None = None) -> str:
+    identity = identity or resolve_v551j_scope_identity(packet)
+    digest = sha256_contract(V551J_UID_IDENTITY_NAMESPACE, {
+        "kind": "packet",
+        "source_family_uid": identity["source_family_uid"],
+        "wave_uid": identity["wave_uid"],
+        "country_code": clean(packet.get("country_code")),
+        "family_id": clean(packet.get("family_id")),
+        "pattern_id": clean(packet.get("pattern_id")),
+    })
+    return "v551j_uid_v1__packet__" + digest[:32]
+
+
+def recompute_v551j_uid_native_component_id(component: Mapping[str, Any], *, identity: Mapping[str, Any] | None = None) -> str:
+    identity = identity or resolve_v551j_scope_identity(component)
+    digest = sha256_contract(V551J_UID_IDENTITY_NAMESPACE, {
+        "kind": "component",
+        "source_family_uid": identity["source_family_uid"],
+        "wave_uid": identity["wave_uid"],
+        "country_code": clean(component.get("country_code")),
+        "family_id": clean(component.get("family_id")),
+        "pattern_id": clean(component.get("pattern_id")),
+        "item_order": identity_scalar(component.get("item_order")),
+        "question_id": clean(component.get("question_id")) or clean(component.get("v550j_item_question_id")),
+        "var_code": clean(component.get("var_code")) or clean(component.get("v550j_item_var_code")),
+        "response_value_normalized": identity_response_scalar(component.get("response_value_normalized") if "response_value_normalized" in component else component.get("v550j_item_response_value_normalized")),
+    })
+    return "v551j_uid_v1__component__" + digest[:32]
+
+
+def recompute_v551j_homology_key(packet: Mapping[str, Any], components: Sequence[Mapping[str, Any]]) -> str:
+    """Wave-independent key from governed component semantics only."""
+    identity = resolve_v551j_scope_identity(packet)
+    semantic_fields = (
+        "item_order", "v550j_item_role", "v550j_item_semantic_response_role",
+        "v550j_item_response_value_normalized", "v550j_item_polarity",
+        "v550j_item_response_direction", "v550j_relation_axis_id",
+        "v550j_family_target_entity_id", "v551_response_direction",
+        "v551_structural_target_entity_id",
+    )
+    rows = [{key: scalar(row.get(key)) for key in semantic_fields} for row in components]
+    rows.sort(key=lambda row: (row.get("item_order") is None, str(row.get("item_order"))))
+    return "v551j_homology_v1__" + sha256_contract(V551J_HOMOLOGY_NAMESPACE, {
+        "source_family_uid": identity["source_family_uid"],
+        "family_id": clean(packet.get("family_id")),
+        "semantic_components": rows,
+    })[:32]
 
 
 def json_list(value: Any) -> list[Any]:
