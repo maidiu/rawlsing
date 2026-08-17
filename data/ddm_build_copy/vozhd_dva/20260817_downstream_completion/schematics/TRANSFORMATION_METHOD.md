@@ -1,12 +1,22 @@
 # Boundary Transformation Method
 
-For every seam `A → B`, analyze the transformation using the same sequence.
+For every current stage `B` with downstream consumer `C`, do not assume the immediate predecessor is the whole upstream world. Determine the stage contract by reconciling **everything lawfully available upstream** with **what the downstream consumer actually needs**.
 
-## 1. Upstream authority
+The governing sequence is:
 
-Inventory the richest lawful objects and distinctions actually emitted by A. Start from canonical implementation outputs, not an imagined cleaner interface.
+`UPSTREAM AVAILABILITY → DOWNSTREAM REQUIREMENT → LAWFUL INTAKE SELECTION → STAGE-SPECIFIC TRANSFORMATION → REACHABLE OUTPUT ENVELOPE → REQUIRED OUTPUT CONTRACT`
 
-Record:
+The accepted contract is the minimum semantically complete output that both:
+1. B can lawfully create from available upstream authority; and
+2. C actually needs in order to perform its own assigned transformation without guessing, reaching behind B, or forcing B to perform C's work.
+
+## 1. Upstream availability envelope
+
+Inventory the richest lawful objects, authorities, and contexts available anywhere upstream that B could potentially consume. Start from actual canonical implementation outputs and concrete dependencies, not an imagined neat serial interface.
+
+For every available surface record:
+- producer/stage;
+- artifact/object/field;
 - object grain and stable IDs;
 - structural/temporal/scope identities;
 - values, relations, directionality, conditions;
@@ -14,23 +24,95 @@ Record:
 - epistemic class;
 - uncertainty/confidence;
 - absence, noncomparability, blockers, permissions, negative authority;
-- distinctions explicitly forbidden from downstream inference.
+- whether B currently consumes it;
+- whether it arrives through the immediate handoff or by direct reach-back.
 
-## 2. Lawful intake into B
+Classify its possible jurisdiction as one of:
+- `PRIMARY_HANDOFF`;
+- `LAWFUL_DIRECT_CO_INPUT`;
+- `AUTHORITY_CONTEXT`;
+- `PROVENANCE_CONTEXT`;
+- `VALIDATION_CONTEXT`;
+- `SHOULD_BE_CARRIED_THROUGH_HANDOFF`;
+- `SHOULD_NOT_BE_CONSUMED`;
+- `UNRESOLVED`.
 
-Determine which upstream objects B should consume and at what grain. If B currently consumes a lossy compatibility surface while richer canonical information exists upstream, record that as a seam defect rather than designing around the loss.
+The existence of a current read path does not prove that the dependency belongs in the final architecture.
 
-## 3. B-specific operation
+## 2. Downstream demand envelope
 
-State exactly what new class of meaning B is responsible for adding.
+Before defining B's operation or output, work backward from C.
+
+Determine:
+- what operation C is actually responsible for performing;
+- what information C must receive from B in order to perform it;
+- what information is truly required versus merely convenient;
+- what C would otherwise have to guess, reconstruct, or reach upstream to recover;
+- what C must explicitly receive as unresolved, absent, noncomparable, blocked, or uncertain;
+- which requested meanings actually belong to C or a later stage and therefore must not be pre-resolved by B.
+
+This defines the **backward floor**: the minimum semantically complete input C needs from B.
+
+## 3. Lawful intake selection for B
+
+Now determine which parts of the upstream availability envelope B should actually consume.
+
+For each downstream-required information class ask:
+- is it already present in the immediate governed handoff?
+- if not, does a lawful direct co-input exist upstream?
+- is the direct co-input genuinely necessary, or does its necessity expose a handoff gap?
+- is the source semantic payload, authority context, provenance context, or validation context?
+- if multiple upstream surfaces appear to provide the same meaning, which one is authoritative and what are the others allowed to do?
+
+If richer governed information exists upstream but current B consumes a lossy compatibility surface, record a seam defect rather than designing around the loss.
+
+## 4. B-specific transformation obligation
+
+Only after upstream availability and downstream demand are known, state exactly what new class of meaning B must create.
 
 Use the form:
 
-`INPUT GRAIN → AUTHORIZED OPERATION → OUTPUT GRAIN`
+`SELECTED LAWFUL INPUT GRAINS → B-AUTHORIZED OPERATION → B-DERIVED OBJECT GRAINS`
 
-The operation must say what B computes, derives, groups, conditions, or re-expresses that A did not already know.
+The operation must identify what B computes, derives, compares, groups, conditions, temporalizes, or re-expresses that upstream sources did not already know.
 
-## 4. Preservation ledger
+Every proposed derived field must have:
+- a lawful source basis;
+- an explicit transformation rule or governed derivation class;
+- retained lineage to its basis;
+- an epistemic/permission state;
+- a clear reason B rather than an upstream or downstream stage owns the derivation.
+
+## 5. Reachable output envelope
+
+Given the complete lawful intake composition and B's authorized operation, determine **everything B is actually capable of emitting without invention**.
+
+This is the **forward ceiling**.
+
+Separate:
+- directly preserved upstream meaning;
+- losslessly reformatted meaning;
+- governed B-derived meaning;
+- lawful aggregation with lineage;
+- unresolved/negative states that must survive;
+- meanings B cannot lawfully create.
+
+The reachable output envelope may be richer than what C currently needs. Do not automatically turn every reachable field into a required contract field.
+
+## 6. Required B output contract
+
+Intersect the reachable output envelope with the downstream demand envelope.
+
+The required output contract is the minimum object set that:
+- lets C perform its own transformation without upstream reach-back;
+- preserves all distinctions needed by named downstream capabilities;
+- preserves lineage and authority for every B-derived value;
+- carries unresolved/absence/noncomparability/blocker states where they matter;
+- does not pre-resolve responsibilities belonging to C or later stages.
+
+If B can lawfully produce useful information that C does not currently require but a named later capability does require, preserve it when dropping it here would force downstream reconstruction. Record that downstream consumer explicitly.
+
+## 7. Preservation / transformation ledger
 
 Classify each important incoming distinction as:
 - `PRESERVE` — identity/meaning must remain directly or by stable reference;
@@ -43,38 +125,27 @@ Classify each important incoming distinction as:
 
 Silent loss is never a valid category.
 
-## 5. Required B output
+## 8. Reconciliation outcomes
 
-Describe the minimum semantically complete object B must emit after performing its own operation. This should be rich enough for the next transformation without incorporating responsibilities that belong downstream.
-
-## 6. Downstream need
-
-Work backward from C, the next stage after B:
-- what does C need to perform its assigned operation?
-- which B outputs are causal inputs versus audit/provenance support?
-- what would C otherwise be forced to guess or reconstruct?
-
-Do not require B to resolve actor-specific facts or semantics that belong to C or later runtime stages.
-
-## 7. Forward/backward reconciliation
-
-Compare:
-- **forward ceiling:** what B can lawfully derive from A;
-- **backward floor:** what C minimally requires from B.
-
-Outcomes:
-- `MEETS` — lawful output can satisfy downstream need;
+For every downstream requirement compare the backward floor with the forward ceiling and classify:
+- `MEETS` — lawful reachable output satisfies downstream need;
 - `UPSTREAM_INFORMATION_LOSS` — required meaning exists earlier but is not reaching B;
-- `MISSING_AUTHORITY` — downstream desire exceeds what evidence can support;
+- `MISSING_AUTHORITY` — downstream desire exceeds everything lawfully available upstream;
 - `MISPLACED_RESPONSIBILITY` — requested meaning belongs to another stage;
-- `CONTRACT_GAP` — B can create the needed meaning but current code/schema does not;
-- `REPRESENTATION_GAP` — semantics exist but are not preserved in the downstream handoff.
+- `CONTRACT_GAP` — B can lawfully create the needed meaning but current code/schema does not;
+- `REPRESENTATION_GAP` — semantics exist but are not preserved in B's downstream handoff;
+- `REDUNDANT_REACH_BACK` — B reaches upstream for meaning already carried by its governed handoff;
+- `HANDOFF_GAP` — B legitimately needs upstream meaning that the immediate handoff should probably carry but does not.
 
-## 8. Worked transformations
+## 9. Worked transformations
 
-At least two concrete examples should travel through the seam field-by-field. Prefer one ordinary and one adversarial/ambiguous case.
+At least two concrete examples should travel through:
 
-## 9. Hostile cases
+`upstream availability → selected inputs → B operation → reachable outputs → downstream-required subset`
+
+Prefer one ordinary and one adversarial/ambiguous case.
+
+## 10. Hostile cases
 
 Test at least:
 - contradiction/competing evidence;
@@ -82,16 +153,21 @@ Test at least:
 - unknown versus low confidence;
 - noncomparability;
 - temporal drift/rupture uncertainty where relevant;
+- duplicate/competing upstream authorities;
 - direct structure-to-person/personality inference pressure.
 
-## 10. Session termination
+## 11. Session termination
 
 A session ends with only:
-1. accepted/proposed transformation equation;
-2. required preserve/derive/drop/forbid ledger;
-3. concrete seam defects;
-4. implementable producer/consumer obligations;
-5. unresolved questions requiring Vozhd adjudication;
-6. adjacent seams that must be informed.
+1. accepted upstream availability/intake map;
+2. accepted downstream demand map;
+3. accepted stage transformation equation;
+4. accepted reachable output envelope;
+5. required downstream output contract;
+6. preserve/derive/drop/forbid/unresolved ledger;
+7. concrete seam/reach-back defects;
+8. implementable producer/consumer obligations;
+9. unresolved questions requiring Vozhd adjudication;
+10. adjacent seams that must be informed.
 
 No production implementation begins merely because a breakout worker proposes a schema.
