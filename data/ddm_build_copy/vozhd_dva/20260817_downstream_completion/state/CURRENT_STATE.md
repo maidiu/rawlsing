@@ -2,48 +2,62 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** downstream-completion setup / pre-launch
+**Phase:** WAVE_0_READY_FOR_LAUNCH
 
 ## Mission now
 
-Prepare and execute the V553→V558 semantic-completion cycle with downstream requirements visible, then rebuild V3/V2 and complete the app-facing path economically.
+Execute the bounded five-worker Wave 0 that will make V553→V558 downstream requirements concrete, repair the known V552J→V553 entry defect, and establish executable vertical-continuity infrastructure. Vozhd Dva will then adjudicate the five returns into a finite Wave-1 implementation register.
 
 ## Canonical assumptions
 
-- Current `main` is the implementation frontier.
+- Current repository code is the implementation frontier.
 - V550–V552J are closed by default.
-- `POSTG5-004` activates in this phase: repair the V552J→V553 mismatch on the V553 consumer side unless contrary evidence emerges.
-- V553–V558 are not to be completed in isolation from downstream consumer needs.
-- Enneagram-like attractor formation is part of the intended design; stage responsibility must be made precise during verticalization.
-- Architecture/process work is bounded by execution value and must not become a parallel infinite project.
+- `POSTG5-004` is active: repair the obsolete V552J→V553 consumer expectation on the V553 side.
+- V553–V558 are not independently finishable without downstream-consumer visibility.
+- Enneagram-like attractor formation is part of the intended design; V556 supplies structural pressure-flow/attractor prerequisites and topology, while V3 later realizes actor-specific developmental formation.
+- V3 is the intended causal/temporal actor engine; V2 is the intended phenomenological/conversational layer and is not causal authority.
+- Architecture/process work is bounded by execution value and may not become an independent infinite project.
 
-## Control-room structure
+## Wave 0 structure
 
-- Command layer established at root.
-- Prong isolation/context-envelope rules established.
-- Rabochii worker-packet template established.
-- Integration space established.
-- Vozhd Dva review space established.
-- No Rabochii assignments launched yet in this cycle.
+Five worker cells are fully specified under `rabochii/WAVE_0/`:
 
-## Immediate next control-room task
+1. **R0-01 V553/V554** — repair `POSTG5-004`; audit V552J→V553→V554 preservation/loss.
+2. **R0-02 V555** — define the minimum mediation-information contract without actor-specific biography.
+3. **R0-03 V556/attractor** — define pressure-flow/attractor topology and the V556/V3 jurisdiction seam.
+4. **R0-04 runtime contract** — define minimum V557/V558→V3 and V3→V2 consumer requirements.
+5. **R0-05 vertical harness** — build isolated deterministic five-slice continuity-test infrastructure.
 
-Define the first concurrent reconnaissance/requirements wave, including exact worker context envelopes, write domains, downstream obligations, synchronization points, and return criteria.
+Common worker protocol:
+- `rabochii/WAVE_0/README.md`
+- `rabochii/WAVE_0/LAUNCH_INDEX.md`
+- `rabochii/WAVE_0/REPORT_FORMAT.json`
 
-Candidate lanes currently under consideration:
+Every worker returns `RESULT.md` + `RESULT.json` inside its assigned cell on its worker branch and opens a draft PR against the Wave-0 integration branch.
 
-1. V553/V554 current-contract and downstream-needs audit;
-2. V555 mediation semantics audit;
-3. V556 pressure-flow / attractor semantics audit;
-4. V557/V558 boundary plus V3 consumer-needs audit;
-5. vertical fixture / continuity-test design.
+## Vozhd Dva intake/review structure
 
-These are candidate lanes, not yet binding assignments. Vozhd Dva must check overlap/dependencies before launch.
+- Intake/synchronization: `integration/WAVE_0_INTAKE_LEDGER.md`
+- Review protocol: `reviews/WAVE_0_REVIEW_PROTOCOL.md`
+- Individual Vozhd reviews will be written under `reviews/WAVE_0/`.
+- Worker self-report never equals project acceptance.
+
+## Immediate next action
+
+1. Create/pin `agent/vozhd-dva-wave0-integration` from the finalized control-room `main` snapshot.
+2. Launch R0-01 through R0-05 concurrently from that base using `rabochii/WAVE_0/LAUNCH_INDEX.md`.
+3. As returns arrive, review PR + report together, update the intake ledger, and propagate cross-hooks to affected lanes.
 
 ## Active blockers
 
-- No control-room blocker to beginning the first worker-wave design.
-- `POSTG5-004` is an implementation entry defect for the V553 lane.
+No control-room blocker to Wave-0 launch.
+
+Known implementation entry defect:
+- `POSTG5-004`, owned by R0-01.
+
+## Wave-0 exit condition
+
+Wave 0 is complete only after Vozhd Dva has reviewed all five returns, adjudicated collisions, updated `CAPABILITY_MATRIX.md`, and produced a finite Wave-1 implementation register with non-overlapping write domains and executable acceptance tests.
 
 ## Restart instruction
 
@@ -52,6 +66,8 @@ A future Vozhd Dva chat should read, in order:
 1. `CONTROL_ROOM_MAP.md`
 2. `state/CURRENT_STATE.md`
 3. `LIVE_ITINERARY.md`
-4. only then the specific strategy/prong/worker/review files needed for the next action.
+4. `rabochii/WAVE_0/LAUNCH_INDEX.md` if Wave 0 is still active
+5. `integration/WAVE_0_INTAKE_LEDGER.md`
+6. only the specific worker/review/prong files needed for the next action.
 
 Do not reconstruct project state from chat history when the control-room state is available.
