@@ -2,11 +2,17 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** `S00_ADJUDICATED__S01_PREP`
+**Phase:** `S00_5_V553_ARCHITECTURE_ACTIVE`
 
 ## Mission now
 
-Prepare and launch only schematic session S01 for V554, using the S00 ruling and cumulative map as inherited law. Do not reopen V553 unless a concrete V554 contradiction proves the S00 ruling insufficient.
+Before launching S01/V554, complete a bounded V553 architecture/build-out pass using the two accepted S00 excavations as primary evidence and the S00 Vozhd ruling as binding law.
+
+The sequence is now:
+
+`S00 adjudicated → S00.5 V553 architecture build-out → Vozhd implementation ruling → bounded V553 implementation → V553 completion/vertical court → S01`
+
+S01 is intentionally paused. It should reason from the V553 we actually intend to complete, not from the current mixed scaffold plus a theoretical contract.
 
 ## Governing architecture
 
@@ -27,13 +33,10 @@ Complete. V550–V552J remain closed by default. POSTG5-004 is closed on the V55
 ## S00 closeout
 
 Accepted worker returns:
-- S00-B / PR #43 — ACCEPT, merged to S00 integration.
-- S00-F / PR #44 — ACCEPT, merged to S00 integration.
+- S00-B / PR #43 — ACCEPT.
+- S00-F / PR #44 — ACCEPT.
 
-The four accepted result artifacts were integrated onto current `main` at commit:
-`7db3dfbab6d2497da50c496cb2de76a5d7cee083`
-
-Conflicted aggregate PR #45 was closed rather than allowing stale control-room/assignment copies to overwrite newer `main`.
+Their four result artifacts are present on `main` and are the detailed implementation evidence base for S00.5.
 
 Authoritative ruling:
 `schematics/synthesis/S00_V552J_TO_V553_RULING.md`
@@ -41,51 +44,80 @@ Authoritative ruling:
 Authoritative cumulative map:
 `schematics/CUMULATIVE_UPSTREAM_MAP.md`
 
-## S00 accepted law
+## S00 accepted V553 law
 
-- V552 owns the empirical structural-pressure fact and exact factual identity/provenance.
+- V552 owns empirical structural-pressure facts and factual identity/provenance.
 - V552J owns packet↔fact admission/use permission, blockers and association lineage.
 - certified earlier semantic/directionality/position authority supplies cross-wave compatibility authority.
-- V553 owns the new temporal meaning only: comparable temporal identity, ordered observations, authorized change/delta, temporal gaps/noncomparability/uncertainty, and bounded governed temporal summaries.
+- V553 owns the new temporal meaning: comparable temporal identity, ordered observations, authorized change/delta, temporal gaps/noncomparability/uncertainty, and bounded governed temporal summaries.
 - exact sparse V553 temporal objects are primary for temporal structural identity; aggregate country-year projections are secondary.
-- V554 may directly compose V552, V552J, earlier governed authority and V553 temporal objects according to semantic purpose.
-- structural rupture candidate is distinct from external historical-event/causal rupture. The former requires an explicit versioned candidate rule; the latter requires separate event authority.
+- V554/later stages may directly compose V552, V552J, earlier governed authority and V553 objects according to semantic purpose.
+- structural rupture candidate is distinct from external historical-event/causal rupture.
 
-Accepted V553 object families inherited by S01:
+Accepted V553 semantic families:
 - `TEMPORAL_KEY`
 - `TEMPORAL_OBSERVATION`
 - `TEMPORAL_RELATION`
 - `TEMPORAL_LIMIT / NEGATIVE AUTHORITY`
 - secondary aggregate temporal projection
 
+## Active interstitial — S00.5 V553 architecture build-out
+
+Worker branch:
+`agent/vozhd-dva-s00-5-v553-architecture`
+
+Assignment:
+`schematics/sessions/S00_5_V553_ARCHITECTURE/ASSIGNMENT.md` on that worker branch.
+
+S00.5 is **not another seam-ontology court**. It works directly from both S00 excavations plus the accepted ruling and asks:
+
+`complete current V553 implementation`
+`+ S00-F detailed findings`
+`+ S00-B detailed findings`
+`+ frozen S00 law`
+`→ target V553 internal architecture`
+`→ keep/promote/repair/merge/demote/deprecate decisions`
+`→ canonical artifact contract`
+`→ dependency-ordered implementation packets`
+`→ completion tests`
+`→ finite V553_COMPLETE_FOR_V554 gate`
+
+Production code is read-only for the S00.5 architecture worker.
+
+### Required S00.5 outcome
+
+The result must be detailed enough that Vozhd can launch finite V553 implementation packets without another V553 architecture cycle.
+
+It must identify:
+- current V553 module/artifact topology;
+- canonical target architecture;
+- sparse-vs-aggregate disposition;
+- authority/identity precedence;
+- canonical artifact family and handoff shape;
+- concrete current gaps/bugs/duplicate authority;
+- implementation order and parallelization boundaries;
+- fast completion tests and later horizontal qualification;
+- PASS/FAIL definition of `V553_COMPLETE_FOR_V554`.
+
 ## Reporting economy law
 
-S00 proved that the old breakout reports were more granular than necessary. Future workers may investigate deeply but return compact decision-bearing artifacts under:
+Workers may investigate deeply but return decision-bearing architecture rather than research notes. S00.5 is allowed more implementation detail than ordinary seam breakouts because its purpose is to terminate in build packets.
+
+General method remains:
 - `schematics/TRANSFORMATION_METHOD.md`
 - `schematics/BOUNDARY_SESSION_TEMPLATE.md`
 
-Normal return target:
-- ≤12 need/reuse rows;
-- ≤8 residual-obligation bullets;
-- ≤6 output object families;
-- ≤5 concrete defects;
-- ≤3 unresolved Vozhd forks;
-- 2 worked cases.
+## S01 status
 
-Extra detail must justify a real semantic distinction or implementation obligation.
+S01/V554 is `BLOCKED_BY_V553_COMPLETION_ARCHITECTURE_AND_BUILD`.
 
-## Next session — S01 only
+After S00.5 returns:
+1. Vozhd reviews and adjudicates the target V553 architecture.
+2. Launch bounded implementation workers, expected roughly 3–6 packets unless evidence requires otherwise.
+3. Run the V553 completion court / relevant Wave-0 vertical tests.
+4. Only after `V553_COMPLETE_FOR_V554 = PASS` does S01 launch.
 
-S01 studies V554 by asking:
-
-`cumulative upstream map + accepted V553 objects + V555 total need`
-`→ what V555 can already reuse directly`
-`→ residual meaning V554 must uniquely create`
-`→ V554 selected inputs`
-`→ V554 transformation/new outputs`
-`→ V555 composed-input sufficiency`
-
-S02–S07 remain blocked until successive adjudications.
+S02–S07 remain blocked successively.
 
 ## Restart instruction
 
@@ -95,7 +127,8 @@ Read in order:
 3. `schematics/TRANSFORMATION_METHOD.md`
 4. `schematics/CUMULATIVE_UPSTREAM_MAP.md`
 5. `schematics/synthesis/S00_V552J_TO_V553_RULING.md`
-6. `schematics/SESSION_INDEX.md`
-7. only the active S01 materials once created.
+6. both S00 worker `RESULT.md` / `RESULT.json` pairs
+7. `schematics/SESSION_INDEX.md`
+8. S00.5 assignment/result on `agent/vozhd-dva-s00-5-v553-architecture`
 
 Do not reconstruct project state from chat history when the control room is available.
