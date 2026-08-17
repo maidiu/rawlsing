@@ -256,15 +256,12 @@ def _poh(o,c,run_id):
         g=c[c.v552_pressure_observation_id.astype(str).eq(_clean(d.get("v552_pressure_observation_id")))] if not c.empty else c;r={k:d.get(k) for k in cols};r.update(run_id=run_id,handoff_id=_id("v552poh__",d.get("v552_pressure_observation_id")),v552_pressure_component_ids_json=_json(sorted(g.get("v552_pressure_component_id",pd.Series(dtype=str)).fillna("").astype(str))),v552_component_measurement_hashes_json=_json(sorted(g.get("component_measurement_hash",pd.Series(dtype=str)).fillna("").astype(str))),direct_v553_authorization=False,temporal_authority=False,runtime_authority=False,created_at=_now(),schema_version=V552_SCHEMA_VERSION,compiler_version=V552_COMPILER_VERSION);rows.append(r)
     return pd.DataFrame(rows,columns=cols)
 def _handoff(outputs,run_id,source_family_uid="",wave_uid=""):
+    source_family_uid=_clean(source_family_uid);wave_uid=_clean(wave_uid)
+    if bool(source_family_uid) != bool(wave_uid):raise ValueError("BLOCKED_V552_HANDOFF_UID_SCOPE_INCOMPLETE")
     rows=[]
-    if not source_family_uid or not wave_uid:
-        for frame in outputs.values():
-            if isinstance(frame,pd.DataFrame) and not frame.empty and {"source_family_uid","wave_uid"} <= set(frame.columns):
-                source_family_uid=_clean(frame.iloc[0].get("source_family_uid"));wave_uid=_clean(frame.iloc[0].get("wave_uid"));break
     for n,f in outputs.items():
         if n.startswith("_") or not isinstance(f,pd.DataFrame):continue
         r={c:None for c in S.V552_TO_V552J_HANDOFF_INDEX_SCHEMA["required_columns"]};allow=not f.empty and f.get("downstream_permission_status",pd.Series(dtype=str)).eq("ALLOW").any();r.update(source_family_uid=source_family_uid,wave_uid=wave_uid,run_id=run_id,handoff_index_id=_id("v552hi__",n),artifact_name=n,artifact_lane="audit" if "audit" in n else "structural",artifact_status="populated" if not f.empty else "not_applicable",runtime_use_class="structural_handoff_only",downstream_permission_class="v552j_pressure_linkage" if allow else "v552j_structural_context_only",downstream_consumer_layer="V552J",ready_for_v552j_inspection=True,ready_for_v553_after_v552j=False,known_absences_json="[]",comparability_status="ready" if allow else "not_ready",measurement_evidence_status="PRESENT" if allow else "NOT_APPLICABLE",downstream_permission_status="ALLOW" if allow else "DENY",created_at=_now(),schema_version=V552_SCHEMA_VERSION);rows.append(r)
-    for row in rows: row.update(source_family_uid=source_family_uid,wave_uid=wave_uid)
     return pd.DataFrame(rows).reindex(columns=S.V552_TO_V552J_HANDOFF_INDEX_SCHEMA["required_columns"])
 def _runstate(o,c):
     if not o.empty and o.pressure_score_status.isin(OBSERVED_PRESSURE_STATUSES).any():return "PASS","PRESENT","ALLOW"
@@ -272,10 +269,12 @@ def _runstate(o,c):
     return "PASS","NOT_APPLICABLE","NOT_APPLICABLE"
 def _readiness_base(run_id,atoms,o,c,outputs):
     i,e,p=_runstate(o,c);r={x:None for x in S.V552_READINESS_REPORT_SCHEMA["required_columns"]};r.update(run_id=run_id,status=i,input_contract_status="PASS",ready_for_v552j_structural_inspection=True,ready_for_v552j_pressure_linkage=p=="ALLOW",ready_for_v553_direct=False,input_atom_rows=len(atoms),input_atom_count=len(atoms),category_empirical_object_count=len(atoms),unique_empirical_distribution_count=c.get("empirical_distribution_id",pd.Series(dtype=str)).nunique(),unique_empirical_object_count=atoms.get("empirical_object_id",pd.Series(dtype=str)).nunique(),unique_empirical_object_grain="v551_promotable_response_category",pressure_observation_candidate_count=len(o),observed_pressure_count=int(o.get("pressure_score_status",pd.Series(dtype=str)).eq("OBSERVED_NONZERO").sum()),observed_zero_pressure_count=int(o.get("pressure_score_status",pd.Series(dtype=str)).eq("OBSERVED_ZERO").sum()),noncomputable_pressure_count=int(o.get("pressure_score_status",pd.Series(dtype=str)).eq("APPLICABLE_BUT_UNRESOLVED").sum()),review_required_pressure_count=int(o.get("pressure_score_status",pd.Series(dtype=str)).eq("APPLICABLE_BUT_UNRESOLVED").sum()),pressure_linkage_eligible_count=int(o.get("downstream_permission_status",pd.Series(dtype=str)).eq("ALLOW").sum()),invalid_output_contract_rows=0,allowed_for_v553_temporal_field_count=0,v552_compile_status=i,v552_structural_readiness=e,v552_directionality_readiness=e,v552_v552j_handoff_readiness=p,v552_v553_comparability_readiness="not_authorized_at_v552",v552_runtime_readiness="not_runtime_authorized",ready_for_v552j_inspection=True,ready_for_v553_after_v552j=False,output_artifact_count=sum(isinstance(f,pd.DataFrame) for f in outputs.values()),artifact_authority_rows=0,known_absence_rows=int(e=="APPLICABLE_UNRESOLVED"),handoff_index_rows=len(outputs.get("v552_to_v552j_pressure_observation_handoff_index",pd.DataFrame())),comparability_key_count=int(o.get("downstream_permission_status",pd.Series(dtype=str)).eq("ALLOW").sum()),final_status=i,created_at=_now(),schema_version=V552_SCHEMA_VERSION,compiler_version=V552_COMPILER_VERSION,boundary_contract_version="rawlsing_pipeline_boundary_v1",run_integrity_status=i,evidence_status=e,downstream_permission_status=p,producer_schema_version=V551_SCHEMA_VERSION,producer_compiler_version=V551_COMPILER_VERSION,producer_manifest_sha256="");return pd.DataFrame([r]).reindex(columns=S.V552_READINESS_REPORT_SCHEMA["required_columns"])
-def _readiness(run_id,atoms,o,c,outputs):
+def _readiness(run_id,atoms,o,c,outputs,source_family_uid="",wave_uid=""):
     report=_readiness_base(run_id,atoms,o,c,outputs)
-    if not atoms.empty:
-        report.loc[:,"source_family_uid"]=_clean(atoms.iloc[0].get("source_family_uid"));report.loc[:,"wave_uid"]=_clean(atoms.iloc[0].get("wave_uid"))
+    source_family_uid=_clean(source_family_uid);wave_uid=_clean(wave_uid)
+    if bool(source_family_uid) != bool(wave_uid):raise ValueError("BLOCKED_V552_READINESS_UID_SCOPE_INCOMPLETE")
+    if source_family_uid and wave_uid:
+        report.loc[:,"source_family_uid"]=source_family_uid;report.loc[:,"wave_uid"]=wave_uid
     return report
 
 def apply_v552_downstream_permission(outputs,*,allow_downstream):
@@ -289,13 +288,25 @@ def apply_v552_downstream_permission(outputs,*,allow_downstream):
             for c in ["v552j_pressure_linkage_eligible","v553_probe_candidate_after_v552j","allowed_for_v552j","allowed_for_v553_probe","ready_for_v552j_inspection","ready_for_v553_after_v552j"]:
                 if c in f:f.loc[:,c]=False
 
-def build_v552_structural_outputs(atoms,directional_coverage=None,directional_adjudication=None,conditional_determinicity=None,*,run_id="v552_run"):
+def build_v552_structural_outputs(atoms,directional_coverage=None,directional_adjudication=None,conditional_determinicity=None,*,run_id="v552_run",source_family_uid="",wave_uid=""):
     cov=directional_coverage if directional_coverage is not None else pd.DataFrame();adj=directional_adjudication if directional_adjudication is not None else pd.DataFrame();rep=validate_v552_v551_input_contract(atoms,cov,adj,run_id=run_id)
     if rep["status"]!="PASS":raise ValueError(rep["status"]+":"+"|".join(rep["errors"]))
+    source_family_uid=_clean(source_family_uid);wave_uid=_clean(wave_uid)
+    if bool(source_family_uid) != bool(wave_uid):raise ValueError("BLOCKED_V552_BUILD_UID_SCOPE_INCOMPLETE")
+    observed_pairs=set()
+    for frame in (atoms,cov,adj):
+        if isinstance(frame,pd.DataFrame) and not frame.empty and {"source_family_uid","wave_uid"} <= set(frame.columns):
+            for sf,wv in zip(frame["source_family_uid"],frame["wave_uid"]):
+                sf=_clean(sf);wv=_clean(wv)
+                if bool(sf) != bool(wv):raise ValueError("BLOCKED_V552_BUILD_UID_FRAME_INCOMPLETE")
+                if sf and wv:observed_pairs.add((sf,wv))
+    if len(observed_pairs)>1:raise ValueError("BLOCKED_V552_BUILD_UID_SCOPE_DIVERGENT")
+    if source_family_uid and observed_pairs and observed_pairs!={(source_family_uid,wave_uid)}:raise ValueError("BLOCKED_V552_BUILD_UID_SCOPE_MISMATCH")
+    if not source_family_uid and len(observed_pairs)==1:source_family_uid,wave_uid=next(iter(observed_pairs))
     comp=build_v552_pressure_component_index(atoms,cov,run_id=run_id);obs=build_v552_pressure_observation_index(atoms,comp,cov,adj,run_id=run_id);outputs={"v552_pressure_component_index":comp,"v552_intensity_representation_resolution_audit":build_v552_intensity_representation_resolution_audit(comp),"v552_pressure_observation_index":obs,"v552_pressure_observation_audit":build_v552_pressure_observation_audit(obs),"relation_axis_pressure":build_relation_axis_pressure_from_observations(obs,run_id),"target_entity_pressure":build_target_entity_pressure_from_observations(obs,run_id),"driver_facet_pressure":build_driver_facet_pressure_from_observations(obs,run_id),"country_wave_pressure_profile":build_country_wave_pressure_profile_from_observations(obs,run_id),"structural_channel_index":build_structural_channel_index_from_observations(obs,run_id),"position_conditioning_profile":build_position_conditioning_profile_from_observations(obs,run_id),"contradiction_tensor":build_contradiction_tensor_from_observations(obs,run_id)}
     empties={"contradiction_surface":"V552_CONTRADICTION_SURFACE_SCHEMA","question_semantic_hierarchy":"V552_QUESTION_SEMANTIC_HIERARCHY_SCHEMA","facet_semantic_profile":"V552_FACET_SEMANTIC_PROFILE_SCHEMA","driver_semantic_profile":"V552_DRIVER_SEMANTIC_PROFILE_SCHEMA","stratum_semantic_profile":"V552_STRATUM_SEMANTIC_PROFILE_SCHEMA","horizon_semantic_profile":"V552_HORIZON_SEMANTIC_PROFILE_SCHEMA","aggregate_projection_surface":"V552_AGGREGATE_PROJECTION_SURFACE_SCHEMA","horizon_constraint_index":"V552_HORIZON_CONSTRAINT_INDEX_SCHEMA","parent_position_prior":"V552_PARENT_POSITION_PRIOR_SCHEMA","parent_attitude_prior":"V552_PARENT_ATTITUDE_PRIOR_SCHEMA","parent_behavior_tendency_prior":"V552_PARENT_BEHAVIOR_TENDENCY_PRIOR_SCHEMA","parent_contradiction_prior":"V552_PARENT_CONTRADICTION_PRIOR_SCHEMA","parent_prior_manifest":"V552_PARENT_PRIOR_MANIFEST_SCHEMA","parent_position_prior_manifest":"V552_PARENT_PRIOR_MANIFEST_SCHEMA","v552_directionality_coverage_audit":"V552_DIRECTIONALITY_COVERAGE_AUDIT_SCHEMA","v552_directionality_gap_surface":"V552_DIRECTIONALITY_GAP_SURFACE_SCHEMA","v552_status_pressure_review_surface":"V552_STATUS_PRESSURE_REVIEW_SCHEMA","v552_artifact_authority_index":"V552_ARTIFACT_AUTHORITY_INDEX_SCHEMA","v552_known_absence_register":"V552_KNOWN_ABSENCE_REGISTER_SCHEMA","conditional_determinicity_status_audit":"V552_CONDITIONAL_DETERMINICITY_STATUS_AUDIT_SCHEMA"}
     for n,a in empties.items():outputs[n]=_empty(getattr(S,a))
-    facts=_facts(obs,run_id);outputs["v552_structural_fact_index"]=facts;outputs["v552_temporal_key_source_index"]=_temporal(facts,run_id);outputs["v552_to_v552j_pressure_observation_handoff_index"]=_poh(obs,comp,run_id);outputs["v552_to_v552j_handoff_index"]=_handoff(outputs,run_id);outputs["v552_readiness_report"]=_readiness(run_id,atoms,obs,cov,outputs);outputs["_input_atoms"]=atoms.copy();outputs["_input_directional_coverage"]=cov.copy();outputs["_input_directional_adjudication"]=adj.copy();outputs["_v552_input_contract_report"]=pd.DataFrame([rep]);return outputs
+    facts=_facts(obs,run_id);outputs["v552_structural_fact_index"]=facts;outputs["v552_temporal_key_source_index"]=_temporal(facts,run_id);outputs["v552_to_v552j_pressure_observation_handoff_index"]=_poh(obs,comp,run_id);outputs["v552_to_v552j_handoff_index"]=_handoff(outputs,run_id,source_family_uid,wave_uid);outputs["v552_readiness_report"]=_readiness(run_id,atoms,obs,cov,outputs,source_family_uid,wave_uid);outputs["_input_atoms"]=atoms.copy();outputs["_input_directional_coverage"]=cov.copy();outputs["_input_directional_adjudication"]=adj.copy();outputs["_v552_input_contract_report"]=pd.DataFrame([rep]);return outputs
 
 def validate_v552_v2_1_output_contract(outputs):
     issues=[]
