@@ -36,13 +36,14 @@
     "static_fixed_point_reached": true,
     "runtime_pass_not_claimed": true
   },
-  "current_phase": "W03_A_V550_IDENTITY_TRANSPORT",
-  "completed_phases": ["W01-A", "W02-A", "W05-A", "W06-A"],
-  "released_phases": ["W03-A"],
-  "blocked_phases": ["W03-B", "W04-A", "W04-B", "W06-B", "W06-C", "W06-D", "W05-B", "W02-B"],
+  "current_phase": "G3_PARALLEL_V551_AND_V550J_IDENTITY_TRANSPORT",
+  "completed_phases": ["W01-A", "W02-A", "W05-A", "W06-A", "W03-A"],
+  "released_phases": ["W03-B", "W04-A"],
+  "blocked_phases": ["W04-B", "W06-B", "W06-C", "W06-D", "W05-B", "W02-B"],
   "g1_kernel_merge_sha": "3a5a869b49693817e83b8391113ca08bb7a17f81",
   "g2a_authority_ingress_merge_sha": "2621567e151529c0d09c788ec0fcd473ac925b94",
   "g2b_shared_boundary_merge_sha": "4cb28f24e941603d37d2e9e30eba35b62aafbde0",
   "w06a_harness_merge_sha": "7350f118395f677c62e4bc66ced579bcf8e7480d",
-  "next_gate": "G3_V550_IDENTITY_TRANSPORT_COMPLETE"
+  "g3_v550_identity_transport_merge_sha": "908a83d8a334ad9732005d0cc86684c59edd30c1",
+  "next_gates": ["G4A_V551_IDENTITY_TRANSPORT_COMPLETE", "G4B_V550J_IDENTITY_MIGRATION_COMPLETE"]
 }
