@@ -4,7 +4,7 @@ import json
 import pandas as pd
 import pytest
 
-from data.ddm_build_copy.compile_v552j_structural_handoff import _coherent_scope, _scope_from_manifest, _v553_compatibility_frame, _verify_frame_scope
+from data.ddm_build_copy.compile_v552j_structural_handoff import _coherent_scope, _scope_from_manifest, _v553_compatibility_frame, _verify_frame_scope, compile_v552j_run
 from data.ddm_build_copy.ddm_pipeline_boundary_contract import BoundaryContractError
 from data.ddm_build_copy.ddm_source_wave_identity import resolve_source_wave_identity
 from data.ddm_build_copy.ddm_v552j_handoff import build_v552j_join
@@ -47,6 +47,65 @@ def _fact(**extra):
 def _states():
     state = {"run_integrity_status": "PASS", "evidence_status": "PRESENT", "downstream_permission_status": "ALLOW"}
     return state.copy(), state.copy()
+
+
+def _decl(path, artifact, schema, root):
+    raw = path.read_bytes()
+    return {"artifact": artifact, "path": str(path.relative_to(root)), "artifact_kind": "canonical",
+            "row_count": len(pd.read_parquet(path)), "artifact_file_sha256": hashlib.sha256(raw).hexdigest(),
+            "schema_version": schema, "compiler_version": "fixture"}
+
+
+def _write_manifest(path, *, schema, compiler, source, wave, uid_pair, artifacts, explicit_uids):
+    payload = {"contract_version": "rawlsing_pipeline_boundary_v1", "run_id": "run-c", "producer_run_id": "run-c",
+               "source": source, "wave": wave, "canonical_wave": wave, "country_code": "EGY",
+               "run_integrity_status": "PASS", "evidence_status": "PRESENT", "downstream_permission_status": "ALLOW",
+               "schema_version": schema, "compiler_version": compiler, "artifacts": artifacts}
+    if explicit_uids:
+        payload.update(source_family_uid=uid_pair[0], wave_uid=uid_pair[1])
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    return path
+
+
+def test_real_v552j_compiler_propagates_one_uid_pair_through_all_active_outputs(tmp_path):
+    from data.ddm_build_copy.ddm_v551j_schema import V551J_COMPILER_VERSION, V551J_SCHEMA_VERSION
+    from data.ddm_build_copy.ddm_v552_structural import V552_COMPILER_VERSION, V552_SCHEMA_VERSION
+
+    root = tmp_path / "inputs"
+    root.mkdir()
+    packet = _packet()
+    frames = {
+        "candidate": pd.DataFrame([packet]), "certified": pd.DataFrame([packet]),
+        "review": pd.DataFrame(columns=pd.DataFrame([packet]).columns), "fact": pd.DataFrame([_fact()]),
+        "temporal": pd.DataFrame([{"run_id": "run-c", "source": "Arab Barometer", "wave": "I", "canonical_wave": "I",
+                                   "source_family_uid": PAIR[0], "wave_uid": PAIR[1], "country_code": "EGY",
+                                   "v552_temporal_key_source_id": "temporal-1"}]),
+    }
+    paths = {}
+    for name, frame in frames.items():
+        paths[name] = root / f"{name}.parquet"
+        frame.to_parquet(paths[name], index=False)
+    v551_manifest = _write_manifest(root / "v551j.json", schema=V551J_SCHEMA_VERSION, compiler=V551J_COMPILER_VERSION,
+                                    source="Arab Barometer", wave="Wave 1", uid_pair=PAIR,
+                                    artifacts=[_decl(paths["candidate"], "candidate", V551J_SCHEMA_VERSION, root),
+                                               _decl(paths["certified"], "certified", V551J_SCHEMA_VERSION, root),
+                                               _decl(paths["review"], "review_surface", V551J_SCHEMA_VERSION, root)], explicit_uids=False)
+    v552_manifest = _write_manifest(root / "v552.json", schema="v3.0", compiler=V552_COMPILER_VERSION,
+                                    source="Arab Barometer", wave="I", uid_pair=PAIR,
+                                    artifacts=[_decl(paths["fact"], "v552_structural_fact_index", "v3.0", root),
+                                               _decl(paths["temporal"], "v552_temporal_key_source_index", "v3.0", root)], explicit_uids=True)
+    out = compile_v552j_run(run_id="run-c", v551j_manifest_path=v551_manifest, v552_manifest_path=v552_manifest,
+                            output_root=tmp_path / "outputs", write_parquet=True, write_csv=False)
+    run_root = tmp_path / "outputs" / "run-c"
+    for name in ["v552j_structural_join_index", "v552j_join_audit", "v552j_v553_input_index", "v552j_to_v553_handoff_index"]:
+        folder = "audits" if name == "v552j_join_audit" else "packets"
+        frame = pd.read_parquet(run_root / folder / f"{name}.parquet")
+        assert tuple(frame.loc[0, ["source_family_uid", "wave_uid"]]) == PAIR
+    for name in ["manifest.json", "manifest/v552j_readiness_report.json", "manifest/v552j_runtime_handoff_manifest.json", "manifest/v552j_v553_handoff_manifest.json"]:
+        payload = json.loads((run_root / name).read_text())
+        assert (payload["source_family_uid"], payload["wave_uid"]) == PAIR
+        assert (payload["producer_scope_identity"]["source_family_uid"], payload["producer_scope_identity"]["wave_uid"]) == PAIR
+    assert (out["source_family_uid"], out["wave_uid"]) == PAIR
 
 
 def test_actual_v552j_builder_propagates_one_uid_pair_through_join_and_audit():
