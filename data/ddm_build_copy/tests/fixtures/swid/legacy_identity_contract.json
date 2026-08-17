@@ -1,0 +1,15 @@
+{
+  "legacy_physical": {
+    "latinobarometro_nfc_shard": "Latinobarómetro__1995",
+    "latinobarometro_nfd_shard": "Latinobaro_metro__1995",
+    "latinobarometro_unaccented_shard": "Latinobarometro__1995"
+  },
+  "legacy_logical_namespaces": {
+    "v550j_pattern_function": "_pattern_id",
+    "v551j_packet_function": "recompute_v551j_packet_id",
+    "v551j_packet_prefix": "v551j__",
+    "v552_observation_function": "recompute_v552_pressure_observation_id",
+    "v552_observation_prefix": "v552po__"
+  },
+  "migration_rule": "preserve legacy identity and add a distinct versioned UID-native identity"
+}
