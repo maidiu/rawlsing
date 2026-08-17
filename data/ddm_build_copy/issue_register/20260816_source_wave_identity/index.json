@@ -36,7 +36,7 @@
     "static_fixed_point_reached": true,
     "runtime_pass_not_claimed": true
   },
-  "current_phase": "G6_PARALLEL_REPAIRS_COMPLETE__G7_AWAITING_W06A_HARNESS_REBASE",
+  "current_phase": "G7_COMPLETE__W06D_RELEASED",
   "completed_phases": [
     "W01-A",
     "W02-A",
@@ -49,12 +49,13 @@
     "W06-B",
     "W06-C",
     "W02-B",
-    "W05-B"
+    "W05-B",
+    "W06-A-G7-REBASE"
   ],
-  "released_phases": [],
-  "blocked_phases": [
+  "released_phases": [
     "W06-D"
   ],
+  "blocked_phases": [],
   "g1_kernel_merge_sha": "3a5a869b49693817e83b8391113ca08bb7a17f81",
   "g2a_authority_ingress_merge_sha": "2621567e151529c0d09c788ec0fcd473ac925b94",
   "g2b_shared_boundary_merge_sha": "4cb28f24e941603d37d2e9e30eba35b62aafbde0",
@@ -69,7 +70,11 @@
   "w05b_orchestration_identity_merge_sha": "3142a6e14c218d1bc11d1bb21fc29e81b3c2444d",
   "w06a_g7_rebase_branch": "agent/swid-w06-qa-g7-rebase",
   "w06a_g7_rebase_base_sha": "3142a6e14c218d1bc11d1bb21fc29e81b3c2444d",
+  "w06a_g7_rebase_head_sha": "41ca74e56db6b5c1528c94b549328044fafbc473",
+  "w06a_g7_rebase_pr": 53,
+  "w06a_g7_rebase_merge_sha": "86e8e5856a7112cd563459f82f38d1496324f2ec",
+  "w06a_g7_strict_result": "24 PASS / 0 XFAIL / 0 XPASS / 0 FAIL",
   "next_gates": [
-    "G7_ALL_ACTIVE_EXECUTION_ORCHESTRATION_REVIEW_PATHS_MIGRATED"
+    "G8_SOURCE_WAVE_IDENTITY_CAMPAIGN_CLOSED"
   ]
 }
