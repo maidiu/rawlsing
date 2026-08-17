@@ -1,0 +1,335 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing 35-wave active question-relation authority row",
+  "type": "object",
+  "required": [
+    "authority_version",
+    "authority_rule_id",
+    "source_family",
+    "canonical_wave",
+    "country_code_scope",
+    "var_code",
+    "question_text",
+    "relation_use_status",
+    "authority_status",
+    "row_payload_hash"
+  ],
+  "properties": {
+    "authority_version": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "authority_rule_id": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "source_family": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "canonical_wave": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "country_code_scope": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "question_id": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "var_code": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "question_text": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "question_text_hash": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "relation_use_status": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "driver_id": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "driver_facet_id": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "question_block_id": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "structural_domain_id": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "relation_axis_id": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "target_entity_id": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "relation_projection_polarity": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "mapping_notes": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "item_reversal": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "source_response_polarity": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "response_topology": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "directionality_policy": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "evidence_disposition": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "current_directional_atom_eligible": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "manual_packet_name": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "manual_row_authority_path": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "manual_row_authority_sha256": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "manual_row_authority_key": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "response_option_authority_path": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "response_option_authority_sha256": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "codebook_authority_path": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "codebook_authority_sha256": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "source_authority_basis": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "manual_authority_rationale": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "authority_status": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "review_status": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "review_notes": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "selected_v550_shard_dir": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "row_payload_hash": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "positive_anchor_label": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "negative_anchor_label": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "neutral_anchor_label": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "response_family_expectation": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "directional_certification_status": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "bridge_directionality_action": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "directionality_confidence": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    },
+    "ontology_ruling_basis": {
+      "type": [
+        "string",
+        "boolean"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "relation_use_status": {
+            "const": "GOVERNED_DIRECTIONAL"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "driver_id",
+          "driver_facet_id",
+          "question_block_id",
+          "structural_domain_id",
+          "relation_axis_id",
+          "target_entity_id",
+          "relation_projection_polarity"
+        ]
+      }
+    }
+  ],
+  "x-rawlsing-constraints": {
+    "active_rows": 700,
+    "waves": 35,
+    "survey_families": 9,
+    "directional_rows": 236,
+    "asian_barometer_w6": 0,
+    "current_country_identity_replacements": [
+      "BF->LS",
+      "LY->YE"
+    ],
+    "heuristic_fallback_certification": "forbidden"
+  }
+}
