@@ -132,22 +132,28 @@ def _v550_candidate(
     if not payload:
         return None, None, "manifest_unreadable"
     try:
-        coherence = verify_manifest_source_wave_identity_coherence(
-            payload,
-            expected_source_family_uid=identity.source_family_uid,
-            expected_wave_uid=identity.wave_uid,
-        )
+        coherence = verify_manifest_source_wave_identity_coherence(payload)
     except BoundaryContractError as exc:
-        # Other governed source/wave objects are ordinary nonmatches.  A
-        # contradictory object that claims either requested UID is fail-closed.
         claimed_source_uid = _clean(payload.get("source_family_uid"))
         claimed_wave_uid = _clean(payload.get("wave_uid"))
-        if claimed_source_uid == identity.source_family_uid or claimed_wave_uid == identity.wave_uid:
+        if (
+            claimed_source_uid == identity.source_family_uid
+            and claimed_wave_uid == identity.wave_uid
+        ):
             return None, None, f"contradictory_requested_uid_manifest:{exc}"
+        return None, None, f"invalid_candidate_identity:{exc}"
+
+    if (
+        coherence.source_family_uid != identity.source_family_uid
+        or coherence.wave_uid != identity.wave_uid
+    ):
         return None, None, "different_uid"
 
-    if coherence.source_family_uid != identity.source_family_uid or coherence.wave_uid != identity.wave_uid:
-        return None, None, "different_uid"
+    transported_source_uid = _clean(payload.get("source_family_uid"))
+    transported_wave_uid = _clean(payload.get("wave_uid"))
+    if not transported_source_uid or not transported_wave_uid:
+        return None, None, "v550_manifest_explicit_uid_transport_missing"
+
     run_id = _clean(payload.get("run_id") or payload.get("producer_run_id"))
     shard_id = _clean(payload.get("shard_id"))
     if not run_id or not shard_id:
@@ -196,8 +202,6 @@ def _resolve_v550(repo: Path, identity: SourceWaveIdentity) -> StageResolution:
         resolution, _, reason = _v550_candidate(manifest, identity)
         if resolution is not None:
             return resolution
-        if reason.startswith("contradictory_requested_uid_manifest"):
-            return _blocked("v550", reason)
         if reason not in {"different_uid", "manifest_unreadable"} and not first_error:
             first_error = reason
     return _blocked(
