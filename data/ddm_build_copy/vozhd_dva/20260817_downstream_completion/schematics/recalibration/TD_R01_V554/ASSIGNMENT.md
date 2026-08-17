@@ -3,7 +3,25 @@
 **Worker role:** terminal-demand architecture Rabochii  
 **Stage under study:** V554  
 **Authority:** advisory architecture recalibration; no production code  
-**Launch status:** **DO NOT LAUNCH until TD-R00 V553 is accepted by Vozhd Dva.**
+**Launch status:** **READY — TD-R00 V553 accepted and banked via PR #52.**
+
+## Accepted upstream architecture base
+
+TD-R00 is accepted Vozhd law for this pass:
+- `schematics/recalibration/TD_R00_V553/RESULT.md`
+- `schematics/recalibration/TD_R00_V553/RESULT.json`
+- accepted merge: `3ad2dbf586e4f2212ecf9c75cb3fdae85cd80d59`
+
+V553 remains four semantic/negative families plus secondary/boundary publication. `GOVERNED_STRUCTURAL_REFERENCE_SET` is a required preservation/reference contract, not a new V553 semantic family.
+
+Binding upstream distinctions for TD-R01:
+- `identity_basis_refs` are distinct from `contextual_terminal_refs`;
+- structural source→target direction is distinct from V553 temporal-delta direction;
+- simultaneous exact pressure keys remain distinct and cannot be averaged, winner-selected or converted into invented conflict semantics;
+- governed finite-stratum refs are `0..n` role-qualified; V553 does not force singular mapping;
+- explicit Absolute-Horizon refs exist only under governed designation authority and may not be inferred from religion/ideology/generic Horizon context;
+- V553 creates no new cross-key counter-pressure/conflict interaction. Provisional default ownership for newly created structural interaction topology is V556, subject to proof in this and later bounded passes that a narrower earlier prerequisite is uniquely required and governed;
+- persistence/drift qualitative labels and rupture-candidate annotations remain disabled absent a governed deterministic rule.
 
 ## Governing whole-picture / bounded-jurisdiction law
 
@@ -38,7 +56,7 @@ Your final result must include the full architecture checksum required by `ARCHI
 
 ## Purpose
 
-Re-run the V554 maximal architecture-imagination pass from the full Rawlsing terminal demand envelope, using the accepted TD-R00 V553 architecture as the actual upstream hypothesis.
+Re-run the V554 maximal architecture-imagination pass from the full Rawlsing terminal demand envelope, using accepted TD-R00 V553 architecture as the actual upstream hypothesis.
 
 PRE-S01/PRE-S01.5 remain evidence. Their code excavation, current-topology findings and category-boundary cleanup are not discarded. This pass asks whether the four-semantic-family + one-boundary V554 model is actually sufficient for the finished nine-strata inter-pressuring structural-personhood system, not merely for an immediate V555 consumer.
 
@@ -49,11 +67,12 @@ PRE-S01/PRE-S01.5 remain evidence. Their code excavation, current-topology findi
 3. `CAPABILITY_MATRIX.md`.
 4. `STRATEGY_AND_GATES.md`.
 5. accepted TD-R00 V553 `RESULT.md` + `RESULT.json`.
-6. PRE-S01 V554 excavation `RESULT.md` + `RESULT.json`.
-7. PRE-S01.5 V554 maximal architecture `RESULT.md` + `RESULT.json`.
-8. Wave-0 R0-02 V555 findings.
-9. Wave-0 R0-03 V556/attractor findings.
-10. current V554/V555 implementation and tests only as needed.
+6. amended `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md` for Vozhd decisions and implementation-facing interpretation.
+7. PRE-S01 V554 excavation `RESULT.md` + `RESULT.json`.
+8. PRE-S01.5 V554 maximal architecture `RESULT.md` + `RESULT.json`.
+9. Wave-0 R0-02 V555 findings.
+10. Wave-0 R0-03 V556/attractor findings.
+11. current V554/V555 implementation and tests only as needed.
 
 ## Central question
 
@@ -84,14 +103,27 @@ Determine specifically whether V554 needs to preserve or expose any additional e
 - source/driver stratum or structural position;
 - target/receiving stratum or position;
 - inter-strata relation identity;
-- directionality and counter-pressure;
+- structural directionality distinct from temporal-delta direction;
 - simultaneous/coexisting pressure sets;
-- Horizon-relevant structural context;
+- inherited incompatibility/coexistence refs versus newly derived counter-pressure/conflict semantics;
+- Horizon-relevant structural context versus explicit Absolute-Horizon designation;
 - orientation-to-strata prerequisites;
 - later mediation / pressure-flow / attractor construction;
-- temporal relation/limit identity inherited from V553.
+- temporal relation/limit identity inherited from V553;
+- exact V552/V552J producer/admission/use-permission lineage and reference-contract version.
 
 Do not make V554 own those meanings when direct governed reuse from V550–V553 is sufficient. The preferred solution to terminal demand is lawful reference composition, not serial duplication.
+
+### Required cross-key interaction adjudication
+
+TD-R00 leaves new cross-key counter-pressure/conflict creation outside V553 and provisionally places structural interaction topology in V556. TD-R01 must explicitly test whether V554 uniquely needs to derive any narrower **affordance-level relation** before V555/V556 can operate lawfully.
+
+If proposing any V554-created `AFFORDANCE_RELATION`, prove all three:
+1. a named immediate/terminal capability fails without it;
+2. direct reuse of preserved upstream relation/incompatibility refs is insufficient;
+3. the meaning is genuinely V554 downstream-use/affordance meaning rather than V555 mediation or V556 structural-interaction topology.
+
+Absent all three, keep `AFFORDANCE_RELATION` disabled/valid-empty and leave newly created cross-key structural interactions downstream.
 
 ## Required output
 
@@ -106,19 +138,20 @@ Produce a new superseding V554 architecture snapshot for later binding S01/imple
 7. Absolute Horizon handling;
 8. mediation / pressure-flow / attractor backward-demand map;
 9. re-evaluation of four semantic families + B1;
-10. exact required reference classes on each family/boundary object;
+10. exact required reference classes on each family/boundary object, explicitly accounting for TD-R00 `GOVERNED_STRUCTURAL_REFERENCE_SET` and lawful direct DAG reuse;
 11. component/artifact/completion-court delta;
 12. no-starvation/no-bloat proof for every proposed primary family/component/boundary family;
 13. five implementation-packet delta;
 14. PRE-S01.5 conclusions confirmed;
 15. PRE-S01.5 conclusions superseded;
 16. one multi-strata ordinary case and one hostile downstream-starvation case;
-17. required final architecture statement from `ARCHITECTURE_PASS_LAW.md`:
+17. explicit cross-key interaction ownership verdict;
+18. required final architecture statement from `ARCHITECTURE_PASS_LAW.md`:
    - `THIS STAGE IS RESPONSIBLE FOR`
    - `THIS STAGE IS NOT RESPONSIBLE FOR`
    - `TERMINAL CAPABILITIES PROTECTED`
    - `OPEN MISSING AUTHORITY`;
-18. final verdict `V554_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
+19. final verdict `V554_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
 
 ## Deliverables
 
@@ -136,4 +169,7 @@ Commit to the assigned branch and open a draft PR against `main`.
 - no actor/person/household/psyche instantiation;
 - no direct Enneagram assignment;
 - no object-family expansion without a named terminal capability and proof direct reuse is insufficient;
-- no moving later-stage semantics into V554 merely because the worker understands the whole system.
+- no moving later-stage semantics into V554 merely because the worker understands the whole system;
+- no reconstructing structural direction from temporal delta sign;
+- no collapsing simultaneous exact pressure keys;
+- no treating missing explicit Absolute-Horizon authority as permission to infer it.
