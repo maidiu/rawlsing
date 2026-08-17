@@ -1,97 +1,110 @@
-# S00-B — Backward from V554 need
+# S00-B — Backward from V554 total need
 
 **Worker role:** schematic Rabochii, backward perspective  
-**Primary seam:** upstream V5 authority → V553, centered on V552J → V553  
-**Current stage downstream consumer:** V554  
+**Current transformation under study:** V553  
+**Downstream consumer:** V554  
 **Production write authority:** none  
 **Target PR:** S00 integration branch only
 
-## Mission
+## Governing correction
 
-Starting from V554's actual bounded-affordance responsibility and current implementation needs, determine the minimum semantically complete V553 output V554 requires, then work backward to test whether that output can be lawfully produced from the **full composed upstream authority available to V553**.
+Do **not** assume V554 must receive everything it needs from V553.
 
-Do not assume that canonical V552J is the sole lawful V553 input. V552J is the immediate governed handoff, but current V553 also reaches to direct V552 structural/temporal-key artifacts and to earlier authority/support surfaces such as semantic/directionality/position overlays and thin-readiness context. Determine which of those must lawfully participate in producing V553 output and which are redundant reach-back or validation/provenance context.
+Rawlsing's downstream architecture is a governed dependency DAG. V554 may lawfully reuse useful outputs from V552, V552J, or any other earlier adjudicated stage when the earlier object remains authoritative for the meaning V554 needs.
+
+Your task is therefore to determine:
+
+`V554 TOTAL NEED → WHAT EARLIER UPSTREAM MATERIAL ALREADY SATISFIES → RESIDUAL NEED V553 MUST CREATE → V553 LAWFUL TRANSFORMATION → V553 NEW OUTPUT CONTRIBUTION → V554 COMPOSED INTAKE`
+
+where:
+
+`V554 COMPOSED INTAKE = lawful reusable earlier-stage outputs + accepted V553 outputs`
 
 This is an ontology/contract analysis, not production implementation.
 
-## System position
+## Mission
 
-V552J publishes a governed join that already carries V552 structural identity and V551J-derived packet authority. V553 is responsible for historical/temporal transformation of upstream structural authority. V554 then creates bounded structural/seed affordances for later mediation.
+Starting from V554's actual bounded-affordance responsibility:
 
-Your job is to reason **backward** from what V554 must know, while refusing to demand information V553 cannot lawfully derive from its full upstream authority and refusing to assume that every current V553 reach-back is architecturally legitimate.
+1. map everything V554 genuinely needs to do its own job;
+2. map everything already available anywhere upstream that V554 could lawfully use directly;
+3. subtract those reusable materials from V554's total need;
+4. identify the residual meaning that specifically requires V553's temporal/structural-pressure transformation;
+5. test whether V553 can create that residual meaning from the lawful upstream material available to it;
+6. define the minimum new V553 output contribution needed so that `earlier reusable outputs + V553 outputs` are sufficient for V554.
+
+Do not make V553 duplicate an earlier authoritative object merely to create a self-contained serial handoff.
 
 ## Frozen facts
 
 - Current `main` is canonical.
 - V550–V552J are closed by default.
-- POSTG5-004 is repaired on the V553 side and the canonical V552J publication boundary is fail-closed.
-- V552J already contains V552 structural-fact lineage, structural dimensions, permissions, scores, and temporal-key-source references.
-- Current V553 temporal-key construction can also load V552 structural-fact and temporal-key-source indexes directly.
-- Current V553 harmonization also consumes semantic/directionality/position authority overlays and thin-readiness context.
-- Current consumption does not automatically equal correct final jurisdiction.
+- POSTG5-004 is repaired on the V553 side and canonical V552J publication integrity is fail-closed.
+- V552J carries V552 structural-fact lineage, structural dimensions, permissions, scores, and temporal-key-source references.
+- V553 can also load V552 structural-fact and temporal-key-source indexes and uses semantic/directionality/position authority overlays plus thin-readiness context.
+- The existence of an intermediate stage does not itself make earlier outputs unavailable to V554.
+- An earlier object may be directly reusable for one semantic purpose even if a later transformed object supersedes it for another.
 - V554 must not create persona, biography, household facts, psyche, Enneagram type, wound, striving object, pressure-flow route, or dialogue.
-- V554 must not be forced to reconstruct upstream structural identity or temporal meaning that V553 should have preserved.
-- V553 may add only temporal/pressure meaning supported by lawful upstream authority.
+- V553 may create only temporal/structural-pressure meaning supported by lawful upstream authority.
 - Current Wave-0 reports are evidence about starvation, not frozen replacement ontology.
 - No schema proposal you make is binding until Vozhd synthesis.
 
 ## Read in this order
 
-1. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/README.md`
-2. `.../schematics/TRANSFORMATION_METHOD.md`
-3. `.../schematics/boundaries/S00_V552J_TO_V553.md`
-4. `.../schematics/sessions/S00_V552J_TO_V553/README.md`
-5. `data/ddm_build_copy/ddm_v554_seed_contract.py`
-6. `data/ddm_build_copy/ddm_v553_temporal_pressure.py`
-7. `data/ddm_build_copy/ddm_v553_schema.py`
-8. `data/ddm_build_copy/ddm_v553_canonical_harmonization.py`
-9. `data/ddm_build_copy/ddm_v553_harmonization.py`
-10. `data/ddm_build_copy/ddm_v552j_handoff.py`
-11. inspect the V552 structural-fact / temporal-key-source producers referenced by current V553
-12. inspect the authority-overlay / thin-readiness producers referenced by current V553 where needed
-13. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/rabochii/WAVE_0/R0_01_V553_V554/RESULT.md`
-14. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/rabochii/WAVE_0/R0_05_VERTICAL_HARNESS/RESULT.md`
-15. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/rabochii/WAVE_0/R0_02_V555/RESULT.md` only for bounded evidence of what later mediation must not be starved of; do not design S02.
-16. `.../schematics/sessions/S00_V552J_TO_V553/REPORT_FORMAT.json`
+1. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/TRANSFORMATION_METHOD.md`
+2. `.../schematics/CUMULATIVE_UPSTREAM_MAP.md`
+3. `.../schematics/sessions/S00_V552J_TO_V553/README.md`
+4. `data/ddm_build_copy/ddm_v554_seed_contract.py`
+5. `data/ddm_build_copy/ddm_v553_temporal_pressure.py`
+6. `data/ddm_build_copy/ddm_v553_schema.py`
+7. `data/ddm_build_copy/ddm_v553_canonical_harmonization.py`
+8. `data/ddm_build_copy/ddm_v553_harmonization.py`
+9. `data/ddm_build_copy/ddm_v552j_handoff.py`
+10. inspect V552 structural-fact / temporal-key-source producers referenced by current V553
+11. inspect earlier authority/support producers referenced by V553 or potentially useful to V554
+12. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/rabochii/WAVE_0/R0_01_V553_V554/RESULT.md`
+13. `.../R0_05_VERTICAL_HARNESS/RESULT.md`
+14. `.../R0_02_V555/RESULT.md` only for bounded evidence of what later mediation must not be starved of
+15. `.../schematics/sessions/S00_V552J_TO_V553/REPORT_FORMAT.json`
 
-Follow concrete upstream references when needed. This session is explicitly allowed to determine whether V554's requirements imply a lawful direct co-input to V553 or merely expose something that should already have survived the V552J handoff.
+Follow concrete upstream references when needed.
 
 ## Questions you must answer
 
-1. What operation is V554 actually supposed to perform on V553 output?
-2. Therefore, what exact information must V553 hand V554 so V554 can perform that operation without guessing or reaching behind V553?
-3. Which temporal distinctions must V554 receive directly: wave identity, comparability, persistence/drift/change, gaps, contradiction continuity, pressure component identity, rupture-candidate status, uncertainty, absence, negative authority, provenance, permission?
-4. Which of those are truly required versus merely convenient?
-5. For each required item, identify its lawful upstream source: V552J-carried authority, direct V552 authority, earlier authority/support context, or V553-derived temporal meaning.
-6. If current V553 obtains a required item by direct V552/earlier reach-back, determine whether that should remain a lawful co-input or instead indicates that the immediate handoff is incomplete.
-7. Is any V554 requirement supportable only by information that no lawful upstream source provides? If so, keep it unresolved.
-8. Which current V553 output surfaces are too lossy for V554 even if artifact shape passes?
-9. What is the minimum V553 output grain that makes V554's own transformation possible without prematurely doing V554's work?
-10. What upstream source should be authoritative for every field in that proposed V553 output?
+1. What operation is V554 actually responsible for performing?
+2. What total information set does V554 need for that operation?
+3. For each needed information class, does a lawful authoritative object already exist in V552, V552J, or another earlier stage that V554 could consume directly?
+4. If yes, why should V554 use the original earlier object, a V553-transformed object, or both?
+5. Which V554 needs are **not** satisfiable by direct upstream reuse because they require temporal comparison, persistence/drift/change, pressure-over-time, temporal uncertainty, gap handling, or another V553-owned derivation?
+6. What is therefore the exact residual obligation of V553?
+7. Which upstream objects must V553 itself select in order to produce that residual meaning?
+8. What can V553 lawfully create from those inputs, and what must remain unresolved?
+9. Does `selected earlier reusable outputs + reachable V553 outputs` satisfy V554's total need?
+10. Which current V553 outputs are useful, lossy, redundant duplicates, or missing residual semantics?
+11. Are there any cases where direct V554 reuse of an earlier object would be an illicit bypass because the intended use actually requires V553's transformed temporal meaning?
+12. What is the minimum new V553 output contract once direct upstream reuse is properly accounted for?
 
-## Required source-of-authority matrix
+## Required composed-intake matrix
 
-For every field/class V554 requires, provide:
+Provide:
 
-| V554-required information | V553 output representation | Lawful source authority | V553 operation | May V553 reach behind V552J? | Reason |
-|---|---|---|---|---|---|
+| V554 need | Earlier authoritative object available? | Direct V554 reuse lawful? | Why / conditions | Requires V553 derivation? | Required V553 contribution | Final source in V554 composed intake |
+|---|---|---|---|---|---|---|
 
-For `Lawful source authority`, distinguish at least:
-- `V552J_HANDOFF`
-- `V552_DIRECT`
-- `EARLIER_AUTHORITY_CONTEXT`
+For final source, use:
+- `EARLIER_UPSTREAM_DIRECT`
 - `V553_DERIVED`
+- `EARLIER_PLUS_V553`
+- `V554_OWN_DERIVATION`
 - `MISSING_AUTHORITY`
 - `UNRESOLVED`
 
 ## Required worked cases
 
 Trace at least:
-- one V554 affordance candidate whose lawful construction depends on multi-wave V553 temporal identity;
-- one adversarial case where V554 would be tempted to treat absence/noncomparability/low confidence/rupture ambiguity as a positive or neutral affordance;
-- one case that tests whether direct V552 or earlier authority context is genuinely necessary or whether V552J already carries the required meaning.
-
-For each, show what V554 must receive from V553 and what V553 must refuse to pre-resolve.
+- one case where V554 should directly reuse an earlier V552/V552J object while also consuming a V553 temporal object derived from related evidence;
+- one case where direct earlier-stage reuse is insufficient because V554 needs a genuinely V553-derived temporal meaning;
+- one adversarial case involving absence/noncomparability/low confidence/rupture ambiguity or competing authority.
 
 ## Deliverables
 
@@ -99,15 +112,15 @@ Write only:
 - `BACKWARD_V554/RESULT.md`
 - `BACKWARD_V554/RESULT.json`
 
-Use the common report schema. Your markdown must follow the boundary-session sections A–M, except section N is reserved for Vozhd Dva. Include the source-of-authority matrix under section G or H.
+Use the common report schema. Add the composed-intake matrix under the downstream-requirement/reconciliation sections.
 
 ## Prohibited scope
 
 - no production code edits;
 - no V552/V552J redesign;
-- no V554 or V555 implementation;
-- no mediation ontology beyond what is necessary to identify V554 input/output obligations;
+- no V554/V555 implementation;
+- no persona/runtime semantics;
 - no S01 ruling;
 - no reading the forward worker's result before submission.
 
-If V554 needs something that V553 cannot lawfully derive from the composed upstream authority, classify it explicitly rather than moving the responsibility upstream by fiat.
+Do not classify cross-stage reuse as defective merely because it skips an intermediate stage. Defect requires a concrete semantic problem: authority collision, loss of governing state, use of a superseded object for the wrong purpose, or bypass of a transformation actually required for the claimed meaning.
