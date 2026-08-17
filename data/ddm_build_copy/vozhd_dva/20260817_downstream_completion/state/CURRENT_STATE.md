@@ -2,7 +2,7 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** `V553_COMPLETION_PROGRAM_FROZEN__PRE_S01_5_V554_ARCHITECTURE_ACTIVE__WAITING_FINAL_UPSTREAM_IDENTITY_BASE`
+**Phase:** `V553_COMPLETION_PROGRAM_FROZEN__PRE_S01_5_RETURN_FOR_FIX__WAITING_FINAL_UPSTREAM_IDENTITY_BASE`
 
 ## Mission now
 
@@ -22,27 +22,18 @@ Immediate dependency:
 `→ V553_COMPLETE_FOR_V554 court`
 `→ binding S01`
 
-Do not launch V553 implementation from a moving V552/V552J/overlay identity surface.
+The source/wave identity campaign integration PR #27 remains open. G5A/G5B are satisfied; W06-C V552J exact UID handoff is the active worker at the time of this state record. Do not launch V553 implementation from a moving V552/V552J/overlay identity surface.
 
 ### Advisory downstream architecture track
 
 This track is explicitly `ADVISORY / PRE-ADJUDICATION`. It may bank deep architecture but does not freeze seam law, mutate the authoritative cumulative map, write production code, or unblock downstream implementation.
 
-Revised sequence:
+The governing method is now the two-pass rhythm recorded in:
+`schematics/advisory/README.md`
 
-`PRE-S01 V554 excavation`
-`→ PRE-S01.5 V554 maximal architecture build-out`
-`→ PRE-S02 V555 excavation`
-`→ PRE-S02.5 V555 maximal architecture build-out if justified`
-`→ PRE-S03 V556 ...`
-
-The recurring pattern is now:
-
-`excavate stage jurisdiction/need`
-`→ build a detailed provisional peak architecture from that excavation`
-`→ only then descend to the next stage`
-
-This avoids forcing downstream reconnaissance to reason against a vague upstream sketch.
+`deep stage excavation`
+`→ maximal provisional architecture build-out`
+`→ next stage excavation`
 
 ## Banked PRE-S01 V554 excavation
 
@@ -60,23 +51,59 @@ Banked provisional model:
 - current aggregate-first, interpolation-dependent, synthetic-ID/score and hardcoded mediation/slice semantics are defects, not inherited law;
 - conflict linkage remains an S01 adjudication question rather than advisory authority.
 
-## Active advisory session — PRE-S01.5 V554 maximal architecture build-out
+## PRE-S01.5 V554 maximal architecture — review status
 
-Assignment:
-`schematics/advisory/PRE_S01_5_V554_ARCHITECTURE/ASSIGNMENT.md`
+Worker PR:
+- PR #49
+- branch `agent/vozhd-dva-pre-s01-5-v554-architecture`
+- reviewed head `d6ee2eee645fa6ee97b04948e06aa8f1c1156840`
 
-Purpose:
-Take the accepted PRE-S01 excavation and build the most detailed implementable provisional V554 target possible now: internal components, selected DAG inputs, object schemas, identity/lineage rules, affordance lifecycle, structural-position requirements, negative authority, contradiction jurisdiction, production dataflow, physical artifacts, exact V555 composition, readiness/completion court, migration strategy and bounded implementation packets.
+Disposition: `RETURN_FOR_FIX` before banking on `main`.
 
-This architecture may be maximally detailed now. Details that depend on the unfinished SWID/V553 implementation must be tagged and finalized later rather than omitted.
+The blueprint is directionally strong and provisionally accepted on:
+- governed DAG/direct earlier-stage reuse;
+- narrow V554 downstream-use/affordance jurisdiction;
+- no canonical V554 score absent governed formula;
+- no interpolation or aggregate-first temporal authority;
+- stable semantic IDs independent of `run_id`;
+- exact-reference V555 handoff;
+- optional relation disabled/valid-empty absent governed rule;
+- no actor/person/household/psyche fact creation;
+- five-packet eventual implementation shape.
 
-Binding S01 should later perform a narrow delta/adjudication pass against this blueprint after V553 is actually complete.
+Required amendment is limited to three category-boundary corrections:
+
+1. **semantic negative authority vs build/audit failure** — canonical V554 limits may carry downstream-meaningful denial/gap/noncomparability/unresolved-authority states, but corrupt transport/schema, fact-association mismatch, synthetic-fallback attempts, forbidden-inference attempts and ungoverned-score attempts are completion/admission failures, not semantic limit rows;
+2. **handoff classification** — V554→V555 handoff is a boundary/interface family, not a V554 semantic meaning family; target count becomes four semantic families at most plus one governed handoff family;
+3. **positive affordance/state coherence** — either materialize only positive/conditional affordances under the `BOUNDED_STRUCTURAL_AFFORDANCE` name or rename the four-state family as an affordance decision/assessment; do not describe C3 as creating only positive semantic meaning while also making blocked/unresolved rows in the same positive family.
+
+Exact fix instructions are posted on PR #49. No production changes are requested.
 
 ## PRE-S02 V555 status
 
-The PRE-S02 assignment and branch already exist, but **do not launch it yet**.
+The PRE-S02 assignment and branch exist but **remain paused**.
 
-It is paused until PRE-S01.5 returns and Vozhd reviews/banks the detailed V554 blueprint. PRE-S02 should inherit that blueprint rather than only the earlier excavation sketch.
+Do not launch PRE-S02 until:
+1. PRE-S01.5 amendment returns;
+2. Vozhd accepts and banks the corrected V554 maximal blueprint on `main`;
+3. the PRE-S02 branch/base is refreshed so the worker actually inherits that blueprint.
+
+After that, PRE-S02 must use the corrected V554 blueprint as an upstream hypothesis to stress-test while excavating V555 against V556 total need.
+
+If accepted, follow with PRE-S02.5 maximal V555 architecture before descending to V556.
+
+## Intended advisory sequence from here
+
+`PRE-S01.5 V554 fix/accept/bank`
+`→ PRE-S02 V555 deep excavation`
+`→ PRE-S02.5 V555 maximal architecture`
+`→ PRE-S03 V556 deep excavation`
+`→ PRE-S03.5 V556 maximal architecture`
+`→ V557/V558 coupled excavation/build-out as topology warrants`
+`→ V3`
+`→ V2/app`
+
+This advisory work may continue while the binding track waits on SWID/V553, but none of it becomes binding production law until its real upstream contracts have completed and passed the appropriate delta/adjudication court.
 
 ## Frozen V553 authority
 
@@ -100,7 +127,7 @@ V553 packets remain:
 
 Binding S01 remains `BLOCKED_BY_V553_COMPLETE_FOR_V554`.
 
-PRE-S01.5 does not change that status. It banks architecture so S01 can later confirm/delta rather than rediscover.
+PRE-S01/PRE-S01.5 do not change that status. They bank architecture so S01 can later confirm/delta rather than rediscover.
 
 ## Restart instruction
 
@@ -109,7 +136,7 @@ Read:
 2. this file
 3. `schematics/advisory/README.md`
 4. `schematics/advisory/PRE_S01_V554/RESULT.md`
-5. `schematics/advisory/PRE_S01_5_V554_ARCHITECTURE/ASSIGNMENT.md` and result when present
+5. PR #49 corrected `schematics/advisory/PRE_S01_5_V554_ARCHITECTURE/RESULT.md` / `RESULT.json` when returned
 6. `schematics/synthesis/S00_V552J_TO_V553_RULING.md`
 7. `schematics/sessions/S00_5_V553_ARCHITECTURE/RESULT.md`
 8. `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md`
