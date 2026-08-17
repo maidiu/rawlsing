@@ -28,6 +28,8 @@ from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
     sha256_file,
     validate_machine_output_policy,
     verify_exact_identity,
+    verify_manifest_source_wave_identity_coherence,
+    verify_frame_source_wave_identity_coherence,
 )
 from data.ddm_build_copy.ddm_v552_structural import (
     V551_COMPILER_VERSION,
@@ -133,7 +135,9 @@ def _scope_from_manifest(payload: dict[str, Any]) -> dict[str, str]:
     scope_raw = payload.get("producer_scope_identity")
     scope = dict(scope_raw) if isinstance(scope_raw, dict) else {}
     source = _clean(scope.get("source") or payload.get("source"))
+    source_uid = _clean(scope.get("source_family_uid") or payload.get("source_family_uid"))
     wave = _clean(scope.get("canonical_wave") or scope.get("wave") or payload.get("canonical_wave") or payload.get("wave"))
+    wave_uid = _clean(scope.get("wave_uid") or payload.get("wave_uid"))
     country = _clean(scope.get("country_code") or payload.get("country_code"))
     shard = _clean(scope.get("shard_id") or payload.get("shard_id"))
     if not source or not wave:
@@ -145,13 +149,14 @@ def _scope_from_manifest(payload: dict[str, Any]) -> dict[str, str]:
         raise RuntimeError("BLOCKED_V552_V551_COUNTRY_SCOPE_IDENTITY_MISSING")
     if scope_kind == "shard" and not shard:
         raise RuntimeError("BLOCKED_V552_V551_SHARD_SCOPE_IDENTITY_MISSING")
-    return {"source": source, "wave": wave, "canonical_wave": wave, "country_code": country, "shard_id": shard, "scope_kind": scope_kind}
+    verify_manifest_source_wave_identity_coherence(payload, expected_source_family_uid=source_uid, expected_wave_uid=wave_uid)
+    return {"source": source, "wave": wave, "canonical_wave": wave, "source_family_uid": source_uid, "wave_uid": wave_uid, "country_code": country, "shard_id": shard, "scope_kind": scope_kind}
 
 
 def _verify_frame_scope(frame: pd.DataFrame, *, run_id: str, scope: dict[str, str], label: str) -> None:
     if frame.empty:
         return
-    expected = {"run_id": run_id, "source": scope["source"], "canonical_wave": scope["canonical_wave"]}
+    expected = {"run_id": run_id, "source": scope["source"], "canonical_wave": scope["canonical_wave"], "source_family_uid": scope["source_family_uid"], "wave_uid": scope["wave_uid"]}
     if scope["country_code"]:
         expected["country_code"] = scope["country_code"]
     for column, want in expected.items():
@@ -160,6 +165,10 @@ def _verify_frame_scope(frame: pd.DataFrame, *, run_id: str, scope: dict[str, st
         observed = {_clean(value) for value in frame[column].tolist() if _clean(value)}
         if observed != {want}:
             raise RuntimeError(f"BLOCKED_V552_{label.upper()}_SCOPE_MISMATCH:{column}:expected={want}:observed={sorted(observed)}")
+    try:
+        verify_frame_source_wave_identity_coherence(frame, expected_source_family_uid=scope["source_family_uid"], expected_wave_uid=scope["wave_uid"], allow_empty=False)
+    except Exception as exc:
+        raise RuntimeError(f"BLOCKED_V552_{label.upper()}_IDENTITY_COHERENCE:{exc}") from exc
 
 
 def verify_v551_producer_bundle(
@@ -306,6 +315,8 @@ def compile_v552_run(
         adjudication,
         conditional,
         run_id=run_id,
+        source_family_uid=producer["scope"]["source_family_uid"],
+        wave_uid=producer["scope"]["wave_uid"],
     )
     if isinstance(outputs.get("v552_readiness_report"), pd.DataFrame) and not outputs["v552_readiness_report"].empty:
         outputs["v552_readiness_report"].loc[:, "producer_manifest_sha256"] = producer["manifest_file_sha256"]
@@ -351,6 +362,8 @@ def compile_v552_run(
             "source": producer["scope"]["source"],
             "wave": producer["scope"]["wave"],
             "canonical_wave": producer["scope"]["canonical_wave"],
+            "source_family_uid": producer["scope"]["source_family_uid"],
+            "wave_uid": producer["scope"]["wave_uid"],
             "country_code": producer["scope"]["country_code"],
             "shard_id": producer["scope"]["shard_id"],
             "producer_scope_identity": producer["scope"],
