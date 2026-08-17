@@ -103,6 +103,9 @@ def certify_v551j_v2_2_3(
             "wave": row.get("wave"),
             "canonical_wave": row.get("canonical_wave"),
             "country_code": row.get("country_code"),
+            "source_family_uid": row.get("source_family_uid"),
+            "wave_uid": row.get("wave_uid"),
+            "uid_key": row.get("uid_key"),
             "gate_identity_pass": gates["pattern_identity_gate"] and gates["question_identity_gate"],
             "gate_lifecycle_pass": gates["item_order_gate"] and gates["component_match_completeness_gate"],
             "gate_authority_pass": gates["response_semantics_authority_gate"] and gates["family_target_registry_gate"],
@@ -120,7 +123,7 @@ def certify_v551j_v2_2_3(
         }
         rows.append(audit_row)
         if not certified:
-            rejection = {k: audit_row.get(k) for k in ["run_id", "packet_id", "packet_type", "source", "wave", "canonical_wave", "country_code", "gate_identity_pass", "gate_lifecycle_pass", "gate_authority_pass", "gate_support_pass", "gate_directionality_pass", "gate_forbidden_claims_pass", "gate_mediation_flags_pass", "gate_no_downstream_leakage_pass", "created_at", "schema_version"]}
+            rejection = {k: audit_row.get(k) for k in ["run_id", "packet_id", "packet_type", "source", "wave", "canonical_wave", "country_code", "source_family_uid", "wave_uid", "uid_key", "gate_identity_pass", "gate_lifecycle_pass", "gate_authority_pass", "gate_support_pass", "gate_directionality_pass", "gate_forbidden_claims_pass", "gate_mediation_flags_pass", "gate_no_downstream_leakage_pass", "created_at", "schema_version"]}
             rejection.update({"certification_blocker_code": "REVIEW_REQUIRED_COMPONENT_GAP" if support_only_review else "BLOCKED_PACKET_CONTRACT", "certification_blocker_detail": json.dumps(blockers, ensure_ascii=False)})
             rejection_rows.append(rejection)
     audit = pd.DataFrame(rows).reindex(columns=V551J_CERTIFICATION_AUDIT_SCHEMA["required_columns"])
