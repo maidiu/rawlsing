@@ -3,44 +3,52 @@
 - **Worker:** R0-01
 - **PR:** #39
 - **Branch:** `agent/vozhd-dva-r0-01-v553-v554`
-- **Reviewed head:** `22925e020c3f7fe6464ca0b0c6f3d489ff1e1d2f`
-- **Disposition:** `RETURN_FOR_FIX`
+- **Initial reviewed head:** `22925e020c3f7fe6464ca0b0c6f3d489ff1e1d2f`
+- **Accepted amended head:** `03c3d3ddcf1f2bed0538f8fae4c558a47b4f9105`
+- **Wave-0 integration merge:** `0d583e2a9af64fc38c36306db2e4a3949991da81`
+- **Canonical main integration:** PR #40 / `1bbfb62791a583ab9ab7d21f5a0d76b4617b8f89`
+- **Final disposition:** `ACCEPT`
 
 ## Scope verdict
 
-Scope and architectural direction are correct. The worker kept the repair on the V553 consumer side and did not reopen V552J. The canonical direction for `POSTG5-004` is accepted: V553 must consume current V552J input/handoff artifacts rather than recreating the obsolete `v552j_structural_handoff_packet.json` interface.
+Scope and architectural direction are correct. The repair remains on the V553 consumer side and does not reopen V552J. `POSTG5-004` is closed by consuming current V552J publication artifacts rather than recreating `v552j_structural_handoff_packet.json`.
 
-## Code verdict
+## Initial return-for-fix
 
-The new canonical adapter is not yet acceptable at the trust boundary. `_read_parquet()` currently converts missing/read/corruption failure to an empty DataFrame, while `surface_present` may remain true from path existence and uses an OR across index paths. This can misclassify corrupt or incomplete canonical input as merely empty/present.
+The first adapter revision could normalize missing/read/corruption failure into empty frames while path existence could still imply surface presence. Vozhd returned it for a narrow fail-closed trust-boundary correction.
 
-Required correction:
-1. distinguish missing, unreadable/corrupt, schema-invalid, and valid-empty canonical artifacts;
-2. fail closed on missing/unreadable/schema-invalid required canonical artifacts;
-3. require the canonical V552J artifact set/manifest required by the producer contract rather than path existence alone;
-4. add adversarial regression coverage proving incomplete/corrupt/unreadable/schema-invalid canonical indexes cannot be represented as a valid V553 consumer surface;
-5. remain entirely V553-side.
+## Accepted correction
+
+The amended adapter now classifies canonical surfaces as:
+- `VALID_PRESENT`;
+- `VALID_EMPTY`;
+- `MISSING`;
+- `UNREADABLE_OR_CORRUPT`;
+- `SCHEMA_INVALID`;
+- `INTEGRITY_INVALID`.
+
+It verifies the complete declared V552J publication needed by V553, including manifest/readiness/handoff documents, canonical and compatibility artifacts, boundary/schema/compiler versions, artifact declaration/path/kind, SHA-256, row counts, full readability, required columns, row/scope identity, typed producer state, compatibility-index equality, and handoff-manifest counts. Invalid surfaces raise before V553 report construction. Path existence alone is not authority.
+
+## Test/evidence verdict
+
+The amended focused test suite covers valid-present and valid-empty plus incomplete, corrupt, unreadable, schema-invalid, and malformed/manifest-invalid publication cases. Worker-reported portable focused result: `8 passed`. Full repository pytest was not available in the connector-only worker environment and is not claimed.
 
 ## Accepted findings
 
 - `POSTG5-004` is correctly a V553 consumer repair.
 - V553 must draw from canonical upstream V552J structural identity/authority rather than regenerate governed identity from convenience labels.
-- Broader V553/V554 semantic findings may inform S00/S01 schematic work, but no worker-local ontology is frozen by this review.
+- Broader V553/V554 semantic findings are evidence for S00/S01, not frozen ontology.
 
 ## Downstream obligations
 
-The corrected adapter must preserve canonical relation/target/driver/channel/horizon identity and producer authority while refusing to convert integrity failure into semantic emptiness.
-
-## Tests / evidence
-
-Worker-reported syntax and exact-adapter harness evidence was inspected. Additional adversarial integrity tests are required before acceptance. No independent repository pytest run was available through the connector during review.
+The accepted trust boundary preserves canonical relation/target/driver/channel/horizon identity and producer authority while refusing to convert integrity failure into semantic emptiness.
 
 ## Merge decision
 
-Do not merge PR #39 until the narrow fail-closed correction is committed and reviewed. After acceptance, integrate PR #39 before S00 is frozen so the schematic V552J→V553 session starts from the repaired canonical consumer boundary.
+Accepted and merged. Wave 0 is closed back into canonical `main` before schematic work begins.
 
 ## Synchronization
 
-- S00 remains `READY_AFTER_R0_01`.
+- S00 is now eligible to launch.
 - S01 and later seams remain blocked by serial schematic sequencing.
-- The authoritative worker handoff is the PR #39 Vozhd review comment plus this control-room review file.
+- S00 must reason from the corrected canonical consumer boundary but independently adjudicate the semantic transformation performed by V553.
