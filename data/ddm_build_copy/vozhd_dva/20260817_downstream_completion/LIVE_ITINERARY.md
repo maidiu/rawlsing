@@ -1,61 +1,102 @@
 # Live Itinerary
 
-**Status:** INITIALIZING EXECUTION CONTROL  
+**Status:** WAVE_0_READY_FOR_LAUNCH  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
 ## Immediate sequence
 
-### 1. Freeze the minimum cross-stage map
-- Inspect current V553–V558 schemas/packets/tests and identify concrete information already present, information currently flattened, and downstream requirements.
-- Tighten `CAPABILITY_MATRIX.md` only where actual implementation/runtime needs require it.
-- Define the smallest useful V558→V3 and V3→V2 consumer contracts.
+### 1. Launch bounded Wave 0
 
-### 2. Activate known downstream issue
-- `POSTG5-004`: repair V553 to consume canonical V552J handoff/index artifacts.
-- Do not modify V552J solely to satisfy the legacy V553 expectation.
+The worker packets are frozen under `rabochii/WAVE_0/` and should now be launched concurrently from the Wave-0 integration base.
 
-### 3. Launch parallel Rabochii reconnaissance
-Candidate first wave:
-- worker A: V553/V554 boundary and temporal/affordance semantics;
-- worker B: V555 mediation semantics and current loss points;
-- worker C: V556 pressure-flow / attractor requirements and current loss points;
-- worker D: V557/V558 runtime-boundary requirements and V3 consumer needs;
-- worker E: vertical fixture/test harness design.
+- **R0-01:** V553/V554 boundary + `POSTG5-004` repair.
+- **R0-02:** V555 mediation semantics.
+- **R0-03:** V556 pressure-flow / Enneagram-like attractor semantics.
+- **R0-04:** V557/V558 runtime boundary + V3/V2 consumer requirements.
+- **R0-05:** vertical fixture / continuity-test harness.
 
-These first workers should primarily inspect, specify concrete defects, and implement only clearly isolated fixes. Cross-stage semantic changes are integrated after Vozhd Dva adjudication.
+Launch instructions and exact cell paths: `rabochii/WAVE_0/LAUNCH_INDEX.md`.
 
-### 4. Produce bounded implementation register
-Convert reconnaissance findings into a finite issue/capability register with ownership and acceptance tests. Avoid a second open-ended discovery program.
+### 2. Maintain intake while workers run
 
-### 5. Execute vertical slices
-Implement VS-1 through VS-5 across V553→V558, allowing upstream adjustments whenever a downstream consumer proves information starvation.
+Vozhd Dva owns `integration/WAVE_0_INTAKE_LEDGER.md`.
+
+As each draft PR appears:
+- record PR/head SHA and worker terminal state;
+- read `RESULT.json` and `RESULT.md`;
+- inspect the actual patch;
+- identify cross-hooks affecting other active workers;
+- propagate only necessary changed assumptions, not whole-worker reports.
+
+Do not allow one worker's proposal to become shared law before review/adjudication.
+
+### 3. Review each return
+
+Use `reviews/WAVE_0_REVIEW_PROTOCOL.md` and create one review file per worker under `reviews/WAVE_0/`.
+
+Priority review order if returns arrive together:
+1. R0-01 isolated entry repair, because it fixes the canonical V552J→V553 seam;
+2. R0-05 test infrastructure, because it can sharpen evaluation of the semantic reports;
+3. R0-02/R0-03/R0-04 as a coupled semantic set, because their proposed contracts constrain one another.
+
+### 4. Vozhd Dva Wave-0 synthesis
+
+After all five are reviewed:
+- adjudicate V555/V556/V558 object-grain and responsibility collisions;
+- update `CAPABILITY_MATRIX.md` only with accepted requirements;
+- convert findings into a finite implementation register;
+- define Wave-1 worker lanes and non-overlapping write domains;
+- bind Wave-1 acceptance to the vertical harness.
+
+Architecture discovery stops here unless implementation exposes a concrete unanticipated dependency.
+
+### 5. Execute Wave 1 semantic deepening
+
+Expected parallel lanes, subject to Wave-0 findings:
+- V553/V554 implementation;
+- V555 implementation;
+- V556 implementation;
+- V557/V558 implementation;
+- vertical test/harness tightening.
+
+Workers may revise upstream representations when a downstream contract proves starvation, but cross-stage interface changes remain Vozhd-adjudicated.
 
 ### 6. Horizontal qualification
-Run representative multi-wave/source cases, repair common-model defects, then perform the broad corpus qualification.
+
+Once representative vertical slices work:
+- qualify across representative multi-wave/source families;
+- repair common-model failures;
+- run broad corpus qualification;
+- do not create source-family-specific downstream ontologies merely to force pass status.
 
 ### 7. Rebuild runtime
-- V3 state/event/pressure-flow/attractor engine against V558 contract.
-- genealogy/household orchestration.
-- V2 phenomenology/conversation boundary.
+
+- V3 causal/temporal state/event/pressure-flow/attractor engine against the accepted V558 contract.
+- Parent/partner/household/child genealogy orchestration.
+- V2 phenomenology/conversation boundary against V3 state/history.
 
 ### 8. App/demo completion
-Optimize for a polished demonstrable path suitable for portfolio/resume presentation; defer nonessential feature breadth.
+
+Optimize for a polished demonstrable vertical path suitable for portfolio/resume presentation. Defer nonessential breadth.
 
 ## Current blockers / known risks
 
-- `POSTG5-004` V552J→V553 obsolete consumer contract.
-- Current downstream build standard explicitly records downstream continuity as not checked for thin layers; semantic completion must replace this with vertical acceptance testing.
-- V555/V556 are intentionally boundary/scaffold-grade and must be deepened without crossing into actor-specific biography/psyche jurisdiction.
-- Risk of process sprawl: any new control artifact must justify itself by enabling worker coordination or preventing concrete rework.
+- `POSTG5-004` V552J→V553 obsolete consumer contract — assigned R0-01.
+- Current downstream thin-build standard does not prove downstream semantic continuity — R0-05 begins executable replacement coverage.
+- V555/V556 are scaffold-grade and must be deepened without crossing into actor-specific generated-person jurisdiction.
+- R0-02/R0-03/R0-04 may propose incompatible seam contracts; this is expected and is resolved by Vozhd Dva, not by workers editing each other's domains.
+- Process-sprawl risk remains active: no new control artifact unless it directly enables delegation, review, synchronization, or acceptance.
 
 ## Decision log
 
 - 2026-08-17: current `main` established as implementation authority/frontier.
 - 2026-08-17: rejected serial independent stage completion; adopted bounded verticalization.
-- 2026-08-17: Enneagram-like attractor formation affirmed as intended design component; upstream stages provide prerequisites/topology, V3 realizes actor-specific formation.
-- 2026-08-17: control-room scope capped at strategy, constraints, capability matrix, delegation, and live itinerary.
+- 2026-08-17: Enneagram-like attractor formation affirmed as intended design component; V556 supplies structural prerequisites/topology and V3 realizes actor-specific formation.
+- 2026-08-17: established Vozhd Dva control room with isolated prongs, Rabochii cells, integration state, reviews, and restart state.
+- 2026-08-17: made worker-context selection a Vozhd Dva responsibility; each assignment carries upstream law and downstream obligations.
+- 2026-08-17: Wave 0 frozen as five concurrent bounded assignments with standard GitHub return/report protocol.
 
 ## Next Vozhd Dva action
 
-Methodically inspect the current downstream implementation and divide the first reconnaissance wave into non-overlapping Rabochii assignments, then launch them in parallel.
+Pin the Wave-0 integration branch from the finalized `main` control-room snapshot, then launch R0-01 through R0-05 concurrently.
