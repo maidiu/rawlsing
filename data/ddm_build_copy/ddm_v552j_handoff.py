@@ -63,7 +63,7 @@ def _same_scope(packet: Mapping[str,Any]|pd.Series,fact: Mapping[str,Any]|pd.Ser
         if not p["country_code"] or not f["country_code"] or p["country_code"]!=f["country_code"]:return False
     if bool(p["shard_id"]) != bool(f["shard_id"]):return False
     if p["shard_id"] and p["shard_id"]!=f["shard_id"]:return False
-    return True
+    return bool(p["country_code"] or p["shard_id"])
 
 def _semantic_values(row: Mapping[str,Any]|pd.Series,plural:str,singular:str)->set[str]:
     vals=set(_parse_json_array(row.get(plural))); one=_clean(row.get(singular))
