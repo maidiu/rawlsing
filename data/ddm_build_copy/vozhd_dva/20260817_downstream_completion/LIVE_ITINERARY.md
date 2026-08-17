@@ -4,11 +4,17 @@
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
+## Wave 0 integration base
+
+- Branch: `agent/vozhd-dva-wave0-integration`
+- Pinned base SHA: `958983139b8f75dc5cda65d5bf71b376d17820df`
+- All five Rabochii must branch from this integration base and open draft PRs back to it.
+
 ## Immediate sequence
 
 ### 1. Launch bounded Wave 0
 
-The worker packets are frozen under `rabochii/WAVE_0/` and should now be launched concurrently from the Wave-0 integration base.
+The worker packets are frozen under `rabochii/WAVE_0/` and should now be launched concurrently.
 
 - **R0-01:** V553/V554 boundary + `POSTG5-004` repair.
 - **R0-02:** V555 mediation semantics.
@@ -96,7 +102,8 @@ Optimize for a polished demonstrable vertical path suitable for portfolio/resume
 - 2026-08-17: established Vozhd Dva control room with isolated prongs, Rabochii cells, integration state, reviews, and restart state.
 - 2026-08-17: made worker-context selection a Vozhd Dva responsibility; each assignment carries upstream law and downstream obligations.
 - 2026-08-17: Wave 0 frozen as five concurrent bounded assignments with standard GitHub return/report protocol.
+- 2026-08-17: pinned `agent/vozhd-dva-wave0-integration` at `958983139b8f75dc5cda65d5bf71b376d17820df`.
 
 ## Next Vozhd Dva action
 
-Pin the Wave-0 integration branch from the finalized `main` control-room snapshot, then launch R0-01 through R0-05 concurrently.
+Launch R0-01 through R0-05 concurrently from the pinned Wave-0 integration branch.
