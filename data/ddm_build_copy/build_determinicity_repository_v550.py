@@ -725,10 +725,10 @@ def _lookup_response_semantics(response_map: pd.DataFrame) -> dict[tuple[str, st
         source = _first_clean_value(row_dict.get("source_family"), row_dict.get("source"))
         waves = [row_dict.get("wave", ""), row_dict.get("canonical_wave", "")]
         var_code = _first_clean_value(
-            row_dict.get("var_name"),
-            row_dict.get("var_code"),
-            row_dict.get("question_id"),
-            row_dict.get("variable_id"),
+            row_dict.get("var_name", ""),
+            row_dict.get("var_code", ""),
+            row_dict.get("question_id", ""),
+            row_dict.get("variable_id", ""),
         )
         values = [
             row_dict.get("value_code_normalized", ""),
@@ -748,8 +748,6 @@ def _lookup_response_semantics(response_map: pd.DataFrame) -> dict[tuple[str, st
             if existing is None:
                 lookup[key] = row_dict
                 continue
-            # Prefer the row carrying explicit packet provenance over a generic
-            # or observed-only row if aliases collapse onto the same key.
             existing_status = _clean(existing.get("response_semantics_status", "")).lower()
             candidate_status = _clean(row_dict.get("response_semantics_status", "")).lower()
             if existing_status in {"", "observed_only"} and candidate_status not in {"", "observed_only"}:
@@ -1256,7 +1254,7 @@ def _load_replayed_cloud_tables(paths, progress_started: float | None = None, cu
             "cloud_engine_version": manifest.get("cloud_engine_version", ""),
             "cloud_replay_allowed": True,
             "blocked_reason": "",
-            "manifest_question_use_hash": manifest_question_use_hash,
+            "manifest_question_use_contract_hash": manifest_question_use_hash,
             "current_question_use_contract_hash": current_question_use_contract_hash,
             "question_response_attitude_cloud_rows": int(len(attitude_cloud)),
             "question_response_attitude_cloud_status": manifest.get("question_response_attitude_cloud_status", ""),
@@ -1995,6 +1993,8 @@ def main() -> int:
                         response_semantics_contract_hash=response_semantics_contract,
                     )
                     if fallback_df.empty:
+                        # A no-row question is usually a country-level not-asked or otherwise empty cell.
+                        # Count it as handled so we can complete the wave without fabricating response rows.
                         skipped_questions += 1
                         _mark_question_complete(paths, idx, qrow)
                         if args.verbose:
@@ -2016,6 +2016,8 @@ def main() -> int:
                     harmonization_call_count_hot_path += 1
                     harmonization_row_count_hot_path += len(df)
                     df = _harmonize_question_frame(df, semantics_lookup, response_semantics_contract_hash=response_semantics_contract)
+                else:
+                    pass
                 qmeta = _summary_question_meta(df, qrow, readiness_lookup.get((qrow["source"], qrow["canonical_wave"], qrow["country_code"])))
                 qmeta["run_id"] = run_id
                 qmeta["shard_id"] = f"{wave_source}__{wave_wave}"
@@ -2461,9 +2463,10 @@ def main() -> int:
             if frame is None:
                 continue
             if frame.empty and table_name not in {"response_option_manual_review", "mapping_gap_report", "underpowered_quarantine", "legacy_leak_report"}:
+                # still write empty canonical outputs for schema completeness
                 frame = frame.copy()
             _log_progress(progress_started, f"writing {output_idx}/{total_outputs} {layer}/{table_name}{_process_label(table_name)} ({len(frame)} rows)")
-            write_table(
+            meta = write_table(
                 frame,
                 paths=paths,
                 table_name=table_name,
@@ -2491,7 +2494,7 @@ def main() -> int:
             country_filters=country_filters,
             thresholds={"min_cell_n": args.min_cell_n, "min_branch_n": args.min_branch_n, "min_answer_n": args.min_answer_n, "max_depth": args.max_depth},
             script_versions={"build_determinicity_repository_v550.py": "v1"},
-            input_row_counts={"scope_rows": len(scope_df), "question_rows": total_questions, "response_option_rows": len(response_map)},
+            input_row_counts={"scope_rows": len(scope_df), "question_rows": len(question_rows), "response_option_rows": len(response_map)},
             output_row_counts=row_counts,
             readiness_class_counts=readiness_df["readiness_status"].value_counts().to_dict(),
             warnings=[
