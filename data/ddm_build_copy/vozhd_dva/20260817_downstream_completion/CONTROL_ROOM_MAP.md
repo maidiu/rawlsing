@@ -7,12 +7,15 @@ This file is the navigation surface for Vozhd Dva. A future Vozhd Dva chat shoul
 Root files are Vozhd-Dva-facing and may refer to the whole project:
 
 - `README.md` — mission and governing principles.
+- `TERMINAL_DEMAND_ENVELOPE.md` — explicit finished-system demand lens that every maximal architecture pass must test against: nine strata, inter-pressure, mediation, orientation-to-strata, Absolute Horizon, pressure-flow, attractors, V3 causality, genealogy, V2 and epistemic separation.
 - `STRATEGY_AND_GATES.md` — execution strategy and gate sequence.
 - `CONSTRAINTS_PRIORITIES.md` — scope, authority, economy, and anti-sprawl law.
 - `CAPABILITY_MATRIX.md` — cross-stage capability requirements and vertical slices.
 - `WORKSTREAMS_AND_DELEGATION.md` — current prongs and concurrency model.
 - `LIVE_ITINERARY.md` — live sequence and near-term execution state.
 - `state/CURRENT_STATE.md` — compact restart snapshot; update whenever project state materially changes.
+
+The terminal envelope does not make every stage own the whole system. It forces architecture workers to prove that their local stage neither starves nor illicitly pre-instantiates the terminal design.
 
 ## Schematic transformation layer — what each stage actually does to upstream reality
 
@@ -27,9 +30,10 @@ Contents:
 - `schematics/BOUNDARY_SESSION_TEMPLATE.md` — required breakout-session format;
 - `schematics/SESSION_INDEX.md` — ordered seams from V552J→V553 through V3→V2;
 - `schematics/boundaries/` — isolated seam workspaces;
-- `schematics/synthesis/` — Vozhd-only reconciliation and accepted seam rulings.
+- `schematics/synthesis/` — Vozhd-only reconciliation and accepted seam rulings;
+- `schematics/recalibration/` — architecture-imagination reruns that test already excavated stages against the explicit terminal demand envelope without repeating unnecessary code archaeology.
 
-Schematic workers may reason beyond their seam only enough to understand upstream authority and downstream need. They do not acquire implementation jurisdiction. Worker-local proposals become system law only after Vozhd synthesis.
+Schematic workers may reason beyond their seam only enough to understand upstream authority and downstream need. Maximal architecture workers must additionally work backward from `TERMINAL_DEMAND_ENVELOPE.md`. They do not acquire implementation jurisdiction. Worker-local proposals become system law only after Vozhd synthesis.
 
 ## Prong spaces — bounded shared context
 
@@ -82,6 +86,7 @@ A review should answer:
 - Did the work satisfy its assignment?
 - Does it preserve upstream authority?
 - Does it satisfy downstream consumers?
+- Does it satisfy the relevant terminal-demand obligations without importing downstream ontology into the wrong stage?
 - Did it introduce semantic loss or a new cross-prong dependency?
 - Is it ACCEPT / ACCEPT_WITH_FOLLOWUP / RETURN_FOR_FIX / REJECT / DEFER?
 
@@ -91,12 +96,12 @@ There must always be one compact current-state snapshot in `state/CURRENT_STATE.
 
 When a worker result changes the system, Vozhd Dva updates, in order as needed:
 1. worker review;
-2. schematic boundary workspace if the result changes a transformation seam;
+2. schematic boundary/recalibration workspace if the result changes a transformation or terminal-demand sufficiency;
 3. Vozhd schematic synthesis/ruling;
 4. integration ledger;
 5. affected prong state;
-6. capability/strategy files if architecture changed;
+6. capability/strategy/terminal-demand files if architecture changed;
 7. `state/CURRENT_STATE.md`;
 8. `LIVE_ITINERARY.md`.
 
-Implementation packets must cite the accepted local seam ruling where one exists. The goal is that no future Vozhd Dva has to reconstruct the project from chat history or random PRs.
+Implementation packets must cite the accepted local seam ruling and the applicable terminal-demand-ready architecture snapshot. The goal is that no future Vozhd Dva has to reconstruct the project from chat history or random PRs.
