@@ -15,10 +15,8 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from data.ddm_build_copy.ddm_v553_harmonization import (  # noqa: E402
-    build_v553_wave_harmonization,
-    validate_v553_wave_harmonization_report,
-)
+from data.ddm_build_copy.ddm_v553_canonical_harmonization import build_v553_wave_harmonization  # noqa: E402
+from data.ddm_build_copy.ddm_v553_harmonization import validate_v553_wave_harmonization_report  # noqa: E402
 from data.ddm_build_copy.ddm_v553_schema import V553_HARMONIZATION_DIFFERENCE_LEDGER_SCHEMA, V553_WAVE_HARMONIZATION_EVIDENCE_SCHEMA
 
 
