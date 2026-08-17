@@ -1,14 +1,16 @@
 # Boundary Transformation Method
 
-For every current stage `B` with downstream consumer `C`, do not assume the immediate predecessor is the whole upstream world. Determine the stage contract by reconciling **everything lawfully available upstream** with **what the downstream consumer actually needs**.
+For every current stage `B` with downstream consumer `C`, reason over the **cumulative upstream material available to the system**, not a fictional strictly serial handoff.
+
+Rawlsing's downstream architecture is a governed dependency DAG. Earlier outputs do not become unusable merely because another stage has since transformed related material.
 
 The governing sequence is:
 
-`CUMULATIVE UPSTREAM MAP → UPSTREAM AVAILABILITY → DOWNSTREAM REQUIREMENT → LAWFUL INTAKE SELECTION → STAGE-SPECIFIC TRANSFORMATION → REACHABLE OUTPUT ENVELOPE → REQUIRED OUTPUT CONTRACT → UPDATED CUMULATIVE MAP`
+`CUMULATIVE UPSTREAM MAP → C DOWNSTREAM NEED → C LAWFUL REUSE OF EXISTING MATERIAL → RESIDUAL NEED REQUIRING B → B LAWFUL INTAKE → B-SPECIFIC TRANSFORMATION → B REACHABLE NEW OUTPUTS → C COMPOSED INTAKE → UPDATED CUMULATIVE MAP`
 
-The accepted contract is the minimum semantically complete output that both:
-1. B can lawfully create from available upstream authority; and
-2. C actually needs in order to perform its own assigned transformation without guessing, reaching behind B, or forcing B to perform C's work.
+The central question is:
+
+> Given everything already available upstream, what can the downstream stage use directly, what new meaning does the current stage uniquely need to create, and does the union of reusable upstream material plus current-stage outputs satisfy the downstream stage's actual need?
 
 ## 0. Cumulative upstream map inheritance
 
@@ -16,36 +18,43 @@ Every schematic session inherits the accepted cumulative map from all prior adju
 
 The map is additive. It retains:
 - upstream producer/stage and object identity;
-- what semantic/authority material was available at that point;
-- how later stages transformed, preserved, aggregated, or blocked it;
+- semantic/authority material available at each point;
+- how later stages transformed, preserved, aggregated, or conditioned it;
 - stable provenance/lineage links;
 - epistemic, permission, absence, uncertainty, and noncomparability states;
-- whether the material remains directly consumable, context-only, lineage-only, superseded, or forbidden for the current stage.
+- named downstream uses and restrictions.
 
-When a stage is adjudicated, its accepted outputs are added to the same map. Thus:
+When a stage is adjudicated, its accepted outputs are added to the same map:
 
-`upstream-of-V553 map + accepted V553 outputs = inherited S01 map`
+`pre-V553 map + accepted V553 outputs = S01 inherited map`
 
-`inherited S01 map + accepted V554 outputs = inherited S02 map`
+`S01 inherited map + accepted V554 outputs = S02 inherited map`
 
 and so on through the chain.
 
-**Availability is not consumption permission.** A later stage may know that an earlier object exists and retain its lineage without being authorized to read or reinterpret that earlier object directly. Every session therefore derives an explicit `ADMISSIBLE_INTAKE_SET` from the cumulative map.
+The cumulative map is not merely archival lineage. It is the inventory from which later stages may select useful earlier outputs when that use is semantically lawful.
 
-For every mapped surface/object, carry a current-stage jurisdiction such as:
-- `DIRECT_INPUT_ALLOWED`;
-- `CONTEXT_ALLOWED`;
-- `LINEAGE_ONLY`;
-- `SUPERSEDED_BY_TRANSFORMED_OBJECT`;
-- `SHOULD_BE_CARRIED_THROUGH_HANDOFF`;
-- `DIRECT_REACH_BACK_FORBIDDEN`;
-- `UNRESOLVED`.
+A later stage is **not** prohibited from reaching back simply because an intermediate stage exists.
 
-The cumulative map exists to prevent information amnesia and accidental reinvention, not to authorize arbitrary cross-stage reach-back.
+Direct reuse of an earlier object is lawful when:
+- the earlier producer remains authoritative for the meaning being consumed;
+- the object is useful to the current stage's assigned operation;
+- a later transformation has not explicitly replaced that object for this particular semantic purpose;
+- the consumer preserves the earlier object's epistemic/permission state and lineage;
+- the consumer does not silently reinterpret an earlier object as meaning something its producer did not establish.
+
+Direct reuse becomes a defect only when it:
+- bypasses a transformation whose derived meaning is actually required;
+- creates two competing authorities for the same semantic claim without precedence rules;
+- consumes a superseded representation for a use that requires the transformed representation;
+- strips provenance, uncertainty, absence, noncomparability, or permission state;
+- re-derives or overwrites meaning owned by another stage without authority.
+
+For each active stage, therefore, construct a `SELECTED_INPUT_SET` from **any adjudicated upstream outputs that are useful and lawful**, not only the immediate predecessor.
 
 ## 1. Upstream availability envelope
 
-Starting from the inherited cumulative map, inventory the richest lawful objects, authorities, and contexts available anywhere upstream that B could potentially consume. Start from actual canonical implementation outputs and concrete dependencies, not an imagined neat serial interface.
+Starting from the inherited cumulative map, inventory the richest lawful objects, authorities, and contexts available anywhere upstream that B or C could potentially use.
 
 For every available surface record:
 - producer/stage;
@@ -58,131 +67,158 @@ For every available surface record:
 - uncertainty/confidence;
 - absence, noncomparability, blockers, permissions, negative authority;
 - whether B currently consumes it;
-- whether it arrives through the immediate handoff or by direct reach-back;
-- its inherited current-stage jurisdiction from the cumulative map.
+- whether C could lawfully consume it directly;
+- whether a later stage has transformed the same underlying material and for what semantic purpose.
 
-Classify its possible jurisdiction as one of:
-- `PRIMARY_HANDOFF`;
-- `LAWFUL_DIRECT_CO_INPUT`;
+Useful classifications include:
+- `DIRECT_REUSE_AVAILABLE`;
 - `AUTHORITY_CONTEXT`;
 - `PROVENANCE_CONTEXT`;
 - `VALIDATION_CONTEXT`;
-- `SHOULD_BE_CARRIED_THROUGH_HANDOFF`;
-- `SHOULD_NOT_BE_CONSUMED`;
+- `TRANSFORMED_VARIANT_AVAILABLE`;
+- `SUPERSEDED_FOR_SPECIFIC_USE`;
+- `NOT_LAWFUL_FOR_THIS_USE`;
 - `UNRESOLVED`.
 
-The existence of a current read path does not prove that the dependency belongs in the final architecture.
+The existence of a current read path does not prove correctness, and the existence of an intermediate stage does not prove illegitimacy.
 
 ## 2. Downstream demand envelope
 
-Before defining B's operation or output, work backward from C.
+Before defining B's output, work backward from C.
 
 Determine:
 - what operation C is actually responsible for performing;
-- what information C must receive from B in order to perform it;
-- what information is truly required versus merely convenient;
-- what C would otherwise have to guess, reconstruct, or reach upstream to recover;
-- what C must explicitly receive as unresolved, absent, noncomparable, blocked, or uncertain;
+- every information class C needs to perform it;
+- which needs can already be satisfied by lawful direct use of cumulative upstream objects;
+- which needs require B-derived meaning because no earlier object contains that meaning;
+- which needs are truly required versus convenient;
+- what must explicitly remain unresolved, absent, noncomparable, blocked, or uncertain;
 - which requested meanings actually belong to C or a later stage and therefore must not be pre-resolved by B.
 
-This defines the **backward floor**: the minimum semantically complete input C needs from B.
+Partition C's need into:
 
-## 3. Lawful intake selection for B
+`C_NEED = REUSABLE_UPSTREAM_INPUTS + RESIDUAL_NEED_FOR_B_DERIVATION + C_OWN_DERIVATION`
 
-Now determine which parts of the upstream availability envelope B should actually consume. This produces the stage's `ADMISSIBLE_INTAKE_SET`.
+This partition is central. Do not make B duplicate upstream information merely to create a self-contained serial packet if C can lawfully use the authoritative upstream object directly.
 
-For each downstream-required information class ask:
-- is it already present in the immediate governed handoff?
-- if not, does a lawful direct co-input exist upstream?
-- is the direct co-input genuinely necessary, or does its necessity expose a handoff gap?
-- is the source semantic payload, authority context, provenance context, or validation context?
-- if multiple upstream surfaces appear to provide the same meaning, which one is authoritative and what are the others allowed to do?
-- does the inherited cumulative map permit direct consumption, context use, or lineage-only visibility?
+## 3. Residual obligation of B
 
-If richer governed information exists upstream but current B consumes a lossy compatibility surface, record a seam defect rather than designing around the loss.
+After mapping C's direct upstream reuse, identify the residual information that B must create.
 
-## 4. B-specific transformation obligation
+Ask:
+- what meaning needed by C does not yet exist anywhere upstream?
+- what meaning exists upstream but requires B's assigned transformation before C can use it for its intended purpose?
+- which upstream materials must B combine to create that meaning?
+- what meaning should B leave untouched because an upstream producer already owns it adequately?
 
-Only after upstream availability and downstream demand are known, state exactly what new class of meaning B must create.
+This yields B's actual obligation rather than a maximal repackaging obligation.
 
-Use the form:
+## 4. Lawful intake selection for B
+
+Now select the upstream objects B itself needs in order to perform the residual transformation.
+
+B may draw from any useful adjudicated upstream output when the use is lawful.
+
+For every selected object state:
+- why B needs it;
+- which producer owns its meaning;
+- whether B consumes it as semantic payload, authority context, provenance context, or validation context;
+- whether B is preserving, combining, comparing, conditioning, or transforming it;
+- what B is explicitly forbidden from inferring from it.
+
+If multiple upstream objects supply related meaning, define their roles rather than forcing everything through one predecessor merely for pipeline neatness.
+
+## 5. B-specific transformation obligation
+
+Only after upstream availability, C demand, direct upstream reuse, and B residual obligation are known, state exactly what new class of meaning B creates.
+
+Use:
 
 `SELECTED LAWFUL INPUT GRAINS → B-AUTHORIZED OPERATION → B-DERIVED OBJECT GRAINS`
 
-The operation must identify what B computes, derives, compares, groups, conditions, temporalizes, or re-expresses that upstream sources did not already know.
-
-Every proposed derived field must have:
-- a lawful source basis;
-- an explicit transformation rule or governed derivation class;
+Every B-derived field/object must have:
+- lawful source basis;
+- explicit transformation rule or governed derivation class;
 - retained lineage to its basis;
-- an epistemic/permission state;
-- a clear reason B rather than an upstream or downstream stage owns the derivation.
+- epistemic/permission state;
+- a clear reason B owns this derivation.
 
-## 5. Reachable output envelope
+## 6. Reachable new-output envelope
 
-Given the complete lawful intake composition and B's authorized operation, determine **everything B is actually capable of emitting without invention**.
-
-This is the **forward ceiling**.
+Determine everything B can lawfully create from its selected inputs without invention.
 
 Separate:
-- directly preserved upstream meaning;
-- losslessly reformatted meaning;
-- governed B-derived meaning;
-- lawful aggregation with lineage;
-- unresolved/negative states that must survive;
+- genuinely B-derived meaning;
+- lossless reformats useful for downstream consumption;
+- aggregates with retained lineage;
+- unresolved/negative states generated by B's transformation;
+- upstream meaning B merely references rather than reproduces;
 - meanings B cannot lawfully create.
 
-The reachable output envelope may be richer than what C currently needs. Do not automatically turn every reachable field into a required contract field.
+The purpose is to understand B's capacity, not to maximize B's packet size.
 
-## 6. Required B output contract
+## 7. C composed intake and sufficiency test
 
-Intersect the reachable output envelope with the downstream demand envelope.
+C's lawful input is the union of:
 
-The required output contract is the minimum object set that:
-- lets C perform its own transformation without upstream reach-back;
-- preserves all distinctions needed by named downstream capabilities;
-- preserves lineage and authority for every B-derived value;
-- carries unresolved/absence/noncomparability/blocker states where they matter;
-- does not pre-resolve responsibilities belonging to C or later stages.
+`SELECTED REUSABLE UPSTREAM OBJECTS + ACCEPTED B OUTPUTS`
 
-If B can lawfully produce useful information that C does not currently require but a named later capability does require, preserve it when dropping it here would force downstream reconstruction. Record that downstream consumer explicitly.
+Test whether that composed intake satisfies C's downstream demand.
 
-After adjudication, add the accepted B outputs to the cumulative upstream map with their source lineage and the jurisdiction they should have for the next stage.
+For every C requirement, classify its source as:
+- `EARLIER_UPSTREAM_DIRECT`;
+- `B_DERIVED`;
+- `EARLIER_UPSTREAM_PLUS_B_DERIVATION`;
+- `C_OWN_DERIVATION`;
+- `MISSING_AUTHORITY`;
+- `UNRESOLVED`.
 
-## 7. Preservation / transformation ledger
+B's required output contract is therefore only the minimum set of new/reshaped objects B must contribute to this composed intake.
 
-Classify each important incoming distinction as:
-- `PRESERVE` — identity/meaning must remain directly or by stable reference;
-- `DERIVE` — B may compute a governed new value while retaining lineage;
-- `REFORMAT` — storage/representation may change losslessly;
-- `AGGREGATE_WITH_LINEAGE` — compression permitted only with reversible/auditable source linkage;
-- `DROP_EXPLICITLY` — information may be discarded only because no named downstream capability needs it and the loss is recorded;
-- `FORBIDDEN_TO_INFER` — B may not manufacture the value;
-- `UNRESOLVED` — authority is insufficient and the unknown must survive.
+B does **not** need to carry forward every useful earlier object merely so C can access it, unless doing so is itself useful for integrity, performance, portability, or a named downstream constraint.
 
-Silent loss is never a valid category.
+## 8. Preservation / transformation ledger
 
-## 8. Reconciliation outcomes
+For every important input or inherited distinction classify:
+- `DIRECT_REUSE` — later stage may consume the original governed object;
+- `REFERENCE` — later stage uses lineage/reference while consuming a transformed object for semantics;
+- `PRESERVE_IN_B_OUTPUT` — B must carry the distinction into its own object because B's new meaning depends on it;
+- `DERIVE` — B computes governed new meaning while retaining lineage;
+- `REFORMAT` — representation changes losslessly;
+- `AGGREGATE_WITH_LINEAGE` — compression permitted with auditable source linkage;
+- `SUPERSEDED_FOR_SPECIFIC_USE` — original remains available but a transformed object is authoritative for a named use;
+- `DROP_EXPLICITLY` — information may be omitted from B output because downstream can lawfully reuse the original or no named capability needs it;
+- `FORBIDDEN_TO_INFER` — current stage may not manufacture the value;
+- `UNRESOLVED` — authority is insufficient and the unknown survives.
 
-For every downstream requirement compare the backward floor with the forward ceiling and classify:
-- `MEETS` — lawful reachable output satisfies downstream need;
-- `UPSTREAM_INFORMATION_LOSS` — required meaning exists earlier but is not reaching B;
-- `MISSING_AUTHORITY` — downstream desire exceeds everything lawfully available upstream;
-- `MISPLACED_RESPONSIBILITY` — requested meaning belongs to another stage;
-- `CONTRACT_GAP` — B can lawfully create the needed meaning but current code/schema does not;
-- `REPRESENTATION_GAP` — semantics exist but are not preserved in B's downstream handoff;
-- `REDUNDANT_REACH_BACK` — B reaches upstream for meaning already carried by its governed handoff;
-- `HANDOFF_GAP` — B legitimately needs upstream meaning that the immediate handoff should probably carry but does not.
+Silent loss remains forbidden. Omission from B's packet is not loss when the authoritative upstream object remains deliberately available to downstream consumers.
 
-## 9. Worked transformations
+## 9. Reconciliation outcomes
+
+For every downstream requirement classify:
+- `MEETS_BY_UPSTREAM_REUSE`;
+- `MEETS_BY_B_DERIVATION`;
+- `MEETS_BY_COMPOSITION`;
+- `UPSTREAM_INFORMATION_LOSS`;
+- `MISSING_AUTHORITY`;
+- `MISPLACED_RESPONSIBILITY`;
+- `CONTRACT_GAP`;
+- `REPRESENTATION_GAP`;
+- `AMBIGUOUS_AUTHORITY`;
+- `ILLICIT_BYPASS` — direct reuse skips a transformation required for the intended semantic use;
+- `UNNECESSARY_DUPLICATION` — B republishes upstream meaning with no semantic or operational reason.
+
+Do not use `reach-back` itself as a defect category. Cross-stage reuse is normal when governed.
+
+## 10. Worked transformations
 
 At least two concrete examples should travel through:
 
-`cumulative upstream map → upstream availability → admissible intake → B operation → reachable outputs → downstream-required subset → updated cumulative map`
+`cumulative upstream map → C need → direct upstream reuse → residual B obligation → B selected inputs → B transformation → B outputs → C composed intake → updated cumulative map`
 
 Prefer one ordinary and one adversarial/ambiguous case.
 
-## 10. Hostile cases
+## 11. Hostile cases
 
 Test at least:
 - contradiction/competing evidence;
@@ -190,25 +226,27 @@ Test at least:
 - unknown versus low confidence;
 - noncomparability;
 - temporal drift/rupture uncertainty where relevant;
-- duplicate/competing upstream authorities;
-- illicit direct reach-back despite lineage visibility;
+- duplicate/competing authorities;
+- legitimate long-range reuse of an earlier-stage object;
+- illicit bypass of a transformation that changes the meaning required by the consumer;
 - direct structure-to-person/personality inference pressure.
 
-## 11. Session termination
+## 12. Session termination
 
-A session ends with only:
+A session ends with:
 1. inherited cumulative upstream map confirmed/corrected;
-2. accepted upstream availability/intake map;
-3. accepted downstream demand map;
-4. accepted `ADMISSIBLE_INTAKE_SET`;
-5. accepted stage transformation equation;
-6. accepted reachable output envelope;
-7. required downstream output contract;
-8. updated cumulative map including accepted stage outputs;
-9. preserve/derive/drop/forbid/unresolved ledger;
-10. concrete seam/reach-back defects;
-11. implementable producer/consumer obligations;
-12. unresolved questions requiring Vozhd adjudication;
-13. adjacent seams that must be informed.
+2. downstream demand map;
+3. direct-reuse map for the downstream consumer;
+4. residual current-stage obligation;
+5. current-stage selected input set;
+6. accepted transformation equation;
+7. reachable new-output envelope;
+8. downstream composed-intake sufficiency result;
+9. required current-stage output contract;
+10. updated cumulative map including accepted stage outputs;
+11. preserve/reuse/derive/supersede/drop/forbid/unresolved ledger;
+12. concrete dependency/authority defects;
+13. implementable obligations;
+14. unresolved questions for Vozhd adjudication.
 
 No production implementation begins merely because a breakout worker proposes a schema.
