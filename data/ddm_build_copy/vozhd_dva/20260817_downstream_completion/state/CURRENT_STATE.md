@@ -2,76 +2,85 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Active integration branch:** `agent/vozhd-dva-wave0-integration`  
-**Phase:** WAVE_0_REVIEW_AND_SCHEMATIC_PREP
+**Phase:** S00_READY_TO_LAUNCH
 
 ## Mission now
 
-Complete Wave-0 review, then run a bounded schematic transformation phase before deep V553–V558 implementation. The purpose is to decide, seam by seam, what each stage lawfully creates from upstream information and what it must emit for the next stage.
+Run only schematic session S00 (V552J→V553), reconvene its independent forward/backward analyses, freeze the lawful V553 transformation/output contract, and only then permit S01 to launch.
 
 ## Canonical assumptions
 
-- Current repository code is the implementation frontier.
+- Current `main` is the implementation and control-room authority.
 - V550–V552J are closed by default.
-- V553 must transform canonical upstream structural evidence rather than recreate governed identity from downstream convenience labels.
-- V553–V558 are a transformation chain, not independently finishable modules.
-- Enneagram-like attractor formation is intended design: V556 supplies structural pressure-flow/attractor prerequisites/topology; V3 realizes actor-specific developmental formation.
+- `POSTG5-004` is closed on the V553 consumer side.
+- V553 consumes a fail-closed verified canonical V552J publication and must transform upstream governed structural evidence rather than recreate its identity from convenience labels.
+- V553 owns temporalization/structural-pressure meaning only to the extent upstream authority supports it.
+- Each downstream stage earns only its own class of meaning; upstream identity, provenance, epistemic state, negative authority, and distinctions needed later remain attached unless an explicit governed transformation says otherwise.
+- Enneagram-like attractor formation is intended design: V556 supplies structural pressure-flow/attractor prerequisites/topology; V3 later realizes actor-specific developmental formation.
 - V3 is causal/temporal actor jurisdiction; V2 is phenomenological/conversational jurisdiction and is not causal authority.
-- Architecture/schematic work is bounded by implementation value and ends in implementable seam obligations.
+- Schematic work is finite and terminates in implementable seam obligations.
 
-## Wave 0 return state
+## Wave 0 closeout
 
-Five workers returned. Current Vozhd disposition:
-- **R0-02 / PR #35:** findings accepted and merged to Wave-0 integration.
-- **R0-03 / PR #36:** findings accepted and merged to Wave-0 integration.
-- **R0-04 / PR #38:** findings accepted and merged to Wave-0 integration.
-- **R0-05 / PR #37:** vertical reference harness accepted and merged to Wave-0 integration; focused worker result reported 12 passed / 5 intentional strict XFAILs.
-- **R0-01 / PR #39:** held for a narrow follow-up. The V553-side canonical consumer direction is correct, but canonical artifact read/integrity handling must fail closed rather than silently treating unreadable/malformed artifacts as empty while path presence can remain true.
+Wave 0 is complete and integrated into canonical `main` through PR #40, merge commit `1bbfb62791a583ab9ab7d21f5a0d76b4617b8f89`.
 
-The accepted Wave-0 findings converge on semantic starvation beginning around V554→V555 and compounding through V556→V557→V558. Final Vozhd synthesis still requires boundary-by-boundary adjudication before implementation.
+Final worker dispositions:
+- R0-01 / PR #39: `ACCEPT` after fail-closed integrity correction.
+- R0-02 / PR #35: `ACCEPT_WITH_FOLLOWUP`.
+- R0-03 / PR #36: `ACCEPT_WITH_FOLLOWUP`.
+- R0-04 / PR #38: `ACCEPT_WITH_FOLLOWUP`.
+- R0-05 / PR #37: `ACCEPT`.
 
-## Schematic transformation layer
+Wave-0 findings remain evidence inputs; proposed replacement object grains are adjudicated in the schematic sessions, not inherited automatically.
 
-Canonical location: `schematics/`
+## Schematic sequencing law
 
-Method:
-`upstream authority → lawful intake → stage-specific operation → enriched output → downstream requirement`
+Only one seam is active at a time.
 
-Sessions:
-- S00 V552J→V553
-- S01 V553→V554
-- S02 V554→V555
-- S03 V555→V556
-- S04 V556→V557
-- S05 V557→V558
-- S06 V558→V3
-- S07 V3→V2
+Inside the active seam, independent perspectives may run concurrently. Vozhd Dva then reconvenes them and writes an accepted ruling. The accepted output contract becomes the frozen upstream law for the next seam.
 
-**Sequencing law:** one seam at a time. Within the active seam, forward/backward workers may break out concurrently, with a hostile critic where needed. Vozhd Dva reconvenes and freezes that seam before the next seam launches. The accepted output of one seam becomes the frozen upstream input law of the next.
+Serial progression:
+`S00 → synthesis → S01 → synthesis → S02 → ... → S07`
 
-Current schematic readiness:
-- S00: ready after R0-01 integrity closeout.
-- S01–S07: blocked on the immediately preceding seam's Vozhd synthesis.
+## Active session — S00 only
 
-Breakout proposals are advisory until Vozhd Dva reconciles them in `schematics/synthesis/`.
+Workspace:
+`schematics/sessions/S00_V552J_TO_V553/`
 
-## Immediate next actions
+Breakouts:
+- `FORWARD_V552J` — reason forward from richest lawful V552J authority.
+- `BACKWARD_V554` — reason backward from minimum lawful V554 need.
 
-1. Close the narrow R0-01 fail-closed integrity concern and integrate its lawful V553 consumer repair/findings.
-2. Construct and launch only the S00 breakout packet(s): forward-from-V552J and backward-from-V554 perspectives.
-3. Reconvene S00, adjudicate the lawful V552J→V553 transformation, and record the accepted S00 seam contract in `schematics/synthesis/`.
-4. Promote S01 to ready using the accepted S00 output as its upstream law; repeat serially through S07.
-5. After S07 synthesis, update `CAPABILITY_MATRIX.md` and produce the finite Wave-1 implementation register and worker packets.
+Both are production-code read-only and return `RESULT.md` + `RESULT.json` in their own cells.
+
+Branch plan:
+- integration: `agent/vozhd-dva-s00-integration`
+- forward: `agent/vozhd-dva-s00-forward-v552j`
+- backward: `agent/vozhd-dva-s00-backward-v554`
+
+Launch/return map:
+`schematics/sessions/S00_V552J_TO_V553/LAUNCH_INDEX.md`
+
+Vozhd ruling surface:
+`schematics/synthesis/S00_V552J_TO_V553_RULING.md`
+
+## Blocked sessions
+
+S01–S07 remain blocked. S01 cannot launch until the S00 ruling explicitly freezes the V553 output contract that becomes S01 upstream law.
+
+## Immediate next action
+
+Launch the two S00 breakouts from their pre-created pinned branches, wait for both returns, then reconvene S00. Do not launch S01.
 
 ## Restart instruction
 
-A future Vozhd Dva chat should read, in order:
+Read in order:
 1. `CONTROL_ROOM_MAP.md`
 2. `state/CURRENT_STATE.md`
 3. `LIVE_ITINERARY.md`
 4. `schematics/README.md`
 5. `schematics/SESSION_INDEX.md`
-6. `integration/WAVE_0_INTAKE_LEDGER.md`
-7. only the active seam/worker/review files required for the next action.
+6. `schematics/sessions/S00_V552J_TO_V553/LAUNCH_INDEX.md`
+7. only the active S00 cells and relevant canonical code/results.
 
-Do not reconstruct project state from chat history when the control-room state is available.
+Do not reconstruct project state from chat history when the control room is available.
