@@ -2,146 +2,107 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** `TERMINAL_DEMAND_RECALIBRATION__TD_R00_V553_READY__PRE_S02_PAUSED__WAITING_FINAL_UPSTREAM_IDENTITY_BASE`
+**Phase:** `TERMINAL_DEMAND_RECALIBRATION__TD_R00_V553_ACCEPTED__TD_R01_V554_READY__PRE_S02_PAUSED__WAITING_FINAL_UPSTREAM_IDENTITY_BASE`
 
 ## Succession / restart authority
 
-A durable operating handoff now exists:
+`VOZHD_DVA_HANDOFF.md` remains the durable operating handoff. This file is the authority for **live phase/status** and overrides stale status details in the handoff.
 
-`VOZHD_DVA_HANDOFF.md`
+## Governing whole-system law
 
-A fresh Vozhd Dva session reads that first to recover operating doctrine, worker/review law, whole-system architecture, campaign history and restart procedure. This `CURRENT_STATE.md` remains the authority for **live phase/status** and overrides stale status details in the handoff as work advances.
+Every maximal architecture/recalibration pass is governed by:
+1. `TERMINAL_DEMAND_ENVELOPE.md`;
+2. `ARCHITECTURE_PASS_LAW.md`.
 
-## Governing correction
+Workers must see the complete Rawlsing terminal system while deriving only the current stage's bounded obligation. Direct lawful DAG reuse is preferred over serial duplication. No terminal capability may remain implicit; every primary family/component/boundary object must pass no-starvation and no-bloat tests.
 
-The downstream control room contained the intended Rawlsing capabilities, but the completed maximal architecture-imagination passes for V553 and V554 were constrained primarily by their immediate downstream consumers. The full terminal structural-personhood demand had become too implicit.
+## TD-R00 V553 — ACCEPTED AND BANKED
 
-That is now a methodological defect to correct before implementation or further downstream maximal architecture work.
+TD-R00 worker result:
+- branch: `agent/vozhd-dva-td-r00-v553-recalibration`;
+- worker head: `5b9f925f63e212b3d28e31f7f60e2988833ef6d3`;
+- PR #52;
+- merged/banked on `main` at `3ad2dbf586e4f2212ecf9c75cb3fdae85cd80d59`;
+- worker verdict: `PRESERVATION_HARDENING_REQUIRED`;
+- accepted Vozhd verdict: `V553_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS`;
+- disposition: `ACCEPT`.
 
-Two governing whole-system files now apply to every maximal architecture/recalibration pass:
+Accepted V553 architecture remains four canonical semantic/negative families:
+1. `TEMPORAL_KEY`;
+2. `TEMPORAL_OBSERVATION`;
+3. `TEMPORAL_RELATION`;
+4. `TEMPORAL_LIMIT / NEGATIVE_AUTHORITY`;
+plus secondary reversible aggregate projection, exact V553→V554 handoff, manifest/readiness.
 
-1. `TERMINAL_DEMAND_ENVELOPE.md` — what the complete Rawlsing system ultimately needs;
-2. `ARCHITECTURE_PASS_LAW.md` — how a worker sees the whole system while remaining bounded to the current stage's semantic jurisdiction.
+No new semantic family or internal component was added.
 
-`ARCHITECTURE_PASS_LAW.md` requires four simultaneous views:
-- whole-system destination;
-- cumulative lawful upstream reality;
-- current-stage jurisdiction;
-- all downstream consequences.
+### TD-R00 preservation law
 
-For every terminal capability the worker must classify the current stage's relationship as:
-- `OWN_AND_DERIVE_HERE`;
-- `PRESERVE_BY_REFERENCE`;
-- `PROVIDE_PREREQUISITE_ONLY`;
-- `DIRECT_UPSTREAM_REUSE_SUFFICIENT`;
-- `DOWNSTREAM_OWNS`;
-- `MISSING_AUTHORITY`;
-- `IRRELEVANT_TO_THIS_STAGE`.
+`GOVERNED_STRUCTURAL_REFERENCE_SET` is a required terminal-grade reference contract, **not** a new semantic family. It separates:
+- `identity_basis_refs`;
+- `contextual_terminal_refs`.
 
-Every maximal architecture result must include the architecture checksum defined there and must pass both a no-starvation test and a no-bloat test.
+It preserves, where governed, exact V552/V552J lineage, semantic/directionality/position/use authority, relation-axis, source/driver position, target/receiving position, structural channel, 0..n role-qualified finite-stratum refs, distinct Horizon/Absolute-Horizon authority classes, inherited relation/incompatibility refs and `reference_contract_version`.
 
-## Terminal demand envelope
+Structural source→target direction is distinct from V553 temporal-delta direction. Simultaneous exact pressure keys may not be collapsed, averaged, winner-selected or converted into invented conflict semantics.
 
-`TERMINAL_DEMAND_ENVELOPE.md` makes explicit:
-- the nine relational strata: Planetary; Imperial Block; Nation State; Sub-national Region; Sect/Ethno/Class; Party/Movement; Neighborhood/Household; Family; Self;
-- downward, upward and lateral inter-strata pressure/counter-pressure;
-- relational source/target/direction/condition identity;
-- temporal persistence/drift/rupture/gap/noncomparability;
-- mediation through carriers/frameworks/identifications/alienations/buffers/cracks and route effects;
-- vitality/need/desire as later organism/runtime dynamics rather than structural facts;
-- orientation-to-strata as a central V3 actor state;
-- Absolute Horizon as separate from the nine finite strata;
-- structural pressure-flow topology and feedback;
-- Enneagram-like attractor prerequisites in V556 and actor-specific formation in V3;
-- V3 auditable developmental causality;
-- parent/partner/child recursive genealogy;
-- V2 phenomenology/expression without causal authority;
-- source evidence / structural prior / generated runtime fact / rendered expression separation;
-- fourteen mandatory terminal-demand questions for every maximal architecture pass.
+### Vozhd rulings on TD-R00 open questions
 
-The envelope and pass law are backward-demand lenses, not permission to make every stage own the full ontology. Direct governed DAG reuse remains preferred over serial duplication.
+1. finite-stratum mappings at V553 are `0..n` role-qualified governed refs; never force one mapping and never invent one;
+2. explicit Absolute-Horizon designation is never inferred from religion, ideology or generic Horizon context;
+3. V553 creates no cross-key counter-pressure/conflict interaction; provisional default ownership is V556 structural interaction topology, subject to later bounded passes proving a narrower earlier prerequisite;
+4. persistence/drift/rupture-candidate qualitative annotations stay disabled absent a governed deterministic rule;
+5. external-event causal rupture remains outside V553.
 
-## Architecture recalibration sequence
+## V553 implementation packets — AMENDED, STILL BLOCKED
 
-Previously completed excavations remain valid evidence. We are **not** repeating code archaeology unless needed.
+`integration/V553_COMPLETION_IMPLEMENTATION_RULING.md` and P1–P5 assignments have been amended to incorporate TD-R00.
 
-We are re-running the architecture-imagination layer:
+Packet topology remains:
+`P1 Admission/Authority → P2 Sparse Core → P3 Relations/Limits → P4 Publication → P5 Handoff/Court`.
 
-`S00/S00.5 evidence + terminal demand + architecture-pass law`
-`→ TD-R00 V553 terminal-demand recalibration`
-`→ Vozhd review / superseding V553 architecture snapshot`
-`→ TD-R01 V554 terminal-demand recalibration`
-`→ Vozhd review / superseding V554 architecture snapshot`
-`→ refresh PRE-S02 V555 excavation against those terminal-demand-ready upstream targets`
-`→ PRE-S02.5 V555 maximal architecture under the same whole-picture/bounded-jurisdiction law`
-`→ continue downstream with excavation → maximal architecture rhythm`
+TD-R00 packet deltas are all `AMEND`; no packet was split, removed or added.
 
-Assignments:
-- `schematics/recalibration/TD_R00_V553/ASSIGNMENT.md` — READY; worker command must also require `ARCHITECTURE_PASS_LAW.md`.
-- `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` — PREPARED, DO NOT LAUNCH until TD-R00 accepted; worker command must also require `ARCHITECTURE_PASS_LAW.md`.
+Completion court is now G01–G18, adding:
+- `G17_TERMINAL_REFERENCE_PRESERVATION`;
+- `G18_DIRECTION_AND_MULTIPRESSURE_NONCOLLAPSE`.
 
-## Binding track
+Do **not** launch V553 implementation until the source/wave identity campaign terminally merges to `main`, followed by a narrow final upstream-identity delta check against S00 + TD-R00.
 
-S00 seam law remains accepted evidence. S00.5's V553 architecture and its five implementation packets are now **SUSPENDED_PENDING_TERMINAL_DEMAND_RECALIBRATION** rather than implementation-authoritative.
+## Source/wave identity campaign
 
-Do not launch V553 P1–P5 until:
-1. the source/wave identity campaign terminally merges to `main`;
-2. TD-R00 produces `V553_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS` and Vozhd accepts it;
-3. the implementation ruling/packets are amended if TD-R00 changes any architecture slot;
-4. the final upstream-identity delta check passes.
+Integration PR #27 remains the separate upstream-identity dependency until terminally merged. Its completion gates only the V553 production implementation base; it does not block TD-R01 architecture recalibration.
 
-The source/wave identity campaign PR #27 remains separate and active.
+Always re-fetch PR #27 before a decision that depends on its live state.
 
-## Banked V553 evidence
+## TD-R01 V554 — READY TO LAUNCH
 
-Still authoritative as excavation/seam evidence unless TD-R00 identifies a direct contradiction:
-- both S00 forward/backward returns;
-- `schematics/synthesis/S00_V552J_TO_V553_RULING.md`;
-- `schematics/sessions/S00_5_V553_ARCHITECTURE/RESULT.md` + JSON as the prior architecture hypothesis;
-- existing production-code topology findings.
+Assignment:
+`schematics/recalibration/TD_R01_V554/ASSIGNMENT.md`
 
-TD-R00 must preserve valid findings and revise only architecture slots implicated by terminal-demand starvation.
+TD-R01 has been amended to consume accepted TD-R00 law explicitly, including:
+- the terminal reference spine;
+- structural-direction vs temporal-direction separation;
+- simultaneous-pressure noncollapse;
+- 0..n governed stratum refs;
+- explicit-only Absolute Horizon authority;
+- cross-key interaction ownership test.
 
-## Banked V554 evidence
+TD-R01 must re-test PRE-S01.5's four semantic families + B1 against full terminal demand, prefer direct upstream DAG reuse where sufficient, and issue:
+`V554_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
 
-PRE-S01 excavation and PRE-S01.5 corrected maximal blueprint remain valuable evidence:
-- PR #47 excavation;
-- PR #49 maximal blueprint merged at `62de1437656a1e9915a2a693c813765feb285017`;
-- four semantic families + one boundary family, positive-only F1, semantic-vs-validation separation, no-score/no-interpolation law.
+Do not launch PRE-S02 V555 until TD-R01 returns and Vozhd accepts/banks the superseding V554 architecture.
 
-However PRE-S01.5 is now **PRIOR_ARCHITECTURE_HYPOTHESIS_PENDING_TD_R01**, not the final implementation target. TD-R01 will test it after TD-R00 is accepted.
+## PRE-S02 V555 — PAUSED
 
-## PRE-S02 V555 status
-
-`schematics/advisory/PRE_S02_V555/ASSIGNMENT.md` and branch exist, but **DO NOT LAUNCH PRE-S02 now**.
-
-It was written with pressure-flow/attractor demand visible, but before the terminal-demand envelope and whole-picture/bounded-jurisdiction law became mandatory architecture constraints. After TD-R00 and TD-R01, refresh PRE-S02 so its excavation works against terminal-demand-ready V553/V554 targets and explicitly carries these laws into later maximal architecture work.
-
-## Why the redo is bounded
-
-We are redoing **architecture imagination**, not throwing away excavation.
-
-The recalibration worker must classify each prior architecture element as:
-- `CONFIRM`;
-- `CONFIRM_WITH_PRESERVATION_HARDENING`;
-- `REVISE_GRAIN`;
-- `REVISE_REQUIRED_REFS`;
-- `REVISE_JURISDICTION`;
-- `DEMOTE`;
-- `REMOVE`.
-
-No new family or mechanism is allowed unless it unblocks a named terminal capability and lawful direct reuse cannot satisfy the need.
+Existing excavation remains banked evidence but must be refreshed after TD-R01 to consume terminal-demand-ready V553/V554 targets and the whole-picture/bounded-jurisdiction law.
 
 ## Immediate next action
 
-Launch **TD-R00 V553 Terminal-Demand Architecture Recalibration** only, using both governing root files.
-
-Prepared worker branch:
-`agent/vozhd-dva-td-r00-v553-recalibration`
-
-The worker branch was intentionally pinned/refreshed at the architecture-assignment state. Do not silently move it again after launch; inspect its actual head when the worker returns.
-
-After TD-R00 returns, Vozhd reviews it before TD-R01 or PRE-S02 can launch.
+1. create/refresh a dedicated TD-R01 worker branch from the current accepted control-room state;
+2. launch **TD-R01 V554 Terminal-Demand Architecture Recalibration only**;
+3. on return, inspect actual PR/branch/files and adjudicate before PRE-S02 proceeds;
+4. independently continue to watch source/wave identity PR #27 for terminal merge.
 
 ## Restart instruction
 
@@ -152,11 +113,10 @@ Read, in order:
 4. `ARCHITECTURE_PASS_LAW.md`;
 5. `CONTROL_ROOM_MAP.md`;
 6. `CAPABILITY_MATRIX.md`;
-7. `schematics/recalibration/TD_R00_V553/ASSIGNMENT.md` and result when present;
-8. S00 forward/backward results and S00 ruling;
-9. prior S00.5 V553 architecture result;
-10. `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` only after TD-R00 acceptance;
-11. PRE-S01/PRE-S01.5 V554 evidence;
-12. current status of source/wave identity integration PR #27.
+7. accepted TD-R00 V553 `RESULT.md` + `RESULT.json`;
+8. amended `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md`;
+9. `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` and result when present;
+10. PRE-S01/PRE-S01.5 V554 evidence;
+11. live PR #27 state.
 
-Do not reconstruct the architecture from chat history when these files exist.
+Do not reconstruct current architecture or campaign state from chat history when these repository authorities exist.
