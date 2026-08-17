@@ -43,6 +43,11 @@ def _cache_manifest(
     wave_uid: str,
     shard_id: str,
     compiler_version: str,
+    raw_source: str | None = None,
+    raw_wave: str | None = None,
+    canonical_display_source: str | None = None,
+    canonical_display_wave: str | None = None,
+    scope_kind: str = "country",
     identity_contract_version: str | None = None,
 ) -> dict[str, object]:
     metadata = prepared.v550j_identity_contract_metadata()
@@ -55,10 +60,15 @@ def _cache_manifest(
         "source": source,
         "wave": wave,
         "canonical_wave": wave,
+        "raw_source": raw_source or source,
+        "raw_wave": raw_wave or wave,
+        "canonical_display_source": canonical_display_source or source,
+        "canonical_display_wave": canonical_display_wave or wave,
         "source_family_uid": source_family_uid,
         "wave_uid": wave_uid,
         "country_code": country_code,
         "shard_id": shard_id,
+        "scope_kind": scope_kind,
         "prepared_cache_identity_binding_version": prepared.V550J_PREPARED_CACHE_IDENTITY_BINDING_VERSION,
         "authority_compendium_hash": "authority",
         "question_family_registry_hash": "registry",
@@ -138,11 +148,30 @@ def test_same_uid_wrong_country_or_scope_cache_is_rejected(tmp_path: Path) -> No
         source_family_uid=evs.source_family_uid,
         wave_uid=evs.wave_uid,
         shard_id="wrong-shard",
+        scope_kind="shard",
         compiler_version="compiler-v1",
     )
     _plant_stale_cache(tmp_path, manifest, source="EVS", wave="1981", country="DE")
     with pytest.raises(RuntimeError, match="V550J_PREPARED_CACHE_IDENTITY_OR_CONTRACT_MISMATCH"):
         _load_required(tmp_path, identity=evs, country="DE", shard_id="shard-1")
+
+
+def test_same_uid_stale_nonblank_raw_identity_is_rejected(tmp_path: Path) -> None:
+    evs = _identity("EVS", "1981")
+    manifest = _cache_manifest(
+        run_id="run-1",
+        source="EVS",
+        wave="1981",
+        country_code="DE",
+        source_family_uid=evs.source_family_uid,
+        wave_uid=evs.wave_uid,
+        shard_id="shard-1",
+        compiler_version="compiler-v1",
+        raw_wave="W1",
+    )
+    _plant_stale_cache(tmp_path, manifest, source="EVS", wave="1981", country="DE")
+    with pytest.raises(RuntimeError, match="V550J_PREPARED_CACHE_IDENTITY_OR_CONTRACT_MISMATCH"):
+        _load_required(tmp_path, identity=evs)
 
 
 def test_identity_contract_version_mismatch_rejects_required_cache(tmp_path: Path) -> None:
@@ -221,6 +250,7 @@ def test_identity_contract_version_mismatch_rebuilds_in_build_mode(monkeypatch: 
     assert not rebuilt.empty
     assert fresh_manifest["cache_loaded"] is False
     assert fresh_manifest["identity_contract_version"] == prepared.v550j_identity_contract_metadata()["identity_contract_version"]
+    assert fresh_manifest["raw_wave"] == "W1"
 
 
 @pytest.mark.parametrize("a,b", [("1981", "W1"), ("1999", "W3")])
@@ -302,8 +332,7 @@ def test_raw_and_canonical_roles_are_explicit_not_lexically_assigned() -> None:
             }
         ]
     )
-    contract = shard.copy()
-    resolved = compiler._resolve_v550j_source_wave_identity(shard, contract)
+    resolved = compiler._resolve_v550j_source_wave_identity(shard, shard.copy())
     assert resolved["raw_wave"] == "W1"
     assert resolved["canonical_display_wave"] == "1981"
     assert compiler._ordered_wave_query_values("W1", "1981") == ["W1", "1981"]
