@@ -1,6 +1,6 @@
-# Latest Extant V3/V2 Baseline — Binding Recovery Evidence for TD-R05
+# Latest Extant V3/V2 Baseline — Recovery Evidence for TD-R05
 
-**Status:** `LATEST_EXTANT_V3_V2_IMPLEMENTATION_DESIGN_BASELINE__MIGRATE_OR_EXPLICITLY_SUPERSEDE`  
+**Status:** `LATEST_EXTANT_V3_V2_IMPLEMENTATION_DESIGN_EVIDENCE__CONTINUITY_DESIRED__TERMINAL_VISION_SOVEREIGN`  
 **Applies to:** TD-R05 V3 developmental-runtime court and later V2 court  
 **Source archive:** user-supplied `Rawlsing_code_bundle_staging.zip`  
 **Archive SHA256:** `953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`  
@@ -8,24 +8,41 @@
 
 ## 0. Evidentiary hierarchy
 
-The archive is an old **whole-project** snapshot because its V5/DDM side predates the accepted TD-R00–TD-R04 V553–V558 architecture. Therefore:
+Read first and obey:
 
-- **The snapshot's V5/DDM bridge material is stale and nonbinding.** Accepted V553–V558 architecture and integration rulings supersede it.
-- **The snapshot's V3/V2 subsystem is the latest extant V3/V2 implementation/design available.** It is not a discarded prototype and must not be treated as greenfield inspiration.
-- TD-R05 must first reconstruct what the extant V3 actually is, then assign a finite disposition to each substantive mechanism:
-  - `RECREATE_AS_IS`;
-  - `ADAPT_TO_ACCEPTED_V553_V558_INPUTS`;
-  - `SUPERSEDE_WITH_EXPLICIT_REASON`;
+`data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`.
+
+That ruling controls this document. In particular:
+
+- **continuity with extant V3/V2 is desired wherever lossless**;
+- **V550+-grounded Rawlsing vision-integrity is absolute**;
+- extant V3/V2 is implementation/design evidence and a reuse opportunity, never a constraint on V550+ or the terminal personhood architecture;
+- if extant V3/V2 cannot consume the complete accepted structural world without loss, V3/V2 changes;
+- if two terminally equivalent solutions exist, prefer continuity and reuse.
+
+The archive is an old **whole-project** snapshot because its V5/DDM side predates accepted TD-R00–TD-R04 V553–V558 architecture. Therefore:
+
+- snapshot V5/DDM bridge material is stale and nonbinding;
+- snapshot V3/V2 is the latest extant V3/V2 implementation/design available;
+- TD-R05 must understand extant V3/V2 before discarding machinery so capability is not lost through ignorance;
+- every substantive mechanism must receive a finite disposition:
+  - `REUSE_UNCHANGED_IF_FULLY_COMPATIBLE`;
+  - `ADAPT_TO_TERMINAL_ARCHITECTURE`;
+  - `REPLACE_WITH_STRONGER_MECHANISM`;
   - `DEFER_MISSING_AUTHORITY`;
-  - `REMOVE_AS_OBSOLETE_BRIDGE_OR_PLACEHOLDER`.
-- Silence is not a disposition. Existing V3/V2 mechanisms may not disappear merely because a cleaner architecture can be imagined.
+  - `REMOVE_AS_OBSOLETE_OR_REDUNDANT`.
 
-The governing migration equation is therefore:
+Silence is not a disposition. Explicit disposition protects continuity and prevents accidental capability loss. It does not create architectural deference.
 
-`LATEST EXTANT V3/V2 CAUSAL + PHENOMENOLOGICAL DESIGN`
-`+ ACCEPTED V553–V558 STRUCTURAL-WORLD / RESOLVER ARCHITECTURE`
+The governing equation is:
+
+`WHOLE TERMINAL RAWLSING PERSONHOOD DEMAND`
+`+ ACCEPTED MAXIMAL V553–V558 STRUCTURAL-WORLD / RESOLVER ARCHITECTURE`
+`+ RECOVERED V3/V2 CAPABILITY EVIDENCE`
+`+ CONTINUITY PREFERENCE WHERE LOSSLESS`
 `- STALE V5 BRIDGE ASSUMPTIONS`
-`- MECHANISMS THAT FAIL TERMINAL-DEMAND / AUTHORITY / NO-BLOAT COURT`
+`- V3/V2 MECHANISMS THAT CONSTRAIN OR DUPLICATE TERMINAL DESIGN`
+`- UNGOVERNED / UNDERWIRED / DECORATIVE IMPLEMENTATION ACCIDENTS`
 `= RECALIBRATED V3/V2`.
 
 ## 1. What the extant V3 already is
@@ -64,7 +81,7 @@ The extant V3 is a persistent developmental causal engine, not a thin persona ve
 - autonomy/safety drives and lived conditions;
 - stability-threshold inertia.
 
-**TD-R05 implication:** this state model has a presumption of continuity as the latest extant causal design. It must be audited field-by-field, not replaced wholesale by a newly invented actor schema.
+**TD-R05 implication:** audit this state model field-by-field. Preserve or adapt fields that remain terminally useful; expand or replace any field/model that cannot realize the complete accepted V550+ structural world or stronger personhood design.
 
 ## 2. Existing causal-order law
 
@@ -102,7 +119,7 @@ Existing architecture tests enforce at least:
 - the core step order is immutable except governed extensions;
 - derived fields are not stored in `BackboneState`.
 
-**TD-R05 implication:** preserve the ordered-causality / stored-vs-derived / render-nonmutation discipline unless a replacement proves stronger terminal necessity.
+**TD-R05 implication:** this ordered-causality / stored-vs-derived / render-nonmutation discipline is a strong continuity candidate. Preserve it if terminally adequate; hybridize or replace it if stronger causality requires doing so.
 
 ## 3. Existing LLM/runtime contract
 
@@ -123,11 +140,11 @@ The extant intended recursion is:
 4. bounded application of accepted deltas to V3 backbone;
 5. derive V2-compatible phenomenology from updated backbone;
 6. **Pass 2 LLM:** render narrative/phenomenology only;
-7. next recursion proceeds from the updated causal state, not from rendered prose.
+7. next recursion proceeds from updated causal state, not from rendered prose.
 
 `run_llm_band.py` implements the conceptual contract as `Pass 1 (propose events) → score → apply deltas + rupture + magnets → Pass 2 (render)`.
 
-**TD-R05 implication:** the court must adjudicate whether this two-pass architecture survives, how proposal authority is governed, and whether LLM-assisted event proposal remains lawful under replay/provenance requirements. It may not silently collapse the two roles or convert rendered V2 output into causal state.
+**TD-R05 implication:** adjudicate whether this two-pass architecture is still the strongest design under the full V550+ world, how proposal authority is governed, and whether LLM-assisted event proposal remains lawful under replay/provenance. Reuse it if lossless; strengthen/replace it if necessary. Never collapse rendered V2 output into causal state.
 
 ## 4. Pressure-flow as actor-specific lived routing
 
@@ -135,18 +152,18 @@ The extant `v3/psyche/flow.py` already models actor-specific pressure routing as
 
 Observed design commitments include:
 
-- current charge is distinguished from effect strength;
-- route application is transactional so failed projection does not partially mutate live state;
-- per-domain trace paths preserve exact routing attribution;
-- prior grooves/history can alter later channel conductance;
-- vitality changes conductance rather than falsifying the existence of current structural charge;
-- event context is preserved with pressure-flow snapshots;
-- surface/persona account is separated from analyst pressure account;
+- current charge distinguished from effect strength;
+- transactional route application so failed projection does not partially mutate live state;
+- per-domain trace paths preserving routing attribution;
+- prior grooves/history altering later channel conductance;
+- vitality changing conductance rather than falsifying structural charge;
+- event context preserved with pressure-flow snapshots;
+- surface/persona account separated from analyst pressure account;
 - pressure-flow history and memory round-trip as persistent runtime state.
 
-The old file carries V5-named bridge assumptions that are now stale. Those inputs must be replaced by accepted `ResolvedStructuralContext` / V555 route / V556 interaction-topology identities.
+The old file carries stale V5-named bridge assumptions. Those inputs must be replaced by accepted `ResolvedStructuralContext` / V555 route / V556 interaction-topology identities.
 
-**TD-R05 implication:** actor-specific realized flow/memory is strong candidate `ADAPT_TO_ACCEPTED_V553_V558_INPUTS`, not a reason to rebuild pressure response from scratch.
+**TD-R05 implication:** this is a strong serendipitous-bridge candidate, but the extant implementation may be retained only if it can consume all accepted route/interaction/topology distinctions without flattening them. Otherwise expand/redesign it.
 
 ## 5. Existing metabolization / rupture architecture
 
@@ -155,15 +172,15 @@ Rupture and metabolization are not one-shot labels in the extant design.
 A selected epistemic-rupture event may create:
 
 - a `RuptureShard` carrying violated assumption, domain, opacity, prediction error, status, intrusive-return rate and meaning attempts;
-- a `MetabolizationProcess` that persists across years with a mode such as assimilation, accommodation, sealing, collapse, transmutation or mis-aim;
+- a `MetabolizationProcess` persisting across years with a mode such as assimilation, accommodation, sealing, collapse, transmutation or mis-aim;
 - a plasticity window;
 - narrator availability/accuracy/warmth/coercion;
 - framework reconfiguration and downstream biases;
 - reactivation triggers and persistent/chronic outcomes.
 
-The explicit architectural intention is that rupture changes subsequent developmental dynamics through a multi-year process rather than becoming a decorative backstory sentence.
+The explicit intention is that rupture changes subsequent developmental dynamics through a multi-year process rather than becoming decorative backstory.
 
-**TD-R05 implication:** preserve the causal distinction between event, rupture shard, ongoing metabolization process, derived phenomenology and rendered narrative. Exact state vocabulary/update formulas remain open to court.
+**TD-R05 implication:** preserve the terminal capability—event → rupture state → ongoing metabolization → later causal effects → rendered phenomenology. Exact vocabulary, ownership and formulas remain fully open to redesign.
 
 ## 6. Expectation baselines and striving
 
@@ -177,9 +194,9 @@ Each axis may carry an expectation baseline:
 
 `StrivingObject`s represent persistent investment targets. The intended model allows forbidden/hopeless needs to produce proxy strivings rather than direct pursuit. Events may attach to striving objects through gift/disruption shards and prediction error.
 
-The recovered docs are unusually valuable because they also record **underwiring defects**: at different points baseline/striving state existed in schema but was not fully included in Pass 1, scoring, or persona surfaces. Later audit tables record partial wiring. Therefore existence in state is not proof that the mechanism fully shaped behavior.
+Recovered docs also record **underwiring defects**: baseline/striving state sometimes existed in schema without fully shaping proposal, scoring, or persona surfaces.
 
-**TD-R05 implication:** expectation/striving is a real extant design commitment but must be audited for causal necessity, generation authority and complete flow. Do not either delete it silently or accept schema presence as proof of successful semantics.
+**TD-R05 implication:** treat expectation/striving as extant capability evidence. Reuse only if terminally justified and fully wired; strengthen/replace if the total personhood architecture demands more or different state.
 
 ## 7. Frameworks, buffers, cracks, alienation, registers and Aim
 
@@ -189,27 +206,27 @@ The extant architecture contains a coherent “metabolic” middle layer between
 - buffers have strength and costs;
 - cracks carry latent pressure and activation;
 - alienation is multidimensional rather than a single ideology score;
-- Aim is split between latent internal orientation and expressed orientation;
+- Aim splits latent internal orientation from expressed orientation;
 - public/private/inner registers gate expression;
-- topology and boundary systems make response conditional on lived state rather than directly on survey categories.
+- topology/boundary systems make response conditional on lived state rather than directly on survey categories.
 
-**TD-R05 implication:** these mechanisms deserve explicit preservation/supersession rulings. The new nine-strata / V555/V556 topology should feed them only through actor-specific generated history, never by direct prior→psyche assignment.
+**TD-R05 implication:** these mechanisms are serious continuity candidates, not protected ontology. Reuse/adapt where they remain the strongest realization of terminal personhood; replace where richer V550+ inputs or stronger causal modeling require it.
 
 ## 8. Relationship / genealogy relevance
 
 The extant V3 includes `Magnet` state and a `relational_field` projection, while V2 contains life-scaffold and relationship-memory designs. The old V5 bridge also tried to connect relational structure into V3 without adding a tenth stratum.
 
-The accepted architecture now sharpens the jurisdiction:
+Accepted architecture now sharpens jurisdiction:
 
 - upstream household/family structural priors remain structural;
 - actual parent/partner/household/child histories are generated runtime facts;
-- recursive genealogy must run through V3 and then re-query the same immutable structural repository with generated bindings.
+- recursive genealogy runs through V3 and re-queries the immutable structural repository with generated bindings.
 
-**TD-R05 implication:** recover useful magnet/relational-field dynamics, but rebuild their structural input seam around generated relationships and `ResolvedStructuralContext`. Do not treat upstream family priors as already-lived family history.
+**TD-R05 implication:** recover useful magnet/relational-field behavior where terminally adequate, but redesign as necessary around generated relationships and `ResolvedStructuralContext`. Never treat upstream family priors as already-lived family history.
 
 ## 9. Existing V3→V2 boundary
 
-The extant design explicitly states that V3 underlies V2:
+The extant design explicitly states V3 underlies V2:
 
 - V3 owns yearly causal dynamics;
 - V2 phenomenology—needs, strategies, indices, voice—is derived/rendered from V3 state;
@@ -220,39 +237,39 @@ The extant design explicitly states that V3 underlies V2:
 
 The V2 document also contains a later life-simulation integration direction: derive conversation-life container/season from stored simulation history rather than separately generating a second biography.
 
-**Later V2 court implication:** the conversation system is latest extant design evidence and must likewise be recovered/adapted, not regenerated generically. TD-R05 must preserve the V3 state/history needed to support it without allowing V2 to become causal authority.
+**Later V2 court implication:** this is valuable extant design evidence. Preserve continuity where it serves the strongest terminal architecture, but V2 remains downstream and cannot constrain V550+ or V3 causal design.
 
 ## 10. Existing Enneagram emergence intent
 
 `v2/ENNEAGRAM_EMERGENCE_SYSTEM.md` explicitly says Enneagram type emerges from life-course simulation and is **not assigned at birth**. It describes early imprint, developing needs/strategies/compensation, later pattern deepening, and end-of-simulation inference/matching.
 
-That document predates the accepted V556/V3 jurisdiction and may contain old direct-scoring assumptions. Its **intent** is binding recovery evidence; its old formation algorithm is not automatically binding.
+That document predates accepted V556/V3 jurisdiction and may contain obsolete direct-scoring assumptions. Its **intent** is strong recovery evidence; its old formation algorithm is not protected.
 
-TD-R05 must preserve the core commitment:
+TD-R05 must preserve the terminal commitment:
 
 - no birth assignment;
 - no survey/category→type shortcut;
 - attractor/type meaning comes from generated developmental history;
 - structural prerequisites are not the realized attractor.
 
-But it must re-adjudicate whether an end-of-run “match to type wisdom / score each type” classifier is still lawful, or whether the V3 attractor should instead be a persistent dynamical state whose eventual label is a downstream interpretation.
+It must choose the strongest lawful attractor architecture even if that requires replacing the old end-of-run classifier/score.
 
-## 11. Known defects / migration hazards in the extant system
+## 11. Known defects / migration hazards
 
-The snapshot itself documents several areas that must not be blindly recreated:
+Do not blindly recreate:
 
-1. **Stale V5 input bridge.** `v5_runtime_input_bundle`, `v5_runtime_input_refs`, V5 field/pressure-flow wiring and V5 test names are obsolete structural-input plumbing. Replace with accepted V557/V558 repository/resolver contracts.
-2. **Stored-but-underwired state.** Several fields existed in state/JSON without participating sufficiently in proposal, scoring, or phenomenology. Recreate only with an explicit causal-flow proof.
-3. **Heuristic/default initialization.** Some mechanisms could default to generic 50s / `hopeful` / thin maps when authority was absent. New architecture requires explicit missing-authority handling where generation rules are absent.
-4. **Yearly tick assumption.** Existing engine is yearly. TD-R05 must decide whether annual recursion remains semantically valuable, becomes a hybrid event/tick scheduler, or survives as a coarse integration step; it may not remove it merely because event sourcing sounds cleaner.
-5. **LLM proposal authority.** Existing Pass 1 relies on LLM-proposed candidate events. The new court must bind candidate schemas, code-side admissibility, provenance, deterministic seed/replay policy and forbidden semantic invention.
-6. **Numeric formulas.** Existing 0–100 state and update/scoring formulas are implementation evidence, not automatically governed authority. Preserve formulas only where their rationale/authority survives court; otherwise classify them as calibration/implementation authority gaps rather than deleting the underlying state need.
-7. **Identity-pipeline assumptions.** Old docs sometimes assign identity generation to V2/parent pipelines. Accepted architecture now requires generated actor positions/relationships to be explicitly V3/runtime-owned where they are runtime facts. Recover the intended inheritance/genealogy behavior while reassigning jurisdiction correctly.
-8. **Surface psyche / analyst account.** The separation is valuable; any V5-specific naming or mappings must be re-anchored to the new producer/resolver model.
+1. **Stale V5 input bridge.** Replace `v5_runtime_input_bundle`, `v5_runtime_input_refs`, old V5 field/pressure-flow wiring and test assumptions with accepted V557/V558 repository/resolver contracts.
+2. **Stored-but-underwired state.** Schema presence is not semantic success.
+3. **Heuristic/default initialization.** Generic defaults cannot substitute for missing generation authority.
+4. **Yearly tick assumption.** Valuable continuity candidate, not sacred. Adjudicate annual vs hybrid/event-driven architecture by terminal causality.
+5. **LLM proposal authority.** Bind candidate schemas, code-side admissibility, provenance, deterministic/replay policy and forbidden invention.
+6. **Numeric formulas.** Existing 0–100 and scoring formulas are implementation evidence, not automatically governed authority.
+7. **Identity-pipeline assumptions.** Reassign generated actor positions/relationships to correct V3/runtime jurisdiction.
+8. **Surface psyche / analyst account.** Preserve useful separation if terminally adequate; re-anchor all stale producer mappings.
 
-## 12. Mandatory TD-R05 baseline-disposition court
+## 12. Mandatory TD-R05 capability/disposition court
 
-Before proposing a replacement V3 object model, TD-R05 must issue an explicit disposition for at least these extant mechanisms:
+Before finalizing recalibrated V3, TD-R05 must issue an explicit capability and disposition ruling for at least:
 
 1. persistent `BackboneState` pattern;
 2. material capacity;
@@ -268,44 +285,35 @@ Before proposing a replacement V3 object model, TD-R05 must issue an explicit di
 12. collective infrastructure;
 13. practice stack;
 14. peak routing / loop topology / solidarity boundary;
-15. intensity/capture;
-16. style traits;
-17. expectation baselines;
-18. striving objects;
-19. gift/disruption shards;
-20. rupture shards;
-21. multi-year metabolization processes;
-22. narration support;
-23. active magnets;
-24. child model / assumed rules / taboos / possible-world model;
-25. autonomy/safety drives and conditions;
-26. stability-threshold inertia;
-27. pressure-flow history and memory;
-28. relational-field projection;
-29. ordered yearly mutation spine;
-30. stored-state versus derived-index separation;
-31. Pass 1 candidate-proposal role;
-32. code scoring/selection/bounded application;
-33. Pass 2 render-only role;
-34. V3→V2 nonmutation boundary;
-35. life-course-derived Enneagram emergence;
-36. V2 conversation life scaffold / today state / attention budget / relationship memory as downstream consumer demand.
+15. need axes / expectation baselines;
+16. striving objects;
+17. gift/disruption shards;
+18. rupture shards;
+19. multi-year metabolization;
+20. magnets / relational field;
+21. pressure-flow history/memory/grooves/conductance;
+22. child model / assumed rules / taboos / possible-world boundary;
+23. autonomy/safety drives;
+24. stability-threshold inertia;
+25. yearly ordered causal spine;
+26. stored-vs-derived separation;
+27. Pass 1 LLM proposal;
+28. deterministic score/apply boundary;
+29. Pass 2 render-only role;
+30. V3-under-V2 nonmutation contract;
+31. life-course Enneagram emergence machinery.
 
-For every `SUPERSEDE` or `REMOVE` verdict, state what terminal capability replaces the mechanism and why the accepted architecture can still produce the intended person without it.
+For each, state:
+- terminal capability served;
+- whether the capability remains required;
+- compatibility with complete accepted V550+ semantics;
+- whether extant implementation is terminally adequate;
+- final disposition;
+- replacement-capability proof if changed/removed;
+- continuity cost, if any.
 
-## 13. Presumption for TD-R05
+## 13. Final law
 
-The presumption is **migration, not demolition**.
+**Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
-Accepted V553–V558 changes what V3 is allowed to receive as structural authority. It does not, by itself, erase the accumulated V3 model of how a person metabolizes, remembers, resists, reproduces, refracts, or is changed by that world.
-
-The court should expect a result shaped like:
-
-`Recovered V3 causal organism`
-`+ ResolvedStructuralContext input seam`
-`+ explicit generated-event / genealogy / replay authority`
-`+ corrected attractor-formation jurisdiction`
-`- stale V5 bridge`
-`- underwired/decorative state`
-`- ungoverned shortcuts`
-`= terminal V3`.
+Use extant V3/V2 wherever it already fits or can be adapted without loss. Change it however much is necessary whenever the stronger terminal implementation requires it.
