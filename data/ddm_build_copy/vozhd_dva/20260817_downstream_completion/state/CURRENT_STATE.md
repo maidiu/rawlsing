@@ -2,78 +2,70 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** WAVE_0_READY_FOR_LAUNCH
+**Active integration branch:** `agent/vozhd-dva-wave0-integration`  
+**Phase:** WAVE_0_REVIEW_AND_SCHEMATIC_PREP
 
 ## Mission now
 
-Execute the bounded five-worker Wave 0 that will make V553→V558 downstream requirements concrete, repair the known V552J→V553 entry defect, and establish executable vertical-continuity infrastructure. Vozhd Dva will then adjudicate the five returns into a finite Wave-1 implementation register.
+Complete Wave-0 review, then run a bounded schematic transformation phase before deep V553–V558 implementation. The purpose is to decide, seam by seam, what each stage lawfully creates from upstream information and what it must emit for the next stage.
 
 ## Canonical assumptions
 
 - Current repository code is the implementation frontier.
 - V550–V552J are closed by default.
-- `POSTG5-004` is active: repair the obsolete V552J→V553 consumer expectation on the V553 side.
-- V553–V558 are not independently finishable without downstream-consumer visibility.
-- Enneagram-like attractor formation is part of the intended design; V556 supplies structural pressure-flow/attractor prerequisites and topology, while V3 later realizes actor-specific developmental formation.
-- V3 is the intended causal/temporal actor engine; V2 is the intended phenomenological/conversational layer and is not causal authority.
-- Architecture/process work is bounded by execution value and may not become an independent infinite project.
+- V553 must transform canonical upstream structural evidence rather than recreate governed identity from downstream convenience labels.
+- V553–V558 are a transformation chain, not independently finishable modules.
+- Enneagram-like attractor formation is intended design: V556 supplies structural pressure-flow/attractor prerequisites/topology; V3 realizes actor-specific developmental formation.
+- V3 is causal/temporal actor jurisdiction; V2 is phenomenological/conversational jurisdiction and is not causal authority.
+- Architecture/schematic work is bounded by implementation value and ends in implementable seam obligations.
 
-## Wave 0 integration base
+## Wave 0 return state
 
-- **Integration branch:** `agent/vozhd-dva-wave0-integration`
-- **Pinned base SHA:** `958983139b8f75dc5cda65d5bf71b376d17820df`
-- The branch contains the finalized Wave-0 control-room packets and is the required base/PR target for R0-01 through R0-05.
+Five workers returned. Current Vozhd disposition:
+- **R0-02 / PR #35:** findings accepted and merged to Wave-0 integration.
+- **R0-03 / PR #36:** findings accepted and merged to Wave-0 integration.
+- **R0-04 / PR #38:** findings accepted and merged to Wave-0 integration.
+- **R0-05 / PR #37:** vertical reference harness accepted and merged to Wave-0 integration; focused worker result reported 12 passed / 5 intentional strict XFAILs.
+- **R0-01 / PR #39:** held for a narrow follow-up. The V553-side canonical consumer direction is correct, but canonical artifact read/integrity handling must fail closed rather than silently treating unreadable/malformed artifacts as empty while path presence can remain true.
 
-## Wave 0 structure
+The accepted Wave-0 findings converge on semantic starvation beginning around V554→V555 and compounding through V556→V557→V558. Final Vozhd synthesis still requires boundary-by-boundary adjudication before implementation.
 
-Five worker cells are fully specified under `rabochii/WAVE_0/`:
+## Schematic transformation layer
 
-1. **R0-01 V553/V554** — repair `POSTG5-004`; audit V552J→V553→V554 preservation/loss.
-2. **R0-02 V555** — define the minimum mediation-information contract without actor-specific biography.
-3. **R0-03 V556/attractor** — define pressure-flow/attractor topology and the V556/V3 jurisdiction seam.
-4. **R0-04 runtime contract** — define minimum V557/V558→V3 and V3→V2 consumer requirements.
-5. **R0-05 vertical harness** — build isolated deterministic five-slice continuity-test infrastructure.
+Canonical location: `schematics/`
 
-Common worker protocol:
-- `rabochii/WAVE_0/README.md`
-- `rabochii/WAVE_0/LAUNCH_INDEX.md`
-- `rabochii/WAVE_0/REPORT_FORMAT.json`
+Method:
+`upstream authority → lawful intake → stage-specific operation → enriched output → downstream requirement`
 
-Every worker returns `RESULT.md` + `RESULT.json` inside its assigned cell on its worker branch and opens a draft PR against the Wave-0 integration branch.
+Sessions:
+- S00 V552J→V553
+- S01 V553→V554
+- S02 V554→V555
+- S03 V555→V556
+- S04 V556→V557
+- S05 V557→V558
+- S06 V558→V3
+- S07 V3→V2
 
-## Vozhd Dva intake/review structure
+Each seam uses independent forward/backward reasoning; S02/S03 may also use a hostile critic. Breakout proposals are advisory until Vozhd Dva reconciles them in `schematics/synthesis/`.
 
-- Intake/synchronization: `integration/WAVE_0_INTAKE_LEDGER.md`
-- Review protocol: `reviews/WAVE_0_REVIEW_PROTOCOL.md`
-- Individual Vozhd reviews will be written under `reviews/WAVE_0/`.
-- Worker self-report never equals project acceptance.
+## Immediate next actions
 
-## Immediate next action
-
-Launch R0-01 through R0-05 concurrently from `agent/vozhd-dva-wave0-integration` using `rabochii/WAVE_0/LAUNCH_INDEX.md` and the exact assignment packet in each worker cell.
-
-As returns arrive, review PR + report together, update the intake ledger, and propagate cross-hooks only to affected lanes.
-
-## Active blockers
-
-No control-room blocker to Wave-0 launch.
-
-Known implementation entry defect:
-- `POSTG5-004`, owned by R0-01.
-
-## Wave-0 exit condition
-
-Wave 0 is complete only after Vozhd Dva has reviewed all five returns, adjudicated collisions, updated `CAPABILITY_MATRIX.md`, and produced a finite Wave-1 implementation register with non-overlapping write domains and executable acceptance tests.
+1. Close the narrow R0-01 fail-closed integrity concern and integrate its lawful V553 consumer repair/findings.
+2. Launch schematic breakouts from `schematics/SESSION_INDEX.md`, prioritizing S00–S05 while allowing S06/S07 consumer-side work in parallel.
+3. Reconvene in upstream-to-downstream order; adjacent seams with shared grains may be adjudicated together.
+4. Record accepted seam contracts in `schematics/synthesis/` and update `CAPABILITY_MATRIX.md`.
+5. Only then produce the finite Wave-1 implementation register and worker packets.
 
 ## Restart instruction
 
 A future Vozhd Dva chat should read, in order:
-
 1. `CONTROL_ROOM_MAP.md`
 2. `state/CURRENT_STATE.md`
 3. `LIVE_ITINERARY.md`
-4. `rabochii/WAVE_0/LAUNCH_INDEX.md` if Wave 0 is still active
-5. `integration/WAVE_0_INTAKE_LEDGER.md`
-6. only the specific worker/review/prong files needed for the next action.
+4. `schematics/README.md`
+5. `schematics/SESSION_INDEX.md`
+6. `integration/WAVE_0_INTAKE_LEDGER.md`
+7. only the specific seam/worker/review files required for the next action.
 
 Do not reconstruct project state from chat history when the control-room state is available.
