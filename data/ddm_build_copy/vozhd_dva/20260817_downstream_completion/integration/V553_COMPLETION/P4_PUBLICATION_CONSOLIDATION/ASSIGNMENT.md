@@ -4,7 +4,14 @@
 
 ## Mission
 
-Make the accepted sparse semantic core the unambiguous canonical V553 publication, subordinate aggregate output to a reversible secondary projection, and retire/declassify legacy primary-looking surfaces.
+Make the accepted sparse semantic core the unambiguous canonical V553 publication, subordinate aggregate output to a reversible secondary projection, retire/declassify legacy primary-looking surfaces, and preserve the TD-R00 terminal reference spine through publication.
+
+## Read first
+
+1. `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md`
+2. `schematics/recalibration/TD_R00_V553/RESULT.md` + `RESULT.json`
+3. accepted P3 result/schemas
+4. S00.5 evidence as subordinate history
 
 ## Authorized terrain
 
@@ -21,14 +28,16 @@ Do not alter V552/V552J semantics or V554 semantic design.
 
 ## Required outcomes
 
-- Canonical publication allowlist matches the frozen eight-artifact target unless implementation evidence proves a strictly smaller equivalent surface.
+- Canonical publication allowlist remains the frozen eight-artifact target unless implementation evidence proves a strictly smaller equivalent surface.
 - `compile_v553_temporal_pressure_field.py` remains the sole semantic production entrypoint.
 - Harmonization/discovery CLIs are explicitly preflight/diagnostic only.
-- Country-year aggregate is built only from canonical sparse object IDs, records contributor lineage/coverage, and is labeled `SECONDARY_REVERSIBLE`.
-- Aggregate/shared labels cannot replace sparse key identity in readiness or handoff.
+- Country-year aggregate is built only from canonical sparse object IDs, records exact contributor lineage/coverage, and is labeled `SECONDARY_REVERSIBLE`.
+- Aggregate/shared labels cannot replace sparse key identity, exact governed reference identity, structural directionality, stratum/Horizon refs or producer authority in readiness/handoff.
+- Deleting or withholding the aggregate and compatibility views must leave the canonical sparse/reference publication semantically complete.
 - Canonical semantic interpolation/year-expanded value surfaces are removed; compatibility remnants are explicitly non-authoritative and scheduled for retirement.
 - Remove/declassify cohort/person-development requirement outputs and any other V553 artifacts outside frozen jurisdiction.
 - Consolidate readiness/manifest logic around finite semantic invariants rather than row counts or harmonization scores.
+- Manifest/readiness records `reference_contract_version`, canonical artifact roles, and the distinction between semantic artifacts, secondary projection, boundary handoff and validation/readiness.
 - Legacy handoff/readiness surfaces cannot be co-equal authority.
 
 ## Proof required
@@ -36,7 +45,8 @@ Do not alter V552/V552J semantics or V554 semantic design.
 - canonical artifact allowlist/roles are machine-verifiable;
 - semantic build succeeds without legacy interpolation artifacts;
 - aggregate projection resolves reversibly to exact sparse contributors;
-- deleting/withholding aggregate projection cannot invalidate sparse semantic readiness;
+- aggregate cannot become the sole carrier of endpoint/position/direction/stratum/Horizon/authority refs;
+- deleting/withholding aggregate projection cannot invalidate sparse semantic readiness or remove the terminal reference spine;
 - no canonical V553 artifact contains persona/biography/psyche/cohort-development/Enneagram/runtime actor semantics;
 - thin/preflight paths cannot claim semantic readiness.
 
@@ -44,7 +54,8 @@ Do not alter V552/V552J semantics or V554 semantic design.
 
 - no V554 consumer redesign;
 - no reintroduction of qualitative temporal rules;
-- no new generalized artifact framework.
+- no new generalized artifact framework;
+- no flattening of `GOVERNED_STRUCTURAL_REFERENCE_SET` into aggregate labels.
 
 ## Return
 
