@@ -925,6 +925,7 @@ def load_weights(conn, families: list[str], replace: bool = True) -> tuple[int, 
 
 def create_respondent_position_view(conn) -> None:
     cur = conn.cursor()
+    cur.execute("DROP VIEW IF EXISTS v_ddm_response_long_facet_ready_authority")
     cur.execute("DROP VIEW IF EXISTS v_ddm_response_long_facet_ready")
     cur.execute("DROP VIEW IF EXISTS respondent_position_fact")
     cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'respondentsDemo%' AND table_name NOT ILIKE '%unknown%' ORDER BY table_name")
