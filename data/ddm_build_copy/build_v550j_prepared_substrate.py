@@ -100,7 +100,7 @@ def build_family_item_lookup(family_cfg: dict[str, Any]) -> pd.DataFrame:
 
 
 def _prepared_cache_dir(*, output_root: Path, source: str, wave: str, country_code: str) -> Path:
-    # Legacy physical cache path is intentionally frozen/readable.  Governed
+    # Legacy physical cache path is intentionally frozen/readable. Governed
     # identity is bound inside the manifest rather than silently renaming it.
     return output_root / "cache" / "prepared_response_substrate" / f"source={source}" / f"wave={wave}" / f"country_code={country_code}"
 
@@ -143,6 +143,7 @@ def _validate_exact_frame_scope(
     run_id: str,
     country_code: str,
     shard_id: str,
+    scope_kind: str,
     identity_contract_version: str,
     require_bound_fields: bool,
 ) -> None:
@@ -151,6 +152,7 @@ def _validate_exact_frame_scope(
     expectations = {
         "run_id": run_id,
         "country_code": country_code,
+        "scope_kind": scope_kind,
         "identity_contract_version": identity_contract_version,
     }
     if shard_id:
@@ -177,6 +179,7 @@ def _validate_prepared_identity(
     run_id: str,
     country_code: str,
     shard_id: str,
+    scope_kind: str,
     identity_contract_version: str,
     require_bound_fields: bool,
 ) -> dict[str, Any]:
@@ -191,6 +194,7 @@ def _validate_prepared_identity(
         run_id=run_id,
         country_code=country_code,
         shard_id=shard_id,
+        scope_kind=scope_kind,
         identity_contract_version=identity_contract_version,
         require_bound_fields=require_bound_fields,
     )
@@ -315,12 +319,12 @@ def _ensure_prepared_columns(
         ("identity_contract_version", identity_contract_version),
         ("shard_id", shard_id),
         ("scope_kind", scope_kind),
+        ("raw_source", raw_source_value),
+        ("raw_wave", raw_wave_value),
         ("canonical_display_source", canonical_source_value),
         ("canonical_display_wave", canonical_wave_value),
     ):
         _bind_exact_column(out, column, expected)
-    _fill_role_column(out, "raw_source", raw_source_value)
-    _fill_role_column(out, "raw_wave", raw_wave_value)
     _fill_role_column(out, "source", source)
     _fill_role_column(out, "source_id", source_id)
     _fill_role_column(out, "wave", wave)
@@ -433,6 +437,7 @@ def _validate_prepared_substrate(prepared: pd.DataFrame, manifest: dict[str, Any
         "wave_uid": manifest.get("wave_uid", ""),
         "identity_contract_version": manifest.get("identity_contract_version", ""),
         "shard_id": manifest.get("shard_id", ""),
+        "scope_kind": manifest.get("scope_kind", ""),
         "country_code": manifest.get("country_code", ""),
         "row_count": int(len(prepared)),
         "respondent_count": int(prepared["respondent_id_norm"].nunique() if "respondent_id_norm" in prepared.columns else prepared["respondent_id"].nunique() if "respondent_id" in prepared.columns else 0),
@@ -464,6 +469,11 @@ def _cache_signature_matches(
     wave_uid: str,
     country_code: str,
     shard_id: str,
+    scope_kind: str,
+    raw_source: str,
+    raw_wave: str,
+    canonical_display_source: str,
+    canonical_display_wave: str,
     identity_metadata: dict[str, str],
 ) -> bool:
     expected = {
@@ -479,6 +489,11 @@ def _cache_signature_matches(
         "wave_uid": _clean(wave_uid),
         "country_code": _clean(country_code),
         "shard_id": _clean(shard_id),
+        "scope_kind": _clean(scope_kind),
+        "raw_source": _clean(raw_source),
+        "raw_wave": _clean(raw_wave),
+        "canonical_display_source": _clean(canonical_display_source),
+        "canonical_display_wave": _clean(canonical_display_wave),
         "identity_registry_id": identity_metadata["identity_registry_id"],
         "identity_schema_version": identity_metadata["identity_schema_version"],
         "identity_contract_version": identity_metadata["identity_contract_version"],
@@ -523,6 +538,10 @@ def load_or_build_v550j_prepared_substrate(
         raise BoundaryContractError("V550J_PREPARED_UID_IDENTITY_REQUIRED")
     identity_metadata = v550j_identity_contract_metadata()
     identity_contract_version = identity_metadata["identity_contract_version"]
+    canonical_source_value = _clean(canonical_display_source) or _clean(source)
+    canonical_wave_value = _clean(canonical_display_wave) or _clean(canonical_wave)
+    raw_source_value = _clean(raw_source) or _clean(source)
+    raw_wave_value = _clean(raw_wave) or _clean(wave)
     cache_dir = _prepared_cache_dir(output_root=output_root, source=source, wave=wave, country_code=country_code)
     parquet_path = _prepared_parquet_path(cache_dir)
     manifest_path = _prepared_manifest_path(cache_dir)
@@ -550,6 +569,11 @@ def load_or_build_v550j_prepared_substrate(
                 wave_uid=wave_uid,
                 country_code=country_code,
                 shard_id=shard_id,
+                scope_kind=scope_kind,
+                raw_source=raw_source_value,
+                raw_wave=raw_wave_value,
+                canonical_display_source=canonical_source_value,
+                canonical_display_wave=canonical_wave_value,
                 identity_metadata=identity_metadata,
             )
         if cache_valid:
@@ -570,19 +594,20 @@ def load_or_build_v550j_prepared_substrate(
             except BoundaryContractError:
                 cache_valid = False
         if cache_valid and substrate_mode in {"prepared_required", "prepared_or_build", "prepared_or_forensic_fallback"}:
-            prepared = pd.read_parquet(parquet_path)
+            prepared_frame = pd.read_parquet(parquet_path)
             _validate_prepared_identity(
-                prepared,
+                prepared_frame,
                 source_family_uid=source_family_uid,
                 wave_uid=wave_uid,
                 run_id=run_id,
                 country_code=country_code,
                 shard_id=shard_id,
+                scope_kind=scope_kind,
                 identity_contract_version=identity_contract_version,
                 require_bound_fields=True,
             )
-            prepared = _ensure_prepared_columns(
-                prepared,
+            prepared_frame = _ensure_prepared_columns(
+                prepared_frame,
                 run_id=run_id,
                 source=source,
                 source_id=source_id,
@@ -592,17 +617,17 @@ def load_or_build_v550j_prepared_substrate(
                 source_family_uid=source_family_uid,
                 wave_uid=wave_uid,
                 identity_contract_version=identity_contract_version,
-                raw_source=raw_source,
-                raw_wave=raw_wave,
-                canonical_display_source=canonical_display_source,
-                canonical_display_wave=canonical_display_wave,
+                raw_source=raw_source_value,
+                raw_wave=raw_wave_value,
+                canonical_display_source=canonical_source_value,
+                canonical_display_wave=canonical_wave_value,
                 shard_id=shard_id,
                 scope_kind=scope_kind,
             )
             manifest["cache_loaded"] = True
             manifest["cache_valid"] = True
-            _validate_prepared_substrate(prepared, manifest, cache_dir)
-            return prepared, manifest
+            _validate_prepared_substrate(prepared_frame, manifest, cache_dir)
+            return prepared_frame, manifest
 
     if substrate_mode == "prepared_required" and stale_cache_detected and not cache_valid:
         raise RuntimeError(
@@ -612,7 +637,7 @@ def load_or_build_v550j_prepared_substrate(
         raise RuntimeError(f"Prepared substrate missing and substrate_mode=prepared_required: {parquet_path}")
     if source_frame is None or source_frame.empty:
         if substrate_mode == "prepared_or_forensic_fallback":
-            prepared = pd.DataFrame()
+            prepared_frame = pd.DataFrame()
             manifest = {
                 "run_id": run_id,
                 "producer_run_id": run_id,
@@ -620,10 +645,10 @@ def load_or_build_v550j_prepared_substrate(
                 "source_id": source_id,
                 "wave": wave,
                 "canonical_wave": canonical_wave,
-                "raw_source": _clean(raw_source) or source,
-                "raw_wave": _clean(raw_wave) or wave,
-                "canonical_display_source": _clean(canonical_display_source) or source,
-                "canonical_display_wave": _clean(canonical_display_wave) or canonical_wave,
+                "raw_source": raw_source_value,
+                "raw_wave": raw_wave_value,
+                "canonical_display_source": canonical_source_value,
+                "canonical_display_wave": canonical_wave_value,
                 "source_family_uid": source_family_uid,
                 "wave_uid": wave_uid,
                 "shard_id": shard_id,
@@ -649,9 +674,9 @@ def load_or_build_v550j_prepared_substrate(
                 "harmonization_calls": 0,
             }
             atomic_write_json(manifest_path, manifest)
-            prepared.to_parquet(parquet_path, index=False)
-            _validate_prepared_substrate(prepared, manifest, cache_dir)
-            return prepared, manifest
+            prepared_frame.to_parquet(parquet_path, index=False)
+            _validate_prepared_substrate(prepared_frame, manifest, cache_dir)
+            return prepared_frame, manifest
         raise RuntimeError("Prepared substrate build requires a non-empty source frame.")
 
     _validate_prepared_identity(
@@ -661,20 +686,21 @@ def load_or_build_v550j_prepared_substrate(
         run_id=run_id,
         country_code=country_code,
         shard_id=shard_id,
+        scope_kind=scope_kind,
         identity_contract_version=identity_contract_version,
         require_bound_fields=False,
     )
-    prepared = source_frame.copy()
+    prepared_frame = source_frame.copy()
     harmonization_calls = 0
-    if _should_harmonize(prepared):
+    if _should_harmonize(prepared_frame):
         if progress is not None:
-            progress.note(f"Prepared substrate: harmonizing {len(prepared)} rows once")
+            progress.note(f"Prepared substrate: harmonizing {len(prepared_frame)} rows once")
         if semantics_lookup is None:
             semantics_lookup = {}
-        prepared = _harmonize_question_frame(prepared, semantics_lookup, response_semantics_contract_hash=response_semantics_contract_hash)
+        prepared_frame = _harmonize_question_frame(prepared_frame, semantics_lookup, response_semantics_contract_hash=response_semantics_contract_hash)
         harmonization_calls = 1
-    prepared = _ensure_prepared_columns(
-        prepared,
+    prepared_frame = _ensure_prepared_columns(
+        prepared_frame,
         run_id=run_id,
         source=source,
         source_id=source_id,
@@ -684,10 +710,10 @@ def load_or_build_v550j_prepared_substrate(
         source_family_uid=source_family_uid,
         wave_uid=wave_uid,
         identity_contract_version=identity_contract_version,
-        raw_source=raw_source,
-        raw_wave=raw_wave,
-        canonical_display_source=canonical_display_source,
-        canonical_display_wave=canonical_display_wave,
+        raw_source=raw_source_value,
+        raw_wave=raw_wave_value,
+        canonical_display_source=canonical_source_value,
+        canonical_display_wave=canonical_wave_value,
         shard_id=shard_id,
         scope_kind=scope_kind,
     )
@@ -763,10 +789,10 @@ def load_or_build_v550j_prepared_substrate(
         "canonical_wave_norm",
         "country_code_norm",
     ]
-    missing_expected_columns = [column for column in expected_columns if column not in prepared.columns]
-    prepared = prepared.reindex(columns=list(dict.fromkeys(list(prepared.columns) + expected_columns)))
-    prepared = prepared.reset_index(drop=True)
-    prepared.to_parquet(parquet_path, index=False)
+    missing_expected_columns = [column for column in expected_columns if column not in prepared_frame.columns]
+    prepared_frame = prepared_frame.reindex(columns=list(dict.fromkeys(list(prepared_frame.columns) + expected_columns)))
+    prepared_frame = prepared_frame.reset_index(drop=True)
+    prepared_frame.to_parquet(parquet_path, index=False)
 
     manifest = {
         "run_id": run_id,
@@ -775,10 +801,10 @@ def load_or_build_v550j_prepared_substrate(
         "source_id": source_id,
         "wave": wave,
         "canonical_wave": canonical_wave,
-        "raw_source": _clean(raw_source) or source,
-        "raw_wave": _clean(raw_wave) or wave,
-        "canonical_display_source": _clean(canonical_display_source) or source,
-        "canonical_display_wave": _clean(canonical_display_wave) or canonical_wave,
+        "raw_source": raw_source_value,
+        "raw_wave": raw_wave_value,
+        "canonical_display_source": canonical_source_value,
+        "canonical_display_wave": canonical_wave_value,
         "source_family_uid": source_family_uid,
         "wave_uid": wave_uid,
         "shard_id": shard_id,
@@ -786,9 +812,9 @@ def load_or_build_v550j_prepared_substrate(
         "country_code": country_code,
         **identity_metadata,
         "prepared_cache_identity_binding_version": V550J_PREPARED_CACHE_IDENTITY_BINDING_VERSION,
-        "row_count": int(len(prepared)),
-        "respondent_count": int(prepared["respondent_id_norm"].nunique() if "respondent_id_norm" in prepared.columns else prepared["respondent_id"].nunique() if "respondent_id" in prepared.columns else 0),
-        "var_count": int(prepared["var_code_norm"].nunique() if "var_code_norm" in prepared.columns else prepared["var_code"].nunique() if "var_code" in prepared.columns else 0),
+        "row_count": int(len(prepared_frame)),
+        "respondent_count": int(prepared_frame["respondent_id_norm"].nunique() if "respondent_id_norm" in prepared_frame.columns else prepared_frame["respondent_id"].nunique() if "respondent_id" in prepared_frame.columns else 0),
+        "var_count": int(prepared_frame["var_code_norm"].nunique() if "var_code_norm" in prepared_frame.columns else prepared_frame["var_code"].nunique() if "var_code" in prepared_frame.columns else 0),
         "created_at": utc_now(),
         "compiler_version": compiler_version,
         "substrate_schema_version": SUBSTRATE_SCHEMA_VERSION,
@@ -797,7 +823,7 @@ def load_or_build_v550j_prepared_substrate(
         "response_semantics_contract_hash": _resolve_hash(response_semantics_contract_hash),
         "view_schema_hash": _resolve_hash(view_schema_hash),
         "input_query_or_source": f"{source}/{wave}/{country_code}",
-        "column_list": list(prepared.columns),
+        "column_list": list(prepared_frame.columns),
         "missing_expected_columns": missing_expected_columns,
         "cache_valid": True,
         "hash_unavailable_reason": "" if authority_compendium_hash or response_semantics_contract_hash else "authority_compendium_hash unavailable in this path",
@@ -819,6 +845,6 @@ def load_or_build_v550j_prepared_substrate(
     )
     atomic_write_json(manifest_path, manifest)
     schema_path = cache_dir / "v550j_prepared_response_substrate.schema.json"
-    write_schema_json(schema_path, prepared, name="v550j_prepared_response_substrate", run_id=run_id, extra={"layer": "v550j_prepared_substrate"})
-    _validate_prepared_substrate(prepared, manifest, cache_dir)
-    return prepared, manifest
+    write_schema_json(schema_path, prepared_frame, name="v550j_prepared_response_substrate", run_id=run_id, extra={"layer": "v550j_prepared_substrate"})
+    _validate_prepared_substrate(prepared_frame, manifest, cache_dir)
+    return prepared_frame, manifest
