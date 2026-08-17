@@ -5,6 +5,37 @@
 **Authority:** advisory architecture recalibration; no production code  
 **Launch status:** **DO NOT LAUNCH until TD-R00 V553 is accepted by Vozhd Dva.**
 
+## Governing whole-picture / bounded-jurisdiction law
+
+This pass is governed by **both**:
+
+1. `TERMINAL_DEMAND_ENVELOPE.md` — the complete Rawlsing destination;
+2. `ARCHITECTURE_PASS_LAW.md` — how to understand that entire system while architecting only V554's bounded transformation.
+
+You are designing **one bounded organ of the complete Rawlsing system**. You must understand the finished nine-strata inter-pressuring person-generation machine, V556 pressure-flow, V3 developmental causality/orientation/attractors, genealogy and V2 expression deeply enough to detect starvation. That does not authorize V554 to create mediation routes, pressure-flow topology, actor orientation, actor histories, attractor realization or phenomenology.
+
+Your governing equation is:
+
+`WHOLE TERMINAL DEMAND`
+`+ CUMULATIVE LAWFUL UPSTREAM MATERIAL THROUGH ACCEPTED TD-R00 V553`
+`- WHAT LATER STAGES CAN REUSE DIRECTLY FROM EARLIER AUTHORITY`
+`- WHAT V555/V556/V3/V2 THEMSELVES OWN`
+`= V554'S BOUNDED ARCHITECTURAL OBLIGATION`
+
+For **every terminal capability**, classify V554's relationship using the taxonomy in `ARCHITECTURE_PASS_LAW.md`:
+
+- `OWN_AND_DERIVE_HERE`
+- `PRESERVE_BY_REFERENCE`
+- `PROVIDE_PREREQUISITE_ONLY`
+- `DIRECT_UPSTREAM_REUSE_SUFFICIENT`
+- `DOWNSTREAM_OWNS`
+- `MISSING_AUTHORITY`
+- `IRRELEVANT_TO_THIS_STAGE`
+
+No terminal capability may remain implicit or unclassified.
+
+Your final result must include the full architecture checksum required by `ARCHITECTURE_PASS_LAW.md`, plus its no-starvation and no-bloat proofs.
+
 ## Purpose
 
 Re-run the V554 maximal architecture-imagination pass from the full Rawlsing terminal demand envelope, using the accepted TD-R00 V553 architecture as the actual upstream hypothesis.
@@ -14,14 +45,15 @@ PRE-S01/PRE-S01.5 remain evidence. Their code excavation, current-topology findi
 ## Read first
 
 1. `TERMINAL_DEMAND_ENVELOPE.md`.
-2. `CAPABILITY_MATRIX.md`.
-3. `STRATEGY_AND_GATES.md`.
-4. accepted TD-R00 V553 `RESULT.md` + `RESULT.json`.
-5. PRE-S01 V554 excavation `RESULT.md` + `RESULT.json`.
-6. PRE-S01.5 V554 maximal architecture `RESULT.md` + `RESULT.json`.
-7. Wave-0 R0-02 V555 findings.
-8. Wave-0 R0-03 V556/attractor findings.
-9. current V554/V555 implementation and tests only as needed.
+2. `ARCHITECTURE_PASS_LAW.md`.
+3. `CAPABILITY_MATRIX.md`.
+4. `STRATEGY_AND_GATES.md`.
+5. accepted TD-R00 V553 `RESULT.md` + `RESULT.json`.
+6. PRE-S01 V554 excavation `RESULT.md` + `RESULT.json`.
+7. PRE-S01.5 V554 maximal architecture `RESULT.md` + `RESULT.json`.
+8. Wave-0 R0-02 V555 findings.
+9. Wave-0 R0-03 V556/attractor findings.
+10. current V554/V555 implementation and tests only as needed.
 
 ## Central question
 
@@ -32,12 +64,13 @@ PRE-S01/PRE-S01.5 remain evidence. Their code excavation, current-topology findi
 `→ what can V555/V556/V3 reuse directly from earlier producers?`
 `→ what unique downstream-use / affordance meaning must V554 create?`
 `→ what structural identities/relations must V554 preserve even if V555's current code does not consume them?`
+`→ what terminal requirements belong entirely downstream?`
 `→ does the existing V554 blueprint starve nine-strata inter-pressure, orientation-to-strata, Horizon, mediation, pressure-flow or attractor formation?`
 `→ what is the smallest terminal-demand-sufficient V554 architecture?`
 
 ## Mandatory work
 
-Answer all fourteen terminal-demand questions in `TERMINAL_DEMAND_ENVELOPE.md` specifically for V554.
+Answer all fourteen terminal-demand questions in `TERMINAL_DEMAND_ENVELOPE.md` specifically for V554 and complete the checksum required by `ARCHITECTURE_PASS_LAW.md`.
 
 Stress-test the existing PRE-S01.5 model, including:
 - positive/conditional `BOUNDED_STRUCTURAL_AFFORDANCE`;
@@ -66,19 +99,26 @@ Produce a new superseding V554 architecture snapshot for later binding S01/imple
 
 1. terminal-demand verdict on PRE-S01.5;
 2. fourteen-question terminal-demand table;
-3. nine-strata / inter-pressure support map;
-4. direct-reuse vs V554-residual responsibility partition;
-5. orientation-to-strata prerequisite handling;
-6. Absolute Horizon handling;
-7. mediation / pressure-flow / attractor backward-demand map;
-8. re-evaluation of four semantic families + B1;
-9. exact required reference classes on each family/boundary object;
-10. component/artifact/completion-court delta;
-11. five implementation-packet delta;
-12. PRE-S01.5 conclusions confirmed;
-13. PRE-S01.5 conclusions superseded;
-14. one multi-strata ordinary case and one hostile downstream-starvation case;
-15. final verdict `V554_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
+3. full architecture checksum from `ARCHITECTURE_PASS_LAW.md`;
+4. nine-strata / inter-pressure support map;
+5. direct-reuse vs V554-residual responsibility partition;
+6. orientation-to-strata prerequisite handling;
+7. Absolute Horizon handling;
+8. mediation / pressure-flow / attractor backward-demand map;
+9. re-evaluation of four semantic families + B1;
+10. exact required reference classes on each family/boundary object;
+11. component/artifact/completion-court delta;
+12. no-starvation/no-bloat proof for every proposed primary family/component/boundary family;
+13. five implementation-packet delta;
+14. PRE-S01.5 conclusions confirmed;
+15. PRE-S01.5 conclusions superseded;
+16. one multi-strata ordinary case and one hostile downstream-starvation case;
+17. required final architecture statement from `ARCHITECTURE_PASS_LAW.md`:
+   - `THIS STAGE IS RESPONSIBLE FOR`
+   - `THIS STAGE IS NOT RESPONSIBLE FOR`
+   - `TERMINAL CAPABILITIES PROTECTED`
+   - `OPEN MISSING AUTHORITY`;
+18. final verdict `V554_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
 
 ## Deliverables
 
@@ -95,4 +135,5 @@ Commit to the assigned branch and open a draft PR against `main`.
 - no invented stratum/Horizon assignments;
 - no actor/person/household/psyche instantiation;
 - no direct Enneagram assignment;
-- no object-family expansion without a named terminal capability and proof direct reuse is insufficient.
+- no object-family expansion without a named terminal capability and proof direct reuse is insufficient;
+- no moving later-stage semantics into V554 merely because the worker understands the whole system.
