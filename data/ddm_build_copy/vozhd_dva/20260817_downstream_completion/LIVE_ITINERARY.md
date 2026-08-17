@@ -1,6 +1,6 @@
 # Live Itinerary
 
-**Status:** `TD_R00_V553_ACCEPTED__TD_R01_V554_ACCEPTED__TD_R02_V555_READY__V553_BUILD_WAITING_TERMINAL_SWID`  
+**Status:** `V553_V554_V555_ARCHITECTURE_ACCEPTED__TD_R03_V556_READY__V553_BUILD_WAITING_SWID_G8`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
@@ -11,84 +11,97 @@
 - TD-R00 V553 accepted and merged via PR #52 at `3ad2dbf586e4f2212ecf9c75cb3fdae85cd80d59`.
 - Runtime-prior / ContextResolver re-anchor banked as terminal-consumer demand.
 - TD-R01 V554 accepted and merged via PR #54 at `484e7590c3c946b2fccb8aaa88689518d833134d`.
-- `integration/V554_COMPLETION_IMPLEMENTATION_RULING.md` now binds the superseding V554 architecture and implementation blockers.
+- TD-R02 V555 accepted and merged via PR #55 at `cfd9e88a53a4986b05e4d71201d7f7f45b60c2ac`.
+- Binding implementation-facing rulings now exist for V553, V554 and V555.
 
 ## Accepted V553 law
 
-Canonical semantic families:
+Canonical semantic/negative families:
 1. `TEMPORAL_KEY`;
 2. `TEMPORAL_OBSERVATION`;
 3. `TEMPORAL_RELATION`;
 4. `TEMPORAL_LIMIT / NEGATIVE_AUTHORITY`.
 
-Plus exact reference handoff, secondary reversible aggregate, manifest/readiness.
+Plus exact reference handoff, secondary reversible aggregate and manifest/readiness.
 
-`GOVERNED_STRUCTURAL_REFERENCE_SET` preserves exact producer/endpoint/direction/stratum/Horizon/inherited-relation refs without becoming a fifth semantic family. Structural direction is not temporal-delta direction; simultaneous exact pressure keys remain distinct; V553 creates no cross-key interaction topology.
-
-V553 production remains blocked until the terminal source/wave identity campaign merges and the final narrow identity delta check is complete.
+`GOVERNED_STRUCTURAL_REFERENCE_SET` preserves exact producer/endpoint/direction/stratum/Horizon/inherited-relation refs without becoming a fifth family. Structural direction is not temporal delta; simultaneous exact pressure keys remain distinct; V553 creates no new cross-key interaction.
 
 ## Accepted V554 law
 
-Canonical architecture is **two semantic families + B1**:
+Canonical architecture is two semantic families + B1:
 
-1. `BOUNDED_STRUCTURAL_AFFORDANCE` — immutable positive `ELIGIBLE` structural mediation-input prior under explicit V554 rule authority;
-2. `STRUCTURAL_MEDIATION_APPLICABILITY_CONDITION` — typed requirement/use-limit/deferred-binding condition with machine predicate identity;
-3. `V554_V555_HANDOFF` / B1 — governed interface, not semantic family.
+1. `BOUNDED_STRUCTURAL_AFFORDANCE`;
+2. `STRUCTURAL_MEDIATION_APPLICABILITY_CONDITION`;
+3. `V554_V555_HANDOFF` boundary.
 
-Removed from canonical V554:
-- independent `V554_LIMIT` family — merged into typed F2 use effects while original negative authority remains upstream-owned;
-- `AFFORDANCE_RELATION` — new cross-key structural interaction topology belongs downstream, default V556.
+Independent `V554_LIMIT` is merged into typed F2 use effects; original negative authority stays upstream-owned. `AFFORDANCE_RELATION` is removed. New structural cross-key interaction defaults downstream to V556. Query-relative conditionality is evaluated later; V554 never invents actor position or temporal proxies.
 
-Canonical publication has five roles: F1, F2, B1, manifest, readiness.
+## Accepted V555 law
 
-Runtime/query-relative applicability is not stored as mutable F1 state. F2 may require an exact generated runtime position; V554 never invents the actor binding. Temporal proxy selection and geographic hierarchical resolution remain ContextResolver policy.
+Canonical architecture is two semantic families + B1:
 
-The accepted prose/ruling establishes five V554 internal components; the worker JSON six-component block is a stale intermediate serialization and is noncanonical where conflicting.
+1. `STRUCTURAL_MEDIATION_ROUTE_CANDIDATE` — exactly one V554 F1 × one governed route rule × one mediation locus/channel structural role × one receiving structural-position constraint;
+2. `STRUCTURAL_MEDIATION_ROUTE_CONDITION` — genuinely route-born predicates only; inherited V554 F2 remains referenced exactly;
+3. `V555_V556_HANDOFF` boundary.
 
-## V554 implementation status
+Additional mediation hops become additional atomic V555 routes; V556 composes graph topology.
 
-**BLOCKED — DO NOT LAUNCH.**
+V555 creates no new relation among routes/pressures. Route-local qualitative effects are permitted only when explicit rule authority makes them unary to one route. First-tranche effect declarations default valid-empty absent such authority. `REROUTE` and all cross-route competition/reinforcement/counter-pressure/contradiction/coupling default V556. No numeric route/effect weights are canonical without governed formula.
 
-Required before V554 semantic implementation:
-1. `V553_COMPLETE_FOR_V554 = PASS` with final physical reference bindings;
-2. governed `V554_AFFORDANCE_RULE_REGISTRY` for the first-tranche eligibility transformation.
+Current seven-slot and generic five-slot V555 surfaces are superseded as semantic authority. Compatibility may be temporary and non-authoritative only with named consumer/sunset.
 
-Packet topology is banked but exact write domains will be frozen against the post-V553 production tree to avoid stale planning.
+## Production implementation status
+
+### V553
+
+**BLOCKED.** Source/wave identity PR #27 was re-fetched during TD-R02 adjudication and remains open/draft, head `d11594a52566f6bc96fcad7b9a7389376300848b`. G7 is satisfied; G8 remains open. V553 production cannot launch until terminal SWID merge plus the narrow identity delta check.
+
+### V554
+
+**BLOCKED.** Requires completed V553 physical reference publication and a governed `V554_AFFORDANCE_RULE_REGISTRY`.
+
+### V555
+
+**BLOCKED.** Requires completed canonical V554 publication plus governed `V555_MEDIATION_ROUTE_RULE_REGISTRY` and `V555_ROUTE_PREDICATE_REGISTRY`. Unary effect declarations are valid-empty unless route rules explicitly authorize them.
+
+Architecture work remains allowed downstream while these production dependencies resolve.
 
 ## Active architecture track
 
-### TD-R02 — V555 Terminal-Demand Architecture Recalibration
+### TD-R03 — V556 Pressure-Flow / Attractor-Prerequisite Terminal-Demand Recalibration
 
 Assignment:
-`schematics/recalibration/TD_R02_V555/ASSIGNMENT.md`
+`schematics/recalibration/TD_R03_V556/ASSIGNMENT.md`
 
 Status: **READY TO LAUNCH** from current accepted `main`.
 
-TD-R02 must work backward from:
-- V556 typed pressure-flow / attractor-prerequisite demand;
-- V558 stage-agnostic repository / ContextResolver demand;
+TD-R03 must work backward from:
+- V3 developmental/attractor-formation demand;
+- V557/V558 lossless structural-prior publication/indexing demand;
 - accepted V553 temporal/reference law;
-- accepted V554 F1/F2/B1 law.
+- accepted V554 affordance/applicability law;
+- accepted V555 atomic route/route-condition law.
 
-It must determine the smallest V555-owned mediation architecture, especially:
-- route/path identity;
-- route-specific conditions versus inherited V554 F2 conditions;
-- structural endpoints/positions and temporal applicability;
-- effect-potential ownership;
-- route-negative/unknown meaning versus construction failure;
-- cross-route interaction ownership;
-- V555→V556 boundary;
-- runtime queryability without actor/runtime realization.
+It must re-adjudicate from zero:
+- pressure-flow edge identity/grain;
+- direct reuse of V555 routes and route-local unary effect authority;
+- newly created cross-route/cross-pressure interaction objects and their authority/cardinality;
+- attractor-prerequisite topology/circuit semantics;
+- typed blocked/unknown/noncomparable/actor-history-required states;
+- V556→V557/V558 publication boundary;
+- runtime queryability without temporal proxying or actor realization;
+- current `route_axis_*`, slot projection and actor-response placeholder terrain.
+
+Default ownership is not inference authority: V556 may own cross-route relations while still returning `MISSING_AUTHORITY` rather than inventing competition/reinforcement from coexistence, opposite signs, shared target or common time.
 
 Required verdict:
-`V555_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
+`V556_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
 
-Do not launch V556 recalibration until TD-R02 returns and Vozhd accepts/banks it.
+Do not launch the terminal V557/V558 architecture court until TD-R03 returns and Vozhd accepts/banks it.
 
 ## Expected architecture sequence
 
-`TD-R02 V555`
-`→ TD-R03 V556 / attractor prerequisites`
+`TD-R03 V556`
 `→ terminal V557/V558 runtime-publication architecture`
 `→ V3 developmental runtime architecture`
 `→ genealogy/household runtime`
@@ -97,20 +110,6 @@ Do not launch V556 recalibration until TD-R02 returns and Vozhd accepts/banks it
 
 Preserve dependency law over ceremonial numbering if later accepted architecture demonstrates a cleaner bounded decomposition.
 
-## Independent upstream watch
-
-The source/wave identity campaign remains the binding dependency for V553 production implementation until terminally merged.
-
-When that campaign terminally lands:
-1. re-fetch final V552/V552J/overlay identity contract;
-2. run narrow S00 + TD-R00 delta check;
-3. pin exact post-campaign `main` SHA;
-4. create V553 completion integration/P1 branches;
-5. launch P1 only;
-6. proceed sequentially after Vozhd review.
-
-This production-release track is independent of TD-R02 architecture work.
-
 ## Immediate Vozhd action
 
-Create/refresh `agent/vozhd-dva-td-r02-v555-recalibration` from current accepted `main` and launch **TD-R02 V555 only**.
+Create/refresh `agent/vozhd-dva-td-r03-v556-recalibration` from current accepted `main` and launch **TD-R03 V556 only**.
