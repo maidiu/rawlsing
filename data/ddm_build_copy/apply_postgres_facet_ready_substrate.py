@@ -52,6 +52,30 @@ QUESTIONS_MASTER = ROOT / "data" / "final_codebooks" / "questions_master_drivers
 OUT_REPORT = ROOT / "data" / "ddm_build_copy" / "reports" / "apply_postgres_facet_ready_substrate_report.json"
 
 
+# These fields define semantic equality for QSM conflict handling.  Raw
+# spelling, display provenance, and load timing are intentionally excluded.
+QSM_SEMANTIC_FIELD_INDICES = tuple(range(11, 28))
+QSM_SEMANTIC_DB_FIELDS = (
+    "legacy_final_driver_id",
+    "final_driver_label",
+    "final_driver_scope",
+    "final_driver_origin",
+    "driver_id",
+    "driver_facet_id",
+    "question_block_id",
+    "structural_domain_id",
+    "relation_axis_id",
+    "target_entity_id",
+    "mapping_status",
+    "evidence_kind",
+    "strata_relevance",
+    "channel_affordances",
+    "forbidden_inference",
+    "does_not_measure",
+    "review_notes",
+)
+
+
 QUESTION_MAPPING_SQL = """
 CREATE TABLE IF NOT EXISTS question_structural_mapping (
     source TEXT NOT NULL,
@@ -423,6 +447,44 @@ def clean(value: Any) -> str:
     return str(value).strip()
 
 
+def semantic_mapping_signature(values: Iterable[Any]) -> tuple[str, ...]:
+    """Normalize semantic fields for conflict comparison."""
+    return tuple(clean(value) for value in values)
+
+
+def _candidate_semantic_signature(row: tuple[Any, ...]) -> tuple[str, ...]:
+    return semantic_mapping_signature(row[index] for index in QSM_SEMANTIC_FIELD_INDICES)
+
+
+def quarantine_conflicting_question_mapping_rows(
+    rows: Iterable[tuple[Any, ...]],
+) -> tuple[list[tuple[Any, ...]], list[tuple[str, str, str]]]:
+    """Drop every candidate in each genuinely divergent UID-normalized group."""
+    candidates = list(rows)
+    groups: dict[tuple[str, str, str], list[tuple[Any, ...]]] = defaultdict(list)
+    for row in candidates:
+        source_family_uid = clean(row[2])
+        wave_uid = clean(row[3])
+        if source_family_uid and wave_uid:
+            key = (source_family_uid, wave_uid, clean(row[9]).upper())
+            groups[key].append(row)
+
+    conflicts = sorted(
+        key for key, members in groups.items()
+        if len({_candidate_semantic_signature(row) for row in members}) > 1
+    )
+    conflict_keys = set(conflicts)
+    kept = [
+        row for row in candidates
+        if (
+            not clean(row[2])
+            or not clean(row[3])
+            or (clean(row[2]), clean(row[3]), clean(row[9]).upper()) not in conflict_keys
+        )
+    ]
+    return kept, conflicts
+
+
 def _identity_fields(source: str, wave: str) -> tuple[str, str, str, str, str, bool | None]:
     """Resolve additive semantic identity without changing raw source/wave fields."""
     if not clean(wave):
@@ -510,18 +572,21 @@ def assert_no_conflicting_qsm_uid_rows(conn) -> None:
     cur = conn.cursor()
     cur.execute("""
         SELECT source_family_uid, wave_uid, var_code,
-               question_id, question_block_id, structural_domain_id,
-               driver_id, driver_facet_id, relation_axis_id, target_entity_id,
-               mapping_status, legacy_final_driver_id, display_text
+               legacy_final_driver_id, final_driver_label, final_driver_scope,
+               final_driver_origin, driver_id, driver_facet_id, question_block_id,
+               structural_domain_id, relation_axis_id, target_entity_id,
+               mapping_status, evidence_kind, strata_relevance,
+               channel_affordances, forbidden_inference, does_not_measure,
+               review_notes
         FROM question_structural_mapping
         WHERE NULLIF(source_family_uid, '') IS NOT NULL
           AND NULLIF(wave_uid, '') IS NOT NULL
         ORDER BY source_family_uid, wave_uid, UPPER(var_code), loaded_at
     """)
-    groups: dict[tuple[str, str, str], set[tuple[Any, ...]]] = defaultdict(set)
+    groups: dict[tuple[str, str, str], set[tuple[str, ...]]] = defaultdict(set)
     for row in cur.fetchall():
         key = (str(row[0]), str(row[1]), str(row[2]).upper())
-        groups[key].add(tuple(row[3:]))
+        groups[key].add(semantic_mapping_signature(row[3:]))
     conflicts = {key: values for key, values in groups.items() if len(values) > 1}
     cur.close()
     if conflicts:
@@ -533,7 +598,8 @@ def assert_no_conflicting_qsm_uid_rows(conn) -> None:
 
 
 def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
-    rows: dict[tuple[str, str, str], tuple[Any, ...]] = {}
+    """Extract every source-master candidate without semantic precedence."""
+    rows: list[tuple[Any, ...]] = []
     for r in df.itertuples(index=False):
         source = clean(getattr(r, "source", ""))
         wave = clean(getattr(r, "wave", ""))
@@ -579,17 +645,27 @@ def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
             clean(getattr(r, "does_not_measure", "")),
             clean(getattr(r, "review_notes", "")),
         )
-        key = (source, wave, var_code)
-        if key not in rows:
-            rows[key] = row
+        rows.append(row)
+    return rows
+
+
+def deduplicate_question_mapping_rows(
+    rows: Iterable[tuple[Any, ...]],
+) -> list[tuple[Any, ...]]:
+    """Deduplicate only after semantic-conflict groups have been removed."""
+    deduplicated: dict[tuple[str, str, str], tuple[Any, ...]] = {}
+    for row in rows:
+        key = (clean(row[0]), clean(row[1]), clean(row[9]))
+        if key not in deduplicated:
+            deduplicated[key] = row
             continue
-        existing = rows[key]
+        existing = deduplicated[key]
         # Prefer the row with the richer mapping signal.
         existing_score = sum(1 for v in existing if isinstance(v, str) and v)
         new_score = sum(1 for v in row if isinstance(v, str) and v)
         if new_score >= existing_score:
-            rows[key] = row
-    return list(rows.values())
+            deduplicated[key] = row
+    return list(deduplicated.values())
 
 
 def ensure_question_mapping(cur) -> None:
@@ -598,7 +674,12 @@ def ensure_question_mapping(cur) -> None:
 
 def load_question_mapping(conn) -> int:
     df = load_questions_master()
-    rows = create_question_mapping_rows(df)
+    candidate_rows = create_question_mapping_rows(df)
+    conflict_free_rows, quarantined_keys = quarantine_conflicting_question_mapping_rows(candidate_rows)
+    rows = deduplicate_question_mapping_rows(conflict_free_rows)
+    print(f"QSM semantic conflicts quarantined: {len(quarantined_keys)}", flush=True)
+    for source_family_uid, wave_uid, var_code in quarantined_keys:
+        print(f"{source_family_uid}|{wave_uid}|{var_code}", flush=True)
     cur = conn.cursor()
     ensure_question_mapping(cur)
     cur.execute("TRUNCATE question_structural_mapping")
