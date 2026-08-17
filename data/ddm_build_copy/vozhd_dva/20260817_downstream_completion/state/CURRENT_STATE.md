@@ -2,131 +2,100 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** S00_READY_TO_LAUNCH
+**Phase:** `S00_ADJUDICATED__S01_PREP`
 
 ## Mission now
 
-Run only schematic session S00, reconvene its independent forward/backward analyses, freeze V553's lawful input/transformation/new-output contribution relative to V554's total need, update the cumulative upstream authority/transformation map, and only then permit S01 to launch.
+Prepare and launch only schematic session S01 for V554, using the S00 ruling and cumulative map as inherited law. Do not reopen V553 unless a concrete V554 contradiction proves the S00 ruling insufficient.
 
-## Canonical assumptions
+## Governing architecture
 
-- Current `main` is the implementation and control-room authority.
-- V550–V552J are closed by default.
-- `POSTG5-004` is closed on the V553 consumer side.
-- V552J is the immediate governed handoff into V553, but S00 must not assume V552J is V553's only lawful upstream input.
-- Current V553 also exposes/directly consumes V552 structural-fact and temporal-key-source indexes and consumes semantic/directionality/position authority overlays plus thin-readiness context.
-- Rawlsing downstream dataflow is a governed dependency DAG, not a strictly serial conveyor belt.
-- Every later stage inherits the cumulative map of prior outputs and may directly reuse earlier-stage objects when that reuse is useful, semantically lawful, and preserves the earlier object's authority/epistemic/permission state.
-- The existence of an intermediate stage does not by itself prohibit later direct use of an earlier output.
-- Earlier objects may be superseded for a specific semantic use while remaining valid direct inputs for other uses.
-- A current stage should create the new meaning it uniquely owns; it need not duplicate earlier useful objects merely to make the next stage's packet self-contained.
-- Therefore downstream sufficiency is tested against the union of lawful earlier-stage reuse plus the current stage's new outputs.
-- V553 must transform governed upstream evidence rather than recreate its identity from convenience labels.
-- V553 owns temporalization/structural-pressure meaning only to the extent composed lawful upstream authority supports it.
-- Each downstream stage earns only its own new class of meaning; direct reuse of earlier authority does not authorize reinterpretation beyond that earlier producer's meaning.
-- Enneagram-like attractor formation is intended design: V556 supplies structural pressure-flow/attractor prerequisites/topology; V3 later realizes actor-specific developmental formation.
-- V3 is causal/temporal actor jurisdiction; V2 is phenomenological/conversational jurisdiction and is not causal authority.
-- Schematic work is finite and terminates in implementable dependency/contract obligations.
+Rawlsing downstream dataflow is a governed dependency DAG.
 
-## Cumulative map law
+For current stage `B` and downstream consumer `C`:
 
-Authoritative inherited map:
-`schematics/CUMULATIVE_UPSTREAM_MAP.md`
+`C_NEED = lawful earlier-stage reuse + residual need for B-created meaning + C-own derivation`
 
-General inheritance:
-- S00 adjudicates the pre-V553 map and adds accepted V553 outputs.
-- S01 receives that entire map, determines what V555 can use directly from any earlier stage plus V554 output, and adds accepted V554 outputs.
-- S02 receives the resulting map, determines V556's composed intake, and adds accepted V555 outputs.
-- continue identically through V556, V557, V558, V3, and V2.
+A stage contributes the new meaning it uniquely owns. It does not need to republish every useful earlier output.
 
-For every stage `B` and downstream `C`:
+Cross-stage reuse is judged by semantic use and authority, not stage distance.
 
-`C_NEED = DIRECTLY_REUSABLE_EARLIER_OUTPUTS + RESIDUAL_NEED_FOR_B_DERIVATION + C_OWN_DERIVATION`
+## Wave 0
 
-B's required output is the minimum new/reshaped contribution needed to satisfy the residual need, not a wholesale republishing of all upstream material.
+Complete. V550–V552J remain closed by default. POSTG5-004 is closed on the V553 consumer side.
 
-Cross-stage reuse is evaluated by **semantic use**, not by stage distance.
+## S00 closeout
 
-## Wave 0 closeout
+Accepted worker returns:
+- S00-B / PR #43 — ACCEPT, merged to S00 integration.
+- S00-F / PR #44 — ACCEPT, merged to S00 integration.
 
-Wave 0 is complete and integrated into canonical `main` through PR #40, merge commit `1bbfb62791a583ab9ab7d21f5a0d76b4617b8f89`.
+The four accepted result artifacts were integrated onto current `main` at commit:
+`7db3dfbab6d2497da50c496cb2de76a5d7cee083`
 
-Final worker dispositions:
-- R0-01 / PR #39: `ACCEPT` after fail-closed integrity correction.
-- R0-02 / PR #35: `ACCEPT_WITH_FOLLOWUP`.
-- R0-03 / PR #36: `ACCEPT_WITH_FOLLOWUP`.
-- R0-04 / PR #38: `ACCEPT_WITH_FOLLOWUP`.
-- R0-05 / PR #37: `ACCEPT`.
+Conflicted aggregate PR #45 was closed rather than allowing stale control-room/assignment copies to overwrite newer `main`.
 
-Wave-0 findings remain evidence inputs; proposed replacement object grains are adjudicated in schematic sessions, not inherited automatically.
-
-## Schematic sequencing law
-
-Only one seam/session is active at a time.
-
-Inside the active session, independent perspectives may run concurrently. Vozhd Dva then reconvenes them and writes an accepted ruling. The accepted current-stage outputs plus the updated cumulative map become the law inherited by the next session.
-
-Serial adjudication progression:
-`S00 → synthesis/map update → S01 → synthesis/map update → S02 → ... → S07`
-
-Serial adjudication does **not** imply serial-only data consumption.
-
-## Active session — S00 only
-
-Workspace:
-`schematics/sessions/S00_V552J_TO_V553/`
-
-S00 asks:
-1. what is lawfully available anywhere upstream of V553;
-2. what V554 actually needs in total;
-3. what parts of that need V554 can already satisfy by directly reusing earlier upstream outputs;
-4. what residual meaning V553 uniquely needs to create;
-5. which upstream objects V553 needs to create that meaning;
-6. what V553 can lawfully emit;
-7. whether `earlier reusable outputs + V553 outputs` satisfy V554.
-
-Breakouts:
-- `FORWARD_V552J` — map upstream availability and V553's lawful transformation capacity.
-- `BACKWARD_V554` — map V554's total need, direct upstream reuse, and residual need for V553-created meaning.
-
-Both are production-code read-only and return `RESULT.md` + `RESULT.json` in their own cells.
-
-### S00 branches
-
-Original packet base SHA: `5eb67683a5a21327da6a7516216616ff5d12c7fe`
-
-Pre-created branches:
-- integration: `agent/vozhd-dva-s00-integration`
-- forward: `agent/vozhd-dva-s00-forward-v552j`
-- backward: `agent/vozhd-dva-s00-backward-v554`
-
-S00 assignments have been amended after launch preparation as the transformation method was clarified. Workers must use the latest assignment on their existing branch before returning.
-
-Launch/return map:
-`schematics/sessions/S00_V552J_TO_V553/LAUNCH_INDEX.md`
-
-Vozhd ruling surface:
+Authoritative ruling:
 `schematics/synthesis/S00_V552J_TO_V553_RULING.md`
 
-## Blocked sessions
+Authoritative cumulative map:
+`schematics/CUMULATIVE_UPSTREAM_MAP.md`
 
-S01–S07 remain blocked from adjudication until S00 is synthesized. They will inherit the cumulative map and may select lawful inputs from any earlier adjudicated stage; they are not restricted to immediate-predecessor outputs.
+## S00 accepted law
 
-## Immediate next action
+- V552 owns the empirical structural-pressure fact and exact factual identity/provenance.
+- V552J owns packet↔fact admission/use permission, blockers and association lineage.
+- certified earlier semantic/directionality/position authority supplies cross-wave compatibility authority.
+- V553 owns the new temporal meaning only: comparable temporal identity, ordered observations, authorized change/delta, temporal gaps/noncomparability/uncertainty, and bounded governed temporal summaries.
+- exact sparse V553 temporal objects are primary for temporal structural identity; aggregate country-year projections are secondary.
+- V554 may directly compose V552, V552J, earlier governed authority and V553 temporal objects according to semantic purpose.
+- structural rupture candidate is distinct from external historical-event/causal rupture. The former requires an explicit versioned candidate rule; the latter requires separate event authority.
 
-Have both S00 workers use their latest amended assignments, wait for both returns, then reconvene S00. Do not launch S01.
+Accepted V553 object families inherited by S01:
+- `TEMPORAL_KEY`
+- `TEMPORAL_OBSERVATION`
+- `TEMPORAL_RELATION`
+- `TEMPORAL_LIMIT / NEGATIVE AUTHORITY`
+- secondary aggregate temporal projection
+
+## Reporting economy law
+
+S00 proved that the old breakout reports were more granular than necessary. Future workers may investigate deeply but return compact decision-bearing artifacts under:
+- `schematics/TRANSFORMATION_METHOD.md`
+- `schematics/BOUNDARY_SESSION_TEMPLATE.md`
+
+Normal return target:
+- ≤12 need/reuse rows;
+- ≤8 residual-obligation bullets;
+- ≤6 output object families;
+- ≤5 concrete defects;
+- ≤3 unresolved Vozhd forks;
+- 2 worked cases.
+
+Extra detail must justify a real semantic distinction or implementation obligation.
+
+## Next session — S01 only
+
+S01 studies V554 by asking:
+
+`cumulative upstream map + accepted V553 objects + V555 total need`
+`→ what V555 can already reuse directly`
+`→ residual meaning V554 must uniquely create`
+`→ V554 selected inputs`
+`→ V554 transformation/new outputs`
+`→ V555 composed-input sufficiency`
+
+S02–S07 remain blocked until successive adjudications.
 
 ## Restart instruction
 
 Read in order:
 1. `CONTROL_ROOM_MAP.md`
 2. `state/CURRENT_STATE.md`
-3. `LIVE_ITINERARY.md`
-4. `schematics/README.md`
-5. `schematics/TRANSFORMATION_METHOD.md`
-6. `schematics/CUMULATIVE_UPSTREAM_MAP.md`
-7. `schematics/SESSION_INDEX.md`
-8. `schematics/sessions/S00_V552J_TO_V553/LAUNCH_INDEX.md`
-9. only the active S00 cells and relevant canonical code/results.
+3. `schematics/TRANSFORMATION_METHOD.md`
+4. `schematics/CUMULATIVE_UPSTREAM_MAP.md`
+5. `schematics/synthesis/S00_V552J_TO_V553_RULING.md`
+6. `schematics/SESSION_INDEX.md`
+7. only the active S01 materials once created.
 
 Do not reconstruct project state from chat history when the control room is available.
