@@ -76,14 +76,24 @@
       "integration_merge_sha": "908a83d8a334ad9732005d0cc86684c59edd30c1",
       "containment": {"no_unowned_files_changed": true, "changed_paths_reviewed": 10, "terrain_result": "PASS_WITH_COSMETIC_NOOP_CHURN"},
       "contract_result": "V550_UID_TRANSPORT_COMPLETE",
-      "issue_results": {
-        "SWID-005": "RESOLVED",
-        "SWID-006": "PARTIAL_AWAITING_CROSS_HOOK",
-        "SWID-007": "PARTIAL_AWAITING_CROSS_HOOK",
-        "SWID-016": "RESOLVED",
-        "SWID-026": "RESOLVED"
-      },
+      "issue_results": {"SWID-005": "RESOLVED", "SWID-006": "PARTIAL_AWAITING_CROSS_HOOK", "SWID-007": "PARTIAL_AWAITING_CROSS_HOOK", "SWID-016": "RESOLVED", "SWID-026": "RESOLVED"},
       "validation_note": "Vozhd rejected the first return, required W03-local UID itinerary and question-list joins, then accepted the amended architecture. The final branch retains only cosmetic/no-op incidental churn outside those identity changes; no unowned semantic behavior change was identified. Worker environment could not execute pytest/py_compile, so no runtime pass is claimed. SWID-006 awaits downstream V551/V552/J hooks; SWID-007 awaits W05-B lineage/replay."
+    },
+    {
+      "worker_id": "W03",
+      "phase_id": "W03-B",
+      "base_commit": "f8f5d5093f30630a4b200d0457a406820e9d3f71",
+      "branch": "agent/swid-w03-v551-b",
+      "primary_issue_ids": [],
+      "hook_issue_ids": ["SWID-006", "SWID-008", "SWID-017"],
+      "issue_status": "PARTIAL_AWAITING_CROSS_HOOK",
+      "worker_head_sha": "758b27a2256f0dc243ab52a6da7b284bbe06954f",
+      "draft_pr": 33,
+      "integration_merge_sha": "f6eff1fcbe2a01e1a553bedeeb17ff3dba0a3677",
+      "containment": {"no_unowned_files_changed": true, "changed_paths_reviewed": 4, "terrain_result": "PASS"},
+      "contract_result": "V551_UID_TRANSPORT_COMPLETE_SEMANTICS_FROZEN",
+      "tests_reported": ["py_compile: PASS", "focused pytest: NOT_RUN (no runnable repository checkout)"],
+      "validation_note": "Vozhd inspected all four W03-B patches. UID metadata is additive on adjudication/atom/coverage/directionality surfaces; producer scope and active joins/grouping carry source_family_uid+wave_uid; contradictory/excluded identity fails closed. V551 signed projection, direction/intensity, applicability, promotability, neutral/support/adjudication policy are unchanged. Legacy candidate/distribution/atom/measurement/hash payloads are preserved; downstream V552/J hooks remain."
     }
   ],
   "gate_events": [
@@ -91,6 +101,7 @@
     {"gate": "G1", "status": "SATISFIED", "evidence": ["W01-A PR=29", "W01-A reviewed_head=07c332fde51344d8a8a73423ccb63508003b654b", "W01-A integration_merge_sha=3a5a869b49693817e83b8391113ca08bb7a17f81", "identity kernel enforces family-first alias resolution, exact 35 production membership, recognized-excluded Asian Barometer W6, additive versioned UID physical token, and compatibility-preserving historical key surface", "W01 containment PASS: exactly four W01-owned paths changed"], "releases": ["W02-A", "W05-A"], "note": "W06-A remained independently active as the tests-only hostile harness."},
     {"gate": "G2A", "status": "SATISFIED", "evidence": ["W02-A PR=31", "W02-A reviewed_worker_head=71f1d4509753c2e509828b65a1510e85f1a1bc7e", "W02-A exact-blob rebase=e16ec8747015bc141b3dc0dc0d9e879e21132cce", "W02-A integration_merge_sha=2621567e151529c0d09c788ec0fcd473ac925b94", "portable/hash-bound exact CLOSED_35 authority ingress and additive UID DB identity surface installed; raw respondent wave preserved"], "means": "portable/hash-bound authority ingress + DB identity surface ready"},
     {"gate": "G2B", "status": "SATISFIED", "evidence": ["W05-A PR=30", "W05-A reviewed_head=7afc093164ef62ebc4b4cbe2080c4b5800803fd2", "W05-A integration_merge_sha=4cb28f24e941603d37d2e9e30eba35b62aafbde0", "shared UID coherence contract verifies every populated representation and preserves independent exact producer-boundary checks"], "means": "shared UID coherence/boundary contract ready", "combined_release_after_G2A_and_G2B": ["W03-A"]},
-    {"gate": "G3", "status": "SATISFIED", "evidence": ["W03-A PR=32", "W03-A reviewed_head=8c1f989ec9b5a22ff4c741b9b30f27a057122377", "W03-A integration_merge_sha=908a83d8a334ad9732005d0cc86684c59edd30c1", "V550 attaches UID before execution and preserves raw DB coordinates plus legacy shard identity", "SWID-016 itinerary/manual gate now matches by governed UID", "W03-local SWID-006 question-list producer join now matches by source_family_uid+wave_uid"], "means": "V550 plans/executes/manifests with governed UID while preserving legacy physical identity", "releases": ["W03-B", "W04-A"], "note": "No respondent-backed runtime pass is claimed at G3."}
+    {"gate": "G3", "status": "SATISFIED", "evidence": ["W03-A PR=32", "W03-A reviewed_head=8c1f989ec9b5a22ff4c741b9b30f27a057122377", "W03-A integration_merge_sha=908a83d8a334ad9732005d0cc86684c59edd30c1", "V550 attaches UID before execution and preserves raw DB coordinates plus legacy shard identity", "SWID-016 itinerary/manual gate now matches by governed UID", "W03-local SWID-006 question-list producer join now matches by source_family_uid+wave_uid"], "means": "V550 plans/executes/manifests with governed UID while preserving legacy physical identity", "releases": ["W03-B", "W04-A"], "note": "No respondent-backed runtime pass is claimed at G3."},
+    {"gate": "G4A", "status": "SATISFIED", "evidence": ["W03-B PR=33", "W03-B reviewed_head=758b27a2256f0dc243ab52a6da7b284bbe06954f", "W03-B integration_merge_sha=f6eff1fcbe2a01e1a553bedeeb17ff3dba0a3677", "V551 carries governed source_family_uid+wave_uid across producer scope, adjudication, atoms, coverage, and directionality audit", "legacy V551 IDs and frozen atom/measurement hash payloads preserved", "no signed-projection semantic change identified"], "means": "V551 carries UID without semantic projection changes", "releases": ["W06-B"], "note": "W04-A remains independently open pending one containment-only SQL-string restoration; G4B not yet satisfied."}
   ]
 }
