@@ -8,15 +8,16 @@
 
 ## Mission
 
-Thoroughly excavate the current V555 implementation and its real role in the cumulative Rawlsing dependency DAG, using all accepted upstream law plus the banked PRE-S01 V554 reconnaissance as provisional context.
+Thoroughly excavate the current V555 implementation and its real role in the cumulative Rawlsing dependency DAG, using all accepted upstream law plus the **banked corrected PRE-S01.5 V554 maximal architecture blueprint as the immediate upstream architectural hypothesis**.
 
 Your task is to answer:
 
 `EVERYTHING LAWFULLY AVAILABLE UPSTREAM`
-`+ PROVISIONAL V554 BOUNDED-AFFORDANCE/USE LAYER`
+`+ PROVISIONAL MAXIMAL V554 ARCHITECTURE`
 `+ CURRENT V555 IMPLEMENTATION`
 `+ V556 TOTAL INFORMATION NEED`
 `→ what V556 can already reuse directly from earlier stages`
+`→ whether the V554 blueprint actually supplies the right residual upstream meaning`
 `→ what residual meaning V555 likely must uniquely create`
 `→ what V555 can lawfully create from its selected inputs`
 `→ provisional peak V555 architecture and V556 handoff strategy`
@@ -29,6 +30,7 @@ Every major conclusion must be tagged as one of:
 - `STABLE_FROM_ACCEPTED_UPSTREAM_LAW`
 - `PROVISIONAL_ON_INTENDED_V553_TARGET`
 - `PROVISIONAL_FROM_PRE_S01_V554`
+- `PROVISIONAL_FROM_PRE_S01_5_V554_ARCHITECTURE`
 - `CURRENT_CODE_OBSERVATION`
 - `REQUIRES_LATER_BINDING_ADJUDICATION`
 
@@ -44,10 +46,47 @@ Do not blur these categories.
 6. `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md`
 7. `schematics/advisory/PRE_S01_V554/RESULT.md`
 8. `schematics/advisory/PRE_S01_V554/RESULT.json`
-9. Wave-0 V555 reconnaissance: `rabochii/WAVE_0/R0_02_V555/RESULT.md` and `RESULT.json`
-10. Wave-0 V556/attractor reconnaissance: `rabochii/WAVE_0/R0_03_V556_ATTRACTOR/RESULT.md` and `RESULT.json`
-11. `schematics/boundaries/S02_V554_TO_V555.md`
-12. `schematics/boundaries/S03_V555_TO_V556.md` only as downstream context, not binding authority
+9. **`schematics/advisory/PRE_S01_5_V554_ARCHITECTURE/RESULT.md`**
+10. **`schematics/advisory/PRE_S01_5_V554_ARCHITECTURE/RESULT.json`**
+11. Wave-0 V555 reconnaissance: `rabochii/WAVE_0/R0_02_V555/RESULT.md` and `RESULT.json`
+12. Wave-0 V556/attractor reconnaissance: `rabochii/WAVE_0/R0_03_V556_ATTRACTOR/RESULT.md` and `RESULT.json`
+13. `schematics/boundaries/S02_V554_TO_V555.md`
+14. `schematics/boundaries/S03_V555_TO_V556.md` only as downstream context, not binding authority
+
+## Immediate V554 hypothesis to stress-test
+
+PRE-S01.5 is advisory, not binding, but it is now the richest upstream design hypothesis and must be treated seriously.
+
+It provisionally specifies:
+
+- **four V554 semantic families**:
+  1. `BOUNDED_STRUCTURAL_AFFORDANCE` — materialized only as `ELIGIBLE` or lawful `CONDITIONAL`;
+  2. `STRUCTURAL_MEDIATION_REQUIREMENT`;
+  3. `V554_LIMIT` — downstream-meaningful semantic/use negative authority only;
+  4. optional `AFFORDANCE_RELATION` — disabled/valid-empty absent a governed rule;
+- **one governed boundary/interface family**:
+  - `V554_V555_HANDOFF` / B1, which is not itself a V554 semantic meaning family;
+- nonsemantic transport/schema/ref/integrity/forbidden-construction failures remain admission/completion/audit codes and are **not** structural negative semantics;
+- V554 does not create mediation routes/channels;
+- V554 may directly reference V552/V552J/earlier authority and exact V553 temporal objects without republishing their meanings;
+- no canonical V554 numeric seed score absent a separately governed formula;
+- no canonical interpolation or aggregate-first temporal authority.
+
+### Stress-test law
+
+Do **not** merely assume this blueprint is correct because it is detailed.
+
+Use actual V555/V556 requirements to determine:
+
+1. whether V554's four semantic families + B1 give V555 everything it should receive from V554;
+2. whether any proposed V554 object/field actually belongs in V555 instead;
+3. whether V555 requires a V554-created meaning that PRE-S01.5 omitted;
+4. whether blocked/unresolved V554 semantic context should reach V555 through B1 exactly as proposed;
+5. whether V554's `CONDITIONAL` rule—only V555-owned unresolved requirements may remain—is sufficient and coherent with the mediation architecture you derive;
+6. whether optional V554 `AFFORDANCE_RELATION` is useful, unnecessary, or jurisdictionally misplaced once mediation-route relations exist;
+7. whether the proposed V554→V555 exact-reference strategy gives V555 enough upstream lineage without excessive denormalization.
+
+Any correction should be returned as a **specific PRE-S01.5 delta**, not implemented and not silently absorbed into V555.
 
 ## Inspect thoroughly
 
@@ -57,6 +96,7 @@ At minimum inspect:
 - `data/ddm_build_copy/ddm_v555_life_course_mediation.py`
 - all other `v555` modules/entrypoints/tests discovered by repository search;
 - current V554 artifacts/paths V555 actually consumes;
+- how current V555 intake differs from the PRE-S01.5 proposed F1/F2/F3/F4+B1 contract;
 - whether V555 can or should directly reuse V552/V552J/V553 and earlier governed authority;
 - `data/ddm_build_copy/ddm_v556_pressureflow.py` and relevant V556 tests/contracts to determine total downstream need;
 - Wave-0 vertical-harness mediation and flow/attractor fixtures/tests.
@@ -73,7 +113,8 @@ Map useful material V555/V556 could consume from any earlier governed stage, inc
 - V552 structural facts/decomposition/provenance/absence state;
 - V552J admission/use permission/blockers;
 - intended exact V553 temporal key/observation/relation/limit objects;
-- provisional PRE-S01 V554 bounded-affordance/use/requirement/limit objects.
+- provisional PRE-S01.5 V554 F1/F2/F3/F4 objects;
+- provisional PRE-S01.5 B1 boundary records.
 
 For each material class state:
 - original producer/meaning owner;
@@ -82,6 +123,8 @@ For each material class state:
 - whether V556 could still reuse the original directly;
 - what transformation, if any, V555 must perform before the material can support pressure-flow reasoning;
 - governing restrictions.
+
+Do not treat B1 as semantic authority over F1–F4, and do not treat V554 validation/audit failures as structural input.
 
 ### 2. V556 total demand
 
@@ -113,6 +156,7 @@ Do not assume the current seven generic slots are the correct ontology.
 The central question is whether V555 should create some bounded form of:
 - `MEDIATION_ROUTE_CANDIDATE`;
 - `MEDIATION_ROUTE_CONDITION`;
+- route effect-potential semantics;
 - route interaction/competition metadata;
 - typed unresolved/negative mediation state;
 
@@ -120,7 +164,19 @@ or a smaller/better equivalent.
 
 Determine the minimum semantic grain required for V556, not the maximum mediation ontology imaginable.
 
-### 4. Structural position vs generated fact
+### 4. Semantic object vs boundary object vs failed construction
+
+Carry forward the category hygiene established in PRE-S01.5.
+
+For every proposed V555 surface classify it as one of:
+- **V555 semantic meaning object**;
+- **V555→V556 governed boundary/interface object**;
+- **nonsemantic admission/integrity/completion/audit evidence**;
+- **diagnostic/compatibility view**.
+
+Do not serialize corrupt input, invalid identity, forbidden person inference, schema failure, or other broken-build conditions as if they were mediation semantics.
+
+### 5. Structural position vs generated fact
 
 This distinction is mandatory.
 
@@ -133,7 +189,7 @@ For every proposed mediation object, state whether its endpoint/condition is:
 - generated actor fact (forbidden here);
 - actor-history-dependent and therefore deferred.
 
-### 5. Current implementation topology
+### 6. Current implementation topology
 
 Produce a keep/promote/repair/merge/demote/deprecate map.
 
@@ -142,6 +198,7 @@ Inspect specifically:
 - current all-unresolved behavior;
 - `seed_rows[:5]` truncation;
 - V554 lineage/use-permission/temporal/uncertainty information lost at V555;
+- current V555 inability to consume the proposed PRE-S01.5 F1/F2/F3/F4+B1 contract;
 - household/parent/co-parent/child/carrier registers and whether they encode structural positions cleanly or imply person facts;
 - contradictory readiness / `allowed_v556_use` states;
 - whether V556 consumes the intended V555 handoff or only slot labels;
@@ -149,7 +206,7 @@ Inspect specifically:
 - missing buffer/amplify/transmit/deflect/block/conflict semantics;
 - duplicated packet/handoff/readiness surfaces.
 
-### 6. Provisional peak V555 architecture
+### 7. Provisional peak V555 architecture
 
 Sketch the smallest strong internal architecture for V555.
 
@@ -158,17 +215,20 @@ Prefer repair/promotion of existing code over greenfield machinery.
 Define provisionally:
 - selected input classes from the cumulative DAG;
 - unique mediation transformation;
-- core output object families, normally no more than 4–7;
+- core **semantic** output object families, normally no more than 3–6;
+- any separate governed V555→V556 boundary family;
 - stable identity and lineage;
 - structural endpoints/positions;
 - conditions/permissions/temporal support;
 - effect-potential vocabulary only where justified;
-- negative/unknown states;
+- semantic negative/unknown states distinct from failed construction;
 - route competition/concurrency representation only if V556 demonstrably needs it;
 - V556 handoff strategy;
 - readiness/completion conditions.
 
-### 7. V556 composed-input strategy
+Explicitly identify which proposed object families are true V555 semantics and which are interface/metadata.
+
+### 8. V556 composed-input strategy
 
 Propose how V556 should compose:
 
@@ -178,7 +238,7 @@ without forcing V555 to republish all earlier material.
 
 Explicitly identify what V556 should obtain directly from V552/V552J/V553/V554 versus what only V555 can supply.
 
-### 8. Attractor-jurisdiction preparation
+### 9. Attractor-jurisdiction preparation
 
 Do not reconsider whether Enneagram-like attractor formation belongs in Rawlsing; it does.
 
@@ -188,12 +248,14 @@ Use the accepted boundary:
 
 Determine what V555 must expose so V556 can do its part without inventing actor history.
 
-### 9. Tests
+### 10. Tests
 
 Propose later hostile/positive tests, especially:
 - no `seed_rows[:5]` or equivalent truncation;
 - exact upstream lineage survives through mediation objects;
 - denied use / absence / noncomparability cannot become an active route;
+- V554 nonpositive B1 context cannot become positive V555 mediation permission;
+- V554 validation/audit failure codes never become V555 mediation semantics;
 - structural parent/household/carrier positions never become biography facts;
 - buffer vs amplify (and other admitted effects) remain distinguishable;
 - competing/concurrent routes remain representable;
@@ -210,16 +272,18 @@ Write only:
 Markdown should contain:
 1. architecture conclusion;
 2. cumulative upstream reuse map;
-3. V556 need partition;
-4. residual V555 obligation;
-5. structural-position vs generated-fact law;
-6. current implementation disposition map;
-7. provisional target architecture/object families;
-8. provisional V556 handoff/readiness strategy;
-9. concrete defects;
-10. dependency-sensitive assumptions;
-11. later S02 adjudication questions;
-12. one ordinary and one hostile worked case.
+3. **PRE-S01.5 V554 blueprint stress-test / proposed deltas**;
+4. V556 need partition;
+5. residual V555 obligation;
+6. semantic-vs-boundary-vs-failure classification law;
+7. structural-position vs generated-fact law;
+8. current implementation disposition map;
+9. provisional target architecture/object families;
+10. provisional V556 handoff/readiness strategy;
+11. concrete defects;
+12. dependency-sensitive assumptions;
+13. later S02 adjudication questions;
+14. one ordinary and one hostile worked case.
 
 Investigate thoroughly, but return decision-bearing architecture rather than a file-by-file diary. Put exhaustive file-read provenance in JSON.
 
@@ -232,6 +296,7 @@ Investigate thoroughly, but return decision-bearing architecture rather than a f
 - no V556 production implementation;
 - no generated biography/person/household/psyche facts;
 - no final Enneagram assignment or actor-specific attractor realization;
-- no reopening V550–V552J.
+- no reopening V550–V552J;
+- no silent mutation of PRE-S01.5 assumptions: report explicit deltas instead.
 
-The desired outcome is a **banked high-quality map of V555 mediation territory** that makes later binding S02 fast and gives PRE-S03 a strong upstream model.
+The desired outcome is a **banked high-quality map of V555 mediation territory** that stress-tests the maximal V554 design, makes later binding S02 fast, and gives PRE-S02.5/PRE-S03 a strong upstream model.
