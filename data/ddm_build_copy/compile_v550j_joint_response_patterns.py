@@ -1322,8 +1322,7 @@ def _load_cached_country_slice(
     var_clause = ""
     if scoped_var_codes:
         var_literals = ", ".join(_sql_literal(value) for value in scoped_var_codes)
-        var_clause = f"\
-          AND upper(var_code) IN ({var_literals})"
+        var_clause = f"\n          AND upper(var_code) IN ({var_literals})"
     country_sql = """
         SELECT *
         FROM {view_name}
