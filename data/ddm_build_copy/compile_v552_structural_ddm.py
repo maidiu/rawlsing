@@ -315,6 +315,8 @@ def compile_v552_run(
         adjudication,
         conditional,
         run_id=run_id,
+        source_family_uid=producer["scope"]["source_family_uid"],
+        wave_uid=producer["scope"]["wave_uid"],
     )
     if isinstance(outputs.get("v552_readiness_report"), pd.DataFrame) and not outputs["v552_readiness_report"].empty:
         outputs["v552_readiness_report"].loc[:, "producer_manifest_sha256"] = producer["manifest_file_sha256"]
