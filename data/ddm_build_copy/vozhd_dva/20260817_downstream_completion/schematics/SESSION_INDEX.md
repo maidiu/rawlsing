@@ -1,82 +1,57 @@
 # Schematic Session Index
 
-Sessions are adjudicated one at a time. Serial adjudication does not imply serial-only data consumption: every session inherits the cumulative upstream DAG map and may select lawful earlier outputs by semantic purpose.
+Serial adjudication does not imply serial-only data consumption. Every session inherits the cumulative upstream DAG map and may reuse lawful earlier outputs by semantic purpose.
 
-| ID | Current transformation under study | Downstream consumer used for backward demand | Status | Breakout pattern |
-|---|---|---|---|---|
-| S00 | V553 temporal structural relation | V554 | `VOZHD_ADJUDICATED` | forward upstream availability + backward V554 demand |
-| S00.5 | V553 internal completion architecture / production build-out | V554 handoff readiness | `ACTIVE` | one architecture worker using both S00 excavations + ruling |
-| S01 | V554 bounded affordance / structural seed contribution | V555 | `BLOCKED_BY_V553_COMPLETION` | forward V554 capability + backward V555 total need |
-| S02 | V555 structural mediation routes/conditions | V556 | `BLOCKED_BY_S01` | forward + backward; critic only if a real authority fork remains |
-| S03 | V556 pressure-flow topology / attractor prerequisites | V557/V3 needs | `BLOCKED_BY_S02` | forward + backward; critic only if needed |
-| S04 | V557 renderer/source-generation boundary contribution | V558 | `BLOCKED_BY_S03` | forward + backward/critic as justified |
-| S05 | V558 governed runtime-prior gate | V3 | `BLOCKED_BY_S04` | forward + V3 backward |
-| S06 | V3 actor-specific causal/developmental state | V2 | `BLOCKED_BY_S05` | prior-side forward + V3/V2 demand boundary |
-| S07 | V2 phenomenological/conversational expression | app/runtime surface | `BLOCKED_BY_S06` | V3 forward + V2/app backward |
+| ID | Transformation / task | Downstream purpose | Status |
+|---|---|---|---|
+| S00 | V553 temporal semantic jurisdiction | V554 | `VOZHD_ADJUDICATED` |
+| S00.5 | V553 completion architecture/build-out | V554 readiness | `VOZHD_ADJUDICATED__IMPLEMENTATION_PROGRAM_FROZEN` |
+| S01 | V554 bounded affordance / structural seed contribution | V555 | `BLOCKED_BY_V553_COMPLETE_FOR_V554` |
+| S02 | V555 structural mediation routes/conditions | V556 | `BLOCKED_BY_S01` |
+| S03 | V556 pressure-flow topology / attractor prerequisites | V557/V3 | `BLOCKED_BY_S02` |
+| S04 | V557 renderer/source-generation boundary | V558 | `BLOCKED_BY_S03` |
+| S05 | V558 governed runtime-prior gate | V3 | `BLOCKED_BY_S04` |
+| S06 | V3 actor-specific causal/developmental state | V2 | `BLOCKED_BY_S05` |
+| S07 | V2 phenomenological/conversational expression | app/runtime | `BLOCKED_BY_S06` |
 
 ## S00 authority
 
-Read:
 - `schematics/synthesis/S00_V552J_TO_V553_RULING.md`
 - `schematics/CUMULATIVE_UPSTREAM_MAP.md`
-- both accepted S00 forward/backward `RESULT.md` and `RESULT.json` pairs
+- accepted S00 forward/backward results
 
-Accepted V553 object families:
-- `TEMPORAL_KEY`
-- `TEMPORAL_OBSERVATION`
-- `TEMPORAL_RELATION`
-- `TEMPORAL_LIMIT / NEGATIVE AUTHORITY`
-- secondary aggregate temporal projection
+## S00.5 authority
 
-## Active interstitial — S00.5
+Accepted via PR #46 / merge `9088a44e75de03faeefbd42d68d1d6c54c478377`.
 
-S00.5 exists because S00 froze V553's semantic responsibility but current production V553 remains a mixed implementation with sparse, aggregate, harmonization, readiness and handoff surfaces that require an explicit completion architecture before V554 should be designed around them.
+- `schematics/sessions/S00_5_V553_ARCHITECTURE/RESULT.md`
+- `schematics/sessions/S00_5_V553_ARCHITECTURE/RESULT.json`
+- `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md`
 
-Worker branch:
-`agent/vozhd-dva-s00-5-v553-architecture`
+S00.5 freezes V553 as a promotion/consolidation of the existing sparse exact-key core, with aggregate/readiness/interpolation surfaces demoted or retired as specified.
 
-Worker assignment:
-`schematics/sessions/S00_5_V553_ARCHITECTURE/ASSIGNMENT.md`
+## Implementation interstitial before S01
 
-S00.5 must work directly from **both S00 excavations**, reconcile them through the Vozhd ruling, inspect the complete current V553 production/test topology, and return:
-- canonical internal component architecture;
-- current keep/promote/repair/merge/demote/deprecate decisions;
-- canonical artifact/handoff architecture;
-- implementation gap matrix;
-- dependency-ordered build packets;
-- completion tests;
-- finite `V553_COMPLETE_FOR_V554` gate.
+Five sequential packets are frozen under:
+`integration/V553_COMPLETION/`
 
-No production code edits are authorized in S00.5.
+`P1 admission/authority`
+`→ P2 sparse key/observation`
+`→ P3 relations/limits`
+`→ P4 publication consolidation`
+`→ P5 exact handoff/completion court`
+
+Implementation branches are not created until the active source/wave identity repair campaign is terminally integrated to `main`, because P1/P2 must consume the finalized V552/V552J/overlay UID contract.
+
+After that merge:
+1. narrow compatibility delta check;
+2. pin exact base SHA;
+3. create V553 completion integration + P1 branches;
+4. launch P1 only;
+5. advance packet-by-packet after review.
 
 ## Promotion law
 
-The progression is:
+S01 launches only when P5 proves `V553_COMPLETE_FOR_V554 = PASS`.
 
-`S00 adjudication`
-`→ S00.5 architecture return`
-`→ Vozhd architecture ruling`
-`→ bounded V553 implementation packets`
-`→ V553 completion/vertical court`
-`→ S01`
-
-S01 does not launch merely because S00's semantic contract exists. It launches when the intended V553 architecture has been built and the V553→V554 readiness gate passes.
-
-## S01 governing question once unblocked
-
-S01 will ask:
-
-`V555 TOTAL NEED`
-`→ which needs are already satisfied by lawful direct reuse anywhere in the cumulative upstream map`
-`→ residual meaning requiring V554`
-`→ V554 selected inputs and unique transformation`
-`→ V554 new-output contract`
-`→ composed V555 input sufficiency`
-
-S01 may select V552, V552J, completed V553 or earlier governed authority directly when that producer remains authoritative for the intended use.
-
-## Breakout economy
-
-Two independent perspectives remain the default for semantic seam courts. S00.5 uses one architecture worker because S00 has already frozen the semantic jurisdiction and the task is implementation topology/build strategy rather than competing semantic models.
-
-Add another architecture critic only if the S00.5 result exposes a concrete unresolved architecture fork that Vozhd cannot adjudicate from current evidence.
+No further V553 architecture cycle is authorized absent a concrete contradiction introduced by the finalized upstream identity contract.
