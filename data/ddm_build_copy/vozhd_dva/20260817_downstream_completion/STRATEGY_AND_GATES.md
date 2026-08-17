@@ -2,35 +2,81 @@
 
 ## Execution model
 
-Rawlsing will not be completed by serially perfecting V553, then V554, then V555. The execution model is **bounded verticalization**:
+Rawlsing will not be completed by serially perfecting V553, then V554, then V555. The execution model is **bounded verticalization with explicit transformation adjudication**:
 
-1. identify the minimum cross-stage semantic capabilities required by the final runtime;
-2. state what each stage must preserve or add for those capabilities;
-3. carry representative fixtures through V553→V558;
-4. repair the chain wherever information is lost or semantics are underspecified;
-5. qualify the resulting path horizontally across source families/waves;
-6. rebuild V3/V2 against the proven V558 boundary;
-7. wire the app/demo path.
+1. inspect the canonical implementation and identify where semantics currently survive or die;
+2. analyze each transformation seam from upstream authority through downstream need;
+3. reconcile independent forward/backward breakout models into accepted seam contracts;
+4. carry representative fixtures through V553→V558;
+5. implement only the accepted stage transformations and repair the chain wherever information is lost or semantics are underspecified;
+6. qualify the resulting path horizontally across source families/waves;
+7. rebuild V3/V2 against the proven V558 boundary;
+8. wire the app/demo path.
 
-The architecture pass ends once implementation can proceed safely. It is not an independent deliverable to elaborate indefinitely.
+The architecture/schematic pass ends once transformations are precise enough for implementation workers to code without inventing ontology locally. It is not an independent deliverable to elaborate indefinitely.
 
-## Phase A — Cross-stage contract pass
+## Phase A0 — Reconnaissance
 
-Goal: remove downstream blindness before deep implementation.
+Goal: determine what the current pipeline actually emits, consumes, preserves, drops, blocks, or contradicts.
 
-Required outputs:
-- compact capability matrix;
-- stage responsibility assignments;
-- five representative vertical acceptance slices;
-- explicit V558→V3 information contract;
-- explicit V3→V2 boundary contract;
-- known-loss rules for stage transformations.
+Outputs:
+- concrete producer/consumer traces;
+- current information-loss findings;
+- known interface defects;
+- executable vertical reference harness;
+- downstream consumer requirements.
 
-Gate A passes when these are precise enough for workers to implement without inventing downstream semantics independently.
+This phase supplies evidence for schematic work; worker-local proposals do not become architecture automatically.
+
+## Phase A1 — Boundary schematic breakouts
+
+Goal: determine what each stage is actually supposed to create from what arrives upstream.
+
+Analyze, in chain order:
+- V552J→V553;
+- V553→V554;
+- V554→V555;
+- V555→V556;
+- V556→V557;
+- V557→V558;
+- V558→V3;
+- V3→V2.
+
+Every session uses:
+
+`upstream authority → lawful intake → stage-specific operation → enriched output → downstream requirement`
+
+For each seam, workers independently reason:
+- **forward:** what can the current stage lawfully derive from upstream information?
+- **backward:** what must the next stage receive to perform its own assigned operation?
+
+High-risk seams may add a hostile critic focused on essentialization, false inference, unsupported numeric semantics, and hidden information loss.
+
+Required outputs per seam:
+- transformation equation (`INPUT GRAIN → OPERATION → OUTPUT GRAIN`);
+- preserve/derive/reformat/aggregate/drop/forbid/unresolved ledger;
+- worked ordinary and adversarial examples;
+- current seam defects;
+- implementable producer/consumer obligations;
+- unresolved collisions for Vozhd.
+
+## Phase A2 — Vozhd reconvening / adjudication
+
+Goal: make the breakout work cohere into one transformation chain.
+
+Vozhd Dva reconciles adjacent seam proposals in upstream-to-downstream order. Accepted output from one seam becomes the input law for the next.
+
+Gate A passes only when:
+- each implementation-relevant seam has an accepted transformation equation and output grain;
+- upstream identity/provenance/epistemic distinctions needed downstream have explicit preservation law;
+- disputed stage responsibilities are adjudicated;
+- missing authority remains explicitly unresolved rather than invented;
+- the five vertical slices can be stated against the accepted seam contracts;
+- implementation workers can receive bounded instructions without being asked to solve architecture while coding.
 
 ## Phase B — Vertical semantic implementation
 
-Goal: make representative hard cases work end-to-end through V553→V558.
+Goal: make representative hard cases work end-to-end through V553→V558 using the accepted seam rulings.
 
 Initial slices:
 1. temporal persistence / drift / rupture;
@@ -39,7 +85,7 @@ Initial slices:
 4. pressure-flow and Enneagram-like attractor formation prerequisites;
 5. uncertainty, absence, noncomparability, provenance, and forbidden inference.
 
-Workers may operate concurrently, but shared schema/interface changes must be coordinated through the control room.
+Workers may operate concurrently where write domains do not collide. Shared schema/interface changes must be coordinated through the control room, and implementation packets must cite the accepted seam contract they implement.
 
 Gate B passes when all slices survive V553→V558 with no silent semantic loss and V558 exposes all information required by the runtime contract.
 
@@ -85,4 +131,5 @@ Gate F passes when the app can demonstrate a coherent generated person with visi
 - A phase may overlap the next when interfaces are stable enough, but later work must not silently redefine earlier semantics.
 - No gate passes from artifact existence or process exit code alone.
 - Cross-stage consumer needs must be tested before calling a producer complete.
-- Any architectural expansion must identify the concrete gate or vertical slice it unblocks.
+- A downstream need cannot authorize an upstream invention that the evidence does not support.
+- Any architectural expansion must identify the concrete seam, gate, or vertical slice it unblocks.
