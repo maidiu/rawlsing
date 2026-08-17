@@ -1,98 +1,54 @@
 # Live Itinerary
 
-**Status:** `S00_5_V553_ARCHITECTURE_ACTIVE`  
+**Status:** `V553_COMPLETION_PACKETS_FROZEN__WAITING_FINAL_UPSTREAM_IDENTITY_BASE`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
 ## Completed
 
-Wave 0 is closed and integrated. S00 is `VOZHD_ADJUDICATED`.
+- Wave 0 closed.
+- S00 forward/backward excavations completed and adjudicated.
+- S00.5 V553 architecture build-out completed and accepted via PR #46 / merge `9088a44e75de03faeefbd42d68d1d6c54c478377`.
+- V553 completion implementation ruling frozen.
+- Five sequential implementation packet assignments written under `integration/V553_COMPLETION/`.
 
-Accepted S00 evidence:
-- S00-F / PR #44 — forward excavation of upstream availability and V553 capability.
-- S00-B / PR #43 — backward excavation of V554 total need and V553 residual obligation.
+## Frozen V553 build sequence
 
-Authoritative ruling:
-`schematics/synthesis/S00_V552J_TO_V553_RULING.md`
+`P1 Admission/Authority`
+`→ P2 Exact Sparse Core`
+`→ P3 Relations/Limits`
+`→ P4 Publication Consolidation`
+`→ P5 Exact Handoff/Completion Court`
 
-The S00 result freezes V553 as the producer of governed exact-key temporal structural relations while allowing later stages to reuse earlier V552/V552J/authority objects directly for meanings those producers still own.
+S01 is blocked until `V553_COMPLETE_FOR_V554 = PASS`.
 
-## Immediate sequence
+## Immediate dependency
 
-### 1. Run S00.5 — V553 architecture build-out
+Do not launch P1 from the current pre-terminal upstream identity state.
 
-Worker branch:
-`agent/vozhd-dva-s00-5-v553-architecture`
+The separate source/wave identity repair campaign is still modifying V552/V552J/overlay identity surfaces. V553's exact admission/coherence/comparability architecture must consume the finalized governed UID contract.
 
-Assignment:
-`data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/sessions/S00_5_V553_ARCHITECTURE/ASSIGNMENT.md`
+Immediate sequence:
+1. source/wave identity campaign finishes and merges to canonical `main`;
+2. Vozhd Dva reads the terminal campaign result and compares its V552/V552J/overlay contract against the frozen S00.5 assumptions;
+3. if compatible, record the exact new `main` SHA without reopening architecture;
+4. create `agent/vozhd-dva-v553-completion-integration` from that SHA;
+5. create `agent/vozhd-dva-v553-p1-admission-authority` from the same SHA;
+6. launch P1;
+7. review/integrate P1 before creating P2 from the accepted integration head.
 
-This worker must begin from **both accepted S00 excavations** and the Vozhd ruling, then inspect the complete current V553 implementation/test surface.
+## Implementation law
 
-Its goal is not more ontology. It must determine the target production architecture needed to bring V553 to peak implementation quality and V554 readiness:
-- current topology and canonical/parallel/legacy paths;
-- keep/promote/repair/merge/demote/deprecate decisions;
-- target internal components;
-- canonical sparse/aggregate relationship;
-- canonical artifacts and manifest/readiness model;
-- authority and identity precedence;
-- implementation gap matrix;
-- dependency-ordered implementation packets;
-- completion tests and `V553_COMPLETE_FOR_V554` gate.
-
-Production code remains read-only in S00.5.
-
-### 2. Vozhd adjudicates S00.5
-
-Convert the returned architecture into the smallest finite implementation program. Do not automatically accept new modules/artifacts where existing V553 code can be promoted or repaired.
-
-Expected implementation packet count: roughly 3–6 unless the returned dependency graph proves otherwise.
-
-### 3. Build V553
-
-Launch bounded workers against non-overlapping write domains.
-
-Prioritize foundational authority/identity/artifact decisions before downstream consumer wiring. Parallelize only packets whose outputs do not define one another's contracts.
-
-### 4. Run V553 completion court
-
-Require fast deterministic proof of:
-- V552J↔V552 fact/scope coherence fail-closed;
-- exact sparse temporal identity;
-- lawful temporal observations and deltas;
-- noncomparability/gap/zero/absence distinctions;
-- aggregate projections secondary to sparse authority;
-- rupture-candidate/event-causation separation;
-- V554 composed consumption;
-- relevant Wave-0 vertical XFAILs promoted only when production hooks truly satisfy them.
-
-Do not conflate this with later 35-wave horizontal qualification.
-
-### 5. Launch S01 only after V553 completion
-
-S01 is paused until `V553_COMPLETE_FOR_V554 = PASS`.
-
-Then proceed:
-`S01 V554 → synthesis/build as required → S02 → ... → S07`
-
-## Active risks
-
-- Do not turn S00.5 into another ontology excavation. It must terminate in implementation architecture and packets.
-- Do not throw away strong existing V553 sparse code merely to produce a cleaner greenfield design.
-- Do not preserve aggregate/legacy paths as co-equal authority merely because they already exist.
-- Do not make V553 serialize upstream material V554 can lawfully reuse directly.
-- Do not allow readiness/probe or aggregate convenience values to become structural-pressure authority.
-- Do not launch S01 against a V553 architecture we already know is incomplete.
-
-## Decision log
-
-- 2026-08-17: Wave 0 completed and integrated.
-- 2026-08-17: S00 forward/backward excavation completed and adjudicated.
-- 2026-08-17: adopted governed DAG reuse rather than strict serial-only consumption.
-- 2026-08-17: exact sparse V553 temporal objects frozen as primary temporal authority; aggregates secondary.
-- 2026-08-17: reporting method compacted after S00.
-- 2026-08-17: inserted S00.5 V553 architecture/build-out before S01 so V554 is designed against an intentionally completed V553 rather than current mixed scaffolding.
+- V553 is a repair/promotion of strong existing code, not a greenfield rewrite.
+- Exact sparse temporal identity is primary.
+- V552 measured facts and V552J admission authority remain complementary upstream owners.
+- Certified comparability is explicit; no confidence/file/readiness fallback.
+- Aggregate country-year output is secondary/reversible only.
+- No canonical interpolation.
+- No readiness/probe-derived pressure.
+- No persona/biography/psyche/cohort-development/Enneagram/runtime semantics.
+- Persistence/drift qualitative and structural-rupture-candidate annotations stay disabled absent an already-governed versioned deterministic rule.
 
 ## Next Vozhd action
 
-Launch the single S00.5 architecture worker. When it returns, adjudicate its build plan before any V553 implementation or S01 work.
+Wait only for the terminal source/wave identity merge. When it lands, perform the narrow compatibility check and launch V553-P1 immediately. No additional V553 exploration is planned.
