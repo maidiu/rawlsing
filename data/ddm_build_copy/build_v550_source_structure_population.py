@@ -51,11 +51,6 @@ def main() -> int:
         args.wave,
         expected_source_family_uid=args.source_family_uid,
         expected_wave_uid=args.wave_uid,
-        redundant_identity={
-            "source": args.source,
-            "wave": args.wave,
-            "canonical_wave": args.canonical_wave or identity.canonical_display_wave if False else "",
-        } if False else None,
     )
     canonical_wave = identity.canonical_display_wave
     if args.canonical_wave:
