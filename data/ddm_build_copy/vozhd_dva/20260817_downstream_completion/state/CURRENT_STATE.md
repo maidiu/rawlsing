@@ -2,7 +2,7 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** `TERMINAL_DEMAND_RECALIBRATION__V553_THROUGH_V558_ACCEPTED__TD_R05_V3_READY_WITH_EXTANT_V3_V2_RECOVERY_BASELINE__V553_BUILD_WAITING_SWID_G8_RUNTIME_ACCEPTANCE`
+**Phase:** `TERMINAL_DEMAND_RECALIBRATION__V553_THROUGH_V558_ACCEPTED__TD_R05_V3_READY__CONTINUITY_DESIRED__V550_PLUS_VISION_INTEGRITY_ABSOLUTE__V553_BUILD_WAITING_SWID_G8_RUNTIME_ACCEPTANCE`
 
 ## Succession / restart authority
 
@@ -13,9 +13,20 @@
 Every remaining architecture/recalibration pass is governed by:
 1. `TERMINAL_DEMAND_ENVELOPE.md`;
 2. `ARCHITECTURE_PASS_LAW.md`;
-3. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`.
+3. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`;
+4. `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md` for recovered downstream compatibility.
 
 Direct lawful DAG reuse is preferred over serial duplication. Every primary family/component/boundary must pass no-starvation/no-bloat proof. Producer-owned semantics remain producer-owned unless a later stage creates genuinely new meaning.
+
+### Continuity / priority law
+
+The project **desires continuity** with the latest extant V3/V2 implementation wherever continuity is lossless and useful.
+
+The absolute priority is **V550+-grounded Rawlsing vision-integrity**.
+
+If extant V3/V2 cannot consume or realize the complete accepted V550+ structural world without reduction, V3/V2 changes. Upstream semantics never bend around legacy downstream implementation.
+
+If two designs are terminally equivalent, prefer reuse/adaptation and continuity. If they are not terminally equivalent, choose the stronger Rawlsing architecture regardless of compatibility cost.
 
 ## Accepted structural-world chain
 
@@ -72,7 +83,7 @@ V557 owns no new structural domain semantics. It owns lossless mixed-producer ru
 
 V558 owns immutable `StructuralPriorRepository`, producer-preserving locators/reference graph/indexes and deterministic read-only `ContextResolver`. Runtime-use and temporal-proxy rules are logically separate authorities. `EARLIEST_POST_BIRTH_ANCHOR` is a specialization of earliest-post query proxy. No canonical scalar fidelity score.
 
-## Latest extant V3/V2 recovery baseline — BINDING FOR TD-R05
+## Latest extant V3/V2 recovery evidence — CONTINUITY DESIRED, NOT SOVEREIGN
 
 A user-supplied historical whole-project snapshot was inspected after TD-R05 was first prepared.
 
@@ -81,44 +92,55 @@ Source archive SHA256:
 
 Evidence ruling:
 - snapshot V5/DDM side is stale and nonbinding where superseded by accepted TD-R00–TD-R04;
-- snapshot **V3/V2 side is the latest extant V3/V2 implementation/design available and must be treated as the recovery baseline**, not greenfield inspiration.
+- snapshot V3/V2 side is the latest extant V3/V2 implementation/design available;
+- continuity with that implementation is positively desired where it is lossless;
+- recovered V3/V2 does not guide, constrain or reduce V550+ or terminal architecture.
 
-Binding recovery files:
+Binding recovery/priority files:
+- `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`;
+- `schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/BASELINE_AMENDMENT.md`;
 - `schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/LATEST_EXTANT_V3_V2_BASELINE.md`;
 - `schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/LATEST_EXTANT_V3_V2_SOURCE_MANIFEST.json`;
-- `schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/BASELINE_AMENDMENT.md`;
 - amended `schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/ASSIGNMENT.md`.
 
-The recovered V3 includes substantial persistent causal machinery: ordered yearly recursion; material/psychological capacity; reproduction constraints; domain A/S/V/Aim with latent/expressed Aim; alienation; registers; wound sensitivities; cracks/buffers; frameworks as metabolic operators; infrastructure/practice; peak routing; expectation baselines/strivings; rupture shards and multi-year metabolization; active magnets; pressure-flow history/memory/grooves; relational field; render-nonmutation; and a Pass 1 → score/apply → Pass 2 design.
+The recovered V3 includes substantial persistent causal machinery: ordered yearly recursion; material/psychological capacity; reproduction constraints; domain A/S/V/Aim with latent/expressed Aim; alienation; registers; wound sensitivities; cracks/buffers; frameworks as metabolic operators; infrastructure/practice; peak routing; expectation baselines/strivings; rupture shards and multi-year metabolization; active magnets; pressure-flow history/memory/grooves; relational field; render-nonmutation; and Pass 1 → score/apply → Pass 2 design.
 
-The recovered V2 contains the latest extant phenomenology/conversation consumer design and the explicit commitment that Enneagram-like type **emerges from life-course development rather than birth assignment**.
+The recovered V2 contains the latest extant phenomenology/conversation consumer design and the commitment that Enneagram-like type emerges from life-course development rather than birth assignment.
 
-TD-R05 must therefore migrate/recalibrate the recovered causal organism, not silently replace it.
+These mechanisms are continuity candidates, not protected ontology. Every substantive mechanism must be understood and explicitly disposed so useful capability is not lost accidentally.
 
-Mandatory recovered-mechanism dispositions:
-- `RECREATE_AS_IS`;
-- `ADAPT_TO_ACCEPTED_V553_V558_INPUTS`;
-- `SUPERSEDE_WITH_EXPLICIT_REASON`;
+Mandatory dispositions:
+- `REUSE_UNCHANGED_IF_FULLY_COMPATIBLE`;
+- `ADAPT_TO_TERMINAL_ARCHITECTURE`;
+- `REPLACE_WITH_STRONGER_MECHANISM`;
 - `DEFER_MISSING_AUTHORITY`;
-- `REMOVE_AS_OBSOLETE_BRIDGE_OR_PLACEHOLDER`.
+- `REMOVE_AS_OBSOLETE_OR_REDUNDANT`.
 
 ## TD-R05 V3 — READY
 
 Assignment:
 `schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/ASSIGNMENT.md`.
 
-TD-R05 must work backward from complete personhood while recovering the latest extant V3/V2 baseline.
+TD-R05 must derive V3 first from complete Rawlsing personhood and the full accepted V550+ structural world, then audit recovered V3/V2 for lossless reuse/adaptation or stronger replacement.
 
-Central migration problem:
+TD-R05 cannot PASS without:
+- V550+ non-reduction proof;
+- no-upstream-accommodation audit;
+- recovered mechanism capability/disposition map;
+- serendipitous-bridge report;
+- continuity-loss accounting;
+- full causal/genealogy/attractor/V3→V2 architecture checksum.
 
-`latest extant V3 causal organism`
-`+ accepted ResolvedStructuralContext input seam`
-`+ corrected generated-event/genealogy/replay authority`
-`+ lawful attractor formation`
-`- stale V5 bridge`
-`- underwired/decorative state`
-`- ungoverned shortcuts`
-`= recalibrated V3`.
+The central derivation is:
+
+`WHOLE TERMINAL RAWLSING PERSONHOOD DEMAND`
+`+ ACCEPTED MAXIMAL V553–V558 STRUCTURAL-WORLD / RESOLVER ARCHITECTURE`
+`+ RECOVERED V3/V2 CAPABILITY EVIDENCE`
+`+ CONTINUITY PREFERENCE WHERE LOSSLESS`
+`- STALE V5 BRIDGE ASSUMPTIONS`
+`- V3/V2 MECHANISMS THAT CONSTRAIN OR DUPLICATE TERMINAL DESIGN`
+`- UNGOVERNED / UNDERWIRED / DECORATIVE IMPLEMENTATION ACCIDENTS`
+`= RECALIBRATED V3/V2`.
 
 Do not launch V2 architecture until TD-R05 returns to Vozhd court.
 
@@ -144,7 +166,7 @@ Require completed canonical producer publications plus runtime publication/use g
 
 ## Immediate next action
 
-Launch **TD-R05 V3 developmental-runtime architecture only** from the exact current accepted `main`, after ensuring the worker branch contains the recovered V3/V2 baseline files and amended assignment.
+Launch **TD-R05 V3 developmental-runtime architecture only** from the exact current accepted `main`, after ensuring the worker branch contains the global priority ruling, recovered evidence, amended baseline and amended assignment.
 
 ## Restart instruction
 
@@ -155,9 +177,10 @@ Read, in order:
 4. `ARCHITECTURE_PASS_LAW.md`;
 5. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`;
 6. accepted TD-R00–TD-R04 results and integration rulings;
-7. TD-R05 `LATEST_EXTANT_V3_V2_BASELINE.md`;
-8. TD-R05 `LATEST_EXTANT_V3_V2_SOURCE_MANIFEST.json`;
-9. TD-R05 `BASELINE_AMENDMENT.md`;
-10. TD-R05 amended `ASSIGNMENT.md`;
-11. Wave-0 R0-05 vertical harness;
-12. live SWID PR #27 state.
+7. `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`;
+8. TD-R05 `BASELINE_AMENDMENT.md`;
+9. TD-R05 `LATEST_EXTANT_V3_V2_BASELINE.md`;
+10. TD-R05 `LATEST_EXTANT_V3_V2_SOURCE_MANIFEST.json`;
+11. TD-R05 amended `ASSIGNMENT.md`;
+12. Wave-0 R0-05 vertical harness;
+13. live SWID PR #27 state.
