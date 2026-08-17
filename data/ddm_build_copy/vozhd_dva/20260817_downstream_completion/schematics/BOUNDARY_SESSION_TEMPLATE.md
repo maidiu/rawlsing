@@ -1,78 +1,74 @@
-# Boundary Session Template
+# Compact Boundary Session Template
 
-**Seam:** `<UPSTREAM> → <CURRENT_STAGE>`  
-**Current stage downstream consumer:** `<NEXT_STAGE>`  
-**Session status:** `UNOPENED | BREAKOUT_ACTIVE | READY_TO_RECONVENE | VOZHD_ADJUDICATED | IMPLEMENTATION_BOUND`  
-**Canonical code ref:** `<sha/ref>`
+**Session:** `<ID>`  
+**Current transformation:** `<B>`  
+**Downstream consumer:** `<C>`  
+**Perspective:** `<FORWARD | BACKWARD | CRITIC>`  
+**Status:** `<...>`
 
-## A. System position
+Workers may investigate deeply. Return only decision-bearing material.
 
-One paragraph: what has already been established upstream, what new responsibility belongs to the current stage, and what the next stage is supposed to do.
+## 1. Conclusion
 
-## B. Upstream outgoing authority
+1–3 short paragraphs stating the proposed stage boundary and the most important defect, if any.
 
-| Object / field / state | Grain | Authority / epistemic state | Why it matters downstream |
+## 2. Downstream need / upstream reuse map
+
+Normally ≤12 rows.
+
+| C need or relevant earlier object | Authoritative producer/object | Direct reuse lawful? | Requires B-created meaning? | Governing condition |
+|---|---|---|---|---|
+
+Group equivalent physical artifacts by semantic role unless the physical distinction changes authority or implementation.
+
+## 3. Residual B obligation
+
+Normally ≤8 bullets: what meaning still does not exist upstream and must be created by B.
+
+## 4. B selected input set
+
+Only inputs materially required for B's transformation.
+
+| Input | Meaning owned upstream | Why B needs it | Restriction / precedence |
 |---|---|---|---|
 
-## C. Current intake
+## 5. Transformation equation
 
-| Upstream object | Current consumer path | Loss / distortion / mismatch | Disposition |
+`SELECTED INPUTS → B-AUTHORIZED OPERATION → B-DERIVED OBJECTS`
+
+One canonical statement plus any necessary negative-authority rule.
+
+## 6. Proposed B new-output contract
+
+Normally ≤6 semantic object families.
+
+| Object family | New meaning | Required lineage / authority state | Named downstream use |
 |---|---|---|---|
 
-## D. Transformation equation
+Do not republish earlier objects merely for transport convenience.
 
-`<input grain> → <stage-authorized operation> → <output grain>`
+## 7. Concrete defects
 
-Explain what new information becomes knowable here and why this stage, specifically, owns that transformation.
+Normally ≤5. Include only defects that change authority, implementation, or downstream sufficiency.
 
-## E. Preservation / transformation ledger
-
-| Incoming distinction | PRESERVE / DERIVE / REFORMAT / AGGREGATE_WITH_LINEAGE / DROP_EXPLICITLY / FORBIDDEN_TO_INFER / UNRESOLVED | Output representation | Reason |
+| Defect | Evidence | Consequence | Required behavior |
 |---|---|---|---|
 
-## F. Required stage output
+## 8. Unresolved Vozhd forks
 
-Define the minimum object(s) this stage must emit. Include stable identity, provenance, uncertainty/authority state, and typed negative states where needed.
+Normally ≤3. Include only choices that cannot be settled from existing authority/code.
 
-## G. Next-stage backward requirements
+## 9. Worked cases
 
-| Next-stage operation | Information it requires from this stage | Why | Must not be pre-resolved here |
-|---|---|---|---|
+- **Ordinary:** one end-to-end example.
+- **Adversarial:** one example involving absence, zero, noncomparability, contradiction, permission, uncertainty, duplicate authority, or illicit inference.
 
-## H. Forward / backward reconciliation
+Add a third only if it reveals a genuinely distinct authority problem.
 
-For each requirement, classify `MEETS`, `UPSTREAM_INFORMATION_LOSS`, `MISSING_AUTHORITY`, `MISPLACED_RESPONSIBILITY`, `CONTRACT_GAP`, or `REPRESENTATION_GAP`.
+## 10. Machine result
 
-## I. Worked transformations
+`RESULT.json` should mirror these conclusions and may additionally carry file/provenance metadata. Do not duplicate exhaustive file-read logs in Markdown.
 
-### Ordinary case
-Follow one concrete upstream object through intake, operation, and output.
+## Vozhd-only synthesis
 
-### Adversarial / ambiguous case
-Use contradiction, absence, noncomparability, temporal ambiguity, or inference pressure to show what must remain unresolved or fail closed.
-
-## J. Current seam defects
-
-Finite defect list, each with producer, consumer, evidence, required behavior, and owner.
-
-## K. Proposed implementation obligations
-
-Only concrete obligations that could be handed to an implementation worker after Vozhd adjudication.
-
-## L. Unresolved questions for reconvening
-
-Questions workers may disagree about. Do not bury them in prose.
-
-## M. Adjacent seam notifications
-
-State which neighboring boundary sessions must consume this result and what they need to know.
-
-## N. Vozhd ruling
-
-Filled only after reconvening:
-- accepted transformation equation;
-- accepted output grain;
-- accepted preservation law;
-- rejected alternatives and why;
-- implementation owner(s);
-- tests that must prove the ruling.
+Worker returns are advisory. Vozhd records the accepted dependency/reuse law, transformation, output contract, implementation/tests, cumulative-map additions, and any surviving blockers.
