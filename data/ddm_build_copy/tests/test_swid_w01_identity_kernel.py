@@ -248,7 +248,6 @@ def test_raw_display_compatibility_uid_and_governance_representations_remain_dis
     assert item.wave_uid == "wv_evs_1999_v1"
     assert item.governance_state == CLOSED_35
 
-
 def test_qra_identity_compatibility_surface_keeps_governed_display_dialect():
     # W01 does not move question/relation authority into the identity kernel.
     # QRA's existing display-normalization surface remains compatible while
