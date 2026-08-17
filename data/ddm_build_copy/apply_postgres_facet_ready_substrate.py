@@ -19,12 +19,15 @@ The weight population is conservative:
 - it does not try to infer weights from arbitrary "weight" text in the codebooks
 - it marks a single primary weight per respondent so the facet-ready view can
   join a single scalar weight safely.
-"""
 
+Source/wave UID fields are additive: raw database source/wave remain the query
+coordinates while governed display labels and UIDs travel beside them.
+"""
 from __future__ import annotations
 
 import argparse
 import os
+import sys
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -35,8 +38,15 @@ import psycopg2
 from dotenv import load_dotenv
 from psycopg2.extras import execute_values
 
-
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from data.ddm_build_copy.ddm_source_wave_identity import (
+    SourceWaveIdentityError,
+    resolve_source_wave_identity,
+)
+
 QUESTIONS_MASTER = ROOT / "data" / "final_codebooks" / "questions_master_drivers.csv"
 OUT_REPORT = ROOT / "data" / "ddm_build_copy" / "reports" / "apply_postgres_facet_ready_substrate_report.json"
 
@@ -45,6 +55,12 @@ QUESTION_MAPPING_SQL = """
 CREATE TABLE IF NOT EXISTS question_structural_mapping (
     source TEXT NOT NULL,
     wave TEXT NOT NULL DEFAULT '',
+    source_family_uid TEXT,
+    wave_uid TEXT,
+    canonical_display_source TEXT,
+    canonical_display_wave TEXT,
+    governance_state TEXT,
+    closed_35_member BOOLEAN,
     question_id TEXT NOT NULL,
     var_code TEXT NOT NULL,
     display_text TEXT,
@@ -69,9 +85,17 @@ CREATE TABLE IF NOT EXISTS question_structural_mapping (
     PRIMARY KEY (source, wave, var_code)
 );
 
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS source_family_uid TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS wave_uid TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS canonical_display_source TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS canonical_display_wave TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS governance_state TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS closed_35_member BOOLEAN;
+
 CREATE INDEX IF NOT EXISTS idx_question_structural_mapping_source_wave_var
     ON question_structural_mapping(source, wave, var_code);
-
+CREATE INDEX IF NOT EXISTS idx_question_structural_mapping_uid_var
+    ON question_structural_mapping(source_family_uid, wave_uid, var_code);
 CREATE INDEX IF NOT EXISTS idx_question_structural_mapping_block_facet
     ON question_structural_mapping(question_block_id, driver_facet_id);
 """
@@ -202,9 +226,16 @@ WITH weight_pick AS (
 )
 SELECT
     r.id AS respondent_id,
+    r.source AS raw_db_source,
+    r.wave AS raw_db_wave,
     r.source,
     r.wave,
-    COALESCE(r.wave, '') AS canonical_wave,
+    qsm.canonical_display_source,
+    qsm.canonical_display_wave AS canonical_wave,
+    qsm.source_family_uid,
+    qsm.wave_uid,
+    qsm.governance_state AS source_wave_governance_state,
+    qsm.closed_35_member AS source_wave_closed_35_member,
     r.country_code,
     r.survey_year,
 
@@ -276,7 +307,13 @@ LEFT JOIN LATERAL (
         q.relation_axis_id,
         q.target_entity_id,
         COALESCE(q.mapping_status, 'accepted_existing_mapping') AS mapping_status,
-        q.legacy_final_driver_id
+        q.legacy_final_driver_id,
+        q.source_family_uid,
+        q.wave_uid,
+        q.canonical_display_source,
+        q.canonical_display_wave,
+        q.governance_state,
+        q.closed_35_member
     FROM question_structural_mapping q
     WHERE q.source = r.source
       AND UPPER(q.var_code) = UPPER(resp.var_code)
@@ -355,6 +392,22 @@ def clean(value: Any) -> str:
     return str(value).strip()
 
 
+def _identity_fields(source: str, wave: str) -> tuple[str, str, str, str, str, bool | None]:
+    """Resolve additive semantic identity without changing raw source/wave fields."""
+    try:
+        identity = resolve_source_wave_identity(source, wave)
+    except SourceWaveIdentityError:
+        return "", "", "", "", "", None
+    return (
+        identity.source_family_uid,
+        identity.wave_uid,
+        identity.canonical_display_source,
+        identity.canonical_display_wave,
+        identity.governance_state,
+        identity.closed_35_member,
+    )
+
+
 def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
     rows: dict[tuple[str, str, str], tuple[Any, ...]] = {}
     for r in df.itertuples(index=False):
@@ -363,10 +416,24 @@ def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
         var_code = clean(getattr(r, "var_name", ""))
         if not source or not var_code:
             continue
+        (
+            source_family_uid,
+            wave_uid,
+            canonical_display_source,
+            canonical_display_wave,
+            governance_state,
+            closed_35_member,
+        ) = _identity_fields(source, wave)
         question_id = clean(getattr(r, "item_id", "")) or f"{source}:{wave}:{var_code}"
         row = (
             source,
             wave,
+            source_family_uid,
+            wave_uid,
+            canonical_display_source,
+            canonical_display_wave,
+            governance_state,
+            closed_35_member,
             question_id,
             var_code,
             clean(getattr(r, "display_text", "")),
@@ -392,7 +459,6 @@ def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
         if key not in rows:
             rows[key] = row
             continue
-
         existing = rows[key]
         # Prefer the row with the richer mapping signal.
         existing_score = sum(1 for v in existing if isinstance(v, str) and v)
@@ -416,7 +482,9 @@ def load_question_mapping(conn) -> int:
         cur,
         """
         INSERT INTO question_structural_mapping (
-            source, wave, question_id, var_code, display_text, legacy_final_driver_id,
+            source, wave, source_family_uid, wave_uid, canonical_display_source,
+            canonical_display_wave, governance_state, closed_35_member,
+            question_id, var_code, display_text, legacy_final_driver_id,
             final_driver_label, final_driver_scope, final_driver_origin, driver_id,
             driver_facet_id, question_block_id, structural_domain_id, relation_axis_id,
             target_entity_id, mapping_status, evidence_kind, strata_relevance,
@@ -424,6 +492,12 @@ def load_question_mapping(conn) -> int:
         ) VALUES %s
         ON CONFLICT (source, wave, var_code)
         DO UPDATE SET
+            source_family_uid = EXCLUDED.source_family_uid,
+            wave_uid = EXCLUDED.wave_uid,
+            canonical_display_source = EXCLUDED.canonical_display_source,
+            canonical_display_wave = EXCLUDED.canonical_display_wave,
+            governance_state = EXCLUDED.governance_state,
+            closed_35_member = EXCLUDED.closed_35_member,
             question_id = EXCLUDED.question_id,
             display_text = EXCLUDED.display_text,
             legacy_final_driver_id = EXCLUDED.legacy_final_driver_id,
