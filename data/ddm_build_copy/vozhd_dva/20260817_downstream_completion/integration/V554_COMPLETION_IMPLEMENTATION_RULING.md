@@ -2,7 +2,8 @@
 
 **Status:** `ARCHITECTURE_ACCEPTED__IMPLEMENTATION_BLOCKED_PENDING_V553_COMPLETION_AND_V554_RULE_AUTHORITY`  
 **Stage:** V554  
-**Vozhd disposition:** `ACCEPT_WITH_FOLLOWUP_CANONICALIZATION`  
+**Vozhd disposition:** `ACCEPT_WITH_FOLLOWUP`  
+**Follow-up subtype:** `MACHINE_READABLE_CANONICALIZATION`  
 **Accepted worker:** TD-R01 V554 terminal-demand recalibration  
 **Worker branch:** `agent/vozhd-dva-td-r01-v554-recalibration`  
 **Worker head:** `8f97ebf574670840f9166b12167a88ca1eeac7da`  
