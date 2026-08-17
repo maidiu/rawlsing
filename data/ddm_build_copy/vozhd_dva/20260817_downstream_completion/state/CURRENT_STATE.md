@@ -10,11 +10,31 @@ The downstream control room contained the intended Rawlsing capabilities, but th
 
 That is now a methodological defect to correct before implementation or further downstream maximal architecture work.
 
-New governing file:
+Two governing whole-system files now apply to every maximal architecture/recalibration pass:
 
-`TERMINAL_DEMAND_ENVELOPE.md`
+1. `TERMINAL_DEMAND_ENVELOPE.md` — what the complete Rawlsing system ultimately needs;
+2. `ARCHITECTURE_PASS_LAW.md` — how a worker sees the whole system while remaining bounded to the current stage's semantic jurisdiction.
 
-It makes explicit:
+`ARCHITECTURE_PASS_LAW.md` requires four simultaneous views:
+- whole-system destination;
+- cumulative lawful upstream reality;
+- current-stage jurisdiction;
+- all downstream consequences.
+
+For every terminal capability the worker must classify the current stage's relationship as:
+- `OWN_AND_DERIVE_HERE`;
+- `PRESERVE_BY_REFERENCE`;
+- `PROVIDE_PREREQUISITE_ONLY`;
+- `DIRECT_UPSTREAM_REUSE_SUFFICIENT`;
+- `DOWNSTREAM_OWNS`;
+- `MISSING_AUTHORITY`;
+- `IRRELEVANT_TO_THIS_STAGE`.
+
+Every maximal architecture result must include the architecture checksum defined there and must pass both a no-starvation test and a no-bloat test.
+
+## Terminal demand envelope
+
+`TERMINAL_DEMAND_ENVELOPE.md` makes explicit:
 - the nine relational strata: Planetary; Imperial Block; Nation State; Sub-national Region; Sect/Ethno/Class; Party/Movement; Neighborhood/Household; Family; Self;
 - downward, upward and lateral inter-strata pressure/counter-pressure;
 - relational source/target/direction/condition identity;
@@ -31,7 +51,7 @@ It makes explicit:
 - source evidence / structural prior / generated runtime fact / rendered expression separation;
 - fourteen mandatory terminal-demand questions for every maximal architecture pass.
 
-The envelope is a backward-demand lens, not permission to make every stage own the full ontology. Direct governed DAG reuse remains preferred over serial duplication.
+The envelope and pass law are backward-demand lenses, not permission to make every stage own the full ontology. Direct governed DAG reuse remains preferred over serial duplication.
 
 ## Architecture recalibration sequence
 
@@ -39,18 +59,18 @@ Previously completed excavations remain valid evidence. We are **not** repeating
 
 We are re-running the architecture-imagination layer:
 
-`S00/S00.5 evidence + terminal demand`
+`S00/S00.5 evidence + terminal demand + architecture-pass law`
 `→ TD-R00 V553 terminal-demand recalibration`
 `→ Vozhd review / superseding V553 architecture snapshot`
 `→ TD-R01 V554 terminal-demand recalibration`
 `→ Vozhd review / superseding V554 architecture snapshot`
 `→ refresh PRE-S02 V555 excavation against those terminal-demand-ready upstream targets`
-`→ PRE-S02.5 V555 maximal architecture under the same terminal-demand law`
+`→ PRE-S02.5 V555 maximal architecture under the same whole-picture/bounded-jurisdiction law`
 `→ continue downstream with excavation → maximal architecture rhythm`
 
 Assignments:
-- `schematics/recalibration/TD_R00_V553/ASSIGNMENT.md` — READY
-- `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` — PREPARED, DO NOT LAUNCH until TD-R00 accepted
+- `schematics/recalibration/TD_R00_V553/ASSIGNMENT.md` — READY; worker command must also require `ARCHITECTURE_PASS_LAW.md`.
+- `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` — PREPARED, DO NOT LAUNCH until TD-R00 accepted; worker command must also require `ARCHITECTURE_PASS_LAW.md`.
 
 ## Binding track
 
@@ -87,7 +107,7 @@ However PRE-S01.5 is now **PRIOR_ARCHITECTURE_HYPOTHESIS_PENDING_TD_R01**, not t
 
 `schematics/advisory/PRE_S02_V555/ASSIGNMENT.md` and branch exist, but **DO NOT LAUNCH PRE-S02 now**.
 
-It was written with pressure-flow/attractor demand visible, but before the terminal-demand envelope became a mandatory architecture constraint. After TD-R00 and TD-R01, refresh PRE-S02 so its excavation works against terminal-demand-ready V553/V554 targets and explicitly carries all fourteen terminal-demand questions forward into later maximal architecture work.
+It was written with pressure-flow/attractor demand visible, but before the terminal-demand envelope and whole-picture/bounded-jurisdiction law became mandatory architecture constraints. After TD-R00 and TD-R01, refresh PRE-S02 so its excavation works against terminal-demand-ready V553/V554 targets and explicitly carries these laws into later maximal architecture work.
 
 ## Why the redo is bounded
 
@@ -106,7 +126,7 @@ No new family or mechanism is allowed unless it unblocks a named terminal capabi
 
 ## Immediate next action
 
-Launch **TD-R00 V553 Terminal-Demand Architecture Recalibration** only.
+Launch **TD-R00 V553 Terminal-Demand Architecture Recalibration** only, using both governing root files.
 
 After it returns, Vozhd reviews it before TD-R01 or PRE-S02 can launch.
 
@@ -116,12 +136,13 @@ Read, in order:
 1. `CONTROL_ROOM_MAP.md`;
 2. this file;
 3. `TERMINAL_DEMAND_ENVELOPE.md`;
-4. `CAPABILITY_MATRIX.md`;
-5. `schematics/recalibration/TD_R00_V553/ASSIGNMENT.md` and result when present;
-6. S00 forward/backward results and S00 ruling;
-7. prior S00.5 V553 architecture result;
-8. `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` only after TD-R00 acceptance;
-9. PRE-S01/PRE-S01.5 V554 evidence;
-10. current status of source/wave identity integration PR #27.
+4. `ARCHITECTURE_PASS_LAW.md`;
+5. `CAPABILITY_MATRIX.md`;
+6. `schematics/recalibration/TD_R00_V553/ASSIGNMENT.md` and result when present;
+7. S00 forward/backward results and S00 ruling;
+8. prior S00.5 V553 architecture result;
+9. `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` only after TD-R00 acceptance;
+10. PRE-S01/PRE-S01.5 V554 evidence;
+11. current status of source/wave identity integration PR #27.
 
 Do not reconstruct the architecture from chat history when these files exist.
