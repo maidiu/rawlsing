@@ -3,7 +3,7 @@
 
 POSTG5-004 closed the V552J producer contract on the current structural
 join/input/handoff indexes. V553 therefore derives structural inventories and
-handoff authority from those artifacts rather than requiring the deleted
+handoff authority from those artifacts rather than reading the deleted
 ``v552j_structural_handoff_packet.json`` compatibility packet.
 """
 from __future__ import annotations
@@ -14,11 +14,9 @@ from typing import Any, Iterable
 
 import pandas as pd
 
-from data.ddm_build_copy.ddm_v553_harmonization import (
-    WaveDescriptor,
-    build_v553_wave_harmonization_report,
-    build_v553_wave_harmonization_table as _build_legacy_table,
-)
+from data.ddm_build_copy import ddm_v553_harmonization as _legacy
+from data.ddm_build_copy.ddm_survey_identity import canonical_country_code
+from data.ddm_build_copy.ddm_v553_harmonization import WaveDescriptor
 
 _CANONICAL_INPUT = Path("packets/v552j_v553_input_index.parquet")
 _CANONICAL_HANDOFF = Path("packets/v552j_to_v553_handoff_index.parquet")
@@ -62,14 +60,14 @@ def _resolve(path_text: Any, root: Path | None) -> Path | None:
     if not text:
         return None
     path = Path(text)
-    if path.is_absolute() or root is None:
+    if path.is_absolute() or path.exists() or root is None:
         return path
     return root / path
 
 
-def _descriptor_mapping(item: WaveDescriptor | dict[str, Any]) -> dict[str, Any]:
-    descriptor = item if isinstance(item, WaveDescriptor) else WaveDescriptor.from_mapping(item)
-    return dict(descriptor.normalized().__dict__)
+def _descriptor(item: WaveDescriptor | dict[str, Any]) -> WaveDescriptor:
+    value = item if isinstance(item, WaveDescriptor) else WaveDescriptor.from_mapping(item)
+    return value.normalized()
 
 
 def _collect_ids(frames: Iterable[pd.DataFrame], columns: Iterable[str]) -> list[str]:
@@ -98,31 +96,27 @@ def _collect_ids(frames: Iterable[pd.DataFrame], columns: Iterable[str]) -> list
     return sorted(values)
 
 
-def _canonical_context(item: WaveDescriptor | dict[str, Any]) -> dict[str, Any]:
-    mapping = _descriptor_mapping(item)
-    root_text = _clean(mapping.get("latest_v552j_root")) or _clean(mapping.get("v552j_run_root"))
+def _canonical_context(desc: WaveDescriptor) -> dict[str, Any]:
+    root_text = _clean(desc.latest_v552j_root) or _clean(desc.v552j_run_root)
     root = Path(root_text) if root_text else None
 
-    readiness_path = _resolve(
-        mapping.get("v552j_readiness_report_path") or mapping.get("latest_v552j_readiness_report"),
-        root,
-    )
+    readiness_path = _resolve(desc.v552j_readiness_report_path or desc.latest_v552j_readiness_report, root)
     if readiness_path is None and root is not None:
         readiness_path = root / _CANONICAL_READINESS
     readiness = _read_json(readiness_path)
 
-    handoff_manifest_path = _resolve(mapping.get("v552j_handoff_manifest_path"), root)
+    handoff_manifest_path = _resolve(desc.v552j_handoff_manifest_path, root)
     if handoff_manifest_path is None and root is not None:
         handoff_manifest_path = root / _CANONICAL_HANDOFF_MANIFEST
     handoff_manifest = _read_json(handoff_manifest_path)
 
-    input_path = _resolve(mapping.get("v552j_v553_input_index_path"), root)
+    input_path = _resolve(desc.v552j_v553_input_index_path, root)
     if input_path is None:
         input_path = _resolve(handoff_manifest.get("v553_input_index_path"), root)
     if input_path is None and root is not None:
         input_path = root / _CANONICAL_INPUT
 
-    handoff_path = _resolve(mapping.get("v552j_to_v553_handoff_index_path"), root)
+    handoff_path = _resolve(desc.v552j_to_v553_handoff_index_path, root)
     if handoff_path is None and root is not None:
         handoff_path = root / _CANONICAL_HANDOFF
 
@@ -154,43 +148,104 @@ def _canonical_context(item: WaveDescriptor | dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _build_canonical_wave_bundle(item: WaveDescriptor | dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+    desc = _descriptor(item)
+    authority_dir = Path(desc.authority_dir) if desc.authority_dir else None
+    run_root = Path(desc.run_root) if desc.run_root else None
+
+    overlay_paths: dict[str, str] = {}
+    overlay_row_counts: dict[str, int] = {}
+    overlay_certified_row_counts: dict[str, int] = {}
+    overlay_columns: dict[str, list[str]] = {}
+    missing_kinds: list[str] = []
+    for kind in _legacy.OVERLAY_FILENAMES:
+        path = _legacy._overlay_path(authority_dir, desc.source, desc.canonical_wave or desc.wave, kind)
+        if path is None:
+            missing_kinds.append(kind)
+            continue
+        frame = _legacy._load_frame(path)
+        overlay_paths[kind] = str(path)
+        overlay_row_counts[kind] = int(len(frame))
+        overlay_columns[kind] = list(frame.columns)
+        certified_count = _legacy._certified_overlay_row_count(frame, kind)
+        overlay_certified_row_counts[kind] = certified_count
+        if certified_count <= 0:
+            missing_kinds.append(kind)
+
+    thin_readiness_path = _legacy._thin_readiness_path(run_root) if run_root else None
+    thin_readiness = _legacy._load_json(thin_readiness_path) if thin_readiness_path else {}
+    if not thin_readiness:
+        thin_readiness = {"final_status": "MISSING_V5_THIN_READINESS"}
+    thin_status = _clean(thin_readiness.get("final_status"))
+    thin_ready = bool(thin_status) and not thin_status.startswith("BLOCKED")
+    thin_layer_count = int(thin_readiness.get("layer_count", 0) or 0)
+
+    context = _canonical_context(desc)
+    wave_status = "complete"
+    if missing_kinds:
+        wave_status = "partial"
+    if len(missing_kinds) == len(_legacy.OVERLAY_FILENAMES):
+        wave_status = "missing_all_authority_overlays"
+
+    bundle = {
+        "wave": desc.wave,
+        "source": desc.source,
+        "canonical_wave": desc.canonical_wave or desc.wave,
+        "country_code": canonical_country_code(desc.country_code),
+        "temporal_year": desc.temporal_year,
+        "authority_dir": str(authority_dir) if authority_dir else "",
+        "run_root": str(run_root) if run_root else "",
+        "v552j_run_root": _clean(desc.v552j_run_root),
+        "latest_v552j_root": context["root"],
+        "latest_v552j_readiness_report": context["readiness_path"],
+        "v552j_readiness_report_path": context["readiness_path"],
+        "v552j_v553_input_index_path": context["input_path"],
+        "v552j_to_v553_handoff_index_path": context["handoff_path"],
+        "v552_structural_fact_index_path": _clean(desc.v552_structural_fact_index_path),
+        "v552_temporal_key_source_index_path": _clean(desc.v552_temporal_key_source_index_path),
+        "v552j_handoff_manifest_path": context["handoff_manifest_path"],
+        "latest_v551j_root": "",
+        "latest_v551j_certified_packet_index": "",
+        "latest_v551j_reviewable_evidence_sidecar": "",
+        "v552j_readiness_status": context["readiness_status"],
+        "v552j_blocker_context_breakdown_json": context["blocker_context_breakdown_json"],
+        "v552j_blocker_context_count": context["blocker_context_count"],
+        "v552j_handoff_authority_status": context["handoff_authority_status"],
+        "v552j_consumer_surface": "canonical_v552j_input_handoff_indexes",
+        "obsolete_v552j_structural_handoff_packet_required": False,
+        "wave_relation_axis_ids": context["relation_axis_ids"],
+        "wave_target_entity_ids": context["target_entity_ids"],
+        "wave_driver_facet_ids": context["driver_facet_ids"],
+        "wave_structural_channel_ids": context["structural_channel_ids"],
+        "wave_horizon_constraint_ids": context["horizon_constraint_ids"],
+        "overlay_paths": overlay_paths,
+        "overlay_row_counts": overlay_row_counts,
+        "overlay_certified_row_counts": overlay_certified_row_counts,
+        "overlay_columns": overlay_columns,
+        "missing_authority_kinds": missing_kinds,
+        "wave_status": wave_status,
+        "thin_readiness": thin_readiness,
+        "thin_status": thin_status,
+        "thin_ready": thin_ready,
+        "thin_layer_count": thin_layer_count,
+        "created_at": _legacy.utc_now(),
+    }
+    return bundle, context
+
+
 def build_v553_wave_harmonization(
     descriptors: Iterable[WaveDescriptor | dict[str, Any]],
 ) -> tuple[pd.DataFrame, dict[str, Any]]:
-    """Build harmonization while binding V552J context to its canonical surface.
+    """Build V553 harmonization directly from the canonical V552J surface."""
+    bundles: list[dict[str, Any]] = []
+    contexts: list[dict[str, Any]] = []
+    for item in descriptors:
+        bundle, context = _build_canonical_wave_bundle(item)
+        bundles.append(bundle)
+        contexts.append(context)
 
-    The pre-POSTG5 harmonizer remains responsible for authority-overlay and
-    cross-wave comparison mechanics. This adapter replaces the structural
-    inventory/status inputs that it formerly obtained through the deleted
-    compatibility packet with values read directly from current V552J indexes
-    and manifests.
-    """
-    items = list(descriptors)
-    table = _build_legacy_table(items)
-    contexts = [_canonical_context(item) for item in items]
-
-    for index, context in enumerate(contexts):
-        if index >= len(table):
-            break
-        table.at[index, "v552j_v553_input_index_path"] = context["input_path"]
-        table.at[index, "v552j_to_v553_handoff_index_path"] = context["handoff_path"]
-        table.at[index, "v552j_handoff_manifest_path"] = context["handoff_manifest_path"]
-        table.at[index, "v552j_consumer_surface"] = "canonical_v552j_input_handoff_indexes"
-        table.at[index, "obsolete_v552j_structural_handoff_packet_required"] = False
-        if context["readiness_status"]:
-            table.at[index, "v552j_readiness_status"] = context["readiness_status"]
-        if context["handoff_authority_status"]:
-            table.at[index, "v552j_handoff_authority_status"] = context["handoff_authority_status"]
-        table.at[index, "v552j_blocker_context_count"] = context["blocker_context_count"]
-        table.at[index, "v552j_blocker_context_breakdown_json"] = context["blocker_context_breakdown_json"]
-        if context["surface_present"]:
-            table.at[index, "wave_relation_axis_ids"] = context["relation_axis_ids"]
-            table.at[index, "wave_target_entity_ids"] = context["target_entity_ids"]
-            table.at[index, "wave_driver_facet_ids"] = context["driver_facet_ids"]
-            table.at[index, "wave_structural_channel_ids"] = context["structural_channel_ids"]
-            table.at[index, "wave_horizon_constraint_ids"] = context["horizon_constraint_ids"]
-
-    report = build_v553_wave_harmonization_report(table)
+    table = pd.DataFrame(bundles)
+    report = _legacy.build_v553_wave_harmonization_report(table)
     report["v552j_consumer_surface"] = "canonical_v552j_input_handoff_indexes"
     report["obsolete_v552j_structural_handoff_packet_required"] = False
     report["v552j_canonical_surface_by_wave"] = [
