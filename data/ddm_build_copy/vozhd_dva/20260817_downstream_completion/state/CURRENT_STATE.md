@@ -18,6 +18,12 @@ Execute the bounded five-worker Wave 0 that will make V553→V558 downstream req
 - V3 is the intended causal/temporal actor engine; V2 is the intended phenomenological/conversational layer and is not causal authority.
 - Architecture/process work is bounded by execution value and may not become an independent infinite project.
 
+## Wave 0 integration base
+
+- **Integration branch:** `agent/vozhd-dva-wave0-integration`
+- **Pinned base SHA:** `958983139b8f75dc5cda65d5bf71b376d17820df`
+- The branch contains the finalized Wave-0 control-room packets and is the required base/PR target for R0-01 through R0-05.
+
 ## Wave 0 structure
 
 Five worker cells are fully specified under `rabochii/WAVE_0/`:
@@ -44,9 +50,9 @@ Every worker returns `RESULT.md` + `RESULT.json` inside its assigned cell on its
 
 ## Immediate next action
 
-1. Create/pin `agent/vozhd-dva-wave0-integration` from the finalized control-room `main` snapshot.
-2. Launch R0-01 through R0-05 concurrently from that base using `rabochii/WAVE_0/LAUNCH_INDEX.md`.
-3. As returns arrive, review PR + report together, update the intake ledger, and propagate cross-hooks to affected lanes.
+Launch R0-01 through R0-05 concurrently from `agent/vozhd-dva-wave0-integration` using `rabochii/WAVE_0/LAUNCH_INDEX.md` and the exact assignment packet in each worker cell.
+
+As returns arrive, review PR + report together, update the intake ledger, and propagate cross-hooks only to affected lanes.
 
 ## Active blockers
 
