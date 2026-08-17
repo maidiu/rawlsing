@@ -4,6 +4,14 @@
 **Canonical codebase:** `main`  
 **Phase:** `TERMINAL_DEMAND_RECALIBRATION__TD_R00_V553_READY__PRE_S02_PAUSED__WAITING_FINAL_UPSTREAM_IDENTITY_BASE`
 
+## Succession / restart authority
+
+A durable operating handoff now exists:
+
+`VOZHD_DVA_HANDOFF.md`
+
+A fresh Vozhd Dva session reads that first to recover operating doctrine, worker/review law, whole-system architecture, campaign history and restart procedure. This `CURRENT_STATE.md` remains the authority for **live phase/status** and overrides stale status details in the handoff as work advances.
+
 ## Governing correction
 
 The downstream control room contained the intended Rawlsing capabilities, but the completed maximal architecture-imagination passes for V553 and V554 were constrained primarily by their immediate downstream consumers. The full terminal structural-personhood demand had become too implicit.
@@ -128,21 +136,27 @@ No new family or mechanism is allowed unless it unblocks a named terminal capabi
 
 Launch **TD-R00 V553 Terminal-Demand Architecture Recalibration** only, using both governing root files.
 
-After it returns, Vozhd reviews it before TD-R01 or PRE-S02 can launch.
+Prepared worker branch:
+`agent/vozhd-dva-td-r00-v553-recalibration`
+
+The worker branch was intentionally pinned/refreshed at the architecture-assignment state. Do not silently move it again after launch; inspect its actual head when the worker returns.
+
+After TD-R00 returns, Vozhd reviews it before TD-R01 or PRE-S02 can launch.
 
 ## Restart instruction
 
 Read, in order:
-1. `CONTROL_ROOM_MAP.md`;
+1. `VOZHD_DVA_HANDOFF.md`;
 2. this file;
 3. `TERMINAL_DEMAND_ENVELOPE.md`;
 4. `ARCHITECTURE_PASS_LAW.md`;
-5. `CAPABILITY_MATRIX.md`;
-6. `schematics/recalibration/TD_R00_V553/ASSIGNMENT.md` and result when present;
-7. S00 forward/backward results and S00 ruling;
-8. prior S00.5 V553 architecture result;
-9. `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` only after TD-R00 acceptance;
-10. PRE-S01/PRE-S01.5 V554 evidence;
-11. current status of source/wave identity integration PR #27.
+5. `CONTROL_ROOM_MAP.md`;
+6. `CAPABILITY_MATRIX.md`;
+7. `schematics/recalibration/TD_R00_V553/ASSIGNMENT.md` and result when present;
+8. S00 forward/backward results and S00 ruling;
+9. prior S00.5 V553 architecture result;
+10. `schematics/recalibration/TD_R01_V554/ASSIGNMENT.md` only after TD-R00 acceptance;
+11. PRE-S01/PRE-S01.5 V554 evidence;
+12. current status of source/wave identity integration PR #27.
 
 Do not reconstruct the architecture from chat history when these files exist.
