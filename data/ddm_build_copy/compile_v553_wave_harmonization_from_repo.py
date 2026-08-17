@@ -16,7 +16,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from data.ddm_build_copy.ddm_v5_build_standard import build_thin_build_ledger
-from data.ddm_build_copy.ddm_v553_harmonization import WaveDescriptor, build_v553_wave_harmonization, validate_v553_wave_harmonization_report
+from data.ddm_build_copy.ddm_v553_canonical_harmonization import build_v553_wave_harmonization
+from data.ddm_build_copy.ddm_v553_harmonization import WaveDescriptor, validate_v553_wave_harmonization_report
 from data.ddm_build_copy.ddm_v553_repo_discovery import build_wave_descriptors_from_repo
 from data.ddm_build_copy.ddm_v553_schema import V553_HARMONIZATION_DIFFERENCE_LEDGER_SCHEMA, V553_WAVE_HARMONIZATION_EVIDENCE_SCHEMA
 from data.ddm_build_copy.ddm_run_provenance import capture_run_provenance
