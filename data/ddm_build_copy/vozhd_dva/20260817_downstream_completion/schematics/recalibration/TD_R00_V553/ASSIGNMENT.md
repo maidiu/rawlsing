@@ -5,6 +5,37 @@
 **Authority:** advisory architecture recalibration; no production code  
 **Purpose:** re-run the V553 architecture-imagination step from the full Rawlsing terminal demand envelope rather than only V554 immediate demand.
 
+## Governing whole-picture / bounded-jurisdiction law
+
+This pass is governed by **both**:
+
+1. `TERMINAL_DEMAND_ENVELOPE.md` — the complete Rawlsing destination;
+2. `ARCHITECTURE_PASS_LAW.md` — how to reason from that whole picture without moving downstream semantics into V553.
+
+You are designing **one bounded organ of the complete Rawlsing system**. You must understand the whole finished machine deeply enough to prevent V553 from starving any later capability. That whole-system visibility does not authorize V553 to own mediation, pressure-flow topology, actor orientation, attractor realization, genealogy or phenomenology.
+
+Your governing equation is:
+
+`WHOLE TERMINAL DEMAND`
+`+ CUMULATIVE LAWFUL UPSTREAM MATERIAL`
+`- WHAT LATER STAGES CAN REUSE DIRECTLY FROM EARLIER AUTHORITY`
+`- WHAT DOWNSTREAM STAGES THEMSELVES OWN`
+`= V553'S BOUNDED ARCHITECTURAL OBLIGATION`
+
+For **every terminal capability**, classify V553's relationship using the taxonomy in `ARCHITECTURE_PASS_LAW.md`:
+
+- `OWN_AND_DERIVE_HERE`
+- `PRESERVE_BY_REFERENCE`
+- `PROVIDE_PREREQUISITE_ONLY`
+- `DIRECT_UPSTREAM_REUSE_SUFFICIENT`
+- `DOWNSTREAM_OWNS`
+- `MISSING_AUTHORITY`
+- `IRRELEVANT_TO_THIS_STAGE`
+
+No terminal capability may remain implicit or unclassified.
+
+Your final result must include the full architecture checksum required by `ARCHITECTURE_PASS_LAW.md`, plus its no-starvation and no-bloat proofs.
+
 ## Why this pass exists
 
 S00/S00.5 produced valuable seam excavation and a detailed V553 architecture, but the maximal architecture pass was optimized primarily against V554's immediate need. The whole-system Rawlsing demands were present only as background/capability context.
@@ -14,16 +45,17 @@ This pass does **not** discard the earlier work. It asks whether any V553 archit
 ## Read first
 
 1. `TERMINAL_DEMAND_ENVELOPE.md` — governing terminal-demand lens.
-2. `CAPABILITY_MATRIX.md`.
-3. `STRATEGY_AND_GATES.md`.
-4. `CONSTRAINTS_PRIORITIES.md`.
-5. `schematics/TRANSFORMATION_METHOD.md`.
-6. both S00 forward/backward RESULT.md + RESULT.json files.
-7. `schematics/synthesis/S00_V552J_TO_V553_RULING.md`.
-8. `schematics/sessions/S00_5_V553_ARCHITECTURE/RESULT.md` + `RESULT.json`.
-9. `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md` and the prepared V553 packet assignments.
-10. current V553 production implementation, schemas and tests only as needed to test the architectural claims.
-11. current/banked V554 excavation and maximal blueprint as immediate-consumer evidence, but not as the sole backward constraint.
+2. `ARCHITECTURE_PASS_LAW.md` — governing whole-picture/bounded-jurisdiction method.
+3. `CAPABILITY_MATRIX.md`.
+4. `STRATEGY_AND_GATES.md`.
+5. `CONSTRAINTS_PRIORITIES.md`.
+6. `schematics/TRANSFORMATION_METHOD.md`.
+7. both S00 forward/backward RESULT.md + RESULT.json files.
+8. `schematics/synthesis/S00_V552J_TO_V553_RULING.md`.
+9. `schematics/sessions/S00_5_V553_ARCHITECTURE/RESULT.md` + `RESULT.json`.
+10. `integration/V553_COMPLETION_IMPLEMENTATION_RULING.md` and the prepared V553 packet assignments.
+11. current V553 production implementation, schemas and tests only as needed to test the architectural claims.
+12. current/banked V554 excavation and maximal blueprint as immediate-consumer evidence, but not as the sole backward constraint.
 
 Do not perform broad archaeology unless a concrete terminal-demand ambiguity cannot be answered from these sources and current governed code.
 
@@ -38,6 +70,7 @@ Given the complete Rawlsing terminal demand envelope:
 `→ what information can later stages reuse directly from earlier producers?`
 `→ what meaning must V553 uniquely create?`
 `→ what terminal prerequisites must V553 preserve by reference even when V554 does not immediately use them?`
+`→ what terminal requirements belong entirely downstream?`
 `→ does the existing V553 architecture starve any terminal capability?`
 `→ what architecture slots, if any, must change before implementation?`
 
@@ -50,7 +83,7 @@ The worker must distinguish:
 
 ## Mandatory terminal-demand tests
 
-Answer every question in §13 of `TERMINAL_DEMAND_ENVELOPE.md` explicitly for V553.
+Answer every question in §13 of `TERMINAL_DEMAND_ENVELOPE.md` explicitly for V553, and complete the checksum in `ARCHITECTURE_PASS_LAW.md`.
 
 At minimum determine:
 
@@ -85,7 +118,7 @@ Ask what V553 must preserve so later stages can know **what structural layer/pos
 
 ### D. Absolute Horizon
 
-Determine whether any governed upstream Horizon-relevant material can reach V553 under current architecture. If yes, verify it can remain semantically distinct from finite-stratum/religiosity/ideology identity and survive temporalization without reduction. If no such authority exists at V553, state `DOWNSTREAM_OR_MISSING_AUTHORITY`; do not invent Horizon rows.
+Determine whether any governed upstream Horizon-relevant material can reach V553 under current architecture. If yes, verify it can remain semantically distinct from finite-stratum/religiosity/ideology identity and survive temporalization without reduction. If no such authority exists at V553, classify it under the architecture-pass taxonomy; do not invent Horizon rows.
 
 ### E. Mediation and pressure-flow prerequisites
 
@@ -127,7 +160,7 @@ Dispositions:
 - `DEMOTE`
 - `REMOVE`
 
-Do not add an object family unless it unblocks a named terminal capability that cannot be satisfied by lawful direct reuse or by hardening an existing family.
+Do not add an object family unless it unblocks a named terminal capability that cannot be satisfied by lawful direct reuse, preservation hardening, or a downstream-owned operation.
 
 ## Required output
 
@@ -137,20 +170,27 @@ It must include:
 
 1. terminal-demand verdict on existing V553 architecture;
 2. explicit answers to all fourteen terminal-demand questions;
-3. nine-strata / relational-pressure preservation map;
-4. orientation-to-strata prerequisite map;
-5. Absolute Horizon handling verdict;
-6. mediation / pressure-flow / attractor backward-demand map;
-7. genealogy/V3 causality preservation implications;
-8. re-adjudicated V553 semantic families and exact required reference classes;
-9. revised or confirmed internal component architecture;
-10. revised or confirmed artifact/handoff architecture;
-11. revised or confirmed completion court;
-12. implementation-packet delta: for each prepared P1–P5, `UNCHANGED`, `AMEND`, `SPLIT`, `REMOVE`, or `ADD`, with exact reason;
-13. explicit list of prior S00.5 conclusions superseded, if any;
-14. explicit list of prior S00.5 conclusions confirmed;
-15. one ordinary multi-strata temporal case and one hostile flattening/starvation case;
-16. final finite verdict: `V553_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
+3. the full architecture checksum from `ARCHITECTURE_PASS_LAW.md`;
+4. nine-strata / relational-pressure preservation map;
+5. orientation-to-strata prerequisite map;
+6. Absolute Horizon handling verdict;
+7. mediation / pressure-flow / attractor backward-demand map;
+8. genealogy/V3 causality preservation implications;
+9. re-adjudicated V553 semantic families and exact required reference classes;
+10. revised or confirmed internal component architecture;
+11. revised or confirmed artifact/handoff architecture;
+12. revised or confirmed completion court;
+13. no-starvation/no-bloat proof for every proposed primary family/component/boundary family;
+14. implementation-packet delta: for each prepared P1–P5, `UNCHANGED`, `AMEND`, `SPLIT`, `REMOVE`, or `ADD`, with exact reason;
+15. explicit list of prior S00.5 conclusions superseded, if any;
+16. explicit list of prior S00.5 conclusions confirmed;
+17. one ordinary multi-strata temporal case and one hostile flattening/starvation case;
+18. required final architecture statement from `ARCHITECTURE_PASS_LAW.md`:
+   - `THIS STAGE IS RESPONSIBLE FOR`
+   - `THIS STAGE IS NOT RESPONSIBLE FOR`
+   - `TERMINAL CAPABILITIES PROTECTED`
+   - `OPEN MISSING AUTHORITY`;
+19. final finite verdict: `V553_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS | FAIL`.
 
 ## Deliverables
 
