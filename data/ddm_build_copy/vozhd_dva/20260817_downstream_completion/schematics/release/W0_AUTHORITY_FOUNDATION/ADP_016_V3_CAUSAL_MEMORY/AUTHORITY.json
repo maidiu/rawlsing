@@ -1,0 +1,387 @@
+{
+  "authority": {
+    "authority_id": "ADP-016",
+    "must_id": "MUST-016",
+    "canonical_name": "V3_CAUSAL_MEMORY_FORMATION_FORGETTING_RECALL_RULE",
+    "version": "1.0.0",
+    "owner": "V3 Actor Developmental Causality Engine",
+    "mode": "POST_ARCHITECTURE_AUTHORITY_CREATION_ONLY",
+    "whole_machine_architecture": "CLOSED",
+    "production_implementation_authorized": false,
+    "verdict": "PASS",
+    "consumer_release_sufficiency": "SUFFICIENT",
+    "sufficiency_scope": "Fully supplies MUST-016 semantic authority only; all other direct MUST/CAN/EXT dependencies of named consumers remain independently binding."
+  },
+  "source_verification": {
+    "historical_archive": {
+      "logical_name": "Rawlsing_code_bundle_staging.zip",
+      "mounted_alias": "Rawlsing_code_bundle_staging(4).zip",
+      "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+      "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+      "match": "EXACT_MATCH",
+      "authority_limit": "Recovered V3/V2/server material is continuity/authority-recovery evidence only; historical archive V5/DDM has zero authority over current V550+."
+    },
+    "focused_historical_tests": {
+      "command_scope": [
+        "v3/tests/test_v5_pressure_flow.py",
+        "v3/tests/test_v5_pressureflow_golden_run.py",
+        "v3/tests/test_persona_sheet_integrity.py"
+      ],
+      "result": "25 passed"
+    },
+    "current_repo_v3_v2_source_status": "NO_TOP_LEVEL_V3_OR_V2_IMPLEMENTATION_TREE_PRESENT_AT_EXACT_BASE; current integration/architecture rulings are governing authority and the verified archive supplies direct historical implementation evidence where authorized."
+  },
+  "binding_evidence": [
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/state/CURRENT_STATE.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V3_COMPLETION_IMPLEMENTATION_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V2_COMPLETION_IMPLEMENTATION_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/closure/TD_R07_WHOLE_MACHINE_SYNTHETIC_LIFE/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.json",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/LAUNCH_REGISTER.md"
+  ],
+  "recovered_evidence": [
+    {
+      "path": "v3/core/state.py",
+      "symbols_or_surfaces": ["events_this_year", "micro_trace_this_year", "pressure_flow_history", "pressure_flow_memory", "RuptureShard", "MetabolizationProcess"],
+      "use": "Continuity evidence for persistent causal state, trace memory and event/micro-trace provenance."
+    },
+    {
+      "path": "v3/core/year_record.py",
+      "symbols_or_surfaces": ["hash_jsonable", "year snapshots / before-after hashes"],
+      "use": "Continuity evidence for replay/hash discipline."
+    },
+    {
+      "path": "v3/psyche/flow.py",
+      "symbols_or_surfaces": ["_update_memory", "run_pressure_flow_cycle", "grooves", "conductance", "history_evidence_not_persona_voice", "analyst_model_only_do_not_render_as_persona_consciousness"],
+      "use": "Positive continuity evidence for transactional causal-trace memory and analyst/surface separation; not autobiographical recall authority."
+    },
+    {
+      "path": "v3/engine/effects/metabolization_effects.py",
+      "symbols_or_surfaces": ["create_rupture_shard_from_event", "MetabolizationProcess", "reactivation_triggers", "manual/random rupture injection path"],
+      "use": "Positive continuity evidence for persistent/reactivatable history-conditioned state; ungoverned injection is negative evidence."
+    },
+    {
+      "path": "v3/engine/event_engine.py",
+      "symbols_or_surfaces": ["event_id", "conditioning_inputs", "source"],
+      "use": "Provenance direction only; generic legacy event semantics are not terminal memory authority."
+    },
+    {
+      "path": "v3/io/persona_sheet.py",
+      "symbols_or_surfaces": ["MEMORIES", "Most recent memory", "structural scene filtering"],
+      "use": "Negative evidence: rendered/backstory prose cannot create V3 causal memory; structural-stub quarantine is useful integrity continuity."
+    },
+    {
+      "path": "v3/tools/distill_memory.py",
+      "symbols_or_surfaces": ["literary memory editor", "internalized lived memory", "input/output provenance"],
+      "use": "Negative evidence: prose transformation, even with hashes, is not causal memory formation authority."
+    },
+    {
+      "path": "v2/PERSONA_CONVERSATION_ENGINE_SPEC.md",
+      "symbols_or_surfaces": ["Memory & Relationship State", "user facts learned", "inside jokes / references", "trust"],
+      "use": "Negative/consumer-boundary evidence: V2 relationship/session continuity is not V3 causal memory."
+    },
+    {
+      "path": "v2/conversation_engine.py",
+      "symbols_or_surfaces": ["Anchored memories", "memory_provenance", "extract_hooks", "HOOK_KEYWORDS"],
+      "use": "Negative evidence: prompt/backstory surfacing and keyword hooks cannot directly form or reactivate V3 memory."
+    },
+    {
+      "path": "server/session_db.py; server/session_state.py",
+      "symbols_or_surfaces": ["conversation_history", "save_session", "load_session_by_session_id", "resume"],
+      "use": "Negative/consumer-boundary evidence: transcript/session persistence cannot create V3 causal memory."
+    }
+  ],
+  "constitutional_noncollapse": [
+    "OBJECTIVE_GENERATED_EVENT_HISTORY != GENERATED_MEMORY_STATE",
+    "GENERATED_MEMORY_STATE != CURRENT_MEMORY_ACCESSIBILITY",
+    "CURRENT_MEMORY_ACCESSIBILITY != ACTOR_KNOWLEDGE_OR_CLAIM_PERMISSION",
+    "ACTOR_KNOWLEDGE_OR_CLAIM_PERMISSION is ADP-017 jurisdiction",
+    "V3_CAUSAL_MEMORY != V2_SESSION_OR_TRANSCRIPT_STATE",
+    "RENDERED_EXPRESSION != MEMORY_EVIDENCE",
+    "STRUCTURAL_PRIOR_OR_RESOLVER_CONTEXT != MEMORY",
+    "ANALYST_OMNISCIENCE != ACTOR_RECALL"
+  ],
+  "jurisdiction": {
+    "owns": [
+      "eligibility of exact V3 generated/admitted causal bases to form memory",
+      "GeneratedMemoryState identity and representation kinds",
+      "retention/degradation/content-unavailability semantics",
+      "recall/reactivation and current memory-accessibility transitions",
+      "uncertainty/degradation without confabulation",
+      "causal-trace memory distinct from declarative/event-referential memory",
+      "memory transition provenance, integrity and replay",
+      "fail-closed rejection of noncausal/session/render/structural promotion"
+    ],
+    "does_not_own": [
+      "objective external-event admission",
+      "actor knowledge/belief/claim permission (ADP-017)",
+      "V2 phenomenology, salience, disclosure or rendering",
+      "V2 transcript retention/summarization policy (ADP-024)",
+      "V3 causal RNG policy (ADP-020)",
+      "hybrid scheduler cadence/precedence (ADP-021)",
+      "numeric pressure-flow/groove formula authority",
+      "structural prior or ContextResolver semantics",
+      "invented false-memory/confabulation semantics"
+    ]
+  },
+  "memory_model": {
+    "object_type": "GeneratedMemoryState",
+    "required_fields": [
+      "memory_id",
+      "actor_id",
+      "representation_kind",
+      "formation_transition_id",
+      "objective_source_event_refs",
+      "source_feature_bindings",
+      "retention_state",
+      "memory_accessibility_state",
+      "uncertainty_state",
+      "last_transition_id",
+      "last_transition_effective_time",
+      "current_state_hash",
+      "integrity_state"
+    ],
+    "representation_kind": [
+      {
+        "value": "EVENT_REFERENTIAL_MEMORY",
+        "meaning": "Source-bounded generated memory referencing exact actor-experienced V3 causal event material; no invented detail."
+      },
+      {
+        "value": "CAUSAL_TRACE_MEMORY",
+        "meaning": "Persistent history-conditioned causal trace that may affect later V3 causation without implying conscious recollection or first-person claimability."
+      }
+    ],
+    "source_feature_state": ["AVAILABLE_SOURCE_BOUND", "AVAILABLE_UNCERTAIN", "UNAVAILABLE"],
+    "retention_state": ["RETAINED", "DEGRADED", "CONTENT_UNAVAILABLE", "RETENTION_UNKNOWN"],
+    "memory_accessibility_state": ["ACCESSIBLE", "PARTIALLY_ACCESSIBLE", "INACCESSIBLE", "ACCESS_UNKNOWN", "NOT_APPLICABLE_CAUSAL_TRACE"],
+    "transition_kind": ["FORMATION", "DEGRADE", "MARK_FEATURE_UNCERTAIN", "MARK_FEATURE_UNAVAILABLE", "ACCESS_DECREASE", "ACCESS_INCREASE", "RECALL", "REACTIVATE", "UNCERTAINTY_INCREASE", "UNCERTAINTY_DECREASE"],
+    "forbidden_transition_kind": ["DELETE_MEMORY"],
+    "identity_law": {
+      "memory_id_created_once": true,
+      "memory_id_changes_after_forgetting_or_recall": false,
+      "deterministic_identity_required": true,
+      "recommended_formation_key": "SHA256(authority_id || authority_version || actor_id || formation_trigger_ref || memory_effect_key)",
+      "recommended_memory_id": "SHA256('V3_MEMORY' || formation_transition_key)",
+      "same_effect_replay": "IDEMPOTENT",
+      "conflicting_duplicate": "INTEGRITY_FAILURE"
+    }
+  },
+  "formation_rule": {
+    "all_gates_required": [
+      "exact V3 generated/admitted causal event or governed V3 causal transition exists",
+      "parent event/transition ID and immutable hash verify",
+      "actor has governed experiencer/participant/subject relation to remembered material OR output is lawful CAUSAL_TRACE_MEMORY",
+      "every remembered feature is exact-source-bound generated causal material",
+      "owning V3 event/rule requests or authorizes a typed ADP-016 memory effect",
+      "pre-state/provenance integrity passes",
+      "any stochastic operation has separately accepted causal-RNG authority and replay receipt"
+    ],
+    "eligible_parent_classes": [
+      "actor-experienced encounter/exposure event",
+      "realized V555 route experience event",
+      "realized V556 F1 actor-history event",
+      "actor response/developmental transition",
+      "actor rupture/metabolization event or transition",
+      "actor-participatory relationship/household event",
+      "admitted external interaction after V3 admission",
+      "actor-perceivable material/organismic event with explicit experiential basis",
+      "other canonical V3 generated/admitted event whose owning rule explicitly permits memory effect"
+    ],
+    "ineligible_direct_sources": [
+      "raw source evidence",
+      "V553-V558 structural objects",
+      "ResolvedStructuralContext",
+      "SelectionRecord or temporal proxy metadata",
+      "structural availability/applicability/opportunity without generated experience",
+      "untraversed V555 route",
+      "V556 F2 topology or V3 F2 satisfaction alone",
+      "checkpoint/derived/readiness/integrity/analyst annotation",
+      "V2 transcript/session state",
+      "transcript summary",
+      "rendered dialogue/narrative",
+      "persona sheet/backstory prose",
+      "memory-distillation prose",
+      "keyword/phrase hook",
+      "pending/rejected external proposal",
+      "placeholder/default childhood event/invented anecdote"
+    ],
+    "decision_states": ["FORMED_EVENT_REFERENTIAL_MEMORY", "FORMED_CAUSAL_TRACE_MEMORY", "NO_MEMORY_FORMED", "INELIGIBLE_NONCAUSAL_SOURCE", "DEFERRED_MISSING_MEMORY_BASIS", "BLOCKED_INTEGRITY_FAILURE"],
+    "objective_event_existence_auto_forms_memory": false
+  },
+  "persistence_and_forgetting": {
+    "default_rule": "Memory state persists unchanged unless a governed ADP-016 transition actually changes it.",
+    "no_transition_means_no_state_change": true,
+    "wall_clock_auto_decay": false,
+    "year_tick_auto_decay": false,
+    "absence_of_recall_proves_forgetting": false,
+    "v2_absence_or_transcript_deletion_is_forgetting": false,
+    "default_numeric_memory_strength_decay": false,
+    "forgetting_transition_semantics": ["DEGRADE", "MARK_FEATURE_UNCERTAIN", "MARK_FEATURE_UNAVAILABLE", "ACCESS_DECREASE", "transition to CONTENT_UNAVAILABLE"],
+    "forgetting_never_may": [
+      "mutate/delete objective source event",
+      "remove source event/hash from audit provenance",
+      "erase prior memory-transition receipts",
+      "rewrite original event",
+      "rehydrate lost content from analyst-only history",
+      "invent plausible replacement detail"
+    ],
+    "objective_history_rehydration_law": "If a feature is UNAVAILABLE, objective analyst history alone cannot restore it. Re-exposure requires a new actor-facing generated/admitted event plus a new source-bound memory transition."
+  },
+  "recall_and_reactivation": {
+    "required_inputs": [
+      "existing exact memory_id",
+      "verified pre-state hash",
+      "versioned ADP-016 transition rule",
+      "exact admissible V3 causal cue/trigger ref or separately governed slow-process invocation",
+      "source-feature state that permits requested result",
+      "replayable transition receipt"
+    ],
+    "lawful_cue_classes": [
+      "admitted/generated actor-facing V3 causal event",
+      "exact V3 causal transition recognized by the memory rule",
+      "separately governed V3 slow-process invocation where explicitly permitted"
+    ],
+    "never_a_direct_cue": ["V2 keyword or phrase hook", "V2 transcript line", "V2 render artifact", "presentation-only interaction", "session summary"],
+    "presentation_noncausal_changes_v3_memory": false,
+    "in_world_conversation_rule": "Observable interaction must first become an admitted V3 event under separate external-event admission authority; only that admitted event may become an ADP-016 cue.",
+    "may_do": [
+      "increase accessibility of still-retained source-bound features",
+      "reactivate lawful causal-trace memory for later V3 causal processing where separately authorized",
+      "change uncertainty when exact causal basis exists"
+    ],
+    "may_not_do": [
+      "create feature absent from source-bound feature set",
+      "restore UNAVAILABLE detail by reading objective ledger",
+      "invent names/places/incidents/relationships/childhood scenes",
+      "use keyword-triggered deep-memory fallback",
+      "promote causal trace to declarative memory without new governed source-bound formation"
+    ],
+    "accessibility_is_claim_permission": false
+  },
+  "objective_history_separation_law": {
+    "objective_event_history_immutable": true,
+    "memory_transition_mutates_event_ledger": false,
+    "forgetting_deletes_objective_event": false,
+    "analyst_only_truth_may_remain_true_while_actor_memory_inaccessible": true,
+    "source_event_refs_and_hashes_remain_auditable_after_content_unavailable": true,
+    "structural_provenance_path": "structural evidence/context -> generated/admitted V3 event -> optional generated memory",
+    "forbidden_shortcut": "structural evidence/context -> generated memory"
+  },
+  "transition_record": {
+    "type": "MemoryTransitionRecord",
+    "required_fields": [
+      "memory_transition_id", "memory_id", "actor_id", "transition_kind", "effective_causal_time",
+      "authority_id", "authority_version", "authority_or_rule_hash",
+      "memory_rule_id", "memory_rule_version", "memory_rule_hash",
+      "objective_source_event_refs", "causal_parent_event_refs", "cue_or_trigger_refs",
+      "pre_state_hash", "post_state_hash", "feature_state_before_hash", "feature_state_after_hash",
+      "decision_state", "integrity_state"
+    ],
+    "conditional_fields": ["scheduler_invocation_ref", "rng_receipt_ref"],
+    "event_ref_minimum": ["event_id", "event_hash"],
+    "transition_id_policy": "Deterministic/content-addressable over actor, memory identity, transition kind, exact parents/cues, rule identity/version and pre/post state identity; canonicalize order-sensitive collections before hashing."
+  },
+  "replay": {
+    "required_inputs": [
+      "immutable V3 DevelopmentalEventLedger",
+      "exact source-event hashes",
+      "initial memory state",
+      "ADP-016 authority version/hash",
+      "memory-rule IDs/versions/hashes",
+      "causal cue/trigger sequence",
+      "accepted scheduler invocation inputs where relevant",
+      "accepted causal-RNG receipts where stochastic logic is separately authorized"
+    ],
+    "must_reproduce": ["formation decisions", "memory IDs", "transition IDs", "feature-state transitions", "retention/accessibility/uncertainty states", "post-state hashes"],
+    "forbidden_hidden_inputs": ["wall clock", "filesystem order", "mutable latest pointer", "unrecorded network lookup", "unnamed/unseeded randomness", "unrecorded LLM output", "V2 transcript cursor/retention state", "renderer/model variation", "prose summary"]
+  },
+  "authority_hash_policy": {
+    "publication_identity": "Consumers bind authority_id + version + exact repository commit/blob identity of AUTHORITY.json.",
+    "runtime_rule_identity": "Every executable memory rule records immutable rule ID, version and rule-definition hash.",
+    "source_event_integrity": "Every memory source/parent event records exact event ID and immutable event hash.",
+    "state_integrity": "Every applied memory transition records pre-state and post-state hashes."
+  },
+  "actor_accessibility_boundary": {
+    "downstream_authority": "ADP-017",
+    "adp016_exports": ["memory identity", "representation kind", "source-bound feature states", "retention state", "memory accessibility state", "uncertainty state", "provenance/integrity", "analyst-only causal-trace designation where applicable"],
+    "adp016_does_not_output": ["actor_knows", "actor_believes", "may_claim_first_person", "V2_may_render_as_fact"]
+  },
+  "consumers": {
+    "implementation_consumers_from_ra_r00": [
+      {"consumer": "V3-P8", "use": "memory transitions alongside rupture/metabolization causal processing"},
+      {"consumer": "V3-P12", "use": "V3->V2 boundary publication of memory state, still gated by ADP-017"},
+      {"consumer": "V2-P1", "use": "boundary epistemics through later actor-safe projection; never raw objective history as claim permission"},
+      {"consumer": "V2-P6", "use": "relationship/memory split: V3 causal memory truth remains separate from V2 session continuity"}
+    ],
+    "authority_consumer": {"consumer": "ADP-017", "use": "Consumes ADP-016 memory/accessibility state and separately decides actor knowledge/claim accessibility."}
+  },
+  "fail_closed_states": [
+    {"state": "INELIGIBLE_NONCAUSAL_SOURCE", "behavior": "Reject formation; create no memory."},
+    {"state": "DEFERRED_MISSING_MEMORY_BASIS", "behavior": "No mutation; preserve exact missing basis/authority reason."},
+    {"state": "MISSING_PARENT_EVENT", "behavior": "Block transition."},
+    {"state": "PARENT_EVENT_HASH_MISMATCH", "behavior": "Integrity failure; no mutation."},
+    {"state": "UNKNOWN_MEMORY_ID", "behavior": "Reject transition; no mutation."},
+    {"state": "MEMORY_ID_COLLISION", "behavior": "Integrity failure."},
+    {"state": "PRE_STATE_HASH_MISMATCH", "behavior": "Integrity failure; no mutation."},
+    {"state": "UNAUTHORIZED_TRANSITION", "behavior": "Reject; no mutation."},
+    {"state": "UNAUTHORIZED_RECALL_CUE", "behavior": "Reject V2/session/render/keyword or other noncausal cue."},
+    {"state": "UNAUTHORIZED_OBJECTIVE_HISTORY_REHYDRATION", "behavior": "Reject restoration of lost actor content from analyst-only ledger without new actor-facing event."},
+    {"state": "UNAUTHORIZED_V2_SESSION_PROMOTION", "behavior": "Reject transcript/session/summary promotion into memory."},
+    {"state": "UNSUPPORTED_CONFABULATION", "behavior": "Reject invented substitute detail."},
+    {"state": "MISSING_RULE_VERSION", "behavior": "Block/defer; no default."},
+    {"state": "MISSING_RNG_AUTHORITY", "behavior": "Block/defer requested stochastic transition."},
+    {"state": "RETENTION_UNKNOWN", "behavior": "Remain unknown; no plausible default."},
+    {"state": "ACCESS_UNKNOWN", "behavior": "Remain unknown; no plausible default."},
+    {"state": "INTEGRITY_FAILURE", "behavior": "Block mutation and downstream causal use of disputed memory state."}
+  ],
+  "hostile_fixtures": [
+    {"id": "MF-01", "case": "Future temporal proxy offered as childhood memory", "expected": "REJECT_INELIGIBLE_NONCAUSAL_SOURCE"},
+    {"id": "MF-02", "case": "V555 route available/applicable but never traversed", "expected": "NO_MEMORY"},
+    {"id": "MF-03", "case": "Persona/backstory scene labeled MEMORIES offered as causal memory", "expected": "REJECT"},
+    {"id": "MF-04", "case": "LLM memory-distillation prose offered as V3 memory", "expected": "REJECT"},
+    {"id": "MF-05", "case": "Persisted V2 transcript or summary offered as V3 memory", "expected": "REJECT"},
+    {"id": "MF-06", "case": "Keyword/phrase hook directly triggers deep memory", "expected": "UNAUTHORIZED_RECALL_CUE"},
+    {"id": "MF-07", "case": "PRESENTATION_NONCAUSAL turn tries to change memory/accessibility", "expected": "NO_V3_MUTATION"},
+    {"id": "MF-08", "case": "Pending/rejected in-world conversation candidate used as recall cue", "expected": "REJECT_UNTIL_ADMITTED_V3_EVENT"},
+    {"id": "MF-09", "case": "Life F objective eF0 remains true while memory becomes inaccessible/uncertain", "expected": "PASS_OBJECTIVE_HISTORY_UNCHANGED"},
+    {"id": "MF-10", "case": "Lost detail restored by dereferencing objective analyst ledger", "expected": "UNAUTHORIZED_OBJECTIVE_HISTORY_REHYDRATION"},
+    {"id": "MF-11", "case": "New admitted actor-facing event re-exposes lost detail", "expected": "MAY_FORM_OR_UPDATE_MEMORY_WITH_NEW_EVENT_PROVENANCE"},
+    {"id": "MF-12", "case": "V2 relationship session fields promoted to causal memory", "expected": "REJECT"},
+    {"id": "MF-13", "case": "Child birth/generated identity fact becomes default episodic childhood memory", "expected": "REJECT_ABSENT_ACTOR_EXPERIENCE"},
+    {"id": "MF-14", "case": "Transition has stale pre-state hash", "expected": "INTEGRITY_FAILURE_NO_MUTATION"},
+    {"id": "MF-15", "case": "Unseeded random memory decay", "expected": "MISSING_RNG_AUTHORITY"},
+    {"id": "MF-16", "case": "Analyst-only pressure-flow trace rendered as conscious persona memory", "expected": "REJECT_EXPORT_AS_CONSCIOUS_MEMORY"},
+    {"id": "MF-17", "case": "Pressure-flow groove affects future conductance while explicit recall is N/A/inaccessible", "expected": "PASS_CAUSAL_TRACE_SEPARATION"},
+    {"id": "MF-18", "case": "Exact formation effect replayed twice", "expected": "IDEMPOTENT_SAME_MEMORY_ID; conflicting duplicate -> INTEGRITY_FAILURE"},
+    {"id": "MF-19", "case": "Memory content becomes unavailable", "expected": "PROVENANCE_AND_OBJECTIVE_EVENT_REMAIN"},
+    {"id": "MF-20", "case": "Structural prior selected then actor later has admitted exposure", "expected": "ONLY_GENERATED_EXPOSURE_EVENT_MAY_PARENT_MEMORY"},
+    {"id": "MF-21", "case": "Rendered dialogue says I remember X without V3 memory basis", "expected": "RENDER_NOT_MEMORY_EVIDENCE_NO_CAUSAL_CHANGE"},
+    {"id": "MF-22", "case": "Checkpoint/derived view offered as memory basis", "expected": "REJECT_NONFORMATION_SOURCE"}
+  ],
+  "compatibility": {
+    "preserve_or_adapt": ["typed persistent actor state and event/micro-trace provenance", "YearRecord hashing/replay discipline", "transactional pressure-flow history/memory commit", "persistent grooves/conductance as CAUSAL_TRACE_MEMORY continuity", "explicit analyst-versus-surface separation", "persistent rupture/metabolization state where exact causal parents are bound"],
+    "demote_or_remove_as_causal_authority": ["persona-sheet prose scenes labeled memories", "LLM memory distillation of backstory", "V2 anchored-memory prompt injection", "keyword/phrase hooks as causal recall rule", "V2 Memory & Relationship State as causal relationship/memory truth", "server conversation/session persistence as causal memory", "manual/unseeded memory-like injection", "generic biography/default childhood memory insertion"]
+  },
+  "consumer_acceptance_requirements": [
+    "exact objective-event ID/hash survives every memory transition",
+    "no memory auto-created from objective history or structural context",
+    "memory identity deterministic/stable/replayable",
+    "forgetting changes memory state without changing objective history",
+    "UNAVAILABLE content cannot be rehydrated from analyst history",
+    "recall requires lawful V3 causal cue and cannot be keyword-only V2 behavior",
+    "V2 session/transcript persistence cannot mutate V3 memory",
+    "causal traces may affect future causation without becoming persona consciousness",
+    "memory accessibility emitted distinctly from actor claim permission",
+    "stochastic transition blocks without accepted causal-RNG receipt",
+    "stale hashes/missing provenance fail closed",
+    "replay reproduces exact memory/transition IDs and state hashes"
+  ],
+  "final": {
+    "CONSUMER_RELEASE_SUFFICIENCY": "SUFFICIENT",
+    "ADP_016_V3_CAUSAL_MEMORY_AUTHORITY": "PASS"
+  }
+}
