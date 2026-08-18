@@ -1,0 +1,883 @@
+# VT3-CM-R09 — Empirical Condition → Generated Position Authority Court
+
+**Cell:** `VT3-CM-R09`  
+**Chamber:** Vozhd Trii Conditional-Meaning Chamber  
+**Repository:** `maidiu/rawlsing`  
+**Authorized branch:** `agent/vozhd-trii-vt3-cm-r09`  
+**Exact launch base examined:** `8c87f7725ba58202b5377c974548140420709fa9`  
+**Mission:** determine the exact authority seam required to resolve a V550 empirical survey-conditioning coordinate against a V3 generated structural position  
+**Production code changes:** `NO`  
+**Missing authority created:** `NO`  
+**Final verdict:** `MISSING_CROSS_ONTOLOGY_POSITION_BINDING_AUTHORITY__FAIL_CLOSED`
+
+---
+
+## 0. Holding
+
+The court finds **no accepted field/value mapping at the exact launch base from any fixed V550 `INDICATOR_FIELDS` coordinate to an exact V3 generated-position `binding_key_ref`.**
+
+The decisive distinction is ontological, not syntactic:
+
+```text
+V550 empirical respondent/sample coordinate
+    !=
+V3 actor-specific generated structural-position fact
+```
+
+and therefore:
+
+```text
+position_field = "income_level", position_value = "low"
+    does not imply
+CAN-006 binding_key_ref = <class/position requirement>
+```
+
+The same non-equivalence holds for `religion_label`, `employment`, `region`, every other V550 indicator, and any conjunction of them.
+
+V550 lawfully uses these columns to describe respondent/sample coordinates and to compute empirical conditional distributions, association statistics, branch diagnostics and position distributions. V550 question-use and overlay machinery can also annotate a question with `position_conditioning`, `position_modifiers`, `conditional_strata_weights` and `horizon_affordance`. None of those current surfaces contains the semantic and provenance contract required by CAN-006 to bind an actor-specific generated position.
+
+CAN-006 does not solve this gap. CAN-006 canonicalizes transport of a position fact that **already exists** under an accepted V3 producer. It requires an exact `binding_key_ref`, exact fact/event identity, effective time and current-position proof, and explicitly forbids fuzzy/label matching. CAN-005 then resolves already-authorized repository objects against accepted bindings and producer-governed predicates; it may defer an unbound object but may not invent the binding or its ontology. ADP-009 separately forbids geography/prevalence/demographic shortcuts and has no concrete country/demographic distribution entries in its accepted registry.
+
+The minimum lawful seam is therefore a **separately governed cross-ontology predicate/mapping authority** that makes an exact empirical coordinate/value capable of addressing an exact structural-position requirement. That authority is missing. This court identifies its minimum contract but does **not** create it.
+
+The correct architecture is not a one-way cast from survey value into actor position. It is a two-sided exact-key join:
+
+```text
+EMPIRICAL SIDE
+survey-native field/value
+  -> governed canonical empirical coordinate/value
+  -> [MISSING cross-ontology authority]
+  -> exact structural-position requirement/predicate key
+
+GENERATED SIDE
+ADP-009 generated position fact/event
+  -> CAN-006 V3GeneratedPositionBinding
+  -> exact binding_key_ref + exact current fact target
+
+JOIN
+producer-governed predicate evaluator
+  compares the empirical condition's exact requirement
+  against the exact CAN-006 binding at query time
+```
+
+Until that bridge authority exists for a specific field/value or predicate family, a V550 conditional fact may remain empirical evidence, context, review material or a reconstructible conditional statistic, but it cannot lawfully become **terminal actor-position-conditioned structural evidence** merely because a V3 actor has some apparently similar attribute or position label.
+
+---
+
+## 1. Binding authority and implementation evidence directly inspected
+
+### 1.1 Governing law
+
+The court directly inspected on the exact launch terrain:
+
+- `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md`
+- `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/TERMINAL_DEMAND_ENVELOPE.md`
+- `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/ARCHITECTURE_PASS_LAW.md`
+- `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V557_V558_COMPLETION_IMPLEMENTATION_RULING.md`
+- accepted `ADP-009 / V3_STRUCTURAL_POSITION_GENERATION_MOBILITY_RULE@1.0.0`
+- accepted `CAN-006 / V3_GENERATED_POSITION_BINDING_CONTRACT@1.0.0`
+- accepted `CAN-005 / V558_CONTEXT_RESOLVER_POLICY@1.0.0`
+- accepted `CAN-001 / V554_APPLICABILITY_PREDICATE_CONTRACT@1.0.0` as the predicate-evaluation authority directly referenced by CAN-006.
+
+The governing law fixes several non-negotiable propositions:
+
+1. structural priors are not generated actor facts;
+2. finite strata are relational pressure layers, not demographic buckets;
+3. actor position is generated by V3 under accepted position authority and is time-indexed history;
+4. geography, prevalence and demographic categories may not be promoted into actor position by resemblance or correlation;
+5. unknown, missing, deferred, noncomparable, denied and valid-empty states must remain typed;
+6. the V558 resolver consumes generated bindings but never authors them;
+7. indexes and labels are lookup conveniences, never semantic authority;
+8. direct DAG reuse preserves original producer identity rather than allowing downstream re-ownership.
+
+### 1.2 V550/V551 terrain
+
+The court directly inspected:
+
+- `data/ddm_build_copy/ddm_v550_readiness.py`
+- `data/ddm_build_copy/ddm_v550_branching.py`
+- `data/ddm_build_copy/ddm_v550_position_distribution.py`
+- `data/ddm_build_copy/ddm_v550_source_structure.py`
+- `data/ddm_build_copy/ddm_v550_question_use.py`
+- `data/ddm_build_copy/ddm_v550_family_overlay.py`
+- `data/ddm_build_copy/ddm_v550_bridge.py`
+- `data/ddm_build_copy/ddm_v551_atoms.py`
+- `data/ddm_build_copy/apply_postgres_facet_ready_substrate.py`
+
+Important observed boundaries:
+
+- V550 `INDICATOR_FIELDS` is a fixed empirical-analysis list, not a structural-position registry.
+- V550 `position_distribution` hardcodes semantic role `POSITION_COORDINATE`, but its rows carry empirical `position_field` / `position_value`, support and prevalence—not CAN-006 binding identity.
+- V550 source-structure and question-use classifiers intentionally distinguish `POSITION_COORDINATE` from relation evidence; the name means respondent/sample coordinate at this layer.
+- the V550 bridge maps `position_distribution` and `position_indicator_summary` to a `position_context` evidence lane and maps matrices/branches/secondary summaries to `derived_determinicity` rather than direct relation evidence.
+- V551 carries V550 position/conditioning metadata forward but does not create an actor-position binding evaluator.
+- prepared Postgres respondent surfaces contain harmonized demographic/context columns, but their names do not confer V3 structural ontology.
+
+No inspected V550/V551 surface supplies the CAN-006-required tuple of exact generated-position producer authority, binding key, actor fact/event identity, effective time and current-position proof.
+
+### 1.3 Overlay availability and authority ceiling
+
+The question-use machinery recognizes position-conditioning overlay fields:
+
+- `position_conditioning`
+- `position_modifiers`
+- `conditional_strata_weights`
+- `horizon_affordance`
+- `position_conditioning_note`
+- `position_conditioning_confidence`
+- optional `position_conditioning_authority_status` / `structural_mapping_authority_status`.
+
+The loader matches those rows by source/wave/variable identity and carries the values into the question-use contract and V550→V551 bridge. Its schema does **not** include:
+
+- structural-position requirement identity;
+- CAN-006 `binding_key_ref`;
+- ADP-009 position dimension/target identity;
+- required actor fact/event producer authority;
+- value-level cross-ontology mapping rule;
+- temporal currentness rule for the generated binding;
+- evaluator identity tying a survey condition to a generated-position target.
+
+Therefore even a `CERTIFIED` position-conditioning overlay row, if present, can certify only the semantics within that overlay's declared jurisdiction. It cannot silently acquire CAN-006 cross-ontology authority that its contract does not carry.
+
+A checked-in `gss2010_position_conditioning_overlay.csv` was not present at the loader's inspected default authority location on the exact base, and no unversioned/generated runtime overlay was treated as accepted authority by assumption.
+
+---
+
+## 2. Primary-question answers
+
+### Q1. Which V550 conditioning fields currently map to exact V3 generated-position binding keys?
+
+**None found.**
+
+At the exact base, no fixed V550 `INDICATOR_FIELDS` field has an accepted field/value crosswalk to a CAN-006 `binding_key_ref`.
+
+This is not merely an implementation omission. The accepted authorities make label matching illegal:
+
+- CAN-006 requires `binding_key_ref` to match the exact fact dimension or requirement and sets `fuzzy_or_label_matching=false`;
+- ADP-009 forbids demographic category → position and geography/prevalence → position shortcuts;
+- CAN-005 forbids prefix/substring semantic matching, score/similarity matching and display-label authority.
+
+### Q2. Which fields are merely demographic/sample descriptors?
+
+At the current V550 layer, all fixed indicators are empirical respondent/sample coordinates. Their terminal dispositions differ:
+
+- `sex`, `age_group`, `ethnicity`, `language` are demographic/life-course/identity descriptors with no accepted structural-position map;
+- `marital`, `household_size` are relationship/household context descriptors, not free ADP-009 position dimensions;
+- `region`, `urban_rural` are geography/settlement context and have a separate lawful geographic role, but not a generated-position role;
+- `education_level`, `income_level`, `employment`, `religion_label` may be structurally relevant empirical coordinates in particular historical questions, but remain unbound to V3 structural position absent separate authority.
+
+The fact that a variable is materially consequential does not make its survey coding identical to a generated structural-position ontology.
+
+### Q3. Which fields may be structurally relevant but lack a lawful terminal binding map?
+
+The clearest current cases are:
+
+- `income_level` — material condition/correlate; no accepted mapping from an income bucket to class/stratum/position;
+- `employment` — labor-market status/correlate; no accepted mapping to class, occupation, institution or other structural position;
+- `education_level` — social-position correlate; no accepted position-key map;
+- `religion_label` — affiliation/identity coordinate that may matter structurally, but label ≠ sect position, belief, institution or actor identification;
+- `region` / `urban_rural` — structurally relevant context, but direct promotion to generated position is specifically forbidden; their lawful route is geographic applicability, not actor-position inference.
+
+### Q4. What exact authority object is missing?
+
+A separately accepted **empirical-coordinate → structural-position-requirement mapping/predicate authority** is missing.
+
+This result does not assign it an accepted authority ID or version. Its minimum required contract is specified in §5 only as an architectural requirement.
+
+### Q5. Is the proposed four-step mapping chain sufficient, or does existing authority already cover it?
+
+The proposed chain is directionally right but semantically imprecise. The lawful shape is a two-sided join, not:
+
+```text
+empirical value -> CAN-006 binding
+```
+
+The empirical coordinate must first be mapped by separate authority to an exact **structural requirement/predicate key**. Separately, CAN-006 transports an already-generated actor position fact under that same exact binding requirement. CAN-001/CAN-005 may then evaluate the producer-governed predicate against the supplied binding.
+
+No existing inspected authority supplies the missing empirical crosswalk:
+
+- V550 supplies empirical coordinate and conditioning metadata;
+- ADP-009 supplies actor position generation law;
+- CAN-006 supplies exact generated-position binding identity/transport/currentness;
+- CAN-001 supplies the typed applicability predicate contract;
+- CAN-005 supplies deterministic resolver selection/evaluation policy.
+
+Those contracts meet at an exact requirement key **only after** some accepted authority has said what the empirical condition means in that structural-position predicate ontology.
+
+### Q6. How are values normalized without converting correlates into identities?
+
+Normalization must be strictly layered:
+
+1. preserve source-native field/value/code and source/wave provenance;
+2. map only through an accepted empirical harmonization/value authority to a canonical empirical coordinate/value;
+3. preserve missing/refusal/not-asked/inapplicable/unknown as typed states;
+4. permit cross-source many-to-one normalization only where the empirical authority says the categories are semantically equivalent at that empirical layer;
+5. require a separate explicit cross-ontology mapping for any transition from empirical value to structural-position predicate;
+6. never use MI, Cramér's V, uplift, prevalence, branch gain, commonness or predictive success as evidence that two ontologies are identical;
+7. never use string equality as semantic equivalence;
+8. never infer class/sect/party/occupation/institution from geography or another correlate absent independent authority.
+
+A concrete example: V550's prepared substrate derives `age_group` from numeric age using fixed bins. That makes `18-29` a canonical empirical age bin in that interface. It does not make `18-29` a V3 structural position.
+
+Likewise `income_level=low` requires explicit governed definition of income units, period, household/person basis, source harmonization and historical scope even before any attempted structural translation. A later class/position mapping would be a second authority question.
+
+### Q7. How are multi-position conjunctions mapped?
+
+ADP-009 explicitly allows multiple simultaneous atomic position facts; CAN-006 binding sets are `0..n` and have no dominant-position ordering. Therefore conjunctions must preserve that multiplicity.
+
+A lawful conditioned predicate such as:
+
+```text
+requirement_A AND requirement_B
+```
+
+must carry two exact requirement keys (or an exact producer-governed n-ary predicate object) and independently resolve each against current CAN-006 bindings. A concatenated V550 string such as a branch signature, `x||y` joint key, `subject_position_signature`, or `strata_path` is not a substitute for exact binding identity.
+
+Rules:
+
+- every conjunct has exact structural requirement identity;
+- each required binding is checked independently for producer authority, actor identity, target semantics and currentness;
+- missing one required binding yields defer/unbound unless the governing predicate explicitly defines lawful partial evaluation;
+- conjunction order does not create semantic precedence;
+- OR, NOT, cardinality, alternative target sets and incompatibility require explicit predicate grammar;
+- no global dominant position may collapse several facts into one actor type.
+
+V550 secondary-indicator and recursive-branch conjunctions remain empirical statistical intersections until separately mapped. Their empirical existence alone does not create a V3 conjunction predicate.
+
+### Q8. How does temporal mobility affect predicate applicability?
+
+Three times must remain distinct:
+
+```text
+empirical evidence/reference time
+!= actor position effective/as-of time
+!= ContextQuery time
+```
+
+CAN-006 requires currentness/effective-time proof. ADP-009 makes mobility prospective and immutable-history preserving. Therefore:
+
+- an actor position transition makes a superseded binding stale for later prospective queries;
+- the transition emits a generated binding delta and causes re-resolution of the same immutable repository;
+- prior resolved history is not retroactively rewritten;
+- historical replay may use the exact then-current binding only with original time/currentness/repository lineage;
+- a location migration does not automatically change class, sect, party, occupation, institution or other position dimensions;
+- coupled multi-dimension change requires explicit ADP-009 authority;
+- temporal proxy authority may select structural evidence at a different evidence time, but proxying cannot repair or invent actor position;
+- if a conditional fact semantically requires position-at-evidence-time rather than position-at-query-time, that temporal relation must be explicit in the producer predicate authority. The resolver may not guess it.
+
+---
+
+## 3. A — Field/value authority matrix
+
+### 3.1 Fixed V550 `INDICATOR_FIELDS`
+
+The exact fixed `INDICATOR_FIELDS` inspected in `ddm_v550_branching.py` are:
+
+```text
+sex
+age_group
+education_level
+income_level
+religion_label
+urban_rural
+region
+ethnicity
+language
+employment
+marital
+household_size
+```
+
+| V550 field | V550 empirical meaning | Exact accepted field/value → CAN-006 binding map? | Court disposition | Lawful terminal use today | Forbidden promotion |
+|---|---|---:|---|---|---|
+| `sex` | demographic/respondent coordinate | **NO** | `EMPIRICAL_DESCRIPTOR_ONLY` | condition/reconstruct empirical distributions; context where separately authorized | sex → structural position, psyche, belief, occupation, class |
+| `age_group` | derived life-course bin | **NO** | `EMPIRICAL_DESCRIPTOR_ONLY` | empirical conditioning | age bin → structural position or actor type |
+| `education_level` | education/social-position descriptor | **NO** | `STRUCTURALLY_RELEVANT_BUT_UNBOUND` | empirical conditioning; possible future rule input only if separately governed | education → class/occupation/power position |
+| `income_level` | material/economic descriptor | **NO** | `STRUCTURALLY_RELEVANT_BUT_UNBOUND` | empirical conditioning; possible future governed input | income bucket → class/stratum/position; prevalence → membership probability |
+| `religion_label` | respondent affiliation/identity label | **NO** | `STRUCTURALLY_RELEVANT_BUT_UNBOUND` | empirical conditioning/context | label → sect position, institution, belief, actor identification |
+| `urban_rural` | settlement/geographic context | **NO** | `GEOGRAPHIC_CONTEXT__POSITION_INFERENCE_FORBIDDEN` | exact geographic filtering only if separately governed | urban/rural → class/sect/party/occupation/position |
+| `region` | native geographic context | **NO** | `GEOGRAPHIC_CONTEXT__POSITION_INFERENCE_FORBIDDEN` | exact geographic applicability/containment only | region → any generated structural position |
+| `ethnicity` | demographic/identity descriptor | **NO** | `EMPIRICAL_DESCRIPTOR_ONLY` | empirical conditioning/context | ethnicity → class/party/religion/position |
+| `language` | language/identity/survey-context descriptor | **NO** | `EMPIRICAL_DESCRIPTOR_ONLY` | empirical conditioning/context | language → ethnicity/religion/class/position |
+| `employment` | labor-market status descriptor | **NO** | `STRUCTURALLY_RELEVANT_BUT_UNBOUND` | empirical conditioning; possible future governed input | unemployment/employment → class/occupation/institution/position |
+| `marital` | relationship-status descriptor | **NO** | `RELATIONSHIP_CONTEXT__NOT_FREE_POSITION` | empirical conditioning; separately generated relationship/household context where owned | marital label → household/family/structural position |
+| `household_size` | household-context quantity | **NO** | `HOUSEHOLD_CONTEXT__NOT_FREE_POSITION` | empirical conditioning; separately governed household context | size → household role/class/position |
+
+### 3.2 Adjacent fields that must not slip through by name
+
+| Field | Current terrain | Court holding |
+|---|---|---|
+| `age` | V550 readiness `POSITION_FIELDS`; continuous position-coordinate classifier; not fixed branching `INDICATOR_FIELDS` | empirical life-course coordinate only; no V3 binding map |
+| `class_level` | appears in prepared `respondent_position_fact` substrate but is not a fixed V550 `INDICATOR_FIELDS` coordinate | name alone is not class ontology authority; no accepted CAN-006 map located |
+| `country_code` | structural/geographic context and sometimes administrative/source scope | may scope geography; cannot generate class/sect/party/etc. |
+| `gender` / `education` / `income` aliases | source-structure/question-use position-coordinate aliases | aliases are empirical/source harmonization concerns, not generated-position keys |
+
+### 3.3 Hostile disposition of V550's `region` label
+
+`ddm_v550_branching.py` marks `region` as `indicator_type="structural_position"` while other indicators receive `demographic_position`.
+
+That literal label is **rejected as terminal generated-position authority**.
+
+Its real implementation logic is field-name classification inside an empirical association-summary builder. It carries no accepted structural requirement ID, CAN-006 binding key, actor fact/event reference, producer authority or temporal currentness. CAN-006/CAN-005/ADP-009 explicitly forbid the geography → generated-position inference that this string could otherwise tempt a consumer to make.
+
+Court token:
+
+`V550_REGION_INDICATOR_TYPE_STRUCTURAL_POSITION = LEGACY_EMPIRICAL_LABEL__NOT_V3_POSITION_AUTHORITY`
+
+---
+
+## 4. B — Exact mappings already accepted
+
+### 4.1 Field/value cross-ontology mappings
+
+**Accepted count found: `0`.**
+
+No mapping of the following form was found in the accepted exact-base terrain:
+
+```text
+(source, wave, V550 position_field, position_value)
+  -> exact ADP-009 structural position dimension/target
+  -> exact structural requirement/predicate key
+  -> CAN-006 binding_key_ref
+```
+
+### 4.2 What *is* already accepted
+
+Several adjacent pieces are accepted and must not be confused with the missing crosswalk:
+
+1. **V550 empirical coordinate role**  
+   `position_field` / `position_value`, source-structure `POSITION_COORDINATE`, position distributions and conditional statistics are lawful empirical/sample semantics.
+
+2. **V550 question-conditioning metadata**  
+   `position_conditioning`, `position_modifiers`, `conditional_strata_weights`, `horizon_affordance` may describe intended conditioning/use at question level.
+
+3. **ADP-009 generated-position authority**  
+   V3 may create immutable actor-specific position facts/events from accepted candidate/rule authority. Multiple simultaneous facts are lawful.
+
+4. **CAN-006 exact binding transport**  
+   An already-generated position fact can be serialized as a `V3GeneratedPositionBinding` with an exact `binding_key_ref`, producer/fact/event hashes, effective time and current-position proof.
+
+5. **CAN-001 applicability predicate contract**  
+   Producer-governed predicates may evaluate exact generated-position bindings without creating them.
+
+6. **CAN-005 resolver policy**  
+   V558 may discover exact candidates and apply geographic/stratal/position/negative producer conditions. Missing bindings/evaluators remain deferred/missing.
+
+These six accepted pieces do **not** compose into a V550 empirical-value → V3 position mapping without an explicit cross-ontology authority at their seam.
+
+### 4.3 ADP-009 registry evidence
+
+The accepted ADP-009 registry has generic rule profiles but:
+
+```text
+concrete_country_or_demographic_distribution_entries = []
+```
+
+and explicitly forbids:
+
+- `country_or_region_direct_to_class_sect_party_occupation_institution_household_family_self`;
+- `raw_structural_prevalence_as_membership_or_probability`;
+- `demographic_category_as_position`.
+
+Therefore the missing mapping cannot be reconstructed by claiming that ADP-009 already has a demographic lookup table. It does not.
+
+---
+
+## 5. C/D — Absent or forbidden mappings and the minimum missing authority contract
+
+### 5.1 Absent mappings
+
+The following mapping families are **absent** at the exact base unless separately authorized elsewhere in a future accepted authority:
+
+- income level → class/stratum/position;
+- employment status → labor/class/occupation/institution position;
+- education level → class/occupation/power position;
+- religion label → sect/institution/belief/structural position;
+- region/urban-rural → class/sect/party/occupation/position;
+- ethnicity/language → religion/party/class/position;
+- marital/household size → household/family/relationship role or structural position;
+- age/age group/sex → structural position;
+- any V550 branch signature or secondary-indicator joint key → multi-position V3 binding set.
+
+### 5.2 Forbidden mappings
+
+Even before a future authority is considered, these inference forms are forbidden by accepted law:
+
+```text
+correlation(X, Y) is high
+therefore X is Y
+```
+
+```text
+P(position=Y | demographic=X) is high
+therefore actor with X occupies Y
+```
+
+```text
+region=R
+therefore class/sect/party/occupation/institution=Y
+```
+
+```text
+same display string
+therefore same ontology key
+```
+
+```text
+conditional_strata_weights say Y is common
+therefore use those weights as ADP-009 actor candidate probabilities
+```
+
+ADP-009 specifically forbids raw prevalence → actor probability/weight conversion without separate governed authority.
+
+### 5.3 Minimum missing authority class
+
+**This section specifies a required contract shape only. It does not create, name as accepted, version or populate the missing authority.**
+
+The minimum cross-ontology authority must bind an empirical condition to a structural-position requirement without asserting actor membership. At minimum, each authoritative mapping entry would need to make the following distinctions explicit:
+
+#### Identity and scope
+
+- mapping-entry identity;
+- mapping authority/version/hash and acceptance snapshot;
+- source family/source-wave identity or explicitly governed cross-source scope;
+- empirical field identity;
+- source-native value/code identity;
+- canonical empirical coordinate identity;
+- canonical empirical value identity;
+- empirical-value normalization authority/provenance;
+- temporal/historical validity scope;
+- geographic scope where the semantics vary by geography.
+
+#### Structural target
+
+- exact structural-position requirement/predicate key;
+- exact expected CAN-006 `binding_key_ref` compatibility;
+- exact accepted structural-position producer/ontology authority whose dimension/target is being referenced;
+- target semantics or admissible target set;
+- predicate operator (`EQ`, governed set-membership, range, conjunction component, explicit absence, etc.);
+- explicit statement whether the condition is a direct semantic equivalence, a permitted rule input, or only a contextual correlate.
+
+Only direct semantic equivalence/predicate mappings may address a generated-position requirement. A contextual correlate must remain context and cannot be upgraded by high confidence.
+
+#### Noncollapse / forbidden inference
+
+- `correlation_is_not_identity=true`;
+- `prevalence_is_not_actor_probability=true` unless a separate candidate-probability authority is referenced;
+- geography-to-position inference prohibition unless an independently accepted exact mapping specifically authorizes the relation;
+- no belief/identity/psyche inference from objective structural position;
+- no fuzzy/string/similarity fallback;
+- no nearest/most-common/default value;
+- no implicit `other` category.
+
+#### Missingness and value semantics
+
+- explicit source missing/DK/refusal/not-asked/inapplicable behavior;
+- unknown/unmapped-value behavior;
+- valid-empty behavior;
+- incompatible/noncomparable category behavior;
+- no conversion of missing/unknown into explicit absence.
+
+#### Conjunction/cardinality
+
+- exact requirement-set semantics;
+- AND/OR/NOT/cardinality grammar if supported;
+- whether partial evaluation is lawful;
+- lawful multiplicity behavior;
+- no dominant-position collapse.
+
+#### Temporal semantics
+
+- whether the predicate applies to actor position at query time, evidence time, or another explicitly bound effective time;
+- binding-currentness requirement;
+- position transition/supersession behavior;
+- replay semantics;
+- no temporal proxy → position inference.
+
+#### Evaluator and replay
+
+- exact producer predicate-evaluator authority/ref;
+- deterministic evaluator version/hash;
+- input/output typed-state contract;
+- receipt/provenance requirements;
+- exact link from empirical mapping entry to the producer object's position requirement;
+- exact link from evaluated requirement to consumed CAN-006 binding ref/hash.
+
+Without those fields—or an already accepted authority providing semantically equivalent guarantees—the seam remains `MISSING_AUTHORITY`.
+
+### 5.4 Required topology: two-sided join, not identity cast
+
+The minimum lawful topology is:
+
+```text
+                           [MISSING AUTHORITY]
+source-native              empirical→structural
+survey coordinate          requirement mapping
+(field,value)                    |
+     |                           v
+     +-> canonical empirical coordinate/value
+                                 |
+                                 v
+                 exact structural requirement key
+                                 |
+              +------------------+------------------+
+              |                                     |
+              |                                     |
+   producer conditional object          CAN-006 generated binding
+   references same requirement          references same binding key
+              |                                     |
+              +------------------+------------------+
+                                 |
+                         exact predicate evaluator
+                                 |
+                    selected / rejected / deferred
+```
+
+The empirical mapping authority does **not** mint the actor's position fact. ADP-009 remains the semantic owner of the generated position; CAN-006 remains transport/currentness authority; CAN-005 remains resolver policy.
+
+---
+
+## 6. E — Runtime binding/evaluator contract
+
+### 6.1 Phase A
+
+For a repository object whose producer condition requires a structural position but no lawful generated binding yet exists:
+
+```text
+selection_state = DEFERRED_UNBOUND_GENERATED_POSITION
+resolver/result = UNBOUND_REQUIRES_RUNTIME_POSITION
+```
+
+The resolver may still return other lawful non-position-conditioned context. It may not infer the position from V550 prevalence, a matching survey label, region, demographic descriptors or a position distribution.
+
+### 6.2 V3 generation
+
+ADP-009 may generate a `V3StructuralPositionFact` / event only from its accepted candidate/rule authority. The fact remains:
+
+- actor-specific;
+- objective structural position only;
+- atomic by exact governed dimension/requirement;
+- immutable after commit;
+- potentially one of several simultaneous position facts;
+- effective from an explicit causal time.
+
+The actor does not automatically know, identify with or believe the generated position.
+
+### 6.3 CAN-006 binding
+
+The generated fact becomes an admissible resolver binding only through the exact CAN-006 contract. Required identity includes, among other fields:
+
+- generation subject / actor identity;
+- exact `binding_key_ref`;
+- `position_fact_ref` and hash;
+- establishing/current event ref and hash;
+- accepted producer authority identity/version/hash;
+- position rule ID/version;
+- `position_effective_from`;
+- `binding_as_of_effective_time`;
+- `current_position_view_ref` and hash;
+- `GENERATED_RUNTIME_FACT_REF` epistemic class;
+- binding content hash.
+
+String equality between `position_value` and a generated fact label is never an alternative binding method.
+
+### 6.4 Cross-ontology requirement gate
+
+Before an empirical V550 conditional object may be queried as actor-position-conditioned evidence, the repository object must reference an exact structural-position requirement that is itself backed by the missing cross-ontology mapping authority described in §5.
+
+The gate order is:
+
+1. verify empirical conditional object identity/hash/provenance;
+2. verify its empirical coordinate/value normalization authority;
+3. verify exact empirical→structural requirement mapping authority;
+4. dereference exact structural requirement/predicate and evaluator;
+5. verify CAN-006 binding-set identity/integrity/currentness;
+6. find exact matching `binding_key_ref`—never display-label/fuzzy matching;
+7. evaluate target/operator semantics deterministically;
+8. preserve conjunction/multiplicity semantics;
+9. apply temporal and geographic constraints independently;
+10. emit a SelectionRecord for selected, rejected and deferred candidates.
+
+### 6.5 Predicate results
+
+The evaluator must preserve the accepted typed-predicate semantics:
+
+- `SATISFIED`
+- `NOT_SATISFIED`
+- `UNKNOWN_INPUT`
+- `DEFERRED_UNBOUND_INPUT`
+- `NEGATIVE_AUTHORITY`
+- `INTEGRITY_FAILURE`
+
+Unknown is not false. Deferred is not absence. A failed or missing cross-ontology map cannot be interpreted as `NOT_SATISFIED`.
+
+### 6.6 Multi-position conjunction evaluation
+
+For a conjunction, the runtime must consume an exact CAN-006 binding set, not a scalar actor profile.
+
+Example lawful shape:
+
+```text
+conditional_requirement = AND(R_A, R_B)
+
+R_A -> binding_key_ref A -> current binding/fact A -> SATISFIED
+R_B -> binding_key_ref B -> current binding/fact B -> SATISFIED
+
+AND => SATISFIED
+```
+
+If `R_B` is unbound:
+
+```text
+R_A = SATISFIED
+R_B = DEFERRED_UNBOUND_INPUT
+AND = DEFERRED_UNBOUND_INPUT
+```
+
+unless the exact producer predicate authority explicitly defines another lawful partial semantics.
+
+### 6.7 Mobility/re-resolution
+
+When ADP-009 commits a prospective position transition:
+
+1. old binding becomes superseded for later prospective as-of times;
+2. a new immutable position fact/event is created;
+3. CAN-006 creates the new binding/binding-set identity;
+4. V3 emits a generated-position binding delta;
+5. the caller re-queries the **same immutable** StructuralPriorRepository;
+6. CAN-005 reevaluates exact governed predicates;
+7. prior contexts/history remain unchanged.
+
+A stale binding must not be silently replaced by “latest” inside the resolver. CAN-006 currentness law governs the failure/refresh path.
+
+---
+
+## 7. F — Typed failure/defer states
+
+### 7.1 Existing accepted states directly applicable to this seam
+
+| Layer | Existing state | Required meaning here |
+|---|---|---|
+| Architecture | `MISSING_AUTHORITY` | no accepted empirical→structural requirement mapping exists |
+| ADP-009 | `POSITION_INPUT_UNKNOWN` | required position input is unknown; do not invent |
+| ADP-009 | `POSITION_DIMENSION_NOT_GOVERNED` | requested structural position dimension has no accepted rule |
+| ADP-009 | `POSITION_CANDIDATE_SOURCE_MISSING` | actor position candidate authority absent |
+| ADP-009 | `POSITION_CANDIDATES_VALID_EMPTY` | governed candidate set is empty; not a default fallback trigger |
+| ADP-009 | `POSITION_CONSTRAINT_DEFERRED` | prerequisite is unbound/unknown |
+| ADP-009 | `POSITION_UNBOUND_REQUIRES_RUNTIME_FACT` | no generated actor position fact yet |
+| ADP-009 | `BLOCKED_FORBIDDEN_POSITION_INFERENCE` | attempted demographic/geographic/prevalence shortcut |
+| CAN-005 | `MISSING_REQUIRED_RESOLUTION_AUTHORITY` | required mapping/evaluator authority absent |
+| CAN-005 | `DEFERRED_MISSING_PRODUCER_EVALUATOR` | exact producer predicate evaluator unavailable |
+| CAN-005 | `UNBOUND_REQUIRES_RUNTIME_POSITION` | position-conditioned object awaits generated binding |
+| CAN-005 | `FORBIDDEN_GEOGRAPHY_TO_POSITION_INFERENCE` | geography offered as actor-position substitute |
+| CAN-005 | `FORBIDDEN_TEMPORAL_PROXY_TO_POSITION_INFERENCE` | temporal proxy offered as actor-position substitute |
+| CAN-005 SelectionRecord | `DEFERRED_UNBOUND_GENERATED_POSITION` | candidate retained/deferred rather than guessed or dropped |
+| CAN-006 | `POSITION_BINDING_MISSING` | required binding absent |
+| CAN-006 | `POSITION_BINDING_KEY_MISMATCH` | binding does not address exact requirement |
+| CAN-006 | `POSITION_BINDING_CURRENTNESS_UNKNOWN` | currentness cannot be proven |
+| CAN-006 | `POSITION_BINDING_STALE_SUPERSEDED` | binding superseded at query time |
+| CAN-006 | `POSITION_BINDING_NOT_EFFECTIVE_AT_QUERY_TIME` | binding exists but is temporally inapplicable |
+| CAN-006 | `POSITION_BINDING_PRODUCER_AUTHORITY_UNBOUND` / `...MISMATCH` | position producer authority absent/wrong |
+| CAN-006 | `POSITION_BINDING_SUBJECT_MISMATCH` | actor/subject mismatch |
+| CAN-006 | `POSITION_BINDING_IDENTITY_CONFLICT` | same binding identity conflicts |
+| CAN-006 | `POSITION_BINDING_INTEGRITY_FAILURE` | hash/provenance failure |
+| CAN-006 | `VALID_EMPTY_POSITION_BOUND_CONTEXT_DELTA` | binding is lawful but selects no additional context |
+
+### 7.2 Court disposition labels
+
+The following labels are used **only inside this R09 result** to classify findings; they are not new runtime authority enums:
+
+- `EMPIRICAL_DESCRIPTOR_ONLY`
+- `STRUCTURALLY_RELEVANT_BUT_UNBOUND`
+- `GEOGRAPHIC_CONTEXT__POSITION_INFERENCE_FORBIDDEN`
+- `RELATIONSHIP_CONTEXT__NOT_FREE_POSITION`
+- `HOUSEHOLD_CONTEXT__NOT_FREE_POSITION`
+- `NO_ACCEPTED_EMPIRICAL_TO_GENERATED_POSITION_MAP`
+
+No production implementation should treat those report labels as an accepted runtime schema without a later authority decision.
+
+---
+
+## 8. G — Consequences for V550 conditional facts
+
+### 8.1 What cannot currently become terminal actor-position-conditioned structural evidence
+
+A V550 conditional fact is **not** terminal actor-position-conditioned evidence merely because it contains any of:
+
+- `position_field`
+- `position_value`
+- `semantic_role=POSITION_COORDINATE`
+- `indicator_type=structural_position`
+- `position_conditioning`
+- `position_modifiers`
+- `conditional_strata_weights`
+- `horizon_affordance`
+- `strata_path`
+- `subject_position_signature`
+- a V550 branch/secondary-indicator joint key
+- high mutual information/Cramér's V/uplift
+- high subgroup prevalence/support.
+
+Those fields can preserve empirical meaning and conditioning metadata. They do not carry CAN-006 actor binding authority.
+
+### 8.2 What remains lawful without the missing authority
+
+The missing seam does **not** erase or invalidate V550 empirical evidence itself.
+
+Lawful retained uses include:
+
+- unconditional/direct empirical response distributions under their existing question/response authority;
+- empirical conditional distributions as population/sample evidence;
+- position distributions as empirical prevalence/context evidence;
+- reconstructible respondent-grain substrate for future governed conditional queries;
+- diagnostic association/branch statistics where separately useful;
+- geographic filtering where exact geographic authority exists;
+- review/audit/provenance retention of structurally suggestive but unbound coordinates.
+
+The key restriction is causal/semantic promotion to an actor-position-conditioned structural prior.
+
+### 8.3 What can become terminal position-conditioned evidence now
+
+Only a producer object whose structural-position condition already has an **independently accepted exact structural requirement/predicate identity and evaluator** can be resolved in Phase B against CAN-006 bindings.
+
+The court found no accepted mapping that gives the fixed V550 empirical field/value coordinates that status.
+
+Therefore, for the current V550 conditional-fact family:
+
+```text
+terminal actor-position-conditioned eligibility
+= DEFER / DENY ACTIVE POSITION-CONDITIONED USE
+  unless an independently accepted exact cross-ontology mapping exists
+```
+
+Preserve the empirical object; do not fabricate the binding.
+
+### 8.4 `conditional_strata_weights` consequence
+
+`conditional_strata_weights` may remain question/conditioning metadata or empirical weighting information under its own authority. It is **not** an ADP-009 actor-selection weight contract.
+
+Using it to say:
+
+```text
+population subgroup Y is common among X
+therefore actor X gets position Y with that probability
+```
+
+would violate ADP-009's explicit prohibition on raw prevalence → actor candidate probability/weight conversion absent separate governed authority.
+
+### 8.5 Geography consequence
+
+`region` and `urban_rural` may lawfully narrow native geography through CAN-005 only when exact shared governed geography refs or producer-owned geographic containment/applicability authority exists.
+
+That path remains separate from CAN-006 generated position:
+
+```text
+exact geography match != generated actor position match
+```
+
+This remains true even where a producer's structural facts are historically conditioned by geography.
+
+---
+
+## 9. Hostile fixtures the seam must survive
+
+| Fixture | Attack | Required outcome |
+|---|---|---|
+| `R09-H01` | V550 says `region` has `indicator_type=structural_position`; actor lives in same region | reject label as V3 authority; geography may filter context only |
+| `R09-H02` | `income_level=low` strongly predicts a class-position target | correlation remains empirical; missing cross-ontology authority → defer/missing authority |
+| `R09-H03` | `religion_label` text exactly equals a V3 target label | string equality has no semantic authority; require exact requirement/binding key |
+| `R09-H04` | `employment=unemployed` and generated position target looks labor-related | no automatic labor/class/occupation/institution binding |
+| `R09-H05` | two V550 conditions correlate with two simultaneous actor positions | require explicit multi-requirement predicate and exact CAN-006 bindings; no signature-string shortcut |
+| `R09-H06` | one conjunct bound, one missing | preserve `DEFERRED_UNBOUND_INPUT`; do not treat missing as false or ignore it |
+| `R09-H07` | old binding existed before an ADP-009 transition | later query rejects stale binding; re-resolve prospectively; no history rewrite |
+| `R09-H08` | `conditional_strata_weights` supplied as actor selection probabilities | reject; raw prevalence/weights cannot become ADP-009 candidate weights without separate authority |
+| `R09-H09` | region + religion offered to infer sect/party/class | `FORBIDDEN_GEOGRAPHY_TO_POSITION_INFERENCE` / forbidden position inference |
+| `R09-H10` | empirical value missing/DK/refusal/not asked | preserve typed empirical state; no nearest/other/absence substitution |
+| `R09-H11` | CAN-006 binding has matching display text but different `binding_key_ref` | `POSITION_BINDING_KEY_MISMATCH` |
+| `R09-H12` | exact mapping and binding exist but binding is superseded | `POSITION_BINDING_STALE_SUPERSEDED`; no hidden latest replacement |
+| `R09-H13` | exact binding exists, predicate evaluates false | lawful `NOT_SATISFIED`; distinct from missing authority/unbound |
+| `R09-H14` | exact binding exists and predicate is satisfied but no conditional rows exist | lawful valid-empty result if producer governs valid-empty; do not fabricate baseline evidence |
+| `R09-H15` | model/embedding says two empirical/structural labels are semantically equivalent | reject; CAN-005 forbids LLM/embedding judgment as resolution authority |
+
+---
+
+## 10. Answer matrix against deliverable A–G
+
+| Deliverable | R09 answer |
+|---|---|
+| **A. field/value authority matrix** | §3; zero exact fixed-indicator field/value → CAN-006 maps; fields classified by empirical/context role and forbidden promotions |
+| **B. exact mappings already accepted** | §4; accepted cross-ontology mapping count found = `0`; adjacent accepted authorities enumerated without conflation |
+| **C. mappings absent or forbidden** | §5.1–§5.2; absent socioeconomic/identity/relationship maps and explicit correlation/geography/string/prevalence prohibitions |
+| **D. minimum missing authority contract** | §5.3–§5.4; separately governed empirical-coordinate → structural-requirement mapping/predicate authority; contract shape only, not created |
+| **E. runtime binding/evaluator contract** | §6; Phase A defer → ADP-009 generation → CAN-006 binding → exact cross-ontology requirement gate → CAN-005/CAN-001 evaluation → SelectionRecord |
+| **F. typed failure/defer states** | §7; existing ADP-009/CAN-005/CAN-006 states preserved; court-only labels explicitly non-runtime |
+| **G. terminal consequence** | §8; preserve V550 conditional facts empirically, but deny/defer actor-position-conditioned terminal promotion until exact mapping authority exists |
+
+---
+
+## 11. Final court ruling
+
+### Ruling 1 — no current accepted V550→V3 field/value crosswalk
+
+`ACCEPTED_V550_INDICATOR_TO_CAN006_BINDING_KEY_MAPPINGS_FOUND = 0`
+
+### Ruling 2 — shared strings are nonauthority
+
+`SHARED_FIELD_OR_VALUE_LABEL != SHARED_ONTOLOGY`
+
+### Ruling 3 — V550 `POSITION_COORDINATE` is empirical-layer semantics
+
+`V550_POSITION_COORDINATE != V3_GENERATED_STRUCTURAL_POSITION_FACT`
+
+### Ruling 4 — position-conditioning metadata does not close the seam
+
+`POSITION_CONDITIONING_METADATA != STRUCTURAL_POSITION_BINDING_AUTHORITY`
+
+### Ruling 5 — CAN-006 is transport/currentness, not empirical translation
+
+`CAN006_BINDING_CONTRACT != EMPIRICAL_TO_STRUCTURAL_CROSSWALK`
+
+### Ruling 6 — CAN-005 resolves but does not invent
+
+`CAN005_RESOLVER_POLICY != CROSS_ONTOLOGY_SEMANTIC_AUTHORITY`
+
+### Ruling 7 — exact-key join required
+
+`EMPIRICAL_CONDITION_TO_GENERATED_POSITION_RESOLUTION = TWO_SIDED_EXACT_KEY_JOIN`
+
+### Ruling 8 — correlation is not ontology
+
+`CORRELATION_OR_PREVALENCE != POSITION_IDENTITY_OR_ACTOR_MEMBERSHIP`
+
+### Ruling 9 — geography remains a separate channel
+
+`GEOGRAPHY_CONTEXT != GENERATED_POSITION_BINDING`
+
+### Ruling 10 — multi-position facts remain plural
+
+`MULTIPLE_GENERATED_POSITION_FACTS != DOMINANT_ACTOR_PROFILE`
+
+### Ruling 11 — mobility is prospective
+
+`POSITION_TRANSITION => NEW_BINDING_AND_RERESOLUTION__NO_RETROACTIVE_REWRITE`
+
+### Ruling 12 — missing bridge authority fails closed
+
+`MISSING_EMPIRICAL_TO_STRUCTURAL_REQUIREMENT_AUTHORITY => DEFER_OR_DENY_POSITION_CONDITIONED_TERMINAL_USE`
+
+---
+
+## 12. Scope and non-actions
+
+- No production code was modified.
+- No accepted authority file was modified.
+- No missing mapping authority was created.
+- No field/value mapping row was invented.
+- No demographic or geographic category was promoted to actor position.
+- No V550 artifact was deleted or redesigned.
+- No runtime implementation is claimed.
+- No sibling VT3-CM court was used as binding authority.
+
+**Final token:**
+
+`VT3_CM_R09_EMPIRICAL_CONDITION_TO_GENERATED_POSITION_AUTHORITY_COURT = PASS__MISSING_CROSS_ONTOLOGY_AUTHORITY_IDENTIFIED__FAIL_CLOSED`
