@@ -10,8 +10,56 @@ from typing import Any
 
 import pandas as pd
 
+from data.ddm_build_copy import ddm_v551j_schema as _v551j_schema
 from data.ddm_build_copy.ddm_v550_schema import write_schema_json
 from data.ddm_build_copy.ddm_v550_storage import atomic_write_json, read_table_any
+
+
+# PG8-013: the authoritative v2.2.3 schema aliases are declared after the
+# earlier W04-B UID-aware transitional schemas.  Bind the additive identity
+# fields into those active lists in place before packet builders import their
+# schema dictionaries.  This restores transport only; labels and frozen
+# packet/component identity and contract-hash namespaces remain unchanged.
+_V551J_PACKET_UID_FIELDS = (
+    "source_family_uid",
+    "wave_uid",
+    "uid_key",
+    "uid_native_packet_id_v1",
+    "cross_wave_homology_key_v1",
+)
+_V551J_COMPONENT_UID_FIELDS = (
+    "source_family_uid",
+    "wave_uid",
+    "uid_key",
+    "uid_native_component_id_v1",
+)
+
+
+def _insert_identity_fields(columns: list[str], fields: tuple[str, ...]) -> None:
+    missing = [field for field in fields if field not in columns]
+    if not missing:
+        return
+    anchor = columns.index("country_code") + 1 if "country_code" in columns else len(columns)
+    columns[anchor:anchor] = missing
+
+
+def bind_v551j_active_uid_transport_schema() -> None:
+    """Restore W04-B UID transport to the active v2.2.3 output schemas."""
+    _insert_identity_fields(
+        _v551j_schema.V551J_V22_PACKET_COLUMNS,
+        _V551J_PACKET_UID_FIELDS,
+    )
+    _insert_identity_fields(
+        _v551j_schema.V551J_V22_COMPONENT_INDEX_COLUMNS,
+        _V551J_COMPONENT_UID_FIELDS,
+    )
+    _insert_identity_fields(
+        _v551j_schema.V551J_V22_REVIEW_SURFACE_SCHEMA["required_columns"],
+        _V551J_PACKET_UID_FIELDS,
+    )
+
+
+bind_v551j_active_uid_transport_schema()
 
 
 def _json_safe(value: Any) -> Any:
