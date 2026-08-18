@@ -209,6 +209,7 @@ def compile_v551_run(
     run_id: str,
     bridge_path: str | Path,
     output_root: str | Path = DEFAULT_OUTPUT_ROOT,
+    write_parquet: bool = True,
     write_csv: bool = False,
 ) -> dict[str, Any]:
     (
@@ -217,7 +218,7 @@ def compile_v551_run(
         publish_staged_directory,
         validate_machine_output_policy,
     ) = _boundary_api()
-    validate_machine_output_policy(write_parquet=True, write_csv=write_csv)
+    validate_machine_output_policy(write_parquet=write_parquet, write_csv=write_csv)
 
     contract = validate_v551_bridge_input_contract(bridge)
     if contract["status"] != "PASS":
@@ -318,7 +319,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--bridge-path", required=True)
     parser.add_argument("--output-root", default=str(DEFAULT_OUTPUT_ROOT))
-    parser.add_argument("--write-csv", action="store_true")
+    parser.add_argument("--write-parquet", dest="write_parquet", action="store_true", default=True)
+    parser.add_argument("--no-write-parquet", dest="write_parquet", action="store_false")
+    parser.add_argument("--write-csv", dest="write_csv", action="store_true", default=False)
+    parser.add_argument("--no-write-csv", dest="write_csv", action="store_false")
     parser.add_argument("--v551-compile-mode", choices=("canonical",), default="canonical")
     return parser.parse_args()
 
@@ -332,6 +336,7 @@ def main() -> int:
         run_id=args.run_id,
         bridge_path=bridge_path,
         output_root=args.output_root,
+        write_parquet=args.write_parquet,
         write_csv=args.write_csv,
     )
     print(json.dumps(manifest, indent=2, ensure_ascii=False))
