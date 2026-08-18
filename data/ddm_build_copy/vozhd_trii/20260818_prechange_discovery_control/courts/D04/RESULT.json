@@ -1,0 +1,407 @@
+{
+  "court": "D04",
+  "title": "CURRENT V550 ATTITUDE-CLOUD CORRECTNESS & COMPLETENESS COURT",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "7ea5962f644ad796064e30ffafb46f2c077404b9",
+  "branch": "agent/vozhd-trii-d04-cloud-correctness",
+  "status": "FAIL_WITH_MATERIAL_IMPLEMENTATION_DEFECTS_AND_AUTHORITY_GAPS",
+  "production_code_modified": false,
+  "binding_predecessor": {
+    "court": "D03",
+    "result_md": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D03/RESULT.md",
+    "result_json": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D03/RESULT.json",
+    "d04_test_oracle_controls": true
+  },
+  "audited_surfaces": [
+    "data/ddm_build_copy/ddm_v550_clouds.py",
+    "data/ddm_build_copy/ddm_v550_metrics.py",
+    "data/ddm_build_copy/ddm_v550_support.py",
+    "data/ddm_build_copy/ddm_v550_question_use.py",
+    "data/ddm_build_copy/ddm_v550_validation.py",
+    "data/ddm_build_copy/ddm_v550_branching.py",
+    "data/ddm_build_copy/build_determinicity_wave_shard_v550.py",
+    "data/ddm_build_copy/build_determinicity_repository_v550.py"
+  ],
+  "evidence": {
+    "empirical_probes": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D04/evidence/EMPIRICAL_PROBES.json",
+    "probe_method": "Faithful executable micro-fixtures reproduce exact inspected pandas/state/metric operations; connector code inspection controls orchestration, eligibility, gating, checkpoint and replay findings."
+  },
+  "finite_verdict": {
+    "faithfully_computes_d03_semantic_pair_object_for_all_lawful_orders": false,
+    "material_implementation_defects": [
+      "processing-order-dependent and incomplete ordered-pair coverage",
+      "nonblank special/missing/routing response states can become cotravel content",
+      "normalized mutual information divides nats by bits",
+      "resume does not rehydrate cross-question attitude-cloud state",
+      "cardinality/mode gating occurs before state registration and can delete later lawful pairs"
+    ],
+    "confirmed_no_defect_areas": [
+      "D03 denominator arithmetic for a fixed emitted pair",
+      "requested run/source/wave/canonical_wave/country scope isolation",
+      "support marking does not suppress an otherwise emitted positive-support pair"
+    ],
+    "major_authority_gaps": [
+      "normative survey-weight law for cloud diagnostics",
+      "lawful conflicting duplicate/repeated-response semantics",
+      "lawful multiselect set/order semantics",
+      "modal-cell tie-breaking law",
+      "common routed-risk-set denominator law",
+      "whole-cloud replay proof for changed response substrates"
+    ]
+  },
+  "findings": [
+    {
+      "id": "D04-F01",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "severity": "critical",
+      "finding": "Lawful ordered-pair coverage depends on processing order because current anchors compare only with previously stored candidates.",
+      "effect": "The emitted graph is a processing-order lower triangle of the lawful anchor x feature graph."
+    },
+    {
+      "id": "D04-F02",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "severity": "high",
+      "finding": "normalized_mutual_information uses mutual_info_score in nats and distribution_entropy in bits.",
+      "effect": "Perfect deterministic binary mapping reports 0.6931471805599453 instead of 1.0."
+    },
+    {
+      "id": "D04-F03",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "severity": "critical",
+      "finding": "_prepare_attitude_cloud_frame ignores harmonized row-level substantiveness/missingness/routing flags and filters only blank normalized responses.",
+      "effect": "DK/refusal/IAP/not-asked/inapplicable/special codes can become the modal cotravel response cell."
+    },
+    {
+      "id": "D04-F04",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "severity": "critical",
+      "finding": "Resume resets attitude-cloud state and skips completed questions without rehydrating their prepared frames.",
+      "effect": "Cross-boundary pairs disappear relative to fresh computation even with unchanged data and configuration."
+    },
+    {
+      "id": "D04-F05",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "severity": "high",
+      "finding": "should_emit_cloud_tables is evaluated before build_attitude_cloud_rows, so a gated question is never registered in state.",
+      "effect": "A gated feature can be absent from pair formation for later anchors, extending the gate beyond the current question's own output."
+    },
+    {
+      "id": "D04-F06",
+      "classification": "SEMANTIC_AMBIGUITY",
+      "severity": "high",
+      "finding": "An empty attitude-cloud table is globally labeled disabled_until_cross_question_engine regardless of the actual empty/nonexecution cause.",
+      "effect": "Mode-off, threshold omission, no eligibility, no overlap, order loss and resume loss are not typed distinctly."
+    },
+    {
+      "id": "D04-F07",
+      "classification": "SEMANTIC_AMBIGUITY",
+      "severity": "medium",
+      "finding": "Output field mutual_information contains normalized mutual information rather than raw MI.",
+      "effect": "D03 fixes current executable meaning, but field naming can mislead consumers."
+    },
+    {
+      "id": "D04-F08",
+      "classification": "MISSING_AUTHORITY",
+      "severity": "medium",
+      "finding": "Normative survey-weight requirement for the attitude-cloud diagnostic lane is not established.",
+      "effect": "Current execution is wholly unweighted; D04 cannot invent a weighted law."
+    },
+    {
+      "id": "D04-F09",
+      "classification": "MISSING_AUTHORITY",
+      "severity": "high",
+      "finding": "Lawful semantics for conflicting duplicate/repeated response rows and multiselect set/order representation are unresolved.",
+      "effect": "Current first-row collapse is executable fact and row-order sensitive, but no alternative ordering/set rule is authorized."
+    },
+    {
+      "id": "D04-F10",
+      "classification": "MISSING_AUTHORITY",
+      "severity": "medium",
+      "finding": "No modal-cell tie-breaking law is established.",
+      "effect": "Reverse-pair selected modal cells need not transpose when multiple cells share the maximum."
+    },
+    {
+      "id": "D04-F11",
+      "classification": "MISSING_AUTHORITY",
+      "severity": "medium",
+      "finding": "D03's current denominator law does not establish whether routed eligibility should instead use a common risk-set denominator.",
+      "effect": "Current lift can mix response availability/routing with response cotravel under differential observability."
+    },
+    {
+      "id": "D04-F12",
+      "classification": "TOPOLOGY_UNSUPPORTED",
+      "severity": "informational",
+      "finding": "Current directional-atom cloud law is restricted to certified scalar and binary_contrast topology.",
+      "effect": "Nominal, multiselect, ranked/routed, derived/reference, administrative/missingness, and structural matrix-child topologies are not lawful current cloud inputs."
+    },
+    {
+      "id": "D04-F13",
+      "classification": "NO_DEFECT",
+      "severity": "informational",
+      "finding": "Fixed-pair denominator arithmetic matches D03's exact oracle.",
+      "effect": "Anchor-only responders missing B remain in n_anchor; candidate baseline uses all prepared B responders."
+    },
+    {
+      "id": "D04-F14",
+      "classification": "NO_DEFECT",
+      "severity": "informational",
+      "finding": "_ATTITUDE_CLOUD_STATE key includes run_id, source, wave, canonical_wave and country_code.",
+      "effect": "Respondent-ID collisions across requested scopes cannot join."
+    },
+    {
+      "id": "D04-F15",
+      "classification": "EXPECTED_BEHAVIOR",
+      "severity": "informational",
+      "finding": "Positive low-N selected cells are emitted and marked by support/confidence tiers rather than suppressed.",
+      "effect": "Support status does not change probability/association computation."
+    },
+    {
+      "id": "D04-F16",
+      "classification": "EXPECTED_BEHAVIOR",
+      "severity": "informational",
+      "finding": "Persistent cloud rows retain only one modal joint response cell plus pairwise NMI/Cramer's V.",
+      "effect": "Rare nonmodal category-specific cells are not individually preserved even though full-table association summaries see them."
+    }
+  ],
+  "test_matrix": {
+    "question_order": {
+      "lawful_pair_set": "{(A,B) | A != B and anchor_eligible(A) and feature_eligible(B)}",
+      "current_fresh_pair_set": "{(Qi,Qj) | j < i and anchor_eligible(Qi) and feature_eligible(Qj)} subject to other gates",
+      "dual_dual_order_A_B": ["B->A"],
+      "dual_dual_order_B_A": ["A->B"],
+      "result": "IMPLEMENTATION_DEFECT"
+    },
+    "directionality": {
+      "conditional_fields_directional": true,
+      "nmi_symmetric_intent": true,
+      "cramers_v_symmetric": true,
+      "both_directions_required_when_both_dual_eligible": true,
+      "modal_tie_transpose_guaranteed": false,
+      "tie_law": "MISSING_AUTHORITY"
+    },
+    "respondent_overlap": {
+      "join": "inner on respondent_id after preparation",
+      "n_overlap_semantics": "selected modal joint-cell count, not total joined respondents",
+      "anchor_universe": "full prepared anchor frame",
+      "candidate_universe": "full prepared candidate frame",
+      "complete_case_universe": "inner join used for cross-tab/NMI/Cramer's V"
+    },
+    "baseline_denominator": {
+      "p_given": "N_ab / N_a over full prepared anchor frame",
+      "p_baseline": "N_b / N_B over full prepared candidate frame",
+      "partial_overlap_probe": {
+        "complete_case_respondents": 3,
+        "n_overlap": 2,
+        "n_anchor": 3,
+        "n_candidate_baseline": 4,
+        "candidate_denominator": 5,
+        "p_given": 0.6666666666666666,
+        "p_baseline": 0.8,
+        "lift": 0.8333333333333333
+      },
+      "oracle_result": "NO_DEFECT",
+      "routed_comparability": "MISSING_AUTHORITY"
+    },
+    "weighting": {
+      "counts": "unweighted",
+      "modal_selection": "unweighted",
+      "probabilities": "unweighted",
+      "lift": "unweighted",
+      "nmi": "unweighted",
+      "cramers_v": "unweighted",
+      "partial_weighting": false,
+      "normative_law": "MISSING_AUTHORITY"
+    },
+    "duplicates": {
+      "preparation": "drop_duplicates respondent_id keep=first",
+      "exact_duplicates": "collapsed without count inflation",
+      "conflicting_duplicates": "row-order sensitive",
+      "legitimate_repeat_semantics": "MISSING_AUTHORITY",
+      "multiselect_set_semantics_in_helper": false,
+      "multiselect_live_topology": "TOPOLOGY_UNSUPPORTED"
+    },
+    "routing_missingness": {
+      "blank": "filtered",
+      "valid_zero": "retained",
+      "nonblank_dk": "retained despite special flags",
+      "nonblank_refusal": "retained despite special flags",
+      "nonblank_iap": "retained despite special flags",
+      "nonblank_not_asked": "retained despite special flags",
+      "nonblank_inapplicable": "retained despite special flags",
+      "physically_absent_candidate_row": "excluded from join; anchor can remain in n_anchor",
+      "result": "IMPLEMENTATION_DEFECT_FOR_EXPLICIT_SPECIAL_ROWS"
+    },
+    "response_topology": {
+      "binary": "SUPPORTED_IF_CERTIFIED",
+      "nominal": "TOPOLOGY_UNSUPPORTED",
+      "ordinal": "SCALAR_AND_SUPPORTED_IF_CERTIFIED",
+      "scale": "SCALAR_AND_SUPPORTED_IF_CERTIFIED",
+      "multiselect": "TOPOLOGY_UNSUPPORTED",
+      "ranked_choice": "TOPOLOGY_UNSUPPORTED",
+      "routed_followup": "TOPOLOGY_UNSUPPORTED",
+      "matrix_battery": "BATTERY/MULTIRESPONSE_UNSUPPORTED; MATRIX_CHILD_FACTUAL_CONTEXT_BLOCKED; CERTIFIED_SCALAR_ITEM_MAY_BE_SUPPORTED",
+      "derived_reference": "TOPOLOGY_UNSUPPORTED",
+      "administrative_non_substantive": "TOPOLOGY_UNSUPPORTED"
+    },
+    "support_rare": {
+      "support_threshold": "ceil(total*0.005) clipped to [2,30]",
+      "attitude_total_proxy": "min(anchor_meta.n_respondents, candidate_meta.n_respondents) when both positive",
+      "low_n_suppressed": false,
+      "low_n_marked": true,
+      "support_changes_computation": false,
+      "rare_nonmodal_cell_persisted": false,
+      "rare_nonmodal_information_may_affect_pairwise_summary": true,
+      "result": "EXPECTED_BEHAVIOR_WITH_SUPPORT_DENOMINATOR_AUTHORITY_GAP"
+    },
+    "scope": {
+      "state_key": ["run_id", "source", "wave", "canonical_wave", "country_code"],
+      "run_id_isolated": true,
+      "source_isolated": true,
+      "wave_isolated": true,
+      "canonical_wave_isolated": true,
+      "country_isolated": true,
+      "cross_scope_respondent_id_collision_isolated": true,
+      "within_scope_question_id_collision": "MISSING_AUTHORITY"
+    },
+    "cloud_gating": {
+      "full": "always compute",
+      "off": "never compute",
+      "auto": "branch_rows <= cloud_max_branch_rows",
+      "share": "branch_rows <= max(cloud_max_branch_rows, round(wave_respondents*cloud_max_branch_share))",
+      "gate_false_calls_build_attitude_cloud_rows": false,
+      "gate_false_registers_question_in_state": false,
+      "later_pairs_can_be_lost": true,
+      "per_question_typed_absence": false,
+      "empty_global_status": "disabled_until_cross_question_engine",
+      "result": "IMPLEMENTATION_DEFECT_PLUS_SEMANTIC_AMBIGUITY"
+    },
+    "checkpoint_replay": {
+      "resume_resets_state": true,
+      "completed_question_skipped": true,
+      "skipped_question_rehydrated": false,
+      "fresh_vs_resume_equivalent": false,
+      "resume_skip_guard": "question_use_contract_hash",
+      "resume_guard_includes_cloud_mode": false,
+      "resume_guard_includes_cloud_thresholds": false,
+      "resume_guard_includes_cloud_engine_version": false,
+      "whole_cloud_replay_checks": [
+        "cloud_replay_allowed flag",
+        "cloud_engine_version",
+        "question_use_contract_hash",
+        "row validation",
+        "disabled-status/nonempty consistency"
+      ],
+      "whole_cloud_replay_checks_response_substrate_hash": false,
+      "whole_cloud_replay_validates_expected_pair_universe": false,
+      "result": "FAIL"
+    }
+  },
+  "metric_probe": {
+    "perfect_binary_mapping": {
+      "mutual_info_score_nats": 0.6931471805599453,
+      "entropy_bits": 1.0,
+      "current_normalized_mutual_information": 0.6931471805599453,
+      "unit_consistent_normalized_mutual_information": 1.0,
+      "cramers_v": 1.0
+    },
+    "classification": "IMPLEMENTATION_DEFECT"
+  },
+  "validator_audit": {
+    "validates_existing_row_shape_and_provenance": true,
+    "validates_self_pair_exclusion": true,
+    "empty_frame_returns_no_issue": true,
+    "validates_expected_pair_universe": false,
+    "detects_order_missing_pairs": false,
+    "detects_gate_missing_pairs": false,
+    "detects_resume_missing_pairs": false,
+    "detects_nmi_unit_mismatch": false,
+    "detects_special_response_as_content": false,
+    "conclusion": "Current validation cannot certify D03 pair completeness or several D04 semantic invariants."
+  },
+  "required_final_rulings": {
+    "pair_coverage": {
+      "status": "FAIL",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "ruling": "Current output is a processing-order lower-triangular projection of the lawful ordered-pair graph; dual-eligible A/B proves unavoidable incompleteness."
+    },
+    "order_invariance": {
+      "status": "FAIL",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "ruling": "Permuting question processing order changes the emitted ordered-pair set."
+    },
+    "directional_semantics": {
+      "status": "FAIL_CURRENT_COVERAGE",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "ruling": "A->B and B->A are distinct when both are lawful; conditional fields are directional while NMI/Cramer's V are symmetric."
+    },
+    "denominator": {
+      "status": "PASS_CURRENT_ORACLE",
+      "classification": "NO_DEFECT",
+      "ruling": "Current fixed-pair denominators exactly match D03; routed common-risk-set semantics remain missing authority."
+    },
+    "weighting": {
+      "status": "UNWEIGHTED_EXECUTABLE_LAW_ONLY",
+      "classification": "MISSING_AUTHORITY",
+      "ruling": "Current cloud is entirely unweighted; D04 found no authority requiring or authorizing a particular weighted replacement."
+    },
+    "duplicate_multiselect": {
+      "status": "EXECUTABLE_SENSITIVITY_PROVEN",
+      "classification": "MISSING_AUTHORITY",
+      "ruling": "First-row collapse is row-order sensitive for conflicting duplicates; exact duplicates can be harmlessly collapsed; multiselect is not a current supported cloud topology."
+    },
+    "routing_missingness": {
+      "status": "FAIL",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "ruling": "Explicit nonblank special/non-substantive response states can become cotravel content because cloud preparation ignores harmonized epistemic/routing flags."
+    },
+    "scope_isolation": {
+      "status": "PASS",
+      "classification": "NO_DEFECT",
+      "ruling": "run/source/wave/canonical_wave/country are all present in the state key, isolating respondent-ID collisions across those scopes."
+    },
+    "cloud_gating_completeness": {
+      "status": "FAIL",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "ruling": "A gated question is not registered into cross-question state, so gating can delete later lawful pairs; omission reason is not typed in final empty status."
+    },
+    "replay_equivalence": {
+      "status": "FAIL",
+      "classification": "IMPLEMENTATION_DEFECT",
+      "ruling": "Per-question resume is provably non-equivalent because skipped questions do not rehydrate state. Whole-cloud replay has stronger guards but does not itself prove response-substrate identity or pair-set completeness."
+    }
+  },
+  "architect_boundary": {
+    "implementation_defects": [
+      "pair coverage/order dependence",
+      "special response states treated as content",
+      "NMI log-base mismatch",
+      "resume state loss",
+      "pre-state cloud gating deletes later pairs",
+      "empty-output reason/status conflation",
+      "validators do not certify pair completeness"
+    ],
+    "mathematical_object_limitations": [
+      "one modal joint cell persisted rather than full pairwise joint distribution",
+      "directional event denominator is not complete-case",
+      "pairwise NMI/Cramer's V are lossy summaries",
+      "rare nonmodal cells are not persisted individually",
+      "support tiers mark rather than suppress",
+      "population cotravel is not actor psyche/belief/identity"
+    ],
+    "authority_gaps": [
+      "survey weighting",
+      "routed common-risk-set denominator",
+      "legitimate repeated-response semantics",
+      "multiselect set/order semantics",
+      "modal tie law",
+      "within-scope question-id uniqueness",
+      "whole-cloud replay freshness proof",
+      "future non-scalar/non-binary topology law"
+    ]
+  },
+  "artifacts_written": [
+    "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D04/RESULT.md",
+    "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D04/RESULT.json",
+    "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D04/evidence/EMPIRICAL_PROBES.json"
+  ]
+}
