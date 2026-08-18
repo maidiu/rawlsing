@@ -6,13 +6,12 @@ from data.ddm_build_copy.run_20var_allwaves_v550_552j_smoke import (
 
 
 GSS_JOINT_VARS = [
+    "abany",
     "abdefect",
     "abhlth",
-    "abrape",
-    "abany",
-    "absingle",
     "abnomore",
-    "abpoor",
+    "abrape",
+    "absingle",
 ]
 
 
@@ -44,7 +43,7 @@ def test_required_joint_selection_does_not_require_joint_items_to_exist_in_qsm(m
         joint_mode="required",
     )
 
-    assert set(GSS_JOINT_VARS[:6]).issubset(selected)
+    assert set(GSS_JOINT_VARS).issubset(selected)
     assert "harmsgrn" in selected
     assert len(selected) == 7
 
