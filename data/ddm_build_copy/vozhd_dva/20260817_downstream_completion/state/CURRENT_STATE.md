@@ -2,7 +2,7 @@
 
 **As of:** 2026-08-18  
 **Canonical codebase:** `main`  
-**Phase:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_AUTHORITY_FOUNDATION_RELEASED__V553_PRODUCTION_WAITING_SWID_G8`
+**Phase:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_CLOSED__W1_FIRST_BATCH_RELEASED__V553_PRODUCTION_WAITING_SWID_G8`
 
 ## Succession / restart authority
 
@@ -22,17 +22,16 @@ Read and obey:
 8. `integration/V2_COMPLETION_IMPLEMENTATION_RULING.md`;
 9. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
 10. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
-11. accepted TD-R00–TD-R07 and RA-R00 results.
+11. `integration/W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md`;
+12. accepted TD-R00–TD-R07, RA-R00, and accepted W0 authorities.
 
-`RAWLSING_GOVERNING_SPIRIT.md` is binding interpretive law for genuine ambiguity. Its authority is subordinate to explicit source semantics, accepted semantic authority, and the closed architecture/jurisdiction. Within those constraints it is the project-level tie-break: workers must prefer the lawful design most faithful to Rawlsing's anthropology of historically caused but non-inevitable personhood, mediation, contradiction, opacity, identification/alienation, agency-of/agency-against, vitality, Absolute Horizon and accountable generation. It never licenses heuristic invention or semantic leakage.
+`RAWLSING_GOVERNING_SPIRIT.md` is binding interpretive law for genuine ambiguity only after explicit source/semantic authority and closed architecture/jurisdiction are satisfied. It never licenses heuristic invention, normative outcome-forcing, or semantic leakage.
 
 **Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
 Missing authority remains missing and never licenses heuristic invention.
 
 ## Whole-machine architecture — CLOSED
-
-TD-R07 closed the broad architecture campaign.
 
 `WHOLE_MACHINE_ARCHITECTURE_CLOSURE = CLOSE`.
 
@@ -67,59 +66,73 @@ No broad redesign is scheduled. Current-code nonconformance, missing registries,
 - V555 route ID remains the canonical base edge;
 - V556 F2 topology ≠ V3 F1 realization ≠ V3 F2 satisfaction ≠ V3 attractor state;
 - resolver context ≠ biography;
-- objective generated fact ≠ actor-accessible knowledge;
-- V3 causal memory/accessibility ≠ V2 session/transcript state;
+- objective generated fact ≠ actor knowledge/belief/accessibility;
+- objective history ≠ V3 causal memory ≠ V2 session/transcript state;
 - V2 render/session ≠ V3 causal history;
 - pending proposal ≠ admitted event;
 - `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION` ≠ in-world occurrence.
 
 ## RA-R00 release synthesis — ACCEPTED
 
-PR #79 accepted at worker head `97ba0e5c263e8a34134de0445bfc33ae59f92fa8`; merge `7d1fecf38bed21cb89bc96e8d95cda1d2d2fcaca`.
-
-Binding ruling:
-`integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`.
+PR #79 merged at `7d1fecf38bed21cb89bc96e8d95cda1d2d2fcaca`.
 
 `IMPLEMENTATION_RELEASE_SYNTHESIS = PASS`.
 
-Finite blocker universe:
-- 8 `AUTHORITY_ALREADY_EXISTS`;
-- 25 `AUTHORITY_NEEDS_CANONICALIZATION`;
-- 26 `AUTHORITY_MUST_BE_CREATED`;
-- 10 `IMPLEMENTATION_ONLY_NO_NEW_AUTHORITY`;
-- 12 `EXTERNAL_PRODUCTION_GATE`;
-- 81 total;
-- 67 release-blocking.
+Finite release program:
+- 81 classified items;
+- 67 release-blocking;
+- 25 canonicalizations;
+- 26 authority decisions;
+- 10 implementation-only debt classes;
+- 12 external production gates;
+- 53 accepted implementation packets;
+- 12 acceptance harnesses;
+- 16 forbidden regressions.
 
-Implementation topology remains 53 packets. No semantic rule may be invented inside an implementation packet.
+Schedule remains mechanically closed: 24/24 blocking CAN items scheduled, 26/26 ADPs scheduled once, zero unscheduled blocking authorities, zero ordinary-parallel dependency violations. `CAN-013` / V3-P11 remains optional/deferred.
 
-Schedule closure:
-- 24/24 blocking CAN items scheduled;
-- CAN-013 alone is optional/deferred while V3-P11 is disabled;
-- 26/26 ADP packets scheduled once;
-- 53/53 implementation packets gate-audited;
-- zero unscheduled blocking authorities;
-- zero ordinary-parallel dependency violations.
+## W0 authority foundation — CLOSED
 
-## Active execution wave — W0 authority foundation
+Binding ruling:
+`integration/W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md`.
 
-W0 is authority/canonicalization work only. Production implementation is NOT globally released.
+`W0_AUTHORITY_FOUNDATION = CLOSED`.
 
-Run in parallel:
+All eleven W0 authority/canonicalization cells are accepted and merged:
 
-1. `ADP-001` — V554 affordance authority;
-2. `ADP-006` — temporal-proxy eligibility;
-3. `CDP-CAN-003` — V557 runtime-use governance canonicalization;
-4. `ADP-008` — V3 developmental-phase rule;
-5. `ADP-016` — V3 causal-memory rule;
-6. `ADP-019` — V3 external-event/admission rule;
-7. `ADP-020` — V3 causal-randomness/named-stream policy;
-8. `CDP-CAN-014` — V3 pure derived-state schedule canonicalization;
-9. `ADP-024` — V2 transcript retention/summarization policy;
-10. `ADP-025` — V2 render model/randomness/version policy;
-11. `ADP-026` — caller-current-situation authority.
+- ADP-001 V554 affordance authority;
+- ADP-006 temporal-proxy eligibility;
+- CAN-003 V557 runtime-use governance;
+- ADP-008 V3 developmental-phase authority v1.1;
+- ADP-016 V3 causal-memory authority;
+- ADP-019 V3 external-event admission;
+- ADP-020 V3 causal RNG;
+- CAN-014 V3 pure-derived schedule v1.1 + valid-empty derived-output registry;
+- ADP-024 V2 transcript policy v1.0.1;
+- ADP-025 V2 render model/randomness/version policy;
+- ADP-026 caller-current-situation authority.
 
-Each cell owns one bounded semantic authority/canonicalization. It must not implement the consumer stage or alter architecture. Where the cell's hard authority leaves more than one lawful choice, the worker must apply `RAWLSING_GOVERNING_SPIRIT.md` and state the relevant tie-break explicitly.
+The centralized W0 Governing-Spirit retrospective court passes all eleven. No authority is reopened and no worker rerun is required merely for pre-law `GOVERNING_SPIRIT_CHECK` paperwork.
+
+## Active execution wave — W1 first authority batch
+
+Canonical register:
+`schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/LAUNCH_REGISTER.md`.
+
+First six dependency-satisfied cells:
+
+1. `ADP-002` — V555 mediation-route rule registry;
+2. `ADP-009` — V3 structural-position generation/transition/mobility;
+3. `ADP-010` — V3 availability/opportunity/encounter/exposure realization;
+4. `ADP-017` — V3 actor knowledge/belief/claim-accessibility;
+5. `ADP-021` — V3 hybrid causal scheduler / slow-cadence authority;
+6. `CDP-CAN-001` — V554 applicability predicate/owner/evaluator canonicalization.
+
+These six have no sibling W1 dependency and may run in parallel. They are authority/canonicalization work only; production implementation is not globally released.
+
+Later W1 work remains separately scheduled: CAN-008..012, CAN-015..021, and conditional V553 production if SWID closes.
+
+Every new authority/implementation worker with design discretion must read `RAWLSING_GOVERNING_SPIRIT.md` and return `GOVERNING_SPIRIT_CHECK`.
 
 ## Production gates
 
@@ -132,20 +145,20 @@ V553 production remains blocked until:
 - source/wave identity campaign merges;
 - the narrow post-SWID identity-delta check passes.
 
-Independent W0 authority work may proceed concurrently.
+Independent W1 authority work may proceed concurrently.
 
 ### V554–V2
 
-No consumer packet starts before all direct MUST/CAN/EXT dependencies are accepted/banked according to RA-R00. Fixture-only development later is allowed only where RA-R00 explicitly permits it.
+No consumer packet starts before all direct MUST/CAN/EXT dependencies are accepted/banked according to RA-R00. Fixture-only development is allowed only where RA-R00 explicitly permits it.
 
 ## Immediate Vozhd action
 
-1. Execute/adjudicate all eleven W0 authority cells independently.
+1. Launch/adjudicate the six W1 first-batch authority cells independently.
 2. Continue SWID G8 independently.
-3. Bank accepted W0 authority results.
-4. Release only dependency-satisfied W1 cells; do not advance by calendar/wave label alone.
+3. Bank accepted W1 authorities before releasing their dependent cells.
+4. Use freed six-slot capacity for the remaining RA-R00 W1 canonicalization families according to dependency leverage.
 5. Preserve the RA-R00 12-harness acceptance plan and 16 forbidden-regression matrix through implementation.
-6. In every adjudication where explicit law leaves genuine ambiguity, test the choice against `RAWLSING_GOVERNING_SPIRIT.md` and reject convenience-driven flattening of the person model.
+6. Reject convenience-driven flattening under `RAWLSING_GOVERNING_SPIRIT.md` only where hard authority genuinely leaves a choice.
 
 ## Restart instruction
 
@@ -155,6 +168,7 @@ Read, in order:
 3. `RAWLSING_GOVERNING_SPIRIT.md`;
 4. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
 5. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
-6. RA-R00 `RESULT.md` / `RESULT.json`;
-7. relevant accepted stage/V3/V2 ruling for the active cell;
-8. live SWID PR #27 state when V553 production status matters.
+6. `integration/W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md`;
+7. `schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/LAUNCH_REGISTER.md`;
+8. relevant accepted stage/V3/V2/W0 authority for the active cell;
+9. live SWID PR #27 state when V553 production status matters.
