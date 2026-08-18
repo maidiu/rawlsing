@@ -1,6 +1,6 @@
 # Live Itinerary
 
-**Status:** `TD_R06_V2_ACCEPTED__WHOLE_MACHINE_SYNTHETIC_LIFE_CLOSURE_NEXT__IMPLEMENTATION_NOT_YET_RELEASED__V553_BUILD_WAITING_SWID_G8`  
+**Status:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__RULE_AUTHORITY_AND_IMPLEMENTATION_RELEASE_SYNTHESIS_NEXT__V553_BUILD_WAITING_SWID_G8`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
@@ -13,99 +13,108 @@
 - `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`
 - `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`
 - `integration/V2_COMPLETION_IMPLEMENTATION_RULING.md`
-- accepted TD-R00–TD-R06 results.
+- `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`
+- accepted TD-R00–TD-R07 results.
 
 **Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
-## Completed architecture courts
+## Architecture campaign — TERMINATED
 
-- TD-R00 V553 — accepted.
-- TD-R01 V554 — accepted.
-- TD-R02 V555 — accepted.
-- TD-R03 V556 — accepted.
-- TD-R04 V557/V558 — accepted.
-- TD-R05 V3 — accepted.
-- SI-R00..SI-R05 retrospective seam campaign — closed: `5 HARDEN / 1 CONFIRM / 0 REOPEN`.
-- TD-R06 V2 — accepted via PR #75; merge `250f49c8a23880d1cc3f4473953a912813dfc09c`.
+Completed courts:
+- TD-R00 V553 — accepted;
+- TD-R01 V554 — accepted;
+- TD-R02 V555 — accepted;
+- TD-R03 V556 — accepted;
+- TD-R04 V557/V558 — accepted;
+- TD-R05 V3 — accepted;
+- SI-R00..SI-R05 — `5 HARDEN / 1 CONFIRM / 0 REOPEN`;
+- TD-R06 V2 — accepted;
+- TD-R07 whole-machine synthetic-life closure — `CLOSE`, PR #78, merge `2426cdb9637a90b2472e4fba8d367d4b3aea9143`.
 
-## Accepted terminal chain
+Final architecture status:
+
+`WHOLE_MACHINE_ARCHITECTURE = CLOSED`.
+
+No further broad redesign/recalibration court is scheduled.
+
+## Closed terminal chain
 
 ```text
 historically governed V550+ structural world
-→ exact temporal/affordance/mediation-route/interaction/topology semantics
-→ lossless runtime publication
-→ immutable StructuralPriorRepository + ContextResolver
+→ V553 temporal law
+→ V554 bounded affordance/applicability
+→ V555 atomic mediation routes
+→ V556 governed interactions + attractor-prerequisite topology
+→ V557 lossless runtime publication
+→ V558 immutable StructuralPriorRepository + ContextResolver
 → V3 generated developmental life
 → actor-accessible render boundary
 → V2 phenomenology / expression / noncausal session
 → application
 ```
 
-Causal interaction is a loop back into V3 through typed external-event admission, not a V2 mutation path.
+Causal conversation re-enters V3 through exact typed external-event admission. V2 never mutates generated life directly.
+
+## TD-R07 closure proof
+
+Six hostile synthetic lives composed successfully:
+1. contradictory/coexisting structural pressure;
+2. temporal gaps + lawful proxy edge cases;
+3. migration and generated-position rebinding;
+4. recursive genealogy;
+5. V555/V556/F2/attractor development;
+6. knowledge/forgetting with noncausal and causal conversation.
+
+All 24 hostile shortcut cases fail closed. No new TD-R07 hardening or architecture reopen scope exists.
+
+The court also confirms that existing V554–V558 legacy implementation shapes are implementation debt, not terminal architecture.
+
+## Active execution track — finite authority / implementation release synthesis
+
+The next work is not conceptual architecture.
+
+Build one finite cross-stage release map that answers:
+
+1. What exact named semantic authorities/registries/contracts are still missing or partial from V553 through V2?
+2. Which already exist in authoritative repo/source material and can be reused directly?
+3. Which require only canonicalization/versioning/binding?
+4. Which genuinely require a new governed authority decision?
+5. Which accepted packets are implementation-only once their blockers clear?
+6. What is the exact dependency DAG and parallelizable wave structure?
+7. What acceptance harness closes each packet?
+
+Required classification for every blocker:
+- `AUTHORITY_ALREADY_EXISTS`;
+- `AUTHORITY_NEEDS_CANONICALIZATION`;
+- `AUTHORITY_MUST_BE_CREATED`;
+- `IMPLEMENTATION_ONLY_NO_NEW_AUTHORITY`;
+- `EXTERNAL_PRODUCTION_GATE`.
+
+Do not invent semantics merely to make the release map finite.
+
+## Production gates
+
+### SWID / V553
+
+PR #27 remains open/draft at latest inspected head `18b38ef7cb9c39e23f54f1481f4bf4b416e45fdf`.
+
+V553 production remains blocked until terminal G8 runtime acceptance/campaign merge and the required narrow post-merge identity-delta check.
+
+### V554–V558
+
+Implementation is blocked only by canonical upstream completions, governed rule/registry authority, required migration from superseded implementation shapes, and seam-hardening acceptance.
 
 ### V3
 
-V3 owns generated life: positions, events, relationships, genealogy, memory, developmental state, route/F1 realization, F2 satisfaction, pressure-flow history, rupture/metabolization, orientation and attractor development.
+Implementation is blocked by its enumerated runtime/model authorities and shared actor-accessibility/external-interaction contracts.
 
 ### V2
 
-Binding law:
-
-**V3 generates the life. V2 expresses the generated life.**
-
-V2 owns bounded actor-limited phenomenology, expression planning/rendering, noncausal session state, render audit and observable interaction packaging.
-
-V2 has no direct V558 behavioral/persona authority.
-
-`GeneratedPersonRecord` remains objective generated truth; first-person rendering consumes a hardened actor-accessibility surface from V3.
-
-`PRESENTATION_NONCAUSAL` may display immediately.
-
-In `IN_WORLD_CAUSAL`, outbound render begins `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION`; V3 admission of the exact artifact/hash is required before in-world publication or causal-session cursor advance.
-
-Recovered V2 dispositions:
-`5 REUSE / 30 ADAPT / 6 REPLACE / 3 DEFER / 10 REMOVE`.
-
-## Active next gate — whole-machine synthetic-life closure
-
-Run one final hostile composed-system architecture court before implementation release.
-
-The court must test the accepted chain as a functioning whole rather than stage-by-stage only.
-
-Minimum synthetic-life coverage:
-- multiple contradictory/coexisting structural pressures;
-- temporal evidence gaps, direct support and lawful proxies;
-- migration/geographic changes;
-- unresolved generated positions followed by Phase-B re-resolution;
-- family/household roles without upstream biography invention;
-- recursive Parent 1 → Parent 2 → relationship → child genealogy;
-- exact V555 route realization and V556 F1 interaction realization;
-- V556 F2 prerequisite satisfaction distinct from attractor state;
-- multi-timescale developmental memory/path dependence/rupture;
-- actor ignorance, forgetting and analyst-only truth;
-- V2 actor-limited expression under uncertainty;
-- noncausal presentation conversation;
-- causal inbound/outbound conversation with V3 admission and publication gating;
-- deterministic replay/provenance;
-- missing-authority fail-closed behavior.
-
-The purpose is not another redesign cycle. It is to detect only composed-system starvation, contract contradiction, hidden duplication or impossible jurisdiction seams that isolated courts could miss.
-
-Allowed verdicts:
-- `CLOSE`;
-- `HARDEN`;
-- `REOPEN` only with exact concrete proof.
-
-## Production status
-
-- V553 remains blocked on terminal SWID G8/merge plus narrow identity-delta check; live surface PR #27.
-- V554–V558 implementation blocked on rule/registry authority and seam hardening conformance.
-- V3 implementation blocked on governed runtime/model authority and whole-machine closure.
-- V2 implementation blocked on its 19 governed authorities and whole-machine closure.
+Implementation is blocked by the 19 authorities in `V2_COMPLETION_IMPLEMENTATION_RULING.md`.
 
 ## Immediate Vozhd action
 
-1. Launch whole-machine synthetic-life closure court from current canonical main.
-2. Hold production implementation packet release until it returns.
-3. Continue SWID G8 independently.
-4. If closure returns CLOSE/HARDEN without architecture reopen, bank the final architecture closure and split remaining work into finite rule-authority + implementation packets.
+1. Run the cross-stage rule-authority / implementation-release synthesis.
+2. Keep SWID G8 moving independently.
+3. After synthesis, release finite worker waves in dependency order rather than reopening architecture.
+4. Every implementation worker must inherit the terminal closure ruling and relevant seam hardenings.
