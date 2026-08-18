@@ -1,0 +1,325 @@
+{
+  "cell_id": "VT3-CM-R02",
+  "mission": "Aggressively test whether V550's determinicity artifact suite contains irreducible terminal empirical value, identify the minimum lossless empirical fact, and determine which artifacts can be deterministic or diagnostic views without performing the downstream-recreation audit owned by R03.",
+  "verdict": "TARGET_HYPOTHESIS_SUBSTANTIALLY_SURVIVES_WITH_JOINT-STRUCTURE_CORRECTION",
+  "governing_spirit_applied": true,
+  "repository_head_examined": "8c87f7725ba58202b5377c974548140420709fa9",
+  "publication_branch": "agent/vozhd-trii-vt3-cm-r02-information-loss",
+  "production_code_changed": false,
+  "court_tokens": {
+    "V550_DETERMINICITY_SURFACE_HAS_IRREDUCIBLE_ARTIFACT_VALUE": "MOSTLY_FALSE",
+    "INDICATOR_ANSWER_MATRIX_IS_IRREDUCIBLE_CORE": false,
+    "PAIRWISE_CONDITIONAL_DISTRIBUTIONS_ARE_MINIMUM_SUFFICIENT": false,
+    "GOVERNED_JOINT_EMPIRICAL_SUBSTRATE_IS_MINIMUM_SUFFICIENT": true,
+    "CONDITIONAL_EMPIRICAL_DISTRIBUTION_AS_CANONICAL_VIEW": "PASS_WITH_JOINT_PREDICATE_AND_POPULATION_REQUIREMENTS"
+  },
+  "evidence_files": [
+    {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md",
+      "blob_sha": "588cf3954c33417665c5f9bac04e8b27e75d7f7c",
+      "role": "binding interpretive law"
+    },
+    {
+      "path": "data/ddm_build_copy/build_determinicity_repository_v550.py",
+      "blob_sha": "afd2a59e1cdff0024a57acaf1dab8ff30534e565",
+      "symbols": ["prepare_question_frame", "indicator_summary_rows", "secondary_indicator_summary_rows", "indicator_answer_matrix_rows", "outlier_cohort_rows", "branch_nodes_rows"],
+      "role": "shared V550 branching substrate and materialization call graph"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_branching.py",
+      "blob_sha": "8f6d40e0d016d66e5a3b334b31747eaef752873f",
+      "symbols": ["INDICATOR_FIELDS", "indicator_summary_rows", "secondary_indicator_summary_rows", "indicator_answer_matrix_rows", "branch_nodes_rows", "outlier_cohort_rows"],
+      "role": "primary determinicity computations"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_metrics.py",
+      "blob_sha": "e7675f4080bb30e6526027a34db747b7be7f85c9",
+      "symbols": ["classify_weight_status", "distribution_entropy", "conditional_entropy", "cramers_v", "normalized_mutual_information", "dominant_response"],
+      "role": "metric and weighting semantics"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_position_distribution.py",
+      "blob_sha": "651329254244e9f42a8d88c2721ccae6bd768073",
+      "symbols": ["_respondent_slice", "build_position_distribution_rows"],
+      "role": "question-independent respondent position marginals"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_clouds.py",
+      "blob_sha": "dfc878e87d984a1a3d7000a0c726bdc444f9945f",
+      "symbols": ["BRANCH_POSITION_SIGNATURE_COLUMNS", "build_position_signature_rows", "_candidate_association_stats"],
+      "role": "branch position diagnostic signature"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_support.py",
+      "blob_sha": "1b841139fee051b154dcccd52cd3d866b958dbb5",
+      "symbols": ["DEFAULT_SUPPORT_RATE", "DEFAULT_SUPPORT_CAP", "DEFAULT_SUPPORT_FLOOR", "support_threshold_from_total"],
+      "role": "support threshold authority"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_distributions.py",
+      "blob_sha": "43a62723b16f9c800ed7a6ef40a77e70a3f07377",
+      "symbols": ["_resolved_response_semantics", "build_distribution_tables"],
+      "role": "response semantics, typed absence, weighted/unweighted distribution state"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_question_use.py",
+      "blob_sha": "8d90a5116fd05b5db17e9b4645638a3aa6fc1131",
+      "symbols": ["POSITION_CONDITIONING_COLUMNS", "QUESTION_USE_CONTRACT_HASH_COLUMNS"],
+      "role": "authority and position-conditioning contract surface"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "type": "direct_observation",
+      "finding": "V550 builds position_indicator_summary, secondary_indicator_summary, indicator_answer_matrix, outlier_cohort_summary, and recursive_branch_nodes from the same prepared per-question respondent frame and shared weight series.",
+      "evidence": ["data/ddm_build_copy/build_determinicity_repository_v550.py@afd2a59e1cdff0024a57acaf1dab8ff30534e565"]
+    },
+    {
+      "id": "F02",
+      "type": "direct_observation",
+      "finding": "indicator_answer_matrix is a one-indicator contingency representation over response categories with weighted and unweighted counts and within-indicator percentages; empty indicator values are excluded.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f:indicator_answer_matrix_rows"]
+    },
+    {
+      "id": "F03",
+      "type": "inference_from_observed_code",
+      "finding": "indicator_answer_matrix is not a sufficient empirical core because pairwise indicator-response marginals do not identify cross-indicator joint response structure required by secondary_indicator_summary and recursive branching.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f:secondary_indicator_summary_rows", "data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f:branch_nodes_rows"]
+    },
+    {
+      "id": "F04",
+      "type": "direct_observation",
+      "finding": "position_indicator_summary mixes weighting semantics: entropy calculations can be weighted, while normalized mutual information and Cramer's V are unweighted; its field named mutual_information is implemented as baseline_entropy minus conditional_entropy.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f:indicator_summary_rows", "data/ddm_build_copy/ddm_v550_metrics.py@e7675f4080bb30e6526027a34db747b7be7f85c9"]
+    },
+    {
+      "id": "F05",
+      "type": "inference_from_observed_code",
+      "finding": "MI/entropy/NMI/Cramer's V/uplift/confidence labels contain no irreducible empirical information; exact replay requires only the underlying contingency universes plus frozen metric, missingness, weighting, support, and version rules.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_metrics.py@e7675f4080bb30e6526027a34db747b7be7f85c9"]
+    },
+    {
+      "id": "F06",
+      "type": "direct_observation",
+      "finding": "outlier_cohort_summary is not a statistical outlier detector; it classifies every supported indicator-value subgroup by comparison of unweighted dominant response to the global baseline, while carrying weighted support separately.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f:outlier_cohort_rows"]
+    },
+    {
+      "id": "F07",
+      "type": "direct_observation",
+      "finding": "secondary_indicator_summary chooses a primary indicator by score, intersects primary and secondary nonmissing masks, requires joint support of at least 50 rows, and computes secondary_gain from a concatenated primary-secondary joint key.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f:secondary_indicator_summary_rows"]
+    },
+    {
+      "id": "F08",
+      "type": "direct_observation",
+      "finding": "recursive_branch_nodes is a greedy unweighted tree with bounded depth, support gates, and recursion only into the two most frequent values of the chosen split indicator.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f:branch_nodes_rows"]
+    },
+    {
+      "id": "F09",
+      "type": "direct_observation",
+      "finding": "branch_position_signature is explicitly emitted as diagnostic_artifact=true, not_direct_evidence=true, evidence_role=diagnostic_position_signature and ranks at most five authority-gated position fields by max(NMI,Cramer's V).",
+      "evidence": ["data/ddm_build_copy/ddm_v550_clouds.py@dfc878e87d984a1a3d7000a0c726bdc444f9945f:build_position_signature_rows"]
+    },
+    {
+      "id": "F10",
+      "type": "direct_observation",
+      "finding": "position_distribution is computed from a question-independent respondent slice deduplicated by respondent/country keys and therefore cannot in general be reconstructed from per-question conditional distributions without population overlap identity.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_position_distribution.py@651329254244e9f42a8d88c2721ccae6bd768073:_respondent_slice", "data/ddm_build_copy/ddm_v550_position_distribution.py@651329254244e9f42a8d88c2721ccae6bd768073:build_position_distribution_rows"]
+    },
+    {
+      "id": "F11",
+      "type": "direct_observation",
+      "finding": "V550 response semantics distinguish missing, DK, refusal, IAP, not-asked and inapplicable states; collapsing them to generic null is not lossless.",
+      "evidence": ["data/ddm_build_copy/ddm_v550_distributions.py@43a62723b16f9c800ed7a6ef40a77e70a3f07377:_resolved_response_semantics"]
+    },
+    {
+      "id": "F12",
+      "type": "inference_from_observed_code",
+      "finding": "The minimum sufficient authority is a governed joint respondent-position-response substrate, with conditional empirical distributions as canonical views supporting arbitrary governed conjunction predicates and explicit population/denominator scope.",
+      "evidence": ["F02", "F03", "F07", "F08", "F10", "F11"]
+    }
+  ],
+  "artifact_dispositions": [
+    {
+      "artifact": "indicator_answer_matrix",
+      "disposition": "DETERMINISTIC_EMPIRICAL_VIEW",
+      "irreducible": false,
+      "pairwise_core_sufficient": false,
+      "reason": "Exact pairwise response-position counts are empirical but derivable from joint facts; pairwise marginals lose cross-indicator joint structure."
+    },
+    {
+      "artifact": "position_indicator_summary",
+      "disposition": "DETERMINISTIC_DIAGNOSTIC_VIEW",
+      "irreducible": false,
+      "reason": "Scalar association/support summaries are reproducible from governed distributions and metric rules."
+    },
+    {
+      "artifact": "outlier_cohort_summary",
+      "disposition": "DIAGNOSTIC_COHORT_VIEW",
+      "irreducible": false,
+      "reason": "Current implementation is supported subgroup dominant-response classification, not independent empirical evidence."
+    },
+    {
+      "artifact": "secondary_indicator_summary",
+      "disposition": "DIAGNOSTIC_JOINT_ASSOCIATION_VIEW",
+      "irreducible": false,
+      "requires_joint_empirical_structure": true,
+      "reason": "secondary_gain is deterministic but cannot be recreated from singleton position-response marginals."
+    },
+    {
+      "artifact": "recursive_branch_nodes",
+      "disposition": "DIAGNOSTIC_ONLY_LOSSY_VIEW",
+      "irreducible": false,
+      "requires_joint_empirical_structure": true,
+      "reason": "Greedy bounded-depth top-two traversal is deterministic and loses source-population configurations."
+    },
+    {
+      "artifact": "branch_position_signature",
+      "disposition": "DIAGNOSTIC_ONLY_VIEW",
+      "irreducible": false,
+      "reason": "Implementation itself marks the artifact diagnostic and not direct evidence; rankings are deterministic."
+    },
+    {
+      "artifact": "position_distribution",
+      "disposition": "DETERMINISTIC_EMPIRICAL_POPULATION_VIEW",
+      "irreducible": false,
+      "requires_population_base": true,
+      "reason": "Counts are empirically meaningful but exactly derivable from a respondent-position population fact; question CED alone is insufficient."
+    }
+  ],
+  "minimum_sufficient_empirical_fact": {
+    "name": "GOVERNED_JOINT_EMPIRICAL_SUBSTRATE",
+    "canonical_view": "CONDITIONAL_EMPIRICAL_DISTRIBUTION",
+    "requirements": [
+      "source/source_family/raw_wave/canonical_wave/country/question identity",
+      "respondent or losslessly equivalent population-overlap identity",
+      "exact response category and response-semantics authority",
+      "typed absence state",
+      "jointly recoverable governed position values",
+      "weighted and unweighted support",
+      "weight validity/status lane",
+      "explicit denominator/population scope",
+      "question-independent population-position scope",
+      "immutable authority/provenance references and transformation versions",
+      "survey-design sufficient information if statistical uncertainty must be preserved"
+    ],
+    "predicate_requirements": ["TRUE", "singleton position predicates", "multi-position conjunction predicates", "typed missingness predicates where governed"]
+  },
+  "nonnegotiable_for_losslessness": [
+    "joint cross-indicator structure",
+    "unconditional baseline response distribution",
+    "typed missingness/absence distinctions",
+    "weighted and unweighted support",
+    "weight-status/validity semantics",
+    "denominator universe identity",
+    "respondent/population overlap or equivalent population base",
+    "question-use/response-semantics/position-conditioning/source-structure authority",
+    "view/compiler version for exact replay"
+  ],
+  "semantic_loss_findings": [
+    {
+      "id": "SL01",
+      "condition": "Replace suite with singleton-predicate CED only",
+      "loss": "cross-indicator joint response structure",
+      "affected_artifacts": ["secondary_indicator_summary", "recursive_branch_nodes"]
+    },
+    {
+      "id": "SL02",
+      "condition": "Retain indicator_answer_matrix without unconditional baseline and indicator-missingness universe",
+      "loss": "exact baseline-versus-complete-case semantics",
+      "affected_artifacts": ["position_indicator_summary", "outlier_cohort_summary"]
+    },
+    {
+      "id": "SL03",
+      "condition": "Retain per-question CED without respondent/population overlap",
+      "loss": "question-independent population position distribution",
+      "affected_artifacts": ["position_distribution"]
+    },
+    {
+      "id": "SL04",
+      "condition": "Collapse response absence states to generic null",
+      "loss": "admissibility and semantic distinction among DK/refusal/IAP/not-asked/inapplicable"
+    },
+    {
+      "id": "SL05",
+      "condition": "Store only final weighted/unweighted cell totals",
+      "loss": "weight-validity topology and potentially exact lane replay"
+    },
+    {
+      "id": "SL06",
+      "condition": "Claim design-based uncertainty from count-only CED",
+      "loss": "cluster/stratum/replicate-based variance information"
+    }
+  ],
+  "counterevidence": [
+    {
+      "id": "CE01",
+      "attack": "Pairwise sufficiency",
+      "construction": "Two populations can have identical A-response and B-response contingency tables but different response distributions within A-B joint cells.",
+      "result": "Breaks secondary_gain and recursive descendants while indicator_answer_matrix remains identical."
+    },
+    {
+      "id": "CE02",
+      "attack": "Matrix plus metrics sufficiency",
+      "construction": "Hold observed X-response matrix fixed while changing responses among rows where X is missing.",
+      "result": "Matrix stays fixed; global baseline entropy/dominant response changes."
+    },
+    {
+      "id": "CE03",
+      "attack": "Per-question CED sufficiency",
+      "construction": "Make two questions have identical per-question distributions but use overlapping respondents in one dataset and disjoint respondents in another.",
+      "result": "position_distribution respondent population differs."
+    },
+    {
+      "id": "CE04",
+      "attack": "Weighted-count sufficiency",
+      "construction": "10 respondents at weight 10 versus 100 respondents at weight 1.",
+      "result": "Weighted distribution matches while unweighted support, recursive eligibility and unweighted metrics differ."
+    },
+    {
+      "id": "CE05",
+      "attack": "Weighted plus unweighted cell-total sufficiency",
+      "construction": "Match final cell totals while one dataset has complete valid weights and another has partial/invalid weights offset by valid values.",
+      "result": "Weight status and current lane behavior differ."
+    },
+    {
+      "id": "CE06",
+      "attack": "Generic-null sufficiency",
+      "construction": "Equal null counts represent refusals in one dataset and not-asked cases in another.",
+      "result": "Substantive counts match but authority/admissibility differs."
+    },
+    {
+      "id": "CE07",
+      "attack": "Count-only uncertainty preservation",
+      "construction": "Equal weighted/unweighted cells arise from responses dispersed across PSUs in one survey and concentrated in one cluster in another.",
+      "result": "Point estimates match while design-based uncertainty differs."
+    },
+    {
+      "id": "CE08",
+      "attack": "Recursive tree as empirical core",
+      "construction": "Change an extreme low-frequency split category that is not among the two most frequent values recursed by branch_nodes_rows.",
+      "result": "Stored recursive descendants can remain unchanged while source empirical configuration changes."
+    }
+  ],
+  "unresolved_questions": [
+    "Which governed conditional predicates terminal runtime actually needs is not resolved here; VT3-CM-R04 owns terminal position-conditioning requirements.",
+    "Whether V551-V558/V3 currently reconstruct or substitute for V550 conditional meaning is not resolved here; VT3-CM-R03 owns downstream recreation.",
+    "Whether future canonical authority must preserve design-based survey uncertainty rather than support heuristics requires explicit parent adjudication.",
+    "Whether a materialized aggregate conjunction cube or normalized respondent joint substrate is computationally cheaper is not resolved here; VT3-CM-R05 owns compute/cardinality.",
+    "Whether parent requires byte-identical historic artifact replay or only semantic replay remains unspecified."
+  ],
+  "recommended_parent_actions": [
+    "Reject indicator_answer_matrix as the chamber's irreducible empirical authority.",
+    "Adopt a governed joint respondent-position-response substrate as the minimum sufficient empirical authority and expose conditional empirical distributions as deterministic views.",
+    "Require arbitrary governed conjunction predicates, unconditional baseline, typed missingness, weighted/unweighted support, denominator scope and population-position scope in the CED contract.",
+    "Demote scalar metrics, outlier labels, secondary_gain, recursive branch trees and branch position signatures to reproducible diagnostics unless another accepted authority proves terminal necessity.",
+    "Preserve respondent/population identity or an explicit population-position lane so position_distribution remains exactly reproducible.",
+    "Make authority/provenance hashes and weight-status semantics first-class rather than repeatedly copying analytical summaries.",
+    "Route the terminal predicate subset to R04 and the physical materialization/compute decision to R05."
+  ],
+  "result_md_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R02/RESULT.md",
+  "result_json_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R02/RESULT.json"
+}
