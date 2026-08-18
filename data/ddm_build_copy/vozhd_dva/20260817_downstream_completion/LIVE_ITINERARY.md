@@ -1,6 +1,6 @@
 # Live Itinerary
 
-**Status:** `TD_R05_V3_ACCEPTED_AND_BANKED__SEAM_INTEGRITY_AUDIT_READY__V2_HELD__V553_BUILD_WAITING_SWID_G8_RUNTIME`  
+**Status:** `SEAM_INTEGRITY_CLOSED__TD_R06_V2_ARCHITECTURE_NEXT__V3_IMPLEMENTATION_RULE_AUTHORITY_BLOCKED__V553_BUILD_WAITING_SWID_G8`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
@@ -11,175 +11,148 @@ The active chain is governed by:
 - `ARCHITECTURE_PASS_LAW.md`;
 - `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`;
 - `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`;
-- accepted TD-R00–TD-R05 results and integration rulings.
+- accepted TD-R00–TD-R05 results and integration rulings;
+- `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`.
 
 **Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
-
-The original four-way seam method is now an explicit hostile verification requirement before V2 or implementation advances:
-
-`cumulative lawful upstream reality`
-`+ present focused-stage reality`
-`+ immediate downstream demand`
-`+ whole Rawlsing terminal demand`
-`→ CONFIRM | HARDEN | REOPEN`.
 
 ## Completed architecture courts
 
 - Wave-0 reconnaissance closed.
 - S00 V552J→V553 seam excavated/adjudicated.
 - Runtime-prior / ContextResolver re-anchor banked.
-- TD-R00 V553 accepted via PR #52, merge `3ad2dbf586e4f2212ecf9c75cb3fdae85cd80d59`.
-- TD-R01 V554 accepted via PR #54, merge `484e7590c3c946b2fccb8aaa88689518d833134d`.
-- TD-R02 V555 accepted via PR #55, merge `cfd9e88a53a4986b05e4d71201d7f7f45b60c2ac`.
-- TD-R03 V556 accepted via PR #58, merge `dbe606a7bc2a3ea61bdf0ac0a6fbdb4c3a88743e`.
-- TD-R04 V557/V558 accepted via PR #59, merge `ea731f4eb69f5fd04642aa0ccbda1ae2249c9fc1`.
-- TD-R05 V3 accepted via PR #64, accepted head `f929a8c03aed37182cf5a65cb8c2f1cf2348ddc5`, merge `d078f13cfe95a77ebbf067b9c9ba7c582f48d5fd`.
-
-Binding V3 ruling:
-`integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`.
+- TD-R00 V553 accepted via PR #52.
+- TD-R01 V554 accepted via PR #54.
+- TD-R02 V555 accepted via PR #55.
+- TD-R03 V556 accepted via PR #58.
+- TD-R04 V557/V558 accepted via PR #59.
+- TD-R05 V3 accepted via PR #64.
+- Direct recovered V3/V2 source verification closed with exact archive SHA `953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`.
+- Retrospective independent seam-integrity campaign closed.
 
 ## Accepted architecture chain
 
 ### V553
 
-`TEMPORAL_KEY` + `TEMPORAL_OBSERVATION` + `TEMPORAL_RELATION` + `TEMPORAL_LIMIT / NEGATIVE_AUTHORITY`, with exact governed structural-reference preservation. No interpolation/runtime proxies/cross-key interaction creation.
+`TEMPORAL_KEY` + `TEMPORAL_OBSERVATION` + `TEMPORAL_RELATION` + `TEMPORAL_LIMIT / NEGATIVE_AUTHORITY`, with exact governed structural-reference preservation. No canonical interpolation/runtime proxies/cross-key interaction creation.
 
 ### V554
 
-`BOUNDED_STRUCTURAL_AFFORDANCE` + `STRUCTURAL_MEDIATION_APPLICABILITY_CONDITION` + B1. Query-relative actor applicability remains downstream. No V554-created interaction topology.
+`BOUNDED_STRUCTURAL_AFFORDANCE` + `STRUCTURAL_MEDIATION_APPLICABILITY_CONDITION` + `V554_V555_HANDOFF`. No V554-created interaction topology.
 
 ### V555
 
-`STRUCTURAL_MEDIATION_ROUTE_CANDIDATE` + `STRUCTURAL_MEDIATION_ROUTE_CONDITION` + B1. One route is the canonical atomic structural-flow edge. Additional hops are additional routes. Cross-route interaction belongs V556 if governed.
+`STRUCTURAL_MEDIATION_ROUTE_CANDIDATE` + `STRUCTURAL_MEDIATION_ROUTE_CONDITION` + `V555_V556_HANDOFF`. One route is the canonical atomic structural-flow edge.
 
 ### V556
 
-F1 `STRUCTURAL_PRESSURE_INTERACTION_RELATION` + F2 `STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY` + `V556_V557_HANDOFF`.
-
-No canonical V556 `PressureFlowEdge`. V555 route IDs remain base edges. F1/F2 valid-empty pending authority. Actual actor history remains V3-owned.
+F1 `STRUCTURAL_PRESSURE_INTERACTION_RELATION` + F2 `STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY` + `V556_V557_HANDOFF`. No canonical V556 `PressureFlowEdge`.
 
 ### V557/V558
 
 V557 owns lossless mixed-producer runtime authorization/publication and governance, no new structural ontology.
 
-V558 owns immutable stage-agnostic `StructuralPriorRepository`, producer-preserving locators/reference graph/indexes and deterministic read-only ContextResolver. Resolver never synthesizes V556 relations/topology. No V559.
+V558 owns immutable stage-agnostic `StructuralPriorRepository`, producer-preserving locators/reference graph/indexes and deterministic read-only `ContextResolver`. No V559.
 
 ### V3
 
-V3 is a stage-blind **Actor Developmental Causality Engine** over V558-resolved context.
-
-Its accepted architecture includes:
-- bounded immutable `DevelopmentalEventLedger`;
-- `ActorCausalState` + deterministic derived views;
-- progressive generated positions;
-- strict opportunity→encounter→exposure→V555 route realization→response distinction;
+V3 is a stage-blind Actor Developmental Causality Engine with:
+- bounded event-sourced causal history;
+- generated positions and relationships;
+- strict structural availability→applicability→opportunity→encounter→exposure→route traversal→response→persistent-change separation;
+- exact V555 route realization;
 - exact V556 F1 realization;
-- separate F2 prerequisite-satisfaction evaluation;
-- organismic/material/regulatory state;
-- governed extensible orientation-to-strata;
-- relationships/households/recursive genealogy;
+- separate V556 F2 satisfaction;
+- recursive genealogy;
+- organismic/developmental state;
 - pressure-flow memory/path dependence;
-- rupture/metabolization/causal memory;
-- hybrid scheduler and deterministic replay;
+- rupture/metabolization;
 - life-course attractor formation;
 - immutable V3→V2 generated-truth boundary.
 
-Binding four-way law:
+Four-way law:
 
-`V556 F2 structural prerequisite topology`
-`≠ V3 F1 interaction realization`
-`≠ V3 F2 prerequisite satisfaction`
+`V556 F2 topology`
+`≠ V3 F1 realization`
+`≠ V3 F2 satisfaction`
 `≠ V3 attractor state`.
 
-Event-family no-bloat is binding: buffer/amplify/deflect/reroute/transform/block are response/effect kinds, not one canonical event family each.
+## Retrospective seam-integrity closure
 
-Orientation vocabulary is `GOVERNED_EXTENSIBLE_VOCABULARY_WITH_DERIVED_PROJECTIONS`.
+Binding ruling:
+`integration/SEAM_INTEGRITY_CLOSURE_RULING.md`.
 
-## Direct recovered-source verification
+Six independent courts:
 
-Historical V3/V2 archive:
-`Rawlsing_code_bundle_staging.zip`
+1. SI-R00 V553→V554 — `HARDEN`, PR #71, merge `bfea6b3bd983148e403948a0b20a100af1fb6ab0`.
+2. SI-R01 V554→V555 — `HARDEN`, PR #73, merge `cd5e36ecffbda1d5661df822b6205ce67cb183bf`.
+3. SI-R02 V555→V556 — `HARDEN`, PR #70, merge `53c347d348597d57c17c20637e91981cf143e30c`.
+4. SI-R03 V556→V557 — `HARDEN`, PR #69, merge `1db57e8ba4b85a820b84588bcea481508597f728`.
+5. SI-R04 V557→V558 — `CONFIRM`, PR #68, merge `7946fd833b257dd633bf82d0894e7ce2c636d3e2`.
+6. SI-R05 V558→V3 — `HARDEN`, PR #72, merge `0cd5b90a712df38fbf4fb42ca078c700f9453dcc`.
 
-SHA256 verified exact:
-`953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`.
+Aggregate:
 
-`DIRECT_SOURCE_VERIFICATION = PASS_WITH_ARCHITECTURE_DELTA`.
+`5 HARDEN / 1 CONFIRM / 0 REOPEN`.
 
-All 40 substantive recovered mechanisms were directly rechecked:
-- 3 REUSE;
-- 31 ADAPT;
-- 3 REPLACE;
-- 3 REMOVE.
+`RETROSPECTIVE_SEAM_INTEGRITY_CLOSURE = PASS_WITH_BINDING_HARDENING`.
 
-The direct-source caveat is CLOSED.
+No stage architecture is reopened. The hardenings become mandatory implementation acceptance law.
 
-## Active architecture track — independent seam-integrity courts
+## Active architecture track — TD-R06 V2 phenomenology / expression
 
-Launch these six courts **in parallel and independently** after their branches are fast-forwarded to final banked main:
+TD-R06 is now RELEASED for architecture work.
 
-1. SI-R00 — V553→V554
-   - branch `agent/vozhd-dva-si-r00-v553-v554`
-2. SI-R01 — V554→V555
-   - branch `agent/vozhd-dva-si-r01-v554-v555`
-3. SI-R02 — V555→V556
-   - branch `agent/vozhd-dva-si-r02-v555-v556`
-4. SI-R03 — V556→V557
-   - branch `agent/vozhd-dva-si-r03-v556-v557`
-5. SI-R04 — V557→V558
-   - branch `agent/vozhd-dva-si-r04-v557-v558`
-6. SI-R05 — V558→V3
-   - branch `agent/vozhd-dva-si-r05-v558-v3`
-   - attach `Rawlsing_code_bundle_staging.zip` as direct implementation/capability evidence.
+The court must work from:
 
-Each court must independently inspect:
-- actual cumulative upstream authority;
-- current implementation at the seam;
-- accepted + actual immediate downstream demand;
-- total Rawlsing terminal demand.
+`total Rawlsing vision`
+`+ complete accepted V550+ structural world`
+`+ accepted V3 generated-person truth boundary`
+`+ seam-integrity closure law`
+`+ recovered V2 implementation/design evidence`
+`+ continuity preference where lossless`
+`- recovered V2 causal reownership`
+`- duplicate biography / second life simulation`
+`- render-layer mutation of V3 truth`
+`= terminal V2 phenomenology/expression architecture`.
 
-Allowed verdicts:
-- `CONFIRM`;
-- `HARDEN`;
-- `REOPEN`.
+Core starting law:
 
-`REOPEN` requires concrete starvation, bloat/duplication, jurisdiction error or actual producer-consumer mismatch that accepted architecture cannot cure without changing jurisdiction.
+**V3 generates the life. V2 expresses the generated life.**
 
-Do not give one seam worker another seam worker's result before it returns.
+V2 may not become an alternate causal spine. Conversational interactions that create actual causal consequences return to V3 through explicit typed external-event admission.
 
-## Post-audit court
+Recovered V2 material must be directly inspected for continuity opportunities, especially:
+- persona/conversation engine;
+- life container / life season / Today State;
+- salience/appraisal/boundary/effort gating;
+- relationship memory and asymmetry;
+- uncertainty/ignorance;
+- interruption/topic-gravity/avoidance behavior;
+- Enneagram phenomenological expression;
+- renderer-not-decider discipline.
 
-When all six workers return, Vozhd will inspect their actual GitHub branches/PRs and perform one aggregate seam-closure adjudication.
-
-Possible aggregate results:
-- all seams confirmed;
-- bounded hardening required without architectural reopening;
-- one or more accepted architecture courts reopened with exact narrow scope.
-
-Only after this aggregate closure may TD-R06 V2 architecture launch.
+Recovered mechanisms receive explicit finite dispositions. Existing machinery may not silently disappear, but continuity may never weaken accepted V3 or V550+.
 
 ## Production implementation status
 
-Architecture work may continue while production dependencies remain blocked.
-
 ### V553 / SWID
 
-V553 production remains blocked on terminal source/wave-identity runtime acceptance/merge plus the narrow identity-delta check. Fetch live PR #27 before relying on stale G8 status because runtime repair work has continued.
+V553 production remains blocked on terminal source/wave-identity G8 runtime acceptance/merge plus the narrow identity-delta check. PR #27 remains the live campaign surface and must be fetched when execution status matters.
 
 ### V554–V558
 
-Blocked pending canonical upstream publications and governed stage registries/rule authorities.
+Implementation remains blocked on canonical upstream publications, governed rule/registry authority and the binding seam hardenings.
 
 ### V3
 
-Architecture accepted. Implementation packets P1–P13 are planned but NOT released. Blockers are:
-- retrospective seam-integrity closure;
-- governed runtime rule/model authorities enumerated in `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`.
-
-Missing authority remains missing; it never licenses default psychology or fabricated biography.
+Architecture accepted and seam blocker closed. Implementation remains blocked on governed runtime rule/model authority enumerated in `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`.
 
 ## Immediate Vozhd action
 
-1. Fast-forward SI-R00..SI-R05 branches to the final banked `main`.
-2. Launch the six seam-integrity workers independently in parallel.
-3. Hold TD-R06/V2.
-4. On return, inspect actual PRs/results and perform aggregate seam closure.
+1. Create/launch TD-R06 V2 terminal-demand architecture worker from current canonical main.
+2. Require direct recovered V2 source inspection.
+3. On return, inspect actual branch/PR and court V2 against V3 sovereignty + seam closure + total vision.
+4. If accepted, bank V2 ruling.
+5. Then perform one whole-machine synthetic-life/architecture closure pass before implementation packets are released.
+6. Independently continue SWID G8; do not release V553 implementation before that production gate closes.
