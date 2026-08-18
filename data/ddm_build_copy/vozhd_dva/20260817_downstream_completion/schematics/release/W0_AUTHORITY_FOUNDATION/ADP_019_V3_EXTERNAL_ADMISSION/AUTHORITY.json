@@ -1,0 +1,484 @@
+{
+  "assignment": "W0-06_ADP-019_V3_EXTERNAL_EVENT_ADMISSION_AUTHORITY",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-dva-w0-adp-019-v3-external-admission",
+  "exact_base_sha": "655da47b9e03ab310ed4b7fa65ceec9b9d04d3bc",
+  "mode": "AUTHORITY_CREATION_ONLY_NO_PRODUCTION_CODE_NO_IMPLEMENTATION",
+  "architecture_status": "CLOSED",
+  "release_authority": {
+    "ra_item": "MUST-019",
+    "decision_packet": "ADP-019",
+    "authority_id": "V3_EXTERNAL_INTERACTION_EVENT_ADMISSION_RULE",
+    "authority_version": "1.0.0",
+    "authority_status": "CREATED",
+    "owner": "V3 Actor Developmental Causality Engine / External Admission Court",
+    "jurisdiction": "Decide whether one externally proposed observable interaction/event becomes exactly one V3 external-runtime causal event. Admission creates occurrence identity only; causal effects are governed separately by V3 event semantics."
+  },
+  "historical_archive": {
+    "logical_name": "Rawlsing_code_bundle_staging.zip",
+    "mounted_name": "Rawlsing_code_bundle_staging(5).zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "sha_verdict": "EXACT_MATCH",
+    "entry_count": 13138,
+    "authority_limit": "Recovered V3/V2/server material is continuity and authority-recovery evidence only; historical V5/DDM has zero authority over current V550+."
+  },
+  "evidence_inspected": {
+    "binding_current": [
+      "state/CURRENT_STATE.md",
+      "integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+      "integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md",
+      "integration/V3_COMPLETION_IMPLEMENTATION_RULING.md",
+      "integration/V2_COMPLETION_IMPLEMENTATION_RULING.md",
+      "schematics/recalibration/TD_R06_V2_PHENOMENOLOGY_EXPRESSION/RESULT.md",
+      "schematics/closure/TD_R07_WHOLE_MACHINE_SYNTHETIC_LIFE/RESULT.md (Life F and replay/publication findings)",
+      "schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.md",
+      "schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.json",
+      "schematics/release/W0_AUTHORITY_FOUNDATION/LAUNCH_REGISTER.md"
+    ],
+    "historical_continuity": [
+      "v3/engine/llm_contract.py",
+      "v3/engine/scoring.py",
+      "v3/engine/run_llm_band.py",
+      "v3/engine/event_engine.py",
+      "v3/core/state.py",
+      "v3/core/year_record.py",
+      "v3/core/generation_integrity.py",
+      "v2/PERSONA_CONVERSATION_ENGINE_SPEC.md",
+      "v2/conversation_engine.py",
+      "v2/run_conversation_chat.py",
+      "server/session_state.py",
+      "server/session_db.py",
+      "server/chat/turn.py",
+      "server/routes/chat.py"
+    ],
+    "historical_findings": [
+      "Recovered CandidatePacket parser/sanitizer provides useful proposal/provenance shape but creates fallback events when empty.",
+      "Recovered run_llm_band can force the first candidate when scoring selects nothing and then apply event/magnet deltas directly to state.",
+      "Recovered server/V2 session machinery persists transcript, chat-turn counters, prompt/model/output artifacts, and render/session state but has no V3 admission sovereignty.",
+      "Recovered V2 renderer/session continuity is compatible only as proposal/audit continuity; transcript existence and rendered output are not causal occurrence."
+    ],
+    "current_source_presence": "No top-level current v3/v2/server runtime tree is present at the exact base; direct fetch of v3/engine/run_llm_band.py at the base returned not found. Current binding governance/integration artifacts therefore govern; historical runtime source is continuity evidence only."
+  },
+  "consumers": {
+    "direct_semantic_consumers": [
+      "V3-P2 event-ledger/replay substrate",
+      "V3-P11 optional LLM proposal path if enabled",
+      "V3-P12 external interaction / render-boundary ingress",
+      "V2-P9 causal interaction wiring as a receipt/publication-gate consumer"
+    ],
+    "separate_adjacent_authorities": {
+      "CAN-024": "V2/application interaction-mode policy; does not decide admission.",
+      "CAN-025": "V2→V3 external-event packaging contract; must map into this V3 ingress contract but does not decide admission.",
+      "CAN-013": "Optional V3 LLM proposal adapter; proposal only, never admission or mutation.",
+      "MUST-020": "V3 causal randomness policy; randomness may select among lawful candidates but cannot supply admission authority."
+    }
+  },
+  "proposal_envelope": {
+    "schema_id": "V3_EXTERNAL_ADMISSION_ENVELOPE",
+    "schema_version": "1.0.0",
+    "canonicalization_profile": "RFC8785_JCS_ADP019_V1",
+    "hash_algorithm": "SHA-256",
+    "hash_law": "proposal_hash = SHA-256(RFC 8785 JSON Canonicalization Scheme bytes of the admission-relevant V3_EXTERNAL_ADMISSION_ENVELOPE projection with proposal_hash and transport-only metadata omitted). The projection schema/version is replay provenance.",
+    "required_fields": {
+      "proposal_id": "Immutable proposal identity; never reused for different content.",
+      "proposal_hash": "Canonical admission-envelope digest.",
+      "producer": [
+        "producer_class",
+        "producer_instance_ref",
+        "producer_rule_or_adapter_version"
+      ],
+      "subject_actor_id": "Exact V3 generated actor identity.",
+      "event_binding": [
+        "event_family = EXTERNAL_RUNTIME_EVENT",
+        "event_kind_id",
+        "interaction_direction",
+        "participant_refs",
+        "proposed_temporal_binding_or_v3_admission_window_ref"
+      ],
+      "causal_parent_binding": [
+        "expected_v3_event_cursor",
+        "expected_v3_history_hash"
+      ],
+      "observable": [
+        "observable_epistemic_class",
+        "payload_class",
+        "payload_hash",
+        "immutable payload bytes or immutable payload_ref+hash"
+      ],
+      "provenance": [
+        "source_refs_and_hashes",
+        "originating_context/session refs where applicable",
+        "producer/schema/rule versions"
+      ]
+    },
+    "conditional_fields": {
+      "session_bound_interaction": [
+        "causal_session_id",
+        "expected_causal_session_cursor"
+      ],
+      "outbound_v2_rendered_actor_candidate": [
+        "candidate_artifact_id",
+        "candidate_artifact_hash",
+        "render_receipt_ref",
+        "render_receipt_hash",
+        "candidate_status = CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION",
+        "admitted_inbound_predecessor_event_id_or_receipt_ref",
+        "render_context_hash_descended_from_that_inbound_admission"
+      ]
+    },
+    "forbidden_causal_directives": [
+      "admit=true/false",
+      "admitted_event_id supplied by proposer",
+      "state_delta / causal_delta",
+      "memory_delta / belief_delta",
+      "relationship/trust/intimacy delta",
+      "attractor/type delta",
+      "effect result or effect-selection instruction",
+      "cursor_after supplied as authority"
+    ],
+    "v2_schema_boundary": "This is V3's required ingress contract only. CAN-025 owns the physical V2 packaging schema and may use different transport names if it losslessly maps to these V3-required fields."
+  },
+  "epistemic_classes": {
+    "admissible_proposal_classes": [
+      "CALLER_OR_USER_OBSERVABLE_INTERACTION",
+      "GOVERNED_ENVIRONMENT_OBSERVATION_OR_ASSERTION",
+      "V2_RENDERED_ACTOR_CANDIDATE",
+      "OPTIONAL_V3_LLM_EVENT_CANDIDATE_VIA_CAN-013",
+      "OTHER_GOVERNED_EXTERNAL_PRODUCER"
+    ],
+    "nonpromotion_law": "Admission preserves the proposal's epistemic class. A user/caller assertion is admissible, if otherwise lawful, as the fact that the assertion/interaction occurred; its propositional content does not become objective generated truth."
+  },
+  "admissibility": {
+    "ordered_checks": [
+      "IDENTITY_LOOKUP: same proposal_id with different proposal_hash -> INVALID; same terminal proposal_id/hash -> idempotent stored receipt.",
+      "SCHEMA_AND_INTEGRITY: supported schema/version, all required fields, canonical hash match, immutable payload/hash, no contradictory duplicate keys.",
+      "FORBIDDEN_AUTHORITY_FIELDS: proposal contains no proposer-owned admission/effect/state-mutation/cursor-after directive.",
+      "PRODUCER_PROVENANCE: producer class/ref/version and source hashes are governed and sufficient; explicit producer denial rejects.",
+      "SUBJECT_BINDING: subject_actor_id exists and causal-parent binding belongs to that actor.",
+      "EVENT_KIND_BINDING: event_family/kind/direction are governed and externally admissible; no fallback remapping to a generic event kind.",
+      "CAUSAL_PARENT_CONCURRENCY: expected V3 event cursor/history hash matches the lawful admission point or an explicitly governed admission window.",
+      "SESSION_BINDING_IF_PRESENT: causal_session_id and expected causal-session cursor match V3 state; V2/session counters are not substitutes.",
+      "PARTICIPANT_AND_TEMPORAL_BINDING: required participants and lawful V3 temporal placement are resolvable without caller-created actor facts.",
+      "OUTBOUND_ARTIFACT_BINDING_IF_PRESENT: exact candidate artifact/hash and render receipt/hash verify; status is pending; actor/context/predecessor bindings match; artifact has no prior terminal rejection or different admission.",
+      "REQUIRED_EVENT_SEMANTICS: any authority required merely to represent this event kind coherently is available; missing required semantics defers rather than invents.",
+      "EXPLICIT_DENIALS: any governed negative/denial condition rejects; no positive check overrides an explicit denial.",
+      "ADMIT only if every required check is positive and no unresolved required authority remains."
+    ],
+    "precedence": [
+      "proposal-id collision / malformed integrity => INVALID",
+      "same terminal proposal id+hash => return stored terminal receipt without re-mutation",
+      "explicit governed denial/conflict => REJECT",
+      "missing/unknown required authority or binding => DEFER",
+      "all required positive checks => ADMIT"
+    ]
+  },
+  "decision_model": {
+    "ADMIT": {
+      "meaning": "The exact proposed observable occurrence becomes exactly one immutable V3 external-runtime causal event.",
+      "mutations_allowed": [
+        "append exactly one admitted event to DevelopmentalEventLedger",
+        "advance V3 event-ledger cursor exactly once",
+        "for an outbound session-bound actor event, advance V3-owned causal-session cursor exactly once",
+        "record proposal/event/artifact/receipt bindings"
+      ],
+      "not_implied": [
+        "memory formation",
+        "belief/knowledge update",
+        "relationship/trust change",
+        "position change",
+        "attractor change",
+        "any proposer-suggested causal delta"
+      ]
+    },
+    "REJECT": {
+      "meaning": "Well-formed proposal was evaluated with sufficient authority and is not admissible.",
+      "causal_effect": "none",
+      "cursor_effect": "none",
+      "terminal_for_proposal": true
+    },
+    "DEFER": {
+      "meaning": "Well-formed proposal cannot yet receive a lawful decision because required governed authority/binding/data is missing or unresolved.",
+      "causal_effect": "none",
+      "cursor_effect": "none",
+      "retry_law": "Same immutable proposal may be reevaluated only after named blockers change; each attempt has a new immutable receipt linked to prior DEFER receipts."
+    },
+    "INVALID": {
+      "meaning": "Proposal cannot lawfully enter the admission court because envelope/integrity/identity binding is malformed, contradictory, or content-colliding.",
+      "causal_effect": "none",
+      "cursor_effect": "none",
+      "terminal_for_that_proposal_identity": true
+    }
+  },
+  "event_identity": {
+    "cardinality": "one proposal -> zero or one admitted event; one admitted event -> exactly one proposal_id",
+    "event_id_formula": "v3ext:<sha256(RFC8785_JCS({\"authority_id\":\"V3_EXTERNAL_INTERACTION_EVENT_ADMISSION_RULE\",\"authority_version\":\"1.0.0\",\"proposal_id\":proposal_id,\"proposal_hash\":proposal_hash,\"subject_actor_id\":subject_actor_id,\"event_kind_id\":event_kind_id,\"admitted_parent_history_hash\":admitted_parent_history_hash,\"causal_session_id\":causal_session_id_or_null,\"causal_session_cursor_before\":causal_session_cursor_before_or_null}))>",
+    "proposal_to_event": {
+      "ADMIT": "admitted_event_id is non-null and permanently bound to proposal_id+proposal_hash.",
+      "REJECT_DEFER_INVALID": "admitted_event_id is null."
+    },
+    "outbound_artifact_uniqueness": "One candidate_artifact_id+hash may bind to at most one admitted outbound event. An artifact terminally rejected for causal publication remains audit-only; it may not be re-proposed under a new proposal_id to evade rejection."
+  },
+  "idempotence": {
+    "same_proposal_id_same_hash_after_ADMIT": "Return same stored admission receipt/event; no new event and no cursor advancement.",
+    "same_proposal_id_same_hash_after_REJECT_OR_INVALID": "Return same stored terminal receipt; no reevaluation or mutation.",
+    "same_proposal_id_same_hash_after_DEFER": "May reevaluate only as a new evaluation_attempt when named defer blockers may have changed.",
+    "same_proposal_id_different_hash": "INVALID_PROPOSAL_ID_CONTENT_COLLISION.",
+    "same_outbound_artifact_new_proposal_after_ADMIT": "REJECT_ARTIFACT_ALREADY_ADMITTED.",
+    "same_outbound_artifact_after_terminal_REJECT": "REJECT_ARTIFACT_TERMINALLY_NONCAUSAL.",
+    "rerender": "A rerender is a new artifact identity/hash and requires a new proposal and independent admission. No admission inheritance."
+  },
+  "effect_boundary": {
+    "admission_semantics": "ADMIT decides occurrence only.",
+    "effect_semantics": "Only separately governed V3 causal event rules may derive/apply effects from an admitted_event_id. Proposal-authored effects, V2 appraisal/move semantics, transcript state, or LLM deltas have zero causal authority.",
+    "missing_effect_authority": "If a separate rule is required merely to represent the proposed event kind coherently and is unavailable, DEFER. Otherwise the occurrence may be admitted and downstream optional consequences remain absent until governed; no default effect is invented."
+  },
+  "artifact_publication_law": {
+    "candidate_status": "CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION",
+    "law": "In IN_WORLD_CAUSAL use, rendering is not occurrence. The exact candidate artifact/hash remains noncausal until this rule ADMITs the outbound observable actor event. Only the corresponding ADMIT receipt authorizes the application to publish/commit that exact artifact as something that occurred in generated life.",
+    "on_admit": [
+      "bind exact candidate_artifact_id+hash to admitted_event_id",
+      "application may commit the admitted artifact as in-world causal transcript event",
+      "application may expose the utterance/action as actually occurred",
+      "application may mirror the receipt-authorized causal-session cursor advance"
+    ],
+    "on_reject": [
+      "candidate remains immutable audit-only/noncausal",
+      "candidate never enters generated causal transcript/history",
+      "candidate cannot affect later V3 state",
+      "application fails closed or obtains/renders a different governed candidate under later policy"
+    ],
+    "post_render_change": "Any rerender or substantive post-render transform producing a new artifact identity/hash is a new candidate and needs new admission. Admission never transfers by visible-text equality or semantic similarity."
+  },
+  "cursor_law": {
+    "v3_event_ledger_cursor": {
+      "owner": "V3",
+      "advance": "Every ADMIT appends one event and advances exactly once; REJECT/DEFER/INVALID do not advance."
+    },
+    "causal_session_cursor": {
+      "owner": "V3 admission state; application may only mirror a receipt-authorized value",
+      "scope": "Session-bound causal exchanges only; environment/non-session events may have null causal_session_id/cursor.",
+      "inbound_admit": "Does not advance the application-visible causal-session turn cursor; it advances only the V3 event-ledger cursor and becomes the governed predecessor for the candidate render.",
+      "outbound_admit": "Advances causal_session_cursor from N to N+1 atomically with exact outbound event admission.",
+      "other_states": "REJECT/DEFER/INVALID do not advance.",
+      "idempotent_retry": "Returns original before/after values; never increments twice.",
+      "separation": "V2 session_cursor/chat_turn_counter/transcript position is not the V3 causal_session_cursor."
+    }
+  },
+  "receipt_schema": {
+    "schema_id": "V3_EXTERNAL_ADMISSION_RECEIPT",
+    "schema_version": "1.0.0",
+    "required_fields": [
+      "receipt_id",
+      "receipt_hash",
+      "authority_id",
+      "authority_version",
+      "proposal_id",
+      "proposal_hash",
+      "evaluation_attempt",
+      "decision_state",
+      "reason_codes",
+      "subject_actor_id",
+      "event_kind_id",
+      "interaction_direction",
+      "evaluated_parent_event_cursor",
+      "evaluated_parent_history_hash",
+      "artifact_binding_or_null",
+      "causal_session_id_or_null",
+      "causal_session_cursor_before_or_null",
+      "causal_session_cursor_after_or_null",
+      "admitted_event_time_or_order_key_or_null",
+      "admitted_event_id_or_null",
+      "admitted_event_hash_or_null",
+      "event_ledger_cursor_before",
+      "event_ledger_cursor_after",
+      "defer_blockers",
+      "required_effect_authority_refs",
+      "source_provenance_refs_hashes",
+      "prior_defer_receipt_id_or_null"
+    ],
+    "receipt_identity": "v3admrcpt:<sha256(RFC8785_JCS(receipt body with receipt_id and receipt_hash omitted))>; receipt bytes are immutable.",
+    "atomicity": "An ADMIT receipt is valid only if event append, event-id/hash binding, event-ledger cursor update, and any outbound causal-session cursor update commit atomically. Partial success fails closed and yields no ADMIT publication authority.",
+    "audit_time_law": "Wall-clock evaluation timestamp may be recorded as noncausal audit metadata but is never replay input or generated event time."
+  },
+  "replay_provenance": {
+    "must_record": [
+      "authority ID/version",
+      "admission envelope schema/canonicalization version",
+      "proposal ID/hash and immutable payload/source hashes",
+      "producer/adapter/schema/rule versions",
+      "subject/participant/event-kind bindings",
+      "evaluated parent event cursor/history hash",
+      "V3 temporal/admission-window binding",
+      "decision reason codes and evaluation attempt",
+      "artifact/render-receipt IDs+hashes where applicable",
+      "causal-session ID and before/after cursor where applicable",
+      "admitted event ID/hash",
+      "receipt ID/hash",
+      "required separate event/effect authority refs"
+    ],
+    "replay_law": "Replay never refetches mutable external truth to reinterpret a historical decision. It reuses captured immutable proposal/payload/provenance hashes and the exact historical admission-rule version. Hidden wall clock, mutable latest, filesystem order, LLM output not captured by hash, or a current network lookup cannot alter the replayed decision."
+  },
+  "failure_and_reason_codes": {
+    "INVALID": [
+      "INVALID_SCHEMA_OR_VERSION",
+      "INVALID_MISSING_REQUIRED_FIELD",
+      "INVALID_PROPOSAL_HASH_MISMATCH",
+      "INVALID_PROPOSAL_ID_CONTENT_COLLISION",
+      "INVALID_SUBJECT_BINDING",
+      "INVALID_FORBIDDEN_CAUSAL_INSTRUCTION",
+      "INVALID_ARTIFACT_HASH_OR_RECEIPT_MISMATCH",
+      "INVALID_OUTBOUND_CANDIDATE_STATUS"
+    ],
+    "REJECT": [
+      "REJECT_EXPLICIT_SOURCE_OR_EVENT_DENIAL",
+      "REJECT_EVENT_KIND_NOT_EXTERNALLY_ADMISSIBLE",
+      "REJECT_STALE_CAUSAL_PARENT",
+      "REJECT_STALE_CAUSAL_SESSION_CURSOR",
+      "REJECT_PARTICIPANT_OR_PREDECESSOR_CONFLICT",
+      "REJECT_ARTIFACT_ALREADY_ADMITTED",
+      "REJECT_ARTIFACT_TERMINALLY_NONCAUSAL"
+    ],
+    "DEFER": [
+      "DEFER_MISSING_PRODUCER_AUTHORITY",
+      "DEFER_MISSING_EVENT_KIND_AUTHORITY",
+      "DEFER_UNRESOLVED_REQUIRED_PARTICIPANT",
+      "DEFER_MISSING_TEMPORAL_OR_SCHEDULER_BINDING",
+      "DEFER_MISSING_REQUIRED_EVENT_SEMANTICS",
+      "DEFER_MISSING_REQUIRED_PROVENANCE"
+    ],
+    "fail_closed_law": "Any unrecognized state, unclassified integrity failure, malformed proposal, missing required authority, or inability to prove exact artifact/actor/causal-parent binding produces INVALID or DEFER; never ADMIT by default."
+  },
+  "forbidden_inferences": [
+    "proposal existence -> event occurrence",
+    "transcript existence -> causal event",
+    "rendered candidate -> in-world utterance/action",
+    "same visible text -> same artifact identity",
+    "prior artifact admission -> rerender admission",
+    "LLM candidate/score/selection -> V3 admission",
+    "LLM/V2/caller-proposed delta -> causal effect",
+    "caller assertion content -> objective generated fact",
+    "ADMIT occurrence -> automatic memory/belief/relationship/attractor change",
+    "V2 appraisal/salience/response move -> V3 causal interpretation",
+    "REJECT/DEFER/INVALID -> event or cursor advancement",
+    "V2 chat-turn/session cursor -> V3 causal-session cursor",
+    "receipt audit timestamp -> generated event time",
+    "payload hash equality alone -> duplicate occurrence for distinct lawful inbound events"
+  ],
+  "hostile_fixtures": [
+    {
+      "id": "H01",
+      "case": "missing proposal_id or proposal_hash",
+      "expected": "INVALID; no event; no cursor"
+    },
+    {
+      "id": "H02",
+      "case": "same proposal_id reused with changed content/hash",
+      "expected": "INVALID_PROPOSAL_ID_CONTENT_COLLISION"
+    },
+    {
+      "id": "H03",
+      "case": "V2 package includes admit=true, relationship_delta or effect result",
+      "expected": "INVALID_FORBIDDEN_CAUSAL_INSTRUCTION"
+    },
+    {
+      "id": "H04",
+      "case": "caller says 'I am the president'",
+      "expected": "may admit occurrence of caller assertion if lawful; never promotes proposition to objective generated fact"
+    },
+    {
+      "id": "H05",
+      "case": "outbound pending candidate with exact artifact/hash and valid predecessor",
+      "expected": "eligible for ADMIT; publication only after ADMIT receipt"
+    },
+    {
+      "id": "H06",
+      "case": "candidate artifact bytes/hash differ from proposal or render receipt",
+      "expected": "INVALID; no publication"
+    },
+    {
+      "id": "H07",
+      "case": "rerender after prior ADMIT, even with same visible text",
+      "expected": "new artifact/proposal; no inherited admission"
+    },
+    {
+      "id": "H08",
+      "case": "rejected candidate remains in V2 transcript",
+      "expected": "audit/session only; no V3 event, effect, or causal-session advance"
+    },
+    {
+      "id": "H09",
+      "case": "historical-style LLM fallback/first-candidate selection attempts direct deltas",
+      "expected": "blocked; proposal-only path; zero direct mutation"
+    },
+    {
+      "id": "H10",
+      "case": "well-formed proposal against stale V3 history hash or causal-session cursor",
+      "expected": "REJECT; new lawful proposal/context required"
+    },
+    {
+      "id": "H11",
+      "case": "network retry of already ADMITted proposal_id+hash",
+      "expected": "same stored receipt/event; no duplicate append or cursor increment"
+    },
+    {
+      "id": "H12",
+      "case": "event_kind authority or required coherent-event semantics missing",
+      "expected": "DEFER; no guessed generic event/effect"
+    },
+    {
+      "id": "H13",
+      "case": "transcript row exists but no ExternalInteractionProposal/admission receipt",
+      "expected": "no generated causal event"
+    },
+    {
+      "id": "H14",
+      "case": "environment/caller assertion lacks authority to promote claim as objective environment fact",
+      "expected": "preserve assertion epistemic class or DEFER/REJECT; never auto-promote"
+    },
+    {
+      "id": "H15",
+      "case": "outbound candidate actor/context does not match subject or admitted inbound predecessor",
+      "expected": "INVALID or REJECT; no publication"
+    },
+    {
+      "id": "H16",
+      "case": "same terminally rejected artifact repackaged under new proposal_id",
+      "expected": "REJECT_ARTIFACT_TERMINALLY_NONCAUSAL"
+    },
+    {
+      "id": "H17",
+      "case": "post-render substantive transform creates new artifact hash after admission",
+      "expected": "old admission does not cover transform; new candidate/proposal required"
+    },
+    {
+      "id": "H18",
+      "case": "positive source check coexists with explicit governed denial",
+      "expected": "REJECT; explicit denial cannot be overridden"
+    }
+  ],
+  "compatibility_constraints": [
+    "Preserve V3 DevelopmentalEventLedger as sole generated causal event history.",
+    "Preserve V3/V2 publication gate and CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION state.",
+    "CAN-025 may change V2 transport shape but must losslessly satisfy V3_EXTERNAL_ADMISSION_ENVELOPE requirements.",
+    "CAN-024 may choose/route interaction modes but cannot bypass or decide this admission court.",
+    "CAN-013 may adapt LLM proposals but must remove direct mutation/fallback authority and submit through this court.",
+    "MUST-020 may govern stochastic candidate selection/replay but randomness cannot override an admission failure.",
+    "No transcript/session database entry is accepted as event-ledger evidence absent this rule's ADMIT receipt."
+  ],
+  "consumer_release": {
+    "CONSUMER_RELEASE_SUFFICIENCY": "PARTIAL",
+    "must019_semantic_dependency": "SUFFICIENT",
+    "reason": "This authority fully supplies MUST-019 semantics, but named consumers remain gated by independent accepted dependencies: CAN-024 interaction mode, CAN-025 packaging, V3 event-ledger implementation, relevant V3 event/effect rules, and other packet-specific authorities. This W0 cell does not release implementation by itself."
+  },
+  "verification": {
+    "production_code_modified": false,
+    "implementation_launched": false,
+    "other_w0_results_used": false,
+    "write_scope_expected": [
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_019_V3_EXTERNAL_ADMISSION/AUTHORITY.md",
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_019_V3_EXTERNAL_ADMISSION/AUTHORITY.json"
+    ]
+  },
+  "final_token": "ADP_019_V3_EXTERNAL_ADMISSION_AUTHORITY = PASS"
+}
