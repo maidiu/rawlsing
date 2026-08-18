@@ -485,8 +485,12 @@ def _select_question_variables_from_rows(
     selected: list[str] = []
     available = {code.upper(): code for code, *_ in rows}
     if authority.get("applicable"):
-        for code in authority.get("candidate_vars") or []:
-            if code.upper() in available and available[code.upper()] not in selected:
+        for raw_code in authority.get("candidate_vars") or []:
+            code = _clean(raw_code)
+            if joint_mode == "required":
+                if code and code not in selected:
+                    selected.append(code)
+            elif code.upper() in available and available[code.upper()] not in selected:
                 selected.append(available[code.upper()])
             if len(selected) >= 6:
                 break
