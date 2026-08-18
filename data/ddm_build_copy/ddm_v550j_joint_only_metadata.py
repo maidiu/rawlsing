@@ -83,8 +83,10 @@ def augment_family_questions_from_prepared(
 
     Existing question-use-contract rows always win.  New rows are admitted only
     when the prepared substrate says the variable was selected for this exact
-    joint configuration.  No question-use-contract hash or V551 permission is
-    invented.
+    joint configuration.  The caller has already authenticated the prepared
+    frame by UID, so source/wave spellings here remain provenance rather than a
+    second identity authority.  No question-use-contract hash or V551 permission
+    is invented.
     """
     base = family_questions.copy()
     if prepared_frame is None or prepared_frame.empty:
@@ -137,21 +139,20 @@ def augment_family_questions_from_prepared(
         item = registry_by_var.get(code, {})
         question_id = _stable_value(rows, "question_id", var_code=code) or _clean(item.get("question_implementation_id"))
         question_text = _stable_value(rows, "question_text", var_code=code)
-        row_source = _stable_value(rows, "source", var_code=code) or source
-        row_wave = _stable_value(rows, "wave", var_code=code) or canonical_wave
-        row_canonical_wave = _stable_value(rows, "canonical_wave", var_code=code) or canonical_wave
-        if row_source != source:
-            raise V550JJointOnlyMetadataError(
-                f"V550J_JOINT_ONLY_METADATA_SCOPE_MISMATCH:{code}:source:expected={source}:observed={row_source}"
-            )
+        prepared_source = _stable_value(rows, "source", var_code=code)
+        prepared_wave = _stable_value(rows, "wave", var_code=code)
+        prepared_canonical_wave = _stable_value(rows, "canonical_wave", var_code=code)
         additions.append(
             {
                 "var_code": code,
                 "question_id": question_id,
                 "question_text": question_text,
-                "source": row_source,
-                "wave": row_wave,
-                "canonical_wave": row_canonical_wave,
+                "source": source,
+                "wave": prepared_wave or canonical_wave,
+                "canonical_wave": canonical_wave,
+                "joint_only_prepared_source": prepared_source,
+                "joint_only_prepared_wave": prepared_wave,
+                "joint_only_prepared_canonical_wave": prepared_canonical_wave,
                 "joint_only_metadata_source": "validated_prepared_substrate",
             }
         )
