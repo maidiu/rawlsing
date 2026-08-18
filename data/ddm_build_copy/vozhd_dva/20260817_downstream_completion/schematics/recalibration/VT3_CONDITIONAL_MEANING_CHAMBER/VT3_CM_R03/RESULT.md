@@ -1,239 +1,756 @@
-# VT3-CM-R03 — Downstream Consumption Archaeology — Court Record
+# VT3-CM-R03 — Downstream Recreation Court — Corrective Result
 
 **Cell:** `VT3-CM-R03`  
 **Repository:** `maidiu/rawlsing`  
-**Frozen launch base examined:** `8c87f7725ba58202b5377c974548140420709fa9`  
+**Frozen source base:** `8c87f7725ba58202b5377c974548140420709fa9`  
 **Worker branch:** `agent/vozhd-trii-vt3-cm-r03`  
-**Mode:** hostile dependency archaeology; audit only  
-**Production code changed:** `NO`  
-**Governing spirit applied:** `YES`
+**Mode:** hostile semantic-equivalence / downstream-recreation court  
+**Corrective pass:** `TRUE`  
+**Original mission completed:** `TRUE`  
+**Production code changed:** `NO`
 
-## 0. Verdict
+## 0. Corrective verdict
 
-**Verdict: `MIXED_RETENTION__MACHINE_REFERENCE_SPINE_IS_TERMINAL_VALUE__MOST_PRESENTATIONAL_OR_DUPLICATE_SURFACES_ARE_NOT_EXECUTION_CAUSAL`**
+`UNARY_NOT_FAITHFULLY_RECREATED__JOINT_NOT_FAITHFULLY_RECREATED__APPARENT_RECREATION_IS_METADATA_OR_LOSSY_DERIVATION__MICRODATA_RECOMPUTATION_REQUIRED_WHEN_EXACT_OBJECT_NOT_RETAINED__DIRECT_DAG_IS_TRANSPORT_NOT_REPAIR`
 
-The downstream chain does not justify treating every V550–V556 artifact as execution-critical merely because it exists, was expensive to produce, or appears in a stage directory. The strongest irreducible value is concentrated in exact machine-addressable semantic objects, producer-owned identities, permission/negative-authority state, provenance, and reference closure. Later stages are explicitly allowed to reuse earlier governed objects directly rather than requiring serial republication.
+The hostile hypothesis was:
 
-At the frozen launch base, the architectural courts provide direct evidence that V554–V558 and V3 are being redesigned around that principle. V557/V558 are required to publish and index a mixed-producer DAG; V3 is intended to consume a stage-blind `ResolvedStructuralContext`, not raw stage files. Current/Wave-0 V555–V558 shapes are themselves judged terminally insufficient or replacement-required. Therefore an artifact cannot be promoted to Class A merely because a later architecture names its semantic family. An observed read-before-behavior path is required for A.
+> Perhaps V550 position-conditioned empirical meaning is recreated, reconstructed, regenerated, approximated, or substituted downstream.
 
-No such terminal runtime read path was directly established in this cell for the named V550 determinicity presentation suite. Those surfaces therefore cannot truthfully be called execution-critical from the evidence examined here.
+The hypothesis fails as a claim of **faithful downstream recreation**.
 
-## 1. Classification law used by this court
+At the frozen base, V550 contains an actual respondent-derived unary condition-response surface in `indicator_answer_matrix`: for a source/wave/geography/question and exact indicator value, it emits response-cell unweighted and weighted counts and shares. That is the closest concrete implementation of:
 
-- **A — execution-critical:** directly read/parsed/resolved before computation or behavioral control; removing it breaks execution semantics unless an equivalent source is substituted.
-- **B — adjudication-critical:** relied upon by tests, governance, admission/readiness, architecture courts, or completion proof; may determine whether an object is publishable/usable even if runtime behavior does not read the artifact itself.
-- **C — human-audit / forensic:** useful for diagnosis, review, provenance reconstruction, anomaly recognition, or explanatory inspection; omission raises reconstruction cost but does not presently control runtime semantics.
-- **D — largely ceremonial:** presentation/duplication/status prose whose semantic content is already retained authoritatively elsewhere and for which no unique downstream consumer was observed.
+`P(response = r | exact observed conditioning predicate, source, wave/time, geography)`.
 
-A family may contain objects in more than one class. The class attaches to **consumption role**, not stage prestige.
+The canonical V551 signed-atom path does not admit that surface. The alternate `ddm_v551_conditional.py` path consumes derived-determinicity rows but drops the explicit conditioning predicate identity from its emitted semantic row/ID. V552 accepts a `conditional_determinicity` argument but does not use it. V552J only links packets to structural facts. V553–V558 transform, publish, index, or resolve already-authoritative structural objects; they do not estimate a missing respondent conditional. V3 generates actor positions and lived history under authorities that explicitly forbid prevalence/geography/demographic association from manufacturing missing position or psychological meaning.
 
-## 2. Evidence basis
+Higher-order conditional meaning fails even more strongly. V550's secondary-indicator analysis computes joint conditional entropy/gain, not the full response distribution for an exact intersection `A ∧ B`. V551J creates joint evidence packets/pattern objects of a different semantic grain; it does not reconstruct `P(response | A ∧ B)` from structural-position predicates. No later stage restores the missing joint response topology, denominators, counts, support, typed absence and provenance.
 
-### 2.1 Directly observed frozen-base evidence
+Exact recovery has only two lawful routes:
 
-1. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md`
-   - blob SHA `588cf3954c33417665c5f9bac04e8b27e75d7f7c`
-   - binding law requires bounded jurisdiction, explicit absence, provenance, replay, and no downstream vividness beyond upstream authority.
+1. **EXACT_DIRECT_REUSE** of the exact original authoritative conditional object, if it is preserved, admitted, published, reachable and permissioned; or
+2. **POTENTIALLY_RECOMPUTABLE_FROM_RETAINED_MICRODATA** by returning to respondent-grain rows that still jointly retain the exact conditioning variable(s), response, respondent alignment, weights, source/wave/geography and semantic/provenance authority, then compiling a new governed conditional object.
 
-2. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/CUMULATIVE_UPSTREAM_MAP.md`
-   - blob SHA `23ce2599b6d00c856828922c07cb44a7e266223f`
-   - explicitly states that later stages may directly consume earlier governed objects when the producer still owns the needed meaning.
-   - records V550 governed semantic/response/directionality/position-conditioning authority, V551 evidence, V551J joint packets, V552 structural facts/decompositions, and V552J admission state as reusable upstream authorities.
+Accepted 553+ direct-DAG law supplies route (1) as a transport/reuse possibility. It does not create the object, does not fill a missing predicate, and does not turn metadata into a conditional distribution.
 
-3. `.../schematics/recalibration/TD_R00_V553/RESULT.md`
-   - blob SHA `2e0ed603bf00041f9373b9295058a4042affd3f0`
-   - V553 canonical nucleus: `TEMPORAL_KEY`, `TEMPORAL_OBSERVATION`, `TEMPORAL_RELATION`, `TEMPORAL_LIMIT / NEGATIVE_AUTHORITY`, reversible secondary projection, governed handoff.
-   - records terminal starvation risk when exact V550–V552 structural/semantic/position/permission references are not preserved.
+---
 
-4. `.../schematics/recalibration/TD_R01_V554/RESULT.md`
-   - blob SHA `a2cae5f3acc2c08c5ee7229fdc61d41500ef5daa`
-   - terminal architecture directly reuses exact V550–V553 governed objects and creates `BOUNDED_STRUCTURAL_AFFORDANCE`, `STRUCTURAL_MEDIATION_APPLICABILITY_CONDITION`, `V554_V555_HANDOFF`.
+## 1. Required self-correction
 
-5. `.../schematics/recalibration/TD_R02_V555/RESULT.md`
-   - blob SHA `2ddf06f5479265c4b48fa8cc7eae435fa3c70b43`
-   - current V555 judged `TERMINAL_REPLACEMENT_REQUIRED`; canonical terminal residual is `STRUCTURAL_MEDIATION_ROUTE_CANDIDATE` plus genuinely route-born condition and governed V555→V556 handoff.
-   - explicitly rejects serial republishing of V552/V553/V554 as V555 semantics.
+The prior R03 pass answered a broader and useful question: which downstream artifact families are execution-critical, adjudication-critical, forensic, duplicate, or superseded. That work remains supporting evidence in four respects:
 
-6. `.../schematics/recalibration/TD_R03_V556/RESULT.md`
-   - blob SHA `8af3016963e24bd5d439b78948592c93c30167b0`
-   - V555 route ID remains canonical base edge; V556 creates only governed cross-route/cross-pressure interaction and attractor-prerequisite topology.
-   - canonical V556 families: `STRUCTURAL_PRESSURE_INTERACTION_RELATION`, `STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY`, `V556_V557_HANDOFF`.
+1. it correctly identified direct-DAG reuse as distinct from serial republishing;
+2. it correctly identified producer identity, permission/negative authority, provenance and reference closure as non-negotiable;
+3. it correctly identified V557/V558 as a producer-preserving publication/resolver boundary rather than a semantic recreation engine;
+4. it correctly warned that current artifact existence is not proof of terminal authority.
 
-7. `.../schematics/recalibration/TD_R04_V557_V558/RESULT.md`
-   - blob SHA `43b06cd5636a2a4740e6e93d8527124ea06da318`
-   - current/Wave-0 V557/V558 judged terminally insufficient.
-   - terminal replacement requires lossless mixed-producer publication and a stage-agnostic `StructuralPriorRepository` + deterministic `ContextResolver`.
-   - explicitly forbids route re-ID → slot flattening → status normalization as semantic authority.
+But it did **not** complete the assigned hostile recreation mission. Specifically, it had not answered:
 
-8. `.../schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/RESULT.md`
-   - blob SHA `dfcc7e4fc7b6e907218d7a368ceb9d269a49206d`
-   - terminal V3 consumes `ResolvedStructuralContext` from repository/resolver boundary and creates actor history downstream; it does not make raw V550–V556 artifacts its direct semantic interface.
+- whether an actual V550 `P(response | position)` survives/reappears in V551;
+- whether `ddm_v551_conditional.py` is semantically equivalent to the V550 conditional object;
+- whether V551J reconstructs unary or intersectional position-response distributions;
+- whether V552 actually consumes its optional conditional-determinicity input;
+- whether `position_conditioning_profile` preserves the original empirical response distribution;
+- whether V553+ direct reuse means the required conditional object is actually present and reachable;
+- whether V3 generated positions can lawfully substitute for missing empirical conditionals;
+- the required unary and `A ∧ B` indistinguishability tests.
 
-### 2.2 Search-negative evidence
+This corrective pass answers those questions directly. The former A/B/C/D artifact-consumption classification is no longer the primary verdict system for R03; the required recreation classes below are.
 
-At the frozen base, repository code search did not surface a direct consumer for the literal V550 artifact name `indicator_answer_matrix`; similarly, broad search did not establish a read path for the presentation-level V550 determinicity surfaces. Search-negative evidence is weaker than a proved absence and is therefore recorded only as a constraint on positive claims.
+---
 
-## 3. Consumption findings by producer family
+## 2. Canonical semantic test object
 
-### 3.1 V550 — governed semantic / response / directionality / position-conditioning authority
+For this court, a faithful unary empirical conditional must preserve enough exact authority to distinguish:
 
-**Observed downstream role:** the cumulative map explicitly authorizes direct reuse and says V553 uses relevant certified authority to establish cross-wave compatibility. TD-R00, TD-R01 and TD-R02 all preserve direct reach-back to V550-owned semantic/position authority rather than requiring copies.
+```text
+ConditionalResponseDistribution {
+  condition_predicate_identity:
+    exact field / exact value / exact governed predicate,
+  source,
+  wave_or_time,
+  geography,
+  question_or_response_semantic_identity,
+  response_topology[],
+  response_cells[] {
+    response_value,
+    n_unweighted,
+    n_weighted,
+    pct_unweighted,
+    pct_weighted
+  },
+  denominator_unweighted,
+  denominator_weighted_or_weight_status,
+  support_and_uncertainty_state,
+  typed_absence_or_missing_state,
+  provenance_and_authority_refs
+}
+```
 
-**Disposition:**
-- governed certified V550 authority objects: **Class B**, with terminal architecture demanding their exact references;
-- named determinicity presentation/diagnostic surfaces such as `position_distribution`, `position_indicator_summary`, `indicator_answer_matrix`, `outlier_cohort_summary`, and `secondary_indicator_summary`: **Class C unless another court proves a machine consumer; D where they are only a duplicate rendering of governed machine truth**.
+An exact intersectional conditional additionally requires a canonical conjunction identity such as:
 
-**Not established:** this cell did not observe a frozen-base runtime parser that reads any of those five named surfaces to control terminal behavior. Therefore Class A is not justified for them here.
+`condition_predicate = A ∧ B`
 
-**Unique value that must survive:** exact question/response meaning, directionality/position-use authority, certified/governed state, source identity and provenance. The terminal value is the authority-bearing machine fact, not the existence of every summary surface.
+with the same response topology/count/support/provenance obligations.
 
-### 3.2 V551 — relation evidence
+Similar vocabulary is not equivalence. In particular:
 
-The cumulative map characterizes V551 relation-evidence objects as evidentiary basis and says they are mostly provenance for V553 rather than routine temporal payload.
+- `position_conditioning = "income"` is not `P(response | income=low)`;
+- `position_field = "income_level"` without a response distribution is not a conditional;
+- a pressure score grouped by `position_conditioning` is not a respondent distribution;
+- a V3 generated actor position is not survey evidence about respondents occupying that position;
+- a V551J joint response pattern is not automatically a structural-position intersection.
 
-**Disposition:** **Class C generally; Class B where exact evidence is required to prove an admission/authority claim.**
+---
 
-Removing all V551 evidence while retaining only downstream conclusions would make later adjudication and provenance reconstruction materially weaker. But routine terminal runtime consumption of the raw relation-evidence surfaces was not observed.
+## 3. V550 source object and loss baseline
 
-### 3.3 V551J — joint evidence packets
+### 3.1 `indicator_answer_matrix` is the concrete unary test object
 
-V551J owns packet-level joint evidence authority. The cumulative map says V552J controls packet↔fact admission at the V553 frontier, while the original packet remains available for evidence detail.
+Pinned implementation: `data/ddm_build_copy/ddm_v550_branching.py`.
 
-**Disposition:** **Class B** for admission/provenance authority; **Class C** for packet detail not used in admission or later audit.
+`indicator_answer_matrix_rows()` iterates the V550 `INDICATOR_FIELDS`, groups respondent rows by exact `indicator_value`, cross-tabulates `response_value_normalized`, and emits for each exact `(indicator_name, indicator_value, response_value)` cell:
 
-This is a useful example of non-execution value that is still irreducible: the packet may never become actor runtime state, yet it can be necessary to establish why a fact was lawfully admitted.
+- `n_unweighted`;
+- `pct_unweighted`;
+- `n_weighted`;
+- `pct_weighted`.
 
-### 3.4 V552 — structural facts and factual decomposition
+The source/wave/country/question/semantic context enters through `question_meta` and the enclosing V550 artifact grain. The denominator for a given condition is the corresponding row-total across the response topology; weighted denominator is the weighted row-total when weights are available.
 
-V552 owns exact structural fact identity, measured structural value/status, measured-zero state, factual provenance, temporal-key-source lineage, and decomposition/aggregate context. The accepted architecture insists that V552 factual ownership is not superseded by later readiness or temporal transforms.
+This is not merely dependence metadata. It distinguishes different empirical distributions for the same position predicate.
 
-**Disposition:** **Class B at this frozen architecture state, with an A-grade intended dependency once implemented through V557/V558 resolver publication.**
+**Classification relative to downstream:** the V550 object itself can only be `EXACT_DIRECT_REUSE`; it is not a downstream recreation.
 
-This court does not silently upgrade intended architecture to observed execution. What is directly established is that downstream terminal architecture requires exact V552 facts/positions as authoritative dependencies and forbids reconstructing them from later strings or aggregates.
+### 3.2 `position_distribution` is not the conditional
 
-### 3.5 V552J — fact admission / use permission
+Pinned implementation: `ddm_v550_position_distribution.py`.
 
-V552J owns packet↔fact association, exact-scope admission/use permission, blockers, readiness, and lineage. V553 intake is required to match the fact/scope authorized by V552J or fail closed.
+It emits marginal position-coordinate counts/shares by `(position_field, position_value)`:
 
-**Disposition:** **Class B**, with terminal execution significance through admission governance. The raw permission lineage remains semantically important even when the factual value is carried separately by V552.
+`P(position=value | source,wave,country)`.
 
-### 3.6 V553 — sparse temporal structural authority
+It does not cross the position value with response topology.
 
-Canonical semantic families are:
-- `TEMPORAL_KEY`
-- `TEMPORAL_OBSERVATION`
-- `TEMPORAL_RELATION`
-- `TEMPORAL_LIMIT / NEGATIVE_AUTHORITY`
-- reversible secondary aggregate projection
-- governed V553→V554 handoff/reference spine
+**Class:** `DIFFERENT_SEMANTIC_OBJECT`.
 
-**Disposition:** primary sparse objects and exact dependency refs: **Class B now / intended A through repository-resolver execution**; reversible aggregate projection: **Class C unless a machine query proves otherwise**.
+### 3.3 Indicator and secondary summaries are insufficient substitutes
 
-TD-R00 specifically finds that exact producer/reference preservation is what prevents terminal starvation. A summary that preserves temporal prose but drops the exact V552/V552J/V550 basis is semantically lossy even if it looks complete.
+`indicator_summary_rows()` emits entropy, mutual information, Cramer's V, uplift, dominant-response summaries and support. Those can demonstrate association but do not retain all condition-value × response cells.
 
-### 3.7 V554 — bounded structural affordance/applicability
+`secondary_indicator_summary_rows()` forms a joint key from a primary and secondary indicator and calculates joint conditional entropy / `secondary_gain`, but emits summary statistics rather than the full distribution `P(Y | A=a ∧ B=b)` for each exact joint predicate and response category.
 
-Terminal canonical families:
-- `BOUNDED_STRUCTURAL_AFFORDANCE`
-- `STRUCTURAL_MEDIATION_APPLICABILITY_CONDITION`
-- `V554_V555_HANDOFF`
+**Unary summary class:** `LOSSY_APPROXIMATION`.  
+**Intersection summary class:** `LOSSY_APPROXIMATION`.
 
-TD-R01 says current architecture required narrowing/hardening and that V554 should reuse V550–V553 directly rather than republish them.
+A scalar entropy reduction cannot identify the original response topology.
 
-**Disposition:** terminal canonical objects: **Class B now / intended A in completed resolver-mediated runtime**. Current convenience prose or duplicated earlier payload: **Class D/C** unless it carries unique provenance.
+---
 
-### 3.8 V555 — mediation routes
+## 4. V550 → V551 bridge
 
-Current V555 is explicitly judged `TERMINAL_REPLACEMENT_REQUIRED`. Its slot/register world is not accepted as terminal semantic truth. Terminal V555 creates:
-- `STRUCTURAL_MEDIATION_ROUTE_CANDIDATE`
-- genuinely route-born `STRUCTURAL_MEDIATION_ROUTE_CONDITION`
-- `V555_V556_HANDOFF`
+Pinned bridge implementation assigns the relevant source tables to distinct evidence lanes:
 
-The V555 route ID is later declared by V556/V557/V558 architecture to remain the canonical atomic graph-edge identity.
+- `answer_distribution` / `country_answer_distribution` → `direct_relation_response`;
+- `indicator_answer_matrix`, `outlier_cohort_summary`, `recursive_branch_nodes`, `secondary_indicator_summary` → `derived_determinicity`;
+- `position_distribution`, `position_indicator_summary`, `branch_position_signature` → `position_context`.
 
-**Disposition:** canonical route identity/conditions/handoff: **Class B now / intended A**. Current slot labels, duplicate thin payloads and non-authoritative convenience registers: **Class D**, except where they remain useful as compatibility-test or forensic surfaces (**C**).
+Bridge rows may also carry fields such as:
 
-### 3.9 V556 — interaction and attractor-prerequisite topology
+- `position_conditioning`;
+- `position_modifiers`;
+- `conditional_strata_weights`;
+- `subject_position_signature`;
+- structural relation/target/driver metadata.
 
-Terminal canonical families:
-- `STRUCTURAL_PRESSURE_INTERACTION_RELATION`
-- `STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY`
-- `V556_V557_HANDOFF`
+Those fields describe semantic/contextual conditions or intended use. They do not, by themselves, preserve respondent conditional response topology.
 
-V556 explicitly does **not** create a second `PressureFlowEdge` identity for a V555 route. It composes exact routes by reference. Numeric interaction weights and attractor scores are marked missing authority in TD-R03.
+**Class for those fields:** `METADATA_ONLY`.
 
-**Disposition:** canonical interaction/topology objects and their exact participant refs: **Class B now / intended A**. Duplicate edge IDs, `route_axis_*` placeholders, generic psychic response labels and unauthorized numeric scores: **Class D or prohibited**, not terminal value.
+---
 
-## 4. Actual downstream consumer topology established by the frozen courts
+## 5. V551 canonical signed-atom path
 
-### 4.1 Adjudication consumers — directly observed
+Pinned implementation: `ddm_v551_atoms.py`.
 
-TD-R00 through TD-R05 explicitly consume preceding stage results as binding law. This makes canonical producer meanings and reference contracts adjudication-critical even before the terminal runtime exists.
+### 5.1 Gate that matters
 
-### 4.2 V557/V558 — specified terminal publication consumer
+The canonical compiler declares:
 
-The accepted terminal architecture requires V557 to publish exact producer-owned identities and governance, and V558 to index/link them without semantic re-ID. Required preservation includes V552 refs, V553 temporal authority, V554 affordances/applicability, V555 route IDs, and V556 interaction/topology.
+```text
+APPROVED_DIRECT_TABLES = {
+  "answer_distribution",
+  "country_answer_distribution"
+}
+```
 
-Current/Wave-0 V557/V558 do not yet satisfy that contract. This is counterevidence against claiming that all upstream meanings are already execution-consumed.
+and its certification candidate bridge requires simultaneously:
 
-### 4.3 V3 — stage-blind terminal consumer
+- `bridge_evidence_lane == "direct_relation_response"`;
+- `source_table ∈ APPROVED_DIRECT_TABLES`;
+- substantive/nonmissing/nonspecial response;
+- certified applicability/semantic authority.
 
-V3 is designed to receive `ResolvedStructuralContext`, `SelectionRecord`, and `CoverageFidelityProfile` from the V558 boundary. V3 then generates actor-specific exposure/history/response/attractor realization. It is not supposed to grep Markdown, parse V550 reports, or infer meaning from V555/V556 presentation artifacts.
+V550 `indicator_answer_matrix` is routed as `derived_determinicity`, not `direct_relation_response`. Therefore its dedicated position-conditioned response rows are not admitted into the canonical V551 signed-atom path.
 
-Therefore, terminal value must survive as exact machine-addressable producer objects and reference closure before V3. Human-readable reports may explain those objects, but they are not the intended causal interface.
+### 5.2 Why similar V551 fields do not repair this
 
-## 5. Semantic-loss findings
+The V551 atom schema contains fields including:
 
-1. **Dropping producer IDs/reference closure while retaining prose is severe semantic loss.** Later layers can no longer prove which exact V550/V552 authority grounded a V553/V554/V555/V556 object and would be forced into illicit rematching.
-2. **Dropping typed permission/negative authority is severe semantic loss.** Unknown, denied, valid-empty, noncomparable and missing-authority states cannot be replaced by zero, neutral, or generic readiness without manufacturing meaning.
-3. **Dropping raw evidentiary packets after preserving only positive derived values increases adjudication cost.** This is especially true for V551/V551J/V552J provenance and admission disputes.
-4. **Dropping duplicate prose/plots/status summaries while preserving canonical machine truth is usually low semantic loss.** The cost is human audit convenience, not causal capability.
-5. **Replacing canonical producer IDs with later-stage aliases is semantic loss even when values look identical.** The V556/V557/V558 architecture explicitly rejects route re-ID and flattening.
-6. **Aggregate-only survival is insufficient where exact sparse grain matters.** V553 secondary projections are explicitly subordinate to exact temporal objects.
-7. **If the five named V550 determinicity summaries vanish while their governed conditional response/position authority plus provenance survives, this court finds no demonstrated terminal execution capability that becomes impossible.** What becomes harder is forensic diagnosis of heterogeneity/outliers and reconstruction of how the authority was inspected. That is C-value unless R01/R02 prove unique non-derivable semantics in a specific surface.
+- `position_field`;
+- `position_value`;
+- `strata_path`;
+- `subject_position_signature`;
+- `position_conditioning`;
+- `position_modifiers`;
+- `conditional_strata_weights`;
+- response counts/shares and topology fields.
 
-## 6. Counterevidence against artifact-preservation maximalism
+This proves the schema can *carry* position-related information. It does not prove that the V550 conditional matrix is admitted. The actual source-table/lane gate excludes the dedicated matrix.
 
-- Cumulative DAG law explicitly permits direct reuse instead of serial republishing.
-- TD-R01 rejects excess V554 semantic family separation.
-- TD-R02 rejects current V555 slot/register architecture as terminal authority.
-- TD-R03 rejects duplicate V556 edge identity and unauthorized numeric scores.
-- TD-R04 rejects V557 slot flattening and V558 prose/status normalization as terminal semantic architecture.
-- V3 terminal design consumes resolved context, not upstream report surfaces.
+If a future governed direct-table object already contained the exact condition predicate and distribution, a V551 atom family could preserve it. That would be preservation/direct reuse of an already-existing exact object, not recreation of the omitted IAM conditional.
 
-Artifact count is therefore a poor proxy for semantic value. Some current surfaces are scaffolds, projections, compatibility facades, or superseded authorities.
+**Actual frozen-path class for V550 IAM → canonical V551 atoms:** `NO_RECREATION`.
 
-## 7. Counterevidence against aggressive deletion
+**Position vocabulary carried on canonical atoms without the omitted IAM distribution:** `METADATA_ONLY` for the missing conditional meaning.
 
-- Earlier producer ownership remains authoritative for meanings later stages do not recreate.
-- V551/V551J/V552J evidence and permission lineage can be adjudication-critical even when not runtime-visible.
-- V553 exact negative/temporal states and V552 measured-zero semantics cannot be reconstructed safely from summaries.
-- V555 route identity and V556 participant topology must remain exact because later graph/query behavior depends on identity, roles and reference closure.
-- Human-forensic surfaces can still be worth retaining when they expose heterogeneity or provide replay/provenance evidence not cheaply reconstructible.
+---
 
-## 8. Unresolved questions
+## 6. V551 dormant/alternate `ddm_v551_conditional.py`
 
-1. The frozen repository search performed in this cell did not establish direct runtime readers for `position_distribution`, `position_indicator_summary`, `indicator_answer_matrix`, `outlier_cohort_summary`, or `secondary_indicator_summary`. R01/R02 should be treated as the primary courts for whether any of these five contain unique non-derivable semantics, weighting, uncertainty, admissibility or provenance.
-2. This cell did not directly execute the historical V550–V556 code bundle. Therefore no claim is made that absence from GitHub code search proves absence from all historical runtime code.
-3. Current/Wave-0 V557/V558 are explicitly superseded by terminal architecture, so intended A-grade consumption is not yet equivalent to observed execution at base `8c87f7725ba58202b5377c974548140420709fa9`.
-4. The precise retention policy for C-class human-forensic surfaces is a parent-level storage/governance decision, not a semantic necessity determination.
+This is the strongest apparent downstream recreation candidate and therefore the central hostile test.
 
-## 9. Recommended parent actions
+### 6.1 Exact input lane
 
-1. Preserve as non-negotiable the exact machine semantic spine: producer object ID/hash, governed semantic/position authority, structural facts, permission/negative state, temporal identity, route identity, interaction/topology participant identity, rule/version, and provenance/ref closure.
-2. Do not require serial copying of V550–V556 payloads merely to prove continuity; prefer exact locators to producer-owned authority.
-3. Treat the five V550 determinicity summaries as **C/D by default, not A**, unless R01/R02 identifies an exact unique field that cannot be reconstructed from governed conditional distributions + provenance without semantic loss.
-4. Require any claim that an artifact is Class A to name the exact reader, field/path, and behavior controlled at the frozen implementation state.
-5. Preserve B-class admission/evidence objects even when terminal V3 never sees them; governance truth is not ceremonial merely because it is upstream of runtime.
-6. In V557/V558 implementation, fail closed on broken reference closure and keep producer IDs canonical; do not convert prose/status convenience fields into semantic dependencies.
-7. Where storage pressure requires pruning, delete D-class duplicates first, then consider regenerable C-class views only after proving replay/provenance sufficiency.
+`build_conditional_determinicity_index()` requires:
 
-## 10. Final court ruling
+- `v551_conditional_determinicity_eligible == True`;
+- `bridge_evidence_lane == "derived_determinicity"`;
+- joined question-use contract;
+- joined source-structure fields;
+- `support_status == "sufficient_support"`.
 
-The downstream evidence falsifies both maximalist positions.
+Thus it can consume derived-determinicity rows including the lane in which V550 position-conditioned analysis lives.
 
-It falsifies **artifact maximalism** because current architecture repeatedly removes duplicate families, aliases, slot/status projections and unauthorized scores while preserving terminal capability through direct producer reuse.
+### 6.2 What it emits
 
-It also falsifies **naive minimization** because provenance, permission, typed absence, exact identities and evidentiary lineage remain necessary even when they never become visible to V3.
+Its `_conditional_row()` preserves:
 
-The terminal semantic center is therefore **small but not thin**: exact governed conditional/structural facts plus the reference, permission, negative-authority and provenance machinery required to preserve what those facts mean and what they may lawfully do downstream. Presentation surfaces have value only to the extent that they add unique forensic evidence rather than ritualizing completion.
+- source/wave/canonical-wave/country/question/var/source-table;
+- response value/label/family/direction/intensity;
+- response-semantics authority metadata;
+- `n_unweighted`, `n_weighted`, `pct_unweighted`, `pct_weighted`;
+- support/compiler status;
+- structural relation/target/driver fields;
+- `source_row_hash` and source-run provenance.
+
+But it does **not** emit the exact observed condition identity needed by this court:
+
+- no `position_field`;
+- no `position_value`;
+- no `indicator_name`;
+- no `indicator_value`;
+- no canonical conjunction/predicate object;
+- no `position_conditioning` binding that specifies an exact value.
+
+Its `conditional_id` hashes:
+
+`source, wave, country_code, question_id, var_code, source_row_hash`
+
+rather than the explicit condition predicate. Its dedupe key likewise omits the condition field/value as named semantic components.
+
+### 6.3 Ruling
+
+This mechanism can retain numeric measurements from a derived source row while losing the machine-readable statement **what exact respondent condition those measurements are conditional on**.
+
+A `source_row_hash` may allow forensic dereference to the original V550 row if that original remains available. If so, exact semantics come from the original row reached by provenance — that is direct reference/reuse, not recreation by `ddm_v551_conditional.py`.
+
+Without such dereference, the emitted row is not a self-contained exact conditional authority.
+
+**Class:** `LOSSY_APPROXIMATION`.
+
+It is **not** `EXACT_RECREATION`.
+
+---
+
+## 7. V551J
+
+Pinned implementation: `ddm_v551j_packets.py`.
+
+V551J assembles packet/component identities over V551 atom evidence, V550J joint response patterns, association/context rows and related structural context. Packet types include joint relation evidence, joint pattern context, conditional support, contradiction candidate and known absence.
+
+### 7.1 Component/packet identity
+
+V551J preserves exact input atom IDs, pattern IDs, association IDs, source artifacts/runs, question IDs, variable codes and structural/provenance references. That is valuable evidence linkage.
+
+It does not recreate the omitted V550 structural predicate × response crosstab merely because a packet is called `conditional_support_packet`.
+
+**Class:** `METADATA_ONLY` relative to the missing V550 position conditional.
+
+### 7.2 Joint response patterns are a different joint object
+
+A V550J/V551J joint response pattern represents a governed joint evidence pattern over component/question response material. It is not automatically:
+
+`P(Y | structural_position_A ∧ structural_position_B)`.
+
+There is no lawful equivalence from “joint packet” or “joint response pattern” to a conjunction of respondent structural-position predicates.
+
+**Class:** `DIFFERENT_SEMANTIC_OBJECT`.
+
+### 7.3 Higher-order position conditional
+
+No inspected V551J mechanism reconstructs the exact intersectional response topology, weighted/unweighted condition-cell denominators, support/uncertainty and condition identity for `A ∧ B`.
+
+**Class:** `NO_RECREATION`.
+
+---
+
+## 8. V552
+
+Pinned implementation: `ddm_v552_structural.py`.
+
+### 8.1 Canonical pressure construction
+
+V552 consumes V551 v3 signed atoms, directional coverage and adjudication. Its canonical pressure objects are transformations of the signed response distribution into structural pressure components/observations and rollups.
+
+These preserve different meaning:
+
+- structural pressure value/status;
+- structural identity;
+- signed component lineage;
+- selected-surface completeness;
+- measurement provenance.
+
+They are not respondent conditional response distributions.
+
+**Class:** `DIFFERENT_SEMANTIC_OBJECT`.
+
+### 8.2 The optional conditional input is actually unused
+
+The exact function signature is:
+
+```text
+build_v552_structural_outputs(
+  atoms,
+  directional_coverage=None,
+  directional_adjudication=None,
+  conditional_determinicity=None,
+  *, run_id=...
+)
+```
+
+Inside the function, output construction uses atoms, coverage and adjudication. `conditional_determinicity` is never consumed. The output named `conditional_determinicity_status_audit` is instantiated as an empty schema surface.
+
+Therefore two executions with identical canonical atoms/coverage/adjudication and different conditional-determinicity inputs necessarily produce the same canonical V552 semantic outputs.
+
+**Class:** `NO_RECREATION`.
+
+This is decisive against the claim that the V551 alternate conditional lane is silently folded into structural pressure downstream.
+
+### 8.3 `position_conditioning_profile`
+
+`build_position_conditioning_profile_from_observations()` filters already-created V552 pressure observations on nonblank `subject_position_signature` or `position_conditioning`, then rolls those **pressure observations** up by:
+
+`source, wave, canonical_wave, country_code, subject_position_signature, position_conditioning`.
+
+It does not return the original response categories and condition-cell counts.
+
+**Class:** `LOSSY_APPROXIMATION` for any attempt to use it as a proxy for the empirical conditional.
+
+The presence of the word `position_conditioning` is not equivalence.
+
+---
+
+## 9. V552J
+
+V552J owns packet↔structural-fact association, exact-scope admission/use permission, blockers, readiness and lineage. Its job is to establish which already-created packet/fact objects may lawfully associate and move forward.
+
+It does not reopen respondent data, cross-tab structural positions against responses, or derive a new conditional distribution.
+
+**Class:** `METADATA_ONLY` for the missing empirical conditional.  
+**Recreation result:** `NO_RECREATION`.
+
+---
+
+## 10. V553
+
+### 10.1 Current pinned implementation
+
+The inspected V553 canonical intake discovers and harmonizes V552/V552J structural/handoff material: structural facts, packet/fact identity, temporal source identity and structural relation/target/driver/channel fields.
+
+The current canonical path does not consume V550 `indicator_answer_matrix` or the V551 conditional-determinicity index as a conditional-response authority.
+
+**Class:** `NO_RECREATION`.
+
+### 10.2 Accepted V553 architecture
+
+Accepted architecture explicitly permits later stages to directly reuse earlier governed producer objects where the earlier producer still owns the needed meaning. It also requires exact reference preservation and forbids reconstructing authority later from strings, aggregates or semantic resemblance.
+
+That rule is crucial but limited:
+
+```text
+DIRECT_REUSE_ALLOWED
+!= REQUIRED_OBJECT_EXISTS
+!= REQUIRED_OBJECT_WAS_PUBLISHED
+!= REQUIRED_OBJECT_IS_RUNTIME_ADMITTED
+!= MISSING_OBJECT_RECREATED
+```
+
+For the canonical conditional test object, V553+ law can support `EXACT_DIRECT_REUSE` only if the exact V550/V551 conditional object is itself authoritative, retained, referenced, admitted and reachable.
+
+The law alone is not an estimator.
+
+---
+
+## 11. V554
+
+Pinned current V554 converts V553 structural material into bounded seed/affordance/applicability terrain. Accepted V554 architecture likewise owns mediation-input applicability, not survey estimation.
+
+A structural affordance or condition may refer to a required position, temporal state or structural basis. It does not state the respondent distribution conditional on that position.
+
+**Class:** `DIFFERENT_SEMANTIC_OBJECT`.
+
+No exact recreation occurs.
+
+---
+
+## 12. V555
+
+Pinned current V555 constructs mediation-slot/register terrain; accepted terminal V555 replaces that with exact structural mediation-route candidates and route-born conditions.
+
+Both current and accepted meanings answer a different question: through what actor-independent structural mediation route may an already-authorized structural affordance pass?
+
+They do not estimate `P(response | position)`.
+
+**Class:** `DIFFERENT_SEMANTIC_OBJECT`.
+
+No recreation occurs.
+
+---
+
+## 13. V556
+
+Pinned current V556 produces pressure-flow scaffold/route-axis terrain. Accepted V556 owns governed cross-route/cross-pressure interaction relations and attractor-prerequisite topology while preserving V555 route IDs.
+
+Interaction topology cannot recover respondent conditional distributions lost before V552. Shared source, target, sign, time, route coexistence or topology never implies a response conditional.
+
+**Class:** `DIFFERENT_SEMANTIC_OBJECT`.
+
+No recreation occurs.
+
+---
+
+## 14. V557 / V558
+
+### 14.1 Current pinned implementations
+
+Current V557 renderer-boundary and V558 runtime-input-gate code operate over downstream packets/readiness/governance surfaces. Neither reads respondent-grain data or reconstructs V550 condition-response distributions.
+
+**Current implementations:** `NO_RECREATION`.
+
+### 14.2 Accepted producer-preserving repository law
+
+Accepted TD-R04, CAN-003 and CAN-004 establish:
+
+- V557 does not create a structural-domain semantic family;
+- V557 may admit/preserve an exact producer object under item-level governance;
+- V558 links and indexes already-valid publication;
+- V558 may not repair an invalid publication, infer a missing semantic dependency, replace producer identity, or widen authority;
+- repository locators/indexes are administrative access paths, not new semantic objects.
+
+CAN-004 is generic enough to package an admitted earlier producer object if governed publication supplies it. But generic packaging authority does not mean every possible V550/V551 object is automatically a runtime root or transitive dependency. The accepted terminal mixed-producer architecture explicitly centers V552 facts, V553 temporal objects, V554 affordances, V555 routes and V556 topology; the inspected chain does not establish the V550 IAM conditional as an automatically published repository collection.
+
+Therefore:
+
+- existing exact conditional, explicitly admitted/published/reachable → `EXACT_DIRECT_REUSE`;
+- missing/unpublished conditional → `NO_RECREATION`;
+- resolver query against generated position → selection of existing governed objects only, never statistical reconstruction.
+
+---
+
+## 15. V3 / ADP-009 / CAN-006 / ADP-010 / ADP-017
+
+### 15.1 ADP-009 generated position is not empirical respondent meaning
+
+Accepted ADP-009 makes the nonidentity explicit:
+
+```text
+STRUCTURAL PRIOR
+!= RESOLVED STRUCTURAL CONTEXT
+!= POSITION CANDIDATE
+!= GENERATED ACTOR POSITION FACT
+!= ACTOR KNOWLEDGE / IDENTITY / PSYCHE
+```
+
+ADP-009 forbids manufacturing actor position because it is:
+
+- geographically plausible;
+- statistically prevalent;
+- demographically associated;
+- convenient.
+
+It separately forbids:
+
+- raw structural prevalence/frequency → actor membership/probability;
+- country/region → class, sect, party, occupation, institution, household, family or Self;
+- demographic category → position;
+- nearest/most-common/default fallback.
+
+A governed actor-position distribution can be consumed only if a separately accepted authority explicitly supplies those candidate/weight semantics.
+
+### 15.2 CAN-006 generated-position binding does not reconstruct a conditional
+
+CAN-006 allows an **already-lawful generated V3 position fact** to be supplied as a Phase-B ContextResolver query binding against the same immutable repository.
+
+The resolver evaluates already-governed predicates and may select additional existing position-conditioned structural material. It may not create or backfill the position, and it cannot manufacture a missing producer conditional.
+
+Thus CAN-006 can enable `EXACT_DIRECT_REUSE` **only if** an authoritative position-conditioned producer object is already present in the repository.
+
+### 15.3 Opportunity/exposure and actor knowledge are downstream life semantics
+
+ADP-010 keeps `AVAILABLE`, `OPPORTUNITY`, `ENCOUNTER`, and `EXPOSURE` distinct and forbids resolver selection from becoming lived occurrence by itself.
+
+ADP-017 keeps structural causation distinct from actor causal interpretation/knowledge and forbids objective structural truth from automatically becoming actor belief.
+
+Neither mechanism is statistical evidence about upstream respondents.
+
+### 15.4 Required ADP-009 reconstruction ruling
+
+Attempt to infer missing `P(response | position)` from:
+
+- generated actor position → `FORBIDDEN_RECONSTRUCTION`;
+- raw prevalence → `FORBIDDEN_RECONSTRUCTION`;
+- geographic plausibility → `FORBIDDEN_RECONSTRUCTION`;
+- demographic association → `FORBIDDEN_RECONSTRUCTION`;
+- structural metadata / resolver labels → `FORBIDDEN_RECONSTRUCTION`.
+
+V3 is a developmental causal runtime, not an empirical survey estimator or semantic repair layer.
+
+---
+
+## 16. Respondent-grain recomputation court
+
+Pinned V550 respondent-substrate code establishes a respondent-grain evidence terrain with stable source/wave/country/respondent identity, response values, weights and response semantics/provenance. V550's position computations demonstrate that respondent frames can also contain structural/demographic indicator fields.
+
+However, the declared shared-substrate required-column contract does not itself guarantee that every V550 `INDICATOR_FIELD` survives as a published downstream microdata column. Therefore this court does not pretend that “microdata exists somewhere” equals terminal reachability.
+
+Exact recomputation is lawful in principle only when a retained respondent-grain surface jointly preserves, for the same respondents:
+
+- exact conditioning field(s) and values;
+- response variable/value and semantic topology;
+- respondent identity/alignment;
+- source/wave/geography;
+- weight values and weight validity state;
+- missing/special-response treatment;
+- provenance/authority necessary to interpret the rows.
+
+If those survive, unary and joint conditionals are:
+
+`POTENTIALLY_RECOMPUTABLE_FROM_RETAINED_MICRODATA`.
+
+That is **not** the same finding as `EXACT_RECREATION`. A new governed compiler would have to compute, identify, support-gate, provenance-bind and publish the resulting conditional object.
+
+If the exact original sufficient-stat conditional table and the needed respondent-grain conditioning variables are both lost, the downstream V551–V3 objects inspected here do not contain enough information to recover the distribution.
+
+---
+
+## 17. Required equivalence tests
+
+### 17.1 Unary indistinguishability test
+
+Construct two populations with identical source, wave, geography, question, marginal response distribution and marginal position prevalence.
+
+Let each population have 200 respondents; 100 occupy position `P`, 100 do not. Overall response `Y=1` is 100/200 in both.
+
+**Population U-A**
+
+```text
+P:      Y=1 90, Y=0 10
+not P:  Y=1 10, Y=0 90
+```
+
+So:
+
+`P(Y=1 | P) = 0.90`.
+
+**Population U-B**
+
+```text
+P:      Y=1 10, Y=0 90
+not P:  Y=1 90, Y=0 10
+```
+
+So:
+
+`P(Y=1 | P) = 0.10`.
+
+Yet both have identical:
+
+- `P(Y=1)=0.50`;
+- `P(P)=0.50`;
+- source/wave/geography/question identity;
+- any structural metadata that does not include the response×position crosstab.
+
+Consequences:
+
+- V550 `indicator_answer_matrix` necessarily distinguishes U-A and U-B.
+- V550 `position_distribution` does not.
+- `position_conditioning="P"` metadata alone does not.
+- V552 canonical output can remain identical when canonical atom inputs are held identical because its optional conditional input is unused.
+- V554–V558/V3 cannot distinguish the populations unless an exact conditional object is directly retained/reused as an explicit input.
+
+Therefore those mechanisms are not exact recreation.
+
+### 17.2 Intersectional indistinguishability test
+
+Construct four equally sized `A/B` cells, 100 respondents each.
+
+**Population J-A**
+
+```text
+A∧B:       Y=1 90, Y=0 10
+A∧¬B:      Y=1 10, Y=0 90
+¬A∧B:      Y=1 10, Y=0 90
+¬A∧¬B:     Y=1 90, Y=0 10
+```
+
+**Population J-B**
+
+```text
+A∧B:       Y=1 10, Y=0 90
+A∧¬B:      Y=1 90, Y=0 10
+¬A∧B:      Y=1 90, Y=0 10
+¬A∧¬B:     Y=1 10, Y=0 90
+```
+
+Both populations have:
+
+- `P(Y=1)=0.50`;
+- `P(Y=1 | A)=0.50`;
+- `P(Y=1 | B)=0.50`;
+- identical `A` and `B` marginals.
+
+But:
+
+- J-A: `P(Y=1 | A∧B)=0.90`;
+- J-B: `P(Y=1 | A∧B)=0.10`.
+
+Therefore unary conditionals cannot identify the intersectional conditional. Nor can association metadata, entropy/gain summaries, packet co-membership, generated actor positions, or structural topology.
+
+Exact recovery requires the joint respondent crosstab (or a lossless equivalent sufficient-stat object) for `A ∧ B`.
+
+### 17.3 Predicate-identity test for `ddm_v551_conditional.py`
+
+Take two source rows with identical source/wave/country/question/response/count values but different exact conditioning predicates. If the emitted downstream semantic fields do not carry those predicate identities, a consumer cannot know which population slice a row describes without dereferencing external source provenance.
+
+`ddm_v551_conditional.py` omits the explicit position/indicator predicate fields. Hence any exact interpretation depends on external recovery of the original row through `source_row_hash`; the compiler itself has not recreated the conditional semantic object.
+
+**Result:** `LOSSY_APPROXIMATION`, with possible exact provenance dereference to the original V550 object.
+
+---
+
+## 18. Candidate recreation mechanism ledger
+
+| Candidate mechanism | Required class | Court ruling |
+|---|---|---|
+| V550 `indicator_answer_matrix` retained/reused | `EXACT_DIRECT_REUSE` | Exact positive unary sufficient-stat surface if preserved with authority/provenance; not downstream recreation |
+| V550 `position_distribution` | `DIFFERENT_SEMANTIC_OBJECT` | Marginal position distribution only |
+| V550 `position_indicator_summary` | `LOSSY_APPROXIMATION` | Association/determinicity summary, not full response conditional |
+| V550 `secondary_indicator_summary` | `LOSSY_APPROXIMATION` | Joint entropy/gain summary, not `P(Y|A∧B)` topology |
+| V550 respondent-grain rows with aligned condition/response/weights | `POTENTIALLY_RECOMPUTABLE_FROM_RETAINED_MICRODATA` | Requires new governed recomputation; not current downstream authority |
+| V551 canonical signed atoms for omitted IAM | `NO_RECREATION` | IAM is excluded by direct-table/lane gate |
+| V551 `position_field/value`, `position_conditioning`, modifiers/weights/signature | `METADATA_ONLY` | Similar vocabulary does not encode conditional distribution |
+| V551 `ddm_v551_conditional.py` | `LOSSY_APPROXIMATION` | Retains measurement row but drops explicit condition predicate identity |
+| V551J packet/component linkage | `METADATA_ONLY` | Evidence linkage, not conditional estimation |
+| V551J joint response pattern | `DIFFERENT_SEMANTIC_OBJECT` | Joint pattern ≠ structural-position conjunction conditional |
+| V551J `P(Y|A∧B)` recreation | `NO_RECREATION` | No exact joint position-response distribution rebuilt |
+| V552 optional `conditional_determinicity` input | `NO_RECREATION` | Function parameter is unused |
+| V552 pressure components/observations | `DIFFERENT_SEMANTIC_OBJECT` | Signed structural pressure transformation |
+| V552 `position_conditioning_profile` | `LOSSY_APPROXIMATION` | Rollup of pressure observations, not original response topology |
+| V552J packet↔fact association | `METADATA_ONLY` | Links existing objects; no respondent recomputation |
+| V553 current canonical intake | `NO_RECREATION` | Consumes V552/V552J structural material, not conditional respondents |
+| Accepted V553+ direct-DAG | `EXACT_DIRECT_REUSE` conditional on object existence/admission | Transport/reuse law only; cannot recreate missing object |
+| V554 affordance/applicability | `DIFFERENT_SEMANTIC_OBJECT` | Structural use possibility |
+| V555 mediation route | `DIFFERENT_SEMANTIC_OBJECT` | Actor-independent route semantics |
+| V556 interaction/topology | `DIFFERENT_SEMANTIC_OBJECT` | Cross-route structural topology |
+| V557 current renderer boundary | `NO_RECREATION` | No conditional estimator |
+| V557 accepted publication | `EXACT_DIRECT_REUSE` only for admitted existing producer object | Governance/preservation only |
+| V558 current runtime gate | `NO_RECREATION` | Readiness/governance normalization only |
+| V558 accepted repository/resolver | `EXACT_DIRECT_REUSE` for existing indexed object; otherwise `NO_RECREATION` | Selection/indexing cannot create missing semantics |
+| V3 ADP-009 generated position | `DIFFERENT_SEMANTIC_OBJECT` | Generated actor fact, not respondent evidence |
+| V3 infer conditional from generated position/prevalence/geography/demography/metadata | `FORBIDDEN_RECONSTRUCTION` | Explicit authority prohibition |
+| V3 opportunity/exposure/knowledge/development | `DIFFERENT_SEMANTIC_OBJECT` | Lived causal/epistemic semantics, not survey reconstruction |
+
+---
+
+## 19. Direct-DAG transport versus semantic existence
+
+This distinction is the central architecture result.
+
+Accepted law says later stages may reach backward to an earlier producer for meaning that producer still owns. CAN-003/CAN-004 then preserve producer identity and can publish/link exact admitted objects without semantic re-ID.
+
+But five independent conditions must hold before that becomes exact conditional reuse:
+
+1. the exact conditional object must **exist**;
+2. its condition predicate identity and response topology/count/support/provenance must be **losslessly retained**;
+3. it must be within a governed producer collection/reference closure that is **published**;
+4. item-level permission must permit the intended use and the repository must make it **reachable**;
+5. the resolver must select it only under its already-governed predicates; it may not infer what is absent.
+
+If condition (1) fails, direct-DAG law has nothing to transport.  
+If (2) fails, a hash/prose/summary is not a semantic substitute.  
+If (3) or (4) fails, theoretical earlier availability is not terminal reachability.  
+If (5) fails, the resolver would be inventing authority.
+
+Thus direct-DAG law prevents unnecessary serial copying. It does not repair upstream information loss.
+
+---
+
+## 20. Final required answers
+
+### 1. Is unary V550 conditional response meaning faithfully recreated later?
+
+**NO.**
+
+The exact V550 `indicator_answer_matrix` can be **directly reused** if preserved and governed, but the inspected downstream V551→V558/V3 mechanisms do not faithfully recreate it after omission. Canonical V551 excludes the IAM lane; alternate V551 conditional output loses explicit predicate identity; V552 ignores that conditional input; later stages transform different semantic objects.
+
+### 2. Is higher-order/joint conditional meaning faithfully recreated later?
+
+**NO.**
+
+V550 secondary-indicator analysis retains joint dependence summaries, not the full `P(response | A ∧ B)` distribution. V551J joint packets/patterns are different joint evidence objects. The intersectional equivalence fixture proves unary marginals and downstream metadata cannot recover the joint conditional.
+
+### 3. Is any apparent recreation merely metadata?
+
+**YES, substantial apparent recreation is metadata, and one important path is lossy derivation rather than metadata alone.**
+
+`position_field`, `position_value`, `position_conditioning`, `position_modifiers`, `conditional_strata_weights`, `subject_position_signature`, V551J packet↔component identities, V552J packet↔fact association, and V3 generated-position bindings can preserve condition-related identity or selection context without preserving the empirical response distribution. V552 `position_conditioning_profile` is a lossy pressure rollup. `ddm_v551_conditional.py` preserves numeric derived-row measurements but loses explicit predicate identity, so it is `LOSSY_APPROXIMATION`, not merely metadata and not exact recreation.
+
+### 4. Is any lost meaning recoverable only by returning to respondent-grain data?
+
+**YES, when the exact original conditional sufficient-stat object is not retained.**
+
+Recovery then requires respondent-grain evidence — or another lossless equivalent sufficient-stat table — that jointly retains exact condition variable(s), response, respondent alignment, weights, source/wave/geography and provenance. This is `POTENTIALLY_RECOMPUTABLE_FROM_RETAINED_MICRODATA`, not current downstream recreation. If neither the exact conditional table nor the required respondent-grain condition-response alignment survives, the inspected downstream objects are insufficient to reconstruct it.
+
+### 5. Does accepted 553+ direct-DAG law solve the semantic loss automatically, or only provide a transport mechanism if an authoritative object exists?
+
+**ONLY A TRANSPORT / DIRECT-REUSE MECHANISM IF AN AUTHORITATIVE OBJECT EXISTS.**
+
+It does not solve semantic loss automatically. CAN-003/CAN-004 and the accepted V557/V558 architecture preserve and index producer-owned objects; they explicitly do not infer or repair missing semantic dependencies. An exact V550 conditional must first exist, remain lossless, be admitted/published and be reachable under permission. Otherwise the DAG carries nothing equivalent.
+
+---
+
+## 21. Final hostile ruling
+
+The downstream system contains many objects that are **about positions**, **conditioned by structural metadata**, **joint**, **pressure-bearing**, **position-bindable**, or **resolver-selectable**. None of those labels supplies the missing empirical operation.
+
+The exact question is whether downstream state contains enough information to distinguish two respondent populations that differ only in the conditional distribution of responses within an exact position predicate while sharing the candidate downstream marginals/metadata. For the inspected canonical path, the answer is no.
+
+Likewise, two populations can share every unary `P(Y|A)` and `P(Y|B)` while differing radically in `P(Y|A∧B)`. No V551J packet name, V552 pressure profile, V556 topology, V558 resolver binding or V3 generated actor position closes that information-theoretic gap.
+
+Therefore the hostile recreation hypothesis is rejected:
+
+`V550 conditional empirical meaning is not faithfully recreated downstream.`
+
+Where it survives exactly, it survives because the original authoritative object is **directly reused**. Where it does not survive, exact recovery requires **return to lossless respondent/sufficient-stat evidence and a governed recomputation**. Where V3 might otherwise be tempted to fill the gap from prevalence, geography, demographic association or generated position, current authority makes that reconstruction explicitly **forbidden**.
