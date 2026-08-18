@@ -350,20 +350,54 @@ Statuses:
 - `MISSING_PLAN_ALIGNMENT_AUTHORITY`
 - `INTEGRITY_FAILURE`
 
-### Evaluator law
+### Evaluator-authority law
 
-A versioned bilingual semantic evaluator may be deterministic, rule-backed or model-assisted. If a model is used, its exact model/version/prompt/sampling/receipt identity must be recorded under the applicable render/evaluator policy.
+Positive bilingual semantic adjudication is lawful only through an **exact separately governed evaluator rule / authority** whose semantic operations are machine-bound. A conforming evaluator authority must bind at minimum:
 
-However:
+- evaluator authority ID, version and content hash;
+- the protected semantic-invariant profile/version it is authorized to compare;
+- admissible comparison operations and their exact semantics;
+- protected-atom comparison semantics, including how preservation, addition, removal, force/scope alteration and contradiction preservation are established;
+- result states, including positive, drift, missing-authority, ambiguity/unresolved and integrity outcomes;
+- ambiguity/unresolved law that forbids best-effort positive adjudication;
+- exact provenance, deterministic/replay contract and evaluator receipt identity.
 
-- a translator's self-assertion “equivalent” has zero authority;
-- embedding/cosine similarity is diagnostic only;
-- scalar LLM confidence/probability is diagnostic only;
-- crossing a similarity/confidence threshold cannot establish equivalence;
-- free-text “looks close enough” review cannot silently pass;
-- any unresolved **material** protected obligation makes the surface `EQUIVALENCE_UNRESOLVED`.
+Merely pinning a model, provider, model version, prompt, sampling profile, seed or receipt establishes **provenance only**. It does not create evaluator semantic authority. ADP-025 governs render/model provenance; it does not authorize a model to decide that protected meaning was preserved.
 
-The final rule is categorical invariant preservation, not score maximization.
+#### Model diagnostic-only law
+
+A model/LLM MAY lawfully:
+
+- generate a `NATIVE` or `TRANSLATION` surface under the separately governed render/translation path;
+- emit diagnostic candidate atom mappings;
+- emit diagnostic candidate alignment annotations;
+- emit candidate drift flags or candidate unresolved flags;
+- emit other explicitly typed **NONAUTHORITATIVE_DIAGNOSTIC_EVIDENCE**.
+
+Those outputs have **zero semantic-adjudication authority by themselves**. Model output alone MUST NOT establish:
+
+- protected-atom preservation;
+- absence of semantic drift;
+- `PLAN_CONFORMANT`;
+- `SEMANTICALLY_EQUIVALENT`.
+
+This remains true even when the model/provider/version/prompt/sampling/seed/receipt are fully pinned and replayable. A stored or reproducible model judgment remains diagnostic evidence, not semantic authority.
+
+A separately governed evaluator may consume model-produced diagnostic evidence only if its own accepted evaluator rule explicitly admits that evidence class and defines how it may be used. The governed evaluator's machine-bound operations and result law remain the authority; the model cannot override them.
+
+Still insufficient by themselves:
+
+- a translator's self-assertion “equivalent”;
+- embedding/cosine similarity;
+- scalar LLM confidence/probability;
+- a pinned model judgment such as `equivalent=true`;
+- apparently complete model-generated protected-atom mappings;
+- crossing any similarity/confidence threshold;
+- free-text “looks close enough” review.
+
+If a material bilingual comparison lacks an exact accepted evaluator authority with the required operation semantics, the surface/pair returns `MISSING_PLAN_ALIGNMENT_AUTHORITY` and/or `EQUIVALENCE_UNRESOLVED` as appropriate. There is no best-effort semantic pass.
+
+The final rule is categorical invariant preservation **under governed evaluator authority**, not score maximization or model plausibility.
 
 ## 11. Canonical equivalence receipt
 
@@ -413,7 +447,7 @@ Equivalence status is exactly one of:
 - `INTEGRITY_FAILURE_PLAN_MISMATCH`
 - `INTEGRITY_FAILURE_ARTIFACT_OR_RECEIPT`
 
-Only `SEMANTICALLY_EQUIVALENT` authorizes the translation artifact to be labeled a canonical translation of that native/plan pair.
+Only `SEMANTICALLY_EQUIVALENT` authorizes the translation artifact to be labeled a canonical translation of that native/plan pair. A positive `PLAN_CONFORMANT` surface receipt and final `SEMANTICALLY_EQUIVALENT` pair receipt require the exact separately governed evaluator authority described in §10; model diagnostics cannot issue either positive state on their own.
 
 A native-only status does not relabel native text as translation.
 
@@ -629,9 +663,9 @@ Forbidden replay entropy:
 - culturally plausible rewrite;
 - prior displayed translation as semantic authority.
 
-Exact replay uses stored artifacts and receipts. Provider regeneration is never required to prove the historical pair.
+Exact replay uses stored artifacts and receipts. Provider regeneration is never required to prove the historical pair. Historical model/evaluator **diagnostic** receipts may be preserved and replayed exactly, but immutability or reproducibility does not retroactively promote a model judgment into semantic-adjudication authority. A historical positive semantic receipt is valid only if its own recorded evaluator authority ID/version/hash and admissible-operation contract were lawful for that adjudication.
 
-A new translation attempt, new evaluator version, changed locale, changed semantic plan, changed native artifact or changed translation artifact creates a new immutable pair/equivalence identity. Historical records remain unchanged.
+A new translation attempt, new governed evaluator authority/version, changed diagnostic model/evaluator version, changed locale, changed semantic plan, changed native artifact or changed translation artifact creates a new immutable pair/equivalence identity. Historical records remain unchanged.
 
 ## 20. Valid-empty / missing / deferred / integrity law
 
@@ -643,7 +677,7 @@ CAN-023 distinguishes lawful absence from failure.
 - missing semantic-plan hash is `DEFERRED_MISSING_SEMANTIC_PLAN_AUTHORITY`.
 - missing native artifact is `NATIVE_REQUIRED_MISSING_OR_FAILED`.
 - missing translation-rule/model receipt for a present translation is `INTEGRITY_FAILURE_ARTIFACT_OR_RECEIPT`.
-- missing equivalence evaluator authority for a required semantic comparison is `EQUIVALENCE_UNRESOLVED` / deferred, never “probably equivalent.”
+- missing exact evaluator semantic authority for a material comparison is `MISSING_PLAN_ALIGNMENT_AUTHORITY`; when the material comparison therefore cannot be established, pair/surface equivalence is also `EQUIVALENCE_UNRESOLVED` as applicable; never “probably equivalent.”
 - wrong plan hash is `INTEGRITY_FAILURE_PLAN_MISMATCH`.
 - a valid pair may contain zero translation artifact only when requirement is `NOT_REQUESTED` or `OPTIONAL`.
 
@@ -676,7 +710,10 @@ CAN-023 explicitly forbids:
 21. equivalent wording treated as causal admission;
 22. one admitted surface transferring admission to its pair-mate;
 23. same visible text implying same artifact/pair identity;
-24. silent post-processing without version/hash provenance.
+24. silent post-processing without version/hash provenance;
+25. pinned/replayable LLM judgment treated as evaluator semantic authority;
+26. model-produced complete-looking atom mapping treated as proof without separately governed evaluator authority;
+27. immutable historical model diagnostic receipt promoted retrospectively into semantic authority.
 
 ## 22. Hostile fixtures
 
@@ -730,6 +767,11 @@ CAN-023 explicitly forbids:
 | H46 | optional translation drifted | native can still display; translation quarantined |
 | H47 | required translation drifted | native remains valid, delivery incomplete |
 | H48 | no semantic-plan hash | defer; no equivalence guess |
+| H49 | fully pinned LLM evaluator returns `equivalent=true`, but no separately accepted evaluator authority exists | `MISSING_PLAN_ALIGNMENT_AUTHORITY` / `EQUIVALENCE_UNRESOLVED`; no `PLAN_CONFORMANT`, no semantic pass |
+| H50 | model emits apparently complete protected-atom alignment, but evaluator authority is absent | diagnostic evidence only; no positive semantic state |
+| H51 | exact separately governed deterministic/rule-backed evaluator authority proves every protected invariant with zero unresolved material atoms | positive `PLAN_CONFORMANT` and, when both surfaces/pair gates pass, `SEMANTICALLY_EQUIVALENT` may lawfully issue |
+| H52 | model diagnostic judgment conflicts with exact governed evaluator result | governed evaluator controls; model diagnostic cannot override |
+| H53 | translation model lawfully generates target-language surface under ADP-025 | generation remains lawful; equivalence still requires independent governed CAN-023 evaluator court |
 
 ## 23. GOVERNING_SPIRIT_CHECK
 
@@ -759,7 +801,7 @@ The choice preserves:
 - explicit provenance and replay;
 - the law that LLM output is expression, not ontology.
 
-The Governing Spirit supplied **no** actor language, translation, idiom, biography, relationship meaning, epistemic state, response operation or equivalence finding. It only resolves the architecture-compatible ambiguity in how translation failure/equivalence should be represented.
+The Governing Spirit supplied **no** actor language, translation, idiom, biography, relationship meaning, epistemic state, response operation, bilingual evaluator semantics or equivalence finding. It grants **no model semantic authority** and cannot convert model plausibility, confidence, reproducibility or diagnostic alignment into equivalence. It only resolves the architecture-compatible ambiguity in how translation failure/equivalence should be represented.
 
 ## 24. CONSUMER_RELEASE_SUFFICIENCY
 

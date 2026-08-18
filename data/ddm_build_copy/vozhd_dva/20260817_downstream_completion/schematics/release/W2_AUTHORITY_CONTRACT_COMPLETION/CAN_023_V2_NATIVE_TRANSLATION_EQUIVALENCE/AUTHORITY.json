@@ -58,7 +58,7 @@
   },
   "accepted_dependencies": {
     "v2_completion_ruling": "constitutional V2 language/dialogue/native-translation rendering jurisdiction",
-    "ADP-025": "model/provider/version/render RNG/retry/rerender/artifact/receipt identity only",
+    "ADP-025": "model/provider/version/render RNG/retry/rerender/artifact/receipt identity only; no semantic-adjudication authority",
     "CAN-022": "architecture requirement for already-authorized semantic plan/render-admission anchor only; same-cohort worker result NOT consumed"
   },
   "same_cohort_consumed": false,
@@ -68,6 +68,8 @@
     "NATIVE_WORDING != SEMANTIC_AUTHORITY",
     "TRANSLATION_WORDING != SEMANTIC_AUTHORITY",
     "SURFACE_EQUIVALENCE != TEXTUAL_SIMILARITY",
+    "MODEL_PROVENANCE != EVALUATOR_SEMANTIC_AUTHORITY",
+    "MODEL_DIAGNOSTIC_EVIDENCE != SEMANTIC_ADJUDICATION",
     "NATIVE_LANGUAGE_ROLE != ACTOR_ETHNICITY_NATIONALITY_BIOGRAPHY",
     "SEMANTICALLY_EQUIVALENT_PAIR != INTERACTION_MODE != EXTERNAL_EVENT_PACKAGE != V3_ADMISSION != CAUSAL_OCCURRENCE"
   ],
@@ -92,6 +94,7 @@
       "salience/register/response/relationship/attractor/boundary/session semantics",
       "CAN-022 prompt admission",
       "ADP-025 provider/model/RNG/retry semantics",
+      "model semantic-adjudication authority absent a separately accepted evaluator rule",
       "display preference beyond translation requirement",
       "language/identity inference",
       "interaction mode",
@@ -311,20 +314,57 @@
       "evidence_refs",
       "status",
       "receipt_hash"
-    ]
+    ],
+    "positive_status_authority_requirement": "PLAN_CONFORMANT requires an exact separately governed evaluator authority; model diagnostics alone cannot emit it"
   },
   "evaluator_law": {
-    "model_assistance_allowed": true,
-    "requirements": [
-      "versioned evaluator binding",
-      "categorical invariant evaluation",
-      "exact provenance/receipt",
-      "zero unresolved material protected obligations for pass"
+    "model_assistance_authority": "NONAUTHORITATIVE_DIAGNOSTIC_ONLY",
+    "translation_model_generation_allowed_under_adp025": true,
+    "model_diagnostic_outputs_allowed": [
+      "candidate atom mappings",
+      "candidate alignment annotations",
+      "candidate drift flags",
+      "candidate unresolved flags",
+      "other explicitly typed NONAUTHORITATIVE_DIAGNOSTIC_EVIDENCE"
     ],
+    "model_diagnostics_have_semantic_adjudication_authority": false,
+    "model_output_alone_cannot_establish": [
+      "protected-atom preservation",
+      "absence of semantic drift",
+      "PLAN_CONFORMANT",
+      "SEMANTICALLY_EQUIVALENT"
+    ],
+    "pinning_model_proves": "provenance/replay identity only; not evaluator semantic authority",
+    "positive_adjudication_requires": {
+      "separately_governed_evaluator_authority": true,
+      "required_machine_bound_fields": [
+        "evaluator_authority_id",
+        "evaluator_authority_version",
+        "evaluator_authority_hash",
+        "authorized_equivalence_profile_id/version",
+        "admissible_operations",
+        "protected_atom_comparison_semantics",
+        "result_states",
+        "ambiguity_unresolved_law",
+        "provenance_contract",
+        "replay_contract",
+        "evaluator_receipt_identity"
+      ],
+      "zero_unresolved_material_protected_obligations_for_positive_pass": true
+    },
+    "missing_authority_behavior": [
+      "MISSING_PLAN_ALIGNMENT_AUTHORITY",
+      "EQUIVALENCE_UNRESOLVED"
+    ],
+    "no_best_effort_pass": true,
+    "governed_evaluator_may_consume_model_diagnostics_only_if_explicitly_authorized": true,
+    "precedence": "exact governed evaluator controls; diagnostic model output cannot override",
     "insufficient_alone": [
       "translator self-assertion",
       "embedding/cosine similarity",
       "scalar LLM confidence/probability",
+      "pinned model equivalent=true judgment",
+      "apparently complete model-generated protected-atom mapping",
       "free-text looks-close-enough review",
       "similarity/confidence threshold"
     ]
@@ -346,7 +386,8 @@
       "INTEGRITY_FAILURE_PLAN_MISMATCH",
       "INTEGRITY_FAILURE_ARTIFACT_OR_RECEIPT"
     ],
-    "canonical_translation_label_requires": "SEMANTICALLY_EQUIVALENT"
+    "canonical_translation_label_requires": "SEMANTICALLY_EQUIVALENT",
+    "positive_equivalence_authority_requirement": "exact separately governed evaluator authority must establish every material protected invariant; model diagnostics alone are insufficient"
   },
   "failure_law": {
     "not_requested": "lawful native-only",
@@ -385,7 +426,8 @@
       "translation_artifact_hash",
       "receipt_hash"
     ],
-    "no_mutable_fallback": true
+    "no_mutable_fallback": true,
+    "model_generation_semantics": "model may generate lawful target-language surface under ADP-025; generation does not establish equivalence"
   },
   "contradiction_law": "Preserve exact contradiction-set membership and multiplicity; no averaging, winner selection, compromise synthesis or explanatory repair.",
   "epistemic_nonupgrade": "Native and translation epistemic force must equal source-plan force; belief->fact, uncertainty->certainty, nonknowledge->guess and hidden->asserted are forbidden.",
@@ -403,7 +445,9 @@
       "model/transform receipts",
       "equivalence profile/version",
       "surface alignment receipt hashes",
+      "governed evaluator authority ID/version/hash",
       "evaluator binding/version/hash",
+      "diagnostic model/evaluator receipt refs where present",
       "drift/unresolved refs",
       "pair basis hash",
       "equivalence receipt hash",
@@ -421,7 +465,9 @@
       "culturally plausible rewrite",
       "prior displayed translation as semantic authority"
     ],
-    "exact_replay": "stored artifacts and receipts; provider regeneration not required"
+    "exact_replay": "stored artifacts and receipts; provider regeneration not required",
+    "diagnostic_receipt_law": "historical model/evaluator diagnostic receipts may be replayed exactly but immutability/reproducibility never upgrades them into semantic authority",
+    "historical_positive_receipt_validity": "requires its recorded exact governed evaluator authority and admissible-operation contract to have been lawful for that adjudication"
   },
   "valid_empty_missing_deferred_integrity": {
     "translation_not_requested": "lawful absence",
@@ -430,63 +476,280 @@
     "missing_semantic_plan": "DEFERRED_MISSING_SEMANTIC_PLAN_AUTHORITY",
     "missing_native": "NATIVE_REQUIRED_MISSING_OR_FAILED",
     "present_translation_missing_receipt": "INTEGRITY_FAILURE_ARTIFACT_OR_RECEIPT",
-    "missing_equivalence_authority": "EQUIVALENCE_UNRESOLVED",
+    "missing_equivalence_authority": "MISSING_PLAN_ALIGNMENT_AUTHORITY and EQUIVALENCE_UNRESOLVED as applicable; no best-effort semantic pass",
     "plan_hash_mismatch": "INTEGRITY_FAILURE_PLAN_MISMATCH"
   },
   "hostile_fixtures": [
-    ["H01", "translation changes I think P to P", "reject drift"],
-    ["H02", "drops uncertainty", "reject drift"],
-    ["H03", "nonknowledge to plausible answer", "reject drift"],
-    ["H04", "resolves contradiction", "reject drift"],
-    ["H05", "drops one contradictory claim", "reject drift"],
-    ["H06", "changes relationship posture", "reject drift"],
-    ["H07", "changes response operation", "reject drift"],
-    ["H08", "target boundary becomes whole-turn exit", "reject scope drift"],
-    ["H09", "optional translation absent", "native valid optional-missing"],
-    ["H10", "optional provider failure", "native valid optional-failed"],
-    ["H11", "required translation absent", "native valid; pair incomplete"],
-    ["H12", "required operational failure", "native valid; pair incomplete"],
-    ["H13", "native substituted for missing translation", "reject substitution"],
-    ["H14", "translation substitutes for missing native", "reject substitution"],
-    ["H15", "different plan hashes", "integrity failure"],
-    ["H16", "adds hometown biography", "reject drift"],
-    ["H17", "religious idiom inferred from country", "reject unless plan-authorized surface variation"],
-    ["H18", "honorific adds intimacy/status", "drift/unresolved"],
-    ["H19", "target grammar forces socially meaningful choice without authority", "unresolved"],
-    ["H20", "idiomatic syntax same meaning", "allow"],
-    ["H21", "empty discourse filler omitted", "allow"],
-    ["H22", "punctuation differs", "allow unless material"],
-    ["H23", "embedding 0.99 but uncertainty removed", "reject"],
-    ["H24", "LLM 98% equivalent but referent changed", "reject"],
-    ["H25", "modal unresolved", "unresolved"],
-    ["H26", "translator self-certifies", "no authority"],
-    ["H27", "DRAFT asymmetry", "compatibility only; needs alignment proof"],
-    ["H28", "embedded gloss loses content", "drift/unresolved"],
-    ["H29", "missing model/transform receipt", "integrity failure"],
-    ["H30", "hidden postprocessor", "integrity failure"],
-    ["H31", "exact replay", "same hashes/status"],
-    ["H32", "optional translation later added", "new pair; old remains"],
-    ["H33", "retranslation after drift", "new artifact/pair"],
-    ["H34", "evaluator version change", "new receipt/pair"],
-    ["H35", "locale change", "new pair"],
-    ["H36", "same visible native text from new rerender", "new pair due artifact identity"],
-    ["H37", "native and translation byte-identical", "no automatic pass/fail"],
-    ["H38", "target language from country", "reject"],
-    ["H39", "user language detector becomes actor identity", "reject"],
-    ["H40", "repetition becomes memory", "reject"],
-    ["H41", "adds analyst-known fact", "reject"],
-    ["H42", "exposes inaccessible claim", "reject"],
-    ["H43", "changes causal status", "reject"],
-    ["H44", "native admission transfers to translation", "reject"],
-    ["H45", "translation admission transfers to native", "reject"],
-    ["H46", "optional drift", "native remains usable; translation quarantined"],
-    ["H47", "required drift", "native remains valid; delivery incomplete"],
-    ["H48", "no semantic plan hash", "defer"]
+    [
+      "H01",
+      "translation changes I think P to P",
+      "reject drift"
+    ],
+    [
+      "H02",
+      "drops uncertainty",
+      "reject drift"
+    ],
+    [
+      "H03",
+      "nonknowledge to plausible answer",
+      "reject drift"
+    ],
+    [
+      "H04",
+      "resolves contradiction",
+      "reject drift"
+    ],
+    [
+      "H05",
+      "drops one contradictory claim",
+      "reject drift"
+    ],
+    [
+      "H06",
+      "changes relationship posture",
+      "reject drift"
+    ],
+    [
+      "H07",
+      "changes response operation",
+      "reject drift"
+    ],
+    [
+      "H08",
+      "target boundary becomes whole-turn exit",
+      "reject scope drift"
+    ],
+    [
+      "H09",
+      "optional translation absent",
+      "native valid optional-missing"
+    ],
+    [
+      "H10",
+      "optional provider failure",
+      "native valid optional-failed"
+    ],
+    [
+      "H11",
+      "required translation absent",
+      "native valid; pair incomplete"
+    ],
+    [
+      "H12",
+      "required operational failure",
+      "native valid; pair incomplete"
+    ],
+    [
+      "H13",
+      "native substituted for missing translation",
+      "reject substitution"
+    ],
+    [
+      "H14",
+      "translation substitutes for missing native",
+      "reject substitution"
+    ],
+    [
+      "H15",
+      "different plan hashes",
+      "integrity failure"
+    ],
+    [
+      "H16",
+      "adds hometown biography",
+      "reject drift"
+    ],
+    [
+      "H17",
+      "religious idiom inferred from country",
+      "reject unless plan-authorized surface variation"
+    ],
+    [
+      "H18",
+      "honorific adds intimacy/status",
+      "drift/unresolved"
+    ],
+    [
+      "H19",
+      "target grammar forces socially meaningful choice without authority",
+      "unresolved"
+    ],
+    [
+      "H20",
+      "idiomatic syntax same meaning",
+      "allow"
+    ],
+    [
+      "H21",
+      "empty discourse filler omitted",
+      "allow"
+    ],
+    [
+      "H22",
+      "punctuation differs",
+      "allow unless material"
+    ],
+    [
+      "H23",
+      "embedding 0.99 but uncertainty removed",
+      "reject"
+    ],
+    [
+      "H24",
+      "LLM 98% equivalent but referent changed",
+      "reject"
+    ],
+    [
+      "H25",
+      "modal unresolved",
+      "unresolved"
+    ],
+    [
+      "H26",
+      "translator self-certifies",
+      "no authority"
+    ],
+    [
+      "H27",
+      "DRAFT asymmetry",
+      "compatibility only; needs alignment proof"
+    ],
+    [
+      "H28",
+      "embedded gloss loses content",
+      "drift/unresolved"
+    ],
+    [
+      "H29",
+      "missing model/transform receipt",
+      "integrity failure"
+    ],
+    [
+      "H30",
+      "hidden postprocessor",
+      "integrity failure"
+    ],
+    [
+      "H31",
+      "exact replay",
+      "same hashes/status"
+    ],
+    [
+      "H32",
+      "optional translation later added",
+      "new pair; old remains"
+    ],
+    [
+      "H33",
+      "retranslation after drift",
+      "new artifact/pair"
+    ],
+    [
+      "H34",
+      "evaluator version change",
+      "new receipt/pair"
+    ],
+    [
+      "H35",
+      "locale change",
+      "new pair"
+    ],
+    [
+      "H36",
+      "same visible native text from new rerender",
+      "new pair due artifact identity"
+    ],
+    [
+      "H37",
+      "native and translation byte-identical",
+      "no automatic pass/fail"
+    ],
+    [
+      "H38",
+      "target language from country",
+      "reject"
+    ],
+    [
+      "H39",
+      "user language detector becomes actor identity",
+      "reject"
+    ],
+    [
+      "H40",
+      "repetition becomes memory",
+      "reject"
+    ],
+    [
+      "H41",
+      "adds analyst-known fact",
+      "reject"
+    ],
+    [
+      "H42",
+      "exposes inaccessible claim",
+      "reject"
+    ],
+    [
+      "H43",
+      "changes causal status",
+      "reject"
+    ],
+    [
+      "H44",
+      "native admission transfers to translation",
+      "reject"
+    ],
+    [
+      "H45",
+      "translation admission transfers to native",
+      "reject"
+    ],
+    [
+      "H46",
+      "optional drift",
+      "native remains usable; translation quarantined"
+    ],
+    [
+      "H47",
+      "required drift",
+      "native remains valid; delivery incomplete"
+    ],
+    [
+      "H48",
+      "no semantic plan hash",
+      "defer"
+    ],
+    [
+      "H49",
+      "fully pinned LLM evaluator returns equivalent=true with no separately accepted evaluator authority",
+      "MISSING_PLAN_ALIGNMENT_AUTHORITY / EQUIVALENCE_UNRESOLVED; no PLAN_CONFORMANT; no semantic pass"
+    ],
+    [
+      "H50",
+      "model emits apparently complete protected-atom alignment but evaluator authority absent",
+      "diagnostic evidence only; no positive semantic state"
+    ],
+    [
+      "H51",
+      "exact separately governed deterministic/rule-backed evaluator proves all protected invariants",
+      "PLAN_CONFORMANT and SEMANTICALLY_EQUIVALENT may lawfully issue when all pair gates pass"
+    ],
+    [
+      "H52",
+      "model diagnostic judgment conflicts with exact governed evaluator",
+      "governed evaluator controls; model diagnostic cannot override"
+    ],
+    [
+      "H53",
+      "translation model generates lawful target-language surface under ADP-025",
+      "generation lawful; semantic equivalence still requires independent governed CAN-023 evaluator court"
+    ]
   ],
   "governing_spirit_check": {
     "status": "APPLICABLE__PASS",
     "ambiguity": "freeform second rendering judged by similarity/plausibility vs same-plan dual surfaces with protected invariants and explicit unresolved/failure states",
-    "chosen": "same-plan dual surfaces with categorical invariant preservation",
+    "chosen": "same-plan dual surfaces with categorical invariant preservation under exact governed evaluator authority",
     "tie_break": [
       "never let downstream vividness exceed upstream authority",
       "actor opacity",
@@ -497,7 +760,10 @@
       "replay/provenance",
       "LLM output is expression not ontology"
     ],
-    "no_semantics_invented": true
+    "no_semantics_invented": true,
+    "evaluator_semantics_supplied": false,
+    "model_semantic_authority_granted": false,
+    "model_plausibility_can_become_equivalence": false
   },
   "consumer": {
     "primary": "V2-P8",
