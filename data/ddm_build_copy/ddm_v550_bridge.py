@@ -153,6 +153,14 @@ for _identity_column, _anchor_column in (
         _columns = V551_BRIDGE_INDEX_SCHEMA["required_columns"]
         _columns.insert(_columns.index(_anchor_column) + 1, _identity_column)
 
+# QUC lineage is already minted upstream and carried by V550 empirical rows.
+# Keep it in the canonical streaming bridge schema so V551 can authenticate the
+# producer row rather than degrading to PRODUCER_QUESTION_USE_HASH_UNAVAILABLE.
+if "question_use_contract_hash" not in V551_BRIDGE_INDEX_SCHEMA["required_columns"]:
+    _columns = V551_BRIDGE_INDEX_SCHEMA["required_columns"]
+    _anchor_column = "question_use_contract_joined"
+    _columns.insert(_columns.index(_anchor_column) + 1, "question_use_contract_hash")
+
 
 def _process_label(table_name: str) -> str:
     idx = PIPELINE_PROCESS_LABELS.get(table_name)
@@ -301,7 +309,7 @@ def _bridge_additional_fields(
     bridge_evidence_lane: str,
     n_respondents: Any,
 ) -> dict[str, Any]:
-    quc_owned_fields = {"semantic_role", "semantic_subrole", "semantic_role_authority_status", "current_directional_atom_eligible", "directional_applicability_status", "directional_certification_status", "directionality_authority_status", "structural_mapping_status", "driver_id", "driver_facet_id", "question_block_id", "structural_domain_id", "relation_axis_id", "target_entity_id", "allowed_as_v551_relation_evidence", "v551_evidence_role", "mapping_status", "source_structure_source", "source_structure_basis", "source_structure_confidence", "source_structure_fields_joined", "source_structure_review_required", "review_required", "manual_review_required", "manual_review_flag"}
+    quc_owned_fields = {"semantic_role", "semantic_subrole", "semantic_role_authority_status", "current_directional_atom_eligible", "directional_applicability_status", "directional_certification_status", "directionality_authority_status", "structural_mapping_status", "driver_id", "driver_facet_id", "question_block_id", "structural_domain_id", "relation_axis_id", "target_entity_id", "allowed_as_v551_relation_evidence", "v551_evidence_role", "mapping_status", "source_structure_source", "source_structure_basis", "source_structure_confidence", "source_structure_fields_joined", "source_structure_review_required", "review_required", "manual_review_required", "manual_review_flag", "question_use_contract_hash"}
     authority_conflicts: list[dict[str, Any]] = []
 
     def contract_or_row(*names: str, default: Any = "") -> Any:
@@ -329,6 +337,31 @@ def _bridge_additional_fields(
     is_inapplicable = _to_bool(contract_or_row("is_inapplicable", default=False))
     explicit_special = _to_bool(contract_or_row("is_special", default=False))
     is_special = explicit_special or is_missing or is_dk or is_refusal or is_iap or is_not_asked or is_inapplicable
+
+    # Generic QUC ``review_required`` is an aggregate fail-closed status.  It
+    # must not be relabeled as a manual-review fact after the later canonical
+    # QRA resolves semantic role/structure.  Preserve only explicit manual
+    # review authority and an itinerary designation that remains unresolved.
+    explicit_manual_review = _to_bool(
+        contract_or_row("manual_review_flag", "manual_review_required", default=False)
+    )
+    manual_designation_required = _to_bool(
+        contract_or_row(
+            "itinerary_manual_designation_required",
+            "manual_designation_required",
+            default=False,
+        )
+    )
+    disallowed_reason = str(contract_or_row("disallowed_reason", default="") or "").strip()
+    manual_designation_unresolved = bool(
+        manual_designation_required
+        and "wave_itinerary_manual_designation_required" in disallowed_reason
+    )
+    manual_review_flag = bool(explicit_manual_review or manual_designation_unresolved)
+    manual_review_reason = str(contract_or_row("manual_review_reason", default="") or "").strip()
+    if manual_designation_unresolved and not manual_review_reason:
+        manual_review_reason = disallowed_reason
+
     result = {
         "survey_year": survey_year,
         "analysis_scope": contract_or_row("analysis_scope", default="country"),
@@ -472,8 +505,8 @@ def _bridge_additional_fields(
         "legacy_driver_leak_flag": _to_bool(contract_or_row("legacy_driver_leak_flag", default=False)),
         "forbidden_inference": contract_or_row("forbidden_inference", default=""),
         "known_absences": contract_or_row("known_absences", default=""),
-        "manual_review_flag": _to_bool(contract_or_row("manual_review_flag", "review_required", "manual_designation_required", default=False)),
-        "manual_review_reason": contract_or_row("manual_review_reason", default=""),
+        "manual_review_flag": manual_review_flag,
+        "manual_review_reason": manual_review_reason,
         "question_type": contract_or_row("question_type", default=""),
         "handling_rule": contract_or_row("handling_rule", default=""),
         "recommended_computation": contract_or_row("recommended_computation", default=""),
@@ -489,6 +522,7 @@ def _bridge_additional_fields(
         "position_conditioning_note": contract_or_row("position_conditioning_note", default=""),
         "position_conditioning_confidence": contract_or_row("position_conditioning_confidence", default=""),
         "question_use_contract_joined": _to_bool(contract_or_row("question_use_contract_joined", default=False)),
+        "question_use_contract_hash": contract_or_row("question_use_contract_hash", default=""),
         "evidence_basis": contract_or_row("evidence_basis", default=""),
         "provenance_basis": contract_or_row("provenance_basis", default=""),
         "created_at": contract_or_row("created_at", default=utc_now()),

@@ -492,12 +492,14 @@ def _select_question_variables_from_rows(
                 break
 
     if joint_mode == "required":
-        governed_v551 = [
-            code
-            for code, *_ in rows
-            if lookup_governed_response_semantics_contract(family, wave, code) is not None
-            and code not in selected
-        ]
+        governed_v551 = list(
+            dict.fromkeys(
+                code
+                for code, *_ in rows
+                if lookup_governed_response_semantics_contract(family, wave, code) is not None
+                and code not in selected
+            )
+        )
         rng.shuffle(governed_v551)
         selected.extend(governed_v551[: max(0, 20 - len(selected))])
         rng.shuffle(selected)
