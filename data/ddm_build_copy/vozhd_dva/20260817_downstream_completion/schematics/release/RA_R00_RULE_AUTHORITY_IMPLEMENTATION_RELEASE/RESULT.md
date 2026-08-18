@@ -374,12 +374,14 @@ The complete mapping is:
 ```text
 EXT-001 SWID
   → V553-P1 → P2 → P3 → P4 → P5 → EXT-002
-  → V554-P1 → P2 → P3 → P4 → P5 → EXT-003
+  → [ADP-001 + CDP-CAN-001 accepted] → V554-P1 → P2 → P3 → P4 → P5 → EXT-003
   → V555-P1 → P2 → P3 → P4 → P5 → EXT-004
-  → IP-556-01 → 02 → 03 → 04 → 05 → EXT-005
+  → [CDP-CAN-002 accepted]
+       → IP-556-01 → IP-556-02
+       → [ADP-005 accepted] → IP-556-03 → IP-556-04 → IP-556-05 → EXT-005
   → V557-P1 → P2 → P3 → P4 → P5 → EXT-006
   → V558-P1 → P2 → P3 → P4 → P5 → EXT-007
-  → V3-P4 → ... → P13
+  → V3 mandatory P4 → ... → P10 → P12 → P13
   → V2-P9 → P10
   → whole-machine production court
 
@@ -392,9 +394,12 @@ ADP-009 + ADP-010 + ADP-020 → ADP-015
 ADP-016 → ADP-017 → ADP-022
 ADP-019 ↔ CAN-024/CAN-025, without merging admission/mode/packaging
 ADP-006 remains separate from CAN-003 runtime-use governance
+CDP-CAN-001 → V554-P2/P3/P5; CAN-001 remains distinct from MUST-001 and MUST-003
+CDP-CAN-002 → IP-556-02/03/05; CAN-002 remains distinct from MUST-004/MUST-005 and MUST-003
+CAN-013 → V3-P11 only if causal Pass-1 LLM is enabled; otherwise both remain optional/deferred
 ```
 
-`V3-P1..P3` may be developed against fixed V558 interface fixtures before physical V558 closure; `V3-P4..P13` require `EXT-007`. `V2-P1..P8` may proceed against a frozen V3 actor-access boundary fixture once their authorities are bound; `V2-P9` requires physical V3 admission and `V2-P10` requires V3 terminal closure.
+`V3-P1..P3` may be developed against fixed V558 interface fixtures before physical V558 closure; `V3-P4..P10/P12/P13` require `EXT-007`. `V3-P11` is an optional packet and remains disabled while `CAN-013` is `NONBLOCKING_OPTIONAL_DEFERRED`. `V2-P1..P6/P8` may proceed against a frozen V3 actor-access boundary fixture once their authorities are bound; `V2-P7` waits for accepted `ADP-018`; `V2-P9` requires physical V3 admission and `V2-P10` requires V3 terminal closure.
 
 ## 14. Parallel worker-wave plan
 
@@ -406,39 +411,107 @@ No structural production implementation begins before `EXT-001` closes.
 
 ### W1 — critical-path authority expansion + conditional V553
 
-In parallel: `ADP-002`; `ADP-009`; `ADP-010`; `ADP-017`; `ADP-021`; canonicalize `CAN-008..012`; canonicalize `CAN-015..021`; and, only if SWID closes, execute V553-P1→P5 serially.
+In parallel: `ADP-002`; `ADP-009`; `ADP-010`; `ADP-017`; `ADP-021`; `CDP-CAN-001`; canonicalize `CAN-008..012`; canonicalize `CAN-015..021`; and, only if SWID closes, execute V553-P1→P5 serially.
+
+`CDP-CAN-001` canonicalizes only the accepted V554 applicability predicate/owner/evaluator machine contract. It does not absorb `ADP-001/MUST-001`, does not create V555 route-predicate meaning, and must be accepted before W2 V554 semantic implementation.
 
 ### W2 — V554 + shared V3/V2/runtime policy
 
-V554-P1→P5 after `EXT-002` + `ADP-001/CAN-001`; in parallel `ADP-003`, `ADP-007`, `ADP-015`, `ADP-022`, `ADP-023`, `CAN-022..025`, `CAN-004..007` canonicalization.
+V554-P1→P5 after `EXT-002` + accepted `ADP-001` + accepted `CDP-CAN-001`; in parallel `ADP-003`, `ADP-007`, `ADP-015`, `ADP-022`, `ADP-023`, `CAN-022..025`, `CAN-004..007` canonicalization.
 
 ### W3 — V555 + V556 authority + early V3 implementation
 
-V555-P1→P5 after `EXT-003` + `ADP-002/003`; in parallel `ADP-004`, `ADP-011`; V3-P1→P3 may proceed against frozen fixtures once their authority dependencies are accepted.
+V555-P1→P5 after `EXT-003` + accepted `ADP-002/003`; in parallel `ADP-004`, `ADP-011`, `CDP-CAN-002`; V3-P1→P3 may proceed against frozen fixtures once their authority dependencies are accepted.
+
+`CDP-CAN-002` canonicalizes only the accepted V556 predicate/evaluator registry schema. It may reference later V556 rule decisions but cannot introduce their semantic content. It must be accepted before W4 V556 semantic implementation.
 
 ### W4 — V556 + V3 realization authority + early V2 fixture implementation
 
-`ADP-005`; IP-556-01→05 after `EXT-004` + authority; `ADP-012`; V2-P1→P8 may proceed against frozen V3 boundary fixtures where authorities are accepted.
+Ordinary parallel cells:
 
-### W5 — V557 + V3 F2/orientation/attractor authority
+- `ADP-005`;
+- `ADP-012`;
+- IP-556-01→IP-556-02 after `EXT-004` + accepted `ADP-004` + accepted `CDP-CAN-002`;
+- V2-P1→P6 and V2-P8 fixture implementation against the frozen V3 boundary, where their authorities are accepted.
 
-V557-P1→P5 after `EXT-005` + `CAN-003/MUST-006/CAN-004`; in parallel `ADP-013`, `ADP-014`, `ADP-018`.
+Explicit gated V556 sublane:
 
-### W6 — V558 + preintegration V3/V2
+`ADP-005 → acceptance → IP-556-03 → IP-556-04 → IP-556-05`.
 
-V558-P1→P5 after `EXT-006` + `CAN-004..007/MUST-006`; finish V3-P1→P3 and V2-P1→P8 fixture work.
+IP-556-03/05 therefore never consume `MUST-005` before its authority is accepted. `V2-P7` is deliberately excluded from W4 because it depends on `ADP-018/MUST-018`.
 
-### W7 — full V3 integration
+### W5 — V557 + V3 F2/orientation authority
 
-V3-P4→P13 against the real standalone V558 repository/resolver. V2 P1→P8 may receive compatibility fixes but no causal publication yet.
+V557-P1→P5 after `EXT-005` + `CAN-003/MUST-006/CAN-004`; in parallel `ADP-013`, `ADP-014`.
+
+### W6 — V558 + attractor-transition authority + preintegration V3/V2
+
+In parallel: V558-P1→P5 after `EXT-006` + `CAN-004..007/MUST-006`; `ADP-018` after accepted `ADP-013`; finish V3-P1→P3 and V2-P1→P6/P8 fixture work.
+
+`ADP-018` is not a sibling of its prerequisite `ADP-013`; the latter is accepted in W5. V556 F2 topology authority, V3 F2 satisfaction authority, and V3 attractor-transition authority remain separate.
+
+### W7 — full V3 integration + deferred V2-P7 fixture
+
+Execute mandatory V3-P4→P10, then V3-P12→P13, against the real standalone V558 repository/resolver. `V3-P11` remains disabled while `CAN-013` is `NONBLOCKING_OPTIONAL_DEFERRED`; it is not silently released by the P4→P13 shorthand.
+
+In parallel, V2-P7 fixture implementation may proceed after accepted `ADP-018`; V2-P1→P6/P8 may receive compatibility fixes but no causal publication yet.
 
 ### W8 — V2 causal/application integration
 
-Bind V2-P1→P8 to real V3 boundary; V2-P9 after V3-P12; V2-P10 after V2-P9 and V3-P13.
+Ordinary parallel work: bind V2-P1→P8 to the real V3 boundary.
+
+Explicit ordered causal sublane:
+
+`accepted V3-P12 → V2-P9 → acceptance → [accepted V3-P13] → V2-P10`.
 
 ### W9 — whole-machine production acceptance
 
 Run TD-R07 six synthetic lives on production plus replay/stage-blind/standalone and forbidden-regression courts.
+
+### Schedule-closure audit
+
+Mechanical schedule closure was run against the canonical inventory, ADP dependency table and direct packet blockers.
+
+**Canonicalization schedule — all 25 accounted for exactly once:**
+
+| CAN authority | Disposition |
+|---|---|
+| `CAN-001` | `W1 / CDP-CAN-001` |
+| `CAN-002` | `W3 / CDP-CAN-002` |
+| `CAN-003` | `W0 / CDP-CAN-003` |
+| `CAN-004..007` | `W2` |
+| `CAN-008..012` | `W1` |
+| `CAN-013` | `NONBLOCKING_OPTIONAL_DEFERRED` while causal Pass-1 LLM is disabled |
+| `CAN-014` | `W0 / CDP-CAN-014` |
+| `CAN-015..021` | `W1` |
+| `CAN-022..025` | `W2` |
+
+Result: **24/24 blocking CAN items are explicitly scheduled**; the sole unscheduled CAN item is the explicitly nonblocking optional `CAN-013`.
+
+**Authority-decision packet schedule — all 26 exactly once:**
+
+- W0: `ADP-001`, `006`, `008`, `016`, `019`, `020`, `024`, `025`, `026`.
+- W1: `ADP-002`, `009`, `010`, `017`, `021`.
+- W2: `ADP-003`, `007`, `015`, `022`, `023`.
+- W3: `ADP-004`, `011`.
+- W4: `ADP-005`, `012`.
+- W5: `ADP-013`, `014`.
+- W6: `ADP-018`.
+
+Every declared ADP dependency is accepted in an earlier wave. No ordinary parallel authority array contains an ADP whose dependency is an ordinary sibling.
+
+**Implementation-packet closure:** all **53 accepted packets** were checked against their direct `MUST/CAN/EXT` blockers. The 52 mandatory release packets have every blocking authority scheduled or externally gated before release, using the explicit W4/W8 ordered sublanes where same-wave gating is intentional. Optional `V3-P11` is not released while `CAN-013` is deferred. `EXT-001..007` remain explicit production gates/producer-publication gates and are never converted into semantic authority.
+
+Mechanical verdicts:
+
+- `blocking_canonicalization_schedule_complete = true`;
+- `authority_decision_schedule_complete = true`;
+- `dependency_order_valid = true`;
+- `implementation_packet_gate_complete = true`;
+- `unscheduled_blocking_authorities = []`;
+- `parallel_dependency_violations = []`.
+
+The W0 recommendation is unchanged.
 
 ## 15. SWID/V553 gate interaction
 
@@ -527,6 +600,8 @@ Remaining release inputs are not evidence gaps: the final SWID merge/base; subst
 The architecture remains closed. RA-R00 creates no new semantic family or implementation super-stage.
 
 The release program is finite: **81 uniquely classified authority/blocker items; 26 bounded future authority decisions; 25 canonicalizations; 53 accepted implementation packets; 10 dependency waves; 12 acceptance harnesses; 16 forbidden-regression cases.** SWID serializes only V553 production, not independent authority work. Every missing rule becomes a named authority decision before its consumer packet; stale code remains implementation debt; external production facts remain gates.
+
+Schedule closure is also finite: **24/24 blocking canonicalizations scheduled; 26/26 ADP decision packets scheduled exactly once; 53/53 implementation packets mechanically checked; zero unscheduled blocking authorities; zero ordinary-parallel dependency violations.** `CAN-013`/`V3-P11` remain explicitly optional/deferred while causal Pass-1 LLM is disabled.
 
 No semantic work is silently delegated to implementation workers.
 
