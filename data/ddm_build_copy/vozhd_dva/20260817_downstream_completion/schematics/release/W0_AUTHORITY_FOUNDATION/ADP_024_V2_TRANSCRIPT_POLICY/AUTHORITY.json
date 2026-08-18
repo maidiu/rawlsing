@@ -1,0 +1,161 @@
+{
+  "authority": {
+    "id": "V2_TRANSCRIPT_RETENTION_SUMMARIZATION_POLICY",
+    "must_id": "MUST-024",
+    "packet": "ADP-024",
+    "version": "1.0.0",
+    "ref": "MUST-024@1.0.0",
+    "owner": "V2/application persistence boundary",
+    "architecture": "CLOSED__NOT_REOPENED",
+    "consumer_release_sufficiency": "SUFFICIENT"
+  },
+  "archive": {
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "verified_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "verdict": "EXACT_MATCH",
+    "limit": "Recovered V3/V2/server is continuity/authority-recovery evidence only; historical V5/DDM has zero authority over current V550+."
+  },
+  "invariants": [
+    "V2 transcript/session persistence is noncausal by default",
+    "retention is not V3 causal memory formation",
+    "summary cannot create memory, belief, fact, biography, or relationship truth",
+    "in-world transcript occurrence requires V3 admission of exact artifact/hash",
+    "compaction/deletion cannot erase required admission/replay evidence",
+    "summary is explicitly typed and cannot silently replace exact identity",
+    "retention state has no psychological meaning",
+    "missing transcript does not mean actor forgot",
+    "V3 memory and V2 transcript persistence are separate namespaces"
+  ],
+  "artifact_classes": [
+    "V2_TRANSCRIPT_MESSAGE",
+    "RENDERED_TURN_ARTIFACT",
+    "V2_SESSION_STATE",
+    "V2_SESSION_DERIVED_CONTINUITY",
+    "V2_RENDER_AUDIT_REF",
+    "EXTERNAL_INTERACTION_PROPOSAL_REF",
+    "V3_ADMISSION_RECEIPT_REF",
+    "V2_TRANSCRIPT_SUMMARY",
+    "V2_COMPACTION_MANIFEST",
+    "V2_DELETION_TOMBSTONE",
+    "V2_SESSION_CLOSE_RECEIPT"
+  ],
+  "representations": {
+    "RAW_EXACT": {"exact_identity": true},
+    "LOSSLESS_COMPACTED_EXACT": {"exact_identity": true, "exact_recoverability_required": true},
+    "SUMMARY_DERIVED": {"exact_identity": false, "separate_id_hash": true, "noncausal": true},
+    "LINEAGE_ONLY_TOMBSTONE": {"exact_identity": false, "future_admission_under_deleted_identity": false}
+  },
+  "retention_states": [
+    "ACTIVE_EXACT",
+    "SEALED_EXACT",
+    "LOSSLESS_COMPACTED_EXACT",
+    "AUDIT_PINNED_EXACT",
+    "DELETION_ELIGIBLE",
+    "LINEAGE_ONLY_TOMBSTONE",
+    "MISSING_UNKNOWN",
+    "INTEGRITY_FAILED"
+  ],
+  "allowed_transitions": [
+    "ACTIVE_EXACT->SEALED_EXACT",
+    "SEALED_EXACT->LOSSLESS_COMPACTED_EXACT",
+    "SEALED_EXACT->DELETION_ELIGIBLE",
+    "LOSSLESS_COMPACTED_EXACT->DELETION_ELIGIBLE",
+    "DELETION_ELIGIBLE->LINEAGE_ONLY_TOMBSTONE",
+    "SEALED_EXACT->AUDIT_PINNED_EXACT",
+    "LOSSLESS_COMPACTED_EXACT->AUDIT_PINNED_EXACT"
+  ],
+  "forbidden_transitions": [
+    "AUDIT_PINNED_EXACT->LINEAGE_ONLY_TOMBSTONE",
+    "SUMMARY_DERIVED->source exact identity",
+    "LINEAGE_ONLY_TOMBSTONE->causal admission under deleted identity"
+  ],
+  "causal_pin": {
+    "pending": "AUDIT_PINNED_EXACT",
+    "rejected": "AUDIT_PINNED_EXACT",
+    "admitted": "AUDIT_PINNED_EXACT",
+    "unknown_status": "retain exact/fail closed",
+    "rule": "lossless compaction allowed only if exact recoverability survives; summary-only/hash-only/tombstone forbidden"
+  },
+  "cursor_law": {
+    "v2_identity": ["session_id", "transcript_cursor", "artifact_id"],
+    "rules": ["monotonic/order-stable", "never renumber/reuse", "tombstones preserve gaps", "summaries never occupy source cursors", "rerender has new artifact/hash"],
+    "v3_causal_cursor": "separate V3-owned namespace; V2 may preserve refs but never derive/advance it from V2 cursor"
+  },
+  "lineage": {
+    "per_artifact": ["session_id", "artifact_id/class", "transcript_cursor", "exact payload hash + algorithm/version", "interaction mode", "causal/admission status if known", "producer/source ref", "render/creation receipt ref where applicable", "V3 context/snapshot hash where replay requires", "policy/version decision receipt"],
+    "compaction_manifest": ["manifest id/hash", "source cursor ranges", "ordered source artifact IDs+hashes", "source/result representation", "lossless/lossy flag", "encoding/version", "MUST-024 ref", "trigger/basis", "hold/pin evaluation", "summary id/hash if any"],
+    "summary_provenance": ["summary id/hash", "source session/cursor ranges", "ordered source artifact/hash lineage", "summary rule/type/version", "summarizer/model version where applicable", "generation receipt/hash where applicable", "policy version", "NONCAUSAL_DERIVED_SUMMARY", "verification state"]
+  },
+  "deletion": {
+    "all_required": ["V2/application jurisdiction", "not ACTIVE_EXACT", "explicit PRESENTATION_NONCAUSAL", "no pending/rejected/admitted causal pin", "no stronger exact replay/audit hold", "verified sealed lineage", "surviving readable summary verified if used", "atomic manifest+tombstone", "explicit governed delete trigger", "no hold/pin"],
+    "unknown_blocks": true,
+    "default_ttl_forbidden": true,
+    "precedence": ["integrity/unresolved causal status", "causal audit pin", "stronger exact replay/audit hold", "explicit retain/hold", "explicit delete trigger + all predicates", "otherwise retain current representation"]
+  },
+  "immutable_audit_subset": [
+    "session/artifact/cursor identity",
+    "exact payload hashes",
+    "compaction manifests/tombstones",
+    "summary provenance",
+    "interaction/admission status",
+    "required render artifact/receipt hashes",
+    "proposal ID + exact candidate hash",
+    "V3 admission/rejection receipt refs and available event/checkpoint/cursor refs",
+    "session-close receipt",
+    "integrity failure records",
+    "exact recoverability for pending/rejected/admitted causal artifacts"
+  ],
+  "session_close": {
+    "receipt": "V2_SESSION_CLOSE_RECEIPT",
+    "fields": ["session_id", "final V2 cursor", "final lineage digest", "interaction mode", "outstanding pending causal proposals", "authority/version", "close-integrity state"],
+    "law": "freeze V2 cursor namespace; seal nonpending exact; preserve pending as audit-pinned; create no V3 memory/biography/relationship/cursor movement; disconnect is not close without receipt"
+  },
+  "fail_closed": {
+    "UNKNOWN_ARTIFACT_CLASS": "retain",
+    "UNKNOWN_RETENTION_POLICY": "retain/no invented expiry",
+    "UNKNOWN_CAUSAL_STATUS": "retain exact",
+    "MISSING_TRANSCRIPT_ARTIFACT": "missing/unknown; no forgetting inference",
+    "EXACT_ARTIFACT_UNAVAILABLE": "no exact replay/admission; no summary substitution",
+    "CURSOR_GAP_WITHOUT_TOMBSTONE": "INTEGRITY_FAILED",
+    "CURSOR_REUSE_OR_RENUMBER": "INTEGRITY_FAILED",
+    "PAYLOAD_HASH_MISMATCH": "INTEGRITY_FAILED",
+    "BROKEN_COMPACTION_LINEAGE": "INTEGRITY_FAILED",
+    "UNVERIFIED_SUMMARY": "no deletion/substitution authority",
+    "MISSING_ADMISSION_RECEIPT": "causal occurrence not established",
+    "ADMISSION_HASH_MISMATCH": "INTEGRITY_FAILED",
+    "DELETE_REQUEST_ON_AUDIT_PINNED_EXACT": "DELETE_BLOCKED_IMMUTABLE_AUDIT",
+    "TOMBSTONED_ARTIFACT_FOR_ADMISSION": "reject identity resurrection"
+  },
+  "v3_separation": {
+    "v2": "transcript/session persistence, summary/compaction/tombstone, application continuity/audit lineage",
+    "v3": "generated/admitted events, memory/forgetting/recall/accessibility, belief/relationship/biography truth where governed, causal cursors",
+    "law": "V2 may preserve V3 refs/receipts but retention state never creates/updates/deletes/infers V3 memory or causal history"
+  },
+  "consumers": ["V2-P4", "V2-P6", "V2-P10"],
+  "hostile_fixtures": [
+    {"id":"H024-01","case":"presentation transcript->V3 memory","outcome":"reject"},
+    {"id":"H024-02","case":"deleted turn->actor forgot","outcome":"reject"},
+    {"id":"H024-03/04","case":"summary->relationship truth/objective fact","outcome":"reject"},
+    {"id":"H024-05","case":"delete admitted exact because hash+summary remain","outcome":"DELETE_BLOCKED_IMMUTABLE_AUDIT"},
+    {"id":"H024-06/07","case":"discard/summary-only rejected or pending candidate","outcome":"AUDIT_PINNED_EXACT"},
+    {"id":"H024-08/09","case":"renumber cursor/summary takes source cursor","outcome":"integrity/identity failure"},
+    {"id":"H024-10/11","case":"hash mismatch/unverified summary authorizes delete","outcome":"fail closed/no delete"},
+    {"id":"H024-12","case":"causal claim missing admission receipt","outcome":"not established; retain exact"},
+    {"id":"H024-13","case":"rerender inherits admission","outcome":"new hash needs new admission"},
+    {"id":"H024-14/15","case":"session close/EnergeticField creates biography/psychology","outcome":"reject"},
+    {"id":"H024-16","case":"cursor gap silently shifted","outcome":"INTEGRITY_FAILED"},
+    {"id":"H024-17","case":"unknown class generic TTL delete","outcome":"retain"},
+    {"id":"H024-18","case":"tombstone resurrected from summary","outcome":"reject"},
+    {"id":"H024-19","case":"V2 cursor advances V3 cursor","outcome":"reject"},
+    {"id":"H024-20","case":"delete audit-pinned exact","outcome":"DELETE_BLOCKED_IMMUTABLE_AUDIT"},
+    {"id":"H024-21","case":"summary labeled exact","outcome":"reject"},
+    {"id":"H024-22","case":"invent TTL when no directive","outcome":"retain/no heuristic TTL"}
+  ],
+  "evidence": {
+    "binding": ["CURRENT_STATE", "WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING", "IMPLEMENTATION_RELEASE_SYNTHESIS_RULING", "RA-R00 RESULT.md/json", "V2 completion ruling", "TD-R06", "TD-R07", "V3/V2 recovery-priority ruling", "W0 launch register"],
+    "historical_direct": ["server/session_db.py", "server/session_state.py", "server/routes/chat.py", "server/chat/turn.py", "server/routes/session_bootstrap.py", "server/routes/session_summary.py", "scripts/migrate_app_sessions.py", "v2/conversation_engine.py", "v2/PERSONA_CONVERSATION_ENGINE_SPEC.md"],
+    "current_source": "no equivalent current transcript runtime source found at exact base"
+  },
+  "consumer_release_sufficiency": "SUFFICIENT",
+  "final_token": "ADP_024_V2_TRANSCRIPT_POLICY_AUTHORITY = PASS"
+}
