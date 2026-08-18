@@ -1,0 +1,192 @@
+{
+  "assignment": "W1-03_ADP-010_V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_AUTHORITY",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-dva-w1-adp-010-v3-encounter-exposure",
+  "exact_launch_base_sha": "10a8e60f171e3a70bf48336fff73d37040cc1b93",
+  "mode": "AUTHORITY_CREATION_ONLY",
+  "whole_machine_architecture": "CLOSED",
+  "production_code_modified": false,
+  "v3_implemented": false,
+  "sibling_w1_results_used": false,
+  "ra_r00": {
+    "id": "MUST-010",
+    "decision_packet": "ADP-010",
+    "classification": "AUTHORITY_MUST_BE_CREATED",
+    "direct_dependencies": ["ADP-008", "ADP-020"],
+    "consumers": ["V3-P5", "V3-P9"]
+  },
+  "authority": {
+    "authority_id": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE",
+    "authority_version": "1.0.0",
+    "registry_id": "V3_OEE_REALIZATION_RULE_REGISTRY",
+    "registry_version": "1.0.0",
+    "owner": "V3_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE",
+    "status": "PASS",
+    "jurisdiction": "Actor-specific AVAILABLE->OPPORTUNITY->ENCOUNTER->EXPOSURE realization, admission, candidate identity, lawful nonoccurrence, local temporal parentage, provenance and replay.",
+    "not_owned": ["V554 affordance/applicability", "V555 route semantics or ADP-011 route realization", "V556 structural/actor interaction realization", "actor initialization", "position/mobility generation", "relationship/household/genealogy", "response/metabolization", "memory", "knowledge/belief", "orientation/material/psychic/attractor state", "global scheduler precedence", "V2 rendering"]
+  },
+  "historical_archive": {
+    "logical_name": "Rawlsing_code_bundle_staging.zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "sha_match": "EXACT_MATCH",
+    "entry_count": 13138,
+    "authority_limit": "Recovered V3/V2/server is continuity/authority-recovery evidence only; historical V5/DDM has zero authority over current V550+.",
+    "direct_files_inspected": ["v3/engine/event_engine.py", "v3/engine/scoring.py", "v3/engine/llm_contract.py", "v3/engine/run_llm_band.py", "v3/core/year_record.py", "v3/core/generation_integrity.py", "v3/core/state.py", "v3/engine/prompts.py", "v3/systems/attention.py", "server/generation/simulation.py", "v2/LIFE_SIMULATION_LAYER.md"],
+    "binding_findings": ["remove empty-candidate fallback event creation", "remove selected-empty first-candidate force selection", "forbid unnamed RNG", "generic pseudo-events are not lived-world authority", "scalar attention exposure is not exposure occurrence", "preserve event/candidate/provenance/integrity continuity"]
+  },
+  "governing_evidence": {
+    "common_law": ["CURRENT_STATE.md", "RAWLSING_GOVERNING_SPIRIT.md", "WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md", "IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md", "W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md", "RA-R00 RESULT.md/json"],
+    "v3": ["V3_COMPLETION_IMPLEMENTATION_RULING.md", "TD-R05 RESULT.md", "TD-R07 RESULT.md/json"],
+    "direct_dependencies": ["ADP-008 AUTHORITY.md/json", "ADP-020 AUTHORITY.md/json"],
+    "upstream_architecture_only": ["V554_COMPLETION_IMPLEMENTATION_RULING.md", "V555_COMPLETION_IMPLEMENTATION_RULING.md", "V556_COMPLETION_IMPLEMENTATION_RULING.md"],
+    "current_tests": ["data/ddm_build_copy/test_w03_v551j_v3_fail_closed.py", "data/ddm_build_copy/test_w03_v551j_v3_consumer.py"]
+  },
+  "accepted_dependencies_consumed": {
+    "ADP-008@1.1.0": ["V3DP_GENERATION_PENDING", "V3DP_DEVELOPMENT_ACTIVE", "active actor required for lived OEE", "no universal human-development segments"],
+    "ADP-020@1.0.0": ["randomness only among lawful possibilities", "empty set zero draw no fallback", "named stream/seed/candidate/replay identity mandatory", "missing authority cannot be repaired by RNG"]
+  },
+  "noncollapse": ["STRUCTURAL_AVAILABILITY != UPSTREAM_APPLICABILITY", "UPSTREAM_APPLICABILITY != OPPORTUNITY", "OPPORTUNITY != ENCOUNTER", "ENCOUNTER != EXPOSURE", "EXPOSURE != V555_ROUTE_TRAVERSAL", "EXPOSURE != V556_INTERACTION_REALIZATION", "EXPOSURE != RESPONSE_MEMORY_BELIEF_RELATIONSHIP", "EXPOSURE != DEVELOPMENTAL_ATTRACTOR_CHANGE"],
+  "realization_state_vocabulary": ["AVAILABLE", "OPPORTUNITY", "ENCOUNTER", "EXPOSURE"],
+  "state_semantics": {
+    "AVAILABLE": "Lawfully addressable basis in bounded actor runtime world; not applicability/access/history.",
+    "OPPORTUNITY": "Time-bounded actor-specific possibility of contact/access; no occurrence.",
+    "ENCOUNTER": "Admitted contact occurrence under opportunity; no exposure/downstream effect.",
+    "EXPOSURE": "Admitted objective presentation/impingement through encounter; no awareness/absorption/memory/belief/response/route/relationship/development."
+  },
+  "decision_state_vocabulary": ["ADMITTED", "NEGATIVE", "VALID_EMPTY", "NONOCCURRENCE", "UNKNOWN", "NONCOMPARABLE", "MISSING_AUTHORITY", "DEFERRED", "FORBIDDEN_INFERENCE", "INTEGRITY_FAILURE"],
+  "event_vocabulary": {
+    "family": "ENCOUNTER_EXPOSURE_EVENT",
+    "effect_subkinds": ["OEE_OPPORTUNITY_ESTABLISHED", "OEE_ENCOUNTER_OCCURRED", "OEE_EXPOSURE_OCCURRED"],
+    "AVAILABLE_is_event": false,
+    "NONOCCURRENCE_is_event": false
+  },
+  "record_contract": {
+    "name": "V3OEERealizationRecord",
+    "required_fields": ["record_id", "actor_id", "authority_id/version", "registry_id/version", "rule_id/version", "realization_state", "subject_ref", "parent_record_id", "effective_from", "effective_until", "time_granularity", "source_candidate_id", "source_candidate_replay_hash", "context_or_world_receipt_refs", "applicability_receipt_refs", "phase_state_ref", "position_or_other_constraint_refs", "causal_witness_refs", "rng_decision_receipt_ref", "event_id", "event_effect_kind", "prior_ledger_anchor_ref", "provenance_refs", "record_hash"],
+    "parent_chain": {"AVAILABLE": null, "OPPORTUNITY": "AVAILABLE", "ENCOUNTER": "OPPORTUNITY", "EXPOSURE": "ENCOUNTER"},
+    "skip_allowed": false,
+    "same_timestamp_separate_parent_records": true
+  },
+  "decision_receipt": {
+    "name": "V3OEEDecisionReceipt",
+    "nonpositive_creates_event": false,
+    "required_content": ["requested transition", "parent", "candidate set/hash", "inputs/negative refs", "rule/version", "optional ADP-020 receipt", "decision state/reason", "admitted record/event if any", "provenance/hash"]
+  },
+  "identity": {
+    "domain_separator": "RAWLSING\\0ADP-010\\0V3_OEE_REALIZATION_RECORD_V1\\0",
+    "tuple": ["actor", "authority/registry/rule versions", "state", "subject", "parent", "effective scope/granularity", "canonical witnesses", "candidate replay hash", "RNG receipt if any"],
+    "canonical_json": "ADP-020 controlled ordering/NFC/no-hidden-order discipline",
+    "idempotent_replay": true,
+    "forbidden_sources": ["random UUID", "wall-clock entropy", "filesystem order", "mutable latest", "labels", "container iteration"]
+  },
+  "registry": {
+    "id": "V3_OEE_REALIZATION_RULE_REGISTRY",
+    "version": "1.0.0",
+    "core_rules": [
+      {"id": "OEE_CORE_AVAILABLE_BASIS_V1", "transition": "BASIS_TO_AVAILABLE", "rng": "ZERO_DRAW"},
+      {"id": "OEE_CORE_OPPORTUNITY_FROM_EXPLICIT_BASIS_V1", "transition": "AVAILABLE_TO_OPPORTUNITY", "rng": "ZERO_DRAW"},
+      {"id": "OEE_CORE_ENCOUNTER_FROM_EXPLICIT_CONTACT_WITNESS_V1", "transition": "OPPORTUNITY_TO_ENCOUNTER", "rng": "ZERO_DRAW"},
+      {"id": "OEE_CORE_EXPOSURE_FROM_EXPLICIT_PRESENTATION_WITNESS_V1", "transition": "ENCOUNTER_TO_EXPOSURE", "rng": "ZERO_DRAW"}
+    ],
+    "required_rule_semantics": ["exact input authority signatures/use permissions", "phase/applicability/runtime requirements", "temporal scope", "causal witnesses", "candidate identity", "stochastic policy", "negative precedence", "repetition", "event effect", "semantic ceiling", "provenance/replay", "rule hash"],
+    "universal_probability": null,
+    "universal_weights": null,
+    "future_stochastic_requires_accepted_amendment": true
+  },
+  "admissible_inputs": {
+    "RESOLVER_DERIVED_CONTEXT": "availability/opportunity constraint only; selection alone no lived transition; proxy evidence time never backdated",
+    "GENERATED_RUNTIME_FACT_OR_ADMITTED_CAUSAL_EVENT": "higher transition use only under exact ADP-010 rule binding",
+    "STRUCTURAL_V554_V555_V556_REFERENCE": "possibility/constraint only; never encounter/exposure witness by itself",
+    "NEGATIVE_LIMIT_MISSING_NONCOMPARABLE": "block/qualify/classify only; never positive candidate"
+  },
+  "transition_admission": {
+    "BASIS_TO_AVAILABLE": ["exact basis identity", "authority/version/epistemic class", "causal-use permission", "actor/context/time", "scope/temporal/provenance integrity"],
+    "AVAILABLE_TO_OPPORTUNITY": ["parent AVAILABLE", "V3DP_DEVELOPMENT_ACTIVE", "exact OEE rule", "actor-specific opportunity basis", "required applicability positive", "required runtime bindings exact or typed deferred/missing", "temporal scope", "candidate provenance", "ADP-020 receipt if stochastic"],
+    "OPPORTUNITY_TO_ENCOUNTER": ["active parent opportunity", "active phase", "exact contact witness independent of co-presence", "declared preconditions", "ADP-020 if stochastic", "idempotent event identity"],
+    "ENCOUNTER_TO_EXPOSURE": ["parent encounter", "bounded exposure subject", "exact presentation/impingement witness", "lawful time", "structural use constraints where relevant", "ADP-020 if stochastic", "no downstream predicate substituted for witness"]
+  },
+  "insufficient_for_encounter": ["co-location", "co-presence", "same geography/time", "shared V555 endpoint", "same structural target", "same institution/category", "simultaneous resolver selection", "narrative plausibility"],
+  "candidate_rng": {
+    "candidate_identity": ["transition", "actor", "subject", "parent", "effective scope", "rule version", "canonical witnesses", "constraint receipts", "input authority/use permissions"],
+    "adp020_identity_mode": "SET_CANONICAL",
+    "empty_set": {"decision": "VALID_EMPTY", "draws": 0, "fallback": false, "first_candidate": false},
+    "reserved_streams": ["v3.causal.adp010.opportunity", "v3.causal.adp010.encounter", "v3.causal.adp010.exposure"],
+    "ordinary_scope": "ACTOR",
+    "joint_scope": "only with accepted joint semantic rule and lawful stable JOINT identity",
+    "future_operations": {"BERNOULLI_RATIONAL": "exact governed rational p only", "UNIFORM_CANDIDATE": "explicit equiprobability only", "WEIGHTED_CANDIDATE_INTEGER": "exact governed integer weights only"},
+    "v1_core_rng": false,
+    "forbidden": ["unnamed/global RNG", "unseeded random.Random", "LLM sampling state", "wall clock", "filesystem order", "mutable latest", "random UUID", "V2 render RNG"]
+  },
+  "repetition_nonoccurrence": {
+    "minimum_encounters": 0,
+    "minimum_exposures": 0,
+    "same_subject_repetition": true,
+    "same_encounter_multiple_distinct_exposures": true,
+    "exact_replay_dedupes": true,
+    "repetition_does_not_imply": ["intensity", "salience", "memory", "belief", "relationship", "practice uptake", "reinforcement", "V556 F2 satisfaction", "attractor movement"],
+    "lawful_nonoccurrence": ["no available basis", "no lawful opportunity candidate", "valid-empty set", "opportunity without encounter", "encounter without exposure", "governed stochastic negative", "negative applicability", "deferred binding", "missing authority"],
+    "filler_forbidden": true
+  },
+  "temporal_phase_position": {
+    "event_time_distinct_from_evidence_query_proxy_time": true,
+    "future_proxy_backdating": false,
+    "encounter_within_opportunity": true,
+    "exposure_before_encounter": false,
+    "same_time_requires_separate_parent_records": true,
+    "later_context_rewrites_history": false,
+    "global_scheduler_precedence_owned": false,
+    "universal_phase": "V3DP_DEVELOPMENT_ACTIVE",
+    "lifecycle_quotas": false,
+    "adp009_consumed": false,
+    "geography_prevalence_fills_position": false,
+    "unbound_required_position": "DEFERRED_OR_MISSING_AUTHORITY",
+    "position_semantic_ceiling": "access constraint only; no personality/destiny/guaranteed exposure"
+  },
+  "provenance_replay": {
+    "minimum": ["actor/run", "ADP-010 authority/registry/rule hashes", "ADP-008 phase hash", "parent OEE records", "repository/resolver receipts", "structural refs/use permissions", "generated runtime input receipts", "evidence/query/proxy times", "reconstructible candidate set", "ADP-020 receipts when stochastic", "effective time/granularity", "witness hashes", "ledger anchor/index/hash", "event/effect and OEE hash", "nonpositive decision receipts"],
+    "invariants": ["same immutable inputs reproduce same identity", "rule divergence distinct", "candidate-set divergence distinct", "random-draw divergence distinct", "context change prospective only", "missing replay provenance blocks", "V2 render irrelevant"]
+  },
+  "forbidden_defaults": ["structural row to lived OEE", "V554 affordance/applicability to lived encounter/exposure", "V555 route/shared endpoint to traversal/encounter/exposure", "V556 topology/co-resolution to lived history", "co-location/co-presence to encounter", "opportunity auto-encounter", "encounter auto-exposure", "exposure to response/memory/belief/relationship/route/interaction/development/attractor", "geography/prevalence to forced position/opportunity", "age/lifecycle quota", "empty candidate fallback", "selected-empty first candidate", "LLM/narrative/placeholder to causal occurrence", "future proxy to past exposure", "unnamed RNG", "duplicate identity to duplicate history", "missing authority heuristic/default/random repair"],
+  "hostile_fixtures": [
+    ["HF-010-01", "structural object only", "AVAILABLE_AT_MOST_NO_LIVED_TRANSITION"],
+    ["HF-010-02", "co-location/co-presence only", "FORBIDDEN_INFERENCE"],
+    ["HF-010-03", "shared V555 endpoint", "NO_ENCOUNTER_INFERENCE"],
+    ["HF-010-04", "opportunity no contact witness", "NONOCCURRENCE_NO_ENCOUNTER_EVENT"],
+    ["HF-010-05", "encounter no exposure witness", "NONOCCURRENCE_NO_EXPOSURE_EVENT"],
+    ["HF-010-06", "exposure -> downstream psyche/history", "NO_FACT_WITHOUT_OWNER"],
+    ["HF-010-07", "zero candidates", "VALID_EMPTY_ZERO_DRAW_ZERO_FILLER"],
+    ["HF-010-08", "legacy fallback event", "REJECT"],
+    ["HF-010-09", "first-candidate force selection", "REJECT"],
+    ["HF-010-10", "unnamed RNG", "INTEGRITY_FAILURE"],
+    ["HF-010-11", "stochastic rule missing p/weights", "MISSING_AUTHORITY_NO_DRAW"],
+    ["HF-010-12", "changed candidate set same draw coordinate", "CANDIDATE_SET_DIVERGENCE"],
+    ["HF-010-13", "generation pending actor", "NO_LIVED_OEE"],
+    ["HF-010-14", "position missing only geography", "DEFERRED_OR_MISSING_AUTHORITY"],
+    ["HF-010-15", "repeated same-subject exposure", "DISTINCT_NO_ESCALATION"],
+    ["HF-010-16", "replay-identical duplicate", "IDEMPOTENT"],
+    ["HF-010-17", "future proxy -> childhood exposure", "FORBIDDEN_INFERENCE"],
+    ["HF-010-18", "later context rewrites old history", "REJECT_PROSPECTIVE_ONLY"],
+    ["HF-010-19", "exposure before encounter", "INTEGRITY_FAILURE"],
+    ["HF-010-20", "encounter outside opportunity", "NO_ENCOUNTER"],
+    ["HF-010-21", "same-time encounter/exposure", "SEPARATE_PARENT_RECORDS"],
+    ["HF-010-22", "meeting label no witness rule", "MISSING_AUTHORITY_OR_FORBIDDEN_INFERENCE"],
+    ["HF-010-23", "V556 recurrence topology", "NO_REPEATED_EXPOSURE_INFERENCE"],
+    ["HF-010-24", "schema requires event", "VALID_EMPTY_OR_NONOCCURRENCE"]
+  ],
+  "governing_spirit_check": {
+    "status": "APPLICABLE__PASS",
+    "genuine_ambiguity": "Persistence shape for lawful no-transition and event-vs-effect representation remained open inside hard law.",
+    "lawful_alternatives": ["absence of encounter plus opportunity record", "explicit NONOCCURRENCE receipt", "one top-level event per positive transition", "separate parent-linked OEE records with shared canonical event where one occurrence has multiple ordered effects"],
+    "chosen": "explicit nonoccurrence receipts plus separate parent-linked semantic records and event-family no-bloat",
+    "decisive_principles": ["mediation", "historical causality without inevitability", "divergent lawful lives", "lawful absence/uncertainty", "explicit provenance/randomness", "minimum sufficient machinery", "no downstream vividness beyond authority"]
+  },
+  "consumer_release_sufficiency": {
+    "status": "SUFFICIENT",
+    "for": "MUST-010",
+    "does_not_release": ["V3-P5", "V3-P9"],
+    "no_universal_probability_is_failure": false,
+    "reason": "Deterministic witness-based v1 is complete; future stochastic domain rules require accepted ADP-010 amendment plus exact ADP-020 parameters."
+  },
+  "final_token": "ADP_010_V3_ENCOUNTER_EXPOSURE_AUTHORITY = PASS"
+}
