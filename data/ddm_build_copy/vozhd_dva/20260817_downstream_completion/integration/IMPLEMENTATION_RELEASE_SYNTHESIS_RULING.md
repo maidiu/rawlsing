@@ -14,6 +14,8 @@
 
 The whole-machine architecture remains CLOSED. RA-R00 does not reopen architecture and does not itself release production implementation.
 
+`RAWLSING_GOVERNING_SPIRIT.md` is binding interpretive law for post-closure authority and implementation work wherever explicit source/semantic authority and closed jurisdiction leave more than one lawful design. It is subordinate to those hard authorities and may never be used to invent missing semantics or reopen architecture.
+
 ## 2. Finite blocker universe
 
 The normalized blocker/authority universe is binding:
@@ -114,14 +116,18 @@ W0 does not authorize production-stage implementation. Each W0 worker owns one b
 Each W0 authority worker must:
 
 - preserve the closed whole-machine architecture;
+- read and apply `RAWLSING_GOVERNING_SPIRIT.md` when hard authority leaves a genuine design ambiguity;
 - inspect existing authority/current source before inventing anything;
 - use recovered historical V3/V2 only where RA-R00 permits it;
 - emit a versioned machine-readable rule/registry/policy or canonicalization contract;
 - name exact owner, scope, consumers, inputs, outputs, unknown/negative/fail-closed behavior, provenance, versioning, compatibility constraints and hostile fixtures;
 - avoid implementation-local defaults, heuristic substitution, numeric invention, or jurisdiction expansion;
-- make explicit whether the result is sufficient to release its named consumers.
+- make explicit whether the result is sufficient to release its named consumers;
+- return a `GOVERNING_SPIRIT_CHECK`: either `NOT_APPLICABLE__HARD_AUTHORITY_UNIQUE`, or the exact ambiguity, lawful alternatives, chosen design, and governing-spirit principle used as tie-break.
 
-Authority decisions are adjudicated by Vozhd Dva before downstream wave progression.
+The governing spirit cannot supply evidence, make an absent rule exist, convert normative aspiration into actor state, or override closed stage ownership. Apparent conflict is returned to Vozhd.
+
+Authority decisions are adjudicated by Vozhd Dva before downstream wave progression. Vozhd review must independently ask whether an otherwise-lawful choice flattened mediation, contradiction, opacity, developmental contingency, identification/alienation dynamics, ordinary vitality, Absolute-Horizon possibility, or evidentiary separation merely for implementation convenience.
 
 ## 8. External SWID gate
 
@@ -137,5 +143,7 @@ Independent W0 authority work may proceed while SWID remains open.
 ## 9. Post-W0 law
 
 Do not advance a dependent W1 authority or implementation packet merely because its worker branch exists. Advance only after all direct authority dependencies for that cell are accepted/banked.
+
+Every future authority or implementation assignment must include `RAWLSING_GOVERNING_SPIRIT.md` in its governing read set unless the task is provably mechanical and contains no design discretion. Mechanical workers still remain subject to its forbidden-flattening principles through review.
 
 The project is now in finite authority-resolution / implementation-release execution. Broad architecture redesign remains closed unless the burden in `WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md` is actually met.
