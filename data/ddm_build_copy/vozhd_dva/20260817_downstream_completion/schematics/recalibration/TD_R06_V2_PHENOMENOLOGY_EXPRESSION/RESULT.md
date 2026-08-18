@@ -386,21 +386,27 @@ No transcript, tone, sticky trigger, or session `EnergeticField` becomes generat
 
 ### 18.1 `PRESENTATION_NONCAUSAL`
 
-Default mode. The user converses with a representation of a generated person at an immutable V3 snapshot. Transcript/topic/energetic session state may persist; generated life, causal memory, relationships, genealogy, and V3 state/event hashes do not change.
+Default mode. The user converses with a representation of a generated person at an immutable V3 snapshot. Transcript/topic/energetic session state may persist; generated life, causal memory, relationships, genealogy, and V3 state/event hashes do not change. Rendered output may be displayed immediately precisely because it is explicitly outside generated causal history.
 
 ### 18.2 `IN_WORLD_CAUSAL`
 
 Explicit mode. Every interaction declared part of the generated timeline must cross V3 external-event admission. V2 never writes `ActorCausalState`.
 
-### 18.3 Required causal-turn handshake
+V2 may create an immutable candidate `RenderedTurnArtifact`, but the outbound candidate initially has typed status `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION`. That status means the text/action is a proposed observable actor response only: it has **not yet occurred in generated life**, is not yet a causal transcript event, and cannot advance the causal-session cursor.
 
-1. Package inbound user utterance/action as `ExternalInteractionProposal` with actor/session/time/participants/artifact provenance and **no V2 causal interpretation**.
-2. V3 admits or rejects under the external-event rule. If admitted, V3 updates causal state and emits a new hardened V3RenderContext **before** actor-response rendering.
-3. V2 performs turn analysis, expression planning, and rendering from the updated context.
-4. If the actor response is to exist in-world, package the exact immutable rendered utterance/action as an outbound `ExternalInteractionProposal`.
-5. V3 admits/rejects that observable event and returns receipt/new context. The next causal turn cannot proceed from unadmitted transcript state.
+### 18.3 Required causal-turn handshake and outbound publication gate
 
-**Fail-closed law:** until V3 external-event admission and the packaging contract are governed, `IN_WORLD_CAUSAL` implementation is blocked. `PRESENTATION_NONCAUSAL` remains architecturally valid.
+1. Package the inbound user utterance/action as `ExternalInteractionProposal` with actor/session/time/participants/artifact provenance and **no V2 causal interpretation**.
+2. V3 admits or rejects the inbound observable event under the external-event rule. If admitted, V3 updates causal state and emits a new hardened `V3RenderContext` **before** actor-response rendering.
+3. V2 performs turn analysis, expression planning, and rendering from that admitted updated context, producing an immutable candidate `RenderedTurnArtifact` with status `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION`.
+4. If the actor response is proposed to exist in-world, create an outbound `ExternalInteractionProposal` that references the **exact candidate artifact/hash**. V2 still supplies no causal interpretation or effect.
+5. V3 admits or rejects the observable actor utterance/action and returns an admission/rejection receipt plus new context where applicable.
+6. **Only after V3 admission** may the application commit the exact artifact as an in-world causal transcript event, expose it as an utterance/action that actually occurred in generated life, and advance the causal-session cursor from that admitted event.
+7. If V3 rejects the proposal, the candidate remains audit-only/noncausal, does not enter generated causal transcript/history, cannot affect later V3 state, and the application must fail closed or obtain/render another governed candidate according to later implementation policy.
+
+**Outbound publication invariant:** rendering is not occurrence. In `IN_WORLD_CAUSAL` mode the application may not publish a candidate as something the generated actor actually said/did until V3 has admitted the exact candidate artifact/hash.
+
+**Fail-closed law:** until V3 external-event admission, the exact V2→V3 packaging contract, and the causal publication gate are governed, `IN_WORLD_CAUSAL` implementation is blocked. `PRESENTATION_NONCAUSAL` remains architecturally valid.
 
 ## 19. Enneagram / attractor-expression migration verdict
 
@@ -441,8 +447,10 @@ Code/rules validate allowed fact refs, memory refs, forbidden claims, physical-b
 ## 21. Persistence / randomness / replay / provenance contract
 
 - **Causal replay:** V3-owned and unaffected by V2 render model/RNG in presentation mode.
-- **Render replay/audit:** `V2RenderReceipt` records V3 context hash, session cursor/hash, expression rule versions, prompt hash, provider/model/version, seed/sampling/RNG metadata, raw output, transforms, and final output hash.
-- **Causal-mode render event:** if a particular rendered utterance/action is admitted by V3, the immutable artifact/output hash becomes an external-event source ref. A rerender is a different proposal, not retroactive replacement.
+- **Render replay/audit:** `V2RenderReceipt` records V3 context hash, session cursor/hash, expression rule versions, prompt hash, provider/model/version, seed/sampling/RNG metadata, raw output, transforms, final output hash, and causal-candidate status where applicable.
+- **Causal-mode candidate:** every outbound `RenderedTurnArtifact` in `IN_WORLD_CAUSAL` begins `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION`. Its exact artifact/output hash may be referenced by an `ExternalInteractionProposal`, but candidate creation does not place it in generated history.
+- **Admission publication:** only a V3 admission receipt promotes the observable utterance/action into generated causal transcript/history and permits causal-session cursor advance. The admitted transcript event retains the exact candidate artifact/hash and V3 admission receipt.
+- **Rejection:** a rejected candidate remains immutable audit-only/noncausal evidence, is excluded from generated causal transcript/history, and cannot affect later V3 state. A rerender is a distinct candidate, never retroactive replacement.
 - **Derived cache key:** V3 context hash + V2 rule/version + relevant session-state hash. Cache never becomes authority.
 
 ## 22. Minimal V2→application contract
@@ -462,13 +470,18 @@ V2 rule/model versions
 
 ```text
 actor/persona snapshot ref
-rendered visible surface (+ native/translation where configured)
+rendered visible surface (+ native/translation where configured) in PRESENTATION_NONCAUSAL
+candidate RenderedTurnArtifact + CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION status in IN_WORLD_CAUSAL
 session cursor
+causal-session cursor (advances only after V3 admission)
 V2RenderReceipt / provenance summary
 uncertainty / claim-boundary status where needed
 causal proposal/admission status + receipt in causal mode
+admitted causal transcript event ref only after V3 admission
 typed failure / missing-authority status
 ```
+
+**Application publication law:** in `PRESENTATION_NONCAUSAL`, rendered output may be displayed immediately because it is explicitly noncausal. In `IN_WORLD_CAUSAL`, the application may hold/display the candidate only as a pending candidate/audit artifact; it may not expose or commit it as something that actually occurred in generated life, nor advance the causal-session cursor, until V3 admits the exact candidate artifact/hash. Rejection leaves the candidate audit-only/noncausal and requires fail-closed handling or another governed candidate under later implementation policy.
 
 The application never needs raw V3 causal internals beyond the stable boundary contract and never reads raw V558 to make a persona speak.
 
@@ -489,10 +502,10 @@ Every expression-relevant structural consequence can lawfully arrive as V3 gener
 | V2SessionState | persistent noncausal session | transcript/inside-reference/topic continuity vanishes | noncausal chat should not pollute V3 causal history | session facts only; no generated memory/relationship authority |
 | V2TurnAnalysis | ephemeral | deterministic message hooks/energy absent | current user-input analysis is not actor causal state | message-derived candidates only |
 | V2ExpressionPlan | ephemeral/auditable | LLM becomes de facto attention/disclosure/move decider | response planning is V2 expression jurisdiction | references V3/session inputs; no causal state |
-| RenderRequest + RenderedTurnArtifact | render boundary/artifact | no dialogue/voice output | V3 explicitly does not own final expression | rendered text is separate epistemic class |
+| RenderRequest + RenderedTurnArtifact | render boundary/artifact | no dialogue/voice output | V3 explicitly does not own final expression | rendered text is separate epistemic class; causal-mode artifact is pending until V3 admission |
 | V2RenderReceipt | audit | renderer variability/transforms unauditable | V3 causal receipt does not describe rendering | hash/provenance only |
 | ExternalInteractionProposal | pending event proposal | causal conversation is silently mutating or lost | V2/app observes interaction; V3 decides admission/effects | noncausal until admitted; exact artifact refs |
-| V2ApplicationEnvelope | app boundary | app must inspect unstable V3/raw producers | app needs render/session/status, not causal ontology | refs/surfaces/status only |
+| V2ApplicationEnvelope | app boundary | app must inspect unstable V3/raw producers | app needs render/session/status, not causal ontology | refs/surfaces/status only; publication gate prevents app from manufacturing causal occurrence |
 
 No-bloat guards:
 - no V2 biography store;
@@ -513,8 +526,8 @@ No-bloat guards:
 | H02 | analyst omniscience leak | `PASS_CONTAINED` | actor-accessibility envelope separates analyst/objective truth from first-person claims |
 | H03 | structural prior→belief/voice shortcut | `PASS_CONTAINED` | direct V558 behavioral access denied |
 | H04 | rendered memory→causal memory | `PASS_CONTAINED` | rendered/session classes noncausal; V3 admission required |
-| H05 | conversation mutates life silently | `PASS_CONTAINED` | V2 has no causal write path |
-| H06 | in-world utterance never returns to V3 | `PASS_CONTAINED` | causal mode requires outbound V3 admission |
+| H05 | conversation mutates life silently | `PASS_CONTAINED` | V2 has no causal write path; pending outbound render cannot publish itself into causal history |
+| H06 | in-world utterance never returns to V3 / publishes before admission | `PASS_CONTAINED` | outbound response remains `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION`; application cannot publish/commit it as occurred or advance causal cursor until V3 admits exact artifact/hash |
 | H07 | LLM decides biography/action | `PASS_CONTAINED` | renderer bounded by allowed refs and no causal authority |
 | H08 | Today State becomes second causal state | `PASS_CONTAINED` | random Today State replaced by derived `RenderSituation` |
 | H09 | Life Container becomes second biography | `PASS_CONTAINED` | compatibility view derives from V3 only |
@@ -544,7 +557,7 @@ Architecture is finite; implementation must fail closed until these semantic aut
 |---|---|---|---|
 | `V3_ACTOR_KNOWLEDGE_ACCESSIBILITY_RULE` | V3 | missing/partial | what generated facts actor knows/believes and can first-person assert |
 | `V3_CAUSAL_MEMORY_FORMATION_FORGETTING_RECALL_RULE` | V3 | missing | formation, forgetting, accessibility and recall of generated memories |
-| `V3_EXTERNAL_INTERACTION_EVENT_ADMISSION_RULE` | V3 | missing | admission/effects of inbound/outbound in-world interactions |
+| `V3_EXTERNAL_INTERACTION_EVENT_ADMISSION_RULE` | V3 | missing | admit/reject exact observable inbound/outbound interaction events, decide their effects, and emit the receipt that alone authorizes in-world publication of a causal-mode candidate |
 | `V2_PHENOMENOLOGICAL_PROJECTION_RULE` | V2 | missing | lawful actor-safe phenomenological projection without causal state |
 | `V2_SALIENCE_ACCESSIBILITY_RULE` | V2 | missing | select hooks/material without structural/demographic shortcuts |
 | `V2_EXPRESSION_REGISTER_RULE` | V2 | missing/partial | public/private/inner disclosure/register behavior |
@@ -558,8 +571,8 @@ Architecture is finite; implementation must fail closed until these semantic aut
 | `V2_RENDER_ADMISSION_PROMPT_CONTRACT` | V2 | missing/partial | allowed refs, forbidden claims, grounded physical beats, validation |
 | `V2_RENDER_MODEL_RANDOMNESS_VERSION_POLICY` | V2/app | missing | provider/model/version/seed/sampling/replay policy |
 | `V2_NATIVE_TRANSLATION_EQUIVALENCE_RULE` | V2 | missing/partial | factual equivalence across dual-language surfaces |
-| `V2_INTERACTION_MODE_POLICY` | V2/app | missing | explicit noncausal vs in-world causal policy + error handling |
-| `V2_TO_V3_EXTERNAL_EVENT_PACKAGING_CONTRACT` | V2/V3 seam | missing | typed observable inbound/outbound event packaging without V2 interpretation |
+| `V2_INTERACTION_MODE_POLICY` | V2/app | missing | explicit noncausal vs in-world causal policy, error handling, and enforcement that causal-mode outbound candidates remain pending/noncausal until V3 admission |
+| `V2_TO_V3_EXTERNAL_EVENT_PACKAGING_CONTRACT` | V2/V3 seam | missing | typed observable inbound/outbound event packaging that references the exact immutable candidate artifact/hash, carries no V2 causal interpretation, and gates in-world publication on the V3 admission receipt |
 | `CALLER_CURRENT_SITUATION_AUTHORITY` | app/caller | missing/partial | which actual time/location/device/privacy/interruption facts caller may supply |
 
 Missing authority never licenses “reasonable psychology,” default biography, demographic stereotype, or LLM plausibility.
@@ -578,35 +591,40 @@ Missing authority never licenses “reasonable psychology,” default biography,
 | `V2-P6` | Relationship/memory split: remove keyword deep-memory and monolithic RelationshipMemory; bind to V3 memories + session continuity. |
 | `V2-P7` | Attractor expression migration: delete V2 matcher/parent inference; adapt wisdom vocabulary to gradient V3-driven expression. |
 | `V2-P8` | Renderer/bilingual/replay audit: bounded RenderRequest, anti-fabrication validation, RenderedTurnArtifact, RenderReceipt. |
-| `V2-P9` | Causal interaction handshake: typed inbound/outbound proposals + V3 admission receipts; causal mode disabled until authority exists. |
+| `V2-P9` | Causal interaction handshake/publication gate: typed inbound/outbound `ExternalInteractionProposal`; outbound `RenderedTurnArtifact` begins `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION`; only V3 admission permits in-world publication, causal transcript commit, and causal-session cursor advance; causal mode disabled until authority exists. |
 | `V2-P10` | Stable application envelope + terminal hostile harness: no V558 access, render nonmutation, no session→causal leakage. |
 
 ## 28. Open missing authority
 
-The open authority set is exactly the 19 entries in §26. These are implementation blockers, not reasons to reopen V2 jurisdiction. Causal conversation remains disabled until `V3_EXTERNAL_INTERACTION_EVENT_ADMISSION_RULE` and `V2_TO_V3_EXTERNAL_EVENT_PACKAGING_CONTRACT` are governed.
+The open authority set is exactly the 19 entries in §26. These are implementation blockers, not reasons to reopen V2 jurisdiction. Causal conversation remains disabled until `V3_EXTERNAL_INTERACTION_EVENT_ADMISSION_RULE`, `V2_INTERACTION_MODE_POLICY`, and `V2_TO_V3_EXTERNAL_EVENT_PACKAGING_CONTRACT` are governed. The outbound publication gate does not add a twentieth authority; it is an invariant carried by those existing authorities.
 
 ## 29. Final terminal architecture checksum
+
+The disposition vocabulary is directional. In this V2 court, V3-owned causal/generated semantics are **upstream**, never `DOWNSTREAM_OWNS`. `PROVIDE_PREREQUISITE_ONLY` is used only where V2 itself creates a bounded precursor for a later owner in the processing flow.
 
 | Terminal capability | What exists upstream | V2 disposition | What V2 uniquely owes | What survives by reference | Starvation risk |
 |---|---|---|---|---|---|
 | nine-strata field | exact V550+ + V3 generated positions/orientation | `DIRECT_UPSTREAM_REUSE_SUFFICIENT` | express actor-safe consequences only | V3 actor-safe refs / opaque provenance | raw structure in V2 creates omniscient personality shortcut |
 | inter-strata pressure/counter-pressure | V553–V556 + V3 realized histories | `DIRECT_UPSTREAM_REUSE_SUFFICIENT` | actor-accessible expression of consequences/contradiction | V3 history/provenance refs | flattening to style erases causal multiplicity |
 | source/target/direction | producer exact refs + V3 experiences | `DIRECT_UPSTREAM_REUSE_SUFFICIENT` | none | opaque/expression-relevant V3 refs | V2 re-derivation re-owns producer meaning |
-| temporal persistence/drift/rupture/limits | V553 + V3 generated history | `PROVIDE_PREREQUISITE_ONLY` | situated expression/memory presentation | snapshot/event/memory refs | random Today can contradict generated history |
-| contradiction/coexisting pressure | V3 separate streams/tensions | `PROVIDE_PREREQUISITE_ONLY` | permit partial/ambivalent expression | V3 competing actor-safe tendencies | free contradiction generator invents psyche |
+| temporal persistence/drift/rupture/limits | V553 + V3 generated history | `PRESERVE_BY_REFERENCE` | situated expression/memory presentation without re-authoring history | snapshot/event/memory refs | random Today can contradict generated history |
+| contradiction/coexisting pressure | V3 separate streams/tensions | `PRESERVE_BY_REFERENCE` | permit partial/ambivalent expression without inventing contradiction | exact actor-safe competing-tendency/history refs where exposed | free contradiction generator invents psyche |
 | mediation | V555 + V3 route realization | `DIRECT_UPSTREAM_REUSE_SUFFICIENT` | none | V3 consequences | V2 must not decide traversal |
-| buffer/amplify/deflect/block/reroute | V3 response/effect history | `PROVIDE_PREREQUISITE_ONLY` | express supplied regulation/avoidance | V3 actor-safe state | conversation label can hide causal reownership |
-| orientation-to-strata | V3 generated orientation | `PROVIDE_PREREQUISITE_ONLY` | phenomenology/expression projection | actor-safe V3 orientation | direct class/religion→voice bypasses development |
-| Absolute Horizon | V3 distinct meta-orientation where governed | `PROVIDE_PREREQUISITE_ONLY` | actor-accessible Horizon expression | V3 actor-safe ref | religiosity score collapses Horizon |
+| buffer/amplify/deflect/block/reroute | V3 response/effect history | `PRESERVE_BY_REFERENCE` | express supplied regulation/avoidance consequences only | V3 actor-safe response/effect refs | conversation label can hide causal reownership |
+| orientation-to-strata | V3 generated orientation | `PRESERVE_BY_REFERENCE` | phenomenological/expression projection only | actor-safe V3 orientation refs | direct class/religion→voice bypasses development |
+| Absolute Horizon | V3 distinct meta-orientation where governed | `PRESERVE_BY_REFERENCE` | express only actor-accessible Horizon relation | distinct V3 actor-safe Horizon ref/state | religiosity score collapses Horizon |
 | structural pressure-flow topology | V555/V556 realized by V3 | `DIRECT_UPSTREAM_REUSE_SUFFICIENT` | none | opaque provenance | direct graph read converts topology to personality |
-| attractor prerequisites/formation | V556 prerequisites + V3 attractor | `PROVIDE_PREREQUISITE_ONLY` | uncertainty-preserving expression | V3 trajectory/interpretation/evidence | V2 matcher locks stereotype |
-| actor developmental causality | V3 exclusive | `DOWNSTREAM_OWNS` | absolute nonmutation | V3 snapshot/event cursor/hash | second life simulation destroys single truth source |
-| genealogy | V3 generated entities/histories | `PROVIDE_PREREQUISITE_ONLY` | actor-accessible family expression | V3 entity/memory refs | legacy parent generation fabricates biography |
+| attractor prerequisites/formation | V556 prerequisites + V3 attractor trajectory/interpretation | `PRESERVE_BY_REFERENCE` | uncertainty-preserving attractor expression only | exact V3 trajectory/interpretation/evidence refs | V2 matcher locks stereotype |
+| actor developmental causality | V3 exclusive upstream jurisdiction | `DIRECT_UPSTREAM_REUSE_SUFFICIENT` + `PRESERVE_BY_REFERENCE` | absolute nonmutation; carry snapshot/event-cursor/hash identity needed to anchor render/replay | V3 snapshot/event cursor/hash | second life simulation destroys single truth source |
+| genealogy | V3 generated entities/histories | `PRESERVE_BY_REFERENCE` | actor-accessible family/relationship expression only | exact V3 entity/relationship/memory refs | legacy parent generation fabricates biography |
 | V2 phenomenology/expression | hardened V3RenderContext | `OWN_AND_DERIVE_HERE` | actor-limited projection, turn planning, render/session continuity | generated truth remains V3-referenced | without V2 subject becomes system-omniscient or lifeless record |
-| epistemic class/provenance | V3 fact/view/memory/provenance | `PRESERVE_BY_REFERENCE` | V2 projection/plan/render/session/receipt classes | V3 hashes/refs | prose becomes false evidence |
-| uncertainty/absence/noncomparability/forbidden inference | V3 actor-safe envelope | `PRESERVE_BY_REFERENCE` | omission/hedging/ignorance/concealment within permission | item negative states | vivid dialogue launders unknown into fact |
+| epistemic class/provenance | V3 fact/view/memory/provenance | `PRESERVE_BY_REFERENCE` + `OWN_AND_DERIVE_HERE` | preserve V3 authority by exact refs while uniquely creating V2 projection/plan/render/session/audit epistemic classes | V3 hashes/fact/memory refs | prose becomes false evidence or V2 classes lose audit identity |
+| uncertainty/absence/noncomparability/forbidden inference | V3 actor-safe envelope | `PRESERVE_BY_REFERENCE` | omission/hedging/ignorance/concealment within supplied permission | item negative/uncertainty/forbidden-claim states | vivid dialogue launders unknown into fact |
 | conversation continuity | V3 snapshot + relationship state | `OWN_AND_DERIVE_HERE` | typed noncausal transcript/session/topic state | V3 context hash/cursor | putting transcript in V3 bloats causality; omitting it breaks chat |
-| causal conversation feedback | V3 external-event admission architecture | `PROVIDE_PREREQUISITE_ONLY` | package observable inbound/outbound interaction artifacts | render/session refs | silent mutation or lost causal utterance |
+| causal conversation feedback | V3 external-event admission architecture | `PROVIDE_PREREQUISITE_ONLY` | create exact observable inbound/outbound proposal/package, including pending outbound artifact/hash, without deciding occurrence/effects | render/session artifact refs + later V3 admission receipt | silent mutation, premature publication, or lost causal utterance |
+
+**Checksum directionality verdict:** `PASS__NO_UPSTREAM_V3_CAPABILITY_MISLABELED_DOWNSTREAM_OWNS`.  
+**Prerequisite-only verdict:** `PASS__USED_ONLY_FOR_V2_CREATED_CAUSAL_INTERACTION_PACKAGE_PENDING_LATER_V3_ADMISSION`.
 
 ## 30. Final architecture statement
 
@@ -619,6 +637,7 @@ The open authority set is exactly the 19 entries in §26. These are implementati
 - noncausal transcript/session continuity and presentation-only energetic/topic state;
 - render/model/randomness/provenance receipts;
 - packaging observable causal interaction proposals back to V3 without deciding effects;
+- enforcing that an outbound causal-mode render remains `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION` until V3 admission authorizes in-world publication;
 - stable V2 application-facing render/session envelope;
 - preserving uncertainty/ignorance/forbidden-claim limits in expression.
 
@@ -632,7 +651,8 @@ The open authority set is exactly the 19 entries in §26. These are implementati
 - orientation/need/wound/buffer/rupture/attractor formation;
 - Enneagram classification or parent type inference;
 - inventing missing current state, memories, names, places, or events;
-- promoting transcript/rendered language into generated causal truth.
+- promoting transcript/rendered language into generated causal truth;
+- deciding that a causal-mode candidate utterance/action actually occurred in generated life.
 
 ### TERMINAL CAPABILITIES PROTECTED:
 
@@ -642,7 +662,7 @@ The open authority set is exactly the 19 entries in §26. These are implementati
 - embodied/material constraint without random duplicate state;
 - relationship-specific conversation without fabricated relationship history;
 - noncausal chat continuity;
-- explicit causal conversation feedback;
+- explicit causal conversation feedback with V3-only occurrence/admission authority;
 - life-course attractor expression without V2 reclassification;
 - render replay/provenance;
 - no-starvation/no-bloat and renderer-not-decider continuity.
@@ -653,15 +673,19 @@ The open authority set is exactly the 19 entries in §26. These are implementati
 
 ## 31. Architecture-only verification and final verdict
 
-**Pre-work branch terrain:** assigned branch was exactly identical to base `548332c9a88fce42aae868c1915e2f6fc63ea3c2`.  
+**Initial pre-work branch terrain:** assigned branch was exactly identical to base `548332c9a88fce42aae868c1915e2f6fc63ea3c2`.  
+**Continuation reviewed head verified before this fix:** `a31617c4bad74114236337b42d33452317214dad`.  
 **Production code modified:** `NO`.  
 **Implementation launched:** `NO`.  
 **Authorized write scope:** exactly `RESULT.md` and `RESULT.json`.  
 **Historical archive SHA:** `EXACT_MATCH`.  
 **Focused recovered-source tests:** `8 passed`.  
 **Recovered mechanisms adjudicated:** `54` with exactly one finite disposition each.  
-**Disposition counts:** `REUSE=5; ADAPT=30; REPLACE=6; DEFER=3; REMOVE=10`.
+**Disposition counts:** `REUSE=5; ADAPT=30; REPLACE=6; DEFER=3; REMOVE=10`.  
+**Open runtime/model authorities:** `19`.  
+**Causal outbound publication gate:** `PASS__V3_ADMISSION_REQUIRED_BEFORE_IN_WORLD_PUBLICATION_OR_CAUSAL_CURSOR_ADVANCE`.  
+**MD↔JSON consistency target:** `PASS__CHECKSUM_TAXONOMY_AND_CAUSAL_PUBLICATION_GATE_CANONICALIZED`.
 
-The architecture is terminally sufficient because it preserves recovered expression machinery that genuinely belongs in V2 while removing every path by which V2 could secretly become a second generator of life, knowledge, memory, relationship, or personality. The only V3 change required is a narrow render-boundary hardening that exposes actor accessibility over truth V3 already owns. Missing semantic rule authority remains explicit and blocks implementation rather than being filled by heuristics.
+The architecture is terminally sufficient because it preserves recovered expression machinery that genuinely belongs in V2 while removing every path by which V2 could secretly become a second generator of life, knowledge, memory, relationship, personality, or causal occurrence. The only V3 change required is a narrow render-boundary hardening that exposes actor accessibility over truth V3 already owns. Missing semantic rule authority remains explicit and blocks implementation rather than being filled by heuristics. The continuation correction changes no substantive V3/V2 ownership: it canonicalizes the checksum directionality and makes explicit that causal-mode rendering produces only a pending candidate until V3 admits the exact observable artifact.
 
 **V2_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS**
