@@ -303,25 +303,113 @@
     ]
   },
   "release_dag": {
-    "structural":"EXT-001→V553-P1..P5→EXT-002→V554-P1..P5→EXT-003→V555-P1..P5→EXT-004→IP-556-01..05→EXT-005→V557-P1..P5→EXT-006→V558-P1..P5→EXT-007→V3-P4..P13→V2-P9/P10→whole-machine court",
+    "structural":"EXT-001→V553-P1..P5→EXT-002→[ADP-001+CDP-CAN-001]→V554-P1..P5→EXT-003→V555-P1..P5→EXT-004→[CDP-CAN-002]→IP-556-01..02→[ADP-005 accepted]→IP-556-03..05→EXT-005→V557-P1..P5→EXT-006→V558-P1..P5→EXT-007→V3-P4..P10/P12/P13→V2-P9/P10→whole-machine court",
     "structural_authority":"ADP-001→ADP-002→ADP-003→ADP-004→ADP-005",
     "v3_runtime":"ADP-008+ADP-020→ADP-009/010; ADP-009→ADP-007; ADP-010+ADP-002/003→ADP-011→ADP-012; ADP-005+ADP-011+ADP-012→ADP-013→ADP-018; ADP-009+010+020→ADP-015; ADP-016→ADP-017→ADP-022",
+    "canonicalization_dependencies":"CDP-CAN-001(W1)→V554-P2/P3/P5(W2); CDP-CAN-002(W3)→IP-556-02/03/05(W4); CAN-013→V3-P11 only if optional causal Pass-1 LLM is enabled",
     "external_interaction":"ADP-019 coupled to CAN-024/CAN-025 without merging admission/mode/packaging",
     "runtime_governance":"ADP-006 temporal proxy eligibility remains distinct from CAN-003 runtime-use governance",
-    "parallel_fixture_law":"V3-P1..P3 may develop against fixed V558 fixtures before EXT-007; V3-P4..P13 require EXT-007. V2-P1..P8 may develop against fixed V3 boundary fixtures; V2-P9 requires physical V3 admission; V2-P10 requires V3 terminal closure."
+    "parallel_fixture_law":"V3-P1..P3 may develop against fixed V558 fixtures before EXT-007; mandatory V3-P4..P10/P12/P13 require EXT-007. V3-P11 remains disabled while CAN-013 is deferred. V2-P1..P6/P8 may develop against fixed V3 boundary fixtures; V2-P7 waits for ADP-018; V2-P9 requires physical V3 admission; V2-P10 requires V3 terminal closure."
   },
   "parallel_worker_wave_plan": [
     {"id":"W0","name":"Authority foundation + external SWID gate","parallel":["existing SWID G8 lane","ADP-001","ADP-006","CDP-CAN-003","ADP-008","ADP-016","ADP-019","ADP-020","CDP-CAN-014","ADP-024","ADP-025","ADP-026"],"implementation_release":false},
-    {"id":"W1","name":"Critical-path authority expansion + conditional V553","parallel":["ADP-002","ADP-009","ADP-010","ADP-017","ADP-021","CAN-008..012 canonicalization","CAN-015..021 canonicalization","V553-P1..P5 only if EXT-001 closes"]},
-    {"id":"W2","name":"V554 + shared V3/V2/runtime policy","parallel":["V554-P1..P5 after EXT-002+authority","ADP-003","ADP-007","ADP-015","ADP-022","ADP-023","CAN-022..025","CAN-004..007"]},
-    {"id":"W3","name":"V555 + V556 authority + early V3","parallel":["V555-P1..P5","ADP-004","ADP-011","V3-P1..P3 fixture implementation"]},
-    {"id":"W4","name":"V556 + V3 realization + early V2","parallel":["ADP-005","IP-556-01..05","ADP-012","V2-P1..P8 fixture implementation"]},
-    {"id":"W5","name":"V557 + V3 F2/orientation/attractor","parallel":["V557-P1..P5","ADP-013","ADP-014","ADP-018"]},
-    {"id":"W6","name":"V558 + preintegration V3/V2","parallel":["V558-P1..P5","finish V3-P1..P3","finish V2-P1..P8 fixtures"]},
-    {"id":"W7","name":"V3 full integration","parallel":["V3-P4..P13 against real V558","V2-P1..P8 compatibility fixes only"]},
-    {"id":"W8","name":"V2 causal/application integration","parallel":["V2-P1..P8 real V3 bind","V2-P9 after V3-P12","V2-P10 after V2-P9+V3-P13"]},
+    {"id":"W1","name":"Critical-path authority expansion + conditional V553","parallel":["ADP-002","ADP-009","ADP-010","ADP-017","ADP-021","CDP-CAN-001","CAN-008..012 canonicalization","CAN-015..021 canonicalization","V553-P1..P5 only if EXT-001 closes"]},
+    {"id":"W2","name":"V554 + shared V3/V2/runtime policy","parallel":["V554-P1..P5 after EXT-002+ADP-001+CDP-CAN-001","ADP-003","ADP-007","ADP-015","ADP-022","ADP-023","CAN-022..025","CAN-004..007"]},
+    {"id":"W3","name":"V555 + V556 authority + early V3","parallel":["V555-P1..P5 after EXT-003+ADP-002/003","ADP-004","ADP-011","CDP-CAN-002","V3-P1..P3 fixture implementation"]},
+    {"id":"W4","name":"V556 + V3 realization + early V2","parallel":["ADP-005","ADP-012","IP-556-01..02 after EXT-004+ADP-004+CDP-CAN-002","V2-P1..P6/P8 fixture implementation"],"ordered_sublanes":[{"after":["ADP-005 accepted","IP-556-02 accepted"],"then":["IP-556-03","IP-556-04","IP-556-05"],"reason":"MUST-005 must be accepted before F2 topology and dependent handoff publication."}]},
+    {"id":"W5","name":"V557 + V3 F2/orientation authority","parallel":["V557-P1..P5 after EXT-005+CAN-003/MUST-006/CAN-004","ADP-013","ADP-014"]},
+    {"id":"W6","name":"V558 + attractor-transition authority + preintegration V3/V2","parallel":["V558-P1..P5 after EXT-006+CAN-004..007/MUST-006","ADP-018 after accepted ADP-013","finish V3-P1..P3","finish V2-P1..P6/P8 fixtures"]},
+    {"id":"W7","name":"V3 full integration + deferred V2-P7 fixture","parallel":["mandatory V3-P4..P10 then V3-P12..P13 against real V558","V2-P7 fixture after accepted ADP-018","V2-P1..P6/P8 compatibility fixes only"],"optional_deferred":["V3-P11 while CAN-013 is NONBLOCKING_OPTIONAL_DEFERRED"]},
+    {"id":"W8","name":"V2 causal/application integration","parallel":["V2-P1..P8 real V3 bind"],"ordered_sublanes":[{"after":["V3-P12 accepted in W7"],"then":["V2-P9"]},{"after":["V2-P9 accepted","V3-P13 accepted in W7"],"then":["V2-P10"]}]},
     {"id":"W9","name":"Whole-machine production acceptance","parallel":["TD-R07 six synthetic lives on production","forbidden regression matrix","replay/standalone/stage-blind corpus"]}
   ],
+  "schedule_closure_audit": {
+    "blocking_canonicalization_schedule_complete": true,
+    "authority_decision_schedule_complete": true,
+    "dependency_order_valid": true,
+    "implementation_packet_gate_complete": true,
+    "classification_universe_unchanged": true,
+    "blocking_canonicalizations_scheduled": 24,
+    "blocking_canonicalizations_total": 24,
+    "canonicalization_total": 25,
+    "canonicalization_schedule": [
+      {"id":"CAN-001","status":"SCHEDULED","wave":"W1","cell":"CDP-CAN-001"},
+      {"id":"CAN-002","status":"SCHEDULED","wave":"W3","cell":"CDP-CAN-002"},
+      {"id":"CAN-003","status":"SCHEDULED","wave":"W0","cell":"CDP-CAN-003"},
+      {"id":"CAN-004","status":"SCHEDULED","wave":"W2"},
+      {"id":"CAN-005","status":"SCHEDULED","wave":"W2"},
+      {"id":"CAN-006","status":"SCHEDULED","wave":"W2"},
+      {"id":"CAN-007","status":"SCHEDULED","wave":"W2"},
+      {"id":"CAN-008","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-009","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-010","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-011","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-012","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-013","status":"NONBLOCKING_OPTIONAL_DEFERRED","condition":"Causal Pass-1 LLM remains disabled; V3-P11 remains disabled."},
+      {"id":"CAN-014","status":"SCHEDULED","wave":"W0","cell":"CDP-CAN-014"},
+      {"id":"CAN-015","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-016","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-017","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-018","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-019","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-020","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-021","status":"SCHEDULED","wave":"W1"},
+      {"id":"CAN-022","status":"SCHEDULED","wave":"W2"},
+      {"id":"CAN-023","status":"SCHEDULED","wave":"W2"},
+      {"id":"CAN-024","status":"SCHEDULED","wave":"W2"},
+      {"id":"CAN-025","status":"SCHEDULED","wave":"W2"}
+    ],
+    "authority_decision_packets_scheduled": 26,
+    "authority_decision_schedule": [
+      {"id":"ADP-001","wave":"W0"},{"id":"ADP-002","wave":"W1"},{"id":"ADP-003","wave":"W2"},{"id":"ADP-004","wave":"W3"},{"id":"ADP-005","wave":"W4"},{"id":"ADP-006","wave":"W0"},{"id":"ADP-007","wave":"W2"},{"id":"ADP-008","wave":"W0"},{"id":"ADP-009","wave":"W1"},{"id":"ADP-010","wave":"W1"},{"id":"ADP-011","wave":"W3"},{"id":"ADP-012","wave":"W4"},{"id":"ADP-013","wave":"W5"},{"id":"ADP-014","wave":"W5"},{"id":"ADP-015","wave":"W2"},{"id":"ADP-016","wave":"W0"},{"id":"ADP-017","wave":"W1"},{"id":"ADP-018","wave":"W6"},{"id":"ADP-019","wave":"W0"},{"id":"ADP-020","wave":"W0"},{"id":"ADP-021","wave":"W1"},{"id":"ADP-022","wave":"W2"},{"id":"ADP-023","wave":"W2"},{"id":"ADP-024","wave":"W0"},{"id":"ADP-025","wave":"W0"},{"id":"ADP-026","wave":"W0"}
+    ],
+    "adp_dependency_audit": {
+      "packets_checked": 26,
+      "all_appear_exactly_once": true,
+      "all_dependencies_earlier_or_explicitly_gated": true,
+      "violations": []
+    },
+    "implementation_packet_audit": {
+      "packets_checked": 53,
+      "mandatory_release_packets": 52,
+      "optional_deferred_packets": ["V3-P11 while CAN-013 is deferred"],
+      "release_points": [
+        {"wave":"W1","packets":"V553-P1..P5","gate":"EXT-001 closes before start"},
+        {"wave":"W2","packets":"V554-P1..P5","gate":"EXT-002 + ADP-001 + CDP-CAN-001 accepted"},
+        {"wave":"W3","packets":"V555-P1..P5","gate":"EXT-003 + ADP-002/003 accepted"},
+        {"wave":"W3","packets":"V3-P1..P3 fixture implementation","gate":"all direct MUST/CAN blockers accepted in W0-W2"},
+        {"wave":"W4","packets":"IP-556-01..02","gate":"EXT-004 + ADP-004 + CDP-CAN-002 accepted"},
+        {"wave":"W4","packets":"IP-556-03..05","gate":"explicit sublane after ADP-005 acceptance and IP-556-02 acceptance"},
+        {"wave":"W4","packets":"V2-P1..P6/P8 fixture implementation","gate":"all direct MUST/CAN blockers accepted in W0-W2"},
+        {"wave":"W5","packets":"V557-P1..P5","gate":"EXT-005 + CAN-003/MUST-006/CAN-004 accepted"},
+        {"wave":"W6","packets":"V558-P1..P5","gate":"EXT-006 + CAN-004..007/MUST-006 accepted"},
+        {"wave":"W7","packets":"V3-P4..P10/P12/P13","gate":"EXT-007 and all direct mandatory authorities accepted by W6"},
+        {"wave":"W7","packets":"V2-P7 fixture implementation","gate":"ADP-018 + CAN-020 accepted"},
+        {"wave":"W8","packets":"V2-P1..P8 real V3 bind","gate":"real V3 boundary available"},
+        {"wave":"W8","packets":"V2-P9","gate":"V3-P12 accepted"},
+        {"wave":"W8","packets":"V2-P10","gate":"explicit sublane after V2-P9 acceptance + V3-P13 acceptance"}
+      ],
+      "blocking_dependency_violations": []
+    },
+    "external_gate_accounting": [
+      {"id":"EXT-001","status":"EXTERNALLY_GATED","before":"W1 V553"},
+      {"id":"EXT-002","status":"PRODUCED_BY_PRIOR_WAVE","producer":"W1 V553-P5","before":"W2 V554"},
+      {"id":"EXT-003","status":"PRODUCED_BY_PRIOR_WAVE","producer":"W2 V554-P5","before":"W3 V555"},
+      {"id":"EXT-004","status":"PRODUCED_BY_PRIOR_WAVE","producer":"W3 V555-P5","before":"W4 V556"},
+      {"id":"EXT-005","status":"PRODUCED_BY_PRIOR_WAVE","producer":"W4 IP-556-05","before":"W5 V557"},
+      {"id":"EXT-006","status":"PRODUCED_BY_PRIOR_WAVE","producer":"W5 V557-P5","before":"W6 V558"},
+      {"id":"EXT-007","status":"PRODUCED_BY_PRIOR_WAVE","producer":"W6 V558-P5","before":"W7 full V3"}
+    ],
+    "explicit_ordered_sublanes": [
+      {"wave":"W4","order":["ADP-005","ACCEPT_ADP-005","IP-556-03","IP-556-04","IP-556-05"],"preserves":"V556 F2 topology authority distinct from V3 satisfaction/attractor authority"},
+      {"wave":"W8","order":["V2-P9","ACCEPT_V2-P9","V2-P10"],"additional_gate":"V3-P13 already accepted in W7"}
+    ],
+    "unscheduled_blocking_authorities": [],
+    "parallel_dependency_violations": [],
+    "w0_exact_recommendation_unchanged": true,
+    "w0_parallel_cells": ["ADP-001","ADP-006","CDP-CAN-003","ADP-008","ADP-016","ADP-019","ADP-020","CDP-CAN-014","ADP-024","ADP-025","ADP-026"],
+    "md_json_schedule_consistency_required": true
+  },
   "swid_v553_gate_interaction": {
     "swid_pr": 27,
     "pr_state": "open_draft",
@@ -375,7 +463,8 @@
     "implementation_released": false,
     "external_lane": ["Continue existing SWID G8/final-merge lane EXT-001; RA-R00 does not launch it."],
     "parallel_cells": ["ADP-001","ADP-006","CDP-CAN-003","ADP-008","ADP-016","ADP-019","ADP-020","CDP-CAN-014","ADP-024","ADP-025","ADP-026"],
-    "reason": "No intra-wave semantic dependency, no final V553 physical dependency, longest critical paths opened, no duplicate semantic ownership."
+    "reason": "No intra-wave semantic dependency, no final V553 physical dependency, longest critical paths opened, no duplicate semantic ownership.",
+    "unchanged_by_continuation": true
   },
   "unresolved_evidence_gaps": {
     "verdict": "NONE_REQUIRED_FOR_CLASSIFICATION",
@@ -387,7 +476,13 @@
     "semantic_work_delegated_to_implementation_workers": false,
     "finite_program": true,
     "dependency_ordered": true,
-    "first_wave_authority_only": true
+    "first_wave_authority_only": true,
+    "classification_universe_unchanged": true,
+    "blocking_canonicalization_schedule_complete": true,
+    "authority_decision_schedule_complete": true,
+    "dependency_order_valid": true,
+    "unscheduled_blocking_authorities": [],
+    "parallel_dependency_violations": []
   },
   "final_token": "IMPLEMENTATION_RELEASE_SYNTHESIS = PASS"
 }
