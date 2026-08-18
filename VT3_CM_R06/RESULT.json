@@ -1,0 +1,264 @@
+{
+  "cell": "VT3-CM-R06",
+  "title": "MINIMAL CONDITIONAL-EVIDENCE ARCHITECTURE",
+  "base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
+  "branch": "agent/vozhd-trii-vt3-cm-r06",
+  "verdict": "PASS_WITH_SPINE_REVISION",
+  "production_code_modified": false,
+  "authorized_writes": [
+    "VT3_CM_R06/RESULT.md",
+    "VT3_CM_R06/RESULT.json"
+  ],
+  "core_ruling": "Preserve a workload-bounded canonical conditional empirical distribution with exact denominator, weighting, support, uncertainty, temporal scope and provenance. Treat V551 signed evidence and V552 pressure as governed projections. Do not require V550-V552 meaning to be copied through V553-V557 to reach V558; after V3 supplies exact generated position, V558 may re-resolve immutable earlier structural authority directly.",
+  "governing_invariants": [
+    "Preserve subgroup heterogeneity including minority and multimodal configurations.",
+    "Preserve denominator, weighting, support, uncertainty, suppression and source authority.",
+    "Population correlation or conditional frequency never establishes actor membership, identity, belief, intention or response.",
+    "Negative authority and typed absence are first-class; absence is not zero, neutrality or population-average fallback.",
+    "Identical structural position and empirical evidence must permit multiple lawful generated lives.",
+    "Every terminal fact must be replayable to governed source snapshots and transform authority.",
+    "Semantic jurisdiction does not imply mandatory stage-local materialization.",
+    "A canonical family survives only if deleting it would starve distinct required terminal meaning that cannot be lawfully reconstructed."
+  ],
+  "semantic_dag": {
+    "nodes": [
+      "GOVERNED_AUTHORITY",
+      "WORKLOAD_COMPILER",
+      "SHARED_RESPONDENT_FACT_SUBSTRATE",
+      "CONDITIONAL_EMPIRICAL_DISTRIBUTION",
+      "V551_SIGNED_CONDITIONAL_EVIDENCE",
+      "V552_POSITION_CONDITIONED_PRESSURE",
+      "V553_V557_DISTINCT_AUTHORITIES",
+      "V558_CONTEXT_RESOLVER",
+      "V3_EXACT_POSITION"
+    ],
+    "edges": [
+      ["GOVERNED_AUTHORITY", "WORKLOAD_COMPILER"],
+      ["WORKLOAD_COMPILER", "SHARED_RESPONDENT_FACT_SUBSTRATE"],
+      ["SHARED_RESPONDENT_FACT_SUBSTRATE", "CONDITIONAL_EMPIRICAL_DISTRIBUTION"],
+      ["CONDITIONAL_EMPIRICAL_DISTRIBUTION", "V551_SIGNED_CONDITIONAL_EVIDENCE"],
+      ["CONDITIONAL_EMPIRICAL_DISTRIBUTION", "V552_POSITION_CONDITIONED_PRESSURE"],
+      ["V551_SIGNED_CONDITIONAL_EVIDENCE", "V552_POSITION_CONDITIONED_PRESSURE"],
+      ["CONDITIONAL_EMPIRICAL_DISTRIBUTION", "V558_CONTEXT_RESOLVER"],
+      ["V551_SIGNED_CONDITIONAL_EVIDENCE", "V558_CONTEXT_RESOLVER"],
+      ["V552_POSITION_CONDITIONED_PRESSURE", "V558_CONTEXT_RESOLVER"],
+      ["V553_V557_DISTINCT_AUTHORITIES", "V558_CONTEXT_RESOLVER"],
+      ["V3_EXACT_POSITION", "V558_CONTEXT_RESOLVER"]
+    ],
+    "ruling": "The semantic DAG is branched. CED remains independently reachable; V551 and V552 are potentially lossy projections and V553-V557 are not a transport corridor for earlier conditional evidence."
+  },
+  "physical_dag": {
+    "canonical_persistent": [
+      "governed source/variable/weight/transform authority and immutable source snapshots",
+      "terminal-reachable conditional workload manifest",
+      "shared respondent fact substrate sufficient for exact replay subject to retention law",
+      "canonical ConditionalEmpiricalDistribution facts"
+    ],
+    "selective_or_derived": [
+      "V551 SignedConditionalEvidence deterministic projection/cache",
+      "V552 PositionConditionedPressureFact deterministic/governed projection/cache",
+      "legacy compatibility views",
+      "diagnostic analyses"
+    ],
+    "ephemeral": [
+      "V558 ResolvedStructuralContext"
+    ],
+    "forbidden_transport_pattern": "No mandatory V550 -> V551 -> V552 -> V553+ -> V558 stage-mirror chain."
+  },
+  "schemas": {
+    "ConditionalEmpiricalDistribution": {
+      "identity": ["conditional_fact_id", "schema_version"],
+      "subject": ["dataset_id", "governed_target_id", "target_domain"],
+      "conditioning": ["predicate", "canonical_position_key?", "cell_scope", "temporal_scope"],
+      "distribution_value": ["canonical_value", "raw_n", "weighted_n", "estimate"],
+      "denominator": ["eligible_n", "matched_n", "target_observed_n", "target_missing_n", "weighted_denominator", "denominator_rule_id"],
+      "weighting": ["weighting_authority_id", "weight_variable_id?", "normalization_rule", "survey_design_id?", "replicate_method?"],
+      "support": ["support_status", "effective_n?", "minimum_support_rule_id"],
+      "uncertainty": ["method", "intervals[]", "design_effect?", "suppression_status?"],
+      "authority": ["source_snapshot_ids[]", "source_hashes[]", "respondent_substrate_hash", "workload_spec_id", "workload_spec_hash", "transform_rule_id", "transform_version"],
+      "absence": ["absence_type?", "reason_authority_id?"]
+    },
+    "ced_identity_rule": "Deterministic over source/snapshot authority, governed target, normalized predicate, cell/spatial scope, temporal scope, weighting regime, denominator semantics, and schema/transform version. Filename, stage, MI rank, branch-tree location, outlier status, and generation order are excluded.",
+    "predicate_ast": [
+      "EQ(field_id, canonical_value)",
+      "IN(field_id, canonical_values[])",
+      "RANGE(field_id, lower, upper, closure)",
+      "AND(...)",
+      "OR(...)",
+      "NOT(...)"
+    ],
+    "SignedConditionalEvidence": [
+      "evidence_id",
+      "empirical_fact_refs[]",
+      "evidence_axis",
+      "comparator_ref?",
+      "direction: POSITIVE|NEGATIVE|NEUTRAL|INDETERMINATE",
+      "magnitude?",
+      "comparison_measure?",
+      "support_ref",
+      "uncertainty_ref",
+      "projection_rule_id",
+      "projection_rule_version",
+      "provenance_refs[]",
+      "absence_type?"
+    ],
+    "PositionConditionedPressureFact": [
+      "pressure_fact_id",
+      "position_predicate",
+      "temporal_scope",
+      "pressure_axis",
+      "components[].signed_evidence_ref",
+      "components[].contribution",
+      "components[].support_ref",
+      "components[].uncertainty_ref",
+      "aggregate_pressure?",
+      "aggregation_rule_id",
+      "aggregation_rule_version",
+      "disagreement_state",
+      "support_state",
+      "uncertainty_state",
+      "provenance_refs[]",
+      "absence_type?"
+    ]
+  },
+  "jurisdiction": {
+    "governed_upstream_authority": "source/variable semantics, admissibility, weights and transform authority",
+    "workload_compiler": "finite lawful terminal conditional query set",
+    "shared_fact_substrate": "respondent observations and replay substrate",
+    "V550": "conditional empirical distribution",
+    "V551": "signed/directional comparison evidence",
+    "V552": "position-conditioned structural pressure",
+    "V553_V557": "their own accepted temporal/mediation/interaction and other distinct semantics only",
+    "V558": "runtime exact applicability and structural-context composition",
+    "V3": "generated actor position, mobility and developmental trajectory"
+  },
+  "replacement_mapping": [
+    {"current": "V550 position_distribution", "class": "CANONICAL_CORE", "replacement": "CED distribution + denominator + weighting + support + uncertainty + provenance"},
+    {"current": "V550 position_indicator_summary", "class": "DERIVED_COMPATIBILITY_VIEW", "replacement": "deterministic view from CED plus governed comparator/projection rule"},
+    {"current": "V550 indicator_answer_matrix", "class": "DERIVED_DIAGNOSTIC", "replacement": "reproducible cross-tab/view over shared respondent facts/CED; no independent authority"},
+    {"current": "V550 outlier_cohort_summary", "class": "DIAGNOSTIC", "replacement": "on-demand analysis over canonical facts"},
+    {"current": "V550 secondary_indicator_summary", "class": "DIAGNOSTIC_DERIVED", "replacement": "reproducible analysis over canonical facts"},
+    {"current": "mutual information", "class": "DIAGNOSTIC", "replacement": "on-demand analysis absent starvation proof"},
+    {"current": "Cramer's V", "class": "DIAGNOSTIC", "replacement": "on-demand analysis absent starvation proof"},
+    {"current": "entropy", "class": "DIAGNOSTIC", "replacement": "on-demand analysis"},
+    {"current": "secondary gain", "class": "DIAGNOSTIC", "replacement": "on-demand analysis"},
+    {"current": "recursive branch/tree nodes", "class": "REMOVE_AS_CANONICAL", "replacement": "finite workload predicates plus reproducible diagnostics"},
+    {"current": "branch signatures", "class": "NORMALIZE", "replacement": "predicate identity/cache key only; no empirical authority"},
+    {"current": "V551 position_field / position_value", "class": "REFERENCE", "replacement": "canonical governed predicate/position key"},
+    {"current": "V551 strata_path", "class": "REFERENCE_COMPATIBILITY", "replacement": "normalized predicate ancestry where semantically required"},
+    {"current": "V551 subject_position_signature", "class": "REFERENCE", "replacement": "normalized predicate/position-key identity"},
+    {"current": "V551 position_conditioning", "class": "REFERENCE", "replacement": "CED refs plus applicability metadata"},
+    {"current": "V551 position_modifiers", "class": "PROJECT", "replacement": "SignedConditionalEvidence refs; compatibility view if legacy shape is mirror-only"},
+    {"current": "V551 conditional_strata_weights", "class": "CONDITIONAL_RETENTION", "replacement": "retain only distinct governed projection weighting regime; otherwise reference canonical CED weighting/support authority"},
+    {"current": "V551 signed conditional compiler/product", "class": "SEMANTICALLY_RETAIN", "replacement": "deterministic SignedConditionalEvidence projection from CED with versioned rule and provenance"},
+    {"current": "V551J joint packets/component indexes", "class": "PROJECTION_COMPATIBILITY", "replacement": "canonical component refs unless R02 proves irreducible joint weighting/admissibility semantics"},
+    {"current": "V552 position_conditioning_profile", "class": "CONTRACT_TO_REFS", "replacement": "CED and V551 refs plus pressure-specific metadata"},
+    {"current": "V552 pressure observations/components", "class": "SEMANTICALLY_RETAIN", "replacement": "PositionConditionedPressureFact with component refs/support/uncertainty/disagreement"},
+    {"current": "V552 aggregate pressure scalar", "class": "DERIVED_OUTPUT", "replacement": "cache permitted but cannot erase component disagreement/support"},
+    {"current": "stage-local copies of upstream provenance/support", "class": "REMOVE_COPIES", "replacement": "immutable canonical refs"}
+  ],
+  "compatibility_views": {
+    "required_metadata": ["compatibility_view=true", "canonical_source_refs[]", "derivation_rule", "derivation_version", "legacy_schema_version"],
+    "classes": ["canonical", "derived_compatibility", "diagnostic"],
+    "authority_rule": "A compatibility view never becomes independent empirical authority merely because it is persisted or emitted at a legacy path."
+  },
+  "absence_and_failure": {
+    "types": [
+      "PRESENT",
+      "VALID_NULL",
+      "INVARIANT",
+      "NOT_APPLICABLE",
+      "NO_MATCHING_SUPPORT",
+      "INSUFFICIENT_SUPPORT",
+      "SUPPRESSED",
+      "SOURCE_UNAVAILABLE",
+      "AUTHORITY_UNAVAILABLE",
+      "PREDICATE_UNRESOLVABLE",
+      "POSITION_UNRESOLVED",
+      "NO_POSITION_AUTHORITY",
+      "NO_COMPARATOR_AUTHORITY",
+      "NO_SIGNED_EVIDENCE",
+      "NO_PRESSURE_AUTHORITY",
+      "INTENTIONALLY_UNBOUND",
+      "UNBOUND_REQUIRES_RUNTIME_POSITION"
+    ],
+    "laws": [
+      "absence != zero",
+      "unknown != neutral",
+      "suppressed != zero",
+      "no matching cohort != population-average cohort",
+      "weak support != deterministic claim"
+    ],
+    "fallback_rule": "Only explicit governed fallback is lawful. Preserve requested predicate, fallback predicate, dropped/generalized conditions, reason/rule authority and resulting support/uncertainty. Silent broadening is forbidden."
+  },
+  "multi_position_and_mobility": {
+    "simultaneous_positions": "Use an authorized compound position key or explicit conjunction. Do not multiply/combine marginals under assumed independence without governed authority.",
+    "period_flow": [
+      "V3 owns position_t",
+      "V558 Phase B resolves conditional facts valid for position_t and time_t",
+      "V3 generates one lawful developmental continuation",
+      "a governed transition may produce position_(t+1)",
+      "V558 rebinds and re-resolves for the new position/time"
+    ],
+    "central_invariant": "same structural position + same empirical evidence != same generated life"
+  },
+  "context_resolver": {
+    "conceptual_inputs": ["run_id", "dataset_id", "cell_before", "cell_after", "census_year_before", "census_year_after", "year_fraction", "exact_position_key", "position_effective_time"],
+    "returns": "ephemeral ResolvedStructuralContext",
+    "does": ["exact identity lookup", "applicability filtering", "temporal selection", "governed fallback", "provenance join", "typed absence", "composition of direct CED, V551, V552 and independent V553-V557 authority"],
+    "must_not": ["discover cohorts", "choose best predictors", "infer actor psychology or position", "turn pressure into destiny", "recompute exploratory diagnostics as runtime authority", "conceal weak support", "silently broaden predicates"]
+  },
+  "migration_order": [
+    "Freeze accepted V3/V558 two-phase runtime query semantics and exact-position authority.",
+    "Freeze CED identity, predicate, denominator, weighting, temporal, support, uncertainty, provenance and absence contracts.",
+    "Establish shared respondent fact substrate/replay authority and retention rules.",
+    "Compile finite terminal-reachable conditional workload from governing authority.",
+    "Build CED equivalence corpus against current V550 terminal-reachable outputs including minority, weak-support, multimodal, null, suppressed and contradictory cases.",
+    "Re-express V551 signed evidence as governed deterministic projection over CED.",
+    "Re-express V552 pressure over CED/V551 refs while retaining component disagreement/support/uncertainty.",
+    "Switch V558 Phase B to direct authoritative V550/V551/V552 lookup; do not transport through V553-V557 mirrors.",
+    "Replace stage-local copied payload/provenance with immutable refs.",
+    "Provide deterministic legacy compatibility views.",
+    "Demote MI, Cramer's V, entropy, secondary gain, outlier cohorts, secondary summaries and recursive trees only after R01/R02/R04 establish no starvation.",
+    "Remove eager computation/materialization only after R05 measurement plus replay/equivalence/negative-authority tests.",
+    "Retire compatibility views as consumers migrate."
+  ],
+  "dependencies_on_r01_r05": {
+    "R01": "Final producer/consumer reachability for named V550/V551/V552 artifacts; hidden unique authority; stranded/duplicated/superseded paths; final field-level replacement precision.",
+    "R02": "Whether candidate diagnostics contain irreducible weighting, denominator, provenance, uncertainty, admissibility, negative-authority, replay or joint semantics; such semantics must move into canonical core before deletion.",
+    "R03": "Whether downstream stages already reconstruct equivalent CED meaning; proven equivalence may eliminate duplicate persistence, while non-equivalence confirms independent CED reachability.",
+    "R04": "Exact terminal position-conditioned distinctions, lawful predicates, fallback rules, support/uncertainty requirements and terminal workload cardinality.",
+    "R05": "Measured compute/cardinality savings and eager-vs-cache/materialization choices; compute evidence cannot authorize semantic deletion."
+  },
+  "non_contingent_architecture_findings": [
+    "Actor position is generated-side authority, not inferred from empirical prevalence.",
+    "Conditional population evidence cannot be converted into actor belief or identity.",
+    "Typed absence and negative authority cannot collapse to zero or neutral.",
+    "V558 exact-position resolution may query immutable earlier structural authority after runtime position is available.",
+    "Semantic jurisdiction does not require stage-mirror materialization.",
+    "V553-V557 are not mandatory transport mirrors for V550-V552 conditional evidence.",
+    "Multiple lawful lives must remain possible under identical structural conditions."
+  ],
+  "acceptance_tests": [
+    "Terminal-reachable CED reproduces governed current results under identical source, denominator, weighting and transform authority.",
+    "Minority and multimodal distributions remain distributions rather than winner-take-all labels.",
+    "Weak support and uncertainty survive V551, V552 and V558.",
+    "Absence, suppression and inapplicability never become zero, neutral or silent population fallback.",
+    "V551 signs and V552 pressures replay to CED and versioned projection rules.",
+    "Contradictory pressure components remain observable.",
+    "V558 resolves exact period-entry position without inference from prevalence.",
+    "Mobility causes temporal re-resolution rather than permanent attachment of former conditional facts.",
+    "Legacy views are semantically equivalent where compatibility is required or differences are explicitly adjudicated.",
+    "Eliminating recursive determinicity computation does not change the set of lawful terminal queries defined by authority."
+  ],
+  "source_authority": [
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/TERMINAL_DEMAND_ENVELOPE.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/ARCHITECTURE_PASS_LAW.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/SEAM_INTEGRITY_CLOSURE_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V3_COMPLETION_IMPLEMENTATION_RULING.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R04_V557_V558/RESULT.md",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/RESULT.md",
+    "existing V550-V552 implementation/artifact terrain at exact launch base as implementation evidence"
+  ]
+}
