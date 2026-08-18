@@ -1,0 +1,270 @@
+{
+  "assignment": "W1-B03-02_CAN-016_V2_SALIENCE_ACCESSIBILITY",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-dva-w1-can-016-v2-salience",
+  "exact_base_sha": "db961be677d5112073e16e5d452853971861cdb6",
+  "mode": "CANONICALIZATION_ONLY",
+  "whole_machine_architecture": "CLOSED",
+  "production_code_modified": false,
+  "v2_implemented": false,
+  "sibling_batch_03_results_used": false,
+  "canonicalization": {
+    "id": "CAN-016",
+    "authority_id": "V2_SALIENCE_ACCESSIBILITY_RULE",
+    "authority_version": "1.0.0",
+    "owner": "V2_ACTOR_LIMITED_EXPRESSION_PLANNER",
+    "classification": "AUTHORITY_NEEDS_CANONICALIZATION",
+    "verdict": "PASS"
+  },
+  "historical_archive": {
+    "logical_name": "Rawlsing_code_bundle_staging.zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "sha_match": "EXACT_MATCH",
+    "entry_count": 13138,
+    "focused_test_result": "8 passed in 0.16s",
+    "authority_limit": "Recovered V2/V3/server material is continuity/authority-recovery/negative-boundary evidence only; historical V5/DDM has zero authority over current V550+."
+  },
+  "direct_sources": [
+    {"path":"v2/PERSONA_CONVERSATION_ENGINE_SPEC.md","sha256":"0b0ee1d5e177b22236007ddb15053e4f1d3fc34f69aae8b44e16446def9250d7"},
+    {"path":"v2/conversation_engine.py","sha256":"766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135"},
+    {"path":"server/chat/turn.py","sha256":"10e7f02333dac36b4baddd455b3655685413ed41a88d12a375b1cee9be9394b3"},
+    {"path":"v2/run_conversation_chat.py","sha256":"b9276a4d7fc9dfdc83cc220528e4f16c1880d78419ed06430a5e9570a60efdc8"},
+    {"path":"v2/PIPELINE_WIRING_AUDIT.md","sha256":"fabbf700ec6e83aae4a59266a58833871f6205655f022311865eb62381dbebe4"},
+    {"path":"v3/tests/test_v5_v2_chat_prompt_no_raw_v5_leaks.py","sha256":"53fb17b1db8fb53e265fe24c3ad617477dafe19bc7db4a2d153f1fe6d040b09c"},
+    {"path":"v3/tests/test_v5_voice_packet_surface_allowlist.py","sha256":"f82f71334edf368a7f09c1f40d5a9d24367a8528b997f5bc40347043ec5a300b"},
+    {"path":"v3/tests/test_v5_render_surface_psyche.py","sha256":"dfb9025e38d57fd3595cbb4a135a08427b758736a87e0dc5acde6a138e6b3584"},
+    {"path":"v3/tests/test_v5_persona_sheet_surface_psyche.py","sha256":"689beab6a72727f99c21db5485165278b1a8b346fc7daeda95dac677b37200c5"},
+    {"path":"v3/tests/test_persona_sheet_integrity.py","sha256":"dde6ddbb2a0b0cd3a1a1b9033818bac666eb69956f02ef3fa854516f20ab9825"}
+  ],
+  "constitutional_noncollapse": [
+    "V3_ACTOR_ACCESSIBILITY_IS_HARD_CEILING",
+    "ACCESSIBLE != SALIENT",
+    "SALIENT != MEMORY",
+    "SALIENT != MEMORY_ACCESSIBILITY",
+    "SALIENT != PERSISTENT_CONCERN",
+    "SALIENT != ACTOR_BELIEF",
+    "SALIENT != PHENOMENOLOGY",
+    "SALIENT != EXPRESSION_REGISTER",
+    "SALIENT != RESPONSE_MOVE",
+    "SALIENT != CAUSAL_ACTION",
+    "MESSAGE_HOOK != CANDIDATE_TRUTH",
+    "SESSION_TOPIC != PERSISTENT_ACTOR_CONCERN"
+  ],
+  "set_law": {
+    "actor_safe_set": "A",
+    "candidate_set": "C",
+    "salient_set": "S",
+    "invariant": "S subseteq C subseteq A",
+    "semantic_order": "NONE",
+    "valid_empty": true
+  },
+  "candidate_contract": {
+    "record": "V2SalienceCandidate",
+    "required_fields": [
+      "candidate_id","source_item_ref","source_item_hash","source_authority_id","source_authority_version",
+      "actor_id","actor_access_envelope_id","actor_access_envelope_hash","actor_access_as_of_causal_time",
+      "source_permission_ref","permitted_component_refs[]","semantic_scope_refs[]","candidate_hash","integrity_state"
+    ],
+    "rules": [
+      "trace to exact current actor-safe V3 input or independently accepted V2 input contract proven within that ceiling",
+      "denied/inaccessible/access-unknown/analyst-only/forbidden/stale material is not a candidate",
+      "partial access permits only exact enumerated components",
+      "free-text similarity/keyword/embedding/model judgment cannot create candidate identity",
+      "raw GeneratedPersonRecord/V3 checkpoint/V558/V550+/objective ledger/persona/backstory/transcript summary/analyst explanation cannot be directly promoted"
+    ]
+  },
+  "relevance_contract": {
+    "record": "V2TurnRelevanceObservation",
+    "required_fields": [
+      "observation_id","turn_id","exact_message_artifact_ref","exact_message_artifact_hash","observation_kind",
+      "descriptor_ref","extractor_rule_id","extractor_rule_version","extractor_rule_hash",
+      "source_span_or_match_ref","session_hint_refs[]","observation_hash","integrity_state"
+    ],
+    "hook_taxonomy_v1": "NO_UNIVERSAL_HOOK_TAXONOMY_FROZEN",
+    "numeric_hook_strength_v1": "NONE",
+    "truth_authority": "NONE"
+  },
+  "session_hint_seam": {
+    "input": "SeparatelyGovernedV2SessionRelevanceHintRef",
+    "status_until_separate_authority_accepted": "DEFERRED_SEPARATE_SESSION_AUTHORITY",
+    "constraints": [
+      "presentation-only/noncausal",
+      "exact authority/session/cursor/hash provenance",
+      "may only select among current candidates",
+      "cannot add content, widen actor access, become memory, or prove persistent concern"
+    ],
+    "batch_03_sibling_used": false
+  },
+  "selection_rule_contract": {
+    "record": "V2SalienceSelectionRule",
+    "required_fields": [
+      "rule_id","rule_version","rule_hash","admitted_candidate_source_classes[]",
+      "admitted_relevance_observation_kinds[]","admitted_session_hint_classes[]",
+      "deterministic_match_or_filter_semantics","tie_or_multiplicity_semantics","output_cardinality_semantics",
+      "forbidden_inference_set[]","provenance_requirements","integrity_requirements"
+    ],
+    "may": ["retain 0..N lawful candidates","use registered relevance descriptors as filter conditions","preserve multiplicity","return empty"],
+    "may_not": [
+      "create or transform candidate content","widen actor access","infer memory accessibility",
+      "use raw structural/demographic/analyst/wound/rupture sources","use unregistered numeric ranking/defaults",
+      "force a winner","use LLM preference as authority"
+    ]
+  },
+  "output_contract": {
+    "record": "V2TurnSalienceReceipt",
+    "semantics": "NONCAUSAL_TURN_LOCAL_AUDIT_RECEIPT",
+    "selected_refs_semantics": "UNORDERED_SET",
+    "stable_serialization_order": "ALLOWED_NONSEMANTIC_ONLY",
+    "persistent_actor_state": false
+  },
+  "turn_local_persistence_law": [
+    "salience semantic authority ends with the turn",
+    "later turn recomputes from current actor-access envelope, current candidates, exact new message, optional separately governed session hints, and selector version",
+    "recurrence is a new selection, not reinforcement",
+    "absence later is not forgetting",
+    "receipt retention in transcript is not persistent concern",
+    "no salience decay/reinforcement/habituation/sensitization state exists in CAN-016"
+  ],
+  "numeric_disposition": {
+    "verdict": "NO_CANONICAL_SALIENCE_SCORE_OR_RANKING_FORMULA",
+    "canonical_numeric_scale": null,
+    "canonical_threshold": null,
+    "canonical_default": null,
+    "canonical_rank": null,
+    "canonical_rng": null,
+    "rejected_examples": [
+      "1.0/0.75/0.5/0.3 hook strengths","default 50","wound proxy 72","DRTS/IAI/RMT thresholds",
+      "legacy additive boosts","0.38 threshold","topic-stream decay/boost/caps","refraction variance","first-hook fallback"
+    ]
+  },
+  "statuses": [
+    "SALIENT_TURN_SET","VALID_EMPTY_SALIENCE","SALIENCE_INPUT_UNKNOWN","SALIENCE_ACCESS_DEFERRED",
+    "SALIENCE_INPUT_INACCESSIBLE","FORBIDDEN_SALIENCE_SOURCE","SALIENCE_SELECTION_RULE_MISSING",
+    "SALIENCE_SELECTION_AMBIGUOUS","SALIENCE_STALE_ACCESS_ENVELOPE","SALIENCE_ACCESS_CEILING_VIOLATION",
+    "SALIENCE_INTEGRITY_FAILURE","DEFERRED_SEPARATE_SESSION_AUTHORITY"
+  ],
+  "replay_provenance": {
+    "required": [
+      "CAN-016 authority ID/version/hash","actor ID","actor-access envelope ID/hash/schema/as-of causal time",
+      "source permissions/component refs","candidate IDs/hashes/set hash","turn ID","message artifact ref/hash",
+      "message analyzer/extractor IDs/versions/hashes","relevance observations","session-hint refs/authority/cursor/hash if used",
+      "selector ID/version/hash","selected set hash","receipt status/hash","integrity receipts"
+    ],
+    "forbidden_hidden_inputs": [
+      "wall clock","mutable latest","filesystem/dict iteration order","unrecorded LLM output","undeclared randomness",
+      "unversioned keyword table","stale session state","raw V558/V550+ lookup"
+    ]
+  },
+  "dispositions": [
+    {"mechanism":"analyze→hooks→salience separation","disposition":"PRESERVE"},
+    {"mechanism":"analyze_message pure current-message observation","disposition":"ADAPT"},
+    {"mechanism":"request_type/question/length/formality/valence fields","disposition":"COMPATIBILITY_ONLY"},
+    {"mechanism":"numeric intensity/intimacy/topic-overlap formulas","disposition":"REMOVE/REJECT"},
+    {"mechanism":"extract_hooks mechanism","disposition":"ADAPT"},
+    {"mechanism":"HOOK_KEYWORDS exact taxonomy","disposition":"COMPATIBILITY_ONLY"},
+    {"mechanism":"HOOK_PHRASES exact taxonomy","disposition":"COMPATIBILITY_ONLY"},
+    {"mechanism":"hook strengths 1.0/0.75/0.5/0.3","disposition":"REMOVE/REJECT"},
+    {"mechanism":"forced other fallback","disposition":"REMOVE/REJECT"},
+    {"mechanism":"continuation via last_user_hooks","disposition":"ADAPT"},
+    {"mechanism":"select_salient_hooks generic subset function","disposition":"ADAPT"},
+    {"mechanism":"DRTS direct input","disposition":"REMOVE/REJECT"},
+    {"mechanism":"IAI direct input","disposition":"REMOVE/REJECT"},
+    {"mechanism":"RMT direct input","disposition":"REMOVE/REJECT"},
+    {"mechanism":"universal default 50","disposition":"REMOVE/REJECT"},
+    {"mechanism":"direct need magnitudes","disposition":"REMOVE/REJECT"},
+    {"mechanism":"direct class input","disposition":"REMOVE/REJECT"},
+    {"mechanism":"direct religion input","disposition":"REMOVE/REJECT"},
+    {"mechanism":"direct minority input","disposition":"REMOVE/REJECT"},
+    {"mechanism":"raw identity_scripts/moral_loops/thought_rails","disposition":"REMOVE/REJECT"},
+    {"mechanism":"wound-vector proxy/reconstruction","disposition":"REMOVE/REJECT"},
+    {"mechanism":"wound default 50 / synthetic 72","disposition":"REMOVE/REJECT"},
+    {"mechanism":"rupture-note keyword mapping and boosts","disposition":"REMOVE/REJECT"},
+    {"mechanism":"legacy persona additive boosts","disposition":"REMOVE/REJECT"},
+    {"mechanism":"wound sensitivity formulas","disposition":"REMOVE/REJECT"},
+    {"mechanism":"EnergeticField selector boosts","disposition":"COMPATIBILITY_ONLY"},
+    {"mechanism":"threshold 0.38","disposition":"REMOVE/REJECT"},
+    {"mechanism":"first-hook fallback","disposition":"REMOVE/REJECT"},
+    {"mechanism":"score sorting as semantic rank","disposition":"REMOVE/REJECT"},
+    {"mechanism":"HOOK_NEIGHBORS","disposition":"COMPATIBILITY_ONLY"},
+    {"mechanism":"compute_refraction_strength","disposition":"REMOVE/REJECT"},
+    {"mechanism":"apply_refraction heard-as substitution","disposition":"REMOVE/REJECT"},
+    {"mechanism":"update_topic_streams active streams","disposition":"COMPATIBILITY_ONLY"},
+    {"mechanism":"topic-stream numeric persistence formulas","disposition":"REMOVE/REJECT"},
+    {"mechanism":"topic-stream internal_tag from internal psyche labels","disposition":"REMOVE/REJECT"},
+    {"mechanism":"prepare_conversation_turn analyze/extract/select ordering","disposition":"ADAPT"},
+    {"mechanism":"selected_hooks diagnostics","disposition":"COMPATIBILITY_ONLY"},
+    {"mechanism":"_DEEP_LAYER_HOOK_TAGS","disposition":"REMOVE/REJECT"},
+    {"mechanism":"_RUPTURE_KEYWORD_TO_HOOKS age thresholds","disposition":"REMOVE/REJECT"},
+    {"mechanism":"_should_surface_deep_memory","disposition":"REMOVE/REJECT"},
+    {"mechanism":"backstory raw-scene extraction as memory","disposition":"REMOVE/REJECT"},
+    {"mechanism":"SURFACED MEMORY prompt injection","disposition":"REMOVE/REJECT"},
+    {"mechanism":"CARRIED WEIGHT fallback","disposition":"REMOVE/REJECT"},
+    {"mechanism":"surface allowlisting/no-raw-state test direction","disposition":"PRESERVE"},
+    {"mechanism":"variable hook cardinality/no fixed 1-2","disposition":"PRESERVE"},
+    {"mechanism":"coherent selectivity intent","disposition":"ADAPT"},
+    {"mechanism":"standpoint as direct personality filter","disposition":"REMOVE/REJECT"},
+    {"mechanism":"topic gravity/avoidance inertia current-selection hints","disposition":"COMPATIBILITY_ONLY"}
+  ],
+  "hostile_fixtures": [
+    ["CAN016-H01","actor-inaccessible objective fact matches keyword","SALIENCE_INPUT_INACCESSIBLE"],
+    ["CAN016-H02","actor-access unknown but message strongly matches","SALIENCE_ACCESS_DEFERRED"],
+    ["CAN016-H03","raw V558 prior offered","FORBIDDEN_SALIENCE_SOURCE"],
+    ["CAN016-H04","analyst causal explanation offered","NO_CANDIDATE_FROM_ANALYST_EXPLANATION"],
+    ["CAN016-H05","class=working + wages message","NO_CLASS_BOOST"],
+    ["CAN016-H06","religion label + God message","NO_RELIGION_BOOST"],
+    ["CAN016-H07","minority status + identity message","NO_DEMOGRAPHIC_BOOST"],
+    ["CAN016-H08","DRTS/IAI/RMT direct inputs","REJECT_RAW_LEGACY_INPUT"],
+    ["CAN016-H09","missing metric defaults to 50","REJECT_DEFAULT"],
+    ["CAN016-H10","rupture keyword overlap","NO_RUPTURE_SALIENCE_OR_MEMORY"],
+    ["CAN016-H11","wound proxy 72","NO_WOUND_SALIENCE"],
+    ["CAN016-H12","keyword deep-memory finds scene","REJECT_MEMORY_RETRIEVAL"],
+    ["CAN016-H13","CARRIED_WEIGHT fallback","REJECT_FILLER"],
+    ["CAN016-H14","no registered hooks","VALID_EMPTY_RELEVANCE"],
+    ["CAN016-H15","candidates but no selector","SALIENCE_SELECTION_RULE_MISSING"],
+    ["CAN016-H16","selector chooses none","VALID_EMPTY_SALIENCE"],
+    ["CAN016-H17","legacy first-hook fallback","REJECT_FALLBACK"],
+    ["CAN016-H18","hook inserted as actor claim","REJECT_MESSAGE_HOOK_AS_TRUTH"],
+    ["CAN016-H19","contradictory actor-safe claims both relevant","PRESERVE_BOTH"],
+    ["CAN016-H20","selector returns outside candidate set","SALIENCE_ACCESS_CEILING_VIOLATION"],
+    ["CAN016-H21","partial access","ONLY_PERMITTED_COMPONENTS"],
+    ["CAN016-H22","stale envelope","SALIENCE_STALE_ACCESS_ENVELOPE"],
+    ["CAN016-H23","receipt retained 100 turns","NO_PERSISTENT_CONCERN"],
+    ["CAN016-H24","same topic next turn","NEW_TURN_RECEIPT_NO_REINFORCEMENT"],
+    ["CAN016-H25","topic absent next turn","NOT_FORGETTING"],
+    ["CAN016-H26","session hint before authority accepted","DEFERRED_SEPARATE_SESSION_AUTHORITY"],
+    ["CAN016-H27","future session hint without candidate","CANNOT_CREATE_CANDIDATE"],
+    ["CAN016-H28","LLM ranks relevance","REJECT_UNGOVERNED_SELECTOR"],
+    ["CAN016-H29","numeric score without formula authority","REJECT_NUMERIC_SEMANTICS"],
+    ["CAN016-H30","winner required but tie law absent","SALIENCE_SELECTION_AMBIGUOUS"],
+    ["CAN016-H31","stable ID serialization sort","ALLOWED_NONSEMANTIC_ONLY"],
+    ["CAN016-H32","salience promoted to belief","REJECT"],
+    ["CAN016-H33","salience mutates V3","REJECT"],
+    ["CAN016-H34","message hash changes on replay","NEW_RECEIPT_IDENTITY_REQUIRED"],
+    ["CAN016-H35","candidate source hash mismatch","SALIENCE_INTEGRITY_FAILURE"],
+    ["CAN016-H36","many hooks but selector selects none","VALID_EMPTY_SALIENCE"]
+  ],
+  "governing_spirit_check": {
+    "status": "APPLICABLE__PASS",
+    "hard_authority_unique": [
+      "V2 cannot widen actor accessibility","structural/analyst inputs cannot become psyche","keyword hooks are not memory",
+      "salience is noncausal/turn-local","valid-empty is lawful","ungoverned numeric semantics forbidden"
+    ],
+    "ambiguity": "Recovered ranked score list vs invented qualitative priority ladder vs minimum unordered subset; and whether to freeze legacy hook taxonomy.",
+    "choice": "Unordered subset of actor-safe candidates; preserve hook descriptor interface without freezing historical keyword taxonomy.",
+    "principles": [
+      "actor opacity","mediation","contradiction/multiplicity","lawful absence","downstream vividness <= upstream authority",
+      "minimum sufficient machinery","replay/provenance","no personality essentialization"
+    ],
+    "semantic_content_invented_by_spirit": false
+  },
+  "consumers": {
+    "primary": ["V2-P2","V2-P5"],
+    "remaining_independent_blockers": {
+      "V2-P2": ["CAN-015","MUST-022","implementation/release gates"],
+      "V2-P5": ["CAN-017","CAN-018","MUST-022","MUST-023","implementation/release gates"]
+    }
+  },
+  "consumer_release_sufficiency": "SUFFICIENT_FOR_CAN_016_JURISDICTION__NOT_STANDALONE_V2_P2_OR_V2_P5_RELEASE",
+  "final_token": "CAN_016_V2_SALIENCE_ACCESSIBILITY_CANONICALIZATION = PASS"
+}
