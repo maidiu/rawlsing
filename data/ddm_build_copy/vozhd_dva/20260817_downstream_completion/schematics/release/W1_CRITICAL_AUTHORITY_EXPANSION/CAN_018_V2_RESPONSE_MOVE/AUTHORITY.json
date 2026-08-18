@@ -1,0 +1,306 @@
+{
+  "assignment": "W1-B03-04",
+  "canonicalization_id": "CAN-018",
+  "authority_id": "V2_RESPONSE_MOVE_RULE",
+  "authority_version": "1.0.0",
+  "owner": "V2_EXPRESSION_PLANNER",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-dva-w1-can-018-v2-response-move",
+  "exact_base_sha": "db961be677d5112073e16e5d452853971861cdb6",
+  "continuation_reviewed_head": "56ce30888e05e5ceeb7a44edc1b2c2e57d428fdc",
+  "vozhd_disposition_comment_id": 5325834137,
+  "mode": "AUTHORITY_CANONICALIZATION_ONLY_NO_PRODUCTION_CODE_NO_V2_IMPLEMENTATION",
+  "verdict": "PASS",
+  "archive_verification": {
+    "archive": "Rawlsing_code_bundle_staging.zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "verdict": "EXACT_MATCH",
+    "entry_count": 13138,
+    "continuation_note": "Previously directly verified source evidence remains accepted; continuation changes registry ontology only."
+  },
+  "preserved_contract": [
+    "V2ResponseMoveDecision/receipt contract",
+    "ADP-017 actor-accessibility ceiling",
+    "turn-local surface-only noncausal jurisdiction",
+    "exact activation and constraint receipts",
+    "deterministic replay/provenance",
+    "valid-empty/deferred/denied/integrity states",
+    "no keyword/numeric/default/RNG/LLM semantic winner",
+    "rendering != causal occurrence",
+    "IN_WORLD_CAUSAL exact-artifact V3 admission boundary"
+  ],
+  "source_inspection": {
+    "directly_inspected": [
+      "v2/PERSONA_CONVERSATION_ENGINE_SPEC.md",
+      "v2/conversation_engine.py",
+      "v2/additions.txt",
+      "v2/PIPELINE_WIRING_AUDIT.md",
+      "v2/run_conversation_chat.py",
+      "v2/life_simulation_schema.py",
+      "server/chat/turn.py",
+      "server/session_state.py",
+      "server/session_db.py",
+      "tests/test_chat_integrity.py",
+      "v3/io/persona_sheet.py",
+      "v3/V3_UNDERLIES_V2_ARTICULATION.md"
+    ],
+    "focused_historical_tests": "PYTHONPATH=. python -m pytest -q tests/test_chat_integrity.py -> 11 passed",
+    "continuation_disposition": "Historical vocabulary establishes continuity/candidate labels only. It does not register terminal special-operation semantics."
+  },
+  "jurisdiction": {
+    "owns": [
+      "versioned generic response-operation registry/schema identity",
+      "sole v1 positive ordinary-expression base operation ENGAGE_SELECTIVE and exact base rule",
+      "future special-operation registration membrane",
+      "move candidate/admission/selection contract over already-lawful V2 inputs",
+      "typed valid-empty/deferred/denied/integrity outcomes",
+      "decision provenance/replay"
+    ],
+    "excludes": [
+      "actor knowledge/memory/accessibility",
+      "CAN-016 salience",
+      "CAN-017 register",
+      "MUST-022 uncertainty disclosure semantics",
+      "MUST-023 boundary/face-risk/effort/attention semantics",
+      "CAN-019 relationship expression semantics",
+      "CAN-021 session state",
+      "V3 causal mutation/admission",
+      "MUST-025 renderer model/RNG policy",
+      "attractor/type",
+      "semantic meaning or activation of any unregistered recovered move label"
+    ]
+  },
+  "noncollapse_law": "ACTOR_ACCESSIBLE_TRUTH != V2_SALIENCE != V2_EXPRESSION_REGISTER != V2_RESPONSE_MOVE != RENDERED_EXPRESSION != CAUSAL_OCCURRENCE",
+  "canonical_operation_registry": {
+    "registry_id": "V2_RESPONSE_MOVE_OPERATION_REGISTRY",
+    "registry_version": "1.0.0",
+    "extensible": true,
+    "base_operations": [
+      {
+        "operation_id": "ENGAGE_SELECTIVE",
+        "owning_authority": "CAN-018/V2_RESPONSE_MOVE_RULE@1.0.0",
+        "activation_rule": "CAN018_BASE_ENGAGE_RULE@1.0.0",
+        "semantic_scope": "Address one or more already-lawful expression targets as ordinary turn-level presentation without implying completeness or any special uncertainty, boundary, relationship, topic-shift, silence, challenge, correction, delay, or exit semantics."
+      }
+    ],
+    "special_operation_registry_status": "VALID_EMPTY_SPECIAL_OPERATION_REGISTRY",
+    "special_operations": [],
+    "special_operation_count": 0,
+    "registration_schema": {
+      "required_fields": [
+        "operation_id",
+        "operation_schema_version",
+        "semantic_scope",
+        "owning_authority_id/version/hash",
+        "activation_rule_id/version/hash",
+        "constraint_domain_refs[]",
+        "registration_receipt_hash"
+      ],
+      "registration_gate": "A special operation becomes canonical only after a separately accepted authority owns both its distinct semantic scope and exact activation/constraint conditions. CAN-018 validates registration shape and selection compatibility but does not invent the operation.",
+      "forbidden_registration_bases": [
+        "historical string presence",
+        "near-synonym plausibility",
+        "compound move name",
+        "keyword/topic match",
+        "LLM suggestion",
+        "numeric score/threshold",
+        "implementation convenience"
+      ]
+    }
+  },
+  "recovered_vocabulary_disposition": {
+    "canonical_exception": {
+      "label": "ENGAGE_SELECTIVE",
+      "disposition": "CANONICAL_BASE_OPERATION",
+      "basis": "Minimum positive ordinary-expression operation independently required by V2 expression planning when at least one lawful target exists and no special operation is required."
+    },
+    "COMPATIBILITY_ONLY_RECOVERED_VOCABULARY": [
+      "MICRO_REACT",
+      "TEST_QUESTION",
+      "ANSWER_MINIMALLY",
+      "ANSWER_ONE_DETAIL_ASK_ONE_QUESTION",
+      "DEFLECT",
+      "PIVOT",
+      "REDIRECT",
+      "CHANGE_SUBJECT",
+      "DROP_THREAD",
+      "DELAY",
+      "SILENCE",
+      "CHALLENGE",
+      "REJECT_FRAMING",
+      "CORRECT_MISUNDERSTANDING",
+      "REFRAME",
+      "BOUNDARY_STATEMENT",
+      "ASK_SAFER_QUESTION",
+      "EXIT",
+      "flirt",
+      "test motive",
+      "mirror emotion",
+      "tease+soften",
+      "deflect with humor",
+      "soften+pivot",
+      "brief response+change subject",
+      "brief_or_deflect"
+    ],
+    "law": "Recovered labels are candidate/compatibility vocabulary only. Historical prose, intuitive gloss, string identity, or prior executable use does not register terminal semantics or activation.",
+    "downstream_ownership_examples": {
+      "MUST-022": "may later register uncertainty-specific response operations only after acceptance",
+      "MUST-023": "may later register boundary/face-risk/effort/attention-constrained response operations only after acceptance",
+      "CAN-019": "may later register relationship-specific response operations only after acceptance"
+    }
+  },
+  "base_operation_justification": {
+    "operation": "ENGAGE_SELECTIVE",
+    "why_minimum_sufficient": [
+      "V2-P5 requires a positive ordinary response-planning operation for the common case where lawful expression material exists.",
+      "The operation says only that some already-lawful targets may be addressed; it adds no special discourse act, psychology, uncertainty posture, boundary state, relationship posture, or causal meaning.",
+      "Without one positive base operation, ordinary lawful expression would be semantically starved even when no downstream special-operation authority is relevant."
+    ],
+    "not_legacy_default_inheritance": "Historical engage_selective usage is continuity evidence only. Canonical status follows from the bounded V2 expression-planner need plus this exact positive rule; missing data never selects it."
+  },
+  "special_operation_registration_law": {
+    "current_status": "VALID_EMPTY_SPECIAL_OPERATION_REGISTRY",
+    "current_count": 0,
+    "requirements": [
+      "separately accepted owning authority",
+      "distinct machine semantic scope",
+      "exact activation/constraint rule",
+      "version/hash identity",
+      "compatibility with ADP-017 access ceiling",
+      "no causal or neighboring-jurisdiction reownership"
+    ],
+    "missing_authority_behavior": "DEFERRED_REQUIRED_AUTHORITY",
+    "string_match_behavior": "Recovered/unregistered label string match has zero activation force.",
+    "compatibility_alias_behavior": "Aliases may be retained for migration/audit only and cannot select or register an operation."
+  },
+  "canonical_response_move_contract": {
+    "record": "V2ResponseMoveDecision",
+    "required_fields": [
+      "decision_id",
+      "actor_access_envelope_ref/hash",
+      "turn_artifact_ref/hash",
+      "lawful_expression_target_refs[]",
+      "constraint_receipt_refs[]",
+      "registry_id/version/hash",
+      "selector_rule_id/version/hash",
+      "status",
+      "selected_operation_id?",
+      "selection_basis_refs[]",
+      "decision_hash"
+    ],
+    "statuses": [
+      "MOVE_SELECTED",
+      "VALID_EMPTY_NO_LAWFUL_MOVE",
+      "DEFERRED_REQUIRED_AUTHORITY",
+      "DEFERRED_REQUIRED_INPUT",
+      "DEFERRED_AMBIGUOUS_NON_EQUIVALENT_MOVES",
+      "DENIED_ACTOR_ACCESS_VIOLATION",
+      "DENIED_FORBIDDEN_HEURISTIC_PATH",
+      "INTEGRITY_FAILURE"
+    ]
+  },
+  "selector_input_precondition_law": {
+    "hard_ceiling": "ADP-017 ActorAccessibleRenderEnvelope or equivalent; selector may narrow/omit only",
+    "required": [
+      "verified actor-access envelope",
+      "exact current turn/input artifact",
+      "0..n lawful expression target refs",
+      "applicable accepted constraint receipts or explicit NOT_APPLICABLE",
+      "exact registry/rule versions/hashes"
+    ],
+    "base_rule": "If at least one lawful expression target exists, all required constraint domains are satisfied or NOT_APPLICABLE, no separately accepted authority requires a special operation, and no accepted constraint forbids ordinary engagement, CAN018_BASE_ENGAGE_RULE@1.0.0 selects ENGAGE_SELECTIVE.",
+    "base_rule_is_not_fallback": true,
+    "special_move_rule": "Only currently registered special operations are eligible. Unregistered recovered labels are not candidates. A requested special semantic with missing owning authority returns DEFERRED_REQUIRED_AUTHORITY rather than coercing ENGAGE_SELECTIVE into that special meaning.",
+    "tie_rule": "If two or more registered non-equivalent operations remain and no accepted precedence orders them, DEFERRED_AMBIGUOUS_NON_EQUIVALENT_MOVES; no lexical/list/random/LLM/score winner."
+  },
+  "no_lawful_move_behavior": "Zero lawful operation candidates after all gates -> VALID_EMPTY_NO_LAWFUL_MOVE, unless required independent authority/input/integrity is missing. No arbitrary fallback. Historical SILENCE is not a canonical operation in v1 and cannot be substituted for valid-empty.",
+  "keyword_numeric_default_disposition": {
+    "keyword_topic": "_POLITICAL_STRUCTURAL_KEYWORDS, _DISMISSIVE_PATTERNS, deep-memory keyword paths and topic labels are rejected as semantic authority. They may at most be nonauthoritative retrieval hints behind separately lawful candidate gates.",
+    "numeric": "Quarantine AttentionBudget 0..100/default 50; 25/50/75 thresholds; sentence caps 2/4/6/8/12; tension/demand thresholds .5/.6/.75; any move score/weight. Future quantities require exact independent authority.",
+    "defaults": "Reject prompt/get fallback engage_selective, brief_or_deflect, default 50/moderate/6, and filler question/decline/exit/silence.",
+    "render_rng": "MUST-025 render RNG may vary wording after operation selection; it cannot select or register semantic operations."
+  },
+  "noncausal_boundary": {
+    "PRESENTATION_NONCAUSAL": "Move/plan/render may display or persist as V2/session/audit only; no V3 mutation.",
+    "IN_WORLD_CAUSAL": "Rendered artifact remains CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION. Exact MUST-019 V3 admission of exact artifact/hash is required before it becomes something actor actually said/did. Move decision itself is never the admitted event; rerenders require new admission."
+  },
+  "replay_provenance": {
+    "deterministic": true,
+    "identity_inputs": [
+      "actor-access envelope hash",
+      "turn artifact hash",
+      "lawful target refs/hashes",
+      "constraint receipt refs/hashes",
+      "registry/rule ids/versions/hashes",
+      "selection basis refs"
+    ],
+    "forbidden_entropy": [
+      "wall clock",
+      "filesystem/dict/list order",
+      "mutable latest",
+      "keyword side channel",
+      "LLM/model choice",
+      "V3 causal RNG",
+      "V2 render RNG for move choice"
+    ],
+    "render_link": "Later render request/receipt references exact move-decision hash."
+  },
+  "hostile_fixtures": [
+    {"id":"H01","attack":"Actor-inaccessible claim elsewhere in system","required_result":"DENY; selector cannot widen actor access."},
+    {"id":"H02","attack":"Exact string PIVOT appears but no registered PIVOT operation exists","required_result":"No activation and no canonicalization by string match."},
+    {"id":"H03","attack":"Plausible historical label CORRECT_MISUNDERSTANDING requested without owning authority","required_result":"DEFERRED_REQUIRED_AUTHORITY; plausible name does not become canonical."},
+    {"id":"H04","attack":"Boundary-like situation needs special semantics but MUST-023 is missing","required_result":"DEFERRED_REQUIRED_AUTHORITY; ENGAGE_SELECTIVE does not acquire boundary/exit/silence meaning."},
+    {"id":"H05","attack":"Compatibility TEST_QUESTION used for uncertainty-specific ask semantics without MUST-022","required_result":"Blocked/deferred; compatibility vocabulary cannot bypass MUST-022."},
+    {"id":"H06","attack":"Compatibility EXIT/BOUNDARY_STATEMENT used without MUST-023","required_result":"Blocked/deferred; compatibility vocabulary cannot bypass MUST-023."},
+    {"id":"H07","attack":"Compatibility flirt/test motive/mirror emotion used without CAN-019","required_result":"Blocked/deferred; compatibility vocabulary cannot bypass CAN-019."},
+    {"id":"H08","attack":"Zero lawful expression targets and no registered special operation","required_result":"VALID_EMPTY_NO_LAWFUL_MOVE; no fallback and no synthetic SILENCE."},
+    {"id":"H09","attack":"Political/structural keyword match","required_result":"No operation override or registration."},
+    {"id":"H10","attack":"Legacy attention/tension/demand threshold crosses","required_result":"No operation change absent exact authority."},
+    {"id":"H11","attack":"Legacy brief_or_deflect token","required_result":"Compatibility-only recovered vocabulary; never executable by token alone."},
+    {"id":"H12","attack":"Two future registered non-equivalent operations activate without precedence","required_result":"DEFERRED_AMBIGUOUS_NON_EQUIVALENT_MOVES."},
+    {"id":"H13","attack":"Keyword deep-memory path surfaces inaccessible material","required_result":"Reject input; ADP-017 ceiling wins."},
+    {"id":"H14","attack":"Renderer changes selected semantic operation","required_result":"Validation/audit failure."},
+    {"id":"H15","attack":"Causal-mode artifact not admitted by V3","required_result":"CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION; no occurrence."},
+    {"id":"H16","attack":"Rerender after prior admission","required_result":"New artifact/hash requires new admission."},
+    {"id":"H17","attack":"Replay exact decision inputs","required_result":"Identical status/operation/decision hash."},
+    {"id":"H18","attack":"Ungoverned move score/weight introduced","required_result":"Reject/missing authority."},
+    {"id":"H19","attack":"Class/religion/nationality/structure directly selects operation","required_result":"Forbidden structural/persona shortcut."},
+    {"id":"H20","attack":"At least one lawful target; no special operation required; constraints satisfied/NA","required_result":"CAN018_BASE_ENGAGE_RULE selects ENGAGE_SELECTIVE."},
+    {"id":"H21","attack":"Recovered SILENCE string is present with no registration","required_result":"No activation; if base operation is not lawful, valid-empty or typed deferral applies."},
+    {"id":"H22","attack":"Historical compound ANSWER_ONE_DETAIL_ASK_ONE_QUESTION appears in compatibility map","required_result":"No compound semantics; not canonical until separately registered."}
+  ],
+  "consumers": {
+    "primary": "V2-P5",
+    "CAN018_closure": "CAN-018 semantic blocker closed after Vozhd acceptance",
+    "remaining_blockers": [
+      "CAN-016",
+      "CAN-017",
+      "MUST-022",
+      "MUST-023",
+      "IMP-009/release and physical integration gates"
+    ],
+    "later_separate": [
+      "CAN-019",
+      "CAN-021",
+      "MUST-025",
+      "MUST-019/CAN-024/CAN-025"
+    ]
+  },
+  "GOVERNING_SPIRIT_CHECK": {
+    "verdict": "APPLICABLE__PASS",
+    "ambiguity": "Whether recovered move labels should become a terminal surface taxonomy or remain migration/candidate vocabulary behind a minimal registration membrane.",
+    "choice": "Keep only ENGAGE_SELECTIVE as the independently justified positive base operation; special-operation registry is VALID_EMPTY until separately accepted semantic/activation authority registers entries.",
+    "principles": [
+      "downstream vividness <= upstream authority",
+      "minimum sufficient machinery",
+      "lawful absence",
+      "no ontology from historical string inventory",
+      "bounded jurisdiction",
+      "expression != occurrence"
+    ],
+    "no_new_semantic_content_from_spirit": true
+  },
+  "CONSUMER_RELEASE_SUFFICIENCY": "SUFFICIENT__CAN_018_SEMANTIC_BLOCKER_CLOSED_FOR_V2_P5_AFTER_VOZHD_ACCEPTANCE__V2_P5_REMAINS_BLOCKED_BY_CAN_016_CAN_017_MUST_022_MUST_023_AND_PACKET_GATES",
+  "final_token": "CAN_018_V2_RESPONSE_MOVE_CANONICALIZATION = PASS"
+}
