@@ -38,7 +38,7 @@ def _duplicate_heavy_afro_rows() -> list[tuple[str, str, str, str]]:
         ("mip2", "", "migration", "joint_family_item"),
     ]
     # QSM DISTINCT is across structural columns, not var_code alone.  Repeated
-    # governed varcodes must therefore consume only one strict-canary slot.
+    # governed var_codes must therefore consume only one strict-canary slot.
     for code in ["dememp", "pfeerd", "pfpcrm", "pfpsaf", "pfrass"]:
         for index in range(6):
             rows.append((code, f"axis_{index}", "politics", "relation"))
