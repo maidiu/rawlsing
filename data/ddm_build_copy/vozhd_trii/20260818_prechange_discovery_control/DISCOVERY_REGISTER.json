@@ -1,0 +1,25 @@
+{
+  "control_surface": "VOZHD_TRII_PRECHANGE_DISCOVERY",
+  "status": "ACTIVE_RESEARCH_CONTROL__NO_ARCHITECTURAL_CHANGE_AUTHORIZED",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-prechange-discovery-control",
+  "base_sha": "0777a34e50221bde6801dbaca26c058a7350c9e8",
+  "frozen_vt3_base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
+  "courts": [
+    {"id":"D01","title":"V526c/V547 to V550 determinicity lineage","priority":"P0","depends_on":[]},
+    {"id":"D02","title":"V526d/V548 to V550 recursive breakage","priority":"P0","depends_on":[]},
+    {"id":"D03","title":"V526e/V549/V549b to current co-signature/cloud lineage","priority":"P0","depends_on":[]},
+    {"id":"D04","title":"Current attitude-cloud correctness and completeness","priority":"P0","depends_on":["D03"]},
+    {"id":"D05","title":"Database empirical-substrate reality","priority":"P0","depends_on":[]},
+    {"id":"D06","title":"Current R1 authority-to-V550 eligibility","priority":"P0","depends_on":[]},
+    {"id":"D07","title":"Governed workload authority","priority":"P1","depends_on":["D05","D06"]},
+    {"id":"D08","title":"CED/cloud empirical fact unification or separation","priority":"P1","depends_on":["D01","D02","D03","D04","D05"]},
+    {"id":"D09","title":"Historical same-answer/different-cloud semantic court","priority":"P1","depends_on":["D03","D08"]},
+    {"id":"D10","title":"Empirical coordinate to nine-stratum predicate authority","priority":"P0/P1","depends_on":["D05","D06"]},
+    {"id":"D11","title":"Current V551/V551J/V552/V552J downstream consumption","priority":"P0","depends_on":["D06"]},
+    {"id":"D12","title":"Terminal human-capability backward derivation","priority":"P1","depends_on":["D01","D02","D03","D09","D10","D11"]},
+    {"id":"D13","title":"Physical retention and exact replay proof","priority":"P1","depends_on":["D05","D07","D08","D12"]},
+    {"id":"D14","title":"Compute and materialization benchmark","priority":"P2","depends_on":["D07","D08","D12","D13"]},
+    {"id":"D15","title":"Parent Vozhd Trii synthesis","priority":"FINAL","depends_on":["D01","D02","D03","D04","D05","D06","D07","D08","D09","D10","D11","D12","D13","D14"]}
+  ]
+}
