@@ -179,6 +179,60 @@ def _verify_frame_scope(frame: pd.DataFrame, *, run_id: str, scope: dict[str, st
         raise RuntimeError(f"BLOCKED_V552_{label.upper()}_IDENTITY_COHERENCE:{exc}") from exc
 
 
+def _bind_v552j_handoff_shard_scope(
+    outputs: dict[str, Any],
+    *,
+    run_id: str,
+    scope: dict[str, str],
+) -> None:
+    """Transport the verified physical shard onto the two V552J handoff grains."""
+    shard_id = _clean(scope.get("shard_id"))
+    if not shard_id:
+        return
+    expected = {
+        "run_id": run_id,
+        "source_family_uid": _clean(scope.get("source_family_uid")),
+        "wave_uid": _clean(scope.get("wave_uid")),
+    }
+    if _clean(scope.get("country_code")):
+        expected["country_code"] = _clean(scope.get("country_code"))
+    for artifact_name in ("v552_structural_fact_index", "v552_temporal_key_source_index"):
+        frame = outputs.get(artifact_name)
+        if not isinstance(frame, pd.DataFrame) or frame.empty:
+            continue
+        try:
+            verify_frame_source_wave_identity_coherence(
+                frame,
+                expected_source_family_uid=expected["source_family_uid"],
+                expected_wave_uid=expected["wave_uid"],
+                allow_empty=False,
+            )
+        except Exception as exc:
+            raise RuntimeError(f"BLOCKED_V552_{artifact_name.upper()}_SHARD_BIND_IDENTITY:{exc}") from exc
+        for column, want in expected.items():
+            if column not in frame.columns:
+                raise RuntimeError(f"BLOCKED_V552_{artifact_name.upper()}_SHARD_BIND_COLUMN_MISSING:{column}")
+            observed = {_clean(value) for value in frame[column].tolist() if _clean(value)}
+            if observed != {want}:
+                raise RuntimeError(
+                    f"BLOCKED_V552_{artifact_name.upper()}_SHARD_BIND_SCOPE_MISMATCH:"
+                    f"{column}:expected={want}:observed={sorted(observed)}"
+                )
+        existing = (
+            {_clean(value) for value in frame["shard_id"].tolist() if _clean(value)}
+            if "shard_id" in frame.columns
+            else set()
+        )
+        if existing and existing != {shard_id}:
+            raise RuntimeError(
+                f"BLOCKED_V552_{artifact_name.upper()}_SHARD_BIND_CONFLICT:"
+                f"expected={shard_id}:observed={sorted(existing)}"
+            )
+        bound = frame.copy()
+        bound.loc[:, "shard_id"] = shard_id
+        outputs[artifact_name] = bound
+
+
 def verify_v551_producer_bundle(
     *,
     run_id: str,
@@ -326,6 +380,7 @@ def compile_v552_run(
         source_family_uid=producer["scope"]["source_family_uid"],
         wave_uid=producer["scope"]["wave_uid"],
     )
+    _bind_v552j_handoff_shard_scope(outputs, run_id=run_id, scope=producer["scope"])
     if isinstance(outputs.get("v552_readiness_report"), pd.DataFrame) and not outputs["v552_readiness_report"].empty:
         outputs["v552_readiness_report"].loc[:, "producer_manifest_sha256"] = producer["manifest_file_sha256"]
         outputs["v552_readiness_report"].loc[:, "boundary_contract_version"] = PIPELINE_BOUNDARY_CONTRACT_VERSION
