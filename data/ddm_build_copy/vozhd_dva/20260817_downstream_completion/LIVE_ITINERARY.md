@@ -1,120 +1,87 @@
 # Live Itinerary
 
-**Status:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__RULE_AUTHORITY_AND_IMPLEMENTATION_RELEASE_SYNTHESIS_NEXT__V553_BUILD_WAITING_SWID_G8`  
+**Status:** `ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_AUTHORITY_FOUNDATION_ACTIVE__V553_PRODUCTION_WAITING_SWID_G8`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
-## Governing law
+## Governing release law
 
-- `TERMINAL_DEMAND_ENVELOPE.md`
-- `ARCHITECTURE_PASS_LAW.md`
-- `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`
-- `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`
-- `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`
-- `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`
-- `integration/V2_COMPLETION_IMPLEMENTATION_RULING.md`
 - `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`
-- accepted TD-R00–TD-R07 results.
+- `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`
+- `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`
+- accepted TD-R00–TD-R07 and RA-R00 results/rulings.
 
 **Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
-## Architecture campaign — TERMINATED
-
-Completed courts:
-- TD-R00 V553 — accepted;
-- TD-R01 V554 — accepted;
-- TD-R02 V555 — accepted;
-- TD-R03 V556 — accepted;
-- TD-R04 V557/V558 — accepted;
-- TD-R05 V3 — accepted;
-- SI-R00..SI-R05 — `5 HARDEN / 1 CONFIRM / 0 REOPEN`;
-- TD-R06 V2 — accepted;
-- TD-R07 whole-machine synthetic-life closure — `CLOSE`, PR #78, merge `2426cdb9637a90b2472e4fba8d367d4b3aea9143`.
-
-Final architecture status:
+## Architecture campaign — CLOSED
 
 `WHOLE_MACHINE_ARCHITECTURE = CLOSED`.
 
-No further broad redesign/recalibration court is scheduled.
+No further broad architecture pass is scheduled. Remaining work is finite authority resolution, canonicalization, implementation, migration, acceptance harnesses, and external production gates.
 
-## Closed terminal chain
+## RA-R00 — ACCEPTED
 
-```text
-historically governed V550+ structural world
-→ V553 temporal law
-→ V554 bounded affordance/applicability
-→ V555 atomic mediation routes
-→ V556 governed interactions + attractor-prerequisite topology
-→ V557 lossless runtime publication
-→ V558 immutable StructuralPriorRepository + ContextResolver
-→ V3 generated developmental life
-→ actor-accessible render boundary
-→ V2 phenomenology / expression / noncausal session
-→ application
-```
+PR #79 merged at `7d1fecf38bed21cb89bc96e8d95cda1d2d2fcaca`.
 
-Causal conversation re-enters V3 through exact typed external-event admission. V2 never mutates generated life directly.
+`IMPLEMENTATION_RELEASE_SYNTHESIS = PASS`.
 
-## TD-R07 closure proof
+Inventory:
+- 81 classified items;
+- 67 release-blocking;
+- 26 bounded authority decisions;
+- 25 canonicalizations;
+- 53 accepted implementation packets;
+- 12 acceptance harnesses;
+- 16 forbidden regressions;
+- W0–W9 dependency schedule.
 
-Six hostile synthetic lives composed successfully:
-1. contradictory/coexisting structural pressure;
-2. temporal gaps + lawful proxy edge cases;
-3. migration and generated-position rebinding;
-4. recursive genealogy;
-5. V555/V556/F2/attractor development;
-6. knowledge/forgetting with noncausal and causal conversation.
+Schedule is mechanically closed: 24/24 blocking CAN items scheduled, 26/26 ADPs scheduled once, zero unscheduled blocking authorities, zero parallel-dependency violations. `CAN-013` / V3-P11 remains optional/deferred.
 
-All 24 hostile shortcut cases fail closed. No new TD-R07 hardening or architecture reopen scope exists.
+## Active W0 — authority foundation only
 
-The court also confirms that existing V554–V558 legacy implementation shapes are implementation debt, not terminal architecture.
+Parallel cells:
 
-## Active execution track — finite authority / implementation release synthesis
+- `ADP-001` — V554 affordance authority;
+- `ADP-006` — temporal-proxy eligibility;
+- `CDP-CAN-003` — V557 runtime-use governance canonicalization;
+- `ADP-008` — V3 developmental-phase rule;
+- `ADP-016` — V3 causal-memory rule;
+- `ADP-019` — V3 external-event/admission rule;
+- `ADP-020` — V3 causal-randomness/named-stream policy;
+- `CDP-CAN-014` — V3 pure derived-state schedule canonicalization;
+- `ADP-024` — V2 transcript retention/summarization policy;
+- `ADP-025` — V2 render model/randomness/version policy;
+- `ADP-026` — caller-current-situation authority.
 
-The next work is not conceptual architecture.
+W0 may create/canonicalize machine authority artifacts only. It does not implement V554/V557/V3/V2 consumers.
 
-Build one finite cross-stage release map that answers:
+## Independent external lane
 
-1. What exact named semantic authorities/registries/contracts are still missing or partial from V553 through V2?
-2. Which already exist in authoritative repo/source material and can be reused directly?
-3. Which require only canonicalization/versioning/binding?
-4. Which genuinely require a new governed authority decision?
-5. Which accepted packets are implementation-only once their blockers clear?
-6. What is the exact dependency DAG and parallelizable wave structure?
-7. What acceptance harness closes each packet?
+SWID G8/final merge remains `EXT-001` and continues independently.
 
-Required classification for every blocker:
-- `AUTHORITY_ALREADY_EXISTS`;
-- `AUTHORITY_NEEDS_CANONICALIZATION`;
-- `AUTHORITY_MUST_BE_CREATED`;
-- `IMPLEMENTATION_ONLY_NO_NEW_AUTHORITY`;
-- `EXTERNAL_PRODUCTION_GATE`.
+V553 production remains blocked until G8 closes, the SWID campaign merges, and the narrow post-SWID identity-delta check passes.
 
-Do not invent semantics merely to make the release map finite.
+SWID does not block W0 authority decisions.
 
-## Production gates
+## Next release logic
 
-### SWID / V553
+After W0 adjudication:
 
-PR #27 remains open/draft at latest inspected head `18b38ef7cb9c39e23f54f1481f4bf4b416e45fdf`.
+- release W1 cells only when their direct dependencies are actually accepted;
+- schedule `CDP-CAN-001` in W1 before W2 V554 semantic work;
+- schedule `CDP-CAN-002` in W3 before W4 V556 semantic work;
+- preserve `ADP-013 → ADP-018` across W5→W6;
+- preserve W4 and W8 explicit ordered sublanes;
+- do not release optional V3-P11 while `CAN-013` is deferred.
 
-V553 production remains blocked until terminal G8 runtime acceptance/campaign merge and the required narrow post-merge identity-delta check.
+## Acceptance discipline
 
-### V554–V558
+Every future implementation packet inherits:
+- closed architecture law;
+- relevant seam hardenings;
+- exact MUST/CAN/EXT gates;
+- fail-closed missing-authority behavior;
+- RA-R00 12-harness acceptance plan;
+- RA-R00 16 forbidden-regression cases.
 
-Implementation is blocked only by canonical upstream completions, governed rule/registry authority, required migration from superseded implementation shapes, and seam-hardening acceptance.
-
-### V3
-
-Implementation is blocked by its enumerated runtime/model authorities and shared actor-accessibility/external-interaction contracts.
-
-### V2
-
-Implementation is blocked by the 19 authorities in `V2_COMPLETION_IMPLEMENTATION_RULING.md`.
-
-## Immediate Vozhd action
-
-1. Run the cross-stage rule-authority / implementation-release synthesis.
-2. Keep SWID G8 moving independently.
-3. After synthesis, release finite worker waves in dependency order rather than reopening architecture.
-4. Every implementation worker must inherit the terminal closure ruling and relevant seam hardenings.
+Wave labels are planning aids, not permission. Direct dependencies govern release.
