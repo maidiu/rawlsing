@@ -4,7 +4,7 @@ import json
 
 import pandas as pd
 
-from data.ddm_build_copy.compile_v551_relation_evidence_atoms import _producer_lineage
+from data.ddm_build_copy.ddm_v551_atoms import _producer_lineage
 from data.ddm_build_copy.ddm_v550_bridge import (
     V551_BRIDGE_INDEX_SCHEMA,
     _bridge_additional_fields,
