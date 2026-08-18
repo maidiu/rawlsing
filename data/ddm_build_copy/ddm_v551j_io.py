@@ -11,16 +11,22 @@ from typing import Any
 import pandas as pd
 
 from data.ddm_build_copy import ddm_v551j_schema as _v551j_schema
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    BoundaryContractError,
+    validate_source_wave_identity_coherence,
+)
 from data.ddm_build_copy.ddm_v550_schema import write_schema_json
+from data.ddm_build_copy.ddm_v550_shards import shard_id_for
 from data.ddm_build_copy.ddm_v550_storage import atomic_write_json, read_table_any
 
 
-# PG8-013: the authoritative v2.2.3 schema aliases are declared after the
-# earlier W04-B UID-aware transitional schemas.  Bind the additive identity
-# fields into those active lists in place before packet builders import their
-# schema dictionaries.  This restores transport only; labels and frozen
-# packet/component identity and contract-hash namespaces remain unchanged.
+# PG8-013/014: the authoritative v2.2.3 schema aliases are declared after the
+# earlier W04-B UID-aware transitional schemas. Bind the additive machine and
+# physical scope fields into those active lists in place before packet builders
+# import their schema dictionaries. Labels and frozen packet/component identity
+# and contract-hash namespaces remain unchanged.
 _V551J_PACKET_UID_FIELDS = (
+    "shard_id",
     "source_family_uid",
     "wave_uid",
     "uid_key",
@@ -28,11 +34,24 @@ _V551J_PACKET_UID_FIELDS = (
     "cross_wave_homology_key_v1",
 )
 _V551J_COMPONENT_UID_FIELDS = (
+    "shard_id",
     "source_family_uid",
     "wave_uid",
     "uid_key",
     "uid_native_component_id_v1",
 )
+
+
+def _clean(value: Any) -> str:
+    if value is None:
+        return ""
+    try:
+        if pd.isna(value):
+            return ""
+    except Exception:
+        pass
+    text = str(value).strip()
+    return "" if text.lower() in {"nan", "none", "null"} else text
 
 
 def _insert_identity_fields(columns: list[str], fields: tuple[str, ...]) -> None:
@@ -44,7 +63,7 @@ def _insert_identity_fields(columns: list[str], fields: tuple[str, ...]) -> None
 
 
 def bind_v551j_active_uid_transport_schema() -> None:
-    """Restore W04-B UID transport to the active v2.2.3 output schemas."""
+    """Restore additive scope transport to the active v2.2.3 output schemas."""
     _insert_identity_fields(
         _v551j_schema.V551J_V22_PACKET_COLUMNS,
         _V551J_PACKET_UID_FIELDS,
@@ -60,6 +79,46 @@ def bind_v551j_active_uid_transport_schema() -> None:
 
 
 bind_v551j_active_uid_transport_schema()
+
+
+def _bind_frozen_shard_transport(df: pd.DataFrame) -> pd.DataFrame:
+    """Populate the frozen V550 shard spelling from an exact UID-coherent row.
+
+    V550 shard ids are historical physical compatibility identifiers. They are
+    deterministically spelled from the governed canonical display source/wave
+    pair and are not part of source-wave machine identity. Existing populated
+    shard ids must agree with that frozen spelling or publication fails closed.
+    """
+    out = df.copy()
+    if out.empty or "shard_id" not in out.columns:
+        return out
+    for index, row in out.iterrows():
+        source_family_uid = _clean(row.get("source_family_uid"))
+        wave_uid = _clean(row.get("wave_uid"))
+        if not source_family_uid or not wave_uid:
+            raise BoundaryContractError(
+                "V551J_SHARD_TRANSPORT_REQUIRES_UID_PAIR:"
+                f"row={index}:source_family_uid={source_family_uid or '<missing>'}:"
+                f"wave_uid={wave_uid or '<missing>'}"
+            )
+        coherence = validate_source_wave_identity_coherence(
+            row.to_dict(),
+            expected_source_family_uid=source_family_uid,
+            expected_wave_uid=wave_uid,
+            require_complete=True,
+        )
+        frozen_shard_id = shard_id_for(
+            coherence.canonical_display_source,
+            coherence.canonical_display_wave,
+        )
+        existing = _clean(row.get("shard_id"))
+        if existing and existing != frozen_shard_id:
+            raise BoundaryContractError(
+                "V551J_SHARD_ID_TRANSPORT_CONFLICT:"
+                f"expected={frozen_shard_id}:observed={existing}"
+            )
+        out.at[index, "shard_id"] = frozen_shard_id
+    return out
 
 
 def _json_safe(value: Any) -> Any:
@@ -123,7 +182,7 @@ def write_frame_artifact(
 ) -> dict[str, Any]:
     path.parent.mkdir(parents=True, exist_ok=True)
     schema_path.parent.mkdir(parents=True, exist_ok=True)
-    serializable = df.copy()
+    serializable = _bind_frozen_shard_transport(df)
     for column in serializable.columns:
         serializable[column] = serializable[column].map(_json_safe)
         if serializable[column].dtype == "object":
@@ -137,8 +196,8 @@ def write_frame_artifact(
         "path": str(path) if write_parquet else "",
         "csv_path": str(path.with_suffix(".csv")) if write_csv else "",
         "schema_path": str(schema_path),
-        "rows": int(len(df)),
-        "columns": int(len(df.columns)),
+        "rows": int(len(serializable)),
+        "columns": int(len(serializable.columns)),
     }
 
 
