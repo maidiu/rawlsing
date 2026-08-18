@@ -568,6 +568,15 @@ def _select_question_variables(
     )
 
 
+def _base_filter_variables_for_required(family: str, wave: str, selected: Iterable[str]) -> list[str]:
+    """Return the strict base/V551 subset; bounded J-only vars stay J-only."""
+    return [
+        code
+        for code in selected
+        if lookup_governed_response_semantics_contract(family, wave, code) is not None
+    ]
+
+
 def _build_question_filter(
     family: str,
     wave: str,
@@ -973,7 +982,26 @@ def run_wave(
     result["joint_branch"]["authority"] = authority
     registry_path = authority.get("registry_path") if authority.get("applicable") and config.joint_mode != "off" else None
 
-    raw = run_v550_shard(run_id, shard_id, family, wave, country, filter_path, str(output / "v550"), registry_path, config)
+    v550_filter_path = filter_path
+    if config.joint_mode == "required" and registry_path:
+        base_selected = _base_filter_variables_for_required(
+            identity.canonical_display_source,
+            identity.canonical_display_wave,
+            selected_vars,
+        )
+        if not base_selected:
+            return _fail(result, "strict_base_selection", "required_full_j_base_filter_empty")
+        combined_path = Path(filter_path)
+        base_path = combined_path.with_name(combined_path.stem + "__base" + combined_path.suffix)
+        base_path.write_text(
+            json.dumps({"question_ids": base_selected, "var_codes": base_selected}, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        v550_filter_path = str(base_path)
+        result["base_selected_variable_count"] = len(base_selected)
+        result["base_selected_variables"] = base_selected
+
+    raw = run_v550_shard(run_id, shard_id, family, wave, country, v550_filter_path, str(output / "v550"), registry_path, config)
     if raw["exit_code"] != 0:
         result["stages"]["v550"] = _stage_result(raw)
         return _fail(result, "v550_process", raw.get("stderr_tail") or "v550_nonzero_exit")
