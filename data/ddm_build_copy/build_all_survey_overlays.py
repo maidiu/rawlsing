@@ -1,25 +1,43 @@
 #!/usr/bin/env python3
 """Batch build review-only directionality candidates for survey families.
 
-Heuristics in this file do not certify semantic role or directionality.
+Heuristics in this file do not certify semantic role or directionality. Machine
+source/wave identity is delegated to the shared governed UID kernel; the
+historical table below supplies only DB/codebook locator provenance.
 Run: python3 data/ddm_build_copy/build_all_survey_overlays.py
 """
-import argparse, csv, io, os, re, sys, glob
+import argparse, os, re, sys
 from pathlib import Path
+
 import pandas as pd
-import numpy as np
 import psycopg2
 
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
-from data.ddm_build_copy.ddm_v550_question_use import infer_semantic_detail, infer_semantic_role
-from data.ddm_build_copy.ddm_survey_identity import require_survey_identity
+
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    BoundaryContractError,
+    validate_source_wave_identity_coherence,
+    verify_frame_source_wave_identity_coherence,
+)
+from data.ddm_build_copy.ddm_source_wave_identity import (
+    ProductionMembershipError,
+    SourceWaveIdentityError,
+    resolve_source_family_identity,
+    resolve_source_wave_identity,
+)
+from data.ddm_build_copy.ddm_v550_family_overlay import (
+    enforce_review_only_overlay_frame,
+    resolve_overlay_identity,
+)
 
 CB_DIR = REPO / "data" / "FINAL CODEBOOKS" / "FINAL FINAL CODEBOOKS"
 AUTH_DIR = REPO / "data" / "ddm_build_copy" / "directionality_authority"
 REPORTS = REPO / "data" / "ddm_build_copy" / "reports"
 DSN = os.environ.get("DATABASE_URL", "").strip()
 
+# Historical DB/QSM/codebook locator metadata. These spellings are provenance,
+# not machine identity or production authorization.
 ALL_SURVEYS = [
     # (survey_name, db_wave, qsm_wave, canonical_wave, codebook_filename, codebook_has_svl)
     ("Afrobarometer", "R1", "R1", "R1", "Afrobarometer Round 1 codebook.csv", False),
@@ -41,7 +59,7 @@ ALL_SURVEYS = [
     ("Latinobarómetro", "1995", "1995", "1995", "Latinobarometro 1995 codebook.csv", False),
     ("Latinobarómetro", "2011", "2011", "2011", "Latinobarometro 2011 codebook.csv", True),
     ("Latinobarómetro", "2024", "2024", "2024", "Latinobarometro 2024 codebook.csv", False),
-    ("LiTS", "2006", "2006", "I", "LiTS-I-codebook.csv", False),  # DB uses "2006", QSM uses "2006"
+    ("LiTS", "2006", "2006", "I", "LiTS-I-codebook.csv", False),
     ("LiTS", "II", "II", "II", "LiTS-II-codebook.csv", False),
     ("LiTS", "III", "III", "III", "LiTS-III-codebook.csv", False),
     ("LiTS", "IV", "IV", "IV", "LiTS-IV-codebook.csv", False),
@@ -71,7 +89,6 @@ def detect_ordinal_parts(svl):
         m = re.match(r"\s*(\d+)\s*=", p)
         if m:
             codes.append(int(m.group(1)))
-    # Check if codes are sequential starting from 1
     if codes and codes == list(range(1, len(codes) + 1)):
         return len(codes), True
     return len(parts), False
@@ -82,15 +99,14 @@ def classify_from_labels(var_name, question_text, svl):
     if not svl or svl == "nan" or pd.isna(svl):
         return None
     svl_lower = svl.lower()
-    qt_lower = (question_text or "").lower()
     parts = [p.strip() for p in svl.split("|") if p.strip()]
 
-    # Detect binary yes/no
     if re.search(r"\b1\s*=\s*(?:yes|favor|approve|agree|male)\b", svl_lower) and re.search(r"\b2\s*=\s*(?:no|oppose|disapprove|disagree|female)\b", svl_lower):
         codes = set()
         for p in parts:
             m = re.match(r"\s*(\d+)", p)
-            if m: codes.add(int(m.group(1)))
+            if m:
+                codes.add(int(m.group(1)))
         if codes in ({1, 2}, {1, 2, 3}):
             return {
                 "semantic_role": "relation_evidence",
@@ -103,11 +119,10 @@ def classify_from_labels(var_name, question_text, svl):
                 "neutral_anchor_label": "neutral / ambivalent",
                 "bridge_directionality_action": "allow_directionality",
                 "directionality_confidence": "high",
-                "directionality_note": f"binary item; sign reflects endorsement vs rejection",
+                "directionality_note": "binary item; sign reflects endorsement vs rejection",
                 "manual_review_required": False,
             }
 
-    # Detect ordinal evaluation (good/bad, agree/disagree, etc.)
     ordinal4_pos = ["very good", "good", "very satisfied", "satisfied", "very safe", "safe",
                     "very interested", "interested", "strongly agree", "agree", "a great deal"]
     ordinal4_neg = ["bad", "very bad", "dissatisfied", "unsafe", "not interested", "disagree", "strongly disagree",
@@ -135,10 +150,9 @@ def classify_from_labels(var_name, question_text, svl):
                     "neutral_anchor_label": "neutral / ambivalent",
                     "bridge_directionality_action": "allow_directionality",
                     "directionality_confidence": "high",
-                    "directionality_note": f"evaluative ordered item; sign from unfavorable to favorable",
+                    "directionality_note": "evaluative ordered item; sign from unfavorable to favorable",
                     "manual_review_required": False,
                 }
-            # Trust scale
             if "trust" in svl_lower:
                 return {
                     "semantic_role": "relation_evidence",
@@ -151,11 +165,10 @@ def classify_from_labels(var_name, question_text, svl):
                     "neutral_anchor_label": "neutral / ambivalent",
                     "bridge_directionality_action": "allow_directionality",
                     "directionality_confidence": "high",
-                    "directionality_note": f"trust ordered item; sign from less to more trusting",
+                    "directionality_note": "trust ordered item; sign from less to more trusting",
                     "manual_review_required": False,
                 }
 
-    # Detect agree/disagree with extra codes (like 100=not provided)
     if any(w in svl_lower for w in ["strongly agree", "agree", "disagree", "somewhat agree"]):
         clean_parts = [p for p in parts if re.match(r"\s*([0-9]|10)\s*=", p)]
         if len(clean_parts) >= 3:
@@ -172,11 +185,10 @@ def classify_from_labels(var_name, question_text, svl):
                     "neutral_anchor_label": "neutral / ambivalent",
                     "bridge_directionality_action": "allow_directionality",
                     "directionality_confidence": "high",
-                    "directionality_note": f"evaluative ordered item",
+                    "directionality_note": "evaluative ordered item",
                     "manual_review_required": False,
                 }
 
-    # Detect frequency scales
     if any(w in svl_lower for w in ["daily", "often", "frequently", "always", "never"]):
         return {
             "semantic_role": "relation_evidence",
@@ -193,7 +205,6 @@ def classify_from_labels(var_name, question_text, svl):
             "manual_review_required": False,
         }
 
-    # Detect 10-point scales
     if re.search(r"10.point|dictatorship.*democracy|1.*complete.*10", svl_lower):
         return {
             "semantic_role": "relation_evidence",
@@ -210,7 +221,6 @@ def classify_from_labels(var_name, question_text, svl):
             "manual_review_required": False,
         }
 
-    # Detect nominal / forced-choice
     if any(kw in svl_lower for kw in ["television", "newspaper", "radio", "internet"]):
         return {
             "semantic_role": "relation_evidence",
@@ -225,7 +235,6 @@ def classify_from_labels(var_name, question_text, svl):
             "manual_review_required": False,
         }
 
-    # Nominal demographic patterns
     demo_label_markers = [
         r"\d+\s*-\s*\d+\s*(?:years|dh|shekel|dinar)", r"(?:less than|more than)\s*\d+",
         r"\b(?:illiterate|elementary|primary|secondary|college|university|postgraduate)\b",
@@ -238,22 +247,57 @@ def classify_from_labels(var_name, question_text, svl):
     demo_matches = sum(1 for p in demo_label_markers if re.search(p, svl_lower))
     has_attitude = any(w in svl_lower for w in ["agree", "disagree", "satisfied", "approve", "trust"])
     if demo_matches >= 2 and not has_attitude:
-        return None  # Skip demographics
+        return None
 
-    return None  # Let QSM fallback handle it
+    return None
 
 
-def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, has_svl):
-    identity = require_survey_identity(survey, canonical_wave)
-    source = identity.source
-    canonical_wave = identity.canonical_wave
+def _validate_locator_representations(identity, survey, db_wave, qsm_wave, canonical_wave):
+    """All populated historical representations must resolve to one UID pair."""
+    try:
+        return validate_source_wave_identity_coherence(
+            {
+                "source": survey,
+                "raw_wave": db_wave,
+                "wave": qsm_wave,
+                "canonical_wave": canonical_wave,
+            },
+            expected_source_family_uid=identity.source_family_uid,
+            expected_wave_uid=identity.wave_uid,
+            require_complete=True,
+        )
+    except BoundaryContractError as exc:
+        raise RuntimeError(f"OVERLAY_LOCATOR_IDENTITY_CONTRADICTION:{exc}") from exc
+
+
+def build_for_survey(
+    survey,
+    db_wave,
+    qsm_wave,
+    canonical_wave,
+    codebook_file,
+    has_svl,
+    *,
+    historical_nonproduction=False,
+):
+    identity = resolve_overlay_identity(
+        survey,
+        canonical_wave,
+        historical_nonproduction=historical_nonproduction,
+    )
+    _validate_locator_representations(identity, survey, db_wave, qsm_wave, canonical_wave)
+
+    source = identity.canonical_display_source
+    canonical_wave = identity.canonical_display_wave
     slug = slugify(source)
     cb_path = CB_DIR / codebook_file
     print(f"\n{'='*60}")
-    print(f"{source} / {db_wave} (cb_wave={canonical_wave}, qsm_wave={qsm_wave})")
+    print(
+        f"{source} / raw_db={db_wave} / display={canonical_wave} "
+        f"[{identity.source_family_uid}|{identity.wave_uid}]"
+    )
     print(f"  Codebook: {codebook_file}")
 
-    # Load codebook if available
     codebook = None
     if cb_path.exists():
         try:
@@ -262,32 +306,24 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
         except Exception as e:
             print(f"  WARNING: Could not load codebook: {e}")
 
-    # Get variables from QSM DB
+    # QSM scope is machine identity; raw DB/QSM spellings remain provenance.
     conn = connect()
     cur = conn.cursor()
     cur.execute(
         "SELECT var_code, question_id, driver_id, driver_facet_id, relation_axis_id, "
         "target_entity_id, structural_domain_id, display_text "
-        "FROM question_structural_mapping WHERE source=%s AND wave=%s "
+        "FROM question_structural_mapping WHERE source_family_uid=%s AND wave_uid=%s "
         "ORDER BY var_code",
-        (source, qsm_wave),
+        (identity.source_family_uid, identity.wave_uid),
     )
     qsm_vars = cur.fetchall()
     conn.close()
     print(f"  QSM variables: {len(qsm_vars)}")
 
     if len(qsm_vars) == 0:
-        print(f"  SKIP: No question_structural_mapping for {source}/{qsm_wave}")
+        print(f"  SKIP: No question_structural_mapping for {identity.uid_key}")
         return 0
 
-    # Build variable set
-    qsm_var_names = set()
-    for v in qsm_vars:
-        vn = str(v[0]).strip() if v[0] else ""
-        if vn:
-            qsm_var_names.add(vn)
-
-    # Build rows
     rows = []
     for vrow in qsm_vars:
         vn = str(vrow[0]).strip() if vrow[0] else ""
@@ -301,10 +337,7 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
 
         qt = dt
         svl = ""
-
-        # Get question text and value labels from codebook if available
         if codebook is not None and vn:
-            # Check codebook column structure
             cb_cols = set(codebook.columns)
             if "var_name" in cb_cols:
                 cb_row = codebook[codebook["var_name"].astype(str).str.strip() == vn]
@@ -315,7 +348,6 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
                     elif "response_options_substantive" in cb_cols:
                         svl = str(cb_row.iloc[0].get("response_options_substantive", ""))
             elif "name" in cb_cols:
-                # Alternate format: name/label columns
                 cb_row = codebook[codebook["name"].astype(str).str.strip() == vn]
                 if len(cb_row) > 0:
                     qt = str(cb_row.iloc[0].get("label", dt))
@@ -326,11 +358,9 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
                     if has_svl:
                         svl = str(cb_row.iloc[0].get("substantive_value_labels", ""))
 
-        # Try to classify from value labels
         cls = classify_from_labels(vn, qt, svl) if svl else None
 
         if cls:
-            # Classified from labels
             role = cls["semantic_role"]
             subrole = cls["semantic_subrole"]
             policy = cls["directionality_policy"]
@@ -342,12 +372,9 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
             bridge = cls["bridge_directionality_action"]
             conf = cls["directionality_confidence"]
             note = cls["directionality_note"]
-            manual = cls["manual_review_required"]
         else:
-            # Fallback to QSM: use driver presence as heuristic
             has_driver = bool(di)
             has_axis = bool(rai)
-            # Check driver_id patterns to distinguish attitude from context/metadata
             di_lower = di.lower() if di else ""
             is_metadata_driver = any(di_lower.startswith(p) for p in ["metadata::", "context::", "admin::"])
             is_demo_driver = any(kw in di_lower for kw in ["demo_", "demo_age", "demo_sex", "demo_educ",
@@ -366,7 +393,6 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
                 bridge = "force_unsigned"
                 conf = "high"
                 note = "demographic / context item; keep unsigned"
-                manual = False
             elif has_driver and has_axis:
                 role = "relation_evidence"
                 subrole = "qsm_structured"
@@ -379,7 +405,6 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
                 bridge = "allow_directionality"
                 conf = "medium"
                 note = "classified from QSM driver/axis presence; verify directionality"
-                manual = True
             elif has_driver:
                 role = "relation_evidence"
                 subrole = "qsm_partial"
@@ -392,7 +417,6 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
                 bridge = "allow_directionality"
                 conf = "low"
                 note = "has driver_id but no relation_axis_id; weak directionality"
-                manual = True
             else:
                 role = "position_context"
                 subrole = "context_coordinate"
@@ -403,13 +427,27 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
                 bridge = "force_unsigned"
                 conf = "high"
                 note = "no driver mapping; context/coordinate item"
-                manual = False
 
         rows.append({
+            "raw_source": survey,
+            "raw_db_wave": db_wave,
+            "qsm_wave_provenance": qsm_wave,
+            "canonical_display_source": identity.canonical_display_source,
+            "canonical_display_wave": identity.canonical_display_wave,
+            "source_family_uid": identity.source_family_uid,
+            "wave_uid": identity.wave_uid,
+            "governance_state": identity.governance_state,
+            "closed_35_member": identity.closed_35_member,
             "source": source,
             "wave": canonical_wave,
             "canonical_wave": canonical_wave,
             "var_name": vn,
+            "question_id": qi,
+            "driver_id": di,
+            "driver_facet_id": dfi,
+            "relation_axis_id": rai,
+            "target_entity_id": tei,
+            "structural_domain_id": sdi,
             "question_text": qt,
             "semantic_role": role,
             "semantic_subrole": subrole,
@@ -430,16 +468,14 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
             "manual_review_required": True,
         })
 
-    df = pd.DataFrame(rows)
+    df = enforce_review_only_overlay_frame(pd.DataFrame(rows))
     print(f"  Generated: {len(df)} directionality rows")
 
-    # Write directionality authority CSV
     AUTH_DIR.mkdir(parents=True, exist_ok=True)
     auth_name = f"{slug}_{canonical_wave}_directionality_authority.csv"
     df.to_csv(AUTH_DIR / auth_name, index=False)
     print(f"  Wrote: {auth_name}")
 
-    # Also write directionality overlay
     REPORTS.mkdir(parents=True, exist_ok=True)
     ol_name = f"{slug}_{canonical_wave}_directionality_overlay.csv"
     df.to_csv(REPORTS / ol_name, index=False)
@@ -449,84 +485,114 @@ def build_for_survey(survey, db_wave, qsm_wave, canonical_wave, codebook_file, h
 
 
 def update_index():
-    """Rebuild the directionality_authority_index.csv."""
-    import glob
+    """Rebuild the review-only directionality index from coherent row identity."""
     index_rows = []
-    for f in sorted(AUTH_DIR.glob("*_directionality_authority.csv")):
-        name = f.name
+    for path in sorted(AUTH_DIR.glob("*_directionality_authority.csv")):
         try:
-            df = pd.read_csv(f)
+            df = pd.read_csv(path, low_memory=False)
             cnt = len(df)
-        except:
-            cnt = 0
-        # Extract source and wave from filename
-        # Pattern: {slug}_{wave}_directionality_authority.csv
-        m = re.match(r"(.+)_directionality_authority\.csv", name)
-        if m:
-            stem = m.group(1)
-            # Try to parse source/wave
-            parts = stem.split("_")
-            if len(parts) >= 2:
-                wave = parts[-1]
-                source_slug = "_".join(parts[:-1])
-                # Try to reverse-map slug to original source name
-                source = slug_to_name.get(source_slug, source_slug)
-            else:
-                source = stem
-                wave = ""
-        else:
-            source = name
-            wave = ""
+        except Exception as exc:
+            index_rows.append({
+                "source": "", "wave": "", "source_family_uid": "", "wave_uid": "",
+                "file_name": path.name, "row_count": 0,
+                "status": "review_only_unreadable", "notes": str(exc),
+            })
+            continue
 
-        # Try to get nicer source name
-        for orig_name, slug_name in name_map.items():
-            if slug_name in name:
-                source = orig_name
-                break
+        if df.empty:
+            index_rows.append({
+                "source": "", "wave": "", "source_family_uid": "", "wave_uid": "",
+                "file_name": path.name, "row_count": 0,
+                "status": "review_only_empty", "notes": "",
+            })
+            continue
 
+        if not {"source_family_uid", "wave_uid"}.issubset(df.columns):
+            index_rows.append({
+                "source": "", "wave": "", "source_family_uid": "", "wave_uid": "",
+                "file_name": path.name, "row_count": cnt,
+                "status": "legacy_unresolved_review_only",
+                "notes": "identity not inferred from filename; regenerate through UID-aware builder",
+            })
+            continue
+
+        source_uids = {str(v).strip() for v in df["source_family_uid"].dropna() if str(v).strip()}
+        wave_uids = {str(v).strip() for v in df["wave_uid"].dropna() if str(v).strip()}
+        if len(source_uids) != 1 or len(wave_uids) != 1:
+            raise RuntimeError(f"REVIEW_OVERLAY_INDEX_MIXED_UID_SCOPE:{path}")
+        source_uid = next(iter(source_uids))
+        wave_uid = next(iter(wave_uids))
+        try:
+            coherence = verify_frame_source_wave_identity_coherence(
+                df,
+                expected_source_family_uid=source_uid,
+                expected_wave_uid=wave_uid,
+                allow_empty=False,
+            )
+        except BoundaryContractError as exc:
+            raise RuntimeError(
+                f"REVIEW_OVERLAY_INDEX_IDENTITY_CONTRADICTION:{path}:{exc}"
+            ) from exc
         index_rows.append({
-            "source": source,
-            "wave": wave,
-            "file_name": name,
+            "source": coherence["canonical_display_source"],
+            "wave": coherence["canonical_display_wave"],
+            "source_family_uid": source_uid,
+            "wave_uid": wave_uid,
+            "file_name": path.name,
             "row_count": cnt,
-            "status": "active",
-            "notes": "",
+            "status": "review_only_not_certified",
+            "notes": "HEURISTIC_REVIEW_ONLY; NOT_CERTIFIED",
         })
 
     idx_df = pd.DataFrame(index_rows)
     idx_path = AUTH_DIR / "directionality_authority_index.csv"
     idx_df.to_csv(idx_path, index=False)
-    print(f"\nUpdated index: {idx_path} ({len(index_rows)} entries)")
+    print(f"\nUpdated review-only index: {idx_path} ({len(index_rows)} entries)")
 
 
-name_map = {}
-for s, dw, qw, cw, cb, svl in ALL_SURVEYS:
-    slug = slugify(s)
-    name_map[s] = slug
-# Also add GSS
-name_map["GSS"] = "gss"
-
-slug_to_name = {v: k for k, v in name_map.items()}
+def _selected_source_uids(values):
+    if not values:
+        return None
+    return {resolve_source_family_identity(value).source_family_uid for value in values}
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--surveys", nargs="*", default=None,
-                        help="Specific surveys to build (default: all)")
+                        help="Specific survey families to build (aliases resolve by governed source UID)")
+    parser.add_argument(
+        "--historical-nonproduction",
+        action="store_true",
+        help="Explicitly include recognized excluded/historical review identities such as Asian Barometer W6",
+    )
     args = parser.parse_args()
 
+    selected_uids = _selected_source_uids(args.surveys)
     total = 0
     for s, dw, qw, cw, cb, svl in ALL_SURVEYS:
-        if args.surveys and s not in args.surveys:
+        family_uid = resolve_source_family_identity(s).source_family_uid
+        if selected_uids is not None and family_uid not in selected_uids:
             continue
-        cnt = build_for_survey(s, dw, qw, cw, cb, svl)
+        try:
+            identity = resolve_overlay_identity(
+                s,
+                cw,
+                historical_nonproduction=args.historical_nonproduction,
+            )
+        except ProductionMembershipError as exc:
+            print(f"SKIP NONPRODUCTION: {s}/{cw}: {exc}")
+            continue
+        cnt = build_for_survey(
+            s, dw, qw, cw, cb, svl,
+            historical_nonproduction=args.historical_nonproduction,
+        )
         total += cnt
 
     update_index()
 
     print(f"\n{'='*60}")
-    print(f"Total directionality rows generated: {total}")
-    print(f"Done.")
+    print(f"Total review-only directionality rows generated: {total}")
+    print("Done.")
 
 
 if __name__ == "__main__":

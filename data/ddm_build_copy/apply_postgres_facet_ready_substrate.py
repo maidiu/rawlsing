@@ -19,12 +19,15 @@ The weight population is conservative:
 - it does not try to infer weights from arbitrary "weight" text in the codebooks
 - it marks a single primary weight per respondent so the facet-ready view can
   join a single scalar weight safely.
-"""
 
+Source/wave UID fields are additive: raw database source/wave remain the query
+coordinates while governed display labels and UIDs travel beside them.
+"""
 from __future__ import annotations
 
 import argparse
 import os
+import sys
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -35,16 +38,54 @@ import psycopg2
 from dotenv import load_dotenv
 from psycopg2.extras import execute_values
 
-
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from data.ddm_build_copy.ddm_source_wave_identity import (
+    SourceWaveIdentityError,
+    resolve_source_family_identity,
+    resolve_source_wave_identity,
+)
+
 QUESTIONS_MASTER = ROOT / "data" / "final_codebooks" / "questions_master_drivers.csv"
 OUT_REPORT = ROOT / "data" / "ddm_build_copy" / "reports" / "apply_postgres_facet_ready_substrate_report.json"
+
+
+# These fields define semantic equality for QSM conflict handling.  Raw
+# spelling, display provenance, and load timing are intentionally excluded.
+QSM_SEMANTIC_FIELD_INDICES = tuple(range(11, 28))
+QSM_SEMANTIC_DB_FIELDS = (
+    "legacy_final_driver_id",
+    "final_driver_label",
+    "final_driver_scope",
+    "final_driver_origin",
+    "driver_id",
+    "driver_facet_id",
+    "question_block_id",
+    "structural_domain_id",
+    "relation_axis_id",
+    "target_entity_id",
+    "mapping_status",
+    "evidence_kind",
+    "strata_relevance",
+    "channel_affordances",
+    "forbidden_inference",
+    "does_not_measure",
+    "review_notes",
+)
 
 
 QUESTION_MAPPING_SQL = """
 CREATE TABLE IF NOT EXISTS question_structural_mapping (
     source TEXT NOT NULL,
     wave TEXT NOT NULL DEFAULT '',
+    source_family_uid TEXT,
+    wave_uid TEXT,
+    canonical_display_source TEXT,
+    canonical_display_wave TEXT,
+    governance_state TEXT,
+    closed_35_member BOOLEAN,
     question_id TEXT NOT NULL,
     var_code TEXT NOT NULL,
     display_text TEXT,
@@ -69,9 +110,17 @@ CREATE TABLE IF NOT EXISTS question_structural_mapping (
     PRIMARY KEY (source, wave, var_code)
 );
 
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS source_family_uid TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS wave_uid TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS canonical_display_source TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS canonical_display_wave TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS governance_state TEXT;
+ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS closed_35_member BOOLEAN;
+
 CREATE INDEX IF NOT EXISTS idx_question_structural_mapping_source_wave_var
     ON question_structural_mapping(source, wave, var_code);
-
+CREATE INDEX IF NOT EXISTS idx_question_structural_mapping_uid_var
+    ON question_structural_mapping(source_family_uid, wave_uid, var_code);
 CREATE INDEX IF NOT EXISTS idx_question_structural_mapping_block_facet
     ON question_structural_mapping(question_block_id, driver_facet_id);
 """
@@ -100,6 +149,26 @@ CREATE INDEX IF NOT EXISTS idx_survey_weight_fact_source_wave
 
 CREATE INDEX IF NOT EXISTS idx_survey_weight_fact_name
     ON survey_weight_fact(weight_name);
+"""
+
+
+RESPONDENT_SOURCE_WAVE_IDENTITY_SQL = """
+CREATE TABLE IF NOT EXISTS respondent_source_wave_identity (
+    raw_db_source TEXT NOT NULL,
+    raw_db_wave TEXT NOT NULL DEFAULT '',
+    source_family_uid TEXT,
+    wave_uid TEXT,
+    canonical_display_source TEXT,
+    canonical_display_wave TEXT,
+    governance_state TEXT,
+    closed_35_member BOOLEAN,
+    resolution_status TEXT NOT NULL,
+    loaded_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    PRIMARY KEY (raw_db_source, raw_db_wave)
+);
+
+CREATE INDEX IF NOT EXISTS idx_respondent_source_wave_identity_uid
+    ON respondent_source_wave_identity(source_family_uid, wave_uid);
 """
 
 
@@ -204,7 +273,7 @@ SELECT
     r.id AS respondent_id,
     r.source,
     r.wave,
-    COALESCE(r.wave, '') AS canonical_wave,
+    rsi.canonical_display_wave AS canonical_wave,
     r.country_code,
     r.survey_year,
 
@@ -258,10 +327,21 @@ SELECT
          AND COALESCE(qsm.driver_facet_id, '') = ''
         THEN TRUE
         ELSE FALSE
-    END AS legacy_driver_leak_flag
+    END AS legacy_driver_leak_flag,
+
+    r.source AS raw_db_source,
+    r.wave AS raw_db_wave,
+    rsi.canonical_display_source,
+    rsi.source_family_uid,
+    rsi.wave_uid,
+    rsi.governance_state AS source_wave_governance_state,
+    rsi.closed_35_member AS source_wave_closed_35_member
 FROM survey_microdata_responses resp
 JOIN survey_microdata_respondents r
     ON r.id = resp.respondent_id
+LEFT JOIN respondent_source_wave_identity rsi
+    ON rsi.raw_db_source = r.source
+   AND rsi.raw_db_wave = COALESCE(r.wave, '')
 LEFT JOIN respondent_position_fact pos
     ON pos.respondent_id = r.id
 LEFT JOIN weight_pick wp
@@ -278,10 +358,22 @@ LEFT JOIN LATERAL (
         COALESCE(q.mapping_status, 'accepted_existing_mapping') AS mapping_status,
         q.legacy_final_driver_id
     FROM question_structural_mapping q
-    WHERE q.source = r.source
+    WHERE q.source_family_uid = rsi.source_family_uid
       AND UPPER(q.var_code) = UPPER(resp.var_code)
-      AND (q.wave = COALESCE(r.wave, '') OR q.wave = '' OR q.wave IS NULL)
-    ORDER BY CASE WHEN q.wave = COALESCE(r.wave, '') THEN 0 ELSE 1 END, q.loaded_at DESC
+      AND (
+          (
+              NULLIF(rsi.wave_uid, '') IS NOT NULL
+              AND q.wave_uid = rsi.wave_uid
+          )
+          OR (
+              NULLIF(rsi.wave_uid, '') IS NULL
+              AND NULLIF(q.wave_uid, '') IS NULL
+              AND COALESCE(q.wave, '') = ''
+          )
+      )
+    ORDER BY
+        CASE WHEN NULLIF(q.wave_uid, '') IS NOT NULL THEN 0 ELSE 1 END,
+        q.loaded_at DESC
     LIMIT 1
 ) qsm ON TRUE;
 """
@@ -355,18 +447,183 @@ def clean(value: Any) -> str:
     return str(value).strip()
 
 
+def semantic_mapping_signature(values: Iterable[Any]) -> tuple[str, ...]:
+    """Normalize semantic fields for conflict comparison."""
+    return tuple(clean(value) for value in values)
+
+
+def _candidate_semantic_signature(row: tuple[Any, ...]) -> tuple[str, ...]:
+    return semantic_mapping_signature(row[index] for index in QSM_SEMANTIC_FIELD_INDICES)
+
+
+def quarantine_conflicting_question_mapping_rows(
+    rows: Iterable[tuple[Any, ...]],
+) -> tuple[list[tuple[Any, ...]], list[tuple[str, str, str]]]:
+    """Drop every candidate in each genuinely divergent UID-normalized group."""
+    candidates = list(rows)
+    groups: dict[tuple[str, str, str], list[tuple[Any, ...]]] = defaultdict(list)
+    for row in candidates:
+        source_family_uid = clean(row[2])
+        wave_uid = clean(row[3])
+        if source_family_uid and wave_uid:
+            key = (source_family_uid, wave_uid, clean(row[9]).upper())
+            groups[key].append(row)
+
+    conflicts = sorted(
+        key for key, members in groups.items()
+        if len({_candidate_semantic_signature(row) for row in members}) > 1
+    )
+    conflict_keys = set(conflicts)
+    kept = [
+        row for row in candidates
+        if (
+            not clean(row[2])
+            or not clean(row[3])
+            or (clean(row[2]), clean(row[3]), clean(row[9]).upper()) not in conflict_keys
+        )
+    ]
+    return kept, conflicts
+
+
+def _identity_fields(source: str, wave: str) -> tuple[str, str, str, str, str, bool | None]:
+    """Resolve additive semantic identity without changing raw source/wave fields."""
+    if not clean(wave):
+        try:
+            family = resolve_source_family_identity(source)
+        except SourceWaveIdentityError:
+            return "", "", "", "", "", None
+        return family.source_family_uid, "", family.canonical_display_source, "", "", None
+    try:
+        identity = resolve_source_wave_identity(source, wave)
+    except SourceWaveIdentityError:
+        return "", "", "", "", "", None
+    return (
+        identity.source_family_uid,
+        identity.wave_uid,
+        identity.canonical_display_source,
+        identity.canonical_display_wave,
+        identity.governance_state,
+        identity.closed_35_member,
+    )
+
+
+def _respondent_identity_row(source: str, wave: str) -> tuple[Any, ...]:
+    """Resolve one observed raw respondent coordinate through governed authority."""
+    raw_source = clean(source)
+    raw_wave = clean(wave)
+    if not raw_source:
+        return (raw_source, raw_wave, None, None, None, None, None, None, "UNRESOLVED")
+    try:
+        if not raw_wave:
+            family = resolve_source_family_identity(raw_source)
+            return (
+                raw_source, raw_wave, family.source_family_uid, None,
+                family.canonical_display_source, None, None, None,
+                "RESOLVED_FAMILY_ONLY",
+            )
+        identity = resolve_source_wave_identity(raw_source, raw_wave)
+    except SourceWaveIdentityError:
+        return (raw_source, raw_wave, None, None, None, None, None, None, "UNRESOLVED")
+    status = (
+        "RESOLVED_CLOSED_35"
+        if identity.closed_35_member
+        else "RESOLVED_RECOGNIZED_EXCLUDED"
+        if identity.governance_state
+        else "RESOLVED_NONPRODUCTION"
+    )
+    return (
+        raw_source, raw_wave, identity.source_family_uid, identity.wave_uid,
+        identity.canonical_display_source, identity.canonical_display_wave,
+        identity.governance_state, identity.closed_35_member, status,
+    )
+
+
+def load_respondent_source_wave_identity(conn) -> int:
+    """Materialize the exact observed raw respondent coordinates via the UID kernel."""
+    cur = conn.cursor()
+    cur.execute(RESPONDENT_SOURCE_WAVE_IDENTITY_SQL)
+    cur.execute("""
+        SELECT DISTINCT source, COALESCE(wave, '')
+        FROM survey_microdata_respondents
+        ORDER BY source, COALESCE(wave, '')
+    """)
+    pairs = cur.fetchall()
+    rows = [_respondent_identity_row(source, wave) for source, wave in pairs]
+    cur.execute("TRUNCATE respondent_source_wave_identity")
+    if rows:
+        execute_values(
+            cur,
+            """
+            INSERT INTO respondent_source_wave_identity (
+                raw_db_source, raw_db_wave, source_family_uid, wave_uid,
+                canonical_display_source, canonical_display_wave,
+                governance_state, closed_35_member, resolution_status
+            ) VALUES %s
+            """,
+            rows,
+        )
+    conn.commit()
+    cur.close()
+    return len(rows)
+
+
+def assert_no_conflicting_qsm_uid_rows(conn) -> None:
+    """Reject conflicting semantic duplicates before the UID join is published."""
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT source_family_uid, wave_uid, var_code,
+               legacy_final_driver_id, final_driver_label, final_driver_scope,
+               final_driver_origin, driver_id, driver_facet_id, question_block_id,
+               structural_domain_id, relation_axis_id, target_entity_id,
+               mapping_status, evidence_kind, strata_relevance,
+               channel_affordances, forbidden_inference, does_not_measure,
+               review_notes
+        FROM question_structural_mapping
+        WHERE NULLIF(source_family_uid, '') IS NOT NULL
+          AND NULLIF(wave_uid, '') IS NOT NULL
+        ORDER BY source_family_uid, wave_uid, UPPER(var_code), loaded_at
+    """)
+    groups: dict[tuple[str, str, str], set[tuple[str, ...]]] = defaultdict(set)
+    for row in cur.fetchall():
+        key = (str(row[0]), str(row[1]), str(row[2]).upper())
+        groups[key].add(semantic_mapping_signature(row[3:]))
+    conflicts = {key: values for key, values in groups.items() if len(values) > 1}
+    cur.close()
+    if conflicts:
+        sample = next(iter(conflicts))
+        raise RuntimeError(
+            "CONFLICTING_QSM_UID_SEMANTIC_DUPLICATE: "
+            f"source_family_uid={sample[0]} wave_uid={sample[1]} var_code={sample[2]}"
+        )
+
+
 def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
-    rows: dict[tuple[str, str, str], tuple[Any, ...]] = {}
+    """Extract every source-master candidate without semantic precedence."""
+    rows: list[tuple[Any, ...]] = []
     for r in df.itertuples(index=False):
         source = clean(getattr(r, "source", ""))
         wave = clean(getattr(r, "wave", ""))
         var_code = clean(getattr(r, "var_name", ""))
         if not source or not var_code:
             continue
+        (
+            source_family_uid,
+            wave_uid,
+            canonical_display_source,
+            canonical_display_wave,
+            governance_state,
+            closed_35_member,
+        ) = _identity_fields(source, wave)
         question_id = clean(getattr(r, "item_id", "")) or f"{source}:{wave}:{var_code}"
         row = (
             source,
             wave,
+            source_family_uid,
+            wave_uid,
+            canonical_display_source,
+            canonical_display_wave,
+            governance_state,
+            closed_35_member,
             question_id,
             var_code,
             clean(getattr(r, "display_text", "")),
@@ -388,18 +645,27 @@ def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
             clean(getattr(r, "does_not_measure", "")),
             clean(getattr(r, "review_notes", "")),
         )
-        key = (source, wave, var_code)
-        if key not in rows:
-            rows[key] = row
-            continue
+        rows.append(row)
+    return rows
 
-        existing = rows[key]
+
+def deduplicate_question_mapping_rows(
+    rows: Iterable[tuple[Any, ...]],
+) -> list[tuple[Any, ...]]:
+    """Deduplicate only after semantic-conflict groups have been removed."""
+    deduplicated: dict[tuple[str, str, str], tuple[Any, ...]] = {}
+    for row in rows:
+        key = (clean(row[0]), clean(row[1]), clean(row[9]))
+        if key not in deduplicated:
+            deduplicated[key] = row
+            continue
+        existing = deduplicated[key]
         # Prefer the row with the richer mapping signal.
         existing_score = sum(1 for v in existing if isinstance(v, str) and v)
         new_score = sum(1 for v in row if isinstance(v, str) and v)
         if new_score >= existing_score:
-            rows[key] = row
-    return list(rows.values())
+            deduplicated[key] = row
+    return list(deduplicated.values())
 
 
 def ensure_question_mapping(cur) -> None:
@@ -408,7 +674,12 @@ def ensure_question_mapping(cur) -> None:
 
 def load_question_mapping(conn) -> int:
     df = load_questions_master()
-    rows = create_question_mapping_rows(df)
+    candidate_rows = create_question_mapping_rows(df)
+    conflict_free_rows, quarantined_keys = quarantine_conflicting_question_mapping_rows(candidate_rows)
+    rows = deduplicate_question_mapping_rows(conflict_free_rows)
+    print(f"QSM semantic conflicts quarantined: {len(quarantined_keys)}", flush=True)
+    for source_family_uid, wave_uid, var_code in quarantined_keys:
+        print(f"{source_family_uid}|{wave_uid}|{var_code}", flush=True)
     cur = conn.cursor()
     ensure_question_mapping(cur)
     cur.execute("TRUNCATE question_structural_mapping")
@@ -416,7 +687,9 @@ def load_question_mapping(conn) -> int:
         cur,
         """
         INSERT INTO question_structural_mapping (
-            source, wave, question_id, var_code, display_text, legacy_final_driver_id,
+            source, wave, source_family_uid, wave_uid, canonical_display_source,
+            canonical_display_wave, governance_state, closed_35_member,
+            question_id, var_code, display_text, legacy_final_driver_id,
             final_driver_label, final_driver_scope, final_driver_origin, driver_id,
             driver_facet_id, question_block_id, structural_domain_id, relation_axis_id,
             target_entity_id, mapping_status, evidence_kind, strata_relevance,
@@ -424,6 +697,12 @@ def load_question_mapping(conn) -> int:
         ) VALUES %s
         ON CONFLICT (source, wave, var_code)
         DO UPDATE SET
+            source_family_uid = EXCLUDED.source_family_uid,
+            wave_uid = EXCLUDED.wave_uid,
+            canonical_display_source = EXCLUDED.canonical_display_source,
+            canonical_display_wave = EXCLUDED.canonical_display_wave,
+            governance_state = EXCLUDED.governance_state,
+            closed_35_member = EXCLUDED.closed_35_member,
             question_id = EXCLUDED.question_id,
             display_text = EXCLUDED.display_text,
             legacy_final_driver_id = EXCLUDED.legacy_final_driver_id,
@@ -646,6 +925,7 @@ def load_weights(conn, families: list[str], replace: bool = True) -> tuple[int, 
 
 def create_respondent_position_view(conn) -> None:
     cur = conn.cursor()
+    cur.execute("DROP VIEW IF EXISTS v_ddm_response_long_facet_ready_authority")
     cur.execute("DROP VIEW IF EXISTS v_ddm_response_long_facet_ready")
     cur.execute("DROP VIEW IF EXISTS respondent_position_fact")
     cur.execute("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_name LIKE 'respondentsDemo%' AND table_name NOT ILIKE '%unknown%' ORDER BY table_name")
@@ -750,6 +1030,8 @@ def create_respondent_position_view(conn) -> None:
 
 
 def create_facet_ready_view(conn) -> None:
+    load_respondent_source_wave_identity(conn)
+    assert_no_conflicting_qsm_uid_rows(conn)
     cur = conn.cursor()
     cur.execute(FACET_READY_VIEW_SQL)
     conn.commit()

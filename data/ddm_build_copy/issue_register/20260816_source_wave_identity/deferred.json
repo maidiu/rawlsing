@@ -1,0 +1,25 @@
+{
+  "schema": "swid_deferred_v1",
+  "issues": [
+    {
+      "issue_id": "SWID-011",
+      "title": "V552J→V553 stale handoff consumer seam",
+      "scope": "V553 ingress",
+      "evidence": "V552J publishes modern typed indexes/manifests; V553 harmonizer still mines legacy handoff packet/provenance conventions.",
+      "severity": "DOWNSTREAM_BLOCKING_WHEN_ACTIVATED",
+      "audit_status": "DEFERRED_UNTIL_V553_V558_VERTICAL_HORIZONTAL",
+      "root_cause": "Consumer retained obsolete handoff contract.",
+      "migration_class": "DEFER_TO_V553_PLUS",
+      "campaign_status": "DEFERRED_UNTIL_V553_V558",
+      "blocks_current_v550_v552j_repair_gate": false,
+      "mandatory_before_campaign_close": false,
+      "primary_owner": "Vozhd",
+      "primary_phase": "DEFERRED",
+      "hook_owners": [
+        "W05",
+        "W06"
+      ],
+      "issue_fingerprint_sha256": "f334770336af14ea3402a82b460e4cd29923f03ca57df87ab30d9a405b2d224b"
+    }
+  ]
+}

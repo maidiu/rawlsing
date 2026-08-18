@@ -19,6 +19,10 @@ import re
 
 import pandas as pd
 
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    BoundaryContractError,
+    validate_source_wave_identity_coherence,
+)
 from data.ddm_build_copy.ddm_v550_source_structure import _is_ses_relation_evidence
 from data.ddm_build_copy.ddm_v550_family_overlay import (
     canonical_family_key,
@@ -1361,26 +1365,90 @@ def _select_itinerary(record: dict[str, Any], itinerary: pd.DataFrame) -> dict[s
         "primary_docs": "data/ddm_build_copy/reports/respondent_wave_source_registry.md|data/ddm_build_copy/reports/respondent_wave_semantics_registry.md|data/ddm_build_copy/manifests/question_structure_register.csv",
         "secondary_docs": "data/ddm_build_copy/manifests/question_use_overrides.csv",
         "review_notes": "Use the repo's existing structural and semantic registers before any manual designation.",
+        "itinerary_source": "",
+        "itinerary_wave": "",
+        "itinerary_canonical_wave": "",
+        "itinerary_source_family_uid": "",
+        "itinerary_wave_uid": "",
     }
     if itinerary.empty:
         return default
-    source = _normalize_source(record.get("source") or record.get("source_family"))
-    wave = _normalize_wave(record.get("wave") or record.get("canonical_wave"))
-    if not source or not wave:
+    try:
+        record_identity = validate_source_wave_identity_coherence(
+            record,
+            require_complete=True,
+        )
+    except BoundaryContractError as exc:
+        raise SurveyIdentityError(
+            f"question itinerary gate cannot establish governed record identity: {exc}"
+        ) from exc
+
+    candidates: list[tuple[dict[str, Any], Any]] = []
+    for index, itinerary_row in itinerary.iterrows():
+        row = itinerary_row.to_dict()
+        source = _normalize_source(row.get("source") or row.get("source_family"))
+        wave = _normalize_wave(row.get("wave") or row.get("canonical_wave"))
+        has_gate_payload = any(
+            _clean(row.get(field))
+            for field in (
+                "review_priority",
+                "manual_designation_required",
+                "primary_docs",
+                "secondary_docs",
+                "review_notes",
+            )
+        )
+        if not source or not wave:
+            if has_gate_payload:
+                raise SurveyIdentityError(
+                    f"question itinerary gate row {index} has gate content but no governed source/wave identity"
+                )
+            continue
+        try:
+            row_identity = validate_source_wave_identity_coherence(
+                row,
+                require_complete=True,
+            )
+        except BoundaryContractError as exc:
+            raise SurveyIdentityError(
+                f"question itinerary gate row {index} cannot establish governed identity: {exc}"
+            ) from exc
+        if (
+            row_identity.source_family_uid == record_identity.source_family_uid
+            and row_identity.wave_uid == record_identity.wave_uid
+        ):
+            candidates.append((row, row_identity))
+
+    if not candidates:
         return default
-    candidate = itinerary.loc[
-        itinerary["source"].fillna("").astype(str).eq(source)
-        & itinerary["wave"].fillna("").astype(str).eq(wave)
-    ]
-    if candidate.empty:
-        return default
-    row = candidate.iloc[0].to_dict()
+
+    effective_signatures = {
+        (
+            _clean(row.get("review_priority")) or default["review_priority"],
+            _to_bool(row.get("manual_designation_required")),
+            _clean(row.get("primary_docs")) or default["primary_docs"],
+            _clean(row.get("secondary_docs")) or default["secondary_docs"],
+            _clean(row.get("review_notes")) or default["review_notes"],
+        )
+        for row, _identity in candidates
+    }
+    if len(effective_signatures) > 1:
+        raise SurveyIdentityError(
+            "multiple itinerary rows resolve to the same governed source/wave UID with divergent gate content"
+        )
+
+    row, row_identity = candidates[0]
     out = {
         "review_priority": _clean(row.get("review_priority")) or default["review_priority"],
         "manual_designation_required": _to_bool(row.get("manual_designation_required")),
         "primary_docs": _clean(row.get("primary_docs")) or default["primary_docs"],
         "secondary_docs": _clean(row.get("secondary_docs")) or default["secondary_docs"],
         "review_notes": _clean(row.get("review_notes")) or default["review_notes"],
+        "itinerary_source": _clean(row.get("source") or row.get("source_family")),
+        "itinerary_wave": _clean(row.get("wave")),
+        "itinerary_canonical_wave": _clean(row.get("canonical_wave")),
+        "itinerary_source_family_uid": row_identity.source_family_uid,
+        "itinerary_wave_uid": row_identity.wave_uid,
     }
     return out
 
@@ -1600,7 +1668,7 @@ def _apply_question_directionality_overlay(record: dict[str, Any], overlay: pd.D
     }, True
 
 
-def _attitude_cloud_semantics_blocked(record: dict[str, Any], semantic_role: str, semantic_detail: dict[str, str]) -> bool:
+def _attitude_cloud_semantics_blocked(record: dict[str,Any], semantic_role: str, semantic_detail: dict[str,str]) -> bool:
     source_structure_classification = _normalized_key(record.get("source_structure_classification"))
     final_driver_scope = _normalized_key(record.get("final_driver_scope"))
     mapping_status = _normalized_key(record.get("mapping_status"))

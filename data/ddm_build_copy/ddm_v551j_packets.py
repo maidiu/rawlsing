@@ -36,6 +36,10 @@ from data.ddm_build_copy.ddm_v551j_contract import (
     recompute_v551j_component_contract_hash,
     recompute_v551j_component_id,
     recompute_v551j_packet_id,
+    recompute_v551j_homology_key,
+    recompute_v551j_uid_native_component_id,
+    recompute_v551j_uid_native_packet_id,
+    resolve_v551j_scope_identity,
     recompute_v551j_v2_2_3_packet_contract_hash,
 )
 from data.ddm_build_copy.ddm_v551j_validation import (
@@ -69,6 +73,26 @@ def _to_bool(value: Any, default: bool = False) -> bool:
     if text in {"0", "false", "f", "no", "n", "off", "", "nan", "none"}:
         return False
     return default
+
+
+def _uid_payload(row: Mapping[str, Any], components: Iterable[Mapping[str, Any]] = ()) -> dict[str, Any]:
+    identity = resolve_v551j_scope_identity(row, require_closed_35=True)
+    component_rows = list(components)
+    return {
+        **identity,
+        "uid_native_packet_id_v1": recompute_v551j_uid_native_packet_id(row, identity=identity),
+        "uid_native_component_id_v1": recompute_v551j_uid_native_component_id(row, identity=identity),
+        "cross_wave_homology_key_v1": recompute_v551j_homology_key(row, component_rows),
+    }
+
+
+def _uid_audit_fields(row: Mapping[str, Any]) -> dict[str, str]:
+    """Copy the already-resolved candidate identity into active audit rows."""
+    return {
+        "source_family_uid": _clean(row.get("source_family_uid")),
+        "wave_uid": _clean(row.get("wave_uid")),
+        "uid_key": _clean(row.get("uid_key")),
+    }
 
 
 def _stable_hash(payload: Any) -> str:
@@ -1112,11 +1136,34 @@ def _v2_identity(value: Any) -> str:
 
 
 def _v2_match_atoms_for_item(item: Mapping[str, Any], atoms: pd.DataFrame, pattern: Mapping[str, Any]) -> tuple[str, str, pd.DataFrame, list[str]]:
-    scope = atoms[
-        atoms.get("source_family", pd.Series(dtype=str)).fillna("").astype(str).eq(_clean(pattern.get("source_family")) or _clean(pattern.get("source")))
-        & atoms.get("canonical_wave", pd.Series(dtype=str)).fillna("").astype(str).eq(_clean(pattern.get("canonical_wave")) or _clean(pattern.get("wave")))
-        & atoms.get("country_code", pd.Series(dtype=str)).fillna("").astype(str).eq(_clean(pattern.get("country_code")))
-    ].copy()
+    from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+        BoundaryContractError,
+        verify_frame_source_wave_identity_coherence,
+    )
+
+    pattern_identity = resolve_v551j_scope_identity(pattern, require_closed_35=True)
+    if atoms.empty:
+        scope = atoms.copy()
+    else:
+        missing_uid_columns = sorted({"source_family_uid", "wave_uid"} - set(atoms.columns))
+        if missing_uid_columns:
+            raise RuntimeError(
+                "BLOCKED_V551J_V551_ATOM_UID_SCOPE_MISSING:" + ",".join(missing_uid_columns)
+            )
+        try:
+            verify_frame_source_wave_identity_coherence(
+                atoms,
+                expected_source_family_uid=pattern_identity["source_family_uid"],
+                expected_wave_uid=pattern_identity["wave_uid"],
+                allow_empty=False,
+            )
+        except BoundaryContractError as exc:
+            raise RuntimeError(f"BLOCKED_V551J_V551_ATOM_IDENTITY:{exc}") from exc
+        scope = atoms[
+            atoms["source_family_uid"].fillna("").astype(str).str.strip().eq(pattern_identity["source_family_uid"])
+            & atoms["wave_uid"].fillna("").astype(str).str.strip().eq(pattern_identity["wave_uid"])
+            & atoms.get("country_code", pd.Series(index=atoms.index, dtype=str)).fillna("").astype(str).eq(_clean(pattern.get("country_code")))
+        ].copy()
     q = _v2_identity(item.get("question_id"))
     v = _v2_identity(item.get("var_code"))
     reasons: list[str] = []
@@ -1125,16 +1172,16 @@ def _v2_match_atoms_for_item(item: Mapping[str, Any], atoms: pd.DataFrame, patte
             scope.get("question_id", pd.Series(dtype=str)).fillna("").astype(str).str.casefold().eq(q)
             & scope.get("var_code", pd.Series(dtype=str)).fillna("").astype(str).str.casefold().eq(v)
         ]
-        basis = "exact_question_id_and_var_code"
+        basis = "exact_uid_scope+exact_question_id_and_var_code"
     elif q:
         candidates = scope[scope.get("question_id", pd.Series(dtype=str)).fillna("").astype(str).str.casefold().eq(q)]
-        basis = "exact_question_id"
+        basis = "exact_uid_scope+exact_question_id"
     elif v:
         candidates = scope[scope.get("var_code", pd.Series(dtype=str)).fillna("").astype(str).str.casefold().eq(v)]
-        basis = "exact_var_code"
+        basis = "exact_uid_scope+exact_var_code"
     else:
         candidates = scope.iloc[0:0].copy()
-        basis = "missing_question_and_var_identity"
+        basis = "exact_uid_scope+missing_question_and_var_identity"
     response = _v2_scalar(item.get("response_value_normalized"))
     if response is not None and not candidates.empty and "response_value_normalized" in candidates.columns:
         candidates = candidates[candidates["response_value_normalized"].map(_v2_scalar).astype(str).eq(str(response))]
@@ -1282,6 +1329,8 @@ def _v2_component_row(run_id: str, pattern: Mapping[str, Any], item: Mapping[str
         "cross_contract_reason_codes_json": _v2_json(reason_codes), "comparison_value_audit_json": _v2_json({"response_value": {"v550j": _v2_scalar(item.get("response_value_normalized")), "v551": _v2_scalar(atom.get("response_value_normalized")), "status": "EXACT_MATCH" if comparisons["response_identity_consistent"] == "consistent" else "CONFLICT" if comparisons["response_identity_consistent"] == "conflict" else "ONE_SIDE_MISSING"}, "driver_facet_id": {"v550j": _clean(item.get("driver_facet_id")), "v551": _clean(atom.get("driver_facet_id")), "status": "EXACT_MATCH" if comparisons["driver_facet_consistent"] == "consistent" else "CONFLICT" if comparisons["driver_facet_consistent"] == "conflict" else "ONE_SIDE_MISSING"}, "relation_axis_id": {"v550j": _clean(item.get("relation_axis_id")), "v551": _clean(atom.get("relation_axis_id")), "status": "EXACT_MATCH" if comparisons["relation_axis_consistent"] == "consistent" else "CONFLICT" if comparisons["relation_axis_consistent"] == "conflict" else "ONE_SIDE_MISSING"}, "target_layers": {"v550j_family_target_entity_id": _clean(item.get("target_entity_id")), "v551_structural_target_entity_id": _clean(atom.get("target_entity_id")), "status": "PARALLEL_GOVERNED_TARGET_LAYERS"}}), "component_evidence_role": contribution,
         "component_certification_contribution": contribution, "component_v552_linkage_class": "v552_linkable" if bool(atom.get("v552_pressure_component_eligible", False)) else "v552_ineligible", "created_at": utc_now(), "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3",
     }
+    row.update(_uid_payload(row))
+    row["uid_native_component_id_v1"] = recompute_v551j_uid_native_component_id(row)
     row["component_contract_hash"] = recompute_v551j_component_contract_hash(row)
     return row
 
@@ -1330,9 +1379,20 @@ def validate_governed_input_scope(
     expected_wave: str,
     expected_country: str,
 ) -> tuple[pd.DataFrame, list[str]]:
+    from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+        BoundaryContractError,
+        verify_frame_source_wave_identity_coherence,
+    )
     from data.ddm_build_copy.ddm_v551j_schema import V551J_INPUT_SCOPE_AUDIT_SCHEMA
 
     issues: list[str] = []
+    expected_identity = resolve_v551j_scope_identity(
+        {
+            "source": expected_source,
+            "wave": expected_wave,
+        },
+        require_closed_35=True,
+    )
 
     def _values(frame: pd.DataFrame, *columns: str) -> list[str]:
         for column in columns:
@@ -1340,16 +1400,22 @@ def validate_governed_input_scope(
                 return sorted({str(value).strip() for value in frame[column].fillna("").astype(str) if str(value).strip()})
         return []
 
-    def _status(source_values: list[str], wave_values: list[str], country_values: list[str]) -> tuple[str, list[str]]:
+    def _status(frame: pd.DataFrame, source_values: list[str], wave_values: list[str], country_values: list[str]) -> tuple[str, list[str]]:
         row_issues: list[str] = []
         if not source_values or not wave_values or not country_values:
             row_issues.append("scope_contract_unresolved")
-        if source_values and source_values != [expected_source]:
-            row_issues.append("scope_contract_mismatch")
-        if wave_values and wave_values != [expected_wave]:
-            row_issues.append("scope_contract_mismatch")
         if country_values and country_values != [expected_country]:
             row_issues.append("scope_contract_mismatch")
+        if source_values and wave_values:
+            try:
+                verify_frame_source_wave_identity_coherence(
+                    frame,
+                    expected_source_family_uid=expected_identity["source_family_uid"],
+                    expected_wave_uid=expected_identity["wave_uid"],
+                    allow_empty=False,
+                )
+            except BoundaryContractError:
+                row_issues.append("scope_contract_mismatch")
         if "scope_contract_unresolved" in row_issues:
             return "FAIL_SCOPE_UNRESOLVED", row_issues
         if "scope_contract_mismatch" in row_issues:
@@ -1359,7 +1425,7 @@ def validate_governed_input_scope(
     rows: list[dict[str, Any]] = []
 
     def _append(name: str, frame: pd.DataFrame, source_values: list[str], wave_values: list[str], country_values: list[str], extra_issues: list[str] | None = None) -> None:
-        status, row_issues = _status(source_values, wave_values, country_values)
+        status, row_issues = _status(frame, source_values, wave_values, country_values)
         row_issues.extend(extra_issues or [])
         if extra_issues and status == "PASS":
             status = "FAIL_PARENT_COVERAGE"
@@ -1652,12 +1718,15 @@ def build_v551j_joint_outputs_v2(
             "compatibility_projection_only": False, "not_authoritative_v2_artifact": False,
         }
         row["joint_measurement_contract_hash"] = recompute_joint_measurement_contract_hash(row)
+        row.update(_uid_payload(row, comp_records))
+        row["uid_native_packet_id_v1"] = recompute_v551j_uid_native_packet_id(row)
+        row["cross_wave_homology_key_v1"] = recompute_v551j_homology_key(row, comp_records)
         measurement_hash = row["joint_measurement_contract_hash"]
         candidate_rows.append(row)
         measurement_rows.append({"run_id": run_id, "pattern_id": pid, "packet_id": packet_id, "pattern_measurement_source": "v550j_joint_response_pattern_index", "association_measurements_present": bool(association_index is not None and not association_index.empty), "association_measurements_used_in_core_packet": False, "atom_measurements_used_as_pattern_measurements": False, "measurement_contract_hash": measurement_hash, "measurement_separation_status": "PASS", "violations_json": _v2_json([]), "created_at": utc_now(), "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3"})
-        cert_audit_rows.append({"run_id": run_id, "packet_id": packet_id, "packet_type": evidence_class, "source": row["source"], "wave": row["wave"], "canonical_wave": row["canonical_wave"], "country_code": row["country_code"], "gate_identity_pass": True, "gate_lifecycle_pass": True, "gate_authority_pass": authority["joint_evidence_authority_status"] == "CERTIFIED", "gate_support_pass": measurements["joint_measurement_status"] == "COMPLETE_PATTERN_MEASUREMENT_CONTRACT", "gate_directionality_pass": authority["joint_directionality_authority_status"] == "CERTIFIED", "gate_forbidden_claims_pass": True, "gate_mediation_flags_pass": True, "gate_no_downstream_leakage_pass": True, "certified": ready, "certification_blockers_json": _v2_json(blockers), "certification_notes_json": _v2_json(reviews), "created_at": utc_now(), "schema_version": "v2.2.3"})
+        cert_audit_rows.append({"run_id": run_id, "packet_id": packet_id, "packet_type": evidence_class, "source": row["source"], "wave": row["wave"], "canonical_wave": row["canonical_wave"], "country_code": row["country_code"], **_uid_audit_fields(row), "gate_identity_pass": True, "gate_lifecycle_pass": True, "gate_authority_pass": authority["joint_evidence_authority_status"] == "CERTIFIED", "gate_support_pass": measurements["joint_measurement_status"] == "COMPLETE_PATTERN_MEASUREMENT_CONTRACT", "gate_directionality_pass": authority["joint_directionality_authority_status"] == "CERTIFIED", "gate_forbidden_claims_pass": True, "gate_mediation_flags_pass": True, "gate_no_downstream_leakage_pass": True, "certified": ready, "certification_blockers_json": _v2_json(blockers), "certification_notes_json": _v2_json(reviews), "created_at": utc_now(), "schema_version": "v2.2.3"})
         if not ready:
-            rejection_rows.append({"run_id": run_id, "packet_id": packet_id, "packet_type": evidence_class, "source": row["source"], "wave": row["wave"], "canonical_wave": row["canonical_wave"], "country_code": row["country_code"], "certification_blocker_code": status, "certification_blocker_detail": _v2_json(blockers or reviews), "gate_identity_pass": True, "gate_lifecycle_pass": True, "gate_authority_pass": False, "gate_support_pass": measurements["joint_measurement_status"] == "COMPLETE_PATTERN_MEASUREMENT_CONTRACT", "gate_directionality_pass": authority["joint_directionality_authority_status"] == "CERTIFIED", "gate_forbidden_claims_pass": True, "gate_mediation_flags_pass": True, "gate_no_downstream_leakage_pass": True, "created_at": utc_now(), "schema_version": "v2.2.3"})
+            rejection_rows.append({"run_id": run_id, "packet_id": packet_id, "packet_type": evidence_class, "source": row["source"], "wave": row["wave"], "canonical_wave": row["canonical_wave"], "country_code": row["country_code"], **_uid_audit_fields(row), "certification_blocker_code": status, "certification_blocker_detail": _v2_json(blockers or reviews), "gate_identity_pass": True, "gate_lifecycle_pass": True, "gate_authority_pass": False, "gate_support_pass": measurements["joint_measurement_status"] == "COMPLETE_PATTERN_MEASUREMENT_CONTRACT", "gate_directionality_pass": authority["joint_directionality_authority_status"] == "CERTIFIED", "gate_forbidden_claims_pass": True, "gate_mediation_flags_pass": True, "gate_no_downstream_leakage_pass": True, "created_at": utc_now(), "schema_version": "v2.2.3"})
     candidate = pd.DataFrame(candidate_rows).reindex(columns=V551J_JOINT_PACKET_CANDIDATE_INDEX_SCHEMA["required_columns"])
     certified = candidate[candidate["certification_status"].astype(str).str.startswith("CERTIFIED")].copy().reindex(columns=V551J_CERTIFIED_JOINT_PACKET_INDEX_SCHEMA["required_columns"])
     review = candidate[candidate["review_required"].fillna(False).astype(bool)].copy()

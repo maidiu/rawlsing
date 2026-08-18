@@ -19,6 +19,11 @@ from pathlib import Path
 from typing import TextIO
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from data.ddm_build_copy.ddm_v550_shards import require_v550_execution_identity, shard_id_for
+
 DEFAULT_READINESS_ROOT = ROOT / "data" / "ddm_repository_copy" / "v550" / "readiness_checks"
 
 
@@ -166,7 +171,32 @@ def parse_args() -> argparse.Namespace:
 
 def _load_plan_rows(plan_csv: Path) -> list[dict[str, str]]:
     with plan_csv.open(newline="", encoding="utf-8") as handle:
-        return list(csv.DictReader(handle))
+        rows = list(csv.DictReader(handle))
+    validated: list[dict[str, str]] = []
+    for row in rows:
+        source = str(row.get("raw_db_source") or row.get("source") or "").strip()
+        wave = str(row.get("raw_db_wave") or row.get("wave") or "").strip()
+        source_uid = str(row.get("source_family_uid") or "").strip()
+        wave_uid = str(row.get("wave_uid") or "").strip()
+        shard_id = str(row.get("shard_id") or "").strip()
+        if not source or not wave or not source_uid or not wave_uid:
+            raise RuntimeError(
+                "[V550_PLAN_UID_IDENTITY_MISSING] shard plan rows require raw source/wave plus source_family_uid/wave_uid"
+            )
+        require_v550_execution_identity(
+            source,
+            wave,
+            expected_source_family_uid=source_uid,
+            expected_wave_uid=wave_uid,
+            redundant_identity=row,
+        )
+        expected_shard_id = shard_id_for(source, wave)
+        if shard_id != expected_shard_id:
+            raise RuntimeError(
+                f"[V550_HISTORICAL_SHARD_ID_MISMATCH] expected={expected_shard_id} actual={shard_id or '<missing>'}"
+            )
+        validated.append(row)
+    return validated
 
 
 def _read_json(path: Path) -> dict[str, object] | None:
@@ -216,7 +246,12 @@ def _build_command(
     write_csv: bool,
     write_parquet: bool,
 ) -> list[str]:
+    source_uid = str(row.get("source_family_uid") or "").strip()
+    wave_uid = str(row.get("wave_uid") or "").strip()
     cmd = [
+        "env",
+        f"V550_SOURCE_FAMILY_UID={source_uid}",
+        f"V550_WAVE_UID={wave_uid}",
         sys.executable,
         str(ROOT / "data" / "ddm_build_copy" / "build_determinicity_wave_shard_v550.py"),
         "--run-id",

@@ -17,6 +17,14 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    BoundaryContractError,
+    verify_frame_source_wave_identity_coherence,
+)
+from data.ddm_build_copy.ddm_source_wave_identity import (
+    SourceWaveIdentityError,
+    resolve_source_wave_identity,
+)
 from data.ddm_build_copy.ddm_v551_atoms import (
     V551_COMPILER_VERSION,
     V551_SCHEMA_VERSION,
@@ -101,26 +109,64 @@ def _unique_nonblank(frame: pd.DataFrame, column: str) -> list[str]:
 
 
 def _producer_scope_identity(bridge: pd.DataFrame) -> dict[str, str]:
-    sources = _unique_nonblank(bridge, "source")
-    waves = _unique_nonblank(bridge, "canonical_wave")
+    uid_columns = {"source_family_uid", "wave_uid"}
+    has_uid_identity = bool(uid_columns & set(bridge.columns))
+    source_family_uid = ""
+    wave_uid = ""
+    if has_uid_identity:
+        missing = sorted(uid_columns - set(bridge.columns))
+        if missing:
+            raise RuntimeError(f"BLOCKED_V551_UID_SCOPE_COLUMNS_MISSING observed={missing}")
+        if bridge["source_family_uid"].map(_clean).eq("").any() or bridge["wave_uid"].map(_clean).eq("").any():
+            raise RuntimeError("BLOCKED_V551_UID_SCOPE_INCOMPLETE")
+        try:
+            identity_scope = verify_frame_source_wave_identity_coherence(bridge, allow_empty=False)
+        except BoundaryContractError as exc:
+            raise RuntimeError(f"BLOCKED_V551_SOURCE_WAVE_IDENTITY:{exc}") from exc
+        try:
+            production_identity = resolve_source_wave_identity(
+                identity_scope["canonical_display_source"],
+                identity_scope["canonical_display_wave"],
+                require_closed_35=True,
+            )
+        except SourceWaveIdentityError as exc:
+            raise RuntimeError(f"BLOCKED_V551_PRODUCTION_IDENTITY:{exc}") from exc
+        source_family_uid = identity_scope["source_family_uid"]
+        wave_uid = identity_scope["wave_uid"]
+        if (
+            production_identity.source_family_uid != source_family_uid
+            or production_identity.wave_uid != wave_uid
+        ):
+            raise RuntimeError("BLOCKED_V551_UID_SCOPE_CONTRADICTION")
+        source = identity_scope["canonical_display_source"]
+        wave = identity_scope["canonical_display_wave"]
+    else:
+        sources = _unique_nonblank(bridge, "source")
+        waves = _unique_nonblank(bridge, "canonical_wave")
+        if len(sources) != 1:
+            raise RuntimeError(f"BLOCKED_V551_SOURCE_SCOPE_NOT_SINGULAR observed={sources}")
+        if len(waves) != 1:
+            raise RuntimeError(f"BLOCKED_V551_WAVE_SCOPE_NOT_SINGULAR observed={waves}")
+        source = sources[0]
+        wave = waves[0]
     countries = _unique_nonblank(bridge, "country_code")
     shards = _unique_nonblank(bridge, "shard_id")
-    if len(sources) != 1:
-        raise RuntimeError(f"BLOCKED_V551_SOURCE_SCOPE_NOT_SINGULAR observed={sources}")
-    if len(waves) != 1:
-        raise RuntimeError(f"BLOCKED_V551_WAVE_SCOPE_NOT_SINGULAR observed={waves}")
     if len(shards) > 1:
         raise RuntimeError(f"BLOCKED_V551_SHARD_SCOPE_NOT_SINGULAR observed={shards}")
     if not shards and len(countries) != 1:
         raise RuntimeError(f"BLOCKED_V551_COUNTRY_SCOPE_NOT_SINGULAR observed={countries}")
-    return {
-        "source": sources[0],
-        "wave": waves[0],
-        "canonical_wave": waves[0],
+    scope = {
+        "source": source,
+        "wave": wave,
+        "canonical_wave": wave,
         "country_code": countries[0] if len(countries) == 1 else "",
         "shard_id": shards[0] if shards else "",
         "scope_kind": "shard" if shards else "country",
     }
+    if source_family_uid and wave_uid:
+        scope["source_family_uid"] = source_family_uid
+        scope["wave_uid"] = wave_uid
+    return scope
 
 
 def _boundary_statuses(candidate_count: int, promotable_count: int) -> tuple[str, str, str, str]:
@@ -163,6 +209,7 @@ def compile_v551_run(
     run_id: str,
     bridge_path: str | Path,
     output_root: str | Path = DEFAULT_OUTPUT_ROOT,
+    write_parquet: bool = True,
     write_csv: bool = False,
 ) -> dict[str, Any]:
     (
@@ -171,11 +218,13 @@ def compile_v551_run(
         publish_staged_directory,
         validate_machine_output_policy,
     ) = _boundary_api()
-    validate_machine_output_policy(write_parquet=True, write_csv=write_csv)
+    validate_machine_output_policy(write_parquet=write_parquet, write_csv=write_csv)
 
     contract = validate_v551_bridge_input_contract(bridge)
     if contract["status"] != "PASS":
-        raise RuntimeError(contract["status"] + ":" + ",".join(contract["missing_columns"]))
+        raise RuntimeError(
+            contract["status"] + ":" + (contract.get("identity_error") or ",".join(contract["missing_columns"]))
+        )
     run_ids = sorted({_clean(value) for value in bridge["run_id"].tolist() if _clean(value)})
     if len(run_ids) != 1 or run_ids[0] != run_id:
         raise RuntimeError(f"BLOCKED_V551_RUN_IDENTITY_MISMATCH expected={run_id} observed={run_ids}")
@@ -253,6 +302,9 @@ def compile_v551_run(
             "producer_bridge_path": str(bridge_path_obj),
             "producer_bridge_file_sha256": _file_hash(bridge_path_obj),
         }
+        if scope.get("source_family_uid") and scope.get("wave_uid"):
+            manifest["source_family_uid"] = scope["source_family_uid"]
+            manifest["wave_uid"] = scope["wave_uid"]
         atomic_write_json(staging_dir / "manifest.json", manifest)
         publish_staged_directory(staging_dir, final_dir)
         return manifest
@@ -267,7 +319,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--bridge-path", required=True)
     parser.add_argument("--output-root", default=str(DEFAULT_OUTPUT_ROOT))
-    parser.add_argument("--write-csv", action="store_true")
+    parser.add_argument("--write-parquet", dest="write_parquet", action="store_true", default=True)
+    parser.add_argument("--no-write-parquet", dest="write_parquet", action="store_false")
+    parser.add_argument("--write-csv", dest="write_csv", action="store_true", default=False)
+    parser.add_argument("--no-write-csv", dest="write_csv", action="store_false")
     parser.add_argument("--v551-compile-mode", choices=("canonical",), default="canonical")
     return parser.parse_args()
 
@@ -281,6 +336,7 @@ def main() -> int:
         run_id=args.run_id,
         bridge_path=bridge_path,
         output_root=args.output_root,
+        write_parquet=args.write_parquet,
         write_csv=args.write_csv,
     )
     print(json.dumps(manifest, indent=2, ensure_ascii=False))

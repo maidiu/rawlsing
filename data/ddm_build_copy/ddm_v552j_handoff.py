@@ -8,7 +8,8 @@ import pandas as pd
 V552J_JOIN_SCHEMA_VERSION = "v1.0"
 V552J_JOIN_COMPILER_VERSION = "v552j_structural_join_v1"
 JOIN_COLUMNS = """run_id v552j_join_id packet_id source_packet_kind source wave canonical_wave country_code shard_id v551j_lane v551j_certification_status v551j_review_status support_status directionality_status authority_status v552_structural_fact_id source_v552_artifact source_v552_structural_fact_ids_json source_v552_structural_fact_lane source_v552_structural_fact_grain source_v552_temporal_key_source_id relation_axis_id target_entity_id driver_facet_id structural_channel_id horizon_constraint_id question_id pressure_score pressure_score_status measurement_evidence_status observed_zero v552_structural_match_status v552_structural_match_score matched_fact_count structural_dimension_status structural_dimensions_resolved_for_v553 resolution_status join_status join_permission repair_debt_status allowed_downstream_use ready_for_v553_probe ready_for_v553_temporal_field allowed_for_v553_probe allowed_for_v553_temporal_field v553_handoff_mode v553_handoff_allowed v553_probe_allowed v553_temporal_field_allowed v553_handoff_blocked_reason certification_score support_score directionality_score authority_score comparability_score confidence_score readiness_score source_v551j_manifest_sha256 source_v552_manifest_sha256 schema_version compiler_version""".split()
-AUDIT_COLUMNS = "run_id packet_id source_packet_kind source canonical_wave country_code join_status reason scope_candidate_count semantic_match_count schema_version compiler_version".split()
+AUDIT_COLUMNS = "run_id packet_id source_packet_kind source source_family_uid canonical_wave wave_uid country_code join_status reason scope_candidate_count semantic_match_count schema_version compiler_version".split()
+JOIN_COLUMNS = JOIN_COLUMNS[:5] + ["source_family_uid"] + JOIN_COLUMNS[5:6] + ["wave_uid"] + JOIN_COLUMNS[6:]
 
 def _clean(v: Any) -> str:
     if v is None: return ""
@@ -53,13 +54,16 @@ def _row_value(row: Mapping[str,Any]|pd.Series,names:tuple[str,...])->str:
     return _first_nonempty(*[row.get(n) for n in names])
 
 def _scope_identity(row: Mapping[str,Any]|pd.Series)->dict[str,str]:
-    return {"run_id":_row_value(row,("run_id","source_run_id","producer_run_id")),"source":_row_value(row,("source","source_family")),"wave":_row_value(row,("canonical_wave","wave")),"country_code":_row_value(row,("country_code","country")),"shard_id":_row_value(row,("shard_id",))}
+    return {"run_id":_row_value(row,("run_id","source_run_id","producer_run_id")),"source":_row_value(row,("source","source_family")),"source_family_uid":_clean(row.get("source_family_uid")),"wave":_row_value(row,("canonical_wave","wave")),"wave_uid":_clean(row.get("wave_uid")),"country_code":_row_value(row,("country_code","country")),"shard_id":_row_value(row,("shard_id",))}
 
 def _same_scope(packet: Mapping[str,Any]|pd.Series,fact: Mapping[str,Any]|pd.Series)->bool:
     p,f=_scope_identity(packet),_scope_identity(fact)
-    if any(not p[k] or not f[k] or p[k]!=f[k] for k in ("run_id","source","wave")):return False
-    if p["country_code"] or f["country_code"]:return bool(p["country_code"] and f["country_code"] and p["country_code"]==f["country_code"])
-    return bool(p["shard_id"] and f["shard_id"] and p["shard_id"]==f["shard_id"])
+    if any(not p[k] or not f[k] or p[k]!=f[k] for k in ("run_id","source_family_uid","wave_uid")):return False
+    if p["country_code"] or f["country_code"]:
+        if not p["country_code"] or not f["country_code"] or p["country_code"]!=f["country_code"]:return False
+    if bool(p["shard_id"]) != bool(f["shard_id"]):return False
+    if p["shard_id"] and p["shard_id"]!=f["shard_id"]:return False
+    return bool(p["country_code"] or p["shard_id"])
 
 def _semantic_values(row: Mapping[str,Any]|pd.Series,plural:str,singular:str)->set[str]:
     vals=set(_parse_json_array(row.get(plural))); one=_clean(row.get(singular))
@@ -128,7 +132,7 @@ def _mean_or_none(df:pd.DataFrame,col:str)->float|None:
     if df.empty or col not in df:return None
     v=pd.to_numeric(df[col],errors="coerce").dropna(); return None if v.empty else round(float(v.mean()),6)
 
-def build_v552j_join(*,run_id:str,v551j_certified:pd.DataFrame,v551j_review:pd.DataFrame,v552_structural_facts:pd.DataFrame,v552_temporal_keys:pd.DataFrame|None=None,v551j_state:Mapping[str,Any],v552_state:Mapping[str,Any],v551j_manifest_sha256:str="",v552_manifest_sha256:str="")->dict[str,Any]:
+def _build_v552j_join_base(*,run_id:str,v551j_certified:pd.DataFrame,v551j_review:pd.DataFrame,v552_structural_facts:pd.DataFrame,v552_temporal_keys:pd.DataFrame|None=None,v551j_state:Mapping[str,Any],v552_state:Mapping[str,Any],v551j_manifest_sha256:str="",v552_manifest_sha256:str="")->dict[str,Any]:
     temporal=v552_temporal_keys if v552_temporal_keys is not None else pd.DataFrame(); rows=[]; audits=[]; present=_clean(v551j_state.get("evidence_status"))=="PRESENT" and _clean(v552_state.get("evidence_status"))=="PRESENT"
     if present:
         for kind,p in _packet_rows(v551j_certified,v551j_review):
@@ -140,6 +144,16 @@ def build_v552j_join(*,run_id:str,v551j_certified:pd.DataFrame,v551j_review:pd.D
     join=pd.DataFrame(rows,columns=JOIN_COLUMNS); audit=pd.DataFrame(audits,columns=AUDIT_COLUMNS); st=_derive_join_state(v551j_state,v552_state,join); constraints=join.loc[join["join_permission"].eq("ALLOW")].copy() if not join.empty else join.copy(); metrics={"constraint_count":len(constraints),"review_context_count":int(join["join_permission"].eq("REVIEW_ONLY").sum()) if not join.empty else 0,"denied_join_count":int(join["join_permission"].eq("DENY").sum()) if not join.empty else 0,"observed_zero_count":int(join["observed_zero"].map(_truthy).sum()) if not join.empty else 0,"unresolved_join_count":int(audit["join_status"].eq("UNRESOLVED_NO_STRUCTURAL_MATCH").sum()) if not audit.empty else 0}
     for col in ("certification_score","support_score","directionality_score","authority_score","comparability_score","confidence_score","readiness_score"):metrics[f"mean_{col}"]=_mean_or_none(constraints,col)
     return {"join_index":join,"join_audit":audit,"state":st,"metrics":metrics}
+
+def build_v552j_join(**kwargs:Any)->dict[str,Any]:
+    result=_build_v552j_join_base(**kwargs)
+    uid_by_packet={_clean(r.get("packet_id") or r.get("v551j_packet_id")):( _clean(r.get("source_family_uid")), _clean(r.get("wave_uid")) ) for frame in (kwargs["v551j_certified"],kwargs["v551j_review"]) for r in ([] if frame.empty else frame.to_dict("records"))}
+    for name in ("join_index","join_audit"):
+        frame=result[name].copy()
+        if not frame.empty:
+            pairs=frame["packet_id"].map(uid_by_packet);frame["source_family_uid"]=pairs.map(lambda x:x[0]);frame["wave_uid"]=pairs.map(lambda x:x[1])
+        result[name]=frame
+    return result
 
 def build_v552j_structural_handoff(**kwargs:Any)->dict[str,Any]:
     required={"run_id","v551j_certified","v551j_review","v552_structural_facts","v551j_state","v552_state"}

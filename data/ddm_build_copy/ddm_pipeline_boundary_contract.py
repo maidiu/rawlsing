@@ -21,6 +21,13 @@ from typing import Any, Iterable, Mapping
 
 import pandas as pd
 
+from data.ddm_build_copy.ddm_source_wave_identity import (
+    SourceWaveIdentityError,
+    load_identity_registry,
+    resolve_source_family_identity,
+    resolve_source_wave_identity,
+)
+
 PIPELINE_BOUNDARY_CONTRACT_VERSION = "rawlsing_pipeline_boundary_v1"
 RUN_INTEGRITY_STATUSES = frozenset({"PASS", "FAIL"})
 EVIDENCE_STATUSES = frozenset({"PRESENT", "VALID_EMPTY", "NOT_APPLICABLE", "APPLICABLE_UNRESOLVED"})
@@ -28,6 +35,29 @@ DOWNSTREAM_PERMISSION_STATUSES = frozenset({"ALLOW", "DENY", "NOT_APPLICABLE"})
 
 _READY_LEGACY = re.compile(r"^(?:READY|PASS|PASSED|SUCCESS|COMPLETE|COMPLETED|VALIDATED|OK)(?:_[A-Z0-9]+)*$")
 _BLOCKED_LEGACY = re.compile(r"^(?:BLOCKED|NOT_READY|FAILED|FAIL|EMPTY_NO|MISSING_REQUIRED)(?:_[A-Z0-9]+)*$")
+
+_SOURCE_REPRESENTATION_FIELDS = (
+    "source",
+    "source_family",
+    "survey_family",
+    "canonical_source",
+    "canonical_display_source",
+    "raw_source",
+)
+_WAVE_REPRESENTATION_FIELDS = (
+    "wave",
+    "canonical_wave",
+    "wave_id",
+    "canonical_display_wave",
+    "raw_wave",
+)
+_SOURCE_UID_FIELDS = ("source_family_uid",)
+_WAVE_UID_FIELDS = ("wave_uid",)
+_IDENTITY_CONTAINER_FIELDS = (
+    "producer_scope_identity",
+    "scope_identity",
+    "source_wave_identity",
+)
 
 
 class PipelineBoundaryError(RuntimeError):
@@ -89,6 +119,24 @@ class BoundaryVerification:
     state: BoundaryState
     verified_artifacts: tuple[ArtifactInspection, ...]
     identity: dict[str, str]
+
+
+@dataclass(frozen=True)
+class SourceWaveIdentityCoherence:
+    """One governed machine identity plus every historical representation seen."""
+
+    source_family_uid: str
+    wave_uid: str
+    canonical_display_source: str
+    canonical_display_wave: str
+    source_representations: tuple[tuple[str, str], ...]
+    wave_representations: tuple[tuple[str, str], ...]
+    source_uid_representations: tuple[tuple[str, str], ...]
+    wave_uid_representations: tuple[tuple[str, str], ...]
+
+    @property
+    def complete(self) -> bool:
+        return bool(self.source_family_uid and self.wave_uid)
 
 
 def sha256_file(path: str | Path) -> str:
@@ -236,12 +284,304 @@ def boundary_state_from_payload(payload: Mapping[str, Any], status_keys: Iterabl
     raise BoundaryContractError("STATUS_FIELD_MISSING_OR_EMPTY")
 
 
-def _identity_value(payload: Mapping[str, Any], keys: Iterable[str]) -> str:
-    for key in keys:
-        value = _text(payload.get(key))
-        if value:
-            return value
-    return ""
+def _identity_mappings(payload: Mapping[str, Any]) -> tuple[tuple[str, Mapping[str, Any]], ...]:
+    mappings: list[tuple[str, Mapping[str, Any]]] = [("", payload)]
+    for field in _IDENTITY_CONTAINER_FIELDS:
+        nested = payload.get(field)
+        if isinstance(nested, Mapping):
+            mappings.append((field, nested))
+    return tuple(mappings)
+
+
+def _populated_representations(
+    payload: Mapping[str, Any], fields: Iterable[str]
+) -> tuple[tuple[str, str], ...]:
+    values: list[tuple[str, str]] = []
+    for prefix, mapping in _identity_mappings(payload):
+        for field in fields:
+            value = _text(mapping.get(field))
+            if not value:
+                continue
+            qualified = f"{prefix}.{field}" if prefix else field
+            values.append((qualified, value))
+    return tuple(values)
+
+
+def _representation_summary(rows: Iterable[tuple[str, str, str]]) -> str:
+    return ",".join(f"{field}={value!r}->{uid}" for field, value, uid in rows)
+
+
+def validate_source_wave_identity_coherence(
+    payload: Mapping[str, Any],
+    *,
+    expected_source: str = "",
+    expected_wave: str = "",
+    expected_source_family_uid: str = "",
+    expected_wave_uid: str = "",
+    registry_path: str | Path | None = None,
+    require_complete: bool = False,
+) -> SourceWaveIdentityCoherence:
+    """Resolve every populated source/wave representation to one governed UID pair.
+
+    Historical labels remain provenance only.  No source, wave, canonical, raw,
+    or UID field is privileged by position or first-nonblank precedence.
+    Equivalent family-scoped aliases are accepted; contradictions fail closed.
+    """
+    source_rows = list(_populated_representations(payload, _SOURCE_REPRESENTATION_FIELDS))
+    wave_rows = list(_populated_representations(payload, _WAVE_REPRESENTATION_FIELDS))
+    source_uid_rows = list(_populated_representations(payload, _SOURCE_UID_FIELDS))
+    wave_uid_rows = list(_populated_representations(payload, _WAVE_UID_FIELDS))
+
+    registry = load_identity_registry(registry_path)
+
+    resolved_sources: list[tuple[str, str, str]] = []
+    for field, value in source_rows:
+        try:
+            identity = resolve_source_family_identity(value, registry_path=registry_path)
+        except SourceWaveIdentityError as exc:
+            raise BoundaryContractError(
+                f"SOURCE_IDENTITY_UNRESOLVED:{field}={value!r}:{type(exc).__name__}:{exc}"
+            ) from exc
+        resolved_sources.append((field, value, identity.source_family_uid))
+
+    if _text(expected_source):
+        try:
+            expected_identity = resolve_source_family_identity(
+                expected_source, registry_path=registry_path
+            )
+        except SourceWaveIdentityError as exc:
+            raise BoundaryContractError(
+                f"EXPECTED_SOURCE_IDENTITY_UNRESOLVED:{expected_source!r}:{type(exc).__name__}:{exc}"
+            ) from exc
+        resolved_sources.append(
+            ("<expected_source>", _text(expected_source), expected_identity.source_family_uid)
+        )
+
+    resolved_source_uids: list[tuple[str, str, str]] = []
+    for field, value in source_uid_rows:
+        if value not in registry.source_uid_index:
+            raise BoundaryContractError(f"SOURCE_FAMILY_UID_UNKNOWN:{field}={value!r}")
+        resolved_source_uids.append((field, value, value))
+    if _text(expected_source_family_uid):
+        value = _text(expected_source_family_uid)
+        if value not in registry.source_uid_index:
+            raise BoundaryContractError(f"EXPECTED_SOURCE_FAMILY_UID_UNKNOWN:{value!r}")
+        resolved_source_uids.append(("<expected_source_family_uid>", value, value))
+
+    source_uid_candidates = {
+        uid for _, _, uid in [*resolved_sources, *resolved_source_uids] if uid
+    }
+    if len(source_uid_candidates) > 1:
+        summary = _representation_summary([*resolved_sources, *resolved_source_uids])
+        raise BoundaryContractError(f"SOURCE_IDENTITY_CONTRADICTION:{summary}")
+    source_uid = next(iter(source_uid_candidates), "")
+
+    if wave_rows and not source_uid:
+        raise BoundaryContractError("SOURCE_IDENTITY_REQUIRED_FOR_WAVE_REPRESENTATIONS")
+
+    canonical_source = ""
+    if source_uid:
+        canonical_source = _text(
+            registry.source_uid_index[source_uid].get("canonical_display_source")
+        )
+
+    resolved_waves: list[tuple[str, str, str]] = []
+    for field, value in wave_rows:
+        try:
+            identity = resolve_source_wave_identity(
+                canonical_source, value, registry_path=registry_path
+            )
+        except SourceWaveIdentityError as exc:
+            raise BoundaryContractError(
+                f"WAVE_IDENTITY_UNRESOLVED:{field}={value!r}:source_uid={source_uid or '<empty>'}:"
+                f"{type(exc).__name__}:{exc}"
+            ) from exc
+        resolved_waves.append((field, value, identity.wave_uid))
+
+    if _text(expected_wave):
+        if not source_uid:
+            raise BoundaryContractError("EXPECTED_WAVE_REQUIRES_SOURCE_IDENTITY")
+        try:
+            expected_identity = resolve_source_wave_identity(
+                canonical_source, expected_wave, registry_path=registry_path
+            )
+        except SourceWaveIdentityError as exc:
+            raise BoundaryContractError(
+                f"EXPECTED_WAVE_IDENTITY_UNRESOLVED:{expected_wave!r}:source_uid={source_uid}:"
+                f"{type(exc).__name__}:{exc}"
+            ) from exc
+        resolved_waves.append(("<expected_wave>", _text(expected_wave), expected_identity.wave_uid))
+
+    resolved_wave_uids: list[tuple[str, str, str]] = []
+    for field, value in wave_uid_rows:
+        record = registry.wave_uid_index.get(value)
+        if record is None:
+            raise BoundaryContractError(f"WAVE_UID_UNKNOWN:{field}={value!r}")
+        family = record.get("_family") or {}
+        record_source_uid = _text(family.get("source_family_uid"))
+        if source_uid and record_source_uid != source_uid:
+            raise BoundaryContractError(
+                f"WAVE_UID_SOURCE_CONTRADICTION:{field}={value!r}:"
+                f"wave_source_uid={record_source_uid}:source_uid={source_uid}"
+            )
+        resolved_wave_uids.append((field, value, value))
+    if _text(expected_wave_uid):
+        value = _text(expected_wave_uid)
+        record = registry.wave_uid_index.get(value)
+        if record is None:
+            raise BoundaryContractError(f"EXPECTED_WAVE_UID_UNKNOWN:{value!r}")
+        family = record.get("_family") or {}
+        record_source_uid = _text(family.get("source_family_uid"))
+        if source_uid and record_source_uid != source_uid:
+            raise BoundaryContractError(
+                "EXPECTED_WAVE_UID_SOURCE_CONTRADICTION:"
+                f"wave_uid={value}:wave_source_uid={record_source_uid}:source_uid={source_uid}"
+            )
+        resolved_wave_uids.append(("<expected_wave_uid>", value, value))
+
+    wave_uid_candidates = {
+        uid for _, _, uid in [*resolved_waves, *resolved_wave_uids] if uid
+    }
+    if len(wave_uid_candidates) > 1:
+        summary = _representation_summary([*resolved_waves, *resolved_wave_uids])
+        raise BoundaryContractError(f"WAVE_IDENTITY_CONTRADICTION:{summary}")
+    wave_uid = next(iter(wave_uid_candidates), "")
+
+    canonical_wave = ""
+    if wave_uid:
+        record = registry.wave_uid_index[wave_uid]
+        family = record.get("_family") or {}
+        record_source_uid = _text(family.get("source_family_uid"))
+        if source_uid and record_source_uid != source_uid:
+            raise BoundaryContractError(
+                "SOURCE_WAVE_UID_PAIR_CONTRADICTION:"
+                f"source_uid={source_uid}:wave_uid={wave_uid}:wave_source_uid={record_source_uid}"
+            )
+        if not source_uid:
+            source_uid = record_source_uid
+            canonical_source = _text(family.get("canonical_display_source"))
+        canonical_wave = _text(record.get("canonical_display_wave"))
+
+    if require_complete and (not source_uid or not wave_uid):
+        missing = []
+        if not source_uid:
+            missing.append("source_family_uid")
+        if not wave_uid:
+            missing.append("wave_uid")
+        raise BoundaryContractError(
+            "SOURCE_WAVE_IDENTITY_INCOMPLETE:" + ",".join(missing)
+        )
+
+    return SourceWaveIdentityCoherence(
+        source_family_uid=source_uid,
+        wave_uid=wave_uid,
+        canonical_display_source=canonical_source,
+        canonical_display_wave=canonical_wave,
+        source_representations=tuple(source_rows),
+        wave_representations=tuple(wave_rows),
+        source_uid_representations=tuple(source_uid_rows),
+        wave_uid_representations=tuple(wave_uid_rows),
+    )
+
+
+def verify_manifest_source_wave_identity_coherence(
+    payload: Mapping[str, Any],
+    *,
+    expected_source: str = "",
+    expected_wave: str = "",
+    expected_source_family_uid: str = "",
+    expected_wave_uid: str = "",
+    registry_path: str | Path | None = None,
+) -> SourceWaveIdentityCoherence:
+    """Reusable manifest-level UID coherence validation for producer boundaries."""
+    return validate_source_wave_identity_coherence(
+        payload,
+        expected_source=expected_source,
+        expected_wave=expected_wave,
+        expected_source_family_uid=expected_source_family_uid,
+        expected_wave_uid=expected_wave_uid,
+        registry_path=registry_path,
+        require_complete=True,
+    )
+
+
+def verify_frame_source_wave_identity_coherence(
+    frame: pd.DataFrame,
+    *,
+    expected_source: str = "",
+    expected_wave: str = "",
+    expected_source_family_uid: str = "",
+    expected_wave_uid: str = "",
+    registry_path: str | Path | None = None,
+    allow_empty: bool = True,
+) -> dict[str, Any]:
+    """Verify every row and every populated identity representation in a frame."""
+    if frame.empty:
+        if not allow_empty:
+            raise BoundaryContractError("FRAME_SOURCE_WAVE_IDENTITY_EMPTY")
+        return {
+            "row_count": 0,
+            "source_family_uid": _text(expected_source_family_uid),
+            "wave_uid": _text(expected_wave_uid),
+            "canonical_display_source": "",
+            "canonical_display_wave": "",
+        }
+
+    pairs: set[tuple[str, str]] = set()
+    canonical_sources: set[str] = set()
+    canonical_waves: set[str] = set()
+    for index, row in frame.iterrows():
+        try:
+            coherence = validate_source_wave_identity_coherence(
+                row.to_dict(),
+                expected_source=expected_source,
+                expected_wave=expected_wave,
+                expected_source_family_uid=expected_source_family_uid,
+                expected_wave_uid=expected_wave_uid,
+                registry_path=registry_path,
+                require_complete=True,
+            )
+        except BoundaryContractError as exc:
+            raise BoundaryContractError(
+                f"FRAME_SOURCE_WAVE_IDENTITY_INVALID:row={index}:{exc}"
+            ) from exc
+        pairs.add((coherence.source_family_uid, coherence.wave_uid))
+        canonical_sources.add(coherence.canonical_display_source)
+        canonical_waves.add(coherence.canonical_display_wave)
+    if len(pairs) != 1:
+        raise BoundaryContractError(
+            "FRAME_SOURCE_WAVE_UID_SCOPE_MIXED:" + ",".join(
+                f"{source_uid}|{wave_uid}" for source_uid, wave_uid in sorted(pairs)
+            )
+        )
+    source_uid, wave_uid = next(iter(pairs))
+    return {
+        "row_count": int(len(frame)),
+        "source_family_uid": source_uid,
+        "wave_uid": wave_uid,
+        "canonical_display_source": next(iter(canonical_sources), ""),
+        "canonical_display_wave": next(iter(canonical_waves), ""),
+    }
+
+
+def _verify_exact_scalar_representations(
+    payload: Mapping[str, Any],
+    *,
+    label: str,
+    expected: str,
+    fields: Iterable[str],
+) -> str:
+    if not expected:
+        return ""
+    rows = _populated_representations(payload, fields)
+    if not rows:
+        raise BoundaryContractError(f"IDENTITY_FIELD_MISSING:{label}")
+    for field, actual in rows:
+        if actual != expected:
+            raise BoundaryContractError(
+                f"IDENTITY_MISMATCH:{label}:field={field}:expected={expected}:actual={actual}"
+            )
+    return expected
 
 
 def verify_exact_identity(
@@ -252,24 +592,71 @@ def verify_exact_identity(
     wave: str = "",
     country_code: str = "",
     shard_id: str = "",
+    source_family_uid: str = "",
+    wave_uid: str = "",
 ) -> dict[str, str]:
-    expected = {
-        "run_id": (run_id, ("producer_run_id", "run_id")),
-        "source": (source, ("source", "source_family", "survey_family", "canonical_source")),
-        "wave": (wave, ("wave", "canonical_wave", "wave_id")),
-        "country_code": (country_code, ("country_code", "country")),
-        "shard_id": (shard_id, ("shard_id",)),
-    }
+    """Verify exact producer scope using UID identity plus independent scalar laws.
+
+    Source/wave labels are ingress/provenance representations.  All populated
+    representations must cohere through the W01 kernel; exact machine scope is
+    the resulting source_family_uid + wave_uid.  Run, country, and shard checks
+    remain independent exact comparisons and are not weakened by alias support.
+    """
     resolved: dict[str, str] = {}
-    for label, (want, keys) in expected.items():
-        if not want:
-            continue
-        got = _identity_value(payload, keys)
-        if not got:
-            raise BoundaryContractError(f"IDENTITY_FIELD_MISSING:{label}")
-        if got != want:
-            raise BoundaryContractError(f"IDENTITY_MISMATCH:{label}:expected={want}:actual={got}")
-        resolved[label] = got
+    resolved["run_id"] = _verify_exact_scalar_representations(
+        payload,
+        label="run_id",
+        expected=run_id,
+        fields=("producer_run_id", "run_id"),
+    )
+
+    has_source_wave = any(
+        _populated_representations(payload, fields)
+        for fields in (
+            _SOURCE_REPRESENTATION_FIELDS,
+            _WAVE_REPRESENTATION_FIELDS,
+            _SOURCE_UID_FIELDS,
+            _WAVE_UID_FIELDS,
+        )
+    )
+    if source or wave or source_family_uid or wave_uid or has_source_wave:
+        coherence = validate_source_wave_identity_coherence(
+            payload,
+            expected_source=source,
+            expected_wave=wave,
+            expected_source_family_uid=source_family_uid,
+            expected_wave_uid=wave_uid,
+            require_complete=bool(source or wave or source_family_uid or wave_uid),
+        )
+        if (source or source_family_uid) and not (
+            coherence.source_representations or coherence.source_uid_representations
+        ):
+            raise BoundaryContractError("IDENTITY_FIELD_MISSING:source")
+        if (wave or wave_uid) and not (
+            coherence.wave_representations or coherence.wave_uid_representations
+        ):
+            raise BoundaryContractError("IDENTITY_FIELD_MISSING:wave")
+        if coherence.source_family_uid:
+            resolved["source_family_uid"] = coherence.source_family_uid
+            resolved["source"] = source or coherence.canonical_display_source
+        if coherence.wave_uid:
+            resolved["wave_uid"] = coherence.wave_uid
+            resolved["wave"] = wave or coherence.canonical_display_wave
+
+    if country_code:
+        resolved["country_code"] = _verify_exact_scalar_representations(
+            payload,
+            label="country_code",
+            expected=country_code,
+            fields=("country_code", "country"),
+        )
+    if shard_id:
+        resolved["shard_id"] = _verify_exact_scalar_representations(
+            payload,
+            label="shard_id",
+            expected=shard_id,
+            fields=("shard_id",),
+        )
     return resolved
 
 
@@ -294,6 +681,8 @@ def verify_boundary_manifest(
     wave: str = "",
     country_code: str = "",
     shard_id: str = "",
+    source_family_uid: str = "",
+    wave_uid: str = "",
     required_artifacts: Iterable[str] = (),
 ) -> BoundaryVerification:
     manifest = read_status_document(manifest_path)
@@ -310,7 +699,14 @@ def verify_boundary_manifest(
             f"DOWNSTREAM_NOT_PERMITTED:integrity={state.run_integrity_status}:evidence={state.evidence_status}:permission={state.downstream_permission_status}"
         )
     identity = verify_exact_identity(
-        payload, run_id=run_id, source=source, wave=wave, country_code=country_code, shard_id=shard_id
+        payload,
+        run_id=run_id,
+        source=source,
+        wave=wave,
+        country_code=country_code,
+        shard_id=shard_id,
+        source_family_uid=source_family_uid,
+        wave_uid=wave_uid,
     )
     base = Path(manifest_path).parent
     declarations = _artifact_declarations(payload)

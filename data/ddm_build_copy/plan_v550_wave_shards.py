@@ -18,10 +18,21 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from data.ddm_build_copy.ddm_source_wave_identity import (
+    ProductionMembershipError,
+    SourceWaveIdentityError,
+    resolve_source_family_identity,
+    resolve_source_wave_identity,
+)
 from data.ddm_build_copy.ddm_v550_readiness import discover_shardable_source_waves
 from data.ddm_build_copy.ddm_v550_readiness import load_scope_manifest
 from data.ddm_build_copy.ddm_v550_storage import load_env_database_url, try_connect_database
-from data.ddm_build_copy.ddm_v550_shards import shard_id_for
+from data.ddm_build_copy.ddm_v550_shards import (
+    V550_IDENTITY_TRANSPORT_VERSION,
+    require_v550_execution_identity,
+    shard_id_for,
+    v550_identity_fields,
+)
 DEFAULT_ENV_FILE = ROOT / ".env"
 DEFAULT_PLAN_ROOT = ROOT / "data" / "ddm_repository_copy" / "v550" / "shard_plans"
 DEFAULT_RESPONDENT_SCHEMA = ROOT / "data" / "ddm_build_copy" / "reports" / "respondent_wave_schema_template.csv"
@@ -114,6 +125,21 @@ def _parse_country_count(value: object) -> tuple[int, str]:
     return 0, "unknown"
 
 
+def _execution_identity_or_none(source: str, wave: str):
+    """Return CLOSED_35 identity, omitting only governed recognized exclusions."""
+    try:
+        return require_v550_execution_identity(source, wave)
+    except ProductionMembershipError:
+        return None
+
+
+def _execution_command_prefix(identity) -> str:
+    return (
+        f"V550_SOURCE_FAMILY_UID={identity.source_family_uid} "
+        f"V550_WAVE_UID={identity.wave_uid} "
+    )
+
+
 def _static_plan_from_template(template_path: Path, run_id: str) -> pd.DataFrame:
     if not template_path.exists():
         return pd.DataFrame()
@@ -142,9 +168,10 @@ def _static_plan_from_template(template_path: Path, run_id: str) -> pd.DataFrame
     for key, group in template.groupby(group_cols, dropna=False):
         if not isinstance(key, tuple):
             key = (key,)
-        source, wave = key[0], key[1]
-        source = str(source)
-        wave = str(wave)
+        source, wave = str(key[0]), str(key[1])
+        identity = _execution_identity_or_none(source, wave)
+        if identity is None:
+            continue
         countries: list[str] = []
         shard_id = shard_id_for(source, wave)
         country_count = 0
@@ -156,20 +183,9 @@ def _static_plan_from_template(template_path: Path, run_id: str) -> pd.DataFrame
         if "survey_weight_variable_status" in group.columns and not group.empty:
             weight_status = _clean_text(group["survey_weight_variable_status"].iloc[0]) or "unknown"
         position_field_count = _count_present(group, [
-            "sex_var",
-            "age_var",
-            "education_var",
-            "income_var",
-            "survey_weight_var",
-            "urban_rural_var",
-            "religion_var",
-            "marital_var",
-            "employment_var",
-            "class_var",
-            "household_var",
-            "language_var",
-            "region_var",
-            "ethnicity_var",
+            "sex_var", "age_var", "education_var", "income_var", "survey_weight_var",
+            "urban_rural_var", "religion_var", "marital_var", "employment_var", "class_var",
+            "household_var", "language_var", "region_var", "ethnicity_var",
         ])
         rows.append(
             {
@@ -178,7 +194,9 @@ def _static_plan_from_template(template_path: Path, run_id: str) -> pd.DataFrame
                 "source": source,
                 "source_family": source,
                 "wave": wave,
-                "canonical_wave": wave,
+                "canonical_wave": identity.canonical_display_wave,
+                "canonical_display_source": identity.canonical_display_source,
+                **v550_identity_fields(source, wave),
                 "countries": countries,
                 "country_count": country_count,
                 "country_count_status": country_count_status,
@@ -195,9 +213,10 @@ def _static_plan_from_template(template_path: Path, run_id: str) -> pd.DataFrame
                 "output_dir": str(ROOT / "data" / "ddm_repository_copy" / "v550" / "shard_runs" / run_id / shard_id),
                 "shard_id": shard_id,
                 "command": (
-                    "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
-                    f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
-                    "--write-csv --write-parquet --verbose"
+                    _execution_command_prefix(identity)
+                    + "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
+                    + f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
+                    + "--write-csv --write-parquet --verbose"
                 ),
             }
         )
@@ -214,11 +233,10 @@ def _db_launchable_plan(conn, run_id: str, filters: dict[str, list[str]]) -> pd.
     if scope.empty:
         return pd.DataFrame()
 
-    template_path = DEFAULT_RESPONDENT_SCHEMA
     template = pd.DataFrame()
-    if template_path.exists():
+    if DEFAULT_RESPONDENT_SCHEMA.exists():
         try:
-            template = pd.read_csv(template_path, low_memory=False)
+            template = pd.read_csv(DEFAULT_RESPONDENT_SCHEMA, low_memory=False)
         except Exception:
             template = pd.DataFrame()
     template_group = pd.DataFrame()
@@ -227,13 +245,16 @@ def _db_launchable_plan(conn, run_id: str, filters: dict[str, list[str]]) -> pd.
 
     rows: list[dict[str, object]] = []
     for (source, wave), group in scope.groupby(["source", "wave"], sort=False):
+        source, wave = str(source), str(wave)
+        identity = require_v550_execution_identity(source, wave)
         countries = sorted({str(c) for c in group["country_code"].dropna().astype(str) if str(c).strip()})
-        shard_id = shard_id_for(str(source), str(wave))
+        shard_id = shard_id_for(source, wave)
         respondent_count = int(group["respondents"].sum())
         template_row = pd.DataFrame()
         if not template_group.empty:
             template_row = template_group[
-                template_group["source_family"].astype(str).eq(str(source)) & template_group["wave"].astype(str).eq(str(wave))
+                template_group["source_family"].astype(str).eq(source)
+                & template_group["wave"].astype(str).eq(wave)
             ]
         country_count = len(countries)
         country_count_status = "db_scope"
@@ -252,20 +273,9 @@ def _db_launchable_plan(conn, run_id: str, filters: dict[str, list[str]]) -> pd.
             position_field_count = sum(
                 1
                 for col in [
-                    "sex_var",
-                    "age_var",
-                    "education_var",
-                    "income_var",
-                    "survey_weight_var",
-                    "urban_rural_var",
-                    "religion_var",
-                    "marital_var",
-                    "employment_var",
-                    "class_var",
-                    "household_var",
-                    "language_var",
-                    "region_var",
-                    "ethnicity_var",
+                    "sex_var", "age_var", "education_var", "income_var", "survey_weight_var",
+                    "urban_rural_var", "religion_var", "marital_var", "employment_var", "class_var",
+                    "household_var", "language_var", "region_var", "ethnicity_var",
                 ]
                 if col in template_row.columns and template_row.iloc[0][col]
             )
@@ -274,10 +284,12 @@ def _db_launchable_plan(conn, run_id: str, filters: dict[str, list[str]]) -> pd.
             {
                 "run_id": run_id,
                 "created_at": datetime.now(timezone.utc).isoformat(),
-                "source": str(source),
-                "source_family": str(source),
-                "wave": str(wave),
-                "canonical_wave": str(wave),
+                "source": source,
+                "source_family": source,
+                "wave": wave,
+                "canonical_wave": identity.canonical_display_wave,
+                "canonical_display_source": identity.canonical_display_source,
+                **v550_identity_fields(source, wave),
                 "countries": countries,
                 "country_count": country_count,
                 "country_count_status": country_count_status,
@@ -294,22 +306,68 @@ def _db_launchable_plan(conn, run_id: str, filters: dict[str, list[str]]) -> pd.
                 "output_dir": str(ROOT / "data" / "ddm_repository_copy" / "v550" / "shard_runs" / run_id / shard_id),
                 "shard_id": shard_id,
                 "command": (
-                    "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
-                    f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
-                    "--write-csv --write-parquet --verbose"
+                    _execution_command_prefix(identity)
+                    + "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
+                    + f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
+                    + "--write-csv --write-parquet --verbose"
                 ),
             }
         )
-    return pd.DataFrame(rows).sort_values(["source", "wave"]).reset_index(drop=True)
+    return pd.DataFrame(rows).sort_values(["source_family_uid", "wave_uid", "source", "wave"]).reset_index(drop=True)
+
+
+def _ensure_governed_plan(plan_df: pd.DataFrame) -> pd.DataFrame:
+    """Attach and verify governed identity on all candidate production rows."""
+    if plan_df.empty:
+        return plan_df
+    rows: list[dict[str, object]] = []
+    for raw in plan_df.to_dict(orient="records"):
+        source = _clean_text(raw.get("raw_db_source") or raw.get("source") or raw.get("source_family"))
+        wave = _clean_text(raw.get("raw_db_wave") or raw.get("raw_wave") or raw.get("wave") or raw.get("canonical_wave"))
+        if not source or not wave:
+            raise RuntimeError("[V550_PLAN_IDENTITY_MISSING] source and wave are required before shard planning")
+        identity = _execution_identity_or_none(source, wave)
+        if identity is None:
+            continue
+        require_v550_execution_identity(
+            source,
+            wave,
+            expected_source_family_uid=_clean_text(raw.get("source_family_uid")),
+            expected_wave_uid=_clean_text(raw.get("wave_uid")),
+            redundant_identity=raw,
+        )
+        row = dict(raw)
+        row.update(v550_identity_fields(source, wave))
+        row["source"] = source
+        row["source_family"] = _clean_text(raw.get("source_family")) or source
+        row["wave"] = wave
+        row["canonical_wave"] = identity.canonical_display_wave
+        row["canonical_display_source"] = identity.canonical_display_source
+        row["shard_id"] = _clean_text(raw.get("shard_id")) or shard_id_for(source, wave)
+        rows.append(row)
+    return pd.DataFrame(rows)
 
 
 def _apply_plan_filters(plan_df: pd.DataFrame, source_filters: list[str], wave_filters: list[str], country_filters: list[str]) -> pd.DataFrame:
     if plan_df.empty:
         return plan_df
     if source_filters:
-        plan_df = plan_df[plan_df["source"].isin(source_filters)]
+        source_uids = {resolve_source_family_identity(value).source_family_uid for value in source_filters}
+        plan_df = plan_df[plan_df["source_family_uid"].isin(source_uids)]
     if wave_filters:
-        plan_df = plan_df[plan_df["wave"].isin(wave_filters)]
+        keep: list[bool] = []
+        for row in plan_df.to_dict(orient="records"):
+            matched = False
+            for value in wave_filters:
+                try:
+                    candidate = resolve_source_wave_identity(str(row["source"]), value)
+                except SourceWaveIdentityError:
+                    continue
+                if candidate.wave_uid == str(row["wave_uid"]):
+                    matched = True
+                    break
+            keep.append(matched)
+        plan_df = plan_df.loc[keep]
     if country_filters and "countries" in plan_df.columns:
         plan_df = plan_df[plan_df["countries"].apply(lambda vals: any(c in set(vals) for c in country_filters))]
     return plan_df
@@ -333,40 +391,55 @@ def main() -> int:
     try:
         if not args.static_only:
             conn, err = try_connect_database(db_url)
-            if conn is None:
-                if args.require_db:
-                    raise RuntimeError(f"[V550_DB_UNAVAILABLE] Could not connect to Postgres using {args.env_file} or --db-url. Original error: {err}")
+            if conn is None and args.require_db:
+                raise RuntimeError(f"[V550_DB_UNAVAILABLE] Could not connect to Postgres using {args.env_file} or --db-url. Original error: {err}")
         if conn is None:
             plan_df = _static_plan_from_template(Path(args.respondent_schema_template), run_id)
+        elif args.full_readiness:
+            plan_df = discover_shardable_source_waves(conn, None, filters)
         else:
-            if args.full_readiness:
-                plan_df = discover_shardable_source_waves(conn, None, filters)
-            else:
-                plan_df = _db_launchable_plan(conn, run_id, filters)
+            plan_df = _db_launchable_plan(conn, run_id, filters)
+        plan_df = _ensure_governed_plan(plan_df)
         plan_df = _apply_plan_filters(plan_df, source_filters, wave_filters, country_filters)
         if plan_df.empty:
-            raise RuntimeError("[V550_NO_SHARDS_DISCOVERED] No source/wave shards matched the requested filters. Check --source, --wave, DB coverage, and respondent schema template.")
+            raise RuntimeError("[V550_NO_SHARDS_DISCOVERED] No governed CLOSED_35 source/wave shards matched the requested filters. Check --source, --wave, DB coverage, and respondent schema template.")
 
-        commands = []
-        rows = []
+        commands: list[str] = []
+        rows: list[dict[str, object]] = []
         for row in plan_df.itertuples(index=False):
-            shard_id = shard_id_for(str(row.source), str(row.wave))
-            cmd = (
-                "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
-                f"--run-id {run_id} --shard-id {shard_id} --source {row.source} --wave {row.wave} "
-                "--write-csv --write-parquet --verbose"
+            source, wave = str(row.source), str(row.wave)
+            identity = require_v550_execution_identity(
+                source,
+                wave,
+                expected_source_family_uid=str(row.source_family_uid),
+                expected_wave_uid=str(row.wave_uid),
+                redundant_identity=row._asdict(),
             )
-            if row.canonical_wave and str(row.canonical_wave) != str(row.wave):
+            shard_id = str(row.shard_id or shard_id_for(source, wave))
+            expected_legacy_shard_id = shard_id_for(source, wave)
+            if shard_id != expected_legacy_shard_id:
+                raise RuntimeError(
+                    f"[V550_HISTORICAL_SHARD_ID_MISMATCH] expected={expected_legacy_shard_id} actual={shard_id}"
+                )
+            cmd = (
+                _execution_command_prefix(identity)
+                + "python data/ddm_build_copy/build_determinicity_wave_shard_v550.py "
+                + f"--run-id {run_id} --shard-id {shard_id} --source {source} --wave {wave} "
+                + "--write-csv --write-parquet --verbose"
+            )
+            if row.canonical_wave and str(row.canonical_wave) != wave:
                 cmd += f" --canonical-wave {row.canonical_wave}"
             cmd = _append_shared_substrate_command_args(cmd, args)
             rows.append(
                 {
                     "run_id": run_id,
                     "created_at": datetime.now(timezone.utc).isoformat(),
-                    "source": row.source,
+                    "source": source,
                     "source_family": row.source_family,
-                    "wave": row.wave,
+                    "wave": wave,
                     "canonical_wave": row.canonical_wave,
+                    "canonical_display_source": identity.canonical_display_source,
+                    **v550_identity_fields(source, wave),
                     "shard_id": shard_id,
                     "country_count": int(row.country_count),
                     "country_count_status": getattr(row, "country_count_status", "unknown"),
@@ -395,6 +468,7 @@ def main() -> int:
             "run_id": run_id,
             "created_at": datetime.now(timezone.utc).isoformat(),
             "planner_version": "v1",
+            "identity_transport_version": V550_IDENTITY_TRANSPORT_VERSION,
             "repo_root": str(ROOT),
             "db_used": conn is not None,
             "filters": filters,
@@ -419,6 +493,9 @@ def main() -> int:
                     "shard_count": int(len(plan_df)),
                     "non_skipped_shard_count": int(len(commands)),
                     "db_used": conn is not None,
+                    "identity_transport_version": V550_IDENTITY_TRANSPORT_VERSION,
+                    "production_governance_state": "CLOSED_35",
+                    "all_shards_closed_35": bool(plan_df["closed_35_member"].astype(bool).all()),
                     "shared_respondent_substrate_mode": args.shared_respondent_substrate_mode,
                     "joint_configuration_registry_path": args.joint_configuration_registry_path or "",
                     "success": True,

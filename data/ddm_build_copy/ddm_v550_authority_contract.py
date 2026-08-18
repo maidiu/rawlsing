@@ -39,6 +39,7 @@ AUTHORITY_STATUSES = {
 CERTIFIED_RESPONSE_SEMANTICS_STATUSES = {
     "authority_curated",
     "certified",
+    "certified_governed_contract",
     "curated",
     "curated_packet",
     "curated_unsigned",

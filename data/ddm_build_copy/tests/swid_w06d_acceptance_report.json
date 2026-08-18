@@ -1,0 +1,46 @@
+{
+  "schema": "swid_w06d_terminal_acceptance_v1",
+  "phase": "W06-D",
+  "branch": "agent/swid-w06-regression-d",
+  "base_commit": "0c924d9b6a1f1fa20d36f81cc91d6fce92288ed8",
+  "static_fixed_point": {
+    "status": "PASS",
+    "w06d_terminal_fixed_point": "8 PASS / 0 FAIL",
+    "w06a_strict_hostile": "24 PASS / 0 XFAIL / 0 XPASS / 0 FAIL",
+    "focused_swid_breadth": {
+      "passed": 217,
+      "contract_failures": 0,
+      "environment_blocked_tests": 1,
+      "environment_blocker": "W06-C real compiler test requires pyarrow or fastparquet; neither is installed in this container"
+    }
+  },
+  "runtime_acceptance": {
+    "status": "BLOCKED_RUNTIME_SUBSTRATE",
+    "closed_35_preflight_scope_count": 35,
+    "preflight_exit_code": 2,
+    "blockers": [
+      "missing_python_module:pyarrow",
+      "missing_python_module:psycopg2",
+      "missing_database_url",
+      "missing_runtime_authority_directory:first_pass_authority_dir",
+      "missing_runtime_authority_directory:semantic_authority_dir",
+      "missing_runtime_authority_directory:position_conditioning_authority_dir",
+      "missing_runtime_authority_directory:directionality_authority_dir",
+      "joint_authority_unresolved_for_scopes:35"
+    ],
+    "classification": "The uploaded git-archive snapshot lacks the live DB/runtime modules and generated authority-report substrate required for respondent-backed canaries and broader CLOSED_35 execution. No runtime pass is claimed."
+  },
+  "transport_hardening": {
+    "status": "PASS",
+    "detail": "Added an ASCII compatibility-stem alias-shadow fixture so divergent UID-equivalent authority detection remains testable when git archive encodes the accented Latinobarómetro filename as a literal #U00f3 token."
+  },
+  "promoted_runtime_repairs": [
+    {
+      "issue_id": "SWID-PG7-001",
+      "status": "RESOLVED_BEFORE_FINAL_W06D_RERUN",
+      "merge_sha": "a6a4d288a48fbcad0773a81627fd30d9d6388497"
+    }
+  ],
+  "verdict": "W06_D_STATIC_FIXED_POINT_PASS__G8_RUNTIME_ACCEPTANCE_BLOCKED_SUBSTRATE",
+  "g8_claimed": false
+}

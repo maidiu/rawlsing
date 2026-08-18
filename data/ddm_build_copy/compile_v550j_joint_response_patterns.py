@@ -24,9 +24,15 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from data.ddm_build_copy.build_determinicity_repository_v550 import _harmonize_question_frame, _lookup_response_semantics, _prefetch_question_rows_by_country, _question_rows_from_cache
-from data.ddm_build_copy.build_v550j_prepared_substrate import load_or_build_v550j_prepared_substrate
+from data.ddm_build_copy.build_v550j_prepared_substrate import load_or_build_v550j_prepared_substrate, v550j_identity_contract_metadata
 from data.ddm_build_copy.build_response_option_map_v550 import build_response_option_map
-from data.ddm_build_copy.ddm_pipeline_boundary_contract import PIPELINE_BOUNDARY_CONTRACT_VERSION
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    PIPELINE_BOUNDARY_CONTRACT_VERSION,
+    BoundaryContractError,
+    verify_frame_source_wave_identity_coherence,
+    verify_manifest_source_wave_identity_coherence,
+)
+from data.ddm_build_copy.ddm_source_wave_identity import SourceWaveIdentityError, resolve_source_wave_identity
 from data.ddm_build_copy.ddm_v550_manifest import utc_now
 from data.ddm_build_copy.ddm_v550_response_options import response_semantics_contract_hash
 from data.ddm_build_copy.ddm_v550_schema import write_schema_json
@@ -74,6 +80,9 @@ DEFAULT_ASSOCIATION_THRESHOLD_PROFILES = (
 )
 V550J_PRODUCER_SCHEMA_VERSION = V550J_SCHEMA_VERSION
 V550J_PRODUCER_COMPILER_VERSION = "v550j_joint_response_patterns_producer_v1"
+V550J_UID_PATTERN_ID_NAMESPACE = "v550j_uid_pattern_v1"
+V550J_UID_PATTERN_ID_VERSION = "1"
+V550J_UID_PATTERN_ID_FIELD = "pattern_uid_v1"
 V550J_V551J_GOVERNED_TABLES = (
     "joint_response_pattern_index",
     "joint_response_pattern_item_index",
@@ -290,6 +299,230 @@ def _single_scope_value(frame: pd.DataFrame, columns: tuple[str, ...], label: st
     if len(unique) > 1:
         raise SurveyIdentityError(f"V550J shard has multiple {label} values: {unique[:8]}")
     return unique[0] if unique else ""
+
+
+def _single_typed_role_value(
+    primary: pd.DataFrame,
+    secondary: pd.DataFrame,
+    *,
+    typed_columns: tuple[str, ...],
+    legacy_columns: tuple[str, ...],
+    label: str,
+) -> str:
+    """Select one explicit identity role without lexicographic role inference."""
+    for frame in (primary, secondary):
+        for column in typed_columns:
+            if column not in frame.columns:
+                continue
+            values = list(dict.fromkeys(
+                value
+                for value in frame[column].dropna().astype(str).map(str.strip).tolist()
+                if value and value.lower() not in {"nan", "none", "null", "unknown"}
+            ))
+            if len(values) > 1:
+                raise BoundaryContractError(f"V550J_TYPED_IDENTITY_ROLE_CONTRADICTION:{label}:{column}:{values[:8]}")
+            if values:
+                return values[0]
+    for frame in (primary, secondary):
+        value = _single_scope_value(frame, legacy_columns, label)
+        if value:
+            return value
+    return ""
+
+
+def _resolve_v550j_source_wave_identity(
+    shard_scope: pd.DataFrame,
+    question_use_contract: pd.DataFrame,
+) -> dict[str, str]:
+    shard_identity = verify_frame_source_wave_identity_coherence(shard_scope, allow_empty=False)
+    verify_frame_source_wave_identity_coherence(
+        question_use_contract,
+        expected_source_family_uid=shard_identity["source_family_uid"],
+        expected_wave_uid=shard_identity["wave_uid"],
+        allow_empty=False,
+    )
+    production_identity = resolve_source_wave_identity(
+        shard_identity["canonical_display_source"],
+        shard_identity["canonical_display_wave"],
+        require_closed_35=True,
+    )
+    raw_source = _single_typed_role_value(
+        shard_scope,
+        question_use_contract,
+        typed_columns=("raw_db_source", "raw_source"),
+        legacy_columns=("source", "source_family"),
+        label="raw_source",
+    )
+    raw_wave = _single_typed_role_value(
+        shard_scope,
+        question_use_contract,
+        typed_columns=("raw_db_wave", "raw_wave"),
+        legacy_columns=("wave",),
+        label="raw_wave",
+    )
+    if not raw_source or not raw_wave:
+        raise BoundaryContractError("V550J_TYPED_RAW_IDENTITY_REQUIRED")
+    return {
+        "source_family_uid": production_identity.source_family_uid,
+        "wave_uid": production_identity.wave_uid,
+        "raw_source": raw_source,
+        "raw_wave": raw_wave,
+        "canonical_display_source": production_identity.canonical_display_source,
+        "canonical_display_wave": production_identity.canonical_display_wave,
+    }
+
+
+def _ordered_wave_query_values(raw_wave: str, canonical_display_wave: str) -> list[str]:
+    """Query aliases in typed-role order; role meaning never comes from sorting."""
+    return list(dict.fromkeys(
+        value for value in (_safe_clean(raw_wave), _safe_clean(canonical_display_wave)) if value
+    ))
+
+
+def _legacy_wave_compatibility_token(raw_wave: str, canonical_display_wave: str) -> str:
+    """Reproduce the frozen pre-migration physical/pattern token only.
+
+    This value is not a raw/native or canonical/display role.  It exists solely
+    so old label-derived cache paths and the historical pattern_id payload stay
+    byte-compatible while the governed roles move to typed fields and UIDs.
+    """
+    values = {_safe_clean(raw_wave), _safe_clean(canonical_display_wave)} - {""}
+    return min(values) if values else ""
+
+
+def _uid_native_pattern_id(
+    *,
+    source_family_uid: str,
+    wave_uid: str,
+    country_code: str,
+    family_id: str,
+    signature_raw: str,
+) -> str:
+    payload = {
+        "namespace": V550J_UID_PATTERN_ID_NAMESPACE,
+        "source_family_uid": _safe_clean(source_family_uid),
+        "wave_uid": _safe_clean(wave_uid),
+        "country_code": _safe_clean(country_code).upper(),
+        "family_id": _safe_clean(family_id),
+        "signature_raw": _safe_clean(signature_raw),
+    }
+    if not all(payload.values()):
+        raise BoundaryContractError(f"V550J_UID_PATTERN_IDENTITY_INCOMPLETE:{payload}")
+    return "v550juid1__" + _stable_hash(payload)
+
+
+def _attach_v550j_uid_identity(
+    tables: dict[str, pd.DataFrame],
+    *,
+    source_family_uid: str,
+    wave_uid: str,
+    identity_contract_version: str,
+    raw_source: str,
+    raw_wave: str,
+    canonical_display_source: str,
+    canonical_display_wave: str,
+) -> dict[str, pd.DataFrame]:
+    pattern_index = tables.get("joint_response_pattern_index", pd.DataFrame())
+    pattern_map: dict[str, str] = {}
+    if not pattern_index.empty:
+        required = {"pattern_id", "family_id", "country_code", "pattern_signature_raw"}
+        missing = sorted(required - set(pattern_index.columns))
+        if missing:
+            raise BoundaryContractError("V550J_UID_PATTERN_COMPONENTS_MISSING:" + ",".join(missing))
+        for row in pattern_index.itertuples(index=False):
+            legacy_id = _safe_clean(getattr(row, "pattern_id", ""))
+            uid_id = _uid_native_pattern_id(
+                source_family_uid=source_family_uid,
+                wave_uid=wave_uid,
+                country_code=_safe_clean(getattr(row, "country_code", "")),
+                family_id=_safe_clean(getattr(row, "family_id", "")),
+                signature_raw=_safe_clean(getattr(row, "pattern_signature_raw", "")),
+            )
+            previous = pattern_map.get(legacy_id)
+            if previous and previous != uid_id:
+                raise BoundaryContractError(f"V550J_LEGACY_PATTERN_ID_UID_CONTRADICTION:{legacy_id}")
+            pattern_map[legacy_id] = uid_id
+
+    identity_metadata = {
+        "source_family_uid": _safe_clean(source_family_uid),
+        "wave_uid": _safe_clean(wave_uid),
+        "identity_contract_version": _safe_clean(identity_contract_version),
+        "raw_source": _safe_clean(raw_source),
+        "raw_wave": _safe_clean(raw_wave),
+        "canonical_display_source": _safe_clean(canonical_display_source),
+        "canonical_display_wave": _safe_clean(canonical_display_wave),
+        "pattern_uid_namespace": V550J_UID_PATTERN_ID_NAMESPACE,
+        "pattern_uid_version": V550J_UID_PATTERN_ID_VERSION,
+    }
+    migrated: dict[str, pd.DataFrame] = {}
+    for table_name, frame in tables.items():
+        updated = frame.copy()
+        for column, value in identity_metadata.items():
+            if column in updated.columns and not updated.empty:
+                existing = updated[column].fillna("").astype(str).str.strip()
+                conflict = existing.ne("") & existing.ne(value)
+                if bool(conflict.any()):
+                    raise BoundaryContractError(
+                        f"V550J_OUTPUT_IDENTITY_CONTRADICTION:{table_name}:{column}"
+                    )
+            updated[column] = value
+        if "pattern_id" in updated.columns:
+            legacy_values = updated["pattern_id"].fillna("").astype(str).str.strip()
+            unknown = sorted({value for value in legacy_values if value and value not in pattern_map})
+            if unknown:
+                raise BoundaryContractError(
+                    f"V550J_PATTERN_UID_MAPPING_MISSING:{table_name}:{unknown[:8]}"
+                )
+            updated[V550J_UID_PATTERN_ID_FIELD] = legacy_values.map(pattern_map).fillna("")
+        else:
+            updated[V550J_UID_PATTERN_ID_FIELD] = ""
+        migrated[table_name] = updated
+    return migrated
+
+
+def _validate_explicit_prepared_identity(
+    frame: pd.DataFrame,
+    manifest: dict[str, Any],
+    *,
+    run_id: str,
+    shard_id: str,
+    country_codes: list[str],
+    source_family_uid: str,
+    wave_uid: str,
+    identity_contract_version: str,
+) -> None:
+    verify_frame_source_wave_identity_coherence(
+        frame,
+        expected_source_family_uid=source_family_uid,
+        expected_wave_uid=wave_uid,
+        allow_empty=True,
+    )
+    if manifest:
+        verify_manifest_source_wave_identity_coherence(
+            manifest,
+            expected_source_family_uid=source_family_uid,
+            expected_wave_uid=wave_uid,
+        )
+    for column, expected in (("run_id", run_id), ("shard_id", shard_id), ("identity_contract_version", identity_contract_version)):
+        for obj in (frame,):
+            if column not in obj.columns:
+                continue
+            values = {_safe_clean(value) for value in obj[column].tolist() if _safe_clean(value)}
+            if values and values != {_safe_clean(expected)}:
+                raise BoundaryContractError(
+                    f"V550J_EXPLICIT_PREPARED_SCOPE_MISMATCH:{column}:expected={expected}:observed={sorted(values)}"
+                )
+        if manifest and _safe_clean(manifest.get(column)) and _safe_clean(manifest.get(column)) != _safe_clean(expected):
+            raise BoundaryContractError(
+                f"V550J_EXPLICIT_PREPARED_SCOPE_MISMATCH:{column}:expected={expected}:actual={_safe_clean(manifest.get(column))}"
+            )
+    allowed_countries = {_safe_clean(value).upper() for value in country_codes if _safe_clean(value)}
+    if "country_code" in frame.columns:
+        observed_countries = {_safe_clean(value).upper() for value in frame["country_code"].tolist() if _safe_clean(value)}
+        if observed_countries and not observed_countries.issubset(allowed_countries):
+            raise BoundaryContractError(
+                f"V550J_EXPLICIT_PREPARED_COUNTRY_SCOPE_MISMATCH:allowed={sorted(allowed_countries)}:observed={sorted(observed_countries)}"
+            )
 
 
 def _select_threshold_profile(
@@ -1281,18 +1514,17 @@ def main() -> int:
 
     question_use_contract = pd.read_parquet(question_use_contract_path)
     shard_scope = pd.read_parquet(shard_scope_path)
-    source_raw = _single_scope_value(shard_scope, ("source", "source_family"), "source")
-    if not source_raw:
-        source_raw = _single_scope_value(
-            question_use_contract, ("source", "source_family"), "source"
-        )
-    wave_raw = _single_scope_value(
-        shard_scope, ("canonical_wave", "wave"), "wave"
-    )
-    if not wave_raw:
-        wave_raw = _single_scope_value(
-            question_use_contract, ("canonical_wave", "wave"), "wave"
-        )
+    governed_identity = _resolve_v550j_source_wave_identity(shard_scope, question_use_contract)
+    source_family_uid = governed_identity["source_family_uid"]
+    wave_uid = governed_identity["wave_uid"]
+    raw_source = governed_identity["raw_source"]
+    raw_wave = governed_identity["raw_wave"]
+    source = governed_identity["canonical_display_source"]
+    canonical_wave = governed_identity["canonical_display_wave"]
+    identity_contract_metadata = v550j_identity_contract_metadata()
+    identity_contract_version = identity_contract_metadata["identity_contract_version"]
+    legacy_wave_token = _legacy_wave_compatibility_token(raw_wave, canonical_wave)
+    wave_query_values = _ordered_wave_query_values(raw_wave, canonical_wave)
     country_codes = list(
         dict.fromkeys(
             _safe_clean(value).upper()
@@ -1306,14 +1538,17 @@ def main() -> int:
         raise SurveyIdentityError(
             "V550J shard country_code is required; no country fallback is allowed"
         )
-    identity = require_survey_identity(
-        source_raw,
-        wave_raw,
-        country_codes[0],
-        require_country=True,
-    )
-    source = identity.source
-    canonical_wave = identity.canonical_wave
+    if explicit_prepared_frame is not None:
+        _validate_explicit_prepared_identity(
+            explicit_prepared_frame,
+            explicit_prepared_manifest,
+            run_id=run_id,
+            shard_id=shard_id,
+            country_codes=country_codes,
+            source_family_uid=source_family_uid,
+            wave_uid=wave_uid,
+            identity_contract_version=identity_contract_version,
+        )
     progress.stage(
         1,
         6,
@@ -1524,7 +1759,7 @@ def main() -> int:
                 }
             )
     active_family_lookup_df = pd.DataFrame(family_lookup_rows) if family_lookup_rows else pd.DataFrame(columns=["family_id", "var_code_norm", "item_role", "condition_label", "family_item_order", "minimum_items_answered", "family_label", "family_type"])
-    country_prepared_state: dict[tuple[str, str, str], dict[str, Any]] = {}
+    country_prepared_state: dict[tuple[str, ...], dict[str, Any]] = {}
     progress.stage(3, 6, "Process families", f"families={active_family_total}")
 
     for family_cfg in active_families:
@@ -1577,10 +1812,14 @@ def main() -> int:
                 )
             )
             continue
-        if "canonical_wave" not in family_questions.columns:
-            family_questions["canonical_wave"] = family_questions.get("wave", "")
-        if "source" not in family_questions.columns:
-            family_questions["source"] = ""
+        family_questions["raw_source"] = raw_source
+        family_questions["raw_wave"] = raw_wave
+        family_questions["canonical_display_source"] = source
+        family_questions["canonical_display_wave"] = canonical_wave
+        family_questions["canonical_wave"] = canonical_wave
+        family_questions["source_family_uid"] = source_family_uid
+        family_questions["wave_uid"] = wave_uid
+        family_questions["identity_contract_version"] = identity_contract_version
 
         eligible_waves = _family_waves(family_cfg, source)
         question_wave_values = _family_wave_values(family_questions, source)
@@ -1615,34 +1854,12 @@ def main() -> int:
             facet_ready_view_name = "" if association_db_conn is None else _facet_ready_view_name(association_db_conn)
             country_questions = family_questions.copy()
             country_questions["country_code"] = country_code
-            country_questions["raw_wave"] = country_questions.get("wave", "").astype(str)
-            country_questions["canonical_wave"] = country_questions.get("canonical_wave", country_questions.get("wave", "")).astype(str)
             country_var_codes = (
                 country_questions["var_code"].dropna().astype(str).str.upper().drop_duplicates().tolist()
                 if "var_code" in country_questions.columns
                 else family_var_codes
             )
-            source_value = (
-                _safe_clean(country_questions["source"].iloc[0])
-                if "source" in country_questions.columns and not country_questions.empty
-                else ""
-            )
-            require_survey_identity(
-                source_value,
-                canonical_wave,
-                country_code,
-                require_country=True,
-            )
-            wave_values = sorted(
-                {
-                    value
-                    for value in (
-                        country_questions["raw_wave"].iloc[0] if "raw_wave" in country_questions.columns and not country_questions.empty else "",
-                        country_questions["canonical_wave"].iloc[0] if "canonical_wave" in country_questions.columns and not country_questions.empty else "",
-                    )
-                    if str(value).strip()
-                }
-            )
+            source_value = _single_scope_value(country_questions, ("source",), "legacy source") or raw_source
             with progress.heartbeat(
                 3,
                 6,
@@ -1654,13 +1871,15 @@ def main() -> int:
                     prepared_scope = explicit_prepared_frame.copy()
                     if "country_code_norm" in prepared_scope.columns:
                         prepared_scope = prepared_scope[prepared_scope["country_code_norm"].fillna("").astype(str).str.upper() == str(country_code).upper()].copy()
+                    elif "country_code" in prepared_scope.columns:
+                        prepared_scope = prepared_scope[prepared_scope["country_code"].fillna("").astype(str).str.upper() == str(country_code).upper()].copy()
                     if "var_code_norm" in prepared_scope.columns:
                         prepared_scope = prepared_scope[prepared_scope["var_code_norm"].fillna("").astype(str).str.upper().isin({code.upper() for code in country_var_codes})].copy()
                     cached_country_frame = prepared_scope.reset_index(drop=True)
                 else:
                     cached_country_frame = _load_cached_country_slice(
                         source=source_value,
-                        waves=wave_values or [""],
+                        waves=wave_query_values or [legacy_wave_token],
                         country_code=country_code,
                         response_semantics_contract_hash=semantics_contract,
                         db_conn=association_db_conn,
@@ -1707,7 +1926,14 @@ def main() -> int:
 
             prepared_country_frame: pd.DataFrame | None = None
             all_family_rows: pd.DataFrame | None = None
-            cache_key = (source_value, "|".join(wave_values or [""]), country_code)
+            cache_key = (
+                source_family_uid,
+                wave_uid,
+                country_code,
+                run_id,
+                shard_id,
+                identity_contract_version,
+            )
             country_state = country_prepared_state.get(cache_key)
             if country_state is None:
                 if (cached_country_frame is not None and not cached_country_frame.empty) or args.v550j_substrate_mode == "prepared_required":
@@ -1726,9 +1952,17 @@ def main() -> int:
                             run_id=run_id,
                             source=source_value,
                             source_id=source_value,
-                            wave=wave_values[0] if wave_values else "",
-                            canonical_wave=wave_values[-1] if wave_values else "",
+                            wave=legacy_wave_token,
+                            canonical_wave=canonical_wave,
                             country_code=country_code,
+                            source_family_uid=source_family_uid,
+                            wave_uid=wave_uid,
+                            raw_source=raw_source,
+                            raw_wave=raw_wave,
+                            canonical_display_source=source,
+                            canonical_display_wave=canonical_wave,
+                            shard_id=shard_id,
+                            scope_kind="country",
                             source_frame=source_frame_for_loader,
                             semantics_lookup=semantics_lookup,
                             response_semantics_contract_hash=semantics_contract,
@@ -1762,7 +1996,7 @@ def main() -> int:
                         / "cache"
                         / "prepared_response_substrate"
                         / f"source={source_value}"
-                        / f"wave={wave_values[0] if wave_values else ''}"
+                        / f"wave={legacy_wave_token}"
                         / f"country_code={country_code}"
                         / "v550j_prepared_substrate_validation_report.json"
                     )
@@ -1808,8 +2042,15 @@ def main() -> int:
                             harmonized["item_role"] = item_meta.get("item_role", "target_case")
                             harmonized["condition_label"] = item_meta.get("condition_label", "")
                         harmonized["source"] = source_value
-                        harmonized["wave"] = _safe_clean(qser.get("raw_wave")) or _safe_clean(qser.get("canonical_wave"))
-                        harmonized["canonical_wave"] = _safe_clean(qser.get("canonical_wave")) or _safe_clean(qser.get("raw_wave"))
+                        harmonized["wave"] = legacy_wave_token
+                        harmonized["canonical_wave"] = canonical_wave
+                        harmonized["raw_source"] = raw_source
+                        harmonized["raw_wave"] = raw_wave
+                        harmonized["canonical_display_source"] = source
+                        harmonized["canonical_display_wave"] = canonical_wave
+                        harmonized["source_family_uid"] = source_family_uid
+                        harmonized["wave_uid"] = wave_uid
+                        harmonized["identity_contract_version"] = identity_contract_version
                         harmonized["country_code"] = country_code
                         family_frames.append(harmonized)
                     harmonization_stats["hot_path_harmonization_calls"] += hot_path_harmonization_count
@@ -1952,8 +2193,8 @@ def main() -> int:
                 run_id=run_id,
                 source_id=source_value,
                 source=source_value,
-                wave=wave_values[0] if wave_values else "",
-                canonical_wave=wave_values[-1] if wave_values else "",
+                wave=legacy_wave_token,
+                canonical_wave=canonical_wave,
                 country_code=country_code,
                 progress=progress,
                 registry=association_lane_registry,
@@ -1963,7 +2204,7 @@ def main() -> int:
                     family_tables_for_frames,
                     registry=association_lane_registry,
                     source=source_value,
-                    wave=wave_values[-1] if wave_values else canonical_wave,
+                    wave=canonical_wave,
                     country_code=country_code,
                 )
             _record_stage(
@@ -2002,8 +2243,8 @@ def main() -> int:
                     run_id=run_id,
                     source_id=source_value,
                     source=source_value,
-                    wave=wave_values[0] if wave_values else "",
-                    canonical_wave=wave_values[0] if wave_values else "",
+                    wave=legacy_wave_token,
+                    canonical_wave=canonical_wave,
                     country_code=country_code,
                 )
                 family_tables_for_frames["joint_pattern_association_eligibility_funnel"] = funnel_frame
@@ -2034,6 +2275,16 @@ def main() -> int:
                     "Build funnel and append",
                     f"family {active_family_index}/{active_family_total}: {family_id} country={country_code} skipped diagnostics",
                 )
+            family_tables_for_frames = _attach_v550j_uid_identity(
+                family_tables_for_frames,
+                source_family_uid=source_family_uid,
+                wave_uid=wave_uid,
+                identity_contract_version=identity_contract_version,
+                raw_source=raw_source,
+                raw_wave=raw_wave,
+                canonical_display_source=source,
+                canonical_display_wave=canonical_wave,
+            )
             _append_family_table_frames(run_tables, family_tables_for_frames)
 
             family_summaries.append(
@@ -2149,6 +2400,13 @@ def main() -> int:
         "source": source,
         "wave": canonical_wave,
         "canonical_wave": canonical_wave,
+        "raw_source": raw_source,
+        "raw_wave": raw_wave,
+        "canonical_display_source": source,
+        "canonical_display_wave": canonical_wave,
+        "source_family_uid": source_family_uid,
+        "wave_uid": wave_uid,
+        "identity_contract_version": identity_contract_version,
         "country_code": "",
         "country_codes": country_codes,
         "shard_id": shard_id,
@@ -2192,6 +2450,13 @@ def main() -> int:
         "source": source or "UNKNOWN",
         "wave": canonical_wave,
         "canonical_wave": canonical_wave,
+        "raw_source": raw_source,
+        "raw_wave": raw_wave,
+        "canonical_display_source": source,
+        "canonical_display_wave": canonical_wave,
+        "source_family_uid": source_family_uid,
+        "wave_uid": wave_uid,
+        **identity_contract_metadata,
         "country_code": "",
         "country_codes": country_codes,
         "producer_scope_identity": producer_scope_identity,
@@ -2201,6 +2466,13 @@ def main() -> int:
         "evidence_status": evidence_status,
         "downstream_permission_status": downstream_permission_status,
         "producer_state_detail": producer_state_detail,
+        "pattern_identity_contract": {
+            "legacy_field": "pattern_id",
+            "legacy_payload_version": "UNCHANGED",
+            "uid_native_field": V550J_UID_PATTERN_ID_FIELD,
+            "uid_native_namespace": V550J_UID_PATTERN_ID_NAMESPACE,
+            "uid_native_version": V550J_UID_PATTERN_ID_VERSION,
+        },
         "canonical_artifact_names": list(V550J_V551J_GOVERNED_TABLES),
         "created_at": utc_now(),
         "completed_at": utc_now(),
@@ -2215,6 +2487,11 @@ def main() -> int:
         "validation_status": validation_report["validation_status"],
         **provenance,
     }
+    verify_manifest_source_wave_identity_coherence(
+        manifest,
+        expected_source_family_uid=source_family_uid,
+        expected_wave_uid=wave_uid,
+    )
     atomic_write_json(out_root / "v550j_manifest.json", manifest)
     association_index_frame = final_frames.get("joint_pattern_association_index", pd.DataFrame())
     association_candidate_frame = final_frames.get("joint_pattern_association_candidate_trace", pd.DataFrame())
@@ -2296,6 +2573,9 @@ def main() -> int:
             "families": family_summaries,
             "rows_by_table": {k: v["rows"] for k, v in written_tables.items()},
             "association_summary": association_summary,
+            "source_family_uid": source_family_uid,
+            "wave_uid": wave_uid,
+            "identity_contract_version": identity_contract_version,
             "command_provenance": provenance,
         },
     )
@@ -2317,6 +2597,11 @@ def main() -> int:
         "shard_id": shard_id,
         "source": source,
         "wave": canonical_wave,
+        "raw_source": raw_source,
+        "raw_wave": raw_wave,
+        "source_family_uid": source_family_uid,
+        "wave_uid": wave_uid,
+        "identity_contract_version": identity_contract_version,
         "country_code": final_country_code,
         "country_codes": country_codes,
         "substrate_mode": args.v550j_substrate_mode,
@@ -2388,6 +2673,11 @@ def main() -> int:
         "run_id": run_id,
         "source": source,
         "wave": canonical_wave,
+        "raw_source": raw_source,
+        "raw_wave": raw_wave,
+        "source_family_uid": source_family_uid,
+        "wave_uid": wave_uid,
+        "identity_contract_version": identity_contract_version,
         "country_code": final_country_code,
         "country_codes": country_codes,
         "total_associated_variables": int(_candidate["associated_var_code"].astype(str).nunique()) if not _candidate.empty and "associated_var_code" in _candidate.columns else 0,
@@ -2473,6 +2763,13 @@ def main() -> int:
         "source": source,
         "wave": canonical_wave,
         "canonical_wave": canonical_wave,
+        "raw_source": raw_source,
+        "raw_wave": raw_wave,
+        "canonical_display_source": source,
+        "canonical_display_wave": canonical_wave,
+        "source_family_uid": source_family_uid,
+        "wave_uid": wave_uid,
+        **identity_contract_metadata,
         "country_code": "",
         "country_codes": country_codes,
         "shard_id": shard_id,
