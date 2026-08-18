@@ -1,0 +1,147 @@
+{
+  "assignment": "W1-05_ADP-021_V3_HYBRID_SCHEDULER",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-dva-w1-adp-021-v3-hybrid-scheduler",
+  "exact_base_sha": "10a8e60f171e3a70bf48336fff73d37040cc1b93",
+  "mode": "AUTHORITY_CREATION_ONLY",
+  "whole_machine_architecture": "CLOSED",
+  "production_code_modified": false,
+  "v3_implemented": false,
+  "sibling_w1_results_used": false,
+  "ra_r00": {
+    "classification": "AUTHORITY_MUST_BE_CREATED",
+    "id": "MUST-021",
+    "decision_packet": "ADP-021",
+    "dependencies": ["ADP-008", "CAN-014"]
+  },
+  "authority": {
+    "authority_id": "V3_HYBRID_CAUSAL_SCHEDULER_POLICY",
+    "authority_version": "1.0.0",
+    "owner": "V3_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE",
+    "verdict": "PASS",
+    "jurisdiction": ["trigger-envelope identity and validation", "coordination among six trigger classes", "same-effective-time default class precedence", "dependency-before-class-precedence law", "fail-closed unresolved noncommuting same-time causal order", "monotone causal-time advancement", "causal-cursor versus scheduler-receipt-cursor separation", "context requery barrier scheduling/coalescing", "ADP-008 phase-boundary candidate invocation timing", "separately governed slow-process invocation timing", "slow-cadence binding validation", "CAN-014 pure-derived request coordination", "same-time closure, progress, quiescence and cycle detection", "scheduler replay identity/provenance"],
+    "not_owned": ["semantic content or admissibility/effects of causal events", "stochastic candidate generation/selection or causal RNG", "developmental phase semantics", "ContextResolver semantic selection/proxy/predicate law", "generated position/encounter/relationship/genealogy semantics", "slow-process update formulas/thresholds/state semantics", "universal annual/default slow cadence", "derived-output semantic existence/formula/evaluator ordering", "V2 render/session scheduling", "filler events or biography"]
+  },
+  "historical_archive": {
+    "logical_name": "Rawlsing_code_bundle_staging.zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "sha_match": "EXACT_MATCH",
+    "entry_count": 13138,
+    "authority_limit": "Recovered V3/V2/server material is continuity/authority-recovery evidence only; historical V5/DDM has zero authority over current V550+.",
+    "directly_inspected": [
+      {"path":"v3/v3_yearly_step_order.yaml","sha256":"90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc","finding":"Hard-coded yearly timestep, explicit ordered mutation spine, event cap and derived schedule; preserve explicit-order/replay intent, reject annual ontology."},
+      {"path":"v3/engine/step_runner.py","sha256":"5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a","finding":"Runs compulsory yearly passes; continuity evidence only."},
+      {"path":"v3/engine/yearly_step.py","sha256":"da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb","finding":"Interleaves mutation/derived work and increments year/age every pass; decompose causal, slow and derived clocks."},
+      {"path":"v3/engine/event_engine.py","sha256":"b57e7ef4df5dabd996dc7de19c1c2c273ad90ee89d73570df1fd85674dd98ded","finding":"Pseudo-samples annual-bucket events from mutable actor state; reject as event authority."},
+      {"path":"v3/core/year_record.py","sha256":"4bbd7518a6ec8bc8dd22758a2f9e876882253dfd59021a998a6d541b23e5cfc2","finding":"Stable content hashing and replay-oriented record normalization; preserve direction."},
+      {"path":"v3/tests/test_architecture_invariants.py","sha256":"bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa","finding":"Ordered spine, render nonmutation and stored-versus-derived invariants; preserve invariant intent."},
+      {"path":"server/generation/simulation.py","sha256":"5d68ffe3bc6902dc60b90625443a03127cf0d04b4eed4327270a3a0226bc78d1","finding":"Age/year-band orchestration is cadence/use evidence only."}
+    ]
+  },
+  "trigger_contract": {
+    "record_name": "V3SchedulerTrigger",
+    "required_fields": ["trigger_id", "trigger_class", "actor_or_entity_scope_ref", "effective_time", "source_authority_id", "source_authority_version", "source_authority_content_hash", "semantic_payload_ref", "dependency_trigger_refs", "causal_parent_refs", "same_time_order_constraints", "source_receipt_refs", "provenance_refs", "trigger_content_hash"],
+    "trigger_classes": [
+      {"id":"STATIC_CONTEXT_CHANGE_WAKE","causal":false,"source":"ContextResolver next_context_change metadata","meaning":"Re-resolve current structural context at an exactly known repository-predictable boundary."},
+      {"id":"GENERATED_STATE_REQUERY","causal":false,"source":"Committed V3 generated runtime fact that changes accepted query-binding fingerprint","meaning":"Re-resolve same immutable repository against new caller/V3-owned generated bindings."},
+      {"id":"PHASE_BOUNDARY_CANDIDATE","causal":false,"source":"ADP-008","meaning":"Invoke ADP-008 boundary evaluation; candidate is not itself a phase transition."},
+      {"id":"DISCRETE_CAUSAL_EVENT","causal":"ON_COMMIT","source":"Exact accepted V3 generation/admission authority","meaning":"Schedule already-lawful generated/admitted causal event or transition work; scheduler does not generate its semantics."},
+      {"id":"SLOW_PROCESS_DUE","causal":"ONLY_IF_OWNER_COMMITS_MUTATION","source":"Valid V3SlowCadenceBinding","meaning":"Invoke separately governed slow process at governed due time."},
+      {"id":"DERIVED_PUBLICATION_REQUEST","causal":false,"source":"V3 runtime/consumer under CAN-014","meaning":"Run CAN-014 pure recomputation/publication against exact frozen StoredStateRef."}
+    ]
+  },
+  "precedence_law": {
+    "dependency_edges_outrank_class_rank": true,
+    "default_dependency_ready_groups": [
+      {"rank":0,"classes":["STATIC_CONTEXT_CHANGE_WAKE","GENERATED_STATE_REQUERY"]},
+      {"rank":1,"classes":["PHASE_BOUNDARY_CANDIDATE"]},
+      {"rank":2,"classes":["DISCRETE_CAUSAL_EVENT"]},
+      {"rank":3,"classes":["SLOW_PROCESS_DUE"]},
+      {"rank":4,"classes":["DERIVED_PUBLICATION_REQUEST"]}
+    ],
+    "within_class_tie_law": ["obey explicit causal/dependency/order constraints from accepted owners", "exact duplicate identities may deduplicate", "stable-ID serialization is lawful only after owner contracts establish semantic order-independence/commutativity", "noncommuting peers with no governed order fail AMBIGUOUS_SAME_TIME_CAUSAL_ORDER"],
+    "post_commit_barrier": "After every committed causal mutation at T, enqueue required generated-state requery and newly lawful downstream triggers, then restart same-time precedence selection before the next context-consuming causal rule.",
+    "forbidden_precedence_sources": ["queue insertion order", "arrival/thread order", "filesystem order", "source-code/import order", "dictionary iteration order", "lexical ID order as semantic winner"]
+  },
+  "causal_time_cursor_law": {
+    "record_name": "V3SchedulerCursor",
+    "required_fields": ["actor_or_runtime_scope_id", "time_basis_id", "time_basis_version", "current_effective_time", "causal_event_sequence", "last_causal_event_hash", "scheduler_receipt_sequence", "consumed_trigger_set_hash", "scheduler_policy_id", "scheduler_policy_version", "cursor_hash"],
+    "rules": ["effective_time is monotone; no universal time unit is defined", "same-time closure completes before time advances", "otherwise jump directly to minimum later governed trigger", "empty intervals create no synthetic ticks/events", "retrograde new trigger fails closed except exact consumed replay duplicate", "causal_event_sequence advances exactly on committed causal event/state-transition records", "scheduler_receipt_sequence may advance for noncausal work but is not actor history", "checkpoint is a cache/snapshot and never advances causal truth", "caller run horizon is an execution request, not ontology", "hidden wall clock never participates in simulation effective time"]
+  },
+  "resolver_requery_law": {
+    "static_channel": "Schedule exact ContextResolver next_context_change boundary from current resolver receipt; after refresh replace prospective current context binding and schedule newly returned boundary if any.",
+    "generated_channel": "After committed V3 generated fact changes accepted query-binding fingerprint, schedule same-time dependent GENERATED_STATE_REQUERY against the same immutable repository bundle unless governing policy explicitly selects a new immutable bundle.",
+    "coalescing": "Static and generated requery at same actor/query/time may coalesce only with same repository/policy and newest already-committed binding fingerprint; receipt retains all trigger reasons.",
+    "prospective_only": true,
+    "forbidden_retroactivity": ["re-adjudicate/mutate/delete/relabel/rehash committed causal event", "turn new structural availability into earlier lived exposure", "rewrite earlier resolver receipt"],
+    "nonprogress": "Identical next boundary <= current time that recreates same unconsumed trigger identity fails SCHEDULER_NONPROGRESSING_CONTEXT_BOUNDARY."
+  },
+  "slow_cadence_contract": {
+    "record_name": "V3SlowCadenceBinding",
+    "required_fields": ["slow_process_id", "actor_or_entity_scope_ref", "process_semantic_authority_id", "process_semantic_authority_version", "process_semantic_authority_content_hash", "cadence_authority_id", "cadence_authority_version", "cadence_authority_content_hash", "cadence_binding_id", "cadence_binding_version", "time_basis_id", "current_due_time", "next_due_evaluator_ref", "reschedule_policy_ref", "same_time_order_constraints", "binding_input_hash", "provenance_refs", "cadence_binding_hash"],
+    "default_slow_cadence": null,
+    "annual_cadence_authorized_by_adp_021": false,
+    "law": ["process semantic authority owns what is read/updated and what no-op/change means", "cadence authority owns when due, initial due semantics, rescheduling and catch-up/coalescing", "same accepted authority may own both only if explicit, while logical identities remain distinguishable", "ADP-021 owns validation/queuing/invocation/coordination only", "missing process or cadence authority yields SLOW_PROCESS_UNGOVERNED", "historical yearly loop is never a fallback", "reschedule must strictly progress, emit explicit finite distinct same-time subtrigger, or exhaust/wait", "no synthetic catch-up ticks absent explicit cadence authority", "no-op slow evaluation emits receipt only, no causal event"]
+  },
+  "can_014_interaction": {
+    "noncollapse": "V3 causal scheduler/slow cadence != V3 pure derived-state schedule != V2 render/session scheduling",
+    "adp_021_owns": "when a CAN-014 request becomes dependency-ready in causal coordination",
+    "can_014_owns": ["registered derived outputs backed by independent authority", "pure evaluator/dependency ordering", "frozen StoredStateRef", "full/incremental recomputation semantics", "field freshness/provenance", "derived publication integrity"],
+    "default_placement": "After same-time causal/phase/slow work stabilizes unless an explicit dependency requires otherwise.",
+    "stale_request": "Never silently substitute a newer StoredStateRef; rebind under governing consumer policy or return CAN-014 stale/integrity result.",
+    "derived_to_causal": "Only a separately governed causal rule may explicitly emit a new causal trigger depending on a derived receipt/state identity.",
+    "valid_empty_registry": "Lawful empty derived view; no placeholder output/event."
+  },
+  "phase_interaction": {
+    "semantic_owner": "ADP-008",
+    "scheduler_may": ["queue exact future V3PhaseBoundaryTriggerCandidate", "invoke ADP-008 at candidate time", "order invocation against other trigger classes", "record scheduler receipt", "schedule context requery after committed phase change when resolver contract marks phase query-relevant"],
+    "scheduler_may_not": ["invent developmental segment", "infer phase from age", "create future boundary for event-based phase rule", "mutate phase directly because time arrived", "resolve ADP-008 semantic ambiguity", "retroactively reclassify prior history"]
+  },
+  "replay_law": {
+    "required_identity": ["immutable repository bundle ID/hash", "resolver policy/version and context/SelectionRecord receipts", "scheduler authority ID/version/hash", "time-basis ID/version", "initial scheduler cursor/hash", "all trigger envelopes/hashes", "all dependency/order constraints and owner refs", "all committed causal event/transition IDs/hashes/parents", "generated-binding fingerprints and requery receipts", "ADP-008 authority/registry/rule/candidate/evaluation/transition identities where used", "all slow-process semantic/cadence binding identities/hashes", "CAN-014 schedule/registry/evaluator/state refs for derived requests/publications", "ADP-020 named causal RNG provenance where separate event authority uses randomness", "admitted external events/artifacts where applicable"],
+    "same_inputs_reproduce": ["trigger consumption order", "scheduler receipts", "causal event sequence/parentage", "causal cursor/checkpoint hashes", "requery/context identities", "derived publication identities for same requested state refs"],
+    "hidden_ambient_state": "SCHEDULER_INTEGRITY_FAILURE"
+  },
+  "progress_termination_law": {
+    "iteration_progress_requires_one_of": ["consume previously unconsumed trigger identity", "commit at least one new causal record and advance causal_event_sequence", "strictly advance effective time to next later governed trigger", "enter explicit terminal/quiescent/blocked state"],
+    "same_time_closure": "Continue while dependency-ready triggers remain at current_effective_time; every newly emitted same-time trigger must have distinct lineage/identity or be an exact duplicate.",
+    "no_arbitrary_spin_cap_as_semantics": true,
+    "outcomes": ["QUIESCENT_NO_PENDING_TRIGGER", "TARGET_HORIZON_REACHED", "BLOCKED_MISSING_AUTHORITY", "AMBIGUOUS_SAME_TIME_CAUSAL_ORDER", "SCHEDULER_DEPENDENCY_CYCLE", "SCHEDULER_RETROGRADE_TRIGGER", "SCHEDULER_NONPROGRESSING_TRIGGER", "SCHEDULER_NONPROGRESSING_CONTEXT_BOUNDARY", "SCHEDULER_INTEGRITY_FAILURE"]
+  },
+  "hostile_fixtures": [
+    {"id":"ADP021-H01","case":"Recovered annual loop offered as universal clock","verdict":"REJECT_ANNUAL_ONTOLOGY"},
+    {"id":"ADP021-H02","case":"Five years with no governed trigger","verdict":"JUMP_OR_QUIESCE_ZERO_FILLER_EVENTS"},
+    {"id":"ADP021-H03","case":"Two same-time noncommuting causal events with no priority authority","verdict":"AMBIGUOUS_SAME_TIME_CAUSAL_ORDER"},
+    {"id":"ADP021-H04","case":"Same events inserted in reversed queue/filesystem order","verdict":"IDENTICAL_LAWFUL_RESULT_OR_SAME_AMBIGUITY"},
+    {"id":"ADP021-H05","case":"Static context boundary and unrelated discrete event at same T","verdict":"REFRESH_BARRIER_FIRST_HISTORY_NOT_REWRITTEN"},
+    {"id":"ADP021-H06","case":"Generated move/position changes query fingerprint","verdict":"DEPENDENT_SAME_TIME_REQUERY_BEFORE_NEXT_CONTEXT_CONSUMER"},
+    {"id":"ADP021-H07","case":"Requery returns same context","verdict":"CONSUME_REASON_RECORD_NO_CHANGE_NO_SPIN"},
+    {"id":"ADP021-H08","case":"Resolver repeats identical next boundary <= T","verdict":"SCHEDULER_NONPROGRESSING_CONTEXT_BOUNDARY"},
+    {"id":"ADP021-H09","case":"ADP-008 time-bound candidate at T","verdict":"INVOKE_ADP008_SCHEDULER_DOES_NOT_MUTATE_PHASE"},
+    {"id":"ADP021-H10","case":"Event-based phase rule lacks future time","verdict":"NO_GUESSED_BOUNDARY"},
+    {"id":"ADP021-H11","case":"Event E at T causes phase candidate P at T","verdict":"DEPENDENCY_E_BEFORE_P_OUTRANKS_DEFAULT_CLASS_ORDER"},
+    {"id":"ADP021-H12","case":"Slow process has no governed cadence","verdict":"SLOW_PROCESS_UNGOVERNED_NO_YEARLY_FALLBACK"},
+    {"id":"ADP021-H13","case":"Slow due evaluates to no change","verdict":"RECEIPT_ONLY_NO_EVENT"},
+    {"id":"ADP021-H14","case":"Cadence self-reschedules identical due identity at T","verdict":"SCHEDULER_NONPROGRESSING_TRIGGER"},
+    {"id":"ADP021-H15","case":"Long gap crosses many nominal periods without catch-up law","verdict":"NO_SYNTHETIC_CATCHUP_TICKS"},
+    {"id":"ADP021-H16","case":"CAN-014 request during same-time causal work without explicit dependency","verdict":"EXECUTE_AFTER_CAUSAL_STABILIZATION"},
+    {"id":"ADP021-H17","case":"CAN-014 evaluator mutates causal state/cursor","verdict":"REJECT_CAN014_INTEGRITY_CURSOR_UNCHANGED"},
+    {"id":"ADP021-H18","case":"CAN-014 registry valid-empty","verdict":"EMPTY_DERIVED_VIEW_NO_PLACEHOLDER"},
+    {"id":"ADP021-H19","case":"Derived output changes and scheduler infers causal event","verdict":"FORBIDDEN_EXPLICIT_CAUSAL_OWNER_REQUIRED"},
+    {"id":"ADP021-H20","case":"Late context refresh rewrites earlier event provenance","verdict":"REJECT_PROSPECTIVE_ONLY"},
+    {"id":"ADP021-H21","case":"Static and generated requery target same query/time","verdict":"CONDITIONAL_COALESCE_RECORD_BOTH_REASONS"},
+    {"id":"ADP021-H22","case":"Trigger earlier than current causal time","verdict":"SCHEDULER_RETROGRADE_TRIGGER"},
+    {"id":"ADP021-H23","case":"Explicit causal dependency cycle","verdict":"FAIL_CLOSED_NO_ID_ORDER_BREAK"},
+    {"id":"ADP021-H24","case":"Hidden wall clock/latest/thread arrival changes result","verdict":"SCHEDULER_INTEGRITY_FAILURE"}
+  ],
+  "governing_spirit_check": {
+    "status": "APPLICABLE__PASS",
+    "ambiguity": "Hard authority permitted a coarse universal-timestep implementation, a globally total ID-ordered implementation, or an event-driven hybrid with explicit barriers and fail-closed semantic-order ambiguity.",
+    "chosen": "Event-driven hybrid that jumps among governed triggers, keeps context/derived work noncausal, requires separately governed slow cadence, and refuses lexical/arrival order as human-history authority.",
+    "principles": ["historical causality without inevitability", "agency as situated divergence whose consequences become subsequent causes", "dynamic history over timestep convenience", "causal provenance/replay without reductive total explanation", "generative openness for divergent lives", "minimum sufficient machinery without duplicate semantic ownership", "lawful absence rather than fabricated content"],
+    "no_semantic_invention": true
+  },
+  "consumer_release_sufficiency": "PARTIAL__MUST_021_CLOSED__V3_P4_REMAINS_DEPENDENCY_GATED",
+  "final_token": "ADP_021_V3_HYBRID_SCHEDULER_AUTHORITY = PASS"
+}
