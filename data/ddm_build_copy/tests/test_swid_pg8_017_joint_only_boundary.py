@@ -3,8 +3,9 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-from data.ddm_build_copy.compile_v550j_joint_response_patterns import (
-    _augment_family_questions_from_prepared,
+from data.ddm_build_copy.ddm_v550j_joint_only_metadata import (
+    V550JJointOnlyMetadataError,
+    augment_family_questions_from_prepared,
 )
 from data.ddm_build_copy.run_20var_allwaves_v550_552j_smoke import (
     _base_filter_variables_for_required,
@@ -63,28 +64,32 @@ def _prepared(*, selected: bool = True, question_id: str = "question_impl.gss.ab
     )
 
 
-def _family() -> dict[str, object]:
-    return {
-        "family_id": "JCFG-GSS-ABORTION-CONDITIONS",
-        "item_role_groups": {
-            "exception_case": [
-                {
-                    "var_code": "abrape",
-                    "question_implementation_id": "question_impl.gss.abrape",
-                    "condition_label": "rape",
-                }
-            ]
-        },
-    }
+def _registry_items() -> list[dict[str, object]]:
+    return [
+        {
+            "var_code": "abrape",
+            "question_implementation_id": "question_impl.gss.abrape",
+            "condition_label": "rape",
+        }
+    ]
+
+
+def _augment(quc: pd.DataFrame, prepared: pd.DataFrame) -> pd.DataFrame:
+    return augment_family_questions_from_prepared(
+        quc,
+        prepared,
+        family_id="JCFG-GSS-ABORTION-CONDITIONS",
+        family_var_codes=["abrape"],
+        registry_items=_registry_items(),
+        source="GSS",
+        canonical_wave="2010",
+    )
 
 
 def test_joint_only_metadata_is_completed_from_validated_selected_prepared_rows() -> None:
-    out = _augment_family_questions_from_prepared(
+    out = _augment(
         pd.DataFrame(columns=["var_code", "question_id", "source", "wave", "canonical_wave"]),
         _prepared(),
-        _family(),
-        source="GSS",
-        canonical_wave="2010",
     )
     assert len(out) == 1
     assert out.iloc[0]["var_code"] == "ABRAPE"
@@ -99,18 +104,15 @@ def test_existing_quc_row_wins_and_is_not_replaced() -> None:
     quc = pd.DataFrame(
         [{"var_code": "ABRAPE", "question_id": "real-quc", "source": "GSS", "wave": "2010", "canonical_wave": "2010"}]
     )
-    out = _augment_family_questions_from_prepared(quc, _prepared(), _family(), source="GSS", canonical_wave="2010")
+    out = _augment(quc, _prepared())
     assert len(out) == 1
     assert out.iloc[0]["question_id"] == "real-quc"
 
 
 def test_unselected_prepared_rows_do_not_create_joint_metadata() -> None:
-    out = _augment_family_questions_from_prepared(
+    out = _augment(
         pd.DataFrame(columns=["var_code", "question_id", "source", "wave", "canonical_wave"]),
         _prepared(selected=False),
-        _family(),
-        source="GSS",
-        canonical_wave="2010",
     )
     assert out.empty
 
@@ -118,11 +120,8 @@ def test_unselected_prepared_rows_do_not_create_joint_metadata() -> None:
 def test_contradictory_stable_prepared_metadata_fails_closed() -> None:
     frame = _prepared()
     frame.loc[1, "question_id"] = "question_impl.gss.different"
-    with pytest.raises(Exception, match="V550J_JOINT_ONLY_METADATA_CONTRADICTION"):
-        _augment_family_questions_from_prepared(
+    with pytest.raises(V550JJointOnlyMetadataError, match="V550J_JOINT_ONLY_METADATA_CONTRADICTION"):
+        _augment(
             pd.DataFrame(columns=["var_code", "question_id", "source", "wave", "canonical_wave"]),
             frame,
-            _family(),
-            source="GSS",
-            canonical_wave="2010",
         )
