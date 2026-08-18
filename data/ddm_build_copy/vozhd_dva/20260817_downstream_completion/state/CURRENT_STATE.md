@@ -2,7 +2,7 @@
 
 **As of:** 2026-08-18  
 **Canonical codebase:** `main`  
-**Phase:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_CLOSED__W1_CLOSED__W2_FIRST_BATCH_CLOSED__W2_FINAL_BATCH_6_ACCEPTED_1_RETURN_ACTIVE__W3_NOT_RELEASED__V553_PRODUCTION_WAITING_SWID_G8`
+**Phase:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_CLOSED__W1_CLOSED__W2_CLOSED__W3_FIRST_RACK_RELEASED__V555_PHYSICAL_IMPLEMENTATION_WAITING_EXT003__V553_PRODUCTION_WAITING_SWID_G8`
 
 ## 1. Governing law
 
@@ -18,92 +18,87 @@ Read with:
 - `integration/W1_AUTHORITY_EXPANSION_CLOSURE_RULING.md`;
 - `integration/W2_FIRST_BATCH_ADJUDICATION_RULING.md`;
 - `integration/W2_FINAL_BATCH_ADJUDICATION_RULING.md`;
+- `integration/W2_AUTHORITY_CONTRACT_COMPLETION_CLOSURE_RULING.md`;
 - accepted stage/V3/V2/authority rulings.
 
-**Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.** Missing authority stays missing. The Governing Spirit resolves genuine lawful ambiguity only after hard authority and jurisdiction.
+**Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.** Missing authority stays missing. Governing Spirit resolves genuine lawful ambiguity only after hard authority and jurisdiction.
 
-## 2. Architecture — CLOSED
+## 2. Architecture and authority phase state
 
 `WHOLE_MACHINE_ARCHITECTURE_CLOSURE = CLOSE`.
-
-No W2 result reopens architecture, creates a new stage, or moves producer/V3/V2 semantic ownership.
-
-## 3. Authority phase state
 
 `W0_AUTHORITY_FOUNDATION = CLOSED` — 11/11 accepted.
 
 `W1_AUTHORITY_EXPANSION = CLOSED__18_OF_18_ACCEPTED`.
 
-`W2_FIRST_BATCH = CLOSED__6_OF_6_ACCEPTED`.
+`W2_AUTHORITY_CONTRACT_COMPLETION = CLOSED`.
 
-`W2_FINAL_BATCH = 6_ACCEPTED__1_RETURN_FOR_FIX_ACTIVE`.
+No W0/W1/W2 authority cell remains open.
 
-W2 is **not closed** until CAN-023 is corrected, accepted, merged, and an explicit W2 closure ruling is banked.
+CAN-023 corrected continuation merged in PR #126 at:
+`2426147e143f2b35d3641529c3016cf5f49c6f13`.
 
-W3 is **not released**.
+Its binding correction is: model/LLM output may generate surfaces and diagnostic evidence, but positive bilingual semantic-equivalence adjudication requires separately governed evaluator authority; absent that authority, preserve missing/unresolved states.
 
-## 4. W2 first batch — accepted
+## 3. W3 first rack — RELEASED
 
-- ADP-003 / PR #119 → `af7f550470905ca218ce6a837ed9183b8e1c9a7e`;
-- ADP-015 / PR #120 → `b3eaacaaec33febe8c6d7d047d75ef84ca8c7568`;
-- CAN-006 / PR #121 → `5dfbaf939ebddd706f2911049915c911917c285b`;
-- ADP-007 / PR #122 → `64e0ae41c79b14da89200336e37875d79617d2fb`;
-- ADP-023 / PR #123 → `913ed4793f3f698b4dd49863b389320853cb484e`;
-- ADP-022 / PR #124 → `4eabf5958a839af98e3f5108a74471e3069495b6`.
+The first lawful W3 rack contains exactly six independent cells:
 
-## 5. W2 final batch — accepted six
+1. `ADP-004` — V556 interaction-rule authority/registry;
+2. `ADP-011` — V3 V555-route realization authority;
+3. `CDP-CAN-002` — V556 predicate/evaluator registry-schema canonicalization;
+4. `V3-P1` — interfaces / epistemics / generated-entity registry fixture implementation;
+5. `V3-P2` — bounded event-ledger / replay / admission-receipt fixture implementation;
+6. `V3-P3` — state migration / checkpoints / stored-vs-derived fixture implementation.
 
-- CAN-025 / PR #127 → `0b32ce6172da0036c6f7a1aaf8f8bbb6acf81267`;
-- CAN-005 / PR #128 → `c75e7c59060a9552ee2b15c8d15067daa57bd3e5`;
-- CAN-007 / PR #129 → `400cc700aab7c3c2090dd6d1b54189fd5ace3f5a`;
-- CAN-024 / PR #130 → `a2fdaed9278d597e30ff9587c4e311be66d110f5`;
-- CAN-022 / PR #131 → `0a6ab3dfb1b3e7aa865959865d72060358e1fbe9`;
-- CAN-004 / PR #132 → `46cbfe80afa38f779112ef4d081c789bfc593325`.
+RA-R00 explicitly permits V3-P1..P3 against frozen fixtures before physical V558 closure. Their named semantic authority blockers are accepted.
 
-Binding consequences:
-- V557→V558 publication/repository packaging is immutable, content-addressed, producer-preserving and item-governance preserving;
-- ContextResolver policy is deterministic with accepted temporal precedence, fail-closed ties and no fuzzy/model/default inference;
-- static structural refresh and generated-life requery are distinct channels;
-- V2 rendering consumes only an already-authorized semantic plan and renderer output remains wording-only until validated;
-- interaction mode defaults noncausal and explicit causal mode provides packaging eligibility only;
-- V2→V3 packaging remains noncausal and exact-artifact-bound; ADP-019 remains sole admission/occurrence authority.
+Same-rack workers may not consume sibling W3 returns before Vozhd adjudication.
 
-## 6. Active CAN-023 return
+## 4. W3 work NOT released
 
-PR #126: `CAN-023 / V2 native-translation equivalence`.
+`V555-P1..P5` are **not released**.
 
-Reviewed head:
-`53d12985fa0b5a887205f0298d74200560a1c604`.
+RA-R00 requires:
 
-Substantive pairing/failure/replay architecture is accepted. Narrow defect: the result authorizes a `model-assisted` semantic-equivalence evaluator. Model provenance cannot itself confer semantic adjudication authority.
+`EXT-003 + accepted ADP-002 + accepted ADP-003`
 
-Required fix is recorded directly on PR #126 as issue comment:
-`5330958234`.
+before V555 physical implementation.
 
-Required terminal law:
-- model/LLM may provide diagnostic/non-authoritative alignment evidence;
-- model output alone cannot establish `PLAN_CONFORMANT` or `SEMANTICALLY_EQUIVALENT`;
-- positive semantic adjudication requires exact separately governed evaluator authority/rules;
-- absent that authority, preserve `MISSING_PLAN_ALIGNMENT_AUTHORITY` / `EQUIVALENCE_UNRESOLVED`;
-- translation models remain lawful rendering machinery under ADP-025.
+ADP-002/003 are accepted, but `EXT-003` is a completed canonical V554 publication and does not yet exist. Authority closure cannot substitute for that physical producer gate.
 
-No other W2 worker requires continuation.
+Likewise no W4 V556 semantic implementation begins before W3 `ADP-004` and `CDP-CAN-002` acceptance plus the later exact gates in RA-R00.
 
-## 7. SWID / production gate
+## 5. Early V3 fixture law
 
-PR #27 remains the independent external production lane. Last verified status still leaves G8 open for post-repair live DB deployment, 35-scope preflight, governed 9-scope respondent-backed J canary and broader CLOSED_35 smoke.
+V3-P1..P3 may implement only against frozen accepted interfaces/fixtures. They may not:
+- pretend `EXT-007` exists;
+- consume a live mutable V558 repository;
+- implement V3-P4+ scheduler/context/realization behavior;
+- invent missing actor or structural facts to make fixtures vivid;
+- let recovered historical V3/V2 semantics override current accepted authority.
 
-Therefore `EXT-001` remains open and V553 production remains blocked.
+`IMP-008` remains the implementation substrate for V3-P1..P3.
 
-## 8. Separate unrelated work
+## 6. Production gates
 
-PR #125 (`Install full R1 question-relation authority and migrate V550 runtime`) remains outside this W2 authority court.
+SWID / `EXT-001` remains independent and still gates V553 production.
 
-## 9. Immediate Vozhd action
+Until V553 production and downstream producer publications exist:
+- `EXT-002` remains unavailable for V554 physical completion;
+- `EXT-003` remains unavailable for V555 physical implementation;
+- later producer-publication gates remain unavailable in order.
 
-1. Receive and court only the CAN-023 continuation on PR #126.
-2. If clean, merge CAN-023.
-3. Bank explicit W2 authority/contract-completion closure ruling.
-4. Advance `CURRENT_STATE.md` / `LIVE_ITINERARY.md` to W2 closed.
-5. Only then release W3 from the resulting canonical `main`.
-6. Continue SWID G8 separately.
+Authority work and authorized fixture work may proceed without laundering these physical absences into semantic facts.
+
+## 7. Separate unrelated work
+
+PR #125 remains outside this release court unless separately assigned/adjudicated.
+
+## 8. Immediate Vozhd action
+
+1. Run/court the six-cell W3 first rack independently from one exact common base.
+2. Merge accepted authority cells before later W4 use.
+3. Merge accepted V3-P1..P3 fixture implementation only if packet scope, authority fidelity, replay and anti-invention courts pass.
+4. Continue SWID / producer-publication lanes independently.
+5. Do not release V555-P1..P5 until `EXT-003` is real.
