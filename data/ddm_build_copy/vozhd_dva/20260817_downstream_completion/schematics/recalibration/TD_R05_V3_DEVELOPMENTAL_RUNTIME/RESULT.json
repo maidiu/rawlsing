@@ -18,12 +18,7 @@
     "token": "DIRECT_SOURCE_VERIFICATION = PASS_WITH_ARCHITECTURE_DELTA",
     "prior_source_mount_caveat": "CLOSED",
     "focused_tests": {"result": "PASS", "passed": 80, "warnings": 0},
-    "claim_audit_counts": {
-      "CONFIRMED_BY_DIRECT_SOURCE": 24,
-      "CORRECT_BUT_REQUIRES_QUALIFICATION": 10,
-      "CHANGE_REQUIRED": 5,
-      "SOURCE_DID_NOT_SUPPORT_CLAIM": 1
-    },
+    "claim_audit_counts": {"CONFIRMED_BY_DIRECT_SOURCE": 24, "CORRECT_BUT_REQUIRES_QUALIFICATION": 10, "CHANGE_REQUIRED": 5, "SOURCE_DID_NOT_SUPPORT_CLAIM": 1},
     "source_files_inspected": {
       "persistent_state": ["v3/core/state.py", "v3/core/enums.py", "v3/core/derived.py", "v3/core/invariants.py", "v3/core/year_record.py", "v3/core/generation_integrity.py", "v3/core/config_loader.py", "v3/core/json_codec.py"],
       "sequencing": ["v3/v3_yearly_step_order.yaml", "v3/engine/yearly_step.py", "v3/engine/step_runner.py", "v3/tests/test_architecture_invariants.py"],
@@ -80,91 +75,19 @@
     {"id":39,"mechanism":"server/manual rupture injection","source":"server/generation/simulation.py; v3/engine/effects/metabolization_effects.py","function":"_maybe_inject_rupture_at_band_age alias; maybe_inject_rupture_at_band_age","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"REPLACE_WITH_STRONGER_MECHANISM","finding":"Module-global randomness mutates rupture/metabolization/wound state outside canonical year event ledger; route through named-stream admission."},
     {"id":40,"mechanism":"generation readiness / ready surface","source":"server/generation/store.py; server/generation/simulation.py; server/session_state.py; v3/core/generation_integrity.py","function":"_validate_persona_for_store_write; _golden_eligibility_for_session_dir; GenerationIntegrityAccumulator; _generation_state_is_ready","audit":"SOURCE_DID_NOT_SUPPORT_CLAIM","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Exact source already has clean/degraded/blocked/legacy-unknown readiness, integrity accumulation, validation and golden eligibility; preserve/extend rather than replace."}
   ],
-  "recovered_disposition_counts": {
-    "REUSE_UNCHANGED_IF_FULLY_COMPATIBLE": 3,
-    "ADAPT_TO_TERMINAL_ARCHITECTURE": 31,
-    "REPLACE_WITH_STRONGER_MECHANISM": 3,
-    "REMOVE_AS_OBSOLETE_OR_REDUNDANT": 3,
-    "DEFER_MISSING_AUTHORITY": 0,
-    "TOTAL": 40
-  },
-  "architecture_deltas": [
-    "V556 F2 gets distinct AttractorPrerequisiteSatisfactionRecord; F2 is neither F1 interaction experience nor attractor state",
-    "buffer/amplify/deflect/reroute/transform are response/effect kinds under ACTOR_RESPONSE_EVENT rather than top-level event families",
-    "orientation dimension list becomes governed extensible vocabulary/examples rather than frozen canonical fields",
-    "DevelopmentalEventLedger retained as a bounded generalization of extant YearRecord/event/micro-trace/mutation lineage",
-    "mechanisms 14, 32, 37, 38 and 40 reclassified to ADAPT based on direct continuity",
-    "source verification removed from P1/open issues because the caveat is closed"
-  ],
+  "recovered_disposition_counts": {"REUSE_UNCHANGED_IF_FULLY_COMPATIBLE": 3, "ADAPT_TO_TERMINAL_ARCHITECTURE": 31, "REPLACE_WITH_STRONGER_MECHANISM": 3, "REMOVE_AS_OBSOLETE_OR_REDUNDANT": 3, "DEFER_MISSING_AUTHORITY": 0, "TOTAL": 40},
+  "architecture_deltas": ["distinct V556 F2 AttractorPrerequisiteSatisfactionRecord", "response/effect kinds replace pressure-outcome event-family proliferation", "orientation terms become governed extensible vocabulary rather than frozen canonical fields", "DevelopmentalEventLedger retained as bounded generalization of extant YearRecord/event/micro-trace/mutation lineage", "mechanisms 14,32,37,38,40 reclassified to ADAPT", "source caveat closed and removed from P1/open issues"],
   "v3_jurisdiction_verdict": "STAGE_BLIND_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE",
-  "terminal_architecture": {
-    "name": "HYBRID_EVENT_SOURCED_DEVELOPMENTAL_RUNTIME",
-    "canonical_generated_truth": "DevelopmentalEventLedger",
-    "materialized_state": "ActorCausalState",
-    "derived_state": "DerivedActorView",
-    "render_boundary": "immutable V3RenderContext / GeneratedPersonRecord",
-    "structural_input": "V558 StructuralPriorRepository + deterministic ContextResolver outputs"
-  },
-  "v556_f1_f2_seam": {
-    "F1": "STRUCTURAL_PRESSURE_INTERACTION_RELATION -> V3 V556_F1_INTERACTION_REALIZATION_EVENT only when exact governed participants/conditions are realized",
-    "F2": "STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY -> structural applicability plus V3 AttractorPrerequisiteSatisfactionRecord evaluated against actor history",
-    "hard_law": "V556 F2 topology != V3 F1 interaction realization != V3 F2 prerequisite satisfaction != V3 attractor state",
-    "satisfaction_statuses": ["DEFERRED", "UNSATISFIED", "PARTIAL", "SATISFIED", "NEGATIVE_AUTHORITY"],
-    "missing_authority": "V556_ATTRACTOR_PREREQUISITE_SATISFACTION_RULE"
-  },
-  "event_family_no_bloat": {
-    "verdict": "PASS",
-    "canonical_families": ["RUNTIME_BINDING_EVENT", "ENCOUNTER_EXPOSURE_EVENT", "V555_ROUTE_REALIZATION_EVENT", "V556_F1_INTERACTION_REALIZATION_EVENT", "ACTOR_RESPONSE_EVENT", "DEVELOPMENTAL_STATE_TRANSITION_EVENT", "RELATIONSHIP_HOUSEHOLD_GENEALOGY_EVENT", "RUPTURE_METABOLIZATION_EVENT", "EXTERNAL_RUNTIME_EVENT"],
-    "typed_response_kinds": ["TRANSMIT", "BUFFER", "AMPLIFY", "DEFLECT", "REROUTE", "TRANSFORM", "BLOCK", "RESIST"],
-    "law": "response/effect kinds are not separate canonical event families"
-  },
-  "orientation_vocabulary_verdict": {
-    "verdict": "GOVERNED_EXTENSIBLE_VOCABULARY_WITH_DERIVED_PROJECTIONS",
-    "canonical_fields": ["actor_id", "structural_target_ref", "effective_interval", "dimensions[]", "provenance", "last_update_event_id"],
-    "dimension_entry": ["dimension_id", "value_or_state", "uncertainty", "causal_event_refs", "update_rule_id", "update_rule_version"],
-    "illustrative_terms_are_canonical": false
-  },
-  "event_ledger_necessity": {
-    "verdict": "RETAIN_REQUIRED_BOUNDED",
-    "direct_source_support": ["YearRecord before/after hashes", "event_ledger", "micro_trace_ledger", "field provenance", "llm_band ledger/causal trace", "mutations_applied", "yearly integrity"],
-    "no_bloat_rules": ["one event may carry many effects", "no event for unchanged field/tick", "structural objects remain external refs", "checkpoints/derived/render/integrity are not pseudo-events", "slow processes emit records only on governed causal change or explicit checkpoint contract"]
-  },
+  "terminal_architecture": {"name": "HYBRID_EVENT_SOURCED_DEVELOPMENTAL_RUNTIME", "canonical_generated_truth": "DevelopmentalEventLedger", "materialized_state": "ActorCausalState", "derived_state": "DerivedActorView", "render_boundary": "immutable V3RenderContext / GeneratedPersonRecord", "structural_input": "V558 StructuralPriorRepository + deterministic ContextResolver outputs"},
+  "v556_f1_f2_seam": {"F1": "STRUCTURAL_PRESSURE_INTERACTION_RELATION -> V3 V556_F1_INTERACTION_REALIZATION_EVENT only on exact realization", "F2": "STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY -> V3 AttractorPrerequisiteSatisfactionRecord evaluated against actor history", "hard_law": "V556 F2 topology != V3 F1 interaction realization != V3 F2 prerequisite satisfaction != V3 attractor state", "satisfaction_statuses": ["DEFERRED", "UNSATISFIED", "PARTIAL", "SATISFIED", "NEGATIVE_AUTHORITY"], "missing_authority": "V556_ATTRACTOR_PREREQUISITE_SATISFACTION_RULE"},
+  "event_family_no_bloat": {"verdict": "PASS", "canonical_families": ["RUNTIME_BINDING_EVENT", "ENCOUNTER_EXPOSURE_EVENT", "V555_ROUTE_REALIZATION_EVENT", "V556_F1_INTERACTION_REALIZATION_EVENT", "ACTOR_RESPONSE_EVENT", "DEVELOPMENTAL_STATE_TRANSITION_EVENT", "RELATIONSHIP_HOUSEHOLD_GENEALOGY_EVENT", "RUPTURE_METABOLIZATION_EVENT", "EXTERNAL_RUNTIME_EVENT"], "typed_response_kinds": ["TRANSMIT", "BUFFER", "AMPLIFY", "DEFLECT", "REROUTE", "TRANSFORM", "BLOCK", "RESIST"], "law": "response/effect kinds are not separate canonical event families"},
+  "orientation_vocabulary_verdict": {"verdict": "GOVERNED_EXTENSIBLE_VOCABULARY_WITH_DERIVED_PROJECTIONS", "canonical_fields": ["actor_id", "structural_target_ref", "effective_interval", "dimensions[]", "provenance", "last_update_event_id"], "dimension_entry": ["dimension_id", "value_or_state", "uncertainty", "causal_event_refs", "update_rule_id", "update_rule_version"], "illustrative_terms_are_canonical": false},
+  "event_ledger_necessity": {"verdict": "RETAIN_REQUIRED_BOUNDED", "direct_source_support": ["YearRecord before/after hashes", "event_ledger", "micro_trace_ledger", "field provenance", "llm-band causal ledger", "mutations_applied", "yearly integrity"], "no_bloat_rules": ["one event may carry many effects", "no event for unchanged field/tick", "structural objects remain external refs", "checkpoints/derived/render/integrity are not pseudo-events", "slow processes emit records only on governed causal change or explicit checkpoint contract"]},
   "v550_plus_non_reduction_verdict": "PASS",
   "genealogy_verdict": "FIRST_CLASS_RECURSIVE_V3_GENERATED_PARENT_RELATIONSHIP_HOUSEHOLD_CHILD_HISTORY_REQUIRED",
-  "llm_verdict": {
-    "pass1": "OPTIONAL_BOUNDED_PROPOSAL_ONLY",
-    "admission": "RULE_REGISTRY_BACKED_NO_FABRICATED_EMPTY_PACKET_OR_FIRST_CANDIDATE_FALLBACK",
-    "pass2": "RENDER_ONLY_BACKBONE_HASH_NONMUTATION",
-    "randomness": "NAMED_DETERMINISTIC_STREAMS_REQUIRED"
-  },
-  "open_missing_authority": [
-    "actor initialization and developmental phase rules",
-    "position and transition rules",
-    "encounter/exposure realization rules",
-    "V555 route realization rules",
-    "V556 F1 interaction realization rules",
-    "V556 F2 actor-history prerequisite satisfaction rules",
-    "actor response and pressure-metabolism rules",
-    "orientation dimension registry/update rules",
-    "material/organismic/vitality rules",
-    "need/expectation/striving rules",
-    "framework/buffer/crack/wound/practice/infrastructure rules",
-    "relationship/household/genealogy rules",
-    "rupture/metabolization/memory rules",
-    "attractor formation/interpretation rules",
-    "external event and optional LLM proposal admission",
-    "named randomness policy and hybrid scheduler rules"
-  ],
-  "unresolved_vozhd_decisions": [
-    "physical event/checkpoint persistence engine",
-    "slow-process maintenance cadence",
-    "A/S/V/Aim compatibility naming",
-    "PeakRouting compatibility packaging after decomposition",
-    "attractor evidence graph versus optional basin representation",
-    "generated-memory and shared relationship/household physical storage",
-    "whether Pass1 LLM ships in first terminal implementation",
-    "physical packaging of runtime-rule registries"
-  ],
+  "llm_verdict": {"pass1": "OPTIONAL_BOUNDED_PROPOSAL_ONLY", "admission": "RULE_REGISTRY_BACKED_NO_FABRICATED_EMPTY_PACKET_OR_FIRST_CANDIDATE_FALLBACK", "pass2": "RENDER_ONLY_BACKBONE_HASH_NONMUTATION", "randomness": "NAMED_DETERMINISTIC_STREAMS_REQUIRED"},
+  "open_missing_authority": ["actor initialization and developmental phase rules", "position and transition rules", "encounter/exposure realization rules", "V555 route realization rules", "V556 F1 interaction realization rules", "V556 F2 actor-history prerequisite satisfaction rules", "actor response and pressure-metabolism rules", "orientation dimension registry/update rules", "material/organismic/vitality rules", "need/expectation/striving rules", "framework/buffer/crack/wound/practice/infrastructure rules", "relationship/household/genealogy rules", "rupture/metabolization/memory rules", "attractor formation/interpretation rules", "external event and optional LLM proposal admission", "named randomness policy and hybrid scheduler rules"],
+  "unresolved_vozhd_decisions": ["physical event/checkpoint persistence engine", "slow-process maintenance cadence", "A/S/V/Aim compatibility naming", "PeakRouting compatibility packaging after decomposition", "attractor evidence graph versus optional basin representation", "generated-memory and shared relationship/household physical storage", "whether Pass1 LLM ships in first terminal implementation", "physical packaging of runtime-rule registries"],
   "source_mount_caveat": "CLOSED",
   "architecture_only_verification_status": "PASS_ARCHITECTURE_ONLY_TERMINAL_DEMAND_RECALIBRATION_DIRECT_SOURCE_VERIFIED",
   "direct_source_verification_token": "DIRECT_SOURCE_VERIFICATION = PASS_WITH_ARCHITECTURE_DELTA",
