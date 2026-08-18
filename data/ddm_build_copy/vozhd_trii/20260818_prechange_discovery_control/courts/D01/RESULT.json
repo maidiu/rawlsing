@@ -1,0 +1,284 @@
+{
+  "cell": "D01",
+  "base_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
+  "branch": "agent/vozhd-trii-d01-v547-lineage",
+  "production_code_changed": false,
+  "verdict": "PARTIAL_LINEAGE_WITH_MATERIAL_MATHEMATICAL_AND_SEARCH_GEOMETRY_MUTATION__UNRESTRICTED_V547_PAIR_DISCOVERY_LOST__UNARY_CONDITIONAL_TOPOLOGY_ADDED__DERIVED_LANE_NOT_CANONICALLY_CONSUMED",
+  "lineage": [
+    {
+      "capability": "predictor_salience",
+      "historical_v526c": "explicit purpose lane",
+      "v547": "unweighted discrete mutual information for six non-country predictors; only top predictor persisted",
+      "current_v550": "per-indicator entropy-reduction score plus unweighted NMI and Cramer's V for up to twelve standardized indicators",
+      "disposition": "MUTATED",
+      "reason": "association salience survives, but formula, units, scope, candidate universe, weighting, missingness, and output granularity changed"
+    },
+    {
+      "capability": "interaction_salience",
+      "historical_v526c": "explicit purpose lane",
+      "v547": "exhaustive unordered pair MI over every finite-scored non-country predictor; select highest joint MI and persist gain over stronger marginal",
+      "current_v550": "choose one primary predictor first, then test only primary+each-other predictor via weighted/unweighted conditional entropy gain",
+      "disposition": "LOST",
+      "reason": "unrestricted pair search is absent; current star search cannot discover a strong pair that excludes the selected primary"
+    },
+    {
+      "capability": "shape_classification",
+      "historical_v526c": "explicit required diagnostic family",
+      "v547": "sparse/flat/interaction/main_effect/mixed classifier from top marginal MI, pair gain, and n",
+      "current_v550": "no direct shape_class successor",
+      "disposition": "LOST",
+      "reason": "current diagnostics expose several raw/scalar projections but not V547 shape classes"
+    },
+    {
+      "capability": "score_based_confidence",
+      "historical_v526c": "not separately specified in extracted pack",
+      "v547": "heuristic confidence from n and top marginal MI",
+      "current_v550": "support-derived confidence tiers, not the V547 score",
+      "disposition": "MUTATED",
+      "reason": "same label family does not preserve the old formula or interpretation"
+    },
+    {
+      "capability": "country_heterogeneity_as_predictor",
+      "historical_v526c": "position determinant concept permitted geography-like predictors",
+      "v547": "separate MI(country_code; response) on pooled source-family question frame",
+      "current_v550": "country is an explicit computation scope and is not in INDICATOR_FIELDS",
+      "disposition": "SUPERSEDED",
+      "reason": "cross-country heterogeneity moved from pooled predictor diagnostic to country-scoped production"
+    },
+    {
+      "capability": "unary_conditional_response_topology",
+      "historical_v526c": "not an extracted required output; predictor salience was the named goal",
+      "v547": "not persisted; only top marginal scalar and identity",
+      "current_v550": "indicator_answer_matrix preserves indicator_name, indicator_value, response_value, raw/weighted counts and within-value shares",
+      "disposition": "SUPERSEDED",
+      "reason": "current V550 adds substantially richer unary empirical conditional evidence than V547"
+    },
+    {
+      "capability": "demographic_social_position_heterogeneity",
+      "historical_v526c": "central position-determinant diagnostic purpose",
+      "v547": "six non-country predictors plus separate country MI",
+      "current_v550": "twelve fixed standardized INDICATOR_FIELDS spread across summaries, matrix, outlier, secondary, and branch tree",
+      "disposition": "SPLIT_ACROSS_MULTIPLE_CURRENT_FUNCTIONS",
+      "reason": "the broad concept survives through several outputs rather than one question summary"
+    },
+    {
+      "capability": "branch_discovery",
+      "historical_v526c": "explicitly forbidden from tree recursion; V526d owned recursive breakage trees",
+      "v547": "no recursive tree",
+      "current_v550": "greedy entropy-gain recursive_branch_nodes, bounded depth/support and top-two child values",
+      "disposition": "SUPERSEDED",
+      "reason": "current branch machinery is lineage from the adjacent historical V526d concept, not a faithful V547 function"
+    },
+    {
+      "capability": "outlier_minority_cohort_diagnostic",
+      "historical_v526c": "not separately established in extracted V526c",
+      "v547": "no subgroup-value output",
+      "current_v550": "support-gated dominant-response cohort comparison",
+      "disposition": "DIAGNOSTIC_ONLY",
+      "reason": "new current diagnostic projection; not a preservation of a V547 artifact"
+    },
+    {
+      "capability": "normalized_mutual_information",
+      "historical_v526c": "not specified",
+      "v547": "none",
+      "current_v550": "mutual_info_score in natural logs divided by entropy in bits",
+      "disposition": "SUPERSEDED",
+      "reason": "new current diagnostic, mathematically not normalized to 1 for a perfect balanced binary relation"
+    },
+    {
+      "capability": "cramers_v",
+      "historical_v526c": "not specified",
+      "v547": "none",
+      "current_v550": "unweighted Cramer's V",
+      "disposition": "SUPERSEDED",
+      "reason": "new current association diagnostic"
+    },
+    {
+      "capability": "weight_sensitive_entropy_salience",
+      "historical_v526c": "historical builder/blocker law warned about missing weights, but extracted V526c does not specify weighted formula",
+      "v547": "explicitly exploratory_unweighted; weighted_n equals n",
+      "current_v550": "baseline and conditional entropy use validated positive finite scalar weights when available",
+      "disposition": "MUTATED",
+      "reason": "current ranking may reverse relative to V547's unweighted ranking"
+    },
+    {
+      "capability": "typed_response_absence",
+      "historical_v526c": "not specified in extracted purpose",
+      "v547": "numeric coercion plus fixed code deletion collapses special states and removes nonnumeric responses",
+      "current_v550": "distribution/harmonization layer preserves typed flags for missing, DK, refusal, IAP, not-asked, inapplicable, special",
+      "disposition": "SPLIT_ACROSS_MULTIPLE_CURRENT_FUNCTIONS",
+      "reason": "typed semantics are preserved beside current determinicity, but branching metrics themselves operate on normalized response strings without consulting the typed flags"
+    },
+    {
+      "capability": "exact_scope_identity",
+      "historical_v526c": "offline diagnostic concept",
+      "v547": "output says within_country and carries canonical_wave metadata, but SQL frame is source-family + var_code with no country or wave predicate",
+      "current_v550": "source × canonical wave × country × question execution",
+      "disposition": "MUTATED",
+      "reason": "the current grain is materially narrower and explicit"
+    },
+    {
+      "capability": "exact_predictor_value_identity",
+      "historical_v526c": "not proved as required output",
+      "v547": "not persisted for top predictor or pair",
+      "current_v550": "preserved for unary matrix; summary indicator_value is only a representative/dominant value and secondary summary does not preserve pair-cell identity",
+      "disposition": "SPLIT_ACROSS_MULTIPLE_CURRENT_FUNCTIONS",
+      "reason": "identity survives exactly in one current family but not in all salience/interaction summaries"
+    },
+    {
+      "capability": "joint_predictor_identity_and_support",
+      "historical_v526c": "interaction salience intended",
+      "v547": "top pair names persisted, but exact pair cells/support were not",
+      "current_v550": "primary and secondary names plus joint n for emitted positive-gain rows; no joint contingency distribution",
+      "disposition": "MUTATED",
+      "reason": "some joint identity/support is richer, but search geometry is narrower and joint topology still absent"
+    },
+    {
+      "capability": "respondent_membership_in_published_determinicity_outputs",
+      "historical_v526c": "offline aggregate diagnostics",
+      "v547": "used during computation, not persisted",
+      "current_v550": "used during computation, not persisted in the traced determinicity tables",
+      "disposition": "LOST",
+      "reason": "respondent membership is absent from both published generations; separate respondent substrate lineage is outside this output capability"
+    },
+    {
+      "capability": "three_way_interaction_discovery",
+      "historical_v526c": "V526c forbade tree recursion and extracted purpose names interactions without a triple search law",
+      "v547": "pairs only",
+      "current_v550": "greedy tree can reach deeper only after a positive lower-order split; no exhaustive triple search",
+      "disposition": "LOST",
+      "reason": "three-way parity with zero marginal/pair gain is invisible to both"
+    },
+    {
+      "capability": "historical_reverse_profile_generation_use",
+      "historical_v526c": "adjacent historical attitude-cloud/profile contracts intended position predictors + branch memberships + co-signatures for profile posterior",
+      "v547": "produced predictor/interaction summary potentially serving that historical design",
+      "current_v550": "no lawful canonical determinicity-to-actor-profile consumer proved by D01",
+      "disposition": "UNKNOWN",
+      "reason": "historical intent is evidence only and cannot be promoted into current authority"
+    }
+  ],
+  "preserved_capabilities": [
+    "question-level empirical association discovery between response and social/demographic position coordinates",
+    "separate predictor identities for single-field association diagnostics",
+    "ability to expose a strong marginal relationship",
+    "support/sample-size information at summary level, though semantics and thresholds changed"
+  ],
+  "mutated_capabilities": [
+    "single-predictor salience formula: V547 unweighted discrete MI in nats -> V550 entropy reduction in bits with optional scalar weights",
+    "analysis grain: V547 executable source-family×var_code pooling -> V550 source×wave×country×question",
+    "candidate field universe: six V547 non-country fields (+separate country) -> twelve current INDICATOR_FIELDS",
+    "pair interaction search: exhaustive V547 pairs -> one-primary star in current secondary_indicator_summary",
+    "missingness treatment and support law",
+    "confidence semantics",
+    "joint identity/support representation"
+  ],
+  "lost_capabilities": [
+    "unrestricted V547 all-pairs search over all finite-scored non-country predictors",
+    "V547 top pair joint-MI selection quantity as such",
+    "V547 shape_class output",
+    "V547 score-based confidence formula",
+    "country_code MI as a pooled predictor diagnostic",
+    "direct numerical comparability to historical V547 MI thresholds",
+    "respondent membership in published determinicity artifacts",
+    "three-way parity discovery (shared V547/current limitation)"
+  ],
+  "unknowns": [
+    "whether any accepted current authority requires the universal all-question × twelve-field scan; D07 owns adjudication",
+    "whether R1 or another current authority supplies an exact conditional workload law; D06/D07 own full provenance/adjudication",
+    "whether historical V526c/V547 profile-posterior ambitions remain a lawful current capability requirement",
+    "whether any current noncanonical or external consumer imports ddm_v551_conditional.py after repairing its import contract",
+    "whether database position richness beyond the twelve fixed fields should be searched; D01 records availability only and does not create workload authority",
+    "whether current typed special responses are intentionally included in determinicity branching metrics or merely carried through the shared frame"
+  ],
+  "current_consumers": [
+    {
+      "consumer": "build_determinicity_wave_shard_v550.py",
+      "status": "DIRECT_PRODUCER_ORCHESTRATOR",
+      "uses": ["indicator_summary_rows", "secondary_indicator_summary_rows", "indicator_answer_matrix_rows", "outlier_cohort_rows", "branch_nodes_rows"]
+    },
+    {
+      "consumer": "build_determinicity_repository_v550.py",
+      "status": "DIRECT_BASELINE_ORCHESTRATOR",
+      "uses": ["same V550 branching functions and materialized tables"]
+    },
+    {
+      "consumer": "ddm_v550_bridge.py",
+      "status": "DIRECT_READER",
+      "uses": ["maps indicator_answer_matrix, outlier_cohort_summary, secondary_indicator_summary, recursive_branch_nodes to derived_determinicity; position_indicator_summary to position_context"],
+      "important_loss": "indicator_answer_matrix indicator_name/indicator_value are not aliased into bridge position_field/position_value"
+    },
+    {
+      "consumer": "compile_v551_relation_evidence_atoms.py / ddm_v551_atoms.py",
+      "status": "CANONICAL_V551_NOT_A_DERIVED_DETERMINICITY_CONSUMER",
+      "uses": ["only direct_relation_response from answer_distribution/country_answer_distribution for canonical candidates"]
+    },
+    {
+      "consumer": "ddm_v551_conditional.py",
+      "status": "INTENDED_BUT_UNWIRED_AND_IMPORT_BROKEN_AT_BASE",
+      "uses": ["derived_determinicity lane if invoked"],
+      "defect": "imports MIN_ATOM_SUPPORT and SOURCE_TABLE_PRIORITY from current ddm_v551_atoms.py, where neither name exists"
+    }
+  ],
+  "historical_intended_consumers": [
+    {
+      "source": "historical Attitude Cloud Access Contract",
+      "status": "HISTORICAL_DESIGN_EVIDENCE",
+      "intent": "profile posterior builder consumes identity/position predictors + likely anchor branch memberships + attitude-cloud co-signatures"
+    },
+    {
+      "source": "historical V526e pack",
+      "status": "HISTORICAL_DESIGN_EVIDENCE",
+      "intent": "branch co-signature and profile covariance for profile generation"
+    }
+  ],
+  "hostile_fixture_summary": [
+    {"id": "F1_STRONG_MARGINAL", "finding": "Core single-predictor salience is present but the score formula/unit changed."},
+    {"id": "F2_WEAK_MARGINALS_STRONG_INTERACTION_WITH_COMPETING_PRIMARY", "finding": "V547 exhaustive pair search finds A+B; current primary-conditioned secondary search never evaluates it."},
+    {"id": "F3_XOR_TIE_ORDER", "finding": "V547 discovers the XOR pair but its shape classifier labels the question flat because the flat check precedes interaction-gain evaluation. Current V550 can miss the pair entirely because pair search is conditional on the single chosen primary."},
+    {"id": "F4_SIMPSON_REVERSAL", "finding": "Scalar salience/pair gain does not encode reversal direction. Current unary matrix preserves marginal conditionals but not the joint S×P response cells; secondary_gain likewise does not retain directional joint topology."},
+    {"id": "F5_SMALL_STABLE_MINORITY", "finding": "Minority information is split across current families; support behavior is family-specific."},
+    {"id": "F6_SUBGROUP_EFFECT_REVERSAL", "finding": "Pair identity can be discovered historically but reversal semantics are not preserved by the V547 row; current secondary search is order-sensitive and its row also lacks the full joint response distribution."},
+    {"id": "F7_THREE_WAY_PARITY", "finding": "Three-way interaction is invisible to both V547 pair search and current V550 greedy discovery. This is a shared limitation, not a V550-only loss."},
+    {"id": "F8_WEIGHTED_UNWEIGHTED_RANK_REVERSAL", "finding": "Introducing survey weights reverses the selected primary predictor. Current V550's NMI and Cramer's V remain unweighted despite the weighted MI ranking."},
+    {"id": "F9_PREDICTOR_MISSINGNESS_BASELINE_MISMATCH", "finding": "Current V550 subtracts conditional entropy on the nonblank-X subset from baseline entropy on the full Y universe. Under predictor missingness the field named mutual_information is not generally MI and can be strongly positive under exact conditional independence."}
+  ],
+  "metric_unit_check": {
+    "perfect_binary_v547_mutual_info_classif": 0.6931471805599454,
+    "perfect_binary_current_entropy_reduction": 1.0,
+    "perfect_binary_current_normalized_mutual_information": 0.6931471805599453,
+    "finding": "V547 raw MI uses sklearn natural-log units; current entropy-reduction/MI uses base-2 bits. Current normalized_mutual_information divides sklearn MI by base-2 entropy, so a perfect balanced binary association returns ln(2), not 1."
+  },
+  "follow_on_questions": [
+    {
+      "court": "D07",
+      "questions": [
+        "Does any accepted current authority mandate all-question × twelve-INDICATOR_FIELDS computation, or any specific subset/predicate/conjunction search?",
+        "If diagnostic discovery is authorized separately from canonical empirical evidence, what exact pair/intersection search frontier is lawful?",
+        "Does current R1 question-relation authority carry workload selection semantics, or only question/relation/structural semantics?"
+      ]
+    },
+    {
+      "court": "D08",
+      "questions": [
+        "Can unary position-conditioned distributions, response-response cotravel clouds, and position+response conjunctions share one predicate algebra without collapsing their distinct denominator and use semantics?",
+        "Which historical V526c/V526e discovery quantities, if any, are reconstructible views over that deeper fact surface?"
+      ]
+    },
+    {
+      "court": "D12",
+      "questions": [
+        "Which of unrestricted pair discovery, full unary topology, subgroup reversals, minority cells, Simpson-sensitive joint conditioning, and deeper interactions are terminally necessary for generated human capability?",
+        "Is historical reverse profile/covariance use terminally required, authoring-only, diagnostic, superseded, or unproven under current law?"
+      ]
+    },
+    {
+      "court": "D14",
+      "questions": [
+        "Benchmark current all-field summaries, matrix, outlier, secondary-star, and recursive tree separately rather than treating 'determinicity' as one cost center.",
+        "Measure the cost differential between exhaustive historical-style pair search, current primary-star search, and any D07-authorized workload under semantic-equivalence fixtures.",
+        "Include weighted/unweighted and missingness-heavy shards because current score computation changes materially under both."
+      ]
+    }
+  ]
+}
