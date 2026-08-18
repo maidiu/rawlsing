@@ -462,6 +462,16 @@ def inspect_database_contract(config: RuntimeConfig, db_url: str) -> dict[str, A
     return result
 
 
+class _SelectedQuestionVariables(list[str]):
+    """Strict selection plus the exact QSM namespace snapshot that produced it."""
+
+    def __init__(self, values: Iterable[str], *, qsm_var_codes: Iterable[str]) -> None:
+        super().__init__(values)
+        self.qsm_var_codes = frozenset(
+            _clean(value).upper() for value in qsm_var_codes if _clean(value)
+        )
+
+
 def _select_question_variables_from_rows(
     rows: list[tuple[str, str, str, str]],
     *,
@@ -507,7 +517,10 @@ def _select_question_variables_from_rows(
         rng.shuffle(governed_v551)
         selected.extend(governed_v551[: max(0, 20 - len(selected))])
         rng.shuffle(selected)
-        return selected[:20]
+        return _SelectedQuestionVariables(
+            selected[:20],
+            qsm_var_codes=(code for code, *_ in rows),
+        )
 
     # Preserve the existing broad/diagnostic sampler byte-for-behavior outside
     # strict full-J acceptance.  In particular, CLOSED_35 joint_mode=off keeps
@@ -569,11 +582,15 @@ def _select_question_variables(
 
 
 def _base_filter_variables_for_required(family: str, wave: str, selected: Iterable[str]) -> list[str]:
-    """Return the strict base/V551 subset; bounded J-only vars stay J-only."""
+    """Return selected identifiers that were present in the exact QSM snapshot."""
+    del family, wave  # retained in the signature for compatibility with focused callers
+    qsm_var_codes = getattr(selected, "qsm_var_codes", None)
+    if qsm_var_codes is None:
+        raise RuntimeError("required_full_j_qsm_selection_provenance_missing")
     return [
         code
         for code in selected
-        if lookup_governed_response_semantics_contract(family, wave, code) is not None
+        if _clean(code).upper() in qsm_var_codes
     ]
 
 
