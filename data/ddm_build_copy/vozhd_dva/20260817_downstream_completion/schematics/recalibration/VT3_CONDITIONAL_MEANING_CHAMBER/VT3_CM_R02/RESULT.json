@@ -1,0 +1,107 @@
+{
+  "cell_id": "VT3-CM-R02",
+  "mission": "Aggressively test whether V550's determinicity artifact suite contains irreducible terminal empirical value, identify the minimum lossless empirical fact, and determine which artifacts can become deterministic or diagnostic views without performing the downstream-recreation audit owned by R03.",
+  "verdict": "TARGET_HYPOTHESIS_SUBSTANTIALLY_SURVIVES_WITH_JOINT-STRUCTURE_CORRECTION",
+  "governing_spirit_applied": true,
+  "repository_head_examined": "8c87f7725ba58202b5377c974548140420709fa9",
+  "launch_base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
+  "publication_branch": "agent/vozhd-trii-vt3-cm-r02",
+  "production_code_changed": false,
+  "court_tokens": {
+    "V550_DETERMINICITY_SURFACE_HAS_IRREDUCIBLE_ARTIFACT_VALUE": "MOSTLY_FALSE",
+    "INDICATOR_ANSWER_MATRIX_IS_IRREDUCIBLE_CORE": false,
+    "PAIRWISE_CONDITIONAL_DISTRIBUTIONS_ARE_MINIMUM_SUFFICIENT": false,
+    "GOVERNED_JOINT_EMPIRICAL_SUBSTRATE_IS_MINIMUM_SUFFICIENT": true,
+    "CONDITIONAL_EMPIRICAL_DISTRIBUTION_AS_CANONICAL_VIEW": "PASS_WITH_JOINT_PREDICATE_AND_POPULATION_REQUIREMENTS"
+  },
+  "evidence_files": [
+    {"path":"data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md","blob_sha":"588cf3954c33417665c5f9bac04e8b27e75d7f7c","evidence_type":"direct_observation"},
+    {"path":"data/ddm_build_copy/build_determinicity_repository_v550.py","blob_sha":"afd2a59e1cdff0024a57acaf1dab8ff30534e565","symbols":["prepare_question_frame","indicator_summary_rows","secondary_indicator_summary_rows","indicator_answer_matrix_rows","outlier_cohort_rows","branch_nodes_rows"],"evidence_type":"direct_observation"},
+    {"path":"data/ddm_build_copy/ddm_v550_branching.py","blob_sha":"8f6d40e0d016d66e5a3b334b31747eaef752873f","symbols":["INDICATOR_FIELDS","indicator_summary_rows","secondary_indicator_summary_rows","indicator_answer_matrix_rows","branch_nodes_rows","outlier_cohort_rows"],"evidence_type":"direct_observation"},
+    {"path":"data/ddm_build_copy/ddm_v550_metrics.py","blob_sha":"e7675f4080bb30e6526027a34db747b7be7f85c9","symbols":["classify_weight_status","distribution_entropy","conditional_entropy","cramers_v","normalized_mutual_information","dominant_response"],"evidence_type":"direct_observation"},
+    {"path":"data/ddm_build_copy/ddm_v550_position_distribution.py","blob_sha":"651329254244e9f42a8d88c2721ccae6bd768073","symbols":["_respondent_slice","build_position_distribution_rows"],"evidence_type":"direct_observation"},
+    {"path":"data/ddm_build_copy/ddm_v550_clouds.py","blob_sha":"dfc878e87d984a1a3d7000a0c726bdc444f9945f","symbols":["BRANCH_POSITION_SIGNATURE_COLUMNS","build_position_signature_rows","_candidate_association_stats"],"evidence_type":"direct_observation"},
+    {"path":"data/ddm_build_copy/ddm_v550_support.py","blob_sha":"1b841139fee051b154dcccd52cd3d866b958dbb5","symbols":["DEFAULT_SUPPORT_RATE","DEFAULT_SUPPORT_CAP","DEFAULT_SUPPORT_FLOOR","support_threshold_from_total"],"evidence_type":"direct_observation"},
+    {"path":"data/ddm_build_copy/ddm_v550_distributions.py","blob_sha":"43a62723b16f9c800ed7a6ef40a77e70a3f07377","symbols":["_resolved_response_semantics","build_distribution_tables"],"evidence_type":"direct_observation"},
+    {"path":"data/ddm_build_copy/ddm_v550_question_use.py","blob_sha":"8d90a5116fd05b5db17e9b4645638a3aa6fc1131","symbols":["POSITION_CONDITIONING_COLUMNS","QUESTION_USE_CONTRACT_HASH_COLUMNS"],"evidence_type":"direct_observation"}
+  ],
+  "findings": [
+    {"id":"F01","type":"direct_observation","finding":"V550 builds position_indicator_summary, secondary_indicator_summary, indicator_answer_matrix, outlier_cohort_summary and recursive_branch_nodes from the same prepared per-question respondent frame and shared weight series."},
+    {"id":"F02","type":"direct_observation","finding":"indicator_answer_matrix is a one-indicator contingency representation over response categories carrying weighted/unweighted counts and within-indicator percentages; empty indicator values are excluded."},
+    {"id":"F03","type":"inference_from_observed_code","finding":"indicator_answer_matrix is not a sufficient empirical core because pairwise indicator-response marginals do not identify cross-indicator joint response structure required by secondary_indicator_summary and recursive branching."},
+    {"id":"F04","type":"direct_observation","finding":"position_indicator_summary mixes weighting semantics: entropy can be weighted while normalized mutual information and Cramer's V are unweighted; its mutual_information field is implemented as baseline_entropy minus conditional_entropy."},
+    {"id":"F05","type":"inference_from_observed_code","finding":"MI, entropy-derived scores, NMI, Cramer's V, uplift and confidence labels contain no irreducible empirical information; exact replay requires underlying contingency universes and frozen metric/missingness/weight/support rules."},
+    {"id":"F06","type":"direct_observation","finding":"outlier_cohort_summary is not a statistical outlier detector; it labels every supported indicator-value subgroup by unweighted dominant-response comparison while carrying weighted support separately."},
+    {"id":"F07","type":"direct_observation","finding":"secondary_indicator_summary selects a primary candidate, intersects primary and secondary nonmissing masks, requires at least 50 joint rows and computes secondary_gain from a primary-secondary joint key."},
+    {"id":"F08","type":"direct_observation","finding":"recursive_branch_nodes is a greedy unweighted tree with bounded depth, support gates and recursion only into the two most frequent values of the chosen split indicator."},
+    {"id":"F09","type":"direct_observation","finding":"branch_position_signature is explicitly diagnostic_artifact=true, not_direct_evidence=true and evidence_role=diagnostic_position_signature; it ranks at most five authority-gated position fields by max(NMI,Cramer's V)."},
+    {"id":"F10","type":"direct_observation","finding":"position_distribution is computed from a question-independent respondent slice deduplicated by respondent/country keys and therefore cannot generally be reconstructed from per-question conditional distributions without population overlap identity."},
+    {"id":"F11","type":"direct_observation","finding":"V550 response semantics distinguish missing, DK, refusal, IAP, not-asked and inapplicable states; collapsing them to generic null is not lossless."},
+    {"id":"F12","type":"inference_from_observed_code","finding":"The minimum sufficient authority is a governed joint respondent-position-response substrate, with conditional empirical distributions as canonical views supporting governed conjunction predicates and explicit population/denominator scope."}
+  ],
+  "artifact_dispositions": [
+    {"artifact":"indicator_answer_matrix","disposition":"DETERMINISTIC_EMPIRICAL_VIEW","irreducible":false,"reason":"Pairwise response-position counts are empirical but derivable from joint facts; pairwise marginals lose cross-indicator joint structure."},
+    {"artifact":"position_indicator_summary","disposition":"DETERMINISTIC_DIAGNOSTIC_VIEW","irreducible":false,"reason":"Scalar association/support summaries are reproducible from governed distributions and metric rules."},
+    {"artifact":"outlier_cohort_summary","disposition":"DIAGNOSTIC_COHORT_VIEW","irreducible":false,"reason":"Supported subgroup dominant-response classification, not independent empirical evidence."},
+    {"artifact":"secondary_indicator_summary","disposition":"DIAGNOSTIC_JOINT_ASSOCIATION_VIEW","irreducible":false,"requires_joint_empirical_structure":true,"reason":"secondary_gain is deterministic but cannot be recreated from singleton position-response marginals."},
+    {"artifact":"recursive_branch_nodes","disposition":"DIAGNOSTIC_ONLY_LOSSY_VIEW","irreducible":false,"requires_joint_empirical_structure":true,"reason":"Greedy bounded-depth top-two traversal is deterministic and loses source-population configurations."},
+    {"artifact":"branch_position_signature","disposition":"DIAGNOSTIC_ONLY_VIEW","irreducible":false,"reason":"Implementation itself marks it diagnostic and not direct evidence; rankings are deterministic."},
+    {"artifact":"position_distribution","disposition":"DETERMINISTIC_EMPIRICAL_POPULATION_VIEW","irreducible":false,"requires_population_base":true,"reason":"Counts are empirical but exactly derivable from respondent-position population facts; question CED alone is insufficient."}
+  ],
+  "minimum_sufficient_empirical_fact": {
+    "name": "GOVERNED_JOINT_EMPIRICAL_SUBSTRATE",
+    "canonical_view": "CONDITIONAL_EMPIRICAL_DISTRIBUTION",
+    "requirements": [
+      "source/source_family/raw_wave/canonical_wave/country/question identity",
+      "respondent or losslessly equivalent population-overlap identity",
+      "exact response category and response-semantics authority",
+      "typed absence state",
+      "jointly recoverable governed position values",
+      "weighted and unweighted support",
+      "weight validity/status lane",
+      "explicit denominator/population scope",
+      "question-independent population-position scope",
+      "immutable authority/provenance references and transformation versions",
+      "survey-design sufficient information if statistical uncertainty must be preserved"
+    ],
+    "predicate_requirements": ["TRUE","singleton position predicates","multi-position conjunction predicates","typed missingness predicates where governed"]
+  },
+  "semantic_loss_findings": [
+    {"id":"SL01","condition":"Replace suite with current pairwise indicator_answer_matrix only","loss":"cross-indicator joint structure; exact secondary gain and recursive conditioning become non-identifiable"},
+    {"id":"SL02","condition":"Store only indicator-conditioned rows without unconditional TRUE baseline and missingness scope","loss":"baseline entropy/dominance and missing-indicator effects cannot be reconstructed exactly"},
+    {"id":"SL03","condition":"Store per-question CED without respondent/population overlap or population-position base","loss":"position_distribution cannot be reconstructed exactly"},
+    {"id":"SL04","condition":"Store only weighted totals","loss":"unweighted support and unweighted metric/tree behavior disappear"},
+    {"id":"SL05","condition":"Collapse typed absence to null","loss":"refusal/not-asked/IAP/DK/inapplicable authority distinctions disappear"},
+    {"id":"SL06","condition":"Discard survey-design sufficient information while claiming statistical uncertainty is preserved","loss":"design-based uncertainty can differ despite identical cell counts"}
+  ],
+  "counterevidence": [
+    {"id":"CE01","name":"pairwise-identical joint-divergent population","attack":"Two datasets can share every one-indicator response matrix while differing in A×B×Y; breaks singleton CED sufficiency."},
+    {"id":"CE02","name":"indicator-missing baseline divergence","attack":"Identical observed X×Y cells with differently distributed Y among X-missing respondents yield different global baselines."},
+    {"id":"CE03","name":"question-overlap divergence","attack":"Identical per-question distributions can arise from the same respondents or disjoint respondents, changing position_distribution."},
+    {"id":"CE04","name":"weighted-equivalent unweighted-divergent","attack":"Same weighted totals can conceal radically different unweighted support and recursive eligibility."},
+    {"id":"CE05","name":"weight-status topology divergence","attack":"Same weighted/unweighted totals can coexist with weighted versus partial validity states and different present V550 lane behavior."},
+    {"id":"CE06","name":"typed-absence collision","attack":"Refusal and not-asked can preserve substantive percentages while implying different admissibility and negative authority."},
+    {"id":"CE07","name":"survey-design uncertainty divergence","attack":"Identical cell counts can have different variance under different PSU/stratum concentration."},
+    {"id":"CE08","name":"recursive minority suppression","attack":"Changing a non-top-two category can leave recursive_branch_nodes unchanged while changing real subgroup heterogeneity."}
+  ],
+  "unresolved_questions": [
+    "Terminal architecture may not need every higher-order conjunction currently explored by secondary/tree diagnostics; R03/R06/R00 must determine required predicate closure.",
+    "The inspected V550 determinicity surface does not by itself establish a complete authority for design-based variance; parent must decide whether PSU/stratum/replicate-weight sufficient information is canonical.",
+    "Current partial-weight semantics are not uniform across artifacts; exact compatibility versus lawful supersession remains a parent decision.",
+    "Respondent-level versus aggregate-conjunction physical storage is unresolved; R02 establishes information requirements rather than the optimal storage form.",
+    "Semantic replay is distinguished from byte-identical file replay; byte-exact ordering/serialization would require additional frozen format authority."
+  ],
+  "recommended_parent_actions": [
+    "Reject indicator_answer_matrix as the irreducible empirical core.",
+    "Reject singleton-only conditional empirical distributions as lossless replacement authority.",
+    "Use a governed joint empirical substrate as source of truth and expose conditional distributions as canonical views.",
+    "Preserve typed absence, weighted/unweighted lanes, explicit denominator scope, weight-status authority and immutable provenance.",
+    "Preserve an explicit question-independent population-position lane or respondent overlap sufficient to regenerate position_distribution.",
+    "Treat position_indicator_summary, outlier_cohort_summary, secondary_indicator_summary, recursive_branch_nodes and branch_position_signature as diagnostic/deterministic views absent contrary terminal authority.",
+    "Do not convert population correlation, association rank or branch membership into actor belief, identity or deterministic persona state.",
+    "Resolve survey-design uncertainty requirements before claiming compressed representation preserves uncertainty.",
+    "Leave downstream recreation equivalence to VT3-CM-R03."
+  ],
+  "result_md_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R02/RESULT.md",
+  "result_json_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R02/RESULT.json"
+}
