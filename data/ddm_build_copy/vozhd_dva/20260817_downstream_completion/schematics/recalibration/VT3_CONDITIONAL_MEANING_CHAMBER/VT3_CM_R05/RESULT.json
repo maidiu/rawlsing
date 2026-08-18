@@ -1,0 +1,321 @@
+{
+  "cell_id": "VT3-CM-R05",
+  "mission": "Quantify V550 determinicity compute/materialization cost and compare it with an authority-first sparse conditional-evidence workload without deleting required semantics.",
+  "verdict": "MAJOR_STATIC_COMPUTE_AND_MATERIALIZATION_REDUCTION_IS_AVAILABLE_IF_AND_ONLY_IF_THE_REPLACEMENT_PRESERVES_EXACT_AUTHORIZED_CONDITIONING_PREDICATES_PROVENANCE_UNCERTAINTY_AND_TYPED_ABSENCE",
+  "governing_spirit_applied": true,
+  "repository_head_examined": "8c87f7725ba58202b5377c974548140420709fa9",
+  "branch": "agent/vozhd-trii-vt3-cm-r05",
+  "production_code_changed": false,
+  "audit_mode": "static_code_audit_no_db_benchmark",
+  "findings": [
+    {
+      "id": "F01",
+      "status": "OBSERVED",
+      "finding": "V550 resolves question_use_contract before the broad determinicity suite, but then computes position_indicator_summary, secondary_indicator_summary, indicator_answer_matrix, outlier_cohort_summary, and recursive_branch_nodes unconditionally.",
+      "evidence": [
+        "data/ddm_build_copy/build_determinicity_wave_shard_v550.py@82ffc18df29a8e5ebd78cde97c89d463b3842df6"
+      ]
+    },
+    {
+      "id": "F02",
+      "status": "OBSERVED",
+      "finding": "INDICATOR_FIELDS is a fixed 12-field generic conditioning universe.",
+      "count": 12,
+      "fields": [
+        "sex",
+        "age_group",
+        "education_level",
+        "income_level",
+        "religion_label",
+        "urban_rural",
+        "region",
+        "ethnicity",
+        "language",
+        "employment",
+        "marital",
+        "household_size"
+      ],
+      "evidence": [
+        "data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f"
+      ]
+    },
+    {
+      "id": "F03",
+      "status": "OBSERVED",
+      "finding": "secondary_indicator_summary_rows recomputes the same per-indicator conditional entropy, normalized MI, Cramer's V and dominant-response score family already calculated by indicator_summary_rows, then adds joint secondary-gain calculations.",
+      "evidence": [
+        "data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f"
+      ]
+    },
+    {
+      "id": "F04",
+      "status": "OBSERVED",
+      "finding": "indicator_answer_matrix emits a full indicator-value × response-category rectangle, including zero-count cells.",
+      "cardinality_equation": "sum_p(V_qp * C_qp)",
+      "evidence": [
+        "data/ddm_build_copy/ddm_v550_branching.py@8f6d40e0d016d66e5a3b334b31747eaef752873f"
+      ]
+    },
+    {
+      "id": "F05",
+      "status": "DERIVED",
+      "finding": "For P=12 and recursive depth D=3, the five main determinicity families have a conservative lower bound of 92 logical field/subset evaluation units per question; optional position-signature scoring raises this to 104.",
+      "equation": "E5(P,D)=5P-1 + DP - D(D-1)/2",
+      "assumptions": [
+        "P=12",
+        "D=3",
+        "unit counts one field/subset evaluation regardless of its internal multiple passes"
+      ]
+    },
+    {
+      "id": "F06",
+      "status": "DERIVED",
+      "finding": "If exact terminal authority requires K=1..4 predicates and only conditional count distributions, static field-evaluation surface reduction versus E5=92 is about 98.9%, 97.8%, 96.7%, and 95.7% respectively; these are not wall-clock predictions.",
+      "estimated_savings_percent": {
+        "K1": 98.9,
+        "K2": 97.8,
+        "K3": 96.7,
+        "K4": 95.7
+      }
+    },
+    {
+      "id": "F07",
+      "status": "OBSERVED",
+      "finding": "Current extraction already prefetches selected response rows once per country and can harmonize the country cache once; the major waste is post-authority analytical expansion, not necessarily repeated SQL.",
+      "evidence": [
+        "data/ddm_build_copy/build_determinicity_repository_v550.py@afd2a59e1cdff0024a57acaf1dab8ff30534e565"
+      ]
+    },
+    {
+      "id": "F08",
+      "status": "OBSERVED",
+      "finding": "Response distributions are computed before allowed_as_response_distribution is checked, so disallowed distribution work can be performed then discarded.",
+      "evidence": [
+        "data/ddm_build_copy/build_determinicity_wave_shard_v550.py@82ffc18df29a8e5ebd78cde97c89d463b3842df6"
+      ]
+    },
+    {
+      "id": "F09",
+      "status": "OBSERVED",
+      "finding": "Bridge construction serializes every row from a broad table map, including derived, position-context and disabled diagnostic lanes; bridge cost is approximately linear in upstream row cardinality.",
+      "evidence": [
+        "data/ddm_build_copy/ddm_v550_bridge.py@29edd5e24f095334683035f2ce1ec95674fe274b"
+      ]
+    },
+    {
+      "id": "F10",
+      "status": "OBSERVED",
+      "finding": "branch_co_signature is a copy of branch_relation_co_signature and both names are bridge-mapped, creating literal compatibility duplication when populated.",
+      "evidence": [
+        "data/ddm_build_copy/build_determinicity_wave_shard_v550.py@82ffc18df29a8e5ebd78cde97c89d463b3842df6",
+        "data/ddm_build_copy/ddm_v550_bridge.py@29edd5e24f095334683035f2ce1ec95674fe274b"
+      ]
+    },
+    {
+      "id": "F11",
+      "status": "OBSERVED",
+      "finding": "The present V551 conditional compiler does not emit position_field or position_value, so it cannot itself prove preservation of an exact conditioning predicate.",
+      "evidence": [
+        "data/ddm_build_copy/ddm_v551_conditional.py@359665297677553a33556ce65c2e3d76b60b2cc1"
+      ]
+    },
+    {
+      "id": "F12",
+      "status": "OBSERVED",
+      "finding": "Current V550 materializes determinicity rows as per-question checkpoint parquet, later combines/writes final tables, then materializes bridge rows; planned runs may additionally emit CSV mirrors.",
+      "evidence": [
+        "data/ddm_build_copy/build_determinicity_wave_shard_v550.py@82ffc18df29a8e5ebd78cde97c89d463b3842df6"
+      ]
+    }
+  ],
+  "cardinality_equations": {
+    "indicator_matrix_rows": "sum_p(V_qp * C_qp)",
+    "outlier_rows_upper_bound": "sum_p(V_qp) after support filtering",
+    "recursive_nodes_upper_bound": "2^(D+1)-1",
+    "recursive_scan_bound": "O(R_q * (D*P_q - D*(D-1)/2))",
+    "five_family_field_evaluation_lower_bound": "E5(P,D)=5P-1 + D*P - D(D-1)/2",
+    "sparse_exact_predicate_rows": "sum_a(C_qa)",
+    "sparse_all_values_allowed_dimensions_rows": "sum_p_in_K(V_qp * C_qp)"
+  },
+  "artifact_dispositions": [
+    {
+      "artifact": "answer_distribution/country_answer_distribution",
+      "disposition": "RETAIN_WHEN_AUTHORIZED; SKIP_COMPUTE_WHEN_DISALLOWED",
+      "basis": "direct response evidence may be required; current builder computes before gating"
+    },
+    {
+      "artifact": "position_distribution",
+      "disposition": "PRESERVE_PENDING_TERMINAL_POSITION_PRIOR_AUTHORITY",
+      "basis": "population-position prior is semantically distinct from question-conditioned response evidence"
+    },
+    {
+      "artifact": "position_indicator_summary",
+      "disposition": "CANDIDATE_FOR_REMOVAL_FROM_PRODUCTION_PATH_IF_NO_TERMINAL_METRIC_CONSUMER",
+      "basis": "expensive predictor metrics are not needed to form conditional counts"
+    },
+    {
+      "artifact": "indicator_answer_matrix",
+      "disposition": "REPLACEABLE_ONLY_BY_PREDICATE_PRESERVING_CONDITIONAL_DISTRIBUTION",
+      "basis": "contains closest explicit position-conditioned response-count surface"
+    },
+    {
+      "artifact": "outlier_cohort_summary",
+      "disposition": "DERIVE_FROM_CONDITIONAL_COUNTS_IF_STILL_REQUIRED",
+      "basis": "same position partitions can yield dominant-response/outlier labels without rescanning microdata"
+    },
+    {
+      "artifact": "secondary_indicator_summary",
+      "disposition": "CANDIDATE_FOR_REMOVAL_IF_GREEDY_PREDICTOR_RANKING_NOT_TERMINAL_AUTHORITY",
+      "basis": "duplicates primary scoring and adds joint entropy work"
+    },
+    {
+      "artifact": "recursive_branch_nodes",
+      "disposition": "CANDIDATE_FOR_REMOVAL_IF_TREE_STRUCTURE_NOT_TERMINALLY_REQUIRED",
+      "basis": "largest repeated entropy-scan component"
+    },
+    {
+      "artifact": "branch_position_signature",
+      "disposition": "DIAGNOSTIC_UNLESS_EXPLICIT_CONSUMER; DO_NOT_RECOMPUTE_NMI_CRAMERS_V_IF_DERIVABLE",
+      "basis": "repeats association statistics"
+    },
+    {
+      "artifact": "branch_co_signature",
+      "disposition": "COMPATIBILITY_DUPLICATE_REVIEW",
+      "basis": "copy of branch_relation_co_signature"
+    },
+    {
+      "artifact": "v551_bridge_index",
+      "disposition": "RETAIN_BRIDGE_FUNCTION_BUT_NARROW_INPUT_SURFACE_AFTER_SEMANTIC_AUTHORITY",
+      "basis": "provenance/eligibility remains needed; current broad row serialization is not intrinsically required"
+    }
+  ],
+  "semantic_loss_findings": [
+    {
+      "id": "SL01",
+      "severity": "BLOCKING",
+      "finding": "Current V551 conditional output omits exact position predicate identity (position_field/position_value). A sparse redesign must not delete the sole predicate-bearing empirical object until a replacement schema preserves it explicitly."
+    },
+    {
+      "id": "SL02",
+      "severity": "HIGH",
+      "finding": "Zero-support/underpowered states may be lawful evidence of absence/uncertainty; removing matrix zero cells requires an explicit sparse absence representation or a declared complete domain."
+    },
+    {
+      "id": "SL03",
+      "severity": "HIGH",
+      "finding": "Weighted/unweighted support, response semantics hashes, source/question identity, question-use/source-structure provenance, and typed special states are non-negotiable where governed authority requires them."
+    },
+    {
+      "id": "SL04",
+      "severity": "HIGH",
+      "finding": "Authority-first V550 extraction cannot prune questions required independently by V550J shared/joint substrate authority."
+    }
+  ],
+  "counterevidence": [
+    "V550 already performs country-level shared prefetch and optional one-time harmonization, so repeated database scans are not the dominant general pathology.",
+    "position_distribution may have independent terminal value as a structural-position prior.",
+    "Recursive child-node statistics are genuinely conditional on prior splits and are not all duplicates of root summaries.",
+    "If authority requires all values of a permitted position dimension, its V×C conditional table is not safely reducible to one predicate row-set.",
+    "Typed zero-support and underpowered states cannot be represented by silent omission.",
+    "V550J joint-question requirements may keep a broader extraction union than V550's own conditional evidence."
+  ],
+  "estimated_savings": {
+    "status": "STATIC_MODEL_ONLY_NOT_WALL_CLOCK",
+    "field_dimension_pruning_P12": {
+      "K1_percent": 91.7,
+      "K2_percent": 83.3,
+      "K3_percent": 75.0,
+      "K4_percent": 66.7
+    },
+    "five_family_vs_sparse_predicates_E5_92": {
+      "K1_percent": 98.9,
+      "K2_percent": 97.8,
+      "K3_percent": 96.7,
+      "K4_percent": 95.7
+    },
+    "with_position_signature_E6_104": {
+      "K1_percent": 99.0,
+      "K2_percent": 98.1,
+      "K3_percent": 97.1,
+      "K4_percent": 96.2
+    },
+    "bridge_serialization": "approximately linear in lawfully eliminated upstream row count; no numeric percentage without shard row counts",
+    "matrix_materialization": "exact-predicate sparse rows sum_a(C_qa) versus current sum_p(V_qp*C_qp); numeric percentage depends on observed cardinalities"
+  },
+  "benchmark_plan": {
+    "representative_cells": [
+      "low response cardinality",
+      "high substantive response cardinality",
+      "large respondent count",
+      "underpowered cell",
+      "fully weighted cell",
+      "partial/invalid weight cell",
+      "single-predicate authority",
+      "multi-dimension authority",
+      "all-12-fields stress",
+      "V550J shared-union case"
+    ],
+    "measure": [
+      "wall time by stage",
+      "CPU time",
+      "peak RSS",
+      "prefetch rows",
+      "harmonization calls/rows",
+      "conditional_entropy calls",
+      "NMI calls",
+      "Cramer's V calls",
+      "crosstab/pivot calls",
+      "checkpoint bytes",
+      "final parquet bytes",
+      "CSV bytes",
+      "bridge rows/bytes/time",
+      "artifact row counts",
+      "filesystem writes"
+    ],
+    "semantic_gate": [
+      "exact predicate identity",
+      "response identity",
+      "weighted/unweighted counts and percentages",
+      "support status/threshold",
+      "typed special state",
+      "response semantics contract hash",
+      "source/wave/country/question identity",
+      "question-use/source-structure provenance",
+      "deterministic replay hash",
+      "absence of unauthorized predicates"
+    ]
+  },
+  "unresolved_questions": [
+    "What exact predicate object/granularity will R04/parent terminal authority require?",
+    "Is position_distribution independently required as a V3 structural-position prior and at what granularity?",
+    "Which predictor-ranking/tree/signature artifacts have accepted terminal semantic consumers?",
+    "Does any consumer rely on explicit zero-count matrix rows rather than sparse typed absence?",
+    "Which waves require both weighted and unweighted conditional distributions?",
+    "Can branch_co_signature be removed without breaking a compatibility consumer?",
+    "What are actual per-shard Q/R/V/C cardinalities and stage wall-clock shares on the exact base?"
+  ],
+  "recommended_parent_actions": [
+    "Establish a predicate-preserving conditional-evidence authority/schema before deleting V550 conditioned empirical rows.",
+    "Apply authority before compute and, where lawful, before respondent extraction.",
+    "Compute authorized conditional counts once and derive any still-required summaries from that count object rather than rescanning microdata.",
+    "Require explicit terminal consumers for MI, Cramer's V, secondary-gain, recursive-tree, and position-signature machinery.",
+    "Retain shared prefetch/prepared-substrate infrastructure and include V550J-required union questions.",
+    "Run the paired benchmark plan before accepting claimed runtime/disk savings.",
+    "Do not treat current V551 conditional determinicity as semantic equivalence until exact conditioning predicate identity is preserved."
+  ],
+  "evidence_files": {
+    "RAWLSING_GOVERNING_SPIRIT.md": "588cf3954c33417665c5f9bac04e8b27e75d7f7c",
+    "build_determinicity_wave_shard_v550.py": "82ffc18df29a8e5ebd78cde97c89d463b3842df6",
+    "build_determinicity_repository_v550.py": "afd2a59e1cdff0024a57acaf1dab8ff30534e565",
+    "ddm_v550_branching.py": "8f6d40e0d016d66e5a3b334b31747eaef752873f",
+    "ddm_v550_metrics.py": "e7675f4080bb30e6526027a34db747b7be7f85c9",
+    "ddm_v550_distributions.py": "43a62723b16f9c800ed7a6ef40a77e70a3f07377",
+    "ddm_v550_position_distribution.py": "651329254244e9f42a8d88c2721ccae6bd768073",
+    "ddm_v550_clouds.py": "dfc878e87d984a1a3d7000a0c726bdc444f9945f",
+    "ddm_v550_bridge.py": "29edd5e24f095334683035f2ce1ec95674fe274b",
+    "ddm_v551_conditional.py": "359665297677553a33556ce65c2e3d76b60b2cc1",
+    "ddm_v550_question_use.py": "8d90a5116fd05b5db17e9b4645638a3aa6fc1131"
+  },
+  "result_md_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R05/RESULT.md",
+  "result_json_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R05/RESULT.json"
+}
