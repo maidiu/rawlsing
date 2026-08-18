@@ -1,1 +1,0 @@
-Documentary note only: CAN-008..CAN-012 worker branches use exact base c84ce0704ae33f0226e9603738c1752fa19823fd. This later note is not part of their worker base and has no semantic authority.
