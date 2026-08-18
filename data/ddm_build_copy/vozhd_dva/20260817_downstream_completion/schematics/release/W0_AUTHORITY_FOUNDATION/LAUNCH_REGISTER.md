@@ -11,11 +11,14 @@ The whole-machine architecture is CLOSED.
 Every W0 worker MUST read:
 
 1. `state/CURRENT_STATE.md`;
-2. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
-3. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
-4. RA-R00 `RESULT.md` / `RESULT.json`;
-5. the accepted stage/V3/V2 ruling named by its cell;
-6. relevant current source/tests/governance artifacts.
+2. `RAWLSING_GOVERNING_SPIRIT.md`;
+3. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
+4. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
+5. RA-R00 `RESULT.md` / `RESULT.json`;
+6. the accepted stage/V3/V2 ruling named by its cell;
+7. relevant current source/tests/governance artifacts.
+
+`RAWLSING_GOVERNING_SPIRIT.md` is binding interpretive law **only after** explicit source/semantic authority and closed architecture/jurisdiction have been satisfied. If the bounded authority question admits multiple lawful answers, the worker must choose the answer most faithful to that governing spirit and identify the decisive tie-break principle in its return. The governing spirit may never be used to manufacture missing empirical/semantic authority, move downstream meaning upstream, force normative outcomes, or reopen architecture. Apparent conflict with hard authority is returned to Vozhd for adjudication.
 
 Every cell is authority-only:
 
@@ -40,7 +43,8 @@ Every W0 result must define or canonicalize a versioned machine authority with:
 - compatibility constraints;
 - forbidden inferences;
 - hostile fixtures;
-- explicit `CONSUMER_RELEASE_SUFFICIENCY` verdict.
+- explicit `CONSUMER_RELEASE_SUFFICIENCY` verdict;
+- `GOVERNING_SPIRIT_CHECK`: exact ambiguity encountered, if any; lawful alternatives considered; chosen design; and the governing-spirit principle that broke the tie. Use `NOT_APPLICABLE__HARD_AUTHORITY_UNIQUE` when hard authority uniquely determines the answer.
 
 Write ONLY the two files authorized by the cell:
 
@@ -474,6 +478,7 @@ Each worker returns:
 - fail-closed states;
 - hostile fixture summary;
 - `CONSUMER_RELEASE_SUFFICIENCY = SUFFICIENT | PARTIAL | BLOCKED`;
+- `GOVERNING_SPIRIT_CHECK`;
 - exact final cell token.
 
 Vozhd Dva adjudicates each cell independently. A PASS worker token does not itself release a downstream consumer until Vozhd accepts/banks the authority.
