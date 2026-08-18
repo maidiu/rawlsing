@@ -1,459 +1,172 @@
 {
   "worker_id": "TD-R05",
-  "assignment": "V3 developmental runtime / genealogy / attractor-formation terminal-demand architecture recalibration",
-  "status": "COMPLETE_WITH_EVIDENCE_CAVEAT",
+  "assignment": "V3 developmental runtime / genealogy / attractor-formation terminal-demand architecture recalibration — direct-source continuation",
+  "status": "COMPLETE_DIRECT_SOURCE_VERIFIED",
   "architecture_only": true,
   "repository": "maidiu/rawlsing",
   "branch": "agent/vozhd-dva-td-r05-v3-developmental-runtime",
   "base_sha": "8ea10b25397ad20fb3bcdcc1893a2265ba00ef3f",
   "draft_pr_number": 64,
-  "source_evidence_status": {
-    "repository_side_governance": "READ",
-    "attached_branch_snapshot": "READ",
-    "required_historical_source_archive_named_by_assignment": "NOT_MOUNTED_IN_CURRENT_EXECUTION_TURN",
-    "source_archive_expected_name": "Rawlsing_code_bundle_staging.zip",
-    "source_archive_expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
-    "substitute_evidence_used": [
-      "location-sourced deep-dive audits produced by direct inspection of historical Rawlsing V3/V2 source with exact paths, line ranges and functions",
-      "recovered V3/V2 capability/source inventory and historical design materials"
-    ],
-    "caveat": "Cold-check exact historical source archive against implementation packets before implementation release; do not treat this architecture result as a fresh direct read of the missing archive."
+  "direct_historical_source_verification": {
+    "logical_archive_name": "Rawlsing_code_bundle_staging.zip",
+    "mounted_alias": "Rawlsing_code_bundle_staging(1).zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "sha_verdict": "EXACT_MATCH",
+    "zip_entry_count": 13138,
+    "verdict": "PASS_WITH_ARCHITECTURE_DELTA",
+    "token": "DIRECT_SOURCE_VERIFICATION = PASS_WITH_ARCHITECTURE_DELTA",
+    "prior_source_mount_caveat": "CLOSED",
+    "focused_tests": {"result": "PASS", "passed": 80, "warnings": 0},
+    "claim_audit_counts": {
+      "CONFIRMED_BY_DIRECT_SOURCE": 24,
+      "CORRECT_BUT_REQUIRES_QUALIFICATION": 10,
+      "CHANGE_REQUIRED": 5,
+      "SOURCE_DID_NOT_SUPPORT_CLAIM": 1
+    },
+    "source_files_inspected": {
+      "persistent_state": ["v3/core/state.py", "v3/core/enums.py", "v3/core/derived.py", "v3/core/invariants.py", "v3/core/year_record.py", "v3/core/generation_integrity.py", "v3/core/config_loader.py", "v3/core/json_codec.py"],
+      "sequencing": ["v3/v3_yearly_step_order.yaml", "v3/engine/yearly_step.py", "v3/engine/step_runner.py", "v3/tests/test_architecture_invariants.py"],
+      "events": ["v3/engine/event_engine.py", "v3/engine/expectation_events.py", "v3/engine/expectation_baseline.py", "v3/engine/striving_objects.py", "v3/engine/active_magnets.py", "v3/engine/scoring.py", "v3/engine/effects/delta_templates.py"],
+      "llm_render": ["v3/engine/llm_contract.py", "v3/engine/prompts.py", "v3/engine/run_llm_band.py", "v3/engine/llm_logging.py", "v3/render/phenomenology.py", "v3/V3_UNDERLIES_V2_ARTICULATION.md", "v3/tests/test_llm_contract.py", "v3/tests/test_v5_voice_packet_surface_allowlist.py", "v3/tests/test_v5_v2_chat_prompt_no_raw_v5_leaks.py"],
+      "structural_bridge": ["v3/io/v5_bridge.py", "v3/io/v5_field_bridge.py", "v3/io/field_injection.py", "v3/io/calibration_from_identity.py", "v3/systems/field.py", "v3/systems/relational_field.py", "v3/tests/test_v5_strata_roundtrip.py", "v3/tests/test_v5_stratum_schema.py", "v3/tests/test_v5_relational_field_does_not_add_tenth_stratum.py", "v3/tests/test_v5_runtime_bundle_json_roundtrip.py"],
+      "initialization_genealogy": ["v3/io/identity_to_backbone.py", "v3/io/parent_baseline_from_behavior.py", "v2/identity_generator.py", "v2/parent_enrichment.py", "v2/parent_type_inference.py"],
+      "pressure_flow": ["v3/psyche/flow.py", "v3/psyche/channels.py", "v3/psyche/gating.py", "v3/psyche/insulation.py", "v3/psyche/metabolism.py", "v3/psyche/vitality.py", "v3/psyche/wound.py", "v3/tests/test_v5_baseline_load.py", "v3/tests/test_v5_sublimation_channels.py", "v3/tests/test_v5_insulation_registry.py", "v3/tests/test_v5_vitality_fatigue.py", "v3/tests/test_v5_pressure_flow.py", "v3/tests/test_v5_pressureflow_golden_run.py"],
+      "developmental_middle_state": ["v3/systems/reproduction.py", "v3/systems/capacity.py", "v3/systems/health_drift.py", "v3/systems/buffers.py", "v3/systems/frameworks.py", "v3/systems/domains.py", "v3/systems/cracks.py", "v3/systems/alienation.py", "v3/systems/practices.py", "v3/systems/infrastructure.py", "v3/systems/topology.py", "v3/systems/boundary.py", "v3/systems/coherence.py", "v3/systems/autonomy_safety.py", "v3/systems/stability_inertia.py", "v3/systems/signal.py"],
+      "rupture_metabolization": ["v3/engine/effects/metabolization_effects.py", "v3/tests/test_metabolization_effects.py"],
+      "persona_completion": ["v3/io/persona_sheet.py", "v3/tools/distill_memory.py", "server/generation/simulation.py", "server/generation/store.py", "server/session_state.py", "v3/tests/test_persona_sheet_integrity.py"],
+      "v2": ["v2/PERSONA_CONVERSATION_ENGINE_SPEC.md", "v2/LIFE_SIMULATION_LAYER.md", "v2/conversation_engine.py", "v2/life_simulation_schema.py", "v2/ENNEAGRAM_EMERGENCE_SYSTEM.md", "v2/PROBABILISTIC_ENNEAGRAM_SYSTEM.md", "v2/ENNEAGRAM_COMPENSATION_ALIGNMENT.md", "v2/enneagram_wisdom.py"]
+    }
   },
-  "architecture_only_verification_status": "PASS_ARCHITECTURE_ONLY_TERMINAL_DEMAND_RECALIBRATION_WITH_SOURCE_ARCHIVE_MOUNT_CAVEAT",
-  "v3_jurisdiction_verdict": {
-    "verdict": "STAGE_BLIND_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE",
-    "owns": [
-      "generated actor positions and transitions",
-      "encounters and exposures",
-      "exact V555 route traversal as actor history",
-      "exact V556 interaction realization as actor history",
-      "actor responses and pressure metabolism",
-      "material and organismic runtime state",
-      "orientation to exact strata",
-      "relationships households and genealogy",
-      "causal memory rupture and metabolization",
-      "realized developmental attractor formation and evolution",
-      "replayable generated-life event history"
-    ],
-    "does_not_own": [
-      "raw survey evidence",
-      "V553 through V558 producer semantics or structural identity",
-      "temporal proxy selection",
-      "repository indexing/linking",
-      "geographic down-imputation",
-      "prevalence to membership inference",
-      "V2 voice dialogue autobiography or competing causal biography"
-    ]
-  },
-  "v550_plus_non_reduction_verdict": "PASS",
-  "v550_plus_non_reduction_proof": [
-    "all nine finite strata remain exact rather than being replaced by five actor domains",
-    "Absolute Horizon remains distinct",
-    "V553 temporal authority and proxy metadata remain separate from actor exposure",
-    "V554 affordance and applicability remain possibility rather than actor fact",
-    "V555 route IDs remain canonical atomic graph edges in V3 traversal and memory",
-    "V556 interaction and n-ary topology identities remain exact and are not synthesized from coexistence",
-    "simultaneous contradictory pressures remain multiple causal streams",
-    "native geography and unresolved runtime positions remain strict",
-    "uncertainty valid-empty missing authority negative authority denial and noncomparability remain first-class",
-    "item-level epistemic/use permission and producer provenance remain attached through causal admission"
+  "mechanism_verification": [
+    {"id":1,"mechanism":"BackboneState","source":"v3/core/state.py; v3/core/year_record.py; v3/core/generation_integrity.py","function":"BackboneState; hash_jsonable; GenerationIntegrityAccumulator","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Persistent state is real and stronger than recovery summary; retain as materialized actor state over canonical causal history."},
+    {"id":2,"mechanism":"material capacity","source":"v3/core/state.py; v3/systems/capacity.py; v3/systems/health_drift.py","function":"Capacity; update_capacity; update_health_drift","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Explicit bounded material capacity; formulas remain legacy policy rather than terminal authority."},
+    {"id":3,"mechanism":"psychological/regulatory capacity","source":"v3/core/state.py; v3/systems/frameworks.py; v3/psyche/vitality.py","function":"PsychologicalCapacity; update_framework_weights; derive_vitality_profile","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Implemented and causally used; preserve only governed dimensions/update laws."},
+    {"id":4,"mechanism":"reproduction constraints","source":"v3/core/state.py; v3/systems/reproduction.py; v3/psyche/gating.py","function":"ReproductionConstraints; update_reproduction_constraints; _derive_hostage_index","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Real constraint family; remove silent/default truth."},
+    {"id":5,"mechanism":"A/S/V/Aim domains","source":"v3/core/state.py; v3/systems/domains.py; v3/psyche/gating.py","function":"DomainState; update_domains; compute_baseline_load; apply_expression_gating","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Useful actor-processing projection; baseline load explicitly latent/subsurface; cannot replace exact strata."},
+    {"id":6,"mechanism":"alienation vector","source":"v3/core/state.py; v3/systems/alienation.py; v3/engine/effects/delta_templates.py","function":"AlienationVector; update_alienation; apply_deltas_to_state","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Real capability; one LLM delta path uses stale alienation field names and needs schema/rule repair."},
+    {"id":7,"mechanism":"registers","source":"v3/core/state.py; v3/psyche/gating.py; v3/io/persona_sheet.py; v2/conversation_engine.py","function":"Registers; apply_expression_gating; build_persona_sheet; build_reply_prompt","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Public/private/inner gating is real; V3 owns generated accessibility, V2 expression."},
+    {"id":8,"mechanism":"wound/sensitivity state","source":"v3/core/state.py; v3/psyche/channels.py; v3/engine/effects/metabolization_effects.py","function":"WoundVector; seed_wound_vector_from_identity; update_wound_vector_from_rupture","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Persistent rupture-driven sensitivity is real; direct structural seeding requires authority."},
+    {"id":9,"mechanism":"cracks","source":"v3/core/state.py; v3/systems/cracks.py; v3/core/invariants.py","function":"Crack; update_cracks; ensure_min_cracks","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Real mechanism; placeholder repair is now degraded but placeholder causal truth remains forbidden."},
+    {"id":10,"mechanism":"buffers and costs","source":"v3/core/state.py; v3/systems/buffers.py","function":"Buffer; BufferCostProfile; update_buffers","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Strong regulation-with-cost mechanism; bind activation to generated history/rules."},
+    {"id":11,"mechanism":"frameworks","source":"v3/core/state.py; v3/systems/frameworks.py","function":"Framework; update_framework_weights; enforce_framework_caps","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Acute/chronic, half-life, tenure and dormancy machinery is real; preserve under governed lineage."},
+    {"id":12,"mechanism":"collective infrastructure","source":"v3/core/state.py; v3/systems/infrastructure.py","function":"CollectiveInfrastructure; update_collective_infrastructure","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Real environment capability; bind memberships/uses to generated actor facts."},
+    {"id":13,"mechanism":"practice stack","source":"v3/core/state.py; v3/systems/practices.py","function":"PracticeStack; update_practice_stack","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Persistent event-updated practice mechanism; preserve with causal history."},
+    {"id":14,"mechanism":"PeakRouting / loop topology / solidarity boundary","source":"v3/core/state.py; v3/systems/topology.py; v3/systems/boundary.py; v3/systems/coherence.py","function":"PeakRouting; update_loop_topology; update_solidarity_boundary; update_coherence","audit":"CHANGE_REQUIRED","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Prior REPLACE understated continuity: explicit hysteresis counters, consecutive-year transitions, reversal gates and bounded boundary motion should migrate, while monolithic bundle is decomposed."},
+    {"id":15,"mechanism":"need axes / expectation baseline","source":"v3/core/state.py; v3/engine/expectation_baseline.py; v3/io/parent_baseline_from_behavior.py","function":"NEED_AXES; derive_child_expectation_baseline; infer_parent_baseline_and_regime","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Typed mechanism is real, but absent parent behavior becomes 50/50/50 and axes initialize hopeful; remove false certainty."},
+    {"id":16,"mechanism":"StrivingObject","source":"v3/core/state.py; v3/engine/striving_objects.py","function":"StrivingObject; spawn_striving_objects_for_age; update_existing_objects; update_striving_step","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Strong persistent developmental-middle-state bridge; add causal origin/update authority."},
+    {"id":17,"mechanism":"gift/disruption shards","source":"v3/core/state.py; v3/engine/expectation_events.py; v3/engine/effects/delta_templates.py","function":"GiftShard; DisruptionShard; create_gift_shard_from_event; create_disruption_shard_from_event","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Persistent expectation effects are real; parent them to admitted events."},
+    {"id":18,"mechanism":"RuptureShard","source":"v3/core/state.py; v3/engine/effects/metabolization_effects.py","function":"RuptureShard; create_rupture_shard_from_event; update_wound_vector_from_rupture","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Substantial actor rupture state; unify event admission and distinguish V553 structural rupture candidates."},
+    {"id":19,"mechanism":"MetabolizationProcess","source":"v3/core/state.py; v3/engine/effects/metabolization_effects.py","function":"MetabolizationProcess; compute_metabolization_delta; update_metabolization_and_plasticity_step","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Strong multi-year plasticity/metabolization mechanism; migrate to governed process rules."},
+    {"id":20,"mechanism":"magnets / relational field","source":"v3/core/state.py; v3/engine/active_magnets.py; v3/systems/relational_field.py","function":"Magnet; apply_selected_magnets_to_state; update_active_magnets_step; build_relational_field_projection","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Two distinct capabilities coexist: actor magnets and structural relational-field projection. Preserve separately; Absolute Horizon remains outside nine finite strata."},
+    {"id":21,"mechanism":"pressure-flow history / memory / grooves / conductance","source":"v3/psyche/flow.py; v3/psyche/vitality.py; v3/psyche/insulation.py","function":"run_pressure_flow_cycle; _domain_charge_ledger; _channel_conductance; _update_memory","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Stronger than recovery summary: conserved charge, trace provenance, groove/conductance memory, transactional commit, analyst/surface split. Re-key structural evidence to exact V555/V556 refs."},
+    {"id":22,"mechanism":"child model / assumed rules / taboos / possible world","source":"v3/core/state.py; v3/io/identity_to_backbone.py; v3/engine/prompts.py","function":"BackboneState.child_model; backbone_state_from_identity; PASS1_SYSTEM","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Real child-model mechanism; generate from actual parent/household developmental history rather than shortcuts."},
+    {"id":23,"mechanism":"autonomy/safety","source":"v3/core/state.py; v3/systems/autonomy_safety.py","function":"autonomy_drive/safety_drive; autonomy_condition/safety_condition; autonomy_safety_micro_drift","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Older trace-overwrite defect is repaired via micro_trace/yearly integrity; initialization still needs authority."},
+    {"id":24,"mechanism":"stability inertia","source":"v3/core/state.py; v3/systems/stability_inertia.py","function":"stability_threshold_inertia; stability_inertia_dissipation","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Persistent hysteresis/path-dependence mechanism is real."},
+    {"id":25,"mechanism":"yearly ordered causal spine","source":"v3/v3_yearly_step_order.yaml; v3/engine/yearly_step.py; v3/engine/step_runner.py; v3/tests/test_architecture_invariants.py","function":"run_one_year; step_one_year; run_n_years; test_step_order_immutable","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Real tested 19-step core; preserve ordered causality as slow-process integrator inside hybrid scheduler."},
+    {"id":26,"mechanism":"stored-versus-derived separation","source":"v3/core/state.py; v3/core/derived.py; v3/core/invariants.py; v3/tests/test_architecture_invariants.py","function":"DerivedIndices; compute_all_derived; assert_no_derived_fields_in_backbone","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"REUSE_UNCHANGED_IF_FULLY_COMPATIBLE","finding":"Explicit and test-protected constitutional law."},
+    {"id":27,"mechanism":"Pass 1 LLM proposal","source":"v3/engine/llm_contract.py; v3/engine/prompts.py; v3/engine/run_llm_band.py","function":"parse_candidate_packet; build_pass1_prompt; run_llm_band_year","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Proposal-only at model boundary, but selected proposals become provenance-bearing code-applied deltas; terminal admission must be registry-backed."},
+    {"id":28,"mechanism":"score/select/apply boundary","source":"v3/engine/scoring.py; v3/engine/run_llm_band.py; v3/engine/effects/delta_templates.py","function":"score_event_candidate; select_candidates; run_llm_band_year; apply_deltas_to_state","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Boundary exists; hard admissibility and named deterministic random streams are missing. Preserve bounded code-side application."},
+    {"id":29,"mechanism":"Pass 2 render-only","source":"v3/engine/llm_contract.py; v3/engine/prompts.py; v3/render/phenomenology.py; v3/tests/test_architecture_invariants.py","function":"build_render_packet; build_pass2_prompt; render_year; test_llm_no_backbone_mutation","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"REUSE_UNCHANGED_IF_FULLY_COMPATIBLE","finding":"Render leaves backbone hash unchanged and raw analyst/V5 fields are excluded."},
+    {"id":30,"mechanism":"V3-under-V2 nonmutation","source":"v3/V3_UNDERLIES_V2_ARTICULATION.md; v3/io/persona_sheet.py; v2/conversation_engine.py","function":"design articulation; build_persona_sheet; prepare_conversation_turn","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"REUSE_UNCHANGED_IF_FULLY_COMPATIBLE","finding":"Direct design supports V3 causal physics under V2 phenomenology."},
+    {"id":31,"mechanism":"life-course Enneagram emergence / end matcher","source":"v2/ENNEAGRAM_EMERGENCE_SYSTEM.md; v2/PROBABILISTIC_ENNEAGRAM_SYSTEM.md; v2/enneagram_wisdom.py; v2/parent_type_inference.py","function":"match_life_course_to_type; infer_parent_type; get_parent_type_effects_for_child","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"REPLACE_WITH_STRONGER_MECHANISM","finding":"Design rejects type-at-birth, but implementation is end matcher with random variance and parent-type heuristics; replace shortcut with V3 attractor dynamics."},
+    {"id":32,"mechanism":"old V5 runtime-input / field bridge","source":"v3/io/v5_bridge.py; v3/io/v5_field_bridge.py; v3/io/field_injection.py","function":"normalize_v5_runtime_input_bundle; attach_v5_runtime_input_bundle; build_v5_field_bridge_injection; get_field_injection_for_year","audit":"CHANGE_REQUIRED","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Prior REMOVE was too broad. Preserve inert-carrier/provenance/fail-closed use gating; replace stage-specific projection with V558 context."},
+    {"id":33,"mechanism":"generic pseudo-random event sampler","source":"v3/engine/event_engine.py","function":"_pseudo_seed; _one_event; sample_events","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"REPLACE_WITH_STRONGER_MECHANISM","finding":"Better instrumented than prior audit but still generic delta causality without adequate lived-world/relationship grounding. Keep provenance, replace semantics."},
+    {"id":34,"mechanism":"fallback concretization","source":"v3/engine/llm_contract.py; v3/engine/run_llm_band.py","function":"parse_candidate_packet_with_fallback; make_fallback_event; fallback_candidate_packet_if_empty; run_llm_band_year","audit":"CHANGE_REQUIRED","disposition":"REMOVE_AS_OBSOLETE_OR_REDUNDANT","finding":"Source fabricates fallback event on empty packet and can force first candidate when selection is empty; lawful empty/degraded set must win."},
+    {"id":35,"mechanism":"placeholder crack/framework invariant repair","source":"v3/core/invariants.py; v3/engine/yearly_step.py","function":"ensure_min_cracks; ensure_min_frameworks; run_one_year","audit":"CORRECT_BUT_REQUIRES_QUALIFICATION","disposition":"REMOVE_AS_OBSOLETE_OR_REDUNDANT","finding":"Exact bundle degrades/counts placeholder repair, but placeholder causal objects still cannot be production truth."},
+    {"id":36,"mechanism":"hopeful/medium parent defaults","source":"v3/io/parent_baseline_from_behavior.py; v3/engine/expectation_baseline.py","function":"infer_parent_baseline_and_regime; derive_child_expectation_baseline","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"REMOVE_AS_OBSOLETE_OR_REDUNDANT","finding":"Missing parent behavior defaults to 50/50/50 and need axes initialize hopeful; unknown must remain unknown."},
+    {"id":37,"mechanism":"structural placeholder scene / annotation","source":"server/generation/simulation.py; v3/io/persona_sheet.py; v3/tools/distill_memory.py","function":"run_simulation_for_session; build_persona_sheet; _trajectory_backstory_from_snapshots; distill_memory filtering","audit":"CHANGE_REQUIRED","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Prior laundering claim was too strong: stubs degrade integrity and are filtered from real scenes/memory. Preserve only explicit non-memory annotation."},
+    {"id":38,"mechanism":"dual derived-schedule declaration","source":"v3/v3_yearly_step_order.yaml; v3/engine/yearly_step.py; v3/core/config_loader.py","function":"derived_indices_schedule; _compute_derived_after_step; get_derived_schedule","audit":"CHANGE_REQUIRED","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Two declarations remain but runner fails fast on disagreement; preserve equivalence check and converge toward one canonical authority."},
+    {"id":39,"mechanism":"server/manual rupture injection","source":"server/generation/simulation.py; v3/engine/effects/metabolization_effects.py","function":"_maybe_inject_rupture_at_band_age alias; maybe_inject_rupture_at_band_age","audit":"CONFIRMED_BY_DIRECT_SOURCE","disposition":"REPLACE_WITH_STRONGER_MECHANISM","finding":"Module-global randomness mutates rupture/metabolization/wound state outside canonical year event ledger; route through named-stream admission."},
+    {"id":40,"mechanism":"generation readiness / ready surface","source":"server/generation/store.py; server/generation/simulation.py; server/session_state.py; v3/core/generation_integrity.py","function":"_validate_persona_for_store_write; _golden_eligibility_for_session_dir; GenerationIntegrityAccumulator; _generation_state_is_ready","audit":"SOURCE_DID_NOT_SUPPORT_CLAIM","disposition":"ADAPT_TO_TERMINAL_ARCHITECTURE","finding":"Exact source already has clean/degraded/blocked/legacy-unknown readiness, integrity accumulation, validation and golden eligibility; preserve/extend rather than replace."}
   ],
+  "recovered_disposition_counts": {
+    "REUSE_UNCHANGED_IF_FULLY_COMPATIBLE": 3,
+    "ADAPT_TO_TERMINAL_ARCHITECTURE": 31,
+    "REPLACE_WITH_STRONGER_MECHANISM": 3,
+    "REMOVE_AS_OBSOLETE_OR_REDUNDANT": 3,
+    "DEFER_MISSING_AUTHORITY": 0,
+    "TOTAL": 40
+  },
+  "architecture_deltas": [
+    "V556 F2 gets distinct AttractorPrerequisiteSatisfactionRecord; F2 is neither F1 interaction experience nor attractor state",
+    "buffer/amplify/deflect/reroute/transform are response/effect kinds under ACTOR_RESPONSE_EVENT rather than top-level event families",
+    "orientation dimension list becomes governed extensible vocabulary/examples rather than frozen canonical fields",
+    "DevelopmentalEventLedger retained as a bounded generalization of extant YearRecord/event/micro-trace/mutation lineage",
+    "mechanisms 14, 32, 37, 38 and 40 reclassified to ADAPT based on direct continuity",
+    "source verification removed from P1/open issues because the caveat is closed"
+  ],
+  "v3_jurisdiction_verdict": "STAGE_BLIND_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE",
   "terminal_architecture": {
     "name": "HYBRID_EVENT_SOURCED_DEVELOPMENTAL_RUNTIME",
     "canonical_generated_truth": "DevelopmentalEventLedger",
     "materialized_state": "ActorCausalState",
     "derived_state": "DerivedActorView",
-    "render_boundary": "V3RenderContext_or_GeneratedPersonRecord",
-    "scheduler": "hybrid_discrete_event_context_change_developmental_phase_slow_process",
-    "structural_input": "StructuralPriorRepository + ContextResolver + ContextQuery -> ResolvedStructuralContext + SelectionRecord + CoverageFidelityProfile",
-    "replay": "deterministic from immutable repository/resolver policy/runtime rules/initial inputs/external admitted events/named random streams"
+    "render_boundary": "immutable V3RenderContext / GeneratedPersonRecord",
+    "structural_input": "V558 StructuralPriorRepository + deterministic ContextResolver outputs"
   },
-  "recovered_disposition_summary": {
-    "REUSE_UNCHANGED_IF_FULLY_COMPATIBLE": [
-      "stored-vs-derived separation as constitutional law",
-      "Pass 2 render-only role",
-      "V3-under-V2 nonmutation contract"
-    ],
-    "ADAPT_TO_TERMINAL_ARCHITECTURE": [
-      "persistent BackboneState pattern",
-      "material capacity",
-      "psychological/regulatory capacity",
-      "reproduction constraints",
-      "A/S/V/Aim latent/expressed projection",
-      "multidimensional alienation",
-      "registers",
-      "wound/sensitivity state",
-      "cracks",
-      "buffers and costs",
-      "frameworks as metabolic operators",
-      "collective infrastructure",
-      "practice stack",
-      "need axes/expectation baselines",
-      "striving objects",
-      "gift/disruption event effects",
-      "rupture shards",
-      "multi-year metabolization",
-      "magnets/relational field",
-      "pressure-flow history/memory/grooves/conductance",
-      "child model/assumed rules/taboos/possible-world boundary",
-      "autonomy/safety state",
-      "stability/hysteresis",
-      "yearly ordered causal spine as hybrid integrator",
-      "Pass 1 LLM proposal",
-      "deterministic score/apply boundary"
-    ],
-    "REPLACE_WITH_STRONGER_MECHANISM": [
-      "PeakRouting bundle as canonical personality/strategy state",
-      "life-course Enneagram end classifier/scoring shortcut",
-      "generic pseudo-random delta event sampler",
-      "server-side manual rupture mutation"
-    ],
-    "REMOVE_AS_OBSOLETE_OR_REDUNDANT": [
-      "old V5 runtime input/field bridge",
-      "first-candidate fallback after rejection",
-      "placeholder crack/framework invariant repair as production truth",
-      "hopeful/medium parent defaults",
-      "structural placeholder scenes as lived backstory",
-      "duplicated derived scheduling authorities",
-      "global ready boolean based on persona-sheet existence"
-    ],
-    "DEFER_MISSING_AUTHORITY": "Applied to rule families rather than used to preserve a weak mechanism; adapted mechanisms remain implementation-blocked until update authority exists."
+  "v556_f1_f2_seam": {
+    "F1": "STRUCTURAL_PRESSURE_INTERACTION_RELATION -> V3 V556_F1_INTERACTION_REALIZATION_EVENT only when exact governed participants/conditions are realized",
+    "F2": "STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY -> structural applicability plus V3 AttractorPrerequisiteSatisfactionRecord evaluated against actor history",
+    "hard_law": "V556 F2 topology != V3 F1 interaction realization != V3 F2 prerequisite satisfaction != V3 attractor state",
+    "satisfaction_statuses": ["DEFERRED", "UNSATISFIED", "PARTIAL", "SATISFIED", "NEGATIVE_AUTHORITY"],
+    "missing_authority": "V556_ATTRACTOR_PREREQUISITE_SATISFACTION_RULE"
   },
-  "serendipitous_bridges": [
-    "stored-vs-derived state discipline",
-    "ordered yearly causal spine as a causal-ordering skeleton",
-    "pressure-flow history memory groove and conductance",
-    "rupture plus multi-year metabolization",
-    "expectation baselines and persistent strivings",
-    "registers latent Aim buffers frameworks and cracks",
-    "magnets and relational field",
-    "two-pass LLM proposal/admission/render separation intent",
-    "V3-under-V2 nonmutation architecture"
-  ],
-  "major_required_redesigns": [
-    "put immutable DevelopmentalEventLedger beneath materialized actor state",
-    "replace legacy V5/field bridge with stage-blind V558 repository/resolver consumption",
-    "replace structural compression with exact-stratum and exact V555/V556 reference preservation",
-    "replace pseudo-random delta events with typed governed candidate generation and replayable selection",
-    "abolish causal defaults and placeholder truth repair",
-    "make progressive actor-position binding explicit",
-    "make encounter/exposure/route traversal distinct causal events",
-    "make relationship household and genealogy first-class generated histories",
-    "migrate pressure-flow memory to exact V555/V556 identities",
-    "replace type-classifier shortcut with life-course attractor trajectory",
-    "harden LLM Pass 1 as proposal-only and Pass 2 as render-only",
-    "publish immutable V3 generated truth to V2 rather than narrative-mutated causal state"
-  ],
-  "causal_state_event_architecture": {
-    "canonical_event_fields": [
-      "event_id",
-      "event_type",
-      "actor_ids_or_entity_ids",
-      "effective_time",
-      "recorded_time",
-      "causal_parent_event_ids",
-      "state_before_hash",
-      "state_after_hash",
-      "context_query_hash",
-      "resolved_context_hash",
-      "selection_record_refs",
-      "structural_object_refs",
-      "runtime_rule_id",
-      "runtime_rule_version",
-      "admission_decision",
-      "randomness_provenance",
-      "uncertainty_state",
-      "missing_authority_state",
-      "payload",
-      "applied_effects"
-    ],
-    "law": "Every causal state change must be explainable by an admitted typed event and rule; structural priors and rendered prose never mutate state directly."
+  "event_family_no_bloat": {
+    "verdict": "PASS",
+    "canonical_families": ["RUNTIME_BINDING_EVENT", "ENCOUNTER_EXPOSURE_EVENT", "V555_ROUTE_REALIZATION_EVENT", "V556_F1_INTERACTION_REALIZATION_EVENT", "ACTOR_RESPONSE_EVENT", "DEVELOPMENTAL_STATE_TRANSITION_EVENT", "RELATIONSHIP_HOUSEHOLD_GENEALOGY_EVENT", "RUPTURE_METABOLIZATION_EVENT", "EXTERNAL_RUNTIME_EVENT"],
+    "typed_response_kinds": ["TRANSMIT", "BUFFER", "AMPLIFY", "DEFLECT", "REROUTE", "TRANSFORM", "BLOCK", "RESIST"],
+    "law": "response/effect kinds are not separate canonical event families"
   },
-  "position_binding_verdict": "STRICT_PROGRESSIVE_BINDING_PHASE_A_THEN_V3_GENERATION_THEN_PHASE_B_SAME_REPOSITORY",
-  "encounter_route_verdict": "STRUCTURAL_AVAILABILITY_NE_APPLICABILITY_NE_OPPORTUNITY_NE_ENCOUNTER_NE_EXPOSURE_NE_V555_ROUTE_TRAVERSAL_NE_ACTOR_RESPONSE_NE_PERSISTENT_CHANGE",
-  "contradictory_pressure_verdict": "PRESERVE_PARALLEL_EXACT_CAUSAL_STREAMS_AND_ONLY_REALIZE_V556_INTERACTION_WHEN_EXACT_GOVERNED_OBJECT_EXISTS",
-  "orientation_to_strata_verdict": "V3_NEEDS_SPARSE_TIME_INDEXED_ACTOR_ORIENTATION_TO_EXACT_STRATA; A_S_V_AIM_MAY_SURVIVE_ONLY_AS_DERIVED_ACTOR_PROCESSING_PROJECTION",
-  "organismic_need_desire_verdict": "REQUIRED_AS_GENERATED_RUNTIME_STATE_WHERE_RULE_AUTHORITY_EXISTS; HIGH_STRUCTURAL_PRESSURE_NE_DEPRESSION_OR_CONSCIOUS_POLITICAL_BURDEN",
-  "expectation_striving_framework_verdict": "RETAIN_AS_GENERATED_DEVELOPMENTAL_MIDDLE_STATE_WITH_CAUSAL_PARENTAGE_AND_NO_DEFAULT_PSYCHOLOGY",
-  "pressure_flow_migration_verdict": "ROUTE_EXPERIENCE_AND_ROUTE_MEMORY_KEY_EXACT_V555_ROUTE_IDS; INTERACTION_EXPERIENCE_KEYS_EXACT_V556_IDS; GROOVE_IS_ACTOR_HISTORY_NOT_NEW_GRAPH_EDGE",
-  "rupture_metabolization_verdict": "V553_STRUCTURAL_RUPTURE_CANDIDATE_NE_V3_ACTOR_RUPTURE; ALL_ACTOR_RUPTURE_ENTERS_UNIFIED_LEDGER_AND_MAY_START_MULTI_TIMESCALE_METABOLIZATION",
-  "genealogy_verdict": "FIRST_CLASS_PASS_PARENT1_DEVELOPMENT_TO_PARENT2_DEVELOPMENT_TO_ENCOUNTER_RELATIONSHIP_HOUSEHOLD_CHILD_GENERATION_AND_CHILD_DEVELOPMENT_WITH_FINITE_CAUSAL_PROVENANCE",
-  "scheduling_verdict": "HYBRID_DISCRETE_EVENT_CONTEXT_CHANGE_PHASE_BOUNDARY_AND_SLOW_PROCESS; ANNUAL_SPINE_RETAINABLE_AS_INTEGRATOR_NOT_TERMINAL_ONTOLOGY",
+  "orientation_vocabulary_verdict": {
+    "verdict": "GOVERNED_EXTENSIBLE_VOCABULARY_WITH_DERIVED_PROJECTIONS",
+    "canonical_fields": ["actor_id", "structural_target_ref", "effective_interval", "dimensions[]", "provenance", "last_update_event_id"],
+    "dimension_entry": ["dimension_id", "value_or_state", "uncertainty", "causal_event_refs", "update_rule_id", "update_rule_version"],
+    "illustrative_terms_are_canonical": false
+  },
+  "event_ledger_necessity": {
+    "verdict": "RETAIN_REQUIRED_BOUNDED",
+    "direct_source_support": ["YearRecord before/after hashes", "event_ledger", "micro_trace_ledger", "field provenance", "llm_band ledger/causal trace", "mutations_applied", "yearly integrity"],
+    "no_bloat_rules": ["one event may carry many effects", "no event for unchanged field/tick", "structural objects remain external refs", "checkpoints/derived/render/integrity are not pseudo-events", "slow processes emit records only on governed causal change or explicit checkpoint contract"]
+  },
+  "v550_plus_non_reduction_verdict": "PASS",
+  "genealogy_verdict": "FIRST_CLASS_RECURSIVE_V3_GENERATED_PARENT_RELATIONSHIP_HOUSEHOLD_CHILD_HISTORY_REQUIRED",
   "llm_verdict": {
-    "pass1": "OPTIONAL_BOUNDED_NONAUTHORITATIVE_PROPOSAL_ONLY",
-    "admission": "DETERMINISTIC_RULE_REGISTRY_BACKED_NO_FORCE_SELECTION",
-    "pass2": "RENDER_ONLY_NO_CAUSAL_MUTATION",
-    "conversation_feedback": "MUST_REENTER_V3_THROUGH_TYPED_EXTERNAL_EVENT_PROPOSAL_AND_ADMISSION"
+    "pass1": "OPTIONAL_BOUNDED_PROPOSAL_ONLY",
+    "admission": "RULE_REGISTRY_BACKED_NO_FABRICATED_EMPTY_PACKET_OR_FIRST_CANDIDATE_FALLBACK",
+    "pass2": "RENDER_ONLY_BACKBONE_HASH_NONMUTATION",
+    "randomness": "NAMED_DETERMINISTIC_STREAMS_REQUIRED"
   },
-  "attractor_enneagram_verdict": {
-    "owner": "V3 owns realized actor developmental attractor trajectory",
-    "v556_role": "structural prerequisite topology only",
-    "formation": "repeated exposure and actor response history -> reinforcement/destabilization/competition/path dependence -> tendency formation/evolution",
-    "enneagram_label": "optional derived interpretation with rule version evidence confidence uncertainty and competing tendency evidence",
-    "forbidden": [
-      "assigned at birth",
-      "survey to type",
-      "V556 topology to final type",
-      "single-event type assignment"
-    ]
-  },
-  "v3_to_v2_seam_verdict": {
-    "verdict": "IMMUTABLE_GENERATED_TRUTH_TO_RENDER_ONLY_V2",
-    "v2_may": [
-      "select relevant generated facts",
-      "organize phenomenology",
-      "render narrative dialogue and voice",
-      "express uncertainty ignorance and register"
-    ],
-    "v2_may_not": [
-      "invent causal biography",
-      "default missing actor facts into truth",
-      "assign structural positions",
-      "mutate V3 state",
-      "run a competing causal life simulation",
-      "convert structural annotation into lived memory"
-    ]
-  },
-  "epistemic_classes": [
-    "STRUCTURAL_PRIOR_CONTEXT",
-    "RESOLVER_DERIVED_CONTEXT",
-    "V3_GENERATED_EVENT",
-    "V3_STORED_ACTOR_STATE",
-    "V3_DERIVED_ACTOR_STATE",
-    "V3_GENERATED_MEMORY_STATE",
-    "LLM_PROPOSAL_CANDIDATE",
-    "V2_RENDERED_EXPRESSION",
-    "ANALYST_MODEL_ACCOUNT"
-  ],
-  "runtime_rule_registry_inventory": [
-    "ACTOR_INITIALIZATION_RULE",
-    "DEVELOPMENTAL_PHASE_RULE",
-    "POSITION_GENERATION_RULE",
-    "POSITION_TRANSITION_RULE",
-    "MOVE_GENERATION_RULE",
-    "ENCOUNTER_OPPORTUNITY_RULE",
-    "ENCOUNTER_REALIZATION_RULE",
-    "EXPOSURE_REALIZATION_RULE",
-    "V555_ROUTE_REALIZATION_RULE",
-    "V556_INTERACTION_REALIZATION_RULE",
-    "ACTOR_RESPONSE_RULE",
-    "PRESSURE_METABOLIZATION_RULE",
-    "ORIENTATION_UPDATE_RULE",
-    "MATERIAL_CAPACITY_RULE",
-    "VITALITY_ORGANISMIC_RULE",
-    "NEED_UPDATE_RULE",
-    "EXPECTATION_UPDATE_RULE",
-    "STRIVING_UPDATE_RULE",
-    "FRAMEWORK_UPDATE_RULE",
-    "BUFFER_CRACK_WOUND_RULE",
-    "PRACTICE_INFRASTRUCTURE_RULE",
-    "RELATIONSHIP_RULE",
-    "HOUSEHOLD_FAMILY_RULE",
-    "GENEALOGY_REPRODUCTION_RULE",
-    "RUPTURE_RULE",
-    "METABOLIZATION_PROCESS_RULE",
-    "CAUSAL_MEMORY_RULE",
-    "ATTRACTOR_UPDATE_RULE",
-    "ATTRACTOR_INTERPRETATION_RULE",
-    "EXTERNAL_EVENT_ADMISSION_RULE",
-    "LLM_PROPOSAL_ADMISSION_RULE",
-    "RANDOMNESS_POLICY",
-    "SCHEDULER_RULE",
-    "DERIVED_STATE_RULES"
-  ],
-  "vertical_harness_continuity": {
-    "temporal": "preserved with proxy/evidence-time separation and structural rupture distinct from actor rupture",
-    "contradictory_pressure": "preserved as separate exact streams",
-    "mediation": "V555 conditions/routes remain exact and actor buffer/amplify response is separate",
-    "pressureflow_attractor": "exact V555/V556 experience refs support but do not determine V3 attractor",
-    "uncertainty_absence_noncomparability": "may lawfully produce no actor event; no forced defaults or position invention"
-  },
-  "no_starvation_verdict": "PASS_V3_HAS_GENUINE_RESIDUAL_JURISDICTION_OVER_GENERATED_ACTOR_CAUSALITY",
-  "no_bloat_verdict": "PASS_V3_REFERENCES_UPSTREAM_OBJECTS_AND_LEAVES_STRUCTURAL_REPOSITORY_RESOLUTION_AND_V2_RENDERING_OUTSIDE_JURISDICTION",
-  "hostile_cases": [
-    {
-      "id": "HC1",
-      "case": "direct structural temporal support but no actor encounter",
-      "verdict": "no exposure response or belief event"
-    },
-    {
-      "id": "HC2",
-      "case": "latest-prior proxy selected",
-      "verdict": "proxy metadata preserved and not converted to lived experience"
-    },
-    {
-      "id": "HC3",
-      "case": "earliest-post proxy for precoverage parent",
-      "verdict": "future evidence time preserved and no retroactive childhood exposure"
-    },
-    {
-      "id": "HC4",
-      "case": "no lawful temporal anchor",
-      "verdict": "missing structural component remains missing"
-    },
-    {
-      "id": "HC5",
-      "case": "position-specific prior before position exists",
-      "verdict": "UNBOUND_REQUIRES_RUNTIME_POSITION then same-repository re-resolution after V3 generation"
-    },
-    {
-      "id": "HC6",
-      "case": "opposite V555 routes co-resolve without V556 relation",
-      "verdict": "independent streams and no synthetic conflict edge"
-    },
-    {
-      "id": "HC7",
-      "case": "V556 n-ary topology resolves",
-      "verdict": "preserve V556 ID participant routes roles and ordering"
-    },
-    {
-      "id": "HC8",
-      "case": "LLM proposes unsupported dramatic event",
-      "verdict": "reject without causal mutation; lawful empty beats fake concreteness"
-    },
-    {
-      "id": "HC9",
-      "case": "V556 prerequisites resemble Enneagram type",
-      "verdict": "no type assignment; only actor history may form attractor"
-    },
-    {
-      "id": "HC10",
-      "case": "conversation plausibly changes actor",
-      "verdict": "must reenter V3 through typed external-event admission"
-    }
-  ],
   "open_missing_authority": [
-    "actor initialization without fake defaults",
-    "developmental phase definitions and cadence",
-    "actor position generation and transition",
-    "geographic move generation",
-    "encounter opportunity and realization",
-    "exposure realization",
-    "V555 route realization",
-    "V556 actor interaction realization",
-    "actor response and pressure metabolism",
-    "exact-stratum orientation update",
-    "material capacity transition",
-    "organismic/vitality update",
-    "need expectation striving transitions",
-    "framework buffer crack wound development",
-    "practice/infrastructure uptake",
-    "relationship formation/evolution",
-    "household/family rules",
-    "genealogy reproduction and child generation",
-    "rupture and metabolization",
-    "causal memory/forgetting",
-    "attractor dynamics and optional Enneagram interpretation",
-    "external app/conversation event admission",
-    "LLM proposal admission if enabled",
-    "terminal randomness policy",
-    "hybrid scheduler/slow-process cadence",
-    "canonical derived-state schedule",
-    "any Phase-A population distribution authority beyond governed producers",
-    "cold exact historical source archive verification before implementation release"
-  ],
-  "implementation_packets": [
-    {
-      "id": "P1",
-      "name": "constitutional interfaces and epistemic classes",
-      "acceptance": "stage-blind V558 consumption, exact ref preservation, cold source verification"
-    },
-    {
-      "id": "P2",
-      "name": "DevelopmentalEventLedger and replay skeleton",
-      "acceptance": "every state delta explainable by admitted event/rule"
-    },
-    {
-      "id": "P3",
-      "name": "ActorCausalState migration",
-      "acceptance": "no fake defaults or placeholder truth"
-    },
-    {
-      "id": "P4",
-      "name": "hybrid scheduler and context refresh",
-      "acceptance": "deterministic same-repository re-resolution after generated binding changes"
-    },
-    {
-      "id": "P5",
-      "name": "position encounter exposure and V555 route realization",
-      "acceptance": "structural availability alone cannot mutate actor state"
-    },
-    {
-      "id": "P6",
-      "name": "V556 interaction realization and pressure-flow memory",
-      "acceptance": "exact V555/V556 identity and topology preserved"
-    },
-    {
-      "id": "P7",
-      "name": "developmental middle-state court",
-      "acceptance": "determination is not transparency; no structure-to-speech direct pipe"
-    },
-    {
-      "id": "P8",
-      "name": "rupture metabolization and causal memory",
-      "acceptance": "no mutation bypasses unified ledger"
-    },
-    {
-      "id": "P9",
-      "name": "relationships households and genealogy",
-      "acceptance": "generated parent/household history becomes child environment without structural-prior personification"
-    },
-    {
-      "id": "P10",
-      "name": "attractor formation",
-      "acceptance": "no birth survey or V556 direct type assignment"
-    },
-    {
-      "id": "P11",
-      "name": "optional LLM Pass 1 proposal court",
-      "acceptance": "bounded candidates only, deterministic admission, no fallback force-selection"
-    },
-    {
-      "id": "P12",
-      "name": "V3 to V2 immutable render contract",
-      "acceptance": "V2 cannot invent or mutate causal biography"
-    },
-    {
-      "id": "P13",
-      "name": "terminal completion court and vertical harness",
-      "acceptance": "hostile cases replay genealogy continuity and render nonmutation pass before implementation readiness"
-    }
+    "actor initialization and developmental phase rules",
+    "position and transition rules",
+    "encounter/exposure realization rules",
+    "V555 route realization rules",
+    "V556 F1 interaction realization rules",
+    "V556 F2 actor-history prerequisite satisfaction rules",
+    "actor response and pressure-metabolism rules",
+    "orientation dimension registry/update rules",
+    "material/organismic/vitality rules",
+    "need/expectation/striving rules",
+    "framework/buffer/crack/wound/practice/infrastructure rules",
+    "relationship/household/genealogy rules",
+    "rupture/metabolization/memory rules",
+    "attractor formation/interpretation rules",
+    "external event and optional LLM proposal admission",
+    "named randomness policy and hybrid scheduler rules"
   ],
   "unresolved_vozhd_decisions": [
-    "physical persistence engine for event ledger/checkpoints",
-    "slow maintenance cadence and compatibility annual checkpoint policy",
-    "retain or rename A/S/V/Aim derived projection",
-    "retain PeakRouting name as derived compatibility view or retire it",
-    "attractor internal representation evidence graph versus explicit basin state",
-    "generated memory packaging",
-    "shared relationship/household ledger packaging",
-    "enable LLM Pass 1 in first terminal implementation or defer it",
-    "one physical runtime-rule registry versus typed physical registries",
-    "exact historical source archive cold verification timing; court recommends before P1 acceptance"
+    "physical event/checkpoint persistence engine",
+    "slow-process maintenance cadence",
+    "A/S/V/Aim compatibility naming",
+    "PeakRouting compatibility packaging after decomposition",
+    "attractor evidence graph versus optional basin representation",
+    "generated-memory and shared relationship/household physical storage",
+    "whether Pass1 LLM ships in first terminal implementation",
+    "physical packaging of runtime-rule registries"
   ],
-  "files_changed": [
-    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/RESULT.md",
-    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/RESULT.json"
-  ],
-  "production_code_modified": false,
-  "final_architecture_statement": {
-    "THIS_STAGE_IS_RESPONSIBLE_FOR": "Historically generated actor causality: lawful positions encounters exposures exact V555/V556 experience actor response material/organismic constraint orientation developmental middle-state relationships households genealogy causal memory rupture/metabolization path dependence and realized attractor formation/evolution.",
-    "THIS_STAGE_IS_NOT_RESPONSIBLE_FOR": "Raw survey semantics V553-V558 producer semantics temporal proxy selection repository indexing geographic down-imputation prevalence-to-membership final persona voice/dialogue/autobiography or a competing V2 causal biography.",
-    "TERMINAL_CAPABILITIES_PROTECTED": [
-      "full V550+ non-reduction",
-      "stage-blind V3",
-      "exact V555/V556 identities",
-      "progressive position binding",
-      "prior vs experience vs response vs attractor separation",
-      "recursive genealogy",
-      "multi-timescale replayable development",
-      "determination without forced conscious transparency",
-      "life-course Enneagram-like attractor emergence",
-      "render nonmutation",
-      "uncertainty missing authority and lawful emptiness"
-    ],
-    "OPEN_MISSING_AUTHORITY": "Runtime rule families for initialization positions encounters exposure route realization response organismic/developmental updates relationships genealogy rupture memory attractor randomness scheduler and derived state, plus cold exact-source verification."
-  },
-  "final_token": "V3_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS",
-  "result_md_commit_sha": "4384f1cad3ec2e2c971a9b1b10be59b127443044"
+  "source_mount_caveat": "CLOSED",
+  "architecture_only_verification_status": "PASS_ARCHITECTURE_ONLY_TERMINAL_DEMAND_RECALIBRATION_DIRECT_SOURCE_VERIFIED",
+  "direct_source_verification_token": "DIRECT_SOURCE_VERIFICATION = PASS_WITH_ARCHITECTURE_DELTA",
+  "final_token": "V3_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS"
 }
