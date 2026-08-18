@@ -162,6 +162,12 @@ def question_structural_mapping_select_columns(conn) -> list[str]:
         "semantic_lane",
         "evidence_lane",
         "source_structure_fields_joined",
+        # R1 authority identity/disposition fields are optional for older
+        # installations, but must be selected whenever the table exposes them.
+        "canonical_wave",
+        "country_code_scope",
+        "authority_status",
+        "authority_rule_id",
     ]
     import os
     qsm_rel = os.getenv("DDM_QSM_RELATION", "public.question_structural_mapping")

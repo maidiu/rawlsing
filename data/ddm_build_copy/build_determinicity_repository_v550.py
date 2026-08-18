@@ -332,7 +332,10 @@ def _load_wave_question_mapping(conn, wave_source: str, wave_wave: str) -> pd.Da
             SELECT {", ".join(select_columns)}
             FROM {qsm_rel}
             WHERE source = %(source)s AND wave = ANY(%(waves)s)
-            ORDER BY var_code, loaded_at DESC
+            ORDER BY
+                CASE WHEN final_driver_origin = 'legacy_calibration_residual' THEN 1 ELSE 0 END,
+                var_code,
+                loaded_at DESC
         """
         exact = pd.read_sql_query(sql, conn, params={"source": wave_source, "waves": wave_candidates})
 
@@ -347,7 +350,11 @@ def _load_wave_question_mapping(conn, wave_source: str, wave_wave: str) -> pd.Da
             SELECT {", ".join(select_columns)}
             FROM {qsm_rel}
             WHERE wave = ANY(%(waves)s)
-            ORDER BY source, var_code, loaded_at DESC
+            ORDER BY
+                CASE WHEN final_driver_origin = 'legacy_calibration_residual' THEN 1 ELSE 0 END,
+                source,
+                var_code,
+                loaded_at DESC
         """
         candidates = pd.read_sql_query(fallback_sql, conn, params={"waves": wave_candidates})
         requested_family = canonical_family_key(wave_source)
@@ -365,9 +372,16 @@ def _load_wave_question_mapping(conn, wave_source: str, wave_wave: str) -> pd.Da
         combined["wave"] = str(wave_wave)
         dedupe_columns = [column for column in select_columns if column in combined.columns]
         combined = combined.drop_duplicates(subset=dedupe_columns, keep="first")
-        sort_columns = [column for column in ("var_code", "loaded_at") if column in combined.columns]
+        if "final_driver_origin" in combined.columns:
+            combined["_r1_authority_priority"] = (
+                combined["final_driver_origin"] != "legacy_calibration_residual"
+            ).astype(int)
+        sort_columns = [column for column in ("var_code", "_r1_authority_priority", "loaded_at") if column in combined.columns]
         if sort_columns:
-            combined = combined.sort_values(sort_columns, ascending=[True] + [False] * (len(sort_columns) - 1), kind="mergesort")
+            ascending = [True, False, False][:len(sort_columns)]
+            combined = combined.sort_values(sort_columns, ascending=ascending, kind="mergesort")
+        if "_r1_authority_priority" in combined.columns:
+            combined = combined.drop(columns=["_r1_authority_priority"])
         return combined.reset_index(drop=True)
 
     frame = cached_query_frame(
