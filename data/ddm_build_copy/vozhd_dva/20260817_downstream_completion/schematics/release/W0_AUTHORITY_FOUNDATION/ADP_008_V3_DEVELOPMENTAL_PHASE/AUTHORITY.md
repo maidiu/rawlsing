@@ -1,43 +1,67 @@
 # ADP-008 — V3 Developmental / Generation Phase Authority
 
 **Assignment:** W0-04 — ADP-008 / V3 developmental-phase rule  
+**Continuation:** minimum-sufficient developmental-phase authority hardening after Vozhd `RETURN_FOR_FIX`  
 **Repository:** `maidiu/rawlsing`  
 **Branch:** `agent/vozhd-dva-w0-adp-008-v3-developmental-phase`  
-**Exact base SHA:** `655da47b9e03ab310ed4b7fa65ceec9b9d04d3bc`  
+**Original exact launch base:** `655da47b9e03ab310ed4b7fa65ceec9b9d04d3bc`  
+**Reviewed pre-fix head:** `208cb371211bfe8b3547f673a91a2143cb00b414`  
 **RA-R00 authority item:** `MUST-008`  
 **Authority ID:** `V3_DEVELOPMENTAL_PHASE_RULE`  
-**Authority version:** `1.0.0`  
+**Authority version:** `1.1.0`  
+**Supersedes:** unadjudicated returned draft `V3_DEVELOPMENTAL_PHASE_RULE@1.0.0`  
 **Owner:** `V3_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE`  
 **Mode:** authority creation only; no production code; no V3 implementation; no architecture reopening  
 **Verdict:** `PASS`  
 **CONSUMER_RELEASE_SUFFICIENCY:** `SUFFICIENT`
 
-## 0. Binding holding
+## 0. Corrected binding holding
 
-The canonical V3 developmental phase is a **sparse actor-local causal/runtime epoch state**. It is neither a clock nor a demographic classification nor a psychological description.
+The canonical V3 developmental/generation phase interface is **minimum sufficient and history-bearing**.
 
-The machine must keep four things separate:
+It has only two universal base identities:
+
+```text
+V3DP_GENERATION_PENDING
+V3DP_DEVELOPMENT_ACTIVE
+```
+
+`V3DP_GENERATION_PENDING` is available only where a governed prospective-generation subject genuinely exists for genealogy/context planning before actor activation.
+
+`V3DP_DEVELOPMENT_ACTIVE` means exactly that a governed V3 actor has been activated and is undergoing open-ended development. It does **not** classify that development into childhood, foundational, transitional, adult, mature, late-life, parent, worker, student, or any other universal human-development slot.
+
+For an active actor with no finer governed segmentation:
+
+```text
+base_phase_id = V3DP_DEVELOPMENT_ACTIVE
+active_phase_segments = []
+```
+
+This is lawful **active unsegmented development**, not a missing value and not an invitation to invent a label.
+
+Finer developmental segments exist only through the versioned `V3_DEVELOPMENTAL_PHASE_REGISTRY` owned by ADP-008. Authority version `1.1.0` contains **zero optional human-development segment entries**. A future segment may exist only when an explicit ADP-008 registry version defines its semantic scope, exact consumers, terminal/runtime need, boundary/admission rule, allowed input authorities, effective-time behavior, provenance and replay contract.
+
+The machine therefore keeps distinct:
 
 ```text
 chronological age / elapsed time
-≠ developmental phase
-≠ resolver query purpose (including Phase A / Phase B)
-≠ actor developmental state / personality / attractor
+≠ universal V3 generation/development base state
+≠ optional governed phase segment
+≠ ContextResolver query purpose (including Phase A / Phase B)
+≠ actor developmental state / personality / attractor / biography
 ```
 
-A phase is authoritative only because V3 has a valid phase-state/transition history under this authority version. It is **not recomputed from age**, inferred from structural priors, copied from population categories, inherited from a parent, or taken from legacy V2 lifecycle labels.
+No universal `FOUNDATIONAL → TRANSITIONAL → OPEN` ladder remains. The prior draft's three active universal epochs are withdrawn as unsupported semantic bloat.
 
-The recovered yearly spine survives only as continuity evidence for ordered causal integration. `timestep: year`, `state.age += 1`, annual loops, three-year LLM bands, hard-coded rupture ages, driver-age bands, and V2 present-life “phases” do **not** become the developmental ontology.
+No universal non-age-event witness requirement remains either. A governed phase-segment rule may use age/time, generated causal events, generated runtime facts, lawful derived predicates, or a governed combination, exactly as its registry entry declares. Age/time never acquires unstated psychological, demographic, positional or maturity meaning merely because it is used as a boundary guard.
 
-`MUST-008` is closed by a small versioned phase vocabulary, a strict transition graph, an actor-specific boundary-binding contract, explicit effective-time/replay law, and fail-closed behavior when a phase or boundary is not lawfully known.
-
-This authority creates no actor, position, encounter, genealogy fact, scheduler precedence, V2 expression meaning, personality, or Enneagram state.
+No unnamed downstream developmental-boundary authority is required. ADP-008 owns the registry and phase-boundary-rule contract. Other already-named authorities may supply their own generated facts or predicates as declared inputs, but they do not acquire developmental-phase semantic ownership.
 
 ---
 
-## 1. Governing law and bounded jurisdiction
+## 1. Governing law and correction basis
 
-This result is constrained by:
+This corrected authority remains constrained by the original W0 common law and directly inspected accepted authorities:
 
 - `state/CURRENT_STATE.md`;
 - `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
@@ -50,361 +74,528 @@ This result is constrained by:
 - TD-R07 `schematics/closure/TD_R07_WHOLE_MACHINE_SYNTHETIC_LIFE/RESULT.md`;
 - the directly verified historical V3/V2/server archive listed below.
 
-The whole-machine architecture is closed. No other W0 worker result was used before Vozhd adjudication.
+### 1.1 Post-launch binding interpretive law
 
-### 1.1 ADP-008 owns
+The continuation directly inspected, without rebasing or merging unrelated `main` changes:
+
+`data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/RAWLSING_GOVERNING_SPIRIT.md`
+
+at commit:
+
+`d01ec9dd05276d7928ed91e937531fa92da0d28f`.
+
+Its relevant binding interpretation is applied only where the closed architecture left genuine design latitude:
+
+- personhood is becoming, not classification;
+- preserve contingent developmental divergence;
+- preserve causal history over static convenience labels;
+- use minimum sufficient semantic machinery;
+- reject both starvation and bloat;
+- do not turn runtime representation into hidden human essence.
+
+This interpretive law did not reopen architecture and did not supply unsupported empirical phase semantics. It resolves the ambiguity against the returned draft's universal four-stage ladder.
+
+### 1.2 No parallel-W0 contamination
+
+No other W0 worker result was used as authority before Vozhd adjudication.
+
+---
+
+## 2. ADP-008 jurisdiction
+
+### 2.1 ADP-008 owns
 
 ADP-008 owns exactly:
 
-1. stable developmental/generation phase IDs and authority version;
-2. each phase's semantics as a runtime jurisdictional epoch;
-3. the allowed phase-transition graph;
-4. actor-specific phase-boundary binding semantics;
-5. phase-transition admission and fail-closed states;
-6. phase effective-time semantics;
-7. the phase field supplied read-only to `ContextQuery`;
-8. replay/provenance and integrity requirements;
-9. the prohibition on age/demographic/structural/V2 shortcut phase assignment.
+1. the two universal base phase IDs and their narrow semantics;
+2. the `V3_DEVELOPMENTAL_PHASE_REGISTRY` schema/versioning law;
+3. optional phase-segment identity and semantics **only when actually entered into an ADP-008 registry version**;
+4. phase-segment boundary/admission rule representation;
+5. actor-local phase/segment membership transition admission;
+6. positive, unresolved, ungoverned, unbound, ambiguous, forbidden and integrity states;
+7. phase effective-time semantics;
+8. the read-only phase envelope supplied to `ContextQuery` and other V3 consumers;
+9. phase-boundary trigger publication to the scheduler without scheduler precedence ownership;
+10. replay/provenance and compatibility requirements;
+11. prohibition on age/demographic/structural/V2 shortcut phase invention.
 
-### 1.2 ADP-008 does not own
+### 2.2 ADP-008 does not own
 
 ADP-008 does **not** decide:
 
-- actor initialization or birth-generation rules — `ADP-007 / MUST-007`;
+- actor initialization or birth-generation facts — `ADP-007 / MUST-007`;
 - population distributions, demographic defaults or identity defaults;
 - generated positions, position transitions or mobility — `ADP-009`;
 - opportunity/encounter/exposure realization — `ADP-010`;
 - relationship/household/genealogy recursion — `ADP-015`;
-- actor response, orientation, needs, wounds, vitality, attractor dynamics or memory;
+- actor response, orientation, needs, wounds, vitality, causal memory or attractor dynamics;
 - hybrid scheduler same-time precedence or slow-process cadence — `ADP-021 / MUST-021`;
 - the pure derived-state schedule — `CAN-014`;
 - V2 phenomenology, present-life seasons, dialogue, expression or transcript semantics;
 - personality or Enneagram identity;
 - structural-prior production or resolver proxy selection.
 
-A consumer may use phase as one explicit predicate input. Phase itself supplies none of the omitted meanings.
+A named neighboring authority may produce a fact or predicate consumed by a registered phase rule. That does not move phase semantics into that neighboring authority.
 
 ---
 
-## 2. Required historical archive verification
+## 3. Required historical archive verification
 
 Required archive: `Rawlsing_code_bundle_staging.zip`.
 
-Mounted upload directly inspected: `/mnt/data/Rawlsing_code_bundle_staging(2).zip`.
+Mounted upload directly reverified in this continuation:
+
+`/mnt/data/Rawlsing_code_bundle_staging(2).zip`
 
 Expected SHA256:
+
 `953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`
 
 Directly computed SHA256:
+
 `953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`
 
 **SHA verdict:** `EXACT_MATCH`  
 **ZIP entries:** `13,138`
 
-Recovered `v3/`, `v2/`, and relevant `server/` material is continuity / authority-recovery evidence only. Historical archive V5/DDM material has **zero authority** over current V550+ and was not used to define current structural meaning.
+Recovered `v3/`, `v2/`, and relevant `server/` material remains continuity / authority-recovery evidence only. Historical archive V5/DDM material has **zero authority** over current V550+ and supplies no current phase semantics.
 
 ---
 
-## 3. Historical/current evidence disposition
+## 4. Historical/current evidence court — preserved
 
-### 3.1 Recovered V3 causal clock and state
+The narrow fix does not disturb the original evidence findings.
 
-Direct inspection found:
+### 4.1 Recovered causal clock and state
+
+Direct inspection established:
 
 - `v3/v3_yearly_step_order.yaml`: explicit `timestep: "year"` and ordered causal/derived schedule;
-- `v3/core/state.py`: persistent `year` and `age` plus longitudinal actor state, but no canonical developmental-phase authority;
+- `v3/core/state.py`: persistent `year` and `age` plus longitudinal actor state, with no canonical terminal developmental-phase authority;
 - `v3/engine/yearly_step.py`: increments `state.year += 1` and `state.age += 1`;
 - `v3/engine/step_runner.py`: composes annual steps;
-- `server/generation/simulation.py`: drives life generation by age and uses an LLM band every three years from age 5 plus the anchor year.
+- `server/generation/simulation.py`: life generation driven partly by age, including a three-year LLM-band cadence.
 
 **Disposition:** `ADAPT_AS_CADENCE_AND_REPLAY_EVIDENCE_ONLY`.
 
-The ordered spine is valuable continuity. It does not authorize `one annual tick = one developmental transition` or an implicit age-to-phase table.
+Annual progression is a useful integration mechanism. It is not developmental ontology.
 
-### 3.2 Recovered age-dependent machinery
+### 4.2 Recovered age/lifecycle machinery
 
-Direct inspection also found mutually noncanonical age systems:
+Direct inspection found mutually noncanonical age/lifecycle schemes:
 
-- `v3/engine/striving_objects.py`: proxy striving brackets `(3, 7, 11, 14, 17, 24, 35)` and nearest-bracket behavior;
-- `v3/engine/effects/metabolization_effects.py`: hard-coded rupture band ages with random injection probabilities;
-- `v3/io/identity_to_backbone.py`: age gates school/college proxies and other state and directly seeds identity-derived state;
+- `v3/engine/striving_objects.py`: proxy striving age brackets and nearest-bracket behavior;
+- `v3/engine/effects/metabolization_effects.py`: hard-coded rupture-band ages with stochastic injection;
+- `v3/io/identity_to_backbone.py`: age-gated school/college proxies and identity-derived state shortcuts;
 - `v3/psyche/channels.py`: wound sensitivities seeded from structural identity and age;
-- `v3/tests/test_phase3_activation_gate.py`: “Phase 3” is an implementation milestone, not a human developmental phase;
-- `v2/DRIVER_AGE_SCHEMA.md` and `v2/config/driver_age_schema.yaml`: legacy birth/school/adolescence/young-adult/adulthood slots with 0/6/12/18/30 cutoffs;
-- `v2/ENNEAGRAM_EMERGENCE_SYSTEM.md`: early-childhood/later age bands plus the useful no-type-at-birth intent;
-- `v2/LIFE_SIMULATION_LAYER.md`: `current_life_phase` as present-life seasons such as job hunt, burnout, caring for a parent, activism surge or stable routine.
+- `v3/tests/test_phase3_activation_gate.py`: “Phase 3” as an implementation milestone, not a human developmental phase;
+- `v2/DRIVER_AGE_SCHEMA.md` and `v2/config/driver_age_schema.yaml`: birth/school/adolescence/young-adult/adulthood slots;
+- `v2/ENNEAGRAM_EMERGENCE_SYSTEM.md`: useful no-type-at-birth intent mixed with age bands;
+- `v2/LIFE_SIMULATION_LAYER.md`: `current_life_phase` presentation/session seasons such as job hunt, burnout, caregiving, activism surge or stable routine.
 
-**Disposition:** evidence of age-sensitive behavior, not a recoverable canonical authority.
+**Disposition:** `EVIDENCE_ONLY_FOR_AGE_SENSITIVE_RUNTIME_NEED`.
 
-Legacy driver-age slots are not V3 phase IDs; hard-coded rupture/striving ages are not phase boundaries; identity/age → wound or psychology shortcuts are rejected; V2 `current_life_phase` is a V2 season, not V3 causal phase; no-type-at-birth intent survives only as continuity, not as a phase vocabulary.
+These mechanisms prove that later rules may need explicit chronology/phase predicates. They do not prove a universal phase taxonomy. The mutually inconsistent bands are positive evidence **against** treating any recovered lifecycle partition as terminal authority.
 
-### 3.3 Current repository terrain
+### 4.3 Current repository terrain
 
-At exact base `655da47b9e03ab310ed4b7fa65ceec9b9d04d3bc`, repository-root inspection found no canonical top-level current `v3/` source tree. Code searches for `BackboneState`, `yearly_step.py`, and `DevelopmentalEventLedger` returned no current V3 implementation hits.
-
-There is therefore no current production V3 phase implementation to canonize. This W0 cell creates missing machine authority only.
+At the original exact launch base, no canonical current top-level V3 implementation existed to canonize. The accepted V3 ruling explicitly classified developmental phases as missing runtime-rule authority. This W0 result therefore creates the minimum machine authority needed by the closed architecture; it does not preserve a current production phase implementation.
 
 ---
 
-## 4. Canonical phase vocabulary
+## 5. Universal phase vocabulary — minimum sufficient
 
-Authority version `1.0.0` defines exactly four stable phases. The ordinal validates transition order only; it is not a maturity score.
+Authority `1.1.0` defines exactly two universal base IDs.
 
-| Stable phase ID | Ordinal | Canonical meaning | Explicit nonmeaning |
-|---|---:|---|---|
-| `V3DP_GENERATION_PENDING` | 0 | A generation subject may be referenced for governed context/planning, but no V3 actor-activation/birth event has yet established active actor causal history. | Not a living actor fact; no age, caregiver, family, position, identity, personality or biography. |
-| `V3DP_FOUNDATIONAL_DEVELOPMENT` | 1 | First active actor developmental epoch after governed actor activation. | Not an age band; not “imprint”; no claim of dependency, schooling, household form or psychology. |
-| `V3DP_TRANSITIONAL_DEVELOPMENT` | 2 | Bounded intermediate developmental epoch available to rules that explicitly require a transition window. | Not adulthood, autonomy, legal majority, employment, relationship status, structural position or identity. |
-| `V3DP_OPEN_DEVELOPMENT` | 3 | Open-ended later developmental epoch after a governed transition. Development remains open. | Not completed development, maturity, independence, health, late-life status, personality, Enneagram or attractor state. |
+| Base phase ID | Canonical meaning | Explicit nonmeaning |
+|---|---|---|
+| `V3DP_GENERATION_PENDING` | A governed prospective-generation subject may be referenced for generation/context planning, but no V3 actor activation has yet established active actor causal history. | Not a living-person biography; no age, parent, caregiver, household, position, identity, personality, maturity or developmental segment. |
+| `V3DP_DEVELOPMENT_ACTIVE` | A governed V3 actor has been activated and is in open-ended developmental causality. | No finer age/life-course segment; no maturity, autonomy, adulthood, legal status, school/work/family role, personality, Enneagram or attractor meaning. |
 
-The minimum useful distinction is:
-
-```text
-generation not yet activated
-→ first active developmental epoch
-→ explicit transition epoch
-→ open-ended later development
-```
-
-No canonical “late life,” “parent,” “student,” “worker,” “adolescent,” “young adult,” “adult,” “burnout,” “imprint,” or Enneagram phase exists in ADP-008 v1.
-
-Vocabulary changes require a new authority version plus explicit migration/replay law. Production code may not mint ad hoc phase strings.
-
----
-
-## 5. Canonical transition graph
-
-Fresh generation has exactly these legal edges:
+There is one universal base transition:
 
 ```text
 V3DP_GENERATION_PENDING
-        ↓
-V3DP_FOUNDATIONAL_DEVELOPMENT
-        ↓
-V3DP_TRANSITIONAL_DEVELOPMENT
-        ↓
-V3DP_OPEN_DEVELOPMENT
+        ↓ governed actor activation under ADP-007
+V3DP_DEVELOPMENT_ACTIVE
 ```
 
-The graph is strictly forward. Fresh generation may not skip, reverse, make same-phase pseudo-transitions, transition merely because an annual tick occurred, or transition because an age/demographic/V2 label changed.
+This edge is an interface consequence of actor activation, not an actor-initialization rule. ADP-007 owns whether/how actor activation occurs and supplies the exact activation event/receipt. ADP-008 owns only the phase-state consequence once that named authority has lawfully activated the actor.
 
-A restored checkpoint may already be in a later phase only when the complete prior transition/hash chain verifies. That is replayed history, not a phase skip.
+An already-active actor imported from a verified checkpoint may start materialization in `V3DP_DEVELOPMENT_ACTIVE` only when its activation/phase history verifies. That is replay, not a bypass.
 
-### 5.1 Initial transition
+There is **no universal active-development ladder** after activation.
 
-`V3DP_GENERATION_PENDING → V3DP_FOUNDATIONAL_DEVELOPMENT` requires a governed V3 actor-activation/birth event.
+In particular, authority `1.1.0` contains no universal:
 
-ADP-008 validates the phase edge. It does **not** define actor initialization, birth facts, or initial actor state. `ADP-007` owns those decisions later and consumes this contract.
+- `FOUNDATIONAL_DEVELOPMENT`;
+- `TRANSITIONAL_DEVELOPMENT`;
+- `OPEN_DEVELOPMENT`;
+- childhood/adolescence/adulthood/late-life phase;
+- student/worker/parent/caregiver phase;
+- personality/Enneagram phase.
 
-### 5.2 Later transitions
-
-A later transition applies only if all are true:
-
-1. current actor phase exactly matches `from_phase_id`;
-2. requested edge exists in this authority version;
-3. an actor-specific `V3DevelopmentalPhaseBoundaryBinding` exists and hash-verifies;
-4. its temporal eligibility is satisfied at the proposed effective time;
-5. at least one **non-age V3-generated causal witness/fact** explicitly authorized by the binding producer is present;
-6. every named boundary predicate returns `TRUE` under its exact rule/version;
-7. no denial, ambiguity, forbidden epistemic input or integrity failure exists;
-8. a V3 developmental-phase transition record is committed at that same effective time.
-
-Chronological age or elapsed time may constrain eligibility. It cannot satisfy condition 5.
+`V3DP_DEVELOPMENT_ACTIVE` already preserves the binding fact that development remains open and path-dependent. No redundant “open development” segment is needed.
 
 ---
 
-## 6. Actor-specific phase-boundary binding
+## 6. Canonical actor phase envelope
 
-Canonical logical record:
+The logical phase state is:
 
 ```text
-V3DevelopmentalPhaseBoundaryBinding {
-    actor_id,
+V3DevelopmentalPhaseState {
+    actor_or_generation_subject_id,
     authority_id,
     authority_version,
-    from_phase_id,
-    to_phase_id,
-    binding_authority_id,
-    binding_authority_version,
-    binding_mode,
-    temporal_eligibility,
-    required_witness_kinds[],
-    required_predicate_refs[],
+    base_phase_id,
+    active_phase_segment_refs[],
+    status,
+    effective_from,
+    prior_phase_state_hash,
     provenance_refs[],
-    binding_content_hash
+    phase_state_hash
 }
 ```
 
-Allowed `binding_mode` values:
+Rules:
 
-- `EVENT_BOUNDARY`;
-- `TIME_ELIGIBLE_PLUS_EVENT_WITNESS`;
-- `RESTORED_VERIFIED_HISTORY`.
+1. `V3DP_GENERATION_PENDING` requires `active_phase_segment_refs=[]`.
+2. `V3DP_DEVELOPMENT_ACTIVE` with `active_phase_segment_refs=[]` is **lawful active unsegmented development**.
+3. Optional phase segments may appear only as exact registry refs under §7.
+4. No implementation may fill `active_phase_segment_refs` from prose labels, age tables, demographics or convenience defaults.
+5. Multiple segment refs are lawful only when their registry entries do not declare mutual exclusion and the requesting consumer identifies the exact rule/segment namespace it consumes. No global scalar “most mature” segment exists.
 
-Forbidden: `AGE_ONLY_AUTO_TRANSITION`.
-
-ADP-008 defines boundary semantics but invents no actor-specific boundary value. A downstream V3 authority may instantiate a binding only inside its own jurisdiction and with exact provenance. There are no population/default boundary times, cultural stereotypes, sex/gender/class/sect-derived schedules or legacy age-band remaps here.
-
-If no lawful next boundary binding exists, current phase remains known but next-boundary state is `PHASE_BOUNDARY_UNBOUND`. That is fail-closed, not permission to use a “normal age.”
+This envelope permits the shared interface demanded by V3 runtime, ContextResolver, genealogy and scheduler without forcing a universal human taxonomy.
 
 ---
 
-## 7. Transition record and admissible inputs
+## 7. `V3_DEVELOPMENTAL_PHASE_REGISTRY`
 
-Canonical logical record:
+### 7.1 Registry ownership
+
+The registry is owned by **ADP-008 itself**.
+
+No unnamed downstream “developmental boundary authority” exists.
+
+A new optional developmental segment requires a new accepted ADP-008 registry version or an accepted amendment under the same named authority. Merely adding code, config, a scheduler task, a resolver predicate, an age table or another worker's consumer rule cannot create a developmental phase segment.
+
+Authority `1.1.0` registry payload:
+
+```text
+optional_phase_rules = []
+```
+
+That empty registry is a complete lawful state.
+
+### 7.2 Optional phase-rule entry
+
+Any future optional phase segmentation must be represented by a record terminally equivalent to:
+
+```text
+V3DevelopmentalPhaseRule {
+    phase_rule_id,
+    phase_rule_version,
+    registry_version,
+    jurisdiction,
+    terminal_or_runtime_need,
+    exact_consumers[],
+    segment_definitions[],
+    transition_definitions[],
+    admissible_input_authorities[],
+    admissible_input_classes[],
+    boundary_predicate_specs[],
+    age_time_guard_semantics,
+    ambiguity_policy,
+    effective_time_rule,
+    provenance_requirements[],
+    replay_requirements[],
+    rule_content_hash
+}
+```
+
+Each `segment_definition` must include:
+
+- stable namespaced `phase_segment_id`;
+- bounded semantic meaning;
+- explicit nonmeaning / semantic ceiling;
+- exact consumers;
+- why the segment is required by terminal composition or a separately governed runtime rule;
+- any mutual-exclusion or coexistence relation needed inside that rule's own namespace.
+
+Each `transition_definition` must include:
+
+- transition identity;
+- source membership condition, if any;
+- target membership condition, if any;
+- exact boundary predicate/rule expression;
+- exact allowed input authorities/classes;
+- effective-time semantics;
+- fail-closed result when required inputs are absent/ambiguous;
+- provenance/replay requirements.
+
+A phase name that merely “sounds developmentally plausible” is inadmissible.
+
+### 7.3 Who may supply boundary inputs
+
+A registry rule may consume outputs from **already-named authorities whose own jurisdiction genuinely owns those outputs**.
+
+Examples of lawful input ownership include:
+
+- `ADP-007`: actor activation/birth-generation event or fact;
+- `ADP-009`: generated position/mobility facts, if a future phase rule explicitly and lawfully needs them;
+- `ADP-010`: generated opportunity/encounter/exposure facts, if explicitly required;
+- `ADP-015`: generated relationship/household/genealogy facts, if explicitly required;
+- other accepted V3 rule authorities: their own generated causal events/facts or versioned derived predicates, when explicitly named by a registry entry.
+
+The supplying authority owns only its source fact/predicate. **ADP-008 remains owner of the developmental-phase segment meaning and boundary admission.**
+
+Structural priors, resolver selections, demographics and V2 artifacts cannot become phase semantics merely by being referenced as context.
+
+---
+
+## 8. Optional phase-segment transition admission
+
+No universal causal recipe is imposed on future phase boundaries.
+
+A phase-segment transition/membership change is lawful only when:
+
+1. the requested `phase_rule_id@version` exists in the active ADP-008 registry version;
+2. the requested segment/transition identity exists in that rule;
+3. the actor is in `V3DP_DEVELOPMENT_ACTIVE` unless the rule explicitly governs a generation-pending query without asserting actor state;
+4. all required inputs come from the exact authorities/classes declared by the rule;
+5. the rule's boundary predicate evaluates deterministically under its exact version;
+6. no forbidden inference, ambiguity or integrity failure exists;
+7. a versioned V3 phase transition/membership record is committed at the effective time.
+
+Allowed boundary ingredients, when explicitly declared by the registry rule, include:
+
+- chronological age or elapsed actor time;
+- generated causal event(s);
+- generated runtime fact(s);
+- a lawful versioned derived predicate with its causal inputs reachable;
+- a governed combination of the above.
+
+There is **no universal requirement** for a non-age event witness.
+
+There is also **no universal permission** for age to create developmental meaning. Age/time can be sufficient only because an explicit registry rule says the particular segment boundary is age/time-defined and limits the segment's meaning accordingly.
+
+### 8.1 Runtime boundary evaluation receipt
+
+An actor-specific boundary evaluation is a runtime receipt, not a new semantic authority:
+
+```text
+V3DevelopmentalPhaseBoundaryEvaluation {
+    evaluation_id,
+    actor_id,
+    phase_rule_id,
+    phase_rule_version,
+    segment_or_transition_id,
+    evaluated_at,
+    proposed_effective_time,
+    input_receipts[],
+    predicate_receipts[],
+    result,
+    provenance_refs[],
+    evaluation_hash
+}
+```
+
+The evaluation executes ADP-008 registry authority. It does not delegate phase ownership to an unnamed producer.
+
+### 8.2 Transition/membership record
 
 ```text
 V3DevelopmentalPhaseTransitionRecord {
     transition_id,
     actor_id,
-    from_phase_id,
-    to_phase_id,
     authority_id,
     authority_version,
-    binding_id,
-    binding_hash,
+    base_phase_before,
+    base_phase_after,
+    phase_rule_id_if_segmented,
+    phase_rule_version_if_segmented,
+    transition_definition_id,
+    from_segment_refs[],
+    to_segment_refs[],
     effective_time,
-    triggering_event_ids[],
-    witness_fact_ids[],
-    predicate_receipts[],
-    chronological_age_if_known,
+    input_receipts[],
+    boundary_evaluation_hash,
     prior_phase_state_hash,
     provenance_refs[],
     transition_record_hash
 }
 ```
 
-The transition record is V3 causal/runtime truth, not a structural prior or derived label.
-
-May supply causal transition authority:
-
-- prior verified V3 phase state / transition record;
-- `GENERATED_CAUSAL_EVENT`;
-- `GENERATED_RUNTIME_FACT` with exact V3 causal parentage;
-- an external interaction only **after** V3 admission made it causal;
-- exact versioned V3 predicate/rule receipts named by the binding.
-
-May be guard/context only:
-
-- chronological age / elapsed time;
-- `ResolvedStructuralContext` and `SelectionRecord` refs;
-- deterministic `DERIVED_RUNTIME_VIEW` only when its governing rule permits it and underlying causal refs remain reachable.
-
-Forbidden as phase authority:
-
-- raw source evidence;
-- structural prior or resolver selection alone;
-- geography or prevalence;
-- demographic/identity category;
-- legacy lifecycle/age-band label;
-- V2 current-life phase/season;
-- rendered dialogue, narrative, transcript or persona material;
-- Enneagram/type/attractor label;
-- wall clock, filesystem order or mutable `latest`;
-- unnamed randomness or heuristic/default biography.
+The record is V3 causal/runtime truth about phase membership. It is not a structural prior, demographic label, personality state or V2 rendering.
 
 ---
 
-## 8. Chronological age law
+## 9. Age and elapsed-time law
 
-Chronological age is an independent chronological fact.
+Chronological age and elapsed actor time are independent chronological facts.
 
-ADP-008 v1 defines **no universal age cutoffs**.
+ADP-008 `1.1.0` defines **no universal human-development age cutoffs**.
 
-Age may:
+Age/time may:
 
 1. validate chronology;
-2. appear as an explicitly named eligibility/guard input in another governed rule;
-3. be recorded on a transition receipt for audit/replay.
+2. be queried directly by another governed V3 rule when that rule owns an age-sensitive condition;
+3. serve as an explicit phase-boundary guard or even the complete boundary basis **only when an ADP-008 registry entry explicitly defines that boundary**;
+4. be recorded on phase evaluation/transition receipts for audit and replay;
+5. yield a scheduler trigger time when an accepted registry rule makes a future boundary deterministically knowable.
 
-Age may not:
+Age/time may not:
 
-1. select phase through an implicit `if age then phase` table;
-2. substitute for the required non-age boundary witness;
-3. imply maturity, autonomy, legal status, school/work/family position, personality or biography.
+1. select a developmental segment through an implicit `if age then human phase` table;
+2. revive recovered birth/school/adolescence/adulthood slots as aliases;
+3. imply maturity, autonomy, legal status, personality, ideology, family role, school/work position, attractor state or biography unless a separately governed authority owns that exact fact;
+4. repair an ungoverned requested phase distinction.
 
 Required invariants:
 
 ```text
-known age + unknown phase ≠ reconstructed phase
-known verified phase + unknown age ≠ erased phase
+known age + no registered segment rule
+= V3DP_DEVELOPMENT_ACTIVE with no segment
+
+known age + requested unregistered "adolescent"/"adult" segment
+= PHASE_SEGMENT_NOT_GOVERNED
+
+registered age/time-defined segment rule + satisfied exact guard
+= lawful segment transition/membership under that rule only
 ```
 
-An age-only transition proposal returns `DEFERRED_AGE_ONLY_NO_BOUNDARY_WITNESS`.
+Thus an age-only boundary is neither universally forbidden nor universally meaningful. Its semantics are bounded by the exact registered rule.
 
 ---
 
-## 9. Fail-closed states
+## 10. Decision and fail-closed states
 
 | State | Meaning |
 |---|---|
-| `ACTIVE_PHASE` | Current phase exists and its transition/hash chain is valid. |
-| `TRANSITION_APPLIED` | Edge, boundary, witness, predicates, time and integrity passed; transition committed. |
-| `PHASE_UNRESOLVED` | No lawful current phase can be established; phase-dependent consumers defer. |
-| `PHASE_BOUNDARY_UNBOUND` | Current phase known, but no lawful next-boundary binding exists; no auto-advance. |
-| `DEFERRED_MISSING_BOUNDARY_WITNESS` | Temporal eligibility may be met, but required non-age generated witness is missing/unresolved. |
-| `DEFERRED_AGE_ONLY_NO_BOUNDARY_WITNESS` | Age/time is the only transition basis; no transition. |
-| `AMBIGUOUS_PHASE_TRANSITION` | Two non-identical same-time candidates survive; no invented winner. |
-| `BLOCKED_INVALID_TRANSITION_EDGE` | Skip, reverse, same-phase or unknown edge requested. |
-| `BLOCKED_FORBIDDEN_PHASE_INFERENCE` | Structural/demographic/V2/legacy/other forbidden source offered as phase authority. |
-| `INTEGRITY_FAILURE` | Actor/version/hash/prior-state/predicate/provenance validation fails. |
+| `ACTIVE_OR_GOVERNED_PHASE` | Universal base state is verified; actor is either lawfully active-unsegmented or has exact governed segment membership(s). |
+| `TRANSITION_APPLIED` | A universal activation edge or registered segment transition passed exact rule/integrity checks and was committed. |
+| `PHASE_UNRESOLVED` | The relevant base phase or an already-governed required membership cannot be lawfully established from verified history. |
+| `PHASE_SEGMENT_NOT_GOVERNED` | A consumer requests a finer developmental distinction for which the active ADP-008 registry contains no governing rule/segment. No substitute label is invented. |
+| `PHASE_BOUNDARY_UNBOUND` | A governed segment rule exists, but a boundary input required by that rule is not yet bound/known. Current lawful phase state remains unchanged. |
+| `AMBIGUOUS_PHASE_TRANSITION` | Two non-identical incompatible phase transitions/memberships survive under the same governing rule/effective time and the rule supplies no lawful resolution. |
+| `BLOCKED_INVALID_PHASE_TRANSITION` | Requested base or segment transition is not admitted by the exact registered rule. |
+| `BLOCKED_FORBIDDEN_PHASE_INFERENCE` | Structural, demographic, legacy-age-band, V2, personality/type or other forbidden material is offered as phase semantics/authority outside a registered rule. |
+| `INTEGRITY_FAILURE` | Actor/rule/version/hash/prior-state/input/predicate/provenance validation fails. |
 
-Exact duplicates with the same authoritative transition identity **and** content hash may deduplicate. Two non-identical candidates for the same actor/effective time are `AMBIGUOUS_PHASE_TRANSITION`. Lexicographic ID order, row order, event arrival order or “first one wins” may never create semantic precedence.
+Exact duplicates with the same authoritative identity and content hash may deduplicate. Row order, lexical order, arrival order, mutable `latest`, or scheduler queue order may never invent semantic precedence.
 
----
+Crucially:
 
-## 10. Effective-time semantics
+```text
+PHASE_SEGMENT_NOT_GOVERNED
+```
 
-Each active phase occupies `[effective_from, effective_to)`.
-
-A committed transition at `T` closes the prior phase at `T` and opens the next at `T`.
-
-A future boundary binding remains noncausal until its conditions are satisfied and a V3 transition record is committed.
-
-Late evidence, changed policy or a later discovered record may not silently backdate or mutate committed phase history. Correction requires explicit replay/reconstruction from governed causal inputs; old transition/hash history remains audit-visible.
-
-No wall-clock time can alter phase.
+is a correct terminal answer. It does not force the universal active phase to null and does not block phase-independent runtime work.
 
 ---
 
-## 11. ContextResolver / query-purpose contract
+## 11. Effective-time semantics
 
-TD-R04 established `ContextQuery.developmental_or_generation_phase`; ADP-008 binds that field to this authority.
+Universal base phase and each governed phase-segment membership are history-bearing.
 
-It carries active `V3DP_*` phase ID + `V3_DEVELOPMENTAL_PHASE_RULE` version + phase-state hash, or a typed unresolved phase state.
+- `V3DP_GENERATION_PENDING` begins only when a governed prospective-generation subject exists.
+- Governed actor activation at `T` ends generation-pending status and establishes `V3DP_DEVELOPMENT_ACTIVE` at `T`.
+- Optional segment memberships occupy intervals or event-indexed states exactly as their registry rule defines.
+- A committed segment transition at `T` changes only the memberships named by that rule; it does not rewrite unrelated actor state.
+- Future age/time boundaries are noncausal until the runtime reaches/evaluates the governed boundary and commits the transition.
+- Event/fact-based boundaries remain unbound until their declared input occurs or becomes available.
+- Late evidence, changed policy or a new registry version may not silently backdate or relabel committed phase history.
+- Correction or migration requires explicit replay/reconstruction under the exact old/new rule versions; prior hashes remain audit-visible.
+- Wall-clock time may never mutate phase state.
 
-Resolver **Phase A** and **Phase B** are query purposes/binding modes, not developmental phase IDs:
+---
+
+## 12. ContextResolver / query-purpose interaction
+
+The accepted `ContextQuery.developmental_or_generation_phase` interface is bound to a read-only `V3DevelopmentalPhaseState` projection.
+
+It carries:
+
+- universal `base_phase_id`;
+- ADP-008 authority version;
+- exact active governed segment refs relevant to the query, if any;
+- phase-state hash;
+- or an explicit fail-closed phase state.
+
+Resolver **Phase A** / **Phase B** are query purposes/binding modes, not developmental phase IDs or segment rules:
 
 ```text
 ContextQuery.query_purpose
 ≠ ContextQuery.developmental_or_generation_phase
 ```
 
-Resolver may use supplied verified phase as a predicate input where a producer/runtime rule explicitly requires phase. Resolver may not infer or advance phase from age, query purpose, geography, structural priors, prevalence or demographic labels, and may not write a V3 phase transition.
+ContextResolver may:
 
-If phase is required but unresolved, return the equivalent of `UNBOUND_REQUIRES_DEVELOPMENTAL_PHASE`. Phase-independent resolution may continue.
+- use a supplied verified base phase or exact governed segment ref as a predicate input where a producer/runtime rule explicitly requires it;
+- continue phase-independent resolution while optional segmentation is absent;
+- return a phase-required object as unbound/deferred where an exact governed phase membership is unresolved.
 
-A committed phase transition can require prospective re-resolution when phase-conditioned predicates exist. ADP-008 supplies the trigger fact; it does not decide scheduler precedence or refresh ordering.
+ContextResolver may not:
+
+- infer phase from age, query purpose, geography, structural priors, prevalence or demographics;
+- mint an optional segment because an upstream object has an age/lifecycle label;
+- choose a “closest” registered segment;
+- advance V3 phase state.
+
+If a resolver/consumer asks for a named segment that is not in the active ADP-008 registry, the authority result is `PHASE_SEGMENT_NOT_GOVERNED` (or a transport-level equivalent preserving that exact meaning), not a guessed phase.
+
+A committed registered phase transition may trigger prospective re-resolution where phase-conditioned predicates exist. ADP-008 supplies the changed fact; resolver semantics remain read-only.
 
 ---
 
-## 12. Genealogy interaction
+## 13. Genealogy interaction
 
-One phase authority applies independently to every generated person.
+One universal base-state law and the same versioned registry contract apply independently to every generated person.
 
-A prospective child may be `V3DP_GENERATION_PENDING`. A later governed child-generation / actor-activation path may establish the child's own `V3DP_FOUNDATIONAL_DEVELOPMENT`.
+A prospective child may lawfully be represented as `V3DP_GENERATION_PENDING` once the genealogy/generation authority has created the prospective generation subject. ADP-008 does not create that subject.
 
-Child phase may not be copied from parent, household norm, cohort, culture, structural prior or demographic category. Parent phase never defaults or transfers to the child.
+After the child's governed actor activation under ADP-007, the child becomes `V3DP_DEVELOPMENT_ACTIVE` with no optional segments unless an exact ADP-008 registry rule independently admits one for that child.
 
-A parent's phase may be consumed as an already-generated V3 fact by a later genealogy rule only if that rule explicitly uses it. Phase does not create a parent, relationship, household, reproduction, family position or child psychology.
+Forbidden:
+
+- parent base phase → child base phase copying;
+- parent segment → child segment copying;
+- household/cohort/culture/demographic label → child phase;
+- parent phase → parent personality inference;
+- phase → relationship/household/reproduction fact.
+
+A parent's governed phase segment may be consumed by a later genealogy rule only if that named rule explicitly declares it as an input. The parent remains the source of its own generated phase history; the child receives no phase by inheritance.
 
 Genealogy remains `ADP-015` jurisdiction.
 
 ---
 
-## 13. Later scheduler interaction
+## 14. Hybrid scheduler interaction
 
-A known future phase boundary or a committed phase transition is a legitimate **scheduler trigger candidate**. ADP-008 may expose a known next phase-boundary time if an actor-specific binding already supplies one.
+ADP-008 can publish a **phase-boundary trigger candidate** only when the active registry rule makes a future boundary time lawfully knowable from already-authorized inputs.
+
+A trigger candidate is terminally equivalent to:
+
+```text
+V3PhaseBoundaryTriggerCandidate {
+    actor_id,
+    phase_rule_id,
+    phase_rule_version,
+    transition_definition_id,
+    trigger_time,
+    trigger_basis_hash,
+    provenance_refs[]
+}
+```
+
+Examples:
+
+- a registered age/time boundary may expose a deterministic future trigger time;
+- an event-based boundary exposes no invented future time and is evaluated when the relevant event/fact arrives;
+- an ungoverned phase distinction exposes no trigger.
+
+The scheduler consumes the trigger candidate but does not own or reinterpret phase semantics.
 
 ADP-008 does **not** decide:
 
@@ -412,37 +603,47 @@ ADP-008 does **not** decide:
 - ordering against resolver `next_context_change`;
 - ordering against encounter/move/relationship events;
 - slow-process maintenance cadence;
-- whether annual integration survives;
+- annual integration cadence;
 - checkpoint cadence;
 - event queue ordering.
 
-Those are `ADP-021 / MUST-021` decisions.
+Those remain `ADP-021 / MUST-021` jurisdiction.
 
 ---
 
-## 14. Replay, provenance and versioning
+## 15. Replay, provenance and versioning
 
-Phase state must be reproducible from the V3 causal ledger.
+Phase state must be reproducible from V3 causal/runtime history plus immutable phase-registry versions.
 
 Required replay identity includes:
 
-- `actor_id`;
-- phase authority ID/version;
-- initial activation/phase receipt;
-- ordered transition IDs, hashes and effective times;
-- boundary-binding IDs/hashes and producer-rule versions;
-- triggering V3 event/fact IDs;
-- predicate receipts;
-- named RNG provenance if a witness-producing runtime rule was stochastic;
-- repository/resolver receipts when cited as context.
+- actor/generation-subject ID;
+- ADP-008 authority ID/version;
+- exact registry version/content hash;
+- actor-activation receipt for the universal base transition;
+- ordered phase transition/membership record IDs, hashes and effective times;
+- phase-rule IDs/versions/content hashes for optional segments;
+- exact source fact/event/derived-predicate receipts consumed by each boundary evaluation;
+- age/time source and chronology version when age/time is used;
+- named RNG provenance only if an input-producing authority lawfully used randomness;
+- repository/resolver receipts only when a registry rule explicitly uses them as context.
 
-A checkpoint may cache active phase but is not independent authority. If checkpoint phase disagrees with replayed transition history: `INTEGRITY_FAILURE`.
+A checkpoint may cache base phase and segment memberships but is not independent authority. If checkpoint phase state disagrees with replayed phase history or registry identity: `INTEGRITY_FAILURE`.
 
-Forbidden hidden inputs: wall clock, filesystem order, mutable `latest`, unversioned age-band tables, implicit demographic defaults.
+A new ADP-008 registry version cannot retroactively classify old history without an explicit versioned migration/replay rule.
+
+Forbidden hidden inputs:
+
+- wall clock;
+- filesystem order;
+- mutable `latest`;
+- unversioned age-band tables;
+- implicit demographic defaults;
+- ad hoc consumer phase strings.
 
 ---
 
-## 15. Exact consumers
+## 16. Exact consumers
 
 RA-R00 direct implementation consumers of `MUST-008`:
 
@@ -453,101 +654,125 @@ RA-R00 direct implementation consumers of `MUST-008`:
 
 Authority/interface consumers:
 
-- `ADP-007` actor initialization;
-- `ADP-009` generated position/transition/mobility rules;
-- `ADP-010` encounter/opportunity/exposure rules;
+- `ADP-007` actor initialization, consuming the universal base-state consequence of its own actor activation;
+- `ADP-009` generated position/transition/mobility rules, only where an accepted future rule explicitly consumes a governed phase ref;
+- `ADP-010` encounter/opportunity/exposure rules, same constraint;
 - `ADP-015` relationship/household/genealogy rules;
-- `ADP-021` hybrid causal scheduler;
+- `ADP-021` hybrid causal scheduler, consuming only trigger candidates / committed phase facts;
 - `ContextResolver` / `ContextQuery` as a read-only phase predicate interface;
-- later V3 age/development-gated rules that explicitly declare phase as an input.
+- later V3 age/development-gated rules that explicitly name either chronology or an exact governed ADP-008 phase segment.
 
-V2 is not a phase-authority consumer. V2 present-life seasons cannot define or mutate V3 phase.
+V2 is not a phase-authority consumer. V2 life seasons cannot define or mutate V3 phase.
 
 ---
 
-## 16. Compatibility law
+## 17. Compatibility law
 
 1. Recovered `age` and `year` remain chronology/cadence data.
 2. Legacy V2 birth/school/adolescence/young-adult/adulthood bands are not aliases.
 3. V2 `current_life_phase` seasons are not aliases.
-4. No adapter may map an age band to `V3DP_*` without valid boundary binding plus committed transition history.
-5. No structural prior may be relabeled as developmental phase.
-6. Later-phase checkpoint imports require a verified transition/hash chain.
-7. No implementation may add phase strings outside the versioned vocabulary.
-8. Phase ordinal validates graph only; it may not become maturity/personality score.
-9. Reverse changes in dependency, health, capacity, household or social status remain changes in those actor states and do not reverse canonical developmental epoch.
-10. No death/end-of-life phase is created here.
+4. The returned draft IDs `V3DP_FOUNDATIONAL_DEVELOPMENT`, `V3DP_TRANSITIONAL_DEVELOPMENT`, and `V3DP_OPEN_DEVELOPMENT` have **no accepted authority** and must not be used as compatibility aliases.
+5. No adapter may map an age band to a phase segment absent an exact active ADP-008 registry entry.
+6. No structural prior may be relabeled as developmental phase.
+7. Later checkpoint imports require verified base-phase/segment transition history and exact registry versions.
+8. No implementation may mint phase-segment strings outside the active registry.
+9. No phase or segment ordinal may become a maturity/personality score unless a future authority explicitly and separately owns such a value; ADP-008 does not.
+10. Changes in dependency, health, capacity, household, work, relationship or social status are their own actor facts and do not automatically create a phase segment.
+11. No death/end-of-life phase is created here.
+12. `V3DP_DEVELOPMENT_ACTIVE` is intentionally open-ended; the runtime does not need a terminal “open development” label to prove development remains open.
 
 ---
 
-## 17. Hostile fixtures
+## 18. Hostile fixtures
 
 | Fixture | Hostile case | Required outcome |
 |---|---|---|
-| `HF-008-01` | Actor reaches legacy cutoff such as 18 with no lawful boundary/witness. | `DEFERRED_AGE_ONLY_NO_BOUNDARY_WITNESS`; no advance. |
-| `HF-008-02` | Age known but phase ledger missing/invalid. | `PHASE_UNRESOLVED`; age cannot reconstruct phase. |
-| `HF-008-03` | Structural/demographic category says “adult/adolescent.” | `BLOCKED_FORBIDDEN_PHASE_INFERENCE`. |
-| `HF-008-04` | V2 `current_life_phase=burnout_phase` supplied as V3 phase. | `BLOCKED_FORBIDDEN_PHASE_INFERENCE`. |
-| `HF-008-05` | Annual tick increments age/year but no phase boundary due. | Phase unchanged. |
-| `HF-008-06` | Temporal eligibility reached but generated witness unresolved. | `DEFERRED_MISSING_BOUNDARY_WITNESS`. |
-| `HF-008-07` | Two non-identical same-time phase candidates survive. | `AMBIGUOUS_PHASE_TRANSITION`; no first-row winner. |
-| `HF-008-08` | Fresh generation attempts `FOUNDATIONAL → OPEN` or reverse. | `BLOCKED_INVALID_TRANSITION_EDGE`. |
-| `HF-008-09` | Child phase copied from parent/household/cohort. | `BLOCKED_FORBIDDEN_PHASE_INFERENCE`; independent child ledger. |
-| `HF-008-10` | Resolver Phase A/B supplied as developmental phase. | Schema/forbidden-inference failure; purpose and phase stay separate. |
-| `HF-008-11` | Later-phase checkpoint lacks transition receipts/hash chain. | `INTEGRITY_FAILURE`. |
-| `HF-008-12` | Late evidence proposes silent retroactive phase rewrite. | No in-place rewrite; explicit replay required. |
-| `HF-008-13` | Illness/dependency tries to reverse `OPEN_DEVELOPMENT`. | `BLOCKED_INVALID_TRANSITION_EDGE`; dependency/health separate. |
-| `HF-008-14` | Historical archive V5/DDM lifecycle material offered as current authority. | `BLOCKED_FORBIDDEN_PHASE_INFERENCE`; archive V5/DDM has zero authority. |
-| `HF-008-15` | Exact duplicate transition ID/hash appears twice. | Safe deduplication; no second causal event. |
-| `HF-008-16` | Phase-required rule runs while phase unresolved. | Rule defers/blocks; no default. |
+| `HF-008-01` | Active actor reaches legacy cutoff 18; registry contains no matching segment rule. | Remain `V3DP_DEVELOPMENT_ACTIVE` with no segment; requested finer distinction returns `PHASE_SEGMENT_NOT_GOVERNED`. |
+| `HF-008-02` | Consumer requests old `V3DP_TRANSITIONAL_DEVELOPMENT`. | `PHASE_SEGMENT_NOT_GOVERNED`; returned draft ladder has no authority. |
+| `HF-008-03` | Age known but universal base-phase history missing/invalid. | `PHASE_UNRESOLVED`; age cannot reconstruct base phase. |
+| `HF-008-04` | Structural/demographic category says “adult/adolescent.” | `BLOCKED_FORBIDDEN_PHASE_INFERENCE`. |
+| `HF-008-05` | V2 `current_life_phase=burnout_phase` offered as V3 phase. | `BLOCKED_FORBIDDEN_PHASE_INFERENCE`. |
+| `HF-008-06` | Annual tick increments age/year with no registered phase rule. | Base phase and segment set unchanged. |
+| `HF-008-07` | Future ADP-008 registry rule explicitly defines an age-only bounded segment; exact age guard is satisfied. | Segment may lawfully enter/transition under that rule; no maturity/personality/biography inference beyond the registered semantic ceiling. |
+| `HF-008-08` | Same age threshold is crossed without any registered phase rule. | No segment transition; `PHASE_SEGMENT_NOT_GOVERNED` if requested. |
+| `HF-008-09` | Registered event/fact-based phase rule exists but required input has not occurred/bound. | `PHASE_BOUNDARY_UNBOUND`; current lawful phase state unchanged. |
+| `HF-008-10` | Two incompatible same-time segment transitions survive under one rule with no governed resolver. | `AMBIGUOUS_PHASE_TRANSITION`; no first-row/queue-order winner. |
+| `HF-008-11` | Child phase/segment copied from parent, household or cohort. | `BLOCKED_FORBIDDEN_PHASE_INFERENCE`; child phase history is independent. |
+| `HF-008-12` | Resolver Phase A/B supplied as developmental phase. | `BLOCKED_FORBIDDEN_PHASE_INFERENCE` or schema rejection; query purpose remains orthogonal. |
+| `HF-008-13` | Scheduler receives a known boundary time and directly mutates phase without ADP-008 evaluation/commit. | Reject; scheduler trigger is not phase authority. |
+| `HF-008-14` | Checkpoint carries a segment missing from the referenced registry version. | `INTEGRITY_FAILURE`. |
+| `HF-008-15` | Late evidence/new registry version silently reclassifies prior years. | Reject in-place rewrite; explicit replay/migration required. |
+| `HF-008-16` | Historical archive V5/DDM lifecycle material offered as current authority. | `BLOCKED_FORBIDDEN_PHASE_INFERENCE`; archive V5/DDM has zero authority. |
+| `HF-008-17` | Consumer invents ad hoc segment string because its field requires non-null phase. | `PHASE_SEGMENT_NOT_GOVERNED`; universal active-unsegmented state remains valid. |
+| `HF-008-18` | Named authority supplies a generated position/relationship/event fact to a registered phase rule. | Fact may be consumed only as declared input; phase meaning remains owned by ADP-008. |
+| `HF-008-19` | Derived predicate is used but its producing rule/version or causal parents are unreachable. | `INTEGRITY_FAILURE`; no transition. |
+| `HF-008-20` | Exact duplicate transition record ID/hash appears twice. | Safe deduplication; no duplicate causal membership change. |
 
 ---
 
-## 18. Consumer release sufficiency
+## 19. Consumer release sufficiency
 
 `CONSUMER_RELEASE_SUFFICIENCY = SUFFICIENT`.
 
-`MUST-008` itself is no longer semantically missing: stable phase IDs, jurisdiction, allowed graph, actor-specific boundary/transition contract, age law, resolver/query interface, genealogy interaction, scheduler boundary, fail-closed states, effective-time semantics, provenance/replay and hostile fixtures are defined.
+`MUST-008` is closed without a new unnamed semantic authority because ADP-008 itself now owns the complete minimum contract:
 
-This does **not** globally release a V3 implementation packet. Each consumer remains gated by all other RA-R00 dependencies, including as applicable `MUST-007`, `MUST-009`, `MUST-010`, `MUST-015`, `MUST-020`, `MUST-021`, `CAN-006`, `CAN-007`, `CAN-009..011`, `CAN-014`, and `EXT-007`.
+- two universal base identities;
+- lawful active-unsegmented behavior;
+- an explicitly empty optional-segment registry in `1.1.0`;
+- the machine contract by which future ADP-008 versions may add only consumer-justified segments;
+- allowed boundary input classes without a universal witness recipe;
+- age/time semantic ceilings;
+- exact boundary/transition admission and fail-closed behavior;
+- resolver/query-purpose separation;
+- genealogy separation;
+- scheduler trigger/nonownership law;
+- effective-time, provenance and replay requirements.
 
-No missing consumer rule may be silently filled by ADP-008.
+A future consumer that asks for a finer phase distinction not present in the accepted registry is correctly blocked/deferred by `PHASE_SEGMENT_NOT_GOVERNED`. That is **not** a failure of MUST-008 and does not force invention of a phase.
+
+This does **not** globally release V3 implementation. Each consumer remains gated by all other RA-R00 dependencies, including as applicable `MUST-007`, `MUST-009`, `MUST-010`, `MUST-015`, `MUST-020`, `MUST-021`, `CAN-006`, `CAN-007`, `CAN-009..011`, `CAN-014`, and `EXT-007`.
 
 ---
 
-## 19. Final authority statement
+## 20. Final authority statement
 
 ### THIS AUTHORITY OWNS
 
-- the four `V3DP_*` phase IDs;
-- phase semantics as V3 actor-local causal/runtime epochs;
-- the strict forward transition graph;
-- `V3DevelopmentalPhaseBoundaryBinding` semantics;
-- `V3DevelopmentalPhaseTransitionRecord` semantics;
-- phase transition admission/fail-closed behavior;
+- `V3DP_GENERATION_PENDING`;
+- `V3DP_DEVELOPMENT_ACTIVE`;
+- lawful active-unsegmented development;
+- `V3_DEVELOPMENTAL_PHASE_REGISTRY` and all future optional phase-segment semantics admitted through its accepted versions;
+- phase-rule boundary/admission contract;
+- actor-local phase evaluation and transition/membership receipts;
 - effective-time, replay, hash and provenance law;
-- the read-only phase interface used by resolver and later V3 consumers;
-- rejection of age/demographic/structural/V2 shortcut phase assignment.
+- read-only phase interface used by resolver and named V3 consumers;
+- scheduler phase-boundary trigger publication without scheduler precedence;
+- rejection of ungoverned age/demographic/structural/V2 phase invention.
 
 ### THIS AUTHORITY DOES NOT OWN
 
 - actor initialization;
-- actor-specific default boundary values;
-- population or identity defaults;
+- population/default phase segmentation;
 - position generation;
 - encounters/exposure;
-- genealogy;
-- actor psychology or attractor formation;
+- genealogy rules;
+- actor psychology, maturity or attractor formation;
 - scheduler precedence/cadence;
 - V2 phenomenology/expression.
+
+### PHASE-BOUNDARY OWNERSHIP LAW
+
+**ADP-008 owns developmental-phase semantics and boundary admission.** Named neighboring authorities may supply their own exact facts/predicates only when an ADP-008 registry rule declares them. No unnamed downstream phase authority is required or permitted.
 
 ### RECOVERED MACHINERY VERDICT
 
 - yearly ordered causal spine: **ADAPT** as cadence/integration continuity;
 - stored age/year chronology: **PRESERVE AS SEPARATE CHRONOLOGY**;
-- legacy age gates/bands: **EVIDENCE ONLY / DO NOT CANONIZE**;
-- identity/structural-prior → wound/development shortcuts: **REJECT**;
-- V2 current-life seasons: **V2-ONLY NEGATIVE EVIDENCE**;
-- no-type-at-birth life-course intent: **CONTINUITY INTENT ONLY**, not phase vocabulary.
+- legacy age/lifecycle gates: **EVIDENCE ONLY / DO NOT CANONIZE**;
+- identity/structural-prior → developmental-state shortcuts: **REJECT**;
+- V2 life seasons: **V2-ONLY NEGATIVE EVIDENCE**;
+- no-type-at-birth life-course intent: **CONTINUITY INTENT ONLY**, not phase vocabulary;
+- returned universal `FOUNDATIONAL → TRANSITIONAL → OPEN` ladder: **WITHDRAWN / NOT AUTHORITY**;
+- returned universal non-age-witness requirement: **WITHDRAWN / REPLACED BY PER-RULE BOUNDARY CONTRACT**.
 
 `ADP_008_V3_DEVELOPMENTAL_PHASE_AUTHORITY = PASS`
