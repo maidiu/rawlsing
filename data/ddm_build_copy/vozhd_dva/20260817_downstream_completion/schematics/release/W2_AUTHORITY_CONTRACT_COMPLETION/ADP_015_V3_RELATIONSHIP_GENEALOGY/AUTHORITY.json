@@ -1,0 +1,367 @@
+{
+  "assignment": "W2-03",
+  "ra_r00_item": "MUST-015 / ADP-015",
+  "authority": {
+    "id": "V3_RELATIONSHIP_HOUSEHOLD_GENEALOGY_RULE",
+    "version": "1.0.0",
+    "registry": "V3_RELATIONSHIP_HOUSEHOLD_GENEALOGY_RULE_REGISTRY@1.0.0",
+    "owner": "V3_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE",
+    "mode": "AUTHORITY_CREATION_ONLY",
+    "verdict": "PASS"
+  },
+  "launch": {
+    "repository": "maidiu/rawlsing",
+    "branch": "agent/vozhd-dva-w2-adp-015-v3-genealogy",
+    "exact_base_sha": "fe52ca60ed00650b0a7b5bf77bab8ac40d53f4d8",
+    "architecture": "CLOSED",
+    "w0": "CLOSED",
+    "w1": "CLOSED__18_OF_18_ACCEPTED"
+  },
+  "historical_archive": {
+    "logical_name": "Rawlsing_code_bundle_staging.zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "entry_count": 13138,
+    "verdict": "EXACT_MATCH",
+    "authority_use": "RECOVERED_V3_V2_SERVER_CONTINUITY_AND_AUTHORITY_RECOVERY_ONLY__HISTORICAL_V5_DDM_ZERO_AUTHORITY"
+  },
+  "direct_dependencies": [
+    "ADP-009 / V3_STRUCTURAL_POSITION_GENERATION_MOBILITY_RULE@1.0.0",
+    "ADP-010 / V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE@1.0.0",
+    "ADP-020@1.0.0"
+  ],
+  "consumers": ["V3-P9", "V3-P13"],
+  "constitutional_noncollapse": [
+    "ENCOUNTER_EXPOSURE != RELATIONSHIP_FORMATION",
+    "RELATIONSHIP_FORMATION != RECIPROCITY",
+    "RELATIONSHIP != HOUSEHOLD",
+    "HOUSEHOLD_MEMBERSHIP != PARENTHOOD",
+    "PARENTHOOD != CHILD_GENERATION",
+    "CHILD_GENERATION != CHILD_INITIALIZATION",
+    "CHILD_GENERATION != CHILD_PERSONALITY_OR_TYPE",
+    "OBJECTIVE_RELATIONSHIP_HISTORY != ACTOR_PERCEIVED_RELATIONSHIP_STATE",
+    "ACTOR_PERCEIVED_RELATIONSHIP_STATE != ACTOR_ACCESSIBILITY",
+    "ACTOR_ACCESSIBILITY != V2_RELATIONSHIP_EXPRESSION",
+    "TWO_PARENT_HISTORIES != HOUSEHOLD_PERSONA",
+    "TWO_PARENT_HISTORIES != CHILD_PERSONALITY_MIXTURE"
+  ],
+  "jurisdiction": {
+    "owns": [
+      "relationship entity identity and append-only lifecycle history",
+      "participant role and directionality bindings under exact rules",
+      "relationship formation transition and end admission",
+      "actor-specific perceived-relationship state records without automatic accessibility",
+      "household entity identity lifecycle and objective membership facts",
+      "genealogy scope identity and child-generation admission",
+      "new child generated-entity reference identity",
+      "parenthood lineage facts",
+      "independent parent history anchoring and recursive provenance",
+      "ADP-015 candidate sets and ADP-020 handoff",
+      "valid-empty unknown missing deferred negative ambiguous and integrity states",
+      "generated-life refresh obligation after relationship household family binding changes"
+    ],
+    "excludes": [
+      "ADP-007 actor initialization state",
+      "ADP-009 position semantics",
+      "ADP-010 encounter exposure semantics",
+      "ADP-020 RNG algorithm",
+      "V555 V556 realization",
+      "response organismic need rupture memory knowledge orientation attractor semantics",
+      "universal sex gender age fertility reproduction biology",
+      "trust intimacy personality scores",
+      "ADP-017 actor claim accessibility",
+      "CAN-019 V2 relationship expression and session posture",
+      "names rendered family narrative application session state"
+    ]
+  },
+  "recovered_dispositions": {
+    "PRESERVE": [
+      "parents-before-child causal direction",
+      "typed state event history hashing and integrity direction",
+      "material caregiving constraints distinct from identity personality",
+      "source-bound historical household world context only through lawful generated rules"
+    ],
+    "ADAPT": [
+      "parent bundle to two independent actor refs plus shared relationship household entities",
+      "parent-first child creation to genealogy event plus child actor ref then ADP-007 initialization",
+      "household context to provenance-bearing disaggregated parent and household refs",
+      "dependents caregiving continuity only through exact target-authority effects",
+      "parent-meeting narrative direction to exact causal relationship witnesses"
+    ],
+    "COMPATIBILITY_ONLY": [
+      "global parent age and age-gap mixtures",
+      "father-older and fixed father-mother gender defaults",
+      "minimum parent age gates and story-reason logic",
+      "WVS spouse parent distributions and shared household SES ethnicity religion language",
+      "legacy family display identity fields",
+      "ReproductionConstraints numeric representation and annual delta cap as genealogy semantics",
+      "LLM parent meeting fused-family prose",
+      "historical household summary presentation carriers"
+    ],
+    "REMOVE_REJECT": [
+      "demographic compatibility to partner selection",
+      "encounter exposure to automatic relationship",
+      "shared household demographic row to independent parent histories",
+      "country ethnicity religion class defaults to child identity",
+      "random child ID gender name as genealogy authority",
+      "parent behavior 50 defaults hopeful baseline and arithmetic averaging",
+      "parent type Enneagram and parent-type to child-type effects",
+      "ungoverned fertility marriage cohabitation partner child probabilities",
+      "LLM prose deciding causal family history",
+      "V2 relationship session tone state as V3 truth"
+    ]
+  },
+  "contracts": {
+    "relationship_entity": {
+      "name": "V3RelationshipEntity",
+      "required_fields": [
+        "relationship_entity_id",
+        "relationship_rule_id",
+        "relationship_rule_version",
+        "participant_bindings",
+        "directionality_kind",
+        "establishing_event_id",
+        "effective_from",
+        "ended_by_event_id",
+        "objective_state_fact_refs",
+        "relationship_history_anchor_hash",
+        "provenance_refs",
+        "entity_hash"
+      ],
+      "directionality_kinds": ["JOINT_SHARED", "ROLE_ASYMMETRIC_SHARED", "DIRECTED_RELATION_RECORD"],
+      "no_global_concrete_relationship_kind_vocabulary": true
+    },
+    "actor_perceived_relationship_state": {
+      "name": "V3ActorPerceivedRelationshipState",
+      "required_fields": [
+        "perceived_state_id",
+        "perceiver_actor_id",
+        "relationship_entity_id_or_counterpart_ref",
+        "relationship_rule_id",
+        "relationship_rule_version",
+        "perceived_component_schema_ref",
+        "perceived_component_payload",
+        "causal_parent_refs",
+        "effective_from",
+        "superseded_by_ref",
+        "provenance_refs",
+        "state_hash"
+      ],
+      "automatic_objective_to_perceived_copy": false,
+      "automatic_actor_accessibility": false
+    },
+    "household_entity": {
+      "name": "V3HouseholdEntity",
+      "required_fields": [
+        "household_entity_id",
+        "household_rule_id",
+        "household_rule_version",
+        "establishing_event_id",
+        "effective_from",
+        "dissolved_by_event_id",
+        "membership_fact_refs",
+        "shared_generated_context_refs",
+        "household_history_anchor_hash",
+        "provenance_refs",
+        "entity_hash"
+      ],
+      "household_is_person": false,
+      "forbidden_household_aggregate_semantics": ["personality", "enneagram_type", "belief", "voice", "single_psyche", "average_orientation"]
+    },
+    "household_membership_fact": {
+      "name": "V3HouseholdMembershipFact",
+      "required_fields": [
+        "membership_fact_id",
+        "household_entity_id",
+        "actor_id",
+        "membership_role_ref",
+        "established_by_event_id",
+        "effective_from",
+        "ended_by_event_id",
+        "source_relationship_or_family_refs",
+        "provenance_refs",
+        "fact_hash"
+      ]
+    },
+    "parenthood_fact": {
+      "name": "V3ParenthoodFact",
+      "required_fields": ["parenthood_fact_id", "parent_actor_id", "child_actor_id", "parenthood_role_ref", "generation_event_id", "effective_from", "provenance_refs", "fact_hash"],
+      "base_lineage_slots": ["PARENT_1", "PARENT_2"],
+      "lineage_slots_are_gender_stereotypes": false
+    },
+    "child_actor_ref": {
+      "name": "V3GeneratedChildActorRef",
+      "required_fields": ["child_actor_id", "generated_entity_kind", "generation_event_id", "genealogy_scope_id", "parenthood_fact_refs", "initialization_state", "provenance_refs", "actor_ref_hash"],
+      "initialization_state": "GENERATION_COMPLETE_INITIALIZATION_PENDING",
+      "forbidden_fields_without_separate_authority": ["personality", "enneagram_type", "beliefs", "memories", "needs", "class", "religion", "ethnicity", "language", "sex_gender", "name", "childhood_events"]
+    }
+  },
+  "event_contract": {
+    "families": {
+      "V3RelationshipEvent": ["RELATIONSHIP_ESTABLISHED", "RELATIONSHIP_STATE_TRANSITIONED", "RELATIONSHIP_ENDED"],
+      "V3HouseholdEvent": ["HOUSEHOLD_ESTABLISHED", "HOUSEHOLD_MEMBER_JOINED", "HOUSEHOLD_MEMBER_LEFT", "HOUSEHOLD_DISSOLVED"],
+      "V3GenealogyEvent": ["CHILD_GENERATED"]
+    },
+    "parenthood_is_effect_of_child_generated_event": true,
+    "household_membership_automatic_on_child_generation": false,
+    "prospective_append_only_history": true,
+    "unchanged_tick_event": false
+  },
+  "base_rule_profiles": {
+    "V3REL_EXPLICIT_JOINT_FORMATION_V1": {
+      "requires": ["stable actor refs", "rule-bound relationship-forming joint witness", "ADP-010 encounter refs where declared", "exact participant roles"],
+      "stochastic": false
+    },
+    "V3REL_EXPLICIT_TRANSITION_V1": {
+      "requires": ["existing relationship entity", "exact generated or admitted transition witness"],
+      "stochastic": false
+    },
+    "V3HH_EXPLICIT_FORMATION_MEMBERSHIP_V1": {
+      "requires": ["exact generated or admitted household-forming witness", "exact membership effects"],
+      "stochastic": false
+    },
+    "V3GEN_EXPLICIT_CHILD_GENERATION_V1": {
+      "requires": ["two independent parent actor refs", "both parent history anchors", "rule-required relationship or household refs", "exact generated or admitted generation causal trigger", "all separately owned required constraints"],
+      "stochastic": false,
+      "supplies_no_universal_fertility_semantics": true
+    }
+  },
+  "independent_parent_history_law": {
+    "parent_histories_remain_separate": true,
+    "generation_event_records_two_exact_parent_history_anchors": true,
+    "household_aggregate_can_replace_parent_anchors": false,
+    "later_parent_change_rewrites_generation_anchor": false,
+    "parent_state_automatic_copy_to_child": false
+  },
+  "child_generation_law": {
+    "base_parent_cardinality": 2,
+    "new_actor_not_parent_mixture": true,
+    "generation_event_identity_inputs": [
+      "authority registry rule versions",
+      "genealogy_scope_id",
+      "parent actor ids",
+      "parent history anchors",
+      "relationship household prerequisite refs",
+      "effective causal time",
+      "generation causal trigger refs",
+      "candidate selection receipt identity",
+      "canonical occurrence index"
+    ],
+    "generation_event_depends_on_child_display_fields": false,
+    "child_actor_id_scheme": "SHA256(RAWLSING\\0ADP-015\\0CHILD_ACTOR_V1\\0 || generation_event_id)",
+    "next_owner": "ADP-007",
+    "child_rng_scope_after_identity": "ACTOR(child_actor_id)"
+  },
+  "reciprocity_asymmetry_law": {
+    "one_actor_view_implies_reciprocity": false,
+    "joint_relationship_implies_equal_subjective_state": false,
+    "participant_views_may_conflict": true,
+    "forced_average_or_winner": false,
+    "role_asymmetry_requires_exact_rule": true
+  },
+  "rng_candidate_law": {
+    "candidate_schema": "V3RelationshipGenealogyCandidate",
+    "relationship_household_scope": "JOINT",
+    "child_generation_scope": "GENEALOGY",
+    "child_downstream_scope": "ACTOR",
+    "reserved_streams": [
+      "v3.causal.adp015.relationship_selection",
+      "v3.causal.adp015.household_selection",
+      "v3.causal.adp015.child_generation"
+    ],
+    "base_v1_stochastic_operations": 0,
+    "empty_or_missing_authority_draws": 0,
+    "multiple_candidates_without_selection_authority": "RELATIONSHIP_GENEALOGY_SELECTION_AUTHORITY_UNBOUND",
+    "forbidden_weight_sources": ["demographic_similarity", "geographic_proximity", "religion", "class", "ethnicity", "parent_age", "survey_prevalence", "narrative_plausibility", "llm_judgment"]
+  },
+  "valid_empty_unknown_missing": {
+    "positive": ["RELATIONSHIP_FORMED", "RELATIONSHIP_TRANSITION_COMMITTED", "RELATIONSHIP_ENDED", "HOUSEHOLD_FORMED", "HOUSEHOLD_MEMBERSHIP_COMMITTED", "HOUSEHOLD_DISSOLVED", "CHILD_GENERATED"],
+    "valid_empty": ["RELATIONSHIP_CANDIDATES_VALID_EMPTY", "HOUSEHOLD_CANDIDATES_VALID_EMPTY", "CHILD_GENERATION_VALID_EMPTY"],
+    "nonoccurrence": ["RELATIONSHIP_NONOCCURRENCE", "CHILD_GENERATION_NONOCCURRENCE"],
+    "unknown": ["RELATIONSHIP_INPUT_UNKNOWN", "HOUSEHOLD_INPUT_UNKNOWN", "GENEALOGY_INPUT_UNKNOWN"],
+    "missing": ["RELATIONSHIP_RULE_NOT_GOVERNED", "HOUSEHOLD_RULE_NOT_GOVERNED", "CHILD_GENERATION_RULE_NOT_GOVERNED", "RELATIONSHIP_GENEALOGY_SELECTION_AUTHORITY_UNBOUND"],
+    "deferred": ["RELATIONSHIP_DEFERRED_UNBOUND_INPUT", "HOUSEHOLD_DEFERRED_UNBOUND_INPUT", "GENEALOGY_DEFERRED_UNBOUND_INPUT"],
+    "negative": ["RELATIONSHIP_NEGATIVE_AUTHORITY", "HOUSEHOLD_NEGATIVE_AUTHORITY", "GENEALOGY_NEGATIVE_AUTHORITY"],
+    "blocked": ["BLOCKED_ENCOUNTER_TO_RELATIONSHIP_SHORTCUT", "BLOCKED_DEMOGRAPHIC_PARTNER_INFERENCE", "BLOCKED_RECIPROCITY_INFERENCE", "BLOCKED_HOUSEHOLD_PERSONA_COLLAPSE", "BLOCKED_PARENT_OR_CHILD_TYPE_INFERENCE", "BLOCKED_V2_TO_V3_RELATIONSHIP_PROMOTION", "BLOCKED_OUTSIDE_ADP015_JURISDICTION"],
+    "integrity": ["AMBIGUOUS_SAME_TIME_RELATIONSHIP_TRANSITION", "INTEGRITY_FAILURE"]
+  },
+  "replay_provenance": {
+    "required": [
+      "authority registry rule identity and hashes",
+      "actor generated entity ids",
+      "participant roles directionality",
+      "ADP-010 encounter refs where required",
+      "ADP-009 position refs where required",
+      "generated admitted causal witness ids hashes",
+      "prior relationship household history hashes",
+      "parent history anchors",
+      "relationship household prerequisite refs",
+      "candidate set and selection receipt",
+      "ADP-020 genealogy joint receipts where stochastic",
+      "effective causal time and scheduler order refs",
+      "event fact entity hashes",
+      "integrity provenance refs"
+    ],
+    "forbidden_replay_sources": ["mutable_latest", "current_parent_state_in_place_of_historical_anchor", "filesystem_order", "transcript_text", "current_household_summary"],
+    "genealogy_is_acyclic_dag": true,
+    "future_descendant_rewrites_ancestor": false
+  },
+  "hostile_fixtures": [
+    "unrelated co-presence does not form relationship",
+    "encounter without relationship-forming witness does not form relationship",
+    "exposure without relationship rule does not form relationship",
+    "demographic similarity does not create partner authority",
+    "one-sided attachment does not create reciprocal truth",
+    "one actor closeness claim does not update counterpart perception",
+    "contradictory actor views coexist",
+    "objective relationship with unknown actor perception is lawful",
+    "relationship does not automatically form household",
+    "shared address context does not create household membership",
+    "household has no personality type voice",
+    "relationship end preserves history",
+    "household departure preserves membership history",
+    "parent histories remain separate at child generation",
+    "child is new actor not parent blend",
+    "no inherited Enneagram type personality",
+    "shared demographic parent row cannot populate child identity",
+    "parent type inference rejected",
+    "missing fertility rule creates no child",
+    "valid empty child generation consumes zero draws",
+    "multiple candidates without selection authority produce no winner",
+    "ungoverned fertility probability fails closed",
+    "deterministic explicit generation trigger consumes zero draws",
+    "child actor identity independent of display name gender",
+    "sibling generation does not perturb prior child RNG",
+    "V2 rendered tone cannot mutate V3 relationship",
+    "transcript persistence cannot create trust intimacy relationship",
+    "child household membership requires explicit establishment",
+    "later parent change cannot rewrite generation anchor",
+    "same-time incompatible transitions fail closed",
+    "fixture records cannot leak into production",
+    "unchanged tick creates no pseudo event"
+  ],
+  "governing_spirit_check": {
+    "status": "APPLICABLE__PASS",
+    "ambiguity": "MERGED_HOUSEHOLD_FAMILY_PERSONA_VS_SHARED_CAUSAL_ENTITY_WITH_INDEPENDENT_ACTOR_HISTORIES_AND_PERSPECTIVE_BOUND_RELATIONSHIP_STATE",
+    "chosen": "SHARED_RELATIONSHIP_HOUSEHOLD_ENTITIES_PLUS_INDEPENDENT_ACTOR_HISTORIES_PLUS_EXPLICIT_GENEALOGY_EVENTS",
+    "principles": [
+      "GENEALOGY_AND_RELATIONSHIPS_AS_HISTORIES_NOT_DEMOGRAPHIC_SYNTHESIS",
+      "CONTRADICTION_AND_MULTIPLICITY",
+      "MEDIATION_WITHOUT_DEMOGRAPHY_TO_BIOGRAPHY",
+      "ACTOR_OPACITY_AND_NO_RECIPROCITY_INFERENCE",
+      "DYNAMIC_HISTORY_OVER_STATIC_FAMILY_CLASSIFICATION",
+      "CAUSAL_PROVENANCE_AND_RECURSIVE_REPLAY",
+      "GENERATIONAL_DIVERGENCE",
+      "MINIMUM_SUFFICIENT_MACHINERY"
+    ],
+    "spirit_did_not_supply": ["PARTNER_CHOICE", "FERTILITY_RATE", "PARENT_AGE", "SEX_GENDER_RULE", "RELATIONSHIP_KIND", "PARENTING_STYLE", "CHILD_TRAIT", "TYPE", "BELIEF", "DESIRED_FAMILY_OUTCOME"]
+  },
+  "consumer_release_sufficiency": {
+    "status": "SUFFICIENT_FOR_MUST_015_BLOCKER",
+    "v3_p9_globally_released": false,
+    "v3_p13_globally_released": false,
+    "same_wave_adp007_not_consumed": true,
+    "remaining_gates_include": ["ADP-007 where required by V3-P9", "EXT-007", "implementation packets", "future generated-life requery wire canonicalization"]
+  },
+  "final_token": "ADP_015_V3_RELATIONSHIP_GENEALOGY_AUTHORITY = PASS"
+}
