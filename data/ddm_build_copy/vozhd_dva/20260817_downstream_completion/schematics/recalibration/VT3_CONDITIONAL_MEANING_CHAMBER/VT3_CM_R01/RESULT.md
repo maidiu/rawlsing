@@ -1,319 +1,274 @@
 # VT3-CM-R01 — Conditional-Value Archaeology Court Record
 
-## Court metadata
+## Corrective pass
 
 - **Cell:** `VT3-CM-R01`
-- **Mission:** determine whether meaningful respondent-position-conditioned empirical information computed in V550 is faithfully preserved through V551/V552; distinguish naming debt from evidence-loss debt; identify a lawful non-demographic repair path without modifying production code.
-- **Launch base SHA examined:** `8c87f7725ba58202b5377c974548140420709fa9`
-- **Launch base tree SHA:** `b016a5bc07b6aa17f1db08df91ed0b77d1055af7`
-- **Assigned branch:** `agent/vozhd-trii-vt3-cm-r01`
-- **Authorized write domain:** this `VT3_CM_R01/RESULT.md` and sibling `RESULT.json` only.
+- **Corrective pass:** `true`
+- **Supersedes prior result:** `true`
+- **Frozen source SHA:** `8c87f7725ba58202b5377c974548140420709fa9`
+- **Worker branch:** `agent/vozhd-trii-vt3-cm-r01`
 - **Production code changed:** `NO`
+- **Corrected verdict:** `MATERIAL_SEMANTIC_LOSS_NOT_FAITHFULLY_PRESERVED`
 
-## Governing law applied
+This result supersedes the prior R01 record. The larger semantic-loss conclusion survives, but the prior result reached it through two material source-reading errors and one overstatement about recursive branch meaning. This corrective pass re-anchors the archaeology on the exact active source at the frozen SHA and does not import historical implementations into the active seam.
 
-`data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md` at the pinned launch SHA is treated as binding interpretive law beneath explicit source semantics, accepted semantic authority, and closed jurisdiction. The controlling engineering implications for this court are:
+## Corrections to prior R01 result
 
-1. downstream vividness may not exceed upstream authority;
-2. structural evidence may constrain a world but may not silently become biography or psyche;
-3. unknown, missing, unresolved, and forbidden inference are lawful states;
-4. provenance and stage ownership must remain explicit;
-5. convenience does not justify semantic flattening;
-6. the lawful target is enough causal information to constrain later possibility without turning structure into mechanical predetermination.
+### Correction 1 — `position_distribution` was misread as question-conditioned response evidence
 
-The present question is therefore not whether downstream code contains *something named conditional*, but whether the empirical meaning established upstream survives with enough identity, conditioning keys, denominators, response distributions, and provenance to remain the same evidence.
+**Prior claim:** the prior result attributed `compute_position_conditional_distributions`, question/response-bearing `POSITION_DISTRIBUTION_COLUMNS`, and position-value sample support for response distributions to active `data/ddm_build_copy/ddm_v550_position_distribution.py`.
 
-# Final verdict
+**Why wrong:** those functions and that schema are not present in the pinned active file. The active implementation defines `build_position_distribution_rows`. It first creates a respondent slice by sorting and deduplicating respondents on available `respondent_id`/`country_code`, then emits question-independent prevalence rows over each `INDICATOR_FIELDS` position coordinate. The output columns are `position_field`, `position_value`, unweighted/weighted counts and prevalence shares plus provenance; each row is marked `semantic_role = POSITION_COORDINATE`. There is no `question_id`, response value, or response distribution in this artifact.
 
-**`MATERIAL_SEMANTIC_LOSS_NOT_FAITHFULLY_PRESERVED`**
+**Correcting source:** `data/ddm_build_copy/ddm_v550_position_distribution.py` at the frozen SHA, especially `_respondent_slice`, `POSITION_DISTRIBUTION_COLUMNS`, and `build_position_distribution_rows`.
 
-V550 contains first-class respondent-level empirical conditional evidence: observed answer distributions conditioned on respondent position-field values, plus recursive conjunctive branch conditioning over actual respondent rows. V551/V552 preserve some provenance fragments and create other legitimate conditional/position-related structural summaries, but those downstream objects change the unit of analysis, conditioning key, denominator, and target quantity. They therefore do **not** faithfully preserve V550's respondent-position-conditioned empirical meaning.
+**Effect on larger conclusion:** the earlier evidentiary basis is retracted. `position_distribution` cannot establish stranded question-conditioned meaning. The larger conclusion survives on the actual question-conditioned producer, `indicator_answer_matrix_rows`, and on exact bridge field loss.
 
-`conditional_determinicity_index.csv` is not intrinsically invalid on its own structural-atom terms. The debt is twofold:
+### Correction 2 — active `ddm_v551_conditional.py` was misidentified
 
-- **naming debt:** its name can be mistaken for the respondent-conditioned evidence already computed in V550;
-- **evidence-loss debt:** it is not a substitute for that V550 evidence, and V552 currently accepts the V551 conditional artifact at the compile interface but explicitly discards it during structural construction.
+**Prior claim:** the prior result described `build_conditional_determinicity_index` as grouping structural atoms by relation/indicator and computing dominant values, alternative counts, ambiguity and coverage.
 
-The correct repair is to preserve respondent position-conditioned and branch-conditioned evidence as distinct first-class carriers, without demographic reconstruction or demographic inference, and without overloading structural-atom determinicity or V552's item/region observation rollups.
+**Why wrong:** that is not the pinned active implementation. The active `data/ddm_build_copy/ddm_v551_conditional.py` consumes V550 bridge rows, requires the `derived_determinicity` lane, bridge eligibility, joined question-use and source-structure contracts, sufficient support, and deduplicates by source/wave/country/question/var/source-row hash. `_conditional_row` projects each surviving bridge row into a conditional record carrying response semantics, structural mappings, scalar support and provenance.
 
-# Evidence boundary and method
+**Correcting source:** `data/ddm_build_copy/ddm_v551_conditional.py` at the frozen SHA, especially `_conditional_row` and `build_conditional_determinicity_index`.
 
-This court directly inspected source at the exact launch base SHA. Findings below are labeled **DIRECT OBSERVATION** where visible in pinned source, **INFERENCE** where semantic consequences follow from those observations, and **UNRESOLVED** where a launch-listed exact symbol was not independently located and therefore is not silently equated with similarly named code.
+**Effect on larger conclusion:** the earlier description is fully retracted. The corrected implementation still does not preserve `indicator_name` or `indicator_value`, so it does not restore the conditioning identity of `indicator_answer_matrix` rows.
 
-Primary files examined:
+### Correction 3 — the bridge was credited with conditioning identity it does not alias from the matrix
+
+**Prior claim:** the prior result said the bridge carried position-conditioning-derived indicator/value fragments in a way that could be read as conserving the matrix conditioning key.
+
+**Why wrong:** `_base_bridge_row` obtains `position_field` only from a literal source `position_field` column and `position_value` only from a literal source `position_value` column. `indicator_answer_matrix_rows` emits `indicator_name` and `indicator_value`, not those fields. No active alias `indicator_name -> position_field` or `indicator_value -> position_value` was found. The derived-lane audit view creates `predictor_field` from `driver_id` and `predictor_value` from `driver_facet_id`; those are question/relation authority fields, not aliases for empirical indicator coordinates.
+
+**Correcting source:** `data/ddm_build_copy/ddm_v550_branching.py::indicator_answer_matrix_rows`; `data/ddm_build_copy/ddm_v550_bridge.py::_base_bridge_row`, `BRIDGE_EVIDENCE_LANE_MAP`, gate/audit construction.
+
+**Effect on larger conclusion:** this correction strengthens the exact seam-loss finding. Response and scalar mass fields survive, while the empirical condition that gives those numbers meaning does not survive as an explicit semantic field.
+
+### Correction 4 — recursive branch output was over-promoted from search product to irreducible joint carrier
+
+**Prior claim:** the prior result recommended preserving the current recursive branch-conditioned output as a first-class joint conditional carrier because it represented conjunctive respondent structure.
+
+**Why wrong:** `branch_nodes_rows` is a bounded greedy analysis. At each node it chooses the single available indicator with greatest positive entropy gain; stops at `max_depth` (default 3), low support, no remaining indicators, or no gain; and descends only through the first two values returned by `value_counts()`. Each node stores dominant response and entropy summaries, not a complete joint response contingency over all position combinations. The source respondents contain joint structure, but the current tree is one lossy analytical search over that structure.
+
+**Correcting source:** `data/ddm_build_copy/ddm_v550_branching.py::branch_nodes_rows`.
+
+**Effect on larger conclusion:** the current recursive tree is not itself an irreducible empirical carrier and should not be preserved merely because its source population has joint structure. Its prior proposed preservation is retracted.
+
+### Correction 5 — the conditional helper is not the active canonical V551 publication path
+
+The corrective pass also establishes that `compile_v551_relation_evidence_atoms.py`, the pinned canonical V551 v3 compiler, imports `ddm_v551_atoms` and publishes only `directional_candidate_adjudication`, `relation_evidence_atoms`, and `directional_distribution_coverage`. Its candidate bridge is restricted to `bridge_evidence_lane == direct_relation_response` and approved direct tables. It does not import or call `ddm_v551_conditional.py`.
+
+Separately, pinned `ddm_v551_conditional.py` imports `MIN_ATOM_SUPPORT` and `SOURCE_TABLE_PRIORITY` from pinned `ddm_v551_atoms.py`, but those names are not defined there. The conditional helper therefore has both an active-seam wiring problem and a pinned import-contract problem.
+
+This means the derived conditional product is best classified as `INTENDED_BUT_UNWIRED` at the frozen base, not as the canonical V551 consumer.
+
+## Corrected active V550 empirical archaeology
+
+### 1. `position_distribution`
+
+`build_position_distribution_rows` creates marginal population prevalence for each available position coordinate after respondent deduplication. For each `position_field`/`position_value` it records `n_unweighted`, `n_weighted`, `pct_unweighted`, `pct_weighted`, weight status and provenance. The denominator is the respondent count with a nonblank value for that field. It is question-independent and marked `POSITION_COORDINATE`.
+
+**Meaning:** population prevalence of a respondent coordinate, not a response conditional.
+
+### 2. `position_indicator_summary`
+
+`indicator_summary_rows` operates per question. For each indicator it compares question response entropy before and after conditioning on that indicator, and emits support plus `conditional_entropy`, entropy reduction, mutual information, normalized mutual information, Cramér's V, uplift and dominant-response summaries. It is an association summary over the full indicator variable, not a contingency table retaining every `indicator_value x response_value` cell.
+
+**Meaning:** question-level indicator association/determinicity diagnostic.
+
+### 3. `indicator_answer_matrix`
+
+`indicator_answer_matrix_rows` is the active first-class one-dimensional response-conditioning producer. For each question and each available indicator it builds an unweighted crosstab of `indicator_value x response_value`; where weights are supplied it builds the parallel weighted pivot. It emits one row for each response value within each indicator value:
+
+- `indicator_name`
+- `indicator_value`
+- `response_value`
+- `n_unweighted`
+- `pct_unweighted`
+- `n_weighted`
+- `pct_weighted`
+
+`pct_unweighted` is the cell count divided by the unweighted total for that specific indicator value. `pct_weighted` is the corresponding weighted cell mass divided by the weighted total for that indicator value. With question metadata inherited into each row, this is actual empirical information of the form `P(response | indicator_name = indicator_value, question)` plus support mass.
+
+Important support nuance: `n_unweighted` is the **response-cell count**, while the percentage denominator is the whole indicator-value subgroup. Any later support gate applied to `n_unweighted` is therefore gating response cells, not directly the conditioning subgroup as a whole.
+
+### 4. `outlier_cohort_summary`
+
+`outlier_cohort_rows` groups each indicator value with adequate support, computes the subgroup's dominant response and share, compares it to the question baseline dominant response, and labels the subgroup `conforms`, `deviates`, or `minority_converges`. It retains subgroup identity and support but deliberately reduces the subgroup response distribution to a dominant-response comparison.
+
+**Meaning:** support-gated subgroup divergence diagnostic, not a complete conditional distribution.
+
+### 5. `secondary_indicator_summary`
+
+`secondary_indicator_summary_rows` scores all candidate indicators, greedily chooses the primary indicator with maximum `(mutual_information, cramers_v, n_unweighted)`, then tests each other indicator jointly with that primary. Joint rows require at least 50 respondents and positive incremental entropy gain. The output records a secondary indicator name/value, the chosen primary in `secondary_indicator_name`, `secondary_gain`, support and association summaries.
+
+**Meaning:** greedy incremental-predictor diagnostic; evidence that some two-variable joint structure exists, but not a retained complete joint contingency.
+
+### 6. `recursive_branch_nodes`
+
+`branch_nodes_rows` records a bounded entropy-gain decision tree. It is support-gated, maximum-depth bounded, greedily chooses one best split per node, follows only two most frequent values, and stores dominant-response/entropy summaries.
+
+**Meaning:** diagnostic search topology over respondent joint structure, not the joint structure itself.
+
+### 7. `branch_position_signature`
+
+`build_position_signature_rows` searches `POSITION_COORDINATE` columns, computes association statistics against the current question response, ranks candidates, retains at most five, and explicitly emits `cloud_lane_artifact = True`, `diagnostic_artifact = True`, `not_direct_evidence = True`, `evidence_role = diagnostic_position_signature`, `artifact_status = enabled_diagnostic`. The shard builder independently labels nonempty output `enabled_diagnostic`.
+
+**Meaning:** explicitly diagnostic ranked position-feature signature.
+
+## Exact `indicator_answer_matrix` field conservation through the bridge
+
+The bridge maps `indicator_answer_matrix` to empirical object type `indicator_answer_matrix` and evidence lane `derived_determinicity`.
+
+| V550 matrix field | Bridge behavior | Derived-lane audit | Pinned conditional helper |
+|---|---|---|---|
+| `indicator_name` | **No alias to `position_field`; no explicit conserved matrix-conditioning field established** | `predictor_field` is populated from `driver_id`, not `indicator_name` | not emitted |
+| `indicator_value` | **No alias to `position_value`; no explicit conserved matrix-conditioning field established** | `predictor_value` is populated from `driver_facet_id`, not `indicator_value` | not emitted |
+| `response_value` | read by response fallback and becomes bridge response raw/normalized material | `response_value_normalized` retained | `response_value_normalized` retained |
+| `n_unweighted` | retained as support and `n_unweighted` | retained | retained after support gate |
+| `pct_unweighted` | retained | omitted from compact derived audit view | retained in conditional output |
+| `n_weighted` | retained | omitted from compact derived audit view | retained in conditional output |
+| `pct_weighted` | retained | omitted from compact derived audit view | retained in conditional output |
+| question identity from `question_meta` | retained as `question_id`/`var_code` | retained | retained |
+
+The exact negative finding is therefore narrow and strong: **there is no proved active alias `indicator_name -> position_field` or `indicator_value -> position_value`.** `driver_id`, `driver_facet_id`, `predictor_field`, `predictor_value`, and question-contract `position_conditioning` are separate authority concepts and cannot lawfully substitute merely because they sound position-related.
+
+### Identity consequences
+
+- The empirical source row's meaningful conditioning identity is `(question identity, indicator_name, indicator_value)` together with response value.
+- Bridge semantic identity exposes `position_field`/`position_value`, but for matrix rows those fields are not populated from `indicator_name`/`indicator_value` by the inspected code.
+- The compact derived-lane audit replaces the idea of a predictor with `driver_id`/`driver_facet_id`, which identifies governed relation structure rather than the respondent indicator condition.
+- `_conditional_row` emits no `position_field`, `position_value`, `indicator_name`, `indicator_value`, `predictor_field`, or `predictor_value`.
+- `conditional_id` is based on source/wave/country/question/var/source-row hash; it does not make the absent conditioning semantics human- or machine-interpretable as a governed position coordinate.
+
+This is the principal active-seam loss established by R01.
+
+## Bridge and V551 gate behavior
+
+`BRIDGE_EVIDENCE_LANE_MAP` sends these active V550 families to `derived_determinicity`:
+
+- `indicator_answer_matrix`
+- `outlier_cohort_summary`
+- `secondary_indicator_summary`
+- `recursive_branch_nodes`
+
+`position_distribution` and `position_indicator_summary` instead enter `position_context`; `branch_position_signature` also enters `position_context`.
+
+Bridge `v551_conditional_determinicity_eligible` is assigned from `derived_lane & common_relation_gates`. Those common gates require certified relation role/semantics/directionality, complete structural mapping, relation permission, no review requirement, joined contracts/source structure, visibility, substantive/non-special response, response-map match and non-metadata structural identity. This eligibility flag is not by itself the final conditional support decision.
+
+The pinned conditional helper then independently requires:
+
+1. `v551_conditional_determinicity_eligible == true`;
+2. `bridge_evidence_lane == derived_determinicity`;
+3. `question_use_contract_joined == true`;
+4. `source_structure_fields_joined == true`;
+5. `support_status == sufficient_support` (or recomputation to that result from `n_unweighted`);
+6. uniqueness under its source/wave/country/question/var/source-row-hash key.
+
+For matrix rows, because `n_unweighted` is the response-cell count, this final support gate operates at response-cell granularity. A low-frequency response cell can therefore be excluded even when the conditioning subgroup itself has substantial total support. A gated set of surviving rows cannot be assumed to conserve the original response distribution without an explicit mass-conservation contract.
+
+## Active canonical V551 seam
+
+At the frozen SHA, `compile_v551_relation_evidence_atoms.py` is explicitly the canonical V551 v3 compiler. Its canonical artifacts are:
+
+- `directional_candidate_adjudication`
+- `relation_evidence_atoms`
+- `directional_distribution_coverage`
+
+`build_v551_certification_candidate_bridge` in `ddm_v551_atoms.py` restricts candidates to `bridge_evidence_lane == direct_relation_response` and source tables `answer_distribution` / `country_answer_distribution`. Derived-determinicity rows are not canonical V551 atom candidates.
+
+Therefore `ddm_v551_conditional.py` is not evidence that the derived lane is canonically preserved downstream. At this base it is a separate, unwired helper, and its own imports are inconsistent with pinned `ddm_v551_atoms.py` (`MIN_ATOM_SUPPORT` and `SOURCE_TABLE_PRIORITY` are imported but not defined there).
+
+## Corrected family classification
+
+### `position_distribution` — `STRANDED_MEANING`
+Meaningful marginal respondent-position prevalence is produced and bridged as `position_context`, but no canonical V551 consumer of those prevalence rows was established in this court. It is not conditional response evidence.
+
+### `position_indicator_summary` — `UNRESOLVED`
+It carries real per-question association summaries, but the corrected active seam does not establish either a canonical terminal consumer or explicit diagnostic-only authority. Do not promote or discard it solely from naming.
+
+### `indicator_answer_matrix` — `STRANDED_MEANING`
+This is the active one-dimensional empirical conditional contingency. Response/support fragments enter the derived bridge lane, but the explicit empirical conditioning key `indicator_name`/`indicator_value` is not conserved into bridge position identity or the pinned conditional output, and the derived lane is not part of canonical V551 v3 publication.
+
+### `outlier_cohort_summary` — `DIAGNOSTIC_ONLY`
+A support-gated dominant-response comparison for each indicator cohort. It is a lossy analytical summary of conditional evidence and no canonical consumer was established.
+
+### `secondary_indicator_summary` — `DIAGNOSTIC_ONLY`
+A greedy primary/secondary incremental-entropy analysis with a fixed joint-support threshold and positive-gain filter. It is not a complete joint empirical carrier.
+
+### `recursive_branch_nodes` — `DIAGNOSTIC_ONLY`
+A bounded greedy search tree over joint respondent structure, not the irreducible joint structure itself.
+
+### `branch_position_signature` — `DIAGNOSTIC_ONLY`
+Explicitly labeled diagnostic, cloud-lane, and not-direct-evidence by its producer.
+
+### `derived_determinicity` bridge lane — `INTENDED_BUT_UNWIRED`
+The bridge deliberately gathers derived V550 analyses, gates them and exposes a conditional-determinicity eligibility/audit surface, but canonical V551 v3 publication does not consume that lane.
+
+### V551 `conditional_determinicity` product — `INTENDED_BUT_UNWIRED`
+The helper defines a projected conditional artifact, but the canonical V551 compiler does not call it, its output omits the empirical matrix conditioning key, and its pinned imports reference absent names in `ddm_v551_atoms.py`.
+
+## Corrected verdict
+
+`MATERIAL_SEMANTIC_LOSS_NOT_FAITHFULLY_PRESERVED`
+
+The defensible semantic-loss claim is now narrower than the prior result and better grounded. V550's active `indicator_answer_matrix` contains genuine respondent response distributions conditioned on actual indicator values. The V550 bridge preserves question/response and scalar count/share fields but does not prove any lawful mapping of `indicator_name`/`indicator_value` into `position_field`/`position_value`. The compact derived audit substitutes relation-authority identifiers for predictor labels, and the separate conditional helper omits the source conditioning fields entirely. Canonical V551 v3 does not consume the derived lane in any case.
+
+Thus shared strings or nearby concepts cannot rescue the seam: a row saying that a particular response has count/share `x` is not the same empirical claim after the condition under which `x` was observed has disappeared.
+
+This does **not** authorize converting demographic/position correlations into actor facts, identity, belief, psyche, biography or destiny.
+
+## What this court retracts
+
+- Any assertion that active `position_distribution` contains question-conditioned response distributions.
+- Any assertion that active `ddm_v551_conditional.py` is an atom-dominance/ambiguity compiler.
+- Any assertion that `indicator_name`/`indicator_value` are aliased to bridge `position_field`/`position_value` without code proof.
+- Any recommendation to preserve the current recursive branch tree itself as the irreducible joint empirical substrate.
+- Any implication that the existence of `ddm_v551_conditional.py` proves canonical downstream consumption of the derived lane.
+
+## Unresolved questions / blockers
+
+1. The exact authoritative terminal consumer, if any, for `position_indicator_summary` remains unresolved within R01's bounded seam archaeology.
+2. The pinned `ddm_v551_conditional.py` import inconsistency (`MIN_ATOM_SUPPORT`, `SOURCE_TABLE_PRIORITY` absent from pinned `ddm_v551_atoms.py`) prevents treating that helper as an executable canonical path without separate repair/authority.
+3. R01 does not determine the minimum replacement architecture or retention substrate; those belong to other Conditional-Meaning Chamber cells.
+4. R01 does not claim that the current greedy recursive tree must survive. If joint respondent conditionals are terminally required, their lawful sufficient representation must be adjudicated separately from this tree implementation.
+5. No alias from empirical indicator coordinates to generated V3 structural-position coordinates is established here. Shared values or field-like names are not ontology authority.
+
+## Evidence ledger
+
+Directly re-read at exact SHA `8c87f7725ba58202b5377c974548140420709fa9`:
 
 - `data/ddm_build_copy/ddm_v550_position_distribution.py`
+  - `POSITION_DISTRIBUTION_COLUMNS`
+  - `_respondent_slice`
+  - `build_position_distribution_rows`
 - `data/ddm_build_copy/ddm_v550_branching.py`
+  - `indicator_summary_rows`
+  - `secondary_indicator_summary_rows`
+  - `indicator_answer_matrix_rows`
+  - `branch_nodes_rows`
+  - `outlier_cohort_rows`
+- `data/ddm_build_copy/ddm_v550_clouds.py`
+  - `BRANCH_POSITION_SIGNATURE_COLUMNS`
+  - `build_position_signature_rows`
 - `data/ddm_build_copy/ddm_v550_bridge.py`
+  - `BRIDGE_TABLE_MAP`
+  - `BRIDGE_EVIDENCE_LANE_MAP`
+  - `_base_bridge_row`
+  - `_bridge_lane_usability`
+  - V551 gate construction
+  - derived-lane audit projection
 - `data/ddm_build_copy/ddm_v551_conditional.py`
+  - `_conditional_row`
+  - `build_conditional_determinicity_index`
 - `data/ddm_build_copy/ddm_v551_atoms.py`
-- `data/ddm_build_copy/compile_v552_structural_ddm.py`
-- `data/ddm_build_copy/ddm_v552_structural.py`
-- `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md`
-
-No production file was edited.
-
-# Findings
-
-## F01 — V550 computes one-dimensional respondent-position-conditioned answer distributions
-
-**DIRECT OBSERVATION** — `data/ddm_build_copy/ddm_v550_position_distribution.py`
-
-`POSITION_DISTRIBUTION_COLUMNS` is:
-
-`position_field, position_value, question_id, question_number, response_code, frequency, percentage`
-
-`POSITION_VALUE_COUNTS_COLUMNS` is:
-
-`position_field, position_value, sample_size`
-
-`compute_position_conditional_distributions(df, fields=POSITION_FIELDS)` iterates observed values of each configured position field, filters the respondent dataframe to the matching value, groups observed responses question-by-question, and records response `frequency` and `percentage` for that position-conditioned respondent subset.
-
-`compute_position_value_counts(...)` supplies the sample-size support for the conditioning value.
-
-**INFERENCE**
-
-The semantic object is an empirical conditional response distribution of the form:
-
-`P(observed response to question Q | respondent position_field = position_value)`
-
-with explicit respondent counts/percentages and a recoverable conditioning denominator. This is not merely a label, association, structural relation, or descriptive tag.
-
-## F02 — V550 also computes joint/conjunctive branch-conditioned respondent evidence
-
-**DIRECT OBSERVATION** — `data/ddm_build_copy/ddm_v550_branching.py`
-
-`evaluate_branch(df, branch_path, question_id, ...)` constructs a conjunctive mask over branch conditions and computes base and branch-filtered response counts/percentages plus branch sample size.
-
-`branch_metrics(...)` computes branch-filtered sample size and response detail.
-
-`recursive_branch_scan(...)` recursively enumerates branch values/depth, filters actual respondent rows, respects `min_sample`, and returns branch response distributions.
-
-**INFERENCE**
-
-This evidence is stronger than a collection of independent one-dimensional conditionals. A normalized branch path represents a joint predicate over respondent-position conditions, and its meaning includes path identity, branch depth, sample-size eligibility, and branch-specific response distributions. Flattening it into independent indicator/value fragments destroys interaction structure.
-
-## F03 — V550's bridge preserves provenance fragments, not the full respondent-conditional semantics
-
-**DIRECT OBSERVATION** — `data/ddm_build_copy/ddm_v550_bridge.py`
-
-`make_v550_evidence_bridge_rows(...)` accepts `position_conditioning_rows` and `position_profiles` and can emit bridge/index rows sourced from position-conditioning material. It maps fields such as `position_field` toward indicator identity and carries source-table/source-row provenance and selected value/response fragments where available.
-
-**INFERENCE**
-
-This is meaningful preservation: position-conditioned source identity is not wholly erased. But bridge rows are not demonstrated to preserve the complete V550 empirical object: respondent frequency, percentage, conditioning denominator, question-specific distribution identity, and recursive joint branch path semantics together. Provenance fragments are therefore counterevidence to a claim of *total erasure*, not evidence of faithful semantic preservation.
-
-## F04 — V551 `conditional_determinicity_index` is a structurally different conditional object
-
-**DIRECT OBSERVATION** — `data/ddm_build_copy/ddm_v551_conditional.py`
-
-`build_conditional_determinicity_index(atom_registry, direct_relation_edges)` emits rows with schema:
-
-`relation_id, atom_id, indicator_name, dominant_value, dominant_value_share, alternative_value_count, ambiguity_rate, response_coverage_count, gap_policy, coverage_trace_ids`
-
-The implementation groups deterministic structural atom participants by `(relation_id, indicator_name)`, counts atom `value` occurrences, and derives dominant atom value/share, alternative-value count, ambiguity, distinct atom-response coverage, and coverage trace IDs.
-
-**INFERENCE**
-
-The index answers a structural question about concentration/ambiguity among atom values participating in a relation/indicator grouping. It does not reproduce the V550 question-answer distribution conditioned on a respondent's position-field value.
-
-The following semantic axes differ:
-
-| Axis | V550 respondent conditional evidence | V551 conditional determinicity |
-|---|---|---|
-| Unit | respondent observations | structural atoms / relation participants |
-| Conditioning identity | `position_field`, `position_value` | `relation_id`, `indicator_name` |
-| Target | answer distribution for a question | dominant atom value / ambiguity |
-| Denominator | respondent subset/sample size | atom-value occurrence population |
-| Primary measures | frequency, percentage | dominant share, alternatives, ambiguity, coverage |
-| Joint paths | recursive conjunctive respondent branches available upstream | not equivalent to branch-path respondent conditioning |
-
-Therefore the V551 artifact is not semantically wrong merely because it differs; it is wrong **only if treated as the carrier or replacement for V550 respondent-conditional evidence**.
-
-## F05 — V551 atom registry preserves evidence lineage but does not cure the unit-of-analysis change
-
-**DIRECT OBSERVATION** — `data/ddm_build_copy/ddm_v551_atoms.py`
-
-The atom registry carries structural identity and provenance fields including relation/hub/indicator/value/response/source-table/source-row information, and source prioritization includes V550-derived evidence material.
-
-**INFERENCE**
-
-Atom-level lineage can preserve where a structural fact came from. It cannot, by itself, reconstruct a respondent-conditioned probability/frequency object whose meaning depends on respondent counts, conditioning denominators, question response distributions, and potentially conjunctive branch paths. Atom provenance is therefore evidence-bearing but non-substitutive.
-
-## F06 — V552's compile interface can transport the V551 conditional artifact, but the structural builder explicitly discards it
-
-**DIRECT OBSERVATION** — `data/ddm_build_copy/compile_v552_structural_ddm.py`
-
-`compile_v552_structural_ddm(...)` accepts an optional `conditional_determinicity_path`, reads that CSV when supplied, passes the dataframe to `build_v552_structural_outputs(...)`, and records the conditional input path in compiler/manifest input handling.
-
-**DIRECT OBSERVATION** — `data/ddm_build_copy/ddm_v552_structural.py`
-
-`build_v552_structural_outputs(..., conditional_determinicity: pd.DataFrame | None = None, ...)` explicitly executes a deletion statement that includes `conditional_determinicity` among unused inputs:
-
-`del relation_coverage, relation_spread, indicator_crosswalk, conditional_determinicity, atom_registry`
-
-The builder also emits `conditional_determinicity_status_audit` as an empty dataframe initialized only with `CONDITIONAL_DETERMINICITY_STATUS_AUDIT_COLUMNS`.
-
-**INFERENCE**
-
-There is an interface-level transport path without semantic consumption. Even V551's *different* structural conditional artifact is not used to shape V552 structural output at this pinned implementation. The empty status-audit output does not preserve the underlying evidence.
-
-## F07 — V552 recomputes a legitimate but non-equivalent position-conditioning profile
-
-**DIRECT OBSERVATION** — `data/ddm_build_copy/ddm_v552_structural.py`
-
-`build_position_conditioning_profile_from_observations(base, observations)` rolls observation records up by `region_value` and derives aggregate measures over fields including `money_scale`, `comfort`, and `target_to_money_ratio`.
-
-**INFERENCE**
-
-This is evidence-bearing for the question it asks: how item/observation metrics vary by region/value. It does not represent arbitrary V550 `(position_field, position_value)` respondent conditioning, per-question respondent answer frequencies/percentages, or recursive conjunctive branch paths. Similar vocabulary (`position`, `conditioning`) must not be used to erase the semantic boundary.
-
-## F08 — The loss is semantic, not merely a filename problem
-
-**INFERENCE from F01–F07**
-
-The seam contains at least five independent losses/drifts:
-
-1. **Unit-of-analysis drift:** respondents → structural atoms → item/observation aggregates.
-2. **Conditioning-key drift:** arbitrary respondent `position_field/position_value` and joint branch predicates → relation/indicator atom grouping or `region_value` rollup.
-3. **Denominator drift/loss:** respondent subset sample sizes and response frequencies/percentages are not preserved as the same quantity.
-4. **Target-variable drift:** question-answer distributions → dominant structural values/ambiguity or observation metric means.
-5. **Joint-branch loss:** conjunctive branch-path identity, depth, minimum-sample support, and branch-specific response distributions are not represented as first-class downstream semantics.
-
-A rename alone cannot repair these differences.
-
-# Launch-target symbol ledger
-
-The launch asked this court to enumerate/classify several exact V550 names. The pinned inspection supports the following disposition:
-
-- `compute_position_conditional_distributions` — **DIRECTLY LOCATED; substantive empirical evidence producer.**
-- `recursive_branch_scan`, `evaluate_branch`, `branch_metrics` — **DIRECTLY LOCATED; substantive branch-conditioned empirical evidence producers/support.**
-- `compute_position_conditional_answer_distributions` — **UNRESOLVED EXACT SYMBOL LOCATION.** No independent exact-symbol location was established during this court's pinned-source inspection. Its intended semantic role must not be silently inferred from `compute_position_conditional_distributions`.
-- `compute_indicator_answer_matrix` — **UNRESOLVED EXACT SYMBOL LOCATION.** No independent exact-symbol location was established during this court's pinned-source inspection.
-- `build_branch_position_signatures` — **UNRESOLVED EXACT SYMBOL LOCATION.** Branch-conditioned machinery was directly observed, but this exact helper name was not independently located.
-- within-dimension tags / exact relation evidence — **PARTIALLY OBSERVED THROUGH BRIDGE/atom provenance; exact launch-referenced producer inventory remains unresolved.**
-- branch-display/render support tied to position conditioning — **display/helper semantics must remain separate from empirical branch evidence; exact helper inventory remains unresolved.**
-
-These unresolved entries are evidence-boundary findings, not a claim that the symbols or artifacts do not exist elsewhere. A graceful guess would violate the governing spirit's explicit treatment of unresolved state.
-
-# Artifact dispositions
-
-## Evidence-bearing and semantically substantive
-
-1. **V550 respondent position-conditional distribution rows** — first-class empirical evidence; materially stranded as a downstream semantic object.
-2. **V550 position-value counts/sample sizes** — denominator evidence necessary to interpret the conditional distributions.
-3. **V550 recursive branch-conditioned response evidence** — first-class joint/conjunctive respondent evidence; materially stranded as a downstream semantic object.
-4. **V550 bridge rows derived from position conditioning** — derivative evidence/provenance carriers; useful but not a faithful substitute for the complete conditional distributions.
-5. **V551 atom registry** — evidence/provenance-bearing structural carrier; not a respondent-conditional distribution carrier.
-6. **V551 `conditional_determinicity_index.csv`** — evidence-bearing structural-atom summary on its own terms; semantically non-equivalent to V550 respondent conditionality.
-7. **V552 `position_conditioning_profile`** — evidence-bearing item/region observation rollup on its own terms; semantically non-equivalent to V550 respondent conditionality.
-
-## Helper/status/display only for the present question
-
-1. **V552 `conditional_determinicity_status_audit`** — schema/status placeholder in the pinned builder; emitted empty and not an evidence carrier for V550 conditionals.
-2. **Pure branch display/render helpers** — presentation only unless they themselves carry an independently specified evidence contract. Display cannot substitute for the underlying branch-conditioned empirical rows.
-
-# Naming debt versus evidence-loss debt
-
-## Naming debt
-
-`conditional_determinicity_index.csv` uses vocabulary broad enough to suggest a general conditional-evidence index. Its actual implementation is a structural-atom dominant-value/ambiguity summary. The name is therefore hazardous at the V550→V551 seam because an auditor can plausibly mistake it for preservation of V550 respondent conditionality.
-
-## Evidence-loss debt
-
-The deeper problem remains even if the file is renamed. The downstream graph lacks a demonstrated first-class carrier preserving:
-
-- respondent `position_field`;
-- respondent `position_value`;
-- question identity;
-- response code;
-- response frequency;
-- response percentage;
-- conditioning/sample denominator;
-- normalized joint branch path where applicable;
-- branch sample size/depth/min-sample provenance;
-- direct trace back to upstream empirical source rows.
-
-This is a semantic preservation gap, not nomenclature alone.
-
-# Lawful non-demographic repair path
-
-No production repair is performed by this court. The parent architecture should preserve the following separation of semantic ownership.
-
-## Carrier A — respondent position-conditioned empirical distributions
-
-A first-class artifact should preserve, at minimum:
-
-- `position_field`
-- `position_value`
-- `question_id`
-- `question_number` where authoritative
-- `response_code`
-- `frequency`
-- `percentage`
-- explicit conditioning denominator / `sample_size`
-- source trace/provenance IDs sufficient for replay and verification
-- explicit unknown/valid-empty states rather than synthetic completion
-
-This carrier should mean only observed respondent conditioning on authorized position variables. It must not be upgraded into actor biography, psyche, or deterministic assignment.
-
-## Carrier B — respondent branch-conditioned empirical distributions
-
-A separate first-class artifact should preserve, at minimum:
-
-- normalized ordered/conjunctive branch predicates;
-- branch depth;
-- branch sample size;
-- `min_sample`/eligibility provenance where relevant;
-- question identity;
-- response code/count/percentage;
-- traceability to the respondent evidence and branch-evaluation rule.
-
-Joint branch evidence must not be reconstructed by multiplying or composing independent one-dimensional conditionals unless explicit authority establishes such a model.
-
-## Keep distinct from
-
-- V551 structural-atom determinicity/ambiguity;
-- V552 item/region observation conditioning;
-- demographic inference or demographic synthesis;
-- actor knowledge, actor belief, psyche, trait, or biography.
-
-The safe repair principle is **preserve empirical constraints without converting them into personhood claims**.
-
-# Counterevidence considered
-
-The verdict is not based on a false claim of total disappearance.
-
-1. V550 bridge machinery does carry position-conditioning-derived source identity/provenance fragments.
-2. V551 atoms preserve source table/row and structural indicator/value/response fragments.
-3. V552 compiler has an input path for V551 conditional determinicity and passes the loaded dataframe into the structural builder.
-4. V552 has a position-conditioning profile that is genuinely evidence-bearing for its own observation-level quantities.
-
-These facts narrow the verdict: the seam preserves lineage and other conditional summaries, but not the same respondent-conditioned empirical object.
-
-# Unresolved questions
-
-1. Where, at exact launch base SHA, are the launch-listed exact symbols `compute_position_conditional_answer_distributions`, `compute_indicator_answer_matrix`, and `build_branch_position_signatures`, if they exist under those names?
-2. What is the complete pinned inventory of within-dimension tag/exact-relation artifacts whose semantics derive from respondent position conditioning?
-3. What is the complete pinned inventory of branch-display helpers, and which are strictly display versus evidence-producing wrappers?
-4. Is there a generated-data artifact outside the directly inspected source set that already serializes the complete V550 respondent conditional distributions or branch distributions for downstream reuse despite the source-level seam described here? No such faithful downstream consumer was established by this court.
-5. Which future stage should own consumption of the preserved respondent conditional evidence after the carrier is restored? This court recommends preservation and semantic separation but does not reopen closed downstream jurisdiction.
-
-None of these unresolved questions reverses F01–F08. They constrain the completeness of the exact producer/helper inventory and the placement of any eventual repair.
-
-# Recommended parent actions
-
-1. **Accept the verdict that V550 respondent-position-conditioned evidence is not faithfully preserved as a first-class downstream semantic object.**
-2. **Do not treat `conditional_determinicity_index.csv` as the V550 conditional carrier.** Preserve its structural-atom meaning or rename it to reduce ambiguity.
-3. **Authorize a dedicated non-demographic preservation contract** for respondent position-conditioned distributions and a separate contract for joint branch-conditioned distributions.
-4. **Require explicit denominator and branch-path preservation.** Frequencies/percentages without their conditioning population, or branch fragments without normalized path identity, are insufficient.
-5. **Resolve the launch-listed exact-symbol inventory before implementation** so no hidden V550 artifact is duplicated or contradicted.
-6. **Keep V552's item/region `position_conditioning_profile` semantically separate.** It is useful evidence for a different question and should not be repurposed as respondent conditioning.
-7. **Revisit the V552 conditional input seam.** A compile interface that reads/passes `conditional_determinicity` while the builder explicitly discards it should either acquire a lawful consuming contract or be made semantically explicit as transport/status only; do not infer meaning from presence at the interface.
-8. **Prohibit demographic backfilling.** No repair should infer missing demographic identity, convert structural categories into psyche, or treat conditional empirical patterns as deterministic actor traits.
-
-# Court closure
-
-At launch base `8c87f7725ba58202b5377c974548140420709fa9`, the R01 court finds a genuine V550→V551/V552 conditional-meaning preservation seam. The machine retains pieces of lineage and constructs downstream summaries that are valid in their own jurisdictions, but the respondent-conditioned empirical distributions and recursive joint branch evidence change meaning or cease to exist as first-class downstream evidence. The appropriate action is preservation with bounded jurisdiction, not demographic synthesis and not semantic overloading.
-
-**Final verdict: `MATERIAL_SEMANTIC_LOSS_NOT_FAITHFULLY_PRESERVED`.**
+  - `APPROVED_DIRECT_TABLES`
+  - `build_v551_certification_candidate_bridge`
+  - active exported constants/symbols
+- `data/ddm_build_copy/compile_v551_relation_evidence_atoms.py`
+  - `CANONICAL_ARTIFACTS`
+  - `compile_v551_run`
+- `data/ddm_build_copy/build_determinicity_wave_shard_v550.py`
+  - active producer wiring and diagnostic status for `branch_position_signature`
+
+All implementation claims in this corrected result refer to that frozen source state. Historical or later implementations are not imported into the finding.
