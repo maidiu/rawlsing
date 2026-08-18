@@ -1,0 +1,247 @@
+{
+  "cell_id": "VT3-CM-R01",
+  "mission": "Determine whether meaningful respondent-position-conditioned empirical information computed in V550 is faithfully preserved through V551/V552; distinguish naming debt from evidence-loss debt; identify a lawful non-demographic repair path without modifying production code.",
+  "verdict": "MATERIAL_SEMANTIC_LOSS_NOT_FAITHFULLY_PRESERVED",
+  "governing_spirit_applied": true,
+  "repository_head_examined": "8c87f7725ba58202b5377c974548140420709fa9",
+  "launch_base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
+  "launch_base_tree_sha": "b016a5bc07b6aa17f1db08df91ed0b77d1055af7",
+  "branch": "agent/vozhd-trii-vt3-cm-r01",
+  "production_code_changed": false,
+  "findings": [
+    {
+      "finding_id": "F01",
+      "evidence_class": "DIRECT_OBSERVATION_PLUS_INFERENCE",
+      "source_path": "data/ddm_build_copy/ddm_v550_position_distribution.py",
+      "symbols": [
+        "POSITION_DISTRIBUTION_COLUMNS",
+        "POSITION_VALUE_COUNTS_COLUMNS",
+        "compute_position_conditional_distributions",
+        "compute_position_value_counts"
+      ],
+      "finding": "V550 computes empirical per-question respondent answer distributions conditioned on observed respondent position_field/position_value subsets, recording response frequency and percentage with position-value sample-size support.",
+      "semantic_unit": "respondent observations conditioned by position-field value"
+    },
+    {
+      "finding_id": "F02",
+      "evidence_class": "DIRECT_OBSERVATION_PLUS_INFERENCE",
+      "source_path": "data/ddm_build_copy/ddm_v550_branching.py",
+      "symbols": [
+        "evaluate_branch",
+        "branch_metrics",
+        "recursive_branch_scan"
+      ],
+      "finding": "V550 computes conjunctive/recursive branch-conditioned respondent evidence over actual respondent rows, including branch sample sizes and branch-specific response distributions. This joint-path meaning is stronger than independent one-dimensional conditional fragments."
+    },
+    {
+      "finding_id": "F03",
+      "evidence_class": "DIRECT_OBSERVATION_PLUS_INFERENCE",
+      "source_path": "data/ddm_build_copy/ddm_v550_bridge.py",
+      "symbols": [
+        "make_v550_evidence_bridge_rows"
+      ],
+      "finding": "V550 bridge machinery carries position-conditioning-derived source identity, indicator/value/response fragments, and provenance, but does not establish preservation of the complete respondent conditional distribution object with denominator and joint branch semantics."
+    },
+    {
+      "finding_id": "F04",
+      "evidence_class": "DIRECT_OBSERVATION_PLUS_INFERENCE",
+      "source_path": "data/ddm_build_copy/ddm_v551_conditional.py",
+      "symbols": [
+        "build_conditional_determinicity_index"
+      ],
+      "artifact": "conditional_determinicity_index.csv",
+      "finding": "V551 conditional determinicity groups structural atom participants by relation_id/indicator_name and summarizes dominant atom values, alternatives, ambiguity and coverage. It is semantically different from V550 respondent question-answer distributions conditioned on respondent position values."
+    },
+    {
+      "finding_id": "F05",
+      "evidence_class": "DIRECT_OBSERVATION_PLUS_INFERENCE",
+      "source_path": "data/ddm_build_copy/ddm_v551_atoms.py",
+      "finding": "The V551 atom registry preserves structural provenance fragments including source-table/source-row and indicator/value/response identity, but atom provenance cannot substitute for respondent-conditioned counts, percentages, denominators, question distributions, or conjunctive branch paths."
+    },
+    {
+      "finding_id": "F06",
+      "evidence_class": "DIRECT_OBSERVATION_PLUS_INFERENCE",
+      "source_paths": [
+        "data/ddm_build_copy/compile_v552_structural_ddm.py",
+        "data/ddm_build_copy/ddm_v552_structural.py"
+      ],
+      "symbols": [
+        "compile_v552_structural_ddm",
+        "build_v552_structural_outputs"
+      ],
+      "finding": "The V552 compiler can read and pass conditional_determinicity into the structural builder, but build_v552_structural_outputs explicitly deletes/ignores conditional_determinicity and emits conditional_determinicity_status_audit as an empty schema-only dataframe. Interface transport is not semantic consumption."
+    },
+    {
+      "finding_id": "F07",
+      "evidence_class": "DIRECT_OBSERVATION_PLUS_INFERENCE",
+      "source_path": "data/ddm_build_copy/ddm_v552_structural.py",
+      "symbols": [
+        "build_position_conditioning_profile_from_observations"
+      ],
+      "finding": "V552 recomputes an evidence-bearing position-conditioning profile by region_value over item/observation metrics such as money_scale, comfort and target_to_money_ratio. That is a different unit and target quantity from V550 respondent conditioning."
+    },
+    {
+      "finding_id": "F08",
+      "evidence_class": "INFERENCE_FROM_F01_F07",
+      "finding": "The seam exhibits material semantic loss across unit of analysis, conditioning identity, denominator, target variable and conjunctive branch-path structure. A rename alone cannot repair it."
+    }
+  ],
+  "artifact_dispositions": [
+    {
+      "artifact": "V550 position-conditional distribution rows",
+      "disposition": "EVIDENCE_BEARING_FIRST_CLASS_UPSTREAM_SEMANTICS_STRANDED_DOWNSTREAM",
+      "reason": "Carries respondent-conditioned question response frequencies/percentages."
+    },
+    {
+      "artifact": "V550 position-value counts/sample sizes",
+      "disposition": "EVIDENCE_BEARING_DENOMINATOR_SUPPORT",
+      "reason": "Required to interpret the conditioning population."
+    },
+    {
+      "artifact": "V550 recursive branch-conditioned response evidence",
+      "disposition": "EVIDENCE_BEARING_FIRST_CLASS_JOINT_CONDITIONAL_SEMANTICS_STRANDED_DOWNSTREAM",
+      "reason": "Carries conjunctive branch predicates, respondent subset support and branch-specific response distributions."
+    },
+    {
+      "artifact": "V550 bridge rows derived from position conditioning",
+      "disposition": "DERIVATIVE_EVIDENCE_AND_PROVENANCE_NON_SUBSTITUTIVE",
+      "reason": "Preserves lineage/fragments but is not demonstrated to preserve the complete conditional empirical object."
+    },
+    {
+      "artifact": "V551 atom registry",
+      "disposition": "EVIDENCE_AND_PROVENANCE_BEARING_STRUCTURAL_CARRIER_NON_EQUIVALENT",
+      "reason": "Preserves source fragments after a unit-of-analysis change."
+    },
+    {
+      "artifact": "conditional_determinicity_index.csv",
+      "disposition": "EVIDENCE_BEARING_STRUCTURAL_ATOM_SUMMARY_NOT_V550_CONDITIONAL_CARRIER",
+      "reason": "Valid on its own structural terms; hazardous if treated as preservation of respondent conditionality."
+    },
+    {
+      "artifact": "V552 position_conditioning_profile",
+      "disposition": "EVIDENCE_BEARING_ITEM_REGION_OBSERVATION_ROLLUP_NON_EQUIVALENT",
+      "reason": "Measures observation metrics by region/value rather than respondent answer distributions by arbitrary position field/value."
+    },
+    {
+      "artifact": "V552 conditional_determinicity_status_audit",
+      "disposition": "STATUS_HELPER_SCHEMA_ONLY_AT_PINNED_IMPLEMENTATION",
+      "reason": "Emitted empty and does not carry the underlying conditional evidence."
+    },
+    {
+      "artifact": "branch display/render helpers",
+      "disposition": "DISPLAY_HELPER_UNLESS_SEPARATELY_EVIDENCE_AUTHORIZED",
+      "reason": "Presentation cannot substitute for empirical branch rows."
+    }
+  ],
+  "semantic_loss_findings": [
+    {
+      "loss": "UNIT_OF_ANALYSIS_DRIFT",
+      "from": "respondent observations",
+      "to": "structural atoms/relation participants and later item/observation aggregates"
+    },
+    {
+      "loss": "CONDITIONING_KEY_DRIFT",
+      "from": "position_field/position_value and conjunctive branch predicates",
+      "to": "relation_id/indicator_name structural grouping or region_value observation rollup"
+    },
+    {
+      "loss": "DENOMINATOR_AND_MEASURE_DRIFT",
+      "from": "respondent subset sample size, response frequency and percentage",
+      "to": "atom-value concentration or observation metric count/mean"
+    },
+    {
+      "loss": "TARGET_VARIABLE_DRIFT",
+      "from": "per-question respondent answer distribution",
+      "to": "dominant structural atom value/ambiguity or item observation metrics"
+    },
+    {
+      "loss": "JOINT_BRANCH_SEMANTICS_LOSS",
+      "from": "normalized conjunctive branch path, depth, minimum-sample support and branch-specific response distribution",
+      "to": "no demonstrated first-class faithful downstream carrier"
+    },
+    {
+      "loss": "V552_CONDITIONAL_INPUT_NON_CONSUMPTION",
+      "from": "compiler reads/passes conditional_determinicity",
+      "to": "builder explicitly deletes/ignores it and emits an empty status-audit placeholder"
+    }
+  ],
+  "counterevidence": [
+    "V550 bridge machinery carries position-conditioning-derived provenance and selected semantic fragments.",
+    "V551 atoms preserve source-table/source-row and indicator/value/response lineage.",
+    "V552 compile interface accepts and passes a conditional_determinicity dataframe.",
+    "V552 position_conditioning_profile is genuinely evidence-bearing for a different observation-level question.",
+    "Therefore the verdict is not total erasure; it is failure to faithfully preserve the same respondent-conditioned empirical semantics."
+  ],
+  "naming_debt": {
+    "artifact": "conditional_determinicity_index.csv",
+    "finding": "The generic 'conditional' name can be mistaken for V550 respondent-conditioned evidence, although implementation summarizes structural atom value concentration/ambiguity."
+  },
+  "evidence_loss_debt": {
+    "finding": "Renaming does not restore the missing first-class respondent conditional distribution and conjunctive branch evidence, including conditioning identity, respondent denominator, question-response distribution and branch-path semantics."
+  },
+  "launch_target_symbol_status": [
+    {
+      "symbol": "compute_position_conditional_distributions",
+      "status": "DIRECTLY_LOCATED",
+      "classification": "SUBSTANTIVE_EMPIRICAL_EVIDENCE_PRODUCER"
+    },
+    {
+      "symbol": "recursive_branch_scan",
+      "status": "DIRECTLY_LOCATED",
+      "classification": "SUBSTANTIVE_BRANCH_CONDITIONAL_EVIDENCE_PRODUCER"
+    },
+    {
+      "symbol": "evaluate_branch",
+      "status": "DIRECTLY_LOCATED",
+      "classification": "SUBSTANTIVE_BRANCH_CONDITIONAL_EVIDENCE_SUPPORT"
+    },
+    {
+      "symbol": "branch_metrics",
+      "status": "DIRECTLY_LOCATED",
+      "classification": "SUBSTANTIVE_BRANCH_CONDITIONAL_EVIDENCE_SUPPORT"
+    },
+    {
+      "symbol": "compute_position_conditional_answer_distributions",
+      "status": "UNRESOLVED_EXACT_SYMBOL_LOCATION",
+      "classification": "DO_NOT_INFER_FROM_SIMILAR_SYMBOL"
+    },
+    {
+      "symbol": "compute_indicator_answer_matrix",
+      "status": "UNRESOLVED_EXACT_SYMBOL_LOCATION",
+      "classification": "DO_NOT_INFER_FROM_SIMILAR_SYMBOL"
+    },
+    {
+      "symbol": "build_branch_position_signatures",
+      "status": "UNRESOLVED_EXACT_SYMBOL_LOCATION",
+      "classification": "DO_NOT_INFER_FROM_OBSERVED_BRANCH_MACHINERY"
+    },
+    {
+      "symbol": "within-dimension tags / exact relation evidence producer inventory",
+      "status": "PARTIALLY_OBSERVED_PROVENANCE_EXACT_INVENTORY_UNRESOLVED"
+    },
+    {
+      "symbol": "branch-display support inventory",
+      "status": "EXACT_INVENTORY_UNRESOLVED",
+      "classification": "DISPLAY_MUST_REMAIN_SEPARATE_FROM_EMPIRICAL_EVIDENCE"
+    }
+  ],
+  "unresolved_questions": [
+    "Where, at exact launch base SHA, are the launch-listed exact symbols compute_position_conditional_answer_distributions, compute_indicator_answer_matrix, and build_branch_position_signatures, if they exist under those exact names?",
+    "What is the complete pinned inventory of within-dimension tag/exact-relation artifacts whose semantics derive from respondent position conditioning?",
+    "What is the complete pinned inventory of branch-display helpers, and which are strictly display versus evidence-producing wrappers?",
+    "Does any generated-data artifact outside the directly inspected source set already serialize the complete V550 respondent conditional or branch distributions for downstream reuse despite the source-level seam? No faithful downstream consumer was established by this court.",
+    "Which future stage should lawfully consume preserved respondent conditional evidence after its carrier is restored? This court does not reopen closed downstream jurisdiction."
+  ],
+  "recommended_parent_actions": [
+    "Accept that V550 respondent-position-conditioned empirical evidence is not faithfully preserved as a first-class downstream semantic object.",
+    "Do not treat conditional_determinicity_index.csv as the V550 respondent conditional carrier; preserve or rename its structural-atom meaning separately.",
+    "Authorize a dedicated non-demographic carrier for respondent position-conditioned distributions with position_field, position_value, question identity, response code, frequency, percentage, explicit sample-size denominator and replayable provenance.",
+    "Authorize a separate first-class carrier for conjunctive branch-conditioned distributions with normalized branch path, depth, branch sample size, min-sample provenance and question-response distributions.",
+    "Resolve the launch-listed exact-symbol inventory before implementation so hidden upstream authority is not duplicated or contradicted.",
+    "Keep V552 position_conditioning_profile semantically separate from respondent conditioning.",
+    "Revisit the V552 interface that transports conditional_determinicity but whose builder explicitly discards it; require either a lawful consuming contract or explicit transport/status semantics.",
+    "Prohibit demographic backfilling, psyche inference, deterministic actor assignment, or reconstruction of joint branch evidence from independent conditionals without explicit authority."
+  ],
+  "result_md_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R01/RESULT.md",
+  "result_json_path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R01/RESULT.json"
+}
