@@ -1635,5 +1635,84 @@ def main() -> int:
     return 1 if strict_failed else 0
 
 
+# PG8-008: V551J consumes V551 source/wave scope by governed machine identity.
+# Historical source/wave spellings remain provenance; all populated spellings
+# must resolve coherently to the exact UID pair published by V550J.
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    verify_frame_source_wave_identity_coherence as _pg8_verify_frame_source_wave_identity_coherence,
+    verify_manifest_source_wave_identity_coherence as _pg8_verify_manifest_source_wave_identity_coherence,
+)
+
+for _pg8_required in V551_V3_REQUIRED_COLUMNS.values():
+    _pg8_required.update({"source_family_uid", "wave_uid"})
+
+_pg8_legacy_expected_v551_scope = _expected_v551_scope
+
+
+def _expected_v551_scope(
+    run_id: str,
+    pattern_index: pd.DataFrame,
+    pattern_item_index: pd.DataFrame,
+    v550j_manifest_path: str | Path | None = None,
+) -> dict[str, Any]:
+    scope = _pg8_legacy_expected_v551_scope(
+        run_id,
+        pattern_index,
+        pattern_item_index,
+        v550j_manifest_path,
+    )
+    if not v550j_manifest_path:
+        raise BoundaryContractError("V551J_V550J_UID_SCOPE_MANIFEST_REQUIRED")
+    manifest = _read_json_object(v550j_manifest_path, "V550J_MANIFEST")
+    try:
+        coherence = _pg8_verify_manifest_source_wave_identity_coherence(manifest)
+    except Exception as exc:
+        raise BoundaryContractError(f"V551J_V550J_UID_SCOPE_INVALID:{exc}") from exc
+    if not coherence.source_family_uid or not coherence.wave_uid:
+        raise BoundaryContractError("V551J_V550J_UID_SCOPE_INCOMPLETE")
+    scope["source_family_uid"] = coherence.source_family_uid
+    scope["wave_uid"] = coherence.wave_uid
+    return scope
+
+
+def _verify_frame_scope(frame: pd.DataFrame, artifact_name: str, expected_scope: dict[str, Any]) -> None:
+    _require_frame_columns(frame, artifact_name)
+    if frame.empty:
+        return
+    expected_exact = {
+        "run_id": expected_scope["run_id"],
+        "source_family_uid": expected_scope["source_family_uid"],
+        "wave_uid": expected_scope["wave_uid"],
+    }
+    for column, expected in expected_exact.items():
+        observed = sorted({_clean(value) for value in frame[column].tolist() if _clean(value)})
+        if observed != [expected]:
+            raise BoundaryContractError(
+                f"V551_ARTIFACT_IDENTITY_MISMATCH:{artifact_name}:{column}:"
+                f"expected={expected}:observed={observed}"
+            )
+    observed_countries = sorted({_clean(value) for value in frame["country_code"].tolist() if _clean(value)})
+    if observed_countries != list(expected_scope["country_codes"]):
+        raise BoundaryContractError(
+            f"V551_ARTIFACT_IDENTITY_MISMATCH:{artifact_name}:country_codes:"
+            f"expected={expected_scope['country_codes']}:observed={observed_countries}"
+        )
+    try:
+        _pg8_verify_frame_source_wave_identity_coherence(
+            frame,
+            expected_source_family_uid=expected_scope["source_family_uid"],
+            expected_wave_uid=expected_scope["wave_uid"],
+            allow_empty=False,
+        )
+    except Exception as exc:
+        raise BoundaryContractError(f"V551_ARTIFACT_UID_SCOPE_INVALID:{artifact_name}:{exc}") from exc
+    schema_values = sorted({_clean(value) for value in frame["schema_version"].tolist() if _clean(value)})
+    compiler_values = sorted({_clean(value) for value in frame["compiler_version"].tolist() if _clean(value)})
+    if schema_values != [V551_V3_SCHEMA_VERSION]:
+        raise BoundaryContractError(f"V551_ARTIFACT_SCHEMA_VERSION_MISMATCH:{artifact_name}:{schema_values}")
+    if compiler_values != [V551_V3_COMPILER_VERSION]:
+        raise BoundaryContractError(f"V551_ARTIFACT_COMPILER_VERSION_MISMATCH:{artifact_name}:{compiler_values}")
+
+
 if __name__ == "__main__":
     raise SystemExit(main())
