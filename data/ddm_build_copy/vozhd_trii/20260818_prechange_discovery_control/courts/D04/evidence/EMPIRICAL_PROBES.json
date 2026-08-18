@@ -1,0 +1,152 @@
+{
+  "court": "D04",
+  "artifact": "EMPIRICAL_PROBES",
+  "branch_base_sha": "7ea5962f644ad796064e30ffafb46f2c077404b9",
+  "production_code_modified": false,
+  "method": "Micro-fixtures reproduce the exact state-order, pandas preparation/join/crosstab/modal-cell, denominator, and metric operations inspected in current V550. The GitHub connector does not expose a local repository runtime, so these are faithful executable probes of the inspected operations rather than an import of the repository module. Code inspection remains the authority for orchestration, gating, checkpoint, replay, and eligibility behavior.",
+  "pair_order_matrix": {
+    "dual_dual": {
+      "eligibility": {"A": "anchor+feature", "B": "anchor+feature"},
+      "order_A_B": ["B->A"],
+      "order_B_A": ["A->B"],
+      "lawful_expected": ["A->B", "B->A"],
+      "result": "ORDER_DEPENDENT_AND_INCOMPLETE"
+    },
+    "anchor_only_A_feature_only_B": {
+      "order_A_B": [],
+      "order_B_A": ["A->B"],
+      "lawful_expected": ["A->B"],
+      "result": "ORDER_DEPENDENT"
+    },
+    "feature_only_A_anchor_only_B": {
+      "order_A_B": ["B->A"],
+      "order_B_A": [],
+      "lawful_expected": ["B->A"],
+      "result": "ORDER_DEPENDENT"
+    },
+    "anchor_only_anchor_only": {
+      "order_A_B": [],
+      "order_B_A": [],
+      "lawful_expected": [],
+      "result": "NO_DEFECT"
+    },
+    "feature_only_feature_only": {
+      "order_A_B": [],
+      "order_B_A": [],
+      "lawful_expected": [],
+      "result": "NO_DEFECT"
+    }
+  },
+  "directional_fixture": {
+    "anchor_A": [["1", "a"], ["2", "a"], ["3", "a"], ["4", "x"]],
+    "candidate_B": [["1", "b"], ["2", "b"], ["3", "y"], ["4", "y"]],
+    "A_to_B": {
+      "selected_cell": ["a", "b"],
+      "n_overlap": 2,
+      "n_anchor": 3,
+      "n_candidate_baseline": 2,
+      "candidate_denominator": 4,
+      "p_cotravelling_given_anchor": 0.6666666666666666,
+      "p_cotravelling_baseline": 0.5,
+      "lift": 1.3333333333333333
+    },
+    "B_to_A": {
+      "selected_cell": ["b", "a"],
+      "n_overlap": 2,
+      "n_anchor": 2,
+      "n_candidate_baseline": 3,
+      "candidate_denominator": 4,
+      "p_cotravelling_given_anchor": 1.0,
+      "p_cotravelling_baseline": 0.75,
+      "lift": 1.3333333333333333
+    },
+    "result": "CONDITIONAL_FIELDS_ARE_DIRECTIONAL"
+  },
+  "partial_overlap_fixture": {
+    "anchor_A": [["1", "a"], ["2", "a"], ["3", "a"], ["4", "x"]],
+    "candidate_B": [["2", "b"], ["3", "b"], ["4", "y"], ["5", "b"], ["6", "b"]],
+    "selected_cell": ["a", "b"],
+    "actual_complete_case_respondents": 3,
+    "n_overlap_field_selected_cell_count": 2,
+    "n_anchor": 3,
+    "n_candidate_baseline": 4,
+    "candidate_denominator": 5,
+    "p_cotravelling_given_anchor": 0.6666666666666666,
+    "p_cotravelling_baseline": 0.8,
+    "lift": 0.8333333333333333,
+    "result": "MATCHES_D03_DENOMINATOR_ORACLE"
+  },
+  "routing_missingness_fixture": {
+    "anchor_rows": [
+      {"respondent_id": "1", "response": "IAP", "is_iap": true, "is_substantive": false},
+      {"respondent_id": "2", "response": "IAP", "is_iap": true, "is_substantive": false},
+      {"respondent_id": "3", "response": "yes", "is_iap": false, "is_substantive": true},
+      {"respondent_id": "4", "response": "no", "is_iap": false, "is_substantive": true}
+    ],
+    "candidate_rows": [
+      {"respondent_id": "1", "response": "DK", "is_dk": true, "is_substantive": false},
+      {"respondent_id": "2", "response": "DK", "is_dk": true, "is_substantive": false},
+      {"respondent_id": "3", "response": "yes", "is_dk": false, "is_substantive": true},
+      {"respondent_id": "4", "response": "no", "is_dk": false, "is_substantive": true}
+    ],
+    "selected_cell": ["IAP", "DK"],
+    "n_overlap": 2,
+    "p_cotravelling_given_anchor": 1.0,
+    "p_cotravelling_baseline": 0.5,
+    "lift": 2.0,
+    "result": "SPECIAL_NON_SUBSTANTIVE_CODES_CAN_BECOME_MODAL_COTRAVEL_CELL"
+  },
+  "duplicate_order_fixture": {
+    "candidate_B": [["1", "b1"], ["2", "b1"], ["3", "b1"], ["4", "b2"]],
+    "anchor_A_order_1": [["1", "yes"], ["1", "no"], ["2", "yes"], ["3", "yes"], ["4", "no"]],
+    "anchor_A_order_2": [["1", "no"], ["1", "yes"], ["2", "yes"], ["3", "yes"], ["4", "no"]],
+    "order_1": {"selected_cell": ["yes", "b1"], "n_overlap": 3, "n_anchor": 3},
+    "order_2": {"selected_cell": ["yes", "b1"], "n_overlap": 2, "n_anchor": 2},
+    "result": "FIRST_ROW_COLLAPSE_IS_ROW_ORDER_SENSITIVE_FOR_CONFLICTING_DUPLICATES"
+  },
+  "exact_duplicate_fixture": {
+    "description": "Repeating an identical respondent/question normalized response is collapsed to one row and does not inflate the cloud count.",
+    "classification": "NO_DEFECT_FOR_TRUE_DUPLICATION"
+  },
+  "modal_tie_fixture": {
+    "joint_maxima": [["a1", "b2", 2], ["a2", "b1", 2]],
+    "A_to_B_selected": ["a1", "b2"],
+    "B_to_A_selected": ["b1", "a2"],
+    "reverse_is_not_transpose_of_forward": true,
+    "classification": "MISSING_AUTHORITY",
+    "reason": "D03 explicitly leaves modal-cell tie-breaking law unresolved."
+  },
+  "nmi_unit_probe": {
+    "fixture": "perfect deterministic binary mapping [0,0,1,1] -> [0,0,1,1]",
+    "sklearn_mutual_info_score_nats": 0.6931471805599453,
+    "entropy_bits": 1.0,
+    "current_normalized_mutual_information": 0.6931471805599453,
+    "unit_consistent_normalized_mutual_information": 1.0,
+    "cramers_v": 1.0,
+    "result": "NMI_NORMALIZATION_UNIT_MISMATCH"
+  },
+  "cloud_gate_probes": {
+    "auto_branch_1001_base_1000": {"emit": false, "effective_threshold": 1000},
+    "share_branch_1500_base_1000_wave_10000_share_0_2": {"emit": true, "effective_threshold": 2000},
+    "share_branch_2001_base_1000_wave_10000_share_0_2": {"emit": false, "effective_threshold": 2000},
+    "full": "always true",
+    "off": "always false",
+    "share_rule": "threshold=max(cloud_max_branch_rows, round(wave_respondents*cloud_max_branch_share))"
+  },
+  "resume_counterexample": {
+    "fresh_order": ["A", "B"],
+    "eligibility": {"A": "anchor+feature", "B": "anchor+feature"},
+    "fresh_current_output": ["B->A"],
+    "resume_state_reset": true,
+    "A_checkpoint_skipped": true,
+    "A_rehydrated_into_attitude_cloud_state": false,
+    "B_recomputed_output": [],
+    "result": "RESUME_NOT_SEMANTICALLY_EQUIVALENT_TO_FRESH_COMPUTE"
+  },
+  "scope_probe": {
+    "state_key": ["run_id", "source", "wave", "canonical_wave", "country_code"],
+    "cross_scope_respondent_id_collision_can_join": false,
+    "within_scope_question_id_collision_behavior": "state dictionary key overwrite; governing uniqueness authority not established by D04",
+    "result": "REQUESTED_SCOPE_DIMENSIONS_ISOLATED"
+  }
+}
