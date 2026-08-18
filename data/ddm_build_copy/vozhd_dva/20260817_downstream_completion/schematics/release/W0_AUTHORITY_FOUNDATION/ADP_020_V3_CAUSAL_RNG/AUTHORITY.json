@@ -1,0 +1,533 @@
+{
+  "authority_id": "ADP-020",
+  "authority_version": "1.0.0",
+  "authority_name": "V3 causal randomness / named-stream policy",
+  "authority_class": "MUST-020",
+  "status": "PASS",
+  "architecture_status": "WHOLE_MACHINE_ARCHITECTURE_CLOSED",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-dva-w0-adp-020-v3-causal-rng",
+  "exact_base_sha": "655da47b9e03ab310ed4b7fa65ceec9b9d04d3bc",
+  "historical_archive": {
+    "logical_name": "Rawlsing_code_bundle_staging.zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "verified_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "verification": "EXACT_MATCH",
+    "use": "CONTINUITY_AND_AUTHORITY_RECOVERY_EVIDENCE_ONLY",
+    "historical_v5_ddm_current_authority": false
+  },
+  "bounded_question": "Define only V3 causal stochastic operation authority, named streams, seed lineage, candidate-set identity, event/draw coordinates, rule/version replay identity, persisted provenance, actor/genealogy isolation, and fail-closed behavior. Candidate semantics, scheduler precedence, V3 domain semantics, and V2 render randomness remain outside ADP-020.",
+  "constitutional_laws": [
+    "RANDOMNESS_IS_NOT_SEMANTIC_AUTHORITY",
+    "RNG_SELECTS_ONLY_AMONG_ALREADY_LAWFUL_OUTCOMES",
+    "MISSING_CANDIDATE_AUTHORITY_CANNOT_BE_REPAIRED_BY_RANDOMNESS",
+    "MISSING_SEMANTIC_RULE_CANNOT_BE_REPAIRED_BY_RANDOMNESS",
+    "EMPTY_CANDIDATE_SET_GETS_NO_RANDOM_FALLBACK",
+    "V3_CAUSAL_RNG_IS_SEPARATE_FROM_V2_RENDER_RNG",
+    "NO_HIDDEN_WALL_CLOCK",
+    "NO_FILESYSTEM_ORDER_DEPENDENCE",
+    "NO_MUTABLE_LATEST",
+    "NO_UNNAMED_OR_GLOBAL_AMBIENT_RNG",
+    "NO_UNRECORDED_STOCHASTIC_LLM_CAUSAL_TRUTH",
+    "CHANGED_CANDIDATE_SET_CHANGES_REPLAY_IDENTITY",
+    "DETERMINISTIC_OPERATIONS_CONSUME_ZERO_GRATUITOUS_DRAWS",
+    "RULE_VERSION_DIVERGENCE_IS_DISTINCT_FROM_RANDOM_DRAW_DIVERGENCE"
+  ],
+  "root_seed_policy": {
+    "width_bytes": 32,
+    "serialization": "64 lowercase hexadecimal characters",
+    "lawful_sources": [
+      "EXPLICIT_CALLER_SEED",
+      "RECORDED_OS_CSPRNG_ROOT_SEED_V1"
+    ],
+    "recorded_os_csprng_rule": "Exactly one named 32-byte OS-CSPRNG acquisition at creation of a new causal universe/run; exact resulting seed material and provenance MUST be persisted atomically before the first causal draw.",
+    "forbidden_sources": [
+      "wall_clock",
+      "process_id",
+      "Python_hash",
+      "filesystem_order",
+      "mutable_latest",
+      "implicit_library_default_seed",
+      "V2_render_seed",
+      "LLM_sampling_state",
+      "unrecorded_environment_entropy"
+    ],
+    "persist_before_first_draw": [
+      "root_seed_id",
+      "root_seed_material_hex_or_exact_reproducible_secret_capability",
+      "root_seed_sha256",
+      "root_seed_source",
+      "root_seed_source_version",
+      "authority_id",
+      "authority_version",
+      "seed_scheme_id",
+      "seed_scheme_version",
+      "causal_run_id"
+    ],
+    "digest_alone_sufficient_for_replay": false,
+    "replacement_inside_existing_causal_history": "FORBIDDEN"
+  },
+  "named_stream_model": {
+    "namespace": "v3.causal",
+    "stream_name_pattern": "^v3\\.causal\\.[a-z0-9][a-z0-9_.-]{0,127}$",
+    "registration_rule": "Every semantic rule that may consume entropy MUST declare one exact static stream_name and an allowed ADP-020 operation in its governed rule-registry entry.",
+    "scope_is_separate_from_stream_name": true,
+    "allowed_scope_kinds": [
+      "RUN",
+      "ACTOR",
+      "JOINT",
+      "GENEALOGY"
+    ],
+    "scope_contract": {
+      "RUN": "Only for explicitly governed pre-actor/run-level causal choices where the consumer proves no narrower stable scope exists.",
+      "ACTOR": "Exact generated actor_id; actor identity must exist before actor-scoped draws.",
+      "JOINT": "Exact owner-supplied content-addressed joint_scope_id; ADP-020 does not define participant/role semantics.",
+      "GENEALOGY": "Exact owner-supplied content-addressed genealogy_scope_id; child actor streams subsequently derive from stable child_actor_id."
+    },
+    "dynamic_material_forbidden_in_stream_name": [
+      "actor_id",
+      "wall_clock_or_year_as_incidental_time",
+      "filename_or_path",
+      "candidate_id",
+      "candidate_set_hash",
+      "rule_version"
+    ],
+    "v2_namespace_rejected": true,
+    "ambient_global_rng_rejected": true
+  },
+  "seed_lineage": {
+    "seed_scheme_id": "V3_CAUSAL_HMAC_SHA256_COUNTER_V1",
+    "seed_scheme_version": "1.0.0",
+    "domain_separator": "RAWLSING\\0ADP-020\\0V3_CAUSAL_HMAC_SHA256_COUNTER_V1\\0",
+    "canonical_serialization": "UTF-8 canonical JSON; controlled keys sorted; no insignificant whitespace; Unicode strings NFC-normalized; integer numeric coordinate fields only.",
+    "scope_seed_formula": "HMAC-SHA256(root_seed, domain_separator || canonical_json({kind:'scope',scope_kind,scope_id}))",
+    "stream_seed_formula": "HMAC-SHA256(scope_seed, domain_separator || canonical_json({kind:'stream',stream_name}))",
+    "persist_seed_digests": [
+      "root_seed_sha256",
+      "scope_seed_sha256",
+      "stream_seed_sha256"
+    ],
+    "rule_version_salts_stream_seed": false,
+    "candidate_set_hash_salts_stream_seed": false,
+    "orthogonality_law": "Rule identity and candidate-set identity participate in decision replay identity, not stream seed derivation, so semantic/candidate divergence is distinguishable from raw-entropy divergence.",
+    "actor_isolation": "root -> ACTOR(actor_id) -> stream",
+    "joint_isolation": "root -> JOINT(joint_scope_id) -> stream",
+    "genealogy_isolation": "root -> GENEALOGY(genealogy_scope_id) -> stream",
+    "child_isolation": "root -> ACTOR(child_actor_id) -> stream after lawful child identity creation",
+    "parent_mutable_rng_state_inheritance": "FORBIDDEN",
+    "sibling_order_dependence": "FORBIDDEN"
+  },
+  "entropy_algorithm": {
+    "algorithm_id": "ADP020_HMAC_SHA256_UNIFORM_BELOW_V1",
+    "algorithm_version": "1.0.0",
+    "state_model": "COUNTER_DERIVED_NO_OPAQUE_MUTABLE_PRNG_STATE",
+    "draw_coordinate_fields": [
+      "scope_kind",
+      "scope_id",
+      "stream_name",
+      "anchor_event_index",
+      "anchor_event_id_or_init_checkpoint_hash",
+      "rule_invocation_id",
+      "decision_slot",
+      "occurrence_index",
+      "draw_index"
+    ],
+    "index_base": 0,
+    "initialization_anchor": {
+      "anchor_event_index": -1,
+      "anchor_event_id": "INIT:<initial_checkpoint_hash>"
+    },
+    "uniform_below_contract": "For 1<=n<=2^64-1, derive HMAC-SHA256(stream_seed, domain_separator || canonical(draw_coordinate) || canonical({block_index})); interpret first 8 bytes as unsigned big-endian x; limit=2^64-(2^64 mod n); reject x>=limit by incrementing internal block_index; return x mod n. Internal rejection blocks do not advance semantic draw_index.",
+    "idempotence": "Same draw coordinate plus same replay identity reuses/verifies the same receipt. Same coordinate plus different replay identity is RNG_DRAW_COORDINATE_REUSE_CONFLICT."
+  },
+  "event_draw_index_semantics": {
+    "anchor_event_index": "Zero-based latest committed V3 causal ledger event anchoring the decision; -1 only for initialization.",
+    "anchor_event_id": "Exact anchor event ID, or INIT:<initial_checkpoint_hash>.",
+    "rule_invocation_id": "Stable identity supplied by the owning V3 rule/scheduler invocation contract; ADP-020 does not define scheduler precedence.",
+    "decision_slot": "Static rule-declared stochastic slot, never a filename or incidental loop position.",
+    "occurrence_index": "Zero-based owner-defined canonical semantic ordinal when the same slot lawfully recurs within one invocation; never filesystem/container order.",
+    "draw_index": "Zero-based entropy draw inside one decision; deterministic results have no draw index.",
+    "result_event_index": "Null until an outcome is independently admitted/generated as a V3 event; RNG never reserves or creates a causal event index."
+  },
+  "allowed_stochastic_operations": [
+    {
+      "operation": "UNIFORM_CANDIDATE",
+      "authority_precondition": "Nonempty already-lawful finite candidate set; owning semantic rule explicitly authorizes equiprobability.",
+      "draw_law": "One UNIFORM_BELOW(candidate_count) draw unless candidate_count=1, then zero draws."
+    },
+    {
+      "operation": "WEIGHTED_CANDIDATE_INTEGER",
+      "authority_precondition": "Already-lawful finite candidates plus exact nonnegative integer weight_units supplied by owning semantic rule; at least one positive.",
+      "draw_law": "One UNIFORM_BELOW(total_weight) draw unless exactly one positive-weight outcome, then zero draws."
+    },
+    {
+      "operation": "BERNOULLI_RATIONAL",
+      "authority_precondition": "Exact integer numerator/denominator from owning semantic rule; 0<=numerator<=denominator and denominator>0.",
+      "draw_law": "One UNIFORM_BELOW(denominator) only for 0<numerator<denominator; p=0/1 consumes zero draws."
+    },
+    {
+      "operation": "UNIFORM_INTEGER_RANGE",
+      "authority_precondition": "Owning semantic rule already authorizes inclusive finite integer [min,max].",
+      "draw_law": "One UNIFORM_BELOW(max-min+1) unless singleton range."
+    },
+    {
+      "operation": "UNIFORM_FIXED_POINT_RANGE",
+      "authority_precondition": "Owning semantic rule supplies authorized integer-tick range and exact scale/quantization.",
+      "draw_law": "Same as UNIFORM_INTEGER_RANGE over ticks."
+    },
+    {
+      "operation": "SAMPLE_WITHOUT_REPLACEMENT",
+      "authority_precondition": "Owning semantic rule explicitly authorizes stochastic finite sampling.",
+      "draw_law": "One semantic draw per nondeterministic selected position; deterministic remainder positions and k=0 consume none."
+    },
+    {
+      "operation": "RANDOM_PERMUTATION",
+      "authority_precondition": "Owning semantic rule explicitly makes order stochastic.",
+      "draw_law": "Versioned Fisher-Yates using UNIFORM_BELOW; cardinality 0/1 consumes none."
+    }
+  ],
+  "not_authorized_as_v1_causal_rng_operations": [
+    "arbitrary_float_library_distribution",
+    "model_sampling",
+    "random_UUID_or_incidental_ID",
+    "random_serialization_order",
+    "random_candidate_generation"
+  ],
+  "candidate_set_contract": {
+    "version": "ADP020_CANDIDATE_SET_V1",
+    "rng_may_create_candidates": false,
+    "required_candidate_fields": [
+      "candidate_id",
+      "candidate_replay_hash",
+      "candidate_authority_id",
+      "candidate_authority_version",
+      "eligibility_or_admission_receipt_hash"
+    ],
+    "weighted_addition": "weight_units exact nonnegative integer",
+    "identity_modes": {
+      "SET_CANONICAL": "Default. Candidate IDs NFC-normalized and unique. Canonical entries sorted by UTF-8 candidate_id then candidate_replay_hash only for content addressing/selection coordinate; this is not semantic precedence.",
+      "SEMANTIC_ORDERED": "Only when owner declares order semantic. Persist contiguous semantic_position=0..n-1. Runtime iteration order cannot substitute."
+    },
+    "hash_formula": "SHA-256('ADP020_CANDIDATE_SET_V1\\0' || canonical_json({identity_mode,candidate_owner_authority,entries including candidate replay hashes and operation-relevant integer weights}))",
+    "durability": "Persist the full canonical candidate-set record or immutable content-addressed reference that exactly reconstructs it; hash alone is insufficient if the set cannot be recovered.",
+    "changed_set_changes_replay_identity": true,
+    "input_iteration_order_alone_changes_set_identity": false,
+    "empty_set_law": "Zero RNG draws. Preserve semantic owner's lawful-empty/deferred/blocked state. No first-item/fabricated/random fallback.",
+    "candidate_semantics_owner": "OUTSIDE_ADP_020"
+  },
+  "deterministic_no_draw_law": {
+    "mandatory": true,
+    "examples": [
+      "single candidate",
+      "single positive-weight candidate",
+      "Bernoulli p=0 or p=1",
+      "integer/fixed-point singleton range",
+      "sample size 0",
+      "deterministic semantic rule"
+    ],
+    "recording": "Persist DecisionReceipt with draw_consumed=false; no DrawReceipt and no dummy sequence advance."
+  },
+  "decision_receipt_contract": {
+    "version": "ADP020_DECISION_RECEIPT_V1",
+    "required_fields": [
+      "decision_receipt_id",
+      "authority_id",
+      "authority_version",
+      "seed_scheme_id",
+      "seed_scheme_version",
+      "entropy_algorithm_id",
+      "entropy_algorithm_version",
+      "root_seed_id",
+      "root_seed_sha256",
+      "scope_kind",
+      "scope_id",
+      "scope_seed_sha256",
+      "stream_name",
+      "stream_seed_sha256",
+      "anchor_event_index",
+      "anchor_event_id_or_init_checkpoint_hash",
+      "rule_invocation_id",
+      "decision_slot",
+      "occurrence_index",
+      "semantic_rule_id",
+      "semantic_rule_version",
+      "semantic_rule_registry_hash",
+      "operation",
+      "stochastic_parameters_hash",
+      "candidate_set_ref",
+      "candidate_set_hash",
+      "draw_consumed",
+      "draw_receipt_ids",
+      "selected_outcome_id_or_value",
+      "selected_candidate_replay_hash_if_any",
+      "result_event_id",
+      "result_event_index",
+      "decision_replay_identity_hash",
+      "created_under_causal_run_id"
+    ],
+    "semantic_rule_identity_in_stream_seed": false,
+    "semantic_rule_identity_in_replay_identity": true,
+    "candidate_set_identity_in_stream_seed": false,
+    "candidate_set_identity_in_replay_identity": true,
+    "replay_identity_formula": "SHA-256('ADP020_DECISION_REPLAY_V1\\0' || canonical_json(authority/algorithm versions + seed-lineage digests + draw coordinate + semantic rule identity + operation + stochastic_parameters_hash + candidate_set_hash/ref))"
+  },
+  "draw_receipt_contract": {
+    "version": "ADP020_DRAW_RECEIPT_V1",
+    "required_fields": [
+      "draw_receipt_id",
+      "decision_receipt_id",
+      "draw_index",
+      "entropy_block_count",
+      "uniform_below_n",
+      "uniform_below_result",
+      "raw_entropy_u64_first_accepted",
+      "draw_coordinate_hash",
+      "draw_replay_hash"
+    ],
+    "record_raw_accepted_u64": true,
+    "deterministic_result_has_draw_receipt": false
+  },
+  "recording_obligations": {
+    "before_first_draw": [
+      "RootSeedRecord",
+      "seed_and_entropy_algorithm_versions",
+      "causal_run_identity"
+    ],
+    "per_stream_first_use": [
+      "scope_identity",
+      "scope_seed_sha256",
+      "static_stream_name",
+      "stream_seed_sha256",
+      "declaring_semantic_rule_registry_ref"
+    ],
+    "per_decision": [
+      "CandidateSetRecord_or_exact_ref_when_applicable",
+      "semantic_rule_identity",
+      "stochastic_parameters_record_and_hash",
+      "DecisionReceipt"
+    ],
+    "per_entropy_draw": [
+      "DrawReceipt"
+    ],
+    "per_causal_event_if_rng_used": [
+      "decision_receipt_ids",
+      "semantic_rule_id_and_version",
+      "selected_candidate_or_outcome_identity",
+      "event_admission_or_generation_receipt",
+      "result_event_index"
+    ],
+    "per_checkpoint": [
+      "causal_event_history_hash",
+      "cumulative_rng_decision_receipt_ledger_hash",
+      "root_seed_id_and_hash",
+      "runtime_rule_registry_hash"
+    ],
+    "retention": "All replay-required RNG records are immutable/content-addressed for the lifetime of the replayable causal history."
+  },
+  "deterministic_replay_contract": {
+    "required_inputs": [
+      "immutable_V558_repository_bundle_identity",
+      "resolver_policy_rule_versions_and_selection_receipts",
+      "initial_V3_checkpoint_state",
+      "runtime_semantic_rule_registry_hashes",
+      "ADP020_authority_seed_sampler_versions",
+      "exact_root_seed_material_and_provenance",
+      "scope_stream_lineage",
+      "candidate_set_records",
+      "stochastic_parameter_records",
+      "draw_coordinates_and_receipts",
+      "admitted_external_events_in_exact_causal_order"
+    ],
+    "required_result": "Recompute every stochastic decision and selected result, then reproduce the same admitted/generated V3 causal-event sequence and event/history/checkpoint hashes under the owning V3 rules.",
+    "same_inputs_same_choices": true,
+    "divergence_classes": {
+      "RULE_VERSION_DIVERGENCE": "Rule/version changed while raw entropy coordinate may remain identical.",
+      "CANDIDATE_SET_DIVERGENCE": "Candidate-set identity changed while raw entropy coordinate may remain identical.",
+      "RANDOM_DRAW_DIVERGENCE": "Root/scope/stream/draw coordinate or recomputed entropy changed."
+    },
+    "unsupported_algorithm_behavior": "BLOCK_REPLAY_NO_REINTERPRETATION",
+    "incomplete_metadata_behavior": "BLOCK_REPLAY_OR_LIVE_MUTATION_NO_RESEED_SALVAGE",
+    "hidden_sources_forbidden": [
+      "wall_clock",
+      "mutable_latest",
+      "filesystem_order",
+      "hidden_network_entropy",
+      "global_RNG_state",
+      "Python_hash_randomization",
+      "unrecorded_model_sampling",
+      "unrecorded_prompt_output"
+    ]
+  },
+  "llm_boundary": {
+    "LLM_sampling_is_ADP020_rng": false,
+    "law": "A model may emit only a non-authoritative proposal under separate authority. Before ADP-020 may select among model proposals, each exact proposal must be content-addressed, recorded, independently admitted as a lawful candidate, and included in CandidateSetRecord.",
+    "force_selection_when_all_proposals_fail": "FORBIDDEN"
+  },
+  "cross_actor_genealogy_isolation": {
+    "actor_stream": "root -> ACTOR(actor_id) -> named stream",
+    "joint_stream": "root -> JOINT(joint_scope_id) -> named stream",
+    "genealogy_stream": "root -> GENEALOGY(genealogy_scope_id) -> named stream",
+    "child_stream": "root -> ACTOR(child_actor_id) -> named stream after lawful identity creation",
+    "parent_rng_state_inheritance": "FORBIDDEN",
+    "sibling_order_dependence": "FORBIDDEN",
+    "missing_stable_child_identity": "BLOCK_CHILD_SCOPED_DRAW; GENEALOGY_AUTHORITY_MUST_CREATE_IDENTITY"
+  },
+  "failure_states": [
+    "RNG_AUTHORITY_MISSING",
+    "RNG_ROOT_SEED_MISSING",
+    "RNG_ROOT_SEED_INVALID",
+    "RNG_SCOPE_IDENTITY_MISSING",
+    "RNG_STREAM_UNREGISTERED",
+    "RNG_STREAM_NAMESPACE_INVALID",
+    "RNG_SEED_LINEAGE_INCOMPLETE",
+    "RNG_SEMANTIC_RULE_IDENTITY_MISSING",
+    "RNG_OPERATION_NOT_AUTHORIZED",
+    "RNG_CANDIDATE_AUTHORITY_MISSING",
+    "RNG_CANDIDATE_SET_EMPTY",
+    "RNG_CANDIDATE_REPLAY_IDENTITY_INCOMPLETE",
+    "RNG_CANDIDATE_SET_HASH_MISMATCH",
+    "RNG_STOCHASTIC_PARAMETERS_INVALID",
+    "RNG_DRAW_COORDINATE_INCOMPLETE",
+    "RNG_DRAW_COORDINATE_REUSE_CONFLICT",
+    "RNG_ALGORITHM_VERSION_UNSUPPORTED",
+    "RNG_DECISION_RECEIPT_MISSING",
+    "RNG_DRAW_RECEIPT_MISSING",
+    "RNG_REPLAY_MISMATCH",
+    "RNG_AMBIENT_SOURCE_FORBIDDEN",
+    "RNG_UNRECORDED_STOCHASTIC_LLM_FORBIDDEN"
+  ],
+  "failure_law": "Authority/integrity/replay metadata failure blocks before causal mutation wherever possible. RNG failures are not semantic event outcomes and may not trigger random/default replacement behavior.",
+  "exact_consumers": {
+    "implementation_packets": [
+      "V3-P2",
+      "V3-P4",
+      "V3-P5",
+      "V3-P9",
+      "V3-P10",
+      "V3-P11"
+    ],
+    "consumer_contract": {
+      "V3-P2": "Use root/scope/named-stream law for separately authorized stochastic actor/entity initialization; never invent missing initialization authority.",
+      "V3-P4": "Use stable rule-invocation/decision coordinates for stochastic opportunities; scheduler precedence remains outside ADP-020.",
+      "V3-P5": "Persist/link DecisionReceipt and DrawReceipt identities into event admission/DevelopmentalEventLedger/checkpoints; selection is not event admission.",
+      "V3-P9": "Apply actor/joint/genealogy/child isolation for separately authorized relationship/reproduction/child-generation stochastic choices.",
+      "V3-P10": "Select only among already-lawful attractor transition/interpretation candidates when their owning rule permits stochasticity; no topology/type fallback.",
+      "V3-P11": "Replay/completion court recomputes seed lineage, candidate-set hashes, decision/draw receipts, and event/history/checkpoint hashes."
+    },
+    "later_dependent_authorities_after_Vozhd_adjudication": [
+      "ADP-007",
+      "ADP-009",
+      "ADP-010",
+      "ADP-015"
+    ],
+    "does_not_release_consumers_without_other_authorities": true
+  },
+  "out_of_scope": [
+    "V2_render_randomness",
+    "scheduler_precedence_or_slow_cadence",
+    "candidate_generation_or_admissibility_semantics",
+    "actor_initialization_distributions",
+    "event_semantics",
+    "genealogy_semantics",
+    "attractor_semantics",
+    "LLM_proposal_semantics_or_admission",
+    "external_event_admission_semantics",
+    "V558_resolution_policy"
+  ],
+  "forbidden_fallbacks": [
+    "random_candidate_from_ungoverned_source_list",
+    "first_candidate_fallback_after_lawful_selection_returns_none",
+    "fabricated_event_to_avoid_empty_candidate_set_or_year",
+    "random_default_biography_personality_position_or_parent_behavior",
+    "module_global_random_or_equivalent_for_causal_truth",
+    "random_Random_or_equivalent_with_implicit_seed",
+    "time_PID_Python_hash_filesystem_seed",
+    "reuse_V2_render_RNG_as_V3_causal_RNG",
+    "stochastic_LLM_completion_as_generated_fact_without_exact_proposal_admission_provenance",
+    "dummy_draw_on_deterministic_path",
+    "silent_replay_reseed_or_metadata_repair",
+    "candidate_canonical_sort_as_semantic_priority"
+  ],
+  "hostile_fixtures": [
+    {"id":"H01","case":"same_inputs_repeat","expected":"same entropy/result/receipt/event/checkpoint hashes"},
+    {"id":"H02","case":"scramble_SET_candidate_input_or_filesystem_order","expected":"same candidate-set hash and same choice"},
+    {"id":"H03","case":"candidate_added_or_removed","expected":"candidate-set hash/replay identity changes; classify separately from entropy divergence"},
+    {"id":"H04","case":"same_candidate_id_changed_payload_hash_or_weight","expected":"candidate-set hash changes; old receipt invalid"},
+    {"id":"H05","case":"rule_version_changed_same_seed_coordinate","expected":"raw entropy may remain same; RULE_VERSION_DIVERGENCE"},
+    {"id":"H06","case":"single_lawful_candidate","expected":"deterministic selection; draw_consumed=false"},
+    {"id":"H07","case":"empty_candidate_set","expected":"zero draw; no fabricated candidate/event; preserve owner typed state"},
+    {"id":"H08","case":"missing_semantic_rule_or_stochastic_permission","expected":"typed authority failure; zero draw"},
+    {"id":"H09","case":"ambient_or_default_rng_call","expected":"RNG_AMBIENT_SOURCE_FORBIDDEN"},
+    {"id":"H10","case":"two_actors_same_root_and_stream_name","expected":"distinct actor scope/stream seeds; draws cannot perturb across actors"},
+    {"id":"H11","case":"add_or_reorder_sibling","expected":"existing child actor stream unchanged"},
+    {"id":"H12","case":"multi_actor_joint_scope_runtime_order_changes","expected":"owner-supplied joint_scope_id controls seed; runtime list order irrelevant"},
+    {"id":"H13","case":"deterministic_probability_range_weight_branch","expected":"zero dummy draw"},
+    {"id":"H14","case":"same_draw_coordinate_different_replay_identity","expected":"RNG_DRAW_COORDINATE_REUSE_CONFLICT"},
+    {"id":"H15","case":"replay_has_seed_digest_but_not_seed_material","expected":"RNG_ROOT_SEED_MISSING; no reseed"},
+    {"id":"H16","case":"hidden_stochastic_LLM_output_treated_as_event","expected":"reject until exact recorded proposal and lawful candidate/admission status"},
+    {"id":"H17","case":"legacy_first_candidate_or_fabricated_fallback","expected":"forbidden; lawful empty/degraded state"},
+    {"id":"H18","case":"V2_rerender_changes_render_rng","expected":"V3 causal seed/receipts/history unchanged"},
+    {"id":"H19","case":"wall_clock_latest_or_filesystem_order_enters_seed_or_coordinate","expected":"authority violation"},
+    {"id":"H20","case":"persisted_draw_or_selection_tampered","expected":"RNG_REPLAY_MISMATCH; replay stops"}
+  ],
+  "evidence_inspected": {
+    "current_governance_and_architecture": [
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/LAUNCH_REGISTER.md (common law + W0-07 only)",
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.md",
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.json",
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V3_COMPLETION_IMPLEMENTATION_RULING.md",
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/RESULT.md",
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/closure/TD_R07_WHOLE_MACHINE_SYNTHETIC_LIFE/RESULT.md",
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+      "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/state/CURRENT_STATE.md"
+    ],
+    "current_source_tests": [
+      "recursive current branch/base tree: no terminal V3 runtime package/source present; implementation remains unreleased",
+      "data/ddm_build_copy/test_w03_v551j_v3_fail_closed.py",
+      "data/ddm_build_copy/test_w03_v551j_v3_consumer.py"
+    ],
+    "verified_historical_source": [
+      "v3/engine/scoring.py",
+      "v3/engine/run_llm_band.py",
+      "v3/engine/event_engine.py",
+      "v3/engine/effects/metabolization_effects.py",
+      "v3/io/seeds.py",
+      "v3/engine/yearly_step.py",
+      "v3/tests/test_distribution_smoke.py",
+      "server/generation/simulation.py",
+      "server/routes/start.py",
+      "server/routes/discovery.py",
+      "server/generation/formatting.py"
+    ],
+    "recovered_findings": [
+      "injectable Random exists but unnamed Random() fallback remains",
+      "surprise candidate choice uses sequential rng.random/rng.choice without terminal candidate/stream/draw provenance",
+      "run_llm_band has a first-candidate fallback after empty selection",
+      "rupture/metabolization source contains module-global random.random/random.choices causal paths",
+      "server simulation passes unseeded random.Random()",
+      "io/seeds demonstrates deterministic explicit-seed continuity but not named-stream isolation",
+      "event_engine pseudo-random mechanical events manufacture causal content rather than selecting only authority-backed candidates",
+      "distribution smoke tests demonstrate explicit per-agent seed/reproducibility intent"
+    ]
+  },
+  "continuity_disposition": {
+    "retain": [
+      "explicit_seeded_local_rng_intent",
+      "deterministic_replay_intent",
+      "bounded_stochastic_choice_after_lawful_candidate_production",
+      "causal_provenance"
+    ],
+    "replace_or_forbid": [
+      "unnamed_default_Random",
+      "module_global_RNG",
+      "implicit_shared_sequential_stream_state",
+      "pseudo_random_semantic_event_manufacture",
+      "first_candidate_or_fabricated_fallback_concretization",
+      "unrecorded_stochastic_LLM_causal_mutation"
+    ],
+    "historical_V5_DDM_current_authority": "ZERO"
+  },
+  "consumer_release_sufficiency": "SUFFICIENT",
+  "consumer_release_sufficiency_note": "MUST-020 is fully specified for its exact RNG/replay jurisdiction. This does not independently release any V3 consumer packet, which remains subject to its other rule/model authorities and Vozhd adjudication.",
+  "final_token": "ADP_020_V3_CAUSAL_RANDOMNESS_AUTHORITY = PASS"
+}
