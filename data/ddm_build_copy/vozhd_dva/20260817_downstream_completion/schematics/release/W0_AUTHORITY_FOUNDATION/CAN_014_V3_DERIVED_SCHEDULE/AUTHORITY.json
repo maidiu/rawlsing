@@ -1,0 +1,361 @@
+{
+  "authority_id": "V3_PURE_DERIVED_STATE_SCHEDULE",
+  "authority_version": "1.0.0",
+  "canonicalization_id": "CAN-014",
+  "worker_packet": "CDP-CAN-014",
+  "owner": "V3",
+  "status": "CANONICALIZED",
+  "authority_class": "AUTHORITY_NEEDS_CANONICALIZATION",
+  "whole_machine_architecture": "CLOSED",
+  "production_code_modified": false,
+  "new_causal_semantics_introduced": false,
+  "exact_base_sha": "655da47b9e03ab310ed4b7fa65ceec9b9d04d3bc",
+  "jurisdiction": {
+    "owns": [
+      "stable derived schedule identity and version",
+      "ordered pure-derived publication phases",
+      "logical output assignment per phase",
+      "initial/full recomputation semantics",
+      "stored-state input identity requirements",
+      "per-output freshness and provenance",
+      "schedule consistency and fail-fast behavior",
+      "cycle/duplicate/unknown handling for the derived schedule",
+      "cache/replay/hash obligations",
+      "legacy schedule compatibility validation"
+    ],
+    "does_not_own": [
+      "causal event scheduling",
+      "hybrid causal trigger precedence",
+      "slow cadence",
+      "annual timestep ontology",
+      "causal state-transition formulas",
+      "ungoverned derived formulas",
+      "V2 render or session scheduling",
+      "V550+ structural semantics"
+    ],
+    "causal_scheduler_authority": "ADP-021/MUST-021",
+    "render_session_schedule_authority": "SEPARATE_V2_AUTHORITY"
+  },
+  "historical_evidence": {
+    "archive_name": "Rawlsing_code_bundle_staging.zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "sha_verdict": "EXACT_MATCH",
+    "authority_limit": "Recovered V3/V2/server material is continuity and authority-recovery evidence only; recovered V5/DDM has zero authority over current V550+.",
+    "directly_inspected": [
+      {
+        "path": "v3/v3_yearly_step_order.yaml",
+        "sha256": "90496a2cc852ca00ef99c8bd4fcb2b41c9aa43c4aaa9108d3ac8cce0ebe22ffc"
+      },
+      {
+        "path": "v3/engine/step_runner.py",
+        "sha256": "5a737c1704eaa6dc2c67f6c2db3118a6daa8a213b44d559bc37eadbc9c09d95a"
+      },
+      {
+        "path": "v3/engine/yearly_step.py",
+        "sha256": "da3147c3da7ff2724a61dd26d595055668899c83beb541400f58633568b92acb"
+      },
+      {
+        "path": "v3/core/invariants.py",
+        "sha256": "81298f3fc51b46cda8d72d0db914b672b17b9a35e13004fe59a9b0e29dada5e3"
+      },
+      {
+        "path": "v3/core/derived.py",
+        "sha256": "e479fc3eba21734752c372742fb2ee247cbdde6a73ac42545dc30b5039301360"
+      },
+      {
+        "path": "v3/core/config_loader.py",
+        "sha256": "5f953d9661f61081187898c3ad06b4567bc4fa99d3d7cd856d30cdd961f78577"
+      },
+      {
+        "path": "v3/tests/test_architecture_invariants.py",
+        "sha256": "bb2baec1c57de169a2e1e05533b9721b4b05191403ff4993d61df17ac29d05fa"
+      }
+    ],
+    "mechanical_schedule_audit": {
+      "schedule_entry_count": 14,
+      "publication_phase_count": 7,
+      "top_level_vs_step_local_mismatches": 0,
+      "each_logical_output_assigned_once": true
+    },
+    "legacy_noncanonical_impurities": [
+      "v3/core/derived.py::compute_all_derived writes state.metabolic_style",
+      "v3/core/derived.py::compute_all_derived writes state.registers"
+    ]
+  },
+  "current_authority_evidence": [
+    "state/CURRENT_STATE.md",
+    "integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+    "integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md",
+    "integration/V3_COMPLETION_IMPLEMENTATION_RULING.md",
+    "schematics/recalibration/TD_R05_V3_DEVELOPMENTAL_RUNTIME/RESULT.md",
+    "schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.md",
+    "schematics/release/RA_R00_RULE_AUTHORITY_IMPLEMENTATION_RELEASE/RESULT.json"
+  ],
+  "current_v3_terrain": {
+    "base_sha": "655da47b9e03ab310ed4b7fa65ceec9b9d04d3bc",
+    "terminal_v3_production_runtime_tree_present": false,
+    "finding": "Current repository has accepted V3 governance/recalibration and V3-facing boundary tests but no production terminal V3 runtime tree at this base; no absent implementation behavior is inferred."
+  },
+  "input_contract": {
+    "stored_state_ref_required_fields": [
+      "state_schema_id",
+      "state_schema_version",
+      "state_version_id",
+      "state_content_sha256"
+    ],
+    "state_version_id_semantics": "Opaque identity owned by V3 causal/checkpoint authority; CAN-014 does not define causal advancement.",
+    "admissible_semantic_input_classes": [
+      "fields lawfully present in the frozen stored V3 causal-state snapshot"
+    ],
+    "required_control_identities": [
+      "authority_id",
+      "authority_version",
+      "derived_evaluator_set_id",
+      "derived_evaluator_set_version",
+      "derived_evaluator_set_sha256",
+      "exact governed config/rule identities required by the evaluator set"
+    ],
+    "forbidden_direct_inputs": [
+      "mutable wall clock",
+      "filesystem enumeration or order",
+      "mutable latest pointers",
+      "V2 render/session/transcript material",
+      "unadmitted proposals or LLM text",
+      "stale derived cache as stored truth",
+      "direct raw-stage/V550+ filesystem lookup",
+      "direct structural-prior substitution for actor stored state",
+      "unnamed randomness",
+      "any RNG"
+    ],
+    "missing_input_default_substitution_allowed": false
+  },
+  "schedule": {
+    "kind": "PURE_DERIVED_STATE_PUBLICATION_SCHEDULE",
+    "phase_order": ["D01", "D02", "D03", "D04", "D05", "D06", "D07"],
+    "phases": [
+      {
+        "order": 1,
+        "phase_id": "D01",
+        "legacy_anchor": "reproduction_constraints_update",
+        "logical_outputs": ["hostage_index"]
+      },
+      {
+        "order": 2,
+        "phase_id": "D02",
+        "legacy_anchor": "capacity_update",
+        "logical_outputs": ["agency_capacity_AC"]
+      },
+      {
+        "order": 3,
+        "phase_id": "D03",
+        "legacy_anchor": "health_drift_update",
+        "logical_outputs": ["health_level"]
+      },
+      {
+        "order": 4,
+        "phase_id": "D04",
+        "legacy_anchor": "buffers_update",
+        "logical_outputs": ["insulation_score"]
+      },
+      {
+        "order": 5,
+        "phase_id": "D05",
+        "legacy_anchor": "domains_update",
+        "logical_outputs": ["structural_lucidity_SL"]
+      },
+      {
+        "order": 6,
+        "phase_id": "D06",
+        "legacy_anchor": "cracks_and_alienation_update",
+        "logical_outputs": ["mis_aim_risk", "metabolic_style"]
+      },
+      {
+        "order": 7,
+        "phase_id": "D07",
+        "legacy_anchor": "topology_and_boundary_update",
+        "logical_outputs": [
+          "autonomy_gap",
+          "safety_gap",
+          "gap_pressure_index",
+          "alignment_vector",
+          "stability_threshold",
+          "peak_regime",
+          "che_jesus_eligible"
+        ]
+      }
+    ],
+    "logical_output_count": 14,
+    "logical_output_materialization": {
+      "metabolic_style": ["metabolic_style_current", "metabolic_style_trend"]
+    },
+    "annual_timestep_is_authority": false,
+    "hybrid_scheduler_precedence_is_authority": false
+  },
+  "recompute_semantics": {
+    "full_recompute": {
+      "required_for_new_coherent_snapshot_view": true,
+      "reads": "one exact frozen stored-state snapshot",
+      "evaluates": "complete versioned derived evaluator set",
+      "publishes": "all canonical derived outputs atomically",
+      "causal_mutation_allowed": false
+    },
+    "incremental_phase": {
+      "candidate_evaluation": "recompute complete candidate derived set from the exact frozen post-mutation state",
+      "publication": "publish only outputs assigned to the requested canonical phase",
+      "other_materialized_fields": "remain unchanged until their phase or FULL_RECOMPUTE",
+      "per_output_state_stamp_required": true,
+      "mixed_state_incremental_view_must_be_explicit": true
+    },
+    "rng_allowed": false,
+    "causal_state_side_effects_allowed": false
+  },
+  "stored_vs_derived_law": {
+    "stored_causal_state_equals_derived_view": false,
+    "derived_view_equals_causal_event_history": false,
+    "derived_is_recomputable": true,
+    "cache_is_semantically_authoritative": false,
+    "cache_persistence_required_for_causal_replay": false,
+    "derived_may_directly_mutate_causal_truth": false,
+    "causal_use_requirement": "A separately governed causal rule may read an admissible fresh derived value and must own/record any resulting causal transition."
+  },
+  "derived_view_identity": {
+    "view_kind": "V3_DERIVED_ACTOR_VIEW",
+    "field_stamp_required_fields": [
+      "logical_output_id",
+      "phase_id",
+      "source_state_ref",
+      "authority_id",
+      "authority_version",
+      "evaluator_set_id",
+      "evaluator_set_version",
+      "evaluator_set_sha256"
+    ],
+    "view_required_fields": [
+      "view_kind",
+      "authority_id",
+      "authority_version",
+      "field_stamps",
+      "canonical_view_sha256",
+      "coherence"
+    ],
+    "coherence_states": ["SINGLE_STATE_FULL", "MIXED_STATE_INCREMENTAL"]
+  },
+  "status_states": [
+    "DERIVED_READY",
+    "DERIVED_DEFERRED_NOT_REQUESTED",
+    "DERIVED_STALE",
+    "DERIVED_BLOCKED_MISSING_INPUT",
+    "DERIVED_BLOCKED_MISSING_EVALUATOR",
+    "DERIVED_SCHEDULE_INTEGRITY_FAILURE"
+  ],
+  "consistency_failure_law": {
+    "canonical_schedule_source": "V3_PURE_DERIVED_STATE_SCHEDULE@1.0.0",
+    "duplicate_declarations_have_precedence": false,
+    "failure_mode": "FAIL_CLOSED_FAIL_FAST",
+    "canonical_failure_class": "DERIVED_SCHEDULE_INTEGRITY_FAILURE",
+    "reject_conditions": [
+      "duplicate logical output",
+      "one logical output assigned to more than one phase",
+      "missing canonical logical output",
+      "undeclared extra scheduled output",
+      "unknown phase ID",
+      "phase order mismatch",
+      "legacy top-level schedule vs step-local declaration mismatch",
+      "duplicate local declaration hidden by set equality",
+      "missing or mismatched evaluator-set identity/version/hash",
+      "missing or mismatched input-state identity/hash",
+      "mutable or implicit latest authority selection",
+      "derived dependency cycle",
+      "derived evaluator causal-state side effect",
+      "RNG, wall-clock, or filesystem-order dependency",
+      "stale cache key presented as current",
+      "nondeterministic replay hash for identical replay tuple"
+    ],
+    "forbidden_fallbacks": [
+      "filesystem order",
+      "source-code order",
+      "empty schedule",
+      "first-N-step fallback",
+      "stale cache",
+      "guessed semantic default",
+      "implicit latest"
+    ]
+  },
+  "dependency_cycle_law": {
+    "evaluator_dependency_graph_required": true,
+    "must_be_finite": true,
+    "must_be_acyclic": true,
+    "allowed_dependency_sources": [
+      "frozen stored-state fields",
+      "derived values computed within the same complete candidate evaluation"
+    ],
+    "stale_materialized_derived_as_undeclared_dependency_allowed": false,
+    "cycle_behavior": "DERIVED_SCHEDULE_INTEGRITY_FAILURE",
+    "iterative_fixed_point_fallback_authorized": false
+  },
+  "compatibility_adapter": {
+    "legacy_source": "v3/v3_yearly_step_order.yaml",
+    "role": "compatibility reader/checker only",
+    "must_project_exact_canonical_schedule": true,
+    "step_local_derived_compute_role": "generated or check-only annotation",
+    "ignored_as_can014_authority": [
+      "execution.timestep",
+      "max_events_per_year",
+      "event sampling semantics",
+      "full causal steps spine except derived-anchor consistency",
+      "extension_policy as causal scheduler authority"
+    ],
+    "legacy_empty_schedule_fallback_allowed": false,
+    "legacy_first_n_steps_fallback_allowed": false
+  },
+  "replay_hash_obligations": {
+    "replay_tuple": [
+      "authority_id",
+      "authority_version",
+      "evaluator_set_id",
+      "evaluator_set_version",
+      "evaluator_set_sha256",
+      "StoredStateRef",
+      "requested_phase_or_FULL_RECOMPUTE"
+    ],
+    "deterministic": true,
+    "must_reproduce": [
+      "logical values",
+      "per-output provenance stamps",
+      "canonical derived-view hash"
+    ],
+    "cache_presence_affects_semantics": false,
+    "cache_lookup_requires_exact_key_match": true
+  },
+  "consumers": {
+    "direct_ra_r00": ["V3-P3", "V3-P4"],
+    "additional": ["V3 replay/audit/acceptance tooling"],
+    "explicit_nonconsumer": ["V2 render/session scheduler"]
+  },
+  "hostile_fixtures": [
+    {"id": "CAN014-H01", "condition": "top-level and local declarations disagree", "required": "DERIVED_SCHEDULE_INTEGRITY_FAILURE"},
+    {"id": "CAN014-H02", "condition": "same output declared twice in one phase", "required": "FAIL_FAST_DUPLICATE"},
+    {"id": "CAN014-H03", "condition": "one output assigned to two phases", "required": "FAIL_FAST_DUPLICATE_OWNERSHIP"},
+    {"id": "CAN014-H04", "condition": "phase order permuted", "required": "FAIL_FAST_ORDER_MISMATCH"},
+    {"id": "CAN014-H05", "condition": "implicit latest schedule version", "required": "FAIL_CLOSED_UNKNOWN_VERSION"},
+    {"id": "CAN014-H06", "condition": "missing evaluator identity/hash", "required": "DERIVED_BLOCKED_MISSING_EVALUATOR"},
+    {"id": "CAN014-H07", "condition": "state content hash mismatches state identity", "required": "DERIVED_SCHEDULE_INTEGRITY_FAILURE"},
+    {"id": "CAN014-H08", "condition": "derived evaluator writes causal-state field", "required": "FAIL_FAST_NO_CAUSAL_MUTATION"},
+    {"id": "CAN014-H09", "condition": "legacy write to state.metabolic_style or state.registers", "required": "REJECT_NONCANONICAL_IMPURITY"},
+    {"id": "CAN014-H10", "condition": "stale cache used after state version changes", "required": "DERIVED_STALE"},
+    {"id": "CAN014-H11", "condition": "same replay tuple yields different view hash", "required": "DERIVED_SCHEDULE_INTEGRITY_FAILURE"},
+    {"id": "CAN014-H12", "condition": "derived dependency cycle", "required": "DERIVED_SCHEDULE_INTEGRITY_FAILURE"},
+    {"id": "CAN014-H13", "condition": "incidental filesystem/module/dict order changes", "required": "CANONICAL_ORDER_UNCHANGED"},
+    {"id": "CAN014-H14", "condition": "annual timestep asserted as terminal cadence", "required": "REJECT_OUT_OF_JURISDICTION"},
+    {"id": "CAN014-H15", "condition": "hybrid causal precedence embedded in derived schedule", "required": "REJECT_BELONGS_TO_MUST_021"},
+    {"id": "CAN014-H16", "condition": "V2 render/session schedule used as derived schedule", "required": "REJECT_WRONG_AUTHORITY"},
+    {"id": "CAN014-H17", "condition": "missing input coerced to numeric or boolean default", "required": "DERIVED_BLOCKED_MISSING_INPUT"},
+    {"id": "CAN014-H18", "condition": "mixed-state incremental view presented as single-state coherent", "required": "DERIVED_SCHEDULE_INTEGRITY_FAILURE"},
+    {"id": "CAN014-H19", "condition": "full recompute fields do not share one state stamp", "required": "DERIVED_SCHEDULE_INTEGRITY_FAILURE"},
+    {"id": "CAN014-H20", "condition": "legacy projection adds undeclared fifteenth logical output", "required": "FAIL_FAST_UNDECLARED_OUTPUT"}
+  ],
+  "consumer_release_sufficiency": "PARTIAL",
+  "consumer_release_sufficiency_reason": "CAN-014 is complete for its bounded derived-schedule jurisdiction and satisfies that direct dependency for V3-P3/V3-P4, but RA-R00 records independent remaining blockers for both packets, including additional V3 state-rule canonicalizations for V3-P3 and MUST-021 plus other runtime dependencies for V3-P4.",
+  "final_token": "CAN_014_V3_DERIVED_SCHEDULE_CANONICALIZATION = PASS"
+}
