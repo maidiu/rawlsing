@@ -1,6 +1,6 @@
 # Live Itinerary
 
-**Status:** `ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_CLOSED__W1_FIRST_BATCH_5_ACCEPTED_1_FIX_ACTIVE__W1_BATCH_02_ACTIVE__V553_PRODUCTION_WAITING_SWID_G8`  
+**Status:** `ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_CLOSED__W1_FIRST_BATCH_CLOSED__BATCH02_5_ACCEPTED_1_FIX_ACTIVE__BATCH03_ACTIVE__V553_WAITING_SWID_G8`  
 **Canonical base:** `main`  
 **Coordinator:** Vozhd Dva
 
@@ -11,105 +11,118 @@
 - `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`
 - `integration/W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md`
 - `integration/W1_FIRST_BATCH_INTERIM_ADJUDICATION_RULING.md`
+- `integration/W1_BATCH_02_ADJUDICATION_RULING.md`
 - `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`
-- accepted TD-R00–TD-R07, RA-R00, W0 authorities and accepted W1 authorities.
+- accepted TD-R00–TD-R07, RA-R00, and accepted W0/W1 authority artifacts.
 
 **Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
-The Governing Spirit applies only to genuine lawful ambiguity after hard authority and jurisdiction.
+Architecture remains CLOSED. Remaining work is bounded authority resolution/canonicalization, implementation/migration, acceptance harnesses, and external production gates.
 
-## Architecture / release synthesis
+## Completed authority phases
 
-`WHOLE_MACHINE_ARCHITECTURE = CLOSED`.
+### W0 — CLOSED
 
-`IMPLEMENTATION_RELEASE_SYNTHESIS = PASS`.
+Eleven of eleven W0 authority/canonicalization cells accepted.
 
-`W0_AUTHORITY_FOUNDATION = CLOSED`.
+### W1 first batch — CLOSED
 
-RA-R00 remains mechanically closed: 24/24 blocking CAN items scheduled, 26/26 ADPs once, 53/53 implementation packets gate-audited, zero unscheduled blockers and zero ordinary-parallel dependency violations.
+Accepted:
+- ADP-002;
+- ADP-009;
+- ADP-010;
+- ADP-017;
+- ADP-021;
+- CAN-001 after narrow K01 correction.
 
-No global production implementation release exists.
+CAN-001 final merge: `ed618ecb0e9b263253691ae3a0745923ac0bfbd8`.
 
-## W1 first batch — 5 ACCEPTED / 1 FIX ACTIVE
+## Batch 02 court
 
-Binding interim ruling:
-`integration/W1_FIRST_BATCH_INTERIM_ADJUDICATION_RULING.md`.
+Binding ruling:
+`integration/W1_BATCH_02_ADJUDICATION_RULING.md`.
 
-Accepted/merged:
+Accepted:
+- CAN-008 — response / pressure-flow;
+- CAN-010 — need / expectation / striving;
+- CAN-011 — developmental middle state;
+- CAN-012 — rupture / metabolization;
+- CAN-001 continuation.
 
-- ADP-002 — PR #98 → `096c139947855e5a55abd9bc5a31eb8e6596c079`;
-- ADP-017 — PR #99 → `3d8cab238eca1c1f694eb778e39566bf3aaaf03a`;
-- ADP-021 — PR #101 → `72fe87268296f35f7aed30330f690880569ee3f1`;
-- ADP-010 — PR #102 → `28d504cb7d1b8e45a9f9085a465e50e41686bae6`;
-- ADP-009 — PR #103 → `1e66221fec9b645ac41c28ea290f239fb83116e2`.
+Active narrow return:
+- CAN-009 — material / organismic / vitality, PR #105.
 
-### CAN-001 continuation
+CAN-009 defect is limited to legacy universal numeric semantics. Preserve the embodied dimension registry; remove terminal authority from universal `0..100`, normalized delta, and clamp behavior. Exact quantity/measurement/effect authority must own units, domain, operation and composition.
 
-PR #100 remains open/draft on `agent/vozhd-dva-w1-can-001-v554-applicability`.
+PR #105 disposition comment: `5325291022`.
 
-Reviewed head: `b2359c57ec084483803a27fc206536b02f9dd3ea`.
+## Active six-slot cohort
 
-Narrow defect only: K01 may not make `V3_GENEALOGY` the universal generated-position binding producer. Generic generated structural-position authority is accepted ADP-009; CAN-001 must accept the exact separately-authorized generated-position binding from its actual V3 owner/interface while keeping V554 semantic ownership and ContextResolver evaluation.
+### Slot 1 — CAN-009 continuation
 
-Exact disposition is PR #100 comment `5324802520`.
+Existing branch/PR only:
+- `agent/vozhd-dva-w1-can-009-v3-material-vitality`
+- PR #105
 
-CAN-001 continues to block W2 V554 semantic implementation until accepted.
+No new PR.
 
-## Active W1 Batch 02
+### Slots 2–6 — W1 Batch 03
 
 Launch register:
-`schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/BATCH_02_LAUNCH_REGISTER.md`.
+`schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/BATCH_03_LAUNCH_REGISTER.md`.
 
-Run in parallel with CAN-001 continuation:
+Launch in parallel:
+1. CAN-015 — V2 phenomenological projection;
+2. CAN-016 — V2 salience accessibility;
+3. CAN-017 — V2 expression register;
+4. CAN-018 — V2 response move;
+5. CAN-021 — V2 session EnergeticField.
 
-- `CAN-008` — V3 actor response / pressure-flow / metabolism;
-- `CAN-009` — V3 material / organismic / vitality;
-- `CAN-010` — V3 need / expectation / striving;
-- `CAN-011` — V3 developmental middle state: framework/buffer/crack/wound/practice/infrastructure;
-- `CAN-012` — V3 rupture / metabolization.
+All five require direct historical archive verification:
+`953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`.
 
-All five are canonicalization cells, not new ontology creation. All five require direct inspection of `Rawlsing_code_bundle_staging.zip`, exact SHA256 `953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`.
+They are canonicalization-only. Same-batch workers may not use one another as accepted authority.
 
-No Batch-02 cell may consume an unadjudicated sibling result.
+## Why these five
 
-## Dependency consequences now banked
+Accepted RA-R00 packet blockers:
+- V2-P2: CAN-015 + CAN-016 + MUST-022;
+- V2-P4: CAN-021 + MUST-023 + MUST-024 + MUST-026;
+- V2-P5: CAN-016 + CAN-017 + CAN-018 + MUST-022 + MUST-023.
 
-- ADP-002 acceptance satisfies ADP-003's authority dependency for its scheduled W2 release;
-- ADP-009 satisfies ADP-007's position dependency;
-- ADP-009 + ADP-010 + ADP-020 satisfy ADP-015's dependency set;
-- ADP-010 + ADP-002 satisfy two ADP-011 dependencies; ADP-003 remains missing;
-- ADP-017 satisfies ADP-022's authority dependency;
-- ADP-021 closes MUST-021 but does not release V3 implementation by itself.
+This batch closes the highest-concentration W1 V2 canonicalization blockers without skipping the wave schedule.
 
-Wave labels remain planning/release gates. Do not advance W2/W3 cells merely because their prerequisites have become true.
+CAN-019 and CAN-020 remain for the next W1 cohort:
+- CAN-019 clears V2-P6;
+- CAN-020 clears V2-P7 but V2-P7 also waits on later MUST-018.
 
-## Independent SWID / V553 lane
+## Dependency posture after Batch 02
 
-SWID PR #27 remains open/draft at last live check, head `23a5994bdf576146c4c80c533b9e28efd2465226`.
+- V554 CAN-001 authority blocker: CLOSED; physical EXT gates remain.
+- V3-P6 CAN-008 blocker: CLOSED.
+- V3-P8 named semantic pair CAN-012 + MUST-016: CLOSED; implementation still schedule/EXT gated.
+- V3-P3: still blocked by CAN-009.
+- V3-P7: still blocked by CAN-009 + MUST-014 despite CAN-010/CAN-011 acceptance.
 
-G8 remains open for:
-- post-repair live DB view deployment;
-- 35-scope preflight;
-- governed 9-scope respondent-backed J canary;
-- broader CLOSED_35 base-spine smoke.
+No packet starts simply because one blocker is closed.
 
-V553 production remains blocked until G8 closes, SWID merges, and the post-SWID narrow identity-delta check passes.
+## Independent SWID lane
 
-## Acceptance discipline
+PR #27 remains open/draft at latest live check.
 
-Every authority/implementation packet inherits:
-- closed architecture;
-- exact MUST/CAN/EXT gates;
-- relevant seam hardenings;
-- fail-closed missing-authority behavior;
-- Governing Spirit only for lawful ambiguity;
-- RA-R00 12-harness acceptance plan;
-- RA-R00 16 forbidden-regression matrix.
+Head:
+`75aac98e0280289a717e2b49f8d2066ab1c926db`.
 
-## Next Vozhd action
+Its current body still reports G8 open for final live deployment/preflight/canary/smoke work. Therefore EXT-001 remains open and V553 production is still blocked.
 
-1. Court CAN-001 continuation.
-2. Court CAN-008..CAN-012 independently.
-3. Bank accepted results before any downstream consumer uses them.
-4. Then release the next dependency-valid W1 batch, not W2 by convenience.
-5. Continue SWID independently.
+SWID does not block W1 authority canonicalization.
+
+## Next release logic
+
+1. Court CAN-009 continuation independently.
+2. Court CAN-015/016/017/018/021 independently.
+3. Merge every accepted result before downstream use.
+4. Run remaining W1 CAN-019/CAN-020 next.
+5. Only after W1 authority expansion is closed, advance the scheduled W2 authority cohort according to RA-R00 dependencies.
+6. Continue SWID G8 in parallel.
+7. Preserve all 12 RA-R00 acceptance harnesses and 16 forbidden-regression cases through implementation.
