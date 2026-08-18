@@ -1,0 +1,479 @@
+{
+  "court": "D02",
+  "title": "V526d / V548 -> current recursive positional breakage court",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
+  "branch": "agent/vozhd-trii-d02-v548-breakage",
+  "frozen_vt3_base": "8c87f7725ba58202b5377c974548140420709fa9",
+  "production_code_modified": false,
+  "architecture_decided": false,
+  "verdict": {
+    "token": "CAPABILITY_MUTATED__V548_DEVIATION_CHASER_BECAME_V550_GREEDY_TOP2_POSITION_TREE__CURRENT_TREE_IS_NOT_LOSSLESS_BRANCH_EVIDENCE__JOINT_RESPONDENT_INCIDENCE_IS_REQUIRED_TO_REGENERATE_THE_DISCOVERY_SPACE",
+    "historical_capability": "Find the category most carrying a node's modal response, expose position-by-response conformity/deviation quadrants, and recursively search the majority-carrying category's response deviations for a next salient positional channel.",
+    "current_capability": "Greedily choose the remaining position field with greatest positive unweighted entropy reduction, recursively follow only its two most frequent supported nonblank values, and stop by support/depth/no-gain.",
+    "lineage_equivalence": false,
+    "current_tree_lossless": false,
+    "respondent_membership_persisted": false,
+    "respondent_incidence_required_for_full_replay": true
+  },
+  "historical_purpose": {
+    "design_terms": [
+      "majority indicator",
+      "majority-position deviation",
+      "category failure",
+      "deeper breakages"
+    ],
+    "required_historical_outputs": [
+      "recursive_breakage_tree_nodes",
+      "majority_position_deviation_summary",
+      "branch_split_evidence"
+    ],
+    "historical_stop_conditions": [
+      "low-n branch without exploratory flag",
+      "single-label tree used for multi-select item"
+    ],
+    "forbidden": [
+      "persona assignment"
+    ],
+    "empirical_question": "Within a question-response population, which social position most carries the current modal response; where do respondents inside that position break from the modal response; and inside those breakages which positional channel becomes salient next?",
+    "v526e_successor_role": "historical branch cohorts were intended as anchors for asking what else travels with each branch"
+  },
+  "v548": {
+    "implementation_path": "data/ddm_build_copy/build_recursive_breakage_tree_nodes_v548.py",
+    "blob_sha": "1fc72071a048cd5f7771a2164de1698e05423f88",
+    "root_cohort": {
+      "query_filters": [
+        "source",
+        "var_code",
+        "value_raw IS NOT NULL"
+      ],
+      "canonical_wave_filter_in_response_fetch": false,
+      "country_filter_in_response_fetch": false,
+      "ruling": "source-wide question cohort despite canonical_wave metadata"
+    },
+    "target_normalization": {
+      "missing_codes": [
+        -1,
+        -2,
+        8,
+        9,
+        98,
+        99,
+        101,
+        999
+      ],
+      "binary_01_mode": "present/absent",
+      "defect": "coded missing converted to NaN then maps to absent in presence mode"
+    },
+    "position_fields": [
+      "country_code",
+      "sex",
+      "age_group",
+      "education_level",
+      "income_level",
+      "urban_rural",
+      "religion_label"
+    ],
+    "split_predictor": {
+      "root": "V547 top_predictor_1 if valid/finite, else best current MI",
+      "deeper": "best current MI",
+      "metric": "unweighted sklearn mutual_info_classif discrete",
+      "min_joined_n": 50,
+      "positive_signal_required": false,
+      "used_predictor_removed": false,
+      "v547_top_interaction_consumed": false
+    },
+    "selected_category": {
+      "min_n": 10,
+      "criterion": [
+        "max P(node_majority_response | predictor=value)",
+        "then max lift over predictor-complete node majority share",
+        "then max n"
+      ],
+      "not_prevalence_mode": true
+    },
+    "branches": {
+      "majority_position_conformity": "X=v AND Y=M",
+      "majority_position_deviation": "X=v AND Y!=M",
+      "minority_position_convergence": "X!=v AND Y=M",
+      "minority_position_divergence": "X!=v AND Y!=M"
+    },
+    "recursive_child": "majority_position_deviation only",
+    "max_depth": 5,
+    "split_n": 50,
+    "report_only_n": 25,
+    "weights": "unweighted; weighted_n equals n",
+    "node_persists_full_response_distribution": true,
+    "node_persists_n": true,
+    "respondent_ids_persisted": false,
+    "node_id_encodes_predictor_value": false,
+    "multi_select_guard_implemented": false,
+    "entrypoint_defect": {
+      "present_at_base": true,
+      "symbol": "OUT_DUCKDB",
+      "defined_symbol": "DUCKDB_PATH",
+      "effect": "default non-append main path raises NameError before question loop",
+      "append_path_affected": false,
+      "historical_successful_clean_run_proven": false
+    }
+  },
+  "v550": {
+    "implementation_path": "data/ddm_build_copy/ddm_v550_branching.py",
+    "blob_sha": "8f6d40e0d016d66e5a3b334b31747eaef752873f",
+    "root_scope": [
+      "source",
+      "canonical/raw wave aliases",
+      "country",
+      "question/var aliases"
+    ],
+    "position_fields": [
+      "sex",
+      "age_group",
+      "education_level",
+      "income_level",
+      "religion_label",
+      "urban_rural",
+      "region",
+      "ethnicity",
+      "language",
+      "employment",
+      "marital",
+      "household_size"
+    ],
+    "support": {
+      "rate": 0.005,
+      "floor": 2,
+      "default_cap": 30,
+      "formula": "min(cap, max(floor, ceil(n_respondents * rate)))",
+      "min_branch_n_argument_semantics": "support cap"
+    },
+    "max_depth_default": 3,
+    "split_metric": "unweighted node entropy minus unweighted conditional entropy on predictor-nonblank subset",
+    "positive_gain_required": true,
+    "tie_rule": "earlier INDICATOR_FIELDS member wins because replacement requires strictly greater gain",
+    "selected_indicator_removed": true,
+    "children": "two most frequent nonblank values only",
+    "recursive_children": "both retained values",
+    "response_defined_deviation_branch": false,
+    "weights_used_in_tree": false,
+    "node_persists_full_response_distribution": false,
+    "node_persists_n": false,
+    "respondent_ids_persisted": false,
+    "node_id_encodes_emitted_position_path": true,
+    "defects": [
+      "internal node split_indicator is overwritten with outgoing split while split_value remains incoming value",
+      "entropy_gain_from_parent stores outgoing split gain, not parent-to-child gain",
+      "pure_or_near_pure stop_reason does not stop recursion",
+      "candidate gain compares full-node entropy to predictor-complete-subset conditional entropy when predictor is missing",
+      "missing selected-indicator rows receive no child",
+      "slash-delimited node path values are not escaped"
+    ],
+    "multi_select_guard_implemented": false,
+    "persistence": {
+      "per_question_checkpoint": true,
+      "final_determinicity_output": true,
+      "bridge_empirical_object_type": "recursive_branch",
+      "bridge_evidence_lane": "derived_determinicity",
+      "dedicated_static_arrow_schema": false
+    }
+  },
+  "lineage": [
+    {
+      "behavior": "core search target",
+      "classification": ["MUTATED"],
+      "v548": "majority-carrying position -> response deviation -> deeper breakage",
+      "v550": "greedy positive entropy-gain positional partition"
+    },
+    {
+      "behavior": "root scope",
+      "classification": ["LESS_LOSSY", "MUTATED"],
+      "v548": "source + var_code",
+      "v550": "source + wave + country + question aliases"
+    },
+    {
+      "behavior": "candidate breadth",
+      "classification": ["MUTATED", "LESS_LOSSY"],
+      "v548": "7 position fields",
+      "v550": "12 position fields"
+    },
+    {
+      "behavior": "V547 root predictor hint",
+      "classification": ["DROPPED"],
+      "v548": "consumed",
+      "v550": "no dependency"
+    },
+    {
+      "behavior": "V547 pair interaction hint",
+      "classification": ["PRESERVED"],
+      "v548": "not consumed",
+      "v550": "not consumed by tree"
+    },
+    {
+      "behavior": "predictor criterion",
+      "classification": ["MUTATED"],
+      "v548": "unweighted MI; zero finite allowed",
+      "v550": "positive entropy reduction required"
+    },
+    {
+      "behavior": "category selection",
+      "classification": ["MUTATED"],
+      "v548": "one most majority-conforming category",
+      "v550": "two most frequent categories"
+    },
+    {
+      "behavior": "response-defined quadrants",
+      "classification": ["DROPPED"],
+      "v548": "four explicit quadrants",
+      "v550": "none"
+    },
+    {
+      "behavior": "recursive coverage",
+      "classification": ["MUTATED", "LESS_LOSSY"],
+      "v548": "one deviation child",
+      "v550": "both retained category children"
+    },
+    {
+      "behavior": "non-top category coverage",
+      "classification": ["MORE_LOSSY"],
+      "v548": "complement branch summaries",
+      "v550": "omitted from tree"
+    },
+    {
+      "behavior": "predictor reuse",
+      "classification": ["MUTATED", "MORE_LOSSY"],
+      "v548": "allowed",
+      "v550": "removed after split"
+    },
+    {
+      "behavior": "depth",
+      "classification": ["MORE_LOSSY"],
+      "v548": 5,
+      "v550": 3
+    },
+    {
+      "behavior": "support",
+      "classification": ["MUTATED", "LESS_LOSSY"],
+      "v548": "fixed 50 split threshold",
+      "v550": "wave-relative 2..30 default"
+    },
+    {
+      "behavior": "tiny nonempty branch summary",
+      "classification": ["MORE_LOSSY"],
+      "v548": "emitted after expanded parent",
+      "v550": "omitted below threshold"
+    },
+    {
+      "behavior": "weighting",
+      "classification": ["PRESERVED"],
+      "v548": "unweighted",
+      "v550": "unweighted"
+    },
+    {
+      "behavior": "full node response distribution",
+      "classification": ["DROPPED", "MORE_LOSSY"],
+      "v548": true,
+      "v550": false
+    },
+    {
+      "behavior": "node support n",
+      "classification": ["DROPPED", "MORE_LOSSY"],
+      "v548": true,
+      "v550": false
+    },
+    {
+      "behavior": "respondent membership",
+      "classification": ["PRESERVED"],
+      "v548": "not persisted",
+      "v550": "not persisted"
+    },
+    {
+      "behavior": "path predicate clarity",
+      "classification": ["LESS_LOSSY"],
+      "v548": "requires parent JSON",
+      "v550": "node_id contains position path"
+    },
+    {
+      "behavior": "multi-select enforcement",
+      "classification": ["PRESERVED"],
+      "v548": "historical stop not implemented",
+      "v550": "not implemented in branch function"
+    },
+    {
+      "behavior": "cloud/co-signature recursive membership",
+      "classification": ["DROPPED", "MUTATED"],
+      "v548_successor_intent": "with each branch",
+      "v550": "full question frames / same-respondent question joins, not recursive membership"
+    }
+  ],
+  "information_content": {
+    "current_tree_can_reconstruct": {
+      "emitted_position_path_recipe": "usually yes from node_id, subject to unescaped delimiter caveat",
+      "chosen_outgoing_split": "yes",
+      "binary_node_response_proportions": "only when exact binary topology is independently known"
+    },
+    "current_tree_cannot_reconstruct": [
+      "general P(Y | path)",
+      "node support n",
+      "all candidate predictors considered",
+      "rejected split scores",
+      "all categories of selected predictor",
+      "unexpanded minority categories",
+      "branch respondent IDs",
+      "alternative paths",
+      "general three-way conjunction topology",
+      "original same-respondent joint incidence",
+      "typed predictor missingness",
+      "multi-select respondent-set topology"
+    ],
+    "v548_tree_can_reconstruct": {
+      "P(Y | emitted node)": true,
+      "node_n": true,
+      "cohort_recipe": "yes with full parent chain plus conditions_json plus source data"
+    },
+    "neither_tree_is_source_invertible": true
+  },
+  "respondent_membership": {
+    "ruling": "MEMBERSHIP_NOT_PERSISTED__EMITTED_COHORT_RECIPE_ONLY",
+    "v548": "compose ancestor predictor/value/majority-response decisions with branch types against original respondent data",
+    "v550": "apply emitted indicator=value path from node_id against original scoped respondent data",
+    "respondent_ids_in_nodes": false
+  },
+  "hostile_fixtures": [
+    {
+      "id": "A_XOR",
+      "v548": "finite zero-MI split can emit four predictor-by-response quadrants, but V547 pair-interaction hint is ignored and binary deviation becomes single-target; second variable is not discovered",
+      "v550": "root no_gain when all unary gains are zero",
+      "verdict": "FAIL_AS_INTERACTION_DISCOVERY"
+    },
+    {
+      "id": "B_SIMPSON_REVERSAL",
+      "v548": "one selected category plus complement aggregation cannot systematically preserve all strata",
+      "v550": "can expose favorable two-value cases; synthetic three-stratum reversal omitted the third stratum because of top-two",
+      "verdict": "PARTIAL_NONEXHAUSTIVE"
+    },
+    {
+      "id": "C_TINY_STABLE_MINORITY",
+      "v548": "rare nonselected category identity collapses into complement; below n=10 cannot be selected channel",
+      "v550": "synthetic 450/450/100 case at threshold 5 omitted the distinctive 100-row third category from tree; outlier unary row would survive",
+      "verdict": "CURRENT_TREE_FAIL"
+    },
+    {
+      "id": "D_THREE_WAY_PARITY",
+      "v548": "zero-MI first split does not discover deeper B/C relation; binary deviation becomes single-target",
+      "v550": "root no_gain",
+      "verdict": "FAIL_BOTH"
+    },
+    {
+      "id": "E_NONMONOTONIC_SUBGROUP",
+      "v548": "selected-category deviation-only recursion cannot generally represent cross-category reversal",
+      "v550": "favorable binary/top-two positive-gain cells can be materialized hierarchically, but capability fails outside those conditions",
+      "verdict": "CONDITIONAL_ONLY"
+    },
+    {
+      "id": "F_CONTRADICTORY_SIMULTANEOUS_POSITIONS",
+      "v548": "one majority channel privileged; other positions conditional on deviation lane",
+      "v550": "one greedy hierarchy determines visible conjunctions; weak contradictory coordinates may disappear",
+      "verdict": "FAIL_AS_EXHAUSTIVE_DISCOVERY"
+    },
+    {
+      "id": "G_MULTISELECT_NON_SIMPLE",
+      "v548": "historical design says stop; executable has no guard or respondent dedupe",
+      "v550": "branch function has no guard; explicit multiselect child rows can be counted row-wise",
+      "verdict": "FAIL_UNSAFE_WITHOUT_UPSTREAM_SCALAR_GUARANTEE"
+    }
+  ],
+  "rare_minority_ruling": "V548 preserves existence of nonempty response-deviation quadrants after an expanded parent better than category identity; current V550 preserves two common category paths better but systematically omits third+ and below-threshold categories from the tree. outlier_cohort_rows partially restores supported unary category visibility only.",
+  "weight_support_missingness": {
+    "weights": "both recursive trees are unweighted; current outlier n_weighted does not affect classification",
+    "v548_support": {
+      "split": 50,
+      "category": 10,
+      "report_only": 25
+    },
+    "v550_support": {
+      "rate": 0.005,
+      "floor": 2,
+      "default_cap": 30
+    },
+    "v548_missingness": "string blanks can behave as categories/complement; presence-mode coded missing can become absent",
+    "v550_missingness": "blank excluded from candidate entropy and child descent while full-node entropy includes its response; no typed missing child"
+  },
+  "cloud_cosignature_relation": {
+    "recursive_nodes_consumed_by_position_signature": false,
+    "recursive_nodes_consumed_by_relation_cosignature": false,
+    "recursive_nodes_consumed_by_attitude_cloud": false,
+    "position_signature_branch_id_semantics": "anchor question id",
+    "relation_cosignature_branch_id_semantics": "anchor question id",
+    "attitude_cloud_basis": "same-respondent cross-question joins",
+    "bridge_maps_recursive_nodes": true,
+    "bridge_lane": "derived_determinicity",
+    "d03_flag": "adjudicate historical branch-level cotravel versus current question-level/full-frame signatures and same-person question-response cotravel"
+  },
+  "reconstructibility": {
+    "current_nodes_uniquely_contain_irreducible_empirical_information": false,
+    "current_nodes_materialize_algorithmic_decision_trace": true,
+    "minimum_empirical_information": [
+      "respondent identity or exact same-row incidence",
+      "source/wave/country/question scope",
+      "normalized response plus topology/typed state",
+      "all governed position coordinate values and missingness",
+      "question n_respondents",
+      "exact respondent population included"
+    ],
+    "minimum_replay_authority": [
+      "indicator candidate order",
+      "algorithm/metric version",
+      "support formula/version",
+      "max_depth",
+      "support-cap/min_branch_n parameter",
+      "alias/normalization behavior",
+      "tie/order behavior"
+    ],
+    "shared_substrate_caveat": {
+      "physical_extra_columns_retained": true,
+      "position_fields_required_by_contract": false,
+      "position_fields_in_logical_content_hash": false,
+      "conclusion": "current shared substrate may physically permit replay but does not contractually/hash-protect that capability"
+    },
+    "tree_to_source_invertible": false,
+    "source_plus_algorithm_to_tree_replayable": true
+  },
+  "open_questions": [
+    "Which earlier V548 revision/launch mode produced any historical V548 outputs, given the current default-path OUT_DUCKDB defect?",
+    "What additional semantics exist in the external V526d binary pack beyond the preserved repository extract?",
+    "Was historical source-wide cross-wave scope intentional or an executable defect?",
+    "Do real current indicator values make slash-delimited node IDs ambiguous?",
+    "Does current R1 authority prevent all multi-select/non-simple questions from reaching branch_nodes_rows?",
+    "Which current downstream readers materially consume recursive_branch derived_determinicity bridge rows?",
+    "Does any current code compute cotravel conditioned on actual recursive branch membership?",
+    "Are nondefault branch max_depth/support parameters durably persisted for exact replay?",
+    "Does the physical source/substrate preserve all branch coordinates and response topology for every governed wave?",
+    "Which breakage-discovery classes are terminally required rather than authoring/diagnostic?"
+  ],
+  "implications": {
+    "D08": [
+      "distinguish positional conditionals, historical response-conditioned breakage cohorts, and same-person response cotravel",
+      "do not infer semantic unity from branch naming",
+      "test whether one predicate algebra can preserve distinct denominator/topology/same-respondent/admission semantics"
+    ],
+    "D12": [
+      "classify branch-discovery capability independently from recursive_branch_nodes artifact",
+      "test unary, conjunction, zero-marginal interaction, rare-minority, response-conditioned breakage, and any D03-proven branch cotravel separately",
+      "require terminal starvation demonstrations before calling capability required"
+    ],
+    "D13": [
+      "prove exact same-respondent response-position incidence, not just tree retention or unary marginals",
+      "preserve/reconstruct response topology, typed missingness, scope, weights, transformations, support/provenance and exact replay parameters",
+      "do not treat current shared substrate physical extra columns as retention proof because logical hash/required schema do not protect position fields"
+    ]
+  },
+  "frozen_vt3_comparison": {
+    "used_as_comparison_not_current_authority": true,
+    "courts": ["R00", "R02", "R05", "R07"],
+    "consistent_findings": [
+      "recursive trees are lossy analytical/search projections",
+      "pairwise/unary marginals do not preserve arbitrary joint structure",
+      "same-respondent joint incidence is required for exact conjunction replay"
+    ]
+  }
+}
