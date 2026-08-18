@@ -3,7 +3,13 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import pytest
+
 from data.ddm_build_copy import compile_v551_relation_evidence_atoms as compiler
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+    BoundaryContractError,
+    validate_machine_output_policy,
+)
 
 
 def test_governed_runner_output_flags_are_accepted_and_forwarded(monkeypatch, tmp_path: Path):
@@ -68,3 +74,25 @@ def test_cli_exposes_fail_closed_no_parquet_state(monkeypatch):
 
     assert args.write_parquet is False
     assert args.write_csv is True
+
+
+def test_canonical_v551_still_rejects_disabled_parquet(monkeypatch):
+    monkeypatch.setattr(
+        compiler,
+        "_boundary_api",
+        lambda: (
+            "rawlsing_pipeline_boundary_v1",
+            None,
+            None,
+            validate_machine_output_policy,
+        ),
+    )
+
+    with pytest.raises(BoundaryContractError, match="PARQUET_CANONICAL_OUTPUT_REQUIRED"):
+        compiler.compile_v551_run(
+            object(),
+            run_id="runtime-canary",
+            bridge_path="bridge.parquet",
+            write_parquet=False,
+            write_csv=True,
+        )
