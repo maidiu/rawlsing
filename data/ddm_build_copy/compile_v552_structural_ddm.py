@@ -156,7 +156,15 @@ def _scope_from_manifest(payload: dict[str, Any]) -> dict[str, str]:
 def _verify_frame_scope(frame: pd.DataFrame, *, run_id: str, scope: dict[str, str], label: str) -> None:
     if frame.empty:
         return
-    expected = {"run_id": run_id, "source": scope["source"], "canonical_wave": scope["canonical_wave"], "source_family_uid": scope["source_family_uid"], "wave_uid": scope["wave_uid"]}
+    # Source/wave spelling is redundant identity metadata after ingress. Exact
+    # semantic scope is the governed UID pair; run/country remain independent
+    # exact boundaries. Alias-equivalent source/wave labels are validated by
+    # the shared all-populated-representation coherence law below.
+    expected = {
+        "run_id": run_id,
+        "source_family_uid": scope["source_family_uid"],
+        "wave_uid": scope["wave_uid"],
+    }
     if scope["country_code"]:
         expected["country_code"] = scope["country_code"]
     for column, want in expected.items():
