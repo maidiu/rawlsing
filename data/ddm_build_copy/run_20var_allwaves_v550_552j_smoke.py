@@ -57,6 +57,9 @@ from data.ddm_build_copy.ddm_v550_response_relation import (
     AUTO_RESPONSE_RELATION,
     choose_response_relation,
 )
+from data.ddm_build_copy.ddm_v550_response_semantics_authority import (
+    lookup_governed_response_semantics_contract,
+)
 from data.ddm_build_copy.ddm_v550_shards import shard_id_for
 from data.ddm_build_copy.ddm_v550j_registry_contract import registry_status_is_executable
 
@@ -459,6 +462,63 @@ def inspect_database_contract(config: RuntimeConfig, db_url: str) -> dict[str, A
     return result
 
 
+def _select_question_variables_from_rows(
+    rows: list[tuple[str, str, str, str]],
+    *,
+    family: str,
+    wave: str,
+    seed: int,
+    authority: Mapping[str, Any],
+    joint_mode: str,
+) -> list[str]:
+    """Choose one smoke slice without manufacturing V551 repair debt.
+
+    The historical 20-variable sampler remains unchanged for non-required
+    execution, including the broad CLOSED_35 ``joint_mode=off`` run.  A strict
+    full-J canary is different: it must exercise the governed joint family and
+    the exact frozen V551 response-semantics surface rather than pad that slice
+    with QSM rows that merely look relation-like but have no V551 contract.
+    """
+    if not rows:
+        return []
+    rng = random.Random(seed)
+    selected: list[str] = []
+    available = {code.upper(): code for code, *_ in rows}
+    if authority.get("applicable"):
+        for code in authority.get("candidate_vars") or []:
+            if code.upper() in available and available[code.upper()] not in selected:
+                selected.append(available[code.upper()])
+            if len(selected) >= 6:
+                break
+
+    if joint_mode == "required":
+        governed_v551 = [
+            code
+            for code, *_ in rows
+            if lookup_governed_response_semantics_contract(family, wave, code) is not None
+            and code not in selected
+        ]
+        rng.shuffle(governed_v551)
+        selected.extend(governed_v551[: max(0, 20 - len(selected))])
+        rng.shuffle(selected)
+        return selected[:20]
+
+    # Preserve the existing broad/diagnostic sampler byte-for-behavior outside
+    # strict full-J acceptance.  In particular, CLOSED_35 joint_mode=off keeps
+    # the same relation/structural/random 20-variable coverage.
+    relation_rows = [code for code, axis, _, evidence in rows if axis or "relation" in evidence.lower()]
+    structural_rows = [code for code, _, domain, _ in rows if domain]
+    for pool, target in ((relation_rows, 8), (structural_rows, 6)):
+        choices = [code for code in pool if code not in selected]
+        rng.shuffle(choices)
+        selected.extend(choices[: max(0, min(target, 20 - len(selected)))])
+    remaining = [code for code, *_ in rows if code not in selected]
+    rng.shuffle(remaining)
+    selected.extend(remaining[: max(0, 20 - len(selected))])
+    rng.shuffle(selected)
+    return selected[:20]
+
+
 def _select_question_variables(
     family: str,
     wave: str,
@@ -491,29 +551,15 @@ def _select_question_variables(
                 (str(code), str(axis or ""), str(domain or ""), str(evidence or ""))
                 for code, axis, domain, evidence in cur.fetchall()
             ]
-    if not rows:
-        return []
-    rng = random.Random(seed)
     authority = resolve_joint_authority(config, family, wave)
-    selected: list[str] = []
-    available = {code.upper(): code for code, *_ in rows}
-    if authority.get("applicable"):
-        for code in authority.get("candidate_vars") or []:
-            if code.upper() in available and available[code.upper()] not in selected:
-                selected.append(available[code.upper()])
-            if len(selected) >= 6:
-                break
-    relation_rows = [code for code, axis, _, evidence in rows if axis or "relation" in evidence.lower()]
-    structural_rows = [code for code, _, domain, _ in rows if domain]
-    for pool, target in ((relation_rows, 8), (structural_rows, 6)):
-        choices = [code for code in pool if code not in selected]
-        rng.shuffle(choices)
-        selected.extend(choices[: max(0, min(target, 20 - len(selected)))])
-    remaining = [code for code, *_ in rows if code not in selected]
-    rng.shuffle(remaining)
-    selected.extend(remaining[: max(0, 20 - len(selected))])
-    rng.shuffle(selected)
-    return selected[:20]
+    return _select_question_variables_from_rows(
+        rows,
+        family=identity.canonical_display_source,
+        wave=identity.canonical_display_wave,
+        seed=seed,
+        authority=authority,
+        joint_mode=config.joint_mode,
+    )
 
 
 def _build_question_filter(
