@@ -1,0 +1,142 @@
+{
+  "assignment": "W1-B03-04",
+  "canonicalization_id": "CAN-018",
+  "authority_id": "V2_RESPONSE_MOVE_RULE",
+  "authority_version": "1.0.0",
+  "owner": "V2_EXPRESSION_PLANNER",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-dva-w1-can-018-v2-response-move",
+  "exact_base_sha": "db961be677d5112073e16e5d452853971861cdb6",
+  "mode": "AUTHORITY_CANONICALIZATION_ONLY_NO_PRODUCTION_CODE_NO_V2_IMPLEMENTATION",
+  "verdict": "PASS",
+  "archive_verification": {
+    "archive": "Rawlsing_code_bundle_staging.zip",
+    "expected_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "computed_sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086",
+    "verdict": "EXACT_MATCH",
+    "entry_count": 13138
+  },
+  "source_inspection": {
+    "directly_inspected": [
+      {"path":"v2/PERSONA_CONVERSATION_ENGINE_SPEC.md","sha256":"0b0ee1d5e177b22236007ddb15053e4f1d3fc34f69aae8b44e16446def9250d7","finding":"extensible move library; pivot/deflect/ignore/exit/boundary-like paths; renderer-not-decider"},
+      {"path":"v2/conversation_engine.py","sha256":"766bee296379f0faadbede55106bcee0123e9563c965d0e28f8806cedea06135","finding":"executable selector; engage_selective/deflect/brief_or_deflect; keyword and numeric overrides"},
+      {"path":"v2/additions.txt","sha256":"6040500c2b8a80cd82f2c131126246db46fae782ec0f7e27c20133e776b83d87","finding":"earlier move-vocabulary continuity"},
+      {"path":"v2/PIPELINE_WIRING_AUDIT.md","sha256":"fabbf700ec6e83aae4a59266a58833871f6205655f022311865eb62381dbebe4","finding":"documents political-keyword override wiring"},
+      {"path":"v2/run_conversation_chat.py","sha256":"b9276a4d7fc9dfdc83cc220528e4f16c1880d78419ed06430a5e9570a60efdc8","finding":"direct turn caller"},
+      {"path":"v2/life_simulation_schema.py","sha256":"e7adf11fe6db5b69b6c5c9da2b7eed62a7e3c8f000f99becd073b776d71faebc","finding":"legacy AttentionBudget 0..100/default-50/threshold machinery"},
+      {"path":"server/chat/turn.py","sha256":"10e7f02333dac36b4baddd455b3655685413ed41a88d12a375b1cee9be9394b3","finding":"application caller; keyword deep-memory surfacing negative evidence"},
+      {"path":"server/session_state.py","sha256":"9c9c3b0e2b3bff700af127e03805166102920019d6acd099ee8270fbe63bc15a","finding":"session continuity only"},
+      {"path":"server/session_db.py","sha256":"0d9bf508aa748ce8eff3360a7c615ab0ed086f3a34c3190815cb0485fe234c12","finding":"session persistence only"},
+      {"path":"tests/test_chat_integrity.py","sha256":"efcb4ad8c65bd1fc7a4522160a9543654da159e6381819ef6b4089044ec3b9c2","finding":"focused historical court: 11 passed"},
+      {"path":"v3/io/persona_sheet.py","sha256":"4a0009533443baef2786fc498c7f8db3ead7d133d8ee7e97e6d7128d4322a00e","finding":"V3→V2 surface continuity only"},
+      {"path":"v3/V3_UNDERLIES_V2_ARTICULATION.md","sha256":"5a0f11276a830b959df72653016ca77848dbd81de4adb9fa641bd4244c4f4ced","finding":"V3-causal/V2-articulation continuity"}
+    ],
+    "focused_historical_tests": "PYTHONPATH=. python -m pytest -q tests/test_chat_integrity.py -> 11 passed",
+    "current_repo_terrain": "No top-level current V2 production tree at assigned base; implementation remains unreleased."
+  },
+  "jurisdiction": {
+    "owns": ["versioned response-move registry identity","surface-operation semantics of registered move kinds","move candidate/admission/selection contract over already-lawful V2 inputs","positive nonempty ENGAGE_SELECTIVE base rule","typed valid-empty/deferred/denied/integrity outcomes","decision provenance/replay"],
+    "excludes": ["actor knowledge/memory/accessibility","CAN-016 salience","CAN-017 register","MUST-022 uncertainty disclosure","MUST-023 boundary/face-risk/effort/attention","CAN-019 relationship expression","CAN-021 session state","V3 causal mutation/admission","MUST-025 renderer model/RNG policy","attractor/type"]
+  },
+  "noncollapse_law": "ACTOR_ACCESSIBLE_TRUTH != V2_SALIENCE != V2_EXPRESSION_REGISTER != V2_RESPONSE_MOVE != RENDERED_EXPRESSION != CAUSAL_OCCURRENCE",
+  "recovered_vocabulary_dispositions": {
+    "PRESERVE_ADAPT": ["engage_selective","micro-react","test question","answer minimally","answer one detail + ask one question","deflect","pivot","redirect","change subject","drop thread","delay","silence/go quiet","challenge","reject framing","correct misunderstanding","reframe"],
+    "GATED_BY_MUST_023": ["boundary statement","ask safer question","exit"],
+    "COMPATIBILITY_ONLY_PENDING_CAN_019": ["flirt","test motive","mirror emotion"],
+    "COMPATIBILITY_COMPOSITION_ONLY": ["tease+soften","deflect with humor","soften+pivot","brief response+change subject"],
+    "REMOVE_REJECT": ["brief_or_deflect ambiguous compound","fixed 25–40 cardinality","keyword/topic semantic override","numeric/default selector policy"]
+  },
+  "canonical_move_registry": {
+    "registry_id": "V2_RESPONSE_MOVE_KIND_REGISTRY",
+    "registry_version": "1.0.0",
+    "extensible": true,
+    "fixed_cardinality": false,
+    "entries": [
+      {"move_kind":"ENGAGE_SELECTIVE","activation":"CAN018_BASE_RULE","semantic":"Address one or more already-lawful expression targets without implying completeness."},
+      {"move_kind":"MICRO_REACT","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Brief reaction operation; creates no emotion/fact."},
+      {"move_kind":"TEST_QUESTION","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Question operation over lawful turn material; does not infer motive."},
+      {"move_kind":"ANSWER_MINIMALLY","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Minimal answer over permitted content; effort/length is MUST-023."},
+      {"move_kind":"ANSWER_ONE_DETAIL_ASK_ONE_QUESTION","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"One permitted detail plus one lawful question."},
+      {"move_kind":"DEFLECT","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Redirect away from a target without creating a causal boundary."},
+      {"move_kind":"PIVOT","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Shift from one lawful target/topic to another lawful target/topic."},
+      {"move_kind":"REDIRECT","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Direct the turn toward a lawful alternative target."},
+      {"move_kind":"CHANGE_SUBJECT","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Move to another lawful subject; topic matching alone is not authority."},
+      {"move_kind":"DROP_THREAD","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Cease pursuing a current expression thread."},
+      {"move_kind":"DELAY","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Defer response within surface planning; does not change causal time/state."},
+      {"move_kind":"SILENCE","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Intentional zero-text surface move; distinct from valid-empty."},
+      {"move_kind":"CHALLENGE","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Challenge framing/content already lawfully available; no invented belief."},
+      {"move_kind":"REJECT_FRAMING","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Reject a supplied framing as surface operation only."},
+      {"move_kind":"CORRECT_MISUNDERSTANDING","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Correct only from exact permitted claim/content refs."},
+      {"move_kind":"REFRAME","activation":"EXACT_MOVE_ACTIVATION_REQUIRED","semantic":"Present lawful material under another already-governed framing."},
+      {"move_kind":"BOUNDARY_STATEMENT","activation":"MUST-023_CONSTRAINT_RECEIPT_REQUIRED","semantic":"Surface statement of a separately governed boundary."},
+      {"move_kind":"ASK_SAFER_QUESTION","activation":"MUST-023_CONSTRAINT_RECEIPT_REQUIRED","semantic":"Boundary/face-risk constrained question; CAN-018 does not define safety."},
+      {"move_kind":"EXIT","activation":"MUST-023_CONSTRAINT_RECEIPT_REQUIRED","semantic":"Surface exit operation; no relationship mutation by itself."}
+    ]
+  },
+  "canonical_response_move_contract": {
+    "record": "V2ResponseMoveDecision",
+    "required_fields": ["decision_id","actor_access_envelope_ref/hash","turn_artifact_ref/hash","lawful_expression_target_refs[]","constraint_receipt_refs[]","registry_id/version/hash","selector_rule_id/version/hash","status","selected_move_kind?","selection_basis_refs[]","decision_hash"],
+    "statuses": ["MOVE_SELECTED","VALID_EMPTY_NO_LAWFUL_MOVE","DEFERRED_REQUIRED_AUTHORITY","DEFERRED_REQUIRED_INPUT","DEFERRED_AMBIGUOUS_NON_EQUIVALENT_MOVES","DENIED_ACTOR_ACCESS_VIOLATION","DENIED_FORBIDDEN_HEURISTIC_PATH","INTEGRITY_FAILURE"]
+  },
+  "selector_input_precondition_law": {
+    "hard_ceiling": "ADP-017 ActorAccessibleRenderEnvelope or equivalent; selector may narrow/omit only",
+    "required": ["verified actor-access envelope","exact current turn/input artifact","0..n lawful expression target refs","applicable accepted constraint receipts or explicit NOT_APPLICABLE","exact registry/rule versions/hashes"],
+    "base_rule": "If >=1 lawful expression target exists, all required constraint domains are satisfied/NOT_APPLICABLE, and no accepted constraint requires/forbids another move, select ENGAGE_SELECTIVE. This is a positive rule, not a fallback.",
+    "special_move_rule": "Every non-base move requires exact activation/constraint authority. Registry membership alone never activates it.",
+    "tie_rule": "If >=2 non-equivalent moves remain and no accepted precedence orders them, DEFERRED_AMBIGUOUS_NON_EQUIVALENT_MOVES; no lexical/list/random/LLM/score winner."
+  },
+  "no_lawful_move_behavior": "Zero lawful candidates/targets after gates -> VALID_EMPTY_NO_LAWFUL_MOVE, unless a required independent authority is missing (DEFERRED_REQUIRED_AUTHORITY) or input/integrity is missing. No arbitrary fallback. Intentional SILENCE is MOVE_SELECTED, not valid-empty.",
+  "keyword_numeric_default_disposition": {
+    "keyword_topic": "_POLITICAL_STRUCTURAL_KEYWORDS, _DISMISSIVE_PATTERNS, deep-memory keyword paths and topic labels are REMOVE_REJECT as semantic authority. They may at most be nonauthoritative retrieval hints behind separately lawful candidate gates.",
+    "numeric": "Quarantine AttentionBudget 0..100/default 50; 25/50/75 thresholds; sentence caps 2/4/6/8/12; tension/demand thresholds .5/.6/.75; any move score/weight. Future quantities require exact MUST-023/formula authority.",
+    "defaults": "Reject prompt/get fallback engage_selective, brief_or_deflect, default 50/moderate/6, and filler question/decline/exit/silence.",
+    "render_rng": "MUST-025 render RNG may vary wording after move selection; it cannot select semantic move kind."
+  },
+  "noncausal_boundary": {
+    "PRESENTATION_NONCAUSAL": "Move/plan/render may display or persist as V2/session/audit only; no V3 mutation.",
+    "IN_WORLD_CAUSAL": "Rendered artifact remains CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION. Exact MUST-019 V3 admission of exact artifact/hash is required before it becomes something actor actually said/did. Move decision itself is never the admitted event; rerenders require new admission."
+  },
+  "replay_provenance": {
+    "deterministic": true,
+    "identity_inputs": ["actor-access envelope hash","turn artifact hash","lawful target refs/hashes","constraint receipt refs/hashes","registry/rule ids/versions/hashes","selection basis refs"],
+    "forbidden_entropy": ["wall clock","filesystem/dict/list order","mutable latest","keyword side channel","LLM/model choice","V3 causal RNG","V2 render RNG for move choice"],
+    "render_link": "Later render request/receipt references exact move decision hash."
+  },
+  "hostile_fixtures": [
+    {"id":"H01","attack":"Actor-inaccessible claim elsewhere in system","required_result":"DENY; selector cannot widen actor access."},
+    {"id":"H02","attack":"Political/structural keyword match","required_result":"No move override."},
+    {"id":"H03","attack":"Dismissive keyword with no MUST-023 receipt","required_result":"No automatic deflect/boundary; defer if boundary authority required."},
+    {"id":"H04","attack":"Legacy attention/tension/demand threshold crosses","required_result":"No move change absent exact formula authority."},
+    {"id":"H05","attack":"Zero lawful expression targets","required_result":"VALID_EMPTY_NO_LAWFUL_MOVE; no fallback."},
+    {"id":"H06","attack":"Two non-equivalent activated moves without precedence","required_result":"DEFERRED_AMBIGUOUS_NON_EQUIVALENT_MOVES."},
+    {"id":"H07","attack":"Legacy brief_or_deflect token","required_result":"Reject ambiguous compound."},
+    {"id":"H08","attack":"Uncertainty/nonknowledge without MUST-022","required_result":"DEFERRED_REQUIRED_AUTHORITY; CAN-018 does not choose hedge/withhold/ask/decline."},
+    {"id":"H09","attack":"Boundary/exit move without MUST-023","required_result":"DEFERRED_REQUIRED_AUTHORITY."},
+    {"id":"H10","attack":"Flirt/test-motive/mirror-emotion without CAN-019","required_result":"Compatibility-only; no canonical activation."},
+    {"id":"H11","attack":"Session topic/energy suggests move","required_result":"Only accepted noncausal interface may constrain; persistence is not actor truth."},
+    {"id":"H12","attack":"Keyword deep-memory path surfaces inaccessible material","required_result":"Reject input; ADP-017 ceiling wins."},
+    {"id":"H13","attack":"Renderer changes semantic move","required_result":"Validation/audit failure."},
+    {"id":"H14","attack":"Causal-mode artifact not admitted by V3","required_result":"CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION; no occurrence."},
+    {"id":"H15","attack":"Rerender after prior admission","required_result":"New artifact/hash requires new admission."},
+    {"id":"H16","attack":"Replay exact decision inputs","required_result":"Identical status/move/decision hash."},
+    {"id":"H17","attack":"Ungoverned move score/weight introduced","required_result":"Reject/missing authority."},
+    {"id":"H18","attack":"Authorized SILENCE selected","required_result":"MOVE_SELECTED:SILENCE, distinct from valid-empty."},
+    {"id":"H19","attack":"Class/religion/nationality/structure directly selects move","required_result":"Forbidden structural/persona shortcut."},
+    {"id":"H20","attack":">=1 lawful target; no special constraint","required_result":"CAN018_BASE_RULE selects ENGAGE_SELECTIVE."}
+  ],
+  "consumers": {
+    "primary": "V2-P5",
+    "CAN018_closure": "CAN-018 semantic blocker closed after Vozhd acceptance",
+    "remaining_blockers": ["CAN-016","CAN-017","MUST-022","MUST-023","IMP-009/release and physical integration gates"],
+    "later_separate": ["CAN-019","CAN-021","MUST-025","MUST-019/CAN-024/CAN-025"]
+  },
+  "GOVERNING_SPIRIT_CHECK": {
+    "verdict": "APPLICABLE__PASS",
+    "ambiguity": "Broad/extensible historical move vocabulary versus coarse executable three-token selector with keyword/numeric/default overrides.",
+    "choice": "Preserve atomic/versioned surface operations; one positive nonempty ENGAGE_SELECTIVE base rule; exact activation for special moves; valid-empty/ambiguity; quarantine heuristics/numerics/defaults.",
+    "principles": ["downstream vividness <= upstream authority","actor opacity/access ceiling","lawful absence","minimum sufficient machinery","no forced semantic winner","expression != occurrence"],
+    "no_new_semantic_content_from_spirit": true
+  },
+  "CONSUMER_RELEASE_SUFFICIENCY": "SUFFICIENT__CAN_018_SEMANTIC_BLOCKER_CLOSED_FOR_V2_P5_AFTER_VOZHD_ACCEPTANCE__V2_P5_REMAINS_BLOCKED_BY_CAN_016_CAN_017_MUST_022_MUST_023_AND_PACKET_GATES",
+  "final_token": "CAN_018_V2_RESPONSE_MOVE_CANONICALIZATION = PASS"
+}
