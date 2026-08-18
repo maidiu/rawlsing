@@ -1,0 +1,450 @@
+{
+  "court": "D03",
+  "title": "V526e / V549 / V549b -> CURRENT CO-SIGNATURE & ATTITUDE-CLOUD LINEAGE COURT",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
+  "branch": "agent/vozhd-trii-d03-v549-cloud-lineage",
+  "frozen_vt3_base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
+  "status": "PASS_WITH_MATERIAL_LINEAGE_SPLIT_AND_LOSS",
+  "production_code_modified": false,
+  "target_blob_stability": {
+    "path": "data/ddm_build_copy/ddm_v550_clouds.py",
+    "blob_sha_at_frozen_vt3": "dfc878e87d984a1a3d7000a0c726bdc444f9945f",
+    "blob_sha_at_d03_base": "dfc878e87d984a1a3d7000a0c726bdc444f9945f",
+    "identical": true,
+    "conclusion": "The current cloud implementation lineage split predates the frozen VT3 base and is unchanged at the D03 base."
+  },
+  "finite_verdict": {
+    "historical_v526e": "Broad design family: branch co-signature plus profile covariance, with required outputs branch_co_signature_summary, profile_cluster_summary, profile_relation_vector.",
+    "v549": "Implements genuine respondent-level recursive-branch-conditioned pairwise association: binary V548 branch membership x candidate categorical question response, scored by Cramer's V.",
+    "v549b": "Retains branch-node anchors and adds answer/presence anchors; all remain binary-anchor x candidate-question categorical-response pairwise Cramer's-V associations.",
+    "current_position_signature": "Within-current-question position-coordinate x response association; no recursive branch cohort input.",
+    "current_relation_cosignature": "Within-current-question-frame permitted feature x response association; no recursive branch cohort or cross-question respondent join.",
+    "current_attitude_cloud": "Same-respondent cross-question ordered-pair diagnostic selecting one modal joint response cell, with a directional conditional event probability plus pairwise NMI/Cramer's V.",
+    "profile_covariance_outcome": "SPLIT_INTO_MULTIPLE_OBJECTS",
+    "material_loss": [
+      "historical profile_cluster_summary not realized/preserved in this lineage",
+      "historical profile_relation_vector not realized/preserved in this lineage",
+      "recursive branch membership is not supplied to current cloud/signature functions",
+      "branch-conditioned cotravel present in V549/V549b is absent from current native cloud/signature path",
+      "higher-order/k-way response topology is not preserved by current cloud artifact"
+    ]
+  },
+  "concepts": [
+    {
+      "name": "demographic_position_signature_of_branch",
+      "definition": "Position-coordinate distribution/association among respondents actually belonging to a defined branch cohort.",
+      "not_equivalent_to": "Associating demographics with a question response while setting branch_id equal to the question."
+    },
+    {
+      "name": "relation_cosignature_associated_with_branch",
+      "definition": "Association between actual branch membership and other relation/attitude responses in the same respondent universe.",
+      "not_equivalent_to": "Generic co-resident feature association in one question frame."
+    },
+    {
+      "name": "same_respondent_question_response_cotravel",
+      "definition": "Cross-question association proved by matching the same respondent identifiers across question frames.",
+      "not_equivalent_to": "Shared metadata, ontology, driver IDs, or unrelated marginals."
+    },
+    {
+      "name": "branch_conditioned_cotravel",
+      "definition": "Same-respondent response association where the anchor cohort is actual membership in a reconstructed branch.",
+      "not_equivalent_to": "A synthetic branch key or question-level scope."
+    },
+    {
+      "name": "historical_profile_covariance",
+      "definition": "V526e design family intended to preserve co-variation/cluster/vector structure for later profile generation.",
+      "not_equivalent_to": "Any single pairwise association score or current table name."
+    },
+    {
+      "name": "generic_within_frame_feature_association",
+      "definition": "Association between two columns already co-resident in the same row frame.",
+      "not_equivalent_to": "Cross-question cotravel unless the frame itself lawfully contains cross-question response variables."
+    },
+    {
+      "name": "conditional_empirical_distribution",
+      "definition": "Full governed P(response topology | exact governed empirical predicate, scope), with support/provenance.",
+      "not_equivalent_to": "A single association score, modal joint cell, or selected conditional event."
+    }
+  ],
+  "historical": {
+    "v526e_intent": {
+      "source": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/evidence/HISTORICAL_DESIGN_EXTRACTS.md",
+      "purpose": "Compute what else travels with each branch and preserve covariance for profile generation.",
+      "required_outputs": [
+        "branch_co_signature_summary",
+        "profile_cluster_summary",
+        "profile_relation_vector"
+      ],
+      "stop_conditions": [
+        "branch membership cannot be computed",
+        "all co-signatures underpowered"
+      ],
+      "historical_access_contract_distinction": {
+        "position_determinant": "demographic/structural predictor",
+        "anchor_response": "immediate question-response or branch",
+        "attitude_cloud": "other non-demographic opinion/attitudinal responses associated with anchor among the same respondent universe"
+      }
+    },
+    "v549": {
+      "path": "data/ddm_build_copy/build_branch_co_signature_summary_v549.py",
+      "anchor": "reconstructed V548 recursive branch membership",
+      "respondent_universe": "source-wide executable substrate; canonical wave carried in metadata but row loader does not filter wave/country",
+      "conditioned_cohort": "branch_mask built recursively from V548 parent conditions",
+      "candidate": "other V547 candidate question response categories",
+      "association": "Cramer's V(binary branch membership, candidate categorical response)",
+      "effect_direction": "candidate modal category enriched/depleted in branch versus overall candidate responders",
+      "output_grain": "source x declared canonical_wave x anchor_question x branch_node x candidate_question",
+      "output": "V549_branch_co_signature_summary plus DuckDB table",
+      "branch_conditioned": true,
+      "cross_question_same_respondent": true,
+      "full_conditional_distribution": false,
+      "profile_cluster_summary_implemented": false,
+      "profile_relation_vector_implemented": false,
+      "duplicate_behavior": "wide pivot uses aggfunc=first"
+    },
+    "v549b": {
+      "path": "data/ddm_build_copy/build_question_response_attitude_cloud_summary_v549b.py",
+      "anchor_types": [
+        "single_answer",
+        "answer_presence",
+        "answer_absence",
+        "branch_node"
+      ],
+      "candidate": "other registry-approved attitude/opinion question categorical responses",
+      "association": "Cramer's V(binary anchor membership, candidate categorical response)",
+      "candidate_answer_specific_probability": false,
+      "branch_conditioned_cotravel_preserved": true,
+      "historical_profile_flags": [
+        "allowed_for_profile_posterior",
+        "allowed_for_strata_tension"
+      ],
+      "scope_claim": "same-source, same-wave, country-scoped practical proxy",
+      "scope_executable": "source-wide response loading; real later country slicing; wave constrains registry/item selection but not respondent-row loader",
+      "weighted_fields": "copies of unweighted counts",
+      "duplicate_behavior": "wide pivot uses aggfunc=first",
+      "top_k_per_anchor": 10
+    },
+    "review_artifact_availability": {
+      "v549_builder_declared_review_path_present_at_base": false,
+      "v549b_builder_declared_review_path_present_at_base": false,
+      "treatment": "Builder destinations are executable declarations; controlled historical extracts are genealogy evidence. Missing generated review files are not reconstructed from guesses."
+    }
+  },
+  "current": {
+    "common_scope": {
+      "shard_input": "question-level frame fetched under source + wave + country + var/question",
+      "recursive_branch_nodes_computed_separately": true,
+      "recursive_branch_membership_passed_to_cloud_functions": false
+    },
+    "build_position_signature_rows": {
+      "input_frame": "one current question's respondent rows",
+      "anchor": "current question response_value_normalized",
+      "candidate_universe": "POSITION_COORDINATE columns present in same frame",
+      "respondent_matching": "same-row/same-frame; no cross-question join",
+      "branch_id_semantics": "anchor question_id",
+      "branch_key_semantics": "source::canonical_wave::country::anchor_question",
+      "metric": "max(normalized mutual information, Cramer's V); presence_only fallback score 0 possible",
+      "top_features": 5,
+      "support": "unweighted",
+      "authority_gate": "allowed_as_branch_position_signature",
+      "artifact_status": "enabled_diagnostic",
+      "evidence_role": "diagnostic_position_signature",
+      "cloud_lane_artifact": true,
+      "diagnostic_artifact": true,
+      "not_direct_evidence": true,
+      "bridge_lane": "position_context",
+      "v551_direct_atom_eligible": false,
+      "semantic_restatement": "question-response position signature, not recursive-branch demographic signature"
+    },
+    "build_co_signature_rows": {
+      "input_frame": "same one-question respondent frame",
+      "anchor": "current question response_value_normalized",
+      "candidate_universe": "explicit relation allowlist if supplied, otherwise non-excluded/non-technical/non-position columns present in same frame",
+      "respondent_matching": "same-row/same-frame; no cross-question join",
+      "branch_id_semantics": "anchor question_id",
+      "branch_key_semantics": "source::canonical_wave::country::anchor_question",
+      "metric": "max(normalized mutual information, Cramer's V)",
+      "top_features": 5,
+      "authority_gate": "allowed_as_branch_relation_cosignature",
+      "artifact_status": "enabled_contract_gated",
+      "evidence_role": "diagnostic_relation_cosignature",
+      "cloud_lane_artifact": true,
+      "diagnostic_artifact": true,
+      "not_direct_evidence": true,
+      "bridge_lane": "disabled_artifact",
+      "v551_direct_atom_eligible": false,
+      "semantic_restatement": "generic within-frame feature association, not proven branch-conditioned cotravel"
+    },
+    "build_attitude_cloud_rows": {
+      "input_frame": "one question frame, stored across questions in in-memory state",
+      "state_key": [
+        "run_id",
+        "source",
+        "wave",
+        "canonical_wave",
+        "country_code"
+      ],
+      "respondent_matching": "inner join on respondent_id across distinct question frames",
+      "same_respondent_semantics_proven": true,
+      "position_features_excluded": true,
+      "pairwise_only": true,
+      "persistent_joint_cells_per_pair": 1,
+      "cell_selection": "globally most frequent joint response cell in complete-case crosstab",
+      "association_metrics": [
+        "normalized mutual information over complete-case joined categories",
+        "Cramer's V over complete-case joined categories",
+        "association_strength=max(NMI,Cramer's V)"
+      ],
+      "output_mutual_information_field_is_normalized": true,
+      "artifact_status": "prototype_diagnostic",
+      "evidence_role": "diagnostic_attitude_cloud",
+      "cloud_lane_artifact": true,
+      "diagnostic_artifact": true,
+      "not_direct_evidence": true,
+      "bridge_lane": "disabled_artifact",
+      "v551_direct_atom_eligible": false,
+      "question_order_pair_coverage_invariant": false,
+      "duplicate_behavior": "drop_duplicates(respondent_id, keep=first)"
+    }
+  },
+  "current_probability_law": {
+    "selected_pair": "(a*, b*) = most frequent response cell in complete-case A-B respondent join",
+    "N_ab": "count respondents in joined overlap with A=a* and B=b*",
+    "N_a": "count respondents in full prepared anchor frame with A=a*",
+    "N_b": "count respondents in full prepared candidate frame with B=b*",
+    "N_B": "number of respondents with any substantive prepared candidate response",
+    "p_cotravelling_given_anchor": "N_ab / N_a",
+    "p_cotravelling_baseline": "N_b / N_B",
+    "difference_from_baseline": "N_ab/N_a - N_b/N_B",
+    "lift": "(N_ab/N_a)/(N_b/N_B) when baseline nonzero",
+    "candidate_missing_from_anchor_group": "remains in N_a, absent from N_ab",
+    "complete_case_conditional": false
+  },
+  "current_authority": {
+    "question_use_source": [
+      "data/ddm_build_copy/ddm_v550_question_use.py",
+      "data/ddm_build_copy/ddm_v550_authority_contract.py",
+      "data/ddm_build_copy/ddm_v550_question_relation_authority.py"
+    ],
+    "attitude_anchor_and_feature_permission": "derived from current relation-evidence/v551-level question eligibility, then independently enforced by cloud code",
+    "position_signature_permission": "derived from lawful position/demographic-predictor eligibility",
+    "position_cloud_separation": [
+      "question-use authority separates POSITION_COORDINATE from RELATION_EVIDENCE",
+      "_attitude_cloud_semantics_blocked rejects position/context classifications and subroles",
+      "final pair gate requires both semantic_role == RELATION_EVIDENCE",
+      "anchor/feature booleans are distinct from position-signature boolean"
+    ]
+  },
+  "profile_covariance": {
+    "outcome": "SPLIT_INTO_MULTIPLE_OBJECTS",
+    "identity_preserved": false,
+    "profile_cluster_summary": "LOST_IN_THIS_LINEAGE",
+    "profile_relation_vector": "LOST_IN_THIS_LINEAGE",
+    "branch_conditioned_cotravel": "PRESENT_IN_V549_AND_V549B__ABSENT_FROM_CURRENT_NATIVE_CLOUD_SIGNATURE_FUNCTIONS",
+    "same_respondent_question_cotravel": "SUPERSEDED_BY_CURRENT_ATTITUDE_CLOUD",
+    "position_component": "PARTIALLY_PRESERVED_AS_SEPARATE_POSITION_SIGNATURE_DIAGNOSTIC",
+    "current_single_object_equivalent": null
+  },
+  "higher_order_information_not_preserved_by_current_cloud": [
+    "all response-pair cells",
+    "complete pairwise joint distribution",
+    "respondent-level multi-question response vector",
+    "triplet/k-way conjunctions",
+    "third-variable conditional reversals",
+    "interaction-only/XOR structure",
+    "attitude clusters",
+    "recursive branch membership",
+    "profile relation vectors",
+    "k-way multimodal configuration"
+  ],
+  "current_status_and_consumers": [
+    {
+      "object": "branch_position_signature",
+      "direct_evidence": false,
+      "diagnostic": true,
+      "cloud_lane": true,
+      "profile_related_current_flag": false,
+      "bridge_lane": "position_context",
+      "v551_direct_atom_eligible": false,
+      "proven_consumer": "V550 bridge"
+    },
+    {
+      "object": "branch_relation_co_signature",
+      "direct_evidence": false,
+      "diagnostic": true,
+      "cloud_lane": true,
+      "profile_related_current_flag": false,
+      "bridge_lane": "disabled_artifact",
+      "v551_direct_atom_eligible": false,
+      "proven_consumer": "V550 bridge"
+    },
+    {
+      "object": "branch_co_signature",
+      "direct_evidence": false,
+      "diagnostic": true,
+      "cloud_lane": true,
+      "profile_related_current_flag": false,
+      "bridge_lane": "disabled_artifact",
+      "v551_direct_atom_eligible": false,
+      "proven_consumer": "V550 bridge; table is alias copy of branch_relation_co_signature"
+    },
+    {
+      "object": "question_response_attitude_cloud",
+      "direct_evidence": false,
+      "diagnostic": true,
+      "cloud_lane": true,
+      "profile_related_current_flag": false,
+      "bridge_lane": "disabled_artifact",
+      "v551_direct_atom_eligible": false,
+      "proven_consumer": "V550 bridge"
+    }
+  ],
+  "crosswalk": [
+    {
+      "historical_concept": "position determinant / demographic signature",
+      "historical_executable": "position inputs in recursive branch construction",
+      "current": "build_position_signature_rows",
+      "preserved": "position-response association diagnostics",
+      "lost": "actual branch cohort conditioning",
+      "status": "diagnostic_position_context",
+      "consumer": "bridge"
+    },
+    {
+      "historical_concept": "branch relation co-signature",
+      "historical_executable": "V549_branch_co_signature_summary",
+      "current": "build_co_signature_rows / branch_relation_co_signature",
+      "preserved": "ranked feature-response association machinery",
+      "lost": "V548 branch membership and cross-question branch-conditioned respondent cotravel",
+      "status": "diagnostic_disabled_artifact",
+      "consumer": "bridge"
+    },
+    {
+      "historical_concept": "same-respondent question cotravel",
+      "historical_executable": "V549b answer/presence anchors",
+      "current": "build_attitude_cloud_rows",
+      "preserved": "respondent-ID cross-question matching and pairwise association",
+      "lost": "full pair response topology; complete directional pair surface due state order",
+      "status": "prototype_diagnostic_disabled_artifact",
+      "consumer": "bridge"
+    },
+    {
+      "historical_concept": "branch-conditioned cotravel",
+      "historical_executable": "V549 and V549b branch_node anchors",
+      "current": null,
+      "preserved": "recursive branch nodes exist separately",
+      "lost": "integration of branch membership into cotravel computation",
+      "status": "no_current_native_equivalent_proven",
+      "consumer": null
+    },
+    {
+      "historical_concept": "profile covariance",
+      "historical_executable": "partially approximated by V549/V549b pairwise surfaces; intended cluster/vector outputs not realized",
+      "current": "split across position signatures, recursive branch nodes, relation cosignature, attitude cloud",
+      "preserved": "some marginal/pairwise components",
+      "lost": "profile clusters, relation vectors, k-way covariance/topology",
+      "status": "SPLIT_INTO_MULTIPLE_OBJECTS",
+      "consumer": null
+    },
+    {
+      "historical_concept": "generic within-frame association",
+      "historical_executable": null,
+      "current": "_candidate_association_stats",
+      "preserved": "NMI/Cramer's V and support/cardinality",
+      "lost": "no branch/cross-question semantics by itself",
+      "status": "diagnostic",
+      "consumer": "position/relation signature builders"
+    },
+    {
+      "historical_concept": "conditional empirical distribution",
+      "historical_executable": "not V549/V549b",
+      "current": "not equal to cloud artifact",
+      "preserved": "one selected conditional event only",
+      "lost": "full governed conditional response topology",
+      "status": "distinct_semantic_object",
+      "consumer": null
+    }
+  ],
+  "unknowns": [
+    "global respondent_id uniqueness across every current substrate",
+    "lawful repeated-response/multi-select representation",
+    "whether every eligible respondent/question has exactly one substantive response before first-row collapse",
+    "normative survey-weight requirement for cloud diagnostics",
+    "modal-joint-cell tie-breaking authority",
+    "exhaustive correctness of R1/question-use eligibility across all sources/waves",
+    "exhaustive downstream cloud consumers beyond the directly inspected bridge path",
+    "reconstructibility of discarded higher-order/branch-conditioned topology from retained substrate",
+    "terminal semantic use of same answer / different cloud",
+    "statistical-significance interpretation of support tiers"
+  ],
+  "d04_test_oracle": {
+    "semantic_pair_universe": "{(A,B) | A != B, same state scope, anchor_eligible(A), feature_eligible(B)}",
+    "dual_eligible": "If both A and B are anchor+feature eligible, both A->B and B->A are expected.",
+    "order_invariance": "Question processing permutation must not change the lawful ordered pair set or fixed-pair metrics/counts.",
+    "current_known_order_behavior": "Implementation emits current-anchor -> previously stored feature only; D04 must test and report violations.",
+    "denominator_law": {
+      "n_overlap": "N_ab selected modal joint-cell count",
+      "n_anchor": "N_a full prepared anchor-response count",
+      "n_candidate_baseline": "N_b full prepared candidate selected-response count",
+      "candidate_baseline_denominator": "N_B all prepared candidate responders",
+      "anchor_missing_candidate": "stays in n_anchor, cannot enter n_overlap"
+    },
+    "fixed_pair_metrics": {
+      "probability_directional": true,
+      "nmi_symmetric": true,
+      "cramers_v_symmetric": true,
+      "reverse_pair_probability_expected_equal": false
+    },
+    "eligibility": {
+      "anchor": [
+        "valid_cloud_feature",
+        "not semantics_blocked",
+        "nonempty prepared frame",
+        "response semantics contract hash",
+        "accepted response semantics status",
+        "question-use contract joined",
+        "source-structure fields joined",
+        "semantic_role RELATION_EVIDENCE",
+        "allowed_as_attitude_cloud_anchor true"
+      ],
+      "feature": [
+        "same scope",
+        "different question",
+        "not position/context/admin/missingness blocked",
+        "nonempty prepared frame",
+        "response semantics contract hash",
+        "accepted response semantics status",
+        "question-use contract joined",
+        "source-structure fields joined",
+        "semantic_role RELATION_EVIDENCE",
+        "allowed_as_attitude_cloud_feature true"
+      ]
+    },
+    "duplicate_multi_select": {
+      "executable": "drop_duplicates(respondent_id, keep=first)",
+      "tests": [
+        "duplicate row order sensitivity",
+        "multi-select long-form flattening",
+        "absence of set semantics in helper"
+      ],
+      "normative_status": "UNKNOWN_AUTHORITY unless governing law is found"
+    },
+    "weighting": {
+      "current_executable": "unweighted",
+      "normative_status": "UNKNOWN_AUTHORITY unless governing law is found"
+    },
+    "unknown_not_failure": [
+      "global respondent-ID uniqueness",
+      "pre-collapse respondent/question uniqueness",
+      "lawful duplicate/multi-select set/order semantics",
+      "normative weighting law",
+      "modal-cell tie law",
+      "exhaustive R1 eligibility correctness",
+      "lawful availability of within-frame relation candidate columns",
+      "exhaustive downstream consumers",
+      "retention/replay sufficiency",
+      "terminal same-answer/different-cloud meaning",
+      "person-psychology inference (forbidden, not a test target)"
+    ]
+  }
+}
