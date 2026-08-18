@@ -5,11 +5,15 @@ from pathlib import Path
 import pandas as pd
 
 from data.ddm_build_copy.apply_postgres_facet_ready_substrate import load_question_mapping_authority
+from data.ddm_build_copy.ddm_v550_shared_cache import question_structural_mapping_select_columns
 from data.ddm_build_copy.ddm_v550_question_relation_authority import (
     CALIBRATION_AUTHORITY_PATH,
     FULL_AUTHORITY_PATH,
+    LEGACY_RESIDUAL_ROW_COUNT,
+    R1_TARGET_ROW_COUNT,
     active_closed_35_waves,
     apply_question_relation_authority,
+    derive_legacy_latinobarometro_1995_residual,
     load_question_relation_authority,
     resolve_question_relation_authority,
 )
@@ -56,7 +60,12 @@ def test_r1_dispositions_and_fail_closed_blockers_are_consumed():
 
 def test_postgres_mapping_loader_uses_exact_full_r1_live_surface():
     frame = load_question_mapping_authority()
-    assert len(frame) == 18518
+    assert len(frame) == R1_TARGET_ROW_COUNT + LEGACY_RESIDUAL_ROW_COUNT
+    assert len(frame.iloc[:R1_TARGET_ROW_COUNT]) == R1_TARGET_ROW_COUNT
+    residual = frame.iloc[R1_TARGET_ROW_COUNT:]
+    assert len(residual) == 20
+    assert set(residual["source"]) == {"Latinobarómetro"}
+    assert set(residual["canonical_wave"]) == {"1995"}
     assert list(frame.columns)[-4:] == ["canonical_wave", "country_code_scope", "authority_status", "authority_rule_id"]
     assert frame["authority_status"].isin({
         "GOVERNED_QSMV2_RELATION_AUTHORITY", "GOVERNED_MANUAL_RELATION_AUTHORITY",
@@ -65,3 +74,41 @@ def test_postgres_mapping_loader_uses_exact_full_r1_live_surface():
         "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY", "BLOCKED_SOURCE_AUTHORITY",
         "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN",
     }).all()
+
+
+def test_legacy_residual_is_exactly_the_twenty_row_calibration_difference():
+    r1 = pd.read_csv(FULL_AUTHORITY_PATH, dtype=str, keep_default_na=False)
+    residual = derive_legacy_latinobarometro_1995_residual(r1)
+    calibration = pd.read_csv(CALIBRATION_AUTHORITY_PATH, dtype=str, keep_default_na=False)
+    assert len(residual) == 20
+    assert set(residual["question_id"]) == set(calibration.loc[
+        (calibration["source_family"] == "Latinobarómetro") & (calibration["canonical_wave"] == "1995"),
+        "question_id",
+    ])
+    assert set(residual["question_id"]).isdisjoint(set(r1["question_id"]))
+    assert set(residual["var_code"].str.casefold()).issubset(set(r1["var_code"].str.casefold()))
+    assert len(calibration) - len(residual) == 680
+    for _, legacy in residual.iterrows():
+        primary = r1[
+            (r1["source"].map(str.casefold) == str(legacy["source_family"]).casefold())
+            & (r1["canonical_wave"] == legacy["canonical_wave"])
+            & (r1["country_code_scope"] == legacy["country_code_scope"])
+            & (r1["var_code"].str.casefold() == str(legacy["var_code"]).casefold())
+        ]
+        assert len(primary) == 1
+
+
+def test_qsm_selector_requests_r1_identity_fields_when_postgres_exposes_them(monkeypatch):
+    class FakeConn:
+        pass
+
+    def fake_read_sql_query(sql, conn, params):
+        assert "information_schema.columns" in sql
+        return pd.DataFrame({"column_name": [
+            "source", "wave", "question_id", "var_code", "canonical_wave",
+            "country_code_scope", "authority_status", "authority_rule_id",
+        ]})
+
+    monkeypatch.setattr(pd, "read_sql_query", fake_read_sql_query)
+    selected = question_structural_mapping_select_columns(FakeConn())
+    assert selected[-4:] == ["canonical_wave", "country_code_scope", "authority_status", "authority_rule_id"]

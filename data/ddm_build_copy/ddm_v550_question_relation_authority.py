@@ -23,6 +23,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 AUTHORITY_VERSION = "qra_35wave_active_v1"
 FULL_AUTHORITY_VERSION = "qsm_full_question_relation_authority_r1_20260814"
+R1_TARGET_ROW_COUNT = 18518
+LEGACY_RESIDUAL_ROW_COUNT = 20
 CALIBRATION_AUTHORITY_PATH = ROOT / "data" / "ddm_build_copy" / "bindings" / "question_relation_registry_35wave_active_v1.csv"
 FULL_AUTHORITY_PATH = ROOT / "data" / "ddm_build_copy" / "authority" / "full_question_relation_authority" / "R1_20260814" / "QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv"
 DEFAULT_AUTHORITY_PATH = (
@@ -355,8 +357,10 @@ def _validate_registry(frame: pd.DataFrame, path: Path) -> None:
         missing = required - set(frame.columns)
         if missing:
             raise QuestionRelationAuthorityError(f"full R1 authority missing required columns: {sorted(missing)}")
-        if len(frame) != 18518:
-            raise QuestionRelationAuthorityError(f"expected 18518 full R1 authority rows, found {len(frame)}")
+        if len(frame) != R1_TARGET_ROW_COUNT:
+            raise QuestionRelationAuthorityError(
+                f"expected {R1_TARGET_ROW_COUNT} full R1 authority rows, found {len(frame)}"
+            )
         if frame["governed_row_payload_hash"].eq("").any():
             raise QuestionRelationAuthorityError("full R1 authority contains blank governed payload hashes")
         if frame["authority_status"].eq("").any():
@@ -432,6 +436,65 @@ def _validate_registry(frame: pd.DataFrame, path: Path) -> None:
         raise QuestionRelationAuthorityError(
             f"row_payload_hash verification failed for {len(bad_hashes)} rows: {bad_hashes[:5]}"
         )
+
+
+def derive_legacy_latinobarometro_1995_residual(r1_frame: pd.DataFrame) -> pd.DataFrame:
+    """Derive the narrowly authorized legacy QRA residue from the 700-row registry.
+
+    The residual is deliberately identity-bounded: it is the exact calibration
+    slice whose legacy question IDs are not present in the frozen R1 target.
+    R1 remains primary for normalized source/wave/country/var-code identities.
+    """
+    calibration = pd.read_csv(CALIBRATION_AUTHORITY_PATH, dtype=str, keep_default_na=False)
+    _validate_registry(calibration, CALIBRATION_AUTHORITY_PATH)
+    required = {"source_family", "canonical_wave", "country_code_scope", "question_id", "var_code"}
+    missing = required - set(calibration.columns)
+    if missing:
+        raise QuestionRelationAuthorityError(f"calibration registry missing columns: {sorted(missing)}")
+
+    target_identity = {
+        (
+            canonical_source_family(row.get("source")),
+            canonical_wave(row.get("source"), row.get("canonical_wave")),
+            canonical_country_code(row.get("country_code_scope")),
+            canonical_question_key(row.get("question_id")),
+        )
+        for row in r1_frame.to_dict(orient="records")
+    }
+    calibration["_identity"] = [
+        (
+            canonical_source_family(row.get("source_family")),
+            canonical_wave(row.get("source_family"), row.get("canonical_wave")),
+            canonical_country_code(row.get("country_code_scope")),
+            canonical_question_key(row.get("question_id")),
+        )
+        for row in calibration.to_dict(orient="records")
+    ]
+    residual = calibration.loc[~calibration["_identity"].isin(target_identity)].drop(columns=["_identity"])
+    residual = residual[
+        (residual["source_family"].map(canonical_source_family) == "Latinobarómetro")
+        & (residual["canonical_wave"].map(lambda value: canonical_wave("Latinobarómetro", value)) == "1995")
+    ].copy()
+    if len(residual) != LEGACY_RESIDUAL_ROW_COUNT:
+        raise QuestionRelationAuthorityError(
+            f"expected {LEGACY_RESIDUAL_ROW_COUNT} Latinobarómetro 1995 residual rows, found {len(residual)}"
+        )
+    if set(residual["source_family"].map(canonical_source_family)) != {"Latinobarómetro"}:
+        raise QuestionRelationAuthorityError("legacy residual contains a non-Latinobarómetro row")
+    if set(residual["canonical_wave"].map(lambda value: canonical_wave("Latinobarómetro", value))) != {"1995"}:
+        raise QuestionRelationAuthorityError("legacy residual contains a non-1995 row")
+    if any(
+        (
+            canonical_source_family(row.get("source_family")),
+            canonical_wave(row.get("source_family"), row.get("canonical_wave")),
+            canonical_country_code(row.get("country_code_scope")),
+            canonical_question_key(row.get("question_id")),
+        ) in target_identity
+        for row in residual.to_dict(orient="records")
+    ):
+        raise QuestionRelationAuthorityError("legacy residual overlaps an R1 target identity")
+    residual = residual.reset_index(drop=True)
+    return residual
 
 
 def _build_index(path: Path) -> AuthorityIndex:

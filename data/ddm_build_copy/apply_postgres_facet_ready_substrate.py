@@ -36,6 +36,12 @@ import psycopg2
 from dotenv import load_dotenv
 from psycopg2.extras import execute_values
 
+from data.ddm_build_copy.ddm_v550_question_relation_authority import (
+    LEGACY_RESIDUAL_ROW_COUNT,
+    R1_TARGET_ROW_COUNT,
+    derive_legacy_latinobarometro_1995_residual,
+)
+
 
 ROOT = Path(__file__).resolve().parents[2]
 QUESTIONS_MASTER = ROOT / "data" / "final_codebooks" / "questions_master_drivers.csv"
@@ -434,9 +440,47 @@ def load_question_mapping_authority() -> pd.DataFrame:
     missing = required - set(frame.columns)
     if missing:
         raise RuntimeError(f"R1 question mapping authority missing columns: {sorted(missing)}")
-    if len(frame) != 18518:
+    if len(frame) != R1_TARGET_ROW_COUNT:
         raise RuntimeError(f"R1 question mapping authority row count changed: {len(frame)}")
-    return frame
+
+    # The frozen R1 surface remains primary.  Only the exact 20-row legacy
+    # Latinobarómetro-1995 residue from the hash-pinned 700-row calibration
+    # registry is admitted to the runtime union; the other 680 rows remain
+    # calibration-only.
+    calibration_residual = derive_legacy_latinobarometro_1995_residual(frame)
+    residual = pd.DataFrame(
+        {
+            "source": calibration_residual["source_family"],
+            "wave": calibration_residual["canonical_wave"],
+            "question_id": calibration_residual["question_id"],
+            "var_code": calibration_residual["var_code"],
+            "display_text": calibration_residual["question_text"],
+            "legacy_final_driver_id": "",
+            "final_driver_label": "",
+            "final_driver_scope": "",
+            "final_driver_origin": "legacy_calibration_residual",
+            "driver_id": calibration_residual["driver_id"],
+            "driver_facet_id": calibration_residual["driver_facet_id"],
+            "question_block_id": calibration_residual["question_block_id"],
+            "structural_domain_id": calibration_residual["structural_domain_id"],
+            "relation_axis_id": calibration_residual["relation_axis_id"],
+            "target_entity_id": calibration_residual["target_entity_id"],
+            "mapping_status": calibration_residual["relation_use_status"],
+            "evidence_kind": calibration_residual["evidence_disposition"],
+            "strata_relevance": "",
+            "channel_affordances": "",
+            "forbidden_inference": "",
+            "does_not_measure": "",
+            "review_notes": calibration_residual["review_notes"],
+            "canonical_wave": calibration_residual["canonical_wave"],
+            "country_code_scope": calibration_residual["country_code_scope"],
+            "authority_status": calibration_residual["authority_status"],
+            "authority_rule_id": calibration_residual["authority_rule_id"],
+        }
+    )
+    if len(residual) != LEGACY_RESIDUAL_ROW_COUNT:
+        raise RuntimeError(f"legacy residual row count changed: {len(residual)}")
+    return pd.concat([frame, residual], ignore_index=True)
 
 
 def load_question_mapping(conn) -> int:
