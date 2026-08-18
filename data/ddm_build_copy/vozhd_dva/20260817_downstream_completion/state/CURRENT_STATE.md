@@ -2,152 +2,166 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** `TD_R06_V2_ACCEPTED_AND_BANKED__WHOLE_MACHINE_SYNTHETIC_LIFE_CLOSURE_NEXT__IMPLEMENTATION_RULE_AUTHORITY_BLOCKED__V553_BUILD_WAITING_SWID_G8`
+**Phase:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__FINITE_RULE_AUTHORITY_AND_IMPLEMENTATION_RELEASE_SYNTHESIS_NEXT__V553_BUILD_WAITING_SWID_G8`
+
+## Succession / restart authority
+
+`VOZHD_DVA_HANDOFF.md` remains the durable operating handoff. This file is the authority for live phase/status and overrides stale status elsewhere.
 
 ## Governing law
 
-The complete architecture remains governed by:
+The complete machine is governed by:
 
 1. `TERMINAL_DEMAND_ENVELOPE.md`;
 2. `ARCHITECTURE_PASS_LAW.md`;
 3. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`;
 4. `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`;
-5. accepted TD-R00–TD-R06 results and integration rulings;
-6. `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`.
+5. accepted TD-R00–TD-R06 results and implementation rulings;
+6. `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`;
+7. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`.
 
 **Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
-Missing authority remains missing. It never licenses default psychology, biography, structural-prior→personality shortcuts, or unconstrained LLM invention.
+Missing authority remains missing and never licenses heuristic invention.
 
-## Accepted whole-machine architecture chain
+## Whole-machine architecture — CLOSED
+
+TD-R07 whole-machine synthetic-life closure was accepted through PR #78.
+
+- accepted worker head: `513f369a60669cc0b8f4adf93407fa2d53fee0c8`;
+- merge: `2426cdb9637a90b2472e4fba8d367d4b3aea9143`;
+- final token: `WHOLE_MACHINE_ARCHITECTURE_CLOSURE = CLOSE`;
+- six mandatory synthetic lives: PASS;
+- 24 hostile shortcut cases: fail-closed / rejected;
+- new TD-R07 hardenings: none;
+- architecture reopen scope: none.
+
+Binding ruling:
+`integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`.
+
+The broad architecture campaign is terminated.
+
+## Closed terminal machine
 
 ```text
-V550–V556 producer-owned governed structural DAG
-→ V557 lossless runtime-authorized publication/governance
-→ V558 immutable stage-agnostic StructuralPriorRepository
-→ deterministic ContextResolver
+historically governed structural evidence
+→ V550–V552/J producer-owned structural authority
+→ V553 temporal observation/relation/limit + exact structural refs
+→ V554 bounded structural affordance + applicability condition
+→ V555 atomic mediation routes + route-born conditions
+→ V556 governed F1 interactions + F2 attractor-prerequisite topology
+→ V557 lossless runtime publication/governance
+→ V558 immutable StructuralPriorRepository + deterministic ContextResolver
 → ResolvedStructuralContext
 → V3 Actor Developmental Causality Engine
-→ GeneratedPersonRecord + hardened actor-accessible V3 render boundary
+→ GeneratedPersonRecord + actor-accessible render boundary
 → V2 actor-limited phenomenology / expression / noncausal session
-→ application surface
+→ application
 
-causal interaction
-→ exact ExternalInteractionProposal
+observable causal interaction
+→ ExternalInteractionProposal
 → V3 admission/rejection
 → causal history only if admitted
 ```
 
-### Structural chain
+### Closed constitutional distinctions
 
-- V553: temporal key/observation/relation/limit + exact governed structural references; no canonical interpolation/proxy invention.
-- V554: bounded structural affordance + structural mediation applicability condition + exact handoff; no interaction topology.
-- V555: atomic structural mediation route candidate + route-born condition; V555 route ID is canonical base edge.
-- V556: governed cross-route/cross-pressure F1 interaction + F2 attractor-prerequisite topology; no duplicate PressureFlowEdge.
-- V557: no new structural-domain ontology; lossless mixed-producer runtime publication/governance with transitive role-preserving semantic closure.
-- V558: immutable repository/link/index/resolver; producer-preserving identities; no V559; no structural-to-actor invention.
+- source evidence ≠ structural prior;
+- structural prior ≠ actor fact;
+- evidence time ≠ proxy-selection time;
+- V554 eligibility ≠ V555 route traversal;
+- availability ≠ applicability ≠ opportunity ≠ encounter ≠ exposure ≠ route realization ≠ response ≠ persistent developmental change;
+- V555 route ID is the canonical base edge; no duplicate V556 base-edge family;
+- V556 F2 topology ≠ V3 F1 realization ≠ V3 F2 prerequisite satisfaction ≠ V3 attractor state;
+- resolver context ≠ biography;
+- objective generated fact ≠ actor-accessible knowledge;
+- generated memory/accessibility ≠ analyst omniscience;
+- V2 projection/plan/session/render ≠ V3 causal history;
+- pending external-interaction proposal ≠ admitted causal event;
+- `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION` ≠ in-world occurrence.
 
-### V3
+## Accepted architecture courts
 
-Binding ruling:
-`integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`.
+- TD-R00 V553 — accepted.
+- TD-R01 V554 — accepted.
+- TD-R02 V555 — accepted.
+- TD-R03 V556 — accepted.
+- TD-R04 V557/V558 — accepted.
+- TD-R05 V3 — accepted.
+- SI-R00..SI-R05 — closed: `5 HARDEN / 1 CONFIRM / 0 REOPEN`.
+- TD-R06 V2 — accepted.
+- TD-R07 whole-machine closure — `CLOSE`.
 
-V3 is the stage-blind Actor Developmental Causality Engine. It owns generated positions, events, causal memory, relationships/households/genealogy, organismic/developmental state, route/F1 realization, F2 prerequisite satisfaction, pressure-flow memory/path dependence, rupture/metabolization, orientation and life-course attractor formation.
+No further broad architecture court is scheduled.
 
-Constitutional distinctions remain:
-
-`STRUCTURAL PRIOR ≠ ACTOR FACT`.
-
-`availability ≠ applicability ≠ opportunity ≠ encounter ≠ exposure ≠ route traversal ≠ response ≠ persistent developmental change`.
-
-`V556 F2 topology ≠ V3 F1 realization ≠ V3 F2 satisfaction ≠ V3 attractor state`.
-
-### V2 — ACCEPTED
-
-PR #75; accepted head `03b8a4134762e0a32f5700918ab91da40530f0ff`; merge `250f49c8a23880d1cc3f4473953a912813dfc09c`.
-
-Binding ruling:
-`integration/V2_COMPLETION_IMPLEMENTATION_RULING.md`.
-
-Final token:
-`V2_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS`.
-
-Constitutional V2 law:
-
-**V3 generates the life. V2 expresses the generated life.**
-
-V2 owns actor-limited phenomenological projection, expression planning/rendering, typed noncausal session continuity, render/provenance receipts, and observable interaction packaging. It does not own biography, causal memory, relationship/genealogy truth, attractor formation, structural interpretation, or direct V558 behavioral authority.
-
-`GeneratedPersonRecord` is objective generated truth and is not a direct first-person prompt surface. V3 must expose actor accessibility/claim permission, memory recall/accessibility, uncertainty/nonknowledge, actor-perceived relationship view and analyst-only exclusions through an immutable render boundary such as `ActorAccessibleRenderEnvelope`.
-
-Recovered V2 court:
-- REUSE 5;
-- ADAPT 30;
-- REPLACE 6;
-- DEFER 3;
-- REMOVE 10.
-
-### Conversation modes
-
-`PRESENTATION_NONCAUSAL` may display immediately and never mutates generated life.
-
-`IN_WORLD_CAUSAL` requires V3 admission for every observable interaction declared part of generated life.
-
-Outbound V2 actor response starts:
-
-`CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION`.
-
-Rendering is not occurrence. Only V3 admission of the exact artifact/hash may authorize in-world publication, causal transcript commit or causal-session cursor advance.
-
-## Retrospective seam-integrity closure — CLOSED
-
-Binding ruling:
-`integration/SEAM_INTEGRITY_CLOSURE_RULING.md`.
-
-Six courts returned:
-- 5 `HARDEN`;
-- 1 `CONFIRM`;
-- 0 `REOPEN`.
-
-`RETROSPECTIVE_SEAM_INTEGRITY_CLOSURE = PASS_WITH_BINDING_HARDENING`.
-
-Accepted architecture remains intact; the hardenings are mandatory implementation law.
-
-## Implementation status
-
-### V553 / SWID
-
-Production remains blocked on terminal SWID G8 runtime acceptance/merge plus the narrow post-merge identity-delta check required by the V553 ruling. Fetch live PR #27 when execution status matters.
-
-### V554–V558
-
-Architecture accepted. Implementation blocked on canonical upstream publications, governed stage registries/rule authorities, and seam hardening conformance.
+## V3 / V2 terminal law
 
 ### V3
 
-Architecture accepted. Seam blocker closed. Implementation remains blocked on governed runtime/model authority enumerated in `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md` and the whole-machine closure gate below.
+V3 is the stage-blind Actor Developmental Causality Engine. It owns generated positions, events, relationships/households/genealogy, causal memory, organismic/developmental state, route/F1 realization, F2 prerequisite satisfaction, pressure-flow history/path dependence, rupture/metabolization, orientation and life-course attractor formation.
 
 ### V2
 
-Architecture accepted. Implementation remains blocked on the 19 governed authorities enumerated in `integration/V2_COMPLETION_IMPLEMENTATION_RULING.md` and the whole-machine closure gate below.
+**V3 generates the life. V2 expresses the generated life.**
 
-## Active architecture track — whole-machine synthetic-life closure
+V2 owns actor-limited phenomenological projection, expression planning/rendering, typed noncausal session continuity, render/provenance receipts and observable interaction packaging. It does not own biography, causal memory, relationship/genealogy truth, attractor formation, structural interpretation or direct V558 behavioral authority.
 
-Before implementation packet release, run one final hostile composed-system court across the entire accepted architecture.
+`GeneratedPersonRecord` remains objective generated truth. First-person expression consumes a fail-closed actor-accessibility boundary from V3.
 
-It must test complete synthetic lives, recursive genealogy, contradictory pressures, temporal/proxy edge cases, migration and generated-position rebinding, exact V555/V556 realization, F2 satisfaction/attractor development, actor-accessibility/nonknowledge, V2 phenomenology, noncausal conversation and admitted causal interaction.
+`PRESENTATION_NONCAUSAL` may display immediately.
 
-The court may return only:
-- `CLOSE` — composed architecture is implementation-ready subject to explicit rule authority;
-- `HARDEN` — bounded cross-stage contract precision required without reopening stage jurisdiction;
-- `REOPEN` — only with concrete composed-system starvation, duplication, jurisdiction contradiction or impossible producer/consumer contract.
+In `IN_WORLD_CAUSAL`, outbound expression remains `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION` until V3 admits the exact artifact/hash. Rendering is not occurrence.
+
+## Post-closure execution law
+
+Architecture closure does not mean implementation is globally released.
+
+Remaining work is finite and must be classified as:
+
+1. governed rule/model authority decision or recovery;
+2. implementation packet;
+3. migration/compatibility adapter;
+4. acceptance/hostile/replay harness;
+5. independent production gate.
+
+Current implementation nonconformance is implementation debt, not architecture authority and not an automatic reopening trigger.
+
+A future architecture reopening requires new concrete proof of terminal starvation, irreducible semantic duplication, genuine jurisdiction contradiction, or impossible producer/consumer contract.
+
+## Present implementation status
+
+### V553 / SWID
+
+Production remains blocked on terminal source/wave-identity G8 acceptance/merge plus the narrow post-merge identity-delta check required by the V553 ruling.
+
+Live PR #27 is still open/draft as of latest inspection, at head `18b38ef7cb9c39e23f54f1481f4bf4b416e45fdf`. Do not infer G8 completion from stale PR-body text; inspect current campaign artifacts/runtime evidence when resuming that execution thread.
+
+### V554–V558
+
+Architecture closed. Implementation still requires canonical upstream publications, governed stage rule/registry authority, removal/replacement of superseded seed/slot/interpolation/pseudo-attractor/review-gate shapes, and all binding seam hardenings.
+
+### V3
+
+Architecture closed. Implementation remains blocked on governed runtime/model authorities already enumerated in `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md` and shared V2 boundary authorities.
+
+### V2
+
+Architecture closed. Implementation remains blocked on the 19 governed authorities enumerated in `integration/V2_COMPLETION_IMPLEMENTATION_RULING.md`.
 
 ## Immediate next action
 
-1. Launch the whole-machine synthetic-life / architecture-closure court from current canonical `main`.
-2. Do not release implementation packets before that court closes.
-3. Independently finish SWID G8; do not start V553 production before its gate closes.
-4. After whole-machine closure, terminate architecture into finite rule-authority and implementation packets rather than another broad redesign cycle.
+Run a finite cross-stage **rule-authority / implementation-release synthesis**, not another architecture pass.
+
+That synthesis must:
+- collect every named missing authority/registry/contract across V553–V2;
+- deduplicate shared authorities without collapsing jurisdiction;
+- identify existing repo/source authority that can be reused directly;
+- distinguish `AUTHORITY_ALREADY_EXISTS`, `AUTHORITY_NEEDS_CANONICALIZATION`, `AUTHORITY_MUST_BE_CREATED`, and `IMPLEMENTATION_ONLY_NO_NEW_AUTHORITY`;
+- build the dependency DAG from SWID/V553 through V2;
+- map every accepted implementation packet to its blockers and acceptance harness;
+- produce a finite release order.
+
+SWID G8 continues independently and remains a hard V553 production gate.
 
 ## Restart instruction
 
@@ -160,5 +174,6 @@ Read, in order:
 6. `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`;
 7. `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`;
 8. `integration/V2_COMPLETION_IMPLEMENTATION_RULING.md`;
-9. accepted TD-R00–TD-R06 results;
-10. live SWID PR #27 when production status matters.
+9. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
+10. accepted TD-R00–TD-R07 results;
+11. live SWID PR #27 state when production status matters.
