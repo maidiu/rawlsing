@@ -1136,11 +1136,34 @@ def _v2_identity(value: Any) -> str:
 
 
 def _v2_match_atoms_for_item(item: Mapping[str, Any], atoms: pd.DataFrame, pattern: Mapping[str, Any]) -> tuple[str, str, pd.DataFrame, list[str]]:
-    scope = atoms[
-        atoms.get("source_family", pd.Series(dtype=str)).fillna("").astype(str).eq(_clean(pattern.get("source_family")) or _clean(pattern.get("source")))
-        & atoms.get("canonical_wave", pd.Series(dtype=str)).fillna("").astype(str).eq(_clean(pattern.get("canonical_wave")) or _clean(pattern.get("wave")))
-        & atoms.get("country_code", pd.Series(dtype=str)).fillna("").astype(str).eq(_clean(pattern.get("country_code")))
-    ].copy()
+    from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+        BoundaryContractError,
+        verify_frame_source_wave_identity_coherence,
+    )
+
+    pattern_identity = resolve_v551j_scope_identity(pattern, require_closed_35=True)
+    if atoms.empty:
+        scope = atoms.copy()
+    else:
+        missing_uid_columns = sorted({"source_family_uid", "wave_uid"} - set(atoms.columns))
+        if missing_uid_columns:
+            raise RuntimeError(
+                "BLOCKED_V551J_V551_ATOM_UID_SCOPE_MISSING:" + ",".join(missing_uid_columns)
+            )
+        try:
+            verify_frame_source_wave_identity_coherence(
+                atoms,
+                expected_source_family_uid=pattern_identity["source_family_uid"],
+                expected_wave_uid=pattern_identity["wave_uid"],
+                allow_empty=False,
+            )
+        except BoundaryContractError as exc:
+            raise RuntimeError(f"BLOCKED_V551J_V551_ATOM_IDENTITY:{exc}") from exc
+        scope = atoms[
+            atoms["source_family_uid"].fillna("").astype(str).str.strip().eq(pattern_identity["source_family_uid"])
+            & atoms["wave_uid"].fillna("").astype(str).str.strip().eq(pattern_identity["wave_uid"])
+            & atoms.get("country_code", pd.Series(index=atoms.index, dtype=str)).fillna("").astype(str).eq(_clean(pattern.get("country_code")))
+        ].copy()
     q = _v2_identity(item.get("question_id"))
     v = _v2_identity(item.get("var_code"))
     reasons: list[str] = []
@@ -1149,16 +1172,16 @@ def _v2_match_atoms_for_item(item: Mapping[str, Any], atoms: pd.DataFrame, patte
             scope.get("question_id", pd.Series(dtype=str)).fillna("").astype(str).str.casefold().eq(q)
             & scope.get("var_code", pd.Series(dtype=str)).fillna("").astype(str).str.casefold().eq(v)
         ]
-        basis = "exact_question_id_and_var_code"
+        basis = "exact_uid_scope+exact_question_id_and_var_code"
     elif q:
         candidates = scope[scope.get("question_id", pd.Series(dtype=str)).fillna("").astype(str).str.casefold().eq(q)]
-        basis = "exact_question_id"
+        basis = "exact_uid_scope+exact_question_id"
     elif v:
         candidates = scope[scope.get("var_code", pd.Series(dtype=str)).fillna("").astype(str).str.casefold().eq(v)]
-        basis = "exact_var_code"
+        basis = "exact_uid_scope+exact_var_code"
     else:
         candidates = scope.iloc[0:0].copy()
-        basis = "missing_question_and_var_identity"
+        basis = "exact_uid_scope+missing_question_and_var_identity"
     response = _v2_scalar(item.get("response_value_normalized"))
     if response is not None and not candidates.empty and "response_value_normalized" in candidates.columns:
         candidates = candidates[candidates["response_value_normalized"].map(_v2_scalar).astype(str).eq(str(response))]
@@ -1356,9 +1379,20 @@ def validate_governed_input_scope(
     expected_wave: str,
     expected_country: str,
 ) -> tuple[pd.DataFrame, list[str]]:
+    from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
+        BoundaryContractError,
+        verify_frame_source_wave_identity_coherence,
+    )
     from data.ddm_build_copy.ddm_v551j_schema import V551J_INPUT_SCOPE_AUDIT_SCHEMA
 
     issues: list[str] = []
+    expected_identity = resolve_v551j_scope_identity(
+        {
+            "source": expected_source,
+            "wave": expected_wave,
+        },
+        require_closed_35=True,
+    )
 
     def _values(frame: pd.DataFrame, *columns: str) -> list[str]:
         for column in columns:
@@ -1366,16 +1400,22 @@ def validate_governed_input_scope(
                 return sorted({str(value).strip() for value in frame[column].fillna("").astype(str) if str(value).strip()})
         return []
 
-    def _status(source_values: list[str], wave_values: list[str], country_values: list[str]) -> tuple[str, list[str]]:
+    def _status(frame: pd.DataFrame, source_values: list[str], wave_values: list[str], country_values: list[str]) -> tuple[str, list[str]]:
         row_issues: list[str] = []
         if not source_values or not wave_values or not country_values:
             row_issues.append("scope_contract_unresolved")
-        if source_values and source_values != [expected_source]:
-            row_issues.append("scope_contract_mismatch")
-        if wave_values and wave_values != [expected_wave]:
-            row_issues.append("scope_contract_mismatch")
         if country_values and country_values != [expected_country]:
             row_issues.append("scope_contract_mismatch")
+        if source_values and wave_values:
+            try:
+                verify_frame_source_wave_identity_coherence(
+                    frame,
+                    expected_source_family_uid=expected_identity["source_family_uid"],
+                    expected_wave_uid=expected_identity["wave_uid"],
+                    allow_empty=False,
+                )
+            except BoundaryContractError:
+                row_issues.append("scope_contract_mismatch")
         if "scope_contract_unresolved" in row_issues:
             return "FAIL_SCOPE_UNRESOLVED", row_issues
         if "scope_contract_mismatch" in row_issues:
@@ -1385,7 +1425,7 @@ def validate_governed_input_scope(
     rows: list[dict[str, Any]] = []
 
     def _append(name: str, frame: pd.DataFrame, source_values: list[str], wave_values: list[str], country_values: list[str], extra_issues: list[str] | None = None) -> None:
-        status, row_issues = _status(source_values, wave_values, country_values)
+        status, row_issues = _status(frame, source_values, wave_values, country_values)
         row_issues.extend(extra_issues or [])
         if extra_issues and status == "PASS":
             status = "FAIL_PARENT_COVERAGE"
