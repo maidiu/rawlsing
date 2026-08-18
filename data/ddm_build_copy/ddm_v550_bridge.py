@@ -24,6 +24,7 @@ from data.ddm_build_copy.ddm_v550_authority_contract import (
     CERTIFIED_RESPONSE_SEMANTICS_STATUSES,
 )
 from data.ddm_build_copy.ddm_survey_identity import require_survey_identity
+from data.ddm_build_copy.ddm_source_wave_identity import resolve_source_wave_identity
 from data.ddm_build_copy.ddm_v550_response_options import normalize_response_code
 from data.ddm_build_copy.ddm_v550_schema import V551_BRIDGE_INDEX_SCHEMA, validate_bridge_index
 from data.ddm_build_copy.ddm_v550_validation import validate_v551_bridge_rows
@@ -143,6 +144,15 @@ PIPELINE_PROCESS_LABELS = {
     "underpowered_quarantine": 53,
 }
 
+V551_BRIDGE_MACHINE_IDENTITY_COLUMNS = ("source_family_uid", "wave_uid")
+for _identity_column, _anchor_column in (
+    ("source_family_uid", "source_family"),
+    ("wave_uid", "canonical_wave"),
+):
+    if _identity_column not in V551_BRIDGE_INDEX_SCHEMA["required_columns"]:
+        _columns = V551_BRIDGE_INDEX_SCHEMA["required_columns"]
+        _columns.insert(_columns.index(_anchor_column) + 1, _identity_column)
+
 
 def _process_label(table_name: str) -> str:
     idx = PIPELINE_PROCESS_LABELS.get(table_name)
@@ -169,6 +179,50 @@ def _row_value(row: Any, *names: str, default: Any = "") -> Any:
                 if text and text.lower() not in {"nan", "none"}:
                     return value
     return default
+
+
+def _clean_uid(value: Any) -> str:
+    text = str(value or "").strip()
+    return "" if text.lower() in {"", "nan", "none", "null"} else text
+
+
+def _bridge_uid_pair(
+    row: Any,
+    *,
+    source: Any,
+    wave: Any,
+    source_family_uid: str = "",
+    wave_uid: str = "",
+) -> tuple[str, str]:
+    explicit_source_uid = _clean_uid(source_family_uid)
+    explicit_wave_uid = _clean_uid(wave_uid)
+    declared_source_uid = _clean_uid(_row_value(row, "source_family_uid", default=""))
+    declared_wave_uid = _clean_uid(_row_value(row, "wave_uid", default=""))
+    if bool(explicit_source_uid) != bool(explicit_wave_uid):
+        raise RuntimeError("BLOCKED_V550_BRIDGE_UID_SCOPE_INCOMPLETE")
+    if bool(declared_source_uid) != bool(declared_wave_uid):
+        raise RuntimeError("BLOCKED_V550_BRIDGE_DECLARED_UID_SCOPE_INCOMPLETE")
+    if not (explicit_source_uid or declared_source_uid):
+        return "", ""
+    identity = resolve_source_wave_identity(str(source).strip(), str(wave).strip(), require_closed_35=True)
+    expected = (identity.source_family_uid, identity.wave_uid)
+    if explicit_source_uid and (explicit_source_uid, explicit_wave_uid) != expected:
+        raise RuntimeError(
+            "BLOCKED_V550_BRIDGE_UID_SCOPE_CONTRADICTION:"
+            f"expected={expected[0]}|{expected[1]}:"
+            f"explicit={explicit_source_uid}|{explicit_wave_uid}"
+        )
+    if declared_source_uid and (declared_source_uid, declared_wave_uid) != expected:
+        raise RuntimeError(
+            "BLOCKED_V550_BRIDGE_DECLARED_UID_SCOPE_CONTRADICTION:"
+            f"expected={expected[0]}|{expected[1]}:"
+            f"declared={declared_source_uid}|{declared_wave_uid}"
+        )
+    if explicit_source_uid and declared_source_uid and (
+        explicit_source_uid != declared_source_uid or explicit_wave_uid != declared_wave_uid
+    ):
+        raise RuntimeError("BLOCKED_V550_BRIDGE_UID_SCOPE_REDUNDANT_CONTRADICTION")
+    return explicit_source_uid or declared_source_uid, explicit_wave_uid or declared_wave_uid
 
 
 def _question_respondent_lookup(question_universe: pd.DataFrame | None) -> dict[str, Any]:
@@ -744,6 +798,8 @@ def _base_bridge_row(
     question_respondent_lookup: dict[str, Any] | None = None,
     question_contract_lookup: dict[str, dict[str, Any]] | None = None,
     directionality_overlay_lookup: dict[tuple[str, str, str], dict[str, Any]] | None = None,
+    source_family_uid: str = "",
+    wave_uid: str = "",
 ) -> dict[str, Any]:
     response_raw = _row_value(row, "response_value_raw", "response_value", "value_raw")
     response_normalized = _row_value(row, "response_value_normalized", "response_label", "value_text", default=response_raw)
@@ -773,6 +829,13 @@ def _base_bridge_row(
     source_family = _row_value(row, "source_family", "source")
     wave = _row_value(row, "wave")
     canonical_wave = _row_value(row, "canonical_wave", "wave")
+    source_family_uid, wave_uid = _bridge_uid_pair(
+        row,
+        source=source or source_family,
+        wave=canonical_wave or wave,
+        source_family_uid=source_family_uid,
+        wave_uid=wave_uid,
+    )
     n_respondents = _row_value(row, "n_respondents", default="")
     if not str(n_respondents).strip() and question_respondent_lookup:
         for wave_variant in _wave_lookup_variants(source_raw, wave):
@@ -910,8 +973,10 @@ def _base_bridge_row(
         "shard_id": shard_id,
         "source": source,
         "source_family": source_family,
+        "source_family_uid": source_family_uid,
         "wave": wave,
         "canonical_wave": canonical_wave,
+        "wave_uid": wave_uid,
         "country_code": country_code,
         "question_id": question_id,
         "var_code": var_code,
@@ -1409,6 +1474,8 @@ def build_v551_bridge_index_for_table(
     directionality_overlay_lookup: dict[tuple[str, str, str], dict[str, Any]] | None = None,
     directionality_authority_dir: Path | None = None,
     question_contract_lookup: dict[str, dict[str, Any]] | None = None,
+    source_family_uid: str = "",
+    wave_uid: str = "",
 ) -> pd.DataFrame:
     if df.empty:
         _log_progress(progress_started, f"bridge table {table_name}{_process_label(table_name)}: empty, skipping")
@@ -1431,6 +1498,8 @@ def build_v551_bridge_index_for_table(
                 source_table=table_name,
                 directionality_overlay_lookup=directionality_overlay_lookup,
                 question_contract_lookup=question_contract_lookup,
+                source_family_uid=source_family_uid,
+                wave_uid=wave_uid,
             )
         )
         if progress_started is not None and (idx == 1 or idx % 100000 == 0 or idx == len(df)):
@@ -1453,6 +1522,7 @@ def build_v551_bridge_index_for_shard(
     identity = require_survey_identity(survey_family, canonical_wave)
     survey_family = identity.source
     canonical_wave = identity.canonical_wave
+    machine_identity = resolve_source_wave_identity(survey_family, canonical_wave, require_closed_35=True)
     if directionality_overlay_lookup is None:
         directionality_overlay_lookup = _directionality_overlay_lookup_for_family(
             survey_family=survey_family,
@@ -1477,6 +1547,8 @@ def build_v551_bridge_index_for_shard(
             progress_started=progress_started,
             directionality_overlay_lookup=directionality_overlay_lookup,
             directionality_authority_dir=directionality_authority_dir,
+            source_family_uid=machine_identity.source_family_uid,
+            wave_uid=machine_identity.wave_uid,
         )
         if frame is not None and not frame.empty:
             observed_columns.extend([col for col in frame.columns if col not in observed_columns])
@@ -1775,6 +1847,8 @@ def iter_v551_bridge_index_batches_for_table(
     progress_started: float | None = None,
     batch_size: int = 10_000,
     survey_year_is_numeric: bool = True,
+    source_family_uid: str = "",
+    wave_uid: str = "",
 ):
     if df.empty:
         _log_progress(progress_started, f"bridge table {table_name}: empty, skipping")
@@ -1798,6 +1872,8 @@ def iter_v551_bridge_index_batches_for_table(
                 question_respondent_lookup=question_respondent_lookup,
                 question_contract_lookup=question_contract_lookup,
                 directionality_overlay_lookup=directionality_overlay_lookup,
+                source_family_uid=source_family_uid,
+                wave_uid=wave_uid,
             )
         )
         if progress_started is not None and (idx == 1 or idx % 100000 == 0 or idx == len(df)):
@@ -1840,6 +1916,7 @@ def write_v551_bridge_index_for_shard(
     identity = require_survey_identity(survey_family, canonical_wave)
     survey_family = identity.source
     canonical_wave = identity.canonical_wave
+    machine_identity = resolve_source_wave_identity(survey_family, canonical_wave, require_closed_35=True)
     if directionality_overlay_lookup is None:
         directionality_overlay_lookup = _directionality_overlay_lookup_for_family(
             survey_family=survey_family,
@@ -1884,6 +1961,8 @@ def write_v551_bridge_index_for_shard(
                 progress_started=progress_started,
                 batch_size=batch_size,
                 survey_year_is_numeric=survey_year_is_numeric,
+                source_family_uid=machine_identity.source_family_uid,
+                wave_uid=machine_identity.wave_uid,
             ):
                 if chunk.empty:
                     continue
