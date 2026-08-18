@@ -4,7 +4,7 @@ import json
 
 import pandas as pd
 
-from data.ddm_build_copy.compile_v551_relation_evidence_atoms import _producer_lineage
+from data.ddm_build_copy.ddm_v551_atoms import _producer_lineage
 from data.ddm_build_copy.ddm_v550_bridge import (
     V551_BRIDGE_INDEX_SCHEMA,
     _bridge_additional_fields,
@@ -38,7 +38,7 @@ def _duplicate_heavy_afro_rows() -> list[tuple[str, str, str, str]]:
         ("mip2", "", "migration", "joint_family_item"),
     ]
     # QSM DISTINCT is across structural columns, not var_code alone.  Repeated
-    # governed var_codes must therefore consume only one strict-canary slot.
+    # governed varcodes must therefore consume only one strict-canary slot.
     for code in ["dememp", "pfeerd", "pfpcrm", "pfpsaf", "pfrass"]:
         for index in range(6):
             rows.append((code, f"axis_{index}", "politics", "relation"))
