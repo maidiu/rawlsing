@@ -1,0 +1,247 @@
+{
+  "court": "VT3-CM-R10",
+  "title": "CONDITIONAL WEIGHTING, SUPPORT & UNCERTAINTY AUTHORITY COURT",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
+  "intended_branch": "agent/vozhd-trii-vt3-cm-r10",
+  "verdict": {
+    "current_statistical_authority": "descriptive conditional sample evidence with explicit raw support, selected scalar-weight semantics, heuristic support gates, and typed admission/absence states",
+    "survey_design_variance_authority": "not available in the governed V550-to-V552 conditional-evidence path",
+    "design_based_ci_authorized": false,
+    "core_preservation_rule": "preserve raw support, weighted mass, denominators, weight state/provenance, typed zero/absence, semantic/comparability authority, and downstream admission separately"
+  },
+  "answers": {
+    "1": {
+      "question": "What do current weighted conditional cells mean?",
+      "answer": "Descriptive shares of usable selected respondent-weight mass inside a governed empirical slice. For indicator-answer cells, the numerator is usable positive finite weight mass in the response/condition cell and the denominator is usable positive finite weight mass across responses for that condition. Partial-weight rows without usable weights remain in the raw lane but contribute zero weighted mass. This is not actor probability, causal effect, or design-based confidence."
+    },
+    "2": {
+      "question": "How are partial, invalid and missing weights treated?",
+      "answer": {
+        "partial": "At least one but fewer than all rows have positive finite usable weights. A sparse validated series is returned. Answer distributions and branching use it; position_distribution suppresses weighted output; V552 can consume a complete pct_weighted vector carrying partial status.",
+        "invalid": "No validated weight series. Answer-distribution weighted output is unavailable; branching computes raw and can mirror raw values into weighted-named matrix columns; V552 rejects weighted use and falls back raw when available.",
+        "missing": "No validated weight series because weight information is absent. Numerically similar no-weight behavior to invalid, but a distinct authority state.",
+        "unweighted_only": "Exceptional explicit no-valid-weight state; V552 treats it as disqualifying weighted use."
+      }
+    },
+    "3": {
+      "question": "Where do weighted and unweighted lanes differ?",
+      "answer": "Raw lanes count every row equally. Weighted lanes sum only positive finite selected weights. Partial rows can therefore be in raw denominators but absent from weighted mass. Policy differs by artifact: partial is used in answer/country distributions and branching, suppressed in position_distribution, and accepted by V552 if the weighted percentage vector is complete."
+    },
+    "4": {
+      "question": "What denominator does each percentage use?",
+      "answer": {
+        "answer_distribution.pct_unweighted": "all rows in the supplied question frame",
+        "answer_distribution.pct_weighted": "total usable positive selected-weight mass in the supplied question frame",
+        "country_answer_distribution.pct_unweighted": "all rows in the country/question frame",
+        "country_answer_distribution.pct_weighted": "total usable selected-weight mass in the country/question frame",
+        "indicator_answer_matrix.pct_unweighted": "all response rows for the given indicator value",
+        "indicator_answer_matrix.pct_weighted": "all usable weighted response mass for the given indicator value; current no-weight fallback mirrors raw",
+        "position_distribution.pct_unweighted": "deduplicated respondents with a nonblank value for the position field in the country",
+        "position_distribution.pct_weighted": "selected-weight mass among those respondents, only when aggregate weight status is exactly weighted",
+        "diagnostic_dominant_response_pct_fields": "not a clean independent raw/weighted pair; implementation may write the same baseline share into both fields"
+      }
+    },
+    "5": {
+      "question": "Which zero cells are observed structural zeros versus materialized crosstab completion?",
+      "answer": "Current V550 establishes no structural-zero authority. indicator_answer_matrix crosstab zeros are completion zeros across marginal categories observed somewhere in the masked data. They do not prove structural impossibility. No observation, missing authority, and not-applicable must remain distinct from zero."
+    },
+    "6": {
+      "question": "What does underpowered mean exactly?",
+      "answer": "Positive support below min(30, max(2, ceil(total_respondents * 0.005))). If total respondents is unavailable the threshold defaults to 30. Zero support is zero_support; missing support is missing_support or structural-lane not_applicable. underpowered is not a statistical-significance claim."
+    },
+    "7": {
+      "question": "Does current Rawlsing possess enough PSU/stratum/replicate-weight information for design-based confidence intervals or variance estimates?",
+      "answer": "No. The governed conditional path carries a selected scalar respondent weight but not a complete propagated sample-design variance substrate with PSU, sampling-stratum, replicate-weight, and estimator-method authority."
+    },
+    "8": {
+      "question": "If not, what is the strongest survey-design sampling-uncertainty claim it may lawfully make?",
+      "answer": "No quantitative design-based sampling interval. It may state a descriptive estimate qualified by observed raw support, respondent total, support threshold/status, selected weight identity, weight-completeness state, raw/weighted denominator, semantic authority, and downstream admission."
+    },
+    "9": {
+      "question": "Must underpowered observed evidence remain stored even where structural pressure use is denied?",
+      "answer": "Yes. V551 itself separates preservation from admission: direct_relation_response accepts underpowered positive evidence, while derived_determinicity requires sufficient_support. Denied derived use must not erase the observed cell or provenance."
+    },
+    "10": {
+      "question": "What minimum fields/statuses must a replacement conditional fact preserve?",
+      "answer": [
+        "source/source_family/canonical_wave/country or governed analysis scope",
+        "question and response identity plus semantics contract",
+        "condition identity and evidence lane",
+        "cell_n_unweighted",
+        "denominator_n_unweighted",
+        "question_n_respondents",
+        "support_threshold, support_status, support formula/version",
+        "cell_weight_sum and denominator_weight_sum when applicable",
+        "weight name/source/authority",
+        "aggregate weight_status",
+        "usable/missing/invalid weight-row counts if respondent microdata is removed",
+        "explicit weight_basis_status and calculation-policy version",
+        "typed observed/completion-zero/no-observation/missing-authority/not-applicable/noncomparable/unresolved state",
+        "explicit survey-design variance availability state",
+        "semantic/comparability authority state",
+        "downstream admission status and reason",
+        "provenance hashes and compiler/contract versions"
+      ]
+    }
+  },
+  "current_semantics_ledger": {
+    "weight_validation_states": [
+      "missing",
+      "invalid",
+      "unweighted_only",
+      "partial",
+      "weighted"
+    ],
+    "support_states": [
+      "not_applicable",
+      "missing_support",
+      "zero_support",
+      "underpowered",
+      "sufficient_support"
+    ],
+    "support_formula": {
+      "rate": 0.005,
+      "floor": 2,
+      "cap": 30,
+      "formula": "min(30, max(2, ceil(total_respondents * 0.005)))",
+      "missing_total_behavior": 30
+    },
+    "lane_specific_partial_weight_policy": {
+      "answer_distribution": "use valid subset",
+      "country_answer_distribution": "use valid subset",
+      "branching": "use valid subset",
+      "position_distribution": "suppress weighted output unless status exactly weighted",
+      "V552": "accept complete pct_weighted vector when status partial; reject missing/unavailable/invalid/unweighted_only/not_weighted"
+    }
+  },
+  "denominator_contract": {
+    "raw": "cell raw row count divided by raw rows in the exact estimator slice",
+    "weighted": "cell usable selected-weight mass divided by usable selected-weight mass in the exact estimator slice",
+    "requirement": "store numerator and denominator primitives plus explicit basis; do not rely on percentage alone"
+  },
+  "support_vs_sampling_uncertainty": {
+    "observed_sample_support": "an empirical count plus a deterministic wave-relative support threshold",
+    "weighted_descriptive_estimate": "selected scalar-weight mass share",
+    "survey_design_sampling_uncertainty": "not quantitatively available from current governed substrate",
+    "epistemic_uncertainty": "typed authority/comparability/applicability/unresolved states",
+    "downstream_admissibility": "separate stage-specific permission state"
+  },
+  "forbidden_claims": [
+    "weighted percentage equals population truth",
+    "underpowered means statistically insignificant",
+    "sufficient_support means significant or 95-percent reliable",
+    "confidence_tier is a confidence level",
+    "n_weighted is necessarily a respondent count",
+    "numeric pct_weighted proves a weighted estimator was used",
+    "partial weighting has one uniform machine-wide policy",
+    "crosstab zero is a structural impossibility",
+    "missing observation equals zero",
+    "V552 response-surface dispersion is a sampling standard error",
+    "conditional response distribution is an actor belief probability",
+    "denied pressure use authorizes deletion of observed evidence"
+  ],
+  "hostile_tests": [
+    {
+      "name": "weighted_unweighted_reversal",
+      "rows": [
+        {
+          "answer": "YES",
+          "weight": 1
+        },
+        {
+          "answer": "YES",
+          "weight": 1
+        },
+        {
+          "answer": "NO",
+          "weight": 10
+        }
+      ],
+      "raw_yes_share": 0.6666666666666666,
+      "weighted_yes_share": 0.16666666666666666,
+      "finding": "direction reverses"
+    },
+    {
+      "name": "equal_weighted_mass_different_raw_support",
+      "wave_n": 1000,
+      "threshold": 5,
+      "cell_A": {
+        "raw_n": 1,
+        "weight_sum": 100,
+        "support_status": "underpowered"
+      },
+      "cell_B": {
+        "raw_n": 100,
+        "weight_sum": 100,
+        "support_status": "sufficient_support"
+      },
+      "finding": "weight mass cannot substitute for raw support"
+    },
+    {
+      "name": "same_apparent_weighted_number_different_authority",
+      "complete": {
+        "raw_n": 2,
+        "weights": [
+          50,
+          50
+        ],
+        "weight_status": "weighted",
+        "apparent_weighted_mass": 100
+      },
+      "partial": {
+        "raw_n": 2,
+        "weights": [
+          100,
+          null
+        ],
+        "weight_status": "partial",
+        "apparent_weighted_mass": 100
+      },
+      "invalid_branch_fallback": {
+        "raw_n": 100,
+        "validated_weights": null,
+        "weight_status": "invalid_or_missing",
+        "indicator_matrix_n_weighted": 100
+      },
+      "finding": "numeric weighted-looking fields are not self-authenticating"
+    },
+    {
+      "name": "completion_zero_vs_no_observation",
+      "finding": "a pd.crosstab combination with raw count zero is a completion zero inside observed marginal domains; missing authority/no observation is not zero"
+    },
+    {
+      "name": "small_n_real_but_derived_inadmissible",
+      "wave_n": 1000,
+      "threshold": 5,
+      "raw_n": 3,
+      "support_status": "underpowered",
+      "V551_direct_relation_response": "may remain usable",
+      "V551_derived_determinicity": "denied because not sufficient_support",
+      "finding": "preserve evidence and provenance independently of derived-use permission"
+    }
+  ],
+  "v551_v552_implications": [
+    "Do not pre-delete underpowered observed cells; let V551 apply lane-specific admission.",
+    "Do not add a new blanket small-n V552 gate under R10.",
+    "Preserve explicit weight basis/status because V552 prefers weighted percentages when lawfully available and partial is currently permitted.",
+    "Preserve V552 measurement_evidence_status and downstream_permission_status separately from pressure_score."
+  ],
+  "evidence_inspected": [
+    "data/ddm_build_copy/ddm_v550_metrics.py",
+    "data/ddm_build_copy/ddm_v550_support.py",
+    "data/ddm_build_copy/ddm_v550_distributions.py",
+    "data/ddm_build_copy/ddm_v550_branching.py",
+    "data/ddm_build_copy/ddm_v550_position_distribution.py",
+    "data/ddm_build_copy/build_determinicity_repository_v550.py",
+    "data/ddm_build_copy/apply_postgres_facet_ready_substrate.py",
+    "data/ddm_build_copy/ddm_v550_schema.py",
+    "data/ddm_build_copy/ddm_v550_bridge.py",
+    "data/ddm_build_copy/ddm_v552_structural.py",
+    "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md"
+  ],
+  "intended_publication_paths": {
+    "RESULT.md": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R10/RESULT.md",
+    "RESULT.json": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/VT3_CONDITIONAL_MEANING_CHAMBER/VT3_CM_R10/RESULT.json"
+  }
+}
