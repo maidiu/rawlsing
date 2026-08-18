@@ -137,9 +137,9 @@ At minimum:
 
 Exact paths must be indexed by the dedicated downstream-consumption court because the current tree changed after the frozen VT3 audit.
 
-## 6. User-provided current database evidence preserved in this branch
+## 6. User-provided current database evidence
 
-Exact copies are under:
+Identity manifest and evidence policy:
 
 `evidence/conversation_inputs/`
 
@@ -149,7 +149,7 @@ SHA-256:
 
 `2c3f4a9ebec1e6c0cf62e8827ab982e52243c5c8899c961cd0e30b489573ec76`
 
-High-value surfaces already identified:
+This large current-conversation schema dump is **hash-addressed in the control surface rather than copied wholesale into source control**. High-value surfaces already identified:
 
 - `survey_microdata_respondents`
 - `survey_microdata_responses`
@@ -167,6 +167,10 @@ SHA-256:
 
 `57e8c58c9444be9c34df54765e1801a9819f7a15fd02ddaa9a8e194e57596877`
 
+An exact text copy is preserved at:
+
+`evidence/conversation_inputs/Rawlsing_WVS_authority_reconcile_schema.sql`
+
 High-value surfaces:
 
 - `canonical_question_registry`
@@ -178,7 +182,11 @@ High-value surfaces:
 
 Schema proves availability of structures, not population completeness or data quality. Dedicated live-data audits remain required.
 
-## 7. User-provided historical design evidence preserved in this branch
+## 7. User-provided historical design evidence
+
+The binary archives remain hash-addressed external evidence; exact high-value text extracts are preserved at:
+
+`evidence/HISTORICAL_DESIGN_EXTRACTS.md`
 
 ### DDM continuation / attitude-cloud pack
 
@@ -238,10 +246,10 @@ SHA-256:
 
 `b0ff181b0d1f6a591b005b829aafeb27b0740249332b49e08bd381800ab1745a`
 
-Use only as historical design/conversation evidence unless a proposition is independently grounded in code, authority or accepted artifacts.
+This is hash-addressed historical conversation/design evidence only. Use it only when a proposition is independently grounded in code, authority or accepted artifacts, or when explicitly reconstructing design genealogy.
 
 ## 9. Evidence manifest
 
 `evidence/conversation_inputs/SHA256SUMS.txt`
 
-Any future worker using these attachments should verify the hashes before treating them as the same evidence bundle.
+Any future worker using the original attachments should verify the hashes before treating them as the same evidence bundle. A matching hash establishes identity, not semantic authority.
