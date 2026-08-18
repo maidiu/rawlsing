@@ -4,7 +4,10 @@ from pathlib import Path
 
 import pandas as pd
 
-from data.ddm_build_copy.apply_postgres_facet_ready_substrate import load_question_mapping_authority
+from data.ddm_build_copy.apply_postgres_facet_ready_substrate import (
+    QUESTION_MAPPING_SQL,
+    load_question_mapping_authority,
+)
 from data.ddm_build_copy.ddm_v550_shared_cache import question_structural_mapping_select_columns
 from data.ddm_build_copy.ddm_v550_question_relation_authority import (
     CALIBRATION_AUTHORITY_PATH,
@@ -112,3 +115,5 @@ def test_qsm_selector_requests_r1_identity_fields_when_postgres_exposes_them(mon
     monkeypatch.setattr(pd, "read_sql_query", fake_read_sql_query)
     selected = question_structural_mapping_select_columns(FakeConn())
     assert selected[-4:] == ["canonical_wave", "country_code_scope", "authority_status", "authority_rule_id"]
+    for field in ("canonical_wave", "country_code_scope", "authority_status", "authority_rule_id"):
+        assert f"{field} TEXT NOT NULL DEFAULT ''" in QUESTION_MAPPING_SQL
