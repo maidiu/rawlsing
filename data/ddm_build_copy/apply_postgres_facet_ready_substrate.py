@@ -3,7 +3,8 @@
 
 This script does four things in the live Postgres database:
 
-1. Create and populate question_structural_mapping from questions_master_drivers.csv.
+1. Create and populate question_structural_mapping from the immutable August 14
+   R1 question_structural_mapping_live_PLUS4_FINAL_APPLIED_R1.csv authority.
 2. Create respondent_position_fact as a view over the respondentsDemo* tables.
 3. Create and populate survey_weight_fact from the existing respondent-level
    survey_weight column on the respondentsDemo* tables.
@@ -38,6 +39,10 @@ from psycopg2.extras import execute_values
 
 ROOT = Path(__file__).resolve().parents[2]
 QUESTIONS_MASTER = ROOT / "data" / "final_codebooks" / "questions_master_drivers.csv"
+QUESTION_MAPPING_AUTHORITY = (
+    ROOT / "data" / "ddm_build_copy" / "authority" / "full_question_relation_authority"
+    / "R1_20260814" / "question_structural_mapping_live_PLUS4_FINAL_APPLIED_R1.csv"
+)
 OUT_REPORT = ROOT / "data" / "ddm_build_copy" / "reports" / "apply_postgres_facet_ready_substrate_report.json"
 
 
@@ -65,6 +70,10 @@ CREATE TABLE IF NOT EXISTS question_structural_mapping (
     forbidden_inference TEXT,
     does_not_measure TEXT,
     review_notes TEXT,
+    canonical_wave TEXT NOT NULL DEFAULT '',
+    country_code_scope TEXT NOT NULL DEFAULT '',
+    authority_status TEXT NOT NULL DEFAULT '',
+    authority_rule_id TEXT NOT NULL DEFAULT '',
     loaded_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     PRIMARY KEY (source, wave, var_code)
 );
@@ -404,11 +413,41 @@ def create_question_mapping_rows(df: pd.DataFrame) -> list[tuple[Any, ...]]:
 
 def ensure_question_mapping(cur) -> None:
     cur.execute(QUESTION_MAPPING_SQL)
+    cur.execute("ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS canonical_wave TEXT NOT NULL DEFAULT ''")
+    cur.execute("ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS country_code_scope TEXT NOT NULL DEFAULT ''")
+    cur.execute("ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS authority_status TEXT NOT NULL DEFAULT ''")
+    cur.execute("ALTER TABLE question_structural_mapping ADD COLUMN IF NOT EXISTS authority_rule_id TEXT NOT NULL DEFAULT ''")
+
+
+def load_question_mapping_authority() -> pd.DataFrame:
+    if not QUESTION_MAPPING_AUTHORITY.exists():
+        raise FileNotFoundError(QUESTION_MAPPING_AUTHORITY)
+    frame = pd.read_csv(QUESTION_MAPPING_AUTHORITY, dtype=str, keep_default_na=False)
+    required = {
+        "source", "wave", "question_id", "var_code", "display_text", "legacy_final_driver_id",
+        "final_driver_label", "final_driver_scope", "final_driver_origin", "driver_id",
+        "driver_facet_id", "question_block_id", "structural_domain_id", "relation_axis_id",
+        "target_entity_id", "mapping_status", "evidence_kind", "strata_relevance", "channel_affordances",
+        "forbidden_inference", "does_not_measure", "review_notes", "canonical_wave",
+        "country_code_scope", "authority_status", "authority_rule_id",
+    }
+    missing = required - set(frame.columns)
+    if missing:
+        raise RuntimeError(f"R1 question mapping authority missing columns: {sorted(missing)}")
+    if len(frame) != 18518:
+        raise RuntimeError(f"R1 question mapping authority row count changed: {len(frame)}")
+    return frame
 
 
 def load_question_mapping(conn) -> int:
-    df = load_questions_master()
-    rows = create_question_mapping_rows(df)
+    df = load_question_mapping_authority()
+    rows = [tuple(clean(getattr(r, column, "")) for column in (
+        "source", "wave", "question_id", "var_code", "display_text", "legacy_final_driver_id",
+        "final_driver_label", "final_driver_scope", "final_driver_origin", "driver_id", "driver_facet_id",
+        "question_block_id", "structural_domain_id", "relation_axis_id", "target_entity_id", "mapping_status",
+        "evidence_kind", "strata_relevance", "channel_affordances", "forbidden_inference", "does_not_measure",
+        "review_notes", "canonical_wave", "country_code_scope", "authority_status", "authority_rule_id"
+    )) for r in df.itertuples(index=False)]
     cur = conn.cursor()
     ensure_question_mapping(cur)
     cur.execute("TRUNCATE question_structural_mapping")
@@ -420,7 +459,8 @@ def load_question_mapping(conn) -> int:
             final_driver_label, final_driver_scope, final_driver_origin, driver_id,
             driver_facet_id, question_block_id, structural_domain_id, relation_axis_id,
             target_entity_id, mapping_status, evidence_kind, strata_relevance,
-            channel_affordances, forbidden_inference, does_not_measure, review_notes
+            channel_affordances, forbidden_inference, does_not_measure, review_notes,
+            canonical_wave, country_code_scope, authority_status, authority_rule_id
         ) VALUES %s
         ON CONFLICT (source, wave, var_code)
         DO UPDATE SET
@@ -443,6 +483,10 @@ def load_question_mapping(conn) -> int:
             forbidden_inference = EXCLUDED.forbidden_inference,
             does_not_measure = EXCLUDED.does_not_measure,
             review_notes = EXCLUDED.review_notes,
+            canonical_wave = EXCLUDED.canonical_wave,
+            country_code_scope = EXCLUDED.country_code_scope,
+            authority_status = EXCLUDED.authority_status,
+            authority_rule_id = EXCLUDED.authority_rule_id,
             loaded_at = NOW()
         """,
         rows,
@@ -808,14 +852,15 @@ def main() -> int:
     load_dotenv(ROOT / ".env")
     args = parse_args()
     families = [f.strip() for f in args.family if f.strip()]
+    if args.dry_run:
+        qsm = load_question_mapping_authority()
+        print(f"dry-run: R1 question mapping authority={QUESTION_MAPPING_AUTHORITY}")
+        print(f"dry-run: R1 question mapping rows={len(qsm)}")
+        print(f"dry-run: families={families if families else 'ALL'}")
+        print("dry-run: survey weights will be loaded from respondent_position_fact.survey_weight")
+        return 0
     conn = connect_db()
     try:
-        if args.dry_run:
-            qsm = load_questions_master()
-            print(f"dry-run: questions_master rows={len(qsm)}")
-            print(f"dry-run: families={families if families else 'ALL'}")
-            print("dry-run: survey weights will be loaded from respondent_position_fact.survey_weight")
-            return 0
 
         if not args.views_only:
             print("creating question_structural_mapping...")

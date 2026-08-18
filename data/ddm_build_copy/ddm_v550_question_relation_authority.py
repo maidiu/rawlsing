@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Canonical 35-wave question-to-ontology authority resolver for V550.
+"""Canonical full-universe question-to-ontology authority resolver for V550.
 
 This module deliberately owns only question-level structural authority.  Response-
 category semantics remain governed by the installed response-option and
@@ -22,12 +22,11 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 AUTHORITY_VERSION = "qra_35wave_active_v1"
+FULL_AUTHORITY_VERSION = "qsm_full_question_relation_authority_r1_20260814"
+CALIBRATION_AUTHORITY_PATH = ROOT / "data" / "ddm_build_copy" / "bindings" / "question_relation_registry_35wave_active_v1.csv"
+FULL_AUTHORITY_PATH = ROOT / "data" / "ddm_build_copy" / "authority" / "full_question_relation_authority" / "R1_20260814" / "QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv"
 DEFAULT_AUTHORITY_PATH = (
-    ROOT
-    / "data"
-    / "ddm_build_copy"
-    / "bindings"
-    / "question_relation_registry_35wave_active_v1.csv"
+    CALIBRATION_AUTHORITY_PATH
 )
 AUTHORITY_PATH_ENV = "RAWLSING_QUESTION_RELATION_AUTHORITY_PATH"
 AUTHORITY_ROOT_ENV = "DDM_AUTHORITY_ROOT"
@@ -38,6 +37,11 @@ NON_DIRECTIONAL_STATUSES = {
     "GOVERNED_CONTEXT_ONLY",
     "GOVERNED_NON_RELATIONAL",
     "ADMINISTRATIVE_ONLY",
+}
+FULL_RELATIONAL_STATUSES = {
+    "GOVERNED_QSMV2_RELATION_AUTHORITY",
+    "GOVERNED_MANUAL_RELATION_AUTHORITY",
+    "FROZEN_ACCEPTED_GSS",
 }
 
 STRUCTURAL_COORDINATE_FIELDS = (
@@ -154,10 +158,10 @@ class AuthorityResolution:
                     "source_response_polarity": row.get("source_response_polarity", ""),
                     "relation_projection_polarity": row.get("relation_projection_polarity", ""),
                     "item_reversal": _bool(row.get("item_reversal")),
-                    "current_directional_atom_eligible": True,
-                    "allowed_as_v551_relation_evidence": True,
+                    "current_directional_atom_eligible": _bool(row.get("current_directional_atom_eligible"), default=True),
+                    "allowed_as_v551_relation_evidence": _bool(row.get("current_directional_atom_eligible"), default=True),
                     "question_relation_coverage_eligible": True,
-                    "question_relation_pressure_eligible": True,
+                    "question_relation_pressure_eligible": _bool(row.get("current_directional_atom_eligible"), default=True),
                     "structural_mapping_status": "COMPLETE",
                     "mapping_status": "governed_directional",
                     "semantic_role": "RELATION_EVIDENCE",
@@ -297,8 +301,8 @@ def active_authority_path(path: Path | str | None = None) -> Path:
         return Path(env).expanduser().resolve()
     root = os.getenv(AUTHORITY_ROOT_ENV, "").strip()
     if root:
-        return Path(root).expanduser().resolve() / "bindings" / "question_relation_registry_35wave_active_v1.csv"
-    return DEFAULT_AUTHORITY_PATH.resolve()
+        return Path(root).expanduser().resolve() / "QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv"
+    return FULL_AUTHORITY_PATH.resolve()
 
 
 def _sha256(path: Path) -> str:
@@ -343,6 +347,21 @@ def _resolution_key(source: Any, wave: Any, country: Any, question: Any) -> tupl
 
 
 def _validate_registry(frame: pd.DataFrame, path: Path) -> None:
+    if path.name == FULL_AUTHORITY_PATH.name:
+        required = {"source", "wave", "question_id", "var_code", "canonical_wave", "country_code_scope",
+                    "authority_rule_id", "authority_status", "relation_use_status_final", "mapping_status",
+                    "driver_id", "driver_facet_id", "question_block_id", "structural_domain_id",
+                    "relation_axis_id", "target_entity_id", "qsmv2_final_payload_hash"}
+        missing = required - set(frame.columns)
+        if missing:
+            raise QuestionRelationAuthorityError(f"full R1 authority missing required columns: {sorted(missing)}")
+        if len(frame) != 18518:
+            raise QuestionRelationAuthorityError(f"expected 18518 full R1 authority rows, found {len(frame)}")
+        if frame["governed_row_payload_hash"].eq("").any():
+            raise QuestionRelationAuthorityError("full R1 authority contains blank governed payload hashes")
+        if frame["authority_status"].eq("").any():
+            raise QuestionRelationAuthorityError("full R1 authority contains blank authority dispositions")
+        return
     missing = REQUIRED_REGISTRY_COLUMNS - set(frame.columns)
     if missing:
         raise QuestionRelationAuthorityError(
@@ -420,6 +439,34 @@ def _build_index(path: Path) -> AuthorityIndex:
         raise QuestionRelationAuthorityError(f"question relation authority not found: {path}")
     frame = pd.read_csv(path, dtype=str, keep_default_na=False)
     _validate_registry(frame, path)
+    if path.name == FULL_AUTHORITY_PATH.name:
+        normalized = frame.copy()
+        normalized["source_family"] = normalized["canonical_source"].where(
+            normalized["canonical_source"].ne(""), normalized["source"]
+        )
+        normalized["relation_use_status"] = normalized["relation_use_status_final"].where(
+            ~normalized["authority_status"].isin(FULL_RELATIONAL_STATUSES), DIRECTIONAL_STATUS
+        )
+        normalized["relation_use_status"] = normalized["relation_use_status"].replace({
+            "GOVERNED_NON_DIRECTIONAL_DISPOSITION": "GOVERNED_CONTEXT_ONLY",
+            "GOVERNED_ADMINISTRATIVE_DISPOSITION": "ADMINISTRATIVE_ONLY",
+            "EXCLUDED_INACTIVE_WAVE": "BLOCKED_EXCLUDED_INACTIVE_WAVE",
+        })
+        normalized["evidence_disposition"] = normalized["p2_evidence_disposition"].where(
+            normalized["p2_evidence_disposition"].ne(""), normalized["manual_evidence_disposition"]
+        )
+        normalized["authority_version"] = FULL_AUTHORITY_VERSION
+        normalized["row_payload_hash"] = normalized["qsmv2_final_payload_hash"].where(
+            normalized["qsmv2_final_payload_hash"].ne(""), normalized["governed_row_payload_hash"]
+        )
+        normalized["review_status"] = normalized["manual_manual_review_required"]
+        normalized["item_reversal"] = ""
+        normalized["source_response_polarity"] = normalized["manual_signed_polarity_status"]
+        normalized["relation_projection_polarity"] = normalized["manual_bridge_directionality_action"]
+        normalized["current_directional_atom_eligible"] = normalized["manual_current_directional_atom_eligible"].where(
+            normalized["manual_current_directional_atom_eligible"].ne(""), normalized["p2_current_directional_atom_eligible"]
+        )
+        frame = normalized
     by_key: dict[tuple[str, str, str, str], list[dict[str, str]]] = {}
     rows: list[dict[str, str]] = []
     for raw in frame.to_dict(orient="records"):
@@ -455,6 +502,20 @@ def load_question_relation_authority(path: Path | str | None = None) -> Authorit
     authority_path = active_authority_path(path)
     stat = authority_path.stat()
     return _load_index_cached(str(authority_path), stat.st_mtime_ns, stat.st_size)
+
+
+def active_closed_35_waves() -> tuple[tuple[str, str, str], ...]:
+    """Return the production CLOSED_35 scope from final R1, excluding W6."""
+    index = load_question_relation_authority()
+    pairs = {
+        (canonical_source_family(row.get("source_family")), canonical_wave(row.get("source_family"), row.get("canonical_wave")))
+        for row in index.rows
+        if _text(row.get("authority_status")) != "EXCLUDED_INACTIVE_WAVE"
+    }
+    ordered = tuple((source, wave, "") for source, wave in sorted(pairs))
+    if len(ordered) != 35 or ("Asian Barometer", "W6", "") in ordered:
+        raise QuestionRelationAuthorityError(f"invalid CLOSED_35 scope from final R1: {ordered}")
+    return ordered
 
 
 def resolve_question_relation_authority(
@@ -667,10 +728,10 @@ def apply_question_relation_authority(
                 "source_response_polarity": row.get("source_response_polarity", ""),
                 "relation_projection_polarity": row.get("relation_projection_polarity", ""),
                 "item_reversal": _bool(row.get("item_reversal")),
-                "current_directional_atom_eligible": True,
-                "allowed_as_v551_relation_evidence": True,
+                "current_directional_atom_eligible": _bool(row.get("current_directional_atom_eligible"), default=True),
+                "allowed_as_v551_relation_evidence": _bool(row.get("current_directional_atom_eligible"), default=True),
                 "question_relation_coverage_eligible": True,
-                "question_relation_pressure_eligible": True,
+                "question_relation_pressure_eligible": _bool(row.get("current_directional_atom_eligible"), default=True),
                 "structural_mapping_status": "COMPLETE",
                 "mapping_status": "governed_directional",
                 "semantic_role": "RELATION_EVIDENCE",

@@ -6,16 +6,16 @@ from pathlib import Path
 from typing import Any,Iterable
 import pandas as pd
 from data.ddm_build_copy import run_20var_allwaves_v550_552j_smoke_impl as _impl
-from data.ddm_build_copy.ddm_pipeline_boundary_contract import BoundaryContractError,load_closed_35_waves
+from data.ddm_build_copy.ddm_pipeline_boundary_contract import BoundaryContractError
 from data.ddm_build_copy.ddm_pipeline_final_contracts import state_token,verify_v550j_producer_manifest,verify_v551_producer_manifest,verify_v551j_producer_manifest,verify_v552_producer_manifest,verify_v552j_producer_manifest
-from data.ddm_build_copy.ddm_v550_question_relation_authority import DEFAULT_AUTHORITY_PATH
+from data.ddm_build_copy.ddm_v550_question_relation_authority import active_closed_35_waves
 for _n in dir(_impl):
     if not _n.startswith('__'):globals()[_n]=getattr(_impl,_n)
 _ORIGINAL_RESOLVE_JOINT=_impl.resolve_joint_authority;_ORIGINAL_SUMMARIZE_JOINT=_impl.summarize_joint_authority_coverage;_ORIGINAL_PARSE_ARGS=_impl.parse_args;_ORIGINAL_WRITE_SUMMARIES=_impl.write_summaries
-ALL_WAVES=list(load_closed_35_waves(DEFAULT_AUTHORITY_PATH));_impl.ALL_WAVES=ALL_WAVES;RuntimeConfig=_impl.RuntimeConfig;DEFAULT_CONFIG=RuntimeConfig(joint_mode='auto');_impl.DEFAULT_CONFIG=DEFAULT_CONFIG
+ALL_WAVES=list(active_closed_35_waves());_impl.ALL_WAVES=ALL_WAVES;RuntimeConfig=_impl.RuntimeConfig;DEFAULT_CONFIG=RuntimeConfig(joint_mode='auto');_impl.DEFAULT_CONFIG=DEFAULT_CONFIG
 
 def validate_explicit_scope(waves:Iterable[tuple[str,str,str]]=ALL_WAVES)->list[str]:
-    rows=list(waves);gov=list(load_closed_35_waves(DEFAULT_AUTHORITY_PATH));gp={(f,w) for f,w,_ in gov};pairs=[(f,w) for f,w,_ in rows];issues=[]
+    rows=list(waves);gov=list(active_closed_35_waves());gp={(f,w) for f,w,_ in gov};pairs=[(f,w) for f,w,_ in rows];issues=[]
     if len(set(pairs))!=len(pairs):issues.append('duplicate_family_wave_in_governed_scope')
     outside=sorted(set(pairs)-gp)
     if outside:issues.append('scope_outside_CLOSED_35_WAVES:'+','.join(f'{f}|{w}' for f,w in outside))
