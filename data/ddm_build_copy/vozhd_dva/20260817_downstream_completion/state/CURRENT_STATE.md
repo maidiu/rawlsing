@@ -12,16 +12,19 @@
 
 Read and obey:
 
-1. `TERMINAL_DEMAND_ENVELOPE.md`;
-2. `ARCHITECTURE_PASS_LAW.md`;
-3. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`;
-4. `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`;
-5. `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`;
-6. `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`;
-7. `integration/V2_COMPLETION_IMPLEMENTATION_RULING.md`;
-8. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
-9. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
-10. accepted TD-R00–TD-R07 and RA-R00 results.
+1. `RAWLSING_GOVERNING_SPIRIT.md`;
+2. `TERMINAL_DEMAND_ENVELOPE.md`;
+3. `ARCHITECTURE_PASS_LAW.md`;
+4. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`;
+5. `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`;
+6. `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`;
+7. `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`;
+8. `integration/V2_COMPLETION_IMPLEMENTATION_RULING.md`;
+9. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
+10. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
+11. accepted TD-R00–TD-R07 and RA-R00 results.
+
+`RAWLSING_GOVERNING_SPIRIT.md` is binding interpretive law for genuine ambiguity. Its authority is subordinate to explicit source semantics, accepted semantic authority, and the closed architecture/jurisdiction. Within those constraints it is the project-level tie-break: workers must prefer the lawful design most faithful to Rawlsing's anthropology of historically caused but non-inevitable personhood, mediation, contradiction, opacity, identification/alienation, agency-of/agency-against, vitality, Absolute Horizon and accountable generation. It never licenses heuristic invention or semantic leakage.
 
 **Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
@@ -116,7 +119,7 @@ Run in parallel:
 10. `ADP-025` — V2 render model/randomness/version policy;
 11. `ADP-026` — caller-current-situation authority.
 
-Each cell owns one bounded semantic authority/canonicalization. It must not implement the consumer stage or alter architecture.
+Each cell owns one bounded semantic authority/canonicalization. It must not implement the consumer stage or alter architecture. Where the cell's hard authority leaves more than one lawful choice, the worker must apply `RAWLSING_GOVERNING_SPIRIT.md` and state the relevant tie-break explicitly.
 
 ## Production gates
 
@@ -142,14 +145,16 @@ No consumer packet starts before all direct MUST/CAN/EXT dependencies are accept
 3. Bank accepted W0 authority results.
 4. Release only dependency-satisfied W1 cells; do not advance by calendar/wave label alone.
 5. Preserve the RA-R00 12-harness acceptance plan and 16 forbidden-regression matrix through implementation.
+6. In every adjudication where explicit law leaves genuine ambiguity, test the choice against `RAWLSING_GOVERNING_SPIRIT.md` and reject convenience-driven flattening of the person model.
 
 ## Restart instruction
 
 Read, in order:
 1. `VOZHD_DVA_HANDOFF.md`;
 2. this file;
-3. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
-4. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
-5. RA-R00 `RESULT.md` / `RESULT.json`;
-6. relevant accepted stage/V3/V2 ruling for the active cell;
-7. live SWID PR #27 state when V553 production status matters.
+3. `RAWLSING_GOVERNING_SPIRIT.md`;
+4. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
+5. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
+6. RA-R00 `RESULT.md` / `RESULT.json`;
+7. relevant accepted stage/V3/V2 ruling for the active cell;
+8. live SWID PR #27 state when V553 production status matters.
