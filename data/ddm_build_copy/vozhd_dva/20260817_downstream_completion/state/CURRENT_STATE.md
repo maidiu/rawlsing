@@ -2,7 +2,7 @@
 
 **As of:** 2026-08-18  
 **Canonical codebase:** `main`  
-**Phase:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_CLOSED__W1_FIRST_BATCH_RELEASED__V553_PRODUCTION_WAITING_SWID_G8`
+**Phase:** `WHOLE_MACHINE_ARCHITECTURE_CLOSED__RA_R00_ACCEPTED__W0_CLOSED__W1_FIRST_BATCH_5_ACCEPTED_1_FIX_ACTIVE__W1_BATCH_02_RELEASED__V553_PRODUCTION_WAITING_SWID_G8`
 
 ## Succession / restart authority
 
@@ -23,142 +23,122 @@ Read and obey:
 9. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
 10. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
 11. `integration/W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md`;
-12. accepted TD-R00–TD-R07, RA-R00, and accepted W0 authorities.
+12. `integration/W1_FIRST_BATCH_INTERIM_ADJUDICATION_RULING.md`;
+13. accepted TD-R00–TD-R07, RA-R00, W0 authorities, and accepted W1 authorities.
 
-`RAWLSING_GOVERNING_SPIRIT.md` is binding interpretive law for genuine ambiguity only after explicit source/semantic authority and closed architecture/jurisdiction are satisfied. It never licenses heuristic invention, normative outcome-forcing, or semantic leakage.
+`RAWLSING_GOVERNING_SPIRIT.md` is binding interpretive law only inside genuine lawful ambiguity after explicit semantic authority and closed jurisdiction are satisfied. It never supplies missing semantic authority.
 
 **Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
-Missing authority remains missing and never licenses heuristic invention.
-
-## Whole-machine architecture — CLOSED
+## Architecture / release status
 
 `WHOLE_MACHINE_ARCHITECTURE_CLOSURE = CLOSE`.
 
-Closed chain:
-
-```text
-historically governed structural evidence
-→ V550–V552/J producer authority
-→ V553 temporal law + exact structural refs
-→ V554 affordance/applicability
-→ V555 atomic mediation routes
-→ V556 governed F1 interaction + F2 prerequisite topology
-→ V557 lossless runtime publication/governance
-→ V558 immutable StructuralPriorRepository + deterministic ContextResolver
-→ ResolvedStructuralContext
-→ V3 Actor Developmental Causality Engine
-→ actor-accessible render boundary
-→ V2 actor-limited phenomenology/expression/noncausal session
-→ application
-
-causal interaction → ExternalInteractionProposal → V3 admission/rejection
-```
-
-No broad redesign is scheduled. Current-code nonconformance, missing registries, migration cost, or compatibility pressure do not reopen architecture.
-
-## Binding noncollapse law
-
-- source evidence ≠ structural prior ≠ actor fact;
-- evidence time ≠ proxy-selection time ≠ lived history;
-- V554 eligibility ≠ V555 traversal;
-- availability ≠ applicability ≠ opportunity ≠ encounter ≠ exposure ≠ route realization ≠ response ≠ persistent developmental change;
-- V555 route ID remains the canonical base edge;
-- V556 F2 topology ≠ V3 F1 realization ≠ V3 F2 satisfaction ≠ V3 attractor state;
-- resolver context ≠ biography;
-- objective generated fact ≠ actor knowledge/belief/accessibility;
-- objective history ≠ V3 causal memory ≠ V2 session/transcript state;
-- V2 render/session ≠ V3 causal history;
-- pending proposal ≠ admitted event;
-- `CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION` ≠ in-world occurrence.
-
-## RA-R00 release synthesis — ACCEPTED
-
-PR #79 merged at `7d1fecf38bed21cb89bc96e8d95cda1d2d2fcaca`.
-
 `IMPLEMENTATION_RELEASE_SYNTHESIS = PASS`.
 
-Finite release program:
+`W0_AUTHORITY_FOUNDATION = CLOSED`.
+
+The RA-R00 finite release program remains binding:
 - 81 classified items;
 - 67 release-blocking;
 - 25 canonicalizations;
 - 26 authority decisions;
-- 10 implementation-only debt classes;
-- 12 external production gates;
-- 53 accepted implementation packets;
+- 53 implementation packets;
 - 12 acceptance harnesses;
-- 16 forbidden regressions.
+- 16 forbidden regressions;
+- 24/24 blocking CAN scheduled;
+- 26/26 ADP scheduled exactly once;
+- zero unscheduled blockers;
+- zero ordinary-parallel dependency violations.
 
-Schedule remains mechanically closed: 24/24 blocking CAN items scheduled, 26/26 ADPs scheduled once, zero unscheduled blocking authorities, zero ordinary-parallel dependency violations. `CAN-013` / V3-P11 remains optional/deferred.
+Production implementation is not globally released.
 
-## W0 authority foundation — CLOSED
+## W1 first batch — INTERIM COURT COMPLETE
 
 Binding ruling:
-`integration/W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md`.
+`integration/W1_FIRST_BATCH_INTERIM_ADJUDICATION_RULING.md`.
 
-`W0_AUTHORITY_FOUNDATION = CLOSED`.
+`W1_FIRST_BATCH = 5_ACCEPTED__1_RETURN_FOR_FIX_ACTIVE`.
 
-All eleven W0 authority/canonicalization cells are accepted and merged:
+Accepted and merged:
 
-- ADP-001 V554 affordance authority;
-- ADP-006 temporal-proxy eligibility;
-- CAN-003 V557 runtime-use governance;
-- ADP-008 V3 developmental-phase authority v1.1;
-- ADP-016 V3 causal-memory authority;
-- ADP-019 V3 external-event admission;
-- ADP-020 V3 causal RNG;
-- CAN-014 V3 pure-derived schedule v1.1 + valid-empty derived-output registry;
-- ADP-024 V2 transcript policy v1.0.1;
-- ADP-025 V2 render model/randomness/version policy;
-- ADP-026 caller-current-situation authority.
+- ADP-002 / PR #98 / merge `096c139947855e5a55abd9bc5a31eb8e6596c079`;
+- ADP-017 / PR #99 / merge `3d8cab238eca1c1f694eb778e39566bf3aaaf03a`;
+- ADP-021 / PR #101 / merge `72fe87268296f35f7aed30330f690880569ee3f1`;
+- ADP-010 / PR #102 / merge `28d504cb7d1b8e45a9f9085a465e50e41686bae6`;
+- ADP-009 / PR #103 / merge `1e66221fec9b645ac41c28ea290f239fb83116e2`.
 
-The centralized W0 Governing-Spirit retrospective court passes all eleven. No authority is reopened and no worker rerun is required merely for pre-law `GOVERNING_SPIRIT_CHECK` paperwork.
+Key accepted law now includes:
+- exact first-tranche V555 route rule authority with unary effects valid-empty;
+- generated actor position/mobility as prospective actor history, never prevalence/demographic destiny;
+- `AVAILABLE != OPPORTUNITY != ENCOUNTER != EXPOSURE` and lawful nonoccurrence;
+- objective fact != memory != epistemic stance != claim permission, with actor opacity enforced;
+- hybrid causal scheduling without annual ontology, filler ticks or arbitrary same-time total ordering.
 
-## Active execution wave — W1 first authority batch
+### CAN-001 / PR #100 — narrow fix active
+
+Reviewed head:
+`b2359c57ec084483803a27fc206536b02f9dd3ea`.
+
+Disposition:
+`RETURN_FOR_FIX__K01_RUNTIME_POSITION_OWNER_BINDING_PRODUCER`.
+
+CAN-001 correctly canonicalizes the accepted nine V554 F2 kinds but incorrectly makes `V3_GENEALOGY` the universal K01 runtime-position binding producer/resolution owner. Accepted ADP-009 now owns generic V3 actor structural-position generation/mobility. K01 must remain V554-owned, ContextResolver-evaluated, and consume exact separately-authorized V3 generated-position bindings from their actual owner/interface. Genealogy may be a source only where separately authorized; it is not universal position sovereignty.
+
+The exact continuation is recorded on PR #100 comment `5324802520`.
+
+CAN-001 remains blocking for W2 V554 semantic implementation until accepted.
+
+## Active W1 Batch 02 — V3 mechanism canonicalization
 
 Canonical register:
-`schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/LAUNCH_REGISTER.md`.
+`schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/BATCH_02_LAUNCH_REGISTER.md`.
 
-First six dependency-satisfied cells:
+Five independent cells may run in parallel with the CAN-001 continuation:
 
-1. `ADP-002` — V555 mediation-route rule registry;
-2. `ADP-009` — V3 structural-position generation/transition/mobility;
-3. `ADP-010` — V3 availability/opportunity/encounter/exposure realization;
-4. `ADP-017` — V3 actor knowledge/belief/claim-accessibility;
-5. `ADP-021` — V3 hybrid causal scheduler / slow-cadence authority;
-6. `CDP-CAN-001` — V554 applicability predicate/owner/evaluator canonicalization.
+1. `CAN-008` — actor response / pressure-flow / metabolism;
+2. `CAN-009` — material / organismic / vitality;
+3. `CAN-010` — need / expectation / striving;
+4. `CAN-011` — framework / buffer / crack / wound / practice / infrastructure middle state;
+5. `CAN-012` — rupture / metabolization.
 
-These six have no sibling W1 dependency and may run in parallel. They are authority/canonicalization work only; production implementation is not globally released.
+All five are historical-mechanism canonicalization, not free ontology creation. Each requires direct verification of `Rawlsing_code_bundle_staging.zip` SHA256 `953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`.
 
-Later W1 work remains separately scheduled: CAN-008..012, CAN-015..021, and conditional V553 production if SWID closes.
+Recovered V3/V2/server code remains continuity/authority-recovery evidence only. Historical module/field existence never by itself establishes terminal semantic authority.
 
-Every new authority/implementation worker with design discretion must read `RAWLSING_GOVERNING_SPIRIT.md` and return `GOVERNING_SPIRIT_CHECK`.
+## Newly satisfied downstream dependencies
+
+Accepted W1 authority now establishes:
+
+- ADP-002 -> ADP-003 dependency satisfied for its scheduled later wave;
+- ADP-009 -> ADP-007 position dependency satisfied;
+- ADP-009 + ADP-010 + ADP-020 -> ADP-015 dependency set satisfied;
+- ADP-010 + ADP-002 satisfy part of ADP-011; ADP-003 still required;
+- ADP-017 -> ADP-022 dependency satisfied;
+- ADP-021 closes MUST-021 itself.
+
+Wave labels remain release gates in addition to dependency truth. Do not pull W2/W3 cells forward solely because their dependency set is complete.
 
 ## Production gates
 
 ### SWID / V553
 
-SWID is `EXT-001`, an external production gate, not missing semantic authority.
+SWID PR #27 remains `EXT-001`, an external production gate, not missing semantic authority.
 
-V553 production remains blocked until:
-- G8 live runtime acceptance closes;
-- source/wave identity campaign merges;
-- the narrow post-SWID identity-delta check passes.
+Last verified live state: open/draft at head `23a5994bdf576146c4c80c533b9e28efd2465226`. G8 remains open for post-repair live DB view deployment, 35-scope preflight, governed 9-scope respondent-backed J canary, and CLOSED_35 base-spine smoke.
 
-Independent W1 authority work may proceed concurrently.
+V553 production remains blocked until G8 closes, the SWID campaign merges, and the narrow post-SWID identity-delta check passes.
 
-### V554–V2
-
-No consumer packet starts before all direct MUST/CAN/EXT dependencies are accepted/banked according to RA-R00. Fixture-only development is allowed only where RA-R00 explicitly permits it.
+Independent W1 authority/canonicalization work may proceed.
 
 ## Immediate Vozhd action
 
-1. Launch/adjudicate the six W1 first-batch authority cells independently.
-2. Continue SWID G8 independently.
-3. Bank accepted W1 authorities before releasing their dependent cells.
-4. Use freed six-slot capacity for the remaining RA-R00 W1 canonicalization families according to dependency leverage.
-5. Preserve the RA-R00 12-harness acceptance plan and 16 forbidden-regression matrix through implementation.
-6. Reject convenience-driven flattening under `RAWLSING_GOVERNING_SPIRIT.md` only where hard authority genuinely leaves a choice.
+1. Adjudicate the CAN-001 continuation when it returns.
+2. Adjudicate CAN-008..CAN-012 independently.
+3. Bank each accepted W1 result before its consumer uses it.
+4. Keep V553 production behind live SWID/EXT-001.
+5. Preserve RA-R00 packet gates, 12-harness acceptance plan and 16 forbidden regressions.
+6. Use `RAWLSING_GOVERNING_SPIRIT.md` only as a tie-break after hard authority, never as a semantic source.
 
 ## Restart instruction
 
@@ -169,6 +149,8 @@ Read, in order:
 4. `integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
 5. `integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`;
 6. `integration/W0_AUTHORITY_FOUNDATION_CLOSURE_RULING.md`;
-7. `schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/LAUNCH_REGISTER.md`;
-8. relevant accepted stage/V3/V2/W0 authority for the active cell;
-9. live SWID PR #27 state when V553 production status matters.
+7. `integration/W1_FIRST_BATCH_INTERIM_ADJUDICATION_RULING.md`;
+8. `schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/LAUNCH_REGISTER.md`;
+9. `schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/BATCH_02_LAUNCH_REGISTER.md`;
+10. relevant accepted authority/ruling for the active cell;
+11. live SWID PR #27 state when V553 production status matters.
