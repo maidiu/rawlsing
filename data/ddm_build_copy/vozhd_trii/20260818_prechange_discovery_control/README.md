@@ -31,8 +31,10 @@ preserve evidence
 4. [`03_ASSUMPTION_AND_UNKNOWN_REGISTER.md`](03_ASSUMPTION_AND_UNKNOWN_REGISTER.md) — claims that remain assumptions, silent premises that could break a redesign, and questions the user may not have been explicitly tracking.
 5. [`04_DISCOVERY_COURTS_REGISTER.md`](04_DISCOVERY_COURTS_REGISTER.md) — the finite set of deep-dive investigations to run before change design.
 6. [`05_DECISION_PROTOCOL.md`](05_DECISION_PROTOCOL.md) — evidence hierarchy, closure rules, and the gate between discovery and architectural change.
-7. [`DISCOVERY_REGISTER.json`](DISCOVERY_REGISTER.json) — machine-readable workstream register.
-8. [`evidence/conversation_inputs/`](evidence/conversation_inputs/) — exact or hash-identified user-provided evidence snapshots used by this control surface.
+7. [`06_FIRST_WAVE_LAUNCH_REGISTER.md`](06_FIRST_WAVE_LAUNCH_REGISTER.md) — exact sequencing, branch names, common law, and output contract for the first Rabochii discovery wave.
+8. [`DISCOVERY_REGISTER.json`](DISCOVERY_REGISTER.json) — machine-readable workstream/dependency register.
+9. [`evidence/HISTORICAL_DESIGN_EXTRACTS.md`](evidence/HISTORICAL_DESIGN_EXTRACTS.md) — exact key extracts from the historical V526c–V537 and Attitude Cloud packs, explicitly retained as genealogy evidence rather than current authority.
+10. [`evidence/conversation_inputs/`](evidence/conversation_inputs/) — exact or hash-identified user-provided evidence snapshots and identity manifest used by this control surface.
 
 ## Two timelines must never be conflated
 
