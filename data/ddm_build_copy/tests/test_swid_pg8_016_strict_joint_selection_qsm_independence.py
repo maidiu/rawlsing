@@ -63,6 +63,10 @@ def _governed_lookup(_family: str, _wave: str, code: str):
     return object() if code == "harmsgrn" else None
 
 
+def _all_governed_lookup(_family: str, _wave: str, _code: str):
+    return object()
+
+
 def test_bounded_gss_registry_is_exact_six_and_excludes_draft_abpoor() -> None:
     assert set(GSS_JOINT_VARS) == EXPECTED_GSS_JOINT_VARS
     assert len(GSS_JOINT_VARS) == 6
@@ -89,13 +93,51 @@ def test_required_joint_selection_does_not_require_joint_items_to_exist_in_qsm(m
     assert len(selected) == 7
 
 
-def test_required_v550_base_filter_excludes_registry_only_joint_items(monkeypatch) -> None:
+def test_required_v550_base_filter_uses_qsm_membership_not_response_contract(monkeypatch) -> None:
+    # This reproduces the PG8-017 runtime defect: exact response-semantics
+    # authority may exist for a governed J-only item, but that does not place the
+    # item in V550's QSM/base namespace.
     monkeypatch.setattr(
         "data.ddm_build_copy.run_20var_allwaves_v550_552j_smoke.lookup_governed_response_semantics_contract",
-        _governed_lookup,
+        _all_governed_lookup,
     )
-    selected = [*GSS_JOINT_VARS, "harmsgrn"]
+    selected = _select_question_variables_from_rows(
+        _gss_qsm_rows(),
+        family="GSS",
+        wave="2010",
+        seed=4,
+        authority=_authority(),
+        joint_mode="required",
+    )
+
+    assert set(selected) == {*GSS_JOINT_VARS, "harmsgrn"}
     assert _base_filter_variables_for_required("GSS", "2010", selected) == ["harmsgrn"]
+
+
+def test_required_base_filter_retains_joint_item_when_it_really_is_in_qsm(monkeypatch) -> None:
+    monkeypatch.setattr(
+        "data.ddm_build_copy.run_20var_allwaves_v550_552j_smoke.lookup_governed_response_semantics_contract",
+        _all_governed_lookup,
+    )
+    selected = _select_question_variables_from_rows(
+        [("harmsgrn", "", "", ""), ("abrape", "", "", "")],
+        family="GSS",
+        wave="2010",
+        seed=4,
+        authority=_authority(),
+        joint_mode="required",
+    )
+    base_selected = _base_filter_variables_for_required("GSS", "2010", selected)
+    assert set(base_selected) == {"harmsgrn", "abrape"}
+
+
+def test_required_base_filter_fails_closed_if_qsm_provenance_is_lost() -> None:
+    with pytest.raises(RuntimeError, match="required_full_j_qsm_selection_provenance_missing"):
+        _base_filter_variables_for_required(
+            "GSS",
+            "2010",
+            [*GSS_JOINT_VARS, "harmsgrn"],
+        )
 
 
 def test_v550_base_filter_still_fails_closed_for_unknown_identifier() -> None:
