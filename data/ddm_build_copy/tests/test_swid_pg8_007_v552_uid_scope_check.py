@@ -57,13 +57,22 @@ def test_v552_scope_accepts_latinobarometro_source_alias_by_uid() -> None:
     )
 
 
-def test_v552_scope_still_rejects_true_source_wave_identity_contradiction() -> None:
+def test_v552_scope_still_rejects_true_redundant_label_contradiction() -> None:
+    scope = _scope("Afrobarometer", "R1")
+    frame = _frame("Afrobarometer", "R1")
+    frame.loc[:, "source"] = "EVS"
+    frame.loc[:, "source_family"] = "EVS"
+    with pytest.raises(RuntimeError, match="BLOCKED_V552_COVERAGE_IDENTITY_COHERENCE"):
+        _verify_frame_scope(frame, run_id="run-1", scope=scope, label="coverage")
+
+
+def test_v552_scope_still_rejects_wrong_uid_pair_exactly() -> None:
     scope = _scope("Afrobarometer", "R1")
     frame = _frame("Afrobarometer", "R1")
     wrong = resolve_source_wave_identity("EVS", "1981", require_closed_35=True)
     frame.loc[:, "source_family_uid"] = wrong.source_family_uid
     frame.loc[:, "wave_uid"] = wrong.wave_uid
-    with pytest.raises(RuntimeError, match="BLOCKED_V552_COVERAGE_IDENTITY_COHERENCE"):
+    with pytest.raises(RuntimeError, match="BLOCKED_V552_COVERAGE_SCOPE_MISMATCH"):
         _verify_frame_scope(frame, run_id="run-1", scope=scope, label="coverage")
 
 
