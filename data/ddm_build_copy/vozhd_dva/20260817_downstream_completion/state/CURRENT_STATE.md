@@ -2,7 +2,7 @@
 
 **As of:** 2026-08-17  
 **Canonical codebase:** `main`  
-**Phase:** `TD_R05_V3_ACCEPTED_AND_BANKED__RETROSPECTIVE_SEAM_INTEGRITY_COURTS_NEXT__V2_NOT_YET_RELEASED__V553_BUILD_WAITING_SWID_G8_RUNTIME_ACCEPTANCE`
+**Phase:** `RETROSPECTIVE_SEAM_INTEGRITY_CLOSED__TD_R06_V2_ARCHITECTURE_RELEASED__V3_IMPLEMENTATION_BLOCKED_ON_RUNTIME_RULE_AUTHORITY__V553_BUILD_WAITING_SWID_G8`
 
 ## Succession / restart authority
 
@@ -10,45 +10,24 @@
 
 ## Governing whole-system law
 
-Every remaining architecture, seam-integrity and implementation pass is governed by:
+Every remaining architecture and implementation pass is governed by:
 
 1. `TERMINAL_DEMAND_ENVELOPE.md`;
 2. `ARCHITECTURE_PASS_LAW.md`;
 3. `schematics/synthesis/RUNTIME_PRIOR_RESOLUTION_EXPLORATION.md`;
 4. `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`;
-5. accepted TD-R00–TD-R05 results and integration rulings.
+5. accepted TD-R00–TD-R05 results and integration rulings;
+6. `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`.
 
-Direct lawful DAG reuse is preferred over serial duplication. Every primary family/component/boundary must pass no-starvation/no-bloat proof. Producer-owned semantics remain producer-owned unless a later stage creates genuinely new meaning.
+Direct lawful DAG reuse is preferred over serial duplication. Producer-owned semantics remain producer-owned unless a later stage creates genuinely new meaning. Missing authority remains missing; it never licenses heuristic invention.
 
 ### Continuity / priority law
 
-The project desires continuity with the latest extant V3/V2 implementation wherever continuity is lossless and useful.
+**Continuity is desired. V550+-grounded Rawlsing vision-integrity is absolute.**
 
-The absolute priority is **V550+-grounded Rawlsing vision-integrity**.
+Recovered V3/V2 is implementation/design/capability evidence. It is not upstream authority. If recovered V3/V2 cannot consume the accepted structural world, V3/V2 changes. If recovered machinery is terminally equivalent and fully compatible, prefer reuse/adaptation over needless rewriting.
 
-If extant V3/V2 cannot consume or realize the complete accepted V550+ structural world without reduction, V3/V2 changes. Upstream semantics never bend around legacy downstream implementation.
-
-If two designs are terminally equivalent, prefer reuse/adaptation and continuity. If they are not terminally equivalent, choose the stronger Rawlsing architecture regardless of compatibility cost.
-
-## Original seam-court method — restored as explicit verification law
-
-Before implementation or V2 architecture advances, each accepted seam from V553 through V3 receives an independent hostile integrity court holding four views simultaneously:
-
-1. **cumulative lawful upstream reality** — all exact authority available at or before the seam, including direct DAG reuse that may bypass the immediate predecessor;
-2. **present focused-stage reality** — what current implementation/schemas/artifacts/tests actually preserve, transform, omit, flatten or misclassify;
-3. **immediate downstream demand** — what accepted architecture and actual downstream terrain require;
-4. **whole Rawlsing terminal demand** — what the finished machine requires this seam to preserve without stealing downstream jurisdiction.
-
-Each seam returns only:
-- `CONFIRM`;
-- `HARDEN`;
-- `REOPEN`.
-
-`REOPEN` requires a concrete proof of starvation, bloat/duplication, jurisdiction error, or a producer-consumer mismatch that cannot be repaired under accepted architecture.
-
-The seam courts are independent. Do not feed one seam worker another seam worker's result before return.
-
-## Accepted structural-world chain
+## Accepted structural-world and developmental chain
 
 ```text
 V550–V556 producer-owned governed semantic DAG
@@ -87,7 +66,7 @@ Canonical V553:
 - `TEMPORAL_LIMIT / NEGATIVE_AUTHORITY`;
 - exact governed structural-reference preservation.
 
-No runtime proxy/interpolation or V553-created cross-key interaction.
+No canonical interpolation/runtime proxy semantics and no V553-created cross-key interaction.
 
 ### TD-R01 V554 — ACCEPTED
 PR #54; merge `484e7590c3c946b2fccb8aaa88689518d833134d`.
@@ -107,7 +86,7 @@ Canonical V555:
 - `STRUCTURAL_MEDIATION_ROUTE_CONDITION`;
 - `V555_V556_HANDOFF`.
 
-One V555 route is the atomic structural-flow edge. Additional hops are additional routes. Cross-route relation belongs V556 if governed.
+One V555 route is the canonical atomic structural-flow edge. Additional hops are additional routes. Cross-route interaction belongs to V556 if governed.
 
 ### TD-R03 V556 — ACCEPTED
 PR #58; merge `dbe606a7bc2a3ea61bdf0ac0a6fbdb4c3a88743e`.
@@ -117,7 +96,7 @@ Canonical V556:
 - F2 `STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY`;
 - `V556_V557_HANDOFF`.
 
-No duplicate V556 `PressureFlowEdge`. F1/F2 are valid-empty pending explicit rule authority. V3 owns realized actor history and attractor development.
+No duplicate V556 `PressureFlowEdge`. V3 owns realized actor history, F2 satisfaction and attractor development.
 
 ### TD-R04 V557/V558 — ACCEPTED
 PR #59; merge `ea731f4eb69f5fd04642aa0ccbda1ae2249c9fc1`.
@@ -125,56 +104,52 @@ PR #59; merge `ea731f4eb69f5fd04642aa0ccbda1ae2249c9fc1`.
 Binding ruling:
 `integration/V557_V558_COMPLETION_IMPLEMENTATION_RULING.md`.
 
-V557 owns no new structural domain semantics. It owns lossless mixed-producer runtime authorization/publication, item epistemic/use/proxy governance, monotone permission narrowing, referential closure, manifests/hashes and immutable handoff.
+V557 owns lossless mixed-producer runtime authorization/publication and governance, not structural-domain meaning.
 
 V558 owns immutable `StructuralPriorRepository`, producer-preserving locators/reference graph/indexes and deterministic read-only `ContextResolver`. Runtime-use and temporal-proxy rules are logically separate authorities. No canonical scalar fidelity score.
 
 ### TD-R05 V3 — ACCEPTED
-PR #64. Accepted worker head:
-`f929a8c03aed37182cf5a65cb8c2f1cf2348ddc5`.
-
-Merge:
-`d078f13cfe95a77ebbf067b9c9ba7c582f48d5fd`.
+PR #64; accepted worker head `f929a8c03aed37182cf5a65cb8c2f1cf2348ddc5`; merge `d078f13cfe95a77ebbf067b9c9ba7c582f48d5fd`.
 
 Binding ruling:
 `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`.
 
-Final token:
 `V3_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS`.
 
-Final direct-source verdict:
 `DIRECT_SOURCE_VERIFICATION = PASS_WITH_ARCHITECTURE_DELTA`.
 
-Historical V3/V2 archive SHA256 was directly verified as:
+Historical V3/V2 archive SHA256 directly verified:
 `953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086`.
 
-The prior source-mount caveat is CLOSED.
+Recovered mechanism court:
+- REUSE 3;
+- ADAPT 31;
+- REPLACE 3;
+- REMOVE 3.
 
 ## Binding V3 architecture
 
-V3 is a **stage-blind Actor Developmental Causality Engine**.
+V3 is a stage-blind **Actor Developmental Causality Engine**.
 
-Terminal runtime architecture:
+Terminal runtime architecture includes:
 - bounded immutable `DevelopmentalEventLedger`;
 - `ActorCausalState` checkpoints/materialized state;
 - deterministic `DerivedActorView`;
 - generated positions and transitions;
-- encounter/exposure realization;
-- exact V555 route traversal as actor history;
-- exact V556 F1 interaction realization as actor history;
+- opportunity/encounter/exposure distinction;
+- exact V555 route realization as actor history;
+- exact V556 F1 realization as actor history;
 - separate V556 F2 prerequisite-satisfaction evaluation;
-- material/organismic/regulatory actor state;
+- material/organismic/regulatory state;
 - sparse time-indexed orientation to exact strata and distinct Absolute Horizon;
 - developmental middle state;
-- relationships/households/genealogy;
-- causal memory;
-- rupture/metabolization;
-- realized developmental attractor trajectory;
+- relationships/households/recursive genealogy;
+- pressure-flow memory/path dependence;
+- rupture/metabolization/causal memory;
+- life-course attractor formation;
 - immutable V3→V2 generated-truth boundary.
 
-### Progressive causal chain
-
-The following distinctions are constitutional:
+Constitutional progression:
 
 `STRUCTURAL PRIOR ≠ ACTOR FACT`.
 
@@ -187,150 +162,112 @@ The following distinctions are constitutional:
 `≠ actor response`
 `≠ persistent developmental change`.
 
-Before a generated actor position exists, position-conditioned priors remain `UNBOUND_REQUIRES_RUNTIME_POSITION`. V3 creates positions only under governed runtime rules, then re-resolves the same immutable repository.
-
-### V556 F1/F2 four-way law
+V556/V3 four-way law:
 
 `V556 F2 structural prerequisite topology`
 `≠ V3 F1 interaction realization`
 `≠ V3 F2 prerequisite satisfaction`
 `≠ V3 attractor state`.
 
-F2 satisfaction uses an actor-history satisfaction record such as `AttractorPrerequisiteSatisfactionRecord`; it neither re-owns V556 topology nor becomes the attractor. Missing authority includes `V556_ATTRACTOR_PREREQUISITE_SATISFACTION_RULE`.
-
-### Event-family no-bloat
-
-`BUFFER`, `AMPLIFY`, `DEFLECT`, `REROUTE`, `TRANSFORM`, `BLOCK` etc. are response/effect kinds, not independent canonical event families.
-
-The event ledger remains bounded. Structural objects, checkpoints, derived views, render artifacts and integrity summaries do not become pseudo-events.
-
-### Orientation-to-strata
-
-Binding verdict:
+Orientation vocabulary remains:
 `GOVERNED_EXTENSIBLE_VOCABULARY_WITH_DERIVED_PROJECTIONS`.
 
-Illustrative psyche terms are not frozen as an arbitrary canonical vector. Legacy AlienationVector, A/S/V/Aim, registers and selected PeakRouting fields remain migration evidence and/or derived compatibility projections absent explicit promotion authority.
+Buffer/amplify/deflect/reroute/transform/block are governed response/effect kinds, not separate canonical event families.
 
-### Genealogy
+## Retrospective seam-integrity campaign — CLOSED
 
-```text
-Parent 1 development
-→ Parent 2 development
-→ encounter
-→ relationship
-→ household/family field
-→ child generation
-→ child Phase A
-→ generated family/position bindings
-→ child Phase B
-→ child development
-```
+Binding aggregate ruling:
+`integration/SEAM_INTEGRITY_CLOSURE_RULING.md`.
 
-Parents are generated persons, not structural priors. Child causal environment comes from actual generated parent/relationship/household history plus lawful structural context.
+The six hostile courts restored the original four-view method:
 
-### Scheduler / replay
+`cumulative lawful upstream reality`
+`+ present focused-stage reality`
+`+ immediate downstream demand`
+`+ whole Rawlsing terminal demand`
+`→ CONFIRM | HARDEN | REOPEN`.
 
-Hybrid scheduler: discrete events + V558 next-context-change + developmental phases + position/relationship/household changes + slow-process cadence + optional checkpoints.
+Final courts:
+- SI-R00 V553→V554 — `HARDEN`, PR #71, merge `bfea6b3bd983148e403948a0b20a100af1fb6ab0`;
+- SI-R01 V554→V555 — `HARDEN`, PR #73, merge `cd5e36ecffbda1d5661df822b6205ce67cb183bf`;
+- SI-R02 V555→V556 — `HARDEN`, PR #70, merge `53c347d348597d57c17c20637e91981cf143e30c`;
+- SI-R03 V556→V557 — `HARDEN`, PR #69, merge `1db57e8ba4b85a820b84588bcea481508597f728`;
+- SI-R04 V557→V558 — `CONFIRM`, PR #68, merge `7946fd833b257dd633bf82d0894e7ce2c636d3e2`;
+- SI-R05 V558→V3 — `HARDEN`, PR #72, merge `0cd5b90a712df38fbf4fb42ca078c700f9453dcc`.
 
-Annual recursion may survive as slow-process integration/compatibility cadence, not terminal ontology.
+Aggregate:
+- `5 HARDEN`;
+- `1 CONFIRM`;
+- `0 REOPEN`.
 
-Randomness selects only among lawful possibilities and is replayable through named streams/candidate-set/rule provenance.
+`RETROSPECTIVE_SEAM_INTEGRITY_CLOSURE = PASS_WITH_BINDING_HARDENING`.
 
-### LLM
+No accepted semantic family/stage jurisdiction is reopened.
 
-Pass 1 is optional bounded proposal only. Deterministic rule admission owns causality. No force-selection fallback. Pass 2 is render-only. Conversational causal effects re-enter through typed V3 external-event admission.
+### Binding seam implementation hardenings
 
-### Attractor / Enneagram
+Implementations must additionally prove:
+- exact producer-bound V553 ingress; no descriptive rematch;
+- simultaneous exact-pressure noncollapse;
+- structural-direction/temporal-delta separation;
+- role-qualified 0..n finite-strata and explicit Absolute-Horizon refs;
+- V554 F1/F2/B1 as sole semantic authority;
+- one V554 F1 per V555 atomic route;
+- no all-seed fanout / positional truncation;
+- inherited V554 F2 by exact ref only;
+- V555 route ID as the V556 base edge;
+- no implicit cross-route relation synthesis;
+- genuine n-ary V556 F1 preservation;
+- V556 F2 separate from V3 satisfaction;
+- V557 per-root transitive role-preserving semantic closure;
+- monotone capability-set narrowing;
+- standalone V558 repository with raw producer directories absent;
+- exact V556 F2 resolved envelope to V3;
+- two-channel structural/generated-life refresh;
+- V3-generated bindings remain caller-owned generated-fact refs.
 
-V3 owns life-course attractor formation/evolution. V556 supplies structural prerequisites only. Enneagram-like labels, if emitted, are derived interpretations with history, rule version, uncertainty and competing evidence; never birth/survey/V556 direct assignments.
+## Active architecture track — TD-R06 V2
 
-## Recovered V3/V2 continuity court
+TD-R06 V2 phenomenology/expression architecture is now **AUTHORIZED**.
 
-All 40 substantive recovered mechanisms were directly inspected and dispositioned:
-- REUSE: **3**;
-- ADAPT: **31**;
-- REPLACE: **3**;
-- REMOVE: **3**.
+The next court must reason:
 
-Direct inspection found greater continuity opportunity than the initial recovery summary, including useful PeakRouting hysteresis/reversal mechanics, inert-carrier/provenance/fail-closed bridge mechanics, structural-year quarantine, schedule inconsistency failure and structured readiness/integrity machinery.
+`total Rawlsing vision`
+`+ complete accepted V550+ structural world`
+`+ accepted V3 generated-person truth boundary`
+`+ seam-integrity closure law`
+`+ recovered V2 implementation/design evidence`
+`+ continuity preference where lossless`
+`- any recovered V2 causal reownership or duplicate biography`
+`= terminal V2 phenomenology/expression architecture`.
 
-Continuity increased without granting legacy V3/V2 authority over V550+.
-
-## V3 implementation status — BLOCKED
-
-V3 architecture is accepted; implementation packets P1–P13 are planned but NOT released.
-
-Implementation remains blocked by missing/partial runtime rule/model authority, including at minimum:
-- actor initialization;
-- developmental phases;
-- position generation/transition;
-- mobility;
-- encounter opportunity/realization;
-- exposure realization;
-- V555 route realization;
-- V556 F1 realization;
-- V556 F2 prerequisite satisfaction;
-- actor response/metabolization;
-- orientation update;
-- material/organismic/vitality updates;
-- needs/expectations/strivings;
-- framework/buffer/crack/wound development;
-- practice/infrastructure;
-- relationship/household/family;
-- genealogy/reproduction;
-- rupture/metabolization;
-- causal memory;
-- attractor dynamics/interpretation;
-- external event admission;
-- optional LLM proposal admission;
-- randomness policy;
-- scheduler;
-- canonical derived-state schedule.
-
-Missing authority blocks mutation; it never licenses defaults or generic psychology.
-
-V3 implementation is additionally held pending closure of the retrospective seam-integrity audit described below.
-
-## Active architecture track — retrospective seam-integrity audit
-
-Run six independent hostile courts in parallel:
-
-- SI-R00 — V553→V554;
-- SI-R01 — V554→V555;
-- SI-R02 — V555→V556;
-- SI-R03 — V556→V557;
-- SI-R04 — V557→V558;
-- SI-R05 — V558→V3.
-
-Their branches are pre-created under `agent/vozhd-dva-si-r00...r05` and must be fast-forwarded to the final banked `main` before launch.
-
-SI-R05 treats accepted TD-R05 + `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md` as binding downstream architecture. The historical ZIP remains direct implementation/capability evidence only and must not weaken V550+.
-
-Do NOT launch TD-R06/V2 architecture until all six seam courts return and Vozhd performs an aggregate seam-closure adjudication.
+V2 must consume V3 generated truth without becoming an alternate causal engine. It may render, phenomenologically organize, conversationally express and maintain presentation/relationship interaction state only within explicitly adjudicated jurisdiction. Any conversational event that changes causal life returns through typed V3 external-event admission.
 
 ## Production implementation status
 
-### V553 — BLOCKED ON SWID G8 RUNTIME ACCEPTANCE
+### V553 — BLOCKED ON SWID G8 / CAMPAIGN MERGE
 
-Source/wave identity runtime acceptance remains the production blocker upstream of V553. Fetch live PR #27 before relying on older G8 summaries because runtime repair work has continued.
+PR #27 remains open/draft and not merged. Its static fixed point is complete, but production V553 remains blocked until terminal SWID runtime acceptance/merge plus the narrow identity-delta check required by the V553 ruling.
 
-V553 production remains blocked until terminal SWID merge plus narrow identity-delta check.
+Do not infer current G8 completion from stale summaries; inspect PR #27/runtime campaign state when production execution matters.
 
 ### V554–V558 — BLOCKED
 
-Require their canonical upstream publications plus governed stage rule/registry authorities. Missing authority yields valid-empty/deferred state rather than invented semantics.
+Require canonical upstream publications, stage rule/registry authority, and all binding seam hardenings in `SEAM_INTEGRITY_CLOSURE_RULING.md`.
 
-### V3 — BLOCKED
+### V3 — ARCHITECTURE ACCEPTED; IMPLEMENTATION BLOCKED
 
-Requires seam-integrity closure plus governed runtime rule/model authority.
+The seam-integrity blocker is now CLOSED.
+
+V3 implementation remains blocked by governed runtime rule/model authorities enumerated in `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`, including actor initialization, developmental phases, positions/mobility, encounter/exposure, V555/V556 realization, F2 satisfaction, response/metabolization, organismic and developmental updates, relationships/households/genealogy, causal memory, attractor dynamics, external-event admission, randomness, scheduler and derived-state schedule.
 
 ## Immediate next action
 
-1. Fast-forward SI-R00 through SI-R05 branches to the final banked `main` after this state/ruling update.
-2. Launch all six independent hostile seam-integrity courts in parallel.
-3. Return all six results to Vozhd for aggregate seam closure.
-4. If seams confirm/harden without architectural reopening, bank seam-closure law.
-5. Only then launch TD-R06 V2 phenomenology/expression architecture.
+1. Launch TD-R06 V2 terminal-demand architecture court.
+2. Keep V3/V550+ sovereignty and seam-closure hardening binding during V2 recovery.
+3. After TD-R06 return, adjudicate actual branch/result and bank V2 architecture if sufficient.
+4. Then run one whole-machine architecture closure / synthetic-life court before implementation packet release.
+5. Independently continue/finish SWID G8; do not start V553 production before its gate closes.
 
 ## Restart instruction
 
@@ -343,5 +280,5 @@ Read, in order:
 6. accepted TD-R00–TD-R05 results and integration rulings;
 7. `integration/V3_V2_RECOVERY_EVIDENCE_PRIORITY_RULING.md`;
 8. `integration/V3_COMPLETION_IMPLEMENTATION_RULING.md`;
-9. Wave-0 R0-05 vertical harness;
+9. `integration/SEAM_INTEGRITY_CLOSURE_RULING.md`;
 10. live SWID PR #27 state when production status matters.
