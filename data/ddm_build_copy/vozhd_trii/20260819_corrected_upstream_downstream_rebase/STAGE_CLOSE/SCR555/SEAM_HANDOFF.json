@@ -1,0 +1,88 @@
+{
+  "handoff_id": "SCR555_TO_M2_EXACT_FINAL_SEAM",
+  "from_cell": "SCR555_V555_ATOMIC_ROUTE",
+  "to_barrier": "M2_ATOMIC_ROUTE",
+  "required_sibling": "SCR554_V554_BASIS_DEDUP",
+  "status": "WAITING_ONLY_FOR_EXACT_ACCEPTED_SCR554_F1_B1_BINDING",
+  "current_scr555_token": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+  "commanded_common_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "scr555_branch": "agent/vozhd-trii-dr-r03-close-v555-atomic-route",
+  "scr554_branch_observation": {
+    "branch": "agent/vozhd-trii-dr-r03-close-v554-basis-dedup",
+    "compare_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+    "status": "IDENTICAL",
+    "ahead_by": 0,
+    "behind_by": 0,
+    "accepted_stage_close_contract_available": false
+  },
+  "v555_independent_contract": {
+    "status": "CLOSED",
+    "semantic_family": "STRUCTURAL_MEDIATION_ROUTE_CANDIDATE",
+    "accepted_v554_f1_per_route": 1,
+    "canonical_route_identity_tuple_order": [
+      "EXACT_V554_F1_REF",
+      "route_rule_id@route_rule_version",
+      "route_shape_id@route_shape_version",
+      "channel_structural_role_id",
+      "EXACT_STRUCTURAL_CHANNEL_REF",
+      "receiving_constraint_kind",
+      "EXACT_TARGET_RECEIVING_POSITION_REF"
+    ],
+    "ordered_route": ["SOURCE", "MEDIATION_LOCUS", "RECEIVER"],
+    "inherited_v554_f2": "EXACT_REFERENCE_ONLY__V554_OWNED",
+    "route_born_predicate_registry": "V555_ROUTE_BORN_PREDICATE_REGISTRY@1.0.0__VALID_EMPTY__COUNT_0",
+    "v556_base_edge": "EXACT_CANONICAL_V555_ROUTE_IDENTITY__NO_REID",
+    "direct_v557_publication": "ELIGIBLE_WHEN_V555_PRODUCER_PERMISSION_AND_V557_POLICY_ALLOW_AND_NO_V556_HIGHER_ORDER_MEANING_IS_REQUIRED",
+    "physical_merge": "ONLY_AFTER_EXACT_SEMANTIC_TYPED_STATE_CONSUMER_REFERENCE_PERMISSION_AND_REPLAY_EQUIVALENCE_PROOF"
+  },
+  "exact_unresolved_scr554_binding_slots": [
+    {"slot": "accepted_scr554_result_head_sha_and_result_token", "purpose": "Prove the upstream contract being bound is the accepted SCR554 adjudication rather than a guessed or stale authority snapshot.", "binding_rule": "COPY_VERBATIM_FROM_ACCEPTED_SCR554_RETURN"},
+    {"slot": "canonical_f1_reference_schema_authority_identity_and_immutable_seal", "purpose": "Define exactly what EXACT_V554_F1_REF resolves to and how its schema/authority integrity is verified.", "binding_rule": "COPY_VERBATIM_FROM_ACCEPTED_SCR554_CONTRACT"},
+    {"slot": "canonical_f1_identity_tuple_order_and_equality_law", "purpose": "Define exact canonical V554 F1 equality so one-F1-per-route and different-F1-different-route can be verified without label heuristics.", "binding_rule": "COPY_VERBATIM_FROM_ACCEPTED_SCR554_CONTRACT"},
+    {"slot": "canonical_f1_positive_state_and_structural_mediation_use_permission_binding", "purpose": "Prove the referenced F1 is the exact accepted positive structural-mediation input rather than merely a structurally related object.", "binding_rule": "COPY_VERBATIM_FROM_ACCEPTED_SCR554_CONTRACT"},
+    {"slot": "canonical_b1_reference_schema_authority_identity_and_immutable_seal", "purpose": "Define exactly what the canonical basis identity behind the F1 resolves to for M2 replay/checksum.", "binding_rule": "COPY_VERBATIM_FROM_ACCEPTED_SCR554_CONTRACT"},
+    {"slot": "canonical_b1_identity_tuple_order_and_equality_law", "purpose": "Define exact B1 identity/equality without guessing source/basis fields or precedence keys.", "binding_rule": "COPY_VERBATIM_FROM_ACCEPTED_SCR554_CONTRACT"},
+    {"slot": "exact_f1_to_b1_binding_and_cardinality_law", "purpose": "Prove which canonical accepted basis owns/produces the F1 and prevent ambiguous or duplicate basis attachment at the V554->V555 seam.", "binding_rule": "COPY_VERBATIM_FROM_ACCEPTED_SCR554_CONTRACT"},
+    {"slot": "exact_v554_authority_rule_signature_references_required_for_f1_b1_replay", "purpose": "Make the accepted F1/B1 interpretation historically replayable under the exact V554 authority/rule/signature that produced it.", "binding_rule": "COPY_VERBATIM_FROM_ACCEPTED_SCR554_CONTRACT"}
+  ],
+  "anti_guess_law": {
+    "scr555_may_invent_scr554_field_names": false,
+    "scr555_may_infer_f1_or_b1_identity_from_adp002_legacy_names": false,
+    "scr555_may_use_labels_or_current_v554_implementation_as_final_identity": false,
+    "scr555_may_add_b1_to_route_identity_without_scr554_authority": false,
+    "rule": "The M2 binder maps the accepted SCR554 identity/reference contract into the already-frozen V555 EXACT_V554_F1_REF seam. No guessed sibling schema becomes authority."
+  },
+  "m2_binding_algorithm": [
+    "Verify accepted SCR554 return head/result token and exact immutable contract artifacts.",
+    "Bind the accepted canonical F1 reference schema/identity/equality law to V555 EXACT_V554_F1_REF.",
+    "Bind the accepted canonical B1 identity and exact F1<->B1 relation for upstream replay/seam verification.",
+    "Verify the referenced F1 carries the exact accepted positive structural-mediation use permission/state required by the governed V555 route rule.",
+    "Verify one and only one canonical F1 is consumed by each V555 route identity.",
+    "Verify different canonical F1 identities cannot collapse to one V555 route even when downstream visible bindings coincide.",
+    "Verify inherited V554 F2 remains exact-reference-only and is not re-owned during seam binding.",
+    "Re-run H555-037/H555-038 plus identity/replay hostiles against the bound sibling contract.",
+    "If no contradiction exists, mark M2 seam passed and permit SCR555_EXACT_CONTRACT_CLOSED without reopening other V555 holdings."
+  ],
+  "normal_success_transition": {
+    "precondition": "All eight binding slots are supplied by an accepted SCR554 contract and all M2 checks pass.",
+    "next_scr555_token": "SCR555_EXACT_CONTRACT_CLOSED",
+    "new_v555_semantic_adjudication_required": false
+  },
+  "conflict_transition": {
+    "authority_conflict": "SCR555_BLOCKED_AUTHORITY_CONFLICT",
+    "broad_topology_counterexample": "BROAD_TOPOLOGY_CONTRADICTION_FOUND",
+    "self_repair_or_sibling_rewrite": "FORBIDDEN"
+  },
+  "handoff_to_scr556_after_m2": {
+    "canonical_participant_identity": "EXACT_V555_CANONICAL_ROUTE_IDENTITY",
+    "participant_identity_semantics": "ORDERED_SEVEN_FIELD_V555_ROUTE_TUPLE_OR_EXACT_VERIFIABLE_ADDRESS_THEREOF",
+    "v556_may_reid": false,
+    "v556_may_reconstruct_missing_route": false
+  },
+  "handoff_to_scr5578_after_m2": {
+    "producer_family": "V555_STRUCTURAL_MEDIATION_ROUTE_CANDIDATE",
+    "direct_publication_edge_exists": true,
+    "publication_permission_owner": "V557",
+    "producer_identity_preservation_required": true
+  }
+}
