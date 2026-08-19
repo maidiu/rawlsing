@@ -1,0 +1,140 @@
+{
+  "campaign": "R03_STAGE_CLOSE_READ_CAMPAIGN",
+  "authorizing_result": "R03_HOSTILE_BROAD_DAG_CLOSED__STAGE_CLOSE_READ_CAMPAIGN_READY",
+  "authority": "DISPOSITIVE_R03_SYNTHESIS_FOR_CAMPAIGN_DEFINITION",
+  "broad_dag_mutation_allowed": false,
+  "production_implementation_allowed": false,
+  "d15_reopen_allowed": false,
+  "source_or_artifact_retirement_allowed": false,
+  "scheduling_model": {
+    "all_cells_launch_immediately": true,
+    "launch_dependencies_are_separate_from_final_adjudication_dependencies": true,
+    "principle": "Parallelize evidence, contract, hostile-fixture and gap work immediately; serialize only exact identity-bearing final merge seams.",
+    "broad_topology_contradiction_policy": "STOP_AND_RETURN_EXACT_COUNTEREXAMPLE_TO_SYNTHESIS_AUTHORITY_CHAIN"
+  },
+  "cells": [
+    {
+      "cell_id": "SCR553_V553_TEMPORAL_JURISDICTION",
+      "suggested_branch": "agent/vozhd-trii-dr-r03-close-v553-temporal-jurisdiction",
+      "launch_dependencies": [],
+      "final_adjudication_dependencies": [],
+      "primary_evidence": ["EP553@f90cb641cb9f5c18883befd41aac9e5d63002376", "R03A", "R03F", "accepted_R01_R02_V553_law"],
+      "sub_vozhds": ["553A_INTAKE_AND_REFERENCE_ADAPTER", "553B_USE_CHAIN_TEMPORALIZATION", "553C_TEMPORAL_FAMILY_AND_LIMIT_MAPPING", "553D_SOURCE_RELATION_AND_COMPARABILITY", "553E_REPLAY_AND_HOSTILE_FIXTURES"],
+      "mission": "Freeze corrected StructuralEmpiricalAdmission intake, governed-use-chain temporalization, four TEMPORAL_* mappings, source/comparability authority separation, later-use temporal demand, negative limits and deterministic replay.",
+      "merge_barrier": "Exact typed corrected intake; deterministic target-use routing; later-use demand handled without universal transit; unknown/missing source-comparability authority fails closed; no raw EmpiricalFact intake."
+    },
+    {
+      "cell_id": "SCR554_V554_BASIS_DEDUP",
+      "suggested_branch": "agent/vozhd-trii-dr-r03-close-v554-basis-dedup",
+      "launch_dependencies": [],
+      "final_adjudication_dependencies": [],
+      "primary_evidence": ["EP554@6ebb7c5ca1e007f3677706da19db9e83f451bff0", "R03A", "R03F", "accepted_V554_authority"],
+      "sub_vozhds": ["554A_DIRECT_ADMISSION_SIGNATURE", "554B_TEMPORAL_BASIS_AND_COMPLETENESS", "554C_DUPLICATE_EQUIVALENCE_PRECEDENCE", "554D_F1_F2_B1_CANONICALIZATION", "554E_NEGATIVE_AUTHORITY_HOSTILE_FIXTURES"],
+      "mission": "Freeze direct-admission and V553 basis signatures, basis_kind, temporal completeness, exact source-sensitive duplicate-equivalence key/precedence, canonical F1/F2/B1 and negative precedence.",
+      "merge_barrier": "No same proposition/use/rule double support; source distinctions preserved; EQUIVALENCE_UNKNOWN fails closed; deterministic replay and hostile basis controls pass."
+    },
+    {
+      "cell_id": "SCR555_V555_ATOMIC_ROUTE",
+      "suggested_branch": "agent/vozhd-trii-dr-r03-close-v555-atomic-route",
+      "launch_dependencies": [],
+      "final_adjudication_dependencies": ["SCR554_V554_BASIS_DEDUP"],
+      "primary_evidence": ["EP555@9460e769e0b9208de90171c8220127d89eeb7833", "R03B", "R03F", "ADP-002", "ADP-003"],
+      "sub_vozhds": ["555A_ROUTE_SCHEMA_IDENTITY", "555B_TYPED_STATES_AND_RULE_AUTHORITY", "555C_F2_REFERENCE_NON_DUPLICATION", "555D_V556_BASE_EDGE_AND_V557_PUBLICATION", "555E_PHYSICAL_MINIMALITY_AND_REPLAY"],
+      "mission": "Freeze exact one-F1 atomic route schema/identity, source-channel-receiver order, typed states, inherited F2 reference-only law, route-born valid-empty law, V556 base-edge reuse and direct publication.",
+      "merge_barrier": "Exactly one F1 per deterministic route identity; inherited F2 not reowned; V556 reuses exact route ID; no admission bypass; physical merge only with exact semantic/replay equivalence."
+    },
+    {
+      "cell_id": "SCR556_V556_INTERACTION_TOPOLOGY",
+      "suggested_branch": "agent/vozhd-trii-dr-r03-close-v556-interaction-topology",
+      "launch_dependencies": [],
+      "final_adjudication_dependencies": ["SCR555_V555_ATOMIC_ROUTE"],
+      "primary_evidence": ["EP556@20853f88578ed68d761413dcb68cdfb2f623dde6", "R03B", "R03F"],
+      "sub_vozhds": ["556A_INTERACTION_RELATION_RULES", "556B_PREREQUISITE_TOPOLOGY", "556C_PARTICIPANT_ROLE_ORDER_CARDINALITY", "556D_SOURCE_COMPOSITION_AUTHORITY", "556E_DIRECT_PUBLICATION_NO_FILLER_FIXTURES"],
+      "mission": "Freeze higher-order interaction/topology/prerequisite semantics, exact V555 participant role/order/cardinality, no base-edge re-ID, source composition authority, typed states and direct publication/no-filler behavior.",
+      "merge_barrier": "Every positive V556 object has exact rule and V555 participants; ungoverned composition fails closed; no relation from shared labels/adjacency/co-resolution; no-V556 case can publish V555 directly."
+    },
+    {
+      "cell_id": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION",
+      "suggested_branch": "agent/vozhd-trii-dr-r03-close-v5578-publication-repository",
+      "launch_dependencies": [],
+      "final_adjudication_dependencies": ["SCR553_V553_TEMPORAL_JURISDICTION", "SCR554_V554_BASIS_DEDUP", "SCR555_V555_ATOMIC_ROUTE", "SCR556_V556_INTERACTION_TOPOLOGY"],
+      "primary_evidence": ["EP5578@f95f01f8112c646897058de809c98f5b3e8b429b", "R03B", "R03C", "R03D", "R03F", "CAN-003", "CAN-004", "CAN-005"],
+      "sub_vozhds": ["557A_RUNTIME_USE_GOVERNANCE", "557B_MIXED_PRODUCER_REFERENCE_REGISTRY", "557C_STANDALONE_CLOSURE_AND_LOCATORS", "558A_REPOSITORY_INDEX_LINKER", "558B_CONTEXT_RESOLVER_POLICY", "5578C_NEGATIVE_PERMISSION_AND_REOWNERSHIP_HOSTILES"],
+      "mission": "Freeze mixed-producer runtime-use governance, permission monotonicity, corrected reference classes/PSEPF exclusion, standalone closure, immutable repository/linker/index, deterministic ContextResolver and ResolvedStructuralContext.",
+      "merge_barrier": "Raw producer directories absent standalone proof resolves all required positive/negative refs exactly or fails closed; producer IDs canonical; permission monotonicity item-wise; PSEPF rejected; resolver deterministic; repository presence never grants permission."
+    },
+    {
+      "cell_id": "SCRV3_EMPIRICAL_POSSIBILITY_AND_CAUSAL_BOUNDARY",
+      "suggested_branch": "agent/vozhd-trii-dr-r03-close-v3-empirical-possibility",
+      "launch_dependencies": [],
+      "final_adjudication_dependencies": ["SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_FOR_FINAL_STRUCTURAL_CONTEXT_INTEGRATION_ONLY"],
+      "primary_evidence": ["EPV3@c97df88b9461a5ae0d01bc66b2d0f67f1f9337ae", "R03D", "R03E", "R03F", "accepted_V3_ADP_CAN_authorities"],
+      "sub_vozhds": ["V3A_INPUT_SCHEMA_LIFECYCLE", "V3B_OBJECTIVE_ACTOR_FACT_COMPARATOR_SNAPSHOT", "V3C_EFFECTIVE_TIME_AND_SOURCE_STATE_ADMISSION", "V3D_METABOLISM_AUTHORITY_AND_READ_PERMISSION", "V3E_DIVERGENCE_REPLAY_HOSTILE_HARNESS", "V3F_STRUCTURAL_CONTEXT_PEER_PRIOR_INTEGRATION"],
+      "mission": "Freeze thin input, comparator snapshot seam, lifecycle/requery-vs-rebind, effective time, per-source negatives, intake replay, V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY, transition read permissions, divergence replay and structural-context peer-prior noncollapse.",
+      "merge_barrier": "Versioned metabolism authority and read matrix exist; absent authority causes zero PSEPF effect; exact source-indexed geometry dereference preserved; no field/comparator direct state assignment; same priors permit divergent lawful histories with deterministic replay."
+    },
+    {
+      "cell_id": "SCRV2APP_EXPRESSION_NONCONSUMPTION",
+      "suggested_branch": "agent/vozhd-trii-dr-r03-close-v2app-nonconsumption",
+      "launch_dependencies": [],
+      "final_adjudication_dependencies": ["SCRV3_EMPIRICAL_POSSIBILITY_AND_CAUSAL_BOUNDARY"],
+      "primary_evidence": ["EPV3@c97df88b9461a5ae0d01bc66b2d0f67f1f9337ae", "R03D", "R03E", "R03F", "V2_completion", "ADP-017"],
+      "sub_vozhds": ["V2A_SCHEMA_API_FIREWALL", "V2B_PROMPT_RENDER_ALLOWLIST", "V2C_OPAQUE_PROVENANCE_NON_DEREFERENCE", "V2D_ACTOR_ACCESSIBLE_HANDOFF", "V2E_EXTERNAL_EVENT_ZERO_MUTATION_HOSTILES"],
+      "mission": "Freeze direct and indirect upstream-prior nonconsumption, opaque provenance firewall, actor-safe V3 handoff, V2 non-widening and external-event zero-mutation feedback behavior.",
+      "merge_barrier": "All direct/indirect prior personalization attacks fail; opaque refs cannot influence expression semantics; V2 cannot widen V3 access/claim permissions; causal feedback requires V3 admission and rejection/defer yields zero mutation."
+    }
+  ],
+  "merge_barriers": [
+    {
+      "barrier_id": "M1_TEMPORAL_V554_INGRESS",
+      "requires": ["SCR553_V553_TEMPORAL_JURISDICTION", "SCR554_V554_BASIS_DEDUP"],
+      "proves": ["mutually typed direct and temporal V554 basis classes", "use-chain temporal routing", "no invented source comparability", "no duplicate basis support", "temporal negatives cannot silently downgrade to direct basis"]
+    },
+    {
+      "barrier_id": "M2_ATOMIC_ROUTE",
+      "requires": ["SCR554_V554_BASIS_DEDUP", "SCR555_V555_ATOMIC_ROUTE"],
+      "proves": ["exact V554 F1/B1 identity consumed by exact one-F1 V555 route", "no direct admission bypass", "exact route identity before consumers"]
+    },
+    {
+      "barrier_id": "M3_HIGHER_ORDER_STRUCTURAL",
+      "requires": ["SCR555_V555_ATOMIC_ROUTE", "SCR556_V556_INTERACTION_TOPOLOGY"],
+      "proves": ["V555 canonical base-edge reuse", "governed 2..n V556 meaning only", "no relation inference from co-location", "V555 direct publication when V556 not needed"]
+    },
+    {
+      "barrier_id": "M4_MIXED_PUBLICATION_STANDALONE_REPOSITORY",
+      "requires": ["SCR553_V553_TEMPORAL_JURISDICTION", "SCR554_V554_BASIS_DEDUP", "SCR555_V555_ATOMIC_ROUTE", "SCR556_V556_INTERACTION_TOPOLOGY", "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION"],
+      "proves": ["mixed-producer registry uses exact producer contracts", "permission monotonicity", "strict standalone positive/negative closure", "producer identity preservation", "deterministic ContextResolver"]
+    },
+    {
+      "barrier_id": "M5_V3_PEER_PRIOR_CAUSAL",
+      "requires": ["SCR5578_PUBLICATION_REPOSITORY_RESOLUTION", "SCRV3_EMPIRICAL_POSSIBILITY_AND_CAUSAL_BOUNDARY"],
+      "proves": ["ResolvedStructuralContext and V3EmpiricalPossibilityInput remain peer noncollapsed priors", "metabolism authority/read matrix", "no direct prior-to-state mapping", "same-prior divergent-life deterministic replay"]
+    },
+    {
+      "barrier_id": "M6_V2_APPLICATION_EXPRESSION",
+      "requires": ["SCRV3_EMPIRICAL_POSSIBILITY_AND_CAUSAL_BOUNDARY", "SCRV2APP_EXPRESSION_NONCONSUMPTION"],
+      "proves": ["only actor-safe V3 truth reaches expression semantics", "direct and indirect upstream prior dereference denied", "opaque provenance nonbehavioral", "causal feedback requires V3 admission"]
+    }
+  ],
+  "whole_machine_checksum_after_barriers": [
+    "terminal discovery not starved",
+    "no universal V553 transit",
+    "direct non-temporal V554 route",
+    "later-use temporal demand",
+    "no direct+V553 double support",
+    "no admission->V555/V556 bypass",
+    "V555 exact canonical V556 base edge",
+    "V555 direct publication when V556 not needed",
+    "mixed V553/V554/V555/V556 publication under V557 permission",
+    "V557/V558 standalone positive+negative closure without reownership",
+    "source plurality and no provenance-implies-composition",
+    "PSEPF excluded from structural repository",
+    "thin V3 input preserves exact source-indexed geometry by reference",
+    "missing metabolism authority causes zero PSEPF transition effect",
+    "same priors do not determine same life",
+    "V2/app cannot direct or indirectly recover upstream-prior persona/expression authority",
+    "ReplayReceipt audit-only",
+    "no source retirement and no production implementation"
+  ],
+  "completion_effect": "Passing all barriers closes stage contracts only. It does not itself authorize production implementation; a later higher authority must do so."
+}
