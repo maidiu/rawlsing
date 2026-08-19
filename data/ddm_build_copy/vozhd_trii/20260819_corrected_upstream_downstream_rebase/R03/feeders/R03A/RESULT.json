@@ -1,0 +1,115 @@
+{
+  "court": "R03A",
+  "title": "TEMPORAL ROUTING / OVER-BYPASS / DUPLICATE-PATH COURT",
+  "repository": "maidiu/rawlsing",
+  "launch_base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+  "branch": "agent/vozhd-trii-dr-r03a-temporal-routing-audit",
+  "authority": "NON_DISPOSITIVE_HOSTILE_FEEDER",
+  "production_code_modified": false,
+  "d15_upstream_reopened": false,
+  "final_architecture_selected": false,
+  "holdings_attacked": ["R02-H01", "R02-H02", "R02-H04"],
+  "final_result": "R02_TEMPORAL_PARTITION_SURVIVES__SOURCE_RELATION_AND_NEGATIVE_AUTHORITY_QUALIFICATION_REQUIRED__H04_EXACT_EQUIVALENCE_PROOF_BLOCKED_PENDING_V554_CLOSE_READ",
+  "holdings": {
+    "R02-H01": {
+      "outcome": "R02_HOLDING_SURVIVES_ATTACK",
+      "qualification": "NEEDS_V553 is downstream-use-specific and positive cross-source temporal comparison/harmonization cannot outrun source-universe relation/applicability authority. Unknown relation/comparability fails closed."
+    },
+    "R02-H02": {
+      "outcome": "R02_HOLDING_SURVIVES_ATTACK",
+      "qualification": "Direct V554 is required only for positively admitted, temporally complete, V554-rule-eligible use classes with no new V553-owned temporal/comparability meaning."
+    },
+    "R02-H04": {
+      "outcome": "MISSING_AUTHORITY_BLOCKS_PROOF",
+      "qualification": "The prohibition on double entry survives conceptually, but exact machine-readable semantic-equivalence key and precedence serialization are explicitly deferred to the V554 close-read. UNKNOWN equivalence must fail closed."
+    }
+  },
+  "principal_attacks": [
+    {
+      "id": "A01",
+      "name": "hidden temporal semantics in apparently static admission",
+      "result": "SURVIVES_WITH_QUALIFICATION"
+    },
+    {
+      "id": "A02",
+      "name": "timestamp/history metadata with no new temporal meaning",
+      "result": "SURVIVES"
+    },
+    {
+      "id": "A03",
+      "name": "direct-V554 starvation test",
+      "result": "SURVIVES"
+    },
+    {
+      "id": "A04",
+      "name": "direct plus temporal duplicate path including alias/reissued admission lineage",
+      "result": "BLOCKED_MISSING_AUTHORITY"
+    },
+    {
+      "id": "A05",
+      "name": "temporal negative authority and cross-source noncomparability",
+      "result": "SURVIVES_WITH_QUALIFICATION"
+    }
+  ],
+  "routing_predicate": {
+    "direct_v554_if": [
+      "positive StructuralEmpiricalAdmission for exact use",
+      "target-use time/interval/scope is positively governed",
+      "any required source-universe relation/applicability is positively governed",
+      "no new V553-owned temporal/comparability meaning is required",
+      "immutable V554 rule explicitly accepts direct admission basis"
+    ],
+    "v553_if": [
+      "target use requires a new V553-owned temporal/comparability semantic not already contained in admission",
+      "positive authority exists for that exact temporal/comparability operation"
+    ],
+    "fail_closed_if": [
+      "temporal completeness unknown",
+      "required source-universe relation/comparability unknown",
+      "V553 temporal authority missing",
+      "V554 direct-basis eligibility missing",
+      "duplicate semantic equivalence unknown"
+    ],
+    "never_sufficient": [
+      "timestamp presence",
+      "historical-source membership",
+      "same calendar year",
+      "same label/canonical value",
+      "V553 artifact presence",
+      "latest timestamp",
+      "score",
+      "row order",
+      "filename"
+    ]
+  },
+  "preserved_unknowns": [
+    {
+      "id": "R03A-U01",
+      "unknown": "EXACT_MACHINE_READABLE_V554_DUPLICATE_EQUIVALENCE_KEY_AND_PRECEDENCE_SERIALIZATION_FOR_DIRECT_ADMISSION_VS_V553_TEMPORAL_BASIS_NOT_FROZEN_IN_BINDING_R02_AUTHORITY",
+      "owner": "V554 stage close-read"
+    },
+    {
+      "id": "R03A-U02",
+      "unknown": "Exact corrected-admission temporal-class mapping to V553 TEMPORAL_KEY/TEMPORAL_OBSERVATION/TEMPORAL_RELATION/TEMPORAL_LIMIT families, including preservation of upstream source-relation unknowns",
+      "owner": "V553 stage close-read"
+    },
+    {
+      "id": "R03A-U03",
+      "unknown": "Exact V554 rule signature fields for temporal demand, direct-basis eligibility, source/time applicability prerequisites, negative precedence, and semantic proposition/use identity",
+      "owner": "V554 stage close-read"
+    }
+  ],
+  "synthesis_recommendations": [
+    "Do not overturn the selective V553/direct-V554 partition on R03A evidence.",
+    "Qualify cross-source temporal routing: V553 cannot manufacture source-universe equivalence; missing relation/comparability yields typed fail-closed negative/plural evidence.",
+    "Carry H04 as MISSING_AUTHORITY_BLOCKS_PROOF until V554 close-read freezes canonical semantic equivalence and precedence; UNKNOWN equivalence must not be unioned or chosen by convenience."
+  ],
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "ATTACK_LEDGER.csv",
+    "COUNTEREXAMPLE_CASES.csv",
+    "R02_HOLDING_QUALIFICATION_MATRIX.csv",
+    "SYNTHESIS_HANDOFF.json"
+  ]
+}
