@@ -1,0 +1,483 @@
+{
+  "court": "D08",
+  "title": "Conditional Empirical Evidence <-> Attitude-Cloud Fact-Algebra Court",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "92df14a7f3a9c2077b3e1a426ce3f4fa549e90eb",
+  "branch": "agent/vozhd-trii-d08-empirical-fact-algebra",
+  "production_code_modified": false,
+  "architecture_selected": false,
+  "populated_empirical_claims_made": false,
+  "inherited_no_db_law": "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
+  "disposition": "UNIFIED_DEEP_EMPIRICAL_FACT_ALGEBRA_WITH_TYPED_LANES",
+  "verdict": {
+    "shared_algebra_exists": true,
+    "single_storage_table_implied": false,
+    "single_semantic_object_implied": false,
+    "conditional_distributions_and_cotravel_share_grammar": true,
+    "branch_conditioned_cotravel_representable": true,
+    "joint_response_configurations_representable": true,
+    "respondent_incidence_is_irreducible_information_generator": true,
+    "association_scores_are_primary_empirical_facts": false,
+    "current_attitude_cloud_is_one_conditional_fact": false,
+    "current_attitude_cloud_ruling": "DERIVED_LOSSY_COMPOSITE_VIEW_OVER_MULTIPLE_RISK_SETS",
+    "proof_summary": [
+      "Unary position conditionals, position conjunctions, response-conditioned distributions, response+position conditionals, branch-conditioned distributions, and branch+response cotravel are all selections and aggregations over a respondent-bound empirical incidence relation when condition predicates and risk sets are typed.",
+      "Joint response patterns fit the same algebra by allowing a multivariate target tuple rather than forcing a scalar Y; exact respondent incidence or an information-equivalent full k-way contingency is still required according to the reconstruction task.",
+      "Historical V549 branch-conditioned cotravel fits the algebra when actual branch membership is represented as a derived cohort predicate or explicit membership relation with branch provenance; a branch ID alone is insufficient.",
+      "Current V550 attitude-cloud rows are composite: the directional event, candidate baseline, and symmetric association diagnostics use different denominator/risk-set definitions. A cloud row therefore cannot be identified with one generic P(Y|X) fact.",
+      "Association summaries such as NMI, Cramer's V, MI-like scores, lift, and entropy reduction are derived functionals over richer contingency/incidence facts and are non-invertible; they occupy a distinct derived-summary lane inside the algebra.",
+      "The algebra does not authorize any empirical statistic to become structural interpretation, generated actor position, actor belief, or developmental state. Those remain separate jurisdictions."
+    ]
+  },
+  "algebra": {
+    "name": "GOVERNED_RESPONDENT_CONDITIONAL_RELATION_ALGEBRA",
+    "scope_symbol": "S",
+    "respondent_symbol": "r",
+    "primitive_relations": [
+      {
+        "name": "RESPONSE_EVENT",
+        "shape": "Response(r, question_id, response_event_id, response_value, response_topology, typed_state, authority_ref, provenance_ref)",
+        "note": "response_event_id may be singular, set-valued, ordered, or repeated according to topology authority"
+      },
+      {
+        "name": "EMPIRICAL_POSITION_ATOM",
+        "shape": "Position(r, coordinate_id, coordinate_value, typed_state, authority_ref, provenance_ref)",
+        "note": "empirical survey coordinate only; not ADP-009 generated actor position"
+      },
+      {
+        "name": "ROUTING_APPLICABILITY_ATOM",
+        "shape": "Eligibility(r, question_id, applicability_state, routing_state, authority_ref, provenance_ref)",
+        "note": "separates observable risk set from substantive response content"
+      },
+      {
+        "name": "BRANCH_MEMBERSHIP",
+        "shape": "BranchMember(r, branch_definition_id, resolved_predicate_hash, membership_state, branch_provenance_ref)",
+        "note": "derived from exact branch predicate/source incidence or stored explicit membership; branch label alone is insufficient"
+      }
+    ],
+    "condition_predicate": {
+      "symbol": "C(r)",
+      "grammar": "AND/OR/NOT over typed empirical predicates bound to the same respondent variable where required",
+      "minimum_predicate_types": [
+        "EMPIRICAL_POSITION_COORDINATE",
+        "SURVEY_RESPONSE_EVENT",
+        "DERIVED_BRANCH_COHORT",
+        "ROUTING_APPLICABILITY_STATE",
+        "TYPED_RESPONSE_STATE"
+      ],
+      "excluded_from_empirical_predicate_identity_without_later_authority": [
+        "STRUCTURAL_INTERPRETATION",
+        "GENERATED_ACTOR_POSITION",
+        "ACTOR_BELIEF",
+        "ACTOR_DEVELOPMENTAL_STATE"
+      ]
+    },
+    "risk_set": {
+      "symbol": "R(r)",
+      "rule": "denominator eligibility is an explicit predicate independent of C(r)",
+      "required_identity": [
+        "risk_set_type",
+        "risk_set_predicate_or_authority_ref",
+        "target applicability/routing semantics",
+        "missing/special-response handling",
+        "scope"
+      ]
+    },
+    "target": {
+      "symbol": "T(r)",
+      "arity": "1..k",
+      "scalar_case": "one governed question response",
+      "multivariate_case": "ordered or canonically set-valued tuple of governed response components",
+      "rule": "joint-response configurations are not forced into a scalar response field"
+    },
+    "measure": {
+      "symbol": "mu_m",
+      "raw": "mu_raw(r)=1",
+      "weighted": "mu_weighted(r)=governed survey weight when authorized and valid",
+      "rule": "raw and weighted measures are distinct; a percentage without measure/denominator basis is incomplete"
+    },
+    "fact_formula": {
+      "numerator": "N_m(t;S,C,R,T)=SUM_r mu_m(r) * 1[r in S AND R(r) AND C(r) AND T(r)=t]",
+      "denominator": "D_m(S,C,R)=SUM_r mu_m(r) * 1[r in S AND R(r) AND C(r)]",
+      "cell_probability": "P_m(T=t | C,R,S)=N_m/D_m when D_m>0",
+      "distribution": "the empirical fact is the complete governed target topology over all t plus N/D/support/limit state, not only a modal cell",
+      "zero_denominator": "typed ZERO_SUPPORT / ZERO_OVERLAP / NOT_APPLICABLE / UNRESOLVED as appropriate; absence of a row is not sufficient semantics"
+    },
+    "fact_identity": {
+      "must_include": [
+        "source",
+        "raw_wave",
+        "canonical_wave",
+        "country/scope",
+        "target question/component identities",
+        "response topology authority",
+        "condition predicate AST/hash and predicate types",
+        "risk-set predicate/type",
+        "response-value/state semantics",
+        "raw/weighted measure basis",
+        "branch/cohort provenance when used",
+        "semantic authority/provenance/replay identity"
+      ],
+      "numerical_equality_does_not_imply_identity": true,
+      "same_answer_different_condition_rule": "two equal numerical distributions under different branch or position predicates remain distinct empirical facts"
+    },
+    "admission_overlay": {
+      "rule": "empirical fact identity and downstream admissibility are separate",
+      "required": [
+        "authority/admissibility lane",
+        "admission status",
+        "authority version/hash",
+        "forbidden inference flags where applicable"
+      ],
+      "does_not_promote": [
+        "population association to actor belief",
+        "empirical coordinate to generated actor position",
+        "branch membership to biography/persona",
+        "diagnostic association to structural interpretation"
+      ]
+    }
+  },
+  "equivalence_classes": {
+    "E0_RESPONDENT_INCIDENCE": "respondent-bound empirical observation relation; information generator",
+    "E0B_DERIVED_COHORT_INCIDENCE": "exact branch/cohort membership relation derived from E0 plus branch law or retained explicitly",
+    "E1_CONDITIONAL_DISTRIBUTION": "full target distribution under typed condition and typed risk set",
+    "E2_JOINT_OUTCOME_INCIDENCE": "multivariate target pattern/configuration distribution under a common respondent/risk-set semantics",
+    "E3_DERIVED_COMPOSITE_VIEW": "bundle/index selecting or comparing E1/E2 facts across possibly different risk sets",
+    "E4_DERIVED_ASSOCIATION_FUNCTIONAL": "non-invertible scalar/vector functional over E1/E2 contingency facts"
+  },
+  "central_question_mapping": [
+    {
+      "expression": "P(Y response | position=A, scope)",
+      "class": "E1_CONDITIONAL_DISTRIBUTION",
+      "condition": "Position_A(r)",
+      "same_respondent": true
+    },
+    {
+      "expression": "P(Y response | position=A AND position=B, scope)",
+      "class": "E1_CONDITIONAL_DISTRIBUTION",
+      "condition": "Position_A(r) AND Position_B(r)",
+      "same_respondent": true,
+      "marginals_sufficient": false
+    },
+    {
+      "expression": "P(Y response | X response=x, scope)",
+      "class": "E1_CONDITIONAL_DISTRIBUTION",
+      "condition": "Response_X_x(r)",
+      "same_respondent": true
+    },
+    {
+      "expression": "P(Y response | X response=x AND position=A, scope)",
+      "class": "E1_CONDITIONAL_DISTRIBUTION",
+      "condition": "Response_X_x(r) AND Position_A(r)",
+      "same_respondent": true
+    },
+    {
+      "expression": "P(Y response | branch predicate B, scope)",
+      "class": "E1_CONDITIONAL_DISTRIBUTION",
+      "condition": "BranchMember_B(r)",
+      "same_respondent": true,
+      "branch_provenance_required": true
+    },
+    {
+      "expression": "P(Y response | branch B AND X response=x, scope)",
+      "class": "E1_CONDITIONAL_DISTRIBUTION",
+      "condition": "BranchMember_B(r) AND Response_X_x(r)",
+      "same_respondent": true,
+      "branch_provenance_required": true
+    },
+    {
+      "expression": "joint-response pattern incidence",
+      "class": "E2_JOINT_OUTCOME_INCIDENCE",
+      "condition": "optional external governed predicates",
+      "target": "T=(Q1,...,Qk)",
+      "same_respondent": true
+    },
+    {
+      "expression": "response-response association summary",
+      "class": "E4_DERIVED_ASSOCIATION_FUNCTIONAL",
+      "source_required": "full E2 pair/k-way contingency under a typed risk set",
+      "same_empirical_fact_as_source": false
+    }
+  ],
+  "denominator_court": {
+    "ruling": "DENOMINATOR_AND_RISK_SET_ARE_PART_OF_EMPIRICAL_FACT_IDENTITY",
+    "types": [
+      {
+        "type": "WHOLE_QUESTION_DENOMINATOR",
+        "meaning": "all respondents in the governed target-question risk set"
+      },
+      {
+        "type": "CONDITION_SELECTED_DENOMINATOR",
+        "meaning": "respondents satisfying empirical condition C and target risk set R"
+      },
+      {
+        "type": "ANCHOR_SELECTED_DENOMINATOR",
+        "meaning": "all respondents satisfying the selected anchor event, whether or not candidate response is observed, as in current V550 cloud directional probability"
+      },
+      {
+        "type": "CANDIDATE_QUESTION_DENOMINATOR",
+        "meaning": "prepared/eligible candidate responders used for a baseline distribution"
+      },
+      {
+        "type": "COMMON_ELIGIBLE_RISK_SET",
+        "meaning": "respondents jointly eligible/observable for all target/condition components"
+      },
+      {
+        "type": "ROUTED_APPLICABLE_DENOMINATOR",
+        "meaning": "respondents for whom route/applicability authority makes the target question meaningful"
+      },
+      {
+        "type": "BRANCH_COHORT_DENOMINATOR",
+        "meaning": "respondents satisfying an exact branch membership predicate, optionally intersected with target eligibility"
+      },
+      {
+        "type": "WEIGHTED_DENOMINATOR",
+        "meaning": "governed weight mass over one of the above respondent risk sets; not interchangeable with raw N"
+      }
+    ],
+    "non_equivalence_rule": "equal-looking P(Y|X) expressions are different facts when R, topology, measure, or predicate provenance differs",
+    "current_cloud_denominator_law_is_normative": false,
+    "current_cloud_denominator_law_use": "implementation evidence only",
+    "routed_common_risk_set_authority": "UNRESOLVED_BY_D04_AND_OUTSIDE_D08"
+  },
+  "current_v550_attitude_cloud": {
+    "module": "data/ddm_build_copy/ddm_v550_clouds.py",
+    "blob_sha_at_d08_base": "dfc878e87d984a1a3d7000a0c726bdc444f9945f",
+    "component_1_directional_event": {
+      "condition": "A=a*",
+      "target": "B=b* observed",
+      "numerator": "N_ab in same-respondent pair",
+      "denominator": "N_a in full prepared anchor frame",
+      "risk_set_type": "ANCHOR_SELECTED_DENOMINATOR"
+    },
+    "component_2_candidate_baseline": {
+      "condition": "TRUE",
+      "target": "B=b*",
+      "numerator": "N_b",
+      "denominator": "N_B full prepared candidate frame",
+      "risk_set_type": "CANDIDATE_QUESTION_DENOMINATOR"
+    },
+    "component_3_association": {
+      "source": "full complete-case A x B contingency after respondent join",
+      "risk_set_type": "COMMON_OBSERVED_PAIR_RISK_SET",
+      "outputs": ["normalized_mutual_information", "Cramer's V", "association_strength"]
+    },
+    "selection": "only the globally modal joint cell (a*,b*) is retained as the directional event cell",
+    "classification": "E3_DERIVED_COMPOSITE_VIEW",
+    "canonical_empirical_fact": false,
+    "losses": [
+      "nonmodal joint response cells",
+      "full pairwise contingency",
+      "higher-order response topology",
+      "branch conditioning",
+      "respondent-level response vectors"
+    ],
+    "known_current_implementation_evidence": [
+      "special nonblank DK/refusal/IAP/not-asked/inapplicable states can enter content",
+      "current NMI implementation has a log-base mismatch",
+      "checkpoint resume does not restore cross-question state",
+      "pair-generation order/gating behavior is workload-dependent under parent adjudication"
+    ],
+    "weighting": "CURRENT_UNWEIGHTED__NORMATIVE_LAW_UNRESOLVED"
+  },
+  "historical_branch_cotravel": {
+    "d03_ruling": "V549/V549b used actual reconstructed V548 branch membership; current native V550 cloud does not",
+    "algebraic_ruling": "REPRESENTABLE_AS_E1_CONDITIONAL_DISTRIBUTION_OR_E4_ASSOCIATION_OVER_E0B_MEMBERSHIP",
+    "minimum_branch_identity": [
+      "branch definition ID",
+      "resolved predicate AST or explicit immutable membership set",
+      "parent/ancestry path",
+      "resolved modal/category values where data-derived",
+      "branch algorithm/version",
+      "source/wave/country/question response-semantics provenance",
+      "missing/routing rule",
+      "membership reconstruction hash/reference"
+    ],
+    "branch_id_alone_sufficient": false,
+    "v549_scalar_summary_sufficient_for_full_branch_conditional": false,
+    "same_as_current_attitude_cloud": false
+  },
+  "v550j_joint_geometry": {
+    "module": "data/ddm_build_copy/ddm_v550j_joint_patterns.py",
+    "blob_sha_at_d08_base": "644aab23675b26134040d1df5cc25538b613e163",
+    "observed_static_geometry": [
+      "respondents are grouped by respondent_id across a configured family",
+      "raw pattern signatures concatenate component var_code=response_value pairs",
+      "semantic pattern signatures concatenate item_role=semantic_response_role pairs",
+      "identical respondent signatures are grouped into pattern counts/probabilities",
+      "pattern rows retain respondent_ids and a dedicated pattern_membership surface exists",
+      "association computation joins pattern membership to outside-family responses by respondent identity",
+      "association traces separately expose pattern member count, pattern-variable answered count, response overlap, baseline answered count, weighted/unweighted support, and denominator bases"
+    ],
+    "algebraic_ruling": "JOINT_CONFIGURATIONS_FIT_AS_MULTIVARIATE_TARGET_FACTS_E2",
+    "distinct_joint_incidence_primitive_required": "YES_AS_INFORMATION_GENERATOR__NO_AS_SEPARATE_SEMANTIC_UNIVERSE",
+    "fixed_pattern_counts_sufficient_for": [
+      "incidence/probability of that exact configured pattern under its exact fixed risk set"
+    ],
+    "fixed_pattern_counts_insufficient_for": [
+      "association of pattern members with an unmaterialized outside variable",
+      "reconditioning pattern by a new position predicate",
+      "alternative component subsets/conjunctions",
+      "respondent-level trajectory or biography"
+    ],
+    "multiselect_repeated_response_caveat": "current scalar-duplicate and first-row behaviors are implementation evidence only; generic algebra must support topology-aware 0..n response events or type the topology unsupported"
+  },
+  "information_theoretic_requirements": {
+    "unary_conditionals": {
+      "minimum_for_fixed_query": "full condition-value x target-response contingency with exact denominator/risk-set, topology, raw support, weight basis, typed limit states, and provenance",
+      "respondent_ids_strictly_required_for_fixed_query": false,
+      "respondent_incidence_required_for_future_new_conditions": true
+    },
+    "pairwise_cotravel": {
+      "minimum_for_fixed_pair": "full same-respondent pair contingency plus exact anchor/candidate/common-risk-set counts required by the selected denominator law",
+      "pair_marginals_sufficient": false,
+      "respondent_ids_strictly_required_if_full_pair_contingency_is_retained": false,
+      "respondent_incidence_required_for_unmaterialized_pairs_or_reconditioning": true
+    },
+    "arbitrary_conjunctions": {
+      "minimum": "respondent-level joint incidence or an information-equivalent exhaustive joint contingency over every governed variable/state that may enter the query",
+      "unary_marginals_sufficient": false,
+      "pairwise_marginals_sufficient": false
+    },
+    "branch_conditioned_cotravel": {
+      "minimum": "exact branch membership relation or source incidence plus exact branch predicate/replay law, joined to target response incidence under exact risk-set semantics",
+      "tree_node_summary_sufficient": false,
+      "branch_id_sufficient": false
+    },
+    "joint_response_patterns": {
+      "minimum_for_fixed_pattern_frequency": "full configured k-way contingency with topology/routing/weights/provenance",
+      "minimum_for_pattern_to_outside_association": "respondent membership/incidence for the pattern plus outside response incidence, or exact joint contingency including the outside variable",
+      "marginals_sufficient": false
+    },
+    "association_summaries": {
+      "minimum_to_recompute": "the full underlying contingency plus metric formula/version and measure basis",
+      "scalar_summary_invertible": false
+    }
+  },
+  "hostile_cases": [
+    {
+      "case": "XOR",
+      "result": "PASS only at E0/E2 or exact conjunction E1 level; unary conditionals/scalar association rankings cannot reconstruct it",
+      "law": "preserves D01/D02/frozen-VT3 intersection failure"
+    },
+    {
+      "case": "Simpson reversal",
+      "result": "PASS only when stratifier and target/predictor joint incidence plus exact denominators survive; pooled marginals are insufficient"
+    },
+    {
+      "case": "rare minority conjunction",
+      "result": "algebra preserves raw support and typed underpowered/admission state separately; low support may restrict use but cannot mean nonexistence"
+    },
+    {
+      "case": "zero-overlap question pairs",
+      "result": "represented as a typed zero-overlap/common-risk-set state; not silently omitted and not assigned a fabricated conditional probability"
+    },
+    {
+      "case": "routed/not-asked",
+      "result": "routing/applicability belongs in R(r) and typed response state; anchor-selected and common-eligible denominators remain distinct alternatives"
+    },
+    {
+      "case": "DK/refusal/IAP",
+      "result": "typed special states cannot silently enter substantive response topology; they may be queried only under explicit authority"
+    },
+    {
+      "case": "multi-select/repeated response topology",
+      "result": "scalar-one-row grammar is rejected; response event identity/set/order/repetition semantics must be retained or the topology is typed unsupported"
+    },
+    {
+      "case": "contradictory simultaneous positions",
+      "result": "conjunction predicate can contain multiple simultaneous empirical position atoms without selecting a dominant identity; no actor inference follows"
+    },
+    {
+      "case": "same answer under different branch predicates",
+      "result": "distinct fact identities because branch predicate/provenance hashes differ even if numerical distributions match"
+    },
+    {
+      "case": "same answer under different position predicates",
+      "result": "distinct fact identities because condition predicates differ even if numerical distributions match"
+    },
+    {
+      "case": "same marginals different respondent-level joint incidence",
+      "result": "marginals fail; e.g. a 50/50-by-50/50 independent 2x2 table and a perfectly concordant 50/50 table have identical marginals but different cotravel"
+    },
+    {
+      "case": "asymmetric conditional probabilities with symmetric association scores",
+      "result": "PASS because ordered E1 conditional facts and E4 symmetric functionals are separate; Cramer's V/NMI equality does not imply P(B|A)=P(A|B)"
+    }
+  ],
+  "network_cloud_ruling": {
+    "materialized_cloud_class": "DERIVED_VIEW_INDEX_AND_LOSSY_SUMMARY",
+    "canonical_empirical_fact": false,
+    "separate_semantic_object": "YES_AS_A_DERIVED_DIAGNOSTIC_VIEW__NO_AS_AN_IRREDUCIBLE_EMPIRICAL_PRIMITIVE",
+    "reason": "a cloud may select, rank, or network conditional/joint facts, but current V550 persistence discards joint cells and mixes risk sets; its information can be regenerated only from deeper pair incidence/contingency plus exact selection/metric law",
+    "physical_architecture_decided": false
+  },
+  "mandatory_noncollapse": {
+    "empirical_condition": "predicate over survey/respondent evidence",
+    "empirical_response": "observed response event/value under topology authority",
+    "structural_interpretation": "later governed interpretation; not created by algebra",
+    "question_relation": "semantic/admission authority about a question; not a respondent observation",
+    "branch_membership": "derived respondent cohort relation with exact provenance",
+    "population_distribution": "aggregate measure over a typed risk set",
+    "same_person_cotravel": "joint/cross-question respondent incidence; not psychology",
+    "diagnostic_association_score": "derived functional; not distribution or causal relation",
+    "actor_position": "generated actor-specific fact outside empirical survey algebra unless later exact cross-ontology authority binds it",
+    "actor_belief": "actor-specific state; never inferred directly from population conditional",
+    "actor_developmental_state": "runtime/history state; not survey evidence"
+  },
+  "no_db_boundary": {
+    "allowed_claims_made": [
+      "algebraic equivalence",
+      "information requirements",
+      "representational sufficiency",
+      "denominator distinctions",
+      "static reconstructibility conditions",
+      "semantic non-equivalence"
+    ],
+    "forbidden_claims_not_made": [
+      "actual populated support",
+      "actual pair overlap",
+      "actual prevalence",
+      "actual duplicate frequency",
+      "actual routing-loss rate",
+      "actual source equivalence"
+    ]
+  },
+  "jurisdiction_handoffs": {
+    "D07": "which conditional/cotravel/joint workloads are authorized or required",
+    "D09": "terminal meaning of same answer under different cotravel fields",
+    "D10": "empirical coordinate to structural predicate authority",
+    "D12": "which algebraic capabilities are terminally necessary",
+    "D13": "physical storage/replay carrier and source-equivalence proof",
+    "D15": "architecture selection and implementation plan"
+  },
+  "open_questions": [
+    "What common-risk-set law, if any, is normatively required for routed/question-pair cotravel?",
+    "Which survey families/topologies authorize weighted cotravel and which exact weights/measures apply?",
+    "What is the lawful response-event identity for repeated/multiselect questions in every governed source?",
+    "Which branch-conditioned cotravel workloads, if any, D07/D12 require to exist beyond on-demand reconstructibility?",
+    "Can D13 prove a retained physical substrate preserves all predicates/topologies needed by this algebra?",
+    "Does D10 create any exact empirical-coordinate to structural-position mapping; absent that, empirical position predicates remain survey coordinates only?"
+  ],
+  "evidence": {
+    "current_control_base": "92df14a7f3a9c2077b3e1a426ce3f4fa549e90eb",
+    "accepted_courts_read": ["D01", "D02", "D03", "D04", "D05"],
+    "d06_r2_read": true,
+    "whole_machine_law_read": [
+      "RAWLSING_GOVERNING_SPIRIT.md",
+      "TERMINAL_DEMAND_ENVELOPE.md",
+      "ARCHITECTURE_PASS_LAW.md"
+    ],
+    "current_implementation_files": {
+      "ddm_v550_clouds.py": "dfc878e87d984a1a3d7000a0c726bdc444f9945f",
+      "ddm_v550j_joint_patterns.py": "644aab23675b26134040d1df5cc25538b613e163"
+    },
+    "accepted_result_blobs": {
+      "D02_RESULT.md": "13d59527ad21a98eae62ae23cf9277367931a49d",
+      "D03_RESULT.md": "1d3ce0974d41bd29533b6952cbe9cea5e5566b96",
+      "D04_RESULT.md": "5bcc474c2e0431eed6b3dbe994ed1099435c6b82",
+      "D05_RESULT.md": "3b8948a8583c76859b4ab003c10ef12ff25ebb9c",
+      "D06_R2_RESULT.md": "5afcbc03c51578725dfeb1f58baa3352e51ce4c0"
+    }
+  }
+}
