@@ -1,0 +1,131 @@
+{
+  "handoff": "D13_TO_D14_PHYSICAL_CARRIER_FRONTIER",
+  "source_court": "D13_FINAL_PHYSICAL_RETENTION_AND_EXACT_REPLAY_SUFFICIENCY",
+  "repository": "maidiu/rawlsing",
+  "source_base_sha": "f6cf5c4635b2d5334797c4e267347b47e20407e8",
+  "architecture_selected": false,
+  "workload_algorithm_selected": false,
+  "cache_policy_selected": false,
+  "production_migration_selected": false,
+  "selected_information_family": {
+    "candidate_id": "C11",
+    "name": "MINIMUM_NORMALIZED_RESPONDENT_EVENT_COORDINATE_INCIDENCE_PLUS_AUTHORITY_PROVENANCE",
+    "physical_ruling": "SUFFICIENT_FOR_D12_FRONTIER",
+    "claim_scope": "SPECIFICATION_LEVEL_EXACT_INFORMATION_EQUIVALENCE",
+    "current_populated_instance_certified": false,
+    "specification": "courts/D13/MINIMUM_INFORMATION_SUBSTRATE_SPEC.md",
+    "required_information_atoms": [
+      "M01 respondent-universe identity",
+      "M02 scoped respondent identity",
+      "M03 native/canonical question identity",
+      "M04 response-event identity and raw/canonical value",
+      "M05 response topology and multiplicity/order/rank",
+      "M06 typed response/absence state",
+      "M07 routing/applicability/risk-set incidence",
+      "M08 future-authorizable empirical-coordinate incidence",
+      "M09 weight/measure facts and design authority",
+      "M10 source-native semantic and transformation authority",
+      "M11 cross-universe relation/double-counting provenance",
+      "M12 empirical predicate grammar and replay identity",
+      "M13 actor-fact comparator authority/receipts",
+      "M14 branch/autonomous-discovery replay provenance",
+      "M15 structural-admission provenance",
+      "M16 support and uncertainty-method basis",
+      "M17 immutable authority snapshot/provenance closure",
+      "M18 deterministic replay and semantic integrity identity"
+    ]
+  },
+  "benchmark_lanes": [
+    {
+      "lane_id": "L1_SELECTED_MINIMUM_FULL_FRONTIER",
+      "carrier": "C11 selected minimum information family",
+      "D14_use": "PRIMARY_LAWFUL_TARGET_CARRIER",
+      "may_assume": [
+        "M01-M18 are physically available or immutably dereferenceable",
+        "response and coordinate incidence is complete for the declared D12 future-authorized frontier",
+        "event topology/routing/weights/universe/provenance are not scalarized away",
+        "D13B P01-P20 equivalence obligations define correctness"
+      ],
+      "must_not_assume": [
+        "a particular SQL/Parquet/database layout",
+        "a particular index",
+        "precomputed E1/E2/E3/E4 materializations",
+        "one search algorithm",
+        "populated production cardinalities or selectivities"
+      ]
+    },
+    {
+      "lane_id": "L2_HYBRID_UPPER_BOUND_REFERENCE",
+      "carrier": "C10 source snapshots + complete normalized incidence + selected derived facts + exact sidecars",
+      "D14_use": "OPTIONAL_BROADER_REFERENCE_OR_VALIDATION_COST_LANE",
+      "physical_ruling": "SUFFICIENT_IN_PRINCIPLE__POPULATED_EQUIVALENCE_BLOCKED",
+      "note": "This lane may estimate cost of retaining/revalidating redundant source and derived layers; D13 does not require the redundancy."
+    },
+    {
+      "lane_id": "L3_CURRENT_SURFACE_BASELINE",
+      "carrier": "C02/C03/C04 current Postgres/facet/shared-substrate surfaces",
+      "D14_use": "CURRENT_COST_BASELINE_ONLY",
+      "physical_ruling": "PROVEN_INSUFFICIENT_FOR_FULL_D12_FRONTIER",
+      "note": "D14 may measure current extraction/materialization cost but may not present this lane as a lawful lower-cost replacement for C11."
+    },
+    {
+      "lane_id": "L4_BOUNDED_DERIVED_FACT_VIEW",
+      "carrier": "C06/C07 selected E1/E2 facts",
+      "D14_use": "OPTIONAL_DERIVED_QUERY_OR_CACHE_COMPARISON",
+      "physical_ruling": "E1_PROVEN_INSUFFICIENT_GENERAL__E2_SUFFICIENT_ONLY_FOR_BOUNDED_FIXED_QUERY_FRONTIER",
+      "note": "Benchmarking may compare the cost of deriving/reusing fixed contingencies, but D13 does not authorize aggregate-only retention for the future frontier."
+    },
+    {
+      "lane_id": "L5_DIAGNOSTIC_DERIVED_VIEW",
+      "carrier": "C08/C09 E3 cloud and E4 association summaries",
+      "D14_use": "OPTIONAL_DIAGNOSTIC_COST_ONLY",
+      "physical_ruling": "PROVEN_INSUFFICIENT_AS_RETENTION_AUTHORITY",
+      "note": "Their cost is separable from terminal information retention."
+    }
+  ],
+  "equivalence_assumptions_for_D14": [
+    {
+      "id": "EA01",
+      "assumption": "D14 cost comparisons for a lawful target must preserve the same D12 R01-R14 information frontier and D13B P01-P20 replay semantics."
+    },
+    {
+      "id": "EA02",
+      "assumption": "A fixed exact contingency may be benchmarked as sufficient only for the exact bounded query whose conditioner/target/risk-set/scope/topology/measure are fixed."
+    },
+    {
+      "id": "EA03",
+      "assumption": "Future-selectable conjunction/target/risk-set/discovery workloads must benchmark against respondent-event/coordinate incidence or an exact information-equivalent carrier, not independent marginals."
+    },
+    {
+      "id": "EA04",
+      "assumption": "Source universes remain separate by default; D14 may not reduce cost by false respondent joins, naive pooling or ungoverned backfill."
+    },
+    {
+      "id": "EA05",
+      "assumption": "Typed routing/absence, event topology, weights and authority/provenance are part of workload I/O correctness and cannot be dropped from cost models as metadata noise."
+    },
+    {
+      "id": "EA06",
+      "assumption": "Actor comparator and structural-admission authority lookups are separate governed operations; generated structural position is not a replacement comparator key."
+    },
+    {
+      "id": "EA07",
+      "assumption": "No current populated/source-equivalent instance is certified. Runtime/cardinality figures requiring live data must remain measured only if data later become available or be modeled/synthetic with that limitation explicit."
+    },
+    {
+      "id": "EA08",
+      "assumption": "Materialize-all is not required. D14 must measure on-demand/replay workloads separately from optional cache/materialization strategies and must not select the strategy."
+    }
+  ],
+  "D14_must_not_reopen": [
+    "whether autonomous forward discovery is terminal",
+    "whether reverse positioned-subject possibility inference is terminal",
+    "whether structural/stratal empirical production is terminal",
+    "whether pairwise summaries can substitute for k-way incidence",
+    "whether current shared substrate is full-frontier sufficient",
+    "whether aggregate-only E1/E2 is a future-frontier retention substitute",
+    "whether source-indexed universe disagreement may be silently pooled"
+  ],
+  "blocked_empirical_state": "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
+  "architecture_gate": "D15_REMAINS_FIRST_ARCHITECTURE_SYNTHESIS_COURT"
+}
