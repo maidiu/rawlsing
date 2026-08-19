@@ -12,87 +12,76 @@
 
 `SCR5578_WAITING_ONLY_FOR_EXACT_FINAL_SEAM`
 
-SCR5578's **local V557/V558 contract is closed**. The final SCR5578 adjudication cannot yet bind exact producer machine identities because SCR553, SCR554, SCR555 and SCR556 are still at the common base with no close-read return. The R03 campaign explicitly serializes only that exact identity-bearing seam. No other local authority or schema burden remains open.
+SCR5578's local V557/V558 contract is closed. Final adjudication cannot yet bind exact producer machine identities because SCR553, SCR554, SCR555 and SCR556 were all still identical to the common base when checked. R03 makes those exact producer contracts final-adjudication dependencies and forbids this cell from guessing them.
 
-This return therefore does not guess producer contract IDs, route tuples, object schemas, state enums or reference-contract IDs. It freezes the V557/V558 side against the broad-frozen producer families and hands four exact binding slots to M4.
+The frozen machine contract is `EXACT_CONTRACT.json`:
 
-The machine-readable exact contract is `EXACT_CONTRACT.json`, SHA-256:
+`sha256:7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c`
 
-`148df7139f1d991cd95924da8fd6eac2b65caa9d1398cc6ea7e930c1fa58874f`
+## Binding holdings
 
-## Binding local holdings
+1. **Mixed publication:** V553, V554, V555 and V556 are the direct structural producer families eligible to publish to V557 when each exact accepted producer contract independently authorizes the object/use. Numbered-stage transit or a synthetic no-op wrapper is not required.
 
-1. **Mixed direct publication is real, not numbered transit.** V553, V554, V555 and V556 are the structural root producer families admitted to the V557 publication registry. A member may become a publication root only when its exact accepted producer contract independently authorizes that object/use. V557 never requires a no-op V554/V555/V556 wrapper.
+2. **V557 jurisdiction:** item/collection runtime publication admission, producer-permission intake, monotone permission narrowing, typed governance state, immutable publication identity and interpretation-critical closure proof. V557 owns no producer structural semantics.
 
-2. **V557 is governance, not a semantic producer.** It owns item/collection publication admission, monotone use narrowing, typed governance state, immutable publication identity and per-root/bundle closure proof. `governance_record_id` is never a replacement structural identity.
+3. **V558 jurisdiction:** immutable `StructuralPriorRepository`, producer-preserving locators/reference graph, exact logical indexes, deterministic `ContextResolver`, `SelectionRecord`s, resolution receipt, multidimensional coverage/fidelity, exact refresh carrier and `ResolvedStructuralContext`. V558 owns no replacement producer ontology.
 
-3. **V558 is repository/resolution, not a replacement ontology.** It owns immutable `StructuralPriorRepository` packaging, producer-preserving locators, reference graph and logical indexes, deterministic `ContextResolver`, `SelectionRecord`, resolution receipt, descriptive fidelity/coverage, deterministic refresh carrier metadata and `ResolvedStructuralContext`.
+4. **Permission law:** for every item/candidate,
 
-4. **Permission is item-wise and monotone.**
+   `resolver_allowed_uses ⊆ V557_allowed_uses ⊆ producer_allowed_uses`.
 
-   `resolver_allowed_uses ⊆ V557_allowed_uses ⊆ producer_allowed_uses`
+   Repository presence, collection readiness, index membership, locator existence, root activity and dependency reachability grant no permission. Dependencies retain their own permission state. Any widening is an integrity failure.
 
-   Repository presence, collection readiness, index membership, locator existence, root activity and dependency reachability confer no permission. Dependencies retain their own permission state. Any widening attempt is an integrity failure.
+5. **Identity law:** producer object IDs/hashes remain canonical. V557 governance IDs, publication IDs, V558 locator/index/graph IDs, SelectionRecord IDs and context IDs are governance/packaging/derived identities only.
 
-5. **Producer IDs/hashes remain canonical.** V557 governance IDs, bundle IDs, V558 locator IDs, graph arc IDs, index IDs, resolver record IDs and context IDs are administrative/governance/derived identities. They do not re-ID V553/V554/V555/V556 semantics.
+6. **Strict standalone closure:** with raw V553–V556 directories absent, every interpretation-critical positive and negative dependency must resolve from packaged immutable content or an exact packaged immutable hash-bound resolver contract. IDs/hashes without resolvable content are insufficient. Missing, ambiguous, corrupt, hash-mismatched or version-conflicting required closure fails closed.
 
-6. **Standalone means interpretation-complete, not merely hash-shaped.** With raw V553–V556 directories unavailable, every interpretation-critical positive **and negative** dependency must resolve from packaged immutable content or an exact packaged immutable hash-bound locator/resolution contract. Object IDs/hashes without resolvable content are not closure.
+7. **Reference topology:** the walker follows only exact producer/reference-contract-declared interpretation-critical references and preserves role, requiredness, participant role, cardinality, multiplicity, order-significance and semantic ordinal. No prose-derived edges, dyadization, role reconstruction or co-resolution synthesis is lawful.
 
-7. **Reference topology is producer-preserving.** The closure walker follows only references declared interpretation-critical by the exact accepted producer schema/reference contract. Each edge preserves reference-contract identity, role, requiredness, participant role, cardinality, multiplicity, order-significance and semantic ordinal when the producer owns those semantics. V558 may not infer edges from prose, adjacency, common endpoints or co-resolution.
+8. **Corrected reference classes:** `StructuralEmpiricalAdmission`, `EmpiricalFact`, QuerySpec, source-universe/risk-set and measure/weight/estimand authority are reference-only when exact producer contracts declare them interpretation-critical. `DiscoveryResultReceipt` and `ReplayReceipt` remain audit-only. `ActorComparatorReceipt`, PSEPF, `V3EmpiricalPossibilityInput` and rendered expression/persona objects are rejected from `StructuralPriorRepository`.
 
-8. **PSEPF is structurally inadmissible.** `PositionedSubjectEmpiricalPossibilityField`, `V3EmpiricalPossibilityInput` and `ActorComparatorReceipt` are `MUST_NOT_APPEAR` in `StructuralPriorRepository`. PSEPF remains on the separate thin V3 lane.
+9. **PSEPF exclusion:** PSEPF remains on the direct thin V3 lane and may never enter V557/V558 structural publication or repository resolution.
 
-9. **Corrected upstream evidence is reference-only where interpretation requires it.** `StructuralEmpiricalAdmission`, `EmpiricalFact`, QuerySpec, source-universe/risk-set and measure/weight/estimand authority may be transitively reachable only under producer-declared interpretation-critical reference contracts. V557/V558 acquire no ownership of them.
+10. **Provenance firewall:** provenance/reachability proves origin only. It never grants source equivalence, respondent linkage, sample pooling, estimand compatibility or cross-source composition. Composition is none-by-default absent exact positive operation-specific authority.
 
-10. **Provenance is not composition authority.** Successful dereference proves origin/authority reachability only. It never creates source-semantic equivalence, respondent linkage, sample pooling, joint-estimand or cross-source composition permission. Composition remains none-by-default absent separate operation-specific positive authority.
+11. **Typed negative closure:** negative authority, missing authority, noncomparability, valid-empty, integrity failure, explicit zero and ordinary absence remain distinct. Empty index results do not manufacture producer `VALID_EMPTY`.
 
-11. **Negative state survives end to end.** `NEGATIVE_AUTHORITY`, `MISSING_AUTHORITY`, `NONCOMPARABLE`, `VALID_EMPTY`, `INTEGRITY_FAILURE`, explicit producer zero and ordinary absence are not interchangeable. An empty index result does not manufacture `VALID_EMPTY`.
+12. **Deterministic resolver:** fixed immutable repository/index/query/policy/generated-binding inputs determine the result. Hidden wall clock, mutable `latest`, filesystem/database order, raw-stage lookup, network lookup, fuzzy match, score/similarity, LLM/embedding judgment, randomness and default interpolation are forbidden.
 
-12. **The resolver is a pure deterministic read-only boundary.** Fixed repository bundle/hash, index manifest/hash, ContextQuery/hash, resolver policy ID/version/hash and generated bindings determine the semantic result. Hidden wall clock, mutable `latest`, filesystem/database order, raw-stage lookup, network lookup, fuzzy match, similarity score, LLM/embedding judgment, randomness and default interpolation are forbidden.
+13. **Selection/replay:** every considered candidate receives a `SelectionRecord`; unresolved keys stay typed and unresolved. Replay of identical exact inputs reproduces semantic selection, record hashes, receipt and context identity.
 
-13. **Every candidate leaves an adjudication trace.** Every considered candidate receives a `SelectionRecord`, including selected, rejected, preserved-negative and deferred candidates. Unresolved keys stay unresolved and typed; the resolver never fills them.
+14. **ResolvedStructuralContext:** resolver-derived structural context only. It cannot create actor position, biography, event, memory, knowledge, belief, relationship truth, persona, voice, dialogue or new V556 relations/topologies.
 
-14. **`ResolvedStructuralContext` is derived structural context, not actor state.** It may point to exact selected producer objects and preserved negative/deferred records. It may not create actor position, biography, event, memory, knowledge, belief, relationship truth, persona, voice, dialogue or new V556 relation/topology.
+15. **Fidelity/refresh:** coverage/fidelity is multidimensional and descriptive; no canonical scalar is semantic authority. Refresh metadata is an exact deterministic carrier, but `next_context_change` requires exact separately bound refresh authority and producer temporal boundaries. If that authority is absent, the typed result is `REFRESH_AUTHORITY_UNBOUND`, never an invented time.
 
-15. **Fidelity is descriptive and multidimensional.** No canonical scalar readiness/fidelity score may substitute for per-item permission, negative authority, temporal proxy lag, unresolved-state counts or producer coverage.
+16. **Physical co-package bar:** V557/V558 may share one physical implementation only if distinct logical authorities/identities, permission narrowing, producer IDs/hashes/states, role/cardinality/order closure, raw-dirs-absent standalone behavior, deterministic replay, failure attribution, PSEPF exclusion and provenance-not-composition remain exactly equivalent. Rowset/status parity is insufficient.
 
-16. **Refresh metadata is exact but does not seize trigger authority.** SCR5578 freezes the carrier and replay contract. `next_context_change` may be emitted only from exact producer temporal boundaries under an exact bound refresh authority. If that separate authority is unbound, the typed state is `REFRESH_AUTHORITY_UNBOUND`; no time is invented.
+## Only remaining final seam
 
-17. **Physical V557/V558 co-packaging is permitted only under exact equivalence.** A fused implementation must preserve separately inspectable/versioned V557 governance and V558 repository/resolver authorities, distinct immutable publication/repository identities, item-wise permission narrowing, exact producer IDs/hashes/states/reference topology, standalone behavior, deterministic replay, failure provenance and PSEPF exclusion. Rowset parity or deployment convenience is insufficient.
+At the seam check, each producer branch was exactly at:
 
-## Exact final seam still open
+`baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d`
 
-At this close attempt the four producer close branches were all observed **identical to the common base** `baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d`:
+Affected branches:
 
-- SCR553 / `agent/vozhd-trii-dr-r03-close-v553-temporal-jurisdiction`
-- SCR554 / `agent/vozhd-trii-dr-r03-close-v554-basis-dedup`
-- SCR555 / `agent/vozhd-trii-dr-r03-close-v555-atomic-route`
-- SCR556 / `agent/vozhd-trii-dr-r03-close-v556-interaction-topology`
+- `agent/vozhd-trii-dr-r03-close-v553-temporal-jurisdiction`
+- `agent/vozhd-trii-dr-r03-close-v554-basis-dedup`
+- `agent/vozhd-trii-dr-r03-close-v555-atomic-route`
+- `agent/vozhd-trii-dr-r03-close-v556-interaction-topology`
 
-M4 must later bind each accepted exact producer contract: exact head/result, contract ID/version/hash, canonical object/collection schema, identity/hash law, permission ceiling, typed states, exact reference contracts including role/cardinality/multiplicity/order semantics, direct-publication eligibility and replay/build identity.
+M4 must bind each accepted exact producer head/result, contract ID/version/hash, object/collection schemas, canonical identity/hash law, permission ceiling, typed states, exact reference contracts including producer-owned role/cardinality/multiplicity/order, direct-publication eligibility and build/replay identity. Until then:
 
-Until then, any attempt to populate those identities by historical V553/V554/V555/V556 code names, EP evidence, CAN packaging vocabulary, or guessed schemas fails closed as `PRODUCER_FINAL_CONTRACT_UNBOUND`.
+`PRODUCER_FINAL_CONTRACT_UNBOUND -> FAIL_CLOSED`
+
+No other local SCR5578 authority remains open.
 
 ## Current implementation disposition
 
-The present production-named V557/V558 modules are evidence of migration debt, not contrary authority:
+Current V557/V558 production-named modules are superseded/nonconforming implementation terrain, not contrary semantic authority. `ddm_v557_renderer_contract.py` is an old renderer-boundary adapter; `ddm_v558_runtime_input_gate.py` and `ddm_v558_runtime_graft_readiness.py` are old gate/readiness machinery; `ddm_v558_plus_governance.py` is post-gate governance. None implements the accepted mixed publication/repository/resolver contract. This is recorded in `IMPLEMENTATION_GAP.md`; production implementation remains separately gated.
 
-- `ddm_v557_renderer_contract.py` is a slot/renderer-boundary adapter over the old V556 packet, not mixed-producer publication/use governance.
-- `ddm_v558_runtime_input_gate.py` validates and normalizes that old renderer packet; it is not `StructuralPriorRepository` or `ContextResolver`.
-- `ddm_v558_runtime_graft_readiness.py` is a review/readiness gate.
-- `ddm_v558_plus_governance.py` governs old post-gate runtime/deployment surfaces.
+## Outputs
 
-This is `IMPLEMENTATION_CONFORMANCE_FAILURE` terrain, not a broad-topology contradiction and not a reason to leave the local exact contract open. Production implementation remains unauthorized.
-
-## Output set
-
-- `RESULT.md`
-- `RESULT.json`
-- `EXACT_CONTRACT.md`
-- `EXACT_CONTRACT.json`
-- `HOSTILE_TEST_ORACLE.md`
-- `SEAM_HANDOFF.json`
-- `IMPLEMENTATION_GAP.md`
+`RESULT.md`, `RESULT.json`, `EXACT_CONTRACT.md`, `EXACT_CONTRACT.json`, `HOSTILE_TEST_ORACLE.md`, `SEAM_HANDOFF.json`, `IMPLEMENTATION_GAP.md`.
 
 ## Final token
 
