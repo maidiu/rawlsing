@@ -1,6 +1,6 @@
 {
   "control_surface": "VOZHD_TRII_PRECHANGE_DISCOVERY",
-  "status": "ACTIVE_RESEARCH_CONTROL__FIRST_WAVE_REVIEWED__D05_D06_RETURN_REQUIRED__NO_ARCHITECTURAL_CHANGE_AUTHORIZED",
+  "status": "ACTIVE_RESEARCH_CONTROL__D05_D06_RETURN_HANDOFFS_DISPENSED__NO_ARCHITECTURAL_CHANGE_AUTHORIZED",
   "repository": "maidiu/rawlsing",
   "branch": "agent/vozhd-trii-prechange-discovery-control",
   "base_sha": "0777a34e50221bde6801dbaca26c058a7350c9e8",
@@ -75,7 +75,8 @@
       "branch": "agent/vozhd-trii-d05-empirical-substrate",
       "worker_base_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
       "substantive_environment_verdict": "BLOCKED_MISSING_POPULATED_DATA_ACCESS",
-      "status": "RETURN_REQUIRED__NOT_CLOSED",
+      "status": "RETURN_HANDOFF_DISPENSED__NOT_CLOSED",
+      "return_handoff": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/10_D05_RETURN_HANDOFF.md",
       "return_reasons": [
         "required RESULT.json missing",
         "promised AUDIT.sql missing",
@@ -90,7 +91,8 @@
       "depends_on": [],
       "branch": "agent/vozhd-trii-d06-r1-v550-eligibility",
       "worker_base_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
-      "status": "RETURN_REQUIRED__CORE_RULING_RETAINED",
+      "status": "RETURN_HANDOFF_DISPENSED__CORE_RULING_RETAINED",
+      "return_handoff": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/11_D06_RETURN_HANDOFF.md",
       "accepted_core_ruling": "Final R1 is question-relation/structural-semantic authority, not universal V550 workload authority",
       "return_reasons": [
         "current V550/V550J shared respondent-substrate and joint-registry co-execution surface was incorrectly reported absent",
