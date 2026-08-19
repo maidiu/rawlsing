@@ -1,0 +1,19 @@
+{
+  "primary_chain": ["SCR554","SCR555","SCR556","SCR5578","SCRV3","SCRV2APP"],
+  "parallel_required": ["SCR553"],
+  "specialist_accelerators": {
+    "S554D": ["SCR554","M1","M2","M3"],
+    "S5578C": ["SCR5578","M4","M5"],
+    "SV3M": ["SCRV3","M5","M6"]
+  },
+  "barriers": {
+    "M1": ["SCR553","SCR554"],
+    "M2": ["SCR554","SCR555"],
+    "M3": ["SCR555","SCR556"],
+    "M4": ["SCR553","SCR554","SCR555","SCR556","SCR5578"],
+    "M5": ["SCR5578","SCRV3"],
+    "M6": ["SCRV3","SCRV2APP"]
+  },
+  "current_block": "NO_WORKER_RETURNS_YET__PHYSICAL_USER_CHAT_LAUNCH_REQUIRED",
+  "scheduling_law": "LAUNCH_DEPENDENCY_NE_FINAL_ADJUDICATION_DEPENDENCY"
+}
