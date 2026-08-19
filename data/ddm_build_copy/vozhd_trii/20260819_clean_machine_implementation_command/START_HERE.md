@@ -2,17 +2,23 @@
 
 ## Current state
 
-`DORMANT_COMMAND_SYSTEM__NO_PRODUCTION_IMPLEMENTATION_AUTHORITY`
+`DORMANT_COMMAND_SYSTEM__R03_BROAD_DAG_ACCEPTED__STAGE_CLOSE_READS_ACTIVE__NO_PRODUCTION_IMPLEMENTATION_AUTHORITY`
 
 This directory defines the military-style command, delegation, synchronization, inspection, and integration system for the final clean Rawlsing rebuild.
 
-It was created from parent SHA:
+It was founded from parent SHA:
 
-`b6b888fc3f699495cb864a1babe7ca40b4ea4299`
+`b6b888fc3f699495cb864a1babe7ca40b4ea4299`.
 
-while R03 synthesis remained an independent active architecture barrier.
+R03 synthesis has since been accepted by the parent at:
 
-Therefore this command package does **not** freeze the final implementation DAG or stage contracts. It freezes the **method of command** under which those final authorities will later be implemented.
+`08df544608516384dbacd0245a07e046dd4ae146`
+
+with control update:
+
+`249c5deae5bdeb69b325e378f022039ec0e2ed46`.
+
+The broad DAG is therefore closed, but seven exact stage-close cells and M1-M6 seam barriers remain active. This command package does **not** authorize production implementation. It freezes the **method of command** under which the final exact contracts will later be implemented.
 
 ## Read order
 
@@ -20,52 +26,74 @@ Therefore this command package does **not** freeze the final implementation DAG 
 2. `CONTROL.json`
 3. `01_AUTHORITY_AND_GENERAL_STAFF.md`
 4. `02_SUBSTRATE_AND_LOGISTICS_COMMAND.md`
-5. `03_DOMAIN_VOZHD_AND_RABOCHII_DOCTRINE.md`
-6. `04_INTERFACE_DAG_AND_CHANGE_CONTROL.md`
-7. `05_INSPECTORATE_AND_INTEGRATION_COMMAND.md`
-8. `06_COMMON_OPERATING_PICTURE_SCHEMA.json`
-9. `07_SYNCHRONIZATION_AND_AUDIT_PROTOCOL.md`
-10. `08_BUILD_WAVE_AND_GOLDEN_FIXTURE_DOCTRINE.md`
-11. `09_LEGACY_SALVAGE_AND_MIGRATION_DOCTRINE.md`
-12. `10_WORKER_ORDER_TEMPLATE.md`
-13. `11_ACCEPTANCE_AND_RECONSTRUCTION_GATE.md`
-14. `12_FORCE_STRUCTURE_AND_ACTIVATION_PLAN.md`
-15. `13_MACHINE_READABLE_REGISTRY_SCHEMAS.json`
-16. `14_VOZHD_AUDIT_AND_RECONCILIATION_TEMPLATE.md`
+5. `17_POPULATED_DATA_REALITY_AND_DB_FREEZE_PROTOCOL.md`
+6. `03_DOMAIN_VOZHD_AND_RABOCHII_DOCTRINE.md`
+7. `04_INTERFACE_DAG_AND_CHANGE_CONTROL.md`
+8. `18_TWO_PERSON_CONTROL_WRITE_LEASE_AND_STALE_WORKER_PROTOCOL.md`
+9. `19_CROSS_WORKER_CONTRACT_CONFORMANCE_PROTOCOL.md`
+10. `05_INSPECTORATE_AND_INTEGRATION_COMMAND.md`
+11. `06_COMMON_OPERATING_PICTURE_SCHEMA.json`
+12. `07_SYNCHRONIZATION_AND_AUDIT_PROTOCOL.md`
+13. `08_BUILD_WAVE_AND_GOLDEN_FIXTURE_DOCTRINE.md`
+14. `09_LEGACY_SALVAGE_AND_MIGRATION_DOCTRINE.md`
+15. `10_WORKER_ORDER_TEMPLATE.md`
+16. `11_ACCEPTANCE_AND_RECONSTRUCTION_GATE.md`
+17. `12_FORCE_STRUCTURE_AND_ACTIVATION_PLAN.md`
+18. `13_MACHINE_READABLE_REGISTRY_SCHEMAS.json`
+19. `14_VOZHD_AUDIT_AND_RECONCILIATION_TEMPLATE.md`
+20. `15_ACTIVATION_RECEIPT_TEMPLATE.md`
+21. `16_SEMANTIC_DIFF_SCHEMA.json`
+22. `20_R03_SYNTHESIS_ALIGNMENT_AND_CLOSE_READ_POSTURE.md`
 
 ## The system in one sentence
 
-> Centralize law, substrate, identity, interfaces, DAG ownership, change control, inspection, and integration; decentralize only bounded implementation choices; synchronize on every material seam change; integrate only after independent hostile audit.
+> Centralize law, populated substrate reality, identity, interfaces, DAG ownership, shared-write control, dependency synchronization, hostile inspection, and integration; decentralize only bounded implementation choices; integrate only after cross-worker seam proof.
+
+## Current architectural checkpoint
+
+R03 has frozen the broad direct-DAG posture:
+
+- V553 is conditional/use-chain temporalization, not universal transit;
+- V554/V555/V556 are conditional semantic producers;
+- independently authorized structural producer objects may publish directly to V557;
+- V557 and V558 remain distinct logical governance versus repository/resolution authorities;
+- PSEPF stays out of the structural repository and enters V3 through a thin direct lane;
+- V3 metabolism authority remains a mandatory exact close-read/implementation gate;
+- V2/application upstream-prior personalization is forbidden.
+
+Exact stage contracts remain under the authorized seven-cell close-read campaign. See `20_R03_SYNTHESIS_ALIGNMENT_AND_CLOSE_READ_POSTURE.md`.
 
 ## Adoption after architecture closure
 
-Once R03 synthesis, stage close-reads, and final whole-machine closure are accepted, Campaign Vozhd must create an **Activation Receipt** that binds this command system to the final authorities.
+Once stage close-reads, M1-M6, and final whole-machine closure are accepted, Campaign Vozhd must create an **Activation Receipt** that binds this command system to the final authorities.
 
 The receipt must specify:
 
-- exact whole-machine closure SHA / authority bundle hash;
+- exact whole-machine closure SHA / authority bundle content hash;
+- complete governing-authority manifest with per-document hashes;
 - final DAG registry seed;
-- final canonical object registry seed;
+- final canonical object/negative-authority registry seeds;
 - final unresolved implementation-only questions;
 - final mandatory authority additions;
-- exact Incoming Data Reality audit mission;
-- physical substrate freeze mission;
+- exact populated Incoming Data Reality receipt;
+- exact physical substrate freeze;
 - canonical integration branch/base;
+- first command dependency epoch;
 - first force package;
 - first true serial barriers;
-- first parallel implementation fronts.
+- first parallel implementation fronts;
+- initial shared-write lease registry;
+- Inspectorate and Integration policies.
 
 No implementation worker launches merely because this command package exists.
 
 ## First activated command task
 
-The first activated substantive task should normally be:
+The first activated substantive task is:
 
-`G2 — INCOMING DATA REALITY / PHYSICAL SUBSTRATE CLOSURE`
+`G2 — POPULATED INCOMING DATA REALITY / PHYSICAL SUBSTRATE CLOSURE`.
 
-under Campaign Vozhd oversight, with parallel reconnaissance where lawful.
-
-Its result must give every later worker a ruthlessly precise shared answer to what physical data exists, its exact grain, how identities work, how routing/weights/time/absence are represented, and what information may never be normalized away.
+Schema inference or synthetic fixtures cannot satisfy this gate. G2 must establish actual production or production-equivalent physical reality with executable audit queries, then freeze the substrate contract every worker will share.
 
 G3/G4/G5 can work concurrently on final authority-to-contract compilation where their inputs are already frozen.
 
@@ -75,15 +103,20 @@ The final campaign must exhibit all of these:
 
 - exact-SHA worker launches;
 - bounded write surfaces;
+- content-hashed authority packs;
+- populated substrate proof;
 - immutable contract versions/hashes;
 - one shared substrate model;
 - one canonical object registry;
 - one DAG/interface registry;
 - one negative-authority registry;
 - one Common Operating Picture;
+- dependency epochs and transitive stale-worker invalidation;
+- one active write lease per shared semantic resource;
 - continuous Vozhd reconciliation;
 - independent Inspectorate with stop authority;
 - sole Integration Command for canonical branch admission;
+- producer + consumer + seam conformance for shared interfaces;
 - canonical hostile fixture shared by all relevant workers;
 - explicit semantic diffs;
 - explicit legacy salvage classifications;
@@ -92,6 +125,7 @@ The final campaign must exhibit all of these:
 - no architecture-by-stage-number;
 - no source-universe collapse;
 - no population/structure-to-person collapse;
+- no destructive schema migration without positive equivalence/authority;
 - final backward semantic reconstruction.
 
 ## Intended outcome
