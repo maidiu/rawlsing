@@ -1,0 +1,56 @@
+{
+  "wave": "STAGE_CLOSE_RETURN_WAVE_02",
+  "common_semantic_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "production_implementation": "FORBIDDEN",
+  "returns": {
+    "M1": {
+      "branch": "agent/vozhd-trii-dr-r03-seam-m1-temporal-v554",
+      "result_token": "M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED",
+      "adjudication": "ACCEPTED_DISPOSITIVE_SEAM",
+      "result_json_blob": "2cd78ec9a6945d2d30e965a37fee5cae44bd50f7",
+      "authority_conflict": false,
+      "broad_topology_contradiction": false,
+      "harmonization_required": false,
+      "hostile_cases_all_pass": true,
+      "semantic_package_note": "Accepted semantics are pinned by immutable pre-reassignment artifacts; later branch-tip movement is administrative only.",
+      "reassignment_admin_commit": "2b92adb7b930e3298f2de684e802f81f8f071770"
+    },
+    "M2": {
+      "branch": "agent/vozhd-trii-dr-r03-seam-m2-atomic-route",
+      "result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+      "adjudication": "ACCEPTED_DISPOSITIVE_SEAM__SCR555_EXACT_CONTRACT_CLOSED",
+      "result_json_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+      "seam_contract_json_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c",
+      "authority_conflict": false,
+      "broad_topology_contradiction": false,
+      "all_eight_scr555_slots_bound": true,
+      "m1_staleness_guard_triggered": false,
+      "m1_staleness_reason": "Accepted M1 closes the SCR553->SCR554 seam without a material mutation of accepted SCR554 head b5d745ac70c833324c8be0addf6c08ad72372263 or its exact contract; M2 therefore remains current.",
+      "semantic_package_note": "Accepted semantics are pinned by immutable pre-reassignment artifacts; later branch-tip movement is administrative only.",
+      "reassignment_admin_commit": "f9cf4f7d4dbb9a110b1dd933ecc216c92e8bdea4"
+    }
+  },
+  "capacity_recycle": {
+    "former_M2_chat": {
+      "new_worker_class": "SEAM_BINDER",
+      "new_unit": "M3_FINAL",
+      "new_branch": "agent/vozhd-trii-dr-r03-seam-m3-higher-order-structural",
+      "write_root": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M3/",
+      "status": "ASSIGNED__OPEN_AFTER_ACCEPTED_M2"
+    },
+    "former_M1_chat": {
+      "new_worker_class": "SEAM_PREFLIGHT_SPECIALIST",
+      "new_unit": "M6_PREFLIGHT",
+      "new_branch": "agent/vozhd-trii-dr-r03-seam-m6-preflight",
+      "write_root": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M6/preflight/",
+      "status": "ASSIGNED__NON_DISPOSITIVE"
+    }
+  },
+  "dependency_effect": {
+    "M3_FINAL": "OPEN_AND_ASSIGNED",
+    "M4_FINAL": "BLOCKED_ON_ACCEPTED_M3",
+    "M5_FINAL": "BLOCKED_ON_ACCEPTED_M4_AND_ACCEPTED_SCRV3",
+    "M6_FINAL": "BLOCKED_ON_ACCEPTED_SCRV3",
+    "whole_machine_reclosure": "BLOCKED_UNTIL_M1_M6_ACCEPTED"
+  }
+}
