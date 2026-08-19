@@ -1,0 +1,155 @@
+{
+  "court": "D13C",
+  "title": "CURRENT V550/V550J SHARED-SUBSTRATE STATIC LOSS COURT",
+  "status": "NON_DISPOSITIVE_D13_FEEDER",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "b92d3f3db9faaa962f59d55e61122701df9e53aa",
+  "branch": "agent/vozhd-trii-d13c-shared-substrate-static-loss",
+  "scope": {
+    "primary_target": "data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py",
+    "schema_version": "v1",
+    "execution_contract_version": "v550-v550j-coexecution-v1",
+    "required_logical_column_count": 67,
+    "parent_authorities": [
+      "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/13_D06_R2_RETURN_ADJUDICATION.md",
+      "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/14_D07_D08_D10_D11_RETURN_ADJUDICATION.md"
+    ]
+  },
+  "disposition": "REPLAY_SAFETY_NOT_PROVEN_BY_CURRENT_SHARED_SUBSTRATE_STATIC_CONTRACT",
+  "prohibitions": [
+    "NO_FINAL_RETENTION_RULING",
+    "NO_ARCHITECTURE_SELECTION",
+    "NO_PRODUCTION_CODE_CHANGE"
+  ],
+  "classifications_used": [
+    "GUARANTEED_BY_CONTRACT",
+    "PHYSICALLY_PRESENT",
+    "PHYSICALLY_PRESENT_BUT_NOT_LOGICAL_HASH_AUTHORITY",
+    "DEFAULTABLE_NOT_SOURCE_EQUIVALENT",
+    "REJECTED_BY_VALIDATOR",
+    "SEMANTIC_PARITY_NOT_DEMONSTRATED",
+    "NOT_REPRESENTED",
+    "NOT_REQUIRED_FOR_THIS_SUBSTRATE",
+    "UNKNOWN_WITHOUT_POPULATED_DATA"
+  ],
+  "key_findings": [
+    {
+      "id": "F01",
+      "classification": "GUARANTEED_BY_CONTRACT",
+      "finding": "LOGICAL_CONTENT_COLUMNS is exactly SHARED_SUBSTRATE_REQUIRED_COLUMNS, a fixed 67-column projection."
+    },
+    {
+      "id": "F02",
+      "classification": "PHYSICALLY_PRESENT_BUT_NOT_LOGICAL_HASH_AUTHORITY",
+      "finding": "Canonicalization preserves incoming extra columns after the required projection, so such columns may be serialized while remaining outside the logical content hash."
+    },
+    {
+      "id": "F03",
+      "classification": "GUARANTEED_BY_CONTRACT",
+      "finding": "Logical hashing is row-order insensitive because per-row hashes are sorted before the outer hash; duplicate row multiplicity remains represented in the row-hash multiset."
+    },
+    {
+      "id": "F04",
+      "classification": "DEFAULTABLE_NOT_SOURCE_EQUIVALENT",
+      "finding": "Canonicalization synthesizes missing prepared semantics, including unit weight, missingness booleans, semantic authority/status defaults, target-resolution defaults, and association eligibility defaults, before validation."
+    },
+    {
+      "id": "F05",
+      "classification": "REJECTED_BY_VALIDATOR",
+      "finding": "Substantive duplicate identity is source_norm + canonical_wave_norm + country_code_norm + respondent_id_norm + var_code_norm; multiple substantive rows sharing that tuple fail validation."
+    },
+    {
+      "id": "F06",
+      "classification": "NOT_REPRESENTED",
+      "finding": "The required logical contract has no response-event ID, multiselect component ID, response rank/position, governed predicate ID, branch/cohort ID, or explicit denominator/risk-set/sample-space ID."
+    },
+    {
+      "id": "F07",
+      "classification": "SEMANTIC_PARITY_NOT_DEMONSTRATED",
+      "finding": "JOINT_ONLY selection/extraction authority is present, but identical authoritative semantic preparation relative to base-selected variables is not demonstrated."
+    },
+    {
+      "id": "F08",
+      "classification": "PHYSICALLY_PRESENT",
+      "finding": "Typed missingness distinctions is_missing/is_dk/is_refusal/is_iap and substantive-validity fields are required logical columns, but their populated completeness and authoritative derivation remain empirical unknowns."
+    },
+    {
+      "id": "F09",
+      "classification": "DEFAULTABLE_NOT_SOURCE_EQUIVALENT",
+      "finding": "weight_value is required and hashed but defaults to 1.0; weight_status exists, while no dedicated respondent-row weight provenance identity is required."
+    },
+    {
+      "id": "F10",
+      "classification": "GUARANTEED_BY_CONTRACT",
+      "finding": "The manifest stores a Parquet SHA and logical content hash as separate integrity mechanisms; load rechecks the Parquet SHA and logical validation."
+    },
+    {
+      "id": "F11",
+      "classification": "SEMANTIC_PARITY_NOT_DEMONSTRATED",
+      "finding": "D08-level fact identity is only partially covered: exact response topology, governed predicate provenance, branch/cohort provenance, and denominator/risk-set identity are not first-class required logical axes."
+    },
+    {
+      "id": "F12",
+      "classification": "UNKNOWN_WITHOUT_POPULATED_DATA",
+      "finding": "Static schema cannot prove that all respondents needed to reconstruct every governed risk set, arbitrary conjunction, repeated topology, or future coordinate are physically present."
+    }
+  ],
+  "hostile_questions": {
+    "semantically_different_substrates_same_logical_hash": {
+      "answer": "YES_STATICALLY_CONSTRUCTIBLE",
+      "basis": "Differences confined to physical extra columns are excluded from LOGICAL_CONTENT_COLUMNS. _clean also collapses null-like lexical tokens and surrounding whitespace for hashing.",
+      "empirical_limit": "Whether a collision corresponds to lawfully distinct populated empirical facts is source/data dependent."
+    },
+    "missing_semantic_columns_defaulted_into_valid_rows": {
+      "answer": "YES",
+      "basis": "Canonicalization adds semantic defaults before validation; validation does not preserve per-cell source-versus-default provenance."
+    },
+    "repeated_or_multiselect_topology_rejected_as_duplicate": {
+      "answer": "YES_CONDITIONALLY",
+      "basis": "Multiple substantive rows under the five-field scalar key are rejected; event/component/rank identity is not in the required key.",
+      "empirical_limit": "Actual upstream loss is not proven without populated/source-topology evidence."
+    },
+    "joint_only_weaker_semantic_preparation": {
+      "answer": "SEMANTIC_PARITY_NOT_DEMONSTRATED",
+      "basis": "Selection role proves extraction membership, not equal source-semantic harmonization."
+    },
+    "typed_routing_missingness_physically_represented": {
+      "answer": "PARTLY_YES",
+      "basis": "is_missing, is_dk, is_refusal, is_iap, substantive/validity and handling/source-structure fields are logical columns; complete applicability/risk-set semantics are not proven."
+    },
+    "all_D08_fact_identity_distinctions_hashed": {
+      "answer": "NO",
+      "basis": "Topology, predicate/branch/cohort identity and explicit risk-set/denominator/sample-space identity are not all first-class required logical columns."
+    },
+    "branch_or_cohort_reconstruction": {
+      "answer": "NOT_PROVEN_FROM_CONTRACT_ALONE",
+      "basis": "No required branch/predicate/cohort identity exists; reconstruction would depend on independently retained generating coordinates and authority."
+    },
+    "future_arbitrary_conjunction_replay": {
+      "answer": "NOT_PROVEN",
+      "basis": "Extraction is bounded to the selected base+joint variable union and extra future coordinates are outside logical hash authority unless promoted into the contract."
+    },
+    "respondent_ids_enough_for_cotravel": {
+      "answer": "ENOUGH_AS_A_GENERATOR_ONLY_FOR_RETAINED_COMPLETE_INCIDENCE",
+      "basis": "Respondent incidence supports cotravel, but complete risk sets, topology, predicate provenance, and future-variable coverage are separate requirements."
+    },
+    "parquet_byte_integrity_equals_semantic_identity": {
+      "answer": "NO",
+      "basis": "Parquet SHA proves serialized-byte integrity; semantic identity is bounded by the logical projection and canonicalization rules."
+    }
+  },
+  "typed_unknowns": [
+    "Populated empirical completeness, overlap, prevalence, and source equivalence remain UNKNOWN_WITHOUT_POPULATED_DATA under inherited D05 law.",
+    "Whether upstream encodes every repeated/multiselect/ordered topology injectively into a scalar response row is UNKNOWN_WITHOUT_POPULATED_DATA and source implementation evidence.",
+    "Whether all JOINT_ONLY variables receive source-equivalent semantic preparation is SEMANTIC_PARITY_NOT_DEMONSTRATED.",
+    "Authoritative derivation/write source for allowed_as_association_feature remains NOT_LOCATED under accepted D06 negative-proof law.",
+    "A specific external V550J prepared-required consumer call site beyond the D06-accepted path was NOT_LOCATED with the available connector code-search surface; this is not an absence claim.",
+    "Shared-substrate special-topology tests were NOT_LOCATED with the available connector code-search surface; this is not an absence claim."
+  ],
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "SHARED_SUBSTRATE_INFORMATION_MATRIX.csv",
+    "STATIC_LOSS_THEOREMS.md"
+  ]
+}
