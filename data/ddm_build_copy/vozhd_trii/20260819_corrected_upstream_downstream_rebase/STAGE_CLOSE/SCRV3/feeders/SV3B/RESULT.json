@@ -1,0 +1,214 @@
+{
+  "campaign": "VOZHD_TRII_R03_STAGE_CLOSE",
+  "unit": "SV3B",
+  "worker_class": "FLOATING_SPECIALIST",
+  "mission": "OBJECTIVE_ACTOR_FACT_COMPARATOR_SNAPSHOT_FEEDER",
+  "authority": "NON_DISPOSITIVE_TO_SCRV3",
+  "repository": "maidiu/rawlsing",
+  "exact_semantic_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-spec-v3-comparator-snapshot",
+  "write_root": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3B/",
+  "result_token": "SV3B_FEEDER_COMPLETE",
+  "production_code_modified": false,
+  "broad_topology_amended": false,
+  "broad_topology_counterexample_found": false,
+  "authority_conflict_blocking": false,
+  "binding_inputs": [
+    "parent authority 24",
+    "parent authority 25",
+    "R03/SYNTHESIS/RESULT.md",
+    "R03/SYNTHESIS/RESULT.json",
+    "R03/SYNTHESIS/FINAL_BROAD_DAG.md",
+    "R03/SYNTHESIS/FINAL_BROAD_DAG_EDGES.csv",
+    "R03/SYNTHESIS/STAGE_CLOSE_READ_CAMPAIGN.md",
+    "R03/SYNTHESIS/STAGE_CLOSE_READ_CAMPAIGN.json",
+    "R03/SYNTHESIS/WHOLE_MACHINE_CLOSURE_GATE.md",
+    "EPV3@c97df88b9461a5ae0d01bc66b2d0f67f1f9337ae",
+    "R03D",
+    "R03E",
+    "R03F",
+    "D15/REVERSE_POSITIONED_SUBJECT_ARCHITECTURE.md",
+    "D15/CANONICAL_OBJECT_MODEL.csv",
+    "D15/AUTHORITY_ADDITION_AND_REPAIR_LEDGER.csv",
+    "ADP-007 V3_ACTOR_INITIALIZATION_RULE@1.0.0",
+    "ADP-009 V3_STRUCTURAL_POSITION_GENERATION_MOBILITY_RULE@1.0.0",
+    "ADP-015 V3_RELATIONSHIP_HOUSEHOLD_GENEALOGY_RULE@1.0.0",
+    "CAN-009 V3 material/organismic/vitality authority@1.0.1",
+    "ADP-021 V3_HYBRID_CAUSAL_SCHEDULER_POLICY@1.0.0"
+  ],
+  "main_holding": "OBJECTIVE_V3_TRUTH_IS_NECESSARY_BUT_NOT_SUFFICIENT_FOR_COMPARATOR_USE__EXACT_FACT_OWNER_CURRENTNESS_AND_EXACT_SOURCE_COORDINATE_TIME_COMPARATOR_RULE_ARE_SEPARATE_REQUIRED_GATES",
+  "required_gate_order": [
+    "OBJECTIVE_FACT_EXISTS_AND_IS_CURRENT_UNDER_EXACT_V3_OWNER",
+    "ACTOR_EMPIRICAL_COMPARATOR_AUTHORITY_EXPLICITLY_AUTHORIZES_FACT_CLASS_OWNER_FOR_EXACT_SOURCE_COORDINATE_TIME",
+    "ACTOR_COMPARABILITY_SERVICE_EMITS_EXACT_TYPED_PROJECTION_RECEIPT",
+    "SERVICE_SOURCE_APPLICABILITY_AUTHORITY_SEPARATELY_ADMITS_OR_REJECTS_SOURCE",
+    "POSSIBILITY_FIELD_SERVICE_PRODUCES_SOURCE_INDEXED_PSEPF"
+  ],
+  "snapshot_candidate": {
+    "name": "V3ObjectiveActorFactSnapshot",
+    "candidate_version": "SV3B-0.1",
+    "mode": "REFERENCE_ONLY_QUERY_MINIMAL",
+    "required_semantics": [
+      "actor identity",
+      "snapshot effective time and V3 time basis",
+      "explicit requested fact slots",
+      "exact objective fact refs and hashes",
+      "fact owner authority id/version/hash",
+      "fact effective interval and owner-defined currentness proof",
+      "typed missing/blocked slot records",
+      "deterministic content hash"
+    ],
+    "forbidden_semantics": [
+      "full ActorCausalState copy",
+      "belief or knowledge",
+      "memory or recall",
+      "persona or voice",
+      "response or V2 session/render state",
+      "subjective/perceived relationship state as objective fact",
+      "PSEPF geometry",
+      "source coordinate labels as actor fact values",
+      "population prevalence imputation"
+    ],
+    "identity_law": "SHA256(domain_separator + RFC8785_JCS(identity_projection(actor_id,effective_time,time_basis,requested_slots,fact_bindings,missing_blocked_slots,currentness_anchors)))",
+    "historical_immutability_is_perpetual_currentness": false,
+    "unrequested_slot_means_missing": false
+  },
+  "projection_candidate": {
+    "name": "ActorComparatorProjectionRequest",
+    "candidate_version": "SV3B-0.1",
+    "positive_rule_requires": [
+      "allowed actor fact record type and semantic class",
+      "allowed fact owner authority",
+      "exact empirical universe",
+      "exact empirical coordinate identity/semantics hash",
+      "source/historical scope",
+      "projection form",
+      "actor-time to source-time alignment rule",
+      "multiplicity semantics",
+      "normalization/crosswalk authority when used",
+      "predicate grammar authority"
+    ],
+    "allowed_projection_forms": [
+      "EXACT_VALUE_EQUALITY",
+      "VERSIONED_NORMALIZATION_OR_CROSSWALK",
+      "RANGE_OR_BAND_CONTAINMENT",
+      "HISTORICALLY_GOVERNED_GEOGRAPHIC_HIERARCHY",
+      "SOURCE_SPECIFIC_CONSTRUCT_EQUIVALENCE",
+      "TEMPORALLY_CONDITIONAL_EQUIVALENCE",
+      "EXPLICIT_NOT_LAWFULLY_COMPARABLE"
+    ],
+    "forbidden_projection_forms": [
+      "FUZZY_STRING_MATCH",
+      "EMBEDDING_OR_LLM_SEMANTIC_GUESS",
+      "NEAREST_GEOGRAPHY",
+      "NEAREST_COHORT",
+      "POPULATION_PREVALENCE_FILL",
+      "MODAL_CATEGORY_FILL",
+      "GENERIC_STRUCTURAL_POSITION_BRIDGE"
+    ]
+  },
+  "authoritative_comparator_states": [
+    "ACTOR_PROPERTY_MISSING",
+    "NO_COMPARATOR",
+    "AMBIGUOUS_COMPARATOR",
+    "TEMPORAL_NONCOMPARABLE"
+  ],
+  "recommended_presemantic_integrity_states": [
+    "COMPARATOR_REQUEST_INTEGRITY_FAILURE",
+    "SNAPSHOT_HASH_MISMATCH",
+    "FACT_OWNER_AUTHORITY_MISSING",
+    "COMPARATOR_AUTHORITY_MISSING",
+    "COMPARATOR_RULE_HASH_MISMATCH",
+    "SOURCE_COORDINATE_SEMANTICS_MISMATCH",
+    "ACTOR_FACT_CURRENTNESS_UNKNOWN"
+  ],
+  "fact_owner_findings": {
+    "ADP_007": {
+      "objective_record_family": "V3InitialGeneratedFact",
+      "current_generic_domain_fact_registry_entries": 0,
+      "comparator_effect": "NO_GENERIC_DEMOGRAPHIC_FACT_MAY_BE_INVENTED"
+    },
+    "ADP_009": {
+      "objective_record_family": "V3StructuralPositionFact",
+      "generic_comparator_key": false,
+      "conditional_use": "ONLY_EXACT_FACT_KIND_PLUS_EXACT_COMPARATOR_RULE"
+    },
+    "ADP_015": {
+      "objective_record_families": [
+        "V3HouseholdMembershipFact",
+        "V3ParenthoodFact",
+        "objective relationship lifecycle/state facts"
+      ],
+      "conditional_use": "EXACT_CONSTRUCT_MAPPING_ONLY",
+      "subjective_perceived_relationship_as_objective_comparator": false
+    },
+    "CAN_009": {
+      "objective_actor_state": true,
+      "generic_survey_construct_equivalence": false,
+      "non_equivalences": [
+        "MATERIAL_MONEY_CAPACITY != income by default",
+        "MATERIAL_JOB_INSECURITY != employment status by default",
+        "MATERIAL_MOBILITY_CAPACITY != migration/travel status by default",
+        "ORGANISMIC_VITALITY != generic health category by default"
+      ]
+    },
+    "ADP_021": {
+      "provides_v3_effective_time_coordination": true,
+      "manufactures_actor_age_or_demographic_fact": false
+    }
+  },
+  "d15_candidate_family_status": {
+    "age_time": "ELIGIBILITY_FRONTIER_ONLY__NO_GENERIC_AGE_FACT_OWNER_LOCATED",
+    "sex_gender": "ELIGIBILITY_FRONTIER_ONLY__NO_GENERIC_FACT_OWNER_LOCATED",
+    "education": "ELIGIBILITY_FRONTIER_ONLY__NO_GENERIC_FACT_OWNER_LOCATED",
+    "household_facts": "ADP015_OBJECTIVE_FACTS_EXIST__EXACT_COMPARATOR_RULE_REQUIRED",
+    "resources_income": "CAN009_NEARBY_MATERIAL_STATE_NOT_GENERIC_INCOME_EQUIVALENCE__EXACT_RULE_REQUIRED",
+    "employment": "NO_GENERIC_EMPLOYMENT_STATUS_FACT_OWNER_LOCATED__JOB_INSECURITY_NOT_EQUIVALENT",
+    "language": "NO_GENERIC_FACT_OWNER_LOCATED",
+    "religion_sect_self_identification": "NO_GENERIC_FACT_OWNER_LOCATED",
+    "ethnicity": "NO_GENERIC_FACT_OWNER_LOCATED",
+    "region_locality_urban_rural": "ADP009_POSITION_FACT_MAY_EXIST__NOT_GENERIC_COMPARATOR_KEY__EXACT_RULE_REQUIRED",
+    "marital_household_state": "ADP015_OBJECTIVE_FACTS_MAY_EXIST__NO_INFERENCE__EXACT_RULE_REQUIRED",
+    "migration_travel": "ADP009_HISTORY_MAY_EXIST__TRAVEL_SEMANTICS_NOT_AUTOMATIC__EXACT_RULE_REQUIRED",
+    "occupation": "NO_GENERIC_FACT_OWNER_LOCATED__ADP009_LABEL_NOT_AUTHORITY"
+  },
+  "hard_rejects": [
+    "generated structural position as generic comparator fact",
+    "belief as comparator condition",
+    "memory as comparator condition",
+    "knowledge as comparator condition",
+    "persona or voice as comparator condition",
+    "response or V2 session/render state as comparator condition",
+    "relationship inference or actor-perceived relationship as objective comparator fact",
+    "population prevalence or average filling missing actor facts",
+    "nearest-cohort fallback",
+    "fuzzy label substitution",
+    "source-coordinate label manufacturing actor fact",
+    "ActorComparatorReceipt as V3 developmental prior"
+  ],
+  "multi_property_law": "EXACT_SAME_RESPONDENT_CONJUNCTION__NO_REQUIRED_PROPERTY_DROP__NO_INDEPENDENT_MARGINAL_MULTIPLICATION",
+  "source_applicability_separate": true,
+  "actor_comparator_receipt_role": {
+    "direct_semantic_consumer": "PossibilityFieldService",
+    "v3_role": "TRANSITIVE_PROVENANCE_REPLAY_ONLY",
+    "v2_role": "NO_PERSONA_OR_EXPRESSION_AUTHORITY",
+    "developmental_prior": false
+  },
+  "hostile_fixture_count": 40,
+  "preserved_unknowns": [
+    "concrete positive comparator rules for every D15 candidate family/source",
+    "missing objective fact owners for several demographic/biographical candidate properties",
+    "final SCRV3 snapshot schema name/version",
+    "final SCRV3 PSEPF lifecycle/metabolism integration",
+    "production implementation"
+  ],
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "OBJECTIVE_FACT_ELIGIBILITY_MATRIX.csv",
+    "SNAPSHOT_IDENTITY_CANDIDATE.md",
+    "PROJECTION_CONTRACT.md",
+    "HOSTILE_FIXTURES.md",
+    "PARENT_HANDOFF.md"
+  ]
+}
