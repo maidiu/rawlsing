@@ -1,0 +1,104 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "chamber": "DR_R03_HOSTILE_NO_STARVATION_NO_BLOAT",
+  "common_worker_base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+  "authority_model": "PARALLEL_NON_DISPOSITIVE_FEEDERS__SINGLE_DISPOSITIVE_SYNTHESIS",
+  "shared_authority": "R03/AUTHORITY_DELEGATION.md",
+  "shared_attack_plan": "R03/ATTACK_PLAN.md",
+  "hostile_feeders": [
+    {
+      "id": "R03A",
+      "branch": "agent/vozhd-trii-dr-r03a-temporal-routing-audit",
+      "write_only": "R03/feeders/R03A/",
+      "mission": "Attack temporal routing, V553 over/under-bypass, direct-V554 starvation, and duplicate-path precedence.",
+      "status": "READY_PARALLEL"
+    },
+    {
+      "id": "R03B",
+      "branch": "agent/vozhd-trii-dr-r03b-stage-necessity-audit",
+      "write_only": "R03/feeders/R03B/",
+      "mission": "Attack retained V554-V558 stage necessity, bypasses, merges, and no-bloat minimality.",
+      "status": "READY_PARALLEL"
+    },
+    {
+      "id": "R03C",
+      "branch": "agent/vozhd-trii-dr-r03c-provenance-replay-audit",
+      "write_only": "R03/feeders/R03C/",
+      "mission": "Attack provenance, replay, source-universe separation, and standalone reference closure.",
+      "status": "READY_PARALLEL"
+    },
+    {
+      "id": "R03D",
+      "branch": "agent/vozhd-trii-dr-r03d-ontology-authority-audit",
+      "write_only": "R03/feeders/R03D/",
+      "mission": "Attack ontology and authority leakage across empirical, structural, actor, provenance, and expression boundaries.",
+      "status": "READY_PARALLEL"
+    },
+    {
+      "id": "R03E",
+      "branch": "agent/vozhd-trii-dr-r03e-v3-possibility-boundary-audit",
+      "write_only": "R03/feeders/R03E/",
+      "mission": "Attack V3 empirical-possibility wrapper minimality, lifecycle/divergence, and V2/app nonconsumption.",
+      "status": "READY_PARALLEL"
+    },
+    {
+      "id": "R03F",
+      "branch": "agent/vozhd-trii-dr-r03f-terminal-starvation-audit",
+      "write_only": "R03/feeders/R03F/",
+      "mission": "Independent whole-DAG terminal-starvation and cross-cell checksum attack.",
+      "status": "READY_PARALLEL"
+    }
+  ],
+  "stage_evidence_preparation": [
+    {
+      "id": "EP553",
+      "branch": "agent/vozhd-trii-dr-ep553-stage-evidence",
+      "write_only": "R03/stage_evidence/EP553/",
+      "status": "READY_PARALLEL_NON_DISPOSITIVE"
+    },
+    {
+      "id": "EP554",
+      "branch": "agent/vozhd-trii-dr-ep554-stage-evidence",
+      "write_only": "R03/stage_evidence/EP554/",
+      "status": "READY_PARALLEL_NON_DISPOSITIVE"
+    },
+    {
+      "id": "EP555",
+      "branch": "agent/vozhd-trii-dr-ep555-stage-evidence",
+      "write_only": "R03/stage_evidence/EP555/",
+      "status": "READY_PARALLEL_NON_DISPOSITIVE"
+    },
+    {
+      "id": "EP556",
+      "branch": "agent/vozhd-trii-dr-ep556-stage-evidence",
+      "write_only": "R03/stage_evidence/EP556/",
+      "status": "READY_PARALLEL_NON_DISPOSITIVE"
+    },
+    {
+      "id": "EP5578",
+      "branch": "agent/vozhd-trii-dr-ep5578-stage-evidence",
+      "write_only": "R03/stage_evidence/EP5578/",
+      "status": "READY_PARALLEL_NON_DISPOSITIVE"
+    },
+    {
+      "id": "EPV3",
+      "branch": "agent/vozhd-trii-dr-epv3-stage-evidence",
+      "write_only": "R03/stage_evidence/EPV3/",
+      "status": "READY_PARALLEL_NON_DISPOSITIVE"
+    }
+  ],
+  "synthesis": {
+    "id": "DR_R03_SYNTHESIS",
+    "branch": "agent/vozhd-trii-dr-r03-synthesis",
+    "write_only": "R03/SYNTHESIS/",
+    "status": "DORMANT_BLOCKED_BY_R03A_R03F_FINITE_RETURNS",
+    "exclusive_authority": "FINAL_BROAD_DAG_ADJUDICATION"
+  },
+  "serial_barriers": [
+    "R03 synthesis requires finite R03A-R03F returns or explicit typed-block waiver",
+    "final stage architecture requires R03 synthesis",
+    "whole-machine closure requires accepted stage close-reads",
+    "implementation requires whole-machine closure and regenerated implementation campaign"
+  ],
+  "implementation_authorized": false
+}
