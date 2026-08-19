@@ -13,6 +13,7 @@ This ledger records claims established in the present Vozhd Trii investigation. 
 - `OPEN` — unresolved.
 - `COURT_ACCEPTED` — accepted by parent Vozhd after branch/base/scope/output-contract adjudication.
 - `COURT_RETURN_REQUIRED` — substantive worker material exists but the court is not closed under its output/evidence contract.
+- `COURT_CLOSED_BLOCKED` — the court returned a finite fail-closed result because required external evidence is unavailable; the unknown itself remains binding.
 
 ## A. Whole-machine law
 
@@ -106,12 +107,12 @@ The module maintains `_ATTITUDE_CLOUD_STATE` keyed by run/source/wave/canonical-
 ### F-032 — Current cloud completeness may depend on ordering and eligibility interaction
 **Status:** `SUPERSEDED_BY_ACCEPTED_D04`
 
-D04 proved the stronger proposition: lawful ordered-pair coverage is processing-order dependent and incomplete under the D03 oracle. See F-078.
+D04 established the exact order-dependent executable pair surface; parent review later qualified whether that surface violates required workload law. See F-078.
 
 ### F-033 — V550 cloud emission is gated rather than universal
 **Status:** `CURRENT_MAIN_CONFIRMED`
 
-The shard builder calls `should_emit_cloud_tables(...)` before generating branch signatures and attitude clouds. D04 further proved that pre-registration gating can delete later lawful pair formation.
+The shard builder calls `should_emit_cloud_tables(...)` before generating branch signatures and attitude clouds. D04 established that this gate runs before cross-question state registration; parent review classifies its completeness significance as workload-law dependent.
 
 ### F-034 — Current cloud rows explicitly carry empirical and authority metadata
 **Status:** `CURRENT_MAIN_CONFIRMED`
@@ -176,7 +177,7 @@ The view is therefore structurally capable of supporting response-by-position co
 - `allowed_as_v551_relation_evidence`
 - `allowed_as_association_feature`
 
-This confirms that these are present production schema/authority concepts, not only abandoned pack terminology. D06 separately establishes which are actually demonstrated in the current runtime authority path.
+This confirms that these are present production schema/authority concepts, not only abandoned pack terminology. D06 R2 separately establishes which are actually demonstrated in the current runtime authority path.
 
 ### F-055 — The authority-reconcile schema provides canonical question/source/wave identity and provenance surfaces
 **Status:** `CURRENT_MAIN_CONFIRMED` as supplied schema evidence
@@ -214,17 +215,17 @@ Historical design linked cotravel to profile posterior construction. The current
 
 ## I. First-wave accepted court findings
 
-The controlling intake record is `08_FIRST_WAVE_INTAKE_ADJUDICATION.md`.
+The controlling parent adjudications are now `09_D01_D06_REVIEW_ADJUDICATION.md`, `12_D05_BLOCKED_CLOSURE_AND_NO_DB_ADJUDICATION.md`, and `13_D06_R2_RETURN_ADJUDICATION.md` where later rulings supersede earlier ones.
 
 ### F-072 — V547 exhaustive pair-interaction discovery is not preserved by current V550 secondary search
 **Status:** `COURT_ACCEPTED` — D01
 
 Executable V547 exhaustively searched every unordered pair among its six non-country position predictors and selected the highest joint pair MI. Current `secondary_indicator_summary` chooses a primary predictor first and tests only primary+other pairs. This is a material search-geometry loss, not a rename.
 
-### F-073 — Current V550 adds richer unary conditional topology while changing the salience mathematics
+### F-073 — Current V550 adds richer prepared-frame unary conditional topology while changing the salience mathematics
 **Status:** `COURT_ACCEPTED` — D01
 
-`indicator_answer_matrix` preserves full unary `indicator_value × response_value` cells with raw/weighted mass, a capability V547 did not persist. At the same time, V547 MI, current entropy reduction, and current NMI are mathematically non-equivalent; predictor missingness can also make the current entropy-reduction quantity differ from ordinary mutual information.
+`indicator_answer_matrix` preserves the complete prepared-frame unary `indicator_value × response_value` crosstab with raw/weighted mass. It does not by itself prove preservation of lawful multiselect set topology, routed risk sets, typed special-state semantics, or survey-design weighting authority. V547 MI, current entropy reduction, and current NMI are mathematically non-equivalent; predictor missingness can also make the current entropy-reduction quantity differ from ordinary mutual information.
 
 ### F-074 — Historical V548 recursive positional breakage and current V550 recursive branching answer different empirical questions
 **Status:** `COURT_ACCEPTED` — D02
@@ -234,7 +235,7 @@ V548 chased majority-position deviation quadrants. Current V550 greedily partiti
 ### F-075 — The current recursive tree does not preserve the broader discovery space
 **Status:** `COURT_ACCEPTED` — D02
 
-The current tree can miss zero-marginal XOR/parity structure and distinctive third-or-lower-frequency categories, does not persist respondent membership, and truncates paths. Same-respondent response/position incidence plus exact scope/topology/missingness/support/provenance is required to replay a broader governed discovery search.
+The current tree can miss zero-marginal XOR/parity structure and distinctive third-or-lower-frequency categories, does not persist respondent membership, and truncates paths. Same-respondent response/position incidence plus exact scope/topology/missingness/support/provenance is information-theoretically sufficient to support broader replay search, while physical retention sufficiency remains D13 jurisdiction.
 
 ### F-076 — Historical branch-conditioned cotravel is absent from the current native cloud/signature path
 **Status:** `COURT_ACCEPTED` — D03
@@ -244,34 +245,44 @@ V549/V549b reconstructed actual branch membership and used it as a cross-questio
 ### F-077 — Current attitude cloud is pairwise and materially smaller than historical profile-covariance ambition
 **Status:** `COURT_ACCEPTED` — D03
 
-Current clouds retain one selected modal joint response cell plus pairwise association summaries. Historical profile clusters/relation vectors were intended but not realized in the inspected executable lineage, and current cloud artifacts do not preserve full pairwise joint cells, branch conditioning, respondent multi-question vectors, or k-way topology.
+Current clouds retain one selected modal joint response cell plus pairwise association summaries. Historical profile clusters/relation vectors were intended but not proven realized in the inspected executable lineage, and current cloud artifacts do not preserve full pairwise joint cells, branch conditioning, respondent multi-question vectors, or k-way topology.
 
-### F-078 — Current V550 cloud ordered-pair coverage is provably incomplete and order-dependent
-**Status:** `COURT_ACCEPTED` — D04
+### F-078 — Current V550 cloud pair formation is order-dependent; workload violation depends on D07 law
+**Status:** `COURT_ACCEPTED_WITH_PARENT_QUALIFICATION` — D04
 
-Under D03's accepted ordered-pair oracle, the current one-pass state machine emits only current-anchor→previously-stored-feature pairs. Two dual-eligible questions cannot yield both lawful directions in a single linear pass. This is an implementation defect, not an architectural preference.
+The executable one-pass state machine compares a current anchor against previously registered candidate frames, so its emitted directed-pair surface depends on processing order. Under an exhaustive ordered-pair workload requirement this is a correctness defect. Semantic eligibility alone does not prove that exhaustive workload law, so D07 must adjudicate whether both directions are required, merely reconstructible, or selectively materialized.
 
-### F-079 — Current V550 cloud has four additional material correctness defects
-**Status:** `COURT_ACCEPTED` — D04
+### F-079 — Current V550 cloud has three unconditional implementation defects plus workload/authority ambiguities
+**Status:** `COURT_ACCEPTED_WITH_PARENT_QUALIFICATION` — D04
 
-Beyond order coverage, D04 established: special/missing/routing states can become cloud content; NMI mixes nats and bits; checkpoint resume fails to rehydrate prior cloud state; and pre-registration mode/cardinality gating can delete later lawful pairs. Weighting, duplicate/multiselect semantics, modal-cell ties, and routed risk-set denominator law remain authority gaps.
+D04 established three unconditional defects: special/missing/routing states can become cloud content; NMI mixes nats and bits; checkpoint resume fails to rehydrate prior cloud state. Pre-registration cloud gating is a workload/completeness ambiguity rather than a proven defect until D07 establishes required workload. Weighting, duplicate/multiselect semantics, modal-cell ties, and routed risk-set denominator law remain authority gaps.
 
-### F-080 — Final R1 is not a universal V550 workload authority
-**Status:** `COURT_ACCEPTED` — D06
+### F-080 — Final R1 is not demonstrated to be a universal V550/V550J workload authority
+**Status:** `COURT_ACCEPTED` — D06 R2
 
-Final R1 governs question-relation/structural semantics. High-risk `allowed_as_*` permissions are synthesized from multiple authorities, while several expensive V550 branching/conditional families are selected by hard-coded analytic enumeration and unconditional orchestration. Upstream compute can therefore occur before downstream R1/V551 admissibility is enforced.
+Final R1 governs question-relation/structural semantics. High-risk `allowed_as_*` permissions are synthesized from multiple authorities, while several broad V550 branching/conditional families are selected by fixed implementation inventories and unconditional selected-question orchestration. Upstream compute can therefore occur before downstream R1/V551 admissibility is enforced. No universal family-granular workload mandate was located; that is `NOT_LOCATED`, not proof of absence.
 
-### F-081 — Current R1 scope/admissibility and workload selection have distinct implementation seams
-**Status:** `COURT_ACCEPTED` — D06
+### F-081 — Current V550/V550J execution has a plural authority topology and a real shared respondent-grain co-execution surface
+**Status:** `COURT_ACCEPTED` — D06 R2
 
-Country-scoped R1 identity is not universally enforced by every facet-ready mapping join; mapping cache identity lacks an R1 content/version hash; the active authority path remains overrideable; and no current V550J coexecution surface was demonstrated at the audited base. These are implementation/provenance facts, not authority to redesign.
+Current execution distinguishes Final-R1 relation authority, QUC-derived permissions, exact base-QSM membership, executable V550J joint-configuration authority, base/joint/overlap union extraction, operational resource policy, fixed implementation defaults, association-lane publication authority, and downstream R1 re-resolution. `ddm_v550_shared_respondent_substrate.py` implements a real `v550-v550j-coexecution-v1` shared-substrate contract, including lawful `JOINT_ONLY` extraction expansion and direct V550J prepared-required consumption. This does not prove every V550 run materializes it or that its populated content is complete.
 
-### F-082 — Populated empirical substrate reality remains unadjudicated
-**Status:** `COURT_RETURN_REQUIRED` — D05
+### F-082 — Populated empirical substrate reality remains unknown, but D05 is court-closed blocked
+**Status:** `COURT_CLOSED_BLOCKED` — D05
 
-D05 correctly refused to infer populated reality from schema, but its branch is not closed: it lacks required `RESULT.json` and the promised exact audit SQL/output-schema artifacts, and its reported schema attachment hashes conflict with the controlled manifest at its exact base. No populated counts, completeness, overlap, source-equivalence, ingestion-loss, or replay-sufficiency claim is accepted.
+D05 correctly refused to infer populated reality from schema and ultimately supplied a materially complete contingency audit kit with corrected hashes and fixed no-choice semantics. No live or transactionally equivalent populated database became available. Therefore respondent counts, actual cotravel coverage, duplicate/multiselect prevalence, position/weight completeness, source equivalence, ingestion loss, and populated replay sufficiency remain unknown. D05's dependency is nevertheless satisfied by its finite `BLOCKED_MISSING_POPULATED_DATA_ACCESS` result; later courts must carry the unknown rather than remain perpetually blocked.
 
 ### F-083 — D03→D04 dependency was satisfied in the final returned branch
 **Status:** `COURT_ACCEPTED`
 
 D03 tip `7ea5962f644ad796064e30ffafb46f2c077404b9` contains only the accepted D03 result files over the Wave-1 launch base. D04 is based exactly on that tip and adds only its result/probe artifacts. The later handoff-file commit on the parent does not invalidate D04's narrow implementation-correctness scope.
+
+### F-084 — `allowed_as_association_feature` is operationally real, but its authoritative derivation remains unlocated
+**Status:** `COURT_ACCEPTED` — D06 R2
+
+The current shared-substrate contract transports `allowed_as_association_feature`, and V550J association-candidate logic actively reads it. Governed association-lane publication is a separate authority layer. D06 R2 did not locate the upstream authoritative derivation/write source and therefore records `NOT_LOCATED`, not `ABSENT`.
+
+### F-085 — Shared-substrate integrity is not replay-completeness proof
+**Status:** `COURT_ACCEPTED` — D06 R2
+
+The shared substrate has declared logical-content hashing, serialized Parquet integrity, explicit selection roles, and direct prepared V550J consumption. Its canonicalizer may default missing semantic columns and does not prove identical semantic preparation of `JOINT_ONLY` variables. The scalar duplicate policy can reject repeated/multiselect row structures if represented as duplicate substantive respondent×variable keys. Unary, pairwise, arbitrary-joint and future replay completeness therefore remain unproved, with populated impact unavailable under the D05 no-DB constraint.
