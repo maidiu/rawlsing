@@ -6,7 +6,11 @@
 
 ## Velikii Vozhd command transfer
 
-If you are assuming top-level whole-machine command, read **`23_VELIKII_VOZHD_HANDOFF.md` first**. It is the current takeover packet: accepted architecture state, live SCR branches, 10–12-agent force doctrine, M1–M6 barriers, oversight law, and post-close implementation mobilization sequence.
+If you are assuming top-level whole-machine command, read **`23_VELIKII_VOZHD_HANDOFF.md` first**, then read **`24_VELIKII_VOZHD_EXECUTE_NOW_ORDER.md` and execute it immediately in the same turn**.
+
+The handoff supplies the complete state and law. The execute-now order supplies the direction of motion and is self-executing.
+
+**A readiness-only response is not a valid takeover result.** Do not answer `I'm ready`, `standing by`, or equivalent. Assuming command means immediately verifying live branch state, adjudicating any existing returns, allocating the 10-worker baseline force, preparing/reusing exact worker branches, and issuing exact launch orders wherever user action is genuinely required.
 
 This directory defines the centralized command, delegation, synchronization, inspection, and integration system for the final clean Rawlsing rebuild.
 
@@ -26,31 +30,32 @@ The broad DAG is closed, but seven exact stage-close cells and M1-M6 seam barrie
 
 ## Read order
 
-1. `23_VELIKII_VOZHD_HANDOFF.md` — when assuming whole-machine command
-2. `00_COMMAND_CONSTITUTION.md`
-3. `CONTROL.json`
-4. `01_AUTHORITY_AND_GENERAL_STAFF.md`
-5. `21_AUTHORITY_BUNDLE_MANIFEST_AND_PRECEDENCE_PROTOCOL.md`
-6. `02_SUBSTRATE_AND_LOGISTICS_COMMAND.md`
-7. `17_POPULATED_DATA_REALITY_AND_DB_FREEZE_PROTOCOL.md`
-8. `03_DOMAIN_VOZHD_AND_RABOCHII_DOCTRINE.md`
-9. `04_INTERFACE_DAG_AND_CHANGE_CONTROL.md`
-10. `18_TWO_PERSON_CONTROL_WRITE_LEASE_AND_STALE_WORKER_PROTOCOL.md`
-11. `19_CROSS_WORKER_CONTRACT_CONFORMANCE_PROTOCOL.md`
-12. `05_INSPECTORATE_AND_INTEGRATION_COMMAND.md`
-13. `06_COMMON_OPERATING_PICTURE_SCHEMA.json`
-14. `07_SYNCHRONIZATION_AND_AUDIT_PROTOCOL.md`
-15. `22_OPERATIONAL_TEMPO_CRITICAL_PATH_AND_FORCE_GENERATION_DOCTRINE.md`
-16. `08_BUILD_WAVE_AND_GOLDEN_FIXTURE_DOCTRINE.md`
-17. `09_LEGACY_SALVAGE_AND_MIGRATION_DOCTRINE.md`
-18. `10_WORKER_ORDER_TEMPLATE.md`
-19. `11_ACCEPTANCE_AND_RECONSTRUCTION_GATE.md`
-20. `12_FORCE_STRUCTURE_AND_ACTIVATION_PLAN.md`
-21. `13_MACHINE_READABLE_REGISTRY_SCHEMAS.json`
-22. `14_VOZHD_AUDIT_AND_RECONCILIATION_TEMPLATE.md`
-23. `15_ACTIVATION_RECEIPT_TEMPLATE.md`
-24. `16_SEMANTIC_DIFF_SCHEMA.json`
-25. `20_R03_SYNTHESIS_ALIGNMENT_AND_CLOSE_READ_POSTURE.md`
+1. `23_VELIKII_VOZHD_HANDOFF.md` — whole-machine state/law takeover
+2. `24_VELIKII_VOZHD_EXECUTE_NOW_ORDER.md` — **execute immediately; do not stop at readiness**
+3. `00_COMMAND_CONSTITUTION.md`
+4. `CONTROL.json`
+5. `01_AUTHORITY_AND_GENERAL_STAFF.md`
+6. `21_AUTHORITY_BUNDLE_MANIFEST_AND_PRECEDENCE_PROTOCOL.md`
+7. `02_SUBSTRATE_AND_LOGISTICS_COMMAND.md`
+8. `17_POPULATED_DATA_REALITY_AND_DB_FREEZE_PROTOCOL.md`
+9. `03_DOMAIN_VOZHD_AND_RABOCHII_DOCTRINE.md`
+10. `04_INTERFACE_DAG_AND_CHANGE_CONTROL.md`
+11. `18_TWO_PERSON_CONTROL_WRITE_LEASE_AND_STALE_WORKER_PROTOCOL.md`
+12. `19_CROSS_WORKER_CONTRACT_CONFORMANCE_PROTOCOL.md`
+13. `05_INSPECTORATE_AND_INTEGRATION_COMMAND.md`
+14. `06_COMMON_OPERATING_PICTURE_SCHEMA.json`
+15. `07_SYNCHRONIZATION_AND_AUDIT_PROTOCOL.md`
+16. `22_OPERATIONAL_TEMPO_CRITICAL_PATH_AND_FORCE_GENERATION_DOCTRINE.md`
+17. `08_BUILD_WAVE_AND_GOLDEN_FIXTURE_DOCTRINE.md`
+18. `09_LEGACY_SALVAGE_AND_MIGRATION_DOCTRINE.md`
+19. `10_WORKER_ORDER_TEMPLATE.md`
+20. `11_ACCEPTANCE_AND_RECONSTRUCTION_GATE.md`
+21. `12_FORCE_STRUCTURE_AND_ACTIVATION_PLAN.md`
+22. `13_MACHINE_READABLE_REGISTRY_SCHEMAS.json`
+23. `14_VOZHD_AUDIT_AND_RECONCILIATION_TEMPLATE.md`
+24. `15_ACTIVATION_RECEIPT_TEMPLATE.md`
+25. `16_SEMANTIC_DIFF_SCHEMA.json`
+26. `20_R03_SYNTHESIS_ALIGNMENT_AND_CLOSE_READ_POSTURE.md`
 
 ## The system in one sentence
 
