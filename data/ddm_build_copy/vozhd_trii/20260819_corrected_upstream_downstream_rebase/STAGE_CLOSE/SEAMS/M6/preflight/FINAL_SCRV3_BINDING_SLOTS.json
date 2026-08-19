@@ -1,0 +1,54 @@
+{
+  "accepted_receiver_dependency": {
+    "receiver_contract": "SCRV2APP_EXPRESSION_FIREWALL@1.0.0",
+    "receiver_result": "SCRV2APP_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+    "scrv2app_head": "24f8811bb7d2eaa18cfac1cb907c48bba8d08f23"
+  },
+  "active_scrv3_candidate_evidence_not_authority": {
+    "branch": "agent/vozhd-trii-dr-r03-close-v3-empirical-possibility",
+    "candidate_adp017_blob": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+    "candidate_authority": "ADP-017/V3_ACTOR_KNOWLEDGE_ACCESSIBILITY_RULE@1.0.0",
+    "candidate_type": "ActorAccessibleRenderEnvelope",
+    "rule": "MAY_BE_USED_TO_PROVE_SHAPE_COMPATIBILITY_ONLY__MAY_NOT_FILL_FINAL_VALUES"
+  },
+  "document": "FINAL_SCRV3_BINDING_SLOTS",
+  "final_acceptance_rule": "Every slot required by the accepted SCRV3 contract must resolve exactly and consistently with SCRV2APP; any missing, conflicting, stale, hash-mismatched, ambiguous, or widened binding fails final M6 closed.",
+  "must_not_bind_from": [
+    "active SCRV3 branch name or unaccepted candidate artifact alone",
+    "ADP-017 precedent alone when SCRV3 final contract could wrap/bind it differently",
+    "mutable latest authority or semantic version precedence",
+    "filename/path/row order",
+    "session/transcript state",
+    "opaque provenance",
+    "PSEPF or any other upstream prior"
+  ],
+  "owner": "SCRV3_AND_FINAL_M6_BINDER",
+  "purpose": "Exact values final M6 must bind only from an accepted SCRV3 return. This preflight intentionally does not invent or promote active-branch candidate literals.",
+  "slots": [
+    {"name":"accepted_scrv3_head_sha","reason":"Exact accepted SCRV3 head used by final M6; active branch evidence is not a substitute.","required":true,"slot_id":"S01","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_handoff_type_or_schema_id","reason":"Exact SCRV3-owned actor-safe handoff machine type/schema ID.","required":true,"slot_id":"S02","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_handoff_type_or_schema_version","reason":"Exact accepted version for the final handoff.","required":true,"slot_id":"S03","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_handoff_authority_id","reason":"Exact SCRV3/V3 authority that owns handoff construction and claim-access permission.","required":true,"slot_id":"S04","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_handoff_authority_version","reason":"Exact accepted authority version.","required":true,"slot_id":"S05","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_handoff_authority_content_hash","reason":"Immutable/hash-bound authority snapshot; no latest/semver substitution.","required":true,"slot_id":"S06","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_handoff_identity_and_content_hash_rule","reason":"Canonical identity/content-hash rule and exact envelope/reference identity.","required":true,"slot_id":"S07","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_integrity_state_contract","reason":"Exact integrity states and verification predicate at V2 ingress.","required":true,"slot_id":"S08","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_actor_binding_rule","reason":"Exact actor identity binding and mismatch behavior.","required":true,"slot_id":"S09","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_source_v3_state_binding","reason":"Exact source generated-person/actor-state/memory/epistemic state bindings required by the accepted handoff.","required":true,"slot_id":"S10","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_as_of_causal_or_effective_time_binding","reason":"Exact causal/effective-time field(s), time basis, and interpretation.","required":true,"slot_id":"S11","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_currentness_and_stale_predicate","reason":"Exact rule proving the handoff is current for the V2 invocation and detecting stale/withdrawn state.","required":true,"slot_id":"S12","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_allowed_use_binding","reason":"Exact use identity/permission allowing bounded V2 expression/application consumption.","required":true,"slot_id":"S13","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_actor_safe_entry_schema","reason":"Exact per-entry identity/schema and hash/reference contract.","required":true,"slot_id":"S14","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_component_scope_representation","reason":"Exact representation of partial/component accessibility and scope narrowing.","required":true,"slot_id":"S15","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_epistemic_first_person_permission_vocabulary","reason":"Exact accepted permission classes and mapping carried across M6.","required":true,"slot_id":"S16","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_denial_withhold_analyst_only_representation","reason":"Exact representation of denied/withheld/analyst-only content sufficient to prove nonrecoverability.","required":true,"slot_id":"S17","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_actor_perceived_relationship_view_binding","reason":"Exact actor-perceived relationship-view semantics when relationship expression is allowed.","required":true,"slot_id":"S18","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_opaque_provenance_role_and_reference_shape","reason":"Exact audit-only ref type/shape if provenance is exposed across the seam.","required":true,"slot_id":"S19","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_raw_upstream_exclusion_proof_surface","reason":"Exact sender-side proof/contract that forbidden upstream priors are not semantic/render entries.","required":true,"slot_id":"S20","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_replay_reference_closure_root","reason":"Exact replay/reference-closure root and interpretation-critical immutable dependencies for verification.","required":true,"slot_id":"S21","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_no_renderable_entry_or_empty_state_semantics","reason":"Exact lawful representation when no actor-safe claim is renderable; must not invite fallback.","required":true,"slot_id":"S22","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_unknown_deferred_denied_integrity_mapping","reason":"Exact final handoff mapping for unknown/deferred/denied/integrity conditions relevant to V2 ingress.","required":true,"slot_id":"S23","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null},
+    {"name":"final_post_causal_event_invalidation_rule","reason":"Exact rule invalidating/replacing handoffs after accepted causal changes so stale session state cannot survive.","required":true,"slot_id":"S24","state":"UNBOUND_PENDING_ACCEPTED_SCRV3","value":null}
+  ],
+  "status": "UNBOUND_PENDING_ACCEPTED_SCRV3"
+}
