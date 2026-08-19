@@ -1,0 +1,43 @@
+{
+  "schema_version": "vozhd_trii_d14a_baseline_measurements.v1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-d14a-current-cost-geometry",
+  "base_sha": "b92d3f3db9faaa962f59d55e61122701df9e53aa",
+  "measurement_posture": "SOURCE_STATIC_ONLY__NO_POPULATED_DB_OR_PRODUCTION_EQUIVALENT_EXECUTION_AVAILABLE",
+  "no_db_law": "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
+  "source_baseline": {
+    "status": "MEASURED",
+    "facts": [
+      {"fact": "branch comparison before D14A writes", "value": "identical to exact base SHA", "classification": "MEASURED"},
+      {"fact": "current V550 fixed INDICATOR_FIELDS count", "value": 12, "classification": "MEASURED_FROM_SOURCE"},
+      {"fact": "recursive branch maximum code fanout per split", "value": 2, "classification": "MEASURED_FROM_SOURCE"},
+      {"fact": "branch position signature max_features default", "value": 5, "classification": "MEASURED_FROM_SOURCE"},
+      {"fact": "branch relation co-signature max_features default", "value": 5, "classification": "MEASURED_FROM_SOURCE"}
+    ]
+  },
+  "runtime_metrics": {
+    "wall_clock": {"status": "BLOCKED_REAL_MEASUREMENT", "value": null, "reason": "No populated production-equivalent DB/run environment was available to execute the commanded baseline."},
+    "cpu_time": {"status": "BLOCKED_REAL_MEASUREMENT", "value": null, "reason": "No production-equivalent execution."},
+    "peak_rss": {"status": "BLOCKED_REAL_MEASUREMENT", "value": null, "reason": "No production-equivalent execution."},
+    "rows_read": {"status": "BLOCKED_REAL_MEASUREMENT", "value": null, "reason": "Populated substrate unavailable; no database I/O fabricated."},
+    "rows_emitted": {"status": "BLOCKED_REAL_MEASUREMENT", "value": null, "reason": "Depends on populated response/support/cardinality facts."},
+    "intermediate_rows": {"status": "BLOCKED_REAL_MEASUREMENT", "value": null, "reason": "Depends on live frames, joins, support gates and authority coverage."},
+    "checkpoint_bytes": {"status": "BLOCKED_REAL_MEASUREMENT", "value": null, "reason": "No production-equivalent checkpoint files available."},
+    "artifact_bytes": {"status": "BLOCKED_REAL_MEASUREMENT", "value": null, "reason": "No production-equivalent outputs generated."},
+    "database_io": {"status": "UNKNOWN", "value": null, "reason": "No live database instrumentation or execution; D14A does not invent I/O."}
+  },
+  "existing_internal_instrumentation": {
+    "v550_manifest_harmonization_counters": [
+      "v550_harmonization_call_count_prepared",
+      "v550_harmonization_row_count_prepared",
+      "v550_harmonization_call_count_per_question",
+      "v550_harmonization_row_count_per_question",
+      "v550_harmonization_call_count_fallback",
+      "v550_harmonization_row_count_fallback"
+    ],
+    "v550j_performance_profile": "compile_v550j_joint_response_patterns.py records monotonic stage timings and harmonization call counts in v550j_performance_profile.json",
+    "status": "STATICALLY_DERIVED__NOT_EXECUTED_FOR_D14A"
+  },
+  "static_geometry_artifact": "CURRENT_COST_GEOMETRY.csv",
+  "blocked_measurement_artifact": "BLOCKED_MEASUREMENT_LEDGER.csv"
+}
