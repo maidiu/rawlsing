@@ -1,0 +1,105 @@
+{
+  "schema": "rawlsing.clean_machine.common_operating_picture.v1",
+  "purpose": "Single authoritative campaign state shared by Campaign Vozhd, General Staff, domain Vozhds, Inspectorate, Integration Command, and rabochii launch orders.",
+  "required_fields": {
+    "campaign_state": [
+      "campaign_id",
+      "status",
+      "canonical_integration_branch",
+      "canonical_integration_head_sha",
+      "architecture_closure_id",
+      "architecture_closure_hash",
+      "governing_authority_bundle_id",
+      "governing_authority_bundle_hash"
+    ],
+    "substrate": [
+      "incoming_data_contract_id",
+      "incoming_data_contract_version",
+      "incoming_data_contract_hash",
+      "physical_schema_id",
+      "physical_schema_version",
+      "physical_schema_hash",
+      "golden_fixture_id",
+      "golden_fixture_hash"
+    ],
+    "shared_contracts": [
+      "object_registry_version",
+      "identity_reference_registry_version",
+      "dag_registry_version",
+      "interface_registry_version",
+      "negative_authority_registry_version",
+      "replay_contract_version"
+    ],
+    "active_units": [
+      "unit_id",
+      "unit_kind",
+      "command_parent",
+      "branch",
+      "base_sha",
+      "head_sha",
+      "write_surface",
+      "mission",
+      "consumed_contract_versions",
+      "produced_contract_versions",
+      "dependencies",
+      "status",
+      "stale_contract_flag"
+    ],
+    "authority_requests": [
+      "request_id",
+      "requesting_unit",
+      "owner",
+      "change_class",
+      "affected_contracts",
+      "affected_units",
+      "status",
+      "blocking_effect"
+    ],
+    "integration_queue": [
+      "tranche_id",
+      "producer_unit",
+      "head_sha",
+      "domain_vozhd_disposition",
+      "inspectorate_disposition",
+      "semantic_diff_hash",
+      "test_receipt_hash",
+      "dependency_impact_hash",
+      "integration_status"
+    ],
+    "known_conflicts": [
+      "conflict_id",
+      "units",
+      "contracts",
+      "description",
+      "owner",
+      "status",
+      "stop_scope"
+    ],
+    "wave_state": [
+      "wave_id",
+      "opened_at_integration_sha",
+      "entry_gates",
+      "units",
+      "completed_units",
+      "blocked_units",
+      "reconciliation_status",
+      "next_wave_dependencies"
+    ],
+    "whole_dag_coverage": [
+      "terminal_capability",
+      "producer_chain",
+      "implementation_state",
+      "fixture_state",
+      "replay_state",
+      "open_gaps"
+    ]
+  },
+  "invariants": [
+    "Every active worker references exact contract versions, never floating latest.",
+    "Every integration tranche references one exact worker head SHA.",
+    "Any changed shared contract marks affected workers stale until acknowledged/rebased.",
+    "No known conflict with STOP scope may coexist with integration_status=ACCEPTED for an affected tranche.",
+    "Canonical integration head changes only by Integration Command.",
+    "Common Operating Picture is updated after every shared-contract adjudication, worker launch, material worker return, integration decision, or wave reconciliation."
+  ]
+}
