@@ -1,0 +1,253 @@
+{
+  "contract_id": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT",
+  "contract_version": "scr556.v1",
+  "repository": "maidiu/rawlsing",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-close-v556-interaction-topology",
+  "jurisdiction": "V556 higher-order interaction/topology/attractor-prerequisite semantics only",
+  "local_contract_status": "CLOSED",
+  "final_adjudication_status": "WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+  "result_token": "SCR556_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+  "semantic_families": [
+    {
+      "family": "V556_INTERACTION_RELATION",
+      "grain": "one exact rule-governed higher-order relation over 2..n exact canonical V555 route participants",
+      "positive_requires_exact_rule_authority": true,
+      "positive_requires_exact_v555_participants": true,
+      "creates_v555_route_identity": false
+    },
+    {
+      "family": "V556_TOPOLOGY",
+      "grain": "one exact rule-governed higher-order graph/hypergraph/ordering structure over 2..n exact canonical V555 route participants",
+      "base_edges_or_participants": "exact producer-owned V555 route references",
+      "higher_order_edges": "V556-owned exact relation references when rule-required",
+      "creates_v555_route_identity": false
+    },
+    {
+      "family": "V556_ATTRACTOR_PREREQUISITE",
+      "grain": "one exact rule-governed higher-order prerequisite/constraint over 2..n exact canonical V555 route participants",
+      "may_reference_exact_v556_objects": true,
+      "actor_realization_semantics": false,
+      "single_route_forwarding_wrapper_allowed": false
+    }
+  ],
+  "stage_rules": [
+    {
+      "rule_id": "SCR556-R001-HIGHER-ORDER-ONLY",
+      "law": "Invoke V556 only when an exact governed higher-order interaction/topology/prerequisite use is required; otherwise emit zero V556 objects."
+    },
+    {
+      "rule_id": "SCR556-R002-EXACT-RULE-AUTHORITY",
+      "law": "Every governed V556 evaluation resolves one immutable semantic rule authority by exact ID/version/content hash; latest/fuzzy/label substitution is forbidden."
+    },
+    {
+      "rule_id": "SCR556-R003-EXACT-V555-PARTICIPANTS",
+      "law": "Every governed V556 evaluation binds 2..n exact canonical V555 route references and every positive V556 object names the exact participant bindings."
+    },
+    {
+      "rule_id": "SCR556-R004-NO-ROUTE-REID",
+      "law": "V556 never mints, reconstructs, aliases, normalizes, or copies a replacement semantic identity for a V555 route."
+    },
+    {
+      "rule_id": "SCR556-R005-RULE-DECLARED-PARTICIPANT-SHAPE",
+      "law": "Participant roles, order, cardinality, multiplicity, and same-route reuse are controlled only by the exact V556 rule authority."
+    },
+    {
+      "rule_id": "SCR556-R006-COMPOSITION-NONE-BY-DEFAULT",
+      "law": "Cross-source composition requires exact operation-specific positive compatibility/composition authority; provenance or co-location never suffices."
+    },
+    {
+      "rule_id": "SCR556-R007-TYPED-OUTCOMES",
+      "law": "Supported, valid-empty, denied, noncomparable, unknown-authority, conflicting-authority, invalid-participant, and unresolvable-participant states remain distinct."
+    },
+    {
+      "rule_id": "SCR556-R008-DIRECT-PUBLICATION",
+      "law": "A V556 producer object may be proposed directly to V557; V557 alone owns publication/use governance and may only narrow producer permission."
+    },
+    {
+      "rule_id": "SCR556-R009-NO-FILLER",
+      "law": "No V556 object is created solely to forward V555 semantics or preserve numeric stage order."
+    },
+    {
+      "rule_id": "SCR556-R010-NONINFERENCE",
+      "law": "Shared endpoint, time, geography, stratum, storage adjacency, co-resolution, labels, or provenance never establish a V556 relation."
+    }
+  ],
+  "rule_authority_contract": {
+    "required_fields": [
+      "authority_id",
+      "authority_version",
+      "authority_content_hash",
+      "rule_id",
+      "rule_version",
+      "rule_content_hash",
+      "semantic_family",
+      "participant_roles",
+      "participant_order_policy",
+      "minimum_cardinality",
+      "maximum_cardinality_or_unbounded_marker",
+      "multiplicity_policy",
+      "same_route_reuse_policy",
+      "source_composition_policy",
+      "allowed_typed_outcome_states",
+      "producer_allowed_uses"
+    ],
+    "missing_or_ambiguous": "UNKNOWN_AUTHORITY",
+    "mutable_latest_or_label_reconstruction": "FORBIDDEN",
+    "hash_or_version_mismatch": "UNKNOWN_AUTHORITY",
+    "positive_semantics_on_failure": "FORBIDDEN"
+  },
+  "participant_reference_contract": {
+    "canonical_route_binding_symbol": "SCR555_ACCEPTED_CANONICAL_ROUTE_IDENTITY_REF",
+    "binding_fields": [
+      "v555_route_identity_ref",
+      "role",
+      "ordinal_or_null",
+      "multiplicity_index"
+    ],
+    "participant_occurrence_cardinality": "2..n as constrained by exact rule authority",
+    "positive_distinct_route_floor": 2,
+    "order_semantic_only_if_rule_declares_ordered": true,
+    "unordered_canonicalization": "exact upstream route-identity bytes plus role and multiplicity; never input/file/storage/resolver order",
+    "same_route_reuse": "FORBIDDEN unless exact rule positively permits and separately binds every occurrence",
+    "route_identity_is_opaque_producer_semantics": true,
+    "forbidden_route_reconstruction_inputs": [
+      "run_id",
+      "mediation_slot_id",
+      "slot_name",
+      "slot_channel",
+      "endpoint labels",
+      "shared topology labels"
+    ],
+    "unresolved_final_bindings": [
+      "literal accepted SCR555 canonical route identity/reference field or tuple",
+      "accepted SCR555 typed route-state eligibility mapping for V556 participation",
+      "accepted SCR555 immutable reference/hash closure required to validate a participant without re-owning route semantics"
+    ]
+  },
+  "source_composition_contract": {
+    "default": "NONE_BY_DEFAULT",
+    "positive_cross_source_requires": [
+      "exact authority ID/version/content hash",
+      "exact operation or rule ID",
+      "exact covered source-universe references",
+      "exact covered participant bindings",
+      "exact compatibility/composition scope"
+    ],
+    "never_sufficient_alone": [
+      "shared endpoint",
+      "shared time",
+      "shared geography",
+      "shared stratum",
+      "shared storage",
+      "adjacency",
+      "co-resolution",
+      "common labels",
+      "transitive provenance reachability"
+    ],
+    "outcomes": {
+      "exact_positive_authority": "CONTINUE_RULE_EVALUATION",
+      "explicit_noncomparability": "NONCOMPARABLE",
+      "explicit_denial": "DENIED",
+      "missing_out_of_scope_or_unknown_authority": "UNKNOWN_AUTHORITY",
+      "conflicting_authority_without_precedence": "CONFLICTING_AUTHORITY"
+    },
+    "nonpositive_outcome_allows_positive_v556_semantics": false
+  },
+  "typed_states": {
+    "SUPPORTED": "Exact rule evaluated positively over an admissible participant set under all required authorities.",
+    "VALID_EMPTY": "Exact rule was lawfully evaluated and governed higher-order result is empty/none; not missing data and not a positive relation.",
+    "DENIED": "Exact governing authority denies the proposed higher-order semantic.",
+    "NONCOMPARABLE": "Required source/participant compatibility is explicitly noncomparable.",
+    "UNKNOWN_AUTHORITY": "Required rule/composition/participant authority is missing, unresolved, out of scope, mutable-latest, or not hash-bound.",
+    "CONFLICTING_AUTHORITY": "Applicable exact authorities conflict and no exact precedence rule resolves them.",
+    "INVALID_PARTICIPANT_SET": "Role/order/cardinality/multiplicity/same-route constraints fail.",
+    "UNRESOLVABLE_PARTICIPANT": "An exact V555 participant reference cannot be deterministically resolved or hash-validated."
+  },
+  "missing_positive_output_semantics": "NONE; missing positive output is not silently VALID_EMPTY, DENIED, or absence",
+  "creation_algorithm": [
+    "Receive exact governed request for higher-order V556 meaning.",
+    "If no higher-order V556 rule is required, emit zero V556 objects and preserve V555 direct publication path.",
+    "Resolve one exact immutable V556 semantic rule authority.",
+    "Bind 2..n exact canonical V555 participant refs without copying or reconstructing V555 semantics.",
+    "Validate role/order/cardinality/multiplicity/same-route reuse and accepted upstream route-state eligibility.",
+    "Resolve every required source-universe/composition authority; ungoverned composition fails closed.",
+    "Evaluate only V556-owned higher-order meaning.",
+    "Emit one content-addressed interpretation-critical outcome object for the governed evaluation.",
+    "Carry exact producer object/reference closure and producer permission ceiling to V557 when proposal is allowed."
+  ],
+  "identity_replay_contract": {
+    "semantic_identity_material": [
+      "contract_version",
+      "semantic_family",
+      "exact rule authority references and hashes",
+      "exact participant binding sequence or rule-canonical multiset",
+      "exact composition authority references and hashes when required",
+      "semantic payload",
+      "typed outcome state"
+    ],
+    "nonsemantic_identity_material": [
+      "run_id",
+      "created_at",
+      "file order",
+      "storage order",
+      "resolver order"
+    ],
+    "identical_immutable_inputs_replay_to_same_identity_and_state": true,
+    "latest_version_repair": "FORBIDDEN"
+  },
+  "canonical_v555_base_edge_reuse": {
+    "sole_base_edge_identity": "accepted producer-owned V555 canonical route identity",
+    "v556_may_reference": true,
+    "v556_may_copy_or_reidentify": false,
+    "one_to_one_v556_base_edge_copy": "FORBIDDEN_BLOAT"
+  },
+  "direct_v557_publication": {
+    "edge": "V556 -> V557",
+    "v556_proposes": [
+      "exact producer-owned V556 object",
+      "immutable interpretation-critical reference closure",
+      "producer permission ceiling"
+    ],
+    "v557_owns": [
+      "publication admission",
+      "runtime-use decision",
+      "monotone permission narrowing",
+      "closure proof"
+    ],
+    "v556_can_grant_or_widen_permission": false
+  },
+  "no_filler_contract": {
+    "when_no_exact_governed_higher_order_rule_required": "ZERO_V556_OBJECTS",
+    "direct_path_preserved": "CANONICAL_V555_ROUTE -> V557 subject to V555 producer authority and V557 governance",
+    "absence_of_v556_object_is_negative_semantic_assertion": false
+  },
+  "forbidden_shortcuts": [
+    "StructuralEmpiricalAdmission -> V556",
+    "V554 -> V556 without exact V555 canonical route participant identity",
+    "V556 duplicate/reidentified V555 base edge",
+    "interaction from shared endpoint/time/geography/stratum/storage adjacency/co-resolution/provenance",
+    "provenance reachability as source pooling/composition authority",
+    "labels/channels/run IDs as route identity",
+    "current run_id + slot_name as accepted route/base-edge identity",
+    "V556 meaning directly becoming actor psyche/identity/belief/voice",
+    "no-op V556 wrapper solely to preserve numbered-stage transit"
+  ],
+  "final_seam": {
+    "barrier": "M3_HIGHER_ORDER_STRUCTURAL",
+    "upstream_stage": "SCR555_V555_ATOMIC_ROUTE",
+    "upstream_branch_observed_status": "IDENTICAL_TO_COMMON_BASE__NO_ACCEPTED_SCR555_OUTPUT_PRESENT",
+    "only_unresolved_bindings": [
+      "literal accepted SCR555 canonical route identity/reference field or tuple",
+      "accepted SCR555 typed route-state eligibility mapping for V556 participation",
+      "accepted SCR555 immutable reference/hash closure required to validate a participant without re-owning route semantics"
+    ],
+    "guessing_or_reconstruction_forbidden": true
+  },
+  "authority_heads": {
+    "accepted_r03_synthesis": "19a21dde4f821a5c19fa80ef3d0d8ca72cae3531",
+    "EP556": "20853f88578ed68d761413dcb68cdfb2f623dde6",
+    "R03B": "26a1710548385339bdcb4cbf32244550867c5e10",
+    "R03F": "9f661931d51e03f137601b27eeaecf77ab11ad2f"
+  }
+}

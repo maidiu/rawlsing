@@ -1,0 +1,103 @@
+{
+  "handoff_id": "SCR556_TO_M3_AND_SCR5578",
+  "from": "SCR556_V556_INTERACTION_TOPOLOGY",
+  "repository": "maidiu/rawlsing",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-close-v556-interaction-topology",
+  "status": "SCR556_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+  "local_contract": "CLOSED",
+  "broad_topology_contradiction": false,
+  "production_implementation_authorized": false,
+  "m3_upstream_dependency": {
+    "stage": "SCR555_V555_ATOMIC_ROUTE",
+    "branch": "agent/vozhd-trii-dr-r03-close-v555-atomic-route",
+    "observed_against_common_base": {
+      "status": "identical",
+      "ahead_by": 0,
+      "behind_by": 0
+    },
+    "required_acceptance": "accepted SCR555 RESULT + EXACT_CONTRACT carrying canonical route identity/reference semantics"
+  },
+  "exact_unresolved_bindings": [
+    {
+      "binding": "SCR555_CANONICAL_ROUTE_IDENTITY_REFERENCE",
+      "need": "literal accepted SCR555 canonical route identity/reference field or tuple",
+      "may_be_guessed": false
+    },
+    {
+      "binding": "SCR555_ROUTE_STATE_ELIGIBILITY_FOR_V556",
+      "need": "accepted SCR555 typed route-state eligibility mapping for V556 participation",
+      "may_be_guessed": false
+    },
+    {
+      "binding": "SCR555_ROUTE_REFERENCE_CLOSURE",
+      "need": "accepted SCR555 immutable reference/hash closure required to validate an exact participant without V556 re-owning route semantics",
+      "may_be_guessed": false
+    }
+  ],
+  "forbidden_substitutions": [
+    "mediation_slot_id as canonical route identity",
+    "slot_name as canonical route identity",
+    "slot_channel as canonical route identity",
+    "run_id as canonical route identity",
+    "endpoint labels as canonical route identity",
+    "reconstruction from current V555/V556 implementation fields",
+    "latest/fuzzy/label repair of missing SCR555 authority"
+  ],
+  "m3_acceptance_procedure": [
+    "Read accepted SCR555 RESULT and EXACT_CONTRACT without reinterpreting route identity.",
+    "Replace symbolic SCR555_ACCEPTED_CANONICAL_ROUTE_IDENTITY_REF only by exact imported producer-owned identity/reference semantics.",
+    "Import accepted SCR555 typed route-state eligibility for V556 participation without adding V556 route-state policy.",
+    "Run M3-01 through M3-05 in HOSTILE_TEST_ORACLE.md.",
+    "If all pass without changing any independent SCR556 rule/topology/composition/state law, promote SCR556 final token to SCR556_EXACT_CONTRACT_CLOSED; otherwise return the exact seam conflict."
+  ],
+  "closed_scr556_contract_for_downstream": {
+    "semantic_families": [
+      "V556_INTERACTION_RELATION",
+      "V556_TOPOLOGY",
+      "V556_ATTRACTOR_PREREQUISITE"
+    ],
+    "participant_grain": "2..n exact accepted V555 canonical route references",
+    "positive_object_requires": [
+      "exact immutable V556 rule authority",
+      "exact V555 participant bindings",
+      "all required exact source-composition/compatibility authority",
+      "typed outcome state"
+    ],
+    "typed_states": [
+      "SUPPORTED",
+      "VALID_EMPTY",
+      "DENIED",
+      "NONCOMPARABLE",
+      "UNKNOWN_AUTHORITY",
+      "CONFLICTING_AUTHORITY",
+      "INVALID_PARTICIPANT_SET",
+      "UNRESOLVABLE_PARTICIPANT"
+    ],
+    "composition_default": "NONE_BY_DEFAULT",
+    "no_filler": "When no exact governed V556 higher-order rule is required, create zero V556 objects and preserve V555 direct V557 publication.",
+    "route_reidentification": "FORBIDDEN",
+    "inference_from_shared_endpoint_time_geography_stratum_storage_adjacency_coresolution_provenance": "FORBIDDEN"
+  },
+  "downstream_scr5578_handoff": {
+    "may_begin_from_closed_local_contract": true,
+    "final_registry_binding_waits_for_m3": true,
+    "must_preserve": [
+      "exact V556 producer semantic identity",
+      "exact V555 participant references through V556 without route re-ID",
+      "exact V556 rule authority references/hashes",
+      "exact composition authority references/hashes when required",
+      "participant role/order/cardinality/multiplicity semantics",
+      "typed positive/negative/valid-empty states",
+      "producer permission ceiling",
+      "interpretation-critical reference closure"
+    ],
+    "must_not": [
+      "infer interaction from repository adjacency or co-resolution",
+      "re-ID V555 or V556 producer semantics",
+      "widen V556 producer permission",
+      "treat provenance closure as source-composition authority",
+      "require filler V556 objects for directly publishable V555 routes"
+    ]
+  }
+}
