@@ -1,13 +1,13 @@
 {
   "control_surface": "VOZHD_TRII_PRECHANGE_DISCOVERY",
-  "status": "ACTIVE_RESEARCH_CONTROL__D13_ACCEPTED__D14_READY__NO_ARCHITECTURAL_CHANGE_AUTHORIZED",
+  "status": "DISCOVERY_CLOSED__D12_D13_D14_ACCEPTED__D15_READY_FOR_PARENT_ARCHITECTURE_SYNTHESIS",
   "repository": "maidiu/rawlsing",
   "branch": "agent/vozhd-trii-prechange-discovery-control",
   "base_sha": "0777a34e50221bde6801dbaca26c058a7350c9e8",
   "worker_launch_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
   "frozen_vt3_base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
   "target_corrective_launch_sha": "6899e58e7ed509327fca3e0294b76bef378d0caf",
-  "latest_parent_adjudication": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/18_D13_RETURN_ADJUDICATION.md",
+  "latest_parent_adjudication": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/19_D14_RETURN_ADJUDICATION.md",
   "campaign_constraints": [
     "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
     "schema_or_code_must_not_substitute_for_populated empirical evidence",
@@ -26,7 +26,8 @@
     "MATERIALIZE_ALL_PERMITTED is not required",
     "C11 minimum normalized respondent-event/coordinate incidence plus authority/provenance is the accepted specification-level physical information family",
     "no current populated C11 implementation is certified",
-    "no architecture synthesis before D15"
+    "D14 symbolic cost closure does not establish production savings percentages, runtime budgets, hardware budgets or cache policy",
+    "D15 is now the first authorized architecture-synthesis jurisdiction"
   ],
   "courts": [
     {"id":"D01","title":"V526c/V547 to V550 determinicity lineage","status":"ACCEPTED_WITH_REVIEW_NORMALIZATION"},
@@ -54,9 +55,7 @@
       "title":"Final physical retention and exact replay sufficiency",
       "branch":"agent/vozhd-trii-d13-final-retention-replay",
       "worker_base_sha":"f6cf5c4635b2d5334797c4e267347b47e20407e8",
-      "observed_branch_state":"7_COMMITS_AHEAD_OF_COMMANDED_BASE__COURT_OUTPUT_ONLY",
       "status":"ACCEPTED__PHYSICAL_INFORMATION_FRONTIER_CLOSED",
-      "final_verdict":"D13_PHYSICAL_FRONTIER_CLOSED__MINIMUM_NORMALIZED_RESPONDENT_EVENT_COORDINATE_INCIDENCE_PLUS_AUTHORITY_PROVENANCE_SELECTED__SPECIFICATION_LEVEL_SUFFICIENCY__NO_CURRENT_POPULATED_INSTANCE_CERTIFIED",
       "selected_information_family":"C11_MINIMUM_NORMALIZED_RESPONDENT_EVENT_COORDINATE_INCIDENCE_PLUS_AUTHORITY_PROVENANCE",
       "required_atoms":"M01-M18",
       "replay_frontier":"D12 R01-R14 and T01-T18",
@@ -77,13 +76,46 @@
     },
     {
       "id":"D14",
-      "title":"Compute and materialization benchmark",
-      "status":"READY_FOR_FINAL_COMPUTE_AND_MATERIALIZATION_BENCHMARK_COURT",
-      "depends_on_status":"SATISFIED_WITH_D12_D13_ACCEPTED",
-      "required_inputs":["courts/D12/D14_WORKLOAD_FRONTIER_HANDOFF.json","courts/D13/D14_PHYSICAL_CARRIER_HANDOFF.json"],
-      "accepted_feeder":"D14A"
+      "title":"Final compute, materialization and replay cost court",
+      "branch":"agent/vozhd-trii-d14-final-compute-materialization",
+      "worker_base_sha":"43c5dc3236fd4a1c9183d6dd72599776bb907411",
+      "observed_branch_state":"11_COMMITS_AHEAD_OF_COMMANDED_BASE__COURT_OUTPUT_ONLY",
+      "status":"ACCEPTED__DISCOVERY_COST_FRONTIER_CLOSED",
+      "final_gate":"DISCOVERY_COST_FRONTIER_CLOSED__D15_READY",
+      "measurement_posture":{
+        "current_geometry":"STATICALLY_DERIVED_FROM_D14A",
+        "target_geometry":"MODELED_FROM_EXPLICIT_PARAMETERS",
+        "live_runtime":"BLOCKED_LIVE_PRODUCTION_MEASUREMENT",
+        "production_savings_percentage":"UNKNOWN",
+        "hardware_budget":"UNKNOWN"
+      },
+      "accepted_law":[
+        "exact semantic distinctions and declared discovery coverage carry unavoidable cost",
+        "current eager V550/V550J materialization suite is not itself semantically mandatory",
+        "implementation traversal/index/cache/materialization/search strategy remains open",
+        "fixed E1/E2 caches are bounded acceleration only and do not replace C11",
+        "E3/E4 are diagnostic-cost lanes, not retention authority",
+        "source snapshots remain safety/evidence retention until positive source-to-C11 equivalence and later governance",
+        "no deletion, migration, cache, algorithm or hardware decision follows from D14"
+      ],
+      "handoff":"courts/D14/D15_COST_FRONTIER_HANDOFF.json"
     },
-    {"id":"D15","title":"Parent Vozhd Trii synthesis","status":"BLOCKED__ARCHITECTURE_NOT_AUTHORIZED"}
+    {
+      "id":"D15",
+      "title":"Parent Vozhd Trii synthesis",
+      "status":"READY_FOR_PARENT_ARCHITECTURE_SYNTHESIS",
+      "depends_on_status":"SATISFIED_WITH_D12_D13_D14_ACCEPTED",
+      "binding_inputs":[
+        "17_D12_RETURN_ADJUDICATION.md",
+        "courts/D12/D13_RETENTION_FRONTIER_HANDOFF.json",
+        "courts/D12/D14_WORKLOAD_FRONTIER_HANDOFF.json",
+        "18_D13_RETURN_ADJUDICATION.md",
+        "courts/D13/MINIMUM_INFORMATION_SUBSTRATE_SPEC.md",
+        "courts/D13/D14_PHYSICAL_CARRIER_HANDOFF.json",
+        "19_D14_RETURN_ADJUDICATION.md",
+        "courts/D14/D15_COST_FRONTIER_HANDOFF.json"
+      ]
+    }
   ],
   "feeders": [
     {"id":"D09A","branch":"agent/vozhd-trii-d09a-hostile-semantic-appeal","status":"EVIDENCE_ACCEPTED_AS_HOSTILE_CURRENT_AUTHORITY_APPEAL__TARGET_ONTOLOGY_REDUCTION_REJECTED"},
@@ -97,15 +129,29 @@
     {"id":"D13A","branch":"agent/vozhd-trii-d13a-retention-candidate-audit","status":"NON_DISPOSITIVE_INFORMATION_CAPABILITY_AUDIT_ACCEPTED"},
     {"id":"D13B","branch":"agent/vozhd-trii-d13b-replay-proof-protocol","status":"NON_DISPOSITIVE_REPLAY_PROTOCOL_ACCEPTED__CONSUMED_BY_FINAL_D13"},
     {"id":"D13C","branch":"agent/vozhd-trii-d13c-shared-substrate-static-loss","status":"NON_DISPOSITIVE_STATIC_LOSS_AUDIT_ACCEPTED__CONSUMED_BY_FINAL_D13"},
-    {"id":"D14A","branch":"agent/vozhd-trii-d14a-current-cost-geometry","status":"NON_DISPOSITIVE_CURRENT_COST_BASELINE_ACCEPTED__REAL_RUNTIME_MEASUREMENT_BLOCKED"}
+    {"id":"D14A","branch":"agent/vozhd-trii-d14a-current-cost-geometry","status":"NON_DISPOSITIVE_CURRENT_COST_BASELINE_ACCEPTED__CONSUMED_BY_FINAL_D14"}
   ],
-  "d14_final_acceptance_requirements":[
-    "benchmark the D12 terminal workload frontier against the D13 C11 information family as the primary lawful target carrier",
-    "preserve D13 equivalence assumptions EA01-EA08",
-    "measure current C02/C03/C04 only as baseline, never as lawful full-frontier replacement",
-    "separate terminal work from optional E1/E2 caches and E3/E4 diagnostics",
-    "do not infer live cardinalities or runtime figures without populated data",
-    "do not select architecture, cache policy, materialization policy, search algorithm family, migration, or deletion schedule"
+  "d15_authorized_synthesis_scope":[
+    "select final replacement architecture consistent with all accepted discovery law",
+    "define canonical object families and stage/authority ownership",
+    "define missing target authorities without collapsing ontologies",
+    "choose how C11 M01-M18 information is physically represented and accessed",
+    "choose bounded cache/materialization strategy where justified",
+    "choose autonomous discovery algorithm/coverage architecture subject to D12/D14 law",
+    "choose reverse positioned-subject possibility-field producer/consumer seam",
+    "choose structural empirical promotion boundaries",
+    "choose migration/retirement campaign subject to positive equivalence and source-safety constraints",
+    "produce implementation campaign and acceptance gates"
+  ],
+  "d15_must_not_claim":[
+    "populated source equivalence has already been proved",
+    "a production savings percentage or hardware budget from D14",
+    "source snapshots may be deleted before positive source-to-C11 equivalence and governance",
+    "current C02/C03/C04 is a lawful full-frontier substitute for C11",
+    "pairwise or independent marginals substitute for required k-way information",
+    "survey/population geometry directly assigns finished actor belief/psyche",
+    "distinct respondent universes may be silently joined or pooled",
+    "expensive terminal semantics may be removed for cost reasons"
   ],
   "d15_acceptance_tests":[
     "autonomously discover a social fork the designer did not pre-specify",
@@ -115,6 +161,8 @@
     "keep empirical possibility field distinct from finished actor psyche",
     "preserve distinct structural/stratal pressure field",
     "preserve separate respondent universes and meaningful disagreement without false joins or naive pooling",
-    "allow V3 history to metabolize constrained possibilities into divergent lives"
+    "allow V3 history to metabolize constrained possibilities into divergent lives",
+    "preserve D12 R01-R14 and D13 M01-M18 replay/information law",
+    "treat D14 blocked runtime sizing facts as implementation unknowns rather than invented measurements"
   ]
 }
