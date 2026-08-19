@@ -2,45 +2,53 @@
   "court": "D05",
   "title": "POPULATED EMPIRICAL SUBSTRATE REALITY COURT",
   "verdict": "BLOCKED_MISSING_POPULATED_DATA_ACCESS",
-  "audit_apparatus_status": "CLOSED_EXECUTABLE_NOT_RUN_AGAINST_POPULATED_DATA",
+  "audit_apparatus_status": "CLOSED_EXECUTABLE_FIXED_SEMANTICS",
+  "contract_version": "D05-EMPIRICAL-SUBSTRATE-AUDIT-R4",
   "populated_data_access_in_worker_environment": false,
   "branch": "agent/vozhd-trii-d05-empirical-substrate",
   "exact_base_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
   "production_code_modified": false,
-  "court_output_scope_only": true,
-  "source_equivalent_classification": "UNDETERMINED_DUE_TO_BLOCKED_POPULATED_DATA_ACCESS",
+  "writes_outside_d05": false,
+  "current_source_equivalent_classification": "UNDETERMINED_DUE_TO_BLOCKED_POPULATED_DATA_ACCESS",
   "canonical_execution": "DATABASE_URL='postgresql://...' bash data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D05/run_d05_empirical_audit.sh",
   "worker_semantic_decisions_required": 0,
-  "read_only_law": {
-    "database_transactions": "REPEATABLE READ, READ ONLY",
-    "database_mutation_statements": false,
-    "writes": "court CSV/JSON outputs under courts/D05 only"
+  "database_law": {
+    "transaction_isolation": "REPEATABLE READ",
+    "transaction_read_only": true,
+    "database_mutation_allowed": false
   },
+  "canonical_stages": [
+    "run_d05_empirical_audit.py",
+    "audit_d05_identity_overlap_exact.py",
+    "audit_d05_output_semantic_guard.py",
+    "audit_d05_authority_scope_cache.py",
+    "audit_d05_cache_identity_exact.py"
+  ],
   "apparatus_files": [
     "D05_AUDIT_CONTRACT.json",
     "EXECUTION_KIT.md",
     "run_d05_empirical_audit.sh",
     "run_d05_empirical_audit.py",
+    "audit_d05_identity_overlap_exact.py",
     "audit_d05_output_semantic_guard.py",
-    "audit_d05_authority_scope_cache.py"
+    "audit_d05_authority_scope_cache.py",
+    "audit_d05_cache_identity_exact.py"
   ],
-  "locked_external_evidence_sha256": {
-    "Rawlsing_WVS_public_schema.sql": "2c3f4a9ebec1e6c0cf62e8827ab982e52243c5c8899c961cd0e30b489573ec76",
-    "Rawlsing_WVS_authority_reconcile_schema.sql": "57e8c58c9444be9c34df54765e1801a9819f7a15fd02ddaa9a8e194e57596877",
-    "rawlsing_v5_ddm_production_continuation_pack_v2_ATTITUDE_CLOUD_LOCKED.zip": "e9c66a9638371966d620ef73c30f03c5dcca255cd874acbdf66e3738654b5861",
-    "rawlsing_v5_home_stretch_build_pack_v18_FINAL_LOCKED_NO_GHOSTS.zip": "a654014fb56032544fc4044ee230cf69823e076cb5f3e4fc3df91eb3148f12bd",
-    "rawlsing_chatlog_DDM_chatgpt_1.txt": "b0ff181b0d1f6a591b005b829aafeb27b0740249332b49e08bd381800ab1745a"
-  },
   "superseded_first_return_errors": [
-    "The first RESULT.md recorded incorrect SHA256 values for Rawlsing_WVS_public_schema.sql and Rawlsing_WVS_authority_reconcile_schema.sql.",
-    "The first RESULT.md referred to AUDIT.sql and EXPECTED_OUTPUT_SCHEMAS.json although those files had not been created.",
-    "The first return did not supply an executable no-choice populated-data audit."
+    "Incorrect SHA256 values were recorded for Rawlsing_WVS_public_schema.sql and Rawlsing_WVS_authority_reconcile_schema.sql.",
+    "AUDIT.sql and EXPECTED_OUTPUT_SCHEMAS.json were promised but not created.",
+    "The future database worker was left to make semantic audit decisions."
+  ],
+  "hostile_hardening_findings": [
+    "An inner-join overlap audit would omit zero-overlap question pairs and therefore erase physical routing/module evidence; R4 emits the complete unordered pair universe and left-joins overlap.",
+    "Matching cache respondent counts do not prove respondent-ID preservation; R4 compares exact respondent-ID sets and hashes for every selected cache group.",
+    "A derived relation that does not expose value_raw/value_text cannot be recorded as preserving those values with zero mismatches; the output semantic guard marks non-exposure explicitly."
   ],
   "fatal_core_relations": {
     "public.survey_microdata_respondents": ["id", "source", "wave", "country_code", "survey_year"],
     "public.survey_microdata_responses": ["respondent_id", "var_code", "value_raw", "value_text"]
   },
-  "expected_audited_relations": [
+  "expected_noncore_relations": [
     "public.survey_weight_fact",
     "public.respondent_position_fact",
     "public.question_structural_mapping",
@@ -48,59 +56,77 @@
     "public.v_ddm_response_long_facet_ready",
     "public.v_ddm_response_long_facet_ready_authority",
     "public.ddm_demographic_field_register",
-    "canonical_question_registry (exactly one discovered installed schema if present)",
-    "question_variable_alias (same discovered canonical-registry schema if present)"
+    "canonical_question_registry in exactly one discovered schema if installed",
+    "question_variable_alias in the same discovered canonical-registry schema if installed"
   ],
-  "physical_questions_covered_by_executable_apparatus": {
-    "respondent_identity": true,
-    "source_wave_country_year_coverage": true,
-    "response_incidence_and_distribution_per_respondent": true,
-    "all_question_pair_same_respondent_overlap": true,
-    "raw_respondent_var_duplicate_multiplicity": true,
-    "canonical_respondent_question_duplicate_multiplicity": true,
-    "position_field_completeness": true,
+  "executable_coverage": {
+    "respondent_global_uniqueness": true,
+    "respondent_source_wave_country_year_collisions": true,
+    "orphan_responses": true,
+    "source_wave_country_year_population": true,
+    "raw_respondent_var_multiplicity": true,
+    "canonical_respondent_question_multiplicity": true,
+    "question_distribution_per_respondent": true,
+    "all_unordered_question_pair_overlap_including_zero": true,
+    "position_field_completeness_and_cardinality": true,
     "source_native_demographic_register_candidates": true,
-    "primary_weight_coverage_and_pathology": true,
+    "primary_weight_coverage_and_pathologies": true,
     "typed_missingness_exposure_and_prevalence": true,
     "response_topology_authority_exposure": true,
-    "raw_to_facet_ready_row_multiplicity_parity": true,
-    "raw_response_code_and_text_multiset_parity_when_exposed": true,
-    "qsm_identity_join": true,
+    "raw_to_facet_row_and_multiplicity_parity": true,
+    "raw_code_and_text_multiset_parity_when_exposed": true,
+    "qsm_identity_partition": true,
     "production_r1_authority_resolution": true,
-    "canonical_registry_exact_and_alias_join": true,
+    "canonical_registry_exact_and_alias_resolution": true,
     "closed_35_actual_vs_governed_scope": true,
-    "shared_cache_selected_db_parity": true,
-    "shared_cache_position_predicate_preservation": true,
-    "shared_cache_typed_missingness_preservation": true,
-    "shared_cache_topology_field_preservation": true,
+    "shared_cache_selected_row_and_predicate_parity": true,
+    "shared_cache_exact_respondent_id_set_parity": true,
+    "shared_cache_respondent_id_norm_parity": true,
     "static_evidence_sha256_and_git_blob_provenance": true
   },
-  "fixed_outputs": [
+  "locked_external_evidence_sha256": {
+    "Rawlsing_WVS_public_schema.sql": "2c3f4a9ebec1e6c0cf62e8827ab982e52243c5c8899c961cd0e30b489573ec76",
+    "Rawlsing_WVS_authority_reconcile_schema.sql": "57e8c58c9444be9c34df54765e1801a9819f7a15fd02ddaa9a8e194e57596877",
+    "rawlsing_v5_ddm_production_continuation_pack_v2_ATTITUDE_CLOUD_LOCKED.zip": "e9c66a9638371966d620ef73c30f03c5dcca255cd874acbdf66e3738654b5861",
+    "rawlsing_v5_home_stretch_build_pack_v18_FINAL_LOCKED_NO_GHOSTS.zip": "a654014fb56032544fc4044ee230cf69823e076cb5f3e4fc3df91eb3148f12bd",
+    "rawlsing_chatlog_DDM_chatgpt_1.txt": "b0ff181b0d1f6a591b005b829aafeb27b0740249332b49e08bd381800ab1745a"
+  },
+  "normative_machine_readable_contract": "D05_AUDIT_CONTRACT.json",
+  "required_outputs_after_populated_run": [
     "RELATION_PREFLIGHT.csv",
+    "RESPONDENT_IDENTITY_AUDIT.csv",
     "SOURCE_WAVE_READINESS.csv",
-    "POSITION_FIELD_COMPLETENESS.csv",
+    "RESPONSE_MULTIPLICITY_AUDIT.csv",
     "QUESTION_OVERLAP_SUMMARY.csv",
+    "QUESTION_OVERLAP_COMPLETENESS.json",
+    "POSITION_FIELD_COMPLETENESS.csv",
     "WEIGHT_COVERAGE.csv",
+    "TYPED_MISSINGNESS_PREVALENCE.csv",
+    "RESPONSE_TOPOLOGY_AUDIT.csv",
     "IDENTITY_JOIN_AUDIT.csv",
     "R1_AUTHORITY_JOIN_AUDIT.csv",
     "CANONICAL_REGISTRY_JOIN_AUDIT.csv",
     "GOVERNED_SCOPE_COMPARISON.csv",
-    "RESPONSE_MULTIPLICITY_AUDIT.csv",
-    "TYPED_MISSINGNESS_PREVALENCE.csv",
-    "RESPONSE_TOPOLOGY_AUDIT.csv",
     "FACET_READY_PARITY_AUDIT.csv",
     "CACHE_SELECTED_PARITY.csv",
+    "CACHE_IDENTITY_EXACT.csv",
     "INFORMATION_LOSS_AUDIT.csv",
     "STATIC_EVIDENCE_PROVENANCE.csv",
     "INVARIANT_RESULTS.csv",
     "FAILURES.csv",
+    "IDENTITY_OVERLAP_FAILURES.csv",
     "EXTENDED_FAILURES.csv",
+    "CACHE_IDENTITY_FAILURES.csv",
     "AUDIT_RUN.json",
     "EXTENDED_AUDIT_SUMMARY.json"
   ],
-  "exact_output_schemas": "D05_AUDIT_CONTRACT.json",
-  "exact_queries": "Embedded as fixed SQL literals in run_d05_empirical_audit.py and audit_d05_authority_scope_cache.py; duplication into a second SQL authority is intentionally avoided.",
-  "provenance_hashing": "run_d05_empirical_audit.py hashes every file in its STATIC_FILES authority list with SHA256 and records Git blob SHA at run time; hash-addressed external evidence is recorded separately from checked-in evidence.",
-  "source_equivalence_proof_bar": "Database parity alone cannot yield PROVED_SOURCE_EQUIVALENT. Source-native routing/not-asked semantics, weighting design, original labels/codes where not retained, geography/demographic detail, and ingest provenance must also be physically verified.",
-  "why_verdict_remains_blocked": "This worker environment still has no populated PostgreSQL database or exact transactionally consistent production-equivalent populated snapshot. The apparatus is closed; the empirical measurements are not fabricated."
+  "substantive_source_equivalent_allowed_values": [
+    "PROVED_SOURCE_EQUIVALENT",
+    "POTENTIALLY_SOURCE_EQUIVALENT_UNPROVED",
+    "DERIVED_CACHE_WITH_KNOWN_LOSS",
+    "DERIVED_CACHE_WITH_UNKNOWN_LOSS",
+    "NOT_SOURCE_EQUIVALENT"
+  ],
+  "source_equivalence_proof_bar": "Database-internal parity alone cannot yield PROVED_SOURCE_EQUIVALENT. Source-native routing/not-asked semantics, weighting design, original labels/codes where not retained, geography/demographic detail, multiple-response semantics, source identifiers, and ingest provenance must also be physically verified.",
+  "why_empirical_verdict_remains_blocked": "No live populated PostgreSQL database or exact transactionally consistent production-equivalent populated snapshot is accessible in this worker environment. No schema-only substitute is accepted."
 }
