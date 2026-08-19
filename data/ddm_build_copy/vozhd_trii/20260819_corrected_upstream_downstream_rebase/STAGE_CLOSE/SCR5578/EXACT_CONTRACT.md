@@ -1,182 +1,162 @@
 # SCR5578 Exact Contract — V557 Publication / V558 Standalone Repository / Context Resolution
 
-**Contract ID:** `SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT`  
-**Version:** `1.0.0`  
-**Repository:** `maidiu/rawlsing`  
+**Contract:** `SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT@1.0.0`  
 **Exact common base:** `baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d`  
-**Authority posture:** local contract frozen; exact SCR553–SCR556 producer identities remain M4 final-seam bindings  
-**Machine-readable canonical companion:** `EXACT_CONTRACT.json` (`sha256:148df7139f1d991cd95924da8fd6eac2b65caa9d1398cc6ea7e930c1fa58874f`)
+**Machine contract:** `EXACT_CONTRACT.json`  
+**Machine contract SHA-256:** `7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c`  
+**Local status:** `CLOSED`  
+**Final status:** `WAITING_ONLY_FOR_EXACT_FINAL_SEAM`
 
-## 1. Jurisdiction and non-jurisdiction
+## 1. Logical authorities
 
-V557 and V558 remain distinct logical authorities even if one implementation physically co-packages them.
+V557 and V558 are logically distinct even when physically co-packaged.
 
-**V557 owns:** item-level runtime publication admission; producer-permission intake; monotone permission narrowing; typed item/collection governance; immutable publication identity; interpretation-critical closure proof.
+**V557 owns:** runtime publication admission, producer-permission intake, item/collection use governance, monotone narrowing, immutable publication identity and interpretation-critical closure proof.
 
-**V558 owns:** immutable `StructuralPriorRepository`; producer-preserving locators/reference graph; logical indexes; deterministic stage-blind `ContextResolver`; candidate `SelectionRecord`s; resolution receipt; descriptive coverage/fidelity; exact refresh carrier metadata; `ResolvedStructuralContext`.
+**V558 owns:** immutable `StructuralPriorRepository`, producer-preserving locators/reference graph, logical indexes, deterministic stage-blind `ContextResolver`, `SelectionRecord`s, resolution receipt, coverage/fidelity, refresh carrier metadata and `ResolvedStructuralContext`.
 
-Neither owns V553/V554/V555/V556 producer semantics. Neither may create source compatibility, cross-source composition, actor state or expression authority. No production implementation is authorized here.
+Neither owns V553/V554/V555/V556 domain semantics. Neither may create cross-source composition authority, actor state or expression semantics. No production implementation is authorized here.
 
-## 2. Mixed-producer publication root law
+## 2. Producer registry and final-seam placeholders
 
-The only SCR5578 structural publication-root producer families frozen by the accepted R03 broad DAG are:
+The direct publication-root producer families are exactly:
 
-`V553 | V554 | V555 | V556`
+`V553 | V554 | V555 | V556`.
 
-Each producer family has one pending **exact final-seam registry binding**. SCR5578 intentionally does not fill:
+A producer object may publish directly to V557 only when the final accepted contract for that producer independently authorizes the exact object/use. Historical stage numbering does not require a no-op wrapper.
 
+SCR5578 does **not** guess producer machine identities. M4 must bind, for each accepted SCR553/SCR554/SCR555/SCR556 return:
+
+- exact accepted head SHA and result token;
 - producer contract ID/version/hash;
-- exact object or collection schema IDs/versions;
-- canonical object identity tuple/hash law;
-- exact semantic-state enum;
-- exact producer permission contract;
-- exact interpretation-critical reference-contract IDs/versions/hashes;
+- object and collection schema IDs/versions;
+- canonical producer identity tuple and hash law;
+- producer permission ceiling;
+- typed positive/negative/valid-empty/missing/noncomparable/integrity states;
+- exact producer reference-contract IDs/versions/hashes;
 - producer-owned role/cardinality/multiplicity/order semantics;
-- direct-publication eligibility details;
-- producer build/schema/compiler replay tuple.
+- direct V557 publication eligibility;
+- producer build/schema/compiler replay identity.
 
-Those come only from accepted SCR553/SCR554/SCR555/SCR556. `EP*`, historical modules and CAN packaging labels may not substitute.
+Before those exact bindings exist: `PRODUCER_FINAL_CONTRACT_UNBOUND`.
 
-A V553/V554/V555/V556 object may publish directly to V557 if and only if its exact bound producer contract independently authorizes the exact object and requested use. No synthetic later-stage wrapper is required merely to preserve stage numbering.
+## 3. Permission contract
 
-## 3. Item-wise permission lattice
-
-Canonical use atoms are:
+Use atoms are:
 
 `REVIEW`, `CONTEXT`, `ACTIVE_CAUSAL`.
 
-Canonical state expansion:
+State expansion:
 
-| State | Allowed-use set |
+| State | Allowed uses |
 |---|---|
-| `ALLOW_ACTIVE_CAUSAL_CONTEXT` | `{REVIEW, CONTEXT, ACTIVE_CAUSAL}` |
-| `ALLOW_CONTEXT_ONLY` | `{REVIEW, CONTEXT}` |
-| `ALLOW_REVIEW_ONLY` | `{REVIEW}` |
-| `DENY_CAUSAL_USE` | `{}` |
-| `NOT_APPLICABLE` | `{}` |
+| `ALLOW_ACTIVE_CAUSAL_CONTEXT` | `REVIEW, CONTEXT, ACTIVE_CAUSAL` |
+| `ALLOW_CONTEXT_ONLY` | `REVIEW, CONTEXT` |
+| `ALLOW_REVIEW_ONLY` | `REVIEW` |
+| `DENY_CAUSAL_USE` | none |
+| `NOT_APPLICABLE` | none |
 
-For every producer object and every resolver candidate:
+For every item and every resolver candidate:
 
 `resolver_allowed_uses ⊆ V557_allowed_uses ⊆ producer_allowed_uses`.
 
-The comparison is **item-wise**. A collection/global status cannot stand in for it.
+Enforcement is item-wise. Repository presence, collection/global readiness, index membership, locator existence, root activity or dependency reachability never grants permission. A dependency retains its own permission state and never inherits its root's use state.
 
-Required enforcement order:
+Missing or ambiguous producer permission fails closed. Any V557 or resolver widening attempt is `INTEGRITY_FAILURE__FORBIDDEN_PERMISSION_WIDENING`.
 
-1. verify identity/hash/schema/version/reference-closure integrity;
-2. read exact producer permission ceiling;
-3. reject missing/ambiguous producer permission rather than guessing;
-4. apply V557 preserve-or-narrow decision only;
-5. preserve producer negative/missing/noncomparable/valid-empty meaning;
-6. ignore collection/global readiness as permission authority;
-7. V558 repository ingest grants no permission;
-8. resolver may narrow further for the fixed query but never widen.
+## 4. V557 object and collection records
 
-A root's permission never propagates to its dependencies. A dependency retains its own state. Repository membership, locator existence and index hits are never permission grants.
+`SCR5578_RUNTIME_AUTHORIZED_OBJECT_RECORD@1.0.0` binds:
 
-## 4. V557 governance records and collections
+- V557 governance record ID/hash and authority ID/version;
+- producer family/collection kind;
+- canonical producer object ID/hash;
+- producer build ID/hash;
+- producer schema ID/version/compiler;
+- producer rule/predicate/reference-contract refs;
+- exact producer permission input;
+- V557 publication admission/use state/expanded allowed uses;
+- epistemic class and governance exception state/subtype;
+- negative/limit, noncomparability and uncertainty refs;
+- closure audit ref;
+- provenance refs;
+- V557 rule and compatibility bindings.
 
-`SCR5578_RUNTIME_AUTHORIZED_OBJECT_RECORD@1.0.0` requires:
+The governance-record ID is nonsemantic. Producer object ID/hash remains canonical semantic identity.
 
-`governance_record_id`, `governance_record_hash`, canonical V557 authority ID/version, producer family/collection kind, producer object ID/hash, producer build ID/hash, producer schema ID/version/compiler, producer rule/predicate/reference-contract refs, exact producer permission input, V557 publication admission, V557 use state, expanded V557 allowed-use set, epistemic class, governance exception state/subtype, negative/limit refs, noncomparability refs, uncertainty refs, transitive-closure audit ref, provenance refs, runtime-use rule ref and exact compatibility bindings.
+`SCR5578_RUNTIME_AUTHORIZED_COLLECTION_MANIFEST@1.0.0` binds producer collection/build/schema identity, exact object count, collection state and valid-empty subtype, all governance-record/state counts, closure ref/hash, V557 authority and registry bindings.
 
-**Identity:** V557 governance identity is audit/governance identity. The producer object ID/hash remains the semantic identity.
+Collection states are `VALID_NONEMPTY`, `VALID_EMPTY`, `INVALID_FAIL_CLOSED`. A valid-empty collection creates no filler object and grants no item permission.
 
-Publication admission enum:
+## 5. Corrected reference-class contract
 
-`ADMIT_RUNTIME_AUTHORIZED_RECORD | DO_NOT_ADMIT_RUNTIME_AUTHORIZED_RECORD`.
+### Root candidates
 
-Governance exception enum:
+Only exact bound V553/V554/V555/V556 producer objects.
 
-`NO_EXCEPTION_STATE | NEGATIVE_AUTHORITY | MISSING_AUTHORITY | NONCOMPARABLE | VALID_EMPTY | INTEGRITY_FAILURE`.
+### Interpretation-critical reference-only
 
-`SCR5578_RUNTIME_AUTHORIZED_COLLECTION_MANIFEST@1.0.0` binds the producer collection/build/schema/hash, exact count, collection state, exact valid-empty subtype if any, every governance-record count/state distribution, closure manifest/hash, V557 authority binding and governance registry versions.
-
-Collection states:
-
-`VALID_NONEMPTY | VALID_EMPTY | INVALID_FAIL_CLOSED`.
-
-A valid-empty collection has exact zero roots under producer/governance authority. It never causes filler-object creation.
-
-## 5. Corrected reference-class registry
-
-### Structural publication roots
-
-Only exact bound V553/V554/V555/V556 producer objects are root candidates.
-
-### Interpretation-critical reference-only classes
-
-These may be carried/dereferenced only when an exact producer schema/reference contract declares them interpretation-critical:
+Only when an exact producer schema/reference contract declares the dependency interpretation-critical:
 
 - `StructuralEmpiricalAdmission`;
 - `EmpiricalFact`;
 - QuerySpec;
 - source UniverseSpec/risk set;
 - measure/weight/estimand authority;
-- applicable source-comparability/composition authority;
 - historical producer/rule/predicate/authority snapshots;
-- producer-owned temporal/negative/limit/uncertainty dependencies.
+- temporal, negative, limit and uncertainty authority;
+- operation-specific source-composition authority.
 
-Their upstream owners retain semantic authority.
+Their original upstream owners remain authoritative.
 
-`DiscoveryResultReceipt` is audit/provenance-only.  
-`ReplayReceipt` is replay/audit-only and has no structural runtime-prior role.
+`DiscoveryResultReceipt` is audit/provenance-only. `ReplayReceipt` is audit/replay-only and never a runtime structural prior.
 
 ### `MUST_NOT_APPEAR`
 
-The structural repository rejects:
+Reject from V557/V558 structural publication/repository:
 
+- `ActorComparatorReceipt`;
 - `PositionedSubjectEmpiricalPossibilityField` / PSEPF;
 - `V3EmpiricalPossibilityInput`;
-- `ActorComparatorReceipt`;
 - rendered expression/persona objects.
 
 PSEPF remains on the separate direct thin V3 lane.
 
-## 6. Immutable V557 publication bundle
+## 6. Immutable V557/V558 bundles
 
-`SCR5578_V557_IMMUTABLE_PUBLICATION_BUNDLE@1.0.0` is content-addressed and atomic.
+V557 publication schema: `SCR5578_V557_IMMUTABLE_PUBLICATION_BUNDLE@1.0.0`.
 
-ID rule:
+ID: `V557PUB:<publication_identity_hash>`.
 
-`V557PUB:<publication_identity_hash>`.
+V558 repository schema: `SCR5578_V558_STRUCTURAL_PRIOR_REPOSITORY_BUNDLE@1.0.0`.
 
-It binds, at minimum:
+ID: `V558REPO:<repository_identity_hash>`.
 
-- publication manifest ID/hash;
-- every collection-manifest binding;
-- every item governance-record binding;
-- producer build identities/hashes;
-- transitive closure manifest/hash and per-root digests;
-- producer material store manifest/hash or exact immutable external content-locator manifest;
-- CAN-003/V557 governance authority binding;
-- publication/compatibility policy bindings;
-- publication content hash and identity hash;
-- atomic publication state.
+Both use deterministic UTF-8 canonical JSON and SHA-256. Producer-declared semantic array order is preserved. Unordered arrays may sort only when producer/reference-contract authority declares order insignificant.
 
-Any identity/content/governance/policy binding change creates a new bundle. In-place mutation and mutable `latest` identity are forbidden.
+Any bound content, identity, governance or policy change creates a new immutable ID. In-place mutation and mutable `latest/current/default` identity are forbidden. Partial publication/repository visibility is forbidden.
 
-Partial publication is not consumable.
+Publication binds item/collection governance, producer builds, closure manifest/root digests and immutable material/locators. Repository additionally binds source publication identity, locator registry, reference graph, indexes, fidelity/negative manifest, producer material and exact policies.
 
-## 7. Producer-preserving locator and reference graph
+## 7. Producer-preserving locator
 
-`SCR5578_PRODUCER_PRESERVING_OBJECT_LOCATOR@1.0.0` must contain the authoritative producer family, object ID/hash, build ID/hash, schema ID/version, producer rule/predicate/reference-contract bindings, V557 governance-record ID/hash, content blob hash and exact storage/provenance locator.
+`SCR5578_PRODUCER_PRESERVING_OBJECT_LOCATOR@1.0.0` contains the authoritative producer family/object ID/hash/build ID/hash/schema ID/version, producer rule/predicate/reference-contract bindings, V557 governance ref/hash, content hash and exact storage/provenance locator.
 
-`locator_id` is nonsemantic. It must reverse exactly to one authoritative producer tuple without text/fuzzy rematching.
+The locator is nonsemantic and must reverse exactly to one authoritative producer tuple without text/fuzzy matching. Same bytes under distinct producer identities do not create semantic equivalence.
 
-Byte-identical objects under distinct producer identities do **not** become semantically equivalent.
+## 8. Reference graph and standalone closure
 
-### Reference graph
+Closure scope is:
 
-Closure is `PER_PUBLISHED_ROOT_ROLE_PRESERVING_TRANSITIVE_SEMANTIC_CLOSURE`.
+`PER_PUBLISHED_ROOT_ROLE_PRESERVING_TRANSITIVE_SEMANTIC_CLOSURE`.
 
-The walker follows **only** producer/reference-contract-declared interpretation-critical references.
+The walker follows only interpretation-critical references declared by exact bound producer schema/reference contracts. Arbitrary prose/audit/provenance mentions are not closure edges.
 
-Every edge carries:
+Every edge preserves:
 
-- source and target locator refs;
+- source/target locator;
 - reference-contract ID/version/hash;
-- edge role;
+- producer-authorized edge role;
 - requiredness;
 - participant role;
 - declared cardinality;
@@ -184,254 +164,135 @@ Every edge carries:
 - order-significant flag;
 - semantic ordinal.
 
-SCR5578 does not invent edge roles. A role name has semantic force only because the bound producer/reference contract supplies it.
+SCR5578 packaging names never invent producer roles. N-ary objects remain n-ary. No dyadization, collapse, winner selection or relation reconstruction is permitted. Producer semantic order is distinct from serialization order.
 
-Strong one-target references resolving to zero or incompatible multiple targets fail closed. Producer-authorized multiplicity is preserved.
+A strong reference resolving to zero or incompatible multiple targets fails closed unless the exact producer contract authorizes multiplicity/noncomparability.
 
-N-ary objects remain n-ary. No dyadization, collapse, winner selection or reconstruction is permitted.
+### Standalone theorem
 
-Semantic order is producer-declared role/ordinal meaning. Serialization order is never authority.
+The conformance fixture removes raw V553/V554/V555/V556 directories.
 
-## 8. Strict standalone positive + negative closure
-
-Raw V553/V554/V555/V556 stage directories are absent in the conformance fixture.
-
-Each required leaf must be satisfied by either:
+Every interpretation-critical **positive and negative** dependency must still resolve from:
 
 1. packaged immutable content addressed by exact hash; or
-2. a packaged immutable content-addressed locator/resolution contract binding exact identity/version/hash, deterministic authorization and a non-fuzzy/non-latest resolver.
+2. a packaged immutable exact hash-bound locator/resolver contract binding identity/version/hash and forbidding fuzzy/latest fallback.
 
-The following **do not** satisfy a leaf by themselves:
+ID alone, hash alone without a resolvable content contract, display label, provenance prose, current/latest authority and an external raw-stage path are insufficient.
 
-- object ID;
-- content hash with no resolvable content contract;
-- display label;
-- provenance prose;
-- current/latest authority;
-- a raw-stage path outside the bundle.
+Required closure may include, when the producer declares it interpretation-critical: producer authority snapshots; source universes/risk sets; QuerySpecs; measure/weight/estimand authority; admission lineage; temporal support/limits; typed negative/missing/noncomparability/valid-empty/uncertainty; operation-specific source-composition authority; role/cardinality/multiplicity/order dependencies.
 
-Closure includes every interpretation-critical positive and negative dependency declared by the producer contract. Depending on the bound producer, that may include producer authority snapshot, source universe/risk set, QuerySpec, measure/weight/estimand authority, admission lineage, temporal support/limits, typed negative/missing/noncomparability/valid-empty/uncertainty authority, source-composition authority and exact participant/reference topology.
+Missing, ambiguous, corrupt, hash-mismatched or version-conflicting closure is `INTEGRITY_FAILURE`. V558 may not repair from raw stage directories, latest/current authority, fuzzy labels, network lookup, scores, embeddings or model judgment.
 
-Missing, ambiguous, corrupt, hash-mismatched or version-conflicting required closure is `INTEGRITY_FAILURE`.
+## 9. Provenance firewall
 
-V558 may never repair closure from raw stage directories, fuzzy labels, current/latest authority, network lookup or model judgment.
+Provenance reachability proves origin/authority reachability only.
 
-## 9. Provenance / source-composition firewall
+It does not grant source semantic equivalence, respondent linkage, sample pooling, estimand compatibility, generated-actor comparability or cross-source composition.
 
-Exact provenance closure proves only origin and authority reachability.
+Cross-source composition remains `NONE_BY_DEFAULT`; an operation requires separate exact positive authority scoped to that operation.
 
-It does **not** prove:
+## 10. StructuralPriorRepository and logical indexes
 
-- source semantic equivalence;
-- respondent identity linkage;
-- sample pooling permission;
-- estimand compatibility;
-- generated-actor comparability;
-- cross-source composition authority.
+`SCR5578_STRUCTURAL_PRIOR_REPOSITORY@1.0.0` contains exact source publication binding, collection registry, producer-preserving locator registry, role-preserving mixed-producer reference graph, logical indexes, fidelity/negative manifest, immutable producer material/locators and exact publication/resolver policy bindings.
 
-Cross-source composition is `NONE_BY_DEFAULT`. Any joint operation requires separate positive operation-specific authority preserved by exact reference.
-
-## 10. Immutable StructuralPriorRepository
-
-`SCR5578_V558_STRUCTURAL_PRIOR_REPOSITORY_BUNDLE@1.0.0` has ID:
-
-`V558REPO:<repository_identity_hash>`.
-
-The repository includes at minimum:
-
-- repository manifest/content/identity hash;
-- exact source V557 publication ID/identity/content hashes;
-- source collection-manifest bindings;
-- collection registry;
-- producer-preserving ObjectLocator registry;
-- role-preserving mixed-producer reference graph;
-- mandatory logical index manifests;
-- collection fidelity/negative manifest;
-- producer material store or exact packaged immutable content locators;
-- exact publication-policy bindings;
-- exact resolver-policy binding;
-- atomic repository state.
-
-A changed producer build, V557 publication decision, index/material graph or bound policy creates a new repository identity. Existing repository bundles never mutate.
-
-`PSEPF` admission returns:
-
-`FORBIDDEN_REFERENCE_CLASS_PSEPF_STRUCTURAL_REPOSITORY`.
-
-Repository presence never grants permission.
-
-## 11. Logical index contract
+Raw producer directories are not required for resolution. Repository presence is not permission. Producer semantics are never re-owned.
 
 Mandatory logical index families:
 
-- `TEMPORAL`;
-- `GEOGRAPHIC`;
-- `FINITE_STRATUM`;
-- `GENERATED_POSITION_REQUIREMENT`;
-- `NEGATIVE_LIMIT`;
-- `PROVENANCE`.
+`TEMPORAL`, `GEOGRAPHIC`, `FINITE_STRATUM`, `GENERATED_POSITION_REQUIREMENT`, `NEGATIVE_LIMIT`, `PROVENANCE`.
 
-They are **nonsemantic exact candidate-discovery accelerators** and lossless/reversible views over producer-preserving locators.
+Indexes are nonsemantic exact candidate-discovery accelerators and lossless/reversible views over locators. Every hit must dereference and reverify producer identity/hash/closure. A missing/incomplete required index is `REPOSITORY_INDEX_INTEGRITY_FAILURE`, not valid-empty.
 
-Each manifest binds repository ID/hash, index family/schema/hash, completeness, exact key-contract ref, locator refs, authoritative object refs/hashes, build provenance and integrity.
+Forbidden index authority includes nearest time/geography, prefix/substring match, embedding/LLM similarity, score rank, most-common, first-row, mutable latest and raw-stage/network fallback.
 
-Any required missing/incomplete index is `REPOSITORY_INDEX_INTEGRITY_FAILURE`, not valid-empty.
+## 11. ContextResolver
 
-Every index hit is dereferenced and reverified.
-
-Forbidden as semantic selection authority: nearest time, nearest geography, substring/prefix matching, embeddings, LLM similarity, scores, most-common, first-row, mutable latest and raw-stage/network fallback.
-
-## 12. ContextQuery and deterministic ContextResolver
-
-The accepted resolver binding is:
+Exact policy binding:
 
 `V558_CONTEXT_RESOLVER_POLICY@1.0.0`  
-policy hash `4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f`.
+`sha256:4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f`.
 
-The semantic function is fixed by:
+Pure semantic inputs are immutable repository bundle ID/content hash, index manifest ID/hash, ContextQuery ID/hash, resolver policy ID/version/hash and accepted generated-binding refs/hashes.
 
-- immutable repository bundle ID/content hash;
-- repository index manifest ID/hash;
-- exact ContextQuery ID/hash;
-- exact resolver policy ID/version/hash;
-- exact accepted generated-binding refs/hashes.
+Forbidden nondeterminism: hidden wall clock, mutable latest, filesystem/database/process order, raw-stage/network lookup, randomness, unrecorded cache, display-label matching, LLM/embedding output and implementation-default policy.
 
-No hidden wall clock, mutable latest, filesystem/database/process order, raw-stage lookup, network lookup, randomness, unrecorded cache, display-label matching, LLM/embedding output or implementation-default policy may affect selection.
+Resolution algorithm:
 
-Resolution sequence:
-
-1. validate repository identity/content/atomic state;
-2. validate resolver policy identity/version/hash;
-3. validate ContextQuery ID/hash/purpose;
-4. validate required index manifests and completeness;
-5. discover candidates by exact index keys;
-6. dereference and verify producer identity/hash/schema/reference closure;
-7. verify `V557_allowed_uses ⊆ producer_allowed_uses`;
-8. derive query-relative resolver state and verify `resolver_allowed_uses ⊆ V557_allowed_uses`;
-9. enforce exact producer conditions, geography, stratum, generated-position and negative authority without invention;
-10. apply temporal precedence;
-11. apply equal-rank ambiguity or producer-authorized multiplicity;
-12. emit a SelectionRecord for **every** considered candidate;
-13. emit resolution receipt without filling unresolved keys;
-14. materialize only the contract-defined structural context.
+1. validate repository/index/query/policy identity/hash/completeness;
+2. discover candidates by exact governed keys;
+3. dereference/reverify producer identity/hash/schema/closure;
+4. verify `V557_allowed_uses ⊆ producer_allowed_uses`;
+5. derive query-relative state and verify `resolver_allowed_uses ⊆ V557_allowed_uses`;
+6. enforce exact producer conditions, geography, strata, generated-position and negative authority without invention;
+7. apply temporal precedence;
+8. apply equal-rank/multiplicity law;
+9. emit a SelectionRecord for every considered candidate;
+10. emit receipt without filling unresolved keys;
+11. materialize only contract-defined structural context.
 
 Temporal precedence:
 
-`DIRECT_TEMPORAL_SUPPORT`
-`>` `LATEST_PRIOR_OBSERVATION_PROXY` if explicitly authorized
-`>` `EARLIEST_POST_QUERY_PROXY` if explicitly authorized
-`>` `NO_LAWFUL_TEMPORAL_ANCHOR`.
+`DIRECT_TEMPORAL_SUPPORT > LATEST_PRIOR_OBSERVATION_PROXY_IF_AUTHORIZED > EARLIEST_POST_QUERY_PROXY_IF_AUTHORIZED > NO_LAWFUL_TEMPORAL_ANCHOR`.
 
-A point observation does not become an interval. Future proxy evidence retains actual evidence time, signed lag and `historical_observation_at_query_time=false`.
+A point observation does not become an interval. A future proxy retains actual evidence time, signed lag and `historical_observation_at_query_time=false`.
 
-Equal-rank law:
+Tie law: exact duplicate same ID/hash may dedup serialization only; producer-authorized multiplicity returns the full tied set; singular equal-rank authority with no precedence returns `AMBIGUOUS_EQUAL_RANK_AUTHORITY`; lexicographic order is serialization only; averaging/score/similarity/model judgment is forbidden.
 
-- exact same ID/hash duplicate: serialization dedup only;
-- producer-authorized multiplicity: return full set;
-- one required winner with no governed precedence: `AMBIGUOUS_EQUAL_RANK_AUTHORITY`;
-- lexicographic order: serialization only;
-- averaging, score, confidence, similarity, most-recent-build and model judgment: forbidden.
+Co-resolved participants cannot synthesize a V556 relation/topology. Geography/prevalence cannot create generated positions.
 
-## 13. SelectionRecord
+## 12. SelectionRecord / receipt / context
 
-`SCR5578_V558_SELECTION_RECORD@1.0.0` is mandatory for every considered candidate.
-
-It binds repository/index/query/policy identity; semantic resolution key; locator and canonical producer object ID/hash; producer permission state and expanded set; V557 governance ref/state/set; resolver query-relative state/set; epistemic/exception state; temporal rank/proxy authority/evidence time/lag flags; geography/stratum/horizon refs; generated-position bindings; producer predicate receipts; negative/unknown/missing/noncomparability refs; tie/multiplicity authority; decision/reason/provenance; record ID/hash.
-
-Decision states include selected direct/prior/post/non-temporal, lawful multiplicity, permission/geography/stratum rejection, proxy rejection, unbound-position/missing-evaluator defer, no lawful temporal anchor, preserved negative/unknown/noncomparable/valid-empty, ambiguous equal-rank and integrity failure.
+`SCR5578_V558_SELECTION_RECORD@1.0.0` is mandatory for every considered candidate and binds repository/index/query/policy identity, resolution key, locator and canonical producer ID/hash, producer/V557/resolver permission states and sets, epistemic/exception state, temporal/proxy/evidence/lag fields, geography/stratum/horizon, generated-position bindings, producer predicate receipts, negative/unknown/missing/noncomparability state, tie/multiplicity authority, decision/reason/provenance and record identity/hash.
 
 Unresolved keys are never filled.
 
-## 14. Resolution receipt
+`SCR5578_V558_CONTEXT_RESOLUTION_RECEIPT@1.0.0` binds all/selected/deferred/preserved-negative records, unresolved keys, typed result state, replay digest and materialized context ref/hash.
 
-`SCR5578_V558_CONTEXT_RESOLUTION_RECEIPT@1.0.0` binds the repository, query, policy, full SelectionRecord set, selected/deferred/preserved-negative subsets, unresolved keys, result state, replay input digest and ResolvedStructuralContext ref/hash when materialized.
+`SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0` is `RESOLVER_DERIVED_CONTEXT`. Every resolved entry retains resolution key, SelectionRecord ref, canonical producer family/object ID/hash, producer locator, resolver allowed uses and decision state. It also preserves negative and deferred/unresolved entries.
 
-Result states preserve complete, valid-empty, lawful multiplicity, typed partial/deferred, ambiguous, denied/not-applicable, no temporal anchor, missing authority, integrity failed and exact replay reproduced.
+It cannot create actor biography/position/event, memory, knowledge, belief, relationship truth, persona, voice, dialogue or a new V556 relation/topology.
 
-## 15. CoverageFidelityProfile
+## 13. Fidelity and refresh
 
-`SCR5578_COVERAGE_FIDELITY_PROFILE@1.0.0` is a deterministic descriptive aggregation of SelectionRecords.
+`SCR5578_COVERAGE_FIDELITY_PROFILE@1.0.0` is deterministic, multidimensional and descriptive. It reports typed counts across requested/considered/selected/deferred/rejected/negative/unknown/noncomparable/valid-empty/no-anchor/ambiguity/integrity/unresolved states and producer/use-state dimensions. No canonical scalar fidelity/readiness score is authorized.
 
-It reports, at minimum, counts for requested keys, considered candidates, direct/prior/post/non-temporal selections, lawful multiplicity, unbound-position and missing-evaluator deferrals, permission/geography/stratum rejection, negative/unknown/noncomparability/valid-empty preservation, no-anchor, ambiguity, integrity failure, unresolved keys, authoritative producer family, V557 state and resolver allowed-use set.
-
-No canonical scalar fidelity/readiness score is authorized.
-
-## 16. Refresh metadata
-
-`SCR5578_CONTEXT_REFRESH_METADATA@1.0.0` freezes the **carrier**, not a new refresh-trigger authority.
-
-Required fields bind repository/query/query-time, refresh state, exact refresh authority ID/version/hash, `next_context_change` where authorized, authorized horizon for no-bound-change, decision-basis refs and replay digest.
-
-States:
+`SCR5578_CONTEXT_REFRESH_METADATA@1.0.0` freezes the carrier, not a new trigger authority. States:
 
 - `NEXT_CONTEXT_CHANGE_BOUND`;
 - `NO_BOUND_CONTEXT_CHANGE_WITHIN_AUTHORIZED_HORIZON`;
 - `REFRESH_AUTHORITY_UNBOUND`;
 - `REFRESH_INPUT_INTEGRITY_FAILURE`.
 
-`next_context_change` may exist only when an exact separately accepted refresh authority plus exact producer temporal boundaries determine it. If not bound, the resolver records `REFRESH_AUTHORITY_UNBOUND` and invents no time.
+`next_context_change` requires exact producer temporal boundaries plus an exact separately accepted refresh authority. Without it, record `REFRESH_AUTHORITY_UNBOUND` and no invented time. Wall clock/latest/raw-stage/network inference is forbidden.
 
-## 17. ResolvedStructuralContext
+## 14. Replay
 
-`SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0` is `RESOLVER_DERIVED_CONTEXT`.
+Same exact repository/query/policy/generated bindings produce the same semantic result.
 
-It binds:
+Replay binds publication/repository identities and hashes; producer build/object/exact-contract/reference-contract identities; V557 governance; closure/root digests; index hashes; query fixed time; generated bindings; producer predicate/proxy/negative/tie authorities; SelectionRecords; receipt; fidelity; refresh and context identity.
 
-- repository ID/content hash;
-- ContextQuery ID/hash;
-- resolver policy ID/version/hash;
-- resolution receipt ID/hash;
-- selected resolved entries;
-- preserved negative entries;
-- deferred/unresolved entries;
-- all SelectionRecord refs/hashes;
-- CoverageFidelityProfile ID/hash;
-- refresh metadata ID/hash;
-- provenance refs;
-- context ID/hash.
+`ReplayReceipt` remains audit-only.
 
-Every resolved entry retains semantic-resolution key, SelectionRecord ref, authoritative producer family/object ID/hash, producer locator, resolver allowed-use set and exact decision state.
+## 15. Physical V557/V558 co-package equivalence bar
 
-Changing selected/preserved/deferred records or any bound bundle/query/policy creates a new context identity.
+Physical fusion is lawful only if it proves:
 
-`ResolvedStructuralContext` cannot create actor biography, actor position, event, memory, knowledge, belief, relationship truth, persona, voice, dialogue or a new V556 relation/topology.
+1. V557 and V558 authority IDs/versions/hashes remain separately inspectable and independently versioned;
+2. V557 item governance exists before repository selection can use an item;
+3. the item-wise permission-subset chain is mechanically checkable;
+4. publication and repository immutable identities remain distinct;
+5. producer IDs/hashes/states remain canonical and unchanged;
+6. role/cardinality/multiplicity/order closure is equivalent;
+7. raw-dirs-absent standalone behavior is equivalent;
+8. SelectionRecords, receipt, fidelity, refresh and context are deterministic under identical inputs;
+9. failure attribution still distinguishes V557 governance, V558 repository integrity and resolver selection;
+10. PSEPF exclusion and provenance-not-composition remain enforced;
+11. direct and terminal consumers observe the same semantic/permission contract.
 
-## 18. Replay contract
+Rowset/status parity, file count, performance, module co-location or absence of a new ontology alone is insufficient.
 
-Identical exact bundle/query/policy/generated bindings must reproduce the same semantic result, SelectionRecord hashes, resolution receipt and context identity.
+## 16. Final seam
 
-Replay binds publication/repository hashes; producer build/object IDs/hashes; producer exact-contract/reference-contract bindings; V557 governance; closure/root digests; all index hashes; resolver policy; fixed query time; generated bindings; producer predicate receipts; proxy authority/rules/lags; negative/noncomparability refs; tie/multiplicity authority; SelectionRecords; receipt; fidelity profile; refresh metadata and ResolvedStructuralContext.
-
-ReplayReceipt itself remains audit-only.
-
-## 19. Physical V557/V558 co-package equivalence bar
-
-A single process/library/artifact may implement both logical authorities only if it proves all of the following:
-
-1. V557 and V558 authority IDs/versions/hashes remain separately inspectable and independently versioned.
-2. Exact item/collection V557 governance decisions exist before repository selection can use an item.
-3. The item-wise permission-subset chain is mechanically provable.
-4. Publication and repository immutable identities remain distinct and bound.
-5. Producer IDs/hashes/states are unchanged and remain canonical.
-6. Role/cardinality/multiplicity/order closure is identical under canonical hashing.
-7. Standalone behavior is identical with raw producer directories absent.
-8. SelectionRecords, receipt, fidelity, refresh carrier and context are deterministic under identical inputs.
-9. Failure attribution still distinguishes V557 governance, V558 repository integrity and resolver selection.
-10. PSEPF exclusion and provenance-not-composition remain enforced.
-11. Every direct/terminal consumer observes the same contract.
-
-Rowset parity, status parity, current module shape, file count, performance or “no new ontology” are not sufficient.
-
-## 20. Final-seam binding rule
-
-The local contract above is closed. The only unresolved SCR5578 final-adjudication inputs are accepted exact SCR553/SCR554/SCR555/SCR556 producer contracts and the M4 checksum that fills their registry slots.
-
-Until each slot is bound by accepted contract ID/version/hash and exact head/result:
-
-`PRODUCER_FINAL_CONTRACT_UNBOUND -> FAIL_CLOSED`.
-
-No guessed producer machine identity is lawful.
-
-Current token:
+The local contract is closed. Exact SCR553/SCR554/SCR555/SCR556 contracts and the M4 checksum are the only remaining final-adjudication inputs. Any attempt to bind them by historical names, EP evidence or guessed schema fails closed.
 
 `SCR5578_WAITING_ONLY_FOR_EXACT_FINAL_SEAM`
