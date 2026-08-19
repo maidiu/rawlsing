@@ -1,21 +1,22 @@
 {
-  "schema": "VOZHD_TRII_CHAT_MAILBOX_INDEX@1.1.0",
+  "schema": "VOZHD_TRII_CHAT_MAILBOX_INDEX@1.2.0",
   "dispatch_branch": "agent/vozhd-trii-stage-close-dispatch",
   "review_epoch": "R03_STAGE_CLOSE_DISPATCH_EPOCH_02",
-  "global_state": "PARTIALLY_ISSUED",
+  "global_state": "PARTIALLY_ISSUED__LEGACY_BOOTSTRAP_REQUIRED",
   "chat_id_law": "PERMANENT_ORIGIN_CHAT_ID_NEVER_CHANGES_ON_RECYCLING",
   "user_handoff_addressing_law": "EVERY_USER_FACING_HANDOFF_MUST_NAME_WORKER_SLOT_NUMBER__PERMANENT_CHAT_ID__MOST_RECENT_SUBMITTING_AGENT_ID__NEW_AGENT_ID",
   "handoff_display_format": "Worker #N — <permanent_chat_id> — most recent submitting agent <last_submitting_agent_id> -> new agent <new_agent_id>",
+  "legacy_bootstrap_law": "UNTIL_A_CHAT_HAS_SUCCESSFULLY_CONSUMED_CENTRAL_MAILBOX_ONCE__BARE_CHECK_YOUR_NEXT_ASSIGNMENT_IS_FORBIDDEN__HQ_MUST_GIVE_EXACT_DISPATCH_BRANCH_CHAT_ID_MAILBOX_PATH_AND_ASSIGNMENT_ID",
   "mailboxes": [
-    {"worker_slot":1,"chat_id":"CHAT-S554D","most_recent_submitting_agent_id":"M6_PREFLIGHT","recognizable_origin":"S554D floating-specialist chat; later M1 binder; later M6 preflight","mailbox":"MAILBOXES/CHAT-S554D/CURRENT.json"},
-    {"worker_slot":2,"chat_id":"CHAT-SCR555","most_recent_submitting_agent_id":"M3_FINAL","recognizable_origin":"SCR555 sub-Vozhd chat; later M2 binder; later M3 final binder","mailbox":"MAILBOXES/CHAT-SCR555/CURRENT.json"},
-    {"worker_slot":3,"chat_id":"CHAT-SCRV3","most_recent_submitting_agent_id":"SCRV3","recognizable_origin":"standing SCRV3 sub-Vozhd chat","mailbox":"MAILBOXES/CHAT-SCRV3/CURRENT.json"},
-    {"worker_slot":4,"chat_id":"CHAT-SCR5578","most_recent_submitting_agent_id":"SV3A","recognizable_origin":"SCR5578 sub-Vozhd chat; later SV3A floating specialist","mailbox":"MAILBOXES/CHAT-SCR5578/CURRENT.json"},
-    {"worker_slot":5,"chat_id":"CHAT-SCRV2APP","most_recent_submitting_agent_id":"SV3B","recognizable_origin":"SCRV2APP sub-Vozhd chat; later SV3B floating specialist","mailbox":"MAILBOXES/CHAT-SCRV2APP/CURRENT.json"},
-    {"worker_slot":6,"chat_id":"CHAT-SCR553","most_recent_submitting_agent_id":"SV3C","recognizable_origin":"SCR553 sub-Vozhd chat; later SV3C floating specialist","mailbox":"MAILBOXES/CHAT-SCR553/CURRENT.json"},
-    {"worker_slot":7,"chat_id":"CHAT-SV3M","most_recent_submitting_agent_id":"SV3F","recognizable_origin":"SV3M floating-specialist chat; later SV3F floating specialist","mailbox":"MAILBOXES/CHAT-SV3M/CURRENT.json"},
-    {"worker_slot":8,"chat_id":"CHAT-SINSP","most_recent_submitting_agent_id":"SINSP","recognizable_origin":"SINSP inspectorate chat","mailbox":"MAILBOXES/CHAT-SINSP/CURRENT.json"},
-    {"worker_slot":9,"chat_id":"CHAT-SCR556","most_recent_submitting_agent_id":"M3_PREFLIGHT","recognizable_origin":"SCR556 sub-Vozhd chat; later M3 preflight specialist","mailbox":"MAILBOXES/CHAT-SCR556/CURRENT.json"},
-    {"worker_slot":10,"chat_id":"CHAT-S5578C","most_recent_submitting_agent_id":"M4_PREFLIGHT","recognizable_origin":"S5578C floating-specialist chat; later M4 preflight specialist","mailbox":"MAILBOXES/CHAT-S5578C/CURRENT.json"}
+    {"worker_slot":1,"chat_id":"CHAT-S554D","most_recent_submitting_agent_id":"M6_PREFLIGHT","mailbox_bootstrap_state":"REQUIRED_ON_NEXT_ISSUE","recognizable_origin":"S554D floating-specialist chat; later M1 binder; later M6 preflight","mailbox":"MAILBOXES/CHAT-S554D/CURRENT.json"},
+    {"worker_slot":2,"chat_id":"CHAT-SCR555","most_recent_submitting_agent_id":"M3_FINAL","mailbox_bootstrap_state":"REQUIRED_ON_NEXT_ISSUE","recognizable_origin":"SCR555 sub-Vozhd chat; later M2 binder; later M3 final binder","mailbox":"MAILBOXES/CHAT-SCR555/CURRENT.json"},
+    {"worker_slot":3,"chat_id":"CHAT-SCRV3","most_recent_submitting_agent_id":"SCRV3","mailbox_bootstrap_state":"REQUIRED","recognizable_origin":"standing SCRV3 sub-Vozhd chat","mailbox":"MAILBOXES/CHAT-SCRV3/CURRENT.json"},
+    {"worker_slot":4,"chat_id":"CHAT-SCR5578","most_recent_submitting_agent_id":"SV3A","mailbox_bootstrap_state":"REQUIRED_ON_NEXT_ISSUE","recognizable_origin":"SCR5578 sub-Vozhd chat; later SV3A floating specialist","mailbox":"MAILBOXES/CHAT-SCR5578/CURRENT.json"},
+    {"worker_slot":5,"chat_id":"CHAT-SCRV2APP","most_recent_submitting_agent_id":"SV3B","mailbox_bootstrap_state":"REQUIRED_ON_NEXT_ISSUE","recognizable_origin":"SCRV2APP sub-Vozhd chat; later SV3B floating specialist","mailbox":"MAILBOXES/CHAT-SCRV2APP/CURRENT.json"},
+    {"worker_slot":6,"chat_id":"CHAT-SCR553","most_recent_submitting_agent_id":"SV3C","mailbox_bootstrap_state":"REQUIRED_ON_NEXT_ISSUE","recognizable_origin":"SCR553 sub-Vozhd chat; later SV3C floating specialist","mailbox":"MAILBOXES/CHAT-SCR553/CURRENT.json"},
+    {"worker_slot":7,"chat_id":"CHAT-SV3M","most_recent_submitting_agent_id":"SV3F","mailbox_bootstrap_state":"REQUIRED_ON_NEXT_ISSUE","recognizable_origin":"SV3M floating-specialist chat; later SV3F floating specialist","mailbox":"MAILBOXES/CHAT-SV3M/CURRENT.json"},
+    {"worker_slot":8,"chat_id":"CHAT-SINSP","most_recent_submitting_agent_id":"SINSP","mailbox_bootstrap_state":"REQUIRED_ON_NEXT_ISSUE","recognizable_origin":"SINSP inspectorate chat","mailbox":"MAILBOXES/CHAT-SINSP/CURRENT.json"},
+    {"worker_slot":9,"chat_id":"CHAT-SCR556","most_recent_submitting_agent_id":"M3_PREFLIGHT","mailbox_bootstrap_state":"REQUIRED_ON_NEXT_ISSUE","recognizable_origin":"SCR556 sub-Vozhd chat; later M3 preflight specialist","mailbox":"MAILBOXES/CHAT-SCR556/CURRENT.json"},
+    {"worker_slot":10,"chat_id":"CHAT-S5578C","most_recent_submitting_agent_id":"M4_PREFLIGHT","mailbox_bootstrap_state":"REQUIRED__FIRST_BARE_DISPATCH_FAILED_DISCOVERY","recognizable_origin":"S5578C floating-specialist chat; later M4 preflight specialist","mailbox":"MAILBOXES/CHAT-S5578C/CURRENT.json"}
   ]
 }
