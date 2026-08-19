@@ -1,0 +1,172 @@
+{
+  "cell": "S554D",
+  "campaign": "VOZHD_TRII_STAGE_CLOSE_READ",
+  "authority_class": "NON_DISPOSITIVE_FEEDER",
+  "repository": "maidiu/rawlsing",
+  "exact_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-spec-v554-dedup",
+  "write_root": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCR554/feeders/S554D/",
+  "result": "S554D_FEEDER_COMPLETE",
+  "production_code_modified": false,
+  "scr554_legislated": false,
+  "r03_amended": false,
+  "broad_topology_counterexample_candidate": false,
+  "blocked_authority_conflict": false,
+  "evidence_heads": {
+    "EP554": "6ebb7c5ca1e007f3677706da19db9e83f451bff0",
+    "R03A": "3d96c1213b46d3e6a908c83c2525f1ef20282f88",
+    "R03F": "9f661931d51e03f137601b27eeaecf77ab11ad2f",
+    "R03_SYNTHESIS_BASE": "b6b888fc3f699495cb864a1babe7ca40b4ea4299",
+    "R03_SYNTHESIS_VERIFIED_COMMITS_AHEAD": 13,
+    "R03_SYNTHESIS_VERIFIED_FILES": 11
+  },
+  "accepted_v554_authorities": [
+    "V554_AFFORDANCE_RULE_REGISTRY@1.0.0",
+    "V554_APPLICABILITY_PREDICATE_CONTRACT@1.0.0"
+  ],
+  "frozen_law": [
+    "One semantic V554 proposition/use/rule may not count equivalent direct plus V553 support twice.",
+    "EQUIVALENCE_UNKNOWN fails closed.",
+    "Direct StructuralEmpiricalAdmission to V554 is lawful only for the exact temporally-complete positively rule-eligible target use.",
+    "A target use requiring new V553-owned temporal/comparability meaning cannot be satisfied by direct fallback.",
+    "V553 cannot manufacture source-universe equivalence, pooling, sample linkage, estimand compatibility, or composition authority.",
+    "Applicable explicit denial and hard temporal negative authority precede positive F1 emission.",
+    "Observed numeric zero is measurement, not missing authority.",
+    "VALID_EMPTY, DENIED, NONCOMPARABLE, MISSING_AUTHORITY, UNKNOWN_OR_CONFLICTING_AUTHORITY, observed zero, and zero-support remain distinct.",
+    "No latest, score, readiness, recency, majority, specificity, filename, row order, artifact-presence, or convenience tie-break is authorized.",
+    "Provenance reachability is not source composition authority."
+  ],
+  "hostile_finding": "A single flat dedup hash cannot safely represent semantic support identity, authority version identity, basis path identity, and provenance lineage simultaneously.",
+  "proposed_contract": {
+    "support_equivalence_key": {
+      "purpose": "route-independent source-sensitive semantic support identity",
+      "schema_label": "S554D_V554_SUPPORT_EQUIVALENCE_PROJECTION@0.1-PROPOSED",
+      "minimum_identity_fields": [
+        "structural_proposition_semantic_ref",
+        "target_use_ref",
+        "v554_stable_rule_id",
+        "empirical_universe_ref",
+        "risk_set_or_sample_frame_ref_when_identity_bearing",
+        "estimand_ref",
+        "measure_ref",
+        "weight_basis_ref",
+        "native_scope_ref",
+        "producer_epistemic_state_ref",
+        "target_temporal_semantics_ref",
+        "identity_bearing_lineage_refs"
+      ],
+      "explicit_exclusions": [
+        "rule_version_hash",
+        "basis_kind_as_automatic_semantic_identity",
+        "provenance_only_receipt_ids",
+        "display_labels",
+        "legacy_scores_or_readiness",
+        "file_or_row_order"
+      ]
+    },
+    "authority_snapshot_fingerprint": {
+      "purpose": "preserve exact authority version/hash and decide compatibility, supersession, or conflict without creating extra semantic support",
+      "schema_label": "S554D_V554_AUTHORITY_SNAPSHOT@0.1-PROPOSED",
+      "minimum_identity_fields": [
+        "v554_rule_id_version_hash",
+        "structural_admission_authority_id_version_hash",
+        "v553_temporal_authority_refs_or_not_required_sentinel",
+        "source_relation_or_comparability_authority_refs",
+        "target_use_permission_refs",
+        "negative_or_limit_refs",
+        "required_static_authority_refs",
+        "conflict_or_unknown_refs",
+        "authority_role_map"
+      ]
+    },
+    "basis_provenance_fingerprint": {
+      "purpose": "retain physical basis path, producer refs, lineage roles, and replay identity without multiplying support",
+      "schema_label": "S554D_V554_BASIS_PROVENANCE@0.1-PROPOSED",
+      "minimum_identity_fields": [
+        "basis_kind",
+        "basis_object_refs",
+        "originating_structural_admission_refs",
+        "v553_object_refs",
+        "producer_manifest_schema_compiler_refs",
+        "replay_refs",
+        "lineage_role_map"
+      ]
+    }
+  },
+  "lineage_role_law": {
+    "PROVENANCE_ONLY": "exclude from SUPPORT_EQUIVALENCE_KEY but retain in provenance fingerprint",
+    "IDENTITY_BEARING": "include exact governed lineage refs in SUPPORT_EQUIVALENCE_KEY",
+    "ROLE_UNKNOWN": "EQUIVALENCE_UNKNOWN__FAIL_CLOSED"
+  },
+  "authority_version_law": {
+    "same_support_same_snapshot": "deduplicate to one semantic support",
+    "same_support_explicit_governed_compatible_or_supersession_relation": "obey exact relation and retain historical snapshot provenance",
+    "same_support_different_snapshot_without_governed_relation": "NO_F1__AUTHORITY_CONFLICT",
+    "forbidden": "do not use semver ordering, latest commit, mtime, filename, row order, score, readiness, or majority"
+  },
+  "direct_v553_law": {
+    "no_added_v553_meaning": "if direct admission is complete for the exact invocation and V553 temporal_effect_for_target_use is NONE with identical temporal semantics, direct is canonical semantic carrier and V553 is duplicate provenance only",
+    "new_v553_meaning_required": "only matching V553 semantic basis may satisfy the invocation; direct is ineligible for that invocation",
+    "v553_hard_negative": "NONCOMPARABLE or required ABSENT/GAPPED temporal authority blocks positive F1; no direct or weaker-signature fallback"
+  },
+  "epistemic_state_law": {
+    "observed_numeric_zero": "measurement; may remain positive if all authority requirements pass",
+    "zero_support": "producer-owned support state; not equivalent to observed zero",
+    "positive_assertion_of_absence": "producer-owned semantic assertion; not inferred from zero or missing",
+    "denied": "hard target-use block when applicability is exact",
+    "noncomparable": "hard temporal block for affected relational invocation",
+    "missing_authority": "nonassertable; not deferred",
+    "unknown_or_conflicting_authority": "nonassertable; no heuristic tie-break",
+    "valid_empty": "coherent zero-candidate run; creates no candidate support key"
+  },
+  "attack_results": {
+    "same_labels_different_universes": "DISTINCT_SEMANTIC_SUPPORT",
+    "same_proposition_different_estimand": "DISTINCT_SEMANTIC_SUPPORT",
+    "same_proposition_different_weight_basis": "DISTINCT_SEMANTIC_SUPPORT",
+    "direct_plus_v553_no_added_meaning": "SAME_SEMANTIC_SUPPORT__ONE_F1_MAX",
+    "direct_plus_v553_temporal_negative": "NO_F1__HARD_NEGATIVE",
+    "authority_version_conflict": "SAME_SEMANTIC_SUPPORT__NO_F1_UNTIL_GOVERNED_AUTHORITY_RELATION",
+    "unknown_equivalence": "FAIL_CLOSED",
+    "observed_zero_vs_zero_support": "DISTINCT_STATES",
+    "valid_empty_vs_observed_zero": "DISTINCT_RUN_AND_ITEM_STATES",
+    "denied_vs_observed_zero": "DENIAL_PRECEDENCE_WHEN_APPLICABLE",
+    "hidden_latest_score_order": "FORBIDDEN",
+    "source_insensitive_hash": "REJECTED"
+  },
+  "forbidden_tiebreaks": [
+    "latest",
+    "semver_without_explicit_governed_relation",
+    "commit_recency",
+    "wall_clock",
+    "file_mtime",
+    "filename",
+    "artifact_presence",
+    "row_order",
+    "file_order",
+    "first_row",
+    "last_row",
+    "score",
+    "readiness",
+    "confidence",
+    "specificity",
+    "majority",
+    "normalized_label_similarity",
+    "payload_hash_without_source_semantics"
+  ],
+  "downstream_handoff": {
+    "SCR554": "Adjudicate the proposed three-identity separation, exact field vocabulary, canonical serialization, sentinels, hash algorithm, rule-version relation vocabulary, and final basis precedence.",
+    "M1": "Jointly prove with SCR553 that V553 exposes enough exact origin, temporal-effect, temporal-semantic, negative/noncomparability, and source-relation authority refs to classify no-op versus meaning-bearing temporal bases without guessing.",
+    "M2": "Canonical V554 F1/B1 identity must be assigned after the dedup/authority court; duplicate provenance must not multiply the exactly-one-F1 route input to V555.",
+    "M3": "No new V556 authority is proposed; source/provenance distinctions must remain exact through V555 so later V556 cannot infer composition from provenance or collapsed source identity."
+  },
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "COUNTEREXAMPLES.csv",
+    "PROPOSED_EQUIVALENCE_KEY.md",
+    "PRECEDENCE_MATRIX.csv",
+    "HOSTILE_FIXTURES.md",
+    "PARENT_HANDOFF.md"
+  ],
+  "token": "S554D_FEEDER_COMPLETE"
+}
