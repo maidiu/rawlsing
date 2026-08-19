@@ -1,0 +1,105 @@
+{
+  "receipt_id": "M4_MIXED_PRODUCER_PUBLICATION_REPOSITORY_BINDING_RECEIPT",
+  "receipt_version": "1.0.0",
+  "assignment_id": "E02-W10-M4-FINAL-001",
+  "status": "ACCEPTED",
+  "result_token": "M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED",
+  "semantic_launch_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "scr5578_seal": {
+    "refreshed_package_head": "ec7bbe80fff26dae23fa8ab3c62b48b8be2164a2",
+    "exact_contract_sha256": "7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c",
+    "local_law_modified": false
+  },
+  "bindings": {
+    "V553": {
+      "head": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+      "token": "SCR553_EXACT_CONTRACT_CLOSED",
+      "contract_blob": "072c0995fe3dc7915dca50193e6ee44b8164e546",
+      "contract": "SCR553_V553_TEMPORAL_JURISDICTION / SCR553_V553_TEMPORAL_JURISDICTION_V1",
+      "schema_identity_binding": "TEMPORAL_KEY|TEMPORAL_OBSERVATION|TEMPORAL_RELATION|TEMPORAL_LIMIT under SCR553_V553_IDENTITY_V1",
+      "reference_binding": "exact kind+object_id+content_hash resolution; downstream ref additionally carries schema_version where required",
+      "permission_binding": "exact item producer use authority; no M4 default",
+      "state_binding": "V553 decision enum and TEMPORAL_LIMIT typed states preserved",
+      "replay_binding": "same exact governed basis/rule/authority closure -> same object set/hashes/ids"
+    },
+    "V554": {
+      "head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+      "contract": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0",
+      "schema_identity_binding": "canonical content-derived F1/F2/B1 identities under named canonical JSON",
+      "reference_binding": "exact authority/source/universe/estimand/measure/weight/reference spine; source-sensitive duplicate equivalence",
+      "permission_binding": "exact B1 allowed_v555_structural_use for V555 handoff plus exact producer use authority for publication",
+      "state_binding": "ELIGIBLE and all accepted nonpositive/valid-empty/integrity distinctions preserved",
+      "replay_binding": "exact contract/rule/signature/authority bundle reproduces basis selection and F1/F2/B1 ids/states"
+    },
+    "V555": {
+      "producer_contract_head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+      "producer_contract_blob": "8926500b7af442c0e07483442047aaad6cdeab63",
+      "m2_head": "92128619122886d0ced877a29b42fdb453765246",
+      "m2_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+      "m2_binding_receipt_blob": "80f21068a11cc2cc07e1a764e0f8c1f0e1f88e93",
+      "m2_result_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+      "m2_seam_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c",
+      "identity_binding": [
+        "EXACT_V554_F1_REF",
+        "route_rule_id@route_rule_version",
+        "route_shape_id@route_shape_version",
+        "channel_structural_role_id",
+        "EXACT_STRUCTURAL_CHANNEL_REF",
+        "receiving_constraint_kind",
+        "EXACT_TARGET_RECEIVING_POSITION_REF"
+      ],
+      "m2_literal_binding": "EXACT_V554_F1_REF = accepted canonical SCR554 F1_id; exact B1 proves allowed_v555_structural_use=true for same F1/invocation; B1 is not route participant",
+      "reference_binding": "inherited V554 F2 exact immutable reference only; route-owned role SOURCE->MEDIATION_LOCUS->RECEIVER preserved",
+      "permission_binding": "ROUTE_CANDIDATE_AUTHORIZED is necessary but not itself V557 permission; exact producer use ceiling plus independent V557 admission required",
+      "state_binding": "positive/valid-empty/negative/missing/deferred/integrity route states preserved",
+      "replay_binding": "exact accepted F1/B1 + exact V555 rule/shape + exact ordered bindings + exact producer refs -> same route identity/state"
+    },
+    "V556": {
+      "producer_contract_head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+      "producer_contract_blob": "f4e8146885b1145b116b173d2d4a148e3d55db4a",
+      "m3_result_blob": "c5c2f85bade35a1b1cda9a26ce946f76d39ec953",
+      "m3_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED",
+      "identity_binding": "exact V556 rule authority + exact participant sequence/rule-canonical multiset + exact composition authority when required + payload + typed state",
+      "participant_binding_fields": ["v555_route_identity_ref", "role", "ordinal_or_null", "multiplicity_index"],
+      "participant_binding": "2..n exact canonical V555 route refs; positive distinct-route floor 2; exact V556 rule owns role/order/cardinality/multiplicity/same-route reuse",
+      "reference_binding": "V555 participant refs remain producer-owned and may not be reconstructed or reidentified",
+      "permission_binding": "exact V556 producer use ceiling; V557 may only narrow",
+      "state_binding": ["SUPPORTED", "VALID_EMPTY", "DENIED", "NONCOMPARABLE", "UNKNOWN_AUTHORITY", "CONFLICTING_AUTHORITY", "INVALID_PARTICIPANT_SET", "UNRESOLVABLE_PARTICIPANT"],
+      "replay_binding": "identical immutable rule/participant/composition inputs replay to same identity and state"
+    }
+  },
+  "checksums": {
+    "producer_head_token_contract_binding": "PASS",
+    "v553_identity_and_typed_limit_preservation": "PASS",
+    "v554_f1_f2_b1_identity_and_source_sensitive_authority_preservation": "PASS",
+    "v555_seven_field_route_identity_preserved": "PASS",
+    "v555_b1_not_eighth_field": "PASS",
+    "v555_f2_remains_v554_owned_exact_ref_only": "PASS",
+    "v556_exact_v555_participants_preserved": "PASS",
+    "v556_role_order_cardinality_multiplicity_preserved": "PASS",
+    "v556_source_composition_none_by_default": "PASS",
+    "item_wise_permission_subset_chain": "PASS_BY_CONTRACT__REQUIRED_FOR_EVERY_INSTANCE",
+    "standalone_raw_directories_absent": "PASS_BY_EXACT_CLOSURE_CONSTRUCTION",
+    "positive_and_negative_dependency_closure": "PASS_BY_CONTRACT__MISSING_OR_CORRUPT_FAILS_CLOSED",
+    "reference_class_firewall": "PASS",
+    "provenance_not_composition": "PASS",
+    "no_latest_fuzzy_raw_network_llm_random_default_repair": "PASS",
+    "partial_atomic_bundle_fails_closed": "PASS",
+    "partial_n_ary_object_fails_closed": "PASS",
+    "integrity_vs_producer_state_separation": "PASS",
+    "deterministic_resolver_replay": "PASS_BY_EXACT_INPUT_CONTRACT",
+    "frozen_scr5578_law_unchanged": "PASS"
+  },
+  "staleness_guards": {
+    "m2_pinned_to_scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "m2_pinned_to_scr554_contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+    "m3_consumes_m2_head": "92128619122886d0ced877a29b42fdb453765246",
+    "assignment_pins_same_scr554_head": true,
+    "assignment_pins_same_m2_head": true,
+    "staleness_trigger_observed": false
+  },
+  "conflicts": [],
+  "m5_rsc_handoff": "M5_RSC_HANDOFF.json"
+}
