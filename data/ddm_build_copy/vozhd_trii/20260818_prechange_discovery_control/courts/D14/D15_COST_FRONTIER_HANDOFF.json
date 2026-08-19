@@ -1,0 +1,175 @@
+{
+  "handoff": "D14_TO_D15_COST_FRONTIER",
+  "source_court": "D14_FINAL_COMPUTE_MATERIALIZATION_REPLAY_COST",
+  "repository": "maidiu/rawlsing",
+  "source_base_sha": "43c5dc3236fd4a1c9183d6dd72599776bb907411",
+  "status": "DISCOVERY_COST_FRONTIER_CLOSED__D15_READY",
+  "architecture_selected": false,
+  "cache_policy_selected": false,
+  "search_algorithm_selected": false,
+  "production_migration_selected": false,
+  "artifact_deletion_authorized": false,
+  "no_db_law": "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
+  "binding_semantic_frontier": {
+    "D12": "three terminal services plus W01-W17; reconstructibility required; materialize-all not required",
+    "D13": "C11 MINIMUM_NORMALIZED_RESPONDENT_EVENT_COORDINATE_INCIDENCE_PLUS_AUTHORITY_PROVENANCE; M01-M18; EA01-EA08",
+    "rule": "Any D15 architecture must preserve D12 R01-R14 and D13 replay equivalence. Cost never authorizes a lossy substitute."
+  },
+  "semantically_unavoidable_cost_obligations": [
+    "Evaluate or retrieve the exact governed respondent-event/coordinate information needed by each authorized predicate, risk set and target.",
+    "Bind responses and coordinates by same respondent identity whenever the fact requires same-person conditionals, pairs, k-way joints, branches or reverse fields.",
+    "Process response-event topology, routing/applicability, typed absence, raw/weighted measures, universe identity and authority/provenance as real correctness inputs.",
+    "For an exhaustive autonomous-discovery coverage claim, cover every candidate in the authority-declared frontier or use only pruning with a proven semantics-preserving coverage theorem.",
+    "For k-way targets, construct or retrieve exact requested joint geometry; lower-order marginals are not an admissible cost shortcut.",
+    "Resolve actor-fact comparators under exact source/field/time authority before reverse empirical filtering.",
+    "Replay distinct respondent universes independently absent exact linkage/pooling authority.",
+    "Retain or reconstruct exact branch/discovery, comparator and structural-admission provenance needed by requested historical replay."
+  ],
+  "implementation_contingent_cost_drivers": [
+    "Whether a logical predicate evaluation is a full scan, indexed lookup, partition read or another injective access plan.",
+    "Whether exact fixed E1/E2 facts are computed on demand or reused from caches.",
+    "How multiple candidate evaluations share scans/intermediate sufficient structures without changing coverage.",
+    "Search algorithm family, beam width, traversal order, screening method, recursion strategy and parallelism.",
+    "Physical encoding, compression, partitioning, indexing and semantic-hash strategy for C11.",
+    "Checkpoint frequency, restart granularity, intermediate persistence and fault-recovery policy.",
+    "Whether branch member sets, comparator receipts, per-wave facts or reverse fields are cached.",
+    "Concurrency, scheduling and hardware layout."
+  ],
+  "candidate_cache_materialization_opportunities": [
+    {
+      "object": "fixed unary E1",
+      "class": "BOUNDED_MATERIALIZATION_POTENTIALLY_USEFUL",
+      "benefit": "avoid repeated predicate/target grouping",
+      "boundary": "exact fixed condition/target/risk-set/scope/topology/measure only"
+    },
+    {
+      "object": "fixed pair or J-way E2",
+      "class": "BOUNDED_MATERIALIZATION_POTENTIALLY_USEFUL",
+      "benefit": "avoid repeated same-respondent joint binding",
+      "boundary": "cannot answer a new target/condition/risk set"
+    },
+    {
+      "object": "branch predicate/member receipt",
+      "class": "OPTIONAL_CACHE_CANDIDATE",
+      "benefit": "avoid rediscovery or branch membership replay",
+      "boundary": "exact algorithm/frontier/authority/source identity required"
+    },
+    {
+      "object": "actor comparator receipt/crosswalk",
+      "class": "OPTIONAL_CACHE_CANDIDATE",
+      "benefit": "avoid repeated crosswalk/comparator resolution",
+      "boundary": "invalidated by actor fact/effective time/rule/source version changes"
+    },
+    {
+      "object": "source-indexed temporal or cross-universe component facts",
+      "class": "OPTIONAL_CACHE_CANDIDATE",
+      "benefit": "reuse stable components across comparisons",
+      "boundary": "must remain source-indexed and identity-exact"
+    },
+    {
+      "object": "E3/E4",
+      "class": "DIAGNOSTIC_ONLY_COST",
+      "benefit": "navigation/screening convenience",
+      "boundary": "never deep empirical retention authority"
+    }
+  ],
+  "autonomous_discovery_cost_coverage_frontier": {
+    "governing_cost_law": "T_search = T_frontier_construction + sum over evaluated candidates of candidate-evaluation cost + validation/replay cost.",
+    "semantic_axis": "F is not merely an implementation parameter when a completeness claim covers F candidates; the claim itself obliges coverage of that frontier.",
+    "bounded_exhaustive": "highest explicit coverage; F exact evaluations unless work is shared without changing candidate coverage; combinatorial candidate counts may scale as sums of choose(I,k), choose(Q,j), value-category products and governed target expansions.",
+    "greedy": "lower evaluated frontier but path-local coverage; cannot claim global XOR/minority/reversal completeness without proof.",
+    "beam_adaptive": "intermediate cost/coverage; discarded branches limit coverage absent safe-pruning theorem.",
+    "screen_then_exact": "cost T_screen(F)+sum exact over F_pass; exhaustive claim requires an approved no-false-negative screen for the claimed class; unary-signal screen does not preserve XOR completeness by default.",
+    "recursive": "cost is sum over visited branches of membership replay plus per-node candidate evaluation; current V550 binary/top-two geometry is not target law.",
+    "support_pruning": "may reduce work only where support/risk-set authority defines the prune and the typed state is preserved; cost-driven suppression of supported minorities is unlawful.",
+    "algorithm_selected": false
+  },
+  "reverse_query_cost_frontier": {
+    "pipeline": [
+      "actor fact authority lookup",
+      "field/source/time comparator resolution",
+      "exact empirical predicate construction",
+      "risk-set/respondent selection",
+      "unary or J-way target contingency",
+      "source-indexed field assembly and provenance"
+    ],
+    "cost_law": "T_reverse = sum comparator costs + conjunction/risk-set cost + sum over admitted universes of exact target-field cost.",
+    "cheap_fail_closed_paths": [
+      "negative comparability/no match can stop before respondent scan",
+      "typed ambiguity can stop without enumerating a Cartesian set of alternatives unless authority requests alternative fields",
+      "zero support can stop after exact predicate/risk-set evaluation"
+    ],
+    "joint_cliff": "J-way occupied cells M_J <= min(N_selected, product C_j); sparse exact representation may avoid dense Cartesian storage, but exact same-respondent binding cannot be replaced by independent marginals.",
+    "cache_boundary": "fixed comparator/E1/E2 caches accelerate only exact matching identities; future target/condition/risk-set flexibility still depends on C11."
+  },
+  "current_system_baseline": {
+    "source": "accepted D14A static baseline",
+    "key_shapes": [
+      "same V550 question frame independently rescanned by distributions, indicator summary, secondary summary, matrix, outlier, recursion and optional cloud families",
+      "current recursive branch candidate upper bound sum_d 2^d*(I_q-d) with binary fanout before pruning",
+      "current cloud performs one respondent join/crosstab per stateful attempted pair P_state",
+      "current shared-substrate materialization performs response-long canonicalization plus at least three logical-content hash passes and one parquet reload",
+      "V550J patterns group by respondent and loop K_j items; association fast path expands membership against outside-family context before aggregate collapse",
+      "current V550 checkpoint writes = 9*Q_exec + 3*Q_cloud + Q_gap plus completion markers"
+    ],
+    "semantic_normalization": "These are current implementation costs, not target workload authority."
+  },
+  "current_work_disposition": {
+    "terminal_plus_derived": [
+      "answer/country distributions",
+      "indicator-answer conditional information",
+      "bounded governed V550J joint patterns/membership"
+    ],
+    "diagnostic": [
+      "position-indicator summaries",
+      "outlier summaries",
+      "position signatures",
+      "E3/E4 association/cloud diagnostics"
+    ],
+    "superseded_or_lossy_implementation_work": [
+      "current primary-star secondary interaction summary as target interaction search",
+      "current top-two recursive tree as target recursive discovery",
+      "current within-frame branch relation co-signature as branch-conditioned cotravel"
+    ],
+    "implementation_overhead": [
+      "repeated scans/transforms",
+      "checkpoint/write amplification",
+      "current shared-cache serialization/hash/revalidation shape"
+    ],
+    "retirement_authority": "NONE_FROM_D14"
+  },
+  "storage_frontier": {
+    "physically_necessary": "C11 response-event incidence, coordinate incidence and M01-M18 authority/provenance information",
+    "optional_cache": "fixed E1/E2 and selected replay receipts/views",
+    "diagnostic_derivative": "E3/E4 and current diagnostic summaries",
+    "source_safety_retention": "source snapshots remain a separate safety/evidence lane until positive source->C11 equivalence and later governance; D14 does not authorize deletion"
+  },
+  "blocked_live_measurement_facts": [
+    "current production wall-clock/CPU/peak RSS/database I/O/bytes",
+    "current live row/intermediate/join/output cardinalities",
+    "populated B, P_state, M_jc, MSHIP_jc, A and PUB",
+    "C11 implementation wall-clock/CPU/RSS/I/O/bytes",
+    "live query selectivity/support/topology multiplicity distributions",
+    "future search frontier sizes F/P/H and support-pruning rates",
+    "runtime query-frequency/cache-hit/invalidation distributions",
+    "reverse-query actor-property/arity/no-match/ambiguity distributions",
+    "source snapshot byte volume and source->C11 duplication ratio",
+    "lawful total percentage savings and production hardware budget"
+  ],
+  "D15_must_not_claim_from_D14": [
+    "a production savings percentage",
+    "a production hardware budget",
+    "a particular database/index/cache/search algorithm as already selected",
+    "that current C02/C03/C04 can replace C11",
+    "that expensive terminal semantics may be dropped",
+    "that optional cache candidates must or must not be materialized",
+    "that current artifacts may be deleted"
+  ],
+  "D15_gate": {
+    "semantic_questions_requiring_D12_reopen": [],
+    "physical_information_questions_requiring_D13_reopen": [],
+    "remaining_unknowns": "quantitative implementation/runtime measurements only",
+    "ready": true,
+    "token": "DISCOVERY_COST_FRONTIER_CLOSED__D15_READY"
+  }
+}
