@@ -1,0 +1,106 @@
+{
+  "artifact": "SV3F_FINAL_M4_BINDING_SLOTS",
+  "status": "SYMBOLIC_PENDING_M4_FINAL_ACCEPTANCE",
+  "rule": "Local SCR5578 semantics may be used for candidate integration work; exact final M4 ResolvedStructuralContext signature/fingerprint must not be guessed.",
+  "observed_local_scr5578": {
+    "head_sha": "06eefed7bb8e7db7fd2465aa262653ed95461e84",
+    "result_token": "SCR5578_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+    "contract_id": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT@1.0.0",
+    "contract_json_sha256": "7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c",
+    "local_resolved_context_schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0",
+    "local_context_resolver_policy": "V558_CONTEXT_RESOLVER_POLICY@1.0.0",
+    "local_context_resolver_policy_hash": "4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f",
+    "final_status": "WAITING_ONLY_FOR_EXACT_FINAL_SEAM"
+  },
+  "required_m4_slots": [
+    {
+      "slot": "M4_SCR5578_ACCEPTED_FINAL_HEAD_SHA",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "must_come_from": "accepted M4/SCR5578 final-seam adjudication"
+    },
+    {
+      "slot": "M4_SCR5578_ACCEPTED_RESULT_TOKEN",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "must_come_from": "accepted M4/SCR5578 final-seam adjudication"
+    },
+    {
+      "slot": "M4_SCR5578_FINAL_CONTRACT_ID_VERSION_HASH",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "must_come_from": "M4-bound exact SCR5578 contract after producer reconciliation"
+    },
+    {
+      "slot": "M4_RESOLVED_STRUCTURAL_CONTEXT_SCHEMA_ID_VERSION_HASH",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "local_candidate_family": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0",
+      "must_come_from": "M4-final accepted ResolvedStructuralContext schema/signature"
+    },
+    {
+      "slot": "M4_CONTEXT_RESOLVER_POLICY_ID_VERSION_HASH",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "local_candidate": "V558_CONTEXT_RESOLVER_POLICY@1.0.0#sha256:4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f",
+      "must_come_from": "M4-final accepted resolver binding"
+    },
+    {
+      "slot": "M4_STRUCTURAL_PRIOR_REPOSITORY_SCHEMA_ID_VERSION_HASH",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "local_candidate_family": "SCR5578_STRUCTURAL_PRIOR_REPOSITORY@1.0.0",
+      "must_come_from": "M4-final accepted repository schema/signature"
+    },
+    {
+      "slot": "M4_CONTEXT_RESOLUTION_RECEIPT_SCHEMA_ID_VERSION_HASH",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "local_candidate_family": "SCR5578_V558_CONTEXT_RESOLUTION_RECEIPT@1.0.0",
+      "must_come_from": "M4-final accepted resolution receipt contract"
+    },
+    {
+      "slot": "M4_CONTEXT_REFRESH_METADATA_SCHEMA_ID_VERSION_HASH",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "local_candidate_family": "SCR5578_CONTEXT_REFRESH_METADATA@1.0.0",
+      "must_come_from": "M4-final accepted refresh carrier contract"
+    },
+    {
+      "slot": "M4_PRODUCER_BINDING_SET_DIGEST",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "must_come_from": "exact accepted SCR553/SCR554/SCR555/SCR556 producer contracts reconciled by M4"
+    },
+    {
+      "slot": "M4_REFERENCE_CLASS_AND_CLOSURE_CONTRACT_DIGEST",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "must_come_from": "M4-final mixed-producer reference-class registry and standalone closure proof"
+    },
+    {
+      "slot": "M4_PERMISSION_LATTICE_BINDING_DIGEST",
+      "value": null,
+      "state": "UNBOUND_PENDING_M4",
+      "must_come_from": "M4-final item-wise producer/V557/resolver permission bindings"
+    }
+  ],
+  "sv3f_use_before_m4": {
+    "allowed": [
+      "noncollapse theorem",
+      "peer role separation",
+      "permission non-widening theorem",
+      "refresh/currentness separation",
+      "causal nonassignment rules",
+      "M5 hostile fixture design",
+      "candidate coordination envelope"
+    ],
+    "forbidden": [
+      "claiming final M4 structural signature is known",
+      "binding latest/current branch state as final authority",
+      "guessing producer identities or hashes",
+      "treating local SCR5578 hash as M4 acceptance hash",
+      "claiming M5 final closure before slots are exact"
+    ]
+  }
+}
