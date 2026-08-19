@@ -1,0 +1,145 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "unit": "M4_PREFLIGHT",
+  "worker_class": "SEAM_PREFLIGHT_SPECIALIST",
+  "mission": "MIXED_PUBLICATION_STANDALONE_REPOSITORY_PREFLIGHT",
+  "authority": "NON_DISPOSITIVE_PREFLIGHT_ONLY",
+  "repository": "maidiu/rawlsing",
+  "exact_semantic_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-seam-m4-preflight",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M4/preflight/",
+  "result_token": "M4_PREFLIGHT_COMPLETE",
+  "final_m4_accepted": false,
+  "m4_final_acceptance_token_emitted": false,
+  "production_code_modified": false,
+  "broad_topology_amended": false,
+  "authority_conflict_found": false,
+  "broad_topology_contradiction_found": false,
+  "pinned_inputs": {
+    "SCR553": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+    "SCR554": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "SCR555_local_preflight_only": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+    "SCR556_local_preflight_only": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+    "SCR5578_local": "06eefed7bb8e7db7fd2465aa262653ed95461e84",
+    "S5578C_accepted_feeder": "50d9b9f0ea36c95bd2423206901aa39e3b48092a"
+  },
+  "producer_binding_status": {
+    "V553": {
+      "status": "EXACT_LOCAL_CLOSED_BINDING_AVAILABLE",
+      "result_token": "SCR553_EXACT_CONTRACT_CLOSED",
+      "contract_id": "SCR553_V553_TEMPORAL_JURISDICTION",
+      "contract_version": "SCR553_V553_TEMPORAL_JURISDICTION_V1",
+      "families": ["TEMPORAL_KEY", "TEMPORAL_OBSERVATION", "TEMPORAL_RELATION", "TEMPORAL_LIMIT"]
+    },
+    "V554": {
+      "status": "EXACT_LOCAL_CLOSED_BINDING_AVAILABLE",
+      "result_token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "contract_id": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT",
+      "contract_version": "1.0.0",
+      "families": ["BOUNDED_STRUCTURAL_AFFORDANCE", "STRUCTURAL_MEDIATION_APPLICABILITY_CONDITION", "V554_V555_HANDOFF"]
+    },
+    "V555": {
+      "status": "LOCAL_INDEPENDENT_CONTRACT_ONLY__FINAL_M2_BINDING_REQUIRED",
+      "local_result_token": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "contract_id": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT",
+      "contract_version": "stage-close-r03-1",
+      "family": "STRUCTURAL_MEDIATION_ROUTE_CANDIDATE",
+      "final_m4_may_treat_as_accepted": false
+    },
+    "V556": {
+      "status": "LOCAL_INDEPENDENT_CONTRACT_ONLY__FINAL_M3_BINDING_REQUIRED",
+      "local_result_token": "SCR556_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "contract_id": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT",
+      "contract_version": "scr556.v1",
+      "families": ["V556_INTERACTION_RELATION", "V556_TOPOLOGY", "V556_ATTRACTOR_PREREQUISITE"],
+      "final_m4_may_treat_as_accepted": false
+    }
+  },
+  "scr5578_local_law_preserved": {
+    "contract": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT@1.0.0",
+    "local_status": "CLOSED",
+    "result_token": "SCR5578_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+    "logical_split": {
+      "V557": "runtime publication/use governance + monotone permission narrowing + immutable publication/closure proof",
+      "V558": "immutable StructuralPriorRepository + producer-preserving link/index + deterministic ContextResolver + ResolvedStructuralContext"
+    },
+    "logical_collapse_allowed": false,
+    "physical_copackaging_allowed": true
+  },
+  "required_invariants": [
+    "raw V553/V554/V555/V556 directories absent must not change semantic resolution when immutable closure is complete",
+    "every interpretation-critical positive and negative dependency is packaged immutable content or exact immutable hash-bound resolvable content",
+    "resolver_allowed_uses subset V557_allowed_uses subset producer_allowed_uses item-wise",
+    "V553/V554/V555/V556 producer IDs and hashes remain canonical semantic identity",
+    "producer-declared reference role requiredness cardinality multiplicity and semantic order survive packaging/resolution",
+    "PSEPF ActorComparatorReceipt and V3EmpiricalPossibilityInput are rejected from structural repository semantics",
+    "provenance reachability never creates source pooling composition respondent linkage or V556 interaction authority",
+    "latest fuzzy label raw-stage network LLM embedding randomness and default repair are forbidden",
+    "publication and repository bundles are atomic; partial visibility fails closed",
+    "partial n-ary producer meaning fails closed and is never reduced to a smaller positive object",
+    "packaging integrity failure is distinct from producer NEGATIVE_AUTHORITY MISSING_AUTHORITY NONCOMPARABLE and VALID_EMPTY states",
+    "repository presence collection readiness index hits and root permission never grant dependency permission",
+    "same exact immutable bundle query policy bindings yield deterministic SelectionRecords receipt and context"
+  ],
+  "reference_class_firewall": {
+    "must_not_appear_as_structural_semantics": [
+      "PositionedSubjectEmpiricalPossibilityField",
+      "PSEPF",
+      "ActorComparatorReceipt",
+      "V3EmpiricalPossibilityInput",
+      "RenderedExpression_or_Persona"
+    ],
+    "reference_only_when_producer_declares_interpretation_critical": [
+      "StructuralEmpiricalAdmission",
+      "EmpiricalFact",
+      "QuerySpec",
+      "UniverseSpec_or_risk_set",
+      "Measure_weight_estimand_authority"
+    ],
+    "audit_only": ["DiscoveryResultReceipt", "ReplayReceipt"]
+  },
+  "state_separation": {
+    "producer_semantic_states": ["NEGATIVE_AUTHORITY", "MISSING_AUTHORITY", "NONCOMPARABLE", "VALID_EMPTY"],
+    "packaging_integrity_state": "INTEGRITY_FAILURE",
+    "physical_missing_required_dependency_is": "INTEGRITY_FAILURE",
+    "empty_or_incomplete_index_is_not": "VALID_EMPTY",
+    "hash_or_version_mismatch_is_not": "MISSING_AUTHORITY"
+  },
+  "preflight_attack_disposition": {
+    "raw_directories_absent": "PASSABLE_IF_EXACT_CLOSURE_COMPLETE",
+    "missing_positive_dependency": "FAIL_CLOSED",
+    "missing_negative_dependency": "FAIL_CLOSED",
+    "permission_widening": "FAIL_CLOSED",
+    "producer_reidentification": "REJECT",
+    "role_order_cardinality_multiplicity_loss": "FAIL_CLOSED",
+    "psepf_or_reverse_lane_smuggling": "REJECT",
+    "provenance_as_composition": "REJECT",
+    "latest_fuzzy_raw_network_repair": "REJECT",
+    "partial_atomic_bundle": "FAIL_CLOSED",
+    "partial_n_ary_object": "FAIL_CLOSED",
+    "integrity_to_semantic_negative_rewrite": "REJECT"
+  },
+  "final_dependency_posture": {
+    "M2": "NOT_ACCEPTED_FOR_THIS_PREFLIGHT__IMPORT_EXACT_FINAL_BINDINGS_LATER",
+    "M3": "NOT_ACCEPTED_FOR_THIS_PREFLIGHT__IMPORT_EXACT_FINAL_BINDINGS_LATER",
+    "final_binding_slot_file": "FINAL_M2_M3_BINDING_SLOTS.json",
+    "final_m4_must_rerun": [
+      "producer final-contract binding checksum",
+      "mixed-root standalone raw-directories-absent checksum",
+      "item-wise permission subset checksum",
+      "producer identity and role/order/cardinality/multiplicity checksum",
+      "reference-class firewall",
+      "provenance-not-composition checksum",
+      "deterministic replay checksum"
+    ]
+  },
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "PRODUCER_BINDING_MATRIX.csv",
+    "STANDALONE_CLOSURE_PREFLIGHT.md",
+    "FINAL_M2_M3_BINDING_SLOTS.json",
+    "HOSTILE_FIXTURES.md",
+    "PARENT_HANDOFF.md"
+  ]
+}
