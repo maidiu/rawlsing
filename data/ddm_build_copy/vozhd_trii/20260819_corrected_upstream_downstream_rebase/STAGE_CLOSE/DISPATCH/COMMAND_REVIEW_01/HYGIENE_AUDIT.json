@@ -1,0 +1,22 @@
+{
+  "schema":"VOZHD_TRII_STAGE_CLOSE_HYGIENE_AUDIT@1.0.0",
+  "review_epoch":"R03_STAGE_CLOSE_COMMAND_REVIEW_01",
+  "legacy_mechanism":"00_NEW_ROLE_AND_TASK.md_ON_WORKER_BRANCH",
+  "legacy_mechanism_status":"SUPERSEDED_BY_DISPATCH_MAILBOX_PROTOCOL",
+  "cleanup_entries":[
+    {"branch":"agent/vozhd-trii-dr-r03-spec-v554-dedup","classification":"PURE_ADMIN_ONLY_TAIL","semantic_target_sha":"a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4","action":"RESET_REF_TO_SEMANTIC_TARGET"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v553-temporal-jurisdiction","classification":"PURE_ADMIN_ONLY_TAIL","semantic_target_sha":"b261ff885b2b7fd2cd065917b862eb541e24c4a2","action":"RESET_REF_TO_SEMANTIC_TARGET"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v2app-nonconsumption","classification":"PURE_ADMIN_ONLY_TAIL","semantic_target_sha":"24f8811bb7d2eaa18cfac1cb907c48bba8d08f23","action":"RESET_REF_TO_SEMANTIC_TARGET"},
+    {"branch":"agent/vozhd-trii-dr-r03-spec-v3-metabolism","classification":"PURE_ADMIN_ONLY_TAIL","semantic_target_sha":"0ce8eb656fec6a3ac0d2a36a12c9ba217603e7cb","action":"RESET_REF_TO_SEMANTIC_TARGET"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v556-interaction-topology","classification":"PURE_ADMIN_ONLY_TAIL","semantic_target_sha":"9cfefc722f51cfab64952f004afef67fe65eb4a5","action":"RESET_REF_TO_SEMANTIC_TARGET"},
+    {"branch":"agent/vozhd-trii-dr-r03-spec-v5578-standalone","classification":"PURE_ADMIN_ONLY_TAIL","semantic_target_sha":"50d9b9f0ea36c95bd2423206901aa39e3b48092a","action":"RESET_REF_TO_SEMANTIC_TARGET"},
+    {"branch":"agent/vozhd-trii-dr-r03-seam-m1-temporal-v554","classification":"PURE_ADMIN_ONLY_TAIL_AFTER_ACCEPTED_M1","semantic_target_sha":"088848577fd42f3b69e78551d5277c91e5aa128d","action":"RESET_REF_TO_SEMANTIC_TARGET"},
+    {"branch":"agent/vozhd-trii-dr-r03-seam-m2-atomic-route","classification":"PURE_ADMIN_ONLY_TAIL_AFTER_ACCEPTED_M2","semantic_target_sha":"92128619122886d0ced877a29b42fdb453765246","action":"RESET_REF_TO_SEMANTIC_TARGET"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v5578-publication-repository","classification":"THREE_LAWFUL_PACKAGE_REFRESH_COMMITS_THEN_ADMIN_ONLY_TAIL","old_hq_pin":"06eefed7bb8e7db7fd2465aa262653ed95461e84","semantic_target_sha":"ec7bbe80fff26dae23fa8ab3c62b48b8be2164a2","exact_contract_sha256":"7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c","action":"PROMOTE_REFRESHED_LOCAL_PACKAGE_PIN_AND_RESET_ONLY_ADMIN_TAIL"},
+    {"branch":"agent/vozhd-trii-dr-r03-inspectorate-stage-close","classification":"LEGACY_ADMIN_FILE_INTERLEAVED_BEFORE_LATER_SUBSTANTIVE_INSPECTORATE_COMMITS","semantic_target_sha":null,"action":"DO_NOT_FORCE_RESET__REMOVE_ADMIN_FILE_FROM_CURRENT_TREE_AND_PIN_RESULT_BLOB_SEPARATELY"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v555-atomic-route","classification":"CLEAN_NO_LEGACY_ASSIGNMENT_TAIL","semantic_target_sha":"49a9ce7cd830eb670cf1f9d381d4d33e56ddf682","action":"NONE"}
+  ],
+  "safety_rule":"NO_BRANCH_RESET_UNLESS_AUDIT_PROVES_THE_REMOVED_REACHABLE_TAIL_IS_ADMIN_ONLY_RELATIVE_TO_THE_SELECTED_SEMANTIC_TARGET",
+  "production_code_change":false,
+  "broad_topology_change":false
+}
