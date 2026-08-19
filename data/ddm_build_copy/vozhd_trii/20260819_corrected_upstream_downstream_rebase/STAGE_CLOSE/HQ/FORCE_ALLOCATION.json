@@ -2,21 +2,24 @@
   "force_size": 10,
   "hq_excluded_from_worker_count": true,
   "common_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
-  "allocation_epoch": "STAGE_CLOSE_POST_RETURN_WAVE_01",
+  "allocation_epoch": "STAGE_CLOSE_POST_M1_M2_ACCEPTANCE",
   "workers": [
-    {"priority":1,"unit":"M1_BINDER","branch":"agent/vozhd-trii-dr-r03-seam-m1-temporal-v554","role":"seam_dispositive_candidate","status":"TO_LAUNCH","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M1/"},
-    {"priority":2,"unit":"M2_BINDER","branch":"agent/vozhd-trii-dr-r03-seam-m2-atomic-route","role":"seam_dispositive_candidate","status":"TO_LAUNCH","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M2/"},
-    {"priority":3,"unit":"SCRV3","branch":"agent/vozhd-trii-dr-r03-close-v3-empirical-possibility","role":"standing_critical_path","status":"LAUNCH_OR_CONTINUE_IF_ALREADY_ACTIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/"},
-    {"priority":4,"unit":"SV3A","branch":"agent/vozhd-trii-dr-r03-spec-v3-input-lifecycle","role":"non_dispositive_v3_feeder","status":"TO_LAUNCH","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3A/"},
-    {"priority":5,"unit":"SV3B","branch":"agent/vozhd-trii-dr-r03-spec-v3-comparator-snapshot","role":"non_dispositive_v3_feeder","status":"TO_LAUNCH","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3B/"},
-    {"priority":6,"unit":"SV3C","branch":"agent/vozhd-trii-dr-r03-spec-v3-effective-time-source-state","role":"non_dispositive_v3_feeder","status":"TO_LAUNCH","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3C/"},
-    {"priority":7,"unit":"SV3F","branch":"agent/vozhd-trii-dr-r03-spec-v3-structural-peer-prior","role":"non_dispositive_v3_feeder","status":"TO_LAUNCH","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3F/"},
-    {"priority":8,"unit":"SINSP","branch":"agent/vozhd-trii-dr-r03-inspectorate-stage-close","role":"independent_inspectorate","status":"CONTINUE_ACTIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/INSPECTORATE/SINSP/"},
-    {"priority":9,"unit":"M3_PREFLIGHT","branch":"agent/vozhd-trii-dr-r03-seam-m3-preflight","role":"non_dispositive_seam_preflight","status":"TO_LAUNCH","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M3/preflight/"},
-    {"priority":10,"unit":"M4_PREFLIGHT","branch":"agent/vozhd-trii-dr-r03-seam-m4-preflight","role":"non_dispositive_seam_preflight","status":"TO_LAUNCH","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M4/preflight/"}
+    {"priority":1,"unit":"M3_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m3-higher-order-structural","worker_class":"SEAM_BINDER","status":"ASSIGNED_TO_FORMER_M2_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M3/"},
+    {"priority":2,"unit":"M6_PREFLIGHT","branch":"agent/vozhd-trii-dr-r03-seam-m6-preflight","worker_class":"SEAM_PREFLIGHT_SPECIALIST","status":"ASSIGNED_TO_FORMER_M1_CHAT__NON_DISPOSITIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M6/preflight/"},
+    {"priority":3,"unit":"SCRV3","branch":"agent/vozhd-trii-dr-r03-close-v3-empirical-possibility","worker_class":"SUB_VOZHD","status":"CONTINUE_ACTIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/"},
+    {"priority":4,"unit":"SV3A","branch":"agent/vozhd-trii-dr-r03-spec-v3-input-lifecycle","worker_class":"FLOATING_SPECIALIST","status":"ASSIGNED_EXISTING_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3A/"},
+    {"priority":5,"unit":"SV3B","branch":"agent/vozhd-trii-dr-r03-spec-v3-comparator-snapshot","worker_class":"FLOATING_SPECIALIST","status":"ASSIGNED_EXISTING_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3B/"},
+    {"priority":6,"unit":"SV3C","branch":"agent/vozhd-trii-dr-r03-spec-v3-effective-time-source-state","worker_class":"FLOATING_SPECIALIST","status":"ASSIGNED_EXISTING_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3C/"},
+    {"priority":7,"unit":"SV3F","branch":"agent/vozhd-trii-dr-r03-spec-v3-structural-peer-prior","worker_class":"FLOATING_SPECIALIST","status":"ASSIGNED_EXISTING_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3F/"},
+    {"priority":8,"unit":"SINSP","branch":"agent/vozhd-trii-dr-r03-inspectorate-stage-close","worker_class":"INSPECTORATE","status":"CONTINUE_ACTIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/INSPECTORATE/SINSP/"},
+    {"priority":9,"unit":"M3_PREFLIGHT","branch":"agent/vozhd-trii-dr-r03-seam-m3-preflight","worker_class":"SEAM_PREFLIGHT_SPECIALIST","status":"CONTINUE_ASSIGNED__NON_DISPOSITIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M3/preflight/"},
+    {"priority":10,"unit":"M4_PREFLIGHT","branch":"agent/vozhd-trii-dr-r03-seam-m4-preflight","worker_class":"SEAM_PREFLIGHT_SPECIALIST","status":"CONTINUE_ASSIGNED__NON_DISPOSITIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M4/preflight/"}
+  ],
+  "accepted_seams": [
+    {"unit":"M1","result_token":"M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED","result_json_blob":"2cd78ec9a6945d2d30e965a37fee5cae44bd50f7"},
+    {"unit":"M2","result_token":"M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED","result_json_blob":"15ddb28e9fe036f9e5ea5a60a924f549adcccc05"}
   ],
   "prepared_blocked_final_seams": [
-    {"unit":"M3_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m3-higher-order-structural","opens_when":"M2 accepted"},
     {"unit":"M4_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m4-publication-repository","opens_when":"M3 accepted"},
     {"unit":"M5_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m5-v3-peer-prior","opens_when":"M4 and SCRV3 accepted"},
     {"unit":"M6_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m6-v2-expression","opens_when":"SCRV3 accepted"}
