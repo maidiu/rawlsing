@@ -1,0 +1,79 @@
+{
+  "seam": "M2_V554_TO_V555_ATOMIC_ROUTE",
+  "result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+  "repository": "maidiu/rawlsing",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-seam-m2-atomic-route",
+  "branch_verified_identical_to_base_before_writing": true,
+  "accepted_inputs": {
+    "scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "scr554_token": "SCR554_EXACT_CONTRACT_CLOSED",
+    "scr554_contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+    "scr555_head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+    "scr555_pre_m2_token": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+    "scr555_contract_blob": "8926500b7af442c0e07483442047aaad6cdeab63",
+    "s554d_head": "a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4"
+  },
+  "result": {
+    "m2_status": "ACCEPTED",
+    "scr555_status_after_m2": "EXACT_CONTRACT_CLOSED",
+    "scr555_token_after_m2": "SCR555_EXACT_CONTRACT_CLOSED",
+    "blocking_authority_conflict": false,
+    "broad_topology_contradiction_found": false,
+    "production_code_modified": false,
+    "d15_reopened": false,
+    "source_or_artifact_retirement": false,
+    "new_v554_identity_created": false,
+    "new_v555_semantics_created": false
+  },
+  "eight_scr555_slots": {
+    "accepted_scr554_result_head_sha_and_result_token": "BOUND",
+    "canonical_f1_reference_schema_authority_identity_and_immutable_seal": "BOUND",
+    "canonical_f1_identity_tuple_order_and_equality_law": "BOUND_TO_ACCEPTED_SCR554_NAMED_CANONICAL_JSON_IDENTITY__NO_UPSTREAM_TUPLE_INVENTED",
+    "canonical_f1_positive_state_and_structural_mediation_use_permission_binding": "BOUND",
+    "canonical_b1_reference_schema_authority_identity_and_immutable_seal": "BOUND",
+    "canonical_b1_identity_tuple_order_and_equality_law": "BOUND_TO_ACCEPTED_SCR554_NAMED_CANONICAL_JSON_IDENTITY__NO_UPSTREAM_TUPLE_INVENTED",
+    "exact_f1_to_b1_binding_and_cardinality_law": "BOUND",
+    "exact_v554_authority_rule_signature_references_required_for_f1_b1_replay": "BOUND"
+  },
+  "proved": {
+    "exact_v554_f1_ref": "canonical SCR554 F1_id",
+    "one_f1_per_route": true,
+    "required_f1_state": "ELIGIBLE",
+    "required_target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "b1_required_for_positive_route": true,
+    "b1_allowed_v555_structural_use_required": true,
+    "b1_route_semantic_participant": false,
+    "different_canonical_f1_same_visible_channel_receiver_collapse": false,
+    "duplicate_direct_v553_can_multiply_f1": false,
+    "duplicate_provenance_can_multiply_routes": false,
+    "inherited_f2_owner": "V554",
+    "inherited_f2_transport": "EXACT_REFERENCE_ONLY",
+    "v555_re_evaluates_f2": false,
+    "route_born_registry": "V555_ROUTE_BORN_PREDICATE_REGISTRY@1.0.0__VALID_EMPTY__COUNT_0",
+    "admission_v553_legacy_seed_bypass": false,
+    "v555_route_tuple_field_count": 7,
+    "v555_route_tuple_first_field": "EXACT_V554_F1_REF",
+    "replay_binds_exact_scr554_rule_signature_authority": true
+  },
+  "hq_guard": {
+    "status": "PASS",
+    "rule": "Mixed/unresolved required authority for one exact V554 invocation fails at STATIC_AUTHORITY_COMPLETENESS as K07/no-F1 before duplicate equivalence and conjunctive F1 emission.",
+    "rule_version_hash_difference_alone_can_create_second_positive_f1": false
+  },
+  "m1_staleness_guard": {
+    "m1_launch_dependency": false,
+    "current_m2_scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "current_m2_scr554_contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+    "if_material_scr554_change_after_m1": "M2_RETURN_BECOMES_STALE_AND_MUST_BE_RECHECKED"
+  },
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "M2_BINDING_RECEIPT.json",
+    "M2_SEAM_CONTRACT.md",
+    "M2_SEAM_CONTRACT.json",
+    "M2_HOSTILE_TEST_ORACLE.md",
+    "M2_CONFLICTS.json"
+  ]
+}
