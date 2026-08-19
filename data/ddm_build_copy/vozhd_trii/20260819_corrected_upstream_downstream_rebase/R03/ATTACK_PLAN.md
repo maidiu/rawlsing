@@ -3,7 +3,7 @@
 **Campaign:** `VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE`  
 **Target under attack:** accepted R02 candidate direct-DAG topology  
 **Execution mode:** six parallel hostile feeders + parallel stage-evidence preparation + one synthesis court  
-**Worker base:** exact `r03_worker_launch_sha` in `../CONTROL.json`.
+**Worker base:** use the exact common launch SHA issued by the parent Vozhd; every R03 feeder and evidence-prep branch must share that base.
 
 ## 1. Objective
 
