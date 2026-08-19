@@ -1,0 +1,229 @@
+{
+  "schema_version": "vozhd_trii_d14a_current_cost_geometry.v1",
+  "status": "NON_DISPOSITIVE_FEEDER_COMPLETE_WITH_STATIC_BASELINE_AND_BLOCKED_REAL_MEASUREMENT",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-d14a-current-cost-geometry",
+  "base_sha": "b92d3f3db9faaa962f59d55e61122701df9e53aa",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/feeders/D14A/",
+  "no_db_law": "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
+  "verdict": {
+    "current_geometry_baseline": "ESTABLISHED_STATICALLY",
+    "real_runtime_baseline": "BLOCKED_REAL_MEASUREMENT",
+    "populated_cardinalities": "UNKNOWN__NO_DB_ACCESS",
+    "database_io": "UNKNOWN__NOT_MEASURED__NO_FABRICATION",
+    "replacement_savings": "NOT_ADJUDICATED",
+    "semantic_implications": "NONE"
+  },
+  "governing_constraints": [
+    "Cost is not semantic authority.",
+    "MATERIALIZE_ALL_PERMITTED is not a universal workload law.",
+    "Bounded V550J configurations are authority-selected workloads.",
+    "Reconstructibility, provenance, typed absence, weighting semantics and terminal necessity govern later semantic decisions.",
+    "No replacement architecture, savings claim, delete implication or production semantic change is adjudicated here."
+  ],
+  "variables": {
+    "Q": "V550 questions in shard scope; Q_exec for actually executed questions",
+    "I": "fixed current indicator-field ceiling; source count is 12",
+    "R": "respondents at respondent grain",
+    "P": "lawfully eligible ordered question pairs; current engine attempts subset P_state",
+    "Cq": "observed response-category count for q",
+    "D": "configured recursive depth",
+    "J": "governed V550J configurations/families",
+    "Kj": "items in governed configuration j",
+    "A": "observed association candidate groups/rows",
+    "B": "recursive branch nodes",
+    "Nc": "response-long shared/prepared rows for country c",
+    "Iq": "present usable indicator fields for q, <= I",
+    "Eq": "position-signature candidate columns for q",
+    "Lq": "relation-co-signature candidate columns for q",
+    "Q_cloud": "questions passing should_emit_cloud_tables operational gate",
+    "P_state": "processing-order-dependent attitude-cloud pair attempts",
+    "Rjc": "eligible summarized respondents for V550J configuration j,country c",
+    "Mjc": "joint-response patterns for j,c",
+    "MSHIPjc": "respondent-membership rows for j,c",
+    "PUB": "published association rows"
+  },
+  "source_measured_facts": {
+    "v550_indicator_field_count": 12,
+    "recursive_branch_max_fanout": 2,
+    "branch_position_signature_max_features": 5,
+    "branch_relation_co_signature_max_features": 5,
+    "branch_identity_before_writes": "identical to exact base SHA"
+  },
+  "families": [
+    {
+      "name": "answer_distribution",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "one build_distribution_tables answer grouping per executed q",
+      "output": "sum_q C_q",
+      "joins": "none"
+    },
+    {
+      "name": "country_answer_distribution",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "per q country grouping then response grouping within country",
+      "output": "sum_q sum_c C_{q,c}",
+      "joins": "none"
+    },
+    {
+      "name": "position_distribution",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "post-question-loop per-country respondent sort/dedupe plus I_c position groupings",
+      "output": "sum_c sum_i V_{c,i}",
+      "joins": "none"
+    },
+    {
+      "name": "position_indicator_summary",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "sum_q I_q indicator statistic passes; weighted path adds indicator-value groupings",
+      "output": "sum_q I_q",
+      "joins": "none"
+    },
+    {
+      "name": "indicator_answer_matrix",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "sum_q I_q crosstabs plus weighted pivots when weights are valid",
+      "output": "sum_q sum_i V_{q,i} * C_{q,i}",
+      "joins": "none"
+    },
+    {
+      "name": "outlier_cohort_summary",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "sum_q I_q indicator groupbys and subgroup dominant-response scans",
+      "output": "sum_q sum_i F_{q,i}",
+      "joins": "none"
+    },
+    {
+      "name": "secondary_indicator_summary",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "per q I_q first-pass scores plus at most I_q-1 primary-secondary joint entropy checks",
+      "output": "sum_q S_q with 0<=S_q<=I_q-1",
+      "joins": "none"
+    },
+    {
+      "name": "recursive_branch_nodes",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "binary recursion; candidate evaluations <= sum_q sum_{d=0}^{d*_q-1} 2^d*(I_q-d), d*_q=min(D,I_q)",
+      "output": "B; B_q<=2^(d*_q+1)-1 before pruning",
+      "joins": "none"
+    },
+    {
+      "name": "branch_position_signature",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "score E_q candidate position columns and sort",
+      "output": "<=5 rows per cloud-enabled q",
+      "joins": "none"
+    },
+    {
+      "name": "branch_relation_co_signature",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "score L_q relation candidates and sort; contract-gated",
+      "output": "<=5 rows per cloud-enabled q",
+      "joins": "none"
+    },
+    {
+      "name": "question_response_attitude_cloud",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "P_state=sum_{anchor q} N_prev_registered(q); each pair inner-merges respondent_id then crosstabs responses",
+      "output": "<=P_state; upper bound Q_cloud*(Q_cloud-1)/2 when every cloud question is registered and anchor-enabled",
+      "joins": "P_state respondent inner joins"
+    },
+    {
+      "name": "shared V550/V550J extraction",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "Q base question rows plus sum_j K_j governed registry-item visits; canonicalize response-long N_c rows; atomic shared write performs at least three full logical-content hash passes and a parquet reload",
+      "output": "sum_c N_c long rows",
+      "joins": "V550J prepared reuse later inner-merges prepared country rows to active family lookup on var_code_norm"
+    },
+    {
+      "name": "V550J joint-response patterns",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "per j,c group family rows by respondent; per respondent perform K_j item filters; group eligible respondent summaries by raw+semantic signature",
+      "output": "M_jc<=R_jc; complete-signature bound min(R_jc, product_k C_jk)",
+      "joins": "none inside _summarize_respondents"
+    },
+    {
+      "name": "V550J respondent-membership materialization",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "one signature inner merge of respondent summaries to pattern rows per j,c, then row emission",
+      "output": "sum_jc MSHIP_jc; normal signature path MSHIP_jc<=R_jc",
+      "joins": "one signature inner merge per j,c"
+    },
+    {
+      "name": "V550J association candidate generation",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "membership inner-merge eligible context on respondent_id_norm; group joined rows at pattern, pattern-var, pattern-var-response, baseline var-response and baseline var; four aggregate left merges into candidate_counts",
+      "output": "A observed overlapping pattern-var-response groups; A_jc<=M_jc*sum_v C_v",
+      "joins": "one expansion inner join plus four aggregate left merges per j,c"
+    },
+    {
+      "name": "association publication",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "O(A) publication mask plus governed-lane classification/reconciliation",
+      "output": "PUB<=A",
+      "joins": "none after candidate formation"
+    },
+    {
+      "name": "checkpoint/resume materialization",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "V550 table checkpoint writes = 9*Q_exec + 3*Q_cloud + Q_gap; completion markers=Q_handled; finalization may re-read/combine checkpoints",
+      "output": "serialized row count equals checkpointed family rows; live bytes blocked",
+      "joins": "none intrinsic to serialization"
+    },
+    {
+      "name": "repeated scans between V550 and V550J",
+      "status": "STATICALLY_DERIVED",
+      "geometry": "same V550 question frame independently feeds distributions, indicator summary, secondary summary, matrix, outlier, recursion and optional cloud computations; shared write adds three logical hash passes; V550J fallback modes can reharmonize per question",
+      "output": "no independent table",
+      "joins": "P_state cloud joins plus prepared-country/family lookup and V550J membership-context association joins"
+    }
+  ],
+  "checkpoint_facts": {
+    "unconditional_v550_table_checkpoints_per_executed_question": 9,
+    "additional_cloud_table_checkpoints_per_cloud_question": 3,
+    "mapping_gap_checkpoint": "one when nonempty",
+    "formula": "9*Q_exec + 3*Q_cloud + Q_gap",
+    "completion_markers": "Q_handled",
+    "position_distribution": "computed post-loop; no per-question checkpoint in visible current path",
+    "v550j_family_resume_checkpoint": "none observed in current compiler; family frames accumulate to run-final output tables"
+  },
+  "repeated_work": [
+    "V550 independently rescans the same question frame across multiple analysis families.",
+    "secondary_indicator_summary repeats an indicator-scoring pass before primary-secondary checks.",
+    "attitude-cloud pairs are stateful and processing-order dependent; one respondent join/crosstab per attempted pair.",
+    "shared-substrate atomic write performs parquet serialization, two validations with logical hashing, parquet reload and a third logical hash.",
+    "normal V550J prepared-country state is cached across applicable families; fallback/forensic modes can reharmonize per question.",
+    "V550J association fast path expands membership rows against outside-family response-long context before aggregate collapse."
+  ],
+  "blocked_real_measurements": [
+    "production wall-clock",
+    "CPU time",
+    "peak RSS",
+    "live database/source rows read",
+    "live intermediate and emitted rows",
+    "checkpoint and artifact bytes",
+    "live B and P_state",
+    "live M_jc, MSHIP_jc, A and PUB"
+  ],
+  "database_io_status": "UNKNOWN__NO_LIVE_EXECUTION__NO_FABRICATION",
+  "artifacts": [
+    "RESULT.md",
+    "RESULT.json",
+    "CURRENT_COST_GEOMETRY.csv",
+    "BASELINE_MEASUREMENTS.json",
+    "BLOCKED_MEASUREMENT_LEDGER.csv"
+  ],
+  "evidence_paths": [
+    "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/14_D07_D08_D10_D11_RETURN_ADJUDICATION.md",
+    "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/02_RESOURCE_INDEX.md",
+    "data/ddm_build_copy/build_determinicity_wave_shard_v550.py",
+    "data/ddm_build_copy/ddm_v550_distributions.py",
+    "data/ddm_build_copy/ddm_v550_position_distribution.py",
+    "data/ddm_build_copy/ddm_v550_branching.py",
+    "data/ddm_build_copy/ddm_v550_clouds.py",
+    "data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py",
+    "data/ddm_build_copy/build_v550j_prepared_substrate.py",
+    "data/ddm_build_copy/compile_v550j_joint_response_patterns.py",
+    "data/ddm_build_copy/ddm_v550j_joint_patterns.py"
+  ]
+}
