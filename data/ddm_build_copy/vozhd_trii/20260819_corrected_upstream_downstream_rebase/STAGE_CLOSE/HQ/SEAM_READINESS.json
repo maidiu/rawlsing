@@ -1,0 +1,9 @@
+{
+  "M1":{"requires":["SCR553","SCR554"],"status":"WAITING_FOR_FINITE_INPUTS"},
+  "M2":{"requires":["SCR554","SCR555"],"status":"WAITING_FOR_FINITE_INPUTS"},
+  "M3":{"requires":["SCR555","SCR556"],"status":"WAITING_FOR_FINITE_INPUTS"},
+  "M4":{"requires":["SCR553","SCR554","SCR555","SCR556","SCR5578"],"status":"WAITING_FOR_FINITE_INPUTS"},
+  "M5":{"requires":["SCR5578","SCRV3"],"status":"WAITING_FOR_FINITE_INPUTS"},
+  "M6":{"requires":["SCRV3","SCRV2APP"],"status":"WAITING_FOR_FINITE_INPUTS"},
+  "whole_machine_reclosure":"NOT_OPEN_UNTIL_M1_M6_ACCEPTED"
+}
