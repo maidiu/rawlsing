@@ -28,6 +28,22 @@ The seam proof establishes all commanded properties:
 7. Direct + no-op V553 cannot double support; unresolved equivalence fails closed.
 8. Extra V553 material outside the exact invocation cannot manufacture independent support.
 
+## Binder verification
+
+The pre-existing one-commit M1 candidate on this branch was treated as unaccepted work and independently checked against the exact reassignment inputs before this final binder commit.
+
+Verification consumed the accepted SCR553 local contract/head `b261ff885b2b7fd2cd065917b862eb541e24c4a2`, accepted SCR554 local contract/head `b5d745ac70c833324c8be0addf6c08ad72372263`, S553R feeder head `f9f1b60f011d30473507287e7f2c1f9fe258967c`, S554D feeder head `a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4`, parent authorities 24/25, and the accepted R03 broad-DAG/stage-close/whole-machine closure law.
+
+The audit found no stage-jurisdiction mismatch and no authority conflict requiring harmonization. In particular:
+
+- SCR553's exported `family/object_id/content_hash/schema_version` refs plus exact admission/participant/authority closure are sufficient for SCR554's richer consumer slots by immutable dereference; SCR554 does not require SCR553 internal field names or physical layout.
+- `SIG-001` versus `SIG-002/003` remains an exact invocation/signature distinction, not an admission-global temporal classification.
+- one exact V554 invocation binds one exact rule ID/version/hash; unresolved competing required authority snapshots are K07/static-authority failure before duplicate/support counting and cannot become separate supports.
+- admission-lineage differences split support only when governing authority makes them interpretation- or lawful-use-material; provenance-only path/reissue/replay differences remain aliases, while unknown materiality yields `EQUIVALENCE_UNKNOWN` and fails closed.
+- no-op or irrelevant V553 material contributes zero semantic support, while an applicable V553/source negative for the same semantic demand blocks direct downgrade.
+
+Therefore the candidate contract is adopted as the M1 binder result without rewriting SCR553 or SCR554.
+
 ## HQ guard result
 
 The authority-version/lineage guard passes without harmonization.
