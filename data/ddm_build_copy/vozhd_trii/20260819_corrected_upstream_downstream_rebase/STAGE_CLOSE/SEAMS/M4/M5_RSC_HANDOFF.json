@@ -1,0 +1,148 @@
+{
+  "handoff_id": "M4_TO_M5_RSC_HANDOFF",
+  "handoff_version": "1.0.0",
+  "assignment_id": "E02-W10-M4-FINAL-001",
+  "m4_result_token": "M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED",
+  "m4_seam_contract": "M4_SCR5578_MIXED_PRODUCER_FINAL_SEAM@1.0.0",
+  "purpose": "Exact machine-verification signature for an SCR5578 ResolvedStructuralContext consumed by M5; no runtime context instance is fabricated here.",
+  "frozen_authority": {
+    "scr5578_package_head": "ec7bbe80fff26dae23fa8ab3c62b48b8be2164a2",
+    "scr5578_contract": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT@1.0.0",
+    "scr5578_contract_sha256": "7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c",
+    "resolved_structural_context_schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0",
+    "resolver_policy_id": "V558_CONTEXT_RESOLVER_POLICY",
+    "resolver_policy_version": "1.0.0",
+    "resolver_policy_hash": "4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f"
+  },
+  "producer_acceptance_seals": {
+    "V553": {
+      "producer_head": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+      "token": "SCR553_EXACT_CONTRACT_CLOSED",
+      "contract_blob": "072c0995fe3dc7915dca50167d5895223600d2"
+    },
+    "V554": {
+      "producer_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90"
+    },
+    "V555": {
+      "producer_contract_head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+      "producer_contract_blob": "8926500b7af442c0e07483442047aaad6cdeab63",
+      "m2_semantic_head": "92128619122886d0ced877a29b42fdb453765246",
+      "m2_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED"
+    },
+    "V556": {
+      "producer_contract_head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+      "producer_contract_blob": "f4e8146885b1145b116b173d2d4a148e3d55db4a",
+      "m3_result_blob": "c5c2f85bade35a1b1cda9a26ce946f76d39ec953",
+      "m3_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED"
+    }
+  },
+  "machine_signature": {
+    "signature_id": "M4_TO_M5_RSC_MACHINE_SIGNATURE",
+    "signature_version": "1.0.0",
+    "signature_kind": "NONSEMANTIC_TRANSPORT_AND_VERIFICATION_CHECKSUM",
+    "hash_algorithm": "SHA-256",
+    "canonicalization": "UTF8_JSON_SORTED_OBJECT_KEYS_NO_INSIGNIFICANT_WHITESPACE; arrays preserve semantic order when governed and otherwise use the producer/resolver-declared canonical order; no NaN/Infinity; no wall clock, storage order, filesystem order, mutable latest, randomness, labels, or implementation-local IDs.",
+    "signature_material_order": [
+      "rsc_schema_id_version",
+      "rsc_context_id",
+      "rsc_context_content_hash",
+      "repository_bundle_id",
+      "repository_bundle_content_hash",
+      "context_query_id",
+      "context_query_hash",
+      "resolver_policy_id_version_hash",
+      "resolution_receipt_id",
+      "resolution_receipt_hash",
+      "resolved_entry_set_digest",
+      "preserved_negative_entry_set_digest",
+      "deferred_unresolved_entry_set_digest",
+      "selection_record_set_digest",
+      "coverage_fidelity_profile_id_hash",
+      "refresh_metadata_id_hash",
+      "provenance_root_digest",
+      "producer_binding_digest",
+      "permission_subset_proof_digest",
+      "reference_closure_digest"
+    ],
+    "signature_expression": "SHA256(canonical_json({rsc_schema_id_version,rsc_context_id,rsc_context_content_hash,repository_bundle_id,repository_bundle_content_hash,context_query_id,context_query_hash,resolver_policy_id_version_hash,resolution_receipt_id,resolution_receipt_hash,resolved_entry_set_digest,preserved_negative_entry_set_digest,deferred_unresolved_entry_set_digest,selection_record_set_digest,coverage_fidelity_profile_id_hash,refresh_metadata_id_hash,provenance_root_digest,producer_binding_digest,permission_subset_proof_digest,reference_closure_digest}))",
+    "replaces_rsc_context_identity": false,
+    "replaces_producer_identity": false,
+    "grants_permission": false,
+    "creates_semantics": false
+  },
+  "runtime_rsc_instance_required": {
+    "required": true,
+    "m4_fabricated_instance": false,
+    "required_top_level_bindings": [
+      "repository/query/policy",
+      "resolution receipt",
+      "resolved entries",
+      "preserved negative entries",
+      "deferred/unresolved entries",
+      "all SelectionRecord refs/hashes",
+      "fidelity profile",
+      "refresh metadata",
+      "provenance",
+      "context ID/hash"
+    ],
+    "resolved_entry_required_fields": [
+      "resolution key",
+      "SelectionRecord ref",
+      "canonical producer family/object ID/hash",
+      "producer locator",
+      "resolver allowed uses",
+      "decision state"
+    ]
+  },
+  "producer_binding_digest_contract": {
+    "must_bind": [
+      "V553 accepted head/token/contract blob and exact producer identity/reference closure",
+      "V554 accepted head/token/contract blob and exact F1/F2/B1 identity/reference closure",
+      "V555 local contract head/blob plus accepted M2 head/token and exact seven-field route identity",
+      "V556 local contract head/blob plus accepted M3 result/token and exact V555 participant role/order/cardinality/multiplicity bindings",
+      "frozen SCR5578 contract SHA-256"
+    ],
+    "producer_ids_must_remain_canonical": true,
+    "v557_v558_ids_may_replace_producer_ids": false
+  },
+  "permission_subset_proof_contract": {
+    "invariant": "resolver_allowed_uses subset V557_allowed_uses subset producer_allowed_uses",
+    "scope": "every selected root and every interpretation-critical dependency",
+    "repository_presence_grants_permission": false,
+    "collection_readiness_grants_permission": false,
+    "dependency_inherits_root_permission": false,
+    "missing_or_ambiguous_permission": "FAIL_CLOSED"
+  },
+  "reference_closure_digest_contract": {
+    "positive_and_negative_dependencies_required": true,
+    "edge_semantics_preserved": ["reference_contract_id_version_hash", "edge_role", "requiredness", "participant_role", "declared_cardinality", "multiplicity_key", "order_significant", "semantic_ordinal"],
+    "leaf_satisfaction": ["immutable packaged exact-hash content", "exact immutable hash-bound deterministic resolver binding"],
+    "raw_v553_v554_v555_v556_directories_required": false,
+    "missing_or_corrupt_required_closure": "INTEGRITY_FAILURE"
+  },
+  "m5_acceptance_checks": [
+    "Verify the M4 mission head contains M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED and all eight M4 outputs.",
+    "Verify the runtime object schema is exactly SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0.",
+    "Verify exact context_id and context_content_hash from the runtime RSC instance; do not infer or fabricate them from this handoff.",
+    "Verify repository/query/policy and resolution receipt hashes.",
+    "Verify every resolved entry preserves canonical producer family/object ID/hash and exact producer locator reversal.",
+    "Verify every SelectionRecord and preserved negative/deferred/unresolved entry is included in the bound digests.",
+    "Verify item-wise permission subset proof for each root and dependency.",
+    "Verify positive+negative reference closure and producer role/order/cardinality/multiplicity preservation.",
+    "Verify PSEPF, V3EmpiricalPossibilityInput, ActorComparatorReceipt, and rendered persona are absent from structural repository semantics.",
+    "Verify provenance has not been used as source composition/respondent linkage/estimand authority.",
+    "Recompute M4_TO_M5_RSC_MACHINE_SIGNATURE@1.0.0 from the exact runtime values and require equality with the transported signature value supplied alongside that runtime RSC instance."
+  ],
+  "m5_must_not": [
+    "treat the machine signature as a producer or RSC semantic identity",
+    "invent a context_id/content_hash when no runtime RSC instance exists",
+    "widen producer/V557/resolver permission",
+    "repair unresolved references via latest/fuzzy/raw-stage/network/LLM/random/default behavior",
+    "use co-resolved V555 participants to synthesize a V556 relation",
+    "use provenance as source composition authority",
+    "admit PSEPF or V3 reverse-lane objects into StructuralPriorRepository semantics"
+  ],
+  "handoff_state": "READY_FOR_M5_EXACT_RUNTIME_RSC_INSTANCE_VALIDATION"
+}
