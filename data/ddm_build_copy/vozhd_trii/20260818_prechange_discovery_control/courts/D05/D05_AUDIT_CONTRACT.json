@@ -1,95 +1,166 @@
 {
   "court": "D05",
-  "contract_version": "D05-EMPIRICAL-SUBSTRATE-AUDIT-R3",
+  "contract_version": "D05-EMPIRICAL-SUBSTRATE-AUDIT-R4",
   "verdict_when_no_populated_database": "BLOCKED_MISSING_POPULATED_DATA_ACCESS",
+  "audit_apparatus_closure_state": "CLOSED_EXECUTABLE_FIXED_SEMANTICS",
   "execution": {
     "canonical_command": "DATABASE_URL='postgresql://...' bash data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D05/run_d05_empirical_audit.sh",
     "semantic_parameters": [],
-    "worker_decisions_required": 0,
-    "core_runner": "run_d05_empirical_audit.py",
-    "authority_scope_cache_runner": "audit_d05_authority_scope_cache.py",
-    "database_mode": "Each database runner opens one REPEATABLE READ, READ ONLY PostgreSQL transaction; neither issues DDL or DML.",
-    "writes_allowed": "CSV/JSON files under courts/D05 only"
+    "worker_semantic_decisions_required": 0,
+    "stages_in_order": [
+      "run_d05_empirical_audit.py",
+      "audit_d05_identity_overlap_exact.py",
+      "audit_d05_output_semantic_guard.py",
+      "audit_d05_authority_scope_cache.py",
+      "audit_d05_cache_identity_exact.py"
+    ],
+    "database_mode": "Every database stage opens its own PostgreSQL REPEATABLE READ, READ ONLY transaction and verifies transaction_read_only=on.",
+    "database_mutation_allowed": false,
+    "writes_allowed": "Only court CSV/JSON files under courts/D05."
   },
   "required_branch": "agent/vozhd-trii-d05-empirical-substrate",
   "required_base_ancestor": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
   "relation_contract": {
-    "public.survey_microdata_respondents": {"fatal_if_absent": true, "columns": ["id", "source", "wave", "country_code", "survey_year"]},
-    "public.survey_microdata_responses": {"fatal_if_absent": true, "columns": ["respondent_id", "var_code", "value_raw", "value_text"]},
-    "public.survey_weight_fact": {"fatal_if_absent": false, "columns": ["respondent_id", "weight_name", "weight_value", "weight_type", "source_var", "source", "wave", "is_primary"]},
-    "public.respondent_position_fact": {"fatal_if_absent": false, "columns": ["respondent_id", "source_family", "wave", "country_code", "survey_year", "sex", "age", "education_level", "income_level", "income_source_note", "urban_rural", "religion_label", "marital", "employment", "class_level", "household_size", "language", "region", "ethnicity", "position_source_table", "position_completeness_score"]},
-    "public.question_structural_mapping": {"fatal_if_absent": false, "columns": ["source", "wave", "question_id", "var_code", "display_text", "legacy_final_driver_id", "final_driver_label", "final_driver_scope", "final_driver_origin", "driver_id", "driver_facet_id", "question_block_id", "structural_domain_id", "relation_axis_id", "target_entity_id", "mapping_status", "evidence_kind", "strata_relevance", "channel_affordances", "forbidden_inference", "does_not_measure", "review_notes", "loaded_at"]},
-    "public.survey_authority_compendium": {"fatal_if_absent": false, "columns": [], "note": "Inventory all actual columns and population; no guessed aliases."},
-    "public.v_ddm_response_long_facet_ready": {"fatal_if_absent": false, "columns": ["respondent_id", "source", "wave", "canonical_wave", "country_code", "survey_year", "var_code", "value_raw", "value_text", "weight_value", "weight_name", "weight_status", "sex", "age", "age_group", "education_level", "income_level", "religion_label", "urban_rural", "region", "ethnicity", "language", "employment", "marital", "household_size", "position_source_table", "position_completeness_score", "question_id", "question_block_id", "structural_domain_id", "driver_id", "driver_facet_id", "relation_axis_id", "target_entity_id", "mapping_status", "legacy_final_driver_id", "legacy_driver_leak_flag"]},
-    "public.v_ddm_response_long_facet_ready_authority": {"fatal_if_absent": false, "columns": ["respondent_id", "source", "wave", "canonical_wave", "country_code", "var_code"]},
-    "public.ddm_demographic_field_register": {"fatal_if_absent": false, "columns": [], "note": "Enumerate source-native candidates when source_family/wave/var_name/question_id/demographic_kind are physically exposed."},
-    "*.canonical_question_registry": {"fatal_if_absent": false, "columns": ["canonical_source", "canonical_wave", "canonical_var_code", "question_id", "disposition"], "resolution": "discover exactly one installed schema; >1 is fatal ambiguity"},
-    "*.question_variable_alias": {"fatal_if_absent": false, "columns": ["canonical_source", "canonical_wave", "raw_var_code", "normalized_raw_var_key", "canonical_var_code"], "resolution": "same discovered schema as canonical_question_registry"}
+    "public.survey_microdata_respondents": {
+      "fatal_if_absent": true,
+      "columns": ["id", "source", "wave", "country_code", "survey_year"]
+    },
+    "public.survey_microdata_responses": {
+      "fatal_if_absent": true,
+      "columns": ["respondent_id", "var_code", "value_raw", "value_text"]
+    },
+    "public.survey_weight_fact": {
+      "fatal_if_absent": false,
+      "columns": ["respondent_id", "weight_name", "weight_value", "weight_type", "source_var", "source", "wave", "is_primary"]
+    },
+    "public.respondent_position_fact": {
+      "fatal_if_absent": false,
+      "columns": ["respondent_id", "source_family", "wave", "country_code", "survey_year", "sex", "age", "education_level", "income_level", "income_source_note", "urban_rural", "religion_label", "marital", "employment", "class_level", "household_size", "language", "region", "ethnicity", "position_source_table", "position_completeness_score"]
+    },
+    "public.question_structural_mapping": {
+      "fatal_if_absent": false,
+      "columns": ["source", "wave", "question_id", "var_code", "display_text", "legacy_final_driver_id", "final_driver_label", "final_driver_scope", "final_driver_origin", "driver_id", "driver_facet_id", "question_block_id", "structural_domain_id", "relation_axis_id", "target_entity_id", "mapping_status", "evidence_kind", "strata_relevance", "channel_affordances", "forbidden_inference", "does_not_measure", "review_notes", "loaded_at"]
+    },
+    "public.survey_authority_compendium": {
+      "fatal_if_absent": false,
+      "columns": [],
+      "rule": "Inventory actual columns/population. Do not invent semantic aliases."
+    },
+    "public.v_ddm_response_long_facet_ready": {
+      "fatal_if_absent": false,
+      "columns": ["respondent_id", "source", "wave", "canonical_wave", "country_code", "survey_year", "var_code", "value_raw", "value_text", "weight_value", "weight_name", "weight_status", "sex", "age", "age_group", "education_level", "income_level", "religion_label", "urban_rural", "region", "ethnicity", "language", "employment", "marital", "household_size", "position_source_table", "position_completeness_score", "question_id", "question_block_id", "structural_domain_id", "driver_id", "driver_facet_id", "relation_axis_id", "target_entity_id", "mapping_status", "legacy_final_driver_id", "legacy_driver_leak_flag"]
+    },
+    "public.v_ddm_response_long_facet_ready_authority": {
+      "fatal_if_absent": false,
+      "columns": ["respondent_id", "source", "wave", "canonical_wave", "country_code", "var_code"]
+    },
+    "public.ddm_demographic_field_register": {
+      "fatal_if_absent": false,
+      "columns": [],
+      "rule": "Emit source-native candidates only when the expected register columns physically exist. Register presence is not physical-position coverage."
+    },
+    "*.canonical_question_registry": {
+      "fatal_if_absent": false,
+      "columns": ["canonical_source", "canonical_wave", "canonical_var_code", "question_id", "disposition"],
+      "resolution": "Discover by relation name. Exactly one installed schema is allowed. Zero is warning; more than one is fatal ambiguity."
+    },
+    "*.question_variable_alias": {
+      "fatal_if_absent": false,
+      "columns": ["canonical_source", "canonical_wave", "raw_var_code", "normalized_raw_var_key", "canonical_var_code"],
+      "resolution": "Use only the same schema resolved for canonical_question_registry."
+    }
   },
-  "static_r1_authority": {
-    "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+  "production_authority_contract": {
+    "r1_path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
     "resolver": "data.ddm_build_copy.ddm_v550_question_relation_authority.resolve_question_relation_authority",
-    "closed_wave_resolver": "data.ddm_build_copy.ddm_v550_question_relation_authority.active_closed_35_waves",
-    "rule": "The audit calls the production resolver; it does not reproduce or reinterpret its source/wave/country/var identity semantics."
+    "source_normalizer": "data.ddm_build_copy.ddm_v550_question_relation_authority.canonical_source_family",
+    "wave_normalizer": "data.ddm_build_copy.ddm_v550_question_relation_authority.canonical_wave",
+    "closed_scope_resolver": "data.ddm_build_copy.ddm_v550_question_relation_authority.active_closed_35_waves",
+    "rule": "D05 imports production authority functions; it must not maintain a parallel alias/identity law."
   },
-  "typed_missingness_columns_if_exposed": ["is_missing", "is_dk", "is_refusal", "is_iap", "is_valid_substantive_response", "semantic_response_role"],
   "position_fields_required_to_measure": ["sex", "age", "age_group", "education_level", "income_level", "religion_label", "urban_rural", "region", "ethnicity", "language", "employment", "marital", "household_size", "class_level"],
-  "failure_codes": {
-    "D05_E_DATABASE_URL_MISSING": "No database URL supplied.",
-    "D05_E_DATABASE_CONNECT": "Populated PostgreSQL cannot be reached.",
-    "D05_E_NOT_READ_ONLY": "Transaction not read-only; abort.",
-    "D05_E_REQUIRED_RELATION_MISSING": "Fatal core relation absent.",
-    "D05_E_REQUIRED_COLUMN_MISSING": "Fatal core column absent.",
-    "D05_E_QUERY_FAILED": "Fixed audit query failed; no reinterpretation permitted.",
-    "D05_E_EXTENDED_QUERY_FAILED": "Fixed R1/canonical/scope/cache query failed.",
-    "D05_E_STATIC_PROVENANCE_MISMATCH": "Static evidence hash disagrees with locked identity.",
-    "D05_E_WRONG_BRANCH": "Not running on commanded D05 branch.",
-    "D05_E_WRONG_BASE": "Commanded base SHA is not an ancestor of HEAD.",
-    "D05_E_AUTHORITY_SCHEMA_AMBIGUOUS": "More than one canonical registry schema installed; automatic choice forbidden.",
-    "D05_E_RESPONSE_RELATION_MISSING": "Neither production response relation exists for cache parity.",
-    "D05_W_RELATION_ABSENT": "Expected non-core relation absent; record and continue.",
-    "D05_W_COLUMN_ABSENT": "Expected non-core column absent; record and continue.",
-    "D05_W_CANONICAL_REGISTRY_NOT_INSTALLED": "Canonical reconcile registry is not physically installed.",
-    "D05_W_TYPED_MISSINGNESS_NOT_EXPOSED": "Typed missingness field not physically exposed.",
-    "D05_W_ROUTING_NOT_EXPOSED": "Routing/IAP/not-asked authority not physically exposed.",
-    "D05_W_SHARED_CACHE_NOT_MATERIALIZED": "No materialized shared substrate available for cache parity.",
-    "D05_F_DUPLICATE_RESPONDENT_ID": "Respondent surrogate IDs not unique.",
-    "D05_F_ORPHAN_RESPONSE": "Response row lacks respondent parent.",
-    "D05_F_OVERLAP_IMPOSSIBLE": "Question overlap exceeds a marginal count.",
-    "D05_F_JOIN_PARTITION": "Join-status buckets do not partition response rows.",
-    "D05_F_FACET_MULTIPLICITY_LOSS": "Facet-ready respondent/var multiplicity differs from raw.",
-    "D05_F_RAW_CODE_LOSS": "Raw response-code multiset changes through facet-ready.",
-    "D05_F_MULTIPLE_PRIMARY_WEIGHT_SELECTION": "Multiple primary weights exist while facet-ready selects one.",
-    "D05_F_SHARED_CACHE_SCHEMA": "Materialized shared cache lacks required identity/response columns.",
-    "D05_F_SHARED_CACHE_PARITY": "Materialized cache differs from selected DB response rows."
+  "typed_missingness_columns_if_exposed": ["is_missing", "is_dk", "is_refusal", "is_iap", "is_valid_substantive_response", "semantic_response_role"],
+  "measurement_grains": {
+    "respondent_identity": "survey_microdata_respondents.id globally, plus source/wave/country scope",
+    "raw_response_multiplicity": "source,wave,country_code,respondent_id,UPPER(var_code)",
+    "canonical_question_multiplicity": "source,wave,country_code,respondent_id,currently-resolved question_id",
+    "source_coverage": "source,raw_wave,canonical_wave,country_code,survey_year",
+    "position_completeness": "field_name,source_family,wave",
+    "weight_coverage": "source,wave with respondent-level any/primary/multiple-primary states",
+    "question_overlap": "EVERY unordered pair of populated var_codes in each source,wave,country_code, including overlap=0",
+    "qsm_identity": "every raw response row",
+    "r1_identity": "every distinct populated source,raw_wave,country_code,var_code weighted by raw response-row count",
+    "facet_parity": "source,wave,country_code,respondent_id,UPPER(var_code) multiplicity plus exposed raw-code/text multisets",
+    "cache_selected_parity": "every source,wave,canonical_wave,country_code,var_code physically present in every discovered shared-substrate parquet",
+    "cache_identity": "exact respondent-ID sets for every cache-selected group"
   },
   "invariants": [
     "survey_microdata_respondents.id is non-null and globally unique",
+    "a respondent surrogate ID cannot occupy multiple source/wave, country, or survey-year identities",
     "every survey_microdata_responses.respondent_id has a respondent parent",
-    "all respondent/var duplicate multiplicity is counted, never assumed away",
+    "raw respondent/var duplicate multiplicity is counted rather than collapsed",
     "canonical respondent/question duplicate multiplicity is counted separately",
-    "every populated question pair is audited; no sampling or top-N cut is permitted",
+    "QUESTION_OVERLAP_SUMMARY contains every unordered populated question pair, including zero-overlap pairs",
     "for every question pair 0 <= overlap <= min(n_x,n_y)",
-    "QSM identity buckets exactly partition raw response rows",
-    "R1 identity is resolved by the production resolver, not by local string heuristics",
-    "canonical registry exact and alias joins are both counted when that schema is installed",
-    "actual source/wave population is compared with production CLOSED_35 authority",
-    "facet-ready parity is tested at source/wave/country/respondent/var multiplicity grain",
-    "value_raw/value_text multisets are compared where physically available",
-    "at most one primary weight may be silently selected per respondent",
-    "typed missingness is never inferred from null/blank values",
+    "QSM exact/fallback/ambiguous/unmapped buckets partition raw response rows exactly",
+    "R1 identity is resolved by the production resolver, not local string heuristics",
+    "canonical registry exact and alias matches are both counted when its schema is installed",
+    "actual populated source/waves are compared to production CLOSED_35 authority",
+    "facet respondent/var multiplicity is compared by full outer join to the raw response substrate",
+    "value_raw/value_text multisets are compared only when the target relation physically exposes them",
+    "a non-exposed field is never recorded as preserved",
+    "typed missingness is never inferred from blank/null response values",
     "question topology is never inferred from observed response cardinality",
     "scalar weight presence is never treated as design-based inference authority",
-    "position missingness is substrate missingness, never real-world absence",
-    "materialized shared caches are tested against the DB only for the exact selected source/wave/country/var identities they contain",
-    "cache predicate preservation requires the governed position fields plus typed missingness and topology fields; selection columns must remain explicit",
-    "database parity alone can never produce PROVED_SOURCE_EQUIVALENT while source-native routing/design evidence remains unverified"
+    "absence of a position value is substrate missingness, not real-world absence",
+    "cache row-count parity is not respondent-ID stability",
+    "cache respondent-ID stability requires exact ID-set equality; counts alone cannot pass it",
+    "cache predicate preservation requires the governed position fields plus typed missingness/topology exposure while keeping selection columns explicit",
+    "database-internal parity alone cannot yield PROVED_SOURCE_EQUIVALENT when source-native routing/design/ingest evidence remains unverified"
   ],
+  "failure_codes": {
+    "D05_E_DATABASE_URL_MISSING": "No populated database URL supplied.",
+    "D05_E_DATABASE_CONNECT": "Populated PostgreSQL cannot be reached.",
+    "D05_E_NOT_READ_ONLY": "Transaction is not read-only; abort.",
+    "D05_E_REQUIRED_RELATION_MISSING": "Fatal core relation absent.",
+    "D05_E_REQUIRED_COLUMN_MISSING": "Fatal core column absent.",
+    "D05_E_QUERY_FAILED": "Fixed core audit query failed.",
+    "D05_E_EXTENDED_QUERY_FAILED": "Fixed R1/canonical/scope/cache audit failed.",
+    "D05_E_IDENTITY_OVERLAP_QUERY_FAILED": "Exact respondent-identity/all-pairs overlap audit failed.",
+    "D05_E_CACHE_IDENTITY_QUERY_FAILED": "Exact cache respondent-ID audit failed.",
+    "D05_E_STATIC_PROVENANCE_MISMATCH": "Static evidence hash disagrees with locked identity.",
+    "D05_E_WRONG_BRANCH": "Not running on commanded D05 branch.",
+    "D05_E_WRONG_BASE": "Commanded base SHA is not an ancestor of HEAD.",
+    "D05_E_AUTHORITY_SCHEMA_AMBIGUOUS": "Multiple canonical-registry schemas installed; automatic selection forbidden.",
+    "D05_E_RESPONSE_RELATION_MISSING": "Neither production facet-ready response relation exists where required.",
+    "D05_W_RELATION_ABSENT": "Expected non-core relation absent.",
+    "D05_W_COLUMN_ABSENT": "Expected non-core column absent.",
+    "D05_W_CANONICAL_REGISTRY_NOT_INSTALLED": "Canonical reconcile registry not physically installed.",
+    "D05_W_TYPED_MISSINGNESS_NOT_EXPOSED": "Typed missingness field not physically exposed.",
+    "D05_W_ROUTING_NOT_EXPOSED": "Routing/IAP/not-asked authority not physically exposed.",
+    "D05_W_RAW_CODE_NOT_EXPOSED": "Derived relation does not expose raw response code; preservation unproved.",
+    "D05_W_RAW_TEXT_NOT_EXPOSED": "Derived relation does not expose raw response text/label; preservation unproved.",
+    "D05_W_SHARED_CACHE_NOT_MATERIALIZED": "No materialized shared substrate available for cache parity.",
+    "D05_W_SHARED_CACHE_DEPENDENCY": "Parquet runtime dependency unavailable for a physically present cache.",
+    "D05_F_DUPLICATE_RESPONDENT_ID": "Respondent surrogate IDs not globally unique.",
+    "D05_F_RESPONDENT_IDENTITY": "Respondent identity/collision surface violates an identity invariant.",
+    "D05_F_ORPHAN_RESPONSE": "Response row lacks respondent parent.",
+    "D05_F_OVERLAP_IMPOSSIBLE": "Question overlap exceeds a marginal respondent count.",
+    "D05_F_JOIN_PARTITION": "Join-status buckets do not partition response rows.",
+    "D05_F_FACET_MULTIPLICITY_LOSS": "Facet-ready respondent/var multiplicity differs from raw.",
+    "D05_F_RAW_CODE_LOSS": "Raw response-code multiset changes through a derived response relation.",
+    "D05_F_MULTIPLE_PRIMARY_WEIGHT_SELECTION": "Multiple primary weights exist while facet-ready selects one.",
+    "D05_F_SHARED_CACHE_SCHEMA": "Shared cache lacks required identity/response fields.",
+    "D05_F_SHARED_CACHE_PARITY": "Shared-cache selected row/respondent cardinality differs from its production response relation.",
+    "D05_F_SHARED_CACHE_RESPONDENT_ID_DRIFT": "Shared-cache respondent-ID set differs from DB respondent-ID set despite any matching counts."
+  },
   "output_schemas": {
     "RELATION_PREFLIGHT.csv": ["relation", "relation_kind", "exists", "fatal_if_absent", "required_columns_json", "actual_columns_json", "missing_columns_json", "row_count", "status", "failure_code"],
+    "RESPONDENT_IDENTITY_AUDIT.csv": ["scope_type", "source", "wave", "country_code", "respondent_rows", "distinct_respondent_ids", "null_respondent_ids", "duplicate_id_groups", "duplicate_id_excess_rows", "ids_in_multiple_source_waves", "ids_in_multiple_countries", "ids_in_multiple_survey_years", "response_rows", "orphan_response_rows", "status"],
     "SOURCE_WAVE_READINESS.csv": ["source", "raw_wave", "canonical_wave", "country_code", "survey_year", "respondents", "response_rows", "responded_respondents", "distinct_var_codes", "facet_rows", "facet_respondents", "authority_facet_rows", "authority_facet_respondents", "raw_minus_facet_rows", "raw_minus_authority_rows"],
     "POSITION_FIELD_COMPLETENESS.csv": ["field_name", "field_origin", "source_family", "wave", "respondent_rows", "nonmissing_rows", "missing_rows", "coverage_pct", "distinct_nonmissing_values", "physical_column_present", "register_var_name", "register_question_id", "status"],
     "QUESTION_OVERLAP_SUMMARY.csv": ["source", "wave", "country_code", "question_x", "question_y", "respondents_x", "respondents_y", "respondents_overlap", "respondents_union", "overlap_pct_of_x", "overlap_pct_of_y", "jaccard_pct", "respondents_overlap_unique_each", "cotravel_possible", "duplicate_compromised_overlap"],
+    "QUESTION_OVERLAP_COMPLETENESS.json": ["unordered_question_pairs_emitted", "zero_overlap_pairs_emitted", "zero_overlap_pairs_are_retained", "query_semantics"],
     "WEIGHT_COVERAGE.csv": ["source", "wave", "respondents", "respondents_with_any_weight", "respondents_with_primary_weight", "respondents_missing_primary_weight", "respondents_with_multiple_primary_weights", "weight_rows", "primary_weight_rows", "null_primary_weights", "zero_primary_weights", "negative_primary_weights", "nonfinite_primary_weights", "weight_names_json", "weight_types_json", "source_vars_json", "status"],
     "IDENTITY_JOIN_AUDIT.csv": ["source", "wave", "country_code", "response_rows", "exactly_joined_rows", "fallback_joined_rows", "ambiguous_rows", "unmapped_rows", "blocked_rows", "excluded_rows", "distinct_var_codes", "distinct_question_ids", "exact_join_pct", "join_status"],
     "R1_AUTHORITY_JOIN_AUDIT.csv": ["source", "raw_wave", "canonical_wave", "country_code", "var_code", "response_rows", "r1_resolution_status", "r1_match_count", "r1_question_id", "r1_authority_status", "r1_relation_use_status", "r1_mapping_status", "r1_authority_rule_id", "r1_authority_sha256"],
@@ -100,14 +171,25 @@
     "RESPONSE_TOPOLOGY_AUDIT.csv": ["relation", "source", "wave", "var_code", "question_id", "question_type", "response_topology", "handling_rule", "source_structure_classification", "response_rows", "distinct_respondents", "distinct_raw_values", "duplicate_respondent_var_pairs", "status"],
     "FACET_READY_PARITY_AUDIT.csv": ["relation", "source", "wave", "country_code", "raw_rows", "facet_rows", "raw_keys", "facet_keys", "raw_rows_missing_from_facet", "facet_rows_without_raw", "multiplicity_mismatch_keys", "value_raw_mismatch_rows", "value_text_mismatch_rows", "respondent_linkage_preserved", "p_y_given_position_possible", "p_y_given_position_conjunction_possible", "p_y_given_x_response_possible", "p_y_given_x_response_and_position_possible", "status"],
     "CACHE_SELECTED_PARITY.csv": ["cache_path", "response_relation", "source", "wave", "canonical_wave", "country_code", "var_code", "cache_rows", "cache_respondents", "db_rows", "db_respondents", "row_count_equal", "respondent_count_equal", "position_fields_present_json", "missing_position_fields_json", "typed_missingness_present", "response_topology_fields_present", "selection_columns_present", "predicate_preserving", "status"],
+    "CACHE_IDENTITY_EXACT.csv": ["cache_path", "response_relation", "source", "wave", "canonical_wave", "country_code", "var_code", "cache_respondent_id_count", "db_respondent_id_count", "cache_respondent_id_set_sha256", "db_respondent_id_set_sha256", "missing_db_ids_in_cache", "extra_cache_ids_not_in_db", "raw_respondent_id_set_equal", "normalized_id_column_present", "normalized_respondent_id_set_sha256", "normalized_id_set_equal_to_db", "status"],
     "INFORMATION_LOSS_AUDIT.csv": ["surface", "property", "evidence_type", "observed_value", "invariant", "status", "failure_code"],
     "STATIC_EVIDENCE_PROVENANCE.csv": ["path_or_name", "provenance_kind", "exists_locally", "sha256_expected", "sha256_actual", "hash_match", "git_blob_sha", "status"],
     "INVARIANT_RESULTS.csv": ["invariant_id", "scope", "description", "observed", "expected", "passed", "severity", "failure_code"],
     "FAILURES.csv": ["failure_code", "severity", "scope", "message"],
+    "IDENTITY_OVERLAP_FAILURES.csv": ["failure_code", "severity", "scope", "message"],
     "EXTENDED_FAILURES.csv": ["failure_code", "severity", "scope", "message"],
-    "AUDIT_RUN.json": ["court", "verdict", "source_equivalent_classification", "repository", "database", "failures", "output_schemas", "read_only_guarantee"],
+    "CACHE_IDENTITY_FAILURES.csv": ["failure_code", "severity", "scope", "message"],
+    "AUDIT_RUN.json": ["court", "verdict", "source_equivalent_classification", "repository", "database", "failure_counts", "failures", "outputs", "output_schemas", "read_only_guarantee"],
     "EXTENDED_AUDIT_SUMMARY.json": ["r1_raw_keys", "r1_response_rows_resolved", "r1_response_rows_blocked", "canonical_registry_installed", "canonical_unmapped_response_rows", "canonical_ambiguous_response_rows", "closed_35_missing_waves", "populated_outside_closed_35_rows", "cache_groups_audited", "cache_parity_failures", "predicate_incomplete_cache_groups", "failures"]
   },
+  "static_evidence_locked_sha256": {
+    "Rawlsing_WVS_public_schema.sql": "2c3f4a9ebec1e6c0cf62e8827ab982e52243c5c8899c961cd0e30b489573ec76",
+    "Rawlsing_WVS_authority_reconcile_schema.sql": "57e8c58c9444be9c34df54765e1801a9819f7a15fd02ddaa9a8e194e57596877",
+    "rawlsing_v5_ddm_production_continuation_pack_v2_ATTITUDE_CLOUD_LOCKED.zip": "e9c66a9638371966d620ef73c30f03c5dcca255cd874acbdf66e3738654b5861",
+    "rawlsing_v5_home_stretch_build_pack_v18_FINAL_LOCKED_NO_GHOSTS.zip": "a654014fb56032544fc4044ee230cf69823e076cb5f3e4fc3df91eb3148f12bd",
+    "rawlsing_chatlog_DDM_chatgpt_1.txt": "b0ff181b0d1f6a591b005b829aafeb27b0740249332b49e08bd381800ab1745a"
+  },
   "source_equivalent_allowed_values": ["PROVED_SOURCE_EQUIVALENT", "POTENTIALLY_SOURCE_EQUIVALENT_UNPROVED", "DERIVED_CACHE_WITH_KNOWN_LOSS", "DERIVED_CACHE_WITH_UNKNOWN_LOSS", "NOT_SOURCE_EQUIVALENT"],
-  "proof_bar": "The apparatus deliberately cannot return PROVED_SOURCE_EQUIVALENT from database parity alone. Source-native routing, weighting-design, and other lost-or-retained source evidence must also be verified."
+  "blocked_state_classification": "UNDETERMINED_DUE_TO_BLOCKED_POPULATED_DATA_ACCESS",
+  "proof_bar": "The apparatus cannot return PROVED_SOURCE_EQUIVALENT from database parity alone. Source-native routing/not-asked semantics, weighting design, original labels/codes where not retained, geography/demographic detail, multiple-response semantics, source identifiers, and ingest provenance must also be physically verified."
 }
