@@ -1,0 +1,135 @@
+{
+  "receipt_id": "M2_V554_TO_V555_ATOMIC_ROUTE_BINDING_RECEIPT",
+  "receipt_version": "1.0.0",
+  "repository": "maidiu/rawlsing",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-seam-m2-atomic-route",
+  "status": "ACCEPTED",
+  "result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+  "inputs": {
+    "scr554_head_sha": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "scr554_result_token": "SCR554_EXACT_CONTRACT_CLOSED",
+    "scr554_contract": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0",
+    "scr554_exact_contract_blob_sha": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+    "scr554_result_json_blob_sha": "00bd06b4a6d2fbe6ed154f62234adaf846c3cc13",
+    "scr554_seam_handoff_blob_sha": "c8bf0e3f1c64c33985c09c9f53064c499a095fb3",
+    "scr555_head_sha": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+    "scr555_contract": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT@stage-close-r03-1",
+    "scr555_exact_contract_blob_sha": "8926500b7af442c0e07483442047aaad6cdeab63",
+    "scr555_seam_handoff_blob_sha": "592c47746a21a7f7d86050ee6a420fe7543ba4bc",
+    "s554d_head_sha": "a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4"
+  },
+  "eight_slot_bindings": {
+    "accepted_scr554_result_head_sha_and_result_token": {
+      "head_sha": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "result_token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "source": "SCR554/RESULT.json"
+    },
+    "canonical_f1_reference_schema_authority_identity_and_immutable_seal": {
+      "source_pointer": "SCR554/EXACT_CONTRACT.json#/canonical_identity",
+      "source_contract_blob_sha": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+      "id_scheme_verbatim": "urn:rawlsing:<object-family>:sha256:<lowercase-hex-digest>",
+      "f1_id_verbatim": "urn:rawlsing:v554:f1:sha256:SHA256(canonical_json({contract_version, equivalence_key, canonical_basis_semantic_id, rule_id, rule_version, rule_hash, signature_id, target_use, authority_bundle_fingerprint}))",
+      "f1_law_verbatim": "F1 exists only in state ELIGIBLE. F1 ID is invariant to rejected duplicate-path presence and same-kind alias enumeration.",
+      "authority_identity": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0",
+      "immutable_seal_rule": "The exact SCR554 contract blob SHA plus the content-derived F1_id and authority_bundle_fingerprint bind interpretation; no label/current-implementation reconstruction is allowed."
+    },
+    "canonical_f1_identity_tuple_order_and_equality_law": {
+      "upstream_identity_form": "NAMED_CANONICAL_JSON_OBJECT__NOT_POSITIONAL_TUPLE",
+      "canonical_json_verbatim": "Same canonical JSON rules as duplicate equivalence.",
+      "f1_id_verbatim": "urn:rawlsing:v554:f1:sha256:SHA256(canonical_json({contract_version, equivalence_key, canonical_basis_semantic_id, rule_id, rule_version, rule_hash, signature_id, target_use, authority_bundle_fingerprint}))",
+      "m2_binding_rule": "M2 does not invent an upstream positional tuple. Exact F1 equality is equality of the accepted canonical F1 identity produced by the named-object canonicalization above."
+    },
+    "canonical_f1_positive_state_and_structural_mediation_use_permission_binding": {
+      "semantic_nucleus_f1": "BOUNDED_STRUCTURAL_AFFORDANCE",
+      "f1_positive_state": "ELIGIBLE",
+      "target_use": "STRUCTURAL_MEDIATION_INPUT",
+      "b1_allowed_use_verbatim": "true iff a positive F1 exists and no applicable nonpositive hard block owns the exact target use; runtime-deferred K01-K03 and K04 informational constraint do not by themselves make B1 false.",
+      "v555_admission_rule": "V555 route construction requires the exact canonical F1_id plus the exact B1 proving allowed_v555_structural_use=true for that same F1/invocation."
+    },
+    "canonical_b1_reference_schema_authority_identity_and_immutable_seal": {
+      "source_pointer": "SCR554/EXACT_CONTRACT.json#/canonical_identity/B1_id",
+      "source_contract_blob_sha": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+      "b1_id_verbatim": "urn:rawlsing:v554:b1:sha256:SHA256(canonical_json({contract_version, candidate_semantic_key, f1_id_or_null, sorted_f2_ids, allowed_v555_structural_use, decision_state, producer_reference_spine_fingerprint}))",
+      "b1_allowed_use_verbatim": "true iff a positive F1 exists and no applicable nonpositive hard block owns the exact target use; runtime-deferred K01-K03 and K04 informational constraint do not by themselves make B1 false.",
+      "b1_nonpositive_verbatim": "Producer/rule-backed K05-K09 context may cross B1 with allowed_v555_structural_use=false. Integrity failure never becomes B1 semantic context.",
+      "authority_identity": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0"
+    },
+    "canonical_b1_identity_tuple_order_and_equality_law": {
+      "upstream_identity_form": "NAMED_CANONICAL_JSON_OBJECT__NOT_POSITIONAL_TUPLE",
+      "canonical_json_verbatim": "Same canonical JSON rules as duplicate equivalence.",
+      "b1_id_verbatim": "urn:rawlsing:v554:b1:sha256:SHA256(canonical_json({contract_version, candidate_semantic_key, f1_id_or_null, sorted_f2_ids, allowed_v555_structural_use, decision_state, producer_reference_spine_fingerprint}))",
+      "m2_binding_rule": "M2 does not invent an upstream positional tuple. Exact B1 equality is equality of the accepted canonical B1 identity produced by the named-object canonicalization above."
+    },
+    "exact_f1_to_b1_binding_and_cardinality_law": {
+      "scr554_seam_verbatim": "SCR555 must consume exactly one canonical F1 per route by F1_id/B1_id.",
+      "b1_f1_member": "f1_id_or_null",
+      "positive_route_precondition": "For a V555 route, B1 must contain the exact non-null canonical F1_id consumed by the route and allowed_v555_structural_use must be true.",
+      "b1_semantic_role": "BOUNDARY_PERMISSION_AND_REPLAY_PROOF__NOT_ROUTE_SEMANTIC_PARTICIPANT",
+      "route_cardinality": "EXACTLY_ONE_ELIGIBLE_CANONICAL_F1_PER_V555_ROUTE",
+      "b1_route_identity_membership": false
+    },
+    "exact_v554_authority_rule_signature_references_required_for_f1_b1_replay": {
+      "authority_bundle_inputs_verbatim": [
+        "SCR554 contract id/version",
+        "V554 affordance authority id/version/hash",
+        "V554 applicability authority id/version/hash when F2 participates",
+        "V554 rule id/version/hash",
+        "signature id",
+        "selected basis semantic identity",
+        "all interpretation-critical positive authority refs",
+        "all interpretation-critical negative/limit refs relevant to the decision",
+        "source/universe/estimand/measure/weight authority refs relevant to interpretation",
+        "producer schema/reference-contract authority versions required for deterministic interpretation"
+      ],
+      "affordance_authority": "V554_AFFORDANCE_RULE_REGISTRY@1.0.0",
+      "applicability_authority": "V554_APPLICABILITY_PREDICATE_CONTRACT@1.0.0",
+      "signature_ids": [
+        "V554-SIG-001-NONTEMPORAL-EXACT",
+        "V554-SIG-002-TEMPORAL-POINT-EXACT",
+        "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT"
+      ],
+      "replay_rule_verbatim": "Same contract/rule/signature versions plus same exact canonical semantic authority bundle produce identical basis selection, equivalence groups, F1/F2/B1 IDs and decision states."
+    }
+  },
+  "m2_checksum": {
+    "exact_v554_f1_ref_resolution": "PASS",
+    "exactly_one_eligible_f1_per_route": "PASS",
+    "b1_permission_replay_not_route_participant": "PASS",
+    "different_f1_same_visible_channel_receiver_cannot_collapse": "PASS",
+    "direct_plus_v553_duplicate_provenance_at_most_one_f1": "PASS",
+    "f2_reference_only_v554_owned": "PASS",
+    "route_born_predicate_registry_valid_empty": "PASS",
+    "no_admission_v553_legacy_seed_bypass": "PASS",
+    "seven_field_v555_route_tuple_preserved": "PASS",
+    "exact_v554_rule_signature_authority_replay_bound": "PASS",
+    "hq_mixed_authority_snapshot_guard": "PASS"
+  },
+  "hq_guard": {
+    "ordering_basis": "SCR554 V554_BASIS_SELECTION_AND_PRECEDENCE@1.0.0 order 3 STATIC_AUTHORITY_COMPLETENESS precedes order 5 DUPLICATE_EQUIVALENCE and order 7 CONJUNCTIVE_F1.",
+    "upstream_rule_verbatim": "Missing required static authority -> K06/nonassertable; unknown/conflicting required authority without governed precedence -> K07/nonassertable.",
+    "upstream_state_verbatim": "NONASSERTABLE_UNKNOWN_OR_CONFLICTING_STATIC_AUTHORITY: no F1; K07",
+    "m2_effect": "A mixed/unresolved authority snapshot for one exact invocation cannot reach V555 as a second positive F1 merely because rule version/hash differs. It is upstream K07/no-F1 before duplicate-equivalence grouping. Different version/hash may distinguish identities only after governing authority has resolved the authority relation and the candidates are lawfully separate exact invocations/semantic authorities."
+  },
+  "route_identity_after_binding": {
+    "semantic_identity_kind": "ORDERED_TUPLE",
+    "tuple_order": [
+      "EXACT_V554_F1_REF",
+      "route_rule_id@route_rule_version",
+      "route_shape_id@route_shape_version",
+      "channel_structural_role_id",
+      "EXACT_STRUCTURAL_CHANNEL_REF",
+      "receiving_constraint_kind",
+      "EXACT_TARGET_RECEIVING_POSITION_REF"
+    ],
+    "exact_v554_f1_ref_resolution": "canonical SCR554 F1_id",
+    "b1_added_to_route_tuple": false,
+    "different_canonical_f1_identity_requires_different_route": true
+  },
+  "staleness_guard": {
+    "m1_is_launch_dependency": false,
+    "accepted_against_scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "accepted_against_scr554_contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+    "rule": "If M1 subsequently requires a material SCR554 contract change, this M2 receipt is stale and must be rechecked against the changed exact SCR554 head/blob before whole-machine closure."
+  }
+}
