@@ -1,0 +1,105 @@
+{
+  "court": "D13A",
+  "title": "PHYSICAL RETENTION CANDIDATE CAPABILITY AUDIT",
+  "status": "NON_DISPOSITIVE_D13_FEEDER",
+  "repository": "maidiu/rawlsing",
+  "exact_base_sha": "b92d3f3db9faaa962f59d55e61122701df9e53aa",
+  "branch": "agent/vozhd-trii-d13a-retention-candidate-audit",
+  "verdict": "CAPABILITY_ENVELOPES_ADJUDICATED__NO_SELECTION",
+  "d13_final_selection_status": "BLOCKED_BY_FINAL_D12",
+  "production_code_modified": false,
+  "winner_selected": false,
+  "architecture_selected": false,
+  "populated_data_claims_made": false,
+  "inherited_no_db_law": "BLOCKED_MISSING_POPULATED_DATA_ACCESS",
+  "critical_noncollapse": {
+    "capability_in_principle": "A representation is information-theoretically able to preserve/reconstruct a dimension if the stated fields and exact identity semantics are retained.",
+    "populated_equivalence": "Whether the current populated instance actually retains those fields, multiplicities, overlaps, weights, routing states and source equivalence. Unknown for DB-backed candidates under D05.",
+    "static_equivalence": "Whether an external/raw or hybrid snapshot is exactly the intended source artifact with complete provenance. Unknown unless separately hash/provenance proven."
+  },
+  "binding_holdings": [
+    "D07: future-authorized empirical queryability/reconstructibility is governing; blanket materialize-all is not.",
+    "D08: E1 conditional facts, E2 multivariate joint incidence and exact E0B branch/cohort incidence share a typed deep respondent-bound algebra; E3/E4 are derived lanes.",
+    "D08: arbitrary new reconditioning requires respondent membership/incidence or an exact information-equivalent contingency containing every requested dimension.",
+    "D10: empirical coordinate identity must not be collapsed into nine-stratum generated-position ontology.",
+    "D11: current canonical downstream consumption is narrow; V550J aggregate joint semantics can survive after exact respondent membership stops at V550J.",
+    "D05: current populated completeness, source equivalence, overlap and ingestion-loss facts remain unknown."
+  ],
+  "proofs": [
+    {
+      "id": "P1_AGGREGATE_NONINVERTIBILITY",
+      "holding": "Selective aggregate marginals/conditionals and scalar association summaries cannot reconstruct arbitrary unseen joint incidence.",
+      "hostile_witnesses": ["XOR", "same marginal / different joint incidence", "rare three-way conjunction"]
+    },
+    {
+      "id": "P2_FIXED_CONTINGENCY_BOUNDARY",
+      "holding": "An exact E2 contingency is sufficient for queries over its retained dimensions/risk-set semantics, but cannot be reconditioned on a new coordinate absent from that contingency unless respondent membership/deeper incidence survives.",
+      "hostile_witnesses": ["future-authorizable coordinate", "Simpson reversal on unretained conditioner"]
+    },
+    {
+      "id": "P3_EVENT_TOPOLOGY_BOUNDARY",
+      "holding": "Scalar respondent/question rows without explicit event/set/order semantics are not a generic lossless carrier for multiselect, repeated-event or ranked topology.",
+      "hostile_witnesses": ["multiselect {A,B} vs duplicates", "repeated response events", "ranked response order"]
+    },
+    {
+      "id": "P4_BRANCH_IDENTITY",
+      "holding": "A branch label/tree summary is not branch membership. Exact branch-conditioned replay requires a deterministic branch predicate or member set plus branch-law provenance.",
+      "hostile_witnesses": ["branch-conditioned response distribution", "historical branch cotravel"]
+    },
+    {
+      "id": "P5_HYBRID_UNION_LIMIT",
+      "holding": "A hybrid can union information retained by its components only through exact identity/provenance joins; it cannot reconstruct a dimension lost by every surviving component.",
+      "hostile_witnesses": ["future coordinate absent from all components", "raw routing state dropped everywhere"]
+    },
+    {
+      "id": "P6_POPULATED_EQUIVALENCE_SEPARATION",
+      "holding": "Static schema/format capability does not prove that the present populated DB/cache is source-equivalent.",
+      "hostile_witnesses": ["D05 blocked duplicate/overlap/weight/routing/parity questions"]
+    }
+  ],
+  "candidate_summaries": {
+    "C1": {"name": "Original/raw source snapshots", "PROVEN_CAPABLE_IN_PRINCIPLE": 23, "CAPABLE_ONLY_WITH_EXTRA_METADATA": 8},
+    "C2": {"name": "Current Postgres respondent/response substrate", "PROVEN_CAPABLE_IN_PRINCIPLE": 10, "CAPABLE_ONLY_WITH_EXTRA_METADATA": 20, "PROVEN_INSUFFICIENT": 1},
+    "C3": {"name": "Current normalized/facet-ready database surfaces", "PROVEN_CAPABLE_IN_PRINCIPLE": 16, "CAPABLE_ONLY_WITH_EXTRA_METADATA": 14, "PROVEN_INSUFFICIENT": 1},
+    "C4": {"name": "Current V550/V550J shared respondent substrate", "CAPABLE_ONLY_FOR_FIXED_QUERY_SET": 19, "CAPABLE_ONLY_WITH_EXTRA_METADATA": 8, "PROVEN_INSUFFICIENT": 4},
+    "C5": {"name": "Theoretical normalized respondent-incidence projection", "PROVEN_CAPABLE_IN_PRINCIPLE": 26, "CAPABLE_ONLY_WITH_EXTRA_METADATA": 5},
+    "C6": {"name": "Selectively materialized E1 conditional facts", "CAPABLE_ONLY_FOR_FIXED_QUERY_SET": 18, "PROVEN_INSUFFICIENT": 11, "CAPABLE_ONLY_WITH_EXTRA_METADATA": 2},
+    "C7": {"name": "Selectively materialized E2 joint facts", "CAPABLE_ONLY_FOR_FIXED_QUERY_SET": 26, "PROVEN_INSUFFICIENT": 3, "CAPABLE_ONLY_WITH_EXTRA_METADATA": 2},
+    "C8": {"name": "Current E3 cloud artifacts", "LOSSY_DERIVED_SUMMARY": 13, "PROVEN_INSUFFICIENT": 18},
+    "C9": {"name": "Current E4 association summaries", "LOSSY_DERIVED_SUMMARY": 9, "PROVEN_INSUFFICIENT": 22},
+    "C10": {"name": "Hybrids of source + cache + materialized facts", "CAPABLE_ONLY_WITH_EXTRA_METADATA": 31}
+  },
+  "instance_equivalence_status": {
+    "C1": "STATIC_EQUIVALENCE_UNKNOWN",
+    "C2": "POPULATED_EQUIVALENCE_UNKNOWN",
+    "C3": "POPULATED_EQUIVALENCE_UNKNOWN",
+    "C4": "POPULATED_EQUIVALENCE_UNKNOWN",
+    "C5": "NOT_APPLICABLE",
+    "C6": "POPULATED_EQUIVALENCE_UNKNOWN",
+    "C7": "POPULATED_EQUIVALENCE_UNKNOWN",
+    "C8": "POPULATED_EQUIVALENCE_UNKNOWN",
+    "C9": "POPULATED_EQUIVALENCE_UNKNOWN",
+    "C10": "STATIC_EQUIVALENCE_UNKNOWN"
+  },
+  "required_outputs": {
+    "RETENTION_CAPABILITY_MATRIX.csv": {"candidate_rows": 10, "information_dimensions": 31, "candidate_dimension_adjudications": 310},
+    "CANDIDATE_FAILURE_CASES.csv": {"candidate_rows": 10, "hostile_tests": 12, "candidate_test_adjudications": 120}
+  },
+  "classification_vocabulary": [
+    "PROVEN_CAPABLE_IN_PRINCIPLE",
+    "PROVEN_INSUFFICIENT",
+    "CAPABLE_ONLY_WITH_EXTRA_METADATA",
+    "CAPABLE_ONLY_FOR_FIXED_QUERY_SET",
+    "LOSSY_DERIVED_SUMMARY",
+    "POPULATED_EQUIVALENCE_UNKNOWN",
+    "STATIC_EQUIVALENCE_UNKNOWN",
+    "NOT_APPLICABLE"
+  ],
+  "selection_prohibitions": [
+    "No candidate is selected as final retention substrate.",
+    "No candidate is recommended for implementation.",
+    "No storage/cache/materialization architecture is selected.",
+    "No D12 terminal-necessity classification is pre-empted.",
+    "No production code is changed."
+  ]
+}
