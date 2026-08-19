@@ -3,7 +3,7 @@
 **Campaign:** `VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE`  
 **Chamber:** `DR-R03_HOSTILE_NO_STARVATION_NO_BLOAT`  
 **Authority model:** `PARALLEL_NON_DISPOSITIVE_FEEDERS__SINGLE_DISPOSITIVE_SYNTHESIS`  
-**Worker base:** use the exact `r03_worker_launch_sha` recorded in campaign `CONTROL.json`.  
+**Worker base:** use the exact common launch SHA issued by the parent Vozhd; every R03 feeder and evidence-prep branch must share that base.  
 **Production implementation:** FORBIDDEN.
 
 ## 1. Constitutional purpose
