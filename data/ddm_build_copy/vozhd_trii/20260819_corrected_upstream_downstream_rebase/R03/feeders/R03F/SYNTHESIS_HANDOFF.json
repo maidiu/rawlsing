@@ -1,0 +1,176 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "from": "R03F_WHOLE_DAG_TERMINAL_STARVATION_CROSS_CELL_CHECKSUM",
+  "to": "DR-R03-SYNTHESIS",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+  "branch": "agent/vozhd-trii-dr-r03f-terminal-starvation-audit",
+  "status": "NON_DISPOSITIVE_RETURN_READY_FOR_SYNTHESIS",
+  "result_token": "R02_WHOLE_DAG_NOT_FALSIFIED__CRITICAL_QUALIFICATIONS_AND_MISSING_V3_AUTHORITY_EXPOSED__SYNTHESIS_REQUIRED",
+  "architecture_selection_authority": false,
+  "production_implementation_authorized": false,
+  "d15_upstream_reopened": false,
+  "summary": "R03F found no outright falsification of R02-H01-H10, but found whole-DAG starvation risks that require qualifications: terminal discovery must count as a terminal consumer; V553 bypass must be use-chain scoped; exact minority/J-way PSEPF geometry cannot be flattened by the thin V3 boundary; source-indexed mixed states and negative authority must survive; provenance reachability is not source-composition authority; source-sensitive dedup is required; V2 must reject indirect audit-ref personalization; and unique governance/lifecycle work must not be removed as bloat. V3 developmental divergence remains blocked by missing V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY.",
+  "r02_holding_recommendations_to_synthesis": {
+    "R02-H01": "SURVIVES_WITH_QUALIFICATION",
+    "R02-H02": "SURVIVES",
+    "R02-H03": "SURVIVES",
+    "R02-H04": "SURVIVES_WITH_QUALIFICATION",
+    "R02-H05": "SURVIVES",
+    "R02-H06": "SURVIVES_WITH_QUALIFICATION",
+    "R02-H07": "SURVIVES_WITH_QUALIFICATION",
+    "R02-H08": "SURVIVES",
+    "R02-H09": "SURVIVES",
+    "R02-H10": "SURVIVES_WITH_QUALIFICATION"
+  },
+  "material_attacks_for_synthesis": [
+    {
+      "id": "R03F-F01A",
+      "status": "SURVIVES_WITH_QUALIFICATION",
+      "severity": "CRITICAL",
+      "issue": "Autonomous discovery can be starved if minimality treats no generic runtime consumer as no terminal consumer.",
+      "required_synthesis_question": "Does the final minimality law explicitly count terminal services/authoring/replay consumers as lawful endpoints?"
+    },
+    {
+      "id": "R03F-F01C",
+      "status": "DEFER_TO_STAGE_CLOSE_READ",
+      "severity": "CRITICAL",
+      "issue": "A direct-V554 basis lawful for one use may later participate in a use that newly requires V553 temporal/comparability semantics.",
+      "required_synthesis_question": "Is V553 bypass explicitly use-chain scoped, with later temporal demand requiring a V553-authorized proposition or fail-closed result?"
+    },
+    {
+      "id": "R03F-F02A",
+      "status": "SURVIVES_WITH_QUALIFICATION",
+      "severity": "CRITICAL",
+      "issue": "Thin V3 intake can accidentally flatten exact supported minority/multimodal/J-way field geometry.",
+      "required_synthesis_question": "Does the V3 close-read mandate exact nontruncated PSEPF dereference and preserve LOW_SUPPORT/OBSERVED_ZERO/ZERO_SUPPORT distinctions?"
+    },
+    {
+      "id": "R03F-F03A",
+      "status": "DEFER_TO_STAGE_CLOSE_READ",
+      "severity": "CRITICAL",
+      "issue": "One wrapper-level state can erase mixed source positive/conflicting/noncomparable components.",
+      "required_synthesis_question": "Must V3 input preserve or dereference per-source typed states and comparison state in addition to any global lifecycle state?"
+    },
+    {
+      "id": "R03F-F03B",
+      "status": "DEFER_TO_STAGE_CLOSE_READ",
+      "severity": "CRITICAL",
+      "issue": "Reachable provenance chains may be improperly treated as permission to jointly compose independent source universes downstream.",
+      "required_synthesis_question": "Which stage close-read owns the explicit cross-source compatibility/composition check, and is the default fail-closed/noncomparable?"
+    },
+    {
+      "id": "R03F-F03C",
+      "status": "DEFER_TO_STAGE_CLOSE_READ",
+      "severity": "HIGH",
+      "issue": "Source-insensitive V554 dedup can collapse textually equal but semantically distinct source admissions.",
+      "required_synthesis_question": "Must the V554 duplicate-equivalence key include source/universe/estimand/measure/authority identity where material?"
+    },
+    {
+      "id": "R03F-F03D",
+      "status": "SURVIVES_WITH_QUALIFICATION",
+      "severity": "CRITICAL",
+      "issue": "Negative/denial/noncomparability can disappear if standalone publication/resolution preserves only positive objects.",
+      "required_synthesis_question": "Does the V557/V558 close-read require exact negative-authority closure and resolver distinctions among denied/noncomparable/unknown/valid-empty/positive absence?"
+    },
+    {
+      "id": "R03F-F04A",
+      "status": "BLOCKED_MISSING_AUTHORITY",
+      "severity": "CRITICAL",
+      "issue": "Same-field/same-context divergent-life behavior cannot be certified without V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY.",
+      "required_synthesis_question": "Does this missing authority block broad closure or can synthesis safely hand it to the V3 stage close-read while retaining the broad edge?"
+    },
+    {
+      "id": "R03F-F04D",
+      "status": "DEFER_TO_STAGE_CLOSE_READ",
+      "severity": "CRITICAL",
+      "issue": "V2 can recreate prohibited upstream persona authority by dereferencing opaque audit/provenance refs exposed through V3.",
+      "required_synthesis_question": "Does V2/app close-read explicitly forbid expression-semantic dereference of PSEPF/source-disagreement/structural-context provenance refs?"
+    },
+    {
+      "id": "R03F-F05B",
+      "status": "SURVIVES_WITH_QUALIFICATION",
+      "severity": "HIGH",
+      "issue": "A domain-ontology-only minimality test can delete V557, the V3 wrapper, or terminal discovery despite unique governance/lifecycle/terminal work.",
+      "required_synthesis_question": "Does the final no-bloat law count unique governance/admission/lifecycle/negative-authority/terminal-service effects as semantic work?"
+    },
+    {
+      "id": "R03F-F05D",
+      "status": "DEFER_TO_STAGE_CLOSE_READ",
+      "severity": "CRITICAL",
+      "issue": "A syntactically complete V558 locator graph can still starve interpretation if referenced authority/query/universe/negative objects are absent.",
+      "required_synthesis_question": "Does standalone closure proof cover every semantically required positive and negative object/authority and fail closed on missing/hash mismatch?"
+    }
+  ],
+  "cross_cell_conflict_inputs": [
+    {
+      "id": "CF01",
+      "compare_against": "R03A",
+      "r03f_position": "V553 bypass must be governed-use-chain scoped because later reuse may create new temporal/comparability demand."
+    },
+    {
+      "id": "CF02",
+      "compare_against": "R03C",
+      "r03f_position": "Successful transitive provenance dereference does not authorize cross-source pooling/composition and does not excuse loss of negative authority."
+    },
+    {
+      "id": "CF03",
+      "compare_against": "R03E",
+      "r03f_position": "A single wrapper-level availability/negative state cannot replace source-indexed component states and disagreement/noncomparability."
+    },
+    {
+      "id": "CF04",
+      "compare_against": "R03E",
+      "r03f_position": "The broad PSEPF -> V3 edge survives, but developmental divergence remains blocked by missing metabolism authority."
+    },
+    {
+      "id": "CF05",
+      "compare_against": "R03B",
+      "r03f_position": "Boundaries that own unique governance/lifecycle/terminal-service meaning are not bloat merely because they create no new producer-domain ontology."
+    },
+    {
+      "id": "CF06",
+      "compare_against": "R03D_R03E",
+      "r03f_position": "Opaque audit refs can recreate population/structure -> persona authority if V2 may dereference them for expression."
+    }
+  ],
+  "recommended_close_read_questions": {
+    "V553_V554": [
+      "Is temporalization need explicitly target-use/use-chain scoped?",
+      "How is a later temporal requirement applied to an earlier direct-V554 lineage?",
+      "What exact source-sensitive duplicate-equivalence key prevents same-use double entry without erasing plural evidence?"
+    ],
+    "V555_V556": [
+      "What explicit authority permits any cross-source joint/cross-route semantic?",
+      "How does the consumer fail closed when source/sample/estimand compatibility is absent or noncomparable?"
+    ],
+    "V557_V558": [
+      "Which positive and negative producer objects and authority snapshots must be physically packaged versus content-addressably dereferenceable?",
+      "How does resolver preserve denial/noncomparability/unknown/valid-empty instead of treating missing positive object as a negative fact?"
+    ],
+    "V3": [
+      "How are exact source-indexed mixed states represented without copying field geometry?",
+      "How is complete exact requested J-way geometry dereferenced without top-k/modal/marginal flattening?",
+      "What are lifecycle/effective-time/refresh/stale rules?",
+      "What exact V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY preserves causal divergence and forbids field->actor-state assignment?"
+    ],
+    "V2_APP": [
+      "Are audit/provenance refs non-dereferenceable for expression/persona semantics even when technically visible?"
+    ]
+  },
+  "unknowns_to_preserve": [
+    "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
+    "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY content is not yet supplied",
+    "V554 exact machine duplicate-equivalence key remains unfrozen",
+    "V557/V558 exact standalone physical packaging remains unfrozen",
+    "V2/app exact negative nonconsumption enforcement remains unfrozen"
+  ],
+  "required_files": [
+    "RESULT.md",
+    "RESULT.json",
+    "ATTACK_LEDGER.csv",
+    "COUNTEREXAMPLES.md",
+    "SURVIVING_HOLDINGS.csv",
+    "SYNTHESIS_HANDOFF.json"
+  ]
+}
