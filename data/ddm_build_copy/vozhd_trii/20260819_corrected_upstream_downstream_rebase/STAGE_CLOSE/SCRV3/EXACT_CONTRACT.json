@@ -1,0 +1,133 @@
+{
+  "$id": "V3EmpiricalPossibilityInput@1.0.0",
+  "additionalProperties": false,
+  "forbidden_embedded_fields": [
+    "joint_mass_table",
+    "response_configuration_rows",
+    "raw_support",
+    "weighted_support",
+    "query_ast",
+    "comparator_rule_text",
+    "source_universe_manifest",
+    "respondent_incidence",
+    "uncertainty_geometry",
+    "j_way_geometry",
+    "minority_geometry",
+    "multimodal_geometry",
+    "resolved_structural_context"
+  ],
+  "properties": {
+    "actor_fact_snapshot": {
+      "additionalProperties": false,
+      "law": "ActorComparatorReceipt is reachable through comparator provenance only; it has no V3 causal authority.",
+      "properties": {
+        "comparator_provenance_hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "comparator_provenance_ref": {"minLength": 1, "type": "string"},
+        "effective_time": {"minLength": 1, "type": "string"},
+        "snapshot_hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "snapshot_ref": {"minLength": 1, "type": "string"}
+      },
+      "required": ["snapshot_ref", "snapshot_hash", "effective_time", "comparator_provenance_ref", "comparator_provenance_hash"],
+      "type": "object"
+    },
+    "actor_id": {"minLength": 1, "type": "string"},
+    "causal_parent_receipt": {
+      "additionalProperties": false,
+      "law": "PSEPF refs are noncausal prior provenance; only already-lawful V3 causal parents appear in ordered_causal_parent_refs.",
+      "properties": {
+        "intake_binding_hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "ordered_causal_parent_refs": {"items": {"type": "string"}, "type": "array"},
+        "prior_causal_ledger_hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "receipt_hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "receipt_id": {"minLength": 1, "type": "string"}
+      },
+      "required": ["receipt_id", "receipt_hash", "ordered_causal_parent_refs", "prior_causal_ledger_hash", "intake_binding_hash"],
+      "type": "object"
+    },
+    "causal_run_id": {"minLength": 1, "type": "string"},
+    "decision_binding": {
+      "additionalProperties": false,
+      "properties": {
+        "decision_effective_time": {"minLength": 1, "type": "string"},
+        "read_permission_id": {"pattern": "^SCRV3-RP-V3M[0-9]{3}-V1$", "type": "string"},
+        "temporal_alignment_rule_hash": {"const": "96d367009f74f0251f82e8ff094742f31cfb17979183286c840324b5ca358dd8"},
+        "temporal_alignment_rule_id": {"const": "SCRV3_EFFECTIVE_TIME_ALIGNMENT_V1"},
+        "transition_owner_authority_hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "transition_owner_authority_id": {"minLength": 1, "type": "string"},
+        "transition_owner_authority_version": {"minLength": 1, "type": "string"},
+        "transition_surface_id": {"minLength": 1, "type": "string"},
+        "use_class": {"enum": ["NO_PSEPF_USE", "OBSERVE_ONLY", "RULE_DECLARED_EMPIRICAL_CONSTRAINT", "RULE_DECLARED_EMPIRICAL_WEIGHT"]}
+      },
+      "required": ["decision_effective_time", "transition_surface_id", "transition_owner_authority_id", "transition_owner_authority_version", "transition_owner_authority_hash", "use_class", "read_permission_id", "temporal_alignment_rule_id", "temporal_alignment_rule_hash"],
+      "type": "object"
+    },
+    "input_content_hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "input_id": {"minLength": 1, "type": "string"},
+    "integrity_state": {"enum": ["VALID", "INVALID"]},
+    "lifecycle": {
+      "additionalProperties": false,
+      "properties": {
+        "bound_actor_snapshot_hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "bound_decision_fingerprint": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "reason_code": {"minLength": 1, "type": "string"},
+        "staleness_owner": {"enum": ["NONE", "V3_REBIND", "UPSTREAM_REQUERY"]},
+        "state": {"enum": ["CURRENT", "STALE", "REFRESH_REQUIRED", "INVALIDATED", "UNAVAILABLE"]}
+      },
+      "required": ["state", "staleness_owner", "reason_code", "bound_actor_snapshot_hash", "bound_decision_fingerprint"],
+      "type": "object"
+    },
+    "metabolism_authority": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_hash": {"const": "07620183f0bea7104e525ea5ce7f9717ceefa01e033054d26df2b60f6ff7fd0f"},
+        "authority_id": {"const": "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY"},
+        "authority_version": {"const": "1.0.0"}
+      },
+      "required": ["authority_id", "authority_version", "authority_hash"],
+      "type": "object"
+    },
+    "provenance_closure": {
+      "additionalProperties": false,
+      "properties": {
+        "hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "ref": {"minLength": 1, "type": "string"}
+      },
+      "required": ["ref", "hash"],
+      "type": "object"
+    },
+    "psepf_sources": {
+      "geometry_law": "Only immutable PSEPF refs/hashes and source-state/time metadata appear here. No mass table, configuration rows, query AST, comparator rules, universe manifests, respondent incidence, uncertainty payload, J-way/minority/multimodal geometry, or copied support arrays.",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "psepf_content_hash": {"pattern": "^[0-9a-f]{64}$", "type": ["string", "null"]},
+          "psepf_ref": {"type": ["string", "null"]},
+          "source_authority_ref": {"minLength": 1, "type": "string"},
+          "source_effective_from": {"type": ["string", "null"]},
+          "source_effective_until": {"type": ["string", "null"]},
+          "source_key": {"minLength": 1, "type": "string"},
+          "source_state": {"enum": ["PRESENT", "ABSENT_IN_CATALOG", "DECLARED_NONE", "UNSPECIFIED", "NO_FIELD", "SOURCE_NOT_APPLICABLE", "TEMPORAL_NONCOMPARABLE", "TARGET_UNAVAILABLE", "ZERO_SUPPORT", "LOW_SUPPORT", "UNCERTAINTY_UNQUANTIFIED"]}
+        },
+        "required": ["source_key", "source_authority_ref", "psepf_ref", "psepf_content_hash", "source_state", "source_effective_from", "source_effective_until"],
+        "type": "object"
+      },
+      "minItems": 1,
+      "ordering": "canonical ascending source_key; source disagreement is preserved, never collapsed to one modal state",
+      "type": "array"
+    },
+    "replay_receipt_ref": {
+      "additionalProperties": false,
+      "law": "audit-only; cannot authorize a read or mutation",
+      "properties": {
+        "hash": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "ref": {"minLength": 1, "type": "string"}
+      },
+      "required": ["ref", "hash"],
+      "type": "object"
+    },
+    "schema_id": {"const": "V3EmpiricalPossibilityInput"},
+    "schema_version": {"const": "1.0.0"}
+  },
+  "required": ["schema_id", "schema_version", "input_id", "input_content_hash", "actor_id", "causal_run_id", "actor_fact_snapshot", "psepf_sources", "decision_binding", "metabolism_authority", "lifecycle", "causal_parent_receipt", "replay_receipt_ref", "provenance_closure", "integrity_state"],
+  "type": "object"
+}

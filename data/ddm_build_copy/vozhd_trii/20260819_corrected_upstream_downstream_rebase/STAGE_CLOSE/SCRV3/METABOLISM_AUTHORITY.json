@@ -1,0 +1,144 @@
+{
+  "allowed_operation_classes": {
+    "OBSERVE_ONLY": "May inspect source-indexed geometry/negative states for audit or rule evaluation diagnostics. Cannot affect candidate eligibility, weights, state, events, or RNG.",
+    "RULE_DECLARED_EMPIRICAL_CONSTRAINT": "Owning V3 rule may use an exact deterministic predicate over pinned producer-owned PSEPF geometry to reject or retain an already-lawful candidate. It may never create a candidate, causal parent, witness, actor fact, event, state value, memory, belief, identity, or relationship.",
+    "RULE_DECLARED_EMPIRICAL_WEIGHT": "Owning V3 rule may transform exact pinned geometry into exact rational/integer weights only under a separately versioned formula/content hash named by that rule. The already-lawful candidate set is created without PSEPF. ADP-020 alone performs any stochastic selection using those exact weights and receipts."
+  },
+  "authority_id": "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY",
+  "authority_version": "1.0.0",
+  "constitutional_noncollapse": [
+    "PSEPF != generated actor fact",
+    "PSEPF != lived event/history",
+    "PSEPF != actor response/state",
+    "PSEPF != memory/knowledge/belief",
+    "PSEPF != ResolvedStructuralContext",
+    "ActorComparatorReceipt != V3 prior",
+    "ReplayReceipt != causal authority"
+  ],
+  "effective_time_rule": {
+    "canonical_sha256": "96d367009f74f0251f82e8ff094742f31cfb17979183286c840324b5ca358dd8",
+    "decision_law": "Every source read must be temporally comparable under the exact producer/comparator alignment authority. Any required noncomparability yields zero effect and UPSTREAM_REQUERY or UNAVAILABLE, never interpolation/backdating.",
+    "id": "SCRV3_EFFECTIVE_TIME_ALIGNMENT_V1",
+    "must_bind": [
+      "actor fact snapshot effective time",
+      "each PSEPF source historical/effective interval",
+      "V3 decision effective time",
+      "owning transition causal time"
+    ],
+    "no_hidden_latest": true,
+    "prospective_only": true
+  },
+  "forbidden_operations": [
+    "belief_probability = field.mass",
+    "actor_state = modal_cell",
+    "select modal response as actor response",
+    "source majority/disagreement directly assigns actor state",
+    "use PSEPF as event/encounter/exposure/route/interaction witness",
+    "use PSEPF to create candidate set or semantic eligibility absent owner rule",
+    "copy PSEPF geometry into V3 thin input",
+    "collapse source-indexed geometry or typed negatives into one pseudo-source",
+    "derive personality/persona/voice/identity/memory/knowledge/relationship from PSEPF",
+    "treat comparator receipt or replay receipt as a developmental prior",
+    "merge empirical possibility and ResolvedStructuralContext into a generic prior"
+  ],
+  "kind": "READ_PERMISSION_AND_OPERATION_CEILING_NOT_STATE_OWNER",
+  "lifecycle_ownership": {
+    "UPSTREAM_REQUERY": {
+      "effect": "V3 cannot repair or reinterpret the field; request an exact upstream recomputation and bind its new immutable refs",
+      "owner": "ActorComparabilityService / EmpiricalQueryEngine / PossibilityFieldService chain",
+      "when": [
+        "a comparator-relevant objective actor fact changed",
+        "source applicability/effective period changed or became noncomparable",
+        "target/request/source set changed",
+        "pinned PSEPF was invalidated or exact geometry cannot be dereferenced",
+        "producer/comparator/query authority version requires refresh"
+      ]
+    },
+    "V3_REBIND": {
+      "effect": "construct a new thin input binding; do not mutate PSEPF; do not rewrite history",
+      "owner": "V3 intake boundary",
+      "when": [
+        "same exact PSEPF refs/hashes remain producer-current and comparator snapshot remains valid",
+        "a new V3 decision invocation/use-class binding or causal-parent/intake receipt is required",
+        "only wrapper-local decision identity/provenance changed"
+      ]
+    }
+  },
+  "owner": "SCRV3_STAGE_CLOSE_CONTRACT; execution remains with each accepted V3 semantic owner",
+  "preconditions_all_required": [
+    "V3EmpiricalPossibilityInput validates exactly",
+    "lifecycle.state == CURRENT and lifecycle.staleness_owner == NONE",
+    "effective-time alignment SCRV3_EFFECTIVE_TIME_ALIGNMENT_V1 passes",
+    "metabolism authority ID/version/hash match the input",
+    "READ_PERMISSION_MATRIX grants the named surface/use class",
+    "the owning V3 rule version explicitly binds the same use class and exact PSEPF refs/provenance",
+    "all required source states are admissible under that owning rule without negative-state collapse",
+    "all ordinary V3 causal-parent, target-authority, scheduler and RNG requirements independently pass"
+  ],
+  "read_permission_matrix": {
+    "default_for_unlisted_surface": "DENY__ZERO_PSEPF_EFFECT",
+    "id": "SCRV3_READ_PERMISSION_MATRIX_V1",
+    "sha256": "a95db6c92f9d163f954bc2e3424beedbf993256981be5ef0b9a8bfccca8ad692"
+  },
+  "replay_law": {
+    "ReplayReceipt_is_authority": false,
+    "exact_replay_requires": [
+      "same thin-input content hash",
+      "same peer ResolvedStructuralContext receipt once final seam is frozen",
+      "same ordered causal-parent/history ledger hash",
+      "same owning-rule/registry hashes",
+      "same scheduler ordering receipts",
+      "same ADP-020 root/stream/candidate/decision receipts",
+      "same intake/provenance/replay receipt hashes"
+    ],
+    "lawful_divergence_inputs": [
+      "different ordered causal history",
+      "different admitted events/encounters/relationships",
+      "different separately lawful rule versions",
+      "different ADP-020 RNG decisions"
+    ],
+    "same_exact_replay_identity_must_reproduce": true,
+    "same_priors_can_diverge": true
+  },
+  "source_geometry_access": {
+    "hash_mismatch": "INTEGRITY_FAILURE_ZERO_EFFECT",
+    "mode": "IMMUTABLE_DEREFERENCE_ONLY",
+    "must_preserve": "exact source-indexed J-way, minority, multimodal and disagreement geometry",
+    "requires": [
+      "psepf_ref",
+      "psepf_content_hash",
+      "source_key",
+      "producer/source authority provenance"
+    ],
+    "wrapper_may_cache_geometry": false
+  },
+  "source_state_law": {
+    "GEOMETRY_PRESENT_BUT_QUALIFIED_STATES": [
+      "ZERO_SUPPORT",
+      "LOW_SUPPORT",
+      "UNCERTAINTY_UNQUANTIFIED"
+    ],
+    "NO_GEOMETRY_STATES": [
+      "ABSENT_IN_CATALOG",
+      "DECLARED_NONE",
+      "UNSPECIFIED",
+      "NO_FIELD",
+      "SOURCE_NOT_APPLICABLE",
+      "TEMPORAL_NONCOMPARABLE",
+      "TARGET_UNAVAILABLE"
+    ],
+    "POSITIVE_UNQUALIFIED_STATE": "PRESENT",
+    "mixed_source_rule": "An owner rule must name the exact source set and per-source admissible states. One source cannot silently stand in for another. Disagreement remains dereferenceable geometry; no modal/majority aggregation is implicit.",
+    "rule": "Every source remains independently typed. NO_GEOMETRY states contribute no geometry. Qualified states may be inspected only if the exact owner rule explicitly admits that state; otherwise that source has zero empirical effect. No state is converted into actor belief/nonbelief or a generic null."
+  },
+  "status": "LOCAL_CONTRACT_CLOSED",
+  "zero_effect_if_any": [
+    "metabolism authority missing/mismatched",
+    "transition read permission absent/denied",
+    "owning rule has no explicit empirical-use binding",
+    "input stale/refresh-required/invalidated/unavailable",
+    "effective-time alignment fails",
+    "required PSEPF ref/hash cannot be dereferenced exactly",
+    "provenance closure or intake causal-parent receipt fails"
+  ]
+}
