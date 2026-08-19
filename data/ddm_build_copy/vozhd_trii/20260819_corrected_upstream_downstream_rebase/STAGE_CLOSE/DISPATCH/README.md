@@ -19,13 +19,32 @@ Three identities MUST remain distinct:
 
 `chat_id != worker_role != unit != mission_branch != semantic_result_identity`.
 
+## Stable worker-slot and user-facing addressing law
+
+Each permanent chat also has one stable `worker_slot` number recorded in `MAILBOX_INDEX.json`. The slot does not change when the chat changes roles.
+
+Every time HQ tells the user to send an already-open chat to its next assignment, the user-facing handoff MUST identify all four coordinates:
+
+1. stable worker slot number;
+2. permanent `chat_id`;
+3. `most_recent_submitting_agent_id` — the unit/agent ID under which that chat most recently returned work to HQ;
+4. new agent/unit ID being assigned.
+
+Canonical display form:
+
+`Worker #N — CHAT-... — most recent submitting agent OLD_ID -> new agent NEW_ID`
+
+The user should be able to locate the correct open conversation from `OLD_ID` even when the permanent chat has already been recycled through multiple roles. HQ MUST NOT tell the user only `Worker #N` or only the new role when a recycled chat is being addressed.
+
+The permanent chat ID does not change. What changes across assignments is the submitting agent/unit ID.
+
 ## Permanent mailbox law
 
 Each open chat has one permanent mailbox under `DISPATCH/MAILBOXES/<chat_id>/`.
 
 - `CURRENT.json` is the only mutable pointer for that chat.
 - `ASSIGNMENTS/<assignment_id>.md` and `.json` are immutable once issued.
-- `HISTORY.jsonl` is append-only administrative provenance.
+- `HISTORY.jsonl` is append-only administrative provenance when present.
 - Workers NEVER write to the dispatch branch.
 - HQ/Velikii Vozhd is the sole writer to dispatch state.
 
@@ -57,20 +76,22 @@ Administrative commits are forbidden on semantic branches after this protocol ta
 
 ## Assignment issue transaction
 
-An assignment is not valid until all of the following exist atomically in dispatch state:
+An assignment is not valid until all of the following exist in dispatch state:
 
 1. immutable assignment file with unique `assignment_id`;
-2. exact `chat_id`;
-3. explicit worker class (`SUB-VOZHD`, `FLOATING_SPECIALIST`, `SEAM_BINDER`, `SEAM_PREFLIGHT_SPECIALIST`, `INSPECTORATE`, or later explicitly authorized class);
-4. exact mission branch;
-5. exact semantic launch base or exact branch-precondition check;
-6. exact write root;
-7. exact binding authorities by SHA/blob/hash wherever available;
-8. explicit forbidden scope;
-9. exact required outputs;
-10. finite return-token set;
-11. dependency/opening conditions;
-12. `CURRENT.json` pointer updated to that immutable assignment.
+2. exact `chat_id` and stable `worker_slot`;
+3. `most_recent_submitting_agent_id`;
+4. explicit new worker class (`SUB-VOZHD`, `FLOATING_SPECIALIST`, `SEAM_BINDER`, `SEAM_PREFLIGHT_SPECIALIST`, `INSPECTORATE`, or later explicitly authorized class);
+5. exact new agent/unit ID;
+6. exact mission branch;
+7. exact semantic launch base or exact branch-precondition check;
+8. exact write root;
+9. exact binding authorities by SHA/blob/hash wherever available;
+10. explicit forbidden scope;
+11. exact required outputs;
+12. finite return-token set;
+13. dependency/opening conditions;
+14. `CURRENT.json` pointer updated to that immutable assignment.
 
 No assignment may rely on prose such as `the latest accepted result` when an exact identity can be named.
 
@@ -100,7 +121,7 @@ A completed chat may immediately receive another assignment, but only after:
 3. dependency gates for the new work are satisfied;
 4. a new immutable assignment is issued in its permanent mailbox.
 
-Recycling never changes the prior semantic branch and never changes the chat's permanent `chat_id`.
+Recycling never changes the prior semantic branch and never changes the chat's permanent `chat_id` or stable `worker_slot`.
 
 ## Review-cycle law
 
@@ -113,21 +134,15 @@ At the end of the declared budget:
 - HQ performs cross-worker adjudication and semantic-pin reconciliation;
 - only after the review/cleanup receipt is frozen may another dispatch epoch open.
 
-Current epoch is frozen for command review.
+Current dispatch epoch: `R03_STAGE_CLOSE_DISPATCH_EPOCH_02`.
+Current initial issued missions: `M4_FINAL` and `SCRV3_M6_HANDOFF_LITERALIZATION`.
+Planned dependency-following missions after accepted returns: `M5_FINAL`, `M6_FINAL`, then `POST_REVIEW_INSPECTORATE_RECLOSURE` after M4/M5/M6 acceptance.
 
 ## Legacy contamination cleanup
 
-The earlier `00_NEW_ROLE_AND_TASK.md` mechanism is `LEGACY_SUPERSEDED`.
+The earlier `00_NEW_ROLE_AND_TASK.md` mechanism is `LEGACY_SUPERSEDED` and MUST NOT be copied forward.
 
-It MUST NOT be copied forward.
-
-Cleanup is branch-specific and occurs only after provenance review:
-
-- pure admin-only tail after a frozen semantic head -> branch may be reset to frozen semantic head after the assignment is archived here;
-- later legitimate semantic amendments before an admin tail -> adjudicate and pin the lawful semantic amendment head first, then remove only the admin tail;
-- admin content interleaved with later substantive commits -> do not blind-reset; reconstruct or explicitly grandfather/pin the semantic package before branch normalization.
-
-No destructive ref movement is authorized merely by detecting a legacy assignment file. Semantic provenance must be proved first.
+Cleanup is branch-specific and occurs only after provenance review. No destructive ref movement is authorized merely by detecting a legacy assignment file. Semantic provenance must be proved first.
 
 ## Production gate
 
