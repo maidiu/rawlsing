@@ -1,0 +1,23 @@
+{
+  "schema":"VOZHD_TRII_STAGE_CLOSE_CLEANUP_RECEIPT@1.0.0",
+  "review_epoch":"R03_STAGE_CLOSE_COMMAND_REVIEW_01",
+  "status":"CLEANUP_COMPLETE__VERIFIED",
+  "dispatch_protocol_branch":"agent/vozhd-trii-stage-close-dispatch",
+  "normalized_branches":[
+    {"branch":"agent/vozhd-trii-dr-r03-spec-v554-dedup","verified_identical_to":"a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v553-temporal-jurisdiction","verified_identical_to":"b261ff885b2b7fd2cd065917b862eb541e24c4a2"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v2app-nonconsumption","verified_identical_to":"24f8811bb7d2eaa18cfac1cb907c48bba8d08f23"},
+    {"branch":"agent/vozhd-trii-dr-r03-spec-v3-metabolism","verified_identical_to":"0ce8eb656fec6a3ac0d2a36a12c9ba217603e7cb"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v556-interaction-topology","verified_identical_to":"9cfefc722f51cfab64952f004afef67fe65eb4a5"},
+    {"branch":"agent/vozhd-trii-dr-r03-spec-v5578-standalone","verified_identical_to":"50d9b9f0ea36c95bd2423206901aa39e3b48092a"},
+    {"branch":"agent/vozhd-trii-dr-r03-seam-m1-temporal-v554","verified_identical_to":"088848577fd42f3b69e78551d5277c91e5aa128d"},
+    {"branch":"agent/vozhd-trii-dr-r03-seam-m2-atomic-route","verified_identical_to":"92128619122886d0ced877a29b42fdb453765246"},
+    {"branch":"agent/vozhd-trii-dr-r03-close-v5578-publication-repository","verified_identical_to":"ec7bbe80fff26dae23fa8ab3c62b48b8be2164a2","note":"lawful local package refresh preserved; only legacy admin tail removed"}
+  ],
+  "inspectorate_cleanup":{"branch":"agent/vozhd-trii-dr-r03-inspectorate-stage-close","legacy_file_removed_from_current_tree":"STAGE_CLOSE/INSPECTORATE/SINSP/00_NEW_ROLE_AND_TASK.md","cleanup_commit":"b766e2e226e571d1f3c04b741ca5a51302386ead","result_blob_preserved":"9dee87c972ce8e40a60eb7c067e520ab97d4cb18","history_class":"LEGACY_ADMIN_INTERLEAVING_RETAINED_IN_GIT_HISTORY__CURRENT_TREE_CLEAN"},
+  "clean_branch_not_changed":{"branch":"agent/vozhd-trii-dr-r03-close-v555-atomic-route","head":"49a9ce7cd830eb670cf1f9d381d4d33e56ddf682"},
+  "future_rule":"NO_ASSIGNMENT_FILES_ON_SEMANTIC_BRANCHES__ALL_RECYCLING_THROUGH_PERMANENT_DISPATCH_MAILBOXES",
+  "mailbox_global_state":"HOLD_FOR_COMMAND_REVIEW",
+  "production_implementation_authorized":false,
+  "broad_topology_changed":false
+}
