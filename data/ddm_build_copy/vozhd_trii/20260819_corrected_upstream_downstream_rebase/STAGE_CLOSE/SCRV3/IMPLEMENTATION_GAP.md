@@ -1,41 +1,48 @@
-# SCRV3 — Implementation Gap
+# SCRV3 — Implementation / Authority Gap
 
-## Status
+SCRV3 closes the stage contract; it does not authorize production implementation.
 
-This court changes **no production code**. The exact common base contains no top-level current production `v3/` tree; accepted V3 ADP/CAN authorities and recovered historical V3 remain specification/continuity evidence. SCRV3 therefore closes the contract, not an implementation.
+## 1. No current positive actor-transition PSEPF owner binding
 
-## Required future implementation work
+The accepted owner serializations inspected do not currently bind PSEPF / `V3EmpiricalPossibilityInput` as an actor-transition input:
 
-A lawful implementation must provide, without reopening this contract:
+- ADP-010 blob `0eac41d081b112255dcfc6dd42a6afab15a2928b` @ `dd7720bf7201eb215e8a612cbd70952a728ca37b`;
+- ADP-011: no accepted canonical machine serialization located;
+- CAN-008 blob `7bd28360ec6a74975bb7eb809f6ad397529491b3` @ `8468d5ab4a47513fc59cbf569de543033063e020`;
+- CAN-010 blob `219e2725223b110ef0dee7f3851c23a78f6ff7a6` @ `02354715c047bcc58a490e14d29f3a216e817815`;
+- CAN-011 blob `f2fc968757da69b9aa9d2e8c00bf301144d4646b` @ `5187cff1736813b5be857a48253c9bb83f049261`;
+- CAN-012 blob `6463d48236ad6b0005a5fc63b0598315ad7db585` @ `8998c583b3687f974704368866efa91cd2787877`;
+- ADP-021 blob `1db081786d2b7d4465a9efa7d69b6a05741b47bc` @ `c83f0cfe2ee9039c7f8e3cf90b94941a1c186c5c`.
 
-1. `V3EmpiricalPossibilityInput@1.0.0` schema/type and canonical content hashing.
-2. Exact immutable PSEPF dereference by ref/hash with no geometry copy.
-3. Per-source typed state validation preserving negative/disagreement distinctions.
-4. `SCRV3_EFFECTIVE_TIME_ALIGNMENT_V1`.
-5. Lifecycle validator with separate `V3_REBIND` and `UPSTREAM_REQUERY` dispositions.
-6. Intake causal-parent receipt creation binding ordered V3 causal parents separately from empirical prior provenance.
-7. Metabolism-authority validation and the normative read-permission matrix.
-8. Owner-rule empirical-use bindings for any CAN-008/CAN-010/CAN-011/CAN-012 rule that actually intends PSEPF effect. **No such formula is invented by SCRV3.** Until one exists, its PSEPF effect is zero.
-9. ADP-020 integration only after owner-produced exact candidates/weights exist; ADP-020 must never read PSEPF directly.
-10. Replay validation covering exact history, scheduler order, rule versions, RNG receipts, intake/provenance and peer-prior identities.
-11. Hostile tests from `HOSTILE_TEST_ORACLE.md`.
-12. Final joint V3 input signature after SCR5578 freezes the exact terminal `ResolvedStructuralContext` contract.
+Therefore implementation must not enable PSEPF actor-transition effect merely because SCRV3 defines constraint/annotation/filter/weight operation classes.
 
-## Explicit non-gaps
+## 2. Future owner amendment gate
 
-The following are not implementation latitude:
+Any future positive owner must itself serialize: exact EPI schema/version; exact SCRV3 permission+operation; exact source/component semantics; independently lawful pre-PSEPF candidate/basis; source-state/composition treatment; exact predicate/filter/weight transform ID/version/hash; pre/post candidate-set identity; causal-parent nonpromotion; effective-time rule; replay receipt; ADP-020 binding if stochastic; explicit no-direct-state-assignment ceiling.
 
-- copying empirical geometry into the thin input;
-- using mass/modal/source disagreement as actor state;
-- converting `ActorComparatorReceipt` into a V3 prior;
-- converting `ReplayReceipt` into authority;
-- silently using mutable latest;
-- defaulting or collapsing typed negatives;
-- repairing stale empirical fields inside V3;
-- merging structural and empirical priors;
-- treating same priors as same life;
-- using nondeterministic replay.
+Until then: `NO_PSEPF_TRANSITION_EFFECT`.
 
-## Only remaining specification dependency
+## 3. Runtime work
 
-The only unresolved exact-contract datum is the terminal `ResolvedStructuralContext` integration signature owned by SCR5578. All SCRV3-local semantics are frozen.
+EPV3 did not establish a current terminal top-level V3/V2 production implementation tree. Runtime implementation must add exact validation for:
+
+- `V3EmpiricalPossibilityInput@1.1.0`;
+- metabolism core hash `e0cd3c8a4443c59b7e97cc151a7db9298310f7a7e766b593fb90968546d66939`;
+- read matrix hash `6a4227bb3df913b8564ba0d994ce5c2be81bf0f6e8d8b5a164ba546db59fa2d1`;
+- effective-time hash `2f9f2319975d8f7a45a31722b11436c21922866cc12ba5faccb7de96794fb8c4`;
+- exact source-state/geometry dereference and `V3EmpiricalPossibilityReadReceipt@1.0.0`;
+- rebind/requery handling with no current actor-transition read grants.
+
+## 4. Scheduler seam
+
+SCRV3 may classify `V3_REBIND` or `UPSTREAM_REQUERY`, but ADP-021 v1 has no empirical lifecycle trigger. A later accepted scheduler/orchestration binding must carry that disposition without turning it into actor history.
+
+## 5. M4/M5
+
+SCR5578 local head `06eefed7bb8e7db7fd2465aa262653ed95461e84` is sufficient for bounded peer-interface preparation only. The final exact `ResolvedStructuralContext` integration signature must wait for accepted M4 producer bindings.
+
+## 6. M6 is already exact
+
+The positive V3→V2 type is accepted ADP-017 `ActorAccessibleRenderEnvelope`, blob `eece4f3f2f3f9288ab9bbc645dc81e20a99e1280` at `614775fa05c5d904adff4b53f353637b869e6842`. V2 must not dereference opaque upstream provenance for persona/voice/belief/response semantics.
+
+No exact committed SV3A/SV3B/SV3C/SV3F return was visible at this adjudication point; SCRV3 did not wait or infer their contents.

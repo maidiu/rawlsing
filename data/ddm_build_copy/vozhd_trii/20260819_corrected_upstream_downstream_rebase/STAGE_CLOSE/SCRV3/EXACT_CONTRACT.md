@@ -1,129 +1,84 @@
-# SCRV3 — V3 Empirical Possibility Exact Contract
+# SCRV3 — Exact Contract
 
-**Authority:** `V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY@1.0.0`  
-**Thin boundary:** `V3EmpiricalPossibilityInput@1.0.0`  
-**Disposition:** local exact contract closed; only the final `ResolvedStructuralContext` integration signature waits on SCR5578.
+**Input:** `V3EmpiricalPossibilityInput@1.1.0`  
+**Metabolism authority:** `V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY@1.1.0` / `e0cd3c8a4443c59b7e97cc151a7db9298310f7a7e766b593fb90968546d66939`  
+**Read matrix:** `SCRV3_READ_PERMISSION_MATRIX@2.0.0` / `6a4227bb3df913b8564ba0d994ce5c2be81bf0f6e8d8b5a164ba546db59fa2d1`
 
-## 1. Constitutional boundary
+## Noncollapse
 
 ```text
 ResolvedStructuralContext
 != V3EmpiricalPossibilityInput
-!= generated actor fact/history/state
+!= ActorCausalState
 ```
 
-The two upstream objects are peer, noncollapsed priors. Neither owns V3 causal state. Existing V3 semantic authorities remain the only mutation owners.
+PSEPF is population empirical possibility, not actor fact/history/state. `ActorComparatorReceipt` is provenance-only. `ReplayReceipt` is audit-only.
 
-`PositionedSubjectEmpiricalPossibilityField` (PSEPF) is population-empirical possibility geometry. `V3EmpiricalPossibilityInput` is only a V3-side reference, lifecycle, temporal-admission, read-permission and replay-binding envelope over exact immutable PSEPF objects.
+## Thin input
 
-## 2. Exact thin input
+The machine contract is `EXACT_CONTRACT.json`. It binds:
 
-The normative machine-readable schema is `EXACT_CONTRACT.json`. The envelope contains only identity, immutable references/hashes, source-typed admission state, effective-time bindings, lifecycle disposition, exact V3 transition/use binding, metabolism-authority identity, intake causal-parent receipt, replay-reference identity and provenance closure.
+- deterministic input/actor/run identity;
+- exact already-lawful objective actor-fact snapshot refs/hashes/owner/effective time;
+- comparator state and exact comparator authority/provenance;
+- exact source-indexed PSEPF refs/hashes;
+- earliest-owner source-state records and source-relation refs;
+- V3 decision surface, requested operation, exact permission row and owner serialization binding;
+- metabolism authority and effective-time receipt;
+- lifecycle/requery-vs-rebind state;
+- exact already-lawful causal-parent receipt;
+- audit replay ref and provenance closure.
 
-It MUST NOT copy field geometry. In particular it MUST NOT embed joint masses, response configurations, supports, query ASTs, comparator rule text, source-universe manifests, respondent incidence, uncertainty payloads, or J-way/minority/multimodal geometry. Those remain behind exact producer-owned PSEPF refs/hashes and MUST remain dereferenceable without lossy normalization.
+It does not embed `ResolvedStructuralContext`, masses/joint tables, configuration rows, support arrays, respondent incidence, query ASTs, comparator rules, universe payloads, uncertainty geometry, J-way/minority/multimodal payloads, modal/top-k/marginal/pairwise summaries or latent scalars.
 
-`ResolvedStructuralContext` is explicitly forbidden inside the thin input.
+Exact full geometry remains producer-owned and dereferenceable by immutable `source_key + psepf_ref + psepf_content_hash`.
 
-## 3. Objective actor-fact / comparator snapshot seam
+## Comparator seam
 
-The actor snapshot is an immutable ref/hash to already-lawful objective generated facts at an exact effective time. It is not created from survey coordinates. Comparator provenance MUST be transitively reachable by exact ref/hash.
+Survey coordinates never create objective actor facts. Comparator states are:
 
-`ActorComparatorReceipt` is provenance-only in V3. It cannot become a prior, candidate, weight, actor fact, causal parent, witness, or mutation authority.
+`COMPARATOR_APPLIED | ACTOR_PROPERTY_MISSING | NO_COMPARATOR | AMBIGUOUS_COMPARATOR | COMPARATOR_TEMPORAL_NONCOMPARABLE | COMPARATOR_INTEGRITY_FAILURE`.
 
-A comparator-relevant actor-fact change invalidates the old empirical conditioning binding and requires upstream requery. V3 may not reinterpret or silently retarget the old field.
+A comparator-relevant actor-fact change requires upstream requery. V3 cannot silently retarget the historical field.
 
-## 4. Per-source typed admission
+## Typed source admission
 
-Every source keeps its own `source_key`, authority ref, PSEPF ref/hash where one exists, effective interval, and source state.
+Per-source states are:
 
-The minimum union is:
+`PRESENT | ABSENT_IN_CATALOG | DECLARED_NONE | UNSPECIFIED | NO_FIELD | SOURCE_NOT_APPLICABLE | TEMPORAL_NONCOMPARABLE | TARGET_UNAVAILABLE | OBSERVED_ZERO | ZERO_SUPPORT | LOW_SUPPORT | UNCERTAINTY_UNQUANTIFIED`.
 
-`PRESENT | ABSENT_IN_CATALOG | DECLARED_NONE | UNSPECIFIED | NO_FIELD | SOURCE_NOT_APPLICABLE | TEMPORAL_NONCOMPARABLE | TARGET_UNAVAILABLE | ZERO_SUPPORT | LOW_SUPPORT | UNCERTAINTY_UNQUANTIFIED`.
+`OBSERVED_ZERO != ZERO_SUPPORT`; `UNSPECIFIED != DECLARED_NONE`; `SOURCE_NOT_APPLICABLE != NO_FIELD`; temporal noncomparability is not an actor negative state.
 
-These are not interchangeable. A mixed-source field may therefore contain positive and negative source states simultaneously. No majority/modal collapse is allowed. Source disagreement is evidence geometry, not actor state.
+Cross-source composition defaults to none. Provenance reachability does not authorize pooling, majority, strongest-source selection or averaging.
 
-## 5. Effective-time alignment
+## Effective time / lifecycle
 
-`SCRV3_EFFECTIVE_TIME_ALIGNMENT_V1` binds four clocks/coordinates without inventing a universal time unit:
+`SCRV3_EFFECTIVE_TIME_ALIGNMENT_V2@2.0.0` hash `2f9f2319975d8f7a45a31722b11436c21922866cc12ba5faccb7de96794fb8c4` binds actor-fact snapshot time, every source interval, V3 decision time and owner transition causal time. Hidden latest, unowned interpolation and future-proxy backdating are forbidden.
 
-1. objective actor-fact snapshot effective time;
-2. each empirical source's represented/effective interval;
-3. V3 decision effective time;
-4. owning V3 transition causal time.
+`V3_REBIND`: same exact field and comparator snapshot remain upstream-valid; only V3 invocation/use/causal-parent intake binding changes.
 
-No hidden `latest`, interpolation, future-proxy backdating, or timeless-immutable assumption is allowed.
+`UPSTREAM_REQUERY`: comparator-relevant facts, source applicability/time, target/source set, authority or exact dereference validity changed.
 
-If a required source is temporally noncomparable under its producer/comparator authority, PSEPF contribution is exactly zero for that invocation. The lifecycle disposition must then be upstream requery or unavailable; never guess.
+Refresh is prospective. Past fields, receipts and actor history are immutable.
 
-## 6. Lifecycle and ownership
+## Read permission
 
-Lifecycle state is `CURRENT | STALE | REFRESH_REQUIRED | INVALIDATED | UNAVAILABLE`. Staleness ownership is `NONE | V3_REBIND | UPSTREAM_REQUERY`.
+Current positive actor-transition rows: **none**.
 
-### V3 rebind
+Only `SCRV3-RP-V3M002-V2` admits noncausal `EXACT_GEOMETRY_DEREFERENCE`. All transition use is zero-effect unless the named semantic owner separately accepts a canonical rule/registry serialization explicitly binding PSEPF/EPI use.
 
-V3 owns only wrapper-local rebinding when the exact PSEPF refs/hashes and comparator snapshot remain valid but a new V3 decision invocation/use-class/causal-parent receipt requires a fresh envelope. Rebind creates a new thin input; it never mutates PSEPF or history.
+The operation vocabulary—constraint test, annotation, filter, weight—is a future ceiling, not a grant. A filter cannot create candidates. A weight requires an exact owner transform and cannot itself assign actor state. Stochastic selection remains ADP-020-owned.
 
-### Upstream requery
+## Causal receipt / replay
 
-The upstream comparator/query/field chain owns recomputation when comparator-relevant actor facts changed, source applicability/time changed, target/source set changed, producer authority invalidated the field, or exact geometry cannot be dereferenced. V3 cannot repair, normalize, interpolate, or reinterpret an upstream field.
+PSEPF, RSC, comparator receipts and replay receipts are never promoted to causal parents. `V3EmpiricalPossibilityReadReceipt@1.0.0` records exact source/PSEPF hashes and component paths read, owner serialization/rule/transform, causal parent receipt, time receipt, candidate sets, RNG receipts and pre/post state hashes.
 
-Committed causal history is prospective-only and never rewritten by refresh.
+Denied/unbound reads produce `NO_PSEPF_TRANSITION_EFFECT`.
 
-## 7. Intake and replay receipts
+Same prior may diverge by later lawful history or recorded RNG. Same exact authority/history/RNG must replay exactly. Deterministic prior-to-persona collapse is forbidden.
 
-`V3EmpiricalPossibilityCausalParentReceipt` binds the exact ordered already-lawful V3 causal parents/ledger anchor to the intake binding. PSEPF refs are prior provenance, not causal parents.
+## Peer seam / actor-safe handoff
 
-`ReplayReceipt` is audit/replay-only. Its presence cannot grant a missing read permission, replace a missing semantic rule, or mutate actor state.
+SCR5578 local head `06eefed7bb8e7db7fd2465aa262653ed95461e84` permits bounded preparation only. Final exact RSC integration waits on accepted M4.
 
-## 8. Read-permission law
-
-`READ_PERMISSION_MATRIX.csv` is normative.
-
-A PSEPF contribution is permitted only when all of the following are true:
-
-- the thin input validates;
-- lifecycle is `CURRENT`;
-- effective-time alignment passes;
-- metabolism authority ID/version/hash match;
-- the matrix grants the transition surface/use class;
-- the exact owning V3 rule version explicitly binds that same empirical use class and exact field refs/provenance;
-- ordinary causal-parent, target-authority, scheduler and RNG requirements independently pass.
-
-If any condition is absent, **PSEPF transition effect is exactly zero**.
-
-An `ALLOW_IF_RULE_BOUND` row does not itself create a formula. Existing V3 rule registries with no explicit empirical binding remain zero-effect.
-
-## 9. Lawful empirical operation ceiling
-
-Only three operation classes exist:
-
-- `OBSERVE_ONLY`: diagnostic/audit read; zero candidate/state/RNG effect.
-- `RULE_DECLARED_EMPIRICAL_CONSTRAINT`: exact deterministic predicate may reject/retain an already-lawful candidate. PSEPF cannot create candidates or witnesses.
-- `RULE_DECLARED_EMPIRICAL_WEIGHT`: exact versioned owner formula may transform pinned geometry into exact rational/integer weights over an already-lawful candidate set. ADP-020 alone performs any stochastic draw.
-
-There is no generic `mass -> actor probability` operation. Modal cells, source majorities and disagreement never directly assign actor response, belief, memory, knowledge, identity, relationship, developmental state, or persona.
-
-## 10. Divergence and replay
-
-Identical peer priors do not imply identical lives. Two actors with the same PSEPF and structural prior may diverge because their generated causal histories, encounters, relationships, rule versions, or lawful ADP-020 decisions diverge.
-
-This is compatible with deterministic replay:
-
-```text
-same thin-input hash
-+ same exact peer structural-context receipt
-+ same ordered causal-history/parent ledger
-+ same rule/registry hashes
-+ same scheduler receipts
-+ same ADP-020 RNG receipts
-+ same intake/provenance/replay identities
-=> same replayed outcome
-```
-
-Changing any lawful causal parent or RNG receipt changes replay identity rather than licensing nondeterminism.
-
-## 11. Final seam
-
-SCR5578 has not yet frozen the exact terminal `ResolvedStructuralContext` signature on its designated branch. Therefore SCRV3 does not invent it.
-
-Everything in this contract is closed independently of SCR5578. The only pending item is the final joint V3 integration signature that accepts the already-separate `ResolvedStructuralContext` and `V3EmpiricalPossibilityInput` peer priors without merging them.
+M6 positive type is already frozen by ADP-017: `ActorAccessibleRenderEnvelope`. V2 may narrow/render allowed claims but may not add/widen claims, infer hidden claims, dereference opaque upstream provenance for persona semantics, convert PSEPF/RSC/objective refs into actor knowledge, or mutate V3.

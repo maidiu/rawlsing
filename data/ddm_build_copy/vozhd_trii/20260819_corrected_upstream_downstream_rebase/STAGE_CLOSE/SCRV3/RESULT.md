@@ -1,45 +1,59 @@
-# SCRV3 — RESULT
+# SCRV3 — Empirical Possibility / V3 Causal Boundary — Updated Close
 
-**Repository:** `maidiu/rawlsing`  
-**Exact base:** `baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d`  
+**Base:** `baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d`  
 **Branch:** `agent/vozhd-trii-dr-r03-close-v3-empirical-possibility`  
-**Mode:** stage-close exact contract only; no production implementation; no broad-topology mutation.
+**Previous head:** `f0e354d9308c064e0d17580244920a893b46f2cd`  
+**Local status:** `CLOSED`  
+**Final status:** `WAITING_ONLY_FOR_EXACT_FINAL_SEAM`
 
-## Verdict
+## Updated holding
+
+`SV3M@0ce8eb656fec6a3ac0d2a36a12c9ba217603e7cb` is accepted with qualification. Its hard ceiling, default-deny theorem and divergence/replay harness are adopted. Its proposed positive ADP-010/011/CAN-008/010 read rows are not treated as accepted authority.
+
+The first SCRV3 close overreached by publishing conditional-positive CAN-008/CAN-010/CAN-011/CAN-012 rows and an ADP-021 metadata row before proving those relations in the canonical owner serializations. Those rows are rescinded.
+
+**Current positive PSEPF actor-transition rows: zero.**
+
+The only positive row is noncausal intake/dereference: `SCRV3-RP-V3M002-V2` / `EXACT_GEOMETRY_DEREFERENCE`. It validates and dereferences exact producer-owned source-indexed geometry; it has zero actor-transition effect by itself.
+
+## Exact hashes
+
+- `V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY@1.1.0` canonical core SHA-256: `e0cd3c8a4443c59b7e97cc151a7db9298310f7a7e766b593fb90968546d66939`
+- `SCRV3_READ_PERMISSION_MATRIX@2.0.0` exact CSV SHA-256: `6a4227bb3df913b8564ba0d994ce5c2be81bf0f6e8d8b5a164ba546db59fa2d1`
+- `SCRV3_EFFECTIVE_TIME_ALIGNMENT_V2@2.0.0` canonical SHA-256: `2f9f2319975d8f7a45a31722b11436c21922866cc12ba5faccb7de96794fb8c4`
+
+## Owner-specific proof
+
+- ADP-010: accepted blob `0eac41d081b112255dcfc6dd42a6afab15a2928b` at `dd7720bf7201eb215e8a612cbd70952a728ca37b`; current core has no PSEPF input binding. Opportunity = owner-rule-unbound; encounter/exposure remain exact-witness-bound.
+- ADP-011: no accepted canonical machine serialization located; positive row denied.
+- CAN-008: accepted blob `7bd28360ec6a74975bb7eb809f6ad397529491b3` at `8468d5ab4a47513fc59cbf569de543033063e020`; no PSEPF input binding. Modal/mass-to-response remains forbidden.
+- CAN-010: accepted blob `219e2725223b110ef0dee7f3851c23a78f6ff7a6` at `02354715c047bcc58a490e14d29f3a216e817815`; no PSEPF input binding.
+- CAN-011: blob `f2fc968757da69b9aa9d2e8c00bf301144d4646b` at `5187cff1736813b5be857a48253c9bb83f049261`; no explicit PSEPF rule binding.
+- CAN-012: blob `6463d48236ad6b0005a5fc63b0598315ad7db585` at `8998c583b3687f974704368866efa91cd2787877`; PSEPF cannot substitute for causal parents or rupture basis.
+- ADP-021: blob `1db081786d2b7d4465a9efa7d69b6a05741b47bc` at `c83f0cfe2ee9039c7f8e3cf90b94941a1c186c5c`; v1 has no empirical-possibility lifecycle trigger.
+
+The metabolism authority defines future-compatible constraint/annotation/filter/weight operation classes, but cannot amend an owner contract. A future positive row requires a separately accepted owner-rule/registry serialization explicitly binding the empirical input/use.
+
+## Thin input and lifecycle
+
+`V3EmpiricalPossibilityInput@1.1.0` carries exact actor/run identity, objective actor-fact snapshot refs/hashes/effective time, comparator state plus provenance-only `ActorComparatorReceipt`, exact per-source PSEPF refs/hashes and earliest-owner typed states, owner/read-permission binding, effective-time receipt, lifecycle state, exact already-lawful causal-parent receipt, audit-only replay ref and provenance closure.
+
+PSEPF geometry is never copied. Exact unary/J-way/minority/multimodal geometry remains upstream and dereferenceable by immutable ref/hash. `OBSERVED_ZERO != ZERO_SUPPORT`; source disagreement/noncomparability stays source-indexed; provenance is not source-composition authority.
+
+`V3_REBIND` is wrapper-local only when the same field and comparator snapshot remain upstream-valid. Comparator/source/target/time/authority/dereference changes require `UPSTREAM_REQUERY`. Refresh is prospective and never rewrites committed history.
+
+## Divergence / replay
+
+Same prior does not imply same life. Two runs may share actor state, `ResolvedStructuralContext`, EPI, PSEPF refs and comparator snapshot at a branch point and later diverge through lawful causal history or separately recorded ADP-020 decisions. Each exact authority/history/RNG record must replay deterministically. `persona = f(RSC,EPI)` is forbidden even if deterministic.
+
+## M5 / M6
+
+SCR5578 local head `06eefed7bb8e7db7fd2465aa262653ed95461e84` is used only for bounded peer-interface preparation. Its candidate RSC schema is `SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0`, but the final exact RSC integration signature remains dependent on accepted M4 producer bindings.
+
+The SCRV3 side of M6 is closed now. Accepted ADP-017 freezes the positive V3→V2 type `ActorAccessibleRenderEnvelope` at blob `eece4f3f2f3f9288ab9bbc645dc81e20a99e1280`, commit `614775fa05c5d904adff4b53f353637b869e6842`. It is an allowlist; V2 may not dereference opaque PSEPF/RSC/comparator/replay provenance for persona authority.
+
+No exact committed SV3A/SV3B/SV3C/SV3F return was visible at this adjudication point; SCRV3 did not wait or infer their contents.
+
+No broad-topology contradiction was found. No production implementation is authorized.
 
 `SCRV3_WAITING_ONLY_FOR_EXACT_FINAL_SEAM`
-
-The SCRV3-local contract is closed. The thin V3 empirical-possibility boundary, comparator snapshot seam, source-indexed negative admission, lifecycle/requery/rebind ownership, effective-time law, intake/replay receipt boundary, exact metabolism authority, transition read-permission/use matrix, peer-prior noncollapse, divergent-life law and deterministic replay law are all frozen.
-
-The only unresolved datum is the **exact final `ResolvedStructuralContext` integration signature**. The designated SCR5578 branch was still identical to the common base when inspected, so inventing that signature here would violate the final-seam rule.
-
-## Binding holdings
-
-1. `V3EmpiricalPossibilityInput@1.0.0` is a thin reference/lifecycle envelope. PSEPF geometry is never copied.
-2. Exact source-indexed J-way/minority/multimodal/disagreement geometry remains producer-owned and dereferenceable through immutable PSEPF refs/hashes.
-3. `ActorComparatorReceipt` is provenance-only in V3.
-4. `ReplayReceipt` is audit/replay-only.
-5. PSEPF is a noncausal empirical prior. It is not an event witness or causal parent.
-6. `V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY@1.0.0` is a read-permission/operation ceiling, not a state owner.
-7. Missing authority, missing read permission, missing owner-rule binding, stale input, failed temporal alignment or failed dereference yields exactly zero PSEPF transition effect.
-8. CAN-008/CAN-010/CAN-011/CAN-012 may consume PSEPF only where an exact owner-rule binding declares a governed empirical constraint/weight operation. The stage-close authority itself supplies no behavioral formula. Current unbound rules therefore have zero empirical effect.
-9. Mass, modal cell, source majority or source disagreement never directly assigns response, belief, memory, knowledge, identity, relationship, developmental state or persona.
-10. `ResolvedStructuralContext` and `V3EmpiricalPossibilityInput` remain separately typed peer priors.
-11. Same priors may lawfully produce divergent lives because causal histories and lawful RNG receipts differ.
-12. Exact same priors + ordered history + rule/registry hashes + scheduler receipts + RNG receipts + intake/replay identities must replay identically.
-
-## Authority posture
-
-R03D controls typed negative preservation; R03E controls read permission without semantic reownership; R03F controls exact prerequisite/fail-closed behavior. Accepted V3 ADP/CAN authorities retain all actor-state mutation ownership.
-
-No broad-topology contradiction was found. No authority conflict blocks the local SCRV3 contract.
-
-## Required outputs
-
-All ten required outputs are present in this directory.
-
-**Metabolism authority SHA256:** `07620183f0bea7104e525ea5ce7f9717ceefa01e033054d26df2b60f6ff7fd0f`  
-**Read-permission matrix SHA256:** `a95db6c92f9d163f954bc2e3424beedbf993256981be5ef0b9a8bfccca8ad692`  
-**Effective-time rule SHA256:** `96d367009f74f0251f82e8ff094742f31cfb17979183286c840324b5ca358dd8`
-
-**Token:** `SCRV3_WAITING_ONLY_FOR_EXACT_FINAL_SEAM`

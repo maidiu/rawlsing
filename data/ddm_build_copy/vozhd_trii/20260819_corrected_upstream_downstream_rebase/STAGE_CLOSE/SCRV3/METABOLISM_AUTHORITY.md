@@ -1,55 +1,54 @@
-# SCRV3 — V3 Empirical Possibility Metabolism Authority
+# SCRV3 — Metabolism Authority
 
-**ID:** `V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY`  
-**Version:** `1.0.0`  
-**Class:** read-permission + operation ceiling; **not** actor-state ownership.
+**Authority:** `V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY@1.1.0`  
+**Canonical core SHA-256:** `e0cd3c8a4443c59b7e97cc151a7db9298310f7a7e766b593fb90968546d66939`  
+**Read matrix SHA-256:** `6a4227bb3df913b8564ba0d994ce5c2be81bf0f6e8d8b5a164ba546db59fa2d1`
 
-## Holding
+This authority owns read permission, operation ceilings, lifecycle admission and replay obligations. It owns no actor-state domain semantics.
 
-PSEPF may influence a V3 transition only through an exact permission granted in `READ_PERMISSION_MATRIX.csv` **and** an exact empirical-use binding in the already-owning V3 rule. The metabolism authority never becomes a causal parent, event witness, candidate generator, state owner, memory owner, epistemic owner, relationship owner, scheduler semantic owner, or RNG semantic owner.
+## Default-deny theorem
 
-Absent metabolism authority, absent read permission, absent owner-rule binding, stale input, failed time alignment, broken dereference, or failed provenance means:
+If a named V3 semantic owner does not itself explicitly bind `V3EmpiricalPossibilityInput` / PSEPF use in its accepted canonical rule/registry serialization, PSEPF transition effect is exactly zero.
 
-`PSEPF_TRANSITION_EFFECT = 0`.
+The metabolism authority cannot amend ADP/CAN semantics merely by naming an operation.
 
-No fallback is permitted.
+## Current permissions
 
-## Operation classes
+Current positive actor-transition rows: **none**.
 
-### `OBSERVE_ONLY`
+Only `SCRV3-RP-V3M002-V2` is positive, for noncausal `EXACT_GEOMETRY_DEREFERENCE`.
 
-Read source-indexed geometry and negative states for diagnostics, lifecycle adjudication or provenance. Zero causal effect.
+Defined future-compatible operation classes are:
 
-### `RULE_DECLARED_EMPIRICAL_CONSTRAINT`
+- `OWNER_RULE_CONSTRAINT_TEST` — may reject/retain an independently lawful candidate; cannot create one;
+- `OWNER_RULE_CANDIDATE_ANNOTATION` — nonstate annotation only;
+- `OWNER_RULE_CANDIDATE_FILTER` — removal only; cannot add candidates;
+- `OWNER_RULE_CANDIDATE_WEIGHT` — exact owner transform over an already-lawful candidate set; stochastic selection remains ADP-020-owned.
 
-The owning V3 rule may apply a deterministic, versioned predicate to exact pinned PSEPF geometry only to reject or retain an **already-lawful** candidate. PSEPF cannot create the candidate, supply a causal witness, or establish semantic eligibility by itself.
+None is presently enabled for actor transitions.
 
-### `RULE_DECLARED_EMPIRICAL_WEIGHT`
+## Owner evidence
 
-The owning V3 rule may use a separately versioned formula/content hash to transform exact pinned geometry into exact rational/integer weights over an **already-lawful** finite candidate set. PSEPF cannot generate the set. ADP-020 remains the only causal RNG mechanism and records candidate-set/weight/decision receipts.
+- ADP-010: `0eac41d081b112255dcfc6dd42a6afab15a2928b` @ `dd7720bf7201eb215e8a612cbd70952a728ca37b` — no PSEPF binding; encounter/exposure remain witness-bound.
+- ADP-011 — no accepted canonical machine serialization located.
+- CAN-008: `7bd28360ec6a74975bb7eb809f6ad397529491b3` @ `8468d5ab4a47513fc59cbf569de543033063e020` — no PSEPF binding.
+- CAN-010: `219e2725223b110ef0dee7f3851c23a78f6ff7a6` @ `02354715c047bcc58a490e14d29f3a216e817815` — no PSEPF binding.
+- CAN-011: `f2fc968757da69b9aa9d2e8c00bf301144d4646b` @ `5187cff1736813b5be857a48253c9bb83f049261` — no explicit PSEPF binding.
+- CAN-012: `6463d48236ad6b0005a5fc63b0598315ad7db585` @ `8998c583b3687f974704368866efa91cd2787877` — PSEPF cannot substitute for causal parents/rupture basis.
+- ADP-021: `1db081786d2b7d4465a9efa7d69b6a05741b47bc` @ `c83f0cfe2ee9039c7f8e3cf90b94941a1c186c5c` — no empirical lifecycle trigger.
 
-No implicit numeric conversion, modal choice, raw-mass probability, normalization, smoothing, source averaging, or uncertainty imputation exists.
+These are exact Git blob content identities at the named accepted commits, not SCRV3-invented authority hashes.
 
-## Geometry and source state
+## Geometry / source state
 
-The thin V3 input holds refs/hashes only. Exact source-indexed J-way, minority, multimodal, uncertainty and disagreement geometry remains producer-owned and dereferenceable. Source states stay typed per source and may disagree.
+PSEPF geometry remains upstream. V3 records refs/hashes and exact component paths consulted, never copied mass tables or flattened summaries.
 
-`ABSENT_IN_CATALOG`, `DECLARED_NONE`, `UNSPECIFIED`, `NO_FIELD`, `SOURCE_NOT_APPLICABLE`, `TEMPORAL_NONCOMPARABLE`, `TARGET_UNAVAILABLE`, `ZERO_SUPPORT`, `LOW_SUPPORT`, and `UNCERTAINTY_UNQUANTIFIED` are never collapsed into a generic null and never become positive actor evidence.
+`OBSERVED_ZERO != ZERO_SUPPORT`; source disagreement remains source-indexed. Cross-source composition defaults to none. Provenance reachability is not pooling authority.
 
-## Causal separation
+## Lifecycle / replay
 
-PSEPF is noncausal prior evidence. The V3 intake receipt separately records the exact ordered generated/admitted causal parents used by the owning transition. A PSEPF ref cannot substitute for an encounter, exposure, V555 traversal, V556 realization, external event, relationship, memory-forming event, or rupture precipitant.
+V3 owns wrapper-only `V3_REBIND`. Comparator/query/field/source owners own `UPSTREAM_REQUERY` when upstream validity changes. Refresh never rewrites history.
 
-`ActorComparatorReceipt` is provenance-only. `ReplayReceipt` is audit-only.
+Every consultation is receipted as `V3EmpiricalPossibilityReadReceipt@1.0.0` with exact permission, owner serialization/rule/transform, source/PSEPF hashes, component paths, causal parents, time receipt, candidate sets, ADP-020 receipts and pre/post state hashes.
 
-## Peer-prior law
-
-`ResolvedStructuralContext` and `V3EmpiricalPossibilityInput` may be simultaneously consulted by one owning V3 rule only after the final SCR5578 seam is frozen. They remain two separately typed inputs with separate receipts and authority provenance. No generic merged-prior object is authorized.
-
-## Frozen identities
-
-- authority payload SHA256: `07620183f0bea7104e525ea5ce7f9717ceefa01e033054d26df2b60f6ff7fd0f`
-- read-permission matrix SHA256: `a95db6c92f9d163f954bc2e3424beedbf993256981be5ef0b9a8bfccca8ad692`
-- effective-time rule canonical SHA256: `96d367009f74f0251f82e8ff094742f31cfb17979183286c840324b5ca358dd8`
-
-Any runtime binding to a different identity is authority mismatch and therefore zero PSEPF effect.
+Same prior may diverge through later lawful history or separately recorded RNG. Each exact authority/history/RNG record must replay identically. A deterministic RSC+EPI→persona shortcut remains forbidden.
