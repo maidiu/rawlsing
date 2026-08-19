@@ -1,0 +1,179 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "cell": "SV3A_V3_INPUT_LIFECYCLE_CONTRACT",
+  "role": "NON_DISPOSITIVE_FLOATING_SPECIALIST_TO_SCRV3",
+  "repository": "maidiu/rawlsing",
+  "exact_semantic_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-spec-v3-input-lifecycle",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3A/",
+  "result_token": "SV3A_EXACT_INPUT_LIFECYCLE_RETURNED",
+  "authority_conflict_found": false,
+  "broad_topology_contradiction_found": false,
+  "production_code_modified": false,
+  "scrv3_final_artifacts_modified": false,
+  "final_stage_closure_claimed": false,
+  "contract_id": "SV3A_V3_EMPIRICAL_POSSIBILITY_INPUT_LIFECYCLE@1.0.0",
+  "core_holding": "V3EmpiricalPossibilityInput is a thin exact-reference/lifecycle/source-state/replay envelope around one exact PSEPF root; it contains no copied PSEPF geometry and grants no causal permission.",
+  "minimal_required_field_groups": [
+    "wrapper_identity_schema_hash",
+    "exact_psepf_root_identity_hash_schema_authority_binding",
+    "exact_generation_subject_or_binding_ref_for_subject_consistency",
+    "effective_time_basis_refs",
+    "complete_source_component_manifest",
+    "freshness_state_and_authority_basis",
+    "refresh_requirement_state_and_external_authority_basis",
+    "replay_verification_state_and_exact_replay_bindings",
+    "typed_nonsemantic_provenance_refs",
+    "optional_opaque_external_metabolism_and_refresh_authority_bindings",
+    "deterministic_input_hash"
+  ],
+  "lifecycle_axes": {
+    "freshness_state": [
+      "FRESH",
+      "STALE",
+      "FRESHNESS_UNKNOWN",
+      "FRESHNESS_INTEGRITY_FAILED"
+    ],
+    "refresh_requirement_state": [
+      "REFRESH_NOT_REQUIRED",
+      "REFRESH_REQUIRED",
+      "REFRESH_AUTHORITY_UNBOUND",
+      "REFRESH_REQUIREMENT_UNKNOWN",
+      "REFRESH_BINDING_INTEGRITY_FAILED"
+    ],
+    "source_component_state": [
+      "POSITIVE",
+      "UNSUPPORTED",
+      "VALID_EMPTY",
+      "NONCOMPARABLE",
+      "UNKNOWN",
+      "CONFLICT",
+      "INTEGRITY_FAILURE"
+    ],
+    "replay_verification_state": [
+      "REPLAY_VERIFIED_EXACT",
+      "REPLAY_NOT_YET_VERIFIED",
+      "REPLAY_UNVERIFIABLE_MISSING_BINDING",
+      "REPLAY_INTEGRITY_FAILED"
+    ],
+    "envelope_integrity_state": [
+      "VALID",
+      "INVALID_FAIL_CLOSED"
+    ]
+  },
+  "state_noncollapse_law": [
+    "freshness does not imply causal permission",
+    "staleness does not itself adjudicate causal usability",
+    "refresh-required is not equivalent to stale",
+    "wrapper integrity is not empirical support",
+    "global wrapper state may not replace per-source component states",
+    "valid-empty is not unsupported, unknown, noncomparable or integrity failure",
+    "observed zero/zero-support/low-support producer distinctions must remain exact producer subtypes when supplied"
+  ],
+  "exact_dereference_requirements": [
+    "psepf_object_id",
+    "psepf_content_hash",
+    "psepf_schema_id",
+    "psepf_schema_version",
+    "psepf_producer_or_authority_id_version_hash",
+    "immutable material locator or exact packaged hash-bound resolution contract sufficient to recover complete PSEPF content",
+    "per-source component object/ref identity and content hash",
+    "source-universe identity refs/hashes required by PSEPF interpretation",
+    "all interpretation-critical PSEPF reference closure needed to reconstruct exact J-way geometry, minority modes, support/negative states and provenance"
+  ],
+  "source_component_preservation": {
+    "one_record_per_psepf_component": true,
+    "wrapper_level_flattening": false,
+    "cross_source_pooling_by_wrapper": false,
+    "winner_selection": false,
+    "averaging": false,
+    "majority_rule": false,
+    "latest_source_precedence": false,
+    "component_fields": [
+      "component_id",
+      "source_universe_ref_and_hash",
+      "component_ref_and_hash",
+      "component_state",
+      "producer_state_subtype_and_authority_refs_when_supplied",
+      "comparability_or_negative_refs_when_applicable",
+      "component_effective_time_basis_refs",
+      "component_refresh_state_or_ref_when_supplied"
+    ]
+  },
+  "refresh_requery": {
+    "authority_owner": "EXTERNAL_SEPARATELY_ACCEPTED_AUTHORITY__NOT_SV3A_OR_WRAPPER_PRESENCE",
+    "wrapper_may_carry": [
+      "refresh_authority_id_version_hash_if_bound",
+      "refresh_requirement_state",
+      "refresh_reason_or_basis_refs",
+      "authority_produced_next_boundary_or_requery_request_ref_if_any",
+      "per-source refresh metadata if upstream authority supplies it"
+    ],
+    "wrapper_may_not": [
+      "infer refresh from wall clock alone",
+      "choose mutable latest data",
+      "schedule requery absent authority",
+      "silently replace PSEPF",
+      "mutate existing wrapper or PSEPF in place"
+    ],
+    "successful_refresh_effect": "NEW_PSEPF_ROOT_AND_NEW_WRAPPER_IDENTITY_HASH__HISTORICAL_WRAPPER_REMAINS_REPLAYABLE"
+  },
+  "forbidden_payload_or_semantic_fields": [
+    "modal_cells",
+    "field_mass",
+    "modal_probability",
+    "dominant_mode",
+    "top_k_modes",
+    "marginals",
+    "flattened_j_way_vector",
+    "pooled_source_distribution",
+    "winner_source",
+    "actor_belief",
+    "actor_response",
+    "actor_identity",
+    "actor_memory",
+    "actor_knowledge",
+    "actor_psyche",
+    "actor_personality",
+    "actor_state",
+    "actor_biography",
+    "actor_event",
+    "causal_allowed_boolean_created_by_wrapper",
+    "comparator_score_as_actor_prior",
+    "mutable_latest_pointer",
+    "raw_stage_fallback_path"
+  ],
+  "actor_comparator_receipt_role": "PROVENANCE_ONLY__NEVER_STANDALONE_ACTOR_PRIOR_FACT_OR_STATE",
+  "wrapper_presence_grants_causal_permission": false,
+  "full_psepf_payload_copy_allowed": false,
+  "exact_j_way_flattening_allowed": false,
+  "final_metabolism_authority_adjudicated": false,
+  "generated_position_legislation_created": false,
+  "scr5578_later_dependency": [
+    "exact accepted ResolvedStructuralContext schema/id/hash integration signature",
+    "exact immutable V558 repository bundle and resolver/query/receipt bindings required by SCRV3 peer structural-context intake",
+    "M5 compatibility check between SCR5578 output and SCRV3 final peer-prior intake"
+  ],
+  "already_frozen_independently_of_scr5578": [
+    "direct PSEPF -> V3EmpiricalPossibilityInput -> V3 lane",
+    "thin no-copy wrapper law",
+    "exact PSEPF dereference and J-way nonflattening",
+    "per-source mixed-state preservation",
+    "ActorComparatorReceipt provenance-only",
+    "wrapper presence grants no causal permission",
+    "no field-mass/modal-cell to actor-state promotion",
+    "refresh authority remains external",
+    "immutable refresh replacement and replay preservation",
+    "orthogonal lifecycle/replay/integrity dimensions"
+  ],
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "EXACT_INPUT_CONTRACT.md",
+    "LIFECYCLE_STATE_MACHINE.md",
+    "SOURCE_COMPONENT_PRESERVATION.md",
+    "REFRESH_REQUERY_CONTRACT.md",
+    "HOSTILE_INPUT_FIXTURES.md",
+    "SCRV3_HANDOFF.json"
+  ]
+}
