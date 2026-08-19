@@ -1,18 +1,25 @@
 {
-  "schema": "rawlsing.clean_machine.common_operating_picture.v1",
+  "schema": "rawlsing.clean_machine.common_operating_picture.v2",
   "purpose": "Single authoritative campaign state shared by Campaign Vozhd, General Staff, domain Vozhds, Inspectorate, Integration Command, and rabochii launch orders.",
   "required_fields": {
     "campaign_state": [
       "campaign_id",
       "status",
+      "command_dependency_epoch",
       "canonical_integration_branch",
       "canonical_integration_head_sha",
       "architecture_closure_id",
       "architecture_closure_hash",
       "governing_authority_bundle_id",
-      "governing_authority_bundle_hash"
+      "governing_authority_bundle_hash",
+      "governing_authority_manifest_hash"
     ],
     "substrate": [
+      "populated_data_reality_receipt_id",
+      "populated_data_reality_receipt_hash",
+      "audit_query_packet_hash",
+      "database_engine_version",
+      "database_snapshot_or_profile_id",
       "incoming_data_contract_id",
       "incoming_data_contract_version",
       "incoming_data_contract_hash",
@@ -23,12 +30,12 @@
       "golden_fixture_hash"
     ],
     "shared_contracts": [
-      "object_registry_version",
-      "identity_reference_registry_version",
-      "dag_registry_version",
-      "interface_registry_version",
-      "negative_authority_registry_version",
-      "replay_contract_version"
+      "object_registry_version_hash",
+      "identity_reference_registry_version_hash",
+      "dag_registry_version_hash",
+      "interface_registry_version_hash",
+      "negative_authority_registry_version_hash",
+      "replay_contract_version_hash"
     ],
     "active_units": [
       "unit_id",
@@ -37,13 +44,27 @@
       "branch",
       "base_sha",
       "head_sha",
+      "command_dependency_epoch",
+      "authority_pack_hash",
       "write_surface",
+      "shared_write_lease_ids",
       "mission",
-      "consumed_contract_versions",
-      "produced_contract_versions",
+      "consumed_contract_versions_hashes",
+      "produced_contract_versions_hashes",
       "dependencies",
       "status",
-      "stale_contract_flag"
+      "stale_dependency_flag",
+      "last_dependency_refresh_receipt_hash"
+    ],
+    "shared_write_leases": [
+      "lease_id",
+      "resource",
+      "owner_unit",
+      "base_sha_or_version",
+      "purpose",
+      "affected_interfaces",
+      "status",
+      "release_receipt_hash"
     ],
     "authority_requests": [
       "request_id",
@@ -52,18 +73,46 @@
       "change_class",
       "affected_contracts",
       "affected_units",
+      "old_new_hashes",
       "status",
-      "blocking_effect"
+      "blocking_effect",
+      "g6_broadcast_receipt_hash"
+    ],
+    "seam_conformance": [
+      "interface_id_version_hash",
+      "producer_unit_head",
+      "consumer_unit_head",
+      "producer_conformance",
+      "consumer_conformance",
+      "seam_conformance",
+      "semantic_checksum",
+      "hostile_fixture_receipt_hash",
+      "inspectorate_disposition",
+      "receipt_hash"
+    ],
+    "schema_migrations": [
+      "migration_id",
+      "before_schema_hash",
+      "after_schema_hash",
+      "dry_run_receipt_hash",
+      "equivalence_receipt_hash",
+      "rollback_or_forward_repair_plan_hash",
+      "inspectorate_disposition",
+      "status"
     ],
     "integration_queue": [
       "tranche_id",
       "producer_unit",
       "head_sha",
+      "dependency_epoch",
       "domain_vozhd_disposition",
       "inspectorate_disposition",
       "semantic_diff_hash",
+      "contract_conformance_hash",
+      "seam_receipt_hashes",
       "test_receipt_hash",
       "dependency_impact_hash",
+      "shared_write_lease_release_hashes",
       "integration_status"
     ],
     "known_conflicts": [
@@ -78,11 +127,13 @@
     "wave_state": [
       "wave_id",
       "opened_at_integration_sha",
+      "dependency_epoch",
       "entry_gates",
       "units",
       "completed_units",
       "blocked_units",
       "reconciliation_status",
+      "whole_dag_checksum_receipt_hash",
       "next_wave_dependencies"
     ],
     "whole_dag_coverage": [
@@ -90,16 +141,20 @@
       "producer_chain",
       "implementation_state",
       "fixture_state",
+      "seam_state",
       "replay_state",
       "open_gaps"
     ]
   },
   "invariants": [
-    "Every active worker references exact contract versions, never floating latest.",
+    "Every active worker references exact contract hashes and one command dependency epoch, never floating latest.",
+    "Every substrate-dependent worker references a populated-data reality receipt, not schema inference alone.",
     "Every integration tranche references one exact worker head SHA.",
-    "Any changed shared contract marks affected workers stale until acknowledged/rebased.",
+    "Any changed frozen dependency marks the transitive affected-worker set stale until a dependency-refresh receipt is accepted.",
+    "No shared semantic resource has more than one active write lease.",
+    "No cross-worker interface is implementation-closed without producer, consumer and seam conformance against the same contract hash.",
     "No known conflict with STOP scope may coexist with integration_status=ACCEPTED for an affected tranche.",
     "Canonical integration head changes only by Integration Command.",
-    "Common Operating Picture is updated after every shared-contract adjudication, worker launch, material worker return, integration decision, or wave reconciliation."
+    "Common Operating Picture is updated after every shared-contract adjudication, dependency invalidation/broadcast, worker launch, material worker return, write-lease change, seam receipt, integration decision, migration decision, or wave reconciliation."
   ]
 }
