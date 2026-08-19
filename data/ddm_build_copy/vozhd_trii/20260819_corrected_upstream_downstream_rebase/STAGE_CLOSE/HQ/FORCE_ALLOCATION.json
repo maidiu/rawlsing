@@ -2,35 +2,33 @@
   "force_size":10,
   "hq_excluded_from_worker_count":true,
   "common_base":"baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
-  "allocation_epoch":"R03_STAGE_CLOSE_DISPATCH_EPOCH_02",
+  "allocation_epoch":"R03_STAGE_CLOSE_DISPATCH_EPOCH_02_FINAL_BINDERS",
   "dispatch_branch":"agent/vozhd-trii-stage-close-dispatch",
-  "global_state":"TWO_ACTIVE__EIGHT_HELD",
+  "global_state":"M5_M6_ACTIVE__EPOCH_BUDGET_EXHAUSTED_AFTER_ISSUE",
   "active_new_semantic_assignments":2,
   "recycle_budget":4,
-  "assignments_issued_against_budget":2,
-  "budget_law":"COUNT_SEMANTIC_ASSIGNMENT_ISSUANCES__AFTER_FOUR_TOTAL_FREEZE_ALL_MAILBOXES_FOR_COMMAND_REVIEW_BEFORE_FINAL_INSPECTORATE",
+  "assignments_issued_against_budget":4,
+  "budget_law":"NO_MORE_RECYCLING_AFTER_M5_M6_RETURNS__FREEZE_AND_COMMAND_REVIEW_BEFORE_POST_REVIEW_INSPECTORATE",
   "user_handoff_addressing":"WORKER_SLOT__PERMANENT_CHAT_ID__MOST_RECENT_SUBMITTING_AGENT_ID__NEW_AGENT_ID",
   "mailboxes":[
-    {"worker_slot":1,"chat_id":"CHAT-S554D","most_recent_submitting_agent_id":"M6_PREFLIGHT","state":"HOLD"},
+    {"worker_slot":1,"chat_id":"CHAT-S554D","most_recent_submitting_agent_id":"M6_PREFLIGHT","state":"ISSUED","new_agent_id":"M6_FINAL","assignment_id":"E02-W01-M6-FINAL-001"},
     {"worker_slot":2,"chat_id":"CHAT-SCR555","most_recent_submitting_agent_id":"M3_FINAL","state":"HOLD"},
-    {"worker_slot":3,"chat_id":"CHAT-SCRV3","most_recent_submitting_agent_id":"SCRV3","state":"ISSUED","new_agent_id":"SCRV3_M6_HANDOFF_LITERALIZATION","assignment_id":"E02-W03-SCRV3-M6LIT-001"},
+    {"worker_slot":3,"chat_id":"CHAT-SCRV3","most_recent_submitting_agent_id":"SCRV3_M6_HANDOFF_LITERALIZATION","state":"ACCEPTED_FROZEN","semantic_head":"3a50391fd4f8c23a7fd2c61ac7aaac31a0ce4006"},
     {"worker_slot":4,"chat_id":"CHAT-SCR5578","most_recent_submitting_agent_id":"SV3A","state":"HOLD","review_flag":"NONCONFORMING_RETURN_EVIDENCE_ONLY"},
     {"worker_slot":5,"chat_id":"CHAT-SCRV2APP","most_recent_submitting_agent_id":"SV3B","state":"HOLD"},
     {"worker_slot":6,"chat_id":"CHAT-SCR553","most_recent_submitting_agent_id":"SV3C","state":"HOLD"},
-    {"worker_slot":7,"chat_id":"CHAT-SV3M","most_recent_submitting_agent_id":"SV3F","state":"HOLD"},
-    {"worker_slot":8,"chat_id":"CHAT-SINSP","most_recent_submitting_agent_id":"SINSP","state":"HOLD","review_flag":"FINAL_POST_REVIEW_RECLOSURE_REQUIRED_LATER"},
+    {"worker_slot":7,"chat_id":"CHAT-SV3M","most_recent_submitting_agent_id":"SV3F","state":"ISSUED","new_agent_id":"M5_FINAL","assignment_id":"E02-W07-M5-FINAL-001"},
+    {"worker_slot":8,"chat_id":"CHAT-SINSP","most_recent_submitting_agent_id":"SINSP","state":"HOLD","review_flag":"POST_FINAL_BINDER_RECLOSURE_REQUIRED"},
     {"worker_slot":9,"chat_id":"CHAT-SCR556","most_recent_submitting_agent_id":"M3_PREFLIGHT","state":"HOLD"},
-    {"worker_slot":10,"chat_id":"CHAT-S5578C","most_recent_submitting_agent_id":"M4_PREFLIGHT","state":"ISSUED","new_agent_id":"M4_FINAL","assignment_id":"E02-W10-M4-FINAL-001"}
+    {"worker_slot":10,"chat_id":"CHAT-S5578C","most_recent_submitting_agent_id":"M4_FINAL","state":"ACCEPTED_FROZEN","semantic_head":"988fa8abe755eee636e52a6b6eb09072b5a0f111"}
   ],
   "accepted_frozen_seams":[
     {"unit":"M1","semantic_head":"088848577fd42f3b69e78551d5277c91e5aa128d","token":"M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED"},
     {"unit":"M2","semantic_head":"92128619122886d0ced877a29b42fdb453765246","token":"M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED"},
-    {"unit":"M3","result_blob":"c5c2f85bade35a1b1cda9a26ce946f76d39ec953","token":"M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED"}
+    {"unit":"M3","result_blob":"c5c2f85bade35a1b1cda9a26ce946f76d39ec953","token":"M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED"},
+    {"unit":"M4","semantic_head":"988fa8abe755eee636e52a6b6eb09072b5a0f111","token":"M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED"},
+    {"unit":"SCRV3_M6_HANDOFF_LITERALIZATION","semantic_head":"3a50391fd4f8c23a7fd2c61ac7aaac31a0ce4006","token":"SCRV3_M6_HANDOFF_LITERALIZATION_COMPLETE"}
   ],
-  "dependency_following_budget_slots":[
-    {"budget_slot":3,"unit":"M5_FINAL","opening":"AFTER_M4_FINAL_ACCEPTED"},
-    {"budget_slot":4,"unit":"M6_FINAL","opening":"AFTER_SCRV3_M6_HANDOFF_LITERALIZATION_COMPLETE"}
-  ],
-  "after_budget":"COMMAND_REVIEW_THEN_POST_REVIEW_INSPECTORATE_RECLOSURE",
+  "after_current_returns":"COMMAND_REVIEW_THEN_POST_REVIEW_INSPECTORATE_RECLOSURE",
   "production_implementation_authorized":false
 }
