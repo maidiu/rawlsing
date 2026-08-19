@@ -1,0 +1,84 @@
+{
+  "adjudication_id": "VELIKII_VOZHD_STAGE_CLOSE_WAVE_01",
+  "common_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "broad_topology": "R03_CLOSED_UNCHANGED",
+  "production_implementation": "FORBIDDEN",
+  "stage_dispositions": {
+    "SCR553": {
+      "head": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+      "token": "SCR553_EXACT_CONTRACT_CLOSED",
+      "disposition": "ACCEPTED_LOCAL_EXACT_CONTRACT__ELIGIBLE_FOR_M1_AND_M4"
+    },
+    "SCR554": {
+      "head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "disposition": "ACCEPTED_LOCAL_EXACT_CONTRACT__ELIGIBLE_FOR_M1_M2_M4",
+      "hq_guard": "Equivalence remains one exact proposition/use/rule invocation. Competing unresolved authority snapshots may not become separate positive supports; existing STATIC_AUTHORITY_COMPLETENESS K07 fail-closed gate applies before support counting. No semver/latest/recency precedence. Originating lineage fingerprint is identity-bearing only where interpretation/lawful use is material; provenance-only path differences cannot multiply support."
+    },
+    "SCR555": {
+      "head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+      "token": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "disposition": "ACCEPTED_LOCAL_INDEPENDENT_CONTRACT__M2_BINDING_PENDING"
+    },
+    "SCR556": {
+      "head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+      "token": "SCR556_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "disposition": "ACCEPTED_LOCAL_INDEPENDENT_CONTRACT__M3_BINDING_PENDING"
+    },
+    "SCR5578": {
+      "head": "06eefed7bb8e7db7fd2465aa262653ed95461e84",
+      "token": "SCR5578_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "disposition": "ACCEPTED_LOCAL_INDEPENDENT_CONTRACT__M4_BINDING_PENDING"
+    },
+    "SCRV3": {
+      "branch": "agent/vozhd-trii-dr-r03-close-v3-empirical-possibility",
+      "state": "UNSTARTED_AT_COMMON_BASE_OR_NO_COMMIT_VISIBLE",
+      "disposition": "NOT_ADJUDICATED"
+    },
+    "SCRV2APP": {
+      "head": "24f8811bb7d2eaa18cfac1cb907c48bba8d08f23",
+      "token": "SCRV2APP_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "disposition": "ACCEPTED_LOCAL_NEGATIVE_FIREWALL__M6_POSITIVE_BINDING_PENDING"
+    }
+  },
+  "feeder_dispositions": {
+    "S554D": {
+      "head": "a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4",
+      "token": "S554D_FEEDER_COMPLETE",
+      "disposition": "ACCEPTED_NON_DISPOSITIVE_EVIDENCE",
+      "qualification": "Three-identity proposal is advisory. HQ adopts hostile guards against version-conflict double support, provenance-path multiplicity, and heuristic precedence; SCR554's exact invocation/rule-scoped identity remains dispositive unless M1 proves incompatibility."
+    },
+    "S5578C": {
+      "head": "50d9b9f0ea36c95bd2423206901aa39e3b48092a",
+      "token": "S5578C_FEEDER_COMPLETE",
+      "disposition": "ACCEPTED_NON_DISPOSITIVE_EVIDENCE",
+      "holding": "Reference minimization may remove payload copies only; interpretation-critical positive/negative/authority/permission/source/query/measure/temporal/role-order-cardinality closure must remain packaged or exact immutable hash-bound resolvable. Broken closure fails closed."
+    },
+    "SV3M": {
+      "head": "0ce8eb656fec6a3ac0d2a36a12c9ba217603e7cb",
+      "token": "SV3M_FEEDER_COMPLETE",
+      "disposition": "ACCEPTED_NON_DISPOSITIVE_EVIDENCE_WITH_STAGE_OWNED_POSITIVE_ROWS",
+      "holding": "permission_to_read(PSEPF) != authority_to_assign(actor_state); default deny; same priors may diverge through lawful V3 history/RNG with exact replay.",
+      "qualification": "Proposed positive ADP-010/ADP-011/CAN-008/CAN-010 read rows are candidates only. SCRV3 must prove each owner-specific row and bind the actual authority serialization/hash."
+    },
+    "S553R": {
+      "head": "f9f1b60f011d30473507287e7f2c1f9fe258967c",
+      "token": "S553R_FEEDER_COMPLETE",
+      "disposition": "ACCEPTED_NON_DISPOSITIVE_EVIDENCE",
+      "holding": "V553 need is exact governed-use scoped; source comparability/linkage/pooling remain separately owned; temporal/source negative cannot downgrade to direct positive basis for the same use."
+    },
+    "SINSP": {
+      "branch": "agent/vozhd-trii-dr-r03-inspectorate-stage-close",
+      "state": "ACTIVE_AHEAD_NO_FINITE_RETURN",
+      "disposition": "CONTINUE"
+    }
+  },
+  "seams": {
+    "M1": {"status": "OPEN__READY_TO_LAUNCH", "branch": "agent/vozhd-trii-dr-r03-seam-m1-temporal-v554"},
+    "M2": {"status": "OPEN__READY_TO_LAUNCH", "branch": "agent/vozhd-trii-dr-r03-seam-m2-atomic-route"},
+    "M3": {"status": "PREPARED__BLOCKED_TRUE_DEPENDENCY_M2_ACCEPTED_SCR555", "branch": "agent/vozhd-trii-dr-r03-seam-m3-higher-order-structural"},
+    "M4": {"status": "PREPARED__BLOCKED_TRUE_DEPENDENCY_M3_ACCEPTED_SCR556", "branch": "agent/vozhd-trii-dr-r03-seam-m4-publication-repository"},
+    "M5": {"status": "PREPARED__BLOCKED_TRUE_DEPENDENCY_M4_AND_SCRV3", "branch": "agent/vozhd-trii-dr-r03-seam-m5-v3-peer-prior"},
+    "M6": {"status": "PREPARED__BLOCKED_TRUE_DEPENDENCY_SCRV3", "branch": "agent/vozhd-trii-dr-r03-seam-m6-v2-expression"}
+  }
+}
