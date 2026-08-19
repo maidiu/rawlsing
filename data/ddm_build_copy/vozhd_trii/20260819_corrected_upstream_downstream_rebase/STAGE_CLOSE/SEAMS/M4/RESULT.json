@@ -1,0 +1,131 @@
+{
+  "assignment_id": "E02-W10-M4-FINAL-001",
+  "chat_id": "CHAT-S5578C",
+  "worker_slot": 10,
+  "agent_id": "M4_FINAL",
+  "worker_class": "SEAM_BINDER",
+  "authority": "DISPOSITIVE_M4_FINAL_SEAM_ONLY",
+  "repository": "maidiu/rawlsing",
+  "semantic_launch_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "mission_branch": "agent/vozhd-trii-dr-r03-seam-m4-publication-repository",
+  "branch_precondition_verified": true,
+  "result_token": "M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED",
+  "m4_status": "ACCEPTED",
+  "blocking_authority_conflict": false,
+  "harmonization_required": false,
+  "broad_topology_contradiction_found": false,
+  "production_code_modified": false,
+  "broad_topology_amended": false,
+  "accepted_semantic_branches_modified": false,
+  "new_producer_semantics_created": false,
+  "source_or_artifact_retirement_authorized": false,
+  "frozen_scr5578": {
+    "refreshed_package_head": "ec7bbe80fff26dae23fa8ab3c62b48b8be2164a2",
+    "contract": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT@1.0.0",
+    "exact_contract_sha256": "7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c",
+    "local_result_token_before_m4": "SCR5578_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+    "law_changed_by_m4": false
+  },
+  "producer_bindings": {
+    "V553": {
+      "accepted_head": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+      "accepted_token": "SCR553_EXACT_CONTRACT_CLOSED",
+      "contract_id": "SCR553_V553_TEMPORAL_JURISDICTION",
+      "contract_version": "SCR553_V553_TEMPORAL_JURISDICTION_V1",
+      "exact_contract_blob": "072c0995fe3dc7915dca50193e6ee44b8164e546",
+      "families": ["TEMPORAL_KEY", "TEMPORAL_OBSERVATION", "TEMPORAL_RELATION", "TEMPORAL_LIMIT"],
+      "identity_law": "V553:<FAMILY>:SCR553_V1:<sha256(canonical_identity_material)>",
+      "exact_reference_resolution": "object_id_plus_content_hash_only",
+      "permission_binding": "EXACT_ITEM_LEVEL_PRODUCER_PERMISSION_OR_AUTHORITY_REF__NO_M4_DEFAULT",
+      "source_composition_default": "PRESERVE_SOURCE_PLURALITY__NO_COMPOSITION"
+    },
+    "V554": {
+      "accepted_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "accepted_token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "contract_id": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT",
+      "contract_version": "1.0.0",
+      "exact_contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+      "target_use": "STRUCTURAL_MEDIATION_INPUT",
+      "identity_families": ["F1", "F2", "B1"],
+      "positive_f1_state": "ELIGIBLE",
+      "permission_binding": "EXACT_B1_AND_ITEM_LEVEL_PRODUCER_PERMISSION_OR_AUTHORITY_REF__NO_M4_DEFAULT",
+      "equivalence_unknown": "FAIL_CLOSED"
+    },
+    "V555": {
+      "producer_contract_head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+      "producer_contract_blob": "8926500b7af442c0e07483442047aaad6cdeab63",
+      "contract_id": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT",
+      "contract_version": "stage-close-r03-1",
+      "m2_semantic_package_head": "92128619122886d0ced877a29b42fdb453765246",
+      "m2_acceptance_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+      "m2_binding_receipt_blob": "80f21068a11cc2cc07e1a764e0f8c1f0e1f88e93",
+      "m2_result_json_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+      "m2_seam_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c",
+      "acceptance_form": "COMPOSITE_LOCAL_PRODUCER_CONTRACT_PLUS_ACCEPTED_M2_SEAM__NO_REPLACEMENT_PRODUCER_HEAD",
+      "positive_state": "ROUTE_CANDIDATE_AUTHORIZED",
+      "canonical_route_identity_order": [
+        "EXACT_V554_F1_REF",
+        "route_rule_id@route_rule_version",
+        "route_shape_id@route_shape_version",
+        "channel_structural_role_id",
+        "EXACT_STRUCTURAL_CHANNEL_REF",
+        "receiving_constraint_kind",
+        "EXACT_TARGET_RECEIVING_POSITION_REF"
+      ],
+      "b1_is_route_identity_member": false,
+      "inherited_f2_owner": "V554",
+      "inherited_f2_transport": "EXACT_IMMUTABLE_REFERENCE_ONLY",
+      "permission_binding": "EXACT_ITEM_LEVEL_V555_PRODUCER_PERMISSION_OR_AUTHORITY_REF__V557_MAY_ONLY_NARROW"
+    },
+    "V556": {
+      "producer_contract_head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+      "producer_contract_blob": "f4e8146885b1145b116b173d2d4a148e3d55db4a",
+      "contract_id": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT",
+      "contract_version": "scr556.v1",
+      "m3_result_blob": "c5c2f85bade35a1b1cda9a26ce946f76d39ec953",
+      "m3_acceptance_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED",
+      "acceptance_form": "COMPOSITE_LOCAL_PRODUCER_CONTRACT_PLUS_ACCEPTED_M3_RESULT_SEAL__NO_REPLACEMENT_PRODUCER_HEAD",
+      "families": ["V556_INTERACTION_RELATION", "V556_TOPOLOGY", "V556_ATTRACTOR_PREREQUISITE"],
+      "participant_binding_fields": ["v555_route_identity_ref", "role", "ordinal_or_null", "multiplicity_index"],
+      "participant_occurrence_cardinality": "2..n under exact V556 rule authority",
+      "positive_distinct_route_floor": 2,
+      "same_route_reuse_default": "FORBIDDEN",
+      "source_composition_default": "NONE_BY_DEFAULT",
+      "permission_binding": "EXACT_ITEM_LEVEL_V556_PRODUCER_PERMISSION_OR_AUTHORITY_REF__V557_MAY_ONLY_NARROW"
+    }
+  },
+  "permission_invariant": "resolver_allowed_uses subset V557_allowed_uses subset producer_allowed_uses",
+  "permission_scope": "ITEM_WISE_FOR_EVERY_ROOT_AND_DEPENDENCY",
+  "permission_non_grants": ["repository_presence", "collection_readiness", "index_hit", "locator_hit", "dependency_reachability", "root_permission"],
+  "standalone_closure": {
+    "raw_v553_v554_v555_v556_directories_required": false,
+    "required_positive_and_negative_closure": true,
+    "leaf_satisfaction": ["packaged immutable exact-hash content", "exact immutable hash-bound deterministic resolver binding"],
+    "insufficient": ["id_only", "bare_hash_without_resolution_contract", "display_label", "provenance_prose", "raw_stage_path", "mutable_latest"],
+    "integrity_failure_on": ["missing_required_dependency", "ambiguous_reference", "corrupt_content", "hash_mismatch", "version_conflict", "role_corruption", "cardinality_corruption", "multiplicity_corruption", "semantic_order_corruption", "partial_atomic_bundle", "partial_n_ary_object"]
+  },
+  "reference_class_firewall": {
+    "must_not_appear": ["PositionedSubjectEmpiricalPossibilityField", "PSEPF", "V3EmpiricalPossibilityInput", "ActorComparatorReceipt", "RenderedExpression_or_Persona"],
+    "audit_only": ["DiscoveryResultReceipt", "ReplayReceipt"]
+  },
+  "provenance_law": "REACHABILITY_PROVES_ORIGIN_ONLY__NEVER_SOURCE_COMPOSITION_POOLING_RESPONDENT_LINKAGE_OR_ESTIMAND_AUTHORITY",
+  "resolver": {
+    "policy_id": "V558_CONTEXT_RESOLVER_POLICY",
+    "policy_version": "1.0.0",
+    "policy_hash": "4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f",
+    "deterministic": true,
+    "forbidden_repair": ["latest", "fuzzy", "nearest", "raw_stage", "network", "LLM", "embedding", "random", "filesystem_or_database_order", "default_interpolation"],
+    "co_resolved_participants_create_v556": false
+  },
+  "state_separation": {
+    "packaging_integrity_state": "INTEGRITY_FAILURE",
+    "producer_states_never_rewritten_as_integrity_or_vice_versa": ["NEGATIVE_AUTHORITY", "MISSING_AUTHORITY", "NONCOMPARABLE", "VALID_EMPTY", "DENIED", "UNKNOWN_AUTHORITY", "CONFLICTING_AUTHORITY"]
+  },
+  "m5_handoff": {
+    "file": "M5_RSC_HANDOFF.json",
+    "rsc_schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0",
+    "machine_signature": "M4_TO_M5_RSC_MACHINE_SIGNATURE@1.0.0",
+    "runtime_instance_fabricated_by_m4": false,
+    "actual_context_id_and_content_hash_required_at_consumption": true
+  }
+}
