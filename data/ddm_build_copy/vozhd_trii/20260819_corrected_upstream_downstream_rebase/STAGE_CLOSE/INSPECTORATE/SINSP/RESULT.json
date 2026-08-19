@@ -5,175 +5,129 @@
   "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
   "branch": "agent/vozhd-trii-dr-r03-inspectorate-stage-close",
   "write_root": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/INSPECTORATE/SINSP/",
-  "result_token": "SINSP_RETURN_FOR_HARMONIZATION",
+  "hq_continuation_status": "ACTIVE_CONTINUE",
+  "result_token": "SINSP_CHECKSUM_READY",
   "authority_posture": {
+    "worker_class": "INSPECTORATE",
+    "unit": "SINSP",
     "architecture_authority": false,
     "worker_contract_amendment_authority": false,
     "production_implementation_authority": false,
     "source_or_artifact_retirement_authority": false,
     "broad_topology_reopened": false
   },
-  "base_verification": {
-    "branch_existed": true,
-    "prewrite_compare_status": "identical",
-    "prewrite_ahead_by": 0,
-    "prewrite_behind_by": 0,
-    "exact_base_verified": true
+  "commanded_exact_heads": {
+    "SCR553": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+    "SCR554": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "SCR555": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+    "SCR556": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+    "SCR5578": "06eefed7bb8e7db7fd2465aa262653ed95461e84",
+    "SCRV2APP": "24f8811bb7d2eaa18cfac1cb907c48bba8d08f23",
+    "S554D_ACCEPTED_FEEDER": "a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4",
+    "S5578C_ACCEPTED_FEEDER": "50d9b9f0ea36c95bd2423206901aa39e3b48092a",
+    "SV3M_ACCEPTED_FEEDER": "0ce8eb656fec6a3ac0d2a36a12c9ba217603e7cb",
+    "S553R_ACCEPTED_FEEDER": "f9f1b60f011d30473507287e7f2c1f9fe258967c"
   },
-  "binding_inputs": [
-    "24_DR_R03_SYNTHESIS_RETURN_ADJUDICATION_AND_STAGE_CLOSE_GATE.md",
-    "25_STAGE_CLOSE_READ_PARALLEL_COMMAND_AND_LAUNCH_AUTHORITY.md",
-    "R03/SYNTHESIS/RESULT.md",
-    "R03/SYNTHESIS/RESULT.json",
-    "R03/SYNTHESIS/FINAL_BROAD_DAG.md",
-    "R03/SYNTHESIS/FINAL_BROAD_DAG_EDGES.csv",
-    "R03/SYNTHESIS/R02_HOLDING_FINAL_ADJUDICATION.csv",
-    "R03/SYNTHESIS/FEEDER_CONFLICT_ADJUDICATION.csv",
-    "R03/SYNTHESIS/QUALIFICATION_AND_NEGATIVE_AUTHORITY_LEDGER.csv",
-    "R03/SYNTHESIS/STAGE_CLOSE_READ_BURDEN_MATRIX.csv",
-    "R03/SYNTHESIS/STAGE_CLOSE_READ_CAMPAIGN.md",
-    "R03/SYNTHESIS/STAGE_CLOSE_READ_CAMPAIGN.json",
-    "R03/SYNTHESIS/WHOLE_MACHINE_CLOSURE_GATE.md"
-  ],
-  "visible_lead_branch_state": {
-    "agent/vozhd-trii-dr-r03-close-v553-temporal-jurisdiction": "IDENTICAL_TO_COMMON_BASE",
-    "agent/vozhd-trii-dr-r03-close-v554-basis-dedup": "IDENTICAL_TO_COMMON_BASE",
-    "agent/vozhd-trii-dr-r03-close-v555-atomic-route": "IDENTICAL_TO_COMMON_BASE",
-    "agent/vozhd-trii-dr-r03-close-v556-interaction-topology": "IDENTICAL_TO_COMMON_BASE",
-    "agent/vozhd-trii-dr-r03-close-v5578-publication-repository": "IDENTICAL_TO_COMMON_BASE",
-    "agent/vozhd-trii-dr-r03-close-v3-empirical-possibility": "IDENTICAL_TO_COMMON_BASE",
-    "agent/vozhd-trii-dr-r03-close-v2app-nonconsumption": "IDENTICAL_TO_COMMON_BASE"
-  },
-  "visible_specialist_branch_state": {
-    "agent/vozhd-trii-dr-r03-spec-v553-routing": "IDENTICAL_TO_COMMON_BASE",
-    "agent/vozhd-trii-dr-r03-spec-v3-metabolism": "IDENTICAL_TO_COMMON_BASE",
-    "agent/vozhd-trii-dr-r03-spec-v554-dedup": {
-      "status": "RETURN_VISIBLE",
-      "ahead_by": 4,
-      "behind_by": 0,
-      "changed_files": [
-        "STAGE_CLOSE/SCR554/feeders/S554D/RESULT.md",
-        "STAGE_CLOSE/SCR554/feeders/S554D/PROPOSED_EQUIVALENCE_KEY.md",
-        "STAGE_CLOSE/SCR554/feeders/S554D/PRECEDENCE_MATRIX.csv",
-        "STAGE_CLOSE/SCR554/feeders/S554D/COUNTEREXAMPLES.csv"
-      ]
-    },
-    "agent/vozhd-trii-dr-r03-spec-v5578-standalone": {
-      "status": "RETURN_VISIBLE",
-      "ahead_by": 2,
-      "behind_by": 0,
-      "changed_files": [
-        "STAGE_CLOSE/SCR5578/feeders/S5578C/REQUIRED_CLOSURE_MATRIX.csv",
-        "STAGE_CLOSE/SCR5578/feeders/S5578C/BROKEN_REFERENCE_COUNTEREXAMPLES.csv"
-      ]
+  "additional_visible_return": {
+    "SCRV3": {
+      "head": "f0e354d9308c064e0d17580244920a893b46f2cd",
+      "token": "SCRV3_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "local_contract": "CLOSED",
+      "only_final_dependency": "exact ResolvedStructuralContext integration signature at M5"
     }
   },
-  "oracle_dimensions": [
-    "substrate_and_structural_admission",
-    "temporal_routing_and_hidden_fallbacks",
-    "source_sensitive_duplicate_identity",
-    "typed_negative_and_absence_states",
-    "source_universe_and_composition_authority",
-    "authority_snapshot_identity_and_precedence",
-    "v555_canonical_route_identity",
-    "v556_no_reid_and_no_inferred_higher_order_meaning",
-    "v557_v558_permission_monotonicity",
-    "standalone_positive_negative_reference_closure",
-    "producer_consumer_reference_role_cardinality_order",
-    "psepf_structural_exclusion",
-    "actor_comparator_provenance_only",
-    "replay_receipt_audit_only",
-    "v2_direct_and_indirect_upstream_nonconsumption",
-    "sibling_subfront_identity_and_scope",
-    "m1_m6_whole_wave_gate_eligibility"
-  ],
-  "findings": [
-    {
-      "finding_id": "SINSP-F001",
-      "severity": "BLOCKING_LOCAL",
-      "class": "HARMONIZATION_IDENTITY_DRIFT",
-      "exact_conflict": "Authority 25 and STAGE_CLOSE_READ_CAMPAIGN assign duplicate-equivalence/precedence to 554C and F1/F2/B1 canonicalization to 554D, but the visible return under SCR554/feeders/S554D identifies its substantive mission as duplicate-equivalence/precedence.",
-      "affected_units": [
-        "S554D/RESULT.md",
-        "S554D/PROPOSED_EQUIVALENCE_KEY.md",
-        "S554D/PRECEDENCE_MATRIX.csv",
-        "S554D/COUNTEREXAMPLES.csv"
-      ],
-      "owning_authority": "SCR554 lead under parent authority 25",
-      "stop_scope": "Stop acceptance/integration as canonical 554D output and downstream reliance on the current feeder identity; continue independent SCR554 work; no broad-DAG reopen.",
-      "broad_topology_effect": "NONE"
+  "finite_seams_incorporated": {
+    "M1": {
+      "current_branch_head": "2b92adb7b930e3298f2de684e802f81f8f071770",
+      "current_head_class": "ADMIN_ONLY_POST_ACCEPTANCE_REASSIGNMENT",
+      "accepted_semantic_token": "M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED",
+      "accepted_result_json_blob": "2cd78ec9a6945d2d30e965a37fee5cae44bd50f7",
+      "semantic_status": "ACCEPTED"
     },
-    {
-      "finding_id": "SINSP-F002",
-      "severity": "BLOCKING_LOCAL",
-      "class": "HARMONIZATION_SCOPE_DRIFT",
-      "exact_conflict": "Authority 25 and STAGE_CLOSE_READ_CAMPAIGN assign standalone closure/locators to 557C, repository/index/linker to 558A, ContextResolver policy to 558B, and 5578C to negative-permission/reownership hostiles. S5578C REQUIRED_CLOSURE_MATRIX is an affirmative cross-subfront closure contract candidate spanning these sibling jurisdictions.",
-      "affected_units": [
-        "S5578C/REQUIRED_CLOSURE_MATRIX.csv",
-        "S5578C feeder identifier/branch scope"
-      ],
-      "owning_authority": "SCR5578 lead under parent authority 25",
-      "stop_scope": "Do not treat REQUIRED_CLOSURE_MATRIX as dispositive or exclusively S5578C-owned; stop final SCR5578/M4 signoff until ownership is routed; hostile evidence collection may continue.",
-      "broad_topology_effect": "NONE"
-    },
-    {
-      "finding_id": "SINSP-F003",
-      "severity": "BLOCKING_M4",
-      "class": "REFERENCE_SEAM_HARDENING",
-      "exact_conflict": "The visible V554 feeder requires SUPPORT_EQUIVALENCE_KEY, AUTHORITY_SNAPSHOT_FINGERPRINT and BASIS_PROVENANCE_FINGERPRINT, while S5578C RC07 presently names F1/F2, rule/version/hash and a basis locator plus generic RC20 typed closure. The final accepted SCR554 contract does not yet exist, so M4 cannot prove the full duplicate-court identity/authority/provenance role set survives standalone closure.",
-      "affected_units": [
-        "S554D identity proposal",
-        "S5578C RC07",
-        "S5578C RC20",
-        "future SCR554/SCR5578 accepted contracts"
-      ],
-      "owning_authority": "SCR554 + SCR5578 joint M4 seam",
-      "stop_scope": "Stop M4 final acceptance for V554-published roots until SCR5578 explicitly consumes the accepted SCR554 identity/reference contract; independent worker work continues.",
-      "broad_topology_effect": "NONE"
-    },
-    {
-      "finding_id": "SINSP-F004",
-      "severity": "BLOCKING_WHOLE_MACHINE",
-      "class": "COVERAGE_NOT_YET_RETURNED",
-      "exact_conflict": "Oracle readiness is not stage-close readiness. No seven-cell lead contract return was visible; M1-M6 and whole-machine checks cannot be promoted to PASS.",
-      "affected_units": [
-        "SCR553",
-        "SCR554",
-        "SCR555",
-        "SCR556",
-        "SCR5578",
-        "SCRV3",
-        "SCRV2APP",
-        "M1-M6"
-      ],
-      "owning_authority": "Respective stage leads and later whole-machine closure authority",
-      "stop_scope": "Stop any STAGE_CONTRACTS_CLOSED, implementation-readiness or source-retirement claim; parallel stage-close work remains authorized.",
-      "broad_topology_effect": "NONE"
+    "M2": {
+      "current_branch_head": "f9cf4f7d4dbb9a110b1dd933ecc216c92e8bdea4",
+      "current_head_class": "ADMIN_ONLY_POST_ACCEPTANCE_REASSIGNMENT",
+      "accepted_semantic_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+      "accepted_result_json_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+      "accepted_semantic_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c",
+      "semantic_status": "ACCEPTED"
     }
+  },
+  "stage_status": {
+    "SCR553": "EXACT_CONTRACT_CLOSED",
+    "SCR554": "EXACT_CONTRACT_CLOSED",
+    "SCR555": "EXACT_CONTRACT_CLOSED_BY_ACCEPTED_M2_BINDING",
+    "SCR556": "LOCAL_CONTRACT_CLOSED__FINAL_M3_BINDING_PENDING",
+    "SCR5578": "LOCAL_CONTRACT_CLOSED__FINAL_M4_BINDING_PENDING",
+    "SCRV3": "LOCAL_CONTRACT_CLOSED__FINAL_M5_BINDING_PENDING",
+    "SCRV2APP": "NEGATIVE_AND_LOCAL_CONTRACT_CLOSED__FINAL_POSITIVE_M6_BINDING_PENDING"
+  },
+  "accepted_checks": {
+    "raw_empirical_structural_bypass_rejected": true,
+    "v553_governed_use_chain_scope": true,
+    "source_comparability_separate_from_v553": true,
+    "temporal_negative_direct_fallback_rejected": true,
+    "v554_source_sensitive_equivalence": true,
+    "equivalence_unknown_fails_closed": true,
+    "unresolved_authority_snapshot_no_positive_f1": true,
+    "heuristic_precedence_rejected": true,
+    "typed_zero_empty_missing_denied_noncomparable_integrity_distinct": true,
+    "source_composition_none_by_default": true,
+    "m2_exactly_one_f1_per_v555_route": true,
+    "v555_f2_reference_only": true,
+    "v555_route_identity_canonical_ordered_seven_field_tuple": true,
+    "v556_no_route_reid": true,
+    "v556_role_order_cardinality_multiplicity_rule_owned": true,
+    "v556_relation_not_inferred_from_coresolution": true,
+    "v557_v558_permission_monotonicity": true,
+    "producer_identity_preserved_through_v557_v558": true,
+    "standalone_positive_negative_reference_closure": true,
+    "latest_fuzzy_raw_stage_network_repair_rejected": true,
+    "psepf_structural_repository_exclusion": true,
+    "actor_comparator_provenance_only_in_v3": true,
+    "replay_receipt_audit_only": true,
+    "v3_thin_input_no_geometry_copy": true,
+    "v3_no_direct_prior_to_actor_state_mapping": true,
+    "v3_missing_read_permission_or_owner_binding_zero_effect": true,
+    "v2_direct_and_indirect_upstream_nonconsumption": true,
+    "v2_cannot_widen_v3_actor_accessibility": true,
+    "rejected_deferred_invalid_external_event_zero_mutation": true
+  },
+  "v3_permission_delta_adjudication": {
+    "sv3m_status": "NON_DISPOSITIVE_ACCEPTED_FEEDER",
+    "scrv3_status": "DISPOSITIVE_LOCAL_CONTRACT",
+    "adp010_opportunity_encounter_exposure": "DENY",
+    "adp011_route_realization": "DENY",
+    "can008": "ALLOW_IF_RULE_BOUND",
+    "can010": "ALLOW_IF_RULE_BOUND",
+    "can011": "ALLOW_IF_RULE_BOUND",
+    "can012": "ALLOW_IF_RULE_BOUND",
+    "guard": "exact owner rule/version/hash must explicitly bind same empirical use class and exact field refs/provenance; absent binding yields zero PSEPF transition effect",
+    "present_permission_widening_defect_found": false
+  },
+  "resolved_prior_findings": [
+    "S554D feeder identity/scope concern is superseded by HQ accepted-feeder status and M1 substantive guard.",
+    "S5578C cross-subfront evidence concern is superseded by HQ accepted-feeder status and SCR5578 dispositive integration.",
+    "V554->SCR5578 reference hardening gap is resolved at contract level now that SCR554 exact F1/B1/authority/reference contracts exist; exact M4 binding remains pending."
   ],
-  "visible_semantic_checks": {
-    "source_sensitive_v554_key": "PASS_VISIBLE",
-    "typed_negative_states": "PASS_VISIBLE",
-    "hidden_latest_score_row_file_fallbacks": "REJECTED_VISIBLE",
-    "provenance_implies_composition": "REJECTED_VISIBLE",
-    "v555_v556_reid_at_repository_seam": "REJECTED_VISIBLE_BUT_PRODUCER_RETURN_NOT_YET_VISIBLE",
-    "v557_v558_permission_widening": "REJECTED_VISIBLE",
-    "psepf_structural_leakage": "REJECTED_VISIBLE",
-    "comparator_promotion": "REJECTED_AT_STRUCTURAL_SEAM_BUT_SCRV3_RETURN_NOT_YET_VISIBLE",
-    "replay_promotion": "REJECTED_VISIBLE",
-    "v2_indirect_upstream_dereference": "ORACLE_READY_SCRV2APP_RETURN_NOT_YET_VISIBLE"
+  "pending_final_seams": {
+    "M3": "bind exact M2-closed seven-field V555 route identity into SCR556 participant refs; no re-ID/reconstruction",
+    "M4": "bind exact SCR553/SCR554/SCR555/SCR556 producer contracts into SCR5578 mixed publication/standalone closure",
+    "M5": "bind exact ResolvedStructuralContext integration signature while preserving peer-prior noncollapse",
+    "M6": "bind exact SCRV3 actor-safe V3-generated truth handoff into SCRV2APP positive expression seam"
   },
   "gate_disposition": {
+    "checksum_oracle_ready": true,
+    "cross_cell_harmonization_required": false,
+    "authority_conflict_escalation_required": false,
     "broad_topology_contradiction_found": false,
-    "parent_24_25_authority_conflict": false,
-    "parent_vs_synthesis_conflict": false,
-    "worker_subfront_harmonization_required": true,
-    "m4_hardening_required": true,
-    "m1_m6_passed": false,
-    "stage_contracts_closed": false,
+    "m1_accepted": true,
+    "m2_accepted": true,
+    "m3_m6_all_accepted": false,
+    "stage_contracts_collectively_closed": false,
+    "whole_machine_closure_eligible_now": false,
     "implementation_authorized": false,
-    "source_or_artifact_retirement_authorized": false,
-    "authority_conflict_escalation_required": false
+    "source_or_artifact_retirement_authorized": false
   },
   "outputs": [
     "RESULT.md",
