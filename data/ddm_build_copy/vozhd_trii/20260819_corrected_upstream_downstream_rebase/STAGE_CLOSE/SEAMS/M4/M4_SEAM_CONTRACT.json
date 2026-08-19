@@ -1,0 +1,165 @@
+{
+  "contract_id": "M4_SCR5578_MIXED_PRODUCER_FINAL_SEAM",
+  "contract_version": "1.0.0",
+  "authority": "DISPOSITIVE_M4_FINAL_SEAM_ONLY",
+  "assignment_id": "E02-W10-M4-FINAL-001",
+  "semantic_launch_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "frozen_scr5578": {
+    "package_head": "ec7bbe80fff26dae23fa8ab3c62b48b8be2164a2",
+    "contract_id": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT",
+    "contract_version": "1.0.0",
+    "contract_sha256": "7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c",
+    "modified_by_m4": false
+  },
+  "producer_seals": {
+    "V553": {
+      "producer_head": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+      "token": "SCR553_EXACT_CONTRACT_CLOSED",
+      "contract_id": "SCR553_V553_TEMPORAL_JURISDICTION",
+      "contract_version": "SCR553_V553_TEMPORAL_JURISDICTION_V1",
+      "contract_blob": "072c0995fe3dc7915dca50193e6ee44b8164e546",
+      "seal_kind": "DIRECT_ACCEPTED_PRODUCER_CONTRACT"
+    },
+    "V554": {
+      "producer_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "contract_id": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT",
+      "contract_version": "1.0.0",
+      "contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+      "seal_kind": "DIRECT_ACCEPTED_PRODUCER_CONTRACT"
+    },
+    "V555": {
+      "producer_contract_head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+      "producer_contract_blob": "8926500b7af442c0e07483442047aaad6cdeab63",
+      "producer_contract_id": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT",
+      "producer_contract_version": "stage-close-r03-1",
+      "accepted_seam_head": "92128619122886d0ced877a29b42fdb453765246",
+      "accepted_seam_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+      "accepted_binding_receipt_blob": "80f21068a11cc2cc07e1a764e0f8c1f0e1f88e93",
+      "accepted_result_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+      "accepted_seam_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c",
+      "seal_kind": "COMPOSITE_PRODUCER_CONTRACT_PLUS_ACCEPTED_M2",
+      "replacement_producer_head_minted": false
+    },
+    "V556": {
+      "producer_contract_head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+      "producer_contract_blob": "f4e8146885b1145b116b173d2d4a148e3d55db4a",
+      "producer_contract_id": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT",
+      "producer_contract_version": "scr556.v1",
+      "accepted_m3_result_blob": "c5c2f85bade35a1b1cda9a26ce946f76d39ec953",
+      "accepted_m3_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED",
+      "seal_kind": "COMPOSITE_PRODUCER_CONTRACT_PLUS_ACCEPTED_M3_RESULT",
+      "replacement_producer_head_minted": false
+    }
+  },
+  "v555_binding": {
+    "accepted_f1_ref": "canonical SCR554 F1_id",
+    "positive_f1_state": "ELIGIBLE",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "b1_precondition": "same exact non-null F1_id and allowed_v555_structural_use=true",
+    "b1_semantic_role": "BOUNDARY_PERMISSION_AND_REPLAY_PROOF__NOT_ROUTE_SEMANTIC_PARTICIPANT",
+    "route_identity_kind": "ORDERED_SEVEN_FIELD_TUPLE",
+    "route_identity_order": [
+      "EXACT_V554_F1_REF",
+      "route_rule_id@route_rule_version",
+      "route_shape_id@route_shape_version",
+      "channel_structural_role_id",
+      "EXACT_STRUCTURAL_CHANNEL_REF",
+      "receiving_constraint_kind",
+      "EXACT_TARGET_RECEIVING_POSITION_REF"
+    ],
+    "b1_route_identity_member": false,
+    "f2_route_identity_member": false,
+    "f2_owner": "V554",
+    "f2_transport": "EXACT_IMMUTABLE_REFERENCE_ONLY",
+    "locator_can_replace_tuple_equality": false
+  },
+  "v556_binding": {
+    "canonical_v555_participant": "EXACT_ACCEPTED_V555_SEVEN_FIELD_ROUTE_IDENTITY_REF",
+    "participant_fields": ["v555_route_identity_ref", "role", "ordinal_or_null", "multiplicity_index"],
+    "participant_occurrence_cardinality": "2..n constrained by exact V556 rule authority",
+    "positive_distinct_route_floor": 2,
+    "role_order_cardinality_multiplicity_owner": "EXACT_V556_RULE_AUTHORITY",
+    "same_route_reuse_default": "FORBIDDEN",
+    "same_route_reuse_if_authorized": "SEPARATELY_BIND_EVERY_OCCURRENCE__NO_NEW_V555_IDENTITY",
+    "source_composition_default": "NONE_BY_DEFAULT",
+    "co_resolution_grants_relation": false,
+    "v556_may_reid_v555": false
+  },
+  "registry_admission": {
+    "allowed_root_families": ["V553", "V554", "V555", "V556"],
+    "requires_exact_producer_identity_hash": true,
+    "requires_exact_typed_state": true,
+    "requires_exact_interpretation_critical_closure": true,
+    "requires_exact_positive_producer_permission_for_requested_use": true,
+    "requires_independent_v557_item_admission": true,
+    "v557_or_v558_reid_forbidden": true
+  },
+  "permission": {
+    "invariant": "resolver_allowed_uses subset V557_allowed_uses subset producer_allowed_uses",
+    "scope": "ITEM_WISE_ROOT_AND_DEPENDENCY",
+    "missing_or_ambiguous_producer_permission": "FAIL_CLOSED",
+    "non_grants": ["repository_presence", "collection_readiness", "locator_hit", "index_hit", "provenance_reachability", "root_permission", "dependency_relation", "co_resolution"]
+  },
+  "closure": {
+    "scope": "PER_PUBLISHED_ROOT_ROLE_PRESERVING_TRANSITIVE_SEMANTIC_CLOSURE",
+    "positive_and_negative_required": true,
+    "raw_producer_directories_required": false,
+    "leaf_satisfaction": ["PACKAGED_IMMUTABLE_CONTENT_EXACT_HASH", "EXACT_IMMUTABLE_HASH_BOUND_DETERMINISTIC_RESOLUTION_BINDING"],
+    "insufficient": ["ID_ONLY", "BARE_HASH_WITHOUT_RESOLUTION_CONTRACT", "DISPLAY_LABEL", "PROVENANCE_PROSE", "RAW_STAGE_PATH", "MUTABLE_LATEST"],
+    "failure_state": "INTEGRITY_FAILURE",
+    "partial_atomic_bundle_allowed": false,
+    "partial_n_ary_positive_object_allowed": false
+  },
+  "reference_edge_required_fields": [
+    "source_locator_ref",
+    "target_locator_ref",
+    "reference_contract_id_version_hash",
+    "edge_role",
+    "requiredness",
+    "participant_role",
+    "declared_cardinality",
+    "multiplicity_key",
+    "order_significant",
+    "semantic_ordinal"
+  ],
+  "state_separation": {
+    "integrity_failure_is_producer_semantic_negative": false,
+    "physical_missing_required_dependency_is": "INTEGRITY_FAILURE",
+    "empty_or_incomplete_index_is_valid_empty": false,
+    "hash_or_version_mismatch_is_missing_authority": false
+  },
+  "reference_class_firewall": {
+    "must_not_appear": ["PositionedSubjectEmpiricalPossibilityField", "PSEPF", "V3EmpiricalPossibilityInput", "ActorComparatorReceipt", "RenderedExpression_or_Persona"],
+    "audit_only": ["DiscoveryResultReceipt", "ReplayReceipt"]
+  },
+  "provenance": {
+    "reachability_grants_composition": false,
+    "cross_source_composition_default": "NONE_BY_DEFAULT",
+    "positive_operation_specific_authority_required": true
+  },
+  "resolver": {
+    "policy_id": "V558_CONTEXT_RESOLVER_POLICY",
+    "policy_version": "1.0.0",
+    "policy_hash": "4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f",
+    "pure_inputs": ["repository_bundle_id_and_hash", "index_manifest_id_and_hash", "ContextQuery_id_and_hash", "resolver_policy_id_version_hash", "accepted_generated_binding_refs_and_hashes"],
+    "forbidden_nondeterminism": ["wall_clock", "mutable_latest", "filesystem_database_process_order", "raw_stage_network_lookup", "LLM_embedding", "randomness", "unrecorded_cache", "display_labels", "default_policy"],
+    "selection_record_every_candidate": true,
+    "co_resolved_participants_create_v556": false
+  },
+  "replay": {
+    "same_exact_inputs_same_semantic_result": true,
+    "binds_producer_contract_identity_and_reference_closure": true,
+    "binds_publication_repository_index_query_policy_generated_bindings": true,
+    "binds_selection_records_receipt_fidelity_refresh_rsc": true
+  },
+  "m5_rsc_machine_signature": {
+    "signature_id": "M4_TO_M5_RSC_MACHINE_SIGNATURE",
+    "signature_version": "1.0.0",
+    "rsc_schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0",
+    "transport_checksum_only": true,
+    "replaces_context_id_or_hash": false,
+    "runtime_instance_fabricated_by_m4": false
+  },
+  "final_disposition": "M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED"
+}
