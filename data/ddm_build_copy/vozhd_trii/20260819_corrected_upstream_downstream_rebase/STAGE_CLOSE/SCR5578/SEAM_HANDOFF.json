@@ -4,17 +4,18 @@
   "handoff_id": "SCR5578_TO_M4_EXACT_PRODUCER_SEAM",
   "handoff_version": "1.0.0",
   "m4_binding_algorithm": [
-    "verify each producer source cell is accepted by the proper parent/seam authority and capture exact head SHA",
-    "verify exact producer contract file/hash and schema/reference-contract identities; reject labels, guessed names or latest branch state as semantic binding",
-    "populate only the pending producer-specific registry slots in SCR5578; do not change V557/V558 governance/repository/resolver law",
-    "recompute mixed-producer closure/reference-class registry from the accepted producer-declared references",
+    "verify each producer source cell is accepted by the proper M1/M2/M3/parent seam authority and capture its exact final head SHA",
+    "verify exact final producer contract file/hash and schema/reference-contract identities; reject labels, guessed names or latest branch state as semantic binding",
+    "populate only pending producer-specific registry bindings; do not change frozen SCR5578 V557/V558 governance/repository/resolver law",
+    "recompute mixed-producer closure/reference-class registry from accepted producer-declared references",
     "run HOSTILE_TEST_ORACLE producer-seam tests plus full standalone raw-directories-absent test",
-    "prove item-wise resolver_allowed_uses subset V557_allowed_uses subset producer_allowed_uses for every bound root and dependency",
-    "prove PSEPF and other MUST_NOT_APPEAR classes remain rejected",
-    "prove producer IDs/hashes and producer-declared role/cardinality/multiplicity/order survive publication/repository/resolution unchanged",
+    "prove item-wise resolver_allowed_uses subset V557_allowed_uses subset producer_allowed_uses for every root and dependency",
+    "prove PSEPF and all MUST_NOT_APPEAR classes remain rejected",
+    "prove canonical producer IDs/hashes and producer-declared role/cardinality/multiplicity/order survive publication/repository/resolution unchanged",
     "if all pass, M4 may adjudicate SCR5578 exact-final-seam closure; otherwise fail closed at the exact mismatched binding"
   ],
   "m4_may_not": [
+    "adjudicate unresolved M2/M3 sibling seams by inference",
     "invent or rename producer object identities",
     "infer producer reference roles from SCR5578 packaging vocabulary",
     "treat provenance as cross-source composition authority",
@@ -28,82 +29,78 @@
   "repository": "maidiu/rawlsing",
   "required_inputs": [
     {
-      "observed_head": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "initial_observed_head": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "latest_observed_contract": "SCR553_V553_TEMPORAL_JURISDICTION / SCR553_V553_TEMPORAL_JURISDICTION_V1",
+      "latest_observed_result_token": "SCR553_EXACT_CONTRACT_CLOSED",
       "producer_family": "V553",
-      "required_bindings": [
-        "accepted result token",
-        "exact head SHA",
+      "required_final_bindings": [
+        "accepted exact final head SHA",
         "producer contract ID/version/hash",
-        "object/collection schema IDs/versions",
-        "canonical identity tuple/hash law",
-        "permission ceiling",
-        "typed states",
-        "reference contracts and role/cardinality/order law",
+        "exact family/schema/identity/hash law",
+        "permission ceiling and typed states",
+        "reference contracts including role/cardinality/order where producer-owned",
         "direct V557 publication eligibility",
         "build/replay identity"
       ],
       "source_branch": "agent/vozhd-trii-dr-r03-close-v553-temporal-jurisdiction",
       "source_cell": "SCR553_V553_TEMPORAL_JURISDICTION",
-      "status": "WAITING"
+      "status": "LOCAL_EXACT_RETURN_AVAILABLE__FINAL_ACCEPTANCE_CAPTURED_BY_PROPER_SEAM_NOT_SCR5578"
     },
     {
-      "observed_head": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "initial_observed_head": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "latest_observed_contract": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0",
+      "latest_observed_result_token": "SCR554_EXACT_CONTRACT_CLOSED",
       "producer_family": "V554",
-      "required_bindings": [
-        "accepted result token",
-        "exact head SHA",
+      "required_final_bindings": [
+        "accepted exact final head SHA",
         "producer contract ID/version/hash",
-        "object/collection schema IDs/versions",
         "canonical F1/F2/B1 identity/reference contract",
-        "permission ceiling",
-        "typed states",
-        "reference contracts and role/cardinality/order law",
+        "permission ceiling and typed states",
+        "reference contracts including producer-owned role/cardinality/order",
         "direct V557 publication eligibility",
         "build/replay identity"
       ],
       "source_branch": "agent/vozhd-trii-dr-r03-close-v554-basis-dedup",
       "source_cell": "SCR554_V554_BASIS_DEDUP",
-      "status": "WAITING"
+      "status": "LOCAL_EXACT_RETURN_AVAILABLE__M2_CONSUMER_BINDING_STILL_MUST_CLOSE"
     },
     {
-      "observed_head": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "initial_observed_head": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "latest_observed_contract": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT@stage-close-r03-1",
+      "latest_observed_result_token": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
       "producer_family": "V555",
-      "required_bindings": [
-        "accepted result token",
-        "exact head SHA",
-        "producer contract ID/version/hash",
+      "required_final_bindings": [
+        "M2-accepted exact final SCR555 head/result",
         "route schema/version",
-        "canonical route identity tuple/hash",
-        "producer permission ceiling",
-        "typed states",
-        "exact inherited-reference and route-born reference contracts",
-        "source/mediation/receiver role/cardinality/order law",
+        "canonical seven-field route identity tuple/equality/hash binding to accepted SCR554 F1/B1 law",
+        "producer permission ceiling and typed route states",
+        "inherited V554 F2 and route-born reference contracts",
+        "source/mediation-locus/receiver role/cardinality/order law",
         "direct V557 publication eligibility",
         "build/replay identity"
       ],
       "source_branch": "agent/vozhd-trii-dr-r03-close-v555-atomic-route",
       "source_cell": "SCR555_V555_ATOMIC_ROUTE",
-      "status": "WAITING"
+      "status": "WAITING_M2__ACCEPTED_SCR554_CANONICAL_F1_B1_BINDING_UNBOUND"
     },
     {
-      "observed_head": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "initial_observed_head": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "latest_observed_contract": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT@scr556.v1",
+      "latest_observed_result_token": "SCR556_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
       "producer_family": "V556",
-      "required_bindings": [
-        "accepted result token",
-        "exact head SHA",
-        "producer contract ID/version/hash",
+      "required_final_bindings": [
+        "M3-accepted exact final SCR556 head/result",
         "interaction/topology/prerequisite schema IDs/versions",
-        "canonical object identity/hash",
-        "producer permission ceiling",
-        "typed states",
-        "exact V555 participant/reference contracts",
+        "canonical higher-order object identity/hash",
+        "producer permission ceiling and typed outcomes",
+        "exact accepted V555 participant/reference contract",
         "participant role/cardinality/multiplicity/order law",
         "direct V557 publication eligibility",
         "build/replay identity"
       ],
       "source_branch": "agent/vozhd-trii-dr-r03-close-v556-interaction-topology",
       "source_cell": "SCR556_V556_INTERACTION_TOPOLOGY",
-      "status": "WAITING"
+      "status": "WAITING_M3__EXACT_ACCEPTED_SCR555_ROUTE_BINDING_UNBOUND"
     }
   ],
   "source_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
