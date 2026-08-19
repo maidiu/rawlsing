@@ -1,0 +1,200 @@
+{
+  "cell": "EPV3",
+  "base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+  "status": "NON_DISPOSITIVE_STAGE_EVIDENCE",
+  "rule": "A gap records missing or unresolved authority/implementation. It does not authorize EPV3 to fill the gap.",
+  "gaps": [
+    {
+      "gap_id": "EPV3-G01",
+      "name": "SECOND_PEER_PRIOR_INPUT_CONTRACT",
+      "classification": "candidate, not selected",
+      "severity": "BLOCKING_FOR_PSEPF_V3_USE",
+      "present_authority": "R02 candidate V3EmpiricalPossibilityInput minimality",
+      "missing_or_unresolved": "Accepted current V3 input type/port and binding contract at the exact R03 base.",
+      "required_noncollapse": "ResolvedStructuralContext != V3EmpiricalPossibilityInput != ActorCausalState",
+      "negative_authority": [
+        "Do not route PSEPF through V558 structural semantics.",
+        "Do not insert PSEPF geometry directly into stored actor state.",
+        "Do not copy PSEPF geometry into the V3 envelope."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G02",
+      "name": "METABOLISM_AUTHORITY",
+      "classification": "missing",
+      "severity": "BLOCKING_FOR_ANY_PSEPF_TO_TRANSITION_EFFECT",
+      "present_authority": "R02 names V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY as a required envelope binding.",
+      "missing_or_unresolved": "Exact rule identity/version/hash, admissible V3 consumers, allowed operations, result states and semantic ceiling.",
+      "required_noncollapse": "Population possibility constrains only where a V3 owner explicitly admits its use; it never directly becomes actor state.",
+      "negative_authority": [
+        "No belief_probability = field.mass.",
+        "No modal-cell response assignment.",
+        "No identity/persona assignment.",
+        "No memory/knowledge creation from field geometry."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G03",
+      "name": "OBJECTIVE_ACTOR_FACT_SNAPSHOT_BINDING",
+      "classification": "missing cross-boundary binding",
+      "severity": "HIGH",
+      "present_authority": "ADP-007/009/015 and neighboring V3 owners create actor-specific objective facts; R02 requires an objective-fact snapshot/ref set for comparator production.",
+      "missing_or_unresolved": "Exact eligible objective fact classes, snapshot/currentness identity, effective-time semantics and comparator-facing projection contract.",
+      "required_noncollapse": "Generated actor fact != survey coordinate != PSEPF conditioner label.",
+      "negative_authority": [
+        "No prevalence or shared label may manufacture a generated fact.",
+        "Missing objective facts may not be filled from population averages."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G04",
+      "name": "PSEPF_LIFECYCLE_STALENESS_REFRESH",
+      "classification": "unresolved",
+      "severity": "HIGH",
+      "present_authority": "R02 requires current/stale/refresh-required/invalidated/unavailable; CAN-007 is a separate structural-context lifecycle precedent.",
+      "missing_or_unresolved": "Exact PSEPF V3-side staleness predicate, refresh owner, trigger set, dedup/coalescence, stale-use rejection and requery receipt.",
+      "required_noncollapse": "Field object immutability != perpetual V3 admissibility; refresh != causal event; refresh != field mutation.",
+      "negative_authority": [
+        "No hidden latest.",
+        "No polling/annual default cadence.",
+        "No reuse after actor snapshot/use/effective-time authority is stale."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G05",
+      "name": "PSEPF_EFFECTIVE_TIME_ALIGNMENT",
+      "classification": "unresolved",
+      "severity": "HIGH",
+      "present_authority": "R02 distinguishes actor-fact effective time, PSEPF source/historical time and V3 decision/effective time; ADP-021 owns V3 scheduler time coordination.",
+      "missing_or_unresolved": "Exact authorized alignment rule and fail-closed noncomparability behavior for a given V3 use class.",
+      "required_noncollapse": "Source time != actor fact time != decision time.",
+      "negative_authority": [
+        "No silent nearest-time alignment.",
+        "No backdating future evidence into lived history."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G06",
+      "name": "PSEPF_TYPED_NEGATIVE_ADMISSION",
+      "classification": "unresolved exact consumer behavior",
+      "severity": "HIGH",
+      "present_authority": "R02 enumerates typed negative/availability states; existing V3 authorities preserve distinct negative/valid-empty/missing/deferred/integrity classes.",
+      "missing_or_unresolved": "Exact intake receipt/result and transition-side handling for each state.",
+      "required_noncollapse": "NO_COMPARATOR != AMBIGUOUS_COMPARATOR != ZERO_SUPPORT != LOW_SUPPORT != TEMPORAL_NONCOMPARABLE != missing metabolism authority.",
+      "negative_authority": [
+        "No nearest cohort.",
+        "No default belief.",
+        "No null-to-zero coercion.",
+        "No low-support-to-certainty promotion."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G07",
+      "name": "PSEPF_REPLAY_CAUSAL_PROVENANCE",
+      "classification": "unresolved contract",
+      "severity": "HIGH",
+      "present_authority": "V3 event/replay authorities require exact content/provenance-bound identity; R02 requires replay/intake receipt and transitive comparator/query/source provenance.",
+      "missing_or_unresolved": "Exact V3 intake receipt schema and causal-parent/reference rule for a transition that actually consulted a field.",
+      "required_noncollapse": "ReplayReceipt is audit/replay evidence, not developmental prior; ActorComparatorReceipt is provenance-only in V3.",
+      "negative_authority": [
+        "No receipt object may substitute for field semantics.",
+        "No mutable/latest provenance reference.",
+        "No unrecorded prior version in causal replay."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G08",
+      "name": "TRANSITION_READ_PERMISSION_MATRIX",
+      "classification": "missing",
+      "severity": "BLOCKING_FOR_METABOLISM_IMPLEMENTATION",
+      "present_authority": "Existing ADP/CAN authorities separately own actor mutations.",
+      "missing_or_unresolved": "Which exact transition families can read which PSEPF use classes and whether use is prerequisite, constraint, candidate-weighting input, diagnostic-only or denied.",
+      "required_noncollapse": "Scheduler invokes owners; prior intake does not create universal cross-domain read permission.",
+      "negative_authority": [
+        "No global all-transitions-can-read-PSEPF flag.",
+        "No field-driven mutation outside the owning transition authority."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G09",
+      "name": "DIVERGENCE_REPLAY_HARNESS",
+      "classification": "missing hostile proof",
+      "severity": "HIGH",
+      "present_authority": "R03E requires same PSEPF + same ResolvedStructuralContext to permit divergent lawful lives; V3 owns history/event/path dependence.",
+      "missing_or_unresolved": "Production hostile fixtures demonstrating identical upstream priors do not collapse V3 trajectories and that replay remains deterministic for each exact causal history/RNG receipt set.",
+      "required_noncollapse": "same priors != same life",
+      "negative_authority": [
+        "No deterministic persona/profile assignment from priors.",
+        "No hidden RNG outside ADP-020."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G10",
+      "name": "CURRENT_PRODUCTION_V3_RUNTIME",
+      "classification": "NOT LOCATED",
+      "severity": "IMPLEMENTATION_GAP",
+      "present_authority": "Accepted V3 authority architecture and W3 bounded fixture packet program.",
+      "missing_or_unresolved": "Canonical current top-level production V3/V2 implementation corresponding to the accepted authority contracts at this exact base.",
+      "required_noncollapse": "Architecture acceptance != production implementation; fixture implementation != complete runtime release.",
+      "negative_authority": [
+        "Do not promote historical recovered v3/v2/server code to current authority.",
+        "Do not treat superseded V558 runtime-graft modules as ResolvedStructuralContext implementation."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G11",
+      "name": "V2_DIRECT_PSEPF_NONCONSUMPTION_ENFORCEMENT",
+      "classification": "negative authority present; PSEPF-specific implementation test missing",
+      "severity": "MEDIUM_HIGH",
+      "present_authority": "V2 law denies direct V558 behavioral/persona authority and limits V2 to actor-safe V3 truth; R03 explicitly attacks direct PSEPF personalization.",
+      "missing_or_unresolved": "PSEPF-specific typed/schema/prompt hostile harness in the eventual production V2/app boundary.",
+      "required_noncollapse": "PSEPF/comparator/source disagreement != V2 persona/voice/context shortcut.",
+      "negative_authority": [
+        "No raw PSEPF prompt field.",
+        "No comparator label as persona trait.",
+        "No source disagreement as direct style/voice instruction."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G12",
+      "name": "V2_PSEPF_PROVENANCE_VISIBILITY",
+      "classification": "unresolved / no current consumer",
+      "severity": "LOW_TO_MEDIUM",
+      "present_authority": "V2 may receive opaque provenance refs through V3 for audit but may not dereference upstream priors behaviorally.",
+      "missing_or_unresolved": "Whether any future application/audit consumer actually requires a PSEPF provenance ref and, if so, the V3-owned opaque envelope that prevents semantic dereference.",
+      "required_noncollapse": "opaque provenance != actor-accessible truth != prompt authority",
+      "negative_authority": [
+        "Do not add PSEPF fields to V2/app merely because the upstream lane exists.",
+        "Do not expose geometry/support/rank to the renderer as behavioral evidence."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G13",
+      "name": "PSEPF_SOURCE_UNIVERSE_AND_USE_SCOPE_BINDING",
+      "classification": "upstream identity must be preserved; V3 binding unresolved",
+      "severity": "HIGH",
+      "present_authority": "Corrected upstream law preserves source universes by default; R02 requires exact source-indexed PSEPF refs and V3 use class.",
+      "missing_or_unresolved": "Exact V3-side admissibility rule for multiple source-indexed fields, disagreement and noncomparability without silent pooling.",
+      "required_noncollapse": "multiple lawful population priors != one averaged actor prior",
+      "negative_authority": [
+        "No silent source pooling.",
+        "No source disagreement -> actor contradiction without developmental authority.",
+        "No higher-support source automatically becomes actor truth."
+      ]
+    },
+    {
+      "gap_id": "EPV3-G14",
+      "name": "PSEPF_TO_MEMORY_KNOWLEDGE_ACTION_FIREWALL",
+      "classification": "negative authority strong; dedicated integration proof missing",
+      "severity": "HIGH",
+      "present_authority": "ADP-016 and ADP-017 require exact V3 causal parents/effects; V2 external interaction requires ADP-019 admission.",
+      "missing_or_unresolved": "Integrated hostile tests proving PSEPF cannot directly create memory, knowledge, belief, relationship truth, action occurrence or first-person claim permission.",
+      "required_noncollapse": "population possibility != lived/remembered/known/believed/done",
+      "negative_authority": [
+        "PSEPF cannot be a GeneratedMemoryState source event.",
+        "PSEPF cannot be an ActorEpistemicEffect.",
+        "PSEPF cannot make a V2 candidate utterance causal."
+      ]
+    }
+  ]
+}
