@@ -1,0 +1,115 @@
+{
+  "base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "contract_id": "SCR553_V553_TEMPORAL_JURISDICTION",
+  "decision": {
+    "anti_inference": [
+      "HAS_TIMESTAMP!=NEEDS_V553",
+      "HISTORICAL_SOURCE!=NEEDS_V553",
+      "V553_ARTIFACT_PRESENT!=NEEDS_V553",
+      "SAME_YEAR!=SOURCE_COMPARABILITY_AUTHORITY",
+      "SAME_LABEL!=SOURCE_COMPARABILITY_AUTHORITY",
+      "PROVENANCE_REACHABILITY!=POOLING_OR_COMPOSITION_AUTHORITY",
+      "EARLIER_DIRECT_USE!=PERMANENT_V553_EXEMPTION"
+    ],
+    "enum": [
+      "V553_REQUIRED",
+      "V553_NOT_REQUIRED_FOR_THIS_USE",
+      "V553_NEGATIVE_LIMIT_ONLY",
+      "NO_POSITIVE_V553_OUTPUT__ADMISSION_NOT_POSITIVE",
+      "NO_POSITIVE_V553_OUTPUT__MISSING_TEMPORAL_AUTHORITY",
+      "NO_POSITIVE_V553_OUTPUT__MISSING_COMPARABILITY_AUTHORITY",
+      "NO_POSITIVE_V553_OUTPUT__OUT_OF_JURISDICTION",
+      "REJECT_NO_V553_OBJECT__INVALID_OR_FORBIDDEN_INTAKE"
+    ],
+    "predicate": [
+      "resolve_and_verify_exact_admission_refs",
+      "bind_exact_governed_use_and_use_rule",
+      "nonpositive_admission_never_promotes",
+      "compute_new_v553_owned_temporal_operations_for_this_use",
+      "none_new=>V553_NOT_REQUIRED_FOR_THIS_USE_and_zero_semantic_objects",
+      "require_exact_temporal_rule_for_each_new_operation",
+      "require_every_operation_declared_external_compatibility_prerequisite",
+      "missing_unknown_negative_or_noncomparable_prerequisite=>typed_limit_or_no_positive",
+      "positive_authority=>only_mapped_TEMPORAL_families"
+    ]
+  },
+  "exact_ref": {
+    "failure": "FAIL_CLOSED",
+    "hash": "sha256_lower_hex",
+    "required": ["kind", "object_id", "content_hash"],
+    "resolution": "exact_object_id_and_content_hash_only"
+  },
+  "families": {
+    "TEMPORAL_KEY": {
+      "grain": "one governed canonical/derived temporal scope for one source-indexed admission basis",
+      "required": ["family", "schema_version", "temporal_key_id", "source_universe_ref", "admission_ref", "canonical_temporal_scope", "temporal_rule_ref", "derivation_participant_refs", "authority_closure_refs", "semantic_hash"]
+    },
+    "TEMPORAL_LIMIT": {
+      "grain": "one replayable typed failure/limit for one requested V553 operation",
+      "reasons": ["MISSING_TEMPORAL_AUTHORITY", "MISSING_SOURCE_COMPARABILITY_AUTHORITY", "MISSING_ESTIMAND_COMPATIBILITY_AUTHORITY", "MISSING_MEASURE_COMPATIBILITY_AUTHORITY", "MISSING_RESPONDENT_LINKAGE_AUTHORITY", "NONCOMPARABLE", "TEMPORAL_SCOPE_MISSING", "TEMPORAL_SCOPE_AMBIGUOUS", "TEMPORAL_SCOPE_MISMATCH", "INSUFFICIENT_PERIODS", "BASELINE_UNAVAILABLE", "CONFLICT", "UPSTREAM_NEGATIVE_AUTHORITY", "UNSUPPORTED_OPERATION", "BACKEND_UNAVAILABLE", "MALFORMED_ADMISSION_REFERENCE", "HASH_OR_VERSION_MISMATCH", "UNKNOWN", "VALID_EMPTY", "OUT_OF_JURISDICTION"],
+      "required": ["family", "schema_version", "temporal_limit_id", "governed_use_id", "requested_operation", "limit_state", "limit_reason", "participant_refs", "blocked_output_family", "missing_or_negative_authority_refs", "upstream_negative_refs", "temporal_rule_ref", "authority_closure_refs", "semantic_hash"],
+      "states": ["BLOCKED", "NONCOMPARABLE", "VALID_EMPTY", "UNRESOLVED", "OUT_OF_JURISDICTION", "EXECUTION_LIMIT"]
+    },
+    "TEMPORAL_OBSERVATION": {
+      "grain": "one admitted structural value/status at one exact TEMPORAL_KEY",
+      "observed_zero": "MEASUREMENT_NOT_MISSING",
+      "required": ["family", "schema_version", "temporal_observation_id", "temporal_key_ref", "admission_ref", "source_universe_ref", "admitted_value_or_status", "value_owner_ref", "support_uncertainty_state", "temporal_rule_ref", "authority_closure_refs", "semantic_hash"]
+    },
+    "TEMPORAL_RELATION": {
+      "accepted_examples": ["DELTA", "PERSISTENCE", "DRIFT", "REVERSAL", "RUPTURE", "REVISION", "COINCIDENCE"],
+      "grain": "one governed relation over explicit role/order-preserving temporal refs",
+      "relation_kind_default": null,
+      "required": ["family", "schema_version", "temporal_relation_id", "relation_kind", "relation_rule_ref", "participants", "source_universe_refs", "required_external_compatibility_refs", "result_state", "result_payload", "support_uncertainty_state", "authority_closure_refs", "semantic_hash"]
+    }
+  },
+  "identity_replay": {
+    "exclude": ["OBJECT_ID", "SEMANTIC_HASH", "WALL_CLOCK", "SESSION_ID", "RANDOMNESS", "FILESYSTEM_ORDER", "LATEST_RUN_STATE", "NONSEMANTIC_READINESS_OR_PROBE_SCORE"],
+    "hash": "SHA-256",
+    "hash_mismatch": "FAIL_CLOSED",
+    "object_id": "V553:<FAMILY>:SCR553_V1:<sha256(canonical_identity_material)>",
+    "same_exact_basis": "same_decision_same_object_set_same_hashes_same_ids",
+    "serialization": "UTF8_JSON_SORTED_OBJECT_KEYS_NO_INSIGNIFICANT_WHITESPACE_ARRAY_ORDER_SEMANTIC_UNLESS_RULE_DECLARED_ORDER_INSENSITIVE_NO_NAN_INFINITY"
+  },
+  "identity_version": "SCR553_V553_IDENTITY_V1",
+  "jurisdiction": {
+    "cannot_manufacture": ["SOURCE_EQUIVALENCE", "RESPONDENT_LINKAGE", "SAMPLE_POOLING", "MEASURE_COMPATIBILITY", "ESTIMAND_COMPATIBILITY", "CROSS_UNIVERSE_COMPOSITION"],
+    "forbidden_direct_inputs": ["EMPIRICAL_FACT", "DISCOVERY_RESULT_RECEIPT", "RAW_C11_INCIDENCE", "V552_ROW_OR_PACKET", "V552J_ROW_PACKET_OR_HANDOFF", "READINESS_OR_PROBE_SCORE"],
+    "forbidden_resolution": ["LATEST", "NEAREST_TIME", "LABEL_SIMILARITY", "SCORE_WIN", "READINESS_WIN", "FILE_ORDER", "DIRECTORY_ORDER"],
+    "later_use_can_require_after_earlier_direct_use": true,
+    "semantic_input_kind": "STRUCTURAL_EMPIRICAL_ADMISSION",
+    "universal_transit": false,
+    "use_chain_scoped": true
+  },
+  "m1": {
+    "exports": ["TEMPORAL_KEY_REF", "TEMPORAL_OBSERVATION_REF", "TEMPORAL_RELATION_REF", "TEMPORAL_LIMIT_REF"],
+    "negative_downgrade_to_direct_positive_for_same_temporal_demand": "FORBIDDEN",
+    "not_required_does_not_mean": "DIRECT_V554_ELIGIBLE",
+    "not_required_means": "NO_NEW_V553_MEANING_FOR_THIS_USE_ONLY",
+    "ref_required": ["family", "object_id", "content_hash", "schema_version"],
+    "scr554_owns": ["BASIS_KIND", "V554_TEMPORAL_COMPLETENESS", "DIRECT_ELIGIBILITY", "DUPLICATE_EQUIVALENCE", "PRECEDENCE", "F1_F2_B1_IDENTITY"]
+  },
+  "non_authorizations": ["PRODUCTION_IMPLEMENTATION", "D15_REOPEN", "R03_BROAD_TOPOLOGY_REOPEN", "SOURCE_OR_ARTIFACT_RETIREMENT", "SIBLING_CONTRACT_LEGISLATION"],
+  "operation_mapping": {
+    "CANONICALIZE_TEMPORAL_SCOPE": {"blocked": "TEMPORAL_LIMIT", "positive": ["TEMPORAL_KEY"]},
+    "COMPARE_ACROSS_TIME": {"blocked": "TEMPORAL_LIMIT", "positive": ["TEMPORAL_RELATION"]},
+    "DERIVE_EFFECTIVE_INTERVAL": {"blocked": "TEMPORAL_LIMIT", "positive": ["TEMPORAL_KEY"]},
+    "DERIVE_SEQUENCE_OR_TIMING": {"blocked": "TEMPORAL_LIMIT", "positive": ["TEMPORAL_RELATION"]},
+    "DERIVE_TEMPORAL_RELATION": {"blocked": "TEMPORAL_LIMIT", "positive": ["TEMPORAL_RELATION"]},
+    "EVALUATE_TEMPORAL_LIMIT": {"positive": ["TEMPORAL_LIMIT"]},
+    "EXPRESS_TIME_SCOPED_OBSERVATION": {"blocked": "TEMPORAL_LIMIT", "positive": ["TEMPORAL_KEY", "TEMPORAL_OBSERVATION"]},
+    "HARMONIZE_TEMPORAL_REPRESENTATIONS": {"blocked": "TEMPORAL_LIMIT", "optional_if_rule": ["TEMPORAL_RELATION"], "positive": ["TEMPORAL_KEY"]}
+  },
+  "request": {
+    "name": "V553TemporalizationRequest",
+    "operations": ["CANONICALIZE_TEMPORAL_SCOPE", "EXPRESS_TIME_SCOPED_OBSERVATION", "HARMONIZE_TEMPORAL_REPRESENTATIONS", "COMPARE_ACROSS_TIME", "DERIVE_EFFECTIVE_INTERVAL", "DERIVE_SEQUENCE_OR_TIMING", "DERIVE_TEMPORAL_RELATION", "EVALUATE_TEMPORAL_LIMIT"],
+    "participant_required": ["role", "ordinal", "structural_empirical_admission_ref"],
+    "published_semantic_family": false,
+    "required": ["request_contract_version", "governed_use_id", "use_owner", "use_rule_ref", "participants", "required_temporal_operations", "temporal_operation_rule_refs", "required_external_compatibility_refs"]
+  },
+  "source_boundary": {
+    "default": "PRESERVE_SOURCE_PLURALITY__NO_COMPOSITION",
+    "temporal_comparability_does_not_grant": ["SOURCE_EQUIVALENCE", "RESPONDENT_LINKAGE", "POOLING", "MEASURE_COMPATIBILITY", "ESTIMAND_COMPATIBILITY", "CROSS_UNIVERSE_COMPOSITION"],
+    "unknown_missing_authority": "FAIL_CLOSED"
+  },
+  "version": "SCR553_V553_TEMPORAL_JURISDICTION_V1"
+}
