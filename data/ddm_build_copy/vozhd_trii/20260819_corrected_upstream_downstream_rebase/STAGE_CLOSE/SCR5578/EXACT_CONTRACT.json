@@ -1,0 +1,477 @@
+{
+  "bundles": {
+    "hash": "SHA-256 deterministic UTF-8 canonical JSON; producer semantic order preserved",
+    "mutable_latest_identity": false,
+    "mutation": "any bound content/identity/governance/policy change => new ID; no in-place mutation",
+    "publication": {
+      "atomic": true,
+      "id": "V557PUB:<publication_identity_hash>",
+      "schema": "SCR5578_V557_IMMUTABLE_PUBLICATION_BUNDLE@1.0.0"
+    },
+    "repository": {
+      "atomic": true,
+      "id": "V558REPO:<repository_identity_hash>",
+      "schema": "SCR5578_V558_STRUCTURAL_PRIOR_REPOSITORY_BUNDLE@1.0.0"
+    }
+  },
+  "closure": {
+    "edge_fields": [
+      "source/target locator",
+      "reference-contract ID/version/hash",
+      "edge role",
+      "requiredness",
+      "participant role",
+      "declared cardinality",
+      "multiplicity key",
+      "order-significant",
+      "semantic ordinal"
+    ],
+    "follow_only": "exact producer/reference-contract-declared interpretation-critical references",
+    "fuzzy_latest_network_model_repair": false,
+    "insufficient": [
+      "ID only",
+      "hash without resolvable content contract",
+      "display label",
+      "provenance prose",
+      "raw-stage path"
+    ],
+    "leaf_satisfaction": [
+      "packaged immutable content by exact hash",
+      "packaged immutable exact hash-bound locator/resolver binding identity/version/hash; non-fuzzy non-latest"
+    ],
+    "missing_ambiguous_corrupt_hash_or_version_conflict": "INTEGRITY_FAILURE",
+    "n_ary_preserved": true,
+    "producer_owns_roles": true,
+    "raw_stage_repair": false,
+    "required_positive_and_negative": true,
+    "scope": "PER_PUBLISHED_ROOT_ROLE_PRESERVING_TRANSITIVE_SEMANTIC_CLOSURE",
+    "semantic_order_preserved": true
+  },
+  "contract": {
+    "base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+    "branch": "agent/vozhd-trii-dr-r03-close-v5578-publication-repository",
+    "final_status": "WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+    "id": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT",
+    "local_status": "CLOSED",
+    "production_implementation_authorized": false,
+    "token": "SCR5578_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+    "version": "1.0.0"
+  },
+  "copackage_equivalence": {
+    "allowed": true,
+    "insufficient": [
+      "rowset/status parity",
+      "file count",
+      "performance",
+      "same module",
+      "no new ontology alone"
+    ],
+    "must_prove": [
+      "separate V557/V558 authority IDs/version/hash",
+      "V557 item governance precedes selection",
+      "mechanical permission-subset chain",
+      "distinct publication/repository identities",
+      "unchanged canonical producer IDs/hashes/states",
+      "role/cardinality/multiplicity/order closure equivalence",
+      "raw-dirs-absent standalone equivalence",
+      "deterministic records/receipt/fidelity/refresh/context",
+      "failure attribution by logical boundary",
+      "PSEPF exclusion",
+      "provenance-not-composition",
+      "same consumer semantic contract"
+    ]
+  },
+  "fidelity": {
+    "derived_deterministically_from": "SelectionRecords",
+    "descriptive_only": true,
+    "dimensions": [
+      "requested/considered/resolved counts",
+      "direct/prior/post/non-temporal counts",
+      "multiplicity",
+      "deferred unbound/missing evaluator",
+      "permission/geography/stratum rejection",
+      "negative/unknown/noncomparable/valid-empty",
+      "no anchor/ambiguity/integrity/unresolved",
+      "by producer family/V557 state/resolver use-set"
+    ],
+    "global_scalar_forbidden": true,
+    "schema": "SCR5578_COVERAGE_FIDELITY_PROFILE@1.0.0"
+  },
+  "final_seam": {
+    "bind_exact": [
+      "accepted head/result token",
+      "producer contract ID/version/hash",
+      "object/collection schema IDs/versions",
+      "canonical identity tuple/hash law",
+      "producer permission ceiling",
+      "typed semantic/negative states",
+      "reference-contract IDs/versions/hashes",
+      "producer-owned role/cardinality/multiplicity/order law",
+      "direct V557 publication eligibility",
+      "build/schema/compiler replay identity"
+    ],
+    "guessing_forbidden": true,
+    "observed_heads": {
+      "SCR553": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "SCR554": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "SCR555": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+      "SCR556": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d"
+    },
+    "on_unbound": "PRODUCER_FINAL_CONTRACT_UNBOUND",
+    "required_producers": [
+      "SCR553:V553",
+      "SCR554:V554",
+      "SCR555:V555",
+      "SCR556:V556"
+    ]
+  },
+  "implementation": {
+    "current": "SUPERSEDED_NONCONFORMING",
+    "ddm_v557_renderer_contract.py": "slot/renderer boundary, not accepted V557",
+    "ddm_v558_plus_governance.py": "old post-gate governance, not accepted V558",
+    "ddm_v558_runtime_graft_readiness.py": "readiness only",
+    "ddm_v558_runtime_input_gate.py": "old normalized input gate, not repository/resolver"
+  },
+  "indexes": {
+    "forbidden": [
+      "nearest time/geography",
+      "substring/prefix",
+      "embedding/LLM similarity",
+      "score rank",
+      "most common",
+      "first row",
+      "mutable latest",
+      "raw-stage/network fallback"
+    ],
+    "lossless_reversible_over_locators": true,
+    "mandatory": [
+      "TEMPORAL",
+      "GEOGRAPHIC",
+      "FINITE_STRATUM",
+      "GENERATED_POSITION_REQUIREMENT",
+      "NEGATIVE_LIMIT",
+      "PROVENANCE"
+    ],
+    "missing_incomplete": "REPOSITORY_INDEX_INTEGRITY_FAILURE",
+    "must_dereference_reverify": true,
+    "role": "NONSEMANTIC_EXACT_CANDIDATE_DISCOVERY_ACCELERATOR"
+  },
+  "locator": {
+    "fuzzy_rematch": false,
+    "must_reverse_exactly_to_one_producer_tuple": true,
+    "required": [
+      "locator ID",
+      "logical collection kind",
+      "authoritative producer family/object ID/hash/build ID/hash/schema ID/version",
+      "producer rule/predicate/reference-contract bindings",
+      "V557 governance ref/hash",
+      "content blob hash",
+      "storage/provenance locator"
+    ],
+    "schema": "SCR5578_PRODUCER_PRESERVING_OBJECT_LOCATOR@1.0.0",
+    "semantic_identity": false
+  },
+  "logical_split": {
+    "V557": "runtime publication/use governance + monotone permission narrowing + immutable publication/closure proof",
+    "V558": "immutable StructuralPriorRepository + producer-preserving link/index + deterministic ContextResolver + ResolvedStructuralContext",
+    "logical_collapse_allowed": false,
+    "physical_copackaging_allowed": true
+  },
+  "permission": {
+    "atoms": [
+      "REVIEW",
+      "CONTEXT",
+      "ACTIVE_CAUSAL"
+    ],
+    "collection_readiness_grants_permission": false,
+    "dependency_permission_inheritance": false,
+    "invariant": "resolver_allowed_uses ⊆ V557_allowed_uses ⊆ producer_allowed_uses",
+    "missing_or_ambiguous_producer_permission": "FAIL_CLOSED",
+    "repository_presence_grants_permission": false,
+    "states": {
+      "ALLOW_ACTIVE_CAUSAL_CONTEXT": [
+        "REVIEW",
+        "CONTEXT",
+        "ACTIVE_CAUSAL"
+      ],
+      "ALLOW_CONTEXT_ONLY": [
+        "REVIEW",
+        "CONTEXT"
+      ],
+      "ALLOW_REVIEW_ONLY": [
+        "REVIEW"
+      ],
+      "DENY_CAUSAL_USE": [],
+      "NOT_APPLICABLE": []
+    },
+    "widening": "INTEGRITY_FAILURE__FORBIDDEN_PERMISSION_WIDENING"
+  },
+  "provenance": {
+    "cross_source_composition_default": "NONE_BY_DEFAULT",
+    "positive_operation_specific_authority_required": true,
+    "reachability_grants_composition": false,
+    "source_universe_identity_preserved": true
+  },
+  "publication": {
+    "allowed_root_families": [
+      "V553",
+      "V554",
+      "V555",
+      "V556"
+    ],
+    "no_op_numbered_transit_forbidden": true,
+    "producer_ids_hashes_canonical": true,
+    "root_requires_exact_producer_authorization": true,
+    "v557_semantic_reid_forbidden": true
+  },
+  "reference_classes": {
+    "audit_only": [
+      "DiscoveryResultReceipt",
+      "ReplayReceipt"
+    ],
+    "must_not_appear": [
+      "ActorComparatorReceipt",
+      "PositionedSubjectEmpiricalPossibilityField",
+      "V3EmpiricalPossibilityInput",
+      "RenderedExpression_or_Persona"
+    ],
+    "psepf_rejection": "FORBIDDEN_REFERENCE_CLASS_PSEPF_STRUCTURAL_REPOSITORY",
+    "reference_only_when_producer_declares_interpretation_critical": [
+      "StructuralEmpiricalAdmission",
+      "EmpiricalFact",
+      "QuerySpec",
+      "UniverseSpec_or_risk_set",
+      "Measure_weight_estimand_authority"
+    ],
+    "root_candidates": [
+      "V553_PRODUCER_OBJECT",
+      "V554_PRODUCER_OBJECT",
+      "V555_PRODUCER_OBJECT",
+      "V556_PRODUCER_OBJECT"
+    ]
+  },
+  "refresh": {
+    "carrier_not_trigger_authority": true,
+    "forbidden": [
+      "wall clock",
+      "latest",
+      "raw-stage/network inference"
+    ],
+    "next_change_requires": "exact producer temporal boundaries + exact separately accepted refresh authority",
+    "schema": "SCR5578_CONTEXT_REFRESH_METADATA@1.0.0",
+    "states": [
+      "NEXT_CONTEXT_CHANGE_BOUND",
+      "NO_BOUND_CONTEXT_CHANGE_WITHIN_AUTHORIZED_HORIZON",
+      "REFRESH_AUTHORITY_UNBOUND",
+      "REFRESH_INPUT_INTEGRITY_FAILURE"
+    ],
+    "unbound": "no invented next_context_change"
+  },
+  "replay": {
+    "ReplayReceipt_semantic_prior": false,
+    "binds": [
+      "publication/repository hashes",
+      "producer build/object/contract/reference-contract identities",
+      "V557 governance",
+      "closure/root digests",
+      "indexes",
+      "policy/query fixed time/generated bindings",
+      "producer predicate/proxy/negative/tie authorities",
+      "SelectionRecords/receipt/fidelity/refresh/context"
+    ],
+    "same_exact_inputs_same_semantic_result": true
+  },
+  "repository": {
+    "must_include": [
+      "repository/source-publication manifests/hashes",
+      "collection registry",
+      "producer-preserving locator registry",
+      "role-preserving mixed-producer reference graph",
+      "logical index manifests",
+      "collection fidelity/negative manifest",
+      "producer material store or exact immutable content locators",
+      "publication policy binding",
+      "resolver policy binding"
+    ],
+    "producer_reownership": false,
+    "raw_v553_v554_v555_v556_dirs_required": false,
+    "repository_presence_permission": false,
+    "schema": "SCR5578_STRUCTURAL_PRIOR_REPOSITORY@1.0.0"
+  },
+  "resolution_receipt": {
+    "binds": [
+      "repo/query/policy",
+      "all/selected/deferred/preserved-negative SelectionRecords",
+      "unresolved keys",
+      "result state",
+      "replay input digest",
+      "context ref/hash"
+    ],
+    "schema": "SCR5578_V558_CONTEXT_RESOLUTION_RECEIPT@1.0.0",
+    "states": [
+      "RESOLUTION_COMPLETE",
+      "RESOLUTION_COMPLETE_VALID_EMPTY",
+      "RESOLUTION_COMPLETE_WITH_LAWFUL_MULTIPLICITY",
+      "RESOLUTION_PARTIAL_TYPED_DEFERRED",
+      "RESOLUTION_AMBIGUOUS_EQUAL_RANK",
+      "RESOLUTION_DENIED_OR_NOT_APPLICABLE",
+      "RESOLUTION_NO_LAWFUL_TEMPORAL_ANCHOR",
+      "RESOLUTION_MISSING_REQUIRED_AUTHORITY",
+      "RESOLUTION_INTEGRITY_FAILED",
+      "REPLAY_RESOLUTION_REPRODUCED"
+    ]
+  },
+  "resolved_context": {
+    "binds": [
+      "repository/query/policy",
+      "resolution receipt",
+      "resolved entries",
+      "preserved negative entries",
+      "deferred/unresolved entries",
+      "all SelectionRecord refs/hashes",
+      "fidelity profile",
+      "refresh metadata",
+      "provenance",
+      "context ID/hash"
+    ],
+    "cannot_create": [
+      "actor biography/position/event",
+      "memory/knowledge/belief",
+      "relationship truth",
+      "persona/voice/dialogue",
+      "new V556 relation/topology"
+    ],
+    "epistemic_class": "RESOLVER_DERIVED_CONTEXT",
+    "resolved_entry": [
+      "resolution key",
+      "SelectionRecord ref",
+      "canonical producer family/object ID/hash",
+      "producer locator",
+      "resolver allowed uses",
+      "decision state"
+    ],
+    "schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0"
+  },
+  "resolver": {
+    "algorithm": [
+      "validate bundle/index/query/policy",
+      "exact-key candidate discovery",
+      "dereference/verify producer identity/hash/schema/closure",
+      "verify producer→V557→resolver permission subsets",
+      "apply exact producer conditions/geography/stratum/position/negative constraints",
+      "apply temporal precedence",
+      "apply tie/multiplicity law",
+      "SelectionRecord every candidate",
+      "receipt without filling unresolved",
+      "materialize contract context only"
+    ],
+    "co_resolved_participants_create_v556": false,
+    "forbidden_nondeterminism": [
+      "wall clock",
+      "mutable latest",
+      "filesystem/database/process order",
+      "raw-stage/network lookup",
+      "LLM/embedding",
+      "randomness",
+      "unrecorded cache",
+      "display labels",
+      "default policy"
+    ],
+    "geography_or_prevalence_creates_position": false,
+    "policy": "V558_CONTEXT_RESOLVER_POLICY@1.0.0",
+    "policy_hash": "4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f",
+    "pure_inputs": [
+      "repository bundle ID/content hash",
+      "index manifest ID/hash",
+      "ContextQuery ID/hash",
+      "resolver policy ID/version/hash",
+      "accepted generated binding refs/hashes"
+    ],
+    "temporal_precedence": [
+      "DIRECT_TEMPORAL_SUPPORT",
+      "LATEST_PRIOR_OBSERVATION_PROXY_IF_AUTHORIZED",
+      "EARLIEST_POST_QUERY_PROXY_IF_AUTHORIZED",
+      "NO_LAWFUL_TEMPORAL_ANCHOR"
+    ],
+    "tie": {
+      "authorized_multiplicity": "full tied set",
+      "average_score_similarity_model": "FORBIDDEN",
+      "exact_same_id_hash": "serialization dedup only",
+      "lexicographic": "serialization only",
+      "singular_equal_rank_no_precedence": "AMBIGUOUS_EQUAL_RANK_AUTHORITY"
+    }
+  },
+  "selection_record": {
+    "binds": [
+      "repo/index/query/policy identity",
+      "resolution key",
+      "locator + canonical producer ID/hash",
+      "producer/V557/resolver permission states+sets",
+      "epistemic/exception state",
+      "temporal/proxy/evidence/lag flags",
+      "geography/stratum/horizon",
+      "position bindings/predicate receipts",
+      "negative/unknown/missing/noncomparability",
+      "tie/multiplicity",
+      "decision/reason/provenance"
+    ],
+    "every_considered_candidate": true,
+    "schema": "SCR5578_V558_SELECTION_RECORD@1.0.0",
+    "unresolved_keys_filled": false
+  },
+  "typed_states": {
+    "collection": [
+      "VALID_NONEMPTY",
+      "VALID_EMPTY",
+      "INVALID_FAIL_CLOSED"
+    ],
+    "governance": [
+      "NO_EXCEPTION_STATE",
+      "NEGATIVE_AUTHORITY",
+      "MISSING_AUTHORITY",
+      "NONCOMPARABLE",
+      "VALID_EMPTY",
+      "INTEGRITY_FAILURE"
+    ],
+    "noncollapse": [
+      "NEGATIVE_AUTHORITY != MISSING_AUTHORITY",
+      "MISSING_AUTHORITY != NONCOMPARABLE",
+      "NONCOMPARABLE != VALID_EMPTY",
+      "VALID_EMPTY != INTEGRITY_FAILURE",
+      "explicit zero != missing/default",
+      "physical missing required dependency = INTEGRITY_FAILURE"
+    ]
+  },
+  "v557_collection": {
+    "item_permission_overrides_collection": true,
+    "required": [
+      "manifest ID/hash",
+      "producer collection identity/hash/build/schema",
+      "exact count",
+      "governed state and valid-empty subtype",
+      "governance record count/state counts",
+      "closure status/ref/hash",
+      "V557 authority/governance registry bindings"
+    ],
+    "schema": "SCR5578_RUNTIME_AUTHORIZED_COLLECTION_MANIFEST@1.0.0"
+  },
+  "v557_object_record": {
+    "identity": "governance ID is nonsemantic; producer object ID/hash remain semantic identity",
+    "required": [
+      "governance_record_id/hash",
+      "V557 authority ID/version",
+      "producer family/collection kind/object ID/hash/build ID/hash/schema ID/version/compiler",
+      "producer rule/predicate/reference-contract refs",
+      "producer permission input",
+      "V557 publication admission/use state/expanded allowed uses",
+      "epistemic class",
+      "governance exception/subtype",
+      "negative/noncomparability/uncertainty refs",
+      "closure audit ref",
+      "provenance refs",
+      "V557 use-rule ref",
+      "compatibility bindings"
+    ],
+    "schema": "SCR5578_RUNTIME_AUTHORIZED_OBJECT_RECORD@1.0.0"
+  }
+}
