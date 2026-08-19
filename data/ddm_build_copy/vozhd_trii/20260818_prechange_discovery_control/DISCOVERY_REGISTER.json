@@ -1,13 +1,13 @@
 {
   "control_surface": "VOZHD_TRII_PRECHANGE_DISCOVERY",
-  "status": "DISCOVERY_CLOSED__D12_D13_D14_ACCEPTED__D15_READY_FOR_PARENT_ARCHITECTURE_SYNTHESIS",
+  "status": "PRE553_ARCHITECTURE_CLOSED__D15_UPSTREAM_ACCEPTED__DOWNSTREAM_REBASE_READY__WHOLE_MACHINE_IMPLEMENTATION_GATED",
   "repository": "maidiu/rawlsing",
   "branch": "agent/vozhd-trii-prechange-discovery-control",
   "base_sha": "0777a34e50221bde6801dbaca26c058a7350c9e8",
   "worker_launch_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
   "frozen_vt3_base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
   "target_corrective_launch_sha": "6899e58e7ed509327fca3e0294b76bef378d0caf",
-  "latest_parent_adjudication": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/19_D14_RETURN_ADJUDICATION.md",
+  "latest_parent_adjudication": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/20_D15_RETURN_ADJUDICATION_AND_DOWNSTREAM_REBASE_GATE.md",
   "campaign_constraints": [
     "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
     "schema_or_code_must_not_substitute_for_populated empirical evidence",
@@ -27,7 +27,13 @@
     "C11 minimum normalized respondent-event/coordinate incidence plus authority/provenance is the accepted specification-level physical information family",
     "no current populated C11 implementation is certified",
     "D14 symbolic cost closure does not establish production savings percentages, runtime budgets, hardware budgets or cache policy",
-    "D15 is now the first authorized architecture-synthesis jurisdiction"
+    "D15 corrected pre-553 empirical/DDM architecture is accepted and frozen",
+    "pre-553 is a direct-DAG authority domain, not one monolithic product whose only consumer is V553",
+    "PositionedSubjectEmpiricalPossibilityField has a direct V3 lane and does not traverse the structural chain",
+    "StructuralEmpiricalAdmission is the separately governed structural boundary",
+    "D15 V553_PLUS_REVALIDATION_MATRIX is a post-D15 rebase seed, not final downstream disposition",
+    "D15 I01-I13 implementation campaign is a candidate seed and is not authorized for execution before downstream rebase closure",
+    "whole-machine implementation remains blocked pending broad 553+ sweeps and bounded stage close-reads"
   ],
   "courts": [
     {"id":"D01","title":"V526c/V547 to V550 determinicity lineage","status":"ACCEPTED_WITH_REVIEW_NORMALIZATION"},
@@ -79,7 +85,6 @@
       "title":"Final compute, materialization and replay cost court",
       "branch":"agent/vozhd-trii-d14-final-compute-materialization",
       "worker_base_sha":"43c5dc3236fd4a1c9183d6dd72599776bb907411",
-      "observed_branch_state":"11_COMMITS_AHEAD_OF_COMMANDED_BASE__COURT_OUTPUT_ONLY",
       "status":"ACCEPTED__DISCOVERY_COST_FRONTIER_CLOSED",
       "final_gate":"DISCOVERY_COST_FRONTIER_CLOSED__D15_READY",
       "measurement_posture":{
@@ -89,32 +94,31 @@
         "production_savings_percentage":"UNKNOWN",
         "hardware_budget":"UNKNOWN"
       },
-      "accepted_law":[
-        "exact semantic distinctions and declared discovery coverage carry unavoidable cost",
-        "current eager V550/V550J materialization suite is not itself semantically mandatory",
-        "implementation traversal/index/cache/materialization/search strategy remains open",
-        "fixed E1/E2 caches are bounded acceleration only and do not replace C11",
-        "E3/E4 are diagnostic-cost lanes, not retention authority",
-        "source snapshots remain safety/evidence retention until positive source-to-C11 equivalence and later governance",
-        "no deletion, migration, cache, algorithm or hardware decision follows from D14"
-      ],
       "handoff":"courts/D14/D15_COST_FRONTIER_HANDOFF.json"
     },
     {
       "id":"D15",
-      "title":"Parent Vozhd Trii synthesis",
-      "status":"READY_FOR_PARENT_ARCHITECTURE_SYNTHESIS",
-      "depends_on_status":"SATISFIED_WITH_D12_D13_D14_ACCEPTED",
-      "binding_inputs":[
-        "17_D12_RETURN_ADJUDICATION.md",
-        "courts/D12/D13_RETENTION_FRONTIER_HANDOFF.json",
-        "courts/D12/D14_WORKLOAD_FRONTIER_HANDOFF.json",
-        "18_D13_RETURN_ADJUDICATION.md",
-        "courts/D13/MINIMUM_INFORMATION_SUBSTRATE_SPEC.md",
-        "courts/D13/D14_PHYSICAL_CARRIER_HANDOFF.json",
-        "19_D14_RETURN_ADJUDICATION.md",
-        "courts/D14/D15_COST_FRONTIER_HANDOFF.json"
-      ]
+      "title":"Final pre-553 empirical/DDM architecture synthesis",
+      "branch":"agent/vozhd-trii-d15-parent-architecture-synthesis",
+      "worker_base_sha":"bfda722ba89595cfeebed27bbfcbbe3f9d65195f",
+      "observed_branch_state":"19_COMMITS_AHEAD_OF_COMMANDED_BASE__COURT_OUTPUT_ONLY",
+      "status":"ACCEPTED__UPSTREAM_ARCHITECTURE_FROZEN__DOWNSTREAM_CLOSURE_QUALIFIED",
+      "worker_result":"ARCHITECTURE_SELECTED__IMPLEMENTATION_CAMPAIGN_READY",
+      "parent_result":"UPSTREAM_ARCHITECTURE_LOCKED__DOWNSTREAM_REBASE_REQUIRED__WHOLE_MACHINE_IMPLEMENTATION_NOT_YET_AUTHORIZED",
+      "accepted_upstream_core":[
+        "C11 append-only source-universe-scoped normalized event/coordinate/routing/weight incidence plus immutable authority/replay manifests",
+        "Exact EmpiricalQueryEngine",
+        "authority-bounded autonomous discovery with exact-bounded and truthful adaptive-exploratory modes",
+        "exact actor-fact empirical comparator seam",
+        "source-indexed PositionedSubjectEmpiricalPossibilityField",
+        "direct possibility-field -> V3 empirical possibility input DAG lane",
+        "separate StructuralEmpiricalAdmission boundary",
+        "C11-first exact replay with optional identity-exact nonauthoritative caches",
+        "source retention until positive source->C11 equivalence and later governance"
+      ],
+      "downstream_revalidation":"V553_PLUS_REVALIDATION_MATRIX_ACCEPTED_AS_REBASE_SEED__NOT_FINAL_DISPOSITION",
+      "implementation_campaign":"I01_I13_ACCEPTED_AS_CANDIDATE_SEED__EXECUTION_GATED_PENDING_DOWNSTREAM_REBASE",
+      "parent_adjudication":"20_D15_RETURN_ADJUDICATION_AND_DOWNSTREAM_REBASE_GATE.md"
     }
   ],
   "feeders": [
@@ -131,21 +135,23 @@
     {"id":"D13C","branch":"agent/vozhd-trii-d13c-shared-substrate-static-loss","status":"NON_DISPOSITIVE_STATIC_LOSS_AUDIT_ACCEPTED__CONSUMED_BY_FINAL_D13"},
     {"id":"D14A","branch":"agent/vozhd-trii-d14a-current-cost-geometry","status":"NON_DISPOSITIVE_CURRENT_COST_BASELINE_ACCEPTED__CONSUMED_BY_FINAL_D14"}
   ],
-  "d15_authorized_synthesis_scope":[
-    "select final replacement architecture consistent with all accepted discovery law",
-    "define canonical object families and stage/authority ownership",
-    "define missing target authorities without collapsing ontologies",
-    "choose how C11 M01-M18 information is physically represented and accessed",
-    "choose bounded cache/materialization strategy where justified",
-    "choose autonomous discovery algorithm/coverage architecture subject to D12/D14 law",
-    "choose reverse positioned-subject possibility-field producer/consumer seam",
-    "choose structural empirical promotion boundaries",
-    "choose migration/retirement campaign subject to positive equivalence and source-safety constraints",
-    "produce implementation campaign and acceptance gates"
-  ],
-  "d15_must_not_claim":[
+  "post_d15_downstream_rebase": {
+    "status":"READY",
+    "governing_rule":"CORRECT_UPSTREAM_FIRST__DOWNSTREAM_REBASE_SECOND__WHOLE_MACHINE_OPTIMUM_OVER_PRIOR_DESIGN_PRESERVATION__NO_GRATUITOUS_REDESIGN",
+    "binding_upstream":"D15_ACCEPTED_UPSTREAM_ARCHITECTURE",
+    "seed":"courts/D15/V553_PLUS_REVALIDATION_MATRIX.csv",
+    "broad_sweeps":[
+      "DEPENDENCY_REBASE_SWEEP",
+      "DIRECT_DAG_OWNERSHIP_MINIMALITY_SWEEP",
+      "HOSTILE_NO_STARVATION_NO_BLOAT_SWEEP"
+    ],
+    "stage_close_reads":["V553","V554","V555","V556","V557_V558","V3_UPSTREAM_INTAKE_AND_DEVELOPMENTAL_BOUNDARY","V2_APP_IF_MATERIALLY_AFFECTED"],
+    "final_output":"WHOLE_MACHINE_DAG_CLOSURE_PLUS_REGENERATED_IMPLEMENTATION_CAMPAIGN",
+    "implementation_gate":"BLOCKED_UNTIL_DOWNSTREAM_REBASE_AND_STAGE_CLOSE_READS_ACCEPTED"
+  },
+  "d15_accepted_nonclaims":[
     "populated source equivalence has already been proved",
-    "a production savings percentage or hardware budget from D14",
+    "a production savings percentage or hardware budget is known",
     "source snapshots may be deleted before positive source-to-C11 equivalence and governance",
     "current C02/C03/C04 is a lawful full-frontier substitute for C11",
     "pairwise or independent marginals substitute for required k-way information",
@@ -153,8 +159,9 @@
     "distinct respondent universes may be silently joined or pooled",
     "expensive terminal semantics may be removed for cost reasons"
   ],
-  "d15_acceptance_tests":[
+  "whole_machine_final_acceptance_tests":[
     "autonomously discover a social fork the designer did not pre-specify",
+    "discover an interaction with no unary signal when the claimed discovery frontier includes it",
     "answer how a question fractures socially",
     "reverse learned empirical geometry for a lawfully comparable generated subject",
     "preserve joint/multimodal/minority attitude configurations",
@@ -163,6 +170,8 @@
     "preserve separate respondent universes and meaningful disagreement without false joins or naive pooling",
     "allow V3 history to metabolize constrained possibilities into divergent lives",
     "preserve D12 R01-R14 and D13 M01-M18 replay/information law",
-    "treat D14 blocked runtime sizing facts as implementation unknowns rather than invented measurements"
+    "route each canonical upstream object directly to lawful consumers without unnecessary stage repackaging",
+    "prove every retained V553+ stage has unique jurisdiction after corrected-upstream rebase",
+    "regenerate the implementation campaign from the final whole-machine DAG"
   ]
 }
