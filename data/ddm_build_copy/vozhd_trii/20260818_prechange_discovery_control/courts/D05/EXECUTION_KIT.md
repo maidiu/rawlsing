@@ -1,48 +1,66 @@
-# D05 populated-substrate execution kit
+# D05 — Populated Empirical Substrate Execution Kit
 
-Status: `AUDIT_APPARATUS_CLOSED / POPULATED_EVIDENCE_BLOCKED`
+**Apparatus:** `CLOSED_EXECUTABLE_FIXED_SEMANTICS`  
+**Empirical verdict in this worker environment:** `BLOCKED_MISSING_POPULATED_DATA_ACCESS`
 
-Current court verdict remains `BLOCKED_MISSING_POPULATED_DATA_ACCESS`. This file closes the apparatus, not the empirical verdict.
+The database blocker does not reopen the audit design. A worker with populated database access supplies only a connection string and runs the canonical command.
 
-## Canonical execution
-
-There is one no-choice entrypoint:
+## Canonical command
 
 ```bash
 DATABASE_URL='postgresql://USER:PASSWORD@HOST:PORT/DBNAME' \
   bash data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D05/run_d05_empirical_audit.sh
 ```
 
-The worker does not choose source families, waves, countries, questions, position fields, overlap pairs, authority lanes, cache scopes, or mapping semantics. The runners audit the complete physically populated surfaces selected by the fixed contracts.
+There are **zero semantic command-line choices**. The worker does not select source families, waves, countries, questions, overlap subsets, position fields, authority lanes, response relations, or cache scopes.
 
-`run_d05_empirical_audit.py` is the core database/normalization audit. `audit_d05_authority_scope_cache.py` is automatically run second and adds production-R1 resolution, canonical-registry reconciliation, CLOSED_35 comparison, and selected-cache parity.
+## Canonical execution stages
 
-Both database runners establish `REPEATABLE READ, READ ONLY` transactions and abort if PostgreSQL does not report `transaction_read_only = on`. They contain no INSERT, UPDATE, DELETE, CREATE, ALTER, DROP, TRUNCATE, COPY-to-database, or repair path. Their only writes are court output files under this D05 directory.
+The shell entrypoint runs all stages even when an earlier stage finds a fatal empirical defect, then returns non-zero if any stage failed:
 
-## Runtime dependencies
+1. `run_d05_empirical_audit.py` — core relation preflight, coverage, multiplicity, positions, weights, mapping, typed missingness, topology, raw/facet parity, information-loss and provenance outputs.
+2. `audit_d05_identity_overlap_exact.py` — first-class respondent identity/collision audit and **complete all-pairs question overlap including zero-overlap pairs**. It overwrites the weaker core overlap output with the normative complete surface.
+3. `audit_d05_output_semantic_guard.py` — output-only guard that prevents a physically absent `value_raw`/`value_text` field from masquerading as a zero-mismatch preservation result.
+4. `audit_d05_authority_scope_cache.py` — current production R1 resolution, canonical-registry/alias reconciliation, `CLOSED_35` population comparison, and materialized shared-cache selected-row/predicate parity.
+5. `audit_d05_cache_identity_exact.py` — exact respondent-ID set equality for every materialized shared-cache selection. Matching respondent counts are not sufficient.
 
-Required:
+Every database stage opens `REPEATABLE READ, READ ONLY` and verifies `transaction_read_only = on`. No stage contains DDL, DML, repair, ingestion, or retention mutation. Files are written only under `courts/D05/`.
 
-- Python 3.10+
-- `psycopg2` (already used by the current facet-ready production loader)
-- `git`
-- PostgreSQL read credentials via `DATABASE_URL`
+## Normative contract
 
-Required only when materialized V550 shared-substrate parquet files are present and therefore must be audited:
+`D05_AUDIT_CONTRACT.json` is the single machine-readable law for:
 
-- `pandas`
-- a parquet engine available to pandas (the same runtime class V550 uses for parquet materialization)
+- required/expected relations and columns;
+- physical measurement grains;
+- output schemas;
+- invariants;
+- named failure/warning codes;
+- production R1 resolver law;
+- source-equivalence classification bar;
+- locked external-evidence SHA256 values.
 
-No populated-data substitute may be supplied as CSV excerpts or schema-only DDL. The database must be production or a transactionally consistent production-equivalent snapshot.
+If this prose and the JSON contract conflict, the R4 JSON contract governs.
 
-## Fixed relation contract
+## Fatal populated-data core
 
-Fatal core surfaces:
+The two fatal relations are:
 
-- `public.survey_microdata_respondents`: `id`, `source`, `wave`, `country_code`, `survey_year`
-- `public.survey_microdata_responses`: `respondent_id`, `var_code`, `value_raw`, `value_text`
+`public.survey_microdata_respondents`
 
-Expected audited surfaces, with missing relations/columns emitted as named findings rather than silently aliased:
+- `id`
+- `source`
+- `wave`
+- `country_code`
+- `survey_year`
+
+`public.survey_microdata_responses`
+
+- `respondent_id`
+- `var_code`
+- `value_raw`
+- `value_text`
+
+Expected non-core audit targets are:
 
 - `public.survey_weight_fact`
 - `public.respondent_position_fact`
@@ -51,85 +69,119 @@ Expected audited surfaces, with missing relations/columns emitted as named findi
 - `public.v_ddm_response_long_facet_ready`
 - `public.v_ddm_response_long_facet_ready_authority`
 - `public.ddm_demographic_field_register`
+- a uniquely discoverable installed `canonical_question_registry`, if present;
+- its same-schema `question_variable_alias`, if present.
 
-The exact column lists are normative in `D05_AUDIT_CONTRACT.json` and duplicated as executable constants in the core runner. `canonical_question_registry` and `question_variable_alias` are discovered by relation name across schemas. Exactly one installed canonical-registry schema is allowed. Zero produces `D05_W_CANONICAL_REGISTRY_NOT_INSTALLED`; more than one produces `D05_E_AUTHORITY_SCHEMA_AMBIGUOUS`. The worker does not select one.
+Absent non-core surfaces are findings, not permission to invent substitutes.
 
-## Exact authority semantics
+## Respondent identity
 
-R1 identity is not reimplemented by this court. `audit_d05_authority_scope_cache.py` imports and calls current production functions from:
+`RESPONDENT_IDENTITY_AUDIT.csv` makes identity claims explicit. It measures globally and by source/wave/country:
 
-`data.ddm_build_copy.ddm_v550_question_relation_authority`
+- respondent row count;
+- distinct surrogate IDs;
+- null IDs;
+- duplicate-ID groups and excess rows;
+- IDs spanning multiple source/waves;
+- IDs spanning multiple countries;
+- IDs spanning multiple survey years;
+- response rows;
+- orphan response rows.
 
-Specifically:
+A duplicate/collision/orphan is a fatal empirical finding. Schema PK/FK declarations are not used as substitutes for populated counts.
 
-- `resolve_question_relation_authority()` for every populated raw source/wave/country/var identity;
-- `canonical_source_family()` and `canonical_wave()` for governed identity normalization;
-- `active_closed_35_waves()` for the governed closed-wave expectation;
-- `load_question_relation_authority()` for the exact active R1 artifact and its SHA256.
+## Complete question cotravel coverage
 
-That prevents D05 from inventing a parallel source/wave alias law.
+`QUESTION_OVERLAP_SUMMARY.csv` contains **every unordered pair of populated var codes** inside each source/wave/country. The query forms the complete pair universe from marginal respondent incidence and left-joins same-respondent overlap, so pairs with `respondents_overlap = 0` are retained.
 
-## Queries and grains
+For every pair the output contains both marginals, overlap, union, overlap percentages, Jaccard percentage, overlap where both respondent/var cells are unique, duplicate-compromised overlap, and `cotravel_possible`.
 
-The SQL in the Python runners is authoritative; there is no second hand-maintained SQL file whose semantics can drift.
+`QUESTION_OVERLAP_COMPLETENESS.json` records total pair rows and the number of zero-overlap pairs emitted. Zero overlap is evidence of physical module/routing separation; it is not missing output.
 
-The fixed measurement grains are:
+## Multiplicity
 
-- respondent identity: database respondent surrogate `survey_microdata_respondents.id`;
-- raw response multiplicity: `(source, wave, country_code, respondent_id, UPPER(var_code))`;
-- canonical-question multiplicity: the same respondent grain after the current exact-wave-first QSM resolution rule;
-- source coverage: `(source, raw_wave, canonical_wave, country_code, survey_year)`;
-- position completeness: `(position_field, source_family, wave)`;
-- weight coverage: `(source, wave)` with respondent-level any/primary/multiple-primary states;
-- question cotravel: **every unordered pair** of actually populated var codes within `(source, wave, country_code)`; no sample/top-N truncation;
-- QSM identity: every raw response row partitioned into exact, fallback, ambiguous, or unmapped;
-- R1 authority: every distinct populated `(source, raw_wave, country_code, var_code)` weighted by its raw response-row count;
-- raw/facet parity: `(source, wave, country_code, respondent_id, UPPER(var_code))` multiplicity plus raw-code/raw-text multisets when physically exposed;
-- cache parity: every `(source, wave, canonical_wave, country_code, var_code)` physically present in every discovered `v550_shared_respondent_substrate.parquet`.
+`RESPONSE_MULTIPLICITY_AUDIT.csv` measures separately:
 
-## Missingness and topology law
+- raw `(respondent_id,var_code)` multiplicity;
+- excess duplicate raw rows;
+- canonical `(respondent_id,question_id)` multiplicity after current mapping;
+- distinct questions/respondent and response rows/respondent with min/P50/P90/P99/max.
 
-Blank/null response values are never promoted into DK, refusal, IAP, or not-asked states. Those are measured only from explicit typed columns. If those columns are absent, the output says `COLUMN_NOT_EXPOSED` and emits `D05_W_TYPED_MISSINGNESS_NOT_EXPOSED`.
+Multiple responses are therefore not silently collapsed.
 
-Likewise, binary/ordinal/nominal/scale/matrix/multi-select meaning is never inferred from the number of observed response values. `RESPONSE_TOPOLOGY_AUDIT.csv` reports physically exposed authority topology/classification alongside observed cardinality and respondent/var multiplicity so the two cannot be conflated.
+## Position completeness
 
-## Weight law
+`POSITION_FIELD_COMPLETENESS.csv` measures coverage/cardinality by field/source/wave for the governed surface:
 
-The runner measures any weight, primary weight, missing primary weight, multiple primary weights, null/zero/negative/non-finite primary values, weight names, weight types, and source vars. It separately records whether PSU/stratum/cluster/FPC/replicate-design metadata are represented. A scalar primary weight is never called population truth or design-based inference authority.
+sex, age, age_group, education_level, income_level, religion_label, urban_rural, region, ethnicity, language, employment, marital, household_size, class_level.
 
-## Facet-ready preservation law
+`age_group` is explicitly a facet-derived coordinate where appropriate. Additional source-native demographic candidates from `ddm_demographic_field_register` are reported as candidates only; register presence is not proof of respondent-fact survival.
 
-For each available facet-ready relation, the runner performs a full outer comparison against the raw response substrate at respondent/var multiplicity grain. It reports:
+Null/blank position values mean database missingness only.
 
-- raw rows missing from facet;
-- facet rows without raw parents;
-- respondent/var keys whose multiplicity changed;
-- raw-code multiset mismatches where `value_raw` is physically exposed;
-- raw-text multiset mismatches where `value_text` is physically exposed;
-- whether respondent linkage is sufficient for `P(Y | position)`, conjunctions of positions, `P(Y | X response)`, and `P(Y | X response AND position)`.
+## Typed missingness and topology
 
-A view that lacks a raw field is evidence of non-exposure, not evidence of value preservation.
+DK, refusal, IAP/not-asked, missing, and substantive-response prevalence are computed only from explicit typed columns such as `is_dk`, `is_refusal`, `is_iap`, `is_missing`, and `is_valid_substantive_response`. Blank `value_raw`/`value_text` is never reinterpreted as one of those categories.
 
-## Shared-cache law
+Question topology is never guessed from response cardinality. `RESPONSE_TOPOLOGY_AUDIT.csv` places observed cardinality beside physically exposed question/topology/handling authority; if the authority field is absent, the result says so.
 
-The cache audit auto-discovers all files named `v550_shared_respondent_substrate.parquet` below `data/ddm_repository_copy/v550/`. It never treats absence as proof of loss; absence yields `D05_W_SHARED_CACHE_NOT_MATERIALIZED` and leaves cache losslessness unproved.
+## Weights
 
-For every materialized cache it checks:
+`WEIGHT_COVERAGE.csv` measures any/primary/missing/multiple-primary respondent state, total and primary rows, null/zero/negative/non-finite primary values, and actual weight names/types/source vars.
 
-- selected DB row count vs cache row count for every cache source/wave/country/var;
-- selected DB respondent count vs cache respondent count;
-- explicit selection columns (`selection_role`, `base_fixture_selected`, `joint_configuration_selected`);
-- required position-predicate columns;
-- typed missingness columns;
-- topology fields.
+The information-loss surface separately checks whether PSU/stratum/cluster/FPC/replicate design metadata are represented. A scalar weight is never called design-based inference authority or population truth.
 
-A cache can therefore be correctly identified as selective while still being tested for losslessness over the exact selection it claims to materialize.
+## Raw-to-facet preservation
 
-## Static provenance law
+`FACET_READY_PARITY_AUDIT.csv` full-outer-compares raw responses with each available facet-ready relation at:
 
-At run time, every file named in the runner's `STATIC_FILES` list is SHA256-hashed and its Git blob SHA is recorded in `STATIC_EVIDENCE_PROVENANCE.csv`. External/hash-addressed evidence is kept distinct from checked-in evidence.
+`source,wave,country_code,respondent_id,UPPER(var_code)`
 
-Locked conversation-input identities from `evidence/conversation_inputs/SHA256SUMS.txt` are:
+It measures missing raw rows, derived-only rows, multiplicity differences, and `value_raw` / `value_text` multiset differences when those target fields physically exist.
+
+`audit_d05_output_semantic_guard.py` converts absent target fields to `NOT_EXPOSED`; an absent field can never appear as “zero mismatches.”
+
+The same output records whether physical respondent linkage and position columns are sufficient to reconstruct the row sets needed for:
+
+- `P(Y | position)`
+- `P(Y | position conjunction)`
+- `P(Y | X response)`
+- `P(Y | X response AND position)`
+
+These are reconstructibility flags, not substantive inference authority.
+
+## Three separate question-identity courts
+
+D05 refuses to collapse three different identity mechanisms:
+
+1. `IDENTITY_JOIN_AUDIT.csv` — current populated QSM exact/fallback/ambiguous/unmapped row partition.
+2. `R1_AUTHORITY_JOIN_AUDIT.csv` — current production `resolve_question_relation_authority()` for every populated raw source/wave/country/var identity. D05 imports the production source/wave normalizers rather than cloning them.
+3. `CANONICAL_REGISTRY_JOIN_AUDIT.csv` — exact canonical-registry and alias reconciliation when exactly one installed registry schema exists.
+
+`GOVERNED_SCOPE_COMPARISON.csv` compares actual populated waves with production `active_closed_35_waves()`.
+
+## Shared-cache truth
+
+Every discovered `data/ddm_repository_copy/v550/**/v550_shared_respondent_substrate.parquet` is audited.
+
+`CACHE_SELECTED_PARITY.csv` measures selected DB row/respondent cardinality plus position-field, typed-missingness, topology, and explicit selection-column preservation.
+
+`CACHE_IDENTITY_EXACT.csv` closes the cardinality loophole. For every cache source/wave/country/var selection it computes exact respondent-ID sets on both sides and records:
+
+- cache and DB ID-set cardinality;
+- deterministic SHA256 of each sorted ID set;
+- missing DB IDs in cache;
+- extra cache IDs not in DB;
+- exact raw-ID set equality;
+- presence/hash/equality of `respondent_id_norm`.
+
+No respondent IDs themselves are exported. Matching counts with different sets fail `D05_F_SHARED_CACHE_RESPONDENT_ID_DRIFT`.
+
+## Static evidence provenance
+
+At run time the core audit SHA256-hashes every checked-in static evidence file on its fixed list and records the Git blob SHA. Hash-addressed external evidence remains a separate provenance class.
+
+Locked identities are:
 
 - `Rawlsing_WVS_public_schema.sql` — `2c3f4a9ebec1e6c0cf62e8827ab982e52243c5c8899c961cd0e30b489573ec76`
 - `Rawlsing_WVS_authority_reconcile_schema.sql` — `57e8c58c9444be9c34df54765e1801a9819f7a15fd02ddaa9a8e194e57596877`
@@ -137,39 +189,10 @@ Locked conversation-input identities from `evidence/conversation_inputs/SHA256SU
 - `rawlsing_v5_home_stretch_build_pack_v18_FINAL_LOCKED_NO_GHOSTS.zip` — `a654014fb56032544fc4044ee230cf69823e076cb5f3e4fc3df91eb3148f12bd`
 - `rawlsing_chatlog_DDM_chatgpt_1.txt` — `b0ff181b0d1f6a591b005b829aafeb27b0740249332b49e08bd381800ab1745a`
 
-The first D05 return contained incorrect values for the two schema hashes. Those values are superseded by the manifest identities above. Runtime mismatch is fatal: `D05_E_STATIC_PROVENANCE_MISMATCH`.
-
-## Outputs
-
-Core required/preferred outputs:
-
-- `SOURCE_WAVE_READINESS.csv`
-- `POSITION_FIELD_COMPLETENESS.csv`
-- `QUESTION_OVERLAP_SUMMARY.csv`
-- `WEIGHT_COVERAGE.csv`
-- `IDENTITY_JOIN_AUDIT.csv`
-- `RESPONSE_MULTIPLICITY_AUDIT.csv`
-
-Additional closure outputs:
-
-- `RELATION_PREFLIGHT.csv`
-- `TYPED_MISSINGNESS_PREVALENCE.csv`
-- `RESPONSE_TOPOLOGY_AUDIT.csv`
-- `FACET_READY_PARITY_AUDIT.csv`
-- `R1_AUTHORITY_JOIN_AUDIT.csv`
-- `CANONICAL_REGISTRY_JOIN_AUDIT.csv`
-- `GOVERNED_SCOPE_COMPARISON.csv`
-- `CACHE_SELECTED_PARITY.csv`
-- `INFORMATION_LOSS_AUDIT.csv`
-- `STATIC_EVIDENCE_PROVENANCE.csv`
-- `INVARIANT_RESULTS.csv`
-- `FAILURES.csv`
-- `EXTENDED_FAILURES.csv`
-- `AUDIT_RUN.json`
-- `EXTENDED_AUDIT_SUMMARY.json`
-
-Every exact header and allowed source-equivalence classification is fixed in `D05_AUDIT_CONTRACT.json`.
+Mismatch is fatal `D05_E_STATIC_PROVENANCE_MISMATCH`.
 
 ## Source-equivalence bar
 
-The apparatus may establish DB-internal row/predicate preservation or known loss. It may not return `PROVED_SOURCE_EQUIVALENT` merely because raw DB rows and derived views/cache agree. Proving source equivalence additionally requires source-native evidence for routing/not-asked semantics, original response labels/codes where not retained, weighting design, geography/demographic detail, and ingest provenance. Until those are physically verified, the strongest lawful outcome remains `POTENTIALLY_SOURCE_EQUIVALENT_UNPROVED`.
+Database-internal parity is not source equivalence. `PROVED_SOURCE_EQUIVALENT` remains unavailable unless source-native evidence also establishes routing/not-asked semantics, original labels/codes where not retained, weighting design, geographic detail, demographic coordinates, multiple-response semantics, source identifiers, and ingest provenance.
+
+Therefore a database-only run can discover known loss or establish potential equivalence, but it cannot launder missing source-native evidence into a proof.
