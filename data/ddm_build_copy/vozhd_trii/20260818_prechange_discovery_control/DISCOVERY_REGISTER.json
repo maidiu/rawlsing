@@ -1,13 +1,13 @@
 {
   "control_surface": "VOZHD_TRII_PRECHANGE_DISCOVERY",
-  "status": "ACTIVE_RESEARCH_CONTROL__D12_ACCEPTED__D13_READY__NO_ARCHITECTURAL_CHANGE_AUTHORIZED",
+  "status": "ACTIVE_RESEARCH_CONTROL__D13_ACCEPTED__D14_READY__NO_ARCHITECTURAL_CHANGE_AUTHORIZED",
   "repository": "maidiu/rawlsing",
   "branch": "agent/vozhd-trii-prechange-discovery-control",
   "base_sha": "0777a34e50221bde6801dbaca26c058a7350c9e8",
   "worker_launch_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
   "frozen_vt3_base_sha": "8c87f7725ba58202b5377c974548140420709fa9",
   "target_corrective_launch_sha": "6899e58e7ed509327fca3e0294b76bef378d0caf",
-  "latest_parent_adjudication": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/17_D12_RETURN_ADJUDICATION.md",
+  "latest_parent_adjudication": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/18_D13_RETURN_ADJUDICATION.md",
   "campaign_constraints": [
     "POPULATED_SUBSTRATE_EMPIRICAL_FACTS_UNKNOWN__NO_DB_ACCESS_EXPECTED",
     "schema_or_code_must_not_substitute_for_populated empirical evidence",
@@ -21,9 +21,11 @@
     "target DDM terminal services are autonomous forward social discovery, reverse positioned-subject empirical possibility inference, and structural/stratal field production",
     "conditional population probability to direct actor state or finished belief propensity is forbidden",
     "distinct respondent universes remain source-indexed unless exact join/pooling/composition authority exists",
-    "respondent incidence or information-equivalent exact representation governs the future-selectable respondent-bound empirical frontier",
+    "respondent-event/coordinate incidence or information-equivalent exact representation governs the future-selectable respondent-bound empirical frontier",
     "bounded exact contingency may satisfy its fully fixed bounded query",
     "MATERIALIZE_ALL_PERMITTED is not required",
+    "C11 minimum normalized respondent-event/coordinate incidence plus authority/provenance is the accepted specification-level physical information family",
+    "no current populated C11 implementation is certified",
     "no architecture synthesis before D15"
   ],
   "courts": [
@@ -43,39 +45,43 @@
       "title":"Final terminal DDM capability closure",
       "branch":"agent/vozhd-trii-d12-final-terminal-capability-closure",
       "worker_base_sha":"2eebbfde73a1cc2b83eb4c216bbd4ee7b321417d",
-      "observed_branch_state":"7_COMMITS_AHEAD_OF_COMMANDED_BASE__COURT_OUTPUT_ONLY",
       "status":"ACCEPTED__TERMINAL_CAPABILITY_FRONTIER_CLOSED",
-      "final_verdict":"TERMINAL_DDM_CAPABILITY_FRONTIER_CLOSED__THREE_SERVICES_REQUIRED__DEEP_RESPONDENT_CONDITIONAL_AND_JOINT_RECONSTRUCTIBILITY_REQUIRED__AUTONOMOUS_DISCOVERY_REQUIRED__REVERSE_POSITIONED_SUBJECT_FIELD_REQUIRED__STRUCTURAL_EMPIRICAL_LANE_REQUIRED__CURRENT_ARTIFACT_SUITE_NOT_CANONICAL",
-      "terminal_services":[
-        "AUTONOMOUS_FORWARD_SOCIAL_DISCOVERY",
-        "REVERSE_POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_INFERENCE",
-        "STRUCTURAL_STRATAL_FIELD_PRODUCTION"
-      ],
-      "handoffs":[
-        "courts/D12/D13_RETENTION_FRONTIER_HANDOFF.json",
-        "courts/D12/D14_WORKLOAD_FRONTIER_HANDOFF.json"
-      ],
-      "parent_normalizations":[
-        "D12F search-family list is capability/coverage law, not mandatory artifact or algorithm list",
-        "D12 UNPROVEN C32/C33 are open model-family choices, not missing terminal capabilities",
-        "no current or historical artifact is selected as canonical physical carrier"
-      ]
+      "terminal_services":["AUTONOMOUS_FORWARD_SOCIAL_DISCOVERY","REVERSE_POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_INFERENCE","STRUCTURAL_STRATAL_FIELD_PRODUCTION"],
+      "handoffs":["courts/D12/D13_RETENTION_FRONTIER_HANDOFF.json","courts/D12/D14_WORKLOAD_FRONTIER_HANDOFF.json"]
     },
     {
       "id":"D13",
-      "title":"Physical retention and exact replay proof",
-      "status":"READY_FOR_FINAL_PHYSICAL_RETENTION_AND_REPLAY_COURT",
-      "depends_on_status":"SATISFIED_WITH_D12_ACCEPTED",
-      "required_input":"courts/D12/D13_RETENTION_FRONTIER_HANDOFF.json",
-      "accepted_feeders":["D13A","D13B","D13C"],
-      "required_frontier":"R01-R14 plus equivalence tests T01-T18",
-      "inherited_constraint":"Populated/source-equivalence dimensions that cannot be proven without data must remain BLOCKED/UNVERIFIED; no schema-only success or failure inference."
+      "title":"Final physical retention and exact replay sufficiency",
+      "branch":"agent/vozhd-trii-d13-final-retention-replay",
+      "worker_base_sha":"f6cf5c4635b2d5334797c4e267347b47e20407e8",
+      "observed_branch_state":"7_COMMITS_AHEAD_OF_COMMANDED_BASE__COURT_OUTPUT_ONLY",
+      "status":"ACCEPTED__PHYSICAL_INFORMATION_FRONTIER_CLOSED",
+      "final_verdict":"D13_PHYSICAL_FRONTIER_CLOSED__MINIMUM_NORMALIZED_RESPONDENT_EVENT_COORDINATE_INCIDENCE_PLUS_AUTHORITY_PROVENANCE_SELECTED__SPECIFICATION_LEVEL_SUFFICIENCY__NO_CURRENT_POPULATED_INSTANCE_CERTIFIED",
+      "selected_information_family":"C11_MINIMUM_NORMALIZED_RESPONDENT_EVENT_COORDINATE_INCIDENCE_PLUS_AUTHORITY_PROVENANCE",
+      "required_atoms":"M01-M18",
+      "replay_frontier":"D12 R01-R14 and T01-T18",
+      "current_carrier_rulings":{
+        "current_postgres":"PROVEN_INSUFFICIENT_FOR_FULL_FUTURE_FRONTIER__POPULATED_PROOF_BLOCKED",
+        "current_facet_surfaces":"PROVEN_INSUFFICIENT_FOR_FULL_FUTURE_FRONTIER__POPULATED_PROOF_BLOCKED",
+        "current_shared_v550_v550j":"PROVEN_INSUFFICIENT_FOR_FULL_FUTURE_FRONTIER__BOUNDED_SELECTED_USE_ONLY__POPULATED_PARITY_BLOCKED",
+        "selected_E1":"PROVEN_INSUFFICIENT",
+        "selected_E2":"SUFFICIENT_ONLY_FOR_BOUNDED_FIXED_QUERY_FRONTIER",
+        "E3_E4":"PROVEN_INSUFFICIENT_AS_RETENTION_AUTHORITY"
+      },
+      "handoff":"courts/D13/D14_PHYSICAL_CARRIER_HANDOFF.json",
+      "parent_normalizations":[
+        "C11 sufficiency is information-specification-level only, not current populated certification",
+        "source snapshots are not information-theoretically mandatory only after positive injective source-equivalence proof; D13 does not authorize deletion",
+        "derived distributions/conditionals/joints/branches/clouds/associations may be replayable views but no deletion schedule is authorized"
+      ]
     },
     {
       "id":"D14",
       "title":"Compute and materialization benchmark",
-      "status":"BLOCKED_BY_D13__D14A_BASELINE_FEEDER_ACCEPTED",
-      "required_input":"courts/D12/D14_WORKLOAD_FRONTIER_HANDOFF.json"
+      "status":"READY_FOR_FINAL_COMPUTE_AND_MATERIALIZATION_BENCHMARK_COURT",
+      "depends_on_status":"SATISFIED_WITH_D12_D13_ACCEPTED",
+      "required_inputs":["courts/D12/D14_WORKLOAD_FRONTIER_HANDOFF.json","courts/D13/D14_PHYSICAL_CARRIER_HANDOFF.json"],
+      "accepted_feeder":"D14A"
     },
     {"id":"D15","title":"Parent Vozhd Trii synthesis","status":"BLOCKED__ARCHITECTURE_NOT_AUTHORIZED"}
   ],
@@ -89,17 +95,17 @@
     {"id":"D12F","branch":"agent/vozhd-trii-d12f-autonomous-social-discovery","status":"ACCEPTED_WITH_CAPABILITY_CLASS_NORMALIZATION__TARGET_DISCOVERY_REQUIRED__GENERIC_CURRENT_AUTHORITY_MISSING"},
     {"id":"D12G","branch":"agent/vozhd-trii-d12g-cross-survey-multi-universe","status":"ACCEPTED__DISTINCT_UNIVERSES_BY_DEFAULT__SOURCE_INDEXED_COMPOSITION__EXACT_AUTHORITY_REQUIRED_FOR_JOIN_POOLING_BACKFILL"},
     {"id":"D13A","branch":"agent/vozhd-trii-d13a-retention-candidate-audit","status":"NON_DISPOSITIVE_INFORMATION_CAPABILITY_AUDIT_ACCEPTED"},
-    {"id":"D13B","branch":"agent/vozhd-trii-d13b-replay-proof-protocol","status":"NON_DISPOSITIVE_REPLAY_PROTOCOL_ACCEPTED__D12_FRONTIER_NOW_CLOSED"},
-    {"id":"D13C","branch":"agent/vozhd-trii-d13c-shared-substrate-static-loss","status":"NON_DISPOSITIVE_STATIC_LOSS_AUDIT_ACCEPTED","accepted_core":"REPLAY_SAFETY_NOT_PROVEN_BY_CURRENT_SHARED_SUBSTRATE_STATIC_CONTRACT"},
+    {"id":"D13B","branch":"agent/vozhd-trii-d13b-replay-proof-protocol","status":"NON_DISPOSITIVE_REPLAY_PROTOCOL_ACCEPTED__CONSUMED_BY_FINAL_D13"},
+    {"id":"D13C","branch":"agent/vozhd-trii-d13c-shared-substrate-static-loss","status":"NON_DISPOSITIVE_STATIC_LOSS_AUDIT_ACCEPTED__CONSUMED_BY_FINAL_D13"},
     {"id":"D14A","branch":"agent/vozhd-trii-d14a-current-cost-geometry","status":"NON_DISPOSITIVE_CURRENT_COST_BASELINE_ACCEPTED__REAL_RUNTIME_MEASUREMENT_BLOCKED"}
   ],
-  "d13_final_acceptance_requirements":[
-    "adjudicate candidate physical carriers against D12 R01-R14",
-    "execute or reason against D12 T01-T18 replay/equivalence tests",
-    "separate statically/information-theoretically proved sufficiency from populated/source-equivalence proof",
-    "do not weaken D12 frontier because a current carrier is convenient",
-    "do not select architecture beyond physical retention/replay jurisdiction",
-    "preserve typed blocked verdicts where unavailable populated data prevents proof"
+  "d14_final_acceptance_requirements":[
+    "benchmark the D12 terminal workload frontier against the D13 C11 information family as the primary lawful target carrier",
+    "preserve D13 equivalence assumptions EA01-EA08",
+    "measure current C02/C03/C04 only as baseline, never as lawful full-frontier replacement",
+    "separate terminal work from optional E1/E2 caches and E3/E4 diagnostics",
+    "do not infer live cardinalities or runtime figures without populated data",
+    "do not select architecture, cache policy, materialization policy, search algorithm family, migration, or deletion schedule"
   ],
   "d15_acceptance_tests":[
     "autonomously discover a social fork the designer did not pre-specify",
