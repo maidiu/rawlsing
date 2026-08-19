@@ -1,44 +1,62 @@
-# VELIKII VOZHD — CHAT REASSIGNMENT WAVE 02
+# VELIKII VOZHD — CHAT REASSIGNMENT WAVE 02 — HISTORICAL RECORD
 
-Status: `ACTIVE__FIRST_THREE_ALREADY_RUNNING__REMAINING_SEVEN_FOLDER_ORDERS_INSTALLED`
+Status: `SUPERSEDED__DO_NOT_EXECUTE`
 Common semantic base: `baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d`
 R03 broad topology: `CLOSED_UNCHANGED`
 Production implementation: `FORBIDDEN`
 
-## Operating rule
+## HARD SUPERSESSION NOTICE
 
-For reassigned completed chats, `00_NEW_ROLE_AND_TASK.md` is placed inside the CURRENT/OLD worker folder on its CURRENT/OLD branch. The accepted semantic return remains pinned to the exact pre-reassignment head recorded below. The administrative reassignment commit does not amend or supersede that accepted return.
+This file records the historical Wave-02 reassignment scheme. It is NOT current dispatch authority.
 
-The worker reads `00_NEW_ROLE_AND_TASK.md`, then switches to the NEW mission branch named there before writing mission outputs. It must not write new mission outputs onto the old accepted branch.
+The former mechanism—writing `00_NEW_ROLE_AND_TASK.md` into an old/current semantic worker branch—has been retired because it contaminates semantic branch tips with administrative state and conflates chat identity, worker role, mission branch, and semantic result identity.
 
-User dispatch for the newly assigned seven can therefore be exactly:
+Current and future assignment authority lives ONLY on:
 
-`Check your folder instructions for your new role and task.`
+`agent/vozhd-trii-stage-close-dispatch`
 
-## Already running — do not restart or reassign
+under:
 
-1. `M1_BINDER` — worker class `SEAM BINDER` — already running in the former S554D chat on `agent/vozhd-trii-dr-r03-seam-m1-temporal-v554`.
-2. `M2_BINDER` — worker class `SEAM BINDER` — already running in the former SCR555 chat on `agent/vozhd-trii-dr-r03-seam-m2-atomic-route`.
-3. `SCRV3` — worker class `SUB-VOZHD` — already running on `agent/vozhd-trii-dr-r03-close-v3-empirical-possibility`.
+`data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/DISPATCH/`
 
-No further launch/reassignment action is required for those three.
+Governing protocol:
 
-## Newly assigned through existing-chat folder instructions
+`DISPATCH/README.md`
 
-4. OLD CHAT `SCR5578` — accepted/local head `06eefed7bb8e7db7fd2465aa262653ed95461e84` -> NEW CLASS `FLOATING SPECIALIST` -> `SV3A` -> branch `agent/vozhd-trii-dr-r03-spec-v3-input-lifecycle`.
-5. OLD CHAT `SCRV2APP` — accepted/local head `24f8811bb7d2eaa18cfac1cb907c48bba8d08f23` -> NEW CLASS `FLOATING SPECIALIST` -> `SV3B` -> branch `agent/vozhd-trii-dr-r03-spec-v3-comparator-snapshot`.
-6. OLD CHAT `SCR553` — accepted head `b261ff885b2b7fd2cd065917b862eb541e24c4a2` -> NEW CLASS `FLOATING SPECIALIST` -> `SV3C` -> branch `agent/vozhd-trii-dr-r03-spec-v3-effective-time-source-state`.
-7. OLD CHAT `SV3M` — accepted feeder head `0ce8eb656fec6a3ac0d2a36a12c9ba217603e7cb` -> NEW CLASS `FLOATING SPECIALIST` -> `SV3F` -> branch `agent/vozhd-trii-dr-r03-spec-v3-structural-peer-prior`.
-8. CHAT `SINSP` -> CLASS `INSPECTORATE` -> continue branch `agent/vozhd-trii-dr-r03-inspectorate-stage-close` with updated exact-head attack set.
-9. OLD CHAT `SCR556` — accepted/local head `9cfefc722f51cfab64952f004afef67fe65eb4a5` -> NEW CLASS `SEAM PREFLIGHT SPECIALIST` -> `M3_PREFLIGHT` -> branch `agent/vozhd-trii-dr-r03-seam-m3-preflight`.
-10. OLD CHAT `S5578C` — accepted feeder head `50d9b9f0ea36c95bd2423206901aa39e3b48092a` -> NEW CLASS `SEAM PREFLIGHT SPECIALIST` -> `M4_PREFLIGHT` -> branch `agent/vozhd-trii-dr-r03-seam-m4-preflight`.
+Current command-review receipt:
 
-Every one of these seven now has `00_NEW_ROLE_AND_TASK.md` installed in the folder its existing chat already knows.
+`DISPATCH/COMMAND_REVIEW_01/RESULT.md`
 
-## Explicitly not assigned
+Current cleanup receipt:
 
-`SCR554` remains banked at accepted local head `b5d745ac70c833324c8be0addf6c08ad72372263` and is not consuming a worker slot.
+`DISPATCH/COMMAND_REVIEW_01/CLEANUP_RECEIPT.json`
 
-## Dependency law
+All permanent chat mailboxes are presently `HOLD_FOR_COMMAND_REVIEW`. No assignment is implied by this historical file.
 
-M1 and M2 are running. M3 preflight and M4 preflight are non-dispositive only. Final M3 remains blocked on accepted M2; final M4 remains blocked on accepted M3; M5 remains blocked on accepted M4 + SCRV3; M6 remains blocked on accepted SCRV3.
+## Historical Wave-02 mapping
+
+The following mapping is retained solely as administrative provenance:
+
+1. S554D-origin chat -> M1 Binder.
+2. SCR555-origin chat -> M2 Binder.
+3. SCRV3 chat -> standing SCRV3 Sub-Vozhd.
+4. SCR5578-origin chat -> SV3A Floating Specialist.
+5. SCRV2APP-origin chat -> SV3B Floating Specialist.
+6. SCR553-origin chat -> SV3C Floating Specialist.
+7. SV3M-origin chat -> SV3F Floating Specialist.
+8. SINSP chat -> continued Inspectorate.
+9. SCR556-origin chat -> M3 Preflight Specialist.
+10. S5578C-origin chat -> M4 Preflight Specialist.
+
+Later in the same historical recycle cycle:
+
+- M1-origin/S554D chat -> M6 Preflight Specialist.
+- M2-origin/SCR555 chat -> M3 Final Seam Binder.
+
+These missions have returned and were adjudicated in `COMMAND_REVIEW_01`.
+
+## Legacy assignment files
+
+Legacy `00_NEW_ROLE_AND_TASK.md` files have been removed from normalized semantic branch tips under the verified hygiene cleanup. They MUST NOT be recreated on semantic branches.
+
+For future recycling, use the permanent dispatch mailbox for the chat and issue a new immutable `assignment_id` that sends the chat to a separate mission branch.
