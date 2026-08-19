@@ -1,0 +1,132 @@
+{
+  "seam": "M3_V555_TO_V556_HIGHER_ORDER_STRUCTURAL",
+  "result_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED",
+  "repository": "maidiu/rawlsing",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-seam-m3-higher-order-structural",
+  "branch_verified_identical_to_base_before_writing": true,
+  "worker_class": "SEAM_BINDER",
+  "mission": "M3_FINAL__V555_TO_V556_HIGHER_ORDER_STRUCTURAL_SEAM",
+  "accepted_inputs": {
+    "scr555_head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+    "scr555_contract_blob": "8926500b7af442c0e07483442047aaad6cdeab63",
+    "scr556_head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+    "scr556_contract_blob": "f4e8146885b1145b116b173d2d4a148e3d55db4a",
+    "m2_semantic_package_head": "92128619122886d0ced877a29b42fdb453765246",
+    "m2_result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+    "m2_result_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+    "m2_seam_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c",
+    "m3_preflight_token": "M3_PREFLIGHT_COMPLETE",
+    "m3_preflight_authority": "NON_DISPOSITIVE_PREFLIGHT_ONLY",
+    "m1_current_token": "M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED",
+    "m1_scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263"
+  },
+  "result": {
+    "m3_status": "ACCEPTED",
+    "scr556_status_after_m3": "EXACT_CONTRACT_CLOSED",
+    "scr556_token_after_m3": "SCR556_EXACT_CONTRACT_CLOSED",
+    "blocking_authority_conflict": false,
+    "harmonization_required": false,
+    "broad_topology_contradiction_found": false,
+    "production_code_modified": false,
+    "d15_reopened": false,
+    "source_or_artifact_retirement": false,
+    "new_v555_semantics_created": false,
+    "new_v556_semantics_created": false
+  },
+  "scr556_unresolved_bindings": {
+    "SCR555_CANONICAL_ROUTE_IDENTITY_REFERENCE": "BOUND",
+    "SCR555_ROUTE_STATE_ELIGIBILITY_FOR_V556": "BOUND",
+    "SCR555_ROUTE_REFERENCE_CLOSURE": "BOUND"
+  },
+  "canonical_v555_participant": {
+    "scr556_symbol": "SCR555_ACCEPTED_CANONICAL_ROUTE_IDENTITY_REF",
+    "semantic_identity_kind": "ORDERED_SEVEN_FIELD_V555_ROUTE_TUPLE_OR_EXACT_VERIFIABLE_ADDRESS_THEREOF",
+    "tuple_order": [
+      "EXACT_V554_F1_REF",
+      "route_rule_id@route_rule_version",
+      "route_shape_id@route_shape_version",
+      "channel_structural_role_id",
+      "EXACT_STRUCTURAL_CHANNEL_REF",
+      "receiving_constraint_kind",
+      "EXACT_TARGET_RECEIVING_POSITION_REF"
+    ],
+    "first_field_m2_binding": "accepted canonical SCR554 F1_id",
+    "b1_is_route_identity_member": false,
+    "f2_is_route_identity_member": false,
+    "v556_may_reid": false,
+    "v556_may_reconstruct": false,
+    "locator_may_replace_tuple_equality": false
+  },
+  "participant_eligibility": {
+    "positive_route_state": "ROUTE_CANDIDATE_AUTHORIZED",
+    "positive_route_state_is_necessary_not_sufficient_for_v556_supported": true,
+    "nonpositive_or_nonroute_states": [
+      "VALID_EMPTY",
+      "V554_STRUCTURAL_USE_DENIED",
+      "NO_GOVERNED_ROUTE_AUTHORITY",
+      "ROUTE_BLOCKED_BY_GOVERNED_RULE",
+      "ROUTE_STATIC_AUTHORITY_MISSING",
+      "ROUTE_IDENTITY_UNRESOLVED",
+      "CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE"
+    ],
+    "deferred_inherited_context": "DEFERRED_RUNTIME_BINDING_REFERENCED_ONLY__V554_OWNED_EXACT_REFERENCE_ONLY",
+    "v556_may_rename_upstream_state": false
+  },
+  "higher_order_participant_law": {
+    "participant_occurrences": "2..n under exact V556 rule authority",
+    "positive_distinct_route_floor": 2,
+    "binding_fields": [
+      "v555_route_identity_ref",
+      "role",
+      "ordinal_or_null",
+      "multiplicity_index"
+    ],
+    "role_order_cardinality_multiplicity_owner": "EXACT_V556_RULE_AUTHORITY",
+    "same_route_reuse_default": "FORBIDDEN",
+    "same_route_reuse_if_explicitly_authorized": "SEPARATELY_BIND_EVERY_OCCURRENCE__NO_NEW_V555_IDENTITY__DOES_NOT_BY_ITSELF_SATISFY_DISTINCT_ROUTE_FLOOR"
+  },
+  "source_composition": {
+    "default": "NONE_BY_DEFAULT",
+    "shared_context_grants_composition": false,
+    "positive_cross_source_requires_exact_operation_specific_authority": true
+  },
+  "typed_v556_states_preserved": [
+    "SUPPORTED",
+    "VALID_EMPTY",
+    "DENIED",
+    "NONCOMPARABLE",
+    "UNKNOWN_AUTHORITY",
+    "CONFLICTING_AUTHORITY",
+    "INVALID_PARTICIPANT_SET",
+    "UNRESOLVABLE_PARTICIPANT"
+  ],
+  "no_filler": {
+    "when_no_higher_order_meaning_required": "ZERO_V556_OBJECTS",
+    "direct_v555_to_v557_preserved": true,
+    "route_candidate_authorized_is_v557_permission": false
+  },
+  "bypass_prohibitions": [
+    "StructuralEmpiricalAdmission -> V556 participant",
+    "V553 object -> V556 participant",
+    "V554 basis/F1 alone -> V556 participant",
+    "legacy route seed/run/slot -> V556 participant",
+    "repository locator without exact V555 dereference -> V556 participant",
+    "shared endpoint/time/geography/source/stratum/provenance -> V556 relation",
+    "provenance reachability -> source composition authority"
+  ],
+  "freshness": {
+    "m2_staleness_guard_triggered": false,
+    "reason": "Accepted M1 pins the same SCR554 head used by M2 and reports no harmonization or stage branch merge/rebase.",
+    "transitive_staleness_rule": "If a later higher authority materially changes SCR554 such that M2 is stale, M3 is stale until M2 is re-adjudicated and M3 rechecked."
+  },
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "M3_BINDING_RECEIPT.json",
+    "M3_SEAM_CONTRACT.md",
+    "M3_SEAM_CONTRACT.json",
+    "M3_HOSTILE_TEST_ORACLE.md",
+    "M3_CONFLICTS.json"
+  ]
+}
