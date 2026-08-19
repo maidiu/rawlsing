@@ -43,7 +43,7 @@ Observed accepted content identities:
 
 - `RESULT.md` blob SHA: `5afcbc03c51578725dfeb1f58baa3352e51ce4c0`
 - `RESULT.json` blob SHA: `7c88bdb7f0b4bbc7e76b305ff6e41fa5ded2d9f6`
-- `AUTHORITY_TO_EXECUTION_GRAPH.csv` blob SHA: `99d35cce7afd971f7ed047fa884c16e86caf4c17`
+- `AUTHORITY_TO_EXECUTION_GRAPH.csv` blob SHA: `3c4ce74fc21e23f63ef64b3b343638261932b912`
 - `AUTHORITY_TO_COMPUTE_GATE_MATRIX.csv` blob SHA: `2774bb1f240257a80074d334b4c606a74bbf48d0`
 
 The GitHub connector used for this adjudication exposes branch comparison state but not the current branch-tip commit SHA in the compare response. Parent acceptance is therefore bound to the exact artifact blob identities above plus the observed seven-commit-ahead branch state, rather than inventing a tip SHA.
