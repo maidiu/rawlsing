@@ -1,0 +1,126 @@
+{
+  "court": "S553R",
+  "role": "OPTIONAL_FLOATING_SPECIALIST__NON_DISPOSITIVE_TO_SCR553_AND_M1",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-spec-v553-routing",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCR553/feeders/S553R/",
+  "token": "S553R_FEEDER_COMPLETE",
+  "production_code_modified": false,
+  "d15_upstream_reopened": false,
+  "r03_broad_topology_reopened": false,
+  "authority_conflict": false,
+  "broad_topology_counterexample": false,
+  "binding_inputs": {
+    "parent_24": "24_DR_R03_SYNTHESIS_RETURN_ADJUDICATION_AND_STAGE_CLOSE_GATE.md",
+    "parent_25": "25_STAGE_CLOSE_READ_PARALLEL_COMMAND_AND_LAUNCH_AUTHORITY.md",
+    "r03_synthesis_branch": "agent/vozhd-trii-dr-r03-synthesis",
+    "r03_result": ["RESULT.md", "RESULT.json"],
+    "r03_final_broad_dag": "FINAL_BROAD_DAG.md",
+    "r03_whole_machine_gate": "WHOLE_MACHINE_CLOSURE_GATE.md",
+    "r03_stage_close_campaign": "STAGE_CLOSE_READ_CAMPAIGN.md",
+    "scr553_burden": "STAGE_CLOSE_READ_BURDEN_MATRIX.csv#SCR553_V553_TEMPORAL_JURISDICTION",
+    "ep553_head": "f90cb641cb9f5c18883befd41aac9e5d63002376",
+    "r03a_head": "3d96c1213b46d3e6a908c83c2525f1ef20282f88",
+    "r03f_head": "9f661931d51e03f137601b27eeaecf77ab11ad2f",
+    "accepted_v553_law": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/integration/V553_COMPLETION_IMPLEMENTATION_RULING.md"
+  },
+  "principal_holding": "V553 need is evaluated per exact governed downstream use chain; source relation/comparability/pooling authority remains separately owned and is never created by V553; applicable temporal/source negative authority blocks direct positive fallback for the same use.",
+  "routing_predicate": {
+    "inputs": [
+      "StructuralEmpiricalAdmission A",
+      "exact governed downstream use U",
+      "source relation/applicability prerequisite states",
+      "requested V553 temporal semantic operations",
+      "V553 operation authority refs",
+      "applicable temporal/source negative refs",
+      "direct V554 rule eligibility when relevant"
+    ],
+    "source_gate": "If U requires a cross-source relation/comparison/harmonization, exact separately-owned source relation/applicability/comparability authority must be positive for that exact operation. V553 cannot infer or repair missing/unknown/negative source authority.",
+    "needs_v553": "NEW_T(A,U) = V553-owned temporal/comparability semantics required by U minus those already lawfully complete in A for U. V553 is required iff NEW_T is nonempty and exact operation authority exists, subject to source/negative gates.",
+    "direct_bypass": "If NEW_T is empty and the exact target use is otherwise positively governed and V554 explicitly admits DIRECT_STRUCTURAL_EMPIRICAL_ADMISSION, route directly to V554. Never synthesize a V553 wrapper merely for transit.",
+    "later_use": "ROUTE(A,U1) does not determine ROUTE(A,U2). A later use may newly require V553 even when an earlier use lawfully bypassed it.",
+    "negative_precedence": "For the same exact use, an applicable TEMPORAL_LIMIT/NONCOMPARABLE/MISSING_AUTHORITY/CONFLICT state cannot be bypassed by choosing the direct basis. A distinct use is evaluated independently.",
+    "unknown_policy": "Unknown or missing required source relation, temporal completeness, temporal operation authority, or direct-rule eligibility produces no positive route; emit a V553 TEMPORAL_LIMIT only where an exact V553 limit rule owns the attempted temporal operation."
+  },
+  "non_triggers": [
+    "timestamp presence",
+    "historical source",
+    "period label",
+    "same calendar year",
+    "same canonical label",
+    "same geography string",
+    "same source family",
+    "V553 artifact presence",
+    "confidence/support magnitude",
+    "artifact recency",
+    "row/file order"
+  ],
+  "conditional_v553_triggers": [
+    "new canonical temporal identity/observation semantics required by the use",
+    "cross-wave/cross-time comparability",
+    "temporal harmonization",
+    "derived interval/effective period",
+    "relation timing/sequence",
+    "delta/change",
+    "persistence",
+    "drift",
+    "reversal",
+    "rupture/revision under explicit rule authority",
+    "source-time temporal relation",
+    "temporal limit/noncomparability as a first-class result"
+  ],
+  "source_comparability_boundary": {
+    "temporal_comparability": "Does not imply same respondent universe, respondent linkage, pooling, or estimand composition.",
+    "pooling": "Requires separate explicit positive authority; provenance or temporal comparability is insufficient.",
+    "respondent_linkage": "Requires exact linkage authority; temporal/source similarity is insufficient.",
+    "composition": "Requires operation-specific positive composition/estimand authority; NONE_BY_DEFAULT.",
+    "provenance": "Reachability proves origin/authority inspection only; it grants no source relation or composition permission."
+  },
+  "hostile_findings": [
+    {
+      "id": "S553R-H01",
+      "case": "U1 direct snapshot use, U2 later persistence/change use over same admission",
+      "result": "USE_CHAIN_REEVALUATION_REQUIRED__U2_V553_OR_FAIL_CLOSED"
+    },
+    {
+      "id": "S553R-H02",
+      "case": "timestamp/history metadata exists but target use needs no new temporal meaning",
+      "result": "NO_V553__DIRECT_V554_IF_RULE_ELIGIBLE"
+    },
+    {
+      "id": "S553R-H03",
+      "case": "distinct sources share year/labels/canonical values but lack source relation authority",
+      "result": "NO_POSITIVE_CROSS_SOURCE_TEMPORAL_SEMANTIC__NO_POOLING__TYPED_NEGATIVE_OR_FAIL_CLOSED"
+    },
+    {
+      "id": "S553R-H04",
+      "case": "V553 temporal negative/limit exists while a direct basis is physically available",
+      "result": "NO_DIRECT_POSITIVE_FALLBACK_FOR_SAME_USE"
+    }
+  ],
+  "handoff": {
+    "SCR553": [
+      "freeze exact governed-use identity and use-scoped NEW_T predicate",
+      "freeze separately-owned source relation/applicability ref/state intake",
+      "freeze V553 operation authority requirements",
+      "freeze TEMPORAL_* family mapping and limit behavior",
+      "freeze deterministic replay/identity and raw-fact rejection"
+    ],
+    "M1": [
+      "prove direct and V553 basis selection is use-scoped rather than object-global",
+      "prove temporal/source negatives cannot be bypassed by direct basis for same use",
+      "prove source relation authority is not rewritten as V554 temporal completeness",
+      "prove later-use temporal demand survives earlier bypass",
+      "prove missing/unknown required authority fails closed"
+    ]
+  },
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "ROUTING_CASE_MATRIX.csv",
+    "SOURCE_COMPARABILITY_NEGATIVES.csv",
+    "HOSTILE_FIXTURES.md",
+    "PARENT_HANDOFF.md"
+  ]
+}
