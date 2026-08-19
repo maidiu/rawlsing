@@ -1,0 +1,114 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "court": "R03D_ONTOLOGY_AUTHORITY_LEAKAGE",
+  "repository": "maidiu/rawlsing",
+  "issued_exact_worker_base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+  "branch": "agent/vozhd-trii-dr-r03d-ontology-authority-audit",
+  "authority": "NON_DISPOSITIVE_HOSTILE_EVIDENCE",
+  "production_implementation_modified": false,
+  "frozen_upstream_reopened": false,
+  "final_architecture_selected": false,
+  "status": "R02_HOLDING_REQUIRES_QUALIFICATION",
+  "result_token": "ONTOLOGY_SEPARATION_SURVIVES_ATTACK__NEGATIVE_AUTHORITY_HARDENING_REQUIRED",
+  "attack_count": 10,
+  "outcome_counts": {
+    "SURVIVES": 3,
+    "SURVIVES_WITH_QUALIFICATION": 7,
+    "FALSIFIED": 0,
+    "BLOCKED_MISSING_AUTHORITY": 0,
+    "DEFER_TO_STAGE_CLOSE_READ": 0
+  },
+  "falsified_r02_holdings": [],
+  "clean_survivals": [
+    "DiscoveryResultReceipt cannot become structural fact/runtime authority without separately governed EmpiricalFact + StructuralEmpiricalAdmission",
+    "StructuralEmpiricalAdmission cannot become generated actor position/lived/psychological state",
+    "ReplayReceipt remains audit/replay-only and cannot become a causal/runtime prior"
+  ],
+  "qualified_survivals": [
+    {
+      "attack_id": "D02",
+      "holding": "Raw EmpiricalFact cannot directly enter V553/V554",
+      "qualification": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED",
+      "dependency": "V553_AND_V554_CLOSE_READ"
+    },
+    {
+      "attack_id": "D03",
+      "holding": "PSEPF cannot enter V557/V558 structural publication/repository",
+      "qualification": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED",
+      "dependency": "V557_V558_CLOSE_READ"
+    },
+    {
+      "attack_id": "D04",
+      "holding": "PSEPF mass/rank/configuration cannot become actor belief/response/identity/memory/knowledge/psyche",
+      "qualification": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED__V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY_REQUIRED",
+      "dependency": "V3_CLOSE_READ"
+    },
+    {
+      "attack_id": "D05",
+      "holding": "ActorComparatorReceipt is V3 provenance only, not a standalone developmental prior",
+      "qualification": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED",
+      "dependency": "V3_CLOSE_READ"
+    },
+    {
+      "attack_id": "D06",
+      "holding": "ResolvedStructuralContext cannot directly authorize V2/application persona/voice/belief/expression",
+      "qualification": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED__V2_APP_NONCONSUMPTION",
+      "dependency": "V3_AND_V2_APP_CLOSE_READ"
+    },
+    {
+      "attack_id": "D07",
+      "holding": "V557/V558 cannot semantically re-own or rewrite producer objects",
+      "qualification": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED__PRODUCER_REFERENCE_REMAINS_AUTHORITATIVE__MISMATCH_FAILS_CLOSED",
+      "dependency": "V557_V558_CLOSE_READ"
+    },
+    {
+      "attack_id": "D10",
+      "holding": "Generated structural position cannot substitute for exact objective actor facts in ActorComparabilityService",
+      "qualification": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED__OBJECTIVE_ACTOR_FACT_PUBLICATION_SEAM_REQUIRED",
+      "dependency": "V3_COMPARATOR_INTEGRATION_CLOSE_READ"
+    }
+  ],
+  "required_negative_authority_hardening": [
+    "V553 corrected admission intake rejects unadmitted EmpiricalFact and reverse-lane objects",
+    "V554 eligible-basis registry rejects raw EmpiricalFact/PSEPF and accepts only governed basis classes",
+    "V557 publication family authority excludes PSEPF and forbids producer semantic re-ID",
+    "V558 StructuralPriorRepository/index/resolver excludes PSEPF and preserves producer-owned content-addressed identity",
+    "V3EmpiricalPossibilityInput accepts comparator receipt only as provenance and preserves typed negative/lifecycle state",
+    "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY forbids direct field.mass/modal-cell -> actor-state assignment",
+    "V2/application explicitly rejects PSEPF, comparator receipt, possibility input and ResolvedStructuralContext as direct persona/voice/belief/expression authority",
+    "ActorComparabilityService intake accepts governed objective actor-fact refs/effective time and rejects generated structural position, belief, memory, fuzzy and nearest-cohort substitutions"
+  ],
+  "binding_evidence": [
+    "CONTROL.json",
+    "R03/AUTHORITY_DELEGATION.md",
+    "R03/ATTACK_PLAN.md",
+    "parent 20_D15_RETURN_ADJUDICATION_AND_DOWNSTREAM_REBASE_GATE.md",
+    "parent 21_DR_R01_RETURN_ADJUDICATION.md",
+    "parent 22_DR_R02_RETURN_ADJUDICATION_AND_R03_DELEGATION_GATE.md",
+    "R01 complete return, especially UPSTREAM_OBJECT_TO_DOWNSTREAM_CONSUMER_MATRIX.csv and MISSING_DOWNSTREAM_INPUT_AND_AUTHORITY_LEDGER.csv",
+    "R02 complete return, especially DIRECT_DAG_EDGE_MATRIX.csv, SEMANTIC_OWNERSHIP_MATRIX.csv, REFERENCE_CLOSURE_MINIMALITY.md, V3_EMPIRICAL_POSSIBILITY_INPUT_MINIMALITY.md and R03_HOSTILE_SWEEP_HANDOFF.json"
+  ],
+  "synthesis_disposition": {
+    "recommended_feeder_status": "R02_HOLDING_REQUIRES_QUALIFICATION",
+    "broad_topology_falsified": false,
+    "new_positive_semantic_edges_requested": [],
+    "stage_collapse_requested": false,
+    "upstream_reopen_requested": false,
+    "must_preserve_unknowns": false,
+    "stage_close_read_obligations": [
+      "V553/V554 intake negative type authority",
+      "V557/V558 structural-family exclusion and producer nonreownership",
+      "V3 possibility intake + metabolism negative authority",
+      "objective actor-fact comparator seam",
+      "V2/app negative nonconsumption"
+    ]
+  },
+  "required_artifacts": [
+    "RESULT.md",
+    "RESULT.json",
+    "ATTACK_LEDGER.csv",
+    "COUNTEREXAMPLES.md",
+    "SURVIVING_HOLDINGS.csv",
+    "SYNTHESIS_HANDOFF.json"
+  ]
+}
