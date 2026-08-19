@@ -5,97 +5,32 @@
   "authority_model": "PARALLEL_NON_DISPOSITIVE_FEEDERS__SINGLE_DISPOSITIVE_SYNTHESIS",
   "shared_authority": "R03/AUTHORITY_DELEGATION.md",
   "shared_attack_plan": "R03/ATTACK_PLAN.md",
+  "parallel_return_index": "R03/PARALLEL_RETURN_INDEX.json",
   "hostile_feeders": [
-    {
-      "id": "R03A",
-      "branch": "agent/vozhd-trii-dr-r03a-temporal-routing-audit",
-      "write_only": "R03/feeders/R03A/",
-      "mission": "Attack temporal routing, V553 over/under-bypass, direct-V554 starvation, and duplicate-path precedence.",
-      "status": "READY_PARALLEL"
-    },
-    {
-      "id": "R03B",
-      "branch": "agent/vozhd-trii-dr-r03b-stage-necessity-audit",
-      "write_only": "R03/feeders/R03B/",
-      "mission": "Attack retained V554-V558 stage necessity, bypasses, merges, and no-bloat minimality.",
-      "status": "READY_PARALLEL"
-    },
-    {
-      "id": "R03C",
-      "branch": "agent/vozhd-trii-dr-r03c-provenance-replay-audit",
-      "write_only": "R03/feeders/R03C/",
-      "mission": "Attack provenance, replay, source-universe separation, and standalone reference closure.",
-      "status": "READY_PARALLEL"
-    },
-    {
-      "id": "R03D",
-      "branch": "agent/vozhd-trii-dr-r03d-ontology-authority-audit",
-      "write_only": "R03/feeders/R03D/",
-      "mission": "Attack ontology and authority leakage across empirical, structural, actor, provenance, and expression boundaries.",
-      "status": "READY_PARALLEL"
-    },
-    {
-      "id": "R03E",
-      "branch": "agent/vozhd-trii-dr-r03e-v3-possibility-boundary-audit",
-      "write_only": "R03/feeders/R03E/",
-      "mission": "Attack V3 empirical-possibility wrapper minimality, lifecycle/divergence, and V2/app nonconsumption.",
-      "status": "READY_PARALLEL"
-    },
-    {
-      "id": "R03F",
-      "branch": "agent/vozhd-trii-dr-r03f-terminal-starvation-audit",
-      "write_only": "R03/feeders/R03F/",
-      "mission": "Independent whole-DAG terminal-starvation and cross-cell checksum attack.",
-      "status": "READY_PARALLEL"
-    }
+    {"id":"R03A","branch":"agent/vozhd-trii-dr-r03a-temporal-routing-audit","head_sha":"3d96c1213b46d3e6a908c83c2525f1ef20282f88","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"R03B","branch":"agent/vozhd-trii-dr-r03b-stage-necessity-audit","head_sha":"26a1710548385339bdcb4cbf32244550867c5e10","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"R03C","branch":"agent/vozhd-trii-dr-r03c-provenance-replay-audit","head_sha":"fe6a33cf529039cca4fb6837a3e5d5feb1ab7fc3","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"R03D","branch":"agent/vozhd-trii-dr-r03d-ontology-authority-audit","head_sha":"1a1898b8338733641731c95719e840c3707bcf99","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"R03E","branch":"agent/vozhd-trii-dr-r03e-v3-possibility-boundary-audit","head_sha":"87ad406388eb589250f771cc16e95461b2c01d8a","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"R03F","branch":"agent/vozhd-trii-dr-r03f-terminal-starvation-audit","head_sha":"9f661931d51e03f137601b27eeaecf77ab11ad2f","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"}
   ],
   "stage_evidence_preparation": [
-    {
-      "id": "EP553",
-      "branch": "agent/vozhd-trii-dr-ep553-stage-evidence",
-      "write_only": "R03/stage_evidence/EP553/",
-      "status": "READY_PARALLEL_NON_DISPOSITIVE"
-    },
-    {
-      "id": "EP554",
-      "branch": "agent/vozhd-trii-dr-ep554-stage-evidence",
-      "write_only": "R03/stage_evidence/EP554/",
-      "status": "READY_PARALLEL_NON_DISPOSITIVE"
-    },
-    {
-      "id": "EP555",
-      "branch": "agent/vozhd-trii-dr-ep555-stage-evidence",
-      "write_only": "R03/stage_evidence/EP555/",
-      "status": "READY_PARALLEL_NON_DISPOSITIVE"
-    },
-    {
-      "id": "EP556",
-      "branch": "agent/vozhd-trii-dr-ep556-stage-evidence",
-      "write_only": "R03/stage_evidence/EP556/",
-      "status": "READY_PARALLEL_NON_DISPOSITIVE"
-    },
-    {
-      "id": "EP5578",
-      "branch": "agent/vozhd-trii-dr-ep5578-stage-evidence",
-      "write_only": "R03/stage_evidence/EP5578/",
-      "status": "READY_PARALLEL_NON_DISPOSITIVE"
-    },
-    {
-      "id": "EPV3",
-      "branch": "agent/vozhd-trii-dr-epv3-stage-evidence",
-      "write_only": "R03/stage_evidence/EPV3/",
-      "status": "READY_PARALLEL_NON_DISPOSITIVE"
-    }
+    {"id":"EP553","branch":"agent/vozhd-trii-dr-ep553-stage-evidence","head_sha":"f90cb641cb9f5c18883befd41aac9e5d63002376","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"EP554","branch":"agent/vozhd-trii-dr-ep554-stage-evidence","head_sha":"6ebb7c5ca1e007f3677706da19db9e83f451bff0","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"EP555","branch":"agent/vozhd-trii-dr-ep555-stage-evidence","head_sha":"9460e769e0b9208de90171c8220127d89eeb7833","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"EP556","branch":"agent/vozhd-trii-dr-ep556-stage-evidence","head_sha":"20853f88578ed68d761413dcb68cdfb2f623dde6","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"EP5578","branch":"agent/vozhd-trii-dr-ep5578-stage-evidence","head_sha":"f95f01f8112c646897058de809c98f5b3e8b429b","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"},
+    {"id":"EPV3","branch":"agent/vozhd-trii-dr-epv3-stage-evidence","head_sha":"c97df88b9461a5ae0d01bc66b2d0f67f1f9337ae","status":"COMPLETE_ACCEPTED_NON_DISPOSITIVE"}
   ],
   "synthesis": {
     "id": "DR_R03_SYNTHESIS",
     "branch": "agent/vozhd-trii-dr-r03-synthesis",
-    "write_only": "R03/SYNTHESIS/",
-    "status": "DORMANT_BLOCKED_BY_R03A_R03F_FINITE_RETURNS",
+    "directive": "R03/SYNTHESIS_DIRECTIVE.md",
+    "status": "AUTHORIZED_READY",
     "exclusive_authority": "FINAL_BROAD_DAG_ADJUDICATION"
   },
   "serial_barriers": [
-    "R03 synthesis requires finite R03A-R03F returns or explicit typed-block waiver",
+    "R03 synthesis is the sole active barrier before stage close-read launch",
     "final stage architecture requires R03 synthesis",
     "whole-machine closure requires accepted stage close-reads",
     "implementation requires whole-machine closure and regenerated implementation campaign"
