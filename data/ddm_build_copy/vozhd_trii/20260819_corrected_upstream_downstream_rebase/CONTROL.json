@@ -3,11 +3,12 @@
   "repository": "maidiu/rawlsing",
   "parent_branch": "agent/vozhd-trii-prechange-discovery-control",
   "campaign_launch_base_sha": "afffe8573a54bcc3b6aad801496abca65665b095",
-  "status": "R01_R02_ACCEPTED__R03_PARALLEL_HOSTILE_CHAMBER_AUTHORIZED__STAGE_EVIDENCE_PREP_AUTHORIZED__FINAL_CLOSE_READS_GATED__IMPLEMENTATION_GATED",
+  "status": "R01_R02_ACCEPTED__R03_PARALLEL_WAVE_ACCEPTED__R03_SYNTHESIS_AUTHORIZED__STAGE_CLOSE_READS_GATED__IMPLEMENTATION_GATED",
   "binding_parent_adjudications": [
     "20_D15_RETURN_ADJUDICATION_AND_DOWNSTREAM_REBASE_GATE.md",
     "21_DR_R01_RETURN_ADJUDICATION.md",
-    "22_DR_R02_RETURN_ADJUDICATION_AND_R03_DELEGATION_GATE.md"
+    "22_DR_R02_RETURN_ADJUDICATION_AND_R03_DELEGATION_GATE.md",
+    "23_DR_R03_PARALLEL_WAVE_RETURN_ADJUDICATION_AND_SYNTHESIS_GATE.md"
   ],
   "frozen_upstream": {
     "status": "D15_ACCEPTED__FROZEN",
@@ -31,15 +32,7 @@
       "branch": "agent/vozhd-trii-dr-r01-downstream-dependency-rebase",
       "worker_base_sha": "afffe8573a54bcc3b6aad801496abca65665b095",
       "status": "ACCEPTED__DEPENDENCY_REBASE_CLOSED",
-      "result": "DEPENDENCY_REBASE_CLOSED__R02_READY",
-      "accepted_core": [
-        "universal V553 transit rejected",
-        "V553 retained only for unique temporal/harmonization/comparability jurisdiction",
-        "PSEPF direct V3 lane confirmed",
-        "raw empirical incidence does not transit structural stages",
-        "producer ownership preserved by reference"
-      ],
-      "handoff": "R01/R02_DIRECT_DAG_OWNERSHIP_HANDOFF.json"
+      "result": "DEPENDENCY_REBASE_CLOSED__R02_READY"
     },
     {
       "id": "R02",
@@ -47,67 +40,86 @@
       "branch": "agent/vozhd-trii-dr-r02-direct-dag-ownership-minimality",
       "worker_base_sha": "ade9bbe51ca2766bcde8ec58af6c659f0ca21f25",
       "observed_head_sha": "e56dd9024985f0ad955f7b09cb63ab8b743532be",
-      "observed_state": "11_COMMITS_AHEAD__0_BEHIND__11_COMMANDED_FILES_ONLY",
       "status": "ACCEPTED__DIRECT_DAG_OWNERSHIP_MINIMALITY_CLOSED",
-      "result": "DIRECT_DAG_OWNERSHIP_MINIMALITY_CLOSED__R03_READY",
-      "accepted_core": [
-        "V553 required only for newly-created temporal/comparability semantics",
-        "direct StructuralEmpiricalAdmission -> V554 required for temporally complete V554-rule-eligible class",
-        "duplicate direct and V553-temporalized basis forbidden for same V554 proposition/use/rule",
-        "StructuralEmpiricalAdmission -> V555/V556 forbidden under retained jurisdictions",
-        "V555/V556 unique semantics retained",
-        "V557 runtime publication/use governance retained without producer reownership",
-        "V558 immutable repository/index/resolution retained without producer reownership",
-        "transitive content-addressed reference closure preferred to copied provenance",
-        "ActorComparatorReceipt provenance-only in V3",
-        "ReplayReceipt audit/replay-only",
-        "V3EmpiricalPossibilityInput retained as thin V3 lifecycle/effective-time/use/metabolism envelope without copied PSEPF geometry"
-      ],
-      "handoff": "R02/R03_HOSTILE_SWEEP_HANDOFF.json"
+      "result": "DIRECT_DAG_OWNERSHIP_MINIMALITY_CLOSED__R03_READY"
     },
     {
       "id": "R03",
       "title": "Hostile no-starvation / no-bloat broad-DAG sweep",
-      "status": "AUTHORIZED__PARALLEL_FEEDERS_PLUS_SINGLE_SYNTHESIS",
+      "common_worker_base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+      "parallel_wave_status": "ACCEPTED__ALL_REQUIRED_RETURNS_FINITE",
+      "parent_broad_disposition": "R02_BROAD_DAG_SURVIVES_HOSTILE_ATTACK__MATERIAL_QUALIFICATIONS_REQUIRED__STAGE_CLOSE_READS_STILL_REQUIRED",
       "authority_delegation": "R03/AUTHORITY_DELEGATION.md",
       "attack_plan": "R03/ATTACK_PLAN.md",
-      "feeders": [
-        "R03A_TEMPORAL_ROUTING_OVER_BYPASS_DUPLICATE_PATH",
-        "R03B_RETAINED_STAGE_NECESSITY_UNDER_BYPASS_NO_BLOAT",
-        "R03C_PROVENANCE_REPLAY_SOURCE_UNIVERSE_STANDALONE_CLOSURE",
-        "R03D_ONTOLOGY_AUTHORITY_LEAKAGE",
-        "R03E_V3_POSSIBILITY_BOUNDARY_DIVERGENCE_V2_NONCONSUMPTION",
-        "R03F_WHOLE_DAG_TERMINAL_STARVATION_CHECKSUM"
+      "parallel_return_index": "R03/PARALLEL_RETURN_INDEX.json",
+      "synthesis_directive": "R03/SYNTHESIS_DIRECTIVE.md",
+      "hostile_feeder_heads": {
+        "R03A": "3d96c1213b46d3e6a908c83c2525f1ef20282f88",
+        "R03B": "26a1710548385339bdcb4cbf32244550867c5e10",
+        "R03C": "fe6a33cf529039cca4fb6837a3e5d5feb1ab7fc3",
+        "R03D": "1a1898b8338733641731c95719e840c3707bcf99",
+        "R03E": "87ad406388eb589250f771cc16e95461b2c01d8a",
+        "R03F": "9f661931d51e03f137601b27eeaecf77ab11ad2f"
+      },
+      "stage_evidence_heads": {
+        "EP553": "f90cb641cb9f5c18883befd41aac9e5d63002376",
+        "EP554": "6ebb7c5ca1e007f3677706da19db9e83f451bff0",
+        "EP555": "9460e769e0b9208de90171c8220127d89eeb7833",
+        "EP556": "20853f88578ed68d761413dcb68cdfb2f623dde6",
+        "EP5578": "f95f01f8112c646897058de809c98f5b3e8b429b",
+        "EPV3": "c97df88b9461a5ae0d01bc66b2d0f67f1f9337ae"
+      },
+      "accepted_hostile_qualifications": [
+        "V553/direct-V554 routing is governed-use/use-chain scoped rather than object-global",
+        "cross-source temporal/comparability use requires positive source-relation/applicability authority and cannot be manufactured by V553",
+        "V554/V555/V556 are conditional semantic producers rather than mandatory numbered transit buses",
+        "independently runtime-authorized V553/V554/V555/V556 producer objects may publish directly to V557 subject to synthesis adjudication",
+        "V555 route identity remains the canonical base edge whenever V556 creates higher-order interaction/topology meaning",
+        "V557 runtime-use governance and V558 repository/resolution are distinct logical authorities even if physically co-packaged",
+        "transitive reference minimality removes repeated copies but never interpretation-critical closure material",
+        "provenance reachability never creates source pooling/composition authority",
+        "source-indexed positive/negative/conflicting/noncomparable states must remain distinguishable",
+        "V3EmpiricalPossibilityInput remains thin and may not copy or flatten PSEPF geometry",
+        "V3 intake applicability and upstream empirical field validity are distinct ownership domains",
+        "terminal discovery/authoring/replay endpoints count as lawful consumers for minimality",
+        "direct and indirect V2/application dereference of upstream empirical/structural priors as persona/expression authority remains forbidden"
       ],
-      "synthesis": "DR_R03_SYNTHESIS__SOLE_DISPOSITIVE_BROAD_DAG_AUTHORITY",
-      "synthesis_gate": "ALL_REQUIRED_FEEDERS_FINITE_OR_PARENT_WAIVER_FOR_TYPED_PERMANENT_BLOCK"
+      "preserved_stage_level_unknowns": [
+        "exact V554 direct-vs-temporal duplicate-equivalence key and precedence serialization",
+        "exact corrected V553 StructuralEmpiricalAdmission intake contract and temporal-family mapping",
+        "exact V555/V556 corrected semantic schemas/reference contracts",
+        "exact V557/V558 standalone physical packaging and conformance implementation",
+        "exact V3EmpiricalPossibilityInput schema/lifecycle/effective-time contract",
+        "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY",
+        "objective V3 actor-fact snapshot/comparator projection seam",
+        "V2/application direct and indirect nonconsumption enforcement"
+      ],
+      "synthesis": {
+        "branch": "agent/vozhd-trii-dr-r03-synthesis",
+        "status": "AUTHORIZED__SOLE_DISPOSITIVE_BROAD_DAG_AUTHORITY",
+        "required_result": [
+          "R03_HOSTILE_BROAD_DAG_CLOSED__STAGE_CLOSE_READ_CAMPAIGN_READY",
+          "R03_BROAD_DAG_NOT_CLOSED__EXACT_REOPEN_OR_MISSING_AUTHORITY_REQUIRED"
+        ]
+      }
     }
   ],
   "stage_evidence_preparation": {
-    "status": "AUTHORIZED__PARALLEL__NON_DISPOSITIVE",
+    "status": "COMPLETE__ACCEPTED_NON_DISPOSITIVE_EVIDENCE",
     "cells": ["EP553", "EP554", "EP555", "EP556", "EP5578", "EPV3"],
-    "authority": "EVIDENCE_ONLY__NO_STAGE_ARCHITECTURE_SELECTION",
-    "may_run_concurrently_with": "R03A_R03F"
+    "authority": "EVIDENCE_ONLY__NO_STAGE_ARCHITECTURE_SELECTION"
   },
   "stage_close_reads": {
     "status": "BLOCKED_PENDING_R03_SYNTHESIS",
-    "planned": [
-      "V553",
-      "V554",
-      "V555",
-      "V556",
-      "V557_V558",
-      "V3_UPSTREAM_INTAKE_AND_DEVELOPMENTAL_BOUNDARY",
-      "V2_APP_IF_MATERIALLY_AFFECTED"
-    ],
-    "parallelization_rule": "R03_SYNTHESIS_MUST_EMIT_EXPLICIT_DEPENDENCY_GRAPH__DO_NOT_DEFAULT_TO_STAGE_NUMBER_SEQUENCE"
+    "parallelization_rule": "R03_SYNTHESIS_MUST_EMIT_EXPLICIT_DEPENDENCY_GRAPH__DO_NOT_DEFAULT_TO_STAGE_NUMBER_SEQUENCE",
+    "launch_source": "R03/SYNTHESIS/STAGE_CLOSE_READ_CAMPAIGN.json"
   },
   "legitimate_serial_barriers": [
-    "R03 synthesis waits for finite required hostile feeder returns",
-    "final stage architecture rulings wait for R03 broad hostile closure while evidence prep may run early",
+    "R03 synthesis is now the sole active broad-DAG barrier",
+    "final stage architecture waits for accepted R03 synthesis while stage evidence is already prepared",
     "whole-machine closure waits for accepted stage close-reads",
     "implementation waits for whole-machine closure and regenerated implementation campaign"
   ],
-  "whole_machine_implementation": "BLOCKED_PENDING_R03__STAGE_CLOSE_READS__WHOLE_MACHINE_CLOSURE",
+  "whole_machine_implementation": "BLOCKED_PENDING_R03_SYNTHESIS__STAGE_CLOSE_READS__WHOLE_MACHINE_CLOSURE",
   "governing_rule": "PARALLELIZE_WHERE_INPUTS_ARE_FROZEN__SERIALIZE_ONLY_TRUE_INFORMATION_DEPENDENCIES__CORRECT_UPSTREAM_FIRST__WHOLE_MACHINE_OPTIMUM__NO_GRATUITOUS_REDESIGN"
 }
