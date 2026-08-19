@@ -11,6 +11,8 @@ This ledger records claims established in the present Vozhd Trii investigation. 
 - `HISTORICAL_DESIGN_EVIDENCE` — explicit in pre-current design packs, useful for genealogy but not automatically binding now.
 - `INFERENCE_TO_TEST` — plausible synthesis from confirmed evidence that requires a dedicated court.
 - `OPEN` — unresolved.
+- `COURT_ACCEPTED` — accepted by parent Vozhd after branch/base/scope/output-contract adjudication.
+- `COURT_RETURN_REQUIRED` — substantive worker material exists but the court is not closed under its output/evidence contract.
 
 ## A. Whole-machine law
 
@@ -83,9 +85,9 @@ They are not merely conceptual stage names.
 These functions are executed during the V550 shard run.
 
 ### F-022 — A useful implementation genealogy is V547/V548/V549 → V550-native branching/cloud machinery
-**Status:** `INFERENCE_TO_TEST`
+**Status:** `SUPERSEDED_BY_ACCEPTED_D01_D02_D03`
 
-The names, behavior and historical packs strongly support lineage, but semantic equivalence must be audited rather than assumed. The successor functions may have changed grain, authority gates, weighting, branch semantics or output meaning.
+The original inference has now been adjudicated court-by-court. The successor relationship is real at the capability-family level, but mathematical and semantic identity is false. See F-072 through F-077.
 
 ## D. Current attitude-cloud implementation
 
@@ -102,14 +104,14 @@ This is actual same-person cotravel computation, not a reconstruction from popul
 The module maintains `_ATTITUDE_CLOUD_STATE` keyed by run/source/wave/canonical-wave/country and compares an eligible current anchor against candidate question frames already present in state.
 
 ### F-032 — Current cloud completeness may depend on ordering and eligibility interaction
-**Status:** `INFERENCE_TO_TEST`
+**Status:** `SUPERSEDED_BY_ACCEPTED_D04`
 
-Because an anchor compares against state accumulated so far and current frames are stored only when feature or anchor eligibility permits, pair completeness may depend on question order and anchor/feature combinations. This must be proven or falsified with exhaustive pair-coverage tests before any claim about complete attitude geometry.
+D04 proved the stronger proposition: lawful ordered-pair coverage is processing-order dependent and incomplete under the D03 oracle. See F-078.
 
 ### F-033 — V550 cloud emission is gated rather than universal
 **Status:** `CURRENT_MAIN_CONFIRMED`
 
-The shard builder calls `should_emit_cloud_tables(...)` before generating branch signatures and attitude clouds. The practical coverage consequences of those gates remain unmeasured.
+The shard builder calls `should_emit_cloud_tables(...)` before generating branch signatures and attitude clouds. D04 further proved that pre-registration gating can delete later lawful pair formation.
 
 ### F-034 — Current cloud rows explicitly carry empirical and authority metadata
 **Status:** `CURRENT_MAIN_CONFIRMED`
@@ -138,7 +140,7 @@ Its stated purpose was to compute what else travels with each branch and preserv
 
 The contract states that downstream use should distinguish demographic/structural position determinants, anchor response/branch, and other non-demographic responses associated among the same respondent universe. It further states: same answer, different position/cloud/power context can carry different meaning.
 
-**Important:** the contract's old "profile posterior builder" destination is not automatically lawful under the current architecture and must be reconciled with present no-survey→psyche law.
+**Important:** the contract's old "profile posterior builder" destination is not automatically lawful under the current architecture and must be reconciled with present no-survey→psyche law and the owner-declared probability-field correction in `07_NEW_VOZHD_TRII_HANDOFF.md`.
 
 ## F. Current database substrate from user-provided schema
 
@@ -174,7 +176,7 @@ The view is therefore structurally capable of supporting response-by-position co
 - `allowed_as_v551_relation_evidence`
 - `allowed_as_association_feature`
 
-This confirms that these are present production authority concepts, not only abandoned pack terminology.
+This confirms that these are present production schema/authority concepts, not only abandoned pack terminology. D06 separately establishes which are actually demonstrated in the current runtime authority path.
 
 ### F-055 — The authority-reconcile schema provides canonical question/source/wave identity and provenance surfaces
 **Status:** `CURRENT_MAIN_CONFIRMED` as supplied schema evidence
@@ -194,27 +196,82 @@ It includes canonical question registry, raw→canonical question aliasing, sour
 The R1 package reports 18,518 retained target rows, 4,397 newly governed QSMv2 relation rows, 41 structural-mapping blockers and explicit fail-closed residual blocker classes.
 
 ### F-062 — VT3 claims about current V550/V551/V552 wiring require revalidation on current main
-**Status:** `INFERENCE_TO_TEST`
+**Status:** `CURRENT_MAIN_CONFIRMED_AS_METHOD_REQUIREMENT`
 
-The chamber remains binding evidence about its frozen base, but implementation facts cannot simply be carried forward after authority/runtime changes.
+D01–D06 revalidation confirms that frozen findings cannot simply be carried forward after authority/runtime changes. D11 remains required for current downstream consumption.
 
 ## H. Central synthesis reached in this conversation
 
 ### F-070 — Artifact economy and empirical-discovery capability are different questions
-**Status:** `INFERENCE_TO_TEST` elevated to governing discovery principle
+**Status:** `GOVERNING_DISCOVERY_PRINCIPLE`
 
 The chamber may be correct that many stored analytical artifacts are diagnostic or reconstructible while it is simultaneously true that the *capabilities* that generate them preserve historically important empirical distinctions. Future design must adjudicate capability-by-capability rather than artifact-by-artifact.
 
 ### F-071 — The lawful destination of attitude/branch cotravel under the current whole-machine architecture is unresolved
 **Status:** `OPEN`
 
-Historical design linked cotravel to profile posterior construction. Current law forbids demographic/survey evidence from directly becoming actor psyche. We need to determine whether cotravel belongs as:
+Historical design linked cotravel to profile posterior construction. The current owner correction establishes that empirically learned position↔attitude↔attitude geometry may constrain a probabilistic possibility field, while current whole-machine law still forbids direct population→finished-psyche assignment. The exact lawful V3 seam and current structural/meaning-field jurisdiction remain to be adjudicated by later courts.
 
-- empirical meaning evidence;
-- structural interpretation evidence;
-- a mediation/meaning-field precursor;
-- authoring/diagnostic evidence only;
-- some combination with strict lanes;
-- or a capability no longer terminally required.
+## I. First-wave accepted court findings
 
-This is one of the highest-priority discovery questions.
+The controlling intake record is `08_FIRST_WAVE_INTAKE_ADJUDICATION.md`.
+
+### F-072 — V547 exhaustive pair-interaction discovery is not preserved by current V550 secondary search
+**Status:** `COURT_ACCEPTED` — D01
+
+Executable V547 exhaustively searched every unordered pair among its six non-country position predictors and selected the highest joint pair MI. Current `secondary_indicator_summary` chooses a primary predictor first and tests only primary+other pairs. This is a material search-geometry loss, not a rename.
+
+### F-073 — Current V550 adds richer unary conditional topology while changing the salience mathematics
+**Status:** `COURT_ACCEPTED` — D01
+
+`indicator_answer_matrix` preserves full unary `indicator_value × response_value` cells with raw/weighted mass, a capability V547 did not persist. At the same time, V547 MI, current entropy reduction, and current NMI are mathematically non-equivalent; predictor missingness can also make the current entropy-reduction quantity differ from ordinary mutual information.
+
+### F-074 — Historical V548 recursive positional breakage and current V550 recursive branching answer different empirical questions
+**Status:** `COURT_ACCEPTED` — D02
+
+V548 chased majority-position deviation quadrants. Current V550 greedily partitions by positive entropy reduction, retains only the two most frequent values, and follows both branches. Current tree nodes are not a lossless preservation of V548 branch evidence.
+
+### F-075 — The current recursive tree does not preserve the broader discovery space
+**Status:** `COURT_ACCEPTED` — D02
+
+The current tree can miss zero-marginal XOR/parity structure and distinctive third-or-lower-frequency categories, does not persist respondent membership, and truncates paths. Same-respondent response/position incidence plus exact scope/topology/missingness/support/provenance is required to replay a broader governed discovery search.
+
+### F-076 — Historical branch-conditioned cotravel is absent from the current native cloud/signature path
+**Status:** `COURT_ACCEPTED` — D03
+
+V549/V549b reconstructed actual branch membership and used it as a cross-question anchor. Current position/relation signatures do not consume recursive branch membership; current attitude cloud performs question-response same-respondent cotravel instead.
+
+### F-077 — Current attitude cloud is pairwise and materially smaller than historical profile-covariance ambition
+**Status:** `COURT_ACCEPTED` — D03
+
+Current clouds retain one selected modal joint response cell plus pairwise association summaries. Historical profile clusters/relation vectors were intended but not realized in the inspected executable lineage, and current cloud artifacts do not preserve full pairwise joint cells, branch conditioning, respondent multi-question vectors, or k-way topology.
+
+### F-078 — Current V550 cloud ordered-pair coverage is provably incomplete and order-dependent
+**Status:** `COURT_ACCEPTED` — D04
+
+Under D03's accepted ordered-pair oracle, the current one-pass state machine emits only current-anchor→previously-stored-feature pairs. Two dual-eligible questions cannot yield both lawful directions in a single linear pass. This is an implementation defect, not an architectural preference.
+
+### F-079 — Current V550 cloud has four additional material correctness defects
+**Status:** `COURT_ACCEPTED` — D04
+
+Beyond order coverage, D04 established: special/missing/routing states can become cloud content; NMI mixes nats and bits; checkpoint resume fails to rehydrate prior cloud state; and pre-registration mode/cardinality gating can delete later lawful pairs. Weighting, duplicate/multiselect semantics, modal-cell ties, and routed risk-set denominator law remain authority gaps.
+
+### F-080 — Final R1 is not a universal V550 workload authority
+**Status:** `COURT_ACCEPTED` — D06
+
+Final R1 governs question-relation/structural semantics. High-risk `allowed_as_*` permissions are synthesized from multiple authorities, while several expensive V550 branching/conditional families are selected by hard-coded analytic enumeration and unconditional orchestration. Upstream compute can therefore occur before downstream R1/V551 admissibility is enforced.
+
+### F-081 — Current R1 scope/admissibility and workload selection have distinct implementation seams
+**Status:** `COURT_ACCEPTED` — D06
+
+Country-scoped R1 identity is not universally enforced by every facet-ready mapping join; mapping cache identity lacks an R1 content/version hash; the active authority path remains overrideable; and no current V550J coexecution surface was demonstrated at the audited base. These are implementation/provenance facts, not authority to redesign.
+
+### F-082 — Populated empirical substrate reality remains unadjudicated
+**Status:** `COURT_RETURN_REQUIRED` — D05
+
+D05 correctly refused to infer populated reality from schema, but its branch is not closed: it lacks required `RESULT.json` and the promised exact audit SQL/output-schema artifacts, and its reported schema attachment hashes conflict with the controlled manifest at its exact base. No populated counts, completeness, overlap, source-equivalence, ingestion-loss, or replay-sufficiency claim is accepted.
+
+### F-083 — D03→D04 dependency was satisfied in the final returned branch
+**Status:** `COURT_ACCEPTED`
+
+D03 tip `7ea5962f644ad796064e30ffafb46f2c077404b9` contains only the accepted D03 result files over the Wave-1 launch base. D04 is based exactly on that tip and adds only its result/probe artifacts. The later handoff-file commit on the parent does not invalidate D04's narrow implementation-correctness scope.
