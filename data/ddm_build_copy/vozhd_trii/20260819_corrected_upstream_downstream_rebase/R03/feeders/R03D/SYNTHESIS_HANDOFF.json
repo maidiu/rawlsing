@@ -1,0 +1,116 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "from": "R03D_ONTOLOGY_AUTHORITY_LEAKAGE",
+  "to": "DR_R03_SYNTHESIS",
+  "authority": "NON_DISPOSITIVE_HOSTILE_EVIDENCE",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-dr-r03d-ontology-authority-audit",
+  "issued_exact_worker_base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+  "status": "FINITE_RETURN__R02_HOLDING_REQUIRES_QUALIFICATION",
+  "result_token": "ONTOLOGY_SEPARATION_SURVIVES_ATTACK__NEGATIVE_AUTHORITY_HARDENING_REQUIRED",
+  "summary": {
+    "attacks": 10,
+    "survives": 3,
+    "survives_with_qualification": 7,
+    "falsified": 0,
+    "blocked_missing_authority": 0,
+    "defer_to_stage_close_read": 0
+  },
+  "r02_holdings_in_primary_scope": [
+    {
+      "id": "R02-H06",
+      "status": "R02_HOLDING_REQUIRES_QUALIFICATION",
+      "finding": "V557/V558 do not re-own producer semantics; corrected reference-class registration, standalone packaging and fail-closed mismatch behavior must be explicit at V557/V558 close-read."
+    },
+    {
+      "id": "R02-H08",
+      "status": "R02_HOLDING_REQUIRES_QUALIFICATION",
+      "finding": "ActorComparatorReceipt remains direct input only to possibility production and transitive provenance in V3; exact V3 intake must reject receipt-as-prior."
+    },
+    {
+      "id": "R02-H09",
+      "status": "R02_HOLDING_SURVIVES_ATTACK",
+      "finding": "ReplayReceipt remains audit/replay-only with no independent runtime prior semantics."
+    },
+    {
+      "id": "R02-H10",
+      "status": "R02_HOLDING_REQUIRES_QUALIFICATION",
+      "finding": "Thin V3 possibility input remains valid; exact V3 metabolism/intake negative authority is still required and field geometry must not become actor state."
+    }
+  ],
+  "additional_frozen_holdings_tested": [
+    "DiscoveryResultReceipt cannot become structural truth by score/selection alone",
+    "EmpiricalFact cannot enter structural stages without StructuralEmpiricalAdmission",
+    "PSEPF cannot enter V553-V558 or StructuralPriorRepository",
+    "StructuralEmpiricalAdmission cannot become generated actor position/state",
+    "ResolvedStructuralContext cannot directly become V2/application persona/voice truth",
+    "Generated structural position cannot substitute for exact survey comparator mapping"
+  ],
+  "required_synthesis_qualifications": [
+    {
+      "seam": "V553",
+      "requirement": "Corrected admission intake must reject unadmitted EmpiricalFact and reverse-lane objects.",
+      "flag": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED"
+    },
+    {
+      "seam": "V554",
+      "requirement": "Eligible-basis registry must reject raw EmpiricalFact/PSEPF and admit only governed StructuralEmpiricalAdmission or V553 basis classes as authorized.",
+      "flag": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED"
+    },
+    {
+      "seam": "V557_V558",
+      "requirement": "PSEPF excluded from structural publication/repository; producer semantics remain producer-owned; physical/index copies nonsemantic; mismatch fails closed; no producer semantic re-ID.",
+      "flag": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED"
+    },
+    {
+      "seam": "V3_EMPIRICAL_POSSIBILITY_INPUT",
+      "requirement": "ActorComparatorReceipt remains provenance only and cannot be admitted as standalone actor prior/fact; preserve exact field/lifecycle/negative/replay bindings.",
+      "flag": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED"
+    },
+    {
+      "seam": "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY",
+      "requirement": "Forbid field.mass/modal-cell direct assignment to belief, response, identity, memory, knowledge, psyche or state; V3 developmental history remains causal.",
+      "flag": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED"
+    },
+    {
+      "seam": "ACTOR_COMPARATOR_INTAKE",
+      "requirement": "Use exact governed objective actor-fact refs/effective time; reject generated structural position, belief, memory, fuzzy equivalence and nearest-cohort fallback.",
+      "flag": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED"
+    },
+    {
+      "seam": "V2_APPLICATION",
+      "requirement": "Reject PSEPF, comparator receipts, V3EmpiricalPossibilityInput and ResolvedStructuralContext as direct persona/belief/voice/expression authority; only V3-generated actor-accessible truth is positive semantic input.",
+      "flag": "NEGATIVE_AUTHORITY_HARDENING_REQUIRED"
+    }
+  ],
+  "stage_close_read_dependencies": [
+    "V553_CLOSE_READ",
+    "V554_CLOSE_READ",
+    "V557_V558_CLOSE_READ",
+    "V3_UPSTREAM_INTAKE_AND_DEVELOPMENTAL_BOUNDARY",
+    "V3_COMPARATOR_INTEGRATION_CLOSE_READ",
+    "V2_APP_IF_MATERIALLY_AFFECTED"
+  ],
+  "synthesis_must_not_infer": [
+    "that any feeder qualification selects a final schema",
+    "that missing implementation/type enforcement permits the illicit semantic promotion",
+    "that V3 metabolism algorithm has been selected",
+    "that V2/application receives a new positive empirical or structural input",
+    "that V557/V558 may copy/reown producer semantics",
+    "that R03D authorizes stage collapse, upstream reopening or production implementation"
+  ],
+  "requested_broad_dag_change": "NONE",
+  "requested_positive_edges": [],
+  "requested_removed_edges": [],
+  "requested_upstream_reopen": false,
+  "requested_stage_collapse": false,
+  "permanent_block": false,
+  "artifacts": [
+    "RESULT.md",
+    "RESULT.json",
+    "ATTACK_LEDGER.csv",
+    "COUNTEREXAMPLES.md",
+    "SURVIVING_HOLDINGS.csv",
+    "SYNTHESIS_HANDOFF.json"
+  ]
+}
