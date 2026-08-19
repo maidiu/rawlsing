@@ -4,7 +4,7 @@
 
 `DORMANT_COMMAND_SYSTEM__R03_BROAD_DAG_ACCEPTED__STAGE_CLOSE_READS_ACTIVE__NO_PRODUCTION_IMPLEMENTATION_AUTHORITY`
 
-This directory defines the military-style command, delegation, synchronization, inspection, and integration system for the final clean Rawlsing rebuild.
+This directory defines the centralized command, delegation, synchronization, inspection, and integration system for the final clean Rawlsing rebuild.
 
 It was founded from parent SHA:
 
@@ -18,36 +18,38 @@ with control update:
 
 `249c5deae5bdeb69b325e378f022039ec0e2ed46`.
 
-The broad DAG is therefore closed, but seven exact stage-close cells and M1-M6 seam barriers remain active. This command package does **not** authorize production implementation. It freezes the **method of command** under which the final exact contracts will later be implemented.
+The broad DAG is closed, but seven exact stage-close cells and M1-M6 seam barriers remain active. This package does **not** authorize production implementation. It freezes the method of command under which the final exact contracts will later be implemented.
 
 ## Read order
 
 1. `00_COMMAND_CONSTITUTION.md`
 2. `CONTROL.json`
 3. `01_AUTHORITY_AND_GENERAL_STAFF.md`
-4. `02_SUBSTRATE_AND_LOGISTICS_COMMAND.md`
-5. `17_POPULATED_DATA_REALITY_AND_DB_FREEZE_PROTOCOL.md`
-6. `03_DOMAIN_VOZHD_AND_RABOCHII_DOCTRINE.md`
-7. `04_INTERFACE_DAG_AND_CHANGE_CONTROL.md`
-8. `18_TWO_PERSON_CONTROL_WRITE_LEASE_AND_STALE_WORKER_PROTOCOL.md`
-9. `19_CROSS_WORKER_CONTRACT_CONFORMANCE_PROTOCOL.md`
-10. `05_INSPECTORATE_AND_INTEGRATION_COMMAND.md`
-11. `06_COMMON_OPERATING_PICTURE_SCHEMA.json`
-12. `07_SYNCHRONIZATION_AND_AUDIT_PROTOCOL.md`
-13. `08_BUILD_WAVE_AND_GOLDEN_FIXTURE_DOCTRINE.md`
-14. `09_LEGACY_SALVAGE_AND_MIGRATION_DOCTRINE.md`
-15. `10_WORKER_ORDER_TEMPLATE.md`
-16. `11_ACCEPTANCE_AND_RECONSTRUCTION_GATE.md`
-17. `12_FORCE_STRUCTURE_AND_ACTIVATION_PLAN.md`
-18. `13_MACHINE_READABLE_REGISTRY_SCHEMAS.json`
-19. `14_VOZHD_AUDIT_AND_RECONCILIATION_TEMPLATE.md`
-20. `15_ACTIVATION_RECEIPT_TEMPLATE.md`
-21. `16_SEMANTIC_DIFF_SCHEMA.json`
-22. `20_R03_SYNTHESIS_ALIGNMENT_AND_CLOSE_READ_POSTURE.md`
+4. `21_AUTHORITY_BUNDLE_MANIFEST_AND_PRECEDENCE_PROTOCOL.md`
+5. `02_SUBSTRATE_AND_LOGISTICS_COMMAND.md`
+6. `17_POPULATED_DATA_REALITY_AND_DB_FREEZE_PROTOCOL.md`
+7. `03_DOMAIN_VOZHD_AND_RABOCHII_DOCTRINE.md`
+8. `04_INTERFACE_DAG_AND_CHANGE_CONTROL.md`
+9. `18_TWO_PERSON_CONTROL_WRITE_LEASE_AND_STALE_WORKER_PROTOCOL.md`
+10. `19_CROSS_WORKER_CONTRACT_CONFORMANCE_PROTOCOL.md`
+11. `05_INSPECTORATE_AND_INTEGRATION_COMMAND.md`
+12. `06_COMMON_OPERATING_PICTURE_SCHEMA.json`
+13. `07_SYNCHRONIZATION_AND_AUDIT_PROTOCOL.md`
+14. `22_OPERATIONAL_TEMPO_CRITICAL_PATH_AND_FORCE_GENERATION_DOCTRINE.md`
+15. `08_BUILD_WAVE_AND_GOLDEN_FIXTURE_DOCTRINE.md`
+16. `09_LEGACY_SALVAGE_AND_MIGRATION_DOCTRINE.md`
+17. `10_WORKER_ORDER_TEMPLATE.md`
+18. `11_ACCEPTANCE_AND_RECONSTRUCTION_GATE.md`
+19. `12_FORCE_STRUCTURE_AND_ACTIVATION_PLAN.md`
+20. `13_MACHINE_READABLE_REGISTRY_SCHEMAS.json`
+21. `14_VOZHD_AUDIT_AND_RECONCILIATION_TEMPLATE.md`
+22. `15_ACTIVATION_RECEIPT_TEMPLATE.md`
+23. `16_SEMANTIC_DIFF_SCHEMA.json`
+24. `20_R03_SYNTHESIS_ALIGNMENT_AND_CLOSE_READ_POSTURE.md`
 
 ## The system in one sentence
 
-> Centralize law, populated substrate reality, identity, interfaces, DAG ownership, shared-write control, dependency synchronization, hostile inspection, and integration; decentralize only bounded implementation choices; integrate only after cross-worker seam proof.
+> Centralize law, populated substrate reality, identity, interfaces, DAG ownership, shared-write control, dependency synchronization, inspection, and integration; decentralize only bounded implementation choices; maximize independent correct workfronts; integrate only after cross-worker seam proof.
 
 ## Current architectural checkpoint
 
@@ -70,7 +72,7 @@ Once stage close-reads, M1-M6, and final whole-machine closure are accepted, Cam
 The receipt must specify:
 
 - exact whole-machine closure SHA / authority bundle content hash;
-- complete governing-authority manifest with per-document hashes;
+- complete governing-authority manifest with per-document hashes and precedence;
 - final DAG registry seed;
 - final canonical object/negative-authority registry seeds;
 - final unresolved implementation-only questions;
@@ -103,7 +105,7 @@ The final campaign must exhibit all of these:
 
 - exact-SHA worker launches;
 - bounded write surfaces;
-- content-hashed authority packs;
+- one immutable content-hashed authority manifest with explicit precedence;
 - populated substrate proof;
 - immutable contract versions/hashes;
 - one shared substrate model;
@@ -111,6 +113,7 @@ The final campaign must exhibit all of these:
 - one DAG/interface registry;
 - one negative-authority registry;
 - one Common Operating Picture;
+- one live critical-path/dependency graph;
 - dependency epochs and transitive stale-worker invalidation;
 - one active write lease per shared semantic resource;
 - continuous Vozhd reconciliation;
@@ -126,6 +129,7 @@ The final campaign must exhibit all of these:
 - no source-universe collapse;
 - no population/structure-to-person collapse;
 - no destructive schema migration without positive equivalence/authority;
+- immediate opening of newly independent workfronts;
 - final backward semantic reconstruction.
 
 ## Intended outcome
