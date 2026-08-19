@@ -3,10 +3,11 @@
   "repository": "maidiu/rawlsing",
   "parent_branch": "agent/vozhd-trii-prechange-discovery-control",
   "campaign_launch_base_sha": "afffe8573a54bcc3b6aad801496abca65665b095",
-  "status": "R01_ACCEPTED__R02_READY__STAGE_CLOSE_READS_BLOCKED__WHOLE_MACHINE_IMPLEMENTATION_GATED",
+  "status": "R01_R02_ACCEPTED__R03_PARALLEL_HOSTILE_CHAMBER_AUTHORIZED__STAGE_EVIDENCE_PREP_AUTHORIZED__FINAL_CLOSE_READS_GATED__IMPLEMENTATION_GATED",
   "binding_parent_adjudications": [
     "20_D15_RETURN_ADJUDICATION_AND_DOWNSTREAM_REBASE_GATE.md",
-    "21_DR_R01_RETURN_ADJUDICATION.md"
+    "21_DR_R01_RETURN_ADJUDICATION.md",
+    "22_DR_R02_RETURN_ADJUDICATION_AND_R03_DELEGATION_GATE.md"
   ],
   "frozen_upstream": {
     "status": "D15_ACCEPTED__FROZEN",
@@ -33,30 +34,63 @@
       "result": "DEPENDENCY_REBASE_CLOSED__R02_READY",
       "accepted_core": [
         "universal V553 transit rejected",
-        "V553 retained only for its unique temporal/harmonization/comparability jurisdiction",
-        "direct non-temporal StructuralEmpiricalAdmission -> V554 is strongest unresolved bypass candidate",
-        "no generic StructuralEmpiricalAdmission -> V555/V556 bypass established",
-        "PSEPF bypasses V553-V558 and enters V3 directly",
-        "raw C11 incidence and generic EmpiricalFact do not transit downstream structural stages",
-        "V557/V558 preserve upstream semantic ownership by reference rather than copying",
-        "V3 requires new empirical-possibility intake/metabolism/lifecycle contracts"
+        "V553 retained only for unique temporal/harmonization/comparability jurisdiction",
+        "PSEPF direct V3 lane confirmed",
+        "raw empirical incidence does not transit structural stages",
+        "producer ownership preserved by reference"
       ],
       "handoff": "R01/R02_DIRECT_DAG_OWNERSHIP_HANDOFF.json"
     },
     {
       "id": "R02",
       "title": "Direct-DAG ownership and minimality sweep",
-      "status": "READY",
-      "primary_burden": "identify the earliest lawful owner of the first unique semantic transformation for every corrected upstream object and structural-admission class"
+      "branch": "agent/vozhd-trii-dr-r02-direct-dag-ownership-minimality",
+      "worker_base_sha": "ade9bbe51ca2766bcde8ec58af6c659f0ca21f25",
+      "observed_head_sha": "e56dd9024985f0ad955f7b09cb63ab8b743532be",
+      "observed_state": "11_COMMITS_AHEAD__0_BEHIND__11_COMMANDED_FILES_ONLY",
+      "status": "ACCEPTED__DIRECT_DAG_OWNERSHIP_MINIMALITY_CLOSED",
+      "result": "DIRECT_DAG_OWNERSHIP_MINIMALITY_CLOSED__R03_READY",
+      "accepted_core": [
+        "V553 required only for newly-created temporal/comparability semantics",
+        "direct StructuralEmpiricalAdmission -> V554 required for temporally complete V554-rule-eligible class",
+        "duplicate direct and V553-temporalized basis forbidden for same V554 proposition/use/rule",
+        "StructuralEmpiricalAdmission -> V555/V556 forbidden under retained jurisdictions",
+        "V555/V556 unique semantics retained",
+        "V557 runtime publication/use governance retained without producer reownership",
+        "V558 immutable repository/index/resolution retained without producer reownership",
+        "transitive content-addressed reference closure preferred to copied provenance",
+        "ActorComparatorReceipt provenance-only in V3",
+        "ReplayReceipt audit/replay-only",
+        "V3EmpiricalPossibilityInput retained as thin V3 lifecycle/effective-time/use/metabolism envelope without copied PSEPF geometry"
+      ],
+      "handoff": "R02/R03_HOSTILE_SWEEP_HANDOFF.json"
     },
     {
       "id": "R03",
-      "title": "Hostile no-starvation / no-bloat sweep",
-      "status": "BLOCKED_BY_R02"
+      "title": "Hostile no-starvation / no-bloat broad-DAG sweep",
+      "status": "AUTHORIZED__PARALLEL_FEEDERS_PLUS_SINGLE_SYNTHESIS",
+      "authority_delegation": "R03/AUTHORITY_DELEGATION.md",
+      "attack_plan": "R03/ATTACK_PLAN.md",
+      "feeders": [
+        "R03A_TEMPORAL_ROUTING_OVER_BYPASS_DUPLICATE_PATH",
+        "R03B_RETAINED_STAGE_NECESSITY_UNDER_BYPASS_NO_BLOAT",
+        "R03C_PROVENANCE_REPLAY_SOURCE_UNIVERSE_STANDALONE_CLOSURE",
+        "R03D_ONTOLOGY_AUTHORITY_LEAKAGE",
+        "R03E_V3_POSSIBILITY_BOUNDARY_DIVERGENCE_V2_NONCONSUMPTION",
+        "R03F_WHOLE_DAG_TERMINAL_STARVATION_CHECKSUM"
+      ],
+      "synthesis": "DR_R03_SYNTHESIS__SOLE_DISPOSITIVE_BROAD_DAG_AUTHORITY",
+      "synthesis_gate": "ALL_REQUIRED_FEEDERS_FINITE_OR_PARENT_WAIVER_FOR_TYPED_PERMANENT_BLOCK"
     }
   ],
+  "stage_evidence_preparation": {
+    "status": "AUTHORIZED__PARALLEL__NON_DISPOSITIVE",
+    "cells": ["EP553", "EP554", "EP555", "EP556", "EP5578", "EPV3"],
+    "authority": "EVIDENCE_ONLY__NO_STAGE_ARCHITECTURE_SELECTION",
+    "may_run_concurrently_with": "R03A_R03F"
+  },
   "stage_close_reads": {
-    "status": "BLOCKED_PENDING_BROAD_SWEEPS",
+    "status": "BLOCKED_PENDING_R03_SYNTHESIS",
     "planned": [
       "V553",
       "V554",
@@ -65,8 +99,15 @@
       "V557_V558",
       "V3_UPSTREAM_INTAKE_AND_DEVELOPMENTAL_BOUNDARY",
       "V2_APP_IF_MATERIALLY_AFFECTED"
-    ]
+    ],
+    "parallelization_rule": "R03_SYNTHESIS_MUST_EMIT_EXPLICIT_DEPENDENCY_GRAPH__DO_NOT_DEFAULT_TO_STAGE_NUMBER_SEQUENCE"
   },
-  "whole_machine_implementation": "BLOCKED_PENDING_DOWNSTREAM_REBASE_AND_STAGE_CLOSE_READS",
-  "governing_rule": "CORRECT_UPSTREAM_FIRST__DOWNSTREAM_REBASE_SECOND__WHOLE_MACHINE_OPTIMUM_OVER_PRIOR_DESIGN_PRESERVATION__NO_GRATUITOUS_REDESIGN"
+  "legitimate_serial_barriers": [
+    "R03 synthesis waits for finite required hostile feeder returns",
+    "final stage architecture rulings wait for R03 broad hostile closure while evidence prep may run early",
+    "whole-machine closure waits for accepted stage close-reads",
+    "implementation waits for whole-machine closure and regenerated implementation campaign"
+  ],
+  "whole_machine_implementation": "BLOCKED_PENDING_R03__STAGE_CLOSE_READS__WHOLE_MACHINE_CLOSURE",
+  "governing_rule": "PARALLELIZE_WHERE_INPUTS_ARE_FROZEN__SERIALIZE_ONLY_TRUE_INFORMATION_DEPENDENCIES__CORRECT_UPSTREAM_FIRST__WHOLE_MACHINE_OPTIMUM__NO_GRATUITOUS_REDESIGN"
 }
