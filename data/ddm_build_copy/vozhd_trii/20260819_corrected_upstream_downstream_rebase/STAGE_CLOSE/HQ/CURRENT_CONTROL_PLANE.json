@@ -1,20 +1,25 @@
 {
-  "schema":"VOZHD_TRII_STAGE_CLOSE_CURRENT_CONTROL_PLANE@1.0.0",
-  "status":"COMMAND_REVIEW_COMPLETE__CLEANUP_COMPLETE__NEXT_EPOCH_HELD",
+  "schema":"VOZHD_TRII_STAGE_CLOSE_CURRENT_CONTROL_PLANE@1.1.0",
+  "status":"DISPATCH_EPOCH_02_OPEN__TWO_INITIAL_MISSIONS_ISSUED",
   "semantic_common_base":"baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
   "hq_branch":"agent/vozhd-trii-stage-close-hq",
   "dispatch_branch":"agent/vozhd-trii-stage-close-dispatch",
   "dispatch_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/DISPATCH/",
   "dispatch_protocol":"DISPATCH/README.md",
   "mailbox_index":"DISPATCH/MAILBOX_INDEX.json",
+  "user_handoff_addressing":"WORKER_SLOT__PERMANENT_CHAT_ID__MOST_RECENT_SUBMITTING_AGENT_ID__NEW_AGENT_ID",
   "command_review":"DISPATCH/COMMAND_REVIEW_01/RESULT.md",
   "cleanup_receipt":"DISPATCH/COMMAND_REVIEW_01/CLEANUP_RECEIPT.json",
-  "legacy_reassignment_scheme":"HQ/CHAT_REASSIGNMENT_WAVE_02.md__SUPERSEDED_DO_NOT_EXECUTE",
-  "global_mailbox_state":"HOLD_FOR_COMMAND_REVIEW",
-  "new_assignment_count":0,
   "accepted_frozen_seams":["M1","M2","M3"],
-  "next_ready_but_unissued":["M4_FINAL","SCRV3_M6_HANDOFF_LITERALIZATION"],
-  "later_dependency_gated":["M5_FINAL","M6_FINAL","POST_REVIEW_INSPECTORATE_RECLOSURE"],
+  "issued":[
+    {"worker_slot":10,"chat_id":"CHAT-S5578C","most_recent_submitting_agent_id":"M4_PREFLIGHT","new_agent_id":"M4_FINAL","assignment_id":"E02-W10-M4-FINAL-001"},
+    {"worker_slot":3,"chat_id":"CHAT-SCRV3","most_recent_submitting_agent_id":"SCRV3","new_agent_id":"SCRV3_M6_HANDOFF_LITERALIZATION","assignment_id":"E02-W03-SCRV3-M6LIT-001"}
+  ],
+  "dependency_following_next":[
+    {"unit":"M5_FINAL","opens_when":"M4_FINAL_ACCEPTED"},
+    {"unit":"M6_FINAL","opens_when":"SCRV3_M6_HANDOFF_LITERALIZATION_COMPLETE"},
+    {"unit":"POST_REVIEW_INSPECTORATE_RECLOSURE","opens_when":"M4_M5_M6_ACCEPTED"}
+  ],
   "implementation_authorized":false,
   "broad_topology_reopened":false
 }
