@@ -1,27 +1,37 @@
 {
-  "force_size": 10,
-  "hq_excluded_from_worker_count": true,
-  "common_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
-  "allocation_epoch": "STAGE_CLOSE_POST_M1_M2_ACCEPTANCE",
-  "workers": [
-    {"priority":1,"unit":"M3_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m3-higher-order-structural","worker_class":"SEAM_BINDER","status":"ASSIGNED_TO_FORMER_M2_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M3/"},
-    {"priority":2,"unit":"M6_PREFLIGHT","branch":"agent/vozhd-trii-dr-r03-seam-m6-preflight","worker_class":"SEAM_PREFLIGHT_SPECIALIST","status":"ASSIGNED_TO_FORMER_M1_CHAT__NON_DISPOSITIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M6/preflight/"},
-    {"priority":3,"unit":"SCRV3","branch":"agent/vozhd-trii-dr-r03-close-v3-empirical-possibility","worker_class":"SUB_VOZHD","status":"CONTINUE_ACTIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/"},
-    {"priority":4,"unit":"SV3A","branch":"agent/vozhd-trii-dr-r03-spec-v3-input-lifecycle","worker_class":"FLOATING_SPECIALIST","status":"ASSIGNED_EXISTING_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3A/"},
-    {"priority":5,"unit":"SV3B","branch":"agent/vozhd-trii-dr-r03-spec-v3-comparator-snapshot","worker_class":"FLOATING_SPECIALIST","status":"ASSIGNED_EXISTING_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3B/"},
-    {"priority":6,"unit":"SV3C","branch":"agent/vozhd-trii-dr-r03-spec-v3-effective-time-source-state","worker_class":"FLOATING_SPECIALIST","status":"ASSIGNED_EXISTING_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3C/"},
-    {"priority":7,"unit":"SV3F","branch":"agent/vozhd-trii-dr-r03-spec-v3-structural-peer-prior","worker_class":"FLOATING_SPECIALIST","status":"ASSIGNED_EXISTING_CHAT","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3F/"},
-    {"priority":8,"unit":"SINSP","branch":"agent/vozhd-trii-dr-r03-inspectorate-stage-close","worker_class":"INSPECTORATE","status":"CONTINUE_ACTIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/INSPECTORATE/SINSP/"},
-    {"priority":9,"unit":"M3_PREFLIGHT","branch":"agent/vozhd-trii-dr-r03-seam-m3-preflight","worker_class":"SEAM_PREFLIGHT_SPECIALIST","status":"CONTINUE_ASSIGNED__NON_DISPOSITIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M3/preflight/"},
-    {"priority":10,"unit":"M4_PREFLIGHT","branch":"agent/vozhd-trii-dr-r03-seam-m4-preflight","worker_class":"SEAM_PREFLIGHT_SPECIALIST","status":"CONTINUE_ASSIGNED__NON_DISPOSITIVE","write_root":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M4/preflight/"}
+  "force_size":10,
+  "hq_excluded_from_worker_count":true,
+  "common_base":"baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "allocation_epoch":"R03_STAGE_CLOSE_COMMAND_REVIEW_01_HOLD",
+  "dispatch_branch":"agent/vozhd-trii-stage-close-dispatch",
+  "global_state":"HOLD_FOR_COMMAND_REVIEW",
+  "active_new_semantic_assignments":0,
+  "rule":"NO_NEW_ASSIGNMENT_IS_VALID_UNLESS_ISSUED_THROUGH_PERMANENT_DISPATCH_MAILBOX_AND_EXACT_IMMUTABLE_ASSIGNMENT_ARTIFACT",
+  "mailboxes":[
+    {"chat_id":"CHAT-S554D","last_unit":"M6_PREFLIGHT","last_worker_class":"SEAM_PREFLIGHT_SPECIALIST","state":"HOLD_FOR_COMMAND_REVIEW"},
+    {"chat_id":"CHAT-SCR555","last_unit":"M3_FINAL","last_worker_class":"SEAM_BINDER","state":"HOLD_FOR_COMMAND_REVIEW"},
+    {"chat_id":"CHAT-SCRV3","last_unit":"SCRV3","last_worker_class":"SUB_VOZHD","state":"HOLD_FOR_COMMAND_REVIEW"},
+    {"chat_id":"CHAT-SCR5578","last_unit":"SV3A","last_worker_class":"FLOATING_SPECIALIST","state":"HOLD_FOR_COMMAND_REVIEW","review_flag":"NONCONFORMING_RETURN_EVIDENCE_ONLY"},
+    {"chat_id":"CHAT-SCRV2APP","last_unit":"SV3B","last_worker_class":"FLOATING_SPECIALIST","state":"HOLD_FOR_COMMAND_REVIEW"},
+    {"chat_id":"CHAT-SCR553","last_unit":"SV3C","last_worker_class":"FLOATING_SPECIALIST","state":"HOLD_FOR_COMMAND_REVIEW"},
+    {"chat_id":"CHAT-SV3M","last_unit":"SV3F","last_worker_class":"FLOATING_SPECIALIST","state":"HOLD_FOR_COMMAND_REVIEW"},
+    {"chat_id":"CHAT-SINSP","last_unit":"SINSP","last_worker_class":"INSPECTORATE","state":"HOLD_FOR_COMMAND_REVIEW","review_flag":"FINAL_POST_REVIEW_RECLOSURE_REQUIRED_LATER"},
+    {"chat_id":"CHAT-SCR556","last_unit":"M3_PREFLIGHT","last_worker_class":"SEAM_PREFLIGHT_SPECIALIST","state":"HOLD_FOR_COMMAND_REVIEW"},
+    {"chat_id":"CHAT-S5578C","last_unit":"M4_PREFLIGHT","last_worker_class":"SEAM_PREFLIGHT_SPECIALIST","state":"HOLD_FOR_COMMAND_REVIEW"}
   ],
-  "accepted_seams": [
-    {"unit":"M1","result_token":"M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED","result_json_blob":"2cd78ec9a6945d2d30e965a37fee5cae44bd50f7"},
-    {"unit":"M2","result_token":"M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED","result_json_blob":"15ddb28e9fe036f9e5ea5a60a924f549adcccc05"}
+  "accepted_frozen_seams":[
+    {"unit":"M1","semantic_head":"088848577fd42f3b69e78551d5277c91e5aa128d","token":"M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED"},
+    {"unit":"M2","semantic_head":"92128619122886d0ced877a29b42fdb453765246","token":"M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED"},
+    {"unit":"M3","result_blob":"c5c2f85bade35a1b1cda9a26ce946f76d39ec953","token":"M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED"}
   ],
-  "prepared_blocked_final_seams": [
-    {"unit":"M4_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m4-publication-repository","opens_when":"M3 accepted"},
-    {"unit":"M5_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m5-v3-peer-prior","opens_when":"M4 and SCRV3 accepted"},
-    {"unit":"M6_FINAL","branch":"agent/vozhd-trii-dr-r03-seam-m6-v2-expression","opens_when":"SCRV3 accepted"}
-  ]
+  "next_epoch_candidate_work_NOT_ISSUED":[
+    {"unit":"M4_FINAL","worker_class":"SEAM_BINDER","branch":"agent/vozhd-trii-dr-r03-seam-m4-publication-repository","opening":"READY","must_bind":"SCR5578@ec7bbe80fff26dae23fa8ab3c62b48b8be2164a2 plus accepted M2/M3"},
+    {"unit":"SCRV3_M6_HANDOFF_LITERALIZATION","worker_class":"SUB_VOZHD_OR_NARROW_SEAM_SPECIALIST_TO_BE_SELECTED_BY_HQ","opening":"READY_NARROW_INTERFACE_COMPLETION","scope":"ActorAccessibleRenderEnvelope exact schema-version identity/hash terminal-state currentness/invalidation literals only"},
+    {"unit":"M5_FINAL","worker_class":"SEAM_BINDER","branch":"agent/vozhd-trii-dr-r03-seam-m5-v3-peer-prior","opening":"AFTER_M4_ACCEPTED"},
+    {"unit":"M6_FINAL","worker_class":"SEAM_BINDER","branch":"agent/vozhd-trii-dr-r03-seam-m6-v2-expression","opening":"AFTER_NARROW_SCRV3_HANDOFF_LITERALIZATION"},
+    {"unit":"POST_REVIEW_INSPECTORATE_RECLOSURE","worker_class":"INSPECTORATE","opening":"AFTER_M4_M5_M6_ACCEPTED"}
+  ],
+  "recycle_budget_next_epoch":null,
+  "next_epoch_open":false,
+  "production_implementation_authorized":false
 }
