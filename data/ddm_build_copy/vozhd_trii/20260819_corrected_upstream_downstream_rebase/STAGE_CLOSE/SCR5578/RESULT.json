@@ -28,11 +28,9 @@
   "implementation_status": "CURRENT_V557_V558_PRODUCTION_SURFACES_NONCONFORMING__MIGRATION_DEBT_ONLY__IMPLEMENTATION_NOT_AUTHORIZED",
   "local_contract_status": "CLOSED",
   "only_remaining_final_dependencies": [
-    "accepted exact SCR553 producer contract binding",
-    "accepted exact SCR554 producer contract binding",
-    "accepted exact SCR555 producer contract binding",
-    "accepted exact SCR556 producer contract binding",
-    "M4 checksum binding those exact producer identities/reference contracts into the frozen SCR5578 registry without modifying SCR5578 local law"
+    "M2 acceptance/binding that turns the locally closed SCR555 contract into an exact final V555 producer contract bound to accepted SCR554 canonical F1/B1 identity/reference law",
+    "M3 acceptance/binding that turns the locally closed SCR556 contract into an exact final V556 producer contract bound to accepted SCR555 route identity/state/reference law",
+    "M4 binding of accepted exact SCR553/SCR554/SCR555/SCR556 producer identities/reference contracts into the frozen SCR5578 registry without modifying SCR5578 local law"
   ],
   "outputs": [
     "RESULT.md",
@@ -43,11 +41,34 @@
     "SEAM_HANDOFF.json",
     "IMPLEMENTATION_GAP.md"
   ],
-  "producer_branch_observation": {
+  "producer_branch_initial_observation": {
     "SCR553": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
     "SCR554": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
     "SCR555": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
     "SCR556": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d"
+  },
+  "producer_seam_recheck": {
+    "SCR553": {
+      "contract": "SCR553_V553_TEMPORAL_JURISDICTION / SCR553_V553_TEMPORAL_JURISDICTION_V1",
+      "result_token": "SCR553_EXACT_CONTRACT_CLOSED",
+      "status": "LOCAL_EXACT_CONTRACT_CLOSED"
+    },
+    "SCR554": {
+      "contract": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0",
+      "result_token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "status": "LOCAL_EXACT_CONTRACT_CLOSED"
+    },
+    "SCR555": {
+      "contract": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT@stage-close-r03-1",
+      "result_token": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "status": "INDEPENDENT_V555_CONTRACT_CLOSED__M2_SCR554_F1_B1_FINAL_BINDING_UNBOUND"
+    },
+    "SCR556": {
+      "contract": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT@scr556.v1",
+      "result_token": "SCR556_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "status": "LOCAL_V556_CONTRACT_CLOSED__M3_SCR555_FINAL_BINDING_UNBOUND"
+    },
+    "scr5578_disposition": "WAITING_ONLY_FOR_EXACT_FINAL_SEAM__NO_SIBLING_M2_OR_M3_ADJUDICATION_AUTHORITY"
   },
   "production_code_modified": false,
   "repository": "maidiu/rawlsing",
