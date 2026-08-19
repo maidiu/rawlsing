@@ -1,0 +1,187 @@
+{
+  "court": "D13B",
+  "title": "Exact Replay Proof Obligations & Hostile Fixture Court",
+  "status": "NON_DISPOSITIVE_D13_FEEDER",
+  "repository": "maidiu/rawlsing",
+  "exact_base_sha": "b92d3f3db9faaa962f59d55e61122701df9e53aa",
+  "branch": "agent/vozhd-trii-d13b-replay-proof-protocol",
+  "verdict": "PROOF_PROTOCOL_COMPLETE__STATIC_PROOF_EXECUTABLE__SYNTHETIC_FIXTURE_PROOF_COMPLETE__POPULATED_PRODUCTION_PROOF_BLOCKED__SOURCE_EQUIVALENCE_UNPROVEN",
+  "court_states": {
+    "PROOF_PROTOCOL_COMPLETE": true,
+    "STATIC_PROOF_EXECUTABLE": true,
+    "SYNTHETIC_FIXTURE_PROOF_COMPLETE": true,
+    "POPULATED_PRODUCTION_PROOF_BLOCKED": true,
+    "SOURCE_EQUIVALENCE_UNPROVEN": true
+  },
+  "equivalence_awards": {
+    "EXACTLY_REPLAY_EQUIVALENT": "NOT_AWARDED_TO_ANY_SUBSTRATE_BY_D13B",
+    "INFORMATION_EQUIVALENT_FOR_THE_RETAINED_CAPABILITY_FRONTIER": "NOT_AWARDED_TO_ANY_SUBSTRATE_BY_D13B",
+    "reason": "D13B defines and tests the proof protocol but selects no retained substrate and has no populated production/source-native snapshot."
+  },
+  "central_theorems": [
+    "Equivalence is a typed relation among source object, replay object, exact scope, authority snapshot, retained capability frontier, and protocol version; it is not a property of a schema or file by itself.",
+    "EXACTLY_REPLAY_EQUIVALENT requires every mandatory proof dimension to PASS. Any FAIL, BLOCKED or UNKNOWN prevents the claim.",
+    "INFORMATION_EQUIVALENT_FOR_THE_RETAINED_CAPABILITY_FRONTIER additionally requires an explicit versioned closed frontier; omitted dimensions must be explicitly NOT_APPLICABLE by frontier law.",
+    "Aggregate equality cannot substitute for respondent incidence when the frontier contains future respondent-bound conditionals, conjunctions, branch membership, cotravel or k-way reconditioning.",
+    "A serialized-file hash and a schema hash are provenance/integrity evidence only. A logical semantic hash is a redundant seal after dimensional proof, never a standalone equivalence proof.",
+    "Conflicting scalar duplicates block source interpretation; legitimate repeated/multiselect/ranked events must survive with explicit topology/event identity.",
+    "Missing or invalid weights produce a typed unavailable weighted result; defaulting them to 1.0 is forbidden as replay proof.",
+    "Raw source identity, raw wave, canonical wave and country are all preserved where source-native identity can distinguish observations.",
+    "Empirical predicate replay may not promote a coordinate into a generated structural-position predicate; D10's ontology seam is preserved."
+  ],
+  "proof_dimension_count": 20,
+  "proof_dimensions": [
+    "respondent_incidence",
+    "response_event_multiplicity",
+    "response_topology",
+    "risk_set_identity",
+    "routing_applicability",
+    "typed_missingness",
+    "raw_support",
+    "weighted_support",
+    "weight_basis",
+    "scope",
+    "predicate_identity",
+    "condition_ast_hash",
+    "target_identity",
+    "branch_membership_provenance",
+    "k_way_joint_topology",
+    "authority_identity",
+    "logical_content_hash",
+    "deterministic_replay",
+    "duplicate_semantics",
+    "order_independence"
+  ],
+  "hostile_fixture_count": 26,
+  "hostile_fixture_execution": {
+    "executed": 26,
+    "passed": 26,
+    "failed": 0,
+    "report": "SYNTHETIC_FIXTURE_PROOF_REPORT.json",
+    "state": "SYNTHETIC_FIXTURE_PROOF_COMPLETE"
+  },
+  "metamorphic_tests": {
+    "test_count": 6,
+    "passed": 6,
+    "failed": 0,
+    "command": "python -m unittest -v test_replay_proof_protocol.py",
+    "covered_traps": [
+      "all 26 expected pass/fail/block outcomes",
+      "same unary marginals/different joint incidence",
+      "XOR with preserved unary marginals",
+      "same branch count/different member set",
+      "raw-equal/weighted-different",
+      "same displayed distribution/different predicate and risk set"
+    ]
+  },
+  "required_outputs": {
+    "RESULT.md": "present",
+    "RESULT.json": "present",
+    "REPLAY_PROOF_CONTRACT.json": "present",
+    "HOSTILE_FIXTURE_MATRIX.csv": "present"
+  },
+  "feeder_local_executables": [
+    "replay_proof_protocol.py",
+    "hostile_fixtures.py",
+    "run_hostile_fixtures.py",
+    "test_replay_proof_protocol.py"
+  ],
+  "no_db_law": {
+    "populated_database_available": false,
+    "populated_production_claims_authorized": false,
+    "candidate_source_equivalence_claim_authorized": false,
+    "state": "POPULATED_PRODUCTION_PROOF_BLOCKED",
+    "source_equivalence_state": "SOURCE_EQUIVALENCE_UNPROVEN"
+  },
+  "current_shared_substrate_static_pressure_points": [
+    {
+      "point": "logical hash boundary",
+      "ruling": "CURRENT_LOGICAL_HASH_IS_STRONG_INTEGRITY_FOR_DECLARED_COLUMNS__NOT_SEMANTIC_EQUIVALENCE_PROOF",
+      "proof_consequence": "D13 candidate proof must independently compare topology, multiplicity, risk sets, predicates, authorities and retained query results."
+    },
+    {
+      "point": "scalar duplicate policy",
+      "ruling": "MUST_DISTINGUISH_CONFLICTING_SCALAR_DUPLICATE_FROM_LAWFUL_REPEATED_MULTISELECT_RANKED_EVENT",
+      "proof_consequence": "F14 must block; F02/F03/F04/F15 must preserve event topology/multiplicity."
+    },
+    {
+      "point": "default-filled semantics/weights",
+      "ruling": "DEFAULTS_CANNOT_DISCHARGE_SOURCE_EQUIVALENCE",
+      "proof_consequence": "Missing/invalid source meaning must stay blocked/unknown unless positive source authority proves the default is semantically exact."
+    },
+    {
+      "point": "joint-only semantic parity",
+      "ruling": "NOT_DEMONSTRATED_BY_D06",
+      "proof_consequence": "A retained candidate must prove the same required semantic dimensions for JOINT_ONLY rows rather than infer parity from shared schema."
+    },
+    {
+      "point": "future coordinates",
+      "ruling": "CURRENT_FIXED_INDICATOR_INVENTORY_IS_NOT_THE_REPLAY_FRONTIER",
+      "proof_consequence": "If a future-authorized coordinate is in the retained frontier, its respondent incidence/predicate semantics must be reconstructible even when absent from current INDICATOR_FIELDS."
+    }
+  ],
+  "binding_input_provenance": [
+    {
+      "input": "D05 RESULT.md",
+      "branch": "agent/vozhd-trii-d05-empirical-substrate",
+      "blob_sha": "3b8948a8583c76859b4ab003c10ef12ff25ebb9c",
+      "holding": "BLOCKED_MISSING_POPULATED_DATA_ACCESS; apparatus CLOSED_EXECUTABLE_FIXED_SEMANTICS"
+    },
+    {
+      "input": "D05_AUDIT_CONTRACT.json",
+      "branch": "agent/vozhd-trii-d05-empirical-substrate",
+      "blob_sha": "7285ae94e319d08c57f44bd89f290b55ac9eddb5",
+      "holding": "exact identity, multiplicity, zero-overlap, typed-state and source-equivalence audit law"
+    },
+    {
+      "input": "D06 R2 RESULT.md",
+      "branch": "agent/vozhd-trii-d06-r1-v550-eligibility",
+      "blob_sha": "5afcbc03c51578725dfeb1f58baa3352e51ce4c0",
+      "holding": "shared V550/V550J respondent substrate exists; replay completeness not demonstrated"
+    },
+    {
+      "input": "D06 AUTHORITY_TO_EXECUTION_GRAPH.csv",
+      "branch": "agent/vozhd-trii-d06-r1-v550-eligibility",
+      "blob_sha": "3c4ce74fc21e23f63ef64b3b343638261932b912",
+      "holding": "authority/execution topology including joint-only expansion and shared-substrate integrity boundaries"
+    },
+    {
+      "input": "D07 RESULT.md",
+      "branch": "agent/vozhd-trii-d07-workload-authority",
+      "blob_sha": "d7d99dc768848c0e672fe912e54e40896ed457e5",
+      "holding": "RECONSTRUCTIBLE_ON_DEMAND governs future-authorized empirical query frontier"
+    },
+    {
+      "input": "D08 RESULT.md",
+      "branch": "agent/vozhd-trii-d08-empirical-fact-algebra",
+      "blob_sha": "c766f4b0d6ade72a56e921e6d03aa3dc20fba68c",
+      "holding": "typed respondent-bound algebra; risk set/predicate/topology/weights/authority are fact identity"
+    },
+    {
+      "input": "D08 EMPIRICAL_FACT_ALGEBRA.csv",
+      "branch": "agent/vozhd-trii-d08-empirical-fact-algebra",
+      "blob_sha": "e01c43d20b1e0b17541501683845d4ed62ddb1b7",
+      "holding": "respondent incidence primitive; repeated/set/ranked/routed topology; branch/joint requirements"
+    },
+    {
+      "input": "D09 RESULT.md",
+      "branch": "agent/vozhd-trii-d09-same-answer-different-cloud",
+      "blob_sha": "354f0269ed0654f6f2f4dc4ad100df5d4a9a9a86",
+      "holding": "same displayed answer under different predicate/risk set/provenance is a different empirical fact"
+    },
+    {
+      "input": "D10 RESULT.md",
+      "branch": "agent/vozhd-trii-d10-empirical-structural-predicate-authority",
+      "blob_sha": "e867e7a597be546d91d4cecae568c75f6ccfe57f",
+      "holding": "no raw empirical-coordinate to generated structural-position binding authority"
+    },
+    {
+      "input": "D11 RESULT.md",
+      "branch": "agent/vozhd-trii-d11-current-downstream-consumption",
+      "blob_sha": "06a46105705d8beb159b16336eb671ee0381e726",
+      "holding": "respondent-grain joint membership stops at V550J; provenance narrows downstream"
+    }
+  ],
+  "architecture_selection": "NONE",
+  "production_changes": "NONE"
+}
