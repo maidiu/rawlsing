@@ -1,0 +1,158 @@
+{
+  "contract_id": "M2_V554_V555_ATOMIC_ROUTE_EXACT_SEAM_CONTRACT",
+  "contract_version": "1.0.0",
+  "authority_class": "DISPOSITIVE_M2_SEAM_CHECKSUM",
+  "result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+  "repository": "maidiu/rawlsing",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-seam-m2-atomic-route",
+  "production_code_modified": false,
+  "d15_reopened": false,
+  "broad_topology_changed": false,
+  "source_or_artifact_retirement_authorized": false,
+  "governing_inputs": {
+    "scr554": {
+      "head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "token": "SCR554_EXACT_CONTRACT_CLOSED",
+      "contract": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0",
+      "exact_contract_blob_sha": "4bce143b087d5e38dbb4829a979a3f43abf9ab90"
+    },
+    "scr555": {
+      "head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+      "token_before_m2": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "contract": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT@stage-close-r03-1",
+      "exact_contract_blob_sha": "8926500b7af442c0e07483442047aaad6cdeab63"
+    },
+    "s554d": {
+      "head": "a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4",
+      "authority": "NON_DISPOSITIVE_ACCEPTED_FEEDER_EVIDENCE"
+    }
+  },
+  "f1_binding": {
+    "v555_symbol": "EXACT_V554_F1_REF",
+    "resolves_to": "canonical SCR554 F1_id",
+    "f1_semantic_family": "BOUNDED_STRUCTURAL_AFFORDANCE",
+    "required_state": "ELIGIBLE",
+    "required_target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "identity_scheme_verbatim": "urn:rawlsing:<object-family>:sha256:<lowercase-hex-digest>",
+    "f1_id_verbatim": "urn:rawlsing:v554:f1:sha256:SHA256(canonical_json({contract_version, equivalence_key, canonical_basis_semantic_id, rule_id, rule_version, rule_hash, signature_id, target_use, authority_bundle_fingerprint}))",
+    "canonicalization_verbatim": "Same canonical JSON rules as duplicate equivalence.",
+    "same_f1": "same canonical F1_id under the accepted SCR554 canonicalization and immutable authority/reference closure",
+    "different_f1": "different canonical F1_id after exact SCR554 resolution",
+    "v555_may_reconstruct_f1": false
+  },
+  "b1_binding": {
+    "semantic_family": false,
+    "role": "V554_V555_HANDOFF_PERMISSION_REFERENCE_REPLAY_BOUNDARY",
+    "b1_id_verbatim": "urn:rawlsing:v554:b1:sha256:SHA256(canonical_json({contract_version, candidate_semantic_key, f1_id_or_null, sorted_f2_ids, allowed_v555_structural_use, decision_state, producer_reference_spine_fingerprint}))",
+    "allowed_use_verbatim": "true iff a positive F1 exists and no applicable nonpositive hard block owns the exact target use; runtime-deferred K01-K03 and K04 informational constraint do not by themselves make B1 false.",
+    "route_precondition": [
+      "B1.f1_id_or_null equals the exact canonical F1_id used as EXACT_V554_F1_REF",
+      "B1.allowed_v555_structural_use is true",
+      "B1 decision/reference spine/authority closure resolves exactly",
+      "no integrity failure or K05-K09 hard block owns the exact target use"
+    ],
+    "route_identity_member": false,
+    "route_multiplicity_contribution": 0,
+    "purpose": "prove exact upstream basis, authority, use permission, F2 references, and replay closure without becoming an additional V555 semantic participant"
+  },
+  "route_cardinality": {
+    "accepted_f1_per_v555_route": 1,
+    "multi_f1_route": "FORBIDDEN",
+    "different_f1_same_channel_receiver": "MUST_REMAIN_DIFFERENT_ROUTES",
+    "reason": "The frozen V555 route tuple begins with EXACT_V554_F1_REF, so identical downstream channel/receiver bindings cannot erase a different canonical F1 identity."
+  },
+  "v555_route_identity": {
+    "semantic_identity_kind": "ORDERED_TUPLE",
+    "tuple_order": [
+      "EXACT_V554_F1_REF",
+      "route_rule_id@route_rule_version",
+      "route_shape_id@route_shape_version",
+      "channel_structural_role_id",
+      "EXACT_STRUCTURAL_CHANNEL_REF",
+      "receiving_constraint_kind",
+      "EXACT_TARGET_RECEIVING_POSITION_REF"
+    ],
+    "first_field_binding": "canonical SCR554 F1_id",
+    "b1_is_eighth_route_field": false,
+    "f2_is_route_identity_field": false,
+    "same_tuple_same_route": true,
+    "duplicate_same_tuple_policy": "DEDUPLICATE_AS_SAME_CANONICAL_ROUTE"
+  },
+  "duplicate_provenance_law": {
+    "basis_kind_in_scr554_equivalence_key": false,
+    "direct_plus_v553_noop_duplicate": "ONE_CANONICAL_SEMANTIC_BASIS__AT_MOST_ONE_ELIGIBLE_F1",
+    "same_kind_aliases": "ONE_CANONICAL_SEMANTIC_BASIS__ALIASES_RETAINED_AS_PROVENANCE",
+    "v555_effect": "Duplicate physical provenance can never multiply V555 routes because route construction sees the post-dedup canonical F1_id only.",
+    "v555_may_rededuplicate_by_labels": false
+  },
+  "authority_snapshot_guard": {
+    "rule": "A mixed/unresolved authority snapshot for one exact V554 invocation cannot become a second positive F1 merely because rule version/hash differs.",
+    "scr554_precedence": [
+      "order 3 STATIC_AUTHORITY_COMPLETENESS",
+      "order 5 DUPLICATE_EQUIVALENCE",
+      "order 7 CONJUNCTIVE_F1"
+    ],
+    "scr554_k07_verbatim": "Missing required static authority -> K06/nonassertable; unknown/conflicting required authority without governed precedence -> K07/nonassertable.",
+    "required_result_for_mixed_unresolved_snapshot": "NONASSERTABLE_UNKNOWN_OR_CONFLICTING_STATIC_AUTHORITY__K07__NO_F1",
+    "version_hash_difference_alone_is_positive_multiplicity_authority": false,
+    "resolved_distinct_authority_case": "A changed semantic authority version/hash may change identity only after the governing authority relation is itself exact/resolved; M2 does not conflate that lawful case with a mixed/unresolved snapshot."
+  },
+  "f2_law": {
+    "owner": "V554",
+    "identity": "canonical SCR554 F2_id",
+    "transport": "EXACT_REFERENCE_ONLY",
+    "v555_copy_or_rename": false,
+    "v555_re_evaluate": false,
+    "v555_runtime_satisfaction_claim": false,
+    "b1_may_include_sorted_f2_ids": true,
+    "f2_presence_changes_route_identity": false
+  },
+  "route_born_predicate_law": {
+    "authority": "V555_ROUTE_BORN_PREDICATE_RULE@1.0.0",
+    "registry": "V555_ROUTE_BORN_PREDICATE_REGISTRY@1.0.0",
+    "state": "VALID_EMPTY",
+    "registered_predicate_count": 0,
+    "consumer_demand_can_create_predicate": false,
+    "inherited_f2_can_fill_registry": false
+  },
+  "bypass_prohibitions": [
+    "StructuralEmpiricalAdmission -> V555 route",
+    "V553 object or label -> V555 route without canonical V554 F1/B1",
+    "legacy V554 seed/readiness ID -> canonical F1 or route",
+    "copied F2 prose -> V555 route-born predicate",
+    "rule-version/hash difference alone -> second positive F1 for one mixed/unresolved invocation",
+    "B1 -> eighth V555 route semantic field"
+  ],
+  "replay_binding": {
+    "required_scr554_authority_bundle_inputs_verbatim": [
+      "SCR554 contract id/version",
+      "V554 affordance authority id/version/hash",
+      "V554 applicability authority id/version/hash when F2 participates",
+      "V554 rule id/version/hash",
+      "signature id",
+      "selected basis semantic identity",
+      "all interpretation-critical positive authority refs",
+      "all interpretation-critical negative/limit refs relevant to the decision",
+      "source/universe/estimand/measure/weight authority refs relevant to interpretation",
+      "producer schema/reference-contract authority versions required for deterministic interpretation"
+    ],
+    "scr554_replay_verbatim": "Same contract/rule/signature versions plus same exact canonical semantic authority bundle produce identical basis selection, equivalence groups, F1/F2/B1 IDs and decision states.",
+    "v555_replay_requirement": "The exact accepted V554 F1/B1 binding is part of the V555 semantic replay key; no latest/fuzzy/default substitution is permitted."
+  },
+  "m1_staleness": {
+    "m1_launch_dependency": false,
+    "m2_acceptance_scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "m2_acceptance_scr554_contract_blob": "4bce143b087d5e38dbb4829a979a3f43abf9ab90",
+    "stale_if": "M1 subsequently requires a material SCR554 contract change affecting basis mapping, duplicate equivalence, authority precedence, F1/F2/B1 identity, use permission, or replay/reference closure.",
+    "required_action_if_stale": "RECHECK_M2_AGAINST_NEW_EXACT_SCR554_HEAD_AND_CONTRACT_HASH_BEFORE_WHOLE_MACHINE_CLOSURE"
+  },
+  "closure_effect": {
+    "scr555_final_status": "EXACT_CONTRACT_CLOSED",
+    "scr555_result_token_after_m2": "SCR555_EXACT_CONTRACT_CLOSED",
+    "m2_result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+    "new_v555_semantics_created": false,
+    "new_v554_identity_created": false,
+    "broad_dag_changed": false
+  }
+}
