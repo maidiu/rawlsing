@@ -1,0 +1,151 @@
+{
+  "receipt_id": "M3_V555_V556_BINDING_RECEIPT",
+  "authority_class": "DISPOSITIVE_M3_SEAM_BINDING_RECEIPT",
+  "result_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-dr-r03-seam-m3-higher-order-structural",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "accepted_authority_pins": {
+    "scr555": {
+      "head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+      "contract_blob": "8926500b7af442c0e07483442047aaad6cdeab63",
+      "contract": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT@stage-close-r03-1",
+      "local_pre_m2_token": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM"
+    },
+    "m2": {
+      "semantic_package_head": "92128619122886d0ced877a29b42fdb453765246",
+      "result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+      "result_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+      "seam_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c",
+      "administrative_commit_excluded": true,
+      "administrative_delta_from_semantic_head": "exactly one commit adding only STAGE_CLOSE/SEAMS/M2/00_NEW_ROLE_AND_TASK.md"
+    },
+    "scr556": {
+      "head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+      "contract_blob": "f4e8146885b1145b116b173d2d4a148e3d55db4a",
+      "contract": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT@scr556.v1",
+      "local_token": "SCR556_WAITING_ONLY_FOR_EXACT_FINAL_SEAM"
+    },
+    "m3_preflight": {
+      "result_token": "M3_PREFLIGHT_COMPLETE",
+      "result_blob": "45db36a431391a260d9cf031460f0557af218812",
+      "authority": "NON_DISPOSITIVE_PREFLIGHT_ONLY",
+      "consumed_as_preparation_only": true
+    },
+    "m1_freshness_check": {
+      "result_token": "M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED",
+      "result_blob": "2cd78ec9a6945d2d30e965a37fee5cae44bd50f7",
+      "scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "matches_m2_scr554_head": true,
+      "harmonization_required": false,
+      "stage_branches_merged_or_rebased": false
+    }
+  },
+  "preflight_final_m2_slots": {
+    "M3-FM2-01": {
+      "name": "accepted_m2_authority_pin",
+      "status": "BOUND",
+      "binding": {
+        "semantic_package_head": "92128619122886d0ced877a29b42fdb453765246",
+        "result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+        "result_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+        "seam_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c"
+      }
+    },
+    "M3-FM2-02": {
+      "name": "m2_bound_literal_v555_route_reference",
+      "status": "BOUND",
+      "binding": {
+        "v555_first_route_field": "EXACT_V554_F1_REF",
+        "m2_resolution": "accepted canonical SCR554 F1_id",
+        "complete_v555_identity": "ordered seven-field SCR555 canonical route tuple or exact verifiable address thereof",
+        "validation_rule": "Exact deterministic dereference must reproduce the producer-owned seven-field tuple and immutable V555/M2 validation closure; no reconstruction or re-ID."
+      }
+    }
+  },
+  "scr556_final_seam_bindings": {
+    "SCR555_CANONICAL_ROUTE_IDENTITY_REFERENCE": {
+      "status": "BOUND",
+      "scr556_symbol": "SCR555_ACCEPTED_CANONICAL_ROUTE_IDENTITY_REF",
+      "resolves_to": {
+        "semantic_identity_kind": "ORDERED_TUPLE",
+        "tuple_order": [
+          "EXACT_V554_F1_REF",
+          "route_rule_id@route_rule_version",
+          "route_shape_id@route_shape_version",
+          "channel_structural_role_id",
+          "EXACT_STRUCTURAL_CHANNEL_REF",
+          "receiving_constraint_kind",
+          "EXACT_TARGET_RECEIVING_POSITION_REF"
+        ],
+        "field_1_m2_resolution": "accepted canonical SCR554 F1_id"
+      },
+      "exact_verifiable_address_allowed": true,
+      "address_must_dereference_to_exact_tuple": true,
+      "hash_or_locator_excuses_tuple_mismatch": false,
+      "b1_as_eighth_field": false,
+      "f2_as_participant_field": false
+    },
+    "SCR555_ROUTE_STATE_ELIGIBILITY_FOR_V556": {
+      "status": "BOUND",
+      "only_positive_route_bearing_state": "ROUTE_CANDIDATE_AUTHORIZED",
+      "necessary_not_sufficient": true,
+      "nonpositive_or_nonroute_states": [
+        "VALID_EMPTY",
+        "V554_STRUCTURAL_USE_DENIED",
+        "NO_GOVERNED_ROUTE_AUTHORITY",
+        "ROUTE_BLOCKED_BY_GOVERNED_RULE",
+        "ROUTE_STATIC_AUTHORITY_MISSING",
+        "ROUTE_IDENTITY_UNRESOLVED",
+        "CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE"
+      ],
+      "deferred_context": "DEFERRED_RUNTIME_BINDING_REFERENCED_ONLY remains V554-owned exact-reference-only context",
+      "v556_may_rename_upstream_state": false,
+      "route_authorized_implies_v556_supported": false
+    },
+    "SCR555_ROUTE_REFERENCE_CLOSURE": {
+      "status": "BOUND",
+      "must_validate_without_semantic_reconstruction": [
+        "EXACT_V554_F1_REF with accepted M2 binding",
+        "EXACT_F1_SOURCE_STRUCTURAL_POSITION_REF when required",
+        "EXACT_F1_STRUCTURAL_CHANNEL_REF",
+        "EXACT_F1_RECEIVING_STRUCTURAL_POSITION_REF",
+        "route_rule_id@route_rule_version",
+        "route_shape_id@route_shape_version",
+        "channel_structural_role_id",
+        "receiving_constraint_kind",
+        "canonical ordered seven-field V555 route identity",
+        "typed V555 route decision state",
+        "exact V555 owning authority identity/version and immutable seal/reference",
+        "accepted M2/SCR555 replay/reference closure"
+      ],
+      "fail_closed_on": [
+        "missing interpretation-critical dependency",
+        "mutable locator",
+        "ambiguous reference",
+        "unresolvable reference",
+        "hash mismatch",
+        "version conflict",
+        "latest substitution",
+        "default substitution",
+        "fuzzy or label repair"
+      ],
+      "unresolvable_participant_outcome": "UNRESOLVABLE_PARTICIPANT",
+      "v556_may_reconstruct_route": false
+    }
+  },
+  "m3_fixture_receipt": {
+    "M3-01_exact_import": "PASS",
+    "M3-02_same_labels_different_route_identities": "PASS__PRESERVE_DISTINCT",
+    "M3-03_broken_or_hash_mismatched_route_ref": "PASS__UNRESOLVABLE_PARTICIPANT__NO_REPAIR",
+    "M3-04_upstream_typed_route_state_eligibility": "PASS__ONLY_ROUTE_CANDIDATE_AUTHORIZED_PROCEEDS_AS_POSITIVE_ROUTE_BEARING_PARTICIPANT",
+    "M3-05_roundtrip_participant_identity": "PASS__PRODUCER_IDENTITY_EXACTLY_PRESERVED__NO_V556_REID"
+  },
+  "closure_effect": {
+    "scr556_final_status": "EXACT_CONTRACT_CLOSED",
+    "scr556_final_token": "SCR556_EXACT_CONTRACT_CLOSED",
+    "m3_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED",
+    "new_semantics_created": false,
+    "broad_topology_changed": false
+  }
+}
