@@ -1,0 +1,124 @@
+{
+  "role": "SV3C_EFFECTIVE_TIME_SOURCE_STATE_NEGATIVE_ADMISSION_FEEDER",
+  "authority": "NON_DISPOSITIVE_TO_SCRV3",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-spec-v3-effective-time-source-state",
+  "result_token": "SV3C_FEEDER_COMPLETE",
+  "production_code_modified": false,
+  "broad_topology_amended": false,
+  "broad_topology_counterexample_found": false,
+  "authority_conflict_found": false,
+  "semantic_noncollapse": {
+    "actor_fact_snapshot_time": "DISTINCT",
+    "psepf_source_or_historical_time": "DISTINCT",
+    "v3_decision_or_effective_time": "DISTINCT",
+    "adp_021_scheduler_time": "DISTINCT"
+  },
+  "core_laws": [
+    "UPSTREAM_REQUERY_REQUIRED != STALE_OR_REBIND_REQUIRED",
+    "CURRENT_REPOSITORY_AVAILABILITY != HISTORICAL_DECISION_AVAILABILITY",
+    "LOW_SUPPORT != ZERO_SUPPORT != OBSERVED_ZERO != NULL_OR_NOT_ASKED",
+    "SOURCE_CONFLICT != SOURCE_MAJORITY_WINNER",
+    "SCHEDULER_TIME != EMPIRICAL_EVIDENCE_TIME",
+    "UNKNOWN_TIME_ALIGNMENT => NO_PSEPF_TRANSITION_EFFECT",
+    "MISSING_METABOLISM_AUTHORITY => NO_PSEPF_TRANSITION_EFFECT"
+  ],
+  "required_typed_states": [
+    "NO_COMPARATOR",
+    "AMBIGUOUS_COMPARATOR",
+    "ZERO_SUPPORT",
+    "LOW_SUPPORT",
+    "SOURCE_COMPONENT_NONCOMPARABLE",
+    "SOURCE_CONFLICT",
+    "TARGET_UNAVAILABLE",
+    "STALE_OR_REBIND_REQUIRED",
+    "UPSTREAM_REQUERY_REQUIRED",
+    "MISSING_METABOLISM_AUTHORITY",
+    "INTEGRITY_FAILURE"
+  ],
+  "additional_candidate_states": [
+    "READ_ADMITTED",
+    "READ_NOT_REQUESTED",
+    "OWNER_READ_PERMISSION_MISSING",
+    "SOURCE_NOT_APPLICABLE",
+    "OBSERVED_ZERO",
+    "EFFECTIVE_TIME_NONCOMPARABLE"
+  ],
+  "negative_ownership": {
+    "comparator_owned": [
+      "NO_COMPARATOR",
+      "AMBIGUOUS_COMPARATOR"
+    ],
+    "source_or_field_owned": [
+      "TARGET_UNAVAILABLE",
+      "ZERO_SUPPORT",
+      "LOW_SUPPORT",
+      "OBSERVED_ZERO",
+      "SOURCE_NOT_APPLICABLE",
+      "SOURCE_COMPONENT_NONCOMPARABLE",
+      "SOURCE_CONFLICT"
+    ],
+    "v3_intake_owned": [
+      "STALE_OR_REBIND_REQUIRED",
+      "EFFECTIVE_TIME_NONCOMPARABLE",
+      "MISSING_METABOLISM_AUTHORITY",
+      "OWNER_READ_PERMISSION_MISSING",
+      "INTEGRITY_FAILURE"
+    ],
+    "upstream_action_state": [
+      "UPSTREAM_REQUERY_REQUIRED"
+    ]
+  },
+  "candidate_action_precedence": [
+    "INTEGRITY_FAILURE",
+    "MISSING_METABOLISM_AUTHORITY_OR_OWNER_READ_PERMISSION_MISSING",
+    "UPSTREAM_REQUERY_REQUIRED",
+    "STALE_OR_REBIND_REQUIRED",
+    "EFFECTIVE_TIME_NONCOMPARABLE",
+    "COMPARATOR_FAILURE",
+    "SOURCE_TARGET_COMPARABILITY_CONFLICT_STATES",
+    "ZERO_SUPPORT_OR_OBSERVED_ZERO",
+    "LOW_SUPPORT",
+    "READ_NOT_REQUESTED"
+  ],
+  "precedence_semantics": "ACTION_PRECEDENCE_ONLY__ALL_OWNER_SCOPED_STATES_REMAIN_PRESERVED",
+  "hostile_attacks": {
+    "nearest_time_alignment": "REJECT",
+    "backdating_future_evidence": "REJECT",
+    "latest_source_substitution": "REJECT",
+    "source_majority_voting": "REJECT",
+    "low_support_to_certainty": "REJECT",
+    "zero_support_to_actor_impossibility": "REJECT",
+    "null_to_zero": "REJECT",
+    "source_conflict_collapsed_to_one_field": "REJECT",
+    "scheduler_time_as_evidence_time": "REJECT",
+    "historical_replay_latest_substitution": "REJECT"
+  },
+  "requery_vs_rebind": {
+    "UPSTREAM_REQUERY_REQUIRED": "Comparator/source/query/field empirical question changed; produce new immutable upstream result; old field remains replay-valid.",
+    "STALE_OR_REBIND_REQUIRED": "Underlying immutable field remains empirically valid but actor/use/decision/effective-time/metabolism binding changed; create new V3 binding if lawful."
+  },
+  "metabolism_seam": {
+    "accepted_non_dispositive_evidence_head": "0ce8eb656fec6a3ac0d2a36a12c9ba217603e7cb",
+    "rule": "NO_EXACT_METABOLISM_AUTHORITY_OR_OWNER_READ_PERMISSION => NO_PSEPF_TRANSITION_EFFECT",
+    "time_alignment_cannot_grant_mutation_authority": true,
+    "metabolism_permission_cannot_cure_time_or_source_inadmissibility": true
+  },
+  "preserved_unknowns": [
+    {
+      "id": "SV3C-U01",
+      "text": "FINAL_MACHINE_IDENTITY_AND_CANONICAL_HOME_OF_THE_V3_EFFECTIVE_TIME_ALIGNMENT_RULE_NOT_SELECTED_BY_THIS_FEEDER",
+      "owner": "SCRV3"
+    }
+  ],
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "EFFECTIVE_TIME_ALIGNMENT.md",
+    "SOURCE_STATE_ADMISSION_MATRIX.csv",
+    "NEGATIVE_PRECEDENCE_MATRIX.csv",
+    "HOSTILE_FIXTURES.md",
+    "PARENT_HANDOFF.md"
+  ]
+}
