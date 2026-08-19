@@ -1,0 +1,63 @@
+{
+  "handoff_id": "SCR554_SEAM_HANDOFF",
+  "contract": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0",
+  "result_token": "SCR554_EXACT_CONTRACT_CLOSED",
+  "from_cell": "SCR554_V554_BASIS_DEDUP",
+  "broad_topology_changed": false,
+  "production_code_modified": false,
+  "merge_barriers": {
+    "M1_TEMPORAL_V554_INGRESS": {
+      "peer": "SCR553_V553_TEMPORAL_JURISDICTION",
+      "scr554_requires": [
+        "exact V553 object ID/content hash/family",
+        "originating StructuralEmpiricalAdmission lineage refs",
+        "focal structural proposition ref",
+        "rule-relevant TEMPORAL_* refs",
+        "applicable temporal negative/limit refs",
+        "source-relation/comparability authority refs where required",
+        "immutable replay/reference root"
+      ],
+      "joint_proofs": [
+        "direct SIG-001 and V553 SIG-002/SIG-003 basis kinds are mutually typed",
+        "later-use temporalization remains governed-use-chain scoped",
+        "source comparability is never invented",
+        "applicable temporal/source negatives cannot downgrade into direct positive basis",
+        "source-sensitive duplicate equivalence and EQUIVALENCE_UNKNOWN fail-closed behavior agree across seam"
+      ],
+      "scr554_does_not_require": "SCR553 internal field names or physical layout"
+    },
+    "M2_ATOMIC_ROUTE": {
+      "peer": "SCR555_V555_ATOMIC_ROUTE",
+      "authoritative_outputs": [
+        "canonical F1_id",
+        "canonical B1_id",
+        "exact F2_id refs",
+        "producer reference spine fingerprint",
+        "allowed_v555_structural_use"
+      ],
+      "consumer_law": [
+        "exactly one F1 per V555 route",
+        "F2 remains V554-owned and reference-only in V555",
+        "no reconstruction from admission/V553/legacy seed labels"
+      ]
+    },
+    "M4_MIXED_PUBLICATION": {
+      "peer": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION",
+      "publication_law": [
+        "preserve V554 producer IDs/hashes",
+        "preserve typed negative/nonpositive state",
+        "preserve authority bundle and reference spine",
+        "no V557/V558 re-ID or semantic reownership"
+      ]
+    }
+  },
+  "canonical_contract_refs": {
+    "basis_contract": "EXACT_CONTRACT.json#/basis_contract",
+    "temporal_completeness": "EXACT_CONTRACT.json#/target_use_temporal_completeness",
+    "duplicate_equivalence": "EXACT_CONTRACT.json#/duplicate_equivalence",
+    "basis_precedence": "EXACT_CONTRACT.json#/deterministic_basis_selection",
+    "canonical_identity": "EXACT_CONTRACT.json#/canonical_identity",
+    "negative_precedence": "EXACT_CONTRACT.json#/negative_unknown_precedence",
+    "replay": "EXACT_CONTRACT.json#/replay"
+  }
+}
