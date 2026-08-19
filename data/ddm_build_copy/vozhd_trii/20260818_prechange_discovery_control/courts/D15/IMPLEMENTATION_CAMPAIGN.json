@@ -1,0 +1,158 @@
+{
+  "campaign": "VOZHD_TRII_D15_IMPLEMENTATION_CAMPAIGN",
+  "status": "ARCHITECTURE_SELECTED__IMPLEMENTATION_CAMPAIGN_READY",
+  "production_code_modified_by_D15": false,
+  "cells": [
+    {
+      "id": "I01",
+      "mission": "Implement target canonical object schemas and authority contracts.",
+      "prerequisites": ["D15_ACCEPTED"],
+      "permitted_code_surface": ["data/ddm_build_copy/ddm_empirical_object_model.py", "data/ddm_build_copy/ddm_empirical_authority.py", "new D15 authority files", "tests"],
+      "forbidden_scope": ["V550/V551/V552 behavior change", "V3 behavior change", "source deletion"],
+      "outputs": ["typed canonical objects", "typed absence", "immutable authority validators"],
+      "tests": ["noncollapse", "authority content identity", "negative authority"],
+      "acceptance_gate": "G00"
+    },
+    {
+      "id": "I02",
+      "mission": "Implement concrete source-universe-scoped C11 respondent-event/coordinate repository with M01-M18.",
+      "prerequisites": ["I01"],
+      "permitted_code_surface": ["data/ddm_build_copy/ddm_c11_repository.py", "data/ddm_build_copy/ddm_c11_ingest.py", "data/ddm_build_copy/ddm_c11_integrity.py", "new additive C11 schema", "tests"],
+      "forbidden_scope": ["scalar duplicate collapse absent topology authority", "weight default substitution", "universe merge", "current substrate deletion"],
+      "outputs": ["C11 storage/API", "semantic manifests", "event/topology/routing/weight incidence"],
+      "tests": ["D13B P01-P20 synthetic", "T08-T11", "semantic hash coverage"],
+      "acceptance_gate": "G01"
+    },
+    {
+      "id": "I03",
+      "mission": "Certify source-native to C11 equivalence per source/release.",
+      "prerequisites": ["I02", "exact source artifact and semantics"],
+      "permitted_code_surface": ["data/ddm_build_copy/ddm_c11_source_equivalence.py", "validation tooling"],
+      "forbidden_scope": ["schema-only pass", "count-only pass", "source deletion"],
+      "outputs": ["SOURCE_TO_C11_EQUIVALENCE_CERTIFIED|FAILED|BLOCKED receipt"],
+      "tests": ["P01-P20", "T01-T18", "native topology/routing/weight/lineage comparison"],
+      "acceptance_gate": "G02_PER_SOURCE"
+    },
+    {
+      "id": "I04",
+      "mission": "Implement exact future-frontier EmpiricalQueryEngine over C11.",
+      "prerequisites": ["I01", "I02"],
+      "permitted_code_surface": ["data/ddm_build_copy/ddm_empirical_query.py", "data/ddm_build_copy/ddm_empirical_predicate.py", "tests"],
+      "forbidden_scope": ["structural interpretation", "actor comparison", "independent-marginal joint approximation", "implicit pooling"],
+      "outputs": ["EmpiricalQuerySpec", "EmpiricalFact", "typed query failures"],
+      "tests": ["T01-T16", "XOR/parity", "arbitrary conjunction", "topology/routing/weights/source plurality"],
+      "acceptance_gate": "G03"
+    },
+    {
+      "id": "I05",
+      "mission": "Implement StructuralEmpiricalAdmission and corrected V553 intake while preserving lawful current structural semantics.",
+      "prerequisites": ["I01", "I04", "current V551/V552 rule inventory"],
+      "permitted_code_surface": ["data/ddm_build_copy/ddm_structural_empirical_admission.py", "structural admission authority files", "narrow V553 intake adapter/version extension", "compatibility tests"],
+      "forbidden_scope": ["generic empirical->structural truth", "empirical coordinate->generated position", "reverse field through V553", "premature current-path deletion"],
+      "outputs": ["StructuralEmpiricalAdmission", "compatibility rules", "V553 admitted-evidence intake"],
+      "tests": ["T17", "current structural parity", "negative authority", "V553 temporal/comparability regression"],
+      "acceptance_gate": "G04_G05"
+    },
+    {
+      "id": "I06",
+      "mission": "Revalidate V554-V558 under corrected V553 supply with only necessary adapter/provenance changes.",
+      "prerequisites": ["I05"],
+      "permitted_code_surface": ["accepted V554/V555/V556 producer modules", "V557/V558 adapters/resolver only where required", "tests"],
+      "forbidden_scope": ["reverse field in StructuralPriorRepository", "actor state in V554-V558", "gratuitous downstream redesign"],
+      "outputs": ["revalidation report", "minimal adapter changes"],
+      "tests": ["existing V554-V558 fixtures", "producer identity/provenance", "no reverse-field adapter", "ContextResolver parity"],
+      "acceptance_gate": "G06"
+    },
+    {
+      "id": "I07",
+      "mission": "Implement EXACT_BOUNDED autonomous discovery with complete-for-declared-frontier coverage.",
+      "prerequisites": ["I01", "I04"],
+      "permitted_code_surface": ["data/ddm_build_copy/ddm_empirical_discovery.py", "data/ddm_build_copy/ddm_discovery_replay.py", "discovery authorities", "tests"],
+      "forbidden_scope": ["top-two/primary-star presented as exhaustive", "unbounded semantic search", "E4 as primary evidence"],
+      "outputs": ["frontier constructor", "exact evaluator", "DiscoveryResultReceipt", "replay trace"],
+      "tests": ["AT01-AT07", "XOR", "reversal", "minority", "recursive branch", "branch cotravel", "valid-empty", "permutation replay"],
+      "acceptance_gate": "G07_EXACT"
+    },
+    {
+      "id": "I08",
+      "mission": "Implement ADAPTIVE_EXPLORATORY autonomous discovery with truthful non-exhaustive coverage receipts.",
+      "prerequisites": ["I07"],
+      "permitted_code_surface": ["I07 discovery modules", "isolated adaptive proposal/screen/beam strategies"],
+      "forbidden_scope": ["false completeness", "cost-only minority erasure", "unary screen called XOR-complete"],
+      "outputs": ["adaptive strategy interface", "evaluated/pruned frontier receipt", "exact emitted-result validation"],
+      "tests": ["exact-vs-adaptive fixture", "unevaluated-not-absent", "screen false-negative", "deterministic stopping/replay"],
+      "acceptance_gate": "G07_ADAPTIVE"
+    },
+    {
+      "id": "I09",
+      "mission": "Implement actor comparability and source-indexed PositionedSubjectEmpiricalPossibilityField production.",
+      "prerequisites": ["I01", "I04", "objective actor fact owners", "comparator/source applicability authorities"],
+      "permitted_code_surface": ["data/ddm_build_copy/ddm_actor_empirical_comparator.py", "data/ddm_build_copy/ddm_positioned_subject_possibility.py", "authority files", "tests"],
+      "forbidden_scope": ["structural position comparator", "fuzzy/nearest fallback", "default source pooling", "direct actor state assignment"],
+      "outputs": ["ActorComparatorReceipt", "PositionedSubjectEmpiricalPossibilityField", "typed source/comparator failures"],
+      "tests": ["AT13-AT16", "G08-G09", "zero support", "ambiguity", "time mismatch", "sparse k-way", "multi-universe"],
+      "acceptance_gate": "G08_G09"
+    },
+    {
+      "id": "I10",
+      "mission": "Add V3EmpiricalPossibilityInput and V3 metabolism authority without moving developmental ownership upstream.",
+      "prerequisites": ["I09", "accepted V3 authorities"],
+      "permitted_code_surface": ["narrow V3 upstream-input/developmental proposal/state-transition modules", "new V3 metabolism authority", "tests"],
+      "forbidden_scope": ["field mass->belief/response state", "structural position comparator", "bypass encounter/exposure/relationships", "replace ResolvedStructuralContext"],
+      "outputs": ["typed V3 possibility input", "metabolism rule interface", "causal provenance link"],
+      "tests": ["AT16-AT17", "same-field divergent histories", "actor opacity", "replay", "no V2 leakage"],
+      "acceptance_gate": "G10"
+    },
+    {
+      "id": "I11",
+      "mission": "Add nonauthoritative exact caches and W01-W17 telemetry after uncached correctness.",
+      "prerequisites": ["I04", "I07 where discovery caches apply", "I09 where reverse caches apply"],
+      "permitted_code_surface": ["data/ddm_build_copy/ddm_empirical_cache.py", "instrumentation", "benchmarks"],
+      "forbidden_scope": ["cache as authority", "cache-bounded future frontier", "stale reuse", "source snapshots as cache"],
+      "outputs": ["E1/E2/branch/comparator/reverse/temporal cache interfaces", "telemetry"],
+      "tests": ["AT23", "cold=warm", "eviction invariance", "version invalidation", "W01-W17 benchmarks"],
+      "acceptance_gate": "G11"
+    },
+    {
+      "id": "I12",
+      "mission": "Shadow current and target paths and issue per-artifact retirement-readiness without deleting anything.",
+      "prerequisites": ["I02-I11 as applicable", "populated/source-equivalent evidence for empirical claims"],
+      "permitted_code_surface": ["shadow orchestration", "comparison tooling", "compatibility adapters", "deployment flags"],
+      "forbidden_scope": ["source/current artifact deletion", "parity to known defects", "unmeasured savings claims", "unproved consumer switch"],
+      "outputs": ["semantic parity matrix", "W01-W17 measurements where possible", "artifact retirement-readiness ledger"],
+      "tests": ["G04-G12", "AT01-AT23", "negative authority", "multi-universe", "V553+ regression"],
+      "acceptance_gate": "G12_PER_ARTIFACT"
+    },
+    {
+      "id": "I13",
+      "mission": "Audit technical eligibility for later source-retirement governance after positive equivalence; never delete source evidence.",
+      "prerequisites": ["I03 positive per-source receipts", "legal/operational retention requirements"],
+      "permitted_code_surface": ["audit/report tooling only"],
+      "forbidden_scope": ["deletion", "assuming semantic equivalence satisfies legal/audit retention"],
+      "outputs": ["ELIGIBLE_FOR_SEPARATE_SOURCE_RETIREMENT_GOVERNANCE or blockers"],
+      "tests": ["receipt completeness", "authority dereference", "disaster replay", "governance dependency"],
+      "acceptance_gate": "POST_D15_SEPARATE_GOVERNANCE"
+    }
+  ],
+  "dependency_spine": [
+    "I01 -> I02",
+    "I02 -> I03",
+    "I02 -> I04",
+    "I04 -> I05 -> I06",
+    "I04 -> I07 -> I08",
+    "I04 -> I09 -> I10",
+    "I04/I07/I09 -> I11",
+    "I02-I11 -> I12",
+    "I03 + later governance -> I13"
+  ],
+  "campaign_completion": [
+    "concrete C11 passes required equivalence for migrated sources",
+    "exact query engine passes D12/D13 fixtures",
+    "discovery coverage is truthful and replayable",
+    "reverse field and V3 metabolism pass noncollapse/divergence tests",
+    "structural admission and V553+ preserve lawful structural semantics",
+    "caches are nonauthoritative",
+    "each current artifact has positive retirement-readiness or remains retained",
+    "source snapshots remain retained absent separate later governance"
+  ]
+}
