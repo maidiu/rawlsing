@@ -1,0 +1,9 @@
+priority,scope,condition,receiver_state,positive_actor_semantics,required_behavior
+1,envelope,integrity/hash/actor/source/authority/replay verification fails,BLOCKED_HANDOFF_INTEGRITY_FAILURE,NONE,fail closed; no fallback
+2,envelope,historically verified envelope checked later and any bound source hash changed,BLOCKED_STALE_ACTOR_SAFE_HANDOFF,NONE,fail closed for current behavior; historical audit/replay may remain valid
+3,requested_claim,exact nonrenderable ref has DEFER_MISSING_AUTHORITY,DEFERRED_MISSING_AUTHORITY,NONE,do not convert system missing authority into actor uncertainty/nonknowledge
+4,requested_claim,exact nonrenderable ref has DENY_FIRST_PERSON_CLAIM,DENIED_EXPLICIT_FIRST_PERSON_CLAIM,NONE,do not expose hidden claim content
+5,requested_claim,current verified entry is CLAIM_PARTIALLY_ACCESSIBLE with nonempty component refs,READY_PARTIAL_COMPONENT_SCOPE,EXACT_LISTED_COMPONENTS_ONLY,preserve supplied first-person permission; no join/widen
+6,requested_claim,current verified entry is CLAIM_ACCESSIBLE with empty component refs,READY_FULL_CLAIM_SCOPE,EXACT_CANONICAL_CLAIM_ONLY,preserve supplied first-person permission; no join/widen
+7,requested_claim,no positive entry and no exact deny/defer ref,NO_RENDERABLE_ENTRY_FOR_REQUEST,NONE,"absence implies no stance, denial, uncertainty, or permission"
+8,envelope,current verified envelope has allowed_claim_entries == [],VALID_EMPTY_NO_RENDERABLE_ACTOR_CLAIMS,NONE,valid empty; no actor content fabrication
