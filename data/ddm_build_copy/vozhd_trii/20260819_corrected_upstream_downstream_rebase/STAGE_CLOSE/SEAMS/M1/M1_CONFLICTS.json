@@ -1,0 +1,27 @@
+{
+  "blocking_conflicts": [],
+  "broad_topology_counterexamples": [],
+  "contract": "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0",
+  "harmonization_required": false,
+  "resolved_seam_tensions": [
+    {
+      "id": "M1-T01-AUTHORITY-SNAPSHOT-MULTIPLICITY",
+      "issue": "S554D warns that authority versions must not create falsely independent supports.",
+      "local_contract_change_required": false,
+      "resolution": "SCR554's STATIC_AUTHORITY_COMPLETENESS precedes duplicate counting. One invocation binds one exact rule id/version/hash; unresolved competing required snapshots hit K07 before support counting."
+    },
+    {
+      "id": "M1-T02-LINEAGE-MATERIALITY",
+      "issue": "SCR554 names an admission-lineage fingerprint while HQ forbids provenance-only path differences from splitting support.",
+      "local_contract_change_required": false,
+      "resolution": "SCR554 already limits duplicate-key differences to material components and says lineage distinctions remain distinct only when they can change interpretation/lawful use. M1 projects only materially governed lineage into the fingerprint; path/reissue/replay-only lineage is alias provenance. Unknown role => EQUIVALENCE_UNKNOWN."
+    },
+    {
+      "id": "M1-T03-SCR553-PROJECTION-VS-SCR554-CONSUMER-SLOTS",
+      "issue": "SCR553 publishes compact producer refs while SCR554 demands richer consumer slots.",
+      "local_contract_change_required": false,
+      "resolution": "SCR554 explicitly permits immutable dereference. SCR553 admission_ref/participants/source-universe/external-compatibility/authority-closure refs and exact hashes close the consumer slots without payload copying or label reconstruction."
+    }
+  ],
+  "result_token": "M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED"
+}

@@ -1,0 +1,221 @@
+{
+  "authoritative_inputs": {
+    "S553R": {
+      "authority": "NON_DISPOSITIVE_FEEDER",
+      "head": "f9f1b60f011d30473507287e7f2c1f9fe258967c"
+    },
+    "S554D": {
+      "authority": "NON_DISPOSITIVE_FEEDER",
+      "head": "a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4"
+    },
+    "SCR553": {
+      "contract": "SCR553_V553_TEMPORAL_JURISDICTION_V1",
+      "head": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+      "token": "SCR553_EXACT_CONTRACT_CLOSED"
+    },
+    "SCR554": {
+      "contract": "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0",
+      "head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+      "token": "SCR554_EXACT_CONTRACT_CLOSED"
+    }
+  },
+  "authority_class": "DISPOSITIVE_M1_SEAM_BINDER_ONLY",
+  "authority_snapshot_guard": {
+    "competing_required_snapshots": "If more than one unresolved required authority snapshot remains for the same authority role/jurisdiction and no exact producer-governed precedence resolves it, classify K07 before support counting.",
+    "evaluation_order": "INTEGRITY -> PRODUCER_PRECEDENCE -> APPLICABLE_NEGATIVE -> STATIC_AUTHORITY_COMPLETENESS -> TEMPORAL_SIGNATURE -> DUPLICATE_EQUIVALENCE -> SUPPORT_COUNT",
+    "forbidden_resolution": [
+      "SEMVER",
+      "LATEST",
+      "RECENCY",
+      "COMMIT_DATE",
+      "SCORE",
+      "MAJORITY",
+      "FILE_ORDER",
+      "ROW_ORDER"
+    ],
+    "single_invocation_rule": "One invocation binds exactly one V554 rule id/version/hash.",
+    "support_split_by_snapshot_conflict": false
+  },
+  "basis_typing": {
+    "V554-SIG-001-NONTEMPORAL-EXACT": {
+      "basis_kind": "DIRECT_STRUCTURAL_EMPIRICAL_ADMISSION",
+      "v553_support_count": 0
+    },
+    "V554-SIG-002-TEMPORAL-POINT-EXACT": {
+      "basis_kind": "V553_TEMPORAL_OBJECT",
+      "required": [
+        "TEMPORAL_KEY",
+        "TEMPORAL_OBSERVATION"
+      ]
+    },
+    "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT": {
+      "basis_kind": "V553_TEMPORAL_OBJECT",
+      "required": [
+        "TEMPORAL_KEY",
+        "TEMPORAL_RELATION",
+        "ALL_RULE_REQUIRED_SUPPORT_AND_LIMIT_REFS"
+      ]
+    },
+    "global_classification_forbidden": true,
+    "not_required_law": "V553_NOT_REQUIRED_FOR_THIS_USE means only zero new V553 semantics for that use; it does not establish SCR554 temporal completeness, direct eligibility, positive authority, or F1."
+  },
+  "branch": "agent/vozhd-trii-dr-r03-seam-m1-temporal-v554",
+  "broad_topology": "R03_CLOSED_UNCHANGED",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "contract_id": "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0",
+  "duplicate_support": {
+    "equivalence_unknown": "FAIL_CLOSED",
+    "extra_v553_material": "V553 material outside the exact invocation/rule-required temporal projection is reference-only and cannot manufacture independent support.",
+    "no_op_v553_plus_direct": "For SIG-001, direct basis is the only counting basis; no-op/irrelevant V553 objects contribute zero support and do not change F1 identity.",
+    "same_semantic_support_max_count": 1
+  },
+  "lineage_guard": {
+    "material_lineage": "Admission lineage may distinguish support only when it changes admitted proposition/use permission, source universe/risk set, estimand/measure authority, applicable negative/authority state, or another explicitly governed interpretation/lawful-use fact.",
+    "provenance_only": "Direct/V553 physical path, reissue/alias IDs, replay transport refs, and other nonmaterial lineage do not split support; preserve them as provenance_alias_refs/reference closure.",
+    "rule": "Only lineage distinctions that governing authority makes interpretation- or lawful-use-material participate in support equivalence.",
+    "unknown_role": "If lineage materiality cannot be established exactly, EQUIVALENCE_UNKNOWN -> FAIL_CLOSED."
+  },
+  "local_stage_contracts_modified": false,
+  "m1_invocation_binding": {
+    "different_use_rule": "Different governed_use_id and independently bound invocation may reach a different route decision over the same admission.",
+    "nature": "NONSEMANTIC_SEAM_CONTROL_BINDING__NOT_NEW_PRODUCER_FAMILY",
+    "required": [
+      "governed_use_id",
+      "use_owner=V554",
+      "v554_rule_ref{id,version,hash}",
+      "signature_id",
+      "target_use",
+      "focal_structural_proposition_ref",
+      "originating_structural_empirical_admission_ref_set",
+      "required_temporal_operations",
+      "scr553_request_ref_or_EXPLICIT_NOT_REQUIRED_DECISION_REF",
+      "authority_snapshot_refs"
+    ],
+    "same_demand_rule": "A V553 limit/negative governs a V554 invocation only when exact governed_use/use-rule/signature/proposition/admission participation establishes the same semantic demand; labels/time proximity are insufficient."
+  },
+  "negative_precedence": {
+    "mapping": {
+      "MISSING_REQUIRED_STATIC_AUTHORITY": "SCR554 K06",
+      "NONCOMPARABLE": "SCR554 K08 where temporal relational support is required",
+      "REQUIRED_TEMPORAL_SUPPORT_ABSENT_OR_GAPPED": "SCR554 K09",
+      "UNKNOWN_OR_CONFLICTING_REQUIRED_AUTHORITY": "SCR554 K07"
+    },
+    "other_invocation": "A negative does not poison an independently identified use/signature whose predicates and authority independently pass.",
+    "same_invocation": "Applicable TEMPORAL_LIMIT/NONCOMPARABLE/missing required source-or-temporal authority blocks positive basis for that exact semantic demand; no signature downgrade/direct fallback."
+  },
+  "production_implementation_authorized": false,
+  "proofs": {
+    "HQ_AUTHORITY_VERSION_GUARD": "PASS",
+    "HQ_LINEAGE_GUARD": "PASS",
+    "P1_V553_REF_PROJECTION": "PASS",
+    "P2_MUTUAL_TYPING": "PASS",
+    "P3_USE_SCOPED_ROUTING": "PASS",
+    "P4_NOT_REQUIRED_NON_GRANT": "PASS",
+    "P5_SOURCE_AUTHORITY_SEPARATION": "PASS",
+    "P6_NEGATIVE_NO_DOWNGRADE": "PASS",
+    "P7_NO_DOUBLE_SUPPORT_AND_UNKNOWN_FAIL_CLOSED": "PASS",
+    "P8_IRRELEVANT_V553_ZERO_SUPPORT": "PASS"
+  },
+  "replay": {
+    "changed_material_hash_or_authority": "new replay basis or fail-closed; never latest-substitute",
+    "permutation_invariant": true,
+    "same_exact_heads_and_refs": "same routing classification, projection, authority gate, equivalence grouping, support count and seam receipt"
+  },
+  "repository": "maidiu/rawlsing",
+  "result_token": "M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED",
+  "source_authority_boundary": {
+    "default": "SOURCE_PLURALITY_PRESERVED__NO_COMPOSITION",
+    "missing_unknown": "FAIL_CLOSED_FOR_OPERATION_REQUIRING_THAT_AUTHORITY",
+    "nonimplications": [
+      "PROVENANCE_REACHABILITY!=SOURCE_COMPARABILITY",
+      "TEMPORAL_COMPARABILITY!=RESPONDENT_LINKAGE",
+      "TEMPORAL_COMPARABILITY!=POOLING",
+      "TEMPORAL_COMPARABILITY!=ESTIMAND_COMPOSITION",
+      "TEMPORAL_KEY_EQUALITY!=SOURCE_UNIVERSE_EQUALITY"
+    ],
+    "separate_authorities": [
+      "SOURCE_COMPARABILITY",
+      "RESPONDENT_LINKAGE",
+      "SAMPLE_POOLING",
+      "MEASURE_COMPATIBILITY",
+      "ESTIMAND_COMPATIBILITY",
+      "CROSS_UNIVERSE_COMPOSITION"
+    ]
+  },
+  "v553_to_v554_projection": {
+    "export_ref_minimum": [
+      "family",
+      "object_id",
+      "content_hash",
+      "schema_version"
+    ],
+    "family_projection": {
+      "TEMPORAL_KEY": {
+        "applicable_temporal_limit_negative_refs": "associated TEMPORAL_LIMIT refs for the same governed invocation, if any",
+        "estimand_refs": "immutable admission/query/authority-closure dereference",
+        "focal_structural_proposition_ref": "immutable dereference through admission_ref",
+        "interpretation_critical_authority_refs": "temporal_rule_ref + authority_closure_refs + admission authority chain",
+        "measure_and_weight_authority_refs": "immutable admission/query/authority-closure dereference",
+        "native_scope_identity_refs": "canonical_temporal_scope plus immutable admission/native-scope dereference",
+        "originating_structural_empirical_admission_refs": "admission_ref",
+        "producer_replay_locator_or_reference_root": "exact object ref + admission_ref + authority_closure_refs",
+        "rule_relevant_temporal_semantic_refs": "this TEMPORAL_KEY ref plus derivation_participant_refs required by invocation",
+        "source_relation_comparability_authority_refs_where_required": "required external authority reached by temporal rule/authority_closure; if absent when required => limit/fail-closed",
+        "source_universe_refs": "source_universe_ref",
+        "v553_object_content_hash": "exported ref.content_hash; resolved object semantic_hash also verified",
+        "v553_object_family": "TEMPORAL_KEY",
+        "v553_object_id": "temporal_key_id via exact exported ref.object_id"
+      },
+      "TEMPORAL_LIMIT": {
+        "applicable_temporal_limit_negative_refs": "this TEMPORAL_LIMIT + upstream_negative_refs",
+        "estimand_refs": "missing_or_negative_authority_refs + participant admission/query closure where material",
+        "focal_structural_proposition_ref": "immutable dereference through participant admission refs",
+        "interpretation_critical_authority_refs": "temporal_rule_ref + missing_or_negative_authority_refs + upstream_negative_refs + authority_closure_refs",
+        "measure_and_weight_authority_refs": "missing_or_negative_authority_refs + participant admission/query closure where material",
+        "native_scope_identity_refs": "participant admission/key dereference where material",
+        "originating_structural_empirical_admission_refs": "participant_refs -> exact request participants/admission refs",
+        "producer_replay_locator_or_reference_root": "exact limit ref + participant_refs + authority_closure_refs",
+        "rule_relevant_temporal_semantic_refs": "this limit ref + blocked_output_family + requested_operation + participant_refs",
+        "source_relation_comparability_authority_refs_where_required": "missing_or_negative_authority_refs when source relation/comparability is the blocked prerequisite",
+        "source_universe_refs": "participant admission/key/observation dereference; plurality preserved",
+        "v553_object_content_hash": "exported ref.content_hash; resolved object.semantic_hash also verified",
+        "v553_object_family": "TEMPORAL_LIMIT",
+        "v553_object_id": "temporal_limit_id via exact exported ref.object_id"
+      },
+      "TEMPORAL_OBSERVATION": {
+        "applicable_temporal_limit_negative_refs": "support_uncertainty_state and exact associated limits/negatives where governed",
+        "estimand_refs": "immutable admission/query/authority-closure dereference",
+        "focal_structural_proposition_ref": "immutable dereference through admission_ref",
+        "interpretation_critical_authority_refs": "temporal_rule_ref + authority_closure_refs + value_owner_ref",
+        "measure_and_weight_authority_refs": "value_owner_ref + immutable admission/query/authority-closure dereference",
+        "native_scope_identity_refs": "temporal_key_ref -> canonical_temporal_scope + admission native scope",
+        "originating_structural_empirical_admission_refs": "admission_ref",
+        "producer_replay_locator_or_reference_root": "exact object ref + temporal_key_ref + admission_ref + authority_closure_refs",
+        "rule_relevant_temporal_semantic_refs": "temporal_key_ref + this observation ref",
+        "source_relation_comparability_authority_refs_where_required": "only if selected operation declares them; exact dereference, never inferred",
+        "source_universe_refs": "source_universe_ref",
+        "v553_object_content_hash": "exported ref.content_hash; resolved object semantic_hash also verified",
+        "v553_object_family": "TEMPORAL_OBSERVATION",
+        "v553_object_id": "temporal_observation_id via exact exported ref.object_id"
+      },
+      "TEMPORAL_RELATION": {
+        "applicable_temporal_limit_negative_refs": "relation result/support state + exact TEMPORAL_LIMIT refs that govern requested relation",
+        "estimand_refs": "required_external_compatibility_refs and participant admission/query closure",
+        "focal_structural_proposition_ref": "immutable dereference through participant admission refs; all rule-relevant propositions remain explicit",
+        "interpretation_critical_authority_refs": "relation_rule_ref + required_external_compatibility_refs + authority_closure_refs",
+        "measure_and_weight_authority_refs": "required_external_compatibility_refs and participant admission/query closure",
+        "native_scope_identity_refs": "participant key/admission dereference; no scope relabeling",
+        "originating_structural_empirical_admission_refs": "participants -> exact temporal/admission refs -> originating admissions",
+        "producer_replay_locator_or_reference_root": "exact relation ref + ordered participants + authority_closure_refs",
+        "rule_relevant_temporal_semantic_refs": "this relation ref + ordered/role-qualified participants + all required support refs",
+        "source_relation_comparability_authority_refs_where_required": "required_external_compatibility_refs",
+        "source_universe_refs": "source_universe_refs",
+        "v553_object_content_hash": "exported ref.content_hash; resolved object semantic_hash also verified",
+        "v553_object_family": "TEMPORAL_RELATION",
+        "v553_object_id": "temporal_relation_id via exact exported ref.object_id"
+      }
+    },
+    "missing_projection_effect": "FAIL_CLOSED__NO_V554_POSITIVE_BASIS",
+    "resolution_rule": "Every SCR554 V553 consumer slot is satisfied either directly or by immutable object_id+content_hash dereference through SCR553 admission/participant/authority closure. No label/fuzzy/latest reconstruction."
+  }
+}

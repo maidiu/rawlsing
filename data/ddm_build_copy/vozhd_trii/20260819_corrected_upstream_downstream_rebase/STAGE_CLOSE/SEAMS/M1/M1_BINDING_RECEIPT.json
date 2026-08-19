@@ -1,0 +1,40 @@
+{
+  "accepted_heads": {
+    "S553R": "f9f1b60f011d30473507287e7f2c1f9fe258967c",
+    "S554D": "a2073b851c91c16e8d8cc77b5fa7a1e581a7c0f4",
+    "SCR553": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+    "SCR554": "b5d745ac70c833324c8be0addf6c08ad72372263"
+  },
+  "authority_conflict": false,
+  "base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "binding_effect": [
+    "M1 is closed for SCR553->SCR554 ingress.",
+    "Neither SCR553 nor SCR554 local jurisdiction is rewritten.",
+    "Later implementation must conform to this seam and remains separately gated."
+  ],
+  "branch": "agent/vozhd-trii-dr-r03-seam-m1-temporal-v554",
+  "broad_topology_contradiction": false,
+  "contracts_bound": [
+    "SCR553_V553_TEMPORAL_JURISDICTION_V1",
+    "SCR554_V554_BASIS_DEDUP_AFFORDANCE_EXACT_CONTRACT@1.0.0"
+  ],
+  "harmonization_required": false,
+  "hostile_oracle_status": "ALL_CONTRACT_LEVEL_CASES_PASS",
+  "production_code_modified": false,
+  "proof_status": {
+    "HQ_AUTHORITY_VERSION_GUARD": "PASS",
+    "HQ_LINEAGE_GUARD": "PASS",
+    "P1_V553_REF_PROJECTION": "PASS",
+    "P2_MUTUAL_TYPING": "PASS",
+    "P3_USE_SCOPED_ROUTING": "PASS",
+    "P4_NOT_REQUIRED_NON_GRANT": "PASS",
+    "P5_SOURCE_AUTHORITY_SEPARATION": "PASS",
+    "P6_NEGATIVE_NO_DOWNGRADE": "PASS",
+    "P7_NO_DOUBLE_SUPPORT_AND_UNKNOWN_FAIL_CLOSED": "PASS",
+    "P8_IRRELEVANT_V553_ZERO_SUPPORT": "PASS"
+  },
+  "receipt_id": "M1_BINDING_RECEIPT@1.0.0",
+  "result_token": "M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED",
+  "seam_contract": "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0",
+  "stage_branches_merged_or_rebased": false
+}
