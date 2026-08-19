@@ -1,0 +1,104 @@
+{
+  "purpose": "ONLY_THE_EXACT_M2_M3_ACCEPTED_IMPORTS_FINAL_M4_MUST_BIND_BEFORE_ADJUDICATION",
+  "authority": "NON_DISPOSITIVE_PREFLIGHT_ONLY",
+  "final_m4_may_fill_before_m2_m3_acceptance": false,
+  "m2_imports": [
+    {
+      "slot": "M2_ACCEPTANCE_IDENTITY",
+      "required_value": "exact accepted M2 barrier authority/result identity and immutable hash or exact repository artifact binding",
+      "rule": "COPY_FROM_ACCEPTED_M2_RETURN_ONLY"
+    },
+    {
+      "slot": "SCR555_ACCEPTED_FINAL_HEAD_AND_RESULT_TOKEN",
+      "required_value": "exact SCR555 head SHA plus final accepted SCR555 result token after M2",
+      "rule": "COPY_FROM_M2_ACCEPTED_SCR555_RETURN_ONLY"
+    },
+    {
+      "slot": "SCR555_ACCEPTED_EXACT_CONTRACT_ID_VERSION_AND_IMMUTABLE_ARTIFACT_HASH",
+      "required_value": "exact accepted SCR555 contract ID/version and exact immutable contract artifact/content hash binding",
+      "rule": "NO_LOCAL_PRE-M2_CONTRACT_HASH_MAY_BE_PROMOTED_WITHOUT_ACCEPTANCE"
+    },
+    {
+      "slot": "SCR555_BOUND_EXACT_V554_F1_REFERENCE_CONTRACT",
+      "required_value": "the exact M2-accepted binding of V555 EXACT_V554_F1_REF to the accepted SCR554 canonical F1 identity/reference/equality/seal contract",
+      "rule": "VERBATIM_M2_BINDING__NO_RENAME_NO_RECONSTRUCTION"
+    },
+    {
+      "slot": "SCR555_CANONICAL_ROUTE_IDENTITY_REFERENCE_CONTRACT",
+      "required_value": "the exact M2-accepted canonical V555 route identity tuple/reference/hash/equality law and immutable address form used by V556 and V557/V558",
+      "rule": "PRODUCER_IDENTITY_REMAINS_V555_OWNED"
+    },
+    {
+      "slot": "SCR555_FINAL_TYPED_STATE_AND_DIRECT_PUBLICATION_MAPPING",
+      "required_value": "exact accepted V555 typed route states and the exact mapping that permits a producer object to be proposed directly to V557 without a V556 filler",
+      "rule": "NO_STATE_COLLAPSE_OR_INFERRED_PUBLICATION_PERMISSION"
+    },
+    {
+      "slot": "SCR555_FINAL_PERMISSION_AND_REFERENCE_CLOSURE_BINDING",
+      "required_value": "exact producer permission ceiling plus interpretation-critical inherited V554 F2/reference and route authority closure required to validate a V555 root standalone",
+      "rule": "V557_MAY_NARROW_ONLY__NO_PERMISSION_INHERITANCE"
+    }
+  ],
+  "m3_imports": [
+    {
+      "slot": "M3_ACCEPTANCE_IDENTITY",
+      "required_value": "exact accepted M3 barrier authority/result identity and immutable hash or exact repository artifact binding",
+      "rule": "COPY_FROM_ACCEPTED_M3_RETURN_ONLY"
+    },
+    {
+      "slot": "SCR556_ACCEPTED_FINAL_HEAD_AND_RESULT_TOKEN",
+      "required_value": "exact SCR556 head SHA plus final accepted SCR556 result token after M3",
+      "rule": "COPY_FROM_M3_ACCEPTED_SCR556_RETURN_ONLY"
+    },
+    {
+      "slot": "SCR556_ACCEPTED_EXACT_CONTRACT_ID_VERSION_AND_IMMUTABLE_ARTIFACT_HASH",
+      "required_value": "exact accepted SCR556 contract ID/version and exact immutable contract artifact/content hash binding",
+      "rule": "NO_LOCAL_PRE-M3_CONTRACT_HASH_MAY_BE_PROMOTED_WITHOUT_ACCEPTANCE"
+    },
+    {
+      "slot": "SCR556_BOUND_V555_PARTICIPANT_REFERENCE_CONTRACT",
+      "required_value": "the exact M3-accepted binding of each V556 participant reference to the accepted V555 canonical route identity/reference contract",
+      "rule": "V556_MAY_NOT_REID_RECONSTRUCT_ALIAS_OR_NORMALIZE_V555_ROUTE_IDENTITY"
+    },
+    {
+      "slot": "SCR556_FINAL_PARTICIPANT_ELIGIBILITY_BINDING",
+      "required_value": "the exact M3-accepted mapping from accepted V555 typed route states into V556 participant admissibility",
+      "rule": "NO_GUESSED_ROUTE_STATE_ELIGIBILITY"
+    },
+    {
+      "slot": "SCR556_FINAL_PARTICIPANT_REFERENCE_CLOSURE",
+      "required_value": "the exact M3-accepted immutable reference/hash closure sufficient to validate every V555 participant without V556 re-owning route semantics",
+      "rule": "MISSING_OR_HASH_MISMATCHED_PARTICIPANT_FAILS_CLOSED"
+    },
+    {
+      "slot": "SCR556_FINAL_OBJECT_IDENTITY_ROLE_ORDER_CARDINALITY_MULTIPLICITY_CONTRACT",
+      "required_value": "exact accepted V556 object identity/hash law plus exact producer-rule-owned participant role/order/cardinality/multiplicity/same-route-reuse semantics",
+      "rule": "PACKAGING_AND_RESOLUTION_MUST_PRESERVE_EXACTLY"
+    },
+    {
+      "slot": "SCR556_FINAL_TYPED_STATE_COMPOSITION_PERMISSION_AND_DIRECT_PUBLICATION_BINDING",
+      "required_value": "exact accepted V556 typed outcome states, source-composition authority requirements, producer permission ceiling and direct V557 publication proposal law",
+      "rule": "PROVENANCE_NE_COMPOSITION__V557_MAY_NARROW_ONLY"
+    }
+  ],
+  "after_import_required_m4_action": [
+    "verify exact accepted M2/M3 identities and hashes",
+    "replace only pending V555/V556 producer-specific SCR5578 registry slots",
+    "recompute mixed-producer closure graph/digests from accepted producer reference contracts",
+    "run exact producer identity and role/order/cardinality/multiplicity checksum",
+    "run raw-producer-directories-absent standalone checksum",
+    "run item-wise producer_to_V557_to_resolver permission-subset checksum",
+    "run structural reference-class/PSEPF firewall",
+    "run provenance-not-composition checksum",
+    "run deterministic replay checksum",
+    "do not modify SCR5578 local governance/repository/resolver law"
+  ],
+  "forbidden": [
+    "using the pre-M2 local SCR555 head/token as final M4 authority",
+    "using the pre-M3 local SCR556 head/token as final M4 authority",
+    "guessing M2 or M3 acceptance from branch naming or file presence",
+    "renaming producer identities into V557/V558 IDs",
+    "latest/current/fuzzy/label/raw-stage/network substitution for any final binding",
+    "emitting an M4 final-acceptance token from this preflight"
+  ]
+}
