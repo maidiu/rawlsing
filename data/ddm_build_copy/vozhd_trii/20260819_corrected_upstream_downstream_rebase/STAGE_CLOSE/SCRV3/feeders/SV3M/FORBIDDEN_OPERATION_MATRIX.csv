@@ -1,0 +1,16 @@
+forbidden_id,attack,constructed_shortcut,reason,required_behavior
+F001,MASS_TO_BELIEF,belief_probability = field.mass,"Belief requires V3 owner-specific epistemic causal effect; PSEPF remains population possibility",REJECT_HARD
+F002,MODAL_CELL_TO_RESPONSE,response = argmax(field.cells),"Modal population configuration has no actor response authority",REJECT_HARD
+F003,SURVEY_CELL_TO_MEMORY,memory = survey_configuration,"ADP-016 requires causal event/effect provenance",REJECT_HARD
+F004,SURVEY_CELL_TO_KNOWLEDGE,knowledge = supported_cell,"ADP-017 requires exact typed ActorEpistemicEffect and causal basis",REJECT_HARD
+F005,COMPARATOR_RECEIPT_AS_PRIOR,ActorComparatorReceipt read as developmental input,"Comparator receipt is semantic input to field production and provenance-only in V3",REJECT_HARD
+F006,STRUCTURAL_POSITION_RECONSTRUCTION,generated_position = comparator coordinate / PSEPF conditioner,"ADP-009/generated actor fact remains distinct from survey coordinate",REJECT_HARD
+F007,SOURCE_MAJORITY,pick actor truth by majority/strongest source,"Source plurality/conflict is first-class; provenance/support does not authorize voting or pooling",REJECT_HARD
+F008,HIDDEN_SCALARIZATION,collapse source-indexed J-way geometry to one latent score,"Any scalar transform must be explicit, owner-bound, versioned/hash-bound, and cannot replace canonical field",REJECT_HARD
+F009,GEOMETRY_TRUNCATION,top-k/modal/marginal/pairwise replacement of requested exact geometry,"Thin input preserves exact immutable field dereference; summary cannot become semantic substitute",REJECT_HARD
+F010,DETERMINISTIC_PRIOR_TO_PERSONA,same priors force same actor trajectory,"V3 history, encounter, relationships, action and lawful RNG remain causal; same-prior divergence must pass",REJECT_HARD
+F011,LOW_SUPPORT_PROMOTION,LOW_SUPPORT -> certainty/default belief,"Low support remains weak supported evidence; no actor certainty",REJECT_HARD
+F012,ZERO_SUPPORT_IMPOSSIBILITY,ZERO_SUPPORT -> actor impossibility or zero belief,"Zero support means no empirical conditional basis, not metaphysical/actor-state zero",REJECT_HARD
+F013,NEAREST_COHORT_FALLBACK,missing comparator -> nearest/fuzzy/default cohort,"Comparator failures remain typed; no fallback invention",REJECT_HARD
+F014,REPLAY_RECEIPT_AS_PRIOR,ReplayReceipt affects transition semantics,"ReplayReceipt is audit/replay only",REJECT_HARD
+F015,UNRECORDED_PRIOR_VERSION,transition consults mutable/latest field or authority,"Every causal consultation binds exact immutable IDs/hashes/version and receipt",REJECT_HARD

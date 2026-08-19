@@ -1,0 +1,69 @@
+{
+  "branch": "agent/vozhd-trii-dr-r03-spec-v3-metabolism",
+  "broad_topology_counterexample_found": false,
+  "candidate_authority": {
+    "accepted_digest_status": "UNBOUND_BY_NON_DISPOSITIVE_FEEDER__SCRV3_MUST_CANONICALIZE_AND_BIND",
+    "authority_id": "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY",
+    "authority_version": "1.0.0",
+    "binding_shape": "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY@1.0.0#sha256:<64-lowercase-hex>",
+    "hash_rule": "SHA256(UTF8(canonical_json(authority_core)))"
+  },
+  "cell": "SV3M",
+  "conditionally_allowed_transition_classes": [
+    "ADP-010:OPPORTUNITY_PROPOSAL_OR_ADMISSION",
+    "ADP-011:ROUTE_REALIZATION_PROPOSAL",
+    "CAN-008:RESPONSE_OR_METABOLIZATION_CANDIDATE_SELECTION",
+    "CAN-010:NEED_EXPECTATION_STRIVING_CANDIDATE_SELECTION"
+  ],
+  "default_permission": "DENY",
+  "divergence_oracle": "same priors permit divergent lawful post-branch histories; each exact history/RNG receipt set replays deterministically",
+  "exact_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "governing_rule": "permission_to_read(PSEPF) != authority_to_assign(actor_state)",
+  "hard_denials": [
+    "MASS_TO_BELIEF",
+    "MODAL_CELL_TO_RESPONSE",
+    "SURVEY_CELL_TO_MEMORY",
+    "SURVEY_CELL_TO_KNOWLEDGE",
+    "COMPARATOR_RECEIPT_AS_PRIOR",
+    "STRUCTURAL_POSITION_RECONSTRUCTION",
+    "SOURCE_MAJORITY",
+    "HIDDEN_SCALARIZATION",
+    "GEOMETRY_TRUNCATION",
+    "DETERMINISTIC_PRIOR_TO_PERSONA",
+    "REPLAY_RECEIPT_AS_PRIOR"
+  ],
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "METABOLISM_AUTHORITY_CANDIDATE.md",
+    "READ_PERMISSION_MATRIX.csv",
+    "FORBIDDEN_OPERATION_MATRIX.csv",
+    "DIVERGENCE_REPLAY_HARNESS.md",
+    "PARENT_HANDOFF.md"
+  ],
+  "population_to_person_algorithm_selected": false,
+  "production_code_modified": false,
+  "recommended_parent_disposition": "ACCEPT_CANDIDATE_PERMISSION_CEILING__CANONICALIZE_HASH_AND_OWNER_EXTENSIONS_BEFORE_STAGE_ACCEPTANCE",
+  "replay_requirements": [
+    "exact authority IDs/versions/content hashes",
+    "exact V3 input and PSEPF hashes",
+    "exact source components/cells read",
+    "exact owner transform identity/hash if any",
+    "pre/post candidate set hashes",
+    "pre/post actor state hashes",
+    "causal parents",
+    "ADP-020 RNG receipts when any",
+    "effective time and use class"
+  ],
+  "repository": "maidiu/rawlsing",
+  "role": "NON_DISPOSITIVE_FEEDER_TO_SCRV3_AND_LATER_M5_M6",
+  "token": "SV3M_FEEDER_COMPLETE",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCRV3/feeders/SV3M/",
+  "allowed_operations": [
+    "EXACT_GEOMETRY_DEREFERENCE",
+    "OWNER_RULE_CONSTRAINT_TEST",
+    "OWNER_RULE_CANDIDATE_ANNOTATION",
+    "OWNER_RULE_CANDIDATE_FILTER",
+    "OWNER_RULE_CANDIDATE_WEIGHT_WITH_SEPARATE_OWNER_TRANSFORM"
+  ]
+}
