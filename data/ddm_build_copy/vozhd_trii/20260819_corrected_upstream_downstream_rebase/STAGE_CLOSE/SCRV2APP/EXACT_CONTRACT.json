@@ -1,0 +1,181 @@
+{
+  "contract_id": "SCRV2APP_EXPRESSION_FIREWALL",
+  "version": "1.0.0",
+  "scope": "V2/application actor-safe expression receiver, prompt/render firewall, noncausal session boundary, and V2-to-V3 external-event prerequisite boundary",
+  "final_positive_sender_seam_owner": "SCRV3",
+  "final_positive_sender_seam_status": "WAITING_ON_EXACT_ACCEPTED_SCRV3_RETURN",
+  "current_adp017_precedent": "ActorAccessibleRenderEnvelope@1.0.0",
+  "positive_input_class": "ACTOR_SAFE_V3_ENTRY",
+  "forbidden_upstream_behavioral_sources": [
+    "PSEPF",
+    "ActorComparatorReceipt",
+    "SourceDisagreementOrEmpiricalNegativeAsSuch",
+    "V3EmpiricalPossibilityInput",
+    "ResolvedStructuralContext",
+    "StructuralPriorRepository",
+    "V557_V558_OBJECT_LOCATOR_INDEX_SELECTION_RECORD",
+    "RAW_V553_V554_V555_V556_STRUCTURAL_OBJECT",
+    "ReplayReceipt",
+    "OPAQUE_UPSTREAM_AUDIT_OR_PROVENANCE"
+  ],
+  "ingress_predicate": "ALLOW_BEHAVIORAL_SEMANTIC_INPUT(x) iff x is a current exact actor-safe SCRV3 entry OR a separately governed V2 noncausal input in its exact role; forbidden upstream sources are denied regardless of wrapper or representation",
+  "forbidden_behavioral_operations": [
+    "READ_SEMANTIC_PAYLOAD",
+    "DEREFERENCE",
+    "PARSE",
+    "JOIN",
+    "SUMMARIZE",
+    "RANK_OR_SCORE",
+    "EMBED",
+    "SEMANTIC_SEARCH",
+    "RETRIEVE_AUGMENT",
+    "CLASSIFY",
+    "FEATURE_EXTRACT",
+    "BRANCH_ON_VALUE_OR_METADATA",
+    "PROMPT_INSERT",
+    "SELECT_EXPRESSION_OPERATION",
+    "SELECT_SALIENCE",
+    "SELECT_REGISTER_OR_VOICE",
+    "SELECT_RESPONSE_MOVE",
+    "INFER_RELATIONSHIP",
+    "INFER_EPISTEMIC_STATE",
+    "INFER_CONFIDENCE_OR_UNCERTAINTY",
+    "BEHAVIOR_AFFECTING_CACHE_OR_PARTITION"
+  ],
+  "opaque_provenance": {
+    "required_role": "AUDIT_ONLY_REF",
+    "semantic_role": "AUDIT_ONLY__NON_RENDER__NON_PERSONA__NON_BEHAVIORAL__NON_DEREFERENCEABLE",
+    "allowed_operations": [
+      "CARRY_IMMUTABLY",
+      "VERIFY_EXACT_ID_OR_HASH_FOR_AUDIT",
+      "OMIT",
+      "FORWARD_UNCHANGED_TO_EXPLICIT_AUDIT_ONLY_SINK"
+    ],
+    "model_visible": false,
+    "behavioral_dereference": false,
+    "metadata_feature_use": false,
+    "behavior_affecting_cache_key_use": false,
+    "successful_audit_dereference_grants_expression_permission": false,
+    "unknown_role_behavior": "FAIL_CLOSED"
+  },
+  "scrv3_receiver_acceptance_predicate": [
+    "EXACT_SCHEMA_TYPE_ID_VERSION_AUTHORITY_HASH_AND_INTEGRITY_BINDING",
+    "EXACT_ACTOR_IDENTITY_AND_V3_STATE_EFFECTIVE_TIME_CURRENTNESS_BINDING",
+    "EVERY_RENDERABLE_ENTRY_EXPLICITLY_ACTOR_ACCESSIBLE_UNDER_V3_AUTHORITY",
+    "EXACT_CLAIM_COMPONENT_AND_FIRST_PERSON_PERMISSION_SCOPE",
+    "DENIED_WITHHELD_ANALYST_ONLY_CONTENT_NOT_RECOVERABLE_BY_V2_SEMANTIC_LANE",
+    "RELATIONSHIP_EXPRESSION_USES_ACTOR_PERCEIVED_ACCESSIBLE_VIEW_ONLY",
+    "PROVENANCE_IF_EXPOSED_IS_AUDIT_ONLY_AND_BEHAVIORALLY_OPAQUE",
+    "NO_RAW_UPSTREAM_PRIOR_IN_MODEL_VISIBLE_OR_BEHAVIORAL_PROJECTION",
+    "STALE_OR_INTEGRITY_FAILED_HANDOFF_EXPLICITLY_DETECTABLE_AND_FAIL_CLOSED",
+    "DOWNSTREAM_NARROWING_PROVABLE_AGAINST_EXACT_SOURCE_SNAPSHOT"
+  ],
+  "permission_monotonicity": {
+    "claims": "OUTPUT_SUBSET_OF_V3_ALLOWED",
+    "components": "OUTPUT_SUBSET_OF_V3_PERMITTED_COMPONENTS",
+    "temporal_scope": "MAY_NOT_BROADEN",
+    "subject_scope": "MAY_NOT_BROADEN",
+    "relationship_view_scope": "MAY_NOT_BROADEN",
+    "referent_scope": "MAY_NOT_BROADEN",
+    "permission_class": "PRESERVE_EXACT_SUPPLIED_CLASS",
+    "omission_allowed": true,
+    "hidden_claim_join_allowed": false,
+    "epistemic_class_substitution_allowed": false,
+    "system_unknown_to_actor_nonknowledge_allowed": false,
+    "session_rehydration_of_withdrawn_or_inaccessible_claim_allowed": false
+  },
+  "prompt_visibility_classes": {
+    "MODEL_VISIBLE_AUTHORITATIVE_SEMANTIC": "exact V2 renderable unit descended from current actor-safe V3 entry plus separately governed V2 semantic decision",
+    "MODEL_VISIBLE_STIMULUS_ONLY_NONAUTHORITATIVE": "exact current-turn stimulus when accepted V2 authority permits it",
+    "AUDIT_ONLY_NEVER_MODEL_VISIBLE": "provenance, authority manifests, opaque refs, denied/withheld material, replay material, structural/empirical upstream refs",
+    "OMITTED_DENIED": "forbidden or unavailable material"
+  },
+  "unknown_prompt_visibility_class": "BLOCK_RENDER_ADMISSION",
+  "renderer": {
+    "may_vary": "WORDING_WITHIN_ADMITTED_SEMANTIC_PLAN_ONLY",
+    "model_output_is_authority": false,
+    "post_render_unlisted_claim": "REJECT_OR_REPAIR",
+    "post_render_permission_escalation": "REJECT_OR_REPAIR",
+    "post_render_provenance_leak": "REJECT_OR_REPAIR",
+    "post_render_hidden_analyst_truth": "REJECT_OR_REPAIR"
+  },
+  "metamorphic_noninterference": {
+    "held_fixed": [
+      "ACTOR_SAFE_V3_HANDOFF_SEMANTICS",
+      "LAWFUL_V2_INPUTS",
+      "CURRENT_TURN_STIMULUS_IF_USED",
+      "INTERACTION_MODE_INPUTS",
+      "RENDER_POLICY_MODEL_VERSION_AND_RNG_RECEIPTS"
+    ],
+    "varied_only": "FORBIDDEN_UPSTREAM_PRIOR_OR_OPAQUE_PROVENANCE",
+    "required_behavioral_change": "NONE",
+    "permitted_change": "AUDIT_ONLY_RECORD_OR_INTEGRITY_BLOCK"
+  },
+  "session_application": {
+    "session_state_is_causal": false,
+    "transcript_is_v3_memory": false,
+    "rendered_text_is_generated_occurrence": false,
+    "session_may_restore_v3_access": false,
+    "session_may_replace_stale_handoff": false
+  },
+  "interaction": {
+    "default_mode": "PRESENTATION_NONCAUSAL",
+    "causal_mode": "IN_WORLD_CAUSAL",
+    "causal_candidate_initial_status": "CANDIDATE_NONCAUSAL_PENDING_V3_ADMISSION",
+    "packaging_authority": "CAN-025@1.0.0",
+    "admission_authority": "ADP-019@1.0.0",
+    "packaging_is_admission": false,
+    "admission_is_downstream_effect": false,
+    "decision_truth_table": {
+      "ADMIT": {
+        "occurrence": "EXACTLY_ONE_IF_ADP019_ADMITS",
+        "v2_or_package_state_mutation_authority": false,
+        "downstream_actor_effects_implied": false
+      },
+      "REJECT": {
+        "occurrence": "NONE",
+        "v3_causal_mutation": "ZERO",
+        "v3_event_cursor_advance": "ZERO",
+        "v3_causal_session_cursor_advance": "ZERO"
+      },
+      "DEFER": {
+        "occurrence": "NONE",
+        "v3_causal_mutation": "ZERO",
+        "v3_event_cursor_advance": "ZERO",
+        "v3_causal_session_cursor_advance": "ZERO"
+      },
+      "INVALID": {
+        "occurrence": "NONE",
+        "v3_causal_mutation": "ZERO",
+        "v3_event_cursor_advance": "ZERO",
+        "v3_causal_session_cursor_advance": "ZERO"
+      }
+    },
+    "terminal_rejection_evasion_by_new_proposal_id": false,
+    "rerender_inherits_admission": false,
+    "deferred_same_immutable_proposal_may_recheck_after_named_blocker_changes": true
+  },
+  "local_fail_closed_classes": [
+    "DENIED_FORBIDDEN_UPSTREAM_BEHAVIORAL_SOURCE",
+    "DENIED_OPAQUE_PROVENANCE_DEREFERENCE",
+    "DENIED_MODEL_VISIBILITY_AUDIT_ONLY",
+    "BLOCKED_MISSING_ACTOR_SAFE_HANDOFF",
+    "BLOCKED_STALE_ACTOR_SAFE_HANDOFF",
+    "BLOCKED_HANDOFF_INTEGRITY_FAILURE",
+    "BLOCKED_PERMISSION_SCOPE_WIDENING",
+    "BLOCKED_PERMISSION_CLASS_SUBSTITUTION",
+    "BLOCKED_HIDDEN_CLAIM_JOIN",
+    "BLOCKED_RELATIONSHIP_VIEW_WIDENING",
+    "BLOCKED_SESSION_REHYDRATION",
+    "BLOCKED_PROMPT_ALLOWLIST_VIOLATION",
+    "BLOCKED_RENDER_SEMANTIC_LEAK",
+    "NONCAUSAL_PRESENTATION_ONLY",
+    "CAUSAL_CANDIDATE_PENDING_V3_ADMISSION",
+    "ZERO_MUTATION_REJECTED",
+    "ZERO_MUTATION_DEFERRED",
+    "ZERO_MUTATION_INVALID"
+  ],
+  "local_contract_closed": true,
+  "m6_final_acceptance_ready_except_scrv3_exact_handoff": true,
+  "result_token": "SCRV2APP_WAITING_ONLY_FOR_EXACT_FINAL_SEAM"
+}
