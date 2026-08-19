@@ -1,0 +1,155 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "court": "R03C",
+  "title": "PROVENANCE_REPLAY_SOURCE_UNIVERSE_STANDALONE_CLOSURE_HOSTILE_FEEDER",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+  "branch": "agent/vozhd-trii-dr-r03c-provenance-replay-audit",
+  "non_dispositive": true,
+  "production_code_modified": false,
+  "library_used_as_authority": false,
+  "final_result": "R02_H07_REQUIRES_QUALIFICATION__R02_H09_SURVIVES_ATTACK__STANDALONE_V558_CLOSURE_REQUIRES_ROLE_PRESERVING_MATERIALIZED_OR_HASH_BOUND_DEREFERENCE_PROOF",
+  "r02_holdings": {
+    "R02-H07": {
+      "status": "SURVIVES_WITH_QUALIFICATION",
+      "qualification": "Transitive-reference sufficiency removes repeated direct-field copies, but it does not permit omission of interpretation-critical closure material. Every required producer object, authority snapshot, source-universe identity, query/risk-set/measure identity, negative state and role-preserving reference-contract edge must be included or exactly immutable-addressable through a packaged hash-bound resolution contract.",
+      "failure_rule": "Missing, ambiguous, mutable, version-conflicting, hash-mismatched or label-reconstructed required dependency fails closed as integrity failure."
+    },
+    "R02-H09": {
+      "status": "SURVIVES",
+      "qualification": null,
+      "holding": "ReplayReceipt is audit/replay-only and has no independent runtime-prior semantics."
+    },
+    "R02-H06_supporting": {
+      "status": "SURVIVES",
+      "holding": "V557/V558 may physically package producer material without semantically re-owning it."
+    }
+  },
+  "attack_dispositions": {
+    "C01": "SURVIVES_WITH_QUALIFICATION",
+    "C02": "SURVIVES_WITH_QUALIFICATION",
+    "C03": "SURVIVES_WITH_QUALIFICATION",
+    "C04": "SURVIVES_WITH_QUALIFICATION",
+    "C05": "SURVIVES_WITH_QUALIFICATION",
+    "C06": "SURVIVES"
+  },
+  "fixtures": [
+    "FX-C01 transitive query/measure/admission dereference after copy removal",
+    "FX-C02 standalone V558 with raw V553-V556 directories absent",
+    "FX-C03 conflicting source universes with overlapping labels",
+    "FX-C04 historical authority version replay",
+    "FX-C05 measure/risk-set recovery with convenience copies stripped",
+    "FX-C06 attempted cross-universe respondent join without authority",
+    "FX-C07 ReplayReceipt promoted to runtime prior"
+  ],
+  "standalone_v558": {
+    "must_physically_contain_administrative_integrity_material": [
+      "V558 repository bundle manifest and identity/content hashes",
+      "exact source V557 publication identity and manifest bindings",
+      "collection registry and collection manifest bindings",
+      "object locator registry",
+      "role-preserving reference graph / closure manifest and digests",
+      "producer material store manifest",
+      "collection fidelity / negative-state manifest",
+      "required deterministic lookup index manifests",
+      "producer build bindings",
+      "item/collection governance bindings",
+      "exact publication/closure/compatibility/resolver-policy identity-version-hash bindings"
+    ],
+    "producer_semantics_may_be_transitive_but_must_resolve_exactly": [
+      "V556 producer objects and participant role/order/cardinality",
+      "V555 route objects and route conditions",
+      "V554 affordance/applicability objects",
+      "V553 temporal objects when applicable",
+      "StructuralEmpiricalAdmission",
+      "EmpiricalFact identity/result or exact reconstructible fact binding",
+      "EmpiricalQuerySpec",
+      "EmpiricalUniverse",
+      "source-universe relation/linkage/pooling authority where relevant",
+      "routing/risk-set authority and member-set incidence/rule",
+      "weight/measure/design/estimand authority",
+      "support/uncertainty/negative/noncomparability authority",
+      "historical AuthoritySnapshot objects",
+      "C11 content identity and replay bindings"
+    ],
+    "raw_stage_directory_dependency_allowed": false,
+    "mutable_latest_identity_allowed": false,
+    "fuzzy_label_reconstruction_allowed": false,
+    "broken_required_reference": "INVALID_FAIL_CLOSED"
+  },
+  "source_universe": {
+    "default": "SEPARATE_BY_EXACT_EMPIRICAL_UNIVERSE_IDENTITY",
+    "same_label_implies_identity": false,
+    "cross_universe_respondent_join_without_authority": "LINKAGE_NOT_AUTHORIZED",
+    "pooling_without_positive_authority": false,
+    "generic_average_or_backfill": false,
+    "byte_identical_different_authoritative_identity_may_semantically_coalesce": false
+  },
+  "historical_authority": {
+    "required_binding": ["authority_id", "authority_version", "authority_content_hash", "immutable content or exact immutable resolver contract"],
+    "latest_current_default_may_reinterpret_historical_object": false,
+    "missing_historical_authority": "FAIL_CLOSED__HISTORICAL_AUTHORITY_UNAVAILABLE"
+  },
+  "measure_risk_set": {
+    "must_recover": [
+      "target/question/component identity and topology",
+      "predicate AST",
+      "exact universe/scope",
+      "risk-set identity",
+      "routing/applicability authority",
+      "exact member-set incidence or deterministic member-set rule with parents",
+      "raw support/denominator and typed absence states",
+      "selected measure/estimand",
+      "weight basis/status/design authority",
+      "support/uncertainty method and basis where governed"
+    ],
+    "equal_numeric_denominator_proves_same_risk_set": false,
+    "displayed_weighted_mass_without_measure_authority_sufficient": false
+  },
+  "replay_receipt": {
+    "runtime_prior": false,
+    "may_rank_or_weight_structural_objects": false,
+    "may_affect_v3_development_probability": false,
+    "lawful_roles": ["historical replay identity", "integrity verification", "migration/equivalence audit", "fail-closed replay verification"]
+  },
+  "distinguished_closure_claims": {
+    "V558_STANDALONE_STRUCTURAL_RESOLUTION": "May succeed without physically embedding all respondent events if all required structural/provenance material is packaged or hash-bound immutable-addressable.",
+    "FULL_OFFLINE_EMPIRICAL_REPLAY": "Additionally requires exact C11 M01-M18 content material or an immutable content-addressed C11 resolver under the receipt's exact content identity. A C11 hash alone is not replay material."
+  },
+  "stage_close_read_obligations": {
+    "V553_V554": [
+      "declare corrected source/universe/query/admission/authority refs interpretation-critical per basis",
+      "preserve temporal/source-comparability negative authority in closure"
+    ],
+    "V555_V556": [
+      "freeze reference contracts distinguishing semantic closure edges from incidental provenance prose",
+      "keep direct semantic fields minimal without losing exact transitive closure"
+    ],
+    "V557_V558": [
+      "register corrected upstream reference classes",
+      "produce deterministic per-root closure digests",
+      "package producer material or exact hash-bound immutable locators",
+      "prove historical authority dereference",
+      "prove source-universe noncollapse",
+      "prove query/risk-set/measure recovery",
+      "run standalone test with raw stage dirs absent",
+      "disable mutable latest/default and fuzzy rematching",
+      "inject broken content-addressed ref and fail closed with exact identity",
+      "preserve replay/audit refs as nonsemantic"
+    ]
+  },
+  "current_implementation_evidence": {
+    "accepted_architecture_requires_standalone_closure": true,
+    "current_v557_v558_production_surfaces_prove_conformance": false,
+    "reason": "Accepted SI-R04 classifies current production implementation as superseded/nonconforming to the accepted standalone repository contract."
+  },
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "ATTACK_LEDGER.csv",
+    "COUNTEREXAMPLES.md",
+    "SURVIVING_HOLDINGS.csv",
+    "SYNTHESIS_HANDOFF.json"
+  ],
+  "closure": "NON_DISPOSITIVE_R03C_RETURN_COMPLETE"
+}
