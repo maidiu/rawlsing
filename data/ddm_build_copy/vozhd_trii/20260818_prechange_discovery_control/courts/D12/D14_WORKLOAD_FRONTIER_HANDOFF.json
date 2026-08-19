@@ -1,0 +1,201 @@
+{
+  "handoff": "D12_TO_D14_WORKLOAD_FRONTIER",
+  "source_court": "D12_FINAL_TERMINAL_DDM_CAPABILITY_CLOSURE",
+  "repository": "maidiu/rawlsing",
+  "source_base_sha": "2eebbfde73a1cc2b83eb4c216bbd4ee7b321417d",
+  "algorithm_selected": false,
+  "architecture_selected": false,
+  "materialization_policy_selected": false,
+  "storage_carrier_selected": false,
+  "dependency_note": "D14 cost measurements must be interpreted against D12's semantic frontier and D13's replay-sufficiency findings. No compute saving is valid if it removes a D12-required distinction.",
+  "governing_workload_law": [
+    "MATERIALIZE_ALL_PERMITTED is not required.",
+    "RECONSTRUCTIBILITY is required for the future-authorized query/discovery frontier.",
+    "Bounded exact contingencies may satisfy bounded fixed queries.",
+    "Autonomous discovery requires a governed candidate frontier; the winning relationship need not be individually predeclared.",
+    "Algorithm family remains open.",
+    "Benchmark both successful-result and typed-empty/noncomparable/no-support paths where they carry terminal semantics."
+  ],
+  "benchmark_families": [
+    {
+      "workload_id": "W01_UNARY_EMPIRICAL_FACT",
+      "services": ["A", "B", "C"],
+      "capabilities": ["C01", "C02", "C14", "C25", "C27"],
+      "shape": "One target question, one exact empirical coordinate/value conditioner, one source/universe/scope, exact risk set and measure.",
+      "required_measurements": ["rows/bytes read", "candidate respondents evaluated", "CPU time", "wall time", "peak memory", "intermediate bytes", "output cardinality", "replay overhead"],
+      "semantic_success": "Exact conditional distribution/support/risk-set/measure/provenance or exact typed zero/no-support state."
+    },
+    {
+      "workload_id": "W02_MULTI_COORDINATE_CONJUNCTION",
+      "services": ["A", "B"],
+      "capabilities": ["C03", "C05", "C31"],
+      "shape": "Authorized conjunction of 2..k empirical coordinates conditioning one or more response targets.",
+      "required_scaling_axes": ["conditioner arity", "coordinate cardinality", "support sparsity", "respondent universe size"],
+      "semantic_success": "Exact conjunction result without multiplying independent marginals."
+    },
+    {
+      "workload_id": "W03_RESPONSE_RESPONSE_PAIR",
+      "services": ["A", "B", "C"],
+      "capabilities": ["C06", "C21", "C31"],
+      "shape": "One governed same-respondent response pair under exact common/declared risk set.",
+      "required_variants": ["full 2-way contingency", "optional derived E4 diagnostics", "low-overlap pair", "routed pair"],
+      "semantic_success": "Complete contingency; diagnostic calculation cost reported separately from deep-fact reconstruction."
+    },
+    {
+      "workload_id": "W04_K_WAY_JOINT",
+      "services": ["A", "B", "C"],
+      "capabilities": ["C09", "C18", "C31"],
+      "shape": "Exact requested k-way joint response configuration under fixed conditioner/risk-set/scope.",
+      "required_scaling_axes": ["target arity", "response topology cardinality", "sparsity", "respondent count"],
+      "mandatory_fixture": "parity/XOR case where lower-order marginals are insufficient",
+      "semantic_success": "Exact support/mass including all supported nonmodal cells and explicit observed-zero/typed-unavailable distinctions."
+    },
+    {
+      "workload_id": "W05_MINORITY_DISCOVERY",
+      "services": ["A", "B", "C"],
+      "capabilities": ["C10", "C13"],
+      "shape": "Search a governed candidate frontier containing a low-frequency but supported non-top response/social configuration.",
+      "required_variants": ["rare third category", "multimodal configuration", "contradictory configuration", "underpowered-but-supported candidate"],
+      "semantic_success": "Candidate remains reachable and output preserves support/uncertainty rather than suppressing it into absence."
+    },
+    {
+      "workload_id": "W06_INTERACTION_DISCOVERY",
+      "services": ["A", "C"],
+      "capabilities": ["C03", "C05", "C12", "C13"],
+      "shape": "Autonomously search a bounded lawful coordinate/conjunction frontier where the winning interaction is not individually named.",
+      "required_variants": ["strong all-pair interaction excluding strongest unary", "XOR with zero unary signal", "conditional reversal/Simpson fixture"],
+      "semantic_success": "Discovery coverage matches declared authority/algorithm coverage claim; pruning does not silently become semantic absence."
+    },
+    {
+      "workload_id": "W07_RECURSIVE_SOCIAL_FORK",
+      "services": ["A"],
+      "capabilities": ["C07", "C10", "C11", "C13", "C29"],
+      "shape": "Data-selected first fork followed by secondary/tertiary candidate search inside discovered cohorts.",
+      "required_scaling_axes": ["authorized depth", "candidate fields per node", "branch cardinality", "minimum support", "pruning breadth"],
+      "semantic_success": "Exact branch predicates/membership replay and claimed candidate coverage; no requirement to persist a historical tree artifact."
+    },
+    {
+      "workload_id": "W08_BRANCH_CONDITIONED_COTRAVEL",
+      "services": ["A", "B"],
+      "capabilities": ["C08", "C29", "C31"],
+      "shape": "One discovered/replayed branch cohort crossed with one or more same-respondent response targets.",
+      "semantic_success": "Exact branch membership/predicate plus complete conditioned contingency."
+    },
+    {
+      "workload_id": "W09_FORWARD_AUTONOMOUS_SEARCH_FRONTIER",
+      "services": ["A"],
+      "capabilities": ["C10", "C11", "C12", "C13"],
+      "shape": "Representative bounded full forward discovery run over governed question/coordinate/response candidate universe.",
+      "required_scenarios": ["small bounded exhaustive frontier", "larger frontier requiring lawful pruning/coverage contract", "valid-empty no surviving candidate", "order/permutation replay"],
+      "semantic_success": "Same governed frontier and deterministic replay inputs reproduce same coverage/result/typed-empty outcome."
+    },
+    {
+      "workload_id": "W10_REVERSE_UNARY_FIELD",
+      "services": ["B"],
+      "capabilities": ["C17", "C18"],
+      "shape": "Generated subject with one exact comparable property selecting one survey conditioner and one target question.",
+      "required_variants": ["exact comparator", "range/band comparator", "typed no comparator", "multiple comparator ambiguity", "zero eligible respondent support"],
+      "semantic_success": "Exact comparator receipt and unary possibility field or typed fail-closed state."
+    },
+    {
+      "workload_id": "W11_REVERSE_MULTI_PROPERTY_JOINT_FIELD",
+      "services": ["B"],
+      "capabilities": ["C03", "C09", "C17", "C18", "C31"],
+      "shape": "Generated subject with multiple comparable properties selecting an exact conjunction; requested target arity 2..k.",
+      "required_scaling_axes": ["number of actor facts", "number of comparator alternatives", "conditioner arity", "target arity", "source universes admitted"],
+      "semantic_success": "Exact conditional joint field; no independence assumption and no direct actor-state assignment."
+    },
+    {
+      "workload_id": "W12_ACTOR_COMPARATOR_RESOLUTION",
+      "services": ["B"],
+      "capabilities": ["C17"],
+      "shape": "Field/source/time-specific actor-fact -> empirical-coordinate comparison resolution.",
+      "required_field_families": ["age", "sex/gender", "income/resources", "education", "employment", "language", "religion/sect self-ID", "ethnicity", "region/locality", "urban/rural", "marital", "household size/composition", "migration/travel", "occupation", "time/period"],
+      "semantic_success": "Exact predicate or typed no-match/ambiguity; no fuzzy/string/geographic-nearest fallback."
+    },
+    {
+      "workload_id": "W13_TEMPORAL_EMPIRICAL_COMPARISON",
+      "services": ["A", "B", "C"],
+      "capabilities": ["C15", "C24", "C28"],
+      "shape": "Comparable facts across multiple waves/periods with preserved source identities.",
+      "required_variants": ["stable", "drift", "reversal", "rupture", "noncomparable wave"],
+      "semantic_success": "Temporal distinction preserved with exact comparability/proxy provenance."
+    },
+    {
+      "workload_id": "W14_CROSS_UNIVERSE_DISAGREEMENT",
+      "services": ["A", "B", "C"],
+      "capabilities": ["C16", "C24", "C30"],
+      "shape": "Compute comparable source-indexed facts for two or more distinct universes and compare without respondent joining/pooling unless separately authorized.",
+      "required_variants": ["agreement", "substantive disagreement", "instrument noncomparability", "population noncomparability", "original+derivative double-counting risk", "exact panel linkage"],
+      "semantic_success": "Source-indexed components and disagreement/noncomparability state survive."
+    },
+    {
+      "workload_id": "W15_STRUCTURAL_EMPIRICAL_ADMISSION",
+      "services": ["C"],
+      "capabilities": ["C01", "C06", "C09", "C15", "C19", "C28"],
+      "shape": "Produce/replay empirical fact required by an exact structural producer/admission rule, then measure transformation/admission cost separately from empirical reconstruction.",
+      "required_variants": ["current unary answer-distribution path", "current bounded joint path", "temporal path", "typed denied/missing-authority path"],
+      "semantic_success": "Producer receives exact authorized empirical fact/provenance and preserves negative authority."
+    },
+    {
+      "workload_id": "W16_TYPED_ABSENCE_AND_TOPOLOGY",
+      "services": ["A", "B", "C"],
+      "capabilities": ["C25", "C26", "C27"],
+      "shape": "Queries containing routed/not-asked, DK/refusal/IAP, multiselect/repeated responses and differing denominator semantics.",
+      "semantic_success": "Typed states and multiplicity remain distinct; no scalar first-row or blank collapse changes meaning."
+    },
+    {
+      "workload_id": "W17_REPLAY_FROM_DEEP_SUBSTRATE",
+      "services": ["A", "B", "C"],
+      "capabilities": ["C20", "C21", "C22", "C31"],
+      "shape": "Regenerate selected derived distribution/cloud/association/tree/search views from the D13-approved deeper information carrier.",
+      "purpose": "Measure the cost of not permanently materializing derived artifacts; this workload does not make those artifacts terminally required.",
+      "semantic_success": "Derived result matches its exact declared algorithm/authority semantics where replay is requested."
+    }
+  ],
+  "comparison_baselines_D14_may_measure_without_treating_as_target_architecture": [
+    "current V550 broad determinicity suite",
+    "current V550/V550J selected joint execution",
+    "on-demand exact bounded query over whichever D13-approved carrier is under evaluation",
+    "replay of diagnostic E3/E4 views",
+    "representative autonomous-search coverage frontiers"
+  ],
+  "mandatory_cost_dimensions": [
+    "wall-clock time",
+    "CPU time",
+    "peak resident memory",
+    "bytes read",
+    "bytes written",
+    "intermediate materialization bytes",
+    "persistent output bytes",
+    "candidate evaluations",
+    "respondent-event evaluations/joins",
+    "checkpoint/replay overhead",
+    "cold versus warm/cache-assisted execution where applicable",
+    "parallelism/concurrency used",
+    "failure/typed-empty path cost"
+  ],
+  "mandatory_scaling_dimensions": [
+    "respondent count",
+    "question count",
+    "empirical-coordinate count",
+    "coordinate cardinality",
+    "response topology/cardinality",
+    "conditioner conjunction arity",
+    "joint target arity",
+    "search depth/breadth/coverage frontier",
+    "number of source universes/waves",
+    "sparsity/support distribution"
+  ],
+  "D14_must_not_conclude": [
+    "a capability is unnecessary because it is expensive",
+    "a materialized artifact is required because recomputation is expensive",
+    "a cheaper approximate representation is acceptable if it violates D12 information equivalence",
+    "current workload defaults are target authority",
+    "one benchmarked algorithm family is architecturally selected",
+    "all permitted queries must be precomputed",
+    "no populated support problem exists merely because no live DB is available"
+  ],
+  "expected_D14_output_shape": "For each workload family and scaling point: semantic target, authority/coverage assumptions, carrier tested after D13, cost measurements, output cardinality, replay/accuracy equivalence status, and explicit separation of terminal work from optional diagnostic/materialization work.",
+  "architecture_gate": "D14 may report cost frontiers and dominant cost drivers. It may not select the replacement architecture; D15 remains first architecture-synthesis court."
+}
