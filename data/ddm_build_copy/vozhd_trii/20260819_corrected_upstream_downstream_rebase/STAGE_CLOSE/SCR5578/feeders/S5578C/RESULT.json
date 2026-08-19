@@ -1,0 +1,140 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "specialist": "S5578C",
+  "title": "HOSTILE STANDALONE CLOSURE / LOCATOR / NEGATIVE-REFERENCE FEEDER",
+  "parent": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION",
+  "later_barriers": ["M4", "M5"],
+  "repository": "maidiu/rawlsing",
+  "base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-spec-v5578-standalone",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SCR5578/feeders/S5578C/",
+  "authority": "NON_DISPOSITIVE_FEEDER",
+  "production_code_modified": false,
+  "broad_dag_reopened": false,
+  "final_scr5578_authority_claimed": false,
+  "final_m4_m5_authority_claimed": false,
+  "token": "S5578C_FEEDER_COMPLETE",
+  "authority_conflict": false,
+  "broad_topology_counterexample": false,
+  "principal_ruling": "Reference minimization may remove repeated payload copies but may not remove interpretation-critical positive, negative, authority, permission, source-universe, query/measure, temporal-limit, role/cardinality/order or producer-identity closure. Each indispensable dependency must be packaged immutable content or exactly immutable/content-addressed/hash-bound resolvable. Broken or ambiguous closure fails closed; V558 may verify/link/index but may not repair semantics.",
+  "binding_inputs": {
+    "parent_authorities": [
+      "24_DR_R03_SYNTHESIS_RETURN_ADJUDICATION_AND_STAGE_CLOSE_GATE.md",
+      "25_STAGE_CLOSE_READ_PARALLEL_COMMAND_AND_LAUNCH_AUTHORITY.md"
+    ],
+    "r03_synthesis": [
+      "RESULT.md:S06-S08,S11",
+      "FINAL_BROAD_DAG.md",
+      "WHOLE_MACHINE_CLOSURE_GATE.md",
+      "STAGE_CLOSE_READ_BURDEN_MATRIX.csv",
+      "STAGE_CLOSE_READ_CAMPAIGN.md"
+    ],
+    "ep5578_head": "f95f01f8112c646897058de809c98f5b3e8b429b",
+    "accepted_r03_feeders": {
+      "R03B": "26a1710548385339bdcb4cbf32244550867c5e10",
+      "R03C": "fe6a33cf529039cca4fb6837a3e5d5feb1ab7fc3",
+      "R03D": "1a1898b8338733641731c95719e840c3707bcf99",
+      "R03F": "9f661931d51e03f137601b27eeaecf77ab11ad2f"
+    },
+    "canonical_authorities": ["CAN-003", "CAN-004", "CAN-005"]
+  },
+  "closure_storage_classes": {
+    "MUST_PACKAGE_ADMINISTRATIVE_INTEGRITY": [
+      "V557 publication bundle/manifest identities and hashes",
+      "CAN-003 item governance records and collection manifests",
+      "transitive semantic closure/reference graph manifest and per-root digests",
+      "V558 repository bundle manifest and identity/content hashes",
+      "producer-preserving locator registry",
+      "logical index manifests",
+      "negative/fidelity manifest",
+      "producer-material-store manifest",
+      "exact policy/authority/compatibility bindings"
+    ],
+    "PACKAGE_OR_EXACT_IMMUTABLE_HASH_BOUND_RESOLVE": [
+      "V553/V554/V555/V556 producer semantic objects",
+      "producer rule/predicate/reference-contract authorities",
+      "negative/limit/noncomparability/valid-empty objects",
+      "StructuralEmpiricalAdmission",
+      "EmpiricalFact",
+      "EmpiricalQuerySpec",
+      "EmpiricalUniverse and risk-set/routing authority",
+      "measure/weight/design/estimand authority",
+      "support/uncertainty state",
+      "historical AuthoritySnapshot",
+      "operation-specific source relation/linkage/pooling/composition authority when claimed",
+      "exact C11 content/replay identity as required by the claimed replay level"
+    ],
+    "AUDIT_ONLY_NONSEMANTIC": [
+      "ReplayReceipt except where required to verify a governed replay claim",
+      "incidental provenance/audit references not declared interpretation-critical by producer/reference-contract authority"
+    ],
+    "MUST_NOT_APPEAR_IN_STRUCTURAL_REPOSITORY_SEMANTIC_GRAPH": [
+      "PositionedSubjectEmpiricalPossibilityField",
+      "ActorComparatorReceipt as structural prior",
+      "V3EmpiricalPossibilityInput"
+    ]
+  },
+  "required_invariants": [
+    "producer semantic IDs/hashes remain canonical; locator/index IDs are nonsemantic",
+    "every strong reference resolves exactly or fails missing/ambiguous",
+    "semantic edge role/requiredness/participant role/cardinality/multiplicity/order survive closure",
+    "genuinely n-ary producer meaning remains n-ary",
+    "producer semantic order survives when order_significant=true",
+    "negative/limit/noncomparability/missing/valid-empty states remain typed and scoped",
+    "packaging integrity failure is never rewritten as producer missing/negative/valid-empty state",
+    "resolver_allowed_uses subset V557_allowed_uses subset producer_allowed_uses",
+    "repository membership/index hit/global readiness never grants permission",
+    "reference accessibility does not inherit root runtime permission",
+    "source universes remain distinct absent exact operation-specific composition authority",
+    "provenance reachability never grants pooling/linkage/composition authority",
+    "PSEPF and reverse-lane objects are rejected from StructuralPriorRepository",
+    "raw producer directories, network, mutable latest/current/default, fuzzy/LLM/embedding repair are forbidden",
+    "ContextResolver never synthesizes missing V556 relation/topology from co-resolution",
+    "same exact repository/query/policy/bindings produce the same semantic result and replay hashes"
+  ],
+  "hostile_attack_dispositions": {
+    "broken_or_mutable_locator": "FAIL_CLOSED_REQUIRED",
+    "object_hash_mismatch": "FAIL_CLOSED_REQUIRED",
+    "authority_version_hash_mismatch": "FAIL_CLOSED_REQUIRED",
+    "raw_producer_directories_removed": "MUST_STILL_RESOLVE_FROM_BUNDLE_OR_EXACT_IMMUTABLE_LOCATORS",
+    "negative_state_omission": "FAIL_CLOSED_REQUIRED",
+    "role_order_cardinality_loss": "FAIL_CLOSED_REQUIRED",
+    "producer_re_id": "REJECT_REQUIRED",
+    "permission_widening": "FAIL_CLOSED_REQUIRED",
+    "provenance_as_composition": "REJECT_REQUIRED",
+    "psepf_smuggling": "REJECT_REQUIRED",
+    "latest_fuzzy_repair": "REJECT_REQUIRED",
+    "index_hit_as_authority": "REJECT_AND_DEREFERENCE_REVERIFY",
+    "co_resolution_as_v556_composition": "REJECT_REQUIRED",
+    "partial_atomic_bundle": "FAIL_CLOSED_REQUIRED"
+  },
+  "replay_claim_separation": {
+    "standalone_v558_structural_resolution": "May pass without embedding respondent microdata when exact structural producer semantics and interpretation-critical authority/provenance resolve immutably with raw producer stage directories absent.",
+    "full_offline_empirical_replay": "Requires exact historical C11 content/material or an immutable content-addressed resolver plus exact risk-set/measure/authority inputs; a content hash alone does not prove replay availability."
+  },
+  "proposed_parent_requirements": [
+    "Adopt a corrected reference-class registry that marks every exact producer family/dependency class as root/reference-only/audit-only/must-not-appear.",
+    "Require per-root typed transitive semantic closure digests covering edge role/cardinality/multiplicity/order and negative dependencies.",
+    "Require locator reversibility to exact producer tuple and hash verification before index-selected objects become candidates.",
+    "Require item-wise CAN-003 permission monotonicity through V558 resolver selection.",
+    "Require source-universe and operation-specific composition authorities to remain exact and noninferable from provenance.",
+    "Require explicit separation of structural standalone resolution claims from full offline empirical replay claims.",
+    "Run the hostile fixtures against final SCR553/554/555/556 producer contracts at M4 and peer-prior/PSEPF boundary at M5."
+  ],
+  "unresolved_parent_owned_items": [
+    "final exact producer-family/reference-class registry after SCR553/554/555/556 contracts are accepted",
+    "final V557 runtime-use governance schema and policy rule set",
+    "final V558 repository/index/ResolvedStructuralContext schema",
+    "physical V557/V558 co-packaging decision/equivalence proof",
+    "exact storage engine and file/layout mechanics",
+    "M4 and M5 final seam adjudication"
+  ],
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "REQUIRED_CLOSURE_MATRIX.csv",
+    "BROKEN_REFERENCE_COUNTEREXAMPLES.csv",
+    "HOSTILE_FIXTURES.md",
+    "PARENT_HANDOFF.md"
+  ]
+}
