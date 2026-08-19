@@ -1,0 +1,1 @@
+Launch each SCR command from exact base `baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d` using the branch and write-root assigned in parent authority 25. Each command may create its named subordinate research cells on descendant branches or exclusive subdirectories, but only the SCR command owns the final local stage ruling.
