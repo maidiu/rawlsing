@@ -1,0 +1,215 @@
+{
+  "court": "D06",
+  "title": "Final R1 Question-Relation Authority -> Current V550 Eligibility Court",
+  "repository": "maidiu/rawlsing",
+  "base_sha": "bf9a0434eb2096d5c4725cf483ec757fd319b6af",
+  "branch": "agent/vozhd-trii-d06-r1-v550-eligibility",
+  "verdict": {
+    "final_r1_jurisdiction": "question-relation and structural-semantic authority",
+    "universal_v550_workload_authority": false,
+    "r11_retest": "CURRENTLY_NOT_DEMONSTRATED",
+    "core_distinction": "semantic eligibility, synthesized use eligibility, and actual workload selection are separate current layers"
+  },
+  "r1_status_counts": {
+    "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 12611,
+    "GOVERNED_QSMV2_RELATION_AUTHORITY": 4397,
+    "GOVERNED_ADMINISTRATIVE_DISPOSITION": 966,
+    "EXCLUDED_INACTIVE_WAVE": 259,
+    "GOVERNED_MANUAL_RELATION_AUTHORITY": 173,
+    "FROZEN_ACCEPTED_GSS": 52,
+    "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 41,
+    "BLOCKED_SOURCE_AUTHORITY": 10,
+    "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN": 9
+  },
+  "requested_field_provenance": {
+    "allowed_as_demographic_predictor": "synthesized by ddm_v550_authority_contract.py from certified POSITION_COORDINATE role, semantic authority, structural completeness, review state; absent as direct R1 field",
+    "allowed_as_branch_splitter": "synthesized by authority contract; current recursive branching workload does not consult it",
+    "allowed_as_branch_position_signature": "synthesized high-risk gate, consumed by cloud/signature code",
+    "allowed_as_branch_relation_cosignature": "synthesized from V551-grade relation eligibility; R1 is relevant but not sufficient",
+    "allowed_as_attitude_cloud_anchor": "synthesized V551-grade relation gate",
+    "allowed_as_attitude_cloud_feature": "synthesized V551-grade relation gate",
+    "allowed_as_association_feature": "absent/not demonstrated in current audited production surface",
+    "allowed_as_v551_relation_evidence": "R1 directional resolution plus synthesized authority-contract provenance; bridge re-resolves R1",
+    "is_substantive": "response-option semantic authority/facet-ready response substrate, not Final R1 question-level workload authority",
+    "not_direct_evidence": "diagnostic artifact annotation in cloud/signature outputs, not an R1 permission",
+    "position_conditioning": "independent question-use/position-conditioning overlay; absent from R1",
+    "position_modifiers": "independent question-use/position-conditioning overlay; absent from R1",
+    "conditional_strata_weights": "independent question-use/position-conditioning overlay; absent from R1"
+  },
+  "blocked_behavior": {
+    "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": "fail-closed for R1 structural/relation use; not a universal V550 pre-compute exclusion",
+    "BLOCKED_SOURCE_AUTHORITY": "fail-closed for governed relation use; not demonstrated to suppress all empirical V550 compute",
+    "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN": "fail-closed for R1 relation resolution; upstream compute may still occur by family",
+    "EXCLUDED_INACTIVE_WAVE": "excluded by R1 resolver/active-wave authority, but R1 status is not the repository builder's universal workload predicate"
+  },
+  "scope": {
+    "r1_resolver_key": [
+      "source_family",
+      "canonical_wave",
+      "country_code_scope",
+      "var_code_or_question_id"
+    ],
+    "facet_ready_mapping_join": [
+      "source",
+      "var_code",
+      "compatible_raw_wave"
+    ],
+    "country_scope_universally_enforced": false,
+    "authority_status_universally_compute_gating": false,
+    "empirical_response_retrieval_country_specific": true
+  },
+  "fallbacks": {
+    "active_authority_path": "Final R1 default remains environment/config overrideable",
+    "legacy_residual": "exact 20-row Latinobarometro 1995 residual derived from older calibration registry and appended to mapping substrate",
+    "quc_preservation": "certified QUC relation evidence may be preserved on active-registry no-match under QUC_AUTHORITY_PRESERVED_ACTIVE_REGISTRY_NO_MATCH",
+    "shared_cache": "mapping cache key lacks R1 content hash/version; stale-in-process mapping is mechanically possible until reset",
+    "cloud_contract_missing_field_default": "permissive default=True helper surface when expected contract field is missing/blank"
+  },
+  "families": [
+    {
+      "compute_family": "answer_distribution",
+      "workload_input_selection": "question selected into V550 question list; response rows exist",
+      "qmeta_or_gate_field": "qmeta.allowed_as_response_distribution",
+      "gate_predicate_or_callsite": "build_distribution_tables executes first; rows are cleared after compute if gate false",
+      "r1_effect": "R1 influences semantic/structural qmeta only indirectly; no R1 status pre-compute gate",
+      "emission_behavior": "computed then emitted or suppressed",
+      "ruling": "semantic eligibility != workload authorization"
+    },
+    {
+      "compute_family": "country_answer_distribution",
+      "workload_input_selection": "same as answer_distribution",
+      "qmeta_or_gate_field": "qmeta.allowed_as_response_distribution",
+      "gate_predicate_or_callsite": "same post-compute suppression",
+      "r1_effect": "same",
+      "emission_behavior": "computed then emitted or suppressed",
+      "ruling": "semantic eligibility != workload authorization"
+    },
+    {
+      "compute_family": "position_distribution",
+      "workload_input_selection": "wave/country scope + respondent position fields",
+      "qmeta_or_gate_field": "none (question-independent)",
+      "gate_predicate_or_callsite": "wave-wide aggregator over fixed position fields",
+      "r1_effect": "none",
+      "emission_behavior": "emitted when scoped respondents exist",
+      "ruling": "R1 does not authorize this workload"
+    },
+    {
+      "compute_family": "position_indicator_summary",
+      "workload_input_selection": "question selected + answer-bearing rows + fixed INDICATOR_FIELDS",
+      "qmeta_or_gate_field": "no allowed_as_demographic_predictor check",
+      "gate_predicate_or_callsite": "unconditional call in wave-shard loop",
+      "r1_effect": "R1/QUC may derive predictor permission but algorithm ignores it",
+      "emission_behavior": "computed/emitted subject to data",
+      "ruling": "hard-coded workload enumeration"
+    },
+    {
+      "compute_family": "indicator_answer_matrix",
+      "workload_input_selection": "question selected + answer-bearing rows + fixed INDICATOR_FIELDS",
+      "qmeta_or_gate_field": "none",
+      "gate_predicate_or_callsite": "unconditional call",
+      "r1_effect": "none as workload gate",
+      "emission_behavior": "computed/emitted subject to data",
+      "ruling": "hard-coded workload enumeration"
+    },
+    {
+      "compute_family": "outlier_cohort_summary",
+      "workload_input_selection": "question selected + branch frame",
+      "qmeta_or_gate_field": "none",
+      "gate_predicate_or_callsite": "unconditional call",
+      "r1_effect": "none as workload gate",
+      "emission_behavior": "computed/emitted subject to data",
+      "ruling": "hard-coded workload enumeration"
+    },
+    {
+      "compute_family": "secondary_indicator_summary",
+      "workload_input_selection": "question selected + branch frame",
+      "qmeta_or_gate_field": "none",
+      "gate_predicate_or_callsite": "unconditional call",
+      "r1_effect": "none as workload gate",
+      "emission_behavior": "computed/emitted subject to data",
+      "ruling": "hard-coded workload enumeration"
+    },
+    {
+      "compute_family": "recursive_branch_nodes",
+      "workload_input_selection": "question selected + branch frame + fixed INDICATOR_FIELDS",
+      "qmeta_or_gate_field": "no allowed_as_branch_splitter check",
+      "gate_predicate_or_callsite": "unconditional recursive branch call",
+      "r1_effect": "R1/QUC may derive splitter permission but algorithm ignores it",
+      "emission_behavior": "computed/emitted subject to thresholds/data",
+      "ruling": "hard-coded recursive workload"
+    },
+    {
+      "compute_family": "branch_position_signature",
+      "workload_input_selection": "cloud tables operationally enabled + branch rows",
+      "qmeta_or_gate_field": "allowed_as_branch_position_signature",
+      "gate_predicate_or_callsite": "candidate feature must be POSITION_COORDINATE and contract gate passes",
+      "r1_effect": "R1 structural mapping can contribute to COMPLETE status; permission synthesized by QUC authority contract",
+      "emission_behavior": "emitted/skipped by semantic gate",
+      "ruling": "semantic gate plus separate cloud workload switch"
+    },
+    {
+      "compute_family": "branch_relation_co_signature",
+      "workload_input_selection": "cloud tables operationally enabled + branch rows",
+      "qmeta_or_gate_field": "allowed_as_branch_relation_cosignature",
+      "gate_predicate_or_callsite": "candidate relation feature + contract gate",
+      "r1_effect": "R1 directional relation authority is relevant, but gate synthesized with response/structural/review authorities",
+      "emission_behavior": "emitted/skipped by semantic gate",
+      "ruling": "not a blanket R1 workload mandate"
+    },
+    {
+      "compute_family": "question_response_attitude_cloud",
+      "workload_input_selection": "cloud tables operationally enabled + cross-question state",
+      "qmeta_or_gate_field": "allowed_as_attitude_cloud_anchor / allowed_as_attitude_cloud_feature",
+      "gate_predicate_or_callsite": "anchor and feature gates plus relation/current/structural constraints",
+      "r1_effect": "R1 can certify relation meaning; workload also controlled by should_emit_cloud_tables",
+      "emission_behavior": "emitted/skipped",
+      "ruling": "semantic permission and resource workload selection are separate"
+    },
+    {
+      "compute_family": "V551_bridge_emission",
+      "workload_input_selection": "existing V550 artifacts + bridge candidate",
+      "qmeta_or_gate_field": "allowed_as_v551_relation_evidence; current_directional_atom_eligible",
+      "gate_predicate_or_callsite": "bridge re-applies question relation authority, then fail-closed checks",
+      "r1_effect": "Final R1 resolver is direct/current here; QUC-preservation fallback exists on no-match",
+      "emission_behavior": "emitted/skipped",
+      "ruling": "R1 governs downstream admissibility after upstream compute"
+    },
+    {
+      "compute_family": "V550J_coexecution",
+      "workload_input_selection": "not located in current production surface at audited base",
+      "qmeta_or_gate_field": "not demonstrated",
+      "gate_predicate_or_callsite": "no current selector found",
+      "r1_effect": "no demonstrated R1 effect",
+      "emission_behavior": "unresolved/absent surface",
+      "ruling": "do not infer from V551J or cloud machinery"
+    }
+  ],
+  "v550j": {
+    "current_surface_located": false,
+    "r1_effect": "NOT_DEMONSTRATED",
+    "search_terms": [
+      "V550J",
+      "550J",
+      "co-execution"
+    ],
+    "rule": "do not infer from V551J, bridge, or cloud machinery"
+  },
+  "dependencies_opened": {
+    "D07": [
+      "country_code_scope enforcement at qsm grain",
+      "facet-ready cross-scope mapping test",
+      "cache staleness test"
+    ],
+    "D10": [
+      "authority for fixed 12-field workload",
+      "compute spent on later-inadmissible questions",
+      "family-granular required-vs-permitted computation"
+    ],
+    "D11": [
+      "downstream bypasses of bridge re-resolution",
+      "QUC no-match preservation authority",
+      "joint/co-execution surface identification",
+      "reconstructibility versus artifact preservation"
+    ]
+  }
+}
