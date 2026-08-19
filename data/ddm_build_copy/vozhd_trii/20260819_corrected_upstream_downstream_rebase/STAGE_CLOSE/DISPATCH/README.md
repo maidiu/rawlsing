@@ -38,6 +38,34 @@ The user should be able to locate the correct open conversation from `OLD_ID` ev
 
 The permanent chat ID does not change. What changes across assignments is the submitting agent/unit ID.
 
+## Legacy-chat bootstrap law
+
+The permanent-mailbox system was introduced after the current worker chats already existed. Therefore an existing chat that has never successfully consumed a mailbox assignment cannot discover the dispatch branch from its old semantic folder by the bare phrase `check your next assignment` alone.
+
+For every permanent chat, dispatch state carries a `mailbox_bootstrap_state`.
+
+Allowed values:
+
+- `REQUIRED` — chat has not yet successfully consumed an assignment from the central dispatch mailbox;
+- `ACKNOWLEDGED` — chat has successfully located and consumed its mailbox assignment at least once.
+
+When `mailbox_bootstrap_state=REQUIRED`, HQ MUST give the user a one-time bridge message that explicitly names:
+
+1. the dispatch branch `agent/vozhd-trii-stage-close-dispatch`;
+2. the permanent `chat_id`;
+3. the exact mailbox path `.../DISPATCH/MAILBOXES/<chat_id>/CURRENT.json`;
+4. the exact `assignment_id` currently issued.
+
+Canonical first-use message:
+
+`Your assignment system has migrated. Read your permanent mailbox on branch agent/vozhd-trii-stage-close-dispatch at data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/DISPATCH/MAILBOXES/<CHAT_ID>/CURRENT.json, then read the exact assignment it points to and execute it. Do not look for a new instruction file in your old semantic folder.`
+
+A bare `Check your next assignment.` is valid ONLY after that chat's `mailbox_bootstrap_state=ACKNOWLEDGED`.
+
+HQ marks a chat `ACKNOWLEDGED` only after repository evidence shows that the worker actually consumed the central assignment and began or returned work on the named mission branch. Merely sending the bridge message is not acknowledgement.
+
+No bootstrap breadcrumb may be written to an old semantic branch. Bootstrap is user-to-chat routing plus central dispatch state only.
+
 ## Permanent mailbox law
 
 Each open chat has one permanent mailbox under `DISPATCH/MAILBOXES/<chat_id>/`.
