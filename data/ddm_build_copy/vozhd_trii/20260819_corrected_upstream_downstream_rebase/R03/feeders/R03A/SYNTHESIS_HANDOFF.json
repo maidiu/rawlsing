@@ -1,0 +1,85 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "feeder": "R03A",
+  "title": "TEMPORAL ROUTING / OVER-BYPASS / DUPLICATE-PATH COURT",
+  "authority": "NON_DISPOSITIVE_HOSTILE_FEEDER",
+  "handoff_to": "DR-R03-SYNTHESIS",
+  "repository": "maidiu/rawlsing",
+  "launch_base_sha": "138ded52ae6c7d26e9a3671e39d779965b5dc6f4",
+  "branch": "agent/vozhd-trii-dr-r03a-temporal-routing-audit",
+  "output_dir": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/R03/feeders/R03A/",
+  "final_result": "R02_TEMPORAL_PARTITION_SURVIVES__SOURCE_RELATION_AND_NEGATIVE_AUTHORITY_QUALIFICATION_REQUIRED__H04_EXACT_EQUIVALENCE_PROOF_BLOCKED_PENDING_V554_CLOSE_READ",
+  "holding_recommendations": [
+    {
+      "holding": "R02-H01",
+      "recommendation": "ACCEPT_WITH_QUALIFICATION",
+      "reason": "Hostile hidden-temporal,missing-rule,and noncomparability cases preserve the use-specific V553 boundary. Qualification: V553 cannot create source-universe equivalence; required source relation/applicability/comparability authority must be positive or the result fails closed/preserves plurality."
+    },
+    {
+      "holding": "R02-H02",
+      "recommendation": "ACCEPT_WITH_QUALIFICATION",
+      "reason": "Removing V553 from a temporally complete,V554-rule-eligible use loses no V553 semantics and prevents starvation/no-op transit. Direct eligibility remains explicit and fail-closed."
+    },
+    {
+      "holding": "R02-H04",
+      "recommendation": "MISSING_AUTHORITY_BLOCKS_PROOF",
+      "reason": "The no-double-entry principle survives conceptually, but the exact machine-readable semantic-equivalence key and precedence serialization are explicitly deferred. Alias/reissued admission lineages cannot be assumed deterministically deduplicated."
+    }
+  ],
+  "must_carry_into_synthesis": [
+    "V553 routing is triggered by new consumer-required temporal/comparability semantics, not timestamps, historical-source membership, or artifact presence.",
+    "Positive cross-source temporal comparison/harmonization requires positively governed source-universe relation/applicability/comparability authority; same year or labels are insufficient.",
+    "A temporally complete,V554-rule-eligible admission must have a direct V554 path or the machine starves a lawful use / creates no-op transit.",
+    "Unknown temporal completeness, missing V553 temporal authority, missing V554 direct eligibility, or unresolved source relation must produce no guessed positive route.",
+    "For one exact V554 proposition/use/rule, physical availability of direct and temporal paths never authorizes union/latest-win/score-win/order selection.",
+    "Until canonical duplicate equivalence is frozen, EQ=UNKNOWN must fail closed."
+  ],
+  "preserved_unknowns": [
+    {
+      "id": "R03A-U01",
+      "text": "EXACT_MACHINE_READABLE_V554_DUPLICATE_EQUIVALENCE_KEY_AND_PRECEDENCE_SERIALIZATION_FOR_DIRECT_ADMISSION_VS_V553_TEMPORAL_BASIS_NOT_FROZEN_IN_BINDING_R02_AUTHORITY",
+      "blocking_effect": "Blocks deterministic proof of R02-H04 for alias/reissued admission-lineage cases",
+      "owner": "V554 stage close-read"
+    },
+    {
+      "id": "R03A-U02",
+      "text": "Exact corrected-admission temporal-class mapping to V553 TEMPORAL_KEY/TEMPORAL_OBSERVATION/TEMPORAL_RELATION/TEMPORAL_LIMIT families, including preservation of upstream source-relation unknowns",
+      "blocking_effect": "Does not falsify broad H01 but must be frozen before executable V553 contract",
+      "owner": "V553 stage close-read"
+    },
+    {
+      "id": "R03A-U03",
+      "text": "Exact V554 rule signature fields for temporal demand, direct-basis eligibility, source/time applicability prerequisites, negative precedence, and semantic proposition/use identity",
+      "blocking_effect": "Does not falsify broad H02 but must be frozen before deterministic routing/dedup implementation",
+      "owner": "V554 stage close-read"
+    }
+  ],
+  "finite_routing_law_reference": {
+    "artifact": "RESULT.md",
+    "section": "Required temporal-routing truth table / Non-dispositive finite routing predicate",
+    "summary": "Positive admission -> temporal block check -> V553 only if new V553 meaning plus positive authority -> otherwise direct V554 only if time complete plus explicit direct eligibility -> else no positive route. Duplicate EQ UNKNOWN fails closed."
+  },
+  "counterexample_status": {
+    "core_partition_falsified": false,
+    "direct_v554_starvation_found": false,
+    "hidden_temporal_over_bypass_prevented_by_r02_predicate": true,
+    "source_relation_qualification_required": true,
+    "duplicate_alias_equivalence_gap_found": true
+  },
+  "non_authorizations": [
+    "No production implementation",
+    "No D15 upstream reopening",
+    "No stage collapse",
+    "No artifact retirement",
+    "No final DAG selection",
+    "No whole-machine implementation campaign authorization"
+  ],
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "ATTACK_LEDGER.csv",
+    "COUNTEREXAMPLE_CASES.csv",
+    "R02_HOLDING_QUALIFICATION_MATRIX.csv",
+    "SYNTHESIS_HANDOFF.json"
+  ]
+}
