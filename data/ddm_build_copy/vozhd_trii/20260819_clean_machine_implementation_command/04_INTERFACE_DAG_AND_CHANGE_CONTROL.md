@@ -110,6 +110,8 @@ When a shared contract changes, G6 marks all affected workers `STALE_CONTRACT`.
 
 A stale worker may not cross the changed interface until it acknowledges the new version and either rebases or proves its current work is version-compatible.
 
+The stronger operational requirements in `18_TWO_PERSON_CONTROL_WRITE_LEASE_AND_STALE_WORKER_PROTOCOL.md` are binding, including dependency epochs, dependency-refresh receipts and transitive stale-worker invalidation.
+
 ## 8. No merge-by-convention
 
 If two workers independently created semantically similar fields or types, Integration Command may not reconcile them by naming convention.
@@ -153,3 +155,17 @@ Before every integration wave, automated/static checks should detect at least:
 - direct empirical/structural -> V2 persona paths;
 - unauthorized source-universe composition;
 - stage-number-only transit with no unique transform/governance responsibility.
+
+## 11. Shared-write control
+
+Every shared canonical registry/schema/interface/migration resource has one active write lease at a time under `18_TWO_PERSON_CONTROL_WRITE_LEASE_AND_STALE_WORKER_PROTOCOL.md`.
+
+A clean Git merge is not proof that parallel edits were lawful.
+
+For C1/C2 shared-contract legislation, owning Staff semantic approval and G6 synchronization approval are both mandatory. C2 retains all wider approvals above.
+
+## 12. Cross-worker conformance
+
+Every cross-worker/cross-domain interface must pass the producer/consumer/seam triad in `19_CROSS_WORKER_CONTRACT_CONFORMANCE_PROTOCOL.md` against one exact contract hash.
+
+No interface is closed merely because both sides independently pass local unit tests.
