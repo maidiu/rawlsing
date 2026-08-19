@@ -1,0 +1,261 @@
+{
+  "contract_id": "M3_V555_V556_HIGHER_ORDER_STRUCTURAL_EXACT_SEAM_CONTRACT",
+  "contract_version": "1.0.0",
+  "authority_class": "DISPOSITIVE_M3_SEAM_CHECKSUM",
+  "result_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED",
+  "repository": "maidiu/rawlsing",
+  "commanded_base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-seam-m3-higher-order-structural",
+  "production_code_modified": false,
+  "d15_reopened": false,
+  "broad_topology_changed": false,
+  "source_or_artifact_retirement_authorized": false,
+  "governing_inputs": {
+    "scr555": {
+      "head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+      "contract_blob": "8926500b7af442c0e07483442047aaad6cdeab63",
+      "contract": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT@stage-close-r03-1"
+    },
+    "m2": {
+      "semantic_package_head": "92128619122886d0ced877a29b42fdb453765246",
+      "result_token": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+      "result_blob": "15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+      "seam_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c"
+    },
+    "scr556": {
+      "head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+      "contract_blob": "f4e8146885b1145b116b173d2d4a148e3d55db4a",
+      "contract": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT@scr556.v1"
+    },
+    "preflight": {
+      "result_token": "M3_PREFLIGHT_COMPLETE",
+      "result_blob": "45db36a431391a260d9cf031460f0557af218812",
+      "authority": "NON_DISPOSITIVE_PREFLIGHT_ONLY"
+    }
+  },
+  "jurisdiction": {
+    "purpose": "Bind accepted V555 producer identity/reference semantics into accepted SCR556 higher-order participant seam without creating or changing stage-owned semantics.",
+    "may_create_new_v555_semantics": false,
+    "may_create_new_v556_semantics": false,
+    "may_change_broad_dag": false,
+    "may_modify_production_code": false
+  },
+  "canonical_v555_participant_identity": {
+    "scr556_symbol": "SCR555_ACCEPTED_CANONICAL_ROUTE_IDENTITY_REF",
+    "producer_owner": "V555",
+    "semantic_identity_kind": "ORDERED_TUPLE",
+    "tuple_order": [
+      "EXACT_V554_F1_REF",
+      "route_rule_id@route_rule_version",
+      "route_shape_id@route_shape_version",
+      "channel_structural_role_id",
+      "EXACT_STRUCTURAL_CHANNEL_REF",
+      "receiving_constraint_kind",
+      "EXACT_TARGET_RECEIVING_POSITION_REF"
+    ],
+    "m2_field_1_binding": {
+      "field": "EXACT_V554_F1_REF",
+      "resolves_to": "accepted canonical SCR554 F1_id",
+      "m2_seam_contract_blob": "cd974b514da5811feab5f7407b64e35cbde0a72c"
+    },
+    "same_exact_tuple_same_route": true,
+    "different_exact_tuple_different_route": true,
+    "different_f1_same_visible_downstream_fields_must_remain_different": true,
+    "deterministic_serialization_required": true,
+    "exact_verifiable_address_allowed": true,
+    "address_rule": "A V556 participant locator/address is nonsemantic lookup machinery and is lawful only when deterministic immutable dereference reproduces and verifies the exact producer-owned seven-field V555 route identity and required validation closure.",
+    "hash_or_locator_equality_excuses_tuple_mismatch": false,
+    "b1_is_eighth_route_identity_field": false,
+    "v554_f2_is_route_identity_field": false,
+    "v556_may_mint_alias_normalize_reidentify_or_reconstruct": false
+  },
+  "participant_binding_contract": {
+    "binding_fields": [
+      "v555_route_identity_ref",
+      "role",
+      "ordinal_or_null",
+      "multiplicity_index"
+    ],
+    "participant_occurrence_cardinality": "2..n as constrained by exact V556 rule authority",
+    "positive_distinct_route_floor": 2,
+    "role_owner": "EXACT_V556_RULE_AUTHORITY",
+    "participant_order_owner": "EXACT_V556_RULE_AUTHORITY",
+    "cardinality_owner": "EXACT_V556_RULE_AUTHORITY",
+    "multiplicity_owner": "EXACT_V556_RULE_AUTHORITY",
+    "same_route_reuse_owner": "EXACT_V556_RULE_AUTHORITY",
+    "same_route_reuse_default": "FORBIDDEN",
+    "same_route_reuse_if_explicitly_permitted": "Each occurrence is separately bound by V556 role/order/multiplicity metadata while retaining one unchanged producer-owned V555 route identity.",
+    "same_route_reuse_creates_new_v555_identity": false,
+    "same_route_reuse_alone_satisfies_distinct_route_floor": false,
+    "unordered_rule_canonicalization": "Canonicalize by exact upstream V555 route-identity bytes plus exact V556 role/multiplicity material required by the rule; never file/input/storage/resolver order.",
+    "ordered_rule_policy": "The exact V556 rule-declared participant order/ordinal is semantic and must replay identically."
+  },
+  "route_order_separation": {
+    "v555_internal_route_order": [
+      "SOURCE",
+      "MEDIATION_LOCUS",
+      "RECEIVER"
+    ],
+    "v556_participant_order_semantics": "Order among whole V555 route participants only when exact V556 rule declares order semantic.",
+    "v556_may_reorder_v555_internal_route": false,
+    "v555_internal_order_may_substitute_for_v556_participant_order": false
+  },
+  "v555_route_state_eligibility": {
+    "producer_owner": "V555",
+    "only_positive_route_bearing_state": "ROUTE_CANDIDATE_AUTHORIZED",
+    "positive_state_is_necessary_not_sufficient_for_supported_v556": true,
+    "nonpositive_or_nonroute_states": [
+      "VALID_EMPTY",
+      "V554_STRUCTURAL_USE_DENIED",
+      "NO_GOVERNED_ROUTE_AUTHORITY",
+      "ROUTE_BLOCKED_BY_GOVERNED_RULE",
+      "ROUTE_STATIC_AUTHORITY_MISSING",
+      "ROUTE_IDENTITY_UNRESOLVED",
+      "CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE"
+    ],
+    "deferred_inherited_context": "DEFERRED_RUNTIME_BINDING_REFERENCED_ONLY remains V554-owned exact-reference-only F2 context and is neither a positive V555 route state nor V556-authored satisfaction.",
+    "v556_may_reown_rename_or_promote_v555_state": false,
+    "route_candidate_authorized_implies_supported_v556": false,
+    "route_candidate_authorized_implies_v557_permission": false
+  },
+  "participant_reference_validation": {
+    "validation_is_producer_identity_verification_not_semantic_reownership": true,
+    "must_be_exactly_available_or_deterministically_dereferenceable": [
+      "EXACT_V554_F1_REF with accepted M2 resolution",
+      "EXACT_F1_SOURCE_STRUCTURAL_POSITION_REF when required",
+      "EXACT_F1_STRUCTURAL_CHANNEL_REF",
+      "EXACT_F1_RECEIVING_STRUCTURAL_POSITION_REF",
+      "route_rule_id@route_rule_version",
+      "route_shape_id@route_shape_version",
+      "channel_structural_role_id",
+      "receiving_constraint_kind",
+      "canonical ordered seven-field V555 route identity tuple",
+      "typed V555 route decision state",
+      "exact V555 owning authority identity/version and immutable seal/reference",
+      "accepted M2/SCR555 replay/reference closure"
+    ],
+    "fail_closed_on": [
+      "missing interpretation-critical dependency",
+      "mutable locator",
+      "ambiguous reference",
+      "unresolvable reference",
+      "hash mismatch",
+      "version conflict",
+      "latest substitution",
+      "default substitution",
+      "fuzzy matching",
+      "label repair"
+    ],
+    "unresolvable_route_reference_outcome": "UNRESOLVABLE_PARTICIPANT",
+    "noneligible_but_resolved_route_state": "NO_POSITIVE_V556_PARTICIPATION__PRESERVE_UPSTREAM_STATE__APPLY_ONLY_EXISTING_SCR556_PARTICIPANT_VALIDATION_LAW",
+    "semantic_reconstruction_from_reference_ancestry": false
+  },
+  "higher_order_semantic_ceiling": {
+    "v556_families": [
+      "V556_INTERACTION_RELATION",
+      "V556_TOPOLOGY",
+      "V556_ATTRACTOR_PREREQUISITE"
+    ],
+    "higher_order_only": true,
+    "additional_atomic_hop_requires_new_v555_route": true,
+    "single_route_forwarding_wrapper_allowed": false,
+    "v556_may_create_actor_realization_semantics": false
+  },
+  "source_composition_contract": {
+    "default": "NONE_BY_DEFAULT",
+    "positive_cross_source_requires_exact_operation_specific_authority": true,
+    "required_authority_material": [
+      "exact authority ID/version/content hash",
+      "exact operation or rule ID",
+      "exact covered source-universe references",
+      "exact covered participant bindings",
+      "exact compatibility/composition scope"
+    ],
+    "never_sufficient_alone": [
+      "shared source label",
+      "shared endpoint or receiver",
+      "shared channel",
+      "shared time",
+      "shared geography",
+      "shared stratum",
+      "storage adjacency",
+      "co-resolution",
+      "common labels",
+      "transitive provenance reachability"
+    ],
+    "provenance_reachability_is_composition_authority": false
+  },
+  "v556_typed_outcomes": {
+    "SUPPORTED": "Exact V556 rule evaluates positively over admissible exact V555 participant bindings under every required authority.",
+    "VALID_EMPTY": "Exact V556 rule lawfully evaluates to empty/none; distinct from missing authority, missing output, or denial.",
+    "DENIED": "Exact governing authority denies the proposed higher-order semantic.",
+    "NONCOMPARABLE": "Required source/participant compatibility is explicitly noncomparable.",
+    "UNKNOWN_AUTHORITY": "Required rule/composition authority is missing, unresolved, out of scope, mutable-latest, not hash-bound, or otherwise nonassertable under SCR556 law.",
+    "CONFLICTING_AUTHORITY": "Applicable exact authorities conflict and no exact precedence resolves them.",
+    "INVALID_PARTICIPANT_SET": "Role/order/cardinality/multiplicity/same-route or resolved participant-eligibility constraints fail.",
+    "UNRESOLVABLE_PARTICIPANT": "An exact producer-owned V555 participant reference cannot be deterministically resolved and validated without reconstruction."
+  },
+  "typed_state_noncollapse": {
+    "missing_positive_output_has_no_implicit_semantics": true,
+    "valid_empty_is_not_denied": true,
+    "denied_is_not_noncomparable": true,
+    "unknown_is_not_conflicting": true,
+    "invalid_participant_is_not_unresolvable_participant": true,
+    "m3_adds_no_new_state_precedence": true
+  },
+  "noninference_and_bypass_prohibitions": [
+    "StructuralEmpiricalAdmission -> V556 participant",
+    "V553 object -> V556 participant",
+    "V554 F1/B1 or basis object alone -> V556 participant",
+    "legacy V555/V556 seed row -> canonical V555 participant",
+    "run_id or mediation slot -> canonical V555 participant",
+    "endpoint/channel/source labels -> canonical V555 participant",
+    "repository locator without exact producer dereference -> canonical V555 participant",
+    "shared endpoint/time/geography/stratum/source/storage/provenance -> V556 relation",
+    "successful provenance closure -> composition permission",
+    "V556 participant binding -> replacement V555 base-edge identity"
+  ],
+  "no_filler_and_publication": {
+    "when_no_exact_governed_v556_higher_order_rule_required": "ZERO_V556_OBJECTS",
+    "direct_v555_to_v557_path_preserved": true,
+    "direct_path_condition": "Subject to accepted V555 producer authority/permission ceiling and independent V557 publication/use governance.",
+    "v556_required_only_for_forwarding": false,
+    "v556_can_widen_v555_or_v557_permission": false
+  },
+  "replay_contract": {
+    "m3_validation_root": [
+      "accepted M2 semantic result and seam contract blobs",
+      "accepted SCR555 exact contract blob",
+      "accepted SCR556 exact contract blob"
+    ],
+    "v556_semantic_identity_material_preserved_from_scr556": [
+      "contract_version",
+      "semantic_family",
+      "exact V556 rule authority references and hashes",
+      "exact participant binding sequence or rule-canonical multiset",
+      "exact composition authority references and hashes when required",
+      "semantic payload",
+      "typed outcome state"
+    ],
+    "m2_pin_is_seam_validation_authority_not_new_v556_semantic_payload": true,
+    "identical_immutable_inputs_replay_to_same_identity_and_state": true,
+    "unordered_input_permutation_changes_identity_or_state": false,
+    "ordered_participant_swap_may_change_identity_or_validity_under_rule": true,
+    "latest_fuzzy_default_repair": "FORBIDDEN"
+  },
+  "freshness_guard": {
+    "m1_checked": true,
+    "m1_token": "M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED",
+    "m1_scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "m2_scr554_head": "b5d745ac70c833324c8be0addf6c08ad72372263",
+    "m2_stale_at_m3_close": false,
+    "transitive_rule": "If later higher authority makes M2 stale by materially changing accepted SCR554 identity/basis/replay law, M3 is stale until M2 and then M3 are rechecked."
+  },
+  "closure_effect": {
+    "scr556_final_status": "EXACT_CONTRACT_CLOSED",
+    "scr556_result_token_after_m3": "SCR556_EXACT_CONTRACT_CLOSED",
+    "m3_result_token": "M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED",
+    "new_stage_semantics_created": false,
+    "broad_dag_changed": false
+  }
+}
