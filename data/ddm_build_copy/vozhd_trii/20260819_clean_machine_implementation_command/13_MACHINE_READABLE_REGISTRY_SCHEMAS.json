@@ -1,0 +1,58 @@
+{
+  "schema": "rawlsing.clean_machine.command_registries.v1",
+  "registries": {
+    "AUTHORITY_REGISTRY": {
+      "owner": "G1",
+      "required": ["authority_id", "version", "content_hash", "jurisdiction", "precedence", "status", "source_path", "negative_authority", "supersedes", "consumers"]
+    },
+    "SUBSTRATE_REGISTRY": {
+      "owner": "G2",
+      "required": ["contract_id", "version", "content_hash", "source_universes", "physical_schema", "grains", "identity_scopes", "absence_states", "routing_risk_set_contract", "weight_measure_contract", "time_contract", "replay_contract"]
+    },
+    "OBJECT_REGISTRY": {
+      "owner": "G3",
+      "required": ["object_family", "version", "semantic_owner", "grain", "identity_tuple", "hash_domain", "required_fields", "optional_fields", "forbidden_fields", "state_vocabulary", "reference_contract", "immutability", "compatibility_rule"]
+    },
+    "REFERENCE_REGISTRY": {
+      "owner": "G3",
+      "required": ["reference_kind", "producer_family", "consumer_family", "semantic_role", "cardinality", "order_role", "direct_or_transitive", "required_for_interpretation", "hash_binding", "failure_behavior"]
+    },
+    "DAG_EDGE_REGISTRY": {
+      "owner": "G4",
+      "required": ["edge_id", "producer", "producer_object", "consumer", "edge_class", "condition", "unique_consumer_semantics", "authority", "negative_authority", "status"]
+    },
+    "INTERFACE_REGISTRY": {
+      "owner": "G4",
+      "required": ["interface_id", "version", "content_hash", "producer", "consumer", "input_output_family", "schema_ref", "authority_refs", "legal_states", "forbidden_inputs", "fixture_refs", "compatibility_rule"]
+    },
+    "FIXTURE_REGISTRY": {
+      "owner": "G5",
+      "required": ["fixture_id", "version", "content_hash", "substrate_contract", "authority_targets", "cases", "expected_states", "negative_cases", "replay_expectations"]
+    },
+    "CHANGE_REQUEST_REGISTRY": {
+      "owner": "G6",
+      "required": ["request_id", "change_class", "requesting_unit", "owner", "current_contract", "proposed_contract", "semantic_reason", "impacted_units", "migration_effect", "replay_effect", "fixture_effect", "status", "adjudication"]
+    },
+    "LEGACY_SALVAGE_REGISTRY": {
+      "owner": "Campaign Vozhd delegated to domain Vozhd + Inspectorate review",
+      "required": ["legacy_path", "blob_or_commit", "classification", "retained_semantics", "rejected_semantics", "governing_authority", "hardening", "tests", "clean_owner", "retirement_condition"]
+    },
+    "INTEGRATION_LEDGER": {
+      "owner": "Integration Command",
+      "required": ["tranche_id", "worker_unit", "worker_head_sha", "domain_acceptance", "inspectorate_disposition", "contract_versions", "semantic_diff", "test_receipts", "pre_integration_sha", "post_integration_sha", "status"]
+    },
+    "VOZHD_AUDIT_LEDGER": {
+      "owner": "Each Vozhd; G6 aggregates",
+      "required": ["audit_id", "vozhd", "units_audited", "integration_sha", "substrate_version", "contract_versions", "sibling_seams", "findings", "required_hardening", "stale_units", "result"]
+    }
+  },
+  "global_invariants": [
+    "Registry entries use immutable version/hash bindings; floating latest is forbidden for worker execution.",
+    "Every canonical object family has one semantic owner.",
+    "Every legal cross-unit semantic edge exists in DAG_EDGE_REGISTRY.",
+    "Every shared interface exists in INTERFACE_REGISTRY before both sides integrate.",
+    "Every C1-C3 change is represented in CHANGE_REQUEST_REGISTRY.",
+    "Every integrated legacy reuse has a LEGACY_SALVAGE_REGISTRY entry.",
+    "Every accepted integration tranche is reconstructible from INTEGRATION_LEDGER."
+  ]
+}
