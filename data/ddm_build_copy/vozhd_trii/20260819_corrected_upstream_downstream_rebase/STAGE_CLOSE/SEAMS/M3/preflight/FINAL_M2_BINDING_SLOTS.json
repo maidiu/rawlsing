@@ -1,0 +1,38 @@
+{
+  "artifact": "FINAL_M2_BINDING_SLOTS",
+  "unit": "M3_PREFLIGHT",
+  "authority": "NON_DISPOSITIVE_PREFLIGHT_ONLY",
+  "required_precondition": "M2_ACCEPTED_BY_PARENT_AUTHORITY",
+  "final_m3_acceptance_from_this_artifact": false,
+  "slot_count": 2,
+  "slots": [
+    {
+      "slot_id": "M3-FM2-01",
+      "name": "accepted_m2_authority_pin",
+      "must_import_verbatim": [
+        "parent-accepted M2 result head SHA",
+        "parent-accepted M2 result token",
+        "immutable M2 seam/binding-receipt reference or content hash that proves SCR555 is closed against the accepted SCR554 binding"
+      ],
+      "purpose": "Prove final M3 consumes the accepted M2 adjudication rather than branch existence, a worker-local claim, mutable latest state, or a stale receipt.",
+      "substitution_or_inference": "FORBIDDEN"
+    },
+    {
+      "slot_id": "M3-FM2-02",
+      "name": "m2_bound_literal_v555_route_reference",
+      "must_import_verbatim": [
+        "the accepted M2-bound resolution of SCR555 EXACT_V554_F1_REF used as element 1 of the already-frozen seven-field canonical V555 route identity",
+        "the exact immutable V555 route tuple/reference/address validation material sufficient to prove that each SCR556 v555_route_identity_ref resolves to that M2-bound canonical V555 route identity without reconstruction or re-ID"
+      ],
+      "purpose": "Bind SCR556 participant references to the final M2-bound V555 route identity while leaving all V555 route semantics producer-owned.",
+      "substitution_or_inference": "FORBIDDEN",
+      "must_not_be_imported_as_v556_participant_semantics": [
+        "SCR554 B1 as an eighth V555 route-identity member",
+        "V554 F2 payload or runtime satisfaction",
+        "V554 duplicate-equivalence or precedence machinery",
+        "a V556-generated route alias/hash/normalization",
+        "storage/run/slot/channel/endpoint labels used to reconstruct a missing route"
+      ]
+    }
+  ]
+}

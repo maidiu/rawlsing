@@ -1,0 +1,116 @@
+{
+  "campaign": "VOZHD_TRII_CORRECTED_UPSTREAM_DOWNSTREAM_REBASE",
+  "unit": "M3_PREFLIGHT",
+  "worker_class": "SEAM_PREFLIGHT_SPECIALIST",
+  "authority": "NON_DISPOSITIVE_PREFLIGHT_ONLY",
+  "repository": "maidiu/rawlsing",
+  "exact_semantic_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "branch": "agent/vozhd-trii-dr-r03-seam-m3-preflight",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/SEAMS/M3/preflight/",
+  "result_token": "M3_PREFLIGHT_COMPLETE",
+  "final_m3_acceptance_issued": false,
+  "production_code_modified": false,
+  "d15_reopened": false,
+  "r03_broad_topology_reopened": false,
+  "source_or_artifact_retirement_authorized": false,
+  "conflict_found": false,
+  "pinned_inputs": {
+    "scr555_head": "49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+    "scr555_contract_id": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT@stage-close-r03-1",
+    "scr555_contract_blob_sha": "8926500b7af442c0e07483442047aaad6cdeab63",
+    "scr556_head": "9cfefc722f51cfab64952f004afef67fe65eb4a5",
+    "scr556_contract_id": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT@scr556.v1",
+    "scr556_contract_blob_sha": "f4e8146885b1145b116b173d2d4a148e3d55db4a",
+    "parent_24_ref": "24_DR_R03_SYNTHESIS_RETURN_ADJUDICATION_AND_STAGE_CLOSE_GATE.md@baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+    "parent_25_ref": "25_STAGE_CLOSE_READ_PARALLEL_COMMAND_AND_LAUNCH_AUTHORITY.md@baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+    "r03_m3_authority": "M3_HIGHER_ORDER_STRUCTURAL",
+    "whole_machine_gate": "R03/SYNTHESIS/WHOLE_MACHINE_CLOSURE_GATE.md"
+  },
+  "preflight_status": {
+    "all_non_m2_compatibility_proofs_complete": true,
+    "final_m2_bound_literal_v555_route_reference_imported": false,
+    "final_m3_still_requires_parent_accepted_m2": true,
+    "previous_scr556_typed_state_binding_gap": "CLOSED_BY_PREFLIGHT",
+    "previous_scr556_reference_validation_gap": "CLOSED_BY_PREFLIGHT_EXPECTATION",
+    "remaining_dependency_class": "M2_BOUND_LITERAL_V555_ROUTE_REFERENCE_ONLY"
+  },
+  "compatibility_holdings": [
+    "SCR555 canonical route identity remains the sole V556 base-edge/participant identity; V556 may reference it but may not mint, alias, normalize, reconstruct, or semantically replace it.",
+    "SCR555 internal route order SOURCE -> MEDIATION_LOCUS -> RECEIVER is immutable route semantics; SCR556 participant role/order is a separate higher-order relation layer and cannot reorder or reinterpret the route tuple.",
+    "Every positive V556 evaluation requires 2..n exact V555 route participant occurrences and at least two distinct canonical V555 route identities; same-route multiplicity never satisfies the distinct-route floor.",
+    "SCR556 participant roles, ordering policy, cardinality bounds, multiplicity, and same-route reuse are controlled only by exact V556 rule authority.",
+    "Cross-source composition is NONE_BY_DEFAULT and requires operation-specific exact positive compatibility/composition authority; provenance or co-location never supplies that authority.",
+    "Shared endpoint/time/geography/stratum/storage adjacency/co-resolution/provenance, and also shared source/channel/receiver labels, do not imply a V556 relation.",
+    "When no exact governed higher-order V556 meaning is required, zero V556 objects are created and the SCR555 direct V555 -> V557 publication path remains available subject to V555 producer permission and independent V557 admission.",
+    "Only V555 ROUTE_CANDIDATE_AUTHORIZED is route-state eligible to proceed to SCR556 participant validation; all other V555 typed states remain V555-owned exact referenced states and cannot be renamed into positive V556 participation.",
+    "V556 may issue its own participant-validation or higher-order typed outcome while preserving the exact upstream V555 state/reference; that does not transfer route-state ownership.",
+    "SCR555 exact reference locality and fail-closed rules are compatible with SCR556 UNRESOLVABLE_PARTICIPANT behavior; route reconstruction from labels, run IDs, slots, storage order, or provenance is forbidden."
+  ],
+  "typed_route_state_eligibility": {
+    "owner": "V555",
+    "positive_route_bearing_state": "ROUTE_CANDIDATE_AUTHORIZED",
+    "positive_state_is_necessary_not_sufficient": true,
+    "additional_gates": [
+      "exact canonical route reference resolves and validates",
+      "V555 producer permission ceiling permits the intended V556 use",
+      "exact V556 rule participant constraints pass",
+      "required source-composition authority passes when applicable"
+    ],
+    "nonpositive_or_nonroute_states": [
+      "VALID_EMPTY",
+      "V554_STRUCTURAL_USE_DENIED",
+      "NO_GOVERNED_ROUTE_AUTHORITY",
+      "ROUTE_BLOCKED_BY_GOVERNED_RULE",
+      "ROUTE_STATIC_AUTHORITY_MISSING",
+      "ROUTE_IDENTITY_UNRESOLVED",
+      "CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE"
+    ],
+    "deferred_inherited_state": "DEFERRED_RUNTIME_BINDING_REFERENCED_ONLY remains reference-only V554-owned applicability context and is not a V556-authored route state.",
+    "scr556_may_reown_or_rename_v555_state": false,
+    "scr556_positive_semantics_from_noneligible_route_state": false
+  },
+  "route_order_separation": {
+    "v555_internal_order": [
+      "SOURCE",
+      "MEDIATION_LOCUS",
+      "RECEIVER"
+    ],
+    "v556_participant_binding_fields": [
+      "v555_route_identity_ref",
+      "role",
+      "ordinal_or_null",
+      "multiplicity_index"
+    ],
+    "law": "V556 participant order describes the higher-order rule relation among whole V555 routes; it never modifies the internal seven-field V555 route identity or SOURCE/MEDIATION_LOCUS/RECEIVER order."
+  },
+  "cardinality_multiplicity": {
+    "participant_occurrence_cardinality": "2..n under exact V556 rule authority",
+    "positive_distinct_route_floor": 2,
+    "same_route_reuse": "FORBIDDEN unless exact V556 rule positively permits and separately binds every occurrence",
+    "same_route_reuse_never_creates_new_v555_identity": true,
+    "same_route_reuse_never_satisfies_distinct_route_floor_by_itself": true,
+    "unordered_canonicalization": "exact upstream route-identity bytes plus V556 role and multiplicity; never input/file/storage/resolver order"
+  },
+  "remaining_final_m2_import": {
+    "slot_count": 2,
+    "artifact": "FINAL_M2_BINDING_SLOTS.json",
+    "semantic_dependency": "Only the parent-accepted M2 authority pin and the M2-bound literal resolution needed to validate SCR555 canonical route references remain for final M3.",
+    "typed_state_mapping_waits_for_m2": false,
+    "reference_validation_law_waits_for_m2": false,
+    "v556_rule_or_topology_semantics_wait_for_m2": false
+  },
+  "observed_but_not_adjudicated": {
+    "m2_seam_branch": "agent/vozhd-trii-dr-r03-seam-m2-atomic-route",
+    "worker_result_token_visible": "M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED",
+    "preflight_treatment": "OBSERVATION_ONLY__NOT_IMPORTED_AS_FINAL_M3_AUTHORITY",
+    "reason": "The active reassignment order explicitly forbids this specialist from closing final M3 and requires import only after accepted M2."
+  },
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "M3_PREFLIGHT_MATRIX.csv",
+    "FINAL_M2_BINDING_SLOTS.json",
+    "HOSTILE_FIXTURES.md",
+    "PARENT_HANDOFF.md"
+  ]
+}
