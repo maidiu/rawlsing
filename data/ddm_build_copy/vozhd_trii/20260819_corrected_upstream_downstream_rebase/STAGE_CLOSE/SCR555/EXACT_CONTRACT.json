@@ -1,0 +1,146 @@
+{
+  "contract_id": "SCR555_V555_ATOMIC_ROUTE_EXACT_CONTRACT",
+  "contract_version": "stage-close-r03-1",
+  "status": "INDEPENDENT_V555_CONTRACT_CLOSED__SCR554_FINAL_SEAM_UNBOUND",
+  "result_token": "SCR555_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+  "jurisdiction": {
+    "owner": "V555",
+    "semantic_family": "STRUCTURAL_MEDIATION_ROUTE_CANDIDATE",
+    "epistemic_class": "ACTOR_INDEPENDENT_STRUCTURAL_PRIOR",
+    "production_implementation_authorized": false,
+    "broad_dag_mutation_allowed": false,
+    "sibling_semantic_legislation_allowed": false
+  },
+  "route_grain": {
+    "accepted_v554_f1_per_route": 1,
+    "v555_route_rule_version_per_route": 1,
+    "v555_route_shape_version_per_route": 1,
+    "mediation_locus_channel_role_per_route": 1,
+    "receiving_constraint_per_route": 1,
+    "multi_f1_fusion": "FORBIDDEN",
+    "additional_hop_policy": "ADDITIONAL_ATOMIC_V555_ROUTE",
+    "direct_structural_empirical_admission_basis": "FORBIDDEN",
+    "actor_input": "FORBIDDEN"
+  },
+  "governing_route_authority": {
+    "authority_id": "V555_MEDIATION_ROUTE_RULE_REGISTRY",
+    "authority_version": "1.0.0",
+    "active_first_tranche": {
+      "route_rule_id": "V555-RR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL",
+      "route_rule_version": "1.0.0",
+      "route_shape_id": "V555-RS-001-SOURCE-EXACT-CHANNEL-EXACT-RECEIVER",
+      "route_shape_version": "1.0.0"
+    },
+    "unknown_upstream_version_policy": "NO_GOVERNED_ROUTE_AUTHORITY__NEW_EXACT_REGISTRY_ENTRY_REQUIRED",
+    "fuzzy_or_descriptive_rematch": false
+  },
+  "ordered_structure": [
+    {"ordinal": 1, "role": "SOURCE", "binding": "EXACT_F1_SOURCE_STRUCTURAL_POSITION_REF", "generalization_allowed": false},
+    {"ordinal": 2, "role": "MEDIATION_LOCUS", "binding": "EXACT_F1_STRUCTURAL_CHANNEL_REF", "channel_structural_role_id": "V555-LCR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL", "requires_exact_nonnull_channel_under_first_tranche": true, "invented_channel_allowed": false},
+    {"ordinal": 3, "role": "RECEIVER", "binding": "EXACT_F1_RECEIVING_STRUCTURAL_POSITION_REF", "receiving_constraint_kind": "V555-RC-001-EXACT-STRUCTURAL-POSITION-REF", "operator": "EXACT_REF_EQ", "generalization_allowed": false, "runtime_actor_satisfaction_claimed": false}
+  ],
+  "canonical_route_identity": {
+    "semantic_identity_kind": "ORDERED_TUPLE",
+    "tuple_order": [
+      "EXACT_V554_F1_REF",
+      "route_rule_id@route_rule_version",
+      "route_shape_id@route_shape_version",
+      "channel_structural_role_id",
+      "EXACT_STRUCTURAL_CHANNEL_REF",
+      "receiving_constraint_kind",
+      "EXACT_TARGET_RECEIVING_POSITION_REF"
+    ],
+    "same_tuple_same_route": true,
+    "duplicate_same_tuple_policy": "DEDUPLICATE_AS_SAME_CANONICAL_ROUTE",
+    "different_v554_f1_requires_different_route": true,
+    "deterministic_serialization_required": true,
+    "canonical_hash_algorithm_created_by_this_contract": false,
+    "route_id_policy": "A physical route_id/hash/locator MAY deterministically address the tuple but MUST preserve and verify exact tuple equality; it is not replacement semantic ontology.",
+    "tuple_order_semantic": true
+  },
+  "typed_route_decision_states": {
+    "positive": {"ROUTE_CANDIDATE_AUTHORIZED": "Exact positive accepted V554 F1 plus exact active V555 rule/shape match, required exact authority/bindings present, canonical route identity resolved."},
+    "valid_empty": {"VALID_EMPTY": "Lawfully complete zero-route/zero-entry outcome when governed authority says empty is complete and no higher-priority failure applies."},
+    "negative": {
+      "V554_STRUCTURAL_USE_DENIED": "Upstream V554 structural use is explicitly nonpositive/denied; no route emitted.",
+      "NO_GOVERNED_ROUTE_AUTHORITY": "No exact active route rule matches or required first-tranche channel authority is absent; no route invented.",
+      "ROUTE_BLOCKED_BY_GOVERNED_RULE": "An explicit governed V555 route rule denies the route; reserved even though first-tranche v1 defines no extra denial predicate."
+    },
+    "missing_or_unresolved": {
+      "ROUTE_STATIC_AUTHORITY_MISSING": "Required exact route authority/reference cannot resolve; no route emitted.",
+      "ROUTE_IDENTITY_UNRESOLVED": "Required exact identity/provenance fields cannot yield one deterministic canonical route identity; no route emitted."
+    },
+    "deferred_inherited": {"DEFERRED_RUNTIME_BINDING_REFERENCED_ONLY": "Unresolved actor/runtime/genealogy applicability remains V554-owned F2 exact reference only; never asserted satisfied or converted into V555 meaning."},
+    "integrity": {"CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE": "Schema/hash/reference/version corruption, invalid build state, forbidden actor construction, or fuzzy repair; not a domain-semantic negative."},
+    "silent_omission_for_state": false,
+    "numeric_zero_substitution_for_state": false,
+    "unknown_version_grandfathering": false,
+    "precedence_ceiling": ["INTEGRITY_FAILURE", "V554_EXPLICIT_STRUCTURAL_USE_DENIAL_OR_NONPOSITIVE_F1", "ROUTE_RULE_MATCH_AND_STATIC_AUTHORITY_RESOLUTION", "ROUTE_IDENTITY_RESOLUTION", "GOVERNED_AUTHORIZED_NEGATIVE_OR_VALID_EMPTY_RESULT"]
+  },
+  "v554_f2_inheritance": {
+    "semantic_owner": "V554",
+    "v555_transport": "EXACT_IMMUTABLE_REFERENCE_ONLY",
+    "v555_may_copy_semantic_payload": false,
+    "v555_may_rename_as_route_born": false,
+    "v555_may_re_evaluate": false,
+    "v555_may_assert_runtime_satisfaction": false,
+    "interpretation_critical_f2_must_remain_exactly_dereferenceable": true,
+    "local_transport_field_may_exist": "inherited_v554_f2_refs[]",
+    "local_transport_field_does_not_transfer_ownership": true
+  },
+  "route_born_predicates": {
+    "authority_id": "V555_ROUTE_BORN_PREDICATE_RULE",
+    "authority_version": "1.0.0",
+    "registry_id": "V555_ROUTE_BORN_PREDICATE_REGISTRY",
+    "registry_version": "1.0.0",
+    "registry_status": "VALID_EMPTY",
+    "registered_predicate_count": 0,
+    "ownership_test_all_required": ["undefined before exact canonical V555 route exists", "property or constraint of one exact route in isolation", "depends on exact route-local bindings", "not a V554 F2 restatement/rename/copy/specialization-by-copy/re-evaluation", "no actor event/state/history dependency", "no multi-route or V556 relation/topology meaning", "separately accepted immutable owning rule/evaluator/argument authority"],
+    "consumer_desire_can_fill_empty_registry": false,
+    "current_unary_effect_state": "VALID_EMPTY",
+    "current_unary_effects": [],
+    "potential_but_unauthorized_vocabulary": ["TRANSMIT", "BUFFER", "AMPLIFY", "DEFLECT", "BLOCK"],
+    "numeric_strength_probability_readiness_weight": "FORBIDDEN_ABSENT_SEPARATE_GOVERNED_FORMULA_AUTHORITY"
+  },
+  "v556_seam": {
+    "canonical_base_edge_identity": "EXACT_V555_ROUTE_IDENTITY",
+    "must_reuse_exact_v555_route_identity": true,
+    "one_to_one_v556_reidentified_edge": "FORBIDDEN_BLOAT",
+    "reconstruct_missing_v555_route": false,
+    "insufficient_bases_for_route_or_interaction_inference": ["shared source", "shared channel", "shared receiver", "shared endpoint", "adjacency", "time overlap", "common stratum", "common geography", "co-resolution", "storage adjacency", "provenance reachability"],
+    "additional_hop": "NEW_V555_ROUTE",
+    "governed_jointness": "V556_OWNED"
+  },
+  "v557_direct_publication": {
+    "direct_publication_edge_exists": true,
+    "v556_required_for_forwarding_only": false,
+    "eligibility_requirements": ["V555 state is ROUTE_CANDIDATE_AUTHORIZED", "exact producer use-permission ceiling permits intended use", "no V556 higher-order semantic transform is required for the semantic object being published", "interpretation-critical producer/reference closure is exact", "V557 independently admits the object/use"],
+    "v555_self_grants_v557_permission": false,
+    "no_op_v556_wrapper": "FORBIDDEN"
+  },
+  "reference_locality": {
+    "must_be_available_at_route_boundary_without_semantic_reconstruction": ["EXACT_V554_F1_REF", "EXACT_F1_SOURCE_STRUCTURAL_POSITION_REF when required", "EXACT_F1_STRUCTURAL_CHANNEL_REF", "EXACT_F1_RECEIVING_STRUCTURAL_POSITION_REF", "route_rule_id@route_rule_version", "route_shape_id@route_shape_version", "channel_structural_role_id", "receiving_constraint_kind", "canonical ordered route identity tuple", "typed route decision state", "exact V555 owning authority identity/version and immutable seal/reference"],
+    "v554_f2": "EXACT_REFERENCE_ONLY_WHERE_RELEVANT",
+    "normally_transitive_ancestry": ["EmpiricalQuerySpec identity", "EmpiricalFact identity", "StructuralEmpiricalAdmission identity", "V551/V551J identities", "V552 structural fact identity", "V552J association/admission/use-permission identities", "V553 temporal key/observation/relation/limit identities", "measure/weight/estimand authority", "respondent-grain substrate identity"],
+    "transitive_rule": "Repeated producer payload copy is optional only when exact immutable interpretation-critical dereference remains deterministic and authorized.",
+    "fail_closed_on": ["missing interpretation-critical dependency", "mutable locator", "ambiguous reference", "unresolvable reference", "hash mismatch", "version conflict", "latest substitution", "default substitution", "fuzzy/label repair"],
+    "provenance_reachability_implies_source_composition": false
+  },
+  "replay": {
+    "deterministic": true,
+    "semantic_replay_key": ["exact accepted V554 F1 and accepted F1/B1 binding once M2 is bound", "exact V555 owning authority/rule/shape", "exact ordered source/channel/receiver bindings", "exact relevant inherited producer references", "typed governed result"],
+    "nonsemantic_entropy_forbidden_from_identity_or_result": ["wall clock", "filesystem order", "list/dict iteration order", "nonsemantic duplicate row order", "RNG", "LLM judgment", "fuzzy matching", "mutable latest/default versions"],
+    "audit_timestamp_may_exist_but_is_nonsemantic": true,
+    "hash_equality_alone_excuses_tuple_mismatch": false
+  },
+  "physical_fusion_equivalence_bar": ["Exact accepted V554 F1 exists as distinguishable semantic parent before route derivation.", "Accepted SCR554 F1/B1 binding is reproduced exactly.", "Exactly-one-F1-per-route cardinality is enforced.", "Exact ADP-002 authority/rule/version/shape is applied.", "Exact source/channel/receiver refs are used without repair.", "Same seven-field ordered canonical route identity is produced.", "Source -> mediation locus -> receiver role order is exact.", "Structural direction is not reconstructed from temporal-delta direction.", "All positive/negative/valid-empty/missing/unresolved/deferred/integrity states are preserved one-to-one.", "Inherited V554 F2 remains exact-reference-only.", "ADP-003 route-born ownership and valid-empty registry survive.", "Every interpretation-critical upstream authority/reference remains exact and deterministic to dereference.", "V556 consumes exact same V555 route identity as base edge/participant.", "Direct V555-to-V557 publication remains possible without V556 filler.", "Actor-independent ceiling is preserved.", "Producer/downstream permission ceilings are preserved or narrowed, never widened.", "Fail-closed behavior is identical under missing/mismatched/unknown authority.", "Semantic object, identity, typed state, consumer behavior, and replay equality are proved; rowset/final-output equality alone is insufficient."],
+  "final_m2_seam": {
+    "dependency": "ACCEPTED_SCR554_V554_BASIS_DEDUP",
+    "current_observation": "SCR554 branch has zero commits relative to common base; accepted exact F1/B1 stage-close contract unavailable.",
+    "only_remaining_final_dependency": true,
+    "binding_slots": ["accepted_scr554_result_head_sha_and_result_token", "canonical_f1_reference_schema_authority_identity_and_immutable_seal", "canonical_f1_identity_tuple_order_and_equality_law", "canonical_f1_positive_state_and_structural_mediation_use_permission_binding", "canonical_b1_reference_schema_authority_identity_and_immutable_seal", "canonical_b1_identity_tuple_order_and_equality_law", "exact_f1_to_b1_binding_and_cardinality_law", "exact_v554_authority_rule_signature_references_required_for_f1_b1_replay"],
+    "binding_rule": "VERBATIM_ACCEPTED_SCR554_CONTRACT_ONLY__NO_GUESS_NO_RENAME_NO_RECONSTRUCTION",
+    "b1_not_automatically_part_of_v555_route_tuple": true,
+    "post_binding_effect_if_no_conflict": "M2_CHECKSUM_ONLY__NO_NEW_V555_SEMANTIC_ADJUDICATION_REQUIRED"
+  }
+}
