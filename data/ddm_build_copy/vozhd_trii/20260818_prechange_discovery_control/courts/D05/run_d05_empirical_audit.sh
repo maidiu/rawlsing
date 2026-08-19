@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # D05 canonical entrypoint. No semantic switches.
-# Read-only DB behavior is enforced independently by both Python runners.
+# Read-only DB behavior is enforced independently by both database runners.
 set -u
 
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || true)"
@@ -21,10 +21,19 @@ fi
 # but the authority/scope/cache audit must still run on the same database.
 python "$COURT/run_d05_empirical_audit.py"
 CORE_RC=$?
+
+# Output-only semantic guard: a field that is not exposed cannot be recorded as
+# having passed a value-preservation comparison.
+python "$COURT/audit_d05_output_semantic_guard.py"
+GUARD_RC=$?
+
 python "$COURT/audit_d05_authority_scope_cache.py"
 EXT_RC=$?
 
 if [[ $CORE_RC -ne 0 ]]; then
   exit $CORE_RC
+fi
+if [[ $GUARD_RC -ne 0 ]]; then
+  exit $GUARD_RC
 fi
 exit $EXT_RC
