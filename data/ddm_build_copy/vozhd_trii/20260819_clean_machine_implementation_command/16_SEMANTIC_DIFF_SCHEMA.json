@@ -1,0 +1,26 @@
+{
+  "schema": "rawlsing.clean_machine.semantic_diff.v1",
+  "required": {
+    "unit": ["unit_id", "branch", "base_sha", "head_sha", "command_parent"],
+    "authority": ["authority_bundle_id", "authority_bundle_hash", "authority_changes"],
+    "substrate": ["substrate_contract_version", "physical_schema_version", "schema_changes", "grain_changes", "identity_scope_changes"],
+    "objects": ["object_families_added", "object_families_removed", "object_families_changed", "owner_changes", "field_semantic_changes"],
+    "identity": ["identity_tuple_changes", "hash_material_changes", "serialization_version_changes"],
+    "dag": ["edges_added", "edges_removed", "edges_changed", "forbidden_edge_effects"],
+    "negative_authority": ["states_added", "states_removed", "state_semantics_changed", "fallback_or_default_changes"],
+    "references": ["direct_reference_changes", "transitive_reference_changes", "provenance_role_changes", "replay_changes"],
+    "source_universe": ["universe_identity_changes", "linkage_changes", "pooling_or_composition_changes", "actor_comparability_changes"],
+    "consumers": ["consumers_added", "consumers_removed", "consumer_contracts_affected"],
+    "migration": ["migration_required", "compatibility_shims", "legacy_salvage_changes", "retirement_implications"],
+    "verification": ["fixtures_added_or_changed", "tests_added_or_changed", "known_unverified_semantics"],
+    "classification": ["principal_change_class", "shared_contract_change_request_ids", "claimed_semantic_effect"]
+  },
+  "principal_change_class_values": ["C0_LOCAL_IMPLEMENTATION_ONLY", "C1_COMPATIBLE_CONTRACT_CLARIFICATION", "C2_SHARED_CONTRACT_EVOLUTION", "C3_ARCHITECTURE_AFFECTING"],
+  "invariants": [
+    "C0 must contain no nonempty shared semantic change arrays.",
+    "Any identity/hash/schema/interface/DAG/shared-negative-state change is at least C2 unless proven C1 clarification under owning authority.",
+    "Any semantic-owner or architecture-jurisdiction change is C3.",
+    "Undeclared semantic change discovered by Vozhd or Inspectorate is integration-blocking.",
+    "An empty semantic diff is an explicit claim that code behavior is semantically contract-preserving, not permission to omit analysis."
+  ]
+}
