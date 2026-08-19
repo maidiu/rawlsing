@@ -1,0 +1,43 @@
+{
+  "schema": "VOZHD_TRII_DEPENDENCY_SUCCESSION_RESERVATIONS@1.0.0",
+  "dispatch_epoch": "R03_STAGE_CLOSE_DISPATCH_EPOCH_02",
+  "status": "RESERVED_NOT_ISSUED",
+  "law": {
+    "full_command_review_between_parent_and_child": false,
+    "hq_return_adjudication_before_child_issue": true,
+    "completion_claim_alone_opens_child": false,
+    "reason": "The child assignment must bind the exact accepted parent semantic head/token/blobs. A worker finite return is RETURNED_UNADJUDICATED until HQ verifies branch/write-scope/output/token/authority conformance and freezes its semantic identity.",
+    "after_parent_acceptance": "HQ may immediately issue the reserved child assignment without another cross-wave command review, subject to the epoch recycle budget."
+  },
+  "reservations": [
+    {
+      "budget_slot": 3,
+      "new_agent_id": "M5_FINAL",
+      "new_worker_class": "SEAM_BINDER",
+      "reserved_worker_slot": 7,
+      "permanent_chat_id": "CHAT-SV3M",
+      "most_recent_submitting_agent_id": "SV3F",
+      "most_recent_return_token": "SV3F_FEEDER_COMPLETE",
+      "why_this_chat": "SV3F prepared the structural-peer-prior/noncollapse and M5 binding surface.",
+      "opening_condition": "M4_FINAL exact return adjudicated ACCEPTED_FROZEN by HQ",
+      "assignment_id_reserved": "E02-W07-M5-FINAL-001",
+      "mailbox_bootstrap_required": true,
+      "state": "RESERVED_BLOCKED_M4_ACCEPTANCE"
+    },
+    {
+      "budget_slot": 4,
+      "new_agent_id": "M6_FINAL",
+      "new_worker_class": "SEAM_BINDER",
+      "reserved_worker_slot": 1,
+      "permanent_chat_id": "CHAT-S554D",
+      "most_recent_submitting_agent_id": "M6_PREFLIGHT",
+      "most_recent_return_token": "M6_PREFLIGHT_COMPLETE",
+      "why_this_chat": "M6_PREFLIGHT already closed every final-literal-independent V3-to-V2 compatibility proof.",
+      "opening_condition": "SCRV3_M6_HANDOFF_LITERALIZATION exact return adjudicated ACCEPTED_FROZEN by HQ",
+      "assignment_id_reserved": "E02-W01-M6-FINAL-001",
+      "mailbox_bootstrap_required": true,
+      "state": "RESERVED_BLOCKED_V3_HANDOFF_ACCEPTANCE"
+    }
+  ],
+  "user_operating_rule": "When a parent worker says it is finished, send its exact head/token back to HQ. HQ performs the narrow return adjudication and, if accepted, activates the reserved child mailbox immediately. The user may then send the prepared bootstrap handoff to the reserved child chat. Do not send merely on the parent's self-reported completion before HQ acceptance."
+}
