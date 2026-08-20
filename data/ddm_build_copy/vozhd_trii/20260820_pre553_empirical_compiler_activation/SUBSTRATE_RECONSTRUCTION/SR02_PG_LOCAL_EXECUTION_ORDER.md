@@ -1,4 +1,4 @@
-# SR02-PG — DUMB LOCAL DB PROVENANCE RECEIPT
+# SR02-PG — DUMB LOCAL DB PROVENANCE RECEIPT — REVISION 2
 
 Repository: `maidiu/rawlsing`
 Frozen parent machine: `9188dc9fb7a8b92b981f3d3f94754cd6137d17b1`
@@ -7,6 +7,9 @@ Control branch: `agent/vozhd-trii-pre553-substrate-reconstruction-control`
 The exact launch HEAD is supplied by HQ in the launch command. Verify it before execution; do not substitute `latest` or another branch.
 
 MISSION: Execute the checked-in `SR02_CURRENT_DB_PROVENANCE_PROBE.sql` against the current Rawlsing Postgres database READ ONLY and return its complete output unchanged.
+
+REVISION-2 NOTE:
+The first SR02 execution reached P03 and failed because the original query joined/grouped the full response carrier and exhausted PostgreSQL temporary disk. That was a probe-shape defect, not a database semantic failure. Revision 2 replaces P03/P04 with information-equivalent low-temp provenance queries. Do NOT free/expand database disk merely to reproduce the superseded query.
 
 The runner has no authority to interpret the database, fix data, alter SQL, modify code, or inspect unrelated machine state.
 
