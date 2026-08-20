@@ -1,0 +1,193 @@
+{
+  "contract_id": "PRE553_P02_EMPIRICAL_FACT_IDENTITY",
+  "contract_version": "preflight-1.0.0",
+  "authority_class": "WAVE_01_PREFLIGHT_SPECIFICATION__NO_SEMANTIC_AUTHORITY",
+  "empirical_fact_semantic_family": "POPULATION_EMPIRICAL_FACT",
+  "fact_role": "exact replayable result of one exact EmpiricalQuerySpec against one exact governed empirical substrate/source scope",
+  "identity_scheme": "urn:rawlsing:pre553:empirical-fact:sha256:<sha256(canonical_json(identity_material))>",
+  "identity_material_order": [
+    "empirical_fact_contract_id@version",
+    "exact_empirical_query_spec_ref",
+    "exact_source_universe_or_authorized_composite_scope_ref",
+    "exact_empirical_substrate_content_ref",
+    "exact_authority_snapshot_root",
+    "exact_replay_protocol_ref",
+    "fact_state",
+    "target_domain_identity",
+    "complete_cell_semantic_projection",
+    "support_and_measure_projection",
+    "uncertainty_method_state_or_ref",
+    "fact_provenance_closure_ref"
+  ],
+  "query_identity_is_fact_identity_component": true,
+  "numerical_value_alone_is_fact_identity": false,
+  "fact_content_requirements": {
+    "query_binding": ["query_id", "query_content_hash", "predicate_hash", "risk_set_identity", "target_identity", "measure_identity", "source_scope_identity"],
+    "input_binding": ["respondent_universe_identity", "empirical_substrate_content_identity", "authority_snapshot_identity", "replay_protocol_identity"],
+    "target_distribution": ["target_domain_identity", "target_arity", "response_topology_bundle_ref", "complete_governed_cell_set_or_exact_domain_ref"],
+    "support": ["raw_denominator_support", "raw_cell_numerator_support", "selected_measure_denominator", "selected_measure_cell_numerator", "support_state"],
+    "provenance": ["source_native_provenance_root", "predicate_and_risk_set_replay_refs", "measure_authority_ref", "topology_authority_refs", "branch_or_cohort_replay_refs_if_used", "source_relation_or_composition_authority_ref_if_used"]
+  },
+  "fact_states": {
+    "ASSERTABLE": "all identity, authority, source, predicate, risk-set, target, topology and measure requirements resolve exactly; denominator is positive under the selected measure",
+    "VALID_EMPTY": "the governing query/domain contract resolves coherently to an empty fact family or empty target domain without representing missing authority, zero support or failure",
+    "ZERO_SUPPORT": "the exact denominator membership resolves and has zero support; no conditional probability is fabricated",
+    "ZERO_OVERLAP": "a required common-eligibility or same-respondent overlap risk set resolves exactly to zero members",
+    "NOT_APPLICABLE": "exact routing/applicability authority declares the requested target/risk-set inapplicable",
+    "DENIED": "exact authority denies the requested empirical use/query",
+    "DEFERRED": "exact authority makes the result nonpositive pending a named unresolved condition; no positive fact is fabricated",
+    "NONCOMPARABLE": "exact source/time/semantic relation authority says required comparison/composition is not lawful",
+    "MISSING_REQUIRED_AUTHORITY": "a required named authority is absent; not equivalent to zero or denial",
+    "UNKNOWN_OR_CONFLICTING_AUTHORITY": "required authority exists only ambiguously or conflicts without exact governed precedence",
+    "UNRESOLVED_SOURCE_RELATION": "multiple source universes require a relation/composition/linkage decision that cannot be resolved exactly",
+    "UNSUPPORTED_RESPONSE_TOPOLOGY": "source/question topology is known to require distinctions the selected query carrier cannot faithfully represent",
+    "INTEGRITY_FAILURE": "hash/schema/reference/replay/coherence failure before a lawful empirical result can be asserted"
+  },
+  "cell_states": {
+    "OBSERVED_POSITIVE": "positive numerator in a positive exact denominator",
+    "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET": "exact numerator is zero while exact denominator is positive; empirical nonobservation, not metaphysical impossibility",
+    "LOW_SUPPORT": "cell is supported but falls under an exact low-support/uncertainty condition; it remains distinct from zero and absence",
+    "TYPED_SPECIAL_RESPONSE_STATE": "DK/refusal/IAP/not-asked/inapplicable/other state when exact query authority intentionally includes that state in the target domain"
+  },
+  "failure_precedence": [
+    "INTEGRITY_FAILURE",
+    "DENIED",
+    "NONCOMPARABLE",
+    "MISSING_REQUIRED_AUTHORITY",
+    "UNKNOWN_OR_CONFLICTING_AUTHORITY",
+    "UNRESOLVED_SOURCE_RELATION",
+    "UNSUPPORTED_RESPONSE_TOPOLOGY",
+    "NOT_APPLICABLE",
+    "ZERO_OVERLAP",
+    "ZERO_SUPPORT",
+    "VALID_EMPTY",
+    "ASSERTABLE"
+  ],
+  "typed_state_noncollapse": [
+    "ZERO_SUPPORT != OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+    "ZERO_OVERLAP != ZERO_SUPPORT",
+    "NOT_APPLICABLE != ZERO_SUPPORT",
+    "MISSING_REQUIRED_AUTHORITY != DENIED",
+    "UNKNOWN_OR_CONFLICTING_AUTHORITY != MISSING_REQUIRED_AUTHORITY",
+    "NONCOMPARABLE != DENIED",
+    "DEFERRED != VALID_EMPTY",
+    "INTEGRITY_FAILURE != DOMAIN_SEMANTIC_NEGATIVE",
+    "absence_of_materialized_row != any typed state without replay proof"
+  ],
+  "distribution_law": {
+    "primary_empirical_fact": "complete governed target topology/distribution or joint configuration table for the exact query",
+    "modal_cell_only": "LOSSY_DERIVED_VIEW",
+    "association_scalar_only": "DERIVED_DIAGNOSTIC__NOT_PRIMARY_FACT",
+    "raw_support_required": true,
+    "selected_measure_support_required": true,
+    "target_cells_may_be_regenerated_from_deep_carrier": true,
+    "materialization_required": false
+  },
+  "joint_identity_law": {
+    "same_respondent_joint": true,
+    "target_component_arity": "1..k",
+    "full_joint_cell_identity_required": true,
+    "marginal_equality_implies_joint_fact_equality": false,
+    "pairwise_fact_set_implies_k_way_fact": false,
+    "response_topology_mismatch_can_be_ignored": false,
+    "respondent_event_multiplicity_can_be_scalar_collapsed_without_topology_authority": false
+  },
+  "source_identity_law": {
+    "source_universe_identity_is_fact_identity": true,
+    "raw_wave_identity_is_fact_identity": true,
+    "canonical_wave_identity_when_governed_is_fact_identity": true,
+    "country_geography_scope_is_fact_identity": true,
+    "authorized_composite_authority_is_fact_identity": true,
+    "source_indexed_equal_numbers_are_same_fact": false,
+    "same_label_or_alias_can_merge_facts": false
+  },
+  "predicate_risk_identity_law": {
+    "condition_predicate_ast_hash_is_fact_identity": true,
+    "risk_set_member_rule_identity_is_fact_identity": true,
+    "branch_predicate_or_membership_replay_identity_when_used": true,
+    "same_numerical_distribution_under_different_predicates_is_same_fact": false,
+    "same_denominator_count_under_different_risk_sets_is_same_fact": false
+  },
+  "measure_identity_law": {
+    "raw_and_weighted_are_distinct_facts": true,
+    "weight_basis_is_fact_identity": true,
+    "estimand_and_design_authority_when_weighted_are_fact_identity": true,
+    "invalid_weight_default_to_one": false,
+    "equal_raw_and_weighted_percentage_merges_fact_identity": false
+  },
+  "uncertainty_law": {
+    "support_basis_is_primary": true,
+    "numeric_uncertainty_estimator_universally_required": false,
+    "when_numeric_estimator_used": "exact method/design authority/version/hash becomes fact identity/provenance",
+    "when_no_numeric_estimator_governed": "retain typed unquantified uncertainty state; do not invent estimator"
+  },
+  "diagnostic_derivation": {
+    "diagnostics_are_fact_identity": false,
+    "diagnostic_receipt_must_bind": ["exact_input_empirical_fact_refs", "metric_or_search_formula_id@version@hash", "measure_basis", "deterministic_parameters", "replay_ref"],
+    "diagnostic_examples": ["MI", "NMI", "CRAMERS_V", "ENTROPY_REDUCTION", "LIFT", "TREE_SCORE", "CLOUD_SCORE"],
+    "diagnostic_output_can_promote_to_structural_fact": false,
+    "diagnostic_output_can_promote_to_actor_state": false
+  },
+  "hostile_identity_cases": [
+    {
+      "case": "same number different condition",
+      "required": "different fact IDs because query/predicate identities differ"
+    },
+    {
+      "case": "same number different risk-set members",
+      "required": "different fact IDs even when denominator count is equal"
+    },
+    {
+      "case": "same number raw vs weighted",
+      "required": "different fact IDs because measure basis differs"
+    },
+    {
+      "case": "same canonical labels different source releases",
+      "required": "different source-indexed fact IDs absent exact authorized composition"
+    },
+    {
+      "case": "same marginals different joint",
+      "required": "different fact content/IDs because complete joint cells differ"
+    },
+    {
+      "case": "XOR with zero unary signal",
+      "required": "joint/conjunction fact remains assertable from exact incidence; no unary-score starvation"
+    },
+    {
+      "case": "Simpson reversal",
+      "required": "pooled and stratified query/fact IDs remain distinct; reversal comparison is derived"
+    },
+    {
+      "case": "branch label reused after branch definition change",
+      "required": "different fact identity because branch replay/predicate hash changes"
+    },
+    {
+      "case": "cache miss",
+      "required": "no semantic state change; exact fact is reconstructible from C11-equivalent carrier"
+    }
+  ],
+  "forbidden_identity_inputs": [
+    "filesystem path",
+    "row order",
+    "file enumeration order",
+    "wall clock",
+    "cache presence",
+    "legacy readiness score",
+    "diagnostic association score",
+    "mutable latest alias",
+    "fuzzy source/cohort match",
+    "unrecorded default weight",
+    "independent-marginal approximation"
+  ],
+  "explicitly_not_created": [
+    "STRUCTURAL_EMPIRICAL_ADMISSION",
+    "STRUCTURAL_INTERPRETATION",
+    "GENERATED_ACTOR_FACT",
+    "GENERATED_STRUCTURAL_POSITION",
+    "ACTOR_BELIEF",
+    "ACTOR_PERSONA"
+  ],
+  "architecture_selected": false,
+  "runtime_implementation_authorized": false,
+  "downstream_interface_modified": false
+}
