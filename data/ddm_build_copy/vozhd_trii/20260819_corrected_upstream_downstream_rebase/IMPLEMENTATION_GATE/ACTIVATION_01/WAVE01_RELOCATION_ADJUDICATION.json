@@ -1,0 +1,49 @@
+{
+  "schema": "VOZHD_TRII_IMPLEMENTATION_WAVE01_RELOCATION_ADJUDICATION@1.0.0",
+  "status": "WAVE01_CLEAN_SIDELINE_RETURNS_ACCEPTED__IG_M2_OPEN",
+  "production_baseline": "0777a34e50221bde6801dbaca26c058a7350c9e8",
+  "sideline_runtime_root": "rawlsing_next/**",
+  "legacy_runtime_roots_forbidden": ["data/ddm_build/**", "data/ddm_build_copy/**"],
+  "accepted": {
+    "IG_M1": {
+      "head": "e5f4871fbdea74bdb1b19067d9161e381ca359ba",
+      "runtime_path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "runtime_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "test_path": "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+      "disposition": "ACCEPTED_FROZEN__CLEAN_SIDELINE_RUNTIME",
+      "semantic_drift": false
+    },
+    "IG_PSEPF": {
+      "head": "dbed67bd83887afe310d9eeab827518d8cbf3a57",
+      "runtime_path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "runtime_blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "test_path": "rawlsing_next/tests/test_psepf_zero_positive_guard.py",
+      "disposition": "ACCEPTED_FROZEN__CLEAN_SIDELINE_RUNTIME",
+      "semantic_drift": false
+    },
+    "IG_INTEGRATION_FIXTURE_SCAFFOLD": {
+      "head": "9fd7694049d8b6e79534c98cdd93a9f141302215",
+      "disposition": "ACCEPTED_FROZEN__GOVERNANCE_FIXTURE_SCAFFOLD_ONLY"
+    }
+  },
+  "evidence": {
+    "runtime_blobs_byte_identical_to_pre_relocation_reviewed_returns": true,
+    "relocated_test_imports_target_rawlsing_next": true,
+    "legacy_runtime_or_test_writes_in_accepted_relocations": false,
+    "github_status_checks_present": false
+  },
+  "dag_adjudication": {
+    "barrier_B1": "SATISFIED_BY_ACCEPTED_IG_M1",
+    "IG_M2": "AUTHORIZED_TO_ISSUE",
+    "IG_M3": "BLOCKED_PENDING_ACCEPTED_IG_M2",
+    "IG_M4": "BLOCKED_PENDING_ACCEPTED_IG_M2_AND_IG_M3",
+    "IG_M5": "BLOCKED_PENDING_ACCEPTED_IG_M4",
+    "IG_M6": "BLOCKED_PENDING_ACCEPTED_IG_M5",
+    "IG_RENDER": "BLOCKED_PENDING_ACCEPTED_IG_M6",
+    "IG_SITUATED_PHENOMENOLOGY_AND_DISCLOSURE_MEDIATION": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+    "IG_INTEGRATION": "BLOCKED_PENDING_M6_RENDER_AND_PSEPF_ACCEPTANCE_BARRIERS"
+  },
+  "cutover_authority": false,
+  "deployment_authority": false,
+  "legacy_retirement_authority": false
+}
