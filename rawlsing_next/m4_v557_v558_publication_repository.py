@@ -349,10 +349,10 @@ def structural_object_from_m2(evaluation: M2Evaluation, *, require_direct_handof
     ordered = route.get("ordered_structure")
     if isinstance(ordered, (str, bytes)) or not isinstance(ordered, Sequence) or len(ordered) != 3:
         raise M4IntegrityError("V555 ordered SOURCE->MEDIATION_LOCUS->RECEIVER structure missing")
-    if tuple(x.get("role") for x in ordered if isinstance(x, Mapping)) != ("SOURCE", "MEDIATION_LOCUS", "RECEIVER"):
-        raise M4IntegrityError("V555 source/mediation/receiver role order corrupted")
     if not all(isinstance(x, Mapping) for x in ordered):
         raise M4IntegrityError("V555 ordered structure entries malformed")
+    if tuple(x.get("role") for x in ordered) != ("SOURCE", "MEDIATION_LOCUS", "RECEIVER"):
+        raise M4IntegrityError("V555 source/mediation/receiver role order corrupted")
     if ordered[1].get("channel_structural_role_id") != ident[3] or exact_ref(ordered[1].get("binding"), "V555.channel") != exact_ref(ident[4], "V555.identity.channel"):
         raise M4IntegrityError("V555 channel role/binding differs from canonical route tuple")
     if ordered[2].get("receiving_constraint_kind") != ident[5] or exact_ref(ordered[2].get("binding"), "V555.receiver") != exact_ref(ident[6], "V555.identity.receiver"):
@@ -408,7 +408,7 @@ def structural_object_from_m3(evaluation: M3Evaluation) -> StructuralObject:
     rule = obj.get("rule_authority")
     if not isinstance(rule, Mapping) or rule.get("semantic_family") != family:
         raise M4IntegrityError("V556 object lacks exact owning rule authority")
-    cardinality_marker = _v556_cardinality_marker(rule)
+    _v556_cardinality_marker(rule)
     raw_bindings = obj.get("participant_bindings")
     if isinstance(raw_bindings, (str, bytes)) or not isinstance(raw_bindings, Sequence) or len(raw_bindings) < 2:
         raise M4IntegrityError("V556 object lacks exact 2..n participant bindings")
@@ -463,13 +463,11 @@ def structural_object_from_m3(evaluation: M3Evaluation) -> StructuralObject:
             raise M4IntegrityError("V556 ordered role pattern differs from exact owning rule")
     elif any(x is not None for x in ordinals):
         raise M4IntegrityError("unordered V556 rule requires null participant ordinals")
-    frozen_obj = dict(obj)
-    frozen_obj["m4_preserved_cardinality_marker"] = cardinality_marker
     return make_structural_object(
         producer_family="V556", semantic_class=family, object_id=oid,
         schema_id=SCR556_CONTRACT_ID, schema_version="scr556.v1",
         typed_state=evaluation.decision_state.value,
-        producer_allowed_uses=obj.get("producer_allowed_uses", ()), payload=frozen_obj,
+        producer_allowed_uses=obj.get("producer_allowed_uses", ()), payload=obj,
         source_stage="M3_V556_TO_V557", required_dependency_refs=deps,
     )
 
@@ -585,8 +583,7 @@ def build_v557_publication_bundle(entries: Sequence[V557PublicationEntry]) -> V5
         old = seen.setdefault(key, entry.obj.content_hash)
         if old != entry.obj.content_hash:
             raise M4IntegrityError("same producer identity appears with different content hash")
-    material = _publication_material(normalized)
-    h = semantic_hash(material)
+    h = semantic_hash(_publication_material(normalized))
     return V557PublicationBundle(f"V557PUB:{h}", h, V557_PUBLICATION_SCHEMA, normalized)
 
 
@@ -818,8 +815,7 @@ def make_index_manifest(
     records = [IndexRecord("OBJECT_IDENTITY", exact_resolution_key(e.locator), e.locator.ref) for e in entries]
     records.extend(supplemental_records)
     declared = tuple(sorted(MANDATORY_LOGICAL_INDEXES | {r.index_name for r in records}))
-    material = _index_material(declared, records)
-    h = semantic_hash(material)
+    h = semantic_hash(_index_material(declared, records))
     return LogicalIndexManifest(f"V558IDX:{h}", h, declared, tuple(records))
 
 
@@ -873,7 +869,7 @@ def _validate_v556_participant_edges(
     rule = payload.get("rule_authority")
     if not isinstance(rule, Mapping):
         raise ClosureIntegrityError("positive V556 object lacks owning rule authority in packaged payload")
-    expected_cardinality = payload.get("m4_preserved_cardinality_marker") or _v556_cardinality_marker(rule)
+    expected_cardinality = _v556_cardinality_marker(rule)
     if isinstance(bindings, (str, bytes)) or not isinstance(bindings, Sequence) or len(bindings) < 2:
         raise ClosureIntegrityError("positive V556 object has incomplete participant set")
     source_edges = [e for e in edges_by_source.get(_ref_key(entry.locator.ref), ()) if e.edge_role == "PARTICIPANT"]
