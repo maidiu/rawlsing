@@ -97,11 +97,11 @@ HOSTILE_CASES = (
     HostileCase(
         "R15-H10",
         "EmpiricalFact to structural proposition without I04 authority",
-        "BLOCKED",
-        "rawlsing_next.tests.test_pre553_empirical_objects_authority",
-        "test_structural_admission_type_does_not_make_the_admission_decision",
-        "No repair in R15. Wait for separately accepted I04 StructuralEmpiricalAdmission owner; never manufacture an admission decision in inspectorate tests.",
-        "Wave-03 launch makes I04 a parallel semantic owner; exact R15 base contains no accepted I04 decision service.",
+        "PASS",
+        None,
+        None,
+        "Restore exact named, hash-bound positive I04 admission gating; only ADMITTED may project to frozen M1 direct basis. Do not infer structural meaning from carrier, discovery, provenance, or repository presence.",
+        "Integrated convergence: accepted I04 is present; H10 passes only when every non-ADMITTED decision remains nonpositive and I04 does not own V553 temporal decisions or mint temporal objects.",
     ),
     HostileCase(
         "R15-H11",
