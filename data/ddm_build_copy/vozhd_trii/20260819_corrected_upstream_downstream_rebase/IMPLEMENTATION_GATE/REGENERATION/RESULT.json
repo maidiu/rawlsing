@@ -78,5 +78,14 @@
     "CONFLICTS.json"
   ],
   "required_output_count": 10,
-  "closure_verification": "PENDING_POST_WRITE_BRANCH_DIFF_AND_EXACT_HEAD_CHECK"
+  "post_write_scope_audit": {
+    "base": "0777a34e50221bde6801dbaca26c058a7350c9e8",
+    "changed_file_count": 10,
+    "all_changed_files_are_required_outputs": true,
+    "all_changed_files_within_authorized_write_scope": true,
+    "out_of_scope_changed_file_count": 0,
+    "production_or_authority_file_changes": 0,
+    "branch_behind_base": 0
+  },
+  "closure_verification": "SEALED_AFTER_SCOPE_AUDIT__FINAL_EXACT_HEAD_IDENTITY_CHECK_EXTERNAL_TO_THIS_SELF_REFERENTIAL_ARTIFACT"
 }
