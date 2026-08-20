@@ -1,0 +1,212 @@
+{
+  "contract_id": "PRE553_C11_LOGICAL_CARRIER_CONTRACT",
+  "version": "preflight-1",
+  "status": "NON_DISPOSITIVE_PREFLIGHT_FOR_HQ_SYNTHESIS",
+  "assignment_id": "PRE553-W01-P10-001",
+  "exact_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "selected_information_family": "MINIMUM_NORMALIZED_RESPONDENT_EVENT_COORDINATE_INCIDENCE_PLUS_AUTHORITY_PROVENANCE",
+  "authority": {
+    "d13_minimum_information_spec": {
+      "branch": "agent/vozhd-trii-d13-final-retention-replay",
+      "path": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D13/MINIMUM_INFORMATION_SUBSTRATE_SPEC.md",
+      "blob_sha": "68747d52d405f1616027e938fbf35d02ef42c818"
+    },
+    "d13_parent_adjudication": {
+      "branch": "agent/vozhd-trii-prechange-discovery-control",
+      "path": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/18_D13_RETURN_ADJUDICATION.md",
+      "blob_sha": "164245770ff735fea88d60b23d5520540241db9c"
+    },
+    "d15_parent_adjudication": {
+      "branch": "agent/vozhd-trii-prechange-discovery-control",
+      "path": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/20_D15_RETURN_ADJUDICATION_AND_DOWNSTREAM_REBASE_GATE.md",
+      "blob_sha": "bbbd86f6ac65ef23bfe7df8f53e0c8ba4ab0fede"
+    }
+  },
+  "non_selection": {
+    "database_engine": "UNSELECTED",
+    "file_format": "UNSELECTED",
+    "codec": "UNSELECTED",
+    "compression": "UNSELECTED",
+    "indexing_strategy": "UNSELECTED",
+    "cache_strategy": "NONAUTHORITATIVE_OPTIONAL",
+    "source_retirement": "FORBIDDEN_WITHOUT_LATER_POSITIVE_EQUIVALENCE_AND_GOVERNANCE"
+  },
+  "identity_law": {
+    "object_identity": "type + canonical semantic key + immutable content hash",
+    "source_scope": "every empirical incidence is scoped to one exact EmpiricalUniverse",
+    "cross_universe_default": "DISTINCT_BY_DEFAULT",
+    "null_semantics": "UNSTRUCTURED_NULL_FOR_SEMANTIC_ABSENCE_FORBIDDEN",
+    "serialization_order": "NONSEMANTIC_UNLESS_EXPLICITLY_DECLARED_BY_TOPOLOGY"
+  },
+  "typed_absence_states": [
+    "UNKNOWN",
+    "MISSING",
+    "DK",
+    "REFUSAL",
+    "IAP",
+    "NOT_ASKED",
+    "NOT_APPLICABLE",
+    "INVALID_UNRESOLVED",
+    "NOT_AUTHORIZED",
+    "NONCOMPARABLE",
+    "DEFERRED",
+    "VALID_EMPTY",
+    "INTEGRITY_FAILURE"
+  ],
+  "logical_record_families": [
+    {
+      "name": "EmpiricalUniverse",
+      "grain": "one exact source/study/release/instrument/geography/wave/time/sample-frame/respondent-namespace universe",
+      "required_fields": [
+        "universe_id", "source_family_id", "raw_source_id", "study_product_id", "release_id",
+        "instrument_release_id", "sampling_geography_ref", "raw_wave_id", "canonical_wave_ref_or_typed_absence",
+        "field_reference_time", "target_population_ref_or_typed_absence", "sample_frame_ref_or_typed_absence",
+        "sampling_design_authority_ref_or_typed_absence", "respondent_namespace_id", "source_artifact_ref",
+        "harmonization_authority_ref_or_typed_absence", "authority_snapshot_refs", "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M01", "M10", "M17", "M18"]
+    },
+    {
+      "name": "RespondentIdentity",
+      "grain": "one respondent key inside exactly one EmpiricalUniverse",
+      "required_fields": [
+        "universe_ref", "respondent_key", "source_native_respondent_key_ref_or_typed_absence",
+        "identity_map_authority_ref_or_typed_absence", "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M02", "M17", "M18"]
+    },
+    {
+      "name": "QuestionVariableBinding",
+      "grain": "one source-native question/component/version binding inside one EmpiricalUniverse",
+      "required_fields": [
+        "universe_ref", "native_question_id", "instrument_question_version", "canonical_question_ref_or_typed_absence",
+        "component_subitem_id_or_typed_absence", "semantic_authority_ref", "topology_authority_ref", "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M03", "M05", "M10", "M17"]
+    },
+    {
+      "name": "RespondentEvent",
+      "grain": "one governed response event/component occurrence",
+      "required_fields": [
+        "universe_ref", "respondent_ref", "question_binding_ref", "event_group_id_or_typed_absence", "event_id",
+        "multiplicity_index", "semantic_ordinal_or_typed_absence", "topology_kind", "raw_value_or_typed_absence",
+        "canonical_value_or_typed_absence", "value_transform_authority_ref_or_typed_absence", "response_state",
+        "event_time_or_typed_absence", "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M04", "M05", "M06", "M10", "M18"]
+    },
+    {
+      "name": "RoutingEligibilityFact",
+      "grain": "one respondent/question/risk-set applicability fact or exact deterministic rule binding",
+      "required_fields": [
+        "universe_ref", "respondent_ref", "question_binding_ref", "risk_set_id", "eligibility_state",
+        "routing_rule_ref", "parent_event_refs", "member_set_replay_key", "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M07", "M10", "M12", "M18"]
+    },
+    {
+      "name": "EmpiricalCoordinateFact",
+      "grain": "one respondent-bound empirically conditionable coordinate fact",
+      "required_fields": [
+        "universe_ref", "respondent_ref", "native_coordinate_id", "canonical_coordinate_ref_or_typed_absence",
+        "raw_value_or_typed_absence", "canonical_value_or_typed_absence", "unit_category_taxonomy_ref",
+        "effective_reference_time_or_typed_absence", "coordinate_state", "crosswalk_authority_ref_or_typed_absence",
+        "source_semantic_authority_ref", "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M08", "M10", "M17", "M18"]
+    },
+    {
+      "name": "WeightMeasureFact",
+      "grain": "one respondent-bound governed weight/measure basis",
+      "required_fields": [
+        "universe_ref", "respondent_ref", "weight_basis_id", "weight_value_or_typed_absence", "weight_state",
+        "weight_variable_source_ref", "sampling_estimand_authority_ref", "recalibration_rule_ref_or_typed_absence",
+        "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M09", "M10", "M16", "M17", "M18"]
+    },
+    {
+      "name": "AuthoritySnapshot",
+      "grain": "one immutable interpretation/governance authority snapshot",
+      "required_fields": [
+        "authority_id", "authority_version", "authority_content_hash", "authority_kind", "effective_scope_time",
+        "supersession_relation_or_typed_absence", "immutable_payload_ref"
+      ],
+      "owns_m_atoms": ["M10", "M13", "M14", "M15", "M16", "M17", "M18"]
+    },
+    {
+      "name": "SourceUniverseRelation",
+      "grain": "one explicit relation claim between exact empirical universes",
+      "required_fields": [
+        "left_universe_ref", "right_universe_ref", "relation_kind", "relation_authority_ref_or_typed_absence",
+        "respondent_linkage_ref_or_typed_absence", "pooling_authority_ref_or_typed_absence",
+        "overlap_evidence_ref_or_typed_absence", "deduplication_rule_ref_or_typed_absence", "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M11", "M17", "M18"]
+    },
+    {
+      "name": "EmpiricalPredicateReplayBinding",
+      "grain": "one versioned predicate/replay identity for a materialized or retained query-derived object",
+      "required_fields": [
+        "predicate_grammar_authority_ref", "typed_predicate_ast_ref", "predicate_hash", "coordinate_question_value_refs",
+        "risk_set_ref", "target_ref", "scope_ref", "measure_basis_ref", "semantic_content_hash"
+      ],
+      "owns_m_atoms": ["M12", "M17", "M18"]
+    },
+    {
+      "name": "ComparatorReplayBinding",
+      "grain": "one actor-fact comparator authority/receipt when M13 is exercised",
+      "required_fields": [
+        "actor_fact_ref", "actor_fact_effective_time", "comparator_rule_ref", "resolved_empirical_predicate_ref",
+        "cardinality_ambiguity_state", "source_scope_refs", "semantic_content_hash"
+      ],
+      "typed_absence_allowed_when_unused": "DEFERRED",
+      "owns_m_atoms": ["M13", "M17", "M18"]
+    },
+    {
+      "name": "DiscoveryBranchReplayBinding",
+      "grain": "one retained discovery/branch replay identity when historical replay is required",
+      "required_fields": [
+        "search_family_id", "candidate_universe_ref", "grammar_authority_ref", "source_risk_topology_measure_scope_ref",
+        "algorithm_identity_ref", "coverage_pruning_contract_ref", "deterministic_parameters_ref", "rng_state_ref_or_typed_absence",
+        "parent_branch_ref_or_typed_absence", "winning_predicate_ref", "pruned_trace_ref_or_typed_absence", "semantic_content_hash"
+      ],
+      "typed_absence_allowed_when_unused": "DEFERRED",
+      "owns_m_atoms": ["M14", "M17", "M18"]
+    },
+    {
+      "name": "StructuralAdmissionReplayBinding",
+      "grain": "one exact empirical-to-structural admission provenance binding when structural use occurs",
+      "required_fields": [
+        "empirical_query_or_fact_ref", "predicate_risk_target_scope_measure_ref", "source_empirical_provenance_ref",
+        "structural_admission_authority_ref", "target_structural_producer_use_ref", "negative_limit_authority_refs",
+        "transformation_replay_ref", "semantic_content_hash"
+      ],
+      "typed_absence_allowed_when_unused": "NOT_APPLICABLE",
+      "owns_m_atoms": ["M15", "M17", "M18"]
+    },
+    {
+      "name": "ReplayManifest",
+      "grain": "one sealed C11 logical dataset or derived-object replay root",
+      "required_fields": [
+        "frontier_version", "authority_snapshot_set_hash", "producer_query_search_implementation_ref_or_typed_absence",
+        "source_substrate_content_refs", "semantic_projection_id", "semantic_projection_hash", "deterministic_tie_order_rules_ref",
+        "replay_protocol_version", "closure_refs", "manifest_content_hash"
+      ],
+      "owns_m_atoms": ["M16", "M17", "M18"]
+    }
+  ],
+  "carrier_invariants": [
+    "M01-M18 must be represented by an exact owner field/ref or explicit typed absence; missing key is never semantic absence.",
+    "Response event/component multiplicity is identity-bearing whenever topology permits multiplicity; duplicate-looking rows may not be coalesced by value equality.",
+    "Semantic order/rank is explicit; storage or serialization order never substitutes for it.",
+    "Routing/risk-set membership is respondent-set identity, not denominator equality.",
+    "Empirical coordinates are source-indexed condition vocabulary and never generated nine-stratum structural positions.",
+    "Weight 1.0 may be present only as an exact source/governed fact; it is never a fallback for missing weight authority.",
+    "Independent universes remain distinct absent exact relation/linkage/pooling authority.",
+    "Authority refs are immutable ID/version/hash bindings; latest/default/fuzzy selection is forbidden.",
+    "Replay hash covers every proof-relevant semantic field; file SHA alone is not semantic equivalence.",
+    "Current Postgres/facet/shared-V550 carriers are evidence and migration inputs only, never presumed C11-equivalent."
+  ],
+  "publication_posture": "No record is C11-authoritative until the complete package passes ingest boundary validation and receives a sealed replay manifest; partial package presence grants no authority."
+}
