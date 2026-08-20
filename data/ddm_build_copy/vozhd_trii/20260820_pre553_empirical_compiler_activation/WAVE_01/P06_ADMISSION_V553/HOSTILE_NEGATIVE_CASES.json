@@ -1,0 +1,61 @@
+{
+  "schema": "PRE553_P06_HOSTILE_NEGATIVE_CASES@1.0.0",
+  "status": "NORMALIZED_REQUIRED_OUTPUT__NO_SEMANTIC_REDESIGN",
+  "source_oracle": "HOSTILE_PREFLIGHT_ORACLE.md",
+  "accepted_p06_head": "d6a56e70822b48be53b74fd2ef9259e959fefc8e",
+  "case_count": 43,
+  "cases": [
+    {"id":"P06-N001","category":"ADMISSION_BOUNDARY","name":"NO_NAMED_STRUCTURAL_ADMISSION_RULE","input":"exact well-supported EmpiricalFact plus matching human-readable labels","expected":"MISSING_STRUCTURAL_ADMISSION_AUTHORITY","must_not":"emit positive StructuralEmpiricalAdmission"},
+    {"id":"P06-N002","category":"ADMISSION_BOUNDARY","name":"EXPLICIT_DENIAL","input":"named rule negative authority denies exact use","expected":"ADMISSION_DENIED","must_not":"emit positive projection"},
+    {"id":"P06-N003","category":"ADMISSION_BOUNDARY","name":"DISCOVERY_SCORE_TRAP","input":"high MI/NMI/Cramers-V/tree/cloud/discovery score without exact EmpiricalFact plus named structural rule","expected":"NONPOSITIVE","must_not":"admit score as structural truth"},
+    {"id":"P06-N004","category":"ADMISSION_BOUNDARY","name":"COORDINATE_STRATUM_NAME_COLLISION","input":"empirical coordinate label resembles structural label","expected":"NO_GENERATED_POSITION_INFERENCE","must_not":"map empirical coordinate to generated nine-stratum position"},
+    {"id":"P06-N005","category":"ADMISSION_BOUNDARY","name":"SURVEY_TO_PSYCHE_TRAP","input":"population prevalence or conditional/joint fact","expected":"NO_ACTOR_STATE_INFERENCE","must_not":"set belief/persona/identity/memory/knowledge/response"},
+    {"id":"P06-N006","category":"ADMISSION_BOUNDARY","name":"STRUCTURAL_TARGET_UNRESOLVED","input":"exact fact plus rule with unresolved structural target","expected":"STRUCTURAL_TARGET_UNRESOLVED","must_not":"emit ADMITTED"},
+    {"id":"P06-N007","category":"ADMISSION_BOUNDARY","name":"HASH_MISMATCH","input":"wrong EmpiricalFact/authority/receipt hash","expected":"INTEGRITY_FAILURE","must_not":"perform semantic evaluation before integrity gate"},
+
+    {"id":"P06-N008","category":"TYPED_STATE","name":"OBSERVED_ZERO","input":"exact observed-zero measurement","expected":"OBSERVED_ZERO_PRESERVED","condition":"may be ADMITTED only when exact named rule permits measured zero","must_not":"coerce to missing"},
+    {"id":"P06-N009","category":"TYPED_STATE","name":"ZERO_SUPPORT","input":"zero-support empirical fact","expected":"ZERO_SUPPORT_PRESERVED","must_not":"infer structural or actor impossibility"},
+    {"id":"P06-N010","category":"TYPED_STATE","name":"LOW_SUPPORT","input":"low-support empirical fact","expected":"LOW_SUPPORT_PRESERVED","condition":"positive only if named rule explicitly permits support/uncertainty state"},
+    {"id":"P06-N011","category":"TYPED_STATE","name":"UNCERTAINTY_UNQUANTIFIED","input":"uncertainty not lawfully quantifiable","expected":"UNCERTAINTY_UNQUANTIFIED","must_not":"fabricate interval or certainty"},
+    {"id":"P06-N012","category":"TYPED_STATE","name":"VALID_EMPTY","input":"coherent valid-empty result","expected":"VALID_EMPTY","must_not":"coerce to denial/missing authority/zero-support"},
+    {"id":"P06-N013","category":"TYPED_STATE","name":"DEFERRED","input":"exact external requirement unresolved","expected":"ADMISSION_DEFERRED","must_not":"emit positive admission before exact owner resolves requirement"},
+    {"id":"P06-N014","category":"TYPED_STATE","name":"MULTIPLE_BLOCKERS","input":"multiple applicable blocking states","expected":"FAIL_CLOSED_PRECEDENCE_PLUS_ALL_BLOCKER_REFS","precedence":"INTEGRITY_FAILURE > MISSING_STRUCTURAL_ADMISSION_AUTHORITY > UNKNOWN_OR_CONFLICTING_REQUIRED_AUTHORITY > ADMISSION_DENIED > NEGATIVE_AUTHORITY_ONLY > SOURCE_NOT_APPLICABLE_TO_STRUCTURAL_USE > EMPIRICAL_FACT_NONCOMPARABLE > TEMPORAL_SCOPE_MISMATCH > STRUCTURAL_TARGET_UNRESOLVED > INSUFFICIENT_EVIDENCE_UNDER_RULE > ADMISSION_DEFERRED > VALID_EMPTY > ADMITTED"},
+
+    {"id":"P06-N015","category":"SOURCE_PLURALITY","name":"SAME_LABEL_DIFFERENT_UNIVERSE","input":"two universes with harmonized labels","expected":"SEPARATE_BY_DEFAULT","must_not":"infer source relation authority"},
+    {"id":"P06-N016","category":"SOURCE_PLURALITY","name":"SHARED_PROVENANCE","input":"derivative/original provenance relation","expected":"NO_IMPLIED_LINKAGE_POOLING_BACKFILL","must_not":"manufacture respondent linkage/pooling/backfill"},
+    {"id":"P06-N017","category":"SOURCE_PLURALITY","name":"MULTI_UNIVERSE_FACT","input":"admission spans more than one universe","expected":"REQUIRE_EXACT_EXTERNAL_APPLICABILITY_RELATION_COMPOSITION_REFS","must_not":"compose without authority"},
+    {"id":"P06-N018","category":"SOURCE_PLURALITY","name":"SOURCE_DISAGREEMENT","input":"conflicting sources","expected":"PRESERVE_SEPARATE_IF_RULE_PERMITS_ELSE_TYPED_CONFLICT_NONCOMPARABILITY","must_not":"majority-vote or average by default"},
+    {"id":"P06-N019","category":"SOURCE_PLURALITY","name":"DUPLICATE_SUPPORT_TRAP","input":"same underlying source evidence under aliases/provenance paths","expected":"NO_DOUBLE_SUPPORT","must_not":"count twice by path presence"},
+
+    {"id":"P06-N020","category":"TEMPORAL_JURISDICTION","name":"RULE_APPLICABILITY_MISMATCH","input":"fact outside admission rule effective period/geography","expected":"TEMPORAL_SCOPE_MISMATCH","must_not":"repair or reinterpret scope"},
+    {"id":"P06-N021","category":"TEMPORAL_JURISDICTION","name":"TIMESTAMP_IS_NOT_V553","input":"timestamp present","expected":"NO_IMPLIED_V553_OPERATION","must_not":"infer V553 temporal requirement from timestamp alone"},
+    {"id":"P06-N022","category":"TEMPORAL_JURISDICTION","name":"POINT_FACT_NOT_TEMPORAL_RELATION","input":"point-in-time admitted structural fact","expected":"POINT_EVIDENCE_ONLY","must_not":"derive persistence/drift/reversal/rupture/sequence/baseline"},
+    {"id":"P06-N023","category":"TEMPORAL_JURISDICTION","name":"MISSING_CROSS_TIME_AUTHORITY","input":"comparison/harmonization requires external temporal/source comparability","expected":"FAIL_CLOSED_AT_V553_OR_EXTERNAL_OWNER","must_not":"manufacture comparability in P06"},
+    {"id":"P06-N024","category":"TEMPORAL_JURISDICTION","name":"USE_CHAIN_SCOPE","input":"U1 no-new-V553 use then U2 same admission requiring temporal meaning","expected":"U2_REEVALUATED_INDEPENDENTLY","must_not":"treat U1 exemption as permanent"},
+
+    {"id":"P06-N025","category":"V553_INGRESS","name":"RAW_EMPIRICAL_FACT_BYPASS","input":"EMPIRICAL_FACT/raw C11/discovery receipt/diagnostic score to V553","expected":"REJECT_FORBIDDEN_SEMANTIC_INPUT","must_not":"bypass StructuralEmpiricalAdmission"},
+    {"id":"P06-N026","category":"V553_INGRESS","name":"NONPOSITIVE_ADMISSION","input":"nonpositive StructuralEmpiricalAdmission","expected":"REFERENCE_OR_TYPED_BLOCKING_ONLY","must_not":"produce positive V553 temporal semantic objects"},
+    {"id":"P06-N027","category":"V553_INGRESS","name":"REQUEST_OWNERSHIP","input":"P06 asked to decide V553_REQUIRED/V553_NOT_REQUIRED or temporal operations/rules","expected":"OUT_OF_P06_JURISDICTION","must_not":"fill SCR553-owned request semantics"},
+    {"id":"P06-N028","category":"V553_INGRESS","name":"NO_TEMPORAL_OBJECT_FABRICATION","input":"P06 admission processing","expected":"NO_V553_OBJECT_IDENTITY_CREATION","must_not":"mint TEMPORAL_KEY/TEMPORAL_OBSERVATION/TEMPORAL_RELATION/TEMPORAL_LIMIT"},
+
+    {"id":"P06-N029","category":"M1_MAPPING","name":"EXACT_SLOT_COMPLETENESS","input":"positive direct-admission mapping","expected":"ALL_17_ACCEPTED_M1_DIRECT_SLOTS_PRESENT","must_not":"omit or synthesize missing material"},
+    {"id":"P06-N030","category":"M1_MAPPING","name":"POSITIVE_ONLY_BASIS","input":"StructuralEmpiricalAdmission receipt","expected":"DIRECT_STRUCTURAL_EMPIRICAL_ADMISSION_ONLY_IF_ADMITTED","must_not":"emit nonpositive direct candidate"},
+    {"id":"P06-N031","category":"M1_MAPPING","name":"NONPOSITIVE_MAPPING_TRAP","input":"missing/denied/deferred/noncomparable/valid-empty/integrity receipt","expected":"NEGATIVE_OR_REFERENCE_CONTEXT_ONLY","must_not":"masquerade as direct basis candidate"},
+    {"id":"P06-N032","category":"M1_MAPPING","name":"INDEPENDENT_SCR553_DECISION","input":"ADMITTED direct projection","expected":"SCR553_DECISION_STILL_REQUIRED_FOR_SAME_GOVERNED_USE","must_not":"infer V553_NOT_REQUIRED_FOR_THIS_USE or direct V554 eligibility"},
+    {"id":"P06-N033","category":"M1_MAPPING","name":"NO_P06_DEDUP","input":"one or more mapped admission candidates","expected":"SCR554_M1_OWNS_SIGNATURE_EQUIVALENCE_TEMPORAL_COMPLETENESS_DEDUP_PRECEDENCE_F1_F2_B1","must_not":"select canonical winner in P06"},
+    {"id":"P06-N034","category":"M1_MAPPING","name":"ORDER_STABILITY","input":"same set-like refs in different enumeration order","expected":"SAME_CANONICAL_MAPPING_HASH","condition":"role/order-bearing arrays remain semantic"},
+    {"id":"P06-N035","category":"M1_MAPPING","name":"NO_LATEST_FUZZY_TIEBREAK","input":"multiple candidate authorities/refs","expected":"EXACT_BINDING_ONLY","must_not":"use filesystem order/readiness/latest/nearest/label similarity"},
+
+    {"id":"P06-N036","category":"COMPATIBILITY","name":"LEGACY_PACKET_SHAPE","input":"V551/V551J/V552/V552J packet or filename","expected":"NO_AUTHORITY_BY_SHAPE","must_not":"infer retained structural meaning"},
+    {"id":"P06-N037","category":"COMPATIBILITY","name":"PARITY_REQUIRED","input":"compatibility migration","expected":"REQUIRE_EXACT_QUERY_FACT_NAMED_COMPATIBILITY_RULE_AND_PARITY_RECEIPT","must_not":"admit without full compatibility authority"},
+    {"id":"P06-N038","category":"COMPATIBILITY","name":"PARTIAL_PARITY","input":"matching aggregate or selected field only","expected":"INSUFFICIENT_FOR_COMPATIBILITY_ADMISSION","must_not":"claim parity from partial equality"},
+    {"id":"P06-N039","category":"COMPATIBILITY","name":"MISSING_PARITY","input":"no exact parity receipt","expected":"NO_POSITIVE_ADMISSION","must_not":"promote legacy meaning"},
+
+    {"id":"P06-N040","category":"REPLAY","name":"RULE_VERSION_CHANGE","input":"same empirical fact under revised structural-admission rule","expected":"DIFFERENT_ADMISSION_IDENTITY","must_not":"rewrite historical receipt"},
+    {"id":"P06-N041","category":"REPLAY","name":"EXACT_REPLAY","input":"same semantic inputs plus same authority hashes","expected":"SAME_ADMISSION_ID_CONTENT_HASH_TYPED_STATE"},
+    {"id":"P06-N042","category":"REPLAY","name":"CACHE_IRRELEVANCE","input":"cache presence/absence changes","expected":"NO_ADMISSION_TRUTH_OR_IDENTITY_CHANGE","must_not":"treat cache as authority"},
+    {"id":"P06-N043","category":"REPLAY","name":"DIAGNOSTIC_IRRELEVANCE","input":"nonauthoritative diagnostic ranking score changes","expected":"NO_ADMISSION_TRUTH_OR_IDENTITY_CHANGE","must_not":"bind admission identity to diagnostic ranking"}
+  ],
+  "acceptance_condition": "Implementation must satisfy every case without weakening D15 noncollapse, SCR553 temporal jurisdiction, accepted M1 direct consumer slots, source plurality, typed absence, or deterministic replay.",
+  "downstream_semantic_change": false
+}
