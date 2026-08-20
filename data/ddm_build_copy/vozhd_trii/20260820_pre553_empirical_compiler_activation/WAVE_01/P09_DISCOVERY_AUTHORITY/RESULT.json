@@ -1,0 +1,56 @@
+{
+  "assignment_id": "PRE553-W01-P09-001",
+  "agent_id": "PRE553_P09_DISCOVERY_AUTHORITY",
+  "worker_class": "SEAM_PREFLIGHT_SPECIALIST",
+  "repository": "maidiu/rawlsing",
+  "mission_branch": "agent/vozhd-trii-pre553-w09-discovery-authority-preflight",
+  "exact_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "runtime_writes": false,
+  "semantic_authority": false,
+  "result_token": "PRE553_P09_DISCOVERY_AUTHORITY_COMPLETE",
+  "disposition": "AUTONOMOUS_DISCOVERY_AUTHORITY_AND_COVERAGE_RECEIPTS_FROZEN",
+  "holdings": {
+    "candidate_grammar_precedes_search": true,
+    "data_selects_winners": true,
+    "winning_relationship_individually_predeclared": false,
+    "unbounded_search": false,
+    "materialize_all": false,
+    "reconstructibility_required": true,
+    "diagnostic_score_is_canonical_fact": false,
+    "exact_bounded_coverage": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+    "adaptive_coverage": "EXACT_RESULTS__NONEXHAUSTIVE_FRONTIER_COVERAGE",
+    "adaptive_candidate_states": ["EVALUATED", "PRUNED", "UNEVALUATED"],
+    "unevaluated_is_negative_evidence": false,
+    "heuristically_pruned_is_negative_evidence": false,
+    "unary_signal_required_for_exact_interaction_discovery": false
+  },
+  "exact_bounded_must_reach_when_inside_frontier": [
+    "XOR_or_zero_unary_signal_interaction",
+    "conditional_reversal",
+    "supported_minority_or_non_top_departure",
+    "recursive_branch_local_fork",
+    "same_respondent_cotravel",
+    "branch_conditioned_cotravel",
+    "higher_order_configuration_up_to_declared_arity"
+  ],
+  "authority_sources": [
+    "D01 capability genealogy",
+    "D02 recursive positional breakage genealogy",
+    "D03 co-signature/cloud genealogy",
+    "D04 cloud correctness/completeness",
+    "D07 governed workload authority",
+    "D08 empirical fact algebra",
+    "D12F autonomous social-discovery feeder",
+    "D12 terminal capability closure",
+    "D15 autonomous discovery architecture"
+  ],
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "DISCOVERY_AUTHORITY_CONTRACT.json",
+    "EXACT_BOUNDED_COVERAGE_ORACLE.json",
+    "ADAPTIVE_COVERAGE_RECEIPT_CONTRACT.json",
+    "DIAGNOSTIC_NONAUTHORITY.md"
+  ],
+  "conflict_found": false
+}

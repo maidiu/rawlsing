@@ -1,0 +1,104 @@
+{
+  "schema": "PRE553_EXACT_BOUNDED_COVERAGE_ORACLE@1.0.0",
+  "assignment_id": "PRE553-W01-P09-001",
+  "mode": "EXACT_BOUNDED",
+  "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+  "preconditions": [
+    "exact DiscoveryAuthority snapshot resolves immutably",
+    "frontier F is finite or finitely constructible and deterministically enumerable",
+    "candidate identity includes scope/topology/predicate/risk-set/measure semantics",
+    "underlying respondent incidence or information-equivalent exact contingency is replayable",
+    "query engine and validation semantics are pinned",
+    "tie/order behavior is deterministic"
+  ],
+  "coverage_pass_rule": "PASS iff every candidate in F has an exact terminal coverage disposition produced by direct evaluation or by a separately accepted mathematically equivalent/safe theorem that preserves the same candidate-specific semantics. Skipping a candidate for cost, score, proposal order, top-k, beam width, or absent unary signal is incompatible with COMPLETE_FOR_EXACT_DECLARED_FRONTIER.",
+  "terminal_candidate_dispositions": [
+    "EVALUATED_SUPPORTED",
+    "EVALUATED_VALID_EMPTY",
+    "EVALUATED_UNDERPOWERED",
+    "EVALUATED_NONCOMPARABLE",
+    "EVALUATED_DENIED_BY_EXACT_AUTHORITY",
+    "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+    "COVERED_BY_AUTHORITY_PREDECLARED_EXACT_FEASIBILITY_THEOREM",
+    "COVERED_BY_ACCEPTED_MATHEMATICALLY_EQUIVALENT_BATCH_COMPUTATION"
+  ],
+  "forbidden_complete_claim_dispositions": [
+    "UNEVALUATED_BUDGET",
+    "UNEVALUATED_STOPPING_RULE",
+    "UNEVALUATED_NOT_REACHED",
+    "PRUNED_HEURISTIC",
+    "PRUNED_UNARY_SCREEN_WITHOUT_SAFE_THEOREM",
+    "PRUNED_TOP_K_OR_BEAM",
+    "MISSING_TRACE"
+  ],
+  "hostile_oracles": [
+    {
+      "id": "EB-XOR-01",
+      "fixture": "two lawful binary conditioners A,B with zero unary association and deterministic A XOR B target",
+      "frontier_condition": "interaction family includes A AND B at K>=2",
+      "required": "A×B candidate is evaluated despite zero unary signal and can be selected if validation passes",
+      "failure": "any unary-signal prerequisite or primary-star-only search"
+    },
+    {
+      "id": "EB-REVERSAL-02",
+      "fixture": "pooled direction reverses after conditioning on lawful stratum S",
+      "frontier_condition": "conditional-reversal family includes pooled and S-conditioned facts",
+      "required": "compare exact pooled and conditioned EmpiricalFacts under compatible risk-set/measure semantics; emit reversal only if comparable",
+      "failure": "scalar association score alone or mismatched denominators"
+    },
+    {
+      "id": "EB-MINORITY-03",
+      "fixture": "supported third/non-top coordinate value has distinctive target distribution",
+      "frontier_condition": "value lies inside authority support/frontier",
+      "required": "candidate remains reachable and is not removed by top-two/top-k prevalence truncation",
+      "failure": "cost-driven omission reported as absence"
+    },
+    {
+      "id": "EB-RECURSIVE-04",
+      "fixture": "lawful child fork appears only inside a parent branch predicate",
+      "frontier_condition": "recursive depth/expansion grammar reaches child",
+      "required": "replay parent branch membership, build full branch-local authorized frontier, evaluate under same complete-for-frontier law",
+      "failure": "only majority-deviation path or only globally strong predictors considered"
+    },
+    {
+      "id": "EB-PARITY-05",
+      "fixture": "higher-order parity with zero lower-order signal",
+      "frontier_condition": "claimed family and K/J explicitly include required arity",
+      "required": "candidate reachable without lower-order signal prerequisite",
+      "failure": "greedy positive-gain descent used while retaining higher-order completeness claim"
+    },
+    {
+      "id": "EB-COTRAVEL-06",
+      "fixture": "same-respondent pair or branch-conditioned response relation",
+      "frontier_condition": "cotravel family authorized",
+      "required": "exact pair/J-way contingency and exact branch membership when conditioned; no modal-cell-only substitute",
+      "failure": "E3 cloud row or E4 score treated as source fact"
+    },
+    {
+      "id": "EB-ORDER-07",
+      "fixture": "same unordered frontier supplied in different file/question/input order",
+      "required": "identical candidate identities, coverage dispositions, and winning results",
+      "failure": "processing-order lower triangle, first-row duplicate semantics, or unstable tie order"
+    }
+  ],
+  "valid_empty_semantics": {
+    "token": "VALID_EMPTY",
+    "meaning": "no candidate in the exact declared frontier survives the declared validation/admission law",
+    "does_not_mean": [
+      "no relationship exists outside F",
+      "no unevaluated relationship exists",
+      "metaphysical impossibility"
+    ]
+  },
+  "receipt_minimum": [
+    "authority_ref_and_hash",
+    "frontier_definition_and_hash",
+    "candidate_count_or_exact_enumeration_proof",
+    "covered_candidate_count",
+    "per_candidate_or_replay-equivalent terminal dispositions",
+    "query_engine_and_algorithm_version",
+    "coverage theorem refs if any",
+    "deterministic replay key",
+    "typed result or VALID_EMPTY"
+  ]
+}

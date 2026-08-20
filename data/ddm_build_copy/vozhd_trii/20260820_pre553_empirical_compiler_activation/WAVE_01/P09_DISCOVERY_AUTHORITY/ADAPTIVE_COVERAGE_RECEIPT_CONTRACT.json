@@ -1,0 +1,120 @@
+{
+  "schema": "PRE553_ADAPTIVE_COVERAGE_RECEIPT_CONTRACT@1.0.0",
+  "assignment_id": "PRE553-W01-P09-001",
+  "mode": "ADAPTIVE_EXPLORATORY",
+  "coverage_claim": "EXACT_RESULTS__NONEXHAUSTIVE_FRONTIER_COVERAGE",
+  "receipt_identity": [
+    "authority_ref_and_hash",
+    "frontier_definition_and_hash",
+    "proposal_or_traversal_algorithm_id_version_hash",
+    "pruning_law_ref",
+    "stopping_rule_ref",
+    "validation_rule_ref",
+    "tie_order_or_rng_state_if_lawfully_random",
+    "substrate_and_query_engine_replay_refs"
+  ],
+  "candidate_state_partition": {
+    "EVALUATED": {
+      "definition": "candidate was exact-evaluated against the pinned empirical query/validation law",
+      "required_fields": [
+        "candidate_id",
+        "candidate_spec_or_hash",
+        "exact_query_or_fact_refs",
+        "evaluation_state",
+        "support_and_typed_limit_state",
+        "validation_state",
+        "diagnostic_refs_if_any"
+      ],
+      "allowed_evaluation_states": [
+        "SUPPORTED",
+        "VALID_EMPTY",
+        "UNDERPOWERED",
+        "NONCOMPARABLE",
+        "DENIED",
+        "MISSING_OR_CONFLICTING_AUTHORITY",
+        "INVALID_UNDER_DECLARED_TOPOLOGY_OR_RISK_SET"
+      ],
+      "negative_evidence": "only the exact candidate-specific typed evaluation may be negative evidence for that candidate under the declared law; it says nothing about unevaluated candidates"
+    },
+    "PRUNED": {
+      "definition": "candidate was inside F but deliberately not exact-evaluated because a declared pruning rule fired",
+      "required_fields": [
+        "candidate_id_or_deterministic_candidate_set_descriptor",
+        "prune_rule_ref",
+        "prune_reason_code",
+        "prune_class",
+        "proposal_state_at_prune",
+        "safe_theorem_ref_or_null"
+      ],
+      "prune_classes": [
+        "HEURISTIC",
+        "BUDGET_OR_RESOURCE",
+        "BEAM_OR_TOP_K",
+        "SCREEN",
+        "SAFE_NO_FALSE_NEGATIVE_THEOREM"
+      ],
+      "negative_evidence": false,
+      "coverage_semantics": "pruned candidates remain non-evaluated unless an accepted theorem explicitly provides candidate-specific coverage sufficient for the claimed class"
+    },
+    "UNEVALUATED": {
+      "definition": "candidate was in F and neither evaluated nor explicitly pruned before execution ended",
+      "required_fields": [
+        "candidate_id_or_deterministic_remaining_set_descriptor",
+        "unevaluated_reason",
+        "frontier_membership_proof_or_replay_rule"
+      ],
+      "reason_codes": [
+        "STOPPING_RULE_REACHED",
+        "BUDGET_EXHAUSTED",
+        "NOT_REACHED_BY_TRAVERSAL",
+        "INTERRUPTED",
+        "OTHER_TYPED_NONEXECUTION"
+      ],
+      "negative_evidence": false,
+      "semantic_absence": false
+    }
+  },
+  "mandatory_counts": [
+    "frontier_candidate_count_or_exact_constructibility_descriptor",
+    "evaluated_count",
+    "pruned_count",
+    "unevaluated_count"
+  ],
+  "invariant": "evaluated + pruned + unevaluated must exactly partition the authorized frontier F, either by explicit candidate IDs or by nonoverlapping deterministic set descriptors whose union reconstructs F",
+  "safe_screen_law": {
+    "default": "screening does not create completeness",
+    "xor_rule": "unary-signal screening has no generic no-false-negative theorem for interaction/XOR and therefore cannot support general interaction completeness",
+    "broader_claim_requires": [
+      "separately accepted theorem identity",
+      "exact discovery class and input-semantics applicability",
+      "proof that pruned set cannot contain a candidate meeting the declared validation target",
+      "replayable theorem application"
+    ]
+  },
+  "winner_law": {
+    "emitted_discovery_must_be_exact_validated": true,
+    "diagnostic_score_may_propose_or_rank": true,
+    "diagnostic_score_alone_may_create_canonical_result": false,
+    "winner_selection_rule_must_be_predeclared": true
+  },
+  "recursive_receipts": {
+    "branch_child_requires_exact_parent_membership_replay": true,
+    "branch_local_frontier_receipt_required": true,
+    "unreached_child_branches_are_negative_evidence": false
+  },
+  "honest_summary_language": {
+    "allowed": [
+      "exact results among evaluated candidates",
+      "nonexhaustive over the authorized frontier",
+      "candidate X was not evaluated",
+      "candidate set Y was pruned by rule R",
+      "no evaluated candidate survived validation"
+    ],
+    "forbidden": [
+      "no relationship exists when candidates remain unevaluated",
+      "pruned means empirically absent",
+      "low diagnostic score means canonical negative fact",
+      "adaptive run was complete absent an accepted safe-coverage theorem"
+    ]
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema": "PRE553_DISCOVERY_AUTHORITY_CONTRACT@1.0.0",
+  "assignment_id": "PRE553-W01-P09-001",
+  "authority_class": "DISCOVERY_AUTHORITY",
+  "semantic_authority": false,
+  "purpose": "Freeze the bounded pre-search authority envelope for autonomous empirical discovery. The authority bounds lawful candidates; data selects winners inside that envelope.",
+  "noncollapse": [
+    "DISCOVERY_AUTHORITY != DISCOVERY_RESULT",
+    "DISCOVERY_RESULT != MATERIALIZATION_AUTHORITY",
+    "MATERIALIZATION_AUTHORITY != CACHE_POLICY",
+    "EMPIRICAL_FACT != DIAGNOSTIC_SCORE",
+    "POPULATION_DISCOVERY != GENERATED_STRUCTURAL_POSITION",
+    "POPULATION_DISCOVERY != ACTOR_BELIEF_OR_RESPONSE"
+  ],
+  "required_presearch_fields": [
+    "authority_id",
+    "authority_version",
+    "authority_content_hash",
+    "discovery_family",
+    "mode",
+    "eligible_target_questions_or_components",
+    "eligible_empirical_coordinates",
+    "response_topology_and_typed_state_law",
+    "atomic_predicate_grammar",
+    "conjunction_and_composition_grammar",
+    "maximum_conditioner_arity_K",
+    "maximum_target_arity_J",
+    "recursive_branch_depth_and_expansion_grammar",
+    "source_and_respondent_universe_scope",
+    "time_wave_and_comparability_law",
+    "routing_applicability_risk_set_law",
+    "raw_or_weighted_measure_law",
+    "support_feasibility_and_sparse_cell_law",
+    "uncertainty_and_validation_authority_or_typed_unquantified_state",
+    "candidate_scoring_or_ranking_rule_if_any",
+    "pruning_law",
+    "coverage_claim",
+    "deterministic_tie_and_order_rules",
+    "algorithm_and_replay_identity"
+  ],
+  "candidate_families": [
+    "UNARY_SOCIAL_FORK",
+    "RESPONSE_X_EMPIRICAL_COORDINATE",
+    "BOUNDED_COORDINATE_CONJUNCTION",
+    "RESPONSE_X_COORDINATE_CONJUNCTION",
+    "PAIR_RESPONSE_COTRAVEL",
+    "BOUNDED_K_WAY_RESPONSE_CONFIGURATION",
+    "CONDITIONAL_REVERSAL_OR_SIMPSON",
+    "MINORITY_OR_NONMODAL_DEPARTURE",
+    "RECURSIVE_SUBGROUP_FORK",
+    "BRANCH_CONDITIONED_DISTRIBUTION",
+    "BRANCH_CONDITIONED_COTRAVEL",
+    "TEMPORAL_CHANGE",
+    "SOURCE_INDEXED_CROSS_UNIVERSE_DISAGREEMENT"
+  ],
+  "frontier_law": {
+    "candidate_grammar_precedes_search": true,
+    "winning_relationship_individually_predeclared": false,
+    "unbounded_semantic_search": "FORBIDDEN",
+    "individual_permissions_auto_compose": false,
+    "candidate_frontier_identity": "deterministic hash of authority snapshot plus fully expanded finite/finitely constructible grammar and exact universe/scope/topology/risk-set/measure semantics",
+    "materialize_all_candidates": false,
+    "reconstructibility": "REQUIRED"
+  },
+  "mode_law": {
+    "EXACT_BOUNDED": {
+      "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+      "evaluation_requirement": "every candidate in F is evaluated, or covered by a separately accepted mathematically equivalent computation/safe theorem whose conclusion is sufficient for the same exact candidate disposition",
+      "unary_signal_required": false,
+      "zero_lower_order_signal_reachable": true,
+      "typed_valid_empty": true
+    },
+    "ADAPTIVE_EXPLORATORY": {
+      "coverage_claim": "EXACT_RESULTS__NONEXHAUSTIVE_FRONTIER_COVERAGE",
+      "evaluated_subset_may_be_strict": true,
+      "evaluated_pruned_unevaluated_must_be_distinct": true,
+      "unevaluated_is_negative_evidence": false,
+      "heuristically_pruned_is_negative_evidence": false,
+      "safe_screen_may_expand_coverage_only_with_separately_accepted_no_false_negative_theorem": true
+    }
+  },
+  "empirical_fact_basis": {
+    "canonical_basis": "D08 governed respondent conditional relation algebra over respondent-bound incidence or information-equivalent exact contingency",
+    "fact_identity_requires": [
+      "scope_and_empirical_universe",
+      "target_identity_and_topology",
+      "condition_predicate_AST_or_hash",
+      "risk_set_and_routing_semantics",
+      "typed response state semantics",
+      "raw_or_weighted measure basis",
+      "support",
+      "branch provenance where applicable",
+      "authority_and_replay provenance"
+    ],
+    "association_scores_primary_facts": false,
+    "diagnostics_may_rank_or_propose_only_under_declared_rule": true
+  },
+  "mandatory_discoverability_when_inside_declared_frontier": {
+    "xor_or_zero_unary_signal_interaction": true,
+    "conditional_reversal": true,
+    "supported_minority_non_top_configuration": true,
+    "recursive_branch_local_candidate_frontier": true,
+    "same_respondent_cotravel": true,
+    "branch_conditioned_cotravel": true,
+    "higher_order_configuration_up_to_declared_K_or_J": true
+  },
+  "negative_authority": [
+    "no processing-order semantics where candidate relation is unordered",
+    "no top-k truncation converted into semantic absence",
+    "no source adjacency or shared labels converted into respondent linkage",
+    "no diagnostic score converted into canonical empirical fact by magnitude",
+    "no empirical coordinate promoted into generated actor position",
+    "no population discovery promoted into actor psyche"
+  ],
+  "source_holdings": [
+    "D01 unrestricted pair/XOR and reversal discovery losses",
+    "D02 recursive/minority/top-two information loss",
+    "D03 branch-conditioned cotravel and higher-order losses",
+    "D04 order/resume/topology defects and incomplete diagnostic persistence",
+    "D07 reconstructibility without global materialize-all workload",
+    "D08 typed conditional/joint fact algebra and diagnostic nonauthority",
+    "D12 autonomous discovery terminal requirement",
+    "D15 two-mode discovery architecture"
+  ]
+}
