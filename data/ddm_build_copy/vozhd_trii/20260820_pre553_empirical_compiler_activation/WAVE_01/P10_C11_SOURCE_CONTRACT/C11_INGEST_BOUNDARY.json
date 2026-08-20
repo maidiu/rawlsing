@@ -1,0 +1,161 @@
+{
+  "contract_id": "PRE553_C11_SOURCE_INGEST_BOUNDARY",
+  "version": "preflight-1",
+  "status": "NON_DISPOSITIVE_PREFLIGHT_FOR_HQ_SYNTHESIS",
+  "assignment_id": "PRE553-W01-P10-001",
+  "purpose": "Define the logical source-to-C11 admission boundary without selecting a storage engine, codec, index, cache, or source-retirement policy.",
+  "input_package": {
+    "name": "C11SourceReleaseCandidate",
+    "required_sections": [
+      "source_release_manifest",
+      "empirical_universes",
+      "respondent_identities",
+      "question_variable_bindings",
+      "respondent_events",
+      "routing_eligibility_facts_or_exact_rules",
+      "empirical_coordinate_facts",
+      "weight_measure_facts_or_typed_absence",
+      "authority_snapshots",
+      "source_universe_relations_or_explicit_distinct_default",
+      "predicate_replay_bindings_when_retained_objects_require_them",
+      "comparator_replay_bindings_or_typed_deferred_state",
+      "discovery_branch_replay_bindings_or_typed_deferred_state",
+      "structural_admission_replay_bindings_or_typed_not_applicable_state",
+      "candidate_replay_manifest"
+    ],
+    "source_release_manifest_required_fields": [
+      "source_artifact_id",
+      "source_artifact_content_hash",
+      "source_family_id",
+      "study_product_id",
+      "release_id",
+      "instrument_release_id",
+      "ingest_contract_version",
+      "declared_universe_refs",
+      "declared_authority_snapshot_refs",
+      "declared_record_counts_by_logical_family",
+      "source_snapshot_retention_ref"
+    ]
+  },
+  "boundary_phases": [
+    {
+      "phase": "B01_PIN_SOURCE_RELEASE",
+      "requirements": [
+        "Pin exact source artifact identity/hash and release identity before semantic normalization.",
+        "Reject latest/default/path-only source selection.",
+        "Retain source snapshot reference; ingest success does not authorize retirement."
+      ]
+    },
+    {
+      "phase": "B02_BIND_UNIVERSE",
+      "requirements": [
+        "Construct exact EmpiricalUniverse identity from raw source/study/release/instrument/geography/wave/time/sample-frame/design/respondent namespace facts.",
+        "Canonical aliases never replace raw universe identity.",
+        "Unknown universe fields are explicit typed states or exact authority refs, never omitted semantic meaning."
+      ]
+    },
+    {
+      "phase": "B03_BIND_RESPONDENTS",
+      "requirements": [
+        "Scope every respondent key to one exact universe.",
+        "Normalized respondent IDs require explicit bijective identity-map authority.",
+        "Cross-universe string equality grants no linkage."
+      ]
+    },
+    {
+      "phase": "B04_BIND_QUESTION_AND_TOPOLOGY",
+      "requirements": [
+        "Bind native question/variable/component/version to immutable semantic and topology authority.",
+        "Do not assume scalar singularity from observed row counts.",
+        "Canonical question identity is optional only with typed absence when no authority exists."
+      ]
+    },
+    {
+      "phase": "B05_EMIT_RESPONSE_EVENTS",
+      "requirements": [
+        "Emit one logical RespondentEvent per governed occurrence/component required by source topology.",
+        "Preserve event group, multiplicity index, semantic ordinal/rank, raw value, canonical value authority, and typed response state.",
+        "Never deduplicate events merely because respondent/question/value fields match."
+      ]
+    },
+    {
+      "phase": "B06_EMIT_ROUTING_RISK_SET",
+      "requirements": [
+        "Represent respondent-question applicability/risk-set incidence explicitly or by an exact deterministic replay rule plus all parent inputs.",
+        "Equal denominators do not establish identical risk sets.",
+        "A missing response row cannot stand in for not-asked/IAP/not-applicable state."
+      ]
+    },
+    {
+      "phase": "B07_EMIT_COORDINATES",
+      "requirements": [
+        "Emit respondent-bound conditionable coordinate facts over the future-authorizable frontier, not only current fixed V550 fields.",
+        "Preserve native coordinate identity/value/time and canonical crosswalk authority when present.",
+        "Do not map coordinate labels to generated structural position."
+      ]
+    },
+    {
+      "phase": "B08_EMIT_WEIGHT_MEASURE",
+      "requirements": [
+        "Bind each governed weight to respondent, basis, source variable, design/estimand authority, validity state, and recalibration rule when applicable.",
+        "Missing or invalid governed weights remain typed unavailable; generic 1.0 fill is forbidden.",
+        "Raw measure remains independently reconstructible."
+      ]
+    },
+    {
+      "phase": "B09_CLOSE_AUTHORITY_AND_SOURCE_RELATIONS",
+      "requirements": [
+        "Every semantic transform/routing/topology/weight/crosswalk/predicate/comparator/discovery/admission authority is immutable ID/version/hash addressed.",
+        "Universes remain distinct by default; pooling, linkage, overlap treatment, harmonization, backfill and deduplication are separate authority claims.",
+        "Provenance or shared canonical labels never imply composition authority."
+      ]
+    },
+    {
+      "phase": "B10_SEAL_REPLAY_IDENTITY",
+      "requirements": [
+        "Compute semantic projection identity covering all M01-M18 proof-relevant fields.",
+        "Bind frontier version, authority snapshot set, exact source content refs, deterministic tie/order rules, and replay protocol version.",
+        "Reject manifest if any required ref is missing, mutable, ambiguous, hash-mismatched, or cyclic without exact closure semantics."
+      ]
+    },
+    {
+      "phase": "B11_ATOMIC_ADMISSION",
+      "requirements": [
+        "Publish the source release into C11 only after all mandatory M01-M18 coverage checks pass.",
+        "Partial physical presence is not partial semantic authority.",
+        "Failure returns typed ingest disposition and leaves no package declared C11-authoritative."
+      ]
+    }
+  ],
+  "ingest_dispositions": [
+    "ACCEPTED_C11_LOGICAL_RELEASE",
+    "BLOCKED_MISSING_REQUIRED_AUTHORITY",
+    "BLOCKED_TYPED_SOURCE_UNKNOWN",
+    "REJECTED_INTEGRITY_FAILURE",
+    "REJECTED_TOPOLOGY_LOSS",
+    "REJECTED_EVENT_IDENTITY_COLLAPSE",
+    "REJECTED_RISK_SET_LOSS",
+    "REJECTED_WEIGHT_AUTHORITY_DEFAULT",
+    "REJECTED_SOURCE_UNIVERSE_COLLAPSE",
+    "REJECTED_REPLAY_NONDETERMINISM",
+    "REJECTED_UNAUTHORIZED_SEMANTIC_PROMOTION"
+  ],
+  "fail_closed_rules": [
+    "No fuzzy/latest/default/nearest authority or source selection.",
+    "No inferred source pooling or respondent linkage from alias, provenance, location, or matching identifiers.",
+    "No scalar collapse where topology permits multiselect/repeat/rank/order/component events.",
+    "No missing-row encoding for a semantically typed absence state.",
+    "No default weight, topology, routing, canonical value, or source relation.",
+    "No semantic authority from storage presence, cache presence, index presence, or successful parsing.",
+    "No empirical-coordinate to structural/generated-position promotion at ingest.",
+    "No query/discovery/structural-admission semantics synthesized by the C11 carrier.",
+    "No source-retirement claim from successful ingest alone."
+  ],
+  "current_substrate_posture": {
+    "postgres_respondent_response_position_weight": "MIGRATION_INPUT_AND_VALIDATION_ORACLE_ONLY__NOT_C11_EQUIVALENT",
+    "normalized_facet_ready_surfaces": "MIGRATION_INPUT_AND_VALIDATION_ORACLE_ONLY__NOT_C11_EQUIVALENT",
+    "v550_v550j_shared_respondent_substrate": "BOUNDED_SCALAR_REPLAY_EVIDENCE_ONLY__NOT_C11_EQUIVALENT",
+    "source_native_snapshots": "RETAINED_EVIDENCE__REQUIRE_ADDITIONAL_AUTHORITY_PROVENANCE_FOR_C11"
+  },
+  "equivalence_requirement": "A source/release may be declared equivalent to C11 only by a later positive source-equivalence proof spanning every M01-M18 distinction and applicable D13B P01-P20 replay dimension; schema/count/aggregate/selected-query parity is insufficient."
+}
