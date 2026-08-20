@@ -1,0 +1,30 @@
+{
+  "assignment_id":"IG01-W02-M2-SIDELINE-IMPLEMENT-001",
+  "worker_slot":2,
+  "chat_id":"CHAT-SCR555",
+  "worker_class":"SUB-VOZHD",
+  "most_recent_submitting_agent_id":"IMPLEMENTATION_GATE_REGENERATION_HARMONIZATION",
+  "new_agent_id":"IG_M2_SIDELINE_IMPLEMENTATION",
+  "mission_branch":"agent/vozhd-trii-ig-m2-atomic-route",
+  "exact_branch_base":"e5f4871fbdea74bdb1b19067d9161e381ca359ba",
+  "production_baseline_behind_chain":"0777a34e50221bde6801dbaca26c058a7350c9e8",
+  "write_allowlist":["rawlsing_next/m2_v555_atomic_route.py","rawlsing_next/tests/test_m2_v555_atomic_route.py"],
+  "read_only_prerequisite_paths":["rawlsing_next/m1_temporal_v554_admission_dedup.py","rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py"],
+  "binding_authorities":{
+    "ig_m1_head":"e5f4871fbdea74bdb1b19067d9161e381ca359ba",
+    "ig_m1_runtime_blob":"e8bd6376720a2de132b384e7771d71d8d39cf261",
+    "semantic_m2_head":"92128619122886d0ced877a29b42fdb453765246",
+    "semantic_m2_result_blob":"15ddb28e9fe036f9e5ea5a60a924f549adcccc05",
+    "semantic_m2_contract_blob":"cd974b514da5811feab5f7407b64e35cbde0a72c",
+    "scr555_head":"49a9ce7cd830eb670cf1f9d381d4d33e56ddf682",
+    "harmonized_campaign_head":"c450fa64cd4da2c15d915fb483cb559840d09dc9",
+    "implementation_dag_blob":"7c02b1af4bd8a2661a56e2e8235a6a080c3a524f",
+    "final_reclosure_head":"c4a3524f54af368a67ca50ccc85f5d5dca3d803b",
+    "sideline_law_blob":"1619b9cf57db8ef4f2d584f998d6faa51b49d688"
+  },
+  "required_test_scope":["rawlsing_next/tests/test_m2_v555_atomic_route.py","rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py"],
+  "finite_return_tokens":["IG_M2_SIDELINE_IMPLEMENTATION_COMPLETE","IG_M2_SIDELINE_IMPLEMENTATION_RETURN_FOR_HARMONIZATION","IG_M2_SIDELINE_IMPLEMENTATION_AUTHORITY_CONFLICT","BROAD_TOPOLOGY_CONTRADICTION_FOUND"],
+  "production_cutover_authority":false,
+  "legacy_runtime_write_authority":false,
+  "semantic_authority":false
+}
