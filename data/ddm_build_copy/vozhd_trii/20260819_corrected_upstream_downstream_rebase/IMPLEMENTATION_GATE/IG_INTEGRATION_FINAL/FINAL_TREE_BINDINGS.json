@@ -1,0 +1,52 @@
+{
+  "schema": "VOZHD_TRII_IG_FINAL_TREE_BINDINGS@1.0.0",
+  "assignment_id": "IG01-W08-FINAL-INTEGRATION-003",
+  "agent_id": "IG_FINAL_INTEGRATION",
+  "branch": "agent/vozhd-trii-ig-final-integration",
+  "exact_base": "d5fd39126ecd0ca277759e1cfa47af4b138c584c",
+  "semantic_authority": false,
+  "accepted_heads": {
+    "M1": "e5f4871fbdea74bdb1b19067d9161e381ca359ba",
+    "M2": "935749537b7f69a3861fe9434a48743ff70f3cb4",
+    "M3": "f67c09948310fac9b48bcc4a223358fc6f590b94",
+    "M4": "83694e95e853651c3a34ea1c11008521ba67f072",
+    "M5": "b2d86364fa57940c54304206c5d161a521359087",
+    "M6": "c7dfd69131d0909cd0e4a7bec223ba64ec5d6167",
+    "RENDER": "d5fd39126ecd0ca277759e1cfa47af4b138c584c",
+    "PSEPF": "dbed67bd83887afe310d9eeab827518d8cbf3a57",
+    "FIXTURE_SCAFFOLD": "9fd7694049d8b6e79534c98cdd93a9f141302215",
+    "INTEGRATION_PREFLIGHT": "a0e9392ea9947d643acacb49597b86d10c2b2aa9"
+  },
+  "pinned_tree": [
+    {"path":"rawlsing_next/m1_temporal_v554_admission_dedup.py","blob":"e8bd6376720a2de132b384e7771d71d8d39cf261","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py","blob":"e6471ace122466988bb17019f70816a59a04f1f7","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/m2_v555_atomic_route.py","blob":"deef8a60613635a10faf7d89cd8cdf0c3b8a0710","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/tests/test_m2_v555_atomic_route.py","blob":"8c641da532889f0a43e6bd4a5dbb5f8f0fb711ce","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/m3_v556_higher_order_structural.py","blob":"a4749541273c921ebe4ff7a0b91460bb1e016b87","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/tests/test_m3_v556_higher_order_structural.py","blob":"fd8ed8b4cfcfa932229534921e7ed9c3f43e657a","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/m4_v557_v558_publication_repository.py","blob":"8580de95e5a77343543a88b233e1ebb6a3c42648","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/tests/test_m4_v557_v558_publication_repository.py","blob":"f29a06ba2d3e43786a5562cae86a356721c6b922","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/m5_runtime_rsc_peer_prior.py","blob":"18735bdb31a220aed032aa722574d685e2bdddf5","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py","blob":"ef4faaa84b24b9b6ca62ae7eaa29018d57439c0c","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/m6_actor_safe_expression.py","blob":"74d9701cdc7dabccf61eb5089498db290c1efd9c","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/tests/test_m6_actor_safe_expression.py","blob":"a8e5b466a118413104783728aac3733416893993","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/render_bounded_expression.py","blob":"eef88095d1d647b5332aa5186a3a5df218fcf9f8","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/tests/test_render_bounded_expression.py","blob":"80bdec5d9dc66603c1bc0fcbdf7506a56b2b0f35","state":"UNCHANGED_ACCEPTED"},
+    {"path":"rawlsing_next/v3_psepf_zero_positive_guard.py","blob":"e0528d65215cb431196570c38bac4eae94217a1b","state":"ADDED_EXACT_BLOB"},
+    {"path":"rawlsing_next/tests/test_psepf_zero_positive_guard.py","blob":"21cfdee118d70d41def6ba654bbada5214cc1112","state":"ADDED_EXACT_BLOB"},
+    {"path":"rawlsing_next/tests/test_whole_machine_integration.py","blob":"e5fb1c4f5cc1979bbd0bbc38b48a2f03d318f72d","state":"ADDED_INTEGRATION_HARNESS"}
+  ],
+  "composition": {
+    "m1_m6_render_preserved_byte_for_byte": true,
+    "psepf_whole_branch_merged": false,
+    "psepf_exact_blob_materialization": true,
+    "path_collision_found": false,
+    "legacy_runtime_write": false,
+    "stage_close_runtime_read_added": false,
+    "positive_spdm_implemented": false,
+    "deployment": false,
+    "cutover": false,
+    "retirement": false
+  },
+  "verification_state": "TREE_BINDINGS_EXACT__FULL_FRESH_PACKAGE_TEST_EXECUTION_NOT_AVAILABLE_IN_CURRENT_RUNNER"
+}
