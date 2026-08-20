@@ -1,0 +1,129 @@
+{
+  "schema": "VOZHD_TRII_IG_INTEGRATION_ACCEPTANCE_PREFLIGHT_BINDINGS@1.0.0",
+  "assignment_id": "IG01-W08-INTEGRATION-ACCEPTANCE-PREFLIGHT-002",
+  "agent_id": "IG_INTEGRATION_ACCEPTANCE_PREFLIGHT",
+  "worker_class": "INSPECTORATE",
+  "authority": "NON_DISPOSITIVE_HOSTILE_INTEGRATION_PREFLIGHT_ONLY",
+  "repository": "maidiu/rawlsing",
+  "mission_branch": "agent/vozhd-trii-ig-integration-acceptance-preflight",
+  "exact_branch_base": "c7dfd69131d0909cd0e4a7bec223ba64ec5d6167",
+  "branch_precondition": "VERIFIED_IDENTICAL_TO_EXACT_BRANCH_BASE_BEFORE_WRITE",
+  "production_baseline": "0777a34e50221bde6801dbaca26c058a7350c9e8",
+  "runtime_writes_authorized": false,
+  "semantic_authority": false,
+  "cumulative_spine": {
+    "composition_rule": "M1_TO_M6_IS_ONE_LINEAR_ACCEPTED_SPINE__USE_EXACT_HEAD_AND_BLOBS__NO_BRANCH_LATEST",
+    "heads": {
+      "M1": "e5f4871fbdea74bdb1b19067d9161e381ca359ba",
+      "M2": "935749537b7f69a3861fe9434a48743ff70f3cb4",
+      "M3": "f67c09948310fac9b48bcc4a223358fc6f590b94",
+      "M4": "83694e95e853651c3a34ea1c11008521ba67f072",
+      "M5": "b2d86364fa57940c54304206c5d161a521359087",
+      "M6": "c7dfd69131d0909cd0e4a7bec223ba64ec5d6167"
+    },
+    "ancestry_proof": [
+      "M2 descends from M1",
+      "M3 descends from M2",
+      "M4 descends from M3",
+      "M5 descends from M4",
+      "M6 descends from M5",
+      "M6 descends from production baseline with exactly twelve added M1-M6 module/test paths and no legacy-file edits"
+    ],
+    "files": [
+      {"package":"M1","role":"runtime","path":"rawlsing_next/m1_temporal_v554_admission_dedup.py","blob":"e8bd6376720a2de132b384e7771d71d8d39cf261"},
+      {"package":"M1","role":"test","path":"rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py","blob":"e6471ace122466988bb17019f70816a59a04f1f7"},
+      {"package":"M2","role":"runtime","path":"rawlsing_next/m2_v555_atomic_route.py","blob":"deef8a60613635a10faf7d89cd8cdf0c3b8a0710"},
+      {"package":"M2","role":"test","path":"rawlsing_next/tests/test_m2_v555_atomic_route.py","blob":"8c641da532889f0a43e6bd4a5dbb5f8f0fb711ce"},
+      {"package":"M3","role":"runtime","path":"rawlsing_next/m3_v556_higher_order_structural.py","blob":"a4749541273c921ebe4ff7a0b91460bb1e016b87"},
+      {"package":"M3","role":"test","path":"rawlsing_next/tests/test_m3_v556_higher_order_structural.py","blob":"fd8ed8b4cfcfa932229534921e7ed9c3f43e657a"},
+      {"package":"M4","role":"runtime","path":"rawlsing_next/m4_v557_v558_publication_repository.py","blob":"8580de95e5a77343543a88b233e1ebb6a3c42648"},
+      {"package":"M4","role":"test","path":"rawlsing_next/tests/test_m4_v557_v558_publication_repository.py","blob":"f29a06ba2d3e43786a5562cae86a356721c6b922"},
+      {"package":"M5","role":"runtime","path":"rawlsing_next/m5_runtime_rsc_peer_prior.py","blob":"18735bdb31a220aed032aa722574d685e2bdddf5"},
+      {"package":"M5","role":"test","path":"rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py","blob":"ef4faaa84b24b9b6ca62ae7eaa29018d57439c0c"},
+      {"package":"M6","role":"runtime","path":"rawlsing_next/m6_actor_safe_expression.py","blob":"74d9701cdc7dabccf61eb5089498db290c1efd9c"},
+      {"package":"M6","role":"test","path":"rawlsing_next/tests/test_m6_actor_safe_expression.py","blob":"a8e5b466a118413104783728aac3733416893993"}
+    ],
+    "import_edges": [
+      {"from":"M1","to":[],"law":"stdlib only"},
+      {"from":"M2","to":["M1"]},
+      {"from":"M3","to":["M2"]},
+      {"from":"M4","to":["M1","M2","M3"],"law":"no stage-close artifact runtime reads"},
+      {"from":"M5","to":["M4"],"law":"structural peer eligibility only; no actor-state mutation or empirical-prior synthesis"},
+      {"from":"M6","to":["M5"],"law":"M5 evidence types may be verified but never provide direct positive behavioral semantics"}
+    ]
+  },
+  "accepted_psepf_sidecar": {
+    "head": "dbed67bd83887afe310d9eeab827518d8cbf3a57",
+    "base_relation": "INDEPENDENT_SIDELINE_FROM_PRODUCTION_BASELINE__DO_NOT_MERGE_WHOLE_BRANCH_HISTORY",
+    "files": [
+      {"path":"rawlsing_next/v3_psepf_zero_positive_guard.py","blob":"e0528d65215cb431196570c38bac4eae94217a1b"},
+      {"path":"rawlsing_next/tests/test_psepf_zero_positive_guard.py","blob":"21cfdee118d70d41def6ba654bbada5214cc1112"}
+    ],
+    "import_edges": [{"from":"PSEPF_ZERO_POSITIVE_GUARD","to":[],"law":"stdlib only"}],
+    "semantic_law": "ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE__ZERO_ACTOR_CAUSAL_RNG_SCHEDULER_EFFECT_UNLESS_SEPARATELY_ACCEPTED_OWNER_IS_EXACTLY_BOUND",
+    "final_composition_rule": "materialize or cherry-pick only these exact two file contents onto the accepted M6 spine; resulting blobs must equal the pinned blobs and no other path may change"
+  },
+  "fixture_scaffold": {
+    "head": "9fd7694049d8b6e79534c98cdd93a9f141302215",
+    "result_blob": "ae7c02599ff2c530c9101c6387bb78028363d079",
+    "h01_h20_manifest_blob": "bb2940150823ea1d253ef4e8a00b229a0e09c70f",
+    "replay_oracle_blob": "c56c73b410a31d21433b617748ad788c12f15cab",
+    "noncollapse_oracle_blob": "b7164ec4bcd12c17bf8b73982e63bd1fad471e68",
+    "fixture_vector_schema_blob": "4b948b283ad5673240a5b181d61c9b232f6e0c7d",
+    "execution_binding_blob": "644001697000ee0670e69159634fdbff4388fba7",
+    "law": "expected hostile verdicts are frozen; executable binding may not weaken or reinterpret them"
+  },
+  "render": {
+    "accepted_preflight_head": "385651927ff74c0edf3bce55a5174dfc8e59951e",
+    "accepted_preflight_result_blob": "7d391f25e65c6b32289d6659f27f3141ac377b7f",
+    "m6_to_render_binding_requirements_blob": "56a1de6cb5bfb1d991ea92338a07ed994877cc92",
+    "render_hostile_fixtures_blob": "14f74eda00add93b8f640ad8bac6f9b4b51c26c8",
+    "runtime_assignment": "IG01-W05-RENDER-BOUNDED-IMPLEMENT-001",
+    "runtime_branch": "agent/vozhd-trii-ig-render-bounded-realization",
+    "runtime_exact_base": "c7dfd69131d0909cd0e4a7bec223ba64ec5d6167",
+    "authoritative_runtime_state": "PENDING_DISPATCH_ACCEPTED_RETURN",
+    "required_success_token": "IG_RENDER_BOUNDED_IMPLEMENTATION_COMPLETE__READY_FOR_INTEGRATION",
+    "required_allowed_paths": [
+      "rawlsing_next/render_bounded_expression.py",
+      "rawlsing_next/tests/test_render_bounded_expression.py"
+    ],
+    "visible_candidate_evidence_nonbinding": {
+      "status": "VISIBLE_BRANCH_HAS_TWO_ALLOWED_PATHS_BUT_DISPATCH_HAS_NOT_ACCEPTED_RUNTIME_RETURN",
+      "runtime_blob_at_inspection": "eef88095d1d647b5332aa5186a3a5df218fcf9f8",
+      "test_blob_at_inspection": "80bdec5d9dc66603c1bc0fcbdf7506a56b2b0f35",
+      "candidate_import_edge": "RENDER_TO_M6_ONLY",
+      "may_be_used_as_final_authority": false
+    },
+    "binding_rule": "final integration must re-read dispatch and bind the exact accepted render head/result token/file blobs; mutable branch latest and this visible candidate snapshot are insufficient"
+  },
+  "spdm": {
+    "positive_authorized": false,
+    "state": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+    "blocked_subparts": [
+      "SITUATED_PHENOMENOLOGY",
+      "DISCLOSURE_WILLINGNESS_OR_PLAN",
+      "SALIENCE_SELECTION",
+      "INHIBITION",
+      "AFFECTIVE_FOREGROUNDING",
+      "INTERLOCUTOR_SPECIFIC_OPENNESS",
+      "REGISTER_SELECTION_AS_PSYCHOLOGICAL_MEDIATION"
+    ],
+    "integration_law": "must remain unimplemented and unavailable as fallback; its absence must not block independently authority-complete M1-M6/PSEPF/render acceptance"
+  },
+  "collision_and_import_preflight": {
+    "accepted_m1_m6_path_collision": false,
+    "accepted_psepf_vs_m1_m6_path_collision": false,
+    "accepted_inputs_legacy_runtime_import_detected": false,
+    "accepted_inputs_stage_close_runtime_import_detected": false,
+    "candidate_render_path_collision_detected": false,
+    "candidate_render_direct_m5_psepf_or_provenance_import_detected": false,
+    "final_render_collision_status": "RECHECK_AFTER_DISPATCH_ACCEPTANCE"
+  },
+  "final_binding_gate": {
+    "preflight_plan_complete": true,
+    "final_integration_ready_now": false,
+    "only_expected_pending_exact_runtime_binding": "DISPATCH_ACCEPTED_IG_RENDER_RETURN_HEAD_TOKEN_AND_FILE_BLOBS",
+    "on_blob_or_path_mismatch": "IG_INTEGRATION_PREFLIGHT_BLOCKED_EXACT_BINDING_REQUIRED",
+    "on_frozen_semantic_contradiction": "IG_INTEGRATION_PREFLIGHT_SEMANTIC_CONFLICT_FOUND"
+  }
+}
