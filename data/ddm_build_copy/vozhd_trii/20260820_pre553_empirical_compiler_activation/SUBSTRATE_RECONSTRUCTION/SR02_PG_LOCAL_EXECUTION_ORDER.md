@@ -25,8 +25,8 @@ Required preflight:
 Set:
 `ORDER_ROOT=data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION`
 
-Execution:
-`psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -f "$ORDER_ROOT/SR02_CURRENT_DB_PROVENANCE_PROBE.sql" > SR02_CURRENT_DB_PROVENANCE_RESULTS.txt 2>&1`
+Execution (fresh R2 receipt; do not overwrite the failed R1 receipt):
+`psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -f "$ORDER_ROOT/SR02_CURRENT_DB_PROVENANCE_PROBE.sql" > SR02_CURRENT_DB_PROVENANCE_RESULTS_R2.txt 2>&1`
 
 Return:
 - exact checkout HEAD;
@@ -35,7 +35,7 @@ Return:
 - result path;
 - byte size;
 - SHA-256;
-- complete result file;
+- complete `SR02_CURRENT_DB_PROVENANCE_RESULTS_R2.txt`;
 - completion token;
 - `git status -sb` after execution.
 
