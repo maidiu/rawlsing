@@ -1,0 +1,40 @@
+{
+  "schema":"VOZHD_TRII_E02_RETURN_ADJUDICATION_M5_M6@1.0.0",
+  "dispatch_epoch":"R03_STAGE_CLOSE_DISPATCH_EPOCH_02",
+  "status":"BOTH_ACCEPTED_FROZEN__RECYCLE_BUDGET_EXHAUSTED__COMMAND_REVIEW_REQUIRED",
+  "M5_FINAL":{
+    "assignment_id":"E02-W07-M5-FINAL-001",
+    "chat_id":"CHAT-SV3M",
+    "worker_slot":7,
+    "accepted_head":"54f163b38fb0589327ea7b50fd98b537d7d91831",
+    "result_blob":"2ee81a81d28562f661ff3c33c48bfad3c9b1ce49",
+    "token":"M5_ACCEPTED__V3_STRUCTURAL_PEER_PRIOR_SEAM_CLOSED",
+    "branch_scope":"PASS__ONLY_SEAMS_M5",
+    "required_outputs":"PASS__8_OF_8",
+    "authority_conflict":false,
+    "harmonization_required":false,
+    "broad_topology_contradiction":false,
+    "production_code_modified":false,
+    "adjudication":"ACCEPTED_FROZEN"
+  },
+  "M6_FINAL":{
+    "assignment_id":"E02-W01-M6-FINAL-001",
+    "chat_id":"CHAT-S554D",
+    "worker_slot":1,
+    "accepted_head":"a93335e577f018241d3d027bb8827a79907b9f28",
+    "result_blob":"920f3b4ceac47183d95668c2b302d5660c02f97d",
+    "token":"M6_ACCEPTED__V2_ACTOR_SAFE_EXPRESSION_SEAM_CLOSED",
+    "branch_scope":"PASS__ONLY_SEAMS_M6",
+    "required_outputs":"PASS__8_OF_8",
+    "tip_note":"final tip corrects causal-session spelling inside authorized V2_ACTOR_SAFE_INGRESS_HANDOFF.json; no semantic widening",
+    "authority_conflict":false,
+    "harmonization_required":false,
+    "broad_topology_contradiction":false,
+    "production_code_modified":false,
+    "adjudication":"ACCEPTED_FROZEN"
+  },
+  "epoch_assignment_count":4,
+  "epoch_recycle_budget":4,
+  "next_state":"FREEZE_FOR_COMMAND_REVIEW_02_BEFORE_FINAL_INSPECTORATE",
+  "production_implementation_authorized":false
+}
