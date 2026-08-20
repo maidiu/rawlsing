@@ -3,6 +3,10 @@
 
 No semantic normalization. No database writes. No C11 writes.
 Requires pyreadstat + pandas. Uses user_missing=True deliberately.
+
+Source-specific reader compatibility overrides are explicit, hash-bound by the
+checked-in inventory, and emitted into each physical manifest. They are never
+silent fallbacks.
 """
 from __future__ import annotations
 import argparse, csv, hashlib, json, math
@@ -11,6 +15,19 @@ from pathlib import Path
 from typing import Any
 import pandas as pd
 import pyreadstat
+
+# Explicit reader-compatibility rulings. These do NOT alter source bytes and do
+# not normalize values. They only control decoding of source-native metadata.
+SOURCE_READER_OVERRIDES = {
+    "EVS 1999.sav": {
+        "encoding": "latin1",
+        "reason": (
+            "Default pyreadstat metadata decoding fails with invalid byte sequence; "
+            "the exact frozen EVS 1999 SAV reads successfully under Latin-1. "
+            "Override is explicit and recorded for deterministic replay."
+        ),
+    },
+}
 
 
 def h256(path: Path) -> str:
@@ -59,14 +76,16 @@ def in_spss_missing(value: Any, ranges: list[dict[str,Any]]) -> str|None:
             if value==lo==hi: return json.dumps({'lo':j(lo),'hi':j(hi)},sort_keys=True)
     return None
 
-def scan(path: Path, fmt: str, chunksize: int) -> tuple[dict[str,Any],dict[str,dict[str,Any]]]:
+def scan(path: Path, fmt: str, chunksize: int, reader_override: dict[str,Any]|None = None) -> tuple[dict[str,Any],dict[str,dict[str,Any]]]:
     reader_fn=pyreadstat.read_sav if fmt=='sav' else pyreadstat.read_dta
-    _, meta=reader_fn(str(path), metadataonly=True, user_missing=True, apply_value_formats=False)
+    read_kwargs=dict(user_missing=True,apply_value_formats=False)
+    if reader_override and reader_override.get('encoding'):
+        read_kwargs['encoding']=reader_override['encoding']
+    _, meta=reader_fn(str(path), metadataonly=True, **read_kwargs)
     md=meta_dict(meta)
     cols=list(getattr(meta,'column_names',[]) or [])
     stats={c:{'rows_seen':0,'system_missing_count':0,'user_missing_count':0,'user_missing_by_native_code':Counter()} for c in cols}
-    kwargs=dict(user_missing=True,apply_value_formats=False)
-    for df,_ in pyreadstat.read_file_in_chunks(reader_fn,str(path),chunksize=chunksize,**kwargs):
+    for df,_ in pyreadstat.read_file_in_chunks(reader_fn,str(path),chunksize=chunksize,**read_kwargs):
         for c in df.columns:
             s=df[c]
             st=stats[c]; st['rows_seen'] += len(s)
@@ -84,8 +103,9 @@ def scan(path: Path, fmt: str, chunksize: int) -> tuple[dict[str,Any],dict[str,d
                 miss=(getattr(meta,'missing_user_values',{}) or {}).get(c,[])
                 if miss:
                     vc=s[~na].value_counts(dropna=False)
+                    miss_strings=set(map(str,miss))
                     for value,count in vc.items():
-                        if str(value) in set(map(str,miss)):
+                        if str(value) in miss_strings:
                             st['user_missing_count'] += int(count)
                             st['user_missing_by_native_code'][str(value)] += int(count)
     for st in stats.values():
@@ -106,16 +126,21 @@ def main():
     for i,row in enumerate(inv,1):
         name,fmt,expected=row['source_file'],row['format'].lower(),row['sha256']
         p=find_exact(Path(args.source_root),name,expected)
-        print(f'[{i}/{len(inv)}] {name}',flush=True)
-        md,stats=scan(p,fmt,args.chunksize)
+        override=SOURCE_READER_OVERRIDES.get(name)
+        enc=(override or {}).get('encoding')
+        print(f'[{i}/{len(inv)}] {name}' + (f' [encoding={enc}]' if enc else ''),flush=True)
+        md,stats=scan(p,fmt,args.chunksize,override)
         payload={
           'source_file':name,'format':fmt,'path':str(p),'size_bytes':p.stat().st_size,
-          'sha256':expected,'metadata':md,'variable_physical_counts':stats
+          'sha256':expected,
+          'reader_compatibility_override':j(override),
+          'metadata':md,'variable_physical_counts':stats
         }
         op=out/(name.replace('/','_')+'.physical_manifest.json')
         op.write_text(json.dumps(j(payload),indent=2,sort_keys=True,ensure_ascii=False)+'\n',encoding='utf-8')
         summary.append({
           'source_file':name,'format':fmt,'sha256':expected,'size_bytes':p.stat().st_size,
+          'reader_encoding_override':enc or '',
           'number_rows':md.get('number_rows'),'number_columns':md.get('number_columns'),
           'variables_with_spss_missing_ranges':len((md.get('missing_ranges') or {})),
           'variables_with_stata_extended_missing':len((md.get('missing_user_values') or {})),
@@ -126,6 +151,7 @@ def main():
         w=csv.DictWriter(f,fieldnames=summary[0].keys());w.writeheader();w.writerows(summary)
     receipt={
       'status':'COMPLETE','source_count':len(summary),'inventory_sha256':h256(Path(args.inventory)),
+      'reader_overrides':SOURCE_READER_OVERRIDES,
       'completion_token':'PRE553_SR03_35_SOURCE_NATIVE_METADATA_RECEIPT_COMPLETE'
     }
     (out/'RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
