@@ -52,7 +52,9 @@ from rawlsing_next.pre553_c11_integrity import (
     make_m01_m18_coverage,
     validate_public_carrier_object,
 )
-from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
+from rawlsing_next.pre553_c11_repository import (
+    C11LogicalRelease, C11Repository, _make_validated_release,
+)
 
 INGEST_CONTRACT_VERSION = "PRE553_C11_INGEST@1.0.0"
 FRONTIER_VERSION = "D13_C11_M01_M18@1.0.0"
@@ -699,7 +701,7 @@ def validate_c11_source_release(candidate: C11SourceReleaseCandidate) -> C11Logi
     })
     public_objects = tuple(sorted(_iter_public_objects(candidate), key=lambda obj: obj.ref.key))
     internal_records = tuple(sorted(_iter_internal_records(candidate), key=lambda obj: obj.ref.key))
-    return C11LogicalRelease(
+    return _make_validated_release(
         release_id=candidate.source_release_manifest.release_id,
         source_artifact_ref=candidate.source_release_manifest.source_artifact_ref,
         source_release_manifest_hash=candidate.source_release_manifest.content_hash,
