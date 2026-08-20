@@ -14,7 +14,6 @@ from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
     AuthoritySnapshot,
     CanonicalSemanticObject,
-    ExactRef,
     Pre553IntegrityError,
     Pre553SemanticCollapseError,
     authority_ref,
@@ -52,34 +51,30 @@ FORBIDDEN_SELECTOR_TOKENS = frozenset({
     "LATEST", "DEFAULT", "FUZZY", "NEAREST", "SEMVER", "SEMVER_FALLBACK", "*",
 })
 
-# Operation ownership is deliberately narrow. This is validation metadata, not
-# a grant: an actual AuthoritySnapshot still has to name the operation exactly.
-AUTHORITY_KIND_CEILINGS: Mapping[str, frozenset[str]] = MappingProxyType({
-    "SOURCE_SEMANTICS_TOPOLOGY": frozenset({
-        "INTERPRET_SOURCE_SEMANTICS", "INTERPRET_RESPONSE_TOPOLOGY",
-        "INTERPRET_SPECIAL_STATES",
-    }),
-    "NATIVE_CANONICAL_MAPPING_HARMONIZATION": frozenset({
-        "MAP_NATIVE_CANONICAL_IDENTIFIER", "MAP_NATIVE_CANONICAL_VALUE",
-    }),
-    "ROUTING_RISK_SET": frozenset({"EVALUATE_ROUTING", "EVALUATE_RISK_SET"}),
-    "COORDINATE_SEMANTICS": frozenset({"INTERPRET_EMPIRICAL_COORDINATE"}),
-    "WEIGHT_DESIGN_ESTIMAND": frozenset({
-        "INTERPRET_WEIGHT", "INTERPRET_DESIGN", "INTERPRET_ESTIMAND",
-        "RECALIBRATE_WEIGHT",
-    }),
-    "PREDICATE_GRAMMAR": frozenset({"BUILD_EMPIRICAL_PREDICATE", "BUILD_EMPIRICAL_QUERY"}),
-    "SOURCE_UNIVERSE_RELATION": frozenset({"ASSERT_SOURCE_RELATION"}),
-    "SOURCE_EQUIVALENCE": frozenset({"ASSERT_SOURCE_SEMANTIC_EQUIVALENCE"}),
-    "SOURCE_RESPONDENT_LINKAGE": frozenset({"LINK_RESPONDENTS"}),
-    "SOURCE_COMPOSITION_POOLING": frozenset({"POOL_SAMPLES", "COMPOSE_ESTIMANDS"}),
-    "SOURCE_BACKFILL": frozenset({"BACKFILL_SOURCE_VALUE"}),
-    "DISCOVERY_FRONTIER": frozenset({"BOUND_DISCOVERY_FRONTIER"}),
-    "STRUCTURAL_ADMISSION": frozenset({"ADMIT_EMPIRICAL_FACT_FOR_STRUCTURAL_USE"}),
-    "UNCERTAINTY_METHOD": frozenset({"EVALUATE_UNCERTAINTY"}),
-    "TARGET_USE_PERMISSION": frozenset({"PERMIT_EXACT_TARGET_USE"}),
-    "TEMPORAL_EVIDENCE": frozenset({"ASSERT_SOURCE_NATIVE_TIME_EVIDENCE"}),
-    "REPLAY_PROTOCOL": frozenset({"VERIFY_REPLAY", "CANONICALIZE_SEMANTIC_PROJECTION"}),
+# Descriptive ceilings carried from P01. They are intentionally NOT used to
+# manufacture a new operation vocabulary: an exact snapshot's own
+# governed_operations is dispositive for operation-name validation.
+AUTHORITY_KIND_CEILINGS: Mapping[str, tuple[str, ...]] = MappingProxyType({
+    "SOURCE_SEMANTICS_TOPOLOGY": (
+        "native question/component meaning", "response values/special states",
+        "response topology/multiplicity/order/rank"),
+    "NATIVE_CANONICAL_MAPPING_HARMONIZATION": (
+        "native-to-canonical identifier/value transformation",),
+    "ROUTING_RISK_SET": ("applicability", "routing", "risk-set semantics"),
+    "COORDINATE_SEMANTICS": ("empirical coordinate identity/value/unit/taxonomy",),
+    "WEIGHT_DESIGN_ESTIMAND": ("weight basis", "sampling/design", "estimand"),
+    "PREDICATE_GRAMMAR": ("empirical predicate/operator/query grammar",),
+    "SOURCE_UNIVERSE_RELATION": ("one named source-universe relation kind",),
+    "SOURCE_EQUIVALENCE": ("exact semantic/source equivalence in exact scope",),
+    "SOURCE_RESPONDENT_LINKAGE": ("exact respondent/person linkage",),
+    "SOURCE_COMPOSITION_POOLING": ("exact pooling/composition operation",),
+    "SOURCE_BACKFILL": ("exact directional backfill operation",),
+    "DISCOVERY_FRONTIER": ("candidate/search/validation/coverage frontier",),
+    "STRUCTURAL_ADMISSION": ("one exact empirical fact to one exact structural use",),
+    "UNCERTAINTY_METHOD": ("exact uncertainty method",),
+    "TARGET_USE_PERMISSION": ("exact target-use permission",),
+    "TEMPORAL_EVIDENCE": ("source-native effective/reference-time evidence",),
+    "REPLAY_PROTOCOL": ("canonical projection and deterministic replay law",),
 })
 
 
@@ -117,8 +112,8 @@ def validate_authority_snapshot(snapshot: AuthoritySnapshot) -> AuthoritySnapsho
         raise Pre553AuthorityError("authority decision state mismatch")
     if snapshot.decision_state in {"AUTHORITY_HASH_MISMATCH", "AUTHORITY_SCOPE_MISMATCH"}:
         raise Pre553AuthorityError("authority snapshot is in an integrity-failure state")
-    # Public ontology declarations in an authority must stay within P01 unless
-    # the authority is explicitly talking about a non-public external target.
+    # P10 carrier record names may never become public ontology by appearing in
+    # an authority envelope.
     for family in snapshot.governed_object_families:
         if isinstance(family, str) and family.split("@", 1)[0] in {
             "RespondentIdentity", "QuestionVariableBinding", "EmpiricalPredicateReplayBinding",
@@ -162,8 +157,8 @@ def require_positive_authority(
 ) -> AuthoritySnapshot:
     """Validate one exact positive snapshot for one exact use.
 
-    No source relation or semantic implication is inferred here. A matching
-    snapshot means only what its exact kind/operation/scope says.
+    A match means only what this snapshot's exact kind, operation and scope say;
+    no adjacent source relation or semantic implication is inferred.
     """
     snapshot = validate_authority_snapshot(snapshot)
     if snapshot.decision_state != POSITIVE_AUTHORITY_STATE:
@@ -171,12 +166,8 @@ def require_positive_authority(
             f"positive authority required; exact snapshot state is {snapshot.decision_state}")
     if authority_kind is not None and snapshot.authority_kind != authority_kind:
         raise Pre553AuthorityError("authority kind mismatch")
-    if operation is not None:
-        if operation not in snapshot.governed_operations:
-            raise Pre553AuthorityError("operation not named by exact authority")
-        ceiling = AUTHORITY_KIND_CEILINGS.get(snapshot.authority_kind, frozenset())
-        if ceiling and operation not in ceiling:
-            raise Pre553AuthorityError("operation exceeds authority-kind semantic ceiling")
+    if operation is not None and operation not in snapshot.governed_operations:
+        raise Pre553AuthorityError("operation not named by exact authority")
     if object_family is not None:
         require_public_object_family(object_family)
         bare = object_family.split("@", 1)[0]
@@ -262,12 +253,10 @@ def validate_object_authority_closure(
 ) -> tuple[AuthoritySnapshot, ...]:
     if not isinstance(obj, CanonicalSemanticObject):
         raise Pre553AuthorityError("expected PRE553 canonical public object")
-    resolved = []
-    for ref in obj.authority_snapshot_refs:
-        resolved.append(registry.resolve_exact(ref).snapshot)
+    resolved = tuple(registry.resolve_exact(ref).snapshot for ref in obj.authority_snapshot_refs)
     if obj.schema_id != "AuthoritySnapshot" and not resolved:
         raise Pre553AuthorityError("public semantic object lacks authority closure")
-    return tuple(resolved)
+    return resolved
 
 
 def validate_replay_authority_closure(
@@ -284,7 +273,7 @@ def validate_relation_authority_only(
     *,
     exact_relation_operation: str,
 ) -> AuthoritySnapshot:
-    """Validate a named source-relation operation without granting any other relation kind."""
+    """Validate one named relation operation without granting any adjacent relation kind."""
     allowed = {
         "ASSERT_SOURCE_RELATION": "SOURCE_UNIVERSE_RELATION",
         "ASSERT_SOURCE_SEMANTIC_EQUIVALENCE": "SOURCE_EQUIVALENCE",
@@ -306,7 +295,7 @@ def validate_structural_admission_authority(
     target_use_ref: Any,
     source_universe_ref: Any | None = None,
 ) -> AuthoritySnapshot:
-    """Validate admission authority only; this function does not make an admission decision."""
+    """Validate admission authority only; this function does not make a decision."""
     return require_positive_authority(
         snapshot,
         authority_kind="STRUCTURAL_ADMISSION",
