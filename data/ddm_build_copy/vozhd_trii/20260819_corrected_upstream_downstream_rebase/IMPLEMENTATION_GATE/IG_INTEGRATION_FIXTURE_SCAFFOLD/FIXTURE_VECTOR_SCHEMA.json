@@ -1,0 +1,32 @@
+{
+  "$id": "IGIntegrationFixtureVector@1.0.0",
+  "description": "Declarative scaffold schema only. It carries frozen hostile/replay expectations and has no runtime semantic authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["fixture_id", "family", "authority_pins", "given", "mutation", "expected", "forbidden_repairs", "semantic_write_authority"],
+  "properties": {
+    "fixture_id": {"type":"string","minLength":1},
+    "family": {"enum":["HOSTILE","REPLAY","NONCOLLAPSE","PERMISSION","TYPED_STATE","REFERENCE_CLOSURE"]},
+    "authority_pins": {"type":"array","items":{"type":"string"}},
+    "given": {"type":"object"},
+    "mutation": {"type":"object"},
+    "expected": {
+      "type":"object",
+      "required":["verdict"],
+      "properties": {
+        "verdict":{"type":"string"},
+        "positive_semantic_effect":{"enum":["UNCHANGED","ZERO","ALLOWED_WITHIN_EXISTING_CEILING","NOT_APPLICABLE"]},
+        "typed_state":{"type":["string","null"]},
+        "identity_relation":{"type":["string","null"]},
+        "permission_relation":{"type":["string","null"]}
+      }
+    },
+    "forbidden_repairs": {"type":"array","items":{"type":"string"}},
+    "semantic_write_authority": {"const": false},
+    "notes": {"type":"string"}
+  },
+  "execution_binding": {
+    "status": "UNBOUND",
+    "law": "A later explicit activation adjudication must map vectors to exact executable test paths/functions without changing the frozen expected semantics."
+  }
+}
