@@ -1,0 +1,47 @@
+{
+  "assignment_id": "IG01-W08-FINAL-INTEGRATION-003",
+  "chat_id": "CHAT-SINSP",
+  "worker_slot": 8,
+  "worker_class": "SUB_VOZHD",
+  "agent_id": "IG_FINAL_INTEGRATION",
+  "branch": "agent/vozhd-trii-ig-final-integration",
+  "exact_base": "d5fd39126ecd0ca277759e1cfa47af4b138c584c",
+  "status": "COMPOSITION_COMPLETE__FRESH_EXACT_FULL_SUITE_EXECUTION_UNVERIFIED",
+  "result_token": "IG_INTEGRATION_BOUNDED_EXACT_BINDING_FAILURE",
+  "reason": "The exact tree composition and hostile bindings are complete and no frozen semantic violation/conflict was found, but the current execution environment cannot network-clone the repository and the repository exposes no GitHub Actions runner. A fresh byte-exact run of every unchanged package-local test plus the final harness therefore could not be established.",
+  "exact_composition": {
+    "accepted_m1_m6_render_preserved": true,
+    "psepf_runtime_blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+    "psepf_test_blob": "21cfdee118d70d41def6ba654bbada5214cc1112",
+    "psepf_whole_branch_merge": false,
+    "integration_harness_path": "rawlsing_next/tests/test_whole_machine_integration.py",
+    "integration_harness_blob": "e5fb1c4f5cc1979bbd0bbc38b48a2f03d318f72d"
+  },
+  "execution": {
+    "whole_machine_command": "PYTHONPATH=/tmp/igfinal pytest -q /tmp/igfinal/rawlsing_next/tests/test_whole_machine_integration.py",
+    "whole_machine_result": "21 passed in 0.17s",
+    "h01_h20": "PASS_LOCAL_EXECUTABLE_BINDING_CHECK",
+    "p01_p12": "PASS_LOCAL_EXECUTABLE_BINDING_CHECK",
+    "fresh_byte_exact_all_package_local_tests": "NOT_EXECUTED",
+    "github_actions_workflow_available": false,
+    "github_commit_status_checks_available": false
+  },
+  "findings": {
+    "implementation_semantic_violation": false,
+    "semantic_conflict": false,
+    "path_collision": false,
+    "legacy_runtime_import_added": false,
+    "stage_close_runtime_read_added": false,
+    "positive_spdm_implemented": false
+  },
+  "changes": {
+    "accepted_m1_m6_render_runtime_or_tests": false,
+    "legacy_runtime": false,
+    "stage_close_authority": false,
+    "semantic_contract": false,
+    "deployment": false,
+    "cutover": false,
+    "retirement": false
+  },
+  "required_next_gate": "Run the unchanged accepted M1-M6/PSEPF/render package-local tests and rawlsing_next/tests/test_whole_machine_integration.py from the exact final branch tree in a byte-exact checkout. If all pass, final reclosure adjudication may consume this composition without semantic changes."
+}
