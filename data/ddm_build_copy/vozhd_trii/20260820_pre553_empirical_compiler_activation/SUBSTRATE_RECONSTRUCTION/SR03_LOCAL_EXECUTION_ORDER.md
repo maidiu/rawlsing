@@ -30,10 +30,10 @@ Required preflight:
 Set:
 `ORDER_ROOT=data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION`
 
-Execute using the local source root containing the exact hash-matched 35 files, normally:
-`python "$ORDER_ROOT/SR03_SOURCE_NATIVE_METADATA_PROBE.py" --inventory "$ORDER_ROOT/SOURCE_BYTE_INVENTORY.csv" --source-root /Users/matthewsmith/Desktop/Rawlsing/data/Data --output-dir SR03_SOURCE_PHYSICAL_MANIFESTS`
+Execute into a fresh R2 output directory; do not merge with or overwrite the partial R1 output:
+`python "$ORDER_ROOT/SR03_SOURCE_NATIVE_METADATA_PROBE.py" --inventory "$ORDER_ROOT/SOURCE_BYTE_INVENTORY.csv" --source-root /Users/matthewsmith/Desktop/Rawlsing/data/Data --output-dir SR03_SOURCE_PHYSICAL_MANIFESTS_R2`
 
-Return the complete output directory plus:
+Return the complete `SR03_SOURCE_PHYSICAL_MANIFESTS_R2` directory plus:
 - exact checkout HEAD;
 - exact command;
 - exit code;
