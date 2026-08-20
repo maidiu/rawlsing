@@ -33,7 +33,6 @@ from rawlsing_next.m4_v557_v558_publication_repository import (
     ReferenceClassError,
     AuthorityRef,
     ContextQueryItem,
-    ExactRef,
     RepositoryEntry,
     ResolverPolicy,
     V557DecisionState,
@@ -219,6 +218,7 @@ def _m2_eval(tag: str, *, uses=("REVIEW",)) -> M2Evaluation:
 
 
 def _m3_eval(tag: str, route_refs) -> M3Evaluation:
+    roles = ("SOURCE_SIDE", "RECEIVER_SIDE")
     bindings = tuple(
         {
             "v555_route_identity_ref": ref,
@@ -226,13 +226,21 @@ def _m3_eval(tag: str, route_refs) -> M3Evaluation:
             "ordinal_or_null": index,
             "multiplicity_index": 0,
         }
-        for index, (ref, role) in enumerate(zip(route_refs, ("SOURCE_SIDE", "RECEIVER_SIDE")), start=1)
+        for index, (ref, role) in enumerate(zip(route_refs, roles), start=1)
     )
     replay = _h(f"m3-replay-{tag}")
     obj = {
         "object_id": f"urn:rawlsing:v556:higher-order:sha256:{replay}",
         "semantic_family": "V556_TOPOLOGY",
         "typed_outcome_state": "SUPPORTED",
+        "rule_authority": {
+            "semantic_family": "V556_TOPOLOGY",
+            "minimum_cardinality": 2,
+            "maximum_cardinality_or_unbounded_marker": "UNBOUNDED",
+            "participant_order_policy": "ORDERED",
+            "participant_roles": roles,
+            "same_route_reuse_policy": "FORBIDDEN",
+        },
         "participant_bindings": bindings,
         "source_composition_authority": None,
         "semantic_payload": {"topology_kind": "EXACT_TEST_RELATION", "tag": tag},
@@ -305,12 +313,56 @@ def test_direct_m1_m2_and_m3_paths_coexist_without_filler_or_reidentification():
     m3_obj = structural_object_from_m3(m3_eval)
     assert m3_obj.object_id == m3_eval.v556_object["object_id"]
     assert len(m3_obj.required_dependency_refs) == 2
+    assert m3_obj.content_hash == semantic_hash(m3_eval.v556_object)
 
     objects = (*m1_objects, m2_obj, m3_obj)
     entries = tuple(V557PublicationEntry(o, _gov(o)) for o in objects)
     publication = build_v557_publication_bundle(entries)
     assert {e.obj.producer_family for e in publication.entries} == {"V554", "V555", "V556"}
     assert len(publication.entries) == len(objects)
+
+
+def test_v555_tuple_field_one_must_remain_exact_f1_and_b1_cannot_be_promoted():
+    original = _m2_eval("tuple-guard")
+    bad_ident = ("urn:test:f1:wrong",) + original.canonical_route_identity[1:]
+    bad_hash = semantic_hash(list(bad_ident))
+    bad_route = dict(original.route)
+    bad_route["canonical_route_identity"] = bad_ident
+    bad_route["canonical_route_identity_hash"] = bad_hash
+    bad_route["route_id"] = f"urn:rawlsing:v555:route:sha256:{bad_hash}"
+    bad = replace(original, canonical_route_identity=bad_ident, canonical_route_identity_hash=bad_hash, route=bad_route)
+    with pytest.raises(M4IntegrityError, match="field 1"):
+        structural_object_from_m2(bad, require_direct_handoff=False)
+
+    b1_ident = (original.exact_v554_b1_ref["object_id"],) + original.canonical_route_identity[1:]
+    b1_hash = semantic_hash(list(b1_ident))
+    b1_route = dict(original.route)
+    b1_route["canonical_route_identity"] = b1_ident
+    b1_route["canonical_route_identity_hash"] = b1_hash
+    b1_route["route_id"] = f"urn:rawlsing:v555:route:sha256:{b1_hash}"
+    b1_bad = replace(original, canonical_route_identity=b1_ident, canonical_route_identity_hash=b1_hash, route=b1_route)
+    with pytest.raises(M4IntegrityError):
+        structural_object_from_m2(b1_bad, require_direct_handoff=False)
+
+
+def test_m3_rule_owned_cardinality_is_enforced_without_changing_producer_bytes():
+    p1_payload = {"route": "p1-card"}
+    p2_payload = {"route": "p2-card"}
+    refs = (
+        {"kind": V555_SEMANTIC_FAMILY, "object_id": "urn:test:v555:p1-card", "content_hash": semantic_hash(p1_payload)},
+        {"kind": V555_SEMANTIC_FAMILY, "object_id": "urn:test:v555:p2-card", "content_hash": semantic_hash(p2_payload)},
+    )
+    good = _m3_eval("cardinality", refs)
+    wrapped = structural_object_from_m3(good)
+    assert wrapped.content_hash == semantic_hash(good.v556_object)
+
+    bad_obj = dict(good.v556_object)
+    bad_rule = dict(bad_obj["rule_authority"])
+    bad_rule["minimum_cardinality"] = 3
+    bad_obj["rule_authority"] = bad_rule
+    bad = replace(good, v556_object=bad_obj)
+    with pytest.raises(M4IntegrityError, match="occurrence count"):
+        structural_object_from_m3(bad)
 
 
 def test_v556_role_order_cardinality_multiplicity_survives_and_partial_nary_fails_closed():
@@ -347,9 +399,12 @@ def test_v556_role_order_cardinality_multiplicity_survives_and_partial_nary_fail
     with pytest.raises(ClosureIntegrityError, match="partial n-ary"):
         build_v558_repository_bundle(publication, (root_e, p1_e, p2_e), reference_edges=(e1,))
     repo = build_v558_repository_bundle(publication, (root_e, p1_e, p2_e), reference_edges=(e1, e2))
-    participant_edges = [e for e in repo.reference_edges if e.edge_role == "PARTICIPANT"]
-    assert [(e.participant_role, e.semantic_ordinal, e.multiplicity_key) for e in participant_edges] == [
-        ("SOURCE_SIDE", 1, "0"), ("RECEIVER_SIDE", 2, "0")
+    participant_edges = sorted(
+        (e for e in repo.reference_edges if e.edge_role == "PARTICIPANT"),
+        key=lambda e: e.semantic_ordinal,
+    )
+    assert [(e.participant_role, e.semantic_ordinal, e.multiplicity_key, e.declared_cardinality) for e in participant_edges] == [
+        ("SOURCE_SIDE", 1, "0", "2..n"), ("RECEIVER_SIDE", 2, "0", "2..n")
     ]
 
 
@@ -412,6 +467,21 @@ def test_stale_or_corrupt_locator_fails_before_repository_acceptance():
     stale = replace(loc, authoritative_object_hash=_h("different-object"))
     with pytest.raises(M4IntegrityError, match="reversibly preserve"):
         RepositoryEntry(obj, gov, stale)
+
+
+def test_stale_repository_and_query_checksums_fail_closed():
+    obj = _obj("checksums")
+    entry = _entry(obj, "checksums")
+    publication, repo = _repo_for_roots((entry,))
+    query = make_context_query((ContextQueryItem(exact_resolution_key(entry.locator), ("REVIEW",)),))
+
+    stale_repo = replace(repo, repository_hash=_h("stale-repository"))
+    with pytest.raises(ClosureIntegrityError, match="repository bundle checksum"):
+        resolve_v558(stale_repo, query)
+
+    stale_query = replace(query, query_hash=_h("stale-query"))
+    with pytest.raises(M4IntegrityError, match="ContextQuery identity/hash"):
+        resolve_v558(repo, stale_query)
 
 
 def test_exact_index_key_has_no_fuzzy_latest_or_missing_key_repair():
