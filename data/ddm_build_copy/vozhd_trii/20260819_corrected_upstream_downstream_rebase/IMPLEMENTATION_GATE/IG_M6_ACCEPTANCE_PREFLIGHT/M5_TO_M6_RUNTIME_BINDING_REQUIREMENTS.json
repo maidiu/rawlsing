@@ -1,0 +1,116 @@
+{
+  "schema": "IG_M5_TO_M6_RUNTIME_BINDING_REQUIREMENTS@1.0.0",
+  "authority": "NON_DISPOSITIVE_ACCEPTANCE_PREFLIGHT_ONLY",
+  "purpose": "Freeze required observable facts for future IG-M6 acceptance without predicting the still-unaccepted IG-M5 runtime API.",
+  "accepted_base": "83694e95e853651c3a34ea1c11008521ba67f072",
+  "accepted_m6_seam_head": "a93335e577f018241d3d027bb8827a79907b9f28",
+  "accepted_m6_contract": "M6_V3_TO_V2_ACTOR_SAFE_EXPRESSION_SEAM@1.0.0",
+  "m5_runtime_state": "IN_PROGRESS_NOT_YET_ACCEPTED",
+  "m5_runtime_symbols": {
+    "accepted_head": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME",
+    "module_path": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME",
+    "rsc_runtime_type": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME",
+    "validation_result_type": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME",
+    "currentness_receipt_type": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME",
+    "historical_receipt_type": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME",
+    "entry_points": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME",
+    "exception_types": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME",
+    "call_signatures": "UNBOUND_UNTIL_ACCEPTED_M5_RUNTIME"
+  },
+  "m5_semantic_invariants": {
+    "noncollapse": [
+      "ResolvedStructuralContext!=V3EmpiricalPossibilityInput",
+      "ResolvedStructuralContext!=ActorCausalState",
+      "V3EmpiricalPossibilityInput!=ActorCausalState"
+    ],
+    "rsc_eligibility_is_actor_mutation_authority": false,
+    "active_causal_eligibility_is_actor_mutation_authority": false,
+    "structural_peer_is_actor_accessible_truth": false,
+    "m5_result_is_actor_safe_claim_entry": false,
+    "m5_result_is_expression_permission": false,
+    "zero_direct_actor_effect": [
+      "NO_DIRECT_GENERATED_POSITION_MUTATION",
+      "NO_DIRECT_MEMORY_MUTATION",
+      "NO_DIRECT_KNOWLEDGE_CREATION",
+      "NO_DIRECT_BELIEF_CREATION",
+      "NO_DIRECT_UNCERTAINTY_CREATION",
+      "NO_DIRECT_NONKNOWLEDGE_CREATION",
+      "NO_DIRECT_RELATIONSHIP_TRUTH_CREATION",
+      "NO_DIRECT_ACTION_CREATION",
+      "NO_DIRECT_RESPONSE_CREATION",
+      "NO_DIRECT_PERSONA_CREATION",
+      "NO_DIRECT_VOICE_CREATION",
+      "NO_DIRECT_ACTOR_SAFE_ENVELOPE_ENTRY_CREATION"
+    ],
+    "historical_receipts_immutable": true,
+    "refresh_is_prospective_only": true,
+    "structural_and_empirical_peer_currentness_independent": true,
+    "provenance_grants_composition_pooling_linkage_estimand_authority": false
+  },
+  "runtime_edge_law": {
+    "direct_positive_edge_M5_to_M6": "FORBIDDEN",
+    "lawful_path": [
+      "ACCEPTED_M5_STRUCTURAL_PEER_RUNTIME_EVIDENCE",
+      "SEPARATELY_GOVERNED_V3_CAUSAL_OR_EPISTEMIC_OWNER_IF_APPLICABLE",
+      "CURRENT_VERIFIED_ADP017_ACTOR_ACCESSIBLE_TRUTH",
+      "ActorAccessibleRenderEnvelope@1.0.0",
+      "ActorSafeClaimEntry@1.0.0",
+      "M6_V2_EXPRESSION_INGRESS"
+    ],
+    "prohibited_shortcuts": [
+      "ResolvedStructuralContext->ActorSafeClaimEntry",
+      "V3EmpiricalPossibilityInput->ActorSafeClaimEntry",
+      "ActorCausalState_without_ADP017_permission->ActorSafeClaimEntry",
+      "M5_VALIDATION_SUCCESS->ActorSafeClaimEntry",
+      "M5_CURRENTNESS->EXPRESSION_PERMISSION",
+      "M5_HISTORICAL_RECEIPT->EXPRESSION_PERMISSION",
+      "M5_REPLAY_RECEIPT->EXPRESSION_PERMISSION"
+    ]
+  },
+  "future_binding_acceptance_requirements": [
+    {
+      "id": "M5B-01",
+      "requirement": "Pin the exact accepted IG-M5 runtime head before any concrete M5 symbol is imported or referenced by IG-M6.",
+      "failure": "M6_RUNTIME_BINDING_UNRESOLVED"
+    },
+    {
+      "id": "M5B-02",
+      "requirement": "Bind only concrete M5 symbols actually present at the accepted head; no guessed aliases, analogous names, compatibility shims, mutable-latest lookup or reflection-based fallback.",
+      "failure": "M6_RUNTIME_BINDING_UNRESOLVED"
+    },
+    {
+      "id": "M5B-03",
+      "requirement": "Demonstrate that M5 structural-peer eligibility/currentness alone cannot create or modify actor-safe entries, ADP-017 stance/accessibility/permission state, or V2 expression authority.",
+      "failure": "M6_FORBIDDEN_DIRECT_M5_ACTOR_EFFECT"
+    },
+    {
+      "id": "M5B-04",
+      "requirement": "Demonstrate that M5 noncollapse remains observable at runtime: RSC, empirical possibility input and actor causal state are not interchangeable containers or aliases.",
+      "failure": "M6_M5_NONCOLLAPSE_VIOLATION"
+    },
+    {
+      "id": "M5B-05",
+      "requirement": "Any later actor-safe claim causally downstream of structural-peer use must name independently governed V3/ADP-017 actor-facing transition/accessibility authority; M6 may not infer this relation from provenance reachability.",
+      "failure": "M6_MISSING_ACTOR_SAFE_AUTHORITY"
+    },
+    {
+      "id": "M5B-06",
+      "requirement": "M5 historical receipts and stale predecessors remain audit/replay evidence only; prospective refresh cannot rewrite them and M6 cannot use them as current actor-access authority.",
+      "failure": "M6_STALE_OR_HISTORICAL_PRIOR_PROMOTION"
+    },
+    {
+      "id": "M5B-07",
+      "requirement": "Changing only M5 structural prior/provenance while the exact current actor-safe envelope and lawful V2 inputs remain fixed causes no M6 behavioral semantic change unless a separately governed V3 actor-state transition changed the envelope itself.",
+      "failure": "M6_UPSTREAM_PRIOR_BEHAVIORAL_INTERFERENCE"
+    }
+  ],
+  "m6_positive_boundary": {
+    "envelope": "ActorAccessibleRenderEnvelope@1.0.0",
+    "entry": "ActorSafeClaimEntry@1.0.0",
+    "required_state": "CURRENT_AND_VERIFIED",
+    "adp017_version": "1.0.0",
+    "adp017_blob": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+    "no_fallback": true
+  },
+  "situated_phenomenology_behavior": "BLOCKED_NAMED_AUTHORITY_REQUIRED"
+}
