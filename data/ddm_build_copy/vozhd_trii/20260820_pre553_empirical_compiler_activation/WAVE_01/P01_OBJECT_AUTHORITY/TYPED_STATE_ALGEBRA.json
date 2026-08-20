@@ -1,0 +1,114 @@
+{
+  "schema": "PRE553_TYPED_STATE_ALGEBRA@1.0.0",
+  "assignment_id": "PRE553-W01-P01-001",
+  "authority": "NON_DISPOSITIVE_WAVE_01_PREFLIGHT_SYNTHESIS_ONLY",
+  "exact_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "purpose": "Preserve D08/D12/D13/D15 typed distinctions across C11 incidence, query results, source relations, discovery, structural admission, authority and replay. Missing storage is never allowed to silently encode a semantic state that the governing source/query requires to be explicit.",
+  "global_laws": [
+    "MISSING_ROW != TYPED_ABSENCE",
+    "SUBSTANTIVE_RESPONSE != MISSING != DK != REFUSAL != IAP_OR_INAPPLICABLE != NOT_ASKED != INVALID_UNRESOLVED",
+    "OBSERVED_ZERO != ZERO_SUPPORT != ZERO_OVERLAP != VALID_EMPTY",
+    "ZERO_SUPPORT != MISSING_RESPONDENT_ELIGIBILITY",
+    "NONCOMPARABLE != MISSING != DENIED != DEFERRED",
+    "MISSING_AUTHORITY != EMPIRICAL_NEGATIVE",
+    "AUTHORITY_UNKNOWN != ACTOR_UNCERTAINTY_OR_NONKNOWLEDGE",
+    "INSUFFICIENT_SUPPORT != NO_LAWFUL_CANDIDATES",
+    "COVERAGE_LIMITED_OR_NOT_CLAIMED != NEGATIVE_EVIDENCE_OUTSIDE_EVALUATED_FRONTIER",
+    "INTEGRITY_FAILURE != VALID_EMPTY",
+    "HASH_MISMATCH != EMPIRICAL_ZERO",
+    "DIAGNOSTIC_SCORE_STATE != EMPIRICAL_FACT_STATE",
+    "EMPIRICAL_FACT_STATE != STRUCTURAL_ADMISSION_STATE"
+  ],
+  "state_families": {
+    "RESPONSE_EVENT_STATE": {
+      "positive": ["SUBSTANTIVE_RESPONSE"],
+      "typed_absence_or_special": ["MISSING", "DK", "REFUSAL", "IAP", "INAPPLICABLE", "NOT_ASKED", "SOURCE_SPECIFIC_SPECIAL", "INVALID_UNRESOLVED"],
+      "requirements": ["Each state is explicit when source semantics distinguish it.", "Absence of a substantive event does not determine which absence state applies.", "Source-specific special states retain source-native identity and mapping authority."]
+    },
+    "EMPIRICAL_COORDINATE_STATE": {
+      "positive": ["OBSERVED_COORDINATE"],
+      "nonpositive": ["UNKNOWN", "MISSING", "NOT_LAWFULLY_CONDITIONABLE", "INVALID_UNRESOLVED"],
+      "requirements": ["Coordinate state does not imply generated structural position or actor state."]
+    },
+    "ROUTING_ELIGIBILITY_STATE": {
+      "positive": ["ELIGIBLE_APPLICABLE"],
+      "nonpositive": ["NOT_ASKED", "INAPPLICABLE", "ROUTING_UNKNOWN", "RULE_UNAVAILABLE", "NOT_ELIGIBLE"],
+      "requirements": ["Risk-set member identity is semantic, not just denominator count.", "Equal counts with different member sets remain distinct."]
+    },
+    "WEIGHT_MEASURE_STATE": {
+      "positive": ["WEIGHT_VALID_AUTHORIZED"],
+      "nonpositive": ["WEIGHT_MISSING", "WEIGHT_INVALID", "WEIGHT_NOT_AUTHORIZED", "WEIGHT_BASIS_UNRESOLVED"],
+      "requirements": ["No implicit weight=1.0 repair.", "Raw measure remains separately available when weighted measure is unavailable."]
+    },
+    "SOURCE_UNIVERSE_STATE": {
+      "positive_or_neutral": ["UNIVERSE_IDENTIFIED"],
+      "relation_limits": ["UNKNOWN_SOURCE_RELATION", "NONCOMPARABLE", "LINKAGE_NOT_AUTHORIZED", "POOLING_NOT_AUTHORIZED", "BACKFILL_NOT_AUTHORIZED"],
+      "requirements": ["Distinct-by-default is the source relation baseline."]
+    },
+    "SOURCE_UNIVERSE_RELATION_STATE": {
+      "positive": ["RELATION_AUTHORIZED_FOR_EXACT_KIND_AND_SCOPE"],
+      "nonpositive": ["DISTINCT_BY_DEFAULT", "UNKNOWN_SOURCE_RELATION", "NONCOMPARABLE", "LINKAGE_NOT_AUTHORIZED", "POOLING_NOT_AUTHORIZED", "BACKFILL_NOT_AUTHORIZED", "OVERLAP_TREATMENT_UNAUTHORIZED", "RELATION_DENIED", "RELATION_OUT_OF_SCOPE"],
+      "requirements": ["A positive state authorizes only the named relation kind and scope.", "Semantic equivalence, linkage, pooling, backfill, overlap treatment and retirement do not substitute for one another."]
+    },
+    "PREDICATE_STATE": {
+      "positive": ["PREDICATE_RESOLVED_AUTHORIZED"],
+      "nonpositive": ["PREDICATE_UNRESOLVED", "PREDICATE_UNAUTHORIZED", "OPERAND_UNAVAILABLE", "RISK_SET_UNAVAILABLE", "OUT_OF_SCOPE"]
+    },
+    "QUERY_STATE": {
+      "positive": ["QUERY_AUTHORIZED_RESOLVABLE"],
+      "nonpositive": ["QUERY_UNAUTHORIZED", "TARGET_UNAVAILABLE", "PREDICATE_UNRESOLVED", "RISK_SET_UNAVAILABLE", "MEASURE_UNAVAILABLE", "SOURCE_SCOPE_UNAVAILABLE", "VALID_EMPTY_QUERY_FRONTIER"]
+    },
+    "EMPIRICAL_FACT_STATE": {
+      "positive": ["SUPPORTED", "OBSERVED_ZERO"],
+      "bounded_or_absent": ["ZERO_SUPPORT", "ZERO_OVERLAP", "LOW_SUPPORT", "NONCOMPARABLE", "NOT_APPLICABLE", "UNAVAILABLE", "UNCERTAINTY_UNQUANTIFIED", "UNRESOLVED", "VALID_EMPTY"],
+      "integrity": ["INTEGRITY_FAILURE"],
+      "requirements": ["OBSERVED_ZERO means a governed risk set/support exists and the governed outcome measure is zero.", "ZERO_SUPPORT means the governed denominator/support is zero or absent under the exact risk-set semantics and cannot be promoted to an observed zero.", "VALID_EMPTY is a lawful evaluated empty result, not missing authority or integrity failure."]
+    },
+    "DISCOVERY_AUTHORITY_STATE": {
+      "positive": ["EXACT_BOUNDED_AUTHORIZED", "ADAPTIVE_EXPLORATORY_AUTHORIZED"],
+      "nonpositive": ["NO_LAWFUL_CANDIDATES", "COVERAGE_NOT_CLAIMED", "AUTHORITY_MISSING", "AUTHORITY_DENIED", "OUT_OF_SCOPE"]
+    },
+    "DISCOVERY_RESULT_STATE": {
+      "positive": ["DISCOVERED_RESULT_SUPPORTED"],
+      "nonpositive": ["VALID_EMPTY", "INSUFFICIENT_SUPPORT", "NONCOMPARABLE", "COVERAGE_LIMITED", "PRUNED_BY_AUTHORITY", "UNEVALUATED"],
+      "requirements": ["UNEVALUATED is never a negative empirical result.", "COVERAGE_LIMITED does not imply exhaustive absence beyond the evaluated frontier.", "A supported discovery result remains a discovery receipt, not structural admission."]
+    },
+    "STRUCTURAL_ADMISSION_STATE": {
+      "positive": ["ADMITTED_FOR_EXACT_STRUCTURAL_USE"],
+      "nonpositive": ["ADMISSION_DENIED", "MISSING_AUTHORITY", "DEFERRED", "NONCOMPARABLE", "INSUFFICIENT_EVIDENCE", "OUT_OF_SCOPE", "UNRESOLVED"],
+      "integrity": ["INTEGRITY_FAILURE"],
+      "requirements": ["Only ADMITTED_FOR_EXACT_STRUCTURAL_USE is positive structural-admission authority.", "Admission is exact-use scoped; it is not generic structural truth for other uses.", "Applicable denial/noncomparability/limit authority cannot be downgraded to a positive admission."]
+    },
+    "AUTHORITY_STATE": {
+      "positive": ["ALLOW"],
+      "nonpositive": ["DENY", "DEFER", "MISSING_AUTHORITY", "UNKNOWN", "OUT_OF_SCOPE", "SUPERSEDED_NOT_REPLAYABLE"],
+      "integrity": ["AUTHORITY_HASH_MISMATCH", "AUTHORITY_SCOPE_MISMATCH"],
+      "requirements": ["Later authority versions do not reinterpret historical objects.", "DEFER is not DENY and does not manufacture a semantic negative.", "Missing/unknown authority fails closed for any operation requiring positive authority."]
+    },
+    "REPLAY_STATE": {
+      "positive": ["REPLAY_VERIFIED"],
+      "nonpositive": ["REPLAY_INPUT_MISSING", "AUTHORITY_UNAVAILABLE", "REPLAY_UNRESOLVED"],
+      "integrity": ["HASH_MISMATCH", "SEMANTIC_PROJECTION_MISMATCH", "NONDETERMINISTIC_REPLAY"],
+      "requirements": ["Replay failure never triggers fuzzy/latest reconstruction.", "A serialized-file hash alone cannot prove semantic equivalence unless all proof-relevant fields are covered."]
+    },
+    "INTEGRITY_STATE": {
+      "positive": ["VERIFIED"],
+      "nonpositive": ["INTEGRITY_FAILURE", "HASH_MISMATCH", "REFERENCE_CLOSURE_FAILURE", "SCHEMA_OR_VERSION_MISMATCH", "AMBIGUOUS_EXACT_IDENTITY"]
+    }
+  },
+  "precedence_rules": {
+    "generic_fail_closed_order": ["INTEGRITY_FAILURE", "EXPLICIT_DENIAL_OR_NONCOMPARABILITY", "MISSING_OR_DEFERRED_REQUIRED_AUTHORITY", "TYPED_DOMAIN_ABSENCE_OR_EMPTY", "POSITIVE_STATE"],
+    "note": "This is a cross-object preflight precedence only. It does not replace owner-specific stage decision order where a frozen downstream contract is more specific."
+  },
+  "forbidden_collapses": [
+    {"from": "MISSING_ROW", "to": "MISSING_OR_NOT_ASKED_OR_INAPPLICABLE", "allowed": false},
+    {"from": "ZERO_SUPPORT", "to": "OBSERVED_ZERO", "allowed": false},
+    {"from": "VALID_EMPTY", "to": "INTEGRITY_FAILURE", "allowed": false},
+    {"from": "NONCOMPARABLE", "to": "MISSING", "allowed": false},
+    {"from": "DENIED", "to": "DEFERRED", "allowed": false},
+    {"from": "SYSTEM_UNKNOWN", "to": "ACTOR_UNCERTAINTY_OR_NONKNOWLEDGE", "allowed": false},
+    {"from": "DISCOVERY_UNEVALUATED", "to": "EMPIRICAL_NEGATIVE", "allowed": false},
+    {"from": "EMPIRICAL_SUPPORTED", "to": "STRUCTURAL_ADMITTED", "allowed": false},
+    {"from": "DIAGNOSTIC_HIGH_SCORE", "to": "EMPIRICAL_OR_STRUCTURAL_TRUTH", "allowed": false}
+  ]
+}
