@@ -1,15 +1,25 @@
 import hashlib
+from dataclasses import replace
+from types import SimpleNamespace
 
 import pytest
 
+import rawlsing_next.pre553_c11_ingest as c11_ingest
+import rawlsing_next.pre553_empirical_query as empirical_query
 from rawlsing_next.pre553_empirical_authority import (
     AuthorityRegistry,
     Pre553AuthorityConflict,
     Pre553AuthorityError,
+    require_exact_authority_ref,
 )
-from rawlsing_next.pre553_empirical_objects import AuthorityRef, AuthoritySnapshot, ExactRef
-from rawlsing_next.pre553_c11_integrity import ReplayManifest
-from rawlsing_next.pre553_c11_repository import C11Repository
+from rawlsing_next.pre553_empirical_objects import (
+    AuthorityRef,
+    AuthoritySnapshot,
+    ExactRef,
+    semantic_hash,
+)
+from rawlsing_next.pre553_c11_integrity import ReplayManifest, authority_snapshot_set_hash
+from rawlsing_next.pre553_c11_repository import C11Repository, _make_validated_release
 from rawlsing_next.pre553_replay_audit import (
     FORBIDDEN_SELECTOR_PROBES,
     HOSTILE_CLASSES,
@@ -92,6 +102,50 @@ def _manifest(tag: str = "m") -> ReplayManifest:
     )
 
 
+def _i02_replay_fixture(tag: str = "i02"):
+    replay_authority = _snapshot(
+        f"{tag}-replay",
+        kind="REPLAY_PROTOCOL",
+        operations=("REPLAY_EXACT_C11",),
+        families=("ReplayReceipt@1.0.0",),
+    )
+    source_ref = _ref("SOURCE_ARTIFACT", tag)
+    closure_refs = (_ref("Closure", f"{tag}-package"),)
+    projection = {"candidate": tag, "semantic": "exact"}
+    manifest = ReplayManifest(
+        frontier_version=c11_ingest.FRONTIER_VERSION,
+        authority_snapshot_set_hash=authority_snapshot_set_hash((replay_authority,)),
+        source_substrate_content_refs=(source_ref,),
+        semantic_projection_id=c11_ingest.SEMANTIC_PROJECTION_ID,
+        semantic_projection_hash=semantic_hash(projection),
+        deterministic_tie_order_rules_ref=_ref("TieOrderRules", f"{tag}-canonical"),
+        replay_protocol_version="1.0.0",
+        replay_protocol_authority_ref=replay_authority.authority_ref,
+        closure_refs=closure_refs,
+    )
+    candidate = SimpleNamespace(
+        candidate_replay_manifest=manifest,
+        authority_snapshots=(replay_authority,),
+        source_release_manifest=SimpleNamespace(source_artifact_ref=source_ref),
+    )
+    return candidate, replay_authority, projection, closure_refs
+
+
+def _nonempty_repository() -> C11Repository:
+    manifest = _manifest("repository-present")
+    release = _make_validated_release(
+        release_id="REL-R11-PRESENT",
+        source_artifact_ref=_ref("SOURCE_ARTIFACT", "repository-present"),
+        source_release_manifest_hash=_h("repository-present-manifest"),
+        semantic_release_hash=_h("repository-present-semantic-release"),
+        replay_manifest=manifest,
+        public_objects=(),
+        internal_records=(),
+        m01_m18_coverage={},
+    )
+    return C11Repository((release,))
+
+
 def test_r11_hostile_registry_is_complete_and_finite():
     assert HOSTILE_CLASSES == (
         "HISTORICAL_AUTHORITY_VERSION_PINNING",
@@ -132,14 +186,6 @@ def test_authority_id_version_hash_mismatch_fails_closed():
 
 def test_registry_rejects_same_id_version_with_conflicting_hashes():
     first = _snapshot("conflict")
-    second = _snapshot("conflict")
-    object.__setattr__(
-        second,
-        "_semantic_fields",
-        second.semantic_fields,
-    )
-    # A conflicting same-id/version snapshot is modeled by a separately exact
-    # authority tuple with the same id/version and a different content hash.
     different = AuthoritySnapshot(
         typed_state="ALLOW",
         producer_replay_locator_or_reference_root="urn:test:replay:conflict-2",
@@ -172,8 +218,15 @@ def test_missing_authority_has_no_neighbor_fallback():
 
 
 @pytest.mark.parametrize("selector", FORBIDDEN_SELECTOR_PROBES)
-def test_latest_default_fuzzy_nearest_and_semver_fallbacks_rejected(selector):
+def test_latest_default_fuzzy_nearest_and_semver_fallbacks_rejected_in_authority_id(selector):
     assert_selector_fallback_rejected(selector)
+
+
+@pytest.mark.parametrize("selector", FORBIDDEN_SELECTOR_PROBES)
+def test_latest_default_fuzzy_nearest_and_semver_fallbacks_rejected_in_authority_version(selector):
+    probe = AuthorityRef("AUTH-R11-EXACT", selector, _h(f"selector-version:{selector}"))
+    with pytest.raises(Pre553AuthorityError):
+        require_exact_authority_ref(probe)
 
 
 def test_all_selector_fallbacks_rejected_as_one_oracle():
@@ -186,6 +239,71 @@ def test_replay_manifest_tamper_fails_against_pinned_identity():
     object.__setattr__(manifest, "semantic_projection_hash", _h("tampered-projection"))
     with pytest.raises(ReplayAuditError, match="pinned historical replay identity"):
         assert_replay_manifest_integrity(manifest, expected_ref=expected)
+
+
+def test_i02_validate_replay_accepts_only_exact_manifest(monkeypatch):
+    candidate, replay_authority, projection, closure_refs = _i02_replay_fixture("exact")
+    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
+    registry = AuthorityRegistry((replay_authority,))
+    assert c11_ingest._validate_replay(candidate, registry) is candidate.candidate_replay_manifest
+
+
+def test_i02_validate_replay_rejects_semantic_projection_tamper(monkeypatch):
+    candidate, replay_authority, projection, closure_refs = _i02_replay_fixture("projection-tamper")
+    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
+    tampered_manifest = replace(
+        candidate.candidate_replay_manifest,
+        semantic_projection_hash=_h("tampered-candidate-projection"),
+    )
+    tampered_candidate = SimpleNamespace(
+        candidate_replay_manifest=tampered_manifest,
+        authority_snapshots=candidate.authority_snapshots,
+        source_release_manifest=candidate.source_release_manifest,
+    )
+    with pytest.raises(c11_ingest.C11IngestValidationError, match="semantic projection differs"):
+        c11_ingest._validate_replay(tampered_candidate, AuthorityRegistry((replay_authority,)))
+
+
+def test_i02_validate_replay_rejects_source_content_tamper(monkeypatch):
+    candidate, replay_authority, projection, closure_refs = _i02_replay_fixture("source-tamper")
+    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
+    source_ref = candidate.source_release_manifest.source_artifact_ref
+    tampered_source_ref = ExactRef(source_ref.kind, source_ref.object_id, _h("tampered-source-bytes"))
+    tampered_candidate = SimpleNamespace(
+        candidate_replay_manifest=candidate.candidate_replay_manifest,
+        authority_snapshots=candidate.authority_snapshots,
+        source_release_manifest=SimpleNamespace(source_artifact_ref=tampered_source_ref),
+    )
+    with pytest.raises(c11_ingest.C11IngestValidationError, match="source artifact identity/hash differs"):
+        c11_ingest._validate_replay(tampered_candidate, AuthorityRegistry((replay_authority,)))
+
+
+def test_i02_validate_replay_rejects_authority_set_tamper(monkeypatch):
+    candidate, replay_authority, projection, closure_refs = _i02_replay_fixture("authority-set")
+    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
+    tampered_manifest = replace(
+        candidate.candidate_replay_manifest,
+        authority_snapshot_set_hash=_h("tampered-authority-set"),
+    )
+    tampered_candidate = SimpleNamespace(
+        candidate_replay_manifest=tampered_manifest,
+        authority_snapshots=candidate.authority_snapshots,
+        source_release_manifest=candidate.source_release_manifest,
+    )
+    with pytest.raises(c11_ingest.C11IngestValidationError, match="authority snapshot set differs"):
+        c11_ingest._validate_replay(tampered_candidate, AuthorityRegistry((replay_authority,)))
+
+
+def test_i02_validate_replay_rejects_missing_replay_authority(monkeypatch):
+    candidate, _replay_authority, projection, closure_refs = _i02_replay_fixture("missing-replay-auth")
+    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
+    with pytest.raises(c11_ingest.C11IngestValidationError, match="replay protocol authority unavailable"):
+        c11_ingest._validate_replay(candidate, AuthorityRegistry(()))
 
 
 def test_source_content_tamper_has_zero_path_or_label_fallback():
@@ -209,6 +327,30 @@ def test_public_semantic_projection_tamper_fails_closed():
         assert_public_semantic_integrity(snap, expected_ref=expected)
 
 
+def test_i03_replay_empirical_query_pins_exact_expected_fact_refs(monkeypatch):
+    actual_ref = _ref("EmpiricalFact", "i03-actual")
+    fake_result = SimpleNamespace(facts=(SimpleNamespace(ref=actual_ref),))
+    monkeypatch.setattr(empirical_query, "execute_empirical_query", lambda **_: fake_result)
+    kwargs = {
+        "repository": object(),
+        "query": object(),
+        "predicate": object(),
+        "authority_registry": object(),
+        "release_refs": (),
+    }
+    assert empirical_query.replay_empirical_query(
+        **kwargs,
+        expected_fact_refs=(actual_ref,),
+    ) is fake_result
+
+    tampered_ref = ExactRef(actual_ref.kind, actual_ref.object_id, _h("i03-fact-tamper"))
+    with pytest.raises(empirical_query.EmpiricalQueryExecutionError, match="deterministic replay mismatch"):
+        empirical_query.replay_empirical_query(
+            **kwargs,
+            expected_fact_refs=(tampered_ref,),
+        )
+
+
 def test_superseding_authority_does_not_reinterpret_historical_object():
     old = _snapshot("policy", version="1.0.0")
     new = _snapshot(
@@ -225,8 +367,9 @@ def test_superseding_authority_does_not_reinterpret_historical_object():
     assert registry.resolve_exact(old.authority_ref).snapshot is old
 
 
-def test_repository_presence_does_not_supply_missing_semantic_permission():
-    repository = C11Repository()
+def test_nonempty_repository_presence_does_not_supply_missing_semantic_permission():
+    repository = _nonempty_repository()
+    assert len(repository) == 1
     registry = AuthorityRegistry((_snapshot("unrelated"),))
     missing = AuthorityRef("AUTH-STRUCTURAL", "1.0.0", _h("absent-structural"))
     assert_repository_presence_not_permission(
@@ -247,8 +390,12 @@ def test_repository_presence_does_not_supply_missing_semantic_permission():
 def test_provenance_cannot_infer_query_discovery_or_structural_authority(
     authority_kind, object_family
 ):
-    unrelated = _snapshot("provenance-only", kind="REPLAY_PROTOCOL", operations=("REPLAY",),
-                          families=("ReplayReceipt@1.0.0",))
+    unrelated = _snapshot(
+        "provenance-only",
+        kind="REPLAY_PROTOCOL",
+        operations=("REPLAY",),
+        families=("ReplayReceipt@1.0.0",),
+    )
     registry = AuthorityRegistry((unrelated,))
     assert_provenance_not_permission(
         provenance_refs=(_ref("Provenance", authority_kind),),
