@@ -1,0 +1,44 @@
+{
+  "assignment_id": "IG01-W09-FINAL-VERIFICATION-002",
+  "chat_id": "CHAT-SCR556",
+  "worker_slot": 9,
+  "agent_id": "IG_FINAL_BYTE_EXACT_VERIFICATION",
+  "worker_class": "INSPECTORATE",
+  "authority": "VERIFICATION_ONLY__NO_IMPLEMENTATION_OR_SEMANTIC_AUTHORITY",
+  "branch": "agent/vozhd-trii-ig-final-verification",
+  "exact_base": "b66e282f4185ece6682723bc5e53c1a23534d5f0",
+  "result_token": "IG_FINAL_VERIFICATION_ENVIRONMENT_BLOCKED",
+  "branch_prewrite_binding": {
+    "status": "IDENTICAL",
+    "ahead_by": 0,
+    "behind_by": 0
+  },
+  "pinned_blob_verification": {
+    "required": 17,
+    "matched": 17,
+    "mismatched": 0,
+    "method": "GitHub contents metadata at exact candidate commit"
+  },
+  "execution_environment": {
+    "python_version": "Python 3.13.5",
+    "pytest_version": "pytest 9.0.2",
+    "git_version": "git version 2.47.3",
+    "exact_local_checkout_available": false,
+    "exact_local_working_tree_status": "UNAVAILABLE_NO_EXACT_CHECKOUT",
+    "network_clone_available": false,
+    "clone_failure": "fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com"
+  },
+  "required_test_file_count": 9,
+  "executed_test_file_count": 0,
+  "passed_test_count": 0,
+  "failed_test_count": 0,
+  "pytest_elapsed_seconds": null,
+  "fresh_byte_exact_full_package_local_test_rerun": "NOT_EXECUTED",
+  "reason": "The exact candidate ref and all 17 immutable blob bindings are verified, but this shell runner has no exact candidate checkout and cannot network-clone GitHub. Assignment law forbids reconstructing the checkout from API blobs or substituting partial execution.",
+  "exact_missing_capability": "An execution runner with an actual Git checkout of b66e282f4185ece6682723bc5e53c1a23534d5f0 and ability to execute pytest from that checkout.",
+  "runtime_or_test_files_modified": false,
+  "semantic_contract_modified": false,
+  "dispatch_modified": false,
+  "deployment_or_cutover_authorized": false,
+  "positive_spdm_state": "BLOCKED_NAMED_AUTHORITY_REQUIRED"
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "VOZHD_TRII_IG_FINAL_TEST_EXECUTION_RECEIPT@1.0.0",
+  "assignment_id": "IG01-W09-FINAL-VERIFICATION-002",
+  "candidate_commit": "b66e282f4185ece6682723bc5e53c1a23534d5f0",
+  "preconditions": {
+    "mission_branch_equals_candidate_before_write": true,
+    "mission_branch_ahead_by_before_write": 0,
+    "mission_branch_behind_by_before_write": 0,
+    "pinned_rawlsing_next_blob_count": 17,
+    "pinned_rawlsing_next_blobs_matched": 17,
+    "exact_local_working_tree_available": false,
+    "exact_local_working_tree_clean": null
+  },
+  "required_command": "PYTHONPATH=. pytest -q rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py rawlsing_next/tests/test_m2_v555_atomic_route.py rawlsing_next/tests/test_m3_v556_higher_order_structural.py rawlsing_next/tests/test_m4_v557_v558_publication_repository.py rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py rawlsing_next/tests/test_m6_actor_safe_expression.py rawlsing_next/tests/test_psepf_zero_positive_guard.py rawlsing_next/tests/test_render_bounded_expression.py rawlsing_next/tests/test_whole_machine_integration.py",
+  "required_command_executed": false,
+  "checkout_acquisition_attempt": {
+    "command": "rm -rf /tmp/rawlsing_verify && git clone --no-checkout https://github.com/maidiu/rawlsing.git /tmp/rawlsing_verify && cd /tmp/rawlsing_verify && git checkout --detach b66e282f4185ece6682723bc5e53c1a23534d5f0 && git status --porcelain && git rev-parse HEAD",
+    "exit_code": 128,
+    "stdout_summary": "",
+    "stderr_summary": "Cloning into '/tmp/rawlsing_verify'... fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com"
+  },
+  "environment": {
+    "python": "Python 3.13.5",
+    "pytest": "pytest 9.0.2",
+    "git": "git version 2.47.3"
+  },
+  "test_execution": {
+    "required_files": [
+      "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+      "rawlsing_next/tests/test_m2_v555_atomic_route.py",
+      "rawlsing_next/tests/test_m3_v556_higher_order_structural.py",
+      "rawlsing_next/tests/test_m4_v557_v558_publication_repository.py",
+      "rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py",
+      "rawlsing_next/tests/test_m6_actor_safe_expression.py",
+      "rawlsing_next/tests/test_psepf_zero_positive_guard.py",
+      "rawlsing_next/tests/test_render_bounded_expression.py",
+      "rawlsing_next/tests/test_whole_machine_integration.py"
+    ],
+    "files_executed": 0,
+    "collected_tests": null,
+    "passed": 0,
+    "failed": 0,
+    "elapsed_seconds": null,
+    "stdout_stderr_summary": "NOT_EXECUTED__NO_EXACT_LOCAL_CHECKOUT"
+  },
+  "anti_substitution_law_observed": true,
+  "api_blob_reconstruction_used_for_test_execution": false,
+  "partial_test_execution_used": false,
+  "receipt_disposition": "IG_FINAL_VERIFICATION_ENVIRONMENT_BLOCKED",
+  "exact_missing_capability": "An actual Git checkout of the exact candidate commit in an execution-capable runner; current shell runner cannot resolve github.com and no exact checkout is mounted."
+}
