@@ -1,91 +1,67 @@
 {
-  "schema": "VOZHD_TRII_IMPLEMENTATION_CAMPAIGN_REGENERATION@1.0.0",
-  "assignment_id": "IG01-W02-REGENERATE-IMPLEMENTATION-CAMPAIGN-001",
+  "schema": "VOZHD_TRII_IMPLEMENTATION_CAMPAIGN_REGENERATION_HARMONIZED@1.0.0",
+  "assignment_id": "IG01-W02-HARMONIZE-IMPLEMENTATION-CAMPAIGN-002",
+  "prior_assignment_id": "IG01-W02-REGENERATE-IMPLEMENTATION-CAMPAIGN-001",
   "worker_id": "CHAT-SCR555",
-  "agent": "IMPLEMENTATION_GATE_REGENERATION",
+  "agent": "IMPLEMENTATION_GATE_REGENERATION_HARMONIZATION",
   "status": "PREPARATORY_ONLY__NO_SELF_ACTIVATION",
   "production_baseline": "0777a34e50221bde6801dbaca26c058a7350c9e8",
-  "frozen_final_reclosure_head": "c4a3524fc21a90940701b2b5421cf53fee047781",
+  "frozen_final_reclosure_head": "c4a3524f54af368a67ca50ccc85f5d5dca3d803b",
   "frozen_final_result_blob": "bbb47d403e7250c1836fcf2e91280aec4f760e12",
   "frozen_implementation_recommendation_blob": "8acf266822e7d9e20241eb336b2844a97bd2e830",
-  "current_assignment_grants_production_write_authority": false,
-  "baseline_audit_rule": {
-    "trusted_only_if_independently_proven_conformant": true,
-    "unproven_runtime_requirement_classification": "new implementation required",
-    "absence_claimed_from_bounded_audit": false,
-    "legacy_name_similarity_is_conformance_evidence": false
+  "downstream_authority_audit": {
+    "m6_accepted_head": "a93335e577f018241d3d027bb8827a79907b9f28",
+    "m6_contract_blob": "af673f31d682a315f9ad34ab05bd15690800a49a",
+    "scrv2app_accepted_head": "24f8811bb7d2eaa18cfac1cb907c48bba8d08f23",
+    "scrv2app_contract_blob": "dafe01f2307475dc05af0d37520b9ad0f63ed05f",
+    "v2_ingress_handoff_blob": "1b70c8cab48c0b9b9624ad5bde1c81a34e29b413",
+    "constitutional_noncollapse": ["TOTAL_GENERATED_PERSON!=ACTOR_ACCESSIBLE_TRUTH", "ACTOR_ACCESSIBLE_TRUTH!=SITUATED_PHENOMENOLOGY", "SITUATED_PHENOMENOLOGY!=RENDERED_EXPRESSION"]
   },
   "packages": [
+    {"id":"IG-M1","depends_on":[],"rollback_boundary":"IG-M1 only"},
+    {"id":"IG-M2","depends_on":["IG-M1"],"rollback_boundary":"IG-M2 only"},
+    {"id":"IG-M3","depends_on":["IG-M2"],"rollback_boundary":"IG-M3 only"},
+    {"id":"IG-M4","depends_on":["IG-M1","IG-M2","IG-M3"],"rollback_boundary":"IG-M4 only"},
+    {"id":"IG-M5","depends_on":["IG-M4"],"rollback_boundary":"IG-M5 only"},
+    {"id":"IG-M6","depends_on":["IG-M5"],"implements":["current verified actor-safe ingress","actor-accessible semantic ceiling","monotone no-join projection"],"does_not_implement":["situated phenomenology","disclosure willingness","salience","inhibition","affective foregrounding","interlocutor openness","register","rendered expression"],"rollback_boundary":"IG-M6 only"},
     {
-      "id": "IG-M1",
-      "name": "temporal jurisdiction and V554 duplicate/admission seam",
-      "depends_on": [],
-      "implements": ["governed-use V553 temporalization", "non-downgradable exact-use temporal/noncomparability state", "V554 duplicate equivalence/precedence", "eligible F1 / denied non-record / deferred F2", "direct V554->V557"],
-      "forbidden_authority_creation": ["new V553 temporal authority", "new V554 duplicate equivalence authority", "new V554 duplicate precedence authority"],
-      "rollback_boundary": "IG-M1 only"
+      "id":"IG-SITUATED_PHENOMENOLOGY_AND_DISCLOSURE_MEDIATION",
+      "depends_on":["IG-M6"],
+      "semantic_role":"DISTINCT_DOWNSTREAM_MEDIATION_CONCERN__NOT_ACTOR_ACCESSIBILITY__NOT_RENDERING",
+      "required_inputs":["current verified M6 actor-safe entry/envelope","exact permitted semantic/component scope","exact actor identity/currentness","named-owner causal/history receipts","interlocutor/context/interaction inputs only under exact named authority","exact authority/version/hash for each positive mediation operation"],
+      "authority_gated_subparts": {
+        "SITUATED_PHENOMENOLOGY":"BLOCKED_NAMED_AUTHORITY_REQUIRED",
+        "DISCLOSURE_WILLINGNESS_OR_PLAN":"BLOCKED_NAMED_AUTHORITY_REQUIRED",
+        "SALIENCE_SELECTION":"BLOCKED_NAMED_AUTHORITY_REQUIRED",
+        "INHIBITION":"BLOCKED_NAMED_AUTHORITY_REQUIRED",
+        "AFFECTIVE_FOREGROUNDING":"BLOCKED_NAMED_AUTHORITY_REQUIRED",
+        "INTERLOCUTOR_SPECIFIC_OPENNESS":"BLOCKED_NAMED_AUTHORITY_REQUIRED",
+        "REGISTER_SELECTION_AS_PSYCHOLOGICAL_MEDIATION":"BLOCKED_NAMED_AUTHORITY_REQUIRED"
+      },
+      "forbidden":["manufacture inaccessible claims","analyst/system/RSC/PSEPF truth to actor phenomenology","actor-state mutation without separate transition authority","ActorAccessibleRenderEnvelope as complete consciousness/persona","default/heuristic/LLM invention of missing mediation authority"],
+      "replay":"Exact governed inputs/authority/history/RNG receipts bind replay once a named owner exists; no canonical-sentence requirement is implied.",
+      "rollback_boundary":"IG-SITUATED_PHENOMENOLOGY_AND_DISCLOSURE_MEDIATION only",
+      "production_path_binding":"BLOCKED_FOR_POSITIVE_SUBPART_UNTIL_NAMED_OWNER_CONTRACT_AND_EXPLICIT_ACTIVATION"
     },
     {
-      "id": "IG-M2",
-      "name": "V555 atomic route identity seam",
-      "depends_on": ["IG-M1"],
-      "implements": ["ordered seven-field V555 producer identity", "typed route-state eligibility", "direct V555->V557 no-filler bypass"],
-      "forbidden_authority_creation": ["eighth route identity field", "route re-ID from labels/run/slot/locator", "B1 or F2 route identity membership"],
-      "rollback_boundary": "IG-M2 only"
+      "id":"IG-RENDER",
+      "depends_on":["IG-M6"],
+      "positive_authority":"SCRV2APP_EXPRESSION_FIREWALL@1.0.0",
+      "implements":["WORDING_WITHIN_ADMITTED_SEMANTIC_PLAN_ONLY","lawful render variability using accepted interaction-mode inputs","post-render semantic/permission/provenance firewall"],
+      "lawful_inputs":["current actor-safe V3 handoff semantics","separately governed lawful V2 inputs","current-turn stimulus when accepted V2 authority permits","INTERACTION_MODE_INPUTS","render policy/model version","RNG receipts"],
+      "cannot_fill_blocked_spdm":true,
+      "missing_required_salience_disclosure_register_or_phenomenology_input":"BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "rollback_boundary":"IG-RENDER only"
     },
-    {
-      "id": "IG-M3",
-      "name": "V556 higher-order structural seam",
-      "depends_on": ["IG-M2"],
-      "implements": ["2..n exact V555 participant occurrences", "positive distinct-route floor two", "rule-owned role/order/cardinality/multiplicity", "NONE_BY_DEFAULT source composition", "eight frozen typed states", "ZERO_V556_OBJECTS no-filler"],
-      "forbidden_authority_creation": ["shared-context relation inference", "provenance composition authority", "same-route reuse as second route identity"],
-      "rollback_boundary": "IG-M3 only"
-    },
-    {
-      "id": "IG-M4",
-      "name": "V557 publication governance / V558 immutable repository seam",
-      "depends_on": ["IG-M1", "IG-M2", "IG-M3"],
-      "implements": ["V557 publication states and permission ceiling", "V558 immutable repository states", "standalone semantics-by-reference closure", "producer identity preservation"],
-      "forbidden_authority_creation": ["V557/V558 collapse", "permission widening by presence", "administrative locator as semantic identity"],
-      "rollback_boundary": "IG-M4 only"
-    },
-    {
-      "id": "IG-M5",
-      "name": "context resolution / runtime RSC seam",
-      "depends_on": ["IG-M4"],
-      "implements": ["deterministic exact V558 closure resolution", "actual runtime ResolvedStructuralContext", "explicit failure on absent/invalid resolution", "persistence as evidence/replay only", "historical peer identity preservation"],
-      "forbidden_authority_creation": ["runtime RSC fabrication", "persistence-tier semantic truth", "peer staleness substitution"],
-      "rollback_boundary": "IG-M5 only"
-    },
-    {
-      "id": "IG-M6",
-      "name": "V3->V2 claim and actor-accessible separation seam",
-      "depends_on": ["IG-M5"],
-      "implements": ["exact VP__FSV tuple meaning", "immutable semantics selector", "current verified actor-safe entry/envelope ingress", "monotone no-join projection", "actor-accessible separation from phenomenology/utterance"],
-      "forbidden_authority_creation": ["claim_id as meaning", "latest/default selector repair", "truth bypass of actor accessibility", "actor-safe envelope as complete person"],
-      "rollback_boundary": "IG-M6 only"
-    },
-    {
-      "id": "IG-PSEPF",
-      "name": "zero-positive actor-transition guard",
-      "depends_on": [],
-      "implements": ["ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE enforcement", "zero actor-state effect without exact positive transition authority"],
-      "forbidden_authority_creation": ["new positive first-tranche PSEPF actor transition"],
-      "rollback_boundary": "IG-PSEPF only"
-    },
-    {
-      "id": "IG-INTEGRATION",
-      "name": "hostile reclosure, replay and non-collapse",
-      "depends_on": ["IG-M6", "IG-PSEPF"],
-      "implements": ["twenty frozen hostile families", "seam-local replay determinism", "typed-state preservation", "V557/V558 separation", "no RSC fabrication", "actor-accessible noncollapse", "PSEPF zero-positive proof"],
-      "forbidden_authority_creation": ["new semantics of any kind"],
-      "rollback_boundary": "integration fixture/review layer only"
-    }
+    {"id":"IG-PSEPF","depends_on":[],"implements":["ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE enforcement"],"rollback_boundary":"IG-PSEPF only"},
+    {"id":"IG-INTEGRATION","depends_on":["IG-M6","IG-RENDER","IG-PSEPF"],"implements":["twenty frozen hostile families","SPDM negative authority-gate fixtures","render variability/non-widening fixtures","deterministic replay","integrated noncollapse"],"positive_spdm_subparts_required_for_unrelated_package_activation":false,"rollback_boundary":"integration fixture/review layer only"}
   ],
   "activation_gate": {
     "explicit_separate_adjudication_required": true,
     "bind_exact_repository_paths_before_write": true,
-    "freeze_negative_replay_rollback_fixtures_before_merge": true,
-    "reject_packages_requiring_semantic_redesign_or_missing_authority": true
+    "blocked_spdm_positive_subparts_may_not_receive_production_paths": true,
+    "authority_complete_packages_may_be_adjudicated_independently": true,
+    "freeze_negative_replay_rollback_fixtures_before_merge": true
   },
-  "success_token": "IMPLEMENTATION_CAMPAIGN_REGENERATED__READY_FOR_EXPLICIT_ACTIVATION_ADJUDICATION"
+  "success_token": "IMPLEMENTATION_CAMPAIGN_HARMONIZED__READY_FOR_EXPLICIT_ACTIVATION_ADJUDICATION"
 }
