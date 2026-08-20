@@ -1,0 +1,1 @@
+This chat has not yet acknowledged the permanent mailbox system. The user-facing launch must include the full mailbox path and assignment id for `IG01-W05-RENDER-ACCEPTANCE-PREFLIGHT-001`. After successful execution, set `mailbox_bootstrap_state` to `ACKNOWLEDGED`.
