@@ -1,68 +1,35 @@
 {
-  "schema": "VOZHD_TRII_FUTURE_PRODUCTION_WRITE_ALLOWLIST@1.0.0",
-  "authority_kind": "REGENERATION_PLAN_ONLY__NOT_A_WRITE_GRANT",
-  "production_baseline_audited": "0777a34e50221bde6801dbaca26c058a7350c9e8",
-  "frozen_semantic_ceiling": "c4a3524fc21a90940701b2b5421cf53fee047781",
-  "current_assignment": {
-    "production_write_authority": false,
-    "schema_or_contract_write_authority": false,
-    "deployment_write_authority": false,
-    "source_retirement_authority": false,
-    "d15_reopen_authority": false,
-    "broad_topology_reopen_authority": false,
-    "only_current_write_scope": "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/IMPLEMENTATION_GATE/REGENERATION/**"
-  },
-  "future_activation": {
-    "status": "BLOCKED_PENDING_EXPLICIT_ACTIVATION_ADJUDICATION",
-    "activated_may_touch_paths": [],
-    "rule": "The empty path list is deliberate. Regeneration did not positively establish exact production owner paths and therefore may not guess them. A later explicit activation adjudication must bind exact existing/new repository paths and functions per package before any production write.",
-    "path_binding_requirements": [
-      "bind to then-current production base SHA",
-      "prove semantic ownership rather than name similarity",
-      "issue a package-local non-empty exact may-touch path list",
-      "prove no overlap with frozen authority or prohibited surfaces",
-      "freeze negative/replay fixtures and rollback boundary before positive merge",
-      "return for authority adjudication if implementation requires semantic redesign or missing authority"
-    ]
-  },
+  "schema":"VOZHD_TRII_FUTURE_PRODUCTION_WRITE_ALLOWLIST_HARMONIZED@1.0.0",
+  "authority_kind":"REGENERATION_PLAN_ONLY__NOT_A_WRITE_GRANT",
+  "production_baseline_audited":"0777a34e50221bde6801dbaca26c058a7350c9e8",
+  "frozen_semantic_ceiling":"c4a3524f54af368a67ca50ccc85f5d5dca3d803b",
+  "current_assignment":{"assignment_id":"IG01-W02-HARMONIZE-IMPLEMENTATION-CAMPAIGN-002","production_write_authority":false,"schema_or_contract_write_authority":false,"deployment_write_authority":false,"source_retirement_authority":false,"d15_reopen_authority":false,"broad_topology_reopen_authority":false,"only_current_write_scope":"data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/IMPLEMENTATION_GATE/REGENERATION/**"},
+  "future_activation":{"status":"BLOCKED_PENDING_EXPLICIT_ACTIVATION_ADJUDICATION","activated_may_touch_paths":[],"rule":"No production path is activated by regeneration or harmonization. Later adjudication must bind exact package-local paths/functions on the then-current base and prove semantic ownership.","path_binding_requirements":["bind then-current production base SHA","prove semantic ownership rather than name similarity","issue package-local exact may-touch paths","freeze negative/replay/rollback fixtures","refuse positive implementation requiring missing authority"]},
   "semantic_surfaces_eligible_for_later_path_binding": {
-    "IG-M1": ["governed V553 temporalization", "V554 duplicate/admission F1-F2-denied handling", "lawful direct V554->V557 publication ingress"],
-    "IG-M2": ["V555 canonical seven-field route construction/validation", "V555 typed route-state eligibility", "lawful direct V555->V557 publication ingress"],
-    "IG-M3": ["V556 participant binding", "V556 exact rule/composition authority validation", "V556 typed outcomes and zero-object no-filler"],
-    "IG-M4": ["V557 publication governance", "V558 immutable repository/resolution", "standalone immutable carrier closure"],
-    "IG-M5": ["ContextResolver", "runtime ResolvedStructuralContext validation/production", "persistence/replay evidence separation"],
-    "IG-M6": ["VP__FSV receptor claim identity/selector validation", "ActorSafeClaimEntry and ActorAccessibleRenderEnvelope currentness/binding", "actor-accessible monotone no-join projection and downstream separation guards"],
-    "IG-PSEPF": ["ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE transition guard"],
-    "IG-INTEGRATION": ["negative hostile fixtures", "deterministic replay fixtures", "cross-seam noncollapse integration tests"]
+    "IG-M1":["governed V553 temporalization","V554 duplicate/admission handling","lawful direct V554->V557 ingress"],
+    "IG-M2":["V555 seven-field route construction/validation","typed route-state eligibility","lawful direct V555->V557 ingress"],
+    "IG-M3":["V556 participant binding","exact rule/composition authority validation","typed outcomes/no-filler"],
+    "IG-M4":["V557 publication governance","V558 immutable repository/resolution","standalone immutable closure"],
+    "IG-M5":["ContextResolver","runtime RSC validation/production","persistence/replay evidence separation"],
+    "IG-M6":["VP__FSV identity/selector validation","current ActorSafeClaimEntry/ActorAccessibleRenderEnvelope binding","actor-accessible monotone/no-join projection"],
+    "IG-SITUATED_PHENOMENOLOGY_AND_DISCLOSURE_MEDIATION":["fixture-only authority-gate enforcement now; positive path binding only after named owner/contract"],
+    "IG-RENDER":["SCRV2APP wording-within-admitted-plan realization","lawful interaction-mode input binding","post-render semantic/permission/provenance firewall"],
+    "IG-PSEPF":["ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE transition guard"],
+    "IG-INTEGRATION":["negative hostile fixtures","deterministic replay","SPDM authority-gate fixtures","render variability/non-widening fixtures","cross-seam noncollapse"]
+  },
+  "blocked_positive_path_binding": {
+    "IG-SITUATED_PHENOMENOLOGY_AND_DISCLOSURE_MEDIATION": {
+      "reason":"BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "subparts":["SITUATED_PHENOMENOLOGY","DISCLOSURE_WILLINGNESS_OR_PLAN","SALIENCE_SELECTION","INHIBITION","AFFECTIVE_FOREGROUNDING","INTERLOCUTOR_SPECIFIC_OPENNESS","REGISTER_SELECTION_AS_PSYCHOLOGICAL_MEDIATION"],
+      "may_touch_paths":[],
+      "unblock_requirement":"accepted dispositive named owner/contract for exact subpart followed by explicit production path activation"
+    }
   },
   "must_not_touch_without_separate_dispositive_authority": {
-    "paths": [
-      "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/**",
-      "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/**"
-    ],
-    "surface_classes": [
-      "frozen M1-M6/SCRV3/SCRV2APP semantic contracts",
-      "parent authority documents and inspectorate reclosure artifacts",
-      "source retirement state",
-      "deployment state",
-      "schema/contract authority",
-      "D15 source-selection/reopen state",
-      "broad DAG/topology authority"
-    ],
-    "semantic_prohibitions": [
-      "new V553 temporal authority",
-      "new V554 duplicate equivalence or precedence authority",
-      "V555 route re-identification or identity widening",
-      "V556 relation/composition inference from shared context or provenance",
-      "V557/V558 collapse",
-      "runtime ResolvedStructuralContext fabrication",
-      "persistence-tier dependent semantic truth",
-      "actor_accessible/phenomenology/utterance-plan collapse",
-      "VP__FSV/V2 positive output from non-binding, no-match, empty, expired or selector-unresolved claim",
-      "positive PSEPF actor-state transition while ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE remains controlling",
-      "latest/default/fuzzy/nearest/LLM/random/session repair of missing exact authority"
-    ]
+    "paths":["data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/STAGE_CLOSE/**","data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/**"],
+    "surface_classes":["frozen M1-M6/SCRV3/SCRV2APP semantic contracts","parent/inspectorate authority","source retirement","deployment","schema/contract authority","D15","broad topology"],
+    "semantic_prohibitions":["new V553/V554 authority","V555 re-ID","inferred V556 composition","V557/V558 collapse","runtime RSC fabrication","persistence semantic truth","actor-accessible/situated-phenomenology/rendered-expression collapse","unnamed disclosure/salience/inhibition/affective/interlocutor/register semantics","renderer filling missing SPDM authority","positive PSEPF transition under zero-positive registry","latest/default/fuzzy/LLM/random/session repair"]
   },
-  "package_write_rule": "Even after activation, one package may touch only its adjudicated exact path allowlist. Upstream contracts and unrelated seam implementations are read-only inputs. Cross-package edits require an explicit joint activation/merge adjudication, never convenience refactoring.",
-  "activation_is_automatic": false
+  "package_write_rule":"After activation, a package may touch only its adjudicated exact allowlist; blocked SPDM positive subparts remain zero-path until separately authorized.",
+  "activation_is_automatic":false
 }
