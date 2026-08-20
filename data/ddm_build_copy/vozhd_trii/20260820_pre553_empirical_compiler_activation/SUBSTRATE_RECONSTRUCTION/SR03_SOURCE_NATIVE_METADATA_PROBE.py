@@ -27,6 +27,25 @@ SOURCE_READER_OVERRIDES = {
             "Override is explicit and recorded for deterministic replay."
         ),
     },
+    "EVS 2008.sav": {
+        "encoding": "latin1",
+        "reason": (
+            "Default pyreadstat metadata decoding fails with invalid byte sequence; "
+            "the exact frozen EVS 2008 SAV reads successfully under Latin-1. "
+            "Override is explicit for this disposable compatibility execution."
+        ),
+    },
+    "LiTS_II.dta": {
+        "encoding": "latin1",
+        "reason": (
+            "Default pyreadstat DTA decoding fails with invalid byte sequence; "
+            "the exact frozen LiTS II DTA reads successfully under Latin-1. "
+            "Override is explicit for this disposable compatibility execution."
+        ),
+    },
+    "LiTS_I.dta": {"encoding": "latin1", "reason": "Exact frozen LiTS I DTA reads successfully under Latin-1 for this disposable compatibility execution."},
+    "LiTS_III.dta": {"encoding": "latin1", "reason": "Default chunked pyreadstat decoding fails; exact frozen LiTS III DTA reads successfully under Latin-1 for this disposable compatibility execution."},
+    "LiTS_IV.dta": {"encoding": "latin1", "reason": "Exact frozen LiTS IV DTA reads successfully under Latin-1 for this disposable compatibility execution."},
 }
 
 
@@ -85,7 +104,14 @@ def scan(path: Path, fmt: str, chunksize: int, reader_override: dict[str,Any]|No
     md=meta_dict(meta)
     cols=list(getattr(meta,'column_names',[]) or [])
     stats={c:{'rows_seen':0,'system_missing_count':0,'user_missing_count':0,'user_missing_by_native_code':Counter()} for c in cols}
-    for df,_ in pyreadstat.read_file_in_chunks(reader_fn,str(path),chunksize=chunksize,**read_kwargs):
+    if reader_override and reader_override.get('encoding'):
+        # pyreadstat's chunked reader still fails on this frozen SAV despite
+        # accepting the explicit encoding; the full read path succeeds under
+        # the HQ-frozen Latin-1 compatibility ruling.
+        frames=[reader_fn(str(path), **read_kwargs)]
+    else:
+        frames=pyreadstat.read_file_in_chunks(reader_fn,str(path),chunksize=chunksize,**read_kwargs)
+    for df,_ in frames:
         for c in df.columns:
             s=df[c]
             st=stats[c]; st['rows_seen'] += len(s)
