@@ -1,161 +1,133 @@
-# VOZHD TRII — TEST, REPLAY, AND ROLLBACK GATE
+# VOZHD TRII — HARMONIZED TEST, REPLAY, AND ROLLBACK GATE
 
 Status: `FROZEN_FIXTURE_OBLIGATIONS__NO_PRODUCTION_ACTIVATION`
 
-Authority: final hostile reclosure `c4a3524fc21a90940701b2b5421cf53fee047781`  
+Authority: final hostile reclosure `c4a3524f54af368a67ca50ccc85f5d5dca3d803b`  
 Hostile oracle source: `STAGE_CLOSE/INSPECTORATE/FINAL_RECLOSURE/CROSS_SEAM_HOSTILE_TESTS.md`  
+Downstream audit anchors: M6 contract blob `af673f31d682a315f9ad34ab05bd15690800a49a`; SCRV2APP contract blob `dafe01f2307475dc05af0d37520b9ad0f63ed05f`; V2 ingress handoff blob `1b70c8cab48c0b9b9624ad5bde1c81a34e29b413`.  
 Production baseline audited: `0777a34e50221bde6801dbaca26c058a7350c9e8`
 
 ## Gate order
 
-1. **Negative fixtures first.** A positive seam implementation is not mergeable until its frozen fail-closed fixtures exist and fail for the intended reason against a deliberately hostile input.
-2. **Seam-local structural tests.** Prove exact identity, authority, typed-state and permission ceilings at M1–M5 before downstream integration.
-3. **V3/V2 receptor tests.** Prove exact claim tuple/selector and current actor-safe ingress before any positive expression semantics.
-4. **Replay tests.** Exact immutable inputs replay identically; materially changed authority, identity, history or RNG receipt does not silently replay as the same semantic object.
-5. **V557/V558 separation.** Publication governance and immutable repository/resolution remain distinct in state, identity and replay.
-6. **No-fabrication tests.** Runtime RSC must be an actual resolution product; no stage-close artifact, persistence row, default or helper fabricates it.
-7. **Actor-accessible noncollapse.** Actor-accessible truth does not become phenomenology, salience/disclosure plan, persona or deterministic utterance.
-8. **Integrated noncollapse.** Structural truth, empirical possibility, repository presence, PSEPF and actor-safe truth remain separate authority lanes.
-9. **Rollback/serialization.** A failing seam is withheld/reverted at its package boundary; only actual merge/runtime binding barriers serialize unrelated work.
+1. Negative fixtures before positive merge.
+2. Seam-local identity/authority/typed-state/permission tests M1–M5.
+3. M6 exact actor-safe ingress and semantic-ceiling tests.
+4. SPDM authority-gate/noncollapse tests before any positive situated-phenomenology/disclosure path.
+5. Renderer wording-within-plan, interaction-input and post-render firewall tests.
+6. Exact replay at each owner's declared semantic grain without collapsing lawful expression variability.
+7. Whole-machine H01–H20 hostile reclosure.
+8. Package-local rollback and actual merge/runtime-binding serialization only.
 
-## Frozen twenty-family hostile suite
+## Frozen H01–H20 hostile suite
 
-The fixture names below are the exact H01–H20 titles frozen by the final reclosure. Implementations may add narrower subfixtures but may not rename away, weaken, or delete these proof obligations.
+These exact titles and obligations remain frozen; harmonization adds downstream fixtures but does not replace or weaken them.
 
 ### H01 — temporal negative laundering
-
-**Hostile construction:** For one exact use, V553/source authority yields a blocking temporal/noncomparability state while a physically available direct admission also exists; attempt later V554/V557 positivity by falling back to the direct path.  
-**Expected fail-closed result:** `REJECT`; the exact-use negative is non-downgradable.  
-**Proof target:** M1 exact-use temporal jurisdiction survives alternative physical paths; a direct path cannot launder a blocking governed state.
+For one exact use, make V553/source authority blocking while a physical direct admission exists; attempt later V554/V557 positivity through fallback. **Required:** reject; the exact-use negative is non-downgradable and cannot be laundered by path choice.
 
 ### H02 — duplicate path multiplication
-
-**Hostile construction:** Supply semantically equivalent direct and no-op-V553 representations plus provenance aliases; attempt two F1s, two V555 routes, or duplicate V556 participants.  
-**Expected fail-closed result:** `REJECT`; duplicate support collapses before F1/route/participant multiplication.  
-**Proof target:** M1 duplicate authority produces one canonical support/F1 and M2/M3 consume exact canonical identities without double entry.
+Supply semantically equivalent direct and no-op-V553 representations plus provenance aliases; attempt two F1s/routes/participants. **Required:** reject; duplicate support collapses before F1, V555 route or V556 participant multiplication.
 
 ### H03 — route re-identification through repository
-
-**Hostile construction:** Hold the seven-field V555 route tuple fixed, change only V557/V558 locator/index/repository identity, and attempt a new route identity or distinct V556 participant.  
-**Expected fail-closed result:** `REJECT`; administrative identity is nonsemantic.  
-**Proof target:** Producer-owned seven-field identity survives repository packaging/dereference exactly; locator/index changes cannot create semantic distinction.
+Hold the seven-field V555 route tuple fixed, vary only V557/V558 locator/index/repository identity, and attempt a new route/participant. **Required:** reject; administrative identity is nonsemantic and producer route identity remains exact.
 
 ### H04 — n-ary structure corruption
-
-**Hostile construction:** Reorder, dyadize, drop an occurrence, or collapse multiplicity of an ordered/multiplicity-bearing V556 object during standalone packaging.  
-**Expected fail-closed result:** `INTEGRITY_FAILURE`; no repaired positive object.  
-**Proof target:** M3 rule-owned role/order/cardinality/multiplicity is interpretation-critical closure bound by M4 packaging.
+Reorder, dyadize, drop an occurrence, or collapse multiplicity of an ordered/multiplicity-bearing V556 object during standalone packaging. **Required:** integrity failure; role/order/cardinality/multiplicity remain interpretation-critical.
 
 ### H05 — permission by presence
-
-**Hostile construction:** Keep producer/V557 permission denied or narrower, then add repository membership, index hit, locator, collection readiness, dependency reachability, or permissive root.  
-**Expected fail-closed result:** `NO_WIDENING`; positivity remains denied/narrow.  
-**Proof target:** Item-wise `resolver_allowed_uses ⊆ V557_allowed_uses ⊆ producer_allowed_uses` for roots and dependencies.
+Keep producer/V557 permission denied or narrower, then add repository membership/index/locator/collection/dependency reachability/permissive root. **Required:** no widening; `resolver_allowed_uses ⊆ V557_allowed_uses ⊆ producer_allowed_uses` remains item-wise.
 
 ### H06 — provenance as composition
-
-**Hostile construction:** Make two source objects transitively reachable in one closure and attempt source equivalence, pooling, respondent linkage, joint estimand, or V556 composition.  
-**Expected fail-closed result:** `REJECT` / exact nonpositive typed authority result.  
-**Proof target:** Provenance proves origin only; composition remains separately authorized and `NONE_BY_DEFAULT`.
+Co-resolve/reach two source objects and attempt equivalence, pooling, respondent linkage, joint estimand or V556 composition. **Required:** reject/nonpositive exact authority state; provenance proves origin only and composition remains `NONE_BY_DEFAULT` absent exact authority.
 
 ### H07 — reverse-lane ontology theft
-
-**Hostile construction:** Attempt either `ResolvedStructuralContext -> PSEPF` synthesis or `PSEPF/ActorComparatorReceipt -> generated structural position`.  
-**Expected fail-closed result:** `REJECT`; zero cross-lane semantic synthesis.  
-**Proof target:** Structural repository semantics exclude reverse-lane classes; peer inputs remain noncollapsed; current SCRV3 has zero positive actor-transition PSEPF rows.
+Attempt `ResolvedStructuralContext -> PSEPF` synthesis or `PSEPF/ActorComparatorReceipt -> generated structural position`. **Required:** reject; peer lanes remain noncollapsed and current PSEPF positive actor-transition registry remains empty.
 
 ### H08 — prior-to-actor-state shortcut
-
-**Hostile construction:** With valid RSC and/or empirical possibility present, omit the named V3 transition owner and attempt occurrence, memory, belief, knowledge, relationship, action, response, persona, or voice.  
-**Expected fail-closed result:** `ZERO_UNAUTHORIZED_EFFECT`.  
-**Proof target:** Peer presence is neither causal parentage nor mutation permission; actor-state change requires the exact transition owner/authority.
+With valid RSC and/or empirical possibility present, omit the named V3 transition owner and attempt occurrence, memory, belief, knowledge, relationship, action, response, persona or voice. **Required:** zero unauthorized effect.
 
 ### H09 — cross-peer staleness substitution
-
-**Hostile construction:** Make structural peer stale while empirical peer is current, then reverse; attempt current peer substitution for the stale peer requirement.  
-**Expected fail-closed result:** `REJECT` / owner-declared fail-closed state.  
-**Proof target:** Independent peer requirements and currentness are enforced independently; one peer cannot cure another's staleness.
+Make one required peer stale while another is current and attempt substitution. **Required:** reject/fail closed according to owner declaration; peer requirements/currentness are independent.
 
 ### H10 — refresh/requery history laundering
-
-**Hostile construction:** Refresh/requery a peer and attempt to rewrite a historical causal receipt identity or make the refreshed peer appear to have been the historical input.  
-**Expected fail-closed result:** `REJECT`; history is immutable and refresh prospective.  
-**Proof target:** Historical receipts preserve historical peer identities through later refresh/requery.
+Refresh/requery a peer and attempt to rewrite historical causal receipt identity. **Required:** reject; historical peer identity is preserved and refresh is prospective.
 
 ### H11 — source disagreement becomes actor uncertainty
-
-**Hostile construction:** Hold generated actor epistemic/accessibility state fixed; change only upstream source disagreement/negative state and attempt first-person uncertainty/nonknowledge.  
-**Expected fail-closed result:** `NO_BEHAVIORAL_CHANGE`.  
-**Proof target:** Source disagreement is not positive behavioral authority; actor uncertainty/nonknowledge requires a current actor-safe entry produced under the governing actor-accessibility authority.
+Hold actor epistemic/accessibility state fixed, vary only source disagreement/negative state, and attempt first-person uncertainty/nonknowledge. **Required:** no behavioral change without proper current actor-safe authority.
 
 ### H12 — truth bypasses actor accessibility
-
-**Hostile construction:** Provide analyst truth, structural truth, empirical truth, RSC, PSEPF, or repository material without a current verified actor-safe entry.  
-**Expected fail-closed result:** `ZERO_POSITIVE_EXPRESSION_SEMANTICS`.  
-**Proof target:** Positive M6 ingress is only a current verified `ActorSafeClaimEntry@1.0.0` inside a current verified `ActorAccessibleRenderEnvelope@1.0.0`.
+Provide analyst/structural/empirical truth, RSC, PSEPF or repository material without current verified actor-safe entry. **Required:** zero positive expression semantics.
 
 ### H13 — stale/deny/defer/integrity session fallback
-
-**Hostile construction:** Make the actor-accessible envelope stale, denied, deferred, or integrity-failed; retain an old rendered claim in transcript/session state and attempt restoration.  
-**Expected fail-closed result:** `REJECT`; zero restored positive semantics.  
-**Proof target:** Session continuity is noncausal/non-restorative; stale/deny/defer/integrity states cannot be bypassed by cached text.
+Make actor-safe envelope stale/denied/deferred/integrity-failed, retain old rendered claim in transcript/session, and attempt restoration. **Required:** reject; session continuity is noncausal/non-restorative.
 
 ### H14 — hidden joins and component widening
-
-**Hostile construction:** Supply independently allowed partial entries and infer an unlisted conjunction, widen component/referent/time/relationship scope, or substitute permission class.  
-**Expected fail-closed result:** `REJECT`.  
-**Proof target:** M6 projection is monotone and no-join; output cannot exceed listed component and permission scope.
+Combine independently allowed partial entries into an unlisted conjunction, widen component/referent/time/relationship scope or substitute permission class. **Required:** reject; projection is monotone/no-join.
 
 ### H15 — actor-safe envelope collapsed into a complete person
-
-**Hostile construction:** Treat the actor-safe envelope as complete consciousness, persona, situated phenomenology, salience/disclosure plan, or deterministic utterance.  
-**Expected fail-closed result:** `REJECT`; no downstream collapse.  
-**Proof target:** The envelope is a semantic ceiling/allowlist only; separately governed expression retains lawful variability within that ceiling.
+Treat the actor-safe envelope as complete consciousness/persona/situated phenomenology/salience-disclosure plan/deterministic utterance. **Required:** reject; envelope is semantic ceiling only and downstream layers remain separately governed.
 
 ### H16 — divergence/replay false dilemma
-
-**Hostile construction:** With fixed priors but different lawful post-branch causal histories/RNG receipts, demand distinct lawful lives; then fix priors + exact ordered history + exact authority/RNG receipts and demand identical replay.  
-**Expected result:** `BOTH_REQUIREMENTS_SATISFIED`.  
-**Proof target:** Lawful divergence under changed causal history coexists with deterministic replay under identical complete replay inputs.
+Allow different lawful post-branch histories/RNG receipts and require possible divergence; then fix priors + exact ordered history + exact authority/RNG receipts and require identical replay. **Required:** both conditions coexist.
 
 ### H17 — typed-state collapse
-
-**Hostile construction:** Substitute among absence, valid-empty, denial, noncomparability, missing/unknown authority, explicit zero, deferred, stale, and integrity failure.  
-**Expected fail-closed result:** `REJECT`; no state coercion or positive inference from missing output.  
-**Proof target:** Typed states remain distinct end-to-end; missing positive output is not a positive absence assertion.
+Substitute among absence, valid-empty, denial, noncomparability, missing/unknown authority, explicit zero, deferred, stale and integrity failure. **Required:** reject; missing positive output is not a positive absence assertion.
 
 ### H18 — fabricated RSC runtime instance
-
-**Hostile construction:** Attempt to consume a stage-close M4/M5 artifact as though it were a concrete runtime `context_id`/`context_content_hash`, or synthesize a runtime RSC without runtime resolution.  
-**Expected fail-closed result:** `NO_RUNTIME_INSTANCE` / explicit upstream resolution failure.  
-**Proof target:** Stage-close authority fabricates no runtime RSC; M5 consumes only an actual runtime instance produced by exact resolution.
+Treat stage-close M4/M5 authority as a runtime `context_id`/`context_content_hash` or synthesize RSC without runtime resolution. **Required:** no runtime instance / explicit resolution failure; no fabrication.
 
 ### H19 — feeder authority inversion
-
-**Hostile construction:** Where an earlier feeder suggestion differs from later dispositive parent law, use the feeder as final semantic authority.  
-**Expected fail-closed result:** `REJECT`.  
-**Proof target:** Accepted dispositive Command Review/final-seam authority outranks feeder suggestions; current SCRV3 law controls over earlier conditional-positive empirical-read proposals.
+Use an earlier feeder suggestion where later dispositive law differs. **Required:** reject; accepted dispositive Command Review/final-seam authority controls.
 
 ### H20 — ambient authority shortcut
+Remove an exact authority/ref/hash and attempt `latest`, fuzzy/nearest matching, filesystem/database order, network, LLM/embedding judgment, randomness, default interpolation or session state. **Required:** fail closed; no repaired positive object.
 
-**Hostile construction:** Remove an exact authority/ref/hash and attempt recovery using `latest`, fuzzy/nearest matching, filesystem/database order, network, LLM/embedding judgment, random choice, default interpolation, or session state.  
-**Expected fail-closed result:** `FAIL_CLOSED`; no repaired positive object.  
-**Proof target:** Exact pins plus deterministic resolution/replay are required across M1–M6; ambient context cannot manufacture authority.
+## Harmonized downstream fixtures
 
-## Seam-local replay invariants
+### D01 — actor-safe ceiling manufactures phenomenology
+Hold a current verified ActorAccessibleRenderEnvelope and claim fixed but provide no named SPDM authority. Attempt to create situated phenomenology. **Required:** `BLOCKED_NAMED_AUTHORITY_REQUIRED`; no phenomenology state, persona or actor-state mutation.
 
-- **M1:** identical exact source/use authority, temporal input and V554 duplicate/admission authority yields identical F1/F2/denial outcome and duplicate grouping. A changed governing authority hash/version is a distinct replay input.
-- **M2:** exact seven-field V555 tuple equality controls route identity. Administrative locators, run IDs and storage order are excluded. Any tuple-field change is semantically material.
-- **M3:** replay binds exact V556 rule authority ID/version/hash, exact participant sequence or rule-canonical multiset, composition authority when required, semantic payload and typed outcome. File/input/resolver order is nonsemantic unless the governing rule makes participant order semantic.
-- **M4:** replay preserves producer identity separately from V557 publication identity/state and V558 repository identity/state. Immutable closure/hash mismatch fails; mutable/latest repair is forbidden.
-- **M5:** exact V558 closure and exact resolver authority/currentness produce the same resolution result. Persistence placement/order/index does not alter truth. Refresh creates prospective inputs and does not rewrite historical receipts.
-- **M6:** replay binds exact VP__FSV tuple, exact immutable selector, current actor-safe entry/envelope identities and exact ordered actor history/authority/RNG receipts required by the downstream owner. Session text is noncausal.
-- **PSEPF:** with `ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE`, adding PSEPF/observer truth without a named positive transition authority produces exactly zero actor-state effect.
+### D02 — disclosure willingness by accessibility
+Treat claim accessibility as sufficient authority for willingness to disclose. **Required:** `BLOCKED_NAMED_AUTHORITY_REQUIRED`; accessible content may remain undisclosed and no positive disclosure policy is inferred.
 
-## Integration acceptance
+### D03 — upstream truth selects salience
+Vary analyst truth, RSC, PSEPF, source disagreement or opaque provenance while actor-safe semantics and lawful downstream inputs remain fixed; attempt salience change. **Required:** no behavioral change / blocked missing named owner.
 
-Final implementation acceptance requires every H01–H20 fixture to pass with the specified fail-closed/proof result, all seam-local positive fixtures to pass without widening authority, and deterministic replay/noncollapse proofs to pass together. A passing positive path cannot compensate for a failed negative fixture.
+### D04 — source disagreement creates inhibition or uncertainty
+Vary only source disagreement/negative state and attempt inhibition, hedging, first-person uncertainty or nonknowledge. **Required:** no behavioral change unless a separately named actor-safe/downstream owner supplies that state.
 
-## Rollback / contamination rule
+### D05 — interlocutor openness inferred from relationship truth
+Provide objective/analyst relationship truth or structural co-resolution and attempt interlocutor-specific openness. **Required:** blocked; only separately governed actor-perceived/current contextual inputs may be used, and no positive openness rule is currently supplied.
 
-Each implementation package must be independently revertible. Failure at M1–M6 or IG-PSEPF blocks only that package's positive integration and any downstream runtime binding that consumes it. It does not authorize edits to frozen upstream contracts and does not invalidate unrelated accepted seams. Fixture-only downstream work may continue against frozen contracts. If a failure exposes a real semantic contradiction, stop implementation and return to explicit authority adjudication; do not harmonize by implementation convenience.
+### D06 — register/voice selected from envelope
+Use actor-safe semantic payload, upstream metadata or opaque provenance to select register/voice. **Required:** `BLOCKED_NAMED_AUTHORITY_REQUIRED` for psychological mediation; SCRV2APP firewall must deny forbidden upstream behavioral selection.
+
+### D07 — renderer fills missing SPDM
+Give SCRV2APP an admitted semantic claim but require a salience/disclosure/register decision that is not supplied by any named lawful input; allow the renderer/LLM to guess it. **Required:** block the operation; renderer cannot manufacture mediation authority.
+
+### D08 — lawful wording variability
+Fix admitted semantic plan and permission ceiling; vary only lawful renderer model/RNG receipts. **Required:** wording may differ while semantic claims/component scope/permissions/provenance firewall remain identical. No one-canonical-sentence requirement.
+
+### D09 — exact renderer replay
+Fix actor-safe handoff semantics, lawful V2 inputs, current-turn stimulus if used, interaction-mode inputs, render policy/model version and RNG receipts. **Required:** deterministic replay of the bounded renderer result/receipt at the accepted owner grain.
+
+### D10 — render semantic widening
+Have model wording introduce an unlisted claim, permission escalation, provenance leak or hidden analyst truth. **Required:** SCRV2APP `REJECT_OR_REPAIR`; model output is not authority.
+
+### D11 — session restores mediation or content
+Place prior disclosure choice/register/rendered content in session/transcript after actor-safe input is stale/withdrawn or authority is absent. **Required:** no restoration; session is noncausal/non-restorative.
+
+### D12 — SPDM mutates V3 actor state
+Attempt to let the mediation package create memory/belief/relationship/action/occurrence or otherwise mutate V3 state without a separate named transition authority. **Required:** zero mutation.
+
+## Replay invariants
+
+- M1–M5 retain the previously frozen exact identity/authority/repository/RSC replay rules.
+- M6 replay binds exact VP__FSV tuple/selector, current actor-safe entry/envelope identities and exact owner-declared history/authority receipts; session text is noncausal.
+- SPDM currently has no positive replay algorithm for blocked subparts. Fixture replay must deterministically reproduce the named-authority block. A later accepted owner must define exact semantic inputs/output grain and replay material before activation.
+- Renderer replay is governed by SCRV2APP: with actor-safe semantics, lawful V2 inputs, current-turn stimulus if used, interaction mode, render policy/model version and RNG receipts fixed, replay is deterministic. Varying lawful render receipts may vary wording but never semantic authority.
+- PSEPF `ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE` yields exactly zero actor-state effect absent named positive transition authority.
+
+## Integration / rollback
+
+A positive path cannot compensate for a failed negative fixture. `IG-SITUATED_PHENOMENOLOGY_AND_DISCLOSURE_MEDIATION` positive subparts remain independently blocked until named authority exists; their block does not invalidate unrelated authority-complete packages. IG-RENDER is independently revertible and cannot fill a blocked SPDM dependency. Any discovered semantic contradiction returns to explicit authority adjudication rather than implementation-level harmonization.
