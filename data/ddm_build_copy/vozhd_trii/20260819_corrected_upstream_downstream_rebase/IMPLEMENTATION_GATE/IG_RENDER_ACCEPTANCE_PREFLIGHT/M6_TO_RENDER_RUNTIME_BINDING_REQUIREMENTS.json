@@ -1,0 +1,182 @@
+{
+  "document_id": "IG_RENDER_M6_RUNTIME_BINDING_REQUIREMENTS",
+  "version": "1.0.0-preflight",
+  "assignment_id": "IG01-W05-RENDER-ACCEPTANCE-PREFLIGHT-001",
+  "authority": "NON_DISPOSITIVE_ACCEPTANCE_PREFLIGHT_ONLY",
+  "purpose": "Define proof obligations for binding a future accepted M6 runtime to a future IG-RENDER implementation without predicting unaccepted concrete runtime symbols.",
+  "pinned_semantic_authorities": {
+    "frozen_m6_semantic_head": "a93335e577f018241d3d027bb8827a79907b9f28",
+    "m6_seam_contract_blob": "af673f31d682a315f9ad34ab05bd15690800a49a",
+    "m6_v2_actor_safe_ingress_handoff_blob": "1b70c8cab48c0b9b9624ad5bde1c81a34e29b413",
+    "m6_result_blob": "920f3b4ceac47183d95668c2b302d5660c02f97d",
+    "accepted_scrv2app_head": "24f8811bb7d2eaa18cfac1cb907c48bba8d08f23",
+    "accepted_scrv2app_contract_blob": "dafe01f2307475dc05af0d37520b9ad0f63ed05f",
+    "accepted_m5_runtime_head": "b2d86364fa57940c54304206c5d161a521359087"
+  },
+  "binding_state": "UNBOUND_PENDING_ACCEPTED_M6_RUNTIME",
+  "concrete_symbol_prediction": {
+    "module_paths": false,
+    "class_names": false,
+    "function_names": false,
+    "constant_names": false,
+    "adapter_names": false,
+    "import_paths": false,
+    "reflection_or_duck_typing_substitute": false,
+    "dynamic_latest_discovery": false
+  },
+  "global_acceptance_prerequisites": [
+    "HQ_PINNED_ACCEPTED_M6_RUNTIME_HEAD",
+    "EXACT_RUNTIME_FILE_AND_BLOB_IDENTITIES_FOR_EACH_REQUIRED_ROLE",
+    "EXACT_CONCRETE_SYMBOL_IDENTITY_FOR_EACH_REQUIRED_ROLE",
+    "EXACT_RUNTIME_CONTRACT_ID_VERSION_HASH",
+    "PROOF_THAT_RUNTIME_ROLE_SEMANTICS_MATCH_FROZEN_M6_SEMANTIC_HEAD",
+    "PROOF_THAT_NO_RUNTIME_FALLBACK_TO_SEMANTIC_ARTIFACT_OR_MUTABLE_LATEST_EXISTS",
+    "PROOF_THAT_IG_RENDER_READS_M6_RUNTIME_READ_ONLY_AND_CANNOT_MUTATE_V3_STATE",
+    "PROOF_THAT_MISSING_OR_MISMATCHED_BINDING_FAILS_CLOSED"
+  ],
+  "required_runtime_roles": [
+    {
+      "role_id": "M6_ACTOR_SAFE_ENVELOPE_SOURCE",
+      "semantic_type": "ActorAccessibleRenderEnvelope@1.0.0",
+      "semantic_obligation": "Supply the exact current verified actor-safe envelope that serves as hard semantic ceiling/allowlist.",
+      "concrete_runtime_module": null,
+      "concrete_runtime_symbol": null,
+      "binding_status": "UNBOUND_PENDING_ACCEPTED_M6_RUNTIME",
+      "required_acceptance_evidence": [
+        "runtime head",
+        "source file path and blob hash",
+        "concrete symbol identity",
+        "schema/type/version identity",
+        "immutable envelope identity/hash verification",
+        "actor binding",
+        "source generated-person/actor-state/memory/epistemic-state bindings",
+        "read-only consumer proof"
+      ]
+    },
+    {
+      "role_id": "M6_ACTOR_SAFE_ENTRY_SOURCE",
+      "semantic_type": "ActorSafeClaimEntry@1.0.0",
+      "semantic_obligation": "Expose only exact entries already contained by the current verified envelope, including exact accessibility, permission class, component allowlist, and scope bindings.",
+      "concrete_runtime_module": null,
+      "concrete_runtime_symbol": null,
+      "binding_status": "UNBOUND_PENDING_ACCEPTED_M6_RUNTIME",
+      "required_acceptance_evidence": [
+        "entry membership proof in envelope",
+        "entry identity/hash verification",
+        "canonical claim ref",
+        "permission class",
+        "partial permitted-component refs",
+        "subject/temporal/referent/relationship-view scope"
+      ]
+    },
+    {
+      "role_id": "M6_CURRENTNESS_VALIDATOR",
+      "semantic_role": "SCRV3_M6_AARE_CURRENTNESS_V1",
+      "semantic_obligation": "Prove currentness at render admission; stale cannot fall back to session/transcript or prior envelope.",
+      "concrete_runtime_module": null,
+      "concrete_runtime_symbol": null,
+      "binding_status": "UNBOUND_PENDING_ACCEPTED_M6_RUNTIME",
+      "required_acceptance_evidence": [
+        "currentness authority/version/hash",
+        "as-of causal time binding",
+        "source-state identity binding",
+        "stale test",
+        "prospective currentness change test",
+        "no mutable latest substitution"
+      ]
+    },
+    {
+      "role_id": "M6_INTEGRITY_AND_REPLAY_CLOSURE_VALIDATOR",
+      "semantic_role": "SCRV3_M6_AARE_REPLAY_CLOSURE@1.0.0 plus frozen M6 integrity law",
+      "semantic_obligation": "Verify envelope/entry/replay closure and all frozen source authority hashes before any positive render semantics are admitted.",
+      "concrete_runtime_module": null,
+      "concrete_runtime_symbol": null,
+      "binding_status": "UNBOUND_PENDING_ACCEPTED_M6_RUNTIME",
+      "required_acceptance_evidence": [
+        "ADP-017 exact version/hash check",
+        "envelope hash verification",
+        "entry hash verification",
+        "replay closure root/hash verification",
+        "actor/source-state identity consistency",
+        "tamper tests",
+        "missing replay material fail-closed tests"
+      ]
+    },
+    {
+      "role_id": "M6_RECEIVER_TERMINAL_STATE_PROJECTOR",
+      "semantic_role": "Frozen M6 terminal receiver mapping",
+      "semantic_obligation": "Distinguish full, partial, deny, defer, stale, integrity-failure, absent and valid-empty without semantic coercion.",
+      "concrete_runtime_module": null,
+      "concrete_runtime_symbol": null,
+      "binding_status": "UNBOUND_PENDING_ACCEPTED_M6_RUNTIME",
+      "required_acceptance_evidence": [
+        "full maps to exact canonical claim scope",
+        "partial maps only exact permitted components",
+        "deny/defer are control-only zero positive semantics",
+        "stale/integrity are zero positive semantics",
+        "absent/valid-empty invent no stance",
+        "system unknown never coerces actor nonknowledge"
+      ]
+    },
+    {
+      "role_id": "M6_OPAQUE_AUDIT_REFERENCE_PROJECTOR",
+      "semantic_type": "OpaqueAuditRef@1.0.0 semantic role",
+      "semantic_obligation": "Permit immutable audit carriage/hash verification only; never expose semantic payload or metadata features to renderer/model behavior.",
+      "concrete_runtime_module": null,
+      "concrete_runtime_symbol": null,
+      "binding_status": "UNBOUND_PENDING_ACCEPTED_M6_RUNTIME",
+      "required_acceptance_evidence": [
+        "audit-only role tagging",
+        "model invisibility",
+        "behavioral dereference denial",
+        "metadata feature denial",
+        "behavior-affecting cache-key denial",
+        "metamorphic noninterference test"
+      ]
+    }
+  ],
+  "render_side_binding_requirements_after_m6_runtime_acceptance": {
+    "exact_binding_receipt_required": true,
+    "binding_receipt_minimum_fields": [
+      "accepted_m6_runtime_head",
+      "m6_runtime_contract_id",
+      "m6_runtime_contract_version",
+      "m6_runtime_contract_hash",
+      "frozen_m6_semantic_head",
+      "semantic_equivalence_or_conformance_receipt_ref_hash",
+      "role_id",
+      "runtime_file_path",
+      "runtime_file_blob_hash",
+      "concrete_symbol_identity",
+      "symbol_semantic_role",
+      "schema_or_type_identity",
+      "validator_or_source_contract_hash",
+      "acceptance_test_receipt_refs_hashes"
+    ],
+    "binding_receipt_replay_identity_required": true,
+    "binding_receipt_may_use_latest": false,
+    "binding_receipt_may_use_name_similarity": false,
+    "binding_receipt_may_use_unpinned_import": false,
+    "binding_receipt_may_bind_semantic_markdown_json_as_runtime": false
+  },
+  "m5_nonbinding_law": {
+    "accepted_m5_runtime_head": "b2d86364fa57940c54304206c5d161a521359087",
+    "m5_may_satisfy_m6_actor_safe_runtime_role": false,
+    "resolved_structural_context_may_satisfy_actor_safe_envelope_role": false,
+    "structural_currentness_may_satisfy_m6_currentness_role": false,
+    "m5_peer_use_receipt_may_satisfy_v2_semantic_plan_role": false,
+    "reason": "M5 structural peer eligibility is upstream structural context only and explicitly not actor-state/render authority."
+  },
+  "forbidden_runtime_shortcuts": [
+    "import M5/RSC object when M6 binding absent",
+    "read PSEPF or comparator receipt to fill actor-safe semantics",
+    "derive M6 currentness from M5 structural currentness",
+    "treat semantic JSON/MD artifacts as live runtime records",
+    "reflectively accept any object with similar fields",
+    "use default/latest accepted M6 instance without exact identity",
+    "use session transcript as actor-safe envelope fallback",
+    "reconstruct denied or missing entry from actor state outside accepted M6 runtime contract",
+    "let render model infer missing M6 runtime semantics"
+  ],
+  "preflight_terminal_state": "M6_RUNTIME_BINDING_REQUIREMENTS_FROZEN__CONCRETE_SYMBOLS_UNBOUND"
+}
