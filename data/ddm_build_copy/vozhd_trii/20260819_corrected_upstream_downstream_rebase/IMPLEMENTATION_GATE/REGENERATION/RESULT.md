@@ -1,56 +1,64 @@
-# VOZHD TRII — IMPLEMENTATION GATE REGENERATION RESULT
+# VOZHD TRII — IMPLEMENTATION CAMPAIGN HARMONIZATION RESULT
 
-Disposition: `IMPLEMENTATION_CAMPAIGN_REGENERATED__READY_FOR_EXPLICIT_ACTIVATION_ADJUDICATION`
+Disposition: `IMPLEMENTATION_CAMPAIGN_HARMONIZED__READY_FOR_EXPLICIT_ACTIVATION_ADJUDICATION`
 
-Assignment: `IG01-W02-REGENERATE-IMPLEMENTATION-CAMPAIGN-001`  
+Assignment: `IG01-W02-HARMONIZE-IMPLEMENTATION-CAMPAIGN-002`  
+Prior assignment: `IG01-W02-REGENERATE-IMPLEMENTATION-CAMPAIGN-001`  
 Worker: `CHAT-SCR555`  
-Agent: `IMPLEMENTATION_GATE_REGENERATION`  
+Agent: `IMPLEMENTATION_GATE_REGENERATION_HARMONIZATION`  
 Mission branch: `agent/vozhd-trii-implementation-gate-regeneration`  
-Production baseline audited: `main@0777a34e50221bde6801dbaca26c058a7350c9e8`  
-Frozen final hostile reclosure: `c4a3524fc21a90940701b2b5421cf53fee047781`  
+Production baseline: `main@0777a34e50221bde6801dbaca26c058a7350c9e8`  
+Frozen final hostile reclosure: `c4a3524f54af368a67ca50ccc85f5d5dca3d803b`  
 Frozen final RESULT.json blob: `bbb47d403e7250c1836fcf2e91280aec4f760e12`  
 Frozen implementation recommendation blob: `8acf266822e7d9e20241eb336b2844a97bd2e830`
 
-## Result
+## Bounded defects closed
 
-The implementation campaign has been regenerated under the frozen post-reclosure semantic constitution without modifying production code or reopening any semantic authority.
+### 1. Final-reclosure pin
 
-The current-code conformance audit is intentionally fail-closed. The bounded audit did not positively establish exact runtime owners as conformant with the frozen M1–M6/SCRV3 requirements. Accordingly:
+Every semantic-ceiling/final-reclosure-head occurrence in the corrected regeneration package now uses the exact accepted head `c4a3524f54af368a67ca50ccc85f5d5dca3d803b`. The prior incorrect value is not an accepted identity and is retained only in `CONFLICTS.json` as the explicitly labeled historical wrong value needed to document the correction; it is not used as authority, ceiling, dependency, or replay input.
 
-- no runtime requirement is labeled `already conformant` without exact evidence;
-- unproven runtime seams are labeled `new implementation required`;
-- `migration required` is reserved for positively identified incompatible legacy behavior;
-- forbidden/missing authority creation is labeled `blocked` rather than converted into an implementation task;
-- hostile/replay harness obligations are labeled `test-only`;
-- this does not claim that relevant legacy code is absent from the repository.
+### 2. Situated phenomenology / disclosure mediation
 
-The regenerated campaign contains seam-scoped packages for M1, M2, M3, M4, M5, M6, the PSEPF zero-positive guard, and final integration. The DAG preserves semantic dependencies while allowing fixture/review work and independent guards to proceed in parallel where actual write/runtime dependencies do not require serialization.
+The implementation DAG now encodes the constitutional separation:
 
-All twenty final hostile-reclosure attack families are frozen as implementation acceptance fixtures with exact titles, hostile constructions, expected fail-closed results, and proof targets. Replay requirements preserve exact producer/authority identities and distinguish lawful divergence under changed causal history from deterministic replay under identical complete inputs.
+`TOTAL_GENERATED_PERSON != ACTOR_ACCESSIBLE_TRUTH != SITUATED_PHENOMENOLOGY != RENDERED_EXPRESSION`
 
-`PRODUCTION_WRITE_ALLOWLIST.json` deliberately activates **zero** future production paths. The regeneration assignment did not grant production writes, and the bounded baseline audit did not independently prove exact production owner paths. A later explicit activation adjudication must bind exact package-local repository paths/functions on the then-current production base before any production write. That adjudication may not relax the frozen must-not-touch semantic ceilings.
+A distinct `IG-SITUATED_PHENOMENOLOGY_AND_DISCLOSURE_MEDIATION` package now sits downstream of current verified M6 actor-safe ingress and remains semantically distinct from `IG-RENDER` rendered-expression realization.
+
+The bounded authority audit consumed:
+- M6 accepted head `a93335e577f018241d3d027bb8827a79907b9f28`;
+- M6 contract blob `af673f31d682a315f9ad34ab05bd15690800a49a`;
+- accepted SCRV2APP head `24f8811bb7d2eaa18cfac1cb907c48bba8d08f23`;
+- SCRV2APP contract blob `dafe01f2307475dc05af0d37520b9ad0f63ed05f`;
+- V2 ingress handoff blob `1b70c8cab48c0b9b9624ad5bde1c81a34e29b413`.
+
+M6 supplies the actor-accessible semantic ceiling and expressly leaves downstream phenomenology/disclosure/rendering separately governed. SCRV2APP positively authorizes `WORDING_WITHIN_ADMITTED_SEMANTIC_PLAN_ONLY`, accepted interaction-mode/lawful V2 inputs, and the post-render semantic/permission/provenance firewall. It does **not** supply a complete positive owner for situated phenomenology, disclosure willingness/planning, salience, inhibition, affective foregrounding, interlocutor-specific openness, or psychological register selection.
+
+Therefore those exact SPDM subparts are explicitly `BLOCKED_NAMED_AUTHORITY_REQUIRED`. No default, score, heuristic, persona state, LLM inference, actor-safe-envelope inference, RSC/PSEPF inference, or session fallback is substituted for the missing owner. Their future production may-touch path set is empty until a dispositive named contract exists and explicit activation adjudication binds exact code/test surfaces.
+
+The separate `IG-RENDER` package is positively plannable under accepted SCRV2APP authority, but cannot fill a blocked SPDM dependency. Lawful wording variability is preserved: identical complete governed render inputs/receipts replay deterministically, while different lawful render-policy/model/RNG receipts may yield different wording inside the exact same semantic ceiling.
+
+## Campaign activation meaning
+
+`READY_FOR_EXPLICIT_ACTIVATION_ADJUDICATION` is package-local, not blanket activation. Authority-complete packages may be adjudicated for exact production paths. Blocked SPDM positive subparts remain non-activatable until named authority exists. No production path is activated by this result.
 
 ## No-change assertions
 
 - production code modified: **false**
 - runtime behavior modified: **false**
-- schema/contract authority modified: **false**
-- deployment state modified: **false**
+- deployment modified: **false**
 - source/artifact retirement performed: **false**
+- semantic contract modified: **false**
 - D15 reopened: **false**
 - broad topology reopened: **false**
-- V553 temporal authority expanded: **false**
-- V554 duplicate equivalence/precedence authority expanded: **false**
-- V555 route identity changed: **false**
-- V556 relation/composition inferred from shared context/provenance: **false**
-- V557/V558 collapsed: **false**
-- runtime RSC fabricated: **false**
-- persistence tier promoted to semantic truth: **false**
-- actor-accessible truth collapsed into phenomenology/utterance plan: **false**
-- positive first-tranche PSEPF actor transition invented: **false**
+- M6 actor-accessible ceiling expanded into phenomenology: **false**
+- inaccessible/system/RSC/PSEPF truth promoted into phenomenology: **false**
+- renderer promoted to semantic authority: **false**
+- missing SPDM authority invented: **false**
 - implementation self-activated: **false**
 
-## Required artifacts
+## Required corrected outputs
 
 1. `RESULT.md`
 2. `RESULT.json`
@@ -63,10 +71,8 @@ All twenty final hostile-reclosure attack families are frozen as implementation 
 9. `TEST_REPLAY_AND_ROLLBACK_GATE.md`
 10. `CONFLICTS.json`
 
-All are confined to `data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/IMPLEMENTATION_GATE/REGENERATION/`.
+All remain confined to `data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/IMPLEMENTATION_GATE/REGENERATION/`.
 
-## Activation status
+## Final state
 
-`READY_FOR_EXPLICIT_ACTIVATION_ADJUDICATION`
-
-This is not production activation. No implementation package may write outside this regeneration folder until a separate dispositive activation order binds its exact production path allowlist and branch/base authority.
+`IMPLEMENTATION_CAMPAIGN_HARMONIZED__READY_FOR_EXPLICIT_ACTIVATION_ADJUDICATION`
