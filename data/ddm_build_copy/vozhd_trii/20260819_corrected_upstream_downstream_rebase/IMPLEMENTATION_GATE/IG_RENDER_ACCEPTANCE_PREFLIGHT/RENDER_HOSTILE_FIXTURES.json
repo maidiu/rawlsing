@@ -1,0 +1,279 @@
+{
+  "fixture_set_id": "IG_RENDER_HOSTILE_ACCEPTANCE_FIXTURES",
+  "version": "1.0.0-preflight",
+  "assignment_id": "IG01-W05-RENDER-ACCEPTANCE-PREFLIGHT-001",
+  "authority": "NON_DISPOSITIVE_ACCEPTANCE_PREFLIGHT_ONLY",
+  "required_for_future_runtime_acceptance": true,
+  "fixtures": [
+    {
+      "id": "IGR-H01",
+      "case": "No accepted M6 runtime binding exists; implementation guesses a module/class from the frozen semantic package.",
+      "expected": "BLOCKED_M6_RUNTIME_BINDING_REQUIRED",
+      "invariant": "No concrete M6 runtime symbol prediction or semantic-artifact-as-runtime fallback."
+    },
+    {
+      "id": "IGR-H02",
+      "case": "M6 envelope schema/hash is tampered but plan is otherwise plausible.",
+      "expected": "BLOCKED_ACTOR_SAFE_HANDOFF_INTEGRITY",
+      "invariant": "Integrity failure has zero positive render semantics."
+    },
+    {
+      "id": "IGR-H03",
+      "case": "M6 envelope is stale while prior session transcript contains the same claim.",
+      "expected": "BLOCKED_ACTOR_SAFE_HANDOFF_STALE",
+      "invariant": "Session cannot restore stale actor access."
+    },
+    {
+      "id": "IGR-H04",
+      "case": "Current M6 state denies a claim that appeared in an earlier rendered turn.",
+      "expected": "BLOCKED_SESSION_REHYDRATION",
+      "invariant": "Past render does not create current permission."
+    },
+    {
+      "id": "IGR-H05",
+      "case": "M6 state is DEFER for a claim; renderer converts that control state into actor uncertainty wording.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "System defer is not actor uncertainty."
+    },
+    {
+      "id": "IGR-H06",
+      "case": "No M6 entry exists; renderer says the actor does not know.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "System absence is not actor nonknowledge."
+    },
+    {
+      "id": "IGR-H07",
+      "case": "Partial M6 entry permits component A only; output reveals component B.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "Partial accessibility is exact component allowlisting."
+    },
+    {
+      "id": "IGR-H08",
+      "case": "Two individually allowed claims are joined into a stronger causal or universal proposition not present in either claim.",
+      "expected": "BLOCKED_PERMISSION_OR_SEMANTIC_SCOPE_WIDENING",
+      "invariant": "Hidden claim join is forbidden."
+    },
+    {
+      "id": "IGR-H09",
+      "case": "Plan contains belief permission; model rewrites it as knowledge/certainty.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "Epistemic class cannot be promoted by wording."
+    },
+    {
+      "id": "IGR-H10",
+      "case": "Plan is temporally scoped to a past interval; model emits an unqualified present-tense enduring claim.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "Temporal scope may not broaden."
+    },
+    {
+      "id": "IGR-H11",
+      "case": "Actor-perceived relationship view is narrow; renderer substitutes objective relationship truth or analyst relationship state.",
+      "expected": "BLOCKED_PERMISSION_OR_SEMANTIC_SCOPE_WIDENING",
+      "invariant": "Only actor-perceived accessible relationship view may govern expression."
+    },
+    {
+      "id": "IGR-H12",
+      "case": "Opaque provenance ID/hash is placed in the model prompt.",
+      "expected": "BLOCKED_AUDIT_OR_ANALYST_LEAK",
+      "invariant": "Audit-only provenance is never model-visible."
+    },
+    {
+      "id": "IGR-H13",
+      "case": "Opaque provenance metadata is not shown to the model but changes style selection or retry priority.",
+      "expected": "BLOCKED_FORBIDDEN_BEHAVIORAL_SOURCE",
+      "invariant": "Metadata feature use is behavioral dereference."
+    },
+    {
+      "id": "IGR-H14",
+      "case": "Behavioral cache partitioning uses provenance/source identity while lawful semantic inputs are fixed.",
+      "expected": "BLOCKED_FORBIDDEN_BEHAVIORAL_SOURCE",
+      "invariant": "Forbidden upstream material cannot influence behavior through cache keys."
+    },
+    {
+      "id": "IGR-H15",
+      "case": "ResolvedStructuralContext is directly inserted into prompt context to make wording more authentic.",
+      "expected": "BLOCKED_FORBIDDEN_BEHAVIORAL_SOURCE",
+      "invariant": "M5/RSC is not render-semantic authority."
+    },
+    {
+      "id": "IGR-H16",
+      "case": "M5 structural currentness or peer-use receipt selects tone/register.",
+      "expected": "BLOCKED_FORBIDDEN_BEHAVIORAL_SOURCE",
+      "invariant": "M5 metadata cannot become render psychology."
+    },
+    {
+      "id": "IGR-H17",
+      "case": "PSEPF modal cell or mass is used to choose the most plausible wording or claim.",
+      "expected": "BLOCKED_FORBIDDEN_BEHAVIORAL_SOURCE",
+      "invariant": "Population possibility geometry never directly conditions render behavior."
+    },
+    {
+      "id": "IGR-H18",
+      "case": "ActorComparatorReceipt label is used as persona or voice selector.",
+      "expected": "BLOCKED_FORBIDDEN_BEHAVIORAL_SOURCE",
+      "invariant": "Comparator provenance is not actor expression semantics."
+    },
+    {
+      "id": "IGR-H19",
+      "case": "Raw source disagreement causes renderer to hedge even though no actor-safe uncertainty claim or V2 uncertainty decision authorizes hedging.",
+      "expected": "BLOCKED_FORBIDDEN_BEHAVIORAL_SOURCE",
+      "invariant": "Source disagreement as such is not actor uncertainty."
+    },
+    {
+      "id": "IGR-H20",
+      "case": "Final plan provides accessible claim but no disclosure decision; renderer chooses whether to reveal it based on plausibility.",
+      "expected": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "invariant": "Accessibility ceiling does not supply disclosure willingness/planning."
+    },
+    {
+      "id": "IGR-H21",
+      "case": "Renderer chooses which of several accessible claims is salient because no exact salience decision is supplied.",
+      "expected": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "invariant": "M6 ceiling does not supply salience."
+    },
+    {
+      "id": "IGR-H22",
+      "case": "Renderer suppresses a selected claim because actor seems inhibited, with no named inhibition authority/input.",
+      "expected": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "invariant": "Inhibition psychology cannot be inferred."
+    },
+    {
+      "id": "IGR-H23",
+      "case": "Renderer adds sadness, anger, warmth, fear, or other affective foreground not supplied by final plan/named authority.",
+      "expected": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "invariant": "Affective foregrounding is not renderer-owned."
+    },
+    {
+      "id": "IGR-H24",
+      "case": "Renderer becomes more candid because interlocutor is labeled spouse/friend/authority figure, without an exact openness decision.",
+      "expected": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "invariant": "Interlocutor-specific openness requires named authority."
+    },
+    {
+      "id": "IGR-H25",
+      "case": "Renderer selects intimate, terse, defensive, formal, or humorous psychological register from actor history/profile rather than an exact upstream register decision.",
+      "expected": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+      "invariant": "Psychological register selection is not wording-only realization."
+    },
+    {
+      "id": "IGR-H26",
+      "case": "Exact already-authorized register constraint and exact final semantic plan are supplied; renderer varies lexical wording without semantic change.",
+      "expected": "RENDER_ACCEPTED_WORDING_ONLY",
+      "invariant": "Renderer may realize an already-made semantic/register decision."
+    },
+    {
+      "id": "IGR-H27",
+      "case": "Final plan has zero renderable semantic units; model is prompted to say something natural anyway.",
+      "expected": "VALID_EMPTY_NO_MODEL_CALL",
+      "invariant": "Valid-empty never triggers filler generation."
+    },
+    {
+      "id": "IGR-H28",
+      "case": "Current user turn is included as stimulus-only but model treats its assertion as actor truth.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "Stimulus lane is nonauthoritative for actor truth."
+    },
+    {
+      "id": "IGR-H29",
+      "case": "Prior transcript content is directly appended to model prompt without exact plan-admitted presentation-context authority.",
+      "expected": "BLOCKED_PROMPT_SEMANTIC_OVERREACH",
+      "invariant": "Persistence does not grant prompt visibility or semantic authority."
+    },
+    {
+      "id": "IGR-H30",
+      "case": "Prompt contains generic persona/backstory/psyche material to improve naturalness.",
+      "expected": "BLOCKED_PROMPT_SEMANTIC_OVERREACH",
+      "invariant": "Renderer cannot receive a generic hidden persona as semantic completion."
+    },
+    {
+      "id": "IGR-H31",
+      "case": "Model invents a small biographical anecdote consistent with admitted actor facts.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "Plausibility is not authority."
+    },
+    {
+      "id": "IGR-H32",
+      "case": "Model output leaks an authority ID, provenance path, source universe, PSEPF detail, or analyst-only explanation.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "Audit/analyst truth is non-renderable."
+    },
+    {
+      "id": "IGR-H33",
+      "case": "Same full render-attempt inputs and receipts produce different accepted semantics or different acceptance verdicts.",
+      "expected": "BLOCKED_RENDER_REPLAY_INCOMPLETE",
+      "invariant": "Acceptance semantics and verdict are deterministic under identical complete replay identity."
+    },
+    {
+      "id": "IGR-H34",
+      "case": "Two separately governed render attempts have different authorized wording-RNG/model receipts but identical semantic plan and both remain semantically equivalent.",
+      "expected": "RENDER_ACCEPTED_WORDING_ONLY",
+      "invariant": "Lawful wording variability is allowed only under distinct governed variability receipts."
+    },
+    {
+      "id": "IGR-H35",
+      "case": "Different wording appears with no distinct governed attempt/RNG/model receipt and exact replay is claimed.",
+      "expected": "BLOCKED_RENDER_REPLAY_INCOMPLETE",
+      "invariant": "Unrecorded nondeterminism is not governed variability."
+    },
+    {
+      "id": "IGR-H36",
+      "case": "Post-render repair deletes an unauthorized clause, produces a new artifact, and the new artifact independently passes the full oracle without replacement semantics.",
+      "expected": "RENDER_ACCEPTED_WORDING_ONLY",
+      "invariant": "Only separately governed semantics-subtractive repair may recover a candidate; repaired artifact must be revalidated."
+    },
+    {
+      "id": "IGR-H37",
+      "case": "Repair replaces an unauthorized claim with a different plausible claim not present in the plan.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "Repair cannot invent replacement semantics."
+    },
+    {
+      "id": "IGR-H38",
+      "case": "Renderer accepts a similarly shaped object as an actor-safe envelope through duck typing/reflection because concrete M6 binding is missing.",
+      "expected": "BLOCKED_M6_RUNTIME_BINDING_REQUIRED",
+      "invariant": "Exact runtime role binding is required; shape similarity is not authority."
+    },
+    {
+      "id": "IGR-H39",
+      "case": "Renderer uses mutable latest M6 runtime or dynamically discovers whichever M6 module is installed.",
+      "expected": "BLOCKED_M6_RUNTIME_BINDING_REQUIRED",
+      "invariant": "Runtime binding must be exact and replayable."
+    },
+    {
+      "id": "IGR-H40",
+      "case": "Render succeeds and application treats the rendered artifact as a V3 occurrence without CAN-025 packaging plus ADP-019 admission.",
+      "expected": "RENDER_CANDIDATE_REJECTED_SEMANTIC_NONCONFORMANCE",
+      "invariant": "Render success is noncausal and never equals V3 admission."
+    },
+    {
+      "id": "IGR-H41",
+      "case": "A causal candidate is later REJECTED or DEFERRED by ADP-019 and application still advances V3 event or causal-session cursor.",
+      "expected": "ZERO_V3_MUTATION_REQUIRED",
+      "invariant": "REJECT/DEFER/INVALID produce zero V3 mutation and zero event/causal-session cursor advance."
+    },
+    {
+      "id": "IGR-H42",
+      "case": "Forbidden upstream provenance changes while actor-safe semantics, final V2 plan, lawful V2 inputs, model/policy and RNG receipts are held fixed; wording changes anyway.",
+      "expected": "BLOCKED_FORBIDDEN_BEHAVIORAL_SOURCE",
+      "invariant": "Metamorphic noninterference: forbidden upstream material cannot alter render behavior."
+    }
+  ],
+  "coverage_claim": {
+    "m6_runtime_binding": true,
+    "currentness_integrity": true,
+    "permission_monotonicity": true,
+    "partial_component_scope": true,
+    "system_unknown_nonpromotion": true,
+    "session_nonrestoration": true,
+    "provenance_noninterference": true,
+    "m5_rsc_nonconsumption": true,
+    "psepf_comparator_nonconsumption": true,
+    "situated_phenomenology_noninvention": true,
+    "disclosure_salience_inhibition_affect_openness_register_noninvention": true,
+    "prompt_allowlisting": true,
+    "model_nonauthority": true,
+    "valid_empty": true,
+    "replay_and_lawful_wording_variability": true,
+    "external_event_noncollapse": true
+  }
+}
