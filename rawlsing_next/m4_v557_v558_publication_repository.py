@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Clean-sideline runtime for frozen M4 V557 publication / V558 repository law.
 
-This module contains no reads from stage-close artifacts.  All semantic authority is
+This module contains no reads from stage-close artifacts. All semantic authority is
 supplied through exact immutable inputs produced by the accepted M1/M2/M3 runtimes.
 V557 and V558 remain logically distinct even when used in one process.
 """
@@ -136,16 +136,6 @@ def _freeze(value: Any) -> Any:
     if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
         return tuple(_freeze(v) for v in value)
     raise M4IntegrityError(f"unsupported immutable material type {type(value).__name__}")
-
-
-def _plain(value: Any) -> Any:
-    if isinstance(value, Mapping):
-        return {k: _plain(v) for k, v in value.items()}
-    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
-        return [_plain(v) for v in value]
-    if isinstance(value, Enum):
-        return value.value
-    return value
 
 
 def _uses(values: Any, name: str) -> tuple[str, ...]:
@@ -345,9 +335,29 @@ def structural_object_from_m2(evaluation: M2Evaluation, *, require_direct_handof
         raise M4IntegrityError("V555 route id/hash no longer addresses exact seven-field identity")
     if route.get("semantic_family") != V555_SEMANTIC_FAMILY:
         raise M4IntegrityError("V555 semantic family mismatch")
-    deps: list[ExactRef] = []
-    if evaluation.exact_v554_f1_ref is not None:
-        deps.append(exact_ref(evaluation.exact_v554_f1_ref, "V555.F1"))
+    if evaluation.exact_v554_f1_ref is None:
+        raise M4IntegrityError("positive V555 route lacks exact accepted V554 F1 reference")
+    f1_ref = exact_ref(evaluation.exact_v554_f1_ref, "V555.F1")
+    if ident[0] != f1_ref.object_id:
+        raise M4IntegrityError("V555 route tuple field 1 no longer equals exact V554 F1 identity")
+    forbidden_ids: list[str] = []
+    if evaluation.exact_v554_b1_ref is not None:
+        forbidden_ids.append(exact_ref(evaluation.exact_v554_b1_ref, "V555.B1").object_id)
+    forbidden_ids.extend(exact_ref(x, "V555.F2").object_id for x in evaluation.inherited_v554_f2_refs)
+    if any(fid in repr(ident) for fid in forbidden_ids):
+        raise M4IntegrityError("B1/F2 may not be promoted into seven-field V555 semantic identity")
+    ordered = route.get("ordered_structure")
+    if isinstance(ordered, (str, bytes)) or not isinstance(ordered, Sequence) or len(ordered) != 3:
+        raise M4IntegrityError("V555 ordered SOURCE->MEDIATION_LOCUS->RECEIVER structure missing")
+    if tuple(x.get("role") for x in ordered if isinstance(x, Mapping)) != ("SOURCE", "MEDIATION_LOCUS", "RECEIVER"):
+        raise M4IntegrityError("V555 source/mediation/receiver role order corrupted")
+    if not all(isinstance(x, Mapping) for x in ordered):
+        raise M4IntegrityError("V555 ordered structure entries malformed")
+    if ordered[1].get("channel_structural_role_id") != ident[3] or exact_ref(ordered[1].get("binding"), "V555.channel") != exact_ref(ident[4], "V555.identity.channel"):
+        raise M4IntegrityError("V555 channel role/binding differs from canonical route tuple")
+    if ordered[2].get("receiving_constraint_kind") != ident[5] or exact_ref(ordered[2].get("binding"), "V555.receiver") != exact_ref(ident[6], "V555.identity.receiver"):
+        raise M4IntegrityError("V555 receiver constraint/binding differs from canonical route tuple")
+    deps: list[ExactRef] = [f1_ref]
     if evaluation.exact_v554_b1_ref is not None:
         deps.append(exact_ref(evaluation.exact_v554_b1_ref, "V555.B1"))
     deps.extend(exact_ref(x, "V555.F2") for x in evaluation.inherited_v554_f2_refs)
@@ -359,14 +369,26 @@ def structural_object_from_m2(evaluation: M2Evaluation, *, require_direct_handof
         expected = ExactRef(V555_SEMANTIC_FAMILY, rid, semantic_hash(route))
         if rr != expected:
             raise M4IntegrityError("V555 direct handoff re-identifies or corrupts route")
-    uses = route.get("producer_allowed_uses", ())
     return make_structural_object(
         producer_family="V555", semantic_class=V555_SEMANTIC_FAMILY, object_id=rid,
         schema_id=SCR555_CONTRACT_ID, schema_version="stage-close-r03-1",
-        typed_state=evaluation.decision_state.value, producer_allowed_uses=uses,
+        typed_state=evaluation.decision_state.value,
+        producer_allowed_uses=route.get("producer_allowed_uses", ()),
         payload=route, source_stage="M2_DIRECT_V555_TO_V557",
         required_dependency_refs=deps,
     )
+
+
+def _v556_cardinality_marker(rule: Mapping[str, Any]) -> str:
+    minimum = rule.get("minimum_cardinality")
+    maximum = rule.get("maximum_cardinality_or_unbounded_marker")
+    if not isinstance(minimum, int) or isinstance(minimum, bool) or minimum < 2:
+        raise M4IntegrityError("V556 rule minimum cardinality invalid")
+    if maximum == "UNBOUNDED":
+        return f"{minimum}..n"
+    if not isinstance(maximum, int) or isinstance(maximum, bool) or maximum < minimum:
+        raise M4IntegrityError("V556 rule maximum cardinality invalid")
+    return str(minimum) if minimum == maximum else f"{minimum}..{maximum}"
 
 
 def structural_object_from_m3(evaluation: M3Evaluation) -> StructuralObject:
@@ -383,24 +405,71 @@ def structural_object_from_m3(evaluation: M3Evaluation) -> StructuralObject:
     family = _text(obj.get("semantic_family"), "V556.semantic_family")
     if family not in V556_SEMANTIC_FAMILIES:
         raise M4IntegrityError("V556 semantic family outside frozen M3 contract")
+    rule = obj.get("rule_authority")
+    if not isinstance(rule, Mapping) or rule.get("semantic_family") != family:
+        raise M4IntegrityError("V556 object lacks exact owning rule authority")
+    cardinality_marker = _v556_cardinality_marker(rule)
     raw_bindings = obj.get("participant_bindings")
     if isinstance(raw_bindings, (str, bytes)) or not isinstance(raw_bindings, Sequence) or len(raw_bindings) < 2:
         raise M4IntegrityError("V556 object lacks exact 2..n participant bindings")
+    minimum = rule["minimum_cardinality"]
+    maximum = rule["maximum_cardinality_or_unbounded_marker"]
+    if len(raw_bindings) < minimum or (maximum != "UNBOUNDED" and len(raw_bindings) > maximum):
+        raise M4IntegrityError("V556 participant occurrence count violates exact owning rule")
+    order_policy = rule.get("participant_order_policy")
+    if order_policy not in {"ORDERED", "UNORDERED"}:
+        raise M4IntegrityError("V556 participant order policy invalid")
+    allowed_roles = rule.get("participant_roles")
+    if isinstance(allowed_roles, (str, bytes)) or not isinstance(allowed_roles, Sequence) or not allowed_roles:
+        raise M4IntegrityError("V556 participant role authority invalid")
+    reuse = rule.get("same_route_reuse_policy")
+    if reuse not in {"FORBIDDEN", "PERMITTED"}:
+        raise M4IntegrityError("V556 same-route reuse policy invalid")
     deps: list[ExactRef] = []
     distinct: set[tuple[str, str, str]] = set()
+    occurrences: dict[tuple[str, str, str], list[int]] = {}
+    ordinals: list[int | None] = []
+    roles: list[str] = []
     for binding in raw_bindings:
         if not isinstance(binding, Mapping) or set(binding) != {"v555_route_identity_ref", "role", "ordinal_or_null", "multiplicity_index"}:
             raise M4IntegrityError("V556 participant role/order/cardinality/multiplicity binding corrupted")
         ref = exact_ref(binding["v555_route_identity_ref"], "V556.participant.route_ref")
+        role = _text(binding["role"], "V556.participant.role")
+        if role not in set(allowed_roles):
+            raise M4IntegrityError("V556 participant role outside exact owning rule")
+        ordinal = binding["ordinal_or_null"]
+        multi = binding["multiplicity_index"]
+        if ordinal is not None and (not isinstance(ordinal, int) or isinstance(ordinal, bool) or ordinal < 1):
+            raise M4IntegrityError("V556 participant ordinal invalid")
+        if not isinstance(multi, int) or isinstance(multi, bool) or multi < 0:
+            raise M4IntegrityError("V556 participant multiplicity invalid")
         deps.append(ref)
-        distinct.add(_ref_key(ref))
+        key = _ref_key(ref)
+        distinct.add(key)
+        occurrences.setdefault(key, []).append(multi)
+        ordinals.append(ordinal)
+        roles.append(role)
     if len(distinct) < 2:
         raise M4IntegrityError("positive V556 object requires at least two distinct V555 routes")
+    if any(len(v) > 1 for v in occurrences.values()) and reuse != "PERMITTED":
+        raise M4IntegrityError("V556 same-route reuse exceeds exact owning rule")
+    for values in occurrences.values():
+        if sorted(values) != list(range(len(values))):
+            raise M4IntegrityError("V556 multiplicity indexes no longer describe exact occurrences")
+    if order_policy == "ORDERED":
+        if any(x is None for x in ordinals) or sorted(ordinals) != list(range(1, len(raw_bindings) + 1)):
+            raise M4IntegrityError("ordered V556 rule requires contiguous semantic ordinals")
+        if len(allowed_roles) > 1 and tuple(roles) != tuple(allowed_roles):
+            raise M4IntegrityError("V556 ordered role pattern differs from exact owning rule")
+    elif any(x is not None for x in ordinals):
+        raise M4IntegrityError("unordered V556 rule requires null participant ordinals")
+    frozen_obj = dict(obj)
+    frozen_obj["m4_preserved_cardinality_marker"] = cardinality_marker
     return make_structural_object(
         producer_family="V556", semantic_class=family, object_id=oid,
         schema_id=SCR556_CONTRACT_ID, schema_version="scr556.v1",
         typed_state=evaluation.decision_state.value,
-        producer_allowed_uses=obj.get("producer_allowed_uses", ()), payload=obj,
+        producer_allowed_uses=obj.get("producer_allowed_uses", ()), payload=frozen_obj,
         source_stage="M3_V556_TO_V557", required_dependency_refs=deps,
     )
 
@@ -421,6 +490,18 @@ class V557GovernanceRecord:
         return ExactRef("V557_GOVERNANCE_RECORD", self.record_id, self.record_hash)
 
 
+def _governance_material(record: V557GovernanceRecord) -> dict[str, Any]:
+    return {
+        "m4_contract_id": M4_CONTRACT_ID,
+        "object_ref": record.object_ref.as_dict(),
+        "producer_allowed_uses": list(record.producer_allowed_uses),
+        "v557_allowed_uses": list(record.v557_allowed_uses),
+        "decision_state": record.decision_state.value,
+        "exception_state": record.exception_state.value,
+        "authority_ref": record.authority_ref.as_dict(),
+    }
+
+
 def govern_v557(
     obj: StructuralObject, *, decision_state: V557DecisionState | str,
     v557_allowed_uses: Sequence[str], authority_ref: AuthorityRef,
@@ -439,16 +520,10 @@ def govern_v557(
         raise PermissionWideningError("V557 allowed uses widen producer permission")
     if not set(allowed) <= _STATE_CEILING[state]:
         raise PermissionWideningError("V557 allowed uses exceed governance-state ceiling")
-    material = {
-        "m4_contract_id": M4_CONTRACT_ID,
-        "object_ref": obj.ref.as_dict(),
-        "producer_allowed_uses": list(producer),
-        "v557_allowed_uses": list(allowed),
-        "decision_state": state.value,
-        "exception_state": exc.value,
-        "authority_ref": authority_ref.as_dict(),
-    }
-    h = semantic_hash(material)
+    provisional = V557GovernanceRecord(
+        "PENDING", obj.ref, state, exc, producer, allowed, authority_ref, "0" * 64,
+    )
+    h = semantic_hash(_governance_material(provisional))
     return V557GovernanceRecord(f"V557GOV:{h}", obj.ref, state, exc, producer, allowed, authority_ref, h)
 
 
@@ -462,6 +537,12 @@ class V557PublicationEntry:
             raise M4IntegrityError("V557 governance record does not bind exact producer object")
         if tuple(self.governance.producer_allowed_uses) != tuple(self.obj.producer_allowed_uses):
             raise PermissionWideningError("V557 record producer ceiling differs from producer object")
+        if not set(self.governance.v557_allowed_uses) <= set(self.obj.producer_allowed_uses):
+            raise PermissionWideningError("V557 record widens producer permission")
+        if not set(self.governance.v557_allowed_uses) <= _STATE_CEILING[self.governance.decision_state]:
+            raise PermissionWideningError("V557 record exceeds governance-state ceiling")
+        if semantic_hash(_governance_material(self.governance)) != self.governance.record_hash or self.governance.record_id != f"V557GOV:{self.governance.record_hash}":
+            raise M4IntegrityError("V557 governance record identity/hash is stale or corrupt")
 
 
 @dataclass(frozen=True)
@@ -474,6 +555,18 @@ class V557PublicationBundle:
     @property
     def ref(self) -> ExactRef:
         return ExactRef("V557_PUBLICATION_BUNDLE", self.publication_id, self.publication_hash)
+
+
+def _publication_material(entries: Sequence[V557PublicationEntry]) -> dict[str, Any]:
+    return {
+        "schema": V557_PUBLICATION_SCHEMA,
+        "m4_contract_id": M4_CONTRACT_ID,
+        "entries": [
+            {"object_ref": e.obj.ref.as_dict(), "producer_family": e.obj.producer_family,
+             "typed_state": e.obj.typed_state, "governance_ref": e.governance.ref.as_dict()}
+            for e in entries
+        ],
+    }
 
 
 def build_v557_publication_bundle(entries: Sequence[V557PublicationEntry]) -> V557PublicationBundle:
@@ -492,15 +585,7 @@ def build_v557_publication_bundle(entries: Sequence[V557PublicationEntry]) -> V5
         old = seen.setdefault(key, entry.obj.content_hash)
         if old != entry.obj.content_hash:
             raise M4IntegrityError("same producer identity appears with different content hash")
-    material = {
-        "schema": V557_PUBLICATION_SCHEMA,
-        "m4_contract_id": M4_CONTRACT_ID,
-        "entries": [
-            {"object_ref": e.obj.ref.as_dict(), "producer_family": e.obj.producer_family,
-             "typed_state": e.obj.typed_state, "governance_ref": e.governance.ref.as_dict()}
-            for e in normalized
-        ],
-    }
+    material = _publication_material(normalized)
     h = semantic_hash(material)
     return V557PublicationBundle(f"V557PUB:{h}", h, V557_PUBLICATION_SCHEMA, normalized)
 
@@ -562,10 +647,11 @@ def make_producer_locator(
 ) -> ProducerLocator:
     if governance.object_ref != obj.ref:
         raise M4IntegrityError("locator governance does not bind exact object")
-    storage = storage_locator or f"bundle://objects/{obj.content_hash}"
-    storage = _safe_storage_locator(storage, content_hash=obj.content_hash)
-    provenance = _text(provenance_locator or f"audit://{obj.producer_family}/{obj.object_id}", "provenance_locator")
     bindings = tuple(producer_rule_bindings)
+    if any(not isinstance(x, AuthorityRef) for x in bindings):
+        raise M4IntegrityError("producer_rule_bindings must be exact AuthorityRef values")
+    storage = _safe_storage_locator(storage_locator or f"bundle://objects/{obj.content_hash}", content_hash=obj.content_hash)
+    provenance = _text(provenance_locator or f"audit://{obj.producer_family}/{obj.object_id}", "provenance_locator")
     draft = ProducerLocator(
         "PENDING", _text(logical_collection_kind, "logical_collection_kind"), obj.producer_family,
         obj.object_id, obj.content_hash, _text(authoritative_build_id, "authoritative_build_id"),
@@ -668,8 +754,7 @@ class RepositoryEntry:
     locator: ProducerLocator
 
     def __post_init__(self) -> None:
-        if self.governance.object_ref != self.obj.ref:
-            raise M4IntegrityError("repository governance/object identity mismatch")
+        V557PublicationEntry(self.obj, self.governance)
         loc = self.locator
         if (
             loc.authoritative_producer_family != self.obj.producer_family or
@@ -754,14 +839,14 @@ class V558RepositoryBundle:
         return ExactRef("V558_REPOSITORY_BUNDLE", self.repository_id, self.repository_hash)
 
 
-def _repository_material(
-    publication: V557PublicationBundle, entries: Sequence[RepositoryEntry], edges: Sequence[ReferenceEdge],
+def _repository_material_from_ref(
+    publication_ref: ExactRef, entries: Sequence[RepositoryEntry], edges: Sequence[ReferenceEdge],
     external: Sequence[ExternalResolutionBinding], index_manifest: LogicalIndexManifest,
 ) -> dict[str, Any]:
     return {
         "schema": V558_REPOSITORY_SCHEMA,
         "m4_contract_id": M4_CONTRACT_ID,
-        "publication_bundle_ref": publication.ref.as_dict(),
+        "publication_bundle_ref": publication_ref.as_dict(),
         "entries": [
             {"object_ref": e.obj.ref.as_dict(), "producer_family": e.obj.producer_family,
              "typed_state": e.obj.typed_state, "governance_ref": e.governance.ref.as_dict(),
@@ -785,6 +870,10 @@ def _validate_v556_participant_edges(
     if not isinstance(payload, Mapping):
         raise ClosureIntegrityError("positive V556 object must be packaged for participant-shape validation")
     bindings = payload.get("participant_bindings")
+    rule = payload.get("rule_authority")
+    if not isinstance(rule, Mapping):
+        raise ClosureIntegrityError("positive V556 object lacks owning rule authority in packaged payload")
+    expected_cardinality = payload.get("m4_preserved_cardinality_marker") or _v556_cardinality_marker(rule)
     if isinstance(bindings, (str, bytes)) or not isinstance(bindings, Sequence) or len(bindings) < 2:
         raise ClosureIntegrityError("positive V556 object has incomplete participant set")
     source_edges = [e for e in edges_by_source.get(_ref_key(entry.locator.ref), ()) if e.edge_role == "PARTICIPANT"]
@@ -808,7 +897,7 @@ def _validate_v556_participant_edges(
             if e.edge_hash not in used and e.target_locator_ref == target.locator.ref and
             e.participant_role == role and e.semantic_ordinal == ordinal and
             e.multiplicity_key == str(multi) and e.order_significant == (ordinal is not None) and
-            e.requiredness == "REQUIRED"
+            e.declared_cardinality == expected_cardinality and e.requiredness == "REQUIRED"
         ]
         if len(matches) != 1:
             raise ClosureIntegrityError("V556 role/order/cardinality/multiplicity edge does not exactly survive packaging")
@@ -825,6 +914,9 @@ def build_v558_repository_bundle(
 ) -> V558RepositoryBundle:
     if not isinstance(publication, V557PublicationBundle):
         raise M4IntegrityError("V558 repository requires exact distinct V557 publication bundle")
+    expected_pub_hash = semantic_hash(_publication_material(publication.entries))
+    if publication.schema != V557_PUBLICATION_SCHEMA or publication.publication_hash != expected_pub_hash or publication.publication_id != f"V557PUB:{expected_pub_hash}":
+        raise M4IntegrityError("V557 publication bundle identity/hash is stale or corrupt")
     normalized = tuple(sorted(entries, key=lambda e: (e.obj.producer_family, e.obj.object_id, e.obj.content_hash)))
     edges = tuple(sorted(reference_edges, key=lambda e: e.edge_hash))
     external = tuple(sorted(external_bindings, key=lambda b: b.binding_id))
@@ -882,18 +974,14 @@ def build_v558_repository_bundle(
     manifest = index_manifest or make_index_manifest(normalized)
     if not MANDATORY_LOGICAL_INDEXES <= set(manifest.declared_indexes):
         raise ClosureIntegrityError("repository logical index manifest is incomplete")
-    expected_identity = {
-        (exact_resolution_key(e.locator), _ref_key(e.locator.ref)) for e in normalized
-    }
-    actual_identity = {
-        (r.key, _ref_key(r.locator_ref)) for r in manifest.records if r.index_name == "OBJECT_IDENTITY"
-    }
+    expected_identity = {(exact_resolution_key(e.locator), _ref_key(e.locator.ref)) for e in normalized}
+    actual_identity = {(r.key, _ref_key(r.locator_ref)) for r in manifest.records if r.index_name == "OBJECT_IDENTITY"}
     if actual_identity != expected_identity:
         raise ClosureIntegrityError("OBJECT_IDENTITY index is incomplete, stale, or ambiguous")
     index_material = _index_material(manifest.declared_indexes, manifest.records)
     if semantic_hash(index_material) != manifest.manifest_hash or manifest.manifest_id != f"V558IDX:{manifest.manifest_hash}":
         raise ClosureIntegrityError("logical index manifest hash mismatch")
-    material = _repository_material(publication, normalized, edges, external, manifest)
+    material = _repository_material_from_ref(publication.ref, normalized, edges, external, manifest)
     h = semantic_hash(material)
     return V558RepositoryBundle(f"V558REPO:{h}", h, V558_REPOSITORY_SCHEMA, publication.ref, normalized, edges, external, manifest)
 
@@ -919,6 +1007,13 @@ class ContextQuery:
     generated_binding_refs: tuple[ExactRef, ...]
 
 
+def _query_material(items: Sequence[ContextQueryItem], bindings: Sequence[ExactRef]) -> dict[str, Any]:
+    return {
+        "items": [{"resolution_key": i.resolution_key, "requested_uses": list(i.requested_uses)} for i in items],
+        "generated_binding_refs": [x.as_dict() for x in bindings],
+    }
+
+
 def make_context_query(
     items: Sequence[ContextQueryItem], *, generated_binding_refs: Sequence[ExactRef | Mapping[str, str]] = (),
 ) -> ContextQuery:
@@ -926,11 +1021,7 @@ def make_context_query(
     if len({i.resolution_key for i in normalized}) != len(normalized):
         raise M4IntegrityError("duplicate exact resolution key in ContextQuery")
     bindings = tuple(sorted((exact_ref(x) for x in generated_binding_refs), key=_ref_key))
-    material = {
-        "items": [{"resolution_key": i.resolution_key, "requested_uses": list(i.requested_uses)} for i in normalized],
-        "generated_binding_refs": [x.as_dict() for x in bindings],
-    }
-    h = semantic_hash(material)
+    h = semantic_hash(_query_material(normalized, bindings))
     return ContextQuery(f"V558QUERY:{h}", h, normalized, bindings)
 
 
@@ -1069,6 +1160,22 @@ def _transitive_entries(root: RepositoryEntry, repository: V558RepositoryBundle)
     return tuple(sorted(out, key=lambda e: (e.obj.producer_family, e.obj.object_id, e.obj.content_hash)))
 
 
+def _validate_repository_checksum(repository: V558RepositoryBundle) -> None:
+    if repository.schema != V558_REPOSITORY_SCHEMA:
+        raise ClosureIntegrityError("repository schema mismatch")
+    index_material = _index_material(repository.index_manifest.declared_indexes, repository.index_manifest.records)
+    expected_index_hash = semantic_hash(index_material)
+    if repository.index_manifest.manifest_hash != expected_index_hash or repository.index_manifest.manifest_id != f"V558IDX:{expected_index_hash}":
+        raise ClosureIntegrityError("repository index manifest checksum mismatch")
+    material = _repository_material_from_ref(
+        repository.publication_bundle_ref, repository.entries, repository.reference_edges,
+        repository.external_bindings, repository.index_manifest,
+    )
+    expected = semantic_hash(material)
+    if repository.repository_hash != expected or repository.repository_id != f"V558REPO:{expected}":
+        raise ClosureIntegrityError("repository bundle checksum mismatch")
+
+
 def resolve_v558(
     repository: V558RepositoryBundle, query: ContextQuery, *,
     policy: ResolverPolicy = ResolverPolicy(),
@@ -1077,6 +1184,10 @@ def resolve_v558(
     """Resolve exact immutable candidates without fabricating a ResolvedStructuralContext."""
     if not isinstance(repository, V558RepositoryBundle) or not isinstance(query, ContextQuery):
         raise M4IntegrityError("resolver requires exact repository and ContextQuery")
+    _validate_repository_checksum(repository)
+    expected_query_hash = semantic_hash(_query_material(query.items, query.generated_binding_refs))
+    if query.query_hash != expected_query_hash or query.query_id != f"V558QUERY:{expected_query_hash}":
+        raise M4IntegrityError("ContextQuery identity/hash is stale or corrupt")
     external_store = external_store or {}
     index: dict[str, ExactRef] = {}
     for record in repository.index_manifest.records:
@@ -1159,9 +1270,13 @@ def resolve_v558(
             ))
     if integrity_failed:
         state = "RESOLUTION_INTEGRITY_FAILED"
+    elif unresolved and resolved:
+        state = "RESOLUTION_PARTIAL_TYPED_DEFERRED"
     elif unresolved:
         state = "RESOLUTION_MISSING_REQUIRED_AUTHORITY"
-    elif denied and not resolved:
+    elif denied and resolved:
+        state = "RESOLUTION_PARTIAL_TYPED_DEFERRED"
+    elif denied:
         state = "RESOLUTION_DENIED_OR_NOT_APPLICABLE"
     elif not query.items:
         state = "RESOLUTION_COMPLETE_VALID_EMPTY"
