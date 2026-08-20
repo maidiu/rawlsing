@@ -955,6 +955,7 @@ def build_v558_repository_bundle(
     for entry in normalized:
         if entry.obj.payload is None and _ref_key(entry.obj.ref) not in binding_map:
             raise ClosureIntegrityError("metadata-only dependency lacks exact immutable hash-bound resolution binding")
+        _validate_v556_participant_edges(entry, by_object, edge_by_source)
         declared = tuple(entry.obj.required_dependency_refs) + tuple(entry.obj.negative_dependency_refs)
         for dep in declared:
             target = by_object.get(_ref_key(dep))
@@ -966,7 +967,6 @@ def build_v558_repository_bundle(
             ]
             if not matches:
                 raise ClosureIntegrityError("required positive/negative dependency lacks exact role-preserving edge")
-        _validate_v556_participant_edges(entry, by_object, edge_by_source)
     manifest = index_manifest or make_index_manifest(normalized)
     if not MANDATORY_LOGICAL_INDEXES <= set(manifest.declared_indexes):
         raise ClosureIntegrityError("repository logical index manifest is incomplete")
