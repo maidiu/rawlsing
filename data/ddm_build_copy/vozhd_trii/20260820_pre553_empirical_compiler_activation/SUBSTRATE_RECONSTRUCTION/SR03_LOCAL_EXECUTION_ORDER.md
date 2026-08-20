@@ -1,4 +1,4 @@
-# SR03 — 35-SOURCE NATIVE METADATA DUMB EXECUTOR — REVISION 2
+# SR03 — 35-SOURCE NATIVE METADATA DUMB EXECUTOR — REVISION 3
 
 Repository: `maidiu/rawlsing`
 Frozen parent machine: `9188dc9fb7a8b92b981f3d3f94754cd6137d17b1`
@@ -8,17 +8,38 @@ The exact launch HEAD is supplied by HQ in the launch command. Verify it before 
 
 MISSION: Run the checked-in `SR03_SOURCE_NATIVE_METADATA_PROBE.py` over the exact 35-source byte inventory. Produce manifests only. Do not normalize, infer, repair, ingest, or write Postgres/C11.
 
-REVISION-2 NOTE — EVS 1999:
-The exact frozen `EVS 1999.sav` (`SHA-256 6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8`) fails default pyreadstat metadata decoding with an invalid-byte-sequence error but reads under explicit `latin1`. HQ has therefore frozen an explicit source-specific reader compatibility override in the checked-in probe. This is NOT a silent fallback and must not be changed by the executor. The override and its reason are emitted into the manifest and receipt for deterministic replay.
+## Revision-3 compatibility ruling
+
+Earlier SR03 attempts exposed pyreadstat decoding/chunk-reader incompatibilities on a bounded legacy-source set. HQ has frozen an exact compatibility-execution allowlist in `10_FORMAT_DECODER_CONTRACT.md` and the checked-in probe.
+
+The allowlist is exactly:
+
+- `EVS 1999.sav`
+- `EVS 2008.sav`
+- `LiTS_I.dta`
+- `LiTS_II.dta`
+- `LiTS_III.dta`
+- `LiTS_IV.dta`
+
+Each is bound to its exact SHA-256 by `SOURCE_BYTE_INVENTORY.csv` and uses explicit `latin1` for this pyreadstat physical-census execution.
+
+Every override has authority status:
+
+`COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY`
+
+This means the override is lawful for deterministic physical extraction, but it is **not** permission to claim Latin-1 is the source's intended text encoding or to certify source semantics from compatibility-decoded labels alone. The override, reason, and authority status must be emitted into the manifest/receipt.
+
+No source outside this exact allowlist may receive an encoding guess or fallback. If another source fails, stop and return the exact failure to HQ.
 
 Inputs:
 - checked-in `SOURCE_BYTE_INVENTORY.csv`;
 - exact local raw-source directory containing all 35 hash-matched files;
-- checked-in `SR03_SOURCE_NATIVE_METADATA_PROBE.py`.
+- checked-in `SR03_SOURCE_NATIVE_METADATA_PROBE.py`;
+- binding `10_FORMAT_DECODER_CONTRACT.md`.
 
 Python requirements: `pyreadstat`, `pandas`.
 
-The script deliberately uses `user_missing=True` for both SAV and DTA. Do not remove it. Do not apply value formats during physical extraction. Do not add additional encoding guesses or silent fallbacks. If another source fails decoding, return that failure to HQ unchanged.
+The script deliberately uses `user_missing=True` for SAV and DTA. Do not remove it. Do not apply value formats during physical extraction. Do not add additional encoding guesses or silent fallbacks.
 
 Required preflight:
 - `git rev-parse --show-toplevel`
@@ -30,16 +51,18 @@ Required preflight:
 Set:
 `ORDER_ROOT=data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION`
 
-Execute into a fresh R2 output directory; do not merge with or overwrite the partial R1 output:
-`python "$ORDER_ROOT/SR03_SOURCE_NATIVE_METADATA_PROBE.py" --inventory "$ORDER_ROOT/SOURCE_BYTE_INVENTORY.csv" --source-root /Users/matthewsmith/Desktop/Rawlsing/data/Data --output-dir SR03_SOURCE_PHYSICAL_MANIFESTS_R2`
+Execute into a fresh R3 output directory; do not resume, merge, or overwrite R1/R2 output:
 
-Return the complete `SR03_SOURCE_PHYSICAL_MANIFESTS_R2` directory plus:
+`python "$ORDER_ROOT/SR03_SOURCE_NATIVE_METADATA_PROBE.py" --inventory "$ORDER_ROOT/SOURCE_BYTE_INVENTORY.csv" --source-root /Users/matthewsmith/Desktop/Rawlsing/data/Data --output-dir SR03_SOURCE_PHYSICAL_MANIFESTS_R3`
+
+Return the complete `SR03_SOURCE_PHYSICAL_MANIFESTS_R3` directory plus:
 - exact checkout HEAD;
 - exact command;
 - exit code;
 - output byte size;
 - SHA-256 of a deterministic ZIP/tar of returned manifests;
 - `RECEIPT.json`;
+- `SOURCE_PHYSICAL_MANIFEST_SUMMARY.csv`;
 - stdout/stderr;
 - `git status -sb` after execution.
 
