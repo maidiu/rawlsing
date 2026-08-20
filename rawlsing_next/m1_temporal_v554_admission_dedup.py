@@ -226,6 +226,7 @@ def _parse(payload: Any) -> dict[str, Any]:
         "auth": dict(auth), "spine": _nonempty(payload.get("producer_reference_spine_fingerprint"), "producer spine"),
         "publication": _publication(payload.get("publication_authority")),
     }
+
 def _required(sig: str) -> BasisKind: return BasisKind.DIRECT if sig == SIG_001 else BasisKind.V553
 
 def _block_for_conditions(conditions: Sequence[Mapping[str, Any]]) -> M1DecisionState | None:
