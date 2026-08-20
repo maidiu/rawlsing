@@ -1,0 +1,140 @@
+{
+  "fixture_set_id": "PRE553_P10_C11_HOSTILE_FIXTURES",
+  "version": "preflight-1",
+  "status": "NON_EXECUTABLE_CONTRACT_FIXTURES",
+  "fixtures": [
+    {
+      "id": "HF01_CANONICAL_ALIAS_COLLAPSES_RAW_UNIVERSE",
+      "attack": "Two source releases share one canonical source/wave alias and are assigned one universe_id.",
+      "expected": "REJECTED_SOURCE_UNIVERSE_COLLAPSE",
+      "protects": ["M01", "M11"]
+    },
+    {
+      "id": "HF02_CROSS_UNIVERSE_RESPONDENT_STRING_LINKAGE",
+      "attack": "Identical respondent key strings in distinct universes are treated as the same person without linkage authority.",
+      "expected": "REJECTED_SOURCE_UNIVERSE_COLLAPSE",
+      "protects": ["M02", "M11"]
+    },
+    {
+      "id": "HF03_CANONICAL_QUESTION_ERASES_NATIVE_VERSION",
+      "attack": "Native question/version/component identity is dropped after canonical mapping.",
+      "expected": "REJECTED_INTEGRITY_FAILURE",
+      "protects": ["M03", "M10"]
+    },
+    {
+      "id": "HF04_DUPLICATE_VALUE_EVENT_COLLAPSE",
+      "attack": "Two repeated response events with identical respondent/question/value are deduplicated.",
+      "expected": "REJECTED_EVENT_IDENTITY_COLLAPSE",
+      "protects": ["M04", "M05"]
+    },
+    {
+      "id": "HF05_MULTISELECT_SCALARIZATION",
+      "attack": "Unordered multiselect components are collapsed to one scalar or concatenated value without component identity.",
+      "expected": "REJECTED_TOPOLOGY_LOSS",
+      "protects": ["M04", "M05"]
+    },
+    {
+      "id": "HF06_RANK_FROM_STORAGE_ORDER",
+      "attack": "Ranked response semantics rely on file/row order rather than explicit semantic ordinal.",
+      "expected": "REJECTED_TOPOLOGY_LOSS",
+      "protects": ["M05", "M18"]
+    },
+    {
+      "id": "HF07_MISSING_ROW_MEANS_NOT_ASKED",
+      "attack": "A respondent has no response row and ingest silently interprets this as NOT_ASKED.",
+      "expected": "REJECTED_RISK_SET_LOSS",
+      "protects": ["M06", "M07"]
+    },
+    {
+      "id": "HF08_EQUAL_DENOMINATOR_RISK_SET_SUBSTITUTION",
+      "attack": "A risk set is replaced by another respondent set with the same denominator.",
+      "expected": "REJECTED_RISK_SET_LOSS",
+      "protects": ["M07", "M12"]
+    },
+    {
+      "id": "HF09_FIXED_V550_COORDINATE_FRONTIER",
+      "attack": "Carrier accepts only currently enumerated V550 indicator fields and drops a lawful source coordinate outside that list.",
+      "expected": "REJECTED_INTEGRITY_FAILURE",
+      "protects": ["M08"]
+    },
+    {
+      "id": "HF10_COORDINATE_TO_GENERATED_POSITION_PROMOTION",
+      "attack": "An empirical demographic coordinate is mapped directly to a nine-stratum generated structural position during ingest.",
+      "expected": "REJECTED_UNAUTHORIZED_SEMANTIC_PROMOTION",
+      "protects": ["M08", "M15"]
+    },
+    {
+      "id": "HF11_DEFAULT_WEIGHT_ONE",
+      "attack": "Missing/invalid governed weight is replaced by 1.0 without authority.",
+      "expected": "REJECTED_WEIGHT_AUTHORITY_DEFAULT",
+      "protects": ["M09", "M16"]
+    },
+    {
+      "id": "HF12_MUTABLE_LATEST_AUTHORITY",
+      "attack": "Question, topology, routing, weight, or crosswalk semantics dereference a mutable latest/default authority.",
+      "expected": "BLOCKED_MISSING_REQUIRED_AUTHORITY",
+      "protects": ["M10", "M17", "M18"]
+    },
+    {
+      "id": "HF13_HARMONIZATION_IMPLIES_POOLING",
+      "attack": "Two universes with a shared canonical label/harmonization lineage are pooled without separate pooling authority.",
+      "expected": "REJECTED_SOURCE_UNIVERSE_COLLAPSE",
+      "protects": ["M11"]
+    },
+    {
+      "id": "HF14_MATERIALIZED_FACT_WITHOUT_PREDICATE_IDENTITY",
+      "attack": "A retained empirical fact has support values but lacks exact predicate AST/hash, risk set, target, scope, or measure basis.",
+      "expected": "REJECTED_INTEGRITY_FAILURE",
+      "protects": ["M12", "M16", "M18"]
+    },
+    {
+      "id": "HF15_FUZZY_ACTOR_COMPARATOR",
+      "attack": "Actor comparator uses nearest geography/band/default time because exact comparator authority is missing.",
+      "expected": "BLOCKED_MISSING_REQUIRED_AUTHORITY",
+      "protects": ["M13", "M17"]
+    },
+    {
+      "id": "HF16_BRANCH_LABEL_AS_REPLAY",
+      "attack": "A discovery result preserves only branch label/support and not exact candidate frontier, algorithm, predicate, coverage/pruning, and replay identity.",
+      "expected": "REJECTED_REPLAY_NONDETERMINISM",
+      "protects": ["M14", "M18"]
+    },
+    {
+      "id": "HF17_ASSOCIATION_SELF_PROMOTES_TO_STRUCTURE",
+      "attack": "An empirical association is treated as StructuralEmpiricalAdmission without exact structural-admission authority.",
+      "expected": "REJECTED_UNAUTHORIZED_SEMANTIC_PROMOTION",
+      "protects": ["M15"]
+    },
+    {
+      "id": "HF18_ZERO_SUPPORT_COLLAPSED_WITH_OBSERVED_ZERO",
+      "attack": "Zero eligible/support denominator and observed zero outcome inside positive support are represented by one state.",
+      "expected": "REJECTED_INTEGRITY_FAILURE",
+      "protects": ["M06", "M16"]
+    },
+    {
+      "id": "HF19_FILE_HASH_ONLY_EQUIVALENCE",
+      "attack": "A serialized artifact SHA is used as proof of semantic equivalence although proof-relevant fields are excluded from the semantic projection.",
+      "expected": "REJECTED_REPLAY_NONDETERMINISM",
+      "protects": ["M17", "M18"]
+    },
+    {
+      "id": "HF20_PARTIAL_PACKAGE_PUBLISH",
+      "attack": "Respondent events are physically present and queryable before mandatory routing, authority, source-relation, or replay closure is sealed.",
+      "expected": "REJECTED_INTEGRITY_FAILURE",
+      "protects": ["M01", "M07", "M10", "M11", "M17", "M18"]
+    },
+    {
+      "id": "HF21_CURRENT_POSTGRES_DECLARED_EQUIVALENT_BY_SCHEMA_PARITY",
+      "attack": "Current Postgres/shared V550 surface is declared C11-equivalent because columns/counts or selected aggregates match.",
+      "expected": "REJECTED_INTEGRITY_FAILURE",
+      "protects": ["M01", "M04", "M05", "M07", "M08", "M09", "M17", "M18"]
+    },
+    {
+      "id": "HF22_SOURCE_SNAPSHOT_RETIRED_AFTER_INGEST",
+      "attack": "Successful logical C11 ingest is treated as authority to delete the original/source-native snapshot.",
+      "expected": "REJECTED_UNAUTHORIZED_SEMANTIC_PROMOTION",
+      "protects": ["M10", "M17", "M18"]
+    }
+  ],
+  "success_condition": "A future executable C11 implementation must reject or type-block every hostile case without fallback, repair, source collapse, semantic promotion, or loss of M01-M18 replay information."
+}
