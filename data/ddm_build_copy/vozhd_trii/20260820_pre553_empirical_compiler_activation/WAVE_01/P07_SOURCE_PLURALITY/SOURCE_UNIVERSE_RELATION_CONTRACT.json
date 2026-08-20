@@ -1,0 +1,223 @@
+{
+  "contract_id": "PRE553_SOURCE_UNIVERSE_RELATION_CONTRACT",
+  "contract_version": "1.0.0",
+  "assignment_id": "PRE553-W01-P07-001",
+  "authority": "NON_DISPOSITIVE_PREFLIGHT_SPECIFICATION_ONLY",
+  "default_law": "DISTINCT_SOURCE_UNIVERSES_REMAIN_DISTINCT_UNLESS_AN_EXACT_POSITIVE_OPERATION_SPECIFIC_AUTHORITY_SAYS_OTHERWISE",
+  "binding_inputs": {
+    "D12": "D12_ACCEPTED__TERMINAL_CAPABILITY_FRONTIER_CLOSED__D13_READY",
+    "D13": "D13_ACCEPTED__PHYSICAL_INFORMATION_FRONTIER_CLOSED__D14_READY",
+    "D15": "D15_UPSTREAM_ARCHITECTURE_ACCEPTED__DOWNSTREAM_REVALIDATION_PROVISIONAL__WHOLE_MACHINE_IMPLEMENTATION_GATED",
+    "M4": "M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED",
+    "M5": "M5_ACCEPTED__V3_STRUCTURAL_PEER_PRIOR_SEAM_CLOSED"
+  },
+  "relation_families": {
+    "SOURCE_SEMANTIC_EQUIVALENCE": {
+      "meaning": "An exact governed claim that two source-native semantic elements or transforms have equivalent meaning for one declared operation/scope.",
+      "required_authority": [
+        "relation_authority_id",
+        "relation_authority_version",
+        "relation_authority_content_hash",
+        "left_source_universe_ref",
+        "right_source_universe_ref",
+        "left_semantic_ref",
+        "right_semantic_ref",
+        "equivalence_scope",
+        "effective_time_or_version_scope",
+        "transformation_authority_refs",
+        "decision"
+      ],
+      "does_not_grant": [
+        "RESPONDENT_LINKAGE",
+        "OVERLAP_NON_DUPLICATION",
+        "SAMPLE_POOLING",
+        "ESTIMAND_COMPOSITION",
+        "BACKFILL",
+        "ACTOR_COMPARABILITY",
+        "STRUCTURAL_ADMISSION"
+      ]
+    },
+    "RESPONDENT_LINKAGE": {
+      "meaning": "An exact governed relation between scoped respondent/event identities across source universes.",
+      "required_authority": [
+        "linkage_authority_id_version_hash",
+        "source_universe_refs",
+        "scoped_respondent_or_event_keys",
+        "linkage_cardinality",
+        "linkage_basis",
+        "effective_scope",
+        "confidence_or_certainty_state_if_authorized",
+        "decision"
+      ],
+      "allowed_cardinality": ["ONE_TO_ONE", "ONE_TO_MANY", "MANY_TO_ONE", "MANY_TO_MANY"],
+      "default": "ABSENT",
+      "does_not_grant": [
+        "SEMANTIC_EQUIVALENCE",
+        "SAMPLE_NONOVERLAP",
+        "POOLING",
+        "COMPOSITION",
+        "BACKFILL"
+      ]
+    },
+    "OVERLAP_NON_DUPLICATION": {
+      "meaning": "An exact governed statement about whether sampling/respondent/event units overlap and how duplicate contribution is prevented for a declared target operation.",
+      "required_authority": [
+        "overlap_authority_id_version_hash",
+        "source_universe_refs",
+        "sampling_unit_definition",
+        "covered_risk_set_or_sample_scope",
+        "overlap_state",
+        "deduplication_or_partition_rule_ref_or_NONE",
+        "effective_scope",
+        "decision"
+      ],
+      "states": ["PROVEN_DISJOINT", "KNOWN_OVERLAP", "PARTIALLY_LINKED", "UNKNOWN_OVERLAP", "NOT_APPLICABLE"],
+      "default": "UNKNOWN_OVERLAP",
+      "does_not_grant": ["POOLING", "COMPOSITION", "SEMANTIC_EQUIVALENCE"]
+    },
+    "SAMPLE_POOLING": {
+      "meaning": "Positive authority to combine respondent/event/sample contributions from multiple universes into one governed empirical sample for one declared query/estimand.",
+      "required_authority": [
+        "pooling_authority_id_version_hash",
+        "participating_source_universe_refs",
+        "target_query_or_estimand_ref",
+        "risk_set_and_denominator_authority_refs",
+        "sample_design_compatibility_ref",
+        "semantic_equivalence_refs",
+        "overlap_nonduplication_ref",
+        "weight_measure_authority_refs",
+        "typed_missingness_applicability_rule_ref",
+        "composition_method_id_version_hash",
+        "effective_scope",
+        "decision"
+      ],
+      "default": "ABSENT",
+      "prohibitions": [
+        "NO_SOURCE_MAJORITY_AS_AUTHORITY",
+        "NO_SIMPLE_CONCATENATION_AS_AUTHORITY",
+        "NO_PROVENANCE_REACHABILITY_AS_AUTHORITY",
+        "NO_ALIAS_OR_HARMONIZED_LABEL_AS_AUTHORITY",
+        "NO_LOCATION_OR_COTEMPORALITY_AS_AUTHORITY"
+      ]
+    },
+    "ESTIMAND_COMPOSITION": {
+      "meaning": "Positive operation-specific authority to combine already-derived source-indexed empirical quantities without necessarily pooling respondent rows.",
+      "required_authority": [
+        "composition_authority_id_version_hash",
+        "component_source_universe_refs",
+        "component_estimand_refs",
+        "target_estimand_ref",
+        "measure_and_scale_compatibility_refs",
+        "semantic_equivalence_refs",
+        "overlap_treatment_ref",
+        "weight_or_mixture_rule_ref",
+        "uncertainty_propagation_rule_ref_or_typed_unquantified_state",
+        "effective_scope",
+        "decision"
+      ],
+      "default": "ABSENT",
+      "does_not_imply": ["RESPONDENT_LINKAGE", "RAW_SAMPLE_POOLING"]
+    },
+    "BACKFILL": {
+      "meaning": "Positive directional authority for one source to supply a value/state missing in another source for one declared target operation.",
+      "required_authority": [
+        "backfill_authority_id_version_hash",
+        "target_source_universe_ref",
+        "donor_source_universe_ref",
+        "target_semantic_ref",
+        "donor_semantic_ref",
+        "eligible_target_missingness_states",
+        "semantic_equivalence_ref",
+        "sample_estimand_design_compatibility_refs",
+        "overlap_nonduplication_ref",
+        "weight_measure_rule_refs",
+        "directionality",
+        "effective_scope",
+        "decision"
+      ],
+      "default": "ABSENT",
+      "forbidden_target_states": [
+        "DECLARED_NONE",
+        "SOURCE_NOT_APPLICABLE",
+        "TEMPORAL_NONCOMPARABLE",
+        "OBSERVED_ZERO",
+        "ZERO_SUPPORT"
+      ],
+      "law": "MISSING_OR_UNSPECIFIED_MAY_BE_BACKFILL_ELIGIBLE_ONLY_WHEN_EXPLICITLY_NAMED_BY_AUTHORITY; NEGATIVE_OR_ZERO_STATES_ARE_NOT_MISSINGNESS"
+    },
+    "PROVENANCE_ORIGIN": {
+      "meaning": "Origin/replay/audit relation only.",
+      "default": "PRESERVE_WHEN_AVAILABLE",
+      "grants": [],
+      "never_grants": [
+        "SEMANTIC_EQUIVALENCE",
+        "RESPONDENT_LINKAGE",
+        "NONOVERLAP",
+        "POOLING",
+        "COMPOSITION",
+        "BACKFILL"
+      ]
+    },
+    "HARMONIZATION_ALIAS": {
+      "meaning": "Canonical naming or transform-location convenience only unless a separate semantic-equivalence authority is bound.",
+      "grants": [],
+      "never_grants": ["SAMPLE_EQUIVALENCE", "LINKAGE", "POOLING", "COMPOSITION", "BACKFILL"]
+    }
+  },
+  "authority_receipt_minimum": {
+    "schema": "SourceUniverseRelationAuthorityReceipt@1.0.0",
+    "required_fields": [
+      "receipt_id",
+      "receipt_content_hash",
+      "relation_kind",
+      "authority_id",
+      "authority_version",
+      "authority_content_hash",
+      "source_universe_refs",
+      "operation_scope",
+      "directionality_or_symmetric",
+      "effective_scope",
+      "semantic_refs",
+      "sample_or_estimand_refs",
+      "overlap_or_linkage_refs",
+      "weight_measure_refs",
+      "typed_state",
+      "decision",
+      "evidence_refs",
+      "replay_identity"
+    ],
+    "decision_states": ["AUTHORIZED", "DENIED", "NOT_APPLICABLE", "UNKNOWN_AUTHORITY", "CONFLICTING_AUTHORITY", "EXPIRED_OR_STALE"]
+  },
+  "composition_precedence": {
+    "rule": "OPERATION_SPECIFIC_POSITIVE_AUTHORITY_REQUIRED_AT_TIME_OF_USE",
+    "conflict": "CONFLICTING_AUTHORITY_FAILS_CLOSED",
+    "unknown": "UNKNOWN_AUTHORITY_FAILS_CLOSED",
+    "stale": "EXPIRED_OR_STALE_FAILS_CLOSED",
+    "provenance_only": "NO_COMPOSITION_EFFECT",
+    "alias_only": "NO_COMPOSITION_EFFECT"
+  },
+  "disagreement_law": {
+    "source_indexed_disagreement_is_information": true,
+    "preserve_component_source_identity": true,
+    "preserve_component_positive_negative_noncomparable_states": true,
+    "majority_vote_default": false,
+    "collapse_to_actor_contradiction": false,
+    "collapse_to_single_canonical_source": false,
+    "composition_requires_separate_positive_authority": true
+  },
+  "replay_law": {
+    "bind_exact_relation_authority_id_version_hash": true,
+    "bind_exact_source_universe_refs": true,
+    "bind_operation_scope_and_effective_scope": true,
+    "bind_input_component_refs_and_typed_states": true,
+    "same_exact_inputs_authority_must_replay_identically": true,
+    "later_authority_may_rewrite_historical_receipt": false
+  },
+  "scope_ceiling": {
+    "runtime_writes": false,
+    "semantic_authority": false,
+    "selects_statistical_model_family": false,
+    "authorizes_universal_pooling": false,
+    "authorizes_source_retirement": false
+  }
+}
