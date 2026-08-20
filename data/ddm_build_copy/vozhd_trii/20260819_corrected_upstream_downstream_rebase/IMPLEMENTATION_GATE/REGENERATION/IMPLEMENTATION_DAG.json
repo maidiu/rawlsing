@@ -1,0 +1,44 @@
+{
+  "schema": "VOZHD_TRII_IMPLEMENTATION_DAG@1.0.0",
+  "status": "PREPARATORY_ONLY",
+  "production_baseline": "0777a34e50221bde6801dbaca26c058a7350c9e8",
+  "frozen_reclosure_head": "c4a3524fc21a90940701b2b5421cf53fee047781",
+  "nodes": ["IG-M1", "IG-M2", "IG-M3", "IG-M4", "IG-M5", "IG-M6", "IG-PSEPF", "IG-INTEGRATION"],
+  "edges": [
+    {"from": "IG-M1", "to": "IG-M2", "kind": "semantic_input", "meaning": "V555 consumes exact accepted V554 F1/admission semantics"},
+    {"from": "IG-M2", "to": "IG-M3", "kind": "semantic_input", "meaning": "V556 participants are exact canonical V555 route identities"},
+    {"from": "IG-M1", "to": "IG-M4", "kind": "producer_publication", "meaning": "runtime-authorized V554 producer output may publish directly to V557"},
+    {"from": "IG-M2", "to": "IG-M4", "kind": "producer_publication", "meaning": "runtime-authorized V555 producer output may publish directly to V557"},
+    {"from": "IG-M3", "to": "IG-M4", "kind": "producer_publication", "meaning": "runtime-authorized V556 producer output may publish directly to V557"},
+    {"from": "IG-M4", "to": "IG-M5", "kind": "resolution_input", "meaning": "ContextResolver consumes exact immutable V558 closure"},
+    {"from": "IG-M5", "to": "IG-M6", "kind": "runtime_peer_input", "meaning": "V3/V2 consumes actual runtime resolved structural peer where declared"},
+    {"from": "IG-M6", "to": "IG-INTEGRATION", "kind": "acceptance_barrier", "meaning": "actor-safe claim/envelope and noncollapse must pass"},
+    {"from": "IG-PSEPF", "to": "IG-INTEGRATION", "kind": "acceptance_barrier", "meaning": "zero-positive first-tranche actor-transition guard must pass"}
+  ],
+  "merge_barriers": [
+    {"id": "B1", "requires": ["IG-M1"], "before": "IG-M2 runtime binding", "proof": ["temporal negative non-laundering", "duplicate no-double-entry", "typed states", "direct V554->V557"]},
+    {"id": "B2", "requires": ["IG-M2"], "before": "IG-M3 runtime binding", "proof": ["seven-field route identity", "B1/F2 exclusion", "route-state eligibility", "locator nonidentity", "direct V555->V557"]},
+    {"id": "B3", "requires": ["IG-M3"], "before": "producer-complete IG-M4 integration", "proof": ["2..n participant binding", "distinct-route floor", "composition authority", "typed outcomes", "no filler"]},
+    {"id": "B4", "requires": ["IG-M4"], "before": "live IG-M5 integration", "proof": ["V557/V558 separation", "immutable closure", "no permission widening", "administrative IDs nonsemantic"]},
+    {"id": "B5", "requires": ["IG-M5"], "before": "live IG-M6 integration", "proof": ["actual runtime RSC", "no fabrication", "persistence nonsemantic", "peer currentness independence", "historical receipt identity"]},
+    {"id": "B6", "requires": ["IG-M6", "IG-PSEPF"], "before": "whole-machine acceptance", "proof": ["VP__FSV exact tuple", "immutable selector", "current actor-safe ingress", "monotone no-join", "actor-accessible noncollapse", "zero-positive PSEPF"]},
+    {"id": "B7", "requires": ["IG-M1", "IG-M2", "IG-M3", "IG-M4", "IG-M5", "IG-M6", "IG-PSEPF"], "before": "final implementation acceptance", "proof": ["all 20 hostile families", "deterministic replay", "integrated noncollapse"]}
+  ],
+  "parallelism": {
+    "launch_dependency_equals_final_adjudication_dependency": false,
+    "fixture_only_work_may_run_ahead_of_positive_runtime_binding": true,
+    "ig_psepf_may_run_parallel": true,
+    "serialize_only_actual_merge_or_runtime_binding_barriers": true
+  },
+  "failure_containment": {
+    "rollback_is_seam_local": true,
+    "failed_positive_binding_contaminates_unrelated_seams": false,
+    "downstream_fixture_only_work_may_continue_against_frozen_contract": true,
+    "semantic_redesign_on_failure": "FORBIDDEN__RETURN_TO_EXPLICIT_AUTHORITY_ADJUDICATION"
+  },
+  "path_binding": {
+    "exact_production_paths_bound_by_regeneration": false,
+    "reason": "No production write authority and no exact owner path independently proven by bounded baseline audit.",
+    "required_before_any_production_write": "EXPLICIT_ACTIVATION_ADJUDICATION"
+  }
+}
