@@ -1,0 +1,60 @@
+{
+  "handoff_id": "M5_TO_SCRV3_AND_LATER_M6_STRUCTURAL_PEER_BINDING",
+  "handoff_version": "1.0.0",
+  "m5_token": "M5_ACCEPTED__V3_STRUCTURAL_PEER_PRIOR_SEAM_CLOSED",
+  "m5_contract": "M5_V3_STRUCTURAL_PEER_PRIOR_SEAM@1.0.0",
+  "m5_contract_core_sha256": "54b9d262ec60ff8794f34d9caf68227275d272dc7d6b2254a9c84c996622d9f2",
+  "structural_peer": {
+    "schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0",
+    "semantic_identity": "runtime context_id + context_content_hash",
+    "required_verification_signature": "M4_TO_M5_RSC_MACHINE_SIGNATURE@1.0.0",
+    "signature_semantic_identity": false,
+    "signature_grants_permission": false,
+    "runtime_instance_required": true,
+    "stage_close_runtime_instance": null,
+    "permission_invariant": "resolver_allowed_uses ⊆ V557_allowed_uses ⊆ producer_allowed_uses",
+    "active_causal_is_v3_mutation_permission": false
+  },
+  "empirical_peer": {
+    "schema": "V3EmpiricalPossibilityInput@1.1.0",
+    "metabolism_authority": "V3_EMPIRICAL_POSSIBILITY_METABOLISM_AUTHORITY@1.1.0",
+    "metabolism_sha256": "e0cd3c8a4443c59b7e97cc151a7db9298310f7a7e766b593fb90968546d66939",
+    "read_matrix": "SCRV3_READ_PERMISSION_MATRIX@2.0.0",
+    "read_matrix_sha256": "6a4227bb3df913b8564ba0d994ce5c2be81bf0f6e8d8b5a164ba546db59fa2d1",
+    "positive_actor_transition_rows": [],
+    "positive_noncausal_rows": [
+      "SCRV3-RP-V3M002-V2"
+    ],
+    "structural_permission_substitution": false
+  },
+  "required_v3_transition_interface": {
+    "peer_requirement_declaration": "V3PeerPriorRequirementDeclaration@1.0.0",
+    "consumption_receipt": "V3PeerPriorConsumptionReceipt@1.0.0",
+    "law": "owner declares structural and empirical requirement independently before use; no generic peer merger",
+    "availability_selects_transition": false,
+    "peer_prior_is_causal_parent_by_presence": false
+  },
+  "runtime_rsc_fail_closed_states": [
+    "M5_RSC_RUNTIME_INSTANCE_MISSING",
+    "M5_RSC_SCHEMA_MISMATCH",
+    "M5_RSC_IDENTITY_OR_CONTENT_HASH_MISMATCH",
+    "M5_RSC_SIGNATURE_MISMATCH",
+    "M5_RSC_PRODUCER_BINDING_MISMATCH",
+    "M5_RSC_PERMISSION_PROOF_INVALID",
+    "M5_RSC_REFERENCE_CLOSURE_INVALID",
+    "M5_RSC_FORBIDDEN_REFERENCE_CLASS_PRESENT",
+    "M5_RSC_PROVENANCE_AUTHORITY_VIOLATION"
+  ],
+  "forbidden": [
+    "RSC_TO_PSEPF_SYNTHESIS",
+    "PSEPF_TO_GENERATED_STRUCTURAL_POSITION",
+    "GENERIC_PRIOR_BAG",
+    "HIDDEN_SHARED_SCALAR_OR_PERSONA_VECTOR",
+    "REPOSITORY_PERMISSION_TO_V3_MUTATION_PERMISSION",
+    "DIRECT_PRIOR_TO_MEMORY_BELIEF_KNOWLEDGE_RELATIONSHIP_ACTION_RESPONSE_PERSONA_VOICE",
+    "PROVENANCE_TO_COMPOSITION_POOLING_RESPONDENT_LINKAGE_ESTIMAND_AUTHORITY",
+    "REFRESH_LAUNDERING_OF_COMMITTED_HISTORY"
+  ],
+  "m6_boundary_note": "RSC/EPI/provenance remain nonpersona; only V3-generated actor-accessible truth may cross the positive expression boundary under the separately accepted M6/ADP-017 contract.",
+  "production_implementation_authorized": false
+}

@@ -1,0 +1,49 @@
+{
+  "contract": "M5_V3_STRUCTURAL_PEER_PRIOR_SEAM@1.0.0",
+  "blocking_conflicts": [],
+  "harmonization_required": false,
+  "broad_topology_contradiction_found": false,
+  "entries": [
+    {
+      "id": "M5-C01",
+      "surface": "SV3M/SV3F empirical read suggestions vs current SCRV3",
+      "observation": "SV3M/SV3F were non-dispositive and described candidate positive owner-bound empirical reads; current dispositive SCRV3 rescinded those provisional positives.",
+      "resolution": "CURRENT_SCRV3_GOVERNS",
+      "bound_result": "zero positive PSEPF actor-transition rows; only noncausal exact geometry dereference survives",
+      "conflict_status": "RESOLVED_WITHIN_EXISTING_AUTHORITY"
+    },
+    {
+      "id": "M5-C02",
+      "surface": "M4 ACTIVE_CAUSAL structural permission vs V3 mutation authority",
+      "observation": "M4 permission lattice includes ACTIVE_CAUSAL eligibility.",
+      "resolution": "NONCOLLAPSE",
+      "bound_result": "ACTIVE_CAUSAL is structural-context eligibility only; a named V3 transition owner needs independent semantic authority and exact peer requirement declaration.",
+      "conflict_status": "RESOLVED_WITHIN_EXISTING_AUTHORITY"
+    },
+    {
+      "id": "M5-C03",
+      "surface": "M4 machine signature vs RSC semantic identity",
+      "observation": "M4 transports M4_TO_M5_RSC_MACHINE_SIGNATURE@1.0.0.",
+      "resolution": "CHECKSUM_ONLY",
+      "bound_result": "signature verifies the actual runtime RSC and never replaces context_id/content_hash, producer identity, permission, or semantics.",
+      "conflict_status": "RESOLVED_WITHIN_EXISTING_AUTHORITY"
+    },
+    {
+      "id": "M5-C04",
+      "surface": "structural refresh vs empirical requery/rebind",
+      "observation": "both peers have currentness machinery.",
+      "resolution": "ORTHOGONAL_CURRENTNESS",
+      "bound_result": "neither peer refresh triggers the other by implication; each seam evaluates and receipts its own authority.",
+      "conflict_status": "RESOLVED_WITHIN_EXISTING_AUTHORITY"
+    },
+    {
+      "id": "M5-C05",
+      "surface": "provenance reachability vs cross-source authority",
+      "observation": "both structural and empirical peers carry provenance.",
+      "resolution": "PROVENANCE_NONAUTHORITY",
+      "bound_result": "provenance proves origin only and cannot create composition, pooling, respondent linkage, estimand equivalence, or actor contradiction.",
+      "conflict_status": "RESOLVED_WITHIN_EXISTING_AUTHORITY"
+    }
+  ],
+  "finite_disposition": "M5_ACCEPTED__V3_STRUCTURAL_PEER_PRIOR_SEAM_CLOSED"
+}

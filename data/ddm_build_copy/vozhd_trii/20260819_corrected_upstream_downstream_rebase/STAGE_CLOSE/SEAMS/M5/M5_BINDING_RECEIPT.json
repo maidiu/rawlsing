@@ -1,0 +1,110 @@
+{
+  "assignment_id": "E02-W07-M5-FINAL-001",
+  "chat_id": "CHAT-SV3M",
+  "worker_slot": 7,
+  "agent_id": "M5_FINAL",
+  "worker_class": "SEAM_BINDER",
+  "authority": "DISPOSITIVE_M5_STRUCTURAL_PEER_PRIOR_SEAM_ONLY",
+  "semantic_launch_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "mission_branch": "agent/vozhd-trii-dr-r03-seam-m5-v3-peer-prior",
+  "branch_precondition": {
+    "required": "branch identical to semantic launch base before writing",
+    "verified": true,
+    "ahead_before_write": 0,
+    "behind_before_write": 0,
+    "merge_base": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d"
+  },
+  "bindings": {
+    "M4_FINAL": {
+      "head": "988fa8abe755eee636e52a6b6eb09072b5a0f111",
+      "token": "M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED",
+      "result_blob": "c83c9d83e5bd8050d81b483319fcdd2e65d5a2ce",
+      "rsc_handoff_blob": "d54efeb22b5514584df4bff8a7e42fc4adda81ef",
+      "eight_required_outputs_present": true
+    },
+    "SCR5578": {
+      "contract": "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT@1.0.0",
+      "sha256": "7522e3066ec7cd03de36faf065e089925e42356b4a6833d7420d00f6a139f88c",
+      "rsc_schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0"
+    },
+    "SCRV3": {
+      "head": "818bcd9dda100ea5d9b6f1417c5a99c64d4734c7",
+      "token": "SCRV3_WAITING_ONLY_FOR_EXACT_FINAL_SEAM",
+      "result_blob": "64d048d3b8e571acc885bfeb4d4bb70c013f85fe",
+      "input_contract_blob": "f7f4b6a004e09f7297fdcec459efc3125d6a598a",
+      "metabolism_sha256": "e0cd3c8a4443c59b7e97cc151a7db9298310f7a7e766b593fb90968546d66939",
+      "read_matrix_sha256": "6a4227bb3df913b8564ba0d994ce5c2be81bf0f6e8d8b5a164ba546db59fa2d1",
+      "positive_actor_transition_rows": []
+    },
+    "SV3F": {
+      "head": "4de8188fe3b31f8edc3f8e9924ebe8c651076558",
+      "token": "SV3F_FEEDER_COMPLETE",
+      "result_blob": "61d8f09d4132ae2f5ea9ea22018f08f673b47497",
+      "disposition": "NON_DISPOSITIVE_INPUT"
+    },
+    "parent_24": {
+      "blob": "b3f649d3bdd06a61571e3895f3fdbac37f5db521"
+    },
+    "parent_25": {
+      "blob": "7d7d581b6060a76f7dd62122ae7de1cc5bb4edf2"
+    },
+    "r03_final_broad_dag": {
+      "blob": "54d60fc09b288554f7bf9ada6526ed63370abd96"
+    },
+    "whole_machine_closure_gate": {
+      "blob": "5b1e3e48fa4a3d3558a905aad8bcc5c880ad023c"
+    }
+  },
+  "m4_machine_signature": {
+    "id": "M4_TO_M5_RSC_MACHINE_SIGNATURE@1.0.0",
+    "material_fields": [
+      "rsc_schema_id_version",
+      "rsc_context_id",
+      "rsc_context_content_hash",
+      "repository_bundle_id",
+      "repository_bundle_content_hash",
+      "context_query_id",
+      "context_query_hash",
+      "resolver_policy_id_version_hash",
+      "resolution_receipt_id",
+      "resolution_receipt_hash",
+      "resolved_entry_set_digest",
+      "preserved_negative_entry_set_digest",
+      "deferred_unresolved_entry_set_digest",
+      "selection_record_set_digest",
+      "coverage_fidelity_profile_id_hash",
+      "refresh_metadata_id_hash",
+      "provenance_root_digest",
+      "producer_binding_digest",
+      "permission_subset_proof_digest",
+      "reference_closure_digest"
+    ],
+    "actual_runtime_value_present_at_stage_close": false,
+    "reason": "no runtime RSC instance is fabricated by M4 or M5",
+    "validation_contract_closed": true
+  },
+  "m5_contract": {
+    "id": "M5_V3_STRUCTURAL_PEER_PRIOR_SEAM@1.0.0",
+    "contract_core_sha256": "54b9d262ec60ff8794f34d9caf68227275d272dc7d6b2254a9c84c996622d9f2"
+  },
+  "checks": {
+    "noncollapse": true,
+    "permission_nonwidening": true,
+    "independent_empirical_permission": true,
+    "structural_to_empirical_synthesis_rejected": true,
+    "empirical_to_generated_position_rejected": true,
+    "direct_prior_to_actor_state_rejected": true,
+    "independent_currentness": true,
+    "historical_receipt_immutability": true,
+    "divergence_allowed": true,
+    "exact_history_replay_required": true,
+    "runtime_rsc_required_at_consumption": true,
+    "runtime_rsc_fabricated": false,
+    "provenance_as_composition_rejected": true
+  },
+  "blocking_conflicts": [],
+  "production_code_modified": false,
+  "broad_topology_amended": false,
+  "accepted_parent_semantics_modified": false,
+  "result_token": "M5_ACCEPTED__V3_STRUCTURAL_PEER_PRIOR_SEAM_CLOSED"
+}
