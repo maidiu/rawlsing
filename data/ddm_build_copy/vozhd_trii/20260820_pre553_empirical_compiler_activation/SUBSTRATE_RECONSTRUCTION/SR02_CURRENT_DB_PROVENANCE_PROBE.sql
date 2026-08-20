@@ -112,11 +112,12 @@ WHERE n.nspname='public' AND c.relkind='r' AND c.relname LIKE 'respondentsDemo%'
 ORDER BY c.relname
 \gexec
 
-\echo '=== SR02 P11 DRIVER AGGREGATE SOURCE/WAVE OCCUPANCY ==='
-SELECT source,wave,COUNT(*) AS rows
+\echo '=== SR02 P11 DRIVER AGGREGATE SOURCE/SURVEY-YEAR OCCUPANCY ==='
+-- driver_aggregates is a derived legacy aggregate surface. Its temporal column is survey_year, not wave.
+SELECT source,survey_year,COUNT(*) AS rows
 FROM driver_aggregates
-GROUP BY source,wave
-ORDER BY source,wave;
+GROUP BY source,survey_year
+ORDER BY source,survey_year;
 
 \echo '=== SR02 P12 OLD RESPONDENTS/RESPONSES OCCUPANCY ==='
 SELECT 'respondents' AS relation, COUNT(*) AS rows FROM respondents
