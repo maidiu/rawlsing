@@ -6,7 +6,7 @@ Requires pyreadstat + pandas. Uses user_missing=True deliberately.
 
 Source-specific reader compatibility overrides are explicit, hash-bound by the
 checked-in inventory, and emitted into each physical manifest. They are never
-silent fallbacks.
+silent fallbacks and they do not establish authoritative source text encoding.
 """
 from __future__ import annotations
 import argparse, csv, hashlib, json, math
@@ -16,11 +16,15 @@ from typing import Any
 import pandas as pd
 import pyreadstat
 
+COMPAT_STATUS = "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+
 # Explicit reader-compatibility rulings. These do NOT alter source bytes and do
-# not normalize values. They only control decoding of source-native metadata.
+# not normalize values. They only control decoding for this physical census.
+# The checked-in inventory independently binds every filename to an exact SHA.
 SOURCE_READER_OVERRIDES = {
     "EVS 1999.sav": {
         "encoding": "latin1",
+        "authority_status": COMPAT_STATUS,
         "reason": (
             "Default pyreadstat metadata decoding fails with invalid byte sequence; "
             "the exact frozen EVS 1999 SAV reads successfully under Latin-1. "
@@ -29,23 +33,46 @@ SOURCE_READER_OVERRIDES = {
     },
     "EVS 2008.sav": {
         "encoding": "latin1",
+        "authority_status": COMPAT_STATUS,
         "reason": (
             "Default pyreadstat metadata decoding fails with invalid byte sequence; "
             "the exact frozen EVS 2008 SAV reads successfully under Latin-1. "
-            "Override is explicit for this disposable compatibility execution."
+            "Override is explicit for this physical compatibility execution."
         ),
     },
     "LiTS_II.dta": {
         "encoding": "latin1",
+        "authority_status": COMPAT_STATUS,
         "reason": (
             "Default pyreadstat DTA decoding fails with invalid byte sequence; "
             "the exact frozen LiTS II DTA reads successfully under Latin-1. "
-            "Override is explicit for this disposable compatibility execution."
+            "Override is explicit for this physical compatibility execution."
         ),
     },
-    "LiTS_I.dta": {"encoding": "latin1", "reason": "Exact frozen LiTS I DTA reads successfully under Latin-1 for this disposable compatibility execution."},
-    "LiTS_III.dta": {"encoding": "latin1", "reason": "Default chunked pyreadstat decoding fails; exact frozen LiTS III DTA reads successfully under Latin-1 for this disposable compatibility execution."},
-    "LiTS_IV.dta": {"encoding": "latin1", "reason": "Exact frozen LiTS IV DTA reads successfully under Latin-1 for this disposable compatibility execution."},
+    "LiTS_I.dta": {
+        "encoding": "latin1",
+        "authority_status": COMPAT_STATUS,
+        "reason": (
+            "Frozen pyreadstat compatibility execution path for the exact LiTS I DTA. "
+            "This is not a ruling that Latin-1 is the source's intended text encoding."
+        ),
+    },
+    "LiTS_III.dta": {
+        "encoding": "latin1",
+        "authority_status": COMPAT_STATUS,
+        "reason": (
+            "Default chunked pyreadstat execution fails; the exact frozen LiTS III DTA "
+            "completes under the Latin-1 full-read compatibility path."
+        ),
+    },
+    "LiTS_IV.dta": {
+        "encoding": "latin1",
+        "authority_status": COMPAT_STATUS,
+        "reason": (
+            "Frozen pyreadstat compatibility execution path for the exact LiTS IV DTA. "
+            "This is not a ruling that Latin-1 is the source's intended text encoding."
+        ),
+    },
 }
 
 
@@ -105,9 +132,9 @@ def scan(path: Path, fmt: str, chunksize: int, reader_override: dict[str,Any]|No
     cols=list(getattr(meta,'column_names',[]) or [])
     stats={c:{'rows_seen':0,'system_missing_count':0,'user_missing_count':0,'user_missing_by_native_code':Counter()} for c in cols}
     if reader_override and reader_override.get('encoding'):
-        # pyreadstat's chunked reader still fails on this frozen SAV despite
-        # accepting the explicit encoding; the full read path succeeds under
-        # the HQ-frozen Latin-1 compatibility ruling.
+        # For frozen compatibility-override sources, use the same explicit
+        # reader configuration for one full read. This avoids pyreadstat
+        # chunk-reader decoding failures observed on legacy SAV/DTA inputs.
         frames=[reader_fn(str(path), **read_kwargs)]
     else:
         frames=pyreadstat.read_file_in_chunks(reader_fn,str(path),chunksize=chunksize,**read_kwargs)
@@ -167,6 +194,7 @@ def main():
         summary.append({
           'source_file':name,'format':fmt,'sha256':expected,'size_bytes':p.stat().st_size,
           'reader_encoding_override':enc or '',
+          'reader_override_authority_status':(override or {}).get('authority_status',''),
           'number_rows':md.get('number_rows'),'number_columns':md.get('number_columns'),
           'variables_with_spss_missing_ranges':len((md.get('missing_ranges') or {})),
           'variables_with_stata_extended_missing':len((md.get('missing_user_values') or {})),
@@ -178,6 +206,7 @@ def main():
     receipt={
       'status':'COMPLETE','source_count':len(summary),'inventory_sha256':h256(Path(args.inventory)),
       'reader_overrides':SOURCE_READER_OVERRIDES,
+      'reader_override_authority_status':COMPAT_STATUS,
       'completion_token':'PRE553_SR03_35_SOURCE_NATIVE_METADATA_RECEIPT_COMPLETE'
     }
     (out/'RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
