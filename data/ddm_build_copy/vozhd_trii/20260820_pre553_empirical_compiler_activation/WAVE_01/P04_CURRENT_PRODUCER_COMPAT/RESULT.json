@@ -1,0 +1,61 @@
+{
+  "task_id": "PRE553-W01-P04-R1-002",
+  "agent": "PRE553_P04_CURRENT_PRODUCER_COMPAT_R1",
+  "branch": "agent/vozhd-trii-pre553-w04-current-producer-compat",
+  "exact_base_sha": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "authorized_write_root": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/WAVE_01/P04_CURRENT_PRODUCER_COMPAT/",
+  "result_token": "PRE553_P04_CURRENT_PRODUCER_COMPAT_CLOSED",
+  "local_status": "CLOSED",
+  "deliverable": "CURRENT_PRODUCER_COMPATIBILITY_MATRIX",
+  "holding": "Current V550-V552/R1 material may cross the PRE553 migration boundary only when exact semantic parity and applicable producer/source authority are proved. Artifact-family resemblance, path availability, parser success, provenance reachability, or historical ancestry do not grant admission. Negative semantics must survive, valid zero/false remain values, ambiguous carrier substitutions fail closed, and retired runtime carriers including V558-current-context fallback may not silently reenter PRE553.",
+  "producer_family_decisions": {
+    "V550": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY",
+    "V550J": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY_NO_BLANKET_J_NONJ_EQUIVALENCE",
+    "V551": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY",
+    "V551J": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY_NO_BLANKET_J_NONJ_EQUIVALENCE",
+    "V552": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY_NO_BLANKET_CARRIER_EQUIVALENCE",
+    "V552J": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY_NO_BLANKET_J_NONJ_EQUIVALENCE",
+    "R1": "CONDITIONAL_ADMIT_EXACT_FINITE_UNIVERSE_AUTHORITY_ONLY"
+  },
+  "hard_rules": [
+    "MEANING_IS_NOT_ARTIFACT_CLASS",
+    "NEGATIVE_SEMANTICS_SURVIVE",
+    "PROVENANCE_NOT_COMPOSITION_AUTHORITY",
+    "FAIL_CLOSED_WHEN_PARITY_NOT_PROVED",
+    "NO_RETIRED_RUNTIME_FALLBACK",
+    "NO_ACTIVE_V558_AS_CURRENT_RUNTIME_CONTEXT",
+    "NO_LAUNCHER_OR_IO_POLICY_CHANGE"
+  ],
+  "evidence": [
+    {
+      "path": "data/ddm_build_copy/authority/v550_v551_response_semantics_contract_binding_v1.manifest.json",
+      "contract_id": "V550_V551_RESPONSE_SEMANTICS_INFRASTRUCTURE_SEAM_R1",
+      "version": "v1",
+      "contract_sha256": "3a04a9e689b5d027e501a1cc165093773407338313feb25e86c2356ea752b704"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/00_README_FIRST.md",
+      "study_key": "ATP_W135",
+      "source_file_sha256": "6cec90ec72df360341236f7634d5d76c9a0604168d4174a03e8b8efd388bbbae",
+      "manifest_sha256": "84009652424d200ced06933173eb8b2f8fb89d51f7909d3da40f6f59ad5da9d9"
+    }
+  ],
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "CURRENT_PRODUCER_COMPATIBILITY_MATRIX.json",
+    "MIGRATION_RULES.md",
+    "HOSTILE_COMPATIBILITY_ORACLE.md"
+  ],
+  "gate_effect": "P04_COMPATIBILITY_MATRIX_AVAILABLE_FOR_I04_MIGRATION_REVIEW",
+  "implementation_authorized_by_p04": false,
+  "production_code_modified": false,
+  "launcher_modified": false,
+  "io_policy_modified": false,
+  "runtime_path_modified": false,
+  "no_drift": {
+    "branch_verified_identical_to_exact_base_before_write": true,
+    "base_sha": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+    "write_scope": "P04 return artifacts only"
+  }
+}

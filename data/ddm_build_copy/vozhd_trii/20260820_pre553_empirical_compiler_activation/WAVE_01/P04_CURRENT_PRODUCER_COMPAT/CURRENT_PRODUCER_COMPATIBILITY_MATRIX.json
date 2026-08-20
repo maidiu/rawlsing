@@ -1,0 +1,142 @@
+{
+  "contract_id": "PRE553_P04_CURRENT_PRODUCER_COMPATIBILITY_MATRIX",
+  "version": "R1",
+  "task_id": "PRE553-W01-P04-R1-002",
+  "agent": "PRE553_P04_CURRENT_PRODUCER_COMPAT_R1",
+  "exact_base_sha": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "normative_principles": [
+    "MEANING_IS_NOT_ARTIFACT_CLASS",
+    "NEGATIVE_SEMANTICS_SURVIVE",
+    "PROVENANCE_NOT_COMPOSITION_AUTHORITY",
+    "FAIL_CLOSED_WHEN_PARITY_NOT_PROVED",
+    "NO_RETIRED_RUNTIME_FALLBACK",
+    "NO_ACTIVE_V558_AS_CURRENT_RUNTIME_CONTEXT",
+    "NO_LAUNCHER_OR_IO_POLICY_CHANGE"
+  ],
+  "global_admission_law": {
+    "producer_family_or_artifact_presence_grants_admission": false,
+    "artifact_shape_similarity_grants_semantic_equivalence": false,
+    "retired_runtime_fallback_allowed": false,
+    "active_v558_runtime_fallback_allowed": false,
+    "unknown_or_ambiguous_parity_action": "REJECT_UNPROVEN_PARITY",
+    "valid_zero_is_negative_state": false,
+    "valid_false_is_negative_state": false,
+    "negative_states_may_default_to_zero_or_false": false,
+    "scope_downcast_without_exact_authority_allowed": false,
+    "source_or_universe_substitution_without_exact_authority_allowed": false
+  },
+  "producer_families": [
+    {
+      "family": "V550",
+      "p04_decision": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY",
+      "evidence_status": "BOUND_RESPONSE_SEMANTICS_PRESENT",
+      "required_proof": [
+        "exact producer/source provenance when semantically relevant",
+        "retrieval scope preserved as all or filtered",
+        "producer generation success preserved; searches2_n >= 1 where the bound contract requires generated empirical meaning",
+        "generated statistical content rather than substituted constants",
+        "negative and observation states preserved without value coercion"
+      ],
+      "runtime_fallback_allowed": false
+    },
+    {
+      "family": "V550J",
+      "p04_decision": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY",
+      "evidence_status": "J_NONJ_EQUIVALENCE_NOT_BLANKET_PROVED_BY_P04",
+      "required_proof": [
+        "all V550 semantic proofs",
+        "exact proof that J-specific carrier distinctions are nonsemantic for the object being migrated",
+        "no loss of source, scope, partition, variable, observation or negative-state meaning"
+      ],
+      "runtime_fallback_allowed": false,
+      "forbidden_shortcut": "COERCE_V550J_TO_V550_BY_NAME_OR_SHAPE"
+    },
+    {
+      "family": "V551",
+      "p04_decision": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY",
+      "evidence_status": "BOUND_METRIC_SOURCE_STATE_SEMANTICS_PRESENT",
+      "required_proof": [
+        "metric-source truth state preserved",
+        "ok/query_failed/missing/variable_present/not_observed distinctions preserved wherever applicable",
+        "query failure never downgraded to numeric zero",
+        "source and measure identity preserved where semantic"
+      ],
+      "runtime_fallback_allowed": false
+    },
+    {
+      "family": "V551J",
+      "p04_decision": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY",
+      "evidence_status": "J_NONJ_EQUIVALENCE_NOT_BLANKET_PROVED_BY_P04",
+      "required_proof": [
+        "all V551 semantic proofs",
+        "exact proof that J-specific carrier distinctions are nonsemantic for the object being migrated",
+        "no state collapse or source/measure substitution"
+      ],
+      "runtime_fallback_allowed": false,
+      "forbidden_shortcut": "COERCE_V551J_TO_V551_BY_NAME_OR_SHAPE"
+    },
+    {
+      "family": "V552",
+      "p04_decision": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY",
+      "evidence_status": "NO_BLANKET_CARRIER_EQUIVALENCE_ASSERTED_BY_P04",
+      "required_proof": [
+        "exact upstream empirical meaning survives into the migrated object",
+        "source, scope, universe/partition, variable/measure and observation-state semantics remain provable",
+        "no retired V552 runtime invocation is used to fill missing current semantics"
+      ],
+      "runtime_fallback_allowed": false
+    },
+    {
+      "family": "V552J",
+      "p04_decision": "CONDITIONAL_ADMIT_EXACT_PARITY_ONLY",
+      "evidence_status": "J_NONJ_EQUIVALENCE_NOT_BLANKET_PROVED_BY_P04",
+      "required_proof": [
+        "all V552 semantic proofs",
+        "exact proof that J-specific carrier distinctions are nonsemantic for the object being migrated"
+      ],
+      "runtime_fallback_allowed": false,
+      "forbidden_shortcut": "COERCE_V552J_TO_V552_BY_NAME_OR_SHAPE"
+    },
+    {
+      "family": "R1",
+      "p04_decision": "CONDITIONAL_ADMIT_EXACT_AUTHORITY_ONLY",
+      "evidence_status": "EXACT_FINITE_UNIVERSE_AUTHORITY_PRESENT",
+      "required_proof": [
+        "study_key exactly ATP_W135",
+        "source file identity exactly ATP W135.sav with SHA-256 6cec90ec72df360341236f7634d5d76c9a0604168d4174a03e8b8efd388bbbae",
+        "authority manifest exactly 22_shared_respondent_relation_manifest.R1.json with SHA-256 84009652424d200ced06933173eb8b2f8fb89d51f7909d3da40f6f59ad5da9d9",
+        "exact respondent-key set and relation/authority tuple preserved",
+        "respondent linkage remains source-backed rather than row-order inferred",
+        "source-level exclusions and finite-universe boundary remain fail-closed"
+      ],
+      "runtime_fallback_allowed": false,
+      "unauthorized_expansion_action": "REJECT_SOURCE_UNIVERSE_MISMATCH"
+    }
+  ],
+  "bound_authorities": [
+    {
+      "path": "data/ddm_build_copy/authority/v550_v551_response_semantics_contract_binding_v1.manifest.json",
+      "contract_id": "V550_V551_RESPONSE_SEMANTICS_INFRASTRUCTURE_SEAM_R1",
+      "version": "v1",
+      "contract_sha256": "3a04a9e689b5d027e501a1cc165093773407338313feb25e86c2356ea752b704"
+    },
+    {
+      "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/00_README_FIRST.md",
+      "study_key": "ATP_W135",
+      "source_file_sha256": "6cec90ec72df360341236f7634d5d76c9a0604168d4174a03e8b8efd388bbbae",
+      "manifest_sha256": "84009652424d200ced06933173eb8b2f8fb89d51f7909d3da40f6f59ad5da9d9"
+    }
+  ],
+  "decision_codes": [
+    "ADMIT_EXACT_PARITY",
+    "ADMIT_R1_EXACT_AUTHORITY",
+    "REJECT_UNPROVEN_PARITY",
+    "REJECT_AMBIGUOUS_CARRIER_IDENTITY",
+    "REJECT_NEGATIVE_SEMANTICS_COLLAPSE",
+    "REJECT_SCOPE_DOWNCAST",
+    "REJECT_SOURCE_UNIVERSE_MISMATCH",
+    "REJECT_PROVENANCE_MISMATCH",
+    "REJECT_RETIRED_RUNTIME_FALLBACK",
+    "REJECT_V558_CURRENT_RUNTIME_FALLBACK"
+  ]
+}
