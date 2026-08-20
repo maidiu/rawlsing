@@ -1,0 +1,49 @@
+{
+  "schema": "VOZHD_TRII_IMPLEMENTATION_ACTIVATION_01_FINAL_RECLOSURE@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "status": "ACCEPTED_RECLOSED",
+  "result_token": "IG_WHOLE_MACHINE_RECLOSED__CLEAN_SIDELINE_ACCEPTED__READY_FOR_CUTOVER_ADJUDICATION",
+  "final_candidate_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "evidence": {
+    "exact_local_head_before": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+    "exact_local_head_after": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+    "clean_worktree_before": true,
+    "clean_worktree_after": true,
+    "package_and_whole_machine_tests_passed": 260,
+    "tests_failed": 0,
+    "pytest_exit_code": 0,
+    "whole_machine_hostile_h01_h20_pre_repair_candidate": "PASS_LOCAL_EXECUTABLE_BINDING_CHECK",
+    "path_law_p01_p12_pre_repair_candidate": "PASS_LOCAL_EXECUTABLE_BINDING_CHECK",
+    "repair_scope": "ONE_M4_VALIDATION_ORDER_MOVE_ONLY"
+  },
+  "adjudication": {
+    "semantic_conflict_found": false,
+    "implementation_semantic_violation_found": false,
+    "remaining_test_failure": false,
+    "legacy_runtime_dependency_added": false,
+    "stage_close_artifact_runtime_dependency_added": false,
+    "positive_spdm_implemented": false,
+    "source_plurality_preserved": true,
+    "typed_absence_negative_states_preserved": true,
+    "actor_world_noncollapse_preserved": true,
+    "rsc_epi_actor_state_noncollapse_preserved": true,
+    "m6_actor_safe_ceiling_preserved": true,
+    "renderer_semantic_widening_forbidden": true,
+    "psepf_positive_registry": "EMPTY_FIRST_TRANCHE"
+  },
+  "final_scope": {
+    "implementation_root": "rawlsing_next/**",
+    "legacy_runtime_trees_are_evidence_not_new_runtime": true,
+    "cutover_performed": false,
+    "deployment_performed": false,
+    "legacy_retirement_performed": false
+  },
+  "spdm": {
+    "state": "BLOCKED_NAMED_AUTHORITY_REQUIRED",
+    "positive_implementation_authorized": false,
+    "absence_blocks_reclosure": false,
+    "renderer_may_fill_gap": false
+  },
+  "next_gate": "EXPLICIT_CUTOVER_MIGRATION_AND_PRODUCTION_ACTIVATION_ADJUDICATION",
+  "final_disposition": "CLEAN_SIDELINE_MACHINE_IMPLEMENTATION_COMPLETE_AND_RECLOSED__DO_NOT_SILENTLY_CUT_OVER"
+}
