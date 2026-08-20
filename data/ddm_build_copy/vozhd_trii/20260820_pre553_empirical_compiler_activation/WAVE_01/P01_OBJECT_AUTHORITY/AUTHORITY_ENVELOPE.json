@@ -1,0 +1,188 @@
+{
+  "schema": "PRE553_AUTHORITY_ENVELOPE@1.0.0",
+  "assignment_id": "PRE553-W01-P01-001",
+  "authority": "NON_DISPOSITIVE_WAVE_01_PREFLIGHT_SYNTHESIS_ONLY",
+  "exact_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "authority_object": "AuthoritySnapshot@1.0.0",
+  "purpose": "Freeze the minimum immutable authority envelope required to interpret C11 evidence, evaluate exact empirical queries/discovery, govern source relations and issue an exact-use StructuralEmpiricalAdmission compatible with frozen M1.",
+  "required_fields": [
+    "authority_id",
+    "authority_version",
+    "authority_content_hash",
+    "authority_kind",
+    "decision_state",
+    "governed_operations",
+    "governed_object_families",
+    "scope_envelope",
+    "effective_time_or_interval",
+    "parent_authority_refs",
+    "negative_limit_refs",
+    "supersession_refs",
+    "interpretation_semantics_fingerprint",
+    "replay_protocol_ref"
+  ],
+  "scope_envelope_minimum": {
+    "source_universe_refs": "exact set or explicit unrestricted marker owned by the authority",
+    "native_source_or_instrument_refs": "when source semantics are governed",
+    "country_geography_refs": "when geographically scoped",
+    "raw_and_canonical_wave_refs": "when wave scoped",
+    "question_component_coordinate_refs": "when field/variable scoped",
+    "predicate_or_risk_set_refs": "when query semantics are governed",
+    "target_refs": "when target-specific",
+    "measure_weight_estimand_refs": "when measure/design scoped",
+    "target_use_refs": "when downstream use permission is governed",
+    "effective_time_or_interval_refs": "when temporal applicability matters",
+    "structural_semantic_identity_refs": "only for structural-admission authorities",
+    "discovery_frontier_refs": "only for discovery authorities"
+  },
+  "authority_kinds": {
+    "SOURCE_SEMANTICS_TOPOLOGY": {
+      "owns": ["native question/component meaning", "response values and special states", "response topology/multiplicity/order/rank", "instrument/source interpretation"],
+      "does_not_own": ["source equivalence", "pooling", "structural meaning", "actor semantics"]
+    },
+    "NATIVE_CANONICAL_MAPPING_HARMONIZATION": {
+      "owns": ["exact native-to-canonical identifier/value transformation in its scope"],
+      "does_not_own": ["sample equivalence", "respondent linkage", "pooling", "backfill", "source retirement"]
+    },
+    "ROUTING_RISK_SET": {
+      "owns": ["applicability", "routing", "risk-set membership/replay semantics"],
+      "does_not_own": ["empirical condition semantics outside the declared rule", "structural admission"]
+    },
+    "COORDINATE_SEMANTICS": {
+      "owns": ["empirical coordinate identity/value/unit/taxonomy/normalization in exact source/time scope"],
+      "does_not_own": ["generated actor position", "nine-stratum structural position", "actor belief"]
+    },
+    "WEIGHT_DESIGN_ESTIMAND": {
+      "owns": ["weight basis", "weight interpretation", "sampling/design use", "estimand and authorized recalibration"],
+      "does_not_own": ["generic default fill", "cross-source pooling absent separate composition authority"]
+    },
+    "PREDICATE_GRAMMAR": {
+      "owns": ["typed empirical predicate AST/operator semantics", "same-respondent binding semantics", "query grammar"],
+      "does_not_own": ["structural interpretation", "generated position", "actor state"]
+    },
+    "SOURCE_UNIVERSE_RELATION": {
+      "owns": ["one named exact relation kind among exact source universes"],
+      "does_not_own": ["other relation kinds not explicitly named"]
+    },
+    "SOURCE_EQUIVALENCE": {
+      "owns": ["positive semantic/source equivalence only for exact stated scope and dimensions"],
+      "does_not_own": ["respondent linkage", "pooling", "backfill", "retirement"]
+    },
+    "SOURCE_RESPONDENT_LINKAGE": {
+      "owns": ["exact respondent/person linkage or namespace mapping in exact scope"],
+      "does_not_own": ["sample pooling", "semantic equivalence", "backfill"]
+    },
+    "SOURCE_COMPOSITION_POOLING": {
+      "owns": ["exact pooling/composition operation", "estimand/sample/design/nonduplication treatment explicitly stated"],
+      "does_not_own": ["backfill", "retirement", "linkage unless separately included by exact authority"]
+    },
+    "SOURCE_BACKFILL": {
+      "owns": ["exact backfill operation and source/target scope"],
+      "does_not_own": ["pooling", "semantic equivalence", "respondent linkage"]
+    },
+    "DISCOVERY_FRONTIER": {
+      "owns": ["candidate grammar", "candidate universe", "validation/support rules", "coverage/pruning contract", "algorithm/tie/RNG law where semantically relevant"],
+      "does_not_own": ["structural meaning of winners", "actor psyche", "truth outside evaluated/claimed frontier"]
+    },
+    "STRUCTURAL_ADMISSION": {
+      "owns": ["whether one exact EmpiricalFact may bear one exact structural meaning/use", "structural transformation rule", "target structural producer/use", "negative/limit law"],
+      "does_not_own": ["generic empirical-to-structure promotion", "generated actor position", "actor belief/psyche", "V553 temporal jurisdiction"]
+    },
+    "UNCERTAINTY_METHOD": {
+      "owns": ["exact uncertainty estimator/method/design interpretation in declared scope"],
+      "does_not_own": ["fabrication of uncertainty when method authority is absent"]
+    },
+    "TARGET_USE_PERMISSION": {
+      "owns": ["permission for an exact object/structural admission to be consumed for exact target use"],
+      "does_not_own": ["workload/materialization command", "temporal completeness unless explicitly owned by the correct stage"]
+    },
+    "TEMPORAL_EVIDENCE": {
+      "owns": ["source-native effective/reference time facts or interval evidence"],
+      "does_not_own": ["V553 rule-relevant temporalization, temporal comparability or target-use completeness"]
+    },
+    "REPLAY_PROTOCOL": {
+      "owns": ["canonical projection/version", "semantic hash coverage", "deterministic ordering/tie rules", "required producer/algorithm identity", "lawful RNG binding"],
+      "does_not_own": ["new semantic permission"]
+    }
+  },
+  "decision_states": {
+    "positive": ["ALLOW"],
+    "nonpositive": ["DENY", "DEFER", "MISSING_AUTHORITY", "UNKNOWN", "OUT_OF_SCOPE", "SUPERSEDED_NOT_REPLAYABLE"],
+    "integrity": ["AUTHORITY_HASH_MISMATCH", "AUTHORITY_SCOPE_MISMATCH"]
+  },
+  "exact_reference_shape": {
+    "required": ["authority_id", "authority_version", "authority_content_hash"],
+    "hash": "lowercase sha256 or an explicitly identified immutable hash scheme where an inherited authority has a frozen different representation",
+    "mutable_latest_allowed": false,
+    "default_authority_allowed": false,
+    "semver_fallback_allowed": false,
+    "nearest_or_fuzzy_match_allowed": false
+  },
+  "source_plurality_laws": [
+    "Distinct source universes remain distinct by default.",
+    "Shared labels or canonical aliases do not establish source equivalence.",
+    "Common provenance does not establish respondent linkage.",
+    "Harmonization does not establish pooling or backfill.",
+    "Linkage does not establish pooling.",
+    "Pooling does not establish backfill.",
+    "Positive source equivalence does not by itself authorize source retirement.",
+    "Overlap/double-counting treatment requires exact authority where composition is performed."
+  ],
+  "authority_noncollapse_laws": [
+    "PERMISSION != WORKLOAD_COMMAND",
+    "PROVENANCE_REACHABILITY != AUTHORIZATION",
+    "HARMONIZATION != SOURCE_EQUIVALENCE",
+    "SOURCE_EQUIVALENCE != RESPONDENT_LINKAGE",
+    "RESPONDENT_LINKAGE != POOLING_AUTHORITY",
+    "POOLING_AUTHORITY != BACKFILL_AUTHORITY",
+    "EMPIRICAL_QUERY_AUTHORITY != STRUCTURAL_ADMISSION_AUTHORITY",
+    "DISCOVERY_AUTHORITY != STRUCTURAL_ADMISSION_AUTHORITY",
+    "TEMPORAL_EVIDENCE != V553_TEMPORAL_JURISDICTION",
+    "STRUCTURAL_ADMISSION_AUTHORITY != ACTOR_SEMANTIC_AUTHORITY"
+  ],
+  "historical_replay_law": {
+    "bind_exact_authority_version_hash": true,
+    "later_version_may_reinterpret_historical_output": false,
+    "supersession_relation_may_be_retained_as_provenance": true,
+    "historical_replay_may_switch_to_latest": false,
+    "missing_historical_authority_disposition": "FAIL_CLOSED_TYPED_AUTHORITY_UNAVAILABLE"
+  },
+  "structural_admission_envelope": {
+    "positive_state": "ADMITTED_FOR_EXACT_STRUCTURAL_USE",
+    "required_authority": "STRUCTURAL_ADMISSION",
+    "required_exact_fact_ref": true,
+    "required_exact_query_ref": true,
+    "required_source_universe_refs": true,
+    "required_target_use_permission_refs": true,
+    "required_structural_semantic_identity_refs": true,
+    "required_native_scope_identity_refs": true,
+    "required_estimand_refs": true,
+    "required_measure_and_weight_authority_refs": true,
+    "required_applicable_negative_denial_noncomparability_refs": true,
+    "required_interpretation_critical_authority_refs": true,
+    "required_replay_root": true,
+    "discovery_receipt_may_substitute_for_admission_authority": false,
+    "empirical_fact_support_may_substitute_for_admission_authority": false,
+    "diagnostic_score_may_substitute_for_admission_authority": false,
+    "applicable_negative_can_be_ignored_for_positive_admission": false
+  },
+  "frozen_M1_compatibility": {
+    "accepted_runtime_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+    "contract": "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "admission_authority_identity_required": ["admission_authority_id", "admission_authority_version", "admission_authority_hash"],
+    "all_direct_slots_must_be_populatable": true,
+    "source_relation_comparability_is_separately_owned": true,
+    "unknown_equivalence_fails_closed": true,
+    "applicable_temporal_or_source_negative_may_downgrade_to_direct_positive": false,
+    "pre553_may_decide_v553_requiredness": false,
+    "pre553_role": "Supply exact admission, native/effective-time evidence, source universe, estimand, measure/weight, negatives and interpretation authority refs; frozen M1/V553 determines direct-vs-temporal consumer path."
+  },
+  "refused_authorities": [
+    "NO_GENERIC_EMPIRICAL_TO_NINE_STRATUM_CROSSWALK",
+    "NO_SURVEY_TO_ACTOR_BELIEF_PERSONA_PSYCHology_AUTHORITY",
+    "NO_V3_OR_V2_BEHAVIOR_AUTHORITY",
+    "NO_SOURCE_RETIREMENT_AUTHORITY",
+    "NO_PRODUCTION_CUTOVER_AUTHORITY"
+  ]
+}
