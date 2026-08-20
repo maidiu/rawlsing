@@ -67,6 +67,7 @@ VALIDATION_KINDS = frozenset({
     "DISTRIBUTION_DIFFERS_FROM_BASELINE",
     "JOINT_NOT_PRODUCT_OF_MARGINALS",
     "CONDITIONAL_REVERSAL",
+    "TARGET_CELL_SUPPORTED",
 })
 DIAGNOSTIC_TOKENS = frozenset({
     "MI", "NMI", "CRAMERS_V", "CRAMER'S_V", "LIFT", "ENTROPY",
@@ -256,6 +257,10 @@ def _verify_discovery_authority(
     ranking = authority.semantic_fields.get("candidate_scoring_or_ranking_rule_if_any")
     if isinstance(ranking, Mapping) and ranking.get("controls_frontier") is True:
         raise ExactBoundedCoverageError("diagnostic ranking may not control exact frontier reachability")
+    if authority.algorithm_identity_if_semantically_required != I05_CONTRACT_ID:
+        raise ExactBoundedDiscoveryError("discovery authority algorithm identity does not pin this I05 implementation")
+    if authority.tie_order_rules != "CANONICAL_CANDIDATE_HASH_ORDER":
+        raise ExactBoundedDiscoveryError("I05 requires exact canonical candidate-hash evaluation order")
     return definition
 
 
@@ -608,17 +613,42 @@ def _compile_frontier(
                 ))
 
         elif form == "BASE_QUERY":
+            if kind != "TARGET_CELL_SUPPORTED":
+                raise ExactBoundedDiscoveryError("BASE_QUERY requires exact target-cell support validation")
             baseline = atom(_text(rule.get("baseline_atom_id"), "baseline_atom_id"))
             tmpl = template(_text(rule.get("query_template_id"), "query_template_id"))
-            q = _clone_query(tmpl.query, baseline.predicate, role_material={"rule": rule_id, "role": "BASE"})
-            candidates.append(_candidate(
-                family=family,
-                rule_id=rule_id,
-                winning_predicate=baseline.predicate,
-                query_roles=(_QueryRole("BASE", baseline.predicate, q),),
-                validation=validation,
-                ancestry_refs=baseline.ancestry_refs,
-            ))
+            target_arity = int(_mapping(tmpl.query.target_arity_and_topology, "target topology").get("arity", 0))
+            if target_arity < 1 or target_arity > max_j:
+                raise ExactBoundedCoverageError("BASE_QUERY target arity exceeds authority J frontier")
+            target_cells = _sequence(rule.get("target_cells"), "target_cells", allow_empty=True)
+            target_spec = _mapping(tmpl.query.target_arity_and_topology, "target topology")
+            components = _sequence(target_spec.get("components"), "target components")
+            domains = [
+                tuple(_sequence(_mapping(component, "target component").get("domain", ()), "target component domain", allow_empty=True))
+                for component in components
+            ]
+            if all(domains):
+                declared_cells = (
+                    {canonical_json(cell) for cell in domains[0]}
+                    if target_arity == 1
+                    else {canonical_json(cell) for cell in product(*domains)}
+                )
+                if any(canonical_json(cell) not in declared_cells for cell in target_cells):
+                    raise ExactBoundedDiscoveryError("BASE_QUERY target cell lies outside exact declared target domain")
+            for cell in target_cells:
+                cell_validation = {**dict(validation), "target_cell": canonicalize(cell)}
+                q = _clone_query(
+                    tmpl.query, baseline.predicate,
+                    role_material={"rule": rule_id, "role": "BASE", "target_cell": canonicalize(cell)},
+                )
+                candidates.append(_candidate(
+                    family=family,
+                    rule_id=rule_id,
+                    winning_predicate=baseline.predicate,
+                    query_roles=(_QueryRole("BASE", baseline.predicate, q),),
+                    validation=cell_validation,
+                    ancestry_refs=baseline.ancestry_refs,
+                ))
 
         elif form == "JOINT_DEPENDENCE":
             if kind != "JOINT_NOT_PRODUCT_OF_MARGINALS":
@@ -805,6 +835,15 @@ def _joint_dependence(results: Mapping[str, QueryExecutionResult]) -> bool:
     return False
 
 
+def _target_cell_supported(result: QueryExecutionResult, target_cell: Any) -> bool:
+    key = canonical_json(target_cell)
+    for fact in result.facts:
+        cells, denominator = _cell_counts(fact)
+        if denominator > 0 and cells.get(key, Fraction(0, 1)) > 0:
+            return True
+    return False
+
+
 def _cell_rate(result: QueryExecutionResult, target_cell: Any) -> Fraction | None:
     if len(result.facts) != 1:
         raise ExactBoundedDiscoveryError("reversal validation currently requires one exact source universe")
@@ -878,17 +917,24 @@ def _evaluate_candidate(
         results[role.role] = result
         facts.extend(result.facts)
     canonical_facts = tuple(sorted({f.ref.key: f for f in facts}.values(), key=lambda f: f.ref.key))
+    if not canonical_facts:
+        raise ExactBoundedCoverageError("I03 candidate evaluation returned no EmpiricalFact; row absence is not a terminal state")
+    support = dict(_support_summary(canonical_facts))
+    support["query_role_fact_refs"] = canonicalize({
+        role: [fact.ref.as_dict() for fact in results[role].facts]
+        for role in sorted(results)
+    })
     terminal = _terminal_fact_class(canonical_facts)
     if terminal == "NONCOMPARABLE":
-        return "EVALUATED_NONCOMPARABLE", "NONCOMPARABLE", canonical_facts, _support_summary(canonical_facts)
+        return "EVALUATED_NONCOMPARABLE", "NONCOMPARABLE", canonical_facts, support
     if terminal == "UNAVAILABLE":
-        return "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY", "COVERAGE_LIMITED", canonical_facts, _support_summary(canonical_facts)
+        return "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY", "COVERAGE_LIMITED", canonical_facts, support
     if terminal == "VALID_EMPTY":
-        return "EVALUATED_VALID_EMPTY", "VALID_EMPTY", canonical_facts, _support_summary(canonical_facts)
+        return "EVALUATED_VALID_EMPTY", "VALID_EMPTY", canonical_facts, support
 
     primary = [f for f in canonical_facts if f.typed_state in {"SUPPORTED", "LOW_SUPPORT", "OBSERVED_ZERO"}]
     if primary and any(f.raw_denominator_support < minimum_raw_denominator for f in primary):
-        return "EVALUATED_UNDERPOWERED", "INSUFFICIENT_SUPPORT", canonical_facts, _support_summary(canonical_facts)
+        return "EVALUATED_UNDERPOWERED", "INSUFFICIENT_SUPPORT", canonical_facts, support
 
     kind = candidate.validation["kind"]
     if kind == "DISTRIBUTION_DIFFERS_FROM_BASELINE":
@@ -897,11 +943,13 @@ def _evaluate_candidate(
         supported = _joint_dependence(results)
     elif kind == "CONDITIONAL_REVERSAL":
         supported = _conditional_reversal(results, candidate.validation)
+    elif kind == "TARGET_CELL_SUPPORTED":
+        supported = _target_cell_supported(results["BASE"], candidate.validation.get("target_cell"))
     else:
         raise ExactBoundedDiscoveryError("unreachable validation kind")
     if supported:
-        return "EVALUATED_SUPPORTED", "DISCOVERED_RESULT_SUPPORTED", canonical_facts, _support_summary(canonical_facts)
-    return "EVALUATED_VALID_EMPTY", "VALID_EMPTY", canonical_facts, _support_summary(canonical_facts)
+        return "EVALUATED_SUPPORTED", "DISCOVERED_RESULT_SUPPORTED", canonical_facts, support
+    return "EVALUATED_VALID_EMPTY", "VALID_EMPTY", canonical_facts, support
 
 
 def execute_exact_bounded_discovery(
@@ -998,6 +1046,10 @@ def execute_exact_bounded_discovery(
                 "family": candidate.family,
                 "rule_id": candidate.rule_id,
                 "validation": candidate.validation,
+                "query_roles": [
+                    {"role": role.role, "predicate_ref": role.predicate.ref, "query_ref": role.query.ref}
+                    for role in candidate.query_roles
+                ],
             },
             winning_predicate_ref=candidate.winning_predicate.ref,
             empirical_fact_refs=fact_refs,

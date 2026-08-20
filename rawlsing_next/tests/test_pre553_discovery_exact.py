@@ -1,13 +1,8 @@
-import copy
-from dataclasses import replace
-
 import pytest
 
-from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
 from rawlsing_next.pre553_empirical_objects import (
     DiscoveryAuthority,
     ExactRef,
-    Pre553SemanticCollapseError,
     semantic_hash,
 )
 from rawlsing_next.pre553_discovery_exact import (
@@ -95,6 +90,7 @@ def _discovery_authority(source, grammar, dauth, *, tag="d", pruning=None, ranki
             "DISTRIBUTION_DIFFERS_FROM_BASELINE",
             "JOINT_NOT_PRODUCT_OF_MARGINALS",
             "CONDITIONAL_REVERSAL",
+            "TARGET_CELL_SUPPORTED",
         )},
         coverage_claim=COVERAGE_CLAIM,
         pruning_contract=pruning,
@@ -345,6 +341,33 @@ def test_higher_order_parity_uses_exact_joint_not_lower_order_signal():
     result = _execute(source, qauth, dauth, grammar, (all_p,), (joint, *marginals))
     assert result.receipts[0].typed_state == "DISCOVERED_RESULT_SUPPORTED"
     assert len(result.receipts[0].empirical_fact_refs) == 5
+
+
+def test_bounded_higher_order_configuration_cells_are_individually_covered():
+    source = _build_source("i05-config3", [
+        {"id": f"R{x}{y}", "responses": {"X": x, "Y": y, "Z": x ^ y}}
+        for x in (0, 1) for y in (0, 1)
+    ])
+    qauth, dauth = _query_authority("i05-config3"), _d_auth("i05-config3-discovery")
+    all_p = _branch_predicate(source, qauth, tag="all")
+    joint = _query(source, qauth, all_p, ("X", "Y", "Z"), tag="joint")
+    cells = tuple((str(x), str(y), str(z)) for x in (0, 1) for y in (0, 1) for z in (0, 1))
+    grammar = _grammar(
+        operation="I03-OP-i05-config3-discovery",
+        atoms=[_atom("ALL", all_p, "BRANCH")],
+        templates=[_qt("J", joint)],
+        rules=[_rule(
+            "config3", "BOUNDED_K_WAY_RESPONSE_CONFIGURATION", "BASE_QUERY",
+            baseline_atom_id="ALL", query_template_id="J", target_cells=cells,
+            validation={"kind": "TARGET_CELL_SUPPORTED"},
+        )],
+        k=2, j=3,
+    )
+    result = _execute(source, qauth, dauth, grammar, (all_p,), (joint,))
+    assert result.candidate_count == result.covered_candidate_count == 8
+    assert sum(r.typed_state == "DISCOVERED_RESULT_SUPPORTED" for r in result.receipts) == 4
+    assert sum(r.typed_state == "VALID_EMPTY" for r in result.receipts) == 4
+    assert result.valid_empty is False
 
 
 def test_valid_empty_frontier_is_typed_and_complete():
