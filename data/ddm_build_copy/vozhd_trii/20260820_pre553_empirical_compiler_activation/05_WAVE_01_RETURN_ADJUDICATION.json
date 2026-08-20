@@ -1,0 +1,54 @@
+{
+  "schema": "PRE553_WAVE_01_HQ_ADJUDICATION@1.0.0",
+  "campaign": "PRE553_EMPIRICAL_COMPILER_ACTIVATION",
+  "accepted_downstream_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "status": "CORE_PREFLIGHT_CLOSED__P04_NONBLOCKING_RETURN_REQUIRED__WAVE_02_I01_AUTHORIZED",
+  "accepted_returns": {
+    "P01_OBJECT_AUTHORITY": {"head":"3ffec711bd4464d56025df95e8538eddf31ece2b","result_blob":"3f9ca4b5e37d840bbe57a6c1e5cc191fdac5b9d8","token":"PRE553_P01_OBJECT_AUTHORITY_COMPLETE"},
+    "P02_FACT_QUERY": {"head":"83c205ec09cf504ed82c1e1ca44f0f6c89f8e037","result_blob":"b12b6b8462b5b687cf524c5fdf07c4ae9a709ce9","query_contract_blob":"52f87f22a617f1956df35015a634d7c26f5a8334","token":"PRE553_P02_FACT_QUERY_COMPLETE"},
+    "P03_RESERVOIR_ORACLE": {"head":"8b40c631c4844a4e8a4839c36cd567889e0823c8","result_blob":"885ecd4bf6e26a85bb9adf9ab2db830d0e5b154b","token":"PRE553_P03_RESERVOIR_ORACLE_COMPLETE"},
+    "P05_SOURCE_EQUIVALENCE": {"head":"07f38d1416a13feb2b10ec259bb65f0d1eba284c","result_blob":"436cc560842be30282ef33277cc4e002702eaae3","token":"PRE553_P05_SOURCE_EQUIVALENCE_PROTOCOL_COMPLETE"},
+    "P06_ADMISSION_V553": {"head":"d6a56e70822b48be53b74fd2ef9259e959fefc8e","result_blob":"ce36e754edde7eac09eb1c52e2440db86c7107ac","admission_contract_blob":"a1ea36d50936a54cea88144707ca2f1f0d63a305","token":"PRE553_P06_ADMISSION_V553_COMPLETE"},
+    "P07_SOURCE_PLURALITY": {"head":"bee95644c08ff1888825e8673c72302e30f1e3df","result_blob":"c9efe00ee2960a51ad5f721a07fedb7683550b2a","relation_contract_blob":"46a87cccd03a22c3d8c2f6e3075bceefe410fffc","token":"PRE553_P07_SOURCE_PLURALITY_COMPLETE"},
+    "P08_HOSTILE_ACCEPTANCE": {"head":"c975345b4df3cacf7f728f70ceb4f98c7f7c54ac","result_blob":"267052123f86fdc739c68d0a23bdf0264fd61a9b","token":"PRE553_P08_HOSTILE_ACCEPTANCE_COMPLETE"},
+    "P09_DISCOVERY_AUTHORITY": {"head":"7ed6775dc98d0cd5e9f8c6222652b30e27b9c02e","result_blob":"3d678ba5792dff3579cc282a0989310076902816","discovery_contract_blob":"242476d224dbef1fef1cd9169463641aedcc9dec","token":"PRE553_P09_DISCOVERY_AUTHORITY_COMPLETE"},
+    "P10_C11_SOURCE_CONTRACT": {"head":"1d7852b4edf0b97894e442aea1031cbfc5f3a248","result_blob":"6448e1d6bee823526832955e74148120d590fc36","carrier_contract_blob":"a5a7c1d6e0e39eabbe832af68cd830abe0cdfb9b","token":"PRE553_P10_C11_SOURCE_CONTRACT_COMPLETE"}
+  },
+  "return_required": {
+    "P04_CURRENT_PRODUCER_COMPAT": {
+      "branch":"agent/vozhd-trii-pre553-w04-current-producer-compat",
+      "observed_head":"e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+      "reason":"assigned branch contains zero return commits",
+      "blocking_for_I01_I02_I03": false,
+      "must_close_before_I04_STRUCTURAL_ADMISSION_COMPATIBILITY_RULES": true
+    }
+  },
+  "hq_harmonization": {
+    "public_canonical_semantic_surface": "P01 fourteen canonical object families; no additional public ontology may be inferred from carrier implementation records",
+    "c11_internal_record_law": "P10 RespondentIdentity, QuestionVariableBinding, EmpiricalPredicateReplayBinding, ComparatorReplayBinding, DiscoveryBranchReplayBinding, StructuralAdmissionReplayBinding and ReplayManifest are internal carrier/replay record families unless a separately accepted public semantic object contract promotes one; they do not expand the public ontology by existence",
+    "query_fact_ownership": "P01 owns public type identity; P02 owns exact query/predicate/fact semantic grammar; I01 defines types only and I03 owns evaluation",
+    "source_relation_ownership": "P01 owns public SourceUniverseRelation type; P07 owns operation-specific relation semantics and default separation",
+    "discovery_ownership": "P01 owns DiscoveryAuthority/DiscoveryResultReceipt types; P09 owns search/coverage receipt semantics; diagnostics remain nonauthoritative",
+    "structural_admission_ownership": "P01 owns public StructuralEmpiricalAdmission type; P06 owns decision/receipt/V553 projection semantics; only ADMITTED is positive",
+    "c11_ownership": "P10 owns logical carrier obligations M01-M18; no storage engine selected; partial package presence grants no authority",
+    "populated_equivalence": "P05 owns per-source CERTIFIED/FAILED/BLOCKED protocol; remote/schema/count/aggregate parity cannot certify",
+    "first_reservoir_oracle": "P03 and P08 jointly define end-to-end and hostile acceptance; positive V555/V556 objects are not arbitrary completeness requirements",
+    "downstream_immutability": "accepted e51730e downstream semantics remain frozen; PRE553 may feed but not redesign them"
+  },
+  "constitutional_noncollapse": [
+    "POPULATION_EMPIRICAL_FACT != STRUCTURAL_INTERPRETATION",
+    "EMPIRICAL_COORDINATE != GENERATED_NINE_STRATUM_POSITION",
+    "EMPIRICAL_FACT != STRUCTURAL_EMPIRICAL_ADMISSION",
+    "DISCOVERY_RESULT != STRUCTURAL_EMPIRICAL_ADMISSION",
+    "SURVEY_OR_POPULATION_FACT != ACTOR_BELIEF_PSYCH_PERSONA_RESPONSE",
+    "SOURCE_SEMANTIC_EQUIVALENCE != RESPONDENT_LINKAGE != SAMPLE_POOLING != ESTIMAND_COMPOSITION != BACKFILL",
+    "CARRIER_RECORD != PUBLIC_SEMANTIC_ONTOLOGY_BY_EXISTENCE",
+    "CACHE_OR_MATERIALIZATION != AUTHORITY"
+  ],
+  "wave_02": {
+    "I01_OBJECT_AUTHORITY": "AUTHORIZED_NOW",
+    "I02_C11_REPOSITORY_INGEST": "WAIT_FOR_ACCEPTED_EXACT_I01_HEAD",
+    "I03_EXACT_EMPIRICAL_QUERY": "WAIT_FOR_ACCEPTED_EXACT_I02_HEAD"
+  },
+  "result_token": "PRE553_W01_CORE_PREFLIGHT_CLOSED__I01_AUTHORIZED__P04_NONBLOCKING_RETURN_REQUIRED"
+}
