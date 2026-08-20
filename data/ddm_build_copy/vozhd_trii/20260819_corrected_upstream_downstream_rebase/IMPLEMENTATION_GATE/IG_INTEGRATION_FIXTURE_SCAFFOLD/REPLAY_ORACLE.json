@@ -1,0 +1,53 @@
+{
+  "schema": "IG_INTEGRATION_REPLAY_ORACLE@1.0.0",
+  "authority": "FIXTURE_SCAFFOLD_ONLY",
+  "frozen_reclosure_head": "c4a3524f54af368a67ca50ccc85f5d5dca3d803b",
+  "invariants": [
+    {
+      "id": "R01_EXACT_HISTORY_REPLAY",
+      "fixed": ["exact priors", "ordered causal history", "exact semantic authority/version/hash set", "scheduler receipts when applicable", "exact RNG receipts", "exact actor-safe/replay closure identities"],
+      "required": "identical semantic result at the declared owner grain"
+    },
+    {
+      "id": "R02_LAWFUL_DIVERGENCE",
+      "fixed": ["same accepted priors"],
+      "variable": ["lawful post-branch causal history", "lawful RNG receipts", "lawful transition-owner decisions"],
+      "required": "different lawful developed lives may occur without violating replay"
+    },
+    {
+      "id": "R03_REFRESH_IS_PROSPECTIVE",
+      "attack": "refresh/requery peer and substitute refreshed identity into an already-committed historical receipt",
+      "required": "reject; historical receipt retains exact historical peer identity"
+    },
+    {
+      "id": "R04_ACTOR_SAFE_CURRENTNESS",
+      "fixed": ["actor_id", "as_of causal time", "generated-person hash", "actor-state hash", "memory-state hash", "epistemic/accessibility/permission hash", "ADP-017 binding"],
+      "required": "same exact bound sources preserve currentness; any relevant bound-source change stales the envelope for current behavior"
+    },
+    {
+      "id": "R05_STALE_REPLAY_AUDIT_ONLY",
+      "required": "a stale historical actor-safe envelope may remain replay/audit-valid but has zero current behavioral authority"
+    },
+    {
+      "id": "R06_RENDERER_EXACT_REPLAY",
+      "fixed": ["current verified actor-safe semantics", "lawful V2 inputs", "current-turn stimulus if governed", "interaction-mode inputs", "render policy/model version", "RNG receipts"],
+      "required": "deterministic bounded render result/receipt at the accepted renderer grain"
+    },
+    {
+      "id": "R07_RENDERER_LAWFUL_VARIABILITY",
+      "fixed": ["admitted semantic plan", "claim/component/permission ceiling"],
+      "variable": ["lawful render policy/model receipt", "lawful renderer RNG receipt"],
+      "required": "wording may vary while semantic claims, component scope, permissions, and provenance firewall do not widen"
+    },
+    {
+      "id": "R08_PSEPF_ZERO_POSITIVE_FIRST_TRANCHE",
+      "required": "absent exact named positive transition authority, empirical possibility produces exactly zero actor-state transition effect"
+    },
+    {
+      "id": "R09_NO_AMBIENT_REPLAY_REPAIR",
+      "forbidden": ["latest", "current/default substitution", "fuzzy/nearest", "filesystem/database order", "network fetch", "LLM/embedding judgment", "unrecorded randomness", "session-state repair"],
+      "required": "missing or mismatched replay material fails closed"
+    }
+  ],
+  "executable_binding": "INTENTIONALLY_UNBOUND"
+}
