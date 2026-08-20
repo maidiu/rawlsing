@@ -1,0 +1,92 @@
+{
+  "schema": "VOZHD_TRII_IG_WHOLE_MACHINE_HOSTILE_TEST_MATRIX@1.0.0",
+  "assignment_id": "IG01-W08-INTEGRATION-ACCEPTANCE-PREFLIGHT-002",
+  "authority": "NON_DISPOSITIVE_PREFLIGHT_MAPPING_OF_FROZEN_EXPECTATIONS_ONLY",
+  "frozen_fixture_scaffold_head": "9fd7694049d8b6e79534c98cdd93a9f141302215",
+  "frozen_h01_h20_manifest_blob": "bb2940150823ea1d253ef4e8a00b229a0e09c70f",
+  "replay_oracle_blob": "c56c73b410a31d21433b617748ad788c12f15cab",
+  "noncollapse_oracle_blob": "b7164ec4bcd12c17bf8b73982e63bd1fad471e68",
+  "matrix": [
+    {
+      "id":"H01","name":"temporal_negative_laundering","expected":"REJECT__NON_DOWNGRADABLE_EXACT_USE_NEGATIVE","surfaces":["M1","M4"],"existing_evidence":["test_v553_temporal_negative_cannot_be_downgraded_to_direct_positive","test_hard_nonpositive_precedence_emits_no_f1","M4 positive+negative standalone closure tests"],"final_cross_package_obligation":"Carry one exact-use temporal/source negative through publication/resolution and prove no direct-path fallback can emit a later positive object.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H02","name":"duplicate_path_multiplication","expected":"REJECT__ONE_CANONICAL_SUPPORT_ROUTE_CHAIN","surfaces":["M1","M2","M3"],"existing_evidence":["test_exact_same_kind_duplicates_collapse_to_one_support_and_aliases","test_noop_v553_duplicate_does_not_add_sig001_support","test_duplicate_physical_aliases_do_not_multiply_or_change_route"],"final_cross_package_obligation":"Inject equivalent direct/no-op-V553 aliases and prove one F1, one V555 identity and no multiplied V556 participant meaning.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H03","name":"route_reidentification_through_repository","expected":"REJECT__PRODUCER_ROUTE_IDENTITY_PRESERVED","surfaces":["M2","M3","M4"],"existing_evidence":["test_positive_route_is_exact_seven_field_actor_independent_route","test_route_reid_or_reconstruction_is_rejected_even_when_visible_labels_match","test_v555_tuple_field_one_must_remain_exact_f1_and_b1_cannot_be_promoted"],"final_cross_package_obligation":"Vary only V557/V558 locator/index/repository identities and prove the seven-field V555 identity and V556 participant equality remain unchanged.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H04","name":"n_ary_structure_corruption","expected":"INTEGRITY_FAILURE__ROLE_ORDER_CARDINALITY_MULTIPLICITY","surfaces":["M3","M4"],"existing_evidence":["test_role_order_cardinality_and_multiplicity_mismatches_fail_closed","test_v556_role_order_cardinality_multiplicity_survives_and_partial_nary_fails_closed","test_m3_rule_owned_cardinality_is_enforced_without_changing_producer_bytes"],"final_cross_package_obligation":"Corrupt an accepted V556 n-ary object during packaging/resolution and require integrity failure before semantic use.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H05","name":"permission_by_presence","expected":"NO_WIDENING__RESOLVER_SUBSET_V557_SUBSET_PRODUCER","surfaces":["M4","M5"],"existing_evidence":["test_v557_permission_nonwidening_and_locator_provenance_never_grants_permission","test_dependency_permission_is_checked_itemwise_and_root_permission_does_not_inherit","test_repository_index_and_provenance_never_widen_permission_or_create_actor_effect"],"final_cross_package_obligation":"Add repository/index/locator/readiness/provenance while item permission is narrower and prove no context or actor effect widens.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H06","name":"provenance_as_composition","expected":"REJECT__PROVENANCE_ORIGIN_ONLY__COMPOSITION_NONE_BY_DEFAULT","surfaces":["M3","M4","M5"],"existing_evidence":["test_cross_source_composition_is_none_by_default_and_adjacency_never_authorizes_it","test_repository_index_and_provenance_never_widen_permission_or_create_actor_effect"],"final_cross_package_obligation":"Co-resolve cross-source objects with shared provenance and prove no pooling, respondent linkage, joint estimand or V556 composition absent exact operation authority.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H07","name":"reverse_lane_ontology_theft","expected":"REJECT__PEER_LANES_NONCOLLAPSED","surfaces":["M4","M5","PSEPF"],"existing_evidence":["test_actor_v3_v2_and_render_objects_are_rejected_from_structural_repository","test_forbidden_reverse_lane_dependency_is_rejected_even_when_root_is_lawful","test_rsc_epi_actor_state_noncollapse_and_no_prior_to_psyche_surface","test_guarded_truth_has_zero_effect_without_positive_authority"],"final_cross_package_obligation":"Attempt RSC→PSEPF and PSEPF/comparator→structural or actor-state promotion after all sidecars are composed; require zero/reject.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H08","name":"prior_to_actor_state_shortcut","expected":"ZERO_UNAUTHORIZED_EFFECT","surfaces":["M5","M6","PSEPF"],"existing_evidence":["test_repository_index_and_provenance_never_widen_permission_or_create_actor_effect","test_rsc_epi_actor_state_noncollapse_and_no_prior_to_psyche_surface","test_concrete_accepted_m5_runtime_types_are_bound_and_have_zero_direct_positive_m6_effect","test_guarded_truth_has_zero_effect_without_positive_authority"],"final_cross_package_obligation":"Present valid structural/empirical priors without a named transition owner and prove no occurrence, memory, belief, knowledge, relationship, action, persona or voice effect.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H09","name":"cross_peer_staleness_substitution","expected":"FAIL_CLOSED_PER_OWNER__CURRENTNESS_INDEPENDENT","surfaces":["M5","PSEPF"],"existing_evidence":["test_peer_requirement_is_exact_and_structural_currentness_never_substitutes_empirical_permission","M5 stale currentness failure tests"],"final_cross_package_obligation":"Make one required peer stale/missing while another is current and prove no peer substitution or generic-prior fallback.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H10","name":"refresh_requery_history_laundering","expected":"REJECT__HISTORICAL_IDENTITY_PRESERVED__REFRESH_PROSPECTIVE","surfaces":["M5"],"existing_evidence":["test_explicit_currentness_and_prospective_refresh_never_rewrite_history"],"final_cross_package_obligation":"Refresh the current structural peer and prove previously committed receipts retain old exact peer/currentness identities.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H11","name":"source_disagreement_becomes_actor_uncertainty","expected":"NO_BEHAVIORAL_CHANGE_WITHOUT_CURRENT_ACTOR_SAFE_AUTHORITY","surfaces":["PSEPF","M6","RENDER"],"existing_evidence":["test_entry_constructor_rejects_actor_stance_fabrication_from_system_unknown_or_control_state","test_forbidden_upstream_sources_remain_forbidden_through_representation_changes","render preflight IGR-H19"],"final_cross_package_obligation":"Hold current actor-safe semantics fixed, vary only upstream disagreement/negative data and require identical M6/render behavior unless a separately authorized actor state changes.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H12","name":"truth_bypasses_actor_accessibility","expected":"ZERO_POSITIVE_EXPRESSION_SEMANTICS","surfaces":["M5","PSEPF","M6","RENDER"],"existing_evidence":["test_current_verified_full_entry_is_sole_positive_semantic_path_and_replays","test_forbidden_upstream_sources_remain_forbidden_through_representation_changes","render preflight IGR-H15/17/18"],"final_cross_package_obligation":"Provide analyst/RSC/PSEPF/repository truth without a current verified actor-safe entry and prove no positive render semantics/model admission.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H13","name":"stale_deny_defer_integrity_session_fallback","expected":"REJECT__SESSION_NONCAUSAL_NONRESTORATIVE","surfaces":["M6","RENDER"],"existing_evidence":["test_stale_and_integrity_failures_have_zero_semantics_and_no_session_fallback","test_deny_defer_absence_and_valid_empty_are_control_or_zero_only","test_session_transcript_and_prior_render_never_restore_withdrawn_or_missing_access","render preflight IGR-H03/H04"],"final_cross_package_obligation":"Retain old session/rendered content after stale/deny/defer/integrity/withdrawal and prove current M6/render remains nonpositive.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H14","name":"hidden_joins_and_component_widening","expected":"REJECT__MONOTONE_NO_JOIN","surfaces":["M6","RENDER"],"existing_evidence":["test_partial_access_exposes_only_exact_components_and_actor_perceived_views","test_monotone_projection_rejects_claim_permission_and_scope_widening","render preflight IGR-H07/H08/H09/H10/H11"],"final_cross_package_obligation":"Join allowed entries or widen component/time/subject/referent/relationship/permission scope across M6→render and require rejection.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H15","name":"actor_safe_envelope_collapsed_into_complete_person","expected":"REJECT__SEMANTIC_CEILING_ONLY","surfaces":["M6","RENDER","SPDM_GATE"],"existing_evidence":["test_m6_does_not_implement_situated_phenomenology_disclosure_salience_or_register","test_actor_safe_envelope_is_not_generated_person_or_rendered_expression_object","render preflight IGR-H20-H25"],"final_cross_package_obligation":"Attempt to use M6 envelope as consciousness/persona/SPDM/salience/disclosure/register/utterance plan; block missing owner without blocking independent bounded render acceptance.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H16","name":"divergence_replay_false_dilemma","expected":"ALLOW_LAWFUL_DIVERGENCE_AND_REQUIRE_EXACT_REPLAY","surfaces":["M1","M2","M3","M4","M5","M6","PSEPF","RENDER"],"existing_evidence":["package-local deterministic replay tests","fixture replay oracle R01/R02","render preflight IGR-H33-H35"],"final_cross_package_obligation":"Require identical outputs at each declared owner grain for identical complete receipts while allowing distinct lawful lives/wording when governed causal or render variability receipts differ.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H17","name":"typed_state_collapse","expected":"REJECT__TYPED_STATES_DISTINCT","surfaces":["M1","M2","M3","M4","M5","M6","RENDER"],"existing_evidence":["M1 hard-negative/deferred/valid-empty/integrity tests","M2 upstream nonpositive state mapping tests","M3 governed valid-empty/no-filler tests","M4 producer-state vs integrity tests","M5 frozen failure-code tests","M6 deny/defer/absence/valid-empty/stale/integrity tests"],"final_cross_package_obligation":"Transport all typed states through the integrated machine and prove none is coerced into another state or positive absence/permission.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H18","name":"fabricated_rsc_runtime_instance","expected":"NO_RUNTIME_INSTANCE__EXPLICIT_RESOLUTION_REQUIRED","surfaces":["M4","M5"],"existing_evidence":["test_v557_and_v558_remain_distinct_and_resolver_is_deterministic_without_rsc_fabrication","test_missing_partial_and_denied_resolution_fail_closed_without_rsc_fabrication","test_missing_runtime_instance_and_tampered_rsc_digests_fail_with_frozen_codes"],"final_cross_package_obligation":"Attempt to pass repository/stage authority or incomplete resolution directly as RSC; require explicit runtime materialization and validation.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H19","name":"feeder_authority_inversion","expected":"REJECT__DISPOSITIVE_FINAL_AUTHORITY_CONTROLS","surfaces":["ALL"],"existing_evidence":["exact accepted implementation heads and frozen final-reclosure fixture pins"],"final_cross_package_obligation":"Ensure integration imports/contracts are pinned only to accepted implementation/final authority; no feeder or planning artifact may override runtime semantics.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    },
+    {
+      "id":"H20","name":"ambient_authority_shortcut","expected":"FAIL_CLOSED__NO_HEURISTIC_REPAIR","surfaces":["ALL"],"existing_evidence":["M1 wall-clock/filesystem/RNG nonauthority test","M2 missing/latest/fuzzy authority and replay tests","M4 exact-index/latest-policy rejection tests","PSEPF exact-authority binding tests","M6 forbidden representation tests","render binding requirements"],"final_cross_package_obligation":"Remove exact refs/hashes and attempt latest/fuzzy/nearest/storage order/network/LLM/random/default/session repair anywhere in the integrated machine; require fail closed.","status":"REQUIRED_FINAL_ACCEPTANCE"
+    }
+  ],
+  "implementation_path_law": [
+    {"id":"P01","law":"M1-M6 spine is exact","required":"Final tree contains the twelve pinned M1-M6 file blobs from FINAL_INTEGRATION_BINDINGS.json."},
+    {"id":"P02","law":"Import DAG is exact and one-way","required":"M1 stdlib; M2→M1; M3→M2; M4→M1/M2/M3; M5→M4; M6→M5 evidence only; no extra semantic dependency."},
+    {"id":"P03","law":"No legacy runtime imports","required":"Integrated clean-sideline modules/tests do not import legacy data/ddm_build or data/ddm_build_copy runtime surfaces."},
+    {"id":"P04","law":"PSEPF is an exact sidecar","required":"Only blobs e0528d65215cb431196570c38bac4eae94217a1b and 21cfdee118d70d41def6ba654bbada5214cc1112 are introduced from accepted PSEPF sideline; no whole branch merge."},
+    {"id":"P05","law":"Render requires dispatch acceptance","required":"Exact accepted render head/token/runtime blob/test blob must be re-read from dispatch; mutable branch state is insufficient."},
+    {"id":"P06","law":"No final path collision","required":"M1-M6, PSEPF and accepted render paths remain unique; any overlapping path requires exact identical blob or bounded return."},
+    {"id":"P07","law":"No direct positive M5→M6 behavioral edge","required":"Concrete M5 evidence types cannot produce M6 positive semantics and cannot become render inputs."},
+    {"id":"P08","law":"PSEPF zero-positive first tranche","required":"Default accepted positive registry is empty and guarded truth causes zero actor/causal/RNG/scheduler effect."},
+    {"id":"P09","law":"Render no-widening/no-side-channel","required":"Render cannot widen M6 claims/components/scopes/permissions, restore session content, or consume M5/RSC/PSEPF/comparator/provenance indirectly."},
+    {"id":"P10","law":"SPDM remains blocked but nonblocking","required":"No positive SPDM implementation exists; missing SPDM authority does not invalidate unrelated M1-M6/PSEPF/bounded-render acceptance."},
+    {"id":"P11","law":"Replay and lawful divergence coexist","required":"Exact complete owner receipts replay deterministically; separately governed causal/render variability may diverge without semantic widening."},
+    {"id":"P12","law":"No ambient authority repair","required":"No latest/fuzzy/nearest/network/LLM/default/unrecorded randomness/session fallback can satisfy a missing exact binding."}
+  ],
+  "render_runtime_gate": {
+    "state":"PENDING_DISPATCH_ACCEPTED_RETURN",
+    "required_token":"IG_RENDER_BOUNDED_IMPLEMENTATION_COMPLETE__READY_FOR_INTEGRATION",
+    "visible_candidate_is_authority":false,
+    "recheck_before_final_acceptance":true
+  },
+  "semantic_conflict_found": false
+}
