@@ -1,0 +1,201 @@
+{
+  "contract_id": "PRE553_P06_STRUCTURAL_EMPIRICAL_ADMISSION@1.0.0",
+  "status": "PREFLIGHT_EXACT_BINDING__HQ_ACCEPTANCE_REQUIRED",
+  "object_family": "StructuralEmpiricalAdmission",
+  "schema_version": "PRE553_SEA_V1",
+  "grain": "one exact EmpiricalFact/query result x one exact structural interpretation/use target x one exact structural-admission rule decision",
+  "semantic_owner": "StructuralEmpiricalAdmissionService",
+  "positive_state": "ADMITTED",
+  "nonpositive_states": [
+    "MISSING_STRUCTURAL_ADMISSION_AUTHORITY",
+    "ADMISSION_DENIED",
+    "ADMISSION_DEFERRED",
+    "EMPIRICAL_FACT_NONCOMPARABLE",
+    "SOURCE_NOT_APPLICABLE_TO_STRUCTURAL_USE",
+    "INSUFFICIENT_EVIDENCE_UNDER_RULE",
+    "TEMPORAL_SCOPE_MISMATCH",
+    "STRUCTURAL_TARGET_UNRESOLVED",
+    "NEGATIVE_AUTHORITY_ONLY",
+    "UNKNOWN_OR_CONFLICTING_REQUIRED_AUTHORITY",
+    "VALID_EMPTY",
+    "INTEGRITY_FAILURE"
+  ],
+  "decision_precedence": [
+    "INTEGRITY_FAILURE",
+    "MISSING_STRUCTURAL_ADMISSION_AUTHORITY",
+    "UNKNOWN_OR_CONFLICTING_REQUIRED_AUTHORITY",
+    "ADMISSION_DENIED",
+    "NEGATIVE_AUTHORITY_ONLY",
+    "SOURCE_NOT_APPLICABLE_TO_STRUCTURAL_USE",
+    "EMPIRICAL_FACT_NONCOMPARABLE",
+    "TEMPORAL_SCOPE_MISMATCH",
+    "STRUCTURAL_TARGET_UNRESOLVED",
+    "INSUFFICIENT_EVIDENCE_UNDER_RULE",
+    "ADMISSION_DEFERRED",
+    "VALID_EMPTY",
+    "ADMITTED"
+  ],
+  "required_receipt_fields": [
+    "schema_version",
+    "structural_empirical_admission_id",
+    "structural_empirical_admission_content_hash",
+    "admission_decision_state",
+    "decision_reason_code",
+    "empirical_query_spec_ref",
+    "empirical_fact_ref",
+    "admission_authority_ref",
+    "source_universe_refs",
+    "native_scope_identity_refs",
+    "target_use",
+    "target_use_permission_refs",
+    "focal_structural_proposition_ref",
+    "structural_semantic_identity_refs",
+    "effective_time_or_interval_refs_required_by_target_use",
+    "estimand_refs",
+    "measure_and_weight_authority_refs",
+    "support_uncertainty_state",
+    "support_uncertainty_refs",
+    "applicable_negative_denial_noncomparability_refs",
+    "interpretation_critical_authority_refs",
+    "authority_closure_refs",
+    "producer_replay_locator_or_reference_root"
+  ],
+  "positive_payload_required_when_admitted": [
+    "structural_interpretation_payload"
+  ],
+  "optional_provenance_only_fields": [
+    "discovery_result_receipt_refs",
+    "legacy_compatibility_refs"
+  ],
+  "exact_ref_contract": {
+    "required": ["kind", "object_id", "content_hash"],
+    "hash": "lowercase_sha256",
+    "resolution": "exact_object_id_and_content_hash_only",
+    "unknown_or_mismatch": "FAIL_CLOSED"
+  },
+  "admission_rule_contract": {
+    "rule_contract_id": "PRE553_STRUCTURAL_ADMISSION_RULE@1.0.0",
+    "required": [
+      "admission_rule_id",
+      "admission_rule_version",
+      "admission_rule_hash",
+      "allowed_empirical_fact_family_or_query_family_refs",
+      "service_source_applicability_authority_refs",
+      "required_source_relation_authority_refs_if_multi_universe",
+      "time_geography_applicability",
+      "required_empirical_predicate_target_semantics_refs",
+      "structural_target_identity_refs",
+      "focal_structural_proposition_ref_template_or_exact_ref",
+      "interpretation_or_transformation_semantics",
+      "directionality_or_role_semantics",
+      "target_use_permissions",
+      "support_uncertainty_admissibility",
+      "source_disagreement_noncomparability_policy",
+      "negative_authority",
+      "required_external_authority_refs",
+      "effective_period",
+      "downstream_structural_producer_or_use",
+      "replay_semantics"
+    ],
+    "compatibility_rule_extra_required": [
+      "legacy_semantic_surface_ref",
+      "parity_claim_scope",
+      "parity_receipt_ref",
+      "retained_structural_meaning_ref"
+    ]
+  },
+  "state_law": {
+    "OBSERVED_ZERO": "measurement is not missing; may be ADMITTED only when the named rule permits the exact observed-zero fact",
+    "ZERO_SUPPORT": "never actor or structural impossibility; absent explicit named structural use it remains nonpositive",
+    "LOW_SUPPORT": "may be ADMITTED only when the named rule explicitly permits the support/uncertainty state; LOW_SUPPORT remains preserved",
+    "UNCERTAINTY_UNQUANTIFIED": "preserve exactly; no fabricated confidence",
+    "VALID_EMPTY": "coherent nonpositive result distinct from missing authority, denial, zero and integrity failure",
+    "ADMISSION_DEFERRED": "nonpositive until the named external owner resolves the exact requirement"
+  },
+  "identity_replay": {
+    "object_id": "SEA:PRE553_V1:<sha256(canonical_semantic_identity_material)>",
+    "content_hash": "sha256(canonical_full_receipt_excluding_structural_empirical_admission_content_hash)",
+    "serialization": "UTF8_JSON_SORTED_OBJECT_KEYS_NO_INSIGNIFICANT_WHITESPACE_NO_NAN_INFINITY; set-like exact-ref collections sorted by kind/object_id/content_hash; role/order-bearing arrays remain semantic",
+    "identity_includes": [
+      "empirical_query_spec_ref",
+      "empirical_fact_ref",
+      "admission_authority_ref",
+      "admission_decision_state",
+      "target_use",
+      "target_use_permission_refs",
+      "focal_structural_proposition_ref",
+      "structural_semantic_identity_refs",
+      "structural_interpretation_payload when ADMITTED",
+      "source_universe_refs",
+      "required source-relation authority refs when semantically used",
+      "native_scope_identity_refs",
+      "effective_time_or_interval_refs_required_by_target_use",
+      "estimand_refs",
+      "measure_and_weight_authority_refs",
+      "support_uncertainty_state",
+      "applicable_negative_denial_noncomparability_refs",
+      "interpretation_critical_authority_refs",
+      "authority_closure_refs"
+    ],
+    "identity_excludes": [
+      "wall_clock",
+      "filesystem_or_directory_order",
+      "session_or_run_id",
+      "cache_presence",
+      "latest_or_readiness_or_probe_state",
+      "diagnostic_ranking_score",
+      "human_label_similarity"
+    ],
+    "later_rule_version": "new admission identity; historical receipt immutable under exact old rule hash",
+    "hash_mismatch": "INTEGRITY_FAILURE"
+  },
+  "jurisdiction": {
+    "generic_empirical_to_structural_promotion": "FORBIDDEN",
+    "v553_direct_empirical_fact_input": "FORBIDDEN",
+    "cannot_manufacture": [
+      "EmpiricalFact truth or query semantics",
+      "source semantic equivalence",
+      "respondent linkage",
+      "sample pooling",
+      "source backfill",
+      "cross-universe composition",
+      "V553 temporal operation selection",
+      "temporal harmonization",
+      "temporal relation or comparability",
+      "SCR554 basis kind",
+      "SCR554 temporal completeness",
+      "SCR554 equivalence or precedence",
+      "F1/F2/B1 identity",
+      "generated actor fact",
+      "generated nine-stratum position",
+      "actor belief, psyche, persona or response"
+    ],
+    "forbidden_rule_moves": [
+      "coordinate-label similarity as structural target proof",
+      "generic prevalence or association as structural truth",
+      "discovery score, MI, NMI, Cramers V, entropy, tree or cloud score as primary structural evidence",
+      "population fact as actor belief, persona or identity",
+      "empirical coordinate as generated actor position",
+      "source composition from harmonization, provenance or alias",
+      "latest, nearest, fuzzy or default authority selection"
+    ]
+  },
+  "source_plurality": {
+    "default": "PRESERVE_DISTINCT_UNIVERSES",
+    "multi_universe_use": "requires exact externally owned source relation/applicability/composition authority refs",
+    "same_label_alias_or_provenance": "NO_EQUIVALENCE_NO_LINKAGE_NO_POOLING_NO_BACKFILL",
+    "disagreement": "preserve independent admissions when the named structural rule permits plural evidence, otherwise typed noncomparability/conflict; never average by default"
+  },
+  "compatibility_admission": {
+    "legacy_surfaces": ["V551", "V551J", "V552", "V552J"],
+    "rule": "legacy packet shape is never authority; compatibility requires exact compatibility EmpiricalQuerySpec/EmpiricalFact, named structural-admission rule and parity receipt for the intentionally retained producer-owned structural meaning",
+    "missing_parity_or_rule": "NONPOSITIVE"
+  },
+  "downstream_binding": {
+    "accepted_downstream_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+    "accepted_m1_runtime_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+    "scr553_exact_contract_head": "b261ff885b2b7fd2cd065917b862eb541e24c4a2",
+    "scr553_exact_contract_blob": "072c0995fe3dc7915dca50193e6ee44b8164e546",
+    "downstream_interface_changed": false
+  }
+}
