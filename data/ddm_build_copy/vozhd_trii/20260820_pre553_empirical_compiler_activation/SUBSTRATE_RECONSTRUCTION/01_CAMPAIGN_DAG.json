@@ -1,0 +1,20 @@
+{
+  "campaign": "PRE553_EMPIRICAL_SUBSTRATE_RECONSTRUCTION_CARRIER_RECERTIFICATION",
+  "status": "ACTIVE_CONTROL__SOURCE_AND_WRITER_CENSUS_OPEN",
+  "frozen_parent": "9188dc9fb7a8b92b981f3d3f94754cd6137d17b1",
+  "phases": [
+    {"id":"SR00","name":"command_freeze","owner":"HQ_BROWSER","requires":[],"gate":"G-SR00","status":"ACCEPTED"},
+    {"id":"SR01","name":"source_byte_universe","owner":"HQ_BROWSER","requires":["SR00"],"gate":"G-SR01","status":"ACCEPTED"},
+    {"id":"SR02","name":"legacy_writer_db_surface_genealogy","owner":"HQ_BROWSER+LOCAL_READONLY","requires":["SR00"],"gate":"G-SR02","status":"ACTIVE"},
+    {"id":"SR03","name":"source_native_physical_metadata_census","owner":"LOCAL_DUMB_EXECUTOR+HQ_ADJ","requires":["SR01"],"gate":"G-SR03","status":"PLANNED"},
+    {"id":"SR05","name":"format_neutral_source_constitution","owner":"HQ_BROWSER","requires":["SR01"],"gate":"G-SR05","status":"ACTIVE"},
+    {"id":"SR04","name":"physical_carrier_bakeoff","owner":"LOCAL_DUMB_EXECUTOR+HQ_ADJ","requires":["SR03","SR05"],"gate":"G-SR04","status":"BLOCKED"},
+    {"id":"SR06","name":"decoder_c11_implementation","owner":"CODEX_IMPLEMENTATION","requires":["SR04","SR05"],"gate":"G-SR06","status":"BLOCKED"},
+    {"id":"SR07","name":"wvs7_hostile_certification","owner":"LOCAL_DUMB_EXECUTOR+HQ_ADJ","requires":["SR06"],"gate":"G-SR07","status":"BLOCKED"},
+    {"id":"SR08","name":"lits1_hostile_certification","owner":"LOCAL_DUMB_EXECUTOR+HQ_ADJ","requires":["SR06"],"gate":"G-SR08","status":"BLOCKED"},
+    {"id":"SR09","name":"remaining_source_batch_certification","owner":"HQ_BROWSER+LOCAL_DUMB_EXECUTOR","requires":["SR07","SR08"],"gate":"G-SR09","status":"BLOCKED"},
+    {"id":"SR10","name":"legacy_surface_disposition","owner":"HQ_BROWSER","requires":["SR02","SR09"],"gate":"G-SR10","status":"BLOCKED"},
+    {"id":"SR11","name":"populated_pre553_reentry","owner":"LOCAL_DUMB_EXECUTOR+HQ_ADJ","requires":["SR09","SR10"],"gate":"G-SR11","status":"BLOCKED"},
+    {"id":"SR12","name":"reservoir_reclosure_resume","owner":"HQ_BROWSER+LOCAL_DUMB_EXECUTOR","requires":["SR11"],"gate":"G-SR12","status":"BLOCKED"}
+  ]
+}
