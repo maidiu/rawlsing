@@ -1,0 +1,34 @@
+{
+  "schema": "VOZHD_TRII_LOCAL_EXACT_TREE_EXECUTION_RECEIPT@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "verification_target_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "execution_authority": "USER_LOCAL_EXACT_GIT_CHECKOUT_VERIFICATION_RECEIPT",
+  "pre_execution": {
+    "git_rev_parse_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+    "git_status_short": "CLEAN"
+  },
+  "command_family": "PYTHONPATH=. python3 -m pytest -q <exact nine accepted test files>",
+  "required_test_files": [
+    "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+    "rawlsing_next/tests/test_m2_v555_atomic_route.py",
+    "rawlsing_next/tests/test_m3_v556_higher_order_structural.py",
+    "rawlsing_next/tests/test_m4_v557_v558_publication_repository.py",
+    "rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py",
+    "rawlsing_next/tests/test_m6_actor_safe_expression.py",
+    "rawlsing_next/tests/test_psepf_zero_positive_guard.py",
+    "rawlsing_next/tests/test_render_bounded_expression.py",
+    "rawlsing_next/tests/test_whole_machine_integration.py"
+  ],
+  "pytest_result": {
+    "passed": 260,
+    "failed": 0,
+    "elapsed_seconds": 0.90,
+    "exit_code": 0,
+    "terminal_summary": "260 passed in 0.90s"
+  },
+  "post_execution": {
+    "git_rev_parse_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+    "git_status_short": "CLEAN"
+  },
+  "receipt_disposition": "ACCEPTED_EXACT_TREE_EXECUTION_RECEIPT"
+}
