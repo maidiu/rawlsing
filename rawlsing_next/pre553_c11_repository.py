@@ -5,12 +5,14 @@ I02 atomic ingest validator may be committed here.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping
 
 from rawlsing_next.pre553_empirical_objects import CanonicalSemanticObject, ExactRef, canonical_json
 from rawlsing_next.pre553_c11_integrity import C11AtomicityError, C11InternalRecord, ReplayManifest
+
+_C11_VALIDATION_SEAL = object()
 
 
 @dataclass(frozen=True)
@@ -30,8 +32,11 @@ class C11LogicalRelease:
     public_objects: tuple[CanonicalSemanticObject, ...]
     internal_records: tuple[C11InternalRecord, ...]
     m01_m18_coverage: Mapping[str, tuple[str, ...]]
+    _validation_seal: object = field(default=None, repr=False, compare=False)
 
     def __post_init__(self) -> None:
+        if self._validation_seal is not _C11_VALIDATION_SEAL:
+            raise C11AtomicityError("C11LogicalRelease may be created only by complete I02 validation")
         if not self.release_id:
             raise C11AtomicityError("sealed release requires release_id")
         if len(self.source_release_manifest_hash) != 64 or len(self.semantic_release_hash) != 64:
@@ -83,8 +88,8 @@ class C11Repository:
 
     def _commit_validated(self, release: C11LogicalRelease) -> None:
         """Atomic commit primitive used only after complete ingest validation."""
-        if not isinstance(release, C11LogicalRelease):
-            raise C11AtomicityError("repository accepts only sealed C11LogicalRelease")
+        if not isinstance(release, C11LogicalRelease) or release._validation_seal is not _C11_VALIDATION_SEAL:
+            raise C11AtomicityError("repository accepts only I02-validated sealed C11LogicalRelease")
         ref = release.release_ref
         prior_hash = self._by_release_id.get(release.release_id)
         if prior_hash is not None and prior_hash != release.semantic_release_hash:
@@ -104,6 +109,10 @@ class C11Repository:
         self._objects = staged
         self._by_ref[ref.key] = release
         self._by_release_id[release.release_id] = release.semantic_release_hash
+
+
+def _make_validated_release(**kwargs: Any) -> C11LogicalRelease:
+    return C11LogicalRelease(_validation_seal=_C11_VALIDATION_SEAL, **kwargs)
 
 
 __all__ = ["C11LogicalRelease", "C11Repository"]
