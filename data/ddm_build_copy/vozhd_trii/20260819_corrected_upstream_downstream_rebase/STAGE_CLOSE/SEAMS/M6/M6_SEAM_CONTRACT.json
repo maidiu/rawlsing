@@ -1,0 +1,212 @@
+{
+  "authority": "DISPOSITIVE_M6_V3_TO_V2_EXPRESSION_SEAM_ONLY",
+  "base_sha": "baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
+  "binding_authorities": {
+    "ADP017_blob": "eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+    "M6_preflight_head": "3094f10b806c3f767528b6c11c872cee682abca7",
+    "M6_preflight_result_blob": "42ddcb56c6134f900da684bcd48af7c007921d3d",
+    "SCRV2APP_contract_blob": "dafe01f2307475dc05af0d37520b9ad0f63ed05f",
+    "SCRV2APP_head": "24f8811bb7d2eaa18cfac1cb907c48bba8d08f23",
+    "SCRV3_M6_handoff_blob": "085ec32708afb8f9b9be70bdea16b326770bebb2",
+    "SCRV3_M6_literalization_contract_sha256": "b3ec651c22dedcb58f4be8e8a0b4148a4b2df26dbd61fc12bdc352c00cf3aaf3",
+    "SCRV3_M6_literalization_head": "3a50391fd4f8c23a7fd2c61ac7aaac31a0ce4006",
+    "SCRV3_M6_literalization_result_blob": "40659e81c0b5ba33a01ed561457156d635c93d04"
+  },
+  "branch": "agent/vozhd-trii-dr-r03-seam-m6-v2-expression",
+  "closure": {
+    "authority_conflict": false,
+    "broad_topology_changed": false,
+    "harmonization_required": false,
+    "production_code_modified": false,
+    "proofs": {
+      "P01_CURRENT_VERIFIED_ENTRY_ONLY": "PASS",
+      "P02_EXACT_ACTOR_STATE_AUTHORITY_HASH_REPLAY_BINDING": "PASS",
+      "P03_STALE_INTEGRITY_ZERO_SEMANTICS_NO_FALLBACK": "PASS",
+      "P04_DENY_DEFER_CONTROL_ONLY_SYSTEM_UNKNOWN_NONPROMOTION": "PASS",
+      "P05_PARTIAL_COMPONENT_EXACT_ALLOWLIST": "PASS",
+      "P06_V2_MONOTONE_NARROWING_NO_JOIN_NO_PERMISSION_CHANGE": "PASS",
+      "P07_ACTOR_PERCEIVED_RELATIONSHIP_ONLY": "PASS",
+      "P08_OPAQUE_PROVENANCE_AUDIT_ONLY_NONBEHAVIORAL": "PASS",
+      "P09_RAW_AND_INDIRECT_UPSTREAM_BYPASS_DENIED": "PASS",
+      "P10_SESSION_TRANSCRIPT_CANNOT_RESTORE_STALE_WITHDRAWN_ACCESS": "PASS",
+      "P11_EXTERNAL_EVENT_ADMIT_REJECT_DEFER_INVALID_SEMANTICS": "PASS",
+      "P12_DETERMINISTIC_REPLAY_AND_BOUNDED_OUTPUT": "PASS",
+      "P13_CONSTITUTIONAL_NONCOLLAPSE_AND_DOWNSTREAM_VARIABILITY": "PASS"
+    },
+    "result_token": "M6_ACCEPTED__V2_ACTOR_SAFE_EXPRESSION_SEAM_CLOSED"
+  },
+  "constitutional_boundary": {
+    "actor_accessible_render_envelope_role": "HARD_SEMANTIC_CEILING_ALLOWLIST",
+    "lawful_downstream_variability": "Separate downstream authorities may select, omit, narrow, order and word allowed material; they cannot add semantic claims or widen V3 permissions.",
+    "noncollapse": [
+      "TOTAL_GENERATED_PERSON!=ACTOR_ACCESSIBLE_TRUTH",
+      "ACTOR_ACCESSIBLE_TRUTH!=SITUATED_PHENOMENOLOGY",
+      "SITUATED_PHENOMENOLOGY!=RENDERED_EXPRESSION"
+    ],
+    "not_complete_state": [
+      "TOTAL_GENERATED_PERSON",
+      "SITUATED_PHENOMENOLOGY",
+      "PERSONA",
+      "DISCLOSURE_WILLINGNESS",
+      "SALIENCE",
+      "INHIBITION",
+      "AFFECTIVE_FOREGROUNDING",
+      "INTERLOCUTOR_OPENNESS",
+      "INTERACTION_MODE",
+      "REGISTER",
+      "UTTERANCE_PLAN",
+      "RENDERED_EXPRESSION"
+    ]
+  },
+  "contract_id": "M6_V3_TO_V2_ACTOR_SAFE_EXPRESSION_SEAM",
+  "external_event_feedback": {
+    "ADMIT": "exactly one admitted occurrence; no implied memory/knowledge/belief/relationship/downstream actor effect",
+    "DEFER": "zero V3 mutation; zero event/casual-session cursor advance",
+    "INVALID": "zero V3 mutation; zero event/casual-session cursor advance",
+    "REJECT": "zero V3 mutation; zero event/casual-session cursor advance"
+  },
+  "forbidden_behavioral_sources": [
+    "PSEPF",
+    "ActorComparatorReceipt",
+    "SourceDisagreementOrEmpiricalNegativeAsSuch",
+    "V3EmpiricalPossibilityInput",
+    "ResolvedStructuralContext",
+    "StructuralPriorRepository",
+    "V557_V558_OBJECT_LOCATOR_INDEX_SELECTION_RECORD",
+    "RAW_V553_V554_V555_V556_STRUCTURAL_OBJECT",
+    "ReplayReceipt",
+    "OPAQUE_UPSTREAM_AUDIT_OR_PROVENANCE",
+    "ANALYST_ONLY_TRUTH"
+  ],
+  "forbidden_bypass_law": "Forbidden sources remain forbidden through aliases, wrappers, caches, summaries, joins, prompts, embeddings, semantic search, metadata, locators or audit dereference.",
+  "monotone_v2_projection": {
+    "claim_subset": true,
+    "may_add_claim": false,
+    "may_change_permission_class": false,
+    "may_join_claims_into_unlisted_claim": false,
+    "may_mutate_v3_state": false,
+    "may_narrow_referent_scope": true,
+    "may_narrow_relationship_view_scope": true,
+    "may_narrow_subject_scope": true,
+    "may_narrow_temporal_scope": true,
+    "may_omit": true,
+    "may_recover_denied_withheld_content": false,
+    "may_widen_component_scope": false,
+    "partial_component_subset": true
+  },
+  "opaque_provenance": {
+    "audit_only_exact_hash_verification": true,
+    "behavioral_branch_on_id_hash_metadata": false,
+    "behavioral_dereference": false,
+    "metadata_feature_use": false,
+    "metamorphic_noninterference": "With actor-safe semantics and lawful V2 inputs fixed, varying only opaque provenance produces no behavioral semantic change.",
+    "model_visible": false,
+    "role": "AUDIT_ONLY_REF",
+    "semantic_payload_allowed": false,
+    "type": "OpaqueAuditRef@1.0.0"
+  },
+  "positive_ingress_predicate": {
+    "all_required": [
+      "envelope schema/type/version exact",
+      "envelope integrity_state == VERIFIED",
+      "SCRV3_M6_AARE_CURRENTNESS_V1 == CURRENT",
+      "actor_id exact and same across envelope/entry/stance/memory/relationship view/receiver",
+      "source_generated_person_record_hash exact/current",
+      "source_actor_state_hash exact/current",
+      "source_memory_state_hash exact/current",
+      "source_epistemic_state_hash exact/current",
+      "as_of_causal_time lawful and receiver time not before as_of",
+      "ADP-017 version == 1.0.0",
+      "ADP-017 hash == git-blob-sha1:eece4f3f2f3f9288ab9bbc645dc81e20a99e1280",
+      "envelope id/hash verifies under literalization contract",
+      "entry hash verifies and entry is in envelope.allowed_claim_entries",
+      "replay closure root/hash/binding verifies",
+      "entry accessibility is CLAIM_ACCESSIBLE or CLAIM_PARTIALLY_ACCESSIBLE",
+      "entry permission is one of four positive ADP-017 first-person permission classes"
+    ],
+    "entry_type": "ActorSafeClaimEntry@1.0.0",
+    "envelope_type": "ActorAccessibleRenderEnvelope@1.0.0",
+    "no_fallback": true,
+    "positive_semantic_authority": "Only the exact current verified entry semantic surface."
+  },
+  "relationship_view": {
+    "analyst_relationship_truth_substitution": false,
+    "behavioral_source": "exact actor_perceived_view_refs already actor-accessible",
+    "objective_relationship_truth_substitution": false
+  },
+  "replay": {
+    "forbidden_replay_substitutes": [
+      "wall clock",
+      "filesystem order",
+      "mutable latest",
+      "unrecorded lookup",
+      "session summary",
+      "prompt wording",
+      "renderer randomness as semantic authority",
+      "keyword hook",
+      "unrecorded LLM inference"
+    ],
+    "missing_or_mismatched_replay_material": "INTEGRITY_FAILURE_OR_FAIL_CLOSED__NEVER_HEURISTIC_RECONSTRUCTION",
+    "same_lawful_inputs_reproduce": [
+      "entry hashes",
+      "deny/defer decision hashes",
+      "envelope hash/id",
+      "currentness decision",
+      "receiver terminal state",
+      "bounded semantic permission surface"
+    ]
+  },
+  "repository": "maidiu/rawlsing",
+  "session_application": {
+    "past_render_may_create_current_permission": false,
+    "rendered_text_is_v3_occurrence": false,
+    "session_may_replace_stale_handoff": false,
+    "session_may_restore_v3_access": false,
+    "session_state_is_causal": false,
+    "transcript_is_v3_memory": false
+  },
+  "terminal_receiver_mapping": {
+    "absent": {
+      "inferred_nonknowledge_or_uncertainty": false,
+      "positive_semantics": 0
+    },
+    "defer": {
+      "control_only": true,
+      "positive_semantics": 0,
+      "system_unknown_to_actor_stance": false
+    },
+    "deny": {
+      "control_only": true,
+      "positive_semantics": 0,
+      "withheld_content_recoverable": false
+    },
+    "evaluation_order": [
+      "INTEGRITY_FAILURE",
+      "STALE",
+      "CLAIM_EXACT_DEFER",
+      "CLAIM_EXACT_DENY",
+      "CLAIM_POSITIVE_PARTIAL",
+      "CLAIM_POSITIVE_FULL",
+      "CLAIM_ABSENT_OR_VALID_EMPTY"
+    ],
+    "full": {
+      "semantic_scope": "exact canonical claim_ref only"
+    },
+    "integrity_failure": {
+      "fallback": false,
+      "positive_semantics": 0
+    },
+    "partial": {
+      "semantic_scope": "exact permitted_component_refs only"
+    },
+    "stale": {
+      "fallback": false,
+      "positive_semantics": 0
+    },
+    "valid_empty": {
+      "fabricated_claim": false,
+      "positive_semantics": 0
+    }
+  },
+  "version": "1.0.0"
+}
