@@ -1,37 +1,24 @@
 {
   "force_size":10,
   "hq_excluded_from_worker_count":true,
-  "common_base":"baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
-  "allocation_epoch":"R03_STAGE_CLOSE_FINAL_RECLOSURE",
-  "dispatch_branch":"agent/vozhd-trii-stage-close-dispatch",
-  "global_state":"M1_M6_ACCEPTED_FROZEN__ONE_FINAL_INSPECTORATE_ACTIVE__NINE_HELD",
-  "active_new_semantic_assignments":0,
-  "active_inspectorate_assignments":1,
-  "epoch_02_recycle_budget":4,
-  "epoch_02_assignments_issued":4,
-  "command_review_02":"M1_M6_COMPOSED__NO_SEMANTIC_DRIFT_FOUND__FINAL_HOSTILE_RECLOSURE_AUTHORIZED",
-  "review_02_blob":"18364600960e50cad8758beb7075a94108217bee",
-  "user_handoff_addressing":"WORKER_SLOT__PERMANENT_CHAT_ID__MOST_RECENT_SUBMITTING_AGENT_ID__NEW_AGENT_ID",
+  "allocation_epoch":"IMPLEMENTATION_GATE_REGENERATION_01",
+  "global_state":"R03_STAGE_CLOSE_FROZEN__ONE_IMPLEMENTATION_GATE_REGENERATION_WORKER_ACTIVE__NINE_HELD",
+  "active_semantic_workers":0,
+  "active_inspectorates":0,
+  "active_implementation_gate_workers":1,
   "mailboxes":[
-    {"worker_slot":1,"chat_id":"CHAT-S554D","most_recent_submitting_agent_id":"M6_FINAL","state":"ACCEPTED_FROZEN","semantic_head":"a93335e577f018241d3d027bb8827a79907b9f28"},
-    {"worker_slot":2,"chat_id":"CHAT-SCR555","most_recent_submitting_agent_id":"M3_FINAL","state":"HOLD"},
-    {"worker_slot":3,"chat_id":"CHAT-SCRV3","most_recent_submitting_agent_id":"SCRV3_M6_HANDOFF_LITERALIZATION","state":"ACCEPTED_FROZEN","semantic_head":"3a50391fd4f8c23a7fd2c61ac7aaac31a0ce4006"},
-    {"worker_slot":4,"chat_id":"CHAT-SCR5578","most_recent_submitting_agent_id":"SV3A","state":"HOLD","review_flag":"NONCONFORMING_RETURN_EVIDENCE_ONLY"},
+    {"worker_slot":1,"chat_id":"CHAT-S554D","most_recent_submitting_agent_id":"M6_FINAL","state":"ACCEPTED_FROZEN"},
+    {"worker_slot":2,"chat_id":"CHAT-SCR555","most_recent_submitting_agent_id":"M3_FINAL","state":"ISSUED","new_agent_id":"IMPLEMENTATION_GATE_REGENERATION","assignment_id":"IG01-W02-REGENERATE-IMPLEMENTATION-CAMPAIGN-001"},
+    {"worker_slot":3,"chat_id":"CHAT-SCRV3","most_recent_submitting_agent_id":"SCRV3_M6_HANDOFF_LITERALIZATION","state":"ACCEPTED_FROZEN"},
+    {"worker_slot":4,"chat_id":"CHAT-SCR5578","most_recent_submitting_agent_id":"SV3A","state":"HOLD"},
     {"worker_slot":5,"chat_id":"CHAT-SCRV2APP","most_recent_submitting_agent_id":"SV3B","state":"HOLD"},
     {"worker_slot":6,"chat_id":"CHAT-SCR553","most_recent_submitting_agent_id":"SV3C","state":"HOLD"},
-    {"worker_slot":7,"chat_id":"CHAT-SV3M","most_recent_submitting_agent_id":"M5_FINAL","state":"ACCEPTED_FROZEN","semantic_head":"54f163b38fb0589327ea7b50fd98b537d7d91831"},
-    {"worker_slot":8,"chat_id":"CHAT-SINSP","most_recent_submitting_agent_id":"SINSP","state":"ISSUED","new_agent_id":"FINAL_RECLOSURE_INSPECTORATE","assignment_id":"E02-W08-FINAL-RECLOSURE-001"},
+    {"worker_slot":7,"chat_id":"CHAT-SV3M","most_recent_submitting_agent_id":"M5_FINAL","state":"ACCEPTED_FROZEN"},
+    {"worker_slot":8,"chat_id":"CHAT-SINSP","most_recent_submitting_agent_id":"FINAL_RECLOSURE_INSPECTORATE","state":"ACCEPTED_FROZEN","semantic_head":"c4a3524f54af368a67ca50ccc85f5d5dca3d803b"},
     {"worker_slot":9,"chat_id":"CHAT-SCR556","most_recent_submitting_agent_id":"M3_PREFLIGHT","state":"HOLD"},
-    {"worker_slot":10,"chat_id":"CHAT-S5578C","most_recent_submitting_agent_id":"M4_FINAL","state":"ACCEPTED_FROZEN","semantic_head":"988fa8abe755eee636e52a6b6eb09072b5a0f111"}
+    {"worker_slot":10,"chat_id":"CHAT-S5578C","most_recent_submitting_agent_id":"M4_FINAL","state":"ACCEPTED_FROZEN"}
   ],
-  "accepted_frozen_seams":[
-    {"unit":"M1","semantic_head":"088848577fd42f3b69e78551d5277c91e5aa128d","token":"M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED"},
-    {"unit":"M2","semantic_head":"92128619122886d0ced877a29b42fdb453765246","token":"M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED"},
-    {"unit":"M3","result_blob":"c5c2f85bade35a1b1cda9a26ce946f76d39ec953","token":"M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED"},
-    {"unit":"M4","semantic_head":"988fa8abe755eee636e52a6b6eb09072b5a0f111","token":"M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED"},
-    {"unit":"M5","semantic_head":"54f163b38fb0589327ea7b50fd98b537d7d91831","token":"M5_ACCEPTED__V3_STRUCTURAL_PEER_PRIOR_SEAM_CLOSED"},
-    {"unit":"M6","semantic_head":"a93335e577f018241d3d027bb8827a79907b9f28","token":"M6_ACCEPTED__V2_ACTOR_SAFE_EXPRESSION_SEAM_CLOSED"}
-  ],
-  "next_after_inspectorate":"HQ_FINAL_GATE_ADJUDICATION_ONLY",
-  "production_implementation_authorized":false
+  "stage_close_terminal_status":"STAGE_CONTRACTS_CLOSED__IMPLEMENTATION_STILL_REQUIRES_SEPARATE_AUTHORIZATION",
+  "production_implementation_authorized":false,
+  "next_gate":"REGENERATED_IMPLEMENTATION_CAMPAIGN_THEN_EXPLICIT_IMPLEMENTATION_ACTIVATION"
 }
