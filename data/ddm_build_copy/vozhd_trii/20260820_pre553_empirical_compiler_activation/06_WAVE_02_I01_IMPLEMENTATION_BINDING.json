@@ -1,0 +1,79 @@
+{
+  "schema": "PRE553_W02_I01_IMPLEMENTATION_BINDING@1.0.0",
+  "status": "BINDING_FOR_I01_IMPLEMENTATION",
+  "runtime_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "mission": "Implement the minimal public PRE553 canonical empirical object and immutable authority-validation layer needed by later C11/query/discovery/admission services without selecting storage, query evaluation, discovery behavior, structural promotion, V3/V2 behavior or cutover.",
+  "accepted_preflight_heads": {
+    "P01":"3ffec711bd4464d56025df95e8538eddf31ece2b",
+    "P02":"83c205ec09cf504ed82c1e1ca44f0f6c89f8e037",
+    "P03":"8b40c631c4844a4e8a4839c36cd567889e0823c8",
+    "P05":"07f38d1416a13feb2b10ec259bb65f0d1eba284c",
+    "P06":"d6a56e70822b48be53b74fd2ef9259e959fefc8e",
+    "P07":"bee95644c08ff1888825e8673c72302e30f1e3df",
+    "P08":"c975345b4df3cacf7f728f70ceb4f98c7f7c54ac",
+    "P09":"7ed6775dc98d0cd5e9f8c6222652b30e27b9c02e",
+    "P10":"1d7852b4edf0b97894e442aea1031cbfc5f3a248"
+  },
+  "allowed_runtime_paths": [
+    "rawlsing_next/pre553_empirical_objects.py",
+    "rawlsing_next/pre553_empirical_authority.py",
+    "rawlsing_next/tests/test_pre553_empirical_objects_authority.py"
+  ],
+  "public_object_families": [
+    "EmpiricalUniverse@1.0.0",
+    "RespondentEvent@1.0.0",
+    "EmpiricalCoordinateFact@1.0.0",
+    "RoutingEligibilityFact@1.0.0",
+    "WeightMeasureFact@1.0.0",
+    "AuthoritySnapshot@1.0.0",
+    "SourceUniverseRelation@1.0.0",
+    "EmpiricalPredicate@1.0.0",
+    "EmpiricalQuerySpec@1.0.0",
+    "EmpiricalFact@1.0.0",
+    "DiscoveryAuthority@1.0.0",
+    "DiscoveryResultReceipt@1.0.0",
+    "StructuralEmpiricalAdmission@1.0.0",
+    "ReplayReceipt@1.0.0"
+  ],
+  "implementation_requirements": [
+    "content-addressed deterministic semantic identity; no wall clock/filesystem/cache/latest/default/fuzzy identity material",
+    "exact immutable ID/version/hash authority refs and exact object refs",
+    "typed-state algebra preserving zero-support, observed-zero, valid-empty, noncomparability, denial, deferral, missing authority and integrity failure",
+    "public object validation must preserve source universe identity and authority/replay closure",
+    "SourceUniverseRelation is a typed receipt only; I01 may validate relation-kind material but may not infer or grant relations",
+    "EmpiricalPredicate/QuerySpec/Fact types must be able to carry P02 exact identity material but I01 does not execute queries",
+    "DiscoveryAuthority/Receipt types carry P09 search/coverage semantics but I01 does not search or rank",
+    "StructuralEmpiricalAdmission carries P06 receipt material but I01 does not make admission decisions",
+    "P10 internal C11 record families are not promoted into new public ontology by implementation convenience",
+    "deferred ActorComparatorReceipt, PositionedSubjectEmpiricalPossibilityField and V3EmpiricalPossibilityInput are out of I01 scope"
+  ],
+  "forbidden": [
+    "legacy ddm_build/ddm_build_copy runtime imports",
+    "storage/database/file-format selection",
+    "query evaluation",
+    "discovery execution",
+    "structural admission decision logic",
+    "empirical-coordinate to generated-position mapping",
+    "survey/population fact to actor state",
+    "source pooling/linkage/backfill inference",
+    "V553+ interface change",
+    "V3/V2/render behavior change",
+    "cache/materialization authority",
+    "deployment/cutover/source retirement"
+  ],
+  "tests_required": [
+    "deterministic canonical identity and replay",
+    "authority ID/version/hash exactness",
+    "typed-state noncollapse",
+    "source-universe noncollapse",
+    "object-family noncollapse",
+    "semantic order preserved and nonsemantic set order canonicalized",
+    "float/NaN or lossy numeric semantic identity rejected where contract forbids it",
+    "latest/default/fuzzy/nearest authority rejected",
+    "diagnostic material cannot masquerade as EmpiricalFact authority",
+    "carrier-internal record names cannot be substituted for public semantic object families",
+    "zero direct actor/V3/V2 effect"
+  ],
+  "success_token": "PRE553_I01_OBJECT_AUTHORITY_IMPLEMENTATION_COMPLETE__READY_FOR_HQ_ACCEPTANCE",
+  "conflict_token": "PRE553_I01_SEMANTIC_HARMONIZATION_REQUIRED"
+}
