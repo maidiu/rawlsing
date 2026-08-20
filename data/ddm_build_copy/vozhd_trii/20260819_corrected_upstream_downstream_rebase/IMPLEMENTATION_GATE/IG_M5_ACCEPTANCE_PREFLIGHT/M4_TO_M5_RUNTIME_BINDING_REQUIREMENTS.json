@@ -1,0 +1,142 @@
+{
+  "binding_requirements_id": "IG_M4_TO_M5_RUNTIME_BINDING_REQUIREMENTS",
+  "version": "1.0.0",
+  "purpose": "Minimum exact runtime facts future IG-M5 must consume from an accepted M4 runtime without predicting M4 API symbols.",
+  "frozen_semantic_authority": {
+    "m5_head": "54f163b38fb0589327ea7b50fd98b537d7d91831",
+    "m5_contract": "M5_V3_STRUCTURAL_PEER_PRIOR_SEAM@1.0.0",
+    "m5_contract_core_sha256": "54b9d262ec60ff8794f34d9caf68227275d272dc7d6b2254a9c84c996622d9f2",
+    "rsc_schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0",
+    "machine_signature": "M4_TO_M5_RSC_MACHINE_SIGNATURE@1.0.0",
+    "whole_machine_reclosure": "c4a3524f54af368a67ca50ccc85f5d5dca3d803b"
+  },
+  "api_binding_policy": {
+    "concrete_module_path": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "resolver_class_or_type": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "resolver_function_or_method": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "runtime_rsc_class_or_type": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "repository_adapter_type": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "persistence_adapter_type": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "index_type": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "snapshot_type": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "currentness_receipt_type": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "refresh_entry_point": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "exception_or_error_types": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+    "call_signature": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME"
+  },
+  "required_runtime_facts": {
+    "actual_rsc_instance": {
+      "required": true,
+      "may_be_fabricated_by_m5": false,
+      "semantic_schema": "SCR5578_RESOLVED_STRUCTURAL_CONTEXT@1.0.0"
+    },
+    "rsc_identity": ["context_id", "context_content_hash"],
+    "repository_binding": ["repository_bundle_id", "repository_bundle_content_hash"],
+    "query_binding": ["context_query_id", "context_query_hash"],
+    "resolver_policy_binding": ["resolver_policy_id", "resolver_policy_version", "resolver_policy_hash"],
+    "resolution_receipt_binding": ["resolution_receipt_id", "resolution_receipt_hash"],
+    "resolved_entry_binding": ["resolved_entry_set_digest"],
+    "negative_binding": ["preserved_negative_entry_set_digest"],
+    "deferred_unresolved_binding": ["deferred_unresolved_entry_set_digest"],
+    "selection_binding": ["selection_record_set_digest"],
+    "fidelity_binding": ["coverage_fidelity_profile_id", "coverage_fidelity_profile_hash"],
+    "refresh_currentness_binding": {
+      "semantic_minimum": ["refresh_metadata_id", "refresh_metadata_hash", "exact_currentness_disposition_or_receipt", "decision_effective_time_or_exact_time_basis"],
+      "concrete_runtime_fields": "UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME",
+      "law": "immutability/hash validity alone does not establish currentness"
+    },
+    "provenance_binding": ["provenance_root_digest"],
+    "producer_binding": ["producer_binding_digest"],
+    "permission_binding": ["permission_subset_proof_digest"],
+    "reference_closure_binding": ["reference_closure_digest"],
+    "transported_signature": ["M4_TO_M5_RSC_MACHINE_SIGNATURE_value"]
+  },
+  "machine_signature_material_order": [
+    "rsc_schema_id_version",
+    "rsc_context_id",
+    "rsc_context_content_hash",
+    "repository_bundle_id",
+    "repository_bundle_content_hash",
+    "context_query_id",
+    "context_query_hash",
+    "resolver_policy_id_version_hash",
+    "resolution_receipt_id",
+    "resolution_receipt_hash",
+    "resolved_entry_set_digest",
+    "preserved_negative_entry_set_digest",
+    "deferred_unresolved_entry_set_digest",
+    "selection_record_set_digest",
+    "coverage_fidelity_profile_id_hash",
+    "refresh_metadata_id_hash",
+    "provenance_root_digest",
+    "producer_binding_digest",
+    "permission_subset_proof_digest",
+    "reference_closure_digest"
+  ],
+  "required_resolved_entry_facts": [
+    "resolution_key",
+    "SelectionRecord_ref",
+    "canonical_producer_family",
+    "canonical_producer_object_id",
+    "canonical_producer_content_hash",
+    "producer_locator",
+    "resolver_allowed_uses",
+    "decision_state"
+  ],
+  "permission_law": {
+    "invariant": "resolver_allowed_uses subset V557_allowed_uses subset producer_allowed_uses",
+    "scope": "every selected root and every interpretation-critical dependency",
+    "repository_presence_grants_permission": false,
+    "index_hit_grants_permission": false,
+    "persistence_success_grants_permission": false,
+    "snapshot_presence_grants_permission": false,
+    "dependency_inherits_root_permission": false,
+    "machine_signature_grants_permission": false
+  },
+  "currentness_refresh_law": {
+    "currentness_owner": "M4/SCR5578 runtime authority as implemented under accepted M4 return",
+    "m5_may_invent_currentness": false,
+    "stale_current_consumption": "FAIL_CLOSED_ZERO_STRUCTURAL_PEER_EFFECT",
+    "refresh": "PROSPECTIVE_ONLY",
+    "historical_receipt_rewrite": false,
+    "hidden_latest_substitution": false,
+    "structural_refresh_implies_empirical_refresh": false,
+    "empirical_refresh_implies_structural_refresh": false
+  },
+  "determinism_requirements": {
+    "same_exact_inputs_authority_currentness": "same exact RSC identity/content/digests/signature",
+    "forbidden_ambient_inputs": ["database_row_order", "filesystem_order", "mutable_latest", "nearest_or_fuzzy_match", "network_repair", "LLM_or_embedding_judgment", "random_fallback", "default_interpolation", "undeclared_wall_clock"]
+  },
+  "failure_requirements": {
+    "missing_runtime_instance": "M5_RSC_RUNTIME_INSTANCE_MISSING",
+    "schema_mismatch": "M5_RSC_SCHEMA_MISMATCH",
+    "identity_or_content_hash_mismatch": "M5_RSC_IDENTITY_OR_CONTENT_HASH_MISMATCH",
+    "signature_mismatch": "M5_RSC_SIGNATURE_MISMATCH",
+    "producer_binding_mismatch": "M5_RSC_PRODUCER_BINDING_MISMATCH",
+    "permission_proof_invalid": "M5_RSC_PERMISSION_PROOF_INVALID",
+    "reference_closure_invalid": "M5_RSC_REFERENCE_CLOSURE_INVALID",
+    "forbidden_reference_class": "M5_RSC_FORBIDDEN_REFERENCE_CLASS_PRESENT",
+    "provenance_authority_violation": "M5_RSC_PROVENANCE_AUTHORITY_VIOLATION",
+    "stale_or_m4_level_missing_ambiguous_unresolved": "FAIL_CLOSED_ZERO_STRUCTURAL_PEER_EFFECT; exact concrete M4 runtime code UNBOUND_UNTIL_ACCEPTED_M4_RUNTIME"
+  },
+  "nonsemantic_infrastructure": [
+    "repository_membership",
+    "persistence_storage",
+    "indexes",
+    "locators",
+    "caches",
+    "snapshots"
+  ],
+  "noncollapse_and_nonassignment": {
+    "noncollapse": [
+      "ResolvedStructuralContext!=V3EmpiricalPossibilityInput",
+      "ResolvedStructuralContext!=ActorCausalState",
+      "V3EmpiricalPossibilityInput!=ActorCausalState"
+    ],
+    "forbidden_direct_actor_outputs": ["generated_structural_position", "memory", "belief", "knowledge", "relationship", "action", "response", "persona", "voice"],
+    "rsc_to_psepf_synthesis": false,
+    "psepf_to_generated_structural_position": false,
+    "provenance_to_composition": false
+  },
+  "future_binding_completion_rule": "Replace API placeholders only from an accepted M4 runtime return; do not change the frozen semantic facts or acceptance behavior while performing that binding."
+}
