@@ -1,0 +1,223 @@
+{
+  "contract_id": "PRE553_P02_EMPIRICAL_QUERY_CONTRACT",
+  "contract_version": "preflight-1.0.0",
+  "authority_class": "WAVE_01_PREFLIGHT_SPECIFICATION__NO_SEMANTIC_AUTHORITY",
+  "assignment_id": "PRE553-W01-P02-001",
+  "exact_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "governing_law": {
+    "pre553_campaign_charter_blob": "c2ea941d369063fcbe764c6b3c98220d22391f9e",
+    "pre553_campaign_dag_blob": "271542c0e2a3ff3b00f0ec54e6fba2073b50bea2",
+    "pre553_runtime_path_law_blob": "e0e98d9250b9c12529e573332330578c42e0d4be",
+    "pre553_acceptance_gates_blob": "772b6f787c33ced5e9730ae74281fb75b088a647",
+    "pre553_wave_01_launch_blob": "693e94d9db9d0061d8a17f26f99d2c11f58bb6ab",
+    "d07_result_blob": "eb53e47a72468b51b7f94b8ddf63d4cc4d7dd410",
+    "d08_result_blob": "01fc0369fc87d0d781c36ae6878515ba94bc3026",
+    "d12_result_blob": "e1b209e05945c6ea17f8dd73997da3d7bb2f40c0",
+    "d13_minimum_information_spec_blob": "68747d52d405f1616027e938fbf35d02ef42c818"
+  },
+  "semantic_domain": "POPULATION_EMPIRICAL_FACT_ONLY",
+  "explicit_noncollapse": [
+    "EMPIRICAL_PREDICATE != STRUCTURAL_INTERPRETATION",
+    "EMPIRICAL_FACT != STRUCTURAL_EMPIRICAL_ADMISSION",
+    "EMPIRICAL_RESPONDENT_COORDINATE != GENERATED_NINE_STRATUM_STRUCTURAL_POSITION",
+    "POPULATION_EMPIRICAL_FACT != GENERATED_ACTOR_FACT",
+    "POPULATION_EMPIRICAL_FACT != ACTOR_BELIEF_OR_PSYCHE",
+    "SAME_RESPONDENT_COTRAVEL != PSYCHOLOGICAL_OR_CAUSAL_RELATION"
+  ],
+  "primitive_objects": {
+    "EmpiricalPredicate": {
+      "role": "typed boolean predicate over respondent-bound empirical incidence",
+      "identity_required": [
+        "predicate_grammar_id",
+        "predicate_grammar_version",
+        "canonical_typed_ast",
+        "exact leaf semantic refs",
+        "leaf authority refs",
+        "source/universe scope binding",
+        "predicate replay authority root"
+      ],
+      "boolean_operators": ["AND", "OR", "NOT"],
+      "canonicalization": {
+        "AND_OR": "flatten same operator; canonicalize children; sort children by child semantic hash; exact duplicate children collapse idempotently",
+        "NOT": "exactly one child; double-negation simplification is permitted only as canonical boolean identity normalization",
+        "other_boolean_rewrites": "FORBIDDEN_BY_THIS_PREFLIGHT__NO_DISTRIBUTIVE_OR_HEURISTIC_REWRITE",
+        "XOR": "REPRESENT_AS_AND_OR_NOT_AST__NO_NEW_XOR_SEMANTIC_PRIMITIVE_REQUIRED",
+        "PARITY": "REPRESENT_AS_EXACT_FINITE_AND_OR_NOT_AST_OR_EXACT_K_WAY_TARGET_CONFIGURATION__NEVER_PRODUCT_OF_MARGINALS"
+      },
+      "leaf_types": {
+        "EMPIRICAL_POSITION_COORDINATE": {
+          "required": ["coordinate_semantic_ref", "value_or_value_set_ref", "comparison_operator_ref", "typed_state_policy_ref", "coordinate_authority_ref"],
+          "forbidden_substitution": "GENERATED_STRUCTURAL_POSITION"
+        },
+        "SURVEY_RESPONSE_EVENT": {
+          "required": ["question_semantic_ref", "component_or_event_selector_ref", "response_value_or_state_ref", "response_topology_authority_ref", "response_semantic_authority_ref"],
+          "same_respondent_binding": true
+        },
+        "DERIVED_BRANCH_COHORT": {
+          "required": ["branch_definition_id", "resolved_predicate_hash_or_exact_membership_ref", "parent_ancestry_ref", "branch_algorithm_authority_ref", "branch_membership_replay_ref", "branch_source_scope_ref"],
+          "branch_label_alone_sufficient": false
+        },
+        "ROUTING_APPLICABILITY_STATE": {
+          "required": ["question_semantic_ref", "routing_or_applicability_state_ref", "routing_authority_ref"]
+        },
+        "TYPED_RESPONSE_STATE": {
+          "required": ["question_semantic_ref", "typed_state_ref", "state_semantic_authority_ref"]
+        }
+      },
+      "forbidden_leaf_meanings": ["STRUCTURAL_INTERPRETATION", "GENERATED_ACTOR_POSITION", "ACTOR_BELIEF", "ACTOR_PERSONA", "ACTOR_DEVELOPMENTAL_STATE"]
+    },
+    "EmpiricalQuerySpec": {
+      "role": "exact governed request for one empirical target distribution under one condition, risk set, source scope and measure basis",
+      "identity_material_order": [
+        "query_contract_id@version",
+        "source_scope",
+        "condition_predicate_ref",
+        "risk_set_spec",
+        "target_spec",
+        "measure_spec",
+        "response_state_policy_bundle_ref",
+        "response_topology_authority_bundle_ref",
+        "branch_or_cohort_replay_refs_if_used",
+        "source_relation_or_composition_authority_ref_if_required",
+        "authority_snapshot_root",
+        "replay_protocol_ref"
+      ],
+      "identity_scheme": "urn:rawlsing:pre553:empirical-query:sha256:<sha256(canonical_json(identity_material))>",
+      "one_measure_basis_per_query": true,
+      "one_exact_source_scope_per_query": true,
+      "full_target_distribution_required": true,
+      "modal_cell_only_is_complete_fact": false,
+      "physical_cache_or_materialization_path_in_identity": false,
+      "wall_clock_or_execution_order_in_identity": false
+    }
+  },
+  "query_families": {
+    "UNARY_DISTRIBUTION": {
+      "condition": "TRUE or an exact governed predicate",
+      "target_arity": 1,
+      "example": "P(Q1 | C,R,S)"
+    },
+    "EMPIRICAL_COORDINATE_CONDITIONAL": {
+      "condition": "one EMPIRICAL_POSITION_COORDINATE leaf",
+      "target_arity": "1..k",
+      "example": "P(Q1,...,Qk | position=A,R,S)"
+    },
+    "ARBITRARY_COORDINATE_CONJUNCTION": {
+      "condition": "AND/OR/NOT composition over exact empirical-coordinate leaves",
+      "target_arity": "1..k",
+      "independent_marginal_approximation": false
+    },
+    "RESPONSE_POSITION_CONJUNCTION": {
+      "condition": "same-respondent SURVEY_RESPONSE_EVENT plus EMPIRICAL_POSITION_COORDINATE predicates",
+      "target_arity": "1..k",
+      "independent_marginal_approximation": false
+    },
+    "RESPONSE_RESPONSE_CONDITIONAL": {
+      "condition": "same-respondent response event X=x",
+      "target_arity": "1..k",
+      "example": "P(Y | X=x,C,R,S)"
+    },
+    "RESPONSE_RESPONSE_JOINT": {
+      "condition": "optional exact governed C",
+      "target_arity": "2..k",
+      "example": "P(Q1,...,Qk | C,R,S)",
+      "same_respondent_joint_incidence_required": true
+    },
+    "BRANCH_COHORT_CONDITIONAL": {
+      "condition": "DERIVED_BRANCH_COHORT predicate optionally intersected with other exact predicates",
+      "branch_replay_provenance_required": true,
+      "branch_label_only": "INVALID"
+    },
+    "K_WAY_CONFIGURATION": {
+      "condition": "optional exact governed C",
+      "target_arity": "1..k",
+      "full_joint_topology_required": true,
+      "unary_or_pairwise_marginals_sufficient_for_general_k_way": false
+    }
+  },
+  "same_respondent_law": {
+    "rule": "All condition leaves and target response components declared same-respondent are evaluated against one scoped respondent identity inside one exact empirical universe unless a separately governed exact cross-universe linkage/composition authority explicitly supplies a different lawful relation.",
+    "forbidden": [
+      "multiply independent marginals to synthesize a conjunction",
+      "infer respondent cotravel from equal aggregate percentages",
+      "infer overlap from matching respondent identifier strings across universes",
+      "replace a missing joint with pairwise or unary approximations",
+      "nearest/fuzzy cohort substitution"
+    ]
+  },
+  "source_scope_law": {
+    "modes": {
+      "SINGLE_UNIVERSE": "exact one M01 respondent-universe identity",
+      "SOURCE_INDEXED_MULTI_UNIVERSE": "exact finite set of distinct universes evaluated separately; outputs remain source-indexed",
+      "AUTHORIZED_COMPOSITE": "requires exact separately owned linkage/pooling/composition/nonduplication/estimand/weight authority sufficient for the requested composite measure"
+    },
+    "default_for_multiple_universes": "SOURCE_INDEXED_MULTI_UNIVERSE",
+    "same_label_or_canonical_alias_implies_pooling": false,
+    "harmonization_implies_sample_equivalence": false,
+    "missing_composition_authority": "FAIL_CLOSED_TYPED_NONPOSITIVE"
+  },
+  "evaluation_semantics": {
+    "respondent_domain": "exact respondent members of source scope after source relation law",
+    "risk_membership": "R(r) is evaluated independently of C(r)",
+    "condition_membership": "C(r) is evaluated at respondent/event grain under exact predicate semantics",
+    "target_evaluation": "T(r) yields one exact scalar or topology-aware k-way target configuration",
+    "raw_numerator": "count of scoped respondents satisfying R and C and the exact target cell",
+    "raw_denominator": "count of scoped respondents satisfying R and C",
+    "weighted_numerator": "governed measure mass over the same exact numerator member set",
+    "weighted_denominator": "governed measure mass over the same exact denominator member set",
+    "probability_or_share": "derived from numerator/denominator only when denominator is positive and the selected measure is valid",
+    "complete_fact": "full governed target cell topology plus support/measure/typed-state/provenance; not a selected modal cell"
+  },
+  "reconstructibility_law": {
+    "materialize_all_required": false,
+    "authorized_query_reconstructibility_required": true,
+    "fixed_complete_contingency_can_answer_same_fixed_query": true,
+    "fixed_contingency_can_answer_unmaterialized_new_condition": false,
+    "respondent_event_coordinate_incidence_or_exact_information_equivalent_required_for_future_frontier": true,
+    "cache_miss_changes_semantics": false
+  },
+  "hostile_representability": {
+    "XOR": {
+      "required": "represent via exact AND/OR/NOT predicate over same-respondent incidence or full joint target",
+      "forbidden": "derive from unary association ranking or marginal products"
+    },
+    "K_WAY_PARITY": {
+      "required": "retain exact k-way respondent incidence/configuration topology",
+      "forbidden": "infer from all unary or pairwise marginals"
+    },
+    "SIMPSON_REVERSAL": {
+      "required": "represent pooled and exact stratifier-conditioned queries as distinct query identities with their own denominators and source/measure basis",
+      "comparison_role": "derived diagnostic over exact facts; reversal itself is not a replacement primary fact",
+      "forbidden": "erase stratifier or denominator identity"
+    },
+    "SAME_MARGINALS_DIFFERENT_JOINT": {
+      "required": "distinct EmpiricalFact content because full joint cells differ",
+      "forbidden": "fact equality from marginal equality"
+    }
+  },
+  "diagnostic_boundary": {
+    "primary_fact": "complete E1/E2-style exact empirical distribution/joint incidence fact",
+    "derived_only": ["MI", "NMI", "CRAMERS_V", "ENTROPY_REDUCTION", "LIFT", "TREE_SCORE", "CLOUD_SCORE", "ASSOCIATION_STRENGTH"],
+    "diagnostic_may_define_query_identity": false,
+    "diagnostic_may_create_structural_or_actor_truth": false,
+    "diagnostic_receipt_requirement": "must dereference exact source EmpiricalFact IDs and metric formula/version/measure authority"
+  },
+  "failure_precedence": [
+    "INTEGRITY_FAILURE",
+    "DENIED",
+    "NONCOMPARABLE",
+    "MISSING_REQUIRED_AUTHORITY",
+    "UNKNOWN_OR_CONFLICTING_AUTHORITY",
+    "UNRESOLVED_SOURCE_RELATION",
+    "UNSUPPORTED_RESPONSE_TOPOLOGY",
+    "NOT_APPLICABLE",
+    "ZERO_OVERLAP",
+    "ZERO_SUPPORT",
+    "VALID_EMPTY",
+    "ASSERTABLE"
+  ],
+  "forbidden_repairs": ["LATEST", "DEFAULT", "FUZZY", "NEAREST", "LABEL_MATCH", "MARGINAL_PRODUCT", "UNRECORDED_IMPUTATION", "UNAUTHORIZED_POOLING"],
+  "architecture_selected": false,
+  "runtime_implementation_authorized": false,
+  "downstream_interface_modified": false
+}
