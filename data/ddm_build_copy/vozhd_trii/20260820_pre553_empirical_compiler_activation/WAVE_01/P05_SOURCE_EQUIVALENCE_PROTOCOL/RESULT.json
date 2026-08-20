@@ -1,0 +1,82 @@
+{
+  "assignment_id": "PRE553-W01-P05-001",
+  "agent_id": "PRE553_P05_SOURCE_EQUIVALENCE_PROTOCOL",
+  "worker_class": "INSPECTORATE",
+  "branch": "agent/vozhd-trii-pre553-w05-source-equivalence-protocol",
+  "exact_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "semantic_authority": false,
+  "runtime_writes_allowed": false,
+  "disposition": "SOURCE_TO_C11_EQUIVALENCE_PROTOCOL_FROZEN__POPULATED_PER_SOURCE_EXECUTION_REQUIRED__NO_SCHEMA_COUNT_OR_AGGREGATE_SHORTCUT",
+  "return_token": "PRE553_P05_SOURCE_EQUIVALENCE_PROTOCOL_COMPLETE",
+  "certification_states": [
+    "CERTIFIED",
+    "FAILED",
+    "BLOCKED"
+  ],
+  "certification_scope": "PER_EXACT_SOURCE_RELEASE_UNIVERSE",
+  "certified_requires": {
+    "d13b_p01_p20": "ALL_APPLICABLE_PASS",
+    "d13_m01_m18": "ALL_REQUIRED_INFORMATION_PRESENT_OR_EXACTLY_DEREFERENCEABLE",
+    "d12_d13_t01_t18": "ALL_FRONTIER_REQUIRED_REPLAY_TESTS_PASS",
+    "mandatory_fail_count": 0,
+    "mandatory_blocked_count": 0,
+    "silent_default_count": 0,
+    "silent_coercion_count": 0,
+    "guessed_interpretation_count": 0,
+    "deterministic_replay": true
+  },
+  "failed_when": [
+    "SEMANTIC_MISMATCH_OBSERVED",
+    "INFORMATION_LOSS_OBSERVED",
+    "AUTHORITY_IDENTITY_MISMATCH",
+    "TOPOLOGY_OR_ROUTING_MISMATCH",
+    "RISK_SET_MEMBER_MISMATCH",
+    "WEIGHT_BASIS_OR_VALUE_MISMATCH",
+    "IDENTITY_OR_COORDINATE_COLLAPSE",
+    "ILLEGAL_DEFAULT_OR_COERCION",
+    "NONDETERMINISTIC_REPLAY",
+    "REPLAY_RESULT_MISMATCH"
+  ],
+  "blocked_when": [
+    "SOURCE_ARTIFACT_UNAVAILABLE",
+    "SOURCE_NATIVE_SEMANTIC_AUTHORITY_UNAVAILABLE",
+    "TOPOLOGY_AUTHORITY_UNAVAILABLE",
+    "ROUTING_OR_RISK_SET_AUTHORITY_UNAVAILABLE",
+    "WEIGHT_BASIS_UNAVAILABLE",
+    "IMMUTABLE_SOURCE_IDENTITY_UNRESOLVED",
+    "POPULATED_RELATION_UNAVAILABLE",
+    "REQUIRED_EXECUTION_PREREQUISITE_UNAVAILABLE"
+  ],
+  "insufficient_certification_evidence": [
+    "SCHEMA_PARITY",
+    "TABLE_OR_COLUMN_PRESENCE",
+    "ROW_COUNT_PARITY",
+    "RESPONDENT_COUNT_PARITY_WITHOUT_ID_SET_EQUALITY",
+    "AGGREGATE_PARITY",
+    "SELECTED_QUERY_PARITY",
+    "SERIALIZED_FILE_HASH_PARITY",
+    "SCHEMA_HASH_PARITY",
+    "CANONICAL_LABEL_MATCH",
+    "FIXED_CURRENT_INDICATOR_COVERAGE"
+  ],
+  "source_retention": {
+    "retain_source_snapshots_for_certified": true,
+    "retain_source_snapshots_for_failed": true,
+    "retain_source_snapshots_for_blocked": true,
+    "certification_authorizes_retirement": false,
+    "retirement_requires_separate_governance": true
+  },
+  "local_runner_role": "EXECUTOR_ONLY__NO_SEMANTIC_AUTHORITY",
+  "local_runner_may_repair_contracts": false,
+  "local_runner_may_invent_mapping": false,
+  "local_runner_may_pool_sources": false,
+  "local_runner_may_use_latest_binding": false,
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "SOURCE_TO_C11_EQUIVALENCE_PROTOCOL.md",
+    "SOURCE_TO_C11_EQUIVALENCE_PROTOCOL.json",
+    "LOCAL_RUNNER_CONTRACT.md",
+    "REQUIRED_POPULATED_EVIDENCE.json"
+  ]
+}
