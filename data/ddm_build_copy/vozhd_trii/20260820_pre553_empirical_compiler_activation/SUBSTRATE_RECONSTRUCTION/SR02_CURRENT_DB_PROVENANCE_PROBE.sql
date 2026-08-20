@@ -29,6 +29,8 @@ ORDER BY w.name;
 \echo '=== SR02 P02 RESPONDENT WRITE EPOCHS BY SOURCE/WAVE ==='
 SELECT source, wave, dataset_id, source_file,
        COUNT(*) AS respondents,
+       MIN(id) AS min_respondent_id,
+       MAX(id) AS max_respondent_id,
        MIN(upload_date) AS min_upload_date,
        MAX(upload_date) AS max_upload_date,
        COUNT(DISTINCT upload_date) AS distinct_upload_timestamps
@@ -36,29 +38,29 @@ FROM survey_microdata_respondents
 GROUP BY source,wave,dataset_id,source_file
 ORDER BY source,wave,dataset_id,source_file;
 
-\echo '=== SR02 P03 RESPONSE WRITE EPOCHS BY SOURCE/WAVE ==='
-SELECT r.source, r.wave, resp.dataset_id, resp.source_file,
-       COUNT(*) AS responses,
-       COUNT(DISTINCT resp.respondent_id) AS respondents_with_response,
-       COUNT(DISTINCT resp.var_code) AS variables,
-       MIN(resp.upload_date) AS min_upload_date,
-       MAX(resp.upload_date) AS max_upload_date,
-       COUNT(DISTINCT resp.upload_date) AS distinct_upload_timestamps
-FROM survey_microdata_responses resp
-JOIN survey_microdata_respondents r ON r.id=resp.respondent_id
-GROUP BY r.source,r.wave,resp.dataset_id,resp.source_file
-ORDER BY r.source,r.wave,resp.dataset_id,resp.source_file;
+\echo '=== SR02 P03 RESPONSE WRITE EPOCHS BY DATASET/SOURCE FILE — LOW-TEMP SHAPE ==='
+-- Deliberately avoids joining/grouping the full response table against respondents.
+-- dataset_id/source_file are already source-wave provenance fields on the response rows.
+-- This preserves the SR02 provenance question while keeping aggregate cardinality tiny.
+SELECT dataset_id, source_file,
+       COUNT(*) AS response_rows,
+       MIN(respondent_id) AS min_respondent_id,
+       MAX(respondent_id) AS max_respondent_id,
+       MIN(upload_date) AS min_upload_date,
+       MAX(upload_date) AS max_upload_date
+FROM survey_microdata_responses
+GROUP BY dataset_id,source_file
+ORDER BY dataset_id,source_file;
 
-\echo '=== SR02 P04 RESPONDENT/RESPONSE ID RANGE BY SOURCE/WAVE ==='
-SELECT r.source,r.wave,
+\echo '=== SR02 P04 RESPONDENT ID RANGE BY SOURCE/WAVE — RESPONDENT TABLE ONLY ==='
+-- Response-row counts are supplied by P03. Do not rejoin 48M response rows here.
+SELECT source,wave,dataset_id,source_file,
        COUNT(*) AS respondents,
-       MIN(r.id) AS min_respondent_id,
-       MAX(r.id) AS max_respondent_id,
-       COUNT(resp.*) AS response_rows
-FROM survey_microdata_respondents r
-LEFT JOIN survey_microdata_responses resp ON resp.respondent_id=r.id
-GROUP BY r.source,r.wave
-ORDER BY r.source,r.wave;
+       MIN(id) AS min_respondent_id,
+       MAX(id) AS max_respondent_id
+FROM survey_microdata_respondents
+GROUP BY source,wave,dataset_id,source_file
+ORDER BY source,wave,dataset_id,source_file;
 
 \echo '=== SR02 P05 WEIGHT WRITE EPOCHS ==='
 SELECT source,wave,weight_name,weight_type,source_var,is_primary,
