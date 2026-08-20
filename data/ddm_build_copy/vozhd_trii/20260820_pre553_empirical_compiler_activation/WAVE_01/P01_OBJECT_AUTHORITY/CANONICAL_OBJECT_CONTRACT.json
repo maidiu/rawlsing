@@ -1,0 +1,237 @@
+{
+  "schema": "PRE553_CANONICAL_OBJECT_CONTRACT@1.0.0",
+  "assignment_id": "PRE553-W01-P01-001",
+  "agent_id": "PRE553_P01_OBJECT_AUTHORITY",
+  "authority": "NON_DISPOSITIVE_WAVE_01_PREFLIGHT_SYNTHESIS_ONLY",
+  "exact_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "mission_branch": "agent/vozhd-trii-pre553-w01-object-authority-preflight",
+  "first_terminal_milestone": "POPULATED_SOURCE_TO_NONTRIVIAL_V558_STRUCTURAL_PRIOR_REPOSITORY",
+  "contract_scope": "Minimum canonical empirical object and identity model required before the first populated structural-prior reservoir milestone. This freezes inherited observable requirements for HQ synthesis and later implementation; it creates no runtime and no new semantic authority.",
+  "binding_authorities": {
+    "campaign_charter_blob": "c2ea941d369063fcbe764c6b3c98220d22391f9e",
+    "campaign_dag_blob": "271542c0e2a3ff3b00f0ec54e6fba2073b50bea2",
+    "runtime_path_law_blob": "e0e98d9250b9c12529e573332330578c42e0d4be",
+    "acceptance_gates_blob": "772b6f787c33ced5e9730ae74281fb75b088a647",
+    "D08_parent_blob": "ac47f19fe327c6b05f0a563c54f316b2d76ea978",
+    "D08_result_blob": "01fc0369fc87d0d781c36ae6878515ba94bc3026",
+    "D12_parent_blob": "25709f8e83770ecd1b609b76dcdd11f60ddea438",
+    "D13_parent_blob": "164245770ff735fea88d60b23d5520540241db9c",
+    "D13_minimum_information_spec_blob": "68747d52d405f1616027e938fbf35d02ef42c818",
+    "D15_parent_blob": "bbbd86f6ac65ef23bfe7df8f53e0c8ba4ab0fede",
+    "D15_canonical_object_model_blob": "876cdbb861b48578cd43cacaf34ec00b9dba25a1",
+    "accepted_M1_runtime": "e51730e461a15b0ad20f02f2efb4bccd751c2c81:rawlsing_next/m1_temporal_v554_admission_dedup.py"
+  },
+  "canonical_identity_law": {
+    "semantic_hash_algorithm": "SHA-256",
+    "semantic_hash_rule": "Lowercase sha256 over the canonical semantic projection containing every proof-relevant field, exact dependency/ref identity, typed state, exact authority ID/version/hash, source-universe identity and replay-critical field.",
+    "physical_serialization_hash_is_semantic_identity_by_itself": false,
+    "object_id_rule": "Deterministic content-addressed identity derived from family/schema plus canonical semantic projection hash.",
+    "canonical_order_rule": "Map keys and non-semantic sets must canonicalize deterministically; semantically ordered sequences retain their exact order.",
+    "lossy_numeric_identity_forbidden": true,
+    "immutable_history": true,
+    "mutable_latest_default_semver_fuzzy_nearest_resolution_forbidden": true,
+    "historical_object_reinterpreted_by_later_authority_version": false,
+    "replay_requires_exact_historical_authority_snapshot": true
+  },
+  "noncollapse_laws": [
+    "EmpiricalUniverse != SourceUniverseRelation",
+    "RespondentEvent != EmpiricalFact",
+    "EmpiricalCoordinateFact != generated actor demographic or biographical fact",
+    "EmpiricalCoordinateFact != generated nine-stratum structural position",
+    "EmpiricalFact != DiscoveryResultReceipt",
+    "EmpiricalFact != StructuralEmpiricalAdmission",
+    "DiscoveryResultReceipt != StructuralEmpiricalAdmission",
+    "population empirical fact != structural interpretation",
+    "population empirical fact != generated actor fact",
+    "StructuralEmpiricalAdmission != actor belief or psyche or persona or voice",
+    "diagnostic association metric != primary empirical fact",
+    "authority permission != workload command",
+    "provenance reachability != semantic authorization"
+  ],
+  "d13_information_frontier": {
+    "M01": "respondent-universe identity",
+    "M02": "respondent identity within universe namespace",
+    "M03": "native and canonical question/variable identity",
+    "M04": "response-event identity and raw/canonical value",
+    "M05": "response topology, multiplicity, order and rank",
+    "M06": "typed response/absence state",
+    "M07": "routing/applicability/risk-set incidence",
+    "M08": "empirical-coordinate incidence",
+    "M09": "weight/measure facts and design/estimand authority",
+    "M10": "source-native semantic and transformation authority",
+    "M11": "cross-universe relation and double-counting provenance",
+    "M12": "empirical predicate grammar and replay identity",
+    "M13": "actor-fact to empirical-conditioner comparator authority",
+    "M14": "branch/cohort and autonomous-discovery replay provenance",
+    "M15": "structural-admission provenance",
+    "M16": "support and uncertainty-method basis",
+    "M17": "immutable authority snapshot/provenance closure",
+    "M18": "deterministic replay and semantic-integrity identity"
+  },
+  "common_durable_object_fields": [
+    "schema_id",
+    "schema_version",
+    "object_id",
+    "content_hash",
+    "typed_state",
+    "authority_snapshot_refs",
+    "dependency_refs",
+    "producer_replay_locator_or_reference_root"
+  ],
+  "object_families": [
+    {
+      "family": "EmpiricalUniverse@1.0.0",
+      "role": "Exact respondent/sample-space identity and default boundary against false joins or composition.",
+      "grain": "one governed respondent universe",
+      "required_semantic_fields": ["raw_source_identity", "source_family", "study_product_release", "instrument_release", "country_geography", "sampling_geography", "raw_wave", "canonical_wave_if_governed", "field_or_reference_time", "target_population_and_sample_frame", "sampling_design_regime", "respondent_namespace", "source_artifact_import_lineage", "harmonization_authority_ref", "source_relation_refs"],
+      "d13_classes": ["M01", "M10", "M11", "M17", "M18"],
+      "typed_state_family": "SOURCE_UNIVERSE_STATE",
+      "laws": ["Canonical aliases never replace raw/source-native identity.", "Distinct universes remain distinct absent an exact separately governed relation."]
+    },
+    {
+      "family": "RespondentEvent@1.0.0",
+      "role": "Lossless respondent-bound response event and primary empirical incidence, not an aggregate fact.",
+      "grain": "one response event/component for one scoped respondent in one universe",
+      "required_semantic_fields": ["empirical_universe_ref", "scoped_respondent_ref", "native_question_ref", "canonical_question_ref_if_authorized", "component_or_subitem_ref", "event_group_id", "response_event_id_or_deterministic_index", "raw_response_value", "canonical_response_value_if_authorized", "value_transform_authority_ref", "response_topology_ref", "multiplicity_order_rank_fields", "response_state"],
+      "d13_classes": ["M02", "M03", "M04", "M05", "M06", "M10", "M17", "M18"],
+      "typed_state_family": "RESPONSE_EVENT_STATE",
+      "laws": ["Scalar collapse is lawful only when exact topology authority proves scalar singularity."]
+    },
+    {
+      "family": "EmpiricalCoordinateFact@1.0.0",
+      "role": "Respondent-bound empirical conditioner coordinate; never generated structural position.",
+      "grain": "one coordinate value/state for one scoped respondent/effective time",
+      "required_semantic_fields": ["empirical_universe_ref", "scoped_respondent_ref", "native_coordinate_ref", "canonical_coordinate_ref_if_authorized", "raw_coordinate_value", "canonical_coordinate_value_if_authorized", "unit_category_taxonomy_ref", "effective_or_reference_time", "coordinate_state", "normalization_crosswalk_authority_ref", "source_semantic_authority_ref"],
+      "d13_classes": ["M02", "M08", "M10", "M17", "M18"],
+      "typed_state_family": "EMPIRICAL_COORDINATE_STATE",
+      "laws": ["Empirical coordinate identity is not generated actor position, nine-stratum structural position, actor belief, or psyche."]
+    },
+    {
+      "family": "RoutingEligibilityFact@1.0.0",
+      "role": "Exact respondent-question applicability/routing/risk-set incidence or exact replayable rule result.",
+      "grain": "one respondent x target/risk-set eligibility state",
+      "required_semantic_fields": ["empirical_universe_ref", "scoped_respondent_ref", "question_or_target_ref", "risk_set_ref", "routing_rule_ref", "applicability_state", "routing_state", "parent_predicate_refs", "member_set_replay_ref"],
+      "d13_classes": ["M07", "M10", "M12", "M17", "M18"],
+      "typed_state_family": "ROUTING_ELIGIBILITY_STATE",
+      "laws": ["Equal denominator counts with different member sets are not equivalent."]
+    },
+    {
+      "family": "WeightMeasureFact@1.0.0",
+      "role": "Exact respondent-level measure/weight fact plus design and estimand authority.",
+      "grain": "one respondent x weight basis/effective scope",
+      "required_semantic_fields": ["empirical_universe_ref", "scoped_respondent_ref", "weight_basis_id", "exact_weight_value_representation", "weight_state", "weight_source_ref", "design_authority_ref", "estimand_authority_ref", "normalization_or_recalibration_rule_ref", "effective_scope_ref"],
+      "d13_classes": ["M09", "M16", "M17", "M18"],
+      "typed_state_family": "WEIGHT_MEASURE_STATE",
+      "laws": ["No generic 1.0 substitution for missing or invalid weights.", "Raw measure remains separately reconstructible."]
+    },
+    {
+      "family": "AuthoritySnapshot@1.0.0",
+      "role": "Immutable/content-addressed authority envelope used by all semantic objects.",
+      "grain": "one exact authority version and scope",
+      "required_semantic_fields": ["authority_id", "authority_version", "authority_content_hash", "authority_kind", "decision_state", "governed_operations", "governed_object_families", "scope_envelope", "effective_time_or_interval", "parent_authority_refs", "negative_limit_refs", "supersession_refs", "interpretation_semantics_fingerprint", "replay_protocol_ref"],
+      "d13_classes": ["M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18"],
+      "typed_state_family": "AUTHORITY_STATE",
+      "laws": ["Authority ID/version/hash are inseparable.", "No latest/default/semver/fuzzy authority resolution."]
+    },
+    {
+      "family": "SourceUniverseRelation@1.0.0",
+      "role": "Exact relation assertion among source universes; relation kinds remain separately governed.",
+      "grain": "one relation assertion over exact universe refs",
+      "required_semantic_fields": ["relation_id", "relation_kind", "source_universe_refs", "relation_authority_ref", "effective_scope", "overlap_or_nonduplication_evidence_refs", "composition_estimand_refs", "deduplication_rule_ref_if_any", "negative_limit_refs"],
+      "d13_classes": ["M01", "M11", "M17", "M18"],
+      "typed_state_family": "SOURCE_UNIVERSE_RELATION_STATE",
+      "laws": ["Harmonization, semantic equivalence, respondent linkage, pooling, backfill, overlap treatment and source retirement are distinct authority questions.", "No relation is inferred from shared labels, provenance, colocation or canonical aliases."]
+    },
+    {
+      "family": "EmpiricalPredicate@1.0.0",
+      "role": "Canonical typed predicate AST for empirical conditioning, risk-set and target selection only.",
+      "grain": "one content-addressed predicate AST",
+      "required_semantic_fields": ["predicate_ast", "predicate_hash", "grammar_authority_ref", "coordinate_question_value_refs", "risk_set_refs", "scope_refs", "same_respondent_binding_semantics", "operator_semantics_refs"],
+      "d13_classes": ["M12", "M17", "M18"],
+      "typed_state_family": "PREDICATE_STATE",
+      "laws": ["AND/OR/NOT may combine lawful typed empirical predicates.", "Structural interpretation, generated position, actor belief and developmental state are excluded without a separate future owner authority."]
+    },
+    {
+      "family": "EmpiricalQuerySpec@1.0.0",
+      "role": "Exact content-addressed empirical query identity.",
+      "grain": "one governed query specification",
+      "required_semantic_fields": ["target_refs", "target_arity_and_topology", "condition_predicate_ref", "risk_set_ref", "empirical_universe_refs", "scope_refs", "measure_basis_ref", "requested_output_grain", "query_authority_refs"],
+      "d13_classes": ["M12", "M16", "M17", "M18"],
+      "typed_state_family": "QUERY_STATE",
+      "laws": ["Target arity may be 1..k.", "Independent or pairwise marginals cannot substitute for required k-way incidence."]
+    },
+    {
+      "family": "EmpiricalFact@1.0.0",
+      "role": "Exact population empirical result under one exact query/risk-set/source/measure identity.",
+      "grain": "one EmpiricalQuerySpec result per governed universe/scope/measure",
+      "variants": ["DISTRIBUTION", "CONDITIONAL", "JOINT", "TEMPORAL_COMPONENT", "SOURCE_COMPARISON"],
+      "required_semantic_fields": ["empirical_query_spec_ref", "empirical_universe_refs", "target_topology", "condition_predicate_ref", "risk_set_ref", "raw_numerator_support", "raw_denominator_support", "weighted_numerator_support_if_authorized", "weighted_denominator_support_if_authorized", "measure_basis_ref", "response_state_semantics_ref", "uncertainty_method_or_typed_state", "source_empirical_provenance_refs", "replay_ref"],
+      "d13_classes": ["M01", "M03", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12", "M14", "M16", "M17", "M18"],
+      "typed_state_family": "EMPIRICAL_FACT_STATE",
+      "laws": ["Predicate, risk set, source universe, topology and measure are part of fact identity; numerical equality does not collapse identities.", "Diagnostic association scores are derived views, not primary EmpiricalFact authority by themselves.", "EmpiricalFact has no structural meaning unless a separate StructuralEmpiricalAdmission exists."]
+    },
+    {
+      "family": "DiscoveryAuthority@1.0.0",
+      "role": "Bounded candidate/search/validation/coverage authority for autonomous discovery.",
+      "grain": "one discovery family/run authority scope",
+      "required_semantic_fields": ["candidate_grammar_ref", "candidate_universe_definition", "source_universe_scope", "risk_set_scope", "topology_scope", "measure_scope", "support_rules", "validation_rules", "coverage_claim", "pruning_contract", "algorithm_identity_if_semantically_required", "tie_order_rules", "rng_policy_if_any"],
+      "d13_classes": ["M12", "M14", "M16", "M17", "M18"],
+      "typed_state_family": "DISCOVERY_AUTHORITY_STATE",
+      "laws": ["Authority chooses the lawful frontier; data may choose winners; search may not invent semantics."]
+    },
+    {
+      "family": "DiscoveryResultReceipt@1.0.0",
+      "role": "Durable receipt for a data-selected relationship, cohort or result inside a DiscoveryAuthority.",
+      "grain": "one discovered result/branch under one discovery authority",
+      "required_semantic_fields": ["discovery_authority_ref", "candidate_identity", "winning_predicate_ref", "empirical_fact_refs", "validation_fact_refs", "coverage_state", "support_state", "parent_branch_or_ancestry_refs", "membership_replay_ref", "evaluated_pruned_unevaluated_frontier_refs_where_required", "replay_ref"],
+      "d13_classes": ["M12", "M14", "M16", "M17", "M18"],
+      "typed_state_family": "DISCOVERY_RESULT_STATE",
+      "laws": ["Discovery result is evidence/replay identity, not structural truth, actor psyche/profile or admission authority.", "Unevaluated frontier is never negative evidence."]
+    },
+    {
+      "family": "StructuralEmpiricalAdmission@1.0.0",
+      "role": "Governed transformation receipt proving an exact EmpiricalFact may bear a specific structural meaning/use.",
+      "grain": "one empirical fact/query x structural interpretation/use target",
+      "required_semantic_fields": ["structural_empirical_admission_id", "structural_empirical_admission_content_hash", "admission_authority_id", "admission_authority_version", "admission_authority_hash", "admission_decision_state", "empirical_fact_ref", "empirical_query_spec_ref", "focal_structural_proposition_ref", "structural_semantic_identity_refs", "native_scope_identity_refs", "target_use_permission_refs", "effective_time_or_interval_refs_required_by_target_use", "source_universe_refs", "estimand_refs", "measure_and_weight_authority_refs", "applicable_negative_denial_noncomparability_refs", "interpretation_critical_authority_refs", "structural_transformation_rule_ref", "target_structural_producer_or_use_refs", "source_empirical_provenance_refs", "discovery_result_receipt_refs_if_applicable", "producer_replay_locator_or_reference_root", "originating_admission_lineage_fingerprint"],
+      "d13_classes": ["M15", "M17", "M18"],
+      "typed_state_family": "STRUCTURAL_ADMISSION_STATE",
+      "laws": ["The admission MUST be able to populate every frozen M1 direct admission consumer slot.", "DiscoveryResultReceipt may be referenced as evidence but cannot grant structural meaning.", "Admission does not rewrite the underlying EmpiricalFact and does not create actor state."]
+    },
+    {
+      "family": "ReplayReceipt@1.0.0",
+      "role": "Cross-cutting deterministic binding for historical semantic/replay identity.",
+      "grain": "one durable production/query/discovery/admission replay event",
+      "required_semantic_fields": ["producer_family", "produced_object_ref_or_typed_failure", "input_semantic_refs", "authority_snapshot_refs", "physical_substrate_content_refs", "canonical_semantic_projection_hash", "producer_or_algorithm_version_refs_where_required", "deterministic_tie_order_rule_refs", "rng_state_refs_only_where_lawful", "replay_protocol_version"],
+      "d13_classes": ["M17", "M18"],
+      "typed_state_family": "REPLAY_STATE",
+      "laws": ["Same exact semantic inputs, authority and semantically relevant algorithm state reproduce the same object identity or same typed failure.", "No hidden wall-clock/latest/order reconstruction."]
+    }
+  ],
+  "frozen_M1_direct_consumer": {
+    "contract": "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "required_direct_slots": ["structural_empirical_admission_id", "structural_empirical_admission_content_hash", "admission_authority_id", "admission_authority_version", "admission_authority_hash", "admission_decision_state", "focal_structural_proposition_ref", "structural_semantic_identity_refs", "native_scope_identity_refs", "target_use_permission_refs", "effective_time_or_interval_refs_required_by_target_use", "source_universe_refs", "estimand_refs", "measure_and_weight_authority_refs", "applicable_negative_denial_noncomparability_refs", "interpretation_critical_authority_refs", "producer_replay_locator_or_reference_root"],
+    "equivalence_components_that_pre553_must_make_exactly_derivable": ["focal_structural_proposition_ref", "target_use", "rule_relevant_structural_semantic_identity_fingerprint", "native_scope_identity_fingerprint", "rule_relevant_effective_time_semantics_fingerprint", "originating_structural_empirical_admission_lineage_fingerprint", "source_universe_fingerprint", "estimand_fingerprint", "measure_and_weight_authority_fingerprint", "rule_relevant_source_relation_comparability_authority_fingerprint", "interpretation_critical_semantic_authority_fingerprint"],
+    "temporal_jurisdiction_law": "Pre553 supplies exact native/effective-time evidence and references only. Whether target use is complete for direct V554 or requires V553 temporal meaning remains owned by frozen M1/V553 authority.",
+    "pre553_steals_v553_temporal_jurisdiction": false
+  },
+  "deferred_from_first_reservoir_critical_path": {
+    "ActorComparatorReceipt": "DEFERRED_AFTER_FIRST_RESERVOIR_MILESTONE",
+    "PositionedSubjectEmpiricalPossibilityField": "DEFERRED_AFTER_FIRST_RESERVOIR_MILESTONE",
+    "V3EmpiricalPossibilityInput": "DEFERRED_AFTER_REVERSE_FIELD_ACCEPTED",
+    "V3_or_V2_behavior_design": "OUT_OF_SCOPE_FOR_P01"
+  },
+  "forbidden_shortcuts": [
+    "missing row -> typed absence",
+    "canonical alias -> source equivalence",
+    "harmonization -> respondent linkage",
+    "harmonization -> pooling or backfill",
+    "association score -> primary empirical fact truth",
+    "EmpiricalFact -> structural meaning without StructuralEmpiricalAdmission",
+    "DiscoveryResultReceipt -> structural meaning without StructuralEmpiricalAdmission",
+    "empirical coordinate -> generated structural position",
+    "independent marginals -> joint incidence",
+    "cache or materialization -> authority",
+    "mutable latest/default/nearest/fuzzy authority repair"
+  ]
+}
