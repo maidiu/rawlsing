@@ -1,0 +1,106 @@
+{
+  "projection_contract_id": "PRE553_P06_V553_M1_INGRESS@1.0.0",
+  "status": "PREFLIGHT_EXACT_BINDING__HQ_ACCEPTANCE_REQUIRED",
+  "source_object": "StructuralEmpiricalAdmission",
+  "v553_ingress": {
+    "semantic_input_kind": "STRUCTURAL_EMPIRICAL_ADMISSION",
+    "request_owner": "SCR553/use owner",
+    "request_participant_fields": [
+      "role",
+      "ordinal",
+      "structural_empirical_admission_ref"
+    ],
+    "p06_supplies_from_receipt": [
+      "exact immutable StructuralEmpiricalAdmission ref",
+      "admission decision state",
+      "focal structural proposition ref",
+      "structural semantic identity refs",
+      "native scope identity refs",
+      "source universe refs",
+      "estimand refs",
+      "measure and weight authority refs",
+      "exact source/wave/time evidence refs",
+      "negative/denial/noncomparability refs",
+      "interpretation-critical authority refs",
+      "replay root"
+    ],
+    "p06_does_not_decide": [
+      "V553_REQUIRED",
+      "V553_NOT_REQUIRED_FOR_THIS_USE",
+      "required_temporal_operations",
+      "temporal_operation_rule_refs",
+      "temporal harmonization",
+      "cross-time or cross-source comparability",
+      "TEMPORAL_KEY identity",
+      "TEMPORAL_OBSERVATION identity",
+      "TEMPORAL_RELATION identity",
+      "TEMPORAL_LIMIT identity"
+    ],
+    "direct_forbidden_inputs": [
+      "EMPIRICAL_FACT",
+      "DISCOVERY_RESULT_RECEIPT",
+      "RAW_C11_INCIDENCE",
+      "DIAGNOSTIC_SCORE"
+    ],
+    "nonpositive_admission": "may be referenced for replay/typed blocking but can never become positive V553 semantic output",
+    "later_use_rule": "an earlier governed use that needed no new V553 meaning does not exempt a later governed use from V553"
+  },
+  "m1_direct_admission_projection": {
+    "basis_kind": "DIRECT_STRUCTURAL_EMPIRICAL_ADMISSION",
+    "positive_candidate_precondition": "receipt.admission_decision_state == ADMITTED",
+    "additional_precondition": "independent exact SCR553 decision exists for the same governed use; P06 does not infer direct V554 eligibility",
+    "exact_field_map": {
+      "structural_empirical_admission_id": "receipt.structural_empirical_admission_id",
+      "structural_empirical_admission_content_hash": "receipt.structural_empirical_admission_content_hash",
+      "admission_authority_id": "receipt.admission_authority_ref.id",
+      "admission_authority_version": "receipt.admission_authority_ref.version",
+      "admission_authority_hash": "receipt.admission_authority_ref.hash",
+      "admission_decision_state": "receipt.admission_decision_state",
+      "focal_structural_proposition_ref": "receipt.focal_structural_proposition_ref",
+      "structural_semantic_identity_refs": "receipt.structural_semantic_identity_refs",
+      "native_scope_identity_refs": "receipt.native_scope_identity_refs",
+      "target_use_permission_refs": "receipt.target_use_permission_refs",
+      "effective_time_or_interval_refs_required_by_target_use": "receipt.effective_time_or_interval_refs_required_by_target_use",
+      "source_universe_refs": "receipt.source_universe_refs",
+      "estimand_refs": "receipt.estimand_refs",
+      "measure_and_weight_authority_refs": "receipt.measure_and_weight_authority_refs",
+      "applicable_negative_denial_noncomparability_refs": "receipt.applicable_negative_denial_noncomparability_refs",
+      "interpretation_critical_authority_refs": "receipt.interpretation_critical_authority_refs",
+      "producer_replay_locator_or_reference_root": "receipt.producer_replay_locator_or_reference_root"
+    },
+    "projection_hash": "sha256(canonical UTF8 JSON projection)",
+    "nonpositive_rule": "a nonpositive StructuralEmpiricalAdmission MUST NOT be emitted as a DIRECT_STRUCTURAL_EMPIRICAL_ADMISSION basis candidate; it remains typed negative/reference context only",
+    "scr554_owned_not_p06": [
+      "V554 signature ID selection",
+      "V554 temporal completeness",
+      "equivalence-key construction",
+      "duplicate equivalence and precedence",
+      "canonical eligible F1 selection",
+      "F1/F2/B1 identity",
+      "direct V554->V557 publication authorization"
+    ]
+  },
+  "temporal_jurisdiction": {
+    "p06_may_carry": [
+      "exact source time/wave/interval evidence",
+      "admission-rule effective period",
+      "rule-local time/geography applicability",
+      "typed TEMPORAL_SCOPE_MISMATCH when the empirical fact is outside the named admission rule's own applicability"
+    ],
+    "p06_may_not_create": [
+      "canonical temporal scope",
+      "cross-time relation",
+      "temporal representation harmonization",
+      "source/estimand/measure/linkage comparability",
+      "baseline selection",
+      "sequence/persistence/drift/reversal/rupture/revision/coincidence semantics"
+    ],
+    "owner": "SCR553 plus separately named external compatibility authorities"
+  },
+  "exact_m1_consumer_slots_source": {
+    "accepted_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+    "runtime_path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+    "runtime_blob": "e8bd6376720a2de132b384e7771d71d8d39cf261"
+  },
+  "downstream_semantic_change": false
+}
