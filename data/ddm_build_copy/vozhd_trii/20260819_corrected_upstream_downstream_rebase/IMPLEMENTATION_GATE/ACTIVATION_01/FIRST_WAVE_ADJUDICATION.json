@@ -1,0 +1,54 @@
+{
+  "schema": "VOZHD_TRII_IMPLEMENTATION_FIRST_WAVE_ADJUDICATION@1.0.0",
+  "status": "TWO_RUNTIME_RETURNS_RELOCATE_ONLY__FIXTURE_SCAFFOLD_ACCEPTED",
+  "production_baseline": "0777a34e50221bde6801dbaca26c058a7350c9e8",
+  "harmonized_campaign_head": "c450fa64cd4da2c15d915fb483cb559840d09dc9",
+  "frozen_reclosure_head": "c4a3524f54af368a67ca50ccc85f5d5dca3d803b",
+  "sideline_root": "rawlsing_next/**",
+  "forbidden_new_runtime_roots": [
+    "data/ddm_build/**",
+    "data/ddm_build_copy/**"
+  ],
+  "governance_exception": "data/ddm_build_copy/vozhd_trii/** governance/specification/evidence only; no runtime or executable tests",
+  "returns": [
+    {
+      "worker_slot": 6,
+      "chat_id": "CHAT-SCR553",
+      "agent_id": "IG_M1_IMPLEMENTATION",
+      "branch": "agent/vozhd-trii-ig-m1-temporal-v554-admission-dedup",
+      "head": "0bdb74ff541ff3c976d76492a959ba7e74f29ceb",
+      "disposition": "RETURN_FOR_PATH_RELOCATION_ONLY__LEGACY_TREE_RUNTIME_NOT_ACCEPTED",
+      "observed_added_files": [
+        "data/ddm_build_copy/ddm_ig_m1_temporal_v554_admission_dedup.py",
+        "data/ddm_build_copy/tests/test_ig_m1_temporal_v554_admission_dedup.py"
+      ]
+    },
+    {
+      "worker_slot": 3,
+      "chat_id": "CHAT-SCRV3",
+      "agent_id": "IG_PSEPF_ZERO_POSITIVE_GUARD",
+      "branch": "agent/vozhd-trii-ig-psepf-zero-positive-guard",
+      "head": "ad032a4d7820d4eada2a5577e1c3dab2a46b9872",
+      "disposition": "RETURN_FOR_PATH_RELOCATION_ONLY__LEGACY_TREE_RUNTIME_NOT_ACCEPTED",
+      "observed_added_files": [
+        "data/ddm_build_copy/ddm_v3_psepf_zero_positive_guard.py",
+        "data/ddm_build_copy/tests/test_ig_psepf_zero_positive_guard.py"
+      ]
+    },
+    {
+      "worker_slot": 8,
+      "chat_id": "CHAT-SINSP",
+      "agent_id": "IG_INTEGRATION_FIXTURE_SCAFFOLD",
+      "branch": "agent/vozhd-trii-ig-integration-fixture-scaffold",
+      "head": "9fd7694049d8b6e79534c98cdd93a9f141302215",
+      "token": "IG_INTEGRATION_FIXTURE_SCAFFOLD_COMPLETE",
+      "disposition": "ACCEPTED_FROZEN__GOVERNANCE_FIXTURE_SCAFFOLD_ONLY",
+      "executable_tests": false,
+      "runtime_code": false
+    }
+  ],
+  "semantic_reopening": false,
+  "deployment_authority": false,
+  "legacy_retirement_authority": false,
+  "cutover_authority": false
+}
