@@ -1,0 +1,57 @@
+{
+  "assignment_id": "IG01-W08-FINAL-INTEGRATION-003",
+  "chat_id": "CHAT-SINSP",
+  "worker_slot": 8,
+  "worker_class": "SUB_VOZHD",
+  "agent_id": "IG_FINAL_INTEGRATION",
+  "repository": "maidiu/rawlsing",
+  "mission_branch": "agent/vozhd-trii-ig-final-integration",
+  "exact_branch_base": "d5fd39126ecd0ca277759e1cfa47af4b138c584c",
+  "accepted_render_head": "d5fd39126ecd0ca277759e1cfa47af4b138c584c",
+  "accepted_render_runtime_path": "rawlsing_next/render_bounded_expression.py",
+  "accepted_render_runtime_blob": "eef88095d1d647b5332aa5186a3a5df218fcf9f8",
+  "accepted_render_test_path": "rawlsing_next/tests/test_render_bounded_expression.py",
+  "accepted_render_test_blob": "80bdec5d9dc66603c1bc0fcbdf7506a56b2b0f35",
+  "accepted_psepf_head": "dbed67bd83887afe310d9eeab827518d8cbf3a57",
+  "accepted_psepf_runtime_path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+  "accepted_psepf_runtime_blob": "e0528d65215cb431196570c38bac4eae94217a1b",
+  "accepted_psepf_test_path": "rawlsing_next/tests/test_psepf_zero_positive_guard.py",
+  "accepted_psepf_test_blob": "21cfdee118d70d41def6ba654bbada5214cc1112",
+  "accepted_integration_preflight_head": "a0e9392ea9947d643acacb49597b86d10c2b2aa9",
+  "accepted_integration_preflight_token": "IG_INTEGRATION_ACCEPTANCE_PREFLIGHT_COMPLETE",
+  "write_allowlist": [
+    "rawlsing_next/v3_psepf_zero_positive_guard.py",
+    "rawlsing_next/tests/test_psepf_zero_positive_guard.py",
+    "rawlsing_next/tests/test_whole_machine_integration.py",
+    "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/IMPLEMENTATION_GATE/IG_INTEGRATION_FINAL/RESULT.md",
+    "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/IMPLEMENTATION_GATE/IG_INTEGRATION_FINAL/RESULT.json",
+    "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/IMPLEMENTATION_GATE/IG_INTEGRATION_FINAL/FINAL_TREE_BINDINGS.json",
+    "data/ddm_build_copy/vozhd_trii/20260819_corrected_upstream_downstream_rebase/IMPLEMENTATION_GATE/IG_INTEGRATION_FINAL/HOSTILE_TEST_RESULTS.json"
+  ],
+  "forbidden": [
+    "modify any existing M1-M6 or render runtime/test file",
+    "modify data/ddm_build or legacy data/ddm_build_copy runtime",
+    "whole-branch merge of PSEPF",
+    "semantic contract change or harmonization",
+    "positive SPDM implementation",
+    "mutable-latest/fuzzy/heuristic authority repair",
+    "deployment or cutover"
+  ],
+  "required_actions": [
+    "verify branch equals exact render head before write",
+    "materialize exactly the two accepted PSEPF files by exact content and verify final blobs",
+    "create whole-machine executable hostile harness at rawlsing_next/tests/test_whole_machine_integration.py",
+    "run all package-local M1-M6 PSEPF render tests unchanged",
+    "run H01-H20 whole-machine hostile obligations plus replay/noncollapse/path-law checks",
+    "prove no legacy runtime imports and no stage-close semantic artifact runtime reads",
+    "prove SPDM remains BLOCKED_NAMED_AUTHORITY_REQUIRED and nonblocking for authority-complete packages",
+    "record exact final tree bindings and test results"
+  ],
+  "success_token": "IG_INTEGRATION_COMPLETE__READY_FOR_FINAL_RECLOSURE_ADJUDICATION",
+  "failure_tokens": [
+    "IG_INTEGRATION_BOUNDED_EXACT_BINDING_FAILURE",
+    "IG_INTEGRATION_IMPLEMENTATION_SEMANTIC_VIOLATION",
+    "IG_INTEGRATION_SEMANTIC_CONFLICT_FOUND"
+  ],
+  "semantic_authority": false
+}
