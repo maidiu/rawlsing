@@ -1,0 +1,208 @@
+{
+  "schema": "PRE553_P03_FIRST_RESERVOIR_ACCEPTANCE_ORACLE@1.0.0",
+  "status": "INSPECTORATE_ORACLE__NON_SEMANTIC_AUTHORITY__POPULATED_PASS_NOT_YET_CLAIMED",
+  "assignment_id": "PRE553-W01-P03-001",
+  "chat_id": "CHAT-SCRV3",
+  "agent_id": "PRE553_P03_RESERVOIR_ORACLE",
+  "worker_class": "INSPECTORATE",
+  "exact_base": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "accepted_downstream_head": "e51730e461a15b0ad20f02f2efb4bccd751c2c81",
+  "claims": {
+    "defines_future_acceptance_oracle": true,
+    "claims_current_populated_source_pass": false,
+    "adds_semantic_authority": false,
+    "changes_downstream_interface": false,
+    "runtime_writes": false
+  },
+  "authority_anchors": {
+    "campaign_charter_blob": "c2ea941d369063fcbe764c6b3c98220d22391f9e",
+    "campaign_dag_blob": "271542c0e2a3ff3b00f0ec54e6fba2073b50bea2",
+    "runtime_interface_law_blob": "e0e98d9250b9c12529e573332330578c42e0d4be",
+    "acceptance_gates_blob": "772b6f787c33ced5e9730ae74281fb75b088a647",
+    "populated_execution_law_blob": "5455262d7433058fe63a7a17ac52657e80e4edee",
+    "d13_minimum_information_spec_blob": "68747d52d405f1616027e938fbf35d02ef42c818",
+    "d13b_replay_contract_blob": "a054e6f2b02d0f210365ad0b464a0fa6e6e9b736"
+  },
+  "unchanged_downstream_blobs": {
+    "M1_V553_V554": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+    "M2_V555": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+    "M3_V556": "a4749541273c921ebe4ff7a0b91460bb1e016b87",
+    "M4_V557_V558": "9005308fb06686b593783666e77d06619645b2bb"
+  },
+  "acceptance_states": [
+    "ACCEPTED_FIRST_POPULATED_NONTRIVIAL_RESERVOIR",
+    "FAILED_FIRST_RESERVOIR_ORACLE",
+    "BLOCKED_FIRST_RESERVOIR_EVIDENCE_OR_AUTHORITY"
+  ],
+  "critical_path": [
+    "PIN_EXACT_EXECUTION_HEAD_CONFIG_AND_AUTHORITY_SNAPSHOT",
+    "PIN_EXACT_POPULATED_SOURCE_RELEASE_UNIVERSE_AND_IMMUTABLE_SOURCE_IDENTITY",
+    "SOURCE_NATIVE_INVENTORY_WITHOUT_NORMALIZATION_CLAIMS",
+    "INGEST_BOUNDED_SOURCE_RELEASE_TO_C11",
+    "SOURCE_NATIVE_TO_C11_CERTIFICATION_P01_P20",
+    "C11_M01_M18_INFORMATION_FRONTIER_AUDIT",
+    "EXACT_EMPIRICAL_QUERY_REPLAY",
+    "EXACT_BOUNDED_DISCOVERY_REPLAY",
+    "NAMED_AUTHORITY_STRUCTURAL_EMPIRICAL_ADMISSION",
+    "UNCHANGED_M1_V553_V554_INGRESS_AND_BASIS_SELECTION",
+    "UNCHANGED_M2_V555_AND_M3_V556_WHERE_POSITIVE_AUTHORITY_IS_APPLICABLE",
+    "UNCHANGED_M4_V557_PUBLICATION_AND_V558_REPOSITORY_BUILD",
+    "OBJECT_SOURCE_WAVE_TYPED_STATE_AND_REFERENCE_CLOSURE_AUDIT",
+    "DETERMINISTIC_CLEAN_REBUILD_IDENTITY"
+  ],
+  "required_c11_information_dimensions": [
+    "M01","M02","M03","M04","M05","M06","M07","M08","M09","M10","M11","M12","M13","M14","M15","M16","M17","M18"
+  ],
+  "required_source_to_c11_replay_dimensions": [
+    "P01","P02","P03","P04","P05","P06","P07","P08","P09","P10","P11","P12","P13","P14","P15","P16","P17","P18","P19","P20"
+  ],
+  "mandatory_gates": [
+    {
+      "gate_id": "R01_EXECUTION_ENVELOPE",
+      "pass": "Exact Git HEAD, clean-tree before/after, code/config hashes, authority hashes, deterministic settings and immutable populated source identities recorded; no mutable/fuzzy/default selector participates.",
+      "blocked": "Required exact identity or populated execution access unavailable.",
+      "fail": "Mutable/latest/default/fuzzy selection or unrecorded semantic configuration was used."
+    },
+    {
+      "gate_id": "R02_POPULATED_SOURCE_NATIVE_EVIDENCE",
+      "pass": "Exact populated source/release/universe respondents, event topology, routing, coordinates, weights and native authority are inventoried before normalization claims.",
+      "blocked": "Required source-native evidence or authority unavailable.",
+      "fail": "Schema/count/aggregate presence was treated as populated completeness."
+    },
+    {
+      "gate_id": "R03_SOURCE_TO_C11_EQUIVALENCE",
+      "pass": "P01-P20 all PASS except topology/frontier-proven NOT_APPLICABLE; no mandatory BLOCKED or FAIL.",
+      "blocked": "Any mandatory P01-P20 dimension cannot be evaluated.",
+      "fail": "Any mandatory dimension differs or uses a forbidden normalization."
+    },
+    {
+      "gate_id": "R04_C11_INFORMATION_FRONTIER",
+      "pass": "Every required M01-M18 distinction is retained or exactly reconstructible; M13 capability information remains retained although reverse comparator execution is deferred.",
+      "blocked": "A required information class cannot be proven retained/reconstructible.",
+      "fail": "A required distinction was collapsed, defaulted or replaced by an aggregate."
+    },
+    {
+      "gate_id": "R05_EXACT_QUERY",
+      "pass": "Unary, arbitrary conjunction, response-coordinate, response-response joint, branch/cohort, k-way, explicit risk-set, raw/weighted, zero-support and source-indexed fixtures replay exactly; XOR/parity and Simpson/reversal pass.",
+      "blocked": "Required predicate, topology, routing or weight authority unavailable.",
+      "fail": "Approximation, hidden default or typed-state collapse changes the result."
+    },
+    {
+      "gate_id": "R06_EXACT_BOUNDED_DISCOVERY",
+      "pass": "An accepted finite EXACT_BOUNDED frontier is completely evaluated for its declaration; results dereference exact EmpiricalFact identities, replay deterministically and do not require unary signal.",
+      "blocked": "No accepted DiscoveryAuthority/candidate grammar applies to the selected populated lane.",
+      "fail": "Search invents semantics, treats unevaluated as negative, requires unary signal or promotes diagnostics to truth."
+    },
+    {
+      "gate_id": "R07_STRUCTURAL_ADMISSION",
+      "pass": "At least one positive admission is exact-authority-bound to populated empirical/query/discovery/source provenance, target use and negative/limit closure.",
+      "blocked": "No accepted structural-admission authority applies to any populated fact.",
+      "fail": "Generic empirical-to-structural, coordinate-to-stratum, survey-to-psyche/persona or diagnostic-to-structure promotion occurs."
+    },
+    {
+      "gate_id": "R08_V553_M1_INGRESS",
+      "pass": "Frozen M1 direct/V553 consumer slots are populated exactly and V553 retains temporal/comparability jurisdiction.",
+      "blocked": "Required frozen slot or required V553 authority cannot be supplied.",
+      "fail": "Pre553 guesses temporal/comparability semantics, deletes frozen fields or changes M1/V553/V554 meaning."
+    },
+    {
+      "gate_id": "R09_UNCHANGED_DOWNSTREAM",
+      "pass": "Accepted M1-M4 blob identities remain exact and unchanged downstream regressions pass in the reservoir checkout.",
+      "blocked": "Exact accepted downstream checkout/tests cannot be executed.",
+      "fail": "Any downstream runtime blob is modified, bypassed, monkey-patched or its regression suite fails."
+    },
+    {
+      "gate_id": "R10_NONTRIVIAL_V558_REPOSITORY",
+      "pass": "V558 schema exact; repository_entry_count>=1; publication_root_count>=1; non_audit_structural_entry_count>=1; positive_admission_backed_root_count>=1; populated_source_equivalent_lineage_count>=1.",
+      "blocked": "Earlier gates prevent any positive admitted structural root.",
+      "fail": "Nontriviality is claimed for valid-empty, negative-only, audit-only, synthetic-only or source-equivalence-unproven output, or forbidden actor/V3/V2/render classes enter V558."
+    },
+    {
+      "gate_id": "R11_OBJECT_SOURCE_WAVE_TYPED_STATE_AUDIT",
+      "pass": "Counts and lineage maps reconcile by producer, semantic class, exact source/release, raw wave, canonical wave, geography and typed states across C11/query/discovery/admission/M1-M4.",
+      "blocked": "A required audit dimension cannot be recovered.",
+      "fail": "Counts do not reconcile or native identity/typed states collapse."
+    },
+    {
+      "gate_id": "R12_REFERENCE_AND_AUTHORITY_CLOSURE",
+      "pass": "Zero orphan/ambiguous/stale refs; all authorities exact ID+version+hash; all required positive/negative dependencies have role-preserving edges; immutable metadata-only resolution is hash-bound.",
+      "blocked": "Referenced immutable authority/object unavailable to the audit environment.",
+      "fail": "Orphan/hash mismatch/missing negative edge/partial V556 closure/forbidden class/mutable repair/permission widening observed."
+    },
+    {
+      "gate_id": "R13_SOURCE_PLURALITY_NONCOMPOSITION",
+      "pass": "Distinct universes remain distinct unless each exercised equivalence/linkage/overlap/pooling/backfill/dedup relation has separate exact authority.",
+      "blocked": "Requested multi-source operation lacks exact relation authority.",
+      "fail": "Naming, aliasing, colocation, harmonization or provenance causes implicit composition."
+    },
+    {
+      "gate_id": "R14_DETERMINISTIC_REBUILD",
+      "pass": "At least two same-input clean rebuilds plus unordered physical-order permutation reproduce canonical semantic outputs, V557 publication, V558 repository/index IDs/hashes, locators, edges and replay roots exactly.",
+      "blocked": "Determinism cannot be exercised in the populated environment.",
+      "fail": "Wall clock, mutable lookup, unrecorded RNG, processing order or cache presence changes semantic identity/result."
+    },
+    {
+      "gate_id": "R15_EVIDENCE_BUNDLE_COMPLETENESS",
+      "pass": "Every gate has durable exact-hash receipts; rejected/defaulted/coerced count is zero unless each nonzero transformation is explicitly governed and receipt-bound.",
+      "blocked": "A mandatory execution receipt is absent.",
+      "fail": "A transformation or fallback occurred without exact positive rule and receipt."
+    }
+  ],
+  "nontrivial_repository_predicate": {
+    "required": [
+      "repository schema == SCR5578_STRUCTURAL_PRIOR_REPOSITORY@1.0.0",
+      "repository_entry_count >= 1",
+      "publication_root_count >= 1",
+      "non_audit_structural_entry_count >= 1",
+      "positive_admission_backed_root_count >= 1",
+      "populated_source_equivalent_lineage_count >= 1",
+      "all R01-R15 gates PASS"
+    ],
+    "does_not_satisfy": [
+      "VALID_EMPTY_ONLY",
+      "NEGATIVE_ONLY",
+      "AUDIT_ONLY",
+      "SYNTHETIC_ONLY",
+      "SCHEMA_ONLY",
+      "COUNT_ONLY",
+      "UNPROVEN_SOURCE_EQUIVALENCE"
+    ],
+    "not_required": [
+      "arbitrary repository-size threshold greater than one",
+      "positive V555 object",
+      "positive V556 object",
+      "cross-source pooling",
+      "V3/PSEPF metabolism",
+      "V2/render/application"
+    ]
+  },
+  "required_audit_surfaces": {
+    "source_inventory": ["source_family_raw","study_product_release","instrument_release","source_artifact_hash","respondent_namespace","country_geography","raw_wave","canonical_wave_if_governed","field_reference_time","target_population_sample_frame","design_regime"],
+    "c11_counts": ["respondents","response_events_by_topology","response_events_by_typed_state","routing_applicability_by_typed_state","coordinates_by_identity_and_typed_state","weights_by_basis_and_status","authority_snapshot_count"],
+    "empirical_counts": ["queries_by_class","facts_by_typed_state","zero_support_count","observed_zero_count","weighted_unavailable_count"],
+    "discovery_counts": ["candidate_frontier_size","evaluated_count","pruned_count","unevaluated_count","result_state_counts","winning_receipt_count"],
+    "admission_counts": ["admission_state_counts","positive_admission_count","negative_limit_count","missing_authority_count"],
+    "downstream_counts": ["M1_state_counts","V554_object_counts","V555_state_counts","V556_state_counts","V557_governance_state_counts","V558_entry_counts_by_producer_and_semantic_class"],
+    "closure": ["root_to_source_lineage_map","positive_dependency_edge_count","negative_dependency_edge_count","orphan_ref_count","authority_closure_count","authority_unresolved_count","external_binding_count","index_record_counts"]
+  },
+  "critical_path_exclusions": [
+    {"lane":"POSITIONED_SUBJECT_REVERSE_INFERENCE_EXECUTION","status":"NOT_REQUIRED_FOR_FIRST_RESERVOIR","qualification":"M13 retention capability remains required; no ActorComparatorReceipt execution is required."},
+    {"lane":"V3_EMPIRICAL_POSSIBILITY_METABOLISM","status":"EXCLUDED"},
+    {"lane":"PSEPF_POSITIVE_ACTOR_TRANSITION","status":"EXCLUDED_ZERO_POSITIVE"},
+    {"lane":"SPDM_POSITIVE","status":"EXCLUDED_BLOCKED_NAMED_AUTHORITY_REQUIRED"},
+    {"lane":"V2_SITUATED_PHENOMENOLOGY_RENDER_APPLICATION","status":"EXCLUDED"},
+    {"lane":"DEPLOYMENT_OR_PRODUCTION_CUTOVER","status":"EXCLUDED"},
+    {"lane":"SOURCE_RETIREMENT","status":"EXCLUDED"},
+    {"lane":"CROSS_SOURCE_POOLING_LINKAGE_BACKFILL","status":"NOT_REQUIRED_FOR_ONE_SOURCE_PROOF"},
+    {"lane":"ADAPTIVE_EXPLORATORY_DISCOVERY","status":"NOT_REQUIRED_EXACT_BOUNDED_SUFFICIENT"},
+    {"lane":"POSITIVE_V555_OR_V556_OUTPUT","status":"CONDITIONAL_NOT_REQUIRED"}
+  ],
+  "acceptance_algorithm": [
+    "If exact populated source-native evidence is unavailable, return BLOCKED; never infer pass from schemas or remote inspection.",
+    "Execute R01-R15 and retain every gate receipt.",
+    "Any FAIL => FAILED_FIRST_RESERVOIR_ORACLE.",
+    "No FAIL but any BLOCKED => BLOCKED_FIRST_RESERVOIR_EVIDENCE_OR_AUTHORITY.",
+    "PASS only when every mandatory gate passes and nontrivial_repository_predicate is true.",
+    "PASS certifies only the exact source/release/universe, source snapshot, Git/config and authority snapshot recorded by the run; it does not certify other sources or authorize pooling, retirement, actor effects, deployment or cutover."
+  ]
+}
