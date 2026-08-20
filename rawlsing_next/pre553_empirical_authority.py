@@ -41,6 +41,13 @@ AUTHORITY_KINDS = frozenset({
     "TEMPORAL_EVIDENCE",
     "REPLAY_PROTOCOL",
 })
+RELATION_AUTHORITY_KINDS = frozenset({
+    "SOURCE_UNIVERSE_RELATION",
+    "SOURCE_EQUIVALENCE",
+    "SOURCE_RESPONDENT_LINKAGE",
+    "SOURCE_COMPOSITION_POOLING",
+    "SOURCE_BACKFILL",
+})
 
 POSITIVE_AUTHORITY_STATE = "ALLOW"
 FAIL_CLOSED_STATES = frozenset({
@@ -112,8 +119,6 @@ def validate_authority_snapshot(snapshot: AuthoritySnapshot) -> AuthoritySnapsho
         raise Pre553AuthorityError("authority decision state mismatch")
     if snapshot.decision_state in {"AUTHORITY_HASH_MISMATCH", "AUTHORITY_SCOPE_MISMATCH"}:
         raise Pre553AuthorityError("authority snapshot is in an integrity-failure state")
-    # P10 carrier record names may never become public ontology by appearing in
-    # an authority envelope.
     for family in snapshot.governed_object_families:
         if isinstance(family, str) and family.split("@", 1)[0] in {
             "RespondentIdentity", "QuestionVariableBinding", "EmpiricalPredicateReplayBinding",
@@ -271,35 +276,31 @@ def validate_replay_authority_closure(
 def validate_relation_authority_only(
     snapshot: AuthoritySnapshot,
     *,
+    relation_authority_kind: str,
     exact_relation_operation: str,
 ) -> AuthoritySnapshot:
-    """Validate one named relation operation without granting any adjacent relation kind."""
-    allowed = {
-        "ASSERT_SOURCE_RELATION": "SOURCE_UNIVERSE_RELATION",
-        "ASSERT_SOURCE_SEMANTIC_EQUIVALENCE": "SOURCE_EQUIVALENCE",
-        "LINK_RESPONDENTS": "SOURCE_RESPONDENT_LINKAGE",
-        "POOL_SAMPLES": "SOURCE_COMPOSITION_POOLING",
-        "COMPOSE_ESTIMANDS": "SOURCE_COMPOSITION_POOLING",
-        "BACKFILL_SOURCE_VALUE": "SOURCE_BACKFILL",
-    }
-    kind = allowed.get(exact_relation_operation)
-    if kind is None:
-        raise Pre553AuthorityError("unknown exact source-relation operation")
+    """Validate one exact relation-kind/operation pair without adjacent grants."""
+    if relation_authority_kind not in RELATION_AUTHORITY_KINDS:
+        raise Pre553AuthorityError("authority kind is not an accepted source-relation kind")
     return require_positive_authority(
-        snapshot, authority_kind=kind, operation=exact_relation_operation)
+        snapshot,
+        authority_kind=relation_authority_kind,
+        operation=exact_relation_operation,
+    )
 
 
 def validate_structural_admission_authority(
     snapshot: AuthoritySnapshot,
     *,
+    exact_admission_operation: str,
     target_use_ref: Any,
     source_universe_ref: Any | None = None,
 ) -> AuthoritySnapshot:
-    """Validate admission authority only; this function does not make a decision."""
+    """Validate exact admission authority only; this function makes no decision."""
     return require_positive_authority(
         snapshot,
         authority_kind="STRUCTURAL_ADMISSION",
-        operation="ADMIT_EMPIRICAL_FACT_FOR_STRUCTURAL_USE",
+        operation=exact_admission_operation,
         object_family="StructuralEmpiricalAdmission",
         source_universe_ref=source_universe_ref,
         target_use_ref=target_use_ref,
@@ -307,10 +308,10 @@ def validate_structural_admission_authority(
 
 
 __all__ = [
-    "AUTHORITY_KINDS", "AUTHORITY_KIND_CEILINGS", "POSITIVE_AUTHORITY_STATE",
-    "FAIL_CLOSED_STATES", "Pre553AuthorityError", "Pre553AuthorityConflict",
-    "AuthorityRegistry", "AuthorityResolution", "require_exact_authority_ref",
-    "validate_authority_snapshot", "require_positive_authority",
+    "AUTHORITY_KINDS", "RELATION_AUTHORITY_KINDS", "AUTHORITY_KIND_CEILINGS",
+    "POSITIVE_AUTHORITY_STATE", "FAIL_CLOSED_STATES", "Pre553AuthorityError",
+    "Pre553AuthorityConflict", "AuthorityRegistry", "AuthorityResolution",
+    "require_exact_authority_ref", "validate_authority_snapshot", "require_positive_authority",
     "validate_object_authority_closure", "validate_replay_authority_closure",
     "validate_relation_authority_only", "validate_structural_admission_authority",
 ]
