@@ -1,0 +1,146 @@
+{
+  "contract_id": "PRE553_P02_RISK_SET_TARGET_MEASURE_GRAMMAR",
+  "contract_version": "preflight-1.0.0",
+  "authority_class": "WAVE_01_PREFLIGHT_SPECIFICATION__NO_SEMANTIC_AUTHORITY",
+  "purpose": "Freeze the identity-bearing denominator/risk-set, target topology, measure and source-scope grammar required by D08/D12/D13 without selecting storage or implementation.",
+  "risk_set": {
+    "separate_from_condition_predicate": true,
+    "identity_required": [
+      "risk_set_type",
+      "membership_predicate_or_rule_ref",
+      "routing_applicability_authority_ref",
+      "target_component_eligibility_semantics",
+      "typed_missing_special_state_policy_ref",
+      "source_scope_ref",
+      "risk_set_authority_id@version@hash",
+      "risk_set_replay_ref"
+    ],
+    "types": {
+      "WHOLE_QUESTION_RISK_SET": "all respondents lawfully eligible for the exact target question/component under the selected source scope",
+      "COMMON_ELIGIBLE_RISK_SET": "intersection of exact eligibility/observability requirements for every response component required by the query",
+      "ROUTED_APPLICABLE_RISK_SET": "respondents for whom exact routing/applicability authority makes the target meaningful",
+      "ANCHOR_SELECTED_RISK_SET": "respondents satisfying an exact anchor event where the governing query law explicitly selects that denominator family",
+      "CANDIDATE_QUESTION_RISK_SET": "respondents eligible/observable for an exact candidate target where the governing query law explicitly selects that denominator family",
+      "BRANCH_COHORT_RISK_SET": "respondents in an exact replayable branch/cohort, intersected with target eligibility as governed",
+      "CUSTOM_GOVERNED_RISK_SET": "only with an exact separately named risk-set rule/authority; no ad-hoc predicate substitution"
+    },
+    "derived_denominator_labels": {
+      "CONDITION_SELECTED_DENOMINATOR": "the selected risk-set member set further intersected with C(r); it does not erase the underlying risk-set identity",
+      "WEIGHTED_DENOMINATOR": "measure mass over the exact denominator member set; weighting does not change respondent membership by itself"
+    },
+    "member_set_identity_law": "Equal denominator counts with different exact respondent member sets, routing rules, applicability rules, condition predicates or source scopes do not establish the same empirical fact.",
+    "zero_member_states": {
+      "ZERO_OVERLAP": "a common-eligibility/joint-risk-set construction resolves exactly but contains zero respondents",
+      "ZERO_SUPPORT": "the exact R(r) AND C(r) denominator member set resolves exactly and contains zero respondents",
+      "NOT_APPLICABLE": "governed applicability law says the query target/risk-set does not apply",
+      "UNRESOLVED": "member set cannot be lawfully resolved; never coerce to zero"
+    }
+  },
+  "condition": {
+    "role": "C(r) selects exact respondents inside the independently defined risk set",
+    "same_respondent": true,
+    "boolean_grammar": ["AND", "OR", "NOT"],
+    "allowed_leaf_families": ["EMPIRICAL_POSITION_COORDINATE", "SURVEY_RESPONSE_EVENT", "DERIVED_BRANCH_COHORT", "ROUTING_APPLICABILITY_STATE", "TYPED_RESPONSE_STATE"],
+    "condition_predicate_hash_required": true,
+    "condition_provenance_required": true,
+    "independent_marginal_composition": "FORBIDDEN"
+  },
+  "target": {
+    "identity_required": [
+      "target_arity",
+      "component_semantic_refs",
+      "component_native_question_refs",
+      "component_ids_or_subitem_refs",
+      "component_response_topology_authority_refs",
+      "component_response_semantic_authority_refs",
+      "component_typed_state_policy_refs",
+      "joint_order_semantics",
+      "target_domain_replay_ref"
+    ],
+    "arity": "1..k",
+    "scalar": "one governed response target component",
+    "multivariate": "exact topology-aware tuple/configuration of 2..k governed response target components",
+    "joint_order_semantics": {
+      "SEMANTIC_ORDERED": "component order is interpretation-critical and preserved",
+      "CANONICAL_SET_ORDER": "governing target says component order is nonsemantic; components are canonicalized by exact semantic identity"
+    },
+    "response_topology": {
+      "SCALAR_SINGULAR": "one canonical event only when exact topology authority proves singularity",
+      "UNORDERED_MULTISELECT": "target cell retains exact selected-set identity",
+      "ORDERED_SEQUENCE": "target cell retains exact semantic event order",
+      "REPEATED_EVENT": "target cell retains event identity/repetition index as governed",
+      "RANKED_RESPONSE": "target cell retains rank/order identity",
+      "ROUTED_RESPONSE": "target interpretation is bound to exact routing/applicability semantics",
+      "COMPONENTIZED_RESPONSE": "target retains exact component/subitem identity"
+    },
+    "special_state_law": "DK/refusal/IAP/not-asked/inapplicable/missing/source-specific special states remain typed and may enter target content only when exact target/state authority permits; otherwise they remain non-substantive typed states.",
+    "full_distribution_law": "An EmpiricalFact for a distribution contains the full governed target cell domain or an exact replayable domain reference plus every realized cell/support state. A modal cell or scalar association summary is not a complete distribution."
+  },
+  "measure": {
+    "one_basis_per_query": true,
+    "types": {
+      "RAW": {
+        "respondent_measure": "1 per exact denominator member",
+        "required_authority": "raw count semantics and source respondent identity/risk-set authority",
+        "weighted_substitution": false
+      },
+      "GOVERNED_WEIGHTED": {
+        "respondent_measure": "exact governed weight for each denominator member",
+        "required": ["weight_basis_id", "weight_variable_or_source_ref", "weight_value_semantic_contract_ref", "sampling_design_authority_ref", "estimand_authority_ref", "weight_validity_policy_ref", "weight_transform_or_recalibration_authority_ref_if_any", "measure_authority_id@version@hash"],
+        "missing_or_invalid_weight": "TYPED_WEIGHTED_MEASURE_UNAVAILABLE unless a separate exact authority defines treatment",
+        "default_weight_one": "FORBIDDEN"
+      }
+    },
+    "raw_and_weighted_same_fact": false,
+    "rule": "If both raw and weighted results are requested, they are separate EmpiricalQuerySpec/EmpiricalFact identities linked only by an optional nonsemantic comparison group; equal numerical percentages do not merge them.",
+    "numeric_identity": "Exact numeric encoding/canonicalization is owned by the Wave-01 canonical object/authority synthesis. P02 requires an immutable measure_numeric_contract_ref and forbids binary/decimal rounding policy from being implicit."
+  },
+  "source_scope": {
+    "identity_required": ["mode", "exact_universe_refs", "raw_wave_refs", "canonical_wave_refs_if_governed", "geography_scope_refs", "time_scope_refs", "source_relation_or_composition_authority_ref_if_required"],
+    "modes": {
+      "SINGLE_UNIVERSE": "one exact D13 M01 universe",
+      "SOURCE_INDEXED_MULTI_UNIVERSE": "multiple exact universes retained and evaluated separately by default",
+      "AUTHORIZED_COMPOSITE": "one composite result only when exact independent source-relation/linkage/pooling/nonduplication/estimand/weight authority permits it"
+    },
+    "default_multi_source_mode": "SOURCE_INDEXED_MULTI_UNIVERSE",
+    "same_native_or_canonical_label_means_same_universe": false,
+    "cross_universe_respondent_string_equality_means_linkage": false,
+    "harmonized_means_poolable": false,
+    "source_disagreement": "retained as distinct source-indexed empirical facts unless exact composition authority says otherwise"
+  },
+  "support_and_uncertainty": {
+    "fact_must_expose": ["raw_numerator_support", "raw_denominator_support", "selected_measure_numerator", "selected_measure_denominator", "support_state", "uncertainty_method_state_or_ref"],
+    "observed_zero": "numerator zero with exact positive denominator is a supported observed-zero cell, not ZERO_SUPPORT and not impossibility",
+    "low_support": "supported but weak/uncertain; never equivalent to nonexistence",
+    "zero_support": "no empirical conditional basis; no nearest cohort fallback",
+    "uncertainty_numeric_required": false,
+    "uncertainty_rule": "If no governed numeric uncertainty method is supplied, retain a typed unquantified uncertainty state rather than inventing one."
+  },
+  "joint_reconstruction": {
+    "fixed_unary": "may be reconstructed from its exact complete fixed unary contingency and full identity closure",
+    "fixed_pair": "may be reconstructed from exact full same-respondent pair contingency plus exact risk-set/measure/provenance closure",
+    "fixed_k_way": "may be reconstructed from exact full k-way contingency spanning every target/condition dimension in that fixed query",
+    "future_new_condition_or_target": "requires respondent-event/coordinate incidence or exact information-equivalent carrier spanning the new dimension",
+    "unary_marginals_reconstruct_pair": false,
+    "pairwise_marginals_reconstruct_general_k_way": false
+  },
+  "hostile_examples": {
+    "XOR": "A and B may each have zero unary signal while Y is exactly determined by (A OR B) AND NOT(A AND B); exact same-respondent conjunction/joint incidence must remain queryable.",
+    "PARITY": "k-way parity may be invisible to all lower-order marginals; target/condition arity cannot be truncated to the strongest unary/pairwise signals.",
+    "SIMPSON_REVERSAL": "P(Y|X) and P(Y|X,Z=z) are distinct query identities. A pooled aggregate cannot replace stratified facts and a reversal diagnostic must reference exact source facts.",
+    "SAME_MARGINALS_DIFFERENT_JOINT": "identical unary marginals with different respondent pairings produce different joint EmpiricalFacts.",
+    "ROUTED_ZERO_OVERLAP": "zero common eligible respondents is ZERO_OVERLAP, not an omitted row, zero probability, or NOT_APPLICABLE unless exact routing authority says so."
+  },
+  "forbidden_inferences": [
+    "independent marginals -> joint incidence",
+    "equal denominator counts -> same risk set",
+    "equal numeric distribution -> same EmpiricalFact",
+    "same label -> same source universe",
+    "source harmonization -> pooling authority",
+    "response cotravel -> actor psyche",
+    "empirical coordinate -> generated structural position",
+    "diagnostic score -> primary fact or structural truth"
+  ],
+  "architecture_selected": false,
+  "runtime_implementation_authorized": false
+}
