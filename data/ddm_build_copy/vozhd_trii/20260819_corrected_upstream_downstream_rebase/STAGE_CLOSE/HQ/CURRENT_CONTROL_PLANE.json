@@ -1,6 +1,6 @@
 {
-  "schema":"VOZHD_TRII_STAGE_CLOSE_CURRENT_CONTROL_PLANE@1.1.0",
-  "status":"DISPATCH_EPOCH_02_OPEN__TWO_INITIAL_MISSIONS_ISSUED",
+  "schema":"VOZHD_TRII_STAGE_CLOSE_CURRENT_CONTROL_PLANE@1.2.0",
+  "status":"M1_M6_ACCEPTED__COMMAND_REVIEW_02_PASS__FINAL_RECLOSURE_INSPECTORATE_ACTIVE",
   "semantic_common_base":"baa257cb901ad8e5dc4d89faf2d81ea6f442ff8d",
   "hq_branch":"agent/vozhd-trii-stage-close-hq",
   "dispatch_branch":"agent/vozhd-trii-stage-close-dispatch",
@@ -8,18 +8,15 @@
   "dispatch_protocol":"DISPATCH/README.md",
   "mailbox_index":"DISPATCH/MAILBOX_INDEX.json",
   "user_handoff_addressing":"WORKER_SLOT__PERMANENT_CHAT_ID__MOST_RECENT_SUBMITTING_AGENT_ID__NEW_AGENT_ID",
-  "command_review":"DISPATCH/COMMAND_REVIEW_01/RESULT.md",
-  "cleanup_receipt":"DISPATCH/COMMAND_REVIEW_01/CLEANUP_RECEIPT.json",
-  "accepted_frozen_seams":["M1","M2","M3"],
-  "issued":[
-    {"worker_slot":10,"chat_id":"CHAT-S5578C","most_recent_submitting_agent_id":"M4_PREFLIGHT","new_agent_id":"M4_FINAL","assignment_id":"E02-W10-M4-FINAL-001"},
-    {"worker_slot":3,"chat_id":"CHAT-SCRV3","most_recent_submitting_agent_id":"SCRV3","new_agent_id":"SCRV3_M6_HANDOFF_LITERALIZATION","assignment_id":"E02-W03-SCRV3-M6LIT-001"}
-  ],
-  "dependency_following_next":[
-    {"unit":"M5_FINAL","opens_when":"M4_FINAL_ACCEPTED"},
-    {"unit":"M6_FINAL","opens_when":"SCRV3_M6_HANDOFF_LITERALIZATION_COMPLETE"},
-    {"unit":"POST_REVIEW_INSPECTORATE_RECLOSURE","opens_when":"M4_M5_M6_ACCEPTED"}
-  ],
+  "command_review_01":"DISPATCH/COMMAND_REVIEW_01/RESULT.md",
+  "command_review_02":"DISPATCH/COMMAND_REVIEW_02/RESULT.md",
+  "command_review_02_result_blob":"18364600960e50cad8758beb7075a94108217bee",
+  "accepted_frozen_seams":["M1","M2","M3","M4","M5","M6"],
+  "accepted_auxiliary_interface":["SCRV3_M6_HANDOFF_LITERALIZATION"],
+  "active":[{"worker_slot":8,"chat_id":"CHAT-SINSP","most_recent_submitting_agent_id":"SINSP","new_agent_id":"FINAL_RECLOSURE_INSPECTORATE","assignment_id":"E02-W08-FINAL-RECLOSURE-001","branch":"agent/vozhd-trii-dr-r03-inspectorate-final-reclosure"}],
+  "further_semantic_recycling_before_reclosure":false,
+  "next_after_active_return":"HQ_FINAL_GATE_ADJUDICATION",
   "implementation_authorized":false,
+  "implementation_gate":"WAITING_FINAL_RECLOSURE",
   "broad_topology_reopened":false
 }
