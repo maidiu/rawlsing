@@ -1,0 +1,134 @@
+{
+  "protocol_id": "PRE553_SOURCE_TO_C11_EQUIVALENCE_PROTOCOL",
+  "version": "1.0.0",
+  "assignment_id": "PRE553-W01-P05-001",
+  "jurisdiction": "NON_DISPOSITIVE_INSPECTORATE_PROTOCOL",
+  "certification_unit": [
+    "source_raw",
+    "source_release_or_instrument",
+    "raw_wave",
+    "canonical_wave",
+    "country_or_geography",
+    "sample_or_empirical_universe_identity",
+    "immutable_source_snapshot_set"
+  ],
+  "terminal_states": [
+    "CERTIFIED",
+    "FAILED",
+    "BLOCKED"
+  ],
+  "decision_precedence": [
+    "FAILED_IF_ANY_MANDATORY_OBSERVED_MISMATCH",
+    "BLOCKED_IF_NO_OBSERVED_MISMATCH_AND_ANY_MANDATORY_PROOF_UNRESOLVED",
+    "CERTIFIED_ONLY_IF_ALL_MANDATORY_PROOFS_PASS"
+  ],
+  "certified_requires": {
+    "d13b_p01_p20": "ALL_APPLICABLE_PASS",
+    "d13_m01_m18": "ALL_REQUIRED_INFORMATION_PRESENT_OR_EXACTLY_DEREFERENCEABLE",
+    "d12_d13_t01_t18": "ALL_FRONTIER_REQUIRED_REPLAY_TESTS_PASS",
+    "unauthorized_default_count": 0,
+    "unauthorized_coercion_count": 0,
+    "fuzzy_mapping_count": 0,
+    "unproved_source_pooling_count": 0,
+    "deterministic_replay": true,
+    "clean_worktree_before": true,
+    "clean_worktree_after": true
+  },
+  "proof_dimensions": [
+    {"id":"P01","name":"respondent_incidence","required_evidence":"exact scoped respondent set and identity"},
+    {"id":"P02","name":"response_event_multiplicity","required_evidence":"exact event multiset at topology-authorized grain"},
+    {"id":"P03","name":"response_topology","required_evidence":"scalar/set/repeated/ranked semantics"},
+    {"id":"P04","name":"risk_set_identity","required_evidence":"exact risk-set predicate and scoped member set"},
+    {"id":"P05","name":"routing_applicability","required_evidence":"exact typed routing/applicability state plus authority"},
+    {"id":"P06","name":"typed_missingness","required_evidence":"missing/DK/refusal/IAP/not-asked/inapplicable distinctions"},
+    {"id":"P07","name":"raw_support","required_evidence":"exact numerator and denominator including zero support"},
+    {"id":"P08","name":"weighted_support","required_evidence":"exact governed weighted mass or identical typed blocked state"},
+    {"id":"P09","name":"weight_basis","required_evidence":"exact respondent weight value/status/design/basis"},
+    {"id":"P10","name":"scope","required_evidence":"raw and canonical source/wave/country identity"},
+    {"id":"P11","name":"predicate_identity","required_evidence":"typed coordinate/question/operator/value identity"},
+    {"id":"P12","name":"condition_ast_hash","required_evidence":"canonical typed AST and hash"},
+    {"id":"P13","name":"target_identity","required_evidence":"exact target kind/component/topology"},
+    {"id":"P14","name":"branch_membership_provenance","required_evidence":"exact branch semantics lineage and members"},
+    {"id":"P15","name":"k_way_joint_topology","required_evidence":"exact configuration and same-respondent joint incidence"},
+    {"id":"P16","name":"authority_identity","required_evidence":"authority id/version/content hash/ref"},
+    {"id":"P17","name":"logical_content_hash","required_evidence":"semantic integrity seal after dimensional proof"},
+    {"id":"P18","name":"deterministic_replay","required_evidence":"repeated identical inputs produce identical semantic result/status"},
+    {"id":"P19","name":"duplicate_semantics","required_evidence":"scalar conflict blocks; legitimate multiplicity survives"},
+    {"id":"P20","name":"order_independence","required_evidence":"physical order inert except explicit rank/sequence"}
+  ],
+  "source_native_required_classes": [
+    "source/study/release/instrument identity",
+    "questionnaire/codebook/question/component identity",
+    "original response codes and labels where semantically relevant",
+    "response topology authority",
+    "routing/skip/applicability authority",
+    "typed response-state semantics",
+    "weight design/basis and respondent weight facts",
+    "native empirical coordinates units taxonomy and time semantics",
+    "release/wave/geography/sample identity"
+  ],
+  "c11_required_classes": [
+    "EmpiricalUniverse identity",
+    "scoped respondent identity",
+    "RespondentEvent incidence",
+    "EmpiricalCoordinateFact incidence",
+    "RoutingEligibilityFact incidence or exact deterministic rule reference",
+    "WeightMeasureFact incidence",
+    "AuthoritySnapshot identity",
+    "source-universe relation/overlap/linkage authority where applicable",
+    "semantic-integrity and replay manifests"
+  ],
+  "allowed_normalization_requires_named_authority": true,
+  "allowed_normalization_examples": [
+    "physical row-order normalization where semantics are unordered",
+    "explicit multiselect-set option ordering normalization",
+    "canonical alias retained alongside raw identity",
+    "exact versioned source-to-canonical crosswalk"
+  ],
+  "forbidden_normalization": [
+    "fuzzy label matching",
+    "nearest category or geography substitution",
+    "raw identity deletion",
+    "missing weight to 1.0",
+    "missing topology to scalar",
+    "absent row to not-asked without authority",
+    "DK/refusal/IAP collapse",
+    "generic duplicate removal",
+    "unproved source pooling",
+    "empirical coordinate to generated structural position promotion"
+  ],
+  "non_certifying_shortcuts": [
+    "schema parity",
+    "row-count parity",
+    "respondent-count parity without exact ID-set equality",
+    "aggregate parity",
+    "selected-query parity",
+    "serialized-file hash parity",
+    "schema hash parity",
+    "canonical label equality",
+    "current fixed indicator coverage"
+  ],
+  "logical_hash_law": "INTEGRITY_SEAL_ONLY_AFTER_COMPLETE_DIMENSIONAL_PROOF",
+  "source_snapshot_retention": {
+    "CERTIFIED": "RETAIN",
+    "FAILED": "RETAIN",
+    "BLOCKED": "RETAIN",
+    "retirement_authority_created": false
+  },
+  "receipt_identity_inputs": [
+    "git_head",
+    "protocol_version_and_content_hash",
+    "source_release_universe_identity",
+    "source_snapshot_hash_set",
+    "authority_snapshot_hashes",
+    "ingest_query_code_config_fixture_hashes",
+    "c11_universe_and_semantic_content_identity",
+    "proof_dimension_evidence_hashes",
+    "replay_run_identities",
+    "logical_semantic_projection_hash",
+    "replay_root"
+  ],
+  "mutable_latest_allowed": false,
+  "source_pooling_authorized": false,
+  "source_retirement_authorized": false
+}
