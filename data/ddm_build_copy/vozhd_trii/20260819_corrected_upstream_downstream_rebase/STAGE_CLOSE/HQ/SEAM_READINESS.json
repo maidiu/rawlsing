@@ -1,14 +1,16 @@
 {
-  "dispatch_epoch":"R03_STAGE_CLOSE_DISPATCH_EPOCH_02_FINAL_BINDERS",
+  "dispatch_epoch":"R03_STAGE_CLOSE_FINAL_RECLOSURE",
   "dispatch_branch":"agent/vozhd-trii-stage-close-dispatch",
-  "global_dispatch_state":"M5_M6_ISSUED__NO_FURTHER_RECYCLE_BEFORE_REVIEW",
+  "global_dispatch_state":"M1_M6_ACCEPTED_FROZEN__COMMAND_REVIEW_02_PASS__FINAL_RECLOSURE_ACTIVE",
   "M1":{"status":"ACCEPTED_FROZEN","semantic_head":"088848577fd42f3b69e78551d5277c91e5aa128d","result_token":"M1_ACCEPTED__SCR553_SCR554_SEAM_CLOSED"},
   "M2":{"status":"ACCEPTED_FROZEN__SCR555_EXACT_CONTRACT_CLOSED","semantic_head":"92128619122886d0ced877a29b42fdb453765246","result_token":"M2_ACCEPTED__SCR555_EXACT_CONTRACT_CLOSED"},
   "M3":{"status":"ACCEPTED_FROZEN__SCR556_EXACT_CONTRACT_CLOSED","result_token":"M3_ACCEPTED__SCR556_EXACT_CONTRACT_CLOSED","result_json_blob":"c5c2f85bade35a1b1cda9a26ce946f76d39ec953"},
   "M4":{"status":"ACCEPTED_FROZEN__SCR5578_EXACT_CONTRACT_CLOSED","semantic_head":"988fa8abe755eee636e52a6b6eb09072b5a0f111","result_token":"M4_ACCEPTED__SCR5578_EXACT_CONTRACT_CLOSED","result_json_blob":"c83c9d83e5bd8050d81b483319fcdd2e65d5a2ce","m5_rsc_handoff_blob":"d54efeb22b5514584df4bff8a7e42fc4adda81ef"},
-  "M5":{"status":"ISSUED_ACTIVE","assignment_id":"E02-W07-M5-FINAL-001","branch":"agent/vozhd-trii-dr-r03-seam-m5-v3-peer-prior","worker_slot":7,"chat_id":"CHAT-SV3M","most_recent_submitting_agent_id":"SV3F"},
+  "M5":{"status":"ACCEPTED_FROZEN__V3_STRUCTURAL_PEER_PRIOR_SEAM_CLOSED","semantic_head":"54f163b38fb0589327ea7b50fd98b537d7d91831","result_token":"M5_ACCEPTED__V3_STRUCTURAL_PEER_PRIOR_SEAM_CLOSED","result_json_blob":"2ee81a81d28562f661ff3c33c48bfad3c9b1ce49","v3_structural_peer_handoff_blob":"324197faad304d584a4351833394307964ca5c7a"},
   "SCRV3_M6_HANDOFF_LITERALIZATION":{"status":"ACCEPTED_FROZEN","semantic_head":"3a50391fd4f8c23a7fd2c61ac7aaac31a0ce4006","result_token":"SCRV3_M6_HANDOFF_LITERALIZATION_COMPLETE","result_json_blob":"40659e81c0b5ba33a01ed561457156d635c93d04","m6_handoff_blob":"085ec32708afb8f9b9be70bdea16b326770bebb2"},
-  "M6":{"status":"ISSUED_ACTIVE","assignment_id":"E02-W01-M6-FINAL-001","branch":"agent/vozhd-trii-dr-r03-seam-m6-v2-expression","worker_slot":1,"chat_id":"CHAT-S554D","most_recent_submitting_agent_id":"M6_PREFLIGHT"},
-  "whole_machine_reclosure":"BLOCKED_UNTIL_M5_M6_ACCEPTED_THEN_COMMAND_REVIEW_AND_POST_REVIEW_INSPECTORATE_RECLOSURE",
-  "implementation_authorized":false
+  "M6":{"status":"ACCEPTED_FROZEN__V2_ACTOR_SAFE_EXPRESSION_SEAM_CLOSED","semantic_head":"a93335e577f018241d3d027bb8827a79907b9f28","result_token":"M6_ACCEPTED__V2_ACTOR_SAFE_EXPRESSION_SEAM_CLOSED","result_json_blob":"920f3b4ceac47183d95668c2b302d5660c02f97d","v2_actor_safe_ingress_handoff_blob":"1b70c8cab48c0b9b9624ad5bde1c81a34e29b413"},
+  "command_review_02":{"status":"PASS__NO_SEMANTIC_DRIFT_FOUND","result_blob":"18364600960e50cad8758beb7075a94108217bee"},
+  "whole_machine_reclosure":{"status":"ACTIVE_FINAL_INSPECTORATE","assignment_id":"E02-W08-FINAL-RECLOSURE-001","branch":"agent/vozhd-trii-dr-r03-inspectorate-final-reclosure","worker_slot":8,"chat_id":"CHAT-SINSP"},
+  "implementation_authorized":false,
+  "implementation_gate":"WAITING_FINAL_INSPECTORATE_AND_HQ_ADJUDICATION"
 }
