@@ -1,0 +1,127 @@
+{
+  "court": "PRE553_PD01_LIB_SOURCE_DOCUMENT_AUTHORITY_REALITY_COURT",
+  "repository": "maidiu/rawlsing",
+  "exact_head": "9188dc9fb7a8b92b981f3d3f94754cd6137d17b1",
+  "runtime_changes": false,
+  "postgres_queries_executed": false,
+  "p05_certified_issued": false,
+  "disposition": "DOCUMENTARY_FRONTIER_ESTABLISHED__PHYSICAL_EQUIVALENCE_UNPROVEN",
+  "first_source_documentary_candidate": {
+    "source": "World Values Survey",
+    "release": "W7 v6.0.0",
+    "source_release_date": "2022-05-31",
+    "doi": "10.14281/18241.24",
+    "classification": "FIRST_SOURCE_DOCUMENTARY_CANDIDATE",
+    "populated_confirmation": "REQUIRED",
+    "p05_precertification_readiness": "BLOCKED_AUTHORITY_GAP"
+  },
+  "github_probe_baseline": {
+    "pd01_populated_probes": "NOT_LOCATED_AT_EXACT_HEAD"
+  },
+  "source_universe": {
+    "schema_signaled_respondent_demo_surfaces": 36,
+    "documentarily_deep_sources": [
+      "WVS W1",
+      "WVS W4",
+      "WVS W7"
+    ],
+    "documentarily_partial_other_families": [
+      "Afrobarometer",
+      "Arab Barometer",
+      "Asian Barometer",
+      "European Values Study",
+      "General Social Survey",
+      "Latinobarometro",
+      "Life in Transition Survey",
+      "South Asia survey"
+    ],
+    "warning": "schema surface and family-level audit evidence are not populated-data or complete per-release P05 authority"
+  },
+  "wvs_w7_findings": {
+    "typed_absence": "DOCUMENTARILY_SUPPORTED",
+    "ordered_rank_pairs": [
+      "Q152/Q153",
+      "Q154/Q155",
+      "Q156/Q157"
+    ],
+    "respondent_identity": "D_INTERVIEW documented composite identity",
+    "psu": "I_PSU documented",
+    "weights": [
+      "W_WEIGHT",
+      "S018",
+      "source-documented product for combined purpose"
+    ],
+    "full_routing": "MISSING_SOURCE_DOCUMENTATION",
+    "full_design_variance_authority": "MISSING_SOURCE_DOCUMENTATION",
+    "source_to_c11_transformation_authority": "AUTHORITY_GAP",
+    "populated_equivalence": "UNPROVEN"
+  },
+  "schema_ruling": {
+    "respondent_grain": "SCHEMA_CAN_REPRESENT",
+    "source_wave_dataset_file_provenance": "SCHEMA_CAN_REPRESENT",
+    "named_weights": "SCHEMA_CAN_REPRESENT",
+    "typed_absence_first_class": "NOT_PRESENT_IN_GENERIC_RESPONSE_TABLE",
+    "routing_risk_set_first_class": "NOT_PRESENT_IN_GENERIC_RESPONSE_TABLE",
+    "repeated_same_var_event_identity": "NONPARITY_RISK_DUE_TO_PRIMARY_KEY_RESPONDENT_VAR"
+  },
+  "m01_m18": {
+    "M01": "MISSING_SOURCE_DOCUMENTATION",
+    "M02": "DOCUMENTARILY_SUPPORTED",
+    "M03": "DOCUMENTARILY_SUPPORTED",
+    "M04": "REQUIRES_POPULATED_POSTGRES_CONFIRMATION",
+    "M05": "DOCUMENTARILY_SUPPORTED",
+    "M06": "DOCUMENTARILY_SUPPORTED",
+    "M07": "MISSING_SOURCE_DOCUMENTATION",
+    "M08": "REQUIRES_POPULATED_POSTGRES_CONFIRMATION",
+    "M09": "AUTHORITY_GAP",
+    "M10": "AUTHORITY_GAP",
+    "M11": "MISSING_SOURCE_DOCUMENTATION",
+    "M12": "GITHUB_SCHEMA_SUPPORT_ONLY",
+    "M13": "GITHUB_SCHEMA_SUPPORT_ONLY",
+    "M14": "GITHUB_SCHEMA_SUPPORT_ONLY",
+    "M15": "GITHUB_SCHEMA_SUPPORT_ONLY",
+    "M16": "AUTHORITY_GAP",
+    "M17": "MISSING_SOURCE_DOCUMENTATION",
+    "M18": "REQUIRES_POPULATED_POSTGRES_CONFIRMATION"
+  },
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "SOURCE_RELEASE_DOCUMENTARY_INVENTORY.csv",
+    "QUESTION_VARIABLE_SEMANTIC_MAP.csv",
+    "ROUTING_ELIGIBILITY_MATRIX.csv",
+    "RESPONDENT_RECONSTRUCTIBILITY_MATRIX.csv",
+    "WEIGHT_DESIGN_ESTIMAND_MATRIX.csv",
+    "SOURCE_TRANSFORMATION_CHAIN.md",
+    "M01_M18_DOCUMENTARY_MATRIX.csv",
+    "P05_PRECERTIFICATION_READINESS.csv",
+    "POPULATED_POSTGRES_CONFIRMATION_REQUIREMENTS.md",
+    "SQL_PROBE_AUGMENTATIONS.md",
+    "FIRST_SOURCE_DOCUMENTARY_CANDIDATE.md",
+    "MISSING_LIBRARY_OR_SOURCE_DOCUMENTS.md"
+  ],
+  "evidence_register": {
+    "TASK": "Library: Pasted text(20260820-183309).txt, lines 1-490 (especially 37-58, 143-171, 173-426, 442-490)",
+    "D13": "Library: Pasted text(20260819-162348).txt, D12/D13/C11 sections; M01-M18 and source-retention law",
+    "D13C": "Library: Pasted text(20260819-153505).txt, hostile burden section: required replay inputs, scalar duplicate-key/event/routing deficits",
+    "W7_Q": "Library: WVS Wave 7 (2017) Questionnaire.pdf, p.1 (global special codes); pp.11-12 (ranked first/second-choice batteries)",
+    "W7_C_RELEASE": "Library: WVS Wave 7 (2017) Codebook.pdf, p.2 (VERSION 6-0-0, 2022-05-31; DOI 10.14281/18241.24; A_STUDY)",
+    "W7_C_WEIGHT": "Library: WVS Wave 7 (2017) Codebook.pdf, pp.8-9 (W_WEIGHT purpose; S018 equilibrated country weight; product guidance)",
+    "W7_C_RANK": "Library: WVS Wave 7 (2017) Codebook.pdf, p.51 (Q154/Q155 special states including DK, no answer, not asked, no second answer/no first answer)",
+    "W7_C_ID": "Library: WVS Wave 7 (2017) Codebook.pdf, p.73 (D_INTERVIEW composite 9-digit interview identity: country + wave + original interview code)",
+    "W7_C_PSU": "Library: WVS Wave 7 (2017) Codebook.pdf, p.77 (I_PSU Primary Sampling Unit; -4 not asked; -5 missing)",
+    "W7_C_Q223": "Library: WVS Wave 7 (2017) Codebook.pdf, Q223 codebook row (country-specific party coding; distinct nonresponse/not-applicable states)",
+    "W4": "Library: WVS Wave 4 (2000) Questionnaire.pdf; Library: WVS Wave 4 (2000) Codebook.pdf, p.1ff (Study 906-WVS2000, wave 4 1999-2004; -4 not asked/-2 no answer/-1 DK, and -3 N/A where applicable); p.33 V245 weight",
+    "W1": "Library: WVS Wave 1 (1981) Questionnaire.pdf; Library: WVS Wave 1 (1981) Codebook.pdf, p.18ff (Study 906-WVS1981, wave 1 1981-1984, v20200208; V236 Weight; S007 unified respondent number; S018/S019 equilibrated weights)",
+    "R14": "Library: R14_SOURCE_NATIVE_CANDIDATE_INTEGRITY_AUDIT_R3.csv, WVS W7 grouped source-native candidate rows and questionnaire locators; status SEMANTIC_REVIEW_READY where reported",
+    "PUBLIC_RESP": "Conversation upload: Rawlsing_WVS_public_schema(1).sql:L6450-L6512 and L7369-L7389",
+    "PUBLIC_DEMO": "Conversation upload: Rawlsing_WVS_public_schema(1).sql:L2102-L2230 and L7319-L7341",
+    "PUBLIC_SOURCE": "Conversation upload: Rawlsing_WVS_public_schema(1).sql:L6275-L6286",
+    "PUBLIC_QUESTION": "Conversation upload: Rawlsing_WVS_public_schema(1).sql:L597-L610",
+    "AUTH_REG": "Conversation upload: Rawlsing_WVS_authority_reconcile_schema(1).sql:L36-L53 and L84-L95",
+    "I01": "GitHub: rawlsing_next/pre553_empirical_objects.py @ 9188dc9fb7a8b92b981f3d3f94754cd6137d17b1",
+    "I04": "GitHub: rawlsing_next/pre553_structural_admission.py @ 9188dc9fb7a8b92b981f3d3f94754cd6137d17b1",
+    "TREE": "GitHub repository tree maidiu/rawlsing @ 9188dc9fb7a8b92b981f3d3f94754cd6137d17b1"
+  },
+  "return_token": "PRE553_PD01_LIB_SOURCE_DOCUMENT_AUTHORITY_REALITY_COMPLETE"
+}
