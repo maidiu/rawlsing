@@ -1,0 +1,150 @@
+{
+  "archive_members_used": [
+    "surveys/GSS1972.sav",
+    "surveys/GSS1973.sav",
+    "surveys/GSS1984.sav",
+    "surveys/GSS1993.sav",
+    "surveys/GSS2002.sav",
+    "surveys/GSS2010.sav",
+    "surveys/GSS2016.sav",
+    "surveys/GSS2024.sav"
+  ],
+  "branch": "agent/vozhd-trii-sr09pre-r05-gss",
+  "checkout_verification": {
+    "ahead_by": 0,
+    "base": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+    "behind_by": 0,
+    "head": "agent/vozhd-trii-sr09pre-r05-gss",
+    "method": "GitHub branch compare",
+    "status": "identical"
+  },
+  "completion_token": "PRE553_SR09PRE_R05_GSS_RECON_COMPLETE",
+  "database_url_used": false,
+  "exact_checkout_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "exact_commands_scripts": [
+    "files.materialize(file_id=file_0000000036e0822f963b9604cb2bad49, destination=/mnt/data/sr09pre_r05_private/surveys.zip)",
+    "stat -c %s /mnt/data/sr09pre_r05_private/surveys.zip && sha256sum /mnt/data/sr09pre_r05_private/surveys.zip",
+    "unzip -Z1 /mnt/data/sr09pre_r05_private/surveys.zip | select only surveys/GSS1972.sav surveys/GSS1973.sav surveys/GSS1984.sav surveys/GSS1993.sav surveys/GSS2002.sav surveys/GSS2010.sav surveys/GSS2016.sav surveys/GSS2024.sav; unzip -p each > /mnt/data/sr09pre_r05_private/extracted/<member>",
+    "sha256sum /mnt/data/sr09pre_r05_private/extracted/GSS*.sav and exact comparison to R05 inventory",
+    "python /mnt/data/sr09pre_r05_private/gss_longitudinal_probe.py",
+    "python /mnt/data/sr09pre_r05_private/build_returns.py"
+  ],
+  "extracted_sources": [
+    {
+      "path": "/mnt/data/sr09pre_r05_private/extracted/GSS1972.sav",
+      "sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+      "size_bytes": 1647241,
+      "source_file": "GSS1972.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r05_private/extracted/GSS1973.sav",
+      "sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+      "size_bytes": 1984639,
+      "source_file": "GSS1973.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r05_private/extracted/GSS1984.sav",
+      "sha256": "1da2df0c0e0692817081a46856deeaa6c78891101e53cf0139a971de16f7ac18",
+      "size_bytes": 4309530,
+      "source_file": "GSS1984.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r05_private/extracted/GSS1993.sav",
+      "sha256": "7fc409cc07172f9a556bf88c5df8d2ea5e539b2a6ff37348711eeb21b4355ae8",
+      "size_bytes": 5506397,
+      "source_file": "GSS1993.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r05_private/extracted/GSS2002.sav",
+      "sha256": "8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1",
+      "size_bytes": 17746227,
+      "source_file": "GSS2002.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r05_private/extracted/GSS2010.sav",
+      "sha256": "c229aff7430c12f246678f385e0776b089681ae9830bac88423e0964ac34ee05",
+      "size_bytes": 10170184,
+      "source_file": "GSS2010.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r05_private/extracted/GSS2016.sav",
+      "sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+      "size_bytes": 16989724,
+      "source_file": "GSS2016.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r05_private/extracted/GSS2024.sav",
+      "sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+      "size_bytes": 20922610,
+      "source_file": "GSS2024.sav"
+    }
+  ],
+  "family": "GSS",
+  "final_git_status": "REMOTE_CONNECTOR_WORKTREELESS__publication uses sequential GitHub contents-API commits; every commit adds exactly one required RETURNS/R05 artifact. Six payloads were byte-verified by matching local git blob SHA to remote blob SHA before receipt publication; final branch delta is verified post-publication and reported to HQ.",
+  "full_scan_target_reason": {
+    "GSS1972.sav": "Measure within-file id injectivity, exact physical missing-state incidence/conservation, structural coordinate distributions, and exact zero-based hostile sentinel rows for this assigned source.",
+    "GSS1973.sav": "Measure within-file id injectivity, exact physical missing-state incidence/conservation, structural coordinate distributions, and exact zero-based hostile sentinel rows for this assigned source.",
+    "GSS1984.sav": "Measure within-file id injectivity, exact physical missing-state incidence/conservation, structural coordinate distributions, and exact zero-based hostile sentinel rows for this assigned source.",
+    "GSS1993.sav": "Measure within-file id injectivity, exact physical missing-state incidence/conservation, structural coordinate distributions, and exact zero-based hostile sentinel rows for this assigned source.",
+    "GSS2002.sav": "Measure within-file id injectivity, exact physical missing-state incidence/conservation, structural coordinate distributions, and exact zero-based hostile sentinel rows for this assigned source.",
+    "GSS2010.sav": "Measure within-file id injectivity, exact physical missing-state incidence/conservation, structural coordinate distributions, and exact zero-based hostile sentinel rows for this assigned source.",
+    "GSS2016.sav": "Measure within-file id injectivity, exact physical missing-state incidence/conservation, structural coordinate distributions, and exact zero-based hostile sentinel rows for this assigned source.",
+    "GSS2024.sav": "Measure within-file id injectivity, exact physical missing-state incidence/conservation, structural coordinate distributions, and exact zero-based hostile sentinel rows for this assigned source."
+  },
+  "legacy_postgres_used_as_truth": false,
+  "library_bundles": [
+    {
+      "filename": "surveys.zip",
+      "materialized_path": "/mnt/data/sr09pre_r05_private/surveys.zip",
+      "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+      "size_bytes": 158180333
+    }
+  ],
+  "library_raw_source_files_unchanged": true,
+  "output_file_git_blob_sha": {
+    "AUTHORITY_GAPS.csv": "84daaac42d19f311d2724e19af71a94ac91e8596",
+    "CROSS_WAVE_DRIFT.csv": "f445041ea66833f9232e403d2087c199eeb64e88",
+    "HOSTILE_SENTINELS.csv": "1e55f5889720d39c2fe28800563a61ae6e2f70bd",
+    "RESULT.json": "73509046e38791de868ace0121fb0fdf8d35c1b7",
+    "RESULT.md": "505a100f93b5e2b188fef96a4f01a06d7ae8865f",
+    "SOURCE_BURDEN.csv": "a184914c0907eecf44d055238077a587f0651d36"
+  },
+  "output_file_sha256": {
+    "AUTHORITY_GAPS.csv": "40669864beeeb20586edb6ed42282f2c1e07357fb68d9814f2d285e1c7aed906",
+    "CROSS_WAVE_DRIFT.csv": "7f4a832770479ab778195da4dc0fbbb260db5fb88248bba461bae28644982a93",
+    "HOSTILE_SENTINELS.csv": "8f9c6be9b5094f846543ee0f1e7b57106ed6b6ca8faf4a180d6c4022745fbd4d",
+    "RESULT.json": "cbfd3ebb4bb53ff4378138b19f9bc3ace9a463f92e75aee6825da451a7b77481",
+    "RESULT.md": "111a436db9eaba9a4c523318699b5e8fc2b3b45521e9b3a028d867f79ec335a3",
+    "SOURCE_BURDEN.csv": "833a90526e4072f5f0428b10b4c8128c1d009f763c75e262167c7fd08c1a88c9"
+  },
+  "probe_implementation": {
+    "compact_probe_sha256": "ffc32d2c7784fc007ef3da8326d7f9e418fa9d876793ad4023603c5cc638c037",
+    "cross_adjacent_sha256": "ffb0fcedb3005b8b2af712289827dc39aaa555e4138e6f87eb486bb4e42e306a",
+    "longitudinal_probe_sha256": "63d6573d590c23aa917d2a9d30c74093ecb5af0ae069881decb4c723c160c3f9",
+    "notes": "Custom read-only parser was used only for bounded reconnaissance because pyreadstat was absent. It preserves raw numeric values, system-missing markers, SPSS user-missing declarations/ranges, labels, ordinals, long names, encoding declaration, and scans compressed data without value-format substitution. No scratch probe code/output is committed.",
+    "sav_probe_sha256": "f3886d3c2f905dba11f038f0b8cf95e4351e6fa6601ebe8156740b6e152f73a4",
+    "scratch_only": true
+  },
+  "probe_receipt_self_hash_policy": "PROBE_RECEIPT.json self-hash intentionally excluded to avoid recursive self-reference; HQ receipt reports the final committed blob/commit identity separately.",
+  "production_runtime_modified": false,
+  "scratch_root": "/mnt/data/sr09pre_r05_private",
+  "sources_fully_scanned": [
+    "GSS1972.sav",
+    "GSS1973.sav",
+    "GSS1984.sav",
+    "GSS1993.sav",
+    "GSS2002.sav",
+    "GSS2010.sav",
+    "GSS2016.sav",
+    "GSS2024.sav"
+  ],
+  "tool_dependency_versions": {
+    "git": "2.47.3",
+    "pandas": "2.2.3 (not used for SAV decoding)",
+    "pyreadstat": "unavailable in worker container; installation attempt could not reach package index",
+    "python": "3.13.5",
+    "sha256sum": "GNU coreutils 9.7",
+    "unzip": "Info-ZIP 6.00"
+  },
+  "worker_id": "R05"
+}
