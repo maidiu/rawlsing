@@ -1,7 +1,7 @@
 # PRE553 R5 long-sharded shadow implementation
 
 Starting HEAD: `ab19862b9485741228dfa84f4c976c6110171065`.
-Final commit: recorded after the final receipt commit in the Git history.
+Final commit: `ad37794a0ad158c1bbf8c2092683d0b2724a87bc`.
 
 The candidate is contained to `rawlsing_next/pre553_r5_*.py`, `rawlsing_next/test_pre553_r5_*.py`, and this small receipt directory. It does not alter R4, the frozen decoder, C11 semantic/integrity/repository modules, I03, I05, I04, V553+, V3, or V2.
 
