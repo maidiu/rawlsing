@@ -1,11 +1,11 @@
-# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 10 REAL B2 RETRY AFTER ORACLE-PROOF ACCEPTANCE
+# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 11 REAL-ORACLE CANONICALIZATION CORRECTION
 
 Repository: `maidiu/rawlsing`
 Frozen semantic parent: `9188dc9fb7a8b92b981f3d3f94754cd6137d17b1`
 Control branch: `agent/vozhd-trii-pre553-substrate-reconstruction-control`
 Accepted real B1 checkpoint: `/private/tmp/SR04_B1_NEUTRAL_CHECKPOINT`
-Accepted corrected harness implementation: `ea0d02ffde10a98872e73ea2b1fed8e453246cfb`
-Accepted corrected harness SHA-256: `12a4eb3bace293ddf355c9661e051f77be3735813d6d776c61c472be0ba81c7d`
+Accepted harness before this correction: `ea0d02ffde10a98872e73ea2b1fed8e453246cfb`
+Accepted harness SHA-256 before this correction: `12a4eb3bace293ddf355c9661e051f77be3735813d6d776c61c472be0ba81c7d`
 
 The exact launch HEAD is supplied by HQ. Verify it before doing anything.
 
@@ -19,39 +19,37 @@ Accepted:
 - PostgreSQL UTF-8 transport correction and proof;
 - shape-agnostic deliberate wrong-oracle negative-test correction and proof.
 
-Two earlier real B2 attempts are NON-ADMISSIBLE carrier evidence:
+Three REAL B2 attempts are NON-ADMISSIBLE carrier evidence:
 
-1. first failed during PostgreSQL ASCII COPY transport;
-2. second passed corrected PostgreSQL UTF-8 transport but failed in the synthetic-era list-only deliberate wrong-oracle negative test.
+1. PostgreSQL ASCII COPY transport failure;
+2. synthetic-era list-only wrong-oracle negative-test failure;
+3. shared real-oracle comparison failure after all four replay digests and both negative tests passed.
 
 Binding newest authority:
 
-`28_SR04_ORACLE_NEGATIVE_PROOF_ACCEPTANCE_AND_B2_RETRY_AUTHORITY.md`
+`30_SR04_REAL_ORACLE_CANONICALIZATION_CORRECTION_GATE.md`
 
-REAL B2 RETRY IS AUTHORIZED.
+REAL B2 IS BLOCKED.
 No raw-source execution is authorized.
 
-## Mission — REAL B2 RETRY ONLY
+## Immediate mission — cheap real-oracle canonicalization proof only
 
-Execute the accepted corrected harness in explicit `--stage-b2` mode against the accepted neutral checkpoint only.
+Modify only:
 
-Harness and governance are READ ONLY.
+`data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR04_CARRIER_BAKEOFF.py`
 
-Boundary:
+Implement exactly the bounded correction in authority 30:
 
-`accepted checkpoint -> checkpoint verification -> shared four-candidate carrier court -> shared validation -> provisional selection -> exact final package -> deterministic ZIP -> STOP`
+1. deterministic non-mutating canonicalization of the frozen B1 mixed-shape oracle into shared row-array comparison shape;
+2. Q01 SQL restriction to the exact frozen hostile source-variable sets;
+3. shared Q06 finite-value abs/rel tolerance `1e-9` comparator;
+4. one explicit checkpoint-only proof mode using the exact shared query map, candidate normalizer and oracle comparator.
 
-B2 MUST NOT invoke `build_fixture` and MUST NOT decode raw survey bytes.
+Do not modify `QUERY_ORACLE.json` or any accepted checkpoint byte.
 
-## Preflight
+## Accepted checkpoint identity
 
-Verify exact checkout HEAD supplied by HQ.
-
-Verify harness SHA-256:
-
-`12a4eb3bace293ddf355c9661e051f77be3735813d6d776c61c472be0ba81c7d`
-
-Verify `/private/tmp/SR04_B1_NEUTRAL_CHECKPOINT` contains exactly these six substantive files:
+Verify `/private/tmp/SR04_B1_NEUTRAL_CHECKPOINT` contains exactly:
 
 | file | bytes | SHA-256 |
 |---|---:|---|
@@ -64,127 +62,87 @@ Verify `/private/tmp/SR04_B1_NEUTRAL_CHECKPOINT` contains exactly these six subs
 
 If any identity differs, STOP.
 
-## Failed-run cleanup
+## Cheap proof command shape
 
-The failed B2 attempt may have left:
+After implementing the proof mode, run only:
 
-`/private/tmp/SR04_B2_CARRIER_BAKEOFF_RESULTS`
+`python3 data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR04_CARRIER_BAKEOFF.py --real-oracle-canonicalization-proof --checkpoint-dir /private/tmp/SR04_B1_NEUTRAL_CHECKPOINT --work-root /private/tmp/SR04_REAL_ORACLE_CANON_WORK --output-dir /private/tmp/SR04_REAL_ORACLE_CANON_PROOF`
 
-and/or:
+The exact flag spelling may differ only if the committed implementation uses another explicit unambiguous name documented in the return.
 
-`/private/tmp/SR04_B2_WORK`
+The proof MUST:
 
-Before deleting anything, verify each existing path is exactly that disposable failed-B2 path, is not a symlink, and is not a parent, child, alias, or other resolution of the accepted B1 checkpoint.
+`checkpoint_read -> canonicalize frozen oracle -> in-memory DuckDB registration of accepted checkpoint relations -> execute exact shared Q00-Q15 query map once -> exact shared candidate normalization -> exact shared oracle comparator -> proof receipt -> STOP`
 
-It is authorized to delete ONLY those two failed disposable B2 paths so the retry can use fresh paths.
-
-Never delete, move, rewrite, or repackage:
-
-`/private/tmp/SR04_B1_NEUTRAL_CHECKPOINT`
-
-## Exact retry command
-
-After the two B2 paths are confirmed absent/fresh:
-
-`python3 data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR04_CARRIER_BAKEOFF.py --stage-b2 --checkpoint-dir /private/tmp/SR04_B1_NEUTRAL_CHECKPOINT --work-root /private/tmp/SR04_B2_WORK --output-dir /private/tmp/SR04_B2_CARRIER_BAKEOFF_RESULTS`
-
-Do NOT pass `--source-root`.
-No short wrapper timeout.
-
-## Required carrier law
-
-Execute exactly:
-
-1. `PARQUET_DUCKDB_DIRECT`
-2. `DUCKDB_NATIVE`
-3. `POSTGRES_EPHEMERAL`
-4. `SQLITE`
-
-The PostgreSQL candidate must retain the accepted UTF8 server/client transport.
-
-The shared wrong-oracle negative test must use the accepted shape-agnostic corruption helper.
-
-For every candidate preserve:
-
-- oracle correctness;
-- true stored readback digest;
-- one warm-up + five scored Q00-Q15 repetitions;
-- median and p95;
-- sequential batch time;
-- cold-open time;
-- index-build time where applicable;
-- persistent disk;
-- peak RSS;
-- 5 GiB reserve and frozen candidate disk budget;
-- frozen build/query ceilings;
-- candidate-local cleanup only.
-
-A candidate may not be `MEASURED_CORRECT` unless both oracle and replay checks pass.
-
-Selection law remains:
-
-`flawless effectiveness -> fastest batch -> <=10% speed tie -> lightness`
-
-## Final package
-
-Required output files exactly:
-
-- `RECEIPT.json`
-- `ENVIRONMENT.json`
-- `FIXTURE_MANIFEST.json`
-- `FIXTURE_DIGESTS.json`
-- `QUERY_ORACLE.json`
-- `CANDIDATE_RESULTS.json`
-- `PROVISIONAL_SELECTION.json`
-- `STDOUT.txt`
-- `STDERR.txt`
-
-Also require the deterministic ZIP produced by the harness.
+No persistent carrier court is allowed.
 
 Required token:
 
-`PRE553_SR04_CARRIER_BAKEOFF_RECEIPT_COMPLETE`
+`PRE553_SR04_REAL_ORACLE_CANONICALIZATION_PROOF_PASS`
 
-## Return to HQ
+## Required proof assertions
 
-Return:
+All must be true:
 
-- exact checkout HEAD;
-- harness SHA-256;
-- exact command;
-- exit code;
-- checkpoint preflight sizes/hashes;
-- final result directory;
-- deterministic ZIP path, bytes, SHA-256;
-- complete nine-file final package;
-- all four candidate dispositions;
-- all four batch times;
-- all four persistent disk sizes;
-- all four peak RSS measurements;
-- PostgreSQL server/client encoding observed during real B2 if recorded;
-- wrong-oracle negative-test result;
-- stored-corruption negative-test result;
-- provisional selection;
-- completion-token presence;
-- final `git status -sb`.
-
-Then STOP.
+- checkpoint identity pass;
+- checkpoint unchanged before/after;
+- no raw source decode;
+- no B1/B2 execution;
+- no persistent candidate materialization;
+- PostgreSQL not started;
+- DATABASE_URL unused;
+- frozen oracle object unchanged;
+- exactly 16 query IDs;
+- shared query map used;
+- shared candidate normalizer used;
+- shared oracle comparator used;
+- Q00 through Q15 all pass;
+- Q01 excludes the non-hostile filler variables and exactly matches frozen B1 Q01 after canonicalization;
+- Q06 finite values and `1e-9` tolerance path pass;
+- inside-tolerance synthetic perturbation accepted;
+- outside-tolerance synthetic perturbation rejected;
+- canonical wrong-oracle negative test detected.
 
 ## Forbidden
 
 Do not:
 
-- rerun B1;
+- run B1;
+- run B2;
 - pass `--source-root`;
-- decode WVS7 or LiTS I;
-- mutate checkpoint bytes;
-- use or inspect `DATABASE_URL`;
+- decode WVS7 or LiTS I raw bytes;
+- mutate/rewrite/repackage the B1 checkpoint;
+- regenerate or replace the frozen B1 oracle;
+- change source fixture relations;
+- change Q00/Q02-Q15 semantics;
+- change candidate implementations/layouts;
+- change replay logic;
+- change timing loops, index law, budgets or selection law;
+- reopen PostgreSQL UTF-8 transport;
+- change the accepted shape-agnostic oracle-corruption helper except to route its result through the new canonical comparator if mechanically required;
+- use or inspect DATABASE_URL;
 - touch live Rawlsing PostgreSQL;
-- modify harness/governance/runtime;
-- change candidates, Q00-Q15, oracle construction, normalization, replay, timing, indexes, budgets, or selection law;
-- reopen the accepted PostgreSQL UTF-8 correction;
-- modify the accepted oracle-negative-test helper;
-- commit execution outputs;
-- treat either earlier failed B2 attempt as carrier evidence.
+- commit proof outputs.
 
-Fail closed on any checkpoint mismatch or execution ambiguity.
+## Publication
+
+After proof passes:
+
+1. verify only `SR04_CARRIER_BAKEOFF.py` changed;
+2. commit only that file with message `Fix SR04 real-oracle canonical comparison`;
+3. push the control branch;
+4. return to HQ:
+   - exact starting HEAD;
+   - new harness HEAD;
+   - harness SHA-256;
+   - exact proof command;
+   - complete proof receipt;
+   - per-query Q00-Q15 comparison booleans;
+   - Q01 observed/canonical row counts and excluded filler-variable evidence;
+   - Q06 observed/expected/difference/tolerance evidence;
+   - required token;
+   - final `git status -sb`;
+   - pushed branch HEAD;
+5. STOP.
+
+HQ will separately inspect the correction before any further REAL B2 retry.
