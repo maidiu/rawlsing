@@ -1,0 +1,93 @@
+{
+  "schema": "POST_R4_ROUND2_R2_01_INFORMATION_LOSS_RETURN@1",
+  "cell": "R2_01_INFORMATION_LOSS",
+  "status": "AUTHORIZED__ROUND2_HOSTILE__NON_DISPOSITIVE__NO_RUNTIME_MUTATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-postr4-r2-r01-information-loss",
+  "starting_head": "d612b24cce9d53bdff90fc2d7ac2604d34da02ca",
+  "p0": "P0_BOUNDED_TYPED_CANONICAL_INCIDENCE_WITH_UNIFORM_C11_VIEW",
+  "final_disposition": "ROUND2_PASS_WITH_REQUIRED_CORRECTIONS__P0_REPAIRABLE",
+  "required_token": "POST_R4_R2_R01_INFORMATION_LOSS_RETURNED",
+  "runtime_modified": false,
+  "rawlsing_next_modified": false,
+  "raw_source_probes": [],
+  "round1_exact_returns_read": {
+    "R01": "f3e1d198ca5b680adfe3330a7460d0b174f395e6",
+    "R02": "6447d57a9818b5a427ad0367858f2030e127f8d8",
+    "R03": "220e017f34b2741fce80b7a6850a1679ea0ce0fe",
+    "R04": "bfc6b19c3bbdd43f1a04184d02515dc38dd82712",
+    "R05": "b2c74427b568ea9a9447fc2631e002830d700919",
+    "R06": "d573389eaf8df63c124d1439933bbe3cef4dda23"
+  },
+  "unavoidable_information_loss_found": false,
+  "destructive_interpretations_found": [
+    "OBSERVED_VARIATION_AS_GRAIN_AUTHORITY",
+    "SOURCE_CELL_LOCATOR_AS_SEMANTIC_EVENT_ID",
+    "EVENT_DRIVEN_METADATA_COMPLETENESS",
+    "RAW_VECTOR_OR_MEMBERSHIP_EQUALITY_DEDUP",
+    "INCOMPLETE_RESPONDENT_DIMENSION_OR_NATIVE_ID_PROMOTION",
+    "UNPROVEN_DEFAULT_OR_INCOMPLETE_EXCEPTION_DOMAIN",
+    "ROUTING_FROM_NULL_OR_MISSINGNESS",
+    "WEIGHT_VECTOR_AS_DESIGN_ESTIMAND_AUTHORITY",
+    "PROVENANCE_OR_SOURCE_RELATION_FROM_VALUE_EQUALITY",
+    "HOT_COLD_AUTHORITY_SPLIT",
+    "NEGATIVE_COMPLETENESS_MISCLASSIFIED_AS_CACHE",
+    "DENSE_GEOMETRY_WITHOUT_TOTAL_EVENT_TOPOLOGY_ESCAPE"
+  ],
+  "required_synthesis_changes": [
+    "EVENT_GRAIN_UNLESS_EXACT_FD_CERTIFICATE",
+    "SOURCE_CELL_LOCATOR_SCOPE_ONLY_UNLESS_SEPARATE_EVENT_IDENTITY_PROOF",
+    "METADATA_FIRST_INDEPENDENT_OF_EVENT_INCIDENCE",
+    "COMPLETE_FROZEN_OBJECT_PROJECTION_OWNER_PER_CANONICAL_RELATION",
+    "AUTHORITY_DERIVED_DEFAULT_PLUS_ROOT_BOUND_EXHAUSTIVE_EXCEPTIONS",
+    "CANONICAL_ROOT_BOUND_NEGATIVE_COMPLETENESS",
+    "HOT_COLD_ONE_ROOT_EQUAL_AUTHORITY_AND_QUERY_CLOSURE",
+    "DENSE_PROFILE_TOTAL_EXPLICIT_EVENT_TOPOLOGY_STATE_ESCAPE",
+    "R03_SOURCE_AND_C11_EXACT_RECONSTRUCTION_GATE_BEFORE_RESOURCE_ACCEPTANCE"
+  ],
+  "confirmed_p0_mechanisms": [
+    "bounded typed canonical incidence",
+    "separate raw physical semantic and routing state",
+    "source snapshot plus row ordinal replay coordinate",
+    "uniform C11 boundary",
+    "certificate-gated true-grain storage",
+    "explicit nonrectangular event/topology escape",
+    "separate routing and weight/design relations",
+    "one canonical root with regenerable caches",
+    "open-world I03/I05 canonical fallback",
+    "transactional fail-closed publication",
+    "layout-independent semantic identity"
+  ],
+  "rejected_mechanisms": [
+    "observed constancy or frequency defaults",
+    "raw vector equality as FD or identity proof",
+    "MR member equality as topology identity proof",
+    "native respondent ID as universal key",
+    "physical row or matrix position as semantic identity",
+    "arithmetic source-cell locator as universal semantic-event ID",
+    "event-derived zero-incidence metadata",
+    "routing inferred from missingness",
+    "weight/design role inferred from numeric surface",
+    "source relation inferred from data equality",
+    "all-missing or no-substantive column elision",
+    "hot-only authoritative truth",
+    "cache miss as negative evidence",
+    "dense matrix without exact escape"
+  ],
+  "information_account": {
+    "complete_field_account_artifact": "P0_INFORMATION_ACCOUNT.csv",
+    "summary_artifact": "INFORMATION_PRESERVATION_LEDGER.csv",
+    "principle": "P0 may change storage grain but not information grain",
+    "default_when_derivation_not_proved": "STORED_DIRECTLY_OR_FAIL_CLOSED"
+  },
+  "artifacts": [
+    "RESULT.md",
+    "RESULT.json",
+    "ASSUMPTION_LEDGER.csv",
+    "INFORMATION_PRESERVATION_LEDGER.csv",
+    "SELF_RED_TEAM.md",
+    "SYNTHESIS_RULINGS.csv",
+    "P0_ATTACKS.csv",
+    "P0_INFORMATION_ACCOUNT.csv"
+  ]
+}
