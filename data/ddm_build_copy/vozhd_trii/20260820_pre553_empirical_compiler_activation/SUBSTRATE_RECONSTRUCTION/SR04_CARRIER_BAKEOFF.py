@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Frozen SR04 physical carrier bakeoff.  This file is intentionally self-contained."""
 from __future__ import annotations
-import argparse, csv, hashlib, json, math, os, platform, shutil, sqlite3, subprocess, sys, tempfile, time, uuid
+import argparse, csv, hashlib, json, math, os, platform, re, shutil, sqlite3, subprocess, sys, tempfile, time, uuid
 from pathlib import Path
 from collections import Counter
 
@@ -147,17 +147,17 @@ def query_specs():
       "Q01_HOSTILE_STATE_COUNTS":"SELECT source_id,var_name,physical_state,COUNT(*) n FROM events GROUP BY 1,2,3 ORDER BY 1,2,3",
       "Q02_WVS_Q152_DISTRIBUTION":"SELECT raw_value_key,COUNT(*) n FROM events WHERE source_id='WVS_W7' AND var_name='Q152' GROUP BY 1 ORDER BY 1",
       "Q03_WVS_Q152_Q153_JOINT":"SELECT a.raw_value_key,b.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND a.var_name='Q152' AND b.var_name='Q153' GROUP BY 1,2 ORDER BY 1,2",
-      "Q04_WVS_Q152_TO_Q156_5WAY":"SELECT COUNT(*) n FROM events WHERE source_id='WVS_W7' AND var_name='Q152'",
+      "Q04_WVS_Q152_TO_Q156_5WAY":"SELECT a.raw_value_key,b.raw_value_key,c.raw_value_key,d.raw_value_key,e.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) JOIN events c USING(source_id,row_ordinal) JOIN events d USING(source_id,row_ordinal) JOIN events e USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND a.var_name='Q152' AND b.var_name='Q153' AND c.var_name='Q154' AND d.var_name='Q155' AND e.var_name='Q156' GROUP BY 1,2,3,4,5 ORDER BY 1,2,3,4,5",
       "Q05_WVS_RISKSET_Q152":"SELECT COUNT(*) FROM events a JOIN events b USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND a.var_name='I_PSU' AND a.raw_value_key='N:1' AND b.var_name='Q152' AND b.raw_value_key='N:1'",
       "Q06_WVS_WEIGHTED_Q152":"SELECT SUM(CAST(REPLACE(w.raw_value_key,'N:','') AS DOUBLE)) FROM events q JOIN events w USING(source_id,row_ordinal) WHERE q.source_id='WVS_W7' AND q.var_name='Q152' AND q.raw_value_key='N:1' AND w.var_name='W_WEIGHT' AND w.physical_state='ORDINARY'",
       "Q07_WVS_RESPONDENT_LOOKUP":"SELECT * FROM events WHERE source_id='WVS_W7' AND row_ordinal=50000 ORDER BY var_ordinal",
-      "Q08_BRANCH_CONDITIONED_COTRAVEL":"SELECT COUNT(*) FROM events WHERE source_id='WVS_W7' AND var_name IN ('Q152','Q153')",
+      "Q08_BRANCH_CONDITIONED_COTRAVEL":"SELECT a.raw_value_key,b.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) JOIN respondents r USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND r.benchmark_branch_id=1 AND a.var_name='Q152' AND b.var_name='Q153' GROUP BY 1,2 ORDER BY 1,2",
       "Q09_XOR_COORDINATE":"SELECT COUNT(*) FROM events e JOIN respondents r USING(source_id,row_ordinal) WHERE e.source_id='WVS_W7' AND e.var_name='Q152' AND r.benchmark_coord_a+r.benchmark_coord_b=1",
-      "Q10_RECURSIVE_SUBGROUP":"SELECT COUNT(*) FROM events e JOIN respondents r USING(source_id,row_ordinal) WHERE e.source_id='WVS_W7' AND e.var_name IN ('Q152','Q153') AND r.benchmark_risk_eligible=1 AND r.benchmark_branch_id IN (1,2) AND r.benchmark_coord_a=1",
+      "Q10_RECURSIVE_SUBGROUP":"SELECT a.raw_value_key,b.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) JOIN respondents r USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND r.benchmark_risk_eligible=1 AND r.benchmark_branch_id IN (1,2) AND r.benchmark_coord_a=1 AND a.var_name='Q152' AND b.var_name='Q153' GROUP BY 1,2 ORDER BY 1,2",
       "Q11_SIMPSON_GRID_SHAPE":"SELECT benchmark_coord_a,benchmark_branch_id,raw_value_key,COUNT(*) FROM events e JOIN respondents r USING(source_id,row_ordinal) WHERE e.source_id='WVS_W7' AND e.var_name='Q152' GROUP BY 1,2,3 ORDER BY 1,2,3",
       "Q12_LITS_WEIGHT_STATE_COUNTS":"SELECT var_name,physical_state,COUNT(*) FROM events WHERE source_id='LITS_I' AND var_name IN ('weight_0','weight_1','weight_2') GROUP BY 1,2 ORDER BY 1,2",
       "Q13_LITS_Q301_1_DISTRIBUTION":"SELECT raw_value_key,COUNT(*) FROM events WHERE source_id='LITS_I' AND var_name='q301_1' GROUP BY 1 ORDER BY 1",
-      "Q14_NATIVE_IDENTITY_HOSTILES":"SELECT COUNT(DISTINCT respondent_key) FROM respondents WHERE source_id='LITS_I'",
+      "Q14_NATIVE_IDENTITY_HOSTILES":"SELECT 'WVS_D_INTERVIEW_target' AS label,COUNT(*) n FROM events WHERE source_id='WVS_W7' AND var_name='D_INTERVIEW' AND raw_value_key='N:858069901' UNION ALL SELECT 'LITS_id_distinct',COUNT(DISTINCT respondent_key) FROM respondents WHERE source_id='LITS_I'",
       "Q15_MINORITY_GRID_SHAPE":"SELECT benchmark_branch_id,raw_value_key,COUNT(*) FROM events e JOIN respondents r USING(source_id,row_ordinal) WHERE e.source_id='WVS_W7' AND e.var_name='Q152' GROUP BY 1,2 ORDER BY 1,2"}
 def write_parquet(t, d):
     import pyarrow as pa, pyarrow.parquet as pq
@@ -243,11 +243,109 @@ def deterministic_zip(src,out):
         for p in sorted(Path(src).iterdir()):
             if p.is_file():
                 info=zipfile.ZipInfo(p.name,(1980,1,1,0,0,0)); info.compress_type=zipfile.ZIP_DEFLATED; info.external_attr=0o644<<16; z.writestr(info,p.read_bytes())
+
+STAGE_A_TOKEN="PRE553_SR04_SYNTHETIC_CONTRACT_TESTS_PASS"
+STAGE_A_SQL={
+ "Q00_SOURCE_EVENT_COUNTS":"SELECT source_id,var_name,COUNT(*) n FROM events GROUP BY 1,2 ORDER BY 1,2",
+ "Q01_HOSTILE_STATE_COUNTS":"SELECT source_id,var_name,physical_state,COUNT(*) n FROM events GROUP BY 1,2,3 ORDER BY 1,2,3",
+ "Q02_WVS_Q152_DISTRIBUTION":"SELECT raw_value_key,COUNT(*) n FROM events WHERE source_id='WVS_W7' AND var_name='Q152' GROUP BY 1 ORDER BY 1",
+ "Q03_WVS_Q152_Q153_JOINT":"SELECT a.raw_value_key,b.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND a.var_name='Q152' AND b.var_name='Q153' GROUP BY 1,2 ORDER BY 1,2",
+ "Q04_WVS_Q152_TO_Q156_5WAY":"SELECT a.raw_value_key,b.raw_value_key,c.raw_value_key,d.raw_value_key,e.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) JOIN events c USING(source_id,row_ordinal) JOIN events d USING(source_id,row_ordinal) JOIN events e USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND a.var_name='Q152' AND b.var_name='Q153' AND c.var_name='Q154' AND d.var_name='Q155' AND e.var_name='Q156' GROUP BY 1,2,3,4,5 ORDER BY 1,2,3,4,5",
+ "Q05_WVS_RISKSET_Q152":"SELECT COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND a.var_name='I_PSU' AND a.physical_state='ORDINARY' AND a.raw_value_key='N:1' AND b.var_name='Q152' AND b.raw_value_key='N:1'",
+ "Q06_WVS_WEIGHTED_Q152":"SELECT SUM(CAST(w.raw_value_num AS DOUBLE PRECISION)) n FROM events q JOIN events w USING(source_id,row_ordinal) WHERE q.source_id='WVS_W7' AND q.var_name='Q152' AND q.raw_value_key='N:1' AND w.var_name='W_WEIGHT' AND w.physical_state='ORDINARY'",
+ "Q07_WVS_RESPONDENT_LOOKUP":"SELECT * FROM events WHERE source_id='WVS_W7' AND row_ordinal=5 ORDER BY var_ordinal",
+ "Q08_BRANCH_CONDITIONED_COTRAVEL":"SELECT a.raw_value_key,b.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) JOIN respondents r USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND r.benchmark_branch_id=1 AND a.var_name='Q152' AND b.var_name='Q153' GROUP BY 1,2 ORDER BY 1,2",
+ "Q09_XOR_COORDINATE":"SELECT e.raw_value_key,COUNT(*) n FROM events e JOIN respondents r USING(source_id,row_ordinal) WHERE e.source_id='WVS_W7' AND e.var_name='Q152' AND (r.benchmark_coord_a+r.benchmark_coord_b)=1 GROUP BY 1 ORDER BY 1",
+ "Q10_RECURSIVE_SUBGROUP":"SELECT a.raw_value_key,b.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) JOIN respondents r USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND r.benchmark_risk_eligible=1 AND r.benchmark_branch_id IN (1,2) AND r.benchmark_coord_a=1 AND a.var_name='Q152' AND b.var_name='Q153' GROUP BY 1,2 ORDER BY 1,2",
+ "Q11_SIMPSON_GRID_SHAPE":"SELECT r.benchmark_coord_a,r.benchmark_branch_id,e.raw_value_key,COUNT(*) n FROM events e JOIN respondents r USING(source_id,row_ordinal) WHERE e.source_id='WVS_W7' AND e.var_name='Q152' GROUP BY 1,2,3 ORDER BY 1,2,3",
+ "Q12_LITS_WEIGHT_STATE_COUNTS":"SELECT var_name,physical_state,COUNT(*) n FROM events WHERE source_id='LITS_I' AND var_name IN ('weight_0','weight_1','weight_2') GROUP BY 1,2 ORDER BY 1,2",
+ "Q13_LITS_Q301_1_DISTRIBUTION":"SELECT raw_value_key,COUNT(*) n FROM events WHERE source_id='LITS_I' AND var_name='q301_1' GROUP BY 1 ORDER BY 1",
+ "Q14_NATIVE_IDENTITY_HOSTILES":"SELECT 'WVS_D_INTERVIEW_target' AS label,COUNT(*) n FROM events WHERE source_id='WVS_W7' AND var_name='D_INTERVIEW' AND raw_value_key='N:858069901' UNION ALL SELECT 'LITS_id_distinct',COUNT(DISTINCT respondent_key) FROM respondents WHERE source_id='LITS_I'",
+ "Q15_MINORITY_GRID_SHAPE":"SELECT r.benchmark_branch_id,e.raw_value_key,COUNT(*) n FROM events e JOIN respondents r USING(source_id,row_ordinal) WHERE e.source_id='WVS_W7' AND e.var_name='Q152' GROUP BY 1,2 ORDER BY 1,2",
+}
+def bind_sql(sql, refs):
+    return re.sub(r"\b(events|respondents)\b", lambda m: refs[m.group(1)], sql)
+def stage_a_fixture():
+    rows=[]; respondents=[]; variables=[]; sources=[["WVS_W7","synthetic_wvs.sav","synthetic","sav",8,8,"","NONE"],["LITS_I","synthetic_lits.dta","synthetic","dta",6,5,"latin1","COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"]]
+    wvars=["Q152","Q153","Q154","Q155","Q156","I_PSU","W_WEIGHT","D_INTERVIEW"]; lvars=["id","country","weight_0","q301_1","weight_1"]
+    for sid,vs,n in [("WVS_W7",wvars,8),("LITS_I",lvars,6)]:
+        for j,v in enumerate(vs): variables.append([sid,v,j,"","[]","{}","numeric","" if v!="countryname" else "A"])
+        for i in range(n):
+            respondents.append([sid,i,hashlib.sha256((sid+":"+str(i)).encode()).hexdigest(),i%2,(i//2)%2,i%5,0 if i%7==0 else 1])
+            vals={"Q152":f"N:{i%3+1}","Q153":f"N:{(i+1)%3+1}","Q154":f"N:{(i+2)%3+1}","Q155":f"N:{i%2+1}","Q156":f"N:{(i//2)%3+1}","I_PSU":"N:1" if i%2==0 else "N:2","W_WEIGHT":"N:1.5" if i%2==0 else "N:2.5","D_INTERVIEW":"N:858069901" if i%4==0 else f"N:{100+i}","id":f"N:{1000+i}","country":f"N:{i%3+1}","weight_0":"N:1","q301_1":f"N:{i%2+1}","weight_1":"N:2"}
+            for j,v in enumerate(vs):
+                raw=vals[v]; num=float(raw[2:]) if raw.startswith("N:") else None; state="ORDINARY"; rows.append([sid,i,respondents[-1][2],v,j,state,raw,num,raw[2:] if raw.startswith("N:") else "",""])
+    tables={"sources":pd.DataFrame(sources,columns=REL_COLS["sources"]),"respondents":pd.DataFrame(respondents,columns=REL_COLS["respondents"]),"variables":pd.DataFrame(variables,columns=REL_COLS["variables"]),"events":pd.DataFrame(rows,columns=REL_COLS["events"])}
+    return tables
+def stage_a_digest_tables(tables):
+    return {n:digest_rows(df,REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n,df in tables.items()}
+def stage_a_norm(rows):
+    def one(x):
+        if hasattr(x,"item"): x=x.item()
+        if isinstance(x,float) and math.isnan(x): return None
+        if isinstance(x,float) and x.is_integer(): return int(x)
+        return x
+    return sorted([[one(x) for x in r] for r in rows],key=lambda r:json.dumps(r,sort_keys=True,default=str))
+def stage_a_oracle(t):
+    e=t["events"]; r=t["respondents"]
+    def g(cols,mask=None):
+        x=e if mask is None else e[mask(e)]
+        return x.groupby(cols,dropna=False).size().reset_index(name="n").itertuples(index=False,name=None)
+    out={"Q00_SOURCE_EVENT_COUNTS":list(g(["source_id","var_name"])),"Q01_HOSTILE_STATE_COUNTS":list(g(["source_id","var_name","physical_state"])),"Q02_WVS_Q152_DISTRIBUTION":list(g(["raw_value_key"],lambda x:(x.source_id=="WVS_W7")&(x.var_name=="Q152"))),"Q03_WVS_Q152_Q153_JOINT":None,"Q04_WVS_Q152_TO_Q156_5WAY":None}
+    def pv(names): return e[(e.source_id=="WVS_W7")&e.var_name.isin(names)].pivot(index="row_ordinal",columns="var_name",values="raw_value_key").reset_index()
+    x=pv(["Q152","Q153","Q154","Q155","Q156"]); out["Q03_WVS_Q152_Q153_JOINT"]=list(pv(["Q152","Q153"]).groupby(["Q152","Q153"]).size().reset_index(name="n").itertuples(index=False,name=None)); out["Q04_WVS_Q152_TO_Q156_5WAY"]=list(x.groupby(["Q152","Q153","Q154","Q155","Q156"]).size().reset_index(name="n").itertuples(index=False,name=None))
+    z=pv(["I_PSU","Q152"]); out["Q05_WVS_RISKSET_Q152"]=[[int(((z.I_PSU=="N:1")&(z.Q152=="N:1")).sum())]]; w=pv(["Q152","W_WEIGHT"]); out["Q06_WVS_WEIGHTED_Q152"]=[[float(w.loc[(w.Q152=="N:1")&(w.W_WEIGHT.notna()),"W_WEIGHT"].map(lambda x:float(x[2:])).sum())]]; out["Q07_WVS_RESPONDENT_LOOKUP"]=e[(e.source_id=="WVS_W7")&(e.row_ordinal==5)].sort_values("var_ordinal")[REL_COLS["events"]].itertuples(index=False,name=None)
+    xx=pv(["Q152","Q153"]).merge(r[r.source_id=="WVS_W7"],on="row_ordinal"); out["Q08_BRANCH_CONDITIONED_COTRAVEL"]=list(xx[xx.benchmark_branch_id==1].groupby(["Q152","Q153"]).size().reset_index(name="n").itertuples(index=False,name=None)); out["Q09_XOR_COORDINATE"]=list(xx[(xx.benchmark_coord_a+xx.benchmark_coord_b)==1].groupby("Q152").size().reset_index(name="n").itertuples(index=False,name=None)); out["Q10_RECURSIVE_SUBGROUP"]=list(xx[(xx.benchmark_risk_eligible==1)&xx.benchmark_branch_id.isin([1,2])&(xx.benchmark_coord_a==1)].groupby(["Q152","Q153"]).size().reset_index(name="n").itertuples(index=False,name=None)); out["Q11_SIMPSON_GRID_SHAPE"]=list(xx.groupby(["benchmark_coord_a","benchmark_branch_id","Q152"]).size().reset_index(name="n").itertuples(index=False,name=None)); out["Q12_LITS_WEIGHT_STATE_COUNTS"]=list(g(["var_name","physical_state"],lambda x:(x.source_id=="LITS_I")&x.var_name.isin(["weight_0","weight_1","weight_2"]))); out["Q13_LITS_Q301_1_DISTRIBUTION"]=list(g(["raw_value_key"],lambda x:(x.source_id=="LITS_I")&(x.var_name=="q301_1"))); out["Q14_NATIVE_IDENTITY_HOSTILES"]=[["WVS_D_INTERVIEW_target",int(((e.source_id=="WVS_W7")&(e.var_name=="D_INTERVIEW")&(e.raw_value_key=="N:858069901")).sum())],["LITS_id_distinct",int(r[r.source_id=="LITS_I"].respondent_key.nunique())]]; out["Q15_MINORITY_GRID_SHAPE"]=list(xx.groupby(["benchmark_branch_id","Q152"]).size().reset_index(name="n").itertuples(index=False,name=None)); return {k:stage_a_norm(v) for k,v in out.items()}
+def stage_a_run(out,work):
+    t=stage_a_fixture(); dig=stage_a_digest_tables(t); oracle=stage_a_oracle(t); (work/"synthetic").mkdir(exist_ok=True); [df.to_feather(work/"synthetic"/f"{n}.arrow") for n,df in t.items()]
+    observed={}; lifecycle=[]
+    import duckdb
+    # Parquet + DuckDB-native, with true read-back from each store.
+    for name,parquet in [("PARQUET_DUCKDB_DIRECT",True),("DUCKDB_NATIVE",False)]:
+        d=work/name; d.mkdir();
+        if parquet:
+            write_parquet(t,d); con=duckdb.connect(); refs={n:f"read_parquet('{d/n}.parquet')" for n in t}
+        else:
+            con=duckdb.connect(str(d/"carrier.duckdb")); refs={n:n for n in t}
+            for n,df in t.items():
+                con.register("df",df); con.execute(f"CREATE TABLE {n} AS SELECT * FROM df"); con.unregister("df")
+        observed[name]={q:stage_a_norm(con.execute(bind_sql(sql,refs)).fetchall()) for q,sql in STAGE_A_SQL.items()}; replay={n:digest_rows(pd.read_parquet(d/f"{n}.parquet"),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) if parquet else digest_rows(pd.DataFrame(con.execute(f"SELECT * FROM {n}").fetchall(),columns=REL_COLS[n]),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t}; con.close(); observed[name+"_replay"]=replay
+        shutil.rmtree(d)
+    # SQLite true cursor read-back.
+    d=work/"SQLITE"; d.mkdir(); con=sqlite3.connect(d/"carrier.sqlite"); [df.to_sql(n,con,index=False) for n,df in t.items()]; con.commit(); observed["SQLITE"]={q:stage_a_norm(con.execute(sql).fetchall()) for q,sql in STAGE_A_SQL.items()}; observed["SQLITE_replay"]={n:digest_rows(pd.read_sql_query(f"SELECT * FROM {n}",con),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t}; con.close(); shutil.rmtree(d)
+    # PostgreSQL lifecycle: connection remains open through query and cursor replay.
+    bind=subprocess.check_output(["pg_config","--bindir"],text=True).strip(); d=work/"POSTGRES_EPHEMERAL"; d.mkdir(); cluster=d/"cluster"; port=56000+os.getpid()%500; subprocess.run([str(Path(bind)/"initdb"),"-D",str(cluster),"-A","trust","-U","sr04","--locale=C"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL); subprocess.run([str(Path(bind)/"pg_ctl"),"-D",str(cluster),"-o",f"-p {port} -F","-w","start"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    try:
+        import psycopg2
+        con=psycopg2.connect(host="127.0.0.1",port=port,user="sr04",dbname="postgres"); cur=con.cursor()
+        for n,df in t.items():
+            pg_types={"sources":["TEXT","TEXT","TEXT","TEXT","INTEGER","INTEGER","TEXT","TEXT"],"respondents":["TEXT","INTEGER","TEXT","INTEGER","INTEGER","INTEGER","INTEGER"],"variables":["TEXT","TEXT","INTEGER","TEXT","TEXT","TEXT","TEXT","TEXT"],"events":["TEXT","INTEGER","TEXT","TEXT","INTEGER","TEXT","TEXT","DOUBLE PRECISION","TEXT","TEXT"]}[n]; cols_sql=", ".join('"'+c+'" '+typ for c,typ in zip(REL_COLS[n],pg_types)); cur.execute(f"CREATE TABLE {n} ({cols_sql})"); import io; b=io.StringIO(); df.to_csv(b,index=False,header=False,na_rep="\\N"); b.seek(0); cur.copy_expert(f"COPY {n} FROM STDIN WITH (FORMAT csv, NULL '\\N')",b)
+        con.commit(); observed["POSTGRES_EPHEMERAL"]={}
+        for q,sql in STAGE_A_SQL.items(): cur.execute(sql); observed["POSTGRES_EPHEMERAL"][q]=stage_a_norm(cur.fetchall())
+        observed["POSTGRES_EPHEMERAL_replay"]={}
+        for n in t:
+            cur.execute(f"SELECT * FROM {n}"); observed["POSTGRES_EPHEMERAL_replay"][n]=digest_rows(pd.DataFrame(cur.fetchall(),columns=REL_COLS[n]),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n]))
+        cur.close(); con.close(); lifecycle.append("query_while_connection_open")
+    finally: subprocess.run([str(Path(bind)/"pg_ctl"),"-D",str(cluster),"-m","immediate","-w","stop"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL); shutil.rmtree(d); lifecycle.append("stopped")
+    checks={"query_ids":list(STAGE_A_SQL),"candidate_count":4,"oracle_comparisons":{},"replay_comparisons":{},"negative_tests":{},"postgres_lifecycle":lifecycle,"database_url_used":False,"cleanup_within_work_root":True}
+    for name in ["PARQUET_DUCKDB_DIRECT","DUCKDB_NATIVE","SQLITE","POSTGRES_EPHEMERAL"]:
+        checks["oracle_comparisons"][name]=all(observed[name].get(q)==oracle[q] for q in STAGE_A_SQL); checks["replay_comparisons"][name]=observed[name+"_replay"]==dig
+    checks["negative_tests"]["wrong_oracle_detected"]=observed["SQLITE"]["Q02_WVS_Q152_DISTRIBUTION"]!=oracle["Q02_WVS_Q152_DISTRIBUTION"][:-1]
+    bad=pd.read_sql_query("SELECT * FROM events",sqlite3.connect(":memory:")) if False else t["events"].copy(); bad.loc[0,"raw_value_key"]="CORRUPTED"; checks["negative_tests"]["stored_corruption_detected"]=digest_rows(bad,REL_COLS["events"],["source_id","var_ordinal","row_ordinal"])!=dig["events"]
+    if not all(checks["oracle_comparisons"].values()) or not all(checks["replay_comparisons"].values()) or not all(checks["negative_tests"].values()): raise RuntimeError("BLOCKED_SR04_STAGE_A_CONTRACT_TEST_FAILURE:"+json.dumps(checks,sort_keys=True))
+    receipt={"stage":"A","token":STAGE_A_TOKEN,"token_present":True,"fixture":"tiny_deterministic_synthetic","query_ids":list(STAGE_A_SQL),"checks":checks,"fixture_digests":dig,"oracle_digest":hashlib.sha256(json.dumps(oracle,sort_keys=True).encode()).hexdigest(),"no_raw_source_decode":True,"no_DATABASE_URL_path":True}
+    out.mkdir(parents=True,exist_ok=True); (out/"STAGE_A_RECEIPT.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n"); (out/"STAGE_A_ORACLE.json").write_text(json.dumps(oracle,indent=2,sort_keys=True)+"\n"); (out/"STAGE_A_STDOUT.txt").write_text(STAGE_A_TOKEN+"\n"); return receipt
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=True); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--self-test",action="store_true"); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); args=ap.parse_args()
     if args.self_test:
         assert raw_repr(-1)[0]=="N:-1" and free_bytes("/private/tmp")>0; print("SR04_SELF_TEST_PASS"); return 0
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); work=Path(args.work_root) if args.work_root else Path(tempfile.mkdtemp(prefix="sr04-",dir="/private/tmp")); work.mkdir(parents=True,exist_ok=True)
+    if args.stage_a:
+        try:
+            receipt=stage_a_run(out,work); print(json.dumps(receipt,indent=2,sort_keys=True)); return 0
+        except Exception as e:
+            (out/"STAGE_A_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
+    if not args.source_root: raise SystemExit("--source-root is required for Stage B")
     started=time.time(); stdout=[]; stderr=[]
     try:
         if free_bytes(work)<RESERVE: raise RuntimeError("BLOCKED_INSUFFICIENT_SAFE_LOCAL_DISK")
