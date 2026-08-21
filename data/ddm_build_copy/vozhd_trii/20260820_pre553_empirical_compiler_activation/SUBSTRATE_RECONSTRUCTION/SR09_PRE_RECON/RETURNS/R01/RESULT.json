@@ -1,0 +1,146 @@
+{
+  "branch": "agent/vozhd-trii-sr09pre-r01-afrobarometer",
+  "documentary_authority_gaps": [
+    "respondent identity/scope",
+    "country/region cross-round coordinate authority",
+    "weight/design role and selection",
+    "routing/form/module applicability",
+    "cross-wave semantic equivalence"
+  ],
+  "exact_starting_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "full_scans": {
+    "Afro Barometer Round 1.sav": {
+      "occurred": true,
+      "reason": "Sequential compressed-SAV stream traversal was required to measure ID injectivity, establish absence of exercised physical missingness, and replay ordinary semantic-looking codes.",
+      "rows": 21531
+    },
+    "Afro Barometer Round 5.sav": {
+      "occurred": true,
+      "reason": "Sequential compressed-SAV stream traversal was required to enumerate exercised 997 user-missing declarations, system-missing cells, ID uniqueness, routing/filter clues, and replayable sentinels.",
+      "rows": 51587
+    },
+    "Afro Barometer Round 9.sav": {
+      "occurred": true,
+      "reason": "Sequential compressed-SAV stream traversal was required to distinguish unexercised Q78F user-missing declaration from large system-missing incidence, measure ID uniqueness, and inspect ordered Q118 slot topology.",
+      "rows": 53444
+    }
+  },
+  "generic_sav_contract_assessment": "No behavior outside the frozen generic SAV physical contract was observed. Source-specific certification fixtures are nevertheless required for identity/scope, semantic-looking ordinary codes, routing clues, weight families, repeated ordered slots, and severe cross-wave schema/label/value drift.",
+  "hostile_sentinel_count_per_source": {
+    "Afro Barometer Round 1.sav": 7,
+    "Afro Barometer Round 5.sav": 8,
+    "Afro Barometer Round 9.sav": 9
+  },
+  "measured_source_facts": {
+    "R1": {
+      "declared_user_missing_vars": 0,
+      "id_facts": [
+        {
+          "country_composite_distinct": 21531,
+          "country_composite_duplicate_excess_rows": 0,
+          "country_composite_duplicate_keys": 0,
+          "distinct": 21531,
+          "duplicate_excess_rows": 0,
+          "duplicate_keys": 0,
+          "label": "Reference number",
+          "name": "REFNUMB",
+          "rows": 21531,
+          "var_ordinal": 0
+        },
+        {
+          "country_composite_distinct": 21362,
+          "country_composite_duplicate_excess_rows": 169,
+          "country_composite_duplicate_keys": 167,
+          "distinct": 19937,
+          "duplicate_excess_rows": 1594,
+          "duplicate_keys": 1481,
+          "label": "Respondent number",
+          "name": "CASENUMB",
+          "rows": 21531,
+          "var_ordinal": 1
+        }
+      ],
+      "rows": 21531,
+      "system_missing_cells": 0,
+      "system_missing_vars": 0,
+      "user_missing_cells": 0,
+      "variables": 144
+    },
+    "R5": {
+      "declared_user_missing_vars": 84,
+      "exercised_user_missing_vars": 84,
+      "id_facts": [
+        {
+          "country_composite_distinct": 51587,
+          "country_composite_duplicate_excess_rows": 0,
+          "country_composite_duplicate_keys": 0,
+          "distinct": 51587,
+          "duplicate_excess_rows": 0,
+          "duplicate_keys": 0,
+          "label": "Respondent number",
+          "name": "RESPNO",
+          "rows": 51587,
+          "var_ordinal": 4
+        }
+      ],
+      "rows": 51587,
+      "system_missing_cells": 4336,
+      "system_missing_vars": 4,
+      "user_missing_cells": 1342300,
+      "variables": 348
+    },
+    "R9": {
+      "declared_user_missing_vars": 1,
+      "exercised_user_missing_vars": 0,
+      "id_facts": [
+        {
+          "country_composite_distinct": 53444,
+          "country_composite_duplicate_excess_rows": 0,
+          "country_composite_duplicate_keys": 0,
+          "distinct": 53444,
+          "duplicate_excess_rows": 0,
+          "duplicate_keys": 0,
+          "label": "Respondent number",
+          "name": "RESPNO",
+          "rows": 53444,
+          "var_ordinal": 0
+        }
+      ],
+      "rows": 53444,
+      "system_missing_cells": 583491,
+      "system_missing_vars": 32,
+      "user_missing_cells": 0,
+      "variables": 427
+    }
+  },
+  "mission": "SR09-PRE R01 AFROBAROMETER RAW-SOURCE RECONNAISSANCE",
+  "mission_status": "AUTHORIZED__NON_DISPOSITIVE",
+  "novel_hazard_classes": [],
+  "repository_document_search": "GitHub repository code searches for \"Afrobarometer\" and \"Afro Barometer\" returned no matching checked-in documentary authority; this is evidence of a documentary gap, not proof no external documentation exists.",
+  "required_token": "PRE553_SR09PRE_R01_AFROBAROMETER_RECON_COMPLETE",
+  "source_dispositions": {
+    "Afro Barometer Round 1.sav": {
+      "additional": [
+        "DOCUMENTARY_AUTHORITY_GAP"
+      ],
+      "primary": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED"
+    },
+    "Afro Barometer Round 5.sav": {
+      "additional": [
+        "DOCUMENTARY_AUTHORITY_GAP"
+      ],
+      "primary": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED"
+    },
+    "Afro Barometer Round 9.sav": {
+      "additional": [
+        "DOCUMENTARY_AUTHORITY_GAP"
+      ],
+      "primary": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED"
+    }
+  },
+  "source_hashes_actually_probed": {
+    "Afro Barometer Round 1.sav": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+    "Afro Barometer Round 5.sav": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "Afro Barometer Round 9.sav": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8"
+  }
+}

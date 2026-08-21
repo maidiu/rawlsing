@@ -1,0 +1,93 @@
+{
+  "DATABASE_URL_used": false,
+  "archive_members_extracted": [
+    "surveys/Afro Barometer Round 1.sav",
+    "surveys/Afro Barometer Round 5.sav",
+    "surveys/Afro Barometer Round 9.sav"
+  ],
+  "branch_verified": "agent/vozhd-trii-sr09pre-r01-afrobarometer",
+  "checkout_verification_method": "GitHub branch lookup + compare exact starting SHA to branch; status identical/ahead_by=0/behind_by=0 before probing.",
+  "evidence_commands_scripts": [
+    "Library files.materialize: surveys.zip -> /mnt/data/sr09pre-r01-afrobarometer/input/surveys.zip",
+    "sha256 + byte-size verification of surveys.zip against 02_LIBRARY_RAW_INPUT_LAW.md",
+    "Python stdlib zipfile extraction of exactly three assigned surveys/Afro Barometer Round {1,5,9}.sav members",
+    "sha256 verification of each extracted SAV against R01_AFROBAROMETER.md before probing",
+    "sav_recon.py strict metadata parse for R1/R5/R9",
+    "scan_afro_fast.py full sequential physical stream scan for R1/R5/R9",
+    "supplemental full stream probes for R5 R1.ONLY..R4.ONLY and R9 Q118_1..Q118_11 topology",
+    "post-probe sha256 re-verification of bundle and all three extracted SAVs"
+  ],
+  "exact_checkout_head_verified": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "extracted_sha256_after_probing": {
+    "Afro Barometer Round 1.sav": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+    "Afro Barometer Round 5.sav": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "Afro Barometer Round 9.sav": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8"
+  },
+  "extracted_sha256_before_probing": {
+    "Afro Barometer Round 1.sav": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+    "Afro Barometer Round 5.sav": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "Afro Barometer Round 9.sav": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8"
+  },
+  "family": "AFROBAROMETER_R1_R5_R9",
+  "final_git_status_note": "Remote branch/ref and exact commit diff are verified after push via GitHub connector. Direct git network access failed with Could not resolve host: github.com; no local checkout could truthfully produce git status -sb.",
+  "final_git_status_sb": "NOT_AVAILABLE_AS_LITERAL_LOCAL_COMMAND__NO_LOCAL_REPOSITORY_CHECKOUT_IN_CONNECTOR_RUNTIME",
+  "fully_scanned_sources": {
+    "Afro Barometer Round 1.sav": {
+      "occurred": true,
+      "reason": "Sequential compressed-SAV stream traversal was required to measure ID injectivity, establish absence of exercised physical missingness, and replay ordinary semantic-looking codes.",
+      "rows": 21531
+    },
+    "Afro Barometer Round 5.sav": {
+      "occurred": true,
+      "reason": "Sequential compressed-SAV stream traversal was required to enumerate exercised 997 user-missing declarations, system-missing cells, ID uniqueness, routing/filter clues, and replayable sentinels.",
+      "rows": 51587
+    },
+    "Afro Barometer Round 9.sav": {
+      "occurred": true,
+      "reason": "Sequential compressed-SAV stream traversal was required to distinguish unexercised Q78F user-missing declaration from large system-missing incidence, measure ID uniqueness, and inspect ordered Q118 slot topology.",
+      "rows": 53444
+    }
+  },
+  "legacy_postgres_used_as_truth": false,
+  "library_bundle": {
+    "filename": "surveys.zip",
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "library_bundle_unchanged": true,
+  "mission_status": "AUTHORIZED__NON_DISPOSITIVE",
+  "output_sha256_excluding_self_referential_receipt": {
+    "AUTHORITY_GAPS.csv": "1efdbfb97bbaf256c4dab89f10fafea951b97fb857b671c0f279ea2163bd3ab6",
+    "CROSS_WAVE_DRIFT.csv": "f3fed3fc73fb2e96262df06cb4901609a8e86998bc7f1615377a0c8d7bf645db",
+    "HOSTILE_SENTINELS.csv": "70eb181c4ac916ea10f3b10c6e9fdcac4f807ed3c1b3bf3a6ab81673a3e59c1b",
+    "RESULT.json": "98391550b35417d19c853132bb1aeb8fd4222c34ea6d4c8a0d4d570f32ff114e",
+    "RESULT.md": "3deb9844c7ff5b97b6dc53252c05d7c1aecf232a0ca83ce77d1fe9a3c3cb3ef1",
+    "SOURCE_BURDEN.csv": "ad5bd087fecae7453334e1cd1ce5a8811462417b1a2056a9fd98b5af0685c7f2"
+  },
+  "output_sha256_note": "PROBE_RECEIPT.json self-hash is intentionally excluded because embedding its own final SHA-256 is recursively self-referential.",
+  "production_runtime_modified": false,
+  "raw_source_bytes_unchanged": true,
+  "reader_notes": [
+    "System pyreadstat was unavailable. A worker-private venv install attempt failed because outbound DNS/network access is disabled; repository/runtime state was not modified.",
+    "Evidence was gathered with a scratch-only strict SAV parser. Metadata text was decoded UTF-8 strictly; each source carried SAV extension subtype 20 = UTF-8; no compatibility-encoding fallback was used."
+  ],
+  "repository_write_scope": "Only data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR09_PRE_RECON/RETURNS/R01/ is authorized for commit.",
+  "scratch_paths": {
+    "bundle": "/mnt/data/sr09pre-r01-afrobarometer/input/surveys.zip",
+    "extracted_dir": "/mnt/data/sr09pre-r01-afrobarometer/extracted",
+    "parser_script": "/mnt/data/sr09pre-r01-afrobarometer/sav_recon.py",
+    "scan_script": "/mnt/data/sr09pre-r01-afrobarometer/scan_afro_fast.py"
+  },
+  "scratch_script_sha256": {
+    "sav_recon.py": "baeedb1d8cde60cc67e8e13a6ab677f60c394ec59c6e96a3470afd6dfb365f5d",
+    "scan_afro_fast.py": "dca5d8c30797c8c2f77767315083955080cf93b8024d5d06c6cbf913e48e5e78"
+  },
+  "tool_versions": {
+    "git": "2.47.3",
+    "pyreadstat": "UNAVAILABLE",
+    "python": "3.13.5",
+    "zlib": "1.3.1"
+  },
+  "worker_id": "R01"
+}
