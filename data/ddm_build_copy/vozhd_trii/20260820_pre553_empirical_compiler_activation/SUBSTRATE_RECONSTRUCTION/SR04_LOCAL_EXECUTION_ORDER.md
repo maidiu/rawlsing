@@ -1,26 +1,29 @@
-# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 5 REAL B1 CHECKPOINT EXECUTION
+# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 6 REAL B2 CHECKPOINT-ONLY EXECUTION
 
 Repository: `maidiu/rawlsing`
 Frozen semantic parent: `9188dc9fb7a8b92b981f3d3f94754cd6137d17b1`
 Control branch: `agent/vozhd-trii-pre553-substrate-reconstruction-control`
+Accepted harness implementation: `4743c40c783544c6c21ec490644896bd0b71ada5`
+Accepted harness SHA-256: `d33a86ccfa4fc75916f2f24a3ca627732abc45fa29cafd15cc8ab3439836b5b4`
 
 The exact launch HEAD is supplied by HQ. Verify it before doing anything.
 
 ## Current status
 
-Accepted harness milestones:
+Accepted milestones:
 
 - Stage A correctness contract: ACCEPTED
 - Stage A.1 shared execution path: ACCEPTED
 - Stage A.2 performance/packaging/checkpoint contract: ACCEPTED
-- B1/B2 CLI separation proof: ACCEPTED at harness HEAD `4743c40c783544c6c21ec490644896bd0b71ada5`
+- B1/B2 CLI separation proof: ACCEPTED
+- Real B1 neutral checkpoint: ACCEPTED
 
 Binding newest authority:
 
-`23_SR04_CLI_PROOF_ACCEPTANCE_AND_REAL_B1_AUTHORITY.md`
+`24_SR04_REAL_B1_ACCEPTANCE_AND_B2_AUTHORITY.md`
 
-Real B1 is AUTHORIZED.
-Real B2 remains BLOCKED pending HQ adjudication of the real B1 return.
+REAL B2 IS AUTHORIZED.
+No raw-source execution is authorized.
 
 ## Read first, in order
 
@@ -29,97 +32,122 @@ Real B2 remains BLOCKED pending HQ adjudication of the real B1 return.
 3. `21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`
 4. `22_SR04_STAGE_A2_ACCEPTANCE_AND_B1_B2_CLI_GATE.md`
 5. `23_SR04_CLI_PROOF_ACCEPTANCE_AND_REAL_B1_AUTHORITY.md`
-6. `16_SR03_R3_ADJUDICATION.md`
-7. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
+6. `24_SR04_REAL_B1_ACCEPTANCE_AND_B2_AUTHORITY.md`
 
-## Mission — REAL B1 ONLY
+## Mission — REAL B2 ONLY
 
-Execute the already-committed harness in explicit `--stage-b1` mode against the exact local source bytes.
+Execute the accepted harness in explicit `--stage-b2` mode against the accepted neutral checkpoint only.
 
-The harness source is READ ONLY for this execution.
-No repository writes are authorized.
+Harness and governance are READ ONLY.
 
-B1 must execute exactly this boundary:
+B2 boundary:
 
-`raw WVS7 + raw LiTS I -> neutral fixture -> hostile checks -> independent oracle -> relation digests -> checkpoint_write -> checkpoint_read verification -> B1 receipt -> STOP`
+`accepted checkpoint -> checkpoint_read verification -> shared four-candidate carrier court -> provisional selection -> exact final package -> deterministic ZIP -> STOP`
 
-B1 MUST NOT invoke `shared_carrier_court`.
-B1 MUST NOT create or benchmark Parquet, DuckDB, PostgreSQL, or SQLite candidates.
-B1 MUST NOT use or inspect `DATABASE_URL`.
+B2 MUST NOT decode source bytes and MUST NOT invoke `build_fixture`.
 
-## Exact source bytes
+## Exact checkpoint input
 
-Use the local Rawlsing source directory containing the hash-matched source files, normally:
-
-`/Users/matthewsmith/Desktop/Rawlsing/data/Data`
-
-Required exact source identities:
-
-### WVS7
-
-- file: `WVS Wave 7.sav`
-- SHA-256: `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`
-- expected rows: `97220`
-
-### LiTS I
-
-- file: `LiTS_I.dta`
-- SHA-256: `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`
-- expected rows: `29002`
-
-Do not substitute alternate files.
-
-## Output locations
-
-Use fresh local paths under `/private/tmp`.
-
-Recommended exact paths:
-
-Checkpoint:
+Use only:
 
 `/private/tmp/SR04_B1_NEUTRAL_CHECKPOINT`
 
-Small B1 receipt directory:
+Before invoking Python, verify that directory contains exactly the six substantive checkpoint files below and that each has the exact accepted byte size and SHA-256:
 
-`/private/tmp/SR04_B1_RECEIPT`
+| file | bytes | SHA-256 |
+|---|---:|---|
+| `CHECKPOINT_MANIFEST.json` | 4490 | `f56e6c0710babde0449e5e85da3f1446df4abf1da7b8e866f1f3c4743b031bb0` |
+| `QUERY_ORACLE.json` | 131552 | `446c3a2d2ba5127dd48441156e8bfec6a288674233862eb694c2577816845f1a` |
+| `events.arrow` | 104610186 | `c0d3c0d3fb426a24408738148424740ff9eb8103fa7cbc01d5c3eb3971e57c25` |
+| `respondents.arrow` | 9920410 | `1eca810c4eb369299f62dda31eef3a972e4b3b4ac5c499384ff4298099ff6b73` |
+| `sources.arrow` | 5418 | `080ec67148c16d34760daadc94d667c0dd6c101b5b9dcb7d063b24909bd3bf2d` |
+| `variables.arrow` | 33882 | `cf8db06e43834a252e737b5f273059cb028d20ad9d51d38f374bfb02e28f241b` |
+
+If any identity differs, STOP and return the mismatch unchanged.
+
+Do not use a ZIP as B2 input.
+
+## Fresh execution paths
+
+Output directory:
+
+`/private/tmp/SR04_B2_CARRIER_BAKEOFF_RESULTS`
 
 Disposable work root:
 
-`/private/tmp/SR04_B1_WORK`
+`/private/tmp/SR04_B2_WORK`
 
-Do not reuse or merge a prior synthetic checkpoint.
-If any recommended real-B1 path already exists, fail closed and return that fact rather than overwriting it silently.
+If either path already exists, STOP rather than merge or overwrite.
 
-## Recommended exact command
+Do not modify, move, delete, or repackage:
+
+`/private/tmp/SR04_B1_NEUTRAL_CHECKPOINT`
+
+## Exact command
 
 From the verified repository checkout:
 
-`python3 data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR04_CARRIER_BAKEOFF.py --stage-b1 --source-root /Users/matthewsmith/Desktop/Rawlsing/data/Data --checkpoint-dir /private/tmp/SR04_B1_NEUTRAL_CHECKPOINT --work-root /private/tmp/SR04_B1_WORK --output-dir /private/tmp/SR04_B1_RECEIPT`
+`python3 data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR04_CARRIER_BAKEOFF.py --stage-b2 --checkpoint-dir /private/tmp/SR04_B1_NEUTRAL_CHECKPOINT --work-root /private/tmp/SR04_B2_WORK --output-dir /private/tmp/SR04_B2_CARRIER_BAKEOFF_RESULTS`
 
-No wrapper timeout shorter than the work itself is permitted.
+Do NOT pass `--source-root`.
 
-## Required success conditions
+No short wrapper timeout.
 
-The B1 receipt must show:
+## Required execution law
 
-- exact checkout HEAD;
-- harness SHA-256;
-- source hashes equal the frozen WVS7/LiTS I hashes;
-- checkpoint version `SR04_NEUTRAL_CHECKPOINT_V1`;
-- exact relation digests for `sources`, `respondents`, `variables`, `events`;
-- exact oracle digest;
-- selected source variables / ordinals;
-- frozen hostile-check results;
-- checkpoint readback verification `PASS`;
-- `candidate_execution_started=false`;
-- `DATABASE_URL_unused=true`;
-- `raw_source_decode=true`;
-- checkpoint total byte size;
-- exact absolute checkpoint path.
+The accepted checkpoint reader must verify:
 
-Required token:
+- checkpoint version / source identities;
+- neutral relation digests;
+- oracle digest.
 
-`PRE553_SR04_B1_NEUTRAL_CHECKPOINT_COMPLETE`
+Then execute exactly four candidates:
+
+1. `PARQUET_DUCKDB_DIRECT`
+2. `DUCKDB_NATIVE`
+3. `POSTGRES_EPHEMERAL`
+4. `SQLITE`
+
+For every candidate, preserve the accepted law:
+
+- oracle correctness required;
+- true stored readback digest required;
+- one warm-up + five scored Q00-Q15 repetitions;
+- recorded median and p95;
+- scored sequential batch time;
+- measured cold-open time;
+- measured index-build time where applicable;
+- measured persistent disk;
+- measured peak RSS;
+- frozen 5 GiB reserve / candidate disk budget;
+- frozen build/query time ceilings;
+- disposable candidate cleanup only.
+
+A candidate is not `MEASURED_CORRECT` unless oracle and replay checks both pass.
+
+Selection remains:
+
+`flawless effectiveness -> fastest batch -> <=10% speed tie -> lightness`
+
+## Required final package
+
+The output directory must contain exactly:
+
+- `RECEIPT.json`
+- `ENVIRONMENT.json`
+- `FIXTURE_MANIFEST.json`
+- `FIXTURE_DIGESTS.json`
+- `QUERY_ORACLE.json`
+- `CANDIDATE_RESULTS.json`
+- `PROVISIONAL_SELECTION.json`
+- `STDOUT.txt`
+- `STDERR.txt`
+
+The harness must also create the deterministic ZIP corresponding to that output directory.
+
+Required success token:
+
+`PRE553_SR04_CARRIER_BAKEOFF_RECEIPT_COMPLETE`
 
 ## Return to HQ
 
@@ -129,35 +157,41 @@ Return:
 - harness SHA-256;
 - exact command;
 - exit code;
-- complete `B1_RECEIPT.json`;
-- absolute checkpoint path;
-- checkpoint byte size;
-- `CHECKPOINT_MANIFEST.json`;
-- checkpoint relation file names and byte sizes;
-- SHA-256 of every checkpoint file;
-- source hashes;
-- fixture relation digests;
-- oracle digest;
-- selected variables / ordinals;
-- hostile-check results;
+- preflight checkpoint file sizes + SHA-256;
+- complete final result directory;
+- deterministic ZIP path, byte size, SHA-256;
+- `RECEIPT.json`;
+- `ENVIRONMENT.json`;
+- `FIXTURE_MANIFEST.json`;
+- `FIXTURE_DIGESTS.json`;
+- `QUERY_ORACLE.json`;
+- `CANDIDATE_RESULTS.json`;
+- `PROVISIONAL_SELECTION.json`;
+- `STDOUT.txt`;
+- `STDERR.txt`;
+- all four candidate dispositions;
+- all four candidate batch times;
+- all four candidate persistent disk sizes;
+- all four candidate peak RSS measurements;
+- provisional selection;
 - completion-token presence;
 - final `git status -sb`.
 
-Preserve the checkpoint exactly at the returned path after success. Do not zip, move, mutate, or delete it unless HQ later orders that.
+Then STOP.
 
 ## Forbidden
 
 Do not:
 
-- run `--stage-b2`;
-- execute the carrier court;
-- modify the harness;
-- modify governance;
-- modify source bytes;
-- connect to live PostgreSQL;
-- use `DATABASE_URL`;
-- commit the checkpoint or receipt;
-- delete or move a successful checkpoint;
-- reinterpret source semantics.
+- run `--stage-b1`;
+- pass `--source-root`;
+- decode WVS7 or LiTS I;
+- alter checkpoint bytes;
+- use or inspect `DATABASE_URL`;
+- touch live Rawlsing PostgreSQL;
+- modify harness/governance/runtime;
+- change candidates, queries, budgets, timing protocol, or selection law;
+- commit benchmark outputs;
+- delete the accepted B1 checkpoint before HQ adjudication.
 
-Fail closed on any ambiguity or exact-source/checkpoint-verification failure and return the failure unchanged.
+Fail closed on any checkpoint mismatch or execution ambiguity.
