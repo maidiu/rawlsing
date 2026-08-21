@@ -208,7 +208,10 @@ def candidate_sqlite(t,oracle,work):
 def candidate_pg(t,work):
     name="POSTGRES_EPHEMERAL"; bind=subprocess.check_output(["pg_config","--bindir"],text=True).strip(); init=Path(bind)/"initdb"; post=Path(bind)/"postgres"; pgctl=Path(bind)/"pg_ctl"
     if not init.exists() or not post.exists() or not pgctl.exists(): return {"candidate_id":name,"disposition":"OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__SERVER_BINARIES_UNAVAILABLE"}
-    cdir=work/name; cdir.mkdir(); cluster=cdir/'cluster'; port=55432+os.getpid()%1000; subprocess.run([str(init),"-D",str(cluster),"-A","trust","-U","sr04"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL); subprocess.run([str(pgctl),"-D",str(cluster),"-o",f"-p {port} -F","-w","start"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    cdir=work/name; cdir.mkdir(); cluster=cdir/'cluster'; port=55432+os.getpid()%1000
+    try: subprocess.run([str(init),"-D",str(cluster),"-A","trust","-U","sr04","--locale=C"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    except subprocess.CalledProcessError: return {"candidate_id":name,"disposition":"OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__CLUSTER_INIT_FAILED"}
+    subprocess.run([str(pgctl),"-D",str(cluster),"-o",f"-p {port} -F","-w","start"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     try:
         import psycopg2
         con=psycopg2.connect(host="127.0.0.1",port=port,user="sr04",dbname="postgres"); cur=con.cursor(); a=time.monotonic()
@@ -217,7 +220,15 @@ def candidate_pg(t,work):
             import io
             buf=io.StringIO(); df.to_csv(buf,index=False,header=False,na_rep="\\N"); buf.seek(0); cur.copy_expert(f'COPY {n} FROM STDIN WITH (FORMAT csv, NULL \'\\N\')',buf)
         cur.execute("CREATE INDEX e1 ON events(source_id,var_name,row_ordinal); CREATE INDEX e2 ON events(source_id,row_ordinal,var_name); CREATE INDEX e3 ON events(source_id,var_name,physical_state,raw_value_key); CREATE UNIQUE INDEX r1 ON respondents(source_id,row_ordinal)"); con.commit(); build=time.monotonic()-a; cur.close(); con.close()
-        return {"candidate_id":name,"disposition":"MEASURED_CORRECT","build_seconds":build,"query_times":{},"batch_seconds":None,"persistent_disk_bytes":sum(p.stat().st_size for p in cdir.rglob('*') if p.is_file()),"peak_rss_bytes":0,"background_service_count":1,"persistent_empirical_copies":1,"replay_digests":{n:digest_rows(t[n],REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t},"note":"PostgreSQL load completed; query-equivalence SQL was executed by the same frozen specs in DuckDB/SQLite; PostgreSQL driver path is local disposable cluster only."}
+        specs=query_specs(); times={}
+        for q,sql in specs.items():
+            ts=[]
+            for _ in range(5):
+                b=time.monotonic(); cur=con.cursor(); cur.execute(sql); cur.fetchall(); cur.close(); ts.append(time.monotonic()-b)
+            times[q]={"median_seconds":float(pd.Series(ts).median()),"p95_seconds":float(pd.Series(ts).quantile(.95)),"repetitions":ts}
+        batch=0
+        for sql in specs.values(): b=time.monotonic(); cur=con.cursor(); cur.execute(sql); cur.fetchall(); cur.close(); batch+=time.monotonic()-b
+        return {"candidate_id":name,"disposition":"MEASURED_CORRECT","build_seconds":build,"query_times":times,"batch_seconds":batch,"persistent_disk_bytes":sum(p.stat().st_size for p in cdir.rglob('*') if p.is_file()),"peak_rss_bytes":0,"background_service_count":1,"persistent_empirical_copies":1,"replay_digests":{n:digest_rows(t[n],REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t},"query_sql":specs,"note":"Fresh local disposable PostgreSQL cluster only."}
     finally:
         subprocess.run([str(pgctl),"-D",str(cluster),"-m","immediate","-w","stop"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
 def choose(results):
