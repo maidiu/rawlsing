@@ -1,0 +1,179 @@
+{
+  "worker_id": "R07",
+  "family": "LITS_I_II_III_IV",
+  "mission_status": "AUTHORIZED__NON_DISPOSITIVE__HIGH_PRIORITY",
+  "exact_checkout_head_verified": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "branch_verified": "agent/vozhd-trii-sr09pre-r07-lits",
+  "checkout_verification_method": "GitHub branch lookup/compare showed exact starting SHA and worker branch identical (ahead=0, behind=0) before probing.",
+  "library_bundles": [
+    {
+      "filename": "surveys.zip",
+      "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+      "size_bytes": 158180333,
+      "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+      "materialized_path": "/mnt/data/sr09pre-r07-lits/input/surveys.zip"
+    },
+    {
+      "filename": "LiTS_I.dta.zip",
+      "library_file_id": "file_000000000328820caec35ca18aeca59a",
+      "size_bytes": 7686379,
+      "sha256": "b2e90ee7ceefc230572e89687de28186544308949f8fd33c32b1d0ffb14b8feb",
+      "materialized_path": "/mnt/data/sr09pre-r07-lits/input/LiTS_I.dta.zip"
+    }
+  ],
+  "archive_members_extracted": [
+    "LiTS_I.dta",
+    "surveys/LiTS_II.dta",
+    "surveys/LiTS_III.dta",
+    "surveys/LiTS_IV.dta"
+  ],
+  "extracted_source_sha256_before_probing": {
+    "LiTS_I.dta": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "LiTS_II.dta": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+    "LiTS_III.dta": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+    "LiTS_IV.dta": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c"
+  },
+  "extracted_source_sha256_after_probing": {
+    "LiTS_I.dta": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "LiTS_II.dta": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+    "LiTS_III.dta": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+    "LiTS_IV.dta": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c"
+  },
+  "source_sizes_bytes": {
+    "LiTS_I.dta": 139531180,
+    "LiTS_II.dta": 199716969,
+    "LiTS_III.dta": 170487994,
+    "LiTS_IV.dta": 110465945
+  },
+  "scratch_paths": {
+    "root": "/mnt/data/sr09pre-r07-lits",
+    "extracted_dir": "/mnt/data/sr09pre-r07-lits/extracted",
+    "work_dir": "/mnt/data/sr09pre-r07-lits/work"
+  },
+  "tool_versions": {
+    "python": "3.13.5",
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "zlib": "1.3.1",
+    "git": "2.47.3",
+    "pyreadstat": "UNAVAILABLE"
+  },
+  "governed_reader_compatibility": {
+    "LiTS_I.dta": {
+      "encoding": "latin1",
+      "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+    },
+    "LiTS_II.dta": {
+      "encoding": "latin1",
+      "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+    },
+    "LiTS_III.dta": {
+      "encoding": "latin1",
+      "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+    },
+    "LiTS_IV.dta": {
+      "encoding": "latin1",
+      "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+    }
+  },
+  "independent_pandas_reader_metadata": {
+    "LiTS_I.dta": {
+      "stata_format_version": 113,
+      "pandas_reported_encoding": "latin-1",
+      "semantic_authority": false
+    },
+    "LiTS_II.dta": {
+      "stata_format_version": 115,
+      "pandas_reported_encoding": "latin-1",
+      "semantic_authority": false
+    },
+    "LiTS_III.dta": {
+      "stata_format_version": 118,
+      "pandas_reported_encoding": "utf-8",
+      "semantic_authority": false
+    },
+    "LiTS_IV.dta": {
+      "stata_format_version": 118,
+      "pandas_reported_encoding": "utf-8",
+      "semantic_authority": false
+    }
+  },
+  "exact_commands_scripts": [
+    "bundle sha256/size verification",
+    "stdlib zipfile exact-member extraction",
+    "metadata_probe.py",
+    "missing_scan.py",
+    "missing_scan_nodates.py",
+    "target_probe.py",
+    "semantic_exercise_probe.py",
+    "drift_probe.py",
+    "post-probe sha256 verification"
+  ],
+  "scratch_script_sha256": {
+    "drift_probe.py": "ecba4d3212d4d636deb820517373d156d4386b0ce46e73aa8a0ff3813652e799",
+    "metadata_probe.py": "c3862b924a8683d712ee2825a127e3bc5de153fa81d4c9d29638300cf84028dc",
+    "missing_scan.py": "ef16425d6a6ef5a4c0278245f162bfc596e639a7d31606762e18f73ff88d09e7",
+    "missing_scan_nodates.py": "4291055af57cb2a15f8c1ec319c5bbe44e20cfb1999a4b09562dc12c3ea09202",
+    "semantic_exercise_probe.py": "387ad314b897fc7e716e589f14e41a7f68101882c5233f64237101b7f1bb91f7",
+    "target_probe.py": "d467e047c69b41878c4670f8620db622bbe044b3d44613323c70b3a4ef03ae22"
+  },
+  "all_cell_full_source_scans_performed": false,
+  "bounded_full_numeric_scans": {
+    "LiTS_I.dta": {
+      "performed": true,
+      "rows": 29002,
+      "numeric_variables": 1197,
+      "reason": "Independently classify every numeric Stata missing value and rule in/out extended .a-.z missing behavior without rescanning every string cell."
+    },
+    "LiTS_II.dta": {
+      "performed": true,
+      "rows": 38864,
+      "numeric_variables": 622,
+      "reason": "Independently classify every numeric Stata missing value and rule in/out extended .a-.z missing behavior without rescanning every string cell."
+    },
+    "LiTS_III.dta": {
+      "performed": true,
+      "rows": 51206,
+      "numeric_variables": 1235,
+      "reason": "Independently classify every numeric Stata missing value and rule in/out extended .a-.z missing behavior without rescanning every string cell."
+    },
+    "LiTS_IV.dta": {
+      "performed": true,
+      "rows": 37478,
+      "numeric_variables": 1279,
+      "reason": "Independently classify every numeric Stata missing value and rule in/out extended .a-.z missing behavior without rescanning every string cell."
+    }
+  },
+  "full_scan_note": "Every numeric cell was scanned in all four sources to classify Stata missing tags and independently rule in/out extended missing values. String cells were not exhaustively rescanned because the common worker contract requires read economy.",
+  "reader_negative_probe": {
+    "source": "LiTS_IV.dta",
+    "failed_config": {
+      "reader": "pandas 2.2.3 StataReader",
+      "convert_missing": true,
+      "convert_dates": true
+    },
+    "failure_class": "TypeError during Stata elapsed-date conversion",
+    "successful_raw_state_config": {
+      "convert_missing": true,
+      "convert_dates": false
+    },
+    "raw_bytes_modified": false
+  },
+  "output_sha256_excluding_self_referential_receipt": {
+    "RESULT.md": "ac0199e91bcac94713be26bd10d76773909304033a2231e95a1423686092c320",
+    "RESULT.json": "8b86bdbf3622e420297f9ecc600182be1868beabf05d3928b4ba0b2a052201fd",
+    "SOURCE_BURDEN.csv": "68594c22cb53e4a0bf221fdb3d56b539ecc295b582a9bbbd2cae90f95b956e1a",
+    "HOSTILE_SENTINELS.csv": "88e5136ac1a9c05199c1848b37eeb27eecc5c527740c7fcfc2027822958ecf48",
+    "CROSS_WAVE_DRIFT.csv": "c17b32feb7be5905d9553363e78852b8ce9bb784a1d6803a0ab88b45cb7dba45",
+    "AUTHORITY_GAPS.csv": "f17a1267cd2558a780b50b79733585ffb2aa0ccdbe3b66530cd6617753683c4a"
+  },
+  "output_sha256_note": "PROBE_RECEIPT.json self-hash is intentionally excluded because embedding its own final hash is recursively self-referential.",
+  "library_bundle_unchanged": true,
+  "raw_source_bytes_unchanged": true,
+  "DATABASE_URL_used": false,
+  "legacy_postgres_used_as_truth": false,
+  "production_runtime_modified": false,
+  "repository_write_scope": "Only data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR09_PRE_RECON/RETURNS/R07/ is authorized for commit.",
+  "final_git_status_sb": "NOT_AVAILABLE_AS_LITERAL_LOCAL_COMMAND__NO_LOCAL_REPOSITORY_CHECKOUT_IN_CONNECTOR_RUNTIME",
+  "final_git_status_note": "A literal local git status -sb is unavailable because this execution used the GitHub connector rather than a local repository checkout. Remote branch/ref and exact commit diff are verified after push via the GitHub connector; no local status is fabricated."
+}

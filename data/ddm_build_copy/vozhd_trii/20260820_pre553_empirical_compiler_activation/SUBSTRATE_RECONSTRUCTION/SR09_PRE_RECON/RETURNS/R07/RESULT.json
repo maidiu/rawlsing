@@ -1,0 +1,207 @@
+{
+  "worker_id": "R07",
+  "family": "LITS_I_II_III_IV",
+  "mission_status": "AUTHORIZED__NON_DISPOSITIVE__HIGH_PRIORITY",
+  "success_token": "PRE553_SR09PRE_R07_LITS_RECON_COMPLETE",
+  "non_dispositive": true,
+  "exact_starting_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "source_inventory": [
+    {
+      "source_file": "LiTS_I.dta",
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "size_bytes": 139531180,
+      "rows": 29002,
+      "vars": 1198,
+      "numeric_vars_scanned": 1197,
+      "system_missing_cells": 24983759,
+      "missing_bearing_numeric_vars": 1145,
+      "extended_missing_cells": 0,
+      "format_version": 113,
+      "pandas_encoding": "latin-1",
+      "value_label_sets": 41
+    },
+    {
+      "source_file": "LiTS_II.dta",
+      "sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+      "size_bytes": 199716969,
+      "rows": 38864,
+      "vars": 627,
+      "numeric_vars_scanned": 622,
+      "system_missing_cells": 3118,
+      "missing_bearing_numeric_vars": 2,
+      "extended_missing_cells": 0,
+      "format_version": 115,
+      "pandas_encoding": "latin-1",
+      "value_label_sets": 543
+    },
+    {
+      "source_file": "LiTS_III.dta",
+      "sha256": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+      "size_bytes": 170487994,
+      "rows": 51206,
+      "vars": 1290,
+      "numeric_vars_scanned": 1235,
+      "system_missing_cells": 41915435,
+      "missing_bearing_numeric_vars": 1178,
+      "extended_missing_cells": 0,
+      "format_version": 118,
+      "pandas_encoding": "utf-8",
+      "value_label_sets": 1164
+    },
+    {
+      "source_file": "LiTS_IV.dta",
+      "sha256": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c",
+      "size_bytes": 110465945,
+      "rows": 37478,
+      "vars": 1319,
+      "numeric_vars_scanned": 1279,
+      "system_missing_cells": 28377791,
+      "missing_bearing_numeric_vars": 888,
+      "extended_missing_cells": 0,
+      "format_version": 118,
+      "pandas_encoding": "utf-8",
+      "value_label_sets": 1064
+    }
+  ],
+  "source_level_reconnaissance_dispositions": {
+    "LiTS_I.dta": [
+      "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "DOCUMENTARY_AUTHORITY_GAP"
+    ],
+    "LiTS_II.dta": [
+      "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "DOCUMENTARY_AUTHORITY_GAP"
+    ],
+    "LiTS_III.dta": [
+      "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "DOCUMENTARY_AUTHORITY_GAP"
+    ],
+    "LiTS_IV.dta": [
+      "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "DOCUMENTARY_AUTHORITY_GAP"
+    ]
+  },
+  "hazard_class_counts": {
+    "COUNTRY_REGION_CODING": 4,
+    "ENCODING_TEXT_AUTHORITY": 4,
+    "FORMAT_READER_COMPATIBILITY": 1,
+    "PHYSICAL_MISSINGNESS": 4,
+    "REPEATED_RANKED_SLOT_TOPOLOGY": 4,
+    "RESPONDENT_IDENTITY": 4,
+    "ROUTING_APPLICABILITY": 3,
+    "SEMANTIC_CODE_CANDIDATE": 4,
+    "WEIGHT_DESIGN": 4
+  },
+  "hazard_class_counts_by_source": {
+    "LiTS_I.dta": {
+      "COUNTRY_REGION_CODING": 1,
+      "ENCODING_TEXT_AUTHORITY": 1,
+      "PHYSICAL_MISSINGNESS": 1,
+      "REPEATED_RANKED_SLOT_TOPOLOGY": 1,
+      "RESPONDENT_IDENTITY": 1,
+      "SEMANTIC_CODE_CANDIDATE": 1,
+      "WEIGHT_DESIGN": 1
+    },
+    "LiTS_II.dta": {
+      "COUNTRY_REGION_CODING": 1,
+      "ENCODING_TEXT_AUTHORITY": 1,
+      "PHYSICAL_MISSINGNESS": 1,
+      "REPEATED_RANKED_SLOT_TOPOLOGY": 1,
+      "RESPONDENT_IDENTITY": 1,
+      "ROUTING_APPLICABILITY": 1,
+      "SEMANTIC_CODE_CANDIDATE": 1,
+      "WEIGHT_DESIGN": 1
+    },
+    "LiTS_III.dta": {
+      "COUNTRY_REGION_CODING": 1,
+      "ENCODING_TEXT_AUTHORITY": 1,
+      "PHYSICAL_MISSINGNESS": 1,
+      "REPEATED_RANKED_SLOT_TOPOLOGY": 1,
+      "RESPONDENT_IDENTITY": 1,
+      "ROUTING_APPLICABILITY": 1,
+      "SEMANTIC_CODE_CANDIDATE": 1,
+      "WEIGHT_DESIGN": 1
+    },
+    "LiTS_IV.dta": {
+      "COUNTRY_REGION_CODING": 1,
+      "ENCODING_TEXT_AUTHORITY": 1,
+      "FORMAT_READER_COMPATIBILITY": 1,
+      "PHYSICAL_MISSINGNESS": 1,
+      "REPEATED_RANKED_SLOT_TOPOLOGY": 1,
+      "RESPONDENT_IDENTITY": 1,
+      "ROUTING_APPLICABILITY": 1,
+      "SEMANTIC_CODE_CANDIDATE": 1,
+      "WEIGHT_DESIGN": 1
+    }
+  },
+  "novel_hazard_classes": [],
+  "novel_source_specific_behaviors": [
+    {
+      "source_file": "LiTS_IV.dta",
+      "hazard_class": "FORMAT_READER_COMPATIBILITY",
+      "finding": "pandas 2.2.3 convert_missing=True + convert_dates=True fails on the exact snapshot; convert_dates=False completes raw-state scan. This is a new source-specific behavior within an already-governed hazard class, not a new DTA physical class."
+    }
+  ],
+  "documentary_authority_gap_classes": [
+    "COUNTRY_SCOPE_AND_CROSSWALK_AUTHORITY",
+    "CROSS_RELEASE_SEMANTIC_EQUIVALENCE",
+    "RESPONDENT_IDENTITY_AUTHORITY",
+    "ROUTING_MODULE_AUTHORITY",
+    "SOURCE_TEXT_ENCODING_AUTHORITY",
+    "WEIGHT_DESIGN_AUTHORITY"
+  ],
+  "hostile_sentinel_count_per_source": {
+    "LiTS_I.dta": 8,
+    "LiTS_II.dta": 8,
+    "LiTS_III.dta": 8,
+    "LiTS_IV.dta": 8
+  },
+  "all_cell_full_source_scans_performed": false,
+  "bounded_full_numeric_scans": {
+    "LiTS_I.dta": {
+      "performed": true,
+      "rows": 29002,
+      "numeric_variables": 1197,
+      "reason": "Independently classify every numeric Stata missing value and rule in/out extended .a-.z missing behavior without rescanning every string cell."
+    },
+    "LiTS_II.dta": {
+      "performed": true,
+      "rows": 38864,
+      "numeric_variables": 622,
+      "reason": "Independently classify every numeric Stata missing value and rule in/out extended .a-.z missing behavior without rescanning every string cell."
+    },
+    "LiTS_III.dta": {
+      "performed": true,
+      "rows": 51206,
+      "numeric_variables": 1235,
+      "reason": "Independently classify every numeric Stata missing value and rule in/out extended .a-.z missing behavior without rescanning every string cell."
+    },
+    "LiTS_IV.dta": {
+      "performed": true,
+      "rows": 37478,
+      "numeric_variables": 1279,
+      "reason": "Independently classify every numeric Stata missing value and rule in/out extended .a-.z missing behavior without rescanning every string cell."
+    }
+  },
+  "key_measured_findings": {
+    "identity": "I id injective but serial needs country scope; II SerialID injective; III ID injective while hhid is sparse/noninjective; IV string hhid injective.",
+    "country": "I numeric+string 29; II numeric+two string carriers with 35 observed but 194-entry label dictionary; III string country 34; IV numeric country 37. II/IV decoded Albania appears under different numeric codes.",
+    "missingness": "System missing only across all four numeric scans; no Stata extended missing .a-.z observed. Density/localization changes radically by release.",
+    "semantic_codes": "Ordinary -97/-98/-99 and other labeled codes are exercised and kept ordinary; no semantic state inferred from labels.",
+    "weights": "Candidate count/drift is 3 -> 2 -> 3 -> 4, with materially different missing incidence and IV top-up subset behavior.",
+    "routing_topology": "I/II repeated household/ranked slots; III mirrored PR/SR modules; IV 134 explicit skip variables plus ten visit blocks.",
+    "encoding": "latin1 remains frozen pyreadstat compatibility-execution only for all four. Independent pandas metadata reports latin-1 for I/II and utf-8 for III/IV; no intended encoding is inferred.",
+    "schema_drift": "Exact-name overlap is low and heavily unstable; II/IV share 85 names and all 85 change storage type and decoded variable label."
+  },
+  "commands_probes_executed": [
+    "Library materialization of surveys.zip and LiTS_I.dta.zip into worker-private scratch",
+    "SHA-256 and size verification of both bundles before extraction",
+    "stdlib zipfile extraction of only LiTS_I.dta, LiTS_II.dta, LiTS_III.dta, LiTS_IV.dta",
+    "SHA-256 verification of all four extracted members before probing and after probing",
+    "pandas StataReader metadata census with convert_categoricals=False and decoded text treated as authority-limited",
+    "full numeric-domain scans using convert_missing=False followed by missing-bearing-variable classification using convert_missing=True",
+    "LiTS IV negative reader probe: convert_missing=True + convert_dates=True failure; deterministic raw-state retry with convert_dates=False",
+    "targeted ID/country/weight/routing/repeated-slot/semantic-code probes",
+    "cross-release exact-name/type/format/label drift comparison"
+  ]
+}
