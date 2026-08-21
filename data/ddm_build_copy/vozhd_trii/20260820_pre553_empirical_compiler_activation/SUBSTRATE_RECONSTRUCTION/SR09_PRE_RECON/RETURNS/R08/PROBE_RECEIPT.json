@@ -1,0 +1,126 @@
+{
+  "DATABASE_URL_used": false,
+  "Library_raw_source_files_unchanged": true,
+  "PROBE_RECEIPT_self_sha256": "SELF_REFERENCE_NOT_EMBEDDED; exact serialized SHA-256 computed after write and returned to HQ",
+  "archive_members_used": [
+    "surveys/South Asia Wave 1.sav",
+    "surveys/South Asia Wave 2.sav"
+  ],
+  "branch": "agent/vozhd-trii-sr09pre-r08-south-asia",
+  "branch_head_verified_identical_before_probe": true,
+  "exact_checkout_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "exact_commands_scripts": [
+    {
+      "detail": "GitHub compare 491a2394e323c904128ca425ef9e793e33ca0d5d...agent/vozhd-trii-sr09pre-r08-south-asia => identical",
+      "operation": "branch verification"
+    },
+    {
+      "detail": "ChatGPT Files Library surveys.zip -> /mnt/data/sr09pre_r08_private/surveys.zip",
+      "operation": "Library materialize"
+    },
+    {
+      "detail": "stat size + sha256sum compared with 02_LIBRARY_RAW_INPUT_LAW.md",
+      "operation": "bundle verify"
+    },
+    {
+      "detail": "Python zipfile extracted only surveys/South Asia Wave 1.sav and surveys/South Asia Wave 2.sav",
+      "operation": "selective extraction"
+    },
+    {
+      "detail": "sha256sum of both extracted SAVs checked against R08_SOUTH_ASIA.md / SOURCE_BYTE_INVENTORY.csv before probing",
+      "operation": "member verify"
+    },
+    {
+      "detail": "scratch c5b396cc... probe_sav.py parsed SPSS dictionary, labels, missing declarations, subtype metadata and compressed numeric cases without semantic normalization",
+      "operation": "metadata/raw probe"
+    },
+    {
+      "detail": "full row/cell traversal for both compact waves; frequency/missing/country/ID/routing/ranked/Unicode/schema/value-label drift measurements",
+      "operation": "near-complete family comparison"
+    },
+    {
+      "detail": "sha256sum rechecked for Library ZIP and both extracted SAVs after probes",
+      "operation": "post-probe immutability verify"
+    }
+  ],
+  "extracted_sources_before_probe": [
+    {
+      "scratch_path": "/mnt/data/sr09pre_r08_private/extracted/South Asia Wave 1.sav",
+      "sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "size_bytes": 595974,
+      "source_file": "South Asia Wave 1.sav"
+    },
+    {
+      "scratch_path": "/mnt/data/sr09pre_r08_private/extracted/South Asia Wave 2.sav",
+      "sha256": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+      "size_bytes": 894051,
+      "source_file": "South Asia Wave 2.sav"
+    }
+  ],
+  "family": "South Asia",
+  "final_git_status": "PRE_PUBLICATION_OUTPUT_TREE_ONLY; final remote branch/ref and seven-path diff are verified after publication and reported to HQ.",
+  "full_scan_reasons": {
+    "South Asia Wave 1.sav": "Compact two-wave mission required near-complete comparison; full physical scan needed for exact system/user-missing realization counts, country routing masks, semantic-code physical classes and zero-based hostile cell ordinals.",
+    "South Asia Wave 2.sav": "Compact two-wave mission required near-complete comparison; full physical scan needed for resno injectivity/collisions, country-specific system-missing and -1 masks, ordinary semantic-code frequencies, ranked-slot cells and hostile row ordinals."
+  },
+  "large_temporary_extracts_committed": false,
+  "legacy_postgres_used_as_truth": false,
+  "library_bundles": [
+    {
+      "filename": "surveys.zip",
+      "materialized_scratch_path": "/mnt/data/sr09pre_r08_private/surveys.zip",
+      "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+      "size_bytes": 158180333
+    }
+  ],
+  "output_file_sha256": {
+    "AUTHORITY_GAPS.csv": "b1af040a98174b8cda051136ec40ddf66b9552cc65784a6ea131755e97fe57df",
+    "CROSS_WAVE_DRIFT.csv": "d1b20ac4bf245b7c06b503b5c50a52efa0fb5d6c9dd2a15e6429b15cfe0cbc1e",
+    "HOSTILE_SENTINELS.csv": "9f3079e8d5d06ecb869efe2e62f4822e0aebf038bb351a4faa080eec1dd3ab1f",
+    "RESULT.json": "3c4477dc90fe5c310440216bc885894d61364285eeb95208463e216167df89a7",
+    "RESULT.md": "9cdbce6999f70f587a276ec25b20b4fadb2658f8d3bb30eabaa3d8ffc4f2c8a2",
+    "SOURCE_BURDEN.csv": "7ba90cb34b6fd3341b1af989774590351f52d8bb9da5da271e433f879c7894c7"
+  },
+  "physical_conservation": {
+    "South Asia Wave 1.sav": {
+      "cells": 574056,
+      "conserves": true,
+      "decoded_stream_ended_at_file_end": true,
+      "ordinary_present": 553061,
+      "rows": 8442,
+      "system_missing": 6387,
+      "user_missing": 14608,
+      "variables": 68
+    },
+    "South Asia Wave 2.sav": {
+      "cells": 775041,
+      "conserves": true,
+      "decoded_stream_ended_at_file_end": true,
+      "ordinary_present": 758778,
+      "rows": 10617,
+      "system_missing": 16263,
+      "user_missing": 0,
+      "variables": 73
+    }
+  },
+  "post_probe_immutability": {
+    "South Asia Wave 1.sav": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+    "South Asia Wave 2.sav": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+    "surveys.zip": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f"
+  },
+  "probe_boundary": "Scratch parser exposes source-format physical facts only: SPSS dictionary, labels, missing declarations, UTF-8 subtype metadata, compressed numeric cell values, system-missing markers and exact row ordinals. It performs no semantic mapping, canonicalization, repair, database read or production write.",
+  "production_runtime_modified": false,
+  "sources_fully_scanned": [
+    "South Asia Wave 1.sav",
+    "South Asia Wave 2.sav"
+  ],
+  "tool_dependency_versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "pyreadstat": "UNAVAILABLE_IN_WORKER_RUNTIME",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "scratch_probe": "SCRATCH_SAV_PHYSICAL_PARSER__RECON_ONLY__NOT_PRODUCTION_DECODER",
+    "scratch_probe_sha256": "c5b396cc3150681010d521e957680d13877fbc9f817cfbc119ed384ca6ac55f6"
+  },
+  "worker_id": "SR09-PRE-R08"
+}

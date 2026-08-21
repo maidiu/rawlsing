@@ -1,0 +1,115 @@
+{
+  "authority_gap_rows": 13,
+  "branch": "agent/vozhd-trii-sr09pre-r08-south-asia",
+  "commands_probes_executed": [
+    {
+      "detail": "GitHub compare 491a2394e323c904128ca425ef9e793e33ca0d5d...agent/vozhd-trii-sr09pre-r08-south-asia => identical",
+      "operation": "branch verification"
+    },
+    {
+      "detail": "ChatGPT Files Library surveys.zip -> /mnt/data/sr09pre_r08_private/surveys.zip",
+      "operation": "Library materialize"
+    },
+    {
+      "detail": "stat size + sha256sum compared with 02_LIBRARY_RAW_INPUT_LAW.md",
+      "operation": "bundle verify"
+    },
+    {
+      "detail": "Python zipfile extracted only surveys/South Asia Wave 1.sav and surveys/South Asia Wave 2.sav",
+      "operation": "selective extraction"
+    },
+    {
+      "detail": "sha256sum of both extracted SAVs checked against R08_SOUTH_ASIA.md / SOURCE_BYTE_INVENTORY.csv before probing",
+      "operation": "member verify"
+    },
+    {
+      "detail": "scratch c5b396cc... probe_sav.py parsed SPSS dictionary, labels, missing declarations, subtype metadata and compressed numeric cases without semantic normalization",
+      "operation": "metadata/raw probe"
+    },
+    {
+      "detail": "full row/cell traversal for both compact waves; frequency/missing/country/ID/routing/ranked/Unicode/schema/value-label drift measurements",
+      "operation": "near-complete family comparison"
+    },
+    {
+      "detail": "sha256sum rechecked for Library ZIP and both extracted SAVs after probes",
+      "operation": "post-probe immutability verify"
+    }
+  ],
+  "completion_token": "PRE553_SR09PRE_R08_SOUTH_ASIA_RECON_COMPLETE",
+  "cross_wave_drift_rows": 30,
+  "documentary_authority_gaps": [
+    "COUNTRY_REGION_MAPPING_AUTHORITY",
+    "CROSS_WAVE_EQUIVALENCE_AUTHORITY",
+    "MULTIPLE_RESPONSE_TOPOLOGY_AUTHORITY",
+    "RANKED_SLOT_SEMANTIC_AUTHORITY",
+    "RESPONDENT_IDENTITY_AUTHORITY",
+    "ROUTING_APPLICABILITY_AUTHORITY",
+    "SEMANTIC_CODE_AUTHORITY",
+    "WEIGHT_DESIGN_AUTHORITY"
+  ],
+  "family": "South Asia",
+  "family_holding": "Known generic hazard classes are sufficient, but source-specific fixtures are mandatory because missing-state encoding, country codes, identifiers, topology, Unicode and response dictionaries drift materially between the two waves.",
+  "full_scan_reasons": {
+    "South Asia Wave 1.sav": "Compact two-wave mission required near-complete comparison; full physical scan needed for exact system/user-missing realization counts, country routing masks, semantic-code physical classes and zero-based hostile cell ordinals.",
+    "South Asia Wave 2.sav": "Compact two-wave mission required near-complete comparison; full physical scan needed for resno injectivity/collisions, country-specific system-missing and -1 masks, ordinary semantic-code frequencies, ranked-slot cells and hostile row ordinals."
+  },
+  "full_scans_performed": true,
+  "generic_sav_decoder_contract_extension_required": false,
+  "hazard_class_counts": {
+    "COUNTRY_REGION_CODING": 2,
+    "ENCODING_TEXT_AUTHORITY": 2,
+    "LABEL_METADATA_DRIFT": 3,
+    "LEGACY_LOSS_RISK": 1,
+    "MULTIPLE_RESPONSE_TOPOLOGY": 2,
+    "PHYSICAL_MISSINGNESS": 5,
+    "REPEATED_RANKED_SLOT_TOPOLOGY": 1,
+    "RESPONDENT_IDENTITY": 2,
+    "ROUTING_APPLICABILITY": 3,
+    "SEMANTIC_CODE_CANDIDATE": 4,
+    "SOURCE_SCOPE_COORDINATE": 2,
+    "VALUE_CODING_DRIFT": 4,
+    "VARIABLE_SCHEMA_DRIFT": 1,
+    "WEIGHT_DESIGN": 2
+  },
+  "hostile_sentinel_count_per_source": {
+    "South Asia Wave 1.sav": 11,
+    "South Asia Wave 2.sav": 21
+  },
+  "hostile_sentinel_total": 32,
+  "non_dispositive": true,
+  "novel_hazard_classes": [],
+  "source_burden_rows": 34,
+  "source_inventory": [
+    {
+      "cells": 574056,
+      "disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "ordinary_present": 553061,
+      "rows": 8442,
+      "sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "size_bytes": 595974,
+      "source_file": "South Asia Wave 1.sav",
+      "system_missing": 6387,
+      "user_missing": 14608,
+      "variables": 68
+    },
+    {
+      "cells": 775041,
+      "disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "ordinary_present": 758778,
+      "rows": 10617,
+      "sha256": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+      "size_bytes": 894051,
+      "source_file": "South Asia Wave 2.sav",
+      "system_missing": 16263,
+      "user_missing": 0,
+      "variables": 73
+    }
+  ],
+  "source_level_reconnaissance_dispositions": {
+    "South Asia Wave 1.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "South Asia Wave 2.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED"
+  },
+  "starting_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "status": "COMPLETE__NON_DISPOSITIVE_RECONNAISSANCE",
+  "worker_id": "SR09-PRE-R08"
+}
