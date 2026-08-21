@@ -1,0 +1,65 @@
+{
+  "worker_id": "R10",
+  "branch": "agent/vozhd-trii-sr09pre-r10-cross-corpus-red-team",
+  "completion_token": "PRE553_SR09PRE_R10_CROSS_CORPUS_RED_TEAM_COMPLETE",
+  "exact_checkout_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "launch_gate": {
+    "R01_R09_returns_available": true,
+    "verification": "R09 branch now contains its seven required return artifacts; R01-R08 previously verified present."
+  },
+  "input_family_return_result_blobs": {
+    "R01": {"branch":"agent/vozhd-trii-sr09pre-r01-afrobarometer","result_json_blob_sha":"00dd5522a96d56c0acacf2dfeb4fc4555d6379d7"},
+    "R02": {"branch":"agent/vozhd-trii-sr09pre-r02-arab-barometer","result_json_blob_sha":"81aa3a7082c762fe09f81c5edd87debd644a5088"},
+    "R03": {"branch":"agent/vozhd-trii-sr09pre-r03-asian-barometer","result_json_blob_sha":"f6c9a55c81e2c1f196796433e762da7c09573f12"},
+    "R04": {"branch":"agent/vozhd-trii-sr09pre-r04-evs","result_json_blob_sha":"c127a42499ea6ca2f48ae535adb38bb6ee5ade0d"},
+    "R05": {"branch":"agent/vozhd-trii-sr09pre-r05-gss","result_json_blob_sha":"73509046e38791de868ace0121fb0fdf8d35c1b7"},
+    "R06": {"branch":"agent/vozhd-trii-sr09pre-r06-latinobarometro","result_json_blob_sha":"35ac6d07bbe92758a7764915085e64d870e8ebf5"},
+    "R07": {"branch":"agent/vozhd-trii-sr09pre-r07-lits","result_json_blob_sha":"b43fc9c19560f2ab0de010b3da0a110c6737c26f"},
+    "R08": {"branch":"agent/vozhd-trii-sr09pre-r08-south-asia","result_json_blob_sha":"e08ec8565f2d5dbe62adea3f21e397fdc2d3b1ca"},
+    "R09": {"branch":"agent/vozhd-trii-sr09pre-r09-wvs","result_json_blob_sha":"cd9f09a8a95220a25fb5afbddb0a1ee8c700bac0"}
+  },
+  "library_bundles": [],
+  "library_raw_probe_performed": false,
+  "library_raw_probe_reason": "Not required. Accepted SR03 + completed R01-R09 evidence closed the cross-corpus physical classification burden; no named unresolved physical ambiguity remained that justified duplicate raw probing.",
+  "materialized_raw_scratch_paths": [],
+  "archive_member_names_used": [],
+  "extracted_source_sha256_before_probing": {},
+  "exact_commands_scripts": [
+    "Verify R10 branch against exact starting SHA with GitHub compare.",
+    "Verify R09 return branch is ahead of exact base and adds only required R09 return artifacts.",
+    "Fetch/read 00_COMMON_WORKER_CONTRACT.md, 02_LIBRARY_RAW_INPUT_LAW.md, R10_CROSS_CORPUS_RED_TEAM.md.",
+    "Fetch/read frozen 09_SOURCE_NATIVE_CONSTITUTION.md, 10_FORMAT_DECODER_CONTRACT.md, 16_SR03_R3_ADJUDICATION.md, 17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md and SOURCE_BYTE_INVENTORY.csv.",
+    "Cross-read R01-R09 RESULT.json and targeted SOURCE_BURDEN/HOSTILE_SENTINELS evidence; no raw family rescan.",
+    "Deterministically synthesize R10 CSV/JSON/Markdown outputs in private scratch and compute SHA-256."
+  ],
+  "tool_dependency_versions": {
+    "github_connector": "ChatGPT GitHub connector; API-backed branch/file/tree/commit/ref operations",
+    "python": "3.13.5",
+    "csv_json_hashing": "Python stdlib csv/json/hashlib"
+  },
+  "sources_fully_scanned_by_r10": [],
+  "target_reason_for_every_full_scan": {},
+  "output_file_sha256": {
+    "RESULT.md": "2e3e2c6bb6bae966bcdf2dd0b4f697ffcfc2c81d32fab83d46118f26063be8f3",
+    "RESULT.json": "950ef2a78ee669c8887efe70075abdf494a4d97354d51e53ac9dc7c8d2c647de",
+    "SOURCE_BURDEN.csv": "309ffc22a4363f858391793c5646d9b57c54ed836a9c397db471fd6fc35c94f0",
+    "HOSTILE_SENTINELS.csv": "4dbc1789f2c052dfa88e1ea37bfdb1aed1621be863a05a1d7bddfbed3b6ddad0",
+    "CROSS_WAVE_DRIFT.csv": "d3223e4a6900c476bc673b833cda3015c415cb3fa84bfd81b3a0036fc694543f",
+    "AUTHORITY_GAPS.csv": "d08114a8b4bb7149a1682839b8b8e0b49b2dd6fbb5125cd2d7a41d6a58e7cc3e",
+    "CROSS_CORPUS_HAZARD_MATRIX.csv": "2ca3f148eecc6d46fd0fb2165e642de9c146d7eab742c228e0a510c6f8be4004",
+    "SR09_EXCEPTION_QUEUE.csv": "dec4e4e9ccfc5edd2c8708babf7aaaf14a29b6b5a49e20a5ecc818cc70d9ee24"
+  },
+  "probe_receipt_self_hash": "EXCLUDED_FROM_SELF_CONTENT_TO_AVOID_RECURSIVE_HASH; compute externally after write",
+  "library_raw_source_files_unchanged": true,
+  "DATABASE_URL_used": false,
+  "legacy_postgres_used_as_truth": false,
+  "production_runtime_modified": false,
+  "source_certification_performed": false,
+  "semantic_authority_decided": false,
+  "final_git_status": "NO_LOCAL_GIT_WORKTREE__CONNECTOR_ATOMIC_PUBLICATION_PATH; publication is one tree/commit/ref update and post-publication compare must show only SR09_PRE_RECON/RETURNS/R10/.",
+  "status": "COMPLETE__NON_DISPOSITIVE__ADVERSARIAL",
+  "materialized_scratch_paths": [],
+  "sources_fully_scanned_by_this_worker": [],
+  "targeted_raw_probe_performed": false,
+  "raw_source_probe_reason": "Not required. Accepted SR03 + completed R01-R09 evidence closed the cross-corpus physical classification burden; no named unresolved physical ambiguity remained that justified duplicate raw probing."
+}
