@@ -4,7 +4,10 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from rawlsing_next.pre553_parquet_carrier import ParquetC11Carrier, ParquetCarrierError, RELATION_SPECS, _sha_bytes, _sha_file
+from rawlsing_next.pre553_parquet_carrier import (
+    ParquetC11Carrier, ParquetCarrierError, RELATION_SPECS, _sha_bytes, _sha_file,
+    verify_semantic_release_root,
+)
 from rawlsing_next.pre553_empirical_objects import canonical_json
 
 
@@ -14,6 +17,16 @@ class VerifiedDuckDBSession:
         self.carrier = carrier
         self.source_sha256, self.release_id, self.semantic_hash = source_sha256, release_id, semantic_hash
         self.directory, self.manifest = self._verify_manifest()
+        import pyarrow.parquet as pq
+        identity_rows = pq.read_table(self.directory / "release_identity.parquet").to_pylist()
+        replay_rows = pq.read_table(self.directory / "replay_manifest.parquet").to_pylist()
+        if len(identity_rows) != 1 or len(replay_rows) != 1:
+            raise ParquetCarrierError("direct-session identity-root relation cardinality mismatch")
+        verify_semantic_release_root(
+            identity_row=identity_rows[0], replay_row=replay_rows[0], manifest=self.manifest,
+            supplied_source_sha256=self.source_sha256, supplied_release_id=self.release_id,
+            supplied_semantic_hash=self.semantic_hash,
+        )
         import duckdb
         self._connection = duckdb.connect(database=":memory:")
         try:

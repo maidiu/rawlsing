@@ -13,7 +13,7 @@ from typing import Any, Mapping
 
 from rawlsing_next.pre553_c11_integrity import C11InternalRecord, TypedAbsence
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, _make_validated_release
-from rawlsing_next.pre553_empirical_objects import AuthorityRef, CanonicalSemanticObject, ExactRef, canonical_json, exact_ref
+from rawlsing_next.pre553_empirical_objects import AuthorityRef, CanonicalSemanticObject, ExactRef, canonical_json, exact_ref, semantic_hash
 
 
 class ParquetCarrierError(ValueError):
@@ -148,6 +148,43 @@ def _object_from_row(row: Mapping[str, Any]) -> Any:
     return obj
 
 
+def verify_semantic_release_root(*, identity_row: Mapping[str, Any], replay_row: Mapping[str, Any],
+                                manifest: Mapping[str, Any], supplied_source_sha256: str,
+                                supplied_release_id: str, supplied_semantic_hash: str) -> tuple[Any, ExactRef, dict[str, Any]]:
+    """Derive the I02 release root solely from persisted identity relations."""
+    try:
+        replay = _object_from_row(replay_row)
+        if getattr(replay, "RECORD_FAMILY", None) != "ReplayManifest":
+            raise ParquetCarrierError("persisted replay row is not ReplayManifest")
+        if replay.ref.object_id != replay_row["object_id"] or replay.ref.content_hash != replay_row["content_hash"]:
+            raise ParquetCarrierError("persisted replay-manifest ref identity mismatch")
+        source_ref = exact_ref(json.loads(identity_row["source_artifact_ref_json"]))
+        identity_ref = json.loads(identity_row["release_ref_json"])
+        coverage = json.loads(identity_row["m01_m18_coverage_json"])
+        if (identity_ref.get("object_id") != identity_row["release_id"]
+                or identity_ref.get("content_hash") != identity_row["semantic_release_hash"]):
+            raise ParquetCarrierError("release identity relation ref is internally inconsistent")
+        if set(coverage) != {f"M{index:02d}" for index in range(1, 19)}:
+            raise ParquetCarrierError("release identity relation does not contain exact M01-M18 coverage")
+        derived = semantic_hash({
+            "candidate_projection_hash": replay.semantic_projection_hash,
+            "replay_manifest_ref": replay.ref.as_dict(),
+            "m01_m18": {key: list(value) for key, value in coverage.items()},
+        })
+        checks = (
+            supplied_source_sha256 == source_ref.content_hash == manifest["source_artifact_ref"]["content_hash"],
+            supplied_release_id == identity_row["release_id"] == manifest["release_ref"]["object_id"],
+            supplied_semantic_hash == identity_row["semantic_release_hash"] == manifest["release_ref"]["content_hash"] == derived,
+        )
+        if not all(checks):
+            raise ParquetCarrierError("persisted semantic release root does not equal supplied/manifest identity")
+        return replay, source_ref, coverage
+    except ParquetCarrierError:
+        raise
+    except Exception as exc:
+        raise ParquetCarrierError("persisted semantic release root is invalid") from exc
+
+
 @dataclass(frozen=True)
 class PersistentManifest:
     schema_version: str
@@ -268,8 +305,14 @@ class ParquetC11Carrier:
             if _logical_digest(rows) != manifest["relation_digests"].get(name):
                 raise ParquetCarrierError(f"canonical relation digest mismatch: {name}")
         identity = relations["release_identity"]
-        if len(identity) != 1:
+        replay_rows = relations["replay_manifest"]
+        if len(identity) != 1 or len(replay_rows) != 1:
             raise ParquetCarrierError("release identity relation cardinality mismatch")
+        replay, source_ref, coverage = verify_semantic_release_root(
+            identity_row=identity[0], replay_row=replay_rows[0], manifest=manifest,
+            supplied_source_sha256=source_sha256, supplied_release_id=release_id,
+            supplied_semantic_hash=semantic_hash,
+        )
         objects = []
         try:
             for name in RELATION_SPECS:
@@ -278,18 +321,19 @@ class ParquetC11Carrier:
             if isinstance(exc, ParquetCarrierError):
                 raise
             raise ParquetCarrierError("canonical relation semantics are invalid") from exc
-        replay = next((obj for obj in objects if getattr(obj, "RECORD_FAMILY", None) == "ReplayManifest"), None)
-        if replay is None:
-            raise ParquetCarrierError("replay manifest relation missing")
+        replay_objects = [obj for obj in objects if getattr(obj, "RECORD_FAMILY", None) == "ReplayManifest"]
+        if len(replay_objects) != 1 or replay_objects[0].ref != replay.ref:
+            raise ParquetCarrierError("replay manifest relation reconstruction mismatch")
         public = tuple(sorted((obj for obj in objects if isinstance(obj, CanonicalSemanticObject)), key=lambda obj: obj.ref.key))
-        internal = tuple(sorted((obj for obj in objects if isinstance(obj, C11InternalRecord) and obj is not replay), key=lambda obj: obj.ref.key))
+        internal = tuple(sorted((obj for obj in objects if isinstance(obj, C11InternalRecord)
+                                 and getattr(obj, "RECORD_FAMILY", None) != "ReplayManifest"), key=lambda obj: obj.ref.key))
         row = identity[0]
         try:
             release = _make_validated_release(
-                release_id=row["release_id"], source_artifact_ref=exact_ref(json.loads(row["source_artifact_ref_json"])),
+                release_id=row["release_id"], source_artifact_ref=source_ref,
                 source_release_manifest_hash=row["source_release_manifest_hash"], semantic_release_hash=row["semantic_release_hash"],
                 replay_manifest=replay, public_objects=public, internal_records=internal,
-                m01_m18_coverage={key: tuple(value) for key, value in json.loads(row["m01_m18_coverage_json"]).items()},
+                m01_m18_coverage={key: tuple(value) for key, value in coverage.items()},
             )
         except Exception as exc:
             raise ParquetCarrierError("canonical relations cannot reconstruct sealed C11 release") from exc
@@ -305,7 +349,11 @@ class ParquetC11Carrier:
             raise ParquetCarrierError("opened path is not the reconstructed content-addressed path")
         if release.release_ref.as_dict() != manifest["release_ref"] or release.source_artifact_ref.as_dict() != manifest["source_artifact_ref"]:
             raise ParquetCarrierError("canonical relation semantics conflict with manifest identity")
+        closure = set(replay.closure_refs) | set(replay.source_substrate_content_refs)
+        persisted_refs = {obj.ref for obj in (*release.public_objects, *release.internal_records)} | {release.source_artifact_ref}
+        if not persisted_refs.issubset(closure):
+            raise ParquetCarrierError("canonical persisted object/source ref is absent from replay closure")
         return release
 
 
-__all__ = ["ParquetCarrierError", "PersistentManifest", "ParquetC11Carrier", "RELATION_SPECS"]
+__all__ = ["ParquetCarrierError", "PersistentManifest", "ParquetC11Carrier", "RELATION_SPECS", "verify_semantic_release_root"]

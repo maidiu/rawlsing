@@ -9,7 +9,7 @@ import pytest
 
 from rawlsing_next.pre553_c11_ingest import validate_c11_source_release
 from rawlsing_next.pre553_duckdb_direct import open_direct_session, query_canonical_release
-from rawlsing_next.pre553_parquet_carrier import ParquetC11Carrier, ParquetCarrierError, _logical_digest
+from rawlsing_next.pre553_parquet_carrier import ParquetC11Carrier, ParquetCarrierError, _logical_digest, _object_row
 from rawlsing_next.pre553_physical_c11_bridge import (
     PhysicalC11BridgeError, PhysicalSourceAuthorityProjection, build_validated_c11_release,
 )
@@ -271,6 +271,85 @@ def test_self_consistent_different_identity_under_old_path_is_rejected(tmp_path:
     manifest["manifest_hash"] = hashlib.sha256(canonical_json(unsigned).encode()).hexdigest()
     (directory / "manifest.json").write_text(canonical_json(manifest) + "\n")
     with pytest.raises(ParquetCarrierError):
+        carrier.reopen(release.source_artifact_ref.content_hash, release.release_id, release.semantic_release_hash)
+
+
+def test_fully_rehashed_alternate_relation_set_rejects_stale_root_in_reopen_and_direct_session(tmp_path: Path):
+    release = validate_c11_source_release(_candidate("strong-root"))
+    carrier = ParquetC11Carrier(tmp_path)
+    directory = carrier.persist(release)
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+    event = next(obj for obj in release.public_objects if obj.FAMILY.startswith("RespondentEvent@"))
+    altered_fields = dict(event.semantic_fields)
+    altered_fields["raw_response_value"] = "REHASHED-ALTERNATE"
+    altered = type(event)(typed_state=event.typed_state, authority_snapshot_refs=event.authority_snapshot_refs,
+                          dependency_refs=event.dependency_refs,
+                          producer_replay_locator_or_reference_root=event.producer_replay_locator_or_reference_root,
+                          **altered_fields)
+    event_rows = pq.read_table(directory / "respondent_events.parquet").to_pylist()
+    event_rows[0] = _object_row(altered)
+    pq.write_table(pa.Table.from_pylist(event_rows), directory / "respondent_events.parquet", compression="zstd", compression_level=3)
+    old_replay = release.replay_manifest
+    new_closure = tuple(altered.ref if ref == event.ref else ref for ref in old_replay.closure_refs)
+    new_replay = replace(old_replay, semantic_projection_hash=hashlib.sha256(b"alternate-projection").hexdigest(), closure_refs=new_closure)
+    pq.write_table(pa.Table.from_pylist([_object_row(new_replay)]), directory / "replay_manifest.parquet", compression="zstd", compression_level=3)
+    manifest = json.loads((directory / "manifest.json").read_text())
+    for member, relation, rows in (("respondent_events.parquet", "respondent_events", event_rows),
+                                   ("replay_manifest.parquet", "replay_manifest", [_object_row(new_replay)])):
+        manifest["members"][member] = hashlib.sha256((directory / member).read_bytes()).hexdigest()
+        manifest["relation_digests"][relation] = _logical_digest(rows)
+    unsigned = {key: manifest[key] for key in ("schema_version", "release_ref", "source_artifact_ref", "members", "relation_digests")}
+    manifest["manifest_hash"] = hashlib.sha256(canonical_json(unsigned).encode()).hexdigest()
+    (directory / "manifest.json").write_text(canonical_json(manifest) + "\n")
+    with pytest.raises(ParquetCarrierError, match="root"):
+        carrier.reopen(release.source_artifact_ref.content_hash, release.release_id, release.semantic_release_hash)
+    with pytest.raises(ParquetCarrierError, match="root"):
+        open_direct_session(carrier, source_sha256=release.source_artifact_ref.content_hash,
+                            release_id=release.release_id, semantic_hash=release.semantic_release_hash)
+
+
+def test_persisted_replay_manifest_row_identity_is_verified(tmp_path: Path):
+    release = validate_c11_source_release(_candidate("replay-row"))
+    carrier = ParquetC11Carrier(tmp_path)
+    directory = carrier.persist(release)
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+    rows = pq.read_table(directory / "replay_manifest.parquet").to_pylist()
+    rows[0]["content_hash"] = "0" * 64
+    pq.write_table(pa.Table.from_pylist(rows), directory / "replay_manifest.parquet", compression="zstd", compression_level=3)
+    manifest = json.loads((directory / "manifest.json").read_text())
+    manifest["members"]["replay_manifest.parquet"] = hashlib.sha256((directory / "replay_manifest.parquet").read_bytes()).hexdigest()
+    manifest["relation_digests"]["replay_manifest"] = _logical_digest(rows)
+    unsigned = {key: manifest[key] for key in ("schema_version", "release_ref", "source_artifact_ref", "members", "relation_digests")}
+    manifest["manifest_hash"] = hashlib.sha256(canonical_json(unsigned).encode()).hexdigest()
+    (directory / "manifest.json").write_text(canonical_json(manifest) + "\n")
+    with pytest.raises(ParquetCarrierError, match="identity"):
+        carrier.reopen(release.source_artifact_ref.content_hash, release.release_id, release.semantic_release_hash)
+
+
+def test_full_reopen_rejects_canonical_object_absent_from_replay_closure(tmp_path: Path):
+    release = validate_c11_source_release(_candidate("closure-root"))
+    carrier = ParquetC11Carrier(tmp_path)
+    directory = carrier.persist(release)
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+    event = next(obj for obj in release.public_objects if obj.FAMILY.startswith("RespondentEvent@"))
+    fields = dict(event.semantic_fields)
+    fields["response_event_id_or_deterministic_index"] = "UNDECLARED-EVENT"
+    extra = type(event)(typed_state=event.typed_state, authority_snapshot_refs=event.authority_snapshot_refs,
+                        dependency_refs=event.dependency_refs,
+                        producer_replay_locator_or_reference_root=event.producer_replay_locator_or_reference_root,
+                        **fields)
+    rows = pq.read_table(directory / "respondent_events.parquet").to_pylist() + [_object_row(extra)]
+    pq.write_table(pa.Table.from_pylist(rows), directory / "respondent_events.parquet", compression="zstd", compression_level=3)
+    manifest = json.loads((directory / "manifest.json").read_text())
+    manifest["members"]["respondent_events.parquet"] = hashlib.sha256((directory / "respondent_events.parquet").read_bytes()).hexdigest()
+    manifest["relation_digests"]["respondent_events"] = _logical_digest(rows)
+    unsigned = {key: manifest[key] for key in ("schema_version", "release_ref", "source_artifact_ref", "members", "relation_digests")}
+    manifest["manifest_hash"] = hashlib.sha256(canonical_json(unsigned).encode()).hexdigest()
+    (directory / "manifest.json").write_text(canonical_json(manifest) + "\n")
+    with pytest.raises(ParquetCarrierError, match="replay closure"):
         carrier.reopen(release.source_artifact_ref.content_hash, release.release_id, release.semantic_release_hash)
 
 
