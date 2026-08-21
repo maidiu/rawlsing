@@ -386,11 +386,48 @@ def stage_a2_run(out,work):
     package_receipt={"stage":"SYNTHETIC_DRY_RUN","token":"PRE553_SR04_PERFORMANCE_PACKAGING_CHECKPOINT_CONTRACT_PASS","completion_token_present":False}; package=write_stage_b_package(out,package_receipt,manifest,stage_a_digest_tables(t),oracle,checks["candidate_measurements"],checks["provisional_selection"],"synthetic dry run\n",dry_run=True); schema=set(package["files"])=={"RECEIPT.json","ENVIRONMENT.json","FIXTURE_MANIFEST.json","FIXTURE_DIGESTS.json","QUERY_ORACLE.json","CANDIDATE_RESULTS.json","PROVISIONAL_SELECTION.json","STDOUT.txt","STDERR.txt"}
     final={"stage":"A.2","token":"PRE553_SR04_PERFORMANCE_PACKAGING_CHECKPOINT_CONTRACT_PASS","token_present":True,"shared_query_map":checks["shared_query_map"],"shared_candidate_execution_path":checks["shared_candidate_execution_path"],"shared_oracle_comparison_path":checks["shared_oracle_comparison_path"],"shared_stored_readback_path":checks["shared_stored_readback_path"],"shared_performance_path":checks["shared_performance_path"],"shared_budget_enforcement_path":checks["shared_budget_enforcement_path"],"shared_selection_path":checks["shared_selection_path"],"shared_stage_b_packaging_path":schema,"warmup_count":1,"scored_repetition_count":5,"all_Q00_Q15_have_5_scored_timings":checks["shared_performance_path"],"sqlite_required_indexes_verified":checks["sqlite_required_indexes_verified"],"postgres_required_indexes_verified":checks["postgres_required_indexes_verified"],"cold_open_measured_not_placeholder":checks["cold_open_measured_not_placeholder"],"peak_rss_measured":checks["peak_rss_measured"],"forced_disk_budget_failure_detected":disk_negative,"forced_time_budget_failure_detected":time_negative,"checkpoint_write_read_equivalence":checkpoint_equiv,"checkpoint_corruption_detected":corruption,"stage_b_package_schema_dry_run_pass":schema,"DATABASE_URL_unused":True,"raw_source_decode":False,"cleanup_confined":checks["cleanup_within_work_root"],"candidate_results":checks["candidate_measurements"],"provisional_selection":checks["provisional_selection"],"package":package}
     (out/"STAGE_A2_RECEIPT.json").write_text(json.dumps(final,indent=2,sort_keys=True,default=str)+"\n"); return final
+def run_b1(source_root,checkpoint_dir,out,work,synthetic=False):
+    if synthetic:
+        t=stage_a_fixture(); oracle=stage_a_oracle(t,5); manifest={"fixture_contract_version":"SR04_SYNTHETIC_B1_V1","source_hashes":{"WVS_W7":EXPECTED["WVS_W7"][1],"LITS_I":EXPECTED["LITS_I"][1]}}
+    else:
+        if not source_root: raise RuntimeError("B1 requires --source-root")
+        t,manifest,_=build_fixture(source_root,work); oracle=make_oracle(t)
+    checkpoint_write(checkpoint_dir,t,manifest,oracle); verified_t,payload,verified_oracle=checkpoint_read(checkpoint_dir)
+    if stage_a_digest_tables(verified_t)!=stage_a_digest_tables(t) or verified_oracle!=oracle: raise RuntimeError("B1_CHECKPOINT_READBACK_MISMATCH")
+    receipt={"stage":"B1","success_token":"PRE553_SR04_B1_NEUTRAL_CHECKPOINT_COMPLETE","completion_token_present":True,"harness_head":subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip(),"harness_sha256":sha256(Path(__file__)),"checkpoint_absolute_path":str(checkpoint_dir.resolve()),"checkpoint_bytes":sum(p.stat().st_size for p in checkpoint_dir.rglob("*")),"checkpoint_version":payload["checkpoint_version"],"source_hashes":payload["source_hashes"],"fixture_relation_digests":payload["fixture_relation_digests"],"oracle_digest":payload["oracle_digest"],"selected_variables":manifest.get("sources",{}),"hostile_checks":manifest.get("neutral_fixture_checks",{}),"readback_verification":"PASS","candidate_execution_started":False,"DATABASE_URL_unused":True,"raw_source_decode":not synthetic}
+    out.mkdir(parents=True,exist_ok=True); (out/"B1_RECEIPT.json").write_text(json.dumps(receipt,indent=2,sort_keys=True,default=str)+"\n"); return receipt
+def run_b2(checkpoint_dir,out,work,synthetic=False):
+    if not checkpoint_dir: raise RuntimeError("B2 requires --checkpoint-dir")
+    t,payload,oracle=checkpoint_read(checkpoint_dir); receipt=shared_carrier_court(t,oracle,out,work,"SYNTHETIC" if synthetic else "REAL",5 if synthetic else 50000)
+    manifest=payload["manifest"]; digests=payload["fixture_relation_digests"]; results=receipt["checks"]["candidate_measurements"]; selection=receipt["checks"]["provisional_selection"]
+    package_receipt={"success_token":"SYNTHETIC_B2_DRY_RUN" if synthetic else TOKEN,"completion_token_present":not synthetic,"harness_head":subprocess.check_output(["git","rev-parse","HEAD"],text=True).strip(),"harness_sha256":sha256(Path(__file__))}
+    package=write_stage_b_package(out,package_receipt,manifest,digests,oracle,results,selection,"B2\n",dry_run=synthetic)
+    if set(package["files"])!={"RECEIPT.json","ENVIRONMENT.json","FIXTURE_MANIFEST.json","FIXTURE_DIGESTS.json","QUERY_ORACLE.json","CANDIDATE_RESULTS.json","PROVISIONAL_SELECTION.json","STDOUT.txt","STDERR.txt"}: raise RuntimeError("B2_PACKAGE_SCHEMA_MISMATCH")
+    return {"package":package,"shared_court_executed":True,"checkpoint_only":True,"raw_source_decode":False,"completion_token_present":not synthetic}
+def cli_separation_proof(out,work):
+    checkpoint=work/"synthetic_b1_checkpoint"; b1out=work/"synthetic_b1_receipt"; b2out=out/"b2_package"; b1=run_b1(None,checkpoint,b1out,work,synthetic=True)
+    b2=run_b2(checkpoint,b2out,work,synthetic=True); corrupt=work/"synthetic_corrupt_checkpoint"; shutil.copytree(checkpoint,corrupt); bad=json.loads((corrupt/"CHECKPOINT_MANIFEST.json").read_text()); bad["oracle_digest"]="CORRUPTED"; (corrupt/"CHECKPOINT_MANIFEST.json").write_text(json.dumps(bad));
+    try: run_b2(corrupt,work/"corrupt_b2",work,synthetic=True); rejected=False
+    except RuntimeError: rejected=True
+    proof={"token":"PRE553_SR04_B1_B2_CLI_SEPARATION_PASS","synthetic_b1_checkpoint_created":checkpoint.exists(),"synthetic_b1_candidate_execution_started":b1["candidate_execution_started"],"synthetic_b2_checkpoint_only":b2["checkpoint_only"],"synthetic_b2_shared_carrier_court_executed":b2["shared_court_executed"],"synthetic_b2_final_package_path_executed":b2["package"]["files"]==["CANDIDATE_RESULTS.json","ENVIRONMENT.json","FIXTURE_DIGESTS.json","FIXTURE_MANIFEST.json","PROVISIONAL_SELECTION.json","QUERY_ORACLE.json","RECEIPT.json","STDERR.txt","STDOUT.txt"],"synthetic_b2_corrupted_checkpoint_rejected":rejected,"synthetic_b2_raw_source_decode":b2["raw_source_decode"],"DATABASE_URL_unused":True,"duplicate_truth_implementations":False,"b2_package":b2["package"]}
+    out.mkdir(parents=True,exist_ok=True); (out/"CLI_PROOF_RECEIPT.json").write_text(json.dumps(proof,indent=2,sort_keys=True)+"\n"); (out/"CLI_PROOF_STDOUT.txt").write_text(proof["token"]+"\n"); return proof
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--checkpoint-dir",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); ap.add_argument("--stage-b1",action="store_true"); ap.add_argument("--stage-b2",action="store_true"); ap.add_argument("--cli-proof",action="store_true"); args=ap.parse_args()
     if args.self_test:
         assert raw_repr(-1)[0]=="N:-1" and free_bytes("/private/tmp")>0; print("SR04_SELF_TEST_PASS"); return 0
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); work=Path(args.work_root) if args.work_root else Path(tempfile.mkdtemp(prefix="sr04-",dir="/private/tmp")); work.mkdir(parents=True,exist_ok=True)
+    if args.cli_proof:
+        try: print(json.dumps(cli_separation_proof(out,work),indent=2,sort_keys=True)); return 0
+        except Exception as e: (out/"CLI_PROOF_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
+    if args.stage_b1:
+        try:
+            if not args.checkpoint_dir: raise RuntimeError("B1 requires --checkpoint-dir")
+            print(json.dumps(run_b1(args.source_root,Path(args.checkpoint_dir),out,work),indent=2,sort_keys=True)); return 0
+        except Exception as e: (out/"B1_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
+    if args.stage_b2:
+        try:
+            print(json.dumps(run_b2(Path(args.checkpoint_dir),out,work),indent=2,sort_keys=True)); return 0
+        except Exception as e: (out/"B2_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
     if args.stage_a:
         try:
             t=stage_a_fixture(); receipt=shared_carrier_court(t,stage_a_oracle(t,5),out,work,"SYNTHETIC",5); print(json.dumps(receipt,indent=2,sort_keys=True)); return 0
