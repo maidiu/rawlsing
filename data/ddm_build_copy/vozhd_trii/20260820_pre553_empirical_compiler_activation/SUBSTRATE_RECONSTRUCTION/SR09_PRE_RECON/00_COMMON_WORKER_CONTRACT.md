@@ -1,8 +1,10 @@
 # SR09-PRE — COMMON WORKER CONTRACT
 
-Status: `FROZEN_NON_DISPOSITIVE_RECON_CONTRACT`
+Status: `FROZEN_NON_DISPOSITIVE_RECON_CONTRACT__LIBRARY_FIRST`
 
 Parent authority: `../29_SR09_PREPARATORY_RAW_SOURCE_RECONNAISSANCE_AUTHORITY.md`
+
+Binding raw-input authority: `02_LIBRARY_RAW_INPUT_LAW.md`
 
 ## 1. Role
 
@@ -17,15 +19,18 @@ The raw source bytes remain immutable physical evidence.
 Use only:
 
 - exact source files assigned in your worker task;
+- the ChatGPT Library raw-source transport bundles frozen in `02_LIBRARY_RAW_INPUT_LAW.md`;
 - `../SOURCE_BYTE_INVENTORY.csv`;
 - accepted SR03 physical manifests / summary / receipt;
 - `../09_SOURCE_NATIVE_CONSTITUTION.md`;
 - `../10_FORMAT_DECODER_CONTRACT.md`;
 - `../16_SR03_R3_ADJUDICATION.md`;
 - `../17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`;
-- checked-in source documentation or metadata already available in the repository;
-- local raw-source files whose SHA-256 exactly matches the assigned inventory.
+- checked-in source documentation or metadata already available in the repository.
 
+Library-first procedure is mandatory: locate the named Library ZIP, materialize it into worker-private scratch, verify the frozen ZIP identity, extract only assigned substantive members, then verify every extracted member against the exact source SHA-256 before probing. STOP on mismatch.
+
+Do not require or assume a `/Users/...` local source directory for SR09-PRE.
 Do not use legacy PostgreSQL as source truth.
 
 ## 3. Read economy
@@ -142,14 +147,16 @@ Columns exactly:
 Record:
 
 - exact checkout HEAD;
-- exact source paths used;
-- exact source SHA-256 before probing;
+- Library bundle filename(s), byte size(s), and SHA-256;
+- exact materialized scratch path(s);
+- exact archive member names used;
+- exact extracted source SHA-256 before probing;
 - tool/dependency versions;
 - exact commands/scripts;
 - sources fully scanned, if any;
 - target reason for every full scan;
 - output-file SHA-256 values;
-- source files unchanged;
+- Library/raw source files unchanged;
 - `DATABASE_URL_used=false`;
 - `legacy_postgres_used_as_truth=false`;
 - `production_runtime_modified=false`;
@@ -178,7 +185,8 @@ The purpose is to identify which later certifications can reuse one family fixtu
 
 Do not:
 
-- modify raw source bytes;
+- modify or upload-overwrite Library raw bundles;
+- modify extracted raw source bytes;
 - write C11 or runtime code;
 - modify SR04/SR06 code or governance;
 - modify production database contents;
