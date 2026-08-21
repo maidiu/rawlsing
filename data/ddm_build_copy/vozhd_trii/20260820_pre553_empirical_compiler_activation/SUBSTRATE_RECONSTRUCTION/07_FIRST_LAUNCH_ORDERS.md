@@ -8,67 +8,56 @@ Gate: G-SR01 ACCEPTED.
 
 ## ORDER SR02 — LEGACY WRITER + ACTUAL V550 DB DEPENDENCY GENEALOGY — HQ/browser + local read-only receipt
 Status: `ACCEPTED__PROVENANCE_CLOSED`
-
 Binding closure: `15_SR02_R3_ADJUDICATION.md`.
-
-Decisive holdings include:
-
-- legacy runtime-critical Postgres carriers are evidence, not rebuilt source authority;
-- Mode-A July-20 post-load response inserts are attributable and respondent association is not trusted;
-- Mode-B later Asian W6 route is historical/excluded from CLOSED_35;
-- LiTS I historical country decoding used an incompatible numeric code map, dropping exactly 1000 Moldova respondents and misclassifying many retained country codes;
-- later weight/source-wave/QSM materializations are operational/governance layers, not raw source truth.
-
 No further local SR02 execution is ordered.
 Gate: G-SR02 ACCEPTED.
 
 ## ORDER SR03 — 35-SOURCE PHYSICAL METADATA EXTRACTION — local Codex + HQ adjudication
 Status: `ACCEPTED__35_SOURCE_PHYSICAL_CENSUS_COMPLETE`
-
 Binding closure: `16_SR03_R3_ADJUDICATION.md`.
-
-All 35 exact source snapshots were physically censused with row/cell conservation. The corpus confirms cross-source SPSS user-missing exposure, SAV/DTA physical-state heterogeneity, multiple-response metadata, source-reader encoding heterogeneity, and native-ID diversity without requiring a C11 architecture change.
-
 No further SR03 run is ordered unless source bytes/decoder dependency/config changes.
 Gate: G-SR03 ACCEPTED.
 
 ## ORDER SR05 — FORMAT-NEUTRAL SOURCE CONSTITUTION — HQ/browser
 Status: `ACCEPTED__RECLOSED_AFTER_FULL_CENSUS`
-
 Binding closure: `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`.
-
-The full corpus fits the frozen boundary:
-
-`source bytes -> physical decoder -> format-neutral raw incidence -> source authority pack -> governed C11 state`
-
-Remaining source-semantic/text-encoding/source-equivalence questions are assigned to G-SR07/G-SR08/G-SR09 and do not block carrier selection.
 Gate: G-SR05 ACCEPTED.
 
 ## ORDER SR04 — PHYSICAL CARRIER BAKEOFF — bounded local Codex harness cell
-Status: `LAUNCH_ORDER_FROZEN__RETURN_REQUIRED`
+Status: `HARNESS_INVALIDATED__STAGE_A_SYNTHETIC_RETURN_REQUIRED`
 
-Binding authorities:
+Binding authorities, in order:
 
 - `11_PHYSICAL_CARRIER_SELECTION_COURT.md`
 - `18_SR04_CARRIER_BAKEOFF_EXECUTION_CONTRACT.md`
+- `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md`
+- `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`
 - `SR04_LOCAL_EXECUTION_ORDER.md`
 
-Candidates:
+Harness commits through `ea508994a80b9d66bd3729f6641ef5600aa624c4` are PRE-ACCEPTANCE ONLY and cannot produce an acceptable carrier result.
 
-- Parquet + DuckDB direct;
-- DuckDB native;
-- fresh disposable local PostgreSQL;
-- SQLite.
+HQ audit proved incorrect frozen-query implementations, missing candidate-output/oracle comparison, non-candidate replay digests, and a PostgreSQL connection-lifecycle defect. Those are implementation defects and carry zero evidence for or against any carrier.
 
-Decision priority is exact: **flawless effectiveness -> fast -> light**.
+Immediate authorized work is **Stage A only**:
 
-The bakeoff uses exact WVS7 + LiTS I source snapshots, every respondent, and a deterministic 24-variable fixture per source (~3.03M event rows). Correctness requires complete candidate readback digests plus an independently computed Python query oracle. Performance uses I03/I05-equivalent joint/risk-set/weighted/branch/XOR/recursive/Simpson-shaped queries. Source-semantic certification remains later-gate work.
+1. repair only `SR04_CARRIER_BAKEOFF.py`;
+2. run tiny synthetic Q00-Q15 contract tests;
+3. prove wrong-oracle and stored-corruption detection;
+4. prove true stored-candidate readback digests;
+5. prove disposable PostgreSQL lifecycle;
+6. commit/push the repaired harness;
+7. return the Stage-A receipt/token to HQ;
+8. STOP before another raw WVS7/LiTS I run.
 
-Hard safety law: live Postgres is never benchmarked or written; candidate storage is disposable; at least 5 GiB free-disk reserve is preserved; candidate storage/time ceilings are fail-closed.
+Required Stage-A token:
 
-The local worker may implement only `SR04_CARRIER_BAKEOFF.py`, commit/push that one harness, then execute from its exact committed head and return the small metrics package.
+`PRE553_SR04_SYNTHETIC_CONTRACT_TESTS_PASS`
 
-Gate: G-SR04 awaits the bakeoff return + HQ adjudication.
+Only after HQ accepts Stage A will Stage B be authorized. Stage B will use exact WVS7 + LiTS I raw sources. A previously validated neutral fixture may be reused only under exact checkpoint-digest rules in `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`.
+
+Decision priority remains exactly: **flawless effectiveness -> fast -> light**.
+
+Gate: G-SR04 remains OPEN.
 
 ## ORDER SR06 — SELECTED CARRIER / C11 DECODER IMPLEMENTATION
 Status: `BLOCKED_ON_G_SR04`
