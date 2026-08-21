@@ -1,0 +1,63 @@
+item_id,surface,material,expected_truth_origin,candidate_observation_origin,comparison_grain,circularity_or_loss_risk,required_independence_rule,acceptance_effect
+I001,COURT,authority input identities,Authority 54/55 and exact frozen semantic/source authority refs,Court freezer,run,mutable/latest authority drift,Freeze exact hashes/refs before all testing,BLOCK_ORACLE
+I002,COURT,candidate commit,Git commit identity supplied to court,Independent Git/release metadata,candidate,candidate swaps code after workload reveal,Commit before artifact build and nonce,BLOCK_ORACLE
+I003,COURT,candidate built artifact / physical root,Exact immutable built artifact bytes/root under test,Passive reader + independent hashes,release,commit fixed but build/config changes after blind selection,Freeze artifact/root before nonce,BLOCK_ORACLE
+I004,COURT,compiler/config/profile/cache policy,Court-frozen build inputs,Independent manifest/config receipt,release,test-specific build behavior,Commit all before nonce,BLOCK_ORACLE
+I005,COURT,tuning workload disclosure commitment,Candidate disclosure hash,Court freezer,run,blind workload overlap/leakage,Freeze complete disclosure before nonce,BLOCK_ORACLE
+I006,COURT,oracle nonce/frontier,Court-generated after candidate commitments,Court frontier compiler,run,preknowledge or hidden nondeterminism,Generate after freeze; seal and replay,BLOCK_ORACLE
+I007,SOURCE_NATIVE,source artifact identity/hash,Exact governed source manifest/source authority,Candidate release claim + passive reader lineage,release,candidate defines its own source identity,Expected source identity external to candidate,HARD_FAIL
+I008,SOURCE_NATIVE,row count / row ordinal domain,Frozen decoder/source witness,Passive candidate primitive enumeration,release/respondent,row drop/dup hidden by counts elsewhere,Exact ordinal domain comparison,HARD_FAIL
+I009,SOURCE_NATIVE,variable count/order/name,Frozen decoder/source metadata,Passive candidate question metadata,question,candidate manifest omits same variable it deleted,External expected dictionary inventory,HARD_FAIL
+I010,SOURCE_NATIVE,raw typed value,Frozen decoder output / accepted source witness,Passive candidate typed primitive,event,canonicalized/display value substitutes raw,Exact typed payload comparison,HARD_FAIL
+I011,SOURCE_NATIVE,physical missing state,Frozen decoder physical state,Passive candidate typed state,event,semantic/null flattening,Compare independently from semantic response state,HARD_FAIL
+I012,SOURCE_NATIVE,missing declarations/ranges/extended states,Frozen source/decoder metadata,Passive candidate metadata,question,zero-incidence declaration loss invisible to queries,Metadata comparison independent of incidence,HARD_FAIL
+I013,SOURCE_NATIVE,labels/dictionaries/type/format,Frozen source/decoder metadata where authoritative,Passive candidate metadata,question,equal raw vectors hide distinct dictionary identity,Compare release-variable-local metadata,HARD_FAIL_OR_BLOCK_IF_AUTHORITY_MISSING
+I014,SOURCE_NATIVE,encoding/reader compatibility provenance,Frozen decoder configuration authority,Candidate release provenance,release,execution compatibility promoted to text meaning,Keep execution/text authority dimensions separate,HARD_FAIL_OR_BLOCK
+I015,SOURCE_NATIVE,MR/repeated/ranked/component topology,Frozen source/C11 authority,Passive candidate topology primitive,question/event,dedup/sort loses topology while counts remain,Exact identity/order/rank/multiplicity comparison,HARD_FAIL
+I016,IDENTITY,respondent replay identity,source_snapshot + source_row_ordinal law,Passive candidate respondent coordinates,respondent,native ID merge/permutation,Compare exact scoped identity before aggregates,HARD_FAIL
+I017,IDENTITY,event occurrence identity,Frozen C11/source occurrence determinants,Passive candidate event coordinates,event,drop/duplicate compensates counts,Exact multiset/sequence semantics as governed,HARD_FAIL
+I018,C11,M01 EmpiricalUniverse,Frozen declarative C11 field contract + source primitives,Independent semantic mini-evaluator from passive primitives,object,shared production serializer bug,Separate canonical tuple encoder,HARD_FAIL
+I019,C11,M02 RespondentIdentity,Frozen declarative C11 field contract + source primitives,Independent semantic mini-evaluator,object,native ID/source row aliasing,Source-row identity control,HARD_FAIL
+I020,C11,M03 QuestionVariableBinding,Frozen declarative C11 field contract + source metadata,Independent semantic mini-evaluator,object,raw-identical variable collapse,Dictionary-distinct mutation,HARD_FAIL
+I021,C11,M04 RespondentEvent,Frozen declarative C11 event contract,Independent semantic mini-evaluator,event,current-query-only event loss,Full event primitive comparison,HARD_FAIL
+I022,C11,M05 topology closure,Frozen topology contract,Independent semantic mini-evaluator,event/question,order/rank/multiplicity loss,Topology permutation mutants,HARD_FAIL
+I023,C11,M06 typed semantic state,Frozen response-state vocabulary,Independent semantic mini-evaluator,event,negative-state flattening,Typed lattice controls,HARD_FAIL
+I024,C11,M07 routing/risk,Frozen routing authority,Independent risk-set evaluator,respondent/question,infer routing from nullness,"Hold values fixed, mutate routing",HARD_FAIL
+I025,C11,M08 coordinate facts,Frozen coordinate/source authority,Independent semantic mini-evaluator,respondent,country-code drift canonicalized without authority,Raw/canonical authority separation,HARD_FAIL
+I026,C11,M09 weights/design/estimand,Frozen weight/design authority,Independent support evaluator,respondent/question,numeric vector self-authorizes,"Hold vector fixed, vary authority",HARD_FAIL
+I027,C11,M10 AuthoritySnapshot,Frozen authority identities,Independent canonical tuple encoder,authority,mutable/latest reference,Exact immutable refs only,HARD_FAIL
+I028,C11,M11 SourceUniverseRelation,Frozen relation/nondup authority,Independent semantic mini-evaluator,relation,data equality causes pooling/dedup,Relation authority independent of values,HARD_FAIL
+I029,C11,M12 predicate replay,Frozen predicate grammar/refs,Independent AST/canonical predicate encoder,query,shared planner canonicalization bug,Declarative AST serialization,HARD_FAIL
+I030,C11,M13 comparator replay,Frozen comparator state/typed absence,Independent canonical tuple encoder,replay,current implementation omits deferred state,Exact PRESENT/DEFERRED representation,HARD_FAIL
+I031,C11,M14 discovery branch replay,Frozen discovery grammar/frontier law,Independent frontier receipt encoder,discovery,candidate cache defines reachability,Frontier generated independently,HARD_FAIL
+I032,C11,M15 structural admission replay,Frozen I04 binding law,Independent minimal precedence evaluator,admission,positive-only parity hides blockers,Blocker injection controls,HARD_FAIL
+I033,C11,M16 support/uncertainty,Frozen support/measure law,Independent support arithmetic,fact,aggregate parity with wrong denominator,Compare membership + numerator/denominator/method,HARD_FAIL
+I034,C11,M17 authority/provenance closure,Frozen exact authority set,Independent reference-set encoder,release,successful output hides missing provenance ref,Exact closure comparison,HARD_FAIL
+I035,C11,M18 deterministic replay,Frozen replay inputs/order law,Independent receipt comparison across runs,release,layout/hashseed/cache affects identity,Perturb incidental environment,HARD_FAIL
+I036,EXACTREF,canonical semantic projection,Frozen declarative field list/canonicalization law,Independent encoder from primitives,object,production and candidate share serializer bug,Do not import production canonicalizer,HARD_FAIL
+I037,EXACTREF,content_hash/object_id/ExactRef,Independent projection is expected preimage,Independent crypto recomputation,object,candidate stale/forged hash accepted,Stored candidate digest never trusted,HARD_FAIL
+I038,I03,target respondent membership,Frozen predicate/risk semantics + primitive incidence,Independent set evaluator,query,same count/different respondent set,Compare exact scoped set identity,HARD_FAIL
+I039,I03,positive support/count,Independent membership and target events,Independent arithmetic,query,aggregate-only shared bug,Recompute from primitive sets,HARD_FAIL
+I040,I03,weighted support,Independent membership + frozen weight authority,Independent exact arithmetic,query,weight=1/default or mask repair,Authority-sensitive controls,HARD_FAIL
+I041,I03,observed-zero/zero-support/valid-empty,Frozen typed result-state law,Independent result classifier,query,all zero-like states collapsed,One-at-a-time state controls,HARD_FAIL
+I042,I03,unavailable/noncomparable/integrity failure,Frozen typed result-state law,Independent result classifier + integrity gate,query,corruption laundered as unavailable,Integrity is outside ordinary negative lattice,HARD_FAIL
+I043,I05,declared frontier candidates,Frozen grammar/authority,Independent frontier compiler,discovery,candidate index defines candidate set,All compiled candidates evaluated,HARD_FAIL
+I044,I05,post-freeze blind frontier,Court nonce + frozen grammar + committed disclosure exclusions,Independent frontier compiler,run,benchmark memorization,Two-stage commitment,HARD_FAIL
+I045,I05,pair/k-way/conditional/reversal/recursive/branch/co-signature,Frozen operation semantics + primitive sets,Independent bounded evaluator,discovery,current suite too narrow,Shape coverage mandatory,HARD_FAIL
+I046,I05,diagnostic cloud scores,Diagnostic-only law,Secondary diagnostic lane,diagnostic,score prunes factual frontier,Perturb/disable diagnostic while facts fixed,HARD_FAIL_IF_FACTS_CHANGE
+I047,I04,decision precedence,Frozen declarative precedence,Independent minimal precedence table,admission,shared production implementation bug,Single/multi-blocker controls,HARD_FAIL_OR_CONFLICT
+I048,I04,projection permission,Frozen ADMITTED-only law,Independent decision output,admission,negative decision still projects positive,Exact projection-permission compare,HARD_FAIL
+I049,INTEGRITY,candidate member/root bytes,Independent cryptographic recomputation,Passive reader,release,self-reported digest trust,Hash exact bytes independently,HARD_FAIL
+I050,INTEGRITY,semantic completeness under self-consistent rehash,External expected primitive inventory,Passive reader + primitive comparator,release,byte-valid smaller universe,Destructive rehash mutant mandatory,HARD_FAIL
+I051,INTEGRITY,active-root authorization,Trusted external selector/control state,Court freezer + root reader,release,valid unauthorized root serves,Authorization separate from hash validity,HARD_FAIL
+I052,INTEGRITY,partial/pre-seal publication,Publication law,Passive root visibility check,release,surviving members treated as full truth,No semantic observation from unsealed state,HARD_FAIL
+I053,CACHE,no-cache truth,Canonical primitive truth,Primary run with cache path absent,run,cache secretly contains unique truth,Physical cache absence required,HARD_FAIL
+I054,CACHE,stale cache,Canonical root + cache dependency key,Fault harness,run,path/name reuse returns old truth,Reject/rebuild before use,HARD_FAIL
+I055,CACHE,canonical-corrupt/cache-healthy,Canonical integrity law,Fault harness + isolated root,run,correct cache masks broken canonical,No result/fallback allowed,HARD_FAIL
+I056,REPLAY,benign physical regrouping,Same source/semantic primitive truth,Rebuild/read variants,run,physical address enters identity,Require same semantic primitive/ExactRefs,HARD_FAIL
+I057,ORACLE_CONTROL,respondent permutation preserving marginals,Known synthetic base truth,Mutation harness,control,aggregate parity oracle misses identity loss,Must reject mutant,BLOCK_ORACLE_IF_SURVIVES
+I058,ORACLE_CONTROL,drop/duplicate compensating incidence,Known synthetic base truth,Mutation harness,control,counts preserved,Must reject mutant,BLOCK_ORACLE_IF_SURVIVES
+I059,ORACLE_CONTROL,zero-incidence metadata deletion,Known synthetic/source-backed declaration,Mutation harness,control,query suite unaffected,Must reject mutant,BLOCK_ORACLE_IF_SURVIVES
+I060,ORACLE_CONTROL,negative-state flattening,Known typed-state fixture,Mutation harness,control,positive answers preserved,Must reject mutant,BLOCK_ORACLE_IF_SURVIVES
+I061,ORACLE_CONTROL,benign record/layout reorder,Known same primitive truth,Mutation harness,control,oracle overfits physical layout,Must accept semantic invariance,BLOCK_ORACLE_IF_REJECTED
+I062,ORACLE_CONTROL,oracle field omission mutation,Known changed primitive field,Mutation harness,control,oracle serializer ignores same field,Must reject mutant,BLOCK_ORACLE_IF_SURVIVES

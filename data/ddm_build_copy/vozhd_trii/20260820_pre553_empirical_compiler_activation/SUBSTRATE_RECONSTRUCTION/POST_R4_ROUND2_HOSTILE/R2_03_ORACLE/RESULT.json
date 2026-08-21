@@ -1,0 +1,85 @@
+{
+  "acceptance_equation": [
+    "ORACLE_CONTROL_PASS",
+    "INDEPENDENT_PRIMITIVE_EQUIVALENCE_PASS",
+    "INDEPENDENT_SEMANTIC_I03_I05_I04_PASS",
+    "INTEGRITY_CACHE_REPLAY_PASS"
+  ],
+  "artifacts": [
+    "RESULT.md",
+    "RESULT.json",
+    "ASSUMPTION_LEDGER.csv",
+    "INFORMATION_PRESERVATION_LEDGER.csv",
+    "SELF_RED_TEAM.md",
+    "SYNTHESIS_RULINGS.csv",
+    "P0_ATTACKS.csv",
+    "PROPOSED_CORRECTION.md",
+    "HOSTILE_CASES.csv",
+    "ORACLE_PLAN.md",
+    "BENCHMARK_PLAN.md",
+    "ORACLE_CONTROL_PROOF.py",
+    "ORACLE_CONTROL_PROOF_RECEIPT.json"
+  ],
+  "blind_i05_correction": {
+    "freeze_before_nonce": [
+      "candidate_commit",
+      "candidate_built_artifact_or_physical_root",
+      "compiler_configuration",
+      "physical_profile",
+      "cache_index_policy",
+      "complete_tuning_workload_disclosure_commitment"
+    ],
+    "hidden_randomness_after_receipt": false,
+    "then": [
+      "court_commitment",
+      "oracle_nonce",
+      "frontier_compilation",
+      "disclosed_workload_exclusion",
+      "frontier_seal"
+    ]
+  },
+  "branch": "agent/vozhd-trii-postr4-r2-r03-oracle",
+  "cell": "R2_03_ORACLE",
+  "corrected_court": "NONCIRCULAR_ACCEPTANCE_COURT@2",
+  "exact_starting_head": "d612b24cce9d53bdff90fc2d7ac2604d34da02ca",
+  "final_disposition": "ROUND2_PASS_WITH_REQUIRED_CORRECTIONS__P0_REPAIRABLE",
+  "independence_rules": {
+    "authority_conflict_majority_vote_allowed": false,
+    "candidate_adapter_is_dispositive": false,
+    "candidate_hashes_are_authority": false,
+    "candidate_manifest_defines_completeness": false,
+    "no_cache_primary_run_required": true,
+    "oracle_mutation_adequacy_gate_required": true,
+    "passive_candidate_reader_required": true,
+    "primitive_identity_comparison_required": true,
+    "production_frozen_code_is_sole_reference": false,
+    "r4_is_expected_truth": false
+  },
+  "minimum_reference_evaluator": "COURT_MINREF@2",
+  "p0": "P0_BOUNDED_TYPED_CANONICAL_INCIDENCE_WITH_UNIFORM_C11_VIEW",
+  "preferred_carrier_selected": false,
+  "raw_source_probes": [],
+  "rawlsing_next_modified": false,
+  "repository": "maidiu/rawlsing",
+  "required_token": "POST_R4_R2_R03_ORACLE_RETURNED",
+  "round1_pins": {
+    "R01": "f3e1d198ca5b680adfe3330a7460d0b174f395e6",
+    "R02": "6447d57a9818b5a427ad0367858f2030e127f8d8",
+    "R03": "220e017f34b2741fce80b7a6850a1679ea0ce0fe",
+    "R04": "bfc6b19c3bbdd43f1a04184d02515dc38dd82712",
+    "R05": "b2c74427b568ea9a9447fc2631e002830d700919",
+    "R06": "d573389eaf8df63c124d1439933bbe3cef4dda23"
+  },
+  "round1_r03_disposition": "NECESSARY_BUT_NOT_DISPOSITIVE__ORACLE_ADEQUACY_AND_PASSIVE_READER_MISSING",
+  "runtime_modified": false,
+  "schema": "POST_R4_ROUND2_R2_03_ORACLE_RETURN@1",
+  "source_scope_law": {
+    "closed35_claim_requires_all_exact_source_identities": true,
+    "evs_latin1_text_semantic_authority": false,
+    "nine_family_hostile_corpus_role": "SENSITIVITY_FLOOR__NOT_CLOSED35_COVERAGE_SUBSTITUTE",
+    "synthetic_mutants_certify_real_sources": false
+  },
+  "status": "AUTHORIZED__ROUND2_HOSTILE__INDEPENDENT_SAFETY__NO_RUNTIME_MUTATION",
+  "title": "ORACLE-OF-THE-ORACLE / NONCIRCULAR ACCEPTANCE COURT",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/POST_R4_ROUND2_HOSTILE/R2_03_ORACLE/"
+}

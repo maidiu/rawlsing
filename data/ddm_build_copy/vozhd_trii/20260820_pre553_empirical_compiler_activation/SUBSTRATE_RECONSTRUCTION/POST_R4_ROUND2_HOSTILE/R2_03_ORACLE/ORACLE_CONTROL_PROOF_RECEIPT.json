@@ -1,0 +1,54 @@
+{
+  "assertions": {
+    "base_self_seal_valid": true,
+    "candidate_self_digests_are_distinct_but_each_internally_valid": true,
+    "expected_base_joint_A_X_is_2": true,
+    "expected_mutant_joint_A_X_is_1": true,
+    "joint_truth_detects_mutation": true,
+    "marginal_digest_equal": true,
+    "marginals_equal": true,
+    "mutant_self_seal_valid": true,
+    "negative_state_flattening_detected": true,
+    "primitive_digest_detects_mutation": true,
+    "primitive_identity_detects_mutation": true,
+    "zero_incidence_metadata_loss_detected": true,
+    "zero_incidence_remains_zero_in_both": true
+  },
+  "base": {
+    "joint_Q1_A_Q2_X": 2,
+    "marginal_digest": "a5af3aee3b7fc531be0767de05aeca044bfad1764da5cb10fda341f9b419a721",
+    "marginals": [["Q1","A",2],["Q1","B",2],["Q2","X",2],["Q2","Y",2]],
+    "primitive_digest": "e02e3cf791a4aee33f63f6ad572acacd4de58cc013c682f9dbc1a694fb979333",
+    "self_seal": {
+      "declared_event_count": 8,
+      "manifest_sha256": "6a33cc2fe308edb9bc9839ed9e08435b3ef60759551475302112149fcafff68e",
+      "payload_sha256": "cd00d85f685989fd3d5c536c2327eedbe6a0e995e46e2e0b54a31ddfe55969ce"
+    }
+  },
+  "imports_rawlsing_or_candidate_code": false,
+  "mutant": {
+    "joint_Q1_A_Q2_X": 1,
+    "marginal_digest": "a5af3aee3b7fc531be0767de05aeca044bfad1764da5cb10fda341f9b419a721",
+    "marginals": [["Q1","A",2],["Q1","B",2],["Q2","X",2],["Q2","Y",2]],
+    "primitive_digest": "6c1b5de7a36512629e26ee294844cdc9597a4e1312894bf091fcfc4e69b76c08",
+    "self_seal": {
+      "declared_event_count": 8,
+      "manifest_sha256": "ea81f8578de5363d708717c29510f642e2740f49e8034c5acb20d02dbe5eb79a",
+      "payload_sha256": "723019026c9c3161d5161fa73c96e461e2a2664adf2dcbb1b49fad9521a7e9a1"
+    }
+  },
+  "negative_state_control": {
+    "base_digest": "14356cb476fe2178ff5d63afcb4a6f391358910f08d24428bbfa7f290f5f6b68",
+    "detected": true,
+    "mutant_digest": "af9efa54f61e3802d6f8236772935eb25e4059301ac14ac8d0b2153322cacd7a"
+  },
+  "purpose": "Demonstrate aggregate parity and self-consistency do not prove identity-preserving semantic equivalence.",
+  "result": "PASS",
+  "schema": "R2_03_ORACLE_CONTROL_PROOF@1",
+  "zero_incidence_metadata_control": {
+    "base_digest": "08dcb288f82a2c6b1acc022c430d8dcc2e9fc563c112450473cef11220f294ae",
+    "detected": true,
+    "mutant_digest": "ac1f49875ed6494ada17d4ebb370b572f48cd693a25bc9a9393f6342f75f8685",
+    "same_incidence": true
+  }
+}

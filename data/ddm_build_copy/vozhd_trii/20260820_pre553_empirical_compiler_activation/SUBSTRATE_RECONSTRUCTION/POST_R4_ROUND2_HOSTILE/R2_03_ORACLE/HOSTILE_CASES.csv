@@ -1,0 +1,43 @@
+case_id,case_kind,family_or_scope,hazard,hostile_mutation_or_condition,required_oracle_outcome
+H001,ORACLE_CONTROL,Cross-format synthetic,MARGINAL_PARITY_IDENTITY_LOSS,Permute Q2 respondent assignments while preserving Q1/Q2 marginals and candidate self-digests,Primitive stream and conjunction/cotravel must differ; oracle rejects
+H002,ORACLE_CONTROL,Cross-format synthetic,COMPENSATING_DROP_DUPLICATE,Drop one identity-bearing event and duplicate equal-valued peer so selected counts match,Exact event identity multiset differs; oracle rejects
+H003,ORACLE_CONTROL,Cross-format synthetic,ORACLE_FIELD_OMISSION,Mutate one field that an intentionally crippled serializer ignores,Adequate oracle must detect; crippled oracle demonstrates control failure
+H004,ORACLE_CONTROL,Cross-format synthetic,NEGATIVE_STATE_FLATTENING,Map two frozen negative/result states to generic NO_DATA,Typed result projection differs; oracle rejects
+H005,ORACLE_CONTROL,Cross-format synthetic,BENIGN_LAYOUT_REORDER,Reorder physical records without changing identity-bearing semantic order fields,Primitive canonical multiset/semantic refs remain equal; oracle accepts
+H006,SELF_HASH,Candidate-neutral,DESTRUCTIVE_REHASH,Delete one canonical primitive and recompute candidate member/root digests,Byte integrity may pass; independent completeness/semantic court rejects
+H007,ADAPTER,Candidate-neutral,EXPORT_SHARED_OMISSION,Carrier and candidate export both omit same field,Passive physical reader/external expected inventory exposes loss
+H008,R4,Candidate-neutral,R4_CONTAMINATION,Generate expected truth by serializing R4 output,Control is invalid; R4 cannot be sole expected lane
+H009,SHARED_CODE,Candidate-neutral,FROZEN_CANONICALIZER_BUG,Reference and candidate invoke same faulty canonicalizer,Independent canonical tuple encoder must disagree/block
+H010,SOURCE,Afrobarometer R9,ZERO_INCIDENCE_DECLARATION,Drop Q78F -1 SPSS user-missing declaration with zero incidence,Question metadata primitive comparison fails
+H011,SOURCE,Arab Barometer W2,PHYSICAL_SEMANTIC_MISSING,Collapse SYSTEM_MISSING and ordinary 0 labelled missing,Physical-state primitive comparison fails
+H012,SOURCE,Arab Barometer W8,EMPTY_STRING,Normalize ordinary BLOCK_ID empty string to null,Raw typed primitive/state comparison fails
+H013,SOURCE,Arab Barometer W5/W8,SAV_CONTINUATION,Treat logical variable count as physical storage-slot count,Source variable order/shape primitive comparison fails
+H014,SOURCE,Asian Barometer W5,OVERLAPPING_MR,Deduplicate overlapping Q112/SE15 MR set identities,Topology metadata/identity comparison fails
+H015,SOURCE,Asian Barometer W1,BIG5_EXECUTION,Apply generic UTF8/Latin1 assumption,Reader/source provenance mismatch; no semantic repair
+H016,SOURCE,EVS 1999/2008,COMPATIBILITY_NOT_TEXT_AUTHORITY,Promote Latin1 execution compatibility to intended semantic text,Expected label truth remains blocked
+H017,SOURCE,EVS 2017,WEIGHT_FAMILY,Select default weight by name/distribution,M09 authority-sensitive court fails
+H018,SOURCE,GSS longitudinal,SCHEMA_DRIFT,Back-project 2010/2016 structural subset into 2024,Source/question inventory identity fails
+H019,SOURCE,Latinobarometro 2024,HEADER_WIDTH,Trust nominal header width instead of parsed logical dictionary,Source shape/order closure fails
+H020,SOURCE,Latinobarometro 2011/2024,LABEL_DRIFT,Treat shared variable name as stable dictionary meaning,Release-variable metadata identity fails
+H021,SOURCE,LiTS IV,READER_OPTION_INTERACTION,Use generic DTA reader configuration,Source provenance/physical witness mismatch
+H022,SOURCE,LiTS III/IV,ORDINARY_REFUSAL_PLUS_TRUE_MISSING,Conflate ordinary refusal code with system missing,Physical-state primitive comparison fails
+H023,SOURCE,South Asia W1,NO_NATIVE_ID,Invent/promote native respondent ID,Scoped row identity comparison fails
+H024,SOURCE,South Asia W1/W2,COUNTRY_CODE_DRIFT,Treat raw country code as stable canonical geography,M08/source authority comparison fails
+H025,SOURCE,WVS W1,RAW_DISPLAY_DIVERGENCE,Coerce large raw S007 values to F2.0 display width,Raw typed primitive comparison fails
+H026,SOURCE,WVS W4,ALL_TYPED_MISSING_COLUMNS,Elide all-user/all-system-missing variable,Inventory/event-state closure fails
+H027,SOURCE,WVS W4,RAW_VECTOR_METADATA_DISTINCT,Dedup V220 and Q223_LOCAL by raw vector,M03/source metadata identity fails
+H028,SOURCE,WVS W4,RESPONDENT_KEY_COLLISION,Use country+V3 as universal key,M02 scoped identity collision detected
+H029,I03,Synthetic,ROUTING_DENOMINATOR,Hold answers fixed while changing eligibility/risk authority,Independent respondent denominator/result state changes
+H030,I03,Synthetic,WEIGHT_AUTHORITY,Hold numeric weights fixed while authorization changes,Weighted output/typed negative changes
+H031,I05,Post-freeze,BLIND_FRONTIER_LEAK,Generate frontier before exact artifact/config/disclosure commitment,Court marks workload non-blind and blocks
+H032,I05,Post-freeze,UNSEEN_IDENTITY_SENSITIVE_JOINT,Choose pair/k-way conjunction exposing respondent permutation,Every compiled candidate evaluated; mutant rejected
+H033,I04,Synthetic,MULTI_BLOCKER_PRECEDENCE,Inject two blockers with known precedence,Independent/frozen decisions must agree or court blocks
+H034,CACHE,Candidate-neutral,NO_CACHE_PRIMARY,Remove all nonauthoritative cache bytes before primary suite,Truth/refs unchanged
+H035,CACHE,Candidate-neutral,STALE_CACHE,Substitute cache from another exact root,Reject/rebuild before use
+H036,CACHE_INTEGRITY,Candidate-neutral,CANONICAL_CORRUPT_CACHE_HEALTHY,Corrupt/delete canonical truth while keeping correct stale cache,No empirical answer; fallback forbidden
+H037,INTEGRITY,Candidate-neutral,BYTE_FLIP,Flip authoritative byte without updating digest,Independent byte integrity fails
+H038,INTEGRITY,Candidate-neutral,PARTIAL_PUBLICATION,Expose missing/truncated/pre-seal root,No authoritative primitive stream is available
+H039,INTEGRITY,Candidate-neutral,STALE_EXACTREF,Mutate semantic field but preserve stored ExactRef,Independent projection/hash recomputation fails
+H040,AUTHORIZATION,Candidate-neutral,VALID_UNAUTHORIZED_ROOT,Present fully valid stale/inactive root,Authorization gate fails
+H041,REPLAY,Candidate-neutral,BENIGN_RELAYOUT,Change shard/row-group/grouping/worker count within lawful profile,Semantic primitive/ExactRef/replay outputs remain identical
+H042,COVERAGE,CLOSED_35,FAMILY_SAMPLE_NOT_FULL_COVERAGE,Pass hostile witness from each family but omit one exact source release from certification,CLOSED_35 claim blocked
