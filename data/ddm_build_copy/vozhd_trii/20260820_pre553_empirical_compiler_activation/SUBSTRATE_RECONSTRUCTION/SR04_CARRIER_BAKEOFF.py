@@ -205,16 +205,47 @@ def candidate_sqlite(t,oracle,work):
     batch=0
     for sql in specs.values(): a=time.monotonic(); con.execute(sql).fetchall(); batch+=time.monotonic()-a
     con.close(); disk=sum(p.stat().st_size for p in cdir.rglob('*') if p.is_file()); return {"candidate_id":name,"disposition":"MEASURED_CORRECT","build_seconds":build,"query_times":times,"batch_seconds":batch,"persistent_disk_bytes":disk,"peak_rss_bytes":0,"background_service_count":0,"persistent_empirical_copies":1,"replay_digests":{n:digest_rows(t[n],REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t},"query_sql":specs}
+def postgres_utf8_cluster(work):
+    bind=subprocess.check_output(["pg_config","--bindir"],text=True).strip(); init=Path(bind)/"initdb"; pgctl=Path(bind)/"pg_ctl"
+    cdir=work/"POSTGRES_EPHEMERAL"; cdir.mkdir(); cluster=cdir/"cluster"; port=56000+os.getpid()%500
+    subprocess.run([str(init),"-D",str(cluster),"-A","trust","-U","sr04","--locale=C","--encoding=UTF8"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    subprocess.run([str(pgctl),"-D",str(cluster),"-o",f"-p {port} -F","-w","start"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    return bind,cdir,cluster,port
+def postgres_utf8_connect(port):
+    import psycopg2
+    con=psycopg2.connect(host="127.0.0.1",port=port,user="sr04",dbname="postgres"); con.set_client_encoding("UTF8"); cur=con.cursor()
+    cur.execute("SHOW server_encoding"); server_encoding=cur.fetchone()[0]
+    cur.execute("SHOW client_encoding"); client_encoding=cur.fetchone()[0]
+    if server_encoding.upper()!="UTF8" or client_encoding.upper()!="UTF8":
+        raise RuntimeError(f"POSTGRES_UTF8_ENCODING_ASSERTION_FAILED:{server_encoding}:{client_encoding}")
+    return con,cur,server_encoding,client_encoding
+def postgres_utf8_transport_proof(out,work,checkpoint):
+    values=["en–dash","café","Ж","م"]; before={p.name:sha256(p) for p in checkpoint.iterdir() if p.is_file()}
+    bind=cdir=cluster=None; stopped=False; readback=[]; server_encoding=client_encoding=""
+    try:
+        bind,cdir,cluster,port=postgres_utf8_cluster(work); con,cur,server_encoding,client_encoding=postgres_utf8_connect(port)
+        cur.execute("CREATE TABLE utf8_probe (ordinal INTEGER, value TEXT)"); import io
+        buf=io.StringIO(); csv.writer(buf,lineterminator="\n").writerows([[i,v] for i,v in enumerate(values)]); buf.seek(0); cur.copy_expert("COPY utf8_probe FROM STDIN WITH (FORMAT csv)",buf); con.commit()
+        cur.execute("SELECT value FROM utf8_probe ORDER BY ordinal"); readback=[row[0] for row in cur.fetchall()]; cur.close(); con.close()
+    finally:
+        if bind and cluster:
+            stopped=subprocess.run([str(Path(bind)/"pg_ctl"),"-D",str(cluster),"-m","immediate","-w","stop"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0
+        if cdir and cdir.exists(): shutil.rmtree(cdir)
+    after={p.name:sha256(p) for p in checkpoint.iterdir() if p.is_file()}
+    exact=readback==values
+    receipt={"token":"PRE553_SR04_POSTGRES_UTF8_TRANSPORT_PROOF_PASS","token_present":True,"postgres_server_encoding":server_encoding,"postgres_client_encoding":client_encoding,"unicode_values_written":values,"unicode_values_read_back":readback,"unicode_copy_roundtrip_exact":exact,"en_dash_roundtrip":"en–dash" in readback,"latin1_range_roundtrip":"café" in readback,"non_latin1_cyrillic_roundtrip":"Ж" in readback,"non_latin1_arabic_roundtrip":"م" in readback,"DATABASE_URL_unused":True,"postgres_lifecycle_clean":stopped,"raw_source_decode":False,"checkpoint_mutated":before!=after,"carrier_court_executed":False}
+    if not all([exact,receipt["en_dash_roundtrip"],receipt["latin1_range_roundtrip"],receipt["non_latin1_cyrillic_roundtrip"],receipt["non_latin1_arabic_roundtrip"],stopped,not receipt["checkpoint_mutated"]]): raise RuntimeError("BLOCKED_SR04_POSTGRES_UTF8_TRANSPORT_PROOF:"+json.dumps(receipt,ensure_ascii=False,sort_keys=True))
+    out.mkdir(parents=True,exist_ok=True); (out/"POSTGRES_UTF8_TRANSPORT_PROOF_RECEIPT.json").write_text(json.dumps(receipt,ensure_ascii=False,indent=2,sort_keys=True)+"\n"); (out/"POSTGRES_UTF8_TRANSPORT_PROOF_STDOUT.txt").write_text(receipt["token"]+"\n"); return receipt
 def candidate_pg(t,work):
     name="POSTGRES_EPHEMERAL"; bind=subprocess.check_output(["pg_config","--bindir"],text=True).strip(); init=Path(bind)/"initdb"; post=Path(bind)/"postgres"; pgctl=Path(bind)/"pg_ctl"
     if not init.exists() or not post.exists() or not pgctl.exists(): return {"candidate_id":name,"disposition":"OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__SERVER_BINARIES_UNAVAILABLE"}
     cdir=work/name; cdir.mkdir(); cluster=cdir/'cluster'; port=55432+os.getpid()%1000
-    try: subprocess.run([str(init),"-D",str(cluster),"-A","trust","-U","sr04","--locale=C"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    try: subprocess.run([str(init),"-D",str(cluster),"-A","trust","-U","sr04","--locale=C","--encoding=UTF8"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     except subprocess.CalledProcessError: return {"candidate_id":name,"disposition":"OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__CLUSTER_INIT_FAILED"}
     subprocess.run([str(pgctl),"-D",str(cluster),"-o",f"-p {port} -F","-w","start"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     try:
         import psycopg2
-        con=psycopg2.connect(host="127.0.0.1",port=port,user="sr04",dbname="postgres"); cur=con.cursor(); a=time.monotonic()
+        con,cur,_,_=postgres_utf8_connect(port); a=time.monotonic()
         for n,df in t.items():
             cols=", ".join(f'"{x}" TEXT' for x in REL_COLS[n]); cur.execute(f'CREATE TABLE {n} ({cols})')
             import io
@@ -346,10 +377,9 @@ def shared_carrier_court(t,oracle,out,work,fixture_name,lookup_row):
     for q,sql in sql_map.items(): rows,metrics=measured_query(lambda statement: con.execute(statement).fetchall(),sql); observed["SQLITE"][q]=stage_a_norm(rows); query_timings[q]=metrics
     observed["SQLITE_replay"]={n:digest_rows(pd.read_sql_query(f"SELECT * FROM {n}",con),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t}; batch_started=time.monotonic(); [con.execute(sql).fetchall() for sql in sql_map.values()]; batch_seconds=time.monotonic()-batch_started; con.close(); disk,disp=budget_disposition(d,work); candidate_metrics["SQLITE"]={"disposition":disp or "MEASURED_CORRECT","execution_wall_seconds":time.monotonic()-candidate_started,"build_seconds":time.monotonic()-candidate_started,"index_build_seconds":index_seconds,"cold_open_seconds":cold_open,"query_timings":query_timings,"batch_seconds":batch_seconds,"persistent_disk_bytes":disk,"peak_rss_bytes":int(__import__("resource").getrusage(__import__("resource").RUSAGE_SELF).ru_maxrss),"background_service_count":0,"persistent_empirical_copies":1,"required_indexes":indexes,"required_indexes_verified":len(indexes)==4}; shutil.rmtree(d)
     # PostgreSQL lifecycle: connection remains open through query and cursor replay.
-    candidate_started=time.monotonic(); bind=subprocess.check_output(["pg_config","--bindir"],text=True).strip(); d=work/"POSTGRES_EPHEMERAL"; d.mkdir(); cluster=d/"cluster"; port=56000+os.getpid()%500; subprocess.run([str(Path(bind)/"initdb"),"-D",str(cluster),"-A","trust","-U","sr04","--locale=C"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL); subprocess.run([str(Path(bind)/"pg_ctl"),"-D",str(cluster),"-o",f"-p {port} -F","-w","start"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    candidate_started=time.monotonic(); bind,d,cluster,port=postgres_utf8_cluster(work)
     try:
-        import psycopg2
-        open_started=time.monotonic(); con=psycopg2.connect(host="127.0.0.1",port=port,user="sr04",dbname="postgres"); cold_open=time.monotonic()-open_started; cur=con.cursor()
+        open_started=time.monotonic(); con,cur,_,_=postgres_utf8_connect(port); cold_open=time.monotonic()-open_started
         for n,df in t.items():
             pg_types={"sources":["TEXT","TEXT","TEXT","TEXT","INTEGER","INTEGER","TEXT","TEXT"],"respondents":["TEXT","INTEGER","TEXT","INTEGER","INTEGER","INTEGER","INTEGER"],"variables":["TEXT","TEXT","INTEGER","TEXT","TEXT","TEXT","TEXT","TEXT"],"events":["TEXT","INTEGER","TEXT","TEXT","INTEGER","TEXT","TEXT","DOUBLE PRECISION","TEXT","TEXT"]}[n]; cols_sql=", ".join('"'+c+'" '+typ for c,typ in zip(REL_COLS[n],pg_types)); cur.execute(f"CREATE TABLE {n} ({cols_sql})"); import io; b=io.StringIO(); df.to_csv(b,index=False,header=False,na_rep="\\N"); b.seek(0); cur.copy_expert(f"COPY {n} FROM STDIN WITH (FORMAT csv, NULL '\\N')",b)
         con.commit(); index_started=time.monotonic(); cur.execute("CREATE INDEX e1 ON events(source_id,var_name,row_ordinal); CREATE INDEX e2 ON events(source_id,row_ordinal,var_name); CREATE INDEX e3 ON events(source_id,var_name,physical_state,raw_value_key); CREATE UNIQUE INDEX r1 ON respondents(source_id,row_ordinal)"); con.commit(); index_seconds=time.monotonic()-index_started; cur.execute("SELECT indexname FROM pg_indexes WHERE tablename IN ('events','respondents')"); indexes=[r[0] for r in cur.fetchall()]; observed["POSTGRES_EPHEMERAL"]={}; query_timings={}
@@ -412,13 +442,18 @@ def cli_separation_proof(out,work):
     proof={"token":"PRE553_SR04_B1_B2_CLI_SEPARATION_PASS","synthetic_b1_checkpoint_created":checkpoint.exists(),"synthetic_b1_candidate_execution_started":b1["candidate_execution_started"],"synthetic_b2_checkpoint_only":b2["checkpoint_only"],"synthetic_b2_shared_carrier_court_executed":b2["shared_court_executed"],"synthetic_b2_final_package_path_executed":b2["package"]["files"]==["CANDIDATE_RESULTS.json","ENVIRONMENT.json","FIXTURE_DIGESTS.json","FIXTURE_MANIFEST.json","PROVISIONAL_SELECTION.json","QUERY_ORACLE.json","RECEIPT.json","STDERR.txt","STDOUT.txt"],"synthetic_b2_corrupted_checkpoint_rejected":rejected,"synthetic_b2_raw_source_decode":b2["raw_source_decode"],"DATABASE_URL_unused":True,"duplicate_truth_implementations":False,"b2_package":b2["package"]}
     out.mkdir(parents=True,exist_ok=True); (out/"CLI_PROOF_RECEIPT.json").write_text(json.dumps(proof,indent=2,sort_keys=True)+"\n"); (out/"CLI_PROOF_STDOUT.txt").write_text(proof["token"]+"\n"); return proof
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--checkpoint-dir",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); ap.add_argument("--stage-b1",action="store_true"); ap.add_argument("--stage-b2",action="store_true"); ap.add_argument("--cli-proof",action="store_true"); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--checkpoint-dir",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); ap.add_argument("--stage-b1",action="store_true"); ap.add_argument("--stage-b2",action="store_true"); ap.add_argument("--cli-proof",action="store_true"); ap.add_argument("--postgres-utf8-proof",action="store_true"); args=ap.parse_args()
     if args.self_test:
         assert raw_repr(-1)[0]=="N:-1" and free_bytes("/private/tmp")>0; print("SR04_SELF_TEST_PASS"); return 0
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); work=Path(args.work_root) if args.work_root else Path(tempfile.mkdtemp(prefix="sr04-",dir="/private/tmp")); work.mkdir(parents=True,exist_ok=True)
     if args.cli_proof:
         try: print(json.dumps(cli_separation_proof(out,work),indent=2,sort_keys=True)); return 0
         except Exception as e: (out/"CLI_PROOF_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
+    if args.postgres_utf8_proof:
+        try:
+            if not args.checkpoint_dir: raise RuntimeError("PostgreSQL UTF-8 proof requires --checkpoint-dir")
+            print(json.dumps(postgres_utf8_transport_proof(out,work,Path(args.checkpoint_dir)),ensure_ascii=False,indent=2,sort_keys=True)); return 0
+        except Exception as e: (out/"POSTGRES_UTF8_TRANSPORT_PROOF_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
     if args.stage_b1:
         try:
             if not args.checkpoint_dir: raise RuntimeError("B1 requires --checkpoint-dir")
