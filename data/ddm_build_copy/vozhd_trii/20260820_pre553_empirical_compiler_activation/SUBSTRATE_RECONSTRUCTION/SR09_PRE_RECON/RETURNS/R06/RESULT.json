@@ -1,0 +1,104 @@
+{
+  "authority_gap_count": 8,
+  "branch": "agent/vozhd-trii-sr09pre-r06-latinobarometro",
+  "commands_and_probes": [
+    "sha256sum surveys.zip and extracted assigned members",
+    "private-scratch SPSS dictionary/bytecode probe with explicit subtype-20 encoding authority; full read of only three assigned SAVs",
+    "cross-wave exact-name/label/value-dictionary/missing-declaration/ordinal comparison",
+    "row-level identity, missing, ordinary-code and weight-extreme scans"
+  ],
+  "completion_token": "PRE553_SR09PRE_R06_LATINOBAROMETRO_RECON_COMPLETE",
+  "exact_starting_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "family": "Latinobarometro",
+  "full_scans": {
+    "Latinobarometro 1995.sav": {
+      "performed": true,
+      "reason": "Required to measure respondent-key injectivity, observed physical missing/nonresponse candidates, country/sample realization, exact hostile row sentinels, and weight extremes."
+    },
+    "Latinobarometro 2011.sav": {
+      "performed": true,
+      "reason": "Required to measure respondent-key injectivity, observed physical missing/nonresponse candidates, country/sample realization, exact hostile row sentinels, and weight extremes."
+    },
+    "Latinobarometro 2024.sav": {
+      "performed": true,
+      "reason": "Required to measure respondent-key injectivity, observed physical missing/nonresponse candidates, country/sample realization, exact hostile row sentinels, and weight extremes."
+    }
+  },
+  "hazard_counts": {
+    "COUNTRY_REGION_CODING": 3,
+    "ENCODING_TEXT_AUTHORITY": 3,
+    "OTHER_NAMED_PHYSICAL_HAZARD": 1,
+    "PHYSICAL_MISSINGNESS": 3,
+    "REPEATED_RANKED_SLOT_TOPOLOGY": 2,
+    "RESPONDENT_IDENTITY": 3,
+    "ROUTING_APPLICABILITY": 1,
+    "SEMANTIC_CODE_CANDIDATE": 2,
+    "SOURCE_SCOPE_COORDINATE": 3,
+    "WEIGHT_DESIGN": 3
+  },
+  "hostile_sentinel_count_per_source": {
+    "Latinobarometro 1995.sav": 8,
+    "Latinobarometro 2011.sav": 8,
+    "Latinobarometro 2024.sav": 8
+  },
+  "hostile_sentinel_count_total": 24,
+  "mission_status": "AUTHORIZED__NON_DISPOSITIVE",
+  "non_dispositive": true,
+  "novel_hazard_classes": [],
+  "novel_source_specific_manifestations": [
+    "2024 nominal_case_size=174 while dictionary has 332 variables and weight_index=332",
+    "1995 (pais,enc) candidate identity remains noninjective with 440 duplicate excess rows",
+    "2011->2024 exact-name repurposing: all 47 shared names change labels; P2ST/P13ST/P19ST are clear hostile examples",
+    "year coordinate raw-code drift: 1995 -> 16(label 2011) -> 24(label 2024)",
+    "2024 positive code 96 “Don't know him” and code 0 “No data” occur outside negative user-missing declaration ranges"
+  ],
+  "reader": {
+    "assigned_sources_all_numeric": true,
+    "encoding_authority": "Each source contains explicit SPSS subtype-20 UTF-8 record; no guessed encoding.",
+    "probe_note": "pyreadstat was not available in the scratch runtime; a private read-only parser followed the documented SAV dictionary/simple-bytecode layout for these all-numeric $FL2 files. No repository/runtime code was modified.",
+    "source_compatibility_override_used": false
+  },
+  "source_dispositions": {
+    "Latinobarometro 1995.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "Latinobarometro 2011.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "Latinobarometro 2024.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED"
+  },
+  "source_inventory": {
+    "Latinobarometro 1995.sav": {
+      "disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "observed_countries": 8,
+      "respondent_identity": "enc noninjective; (pais,enc) 8629/9069 unique",
+      "rows": 9069,
+      "sentinel_count": 8,
+      "sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+      "system_missing_cells": 0,
+      "user_missing_cells": 267448,
+      "variables": 203
+    },
+    "Latinobarometro 2011.sav": {
+      "disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "observed_countries": 18,
+      "respondent_identity": "NUMENTRE noninjective globally; (IDENPA,NUMENTRE) 20204/20204 unique",
+      "rows": 20204,
+      "sentinel_count": 8,
+      "sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+      "system_missing_cells": 0,
+      "user_missing_cells": 730387,
+      "variables": 414
+    },
+    "Latinobarometro 2024.sav": {
+      "disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "header_nominal_case_size": 174,
+      "observed_countries": 17,
+      "respondent_identity": "NUMENTRE noninjective globally; (IDENPA,NUMENTRE) 19214/19214 unique",
+      "rows": 19214,
+      "sentinel_count": 8,
+      "sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "system_missing_cells": 0,
+      "user_missing_cells": 313064,
+      "variables": 332
+    }
+  },
+  "status": "COMPLETE",
+  "worker_id": "R06"
+}

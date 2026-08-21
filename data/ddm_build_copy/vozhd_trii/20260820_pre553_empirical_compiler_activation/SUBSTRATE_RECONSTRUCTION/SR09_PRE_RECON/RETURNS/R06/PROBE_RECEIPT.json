@@ -1,0 +1,95 @@
+{
+  "DATABASE_URL_used": false,
+  "branch": "agent/vozhd-trii-sr09pre-r06-latinobarometro",
+  "completion_token": "PRE553_SR09PRE_R06_LATINOBAROMETRO_RECON_COMPLETE",
+  "dependency_versions": {
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "pyreadstat": "NOT_INSTALLED__NOT_USED",
+    "python": "3.13.5"
+  },
+  "exact_checkout_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "exact_commands": [
+    "python /mnt/data/sr09pre_r06_private/probe_latino.py > /mnt/data/sr09pre_r06_private/probe_stdout.txt",
+    "python /mnt/data/sr09pre_r06_private/core_stats.py > /mnt/data/sr09pre_r06_private/core_stats.txt",
+    "python /mnt/data/sr09pre_r06_private/build_outputs.py"
+  ],
+  "family": "Latinobarometro",
+  "final_git_status": "NO_LOCAL_WORKTREE__planned tree delta prevalidated R06-only; exact remote branch head verified after update_ref and reported in HQ receipt.",
+  "full_scans": {
+    "Latinobarometro 1995.sav": {
+      "performed": true,
+      "reason": "Respondent identity injectivity/duplicates, observed user-missing and ordinary-code candidates, sample realization, weight extrema, and exact hostile cell sentinels."
+    },
+    "Latinobarometro 2011.sav": {
+      "performed": true,
+      "reason": "Respondent identity injectivity/duplicates, observed user-missing and ordinary-code candidates, sample realization, weight extrema, and exact hostile cell sentinels."
+    },
+    "Latinobarometro 2024.sav": {
+      "performed": true,
+      "reason": "Respondent identity injectivity/duplicates, observed user-missing and ordinary-code candidates, sample realization, weight extrema, and exact hostile cell sentinels."
+    }
+  },
+  "legacy_postgres_used_as_truth": false,
+  "library_bundle": {
+    "filename": "surveys.zip",
+    "materialized_path": "/mnt/data/sr09pre_r06_private/surveys.zip",
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "library_raw_unchanged": true,
+  "members_extracted": [
+    "surveys/Latinobarometro 1995.sav",
+    "surveys/Latinobarometro 2011.sav",
+    "surveys/Latinobarometro 2024.sav"
+  ],
+  "output_sha256_excluding_receipt": {
+    "AUTHORITY_GAPS.csv": "744925e64491047497a4afbb0e5249970aee0a6a9352adeffd2b110421f529f0",
+    "CROSS_WAVE_DRIFT.csv": "bf355ce813cb72b0963252ff04f2cf3b38fc1bf92331368281540c26b9108be9",
+    "HOSTILE_SENTINELS.csv": "ab1d3bd8d9bfd7373431d3ba78c8601a6f36a0ab414c5383a02ef892604696e2",
+    "RESULT.json": "56c454039ccf9f027ac13232d2fffed263f8c54e4db46c91a965ac030a65a825",
+    "RESULT.md": "cb21cb466c406e8b0f2abfb577f836ee04517e4615fbdfcff44a0fa90411e13d",
+    "SOURCE_BURDEN.csv": "5322951aa750186a8bfb4439fede1bfd7b3fcc44265b6980bf590e6e087b21a9"
+  },
+  "pre_commit_git_state": "Remote branch verified identical to exact starting HEAD; no local repository worktree was used.",
+  "probe_scripts": [
+    {
+      "committed": false,
+      "path": "/mnt/data/sr09pre_r06_private/probe_latino.py",
+      "sha256": "65868d2d3269aa56cde860a4c40d280e2382a2558ce6f4fcf7b855b6078661eb"
+    },
+    {
+      "committed": false,
+      "path": "/mnt/data/sr09pre_r06_private/core_stats.py",
+      "sha256": "b599ffb877d3cd3b3163c89218161646b604cb4ad1cf80c80e5d9d7d80a1b7fb"
+    },
+    {
+      "committed": false,
+      "path": "/mnt/data/sr09pre_r06_private/build_outputs.py",
+      "sha256": "d5a91ffe2501c37dacf9619096f814e12c3e9acdc245a1520b9d142d87701770"
+    }
+  ],
+  "production_runtime_modified": false,
+  "reader_configuration": {
+    "apply_value_formats": false,
+    "compression": "simple bytecode (header code 1)",
+    "encoding": "explicit source subtype-20 UTF-8",
+    "note": "Private read-only parser used because pyreadstat was unavailable; it parsed native variable records/value-label records/extension records and decoded full simple-bytecode data streams. All assigned variables are numeric.",
+    "sav_magic": "$FL2",
+    "source_compatibility_override_used": false,
+    "system_missing_preserved_as_physical_state": true,
+    "user_missing_preserved": true
+  },
+  "repository_write_scope": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR09_PRE_RECON/RETURNS/R06/ only",
+  "scratch_paths": {
+    "extracted": "/mnt/data/sr09pre_r06_private/extracted",
+    "outputs": "/mnt/data/sr09pre_r06_private/R06",
+    "root": "/mnt/data/sr09pre_r06_private"
+  },
+  "source_hashes": {
+    "Latinobarometro 1995.sav": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+    "Latinobarometro 2011.sav": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+    "Latinobarometro 2024.sav": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+  },
+  "worker_id": "R06"
+}
