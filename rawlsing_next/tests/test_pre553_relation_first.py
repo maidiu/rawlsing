@@ -3,7 +3,8 @@ from pathlib import Path
 from rawlsing_next.pre553_c11_ingest import validate_c11_source_release
 from rawlsing_next.pre553_parquet_carrier import ParquetC11Carrier
 from rawlsing_next.pre553_relation_first import (
-    open_relation_handle, projection_only_storage, query_relation_handle, storage_budget,
+    RelationFirstParquetWriter, _compact_object_from_row, open_relation_handle,
+    projection_only_storage, query_relation_handle, storage_budget,
 )
 from rawlsing_next.tests.test_pre553_c11_repository_ingest import _candidate
 
@@ -42,3 +43,41 @@ def test_storage_budget_separates_fixed_and_event_scaled_bytes(tmp_path: Path):
     assert receipt["POST_SUCCESS_RETAINED_BYTES"] == receipt["CANONICAL_STEADY_STATE_BYTES"]
     assert projection_only_storage(fixed_metadata_bytes=123, bytes_per_event=10,
                                    event_count=100, corpus="TEST")["status"] == "PROJECTION_ONLY"
+
+
+def test_compact_event_rows_omit_derivable_identity_and_reconstruct_exactly(tmp_path: Path):
+    release = validate_c11_source_release(_candidate("compact-parity"))
+    events = [obj for obj in release.public_objects if obj.FAMILY.startswith("RespondentEvent")]
+    writer = RelationFirstParquetWriter(tmp_path, row_group_size=8192, compression_level=3)
+    writer.append("respondent_events", events)
+    members = writer.close()
+    import pyarrow.parquet as pq
+    table = pq.read_table(tmp_path / "respondent_events.parquet")
+    assert "compact_payload" in table.column_names
+    assert "object_family" not in table.column_names
+    assert "object_id" not in table.column_names
+    assert "content_hash" not in table.column_names
+    rows = table.to_pylist()
+    rebuilt = [_compact_object_from_row(row, "respondent_events", writer.dictionaries["respondent_events"]) for row in rows]
+    assert [obj.ref for obj in rebuilt] == [obj.ref for obj in events]
+    assert [obj.semantic_projection() for obj in rebuilt] == [obj.semantic_projection() for obj in events]
+    assert [obj.typed_state for obj in rebuilt] == [obj.typed_state for obj in events]
+    assert [obj.authority_snapshot_refs for obj in rebuilt] == [obj.authority_snapshot_refs for obj in events]
+    assert [obj.dependency_refs for obj in rebuilt] == [obj.dependency_refs for obj in events]
+    assert [obj.producer_replay_locator_or_reference_root for obj in rebuilt] == [obj.producer_replay_locator_or_reference_root for obj in events]
+    assert members["respondent_events"].row_count == len(events)
+
+
+def test_compact_physical_configuration_comparison_is_semantically_identical(tmp_path: Path):
+    release = validate_c11_source_release(_candidate("compact-config"))
+    events = [obj for obj in release.public_objects if obj.FAMILY.startswith("RespondentEvent")]
+    results = []
+    for level, row_group in ((3, 4096), (9, 4096), (3, 16384)):
+        target = tmp_path / f"z{level}-rg{row_group}"
+        writer = RelationFirstParquetWriter(target, row_group_size=row_group, compression_level=level)
+        writer.append("respondent_events", events)
+        writer.close()
+        rows = __import__("pyarrow.parquet", fromlist=["read_table"]).read_table(target / "respondent_events.parquet").to_pylist()
+        assert [_compact_object_from_row(row, "respondent_events", writer.dictionaries["respondent_events"]).ref for row in rows] == [obj.ref for obj in events]
+        results.append((level, row_group, (target / "respondent_events.parquet").stat().st_size))
+    assert all(size > 0 for _, _, size in results)
