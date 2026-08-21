@@ -1,0 +1,19 @@
+{
+  "worker": "SR08-P1 LiTS I bounded C11 execution-scale preflight",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-sr08-p1-lits1-c11-scale",
+  "starting_head": "7633f84473dcd63e3acb00247ac094bbc6ef4fde",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "source_shape": {"rows":29002,"variables":1198},
+  "reader_invocation": "decode_dta(source_path, encoding=\"latin1\")",
+  "reader_configuration": {"reader":"pyreadstat","reader_version":"1.3.2","user_missing":true,"apply_value_formats":false,"encoding":"latin1","authority_status":"COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"},
+  "scratch_driver_sha256": "cef0c102f3dbaa1802f79a8a84d271db8199c686169a53c615ad6aed2a39b635",
+  "execution_only_authority": "P1_EXECUTION_ONLY__NO_SOURCE_SEMANTIC_CERTIFICATION",
+  "stages_completed": ["S1","S2","S2_REPEAT"],
+  "s3": {"rows":256,"expected_event_frontier":306688,"completed":false,"tripwire":true,"peak_rss_kib":4238408,"terminated_during":"full_reopen"},
+  "s4": {"run":false,"reason":"S3 reached the hard 4-GiB tripwire; escalation stopped."},
+  "s2_repeat_determinism": {"source_sha256_equal":true,"frontier_equal":true,"semantic_release_hash_equal":true,"relation_digests_equal":true,"public_inventory_equal":true,"internal_inventory_equal":true},
+  "no_runtime_modification": true,
+  "final_disposition": "P1_BLOCKED__RESOURCE_TRIPWIRE",
+  "required_token": "PRE553_SR08_P1_LITS1_C11_SCALE_PREFLIGHT_RETURNED"
+}
