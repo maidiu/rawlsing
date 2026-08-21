@@ -1,0 +1,99 @@
+{
+  "status": "AUTHORIZED__NON_DISPOSITIVE__FAIL_CLOSED_INTEGRITY_DESIGN",
+  "cell": "R05",
+  "title": "INTEGRITY / REPLAY / CACHE / PUBLICATION / CANONICAL-COPY LAW",
+  "starting_head": "bc2d022d49b1a860a33b29ce171a89c91956c35e",
+  "recommendation": "ADMIT_FOR_SYNTHESIS__WITH_HARD_FAIL_CLOSED_PRECONDITIONS",
+  "raw_source_probes": [],
+  "owned_candidates": [
+    "C14",
+    "C18",
+    "C13_integrity_publication",
+    "C20_integrity_publication",
+    "C21_integrity_publication"
+  ],
+  "identities": {
+    "semantic_release_id": "Deterministic identity over immutable source/extraction/decoder/authority/compiler contract, canonical coverage, and logical member digests; excludes incidental physical encoder and path/time accidents.",
+    "physical_root_id": "Cryptographic identity of one exact immutable physical realization binding the root manifest, member manifests, member byte hashes, chunk profile, and hierarchical chunk roots.",
+    "byte_reproducibility": "Physical-root equality across identical governed inputs is required only for a profile explicitly frozen as BYTE_REPRODUCIBLE; otherwise byte-different realizations require independent semantic equivalence proof."
+  },
+  "verification": {
+    "states": [
+      "UNSEEN",
+      "ROOT_VERIFIED",
+      "MEMBER_MANIFEST_VERIFIED",
+      "CHUNK_VERIFIED",
+      "MEMBER_VERIFIED_FULL",
+      "QUERY_CLOSED",
+      "RELEASE_VERIFIED_FULL"
+    ],
+    "failure_states": [
+      "INCOMPLETE",
+      "CORRUPT",
+      "QUARANTINED"
+    ],
+    "empirical_output_gate": "QUERY_CLOSED_OR_RELEASE_VERIFIED_FULL",
+    "positive_evidence_gate": "VERIFY_EXACT_FACT_BYTES_AND_ALL_CANONICAL_INTERPRETIVE_DEPENDENCIES",
+    "negative_evidence_gate": "VERIFY_ALL_CANONICAL_REGIONS_CAPABLE_OF_REFUTING_THE_ABSENCE_OR_USE_A_ROOT_BOUND_CANONICAL_COMPLETENESS_PROOF",
+    "aggregate_discovery_gate": "VERIFY_ALL_REGIONS_CAPABLE_OF_ADDING_REMOVING_REWEIGHTING_REROUTING_RECLASSIFYING_OR_SUPPRESSING_A_RESULT",
+    "whole_member_verification": "MANDATORY_RETAINED",
+    "streaming_full_audit": "MANDATORY_RETAINED",
+    "toctou": "HASH_AND_CONSUME_THE_SAME_IMMUTABLE_BYTES_OR_ESCALATE_TO_FULL_MEMBER_VERIFICATION"
+  },
+  "publication": {
+    "mode": "CONTENT_ADDRESSED_STAGING_SEAL_PROMOTE_REOPEN_VERIFY_THEN_SELECTOR_CAS",
+    "reader_visibility": "OLD_ROOT_OR_NEW_ROOT_NEVER_MIXED",
+    "pre_seal_crash": "STAGING_INVISIBLE_DISPOSABLE",
+    "post_seal_pre_promote_crash": "SEALED_CANDIDATE_NON_SERVING",
+    "post_promote_pre_selector_crash": "COMPLETE_INACTIVE_RELEASE_OLD_ACTIVE_STILL_SERVES",
+    "concurrency": "CONTENT_ADDRESSED_ROOTS_PLUS_COMPARE_AND_SWAP_ACTIVE_SELECTOR",
+    "collision_behavior": "SAME_ROOT_ID_WITH_DIVERGENT_BYTES_IS_CATASTROPHIC_INTEGRITY_ALARM"
+  },
+  "corruption": {
+    "canonical": "MARK_CORRUPT_THEN_QUARANTINE_ENTIRE_PHYSICAL_RELEASE_FROM_EMPIRICAL_SERVING",
+    "repair": "DETERMINISTIC_REBUILD_OR_EXPLICIT_ACTIVATION_OF_SEPARATELY_VERIFIED_EQUIVALENT_RELEASE",
+    "cache_fallback": "FORBIDDEN",
+    "legacy_or_shadow_fallback": "FORBIDDEN"
+  },
+  "cache": {
+    "classification": "NONAUTHORITATIVE__REGENERABLE_CACHE",
+    "unique_empirical_information": "FORBIDDEN",
+    "correctness_requires_cache": false,
+    "deletion_must_preserve_correctness": true,
+    "key_dependencies": [
+      "semantic_or_physical_root_identity",
+      "relevant_member_or_dependency_roots",
+      "cache_schema_and_kind",
+      "builder_implementation_digest",
+      "relevant_canonical_configuration_and_parameters"
+    ],
+    "stale_or_corrupt_behavior": "IGNORE_DELETE_OR_QUARANTINE_THEN_DETERMINISTICALLY_REBUILD_FROM_VERIFIED_CANONICAL",
+    "canonical_disagreement": "CANONICAL_WINS_CACHE_INVALIDATES",
+    "absence_proof": "A_STRUCTURE_REQUIRED_TO_PROVE_EXHAUSTIVE_ABSENCE_IS_CANONICAL_ROOT_BOUND_MATERIAL_NOT_CACHE"
+  },
+  "migration": {
+    "shadow": "SHADOW_CANDIDATE__NON_SERVING__NONAUTHORITATIVE_UNTIL_FULL_INTEGRITY_AND_INDEPENDENT_SEMANTIC_EQUIVALENCE_ADMISSION",
+    "promotion": "ATOMIC_SERVING_ROLE_SWITCH_ONLY_AFTER_ADMISSION",
+    "dual_serving_canonical": "FORBIDDEN",
+    "rollback": "EXPLICIT_OPERATOR_GOVERNED_FRESHLY_VERIFIED_ATOMIC_PROMOTION_ONLY",
+    "automatic_fallback": "FORBIDDEN",
+    "open_synthesis_issue": "Whether retaining a complete non-serving rollback candidate conflicts with the one-copy steady-state storage law; if it does, rebuild rather than weaken one-copy law."
+  },
+  "c13_c20_c21": {
+    "C13": "Hot and cold canonical members remain under one root; cold material is not weaker truth and must enter closure when relevant.",
+    "C20": "Source-local compiler identity/configuration is root-bound and downstream remains uniform C11 without source-family semantic branching.",
+    "C21": "Matrix/columnar/bitmap layouts bind respondent, variable, typed state, routing, weights, topology, provenance, sparse exceptions, and exact reconstruction; physical row order is execution-only."
+  },
+  "synthesis_requirements": [
+    "R02 exact grain and functional-dependency inventory",
+    "R03 independent semantic equivalence oracle",
+    "R04 exact vector/matrix/bitmap dependency surfaces for verification closure",
+    "R01 bounded-memory staging flush commit and crash semantics",
+    "R06 zero-destruction migration concurrency rollback and recovery courts",
+    "HQ trusted active-root authorization lifecycle",
+    "Frozen hash algorithms canonical manifest serialization domain separation chunking and algorithm-migration law",
+    "Retention of current full member/release streaming audit",
+    "Canonical root inclusion for any completeness structure used to prove absence"
+  ],
+  "return_token": "POST_R4_R05_INTEGRITY_PUBLICATION_RETURNED"
+}
