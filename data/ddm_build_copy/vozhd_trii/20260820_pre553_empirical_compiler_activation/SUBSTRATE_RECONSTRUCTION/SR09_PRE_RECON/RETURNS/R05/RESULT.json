@@ -1,0 +1,276 @@
+{
+  "branch": "agent/vozhd-trii-sr09pre-r05-gss",
+  "commands_probes_executed": [
+    "Library materialize surveys.zip -> /mnt/data/sr09pre_r05_private/surveys.zip",
+    "stat -c %s /mnt/data/sr09pre_r05_private/surveys.zip; sha256sum /mnt/data/sr09pre_r05_private/surveys.zip",
+    "unzip -Z1 surveys.zip | select only substantive surveys/GSS{1972,1973,1984,1993,2002,2010,2016,2024}.sav; unzip -p each selected member > private extracted copy",
+    "sha256sum each extracted SAV and compare to R05_GSS.md / SOURCE_BYTE_INVENTORY.csv",
+    "python /mnt/data/sr09pre_r05_private/gss_longitudinal_probe.py --input /mnt/data/sr09pre_r05_private/extracted --output /mnt/data/sr09pre_r05_private/probe (read-only custom SAV physical probe; no semantic normalization; full data-body pass for exact incidence/sentinels)"
+  ],
+  "completion_token": "PRE553_SR09PRE_R05_GSS_RECON_COMPLETE",
+  "database_url_used": false,
+  "documentary_authority_gap_classes": [
+    "LABEL_SCOPE_AUTHORITY",
+    "LONGITUDINAL_MAPPING_AUTHORITY",
+    "RELEASE_PROVENANCE_AUTHORITY",
+    "RESPONDENT_IDENTITY_AUTHORITY",
+    "ROUTING_APPLICABILITY_AUTHORITY",
+    "WEIGHT_DESIGN_AUTHORITY"
+  ],
+  "documentary_authority_gap_count": 33,
+  "exact_checkout_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "exact_source_inventory": [
+    {
+      "file_encoding": "UTF-8",
+      "fileversion": 7224.3,
+      "header_creation_date": "06 Mar 26",
+      "hostile_sentinel_count": 3,
+      "id_injective_within_file": true,
+      "id_max": 1613,
+      "id_min": 1,
+      "mr_sets": 0,
+      "physical_counts": {
+        "ordinary": 289155,
+        "system_missing": 0,
+        "total": 348408,
+        "user_missing": 59253
+      },
+      "rows": 1613,
+      "sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+      "size_bytes": 1647241,
+      "source_disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "source_file": "GSS1972.sav",
+      "variables": 216
+    },
+    {
+      "file_encoding": "UTF-8",
+      "fileversion": 7224.3,
+      "header_creation_date": "06 Mar 26",
+      "hostile_sentinel_count": 3,
+      "id_injective_within_file": true,
+      "id_max": 1504,
+      "id_min": 1,
+      "mr_sets": 0,
+      "physical_counts": {
+        "ordinary": 435930,
+        "system_missing": 0,
+        "total": 509856,
+        "user_missing": 73926
+      },
+      "rows": 1504,
+      "sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+      "size_bytes": 1984639,
+      "source_disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "source_file": "GSS1973.sav",
+      "variables": 339
+    },
+    {
+      "file_encoding": "UTF-8",
+      "fileversion": 7224.3,
+      "header_creation_date": "06 Mar 26",
+      "hostile_sentinel_count": 4,
+      "id_injective_within_file": true,
+      "id_max": 1473,
+      "id_min": 1,
+      "mr_sets": 0,
+      "physical_counts": {
+        "ordinary": 705372,
+        "system_missing": 0,
+        "total": 994275,
+        "user_missing": 288903
+      },
+      "rows": 1473,
+      "sha256": "1da2df0c0e0692817081a46856deeaa6c78891101e53cf0139a971de16f7ac18",
+      "size_bytes": 4309530,
+      "source_disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "source_file": "GSS1984.sav",
+      "variables": 675
+    },
+    {
+      "file_encoding": "UTF-8",
+      "fileversion": 7224.3,
+      "header_creation_date": "06 Mar 26",
+      "hostile_sentinel_count": 3,
+      "id_injective_within_file": true,
+      "id_max": 1606,
+      "id_min": 1,
+      "mr_sets": 0,
+      "physical_counts": {
+        "ordinary": 783905,
+        "system_missing": 0,
+        "total": 1207712,
+        "user_missing": 423807
+      },
+      "rows": 1606,
+      "sha256": "7fc409cc07172f9a556bf88c5df8d2ea5e539b2a6ff37348711eeb21b4355ae8",
+      "size_bytes": 5506397,
+      "source_disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "source_file": "GSS1993.sav",
+      "variables": 752
+    },
+    {
+      "file_encoding": "UTF-8",
+      "fileversion": 7224.3,
+      "header_creation_date": "06 Mar 26",
+      "hostile_sentinel_count": 4,
+      "id_injective_within_file": true,
+      "id_max": 2765,
+      "id_min": 1,
+      "mr_sets": 0,
+      "physical_counts": {
+        "ordinary": 1463287,
+        "system_missing": 0,
+        "total": 3094035,
+        "user_missing": 1630748
+      },
+      "rows": 2765,
+      "sha256": "8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1",
+      "size_bytes": 17746227,
+      "source_disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "source_file": "GSS2002.sav",
+      "variables": 1119
+    },
+    {
+      "file_encoding": "UTF-8",
+      "fileversion": 7224.3,
+      "header_creation_date": "06 Mar 26",
+      "hostile_sentinel_count": 3,
+      "id_injective_within_file": true,
+      "id_max": 2044,
+      "id_min": 1,
+      "mr_sets": 0,
+      "physical_counts": {
+        "ordinary": 1039687,
+        "system_missing": 0,
+        "total": 1884568,
+        "user_missing": 844881
+      },
+      "rows": 2044,
+      "sha256": "c229aff7430c12f246678f385e0776b089681ae9830bac88423e0964ac34ee05",
+      "size_bytes": 10170184,
+      "source_disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "source_file": "GSS2010.sav",
+      "variables": 922
+    },
+    {
+      "file_encoding": "UTF-8",
+      "fileversion": 7224.3,
+      "header_creation_date": "06 Mar 26",
+      "hostile_sentinel_count": 3,
+      "id_injective_within_file": true,
+      "id_max": 2867,
+      "id_min": 1,
+      "mr_sets": 0,
+      "physical_counts": {
+        "ordinary": 1363274,
+        "system_missing": 0,
+        "total": 2918606,
+        "user_missing": 1555332
+      },
+      "rows": 2867,
+      "sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+      "size_bytes": 16989724,
+      "source_disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "source_file": "GSS2016.sav",
+      "variables": 1018
+    },
+    {
+      "file_encoding": "UTF-8",
+      "fileversion": 7224.3,
+      "header_creation_date": "06 Mar 26",
+      "hostile_sentinel_count": 4,
+      "id_injective_within_file": true,
+      "id_max": 3986,
+      "id_min": 1,
+      "mr_sets": 0,
+      "physical_counts": {
+        "ordinary": 1911284,
+        "system_missing": 0,
+        "total": 3906280,
+        "user_missing": 1994996
+      },
+      "rows": 3986,
+      "sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+      "size_bytes": 20922610,
+      "source_disposition": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+      "source_file": "GSS2024.sav",
+      "variables": 980
+    }
+  ],
+  "family": "GSS",
+  "fixture_law_observation": {
+    "all_eight_common_physical_envelope": [
+      "March-2026 Release 3 fileversion 7224.3",
+      "UTF-8 encoding declaration",
+      "fileversion/year/id at ordinals 0/1/2",
+      "all variables declare SPSS user-missing range [-100,-10]",
+      "zero system-missing cells observed",
+      "zero source-native SPSS MR sets"
+    ],
+    "requires_special_fixture": [
+      "GSS1972.sav",
+      "GSS1973.sav",
+      "GSS1984.sav",
+      "GSS1993.sav",
+      "GSS2002.sav",
+      "GSS2024.sav"
+    ],
+    "shared_structural_subset": [
+      "GSS2010.sav",
+      "GSS2016.sav"
+    ],
+    "shared_subset_basis": "Both expose ballot/form, ballotformwt/ballotformwtnr, mode, phase, subsamprate, version, VPSU/VSTRAT, and wtss/wtssall/wtssnr/wtssnrps/wtssps, while remaining release-bound in values/ordinals/schema.",
+    "special_fixture_basis": "Each selected early/middle release adds or changes structural coordinates at the chosen checkpoints; 2024 materially breaks the 2010/2016 mode/sample/weight topology with dual frames and *_next/*_as weight domains."
+  },
+  "full_scan_reason": "A data-body pass over each assigned source was required to measure within-file id injectivity, exact physical missing-state incidence/conservation, structural-coordinate distributions, and exact zero-based row-ordinal hostile sentinel cells. The accepted SR03 census was used as the prior physical-corpus authority; this pass was bounded to the eight assigned GSS members.",
+  "full_scans_performed": [
+    "GSS1972.sav",
+    "GSS1973.sav",
+    "GSS1984.sav",
+    "GSS1993.sav",
+    "GSS2002.sav",
+    "GSS2010.sav",
+    "GSS2016.sav",
+    "GSS2024.sav"
+  ],
+  "hazard_class_counts": {
+    "LABEL_METADATA_DRIFT": 1,
+    "LEGACY_LOSS_RISK": 8,
+    "MULTIPLE_RESPONSE_TOPOLOGY": 2,
+    "PHYSICAL_MISSINGNESS": 8,
+    "REPEATED_RANKED_SLOT_TOPOLOGY": 6,
+    "RESPONDENT_IDENTITY": 8,
+    "ROUTING_APPLICABILITY": 7,
+    "SEMANTIC_CODE_CANDIDATE": 8,
+    "SOURCE_SCOPE_COORDINATE": 9,
+    "WEIGHT_DESIGN": 9
+  },
+  "hostile_sentinel_count_per_source": {
+    "GSS1972.sav": 3,
+    "GSS1973.sav": 3,
+    "GSS1984.sav": 4,
+    "GSS1993.sav": 3,
+    "GSS2002.sav": 4,
+    "GSS2010.sav": 3,
+    "GSS2016.sav": 3,
+    "GSS2024.sav": 4
+  },
+  "legacy_postgres_used_as_truth": false,
+  "mission_status": "AUTHORIZED__NON_DISPOSITIVE__LONGITUDINAL_PRIORITY",
+  "non_dispositive": true,
+  "novel_hazard_classes": [],
+  "production_runtime_modified": false,
+  "renamed_continuity_observation": "Exact same-label rename candidates exist for income/rincome vintages, but their labeled code dictionaries change. R05 records them as drift only and does not infer equivalence.",
+  "same_name_metadata_drift_observation": "For adjacent common variables, the March-2026 export exposes stable labels/value-label dictionaries in the targeted metadata comparison; meaningful same-name drift is instead visible in observed code/topology incidence (e.g. form, mode, subsamprate, vpsu). This does not authorize semantic invariance.",
+  "source_level_reconnaissance_dispositions": {
+    "GSS1972.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "GSS1973.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "GSS1984.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "GSS1993.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "GSS2002.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "GSS2010.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "GSS2016.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "GSS2024.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED"
+  },
+  "worker_id": "R05"
+}
