@@ -1,0 +1,8 @@
+artifact_class,physical_count,physically_present,respondent_level,authority_use,notes
+respondent_source_release,0,false,true,NONE,"No inspectable committed respondent-level release bytes at exact base"
+section85_bounded_live_scope_config,9,true,false,LEAD_ONLY,"Filters/configuration for Afrobarometer R1 LS; Arab Barometer I YE; Asian Barometer W1 PH; EVS 1981 BE; GSS 2010 US; Latinobarómetro 1995 BR; LiTS 2006 BY; South Asia W1 IN; WVS W1 SE"
+section85_joint_configuration_authority,9,true,false,BOUNDED_CANARY_AUTHORITY,"Exact source-native joint configuration topology/decision metadata; no respondent incidence"
+v550_response_semantics_audit_locator,9,true,false,SEMANTIC_AUDIT_LEAD,"Manifest pins historical audit paths and sha256 values; these are response semantics audits, not respondent rows"
+live_ddm_respondent_database,0,false,true,REQUIRED_EXTERNAL_ACCESS,"Must expose public.v_ddm_response_long_facet_ready_authority or public.v_ddm_response_long_facet_ready"
+r184_authority_database,1,REFERENCED_NOT_RESPONDENT,false,PROPOSITION_AUTHORITY_ONLY,"Section 85 explicitly states R184 authority database is not the respondent database"
+prepared_v550j_respondent_substrate,0,false,true,ALTERNATE_REQUIRED_EXTERNAL_ACCESS,"A separately governed prepared substrate could satisfy access if exact respondent and release identity/replay requirements are closed"
