@@ -1,0 +1,167 @@
+{
+  "artifacts": [
+    "RESULT.md",
+    "RESULT.json",
+    "ASSUMPTION_LEDGER.csv",
+    "INFORMATION_PRESERVATION_LEDGER.csv",
+    "SELF_RED_TEAM.md",
+    "PROPOSED_CONTRACT.md",
+    "HOSTILE_CASES.csv",
+    "ORACLE_COVERAGE_MATRIX.csv",
+    "BENCHMARK_PLAN.md"
+  ],
+  "assumptions_count": 24,
+  "blind_i05": {
+    "exclude_disclosed_workload_hashes": true,
+    "freeze_before_selection": [
+      "candidate_commit",
+      "candidate_build_identity",
+      "tuning_workload_disclosure_hash"
+    ],
+    "hidden_randomness": false,
+    "record_nonce_for_replay": true,
+    "required_shapes": [
+      "pair",
+      "k_way_k_ge_3_if_authorized",
+      "conditional",
+      "reversal_simpson",
+      "recursive_subgroup",
+      "branch_conditioned",
+      "co_signature_cloud_like"
+    ],
+    "seed_material": [
+      "oracle_version",
+      "candidate_commit",
+      "tuning_disclosure_hash",
+      "oracle_nonce",
+      "authority_snapshot_set_hash"
+    ]
+  },
+  "branch": "agent/vozhd-trii-postr4-r03-equivalence-oracle",
+  "coverage": {
+    "cache_delete_rebuild_stale": true,
+    "corruption_fail_closed": true,
+    "exactref_content_identity": true,
+    "fresh_process_determinism": true,
+    "i03_negative_and_integrity": true,
+    "i03_positive": true,
+    "i04_admission_parity": true,
+    "i05_cloud_like": "exact joint/co-signature facts plus diagnostic-only CLOUD_SCORE nonauthority metamorph",
+    "i05_pair_kway_conditional_reversal_recursive_branch": true,
+    "i05_post_freeze_blind_workload": true,
+    "m01_m18": [
+      "M01",
+      "M02",
+      "M03",
+      "M04",
+      "M05",
+      "M06",
+      "M07",
+      "M08",
+      "M09",
+      "M10",
+      "M11",
+      "M12",
+      "M13",
+      "M14",
+      "M15",
+      "M16",
+      "M17",
+      "M18"
+    ],
+    "physical_preservation": true,
+    "provenance_replay": true,
+    "routing_applicability_risk": true,
+    "source_identity_shape": true,
+    "topology_order_rank_multiplicity": true,
+    "weights_design": true
+  },
+  "coverage_matrix_count": 32,
+  "exact_starting_head": "bc2d022d49b1a860a33b29ce171a89c91956c35e",
+  "hostile_corpus": {
+    "families": [
+      "Afrobarometer",
+      "Arab Barometer",
+      "Asian Barometer",
+      "EVS",
+      "GSS",
+      "Latinobarometro",
+      "LiTS",
+      "South Asia",
+      "WVS"
+    ],
+    "generic_format_fixture_sufficient": false,
+    "real_source_case_count": 22,
+    "synthetic_fixture_can_certify_real_source": false,
+    "total_case_count": 41
+  },
+  "independence": {
+    "candidate_self_reported_hashes_trusted": false,
+    "candidate_vs_r4_only_forbidden": true,
+    "independent_exactref_recomputation_required": true,
+    "independent_respondent_set_support_evaluator_required": true,
+    "oracle_internal_disagreement_action": "BLOCK_ORACLE_RUN__DO_NOT_ACCEPT_CANDIDATE"
+  },
+  "information_preservation": {
+    "allowed_dispositions": [
+      "DERIVED_FROM_IMMUTABLE_RELEASE_LAW",
+      "DERIVED_FROM_QUESTION_GRAIN_AUTHORITY",
+      "DERIVED_FROM_RESPONDENT_GRAIN_AUTHORITY",
+      "DERIVED_FROM_TYPED_EVENT_INCIDENCE",
+      "NOT_APPLICABLE",
+      "PRESERVED_IN_EXACT_SPARSE_EXCEPTION",
+      "REJECTED_NOT_PROVEN_DERIVABLE",
+      "STORED_DIRECTLY"
+    ],
+    "carrier_layout_recommendation": "NONE",
+    "row_count": 169
+  },
+  "oracle_contract": {
+    "acceptance_rule": "PASS iff every applicable assertion is PASS; BLOCKED is not PASS; one authoritative mismatch fails claimed scope",
+    "acceptance_states": [
+      "PASS",
+      "BLOCKED_BY_MISSING_AUTHORITY",
+      "FAIL"
+    ],
+    "candidate_specific_waiver_allowed": false,
+    "gates": [
+      "O0_AUTHORITY_FREEZE",
+      "O1_SOURCE_NATIVE_EQUIVALENCE",
+      "O2_C11_CANONICAL_EQUIVALENCE",
+      "O3_I03_BEHAVIORAL_EQUIVALENCE",
+      "O4_I05_FRONTIER_EQUIVALENCE",
+      "O5_I04_ADMISSION_EQUIVALENCE",
+      "O6_REPLAY_INTEGRITY_CACHE_EQUIVALENCE"
+    ],
+    "id": "SEMANTIC_EQUIVALENCE_ORACLE@1",
+    "performance_can_waive_semantic_failure": false,
+    "r4_physical_layout_is_semantic_authority": false
+  },
+  "preferred_carrier_selected": false,
+  "raw_source_probe_holding": "NONE__CHECKED_IN_MANIFEST_RECON_AUTHORITY_SUFFICIENT_FOR_NAMED_HOSTILE_FACTS",
+  "raw_source_probes": [],
+  "rawlsing_next_modified": false,
+  "recommendation": "ADOPT_AS_REPRESENTATION_NEUTRAL_ACCEPTANCE_CONTRACT__DO_NOT_SELECT_CARRIER_FROM_R03",
+  "reference_authority": [
+    "exact source bytes/source-native constitution/decoder contract",
+    "frozen I01/I02 C11 semantic identity and M01-M18",
+    "frozen I03 exact-query law",
+    "frozen I05 exact-bounded discovery law",
+    "frozen I04 structural-admission law",
+    "closed whole-machine architecture/provenance/replay law"
+  ],
+  "repository": "maidiu/rawlsing",
+  "required_token": "POST_R4_R03_EQUIVALENCE_ORACLE_RETURNED",
+  "runtime_modified": false,
+  "schema": "POST_R4_R03_EQUIVALENCE_ORACLE_RETURN@1",
+  "semantic_contract_pins": {
+    "pre553_c11_integrity.py": "bda39b1ccd22f27ae24476207a7f3f3e9025b698",
+    "pre553_c11_repository.py": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "pre553_discovery_exact.py": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+    "pre553_empirical_objects.py": "91974c52ce8c0acafa939be0d7d83f4a5c8085b7",
+    "pre553_empirical_query.py": "d81e4ebebaf314ad39b4c56452f9331811c7e3a0",
+    "pre553_structural_admission.py": "fe8f706afbb5739d026846952681081b2937e9a8"
+  },
+  "status": "COMPLETE__NON_DISPOSITIVE__INDEPENDENT_SAFETY_ORACLE_DESIGN",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/POST_R4_SIX_CELL_DESIGN/R03_EQUIVALENCE_ORACLE/"
+}
