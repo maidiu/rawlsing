@@ -1,0 +1,51 @@
+case_id,hostile_case,setup,required_outcome,ordinary_empirical_state_allowed,cache_or_old_root_fallback_allowed,c14_required
+HC01,ABA selector,"A/g41 active; stale publisher C expects A/g41; B/g42 activates; rollback A/g43; stale C attempts activation","stale CAS fails because expected generation 41 != 43",no,no,no
+HC02,Valid wrong semantic root,"root R is internally valid but semantic_release_id differs from serving-slot target","activation rejects before selector CAS",no,no,no
+HC03,Valid root wrong admission receipt,"root and semantic id valid but receipt belongs to different candidate/config/authority frontier","activation rejects receipt binding",no,no,no
+HC04,Stale selector replica,"reader sees old complete selector record from stale replica while authoritative store has newer generation","stale replica cannot authorize; reader must use linearizable selector read or fail",no,no,no
+HC05,Torn selector,"control record missing fields or fails transactional integrity","no root guessed; serving authorization fails closed",no,no,no
+HC06,Query crosses activation,"query pins A/g7; B/g8 activates before output","query final generation check fails and result is discarded/retried",no,no,no
+HC07,Mixed current alias,"query pins A but second member lookup follows mutable current alias now pointing B","forbidden by handle/root pin; no mixed member read",no,no,no
+HC08,Root manifest bit flip,"mutate canonical root bytes","physical_root_id mismatch; quarantine/reject root",no,no,no
+HC09,Member absent,"delete root-listed member","INCOMPLETE before query semantics; not no-match/empty",no,no,no
+HC10,Member truncation,"truncate member while keeping readable Parquet prefix","length/hash mismatch before semantic use",no,no,no
+HC11,Cross-release member swap,"replace A member with valid B member of similar schema","whole-member expected hash/record mismatch; quarantine",no,no,no
+HC12,Unreferenced extra file,"add plausible member-shaped file beside root","ignored as noncanonical; strict audit may flag garbage but result unchanged",yes_from_verified_root,no,no
+HC13,TOCTOU same path,"hash member then replace pathname with same-length bytes before backend opens","backend may consume only previously verified immutable generation; otherwise integration fails",no,no,no
+HC14,TOCTOU object version,"verify object generation G1 then unversioned read returns G2","version mismatch/unsafe adapter aborts query",no,no,no
+HC15,Prior verified marker,"verify release; exit; corrupt member; reopen with persisted verified=true","fresh member closure detects corruption; marker ignored",no,no,no
+HC16,Cache false negative exact lookup,"remove matching respondent from bitmap","canonical member scan still finds match; cache invalidated/ignored",yes_from_canonical,no,no
+HC17,Cache false negative I05,"remove unforeseen candidate from discovery cache","exact frontier/canonical fallback still evaluates candidate",yes_from_canonical,no,no
+HC18,Cache false positive,"insert nonexistent matching respondent/ref","canonical verification rejects candidate; cache invalidated",yes_only_if_real_canonical_match,no,no
+HC19,Cache stale root,"reuse cache from semantically similar but different physical root","key mismatch => miss/delete/rebuild",yes_from_canonical,no,no
+HC20,Cache stale authority,"same physical root but predicate/routing/measure authority dependency differs","dependency mismatch => miss/delete/rebuild",yes_from_canonical,no,no
+HC21,Cache corrupt canonical healthy,"flip cache bytes","ignore/delete cache; exact canonical result unchanged",yes_from_canonical,no,no
+HC22,Canonical corrupt cache healthy,"flip canonical member but leave cache pristine","release quarantined; no empirical result",no,no,no
+HC23,Negative incomplete search,"scan first root-listed member only while second can contain match","no negative emitted; closure expands to all possible refuting members",no,no,no
+HC24,Zero-support laundering,"delete/corrupt condition member so no respondent survives","integrity/incomplete failure; never ZERO_SUPPORT",no,no,no
+HC25,VALID_EMPTY laundering,"drop target member entirely","integrity/incomplete failure; never VALID_EMPTY",no,no,no
+HC26,Routing member corruption,"routing bytes corrupt while incidence intact","query aborts/quarantines; no inapplicable/empty inference",no,no,no
+HC27,Weight member corruption,"weights corrupt while raw incidence intact","query aborts/quarantines; no unweighted/default estimate substitution",no,no,no
+HC28,Sparse exception missing,"default member valid; exception member deleted","INCOMPLETE due root inventory/coverage; no default-only answer",no,no,no
+HC29,Cold provenance corruption,"hot incidence valid; cold authority/topology corrupt","any query whose interpretation depends on cold member fails; detected corruption quarantines whole root",no,no,no
+HC30,Crash before seal,"partial staging tree exists","staging remains non-serving; old active record unchanged",yes_from_old_active_only,no,no
+HC31,Crash after seal before promote,"complete staged candidate exists","candidate non-serving; old active unchanged",yes_from_old_active_only,no,no
+HC32,Crash after promote before CAS,"complete content-addressed candidate exists inactive","root presence/mtime cannot authorize; old active unchanged",yes_from_old_active_only,no,no
+HC33,Concurrent publishers,"C and D both prepared from same expected active generation","one exact CAS wins; loser inactive",yes_from_one_winner_only,no,no
+HC34,Selector CAS failure,"candidate fully verified but CAS precondition fails","candidate remains inactive; no retry against newer root without new authorization transaction",yes_from_current_active_only,no,no
+HC35,Detected canonical corruption after activation,"member hash mismatch on active root","entire physical root becomes QUARANTINED; service emits no evidence until explicit recovery",no,no,no
+HC36,Automatic old-root fallback,"active new root corrupt; old root still transiently present","fallback forbidden; explicit rollback requires fresh verification + new generation",no,no,no
+HC37,Migration steady-state duplicate,"old root remains after readers drain and migration reported successful","court fails one-copy settlement; old full root must be deleted",yes_from_new_active_only,no,no
+HC38,Rollback during transient drain,"operator requests rollback while old bytes still present","fresh verify old root + semantic/admission validity + ABA-safe new-generation CAS; new root then drains/deletes",yes_after_explicit_activation,no,no
+HC39,Rollback after settlement,"old root has been deleted","rebuild/restore from governed inputs; full verify/oracle/admission; new activation generation",no_until_rebuilt,no,no
+HC40,Semantic deterministic replay,"same governed inputs in new process/temp/worker layout","same semantic_release_id logical digests and observable C11/I03/I05/I04 results",yes_after_verification,no,no
+HC41,Physical drift non-byte profile,"same semantic inputs yield byte-different physical root","difference visible; new root cannot substitute without independent equivalence/admission",no_until_admitted,no,no
+HC42,Physical drift byte profile,"profile explicitly BYTE_REPRODUCIBLE but physical_root differs","determinism court fails",no,no,no
+HC43,Whole-member corruption without chunks,"flip one byte in a canonical member","whole-member hash detects before that member contributes; root quarantined after detection",no,no,no
+HC44,Member-local positive query,"corruption exists only in member proven outside query closure and is not yet detected","unrelated query may proceed only if root-bound coverage proves irrelevance; corrupt member contributes nothing; once detected root quarantines",yes_if_exact_closure,no,no
+HC45,Merklized hit-only proof,"selected hit chunk has valid Merkle proof while another unverified chunk could alter denominator/absence","proof is insufficient; verify complete governed closure or emit nothing",no,no,merkle_does_not_solve
+HC46,Flat chunks performance probe,"whole member is measured verification bottleneck; smaller members create file-count failure","flat root-bound chunk hashes may enter conditional prototype if immutable range reads and exact closure pass",conditional,no,conditional_flat_first
+HC47,Merkle necessity probe,"flat chunk inventory is itself measured remote/proof bottleneck after chunk need already admitted","Merkle may enter only if it materially solves this second named problem and full audit remains",conditional,no,conditional_only_then
+HC48,Format checksum passes but member hash fails,"Parquet internal checksum does not detect/cover whole artifact or has different granularity","canonical member hash failure wins; no empirical output",no,no,no
+HC49,Member hash passes but semantic oracle fails,"properly hashed compiler output has wrong topology/missingness/authority","candidate rejected as semantically non-equivalent; cryptographic integrity cannot self-certify truth",no,no,no
+HC50,Selector points to root with valid bytes but missing current admission,"root existed from prior shadow court","active authorization rejects; no latest/newest fallback",no,no,no

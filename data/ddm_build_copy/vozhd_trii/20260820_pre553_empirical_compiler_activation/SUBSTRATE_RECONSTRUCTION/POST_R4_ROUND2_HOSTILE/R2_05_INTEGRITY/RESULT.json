@@ -1,0 +1,114 @@
+{
+  "cell": "R2-05_INTEGRITY_PUBLICATION_REPLAY_CACHE_HOSTILE_COURT",
+  "status": "AUTHORIZED__ROUND2_HOSTILE__FAIL_CLOSED__NO_RUNTIME_MUTATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-postr4-r2-r05-integrity",
+  "starting_head": "d612b24cce9d53bdff90fc2d7ac2604d34da02ca",
+  "round2_disposition": "ROUND2_PASS_WITH_REQUIRED_CORRECTIONS__P0_REPAIRABLE",
+  "required_token": "POST_R4_R2_R05_INTEGRITY_RETURNED",
+  "raw_source_probes": false,
+  "round1_evidence": {
+    "R01": "f3e1d198ca5b680adfe3330a7460d0b174f395e6",
+    "R02": "6447d57a9818b5a427ad0367858f2030e127f8d8",
+    "R03": "220e017f34b2741fce80b7a6850a1679ea0ce0fe",
+    "R04": "bfc6b19c3bbdd43f1a04184d02515dc38dd82712",
+    "R05": "b2c74427b568ea9a9447fc2631e002830d700919",
+    "R06": "d573389eaf8df63c124d1439933bbe3cef4dda23"
+  },
+  "minimum_integrity_stack": [
+    "canonical root manifest and physical_root_id",
+    "semantic_release_id and deterministic logical replay receipt",
+    "streamed root-bound exhaustive member inventory",
+    "whole-member byte hashes, lengths, logical digests, and coverage descriptors",
+    "member-level exact verification closure",
+    "immutable consume-after-verify generation/handle contract",
+    "unique staging, durable content-address promotion, sealed reopen verification",
+    "linearizable ABA-safe active authorization record",
+    "semantic/admission-bound selector tuple",
+    "root-pinned query token with final generation validation",
+    "global quarantine after detected canonical corruption",
+    "cache deletion/rebuild/canonical-bypass law",
+    "transient one-copy migration settlement and deterministic rebuild rollback",
+    "full streaming audit"
+  ],
+  "merkle_verdict": {
+    "p0_core": "REJECT",
+    "reason": "No accepted named correctness, replay, publication, repair, or local-workstation reopen requirement needs Merkle beyond bounded whole-member verification.",
+    "first_escalation": "Flat root-bound chunk hashes only after measured whole-member verification granularity failure not solved by smaller canonical members/shards.",
+    "second_escalation": "Merkle only after an additional measured need for logarithmic inclusion/proof distribution or flat chunk inventory itself is insufficient."
+  },
+  "destruction_paths_found": [
+    {
+      "id": "D01",
+      "name": "active-selector ABA",
+      "repair": "CAS complete selector token including never-reused activation_generation, not root ID alone"
+    },
+    {
+      "id": "D02",
+      "name": "valid-but-wrong semantic root activation",
+      "repair": "bind serving slot, semantic_release_id, physical_root_id, and accepted admission/equivalence receipt"
+    },
+    {
+      "id": "D03",
+      "name": "stale selector replica resurrects old root",
+      "repair": "linearizable non-stale trusted selector store; no authorization cache fallback"
+    },
+    {
+      "id": "D04",
+      "name": "query emits stale or mixed-root result across concurrent activation",
+      "repair": "pin root/generation for query and revalidate generation before empirical emission"
+    },
+    {
+      "id": "D05",
+      "name": "TOCTOU mutable path reopen",
+      "repair": "verify and interpret the same immutable generation/handle or fail the backend path"
+    },
+    {
+      "id": "D06",
+      "name": "unrooted member-selection metadata manufactures absence",
+      "repair": "root-bound exhaustive member coverage descriptors; broaden verified scan when exclusion is unproved"
+    },
+    {
+      "id": "D07",
+      "name": "nonauthoritative cache false negative suppresses canonical truth",
+      "repair": "cache nonmembership cannot prune canonical search or prove absence"
+    },
+    {
+      "id": "D08",
+      "name": "standing rollback copy becomes hidden second canonical database",
+      "repair": "old/new coexist only transiently; delete displaced full root after drain; settled rollback rebuilds"
+    },
+    {
+      "id": "D09",
+      "name": "persisted verification marker outlives byte integrity",
+      "repair": "fresh process/session re-establishes cryptographic member closure; persisted booleans are hints only"
+    }
+  ],
+  "required_synthesis_changes": [
+    "ABA-safe generation-stamped active selector",
+    "semantic/admission-bound active authorization",
+    "linearizable selector reads and CAS",
+    "one-root query pin plus final generation validation",
+    "immutable consume-after-verify contract",
+    "mandatory root-bound exhaustive member coverage",
+    "cache miss/nonmembership forbidden as evidence",
+    "strict transient-only duplicate migration with old-root deletion before settlement",
+    "rollback after settlement by deterministic rebuild/restore plus fresh admission",
+    "C14 Merkle removed from P0 core",
+    "global quarantine and full streaming audit retained"
+  ],
+  "forbidden_failure_laundering": [
+    "INTEGRITY_FAILURE -> VALID_EMPTY",
+    "INTEGRITY_FAILURE -> no-match",
+    "INTEGRITY_FAILURE -> zero-support",
+    "INCOMPLETE -> ordinary negative fact",
+    "canonical corruption -> cache fallback",
+    "canonical corruption -> old-root automatic fallback",
+    "stale selector -> implicit current authorization"
+  ],
+  "one_copy_resolution": {
+    "during_migration": "old active root plus new non-serving shadow/staging copy may coexist only as transient publication peak",
+    "after_activation": "new root is sole serving authority; old root drains and is deleted before migration is settled",
+    "after_settlement": "no complete rollback C11 copy retained; rollback requires deterministic rebuild/restore, fresh verification/admission, and a new activation generation"
+  }
+}
