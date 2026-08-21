@@ -1,0 +1,21 @@
+fd_id,determinant,dependent,scope,status,authority_evidence,counterexample_analysis,fail_closed_behavior
+FD01,release_id,"source_snapshot_id,source_sha,decoder_receipt,row_count,var_count,traversal_descriptor",SEALED_CANONICAL_RELEASE,HOLDS_IF_SEALED,09/10; SR03,Release member drift,Fail release validation/open
+FD02,release_id + source_variable_ordinal,"source_variable_name,native_type,format,variable_label,missing_declarations,value_label_dictionary,measure/display,explicit variable topology",VARIABLE_METADATA_SCOPE,HOLDS_IF_DECODER_METADATA_FIXED,09/10,Per-event metadata or decoder omission,"Store direct/exception; revoke FD"
+FD03,release_id + source_row_ordinal,respondent replay identity,ALL_RELEASES,HOLDS,09 constitution,Native ID disagreement irrelevant,"Use row ordinal; no native-ID substitution"
+FD04,release_id + row_ordinal + variable_ordinal,event incidence identity/raw value/physical state,SOURCE_CELL,KEY_NOT_COMPACTION,09/10,None; this is event frontier,Retain event payload/state
+FD05,release_id + variable_ordinal + typed_raw_key,selected_raw_label,LABEL_DICTIONARY_PRESENT,CONDITIONAL,10 + typed-key contract,Ambiguous/duplicate typed key or absent dictionary,Store label direct
+FD06,release_id + variable_ordinal + raw_value,physical_missing_class,UNIVERSAL,DOES_NOT_HOLD,09/12; SR09,"LiTS ordinary NA/DK; SAV declarations; DTA native missings",Keep physical state direct
+FD07,release_id + variable_ordinal,physical_missing_class default,UNIVERSAL,DOES_NOT_HOLD,09/12; 52 C07,Rows can mix observed/system/user missing,No default from constancy
+FD08,source label text,physical/semantic missingness,UNIVERSAL,DOES_NOT_HOLD,09/12; EVS/LiTS recon,Missing-looking labels can be ordinary observed codes,No inference
+FD09,native respondent ID candidate,source_row_ordinal,CROSS_RELEASE_UNIVERSAL,DOES_NOT_HOLD,09; SR09,Duplicates and cross-wave collisions,Keep row ordinal
+FD10,raw response vector equality,value_label_dictionary identity,CROSS_RELEASE,DOES_NOT_HOLD,SR09 cross-corpus,Conflicting dictionaries under same-looking vectors/codes,Keep release-local dict
+FD11,casefold(source_variable_name),source variable identity,UNIVERSAL,DOES_NOT_HOLD,GSS SR09,spanking vs SPANKING,Use ordinal + exact case
+FD12,release_id + row_ordinal + variable_ordinal + sealed V,logical locator L,RECTANGULAR_COMPLETE_TRAVERSAL,CONDITIONAL_HOLDS,09/10; C06,Filter/reorder/nonrectangular/hidden variable,Explicit coordinates/map
+FD13,release_id + logical locator L + sealed V,row_ordinal + variable_ordinal,RECTANGULAR_COMPLETE_TRAVERSAL,CONDITIONAL_HOLDS,C06,Overflow or wrong V/traversal,Reject geometry/open
+FD14,Parquet/file row position,logical/source event identity,UNIVERSAL,DOES_NOT_HOLD,C19,Repartition/rewrite,Never authority
+FD15,release_id + variable_ordinal,fixed MR/repeated/ranked membership,EXPLICIT_NATIVE_METADATA,CONDITIONAL_HOLDS,09/10; SR09,Overlap/reentry/event-varying occurrence,"Preserve all metadata; event exception if needed"
+FD16,first observed event value,canonical question default,UNIVERSAL,DOES_NOT_HOLD,52/53,Late rare exception,Authority determinant required
+FD17,release_id + variable_ordinal native type descriptor,physical raw-value lane/schema,TYPE_SELECTION,CONDITIONAL_HOLDS,C05/C12,Mixed/unsupported type,Tagged mixed/escape or fail
+FD18,observed min/max/frequency,integer lane width,UNIVERSAL,FORBIDDEN_DETERMINANT,C12/anti-seduction law,Future legal value outside sample,Use native declared width/cardinality only
+FD19,numeric display format,semantic date/time value,UNIVERSAL,DOES_NOT_HOLD,09/10; C05,Format is presentation/native metadata not semantic authority,Keep raw numeric + format
+FD20,hot member alone,complete canonical replay/provenance,C13_SPLIT,DOES_NOT_HOLD,C13; whole-machine replay,Cold authority absent,Load bound cold member or fail

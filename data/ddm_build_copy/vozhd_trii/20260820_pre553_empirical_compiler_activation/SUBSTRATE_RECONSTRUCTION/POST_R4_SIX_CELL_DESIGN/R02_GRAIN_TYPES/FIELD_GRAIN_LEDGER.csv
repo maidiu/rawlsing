@@ -1,0 +1,14 @@
+grain_id,field_or_material,proposed_grain,exact_determinant,authority_evidence,counterexample_analysis,exact_reconstruction_law,fail_closed_behavior,candidate_links
+G01,source identity/hash/decoder receipt,release,release_id,Source and decoder authority,Release member mismatch,Reattach from sealed release manifest,Fail open/build,"C03,C13"
+G02,row replay identity,respondent,release_id + source_row_ordinal,09 source-native constitution,Native ID noninjective/cross-wave collision,Respondent dimension retains row ordinal,Fail if row coordinate absent,"C03,C06"
+G03,variable identity/order/type/format/label,question,release_id + source_variable_ordinal,09/10; SR03 manifests,GSS case collision; type/order drift across releases,Release-local question dimension,Fail on mismatch,"C03,C12"
+G04,missing declarations,question,release_id + source_variable_ordinal,09/10,EVS declaration drift; DTA/SAV different machinery,Release-local exact declaration,No inferred declaration,"C03,C07"
+G05,value-label dictionary,question,release_id + source_variable_ordinal,09/10; SR09 conflicts,same raw code/vector different labels,Release-local exact dictionary,No sharing without identity proof,"C03,C07"
+G06,selected raw label,event-derived conditional,release_id + var + typed_raw_key,10 + exact typed-key law,untyped equality/ambiguous dictionary,Store explicit selected label,Fail dependency or direct-store,C07
+G07,raw value/no-payload token,event,release+row+var incidence,09/10,all event variability and native types,Direct exact typed lane,Fail on unrepresentable value,"C05,C12"
+G08,physical missing class,event,release+row+var incidence,09/10/12,LiTS ordinary missing-looking values; mixed states,Direct compact state code/tag,No default unless later proof,C07
+G09,fixed native topology membership/order,question,release+var metadata,09/10; SR09,"overlapping MR, ordered slots",Store all memberships/order once,Exception/direct if not fixed,"C03,C07"
+G10,event-specific occurrence/topology,event,event incidence,09/10,rare/event-varying slot,Direct/sparse exact exception,Fail if exception lane absent,C07
+G11,logical event locator,release law,release+row+var+sealed V,C06,reorder/filter/nonrectangular,Geometry or explicit mapping,No Parquet-position substitution,"C06,C19"
+G12,routing/risk-set/authority/dependency refs,existing logical authority grain,only existing accepted authority,whole-machine/C11,missingness-pattern inference temptation,Keep direct unless separately proved,Reject omission,"C03,C07"
+G13,hot/cold member placement,release physical organization,sealed canonical release root,C13/whole-machine replay,cold absent/stale,Bind both as canonical members,Fail reconstruction/open,C13
