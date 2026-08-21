@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import tempfile
 from typing import Any, Mapping
@@ -239,6 +240,12 @@ class ParquetC11Carrier:
         return [dict(row) for row in pq.read_table(directory / f"{relation}.parquet").to_pylist() if "_empty" not in row]
 
     def reopen(self, source_sha256: str, release_id: str, semantic_hash: str) -> C11LogicalRelease:
+        if not isinstance(source_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", source_sha256):
+            raise ParquetCarrierError("exact source selector must be lowercase 64-hex SHA-256")
+        if not isinstance(semantic_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", semantic_hash):
+            raise ParquetCarrierError("semantic selector must be lowercase 64-hex SHA-256")
+        if not isinstance(release_id, str) or not release_id or release_id in {".", ".."} or any(char in release_id for char in "/\\"):
+            raise ParquetCarrierError("release selector is malformed or path-traversing")
         selector = "|".join((source_sha256, release_id, semantic_hash)).lower()
         if any(token in selector for token in ("latest", "fuzzy", "nearest", "default")):
             raise ParquetCarrierError("exact content-addressed release selectors are required")
@@ -286,6 +293,16 @@ class ParquetC11Carrier:
             )
         except Exception as exc:
             raise ParquetCarrierError("canonical relations cannot reconstruct sealed C11 release") from exc
+        if (release.source_artifact_ref.content_hash != source_sha256
+                or release.source_artifact_ref.content_hash != manifest["source_artifact_ref"]["content_hash"]
+                or release.release_id != release_id
+                or manifest["release_ref"].get("object_id") != release_id
+                or release.semantic_release_hash != semantic_hash
+                or manifest["release_ref"].get("content_hash") != semantic_hash):
+            raise ParquetCarrierError("supplied selectors do not equal reconstructed/manifest identity")
+        canonical_directory = self.root / "releases" / release.source_artifact_ref.content_hash / release.release_id / release.semantic_release_hash
+        if canonical_directory.resolve() != directory.resolve():
+            raise ParquetCarrierError("opened path is not the reconstructed content-addressed path")
         if release.release_ref.as_dict() != manifest["release_ref"] or release.source_artifact_ref.as_dict() != manifest["source_artifact_ref"]:
             raise ParquetCarrierError("canonical relation semantics conflict with manifest identity")
         return release

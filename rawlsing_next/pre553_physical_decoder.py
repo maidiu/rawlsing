@@ -67,6 +67,9 @@ class PhysicalSourceIncidence:
     file_metadata: Mapping[str, Any]
     _frame: Any = None
     _variables_by_name: Mapping[str, PhysicalVariable] = None
+    _source_path: str | None = None
+    _reader_kind: str | None = None
+    _encoding: str | None = None
 
     def iter_batches(self, batch_size: int = 10_000) -> Iterator[tuple[PhysicalCell, ...]]:
         """Yield bounded cell batches with stable source row ordinals.
@@ -76,22 +79,39 @@ class PhysicalSourceIncidence:
         """
         if not isinstance(batch_size, int) or isinstance(batch_size, bool) or batch_size < 1:
             raise ValueError("batch_size must be a positive integer")
-        if self._frame is None:
-            return
-        batch: list[PhysicalCell] = []
         variables = self.variables
         declarations = {v.name: v.missing_declarations for v in variables}
-        for row_ordinal, row in enumerate(self._frame.itertuples(index=False, name=None), 1):
-            for variable, value in zip(variables, row):
-                raw = _jsonable(value)
-                state, declaration = classify_physical_value(raw, declarations[variable.name])
-                batch.append(PhysicalCell(row_ordinal, variable.ordinal, variable.name, raw, state,
-                                          declaration, variable.value_labels.get(str(raw))))
-                if len(batch) >= batch_size:
-                    yield tuple(batch)
-                    batch.clear()
-        if batch:
-            yield tuple(batch)
+        rows_per_chunk = max(1, batch_size // max(1, len(variables)))
+
+        def emit(frame: Any, row_offset: int) -> Iterator[tuple[PhysicalCell, ...]]:
+            batch: list[PhysicalCell] = []
+            for local_row, row in enumerate(frame.itertuples(index=False, name=None), 1):
+                for variable, value in zip(variables, row):
+                    raw = _jsonable(value)
+                    state, declaration = classify_physical_value(raw, declarations[variable.name])
+                    batch.append(PhysicalCell(row_offset + local_row, variable.ordinal, variable.name, raw, state,
+                                              declaration, variable.value_labels.get(str(raw))))
+                    if len(batch) >= batch_size:
+                        yield tuple(batch)
+                        batch.clear()
+            if batch:
+                yield tuple(batch)
+
+        if self._frame is not None:
+            yield from emit(self._frame, 0)
+            return
+        if self._source_path is None or self._reader_kind is None:
+            return
+        import pyreadstat
+        reader = pyreadstat.read_sav if self._reader_kind == "SAV" else pyreadstat.read_dta
+        row_offset = 0
+        chunks = pyreadstat.read_file_in_chunks(
+            reader, self._source_path, chunksize=rows_per_chunk, encoding=self._encoding,
+            apply_value_formats=False, user_missing=True,
+        )
+        for frame, _metadata in chunks:
+            yield from emit(frame, row_offset)
+            row_offset += len(frame)
 
     def iter_cells(self, batch_size: int = 10_000) -> Iterator[PhysicalCell]:
         for batch in self.iter_batches(batch_size):
@@ -142,7 +162,7 @@ def _compatibility_config(source_sha: str, encoding: str | None) -> dict[str, An
     return {"encoding": encoding, "authority_status": COMPATIBILITY_ONLY}
 
 
-def _missing_declarations(metadata: Any, name: str) -> tuple[Mapping[str, Any], ...]:
+def _missing_declarations(metadata: Any, name: str, source_format: str) -> tuple[Mapping[str, Any], ...]:
     ranges = getattr(metadata, "missing_ranges", {}) or {}
     user = getattr(metadata, "missing_user_values", {}) or {}
     result: list[Mapping[str, Any]] = []
@@ -153,8 +173,10 @@ def _missing_declarations(metadata: Any, name: str) -> tuple[Mapping[str, Any], 
             result.append({"kind": "range", "lo": _jsonable(item.get("lo")), "hi": _jsonable(item.get("hi"))})
     for value in user.get(name, ()):
         token = _jsonable(value)
-        if isinstance(token, str) and len(token) == 2 and token[0] == "." and token[1].lower() in "abcdefghijklmnopqrstuvwxyz":
-            result.append({"kind": "extended", "token": token.lower()})
+        if source_format == "DTA" and isinstance(token, str) and len(token) == 1 and token.lower() in "abcdefghijklmnopqrstuvwxyz":
+            result.append({"kind": "extended", "reader_token": token, "stata_token": "." + token.lower()})
+        elif source_format == "DTA" and isinstance(token, str) and len(token) == 2 and token[0] == "." and token[1].lower() in "abcdefghijklmnopqrstuvwxyz":
+            result.append({"kind": "extended", "reader_token": token[1].lower(), "stata_token": token.lower()})
         else:
             result.append({"kind": "discrete", "value": token})
     return tuple(result)
@@ -164,7 +186,7 @@ def classify_physical_value(value: Any, declarations: tuple[Mapping[str, Any], .
     if value is None or (isinstance(value, float) and math.isnan(value)):
         return PhysicalMissingState.SYSTEM_MISSING, None
     for declaration in declarations:
-        if declaration["kind"] == "extended" and value == declaration.get("token"):
+        if declaration["kind"] == "extended" and value in (declaration.get("reader_token"), declaration.get("stata_token"), declaration.get("token")):
             return PhysicalMissingState.FORMAT_EXTENDED_MISSING, declaration
         if declaration["kind"] == "discrete" and value == declaration.get("value"):
             return PhysicalMissingState.FORMAT_USER_MISSING_VALUE, declaration
@@ -182,13 +204,18 @@ def _decode(path: str | Path, *, expected_format: str, encoding: str | None = No
     source_sha = _sha(source)
     compatibility = _compatibility_config(source_sha, encoding)
     reader = pyreadstat.read_sav if expected_format == "sav" else pyreadstat.read_dta
-    frame, metadata = reader(str(source), apply_value_formats=False, user_missing=True,
-                             encoding=encoding)
+    _metadata_frame, metadata = reader(str(source), metadataonly=True, apply_value_formats=False,
+                                       user_missing=True, encoding=encoding)
+    source_format = expected_format.upper()
+    compatibility_full_read = encoding is not None
+    frame = None
+    if compatibility_full_read:
+        frame, metadata = reader(str(source), apply_value_formats=False, user_missing=True, encoding=encoding)
     names = list(metadata.column_names)
     variables: list[PhysicalVariable] = []
     declarations: dict[str, tuple[Mapping[str, Any], ...]] = {}
     for ordinal, name in enumerate(names, 1):
-        decl = _missing_declarations(metadata, name)
+        decl = _missing_declarations(metadata, name, source_format)
         declarations[name] = decl
         labels = (getattr(metadata, "variable_value_labels", {}) or {}).get(name, {}) or {}
         display = {
@@ -206,11 +233,11 @@ def _decode(path: str | Path, *, expected_format: str, encoding: str | None = No
         ))
     file_meta = {"file_encoding": _jsonable(getattr(metadata, "file_encoding", None)),
                  "file_format": _jsonable(getattr(metadata, "file_format", expected_format)),
-                 "number_columns": len(names), "number_rows": len(frame)}
-    return PhysicalSourceIncidence(source_sha, expected_format.upper(), len(frame), tuple(variables),
+                 "number_columns": len(names), "number_rows": int(getattr(metadata, "number_rows", 0))}
+    return PhysicalSourceIncidence(source_sha, source_format, int(getattr(metadata, "number_rows", 0)), tuple(variables),
                                    {"reader": "pyreadstat", "reader_version": getattr(pyreadstat, "__version__", None),
                                     "user_missing": True, "apply_value_formats": False, **compatibility}, file_meta,
-                                   _frame=frame)
+                                   _frame=frame, _source_path=str(source), _reader_kind=source_format, _encoding=encoding)
 
 
 def decode_sav(path: str | Path, *, encoding: str | None = None) -> PhysicalSourceIncidence:

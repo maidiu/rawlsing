@@ -1,5 +1,6 @@
 import hashlib
 import json
+from dataclasses import replace
 from pathlib import Path
 
 import pandas as pd
@@ -7,7 +8,7 @@ import pyreadstat
 import pytest
 
 from rawlsing_next.pre553_c11_ingest import validate_c11_source_release
-from rawlsing_next.pre553_duckdb_direct import query_canonical_release
+from rawlsing_next.pre553_duckdb_direct import open_direct_session, query_canonical_release
 from rawlsing_next.pre553_parquet_carrier import ParquetC11Carrier, ParquetCarrierError, _logical_digest
 from rawlsing_next.pre553_physical_c11_bridge import (
     PhysicalC11BridgeError, PhysicalSourceAuthorityProjection, build_validated_c11_release,
@@ -22,6 +23,7 @@ from rawlsing_next.pre553_physical_decoder import (
     decode_dta,
     decode_sav,
 )
+from rawlsing_next.pre553_empirical_objects import AuthorityRef, canonical_json
 from rawlsing_next.tests.test_pre553_c11_repository_ingest import _candidate
 
 
@@ -164,12 +166,112 @@ def test_physical_to_i02_bridge_requires_explicit_authority(tmp_path: Path):
         build_validated_c11_release(incidence, None)
 
     candidate = _candidate("bridge")
+    candidate = _candidate("bridge")
+    incidence = replace(incidence, source_sha256=candidate.source_release_manifest.source_artifact_content_hash)
     authority = PhysicalSourceAuthorityProjection(
-        required_authority_refs=("EXPLICIT_SOURCE_AUTHORITY",),
+        required_authority_refs=(candidate.authority_snapshots[0].authority_ref,),
         candidate_builder=lambda source, cells, projection: candidate,
     )
     release = build_validated_c11_release(incidence, authority, batch_size=1)
     assert release.release_ref == validate_c11_source_release(candidate).release_ref
+
+
+def test_bridge_rejects_wrong_source_and_missing_or_nonexact_authority(tmp_path: Path):
+    path = tmp_path / "bridge-r2.sav"
+    pyreadstat.write_sav(pd.DataFrame({"a": [1]}), str(path))
+    incidence = decode_sav(path)
+    candidate = _candidate("bridge-r2")
+    incidence = replace(incidence, source_sha256=candidate.source_release_manifest.source_artifact_content_hash)
+    with pytest.raises(PhysicalC11BridgeError, match="exact AuthorityRef"):
+        build_validated_c11_release(incidence, PhysicalSourceAuthorityProjection(
+            required_authority_refs=("not-a-ref",), candidate_builder=lambda *_: candidate))
+    with pytest.raises(PhysicalC11BridgeError, match="source artifact SHA"):
+        build_validated_c11_release(incidence, PhysicalSourceAuthorityProjection(
+            required_authority_refs=(candidate.authority_snapshots[0].authority_ref,),
+            candidate_builder=lambda *_: replace(candidate, source_release_manifest=replace(
+                candidate.source_release_manifest, source_artifact_content_hash="0" * 64))))
+    other = AuthorityRef("AUTHORITY_NOT_PACKAGED", "1.0.0", "0" * 64)
+    with pytest.raises(PhysicalC11BridgeError, match="absent"):
+        build_validated_c11_release(incidence, PhysicalSourceAuthorityProjection(
+            required_authority_refs=(other,), candidate_builder=lambda *_: candidate))
+
+
+def test_direct_session_skips_full_reopen_and_supports_multiple_queries(tmp_path: Path, monkeypatch):
+    release = validate_c11_source_release(_candidate("direct-session"))
+    carrier = ParquetC11Carrier(tmp_path)
+    carrier.persist(release)
+    monkeypatch.setattr(carrier, "reopen", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("full reopen called")))
+    monkeypatch.setattr(ParquetC11Carrier, "_read_rows", lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("full relation read called")))
+    with open_direct_session(carrier, source_sha256=release.source_artifact_ref.content_hash,
+                             release_id=release.release_id, semantic_hash=release.semantic_release_hash) as session:
+        assert session.release_ref == release.release_ref.as_dict()
+        assert session.query("select count(*) from respondent_events") == [(2,)]
+        assert session.query("select count(*) from routing_eligibility") == [(1,)]
+
+
+def test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read(tmp_path: Path, monkeypatch):
+    import pyreadstat
+    import rawlsing_next.pre553_physical_decoder as decoder
+    path = tmp_path / "chunk.sav"
+    pyreadstat.write_sav(pd.DataFrame({"a": [1, 2, 3]}), str(path))
+    original_chunks = pyreadstat.read_file_in_chunks
+    chunk_calls = []
+    monkeypatch.setattr(pyreadstat, "read_file_in_chunks", lambda *args, **kwargs: (chunk_calls.append(kwargs) or original_chunks(*args, **kwargs)))
+    decoded = decode_sav(path)
+    list(decoded.iter_cells(2))
+    assert chunk_calls and chunk_calls[0]["chunksize"] == 2
+
+    source_sha = decoded.source_sha256
+    monkeypatch.setitem(decoder.COMPATIBILITY_ALLOWLIST, source_sha, "latin1")
+    full_calls = []
+    original_read = pyreadstat.read_sav
+    def tracked_read(*args, **kwargs):
+        full_calls.append(kwargs.get("metadataonly", False))
+        return original_read(*args, **kwargs)
+    monkeypatch.setattr(pyreadstat, "read_sav", tracked_read)
+    compat = decode_sav(path, encoding="latin1")
+    list(compat.iter_cells(2))
+    assert full_calls[:2] == [True, False]
+
+
+def test_real_writer_dta_extended_missing_fixture_or_typed_dependency_limitation(tmp_path: Path):
+    path = tmp_path / "extended.dta"
+    pyreadstat.write_dta(pd.DataFrame({"answer": [1, float("nan"), 3]}), str(path), missing_user_values={"answer": ["a"]})
+    decoded = decode_dta(path)
+    declarations = decoded.variables[0].missing_declarations
+    if not any(item.get("kind") == "extended" for item in declarations):
+        pytest.skip("installed pyreadstat writer/readback does not expose missing_user_values in metadata")
+    cell = [cell for cell in decoded.iter_cells() if cell.variable_name == "answer"][1]
+    assert cell.missing_state is PhysicalMissingState.FORMAT_EXTENDED_MISSING
+    assert cell.source_missing_declaration["reader_token"] == "a"
+    assert cell.source_missing_declaration["stata_token"] == ".a"
+
+
+def test_self_consistent_different_identity_under_old_path_is_rejected(tmp_path: Path):
+    release = validate_c11_source_release(_candidate("selector-r2"))
+    carrier = ParquetC11Carrier(tmp_path)
+    directory = carrier.persist(release)
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+    identity = pq.read_table(directory / "release_identity.parquet").to_pylist()
+    new_id = "REL-REWRITTEN"
+    new_hash = hashlib.sha256(b"rewritten-release").hexdigest()
+    ref = json.loads(identity[0]["release_ref_json"])
+    ref["object_id"], ref["content_hash"] = new_id, new_hash
+    identity[0]["release_id"] = new_id
+    identity[0]["semantic_release_hash"] = new_hash
+    identity[0]["release_ref_json"] = json.dumps(ref, sort_keys=True, separators=(",", ":"))
+    pq.write_table(pa.Table.from_pylist(identity), directory / "release_identity.parquet", compression="zstd", compression_level=3)
+    manifest = json.loads((directory / "manifest.json").read_text())
+    manifest["members"]["release_identity.parquet"] = hashlib.sha256((directory / "release_identity.parquet").read_bytes()).hexdigest()
+    manifest["relation_digests"]["release_identity"] = _logical_digest(identity)
+    unsigned = {key: manifest[key] for key in ("schema_version", "release_ref", "source_artifact_ref", "members", "relation_digests")}
+    manifest["release_ref"] = ref
+    unsigned["release_ref"] = ref
+    manifest["manifest_hash"] = hashlib.sha256(canonical_json(unsigned).encode()).hexdigest()
+    (directory / "manifest.json").write_text(canonical_json(manifest) + "\n")
+    with pytest.raises(ParquetCarrierError):
+        carrier.reopen(release.source_artifact_ref.content_hash, release.release_id, release.semantic_release_hash)
 
 
 def test_relation_semantic_mutation_fails_even_when_manifest_is_rewritten(tmp_path: Path):
