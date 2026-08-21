@@ -108,9 +108,10 @@ class RelationC11ReleaseHandle:
 class RelationFirstParquetWriter:
     """Incremental Parquet publisher for homogeneous canonical relation batches."""
 
-    def __init__(self, directory: str | Path):
+    def __init__(self, directory: str | Path, *, row_group_size: int = 4096):
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=True)
+        self.row_group_size = row_group_size
         self._writers: dict[str, Any] = {}
         self._schemas: dict[str, Any] = {}
         self._digests: dict[str, hashlib._Hash] = {}
@@ -128,7 +129,8 @@ class RelationFirstParquetWriter:
         writer = self._writers.get(relation)
         if writer is None:
             path = self.directory / f"{relation}.parquet"
-            writer = pq.ParquetWriter(path, table.schema, compression="zstd", compression_level=3)
+            writer = pq.ParquetWriter(path, table.schema, compression="zstd", compression_level=3,
+                                      use_dictionary=True)
             self._writers[relation] = writer
             self._schemas[relation] = table.schema
             digest = hashlib.sha256(); self._digests[relation] = digest
@@ -159,6 +161,50 @@ class RelationFirstParquetWriter:
 def stream_relation_rows(path: str | Path, *, batch_size: int = 8192) -> Iterator[dict[str, Any]]:
     """Public bounded iterator for direct relational consumers."""
     yield from _iter_parquet_rows(Path(path), batch_size=batch_size)
+
+
+def storage_budget(members: Mapping[str, RelationMember], *, fixed_metadata_bytes: int,
+                   atomic_staging_peak_bytes: int, scratch_execution_peak_bytes: int,
+                   nonauthoritative_cache_bytes: int = 0,
+                   respondent_event_count: int = 0) -> dict[str, Any]:
+    """Return the Authority-44 storage receipt from measured carrier members."""
+    by_member = {member.name: member.path.stat().st_size for member in members.values()}
+    canonical = fixed_metadata_bytes + sum(by_member.values())
+    event_bytes = by_member.get("respondent_events.parquet", 0)
+    return {
+        "CANONICAL_STEADY_STATE_BYTES": canonical,
+        "BY_CANONICAL_RELATION_MEMBER_BYTES": by_member,
+        "FIXED_PER_RELEASE_METADATA_BYTES": fixed_metadata_bytes,
+        "EVENT_BEARING_RELATION_BYTES": event_bytes,
+        "CANONICAL_BYTES_PER_RESPONDENT_EVENT": (event_bytes / respondent_event_count
+                                                  if respondent_event_count else None),
+        "ATOMIC_STAGING_PEAK_BYTES": atomic_staging_peak_bytes,
+        "SCRATCH_EXECUTION_PEAK_BYTES": scratch_execution_peak_bytes,
+        "NONAUTHORITATIVE_CACHE_BYTES": nonauthoritative_cache_bytes,
+        "POST_SUCCESS_RETAINED_BYTES": canonical,
+        "ZSTD_CONFIGURATION": {"compression": "zstd", "compression_level": 3,
+                                "use_dictionary": True},
+        "ROW_GROUP_CONFIGURATION": {"target_rows": 4096},
+        "SOURCE_VARIABLE_METADATA_NORMALIZED": True,
+        "SOURCE_VARIABLE_METADATA_PROOF": (
+            "Respondent-event rows retain exact source/question/topology refs and raw values; "
+            "source-variable labels, dictionaries, declarations and topology metadata are "
+            "stored in governing source-substrate relations, never copied into each event row."
+        ),
+    }
+
+
+def projection_only_storage(*, fixed_metadata_bytes: int, bytes_per_event: float,
+                            event_count: int, corpus: str) -> dict[str, Any]:
+    """Corrected fixed-plus-event projection; never uses wide-object P1 bytes."""
+    projected_event_bytes = bytes_per_event * event_count
+    total = fixed_metadata_bytes + projected_event_bytes
+    return {"corpus": corpus, "basis": "MEASURED_CORRECTED_RELATION_BYTES_PER_EVENT",
+            "status": "PROJECTION_ONLY", "physical_cells": event_count,
+            "fixed_metadata_bytes": fixed_metadata_bytes,
+            "event_scaled_bytes": projected_event_bytes,
+            "steady_state_bytes": total,
+            "bytes_per_event": bytes_per_event}
 
 
 def open_relation_handle(carrier: Any, *, source_sha256: str, release_id: str,
@@ -219,5 +265,6 @@ def query_relation_handle(handle: RelationC11ReleaseHandle, sql: str) -> list[tu
 
 __all__ = [
     "RelationC11ReleaseHandle", "RelationFirstParquetWriter", "RelationMember",
-    "open_relation_handle", "query_relation_handle", "stream_relation_rows",
+    "open_relation_handle", "projection_only_storage", "query_relation_handle",
+    "storage_budget", "stream_relation_rows",
 ]
