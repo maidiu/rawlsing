@@ -1,0 +1,15 @@
+{
+  "source_shape": {"rows": 97220, "variables": 613, "full_source_cells": 59595860},
+  "metadata_open": {"wall_seconds": 1.6423727590008639, "rss_before_bytes": 15699968, "rss_after_bytes": 94867456, "rss_peak_process_ru_maxrss_bytes": 94867456},
+  "passes": {
+    "8192": {"count": 1255424, "digest": "41864260dd8e2f9e8911ef4a3101d1fa9546405772a72ee294a36798fa2882ae", "wall_seconds": 36.043005865009036, "cells_per_second": 34831.279186367196, "rss_before_bytes": 121163776, "rss_after_bytes": 121163776, "rss_peak_process_ru_maxrss_bytes": 121163776},
+    "32768": {"count": 1255424, "digest": "41864260dd8e2f9e8911ef4a3101d1fa9546405772a72ee294a36798fa2882ae", "wall_seconds": 18.73044294299325, "cells_per_second": 67025.85752087798, "rss_before_bytes": 130990080, "rss_after_bytes": 130990080, "rss_peak_process_ru_maxrss_bytes": 130990080},
+    "restart_8192": {"count": 1255424, "digest": "41864260dd8e2f9e8911ef4a3101d1fa9546405772a72ee294a36798fa2882ae", "wall_seconds": 35.648619933985174, "cells_per_second": 35216.62275635969, "rss_before_bytes": 130990080, "rss_after_bytes": 130990080, "rss_peak_process_ru_maxrss_bytes": 130990080}
+  },
+  "full_traversal_projection_only": {
+    "from_8192_cells_per_second": {"seconds": 1710.9868311504779, "minutes": 28.5164471858413},
+    "from_32768_cells_per_second": {"seconds": 889.1472963465839, "minutes": 14.819121605776398},
+    "warning": "linear physical-cell traversal projection only; not executed and not a certification estimate"
+  },
+  "assessment": {"bounded_pass_memory_stable": true, "unexpected_wvs_full_frame": false, "safe_continuation_plausible": true}
+}

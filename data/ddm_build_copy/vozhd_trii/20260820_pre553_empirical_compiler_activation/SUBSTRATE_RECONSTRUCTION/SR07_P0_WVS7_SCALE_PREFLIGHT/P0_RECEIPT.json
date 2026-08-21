@@ -1,0 +1,39 @@
+{
+  "worker_starting_head": "55d0a848f73faf2df8dfd07aefadf716671578d0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-sr07-p0-wvs7-scale",
+  "source_path_name": "WVS Wave 7.sav",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "source_shape": {"rows": 97220, "variables": 613},
+  "reader_configuration": {
+    "decoder_call": "decode_sav(source_path)",
+    "reader": "pyreadstat",
+    "reader_version": "1.3.2",
+    "user_missing": true,
+    "apply_value_formats": false,
+    "encoding": null,
+    "authority_status": null,
+    "ordinary_wvs_path": "metadata-first + chunked data read"
+  },
+  "expected_bounded_cell_count": 1255424,
+  "passes": {
+    "8192": {"digest_sha256": "41864260dd8e2f9e8911ef4a3101d1fa9546405772a72ee294a36798fa2882ae", "count": 1255424, "wall_seconds": 36.043005865009036, "cells_per_second": 34831.279186367196, "rss_before_bytes": 121163776, "rss_after_bytes": 121163776, "rss_peak_process_ru_maxrss_bytes": 121163776},
+    "32768": {"digest_sha256": "41864260dd8e2f9e8911ef4a3101d1fa9546405772a72ee294a36798fa2882ae", "count": 1255424, "wall_seconds": 18.73044294299325, "cells_per_second": 67025.85752087798, "rss_before_bytes": 130990080, "rss_after_bytes": 130990080, "rss_peak_process_ru_maxrss_bytes": 130990080},
+    "restart_8192": {"digest_sha256": "41864260dd8e2f9e8911ef4a3101d1fa9546405772a72ee294a36798fa2882ae", "count": 1255424, "wall_seconds": 35.648619933985174, "cells_per_second": 35216.62275635969, "rss_before_bytes": 130990080, "rss_after_bytes": 130990080, "rss_peak_process_ru_maxrss_bytes": 130990080}
+  },
+  "identity": {"first_row_ordinal": 1, "last_row_ordinal": 2048, "first_variable_ordinal": 1, "last_variable_ordinal": 613},
+  "assertions": {
+    "source_sha_exact": true,
+    "shape_exact": true,
+    "batch_size_digests_equal": true,
+    "restart_digest_equal": true,
+    "row_variable_identity_stable": true,
+    "ordinary_wvs_path_did_not_require_full_frame": true,
+    "q152_q157_retain_nonempty_source_native_missing_declarations": true,
+    "bounded_cell_universe_retained_for_hash": false,
+    "postgresql_or_database_url_used": false,
+    "source_or_decoder_modified": false
+  },
+  "final_disposition": "P0_PASS__FULL_CERTIFICATION_MAY_BE_ADJUDICATED",
+  "required_token": "PRE553_SR07_P0_WVS7_SCALE_PREFLIGHT_RETURNED"
+}
