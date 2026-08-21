@@ -1,0 +1,148 @@
+{
+  "DATABASE_URL_used": false,
+  "PROBE_RECEIPT_self_hash_note": "Omitted from file body because a file cannot contain its own stable SHA-256; HQ receipt may report the final receipt hash externally.",
+  "PROBE_RECEIPT_self_sha256": null,
+  "accepted_sr03_evidence": {
+    "checkout_zip_path": "/mnt/data/sr09pre_r04_private/sr03_candidate/checkout.zip",
+    "checkout_zip_sha256": "e58fd7cdd6e8587573e8cb94ca1df4cd8949cee5fdbc39042b739df6add1c232",
+    "checkout_zip_size": 30357170,
+    "completion_token": "PRE553_SR03_35_SOURCE_NATIVE_METADATA_RECEIPT_COMPLETE",
+    "deterministic_manifest_zip_path": "/mnt/data/sr09pre_r04_private/sr03_candidate/unpack/checkout/SR03_SOURCE_PHYSICAL_MANIFESTS_R3.deterministic.zip",
+    "deterministic_manifest_zip_sha256": "8d06a436b7148d86273e5ae35a887252198ce8ae984902a4a38f05ad11a0e9cc",
+    "deterministic_manifest_zip_size": 40016081
+  },
+  "archive_members_used": [
+    "surveys/EVS 1981.sav",
+    "surveys/EVS 1990.sav",
+    "surveys/EVS 1999.sav",
+    "surveys/EVS 2008.sav",
+    "surveys/EVS 2017.sav"
+  ],
+  "branch": "agent/vozhd-trii-sr09pre-r04-evs",
+  "current_worker_reader_constraint": "pyreadstat unavailable and network installation failed; no substitute SAV reader or alternate encoding was used. Default-reader failure facts come only from frozen accepted SR03/governance evidence.",
+  "exact_checkout_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "exact_commands_scripts": [
+    {
+      "purpose": "Targeted accepted-manifest analysis, exact byte scans, drift tables, sentinels, outputs.",
+      "script_path": "/mnt/data/sr09pre_r04_private/r04_recon_probe.py",
+      "script_sha256": "089adcb7128433b9ccae031568876b387bfe98c6f7da071eed2cb5d240fecac3"
+    },
+    {
+      "command": "sha256sum /mnt/data/sr09pre_r04_private/surveys.zip",
+      "purpose": "Frozen bundle identity verification."
+    },
+    {
+      "command": "unzip -l /mnt/data/sr09pre_r04_private/surveys.zip",
+      "purpose": "Archive member inspection; AppleDouble ignored."
+    },
+    {
+      "command": "unzip -p surveys.zip surveys/<assigned EVS member> > extracted/<same basename> (five assigned members only)",
+      "purpose": "Bounded extraction."
+    },
+    {
+      "command": "sha256sum extracted/EVS\\ *.sav",
+      "purpose": "Pre-probe source identity verification."
+    },
+    {
+      "command": "python /mnt/data/sr09pre_r04_private/r04_recon_probe.py",
+      "purpose": "R04 reconnaissance output generation."
+    }
+  ],
+  "extracted_sources": [
+    {
+      "path": "/mnt/data/sr09pre_r04_private/extracted/EVS 1981.sav",
+      "sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+      "size_bytes": 11815613,
+      "source_file": "EVS 1981.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r04_private/extracted/EVS 1990.sav",
+      "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "size_bytes": 24341244,
+      "source_file": "EVS 1990.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r04_private/extracted/EVS 1999.sav",
+      "sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+      "size_bytes": 31857144,
+      "source_file": "EVS 1999.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r04_private/extracted/EVS 2008.sav",
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "size_bytes": 63832833,
+      "source_file": "EVS 2008.sav"
+    },
+    {
+      "path": "/mnt/data/sr09pre_r04_private/extracted/EVS 2017.sav",
+      "sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2",
+      "size_bytes": 53499063,
+      "source_file": "EVS 2017.sav"
+    }
+  ],
+  "family": "EVS",
+  "final_git_status": "PROBE_RECEIPT.json is intended as the final seventh R04 file; final branch scope/head is verified externally after publishing this receipt.",
+  "full_scan_target_reasons": {
+    "EVS 1999.sav": "Exact byte-sequence localization/counting for frozen reader-compatibility hazard.",
+    "EVS 2008.sav": "Exact byte-sequence localization/counting for frozen reader-compatibility hazard."
+  },
+  "git_status_pre_receipt": {
+    "ahead_by": 8,
+    "behind_by": 0,
+    "changed_files": 6,
+    "head": "d205271b1f282a48b4353c803aff186de04bdf06",
+    "scope": "all six changed files are under the assigned RETURNS/R04 directory; no collateral paths"
+  },
+  "legacy_postgres_used_as_truth": false,
+  "library_bundles": [
+    {
+      "filename": "surveys.zip",
+      "materialized_path": "/mnt/data/sr09pre_r04_private/surveys.zip",
+      "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+      "size_bytes": 158180333
+    }
+  ],
+  "library_raw_source_files_unchanged": true,
+  "output_file_sha256": {
+    "AUTHORITY_GAPS.csv": "9cc1965d0b0ca35d41afe6dee4e0e9ec2eefb4c98cae6a53ad38469bda5d92f8",
+    "CROSS_WAVE_DRIFT.csv": "bca36a684f5022c9def7eecc7b0b473a0bf787fc5fa312b79e26c4ed9d0224ef",
+    "HOSTILE_SENTINELS.csv": "ad1d3713c4780b76b31c7a3cfbe88d68a2a4fd49b2de0dc6eb6cbc2b8a2a2187",
+    "RESULT.json": "0576855377a8d4acaedbde70cbeb4b78889ef69cb46a985219b38361de528722",
+    "RESULT.md": "115a16ff04a37b3c32b84086990ace21ea9c5a553d946e7de2b31eade1b5bcba",
+    "SOURCE_BURDEN.csv": "60ead282f778d226b18f0a338a24fc178eac542f014b2f12d499e6dfb7ebe8cd"
+  },
+  "production_runtime_modified": false,
+  "published_output_git_blob_sha1": {
+    "AUTHORITY_GAPS.csv": "717d3c08b0065ed8ad95e928f5b1f00ea069c93f",
+    "CROSS_WAVE_DRIFT.csv": "139c9474c0ef8396f996fd56e5fb602120d092d0",
+    "HOSTILE_SENTINELS.csv": "c573ec421a68e21d12aa1722a1c5c453144df6b0",
+    "RESULT.json": "c127a42499ea6ca2f48ae535adb38bb6ee5ade0d",
+    "RESULT.md": "047249f5bd35ecad1f1739b14fe973a08a0d4be2",
+    "SOURCE_BURDEN.csv": "84323bcc80bd9927197241a1851f6ed9f2254517"
+  },
+  "published_text_line_endings": "LF. CSV generator scratch artifacts used CRLF; published CSV bytes are the verified LF-normalized equivalents. Semantic CSV rows/fields are unchanged.",
+  "sources_fully_scanned": {
+    "accepted_SR03_full_physical_manifests_used": [
+      "EVS 1981.sav",
+      "EVS 1990.sav",
+      "EVS 1999.sav",
+      "EVS 2008.sav",
+      "EVS 2017.sav"
+    ],
+    "byte_stream_scans_current_worker": [
+      "EVS 1999.sav",
+      "EVS 2008.sav"
+    ],
+    "cell_scans_current_worker": []
+  },
+  "tool_dependency_versions": {
+    "accepted_SR03_pyreadstat_version": "NOT_RECORDED_IN_RETURNED_SR03_RECEIPT",
+    "git": "git version 2.47.3",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "pyreadstat_current_worker": "NOT_INSTALLED__DEFAULT_READER_RERUN_NOT_PERFORMED",
+    "python": "3.13.5",
+    "unzip": "UnZip 6.00 of 20 April 2009, by Debian. Original by Info-ZIP."
+  },
+  "worker_id": "SR09-PRE-R04"
+}
