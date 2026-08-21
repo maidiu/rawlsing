@@ -1,0 +1,19 @@
+{
+  "stage": "FULL_WVS7_97220x613",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "expected_physical_events": 59595860,
+  "actual_full_source_measurement": false,
+  "completed": false,
+  "tripwire_fired": true,
+  "supervisor_wall_seconds": 16302.943611564988,
+  "supervisor_peak_rss_bytes": 4298940416,
+  "child_returncode": -9,
+  "tripwire_limit_bytes": 4294967296,
+  "canonical_storage_measured": false,
+  "traversed_events_reported": null,
+  "phase_measurements": null,
+  "parquet_disk_bytes": null,
+  "semantic_release_hash": null,
+  "relation_logical_digests": null,
+  "note": "External supervisor terminated the actual full-source R4 run at the hard 4 GiB RSS tripwire before the child emitted completion measurements. No projection is substituted."
+}
