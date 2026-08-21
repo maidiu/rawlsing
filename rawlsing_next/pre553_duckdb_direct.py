@@ -19,8 +19,11 @@ def query_canonical_release(carrier: ParquetC11Carrier, *, source_sha256: str, r
         def parquet_view(name: str) -> str:
             path = str(directory / name).replace("'", "''")
             return f"CREATE VIEW {name[:-8]} AS SELECT * FROM read_parquet('{path}')"
-        connection.execute(parquet_view("release.parquet"))
-        connection.execute(parquet_view("objects.parquet"))
+        for member in ("release_identity.parquet", "empirical_universes.parquet", "respondent_identities.parquet",
+                       "question_variable_bindings.parquet", "respondent_events.parquet", "routing_eligibility.parquet",
+                       "empirical_coordinates.parquet", "weight_measure.parquet", "authority_snapshots.parquet",
+                       "source_universe_relations.parquet", "replay_bindings.parquet", "replay_manifest.parquet"):
+            connection.execute(parquet_view(member))
         return [tuple(row) for row in connection.execute(sql).fetchall()]
     finally:
         connection.close()

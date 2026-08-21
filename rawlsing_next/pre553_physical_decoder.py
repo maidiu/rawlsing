@@ -63,12 +63,39 @@ class PhysicalSourceIncidence:
     source_format: str
     row_count: int
     variables: tuple[PhysicalVariable, ...]
-    cells: tuple[PhysicalCell, ...]
     reader_configuration: Mapping[str, Any]
     file_metadata: Mapping[str, Any]
+    _frame: Any = None
+    _variables_by_name: Mapping[str, PhysicalVariable] = None
 
-    def iter_cells(self) -> Iterator[PhysicalCell]:
-        return iter(self.cells)
+    def iter_batches(self, batch_size: int = 10_000) -> Iterator[tuple[PhysicalCell, ...]]:
+        """Yield bounded cell batches with stable source row ordinals.
+
+        The decoder retains only the reader frame when a compatibility reader
+        requires a full read; it never retains a complete cell-object universe.
+        """
+        if not isinstance(batch_size, int) or isinstance(batch_size, bool) or batch_size < 1:
+            raise ValueError("batch_size must be a positive integer")
+        if self._frame is None:
+            return
+        batch: list[PhysicalCell] = []
+        variables = self.variables
+        declarations = {v.name: v.missing_declarations for v in variables}
+        for row_ordinal, row in enumerate(self._frame.itertuples(index=False, name=None), 1):
+            for variable, value in zip(variables, row):
+                raw = _jsonable(value)
+                state, declaration = classify_physical_value(raw, declarations[variable.name])
+                batch.append(PhysicalCell(row_ordinal, variable.ordinal, variable.name, raw, state,
+                                          declaration, variable.value_labels.get(str(raw))))
+                if len(batch) >= batch_size:
+                    yield tuple(batch)
+                    batch.clear()
+        if batch:
+            yield tuple(batch)
+
+    def iter_cells(self, batch_size: int = 10_000) -> Iterator[PhysicalCell]:
+        for batch in self.iter_batches(batch_size):
+            yield from batch
 
 
 class DecoderError(ValueError):
@@ -125,14 +152,20 @@ def _missing_declarations(metadata: Any, name: str) -> tuple[Mapping[str, Any], 
         else:
             result.append({"kind": "range", "lo": _jsonable(item.get("lo")), "hi": _jsonable(item.get("hi"))})
     for value in user.get(name, ()):
-        result.append({"kind": "discrete", "value": _jsonable(value)})
+        token = _jsonable(value)
+        if isinstance(token, str) and len(token) == 2 and token[0] == "." and token[1].lower() in "abcdefghijklmnopqrstuvwxyz":
+            result.append({"kind": "extended", "token": token.lower()})
+        else:
+            result.append({"kind": "discrete", "value": token})
     return tuple(result)
 
 
-def _classify(value: Any, declarations: tuple[Mapping[str, Any], ...]) -> tuple[PhysicalMissingState, Mapping[str, Any] | None]:
+def classify_physical_value(value: Any, declarations: tuple[Mapping[str, Any], ...]) -> tuple[PhysicalMissingState, Mapping[str, Any] | None]:
     if value is None or (isinstance(value, float) and math.isnan(value)):
         return PhysicalMissingState.SYSTEM_MISSING, None
     for declaration in declarations:
+        if declaration["kind"] == "extended" and value == declaration.get("token"):
+            return PhysicalMissingState.FORMAT_EXTENDED_MISSING, declaration
         if declaration["kind"] == "discrete" and value == declaration.get("value"):
             return PhysicalMissingState.FORMAT_USER_MISSING_VALUE, declaration
         if declaration["kind"] == "range" and declaration.get("lo") <= value <= declaration.get("hi"):
@@ -171,19 +204,13 @@ def _decode(path: str | Path, *, expected_format: str, encoding: str | None = No
             {str(_jsonable(k)): _jsonable(v) for k, v in labels.items()}, decl, display,
             {"multiple_response_sets": _jsonable((getattr(metadata, "mr_sets", {}) or {}))},
         ))
-    cells: list[PhysicalCell] = []
-    for row_ordinal, row in enumerate(frame.itertuples(index=False, name=None), 1):
-        for variable, value in zip(variables, row):
-            raw = _jsonable(value)
-            state, declaration = _classify(raw, declarations[variable.name])
-            selected = variable.value_labels.get(str(raw))
-            cells.append(PhysicalCell(row_ordinal, variable.ordinal, variable.name, raw, state, declaration, selected))
     file_meta = {"file_encoding": _jsonable(getattr(metadata, "file_encoding", None)),
                  "file_format": _jsonable(getattr(metadata, "file_format", expected_format)),
                  "number_columns": len(names), "number_rows": len(frame)}
-    return PhysicalSourceIncidence(source_sha, expected_format.upper(), len(frame), tuple(variables), tuple(cells),
+    return PhysicalSourceIncidence(source_sha, expected_format.upper(), len(frame), tuple(variables),
                                    {"reader": "pyreadstat", "reader_version": getattr(pyreadstat, "__version__", None),
-                                    "user_missing": True, "apply_value_formats": False, **compatibility}, file_meta)
+                                    "user_missing": True, "apply_value_formats": False, **compatibility}, file_meta,
+                                   _frame=frame)
 
 
 def decode_sav(path: str | Path, *, encoding: str | None = None) -> PhysicalSourceIncidence:
@@ -195,4 +222,5 @@ def decode_dta(path: str | Path, *, encoding: str | None = None) -> PhysicalSour
 
 
 __all__ = ["COMPATIBILITY_ALLOWLIST", "COMPATIBILITY_ONLY", "DecoderError", "PhysicalMissingState",
-           "PhysicalVariable", "PhysicalCell", "PhysicalSourceIncidence", "decode_sav", "decode_dta"]
+           "PhysicalVariable", "PhysicalCell", "PhysicalSourceIncidence", "classify_physical_value",
+           "decode_sav", "decode_dta"]
