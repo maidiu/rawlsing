@@ -1,0 +1,322 @@
+{
+  "commands_probes_executed": [
+    "verify both Library ZIP SHA-256 and byte sizes",
+    "extract only WVS Wave 1.sav/WVS Wave 4.sav/WVS Wave 7.sav and verify exact source SHA-256",
+    "reuse exact accepted SR03 R3 physical manifests",
+    "full sequential raw SAV traversal with worker-private read-only parser for identity/scope/sentinel facts",
+    "cross-wave manifest/schema/label/missingness comparison"
+  ],
+  "completion_token": "PRE553_SR09PRE_R09_WVS_RECON_COMPLETE",
+  "documentary_authority_gaps": [
+    {
+      "affected_entities": "V3,S007",
+      "gap_class": "RESPONDENT_IDENTITY",
+      "source_file": "WVS Wave 1.sav"
+    },
+    {
+      "affected_entities": "-1..-5 user-missing codes",
+      "gap_class": "SEMANTIC_RESPONSE_STATE",
+      "source_file": "WVS Wave 1.sav"
+    },
+    {
+      "affected_entities": "13 weight-like variables",
+      "gap_class": "WEIGHT_AUTHORITY",
+      "source_file": "WVS Wave 1.sav"
+    },
+    {
+      "affected_entities": "PSU/strata/cluster design",
+      "gap_class": "DESIGN_AUTHORITY",
+      "source_file": "WVS Wave 1.sav"
+    },
+    {
+      "affected_entities": "large -4 blocks and all-system derived variables",
+      "gap_class": "ROUTING_APPLICABILITY",
+      "source_file": "WVS Wave 1.sav"
+    },
+    {
+      "affected_entities": "S007 F2.0 vs 9-10 digit raw values",
+      "gap_class": "DISPLAY_METADATA_INTENT",
+      "source_file": "WVS Wave 1.sav"
+    },
+    {
+      "affected_entities": "V3",
+      "gap_class": "RESPONDENT_IDENTITY",
+      "source_file": "WVS Wave 4.sav"
+    },
+    {
+      "affected_entities": "V218 ordinary codes 1208/5904/9309 and -1..-5 user missings",
+      "gap_class": "SEMANTIC_RESPONSE_STATE",
+      "source_file": "WVS Wave 4.sav"
+    },
+    {
+      "affected_entities": "V245,S018,SECVALWGT,RESEMAWEIGHT",
+      "gap_class": "WEIGHT_AUTHORITY",
+      "source_file": "WVS Wave 4.sav"
+    },
+    {
+      "affected_entities": "PSU/strata/cluster design",
+      "gap_class": "DESIGN_AUTHORITY",
+      "source_file": "WVS Wave 4.sav"
+    },
+    {
+      "affected_entities": "V2A split-up coordinate",
+      "gap_class": "SOURCE_SCOPE_COORDINATE",
+      "source_file": "WVS Wave 4.sav"
+    },
+    {
+      "affected_entities": "V220,Q223_LOCAL",
+      "gap_class": "LABEL_AUTHORITY",
+      "source_file": "WVS Wave 4.sav"
+    },
+    {
+      "affected_entities": "all-row and high-volume -4 variables",
+      "gap_class": "ROUTING_APPLICABILITY",
+      "source_file": "WVS Wave 4.sav"
+    },
+    {
+      "affected_entities": "D_INTERVIEW,S007",
+      "gap_class": "RESPONDENT_IDENTITY",
+      "source_file": "WVS Wave 7.sav"
+    },
+    {
+      "affected_entities": "Q152-Q157,I_PSU,Q223 typed states",
+      "gap_class": "SEMANTIC_RESPONSE_STATE",
+      "source_file": "WVS Wave 7.sav"
+    },
+    {
+      "affected_entities": "W_WEIGHT,S018,PWGHT,analytic weights",
+      "gap_class": "WEIGHT_AUTHORITY",
+      "source_file": "WVS Wave 7.sav"
+    },
+    {
+      "affected_entities": "Q223/Q223_ABREV/Q223_LOCAL,N_REGION_*",
+      "gap_class": "COUNTRY_LOCAL_CODE_AUTHORITY",
+      "source_file": "WVS Wave 7.sav"
+    }
+  ],
+  "exact_source_inventory": [
+    {
+      "sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+      "size_bytes": 6358941,
+      "source_file": "WVS Wave 1.sav"
+    },
+    {
+      "sha256": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+      "size_bytes": 41997221,
+      "source_file": "WVS Wave 4.sav"
+    },
+    {
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "size_bytes": 185163494,
+      "source_file": "WVS Wave 7.sav"
+    }
+  ],
+  "family": "WVS",
+  "full_scan_reason": {
+    "WVS Wave 1.sav": "Sequential full traversal required to measure V3/S007 injectivity/scope, raw S007 magnitude, country support, and exact sentinel row ordinals unavailable from aggregate SR03 manifests.",
+    "WVS Wave 4.sav": "Sequential full traversal required to measure genuine country+V3 collisions, ordinary V218 semantic-code candidate counts, parallel-vector equality, country support, and exact sentinel rows.",
+    "WVS Wave 7.sav": "Sequential full traversal used to put W7 identity/country/parallel-label-view facts on the same measured basis as W1/W4 while keeping accepted W7 semantic/count oracle authoritative."
+  },
+  "full_scans_performed_by_this_worker": true,
+  "future_fixture_sharing": {
+    "must_be_wave_specific": [
+      "native respondent-ID bindings and injectivity expectations",
+      "country/region coordinate names and observed supports",
+      "semantic bindings for -1/-2/-3/-4/-5 and ordinary labeled codes",
+      "weight roles/estimands/design fields",
+      "exact ordered-slot variable bindings and hostile missing-code cells",
+      "W1 S007 display-format-width anomaly",
+      "W4 all-row missing columns and V218 country-specific ordinary semantic codes"
+    ],
+    "shareable_family_laws": [
+      "source_snapshot+row_ordinal replay identity",
+      "preserve SPSS user-missing and system-missing separately",
+      "retain raw value and value-label dictionary independently",
+      "preserve ordered/repeated slot identity",
+      "retain country/local scope coordinates for local code systems",
+      "retain every weight/design candidate without choosing a default",
+      "UTF-8 reader path for these three exact snapshots",
+      "mr_sets=0 physical metadata fact for these three exact WVS snapshots"
+    ],
+    "shareable_structural_fixtures": [
+      "W4/W7 parallel party label-view structure can share a structural invariant: raw vectors may be identical while variable identity and label dictionaries differ.",
+      "W1/W4/W7 first/second-choice structures can share an order-preservation invariant, but not source variable names or missing-code semantics."
+    ]
+  },
+  "hazard_class_counts": {
+    "COUNTRY_REGION_CODING": 3,
+    "LABEL_METADATA_DRIFT": 1,
+    "OTHER_NAMED_PHYSICAL_HAZARD": 1,
+    "PHYSICAL_MISSINGNESS": 4,
+    "REPEATED_RANKED_SLOT_TOPOLOGY": 3,
+    "RESPONDENT_IDENTITY": 3,
+    "ROUTING_APPLICABILITY": 2,
+    "SEMANTIC_CODE_CANDIDATE": 3,
+    "SOURCE_SCOPE_COORDINATE": 3,
+    "WEIGHT_DESIGN": 3
+  },
+  "hostile_sentinel_count_per_source": {
+    "WVS Wave 1.sav": 7,
+    "WVS Wave 4.sav": 9,
+    "WVS Wave 7.sav": 4
+  },
+  "measured_summary": {
+    "W1": {
+      "S007_distinct": 13586,
+      "S007_injective": true,
+      "S007_original_variable_type": "F2.0",
+      "S007_raw_range": [
+        320120001.0,
+        8400122325.0
+      ],
+      "V3_distinct": 2677,
+      "columns": 188,
+      "country_plus_V3_injective": true,
+      "encoding": "UTF-8",
+      "missing": {
+        "columns": 188,
+        "ordinary": 2139348,
+        "rows": 13586,
+        "system_missing": 151792,
+        "total_cells": 2554168,
+        "user_missing": 263028,
+        "user_missing_by_native_code": {
+          "-2.0": 81027,
+          "-3.0": 5577,
+          "-4.0": 162679,
+          "-5.0": 13745
+        },
+        "variables_all_system_missing": [
+          "EQUALITY",
+          "I_DEVOUT",
+          "I_RELIGIMP",
+          "I_VOI2_00",
+          "I_VOICE2",
+          "I_WOMEDU",
+          "I_WOMJOB",
+          "I_WOMPOL"
+        ],
+        "variables_all_user_missing": [],
+        "variables_with_observed_system_missing": 34,
+        "variables_with_observed_user_missing": 112
+      },
+      "observed_country_count": 10,
+      "rows": 13586,
+      "weight_like_variable_count": 13
+    },
+    "W4": {
+      "S007_present": false,
+      "V218_ordinary_semantic_candidate_counts": {
+        "1208_refused": 5,
+        "5904_do_not_know": 26,
+        "9309_dk_no_answer": 56
+      },
+      "V220_Q223_LOCAL_raw_mismatch_count": 0,
+      "V2_V2A_raw_mismatch_count": 0,
+      "V3_user_missing_minus5": 301,
+      "columns": 418,
+      "encoding": "UTF-8",
+      "missing": {
+        "columns": 418,
+        "ordinary": 15615063,
+        "rows": 60045,
+        "system_missing": 198959,
+        "total_cells": 25098810,
+        "user_missing": 9284788,
+        "user_missing_by_native_code": {
+          "-1.0": 480800,
+          "-2.0": 91741,
+          "-3.0": 57149,
+          "-4.0": 8617327,
+          "-5.0": 37771
+        },
+        "variables_all_system_missing": [
+          "I_TRUSTCOURTS"
+        ],
+        "variables_all_user_missing": [
+          "ISL22",
+          "V160S",
+          "V160T"
+        ],
+        "variables_with_observed_system_missing": 31,
+        "variables_with_observed_user_missing": 367
+      },
+      "observed_country_count": 41,
+      "rows": 60045,
+      "valid_country_plus_V3_distinct": 59711,
+      "valid_country_plus_V3_duplicate_excess": 33,
+      "valid_country_plus_V3_duplicate_key_count": 32,
+      "valid_country_plus_V3_max_multiplicity": 3,
+      "weight_like_variable_count": 4
+    },
+    "W7": {
+      "A_YEAR_values": [
+        2017.0,
+        2018.0,
+        2019.0,
+        2020.0,
+        2021.0,
+        2022.0,
+        2023.0
+      ],
+      "D_INTERVIEW_distinct": 96221,
+      "D_INTERVIEW_duplicate_key_count": 1,
+      "D_INTERVIEW_max_multiplicity": 1000,
+      "Q223_parallel_view_mismatch_counts": {
+        "Q223_vs_Q223_ABREV": 0,
+        "Q223_vs_Q223_LOCAL": 0
+      },
+      "S007_distinct": 97220,
+      "S007_injective": true,
+      "columns": 613,
+      "encoding": "UTF-8",
+      "missing": {
+        "columns": 613,
+        "ordinary": 48891391,
+        "rows": 97220,
+        "system_missing": 3021217,
+        "total_cells": 59595860,
+        "user_missing": 7683252,
+        "user_missing_by_native_code": {
+          "-1.0": 760035,
+          "-2.0": 245847,
+          "-3.0": 275181,
+          "-4.0": 5331098,
+          "-5.0": 178036,
+          "-999.0": 37597,
+          "-9999.0": 845626,
+          "0.0": 9832
+        },
+        "variables_all_system_missing": [],
+        "variables_all_user_missing": [],
+        "variables_with_observed_system_missing": 188,
+        "variables_with_observed_user_missing": 533
+      },
+      "observed_country_count": 66,
+      "rows": 97220
+    }
+  },
+  "new_taxonomy_class_reason": "All observed W1/W4 behaviors fit existing PHYSICAL_MISSINGNESS, RESPONDENT_IDENTITY, SOURCE_SCOPE_COORDINATE, SEMANTIC_CODE_CANDIDATE, LABEL_METADATA_DRIFT, WEIGHT_DESIGN, REPEATED_RANKED_SLOT_TOPOLOGY, FORMAT/OTHER_NAMED_PHYSICAL_HAZARD burdens. Source-specific hostile fixtures are required but HQ taxonomy expansion is not.",
+  "new_taxonomy_class_required": false,
+  "non_dispositive": true,
+  "novel_hazard_classes": [],
+  "source_level_reconnaissance_dispositions": {
+    "WVS Wave 1.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "WVS Wave 4.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "WVS Wave 7.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED"
+  },
+  "source_specific_behaviors_not_sufficiently_exercised_by_frozen_W7_oracle": [
+    "W1 S007 raw numeric magnitude 320120001..8400122325 coexists with original SPSS print format F2.0; raw/storage and display metadata must remain separate.",
+    "W1 has eight variables system-missing on every row.",
+    "W4 has three variables user-missing on every row and one variable system-missing on every row.",
+    "W4 V3 remains noninjective within country after typed-missing IDs are excluded.",
+    "W4 V218 carries observed country-specific ordinary codes labeled Refused/Do not know/no answer outside the declared SPSS missing range."
+  ],
+  "sources_fully_scanned": [
+    "WVS Wave 1.sav",
+    "WVS Wave 4.sav",
+    "WVS Wave 7.sav"
+  ],
+  "status": "COMPLETE__NON_DISPOSITIVE_RECONNAISSANCE",
+  "worker_id": "SR09-PRE-R09"
+}

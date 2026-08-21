@@ -1,0 +1,100 @@
+{
+  "DATABASE_URL_used": false,
+  "accepted_sr03_checkout_package": {
+    "byte_size": 30357170,
+    "sha256": "e58fd7cdd6e8587573e8cb94ca1df4cd8949cee5fdbc39042b739df6add1c232"
+  },
+  "accepted_sr03_deterministic_archive": {
+    "byte_size": 40016081,
+    "sha256": "8d06a436b7148d86273e5ae35a887252198ce8ae984902a4a38f05ad11a0e9cc"
+  },
+  "archive_member_names_used": [
+    "surveys/WVS Wave 1.sav",
+    "surveys/WVS Wave 4.sav",
+    "WVS Wave 7.sav"
+  ],
+  "branch": "agent/vozhd-trii-sr09pre-r09-wvs",
+  "completion_token": "PRE553_SR09PRE_R09_WVS_RECON_COMPLETE",
+  "exact_checkout_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "exact_commands_scripts": [
+    "sha256sum surveys.zip and WVS Wave 7.sav.zip",
+    "Python zipfile extraction of only assigned WVS members with immediate SHA-256 verification",
+    "python wvs_raw_probe.py",
+    "python wvs7_target_probe.py",
+    "python build_r09_returns.py"
+  ],
+  "extracted_source_sha256_before_probing": {
+    "WVS Wave 1.sav": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+    "WVS Wave 4.sav": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+    "WVS Wave 7.sav": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "final_git_status": "NO_LOCAL_GIT_WORKTREE__CONNECTOR_ATOMIC_PUBLICATION_PATH; resulting remote commit and changed-file audit are returned separately in the HQ receipt",
+  "legacy_postgres_used_as_truth": false,
+  "library_bundles": [
+    {
+      "byte_size": 158180333,
+      "filename": "surveys.zip",
+      "materialized_path": "/mnt/data/sr09pre_r09_wvs_private/surveys.zip",
+      "members_used": [
+        "surveys/WVS Wave 1.sav",
+        "surveys/WVS Wave 4.sav"
+      ],
+      "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f"
+    },
+    {
+      "byte_size": 26200230,
+      "filename": "WVS Wave 7.sav.zip",
+      "materialized_path": "/mnt/data/sr09pre_r09_wvs_private/WVS Wave 7.sav.zip",
+      "members_used": [
+        "WVS Wave 7.sav"
+      ],
+      "sha256": "ce92993a022edbe39823f4a95d3f33522179ce4f388e2de2c1778c4ae6f1059a"
+    }
+  ],
+  "library_raw_source_files_unchanged": true,
+  "materialized_scratch_paths": [
+    "/mnt/data/sr09pre_r09_wvs_private/surveys.zip",
+    "/mnt/data/sr09pre_r09_wvs_private/WVS Wave 7.sav.zip",
+    "/mnt/data/sr09pre_r09_wvs_private/sr03_accepted/checkout.zip"
+  ],
+  "output_file_sha256": {
+    "AUTHORITY_GAPS.csv": "97c7cb58af8023386a788b645dd40eb787dc5b893f24bcfe3c0057ea31d83c31",
+    "CROSS_WAVE_DRIFT.csv": "6df8dc30d922d5d6de3e4a4d12fed845e6963d0bf42fbc529b49e4086f3de07c",
+    "HOSTILE_SENTINELS.csv": "8aa9e8c490ae6bea34f2593865858330decd14ab99dea6d9602fec3385e97fba",
+    "RESULT.json": "e928b158712420e641237f59c47e633ad7bf78efef0f9f7ed09a2a1d88b7d7af",
+    "RESULT.md": "100eba109d4ecf23608d1401542e3ced0dda8120d416c449056fe3e31cd7762a",
+    "SOURCE_BURDEN.csv": "20f309dada0dfd321b03f0146a37dbb07fe64a6177ae6a252fd44fdbdea40de6"
+  },
+  "probe_receipt_self_hash": "EXCLUDED_FROM_SELF_CONTENT_TO_AVOID_RECURSIVE_HASH; compute externally after write",
+  "production_runtime_modified": false,
+  "source_sizes_bytes": {
+    "WVS Wave 1.sav": 6358941,
+    "WVS Wave 4.sav": 41997221,
+    "WVS Wave 7.sav": 185163494
+  },
+  "sources_fully_scanned_by_this_worker": [
+    "WVS Wave 1.sav",
+    "WVS Wave 4.sav",
+    "WVS Wave 7.sav"
+  ],
+  "status": "COMPLETE__NON_DISPOSITIVE_RECONNAISSANCE",
+  "target_reason_for_every_full_scan": {
+    "WVS Wave 1.sav": "Sequential full traversal required to measure V3/S007 injectivity/scope, raw S007 magnitude, country support, and exact sentinel row ordinals unavailable from aggregate SR03 manifests.",
+    "WVS Wave 4.sav": "Sequential full traversal required to measure genuine country+V3 collisions, ordinary V218 semantic-code candidate counts, parallel-vector equality, country support, and exact sentinel rows.",
+    "WVS Wave 7.sav": "Sequential full traversal used to put W7 identity/country/parallel-label-view facts on the same measured basis as W1/W4 while keeping accepted W7 semantic/count oracle authoritative."
+  },
+  "tool_dependency_versions": {
+    "accepted_SR03_reader": "frozen pyreadstat-based SR03 R3 manifests; exact accepted package hash verified",
+    "pandas": "2.2.3 (available; not used for raw SAV traversal)",
+    "pyreadstat_worker_environment": "NOT_INSTALLED",
+    "python": "3.13.5",
+    "zipfile": "Python stdlib"
+  },
+  "worker_id": "SR09-PRE-R09",
+  "worker_private_probe_script_sha256": {
+    "build_r09_returns.py": "4645f028c7a92e7bad9323c996d0b47deaae734768290b7b388b1d00aacf51b5",
+    "sav_raw_reader.py": "8d5e5f9e26dc52fdc5edfc141b1df07674fa63a79963aa3b2ce85784fe0d7548",
+    "wvs7_target_probe.py": "3254a945fb4012db73e8efbad1540bb03edc57c6043238fa375fcd132781d8a1",
+    "wvs_raw_probe.py": "736c9c7b69c0e98ab3dc303b02d4cfade3101149f58a10e6e0c162e7d29ba456"
+  }
+}
