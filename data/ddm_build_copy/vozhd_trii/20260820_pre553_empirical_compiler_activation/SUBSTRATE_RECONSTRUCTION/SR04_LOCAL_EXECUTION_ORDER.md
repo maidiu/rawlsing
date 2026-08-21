@@ -1,4 +1,4 @@
-# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 3 SHARED-PATH ACCEPTANCE
+# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 4 B1/B2 CLI SEPARATION
 
 Repository: `maidiu/rawlsing`
 Frozen semantic parent: `9188dc9fb7a8b92b981f3d3f94754cd6137d17b1`
@@ -8,17 +8,21 @@ The exact launch HEAD is supplied by HQ. Verify it before doing anything.
 
 ## Current status
 
-Stage A synthetic contract testing is accepted at harness HEAD:
+Accepted harness milestones:
 
-`a5874b3a8bc371ae3a2baebf31f3cce6fe9bb298`
+- Stage A correctness contract: ACCEPTED
+- Stage A.1 shared execution path: ACCEPTED
+- Stage A.2 performance/packaging/checkpoint contract: ACCEPTED at harness HEAD `f303198853c0f494efd23eb598231cfea948fad0`
 
-Binding acceptance/gate:
+Binding newest gate:
 
-`21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`
+`22_SR04_STAGE_A2_ACCEPTANCE_AND_B1_B2_CLI_GATE.md`
 
-Stage B is NOT authorized.
+Real raw-source B1 and checkpoint-only B2 are NOT yet authorized.
 
-Static HQ review proved that the real-source CLI path still invokes older candidate/query functions different from the functions exercised by the accepted Stage-A synthetic suite.
+Static HQ review found one remaining orchestration defect: at `f303198...` the default real-source CLI still performs raw fixture construction and the four-candidate court in one invocation. The already-tested checkpoint writer/reader is not exposed as a separately stoppable B1/B2 CLI.
+
+This gate does not reopen accepted correctness, query, performance, budget, checkpoint, or package semantics. It only separates their invocation.
 
 ## Read first, in order
 
@@ -27,9 +31,9 @@ Static HQ review proved that the real-source CLI path still invokes older candid
 3. `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md`
 4. `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`
 5. `21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`
-6. `16_SR03_R3_ADJUDICATION.md`
-7. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
-8. accepted I02/I03/I05 reference code/tests only as needed; READ ONLY.
+6. `22_SR04_STAGE_A2_ACCEPTANCE_AND_B1_B2_CLI_GATE.md`
+7. `16_SR03_R3_ADJUDICATION.md`
+8. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
 
 ## Sole permitted repository write
 
@@ -39,106 +43,100 @@ You may modify only:
 
 No other repository file may change.
 
-# IMMEDIATE MISSION — STAGE A.1 ONLY
+# IMMEDIATE MISSION — CHEAP CLI SEPARATION PROOF ONLY
 
-Refactor the harness so Stage A and Stage B use ONE shared carrier-court execution path.
+Add explicit real execution modes:
 
-The only lawful difference between the stages is fixture provider:
+- `--stage-b1`
+- `--stage-b2`
+- `--checkpoint-dir <path>`
 
-- Stage A: tiny deterministic synthetic fixture;
-- Stage B: exact WVS7/LiTS I neutral fixture.
+Do not change the accepted shared carrier court, Q00-Q15 truth conditions, candidate set, source hashes, budgets, checkpoint format, or final package schema except for the minimum orchestration needed to invoke the already-accepted functions lawfully.
 
-The shared path must own all of:
+## Required B1 semantics
 
-- one frozen Q00-Q15 SQL map;
-- candidate materialization;
-- candidate query execution;
-- result normalization;
-- independent-oracle comparison;
-- true stored-candidate read-back digest computation;
-- correctness disposition;
-- warm-up + scored timing;
-- cold/open timing;
-- separate index timing where applicable;
-- peak-RSS measurement;
-- disk budget enforcement;
-- build/query time ceilings;
-- candidate cleanup confinement;
-- provisional selection.
+`--stage-b1 --source-root <root> --checkpoint-dir <dir> --output-dir <dir>` must:
 
-Remove/retire duplicated Stage-A-only versus Stage-B-only truth implementations. Do not leave a second dormant candidate/query path that main() can invoke.
+1. verify exact WVS7/LiTS I bytes;
+2. build the real neutral fixture;
+3. compute hostile fixture checks, relation digests, and independent oracle;
+4. write the checkpoint through the accepted checkpoint writer;
+5. read it back through the accepted checkpoint reader;
+6. require exact verification;
+7. emit a small B1 receipt with token `PRE553_SR04_B1_NEUTRAL_CHECKPOINT_COMPLETE`;
+8. record `candidate_execution_started=false`;
+9. STOP.
 
-## Required Stage-A.1 synthetic acceptance
+B1 must never invoke `shared_carrier_court`.
 
-Run the tiny synthetic fixture through the exact shared code path Stage B would invoke.
+## Required B2 semantics
 
-The receipt must prove at minimum:
+`--stage-b2 --checkpoint-dir <dir> --output-dir <dir>` must:
 
-- `shared_query_map = true`
-- `shared_candidate_execution_path = true`
-- `shared_oracle_comparison_path = true`
-- `shared_stored_readback_path = true`
-- `shared_budget_enforcement_path = true`
-- all four candidates compare equal to the independent oracle;
-- all four stored-candidate replay digests compare equal to fixture digests;
-- wrong-oracle negative test is detected;
-- stored-data corruption negative test is detected;
-- PostgreSQL lifecycle is open through query/readback and cleanly stops;
-- `DATABASE_URL` is never used;
-- cleanup is confined to the disposable root;
-- no WVS7/LiTS I bytes are decoded;
-- no candidate may report `MEASURED_CORRECT` without both oracle equality and stored-readback digest equality.
+1. accept no normal raw-source dependency;
+2. read/verify the checkpoint through the accepted checkpoint reader;
+3. execute the accepted shared carrier court using checkpoint relations/oracle only;
+4. apply the accepted selection path;
+5. write the exact final Stage-B package and deterministic ZIP through the accepted package writer;
+6. emit `PRE553_SR04_CARRIER_BAKEOFF_RECEIPT_COMPLETE` only after final package completion.
 
-Required token:
+B2 must not call the raw decoder/build_fixture path.
 
-`PRE553_SR04_SHARED_EXECUTION_PATH_CONTRACT_PASS`
+## Cheap synthetic CLI proof
 
-## Publication after Stage A.1
+Before any real raw-source run, exercise the actual B1/B2 orchestration using only the synthetic fixture/checkpoint path.
 
-When Stage A.1 passes:
+The proof must establish:
 
-1. syntax-check and static-audit the harness;
-2. verify the sole repo change is `SR04_CARRIER_BAKEOFF.py`;
+- `synthetic_b1_checkpoint_created=true`
+- `synthetic_b1_candidate_execution_started=false`
+- `synthetic_b2_checkpoint_only=true`
+- `synthetic_b2_shared_carrier_court_executed=true`
+- `synthetic_b2_final_package_path_executed=true`
+- `synthetic_b2_corrupted_checkpoint_rejected=true`
+- `synthetic_b2_raw_source_decode=false`
+- `DATABASE_URL_unused=true`
+- no duplicate query/candidate/oracle/checkpoint implementation was introduced.
+
+Required proof token:
+
+`PRE553_SR04_B1_B2_CLI_SEPARATION_PASS`
+
+## Publication after proof
+
+When the cheap proof passes:
+
+1. syntax/static check;
+2. verify only `SR04_CARRIER_BAKEOFF.py` changed;
 3. commit only that file with message:
-   `Unify SR04 carrier bakeoff execution path`
+   `Separate SR04 B1 and B2 execution modes`
 4. push the control branch;
 5. RETURN TO HQ:
    - starting exact HEAD;
    - new harness HEAD;
    - harness SHA-256;
-   - exact Stage-A.1 command;
-   - complete tiny Stage-A.1 receipt;
-   - Stage-A.1 token;
+   - exact cheap CLI-proof command;
+   - complete small proof receipt;
+   - success token;
    - final git status;
    - pushed branch HEAD.
 
 **STOP THERE.**
 
-Do not decode WVS7 or LiTS I.
-Do not launch Stage B.
-
-## Later Stage B — not currently authorized
-
-Only after HQ accepts Stage A.1 will Stage B be authorized.
-
-Stage B will use exact raw WVS7/LiTS I bytes to build a neutral fixture checkpoint once, freeze exact source/harness/fixture/oracle identities, and then execute the four candidates through the same accepted shared path.
-
-A later candidate-implementation-only retry may reuse an exact checkpoint only under the identity/digest rules in `21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`.
+Do not launch real B1.
+Do not launch B2.
 
 ## Forbidden
 
 Do not:
 
-- launch any raw-source Stage B run;
-- touch the live Rawlsing PostgreSQL database or `DATABASE_URL`;
-- change source bytes;
-- change the four-candidate set;
-- change Q00-Q15 truth conditions;
-- weaken correctness gates;
+- decode WVS7/LiTS I during the cheap CLI proof;
+- modify live PostgreSQL or use `DATABASE_URL`;
+- alter source files;
+- change frozen carrier/query semantics;
+- change the 5 GiB reserve or time/storage budgets;
 - modify `rawlsing_next/**`;
-- change the 5 GiB reserve or frozen disk/time ceilings;
-- treat successful SQL execution as correctness;
-- calculate replay digests from the neutral dataframe instead of the stored candidate;
-- maintain separate Stage-A and Stage-B candidate/query truth implementations.
+- combine B1 and B2 back into one real execution;
+- commit checkpoint or benchmark result data.
 
 Fail closed on ambiguity and return it to HQ.
