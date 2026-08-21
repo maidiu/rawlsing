@@ -1,0 +1,95 @@
+{
+  "commands_probes_executed": [
+    "sha256sum bundle and assigned SAV members",
+    "accepted SR03 R3 manifest extraction from exact accepted checkout package",
+    "custom read-only SPSS compressed-data targeted probe validated against accepted SR03 row/variable ordering",
+    "manifest metadata/drift comparison scripts"
+  ],
+  "completion_token": "PRE553_SR09PRE_R03_ASIAN_BAROMETER_RECON_COMPLETE",
+  "documentary_authority_gaps": [
+    {
+      "affected_entities": "SPSS user-missing codes 97/98/99/999/9999 etc.",
+      "gap_class": "SEMANTIC_RESPONSE_STATE",
+      "source_file": "Asian Barometer Wave 1.sav"
+    },
+    {
+      "affected_entities": "country-specific blocks and extensive system-missing patterns",
+      "gap_class": "ROUTING_APPLICABILITY",
+      "source_file": "Asian Barometer Wave 1.sav"
+    },
+    {
+      "affected_entities": "q172 ASEAN-countries-only and ordinary -1 Missing codes",
+      "gap_class": "ROUTING_APPLICABILITY",
+      "source_file": "Asian Barometer Wave 4.sav"
+    },
+    {
+      "affected_entities": "w,w_cross",
+      "gap_class": "WEIGHT_AUTHORITY",
+      "source_file": "Asian Barometer Wave 4.sav"
+    },
+    {
+      "affected_entities": "IDnumber + COUNTRY",
+      "gap_class": "RESPONDENT_IDENTITY",
+      "source_file": "Asian Barometer Wave 5.sav"
+    },
+    {
+      "affected_entities": "India-only Q106c/d/e; ASEAN-only q186",
+      "gap_class": "ROUTING_APPLICABILITY",
+      "source_file": "Asian Barometer Wave 5.sav"
+    },
+    {
+      "affected_entities": "w",
+      "gap_class": "WEIGHT_AUTHORITY",
+      "source_file": "Asian Barometer Wave 5.sav"
+    }
+  ],
+  "exact_source_inventory": [
+    {
+      "sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "source_file": "Asian Barometer Wave 1.sav"
+    },
+    {
+      "sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+      "source_file": "Asian Barometer Wave 4.sav"
+    },
+    {
+      "sha256": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63",
+      "source_file": "Asian Barometer Wave 5.sav"
+    }
+  ],
+  "family": "Asian Barometer",
+  "full_scan_reason": "No new full cell scan was required. R03 reused the hash-verified accepted SR03 R3 full physical manifests and performed targeted raw scans only for native-ID uniqueness/scope, country distributions, selected ordinary sentinel cells, weights, and MR replay cells.",
+  "full_scans_performed_by_this_worker": false,
+  "generic_sav_contract_extension": {
+    "Wave1": "No new hazard class; source-specific BIG-5 + extensive SPSS user-missing/system-missing fixture burden.",
+    "Wave4": "No new hazard class; ordinary labeled missing/sentinel coding with no physical missing declarations requires source-specific fixture.",
+    "Wave5": "No new hazard class; native MR-set metadata and overlapping MR membership exercise already-governed MULTIPLE_RESPONSE_TOPOLOGY and require source-specific fixture."
+  },
+  "hazard_class_counts": {
+    "COUNTRY_REGION_CODING": 4,
+    "ENCODING_TEXT_AUTHORITY": 1,
+    "MULTIPLE_RESPONSE_TOPOLOGY": 2,
+    "PHYSICAL_MISSINGNESS": 3,
+    "REPEATED_RANKED_SLOT_TOPOLOGY": 3,
+    "RESPONDENT_IDENTITY": 3,
+    "ROUTING_APPLICABILITY": 4,
+    "SEMANTIC_CODE_CANDIDATE": 3,
+    "SOURCE_SCOPE_COORDINATE": 3,
+    "WEIGHT_DESIGN": 3
+  },
+  "hostile_sentinel_count_per_source": {
+    "Asian Barometer Wave 1.sav": 4,
+    "Asian Barometer Wave 4.sav": 4,
+    "Asian Barometer Wave 5.sav": 6
+  },
+  "non_dispositive": true,
+  "novel_hazard_classes": [],
+  "source_level_reconnaissance_dispositions": {
+    "Asian Barometer Wave 1.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "Asian Barometer Wave 4.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED",
+    "Asian Barometer Wave 5.sav": "KNOWN_HAZARD_CLASS__SOURCE_SPECIFIC_FIXTURE_REQUIRED"
+  },
+  "status": "COMPLETE__NON_DISPOSITIVE_RECONNAISSANCE",
+  "wave6_used_as_evidence": false,
+  "worker_id": "SR09-PRE-R03"
+}

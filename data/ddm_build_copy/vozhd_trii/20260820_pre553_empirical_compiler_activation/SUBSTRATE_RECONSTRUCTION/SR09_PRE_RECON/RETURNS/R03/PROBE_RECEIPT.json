@@ -1,0 +1,83 @@
+{
+  "DATABASE_URL_used": false,
+  "accepted_sr03_deterministic_archive": {
+    "byte_size": 40016081,
+    "sha256": "8d06a436b7148d86273e5ae35a887252198ce8ae984902a4a38f05ad11a0e9cc"
+  },
+  "accepted_sr03_full_scan_reused": true,
+  "archive_member_names_used": [
+    "surveys/Asian Barometer Wave 1.sav",
+    "surveys/Asian Barometer Wave 4.sav",
+    "surveys/Asian Barometer Wave 5.sav"
+  ],
+  "branch": "agent/vozhd-trii-sr09pre-r03-asian-barometer",
+  "completion_token": "PRE553_SR09PRE_R03_ASIAN_BAROMETER_RECON_COMPLETE",
+  "exact_checkout_head": "491a2394e323c904128ca425ef9e793e33ca0d5d",
+  "exact_commands_scripts": [
+    "sha256sum surveys.zip and three extracted SAVs",
+    "extract exact three surveys/Asian Barometer Wave {1,4,5}.sav members only",
+    "sha256sum accepted checkout.zip and accepted deterministic SR03 archive",
+    "analyze_manifests.py over three accepted physical manifests",
+    "sav_raw_reader.py + raw_probe.py targeted scans for ID/country/weight/sentinel/MR burdens",
+    "build_returns.py"
+  ],
+  "extracted_source_sha256_before_probing": {
+    "Asian Barometer Wave 1.sav": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+    "Asian Barometer Wave 4.sav": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+    "Asian Barometer Wave 5.sav": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63"
+  },
+  "final_git_status": "NO_LOCAL_GIT_WORKTREE__CONNECTOR_ATOMIC_PUBLICATION_PATH; resulting remote commit and changed-file audit are returned separately in the HQ receipt",
+  "legacy_postgres_used_as_truth": false,
+  "library_bundles": [
+    {
+      "byte_size": 158180333,
+      "filename": "surveys.zip",
+      "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f"
+    },
+    {
+      "byte_size": 30357170,
+      "filename": "checkout.zip",
+      "role": "accepted SR03 R3 evidence package",
+      "sha256": "e58fd7cdd6e8587573e8cb94ca1df4cd8949cee5fdbc39042b739df6add1c232"
+    }
+  ],
+  "library_raw_source_files_unchanged": true,
+  "materialized_scratch_paths": [
+    "/mnt/data/sr09pre_r03_asian_barometer_private/surveys.zip",
+    "/mnt/data/sr09pre_r03_asian_barometer_private/sr03_accepted/checkout.zip"
+  ],
+  "output_file_sha256": {
+    "AUTHORITY_GAPS.csv": "4a154f28e4d6a6fd3441cb9669de573f60a90db2d2b97baba782306ebe1fa4b3",
+    "CROSS_WAVE_DRIFT.csv": "246ff6d76f5144a2eebb4edcce4760542be762119f38f63b473c887d764315d6",
+    "HOSTILE_SENTINELS.csv": "edb44755abba160093823a465e2e826890d4441da32d2b3097ddfe4736b11303",
+    "RESULT.json": "2d88647c5adad0021de012640aa2bfdef78d6086190cd4408bad77c0e0193753",
+    "RESULT.md": "bf784cd7792ea4bb43215305922066633eed12d9b70382950e26506139323681",
+    "SOURCE_BURDEN.csv": "1b3fa5bc1fde33019457a18c6a28ed7c6d30cde7ab9e664e5f551bb8c393886f"
+  },
+  "probe_receipt_self_hash": "EXCLUDED_FROM_SELF_CONTENT_TO_AVOID_RECURSIVE_HASH; compute externally after write",
+  "production_runtime_modified": false,
+  "source_sizes_bytes": {
+    "Asian Barometer Wave 1.sav": 3451655,
+    "Asian Barometer Wave 4.sav": 7735596,
+    "Asian Barometer Wave 5.sav": 10688196
+  },
+  "sources_fully_scanned_by_this_worker": [],
+  "status": "COMPLETE__NON_DISPOSITIVE_RECONNAISSANCE",
+  "target_reason_for_every_full_scan": {},
+  "targeted_raw_scan_reason": "Native-ID uniqueness/scope cannot be recovered from SR03 aggregate manifests; country support/distribution and exact replay cells likewise required targeted raw value reads. Targeted probe was read-only and hash-gated.",
+  "tool_dependency_versions": {
+    "accepted_SR03_reader": "pyreadstat per frozen SR03 probe; accepted package independently hash-bound",
+    "pandas": "2.2.3",
+    "pyreadstat": "not installed in worker container; no substitute normalization used",
+    "python": "3.13.5",
+    "targeted_raw_probe": "worker-private pure-Python read-only SPSS $FL2 compressed-data parser; validated variable order and row counts against accepted SR03 manifests"
+  },
+  "wave6_inspected_or_used_as_evidence": false,
+  "worker_id": "SR09-PRE-R03",
+  "worker_private_probe_script_sha256": {
+    "analyze_manifests.py": "e571a2b4295ec9c07d2fa77ce0c773d12f31b5d0ec270a88bf0b7a81f8736770",
+    "build_returns.py": "02c8037d1b6fcc84c41ce5f8183d3338b7fa25d97e03100bfcb12120c16e9860",
+    "raw_probe.py": "ceeffc68c9e19f7d0dd0d05d7fc9e2e5beaa4e304b8a742dcf23c64bc6dcd700",
+    "sav_raw_reader.py": "8d5e5f9e26dc52fdc5edfc141b1df07674fa63a79963aa3b2ce85784fe0d7548"
+  }
+}
