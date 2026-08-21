@@ -1,0 +1,13 @@
+{
+  "label": "PROJECTION_ONLY",
+  "full_source_frontier": {"rows": 97220, "variables": 613, "cells": 59595860},
+  "basis": "two-point linear extrapolation from completed S1=32 and S2=128 rows; not executed",
+  "estimates": {
+    "candidate_construction": {"peak_rss_bytes": 524931044864, "peak_rss_gib": 488.88013219833374, "wall_seconds": 21719.060728624412, "wall_hours": 6.033072424617892},
+    "i02_validation": {"peak_rss_bytes": 562266414080, "peak_rss_gib": 523.6514043807983, "wall_seconds": 30630.493219366006, "wall_hours": 8.50847033871278},
+    "parquet_persistence": {"peak_rss_bytes": 2292746098176, "peak_rss_gib": 2135.286199092865, "wall_seconds": 52209.591789033395, "wall_hours": 14.50266438584261, "disk_bytes": 20111406009.75, "disk_gib": 18.72922986106984},
+    "full_reopen": {"peak_rss_bytes": 2346982664192, "peak_rss_gib": 2185.7979373931885, "wall_seconds": 50547.08242378466, "wall_hours": 14.040856228829073}
+  },
+  "unsafe_scale_signal": "S3 reached the hard 4 GiB RSS tripwire before completion; full-source projections are plainly unsafe on this machine.",
+  "no_full_source_execution": true
+}

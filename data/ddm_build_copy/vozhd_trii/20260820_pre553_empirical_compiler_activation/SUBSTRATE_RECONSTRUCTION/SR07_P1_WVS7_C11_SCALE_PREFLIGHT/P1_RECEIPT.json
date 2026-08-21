@@ -1,0 +1,29 @@
+{
+  "worker_starting_head": "e41850512d8b7cb6265067f57a5c4a8e6c6bd4d9",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-sr07-p1-wvs7-c11-scale",
+  "source_name": "WVS Wave 7.sav",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "source_shape": {"rows": 97220, "variables": 613, "physical_cells": 59595860},
+  "decoder": "decode_sav(source_path)",
+  "encoding_override": null,
+  "scratch_driver_sha256": "3c9b89c0eae20c19139aa8a11c1b80eec1de6394078ab08e4b65905f06203eeb",
+  "execution_only_authority": "P1_EXECUTION_ONLY__NO_SOURCE_SEMANTIC_CERTIFICATION",
+  "hostile_user_missing_microproof": {
+    "source_row_ordinal": 49,
+    "variable_ordinal": 224,
+    "variable_name": "Q152",
+    "raw_storage_value": {"python_type": "float", "exact_text": "-2.0"},
+    "physical_missing_state": "FORMAT_USER_MISSING_RANGE",
+    "source_native_declaration": {"kind": "range", "lo": {"python_type": "float", "exact_text": "-5.0"}, "hi": {"python_type": "float", "exact_text": "-1.0"}},
+    "projection_preserves_raw_state_declaration_row_variable": true,
+    "semantic_interpretation_performed": false
+  },
+  "completed_stages": ["S1", "S2"],
+  "s2_repeat_determinism": true,
+  "s3": {"attempted": true, "completed": false, "tripwire_fired": true, "tripwire_bytes": 4296179712, "child_returncode": -9},
+  "s4": {"attempted": false, "reason": "S3 tripwire"},
+  "forbidden_paths_used": {"postgresql": false, "sqlite": false, "database_url": false, "persistent_duckdb": false, "runtime_modified": false, "source_modified": false},
+  "final_disposition": "P1_BLOCKED__RESOURCE_TRIPWIRE",
+  "required_token": "PRE553_SR07_P1_WVS7_C11_SCALE_PREFLIGHT_RETURNED"
+}
