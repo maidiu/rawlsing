@@ -353,6 +353,25 @@ def stage_a_oracle(t,lookup_row=5):
     x=pv(["Q152","Q153","Q154","Q155","Q156"]); out["Q03_WVS_Q152_Q153_JOINT"]=list(pv(["Q152","Q153"]).groupby(["Q152","Q153"]).size().reset_index(name="n").itertuples(index=False,name=None)); out["Q04_WVS_Q152_TO_Q156_5WAY"]=list(x.groupby(["Q152","Q153","Q154","Q155","Q156"]).size().reset_index(name="n").itertuples(index=False,name=None))
     z=pv(["I_PSU","Q152"]); out["Q05_WVS_RISKSET_Q152"]=[[int(((z.I_PSU=="N:1")&(z.Q152=="N:1")).sum())]]; w=pv(["Q152","W_WEIGHT"]); out["Q06_WVS_WEIGHTED_Q152"]=[[float(w.loc[(w.Q152=="N:1")&(w.W_WEIGHT.notna()),"W_WEIGHT"].map(lambda x:float(x[2:])).sum())]]; out["Q07_WVS_RESPONDENT_LOOKUP"]=e[(e.source_id=="WVS_W7")&(e.row_ordinal==lookup_row)].sort_values("var_ordinal")[REL_COLS["events"]].itertuples(index=False,name=None)
     xx=pv(["Q152","Q153"]).merge(r[r.source_id=="WVS_W7"],on="row_ordinal"); out["Q08_BRANCH_CONDITIONED_COTRAVEL"]=list(xx[xx.benchmark_branch_id==1].groupby(["Q152","Q153"]).size().reset_index(name="n").itertuples(index=False,name=None)); out["Q09_XOR_COORDINATE"]=list(xx[(xx.benchmark_coord_a+xx.benchmark_coord_b)==1].groupby("Q152").size().reset_index(name="n").itertuples(index=False,name=None)); out["Q10_RECURSIVE_SUBGROUP"]=list(xx[(xx.benchmark_risk_eligible==1)&xx.benchmark_branch_id.isin([1,2])&(xx.benchmark_coord_a==1)].groupby(["Q152","Q153"]).size().reset_index(name="n").itertuples(index=False,name=None)); out["Q11_SIMPSON_GRID_SHAPE"]=list(xx.groupby(["benchmark_coord_a","benchmark_branch_id","Q152"]).size().reset_index(name="n").itertuples(index=False,name=None)); out["Q12_LITS_WEIGHT_STATE_COUNTS"]=list(g(["var_name","physical_state"],lambda x:(x.source_id=="LITS_I")&x.var_name.isin(["weight_0","weight_1","weight_2"]))); out["Q13_LITS_Q301_1_DISTRIBUTION"]=list(g(["raw_value_key"],lambda x:(x.source_id=="LITS_I")&(x.var_name=="q301_1"))); out["Q14_NATIVE_IDENTITY_HOSTILES"]=[["WVS_D_INTERVIEW_target",int(((e.source_id=="WVS_W7")&(e.var_name=="D_INTERVIEW")&(e.raw_value_key=="N:858069901")).sum())],["LITS_id_distinct",int(r[r.source_id=="LITS_I"].respondent_key.nunique())]]; out["Q15_MINORITY_GRID_SHAPE"]=list(xx.groupby(["benchmark_branch_id","Q152"]).size().reset_index(name="n").itertuples(index=False,name=None)); return {k:stage_a_norm(v) for k,v in out.items()}
+def shape_agnostic_corrupted_oracle_value(value):
+    sentinel="__SR04_CORRUPTED_ORACLE__"
+    if isinstance(value,dict):
+        if not value: return {sentinel:True}
+        first=sorted(value,key=lambda k:json.dumps(k,ensure_ascii=False,sort_keys=True))[0]
+        return {k:v for k,v in value.items() if k!=first}
+    if isinstance(value,list):
+        return value[1:] if value else [sentinel]
+    if value is None: return sentinel
+    return sentinel if value!=sentinel else sentinel+"_2"
+def oracle_negative_test_shape_proof(out,checkpoint):
+    synthetic_original=[["N:1",2],["N:2",3]]; real_original={"N:1":2,"N:2":3}
+    synthetic_before=json.loads(json.dumps(synthetic_original)); real_before=json.loads(json.dumps(real_original)); before={p.name:sha256(p) for p in checkpoint.iterdir() if p.is_file()}
+    synthetic_corrupted=shape_agnostic_corrupted_oracle_value(synthetic_original); real_corrupted=shape_agnostic_corrupted_oracle_value(real_original)
+    after={p.name:sha256(p) for p in checkpoint.iterdir() if p.is_file()}
+    synthetic_original_unchanged=synthetic_original==synthetic_before; real_original_unchanged=real_original==real_before
+    receipt={"token":"PRE553_SR04_ORACLE_NEGATIVE_TEST_SHAPE_PROOF_PASS","token_present":True,"synthetic_original":synthetic_original,"synthetic_corrupted":synthetic_corrupted,"real_like_original":real_original,"real_like_corrupted":real_corrupted,"synthetic_list_corruption_pass":synthetic_corrupted!=synthetic_original,"real_dict_corruption_pass":real_corrupted!=real_original,"synthetic_original_unchanged":synthetic_original_unchanged,"real_original_unchanged":real_original_unchanged,"synthetic_wrong_oracle_detected":synthetic_original!=synthetic_corrupted,"real_wrong_oracle_detected":real_original!=real_corrupted,"dict_empty_supported":shape_agnostic_corrupted_oracle_value({})!={},"list_empty_supported":shape_agnostic_corrupted_oracle_value([])!=[],"scalar_supported":shape_agnostic_corrupted_oracle_value(7)!=7,"null_supported":shape_agnostic_corrupted_oracle_value(None)!=None,"no_exception":True,"raw_source_decode":False,"checkpoint_mutated":before!=after,"carrier_court_executed":False,"DATABASE_URL_unused":True}
+    if not all([receipt["synthetic_list_corruption_pass"],receipt["real_dict_corruption_pass"],synthetic_original_unchanged,real_original_unchanged,receipt["synthetic_wrong_oracle_detected"],receipt["real_wrong_oracle_detected"],receipt["dict_empty_supported"],receipt["list_empty_supported"],receipt["scalar_supported"],receipt["null_supported"],not receipt["checkpoint_mutated"]]): raise RuntimeError("BLOCKED_SR04_ORACLE_NEGATIVE_TEST_SHAPE_PROOF:"+json.dumps(receipt,ensure_ascii=False,sort_keys=True))
+    out.mkdir(parents=True,exist_ok=True); (out/"ORACLE_NEGATIVE_TEST_SHAPE_PROOF_RECEIPT.json").write_text(json.dumps(receipt,ensure_ascii=False,indent=2,sort_keys=True)+"\n"); (out/"ORACLE_NEGATIVE_TEST_SHAPE_PROOF_STDOUT.txt").write_text(receipt["token"]+"\n"); return receipt
 def shared_carrier_court(t,oracle,out,work,fixture_name,lookup_row):
     dig=stage_a_digest_tables(t); sql_map=shared_query_map(lookup_row); (work/"synthetic" if fixture_name=="SYNTHETIC" else work/"neutral").mkdir(exist_ok=True)
     observed={}; lifecycle=[]; candidate_metrics={}
@@ -397,7 +416,7 @@ def shared_carrier_court(t,oracle,out,work,fixture_name,lookup_row):
     for name in ["PARQUET_DUCKDB_DIRECT","DUCKDB_NATIVE","SQLITE","POSTGRES_EPHEMERAL"]:
         checks["oracle_comparisons"][name]=all(observed[name].get(q)==oracle[q] for q in sql_map); checks["replay_comparisons"][name]=observed[name+"_replay"]==dig
     checks["oracle_mismatch_queries"]={name:[q for q in sql_map if observed[name].get(q)!=oracle[q]] for name in ["PARQUET_DUCKDB_DIRECT","DUCKDB_NATIVE","SQLITE","POSTGRES_EPHEMERAL"]}
-    checks["negative_tests"]["wrong_oracle_detected"]=observed["SQLITE"]["Q02_WVS_Q152_DISTRIBUTION"]!=oracle["Q02_WVS_Q152_DISTRIBUTION"][:-1]
+    checks["negative_tests"]["wrong_oracle_detected"]=observed["SQLITE"]["Q02_WVS_Q152_DISTRIBUTION"]!=shape_agnostic_corrupted_oracle_value(oracle["Q02_WVS_Q152_DISTRIBUTION"])
     bad=pd.read_sql_query("SELECT * FROM events",sqlite3.connect(":memory:")) if False else t["events"].copy(); bad.loc[0,"raw_value_key"]="CORRUPTED"; checks["negative_tests"]["stored_corruption_detected"]=digest_rows(bad,REL_COLS["events"],["source_id","var_ordinal","row_ordinal"])!=dig["events"]
     if not all(checks["oracle_comparisons"].values()) or not all(checks["replay_comparisons"].values()) or not all(checks["negative_tests"].values()) or not checks["shared_budget_enforcement_path"]: raise RuntimeError("BLOCKED_SR04_SHARED_PATH_CONTRACT_FAILURE:"+json.dumps(checks,sort_keys=True))
     checks["candidate_measurements"]=candidate_metrics; checks["candidate_dispositions"]={name:("MEASURED_CORRECT" if checks["oracle_comparisons"][name] and checks["replay_comparisons"][name] else "CARRIER_DISQUALIFIED_CORRECTNESS") for name in checks["oracle_comparisons"]}
@@ -442,7 +461,7 @@ def cli_separation_proof(out,work):
     proof={"token":"PRE553_SR04_B1_B2_CLI_SEPARATION_PASS","synthetic_b1_checkpoint_created":checkpoint.exists(),"synthetic_b1_candidate_execution_started":b1["candidate_execution_started"],"synthetic_b2_checkpoint_only":b2["checkpoint_only"],"synthetic_b2_shared_carrier_court_executed":b2["shared_court_executed"],"synthetic_b2_final_package_path_executed":b2["package"]["files"]==["CANDIDATE_RESULTS.json","ENVIRONMENT.json","FIXTURE_DIGESTS.json","FIXTURE_MANIFEST.json","PROVISIONAL_SELECTION.json","QUERY_ORACLE.json","RECEIPT.json","STDERR.txt","STDOUT.txt"],"synthetic_b2_corrupted_checkpoint_rejected":rejected,"synthetic_b2_raw_source_decode":b2["raw_source_decode"],"DATABASE_URL_unused":True,"duplicate_truth_implementations":False,"b2_package":b2["package"]}
     out.mkdir(parents=True,exist_ok=True); (out/"CLI_PROOF_RECEIPT.json").write_text(json.dumps(proof,indent=2,sort_keys=True)+"\n"); (out/"CLI_PROOF_STDOUT.txt").write_text(proof["token"]+"\n"); return proof
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--checkpoint-dir",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); ap.add_argument("--stage-b1",action="store_true"); ap.add_argument("--stage-b2",action="store_true"); ap.add_argument("--cli-proof",action="store_true"); ap.add_argument("--postgres-utf8-proof",action="store_true"); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--checkpoint-dir",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); ap.add_argument("--stage-b1",action="store_true"); ap.add_argument("--stage-b2",action="store_true"); ap.add_argument("--cli-proof",action="store_true"); ap.add_argument("--postgres-utf8-proof",action="store_true"); ap.add_argument("--oracle-negative-proof",action="store_true"); args=ap.parse_args()
     if args.self_test:
         assert raw_repr(-1)[0]=="N:-1" and free_bytes("/private/tmp")>0; print("SR04_SELF_TEST_PASS"); return 0
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); work=Path(args.work_root) if args.work_root else Path(tempfile.mkdtemp(prefix="sr04-",dir="/private/tmp")); work.mkdir(parents=True,exist_ok=True)
@@ -454,6 +473,11 @@ def main():
             if not args.checkpoint_dir: raise RuntimeError("PostgreSQL UTF-8 proof requires --checkpoint-dir")
             print(json.dumps(postgres_utf8_transport_proof(out,work,Path(args.checkpoint_dir)),ensure_ascii=False,indent=2,sort_keys=True)); return 0
         except Exception as e: (out/"POSTGRES_UTF8_TRANSPORT_PROOF_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
+    if args.oracle_negative_proof:
+        try:
+            if not args.checkpoint_dir: raise RuntimeError("Oracle negative proof requires --checkpoint-dir")
+            print(json.dumps(oracle_negative_test_shape_proof(out,Path(args.checkpoint_dir)),ensure_ascii=False,indent=2,sort_keys=True)); return 0
+        except Exception as e: (out/"ORACLE_NEGATIVE_TEST_SHAPE_PROOF_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
     if args.stage_b1:
         try:
             if not args.checkpoint_dir: raise RuntimeError("B1 requires --checkpoint-dir")
