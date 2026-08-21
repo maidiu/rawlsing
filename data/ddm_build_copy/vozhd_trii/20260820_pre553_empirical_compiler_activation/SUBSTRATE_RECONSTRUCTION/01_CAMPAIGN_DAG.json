@@ -1,6 +1,6 @@
 {
   "campaign": "PRE553_EMPIRICAL_SUBSTRATE_RECONSTRUCTION_CARRIER_RECERTIFICATION",
-  "status": "ACTIVE_CONTROL__SR06_ACCEPTED__SR07_SR08_P0_ACTIVE__SR09_PRE_RECON_PARALLEL",
+  "status": "ACTIVE_CONTROL__SR06_ACCEPTED__SR07_SR08_P0_ACTIVE__SR09_PRE_RECON_COMPLETE",
   "frozen_parent": "9188dc9fb7a8b92b981f3d3f94754cd6137d17b1",
   "phases": [
     {"id":"SR00","name":"command_freeze","owner":"HQ_BROWSER","requires":[],"gate":"G-SR00","status":"ACCEPTED"},
@@ -12,9 +12,9 @@
     {"id":"SR06","name":"decoder_c11_implementation","owner":"CODEX_IMPLEMENTATION+HQ_ADJ","requires":["SR04","SR05"],"gate":"G-SR06","status":"ACCEPTED","closure":"37_SR06_FINAL_ACCEPTANCE_AND_PROVING_SOURCE_RELEASE.md","runtime_commit":"606813b01021eb2555017e028d5742b1e6f12e94"},
     {"id":"SR07","name":"wvs7_hostile_certification","owner":"LOCAL_CODEX_DUMB_EXECUTOR+HQ_ADJ","requires":["SR06"],"gate":"G-SR07","status":"P0_SCALE_PREFLIGHT_ACTIVE","authority":"38_SR07_SR08_REAL_SOURCE_SCALE_PREFLIGHT_AUTHORITY.md"},
     {"id":"SR08","name":"lits1_hostile_certification","owner":"LOCAL_CODEX_DUMB_EXECUTOR+HQ_ADJ","requires":["SR06"],"gate":"G-SR08","status":"P0_SCALE_PREFLIGHT_ACTIVE","authority":"38_SR07_SR08_REAL_SOURCE_SCALE_PREFLIGHT_AUTHORITY.md"},
-    {"id":"SR09","name":"remaining_source_batch_certification","owner":"HQ_BROWSER+LOCAL_CODEX_DUMB_EXECUTOR","requires":["SR07","SR08"],"gate":"G-SR09","status":"BLOCKED","pre_reconnaissance":"R01-R09_PARALLEL_ACTIVE__R10_HELD_FOR_RETURNS"},
+    {"id":"SR09","name":"remaining_source_batch_certification","owner":"HQ_BROWSER+LOCAL_CODEX_DUMB_EXECUTOR","requires":["SR07","SR08"],"gate":"G-SR09","status":"BLOCKED","pre_reconnaissance":"R01_R10_COMPLETE__ACCEPTED_NON_DISPOSITIVE__39_SR09_PRE_RECON_R10_ADJUDICATION_AND_CAMPAIGN_CLOSE.md","r10_commit":"267426e3b5f06473ffc9cee6075609874529ab77"},
     {"id":"SR10","name":"legacy_surface_disposition","owner":"HQ_BROWSER","requires":["SR02","SR09"],"gate":"G-SR10","status":"BLOCKED"},
-    {"id":"SR11","name":"populated_pre553_reentry","owner":"LOCAL_CODEX_DUMB_EXECUTOR+HQ_ADJ","requires":["SR09","SR10"],"gate":"G-SR11","status":"BLOCKED"},
-    {"id":"SR12","name":"reservoir_reclosure_resume","owner":"HQ_BROWSER+LOCAL_CODEX_DUMB_EXECUTOR","requires":["SR11"],"gate":"G-SR12","status":"BLOCKED"}
+    {"id":"SR11","name":"populated_pre553_reentry","owner":"LOCAL_DUMB_EXECUTOR+HQ_ADJ","requires":["SR09","SR10"],"gate":"G-SR11","status":"BLOCKED"},
+    {"id":"SR12","name":"reservoir_reclosure_resume","owner":"HQ_BROWSER+LOCAL_DUMB_EXECUTOR","requires":["SR11"],"gate":"G-SR12","status":"BLOCKED"}
   ]
 }
