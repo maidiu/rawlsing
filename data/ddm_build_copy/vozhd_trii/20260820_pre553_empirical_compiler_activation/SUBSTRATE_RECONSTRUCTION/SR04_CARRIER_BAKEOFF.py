@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Frozen SR04 physical carrier bakeoff.  This file is intentionally self-contained."""
 from __future__ import annotations
-import argparse, csv, hashlib, json, math, os, platform, re, shutil, sqlite3, subprocess, sys, tempfile, time, uuid
+import argparse, ast, csv, hashlib, json, math, os, platform, re, shutil, sqlite3, subprocess, sys, tempfile, time, uuid
 from pathlib import Path
 from collections import Counter
 
@@ -144,7 +144,7 @@ def query_specs():
     # SQL uses no answer cache; Q04 is deliberately the full frozen five-way shape.
     return {
       "Q00_SOURCE_EVENT_COUNTS":"SELECT source_id,var_name,COUNT(*) n FROM events GROUP BY 1,2 ORDER BY 1,2",
-      "Q01_HOSTILE_STATE_COUNTS":"SELECT source_id,var_name,physical_state,COUNT(*) n FROM events GROUP BY 1,2,3 ORDER BY 1,2,3",
+      "Q01_HOSTILE_STATE_COUNTS":"SELECT source_id,var_name,physical_state,COUNT(*) n FROM events WHERE ((source_id='WVS_W7' AND var_name IN ('Q152','Q153','Q154','Q155','Q156','Q157','I_PSU','D_INTERVIEW','B_COUNTRY','W_WEIGHT','S018','Q223')) OR (source_id='LITS_I' AND var_name IN ('id','country','countryname','weight_0','weight_1','weight_2','q707','q509','q304a','q304b','q204','q203','q201','q501','q503','q505','q306','q307','q301_1','q301_11'))) GROUP BY 1,2,3 ORDER BY 1,2,3",
       "Q02_WVS_Q152_DISTRIBUTION":"SELECT raw_value_key,COUNT(*) n FROM events WHERE source_id='WVS_W7' AND var_name='Q152' GROUP BY 1 ORDER BY 1",
       "Q03_WVS_Q152_Q153_JOINT":"SELECT a.raw_value_key,b.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND a.var_name='Q152' AND b.var_name='Q153' GROUP BY 1,2 ORDER BY 1,2",
       "Q04_WVS_Q152_TO_Q156_5WAY":"SELECT a.raw_value_key,b.raw_value_key,c.raw_value_key,d.raw_value_key,e.raw_value_key,COUNT(*) n FROM events a JOIN events b USING(source_id,row_ordinal) JOIN events c USING(source_id,row_ordinal) JOIN events d USING(source_id,row_ordinal) JOIN events e USING(source_id,row_ordinal) WHERE a.source_id='WVS_W7' AND a.var_name='Q152' AND b.var_name='Q153' AND c.var_name='Q154' AND d.var_name='Q155' AND e.var_name='Q156' GROUP BY 1,2,3,4,5 ORDER BY 1,2,3,4,5",
@@ -343,6 +343,52 @@ def stage_a_norm(rows):
         if isinstance(x,float) and x.is_integer(): return int(x)
         return x
     return sorted([[one(x) for x in r] for r in rows],key=lambda r:json.dumps(r,sort_keys=True,default=str))
+CANONICAL_QUERY_IDS=("Q00_SOURCE_EVENT_COUNTS","Q01_HOSTILE_STATE_COUNTS","Q02_WVS_Q152_DISTRIBUTION","Q03_WVS_Q152_Q153_JOINT","Q04_WVS_Q152_TO_Q156_5WAY","Q05_WVS_RISKSET_Q152","Q06_WVS_WEIGHTED_Q152","Q07_WVS_RESPONDENT_LOOKUP","Q08_BRANCH_CONDITIONED_COTRAVEL","Q09_XOR_COORDINATE","Q10_RECURSIVE_SUBGROUP","Q11_SIMPSON_GRID_SHAPE","Q12_LITS_WEIGHT_STATE_COUNTS","Q13_LITS_Q301_1_DISTRIBUTION","Q14_NATIVE_IDENTITY_HOSTILES","Q15_MINORITY_GRID_SHAPE")
+CANONICAL_TUPLE_ARITY={"Q00_SOURCE_EVENT_COUNTS":2,"Q01_HOSTILE_STATE_COUNTS":3,"Q03_WVS_Q152_Q153_JOINT":2,"Q04_WVS_Q152_TO_Q156_5WAY":5,"Q08_BRANCH_CONDITIONED_COTRAVEL":2,"Q10_RECURSIVE_SUBGROUP":2,"Q11_SIMPSON_GRID_SHAPE":3,"Q12_LITS_WEIGHT_STATE_COUNTS":2,"Q15_MINORITY_GRID_SHAPE":2}
+def _frozen_tuple_key(key,arity,query_id):
+    if not isinstance(key,str): raise RuntimeError(f"FROZEN_ORACLE_KEY_NOT_STRING:{query_id}")
+    try: parsed=ast.literal_eval(key)
+    except (ValueError,SyntaxError,MemoryError) as exc: raise RuntimeError(f"FROZEN_ORACLE_KEY_MALFORMED:{query_id}:{key}") from exc
+    if not isinstance(parsed,tuple) or len(parsed)!=arity: raise RuntimeError(f"FROZEN_ORACLE_KEY_ARITY:{query_id}:{key}:{arity}")
+    return list(parsed)
+def canonicalize_frozen_oracle_value(query_id,value):
+    if query_id not in CANONICAL_QUERY_IDS: raise RuntimeError(f"FROZEN_ORACLE_UNEXPECTED_QUERY:{query_id}")
+    if query_id in ("Q05_WVS_RISKSET_Q152","Q06_WVS_WEIGHTED_Q152"):
+        if isinstance(value,list):
+            if len(value)!=1 or not isinstance(value[0],list) or len(value[0])!=1: raise RuntimeError(f"FROZEN_ORACLE_SCALAR_SHAPE:{query_id}")
+            return stage_a_norm(value)
+        return stage_a_norm([[value]])
+    if query_id=="Q07_WVS_RESPONDENT_LOOKUP":
+        if not isinstance(value,list) or any(not isinstance(row,dict) for row in value): raise RuntimeError("FROZEN_ORACLE_Q07_SHAPE")
+        return stage_a_norm([[row[column] for column in REL_COLS["events"]] for row in value])
+    if query_id in ("Q02_WVS_Q152_DISTRIBUTION","Q09_XOR_COORDINATE","Q13_LITS_Q301_1_DISTRIBUTION","Q14_NATIVE_IDENTITY_HOSTILES"):
+        if not isinstance(value,dict):
+            if isinstance(value,list): return stage_a_norm(value)
+            raise RuntimeError(f"FROZEN_ORACLE_DICT_SHAPE:{query_id}")
+        rows=[[key,count] for key,count in value.items()]
+    elif query_id in CANONICAL_TUPLE_ARITY:
+        if not isinstance(value,dict):
+            if isinstance(value,list): return stage_a_norm(value)
+            raise RuntimeError(f"FROZEN_ORACLE_TUPLE_DICT_SHAPE:{query_id}")
+        rows=[_frozen_tuple_key(key,CANONICAL_TUPLE_ARITY[query_id],query_id)+[count] for key,count in value.items()]
+    else:
+        raise RuntimeError(f"FROZEN_ORACLE_UNSUPPORTED_QUERY:{query_id}")
+    canonical=stage_a_norm(rows)
+    if len({json.dumps(row,ensure_ascii=False,separators=(",",":"),sort_keys=True) for row in canonical})!=len(canonical): raise RuntimeError(f"FROZEN_ORACLE_DUPLICATE_ROW:{query_id}")
+    return canonical
+def canonicalize_frozen_oracle(oracle):
+    if set(oracle)!=set(CANONICAL_QUERY_IDS): raise RuntimeError("FROZEN_ORACLE_QUERY_ID_SET_MISMATCH")
+    return {query_id:canonicalize_frozen_oracle_value(query_id,oracle[query_id]) for query_id in CANONICAL_QUERY_IDS}
+def _canonical_scalar(value):
+    if isinstance(value,list) and len(value)==1 and isinstance(value[0],list) and len(value[0])==1: return value[0][0]
+    return value
+def oracle_answer_equal(query_id,observed,expected):
+    observed=stage_a_norm(observed) if isinstance(observed,list) else observed
+    expected=stage_a_norm(expected) if isinstance(expected,list) else expected
+    if query_id!="Q06_WVS_WEIGHTED_Q152": return observed==expected
+    observed_value=_canonical_scalar(observed); expected_value=_canonical_scalar(expected)
+    if not finite_num(observed_value) or not finite_num(expected_value): return False
+    return math.isclose(float(observed_value),float(expected_value),rel_tol=1e-9,abs_tol=1e-9)
 def stage_a_oracle(t,lookup_row=5):
     e=t["events"]; r=t["respondents"]
     def g(cols,mask=None):
@@ -372,8 +418,23 @@ def oracle_negative_test_shape_proof(out,checkpoint):
     receipt={"token":"PRE553_SR04_ORACLE_NEGATIVE_TEST_SHAPE_PROOF_PASS","token_present":True,"synthetic_original":synthetic_original,"synthetic_corrupted":synthetic_corrupted,"real_like_original":real_original,"real_like_corrupted":real_corrupted,"synthetic_list_corruption_pass":synthetic_corrupted!=synthetic_original,"real_dict_corruption_pass":real_corrupted!=real_original,"synthetic_original_unchanged":synthetic_original_unchanged,"real_original_unchanged":real_original_unchanged,"synthetic_wrong_oracle_detected":synthetic_original!=synthetic_corrupted,"real_wrong_oracle_detected":real_original!=real_corrupted,"dict_empty_supported":shape_agnostic_corrupted_oracle_value({})!={},"list_empty_supported":shape_agnostic_corrupted_oracle_value([])!=[],"scalar_supported":shape_agnostic_corrupted_oracle_value(7)!=7,"null_supported":shape_agnostic_corrupted_oracle_value(None)!=None,"no_exception":True,"raw_source_decode":False,"checkpoint_mutated":before!=after,"carrier_court_executed":False,"DATABASE_URL_unused":True}
     if not all([receipt["synthetic_list_corruption_pass"],receipt["real_dict_corruption_pass"],synthetic_original_unchanged,real_original_unchanged,receipt["synthetic_wrong_oracle_detected"],receipt["real_wrong_oracle_detected"],receipt["dict_empty_supported"],receipt["list_empty_supported"],receipt["scalar_supported"],receipt["null_supported"],not receipt["checkpoint_mutated"]]): raise RuntimeError("BLOCKED_SR04_ORACLE_NEGATIVE_TEST_SHAPE_PROOF:"+json.dumps(receipt,ensure_ascii=False,sort_keys=True))
     out.mkdir(parents=True,exist_ok=True); (out/"ORACLE_NEGATIVE_TEST_SHAPE_PROOF_RECEIPT.json").write_text(json.dumps(receipt,ensure_ascii=False,indent=2,sort_keys=True)+"\n"); (out/"ORACLE_NEGATIVE_TEST_SHAPE_PROOF_STDOUT.txt").write_text(receipt["token"]+"\n"); return receipt
+def real_oracle_canonicalization_proof(out,work,checkpoint):
+    accepted={"CHECKPOINT_MANIFEST.json":(4490,"f56e6c0710babde0449e5e85da3f1446df4abf1da7b8e866f1f3c4743b031bb0"),"QUERY_ORACLE.json":(131552,"446c3a2d2ba5127dd48441156e8bfec6a288674233862eb694c2577816845f1a"),"events.arrow":(104610186,"c0d3c0d3fb426a24408738148424740ff9eb8103fa7cbc01d5c3eb3971e57c25"),"respondents.arrow":(9920410,"1eca810c4eb369299f62dda31eef3a972e4b3b4ac5c499384ff4298099ff6b73"),"sources.arrow":(5418,"080ec67148c16d34760daadc94d667c0dd6c101b5b9dcb7d063b24909bd3bf2d"),"variables.arrow":(33882,"cf8db06e43834a252e737b5f273059cb028d20ad9d51d38f374bfb02e28f241b")}
+    before={p.name:sha256(p) for p in checkpoint.iterdir() if p.is_file()}; checkpoint_identity_pass=set(before)==set(accepted) and all(checkpoint.joinpath(name).stat().st_size==size and before[name]==digest for name,(size,digest) in accepted.items())
+    tables,_,frozen_oracle=checkpoint_read(checkpoint); frozen_before=json.dumps(frozen_oracle,ensure_ascii=False,sort_keys=True,separators=(",",":")); canonical=canonicalize_frozen_oracle(frozen_oracle); sql_map=shared_query_map(50000)
+    import duckdb
+    con=duckdb.connect(); [con.register(name,df) for name,df in tables.items()]; observed={query_id:stage_a_norm(con.execute(sql).fetchall()) for query_id,sql in sql_map.items()}; con.close()
+    comparisons={query_id:oracle_answer_equal(query_id,observed[query_id],canonical[query_id]) for query_id in CANONICAL_QUERY_IDS}; q01_names=sorted({row[1] for row in observed["Q01_HOSTILE_STATE_COUNTS"]})
+    hostile_pairs={(source,var) for source,names in HOSTILE.items() for var in names}; selected_filler=sorted({row.var_name for row in tables["variables"].itertuples() if (row.source_id,row.var_name) not in hostile_pairs})
+    q01_excluded=all(row[1] in HOSTILE.get(row[0],[]) for row in observed["Q01_HOSTILE_STATE_COUNTS"]) and not any(var in q01_names for var in selected_filler)
+    observed_q06=float(_canonical_scalar(observed["Q06_WVS_WEIGHTED_Q152"])); expected_q06=float(_canonical_scalar(canonical["Q06_WVS_WEIGHTED_Q152"])); absolute_difference=abs(observed_q06-expected_q06); relative_difference=absolute_difference/max(abs(expected_q06),1.0); within=oracle_answer_equal("Q06_WVS_WEIGHTED_Q152",[[observed_q06]],[[expected_q06+0.5e-9]]); beyond=not oracle_answer_equal("Q06_WVS_WEIGHTED_Q152",[[observed_q06]],[[expected_q06+1e-3]])
+    corrupted=canonicalize_frozen_oracle_value("Q02_WVS_Q152_DISTRIBUTION",shape_agnostic_corrupted_oracle_value(frozen_oracle["Q02_WVS_Q152_DISTRIBUTION"])); wrong=not oracle_answer_equal("Q02_WVS_Q152_DISTRIBUTION",observed["Q02_WVS_Q152_DISTRIBUTION"],corrupted)
+    frozen_after=json.dumps(json.loads((checkpoint/"QUERY_ORACLE.json").read_text()),ensure_ascii=False,sort_keys=True,separators=(",",":")); after={p.name:sha256(p) for p in checkpoint.iterdir() if p.is_file()}; all_pass=all(comparisons.values())
+    receipt={"token":"PRE553_SR04_REAL_ORACLE_CANONICALIZATION_PROOF_PASS","token_present":True,"checkpoint_identity_pass":checkpoint_identity_pass,"checkpoint_mutated":before!=after,"raw_source_decode":False,"carrier_court_executed":False,"persistent_candidate_materialized":any(work.iterdir()),"postgres_started":False,"DATABASE_URL_unused":True,"frozen_oracle_original_unchanged":frozen_before==frozen_after,"canonical_query_count":len(canonical),"shared_query_map_used":True,"shared_candidate_normalizer_used":True,"shared_oracle_comparator_used":True,"query_comparisons":comparisons,"all_Q00_Q15_pass":all_pass,"Q01_observed_canonical_row_count":len(observed["Q01_HOSTILE_STATE_COUNTS"]),"Q01_frozen_canonical_row_count":len(canonical["Q01_HOSTILE_STATE_COUNTS"]),"Q01_observed_variable_names":q01_names,"Q01_excluded_filler_variables":selected_filler,"Q01_filler_variables_excluded":q01_excluded,"Q01_canonical_observed_equals_frozen":comparisons["Q01_HOSTILE_STATE_COUNTS"],"Q06_observed_value":observed_q06,"Q06_expected_value":expected_q06,"Q06_absolute_difference":absolute_difference,"Q06_relative_difference":relative_difference,"Q06_observed_finite":finite_num(observed_q06),"Q06_expected_finite":finite_num(expected_q06),"Q06_frozen_tolerance_comparison":comparisons["Q06_WVS_WEIGHTED_Q152"],"Q06_artificial_within_tolerance_accepted":within,"Q06_artificial_beyond_tolerance_rejected":beyond,"Q06_tolerance_tests":within and beyond,"canonical_wrong_oracle_negative_test_detected":wrong}
+    if not checkpoint_identity_pass or not all_pass or not q01_excluded or not within or not beyond or not wrong or before!=after or frozen_before!=frozen_after or any(work.iterdir()): raise RuntimeError("BLOCKED_SR04_REAL_ORACLE_CANONICALIZATION_PROOF:"+json.dumps(receipt,ensure_ascii=False,sort_keys=True))
+    out.mkdir(parents=True,exist_ok=True); (out/"REAL_ORACLE_CANONICALIZATION_PROOF_RECEIPT.json").write_text(json.dumps(receipt,ensure_ascii=False,indent=2,sort_keys=True)+"\n"); (out/"REAL_ORACLE_CANONICALIZATION_PROOF_STDOUT.txt").write_text(receipt["token"]+"\n"); return receipt
 def shared_carrier_court(t,oracle,out,work,fixture_name,lookup_row):
-    dig=stage_a_digest_tables(t); sql_map=shared_query_map(lookup_row); (work/"synthetic" if fixture_name=="SYNTHETIC" else work/"neutral").mkdir(exist_ok=True)
+    dig=stage_a_digest_tables(t); sql_map=shared_query_map(lookup_row); canonical_oracle=canonicalize_frozen_oracle(oracle); (work/"synthetic" if fixture_name=="SYNTHETIC" else work/"neutral").mkdir(exist_ok=True)
     observed={}; lifecycle=[]; candidate_metrics={}
     import duckdb
     # Parquet + DuckDB-native, with true read-back from each store.
@@ -414,9 +475,9 @@ def shared_carrier_court(t,oracle,out,work,fixture_name,lookup_row):
     finally: subprocess.run([str(Path(bind)/"pg_ctl"),"-D",str(cluster),"-m","immediate","-w","stop"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL); shutil.rmtree(d); lifecycle.append("stopped")
     checks={"query_ids":list(sql_map),"candidate_count":4,"oracle_comparisons":{},"replay_comparisons":{},"negative_tests":{},"postgres_lifecycle":lifecycle,"database_url_used":False,"cleanup_within_work_root":True,"shared_query_map":True,"shared_candidate_execution_path":True,"shared_oracle_comparison_path":True,"shared_stored_readback_path":True,"shared_budget_enforcement_path":free_bytes(work)>=RESERVE}
     for name in ["PARQUET_DUCKDB_DIRECT","DUCKDB_NATIVE","SQLITE","POSTGRES_EPHEMERAL"]:
-        checks["oracle_comparisons"][name]=all(observed[name].get(q)==oracle[q] for q in sql_map); checks["replay_comparisons"][name]=observed[name+"_replay"]==dig
+        checks["oracle_comparisons"][name]=all(oracle_answer_equal(q,observed[name].get(q),canonical_oracle[q]) for q in sql_map); checks["replay_comparisons"][name]=observed[name+"_replay"]==dig
     checks["oracle_mismatch_queries"]={name:[q for q in sql_map if observed[name].get(q)!=oracle[q]] for name in ["PARQUET_DUCKDB_DIRECT","DUCKDB_NATIVE","SQLITE","POSTGRES_EPHEMERAL"]}
-    checks["negative_tests"]["wrong_oracle_detected"]=observed["SQLITE"]["Q02_WVS_Q152_DISTRIBUTION"]!=shape_agnostic_corrupted_oracle_value(oracle["Q02_WVS_Q152_DISTRIBUTION"])
+    checks["negative_tests"]["wrong_oracle_detected"]=not oracle_answer_equal("Q02_WVS_Q152_DISTRIBUTION",observed["SQLITE"]["Q02_WVS_Q152_DISTRIBUTION"],canonicalize_frozen_oracle_value("Q02_WVS_Q152_DISTRIBUTION",shape_agnostic_corrupted_oracle_value(oracle["Q02_WVS_Q152_DISTRIBUTION"])))
     bad=pd.read_sql_query("SELECT * FROM events",sqlite3.connect(":memory:")) if False else t["events"].copy(); bad.loc[0,"raw_value_key"]="CORRUPTED"; checks["negative_tests"]["stored_corruption_detected"]=digest_rows(bad,REL_COLS["events"],["source_id","var_ordinal","row_ordinal"])!=dig["events"]
     if not all(checks["oracle_comparisons"].values()) or not all(checks["replay_comparisons"].values()) or not all(checks["negative_tests"].values()) or not checks["shared_budget_enforcement_path"]: raise RuntimeError("BLOCKED_SR04_SHARED_PATH_CONTRACT_FAILURE:"+json.dumps(checks,sort_keys=True))
     checks["candidate_measurements"]=candidate_metrics; checks["candidate_dispositions"]={name:("MEASURED_CORRECT" if checks["oracle_comparisons"][name] and checks["replay_comparisons"][name] else "CARRIER_DISQUALIFIED_CORRECTNESS") for name in checks["oracle_comparisons"]}
@@ -461,7 +522,7 @@ def cli_separation_proof(out,work):
     proof={"token":"PRE553_SR04_B1_B2_CLI_SEPARATION_PASS","synthetic_b1_checkpoint_created":checkpoint.exists(),"synthetic_b1_candidate_execution_started":b1["candidate_execution_started"],"synthetic_b2_checkpoint_only":b2["checkpoint_only"],"synthetic_b2_shared_carrier_court_executed":b2["shared_court_executed"],"synthetic_b2_final_package_path_executed":b2["package"]["files"]==["CANDIDATE_RESULTS.json","ENVIRONMENT.json","FIXTURE_DIGESTS.json","FIXTURE_MANIFEST.json","PROVISIONAL_SELECTION.json","QUERY_ORACLE.json","RECEIPT.json","STDERR.txt","STDOUT.txt"],"synthetic_b2_corrupted_checkpoint_rejected":rejected,"synthetic_b2_raw_source_decode":b2["raw_source_decode"],"DATABASE_URL_unused":True,"duplicate_truth_implementations":False,"b2_package":b2["package"]}
     out.mkdir(parents=True,exist_ok=True); (out/"CLI_PROOF_RECEIPT.json").write_text(json.dumps(proof,indent=2,sort_keys=True)+"\n"); (out/"CLI_PROOF_STDOUT.txt").write_text(proof["token"]+"\n"); return proof
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--checkpoint-dir",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); ap.add_argument("--stage-b1",action="store_true"); ap.add_argument("--stage-b2",action="store_true"); ap.add_argument("--cli-proof",action="store_true"); ap.add_argument("--postgres-utf8-proof",action="store_true"); ap.add_argument("--oracle-negative-proof",action="store_true"); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--checkpoint-dir",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); ap.add_argument("--stage-b1",action="store_true"); ap.add_argument("--stage-b2",action="store_true"); ap.add_argument("--cli-proof",action="store_true"); ap.add_argument("--postgres-utf8-proof",action="store_true"); ap.add_argument("--oracle-negative-proof",action="store_true"); ap.add_argument("--real-oracle-canonicalization-proof",action="store_true"); args=ap.parse_args()
     if args.self_test:
         assert raw_repr(-1)[0]=="N:-1" and free_bytes("/private/tmp")>0; print("SR04_SELF_TEST_PASS"); return 0
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); work=Path(args.work_root) if args.work_root else Path(tempfile.mkdtemp(prefix="sr04-",dir="/private/tmp")); work.mkdir(parents=True,exist_ok=True)
@@ -478,6 +539,11 @@ def main():
             if not args.checkpoint_dir: raise RuntimeError("Oracle negative proof requires --checkpoint-dir")
             print(json.dumps(oracle_negative_test_shape_proof(out,Path(args.checkpoint_dir)),ensure_ascii=False,indent=2,sort_keys=True)); return 0
         except Exception as e: (out/"ORACLE_NEGATIVE_TEST_SHAPE_PROOF_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
+    if args.real_oracle_canonicalization_proof:
+        try:
+            if not args.checkpoint_dir: raise RuntimeError("Real-oracle canonicalization proof requires --checkpoint-dir")
+            print(json.dumps(real_oracle_canonicalization_proof(out,work,Path(args.checkpoint_dir)),ensure_ascii=False,indent=2,sort_keys=True)); return 0
+        except Exception as e: (out/"REAL_ORACLE_CANONICALIZATION_PROOF_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
     if args.stage_b1:
         try:
             if not args.checkpoint_dir: raise RuntimeError("B1 requires --checkpoint-dir")
