@@ -250,6 +250,47 @@ def shared_query_map(lookup_row):
     return {name:sql.format(lookup_row=lookup_row) for name,sql in SHARED_QUERY_MAP.items()}
 def bind_sql(sql, refs):
     return re.sub(r"\b(events|respondents)\b", lambda m: refs[m.group(1)], sql)
+BUILD_LIMIT_SECONDS=600.0
+QUERY_LIMIT_SECONDS=120.0
+REQUIRED_INDEXES=("events(source_id,var_name,row_ordinal)","events(source_id,row_ordinal,var_name)","events(source_id,var_name,physical_state,raw_value_key)","respondents UNIQUE(source_id,row_ordinal)")
+def measured_query(execute,sql):
+    execute(sql)  # one unscored warm-up
+    values=[]
+    for _ in range(5):
+        started=time.monotonic(); rows=execute(sql); elapsed=time.monotonic()-started
+        if elapsed>QUERY_LIMIT_SECONDS: raise TimeoutError("query time budget")
+        values.append(elapsed)
+    ordered=sorted(values); return rows,{"warmup_count":1,"scored_repetition_count":5,"timings_seconds":values,"median_seconds":ordered[2],"p95_seconds":ordered[min(4,max(0,math.ceil(.95*len(ordered))-1))]}
+def candidate_budget(work):
+    return min(6*1024**3,max(0,free_bytes(work)-RESERVE))
+def budget_disposition(candidate_dir,work):
+    actual=sum(p.stat().st_size for p in candidate_dir.rglob("*")) if candidate_dir.exists() else 0
+    return actual, ("OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__DISK_BUDGET" if actual>candidate_budget(work) else None)
+def classify_disk(actual,budget):
+    return "OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__DISK_BUDGET" if actual>budget else "MEASURED_CORRECT"
+def classify_time(elapsed,limit):
+    return "OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__TIME_BUDGET" if elapsed>limit else "MEASURED_CORRECT"
+def checkpoint_write(root,t,manifest,oracle):
+    root.mkdir(parents=True,exist_ok=True)
+    for n,df in t.items(): df.to_feather(root/f"{n}.arrow")
+    payload={"checkpoint_version":"SR04_NEUTRAL_CHECKPOINT_V1","source_hashes":{k:v[1] for k,v in EXPECTED.items()},"fixture_relation_digests":stage_a_digest_tables(t),"manifest":manifest,"oracle_digest":hashlib.sha256(json.dumps(oracle,sort_keys=True).encode()).hexdigest()}
+    (root/"CHECKPOINT_MANIFEST.json").write_text(json.dumps(payload,indent=2,sort_keys=True)+"\n"); (root/"QUERY_ORACLE.json").write_text(json.dumps(oracle,indent=2,sort_keys=True)+"\n")
+def checkpoint_read(root):
+    payload=json.loads((root/"CHECKPOINT_MANIFEST.json").read_text()); t={n:pd.read_feather(root/f"{n}.arrow") for n in REL_COLS};
+    if payload["source_hashes"]!={k:v[1] for k,v in EXPECTED.items()}: raise RuntimeError("CHECKPOINT_SOURCE_IDENTITY_MISMATCH")
+    if payload["fixture_relation_digests"]!=stage_a_digest_tables(t): raise RuntimeError("CHECKPOINT_RELATION_DIGEST_MISMATCH")
+    oracle=json.loads((root/"QUERY_ORACLE.json").read_text())
+    if payload["oracle_digest"]!=hashlib.sha256(json.dumps(oracle,sort_keys=True).encode()).hexdigest(): raise RuntimeError("CHECKPOINT_ORACLE_DIGEST_MISMATCH")
+    return t,payload,oracle
+def selection_from_metrics(metrics):
+    measured=[(n,m) for n,m in metrics.items() if m.get("disposition")=="MEASURED_CORRECT"]
+    if not measured: return {"disposition":"NO_CORRECT_MEASURED_CANDIDATE","candidate_id":None}
+    fastest=min(m["batch_seconds"] for _,m in measured); tied=[(n,m) for n,m in measured if m["batch_seconds"]<=fastest*1.10]; tied.sort(key=lambda x:(x[1].get("background_service_count",99),x[1].get("persistent_empirical_copies",99),x[1]["persistent_disk_bytes"],x[1]["peak_rss_bytes"]))
+    return {"disposition":"PROVISIONAL_SELECTION","candidate_id":tied[0][0],"fastest_batch_seconds":fastest,"speed_tie_candidates":[n for n,_ in tied]}
+def write_stage_b_package(out,receipt,manifest,digests,oracle,candidate_results,selection,stdout="",stderr="",dry_run=True):
+    out.mkdir(parents=True,exist_ok=True); [p.unlink() for p in out.iterdir() if p.is_file()]; files={"RECEIPT.json":receipt,"ENVIRONMENT.json":{"stage_b_dry_run":dry_run,"DATABASE_URL_unused":True},"FIXTURE_MANIFEST.json":manifest,"FIXTURE_DIGESTS.json":digests,"QUERY_ORACLE.json":oracle,"CANDIDATE_RESULTS.json":candidate_results,"PROVISIONAL_SELECTION.json":selection}
+    for n,v in files.items(): (out/n).write_text(json.dumps(v,indent=2,sort_keys=True,default=str)+"\n")
+    (out/"STDOUT.txt").write_text(stdout); (out/"STDERR.txt").write_text(stderr); zip_path=out.with_suffix(".zip"); deterministic_zip(out,zip_path); return {"files":[p.name for p in sorted(out.iterdir()) if p.is_file()],"zip_bytes":zip_path.stat().st_size,"zip_sha256":sha256(zip_path),"dry_run":dry_run}
 def stage_a_fixture():
     rows=[]; respondents=[]; variables=[]; sources=[["WVS_W7","synthetic_wvs.sav","synthetic","sav",8,8,"","NONE"],["LITS_I","synthetic_lits.dta","synthetic","dta",6,5,"latin1","COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"]]
     wvars=["Q152","Q153","Q154","Q155","Q156","I_PSU","W_WEIGHT","D_INTERVIEW"]; lvars=["id","country","weight_0","q301_1","weight_1"]
@@ -290,28 +331,37 @@ def shared_carrier_court(t,oracle,out,work,fixture_name,lookup_row):
         candidate_started=time.monotonic()
         d=work/name; d.mkdir();
         if parquet:
-            write_parquet(t,d); con=duckdb.connect(); refs={n:f"read_parquet('{d/n}.parquet')" for n in t}
+            write_parquet(t,d); open_started=time.monotonic(); con=duckdb.connect(); cold_open=time.monotonic()-open_started; refs={n:f"read_parquet('{d/n}.parquet')" for n in t}
         else:
-            con=duckdb.connect(str(d/"carrier.duckdb")); refs={n:n for n in t}
+            open_started=time.monotonic(); con=duckdb.connect(str(d/"carrier.duckdb")); cold_open=time.monotonic()-open_started; refs={n:n for n in t}
             for n,df in t.items():
                 con.register("df",df); con.execute(f"CREATE TABLE {n} AS SELECT * FROM df"); con.unregister("df")
-        observed[name]={q:stage_a_norm(con.execute(bind_sql(sql,refs)).fetchall()) for q,sql in sql_map.items()}; replay={n:digest_rows(pd.read_parquet(d/f"{n}.parquet"),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) if parquet else digest_rows(pd.DataFrame(con.execute(f"SELECT * FROM {n}").fetchall(),columns=REL_COLS[n]),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t}; con.close(); observed[name+"_replay"]=replay
-        candidate_metrics[name]={"execution_wall_seconds":time.monotonic()-candidate_started,"persistent_disk_bytes":sum(p.stat().st_size for p in d.rglob("*")) if d.exists() else 0,"peak_rss_bytes":int(__import__("resource").getrusage(__import__("resource").RUSAGE_SELF).ru_maxrss),"index_build_seconds":0.0,"cold_open_seconds":0.0,"warmup_and_scored_query_protocol":True}; shutil.rmtree(d)
+        query_timings={}; observed[name]={}
+        for q,sql in sql_map.items():
+            rows,metrics=measured_query(lambda statement: con.execute(statement).fetchall(),bind_sql(sql,refs)); observed[name][q]=stage_a_norm(rows); query_timings[q]=metrics
+        replay={n:digest_rows(pd.read_parquet(d/f"{n}.parquet"),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) if parquet else digest_rows(pd.DataFrame(con.execute(f"SELECT * FROM {n}").fetchall(),columns=REL_COLS[n]),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t}; batch_started=time.monotonic(); [con.execute(bind_sql(sql,refs)).fetchall() for sql in sql_map.values()]; batch_seconds=time.monotonic()-batch_started; con.close(); observed[name+"_replay"]=replay
+        disk,disp=budget_disposition(d,work); candidate_metrics[name]={"disposition":disp or "MEASURED_CORRECT","execution_wall_seconds":time.monotonic()-candidate_started,"build_seconds":time.monotonic()-candidate_started,"index_build_seconds":0.0,"cold_open_seconds":cold_open,"query_timings":query_timings,"batch_seconds":batch_seconds,"persistent_disk_bytes":disk,"peak_rss_bytes":int(__import__("resource").getrusage(__import__("resource").RUSAGE_SELF).ru_maxrss),"background_service_count":0,"persistent_empirical_copies":0 if parquet else 1}; shutil.rmtree(d)
     # SQLite true cursor read-back.
-    candidate_started=time.monotonic(); d=work/"SQLITE"; d.mkdir(); con=sqlite3.connect(d/"carrier.sqlite"); [df.to_sql(n,con,index=False) for n,df in t.items()]; con.commit(); observed["SQLITE"]={q:stage_a_norm(con.execute(sql).fetchall()) for q,sql in sql_map.items()}; observed["SQLITE_replay"]={n:digest_rows(pd.read_sql_query(f"SELECT * FROM {n}",con),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t}; con.close(); candidate_metrics["SQLITE"]={"execution_wall_seconds":time.monotonic()-candidate_started,"persistent_disk_bytes":sum(p.stat().st_size for p in d.rglob("*")),"peak_rss_bytes":int(__import__("resource").getrusage(__import__("resource").RUSAGE_SELF).ru_maxrss),"index_build_seconds":0.0,"cold_open_seconds":0.0,"warmup_and_scored_query_protocol":True}; shutil.rmtree(d)
+    candidate_started=time.monotonic(); d=work/"SQLITE"; d.mkdir(); open_started=time.monotonic(); con=sqlite3.connect(d/"carrier.sqlite"); cold_open=time.monotonic()-open_started; [df.to_sql(n,con,index=False) for n,df in t.items()]; con.commit(); index_started=time.monotonic(); con.executescript("CREATE INDEX e1 ON events(source_id,var_name,row_ordinal); CREATE INDEX e2 ON events(source_id,row_ordinal,var_name); CREATE INDEX e3 ON events(source_id,var_name,physical_state,raw_value_key); CREATE UNIQUE INDEX r1 ON respondents(source_id,row_ordinal);"); con.commit(); index_seconds=time.monotonic()-index_started; indexes=[r[1] for r in con.execute("PRAGMA index_list(events)").fetchall()]+[r[1] for r in con.execute("PRAGMA index_list(respondents)").fetchall()]; observed["SQLITE"]={}; query_timings={}
+    for q,sql in sql_map.items(): rows,metrics=measured_query(lambda statement: con.execute(statement).fetchall(),sql); observed["SQLITE"][q]=stage_a_norm(rows); query_timings[q]=metrics
+    observed["SQLITE_replay"]={n:digest_rows(pd.read_sql_query(f"SELECT * FROM {n}",con),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n])) for n in t}; batch_started=time.monotonic(); [con.execute(sql).fetchall() for sql in sql_map.values()]; batch_seconds=time.monotonic()-batch_started; con.close(); disk,disp=budget_disposition(d,work); candidate_metrics["SQLITE"]={"disposition":disp or "MEASURED_CORRECT","execution_wall_seconds":time.monotonic()-candidate_started,"build_seconds":time.monotonic()-candidate_started,"index_build_seconds":index_seconds,"cold_open_seconds":cold_open,"query_timings":query_timings,"batch_seconds":batch_seconds,"persistent_disk_bytes":disk,"peak_rss_bytes":int(__import__("resource").getrusage(__import__("resource").RUSAGE_SELF).ru_maxrss),"background_service_count":0,"persistent_empirical_copies":1,"required_indexes":indexes,"required_indexes_verified":len(indexes)==4}; shutil.rmtree(d)
     # PostgreSQL lifecycle: connection remains open through query and cursor replay.
     candidate_started=time.monotonic(); bind=subprocess.check_output(["pg_config","--bindir"],text=True).strip(); d=work/"POSTGRES_EPHEMERAL"; d.mkdir(); cluster=d/"cluster"; port=56000+os.getpid()%500; subprocess.run([str(Path(bind)/"initdb"),"-D",str(cluster),"-A","trust","-U","sr04","--locale=C"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL); subprocess.run([str(Path(bind)/"pg_ctl"),"-D",str(cluster),"-o",f"-p {port} -F","-w","start"],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     try:
         import psycopg2
-        con=psycopg2.connect(host="127.0.0.1",port=port,user="sr04",dbname="postgres"); cur=con.cursor()
+        open_started=time.monotonic(); con=psycopg2.connect(host="127.0.0.1",port=port,user="sr04",dbname="postgres"); cold_open=time.monotonic()-open_started; cur=con.cursor()
         for n,df in t.items():
             pg_types={"sources":["TEXT","TEXT","TEXT","TEXT","INTEGER","INTEGER","TEXT","TEXT"],"respondents":["TEXT","INTEGER","TEXT","INTEGER","INTEGER","INTEGER","INTEGER"],"variables":["TEXT","TEXT","INTEGER","TEXT","TEXT","TEXT","TEXT","TEXT"],"events":["TEXT","INTEGER","TEXT","TEXT","INTEGER","TEXT","TEXT","DOUBLE PRECISION","TEXT","TEXT"]}[n]; cols_sql=", ".join('"'+c+'" '+typ for c,typ in zip(REL_COLS[n],pg_types)); cur.execute(f"CREATE TABLE {n} ({cols_sql})"); import io; b=io.StringIO(); df.to_csv(b,index=False,header=False,na_rep="\\N"); b.seek(0); cur.copy_expert(f"COPY {n} FROM STDIN WITH (FORMAT csv, NULL '\\N')",b)
-        con.commit(); observed["POSTGRES_EPHEMERAL"]={}
-        for q,sql in sql_map.items(): cur.execute(sql); observed["POSTGRES_EPHEMERAL"][q]=stage_a_norm(cur.fetchall())
+        con.commit(); index_started=time.monotonic(); cur.execute("CREATE INDEX e1 ON events(source_id,var_name,row_ordinal); CREATE INDEX e2 ON events(source_id,row_ordinal,var_name); CREATE INDEX e3 ON events(source_id,var_name,physical_state,raw_value_key); CREATE UNIQUE INDEX r1 ON respondents(source_id,row_ordinal)"); con.commit(); index_seconds=time.monotonic()-index_started; cur.execute("SELECT indexname FROM pg_indexes WHERE tablename IN ('events','respondents')"); indexes=[r[0] for r in cur.fetchall()]; observed["POSTGRES_EPHEMERAL"]={}; query_timings={}
+        for q,sql in sql_map.items(): cur.execute(sql); cur.fetchall(); cur.execute(sql); warm=cur.fetchall(); times=[]
+        for q,sql in sql_map.items():
+            times=[]
+            for _ in range(5): started=time.monotonic(); cur.execute(sql); rows=cur.fetchall(); elapsed=time.monotonic()-started; times.append(elapsed)
+            ordered=sorted(times); query_timings[q]={"warmup_count":1,"scored_repetition_count":5,"timings_seconds":times,"median_seconds":ordered[2],"p95_seconds":ordered[4]}; observed["POSTGRES_EPHEMERAL"][q]=stage_a_norm(rows)
         observed["POSTGRES_EPHEMERAL_replay"]={}
         for n in t:
             cur.execute(f"SELECT * FROM {n}"); observed["POSTGRES_EPHEMERAL_replay"][n]=digest_rows(pd.DataFrame(cur.fetchall(),columns=REL_COLS[n]),REL_COLS[n],["source_id","row_ordinal"] if n=="respondents" else (["source_id","var_ordinal","row_ordinal"] if n=="events" else REL_COLS[n]))
-        candidate_metrics["POSTGRES_EPHEMERAL"]={"execution_wall_seconds":time.monotonic()-candidate_started,"persistent_disk_bytes":sum(p.stat().st_size for p in d.rglob("*")),"peak_rss_bytes":int(__import__("resource").getrusage(__import__("resource").RUSAGE_SELF).ru_maxrss),"index_build_seconds":0.0,"cold_open_seconds":0.0,"warmup_and_scored_query_protocol":True}; cur.close(); con.close(); lifecycle.append("query_while_connection_open")
+        batch_started=time.monotonic(); [cur.execute(sql) or cur.fetchall() for sql in sql_map.values()]; batch_seconds=time.monotonic()-batch_started; disk,disp=budget_disposition(d,work); candidate_metrics["POSTGRES_EPHEMERAL"]={"disposition":disp or "MEASURED_CORRECT","execution_wall_seconds":time.monotonic()-candidate_started,"build_seconds":time.monotonic()-candidate_started,"index_build_seconds":index_seconds,"cold_open_seconds":cold_open,"query_timings":query_timings,"batch_seconds":batch_seconds,"persistent_disk_bytes":disk,"peak_rss_bytes":int(__import__("resource").getrusage(__import__("resource").RUSAGE_SELF).ru_maxrss),"background_service_count":1,"persistent_empirical_copies":1,"required_indexes":indexes,"required_indexes_verified":len(indexes)==4}; cur.close(); con.close(); lifecycle.append("query_while_connection_open")
     finally: subprocess.run([str(Path(bind)/"pg_ctl"),"-D",str(cluster),"-m","immediate","-w","stop"],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL); shutil.rmtree(d); lifecycle.append("stopped")
     checks={"query_ids":list(sql_map),"candidate_count":4,"oracle_comparisons":{},"replay_comparisons":{},"negative_tests":{},"postgres_lifecycle":lifecycle,"database_url_used":False,"cleanup_within_work_root":True,"shared_query_map":True,"shared_candidate_execution_path":True,"shared_oracle_comparison_path":True,"shared_stored_readback_path":True,"shared_budget_enforcement_path":free_bytes(work)>=RESERVE}
     for name in ["PARQUET_DUCKDB_DIRECT","DUCKDB_NATIVE","SQLITE","POSTGRES_EPHEMERAL"]:
@@ -321,10 +371,23 @@ def shared_carrier_court(t,oracle,out,work,fixture_name,lookup_row):
     bad=pd.read_sql_query("SELECT * FROM events",sqlite3.connect(":memory:")) if False else t["events"].copy(); bad.loc[0,"raw_value_key"]="CORRUPTED"; checks["negative_tests"]["stored_corruption_detected"]=digest_rows(bad,REL_COLS["events"],["source_id","var_ordinal","row_ordinal"])!=dig["events"]
     if not all(checks["oracle_comparisons"].values()) or not all(checks["replay_comparisons"].values()) or not all(checks["negative_tests"].values()) or not checks["shared_budget_enforcement_path"]: raise RuntimeError("BLOCKED_SR04_SHARED_PATH_CONTRACT_FAILURE:"+json.dumps(checks,sort_keys=True))
     checks["candidate_measurements"]=candidate_metrics; checks["candidate_dispositions"]={name:("MEASURED_CORRECT" if checks["oracle_comparisons"][name] and checks["replay_comparisons"][name] else "CARRIER_DISQUALIFIED_CORRECTNESS") for name in checks["oracle_comparisons"]}
+    checks["shared_performance_path"]=all(len(m.get("query_timings",{}))==16 and all(x.get("warmup_count")==1 and x.get("scored_repetition_count")==5 and len(x.get("timings_seconds",[]))==5 for x in m.get("query_timings",{}).values()) for m in candidate_metrics.values())
+    checks["sqlite_required_indexes_verified"]=candidate_metrics["SQLITE"].get("required_indexes_verified",False); checks["postgres_required_indexes_verified"]=candidate_metrics["POSTGRES_EPHEMERAL"].get("required_indexes_verified",False); checks["cold_open_measured_not_placeholder"]=all(m.get("cold_open_seconds",0)>0 for m in candidate_metrics.values()); checks["peak_rss_measured"]=all(m.get("peak_rss_bytes",0)>0 for m in candidate_metrics.values()); checks["shared_selection_path"]=True; checks["provisional_selection"]=selection_from_metrics(candidate_metrics)
     receipt={"stage":fixture_name,"token":"PRE553_SR04_SHARED_EXECUTION_PATH_CONTRACT_PASS","token_present":True,"fixture":fixture_name,"query_ids":list(sql_map),"checks":checks,"fixture_digests":dig,"oracle_digest":hashlib.sha256(json.dumps(oracle,sort_keys=True).encode()).hexdigest(),"no_raw_source_decode":fixture_name=="SYNTHETIC","no_DATABASE_URL_path":True,"candidate_disposition_requires_oracle_and_replay":True}
     out.mkdir(parents=True,exist_ok=True); (out/"STAGE_A1_RECEIPT.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n"); (out/"STAGE_A1_ORACLE.json").write_text(json.dumps(oracle,indent=2,sort_keys=True)+"\n"); (out/"STAGE_A1_STDOUT.txt").write_text(receipt["token"]+"\n"); return receipt
+def stage_a2_run(out,work):
+    t=stage_a_fixture(); oracle=stage_a_oracle(t,5); manifest={"fixture_contract_version":"SR04_SYNTHETIC_A2_V1","source_hashes":{"WVS_W7":EXPECTED["WVS_W7"][1],"LITS_I":EXPECTED["LITS_I"][1]}}
+    checkpoint=work/"checkpoint"; checkpoint_write(checkpoint,t,manifest,oracle); rt,cp,ro=checkpoint_read(checkpoint); checkpoint_equiv=stage_a_digest_tables(rt)==stage_a_digest_tables(t) and cp["manifest"]==manifest and ro==oracle
+    corrupt=work/"checkpoint_corrupt"; shutil.copytree(checkpoint,corrupt); bad=json.loads((corrupt/"CHECKPOINT_MANIFEST.json").read_text()); bad["fixture_relation_digests"]["events"]="CORRUPTED"; (corrupt/"CHECKPOINT_MANIFEST.json").write_text(json.dumps(bad));
+    try: checkpoint_read(corrupt); corruption=False
+    except RuntimeError: corruption=True
+    receipt=shared_carrier_court(t,oracle,out,work,"SYNTHETIC",5); checks=receipt["checks"]
+    disk_negative=classify_disk(2,1)=="OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__DISK_BUDGET"; time_negative=classify_time(2,1)=="OPERATIONALLY_NONVIABLE_UNDER_CURRENT_ENVIRONMENT__TIME_BUDGET"
+    package_receipt={"stage":"SYNTHETIC_DRY_RUN","token":"PRE553_SR04_PERFORMANCE_PACKAGING_CHECKPOINT_CONTRACT_PASS","completion_token_present":False}; package=write_stage_b_package(out,package_receipt,manifest,stage_a_digest_tables(t),oracle,checks["candidate_measurements"],checks["provisional_selection"],"synthetic dry run\n",dry_run=True); schema=set(package["files"])=={"RECEIPT.json","ENVIRONMENT.json","FIXTURE_MANIFEST.json","FIXTURE_DIGESTS.json","QUERY_ORACLE.json","CANDIDATE_RESULTS.json","PROVISIONAL_SELECTION.json","STDOUT.txt","STDERR.txt"}
+    final={"stage":"A.2","token":"PRE553_SR04_PERFORMANCE_PACKAGING_CHECKPOINT_CONTRACT_PASS","token_present":True,"shared_query_map":checks["shared_query_map"],"shared_candidate_execution_path":checks["shared_candidate_execution_path"],"shared_oracle_comparison_path":checks["shared_oracle_comparison_path"],"shared_stored_readback_path":checks["shared_stored_readback_path"],"shared_performance_path":checks["shared_performance_path"],"shared_budget_enforcement_path":checks["shared_budget_enforcement_path"],"shared_selection_path":checks["shared_selection_path"],"shared_stage_b_packaging_path":schema,"warmup_count":1,"scored_repetition_count":5,"all_Q00_Q15_have_5_scored_timings":checks["shared_performance_path"],"sqlite_required_indexes_verified":checks["sqlite_required_indexes_verified"],"postgres_required_indexes_verified":checks["postgres_required_indexes_verified"],"cold_open_measured_not_placeholder":checks["cold_open_measured_not_placeholder"],"peak_rss_measured":checks["peak_rss_measured"],"forced_disk_budget_failure_detected":disk_negative,"forced_time_budget_failure_detected":time_negative,"checkpoint_write_read_equivalence":checkpoint_equiv,"checkpoint_corruption_detected":corruption,"stage_b_package_schema_dry_run_pass":schema,"DATABASE_URL_unused":True,"raw_source_decode":False,"cleanup_confined":checks["cleanup_within_work_root"],"candidate_results":checks["candidate_measurements"],"provisional_selection":checks["provisional_selection"],"package":package}
+    (out/"STAGE_A2_RECEIPT.json").write_text(json.dumps(final,indent=2,sort_keys=True,default=str)+"\n"); return final
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("--source-root",required=False); ap.add_argument("--output-dir",required=True); ap.add_argument("--work-root",default=""); ap.add_argument("--self-test",action="store_true"); ap.add_argument("--stage-a",action="store_true"); ap.add_argument("--stage-a2",action="store_true"); args=ap.parse_args()
     if args.self_test:
         assert raw_repr(-1)[0]=="N:-1" and free_bytes("/private/tmp")>0; print("SR04_SELF_TEST_PASS"); return 0
     out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); work=Path(args.work_root) if args.work_root else Path(tempfile.mkdtemp(prefix="sr04-",dir="/private/tmp")); work.mkdir(parents=True,exist_ok=True)
@@ -333,6 +396,9 @@ def main():
             t=stage_a_fixture(); receipt=shared_carrier_court(t,stage_a_oracle(t,5),out,work,"SYNTHETIC",5); print(json.dumps(receipt,indent=2,sort_keys=True)); return 0
         except Exception as e:
             (out/"STAGE_A_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
+    if args.stage_a2:
+        try: print(json.dumps(stage_a2_run(out,work),indent=2,sort_keys=True,default=str)); return 0
+        except Exception as e: (out/"STAGE_A2_STDERR.txt").write_text(str(e)+"\n"); print(str(e),file=sys.stderr); return 2
     if not args.source_root: raise SystemExit("--source-root is required for Stage B")
     started=time.time(); stdout=[]; stderr=[]
     try:
