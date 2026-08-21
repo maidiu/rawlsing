@@ -1,4 +1,4 @@
-# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 4 B1/B2 CLI SEPARATION
+# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 5 REAL B1 CHECKPOINT EXECUTION
 
 Repository: `maidiu/rawlsing`
 Frozen semantic parent: `9188dc9fb7a8b92b981f3d3f94754cd6137d17b1`
@@ -12,131 +12,152 @@ Accepted harness milestones:
 
 - Stage A correctness contract: ACCEPTED
 - Stage A.1 shared execution path: ACCEPTED
-- Stage A.2 performance/packaging/checkpoint contract: ACCEPTED at harness HEAD `f303198853c0f494efd23eb598231cfea948fad0`
+- Stage A.2 performance/packaging/checkpoint contract: ACCEPTED
+- B1/B2 CLI separation proof: ACCEPTED at harness HEAD `4743c40c783544c6c21ec490644896bd0b71ada5`
 
-Binding newest gate:
+Binding newest authority:
 
-`22_SR04_STAGE_A2_ACCEPTANCE_AND_B1_B2_CLI_GATE.md`
+`23_SR04_CLI_PROOF_ACCEPTANCE_AND_REAL_B1_AUTHORITY.md`
 
-Real raw-source B1 and checkpoint-only B2 are NOT yet authorized.
-
-Static HQ review found one remaining orchestration defect: at `f303198...` the default real-source CLI still performs raw fixture construction and the four-candidate court in one invocation. The already-tested checkpoint writer/reader is not exposed as a separately stoppable B1/B2 CLI.
-
-This gate does not reopen accepted correctness, query, performance, budget, checkpoint, or package semantics. It only separates their invocation.
+Real B1 is AUTHORIZED.
+Real B2 remains BLOCKED pending HQ adjudication of the real B1 return.
 
 ## Read first, in order
 
-1. `11_PHYSICAL_CARRIER_SELECTION_COURT.md`
-2. `18_SR04_CARRIER_BAKEOFF_EXECUTION_CONTRACT.md`
-3. `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md`
-4. `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`
-5. `21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`
-6. `22_SR04_STAGE_A2_ACCEPTANCE_AND_B1_B2_CLI_GATE.md`
-7. `16_SR03_R3_ADJUDICATION.md`
-8. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
+1. `18_SR04_CARRIER_BAKEOFF_EXECUTION_CONTRACT.md`
+2. `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`
+3. `21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`
+4. `22_SR04_STAGE_A2_ACCEPTANCE_AND_B1_B2_CLI_GATE.md`
+5. `23_SR04_CLI_PROOF_ACCEPTANCE_AND_REAL_B1_AUTHORITY.md`
+6. `16_SR03_R3_ADJUDICATION.md`
+7. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
 
-## Sole permitted repository write
+## Mission — REAL B1 ONLY
 
-You may modify only:
+Execute the already-committed harness in explicit `--stage-b1` mode against the exact local source bytes.
 
-`data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR04_CARRIER_BAKEOFF.py`
+The harness source is READ ONLY for this execution.
+No repository writes are authorized.
 
-No other repository file may change.
+B1 must execute exactly this boundary:
 
-# IMMEDIATE MISSION — CHEAP CLI SEPARATION PROOF ONLY
+`raw WVS7 + raw LiTS I -> neutral fixture -> hostile checks -> independent oracle -> relation digests -> checkpoint_write -> checkpoint_read verification -> B1 receipt -> STOP`
 
-Add explicit real execution modes:
+B1 MUST NOT invoke `shared_carrier_court`.
+B1 MUST NOT create or benchmark Parquet, DuckDB, PostgreSQL, or SQLite candidates.
+B1 MUST NOT use or inspect `DATABASE_URL`.
 
-- `--stage-b1`
-- `--stage-b2`
-- `--checkpoint-dir <path>`
+## Exact source bytes
 
-Do not change the accepted shared carrier court, Q00-Q15 truth conditions, candidate set, source hashes, budgets, checkpoint format, or final package schema except for the minimum orchestration needed to invoke the already-accepted functions lawfully.
+Use the local Rawlsing source directory containing the hash-matched source files, normally:
 
-## Required B1 semantics
+`/Users/matthewsmith/Desktop/Rawlsing/data/Data`
 
-`--stage-b1 --source-root <root> --checkpoint-dir <dir> --output-dir <dir>` must:
+Required exact source identities:
 
-1. verify exact WVS7/LiTS I bytes;
-2. build the real neutral fixture;
-3. compute hostile fixture checks, relation digests, and independent oracle;
-4. write the checkpoint through the accepted checkpoint writer;
-5. read it back through the accepted checkpoint reader;
-6. require exact verification;
-7. emit a small B1 receipt with token `PRE553_SR04_B1_NEUTRAL_CHECKPOINT_COMPLETE`;
-8. record `candidate_execution_started=false`;
-9. STOP.
+### WVS7
 
-B1 must never invoke `shared_carrier_court`.
+- file: `WVS Wave 7.sav`
+- SHA-256: `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`
+- expected rows: `97220`
 
-## Required B2 semantics
+### LiTS I
 
-`--stage-b2 --checkpoint-dir <dir> --output-dir <dir>` must:
+- file: `LiTS_I.dta`
+- SHA-256: `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`
+- expected rows: `29002`
 
-1. accept no normal raw-source dependency;
-2. read/verify the checkpoint through the accepted checkpoint reader;
-3. execute the accepted shared carrier court using checkpoint relations/oracle only;
-4. apply the accepted selection path;
-5. write the exact final Stage-B package and deterministic ZIP through the accepted package writer;
-6. emit `PRE553_SR04_CARRIER_BAKEOFF_RECEIPT_COMPLETE` only after final package completion.
+Do not substitute alternate files.
 
-B2 must not call the raw decoder/build_fixture path.
+## Output locations
 
-## Cheap synthetic CLI proof
+Use fresh local paths under `/private/tmp`.
 
-Before any real raw-source run, exercise the actual B1/B2 orchestration using only the synthetic fixture/checkpoint path.
+Recommended exact paths:
 
-The proof must establish:
+Checkpoint:
 
-- `synthetic_b1_checkpoint_created=true`
-- `synthetic_b1_candidate_execution_started=false`
-- `synthetic_b2_checkpoint_only=true`
-- `synthetic_b2_shared_carrier_court_executed=true`
-- `synthetic_b2_final_package_path_executed=true`
-- `synthetic_b2_corrupted_checkpoint_rejected=true`
-- `synthetic_b2_raw_source_decode=false`
-- `DATABASE_URL_unused=true`
-- no duplicate query/candidate/oracle/checkpoint implementation was introduced.
+`/private/tmp/SR04_B1_NEUTRAL_CHECKPOINT`
 
-Required proof token:
+Small B1 receipt directory:
 
-`PRE553_SR04_B1_B2_CLI_SEPARATION_PASS`
+`/private/tmp/SR04_B1_RECEIPT`
 
-## Publication after proof
+Disposable work root:
 
-When the cheap proof passes:
+`/private/tmp/SR04_B1_WORK`
 
-1. syntax/static check;
-2. verify only `SR04_CARRIER_BAKEOFF.py` changed;
-3. commit only that file with message:
-   `Separate SR04 B1 and B2 execution modes`
-4. push the control branch;
-5. RETURN TO HQ:
-   - starting exact HEAD;
-   - new harness HEAD;
-   - harness SHA-256;
-   - exact cheap CLI-proof command;
-   - complete small proof receipt;
-   - success token;
-   - final git status;
-   - pushed branch HEAD.
+Do not reuse or merge a prior synthetic checkpoint.
+If any recommended real-B1 path already exists, fail closed and return that fact rather than overwriting it silently.
 
-**STOP THERE.**
+## Recommended exact command
 
-Do not launch real B1.
-Do not launch B2.
+From the verified repository checkout:
+
+`python3 data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR04_CARRIER_BAKEOFF.py --stage-b1 --source-root /Users/matthewsmith/Desktop/Rawlsing/data/Data --checkpoint-dir /private/tmp/SR04_B1_NEUTRAL_CHECKPOINT --work-root /private/tmp/SR04_B1_WORK --output-dir /private/tmp/SR04_B1_RECEIPT`
+
+No wrapper timeout shorter than the work itself is permitted.
+
+## Required success conditions
+
+The B1 receipt must show:
+
+- exact checkout HEAD;
+- harness SHA-256;
+- source hashes equal the frozen WVS7/LiTS I hashes;
+- checkpoint version `SR04_NEUTRAL_CHECKPOINT_V1`;
+- exact relation digests for `sources`, `respondents`, `variables`, `events`;
+- exact oracle digest;
+- selected source variables / ordinals;
+- frozen hostile-check results;
+- checkpoint readback verification `PASS`;
+- `candidate_execution_started=false`;
+- `DATABASE_URL_unused=true`;
+- `raw_source_decode=true`;
+- checkpoint total byte size;
+- exact absolute checkpoint path.
+
+Required token:
+
+`PRE553_SR04_B1_NEUTRAL_CHECKPOINT_COMPLETE`
+
+## Return to HQ
+
+Return:
+
+- exact checkout HEAD;
+- harness SHA-256;
+- exact command;
+- exit code;
+- complete `B1_RECEIPT.json`;
+- absolute checkpoint path;
+- checkpoint byte size;
+- `CHECKPOINT_MANIFEST.json`;
+- checkpoint relation file names and byte sizes;
+- SHA-256 of every checkpoint file;
+- source hashes;
+- fixture relation digests;
+- oracle digest;
+- selected variables / ordinals;
+- hostile-check results;
+- completion-token presence;
+- final `git status -sb`.
+
+Preserve the checkpoint exactly at the returned path after success. Do not zip, move, mutate, or delete it unless HQ later orders that.
 
 ## Forbidden
 
 Do not:
 
-- decode WVS7/LiTS I during the cheap CLI proof;
-- modify live PostgreSQL or use `DATABASE_URL`;
-- alter source files;
-- change frozen carrier/query semantics;
-- change the 5 GiB reserve or time/storage budgets;
-- modify `rawlsing_next/**`;
-- combine B1 and B2 back into one real execution;
-- commit checkpoint or benchmark result data.
+- run `--stage-b2`;
+- execute the carrier court;
+- modify the harness;
+- modify governance;
+- modify source bytes;
+- connect to live PostgreSQL;
+- use `DATABASE_URL`;
+- commit the checkpoint or receipt;
+- delete or move a successful checkpoint;
+- reinterpret source semantics.
 
-Fail closed on ambiguity and return it to HQ.
+Fail closed on any ambiguity or exact-source/checkpoint-verification failure and return the failure unchanged.
