@@ -1,0 +1,76 @@
+{
+  "cell": "R01_STREAMING_MEMORY",
+  "status": "AUTHORIZED__NON_DISPOSITIVE__DESIGN_AND_PROOF_ONLY",
+  "starting_head": "bc2d022d49b1a860a33b29ce171a89c91956c35e",
+  "return_token": "POST_R4_R01_STREAMING_MEMORY_RETURNED",
+  "recommendation": "RECOMMEND_FOR_SYNTHESIS_WITH_HARD_GATES__NOT_PRODUCTION_AUTHORIZATION",
+  "mission": "Design the simplest genuinely bounded-memory long-form carrier mechanics preserving complete logical R4/C11 behavior while eliminating corpus-scale Python retention and eager reopen materialization.",
+  "owned_candidates": ["C01", "C02", "C04", "C15", "C16", "C17", "transactional_publication_streaming_aspects"],
+  "whole_machine_boundary": {
+    "semantic_reference": "RAW SOURCE / SOURCE-NATIVE TRUTH + FROZEN C11 + I03 + I05 + I04 + CLOSED WHOLE-MACHINE LAW",
+    "semantic_redesign": false,
+    "production_runtime_change": false,
+    "raw_source_probe_used": false,
+    "r02_functional_dependency_claims": false,
+    "downstream_storage_branching_permitted": false
+  },
+  "mechanism": {
+    "name": "SEGMENTED_CANONICAL_EXTERNAL_RUN_MERGE_CARRIER",
+    "run_formation": "bounded canonical row buffers sorted into immutable temporary runs",
+    "merge": "deterministic fixed-fan-in multi-pass external merge",
+    "final_storage": "independently closed fixed-size relation shards",
+    "inventory": "streamed per-relation inventory; fixed-size root descriptors",
+    "reader": "lazy shard/batch iterator and exact scan resolver; no eager corpus materialization",
+    "publication": "unique staging root -> close/hash inventories -> root seal last -> fsync -> same-filesystem atomic rename",
+    "cache": "bounded correctness-independent immutable-release-keyed LRU only",
+    "telemetry": "non-authoritative bounded side channel"
+  },
+  "determinism": {
+    "arrival_order_semantic": false,
+    "worker_completion_order_semantic": false,
+    "canonical_order": "frozen C11 exact identity plus authority-defined deterministic tie rule",
+    "duplicate_override_law": "carrier performs no last-write-wins, first-write-wins, dictionary overwrite, or unproved deduplication; logical multiplicity is retained and frozen C11 validation decides legality",
+    "ambiguous_collision": "FAIL_CLOSED"
+  },
+  "memory_contract": {
+    "corpus_n_in_live_memory_bound": false,
+    "bounded_parameters": ["B_rows", "B_payload_bytes", "merge_fan_in_F", "worker_count_W", "queue_capacity_Q", "backend_state_E", "cache_ceiling_C"],
+    "unavoidable_term": "maximum single canonical logical row size Smax",
+    "writer_asymptotic": "O(P + F*(batch+E) + W*Q*Smax + C + fixed_relation_state)",
+    "reader_audit_asymptotic": "O(batch + E + C + one_candidate + fixed_seal_state)",
+    "explicitly_in_scope_for_memory_proof": ["Arrow/Parquet dictionaries", "row-group/page metadata", "footer state", "inventory state", "directory enumeration", "futures/reorder buffers", "hash maps", "reopen/audit state"]
+  },
+  "exact_reconstruction": {
+    "strategy": "integrity-valid streamed inventory/shard scan",
+    "worst_case_time": "O(N)",
+    "memory": "bounded",
+    "negative_truth": "only after complete integrity-valid scan or independently verified correctness-preserving index",
+    "optional_indexes": "acceleration only; never correctness-bearing"
+  },
+  "publication_contract": {
+    "partial_release_valid": false,
+    "seal_written_last": true,
+    "destination_immutable": true,
+    "commit_point": "durable same-filesystem atomic rename of fully sealed staging payload",
+    "reopen_fail_closed_on": ["missing_or_malformed_seal", "schema_or_selector_mismatch", "inventory_corruption_or_truncation", "missing_or_corrupt_shard", "row_count_or_digest_mismatch", "replay_closure_mismatch", "semantic_root_mismatch"]
+  },
+  "logical_preservation": {
+    "semantic_omissions_proposed": 0,
+    "preserved": ["exact source identity and source-native physical distinctions", "complete respondent-grain incidence", "M01-M18", "ExactRef/content-hash identity", "raw versus canonical separation", "physical missingness versus semantic response/absence", "routing/applicability/risk-set", "multiple/repeated/ordered/ranked topology", "weights/design/measure authority", "source relation/nonduplication provenance", "replay/integrity/provenance", "arbitrary lawful respondent-level conjunctions"]
+  },
+  "i03_i05_i04": {
+    "I03": "exact selector/predicate positive and negative truth unchanged; exact typed inventory/ordinals/facts reconstructible",
+    "I05": "full typed event incidence remains available for unforeseen combinations; carrier preselects no discovery frontier",
+    "I04": "exact evidence/authority boundary and refs preserved; storage layout is not structural-admission evidence"
+  },
+  "observed_reference_mechanics_to_avoid": ["whole relation list accumulation", "whole relation in-memory sorting", "pa.Table.from_pylist over complete relation", "one corpus-sized relation file with potentially growing backend metadata", "corpus-scale member/relation dictionaries", "pq.read_table(...).to_pylist eager reopen"],
+  "named_unresolved_dependency": {
+    "issue": "accepted physical decoder compatibility path retains a full reader frame for exact encoding overrides",
+    "r01_rule": "do not weaken compatibility law and do not claim end-to-end bounded compilation until an equivalent bounded decoder path is proven",
+    "raw_probe_needed": false
+  },
+  "falsification_conditions": ["writer or reader/audit memory grows with N while configured bounds and Smax are held fixed", "whole corpus relation is materialized during write/reopen/audit", "canonical logical digest changes with worker completion order", "frozen C11 logical digest/equivalence differs", "duplicate/conflict silently resolves by arrival order", "source-native/C11 material disappears", "corruption passes reopen", "partial staging becomes discoverable as committed", "negative absence is asserted before complete verified search", "cache deletion changes result", "downstream semantics branch on physical layout", "end-to-end boundedness is claimed while compatibility decoder remains corpus-scale"],
+  "synthesis_dependencies": ["R02", "R03", "R04", "R05", "R06"],
+  "required_future_proofs": ["independent R03 semantic equivalence", "R05 integrity/canonical-copy composition", "backend internal-state memory plateau", "crash/partial-publication fail-closed injection", "deterministic concurrency", "cache deletion/rebuild invariance", "compatibility decoder boundedness before end-to-end claim"],
+  "artifacts": ["RESULT.md", "RESULT.json", "ASSUMPTION_LEDGER.csv", "INFORMATION_PRESERVATION_LEDGER.csv", "SELF_RED_TEAM.md", "PROPOSED_CONTRACT.md", "HOSTILE_CASES.csv", "BENCHMARK_PLAN.md"]
+}
