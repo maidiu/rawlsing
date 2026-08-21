@@ -1,0 +1,23 @@
+attack_id,target,hostile_attack,result,required_correction
+P0A01,input boundary,Underlying reader frame goes directly to Arrow,DEFEATED,Begin at exact decoder-normalized projection
+P0A02,float identity,Decimal/text is normative finite-float physical identity,DEFEATED,Finite decoder float exact bits
+P0A03,NaN,Preserve reader NaN payload downstream,DEFEATED,Mirror decoder None/SYSTEM_MISSING
+P0A04,infinity,Store reader infinity as float,DEFEATED,Mirror decoder text plus metadata and declaration classification
+P0A05,integer width,Choose fixed width from observed min/max,DEFEATED,Type proof plus total range check or widen/escape
+P0A06,signedness,Cast unsigned to signed/float because sample fits,DEFEATED,Separate exact domains or escape
+P0A07,text,Normalize trim or casefold before dictionary encoding,DEFEATED,Exact decoder text only
+P0A08,text,Map empty/NUL string to null/C-string,DEFEATED,Explicit exact string offsets/lengths
+P0A09,date/time,Use display format to create Arrow date/timestamp,DEFEATED,Raw decoder value plus metadata absent exact type authority
+P0A10,missing state,Map all physical missing/special states to Arrow null,DEFEATED,Exact state+payload+declaration
+P0A11,declaration,Reorder/dedup missing declarations in vector classifier,DEFEATED,Exact order and first-match behavior
+P0A12,label lookup,Replace frozen str(raw) with new typed-key selection,DEFEATED,Typed storage only with identical inverse result
+P0A13,mixed type,Coerce union to string/double common supertype,DEFEATED,Tagged exact escape/fallback
+P0A14,SAV geometry,Use continuation/header storage slots as variable ordinals,DEFEATED,Use decoder logical variable axis
+P0A15,geometry base,Universal zero-based r/v formula,DEFEATED,Certificate binds bases; current decoder base1
+P0A16,geometry width,Trust metadata/zip without emitted-width proof,DEFEATED,Validate row width sequence row count and cell count
+P0A17,DTA reader,Generic direct reader options replace frozen config,DEFEATED,Exact decoder config/equivalence or fallback
+P0A18,compat memory,Call downstream vector compiler end-to-end bounded,DEFEATED_CURRENTLY,Current compatibility decoder full-read remains upstream exception
+P0A19,constructor bypass,Only per-row schema/state checks,DEFEATED,Local plus release-global C11 validator
+P0A20,semantic hash,Hash physical Arrow bytes as C11 identity,DEFEATED,Exact canonical semantic projection then SHA
+P0A21,object avoidance,Python semantic object must exist for every cell forever,SURVIVED_ATTACK,Certified vector path may skip allocation after parity court
+P0A22,hybrid fallback,One geometry failure must reject all vectorization,SURVIVED_ATTACK,Exact explicit-coordinate/event fallback is lawful

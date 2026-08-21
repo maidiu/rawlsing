@@ -1,0 +1,23 @@
+path_id,path,disposition,preconditions,fallback_or_failure
+VP01,PhysicalCell-equivalent normalized batch -> typed arrays,DIRECT_VECTOR_CONDITIONAL,Exact decoder normalization/state/declaration/label/ordinal parity,Reference decoder/cell path on mismatch
+VP02,Underlying pandas/pyreadstat frame -> canonical carrier,REJECTED,Would bypass frozen normalization,Must pass exact normalization-equivalent boundary
+VP03,finite decoder float -> bit payload,DIRECT_VECTOR_CONDITIONAL,Exact finite bit roundtrip and source metadata,Exact escape
+VP04,underlying NaN -> float-bit lane,REJECTED_CURRENT_BOUNDARY,Public decoder maps NaN to None/system missing,Mirror public decoder
+VP05,underlying infinity -> float lane,REJECTED_CURRENT_BOUNDARY,Public decoder maps infinity to text,Exact decoder text lane
+VP06,decoder bool -> bool lane,DIRECT_VECTOR_CONDITIONAL,Actual decoder/type-authorized bool only,Do not infer 0/1
+VP07,decoder int -> fixed int,DIRECT_VECTOR_CONDITIONAL,Exact signedness/width authority and total range check,Widen/big-int escape
+VP08,strict-roundtrip decoder text -> Arrow string,DIRECT_VECTOR_CONDITIONAL,No normalization; empty/NUL ordinary,Exact text escape
+VP09,decoder text not exact in Arrow UTF8,EXACT_ESCAPE_OR_FALLBACK,No repair/replacement allowed,Binary/codepoint escape or reference
+VP10,DTA extended missing,DIRECT_VECTOR_CONDITIONAL,Raw token+state+matched declaration exact,Reference classifier
+VP11,SAV user missing/range,DIRECT_VECTOR_CONDITIONAL,Ordered declaration classifier exact,Reference classifier for unsupported comparison domain
+VP12,date-looking numeric,DIRECT_VECTOR_AS_RAW,No native conversion; carry format metadata,Native date only with exact authority
+VP13,mixed/unsupported value,EXACT_ESCAPE_OR_FALLBACK,Per-event type identity preserved,Lossy common supertype forbidden
+VP14,current dense logical locator,DIRECT_DERIVATION_CONDITIONAL,1-based r/v + sealed V + width/order/count/cell/overflow proof,Explicit coordinates
+VP15,SAV physical slot/header locator,REJECTED,Continuation/header width not logical variable authority,Decoder logical variables only
+VP16,question/release metadata -> Arrow,DIRECT_VECTOR_CONDITIONAL,Exact order/text/dictionaries/declarations,Exact metadata escape
+VP17,local RespondentEvent fixed-schema validation,DIRECT_VECTOR_CONDITIONAL,State equality required refs topology form semantic parity,Object reference for unsupported canonical material
+VP18,authority and cross-section closure,RELEASE_GLOBAL_VECTOR_CONDITIONAL,Exact no-fallback registry conflict/join/scope validation,Frozen validator until certified
+VP19,duplicate respondent/event detection,RELEASE_GLOBAL_VECTOR_CONDITIONAL,Exact deterministic keys; bounded sort/join,Frozen validator until certified
+VP20,replay counts M01-M18 seal,RELEASE_GLOBAL_VECTOR_CONDITIONAL,Complete candidate closure only,Frozen ingest validation until certified
+VP21,canonical semantic hashing,DIRECT_VECTOR_CONDITIONAL_PER_FAMILY,Exact canonicalization bytes and family validators,Reference object construction
+VP22,SHA-bound compatibility sources,DOWNSTREAM_VECTOR_ONLY,Emitted normalized cells may vectorize but decoder full-reads,No end-to-end bounded claim

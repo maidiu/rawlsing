@@ -1,0 +1,91 @@
+id,invariant,scope,vector_class,failure
+DEC01,source SHA exact,release,RELEASE_GLOBAL,block on mismatch
+DEC02,automatic encoding guess/fallback forbidden,decoder config,DIRECT,reject
+DEC03,encoding override exact SHA/config and compatibility-only status,decoder config,DIRECT,reject
+DEC04,variable ordinal/name sequence exact and case-sensitive,release/question,RELEASE_GLOBAL,dense geometry disabled/reject
+DEC05,row/variable index bases exact,geometry,DIRECT,implicit locator disabled
+DEC06,emitted row width equals V,row/release,RELEASE_GLOBAL,fail or explicit path
+DEC07,emitted row count equals sealed row count,release,RELEASE_GLOBAL,block
+DEC08,dense cell count equals N*V with checked arithmetic,release,RELEASE_GLOBAL,block dense geometry
+DEC09,_jsonable transformation exact,cell,DIRECT_CONDITIONAL,reference normalization
+DEC10,physical missing classification exact,cell,DIRECT_CONDITIONAL,reference classifier
+DEC11,missing declaration order/first-match exact,cell/question,DIRECT_CONDITIONAL,reference classifier
+DEC12,raw label lookup exact frozen str(raw) semantics,cell/question,DIRECT_CONDITIONAL,store selected label/reference
+OBJ01,public family in frozen family vocabulary,object,DIRECT,reject
+OBJ02,schema id/version cannot substitute family,object,DIRECT,reject
+OBJ03,typed_state in exact family vocabulary,object,DIRECT,reject
+OBJ04,all required semantic fields present,object,DIRECT,reject
+OBJ05,non-AuthoritySnapshot has nonempty authority refs,object,DIRECT,reject
+OBJ06,authority refs canonical sort/dedup,object,DIRECT_CONDITIONAL,reference canonicalization
+OBJ07,dependency refs canonical sort/dedup,object,DIRECT_CONDITIONAL,reference canonicalization
+OBJ08,semantic mapping keys strings and values canonicalizable,object/value,DIRECT_CONDITIONAL,fallback unsupported nested
+OBJ09,binary float forbidden in semantic canonicalization,object/value,DIRECT,reject or governed conversion
+OBJ10,Decimal/Fraction exact canonical forms when admitted,object/value,DIRECT_CONDITIONAL,reference canonicalization
+OBJ11,set-like fields canonical sort/dedup by canonical JSON,object/value,DIRECT_CONDITIONAL,reference canonicalization
+OBJ12,sequence order preserved,object/value,DIRECT,reject order change
+OBJ13,reserved identity fields forbidden in semantic payload,object,DIRECT,reject
+OBJ14,object_id/content_hash deterministic from exact projection,object,DIRECT_CONDITIONAL,one mismatch defeats path
+OBJ15,replay root exact ref/mapping/nonempty text,object,DIRECT_CONDITIONAL,reference fallback
+OBJ16,semantic object/logical serving release immutable after seal,object/release,PUBLICATION,reject serving mutation
+OBJ17,RespondentEvent response_state equals typed_state,event,DIRECT,reject
+OBJ18,Coordinate state equals typed_state,coordinate,DIRECT,reject
+OBJ19,Weight state equals typed_state and no silent 1 repair,weight,DIRECT,reject
+OBJ20,AuthoritySnapshot decision equals typed state and exact ids/hash,authority,DIRECT,reject
+OBJ21,SourceUniverseRelation kind valid and >=2 universes; provenance/alias grants no composition,relation,RELEASE_GLOBAL,reject
+OBJ22,Predicate hash and AST grammar/canonical order exact,predicate,SPECIALIZED_OR_FALLBACK,reject/reference
+OBJ23,Query target/universe nonempty and diagnostics nonauthority,query,DIRECT,reject
+OBJ24,EmpiricalFact raw supports exact nonnegative ints n<=d and typed-state numeric laws,fact,DIRECT,reject
+OBJ25,DiscoveryAuthority exact mode/coverage laws,discovery,DIRECT,reject
+OBJ26,UNEVALUATED discovery has no positive facts,discovery,DIRECT,reject
+OBJ27,Structural admission positive iff ADMITTED with interpretation and no blocker,admission,DIRECT/RELEASE,reject
+OBJ28,ReplayReceipt state equality and exact projection hash,replay,DIRECT,reject
+OBJ29,identity text uses exact frozen nonempty/strip behavior,ref/object,DIRECT,reject
+OBJ30,ExactRef exact keys and lowercase SHA,ref,DIRECT,reject
+OBJ31,AuthorityRef exact keys and lowercase SHA,ref,DIRECT,reject
+OBJ32,EmpiricalUniverse respondent_namespace mandatory,universe,DIRECT,reject
+OBJ33,canonical coordinate requires exact positive crosswalk authority,coordinate,RELEASE_GLOBAL,reject
+OBJ34,RoutingEligibilityFact exact universe/respondent/risk/rule/member-set refs,routing,RELEASE_GLOBAL,reject
+OBJ35,valid weight exact value plus design/estimand authority,weight,RELEASE_GLOBAL,reject/block
+OBJ36,I01 objects carry no positive actor/V3/V2/persona/belief/response effect,object,DIRECT,reject semantic collapse
+AUT01,authority kind exact frozen vocabulary,authority,DIRECT,reject
+AUT02,latest/default/fuzzy/nearest/semver selectors forbidden,authority/ref,DIRECT,reject
+AUT03,authority integrity failure states reject,authority,DIRECT,reject
+AUT04,internal C11 family cannot become public via authority scope,authority,DIRECT,reject semantic collapse
+AUT05,same authority id/version cannot conflict on hash,release registry,RELEASE_GLOBAL,reject
+AUT06,exact authority resolution only no fallback,release/object,RELEASE_GLOBAL,block
+AUT07,positive authority requires ALLOW plus exact kind/operation/object/scope,use,RELEASE_GLOBAL,block/reject
+AUT08,all object/internal embedded authority refs resolve exact,release,RELEASE_GLOBAL,block
+AUT09,scope envelope exact mapping and containment exact no hierarchy inference,use,RELEASE_GLOBAL,block/reject
+INT01,TypedAbsence exact vocabulary/detail,record,DIRECT,reject
+INT02,internal record family approved and disjoint from public,record,DIRECT,reject
+INT03,internal mapping canonicalizable/string-keyed,record/value,DIRECT_CONDITIONAL,reference fallback
+INT04,RespondentIdentity exact universe/key and ref/absence variants,respondent,DIRECT/RELEASE,reject
+INT05,QuestionVariableBinding exact refs/version/semantic+topology authorities,question,DIRECT/RELEASE,reject
+INT06,replay binding states refs hashes exact,record,DIRECT/RELEASE,reject
+INT07,ReplayManifest text/hash/ref fields exact,release,RELEASE_GLOBAL,reject
+C1101,SourceReleaseManifest ingest contract version exact,release,DIRECT,reject
+C1102,manifest source hash and snapshot retention ref exact,release,DIRECT/RELEASE,reject
+C1103,manifest selector text cannot use mutable/fuzzy forms,release,DIRECT,reject
+C1104,declared counts nonnegative exact ints and required core counts present,release,RELEASE_GLOBAL,reject
+C1105,declared universes exactly equal actual universes,release,RELEASE_GLOBAL,reject source collapse
+C1106,declared authorities exactly equal package snapshots,release,RELEASE_GLOBAL,block
+C1107,required sections nonempty; optional sections only lawful TypedAbsence,release,RELEASE_GLOBAL,reject
+C1108,candidate replay manifest required,release,RELEASE_GLOBAL,reject
+C1109,every public object integrity+authority closure valid,release,RELEASE_GLOBAL,reference fallback until certified
+C1110,all recursively embedded authority refs resolve exact,release,RELEASE_GLOBAL,block
+C1111,duplicate exact EmpiricalUniverse rejected,release,RELEASE_GLOBAL,reject
+C1112,respondent key unique within exact universe,release,RELEASE_GLOBAL,reject
+C1113,facts bind in-package universe/respondent and no cross-universe reuse,release,RELEASE_GLOBAL,reject
+C1114,every event has native question binding in same universe,release,RELEASE_GLOBAL,reject topology loss
+C1115,event occurrence composite identity unique,release,RELEASE_GLOBAL,reject event collapse
+C1116,canonical question/response requires positive mapping authority,release/object,RELEASE_GLOBAL,reject unauthorized promotion
+C1117,topology mapping/kind/order-rank/occurrence requirements exact,event,DIRECT/RELEASE,reject topology loss
+C1118,source relation explicit or DISTINCT_BY_DEFAULT,release,RELEASE_GLOBAL,reject source collapse
+C1119,replay frontier/projection/source/authority/closure exactly match candidate,release,RELEASE_GLOBAL,reject replay nondeterminism
+C1120,replay protocol authority exact positive,release,RELEASE_GLOBAL,block
+C1121,M01-M18 all explicitly covered,release,RELEASE_GLOBAL,reject
+C1122,C11LogicalRelease requires complete-validation private seal,release,PUBLICATION,unsealed cannot serve
+C1123,release hashes exact and same release_id cannot change semantic hash,release/repository,PUBLICATION,reject
+C1124,repository exact release/object resolution no fallback,serve,PUBLICATION,key miss fails
+C1125,exact object ref collision with conflicting content rejected,repository,PUBLICATION,atomic reject
+C1126,failed ingest cannot mutate repository,publication,PUBLICATION,hard integrity failure if changed

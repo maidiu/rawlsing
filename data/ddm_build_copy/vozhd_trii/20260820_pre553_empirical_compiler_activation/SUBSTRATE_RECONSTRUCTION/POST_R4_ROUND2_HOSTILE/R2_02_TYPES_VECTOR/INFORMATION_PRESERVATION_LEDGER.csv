@@ -1,0 +1,43 @@
+item_id,information_item,grain,p0_owner,vector_disposition,reconstruction_law,exception_or_fallback,fail_closed
+I01,source snapshot SHA,release,manifest,DIRECT_VECTOR_SAFE,exact frozen digest,none,hash mismatch blocks release
+I02,decoder/config identity,release,manifest,DIRECT_VECTOR_SAFE,exact reader version/config/compat status,none,config drift is different extraction identity
+I03,row ordinal,respondent/event,explicit coordinate or geometry,CONDITIONAL_VECTOR,exact decoder ordinal current base1,explicit coordinate,base/count mismatch disables implicit locator
+I04,variable ordinal,question/event,question dimension or geometry,CONDITIONAL_VECTOR,exact decoder ordinal current base1,explicit coordinate,sequence mismatch disables implicit locator
+I05,variable name,question,question dimension,DIRECT_VECTOR_SAFE,exact case-sensitive decoder name,store direct,never casefold
+I06,variable order,release/question,ordered question dimension,RELEASE_GLOBAL_REQUIRED,exact decoder logical sequence digest,explicit coordinates,order mismatch blocks dense geometry
+I07,row width,release geometry,geometry certificate,RELEASE_GLOBAL_REQUIRED,every emitted row width equals V,explicit event or fail,zip truncation cannot serve
+I08,row/cell counts,release geometry,geometry certificate,RELEASE_GLOBAL_REQUIRED,emitted rows=N and dense cells=N*V,explicit event or fail,count mismatch blocks seal
+I09,system missing raw payload,event,typed incidence,DIRECT_VECTOR_SAFE,None plus SYSTEM_MISSING,explicit event,null may not erase cell incidence
+I10,finite decoder float,event,DECODER_FLOAT_BITS,CONDITIONAL_VECTOR,exact finite runtime bits plus source metadata,exact escape,bit mismatch blocks
+I11,signed zero,event,DECODER_FLOAT_BITS,CONDITIONAL_VECTOR,bitwise roundtrip,exact escape,-0 to +0 is physical destruction
+I12,underlying NaN payload,below P0 boundary,not downstream P0 material,NOT_APPLICABLE,current decoder exposes None/SYSTEM_MISSING,decoder authority change,no invented payload
+I13,underlying infinity,event after decoder,DECODER_TEXT_EXACT plus source metadata,CONDITIONAL_VECTOR,reconstruct decoder text then exact classification,text escape,recasting float rejected
+I14,decoder integer,event,exact integer lane,CONDITIONAL_VECTOR,exact value and domain,wide/big-int escape,overflow/wrap blocks
+I15,decoder bool,event,BOOL,CONDITIONAL_VECTOR,actual decoder/type-authorized bool only,tagged escape,0/1 inference forbidden
+I16,decoded text,event/metadata,DECODER_TEXT_EXACT,CONDITIONAL_VECTOR,exact sequence; UTF8 only if strict roundtrip,exact text escape,normalization/repair forbidden
+I17,empty string,event,DECODER_TEXT_EXACT,DIRECT_VECTOR_SAFE,length-zero text distinct from null,string escape,null conversion blocks
+I18,NUL/control text,event/metadata,DECODER_TEXT_EXACT,CONDITIONAL_VECTOR,exact offsets/length and roundtrip,exact escape,C-string truncation blocks
+I19,missing declarations,question,question metadata,DIRECT_VECTOR_SAFE,exact ordered declaration tuple,store direct,zero-incidence declarations retained
+I20,matched missing declaration,event,typed incidence,CONDITIONAL_VECTOR,exact frozen first matching declaration,reference classifier,different match blocks
+I21,physical missing state,event,state lane,DIRECT_VECTOR_SAFE,exact state-vocabulary bijection,explicit state,unknown/unrepresentable blocks
+I22,DTA extended missing,event/question,raw token+state+declaration,CONDITIONAL_VECTOR,exact reader/Stata token representation,explicit event,null collapse blocks
+I23,SAV user missing/range,event/question,raw+state+declaration,CONDITIONAL_VECTOR,exact classifier parity,validated fallback,null collapse blocks
+I24,raw value label,event/question,dictionary plus selected result,CONDITIONAL_VECTOR,reproduce frozen str(raw) lookup exactly,store selected label,typed-key mismatch blocks compaction
+I25,storage type,question,question metadata,DIRECT_VECTOR_SAFE,exact decoder metadata,store direct,may not recast observed raw value
+I26,display/format metadata,question,question metadata,DIRECT_VECTOR_SAFE,exact decoder metadata,store direct,display width never bounds raw numeric domain
+I27,date/time-looking raw,event/question,observed raw lane+metadata,CONDITIONAL_VECTOR,native date only if decoder type authority exact,numeric/text fallback,appearance conversion rejected
+I28,mixed/unsupported value,event,tagged union/escape,EXACT_ESCAPE_OR_FALLBACK,per-event exact type+payload,validated event path,lossy common supertype blocks
+I29,SAV continuation geometry,decoder logical axis,question dimension,DIRECT_AT_PUBLIC_DECODER_BOUNDARY,logical variables after decoder continuation handling,explicit event,raw storage slots never question ids
+I30,MR/repeated/ranked topology,question/event,metadata+explicit topology relation,CONDITIONAL_VECTOR,exact set/component/occurrence/order/rank,explicit event,dedup/sort loss blocks
+I31,respondent replay identity,respondent,source snapshot+row ordinal,DIRECT_VECTOR_SAFE,exact scoped row coordinate,explicit ref,native ID inference forbidden
+I32,native question binding,question/event,question dimension+exact refs,RELEASE_GLOBAL_REQUIRED,exact universe/native-question join,validated fallback,unbound event rejects
+I33,authority snapshot refs,object/release,authority relation,RELEASE_GLOBAL_REQUIRED,exact immutable ref set+registry resolve,reference path,no latest/fuzzy fallback
+I34,canonical mapping authority,object/question,authority relation,RELEASE_GLOBAL_REQUIRED,exact positive mapping authority,no canonical material or fallback,unauthorized promotion rejects
+I35,duplicate event occurrence,release,event relation,RELEASE_GLOBAL_REQUIRED,unique exact occurrence composite key,bounded external validation,duplicate rejects
+I36,routing/risk set,event/respondent,routing relation,RELEASE_GLOBAL_REQUIRED,exact refs and authority,validated fallback,absence cannot become nonmembership
+I37,weight/design/estimand,respondent/event,weight relation+authority,RELEASE_GLOBAL_REQUIRED,exact value+authority closure,validated fallback,default/unresolved weight rejected
+I38,source universe relation,release,relation or DISTINCT_BY_DEFAULT,RELEASE_GLOBAL_REQUIRED,exact explicit disposition,validated fallback,data equality cannot pool
+I39,replay manifest closure,release,replay manifest,RELEASE_GLOBAL_REQUIRED,exact projection/source/authority/closure refs,reference validator,mismatch rejects
+I40,M01-M18 coverage,release,coverage receipt,RELEASE_GLOBAL_REQUIRED,all frozen atoms explicitly covered,reference validator,missing atom rejects
+I41,semantic projection/hash,object/release,canonical logical projection,CONDITIONAL_VECTOR,exact canonicalize/canonical_json/SHA256 parity,semantic-object reference,one mismatch defeats vector scope
+I42,validated serving seal,release,publication boundary,RELEASE_GLOBAL_REQUIRED,complete validation before serving,reference ingest until certified,unsealed carrier cannot serve

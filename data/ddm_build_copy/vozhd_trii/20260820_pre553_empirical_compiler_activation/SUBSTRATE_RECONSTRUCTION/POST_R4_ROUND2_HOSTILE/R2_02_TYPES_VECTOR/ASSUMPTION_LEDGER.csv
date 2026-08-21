@@ -1,0 +1,26 @@
+assumption_id,assumption,status,evidence,required_action
+A01,Frozen public decoder output is P0 source-physical input authority,PROVEN,Authority54+09+10+decoder,Vector path reproduces public projection exactly
+A02,Current decoder row and variable ordinals are 1-based,PROVEN,pre553_physical_decoder enumerate(...;1),Geometry certificate binds bases
+A03,Every emitted row has exactly V values,NOT_PROVEN__MUST_VALIDATE,decoder uses zip(variables;row),Exact row-width proof before dense geometry
+A04,Metadata row_count always equals emitted row count,NOT_PROVEN__MUST_VALIDATE,metadata and traversal are separate,Count closure before seal
+A05,NaN payload/sign is exposed at P0 boundary,REJECTED,_jsonable NaN->None,Do not invent payload downstream
+A06,Finite decoder float including -0.0 survives normalization,PROVEN,_jsonable returns finite float unchanged,Store exact finite bits
+A07,Infinity remains numeric at P0 boundary,REJECTED,_jsonable infinity->text,Preserve decoder text plus metadata
+A08,Storage type alone determines decoder value width,REJECTED,reader may promote; decoder output is authority,No silent narrowing
+A09,Observed min/max may select integer width,REJECTED,Authority54/R02/R06,Declared type plus total check or escape
+A10,Every decoder string may enter Arrow UTF8 without validation,NOT_PROVEN__MUST_VALIDATE,decoder exposes Python str,Strict roundtrip or exact escape
+A11,Empty or NUL text may map to null,REJECTED,09/10+SR09+R03,Preserve exact text
+A12,Unicode normalization is harmless storage normalization,REJECTED,09/10+R02/R03,No normalization/trim/casefold
+A13,Date-looking format authorizes native date conversion,REJECTED,09/10+decoder,Preserve decoder raw plus metadata
+A14,DTA extended missing may collapse to null,REJECTED,10+decoder+LiTS,Preserve raw token/state/declaration
+A15,SAV user missing may collapse to null,REJECTED,09/10+decoder,Preserve raw/state/declaration
+A16,Missing declaration order is irrelevant,REJECTED,classifier returns first match,Preserve declaration order/first match
+A17,Typed raw-key dictionary may redefine selected label,REJECTED,decoder uses str(raw) lookup,Typed storage only with exact inverse
+A18,SAV physical storage slot count equals logical variable count,REJECTED,R03 H004 continuation,Use decoder logical variable axis
+A19,SAV nominal case size defines V,REJECTED,R03 H013 Latinobarometro2024,Use sealed decoder logical width
+A20,Compatibility override sources are bounded-reader paths today,REJECTED,decoder full-reads on encoding override,No end-to-end boundedness claim
+A21,Generic DTA options can replace exact frozen config,REJECTED,R03 H015+10,Exact reader/config identity
+A22,Batch-local checks can replace C11 validation,REJECTED,C11 integrity/ingest/authority,Require release-global validation
+A23,Every constructor invariant inherently requires Python objects,REJECTED,most are exact predicates/joins/hashes,Vectorize only after parity proof
+A24,Semantic hash can be hash of physical Arrow bytes,REJECTED,canonicalize/canonical_json law,Exact semantic projection first
+A25,Raw-source probe is needed,REJECTED,checked-in evidence closes named questions,No raw source opened

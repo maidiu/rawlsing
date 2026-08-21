@@ -1,0 +1,18 @@
+ruling_id,mechanism,disposition,binding_ruling
+RUL001,P0 input boundary,KEEP_WITH_CORRECTION,Exact decoder-normalized physical batch not underlying reader frame
+RUL002,finite float lane,KEEP_CONDITIONAL,Exact bits only for finite decoder-observed floats including signed zero
+RUL003,NaN payload lane,DELETE_AT_CURRENT_BOUNDARY,No downstream NaN payload claim after decoder maps NaN to system missing
+RUL004,infinity float lane,DELETE_AT_CURRENT_BOUNDARY,Current decoder infinity is text and must reconstruct as such
+RUL005,integer adaptive width,KEEP_CONDITIONAL,Exact type authority plus total representability; never observed range
+RUL006,exact text,KEEP_WITH_CORRECTION,Exact decoded text semantics; UTF8 fast lane only if strict roundtrip; exact escape otherwise
+RUL007,native date/time lane,DEFER_CONDITIONAL,Only when frozen decoder/type authority exposes exact reversible native type
+RUL008,missing/special state,KEEP,Separate payload state and matched declaration; never one-null collapse
+RUL009,raw label dictionary,KEEP_WITH_CORRECTION,Typed storage allowed only if frozen str(raw) selected-label result is identical
+RUL010,arithmetic locator,KEEP_CONDITIONAL,Root-bound base/order/width/count/overflow certificate; current bases are 1
+RUL011,SAV slot/header locator input,REJECT,Only decoder logical variable axis has P0 question geometry
+RUL012,direct vector compiler,KEEP_CONDITIONAL,Decoder parity + exact lanes + local validators + release-global validators + semantic parity
+RUL013,batch-only validator,DELETE,Cannot mint canonical C11 serving seal
+RUL014,validated reference path,KEEP,Reference/oracle/fallback until each vector scope independently passes parity
+RUL015,compatibility boundedness claim,CORRECT,Downstream vectors do not make current full-frame compatibility decoder bounded
+RUL016,source-local branching,KEEP_ONLY_PHYSICAL_CAPABILITY,Branch on exact decoder/type/geometry capability not source-family meaning
+RUL017,P0 overall,PASS_WITH_REQUIRED_CORRECTIONS,P0 repairable; no runtime implementation authorized
