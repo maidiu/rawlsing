@@ -1,4 +1,4 @@
-# SR04 — PHYSICAL CARRIER BAKEOFF — BOUNDED LOCAL CODEX CELL
+# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 2 STAGED EXECUTION
 
 Repository: `maidiu/rawlsing`
 Frozen semantic parent: `9188dc9fb7a8b92b981f3d3f94754cd6137d17b1`
@@ -6,29 +6,21 @@ Control branch: `agent/vozhd-trii-pre553-substrate-reconstruction-control`
 
 The exact launch HEAD is supplied by HQ. Verify it before doing anything.
 
-## Mission
+## Current status
 
-Implement the single benchmark harness authorized by:
+All SR04 harness revisions through `ea508994a80b9d66bd3729f6641ef5600aa624c4` are invalidated as PRE-ACCEPTANCE IMPLEMENTATION by `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md`.
 
-`18_SR04_CARRIER_BAKEOFF_EXECUTION_CONTRACT.md`
+Do not execute another full WVS7/LiTS I bakeoff until the staged acceptance below passes.
 
-then execute the bakeoff exactly under that contract and return the small metrics/receipt package.
-
-This cell is mechanical benchmark implementation + execution. It has **no authority** to choose semantic architecture, reinterpret source meaning, change the candidate set, alter budgets, or modify accepted runtime code.
-
-## Read first
+## Read first, in order
 
 1. `11_PHYSICAL_CARRIER_SELECTION_COURT.md`
 2. `18_SR04_CARRIER_BAKEOFF_EXECUTION_CONTRACT.md`
-3. `16_SR03_R3_ADJUDICATION.md`
-4. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
-5. accepted reference code only as needed to understand file-neutral C11/query shapes:
-   - `rawlsing_next/pre553_c11_repository.py`
-   - `rawlsing_next/pre553_c11_ingest.py`
-   - `rawlsing_next/pre553_empirical_query.py`
-   - accepted I03/I05 test fixtures under `rawlsing_next/tests/`
-
-Reference files are READ ONLY.
+3. `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md`
+4. `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`
+5. `16_SR03_R3_ADJUDICATION.md`
+6. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
+7. accepted I02/I03/I05 reference code/tests only as needed; READ ONLY.
 
 ## Sole permitted repository write
 
@@ -38,82 +30,75 @@ You may create/modify only:
 
 No other repository file may change.
 
-## Local source bytes
+## Immediate mission — Stage A only
 
-Use exact hash-matched sources under the local Rawlsing source root, normally:
+Repair the harness mechanically to close every defect in `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md` and satisfy `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`.
 
-`/Users/matthewsmith/Desktop/Rawlsing/data/Data`
+Before any raw WVS7/LiTS I decode, run the tiny synthetic contract test suite.
 
-Required exact source hashes are frozen in the contract and `SOURCE_BYTE_INVENTORY.csv`.
+The synthetic suite must prove:
 
-Do not substitute files.
+- exact Q00-Q15 query shapes;
+- exact candidate result normalization and comparison to an independent oracle;
+- deliberate wrong-oracle detection;
+- true stored-candidate read-back digest equality for every available candidate;
+- deliberate stored-data corruption detection;
+- PostgreSQL disposable-cluster connection lifecycle;
+- no DATABASE_URL use;
+- cleanup confinement;
+- disk-safety handling.
 
-## Implementation preflight
+Required Stage-A token:
 
-Before full execution:
+`PRE553_SR04_SYNTHETIC_CONTRACT_TESTS_PASS`
 
-- verify exact Git HEAD from HQ;
-- verify only the permitted harness path is dirty after implementation;
-- syntax-check the harness;
-- run a tiny harness self-test if implemented, confined to the disposable work root;
-- verify the harness itself rejects wrong source hashes and unsafe disk conditions;
-- verify it never connects to `DATABASE_URL` for the PostgreSQL candidate;
-- verify the PostgreSQL candidate creates only a disposable local cluster;
-- verify candidate cleanup is confined to the SR04 disposable root.
+## Publication after Stage A
 
-## Harness publication
+When Stage A passes:
 
-After the harness passes the preflight:
+1. syntax-check and static-audit the harness;
+2. verify the sole repo change is `SR04_CARRIER_BAKEOFF.py`;
+3. commit only that file with message:
+   `Repair SR04 carrier bakeoff correctness harness`
+4. push the control branch;
+5. return to HQ BEFORE launching Stage B:
+   - starting HEAD;
+   - new committed harness HEAD;
+   - harness SHA-256;
+   - exact Stage-A command;
+   - complete tiny Stage-A receipt;
+   - Stage-A token;
+   - final git status;
+   - pushed branch HEAD.
 
-1. commit **only** `SR04_CARRIER_BAKEOFF.py` with message:
-   `Implement frozen SR04 carrier bakeoff harness`
-2. push the control branch;
-3. record the resulting exact commit SHA;
-4. execute the full bakeoff from that exact committed harness.
+**STOP THERE.**
 
-Do not commit local result data, virtualenvs, staging files, candidate databases, stdout/stderr, `.DS_Store`, or other artifacts.
+Do not launch the expensive real-source Stage B until HQ accepts the committed harness/Stage-A receipt and issues a separate Stage-B order.
 
-## Full execution
+## Stage B — not currently authorized
 
-Run the committed harness against the exact local source root and a fresh disposable work root under `/private/tmp`.
+After separate HQ authorization, Stage B will:
 
-The command-line interface may be chosen mechanically by the harness implementation, but the final return must include the exact command. Recommended form:
+- use exact raw WVS7/LiTS I files;
+- build or lawfully reuse an exact-digest neutral fixture checkpoint;
+- execute all four candidates sequentially under the frozen disk/time budgets;
+- compare every candidate query output to the real independent oracle;
+- compute every replay digest from the stored candidate itself;
+- return the frozen small result package and final SR04 completion token.
 
-`python <ORDER_ROOT>/SR04_CARRIER_BAKEOFF.py --source-root /Users/matthewsmith/Desktop/Rawlsing/data/Data --output-dir SR04_CARRIER_BAKEOFF_RESULTS`
+## Forbidden
 
-The frozen contract controls all candidate/layout/query/disk/time semantics regardless of CLI spelling.
+Do not:
 
-## Required return to HQ
+- execute the current `ea508994...` full run as evidence;
+- repeatedly rebuild raw-source fixtures while debugging Stage A;
+- alter raw source files;
+- touch live Postgres or DATABASE_URL;
+- change the candidate set;
+- change query truth conditions;
+- change disk/time budgets;
+- modify `rawlsing_next/**`;
+- treat successful SQL execution as correctness;
+- compute candidate replay digests from the neutral in-memory fixture.
 
-- starting exact HQ launch HEAD;
-- committed harness execution HEAD;
-- harness path and SHA-256;
-- exact full execution command;
-- exit code;
-- full `SR04_CARRIER_BAKEOFF_RESULTS/` small result package;
-- deterministic result ZIP byte size + SHA-256;
-- candidate dispositions;
-- provisional selection;
-- success token presence;
-- final `git status -sb`;
-- pushed branch HEAD.
-
-Required success token:
-
-`PRE553_SR04_CARRIER_BAKEOFF_RECEIPT_COMPLETE`
-
-## Fail closed
-
-Do not improvise around a contract failure.
-
-Return exact failure for:
-
-- source hash mismatch;
-- fixture oracle mismatch;
-- disk reserve violation;
-- candidate budget/time violation;
-- missing PostgreSQL server binaries;
-- benchmark dependency failure after the explicitly authorized isolated-temp dependency path;
-- contract ambiguity.
-
-Never delete user files to make space. Never alter the live Rawlsing database. Never relax the candidate correctness gate.
+Fail closed on ambiguity and return it to HQ.
