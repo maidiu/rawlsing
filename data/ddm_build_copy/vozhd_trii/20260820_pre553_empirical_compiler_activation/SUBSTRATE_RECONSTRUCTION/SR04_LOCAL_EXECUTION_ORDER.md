@@ -1,4 +1,4 @@
-# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 2 STAGED EXECUTION
+# SR04 — PHYSICAL CARRIER BAKEOFF — REVISION 3 SHARED-PATH ACCEPTANCE
 
 Repository: `maidiu/rawlsing`
 Frozen semantic parent: `9188dc9fb7a8b92b981f3d3f94754cd6137d17b1`
@@ -8,9 +8,17 @@ The exact launch HEAD is supplied by HQ. Verify it before doing anything.
 
 ## Current status
 
-All SR04 harness revisions through `ea508994a80b9d66bd3729f6641ef5600aa624c4` are invalidated as PRE-ACCEPTANCE IMPLEMENTATION by `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md`.
+Stage A synthetic contract testing is accepted at harness HEAD:
 
-Do not execute another full WVS7/LiTS I bakeoff until the staged acceptance below passes.
+`a5874b3a8bc371ae3a2baebf31f3cce6fe9bb298`
+
+Binding acceptance/gate:
+
+`21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`
+
+Stage B is NOT authorized.
+
+Static HQ review proved that the real-source CLI path still invokes older candidate/query functions different from the functions exercised by the accepted Stage-A synthetic suite.
 
 ## Read first, in order
 
@@ -18,87 +26,119 @@ Do not execute another full WVS7/LiTS I bakeoff until the staged acceptance belo
 2. `18_SR04_CARRIER_BAKEOFF_EXECUTION_CONTRACT.md`
 3. `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md`
 4. `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`
-5. `16_SR03_R3_ADJUDICATION.md`
-6. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
-7. accepted I02/I03/I05 reference code/tests only as needed; READ ONLY.
+5. `21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`
+6. `16_SR03_R3_ADJUDICATION.md`
+7. `17_SR05_SOURCE_CONSTITUTION_RECLOSURE.md`
+8. accepted I02/I03/I05 reference code/tests only as needed; READ ONLY.
 
 ## Sole permitted repository write
 
-You may create/modify only:
+You may modify only:
 
 `data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR04_CARRIER_BAKEOFF.py`
 
 No other repository file may change.
 
-## Immediate mission — Stage A only
+# IMMEDIATE MISSION — STAGE A.1 ONLY
 
-Repair the harness mechanically to close every defect in `19_SR04_PREACCEPTANCE_HARNESS_AUDIT.md` and satisfy `20_SR04_EXECUTION_DISCIPLINE_ADDENDUM.md`.
+Refactor the harness so Stage A and Stage B use ONE shared carrier-court execution path.
 
-Before any raw WVS7/LiTS I decode, run the tiny synthetic contract test suite.
+The only lawful difference between the stages is fixture provider:
 
-The synthetic suite must prove:
+- Stage A: tiny deterministic synthetic fixture;
+- Stage B: exact WVS7/LiTS I neutral fixture.
 
-- exact Q00-Q15 query shapes;
-- exact candidate result normalization and comparison to an independent oracle;
-- deliberate wrong-oracle detection;
-- true stored-candidate read-back digest equality for every available candidate;
-- deliberate stored-data corruption detection;
-- PostgreSQL disposable-cluster connection lifecycle;
-- no DATABASE_URL use;
-- cleanup confinement;
-- disk-safety handling.
+The shared path must own all of:
 
-Required Stage-A token:
+- one frozen Q00-Q15 SQL map;
+- candidate materialization;
+- candidate query execution;
+- result normalization;
+- independent-oracle comparison;
+- true stored-candidate read-back digest computation;
+- correctness disposition;
+- warm-up + scored timing;
+- cold/open timing;
+- separate index timing where applicable;
+- peak-RSS measurement;
+- disk budget enforcement;
+- build/query time ceilings;
+- candidate cleanup confinement;
+- provisional selection.
 
-`PRE553_SR04_SYNTHETIC_CONTRACT_TESTS_PASS`
+Remove/retire duplicated Stage-A-only versus Stage-B-only truth implementations. Do not leave a second dormant candidate/query path that main() can invoke.
 
-## Publication after Stage A
+## Required Stage-A.1 synthetic acceptance
 
-When Stage A passes:
+Run the tiny synthetic fixture through the exact shared code path Stage B would invoke.
+
+The receipt must prove at minimum:
+
+- `shared_query_map = true`
+- `shared_candidate_execution_path = true`
+- `shared_oracle_comparison_path = true`
+- `shared_stored_readback_path = true`
+- `shared_budget_enforcement_path = true`
+- all four candidates compare equal to the independent oracle;
+- all four stored-candidate replay digests compare equal to fixture digests;
+- wrong-oracle negative test is detected;
+- stored-data corruption negative test is detected;
+- PostgreSQL lifecycle is open through query/readback and cleanly stops;
+- `DATABASE_URL` is never used;
+- cleanup is confined to the disposable root;
+- no WVS7/LiTS I bytes are decoded;
+- no candidate may report `MEASURED_CORRECT` without both oracle equality and stored-readback digest equality.
+
+Required token:
+
+`PRE553_SR04_SHARED_EXECUTION_PATH_CONTRACT_PASS`
+
+## Publication after Stage A.1
+
+When Stage A.1 passes:
 
 1. syntax-check and static-audit the harness;
 2. verify the sole repo change is `SR04_CARRIER_BAKEOFF.py`;
 3. commit only that file with message:
-   `Repair SR04 carrier bakeoff correctness harness`
+   `Unify SR04 carrier bakeoff execution path`
 4. push the control branch;
-5. return to HQ BEFORE launching Stage B:
-   - starting HEAD;
-   - new committed harness HEAD;
+5. RETURN TO HQ:
+   - starting exact HEAD;
+   - new harness HEAD;
    - harness SHA-256;
-   - exact Stage-A command;
-   - complete tiny Stage-A receipt;
-   - Stage-A token;
+   - exact Stage-A.1 command;
+   - complete tiny Stage-A.1 receipt;
+   - Stage-A.1 token;
    - final git status;
    - pushed branch HEAD.
 
 **STOP THERE.**
 
-Do not launch the expensive real-source Stage B until HQ accepts the committed harness/Stage-A receipt and issues a separate Stage-B order.
+Do not decode WVS7 or LiTS I.
+Do not launch Stage B.
 
-## Stage B — not currently authorized
+## Later Stage B — not currently authorized
 
-After separate HQ authorization, Stage B will:
+Only after HQ accepts Stage A.1 will Stage B be authorized.
 
-- use exact raw WVS7/LiTS I files;
-- build or lawfully reuse an exact-digest neutral fixture checkpoint;
-- execute all four candidates sequentially under the frozen disk/time budgets;
-- compare every candidate query output to the real independent oracle;
-- compute every replay digest from the stored candidate itself;
-- return the frozen small result package and final SR04 completion token.
+Stage B will use exact raw WVS7/LiTS I bytes to build a neutral fixture checkpoint once, freeze exact source/harness/fixture/oracle identities, and then execute the four candidates through the same accepted shared path.
+
+A later candidate-implementation-only retry may reuse an exact checkpoint only under the identity/digest rules in `21_SR04_STAGE_A_ACCEPTANCE_AND_STAGE_B_WIRING_GATE.md`.
 
 ## Forbidden
 
 Do not:
 
-- execute the current `ea508994...` full run as evidence;
-- repeatedly rebuild raw-source fixtures while debugging Stage A;
-- alter raw source files;
-- touch live Postgres or DATABASE_URL;
-- change the candidate set;
-- change query truth conditions;
-- change disk/time budgets;
+- launch any raw-source Stage B run;
+- touch the live Rawlsing PostgreSQL database or `DATABASE_URL`;
+- change source bytes;
+- change the four-candidate set;
+- change Q00-Q15 truth conditions;
+- weaken correctness gates;
 - modify `rawlsing_next/**`;
+- change the 5 GiB reserve or frozen disk/time ceilings;
 - treat successful SQL execution as correctness;
-- compute candidate replay digests from the neutral in-memory fixture.
+- calculate replay digests from the neutral dataframe instead of the stored candidate;
+- maintain separate Stage-A and Stage-B candidate/query truth implementations.
 
 Fail closed on ambiguity and return it to HQ.
