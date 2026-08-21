@@ -10,7 +10,7 @@ Accepted worker branch: `agent/vozhd-trii-sr06-relational-scale-correction`
 
 Accepted continuation head: `4db4599bdb3582c806525beaeb6af46cb64eeb09`
 
-Accepted worker return commit: `20cfc676bdcebbf9aa5ef1297bb94451f3af175`
+Accepted worker return commit: `20cfc676bdcebbf9aa5ef129bb7b94451f3af175`
 
 Parent authority: `48_SR06_STORAGE_R3_RETURN_ADJUDICATION_AND_R4_FUNCTIONAL_DEPENDENCY_COMPACTION_AUTHORITY.md`
 
