@@ -1,0 +1,15 @@
+{
+  "worker": "SR08-P0 LiTS I",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-sr08-p0-lits1-scale",
+  "starting_head": "55d0a848f73faf2df8dfd07aefadf716671578d0",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "source_shape": {"rows": 29002, "variables": 1198},
+  "reader_invocation": "decode_dta(source_path, encoding=\"latin1\")",
+  "reader_configuration": {"reader":"pyreadstat","reader_version":"1.3.2","user_missing":true,"apply_value_formats":false,"encoding":"latin1","authority_status":"COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"},
+  "bounded_replay": {"row_limit":2048,"expected_cells":2453504,"8192_digest":"e4cde7d05884719c5ccdb93f025b0ee1cefa997c7ee5a6a4ea7165232f8a4f4c","32768_digest":"e4cde7d05884719c5ccdb93f025b0ee1cefa997c7ee5a6a4ea7165232f8a4f4c","counts_exact":true},
+  "restart": {"destroyed_decoder":true,"forced_gc":true,"digest":"e4cde7d05884719c5ccdb93f025b0ee1cefa997c7ee5a6a4ea7165232f8a4f4c","count":2453504},
+  "assertions_all_pass": true,
+  "final_disposition": "P0_PASS__FULL_CERTIFICATION_MAY_BE_ADJUDICATED",
+  "required_token": "PRE553_SR08_P0_LITS1_SCALE_PREFLIGHT_RETURNED"
+}
