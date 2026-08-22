@@ -6,59 +6,93 @@ Status: `EXPLORATORY__NON_DISPOSITIVE__PREPARED_NOT_LAUNCHED__NO_RUNTIME_WRITE_A
 
 ## 0. PURPOSE
 
-This campaign exists because the full source→compiled-structural-substrate pipeline-generator has not yet been built, while current PRE553 work is actively selecting/repairing a physical empirical carrier.
+The full source→learned-world pipeline-generator has not yet been built, while PRE553 is actively selecting/repairing a physical empirical carrier.
 
-The timing creates one narrow but consequential compiler-lifecycle question that must be answered before the missing generator accidentally hard-codes a physical intermediate as an architectural requirement:
+Chetiri therefore asks, before implementation accidentally makes one physical intermediate architectural:
 
-> **What information must exist permanently, and what information only needs to be reproducibly computable during build time?**
+> **Across the complete Rawlsing lifecycle, what must persist, what must remain servable, what must remain replayable, and what may instead be virtual, transient, deterministically regenerated or cached?**
 
-Chetiri does not reopen the closed semantic machine. It determines the correct **persistence and compiler lifecycle** under that machine and may, if evidence warrants, prepare a separate HQ reopening petition for a physical implementation authority.
+Chetiri does not reopen the closed V553–V2 semantic machine. It determines persistence/execution architecture beneath and alongside that machine and may prepare a later physical-implementation reopening petition only if evidence warrants.
 
 ## 1. ABSOLUTE END-PRODUCT GOVERNANCE
 
-Chetiri is governed by the finished Rawlsing application, not by local storage elegance.
-
 Rawlsing exists to generate a person who is **causally intelligible without being inevitable**.
 
-All Chetiri work is subordinate to:
+Chetiri is subordinate to:
 
 - `RAWLSING_GOVERNING_SPIRIT.md`;
 - `TERMINAL_DEMAND_ENVELOPE.md`;
 - `ARCHITECTURE_PASS_LAW.md`;
 - `CONSTRAINTS_PRIORITIES.md`;
 - `WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
-- exact source/semantic authority for the question at hand.
+- exact source/semantic authority;
+- the recovered empirical obligations documented in cross-command law.
 
-The binding Chetiri elaboration is `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`.
+Binding Chetiri elaborations include:
 
-Every worker and HQ itself must preserve, without moving downstream semantics upstream:
+- `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`;
+- `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md`;
+- `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`;
+- `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md`;
+- `20_CHETIRI_HQ_PRELAUNCH_CORRECTIVE_DISPOSITIONS.md`.
 
-- nine-strata relational structural fields;
-- inter-strata direction/counter-pressure/contradiction;
-- time, drift, gaps, rupture and noncomparability;
-- mediation rather than structure→psyche;
-- pressure-flow topology prerequisites;
-- orientation-to-strata as V3-owned runtime development;
-- Absolute Horizon as distinct from finite strata;
-- attractor prerequisites upstream but actor-specific attractor formation in V3;
-- actor opacity, misrecognition and knowledge/accessibility limits;
-- genealogy/relationships as generated histories;
-- ordinary vitality, desire, humor, beauty, care and play alongside domination;
-- divergent lawful developmental possibility;
-- source evidence != structural prior != generated actor fact != actor knowledge != memory != V2 expression;
-- uncertainty, absence, noncomparability and forbidden inference;
-- exact provenance, replay and explicit randomness.
+No smaller/faster design may starve lawful terminal capability. No richer design may instantiate downstream actor meaning early.
 
-A smaller/faster design that starves any of these loses.
+## 2. THREE PERSISTENCE DOMAINS
 
-A richer design that instantiates any actor-specific meaning early also loses.
+Chetiri SHALL reason separately about:
 
-## 2. FROZEN SEMANTIC/WHOLE-MACHINE BOUNDARIES
+### THE PAST — authoritative empirical evidence
 
-Chetiri SHALL preserve exactly:
+Examples:
+
+- immutable source bytes and hashes;
+- source-native metadata;
+- decoder/replay determinants;
+- governed variable/question/topology/routing/weight/design/semantic authority;
+- source-universe and nonduplication authority;
+- integrity/provenance roots.
+
+### THE LEARNED WORLD — governed empirical and structural knowledge
+
+Potential product/service families, only where supported by accepted/recovered capability law, include:
+
+- discovered empirical candidate relations;
+- validated empirical social relations;
+- social-position/response geometry;
+- higher-order joint/multimodal/minority/contradictory configuration geometry;
+- positioned-subject empirical possibility fields;
+- source-universe/time-specific empirical fields;
+- structural priors/relations;
+- temporal/context applicability;
+- mediation/pressure-flow prerequisites;
+- explanation/provenance lineage;
+- inference/analysis/runtime indexes or serving representations.
+
+This domain may be a DAG of products with different grains, owners, invalidation keys and hot paths. `REBUILDABLE` does not automatically mean `SEMANTICALLY_DISPOSABLE`, and `OPERATIONALLY_WORTH_KEEPING` does not automatically mean `PRIMARY_EMPIRICAL_AUTHORITY`.
+
+### THE LIFE — V3-generated developmental history
+
+Examples:
+
+- generated actor facts;
+- relationships/households;
+- exposure/encounter;
+- actions/consequences;
+- orientation-to-strata;
+- identification/alienation histories;
+- memory/accessibility;
+- developmental attractors;
+- causal biography.
+
+No Chetiri optimization may move THE LIFE into THE PAST or THE LEARNED WORLD.
+
+## 3. FROZEN SEMANTIC / CAPABILITY BOUNDARIES
+
+Chetiri SHALL preserve exactly, or fail closed where required authority is missing:
 
 - source truth and exact source bytes;
-- decoder semantics and frozen compatibility execution distinctions;
+- decoder semantics and compatibility distinctions;
 - C11 M01–M18;
 - respondent-grain lawful queryability;
 - raw/canonical value separation;
@@ -66,27 +100,74 @@ Chetiri SHALL preserve exactly:
 - topology/multiplicity/order/rank/component identity;
 - routing/applicability/risk-set truth;
 - weight/design/estimand authority;
-- source relation/nonduplication provenance;
+- source-universe/relation/nonduplication provenance;
 - ExactRef/content-hash semantics;
 - I03 exact empirical truth;
-- I05 exact-bounded/open-world discovery frontier;
-- I04 structural-admission semantics and provenance;
+- I05 exact-bounded/open-world autonomous discovery capability;
+- distinction between discovery candidate, validation state and accepted empirical relation;
+- possibility of higher-order joint empirical geometry rather than only pairwise summaries;
+- positioned-subject empirical possibility inference without actor-state assignment;
+- historically indexed and multi-universe empirical fields;
+- I04 structural-admission semantics/provenance;
 - V553–V558, V3 and V2 jurisdiction;
-- whole-machine closure.
+- whole-machine closure;
+- exact provenance/replay and typed incomplete/negative search states.
 
 No candidate earns performance by weakening any item above.
 
-## 3. RELATION TO CURRENT R5 AUTHORITY
+## 4. CRITICAL EPISTEMIC NONCOLLAPSE
 
-Current live Authority 63/64 remains binding. Chetiri does not delay, cancel, reinterpret or supersede the active compact-LONG repair/validation path.
+Binding distinctions include:
 
-Chetiri is quarantined exploratory evidence collection.
+```text
+RAW RESPONDENT / SOURCE INCIDENCE
+!= DISCOVERED CANDIDATE ASSOCIATION
+!= VALIDATED EMPIRICAL SOCIAL RELATION
+!= POSITIONED-SUBJECT EMPIRICAL POSSIBILITY FIELD
+!= STRUCTURALLY ADMITTED RELATION / PRIOR
+!= RESOLVED STRUCTURAL CONTEXT
+!= V3 GENERATED ACTOR STATE
+!= ACTOR-ACCESSIBLE KNOWLEDGE
+!= MEMORY/PRESENTATION
+!= V2 EXPRESSION
+```
 
-If compact LONG succeeds, Chetiri still asks whether permanent event materialization belongs in the still-unbuilt compiler lifecycle.
+Also:
 
-If compact LONG fails, Chetiri evidence may support a later reopening petition, but failure does not select B or C automatically.
+```text
+EMPIRICAL_RESPONDENT_COORDINATE
+!= GENERATED_ACTOR_DEMOGRAPHIC_OR_BIOGRAPHICAL_FACT
+!= GENERATED_NINE_STRATUM_STRUCTURAL_POSITION
+!= EMPIRICAL_POSSIBILITY_FIELD_CONDITIONER
+```
 
-## 4. EXPLORATORY CANDIDATE FAMILIES
+Any missing comparability/binding authority returns a fail-closed missing-authority state; physical convenience may not collapse these identities.
+
+## 5. FIVE CONSUMPTION LIFECYCLES
+
+No artifact is classified merely by whether current V3 reads it.
+
+Chetiri must distinguish at least:
+
+1. `COMPILER_DISCOVERY_TIME`;
+2. `GENERATED_PERSON_RUNTIME`;
+3. `EMPIRICAL_INFERENCE_SERVICE`;
+4. `DDM_ANALYTICAL_SERVICE`;
+5. `AUDIT_REPLAY`.
+
+Each may have different latency, throughput, persistence and regeneration requirements.
+
+Invocation frequency must be explicit. Hours per release and hours per generated actor are different operational architectures.
+
+## 6. RELATION TO CURRENT R5 AUTHORITY
+
+Current Trii R5/Compact-V2 authorities remain binding within their jurisdiction. Chetiri does not delay, cancel, reinterpret or supersede active R5 work.
+
+Chetiri asks a separate question: which obligations implemented by R5 actually require persistent event-grain material, which require learned products/receipts, and which can be virtual/transient/regenerable.
+
+Operational retention and epistemic authority are separate axes.
+
+## 7. EXPLORATORY PHYSICAL CANDIDATE FAMILIES
 
 ### A — Persistent canonical event carrier
 
@@ -95,9 +176,10 @@ SOURCE
 → frozen decoder
 → persistent canonical event-grain carrier
 → carrier-neutral C11
-→ I03/I05/I04
-→ source→structural compiler-generator
-→ compiled structural substrate
+→ I03 / I05 / validation / I04 as governed
+→ learned-world compiler
+→ empirical-social learned products and/or structural learned products
+→ serving / runtime / analysis / replay consumers
 ```
 
 ### B — Source-backed virtual C11
@@ -107,12 +189,11 @@ SOURCE
 → frozen decoder/source accessor
 → governed authority/semantic sidecars
 → virtual carrier-neutral C11
-→ I03/I05/I04
-→ source→structural compiler-generator
-→ compiled structural substrate
+→ I03 / I05 / validation / I04 as governed
+→ learned-world compiler
+→ empirical-social learned products and/or structural learned products
+→ serving / runtime / analysis / replay consumers
 ```
-
-No complete second empirical payload persists by default.
 
 ### C — Source-backed hybrid
 
@@ -122,223 +203,165 @@ SOURCE
 → governed authority/semantic sidecars
 → virtual C11
 → transient/regenerable accelerators
-   Arrow / DuckDB / Parquet / bitmaps / indexes / vectors / equivalent
-→ I03/I05/I04
-→ source→structural compiler-generator
-→ compiled structural substrate
+→ I03 / I05 / validation / I04 as governed
+→ learned-world compiler
+→ empirical-social learned products and/or structural learned products
+→ serving / runtime / analysis / replay consumers
 ```
 
-Accelerators remain nonauthoritative unless separate proof establishes that some structure is logically necessary to prove completeness/absence and therefore belongs to canonical information.
+No candidate's physical representation decides which terminal semantic products exist.
 
-## 5. EXACT CAMPAIGN SEQUENCE
+## 8. EXACT CAMPAIGN SEQUENCE
 
-Detailed law: `12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md`.
+Detailed law: `12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md` plus any binding post-crosswalk assignment amendment.
 
-### P0 — Architectural necessity
+### P0 — complete destination and information necessity
 
-Parallel independent cells:
+Independent first returns:
 
-- `C01` terminal product / V3 runtime consumption;
-- `C02` C11 derivability / minimum persistent state;
-- `C06` replay / ExactRef / integrity;
-- `C07` compiled structural substrate / build-runtime boundary.
+- `C01` complete terminal consumption/lifecycle audit;
+- `C02` C11 + learned-world information derivability/minimum persistence;
+- `C06` replay/ExactRef/integrity/adaptive-discovery provenance;
+- `C07` complete learned-world product/service and build/serve/runtime boundary.
 
-No performance conclusion is allowed in P0.
+P0 must establish the complete destination before physical optimization becomes dispositive.
+
+No performance conclusion is allowed.
 
 Gate: `G0_ARCHITECTURAL_FEASIBILITY`.
 
-G0 asks only whether source-backed/hybrid remains a lawful candidate deserving execution investigation.
-
-### P1A — Native execution terrain
+### P1A — native execution terrain
 
 `C03` runs first after G0 pass.
 
-It measures exact SAV/DTA reader behavior and must be accepted before C04/C05 execution strategy is judged.
-
-### P1B — Query/discovery/operations feasibility
+### P1B — exact query/discovery/operations feasibility
 
 After C03 acceptance:
 
 - `C04` I03 source-backed execution;
-- `C05` I05 source-backed discovery;
+- `C05` I05 autonomous-discovery and learned-empirical execution requirements;
 
 may run in parallel.
 
-`C08` incremental build/update/operations may overlap after C03 but cannot final-return until it reconciles actual C04/C05 execution findings.
+`C08` may overlap but cannot final-return until C04/C05 findings are reconciled.
 
 Gate: `G1_EXECUTION_FEASIBILITY`.
 
-### P2 — Exact measured candidate court
+### P2 — exact measured candidate court
 
-`C09` only.
+`C09` only after C01–C08 accepted, G1 closed and HQ freezes A/B/C court manifest.
 
-Launch only after C01–C08 are accepted, G1 is closed and HQ freezes an exact A/B/C court manifest.
+C09 must distinguish:
+
+- `I05_PRIMITIVE_BENCHMARK`;
+- `I05_DISCOVERY_PROGRAM_BENCHMARK`.
+
+If the autonomous discovery/search/termination program is not sufficiently frozen to execute, C09 blocks full architectural performance judgment rather than substituting known primitive queries.
 
 Parity precedes performance.
 
-Gate: `G2_MEASURED_BAKEOFF`.
+### P3 — hostile red team
 
-### P3 — Hostile red team
+`C10` performs both:
 
-`C10` only.
+- `ENGINEERING_KILL`;
+- `ONTOLOGY_CAPABILITY_KILL`.
 
-Launch after HQ produces a provisional measured synthesis from C09.
-
-C10 attempts falsification, not improvement.
-
-Gate: `G3_HOSTILE_SURVIVAL`.
-
-### P4 — HQ final synthesis
+### P4 — HQ synthesis
 
 HQ only. No worker selects architecture.
 
-## 6. WORKER GOVERNANCE
+## 9. DISCOVERY / VALIDATION / SEARCH-COMPLETENESS LAW
 
-Every worker is bound by:
+Fast known predicates do not prove tractable autonomous discovery.
 
-- `13_COMMON_WORKER_CONTRACT.md`;
-- its exact file under `WORKER_ORDERS/`;
-- the complete 24-row `VC4_TERMINAL_VISION_CHECKSUM`;
-- persistence/starvation/bloat matrix;
-- read receipt / return manifest / changed files / unresolved evidence surfaces.
+Discovery execution must preserve typed distinction among:
 
-Every worker returns `RETURNED`, never `ACCEPTED`.
+- complete authorized search with no relation;
+- partial frontier;
+- budget exhausted;
+- unsupported/noncomparable;
+- candidate found but validation failed;
+- candidate found and validated.
 
-HQ alone adjudicates under `14_HQ_COMMAND_AND_ADJUDICATION_LAW.md`.
+Where exact validation/model authority is missing, workers must identify missing authority rather than invent it.
 
-## 7. CORE EVIDENCE LAW
+Blind discovery fixtures and scaling evidence are required at the appropriate C05/C09 courts when an executable discovery program exists.
 
-Evidence rank:
+## 10. PERSISTENCE CLASSIFICATION
 
-1. exact raw source bytes + source-native metadata;
-2. accepted source/producer semantic authority;
-3. accepted C11/I03/I05/I04 contracts;
-4. closed V553–V2 architecture/jurisdiction;
-5. Governing Spirit within the lawful ambiguity left by 1–4;
-6. exact measured court receipts;
-7. current implementation as terrain;
-8. historical functionality lineage where explicitly relevant;
-9. convenience or intuition.
-
-No prose preference may outrank exact authority/evidence.
-
-## 8. DERIVABILITY LAW
-
-No field may be omitted from persistent state merely because it appears redundant.
-
-Every proposed non-persistence claim must identify:
-
-- logical fact/field;
-- exact determinant set;
-- authority establishing the functional dependency;
-- scope;
-- deterministic reconstruction function;
-- exhaustive exception domain;
-- integrity binding;
-- hostile proof.
-
-Allowed classifications:
-
-- `SOURCE_DERIVABLE`
-- `SOURCE_PLUS_RELEASE_METADATA_DERIVABLE`
-- `SOURCE_PLUS_VARIABLE_AUTHORITY_DERIVABLE`
-- `SOURCE_PLUS_RESPONDENT_AUTHORITY_DERIVABLE`
-- `SOURCE_PLUS_TOPOLOGY_AUTHORITY_DERIVABLE`
-- `SOURCE_PLUS_MULTI_AUTHORITY_DERIVABLE`
-- `SPARSE_EXCEPTION_MATERIAL_REQUIRED`
-- `IRREDUCIBLE_EVENT_GRAIN_PERSISTENCE_REQUIRED`
-- `UNRESOLVED`
-
-Frequency/commonness/current-code convenience is never proof.
-
-## 9. PERSISTENCE CLASSIFICATION LAW
-
-Every prospective compiler object receives one primary disposition:
+Every object receives a primary persistence class:
 
 - `PERSIST_AUTHORITATIVE_SOURCE`
-- `PERSIST_AUTHORITATIVE_SEMANTIC_OR_STRUCTURAL_PRODUCT`
+- `PERSIST_AUTHORITATIVE_SEMANTIC_OR_LEARNED_PRODUCT`
 - `PERSIST_PROVENANCE_OR_REPLAY_RECEIPT`
 - `PERSIST_REGENERABLE_CACHE_OPTIONAL`
 - `TRANSIENT_COMPILER_STATE`
 - `DERIVE_ON_DEMAND`
 - `UNRESOLVED_BLOCKING`
 
-A cache may not become authoritative because downstream code happens to depend on it.
+Additionally every retained transformed object must state its **authority status** separately:
 
-A transient representation may be large if bounded, safe and materially advantageous. Persistent system lightness and runtime effectiveness are judged separately from compiler scratch peak.
+- `PRIMARY_AUTHORITY`
+- `GOVERNED_DERIVED_LEARNED_PRODUCT`
+- `OPERATIONALLY_RETAINED_REGENERABLE_REPRESENTATION`
+- `OPTIONAL_CACHE`
+- `TRANSIENT_ONLY`
 
-## 10. BUILD/RUNTIME NONCOLLAPSE
+A persistent carrier may be operationally valuable without becoming primary source authority.
 
-Distinguish:
+## 11. DERIVABILITY / NO-STARVATION LAW
 
-`BUILD_TIME_CORRECTNESS`
+Every proposed non-persistence claim must identify exact determinants, authority, scope, reconstruction function, exhaustive exception domain, integrity binding and hostile proof.
 
-from
+Deletion/demotion may not erase:
 
-`RUNTIME_LATENCY`
+- open-world future reachability;
+- joint/minority/multimodal empirical geometry;
+- historical/multi-universe distinction;
+- discovery/validation state;
+- explanation lineage;
+- exact negative/completeness state;
+- adaptive-discovery replay;
+- terminal personhood prerequisites.
 
-and
+## 12. DELETE / REBUILD LAW
 
-`PERSISTENT_SYSTEM_SIZE`
+For B/C and any regenerable A representation:
 
-from
+```text
+DELETE TRANSFORMED EMPIRICAL EXECUTION STATE
+→ PERFORMANCE MAY CHANGE
+→ EMPIRICAL AUTHORITY MUST NOT
+→ LAWFUL QUERY/DISCOVERY REACHABILITY MUST NOT
+→ REPLAY/EXPLANATION CAPABILITY MUST NOT
+```
 
-`TEMPORARY_COMPILER_SCRATCH_SIZE`.
-
-A large temporary analytical image may be lawful if:
-
-- deterministically rebuildable;
-- deletion causes zero information loss;
-- it cannot acquire semantic authority;
-- scratch is bounded/cleaned;
-- it materially improves compiler execution.
-
-## 11. OPTIMIZATION ORDER
-
-### Permanent V3-facing compiled substrate
-
-1. flawless effectiveness / semantic completeness;
-2. runtime speed;
-3. persistent lightness;
-4. operational simplicity/maintainability.
-
-### Compiler intermediates
-
-1. semantic/replay exactness;
-2. bounded/fail-closed behavior;
-3. total build throughput;
-4. scratch efficiency;
-5. maintainability/convenience.
-
-Do not conflate the two objective functions.
-
-## 12. DELETE-ALL-CACHES TERMINAL TEST
-
-A B/C candidate is not architecturally valid unless this experiment is sound:
-
-> Delete every transformed empirical copy, query cache, bitmap, temporary Parquet/DuckDB/Arrow image and compiler accelerator. Retain immutable source artifacts, governed authority/semantic material, required provenance/replay receipts and compiled structural/runtime products. Rawlsing must still possess everything it claims to know and deterministically regenerate the deleted compiler state and same governed products.
-
-Failure means the deleted object was not disposable and must be reclassified.
+Hybrid caches require repeated regeneration/fail-closed proof, not a ceremonial one-time delete test.
 
 ## 13. NO PREMATURE PIPELINE-GENERATOR CONCRETIZATION
 
-Until Chetiri closes or HQ explicitly overrides this protection, new source→structural pipeline-generator design should target carrier-neutral logical contracts.
+The still-unbuilt learned-world compiler should target carrier-neutral logical contracts unless exact evidence proves a carrier-specific dependency unavoidable.
 
-Desired dependency:
+Physical storage must not define semantic stage jurisdiction, discovery vocabulary or learned-product ontology.
 
-```text
-PIPELINE-GENERATOR
-       ↓
-C11 LOGICAL REPOSITORY / EMPIRICAL CONTRACT
-       ↑
-PERSISTENT_R5 | SOURCE_BACKED | HYBRID | FIXTURE
-```
+## 14. WORKER / HQ GOVERNANCE
 
-The generator must not hard-code a physical empirical carrier into semantic stages absent separately proven necessity.
+Every worker is bound by:
 
-## 14. HQ FINAL DISPOSITIONS
+- `13_COMMON_WORKER_CONTRACT.md`;
+- `17`, `18`, `19`, `20` crosswalk/reconciliation law;
+- exact cell order and binding amendment;
+- expanded terminal vision checksum;
+- persistence/starvation/bloat and crosswalk surfaces.
 
-HQ may ultimately return exactly one high-level Chetiri result:
+Workers return `RETURNED`, never `ACCEPTED`.
+
+HQ adjudicates under `14_HQ_COMMAND_AND_ADJUDICATION_LAW.md`.
+
+## 15. HQ FINAL DISPOSITIONS
+
+Chetiri may ultimately return one high-level physical result:
 
 - `VC4_CLOSE__CURRENT_R5_PERSISTENT_CARRIER_REMAINS_ARCHITECTURALLY_JUSTIFIED`
 - `VC4_CLOSE__SOURCE_BACKED_VIRTUAL_C11_PREFERRED__REOPENING_PETITION_REQUIRED`
@@ -348,18 +371,26 @@ HQ may ultimately return exactly one high-level Chetiri result:
 
 A preference is not implementation authority.
 
-## 15. FINAL OBJECTIVE
+## 16. FINAL OBJECTIVE
 
-Chetiri succeeds only if it can state, with exact evidence:
+Chetiri succeeds only if it can state with evidence:
 
-- what is authoritative;
+- what THE PAST authoritatively contains;
+- what THE LEARNED WORLD must know/serve and at what grains;
+- what remains THE LIFE and therefore V3-owned;
 - what must persist;
 - what may be regenerated;
-- what the still-unbuilt compiler-generator must produce;
-- what V3 actually consumes;
-- how provenance/replay survives;
-- why the selected persistence lifecycle does not starve or pre-instantiate the historically situated person the application exists to generate.
+- how autonomous discovery remains genuinely autonomous;
+- how possibility inference remains probabilistic without becoming psyche;
+- how learned empirical and structural products preserve time/multi-universe/joint geometry;
+- how provenance/replay explains why Rawlsing believes what it believes;
+- what each lifecycle consumes and how often;
+- what physical empirical representation is actually necessary.
 
 Command maxim:
 
-> **Make the compiler as light as truth allows, and the permanent runtime substrate as effective as the person requires.**
+> **Do not optimize the road before proving the complete destination.**
+
+And:
+
+> **Make persistent machinery only where truth, learned-world capability or operations earn it; leave the life to history.**
