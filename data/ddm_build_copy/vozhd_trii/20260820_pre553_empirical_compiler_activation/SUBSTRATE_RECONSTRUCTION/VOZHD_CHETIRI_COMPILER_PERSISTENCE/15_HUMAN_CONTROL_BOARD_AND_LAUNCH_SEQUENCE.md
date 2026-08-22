@@ -6,7 +6,7 @@ Mnemonic: **Chetiri decides what persists between THE PAST and THE LEARNED WORLD
 
 Status: `P0_RETURNED__G0_OPEN__TWO_SUPPLEMENTAL_P0_CLOSURE_JOBS_READY__P1_LOCKED`
 
-This is the commander's quick operational map. Exact law remains in `11`–`14`, `22`, `02_CAMPAIGN_DAG.json`, `03_GATE_LEDGER.csv`, `04_WORKER_REGISTRY.csv`, and exact worker/correction orders.
+This is the commander's quick operational map. Exact law remains in `11`–`14`, `22`–`24`, `02_CAMPAIGN_DAG.json`, `03_GATE_LEDGER.csv`, and `04_WORKER_REGISTRY.csv`.
 
 ## 1. CURRENT CAMPAIGN IN ONE SCREEN
 
@@ -77,7 +77,7 @@ This is the commander's quick operational map. Exact law remains in `11`–`14`,
 | C06 | `6fd91b6fb3d7087faaf971aecc9687bbd33fa00f` | `ACCEPTED__NAMED_REPLAY_PREREQUISITES_CARRIED` | No replay/identity proof that full payload is irreducible; P3 replay graph identified | U5 occurrence identity; decoder closure; adaptive discovery; validation; completeness receipt |
 | C07 | independent `a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d` | `RETURNED_FOR_NARROW_AUTHORITY_COMPLIANCE_CORRECTION` | Learned world = empirical-social DAG + structural DAG + shared provenance; THE LIFE stays V3 | direct mandatory Dva terminal-authority grounding |
 
-C07's later branch head `35042be0a7b289c33335ddafbe7705ee1c4f0dbc` is quarantined as non-governing supplemental evidence for G0 because its claimed sibling-return provenance is not sufficiently reliable for the acceptance record. The clean independent first return remains the correction base.
+C07's later branch head `35042be0a7b289c33335ddafbe7705ee1c4f0dbc` is quarantined as non-governing supplemental evidence for G0. The clean independent first return at `a301...` is the immutable evidence object used by C07-R1.
 
 ## 3. G0 CURRENT STATE
 
@@ -99,6 +99,8 @@ An unknown determinant may not be called either a cache or a database.
 
 ## 4. NEXT TWO JOBS — MAY RUN IN PARALLEL
 
+Both new worker branches start from ONE EXACT CURRENT CONTROL HEAD pinned by HQ at handout.
+
 ### C02-R1 — occurrence/topology proof
 
 Branch:
@@ -110,37 +112,40 @@ Order:
 Purpose:
 prove the complete M04/M05/U5 determinant domain across the governed source corpus, or identify the smallest exact nonderivable material.
 
-Target outcomes include:
+Target outcomes:
 
-- everything derivable under exact FD certificate;
+- complete exact FD certification;
 - exact named occurrence/topology side material required;
 - irreducible full-event persistence witness;
 - complete scope unprovable.
 
-This cell is authorized to inspect exact hash-matched source metadata/topology and narrowly inspect values where the determinant question requires it.
+This cell may inspect exact hash-matched source metadata/topology and narrowly inspect values only where the determinant question requires it.
 
 ### C07-R1 — terminal-authority compliance
 
 Branch:
 `agent/vozhd-chetiri-c07r1-terminal-authority-compliance`
 
-Exact branch base:
+Launch base:
+the SAME exact current control HEAD pinned at handout.
+
+Immutable evidence object under review:
 `a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d`
 
 Order:
 `24_C07R1_TERMINAL_AUTHORITY_COMPLIANCE_CORRECTION.md`
 
 Purpose:
-read the mandatory Dva terminal/end-product authority directly and test whether the independent learned-world DAG holding survives.
+read mandatory Dva terminal/end-product authority directly and test whether the independent `a301...` learned-world DAG holding survives.
 
-Sibling returns are forbidden in this correction.
+C07-R1 must inspect the `a301...` C07 return through an exact commit-qualified read. It may not read C01/C02/C06 returns or later C07 return content.
 
 ## 5. JOB BOARD AFTER SUPPLEMENTAL P0
 
 | Order | Job | State / launch rule | Unlocks |
 |---:|---|---|---|
-| 1S-A | C02-R1 | `READY`; run now | G0 |
-| 1S-B | C07-R1 | `READY`; run now from exact a301 base | G0 |
+| 1S-A | C02-R1 | `READY`; exact current control HEAD required | G0 |
+| 1S-B | C07-R1 | `READY`; same control HEAD + read-only `a301...` evidence | G0 |
 | 2 | HQ final G0 | only after C02-R1 + C07-R1 adjudicated | C03 or stop |
 | 3 | C03 native source access | `LOCKED`; requires written G0 pass | C04/C05/C08 |
 | 4A | C04 exact I03 | locked until C03 accepted | G1 |
@@ -153,26 +158,9 @@ Sibling returns are forbidden in this correction.
 
 ## 6. 34-ROW TERMINAL CHECKSUM — ABSOLUTE
 
-Every active or future Chetiri worker uses the complete 34-row checksum, including the recovered empirical obligations:
+Every active/future Chetiri worker uses all 34 rows, including autonomous discovery, positioned-subject possibility fields, joint/multimodal/minority geometry, multi-universe empirical fields, empirical comparability != structural-position binding, DDM analytical service, discovery != validation, explanation lineage, empirical time, and adaptive-discovery replay/search completeness, alongside Rawlsing's human-development invariants.
 
-- autonomous empirical social discovery;
-- positioned-subject empirical possibility field;
-- joint/multimodal/minority geometry;
-- multi-universe empirical fields;
-- empirical comparability != structural-position binding;
-- DDM analytical service;
-- discovery candidate != validated empirical relation;
-- learned-world explanation lineage;
-- historically indexed empirical geometry;
-- adaptive-discovery replay/search completeness;
-
-alongside the original human-development requirements: relational strata, contradiction, time, mediation, topology, opacity, genealogy, Absolute Horizon, agency/divergence, lawful uncertainty and epistemic noncollapse.
-
-## 7. WHAT THE P0 RETURNS HAVE ALREADY ESTABLISHED
-
-They have NOT selected an architecture.
-
-They HAVE established a useful burden map:
+## 7. WHAT P0 HAS ALREADY ESTABLISHED
 
 ```text
 SOURCE BYTES / SOURCE AUTHORITY                     primary past
