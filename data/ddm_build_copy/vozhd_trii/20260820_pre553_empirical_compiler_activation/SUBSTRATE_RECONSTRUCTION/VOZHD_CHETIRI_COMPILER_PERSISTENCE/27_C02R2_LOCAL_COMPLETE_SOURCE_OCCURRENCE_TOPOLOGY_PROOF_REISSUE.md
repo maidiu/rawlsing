@@ -1,8 +1,8 @@
-# VOZHD CHETIRI — C02-R2 LOCAL COMPLETE-SOURCE OCCURRENCE/TOPOLOGY PROOF REISSUE
+# VOZHD CHETIRI — C02-R2 LOCAL COMPLETE-SOURCE M04/M05 EVIDENCE EXECUTOR
 
 Short tag: `VC4-COMPILER/PERSISTENCE — C02-R2`
 
-Status: `AUTHORIZED_P0_SUPPLEMENTAL_LOCAL_SOURCE_PROOF__NON_DISPOSITIVE__G0_CLOSURE_ONLY`
+Status: `AUTHORIZED_P0_SUPPLEMENTAL_LOCAL_EVIDENCE_EXECUTION__NON_DISPOSITIVE__HQ_ADJUDICATION_REQUIRED`
 
 Repository: `maidiu/rawlsing`
 
@@ -18,276 +18,437 @@ Local source root normally:
 Write scope:
 `VOZHD_CHETIRI_COMPILER_PERSISTENCE/returns/C02R2/`
 
-Runtime/R5 writes: `FORBIDDEN`
+Runtime/R5/database writes: `FORBIDDEN`
 
 Architecture selection: `FORBIDDEN`
 
+Semantic FD adjudication: `FORBIDDEN`
+
+Persistence recommendation: `FORBIDDEN`
+
+C06 U5 adjudication: `FORBIDDEN`
+
+Target execution profile: `DUMB_LOCAL_EVIDENCE_EXECUTOR__SUITABLE_FOR_COST_SENSITIVE_CODE_AGENT`
+
 ## 0. PURPOSE
 
-C02-R1 did not fail semantically. It returned `C02R1_BLOCK__EXACT_SOURCE_UNAVAILABLE` because the complete governed 35-source corpus was not mounted in its execution environment and no raw source reads occurred.
+C02-R1 did not fail semantically. It returned `C02R1_BLOCK__EXACT_SOURCE_UNAVAILABLE` because the complete governed 35-source corpus was not mounted in its execution environment and no raw-source reads occurred.
 
-This reissue repeats only the missing complete-source proof on a machine that actually holds the governed source bytes.
+C02-R2 exists only to collect the complete local evidence that C02-R1 could not collect.
 
-The exact question remains unchanged:
+**C02-R2 does not decide what the evidence means architecturally.**
 
-> For every identity-bearing C11 M04/M05 occurrence/topology fact required across the complete governed source scope, is that fact exactly functionally determined by immutable source evidence + frozen decoder semantics + existing governed variable/question/topology/routing authority? If not, what is the smallest exact additional governed material required to preserve/replay it?
+HQ will perform the separate semantic adjudication after this return.
 
-This is not a physical performance court.
-This is not R5 optimization.
-This is not a database redesign.
+The executor's job is mechanical:
 
-## 1. LAUNCH HEAD
+1. verify exact source bytes;
+2. execute only frozen decoders/configurations;
+3. enumerate native occurrence/topology evidence;
+4. test explicitly named candidate determinant tuples;
+5. record uniqueness, collisions, exceptions, counts and exact witnesses;
+6. record what could not be tested and why;
+7. return evidence without converting observation into semantic law.
+
+Literal law:
+
+`MEASURE__DO_NOT_ADJUDICATE`
+
+## 1. ABSOLUTE PROHIBITION ON SEMANTIC CONCLUSIONS
+
+C02-R2 SHALL NOT emit any of these conclusions:
+
+- `FD_CERTIFIED`;
+- `DERIVABLE` as an architectural/semantic conclusion;
+- `NONDERIVABLE` as an architectural/semantic conclusion;
+- `FULL_EVENT_PERSISTENCE_REQUIRED`;
+- `SPARSE_SIDE_MATERIAL_SUFFICIENT`;
+- `NO_INDEPENDENT_OCCURRENCE_MATERIAL_REQUIRED`;
+- `C06_U5_CLOSED`;
+- candidate A/B/C selection;
+- any G0 pass/block conclusion.
+
+The executor may report only evidence states such as:
+
+- `OBSERVED_UNIQUE_IN_EXECUTED_SCOPE`;
+- `COLLISION_OBSERVED`;
+- `MULTIPLE_DISTINCT_NATIVE_OCCURRENCES_OBSERVED`;
+- `ORDER_OR_RANK_METADATA_OBSERVED`;
+- `MULTIPLE_RESPONSE_METADATA_OBSERVED`;
+- `ROUTING_OR_APPLICABILITY_EVIDENCE_OBSERVED`;
+- `NO_COLLISION_OBSERVED_IN_EXECUTED_SCOPE`;
+- `NOT_TESTABLE_FROM_AVAILABLE_FROZEN_AUTHORITY`;
+- `NOT_APPLICABLE`;
+- `EXECUTION_FAILURE`.
+
+**`NO_COLLISION_OBSERVED` IS NOT AN FD CERTIFICATE.**
+
+**`COLLISION_OBSERVED` IS AN OBSERVATION, NOT BY ITSELF A PERSISTENCE DESIGN.**
+
+If interpretation is required, record the evidence and stop at `HQ_ADJUDICATION_REQUIRED`.
+
+## 2. LAUNCH HEAD
 
 HQ SHALL supply one exact current control HEAD in the launch message.
 
 The worker SHALL:
 
 1. fetch the control branch;
-2. checkout/create the worker branch from exactly that supplied SHA;
+2. create/check out the worker branch from exactly that supplied SHA;
 3. verify `git rev-parse HEAD` equals the supplied SHA before any investigation;
 4. record exact `git status -sb` and remote identity.
 
 Do not use moving `latest` as evidence.
 
-## 2. MANDATORY READS
+## 3. READ ONLY WHAT IS REQUIRED TO EXECUTE
 
 Read and obey:
 
-- Chetiri `00_READ_ME_FIRST.md` complete applicable spine;
-- `22_PHASE0_RETURN_INTAKE_AND_G0_PRELIMINARY_ADJUDICATION.md`;
-- `26_P0S_RETURN_INTAKE_AND_LOCAL_REISSUE_ADJUDICATION.md`;
-- `23_C02R1_OCCURRENCE_TOPOLOGY_DERIVABILITY_PROOF_COURT.md` as the controlling semantic proof standard;
-- this order `27_C02R2_LOCAL_COMPLETE_SOURCE_OCCURRENCE_TOPOLOGY_PROOF_REISSUE.md`;
-- accepted C02 return `f952204d817cb961d2ef05d8b66fcf0b4940099f`;
-- accepted C06 return `6fd91b6fb3d7087faaf971aecc9687bbd33fa00f`;
-- C02-R1 return branch/pin as prior failed-environment evidence and determinant-question template;
+- this file `27_C02R2_LOCAL_COMPLETE_SOURCE_OCCURRENCE_TOPOLOGY_PROOF_REISSUE.md`;
+- `26_P0S_RETURN_INTAKE_AND_LOCAL_REISSUE_ADJUDICATION.md` for procedural jurisdiction;
+- `23_C02R1_OCCURRENCE_TOPOLOGY_DERIVABILITY_PROOF_COURT.md` **only as the inventory of facts/hostile cases to measure, not as authority to adjudicate them**;
 - parent `09_SOURCE_NATIVE_CONSTITUTION.md`;
 - parent `10_FORMAT_DECODER_CONTRACT.md`;
-- Authority 56 event-grain/exact-FD law;
-- current source inventory;
-- current C11 schema/identity/integrity/ingest contracts;
-- exact question/component/topology/routing/source-relation authorities relevant to the corpus;
-- current PRE553 authority at launch.
+- `SOURCE_BYTE_INVENTORY.csv`;
+- checked-in source-native metadata/probe evidence as useful execution references;
+- current C11 schema/identity/integrity/ingest code or contracts only as needed to identify exact fields/keys to measure;
+- exact question/component/topology/routing/source-relation authority only as needed to construct the named evidence tests;
+- current PRE553 physical authority only as needed to obey frozen decoder/configuration rules.
 
-C02-R1's 525-row matrix may be reused as a question inventory/template but its unexecuted source-specific statuses are not proof.
+You MAY read the C02-R1 525-row matrix as a question/test inventory.
 
-## 3. LOCAL PREFLIGHT — MANDATORY
+You SHALL NOT reinterpret or improve C02/C06/C07 architecture conclusions.
 
-Before source probing, run and record:
+You SHALL NOT create new semantic authority.
+
+## 4. LOCAL PREFLIGHT — MANDATORY
+
+Run and record exactly:
 
 ```bash
 git rev-parse --show-toplevel
 git remote -v
 git status -sb
 git rev-parse HEAD
+git fetch origin
 ```
 
-Then set:
+Set:
 
 ```bash
 ORDER_ROOT=data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION
 SOURCE_ROOT=/Users/matthewsmith/Desktop/Rawlsing/data/Data
 ```
 
-Verify that `SOURCE_ROOT` exists.
+Verify `SOURCE_ROOT` exists.
 
-Resolve and record exact prior return commits locally:
+Resolve and record:
 
 ```bash
-git fetch origin
 git rev-parse origin/agent/vozhd-chetiri-c02r1-occurrence-topology-proof
 git rev-parse origin/agent/vozhd-chetiri-c07r1-terminal-authority-compliance
 ```
 
-The C07 ref is recorded only for HQ identity housekeeping; DO NOT read C07 return conclusions in this C02-R2 proof.
+The C07 ref is identity housekeeping only. **Do not read C07 return conclusions.**
 
-## 4. COMPLETE 35-SOURCE SHA GATE
+## 5. COMPLETE 35-SOURCE SHA GATE — HARD STOP
 
-Before semantic/topology probing, verify every source row in:
+Before decoding or topology inspection, verify every source in:
 
-`SOURCE_BYTE_INVENTORY.csv`
+`$ORDER_ROOT/SOURCE_BYTE_INVENTORY.csv`
 
-against the exact file under `SOURCE_ROOT`.
+against the exact file under `$SOURCE_ROOT`.
 
 For all 35 sources record:
 
 - inventory filename;
+- source family;
+- format;
 - expected bytes;
 - actual bytes;
 - expected SHA-256;
 - actual SHA-256;
-- exact match boolean;
-- format;
-- decoder/config identity.
+- exact match boolean.
 
-If any mandatory source is absent or hash-mismatched:
+If ANY mandatory source is absent or hash-mismatched:
 
-STOP and return:
+STOP immediately with:
 
-`C02R2_BLOCK__COMPLETE_HASH_MATCHED_SOURCE_SCOPE_UNAVAILABLE`
+`C02R2_EXECUTOR_BLOCK__COMPLETE_HASH_MATCHED_SOURCE_SCOPE_UNAVAILABLE`
 
-Do not continue with 34/35 and do not extrapolate.
+Do not continue with 34/35.
 
-## 5. FROZEN DECODER / COMPATIBILITY LAW
+Do not rename or substitute similar files.
 
-Use the exact source decoder/configuration law in `10_FORMAT_DECODER_CONTRACT.md`.
+## 6. FROZEN DECODER LAW
 
-The known compatibility-execution allowlist remains exactly governed there, including the explicit legacy Latin-1 execution paths where currently frozen.
+Use only decoder/configuration behavior already authorized by `10_FORMAT_DECODER_CONTRACT.md` and current PRE553 physical authority.
 
-Do not add encoding guesses or new fallbacks.
+The known compatibility-execution allowlist remains exactly whatever that authority freezes at launch.
 
-Compatibility execution is not source-text-encoding authority.
+Do not add:
 
-Record every invoked decoder/config.
+- encoding guesses;
+- fallback decoders;
+- silent coercions;
+- data cleaning;
+- semantic recoding;
+- value-label reinterpretation.
 
-## 6. REQUIRED FACT INVENTORY
+Record every actual decoder/configuration invocation in `DECODER_INVOCATION_RECEIPT.csv`.
 
-For each applicable source scope prove the determinant law for at minimum:
+If a required source cannot be decoded under frozen authority, return exact failure evidence. Do not troubleshoot semantics.
+
+## 7. REQUIRED EVIDENCE DOMAINS
+
+Collect concrete evidence for the following M04/M05 identity-bearing domains where applicable:
 
 - source snapshot/release identity;
 - source row/respondent replay coordinate;
 - native variable identity;
-- canonical question identity;
-- component identity;
-- `event_group_id`;
-- `response_event_id_or_deterministic_index`;
-- semantic occurrence/slot identity;
+- canonical-question binding inputs;
+- component/subitem identity;
+- event-group inputs;
+- deterministic-event-index inputs;
+- semantic occurrence/slot candidate inputs;
 - multiplicity;
 - rank/order;
-- repeated-event identity;
-- multiple-response component/selection identity;
-- topology identity;
-- occurrence keys entering C11 identity/content hash/ExactRef;
-- routing/applicability state where it changes whether an occurrence exists.
+- repeated-event structure;
+- multiple-response set/component/selection structure;
+- topology declarations/evidence;
+- occurrence-key inputs used by C11 identity/content-hash/ExactRef code;
+- routing/applicability evidence that can alter whether an occurrence exists.
 
-Add any newly discovered M04/M05 identity-bearing determinant.
+The executor does not decide which of these are ultimately semantic determinants. It records the source/authority facts needed for HQ to decide.
 
-## 7. PROOF STANDARD
+## 8. NATIVE TOPOLOGY INVENTORY — MANDATORY
 
-For each fact/scope, `DERIVABLE` requires ALL:
+Produce one normalized row per relevant source-native topology object in:
 
-1. exact determinant set;
-2. exact governing authority or exact source-native evidence establishing dependency;
-3. deterministic reconstruction function;
-4. exact source/source-family/variable/component scope;
-5. exhaustive exception law;
-6. integrity binding to source/decoder/authority versions;
-7. duplicate-looking-but-distinct occurrence preservation;
-8. order/rank/component/multiplicity preservation where applicable;
-9. C11/content-hash/ExactRef replay closure;
-10. fail-closed behavior outside certified scope.
+`NATIVE_TOPOLOGY_INVENTORY.csv`
 
-Observed equality is not an FD certificate.
-A naming convention is not an FD certificate.
-A fixture is not an exhaustive exception law.
-A rectangular source file is not proof of semantic occurrence geometry.
+Include at minimum when available:
 
-## 8. INVESTIGATION STRATEGY
+`source_snapshot_id,source_family,format,native_variable_or_set_id,topology_kind,component_or_member_count,ordered_flag,ranked_flag,multiple_response_flag,repeated_flag,routing_or_applicability_evidence,native_metadata_fields_used,decoder_config,evidence_locator,notes`
 
-Work from highest lawful grain downward.
+Topology kinds may include:
 
-Prefer:
+- scalar/single variable;
+- repeated variable group;
+- ranked response structure;
+- ordered selection structure;
+- multiple-response set;
+- component/subitem family;
+- routed/applicability structure;
+- another source-native topology actually observed.
 
-- source-family metadata/topology law;
-- source-level law;
-- variable/question/component authority;
-- occurrence/event-specific evidence only where necessary.
+Do not infer a topology kind that is not exposed by frozen source/authority evidence.
 
-Do not brute-force all physical cells when exact metadata/authority settles the domain.
+## 9. CANDIDATE DETERMINANT TESTS — MANDATORY
 
-But if metadata cannot decide whether an identity/topology determinant varies by respondent/value, perform the narrow targeted value/cell scan required to settle that exact question.
+For each testable candidate determinant tuple named by the C02-R1 question inventory or frozen C11/authority surfaces, execute a mechanical uniqueness/collision test over the exact applicable scope.
 
-An exhaustive narrow scan is allowed when necessary and resource-safe.
+Write:
 
-## 9. REQUIRED HOSTILE CASES
+`CANDIDATE_DETERMINANT_TESTS.csv`
 
-Explicitly test/prove handling of:
+with at least:
 
-- duplicate-looking values that are separate semantic occurrences;
+`test_id,source_snapshot_id,source_family,logical_fact_under_test,candidate_determinant_fields,target_observed_identity_fields,applicable_rows_or_objects,tested_rows_or_objects,distinct_candidate_keys,distinct_target_identities,collision_key_count,collision_observation_count,null_or_missing_key_count,ordered_or_ranked_case_count,mr_case_count,repeated_case_count,routing_case_count,test_status,evidence_file_or_locator,notes`
+
+Allowed `test_status` values:
+
+- `OBSERVED_UNIQUE_IN_EXECUTED_SCOPE`
+- `COLLISION_OBSERVED`
+- `NOT_TESTABLE_FROM_AVAILABLE_FROZEN_AUTHORITY`
+- `NOT_APPLICABLE`
+- `EXECUTION_FAILURE`
+
+Do not use `FD_CERTIFIED` or `DERIVABLE`.
+
+If a candidate determinant is unique over the executed scope, report that exact fact and nothing stronger.
+
+## 10. COLLISION / DISTINCT-OCCURRENCE WITNESSES — MANDATORY
+
+Whenever a candidate determinant tuple maps to more than one observed target identity, emit a bounded exact witness to:
+
+`COLLISION_WITNESSES.csv`
+
+Fields:
+
+`test_id,source_snapshot_id,candidate_key_hash_or_repr,target_identity_count,target_identity_reprs_or_hashes,source_row_or_object_locators,native_variable_or_set_ids,topology_context,witness_kind,notes`
+
+`witness_kind` may include:
+
+- `DUPLICATE_LOOKING_DISTINCT_OCCURRENCE`
+- `RANK_OR_ORDER_COLLISION`
+- `MULTIPLE_RESPONSE_COMPONENT_COLLISION`
+- `REPEATED_EVENT_COLLISION`
+- `ROUTING_APPLICABILITY_COLLISION`
+- `OTHER_EXACT_COLLISION`
+
+Do not dump large source payloads. Use hashes/locators and only the smallest safe human-readable witness needed.
+
+## 11. EXCEPTION / COVERAGE COUNTS — MANDATORY
+
+Produce:
+
+`EXECUTED_SCOPE_AND_EXCEPTION_COUNTS.csv`
+
+For each source/test record:
+
+- total applicable rows/objects;
+- total tested;
+- skipped count + exact reason;
+- collision count;
+- missing-key count;
+- special topology counts;
+- decoder failures;
+- evidence completeness status.
+
+Allowed completeness states:
+
+- `COMPLETE_EXECUTED_SCOPE`
+- `PARTIAL_EXECUTION__EXACT_REASON_RECORDED`
+- `NOT_EXECUTABLE_UNDER_FROZEN_AUTHORITY`
+- `NOT_APPLICABLE`
+
+Do not convert a complete executed scope into an architectural completeness claim.
+
+## 12. HOSTILE CASES — EXECUTE, DO NOT INTERPRET
+
+Explicitly seek and record evidence for:
+
+- duplicate-looking values that correspond to separate native occurrences;
 - ranked questions;
 - ordered selections;
 - multiple-response sets/components;
 - repeated question/event groups;
-- multiple native variables mapping to one canonical question;
+- multiple native variables bound to one canonical question where authority exposes this;
 - componentized mappings;
-- routed/not-asked/inapplicable occurrence states;
+- routed/not-asked/inapplicable states;
 - zero-incidence/all-missing variables;
 - SAV versus DTA topology differences;
 - the accepted SR03 SAV multiple-response sets;
-- WVS/LiTS source-family irregularities named by authority;
-- deletion of any transformed empirical carrier followed by exact replay.
+- WVS/LiTS irregularities named by authority;
+- exact source/C11 identity inputs relevant after transformed-carrier deletion.
 
-## 10. MINIMUM MATERIAL LAW
+For each hostile class report:
 
-If any required fact is not derivable, identify the smallest exact additional material that closes it.
+`OBSERVED`, `NOT_OBSERVED_IN_EXECUTED_SCOPE`, `NOT_APPLICABLE`, or `NOT_TESTABLE_UNDER_FROZEN_AUTHORITY`.
 
-Possible grain includes:
+**`NOT_OBSERVED` DOES NOT MEAN IMPOSSIBLE.**
 
-- release/source metadata;
-- question/variable/component authority;
-- topology authority;
-- respondent-level side material;
-- occurrence-level side material;
-- event-grain material;
-- another exact proved form.
+## 13. NO MINIMUM-PERSISTENCE DESIGN
 
-You SHALL quantify the exact domain/cardinality where evidence permits.
+Do NOT produce `NON_DERIVABLE_MINIMUM_MATERIAL_LEDGER.csv` as a design conclusion.
 
-Do not call material sparse without proof.
+Instead produce:
 
-Do not call the full event payload necessary unless the smallest exact witness includes the full payload rather than identity/topology alone.
+`POTENTIALLY_INFORMATION_BEARING_EXCEPTION_SURFACES.csv`
 
-## 11. C06 U5
+This file merely records where extra information appears to exist beyond a tested candidate determinant, with:
 
-Explicitly close or preserve C06 U5:
+`source_snapshot_id,test_id,observed_extra_information_kind,observed_grain,observed_cardinality,evidence_locator,why_hq_review_is_required`
 
-`SOURCE_TO_C11_EVENT_OCCURRENCE_IDENTITY_DERIVATION_NOT_CLOSED`
+Do not label any surface:
 
-State exactly:
+- canonical;
+- required to persist;
+- sparse;
+- sufficient;
+- unnecessary.
 
-- which source→C11 occurrence/topology determinants are derived;
-- which require durable preserved material;
-- the replay receipt/binding required;
-- whether a source-backed logical C11 can reproduce the same semantic identity and ExactRefs after transformed-carrier deletion;
-- whether any R5/Parquet physical-layout field enters semantic identity.
+HQ owns those words.
 
-## 12. REQUIRED OUTPUTS
+## 14. C06 U5 — EVIDENCE ONLY
+
+C02-R2 SHALL NOT close C06 U5.
+
+Produce:
+
+`C06_U5_EVIDENCE_SURFACE.md`
+
+containing only:
+
+- source→C11 identity inputs actually observed;
+- occurrence/topology ambiguities actually observed;
+- candidate determinant tests performed;
+- collision/exception evidence;
+- exact replay-relevant source/decoder/authority version inputs;
+- what could not be observed/tested.
+
+End the file with exactly:
+
+`C06_U5_ADJUDICATION = HQ_REQUIRED`
+
+## 15. IMPLEMENTATION OF THE PROBE
+
+You MAY create small bounded helper scripts under:
+
+`returns/C02R2/tools/`
+
+or a temporary scratch directory.
+
+Rules:
+
+- helper code must be deterministic;
+- every helper used must be committed under the return scope or its exact content/hash recorded;
+- no helper may mutate source files, runtime, R5, databases, or authority;
+- no helper may perform empirical association/discovery analysis;
+- use streaming/chunked/narrow reads where practical;
+- do not materialize the full empirical corpus as a new persistent carrier;
+- temporary scratch must be cleaned before return;
+- record cleanup status.
+
+The worker may repair its own helper script if it fails mechanically, but may not change frozen decoder semantics or semantic authority to make a test pass.
+
+## 16. REQUIRED OUTPUTS
 
 Write only under `returns/C02R2/`:
 
 - `AUTHORITY_READ_RECEIPT.md`
 - `LOCAL_PREFLIGHT_RECEIPT.md`
 - `COMPLETE_35_SOURCE_SHA_RECEIPT.csv`
+- `DECODER_INVOCATION_RECEIPT.csv`
 - `SOURCE_PROBE_RECEIPT.md`
-- `M04_M05_FD_CERTIFICATE_MATRIX.csv`
-- `SOURCE_FAMILY_OCCURRENCE_TOPOLOGY_PROOF.md`
-- `NON_DERIVABLE_MINIMUM_MATERIAL_LEDGER.csv`
-- `C06_U5_REPLAY_BINDING_DISPOSITION.md`
-- `TERMINAL_VISION_CHECKSUM.csv` — all 34 rows
-- `TRII_OBLIGATION_CROSSWALK_MATRIX.csv`
-- `UNRESOLVED_EVIDENCE.md`
+- `NATIVE_TOPOLOGY_INVENTORY.csv`
+- `CANDIDATE_DETERMINANT_TESTS.csv`
+- `COLLISION_WITNESSES.csv`
+- `EXECUTED_SCOPE_AND_EXCEPTION_COUNTS.csv`
+- `HOSTILE_CASE_EXECUTION_MATRIX.csv`
+- `POTENTIALLY_INFORMATION_BEARING_EXCEPTION_SURFACES.csv`
+- `C06_U5_EVIDENCE_SURFACE.md`
+- `EXECUTOR_LIMITS_AND_UNEXECUTED_TESTS.md`
+- `SCRATCH_CLEANUP_RECEIPT.md`
 - `CHANGED_FILES.txt`
 - `RETURN_MANIFEST.json`
-- `C02R2_RESULT.json`
+- `C02R2_EXECUTION_RESULT.json`
 
-Do not commit large raw extracts.
-Small exact evidence samples/manifests may be committed only inside the C02R2 return scope when necessary to support a witness.
+Optional:
 
-## 13. FINAL DISPOSITIONS
+- `tools/*` bounded helper code actually used;
+- small exact witness files required to support a collision, never bulk source extracts.
+
+The executor does **not** return a 34-row terminal checksum. HQ will apply the 34-row terminal/semantic law during adjudication.
+
+The executor does **not** return a Trii persistence classification. HQ will do that from the evidence.
+
+## 17. EXECUTOR FINAL STATUS — EXACTLY ONE
 
 Exactly one:
 
-- `C02R2_PASS__COMPLETE_REQUIRED_SCOPE_FD_CERTIFIED__NO_INDEPENDENT_OCCURRENCE_MATERIAL`
-- `C02R2_PASS__EXACT_NAMED_NONDERIVABLE_OCCURRENCE_TOPOLOGY_MATERIAL_REQUIRED`
-- `C02R2_BLOCK__IRREDUCIBLE_FULL_EVENT_GRAIN_PERSISTENCE_WITNESS_ESTABLISHED`
-- `C02R2_BLOCK__COMPLETE_HASH_MATCHED_SOURCE_SCOPE_UNAVAILABLE`
-- `C02R2_BLOCK__COMPLETE_SCOPE_NOT_PROVABLE`
-- `C02R2_BLOCK__FROZEN_CONTRACT_CONTRADICTION`
+- `C02R2_EXECUTOR_COMPLETE__35_SOURCE_EVIDENCE_RETURNED__HQ_ADJUDICATION_REQUIRED`
+- `C02R2_EXECUTOR_BLOCK__COMPLETE_HASH_MATCHED_SOURCE_SCOPE_UNAVAILABLE`
+- `C02R2_EXECUTOR_BLOCK__FROZEN_DECODER_EXECUTION_FAILURE`
+- `C02R2_EXECUTOR_BLOCK__REQUIRED_TEST_NOT_EXECUTABLE`
+- `C02R2_EXECUTOR_BLOCK__LOCAL_RESOURCE_HARD_GATE`
 
-A PASS does not select B/C.
-A full-event witness does not select A/R5.
+These are execution statuses only.
 
-## 14. RETURN TO HQ
+None is an architecture disposition.
+
+## 18. RETURN TO HQ
 
 Return only:
 
@@ -296,17 +457,23 @@ Return only:
 - exact return SHA;
 - exact locally resolved C02-R1 return SHA;
 - complete 35-source SHA gate status;
-- one-sentence M04/M05 answer;
-- exact disposition;
-- minimum additional material witness, if any;
-- C06 U5 disposition;
-- 34-row checksum status;
-- output paths;
-- unresolved evidence;
+- total sources decoded;
+- total candidate determinant tests;
+- total collision-bearing tests;
+- total exact collision witnesses;
+- total unexecuted/not-testable tests;
+- hostile-case execution coverage;
+- scratch cleanup status;
+- required output paths;
+- exact executor final status;
 - STOP token.
+
+Do NOT include an opinion about whether R5, Parquet, source-backed virtual C11, or hybrid persistence should win.
+
+Do NOT include an opinion about whether any observed candidate determinant is semantically sufficient.
 
 STOP token:
 
-`VC4_C02R2_RETURNED`
+`VC4_C02R2_EVIDENCE_EXECUTOR_RETURNED`
 
-Then STOP. Do not launch C03 or perform performance work.
+Then STOP. Do not launch C03. Do not perform HQ adjudication.
