@@ -1,0 +1,121 @@
+{
+  "DATABASE_URL_used": false,
+  "WVS70_interacted_with": false,
+  "branch": "agent/vozhd-trii-srcprep71-r06-latam",
+  "committed_executable_fixture": {
+    "execution_receipt": "LATINOBAROMETRO_2024_WIDTH_FIXTURE_RECEIPT.json",
+    "execution_receipt_sha256": "1dc5ad556cb0a2ae7563e6a11453f990465a370828bfe7f5c2c896f65a579660",
+    "execution_status": "PASS__NON_DISPOSITIVE_PHYSICAL_HOSTILE_FIXTURE",
+    "script": "latinobarometro_2024_width_hostile_fixture.py",
+    "script_sha256": "2a45a7a306688d3028746e86feeccd83890154992f50dd664765aacadacff905"
+  },
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R06_RETURNED",
+  "dependency_versions": {
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "pyreadstat": "NOT_INSTALLED__NOT_USED",
+    "python": "3.13.5"
+  },
+  "documentary_search": {
+    "documents_used": [
+      "1995 wave page",
+      "1995 technical records/questionnaire",
+      "1995 codebook v20190707",
+      "2011 wave page",
+      "2011 questionnaire",
+      "2011 codebook v20190707",
+      "2011 methodological report",
+      "2024 wave page",
+      "2024 questionnaire",
+      "2024 technical records",
+      "2024 results by country WT section"
+    ],
+    "library_direct_pdf_result": "Direct official PDFs were not surfaced reliably as Library files; Library did surface prior official-document discovery traces/governed source-native audit references.",
+    "library_queries": [
+      "Latinobarómetro 1995 codebook questionnaire methodology",
+      "Latinobarómetro 2011 codebook questionnaire methodology",
+      "Latinobarómetro 2024 codebook questionnaire methodology",
+      "official questionnaire filenames F00001177/F00001208/F00017383"
+    ],
+    "official_producer_fallback_domain": "latinobarometro.org",
+    "raw_rank": "exact raw physical layout > documentary explanation"
+  },
+  "exact_checkout_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "family": "Latinobarometro",
+  "final_git_status": "NO_LOCAL_WORKTREE__planned delta prevalidated R06-only; remote worker branch rechecked identical to exact start immediately before GitHub-connector-only fast-forward publication; exact pushed HEAD is returned to HQ.",
+  "hostile_fixture_count": 26,
+  "legacy_postgres_used_as_truth": false,
+  "library_bundle": {
+    "filename": "surveys.zip",
+    "materialized_path": "/mnt/data/srcprep71_r06_private/surveys.zip",
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "library_raw_unchanged": true,
+  "local_source_files_used": false,
+  "members_extracted": [
+    "surveys/Latinobarometro 1995.sav",
+    "surveys/Latinobarometro 2011.sav",
+    "surveys/Latinobarometro 2024.sav"
+  ],
+  "named_blockers": [
+    "LB95_GAP_BRAZIL_SAMPLE_120",
+    "LB24_GAP_HEADER_WIDTH_EXPLANATION",
+    "LB24_GAP_WT_DOMAIN_CONFLICT"
+  ],
+  "output_sha256_excluding_receipt": {
+    "AUTHORITY_GAPS.csv": "3e0ccc31e7588add6f7348885fc75348af666816bb7c09daa2724bb59e2d3c6f",
+    "CHANGED_FILES.txt": "b98c5e77f05350ae2450831ec8516005531af923712d94a4b35a2a96bde63916",
+    "DOCUMENTARY_AUTHORITY_MAP.csv": "c733027b017d8bd589fa97117147bacad79f4d44788cacc594f4b36c294920f1",
+    "FAMILY_REUSE_AND_DRIFT.csv": "9c4e36f6f33e0566a06a705e4c2301aed6887fd6bfcca1fb2c55d7ec41f8895d",
+    "FUTURE_EXECUTION_ORDER.md": "fb7025fc0fc71e816ce4cab1250ee24b467a85d1324e08300d6aa8737b318380",
+    "HOSTILE_FIXTURES.csv": "9a6f33ceb026b51502af00d4372e3f92d543ae5d8ab8f973406d8d1b1aaa6e22",
+    "LATINOBAROMETRO_2024_WIDTH_FIXTURE_RECEIPT.json": "1dc5ad556cb0a2ae7563e6a11453f990465a370828bfe7f5c2c896f65a579660",
+    "RESULT.json": "06a483597db1c8269b79a6b5873823e0623f0bd57d7e9d4b97dcb1e0f83595da",
+    "RESULT.md": "2b4d2b786a6a5a455f04ade0fac54b4a787cbd947ab0f9e090bd03b4975b2801",
+    "SOURCE_CERTIFICATION_LEDGER.csv": "9785345ffcfa2c21bbf96e8c3c951928b4038c54c5ab7172fb1e156acee17524",
+    "latinobarometro_2024_width_hostile_fixture.py": "2a45a7a306688d3028746e86feeccd83890154992f50dd664765aacadacff905"
+  },
+  "production_runtime_modified": false,
+  "reader_configuration": {
+    "compatibility_override_used": false,
+    "compression": "simple bytecode code 1",
+    "encoding": "source subtype-20 UTF-8",
+    "endianness": "little",
+    "format": "SPSS $FL2",
+    "layout_code": 2,
+    "row_identity": "source_snapshot + source row ordinal",
+    "user_missing_preservation": "physical declarations retained; packet imports accepted SR09 exact hostile cells"
+  },
+  "repository_write_scope": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R06/ only",
+  "scratch_paths": {
+    "extracted": "/mnt/data/srcprep71_r06_private/extracted",
+    "outputs": "/mnt/data/srcprep71_r06_private/R06",
+    "root": "/mnt/data/srcprep71_r06_private"
+  },
+  "source_dispositions": {
+    "Latinobarometro 1995.sav": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+    "Latinobarometro 2011.sav": "PACKET_READY__NO_NAMED_AUTHORITY_BLOCKER",
+    "Latinobarometro 2024.sav": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED"
+  },
+  "source_hashes": {
+    "Latinobarometro 1995.sav": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+    "Latinobarometro 2011.sav": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+    "Latinobarometro 2024.sav": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+  },
+  "status": "COMPLETE__NON_DISPOSITIVE_PACKET_PREPARATION",
+  "targeted_raw_work": {
+    "Latinobarometro 1995.sav": {
+      "full_stream_traversed": true,
+      "reason": "Resolve official technical-record aggregate/sample identity mismatch at exact country-count grain; isolated Brazil 1200 raw vs 1080 document."
+    },
+    "Latinobarometro 2011.sav": {
+      "full_stream_traversed": true,
+      "reason": "Establish clean documentary/raw country-sample baseline before reuse/drift packet; exact 18-country counts match methodology."
+    },
+    "Latinobarometro 2024.sav": {
+      "full_stream_traversed": true,
+      "reason": "Mandatory P0 executable hostile fixture proving 332-value traversal despite nominal_case_size=174; also confirms exact country counts."
+    }
+  },
+  "worker_id": "R06"
+}
