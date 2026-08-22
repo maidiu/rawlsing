@@ -1,7 +1,7 @@
 {
   "campaign_id": "VC4-COMPILER/PERSISTENCE",
   "name": "VOZHD CHETIRI — COMPILER & PERSISTENCE ARCHITECTURE",
-  "status": "EXPLORATORY__NON_DISPOSITIVE__C07_AXIS_CLOSED__G0_OPEN__ONE_LOCAL_SOURCE_PROOF_REQUIRED__NO_ARCHITECTURE_REOPEN",
+  "status": "EXPLORATORY__NON_DISPOSITIVE__C07_AXIS_CLOSED__G0_OPEN__LOCAL_EVIDENCE_EXECUTOR_THEN_HQ_ADJUDICATION__NO_ARCHITECTURE_REOPEN",
   "governing_question": "Which physical empirical representations are actually necessary to produce, serve, validate, replay and audit Rawlsing's complete learned world while preserving source authority and leaving V3-generated life downstream?",
   "domain_model": ["THE_PAST", "THE_LEARNED_WORLD_EMPIRICAL_SOCIAL", "THE_LEARNED_WORLD_STRUCTURAL", "THE_LIFE_V3"],
   "consumption_lifecycles": ["COMPILER_DISCOVERY_TIME", "GENERATED_PERSON_RUNTIME", "EMPIRICAL_INFERENCE_SERVICE", "DDM_ANALYTICAL_SERVICE", "AUDIT_REPLAY"],
@@ -22,7 +22,8 @@
     "21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md",
     "22_PHASE0_RETURN_INTAKE_AND_G0_PRELIMINARY_ADJUDICATION.md",
     "26_P0S_RETURN_INTAKE_AND_LOCAL_REISSUE_ADJUDICATION.md",
-    "27_C02R2_LOCAL_COMPLETE_SOURCE_OCCURRENCE_TOPOLOGY_PROOF_REISSUE.md"
+    "27_C02R2_LOCAL_COMPLETE_SOURCE_OCCURRENCE_TOPOLOGY_PROOF_REISSUE.md",
+    "28_HQ_C02R2_EVIDENCE_TO_M04_M05_ADJUDICATION_CONTRACT.md"
   ],
   "candidate_families": {
     "A": "PERSISTENT_CANONICAL_EVENT_CARRIER",
@@ -31,8 +32,8 @@
   },
   "frozen_nonchange": ["SOURCE_TRUTH","DECODER_SEMANTICS","C11_M01_M18","I03_TRUTH_CONDITIONS","I05_EXACT_BOUNDED_OPEN_WORLD_CAPABILITY","DISCOVERY_CANDIDATE_NE_VALIDATED_EMPIRICAL_RELATION","POSITIONED_SUBJECT_POSSIBILITY_FIELD_NE_V3_REALIZED_DISPOSITION","EMPIRICAL_RESPONDENT_COORDINATE_NE_GENERATED_STRUCTURAL_POSITION","I04_ADMISSION_LAW","EXACTREF_REPLAY_INTEGRITY","MULTI_UNIVERSE_AND_EMPIRICAL_TIME_NONCOLLAPSE","V553_V558","V3","V2","WHOLE_MACHINE_CLOSURE"],
   "phases": [
-    {"id":"P0","name":"COMPLETE_DESTINATION_AND_INFORMATION_NECESSITY","cells":["C01","C02","C06","C07"],"state":"FIRST_RETURNS_ADJUDICATED__C07_AXIS_CLOSED__C02_REQUIRES_LOCAL_PROOF","closes_at":"G0_ARCHITECTURAL_FEASIBILITY"},
-    {"id":"P0S","name":"SUPPLEMENTAL_G0_CLOSURE","cells":["C02R1","C07R1","C02R2"],"state":"C02R1_ENVIRONMENT_BLOCKED__C07R1_ACCEPTED__C02R2_READY_FOR_LOCAL_LAUNCH","launch_mode":"C02R2_LOCAL_ONLY","closes_at":"G0_ARCHITECTURAL_FEASIBILITY"},
+    {"id":"P0","name":"COMPLETE_DESTINATION_AND_INFORMATION_NECESSITY","cells":["C01","C02","C06","C07"],"state":"FIRST_RETURNS_ADJUDICATED__C07_AXIS_CLOSED__C02_REQUIRES_LOCAL_EVIDENCE","closes_at":"G0_ARCHITECTURAL_FEASIBILITY"},
+    {"id":"P0S","name":"SUPPLEMENTAL_G0_CLOSURE","cells":["C02R1","C07R1","C02R2","HQ_C02R2_ADJUDICATION"],"state":"C02R1_ENVIRONMENT_BLOCKED__C07R1_ACCEPTED__C02R2_READY_AS_DUMB_LOCAL_EXECUTOR","launch_mode":"C02R2_LOCAL_EVIDENCE_ONLY__THEN_HQ_ADJUDICATION","closes_at":"G0_ARCHITECTURAL_FEASIBILITY"},
     {"id":"P1A","name":"NATIVE_EXECUTION_TERRAIN","cells":["C03"],"state":"LOCKED","requires":["G0_PASS"],"closes_at":"C03_ACCEPTED"},
     {"id":"P1B","name":"QUERY_DISCOVERY_LEARNED_WORLD_OPERATIONS_FEASIBILITY","cells":["C04","C05","C08"],"state":"LOCKED","requires":["G0_PASS","C03_ACCEPTED"],"closes_at":"G1_EXECUTION_FEASIBILITY"},
     {"id":"P2","name":"PHYSICAL_AND_AUTONOMOUS_DISCOVERY_BAKEOFF","cells":["C09"],"state":"LOCKED","requires":["G1_CLOSED","HQ_C09_COURT_MANIFEST_FROZEN"],"closes_at":"G2_MEASURED_BAKEOFF"},
@@ -41,12 +42,13 @@
   ],
   "cells": {
     "C01": {"phase":"P0","state":"ACCEPTED__NAMED_GAPS_CARRIED","accepted_head":"e88c34b141761ed0b55d66e3da60a03f6822926d"},
-    "C02": {"phase":"P0","state":"BLOCKED__LOCAL_COMPLETE_SOURCE_PROOF_REQUIRED","return_head":"f952204d817cb961d2ef05d8b66fcf0b4940099f","blocking_witness":"M04_M05_EVENT_OCCURRENCE_TOPOLOGY_DERIVABILITY_UNPROVED"},
+    "C02": {"phase":"P0","state":"BLOCKED__LOCAL_COMPLETE_SOURCE_EVIDENCE_REQUIRED","return_head":"f952204d817cb961d2ef05d8b66fcf0b4940099f","blocking_witness":"M04_M05_EVENT_OCCURRENCE_TOPOLOGY_DERIVABILITY_UNPROVED"},
     "C06": {"phase":"P0","state":"ACCEPTED__NAMED_REPLAY_PREREQUISITES_CARRIED","accepted_head":"6fd91b6fb3d7087faaf971aecc9687bbd33fa00f","u5":"SOURCE_TO_C11_EVENT_OCCURRENCE_IDENTITY_DERIVATION_NOT_CLOSED"},
     "C07": {"phase":"P0","state":"ACCEPTED__C07R1_DIRECT_TERMINAL_AUTHORITY_PASS","admissible_independent_head":"a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d","holding":"LEARNED_WORLD_IS_EMPIRICAL_SOCIAL_DAG_PLUS_STRUCTURAL_DAG_PLUS_SHARED_PROVENANCE_REPLAY__PAST_AUTHORITY__LIFE_V3"},
     "C02R1": {"phase":"P0S","state":"BLOCKED__EXACT_SOURCE_UNAVAILABLE__EVIDENCE_ACCEPTED","branch":"agent/vozhd-chetiri-c02r1-occurrence-topology-proof","result":"C02R1_BLOCK__EXACT_SOURCE_UNAVAILABLE","raw_source_reads":0,"architecture_effect":"NONE"},
     "C07R1": {"phase":"P0S","state":"ACCEPTED__C07_AXIS_CLOSED","branch":"agent/vozhd-chetiri-c07r1-terminal-authority-compliance","result":"C07R1_PASS__INDEPENDENT_LEARNED_WORLD_DAG_UPHELD_UNDER_DIRECT_TERMINAL_AUTHORITY","holding_delta":"NO_MATERIAL_DELTA"},
-    "C02R2": {"phase":"P0S","state":"AUTHORIZED__READY_FOR_LOCAL_LAUNCH","branch":"agent/vozhd-chetiri-c02r2-local-occurrence-topology-proof","order":"27_C02R2_LOCAL_COMPLETE_SOURCE_OCCURRENCE_TOPOLOGY_PROOF_REISSUE.md","source_root":"/Users/matthewsmith/Desktop/Rawlsing/data/Data","burden":"Verify complete 35-source hash-matched corpus and certify M04/M05 determinants or identify exact minimum nonderivable material; close/preserve C06 U5."},
+    "C02R2": {"phase":"P0S","state":"AUTHORIZED__READY_FOR_LUNA_MEDIUM_LOCAL_EXECUTION","branch":"agent/vozhd-chetiri-c02r2-local-occurrence-topology-proof","order":"27_C02R2_LOCAL_COMPLETE_SOURCE_OCCURRENCE_TOPOLOGY_PROOF_REISSUE.md","source_root":"/Users/matthewsmith/Desktop/Rawlsing/data/Data","role":"DUMB_EVIDENCE_EXECUTOR","may_semantically_adjudicate_fd":false,"may_recommend_persistence":false,"may_close_c06_u5":false,"terminal_checksum_owner":"HQ_AFTER_RETURN","burden":"Verify all 35 source hashes; execute frozen decoders; enumerate native topology; mechanically test named candidate determinant tuples; return collisions, coverage and unexecuted-test evidence only."},
+    "HQ_C02R2_ADJUDICATION": {"phase":"P0S","state":"LOCKED__WAITING_FOR_C02R2_EXECUTOR_RETURN","owner":"VOZHD_CHETIRI_HQ_ONLY","order":"28_HQ_C02R2_EVIDENCE_TO_M04_M05_ADJUDICATION_CONTRACT.md","burden":"Convert C02R2 observations into governed M04/M05 FD classification, exact minimum persistence ruling, C06 U5 disposition, 34-row terminal reconciliation and final G0 result."},
     "C03":{"phase":"P1A","state":"LOCKED__G0_NOT_PASSED"},
     "C04":{"phase":"P1B","state":"LOCKED__G0_NOT_PASSED"},
     "C05":{"phase":"P1B","state":"LOCKED__G0_NOT_PASSED"},
@@ -55,10 +57,10 @@
     "C10":{"phase":"P3","state":"LOCKED__G2_NOT_CLOSED"}
   },
   "gates": {
-    "G0": {"state":"OPEN__LOCAL_SOURCE_PROOF_REQUIRED","required_next":["C02R2"],"pass_token":"G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_CANDIDATE","architecture_block_not_established":true},
+    "G0": {"state":"OPEN__LOCAL_EVIDENCE_THEN_HQ_ADJUDICATION_REQUIRED","required_next":["C02R2","HQ_C02R2_ADJUDICATION"],"pass_token":"G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_CANDIDATE","architecture_block_not_established":true},
     "G1":{"state":"LOCKED"},
     "G2":{"state":"LOCKED"},
     "G3":{"state":"LOCKED"}
   },
-  "edges": [["C01","G0"],["C02","C02R1"],["C06","C02R1"],["C07","C07R1"],["C02R1","C02R2"],["C07R1","G0"],["C02R2","G0"],["G0","C03"],["C03","C04"],["C03","C05"],["C03","C08"],["C04","G1"],["C05","G1"],["C08","G1"],["G1","C09"],["C09","G2"],["G2","C10"],["C10","G3"],["G3","HQ_SYNTHESIS"]]
+  "edges": [["C01","G0"],["C02","C02R1"],["C06","C02R1"],["C07","C07R1"],["C02R1","C02R2"],["C07R1","G0"],["C02R2","HQ_C02R2_ADJUDICATION"],["HQ_C02R2_ADJUDICATION","G0"],["G0","C03"],["C03","C04"],["C03","C05"],["C03","C08"],["C04","G1"],["C05","G1"],["C08","G1"],["G1","C09"],["C09","G2"],["G2","C10"],["C10","G3"],["G3","HQ_SYNTHESIS"]]
 }
