@@ -1,0 +1,145 @@
+{
+  "worker_id": "SOURCE_CERT_PREP71-R09",
+  "authority": "PRE553_SOURCE_CERT_PREP71_R09",
+  "library_transport": {
+    "file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "name": "surveys.zip",
+    "materialized_path": "/mnt/data/srcprep71_r09/surveys.zip",
+    "expected_size_bytes": 158180333,
+    "actual_size_bytes": 158180333,
+    "expected_sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "actual_sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "identity_match": true
+  },
+  "assigned_members": [
+    {
+      "archive_member": "surveys/WVS Wave 1.sav",
+      "source_file": "WVS Wave 1.sav",
+      "expected_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+      "actual_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+      "expected_size_bytes": 6358941,
+      "actual_size_bytes": 6358941,
+      "identity_match": true
+    },
+    {
+      "archive_member": "surveys/WVS Wave 4.sav",
+      "source_file": "WVS Wave 4.sav",
+      "expected_sha256": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+      "actual_sha256": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+      "expected_size_bytes": 41997221,
+      "actual_size_bytes": 41997221,
+      "identity_match": true
+    }
+  ],
+  "extraction_scope": {
+    "substantive_members_extracted": [
+      "WVS Wave 1.sav",
+      "WVS Wave 4.sav"
+    ],
+    "other_substantive_members_extracted": [],
+    "wvs_wave_7_materialized": false
+  },
+  "raw_probe_scope": {
+    "sav_content_traversal": false,
+    "reason": "Accepted SR09-PRE R09 already traversed these exact source SHAs and produced hostile sentinels; current PREP71 verified exact member identities and performed no redundant full content scan."
+  },
+  "library_document_search": {
+    "queries": [
+      "WVS Wave 1 questionnaire codebook methodology World Values Survey 1981 1984",
+      "WVS Wave 4 questionnaire codebook methodology World Values Survey 1999 2004",
+      "WVS Wave 1 methodology",
+      "WVS Wave 4 methodology",
+      "World Values Survey methodology sampling fieldwork wave 1",
+      "World Values Survey methodology sampling fieldwork wave 4"
+    ],
+    "located": [
+      {
+        "file_id": "file_0000000027ac722fa711c9fb9148195e",
+        "name": "WVS Wave 1 (1981) Questionnaire.pdf"
+      },
+      {
+        "file_id": "file_00000000fef0722faea41252a454245c",
+        "name": "WVS Wave 1 (1981) Codebook.pdf"
+      },
+      {
+        "file_id": "file_00000000455c722fad2c40384139692a",
+        "name": "WVS Wave 4 (2000) Questionnaire.pdf"
+      },
+      {
+        "file_id": "file_00000000cba8722fbbe723ad1531289f",
+        "name": "WVS Wave 4 (2000) Codebook.pdf"
+      }
+    ],
+    "dedicated_methodology_manual_found": false,
+    "negative_search_note": "No separate dedicated W1/W4 methodology/design manual surfaced; generic/repository-derived WVS material was not promoted to source-native methodology authority."
+  },
+  "documentary_checks": [
+    {
+      "document": "WVS Wave 1 (1981) Codebook.pdf",
+      "locator": "p.23",
+      "fact": "S007 Unified respondent number; range 1..9999999999"
+    },
+    {
+      "document": "WVS Wave 1 (1981) Codebook.pdf",
+      "locator": "p.2",
+      "fact": "V3 Original respondent number; range 1..9999999999; -4 Not asked"
+    },
+    {
+      "document": "WVS Wave 1 (1981) Codebook.pdf",
+      "locator": "p.18,p.23",
+      "fact": "V236 Weight; S018/S019 equilibrated weights"
+    },
+    {
+      "document": "WVS Wave 4 (2000) Questionnaire.pdf",
+      "locator": "p.1",
+      "fact": "V3 intended in-country respondent identifier; unasked variables retained as dummy missing-data variables"
+    },
+    {
+      "document": "WVS Wave 4 (2000) Questionnaire.pdf",
+      "locator": "p.2",
+      "fact": "representative-sample interviewer language"
+    },
+    {
+      "document": "WVS Wave 4 (2000) Questionnaire.pdf",
+      "locator": "p.20",
+      "fact": "V220 first-choice national-election party question"
+    },
+    {
+      "document": "WVS Wave 4 (2000) Questionnaire.pdf",
+      "locator": "p.23",
+      "fact": "V245 national-distribution weight instruction"
+    },
+    {
+      "document": "WVS Wave 4 (2000) Codebook.pdf",
+      "locator": "p.1",
+      "fact": "V3 Interview number and typed -5/-4/-3/-2/-1 states"
+    },
+    {
+      "document": "WVS Wave 4 (2000) Codebook.pdf",
+      "locator": "p.21,p.38,p.43",
+      "fact": "V160T, I_TRUSTCOURTS, ISL22 source-native variable/missing metadata"
+    },
+    {
+      "document": "WVS Wave 4 (2000) Codebook.pdf",
+      "locator": "exact-name search",
+      "fact": "Q223_LOCAL not found; relation to V220 remains physical/metadata plus unresolved documentary authority"
+    }
+  ],
+  "execution_environment": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41"
+  },
+  "output_sha256_excluding_self": {
+    "AUTHORITY_GAPS.csv": "6944d61de262d912e207f15b32c78348ac0bef19c1a130d4aa9d5006270fc949",
+    "FAMILY_REUSE_AND_DRIFT.csv": "fc8d1786931a96729ce0a8d15811aac1dd92398c732760e17cc49605dc93e16c",
+    "HOSTILE_FIXTURES.csv": "81dd50db89d18833001d946d495181a66f7c27cdf1c4572a285e53f3c35de98f",
+    "DOCUMENTARY_AUTHORITY_MAP.csv": "7b702071a87325feed96b2cf7457c14ea42e79d6ba21e3d67a89d80d56609fe6",
+    "RESULT.json": "936739f35c707254f17bb0ba76824e9b9ec13da985aa10e3fac7a2f647ee0553",
+    "SOURCE_CERTIFICATION_LEDGER.csv": "0329c855668700ed25257c55038762e6d1d5c0728f29fbb9fc8fe0f3f9446585",
+    "CHANGED_FILES.txt": "ec323c4d07d161993aacb0627d42d62059631d8e802958310223b00a79d29544",
+    "RESULT.md": "d746de93a290a12412861e6b8d0943e1c995099e75ef029e430f53934de9b781",
+    "FUTURE_EXECUTION_ORDER.md": "c5efd8b7604b0ecb29678e9d9a2ef2199c9ef4aacee1d52b8aef2cb7d25a7587"
+  },
+  "wvs_wave_7_runtime_results_used": false,
+  "certification_performed": false
+}
