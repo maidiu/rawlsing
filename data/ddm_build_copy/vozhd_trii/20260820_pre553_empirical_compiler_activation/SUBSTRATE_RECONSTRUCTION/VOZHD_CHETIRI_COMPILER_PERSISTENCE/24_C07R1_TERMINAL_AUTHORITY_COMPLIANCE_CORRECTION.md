@@ -6,7 +6,9 @@ Status: `AUTHORIZED_P0_SUPPLEMENTAL_CORRECTION__NON_DISPOSITIVE__G0_CLOSURE_ONLY
 
 Worker branch when launched: `agent/vozhd-chetiri-c07r1-terminal-authority-compliance`
 
-Exact correction base: `a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d`
+Launch base: `CURRENT_EXACT_CONTROL_HEAD_AT_HANDOUT`
+
+Independent evidence object under review: `a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d`
 
 Write scope: `VOZHD_CHETIRI_COMPILER_PERSISTENCE/returns/C07R1/`
 
@@ -40,21 +42,33 @@ The first-return holding under review is:
 
 Do not strengthen this holding because sibling workers agreed with it.
 Do not weaken it because current implementation is incomplete.
-Judge only against governing authority and directly inspected terminal contracts.
+Judge only against governing authority and the exact independent evidence object.
 
 ## 2. MANDATORY START CONDITION
 
-Create the C07-R1 branch from EXACTLY:
+At handout, HQ SHALL pin one exact current control HEAD containing this file and files 22–24.
+
+Create the C07-R1 branch from that exact CONTROL HEAD.
+
+Do NOT branch from the current/later C07 worker branch.
+Do NOT copy or merge the C07 worker branch.
+
+Instead, treat exact commit:
 
 `a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d`
 
-Do NOT branch from the later current C07 head.
+as a READ-ONLY IMMUTABLE EVIDENCE OBJECT.
 
-The purpose is to preserve the clean independent first return and add only the missing direct authority audit.
+Inspect only the C07 return files at that exact commit using an exact commit-qualified read (`git show`, equivalent repository read, or another exact read-only method). Do not read C01/C02/C06 returns and do not read C07 files created after `a301...`.
+
+This arrangement preserves both requirements:
+
+1. the worker receives current HQ correction law; and
+2. the C07 proposition being audited remains the clean independent first return.
 
 ## 3. MANDATORY DIRECT WHOLE-SYSTEM AUTHORITY READS
 
-Read directly from the exact correction base or exact governing paths available there:
+Read directly from the exact current control branch/HEAD:
 
 1. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md`
 2. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/TERMINAL_DEMAND_ENVELOPE.md`
@@ -67,26 +81,47 @@ Read directly from the exact correction base or exact governing paths available 
 9. Chetiri `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`;
 10. Chetiri `20_CHETIRI_HQ_PRELAUNCH_CORRECTIVE_DISPOSITIONS.md`;
 11. Chetiri `21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md`;
-12. Chetiri `22_PHASE0_RETURN_INTAKE_AND_G0_PRELIMINARY_ADJUDICATION.md`;
-13. current PRE553 Authority 66 and any later PRE553 authority present at actual launch only to confirm whether terminal semantic obligations changed; physical optimization evidence may not redefine terminal demand.
+12. Chetiri `22_PHASE0_RETURN_INTAKE_AND_G0_PRELIMINARY_ADJUDICATION.md` only for this correction's procedural jurisdiction and the identity `a301...`; do not treat its summaries of sibling results as evidence;
+13. this file `24_C07R1_TERMINAL_AUTHORITY_COMPLIANCE_CORRECTION.md`;
+14. current PRE553 Authority 66 and any later PRE553 authority present at actual launch only to determine whether terminal semantic obligations changed; physical optimization evidence may not redefine terminal demand.
 
 A crosswalk summary is not a substitute for reading the named direct terminal authority.
 
-## 4. SIBLING-INDEPENDENCE LAW
+## 4. EXACT C07 EVIDENCE ALLOWED
+
+From commit `a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d`, you MAY read only files under:
+
+`.../VOZHD_CHETIRI_COMPILER_PERSISTENCE/returns/C07/`
+
+that existed in that exact commit.
+
+The principal evidence includes:
+
+- `LEARNED_WORLD_PRODUCT_AND_SERVICE_CONSTITUTION.md`;
+- `EMPIRICAL_SOCIAL_PRODUCT_MANIFEST.csv`;
+- `COMPILED_STRUCTURAL_SUBSTRATE_CONSTITUTION.md`;
+- `V3_RUNTIME_PRODUCT_MANIFEST.csv`;
+- `FIVE_LIFECYCLE_SERVING_MATRIX.csv`;
+- `BUILD_RUNTIME_BOUNDARY.md`;
+- first-return checksum/crosswalk/result/receipt files.
+
+Do not inspect C07 branch history after `a301...`.
+
+## 5. SIBLING-INDEPENDENCE LAW
 
 Do NOT read:
 
 - C01 return files;
 - C02 return files;
 - C06 return files;
-- any later sibling-informed C07 reconciliation file;
-- any HQ prose summarizing sibling conclusions beyond the minimal procedural reason in file 22.
+- any C07 return content created after `a301...`;
+- any later sibling-informed C07 reconciliation file.
 
 The purpose is to answer whether C07's independent holding survives DIRECT AUTHORITY, not whether workers converge.
 
 If a required direct authority cannot be resolved, name the exact path/reference failure and fail closed rather than substituting sibling evidence.
 
-## 5. EXACT REVIEW PROCEDURE
+## 6. EXACT REVIEW PROCEDURE
 
 For each major first-return proposition, classify:
 
@@ -116,7 +151,7 @@ Review at minimum:
 16. no actor orientation/belief/memory/biography/attractor realization upstream;
 17. all 34 terminal checksum rows.
 
-## 6. MISSING-AUTHORITY LAW
+## 7. MISSING-AUTHORITY LAW
 
 The Dva closure explicitly distinguishes:
 
@@ -133,7 +168,7 @@ In particular, inspect whether direct terminal authority closes or leaves open:
 
 Do not create these laws in C07-R1.
 
-## 7. TERMINAL-PERSON HOSTILE CHECK
+## 8. TERMINAL-PERSON HOSTILE CHECK
 
 For every retained learned-world product family ask both:
 
@@ -145,11 +180,12 @@ Would retaining the family move actor-specific realization, knowledge, memory, b
 
 A good learned-world boundary must survive both directions.
 
-## 8. REQUIRED OUTPUTS
+## 9. REQUIRED OUTPUTS
 
 Write only under `returns/C07R1/`:
 
 - `AUTHORITY_READ_RECEIPT.md`
+- `INDEPENDENT_C07_EVIDENCE_RECEIPT.md` — exact `a301...` paths read; assert no later/sibling return reads
 - `DIRECT_TERMINAL_AUTHORITY_CROSSWALK.csv`
 - `C07R1_TERMINAL_AUTHORITY_COMPLIANCE_REVIEW.md`
 - `C07R1_HOLDING_DELTA.md`
@@ -162,7 +198,7 @@ Write only under `returns/C07R1/`:
 
 `C07R1_HOLDING_DELTA.md` must state `NO_MATERIAL_DELTA` if direct authority changes nothing.
 
-## 9. FINAL DISPOSITIONS
+## 10. FINAL DISPOSITIONS
 
 Exactly one:
 
@@ -173,7 +209,7 @@ Exactly one:
 
 A PASS only makes the C07 axis admissible for G0. It does not pass G0 and does not select A/B/C.
 
-## 10. STOP LAW
+## 11. STOP LAW
 
 When the direct authority compliance review is complete, STOP.
 
