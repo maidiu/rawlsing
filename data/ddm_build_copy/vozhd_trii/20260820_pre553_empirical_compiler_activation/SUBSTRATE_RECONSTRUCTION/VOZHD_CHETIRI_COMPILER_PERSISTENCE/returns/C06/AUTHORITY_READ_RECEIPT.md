@@ -51,6 +51,7 @@ Under `.../SUBSTRATE_RECONSTRUCTION/`:
 ## Current implementation surfaces inspected read-only
 - `rawlsing_next/pre553_empirical_objects.py`
 - `rawlsing_next/pre553_c11_integrity.py`
+- `rawlsing_next/pre553_c11_ingest.py`
 - `rawlsing_next/pre553_c11_repository.py`
 - `rawlsing_next/pre553_discovery_exact.py`
 - `rawlsing_next/pre553_replay_audit.py`
@@ -61,5 +62,8 @@ Under `.../SUBSTRATE_RECONSTRUCTION/`:
 ## Material R01–R25 reconciliation items
 Direct C06 burdens: `R08`, `R12`, `R13`, `R14`, `R16`, `R18`, `R20`, `R23`, `R25`.
 Forward-crosswalk themes materially used: adaptive discovery versus primitive query replay; validation boundary; multi-universe/time identity; explanation lineage; operational retention versus authority; typed completeness/negative law.
+
+## Post-return hostile QA pass
+A second hostile pass re-read the source-native and decoder contracts and inspected `pre553_c11_ingest.py` specifically against the mandatory event-occurrence identity burden. It found that occurrence/event/slot identity is required and C11 occurrence distinctness is validated, but the general derivation of `response_event_id_or_deterministic_index` is not itself frozen by the inspected ingest path. The return was amended to surface this as `U5` rather than treating event-occurrence reconstruction as already closed.
 
 No sibling first-return conclusion was used.
