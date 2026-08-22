@@ -22,7 +22,12 @@ Before any launch/adjudication/synthesis that can change campaign direction, HQ 
 - current PRE553 governing authority newer than the last Chetiri decision;
 - `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`;
 - `12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md`;
+- `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md`;
+- `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`;
+- `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md` and the current Chetiri HQ dispositions of its items;
 - exact worker returns being adjudicated.
+
+Before the first P0 launch, HQ SHALL explicitly disposition every item in `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md` using that register's allowed disposition vocabulary. This is mandatory campaign-question reconciliation, not architecture selection. HQ may adopt a corrective, prove that existing law already covers it, defer it to a named cell without prejudgment, reject it under exact higher authority, or block on missing authority. Silence is not a lawful disposition.
 
 The rule is literal:
 
