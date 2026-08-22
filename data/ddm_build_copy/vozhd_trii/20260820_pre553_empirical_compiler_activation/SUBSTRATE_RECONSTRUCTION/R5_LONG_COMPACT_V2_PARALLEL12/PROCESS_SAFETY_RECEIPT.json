@@ -1,0 +1,13 @@
+{
+  "authority": "65",
+  "topology": "one frozen decoder/coordinator -> bounded batches -> exactly 12 compiler workers -> deterministic k-way merge",
+  "worker_count": 12,
+  "queue_capacity": 12,
+  "process_safety_tests": "PASS",
+  "determinism_tests": "PASS",
+  "worker_protocol_failures": 0,
+  "worker_failures": 0,
+  "fail_closed": true,
+  "serial_semantics_modified": false,
+  "frozen_runtime_modified": false
+}
