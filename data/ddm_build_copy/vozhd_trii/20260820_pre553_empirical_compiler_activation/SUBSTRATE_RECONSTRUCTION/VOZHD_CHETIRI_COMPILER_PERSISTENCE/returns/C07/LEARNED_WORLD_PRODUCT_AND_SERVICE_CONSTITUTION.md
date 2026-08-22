@@ -149,3 +149,17 @@ Until supplied, candidate discovery may be preserved without being declared vali
 ## 13. C07 holding
 
 The complete learned world is lawfully a DAG, not one giant compiled-everything artifact. Persistence is product-specific and lifecycle-specific; source evidence remains source authority; learned releases remain governed derivatives; optional indexes remain replaceable; V3 owns the life.
+
+## 14. HQ-authorized second-pass reconciliation
+
+After the independent first return, HQ authorized a better-go audit against additional governing/runtime evidence and the now-returned C01/C02/C06 cells. Those sibling returns were used only as evidence.
+
+The first holding is **UPHELD**, with the following explicit refinements:
+
+1. **Logical C11 versus physical carrier.** C02 evidence confirms that a source-backed or hybrid backend can satisfy C11 in principle. The semantic requirement is exact logical serviceability under governed source-native adapters, not persistence of a particular transformed C11 representation. Source bytes remain P1 authority.
+2. **Replay graph expansion.** C06 evidence makes P3 replay material explicit: release identity/header, scenario/execution identity where applicable, routing/read-path receipts, subtree/output evidence receipts, governing roots, exact version/determinant bindings, and rebuild/reconstruction instructions sufficient to recover the promised semantics.
+3. **Direct runtime confirmation.** Common-start `rawlsing_next/m4_v557_v558_publication_repository.py` confirms an immutable V558 repository with deterministic indexes; `m5_runtime_rsc_peer_prior.py` consumes that repository to derive runtime results; `m6_actor_safe_expression.py` combines learned structural services with actor/environment state. This directly supports keeping derived indexes P4/in-memory and actor life V3-owned.
+4. **No missing-authority closure.** C01/C02/C06 provide no governing empirical validation law, empirical comparability law, positioned-subject possibility-model law, or source-universe composition law. All four fail-closed markers remain.
+5. **No checksum regression.** The 34-row terminal checksum remains 34/34 populated, with zero starvation rows, zero semantic-leakage rows, and four missing-authority fail-closed rows (26, 28, 29, 31).
+
+Thus the second pass strengthens the information-preservation contract without promoting a transformed source carrier, cache, runtime projection, or actor-specific derived value into epistemic authority.
