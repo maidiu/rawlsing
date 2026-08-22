@@ -10,6 +10,7 @@ A historical result is replay/audit sufficient only when the retained closure ca
 
 `SOURCE`
 `+ EXECUTABLE_DECODER_CLOSURE`
+`+ SOURCE_TO_C11_IDENTITY_DERIVATION_CLOSURE`
 `+ HISTORICAL_AUTHORITY_CLOSURE`
 `+ SEMANTIC_IDENTITY/REPLAY_LAW`
 `+ SOURCE_AND_SEARCH_COMPLETENESS_STATE`
@@ -18,7 +19,7 @@ A historical result is replay/audit sufficient only when the retained closure ca
 `+ I04/STRUCTURAL/PUBLICATION_CLOSURE`
 `= EXPLAINABLE PINNED RESULT`.
 
-No duplicate respondent payload is required by this equation.
+No duplicate respondent payload is required by this equation unless some later proof establishes an identity-bearing value cannot be reconstructed or compactly bound otherwise.
 
 ## Minimum bound fields
 
@@ -43,7 +44,11 @@ No duplicate respondent payload is required by this equation.
 - C11 release/ref and ReplayManifest ref;
 - respondent/source-row coordinate law;
 - question/variable/topology/transform refs;
+- source-native occurrence/event/slot identity where applicable;
+- exact rule that derives `event_group_id` and `response_event_id_or_deterministic_index` from source-native determinants, **or** a compact historical replay binding that makes those identity-bearing values exactly reproducible;
 - expected semantic release root and pinned object ExactRefs as needed by downstream references.
+
+The current source constitution requires occurrence/event/slot identity and C11 validates occurrence distinctness, but C06 did not find a general frozen source→C11 occurrence-index derivation law. A receipt therefore cannot omit this determinant merely because the final object is content-addressed.
 
 ### D. Query/discovery
 - query/predicate ExactRefs and risk/target/source/measure scope;
@@ -87,9 +92,9 @@ If exact authority for any required validation/model-selection field is absent, 
 ### G. Replay result
 - replay protocol authority/version;
 - clean-process/no-cache condition;
-- expected versus actual source, semantic release, learned release and structural roots;
+- expected versus actual source, C11 semantic release, learned release and structural roots;
 - typed result: verified / input missing / authority unavailable / hash mismatch / semantic mismatch / nondeterministic replay;
-- no hidden mutable `latest`, path fallback, wall-clock selection, filesystem-order semantics, or unnamed randomness.
+- no hidden mutable `latest`, path fallback, wall-clock selection, filesystem-order semantics, unnamed randomness, or unstated occurrence-index construction.
 
 ## Exact-negative receipt
 
@@ -100,7 +105,8 @@ A `COMPLETE_AUTHORIZED_SEARCH__NO_RELATION` receipt is valid only if it binds:
 4. zero unresolved reader/decode/compatibility failures;
 5. exact budget and a stop reason that is **completion**, not exhaustion;
 6. zero missing transient/cache partition on which semantics depended;
-7. final validation/search state under the governed state machine.
+7. final validation/search state under the governed state machine;
+8. exact source→C11 identity derivation closure for every event used by the search.
 
 Anything less is not an empirical negative.
 
@@ -110,4 +116,4 @@ Recomputability does not eliminate the need to retain a small expected historica
 
 ## Invalidation
 
-The receipt is invalid for identity equality when any bound source, decoder, authority, semantic rule, query/search law, validation/model-selection law, randomness, admission rule, learned release dependency, or publication dependency changes. A changed determinant produces a new replay identity; it is not repaired by relabeling it as the old run.
+The receipt is invalid for identity equality when any bound source, decoder, source→C11 identity derivation rule, authority, semantic rule, query/search law, validation/model-selection law, randomness, admission rule, learned release dependency, or publication dependency changes. A changed determinant produces a new replay identity; it is not repaired by relabeling it as the old run.
