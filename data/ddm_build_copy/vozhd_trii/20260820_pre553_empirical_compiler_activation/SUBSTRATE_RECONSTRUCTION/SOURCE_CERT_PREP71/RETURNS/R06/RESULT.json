@@ -1,0 +1,85 @@
+{
+  "branch": "agent/vozhd-trii-srcprep71-r06-latam",
+  "certification_issued": false,
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R06_RETURNED",
+  "documentary_search": {
+    "library": "Searched for official Latinobarometro 1995/2011/2024 questionnaires/methodology; Library surfaced prior official-document discovery traces and governed source-native audit references, but not direct authoritative PDF bytes for all requested documents.",
+    "official_web_fallback": "Used only latinobarometro.org producer documents to close questionnaire/codebook/methodology locators when direct Library copies were not surfaced.",
+    "rank_law": "Exact frozen raw physical layout remains higher-ranked than explanatory documents."
+  },
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "executable_2024_fixture": {
+    "preserved_nominal_case_size": 174,
+    "proved_case_width": 332,
+    "proved_total_values": 6379048,
+    "receipt": "LATINOBAROMETRO_2024_WIDTH_FIXTURE_RECEIPT.json",
+    "receipt_sha256": "1dc5ad556cb0a2ae7563e6a11453f990465a370828bfe7f5c2c896f65a579660",
+    "result": "PASS__NON_DISPOSITIVE_PHYSICAL_HOSTILE_FIXTURE",
+    "script": "latinobarometro_2024_width_hostile_fixture.py",
+    "script_sha256": "2a45a7a306688d3028746e86feeccd83890154992f50dd664765aacadacff905"
+  },
+  "family": "Latinobarometro",
+  "hostile_fixture_count": 26,
+  "hostile_fixture_count_per_source": {
+    "Latinobarometro 1995.sav": 8,
+    "Latinobarometro 2011.sav": 8,
+    "Latinobarometro 2024.sav": 10
+  },
+  "named_blockers": [
+    {
+      "blocker": "LB95_GAP_BRAZIL_SAMPLE_120",
+      "class": "SOURCE_SCOPE_COORDINATE",
+      "source": "Latinobarometro 1995.sav",
+      "summary": "Exact SAV has 1200 Brazil rows; official technical record says 1080. Documentary sample identity cannot silently close."
+    },
+    {
+      "blocker": "LB24_GAP_HEADER_WIDTH_EXPLANATION",
+      "class": "OTHER_NAMED_PHYSICAL_HAZARD",
+      "source": "Latinobarometro 2024.sav",
+      "summary": "P0: raw nominal_case_size=174 while dictionary/weight_index=332; executable hostile court mandatory."
+    },
+    {
+      "blocker": "LB24_GAP_WT_DOMAIN_CONFLICT",
+      "class": "WEIGHT_DESIGN",
+      "source": "Latinobarometro 2024.sav",
+      "summary": "Exact SAV contains WT=19.7793 while official results label WT range 0.01-10; weight semantic closure requires authority."
+    }
+  ],
+  "new_packet_findings": [
+    "1995 official technical record Brazil n=1080 conflicts with exact SAV Brazil n=1200; all other 1995 country counts match.",
+    "2011 exact 18-country raw counts match official methodology total 20204; useful clean family baseline.",
+    "2024 executable raw parser proves nominal 174 is not physical case width: 332 dictionary variables x 19214 cases = 6379048 values at exact EOF.",
+    "2024 official technical record matches raw 17-country/19214 sample; generic landing page says 18 and is treated as boilerplate caveat.",
+    "2024 official results describe WT as 0.01-10 while raw max is 19.7793; documentary/raw weight-domain conflict added to future court."
+  ],
+  "non_dispositive": true,
+  "raw_transport": {
+    "library_bundle": "surveys.zip",
+    "members": [
+      {
+        "name": "surveys/Latinobarometro 1995.sav",
+        "sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+        "size_bytes": 2224483
+      },
+      {
+        "name": "surveys/Latinobarometro 2011.sav",
+        "sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+        "size_bytes": 9900209
+      },
+      {
+        "name": "surveys/Latinobarometro 2024.sav",
+        "sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+        "size_bytes": 7886834
+      }
+    ],
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "source_dispositions": {
+    "Latinobarometro 1995.sav": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+    "Latinobarometro 2011.sav": "PACKET_READY__NO_NAMED_AUTHORITY_BLOCKER",
+    "Latinobarometro 2024.sav": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED"
+  },
+  "status": "RETURN_READY__NON_DISPOSITIVE",
+  "worker_id": "R06"
+}
