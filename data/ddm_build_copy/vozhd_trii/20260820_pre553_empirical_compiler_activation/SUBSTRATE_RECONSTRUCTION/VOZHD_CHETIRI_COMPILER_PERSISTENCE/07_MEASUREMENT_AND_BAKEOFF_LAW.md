@@ -2,249 +2,337 @@
 
 Short tag: `VC4-COMPILER/PERSISTENCE`
 
-Status: `PLANNED_COURT_LAW__NO_EXECUTION_AUTHORITY_YET__TERMINAL_VISION_PARITY_REQUIRED`
+Status: `PLANNED_COURT_LAW__NO_EXECUTION_AUTHORITY_YET__LEARNED_WORLD_AND_TERMINAL_PARITY_REQUIRED`
 
 ## 0. PURPOSE
 
-C09 may execute only after C01–C08 have frozen the logical workload and persistence/replay requirements. This prevents benchmark design from deciding architecture by convenience.
+C09 may execute only after C01–C08 have frozen:
 
-The benchmark is subordinate to the Rawlsing terminal person/application vision. A candidate that is faster/smaller because it starves later structural-personhood capability is not a valid candidate.
+- the logical primitive workload;
+- the autonomous discovery workload if executable;
+- the complete learned-world product/service obligations;
+- persistence/replay requirements;
+- candidate definitions and truth/parity oracles.
+
+Benchmark design may not decide architecture by convenience.
 
 ## 1. CANDIDATES
 
 A — `PERSISTENT_CANONICAL_EVENT_CARRIER`
 
-Use the exact accepted/frozen compact persistent implementation available when C09 is authorized. Do not benchmark the failed JSON-per-cell V1 as if it represented the repaired family.
+Use the exact accepted/frozen compact persistent implementation available when authorized.
 
 B — `SOURCE_BACKED_VIRTUAL_C11`
 
-Authoritative persistent empirical payload is the exact source artifact plus governed authority/receipts. No full transformed empirical payload is retained after court cleanup.
+Primary empirical authority remains exact source + governed authority/receipts. No full transformed empirical payload persists by default; separately justified learned products may persist.
 
 C — `SOURCE_BACKED_HYBRID`
 
-Same authority floor as B, but bounded/transient or explicitly regenerable accelerators are allowed if listed before execution.
+Same authority floor as B with bounded transient or explicitly regenerable accelerators listed before execution.
+
+No candidate's physical carrier defines learned-world ontology or the lawful I05 vocabulary.
 
 ## 2. FAIRNESS LAW
 
-All candidates must satisfy the same logical requests and produce the same semantic outputs/receipts where the frozen architecture defines them.
+All candidates satisfy identical semantic requests and produce equivalent outputs/receipts where governing law defines them.
 
-Forbidden benchmark bias:
+Forbidden benchmark bias includes:
 
-- giving A prebuilt warm state while charging B/C for source certification unless warm/cold scenarios are measured separately;
-- omitting build cost for one candidate;
-- omitting cache-generation cost for C;
-- counting source bytes against B/C but not A when A also requires source retention under source constitution;
-- counting temporary scratch as permanent state;
-- ignoring persistent cache bytes in C;
-- accepting approximate/aggregated result parity;
-- narrowing I05 workload to known cached predicates;
-- selecting only WVS-friendly primitives;
-- hiding decoder incompatibility setup cost;
-- hiding cleanup/recovery cost;
-- removing a terminally relevant distinction from one candidate's workload to make it appear cheaper.
+- unequal cold/warm/build accounting;
+- hiding cache generation or cache bytes;
+- counting source retention against only B/C;
+- mixing scratch and permanent bytes;
+- approximate semantic parity;
+- narrowing I05 to cached/known predicates;
+- using primitive queries as a proxy for autonomous discovery;
+- WVS-only favorable selection;
+- hiding decoder/full-read/setup cost;
+- hiding validation/model-compilation cost;
+- comparing different search budgets/termination laws;
+- hiding cleanup/recovery/invalidation cost;
+- dropping terminal or learned-world capability to make a candidate cheaper.
 
-## 3. PERSISTENT SIZE ACCOUNTING
+## 3. TWO DISTINCT I05 BENCHMARKS
+
+### 3.1 `I05_PRIMITIVE_BENCHMARK`
+
+Measures exact individual operations such as distributions, conjunctions, conditional distributions, subgroup/risk-set masks, cotravel/joint primitives, weighted/design variants, typed negatives and topology-general gathers.
+
+### 3.2 `I05_DISCOVERY_PROGRAM_BENCHMARK`
+
+Executes an actual bounded autonomous discovery program over a substantial governed universe under frozen search/termination law.
+
+It must SEARCH rather than replay known relationships.
+
+Report where applicable:
+
+- candidate evaluations;
+- targets/questions entered;
+- conditioners/values considered;
+- adaptive branches visited;
+- interaction orders attempted;
+- response pairs/k-way configurations;
+- source universes/time scopes;
+- validation/resampling/specification variants;
+- source opens and decode passes;
+- decoded bytes if observable;
+- reusable working-set size;
+- cache hits/misses;
+- completed frontier vs budget;
+- exact stop reason;
+- wall/CPU time;
+- peak RSS/scratch;
+- cache dependence;
+- cacheless rebuild behavior.
+
+If no sufficiently frozen executable autonomous discovery/search/termination program exists, C09 SHALL return:
+
+`C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM`
+
+Primitive results remain engineering evidence only and may not support a full architectural performance verdict.
+
+## 4. BLIND DISCOVERY FIXTURES
+
+When executable discovery exists, C09 SHALL include HQ-controlled synthetic respondent universes whose planted structures are not disclosed to worker/search algorithm.
+
+Fixture families include at least:
+
+- XOR;
+- Simpson reversal;
+- stable ~2% minority mode;
+- deep conditional fork;
+- three-way interaction invisible to unary/simple-pair salience;
+- identical unary marginals with different joint topology;
+- contradictory recurrent configuration;
+- weighted/unweighted reversal;
+- routing/missingness false signal;
+- duplicated/multiple-response false cotravel;
+- multi-universe pooling reversal.
+
+Score distinctly:
+
+- `DISCOVERY_MISS`
+- `FALSE_DISCOVERY`
+- `FOUND_BUT_VALIDATION_REJECTED`
+- `FOUND_AND_VALIDATED`
+- `FOUND_VALIDATED_BUT_STRUCTURALLY_INADMISSIBLE`
+
+The oracle may know the answer; the search path may not.
+
+## 5. SEARCH SCALING LAW
+
+Where practical, characterize observed scaling as controlled dimensions change:
+
+- respondents;
+- questions/variables;
+- candidate conditioners;
+- branch depth;
+- interaction order;
+- source-universe count;
+- validation repetitions;
+- regenerated masks/joins/working sets.
+
+One favorable full-source point is not sufficient proof of discovery tractability.
+
+## 6. PERSISTENT SIZE ACCOUNTING
 
 Report separately:
 
 - `SOURCE_AUTHORITATIVE_BYTES`
 - `SEMANTIC_AUTHORITY_BYTES`
 - `PROVENANCE_RECEIPT_BYTES`
-- `COMPILED_STRUCTURAL_PRODUCT_BYTES` if the court produces a fixture product
-- `PERSISTENT_CANONICAL_EMPIRICAL_BYTES`
+- `PERSISTENT_EMPIRICAL_LEARNED_PRODUCT_BYTES`
+- `PERSISTENT_STRUCTURAL_LEARNED_PRODUCT_BYTES`
+- `PERSISTENT_CANONICAL_EMPIRICAL_CARRIER_BYTES`
 - `PERSISTENT_REGENERABLE_CACHE_BYTES`
 - `TOTAL_REQUIRED_PERMANENT_BYTES`
 - `TOTAL_OPTIONAL_CACHE_BYTES`
 
-Source bytes are common authoritative inputs where all architectures remain source-replayable; do not make them disappear from A's lifecycle merely because A also stores transformed data.
+For every transformed persistent category also state authority status:
 
-## 4. TRANSIENT RESOURCE ACCOUNTING
+- `PRIMARY_AUTHORITY`
+- `GOVERNED_DERIVED_LEARNED_PRODUCT`
+- `OPERATIONALLY_RETAINED_REGENERABLE_REPRESENTATION`
+- `OPTIONAL_CACHE`
+
+## 7. TRANSIENT RESOURCE ACCOUNTING
 
 Report separately:
 
 - peak RSS;
-- peak scratch bytes;
-- peak temp-file count;
+- peak scratch bytes/file count;
 - max single temp object;
-- decoded frame size where full-frame reader path is unavoidable;
+- unavoidable decoded-frame size;
 - cleanup bytes removed;
-- residual scratch after success/failure.
+- residual scratch after success/failure;
+- source open count;
+- decode pass count;
+- transient working-set size and reuse.
 
-## 5. TIME ACCOUNTING
+## 8. COMPLETE LIFECYCLE TIME ACCOUNTING
+
+Where defined/applicable, report separately:
+
+- source verification/open;
+- first setup/build;
+- repeat setup/build;
+- I03 workload;
+- I05 primitive workload;
+- full autonomous discovery;
+- validation/robustness work;
+- empirical learned-model compilation;
+- structural compilation fixture;
+- positioned-subject empirical inference latency;
+- DDM analytical query latency;
+- audit/replay;
+- cache rebuild/delete-all-cache recovery;
+- incremental rebuild;
+- interrupted-build/failure recovery.
+
+For each state realistic lifecycle/invocation frequency. Hours per release and hours per actor are architecturally different.
+
+## 9. BASELINE PRIMITIVE WORKLOAD
 
 At minimum:
 
-- source verification/open;
-- first compilation/setup;
-- repeated compilation/setup;
-- exact primitive query latency cold;
-- exact primitive query latency warm;
-- representative I05 batch wall time;
-- audit/replay time;
-- cache rebuild time;
-- delete-all-caches recovery time;
-- interrupted-build recovery overhead where measurable.
-
-## 6. REQUIRED WORKLOAD SUITE
-
-The exact suite is frozen by C04/C05, but must contain at least:
-
 1. metadata/source identity verification;
-2. governed reconstruction of hostile physical cells/events;
+2. hostile governed C11 reconstruction;
 3. full sequential scan primitive;
-4. one-variable distribution;
-5. 2-way respondent conjunction;
-6. 3-way respondent conjunction;
-7. 5-way respondent conjunction;
-8. conditional distribution;
-9. subgroup/risk-set-correct operation;
-10. weighted/design operation where exact proving authority exists;
-11. typed-negative/refutation-domain case;
-12. topology-general case;
-13. representative bounded I05 discovery batch;
-14. provenance/receipt emission;
-15. full semantic/replay audit primitive;
-16. fresh-process repeat;
-17. delete-all-caches rebuild.
+4. univariate distribution;
+5. 2/3/5-way conjunction;
+6. conditional distribution;
+7. subgroup/risk-set operation;
+8. weighted/design operation where authority exists;
+9. typed-negative/refutation case;
+10. topology-general case;
+11. provenance/receipt emission;
+12. full semantic/replay audit primitive;
+13. fresh-process repeat;
+14. delete-all-caches rebuild.
 
-The workload must preserve enough hostile cases to prove that later structural compilation still has access to time, topology, uncertainty, contradiction, routing/design and exact provenance rather than merely producing the same happy-path scalar answers.
+C04/C05 freeze the final exact suite.
 
-## 7. PROVING SOURCES
+## 10. LEARNED-WORLD WORKLOADS
 
-Required baseline:
+Where governing authority is sufficiently frozen, exercise:
 
-- WVS7 exact SHA `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`;
-- LiTS I exact SHA `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`.
+- candidate discovery → validation-state transition;
+- accepted empirical-relation release/provenance;
+- higher-order joint/multimodal possibility representation or accepted capability surface;
+- source-universe/time-indexed selection;
+- positioned-subject empirical inference;
+- explanation-lineage reconstruction;
+- adaptive-discovery replay.
 
-A third source may be added only when C03/C10 identifies a named property not exercised by WVS7/LiTS and HQ authorizes the additional source probe.
+Where authority is missing, record `BLOCKED_MISSING_AUTHORITY`; do not substitute a weaker task and call it parity.
 
-## 8. PARITY BEFORE PERFORMANCE
+## 11. PROVING SOURCES
 
-For each candidate require, where applicable:
+Baseline:
 
-- source identity parity;
-- physical preservation parity;
+- WVS7 SHA `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`;
+- LiTS I SHA `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`.
+
+Additional hostile real source only under named HQ authorization.
+
+Synthetic blind fixtures supplement real-source scale/decoder evidence; they do not replace it.
+
+## 12. PARITY BEFORE PERFORMANCE
+
+Require where applicable:
+
+- source identity/physical preservation;
 - C11 observable parity;
-- ExactRef/content-hash parity;
-- topology/order parity;
-- routing/risk-set parity;
-- weight/design parity;
-- I03 semantic parity;
-- I05 frontier/result parity;
-- I04 fixture admission parity if exercised;
-- deterministic replay parity;
-- integrity/fail-closed parity;
+- ExactRef/content-hash;
+- topology/order;
+- routing/risk-set;
+- weight/design;
+- I03;
+- I05 primitive frontier;
+- autonomous-discovery search/frontier semantics;
+- adaptive-discovery replay;
+- discovery/validation typed states;
+- empirical learned-product/explanation lineage;
+- historical/multi-universe distinctions;
+- positioned-subject possibility capability;
+- I04 fixture admission;
+- deterministic replay;
+- integrity/fail-closed;
 - no legacy fallback;
-- full `VC4_TERMINAL_VISION_CHECKSUM` parity.
+- complete 34-row `VC4_TERMINAL_VISION_CHECKSUM` parity.
 
-Terminal-vision parity means the candidate does not erase prerequisites for:
+Any required failed parity excludes candidate from performance selection.
 
-- relational nine-strata structure;
-- contradiction/coexisting pressure;
-- time/gap/noncomparability;
-- mediation and pressure-flow topology;
-- V3-owned orientation/development/attractor formation;
-- actor opacity/knowledge boundaries;
-- genealogy;
-- Absolute Horizon distinction;
-- lawful uncertainty;
-- divergent possible lives and human remainder;
-- provenance/epistemic noncollapse.
+## 13. EXACT NEGATIVE / SEARCH COMPLETENESS
 
-Any failed required parity excludes a candidate from performance selection.
+No candidate may conflate:
 
-## 9. PRIMARY DECISION METRICS
+- complete authorized search with no relation;
+- partial frontier;
+- budget exhaustion;
+- unsupported/noncomparable domain;
+- candidate found but validation rejected.
 
-C09 SHALL publish at least:
+Execution exhaustion never becomes empirical absence.
+
+## 14. CACHE / OPERATIONAL RETENTION
+
+For B/C and any regenerable A layer:
+
+- delete caches/accelerators;
+- prove authority and query/discovery reachability preserved;
+- rebuild repeatedly;
+- stale state fails closed;
+- regeneration path remains executable;
+- logical APIs remain cache-schema blind.
+
+If A is operationally necessary for acceptable throughput but informationally regenerable, report both facts. Operational retention does not promote source authority.
+
+## 15. PRIMARY METRICS
+
+Publish at least:
 
 `PERSISTENT_REQUIRED_BYTES`
-
 `PERSISTENT_OPTIONAL_CACHE_BYTES`
-
 `PEAK_TRANSIENT_BYTES`
-
 `PEAK_RSS`
-
 `FIRST_BUILD_SECONDS`
-
 `REPEAT_BUILD_SECONDS`
-
 `I03_WORKLOAD_SECONDS`
-
-`I05_BATCH_SECONDS`
-
+`I05_PRIMITIVE_SECONDS`
+`I05_DISCOVERY_PROGRAM_SECONDS`
+`DISCOVERY_CANDIDATE_EVALUATIONS`
+`SOURCE_OPEN_COUNT`
+`DECODE_PASS_COUNT`
+`VALIDATION_SECONDS`
+`EMPIRICAL_MODEL_COMPILE_SECONDS`
+`INFERENCE_LATENCY`
+`ANALYTICAL_QUERY_LATENCY`
 `AUDIT_REPLAY_SECONDS`
-
 `CACHELESS_REBUILD_SECONDS`
-
+`INCREMENTAL_REBUILD_SECONDS`
 `MOVING_PART_COUNT`
-
 `FAILURE_RECOVERY_DISPOSITION`
-
 `PERSISTENT_BYTES_REMOVABLE_WITH_ZERO_INFORMATION_LOSS`
-
 `TERMINAL_VISION_PARITY_STATUS`
 
-## 10. DECISION OBJECTIVE ORDER
+Use `NOT_APPLICABLE` or `BLOCKED_MISSING_AUTHORITY`, never invented numbers.
 
-No opaque aggregate score.
+## 16. NO SINGLE-SCORE MAGIC
 
-First reject any candidate failing semantic/replay/terminal parity.
+No opaque weighted score. Report Pareto comparison separately by relevant lifecycle after correctness/capability parity.
 
-For the permanent V3-facing product lifecycle, compare:
-
-1. flawless effectiveness;
-2. runtime speed;
-3. persistent lightness;
-4. operational simplicity.
-
-For compiler machinery, compare:
-
-1. exactness;
-2. bounded/fail-closed behavior;
-3. build throughput;
-4. scratch efficiency;
-5. maintainability.
-
-Do not let compiler convenience outrank the permanent runtime/personhood objective.
-
-## 11. PARETO LAW
-
-C09 reports a Pareto comparison under the lexicographic laws above.
-
-A candidate is dominated if another candidate:
-
-- passes all the same correctness/capability/terminal gates;
-- is no worse on every governing objective relevant to the stage;
-- and is materially better on at least one.
-
-Where tradeoffs remain, C09 returns the tradeoff to HQ rather than hiding it in a score.
-
-## 12. REQUIRED CLEANUP PROOF
-
-For B/C:
-
-- delete all transformed empirical scratch/cache designated disposable;
-- prove no authoritative information was lost;
-- re-open from source + authority;
-- reproduce selected semantic/replay outputs;
-- verify terminally relevant structural prerequisites remain reconstructable.
-
-For A:
-
-- identify whether deletion of the persistent canonical event carrier causes information loss or only forces reconstruction;
-- if reconstruction is possible, state exactly why the carrier nevertheless qualifies as mandatory persistent product rather than optional cache.
-
-## 13. C09 ALLOWED DISPOSITIONS
+## 17. C09 ALLOWED DISPOSITIONS
 
 - `C09_PARITY_PASS__A_PARETO_LEADER`
 - `C09_PARITY_PASS__B_PARETO_LEADER`
 - `C09_PARITY_PASS__C_PARETO_LEADER`
 - `C09_PARITY_PASS__NONDOMINATED_TRADEOFF__HQ_REQUIRED`
+- `C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM`
 - `C09_BLOCK__PARITY_FAILURE`
 - `C09_BLOCK__TERMINAL_VISION_PARITY_FAILURE`
 - `C09_BLOCK__RESOURCE_FAILURE`
 - `C09_BLOCK__INCOMPARABLE_OR_UNFROZEN_WORKLOAD`
 - `C09_BLOCK__TRUSTWORTHY_SOURCE_OR_ENVIRONMENT_UNAVAILABLE`
 
-Any leader remains provisional until C10 hostile court and HQ synthesis.
+Any leader remains provisional until C10 and HQ synthesis.
