@@ -1,52 +1,70 @@
-# C04 — I03 MANDATORY MATERIALIZATION WITNESSES
+# C04 I03 MANDATORY MATERIALIZATION WITNESSES
 
-## Question
+Exact start SHA: `80915554c819e8c0da5f8ac3fda1592f7843881f`  
+Disposition: `C04_PASS__FULL_I03_FRONTIER_SOURCE_BACKED_EXECUTABLE`
 
-Does any frozen I03 primitive require a permanent authoritative full respondent/event carrier, or even mandatory regenerable session materialization, to remain exactly executable?
+## Verdict
 
-## Result
+### Mandatory authoritative permanent full respondent/event payload materialization
+`NONE`
 
-**No named frozen I03 primitive requires a permanent authoritative event carrier.**
+### Mandatory regenerable session materialization for correctness
+`NONE`
 
-**No named frozen I03 primitive was proven to require session materialization for correctness.** A session/wave image may be operationally useful because repeated native parsing can be expensive, but that is an optimization/throughput question for later physical courts.
+### Lawful query-local/transient execution state
+`YES`
 
-## Surviving materialization candidates
+Every exact executor needs some working state, but it may be streamed or bounded:
+- scoped respondent identity/ref stream;
+- exact risk-member and denominator masks/sets or deterministic accumulators;
+- decoded values/states for query-referenced projections;
+- topology-general per-respondent event gathers/reducers;
+- respondent-aligned predicate/target/routing/weight vectors or bitmaps;
+- joint-cell accumulators;
+- deterministic provenance/dependency/authority ref accumulators.
 
-| working state | why useful | authority status | may be deleted? | exact regeneration |
-|---|---|---|---|---|
-| decoded respondent-key vector | stable respondent alignment across predicates/targets | transient/regenerable | yes | frozen decoder + source identity/namespace authority |
-| routing/applicability bitmaps | denominator reuse across many queries | transient/regenerable | yes | source/rules + routing/risk-set authority |
-| target response vectors | repeated EQ/IN/distribution access | transient/regenerable | yes | source + question/semantic/topology authority |
-| typed response-state vectors | preserve missing/DK/refusal/etc. efficiently | transient/regenerable | yes | source/native metadata + governed state authority |
-| coordinate vectors | repeated subgroup/conditioner predicates | transient/regenerable | yes | source + coordinate authority |
-| topology event lists | zero/one/many, ordered/ranked/repeated execution | transient/regenerable | yes | source + topology/multiplicity authority |
-| exact weight vector | governed weighted estimands | transient/regenerable | yes | source + weight/design/estimand authority |
-| recursive predicate masks | amortize AND/OR/NOT/conditioners | transient/regenerable | yes | leaf vectors + exact predicate grammar/risk set |
-| decoded full-wave frame/Arrow image | amortize parser/full-read floor over large query batches | operationally retained regenerable representation only | yes for correctness | exact source + frozen decoder |
+These are `TRANSIENT_COMPILER_STATE`, not semantic authority.
 
-Deletion of these states may worsen performance. Under the frozen I03 contract it must not change the set of lawful queries or their exact results.
+## Optional regenerable session materialization
 
-## Primitive-by-primitive hostile witnesses
+A decoded wave/frame, Arrow image, DuckDB image, vector bundle, reusable mask bank, or similar exact working set is lawful when:
+1. it is deterministically regenerable from exact source + governed authority;
+2. deletion changes cost only;
+3. stale/mismatched state fails closed;
+4. every semantic determinant is part of its identity/invalidation key;
+5. the logical C11/I03 API does not expose its physical schema as semantics;
+6. future lawful predicates are not limited to materialized masks/columns;
+7. exact no-cache execution remains possible.
 
-1. **Governed NOT:** needs complete governed denominator membership, not permanent events. A denominator bitmap can be regenerated from respondent identity + routing/applicability authority, then the child predicate evaluated from source-backed leaves.
-2. **2/3/5-way joint:** needs same-respondent target incidence. It cannot be reconstructed from marginals, but can be reconstructed directly from the exact source columns/events for the named respondents.
-3. **Cotravel:** same logic; respondent alignment is required information, not a required permanent layout.
-4. **Typed negatives/special states:** need exact semantic state authority plus native evidence; permanent materialization cannot replace missing authority and is unnecessary where authority is present.
-5. **Topology-general gather:** may need multiple physical columns/cells and repeated events, but a query/session event-list map is sufficient.
-6. **Weighted estimand:** requires weight/design/estimand authority and source weight values, not a permanent event carrier.
-7. **Multi-universe:** independent source-backed executions retain exact universe identity; permanent materialization would not authorize pooling.
-8. **ExactRef/replay:** requires source roots, authority closure, member identity and canonical result projection. Payload duplication is not necessary.
+C03 establishes that native parser setup/decode may create a physical floor and that session reuse may amortize repeated work. That is an optimization witness, not a correctness requirement.
 
-## Why the pass is not the weaker session-materialization disposition
+## Persistent information that *is* mandatory where applicable
 
-C04 considered `C04_PASS__FULL_I03_FRONTIER_REQUIRES_REGENERABLE_SESSION_MATERIALIZATION`. That would require a named primitive whose exact execution cannot proceed from source + authority without first constructing a reusable session image. No such primitive exists in the frozen implementation/authority. A one-query executor can construct only the vectors/events/masks needed for that query and discard them afterward.
+The source-backed path must persist/reach information with independent authority:
+- exact raw source snapshot/retention identity and SHA;
+- exact source/native variable and respondent identity law;
+- semantic projection/binding authority;
+- topology/component/order/rank/multiplicity authority;
+- routing/risk-set rule or exact governed membership authority and replay closure;
+- weight/design/estimand authority;
+- source-universe relation/comparability/pooling authority;
+- predicate/query grammar authority;
+- ExactRef/replay/provenance receipts for published governed outputs.
 
-Native parser behavior can make this inefficient, and repeated-query workloads can make a session image strongly desirable. But C03/C05/C09 cost evidence, not I03 truth conditions, must decide whether such operational retention is required for acceptable throughput.
+If any of that information is absent and cannot be exactly reconstructed, the query fails closed. It is not filled by a permanent event table unless that table itself is merely a faithful governed representation of the already-authoritative information.
 
-## Real-source witness decision
+## Strongest anti-materialization witness
 
-No Library source was materialized. A fresh WVS7/LiTS decode was not materially necessary to distinguish permanent semantic necessity from regenerable execution state. Existing PRE553 authorities already bind exact source SHA/decoder law and contain accepted no-cache/cachless semantic evidence. No local-machine-only witness remains.
+Authority 56 requires every lawful frozen predicate to remain executable in no-cache mode and forbids a persistent query vocabulary/accelerator from becoming a correctness dependency. Authority 61 records an accepted bounded G7 court with zero persistent caches and frozen I03 fact identity. The full WVS7 later failed a physical carrier resource gate; Authority 63 explicitly did not reinterpret that as an I03/C11 semantic contradiction.
 
-**Mandatory permanent event carrier witness: NONE.**
+## Topology caveat
 
-**Mandatory session materialization witness: NONE.**
+Topology-general execution can require persistent **side material** where native SAV/DTA metadata does not uniquely determine semantic occurrence identity, component structure, multiplicity, order or rank. That side material is semantically necessary. It is not equivalent to persisting the full respondent/event payload table.
+
+## Exact NOT caveat
+
+A reusable full risk mask can be operationally attractive, but governed NOT requires the *information* defining the risk set and complete child predicate truth, not persistence of the mask. Recompute from exact routing/risk authority + source if the mask is absent.
+
+## Library/source execution
+
+No raw Library source was materialized because no additional source-byte witness was materially necessary for this exactness court. No local-machine follow-up is required.
