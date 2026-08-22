@@ -1,7 +1,7 @@
 {
   "campaign_id": "VC4-COMPILER/PERSISTENCE",
   "name": "VOZHD CHETIRI — COMPILER & PERSISTENCE ARCHITECTURE",
-  "status": "EXPLORATORY__NON_DISPOSITIVE__PRELAUNCH_RECONCILED__PREPARED_NOT_LAUNCHED__NO_ARCHITECTURE_REOPEN",
+  "status": "EXPLORATORY__NON_DISPOSITIVE__P0_RETURNED__G0_OPEN__SUPPLEMENTAL_P0_CLOSURE_REQUIRED__NO_ARCHITECTURE_REOPEN",
   "governing_question": "Which physical empirical representations are actually necessary to produce, serve, validate, replay and audit Rawlsing's complete learned world while preserving source authority and leaving V3-generated life downstream?",
   "domain_model": ["THE_PAST", "THE_LEARNED_WORLD_EMPIRICAL_SOCIAL", "THE_LEARNED_WORLD_STRUCTURAL", "THE_LIFE_V3"],
   "consumption_lifecycles": ["COMPILER_DISCOVERY_TIME", "GENERATED_PERSON_RUNTIME", "EMPIRICAL_INFERENCE_SERVICE", "DDM_ANALYTICAL_SERVICE", "AUDIT_REPLAY"],
@@ -19,7 +19,10 @@
     "18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md",
     "19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md",
     "20_CHETIRI_HQ_PRELAUNCH_CORRECTIVE_DISPOSITIONS.md",
-    "21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md"
+    "21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md",
+    "22_PHASE0_RETURN_INTAKE_AND_G0_PRELIMINARY_ADJUDICATION.md",
+    "23_C02R1_OCCURRENCE_TOPOLOGY_DERIVABILITY_PROOF_COURT.md",
+    "24_C07R1_TERMINAL_AUTHORITY_COMPLIANCE_CORRECTION.md"
   ],
   "candidate_families": {
     "A": "PERSISTENT_CANONICAL_EVENT_CARRIER",
@@ -44,30 +47,120 @@
     "WHOLE_MACHINE_CLOSURE"
   ],
   "phases": [
-    {"id":"P0","name":"COMPLETE_DESTINATION_AND_INFORMATION_NECESSITY","cells":["C01","C02","C06","C07"],"launch_mode":"PARALLEL_ALLOWED_INDEPENDENT_FIRST_RETURNS","requires":["PRELAUNCH_R01_R25_RECONCILED","CAMPAIGN_EXPLICIT_LAUNCH"],"closes_at":"G0_ARCHITECTURAL_FEASIBILITY"},
-    {"id":"P1A","name":"NATIVE_EXECUTION_TERRAIN","cells":["C03"],"launch_mode":"SERIAL_FIRST","requires":["G0_PASS"],"closes_at":"C03_ACCEPTED"},
-    {"id":"P1B","name":"QUERY_DISCOVERY_LEARNED_WORLD_OPERATIONS_FEASIBILITY","cells":["C04","C05","C08"],"launch_mode":"C04_C05_PARALLEL__C08_RECONCILES_BOTH","requires":["C01_ACCEPTED","C02_ACCEPTED","C03_ACCEPTED","C06_ACCEPTED","C07_ACCEPTED"],"closes_at":"G1_EXECUTION_FEASIBILITY"},
-    {"id":"P2","name":"PHYSICAL_AND_AUTONOMOUS_DISCOVERY_BAKEOFF","cells":["C09"],"launch_mode":"SERIAL","requires":["C01_C08_ACCEPTED","G1_CLOSED","HQ_C09_COURT_MANIFEST_FROZEN"],"special_block":"C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM","closes_at":"G2_MEASURED_BAKEOFF"},
-    {"id":"P3","name":"DUAL_HOSTILE_RED_TEAM","cells":["C10"],"launch_mode":"ENGINEERING_KILL_PLUS_ONTOLOGY_CAPABILITY_KILL","requires":["C09_ACCEPTED_OR_BLOCKING_EVIDENCE_ADJUDICATED","G2_PROVISIONAL_SYNTHESIS_CLOSED"],"closes_at":"G3_HOSTILE_SURVIVAL"},
-    {"id":"P4","name":"HQ_SYNTHESIS","cells":[],"owner":"VOZHD_CHETIRI_HQ_ONLY","requires":["G3_CLOSED"]}
+    {
+      "id": "P0",
+      "name": "COMPLETE_DESTINATION_AND_INFORMATION_NECESSITY",
+      "cells": ["C01", "C02", "C06", "C07"],
+      "state": "FIRST_RETURNS_COMPLETE__HQ_PRELIMINARY_INTAKE_COMPLETE",
+      "result": "G0_NOT_YET_CLOSABLE",
+      "closes_at": "P0S_SUPPLEMENTAL_CLOSURE"
+    },
+    {
+      "id": "P0S",
+      "name": "SUPPLEMENTAL_G0_CLOSURE",
+      "cells": ["C02R1", "C07R1"],
+      "launch_mode": "PARALLEL_ALLOWED",
+      "requires": ["HQ_22_PRELIMINARY_ADJUDICATION"],
+      "closes_at": "G0_ARCHITECTURAL_FEASIBILITY"
+    },
+    {"id":"P1A","name":"NATIVE_EXECUTION_TERRAIN","cells":["C03"],"state":"LOCKED","requires":["G0_PASS"],"closes_at":"C03_ACCEPTED"},
+    {"id":"P1B","name":"QUERY_DISCOVERY_LEARNED_WORLD_OPERATIONS_FEASIBILITY","cells":["C04","C05","C08"],"state":"LOCKED","launch_mode":"C04_C05_PARALLEL__C08_RECONCILES_BOTH","requires":["G0_PASS","C03_ACCEPTED"],"closes_at":"G1_EXECUTION_FEASIBILITY"},
+    {"id":"P2","name":"PHYSICAL_AND_AUTONOMOUS_DISCOVERY_BAKEOFF","cells":["C09"],"state":"LOCKED","requires":["G1_CLOSED","HQ_C09_COURT_MANIFEST_FROZEN"],"special_block":"C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM","closes_at":"G2_MEASURED_BAKEOFF"},
+    {"id":"P3","name":"DUAL_HOSTILE_RED_TEAM","cells":["C10"],"state":"LOCKED","requires":["G2_PROVISIONAL_SYNTHESIS_CLOSED"],"closes_at":"G3_HOSTILE_SURVIVAL"},
+    {"id":"P4","name":"HQ_SYNTHESIS","cells":[],"state":"LOCKED","owner":"VOZHD_CHETIRI_HQ_ONLY","requires":["G3_CLOSED"]}
   ],
   "cells": {
-    "C01":{"name":"COMPLETE_TERMINAL_CONSUMPTION_AND_LIFECYCLE_AUDIT","phase":"P0","worker_order":"WORKER_ORDERS/C01_TERMINAL_PRODUCT_V3_CONSUMPTION_AUDIT.md","amendment":"21","burden":"Inventory complete five-lifecycle consumers and distinguish empirical-social learned products, structural products, serving surfaces and replay without treating current V3 usage as terminal demand."},
-    "C02":{"name":"C11_AND_LEARNED_WORLD_INFORMATION_NECESSITY","phase":"P0","worker_order":"WORKER_ORDERS/C02_C11_DERIVABILITY_MINIMUM_PERSISTENCE.md","amendment":"21","burden":"Classify exact C11 and learned-world information requirements, including joint/multimodal/minority geometry, time/universe identity, validation state and possibility-field prerequisites."},
-    "C06":{"name":"REPLAY_EXACTREF_ADAPTIVE_DISCOVERY_INTEGRITY","phase":"P0","worker_order":"WORKER_ORDERS/C06_REPLAY_EXACTREF_INTEGRITY.md","amendment":"21","burden":"Determine minimum persistent replay/integrity/explanation material including executable decoder replay, search-completeness state and adaptive-discovery replay determinants."},
-    "C07":{"name":"COMPLETE_LEARNED_WORLD_PRODUCT_SERVICE_CONSTITUTION","phase":"P0","worker_order":"WORKER_ORDERS/C07_COMPILED_STRUCTURAL_SUBSTRATE_BOUNDARY.md","amendment":"21","burden":"Define complete learned-world empirical-social + structural product/service DAG, five lifecycle serving requirements and boundary to V3 life without inventing missing model authority."},
-    "C03":{"name":"NATIVE_SOURCE_EXECUTION_RECONNAISSANCE","phase":"P1A","worker_order":"WORKER_ORDERS/C03_NATIVE_SOURCE_EXECUTION_RECON.md","amendment":"21","burden":"Measure actual SAV/DTA open/decode/full-read/selectivity terrain and amortizable transient working sets."},
-    "C04":{"name":"I03_SOURCE_BACKED_EXECUTION","phase":"P1B","worker_order":"WORKER_ORDERS/C04_I03_SOURCE_BACKED_EXECUTION.md","amendment":"21","burden":"Prove exact I03 primitives and expose reusable access/mask costs without claiming autonomous-discovery feasibility."},
-    "C05":{"name":"AUTONOMOUS_DISCOVERY_AND_EMPIRICAL_LEARNED_WORLD_EXECUTION","phase":"P1B","worker_order":"WORKER_ORDERS/C05_I05_SOURCE_BACKED_DISCOVERY.md","amendment":"21","burden":"Locate/freeze or identify absence of autonomous search law; model adaptive search, scaling, blind fixtures, validation states, higher-order geometry, multi-universe execution and cache reachability."},
-    "C08":{"name":"INCREMENTAL_LEARNED_WORLD_BUILD_OPERATIONS","phase":"P1B","worker_order":"WORKER_ORDERS/C08_INCREMENTAL_BUILD_OPERATIONS.md","amendment":"21","burden":"Trace invalidation/rebuild across empirical learned products, serving indexes, structural admissions and provenance."},
-    "C09":{"name":"EXACT_PHYSICAL_AND_AUTONOMOUS_DISCOVERY_BAKEOFF","phase":"P2","worker_order":"WORKER_ORDERS/C09_EXACT_PHYSICAL_BAKEOFF.md","amendment":"21","burden":"Compare A/B/C on parity, primitives, full autonomous discovery if executable, blind fixtures, scaling, five lifecycles, learned-product serving and repeated cache regeneration."},
-    "C10":{"name":"DUAL_HOSTILE_SYNTHESIS_KILL_COURT","phase":"P3","worker_order":"WORKER_ORDERS/C10_HOSTILE_SYNTHESIS_KILL_COURT.md","amendment":"21","burden":"Attempt separate engineering and ontology-capability falsification against provisional synthesis."}
+    "C01": {
+      "name":"COMPLETE_TERMINAL_CONSUMPTION_AND_LIFECYCLE_AUDIT",
+      "phase":"P0",
+      "state":"ACCEPTED__NAMED_GAPS_CARRIED",
+      "accepted_head":"e88c34b141761ed0b55d66e3da60a03f6822926d",
+      "holding":"ORDINARY_V3_RUNTIME_DOES_NOT_REQUIRE_FULL_RESPONDENT_EVENT_INCIDENCE__OTHER_TERMINAL_LIFECYCLES_REMAIN_EMPIRICAL_CONSUMERS"
+    },
+    "C02": {
+      "name":"C11_AND_LEARNED_WORLD_INFORMATION_NECESSITY",
+      "phase":"P0",
+      "state":"BLOCKED__SUPPLEMENTAL_EXACT_PROOF_REQUIRED",
+      "return_head":"f952204d817cb961d2ef05d8b66fcf0b4940099f",
+      "blocking_witness":"M04_M05_EVENT_OCCURRENCE_TOPOLOGY_DERIVABILITY_UNPROVED",
+      "not_proved":["FULL_EVENT_CARRIER_REQUIRED","COMPLETE_SOURCE_BACKED_DERIVABILITY","SPARSE_EXCEPTION_MATERIAL_SUFFICIENT"]
+    },
+    "C06": {
+      "name":"REPLAY_EXACTREF_ADAPTIVE_DISCOVERY_INTEGRITY",
+      "phase":"P0",
+      "state":"ACCEPTED__NAMED_REPLAY_PREREQUISITES_CARRIED",
+      "accepted_head":"6fd91b6fb3d7087faaf971aecc9687bbd33fa00f",
+      "holding":"NO_IDENTITY_OR_INTEGRITY_LAW_PROVES_FULL_EVENT_PAYLOAD_IRREDUCIBLE__END_TO_END_SOURCE_BACKED_REPLAY_NOT_YET_CLOSED",
+      "u5":"SOURCE_TO_C11_EVENT_OCCURRENCE_IDENTITY_DERIVATION_NOT_CLOSED"
+    },
+    "C07": {
+      "name":"COMPLETE_LEARNED_WORLD_PRODUCT_SERVICE_CONSTITUTION",
+      "phase":"P0",
+      "state":"RETURNED_FOR_NARROW_AUTHORITY_COMPLIANCE_CORRECTION",
+      "admissible_independent_head":"a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d",
+      "later_head_quarantined":"35042be0a7b289c33335ddafbe7705ee1c4f0dbc",
+      "provisional_holding":"LEARNED_WORLD_IS_EMPIRICAL_SOCIAL_DAG_PLUS_STRUCTURAL_DAG_PLUS_SHARED_PROVENANCE_REPLAY__PAST_AUTHORITY__LIFE_V3"
+    },
+    "C02R1": {
+      "name":"M04_M05_OCCURRENCE_TOPOLOGY_DERIVABILITY_PROOF",
+      "phase":"P0S",
+      "state":"AUTHORIZED__READY_TO_LAUNCH",
+      "branch":"agent/vozhd-chetiri-c02r1-occurrence-topology-proof",
+      "order":"23_C02R1_OCCURRENCE_TOPOLOGY_DERIVABILITY_PROOF_COURT.md",
+      "burden":"Certify complete required occurrence/topology determinant scope or identify exact minimum nonderivable governed material without assumed sparsity."
+    },
+    "C07R1": {
+      "name":"TERMINAL_AUTHORITY_COMPLIANCE_CORRECTION",
+      "phase":"P0S",
+      "state":"AUTHORIZED__READY_TO_LAUNCH",
+      "branch":"agent/vozhd-chetiri-c07r1-terminal-authority-compliance",
+      "exact_base":"a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d",
+      "order":"24_C07R1_TERMINAL_AUTHORITY_COMPLIANCE_CORRECTION.md",
+      "burden":"Directly ground the independent learned-world DAG in mandatory Dva terminal authority without sibling returns."
+    },
+    "C03":{"name":"NATIVE_SOURCE_EXECUTION_RECONNAISSANCE","phase":"P1A","state":"LOCKED__G0_NOT_PASSED","worker_order":"WORKER_ORDERS/C03_NATIVE_SOURCE_EXECUTION_RECON.md"},
+    "C04":{"name":"I03_SOURCE_BACKED_EXECUTION","phase":"P1B","state":"LOCKED__G0_NOT_PASSED","worker_order":"WORKER_ORDERS/C04_I03_SOURCE_BACKED_EXECUTION.md"},
+    "C05":{"name":"AUTONOMOUS_DISCOVERY_AND_EMPIRICAL_LEARNED_WORLD_EXECUTION","phase":"P1B","state":"LOCKED__G0_NOT_PASSED","worker_order":"WORKER_ORDERS/C05_I05_SOURCE_BACKED_DISCOVERY.md"},
+    "C08":{"name":"INCREMENTAL_LEARNED_WORLD_BUILD_OPERATIONS","phase":"P1B","state":"LOCKED__G0_NOT_PASSED","worker_order":"WORKER_ORDERS/C08_INCREMENTAL_BUILD_OPERATIONS.md"},
+    "C09":{"name":"EXACT_PHYSICAL_AND_AUTONOMOUS_DISCOVERY_BAKEOFF","phase":"P2","state":"LOCKED__G1_NOT_PASSED","worker_order":"WORKER_ORDERS/C09_EXACT_PHYSICAL_BAKEOFF.md"},
+    "C10":{"name":"DUAL_HOSTILE_SYNTHESIS_KILL_COURT","phase":"P3","state":"LOCKED__G2_NOT_CLOSED","worker_order":"WORKER_ORDERS/C10_HOSTILE_SYNTHESIS_KILL_COURT.md"}
   },
-  "edges": [["C01","G0"],["C02","G0"],["C06","G0"],["C07","G0"],["G0","C03"],["C03","C04"],["C03","C05"],["C03","C08"],["C04","G1"],["C05","G1"],["C08","G1"],["G1","C09"],["C09","G2"],["G2","C10"],["C10","G3"],["G3","HQ_SYNTHESIS"]],
-  "mandatory_return_surfaces_every_cell": ["AUTHORITY_READ_RECEIPT","RETURN_MANIFEST","CHANGED_FILES","TRII_OBLIGATION_CROSSWALK_MATRIX","34_ROW_TERMINAL_VISION_CHECKSUM","PERSISTENCE_STARVATION_BLOAT_MATRIX","UNRESOLVED_EVIDENCE","CELL_SPECIFIC_OUTPUTS"],
+  "gates": {
+    "G0": {
+      "state":"OPEN__SUPPLEMENTAL_P0_CLOSURE_REQUIRED",
+      "required_next":["C02R1","C07R1"],
+      "pass_token":"G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_CANDIDATE",
+      "architecture_block_not_established":true
+    },
+    "G1":{"state":"LOCKED"},
+    "G2":{"state":"LOCKED"},
+    "G3":{"state":"LOCKED"}
+  },
+  "edges": [
+    ["C01","G0"],
+    ["C02","C02R1"],
+    ["C06","C02R1"],
+    ["C07","C07R1"],
+    ["C02R1","G0"],
+    ["C07R1","G0"],
+    ["G0","C03"],
+    ["C03","C04"],
+    ["C03","C05"],
+    ["C03","C08"],
+    ["C04","G1"],
+    ["C05","G1"],
+    ["C08","G1"],
+    ["G1","C09"],
+    ["C09","G2"],
+    ["G2","C10"],
+    ["C10","G3"],
+    ["G3","HQ_SYNTHESIS"]
+  ],
+  "mandatory_return_surfaces_every_cell": ["AUTHORITY_READ_RECEIPT","RETURN_MANIFEST","CHANGED_FILES","TRII_OBLIGATION_CROSSWALK_MATRIX_WHERE_APPLICABLE","34_ROW_TERMINAL_VISION_CHECKSUM","PERSISTENCE_STARVATION_BLOAT_MATRIX","UNRESOLVED_EVIDENCE","CELL_SPECIFIC_OUTPUTS"],
   "hard_stop_conditions": [
     "ANY_REQUIRED_SEMANTIC_WEAKENING",
     "ANY_C11_I03_I05_I04_CAPABILITY_LOSS",
+    "UNKNOWN_OCCURRENCE_TOPOLOGY_DETERMINANT_LAUNDERED_AS_DERIVABLE_OR_SPARSE",
     "AUTONOMOUS_DISCOVERY_REPLACED_BY_KNOWN_QUERY_ONLY",
     "PAIRWISE_SUMMARY_SUBSTITUTED_FOR_REQUIRED_JOINT_GEOMETRY",
     "DISCOVERY_CANDIDATE_LAUNDERED_AS_VALIDATED_KNOWLEDGE",
