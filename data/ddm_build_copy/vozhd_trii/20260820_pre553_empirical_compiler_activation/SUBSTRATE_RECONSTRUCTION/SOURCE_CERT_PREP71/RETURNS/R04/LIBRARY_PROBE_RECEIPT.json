@@ -1,0 +1,198 @@
+{
+  "accepted_evidence": {
+    "sr03_library_checkout_zip": {
+      "library_file_id": "file_000000004c10820da1a45513abc56ce5",
+      "sha256": "e58fd7cdd6e8587573e8cb94ca1df4cd8949cee5fdbc39042b739df6add1c232"
+    },
+    "sr09_pre_r04_commit": "ba99008aaabd396d7fbe64fad01c8440f266525d",
+    "sr09_pre_r04_result_json_blob": "c127a42499ea6ca2f48ae535adb38bb6ee5ade0d",
+    "sr09_pre_r10_commit": "267426e3b5f06473ffc9cee6075609874529ab77"
+  },
+  "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+  "certification_performed": false,
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R04_RETURNED",
+  "encoding_adjudication": {
+    "EVS 1999.sav": {
+      "compatibility_execution": "latin1 explicit physical compatibility only",
+      "default_reader": "governed accepted failure on invalid byte sequence",
+      "intended_encoding_declaration": "UTF-8_SOURCE_NATIVE_EXPLICIT",
+      "text_blocker": "source-native UTF-8 declaration is internally violated by exact malformed high-byte strings; no producer-authoritative field-level repair/alignment map located in Library/source-native materials"
+    },
+    "EVS 2008.sav": {
+      "compatibility_execution": "latin1 explicit physical compatibility only",
+      "default_reader": "governed accepted failure on invalid byte sequence",
+      "intended_encoding_declaration": "UTF-8_SOURCE_NATIVE_EXPLICIT",
+      "text_blocker": "source-native UTF-8 declaration is internally violated by exact malformed high-byte strings; no producer-authoritative field-level repair/alignment map located in Library/source-native materials"
+    }
+  },
+  "environment": {
+    "pyreadstat": "unavailable in current browser container; accepted SR03 manifests used; no substitute SAV reader used",
+    "python": "3.13.5"
+  },
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "external_official_document_search": {
+    "authority_use": "EXTERNAL_OFFICIAL_SUPPORTING_ONLY",
+    "findings": [
+      "GESIS wave pages identify ZA4438/ZA4460/ZA3811/ZA4800/ZA7500 and documentation families",
+      "ZA3811 v3.0.0 official variable metadata located",
+      "ZA4800 v5.0.0 official variable report located",
+      "EVS 2017 final-release page locates CAPI/CAWI, mixed-mode/matrix and weighting documentation",
+      "GESIS Technical Report DDI2 example uses ISO-8859-1 for ZA3811 XML export; explicitly NOT treated as SAV encoding authority"
+    ]
+  },
+  "extracted_sources": [
+    {
+      "sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+      "size_bytes": 11815613,
+      "source_file": "EVS 1981.sav",
+      "verified_before_probe": true
+    },
+    {
+      "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "size_bytes": 24341244,
+      "source_file": "EVS 1990.sav",
+      "verified_before_probe": true
+    },
+    {
+      "sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+      "size_bytes": 31857144,
+      "source_file": "EVS 1999.sav",
+      "verified_before_probe": true
+    },
+    {
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "size_bytes": 63832833,
+      "source_file": "EVS 2008.sav",
+      "verified_before_probe": true
+    },
+    {
+      "sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2",
+      "size_bytes": 53499063,
+      "source_file": "EVS 2017.sav",
+      "verified_before_probe": true
+    }
+  ],
+  "family": "EVS",
+  "fixture_counts": {
+    "EVS 1981.sav": 5,
+    "EVS 1990.sav": 5,
+    "EVS 1999.sav": 8,
+    "EVS 2008.sav": 9,
+    "EVS 2017.sav": 9
+  },
+  "fixture_total": 36,
+  "isolation": {
+    "database_touched": false,
+    "local_WVS70_process_touched": false,
+    "production_runtime_touched": false,
+    "writes_outside_R04": false
+  },
+  "library_document_search": [
+    {
+      "file": "final_codebooks(5).zip",
+      "finding": "derived EVS review surfaces only; no ZA source-native EVS questionnaire/codebook files",
+      "library_file_id": "file_000000003de8820c911e9ab7e73a9f1c",
+      "sha256": "36a09da6c9216cfdee96bf7dd33af48b5b18c7aeff8514f20e42af58d3fc4f5c"
+    },
+    {
+      "file": "Rawlsing_code_bundle_staging(9).zip",
+      "finding": "derived EVS CSV/ETL/structure surfaces; no ZA source-native EVS documentation",
+      "library_file_id": "file_00000000f92c81f79ae3d7bb8fb432f3",
+      "sha256": "953c9149bd03877206e3cb440d1f4db35dea6473af30b97fd23b7e76c6fc0086"
+    },
+    {
+      "file": "FINAL_V550J_LATEST_WORK_AND_RELATION_AUTHORITY_REVIEW(1).zip",
+      "finding": "no EVS/ZA documentary source files located",
+      "library_file_id": "file_00000000c46081f7b584f1e51be9ca3b",
+      "sha256": "d4072e51d3b5b5f0dd92dbf74e10e54318f7602d69c3d4c580620acb0d051c9f"
+    },
+    {
+      "file": "Rawlsing_35wave_question_relation_authority_completion_v1_20260729T170023Z(2).zip",
+      "finding": "derived authority package; no source-native EVS questionnaire/codebook files",
+      "library_file_id": "file_000000007988822f8c6404afdb194254",
+      "sha256": "b6ed5156877b91c9e591d3b28bf9d2606e5db9cb6bbdfdf233dfe99516b726a0"
+    }
+  ],
+  "non_dispositive": true,
+  "output_sha256": {
+    "AUTHORITY_GAPS.csv": "ba0443103c011edcb2ab3fdc2ceb5b876e2db9d13ac6a1306cdec699a49b8d50",
+    "CHANGED_FILES.txt": "77795d70003ecb202880512c2553fd93451bc48b966bc85b9cb70ad009cb5af5",
+    "DOCUMENTARY_AUTHORITY_MAP.csv": "b6a6a1c03ffa72f6e9f696991a58feae1e1423c093b759418ec8047f758c2a29",
+    "FAMILY_REUSE_AND_DRIFT.csv": "de8b1519b9ed56c7eb171e8eb86dac3d3c21fa2739af97de157d4f8c8aeb9116",
+    "FUTURE_EXECUTION_ORDER.md": "248325a6f95cf526a7f3b2c66b269512ae944a86108415563dfb7c6b0ef067a5",
+    "HOSTILE_FIXTURES.csv": "8807d186b64ec00e21d14c6dfa6f77ed4302a50c6c2a8152788d44df75df3d27",
+    "RESULT.json": "9695559c3d2cc5bde48d73cf7fce4d37d89ad47dffcb2111cb906fae5b4ee2f7",
+    "RESULT.md": "3cbedab77f5c764f59ad18325b51b6caee6994b5bd14869f393ebf4bc447ba10",
+    "SOURCE_CERTIFICATION_LEDGER.csv": "fe24b0a0893b7cbb90d4d8a336875913ecfc2d13f101720492bbd688719e330c"
+  },
+  "packet_dispositions": {
+    "EVS 1981.sav": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+    "EVS 1990.sav": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+    "EVS 1999.sav": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+    "EVS 2008.sav": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+    "EVS 2017.sav": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED"
+  },
+  "raw_byte_probe_scope": {
+    "full_cell_scans": false,
+    "reason": "Verify exact subtype-20/source-native encoding records and accepted malformed-byte hostile sentinels without rerunning SR03.",
+    "targeted_source_byte_probes": true
+  },
+  "raw_transport": {
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "name": "surveys.zip",
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "receipt_self_hash_policy": "LIBRARY_PROBE_RECEIPT.json self-hash excluded to avoid recursive content; all other nine required outputs are SHA-256 pinned here.",
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "SOURCE_CERTIFICATION_LEDGER.csv",
+    "HOSTILE_FIXTURES.csv",
+    "DOCUMENTARY_AUTHORITY_MAP.csv",
+    "AUTHORITY_GAPS.csv",
+    "FAMILY_REUSE_AND_DRIFT.csv",
+    "FUTURE_EXECUTION_ORDER.md",
+    "LIBRARY_PROBE_RECEIPT.json",
+    "CHANGED_FILES.txt"
+  ],
+  "source_native_encoding_probe": {
+    "EVS 1981.sav": {
+      "declared_encoding": "windows-1252",
+      "machine_character_code": 1252,
+      "machine_integer_subtype3_offset": 197324,
+      "string_offset": 1441361,
+      "subtype_20_record_offset": 1441345
+    },
+    "EVS 1990.sav": {
+      "declared_encoding": "windows-1252",
+      "machine_character_code": 1252,
+      "machine_integer_subtype3_offset": 1008036,
+      "string_offset": 2253800,
+      "subtype_20_record_offset": 2253784
+    },
+    "EVS 1999.sav": {
+      "declared_encoding": "UTF-8",
+      "machine_character_code": 65001,
+      "machine_integer_subtype3_offset": 301200,
+      "string_offset": 1551395,
+      "subtype_20_record_offset": 1551379
+    },
+    "EVS 2008.sav": {
+      "declared_encoding": "UTF-8",
+      "machine_character_code": 65001,
+      "machine_integer_subtype3_offset": 3597912,
+      "string_offset": 4848524,
+      "subtype_20_record_offset": 4848508
+    },
+    "EVS 2017.sav": {
+      "declared_encoding": "UTF-8",
+      "machine_character_code": 65001,
+      "machine_integer_subtype3_offset": 533036,
+      "string_offset": 1750810,
+      "subtype_20_record_offset": 1750794
+    }
+  },
+  "status": "PRE553_SOURCE_CERT_PREP71_R04_RETURNED",
+  "worker_id": "SOURCE-CERT-PREP71-R04"
+}
