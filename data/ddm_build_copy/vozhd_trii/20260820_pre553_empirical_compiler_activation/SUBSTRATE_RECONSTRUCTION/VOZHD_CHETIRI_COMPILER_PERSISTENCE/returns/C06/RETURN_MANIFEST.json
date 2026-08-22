@@ -4,17 +4,18 @@
   "branch": "agent/vozhd-chetiri-c06-replay-integrity",
   "start_sha": "1f52af175f699fd9427265715fd22277833a8460",
   "return_sha": "GIT_SELF_REFERENCE__RESOLVE_AS_BRANCH_HEAD_AT_RETURN",
-  "return_sha_note": "A Git commit cannot contain its own SHA without changing that SHA; HQ resolves this field as the exact branch HEAD reported with this return.",
+  "return_sha_note": "The exact return SHA is the externally reported final worker-branch HEAD. A commit cannot contain its own SHA without changing that SHA; this explicit marker avoids asserting a false self-hash.",
   "status": "RETURNED",
   "independence": {"c01_c02_c07_conclusions_read": false},
   "authorities_read_receipt": "AUTHORITY_READ_RECEIPT.md",
   "material_reconciliation_items": ["R08", "R12", "R13", "R14", "R16", "R18", "R20", "R23", "R25"],
-  "trii_crosswalk": {"file": "TRII_OBLIGATION_CROSSWALK_MATRIX.csv", "rows": 24, "unresolved_rows": 4},
+  "trii_crosswalk": {"file": "TRII_OBLIGATION_CROSSWALK_MATRIX.csv", "rows": 25, "unresolved_rows": 5},
   "source_files_probed": [],
   "runtime_files_modified": [],
   "runtime_files_inspected": [
     "rawlsing_next/pre553_empirical_objects.py",
     "rawlsing_next/pre553_c11_integrity.py",
+    "rawlsing_next/pre553_c11_ingest.py",
     "rawlsing_next/pre553_c11_repository.py",
     "rawlsing_next/pre553_discovery_exact.py",
     "rawlsing_next/pre553_replay_audit.py",
@@ -45,11 +46,17 @@
     "starvation_or_leakage_rows": []
   },
   "unresolved_evidence": [
+    "source-to-C11 event-occurrence identity derivation/replay binding",
     "adaptive discovery authority",
     "durable executable decoder closure",
     "empirical validation/model-selection authority",
     "carrier-neutral completeness receipt authority"
   ],
+  "post_return_hostile_qa": {
+    "performed": true,
+    "new_finding": "U5_SOURCE_TO_C11_EVENT_OCCURRENCE_DERIVATION_NOT_PROVEN_CLOSED",
+    "headline_disposition_changed": false
+  },
   "final_disposition": "C06_RETURN__NAMED_EVIDENCE_REQUIRED",
   "stop_token": "VC4_C06_RETURNED"
 }
