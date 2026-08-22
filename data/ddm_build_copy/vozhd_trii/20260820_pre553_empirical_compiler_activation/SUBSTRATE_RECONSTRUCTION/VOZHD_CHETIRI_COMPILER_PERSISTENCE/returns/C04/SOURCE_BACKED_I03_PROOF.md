@@ -1,147 +1,394 @@
-# C04 — SOURCE-BACKED I03 PROOF
+# C04 SOURCE-BACKED I03 PROOF
 
-## Verdict
+Court: `VOZHD CHETIRI / C04 / I03 SOURCE-BACKED EXECUTION`  
+Repository: `maidiu/rawlsing`  
+Worker branch: `agent/vozhd-chetiri-c04-i03-source-backed`  
+Exact start SHA: `80915554c819e8c0da5f8ac3fda1592f7843881f`  
+Disposition: `C04_PASS__FULL_I03_FRONTIER_SOURCE_BACKED_EXECUTABLE`
 
-**Disposition:** `C04_PASS__FULL_I03_FRONTIER_SOURCE_BACKED_EXECUTABLE`
+## Holding
 
-Every frozen I03 logical/public primitive can execute exactly through a carrier-neutral, source-backed C11 interface without an authoritative permanent full respondent/event payload table. Exact source bytes and governed authority remain primary; decoded frames, vectors, respondent masks, event lists, Arrow/DuckDB images, or similar working representations may be created transiently or retained only as regenerable operational state.
+**Yes. Every frozen I03 logical/public primitive can execute exactly through a carrier-neutral source-backed C11 interface without making a permanent full respondent/event payload table authoritative or correctness-required.**
 
-This is an I03 exactness/executability holding. It does **not** select physical architecture A/B/C, prove I05 autonomous-discovery tractability, determine learned-product persistence, or authorize any semantic change.
+The exact source snapshot remains primary source truth. Exact semantic/topology/routing/weight/source-relation authority and replay/provenance material remain governed persistent information where their meaning is not exactly derivable from the source alone. Query-local decoded rows, event gathers, respondent-aligned vectors/masks, Arrow/DuckDB images, and even a whole-wave session image may be useful execution state, but they are not required semantic authority and are not a correctness prerequisite.
 
-## 1. Strongest governing witness
+This is the first C04 disposition, not the session-materialization disposition, because accepted law requires a cacheless/no-cache path for every lawful frozen predicate and the present evidence does not show that a regenerable session image is mandatory for exact execution. It may be operationally valuable for repeated workloads; that is a later cost/architecture question.
 
-PRE553 Authority 56 requires every lawful frozen predicate to remain executable in **no-cache mode**, permits a no-cache canonical scan to be slow, and forbids a persistent accelerator/query vocabulary from becoming a correctness dependency. PRE553 Authority 61 then records accepted bounded G7 evidence with **zero persistent caches** and frozen I03 fact identity (along with I05/I04 identity). Authorities 59–68 preserve the semantic contract while changing or testing physical representation. Authority 63 explicitly adjudicates the WVS7 full-source failure as a physical/resource failure rather than an I03/C11 semantic contradiction. Authority 68 freezes source/decoder/C11/I03/I05/I04 semantics and creates no C04 semantic delta.
+## 1. Court boundary
 
-Therefore a permanent event carrier may be useful or even later judged operationally desirable, but it is not required by frozen I03 truth conditions.
+C04 answers primitive exactness and access feasibility. It does **not**:
+- select persistent/source-backed/hybrid architecture A/B/C;
+- prove autonomous I05 discovery-program tractability;
+- change C11 M01–M18, I03 truth conditions, decoder law, routing law, topology law, weight/design law, or source semantics;
+- infer learned empirical relations from raw incidence;
+- assign survey evidence to generated actor state;
+- launch C09.
 
-## 2. Exact source-backed C11 seam
+Authority 68 is acknowledged. Its launch-time function is a fast recertification of a physical R5 V4 audit optimization. It explicitly freezes source/decoder law, C11 M01–M18, I03/I05/I04 truth conditions and downstream semantics; therefore it creates **no semantic delta for this court** and cannot be used to promote R5's carrier representation into I03 law.
 
-`rawlsing_next/pre553_physical_c11_bridge.py` describes a non-semantic physical-incidence bridge. It requires caller-supplied exact source authority and refuses to infer field meaning. The candidate source artifact hash and retained source snapshot hash must equal the physical source SHA, and required authority refs must be packaged and declared before C11 validation.
+## 2. Branch/start verification
 
-The lawful source-backed seam is consequently:
+Before substantive reasoning, the worker branch was compared against the exact assigned start SHA. GitHub reported:
+- base: `80915554c819e8c0da5f8ac3fda1592f7843881f`;
+- head: `agent/vozhd-chetiri-c04-i03-source-backed`;
+- status: `identical`;
+- ahead: `0`;
+- behind: `0`.
 
-`EXACT SOURCE BYTES -> FROZEN DECODER -> PHYSICAL/NATIVE INCIDENCE -> EXPLICIT GOVERNED SOURCE-AUTHORITY PROJECTION -> C11 LOGICAL VIEW -> FROZEN I03`
+The court therefore began from the exact launch state.
 
-A transient decoded representation is implementation state inside that path, not a second semantic owner.
+## 3. Frozen I03 public/logical frontier
 
-## 3. What must remain persistently knowable
+The frozen public surface is the exact query executor/replayer over:
+- exact C11 logical release(s);
+- `EmpiricalPredicate`;
+- `EmpiricalQuerySpec`;
+- exact authority registry.
 
-I03 correctness requires persistent reachability of information, not one particular event-table layout. The irreducible information set is:
+There are not separate public Python functions named "two-way conjunction", "subgroup comparison", "cotravel", etc. Those are **governed query shapes** of the same exact executor. C04 does not invent new opcodes.
 
-- exact immutable source snapshot identity/bytes;
-- exact empirical-universe and respondent-namespace identity;
-- source-native respondent identity/key reconstruction law;
-- question/variable bindings;
-- semantic response-state authority;
-- topology, multiplicity, order, rank, component/subitem authority;
-- routing, applicability, and risk-set authority or exact rules;
-- coordinate semantics;
-- weight source, design, estimand, and normalization/recalibration authority where governed;
-- source-universe relation/comparability/nonduplication/pooling authority where a cross-source operation is requested;
-- exact target-domain authority where a complete domain is asserted;
-- exact authority snapshots, source roots, replay protocol, deterministic ordering rules, provenance and integrity receipts.
+The complete C04 frontier is represented in `I03_OPERATION_ACCESS_MATRIX.csv` and includes:
+1. respondent enumeration;
+2. coordinate `EQ`;
+3. coordinate `IN`;
+4. coordinate `STATE_EQ`;
+5. survey-response `EQ`;
+6. survey-response `IN`;
+7. survey-response `STATE_EQ`;
+8. routing-state predicate;
+9. typed-response-state predicate;
+10. branch-cohort membership;
+11. recursive `AND`;
+12. recursive `OR`;
+13. governed `NOT`;
+14. univariate distribution;
+15. two-way same-respondent joint distribution;
+16. three-way joint distribution;
+17. five-way/arbitrary-arity joint distribution;
+18. conditional distribution;
+19. subgroup comparison as exact conditioned-query facts;
+20. same-respondent response/response and response/position cotravel query shapes;
+21. routed/applicable denominator construction;
+22. governed weighted/design-correct estimands;
+23. typed negative/refutation result construction;
+24. source-indexed multi-universe execution;
+25. authorized composite execution;
+26. topology-general zero/one/many event gathering;
+27. complete-domain zero-cell construction;
+28. exact provenance/ExactRef/replay emission;
+29. exact-release resolution with no latest/default/fuzzy fallback.
 
-None of those requirements implies permanent duplication of every respondent/event payload already recoverable from exact source bytes under the frozen decoder and authorities.
+The accepted hostile frontier tests cover the binding loss modes: XOR with zero unary signal, Simpson reversal, same marginals/different joint, response×position conjunction, same-respondent cotravel, routing asymmetry, authorized weighting, observed zero versus zero support, MISSING/DK/REFUSAL/IAP/NOT_ASKED noncollapse, source disagreement/noncomparability, ordered/ranked/repeated topology, and higher-order joint parity.
 
-## 4. Predicate frontier
+## 4. Source-backed sufficiency theorem
 
-The frozen predicate evaluator can be source-backed by constructing respondent-aligned transient masks/vectors from only the leaves required by a query. Equality, membership and typed-state leaves read the governed target material. Recursive AND/OR combine leaf truth states. The complete access mapping is in `I03_OPERATION_ACCESS_MATRIX.csv`.
+For any frozen executable I03 query, exact execution requires the following **information**, not any particular permanent physical representation.
 
-### Governed NOT
+### 4.1 Primary source truth
+The source-backed interface must retain or reach:
+- exact source artifact identity and SHA-256;
+- exact source snapshot/release identity;
+- source-native row ordinal/respondent identity material;
+- native variable/question identity and ordering;
+- raw typed values;
+- native physical missing declarations/state material;
+- source-native topology metadata where present.
 
-`NOT` is **not** physical row complement. The source-backed executor must first construct the exact governed respondent/risk-set universe, including routing/applicability. It then negates the child predicate under the frozen predicate grammar within that universe. Missing, routing-unknown, unavailable, or otherwise typed non-true states do not become positive evidence merely because a raw row did not match.
+The source is not permitted to acquire semantics it does not contain.
 
-Thus:
+### 4.2 Exact governed semantic side material
+Where not exactly derivable from immutable source bytes alone, the source-backed interface must retain/reach:
+- native↔canonical question/coordinate bindings;
+- semantic projection authority;
+- topology/component/subitem/multiplicity/order/rank authority;
+- routing/risk-set rules or exact governed membership facts plus replay closure;
+- weight source, weight basis, design and estimand authority;
+- source-universe relation/comparability/pooling/nonduplication authority;
+- predicate grammar/query authority;
+- replay protocol, deterministic ordering and provenance authority.
 
-`governed NOT = exact governed eligible/applicable universe - child TRUE set, subject to frozen typed-state semantics`
+These are not a "full event payload table." They are the independent semantic law needed to interpret source truth exactly.
 
-not:
+### 4.3 Query-local execution state
+A lawful executor may build, stream, or cache:
+- respondent refs;
+- respondent-aligned coordinate/response/routing/weight vectors;
+- exact predicate masks;
+- target event gathers;
+- risk-member and denominator masks;
+- joint cell accumulators;
+- deterministic authority/dependency/provenance ref sets;
+- a decoded frame or wave image.
 
-`all physical rows - matching physical rows`.
+All of this can be regenerated from the pinned source plus the governed side material. Therefore it is `TRANSIENT_COMPILER_STATE` or, if retained, `PERSIST_REGENERABLE_CACHE_OPTIONAL` / operationally retained regenerable representation. Its physical schema cannot define I03's semantic vocabulary.
 
-This can require complete denominator enumeration. It still requires no permanent event table.
+## 5. Why a permanent full event carrier is not required
 
-## 5. Distributions and same-respondent joint structure
+The present in-memory implementation constructs a release index containing respondents and respondent-grouped events/coordinates/routing/weights. That establishes one execution strategy, not an epistemic requirement.
 
-Univariate, conditional, subgroup, 2-way, 3-way, 5-way and pair-cotravel operations require exact same-respondent incidence, not precomputed marginals. A source-backed executor can obtain this by decoding the required target/conditioner columns or components plus respondent identity and routing determinants into a query/session working set.
+The carrier-neutral proof is constructive:
+1. resolve exact release/source scope;
+2. verify the source snapshot;
+3. obtain exact respondent identities from the source/universe identity rule;
+4. resolve the query's exact predicate, target, routing, topology, weight and source-relation authority;
+5. request/scan only the source-native projections implicated by those semantics, subject to the native parser's physical setup/decode floor;
+6. for each scoped respondent, construct exact routing/risk membership;
+7. evaluate the recursive predicate using exact source-backed semantic projections;
+8. gather each target according to its governed 0/1/many topology;
+9. apply exact weight/design law if requested;
+10. accumulate complete-domain cells and exact support/member identities;
+11. emit the same EmpiricalFact and query replay identity as the accepted executor.
 
-The hostile I03 frontier proves why this information cannot be weakened:
+A decoder may internally materialize a frame, and repeated queries may rationally reuse a wave image. Neither changes the information theorem. Deleting such a working set increases cost; it does not remove lawful I03 reachability.
 
-- XOR can have zero unary signal while retaining exact same-respondent joint structure;
-- equal marginals can hide different joints;
-- Simpson reversal requires pooled and conditioned facts to remain distinct;
-- response×position conjunction and response×response cotravel require one scoped respondent;
-- routing asymmetry requires exact common member identity;
-- higher-order bounded joint cells cannot be synthesized from unary/pairwise summaries.
+## 6. Governing proof for NOT
 
-The source bytes contain the respondent-grain evidence. Exact transient co-indexing reconstructs the required logical incidence without granting that transient image semantic authority.
+This is the critical noncollapse.
 
-## 6. Routing/applicability and exact denominators
+For each exact source universe:
 
-The denominator is governed, not inferred from source-cell presence. Routing/applicability facts or exact rules must determine membership. Missing routing authority fails closed. Equal denominator counts with different member identities remain different facts. All-inapplicable is `NOT_APPLICABLE`; a lawful common-risk-set with no overlap is `ZERO_OVERLAP`; neither is generic zero support.
+`GOVERNED NOT(P) = { r in RISK_SET : P(r) is exactly false }`
 
-A reusable routing mask is a natural session working set, but deletion of that mask changes cost only because exact membership can be regenerated from source + routing authority.
+It is **not**:
 
-## 7. Typed negatives and special states
+`PHYSICAL_ROWS - ROWS_WITH_MATCHING_SOURCE_CELL`
 
-Physical missingness is not semantic MISSING/DK/REFUSAL/IAP/NOT_ASKED without authority. Conversely, once exact authority maps source evidence to those states, I03 must preserve them as first-class typed cells/states.
+The lawful execution order is:
+1. construct the exact governed respondent universe;
+2. resolve exact routing/applicability/risk membership;
+3. for each admitted respondent, evaluate the child predicate under complete semantic/topology projection;
+4. negate only an exact child boolean result.
 
-Observed zero, zero support, valid empty domain, not applicable, unavailable, unresolved, noncomparable and integrity failure are distinct. A no-result caused by interrupted/incomplete execution cannot be promoted to a proved empirical negative.
+Consequences:
+- missing routing fact/rule is unavailable, not nonmembership;
+- `ROUTING_UNKNOWN`/`RULE_UNAVAILABLE` is not false;
+- an absent physical source cell is not automatically a false semantic occurrence;
+- MISSING/DK/REFUSAL/IAP/NOT_ASKED remain typed;
+- a 0-event gather may count as child false only when the exact source/topology projection proves event-gather completeness for that respondent/question;
+- partial decode, failed chunk, absent cache, or interrupted scan cannot produce a governed negative.
 
-## 8. Weights/design
+The exact risk-member and denominator-member refs are themselves part of the result/replay identity. Equal denominator counts with different member sets therefore do not collapse.
 
-Governed weighted estimands require exact denominator membership plus exact respondent weights and positive weight/design/estimand authority. Missing or invalid weight information fails closed; there is no default weight of one. Raw and governed-weighted facts therefore remain distinct exact facts even over the same respondents.
+## 7. Equality, membership and typed-state predicates
 
-Source-backed execution simply adds the governed weight vector to the transient working set when requested.
+Coordinate and response equality/membership are source-backable because their logical inputs name exact coordinates/questions, exact values/value sets and exact semantic authority.
 
-## 9. Topology-general zero/one/many events
+They do not authorize:
+- fuzzy value matching;
+- latest/default canonical mapping;
+- physical missing→semantic DK/refusal/IAP inference;
+- one source cell→one semantic event assumption.
 
-The source-backed seam must gather all physical/native material backing a logical target and apply the exact topology authority. It may not assume one source cell equals one semantic event. Scalar, componentized, multiselect, ordered, ranked and repeated-event targets preserve deterministic event identity, event groups, multiplicity/order/rank and typed state.
+`STATE_EQ` and the typed-response predicate require governed state projection. This is precisely why source-backed execution needs semantic side authority, but not a permanent event payload table.
 
-For a respondent/question there may be zero, one or many governed events. A query-local `respondent -> event-list` mapping is sufficient execution state and can be discarded after use. Unsupported topology remains typed `UNRESOLVED`, not collapsed to scalar convenience.
+## 8. Recursive AND/OR
 
-## 10. Multi-universe operations
+`AND` and `OR` operate on child predicate truths for the **same scoped respondent** after the governed risk universe is established. A source-backed executor may safely reuse respondent-aligned masks/vectors across many queries when the cache key binds every determinant:
+- exact source/release/universe;
+- exact question/coordinate refs;
+- exact semantic/topology/routing authorities;
+- exact predicate leaf;
+- exact risk-set scope.
 
-`SOURCE_INDEXED_MULTI_UNIVERSE` is source-backed by independent exact execution against each named release/universe. No respondent cross-join, `latest` resolution, fuzzy lookup or naive pooling is lawful. Disagreement among sources remains information.
+Mask reuse is an optimization. Stale/mismatched masks must fail closed. The finite set of cached masks may never become the finite set of lawful predicates.
 
-An authorized composite requires explicit positive source-relation/comparability/nonduplication/pooling/estimand authority. Without that bundle, the frozen result is `NONCOMPARABLE`. No permanent event carrier can lawfully supply missing comparability authority.
+## 9. Distribution, conditional and subgroup queries
 
-## 11. ExactRef/provenance oracle
+Univariate and conditional distributions require:
+- exact denominator identity;
+- exact target domain/topology;
+- exact target gathers;
+- exact zero-cell completion;
+- exact measure identity.
 
-Source-backed execution must reproduce the accepted logical result, not merely counts. The parity oracle includes:
+A subgroup comparison is not a new semantic primitive that authorizes causal interpretation. It is a comparison of separately exact conditioned I03 facts. Simpson-reversal tests prove why pooled and conditioned facts must retain distinct identity.
 
-- exact query and predicate identity;
-- exact C11 release/source universe refs;
-- exact authority closure;
-- exact risk-set and denominator member refs;
-- target topology/domain and complete-cell semantic projection;
-- measure kind and weight/design identity;
-- typed result/failure state;
-- deterministic canonical serialization/content hash/ExactRef;
-- replay protocol and source snapshot lineage.
+## 10. Two-, three-, five-way and arbitrary-arity joint structure
 
-Storage-order permutation tests show logical identity is independent of benign storage ordering, while tampered query/predicate/replay references fail closed.
+The accepted target engine is arity-general. A source-backed executor reads all named target projections for the same respondent and constructs the exact joint contribution. It cannot substitute unary or pairwise marginals.
 
-## 12. Worst-case access and session materialization
+This preserves:
+- two-way joint incidence;
+- three-way parity/interactions;
+- five-way/arbitrary bounded conjunctions;
+- complete joint domains including supported zero cells;
+- minority/multimodal/contradictory configurations insofar as those are present in exact I03 query results.
 
-Worst-case I03 queries can require a broad pass over a complete governed respondent universe, multiple target/conditioner columns, routing determinants, topology components, repeated events and weights. Native SAV/DTA parsers may also impose a source-open/full-read floor even for narrow logical selections.
+Domain explosion may be operationally expensive. That is not a proof that an authoritative persistent event table is semantically necessary.
 
-That supports an engineering case for a **regenerable session materialization** (decoded wave image, Arrow table, vectors/bitmaps, etc.) when many queries are issued in one session. It does not establish that such a session image is mandatory for correctness, and C04 found no primitive whose logical result is unreachable without it. Therefore the stronger disposition `...SOURCE_BACKED_EXECUTABLE`, rather than `...REQUIRES_REGENERABLE_SESSION_MATERIALIZATION`, is warranted.
+## 11. Pair cotravel owned by I03
 
-C04 reports mask/vector reuse opportunities for C05 but makes no claim about I05 discovery-program throughput.
+The hostile frontier proves same-respondent response/response and response/position cotravel through exact I03 predicates and target queries. The source-backed path preserves the scoped respondent identity and reads all implicated source projections.
 
-## 13. Real-source execution decision
+Pair cotravel remains only an exact empirical query result. It is **not** silently promoted to:
+- a discovered/validated empirical relation;
+- a causal relation;
+- a structural prior;
+- a generated actor state;
+- proof that pairwise information is sufficient for higher-order learned-world geometry.
 
-No SAV/DTA Library binary was materialized in this court. This was deliberate, not an environment failure. Exact full-source decoder/source-identity and cacheless semantic evidence is already governed by Authorities 56–68, including accepted real-source/candidate courts. The unresolved C04 question was whether any I03 semantic primitive requires information that exists only in a permanent event carrier. Code, authority and hostile logical oracles answer that question without another byte-level decode.
+## 12. Routed/applicable denominator handling
 
-A new source run would measure physical cost, not alter the logical derivability holding. C03 owns native reader reconnaissance; C09 owns comparative physical performance. There is therefore no narrow local-machine follow-up required by C04.
+Routing/applicability is an independent semantic determinant. The C11/source-backed interface must either:
+- replay an exact governed routing rule against the exact required source columns; or
+- use exact governed routing membership facts with their authority/replay closure.
 
-## 14. Hostile self-review
+It may not infer routing from whether a response is physically present.
 
-Strongest objection: broad recursive/joint/topology queries may make repeated source decoding operationally expensive enough that a retained wave image becomes practically necessary.
+The exact nonmember states and unresolved states stay distinct. This preserves zero-overlap, not-applicable and zero-support distinctions and makes governed NOT executable without row-complement collapse.
 
-Disposition of objection: valid engineering concern, but not a correctness/persistence proof. Authority expressly separates operational retention from epistemic authority. A warm representation may later earn `OPERATIONALLY_RETAINED_REGENERABLE_REPRESENTATION`; its absence must change cost, not I03 reachability. C04 found no frozen primitive or typed-negative state that contradicts this.
+## 13. Weight/design-correct estimands
 
-## Conclusion
+`GOVERNED_WEIGHTED` remains source-backable if the interface can reach:
+- exact weight material;
+- weight basis;
+- weight state;
+- weight source;
+- design authority;
+- estimand authority;
+- normalization/recalibration rule if governed.
 
-The complete frozen I03 frontier is information-demanding but not event-table-authority-demanding. Exact source truth plus governed authority/sidecars and replay material is sufficient to reconstruct every I03 input at query time; respondent-aligned working sets may be transient or regenerable. Permanent full respondent/event payload materialization therefore does not earn semantic necessity from I03.
+There must be exactly one authorized weight for each denominator member. Missing/invalid/not-authorized weight does not default to one and does not fall back to RAW. It yields the exact typed measure failure.
+
+Again, this requires governed information, not a full persistent event payload carrier.
+
+## 14. Topology-general 0/1/many event gathering
+
+A source-backed C11 projection must treat response topology as semantic authority, not as a shape guessed from physical storage.
+
+For each respondent/question:
+- **zero** governed events is meaningful only under complete source/topology projection;
+- **one** event is scalar/singular only when topology authority says so;
+- **many** events preserve set semantics, ordering, rank, component identity, repeated event identity, multiplicity and deterministic order fields as governed.
+
+If the source's native format does not itself contain enough topology meaning, the missing topology information must persist as governed side material. This is the strongest named persistent side requirement C04 finds. It does not entail permanent persistence of every respondent event payload.
+
+## 15. Source-indexed multi-universe and composite execution
+
+`SOURCE_INDEXED_MULTI_UNIVERSE` evaluates each exact source universe independently. It preserves:
+- source family/release/wave/time;
+- respondent namespace;
+- question/topology/measurement identity;
+- risk-set identity;
+- disagreement;
+- noncomparability.
+
+It forbids false cross-source respondent joins and implicit pooling.
+
+`AUTHORIZED_COMPOSITE` additionally requires exact positive operation-specific source-relation/comparability/nonduplication/estimand-composition authority. If that bundle is missing, the exact result is noncomparable/unresolved rather than a pooled estimate.
+
+No mutable `latest` selector is lawful.
+
+## 16. Exact negatives, zeroes and refutations
+
+The source-backed path can reproduce all frozen I03 negative/result states because those states are functions of:
+- exact source truth;
+- exact completeness of the governed query frontier;
+- exact routing/risk membership;
+- exact topology;
+- exact target domain;
+- exact measure authority.
+
+It preserves at least:
+- supported positive;
+- `OBSERVED_ZERO_IN_SUPPORTED_RISK_SET`;
+- `ZERO_SUPPORT`;
+- `ZERO_OVERLAP`;
+- `NOT_APPLICABLE`;
+- `VALID_EMPTY`;
+- `NONCOMPARABLE`;
+- `UNAVAILABLE`;
+- `UNRESOLVED`;
+- `INTEGRITY_FAILURE`;
+- measure/routing/source-scope failure states.
+
+A failed or partial source execution is not a refutation. C04 also does not infer an I05 `COMPLETE_AUTHORIZED_SEARCH__NO_RELATION` from an I03 zero/negative.
+
+## 17. ExactRef and provenance oracle
+
+The accepted I03 replay identity binds, among other determinants:
+- exact query ref;
+- exact predicate ref;
+- release/replay refs;
+- source scope mode;
+- measure kind;
+- risk-set type;
+- target-domain identity;
+- exact risk-member refs;
+- exact denominator-member refs;
+- complete target cell semantic projection.
+
+EmpiricalFact provenance additionally retains exact source/release/universe and used object/authority refs. Replay reruns the exact query and compares exact fact refs. Storage-order permutation is accepted only when semantic identity is unchanged; tampered query/predicate/replay refs fail closed.
+
+A source-backed executor therefore has an exact parity oracle that is independent of its physical working-set layout.
+
+## 18. Strongest execution witnesses already in authority
+
+The strongest governing witness is Authority 56:
+- every lawful frozen predicate must remain executable in no-cache mode;
+- a no-cache canonical scan may be slow;
+- a persistent query vocabulary/accelerator cannot become a correctness dependency.
+
+Authority 61 then records an accepted bounded court in which:
+- `persistent_cache_count = 0`;
+- frozen I03 fact identity passed;
+- frozen I05 coverage/receipt identity passed;
+- frozen I04 identity passed;
+- exact-negative fail-closed and integrity behavior passed.
+
+Authority 63 later adjudicates the full WVS7 failure as a **physical representation/resource failure**, not an I03/C11 semantic contradiction. Authorities 64–68 alter/recertify physical carrier mechanics while freezing I03 semantics.
+
+Together with the current carrier-neutral physical C11 bridge—which explicitly requires caller-owned exact source-authority projection and refuses semantic inference—these witnesses establish the exact distinction C04 is required to police.
+
+## 19. Worst-case access and materialization conclusion
+
+Worst-case no-cache I03 access can be expensive:
+- open/parse every named source universe;
+- enumerate every respondent;
+- scan every source column/structure needed by predicate, routing, target and weight;
+- gather all governed events for repeated/MR/componentized topologies;
+- retain/stream exact member identities;
+- complete a large joint target domain.
+
+C03 already established that selected-column APIs may hide parser/setup/full-read work and that a transient decoded wave image can amortize repeated operations.
+
+C04's conclusion is therefore deliberately narrow:
+
+**A regenerable session image may be operationally useful, but no current I03 truth condition requires it as a correctness prerequisite.**
+
+If later C05/C09 demonstrates that repeated discovery or service throughput is unacceptable without operational retention, that may justify a regenerable retained representation. It still would not become primary empirical authority merely because it is warm.
+
+## 20. Raw-source/Library execution decision
+
+No SAV/DTA Library file was materialized by C04.
+
+Reason: no additional raw-source parity witness was materially necessary to answer the governing semantic/execution question. The exact launch authorities already include governed real-source decoder/source-access evidence and an accepted zero-persistent-cache I03 identity court; the current I03 implementation/tests establish the frozen logical oracle. A fresh raw byte scan could measure another physical cost point, but it could not decide the central NOT/routing/topology/weight/source-relation question, which depends on governed semantic authority.
+
+Therefore:
+- Library filename/file identity: `NONE`;
+- raw SHA verification: `NOT_PERFORMED__NOT_MATERIALLY_REQUIRED`;
+- decoder invocation: `NONE`;
+- scratch: `NONE`;
+- local-machine fallback: `NOT_REQUIRED`.
+
+## 21. Hostile self-review
+
+Strongest surviving objection:
+
+> Today's accepted implementation builds an in-memory `_ReleaseIndex`, and native SAV/DTA parsers may impose a large full-read/setup floor. Does that make a full wave image mandatory?
+
+Answer: **No for C04 correctness.** `_ReleaseIndex` is current implementation terrain. Authority 56 independently requires a no-cache path for every lawful predicate, while C03 classifies parser/full-read behavior as physical execution terrain. A full transient/session image can reduce repeated cost but does not supply any semantic fact absent from source+authority. C04 therefore cannot lawfully convert an optimization pressure into an authoritative persistence requirement.
+
+Other hostile checks:
+- non-WVS/LiTS variation: proof is format/carrier-neutral and names required semantic side material rather than WVS-specific columns;
+- source loss/unavailability: exact release becomes unavailable; no fallback source/latest;
+- incremental update: all transient vectors/masks invalidate on source/authority determinant changes;
+- five lifecycles: source-backed exactness remains possible for compiler/discovery, inference, analytical service and replay; C04 does not claim performance sufficiency for each;
+- downstream leakage: empirical results remain learned-world/past evidence and never become V3 actor state;
+- autonomous discovery: explicitly not proven by this court.
+
+## 22. Exact disposition
+
+`C04_PASS__FULL_I03_FRONTIER_SOURCE_BACKED_EXECUTABLE`
+
+No named I03 primitive requires an authoritative persistent full respondent/event payload carrier. No disposition-blocking evidence gap remains inside C04 jurisdiction.
