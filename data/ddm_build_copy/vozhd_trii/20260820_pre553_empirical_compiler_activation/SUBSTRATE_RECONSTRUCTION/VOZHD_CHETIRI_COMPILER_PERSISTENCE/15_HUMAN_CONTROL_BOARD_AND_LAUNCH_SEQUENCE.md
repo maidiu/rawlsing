@@ -4,9 +4,9 @@ Short tag: `VC4-COMPILER/PERSISTENCE`
 
 Mnemonic: **Chetiri decides what persists between THE PAST and THE LEARNED WORLD, while THE LIFE remains V3-owned.**
 
-Status: `P0_DESTINATION_CLOSED__G0_OPEN__C02R2_DUMB_LOCAL_EVIDENCE_EXECUTOR_NEXT__HQ_ADJUDICATION_AFTER__P1_LOCKED`
+Status: `G0_PASS__C03_AUTHORIZED_NEXT__C04_C05_C08_WAIT_C03__NO_ARCHITECTURE_SELECTED`
 
-Exact law remains in `11`–`14`, `22`, `26`, `27`, `28`, `03_GATE_LEDGER.csv`, and `04_WORKER_REGISTRY.csv`.
+Exact law remains in `11`–`14`, `22`, `26`, `27`, `28`, `G0_C02R2_HQ_ADJUDICATION/`, `03_GATE_LEDGER.csv`, and `04_WORKER_REGISTRY.csv`.
 
 ## 1. CURRENT STATE
 
@@ -18,169 +18,137 @@ C01  ACCEPTED
   ordinary V3 does not require full event incidence
 
 C06  ACCEPTED
-  replay/integrity does not prove full payload irreducible
-  U5 occurrence identity must still close
+  full payload not proved irreducible
+  U5 CLOSED with exact named semantic occurrence/replay side material
+  U1/U2/U3/U4 carried for later rule/implementation closure
 
 C07 + C07-R1  ACCEPTED / AXIS CLOSED
   learned world = empirical-social DAG
                 + structural DAG
                 + shared provenance/replay
-  direct terminal authority => NO MATERIAL DELTA
 
-C02  OPEN ON M04/M05
-  source-cell geometry != semantic occurrence proof
+C02 + C02-R2 + HQ  CLOSED
+  35/35 exact source corpus executed
+  raw payload source-reconstructable
+  value != occurrence identity
+  semantic occurrence identity requires governed mapping/topology/occurrence material
+  no full transformed payload persistence witness
         |
         v
-C02-R1 cloud attempt
-  BLOCKED ONLY because exact WVS7 source unavailable
-  raw source reads = 0
+G0 PASS
+  SOURCE_BACKED REMAINS LAWFUL
+  ONLY WITH EXACT NAMED PERSISTENT SIDE MATERIAL
         |
         v
-C02-R2 LOCAL DUMB EVIDENCE EXECUTOR   <-- NEXT
-  35 SHA checks
-  frozen decoder execution
-  topology inventory
-  candidate determinant uniqueness/collision tests
-  hostile-case evidence
-  NO FD / persistence / architecture conclusions
+C03 NATIVE SOURCE EXECUTION RECON        <-- NEXT / AUTHORIZED
         |
         v
-HQ-C02R2 ADJUDICATION                 <-- CHETIRI HQ ONLY
-  semantic FD rulings
-  minimum material ruling
-  C06 U5 disposition
-  34-row terminal reconciliation
+HQ C03 ACCEPTANCE
         |
-        v
-HQ FINAL G0
-   |              |
- BLOCK           PASS
-                  |
-                  v
-                 C03
+        +--> C04 I03 SOURCE-BACKED COURT
+        +--> C05 AUTONOMOUS DISCOVERY COURT
+        +--> C08 OPERATIONS/INVALIDATION COURT
 ```
 
-## 2. WHY C02-R2 WAS SPLIT
+## 2. G0 FINAL HOLDING
 
-The local step exists because the source bytes are on the local Rawlsing machine, not because a local worker should decide architecture.
+Exact token:
 
-C02-R2 therefore obeys:
+`G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_ONLY_WITH_EXACT_NAMED_PERSISTENT_SIDE_MATERIAL`
 
-> **MEASURE__DO_NOT_ADJUDICATE**
-
-The executor may say:
-
-- `OBSERVED_UNIQUE_IN_EXECUTED_SCOPE`;
-- `COLLISION_OBSERVED`;
-- `NOT_TESTABLE_FROM_AVAILABLE_FROZEN_AUTHORITY`;
-- exact counts, locators and witnesses.
-
-It may NOT say:
-
-- `FD_CERTIFIED`;
-- `DERIVABLE` as a semantic conclusion;
-- `NONDERIVABLE` as a semantic conclusion;
-- `FULL_EVENT_PERSISTENCE_REQUIRED`;
-- `SPARSE_SIDE_MATERIAL_SUFFICIENT`;
-- `C06_U5_CLOSED`;
-- A/B/C winner;
-- G0 pass/block.
-
-That separation makes C02-R2 suitable for a cost-sensitive coding worker while keeping the hard semantic judgment at HQ.
-
-## 3. G0 STATE
-
-`G0_OPEN__LOCAL_EVIDENCE_THEN_HQ_ADJUDICATION_REQUIRED`
-
-This means:
+The architecture-level distinction is now explicit:
 
 ```text
-NOT G0_PASS
-NOT SOURCE_BACKED_REJECTED
-NOT PERSISTENT_R5_REQUIRED
+RAW EVENT PAYLOAD
+  authoritative in SAV/DTA
+  exactly replayable under source+decoder coordinate
+  no duplicate persistent transformed payload required by semantics
+
+!=
+
+SEMANTIC EVENT OCCURRENCE IDENTITY
+  source row/variable/slot identity
+  + canonical question/component/topology authority
+  + event-group/occurrence-index authority
+  + routing/applicability authority where material
+  + exact occurrence-level replay/exception binding where derivation fails
 ```
 
-No worker has proved that the full canonical event payload must persist.
-No worker has yet proved that every M04/M05 identity-bearing fact may be reconstructed and discarded.
+The second family must remain governed and replayable. It may be event-grain identity/topology material where necessary. It need not duplicate raw values.
 
-## 4. ONLY NEXT WORKER JOB
+The evidence does not justify calling the occurrence exception domain sparse; later exact semantic mapping must establish its actual cardinality.
 
-### C02-R2 — local complete-source M04/M05 evidence executor
+## 3. C02-R2 SCRATCH EXCEPTION
+
+The local executor left disposable SR03 scratch in `/private/tmp`. The human commander explicitly directed HQ not to delete it because another local agent may be using it and authorized continuation.
+
+HQ accepted the checked-in evidence with a narrow procedural exception. The scratch is not authority, not a runtime dependency, and not an input required by the returned evidence. Its later deletion must have zero semantic effect.
+
+No source court rerun is required.
+
+## 4. AUTHORITY 67
+
+Current PRE553 Authority 67 landed after the C02-R2 launch base. It explicitly freezes source/decoder semantics, C11 M01-M18, I03/I05/I04, ExactRef/content-hash and V553-V2 semantics.
+
+Therefore it has no semantic delta for G0.
+
+It does strengthen candidate A operationally: accepted R5 V4 is the current serial comparator and later C09 must compare against the best lawfully frozen A available then, not an obsolete slow R5 result.
+
+## 5. ONLY NEXT WORKER JOB
+
+### C03 — Native Source Execution Capability Reconnaissance
 
 Branch:
-`agent/vozhd-chetiri-c02r2-local-occurrence-topology-proof`
+`agent/vozhd-chetiri-c03-native-source-access`
 
 Order:
-`27_C02R2_LOCAL_COMPLETE_SOURCE_OCCURRENCE_TOPOLOGY_PROOF_REISSUE.md`
+`WORKER_ORDERS/C03_NATIVE_SOURCE_EXECUTION_RECON.md`
 
-Expected local source root:
-`/Users/matthewsmith/Desktop/Rawlsing/data/Data`
+C03 is physical reconnaissance only. It must establish the real execution terrain beneath a carrier-blind logical C11:
 
-First hard gate:
-verify all 35 source files against `SOURCE_BYTE_INVENTORY.csv` by exact byte size and SHA-256.
+- selective SAV/DTA access behavior;
+- hidden full-frame/parser work;
+- metadata/open/decode costs;
+- chunking/streaming behavior;
+- compatibility reader paths;
+- transient decoded working-set possibilities;
+- repeat-read/source-open behavior relevant to discovery;
+- scaling with rows/columns where lawful;
+- reader failures and resource limits.
 
-Then mechanically collect:
+C03 may use exact hash-matched raw sources under its order.
 
-- frozen decoder invocation receipts;
-- native topology inventory;
-- candidate determinant test counts;
-- uniqueness/collision results;
-- exact collision witnesses;
-- execution/exception coverage;
-- hostile-case evidence;
-- potential information-bearing exception surfaces;
-- C06 U5 evidence inputs only.
-
-No 34-row terminal checksum is required from this executor.
-No persistence classification is required from this executor.
-
-Executor stop token:
-`VC4_C02R2_EVIDENCE_EXECUTOR_RETURNED`
-
-## 5. HQ JOB AFTER C02-R2
-
-Order:
-`28_HQ_C02R2_EVIDENCE_TO_M04_M05_ADJUDICATION_CONTRACT.md`
-
-Owner:
-`VOZHD_CHETIRI_HQ_ONLY`
-
-HQ will decide whether evidence establishes:
-
-- exact FD with no independent material;
-- exact FD plus bounded exception material;
-- non-FD with exact named minimum material;
-- unresolved evidence/authority;
-- irreducible full event-grain persistence.
-
-HQ, not the executor, closes/preserves C06 U5 and applies the complete 34-row terminal checksum.
+C03 may not choose A/B/C, redesign semantics, alter runtime, or claim I03/I05 feasibility merely from primitive source access.
 
 ## 6. DOWNSTREAM LOCK
 
-Until a written HQ G0 pass:
+Until C03 returns and HQ accepts it:
 
-- C03: LOCKED
-- C04: LOCKED
-- C05: LOCKED
-- C08: LOCKED
-- C09: LOCKED
-- C10: LOCKED
+- C04: `LOCKED__C03_NOT_ACCEPTED`
+- C05: `LOCKED__C03_NOT_ACCEPTED`
+- C08: `LOCKED__C03_NOT_ACCEPTED`
+- C09: `LOCKED__G1_NOT_CLOSED`
+- C10: `LOCKED__G2_NOT_CLOSED`
 
-## 7. WHAT IS ALREADY SAFE TO CARRY FORWARD
+## 7. WHAT IS NOW SAFE TO CARRY FORWARD
 
 ```text
 SOURCE BYTES / SOURCE AUTHORITY                     primary THE PAST
+SOURCE ROW + NATIVE VARIABLE/SLOT REPLAY IDENTITY  reconstructable
+SEMANTIC MAPPING / TOPOLOGY / OCCURRENCE AUTHORITY persistent named side material
+OCCURRENCE-LEVEL IDENTITY BINDING IF NEEDED         persistent only for exact non-derivable domain
+RAW TRANSFORMED EVENT PAYLOAD DUPLICATE             not semantically required at G0
 C11 logical exact serviceability                    required
 learned empirical releases / geometry               terminally relevant
 structural learned products                         terminally relevant
-P3 replay / explanation receipts                    persistent requirement
+replay / explanation receipts                       persistent requirement
 V3 actor life                                       downstream-owned
 
-R5 / Parquet / Arrow / DuckDB / masks / indexes     physical role not yet selected
+R5 / Parquet / Arrow / DuckDB / masks / indexes     physical role not selected
 ```
 
 ## 8. COMMAND RULE
 
-> **The executor tells us what the sources did. HQ decides what that proves.**
+> **The source can keep the payload. Rawlsing must keep the meaning.**
 
-> **Observed uniqueness is evidence. Functional dependency is a governed conclusion. Persistence is a separate architectural conclusion.**
+> **G0 proves semantic possibility, not operational feasibility. C03 now tells us what native-source execution actually costs.**
