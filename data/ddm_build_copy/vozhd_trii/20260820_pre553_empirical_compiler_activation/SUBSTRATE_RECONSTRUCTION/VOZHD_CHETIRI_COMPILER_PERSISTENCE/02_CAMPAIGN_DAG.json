@@ -1,8 +1,20 @@
 {
   "campaign_id": "VC4-COMPILER/PERSISTENCE",
   "name": "VOZHD CHETIRI — COMPILER & PERSISTENCE ARCHITECTURE",
-  "status": "EXPLORATORY__NON_DISPOSITIVE__NO_ARCHITECTURE_REOPEN",
+  "status": "EXPLORATORY__NON_DISPOSITIVE__PREPARED_NOT_LAUNCHED__NO_ARCHITECTURE_REOPEN",
   "governing_question": "Is persistent event-grain empirical materialization architecturally necessary, or a regenerable compiler intermediate between immutable source evidence and the permanent compiled structural substrate consumed by V3?",
+  "terminal_product_law": "THE_COMPILER_IS_NOT_THE_PRODUCT__THE_PERSON_IS_THE_PRODUCT",
+  "governing_spine": [
+    "RAWLSING_GOVERNING_SPIRIT.md",
+    "TERMINAL_DEMAND_ENVELOPE.md",
+    "ARCHITECTURE_PASS_LAW.md",
+    "CONSTRAINTS_PRIORITIES.md",
+    "WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md",
+    "11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md",
+    "12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md",
+    "13_COMMON_WORKER_CONTRACT.md",
+    "14_HQ_COMMAND_AND_ADJUDICATION_LAW.md"
+  ],
   "candidate_families": {
     "A": "PERSISTENT_CANONICAL_EVENT_CARRIER",
     "B": "SOURCE_BACKED_VIRTUAL_C11",
@@ -16,6 +28,14 @@
     "I05_FRONTIER_SEMANTICS",
     "I04_ADMISSION_LAW",
     "EXACTREF_AND_CONTENT_HASH_SEMANTICS",
+    "SOURCE_EVIDENCE_NE_STRUCTURAL_PRIOR_NE_GENERATED_ACTOR_FACT_NE_ACTOR_KNOWLEDGE_NE_MEMORY_NE_V2_EXPRESSION",
+    "NINE_STRATA_RELATIONAL_NOT_DEMOGRAPHIC",
+    "MEDIATION_NOT_STRUCTURE_TO_PSYCHE",
+    "ACTOR_OPACITY_AND_MISRECOGNITION",
+    "CONTRADICTION_AND_MULTIPLE_PRESSURES",
+    "ABSOLUTE_HORIZON_DISTINCT",
+    "GENEALOGY_AS_GENERATED_HISTORIES",
+    "DEVELOPMENTAL_ATTRACTORS_NOT_STATIC_TYPES",
     "V553_V558",
     "V3",
     "V2",
@@ -26,100 +46,149 @@
       "id": "P0",
       "name": "ARCHITECTURAL_NECESSITY",
       "cells": ["C01", "C02", "C06", "C07"],
-      "parallel": true,
-      "requires": [],
+      "launch_mode": "PARALLEL_ALLOWED",
+      "requires": ["CAMPAIGN_EXPLICIT_LAUNCH"],
       "closes_at": "G0_ARCHITECTURAL_FEASIBILITY"
     },
     {
-      "id": "P1",
-      "name": "EXECUTION_FEASIBILITY",
-      "cells": ["C03", "C04", "C05", "C08"],
-      "parallel": true,
+      "id": "P1A",
+      "name": "NATIVE_EXECUTION_TERRAIN",
+      "cells": ["C03"],
+      "launch_mode": "SERIAL_FIRST",
       "requires": ["G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_CANDIDATE"],
+      "closes_at": "C03_ACCEPTED"
+    },
+    {
+      "id": "P1B",
+      "name": "QUERY_DISCOVERY_OPERATIONS_FEASIBILITY",
+      "cells": ["C04", "C05", "C08"],
+      "launch_mode": "C04_C05_PARALLEL__C08_PARALLEL_WITH_FINAL_RECONCILIATION",
+      "requires": ["C03_ACCEPTED", "C01_ACCEPTED", "C02_ACCEPTED", "C06_ACCEPTED", "C07_ACCEPTED"],
       "closes_at": "G1_EXECUTION_FEASIBILITY"
     },
     {
       "id": "P2",
       "name": "MEASURED_CANDIDATE_COURT",
       "cells": ["C09"],
-      "parallel": false,
-      "requires": ["G1_EXECUTION_FEASIBILITY_CLOSED"],
+      "launch_mode": "SERIAL",
+      "requires": ["C01_C08_ACCEPTED", "G1_EXECUTION_FEASIBILITY_CLOSED", "HQ_C09_COURT_MANIFEST_FROZEN"],
       "closes_at": "G2_MEASURED_BAKEOFF"
     },
     {
       "id": "P3",
       "name": "HOSTILE_RED_TEAM",
       "cells": ["C10"],
-      "parallel": false,
-      "requires": ["G2_MEASURED_BAKEOFF_CLOSED"],
+      "launch_mode": "SERIAL",
+      "requires": ["C09_ACCEPTED", "G2_PROVISIONAL_MEASURED_SYNTHESIS_CLOSED"],
       "closes_at": "G3_HOSTILE_SURVIVAL"
     },
     {
       "id": "P4",
       "name": "HQ_SYNTHESIS",
       "cells": [],
-      "parallel": false,
-      "requires": ["G3_HOSTILE_SURVIVAL_CLOSED"],
-      "owner": "HQ_ONLY"
+      "launch_mode": "HQ_ONLY",
+      "requires": ["C10_ACCEPTED", "G3_HOSTILE_SURVIVAL_CLOSED"],
+      "owner": "VOZHD_CHETIRI_HQ_ONLY"
     }
   ],
   "cells": {
     "C01": {
       "name": "TERMINAL_PRODUCT_AND_V3_CONSUMPTION_AUDIT",
       "phase": "P0",
-      "burden": "Trace runtime consumption backward and classify every upstream product by persistence necessity."
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": [],
+      "worker_order": "WORKER_ORDERS/C01_TERMINAL_PRODUCT_V3_CONSUMPTION_AUDIT.md",
+      "burden": "Trace finished runtime consumption backward and classify every upstream product by persistence necessity without confusing current implementation with accepted architecture."
     },
     "C02": {
       "name": "C11_DERIVABILITY_AND_MINIMUM_PERSISTENT_STATE_COURT",
       "phase": "P0",
-      "burden": "Classify every logically observable C11 obligation by exact determinant and persistence requirement."
-    },
-    "C03": {
-      "name": "NATIVE_SOURCE_EXECUTION_CAPABILITY_RECONNAISSANCE",
-      "phase": "P1",
-      "burden": "Measure real SAV/DTA access capabilities and incompatibilities without semantic redesign."
-    },
-    "C04": {
-      "name": "I03_SOURCE_BACKED_EXECUTION_COURT",
-      "phase": "P1",
-      "burden": "Prove or falsify exact I03 primitive execution over source-backed logical C11."
-    },
-    "C05": {
-      "name": "I05_SOURCE_BACKED_DISCOVERY_COURT",
-      "phase": "P1",
-      "burden": "Prove or falsify open-world bounded discovery without mandatory authoritative full event materialization."
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": [],
+      "worker_order": "WORKER_ORDERS/C02_C11_DERIVABILITY_MINIMUM_PERSISTENCE.md",
+      "burden": "Classify every logically observable C11 obligation by exact determinant, exception domain, integrity binding and persistence requirement."
     },
     "C06": {
       "name": "REPLAY_EXACTREF_AND_INTEGRITY_COURT",
       "phase": "P0",
-      "burden": "Determine the minimum persistent receipts/roots needed for exact replay, identity and fail-closed integrity."
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": [],
+      "worker_order": "WORKER_ORDERS/C06_REPLAY_EXACTREF_INTEGRITY.md",
+      "burden": "Determine minimum persistent roots/receipts/material needed for exact replay, identity, provenance and fail-closed integrity without assuming a full event copy."
     },
     "C07": {
       "name": "COMPILED_STRUCTURAL_SUBSTRATE_AND_BUILD_RUNTIME_BOUNDARY",
       "phase": "P0",
-      "burden": "Define what permanent V3-facing compiled products must be made maximally clean, light, fast and effective."
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": [],
+      "worker_order": "WORKER_ORDERS/C07_COMPILED_STRUCTURAL_SUBSTRATE_BOUNDARY.md",
+      "burden": "Derive the permanent V3-facing compiled product boundary backward from the terminal person/application vision while refusing actor-specific semantic leakage."
+    },
+    "C03": {
+      "name": "NATIVE_SOURCE_EXECUTION_CAPABILITY_RECONNAISSANCE",
+      "phase": "P1A",
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": ["G0_PASS"],
+      "worker_order": "WORKER_ORDERS/C03_NATIVE_SOURCE_EXECUTION_RECON.md",
+      "burden": "Measure exact SAV/DTA access capabilities, setup/full-read costs and compatibility limitations without semantic redesign."
+    },
+    "C04": {
+      "name": "I03_SOURCE_BACKED_EXECUTION_COURT",
+      "phase": "P1B",
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": ["C01_ACCEPTED", "C02_ACCEPTED", "C03_ACCEPTED", "C06_ACCEPTED", "C07_ACCEPTED"],
+      "worker_order": "WORKER_ORDERS/C04_I03_SOURCE_BACKED_EXECUTION.md",
+      "burden": "Prove or falsify every frozen I03 primitive over source-backed logical C11 using only source-access capabilities actually established by C03."
+    },
+    "C05": {
+      "name": "I05_SOURCE_BACKED_DISCOVERY_COURT",
+      "phase": "P1B",
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": ["C01_ACCEPTED", "C02_ACCEPTED", "C03_ACCEPTED", "C06_ACCEPTED", "C07_ACCEPTED"],
+      "worker_order": "WORKER_ORDERS/C05_I05_SOURCE_BACKED_DISCOVERY.md",
+      "burden": "Prove or falsify the complete bounded/open-world I05 frontier without reducing unforeseen combinations or laundering caches into authority."
     },
     "C08": {
       "name": "INCREMENTAL_BUILD_UPDATE_AND_OPERATIONS_COURT",
-      "phase": "P1",
-      "burden": "Determine rebuild granularity, invalidation, recovery and operational cost under each candidate family."
+      "phase": "P1B",
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires_to_launch": ["C01_ACCEPTED", "C02_ACCEPTED", "C03_ACCEPTED", "C06_ACCEPTED", "C07_ACCEPTED"],
+      "requires_to_return": ["C04_RETURN_AVAILABLE", "C05_RETURN_AVAILABLE"],
+      "worker_order": "WORKER_ORDERS/C08_INCREMENTAL_BUILD_OPERATIONS.md",
+      "burden": "Trace invalidation, minimum rebuild units, stale-authority protection and recovery under A/B/C, reconciling final result against C04/C05 execution models."
     },
     "C09": {
       "name": "EXACT_PHYSICAL_BAKEOFF",
       "phase": "P2",
-      "burden": "Measure A/B/C on identical representative compiler primitives after semantic contracts are frozen."
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": ["C01_C08_ACCEPTED", "G1_CLOSED", "HQ_COURT_MANIFEST_FROZEN"],
+      "worker_order": "WORKER_ORDERS/C09_EXACT_PHYSICAL_BAKEOFF.md",
+      "burden": "Measure A/B/C on identical source, semantic, replay, I03/I05/I04 and terminal-vision proof surfaces; parity precedes performance."
     },
     "C10": {
       "name": "HOSTILE_SYNTHESIS_KILL_COURT",
       "phase": "P3",
-      "burden": "Attack the provisional winner and seek a decisive falsification or unresolved hidden dependency."
+      "status": "PREPARED_NOT_LAUNCHED",
+      "requires": ["C01_C09_ACCEPTED", "G2_PROVISIONAL_SYNTHESIS_CLOSED"],
+      "worker_order": "WORKER_ORDERS/C10_HOSTILE_SYNTHESIS_KILL_COURT.md",
+      "burden": "Attempt exact falsification of the provisional synthesis across source, C11, I03/I05/I04, replay, operations and terminal-personhood constraints before any final HQ choice."
     }
   },
   "edges": [
     ["C01", "G0"], ["C02", "G0"], ["C06", "G0"], ["C07", "G0"],
-    ["G0", "C03"], ["G0", "C04"], ["G0", "C05"], ["G0", "C08"],
-    ["C03", "G1"], ["C04", "G1"], ["C05", "G1"], ["C08", "G1"],
+    ["G0", "C03"],
+    ["C03", "C04"], ["C03", "C05"], ["C03", "C08"],
+    ["C04", "G1"], ["C05", "G1"], ["C08", "G1"],
     ["G1", "C09"], ["C09", "G2"], ["G2", "C10"], ["C10", "G3"], ["G3", "HQ_SYNTHESIS"]
+  ],
+  "mandatory_return_surfaces_every_cell": [
+    "AUTHORITY_READ_RECEIPT",
+    "RETURN_MANIFEST",
+    "CHANGED_FILES",
+    "24_ROW_TERMINAL_VISION_CHECKSUM",
+    "PERSISTENCE_STARVATION_BLOAT_MATRIX",
+    "UNRESOLVED_EVIDENCE",
+    "CELL_SPECIFIC_OUTPUTS"
   ],
   "hard_stop_conditions": [
     "ANY_REQUIRED_SEMANTIC_WEAKENING",
@@ -127,7 +196,12 @@
     "ANY_I03_OR_I05_FRONTIER_STARVATION",
     "ANY_EXACTREF_OR_REPLAY_NONDETERMINISM",
     "ANY_CACHE_PROMOTED_TO_AUTHORITY_WITHOUT_PROOF",
+    "ANY_STRUCTURE_TO_PSYCHE_SHORTCUT",
+    "ANY_SURVEY_TO_STATIC_PERSONALITY_OR_ATTRACTOR_SHORTCUT",
+    "ANY_TERMINAL_PERSONHOOD_STARVATION",
+    "ANY_EPISTEMIC_NONCOLLAPSE_FAILURE",
     "ANY_WORKER_SELF_SELECTS_ARCHITECTURE",
+    "ANY_HQ_PREDECISION_NOT_GROUNDED_IN_EVIDENCE",
     "ANY_MUTATION_OF_ACTIVE_R5_COURT"
   ]
 }
