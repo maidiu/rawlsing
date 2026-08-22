@@ -1,94 +1,162 @@
 # VC4 C02 — SOURCE-BACKED C11 INFORMATION PROOF
 
-Status: `RETURNED__NON_DISPOSITIVE`
+Status: `RETURNED__NON_DISPOSITIVE__HOSTILE_CORRECTION_PASS`
 Campaign: `VC4-COMPILER/PERSISTENCE`
 Cell: `C02`
 Start HEAD: `1f52af175f699fd9427265715fd22277833a8460`
 Worker branch: `agent/vozhd-chetiri-c02-c11-derivability`
+First-return HEAD corrected: `2006c12fc77f7fab0ff3b3f942459b5c2b1f3013`
 Raw-source probes: `NONE`
 Runtime/R5 writes: `NONE`
 
-## Holding
+## Corrected holding
 
-C02 finds **no exact witness that Rawlsing requires a permanently materialized full event-grain C11 carrier**.
+C02 reaches two distinct findings that must not be collapsed:
 
-For a scope in which determinant law is actually frozen, C11 logical truth is exactly reconstructable as:
+1. **No exact witness proves that Rawlsing requires a permanently materialized full event-grain C11 carrier.**
+2. **Complete source-backed C11 derivability is not certified.** M04 semantic event-occurrence identity and M05 event topology/occurrence-key domains lack a complete exact functional-dependency certificate over the required source scope, and their exception domain is unbounded or unproved in C02.
+
+Therefore:
+
+`NO_FULL_EVENT_CARRIER_WITNESS != COMPLETE_C11_DERIVABILITY_PROOF`
+
+The first return's detailed matrix already contained the M04/M05 blocking facts but its top-level disposition overclaimed the second proposition. This hostile correction pass changes the disposition to:
+
+`C02_BLOCK__UNRESOLVED_DERIVABILITY`
+
+It does **not** substitute either of the two unsupported architectural conclusions:
+
+- `FULL_EVENT_CARRIER_REQUIRED`; or
+- `SPARSE_EXCEPTION_MATERIAL_SUFFICIENT`.
+
+Neither was proved by C02.
+
+## Exact source-backed derivability law
+
+For a scope in which determinant law is actually frozen, C11 logical truth may be reconstructed as:
 
 `C11_LOGICAL_TRUTH = F(IMMUTABLE_SOURCE_BYTES, FROZEN_DECODER_CONFIG, GOVERNED_SEMANTIC_AUTHORITY, GOVERNED_TOPOLOGY_ROUTING_DESIGN_SOURCE_RELATION_AUTHORITY, C11_IDENTITY_AND_REPLAY_LAW)`
 
-This is not the weaker claim that a source cell is a semantic event or that rectangular survey geometry proves derivability. A C11 field may be omitted from an independent persistent carrier only when its determinant set, determinant scope, deterministic reconstruction, exception domain, integrity binding and consumer closure are exact. Where those conditions are not proved, C02 requires explicit governed side material or fail-closed `MISSING_AUTHORITY`; it does not infer a permanent event table merely for safety.
-
-Separately, **rebuildability does not make a learned release semantically disposable**. Discovery candidates, validation/robustness state, accepted empirical relations, higher-order learned geometry, source-universe/time-indexed learned fields, possibility-inference receipts and I04 admissions can independently earn governed release identity and provenance even when their numeric content could later be recomputed from source.
-
-## Derivability law
-
-An omission is lawful only when all of the following exist for the exact scope:
+But omission of independently persisted information is lawful only if all of the following are exact for the claimed scope:
 
 1. semantic owner;
-2. smallest exact determinant set;
+2. smallest determinant set;
 3. authority proving the determinant relation;
 4. deterministic reconstruction function;
-5. complete exception domain or a fail-closed escape;
+5. exhaustive exception domain or exact fail-closed escape;
 6. integrity binding to source, authority and method versions;
 7. preservation of every consumer-visible distinction.
 
-Observed equality, current implementation behavior, current WVS/LiTS rectangularity, first/majority values, present tests, or current consumer absence are not functional-dependency certificates.
+The C02 worker order expressly says that if the exception domain is unbounded or unknown, C02 must **not claim derivability**. Authority 56 independently binds `EVENT_GRAIN_UNLESS_EXACT_FD_CERTIFICATE`, and explicitly rejects source-cell location as sufficient proof of semantic event-occurrence identity.
 
-The PRE553 R5 law `EVENT_GRAIN_UNLESS_EXACT_FD_CERTIFICATE` is therefore an **information-grain safety rule**, not proof that event-grain material must be permanently duplicated beside authoritative source bytes.
+Observed equality, current implementation behavior, current WVS/LiTS rectangularity, current tests, first/majority values, or current consumer absence cannot replace the certificate.
 
-## M01–M18 result
+### Matrix interpretation rule
 
-| M | Required information | C02 information conclusion | Persistence conclusion |
-|---|---|---|---|
-| M01 | respondent-universe identity | source/release/universe identity and scope are mandatory | source + governed universe/release authority; no full event copy implied |
-| M02 | scoped respondent identity | universal replay identity is source snapshot + source-row ordinal absent stronger authority; native IDs are not universal keys | derive from immutable source where governed; persist identity-map authority/receipt if independently issued |
-| M03 | native/canonical question identity | native identity, instrument version, canonical binding or typed absence, component/subitem and semantic/topology authority must survive | native metadata from source; governed binding authority/receipt persists |
-| M04 | response-event identity + raw/canonical value | raw typed value and physical state are source-backed; semantic occurrence identity is not reducible to a source-cell locator without exact law | source-backed derivation only under exact occurrence law; explicit governed occurrence material survives where needed |
-| M05 | topology/multiplicity/order/rank | repeated/ranked/componentized/multiple-response topology is semantic information and cannot be inferred from storage convenience | governed topology declarations/occurrence material persist or are exactly reconstructed; no pairwise/rectangular shortcut |
-| M06 | typed response/absence | physical missingness and semantic response/absence are distinct; SAV/DTA hostile missing classes, empty string, type and signed-zero distinctions remain reachable | source physical distinctions remain authoritative; semantic mapping authority survives separately |
-| M07 | routing/applicability/risk set | risk-set truth cannot be inferred from null/missing incidence | exact routing/risk authority or facts required; persistent side authority/receipt where not source-native |
-| M08 | empirical-coordinate incidence | coordinates require exact identity, scope, state and authority; missing/nonconditionable are typed states | derive source-backed coordinate observations where exact; persist mapping authority and learned products that use them |
-| M09 | weight/measure/design | raw weight-like cells do not themselves authorize weighting/design/estimand use | source values + governed design/measure authority; authority/replay persists |
-| M10 | source-native semantics/transformation authority | decoder physical output is not semantic promotion; transformations require exact authority | source + decoder/config + transformation authority; transformed cache is not primary authority |
-| M11 | source relation/nondup/comparability | source universes are distinct by default; exact relation kind/scope requires SourceUniverseRelation + positive AuthoritySnapshot; canonical question identity alone proves no equivalence | persist exact relation/authority receipts used; otherwise preserve distinct/noncomparable/unauthorized state |
-| M12 | predicate grammar/replay | future lawful predicates must remain constructible; no finite ingest-time predicate vocabulary may define truth | grammar/method/version/ExactRefs and receipts persist; indexes may be regenerable |
-| M13 | positioned-subject comparator | actor-fact-to-empirical-coordinate comparison requires separate comparator authority and must not identify generated actors with respondents | `MISSING_AUTHORITY` for complete comparator/possibility-model law; eventual comparator/model + inference receipts independently persist |
-| M14 | discovery branch/replay | exact-bounded I05 has a predeclared evaluate-all frontier and exact coverage; adaptive/exploratory search requires additional branch/termination authority | exact-bounded frontier/receipts persist; adaptive state is `MISSING_AUTHORITY` until governed |
-| M15 | structural admission provenance | I04 admission is a separate governed decision with explicit nonpositive states and precedence | persist I04 admission/provenance receipt; never infer admission from empirical fact alone |
-| M16 | support/uncertainty/validation | exact-bounded I05 has governed validation kinds; a complete general post-discovery robustness/uncertainty→accepted-relation constitution is not frozen | persist method/version/evidence/outcome for governed validation; broader promotion fails closed |
-| M17 | authority snapshot/provenance closure | exact authority state and dependency closure are part of truth/replay | authority snapshots/provenance receipts persist |
-| M18 | deterministic replay/semantic integrity | ExactRef/content hash and closure bind semantic identity independently of carrier layout | persist replay/integrity receipts and immutable roots; canonical event duplication not thereby required |
+`C11_MINIMUM_PERSISTENCE_MATRIX.csv` remains the field-level court record. Where a row's `unresolved` field says `MISSING_AUTHORITY` or its exception domain says unbounded/unknown, that unresolved state defeats any otherwise described reconstruction/persistence class for purposes of deletion authorization. A persistence class describes the lawful class **if its determinants are established**; it is not an independent certificate that the determinant domain is complete.
 
-The detailed field-by-field proof is `C11_MINIMUM_PERSISTENCE_MATRIX.csv`.
+In particular, the M04 semantic occurrence row and M05 occurrence/topology rows do not authorize C11 event/topology deletion.
 
-## Hostile C11 coverage
+## M01–M18 information result
 
-C02 preserves these distinctions as information requirements, whether source-backed, governed side material, or learned receipts:
+| M | Required information | C02 conclusion |
+|---|---|---|
+| M01 | source/release/universe identity | Source bytes alone do not own all release/universe scope. Preserve immutable source identity plus governed release/universe authority. |
+| M02 | respondent identity | Source-snapshot + governed row ordinal may reconstruct replay identity within its certified scope; native IDs do not imply cross-source person identity. Exact linkage authority is separate. |
+| M03 | native/canonical question and component identity | Native identity is source/release bound; canonical binding/component/topology mapping requires governed authority or typed absence. Same canonical ID does not prove measurement equivalence. |
+| M04 | response event, raw/canonical value, semantic occurrence | Raw physical value/state is source+decoder backed. Semantic occurrence identity is **not globally certified as source-cell-derived**. This is a C02 blocking domain. |
+| M05 | multiplicity/order/rank/component/repeated-event topology | Topology is semantic information. Fixed source-native topology may be reconstructed where exactly governed; general event-specific occurrence/topology exception scope is unproved. This is a C02 blocking domain. |
+| M06 | typed response/absence | Physical missingness and semantic absence are distinct. SAV/DTA missing classes, empty string, type, signed zero and later DK/refusal/IAP/routing semantics must remain distinguishable. |
+| M07 | routing/applicability/risk set | Null/missing incidence does not determine risk-set truth. Exact routing/risk authority/facts are required. |
+| M08 | empirical-coordinate incidence and scope | Coordinate state requires exact universe/source/time/geography/question/authority binding and may not be promoted to generated actor fact. |
+| M09 | weight/measure/design/estimand | A weight-like source cell is evidence, not authorization to weight. Exact design/estimand authority remains separate. |
+| M10 | source-native semantics/transformation authority | Decoder physical output is not semantic promotion. Transformations require exact authority/version and provenance. |
+| M11 | source relation/nondup/comparability | Universes are distinct by default. Exact relation kind and scope require a positive SourceUniverseRelation/authority; one relation kind grants no other. |
+| M12 | predicate grammar/query replay | Future lawful predicates must remain reachable. Exact typed AST/refs/risk-set/method/replay closure matter; a finite ingest index cannot define truth. |
+| M13 | positioned-subject comparator | Complete generated-actor-fact -> empirical-coordinate comparator/possibility-model law remains `MISSING_AUTHORITY`. Deferred public families confirm the seam is not yet authorized. |
+| M14 | discovery branch/frontier/replay | Current exact-bounded I05 is governed and evaluate-all; adaptive traversal/termination/safe-pruning/completeness remains missing authority. |
+| M15 | structural admission | I04 admission is an independent governed decision with explicit nonpositive states. Empirical evidence cannot self-promote to structural fact. |
+| M16 | support/uncertainty/validation | Current exact-bounded I05 has validation kinds; no complete general future-candidate robustness/uncertainty -> accepted-relation constitution was found. |
+| M17 | authority/provenance/release lineage | Exact authority snapshots and dependency closure are part of replay truth. Learned release publication/supersession lifecycle is not fully frozen for every future product. |
+| M18 | deterministic replay/semantic integrity | ExactRefs/content hashes/replay closure bind semantic identity independently of carrier layout. Exact negative requires complete valid execution, not cache miss/partial scan/corruption. |
 
-- SAV system missing is distinct from SAV user-missing declarations/ranges and from later semantic DK/refusal/IAP.
-- DTA system missing is distinct from `.a`–`.z` extended missing and from semantic absence.
-- empty string is not null.
-- finite decoder-exposed `-0.0` is physically distinct from `+0.0`; semantic identity must not silently erase the source distinction before an authorized mapping.
-- integer, float and text identity cannot be inferred from apparent value equality.
-- Unicode, control and embedded-NUL text is preserved exactly at the governed decoder/source boundary; no normalization/trim/case-folding is authorized.
-- repeated, ranked, componentized and multiple-response topology is explicit information.
-- source-cell locator is not semantic event occurrence identity.
-- routed-out, not-asked, inapplicable, eligible, observed, missing and unknown are not one state.
-- weight cells are not weight/design/estimand authority.
-- zero-incidence and all-missing variable declarations remain information.
-- source relation, nonduplication, pooling, linkage and equivalence require exact relation authority; no relation kind implies another.
-- ExactRef/content hash is reconstructed from exact semantic projection, not from carrier row position.
-- future lawful I03/I05 predicates may not be limited by a finite ingest-time physical index vocabulary.
+## The M04/M05 blocking witness
 
-No raw source probe was required or performed. Therefore C02 does **not** claim that every source family has an empty occurrence/topology exception set; it claims only that any such exceptions must remain explicit governed information, and that their possible existence is not proof that the entire event frontier must be permanently duplicated.
+The exact blocking witness is:
 
-## Learned-world information grain
+`M04_M05_EVENT_OCCURRENCE_TOPOLOGY_DERIVABILITY_UNPROVED`
 
-The learned world must preserve more than pairwise associations. At minimum, a lawful learned product or serving service must be able to bind:
+Why it blocks:
 
-- same-respondent joint incidence across the variables/events participating in the relation;
-- k-way response configurations, not only pairwise marginals;
-- branch/subgroup conditioners and their ancestry;
+- a source-cell locator is not itself a semantic occurrence ID;
+- duplicate-looking events may remain distinct;
+- ordered/ranked/componentized/multiple-response structures may contain occurrence keys, rank, component identity, or order not licensed by rectangular position alone;
+- Authority 56 requires event grain unless an exact FD certificate exists;
+- the C02 worker order forbids claiming derivability when the exception domain is unbounded/unknown;
+- C02 was explicitly forbidden to probe raw sources; and
+- checked-in law does not prove that every relevant source/source-family occurrence/topology exception set is empty or bounded.
+
+Thus C02 cannot lawfully certify deletion of all event/topology material. But absence of that certificate also cannot be inverted into proof that every event must be permanently duplicated.
+
+The smallest lawful resolution is either:
+
+- an exact scoped FD certificate including deterministic reconstruction, exhaustive exception law, integrity binding and consumer closure; or
+- exact governed evidence/material proving the non-derivable occurrence/topology domain and preserving the required information.
+
+C02 does not call that domain sparse because sparsity was not proved.
+
+## Hostile C11 distinction coverage
+
+C02 preserves the following information requirements, whether source-backed, governed side material, or governed learned/replay state:
+
+- SAV system missing versus SAV user-missing declarations/ranges versus semantic DK/refusal/IAP;
+- DTA system missing versus `.a`–`.z` extended missing versus semantic absence;
+- empty string versus null/no payload;
+- decoder-exposed finite `-0.0` versus `+0.0` before authorized semantic transformation;
+- integer/float/text identity despite apparent value equality;
+- Unicode, control and embedded-NUL text without unauthorized normalization/trim/case-folding;
+- repeated, ranked, componentized and multiple-response topology;
+- source-cell locator versus semantic event occurrence;
+- routed-out/not-asked/inapplicable/eligible/observed/missing/unknown;
+- raw weight values versus design/estimand authority;
+- zero-incidence/all-missing variable declarations;
+- source equivalence/linkage/nondup/pooling/estimand/backfill as independent exact relation kinds;
+- ExactRef/content-hash identity versus carrier row/path/member identity;
+- future lawful I03/I05 predicate reachability beyond any finite ingest-time index vocabulary.
+
+Read-only hostile tests corroborate that current implementation terrain preserves many of these distinctions, but tests are not determinant authority and do not close M04/M05.
+
+## Learned-world information necessity
+
+C11 source reconstruction and learned-world persistence answer different questions. Source replay can reconstruct observations when determinants are exact. It does not by itself reconstruct the historical governed fact that Rawlsing:
+
+- discovered a particular candidate association;
+- evaluated it under a particular search frontier/program;
+- validated/rejected it under a particular method/version;
+- accepted it as an empirical social relation;
+- published, superseded or withdrew a learned release;
+- admitted it through I04 for a named structural use; or
+- returned a particular governed possibility inference once such a model exists.
+
+Therefore rebuildability does not make governed epistemic history disposable.
+
+The required epistemic distinctions remain:
+
+`RAW/C11 OBSERVATION`
+`!= DISCOVERED CANDIDATE ASSOCIATION`
+`!= VALIDATION / ROBUSTNESS / UNCERTAINTY STATE`
+`!= ACCEPTED EMPIRICAL SOCIAL RELATION`
+`!= POSITIONED-SUBJECT POSSIBILITY FIELD`
+`!= I04-ELIGIBLE / STRUCTURALLY ADMITTED RELATION`
+`!= GENERATED ACTOR STATE`.
+
+## Joint geometry requirement
+
+The learned world must preserve sufficient information for:
+
+- same-respondent joint incidence;
+- k-way response configurations;
+- branch/subgroup conditioners and ancestry;
 - multimodal and small stable minority modes;
 - recurrent contradictory configurations;
 - recursive subgroup structure;
@@ -100,93 +168,118 @@ The learned world must preserve more than pairwise associations. At minimum, a l
 
 `PAIRWISE_COTRAVEL != SUFFICIENT_JOINT_POSSIBILITY_GEOMETRY`.
 
-A k-way possibility distribution cannot in general be reconstructed exactly from pairwise marginals. Therefore a learned product that claims higher-order joint possibility must either preserve the accepted joint object itself or preserve enough exact respondent-grain/source-backed determinants plus frozen model/method authority to regenerate that joint object. Pairwise summaries alone are not a lawful determinant set.
+A k-way possibility distribution cannot in general be exactly reconstructed from pairwise marginals. A learned product claiming higher-order joint possibility must therefore preserve the accepted joint object itself **or** preserve exact respondent-grain/source-backed determinants plus a frozen model/method authority sufficient to regenerate it. Pairwise summaries alone are not a lawful determinant set.
 
-Current exact-bounded I05 already names candidate families including bounded k-way response configurations, conditional reversals, minority/nonmodal departures, recursive subgroup forks and branch-conditioned cotravel. That is evidence that the recovered empirical capability is not merely pairwise. It is not authorization to invent a broader adaptive search program or a positioned-subject possibility model.
-
-## Epistemic-stage noncollapse
-
-C02 preserves distinct release/state grains for:
-
-`RAW/C11 OBSERVATION`
-`!= DISCOVERED CANDIDATE ASSOCIATION`
-`!= VALIDATION / ROBUSTNESS / UNCERTAINTY STATE`
-`!= ACCEPTED EMPIRICAL SOCIAL RELATION`
-`!= POSITIONED-SUBJECT POSSIBILITY FIELD`
-`!= I04-ELIGIBLE / STRUCTURALLY ADMITTED RELATION`
-`!= GENERATED ACTOR STATE`.
-
-Source replay can reproduce observations. It does not reconstruct the historical fact that a particular candidate was discovered, that a particular validation regime accepted/rejected it, that a relation was published or superseded, or that I04 admitted it for a named structural use unless the governing release/receipt state is also preserved.
-
-Thus independent persistence is earned by **governed epistemic history**, not by physical duplication of every source event.
+Current exact-bounded I05 already includes bounded k-way response configurations, conditional reversals, minority/nonmodal departures, recursive subgroup forks and branch-conditioned cotravel. That is implementation/governed-program evidence that recovered capability exceeds pairwise association. It does not authorize a broader adaptive search program or positioned-subject possibility model.
 
 ## Multi-universe and empirical-time law
 
-C02 requires learned evidence/products to retain, when applicable:
+Learned evidence/products must retain, where applicable:
 
 `source-family -> source -> release/wave -> empirical universe -> geography/scope -> historical time -> risk set -> topology -> measurement/question identity -> proxy/comparability status`.
 
-The I07 source-relation contract is exact and relation-specific. Source semantic equivalence, respondent linkage, overlap/nonduplication, sample pooling, estimand composition and backfill are separate relation kinds. Provenance/harmonization aliases grant none of them. A missing exact relation authority preserves distinctness/noncomparability/unauthorized composition rather than authorizing a heuristic join.
+I07 relations are exact and relation-specific. Source semantic equivalence, respondent linkage, overlap/nonduplication, sample pooling, estimand composition and backfill are distinct grants. Provenance/harmonization aliases authorize none of them. Missing exact authority preserves distinctness/noncomparability/unauthorized composition.
 
-Disagreement among universes is itself learned information and must not be averaged away by a physical storage decision.
+Disagreement among universes is learned information; a storage decision may not average it away.
 
 ## Positioned-subject possibility boundary
 
-The information needed for a future positioned-subject empirical possibility field is:
+A future positioned-subject empirical possibility field requires at least:
 
-- generated actor-comparable fact ExactRefs supplied by the lawful downstream owner;
-- exact comparator/binding authority establishing which empirical coordinates those facts may condition;
+- generated actor-comparable fact ExactRefs from the lawful downstream owner;
+- exact comparator/binding authority for empirical coordinates;
 - accepted empirical relation/joint-geometry releases;
 - source-universe/time/comparability scope;
 - possibility model/version and uncertainty semantics;
-- an inference receipt binding request facts, comparators, learned releases, model/version and returned possibility state.
+- inference receipt binding request facts, comparators, learned releases, model/version and returned possibility state.
 
-Current PRE553 public-object law explicitly lists `ActorComparatorReceipt`, `PositionedSubjectEmpiricalPossibilityField`, and `V3EmpiricalPossibilityInput` as deferred families. C02 therefore returns `MISSING_AUTHORITY` for the complete comparator/possibility-model law.
+PRE553 public-object law explicitly lists `ActorComparatorReceipt`, `PositionedSubjectEmpiricalPossibilityField`, and `V3EmpiricalPossibilityInput` as deferred. C02 therefore returns `MISSING_AUTHORITY` for the complete comparator/possibility-model law. No structural position, demographic bucket or survey response may be substituted for actor psyche. Possibility may constrain; realization remains V3-owned.
 
-This missing authority is not permission to substitute structural position, demographic bucket or survey response for actor psyche. The future service may constrain possibility; realization remains V3-owned.
+## Learned release identity versus payload bytes
+
+C02 sharpens the first-return persistence wording:
+
+### Must survive when governed
+
+- learned release identity and epistemic state;
+- exact method/algorithm/version and authority snapshots;
+- source/universe/time/risk-set/comparability dependencies;
+- validation evidence/outcome required by the release law;
+- search frontier/completeness/branch state required for replay;
+- publication/supersession/withdrawal history where governed;
+- I04 admission state/provenance;
+- exact replay/integrity closure.
+
+### Payload treatment
+
+A learned payload is **not automatically physically permanent** merely because its release identity/history must survive. Payload bytes may be regenerated when exact source, method, authority, release identity and replay determinants reproduce the same authoritative content. The payload itself earns independent persistence when the governing release makes the exact payload authoritative historical content or when exact regeneration from preserved determinants is not guaranteed.
+
+This preserves the law:
+
+`REBUILDABLE != SEMANTICALLY_DISPOSABLE`
+
+without inventing the opposite law:
+
+`SEMANTICALLY_DURABLE_RELEASE == PERMANENT_DUPLICATE_PAYLOAD_BYTES`.
 
 ## Independent persistence classes
 
-### Persist as authority or governed learned product
+### Persist as authority or governed semantic/learned state
 
 - immutable source artifact identity/bytes under source-retention law;
-- governed semantic/topology/routing/design/source-relation authority where it is not inherent in source bytes;
-- governed candidate releases when they enter a review/validation workflow;
-- validation/robustness/uncertainty releases once the governing method exists;
-- accepted empirical social relation releases;
-- accepted higher-order joint/multimodal/minority/contradictory geometry needed for serving and historical learned-world identity;
+- governed semantic/topology/routing/design/source-relation authority not inherent in source bytes;
+- governed candidate/validation/accepted-relation releases according to their owner;
+- accepted higher-order joint/multimodal/minority/contradictory learned geometry when it is authoritative or not exactly reproducible;
 - universe/time-indexed learned fields when accepted as products;
-- I04 structural admission objects for exact target use;
+- I04 admission objects for exact target use;
 - future possibility-model versions if/when authorized.
 
-### Persist as provenance/replay receipt
+### Persist as provenance/replay/history
 
 - authority snapshots and dependency closure;
-- exact search frontier/completeness/branch receipts;
-- source relation/comparability receipts used in an inference;
-- validation evidence/method/outcome receipts;
+- search frontier/completeness/branch receipts;
+- source-relation/comparability receipts used by an inference;
+- validation method/evidence/outcome receipts;
 - ExactRef/content-hash/replay roots;
 - possibility inference receipts;
 - I04 admission provenance;
-- publication/supersession history where a learned release is governed as a historical release.
+- publication/supersession/withdrawal history where governed.
 
-### May be regenerated or transient when deletion changes only cost
+### Regenerable/transient only after exact derivability is proved
 
-- physical C11 event carriers whose entire logical content is exactly reconstructable from immutable source + governed authority;
-- query indexes, predicate indexes, temporary respondent sets and compiler working sets;
-- derived diagnostic summaries that are neither authoritative learned releases nor required replay evidence;
-- cached projections whose keys bind every semantic determinant and whose deletion does not narrow I03/I05 reachability.
+- a physical C11 carrier **only for the exact logical fields/scopes certified reconstructable** from immutable source + governed authority;
+- query/predicate indexes and temporary respondent/compiler working sets;
+- nonauthoritative derived diagnostics;
+- cached projections whose deletion changes only cost and does not narrow I03/I05 reachability.
+
+The first bullet is deliberately scoped: the present C02 block means no campaign actor may read it as authorization to delete unresolved M04/M05 information.
+
+## Authority-66 correction
+
+The first read receipt omitted `66_R5_LONG_COMPACT_V2_SERIAL_TURBO_MAXIMIZATION_AUTHORITY.md`. The correction pass read it. Authority 66 is a physical-execution optimization authority and explicitly freezes source/decoder semantics, C11 M01–M18, I03/I05/I04 truth conditions, canonical object identity and downstream semantic distinctions. It supplies no new M04/M05 occurrence/topology FD certificate and therefore does not change the corrected holding.
+
+## Unresolved Dva read-first reference
+
+Chetiri read-first law names `WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`. At the exact pinned start HEAD, the Dva directory listing plus repository searches for the exact name and related closure-name terms did not resolve that file. C02 inferred nothing from absent content. This remains an explicit read-receipt gap for HQ, separate from the M04/M05 derivability block.
 
 ## Strongest hostile self-review objection
 
-The strongest surviving objection is event-occurrence/topology derivability: source-cell geometry does not prove semantic occurrence identity, and C02 was forbidden to probe raw sources for a concrete source-specific exception. Therefore C02 cannot prove that every future source has zero event/topology exceptions.
+The strongest objection to the first return survives and is dispositive: it is logically inconsistent to mark M04/M05 occurrence/topology determinant domains unresolved/unbounded and simultaneously certify complete C11 reconstructability. The worker order forbids exactly that inference.
 
-This objection does **not** establish irreducible event-grain persistence. It establishes a fail-closed requirement: if an event-specific occurrence/topology fact is neither contained in immutable source bytes nor exactly determined by governed authority, the smallest exact governed occurrence/topology material must survive. The campaign must not replace that uncertainty with a blanket permanent copy of every physical cell.
+The correction pass therefore refuses all three unjustified moves:
+
+1. treating current source geometry/tests as an FD certificate;
+2. treating an unknown exception domain as a proven sparse exception domain; or
+3. treating failure to prove derivability as proof that a permanent full event carrier is necessary.
+
+What remains is a precise block, not an architectural guess.
 
 ## Disposition
 
-`C02_PASS__C11_RECONSTRUCTABLE_FROM_SOURCE_PLUS_GOVERNED_SIDE_MATERIAL`
+`C02_BLOCK__UNRESOLVED_DERIVABILITY`
 
 Event-grain irreducible persistence witness: `NONE`.
 
-Learned-world independent persistence: `YES` for governed release/validation/search/admission/provenance states described above, with missing model authority explicitly fail-closed.
+Blocking witness: `M04_M05_EVENT_OCCURRENCE_TOPOLOGY_DERIVABILITY_UNPROVED`.
+
+Learned-world independent persistence: `YES` for governed semantic/historical release, validation/search/admission/provenance state as owned by the relevant authority; payload duplication is required only where exact reproducibility or release law does not permit regeneration.
