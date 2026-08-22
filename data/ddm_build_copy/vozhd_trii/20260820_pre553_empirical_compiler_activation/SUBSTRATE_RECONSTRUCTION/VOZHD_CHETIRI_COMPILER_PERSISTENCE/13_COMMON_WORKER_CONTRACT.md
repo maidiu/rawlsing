@@ -48,8 +48,12 @@ Read, in authority order:
 - parent `10_FORMAT_DECODER_CONTRACT.md`
 - parent `52_POST_R4_PHYSICAL_OPTIMIZATION_CANDIDATE_REGISTER_AND_SAFETY_LAW.md`
 - parent `56_POST_R4_ROUND2_FINAL_SYNTHESIS_AND_R5_CARRIER_CONTRACT.md`
+- parent `61_R5_BOUNDED_ACCEPTANCE_AND_FULL_WVS7_LITS1_REAL_SOURCE_COURT_AUTHORITY.md`
+- parent `62_R5_FULL_SOURCE_PROGRESS_TELEMETRY_ADDENDUM.md`
 - parent `63_R5_WVS7_RESOURCE_FAILURE_AND_LONG_COMPACT_ENCODING_REPAIR_AUTHORITY.md`
 - parent `64_R5_LONG_COMPACT_V2_EXACT_VALIDATION_AND_WVS_PREFIX_DENSITY_COURT.md`
+- parent `65_R5_LONG_COMPACT_V2_PARALLEL12_COMPILER_AUTHORITY.md`
+- any newer PRE553 authority or accepted receipt existing at the exact launch SHA.
 
 ### Chetiri law
 
@@ -63,9 +67,12 @@ Read, in authority order:
 - `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`
 - `12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md`
 - this common worker contract;
+- `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md`;
 - your exact cell order under `WORKER_ORDERS/`.
 
 Then read cell-specific semantic/runtime authorities named in your order.
+
+The Trii crosswalk is educational and non-dispositive, but its obligation inventory is mandatory evidence terrain. You may reject the current R5 realization of an obligation only by showing exactly how the same obligation remains satisfied without that persistent carrier stage.
 
 ## 3. AUTHORITY ORDER
 
@@ -150,7 +157,48 @@ Every object/state your cell discusses must be assigned one primary class:
 
 Do not create fuzzy categories such as `probably persist`.
 
-## 8. REQUIRED TERMINAL VISION CHECKSUM
+## 8. REQUIRED TRII-OBLIGATION CROSSWALK
+
+Every worker must explicitly classify every Trii obligation materially touched by the cell. Reading `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md` without producing this classification is noncompliant.
+
+Use only these obligation classifications, one or more per row:
+
+- `ARCHITECTURALLY_REQUIRED_WITHOUT_R5`
+- `SOURCE_REPLAY_REQUIRED_WITHOUT_R5`
+- `C11_CAPABILITY_REQUIRED`
+- `I03_CAPABILITY_REQUIRED`
+- `I05_CAPABILITY_REQUIRED`
+- `I04_PROVENANCE_REQUIRED`
+- `PERSISTENT_CARRIER_SPECIFIC`
+- `EXECUTION_OPTIMIZATION_ONLY`
+- `REGENERABLE_TRANSIENT_OR_CACHE_CANDIDATE`
+- `PERSISTENT_SIDECAR_OR_RECEIPT_CANDIDATE`
+- `IRREDUCIBLE_EVENT_GRAIN_PERSISTENCE_POSSIBLE`
+- `UNRESOLVED__NAMED_PROOF_REQUIRED`
+
+Required file:
+
+`TRII_OBLIGATION_CROSSWALK_MATRIX.csv`
+
+Required columns:
+
+`trii_obligation,current_r5_realization,obligation_classification,still_required_without_r5,proposed_non_r5_realization,persistence_class,exact_authority_or_evidence,reconstruction_or_execution_path,completeness_or_integrity_proof,cell_relevance,blocking_witness,notes`
+
+Rules:
+
+1. Classify the obligation, not merely the current R5 file or field carrying it.
+2. `PERSISTENT_CARRIER_SPECIFIC` does not mean the underlying obligation disappears; name what remains required, if anything.
+3. `REGENERABLE_TRANSIENT_OR_CACHE_CANDIDATE` requires a deterministic regeneration path and delete-with-zero-truth-loss argument.
+4. `PERSISTENT_SIDECAR_OR_RECEIPT_CANDIDATE` requires a named authority owner and invalidation determinant.
+5. `IRREDUCIBLE_EVENT_GRAIN_PERSISTENCE_POSSIBLE` is not a conclusion; it requires a minimal exact witness before HQ may treat it as proven.
+6. Any `UNRESOLVED__NAMED_PROOF_REQUIRED` row must be repeated in `UNRESOLVED_EVIDENCE.md`.
+7. Do not classify Trii implementation mechanics such as parallel worker count as architectural obligation unless exact evidence proves a semantic/replay dependency.
+
+The governing question for every row is:
+
+> If R5 vanished, what exactly would Rawlsing still have to know, prove, reconstruct, execute or audit, and where would that obligation live?
+
+## 9. REQUIRED TERMINAL VISION CHECKSUM
 
 Your return must include the complete 24-row `VC4_TERMINAL_VISION_CHECKSUM` defined in `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`.
 
@@ -160,7 +208,7 @@ For any row marked `PROTECTS_DIRECTLY` or `PRESERVES_REQUIRED_PREREQUISITE`, cit
 
 For any row marked `DOWNSTREAM_OWNS__NO_EARLY_INSTANTIATION`, identify the downstream owner and how your proposal avoids leakage.
 
-## 9. REQUIRED NO-STARVATION / NO-BLOAT TABLE
+## 10. REQUIRED NO-STARVATION / NO-BLOAT TABLE
 
 Your return must include, for every proposed persistent or deleted/demoted object:
 
@@ -168,7 +216,29 @@ Your return must include, for every proposed persistent or deleted/demoted objec
 
 No primary object may be omitted from this table.
 
-## 10. EVIDENCE DISCIPLINE
+## 11. EXACT-NEGATIVE / COMPLETENESS LAW
+
+Any cell touching query, discovery, replay, audit, integrity, source access or carrier removal must distinguish:
+
+`PROVED_NEGATIVE_AFTER_COMPLETE_GOVERNED_FRONTIER`
+
+from
+
+`NO_RESULT_FROM_INCOMPLETE_OR_UNPROVED_EXECUTION`.
+
+A source-backed architecture may not convert reader EOF, partial scan, failed chunk, compatibility failure, missing cache partition, interrupted build or unverified transient state into a semantic negative.
+
+If your cell proposes eliminating an R5 completeness/inventory mechanism, name the exact replacement proof of governed frontier completion or return `UNRESOLVED__NAMED_PROOF_REQUIRED`.
+
+## 12. I05 OPEN-WORLD LAW
+
+Any cell touching execution/materialization/caching must preserve the exact bounded I05 frontier independent of known-at-design-time predicates.
+
+A cache, bitmap, index, projection or transient image is lawful only if its deletion changes performance, not the set of lawful unforeseen combinations Rawlsing can inspect.
+
+If a proposed accelerator defines the reachable query/discovery vocabulary, it is not merely an accelerator and must be surfaced as a capability/architecture change.
+
+## 13. EVIDENCE DISCIPLINE
 
 Every material claim must be one of:
 
@@ -184,7 +254,7 @@ Do not mix them.
 
 Measured claims must record method, inputs, versions and units.
 
-## 11. RAW SOURCE LAW
+## 14. RAW SOURCE LAW
 
 Raw source probing is forbidden unless your order explicitly permits it.
 
@@ -198,7 +268,7 @@ If permitted:
 - record exact decoder invocation;
 - clean scratch after the court unless HQ says otherwise.
 
-## 12. CODE LAW
+## 15. CODE LAW
 
 Unless separately authorized, accepted runtime is READ-ONLY.
 
@@ -216,12 +286,13 @@ Do not:
 
 If a prototype is required, HQ must give a separate write scope and it must remain noncanonical/throwaway until adjudicated.
 
-## 13. HOSTILE SELF-REVIEW BEFORE RETURN
+## 16. HOSTILE SELF-REVIEW BEFORE RETURN
 
 Before returning, attempt to falsify your own result against at least:
 
 - non-WVS/non-LiTS source variation;
 - missing/routing/topology edge cases;
+- exact-negative/completeness proof;
 - open-world future I05 combinations;
 - ExactRef/replay implications;
 - cache deletion;
@@ -233,20 +304,21 @@ Before returning, attempt to falsify your own result against at least:
 
 Record the strongest surviving objection.
 
-## 14. REQUIRED RETURN FILES
+## 17. REQUIRED RETURN FILES
 
 Every cell must provide its cell-specific required outputs plus:
 
 - `AUTHORITY_READ_RECEIPT.md`
 - `RETURN_MANIFEST.json`
 - `CHANGED_FILES.txt`
+- `TRII_OBLIGATION_CROSSWALK_MATRIX.csv`
 - `TERMINAL_VISION_CHECKSUM.csv`
 - `PERSISTENCE_STARVATION_BLOAT_MATRIX.csv`
 - `UNRESOLVED_EVIDENCE.md`
 
 `UNRESOLVED_EVIDENCE.md` must explicitly say `NONE` if none.
 
-## 15. RETURN MANIFEST MINIMUM SCHEMA
+## 18. RETURN MANIFEST MINIMUM SCHEMA
 
 `RETURN_MANIFEST.json` must contain:
 
@@ -257,6 +329,8 @@ Every cell must provide its cell-specific required outputs plus:
 - `return_sha` if known after commit, otherwise generated in final receipt step;
 - `status` = `RETURNED`;
 - `authority_files_read`;
+- `trii_crosswalk_rows_classified`;
+- `trii_crosswalk_unresolved_rows`;
 - `source_files_probed` with SHA/config, or empty list;
 - `runtime_files_inspected`;
 - `runtime_files_modified`;
@@ -266,7 +340,7 @@ Every cell must provide its cell-specific required outputs plus:
 - `final_disposition`;
 - `stop_token`.
 
-## 16. FINAL RESPONSE FORMAT TO HQ
+## 19. FINAL RESPONSE FORMAT TO HQ
 
 Return only:
 
@@ -275,13 +349,14 @@ Return only:
 3. exact final disposition;
 4. blocking witness, if any;
 5. required output paths;
-6. terminal checksum status;
-7. unresolved evidence;
-8. STOP token.
+6. Trii obligation-crosswalk status;
+7. terminal checksum status;
+8. unresolved evidence;
+9. STOP token.
 
 Do not bury the result in narrative.
 
-## 17. WORKER STOP LAW
+## 20. WORKER STOP LAW
 
 When your assigned evidence burden is satisfied, STOP.
 
