@@ -2,11 +2,13 @@
 
 Short tag: `VC4-COMPILER/PERSISTENCE`
 
-Status: `PLANNED_COURT_LAW__NO_EXECUTION_AUTHORITY_YET`
+Status: `PLANNED_COURT_LAW__NO_EXECUTION_AUTHORITY_YET__TERMINAL_VISION_PARITY_REQUIRED`
 
 ## 0. PURPOSE
 
 C09 may execute only after C01–C08 have frozen the logical workload and persistence/replay requirements. This prevents benchmark design from deciding architecture by convenience.
+
+The benchmark is subordinate to the Rawlsing terminal person/application vision. A candidate that is faster/smaller because it starves later structural-personhood capability is not a valid candidate.
 
 ## 1. CANDIDATES
 
@@ -38,7 +40,8 @@ Forbidden benchmark bias:
 - narrowing I05 workload to known cached predicates;
 - selecting only WVS-friendly primitives;
 - hiding decoder incompatibility setup cost;
-- hiding cleanup/recovery cost.
+- hiding cleanup/recovery cost;
+- removing a terminally relevant distinction from one candidate's workload to make it appear cheaper.
 
 ## 3. PERSISTENT SIZE ACCOUNTING
 
@@ -104,6 +107,8 @@ The exact suite is frozen by C04/C05, but must contain at least:
 16. fresh-process repeat;
 17. delete-all-caches rebuild.
 
+The workload must preserve enough hostile cases to prove that later structural compilation still has access to time, topology, uncertainty, contradiction, routing/design and exact provenance rather than merely producing the same happy-path scalar answers.
+
 ## 7. PROVING SOURCES
 
 Required baseline:
@@ -129,7 +134,22 @@ For each candidate require, where applicable:
 - I04 fixture admission parity if exercised;
 - deterministic replay parity;
 - integrity/fail-closed parity;
-- no legacy fallback.
+- no legacy fallback;
+- full `VC4_TERMINAL_VISION_CHECKSUM` parity.
+
+Terminal-vision parity means the candidate does not erase prerequisites for:
+
+- relational nine-strata structure;
+- contradiction/coexisting pressure;
+- time/gap/noncomparability;
+- mediation and pressure-flow topology;
+- V3-owned orientation/development/attractor formation;
+- actor opacity/knowledge boundaries;
+- genealogy;
+- Absolute Horizon distinction;
+- lawful uncertainty;
+- divergent possible lives and human remainder;
+- provenance/epistemic noncollapse.
 
 Any failed required parity excludes a candidate from performance selection.
 
@@ -163,41 +183,66 @@ C09 SHALL publish at least:
 
 `PERSISTENT_BYTES_REMOVABLE_WITH_ZERO_INFORMATION_LOSS`
 
-## 10. NO SINGLE-SCORE MAGIC
+`TERMINAL_VISION_PARITY_STATUS`
 
-C09 may not invent an opaque weighted score.
+## 10. DECISION OBJECTIVE ORDER
 
-Report a Pareto comparison under the campaign's lexicographic laws.
+No opaque aggregate score.
+
+First reject any candidate failing semantic/replay/terminal parity.
+
+For the permanent V3-facing product lifecycle, compare:
+
+1. flawless effectiveness;
+2. runtime speed;
+3. persistent lightness;
+4. operational simplicity.
+
+For compiler machinery, compare:
+
+1. exactness;
+2. bounded/fail-closed behavior;
+3. build throughput;
+4. scratch efficiency;
+5. maintainability.
+
+Do not let compiler convenience outrank the permanent runtime/personhood objective.
+
+## 11. PARETO LAW
+
+C09 reports a Pareto comparison under the lexicographic laws above.
 
 A candidate is dominated if another candidate:
 
-- passes all the same correctness/capability gates;
+- passes all the same correctness/capability/terminal gates;
 - is no worse on every governing objective relevant to the stage;
 - and is materially better on at least one.
 
 Where tradeoffs remain, C09 returns the tradeoff to HQ rather than hiding it in a score.
 
-## 11. REQUIRED CLEANUP PROOF
+## 12. REQUIRED CLEANUP PROOF
 
 For B/C:
 
 - delete all transformed empirical scratch/cache designated disposable;
 - prove no authoritative information was lost;
 - re-open from source + authority;
-- reproduce selected semantic/replay outputs.
+- reproduce selected semantic/replay outputs;
+- verify terminally relevant structural prerequisites remain reconstructable.
 
 For A:
 
 - identify whether deletion of the persistent canonical event carrier causes information loss or only forces reconstruction;
 - if reconstruction is possible, state exactly why the carrier nevertheless qualifies as mandatory persistent product rather than optional cache.
 
-## 12. C09 ALLOWED DISPOSITIONS
+## 13. C09 ALLOWED DISPOSITIONS
 
 - `C09_PARITY_PASS__A_PARETO_LEADER`
 - `C09_PARITY_PASS__B_PARETO_LEADER`
 - `C09_PARITY_PASS__C_PARETO_LEADER`
 - `C09_PARITY_PASS__NONDOMINATED_TRADEOFF__HQ_REQUIRED`
 - `C09_BLOCK__PARITY_FAILURE`
+- `C09_BLOCK__TERMINAL_VISION_PARITY_FAILURE`
 - `C09_BLOCK__RESOURCE_FAILURE`
 - `C09_BLOCK__INCOMPARABLE_OR_UNFROZEN_WORKLOAD`
 - `C09_BLOCK__TRUSTWORTHY_SOURCE_OR_ENVIRONMENT_UNAVAILABLE`
