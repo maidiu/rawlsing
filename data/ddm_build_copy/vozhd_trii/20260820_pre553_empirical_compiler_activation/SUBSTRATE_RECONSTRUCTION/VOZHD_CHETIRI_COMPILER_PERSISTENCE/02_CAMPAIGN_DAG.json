@@ -1,7 +1,7 @@
 {
   "campaign_id": "VC4-COMPILER/PERSISTENCE",
   "name": "VOZHD CHETIRI — COMPILER & PERSISTENCE ARCHITECTURE",
-  "status": "EXPLORATORY__NON_DISPOSITIVE__G0_PASSED__C03_AUTHORIZED__P1_ACTIVE__NO_ARCHITECTURE_REOPEN",
+  "status": "EXPLORATORY__NON_DISPOSITIVE__G0_PASSED__C03_RETURNED__C03R1_MEASUREMENT_COMPLETION_AUTHORIZED__P1_ACTIVE__NO_ARCHITECTURE_REOPEN",
   "governing_question": "Which physical empirical representations are actually necessary to produce, serve, validate, replay and audit Rawlsing's complete learned world while preserving source authority and leaving V3-generated life downstream?",
   "domain_model": ["THE_PAST", "THE_LEARNED_WORLD_EMPIRICAL_SOCIAL", "THE_LEARNED_WORLD_STRUCTURAL", "THE_LIFE_V3"],
   "consumption_lifecycles": ["COMPILER_DISCOVERY_TIME", "GENERATED_PERSON_RUNTIME", "EMPIRICAL_INFERENCE_SERVICE", "DDM_ANALYTICAL_SERVICE", "AUDIT_REPLAY"],
@@ -24,7 +24,9 @@
     "26_P0S_RETURN_INTAKE_AND_LOCAL_REISSUE_ADJUDICATION.md",
     "27_C02R2_LOCAL_COMPLETE_SOURCE_OCCURRENCE_TOPOLOGY_PROOF_REISSUE.md",
     "28_HQ_C02R2_EVIDENCE_TO_M04_M05_ADJUDICATION_CONTRACT.md",
-    "G0_C02R2_HQ_ADJUDICATION/G0_FINAL_ADJUDICATION.md"
+    "G0_C02R2_HQ_ADJUDICATION/G0_FINAL_ADJUDICATION.md",
+    "29_C03_NATIVE_SOURCE_EXECUTION_LAUNCH_AUTHORITY.md",
+    "30_C03_RETURN_INTAKE_AND_C03R1_MEASUREMENT_COMPLETION_AUTHORITY.md"
   ],
   "candidate_families": {
     "A": "PERSISTENT_CANONICAL_EVENT_CARRIER",
@@ -35,7 +37,7 @@
   "phases": [
     {"id":"P0","name":"COMPLETE_DESTINATION_AND_INFORMATION_NECESSITY","cells":["C01","C02","C06","C07"],"state":"CLOSED__G0_PASS","closes_at":"G0_ARCHITECTURAL_FEASIBILITY"},
     {"id":"P0S","name":"SUPPLEMENTAL_G0_CLOSURE","cells":["C02R1","C07R1","C02R2","HQ_C02R2_ADJUDICATION"],"state":"CLOSED__C02R2_ACCEPTED__HQ_G0_ADJUDICATED","launch_mode":"COMPLETE","closes_at":"G0_ARCHITECTURAL_FEASIBILITY"},
-    {"id":"P1A","name":"NATIVE_EXECUTION_TERRAIN","cells":["C03"],"state":"AUTHORIZED__C03_READY","requires":["G0_PASS"],"closes_at":"C03_ACCEPTED"},
+    {"id":"P1A","name":"NATIVE_EXECUTION_TERRAIN","cells":["C03","C03R1"],"state":"ACTIVE__C03_CORE_EVIDENCE_ADMISSIBLE__C03R1_REQUIRED","requires":["G0_PASS"],"closes_at":"C03_ACCEPTED"},
     {"id":"P1B","name":"QUERY_DISCOVERY_LEARNED_WORLD_OPERATIONS_FEASIBILITY","cells":["C04","C05","C08"],"state":"LOCKED__C03_NOT_ACCEPTED","requires":["G0_PASS","C03_ACCEPTED"],"closes_at":"G1_EXECUTION_FEASIBILITY"},
     {"id":"P2","name":"PHYSICAL_AND_AUTONOMOUS_DISCOVERY_BAKEOFF","cells":["C09"],"state":"LOCKED","requires":["G1_CLOSED","HQ_C09_COURT_MANIFEST_FROZEN"],"closes_at":"G2_MEASURED_BAKEOFF"},
     {"id":"P3","name":"DUAL_HOSTILE_RED_TEAM","cells":["C10"],"state":"LOCKED","requires":["G2_PROVISIONAL_SYNTHESIS_CLOSED"],"closes_at":"G3_HOSTILE_SURVIVAL"},
@@ -50,7 +52,8 @@
     "C07R1": {"phase":"P0S","state":"ACCEPTED__C07_AXIS_CLOSED","branch":"agent/vozhd-chetiri-c07r1-terminal-authority-compliance","result":"C07R1_PASS__INDEPENDENT_LEARNED_WORLD_DAG_UPHELD_UNDER_DIRECT_TERMINAL_AUTHORITY","holding_delta":"NO_MATERIAL_DELTA"},
     "C02R2": {"phase":"P0S","state":"ACCEPTED__EVIDENCE_VALID__HUMAN_COMMANDER_SCRATCH_RETENTION_EXCEPTION","branch":"agent/vozhd-chetiri-c02r2-local-occurrence-topology-proof","return_head":"90e8c5fd99f607c5abb62435e08a6448364981c2","source_sha_gate":"35/35","sources_decoded":35,"role":"DUMB_EVIDENCE_EXECUTOR","architecture_effect":"HQ_INTERPRETED_ONLY"},
     "HQ_C02R2_ADJUDICATION": {"phase":"P0S","state":"ACCEPTED__G0_PASS","owner":"VOZHD_CHETIRI_HQ_ONLY","result":"G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_ONLY_WITH_EXACT_NAMED_PERSISTENT_SIDE_MATERIAL","c06_u5":"CLOSED__EXACT_NAMED_ADDITIONAL_MATERIAL_REQUIRED"},
-    "C03":{"phase":"P1A","state":"AUTHORIZED__READY_FOR_LAUNCH","branch":"agent/vozhd-chetiri-c03-native-source-access","order":"WORKER_ORDERS/C03_NATIVE_SOURCE_EXECUTION_RECON.md"},
+    "C03":{"phase":"P1A","state":"HQ_REVIEW__CORE_EVIDENCE_ADMISSIBLE__ACCEPTANCE_WITHHELD_PENDING_C03R1","branch":"agent/vozhd-chetiri-c03-native-source-access","return_head":"4ba1ed44c0385a9963c0a79eb84332ee5896f6dd","core_holding":"NATIVE_READER_API_SUPPORTS_BOUNDED_SELECTED_AND_CHUNK_REQUESTS__FRESH_CALLS_HAVE_MATERIAL_SETUP_COST__BYTE_LEVEL_PRUNING_UNPROVEN","acceptance_defects":["MISSING_WIDTHS_2_5_25_50","INSUFFICIENT_REPETITIONS","RSS_UNIT_UNRESOLVED","RETURN_MANIFEST_UNSEALED"]},
+    "C03R1":{"phase":"P1A_SUPPLEMENT","state":"AUTHORIZED__READY_FOR_LOCAL_LAUNCH","branch":"agent/vozhd-chetiri-c03r1-native-source-measurement-completion","order":"30_C03_RETURN_INTAKE_AND_C03R1_MEASUREMENT_COMPLETION_AUTHORITY.md","evidence_head":"4ba1ed44c0385a9963c0a79eb84332ee5896f6dd","role":"DUMB_MEASUREMENT_COMPLETION_EXECUTOR"},
     "C04":{"phase":"P1B","state":"LOCKED__C03_NOT_ACCEPTED"},
     "C05":{"phase":"P1B","state":"LOCKED__C03_NOT_ACCEPTED"},
     "C08":{"phase":"P1B","state":"LOCKED__C03_NOT_ACCEPTED"},
@@ -59,9 +62,9 @@
   },
   "gates": {
     "G0": {"state":"PASS__SOURCE_BACKED_LAWFUL_WITH_EXACT_NAMED_SIDE_MATERIAL","pass_token":"G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_ONLY_WITH_EXACT_NAMED_PERSISTENT_SIDE_MATERIAL","architecture_block_not_established":true,"required_next":["C03"]},
-    "G1":{"state":"OPEN__WAITING_FOR_C03_THEN_C04_C05_C08"},
+    "G1":{"state":"OPEN__C03R1_MEASUREMENT_COMPLETION_REQUIRED_BEFORE_P1B"},
     "G2":{"state":"LOCKED"},
     "G3":{"state":"LOCKED"}
   },
-  "edges": [["C01","G0"],["C02","C02R1"],["C06","C02R1"],["C07","C07R1"],["C02R1","C02R2"],["C07R1","G0"],["C02R2","HQ_C02R2_ADJUDICATION"],["HQ_C02R2_ADJUDICATION","G0"],["G0","C03"],["C03","C04"],["C03","C05"],["C03","C08"],["C04","G1"],["C05","G1"],["C08","G1"],["G1","C09"],["C09","G2"],["G2","C10"],["C10","G3"],["G3","HQ_SYNTHESIS"]]
+  "edges": [["C01","G0"],["C02","C02R1"],["C06","C02R1"],["C07","C07R1"],["C02R1","C02R2"],["C07R1","G0"],["C02R2","HQ_C02R2_ADJUDICATION"],["HQ_C02R2_ADJUDICATION","G0"],["G0","C03"],["C03","C03R1"],["C03R1","C04"],["C03R1","C05"],["C03R1","C08"],["C04","G1"],["C05","G1"],["C08","G1"],["G1","C09"],["C09","G2"],["G2","C10"],["C10","G3"],["G3","HQ_SYNTHESIS"]]
 }
