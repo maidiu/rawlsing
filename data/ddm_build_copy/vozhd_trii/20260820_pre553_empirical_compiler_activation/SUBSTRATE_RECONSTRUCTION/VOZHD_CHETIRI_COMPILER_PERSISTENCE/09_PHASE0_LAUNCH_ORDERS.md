@@ -4,151 +4,115 @@ Short tag: `VC4-COMPILER/PERSISTENCE`
 
 Status: `PREPARED__NOT_LAUNCHED__HQ_USER_ACTION_REQUIRED`
 
-Phase 0 contains exactly four independent non-dispositive cells:
+## 0. PHASE 0 CELLS
 
-- C01 terminal product / V3 consumption audit;
-- C02 C11 derivability / minimum persistent state;
-- C06 replay / ExactRef / integrity;
-- C07 compiled structural substrate / build-runtime boundary.
+Exactly four independent non-dispositive cells:
 
-These four may run in parallel because none depends on another's conclusion. They must read each other's returns only after initial independent return, during G0 synthesis, to avoid convergence-by-suggestion.
+- C01 — terminal product / V3 consumption audit;
+- C02 — C11 derivability / minimum persistent state;
+- C06 — replay / ExactRef / integrity;
+- C07 — compiled structural substrate / build-runtime boundary.
 
-## COMMON LAUNCH LAW
+They may run in parallel only after explicit campaign launch.
+
+They must not read sibling C01/C02/C06/C07 conclusions before their own first return; independence protects G0 from convergence-by-suggestion.
+
+## 1. COMMON LAUNCH LAW
 
 Repository: `maidiu/rawlsing`
 
-Base branch for exact launch pin: `agent/vozhd-trii-pre553-substrate-reconstruction-control`
+Launch base branch: `agent/vozhd-trii-pre553-substrate-reconstruction-control`
 
-At launch time HQ MUST resolve and insert the exact common base SHA. Do not launch from a moving branch name without recording the SHA in each order and registry return.
+At launch HQ must resolve and record one exact common starting SHA for the four Phase-0 branches, unless an explicit later per-cell reissue says otherwise.
 
-All cells:
+Every Phase-0 worker MUST read:
 
-- read only outside their dedicated return directory;
-- write no `rawlsing_next/**` runtime;
-- probe no raw source bytes except C02 targeted metadata only if absolutely required by a named derivability ambiguity;
-- do not modify R5 branches/candidate/tests;
-- do not treat implementation shape as authority where governing documents disagree;
-- return exact evidence paths and commit SHAs;
-- stop after required return package;
-- do not merge themselves.
+- whole-system governing spine listed in `00_READ_ME_FIRST.md`;
+- `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`;
+- `12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md`;
+- `13_COMMON_WORKER_CONTRACT.md`;
+- its exact file under `WORKER_ORDERS/`.
 
-## C01 LAUNCH ORDER
+All four:
 
-Branch:
+- accepted runtime read-only;
+- active R5 work read-only and untouched;
+- source bytes unprobed except C02 targeted metadata only if HQ separately pins a named ambiguity;
+- no worker architecture selection;
+- no worker self-acceptance;
+- full 24-row terminal vision checksum mandatory;
+- full persistence/starvation/bloat matrix mandatory;
+- common return files mandatory.
 
-`agent/vozhd-chetiri-c01-v3-runtime-persistence`
+## 2. C01
 
-Write only:
+Branch: `agent/vozhd-chetiri-c01-v3-runtime-persistence`
 
-`.../VOZHD_CHETIRI_COMPILER_PERSISTENCE/returns/C01/`
+Exact order:
 
-Mission:
+`WORKER_ORDERS/C01_TERMINAL_PRODUCT_V3_CONSUMPTION_AUDIT.md`
 
-Trace the accepted whole machine backward from application/V2/V3 through V558→V553 and producer-owned structural authority. Determine exactly what ordinary production runtime consumes and classify every empirical/structural/provenance artifact by persistence necessity. Do not redesign V3 or re-enumerate the whole architecture.
+Core question:
 
-Required outputs:
+> What does ordinary V3/application runtime actually consume, and which upstream artifacts are runtime/persistence requirements rather than compiler/build state?
 
-- `V3_RUNTIME_PERSISTENCE_REQUIREMENT_LEDGER.csv`
-- `C01_RESULT.md`
-- `C01_RESULT.json`
-- `READ_RECEIPT.md`
-- `CHANGED_FILES.txt`
+STOP token: `VC4_C01_RETURNED`
 
-Return token:
+## 3. C02
 
-`VC4_C01_TERMINAL_PRODUCT_AUDIT_RETURNED`
+Branch: `agent/vozhd-chetiri-c02-c11-derivability`
 
-## C02 LAUNCH ORDER
+Exact order:
 
-Branch:
+`WORKER_ORDERS/C02_C11_DERIVABILITY_MINIMUM_PERSISTENCE.md`
 
-`agent/vozhd-chetiri-c02-c11-derivability`
+Core question:
 
-Write only:
+> For every C11 M01–M18 obligation and concrete field/relation, what exact determinants prove derivability and what information is irreducibly persistent?
 
-`.../VOZHD_CHETIRI_COMPILER_PERSISTENCE/returns/C02/`
+STOP token: `VC4_C02_RETURNED`
 
-Mission:
+## 4. C06
 
-For C11 M01–M18 and every current logically observable field/relation required by I03/I05/I04, identify exact determinants, authority, reconstruction function, exception domain, integrity binding and minimum persistence class. Prove rather than assume derivability. A source-cell locator is not automatically a semantic event-occurrence ID.
+Branch: `agent/vozhd-chetiri-c06-replay-integrity`
 
-Required outputs:
+Exact order:
 
-- `C11_MINIMUM_PERSISTENCE_MATRIX.csv`
-- `SOURCE_BACKED_C11_INFORMATION_PROOF.md`
-- `C02_RESULT.json`
-- `READ_RECEIPT.md`
-- `CHANGED_FILES.txt`
+`WORKER_ORDERS/C06_REPLAY_EXACTREF_INTEGRITY.md`
 
-Return token:
+Core question:
 
-`VC4_C02_C11_DERIVABILITY_RETURNED`
+> What minimum roots/receipts/material must persist for exact identity, provenance, replay and fail-closed integrity if transformed empirical copies are deleted?
 
-## C06 LAUNCH ORDER
+STOP token: `VC4_C06_RETURNED`
 
-Branch:
+## 5. C07
 
-`agent/vozhd-chetiri-c06-replay-integrity`
+Branch: `agent/vozhd-chetiri-c07-compiled-substrate`
 
-Write only:
+Exact order:
 
-`.../VOZHD_CHETIRI_COMPILER_PERSISTENCE/returns/C06/`
+`WORKER_ORDERS/C07_COMPILED_STRUCTURAL_SUBSTRATE_BOUNDARY.md`
 
-Mission:
+Core question:
 
-Determine whether source SHA + decoder identity/config + authority closure + semantic projection version + governed semantic/product receipts can preserve exact object identity, content hashes, ExactRefs, semantic release identity, deterministic replay and fail-closed integrity without a permanent full canonical event carrier. Identify the minimum sufficient persistent replay/provenance material. Do not weaken current integrity guarantees.
+> What permanent compiled structural products should the still-unbuilt compiler-generator produce for V3, judged backward from the terminal Rawlsing person/application vision?
 
-Required outputs:
+STOP token: `VC4_C07_RETURNED`
 
-- `SOURCE_BACKED_REPLAY_AND_INTEGRITY_CONTRACT.md`
-- `PROVENANCE_MINIMUM_SUFFICIENT_RECEIPT.md`
-- `C06_RESULT.json`
-- `READ_RECEIPT.md`
-- `CHANGED_FILES.txt`
+## 6. HQ G0 SYNTHESIS
 
-Return token:
+Four returns existing is not enough.
 
-`VC4_C06_REPLAY_INTEGRITY_RETURNED`
+HQ must adjudicate each return under `14_HQ_COMMAND_AND_ADJUDICATION_LAW.md`, then reconcile:
 
-## C07 LAUNCH ORDER
+- C01 runtime need;
+- C02 information necessity;
+- C06 replay/integrity necessity;
+- C07 compiled destination/end-product necessity.
 
-Branch:
+HQ must preserve disagreements rather than averaging them.
 
-`agent/vozhd-chetiri-c07-compiled-substrate`
+Only a written `G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_CANDIDATE` unlocks C03.
 
-Write only:
-
-`.../VOZHD_CHETIRI_COMPILER_PERSISTENCE/returns/C07/`
-
-Mission:
-
-Define the permanent compiled structural/runtime product surface that the application/V3 should actually run from. Trace producer/consumer ownership across V553–V558/V3 and conserved V550–V552 functionality without reopening semantics. Specify the build/runtime boundary, runtime latency-sensitive indexes, provenance requirements, invalidation determinants and whether ordinary runtime requires any full empirical carrier.
-
-Required outputs:
-
-- `COMPILED_STRUCTURAL_SUBSTRATE_CONSTITUTION.md`
-- `V3_RUNTIME_PRODUCT_MANIFEST.csv`
-- `BUILD_RUNTIME_BOUNDARY.md`
-- `C07_RESULT.json`
-- `READ_RECEIPT.md`
-- `CHANGED_FILES.txt`
-
-Return token:
-
-`VC4_C07_COMPILED_SUBSTRATE_RETURNED`
-
-## G0 SYNTHESIS ORDER
-
-Do not open P1 merely because four returns exist.
-
-HQ must:
-
-1. verify exact start/base/return commits and write scopes;
-2. independently read all four returns;
-3. reconcile C01 runtime requirements with C07 permanent-product manifest;
-4. reconcile C02 derivability with C06 replay/integrity requirements;
-5. identify contradictions rather than averaging them;
-6. issue exactly one G0 disposition from `01_MASTER_CAMPAIGN_CHARTER.md`;
-7. only then prepare/launch C03/C04/C05/C08.
-
-No Phase-0 worker has authority to recommend immediate runtime implementation.
+No Phase-0 worker may launch C03 or any later cell.
