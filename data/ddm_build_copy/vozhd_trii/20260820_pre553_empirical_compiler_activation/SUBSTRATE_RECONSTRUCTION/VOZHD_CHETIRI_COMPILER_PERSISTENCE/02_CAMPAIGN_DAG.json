@@ -1,0 +1,133 @@
+{
+  "campaign_id": "VC4-COMPILER/PERSISTENCE",
+  "name": "VOZHD CHETIRI — COMPILER & PERSISTENCE ARCHITECTURE",
+  "status": "EXPLORATORY__NON_DISPOSITIVE__NO_ARCHITECTURE_REOPEN",
+  "governing_question": "Is persistent event-grain empirical materialization architecturally necessary, or a regenerable compiler intermediate between immutable source evidence and the permanent compiled structural substrate consumed by V3?",
+  "candidate_families": {
+    "A": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+    "B": "SOURCE_BACKED_VIRTUAL_C11",
+    "C": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS"
+  },
+  "frozen_nonchange": [
+    "SOURCE_TRUTH",
+    "DECODER_SEMANTICS",
+    "C11_M01_M18",
+    "I03_TRUTH_CONDITIONS",
+    "I05_FRONTIER_SEMANTICS",
+    "I04_ADMISSION_LAW",
+    "EXACTREF_AND_CONTENT_HASH_SEMANTICS",
+    "V553_V558",
+    "V3",
+    "V2",
+    "WHOLE_MACHINE_CLOSURE"
+  ],
+  "phases": [
+    {
+      "id": "P0",
+      "name": "ARCHITECTURAL_NECESSITY",
+      "cells": ["C01", "C02", "C06", "C07"],
+      "parallel": true,
+      "requires": [],
+      "closes_at": "G0_ARCHITECTURAL_FEASIBILITY"
+    },
+    {
+      "id": "P1",
+      "name": "EXECUTION_FEASIBILITY",
+      "cells": ["C03", "C04", "C05", "C08"],
+      "parallel": true,
+      "requires": ["G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_CANDIDATE"],
+      "closes_at": "G1_EXECUTION_FEASIBILITY"
+    },
+    {
+      "id": "P2",
+      "name": "MEASURED_CANDIDATE_COURT",
+      "cells": ["C09"],
+      "parallel": false,
+      "requires": ["G1_EXECUTION_FEASIBILITY_CLOSED"],
+      "closes_at": "G2_MEASURED_BAKEOFF"
+    },
+    {
+      "id": "P3",
+      "name": "HOSTILE_RED_TEAM",
+      "cells": ["C10"],
+      "parallel": false,
+      "requires": ["G2_MEASURED_BAKEOFF_CLOSED"],
+      "closes_at": "G3_HOSTILE_SURVIVAL"
+    },
+    {
+      "id": "P4",
+      "name": "HQ_SYNTHESIS",
+      "cells": [],
+      "parallel": false,
+      "requires": ["G3_HOSTILE_SURVIVAL_CLOSED"],
+      "owner": "HQ_ONLY"
+    }
+  ],
+  "cells": {
+    "C01": {
+      "name": "TERMINAL_PRODUCT_AND_V3_CONSUMPTION_AUDIT",
+      "phase": "P0",
+      "burden": "Trace runtime consumption backward and classify every upstream product by persistence necessity."
+    },
+    "C02": {
+      "name": "C11_DERIVABILITY_AND_MINIMUM_PERSISTENT_STATE_COURT",
+      "phase": "P0",
+      "burden": "Classify every logically observable C11 obligation by exact determinant and persistence requirement."
+    },
+    "C03": {
+      "name": "NATIVE_SOURCE_EXECUTION_CAPABILITY_RECONNAISSANCE",
+      "phase": "P1",
+      "burden": "Measure real SAV/DTA access capabilities and incompatibilities without semantic redesign."
+    },
+    "C04": {
+      "name": "I03_SOURCE_BACKED_EXECUTION_COURT",
+      "phase": "P1",
+      "burden": "Prove or falsify exact I03 primitive execution over source-backed logical C11."
+    },
+    "C05": {
+      "name": "I05_SOURCE_BACKED_DISCOVERY_COURT",
+      "phase": "P1",
+      "burden": "Prove or falsify open-world bounded discovery without mandatory authoritative full event materialization."
+    },
+    "C06": {
+      "name": "REPLAY_EXACTREF_AND_INTEGRITY_COURT",
+      "phase": "P0",
+      "burden": "Determine the minimum persistent receipts/roots needed for exact replay, identity and fail-closed integrity."
+    },
+    "C07": {
+      "name": "COMPILED_STRUCTURAL_SUBSTRATE_AND_BUILD_RUNTIME_BOUNDARY",
+      "phase": "P0",
+      "burden": "Define what permanent V3-facing compiled products must be made maximally clean, light, fast and effective."
+    },
+    "C08": {
+      "name": "INCREMENTAL_BUILD_UPDATE_AND_OPERATIONS_COURT",
+      "phase": "P1",
+      "burden": "Determine rebuild granularity, invalidation, recovery and operational cost under each candidate family."
+    },
+    "C09": {
+      "name": "EXACT_PHYSICAL_BAKEOFF",
+      "phase": "P2",
+      "burden": "Measure A/B/C on identical representative compiler primitives after semantic contracts are frozen."
+    },
+    "C10": {
+      "name": "HOSTILE_SYNTHESIS_KILL_COURT",
+      "phase": "P3",
+      "burden": "Attack the provisional winner and seek a decisive falsification or unresolved hidden dependency."
+    }
+  },
+  "edges": [
+    ["C01", "G0"], ["C02", "G0"], ["C06", "G0"], ["C07", "G0"],
+    ["G0", "C03"], ["G0", "C04"], ["G0", "C05"], ["G0", "C08"],
+    ["C03", "G1"], ["C04", "G1"], ["C05", "G1"], ["C08", "G1"],
+    ["G1", "C09"], ["C09", "G2"], ["G2", "C10"], ["C10", "G3"], ["G3", "HQ_SYNTHESIS"]
+  ],
+  "hard_stop_conditions": [
+    "ANY_REQUIRED_SEMANTIC_WEAKENING",
+    "ANY_C11_M01_M18_CAPABILITY_LOSS",
+    "ANY_I03_OR_I05_FRONTIER_STARVATION",
+    "ANY_EXACTREF_OR_REPLAY_NONDETERMINISM",
+    "ANY_CACHE_PROMOTED_TO_AUTHORITY_WITHOUT_PROOF",
+    "ANY_WORKER_SELF_SELECTS_ARCHITECTURE",
+    "ANY_MUTATION_OF_ACTIVE_R5_COURT"
+  ]
+}
