@@ -1,0 +1,95 @@
+{
+  "authority_gap_rows": 20,
+  "bounded_family_rules": [
+    "physical missingness and semantic response are independent",
+    "source SHA + zero-based row ordinal is hard replay identity",
+    "source-reported UTF-8/default SAV decoder with no Arab Barometer compatibility override",
+    "zero user-missing declarations preserved as metadata",
+    "zero native SPSS MR-set metadata preserved as physical fact",
+    "routing comes from documentary authority, never from missingness alone"
+  ],
+  "branch": "agent/vozhd-trii-srcprep71-r02-ab",
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R02_RETURNED",
+  "do_not_certify": true,
+  "documentary_authority_map_rows": 26,
+  "documentary_blocker_classes": [
+    "BLOCK_IDENTIFIER_AUTHORITY",
+    "SEMANTIC_CODE_AUTHORITY",
+    "WEIGHT_DESIGN_AUTHORITY"
+  ],
+  "family": "Arab Barometer",
+  "family_reuse_and_drift_rows": 16,
+  "hostile_fixture_total": 54,
+  "non_dispositive": true,
+  "non_reusable": [
+    "country numeric codes",
+    "native/composite respondent IDs",
+    "special response code numbers",
+    "weight/design roles or default weight",
+    "variable ordinals/labels/value-label dictionaries",
+    "routing/module structures",
+    "cross-wave semantic equivalence"
+  ],
+  "output_files": [
+    "RESULT.md",
+    "RESULT.json",
+    "SOURCE_CERTIFICATION_LEDGER.csv",
+    "HOSTILE_FIXTURES.csv",
+    "DOCUMENTARY_AUTHORITY_MAP.csv",
+    "AUTHORITY_GAPS.csv",
+    "FAMILY_REUSE_AND_DRIFT.csv",
+    "FUTURE_EXECUTION_ORDER.md",
+    "LIBRARY_PROBE_RECEIPT.json",
+    "CHANGED_FILES.txt"
+  ],
+  "potential_frozen_contract_contradiction": false,
+  "priority_findings": {
+    "W1": "Q2311 code98 exact decoded SAV label contains U+0092; source-native questionnaire uses typographic curly apostrophe; preserve raw decoded text and separate any derived normalization.",
+    "W2": "Q2062 same variable contains true SYSTEM_MISSING row82 and ordinary 0 row6305 labeled missing; variable-wide normalization forbidden.",
+    "W5": "Complete exact-snapshot fixture packet required despite no R10 headline P0/P1 exception.",
+    "W8": "ID=0 repeats 2400 Jordan rows; BLOCK_ID empty string is ordinary in 2408 Iraq rows; row ordinal hard replay, blank remains ordinary."
+  },
+  "source_count": 4,
+  "source_packets": [
+    {
+      "documentary_status": "SOURCE_NATIVE_QUESTIONNAIRE_FOUND__WEIGHT_AND_TYPOGRAPHY_TRANSFORM_AUTHORITY_PARTIAL",
+      "hostile_fixture_count": 12,
+      "packet_disposition": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED",
+      "sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "source_file": "Arab Barometer Wave 1.sav"
+    },
+    {
+      "documentary_status": "SOURCE_NATIVE_QUESTIONNAIRE_FOUND__Q2062_CODE0_AND_WEIGHT_AUTHORITY_PARTIAL",
+      "hostile_fixture_count": 14,
+      "packet_disposition": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED",
+      "sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+      "source_file": "Arab Barometer Wave 2.sav"
+    },
+    {
+      "documentary_status": "SOURCE_NATIVE_QUESTIONNAIRE_FOUND__DESIGN_METHODOLOGY_AND_EXTRA_Q101_CODES_PARTIAL",
+      "hostile_fixture_count": 13,
+      "packet_disposition": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+      "sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "source_file": "Arab Barometer Wave 5.sav"
+    },
+    {
+      "documentary_status": "SOURCE_NATIVE_QUESTIONNAIRE_FOUND__BLOCK_ID_AND_WEIGHT_STRATUM_AUTHORITY_PARTIAL",
+      "hostile_fixture_count": 15,
+      "packet_disposition": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED",
+      "sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "source_file": "Arab Barometer Wave 8.sav"
+    }
+  ],
+  "starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "status": "COMPLETE__NON_DISPOSITIVE_PACKET_PREPARATION",
+  "targeted_raw_probe": {
+    "W1": "dictionary metadata only",
+    "W2": "sequential compressed prefix through row 6305 for Q2062 rows 82/6305",
+    "W5": "row 0 Q1/STRATUM plus dictionary metadata",
+    "W8": "sequential compressed prefix through row 4807 for BLOCK_ID/ID rows 0/2408/4807",
+    "full_scans_performed": false
+  },
+  "user_local_rawlsing_used": false,
+  "worker_id": "SOURCE-CERT-PREP71-R02",
+  "wvs70_inspected": false
+}

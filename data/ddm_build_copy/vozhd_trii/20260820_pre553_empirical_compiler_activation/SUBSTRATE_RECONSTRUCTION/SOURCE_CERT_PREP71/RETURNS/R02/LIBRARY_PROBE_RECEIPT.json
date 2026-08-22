@@ -1,0 +1,143 @@
+{
+  "accepted_evidence": {
+    "r10_exception_queue_read_before_raw_probe": true,
+    "sr03": "16_SR03_R3_ADJUDICATION.md",
+    "sr09_r02_commit": "ca95903a1b93f210c42fd6028fa5ba6ac51260c9",
+    "sr09_r10_commit": "267426e3b5f06473ffc9cee6075609874529ab77"
+  },
+  "archive_members": [
+    {
+      "materialized_path": "/mnt/data/srcprep71_r02_private/extracted/Arab Barometer Wave 1.sav",
+      "member": "surveys/Arab Barometer Wave 1.sav",
+      "sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "size_bytes": 1531099,
+      "source_file": "Arab Barometer Wave 1.sav"
+    },
+    {
+      "materialized_path": "/mnt/data/srcprep71_r02_private/extracted/Arab Barometer Wave 2.sav",
+      "member": "surveys/Arab Barometer Wave 2.sav",
+      "sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+      "size_bytes": 7192678,
+      "source_file": "Arab Barometer Wave 2.sav"
+    },
+    {
+      "materialized_path": "/mnt/data/srcprep71_r02_private/extracted/Arab Barometer Wave 5.sav",
+      "member": "surveys/Arab Barometer Wave 5.sav",
+      "sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "size_bytes": 11637259,
+      "source_file": "Arab Barometer Wave 5.sav"
+    },
+    {
+      "materialized_path": "/mnt/data/srcprep71_r02_private/extracted/Arab Barometer Wave 8.sav",
+      "member": "surveys/Arab Barometer Wave 8.sav",
+      "sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "size_bytes": 12275728,
+      "source_file": "Arab Barometer Wave 8.sav"
+    }
+  ],
+  "branch": "agent/vozhd-trii-srcprep71-r02-ab",
+  "branch_start_verification": {
+    "ahead_by": 0,
+    "behind_by": 0,
+    "method": "connected GitHub compare",
+    "status": "identical"
+  },
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "family": "Arab Barometer",
+  "final_git_status": "PRE_PUBLICATION_OUTPUT_TREE_ONLY; final remote branch tip and exact ten-path diff are verified after non-force publication and reported to HQ.",
+  "generated_at_utc": "2026-08-22T09:56:06.241076+00:00",
+  "invariants": {
+    "C11_modified": false,
+    "DATABASE_URL_used": false,
+    "WVS70_inspected_or_contended_with": false,
+    "WVS7_raw_probed": false,
+    "large_raw_or_document_artifacts_committed": false,
+    "legacy_postgres_used_as_truth": false,
+    "library_artifact_modified": false,
+    "production_runtime_modified": false,
+    "raw_sources_modified": false,
+    "user_local_rawlsing_directory_used": false
+  },
+  "library_bundle": {
+    "file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "filename": "surveys.zip",
+    "materialized_path": "/mnt/data/srcprep71_r02_private/surveys.zip",
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "library_search_note": "Source-native questionnaires located for all four waves. Searches for standalone wave-specific weight/design methodology did not locate a sufficiently authoritative document; this is not proof of absence and is recorded as an owned authority gap.",
+  "output_file_sha256_excluding_receipt_self": {
+    "AUTHORITY_GAPS.csv": "16d56dbd11b0c8b4eef9bd28a055d74ee8c029aaf1f3cf45836631e01e13a317",
+    "CHANGED_FILES.txt": "ef51f9d0f71fbf6af0813fc2c00ae23d9ba7c2e07d886ca93a59dde351582ef8",
+    "DOCUMENTARY_AUTHORITY_MAP.csv": "971c345af7c54cf5600034af507364101eacae7d16cd90920a6eb1f2bc97daa9",
+    "FAMILY_REUSE_AND_DRIFT.csv": "eacfebfa771b2aae6f49d81bc7325a7c721429ebca307810cfdf73f3ee7d3ff7",
+    "FUTURE_EXECUTION_ORDER.md": "1c1ee72b4146dcb522d2a0866c2c0af8b3d5d7fa015780a1913bf5be93a25d98",
+    "HOSTILE_FIXTURES.csv": "23b6c152bef1357a4601252c0c055c7587179730520fc5f53122737085e8eb91",
+    "RESULT.json": "88298a995d147cc3747186a09f0a0a32b0e7a757ca9cc26660014ab18606b790",
+    "RESULT.md": "f5cba1c33de6b34b22da5707be9aecba2ae354764b50a8afa3e8f3a40407b9be",
+    "SOURCE_CERTIFICATION_LEDGER.csv": "60a117b4e5f44779c5037d78bb44485a555a08fec160f1db484e1004121227b6"
+  },
+  "post_probe_hashes": {
+    "Arab Barometer Wave 1.sav": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "Arab Barometer Wave 2.sav": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+    "Arab Barometer Wave 5.sav": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+    "Arab Barometer Wave 8.sav": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+    "surveys.zip": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f"
+  },
+  "receipt_self_hash_note": "Self hash is intentionally not embedded; exact serialized LIBRARY_PROBE_RECEIPT.json SHA-256 is computed after write and returned to HQ.",
+  "source_documents": [
+    {
+      "library_file_id": "file_00000000d3f8720ca357ae9d6b58734c",
+      "materialized_path": "/mnt/data/srcprep71_r02_private/docs/Arab Bar W1 Questionnaire_ENG.pdf",
+      "name": "Arab Bar W1 Questionnaire_ENG.pdf",
+      "sha256": "0814f77bcfdad3c78d5e46f49012437f25ddcbfe8bea3e565d7a26874bab4118",
+      "size_bytes": 1075090,
+      "wave": "W1"
+    },
+    {
+      "library_file_id": "file_00000000450c722f95f87e115cc0cc43",
+      "materialized_path": "/mnt/data/srcprep71_r02_private/docs/Arab Bar W2 Questionnaire_English.pdf",
+      "name": "Arab Bar W2 Questionnaire_English.pdf",
+      "sha256": "7087ea18ff4ab25377adb83587217cf82f7114719334ae53308063d558a75536",
+      "size_bytes": 2945704,
+      "wave": "W2"
+    },
+    {
+      "library_file_id": "file_00000000f194722fa72b5189c011664d",
+      "materialized_path": "/mnt/data/srcprep71_r02_private/docs/ABV_Questionnaire_ENG_v2.pdf",
+      "name": "ABV_Questionnaire_ENG_v2.pdf",
+      "sha256": "cd750ce6f73dfb7750ce4d7e72a8ef220f9c6694300aea97c7f4403db404a73d",
+      "size_bytes": 623513,
+      "wave": "W5"
+    },
+    {
+      "library_file_id": "file_00000000682c722f9ea8eb2e8830e790",
+      "materialized_path": "/mnt/data/srcprep71_r02_private/docs/ENG-Arab-Barometer-Wave-VIII-Questionnaire-RELEASE-FIN-NOV-2024-1.pdf",
+      "name": "ENG-Arab-Barometer-Wave-VIII-Questionnaire-RELEASE-FIN-NOV-2024-1.pdf",
+      "sha256": "d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb",
+      "size_bytes": 1395546,
+      "wave": "W8"
+    }
+  ],
+  "targeted_probe": {
+    "full_scans_performed": false,
+    "priority_result": "/mnt/data/srcprep71_r02_private/targeted_priority_replay.json",
+    "priority_result_sha256": "9f154aac80164e343740f55ea67c8b3796c7a7ccc561139e16d5119eaac335af",
+    "ranges": {
+      "W1": "dictionary only; no case rows",
+      "W2": "compressed sequential rows 0..6305, target Q2062 only",
+      "W5": "compressed row 0, target Q1/STRATUM; metadata for Q101/ID/WT/PSU/STRATUM",
+      "W8": "compressed sequential rows 0..4807, target COUNTRY/BLOCK_ID/ID only"
+    },
+    "reason": "Targeted replay of Authority-71/R10 priority hostile cells; accepted SR09 already supplies full-source counts and exact reconnaissance.",
+    "script": "/mnt/data/srcprep71_r02_private/targeted_sav_probe.py",
+    "script_sha256": "1c3a0891f71f97e806604f04fe9bdfc0becd85512db0c6868242a53f8245a0fc"
+  },
+  "tool_dependency_versions": {
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "probe_parser": "scratch classic compressed SAV physical parser; non-production; no semantic normalization",
+    "pyreadstat": "UNAVAILABLE_IN_WORKER_RUNTIME",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]"
+  },
+  "worker_id": "SOURCE-CERT-PREP71-R02"
+}
