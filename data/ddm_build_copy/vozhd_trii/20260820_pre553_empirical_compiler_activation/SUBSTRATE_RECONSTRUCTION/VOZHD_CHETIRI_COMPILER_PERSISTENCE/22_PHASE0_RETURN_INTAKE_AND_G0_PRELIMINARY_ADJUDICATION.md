@@ -181,7 +181,7 @@ Disposition of later second pass:
 
 `QUARANTINED__NON_GOVERNING_SUPPLEMENTAL_EVIDENCE__NO_CORE_HOLDING_REJECTION`
 
-A narrow C07-R1 correction SHALL start from the clean independent first-return commit `a301afe8...`, read the complete mandatory whole-system authority spine directly, not read sibling returns, and state whether the learned-world holding changes.
+C07-R1 SHALL launch from the same exact current control HEAD pinned for C02-R1, then inspect only the clean independent C07 first-return commit `a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d` as a read-only immutable evidence object. It SHALL read the complete mandatory whole-system authority spine directly, SHALL NOT read sibling returns or later C07 content, and SHALL state whether the independent learned-world holding changes.
 
 ## 6. FOUR-AXIS G0 PRELIMINARY MATRIX
 
@@ -216,7 +216,9 @@ No accepted minimal witness proves irreducible full event-grain persistence, rep
 Before G0 may close, exactly two narrow items are authorized:
 
 1. `C02-R1` — source→C11 occurrence/topology derivability and minimum side-material proof court;
-2. `C07-R1` — terminal-authority compliance correction from the independent C07 first return.
+2. `C07-R1` — terminal-authority compliance correction using the independent C07 first return as read-only evidence.
+
+Both new workers SHALL launch from the same exact current control HEAD pinned at handout.
 
 These are P0 closure work, not P1 execution work.
 
@@ -231,7 +233,7 @@ HQ may reconsider G0 only when:
 - C02-R1 returns an exact occurrence/topology classification for the complete required source scope;
 - any non-derivable information has an exact minimum persistence/material classification without assumed sparsity;
 - C06 U5 is thereby resolved or explicitly carried by the same exact material;
-- C07-R1 proves direct compliance with the terminal authority spine and either upholds or corrects the learned-world DAG;
+- C07-R1 proves direct compliance with the terminal authority spine and either upholds or corrects the independent learned-world DAG;
 - no new starvation/leakage witness appears.
 
 Then HQ shall re-run G0 from the governing authorities and exact accepted commits.
