@@ -1,0 +1,119 @@
+{
+  "worker_id": "SOURCE_CERT_PREP71_R07",
+  "family": "LITS_I_II_III_IV",
+  "status": "COMPLETE__NON_DISPOSITIVE__PACKET_PREPARATION",
+  "non_dispositive": true,
+  "branch": "agent/vozhd-trii-srcprep71-r07-lits",
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "source_count": 4,
+  "decoder_config": "decode_dta(source_path, encoding=\"latin1\")",
+  "compatibility_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+  "g_sr08_executed": false,
+  "sources_certified": false,
+  "wvs70_touched": false,
+  "user_local_rawlsing_used": false,
+  "raw_cell_scans_performed": false,
+  "raw_read_economy_reason": "Accepted SR03 + accepted SR09-PRE R07 close named physical burdens; current raw work limited to frozen Library transport/member identity verification.",
+  "source_inventory": [
+    {
+      "source_file": "LiTS_I.dta",
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "size_bytes": 139531180,
+      "rows": 29002,
+      "variables": 1198,
+      "stata_format_version": 113,
+      "accepted_system_missing_cells": 24983759,
+      "accepted_extended_missing_cells": 0,
+      "transport": "LiTS_I.dta.zip",
+      "archive_member": "LiTS_I.dta"
+    },
+    {
+      "source_file": "LiTS_II.dta",
+      "sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+      "size_bytes": 199716969,
+      "rows": 38864,
+      "variables": 627,
+      "stata_format_version": 115,
+      "accepted_system_missing_cells": 3118,
+      "accepted_extended_missing_cells": 0,
+      "transport": "surveys.zip",
+      "archive_member": "surveys/LiTS_II.dta"
+    },
+    {
+      "source_file": "LiTS_III.dta",
+      "sha256": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+      "size_bytes": 170487994,
+      "rows": 51206,
+      "variables": 1290,
+      "stata_format_version": 118,
+      "accepted_system_missing_cells": 41915435,
+      "accepted_extended_missing_cells": 0,
+      "transport": "surveys.zip",
+      "archive_member": "surveys/LiTS_III.dta"
+    },
+    {
+      "source_file": "LiTS_IV.dta",
+      "sha256": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c",
+      "size_bytes": 110465945,
+      "rows": 37478,
+      "variables": 1319,
+      "stata_format_version": 118,
+      "accepted_system_missing_cells": 28377791,
+      "accepted_extended_missing_cells": 0,
+      "transport": "surveys.zip",
+      "archive_member": "surveys/LiTS_IV.dta"
+    }
+  ],
+  "source_packet_dispositions": {
+    "LiTS_I.dta": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+    "LiTS_II.dta": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+    "LiTS_III.dta": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED",
+    "LiTS_IV.dta": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED"
+  },
+  "lits_i_future_gsr08_packet_ready": true,
+  "lits_i_future_gsr08_holding": "READY_TO_LAUNCH_ONLY_ON_FUTURE_HQ_ORDER__NOT_EXECUTED_HERE",
+  "hostile_fixture_count_total": 33,
+  "hostile_fixture_count_per_source": {
+    "LiTS_I.dta": 8,
+    "LiTS_II.dta": 8,
+    "LiTS_III.dta": 8,
+    "LiTS_IV.dta": 9
+  },
+  "library_source_document_search": {
+    "questionnaires_found": [
+      {
+        "source": "LiTS I",
+        "file_id": "file_00000000f30c722fbb7e49e6c854897f",
+        "name": "LiTSI_Questionnaire.pdf",
+        "sha256": "b94bdcf4a9f2e2e025bf35e5364f79acf0b1f5fa05c035064e674fa58a921eae"
+      },
+      {
+        "source": "LiTS III",
+        "file_id": "file_00000000171471f9b12c8ec6c54b8a80",
+        "name": "LiTS-III-Questionnaire.pdf",
+        "sha256": "7d42c71445f5f23d3dd318b857f7d2f0d0bda7efd4d7859a4ef103355f591203"
+      },
+      {
+        "source": "LiTS IV",
+        "file_id": "file_00000000ca1871f5b09fbdab297ebe0c",
+        "name": "LITS-IV-Questionnaire.pdf",
+        "sha256": "4f1516dbf59fd1c05153bd2954d17c619e70b04e8cc5535c474c3560a6165ea9"
+      }
+    ],
+    "repository_codebook_bundle": {
+      "file_id": "file_000000003de8820c911e9ab7e73a9f1c",
+      "name": "final_codebooks(5).zip",
+      "size_bytes": 7811557,
+      "sha256": "36a09da6c9216cfdee96bf7dd33af48b5b18c7aeff8514f20e42af58d3fc4f5c"
+    },
+    "lits_ii_standalone_library_doc_found": false,
+    "official_web_fallback_used_for_lits_ii": true
+  },
+  "priority_holdings": {
+    "LiTS_I": "Designated future DTA proving source; packet ready; ordinary semantic-looking values and exact three-weight missing incidence frozen.",
+    "LiTS_III": "308 PR + 308 SR namespaces preserved; hhid prohibited as replay identity.",
+    "LiTS_IV": "Reader-option negative, source-text gap, 134 skip carriers, ten visit blocks and four weight candidates preserved as one compound court."
+  },
+  "documentary_authority_gap_count": 19,
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R07_RETURNED"
+}
