@@ -6,214 +6,228 @@ Status: `BINDING_ON_VOZHD_CHETIRI_HQ`
 
 ## 0. PURPOSE
 
-This file binds the commander, not the workers.
+This file binds the commander, not just workers.
 
-Vozhd Chetiri/HQ must not become the campaign's ungoverned exception. Every launch, acceptance, rejection, gate decision, provisional synthesis, reopening petition and final recommendation must obey the same source truth, closed architecture and Rawlsing end-product vision imposed on workers.
+Vozhd Chetiri/HQ must not become the campaign's ungoverned exception. Every launch, acceptance, gate decision, synthesis and reopening petition obeys source truth, closed architecture, recovered learned-world obligations and the Rawlsing human end-product vision.
 
 ## 1. HQ READ-FIRST BEFORE EVERY MATERIAL DECISION
 
-Before any launch/adjudication/synthesis that can change campaign direction, HQ SHALL re-ground in GitHub and inspect, at minimum:
+Before any launch/adjudication/synthesis that changes campaign direction, HQ SHALL re-ground in GitHub and inspect at minimum:
 
 - `RAWLSING_GOVERNING_SPIRIT.md`;
 - `TERMINAL_DEMAND_ENVELOPE.md`;
 - `ARCHITECTURE_PASS_LAW.md`;
 - `CONSTRAINTS_PRIORITIES.md`;
 - `WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
-- current PRE553 governing authority newer than the last Chetiri decision;
+- current PRE553 authority/receipt newer than last decision;
 - `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`;
 - `12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md`;
 - `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md`;
 - `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`;
-- `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md` and the current Chetiri HQ dispositions of its items;
-- exact worker returns being adjudicated.
+- `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md`;
+- `20_CHETIRI_HQ_PRELAUNCH_CORRECTIVE_DISPOSITIONS.md`;
+- `21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md`;
+- exact returns being adjudicated.
 
-Before the first P0 launch, HQ SHALL explicitly disposition every item in `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md` using that register's allowed disposition vocabulary. This is mandatory campaign-question reconciliation, not architecture selection. HQ may adopt a corrective, prove that existing law already covers it, defer it to a named cell without prejudgment, reject it under exact higher authority, or block on missing authority. Silence is not a lawful disposition.
+The R01–R25 prelaunch duty is satisfied only because `20` explicitly dispositions every item and the adopted amendments are checked into controlling law. Any newer sibling corrective requires a new disposition before launch/adjudication if it materially changes campaign burden.
 
-The rule is literal:
+Literal law:
 
 `GROUND_IN_GITHUB_BEFORE_REASONING_FROM_MEMORY__EVERY_TIME`
 
-## 2. HQ CANNOT PREDECIDE THE RESULT
+## 2. HQ CANNOT PREDECIDE RESULT
 
-The following are prohibited biases:
+Prohibited biases:
 
-- `SOURCE_BACKED_FEELS_CLEANER`;
-- `R5_ALREADY_COST_TIME`;
-- `PARQUET_IS_INDUSTRY_STANDARD`;
-- `NATIVE_FILES_FEEL_UGLY`;
-- `LOWER_BYTES_MUST_WIN`;
-- `FASTER_BENCHMARK_MUST_WIN`;
-- `SIMPLER_CODE_MUST_WIN`;
-- `WE_NEED_TO_FINISH_SO_PICK_SOMETHING`.
+- source-backed feels cleaner;
+- R5 already cost time;
+- Parquet is standard;
+- native files feel ugly;
+- lower bytes must win;
+- faster primitive benchmark must win;
+- simpler code must win;
+- current V3 does not read it, therefore unnecessary;
+- rebuildable, therefore semantically disposable;
+- operationally useful, therefore primary authority;
+- finish pressure, therefore pick something.
 
-These may motivate measurement, never adjudication.
+These motivate measurement, never adjudication.
 
 ## 3. HQ ACCEPTANCE TEST FOR EVERY WORKER RETURN
 
-A worker return may become `ACCEPTED` only if HQ verifies:
+A return may become `ACCEPTED` only if HQ verifies:
 
 1. exact branch/start/return identity;
 2. write-scope compliance;
-3. required authority read receipt;
+3. complete authority read receipt including `17–21`;
 4. required outputs complete;
 5. source SHA/config compliance where applicable;
 6. no unauthorized runtime mutation;
-7. every material claim classified by evidence type;
+7. claims classified by evidence type;
 8. complete persistence/starvation/bloat matrix;
-9. complete 24-row terminal vision checksum;
-10. no unadjudicated `STARVATION_RISK_FOUND`;
-11. no unadjudicated `SEMANTIC_LEAKAGE_RISK_FOUND`;
-12. no worker self-selection of architecture;
-13. no downstream meaning pulled upstream;
-14. no source/semantic authority overwritten by Governing Spirit;
-15. unresolved evidence is named rather than narratively smoothed over.
+9. complete Trii obligation-crosswalk matrix;
+10. complete **34-row** terminal vision checksum;
+11. no unadjudicated starvation risk;
+12. no unadjudicated semantic leakage risk;
+13. five-lifecycle analysis where material;
+14. no current-consumer absence treated as proof of terminal irrelevance;
+15. no discovery primitive substituted for autonomous-discovery proof where full discovery is at issue;
+16. no pairwise summary treated as proof of joint geometry without authority;
+17. no multi-universe/time information collapsed;
+18. no discovery candidate silently promoted to validated learned truth;
+19. no worker self-selection of architecture;
+20. no downstream meaning pulled upstream;
+21. no Governing Spirit overwrite of source/semantic authority;
+22. unresolved/missing authority named rather than smoothed over.
 
-Failure on any item returns the worker for correction or rejects the return.
+Failure returns worker for correction or rejects return.
 
 ## 4. G0 ADJUDICATION LAW
 
-G0 asks only: **is source-backed/hybrid architecture still semantically and integrity-wise lawful enough to deserve execution investigation?**
+G0 asks:
+
+> Is source-backed/hybrid still semantically, learned-world-capability-wise and integrity-wise lawful enough to deserve execution investigation?
 
 G0 may not select B/C over A.
 
-HQ must produce a four-axis matrix:
+HQ must reconcile four axes:
 
-- runtime dependency — C01;
-- C11 information necessity — C02;
-- replay/integrity necessity — C06;
-- compiled destination/end-product need — C07.
+- complete terminal consumption/lifecycles — C01;
+- C11 + learned-world information necessity — C02;
+- replay/ExactRef/adaptive-discovery integrity — C06;
+- complete learned-world product/service destination — C07.
 
-Each axis must state exact supporting authority/return.
-
-If any axis contains a decisive accepted contradiction, G0 blocks.
+G0 cannot pass merely because current V3 needs no event table. It must show that autonomous discovery, empirical possibility inference, analysis, structural production and replay obligations remain representable.
 
 ## 5. G1 ADJUDICATION LAW
 
-G1 asks only: **can the lawful candidate execute the full compiler frontier without unacceptable operational pathology?**
+G1 asks:
 
-HQ must separately adjudicate:
+> Can lawful candidate architectures execute the full required compiler/discovery/inference frontier without unacceptable operational pathology?
+
+Separately adjudicate:
 
 - native reader terrain — C03;
-- exact query frontier — C04;
-- open-world discovery frontier — C05;
+- exact I03 primitive frontier — C04;
+- autonomous I05 discovery + learned empirical execution — C05;
 - invalidation/rebuild/recovery — C08.
 
-A large temporary execution image is not by itself failure.
-
-A mandatory authoritative duplicate empirical copy is not by itself acceptable merely because it is fast.
+Large transient state is not failure by itself. A persistent transformed representation may be operationally justified without becoming primary empirical authority.
 
 ## 6. C09 PRE-LAUNCH FREEZE LAW
 
-HQ owns benchmark fairness.
+Before C09 HQ freezes:
 
-Before C09, HQ shall freeze a court manifest naming:
-
-- candidate A/B/C exact definitions;
-- exact implementation/prototype pins;
-- source SHAs;
-- decoder versions/configs;
-- workload inputs;
-- truth oracle;
+- exact A/B/C definitions/pins;
+- source SHAs and decoder configs;
+- primitive workload;
+- executable autonomous discovery/search/termination law or explicit blocker;
+- blind fixture oracle custody;
+- validation/model authority actually available;
+- learned-world product/service workloads;
+- truth/parity oracle;
 - repetition/warmup policy;
-- metrics and units;
-- scratch/storage accounting;
+- five-lifecycle invocation assumptions;
+- metrics/units;
+- storage/scratch accounting;
 - stop conditions;
 - integrity/parity gates.
 
-No benchmark result is admissible if candidate semantics differ or if permanent/transient bytes are mixed.
+If autonomous discovery is not executable/frozen enough, C09 full architectural performance judgment is blocked. HQ may authorize primitive engineering measurements only.
 
 ## 7. G2 PROVISIONAL SYNTHESIS LAW
 
-After C09, HQ may name a provisional physical favorite only after parity passes.
+A provisional physical favorite may be named only after applicable parity passes.
 
-Ranking order:
+Non-negotiable first:
 
-### First — non-negotiable
 - source/semantic exactness;
 - C11/I03/I05/I04 capability;
-- replay/integrity;
-- terminal vision/no-starvation.
+- autonomous-discovery semantics where executable;
+- joint/multimodal/minority learned-world capability;
+- historical/multi-universe distinction;
+- positioned-subject possibility capability without psyche assignment;
+- explanation lineage;
+- replay/integrity/adaptive replay;
+- 34-row terminal vision/no-starvation.
 
-### Then — permanent V3-facing products
-1. flawless effectiveness;
-2. runtime speed;
-3. persistent lightness;
-4. operational simplicity.
+Then compare by lifecycle, without one opaque score.
 
-### Then — compiler machinery
-1. exactness;
-2. bounded/fail-closed behavior;
-3. total build throughput;
-4. scratch efficiency;
-5. maintainability.
+Permanent learned products/serving surfaces optimize flawless effectiveness first, then relevant latency/throughput, persistent lightness and maintainability.
 
-Do not optimize compiler scratch at the expense of the permanent runtime substrate or vice versa.
+Compiler machinery optimizes exactness, bounded/fail-closed behavior, throughput, scratch efficiency and maintainability.
+
+Operational retention and epistemic authority are separate conclusions.
 
 ## 8. C10 / G3 LAW
 
-HQ must give C10 the strongest provisional synthesis and all unresolved risks.
+C10 receives the strongest provisional synthesis plus unresolved risks.
 
-C10 gets authority to falsify, not to redesign.
+C10 must run both:
 
-HQ must adjudicate every `FATAL_EXACT_WITNESS` independently.
+- `ENGINEERING_KILL`;
+- `ONTOLOGY_CAPABILITY_KILL`.
 
-A candidate cannot survive because fixing it seems easy. Repairability and validity are separate questions.
+A candidate cannot survive because a fix seems easy. Repairability != validity.
+
+HQ adjudicates every fatal witness independently.
 
 ## 9. FINAL P4 SYNTHESIS — REQUIRED SECTIONS
 
-Final Chetiri synthesis must contain exactly these major sections:
+Final synthesis must contain:
 
-1. `WHAT RAWLSING IS BUILDING` — terminal person/app vision and closed chain;
-2. `WHAT IS AUTHORITATIVE` — source, semantic, structural, runtime classes;
-3. `WHAT THE COMPILER MUST DO` — still-unbuilt source→compiled-substrate generator obligations;
-4. `WHAT MUST PERSIST` — exact canonical products and reasons;
-5. `WHAT MAY BE REGENERATED` — exact transient/cache/derived classes;
-6. `WHAT V3 ACTUALLY RUNS ON` — compiled substrate and hot-path requirements;
-7. `PARITY AND PERFORMANCE EVIDENCE` — measured A/B/C result;
-8. `TERMINAL VISION CHECKSUM` — personhood/end-product protection;
-9. `HOSTILE COURT` — strongest objections and dispositions;
-10. `REOPENING BURDEN` — whether current physical carrier authority may lawfully be revisited;
-11. `IMPLEMENTATION BOUNDARY` — what remains unauthorized until separate adoption;
-12. `FINAL DISPOSITION`.
+1. `WHAT RAWLSING IS BUILDING`;
+2. `THE PAST` — authoritative empirical evidence;
+3. `THE LEARNED WORLD` — empirical-social + structural product/service set;
+4. `THE LIFE` — V3-owned generated history;
+5. `WHAT THE COMPILER MUST DO`;
+6. `WHAT MUST PERSIST`;
+7. `WHAT MAY BE REGENERATED`;
+8. `FIVE CONSUMPTION LIFECYCLES`;
+9. `AUTONOMOUS DISCOVERY`;
+10. `POSITIONED-SUBJECT EMPIRICAL POSSIBILITY`;
+11. `JOINT / MULTI-UNIVERSE / EMPIRICAL TIME`;
+12. `EXPLANATION / REPLAY`;
+13. `PARITY AND PERFORMANCE EVIDENCE`;
+14. `34-ROW TERMINAL VISION CHECKSUM`;
+15. `HOSTILE ENGINEERING KILL`;
+16. `HOSTILE ONTOLOGY-CAPABILITY KILL`;
+17. `REOPENING BURDEN`;
+18. `IMPLEMENTATION BOUNDARY`;
+19. `FINAL DISPOSITION`.
 
 ## 10. REOPENING LAW
 
-Chetiri itself cannot reopen Authority 56/63/64 or whole-machine architecture.
+Chetiri cannot reopen Trii physical authorities or whole-machine architecture by itself.
 
-If final evidence prefers B or C, HQ may produce a `REOPENING_PETITION` only if it identifies a concrete implementation-level reason the current physical carrier decision should be revisited while preserving frozen semantics.
+A B/C preference may support a reopening petition only with concrete new physical/compiler lifecycle evidence while preserving frozen semantics and recovered empirical capability obligations.
 
-The petition must state explicitly:
+Whole-machine semantic reopening remains a much higher burden and is not implied.
 
-- which authority is proposed for reopening;
-- which exact new evidence was unavailable when it was issued;
-- why the question is physical/compiler lifecycle rather than semantic architecture;
-- why current active work may or may not continue meanwhile;
-- exact no-regression burden for any replacement.
+## 11. COMMANDER FINAL CHECK
 
-Whole-machine V553–V2 reopening remains governed by the much higher closure burden and is not implied by Chetiri.
+Before final adjudication HQ must answer in writing:
 
-## 11. COMMANDER TERMINAL VISION CHECK
-
-Before final adjudication, HQ must answer in writing:
-
-- Does this choice leave structural fields relational rather than demographic?
-- Does it preserve contradiction and simultaneous pressures?
-- Does it preserve time, mediation, topology and uncertainty?
-- Does it leave actor-specific orientation, exposure, psyche, memory and attractors to V3/V2?
-- Does it preserve genealogy as generated histories?
-- Does it preserve Absolute Horizon as distinct?
-- Does it preserve enough upstream authority that V3 does not need to invent structure?
-- Does it preserve enough uncertainty that V3 is not falsely deterministic?
-- Does it keep the LLM at the expressive edge?
-- Can the same structural field still yield divergent lawful lives?
-- Can every generated fact still be traced without laundering expression into truth?
+- Are structural fields still relational rather than demographic?
+- Are contradiction/time/mediation/topology/uncertainty preserved?
+- Are actor orientation/exposure/psyche/memory/attractors still V3/V2-owned?
+- Are genealogy and Absolute Horizon preserved correctly?
+- Is autonomous empirical discovery still genuinely autonomous?
+- Can important unnamed higher-order/minority structure still be found?
+- Is possibility inference distinct from realized psyche?
+- Are source-universe disagreements and empirical time preserved?
+- Are discovery candidate/validation/admission states distinct?
+- Can Rawlsing explain why learned relations exist?
+- Can adaptive discovery be replayed or fail closed where not yet governed?
+- Can caches/carriers be retained operationally without acquiring false authority?
+- Can the same lawful world still yield divergent lives?
 
 Any unresolved NO blocks final adoption.
 
-## 12. THE COMMAND MAXIM
+## 12. COMMAND MAXIMS
 
-> **The compiler is not the product. The person is the product. The compiler's job is to preserve enough truth, structure, uncertainty and provenance that the runtime can generate a life without either flattening causality or inventing it.**
+> **Do not optimize the road before proving the complete destination.**
 
-And:
+> **The hard workload is not merely answering a question. It is finding the questions the data forces us to ask.**
 
-> **Make the compiler as light as truth allows; make the permanent runtime substrate as effective as the person requires.**
+> **Make persistent machinery only where truth, learned-world capability or operations earn it; leave the life to history.**
