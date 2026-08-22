@@ -2,19 +2,58 @@
 
 Short tag: `VC4-COMPILER/PERSISTENCE`
 
-Status: `EXPLORATORY__NON_DISPOSITIVE__NO_RUNTIME_WRITE_AUTHORITY`
+Status: `EXPLORATORY__NON_DISPOSITIVE__PREPARED_NOT_LAUNCHED__NO_RUNTIME_WRITE_AUTHORITY__NO_SELF_REOPEN`
 
 ## 0. PURPOSE
 
 This campaign exists because the full source→compiled-structural-substrate pipeline-generator has not yet been built, while current PRE553 work is actively selecting/repairing a physical empirical carrier.
 
-The timing creates one narrow architectural question that must be answered before the missing compiler-generator accidentally hard-codes a physical intermediate as an architectural requirement:
+The timing creates one narrow but consequential compiler-lifecycle question that must be answered before the missing generator accidentally hard-codes a physical intermediate as an architectural requirement:
 
-> What information must exist permanently, and what information only needs to be reproducibly computable during build time?
+> **What information must exist permanently, and what information only needs to be reproducibly computable during build time?**
 
-Chetiri does not reopen the closed semantic machine. It determines the correct **persistence and compiler lifecycle** under that machine.
+Chetiri does not reopen the closed semantic machine. It determines the correct **persistence and compiler lifecycle** under that machine and may, if evidence warrants, prepare a separate HQ reopening petition for a physical implementation authority.
 
-## 1. FROZEN SEMANTIC/WHOLE-MACHINE BOUNDARIES
+## 1. ABSOLUTE END-PRODUCT GOVERNANCE
+
+Chetiri is governed by the finished Rawlsing application, not by local storage elegance.
+
+Rawlsing exists to generate a person who is **causally intelligible without being inevitable**.
+
+All Chetiri work is subordinate to:
+
+- `RAWLSING_GOVERNING_SPIRIT.md`;
+- `TERMINAL_DEMAND_ENVELOPE.md`;
+- `ARCHITECTURE_PASS_LAW.md`;
+- `CONSTRAINTS_PRIORITIES.md`;
+- `WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
+- exact source/semantic authority for the question at hand.
+
+The binding Chetiri elaboration is `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`.
+
+Every worker and HQ itself must preserve, without moving downstream semantics upstream:
+
+- nine-strata relational structural fields;
+- inter-strata direction/counter-pressure/contradiction;
+- time, drift, gaps, rupture and noncomparability;
+- mediation rather than structure→psyche;
+- pressure-flow topology prerequisites;
+- orientation-to-strata as V3-owned runtime development;
+- Absolute Horizon as distinct from finite strata;
+- attractor prerequisites upstream but actor-specific attractor formation in V3;
+- actor opacity, misrecognition and knowledge/accessibility limits;
+- genealogy/relationships as generated histories;
+- ordinary vitality, desire, humor, beauty, care and play alongside domination;
+- divergent lawful developmental possibility;
+- source evidence != structural prior != generated actor fact != actor knowledge != memory != V2 expression;
+- uncertainty, absence, noncomparability and forbidden inference;
+- exact provenance, replay and explicit randomness.
+
+A smaller/faster design that starves any of these loses.
+
+A richer design that instantiates any actor-specific meaning early also loses.
+
+## 2. FROZEN SEMANTIC/WHOLE-MACHINE BOUNDARIES
 
 Chetiri SHALL preserve exactly:
 
@@ -32,15 +71,24 @@ Chetiri SHALL preserve exactly:
 - I03 exact empirical truth;
 - I05 exact-bounded/open-world discovery frontier;
 - I04 structural-admission semantics and provenance;
-- source evidence ≠ structural prior ≠ generated actor fact ≠ actor knowledge ≠ memory/presentation ≠ V2 expression;
 - V553–V558, V3 and V2 jurisdiction;
 - whole-machine closure.
 
 No candidate earns performance by weakening any item above.
 
-## 2. EXPLORATORY CANDIDATE FAMILIES
+## 3. RELATION TO CURRENT R5 AUTHORITY
 
-### A. Persistent canonical event carrier
+Current live Authority 63/64 remains binding. Chetiri does not delay, cancel, reinterpret or supersede the active compact-LONG repair/validation path.
+
+Chetiri is quarantined exploratory evidence collection.
+
+If compact LONG succeeds, Chetiri still asks whether permanent event materialization belongs in the still-unbuilt compiler lifecycle.
+
+If compact LONG fails, Chetiri evidence may support a later reopening petition, but failure does not select B or C automatically.
+
+## 4. EXPLORATORY CANDIDATE FAMILIES
+
+### A — Persistent canonical event carrier
 
 ```text
 SOURCE
@@ -48,137 +96,133 @@ SOURCE
 → persistent canonical event-grain carrier
 → carrier-neutral C11
 → I03/I05/I04
-→ structural compiler-generator
+→ source→structural compiler-generator
 → compiled structural substrate
 ```
 
-Current R5 LONG_SHARDED is the active implementation family under separate Trii authority.
-
-### B. Source-backed virtual C11
+### B — Source-backed virtual C11
 
 ```text
 SOURCE
-→ frozen decoder / source accessor
-→ authority/semantic sidecars
+→ frozen decoder/source accessor
+→ governed authority/semantic sidecars
 → virtual carrier-neutral C11
 → I03/I05/I04
-→ structural compiler-generator
+→ source→structural compiler-generator
 → compiled structural substrate
 ```
 
 No complete second empirical payload persists by default.
 
-### C. Source-backed hybrid
+### C — Source-backed hybrid
 
 ```text
 SOURCE
-→ frozen decoder / source accessor
-→ authority/semantic sidecars
+→ frozen decoder/source accessor
+→ governed authority/semantic sidecars
 → virtual C11
-→ transient or regenerable execution accelerators
-   (Arrow / DuckDB / Parquet / bitmaps / indexes / vectors)
+→ transient/regenerable accelerators
+   Arrow / DuckDB / Parquet / bitmaps / indexes / vectors / equivalent
 → I03/I05/I04
-→ structural compiler-generator
+→ source→structural compiler-generator
 → compiled structural substrate
 ```
 
-Accelerators are nonauthoritative unless a separate proof establishes that some structure is logically required to prove completeness/absence and therefore belongs to canonical information.
+Accelerators remain nonauthoritative unless separate proof establishes that some structure is logically necessary to prove completeness/absence and therefore belongs to canonical information.
 
-## 3. CAMPAIGN PHASES
+## 5. EXACT CAMPAIGN SEQUENCE
 
-### PHASE P0 — ARCHITECTURAL NECESSITY
+Detailed law: `12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md`.
 
-Cells: `C01`, `C02`, `C06`, `C07`.
+### P0 — Architectural necessity
 
-Goal: determine whether source-backed compilation is semantically/replay-wise possible and identify the true permanent runtime product boundary.
+Parallel independent cells:
+
+- `C01` terminal product / V3 runtime consumption;
+- `C02` C11 derivability / minimum persistent state;
+- `C06` replay / ExactRef / integrity;
+- `C07` compiled structural substrate / build-runtime boundary.
 
 No performance conclusion is allowed in P0.
 
-P0 outputs must answer:
-
-- what V3/runtime actually consumes;
-- what C11 facts are derivable and from what determinants;
-- what must persist for ExactRef/replay/integrity;
-- what the compiled structural substrate must contain.
-
 Gate: `G0_ARCHITECTURAL_FEASIBILITY`.
 
-Possible dispositions:
+G0 asks only whether source-backed/hybrid remains a lawful candidate deserving execution investigation.
 
-- `G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_CANDIDATE`
-- `G0_BLOCK__IRREDUCIBLE_EVENT_PERSISTENCE_REQUIRED`
-- `G0_BLOCK__REPLAY_OR_INTEGRITY_CONTRADICTION`
-- `G0_BLOCK__FROZEN_SEMANTIC_CONTRADICTION`
-- `G0_RETURN__NAMED_EVIDENCE_REQUIRED`
+### P1A — Native execution terrain
 
-### PHASE P1 — EXECUTION FEASIBILITY
+`C03` runs first after G0 pass.
 
-Cells: `C03`, `C04`, `C05`, `C08`.
+It measures exact SAV/DTA reader behavior and must be accepted before C04/C05 execution strategy is judged.
 
-Launch only if `G0_PASS` or HQ explicitly authorizes a narrower probe.
+### P1B — Query/discovery/operations feasibility
 
-Goal: determine how the compiler can actually execute against hostile SAV/DTA sources without turning source-backed authority into parser thrash or losing open-world capability.
+After C03 acceptance:
+
+- `C04` I03 source-backed execution;
+- `C05` I05 source-backed discovery;
+
+may run in parallel.
+
+`C08` incremental build/update/operations may overlap after C03 but cannot final-return until it reconciles actual C04/C05 execution findings.
 
 Gate: `G1_EXECUTION_FEASIBILITY`.
 
-Possible dispositions:
+### P2 — Exact measured candidate court
 
-- `G1_PASS__SOURCE_BACKED_EXECUTION_FEASIBLE`
-- `G1_PASS__HYBRID_ACCELERATION_REQUIRED`
-- `G1_BLOCK__MANDATORY_FULL_MATERIALIZATION_REQUIRED`
-- `G1_BLOCK__I03_CAPABILITY_STARVATION`
-- `G1_BLOCK__I05_CAPABILITY_STARVATION`
-- `G1_BLOCK__INCREMENTAL_BUILD_UNACCEPTABLE`
-- `G1_RETURN__NAMED_EVIDENCE_REQUIRED`
+`C09` only.
 
-### PHASE P2 — MEASURED CANDIDATE COURT
+Launch only after C01–C08 are accepted, G1 is closed and HQ freezes an exact A/B/C court manifest.
 
-Cell: `C09`.
-
-Launch only after P0/P1 define identical proof surfaces.
-
-Goal: compare A/B/C on exact representative compiler primitives and resource costs.
+Parity precedes performance.
 
 Gate: `G2_MEASURED_BAKEOFF`.
 
-No candidate may win on performance unless semantic/replay/integrity parity passes first.
+### P3 — Hostile red team
 
-### PHASE P3 — HOSTILE RED TEAM
+`C10` only.
 
-Cell: `C10`.
+Launch after HQ produces a provisional measured synthesis from C09.
 
-Goal: attack the provisional synthesis and identify hidden assumptions, especially those induced by WVS/LiTS proving sources.
+C10 attempts falsification, not improvement.
 
 Gate: `G3_HOSTILE_SURVIVAL`.
 
-### PHASE P4 — HQ SYNTHESIS
+### P4 — HQ final synthesis
 
-No worker owns P4. HQ only.
+HQ only. No worker selects architecture.
 
-HQ may return exactly one of:
+## 6. WORKER GOVERNANCE
 
-- `VC4_CLOSE__CURRENT_R5_PERSISTENT_CARRIER_REMAINS_ARCHITECTURALLY_JUSTIFIED`
-- `VC4_CLOSE__SOURCE_BACKED_VIRTUAL_C11_PREFERRED__REOPENING_PETITION_REQUIRED`
-- `VC4_CLOSE__HYBRID_SOURCE_AUTHORITY_PREFERRED__REOPENING_PETITION_REQUIRED`
-- `VC4_CLOSE__INSUFFICIENT_EVIDENCE__NO_REOPENING`
-- `VC4_CLOSE__FROZEN_CONTRACT_CONTRADICTION_ESCALATION_REQUIRED`
+Every worker is bound by:
 
-A preferred Chetiri architecture does not become implementation authority until an explicit later HQ reopening/adoption authority is checked in.
+- `13_COMMON_WORKER_CONTRACT.md`;
+- its exact file under `WORKER_ORDERS/`;
+- the complete 24-row `VC4_TERMINAL_VISION_CHECKSUM`;
+- persistence/starvation/bloat matrix;
+- read receipt / return manifest / changed files / unresolved evidence surfaces.
 
-## 4. CORE EVIDENCE LAW
+Every worker returns `RETURNED`, never `ACCEPTED`.
+
+HQ alone adjudicates under `14_HQ_COMMAND_AND_ADJUDICATION_LAW.md`.
+
+## 7. CORE EVIDENCE LAW
 
 Evidence rank:
 
 1. exact raw source bytes + source-native metadata;
-2. frozen source/decoder authority;
-3. accepted C11/I03/I05/I04 contracts and exact current implementation where it embodies them;
-4. accepted whole-machine/V553–V558/V3/V2 authorities;
-5. exact benchmark/court receipts generated under frozen workloads;
-6. implementation convenience or intuition.
+2. accepted source/producer semantic authority;
+3. accepted C11/I03/I05/I04 contracts;
+4. closed V553–V2 architecture/jurisdiction;
+5. Governing Spirit within the lawful ambiguity left by 1–4;
+6. exact measured court receipts;
+7. current implementation as terrain;
+8. historical functionality lineage where explicitly relevant;
+9. convenience or intuition.
 
-No prose preference may outrank measured or contractual evidence.
+No prose preference may outrank exact authority/evidence.
 
-## 5. DERIVABILITY LAW
+## 8. DERIVABILITY LAW
 
 No field may be omitted from persistent state merely because it appears redundant.
 
@@ -187,13 +231,13 @@ Every proposed non-persistence claim must identify:
 - logical fact/field;
 - exact determinant set;
 - authority establishing the functional dependency;
-- scope of the dependency;
+- scope;
 - deterministic reconstruction function;
 - exhaustive exception domain;
-- integrity binding of determinants and exceptions;
-- hostile proof that reconstruction is exact.
+- integrity binding;
+- hostile proof.
 
-Allowed classification vocabulary:
+Allowed classifications:
 
 - `SOURCE_DERIVABLE`
 - `SOURCE_PLUS_RELEASE_METADATA_DERIVABLE`
@@ -205,9 +249,11 @@ Allowed classification vocabulary:
 - `IRREDUCIBLE_EVENT_GRAIN_PERSISTENCE_REQUIRED`
 - `UNRESOLVED`
 
-## 6. PERSISTENCE CLASSIFICATION LAW
+Frequency/commonness/current-code convenience is never proof.
 
-Every object in the prospective compiler lifecycle must receive exactly one primary disposition:
+## 9. PERSISTENCE CLASSIFICATION LAW
+
+Every prospective compiler object receives one primary disposition:
 
 - `PERSIST_AUTHORITATIVE_SOURCE`
 - `PERSIST_AUTHORITATIVE_SEMANTIC_OR_STRUCTURAL_PRODUCT`
@@ -221,9 +267,9 @@ A cache may not become authoritative because downstream code happens to depend o
 
 A transient representation may be large if bounded, safe and materially advantageous. Persistent system lightness and runtime effectiveness are judged separately from compiler scratch peak.
 
-## 7. BUILD/RUNTIME NONCOLLAPSE
+## 10. BUILD/RUNTIME NONCOLLAPSE
 
-The campaign must distinguish:
+Distinguish:
 
 `BUILD_TIME_CORRECTNESS`
 
@@ -239,53 +285,81 @@ from
 
 `TEMPORARY_COMPILER_SCRATCH_SIZE`.
 
-A design may legitimately use a large temporary analytical image if:
+A large temporary analytical image may be lawful if:
 
-- it is deterministically rebuildable from authoritative inputs;
+- deterministically rebuildable;
 - deletion causes zero information loss;
-- it cannot silently acquire authority;
-- scratch use is bounded and cleaned;
-- the resulting permanent system is superior under the final objective.
+- it cannot acquire semantic authority;
+- scratch is bounded/cleaned;
+- it materially improves compiler execution.
 
-## 8. FINAL OBJECTIVE ORDER
+## 11. OPTIMIZATION ORDER
 
-For the **compiled V3-facing structural substrate**:
+### Permanent V3-facing compiled substrate
 
 1. flawless effectiveness / semantic completeness;
 2. runtime speed;
 3. persistent lightness;
-4. operational simplicity and maintainability.
+4. operational simplicity/maintainability.
 
-For **compiler intermediates**:
+### Compiler intermediates
 
 1. semantic/replay exactness;
-2. boundedness and fail-closed behavior;
+2. bounded/fail-closed behavior;
 3. total build throughput;
 4. scratch efficiency;
-5. convenience.
+5. maintainability/convenience.
 
-The two objective functions must not be silently conflated.
+Do not conflate the two objective functions.
 
-## 9. DELETE-ALL-CACHES TERMINAL TEST
+## 12. DELETE-ALL-CACHES TERMINAL TEST
 
-A source-backed/hybrid candidate is not architecturally valid unless the following experiment is conceptually and operationally sound:
+A B/C candidate is not architecturally valid unless this experiment is sound:
 
-> Delete every transformed empirical copy, query cache, bitmap, temporary Parquet/DuckDB/Arrow image and other compiler accelerator. Retain only immutable source artifacts, governed authority/semantic material, required provenance/replay receipts, and the compiled structural/runtime products. Rawlsing must still possess everything it claims to know and must be able to deterministically regenerate the deleted compiler state and reproduce the same governed products.
+> Delete every transformed empirical copy, query cache, bitmap, temporary Parquet/DuckDB/Arrow image and compiler accelerator. Retain immutable source artifacts, governed authority/semantic material, required provenance/replay receipts and compiled structural/runtime products. Rawlsing must still possess everything it claims to know and deterministically regenerate the deleted compiler state and same governed products.
 
-Failure of this test means the deleted object was not actually disposable and must be reclassified.
+Failure means the deleted object was not disposable and must be reclassified.
 
-## 10. NO PREMATURE PIPELINE-GENERATOR CONCRETIZATION
+## 13. NO PREMATURE PIPELINE-GENERATOR CONCRETIZATION
 
-Until Chetiri closes or HQ explicitly overrides this protection, new source→structural pipeline-generator design SHOULD target carrier-neutral logical interfaces rather than requiring a particular physical empirical carrier.
+Until Chetiri closes or HQ explicitly overrides this protection, new source→structural pipeline-generator design should target carrier-neutral logical contracts.
 
-The desired dependency direction is:
+Desired dependency:
 
 ```text
 PIPELINE-GENERATOR
-        ↓ depends on
+       ↓
 C11 LOGICAL REPOSITORY / EMPIRICAL CONTRACT
-        ↑ implemented by
+       ↑
 PERSISTENT_R5 | SOURCE_BACKED | HYBRID | FIXTURE
 ```
 
-The generator must not embed `load_parquet_event_table()`-style physical assumptions into semantic stages unless separately proven unavoidable.
+The generator must not hard-code a physical empirical carrier into semantic stages absent separately proven necessity.
+
+## 14. HQ FINAL DISPOSITIONS
+
+HQ may ultimately return exactly one high-level Chetiri result:
+
+- `VC4_CLOSE__CURRENT_R5_PERSISTENT_CARRIER_REMAINS_ARCHITECTURALLY_JUSTIFIED`
+- `VC4_CLOSE__SOURCE_BACKED_VIRTUAL_C11_PREFERRED__REOPENING_PETITION_REQUIRED`
+- `VC4_CLOSE__HYBRID_SOURCE_AUTHORITY_PREFERRED__REOPENING_PETITION_REQUIRED`
+- `VC4_CLOSE__INSUFFICIENT_EVIDENCE__NO_REOPENING`
+- `VC4_CLOSE__FROZEN_CONTRACT_CONTRADICTION_ESCALATION_REQUIRED`
+
+A preference is not implementation authority.
+
+## 15. FINAL OBJECTIVE
+
+Chetiri succeeds only if it can state, with exact evidence:
+
+- what is authoritative;
+- what must persist;
+- what may be regenerated;
+- what the still-unbuilt compiler-generator must produce;
+- what V3 actually consumes;
+- how provenance/replay survives;
+- why the selected persistence lifecycle does not starve or pre-instantiate the historically situated person the application exists to generate.
+
+Command maxim:
+
+> **Make the compiler as light as truth allows, and the permanent runtime substrate as effective as the person requires.**
