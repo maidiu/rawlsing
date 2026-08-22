@@ -4,9 +4,9 @@ Short tag: `VC4-COMPILER/PERSISTENCE`
 
 Mnemonic: **Chetiri decides what persists between THE PAST and THE LEARNED WORLD, while THE LIFE remains V3-owned.**
 
-Status: `G0_PASS__C03_RETURNED__CORE_EVIDENCE_ADMISSIBLE__C03R1_REQUIRED_BEFORE_C03_ACCEPTANCE__NO_ARCHITECTURE_SELECTED`
+Status: `G0_PASS__C03_ACCEPTED_VIA_C03R1__C04_C05_C08_AUTHORIZED__G1_OPEN__NO_ARCHITECTURE_SELECTED`
 
-Exact law remains in `11`–`14`, `22`, `26`, `27`, `28`, `G0_C02R2_HQ_ADJUDICATION/`, `29`, `30`, `03_GATE_LEDGER.csv`, and `04_WORKER_REGISTRY.csv`.
+Exact law remains in `11`–`14`, `22`, `26`, `27`, `28`, `G0_C02R2_HQ_ADJUDICATION/`, `29`, `30`, `31`, `03_GATE_LEDGER.csv`, and `04_WORKER_REGISTRY.csv`.
 
 ## 1. CURRENT STATE
 
@@ -23,79 +23,73 @@ G0 PASS
   ONLY WITH EXACT NAMED PERSISTENT SIDE MATERIAL
         |
         v
-C03 RETURNED @ 4ba1ed44c0385a9963c0a79eb84332ee5896f6dd
-  core physical witness admissible
-  selected-column + bounded chunk requests work on all 4 pinned paths
-  fresh-reader setup floor observed
-  byte-level physical pruning not proven
-  BUT acceptance contract incomplete:
-    - missing 2/5/25/50 width points
-    - insufficient repetitions
-    - RSS unit unresolved
-    - return manifest unsealed
+C03 + C03-R1  ACCEPTED
+  C03 return:    4ba1ed44c0385a9963c0a79eb84332ee5896f6dd
+  C03-R1 return: fd3b3080bede8998b0822935350a4041bc60c30c
+
+  4/4 pinned source identity gates PASS
+  40/40 required measurement cases complete
+  3 fresh child-process repetitions per case
+  120 raw runs
+  RSS unit closed as bytes
+
+  HQ HOLDING:
+  bounded selected-column and row-chunk execution works on all pinned paths
+  fresh-reader calls have a material setup/parse floor
+  selected/chunked wall and RSS behavior is materially below full-frame behavior
+  byte-level physical pruning remains unproved
         |
         v
-C03-R1 BOUNDED MEASUREMENT COMPLETION    <-- NEXT / AUTHORIZED
+G1 OPEN
         |
-        v
-HQ C03 FINAL ACCEPTANCE
-        |
-        +--> C04 I03 SOURCE-BACKED COURT
-        +--> C05 AUTONOMOUS DISCOVERY COURT
-        +--> C08 OPERATIONS/INVALIDATION COURT
+        +--> C04 I03 SOURCE-BACKED EXECUTION COURT       AUTHORIZED
+        +--> C05 AUTONOMOUS DISCOVERY COURT             AUTHORIZED
+        +--> C08 OPERATIONS / INVALIDATION COURT         AUTHORIZED TO BEGIN
+                                                          final reconciliation requires C04 + C05
+
+C09 LOCKED behind G1
+C10 LOCKED behind G2
 ```
 
-## 2. C03 CORE HOLDING ALREADY SAFE TO CARRY
+## 2. C03 FINAL ACCEPTED HOLDING
 
-Exact HQ intake holding:
+Worker disposition accepted:
 
-`NATIVE_READER_API_SUPPORTS_BOUNDED_SELECTED_AND_CHUNK_REQUESTS__FRESH_CALLS_HAVE_MATERIAL_SETUP_COST__BYTE_LEVEL_PRUNING_UNPROVEN`
+`C03_PASS__NATIVE_ACCESS_SUPPORTS_SELECTIVE_OR_AMORTIZABLE_COMPILATION`
 
-Observed examples from the returned matrix include:
+HQ interpretation:
 
-- WVS7: 1/10/100 columns = 1.892 / 1.952 / 3.492 s versus 11.465 s full read;
-- EVS2008: 1/10/100 = 1.311 / 1.253 / 2.254 s versus 6.223 s full;
-- LiTS I: 1/10/100 = 0.653 / 0.673 / 0.765 s versus 3.411 s full;
-- LiTS III hostile path: 1/10/100 = 0.835 / 0.965 / 1.550 s versus 8.113 s full;
-- all four 1,000-row / 10-column chunk requests completed in under one second in the returned observations.
+`C03_ACCEPTED__NATIVE_READER_SUPPORTS_BOUNDED_SELECTED_AND_CHUNKED_EXECUTION__FRESH_CALLS_HAVE_MATERIAL_SETUP_FLOOR__BYTE_LEVEL_PRUNING_UNPROVEN`
 
-These observations are admissible. They are not yet a complete C03 acceptance package because the ordered grid/repetition law was not fully executed.
+The completed C03-R1 grid establishes the ordered 1/2/5/10/25/50/100 selected-width surface on all four pinned sources with three fresh-process repetitions each, plus metadata, chunk, and full-read cases.
 
-## 3. C03-R1 — ONLY NEXT LOCAL JOB
+The original C03 RSS unit label was wrong for this macOS host. C03-R1 calibrated `ru_maxrss` against `/usr/bin/time -l` using a touched 64 MiB allocation and established that the returned values are byte-valued. This is a receipt correction, not a change in the underlying measured memory behavior.
 
-Branch:
+C03 does not prove byte-level predecode pruning and does not select a persistent or transient representation.
 
-`agent/vozhd-chetiri-c03r1-native-source-measurement-completion`
+## 3. P1B LAUNCH LAW
 
-Authority/order:
+C04 and C05 may run in parallel after HQ issues exact bounded launch handouts from the then-current control HEAD.
 
-`30_C03_RETURN_INTAKE_AND_C03R1_MEASUREMENT_COMPLETION_AUTHORITY.md`
+C08 may begin in parallel, but its final return may not close until C04 and C05 evidence is available and the required reconciliation is complete.
 
-Role:
+Local Codex operating procedure:
 
-`DUMB_MEASUREMENT_COMPLETION_EXECUTOR`
+- default worker capability target: `Luna-medium`;
+- `Luna-high` only where mechanical repo navigation/debugging genuinely requires it;
+- hard semantic/architectural judgment is moved upstream into HQ launch design or downstream into HQ adjudication;
+- local workers execute bounded proof/measurement contracts rather than inventing the court.
 
-C03-R1 does exactly four things:
+## 4. WHAT P1B MUST NOW PROVE
 
-1. complete the missing 1/2/5/10/25/50/100 width grid on the same four pinned sources;
-2. execute three fresh-process repetitions per case and return raw + median/min/max measurements;
-3. calibrate the macOS RSS unit rather than guessing;
-4. seal exact return identities/receipts.
+C04 must establish whether the exact governed I03 operation surface can be served from source-backed/native execution plus lawful bounded/transient materialization without starving truth conditions.
 
-It does not interpret architecture, I03, I05, persistence, or semantic law.
+C05 must establish whether the actual governed I05 autonomous-discovery frontier is executable. Primitive query speed alone is not sufficient, and an unfrozen search/termination program must fail closed rather than masquerade as a performance verdict.
 
-## 4. DOWNSTREAM LOCK
-
-Until C03-R1 returns and HQ accepts the combined C03/C03-R1 evidence:
-
-- C04: `LOCKED__C03_NOT_ACCEPTED`
-- C05: `LOCKED__C03_NOT_ACCEPTED`
-- C08: `LOCKED__C03_NOT_ACCEPTED`
-- C09: `LOCKED__G1_NOT_CLOSED`
-- C10: `LOCKED__G2_NOT_CLOSED`
+C08 must establish exact learned-world dependency, invalidation, rebuild and operational ownership boundaries, reconciling the real execution strategies returned by C04 and C05 before it closes.
 
 ## 5. COMMAND RULE
 
-> **Do not throw away a good experiment because its receipt is incomplete. Complete the ordered measurement surface, then adjudicate.**
+> **C03 proved that native files are workable execution substrate, not that repeated discovery should reparsed them naively forever.**
 
-> **The local executor measures; HQ decides what the measurements prove.**
+> **P1B now separates exact query feasibility, autonomous discovery feasibility, and operational rebuild law before any physical bakeoff is allowed.**
