@@ -1,0 +1,74 @@
+{
+  "authority_gap_count": 15,
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R03_RETURNED",
+  "database_url_used": false,
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "family": "Asian Barometer",
+  "family_reuse_and_drift_row_count": 18,
+  "frozen_contract_contradiction_found": false,
+  "full_scan_reason": null,
+  "full_source_scans_performed": false,
+  "hostile_fixture_total": 31,
+  "legacy_postgres_used_as_truth": false,
+  "mission_status": "PREPARATION_COMPLETE__NON_DISPOSITIVE__RETURNED",
+  "non_dispositive": true,
+  "priority_holdings": [
+    "W1 source-reported BIG-5 is an exact wave-specific reader obligation; W4/W5 UTF-8 behavior cannot be inherited backward.",
+    "W5 native Q112 and SE15 MR sets are distinct source metadata objects even though they overlap on SE15A..SE15M; both use counted value 1 and neither may be deduplicated.",
+    "W5 native MR set name Q112 must not be semantically equated to questionnaire item 112; the official core questionnaire item 112 is a different governance statement.",
+    "W4 and W5 merged SAV country dictionaries differ from their generic core-questionnaire SE1 code lists; preserve both layers and never recode the raw source from the questionnaire by convenience.",
+    "W4 is independently packeted and does not inherit W1 BIG-5 or W5 MR/noninjective-ID exceptions."
+  ],
+  "production_runtime_modified": false,
+  "raw_transport": {
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "library_filename": "surveys.zip",
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "repository": "maidiu/rawlsing",
+  "source_count": 3,
+  "source_native_document_search": {
+    "library_w1_exact_native_doc_found": false,
+    "library_w4_found": {
+      "file_id": "file_000000003ee0822f81431d67abaeba83",
+      "name": "ABS4_Core_Questionnaire.pdf"
+    },
+    "library_w5_exact_native_doc_found": false,
+    "official_w1_core_download_listing_found_via_browser": true,
+    "official_w5_core_questionnaire_found_via_browser": true
+  },
+  "sources": [
+    {
+      "documentary_authority_status": "PARTIAL__EXACT_W1_SOURCE_NATIVE_QUESTIONNAIRE_NOT_RECOVERED_IN_LIBRARY__OFFICIAL_ABS_SITE_CONFIRMS_FIRST_WAVE_CORE_EXISTS",
+      "future_court_requirements": "Compound hostile court: exact BIG-5 decode; typed-missing replay; row identity; geography; all weight candidates; ranked slots; documentary response/routing/weight assertions once authority is obtained.",
+      "hostile_fixture_count": 9,
+      "packet_disposition": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "source_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "wave": "W1"
+    },
+    {
+      "documentary_authority_status": "PARTIAL__LIBRARY_ABS4_CORE_QUESTIONNAIRE_FOUND__Q99_Q172_SE1_EXPLICIT__MERGED_COUNTRY_CODE_BINDING_AND_WEIGHT_AUTHORITY_OPEN",
+      "future_court_requirements": "Source-specific hostile court: ordinary sentinel preservation; merged SAV vs core-questionnaire country-code drift; ranked slots; q172 routing; w/w_cross role deferred to exact authority.",
+      "hostile_fixture_count": 9,
+      "packet_disposition": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+      "source_file": "Asian Barometer Wave 4.sav",
+      "source_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+      "wave": "W4"
+    },
+    {
+      "documentary_authority_status": "PARTIAL__OFFICIAL_COREQ_W5_FOUND__SE15_IR3A_Q186_EXPLICIT__COUNTRY_SPECIFIC_INDIA_ID_WEIGHT_AND_Q112_ALIAS_AUTHORITY_OPEN",
+      "future_court_requirements": "Compound hostile court: preserve three distinct native MR sets and exact overlap without deduplication; noninjective ID; raw/core country-code drift; routing modules; ordinary sentinels; weight authority.",
+      "hostile_fixture_count": 13,
+      "packet_disposition": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED",
+      "source_file": "Asian Barometer Wave 5.sav",
+      "source_sha256": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63",
+      "wave": "W5"
+    }
+  ],
+  "user_local_source_directory_used": false,
+  "worker_branch": "agent/vozhd-trii-srcprep71-r03-asian",
+  "worker_id": "SOURCE-CERT-PREP71-R03",
+  "wvs70_touched": false
+}

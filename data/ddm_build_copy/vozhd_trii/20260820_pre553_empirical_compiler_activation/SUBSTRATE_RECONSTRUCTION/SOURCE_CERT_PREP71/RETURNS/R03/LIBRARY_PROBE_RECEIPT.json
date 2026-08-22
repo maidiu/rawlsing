@@ -1,0 +1,172 @@
+{
+  "DATABASE_URL_used": false,
+  "WVS70_touched": false,
+  "accepted_sr03": {
+    "checkout_library_file_id": "file_000000004c10820da1a45513abc56ce5",
+    "checkout_materialized_path": "/mnt/data/srcprep71_r03_asian_private/sr03_accepted/checkout.zip",
+    "checkout_sha256": "e58fd7cdd6e8587573e8cb94ca1df4cd8949cee5fdbc39042b739df6add1c232",
+    "checkout_size_bytes": 30357170,
+    "deterministic_archive_sha256": "8d06a436b7148d86273e5ae35a887252198ce8ae984902a4a38f05ad11a0e9cc",
+    "manifest_sha256": {
+      "W1": "b607ce2dc5991a7320812b1d77362da3456aa6d80f9389cd9697ffba81377177",
+      "W4": "06b55f0e53c67bb45a295edcee9507d87737cdabb6de4b539ed8747d1dab9694",
+      "W5": "0a492240cbdf7d91b2e247fbddc556c4cf34214486235912f88b16fd79d7636f"
+    }
+  },
+  "accepted_sr09_pre_r03": {
+    "commit": "8774082185cd192f4e713485ecec0730e3151bf4",
+    "evidence_files": [
+      "RESULT.md",
+      "RESULT.json",
+      "SOURCE_BURDEN.csv",
+      "HOSTILE_SENTINELS.csv",
+      "CROSS_WAVE_DRIFT.csv",
+      "AUTHORITY_GAPS.csv",
+      "PROBE_RECEIPT.json"
+    ]
+  },
+  "accepted_sr09_pre_r10_exception_queue": {
+    "commit": "267426e3b5f06473ffc9cee6075609874529ab77",
+    "note": "Queue was not present on PREP71 start snapshot; read from the exact accepted R10 commit named by campaign-close authority."
+  },
+  "archive_members_used": [
+    "surveys/Asian Barometer Wave 1.sav",
+    "surveys/Asian Barometer Wave 4.sav",
+    "surveys/Asian Barometer Wave 5.sav"
+  ],
+  "browser_official_documents": [
+    {
+      "name": "Asian Barometer Core Questionnaire download page",
+      "url": "https://asianbarometer.org/data?page=d20",
+      "use": "Confirms First/Fourth/Fifth core questionnaire availability; not item-level W1 authority."
+    },
+    {
+      "name": "CoreQ_W5.pdf",
+      "pages_used": [
+        14,
+        15,
+        24,
+        26,
+        30,
+        31
+      ],
+      "url": "https://www.asianbarometer.org/resource/images/data/CoreQ_W5.pdf"
+    },
+    {
+      "name": "Asian Barometer data release policy",
+      "url": "https://asianbarometer.org/datar?page=d10",
+      "use": "Country-specific release-authority boundary and sampling-method availability."
+    }
+  ],
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R03_RETURNED",
+  "exact_checkout_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "extracted_sources": [
+    {
+      "materialized_path": "/mnt/data/srcprep71_r03_asian_private/extracted/Asian Barometer Wave 1.sav",
+      "sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "size_bytes": 3451655,
+      "source_file": "Asian Barometer Wave 1.sav"
+    },
+    {
+      "materialized_path": "/mnt/data/srcprep71_r03_asian_private/extracted/Asian Barometer Wave 4.sav",
+      "sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+      "size_bytes": 7735596,
+      "source_file": "Asian Barometer Wave 4.sav"
+    },
+    {
+      "materialized_path": "/mnt/data/srcprep71_r03_asian_private/extracted/Asian Barometer Wave 5.sav",
+      "sha256": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63",
+      "size_bytes": 10688196,
+      "source_file": "Asian Barometer Wave 5.sav"
+    }
+  ],
+  "family": "Asian Barometer",
+  "final_git_status": "CONNECTOR_PUBLICATION_MODE__AUTHORIZED_OUTPUT_SET_VALIDATED_10_FILES__POST_PUSH_COMPARE_REPORTED_OUT_OF_BAND",
+  "full_scan_reason": null,
+  "full_scan_targets": [],
+  "full_source_scans_performed": false,
+  "legacy_postgres_used_as_truth": false,
+  "library_bundle": {
+    "filename": "surveys.zip",
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "materialized_path": "/mnt/data/srcprep71_r03_asian_private/surveys.zip",
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "library_bundle_unchanged": true,
+  "library_document_search": {
+    "exact_w1_native_doc_found": false,
+    "exact_w5_native_doc_found": false,
+    "queries": [
+      "Asian Barometer Wave 1 questionnaire/codebook/methodology",
+      "ABS4_Core_Questionnaire.pdf",
+      "Asian Barometer Wave 5 questionnaire/codebook/methodology",
+      "CoreQs-May25rev.doc",
+      "SE15 Q112 Asian Barometer"
+    ],
+    "source_native_library_documents_found": [
+      {
+        "file_id": "file_000000003ee0822f81431d67abaeba83",
+        "name": "ABS4_Core_Questionnaire.pdf",
+        "pages_used": [
+          14,
+          25,
+          26
+        ]
+      }
+    ]
+  },
+  "output_file_sha256_excluding_self": {
+    "AUTHORITY_GAPS.csv": "3e23fa052223c07612d80cff3b87164ccb67138093280fdc676a1462806f36c0",
+    "CHANGED_FILES.txt": "beb866b922ce30188823d96a66f91d662cff294045f00fdaf68d22f49eb1b74f",
+    "DOCUMENTARY_AUTHORITY_MAP.csv": "ab6f217ccb4ce7ea7b33ee9984878ea403f80bd50c4b9e019e6c6692302038a3",
+    "FAMILY_REUSE_AND_DRIFT.csv": "d22eab8a8561e79c3c7c2c9605ca856cbfdf9dbf419dccc238970bfa9caf57d4",
+    "FUTURE_EXECUTION_ORDER.md": "e8b21866b707843c83f44bc1bd09e7b02b0d2dd39d69603f7ca3045152030310",
+    "HOSTILE_FIXTURES.csv": "b234a935fac086c0833a5240428ecb54c3388112988892c86abc4ecd197f660f",
+    "RESULT.json": "2a0cae2b0bbaa9d6ff1133d92f9843b14c20363bfad7773948ee1a857b4da9d6",
+    "RESULT.md": "a72618ad29e63f945b8970f37355404c6298459b7fec312e264db172bfca5bc1",
+    "SOURCE_CERTIFICATION_LEDGER.csv": "8ddf700c69c64db3351348a69f850109835ee1c5456573ed844df6d073d3278e"
+  },
+  "probes_executed": [
+    "SHA-256 bundle gate",
+    "ZIP member-name/size gate",
+    "extract only assigned W1/W4/W5 SAV members",
+    "SHA-256 source gates before probing",
+    "176-byte SAV header probe only",
+    "accepted SR03 manifest extraction and targeted metadata reads",
+    "Library source-native document search",
+    "source-native/official questionnaire targeted reads"
+  ],
+  "production_runtime_modified": false,
+  "raw_source_files_unchanged": true,
+  "self_hash_note": "LIBRARY_PROBE_RECEIPT.json self-SHA is reported in the HQ receipt after final serialization; embedding its own cryptographic hash would be recursive.",
+  "source_header_probes": {
+    "Asian Barometer Wave 1.sav": {
+      "compression": 1,
+      "layout_code": 2,
+      "magic": "$FL2",
+      "product": "IBM SPSS STATISTICS DATA FILE 64-bit MS Windows 20.0.0"
+    },
+    "Asian Barometer Wave 4.sav": {
+      "compression": 1,
+      "layout_code": 2,
+      "magic": "$FL2",
+      "product": "IBM SPSS STATISTICS 64-bit MS Windows 28.0.1.0"
+    },
+    "Asian Barometer Wave 5.sav": {
+      "compression": 1,
+      "layout_code": 2,
+      "magic": "$FL2",
+      "product": "PASW STATISTICS DATA FILE MS Windows 18.0.0"
+    }
+  },
+  "tool_dependency_versions": {
+    "pandas": "2.2.3",
+    "pyreadstat": "UNAVAILABLE",
+    "python": "3.13.5",
+    "zip_reader": "Python zipfile stdlib"
+  },
+  "user_local_source_directory_used": false,
+  "worker_branch": "agent/vozhd-trii-srcprep71-r03-asian",
+  "worker_id": "SOURCE-CERT-PREP71-R03"
+}
