@@ -1,0 +1,1896 @@
+{
+  "courts": {
+    "2000000_V0": {
+      "audit": {
+        "canonical_rows": 2000614,
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 2000000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 459.00383107500056,
+      "checkpoint": 2000000,
+      "decode_open_seconds": 0.6146845029998076,
+      "density": 14.4385385,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 2000000,
+      "projected_full_wvs_bytes": 860477119.05061,
+      "projected_full_wvs_gib": 0.8013817659119237,
+      "reopen_full_audit_seconds": 226.85266632599996,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 2000614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 85510,
+          "member_count": 123,
+          "path": "member_inventory.jsonl",
+          "sha256": "06f6c3ae0a8435687bc7d4fd10f1de68e489d8057f307a0a2e5f31eb085ec2f3"
+        },
+        "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-2000000",
+          "semantic_release_hash": "e081e350e253b9fd6d192dff54bcbb982fd85e8af978cf3f85f3d4c95f9006a3",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "0e5f51ea7f4fe188dd782aa5721a18a2360504c64a9d9cee8e670bd725d68425"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/2m-V0/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 28877077,
+        "final_shards": 123,
+        "initial_runs": 489,
+        "input_rows": 2000614,
+        "inventory_bytes": 85510,
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "max_buffered_run_bytes": 3476741,
+        "max_buffered_run_rows": 4096,
+        "max_merge_open_runs": 8,
+        "member_bytes": 28788877,
+        "merge_passes": 2,
+        "phases": {
+          "final_merge_member_sealing": 208.09045669700026,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 190.50351053899976,
+          "merge_reduction": 60.40197925100074
+        },
+        "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+        "root_bytes": 2690,
+        "temp_bytes_written": 120991608
+      },
+      "variant": "V0"
+    },
+    "2000000_V4": {
+      "audit": {
+        "canonical_rows": 2000614,
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 2000000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 392.0556722040001,
+      "checkpoint": 2000000,
+      "decode_open_seconds": 0.8139898259996698,
+      "density": 14.4385385,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 2000000,
+      "projected_full_wvs_bytes": 860477119.05061,
+      "projected_full_wvs_gib": 0.8013817659119237,
+      "reopen_full_audit_seconds": 204.8927238840006,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 2000614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 85510,
+          "member_count": 123,
+          "path": "member_inventory.jsonl",
+          "sha256": "06f6c3ae0a8435687bc7d4fd10f1de68e489d8057f307a0a2e5f31eb085ec2f3"
+        },
+        "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-2000000",
+          "semantic_release_hash": "e081e350e253b9fd6d192dff54bcbb982fd85e8af978cf3f85f3d4c95f9006a3",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "0e5f51ea7f4fe188dd782aa5721a18a2360504c64a9d9cee8e670bd725d68425"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/2m-V4/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 28877077,
+        "final_shards": 123,
+        "initial_runs": 31,
+        "input_rows": 2000614,
+        "inventory_bytes": 85510,
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 28788877,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 204.05778145800105,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 187.9803075610016,
+          "merge_reduction": 0.00016976000006252434
+        },
+        "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+        "root_bytes": 2690,
+        "temp_bytes_written": 49900481
+      },
+      "variant": "V4"
+    },
+    "2000000_V6WIN": {
+      "audit": {
+        "canonical_rows": 2000614,
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "physical_root_id": "97ee4b07d4f4c77284d02445f077e70f661dd1b52bc1ce1f6b97207056575eae",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 2000000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 442.8785401940004,
+      "checkpoint": 2000000,
+      "decode_open_seconds": 0.6028148910008895,
+      "density": 14.378376,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 2000000,
+      "projected_full_wvs_bytes": 856891683.1233599,
+      "projected_full_wvs_gib": 0.7980425684930383,
+      "reopen_full_audit_seconds": 232.60210835500038,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 64,
+          "run_max_bytes": 67108864,
+          "run_max_rows": 65536,
+          "shard_max_bytes": 536870912,
+          "shard_max_rows": 524288,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 2000614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 2823,
+          "member_count": 4,
+          "path": "member_inventory.jsonl",
+          "sha256": "41d249f47413486219c1af2dced63391137da45a5d3b622ec2741c37efb3f1e5"
+        },
+        "physical_root_id": "97ee4b07d4f4c77284d02445f077e70f661dd1b52bc1ce1f6b97207056575eae",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-2000000",
+          "semantic_release_hash": "e081e350e253b9fd6d192dff54bcbb982fd85e8af978cf3f85f3d4c95f9006a3",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "0e5f51ea7f4fe188dd782aa5721a18a2360504c64a9d9cee8e670bd725d68425"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/2m-V6WIN/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 28756752,
+        "final_shards": 4,
+        "initial_runs": 31,
+        "input_rows": 2000614,
+        "inventory_bytes": 2823,
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 28751237,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 247.96479003100103,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 194.85434868899938,
+          "merge_reduction": 0.00013208800010033883
+        },
+        "physical_root_id": "97ee4b07d4f4c77284d02445f077e70f661dd1b52bc1ce1f6b97207056575eae",
+        "root_bytes": 2692,
+        "temp_bytes_written": 49900481
+      },
+      "variant": "V6WIN"
+    },
+    "2000000_V7": {
+      "audit": {
+        "canonical_rows": 2000614,
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "physical_root_id": "a32e3b89ff62724eb7bc923bc64bd0e23894184b83b9c31a5b6617718ddc759c",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 2000000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 461.91192695000063,
+      "checkpoint": 2000000,
+      "decode_open_seconds": 0.7489254000010988,
+      "density": 18.003386,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 2000000,
+      "projected_full_wvs_bytes": 1072927271.58196,
+      "projected_full_wvs_gib": 0.9992413889448717,
+      "reopen_full_audit_seconds": 216.41191465700103,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 64,
+          "run_max_bytes": 67108864,
+          "run_max_rows": 65536,
+          "shard_max_bytes": 536870912,
+          "shard_max_rows": 524288,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 2000614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 2823,
+          "member_count": 4,
+          "path": "member_inventory.jsonl",
+          "sha256": "593df3fa4fb083b468ff2c5021c58594d1382824bbceabe769898563b2e61564"
+        },
+        "physical_root_id": "a32e3b89ff62724eb7bc923bc64bd0e23894184b83b9c31a5b6617718ddc759c",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-2000000",
+          "semantic_release_hash": "e081e350e253b9fd6d192dff54bcbb982fd85e8af978cf3f85f3d4c95f9006a3",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "0e5f51ea7f4fe188dd782aa5721a18a2360504c64a9d9cee8e670bd725d68425"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/2m-V7/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 36006772,
+        "final_shards": 4,
+        "initial_runs": 31,
+        "input_rows": 2000614,
+        "inventory_bytes": 2823,
+        "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 36001257,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 223.89697435800008,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 237.95296389500072,
+          "merge_reduction": 0.00012947899995197076
+        },
+        "physical_root_id": "a32e3b89ff62724eb7bc923bc64bd0e23894184b83b9c31a5b6617718ddc759c",
+        "root_bytes": 2692,
+        "temp_bytes_written": 49900481
+      },
+      "variant": "V7"
+    },
+    "250000_V0": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 52.98175571799948,
+      "checkpoint": 250000,
+      "decode_open_seconds": 2.1535581209991506,
+      "density": 14.962512,
+      "peak_rss_bytes": 200654848,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 891703770.40032,
+      "projected_full_wvs_gib": 0.8304638512435556,
+      "reopen_full_audit_seconds": 25.76919624099901,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 11106,
+          "member_count": 16,
+          "path": "member_inventory.jsonl",
+          "sha256": "0e3910a30edc02fb7f7424a169e4c9e8a2f4f4c74b14411b068c74252060f9d0"
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V0/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 3740628,
+        "final_shards": 16,
+        "initial_runs": 62,
+        "input_rows": 250614,
+        "inventory_bytes": 11106,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 3476741,
+        "max_buffered_run_rows": 4096,
+        "max_merge_open_runs": 8,
+        "member_bytes": 3726835,
+        "merge_passes": 1,
+        "phases": {
+          "final_merge_member_sealing": 24.567127692000213,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 24.87504376799916,
+          "merge_reduction": 3.5356488580000587
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "root_bytes": 2687,
+        "temp_bytes_written": 10326723
+      },
+      "variant": "V0"
+    },
+    "250000_V1": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 49.618753723001646,
+      "checkpoint": 250000,
+      "decode_open_seconds": 0.6099671089996264,
+      "density": 14.962512,
+      "peak_rss_bytes": 200654848,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 891703770.40032,
+      "projected_full_wvs_gib": 0.8304638512435556,
+      "reopen_full_audit_seconds": 25.93624457199985,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 11106,
+          "member_count": 16,
+          "path": "member_inventory.jsonl",
+          "sha256": "0e3910a30edc02fb7f7424a169e4c9e8a2f4f4c74b14411b068c74252060f9d0"
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V1/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 3740628,
+        "final_shards": 16,
+        "initial_runs": 4,
+        "input_rows": 250614,
+        "inventory_bytes": 11106,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 3726835,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 25.632114721998732,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 23.98373352999988,
+          "merge_reduction": 0.00014354399900184944
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "root_bytes": 2687,
+        "temp_bytes_written": 5154344
+      },
+      "variant": "V1"
+    },
+    "250000_V2": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 50.211253081000905,
+      "checkpoint": 250000,
+      "decode_open_seconds": 0.6086688010000216,
+      "density": 14.962512,
+      "peak_rss_bytes": 267845632,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 891703770.40032,
+      "projected_full_wvs_gib": 0.8304638512435556,
+      "reopen_full_audit_seconds": 26.617770763999943,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 11106,
+          "member_count": 16,
+          "path": "member_inventory.jsonl",
+          "sha256": "0e3910a30edc02fb7f7424a169e4c9e8a2f4f4c74b14411b068c74252060f9d0"
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V2/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 3740628,
+        "final_shards": 16,
+        "initial_runs": 1,
+        "input_rows": 250614,
+        "inventory_bytes": 11106,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 106117392,
+        "max_buffered_run_rows": 250614,
+        "max_merge_open_runs": 0,
+        "member_bytes": 3726835,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 25.731155270999807,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 24.47760400399966,
+          "merge_reduction": 0.00016566599879297428
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "root_bytes": 2687,
+        "temp_bytes_written": 5153167
+      },
+      "variant": "V2"
+    },
+    "250000_V3": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 54.45762663000096,
+      "checkpoint": 250000,
+      "decode_open_seconds": 0.6534779190005793,
+      "density": 14.962512,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 891703770.40032,
+      "projected_full_wvs_gib": 0.8304638512435556,
+      "reopen_full_audit_seconds": 27.36660438599938,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 11106,
+          "member_count": 16,
+          "path": "member_inventory.jsonl",
+          "sha256": "0e3910a30edc02fb7f7424a169e4c9e8a2f4f4c74b14411b068c74252060f9d0"
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V3/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 3740628,
+        "final_shards": 16,
+        "initial_runs": 1,
+        "input_rows": 250614,
+        "inventory_bytes": 11106,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 106117392,
+        "max_buffered_run_rows": 250614,
+        "max_merge_open_runs": 0,
+        "member_bytes": 3726835,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 27.607544683000015,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 26.84778229299991,
+          "merge_reduction": 0.00015075299961608835
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "root_bytes": 2687,
+        "temp_bytes_written": 5153167
+      },
+      "variant": "V3"
+    },
+    "250000_V4": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 49.27342702200076,
+      "checkpoint": 250000,
+      "decode_open_seconds": 0.631510277000416,
+      "density": 14.962512,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 891703770.40032,
+      "projected_full_wvs_gib": 0.8304638512435556,
+      "reopen_full_audit_seconds": 26.975520666999728,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 11106,
+          "member_count": 16,
+          "path": "member_inventory.jsonl",
+          "sha256": "0e3910a30edc02fb7f7424a169e4c9e8a2f4f4c74b14411b068c74252060f9d0"
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V4/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 3740628,
+        "final_shards": 16,
+        "initial_runs": 4,
+        "input_rows": 250614,
+        "inventory_bytes": 11106,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 3726835,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 25.574387197999386,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 23.68652906600073,
+          "merge_reduction": 0.00013305299944477156
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "root_bytes": 2687,
+        "temp_bytes_written": 6347011
+      },
+      "variant": "V4"
+    },
+    "250000_V5": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 49.43763981400116,
+      "checkpoint": 250000,
+      "decode_open_seconds": 0.6936281629987207,
+      "density": 14.962512,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 891703770.40032,
+      "projected_full_wvs_gib": 0.8304638512435556,
+      "reopen_full_audit_seconds": 27.58380162799949,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 11106,
+          "member_count": 16,
+          "path": "member_inventory.jsonl",
+          "sha256": "0e3910a30edc02fb7f7424a169e4c9e8a2f4f4c74b14411b068c74252060f9d0"
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V5/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 3740628,
+        "final_shards": 16,
+        "initial_runs": 4,
+        "input_rows": 250614,
+        "inventory_bytes": 11106,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 3726835,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 27.157507564999833,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 22.26367076600036,
+          "merge_reduction": 0.00014315800035547
+        },
+        "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+        "root_bytes": 2687,
+        "temp_bytes_written": 106117392
+      },
+      "variant": "V5"
+    },
+    "250000_V6A": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "80fc1eca9851d3136430e00f554047be0bcef4dc39c07dee2a082f54447018d6",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 59.31903820499974,
+      "checkpoint": 250000,
+      "decode_open_seconds": 0.579011112000444,
+      "density": 14.909212,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 888527311.06232,
+      "projected_full_wvs_gib": 0.827505542954728,
+      "reopen_full_audit_seconds": 26.92624397899999,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 64,
+          "run_max_bytes": 67108864,
+          "run_max_rows": 65536,
+          "shard_max_bytes": 134217728,
+          "shard_max_rows": 131072,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 1427,
+          "member_count": 2,
+          "path": "member_inventory.jsonl",
+          "sha256": "e6fad21c5d7e7fd7e5fc613bc6afe0cd421fe41d41b0b3b721cea5c1ed27cf82"
+        },
+        "physical_root_id": "80fc1eca9851d3136430e00f554047be0bcef4dc39c07dee2a082f54447018d6",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V6A/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 3727303,
+        "final_shards": 2,
+        "initial_runs": 4,
+        "input_rows": 250614,
+        "inventory_bytes": 1427,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 3723186,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 29.78991553099877,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 29.522218984000574,
+          "merge_reduction": 0.0007606670005770866
+        },
+        "physical_root_id": "80fc1eca9851d3136430e00f554047be0bcef4dc39c07dee2a082f54447018d6",
+        "root_bytes": 2690,
+        "temp_bytes_written": 6347011
+      },
+      "variant": "V6A"
+    },
+    "250000_V6B": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "bf6222b9650bc1cc5f208c146cb7619f3f6711c287f5f4a5e04a2f4a809b1c1c",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 50.38460957800089,
+      "checkpoint": 250000,
+      "decode_open_seconds": 0.6503503330004605,
+      "density": 14.904824,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 888265804.42864,
+      "projected_full_wvs_gib": 0.8272619959233701,
+      "reopen_full_audit_seconds": 27.04486119900139,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 64,
+          "run_max_bytes": 67108864,
+          "run_max_rows": 65536,
+          "shard_max_bytes": 536870912,
+          "shard_max_rows": 524288,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 730,
+          "member_count": 1,
+          "path": "member_inventory.jsonl",
+          "sha256": "cd107c0d5d959c7e7bced88f822c7bd0e1b3f033f6ffe661941075cdb034810c"
+        },
+        "physical_root_id": "bf6222b9650bc1cc5f208c146cb7619f3f6711c287f5f4a5e04a2f4a809b1c1c",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V6B/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 3726206,
+        "final_shards": 1,
+        "initial_runs": 4,
+        "input_rows": 250614,
+        "inventory_bytes": 730,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 3722787,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 26.47096617600073,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 23.91110697699878,
+          "merge_reduction": 0.00014232500143407378
+        },
+        "physical_root_id": "bf6222b9650bc1cc5f208c146cb7619f3f6711c287f5f4a5e04a2f4a809b1c1c",
+        "root_bytes": 2689,
+        "temp_bytes_written": 6347011
+      },
+      "variant": "V6B"
+    },
+    "250000_V7": {
+      "audit": {
+        "canonical_rows": 250614,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "physical_root_id": "09ef74656c7cbae9f43fe3c9c0f13a0efdc17a18562a53e88be36c821d077123",
+        "relation_counts": {
+          "source_metadata": 1,
+          "source_physical_cells": 250000,
+          "source_variables": 613
+        }
+      },
+      "build_seconds": 56.78795860900027,
+      "checkpoint": 250000,
+      "decode_open_seconds": 0.681274515000041,
+      "density": 18.65494,
+      "peak_rss_bytes": 268304384,
+      "physical_cells": 250000,
+      "projected_full_wvs_bytes": 1111757192.5484,
+      "projected_full_wvs_gib": 1.035404570911452,
+      "reopen_full_audit_seconds": 33.3399302100006,
+      "root": {
+        "build_config": {
+          "merge_fan_in": 64,
+          "run_max_bytes": 67108864,
+          "run_max_rows": 65536,
+          "shard_max_bytes": 536870912,
+          "shard_max_rows": 524288,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 250614,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "member_encoding": "GZIP_COMPACT_JSONL@2.0.0",
+        "member_inventory": {
+          "byte_length": 730,
+          "member_count": 1,
+          "path": "member_inventory.jsonl",
+          "sha256": "c710e5ae8509be5be5bc37388b7bb2b62b4b9662d8878170e64cadb03fdd11c5"
+        },
+        "physical_root_id": "09ef74656c7cbae9f43fe3c9c0f13a0efdc17a18562a53e88be36c821d077123",
+        "release_identity": {
+          "c11_authority_digest": "c76fbbf250a05a43009036a286b93b52d7e32243843ea670b1e684720d740d33",
+          "compiler_contract_digest": "c12e7a873be6c7d4271a366b28a29be6b356b5d1eb3aab73c252250d2b30325e",
+          "decoder_receipt": {
+            "authority_status": "DENSITY_EXECUTION_ONLY__FROZEN_DECODER",
+            "decoder": "decode_sav",
+            "encoding_override": null
+          },
+          "m01_m18_coverage": {
+            "M01": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M02": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M03": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M04": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M05": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M06": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M07": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M08": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M09": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M10": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M11": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M12": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M13": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M14": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M15": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M16": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M17": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ],
+            "M18": [
+              "DENSITY_EXECUTION_ONLY__NO_SEMANTIC_CERTIFICATION"
+            ]
+          },
+          "release_id": "R5-COMPACT-WVS-PREFIX-250000",
+          "semantic_release_hash": "98d647e665b0136cc8ea50a75f4ee3a7644da0e1b130c098a3e45328e8af62c0",
+          "source_artifact_ref": {
+            "content_hash": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+            "kind": "SOURCE_ARTIFACT",
+            "object_id": "sha256:2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+          },
+          "source_release_manifest_hash": "81a903a1ceb11b7fbce89372b782b6ff55c963d066d2d4d717705079f52b962b"
+        },
+        "root_schema_version": "PRE553_R5_ROOT@1.0.0",
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      },
+      "source_rows": 97220,
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_variables": 613,
+      "target": "/tmp/r5-turbo66-court/250000-V7/sealed",
+      "telemetry": {
+        "canonical_steady_state_bytes": 4663735,
+        "final_shards": 1,
+        "initial_runs": 4,
+        "input_rows": 250614,
+        "inventory_bytes": 730,
+        "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+        "max_buffered_run_bytes": 28953498,
+        "max_buffered_run_rows": 65536,
+        "max_merge_open_runs": 0,
+        "member_bytes": 4660316,
+        "merge_passes": 0,
+        "phases": {
+          "final_merge_member_sealing": 30.97268801499922,
+          "hash_inventory_root_closure": 0.0,
+          "initial_run_generation_sort_write": 25.812302684000315,
+          "merge_reduction": 0.00014619899957324378
+        },
+        "physical_root_id": "09ef74656c7cbae9f43fe3c9c0f13a0efdc17a18562a53e88be36c821d077123",
+        "root_bytes": 2689,
+        "temp_bytes_written": 6347011
+      },
+      "variant": "V7"
+    }
+  },
+  "fastest_temporary_250k": "V4",
+  "final_disposition": "R5_SERIAL_TURBO_VALIDATED__MODEST_GAIN__HQ_DECISION_REQUIRED",
+  "recommended_variant": "V4",
+  "speedup_2m_build": 1.170761867809848,
+  "speedup_2m_build_plus_audit": 1.1489376667994151,
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "suite": "Authority 66"
+}
