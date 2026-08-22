@@ -169,9 +169,13 @@ That hypothesis is not accepted until proved.
 16. `06_BUILD_RUNTIME_PERSISTENCE_LAW.md`
 17. `07_MEASUREMENT_AND_BAKEOFF_LAW.md`
 18. `08_HQ_ADJUDICATION_TEMPLATE.md`
-19. `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md` — mandatory cross-command education; non-dispositive
-20. exact cell order under `WORKER_ORDERS/`
-21. relevant prepared phase launch order.
+19. `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md` — mandatory Trii source/replay/C11/I03/I05/I04 cross-command education; non-dispositive
+20. `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md` — mandatory forward-terminal, learned-world, discovery-program and empirical-possibility education; non-dispositive
+21. `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md` — mandatory HQ prelaunch reconciliation input; non-dispositive; silence is not a disposition
+22. exact cell order under `WORKER_ORDERS/`
+23. relevant prepared phase launch order.
+
+The two sibling crosswalks do not self-select architecture or transfer jurisdiction. They expand the obligation set Chetiri must explicitly preserve, reject with higher authority, or classify as missing authority before physical optimization can become dispositive.
 
 ### Current PRE553 parents
 
