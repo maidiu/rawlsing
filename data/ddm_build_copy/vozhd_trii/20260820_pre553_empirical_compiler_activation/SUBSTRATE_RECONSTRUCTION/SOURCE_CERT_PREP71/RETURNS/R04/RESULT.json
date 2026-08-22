@@ -1,0 +1,110 @@
+{
+  "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+  "certification_performed": false,
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R04_RETURNED",
+  "critical_findings": {
+    "EVS 1981.sav": "Source-native windows-1252; preserve positive missing declaration code 3 for v308, ranked-slot topology, coordinates and weight candidate without semantic shortcuts.",
+    "EVS 1990.sav": "Source-native windows-1252; preserve all-user-missing q745, ranked-slot topology, split-up coordinates and both weight candidates.",
+    "EVS 1999.sav": "Source-native SAV declaration is UTF-8 (subtype 20; machine code 65001). Exact bytes nevertheless contain invalid UTF-8 metadata sequences. Frozen latin1 execution remains compatibility-only. Intended encoding is therefore closed as source-declared UTF-8, while authoritative repair/rendering of malformed human-language strings remains blocked.",
+    "EVS 2008.sav": "Same declared-UTF-8/nonconforming-byte contradiction as 1999. All 13 native MR set identities/memberships are separately packetized and remain physically authoritative independent of unresolved MR label text.",
+    "EVS 2017.sav": "Valid source-native UTF-8 accepted census; preserve two native MR sets Q4/Q11, 11 system-missing cells, and mixed-mode/matrix coordinate block."
+  },
+  "documentary_blockers": [
+    {
+      "blocker": "No producer-authoritative exact-release field-level correction/alignment map located for malformed human-language strings in the exact UTF-8-declared SAV; compatibility decoding cannot supply semantic text authority.",
+      "source_file": "EVS 1999.sav"
+    },
+    {
+      "blocker": "No producer-authoritative exact-release field-level correction/alignment map located for malformed human-language strings in the exact UTF-8-declared SAV; MR physical topology is separable, but label-dependent assertions remain blocked.",
+      "source_file": "EVS 2008.sav"
+    }
+  ],
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "family": "EVS",
+  "fixture_counts": {
+    "EVS 1981.sav": 6,
+    "EVS 1990.sav": 6,
+    "EVS 1999.sav": 9,
+    "EVS 2008.sav": 23,
+    "EVS 2017.sav": 10
+  },
+  "fixture_total": 54,
+  "non_dispositive": true,
+  "raw_transport": {
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "name": "surveys.zip",
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "size_bytes": 158180333
+  },
+  "required_outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "SOURCE_CERTIFICATION_LEDGER.csv",
+    "HOSTILE_FIXTURES.csv",
+    "DOCUMENTARY_AUTHORITY_MAP.csv",
+    "AUTHORITY_GAPS.csv",
+    "FAMILY_REUSE_AND_DRIFT.csv",
+    "FUTURE_EXECUTION_ORDER.md",
+    "LIBRARY_PROBE_RECEIPT.json",
+    "CHANGED_FILES.txt"
+  ],
+  "source_dispositions": {
+    "EVS 1981.sav": {
+      "columns": 370,
+      "compatibility_status": "NONE",
+      "fixture_count": 6,
+      "machine_character_code": 1252,
+      "native_mr_sets": 0,
+      "packet_disposition": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+      "rows": 19378,
+      "sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+      "source_native_encoding": "windows-1252"
+    },
+    "EVS 1990.sav": {
+      "columns": 390,
+      "compatibility_status": "NONE",
+      "fixture_count": 6,
+      "machine_character_code": 1252,
+      "native_mr_sets": 0,
+      "packet_disposition": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+      "rows": 38213,
+      "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "source_native_encoding": "windows-1252"
+    },
+    "EVS 1999.sav": {
+      "columns": 513,
+      "compatibility_status": "latin1; COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "fixture_count": 9,
+      "machine_character_code": 65001,
+      "native_mr_sets": 0,
+      "packet_disposition": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+      "rows": 41125,
+      "sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+      "source_native_encoding": "UTF-8"
+    },
+    "EVS 2008.sav": {
+      "columns": 477,
+      "compatibility_status": "latin1; COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "fixture_count": 23,
+      "machine_character_code": 65001,
+      "native_mr_sets": 13,
+      "packet_disposition": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+      "rows": 66280,
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "source_native_encoding": "UTF-8"
+    },
+    "EVS 2017.sav": {
+      "columns": 474,
+      "compatibility_status": "NONE",
+      "fixture_count": 10,
+      "machine_character_code": 65001,
+      "native_mr_sets": 2,
+      "packet_disposition": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+      "rows": 59438,
+      "sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2",
+      "source_native_encoding": "UTF-8"
+    }
+  },
+  "status": "PRE553_SOURCE_CERT_PREP71_R04_RETURNED",
+  "worker_id": "SOURCE-CERT-PREP71-R04"
+}
