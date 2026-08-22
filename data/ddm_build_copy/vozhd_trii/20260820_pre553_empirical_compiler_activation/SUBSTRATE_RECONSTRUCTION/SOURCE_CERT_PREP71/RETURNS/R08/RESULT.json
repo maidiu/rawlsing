@@ -1,0 +1,68 @@
+{
+  "status": "RETURNED__NON_DISPOSITIVE__DO_NOT_CERTIFY",
+  "worker_id": "SOURCE-CERT-PREP71-R08",
+  "family": "South Asia",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/vozhd-trii-srcprep71-r08-southasia",
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "write_scope": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R08",
+  "source_count": 2,
+  "library_transport": {
+    "file_name": "surveys.zip",
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "size_bytes": 158180333,
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "verified": true
+  },
+  "sources": [
+    {
+      "source_file": "South Asia Wave 1.sav",
+      "archive_member": "surveys/South Asia Wave 1.sav",
+      "size_bytes": 595974,
+      "sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "sha_verified": true,
+      "rows": 8442,
+      "variables": 68,
+      "system_missing": 6387,
+      "user_missing": 14608,
+      "fixture_count": 10,
+      "packet_disposition": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED"
+    },
+    {
+      "source_file": "South Asia Wave 2.sav",
+      "archive_member": "surveys/South Asia Wave 2.sav",
+      "size_bytes": 894051,
+      "sha256": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+      "sha_verified": true,
+      "rows": 10617,
+      "variables": 73,
+      "system_missing": 16263,
+      "user_missing": 0,
+      "fixture_count": 13,
+      "packet_disposition": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED"
+    }
+  ],
+  "fixture_count": 23,
+  "authority_gap_count": 13,
+  "documentary_recovery": {
+    "library_first": true,
+    "w1": "Official Round-I project context recovered; current Library/browser did not expose an executable W1 native questionnaire/codebook/methodology object, only historical locators.",
+    "w2": "Official Lokniti/CSDS Questionnaire Set A recovered; Q31 ranked slots and Q32 printed routing/codes are source-native explicit; resno equivalence/uniqueness, country-form masks, -1 semantics, weights/design and exact merged-release notes remain unresolved."
+  },
+  "accepted_sr09_pre_r08": {
+    "r10_accepted_result_blob_sha": "e08ec8565f2d5dbe62adea3f21e397fdc2d3b1ca",
+    "hostile_sentinels_blob_sha": "a6ad2f2a8f628d9ad16d1d330cd1c9b485a759de",
+    "cross_wave_drift_blob_sha": "11050d1d2edacce63a09196542b36ee50fad0f48",
+    "authority_gaps_blob_sha": "91da240d82d4631023b687f2268acad4d3503db0"
+  },
+  "constraints_observed": {
+    "browser_library_only": true,
+    "local_source_used": false,
+    "wvs70_interaction": false,
+    "production_runtime_modified": false,
+    "database_used": false,
+    "certification_issued": false
+  },
+  "potential_frozen_contract_contradiction": false,
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R08_RETURNED"
+}
