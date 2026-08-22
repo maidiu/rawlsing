@@ -1,9 +1,10 @@
 {
   "campaign_id": "VC4-COMPILER/PERSISTENCE",
   "name": "VOZHD CHETIRI — COMPILER & PERSISTENCE ARCHITECTURE",
-  "status": "EXPLORATORY__NON_DISPOSITIVE__PREPARED_NOT_LAUNCHED__NO_ARCHITECTURE_REOPEN",
-  "governing_question": "Is persistent event-grain empirical materialization architecturally necessary, or a regenerable compiler intermediate between immutable source evidence and the permanent compiled structural substrate consumed by V3?",
-  "terminal_product_law": "THE_COMPILER_IS_NOT_THE_PRODUCT__THE_PERSON_IS_THE_PRODUCT",
+  "status": "EXPLORATORY__NON_DISPOSITIVE__PRELAUNCH_RECONCILED__PREPARED_NOT_LAUNCHED__NO_ARCHITECTURE_REOPEN",
+  "governing_question": "Which physical empirical representations are actually necessary to produce, serve, validate, replay and audit Rawlsing's complete learned world while preserving source authority and leaving V3-generated life downstream?",
+  "domain_model": ["THE_PAST", "THE_LEARNED_WORLD_EMPIRICAL_SOCIAL", "THE_LEARNED_WORLD_STRUCTURAL", "THE_LIFE_V3"],
+  "consumption_lifecycles": ["COMPILER_DISCOVERY_TIME", "GENERATED_PERSON_RUNTIME", "EMPIRICAL_INFERENCE_SERVICE", "DDM_ANALYTICAL_SERVICE", "AUDIT_REPLAY"],
   "governing_spine": [
     "RAWLSING_GOVERNING_SPIRIT.md",
     "TERMINAL_DEMAND_ENVELOPE.md",
@@ -13,7 +14,12 @@
     "11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md",
     "12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md",
     "13_COMMON_WORKER_CONTRACT.md",
-    "14_HQ_COMMAND_AND_ADJUDICATION_LAW.md"
+    "14_HQ_COMMAND_AND_ADJUDICATION_LAW.md",
+    "17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md",
+    "18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md",
+    "19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md",
+    "20_CHETIRI_HQ_PRELAUNCH_CORRECTIVE_DISPOSITIONS.md",
+    "21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md"
   ],
   "candidate_families": {
     "A": "PERSISTENT_CANONICAL_EVENT_CARRIER",
@@ -25,183 +31,53 @@
     "DECODER_SEMANTICS",
     "C11_M01_M18",
     "I03_TRUTH_CONDITIONS",
-    "I05_FRONTIER_SEMANTICS",
+    "I05_EXACT_BOUNDED_OPEN_WORLD_CAPABILITY",
+    "DISCOVERY_CANDIDATE_NE_VALIDATED_EMPIRICAL_RELATION",
+    "POSITIONED_SUBJECT_POSSIBILITY_FIELD_NE_V3_REALIZED_DISPOSITION",
+    "EMPIRICAL_RESPONDENT_COORDINATE_NE_GENERATED_STRUCTURAL_POSITION",
     "I04_ADMISSION_LAW",
-    "EXACTREF_AND_CONTENT_HASH_SEMANTICS",
-    "SOURCE_EVIDENCE_NE_STRUCTURAL_PRIOR_NE_GENERATED_ACTOR_FACT_NE_ACTOR_KNOWLEDGE_NE_MEMORY_NE_V2_EXPRESSION",
-    "NINE_STRATA_RELATIONAL_NOT_DEMOGRAPHIC",
-    "MEDIATION_NOT_STRUCTURE_TO_PSYCHE",
-    "ACTOR_OPACITY_AND_MISRECOGNITION",
-    "CONTRADICTION_AND_MULTIPLE_PRESSURES",
-    "ABSOLUTE_HORIZON_DISTINCT",
-    "GENEALOGY_AS_GENERATED_HISTORIES",
-    "DEVELOPMENTAL_ATTRACTORS_NOT_STATIC_TYPES",
+    "EXACTREF_REPLAY_INTEGRITY",
+    "MULTI_UNIVERSE_AND_EMPIRICAL_TIME_NONCOLLAPSE",
     "V553_V558",
     "V3",
     "V2",
     "WHOLE_MACHINE_CLOSURE"
   ],
   "phases": [
-    {
-      "id": "P0",
-      "name": "ARCHITECTURAL_NECESSITY",
-      "cells": ["C01", "C02", "C06", "C07"],
-      "launch_mode": "PARALLEL_ALLOWED",
-      "requires": ["CAMPAIGN_EXPLICIT_LAUNCH"],
-      "closes_at": "G0_ARCHITECTURAL_FEASIBILITY"
-    },
-    {
-      "id": "P1A",
-      "name": "NATIVE_EXECUTION_TERRAIN",
-      "cells": ["C03"],
-      "launch_mode": "SERIAL_FIRST",
-      "requires": ["G0_PASS__SOURCE_BACKED_REMAINS_LAWFUL_CANDIDATE"],
-      "closes_at": "C03_ACCEPTED"
-    },
-    {
-      "id": "P1B",
-      "name": "QUERY_DISCOVERY_OPERATIONS_FEASIBILITY",
-      "cells": ["C04", "C05", "C08"],
-      "launch_mode": "C04_C05_PARALLEL__C08_PARALLEL_WITH_FINAL_RECONCILIATION",
-      "requires": ["C03_ACCEPTED", "C01_ACCEPTED", "C02_ACCEPTED", "C06_ACCEPTED", "C07_ACCEPTED"],
-      "closes_at": "G1_EXECUTION_FEASIBILITY"
-    },
-    {
-      "id": "P2",
-      "name": "MEASURED_CANDIDATE_COURT",
-      "cells": ["C09"],
-      "launch_mode": "SERIAL",
-      "requires": ["C01_C08_ACCEPTED", "G1_EXECUTION_FEASIBILITY_CLOSED", "HQ_C09_COURT_MANIFEST_FROZEN"],
-      "closes_at": "G2_MEASURED_BAKEOFF"
-    },
-    {
-      "id": "P3",
-      "name": "HOSTILE_RED_TEAM",
-      "cells": ["C10"],
-      "launch_mode": "SERIAL",
-      "requires": ["C09_ACCEPTED", "G2_PROVISIONAL_MEASURED_SYNTHESIS_CLOSED"],
-      "closes_at": "G3_HOSTILE_SURVIVAL"
-    },
-    {
-      "id": "P4",
-      "name": "HQ_SYNTHESIS",
-      "cells": [],
-      "launch_mode": "HQ_ONLY",
-      "requires": ["C10_ACCEPTED", "G3_HOSTILE_SURVIVAL_CLOSED"],
-      "owner": "VOZHD_CHETIRI_HQ_ONLY"
-    }
+    {"id":"P0","name":"COMPLETE_DESTINATION_AND_INFORMATION_NECESSITY","cells":["C01","C02","C06","C07"],"launch_mode":"PARALLEL_ALLOWED_INDEPENDENT_FIRST_RETURNS","requires":["PRELAUNCH_R01_R25_RECONCILED","CAMPAIGN_EXPLICIT_LAUNCH"],"closes_at":"G0_ARCHITECTURAL_FEASIBILITY"},
+    {"id":"P1A","name":"NATIVE_EXECUTION_TERRAIN","cells":["C03"],"launch_mode":"SERIAL_FIRST","requires":["G0_PASS"],"closes_at":"C03_ACCEPTED"},
+    {"id":"P1B","name":"QUERY_DISCOVERY_LEARNED_WORLD_OPERATIONS_FEASIBILITY","cells":["C04","C05","C08"],"launch_mode":"C04_C05_PARALLEL__C08_RECONCILES_BOTH","requires":["C01_ACCEPTED","C02_ACCEPTED","C03_ACCEPTED","C06_ACCEPTED","C07_ACCEPTED"],"closes_at":"G1_EXECUTION_FEASIBILITY"},
+    {"id":"P2","name":"PHYSICAL_AND_AUTONOMOUS_DISCOVERY_BAKEOFF","cells":["C09"],"launch_mode":"SERIAL","requires":["C01_C08_ACCEPTED","G1_CLOSED","HQ_C09_COURT_MANIFEST_FROZEN"],"special_block":"C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM","closes_at":"G2_MEASURED_BAKEOFF"},
+    {"id":"P3","name":"DUAL_HOSTILE_RED_TEAM","cells":["C10"],"launch_mode":"ENGINEERING_KILL_PLUS_ONTOLOGY_CAPABILITY_KILL","requires":["C09_ACCEPTED_OR_BLOCKING_EVIDENCE_ADJUDICATED","G2_PROVISIONAL_SYNTHESIS_CLOSED"],"closes_at":"G3_HOSTILE_SURVIVAL"},
+    {"id":"P4","name":"HQ_SYNTHESIS","cells":[],"owner":"VOZHD_CHETIRI_HQ_ONLY","requires":["G3_CLOSED"]}
   ],
   "cells": {
-    "C01": {
-      "name": "TERMINAL_PRODUCT_AND_V3_CONSUMPTION_AUDIT",
-      "phase": "P0",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": [],
-      "worker_order": "WORKER_ORDERS/C01_TERMINAL_PRODUCT_V3_CONSUMPTION_AUDIT.md",
-      "burden": "Trace finished runtime consumption backward and classify every upstream product by persistence necessity without confusing current implementation with accepted architecture."
-    },
-    "C02": {
-      "name": "C11_DERIVABILITY_AND_MINIMUM_PERSISTENT_STATE_COURT",
-      "phase": "P0",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": [],
-      "worker_order": "WORKER_ORDERS/C02_C11_DERIVABILITY_MINIMUM_PERSISTENCE.md",
-      "burden": "Classify every logically observable C11 obligation by exact determinant, exception domain, integrity binding and persistence requirement."
-    },
-    "C06": {
-      "name": "REPLAY_EXACTREF_AND_INTEGRITY_COURT",
-      "phase": "P0",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": [],
-      "worker_order": "WORKER_ORDERS/C06_REPLAY_EXACTREF_INTEGRITY.md",
-      "burden": "Determine minimum persistent roots/receipts/material needed for exact replay, identity, provenance and fail-closed integrity without assuming a full event copy."
-    },
-    "C07": {
-      "name": "COMPILED_STRUCTURAL_SUBSTRATE_AND_BUILD_RUNTIME_BOUNDARY",
-      "phase": "P0",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": [],
-      "worker_order": "WORKER_ORDERS/C07_COMPILED_STRUCTURAL_SUBSTRATE_BOUNDARY.md",
-      "burden": "Derive the permanent V3-facing compiled product boundary backward from the terminal person/application vision while refusing actor-specific semantic leakage."
-    },
-    "C03": {
-      "name": "NATIVE_SOURCE_EXECUTION_CAPABILITY_RECONNAISSANCE",
-      "phase": "P1A",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": ["G0_PASS"],
-      "worker_order": "WORKER_ORDERS/C03_NATIVE_SOURCE_EXECUTION_RECON.md",
-      "burden": "Measure exact SAV/DTA access capabilities, setup/full-read costs and compatibility limitations without semantic redesign."
-    },
-    "C04": {
-      "name": "I03_SOURCE_BACKED_EXECUTION_COURT",
-      "phase": "P1B",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": ["C01_ACCEPTED", "C02_ACCEPTED", "C03_ACCEPTED", "C06_ACCEPTED", "C07_ACCEPTED"],
-      "worker_order": "WORKER_ORDERS/C04_I03_SOURCE_BACKED_EXECUTION.md",
-      "burden": "Prove or falsify every frozen I03 primitive over source-backed logical C11 using only source-access capabilities actually established by C03."
-    },
-    "C05": {
-      "name": "I05_SOURCE_BACKED_DISCOVERY_COURT",
-      "phase": "P1B",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": ["C01_ACCEPTED", "C02_ACCEPTED", "C03_ACCEPTED", "C06_ACCEPTED", "C07_ACCEPTED"],
-      "worker_order": "WORKER_ORDERS/C05_I05_SOURCE_BACKED_DISCOVERY.md",
-      "burden": "Prove or falsify the complete bounded/open-world I05 frontier without reducing unforeseen combinations or laundering caches into authority."
-    },
-    "C08": {
-      "name": "INCREMENTAL_BUILD_UPDATE_AND_OPERATIONS_COURT",
-      "phase": "P1B",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires_to_launch": ["C01_ACCEPTED", "C02_ACCEPTED", "C03_ACCEPTED", "C06_ACCEPTED", "C07_ACCEPTED"],
-      "requires_to_return": ["C04_RETURN_AVAILABLE", "C05_RETURN_AVAILABLE"],
-      "worker_order": "WORKER_ORDERS/C08_INCREMENTAL_BUILD_OPERATIONS.md",
-      "burden": "Trace invalidation, minimum rebuild units, stale-authority protection and recovery under A/B/C, reconciling final result against C04/C05 execution models."
-    },
-    "C09": {
-      "name": "EXACT_PHYSICAL_BAKEOFF",
-      "phase": "P2",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": ["C01_C08_ACCEPTED", "G1_CLOSED", "HQ_COURT_MANIFEST_FROZEN"],
-      "worker_order": "WORKER_ORDERS/C09_EXACT_PHYSICAL_BAKEOFF.md",
-      "burden": "Measure A/B/C on identical source, semantic, replay, I03/I05/I04 and terminal-vision proof surfaces; parity precedes performance."
-    },
-    "C10": {
-      "name": "HOSTILE_SYNTHESIS_KILL_COURT",
-      "phase": "P3",
-      "status": "PREPARED_NOT_LAUNCHED",
-      "requires": ["C01_C09_ACCEPTED", "G2_PROVISIONAL_SYNTHESIS_CLOSED"],
-      "worker_order": "WORKER_ORDERS/C10_HOSTILE_SYNTHESIS_KILL_COURT.md",
-      "burden": "Attempt exact falsification of the provisional synthesis across source, C11, I03/I05/I04, replay, operations and terminal-personhood constraints before any final HQ choice."
-    }
+    "C01":{"name":"COMPLETE_TERMINAL_CONSUMPTION_AND_LIFECYCLE_AUDIT","phase":"P0","worker_order":"WORKER_ORDERS/C01_TERMINAL_PRODUCT_V3_CONSUMPTION_AUDIT.md","amendment":"21","burden":"Inventory complete five-lifecycle consumers and distinguish empirical-social learned products, structural products, serving surfaces and replay without treating current V3 usage as terminal demand."},
+    "C02":{"name":"C11_AND_LEARNED_WORLD_INFORMATION_NECESSITY","phase":"P0","worker_order":"WORKER_ORDERS/C02_C11_DERIVABILITY_MINIMUM_PERSISTENCE.md","amendment":"21","burden":"Classify exact C11 and learned-world information requirements, including joint/multimodal/minority geometry, time/universe identity, validation state and possibility-field prerequisites."},
+    "C06":{"name":"REPLAY_EXACTREF_ADAPTIVE_DISCOVERY_INTEGRITY","phase":"P0","worker_order":"WORKER_ORDERS/C06_REPLAY_EXACTREF_INTEGRITY.md","amendment":"21","burden":"Determine minimum persistent replay/integrity/explanation material including executable decoder replay, search-completeness state and adaptive-discovery replay determinants."},
+    "C07":{"name":"COMPLETE_LEARNED_WORLD_PRODUCT_SERVICE_CONSTITUTION","phase":"P0","worker_order":"WORKER_ORDERS/C07_COMPILED_STRUCTURAL_SUBSTRATE_BOUNDARY.md","amendment":"21","burden":"Define complete learned-world empirical-social + structural product/service DAG, five lifecycle serving requirements and boundary to V3 life without inventing missing model authority."},
+    "C03":{"name":"NATIVE_SOURCE_EXECUTION_RECONNAISSANCE","phase":"P1A","worker_order":"WORKER_ORDERS/C03_NATIVE_SOURCE_EXECUTION_RECON.md","amendment":"21","burden":"Measure actual SAV/DTA open/decode/full-read/selectivity terrain and amortizable transient working sets."},
+    "C04":{"name":"I03_SOURCE_BACKED_EXECUTION","phase":"P1B","worker_order":"WORKER_ORDERS/C04_I03_SOURCE_BACKED_EXECUTION.md","amendment":"21","burden":"Prove exact I03 primitives and expose reusable access/mask costs without claiming autonomous-discovery feasibility."},
+    "C05":{"name":"AUTONOMOUS_DISCOVERY_AND_EMPIRICAL_LEARNED_WORLD_EXECUTION","phase":"P1B","worker_order":"WORKER_ORDERS/C05_I05_SOURCE_BACKED_DISCOVERY.md","amendment":"21","burden":"Locate/freeze or identify absence of autonomous search law; model adaptive search, scaling, blind fixtures, validation states, higher-order geometry, multi-universe execution and cache reachability."},
+    "C08":{"name":"INCREMENTAL_LEARNED_WORLD_BUILD_OPERATIONS","phase":"P1B","worker_order":"WORKER_ORDERS/C08_INCREMENTAL_BUILD_OPERATIONS.md","amendment":"21","burden":"Trace invalidation/rebuild across empirical learned products, serving indexes, structural admissions and provenance."},
+    "C09":{"name":"EXACT_PHYSICAL_AND_AUTONOMOUS_DISCOVERY_BAKEOFF","phase":"P2","worker_order":"WORKER_ORDERS/C09_EXACT_PHYSICAL_BAKEOFF.md","amendment":"21","burden":"Compare A/B/C on parity, primitives, full autonomous discovery if executable, blind fixtures, scaling, five lifecycles, learned-product serving and repeated cache regeneration."},
+    "C10":{"name":"DUAL_HOSTILE_SYNTHESIS_KILL_COURT","phase":"P3","worker_order":"WORKER_ORDERS/C10_HOSTILE_SYNTHESIS_KILL_COURT.md","amendment":"21","burden":"Attempt separate engineering and ontology-capability falsification against provisional synthesis."}
   },
-  "edges": [
-    ["C01", "G0"], ["C02", "G0"], ["C06", "G0"], ["C07", "G0"],
-    ["G0", "C03"],
-    ["C03", "C04"], ["C03", "C05"], ["C03", "C08"],
-    ["C04", "G1"], ["C05", "G1"], ["C08", "G1"],
-    ["G1", "C09"], ["C09", "G2"], ["G2", "C10"], ["C10", "G3"], ["G3", "HQ_SYNTHESIS"]
-  ],
-  "mandatory_return_surfaces_every_cell": [
-    "AUTHORITY_READ_RECEIPT",
-    "RETURN_MANIFEST",
-    "CHANGED_FILES",
-    "24_ROW_TERMINAL_VISION_CHECKSUM",
-    "PERSISTENCE_STARVATION_BLOAT_MATRIX",
-    "UNRESOLVED_EVIDENCE",
-    "CELL_SPECIFIC_OUTPUTS"
-  ],
+  "edges": [["C01","G0"],["C02","G0"],["C06","G0"],["C07","G0"],["G0","C03"],["C03","C04"],["C03","C05"],["C03","C08"],["C04","G1"],["C05","G1"],["C08","G1"],["G1","C09"],["C09","G2"],["G2","C10"],["C10","G3"],["G3","HQ_SYNTHESIS"]],
+  "mandatory_return_surfaces_every_cell": ["AUTHORITY_READ_RECEIPT","RETURN_MANIFEST","CHANGED_FILES","TRII_OBLIGATION_CROSSWALK_MATRIX","34_ROW_TERMINAL_VISION_CHECKSUM","PERSISTENCE_STARVATION_BLOAT_MATRIX","UNRESOLVED_EVIDENCE","CELL_SPECIFIC_OUTPUTS"],
   "hard_stop_conditions": [
     "ANY_REQUIRED_SEMANTIC_WEAKENING",
-    "ANY_C11_M01_M18_CAPABILITY_LOSS",
-    "ANY_I03_OR_I05_FRONTIER_STARVATION",
-    "ANY_EXACTREF_OR_REPLAY_NONDETERMINISM",
-    "ANY_CACHE_PROMOTED_TO_AUTHORITY_WITHOUT_PROOF",
-    "ANY_STRUCTURE_TO_PSYCHE_SHORTCUT",
-    "ANY_SURVEY_TO_STATIC_PERSONALITY_OR_ATTRACTOR_SHORTCUT",
-    "ANY_TERMINAL_PERSONHOOD_STARVATION",
-    "ANY_EPISTEMIC_NONCOLLAPSE_FAILURE",
+    "ANY_C11_I03_I05_I04_CAPABILITY_LOSS",
+    "AUTONOMOUS_DISCOVERY_REPLACED_BY_KNOWN_QUERY_ONLY",
+    "PAIRWISE_SUMMARY_SUBSTITUTED_FOR_REQUIRED_JOINT_GEOMETRY",
+    "DISCOVERY_CANDIDATE_LAUNDERED_AS_VALIDATED_KNOWLEDGE",
+    "SEARCH_BUDGET_EXHAUSTION_LAUNDERED_AS_EMPIRICAL_ABSENCE",
+    "MULTI_UNIVERSE_OR_EMPIRICAL_TIME_COLLAPSE",
+    "EXACTREF_REPLAY_INTEGRITY_FAILURE",
+    "CACHE_OR_OPERATIONAL_CARRIER_PROMOTED_TO_AUTHORITY_WITHOUT_PROOF",
+    "ANY_STRUCTURE_OR_EMPIRICAL_POSSIBILITY_TO_PSYCHE_SHORTCUT",
+    "ANY_34_ROW_TERMINAL_STARVATION_OR_LEAKAGE",
     "ANY_WORKER_SELF_SELECTS_ARCHITECTURE",
-    "ANY_HQ_PREDECISION_NOT_GROUNDED_IN_EVIDENCE",
     "ANY_MUTATION_OF_ACTIVE_R5_COURT"
   ]
 }
