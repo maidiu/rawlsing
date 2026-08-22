@@ -2,9 +2,9 @@
 
 Short tag: `VC4-COMPILER/PERSISTENCE`
 
-Mnemonic: **Chetiri decides what must persist between source evidence and the V3-ready compiled structural substrate, and what may remain disposable compiler machinery.**
+Mnemonic: **Chetiri decides what must persist across Rawlsing's evidentiary past and learned world, what may be regenerated, and what must remain V3-owned life.**
 
-Status: `EXPLORATORY__NON_DISPOSITIVE__CONTROL_ROOM_INSTALLED__PREPARED_NOT_LAUNCHED__NO_ARCHITECTURE_REOPEN`
+Status: `EXPLORATORY__NON_DISPOSITIVE__CONTROL_ROOM_INSTALLED__PRELAUNCH_RECONCILED__PREPARED_NOT_LAUNCHED__NO_ARCHITECTURE_REOPEN`
 
 Repository: `maidiu/rawlsing`
 
@@ -16,143 +16,106 @@ Campaign root:
 
 ## 0. ONE-SENTENCE MISSION
 
-Determine, before the full source→compiled-structural-substrate pipeline-generator is concretized, whether Rawlsing should permanently materialize respondent/event-grain canonical empirical incidence, or instead treat immutable `.sav` / `.dta` source bytes plus governed semantic/authority sidecars as the empirical floor while using disposable/selectively cached compiler state to produce the permanent V3-facing compiled structural substrate.
+Determine, before Rawlsing's still-unbuilt source→learned-world pipeline-generator is concretized, which empirical/learned products must persist or remain servable/replayable and which physical empirical representations may instead remain virtual, transient, deterministically regenerated or cached—without starving autonomous discovery, positioned-subject empirical possibility inference, structural compilation, analytical service, provenance or the V3-generated person.
 
-## 1. ABSOLUTE TERMINAL PRODUCT LAW
+## 1. ABSOLUTE TERMINAL LAW
 
 **The compiler is not the product. The person is the product.**
 
-Chetiri is governed by the finished Rawlsing application vision: generate a historically situated person who is causally intelligible without being inevitable.
+But the road to the person includes a learned world that must not be accidentally amputated merely because current V3 does not yet read every empirical capability.
 
-No physical/compiler optimization may starve the closed machine of what it needs to preserve:
+Chetiri now reasons in three domains:
 
-- nine finite strata as relational pressure fields rather than demographic buckets;
-- relational source/target/direction, counter-pressure and contradiction;
-- temporal persistence, drift, rupture, gap and noncomparability;
-- mediation rather than structure→psyche shortcuts;
-- actor opacity, misrecognition, knowledge/accessibility limits;
-- identification/alienation dynamics as developmental relations;
-- ordinary vitality, desire, humor, beauty, care, play and human remainder;
-- historically situated agency and divergent possible lives;
-- genealogy/parents/partners/children as generated histories;
-- Absolute Horizon as distinct from finite strata/religiosity;
-- pressure-flow and attractor prerequisites without static actor typing;
-- source evidence != structural prior != generated actor fact != actor knowledge != memory != V2 expression;
-- provenance, replay, explicit randomness and lawful absence.
+```text
+THE PAST
+  authoritative empirical evidence
 
-Binding campaign law is in `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md` and binds both workers and Vozhd Chetiri/HQ.
+THE LEARNED WORLD
+  governed empirical-social learned products
+  + governed structural learned products
+
+THE LIFE
+  V3-generated developmental history
+```
+
+Binding noncollapse:
+
+`SOURCE INCIDENCE != DISCOVERED CANDIDATE != VALIDATED EMPIRICAL RELATION != POSITIONED-SUBJECT POSSIBILITY FIELD != STRUCTURAL PRIOR != V3 ACTOR STATE != ACTOR BELIEF/RESPONSE`.
+
+Chetiri may remove machinery. It may not remove obligations.
 
 ## 2. ABSOLUTE JURISDICTION
 
-Vozhd Chetiri is an exploratory command, not a fourth overlapping runtime authority.
+Chetiri MAY:
 
-It MAY:
+- inspect closed architecture and live PRE553 physical-substrate evidence;
+- derive persistence, serving, regeneration and replay requirements;
+- distinguish source authority, learned products, operationally retained regenerable representations and caches;
+- compare persistent, source-backed and hybrid physical candidates;
+- define non-dispositive measurement/proof courts;
+- identify grounds for an HQ physical-architecture reopening petition.
 
-- inspect the closed whole-machine architecture and current PRE553 physical-substrate authorities;
-- derive exact build-time versus runtime persistence requirements;
-- determine which C11 observables are source/authority-derivable versus irreducibly persistent;
-- design source-backed / materialized / hybrid compiler candidates on paper;
-- design and execute separately authorized non-dispositive benchmark/proof courts;
-- identify exact grounds that would justify an HQ physical-architecture reopening petition;
-- return evidence to HQ.
-
-It MAY NOT:
+Chetiri MAY NOT:
 
 - modify source semantics;
 - modify C11 M01–M18;
-- modify I03/I05/I04 truth conditions;
-- modify V553–V558, V3 or V2 semantics;
-- modify the active R5 compact-V2 candidate or its court;
-- delay, cancel, reinterpret or supersede Authority 63 or 64;
-- declare source-backed, hybrid or any other architecture selected;
-- merge exploratory code into accepted runtime;
-- promote caches/transforms into empirical authority;
-- use terminal vision as permission to invent unsupported semantics;
-- reopen the whole-machine architecture on its own authority.
+- weaken I03/I05/I04 truth/capability conditions;
+- invent missing validation/comparability/possibility-model law;
+- modify V553–V558/V3/V2 semantics;
+- modify active Trii R5 work;
+- declare A/B/C selected;
+- promote cache/layout to source authority;
+- use learned-world need to assign actor psyche early;
+- reopen whole-machine architecture on its own authority.
 
-Any Chetiri finding that appears to require a change to frozen semantics returns:
+## 3. RELATION TO TRII
 
-`VC4_BLOCKED__POTENTIAL_FROZEN_CONTRACT_CONTRADICTION`
+Trii guards evidentiary ground and supplies the obligation inventory.
 
-Any Chetiri finding that may justify physical-architecture reopening returns:
+Chetiri asks which of those obligations require:
 
-`VC4_REOPENING_PETITION_READY__HQ_ADJUDICATION_REQUIRED`
+- event-grain persistence;
+- learned-product persistence;
+- small sidecar/receipt persistence;
+- operationally retained but regenerable representation;
+- transient execution state;
+- on-demand derivation.
 
-and stops short of implementation authority.
+Current Compact-V2 success makes A a credible competitor; Chetiri is not an escape hatch from a broken R5.
 
-## 3. RELATION TO LIVE R5 LAW
+## 4. GOVERNING PHYSICAL QUESTION
 
-Current live PRE553 law remains binding.
+`IS PERSISTENT EVENT-GRAIN EMPIRICAL MATERIALIZATION NECESSARY TO PRODUCE OR SERVE RAWLSING'S COMPLETE LEARNED WORLD, OR CAN THE SAME AUTHORITATIVE, DISCOVERY, INFERENCE, ANALYTICAL, STRUCTURAL, REPLAY AND HUMAN-END-PRODUCT OBLIGATIONS BE SATISFIED WITH SOURCE-BACKED OR HYBRID EXECUTION PLUS ONLY THOSE LEARNED PRODUCTS/RECEIPTS THAT INDEPENDENTLY EARN PERSISTENCE?`
 
-Authority 63 status is:
+Candidates remain:
 
-`AUTHORIZED__TARGETED_LONG_PHYSICAL_ENCODING_REPAIR__NO_ARCHITECTURE_ESCALATION`
+- `A = PERSISTENT_CANONICAL_EVENT_CARRIER`
+- `B = SOURCE_BACKED_VIRTUAL_C11`
+- `C = SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS`
 
-Authority 64 status is:
+No candidate's physical representation decides which semantic products exist.
 
-`AUTHORIZED__EXECUTION_ONLY__FROZEN_COMPACT_V2__NO_REPAIR_IN_COURT`
+## 5. FIVE CONSUMPTION LIFECYCLES
 
-Chetiri therefore runs **in parallel as quarantined exploratory evidence collection**. It is not an R5 replacement campaign.
+Chetiri must separately reason about:
 
-If R5 compact V2 succeeds, Chetiri still asks whether persistent event-grain materialization is architecturally necessary for the still-unbuilt compiler-generator.
+1. compiler/discovery time;
+2. generated-person runtime;
+3. empirical-inference service;
+4. DDM analytical service;
+5. audit/replay.
 
-If R5 compact V2 fails, Chetiri evidence may become relevant to an HQ reopening decision, but failure alone does not select Chetiri's preferred architecture.
+`V3 does not currently read it` is not equivalent to `build-only garbage`.
 
-## 4. GOVERNING QUESTION
+## 6. MANDATORY READ ORDER
 
-`IS PERSISTENT EVENT-GRAIN EMPIRICAL MATERIALIZATION A NECESSARY ARCHITECTURAL PRODUCT, OR A REGENERABLE COMPILER INTERMEDIATE BETWEEN IMMUTABLE SOURCE EVIDENCE AND THE PERMANENT COMPILED STRUCTURAL SUBSTRATE CONSUMED BY V3?`
+### Whole-system / end-product authority
 
-The campaign compares three candidate families without presupposing a winner:
-
-`A = PERSISTENT_CANONICAL_EVENT_CARRIER`
-
-`B = SOURCE_BACKED_VIRTUAL_C11`
-
-`C = SOURCE_BACKED_HYBRID_WITH_DISPOSABLE_OR_REGENERABLE_ACCELERATORS`
-
-## 5. TERMINAL PERSPECTIVE
-
-Rawlsing is not being optimized as a generic survey database.
-
-The target machine is:
-
-```text
-IMMUTABLE SOURCE EVIDENCE
-        ↓
-SOURCE CERTIFICATION / GOVERNED DECODING
-        ↓
-C11 LOGICAL EMPIRICAL SEMANTICS
-        ↓
-I03 EXACT EMPIRICAL COMPUTATION
-        ↓
-I05 BOUNDED AUTONOMOUS DISCOVERY
-        ↓
-I04 STRUCTURAL ADMISSION
-        ↓
-STILL-UNBUILT SOURCE→COMPILED-STRUCTURAL PIPELINE-GENERATOR
-        ↓
-PERMANENT COMPILED STRUCTURAL SUBSTRATE
-        ↓
-CLOSED V553–V558 PUBLICATION / RESOLUTION CHAIN
-        ↓
-V3 DEVELOPMENTAL CAUSAL RUNTIME
-        ↓
-V2 / APPLICATION
-```
-
-The exploratory hypothesis is that the **permanent compiled structural substrate**, not an intermediary full empirical re-encoding, may be the principal object that deserves maximal optimization for cleanliness, lightness, speed and runtime effectiveness.
-
-That hypothesis is not accepted until proved.
-
-## 6. MANDATORY READ ORDER FOR ANY CHETIRI COMMANDER OR WORKER
-
-### Whole-system/end-product authority first
-
-1. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md`
-2. `.../TERMINAL_DEMAND_ENVELOPE.md`
-3. `.../ARCHITECTURE_PASS_LAW.md`
-4. `.../CONSTRAINTS_PRIORITIES.md`
-5. `.../integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`
+1. Dva `RAWLSING_GOVERNING_SPIRIT.md`
+2. `TERMINAL_DEMAND_ENVELOPE.md`
+3. `ARCHITECTURE_PASS_LAW.md`
+4. `CONSTRAINTS_PRIORITIES.md`
+5. `WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`
 
 ### Chetiri control room
 
@@ -161,7 +124,7 @@ That hypothesis is not accepted until proved.
 8. `11_ABSOLUTE_GOVERNING_VISION_CONSTITUTION.md`
 9. `12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md`
 10. `13_COMMON_WORKER_CONTRACT.md`
-11. `14_HQ_COMMAND_AND_ADJUDICATION_LAW.md` — HQ/commander mandatory; workers read for command boundary
+11. `14_HQ_COMMAND_AND_ADJUDICATION_LAW.md` — commander mandatory
 12. `02_CAMPAIGN_DAG.json`
 13. `03_GATE_LEDGER.csv`
 14. `04_WORKER_REGISTRY.csv`
@@ -169,13 +132,13 @@ That hypothesis is not accepted until proved.
 16. `06_BUILD_RUNTIME_PERSISTENCE_LAW.md`
 17. `07_MEASUREMENT_AND_BAKEOFF_LAW.md`
 18. `08_HQ_ADJUDICATION_TEMPLATE.md`
-19. `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md` — mandatory Trii source/replay/C11/I03/I05/I04 cross-command education; non-dispositive
-20. `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md` — mandatory forward-terminal, learned-world, discovery-program and empirical-possibility education; non-dispositive
-21. `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md` — mandatory HQ prelaunch reconciliation input; non-dispositive; silence is not a disposition
-22. exact cell order under `WORKER_ORDERS/`
-23. relevant prepared phase launch order.
-
-The two sibling crosswalks do not self-select architecture or transfer jurisdiction. They expand the obligation set Chetiri must explicitly preserve, reject with higher authority, or classify as missing authority before physical optimization can become dispositive.
+19. `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md`
+20. `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`
+21. `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md`
+22. `20_CHETIRI_HQ_PRELAUNCH_CORRECTIVE_DISPOSITIONS.md`
+23. `21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md`
+24. exact cell order under `WORKER_ORDERS/`
+25. current phase launch order issued after the reconciliation base.
 
 ### Current PRE553 parents
 
@@ -186,55 +149,74 @@ At minimum:
 - `../10_FORMAT_DECODER_CONTRACT.md`
 - `../52_POST_R4_PHYSICAL_OPTIMIZATION_CANDIDATE_REGISTER_AND_SAFETY_LAW.md`
 - `../56_POST_R4_ROUND2_FINAL_SYNTHESIS_AND_R5_CARRIER_CONTRACT.md`
+- `../61_R5_BOUNDED_ACCEPTANCE_AND_FULL_WVS7_LITS1_REAL_SOURCE_COURT_AUTHORITY.md`
+- `../62_R5_FULL_SOURCE_PROGRESS_TELEMETRY_ADDENDUM.md`
 - `../63_R5_WVS7_RESOURCE_FAILURE_AND_LONG_COMPACT_ENCODING_REPAIR_AUTHORITY.md`
 - `../64_R5_LONG_COMPACT_V2_EXACT_VALIDATION_AND_WVS_PREFIX_DENSITY_COURT.md`
 - `../65_R5_LONG_COMPACT_V2_PARALLEL12_COMPILER_AUTHORITY.md`
-- any newer current PRE553 authority at launch/adjudication time.
+- any newer PRE553 authority/receipt at launch.
 
 Absolute law:
 
 **GROUND IN GITHUB BEFORE REASONING FROM MEMORY. EVERY TIME.**
 
-## 7. CAMPAIGN SEQUENCE — DO NOT IMPROVISE
+## 7. PRELAUNCH RECONCILIATION STATE
+
+R01–R25 have been explicitly dispositioned in `20_CHETIRI_HQ_PRELAUNCH_CORRECTIVE_DISPOSITIONS.md`.
+
+The resulting campaign amendments are binding through updated master/common/constitution/measurement law and `21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md`.
+
+Any pre-crosswalk launch message is superseded.
+
+## 8. CAMPAIGN SEQUENCE
 
 ```text
-P0: C01 + C02 + C06 + C07 may run independently in parallel
+P0: C01 + C02 + C06 + C07 independently
           ↓
         HQ G0
           ↓
-P1A:     C03 first
+P1A:     C03
           ↓
-P1B: C04 + C05 in parallel; C08 may overlap but must reconcile both before return
+P1B: C04 + C05; C08 reconciles both
           ↓
         HQ G1
           ↓
-P2:      C09 only after HQ freezes the exact A/B/C court manifest
+P2: C09 primitive + full discovery-program court if executable
           ↓
-        HQ G2 provisional measured synthesis
+        HQ G2
           ↓
-P3:      C10 hostile kill court
+P3: C10 engineering kill + ontology-capability kill
           ↓
         HQ G3
           ↓
-P4:      final HQ-only Chetiri synthesis
+P4: HQ synthesis
 ```
 
-`12_SEQUENCE_DEPENDENCY_AND_GATE_PROTOCOL.md` is binding if this summary is incomplete.
+## 9. C09 HARD LAW
 
-## 8. SUCCESS CONDITION
+`I05_PRIMITIVE_BENCHMARK != I05_DISCOVERY_PROGRAM_BENCHMARK`.
 
-Chetiri succeeds when HQ receives enough evidence to answer, without architectural hand-waving:
+If the autonomous search/termination program is not frozen enough to execute meaningfully:
 
-1. what V3/runtime products actually need to persist;
-2. what source→structural compiler products must persist for provenance/replay;
-3. what C11 information can be reconstructed exactly from source + authority;
-4. what event-grain information, if any, is irreducibly persistent;
-5. what execution structures I03/I05 need during compilation;
-6. whether those structures must be authoritative, cached, transient, or absent;
-7. whether native/source-backed execution is operationally viable across hostile SAV/DTA cases;
-8. whether persistent LONG, source-backed, or hybrid gives the best exact compiler architecture;
-9. what interface the still-unbuilt pipeline-generator must target so it remains carrier-blind;
-10. whether a named, evidence-backed physical-architecture reopening petition exists;
-11. why the resulting path preserves the terminal Rawlsing personhood vision without moving actor-specific semantics upstream.
+`C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM`
 
-No architecture selection is self-executing.
+Primitive speed may not masquerade as full discovery feasibility.
+
+## 10. SUCCESS CONDITION
+
+Chetiri succeeds only when HQ can answer with evidence:
+
+- what THE PAST must preserve;
+- what THE LEARNED WORLD must know and serve;
+- what THE LIFE must retain as V3-owned realization;
+- what must persist;
+- what may be regenerated;
+- whether autonomous discovery remains genuinely autonomous and tractable;
+- whether joint/minority/multimodal geometry survives;
+- whether empirical time/multi-universe distinction survives;
+- whether positioned-subject inference remains probabilistic rather than psyche assignment;
+- whether learned products remain explainable/replayable;
+- whether each lifecycle is operationally viable;
+- whether event-grain persistent materialization is actually necessary.
+
+> **The hard workload is not merely answering a question. It is finding the questions the data forces us to ask.**
