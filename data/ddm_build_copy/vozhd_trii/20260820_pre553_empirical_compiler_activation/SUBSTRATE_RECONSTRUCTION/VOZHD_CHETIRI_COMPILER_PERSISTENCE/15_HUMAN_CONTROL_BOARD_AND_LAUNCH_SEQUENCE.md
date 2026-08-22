@@ -2,171 +2,205 @@
 
 Short tag: `VC4-COMPILER/PERSISTENCE`
 
-Mnemonic: **Chetiri = compiler/persistence: what becomes permanent between source evidence and V3-ready structural substrate.**
+Mnemonic: **Chetiri decides what persists between THE PAST and THE LEARNED WORLD, while THE LIFE remains V3-owned.**
 
-Status: `PREPARED__NOT_LAUNCHED`
+Status: `P0_RETURNED__G0_OPEN__TWO_SUPPLEMENTAL_P0_CLOSURE_JOBS_READY__P1_LOCKED`
 
-This file is the commander's quick operational map. Exact law remains in `11`–`14`, `02_CAMPAIGN_DAG.json`, `04_WORKER_REGISTRY.csv` and each `WORKER_ORDERS/*` file.
+This is the commander's quick operational map. Exact law remains in `11`–`14`, `22`, `02_CAMPAIGN_DAG.json`, `03_GATE_LEDGER.csv`, `04_WORKER_REGISTRY.csv`, and exact worker/correction orders.
 
-## 1. CAMPAIGN IN ONE SCREEN
+## 1. CURRENT CAMPAIGN IN ONE SCREEN
 
 ```text
                  RAWLSING END-PRODUCT VISION
-   causally intelligible person without inevitability
+        causally intelligible without inevitable
+                            |
+                            v
+          THE PAST -> THE LEARNED WORLD -> THE LIFE
+                            |
+                            v
+                     P0 FIRST RETURNS
+
+       C01 ACCEPTED                 C06 ACCEPTED
+   five lifecycles / V3        replay / integrity / U5
+        no full-event               no full-event
+       runtime need              irreducibility proof
+             \                         /
+              \                       /
+               v                     v
+             C02 BLOCK: M04/M05 occurrence/topology
+                    derivability UNPROVED
                            |
                            v
-                  VC4 GOVERNING LAW
-              11 + 12 + 13 + 14
+                C02-R1 SUPPLEMENTAL PROOF
                            |
-                           v
-  ┌────────────────── P0 ──────────────────┐
-  │                                        │
-  │ C01 Runtime need       C02 C11 need    │
-  │ C06 Replay need        C07 Product need│
-  │                                        │
-  └──────────────────┬─────────────────────┘
-                     v
-                   HQ G0
-                     |
-        lawful source-backed candidate?
-             /               \
-           NO                 YES
-           |                   |
-          STOP                 v
-                           P1A C03
-                       native reader terrain
-                               |
+                           +------------------+
+                                              |
+       C07 independent first return            |
+       learned-world DAG useful                |
+       direct terminal read incomplete         |
+                 |                             |
+                 v                             |
+       C07-R1 AUTHORITY CORRECTION              |
+                 |                             |
+                 +-------------+---------------+
                                v
-                 ┌────────── P1B ──────────┐
-                 │                         │
-                 │ C04 I03    C05 I05      │
-                 │      \      /           │
-                 │       C08 operations    │
-                 └──────────┬──────────────┘
-                            v
-                          HQ G1
-                            |
-                            v
-                       P2 C09 bakeoff
-                            |
-                            v
-                    HQ G2 provisional
-                            |
-                            v
-                       P3 C10 kill court
-                            |
-                            v
-                          HQ G3
-                            |
-                            v
-                    P4 FINAL HQ SYNTHESIS
-                            |
-                no-reopen / petition / block
+                         HQ FINAL G0
+                    /                     \
+             architecture block            pass
+                    |                       |
+                   STOP                     v
+                                         C03
+                                  native reader terrain
+                                         |
+                                         v
+                              C04 + C05 + C08
+                                         |
+                                         v
+                                        G1
+                                         |
+                                         v
+                                  C09 exact bakeoff
+                                         |
+                                         v
+                                  C10 dual kill court
+                                         |
+                                         v
+                                    final HQ P4
 ```
 
-## 2. JOB BOARD
+## 2. P0 INTAKE — EXACT STATE
 
-| Order | Cell | Branch | Job | Launch only when | What it decides | Unlocks |
-|---:|---|---|---|---|---|---|
-| 1A | C01 | `agent/vozhd-chetiri-c01-v3-runtime-persistence` | Audit what V3/application actually consumes | explicit campaign launch | runtime/build persistence boundary | G0 |
-| 1B | C02 | `agent/vozhd-chetiri-c02-c11-derivability` | Prove minimum C11 persistence | explicit campaign launch | derivable vs irreducibly persistent information | G0 |
-| 1C | C06 | `agent/vozhd-chetiri-c06-replay-integrity` | Prove minimum ExactRef/replay/integrity persistence | explicit campaign launch | roots/receipts/material needed for trust | G0 |
-| 1D | C07 | `agent/vozhd-chetiri-c07-compiled-substrate` | Define permanent V3-facing compiled substrate | explicit campaign launch | what the still-unbuilt compiler should ultimately produce | G0 |
-| 2 | HQ G0 | control branch | Reconcile P0 | C01/C02/C06/C07 accepted | whether source-backed/hybrid remains lawful enough to investigate | C03 |
-| 3 | C03 | `agent/vozhd-chetiri-c03-native-source-access` | Measure SAV/DTA reader terrain | G0 pass | actual physical access/full-read/session costs | C04/C05/C08 |
-| 4A | C04 | `agent/vozhd-chetiri-c04-i03-source-backed` | Prove exact I03 execution | C03 + P0 accepted | query feasibility and required transient state | G1 |
-| 4B | C05 | `agent/vozhd-chetiri-c05-i05-source-backed` | Prove exact/open-world I05 execution | C03 + P0 accepted | discovery feasibility and acceleration need | G1 |
-| 4C | C08 | `agent/vozhd-chetiri-c08-incremental-build` | Model rebuild/invalidation/recovery | C03 + P0 accepted; must reconcile C04/C05 before return | operational viability of A/B/C | G1 |
-| 5 | HQ G1 | control branch | Close execution feasibility | C03/C04/C05/C08 accepted | exact candidate contracts for measurement | C09 court manifest |
-| 6 | C09 | `agent/vozhd-chetiri-c09-physical-bakeoff` | Measure A/B/C | G1 + frozen court manifest | parity-first physical performance evidence | G2 |
-| 7 | HQ G2 | control branch | Provisional measured synthesis | C09 accepted | provisional favorite + unresolved risks | C10 |
-| 8 | C10 | `agent/vozhd-chetiri-c10-hostile-kill` | Try to falsify provisional synthesis | G2 closed | hidden fatal assumptions / surviving candidate | G3 |
-| 9 | HQ G3/P4 | control branch | Final adjudication | C10 accepted | no-reopen / reopening petition / insufficient evidence / contradiction | separate future authority only |
+| Cell | Exact evidence HEAD | HQ state | What survived | What remains open |
+|---|---|---|---|---|
+| C01 | `e88c34b141761ed0b55d66e3da60a03f6822926d` | `ACCEPTED__NAMED_GAPS_CARRIED` | Five lifecycles; ordinary V3 does not require full respondent/event incidence | possibility/comparability/validation authority; autonomous-discovery law; later SLO evidence |
+| C02 | `f952204d817cb961d2ef05d8b66fcf0b4940099f` | `BLOCKED__SUPPLEMENTAL_EXACT_PROOF_REQUIRED` | No proof full event carrier is irreducible | `M04_M05_EVENT_OCCURRENCE_TOPOLOGY_DERIVABILITY_UNPROVED` |
+| C06 | `6fd91b6fb3d7087faaf971aecc9687bbd33fa00f` | `ACCEPTED__NAMED_REPLAY_PREREQUISITES_CARRIED` | No replay/identity proof that full payload is irreducible; P3 replay graph identified | U5 occurrence identity; decoder closure; adaptive discovery; validation; completeness receipt |
+| C07 | independent `a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d` | `RETURNED_FOR_NARROW_AUTHORITY_COMPLIANCE_CORRECTION` | Learned world = empirical-social DAG + structural DAG + shared provenance; THE LIFE stays V3 | direct mandatory Dva terminal-authority grounding |
 
-P0 cells 1A–1D may run in parallel. C04/C05 may run in parallel. Nothing else should be parallelized merely for capacity.
+C07's later branch head `35042be0a7b289c33335ddafbe7705ee1c4f0dbc` is quarantined as non-governing supplemental evidence for G0 because its claimed sibling-return provenance is not sufficiently reliable for the acceptance record. The clean independent first return remains the correction base.
 
-## 3. WHY THIS ORDER EXISTS
+## 3. G0 CURRENT STATE
 
-### P0 before performance
+`G0_OPEN__P0_SUPPLEMENTAL_PROOF_AND_AUTHORITY_CORRECTION_REQUIRED`
 
-We first ask what information/runtime product is *actually necessary*. Otherwise we risk benchmarking a thing whose necessity was never proved.
+This means:
 
-### C03 before C04/C05
+```text
+NOT: G0_PASS
+NOT: PERSISTENT_R5_REQUIRED
+NOT: SOURCE_BACKED_REJECTED
+```
 
-I03/I05 workers are forbidden to imagine SAV/DTA access characteristics. C03 measures them first.
+The campaign has learned something narrower and more useful:
 
-### C04/C05 before final C08
+> **No P0 worker proved that the full canonical event payload must persist, but C02/C06 also did not prove that every identity-bearing M04/M05 occurrence/topology fact can be reconstructed from source geometry + existing authority.**
 
-Operational invalidation/rebuild cost depends on how exact query/discovery actually execute.
+An unknown determinant may not be called either a cache or a database.
 
-### C01–C08 before C09
+## 4. NEXT TWO JOBS — MAY RUN IN PARALLEL
 
-The bakeoff may compare only already-defined lawful candidates. It is not a design exercise.
+### C02-R1 — occurrence/topology proof
 
-### C10 after provisional ranking
+Branch:
+`agent/vozhd-chetiri-c02r1-occurrence-topology-proof`
 
-The kill court needs a concrete claim to attack, not an abstract candidate menu.
+Order:
+`23_C02R1_OCCURRENCE_TOPOLOGY_DERIVABILITY_PROOF_COURT.md`
 
-## 4. EVERY JOB HAS THE SAME ABSOLUTE HUMAN-VISION BURDEN
+Purpose:
+prove the complete M04/M05/U5 determinant domain across the governed source corpus, or identify the smallest exact nonderivable material.
 
-Every cell must return the 24-row `VC4_TERMINAL_VISION_CHECKSUM`.
+Target outcomes include:
 
-That means every technical worker must explicitly account for how its result protects or leaves downstream ownership of:
+- everything derivable under exact FD certificate;
+- exact named occurrence/topology side material required;
+- irreducible full-event persistence witness;
+- complete scope unprovable.
 
-- relational nine-strata structure;
-- counter-pressure and contradiction;
-- time and noncomparability;
-- mediation;
-- pressure-flow topology;
-- orientation-to-strata prerequisites;
-- Absolute Horizon;
-- developmental attractor prerequisites without type assignment;
-- living flow/vitality boundary;
-- actor opacity and knowledge/accessibility limits;
-- genealogy;
-- ordinary human vitality beyond injury;
-- agency/divergent possible lives;
-- epistemic noncollapse;
-- lawful absence;
-- provenance/replay.
+This cell is authorized to inspect exact hash-matched source metadata/topology and narrowly inspect values where the determinant question requires it.
 
-If a local optimization harms one of these, it loses even if it is faster and smaller.
+### C07-R1 — terminal-authority compliance
 
-If a worker tries to instantiate one of these actor-level meanings upstream, it also loses.
+Branch:
+`agent/vozhd-chetiri-c07r1-terminal-authority-compliance`
 
-## 5. COMMON ACCEPTANCE RULE
+Exact branch base:
+`a301afe83c0ae5a680a3c7dc8c416e93f97e9d6d`
 
-A worker reaches only `RETURNED` on its own.
+Order:
+`24_C07R1_TERMINAL_AUTHORITY_COMPLIANCE_CORRECTION.md`
 
-HQ changes it to `ACCEPTED` only after verifying:
+Purpose:
+read the mandatory Dva terminal/end-product authority directly and test whether the independent learned-world DAG holding survives.
 
-- exact git identity/write scope;
-- read-first compliance;
-- no unauthorized runtime/source mutation;
-- complete cell outputs;
-- complete common return surfaces;
-- full terminal vision checksum;
-- persistence/starvation/bloat matrix;
-- no hidden unresolved evidence;
-- no self-adjudication;
-- no semantic leakage.
+Sibling returns are forbidden in this correction.
 
-## 6. CAMPAIGN COMMAND PHRASE
+## 5. JOB BOARD AFTER SUPPLEMENTAL P0
 
-When launching a cell, HQ should issue the worker this conceptual command in addition to its exact order:
+| Order | Job | State / launch rule | Unlocks |
+|---:|---|---|---|
+| 1S-A | C02-R1 | `READY`; run now | G0 |
+| 1S-B | C07-R1 | `READY`; run now from exact a301 base | G0 |
+| 2 | HQ final G0 | only after C02-R1 + C07-R1 adjudicated | C03 or stop |
+| 3 | C03 native source access | `LOCKED`; requires written G0 pass | C04/C05/C08 |
+| 4A | C04 exact I03 | locked until C03 accepted | G1 |
+| 4B | C05 autonomous discovery | locked until C03 accepted | G1 |
+| 4C | C08 learned-world invalidation | locked until G0/C03; final return reconciles C04/C05 | G1 |
+| 5 | HQ G1 | requires C03/C04/C05/C08 | C09 |
+| 6 | C09 physical + discovery bakeoff | requires G1 and frozen court manifest | G2 |
+| 7 | C10 engineering + ontology kill | requires G2 | G3 |
+| 8 | HQ P4 | requires G3 | no-reopen / petition / insufficient evidence / contradiction |
 
-> **See the whole Rawlsing person deeply enough not to starve them; obey your bounded jurisdiction strictly enough not to invent them early. Preserve truth first. Then determine the lightest, fastest lawful machinery.**
+## 6. 34-ROW TERMINAL CHECKSUM — ABSOLUTE
 
-## 7. WHAT CHETIRI IS NOT
+Every active or future Chetiri worker uses the complete 34-row checksum, including the recovered empirical obligations:
 
-Chetiri is not:
+- autonomous empirical social discovery;
+- positioned-subject empirical possibility field;
+- joint/multimodal/minority geometry;
+- multi-universe empirical fields;
+- empirical comparability != structural-position binding;
+- DDM analytical service;
+- discovery candidate != validated empirical relation;
+- learned-world explanation lineage;
+- historically indexed empirical geometry;
+- adaptive-discovery replay/search completeness;
 
-- a survey database redesign for its own sake;
-- a campaign to make `.sav`/`.dta` win;
-- a campaign to kill Parquet;
-- permission to reopen the V553→V2 architecture;
-- permission to rebuild the whole pipeline conceptually;
-- permission to erase prior R5 engineering;
-- permission to turn compiled structural priors into biography.
+alongside the original human-development requirements: relational strata, contradiction, time, mediation, topology, opacity, genealogy, Absolute Horizon, agency/divergence, lawful uncertainty and epistemic noncollapse.
 
-It is a court about **where persistence belongs in the still-unbuilt compiler lifecycle**, judged by the finished Rawlsing app.
+## 7. WHAT THE P0 RETURNS HAVE ALREADY ESTABLISHED
+
+They have NOT selected an architecture.
+
+They HAVE established a useful burden map:
+
+```text
+SOURCE BYTES / SOURCE AUTHORITY                     primary past
+
+C11 LOGICAL SERVICEABILITY                          required
+M04/M05 occurrence/topology determinant closure    still open
+
+LEARNED EMPIRICAL RELEASES / GEOMETRY               terminally relevant
+STRUCTURAL LEARNED PRODUCTS                         terminally relevant
+P3 REPLAY / EXPLANATION RECEIPTS                    persistent requirement
+
+R5 / Parquet / Arrow / DuckDB / masks / indexes     physical role still open
+
+V3 ACTOR LIFE                                       downstream-owned
+```
+
+The physical court only becomes meaningful after the remaining information question is closed.
+
+## 8. COMMAND RULE
+
+Do not launch C03 because it looks like the likely next engineering step.
+
+Do not declare source-backed victory because nobody found a full-carrier witness.
+
+Do not declare R5 necessary because an FD certificate is missing.
+
+First answer exactly:
+
+> **What is the missing occurrence/topology information, and does it derive or persist?**
+
+Then G0 can become a real decision.
