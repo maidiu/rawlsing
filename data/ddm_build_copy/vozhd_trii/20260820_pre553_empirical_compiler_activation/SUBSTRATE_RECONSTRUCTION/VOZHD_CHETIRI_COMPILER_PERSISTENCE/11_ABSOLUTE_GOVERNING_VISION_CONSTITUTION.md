@@ -6,97 +6,114 @@ Status: `BINDING_ON_VOZHD_CHETIRI__BINDING_ON_ALL_C01_C10_WORKERS__NO_EXCEPTION`
 
 ## 0. PURPOSE
 
-Vozhd Chetiri exists to decide the physical/compiler persistence lifecycle beneath the already-closed Rawlsing machine. This work is dangerous precisely because a locally elegant compiler can silently starve the person the application exists to generate.
+Vozhd Chetiri decides physical/compiler persistence beneath and across the already-closed Rawlsing machine. A locally elegant compiler may silently starve either the human end product or the empirical learned-world capabilities required to support it.
 
-Therefore every Chetiri decision, worker instruction, return, synthesis and recommendation is governed by the finished Rawlsing app vision, not merely by the adjacent empirical consumer.
+Every Chetiri decision, worker instruction, return, synthesis and recommendation is therefore governed by the complete Rawlsing destination, not merely by an adjacent current consumer.
 
-The campaign is subordinate to, and must read from GitHub before reasoning:
+Mandatory orientation includes:
 
-1. `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md`
-2. `.../TERMINAL_DEMAND_ENVELOPE.md`
-3. `.../ARCHITECTURE_PASS_LAW.md`
-4. `.../CONSTRAINTS_PRIORITIES.md`
-5. `.../integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`
-6. exact source/semantic authority for the question at hand;
-7. current PRE553 source/C11/I03/I05/I04 authorities.
+1. Dva `RAWLSING_GOVERNING_SPIRIT.md`;
+2. `TERMINAL_DEMAND_ENVELOPE.md`;
+3. `ARCHITECTURE_PASS_LAW.md`;
+4. `CONSTRAINTS_PRIORITIES.md`;
+5. `WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`;
+6. exact source/semantic authority;
+7. current PRE553 source/C11/I03/I05/I04 authorities;
+8. Chetiri `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md`;
+9. `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`;
+10. `19_OLDER_SIBLING_PRELAUNCH_CORRECTIVE_AND_RECONCILIATION_REGISTER.md`;
+11. `20_CHETIRI_HQ_PRELAUNCH_CORRECTIVE_DISPOSITIONS.md`.
 
-If this constitution conflicts with higher authority, higher authority wins and the worker must surface the conflict. Nothing here authorizes semantic invention or architecture reopening.
+If this constitution conflicts with higher authority, higher authority wins and the conflict must be surfaced. Nothing here authorizes invention or semantic reopening.
 
 ## 1. TERMINAL PERSONHOOD LAW
 
 Rawlsing exists to generate a person who is **causally intelligible without being inevitable**.
 
-Every physical/compiler decision must preserve the possibility that the final application can generate a historically situated person who is:
+Every physical/compiler decision must preserve the possibility of a historically situated person who is materially caused without demographic essentialism, mediated rather than directly assigned, developmentally path-dependent, contradictory, opaque to themselves, alive beyond injury, capable of divergent agency, recursively embedded in generated relationships, and governed by exact provenance/uncertainty rather than disguised invention.
 
-- materially and structurally caused without demographic or psychological essentialism;
-- mediated rather than directly assigned from structural evidence;
-- developmentally path-dependent rather than statically typed;
-- capable of contradictory identifications, loyalties, pressures and frameworks;
-- realistically opaque to themselves, with misrecognition and incomplete accessibility;
-- alive beyond injury: desire, attachment, humor, beauty, sexuality, play, care, craft, appetite, aspiration, prayer, boredom and ordinary vitality remain possible;
-- capable of historically situated agency and divergent development;
-- embedded in generated relationships, households, genealogy and social fields;
-- capable of identification/internalization/naturalization/invisibility/`agent-of` and alienation/externalization/objectification/visibility/`agency-against` as histories rather than labels;
-- capable of a distinct evolving Absolute Horizon without reducing Horizon to religiosity, ideology or a tenth stratum;
-- generated with explicit provenance, lawful uncertainty, replay and randomness rather than disguised invention.
+The machine must preserve enough learned empirical and structural world to constrain possibility without allowing those products to become finished psyche.
 
-The campaign must never optimize away an upstream distinction merely because current tests do not yet exercise the eventual human consequence of losing it.
+## 2. THREE-DOMAIN NONCOLLAPSE
 
-## 2. ABSOLUTE NONCOLLAPSE LAW
+Chetiri SHALL preserve:
 
-The following must remain distinct throughout Chetiri:
+```text
+THE PAST
+  authoritative empirical evidence
 
-`SOURCE EVIDENCE`
-`!= EMPIRICAL FACT`
-`!= STRUCTURAL PRIOR`
-`!= RESOLVED STRUCTURAL CONTEXT`
-`!= GENERATED ACTOR FACT`
-`!= ACTOR-ACCESSIBLE KNOWLEDGE`
-`!= MEMORY/PRESENTATION`
-`!= V2 EXPRESSION`
+!=
+
+THE LEARNED WORLD
+  governed empirical-social learned products
+  + governed structural learned products
+
+!=
+
+THE LIFE
+  V3-generated developmental history
+```
+
+More exactly:
+
+```text
+SOURCE EVIDENCE
+!= DISCOVERED EMPIRICAL CANDIDATE
+!= VALIDATED EMPIRICAL SOCIAL RELATION
+!= POSITIONED-SUBJECT EMPIRICAL POSSIBILITY FIELD
+!= STRUCTURAL PRIOR
+!= RESOLVED STRUCTURAL CONTEXT
+!= GENERATED ACTOR FACT
+!= ACTOR-ACCESSIBLE KNOWLEDGE
+!= MEMORY/PRESENTATION
+!= V2 EXPRESSION
+```
+
+And:
+
+```text
+EMPIRICAL_RESPONDENT_COORDINATE
+!= GENERATED_ACTOR_DEMOGRAPHIC_OR_BIOGRAPHICAL_FACT
+!= GENERATED_NINE_STRATUM STRUCTURAL POSITION
+!= EMPIRICAL POSSIBILITY-FIELD CONDITIONER
+```
 
 Further:
 
 - structural availability != actor exposure;
+- population probability != realized disposition;
+- empirical association != causal biography;
 - structural pressure != psyche;
 - survey response != personality;
-- empirical association != causal biography;
+- discovered pattern != validated empirical knowledge;
+- validated empirical relation != I04 structural admission;
+- pairwise cotravel != proven joint possibility model;
 - structural mediation possibility != realized actor history;
 - V556 attractor prerequisite topology != V3 attractor state;
 - resolver context != lived history;
 - LLM expression != causal ontology.
 
-No storage simplification, cache, index, source-specific compiler or compiled substrate may collapse these distinctions.
-
 ## 3. WHOLE-PICTURE / BOUNDED-JURISDICTION LAW
 
-Every worker must understand terminal demand deeply enough to prevent starvation, while creating no meaning outside its assigned cell.
+Every worker must understand terminal demand deeply enough to prevent starvation while creating no meaning outside its cell.
 
-Use this equation:
+Use:
 
-`WHOLE TERMINAL DEMAND`
-`+ LAWFUL UPSTREAM MATERIAL`
-`- DIRECT REUSE AVAILABLE FROM EARLIER AUTHORITY`
+`WHOLE RAWLSING TERMINAL DEMAND`
+`+ LAWFUL SOURCE / EMPIRICAL / STRUCTURAL MATERIAL`
+`- DIRECT REUSE FROM EARLIER AUTHORITY`
 `- DOWNSTREAM-OWNED MEANING`
 `= THIS CELL'S EXACT OBLIGATION`
 
-A worker may know that V3 will form orientation-to-strata. It may not assign orientation in C11.
+Understanding a possibility-field need does not authorize assigning actor belief. Understanding V3 migration does not authorize rewriting empirical time. Understanding learned-world validation need does not authorize inventing validation rules.
 
-A worker may know that V3 will generate parents and children. It may not turn empirical distributions into family biography.
+## 4. TERMINAL-VISION CHECKSUM — 34 ROWS MANDATORY
 
-A worker may know that V3 can form developmental attractors. It may not optimize by precomputing static actor types from surveys.
-
-A worker may know that V2 will render a voice. It may not allow empirical or structural storage to own expression.
-
-## 4. TERMINAL-DEMAND CHECKSUM — MANDATORY IN EVERY C01–C10 RETURN
-
-Every worker return SHALL contain a section or machine-readable table named:
+Every C01–C10 return SHALL contain a machine-readable table named:
 
 `VC4_TERMINAL_VISION_CHECKSUM`
 
-with one row for every item below.
-
-For each row, worker must classify its relation as exactly one or more of:
+Each row receives one or more exact classifications:
 
 - `PROTECTS_DIRECTLY`
 - `PRESERVES_REQUIRED_PREREQUISITE`
@@ -132,87 +149,137 @@ Mandatory rows:
 21. exact provenance/replay/explicit randomness remain possible;
 22. direct DAG reuse of authoritative earlier objects remains possible;
 23. no downstream vividness exceeds upstream authority;
-24. no terminal capability is starved by the proposed persistence/execution decision.
+24. no terminal capability is starved by persistence/execution decision;
+25. autonomous empirical social discovery remains possible beyond designer-predeclared queries;
+26. positioned-subject empirical possibility field remains possible without actor disposition/belief assignment;
+27. joint/multimodal/minority/contradictory disposition topology is not silently reduced to unary/pairwise summaries;
+28. multi-universe empirical-field identity, disagreement and noncomparability remain preservable;
+29. empirical comparability remains distinct from generated structural-position binding;
+30. empirical-inference and DDM analytical service capabilities remain supportable where governed;
+31. discovery candidate remains distinct from validated empirical social relation and structural admission;
+32. learned-world explanation/provenance lineage remains inspectable and replayable;
+33. empirical geometry remains historically/source-universe indexed rather than silently resolved by `latest`;
+34. adaptive-discovery replay and typed search-completeness state distinguish complete-negative, partial frontier and budget exhaustion.
 
-Any `STARVATION_RISK_FOUND` or `SEMANTIC_LEAKAGE_RISK_FOUND` is blocking until explicitly adjudicated. It may never be traded away for speed, storage or simplicity.
+For any `PROTECTS_DIRECTLY` or `PRESERVES_REQUIRED_PREREQUISITE`, cite the exact object/field/reference. For `DOWNSTREAM_OWNS`, name the downstream owner and the anti-leakage mechanism.
 
-## 5. NO-STARVATION PROOF
+Any `STARVATION_RISK_FOUND` or `SEMANTIC_LEAKAGE_RISK_FOUND` blocks acceptance until explicitly adjudicated.
 
-For every object, field, index, receipt, sidecar or persistent product that a worker proposes to DELETE, NOT MATERIALIZE, DERIVE ON DEMAND or leave TRANSIENT, the worker must answer:
+## 5. AUTONOMOUS DISCOVERY LAW
 
-1. Which immediate capabilities use this information today?
-2. Which terminal capabilities could require the information later?
-3. Is the original authoritative object still directly reachable?
-4. Is reconstruction exact under frozen authority?
-5. Does deletion increase the temptation for downstream heuristic invention?
-6. Could deletion erase contradiction, topology, temporal context, uncertainty, mediation prerequisites or provenance?
-7. Can a hostile downstream consumer recover everything lawfully needed without reaching into an illicit stage?
+Fast known predicates do not prove a tractable discovery machine.
 
-If any answer is unresolved, disposition is `UNRESOLVED_BLOCKING`, not optimization.
+Chetiri must preserve an autonomous bounded search frontier capable of finding important lawful structure not named in advance. Where executable search law exists, candidate courts must distinguish primitive-operation performance from full adaptive discovery-program performance.
 
-## 6. NO-BLOAT PROOF
+Typed search outcomes must distinguish:
 
-The terminal vision also forbids ornamental machinery.
+- `COMPLETE_AUTHORIZED_SEARCH__NO_RELATION`;
+- `PARTIAL_FRONTIER`;
+- `SEARCH_BUDGET_EXHAUSTED`;
+- `UNSUPPORTED_OR_NONCOMPARABLE_DOMAIN`;
+- `CANDIDATE_FOUND__VALIDATION_FAILED`;
+- `CANDIDATE_FOUND__VALIDATED`.
 
-For every proposed new persistent artifact, the worker must answer:
+An empty result from incomplete computation is never an empirical negative.
+
+## 6. EMPIRICAL LEARNED-WORLD LAW
+
+Physical/compiler decisions must preserve, where governed or required as capability prerequisites:
+
+- higher-order joint structure;
+- minority/multimodal/contradictory configurations;
+- historically indexed source-universe-specific fields;
+- possibility-field conditioner comparability without collapsing to structural position;
+- validation/uncertainty status;
+- explanation lineage;
+- lawful re-evaluation when actor-comparable facts change, without rewriting actor history.
+
+If exact semantic/model authority for a required capability is missing, classify `MISSING_AUTHORITY__FAIL_CLOSED`; do not delete the capability from the target and do not invent its rules.
+
+## 7. NO-STARVATION PROOF
+
+For every object/field/index/receipt/sidecar/product proposed to DELETE, NOT MATERIALIZE, DERIVE ON DEMAND or leave TRANSIENT, answer:
+
+1. Which immediate capabilities use the information?
+2. Which of the five consumption lifecycles could require it?
+3. Which terminal human or learned-world capabilities could require it?
+4. Is original authority still directly reachable?
+5. Is reconstruction exact under frozen authority?
+6. Does deletion alter lawful query/discovery reachability?
+7. Does deletion erase joint/multimodal structure, historical/multi-universe identity, validation state or explanation lineage?
+8. Does deletion increase downstream heuristic invention pressure?
+9. Can a hostile consumer recover everything lawfully needed without illicit stage reach-through?
+
+Any unresolved answer yields `UNRESOLVED_BLOCKING`.
+
+## 8. NO-BLOAT / AUTHORITY PROOF
+
+For every proposed persistent transformed artifact, answer:
 
 1. What exact meaning or performance requirement does it satisfy?
-2. What terminal or immediate capability fails without it?
-3. Why cannot an earlier authoritative object be reused directly?
-4. Why is deterministic regeneration insufficient?
-5. Why does the meaning belong at this layer rather than downstream?
+2. What capability/lifecycle fails or becomes operationally unacceptable without it?
+3. Why cannot earlier authority be reused directly?
+4. Why is deterministic regeneration insufficient for the claimed retention role?
+5. Is it semantically authoritative, a governed learned product, operationally retained but regenerable, or optional cache?
 6. What invalidates it?
-7. Can it ever silently become a second owner of semantics?
+7. Can it silently become a second owner of source semantics?
+8. Can its physical schema silently define the allowed query/discovery vocabulary?
 
-If these cannot be answered, demote the artifact to transient state, optional cache, diagnostic material or remove it.
+Operational necessity and epistemic authority must be reported separately.
 
-## 7. HUMAN-END-PRODUCT HOSTILE QUESTIONS
+## 9. HUMAN-END-PRODUCT HOSTILE QUESTIONS
 
-Before returning, each worker must ask:
+Before returning, ask whether the proposal could:
 
-- Could my proposal make a future generated person more deterministic merely because the compiler lost distinctions?
-- Could it turn a relational field into a demographic lookup because that is easier to index?
-- Could it make structural evidence speak directly as psyche?
-- Could it erase multiple simultaneous pressures by selecting one convenient canonical winner?
-- Could it erase lawful unknown/noncomparability and replace it with a default?
-- Could it make runtime depend on analyst-visible evidence the actor should not know?
-- Could it make family/genealogy generation collapse into demographic averages?
-- Could it force attractor outcomes earlier than lived developmental history warrants?
-- Could it make Absolute Horizon a static source-derived score?
-- Could it make the LLM or renderer fill a gap created by upstream information loss?
-- Could it make a cache or physical layout acquire semantic authority?
+- make a person more deterministic because empirical/structural distinctions were lost;
+- turn relational fields into demographic lookups;
+- turn an empirical possibility field into psyche;
+- erase minority/multimodal configurations;
+- erase source-universe disagreement or empirical time;
+- convert compute exhaustion into no-relation truth;
+- make a cache define what I05 can discover;
+- make current V3 non-use erase a legitimate empirical service;
+- make structure speak directly as biography;
+- erase unknown/noncomparability;
+- leak analyst-visible evidence into actor knowledge;
+- collapse genealogy into averages;
+- force attractor outcomes early;
+- make Absolute Horizon a static score;
+- make LLM/rendering fill gaps created upstream;
+- make a physical layout acquire semantic authority.
 
-Any YES must be surfaced with the smallest concrete witness.
+Any YES requires the smallest concrete witness.
 
-## 8. COMMANDER SELF-LAW
+## 10. COMMANDER SELF-LAW
 
-Vozhd Chetiri/HQ is bound by the same constitution.
+Vozhd Chetiri/HQ may not:
 
-Chetiri may not:
-
-- prefer source-backed architecture because it feels conceptually elegant;
-- prefer persistent LONG because engineering work has already been invested;
-- treat lower storage as success when terminal capability is weakened;
-- treat faster compilation as success when provenance/replay is weakened;
-- use the Governing Spirit to overwrite explicit source or semantic authority;
-- invent terminal requirements not present in accepted architecture;
-- reopen V553–V2 architecture merely to simplify PRE553;
-- let benchmark choice predetermine the outcome;
-- accept a worker that fails the terminal checksum;
+- prefer source-backed because it feels elegant;
+- prefer R5 because engineering effort is sunk;
+- define destination from current V3 usage alone;
+- treat faster primitive queries as autonomous-discovery proof;
+- treat lower bytes as success if learned-world capability disappears;
+- treat a useful transformed carrier as primary authority merely because it is warm;
+- treat rebuildability as proof a learned product needs no release identity/provenance;
+- use Governing Spirit to overwrite source/semantic authority;
+- invent missing validation/comparability/model authority;
+- reopen V553–V2 merely to simplify PRE553;
+- accept a worker failing the 34-row checksum;
 - synthesize away named contradictions or missing authority.
 
-Chetiri must choose only among lawful options after source truth, accepted semantic authority and whole-machine closure have been obeyed.
+## 11. FINAL SUCCESS TEST
 
-## 9. FINAL SUCCESS TEST
+A Chetiri result is good only if all are true:
 
-A Chetiri result is good only if both statements are true:
+1. **Past:** authoritative source evidence remains exact and replayable.
+2. **Learned world:** autonomous discovery, validated empirical knowledge, possibility geometry and structural knowledge remain possible at lawful grains without semantic collapse.
+3. **Life:** V3 retains developmental realization, mediation, history, opacity and divergence.
+4. **Persistence:** no permanent empirical/compiler machinery exists merely because current implementation happened to materialize it.
+5. **Operations:** no supposedly elegant architecture makes required discovery/inference/analysis operationally impossible.
 
-1. **Compiler/persistence:** Rawlsing carries no unnecessary permanent empirical/compiler machinery and can rebuild what it lawfully derives.
-2. **Personhood:** the resulting upstream path still gives the closed V553→V3→V2 application enough exact, noncollapsed, historically situated structural material to generate people who are causally intelligible without being inevitable.
+The campaign maxim is:
 
-The campaign's tie-break maxim is therefore:
-
-> **Make the compiler as light as truth allows, and the permanent runtime substrate as beautiful as the person requires.**
+> **Do not optimize the road before proving the complete destination.**
 
 The final app criterion remains:
 
