@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, asdict
 import gzip, hashlib, heapq, json, os, shutil, struct, time
+import resource
 from pathlib import Path
 from typing import Iterable
 
@@ -29,6 +30,40 @@ class TurboConfig:
 
 
 BASELINE = TurboConfig("V0", 4096, 4 * 1024 * 1024, 8, 6, True, 16384, 16 * 1024 * 1024, 6)
+
+RSS_PREFERRED = 2 * 1024**3
+RSS_STOP = 3 * 1024**3
+RSS_HARD_ABORT = int(3.5 * 1024**3)
+SCRATCH_WARNING = 4 * 1024**3
+SCRATCH_HARD_ABORT = 8 * 1024**3
+FREE_SPACE_HARD_ABORT = 5 * 1024**3
+
+
+class TurboSafetyAbort(RuntimeError):
+    pass
+
+
+def actual_fan_in(requested: int, *, soft_limit: int | None = None, reserve: int = 64) -> int:
+    if soft_limit is None:
+        soft_limit = int(resource.getrlimit(resource.RLIMIT_NOFILE)[0])
+    return min(requested, max(0, soft_limit - reserve))
+
+
+def rss_action(value: int) -> str:
+    if value >= RSS_HARD_ABORT: return "HARD_ABORT"
+    if value >= RSS_STOP: return "STOP_DISPATCH"
+    if value >= RSS_PREFERRED: return "ALLOWED_SLOW_BAND"
+    return "NORMAL"
+
+
+def scratch_action(value: int) -> str:
+    if value >= SCRATCH_HARD_ABORT: return "HARD_ABORT"
+    if value >= SCRATCH_WARNING: return "WARNING"
+    return "NORMAL"
+
+
+def filesystem_action(free_bytes: int) -> str:
+    return "HARD_ABORT" if free_bytes < FREE_SPACE_HARD_ABORT else "NORMAL"
 
 
 def _fsync(path: Path, enabled: bool) -> None:
@@ -62,6 +97,9 @@ def _read_record(handle):
 class SerialTurboBuilder:
     def __init__(self, config: TurboConfig):
         self.config = config
+        self.actual_merge_fan_in = actual_fan_in(config.merge_fan_in)
+        if self.actual_merge_fan_in < 2:
+            raise TurboSafetyAbort("RLIMIT_NOFILE leaves insufficient merge fan-in")
         self.phase = {}
         self.max_open = 0
         self.temp_bytes_written = 0
@@ -112,7 +150,7 @@ class SerialTurboBuilder:
         for line in manifest.read_text(encoding="utf-8").splitlines():
             if line.strip():
                 group.append(line.strip())
-                if len(group)>=self.config.merge_fan_in: yield group; group=[]
+                if len(group)>=self.actual_merge_fan_in: yield group; group=[]
         if group: yield group
 
     def _merge_group(self, source, names, target):
@@ -142,7 +180,7 @@ class SerialTurboBuilder:
         passes=0; max_open=0
         while True:
             count=sum(bool(x.strip()) for x in manifest.read_text(encoding="utf-8").splitlines())
-            if count<=self.config.merge_fan_in: return manifest,directory,passes,max_open
+            if count<=self.actual_merge_fan_in: return manifest,directory,passes,max_open
             passes+=1; target_dir=work/f"runs-{passes:04d}"; target_dir.mkdir(); nxt=work/f"runs-{passes:04d}.txt"; n=0
             with nxt.open("w",encoding="utf-8",newline="\n") as out:
                 for group in self._groups(manifest):
@@ -176,13 +214,14 @@ class SerialTurboBuilder:
         inventory=target/"member_inventory.jsonl"; total=members_count=shard=0; global_digest=hashlib.sha256(); prev=None; actual_member=0
         current_raw=current_out=current_path=None; current_rows=current_bytes=0; first=last=None; current_digest=None; relcounts={}
         final_start=time.perf_counter()
+        member_hash_seconds=0.0
         with inventory.open("w",encoding="ascii",newline="\n") as inv:
             def close_member():
-                nonlocal current_raw,current_out,current_path,current_rows,current_bytes,first,last,current_digest,relcounts,members_count,actual_member
+                nonlocal current_raw,current_out,current_path,current_rows,current_bytes,first,last,current_digest,relcounts,members_count,actual_member,member_hash_seconds
                 if current_out is None:return
                 if current_out is not current_raw: current_out.close()
                 current_raw.flush(); _fsync(current_path,True); current_raw.close()
-                sha,size=frozen._sha256_file(current_path); actual_member+=size
+                hash_start=time.perf_counter(); sha,size=frozen._sha256_file(current_path); member_hash_seconds += time.perf_counter()-hash_start; actual_member+=size
                 inv.write(canonical_json({"inventory_schema_version":INVENTORY_SCHEMA_VERSION,"member":current_path.name,"member_encoding":frozen.MEMBER_ENCODING,"byte_length":size,"sha256":sha,"logical_digest":current_digest.hexdigest(),"row_count":current_rows,"first_identity":list(first),"last_identity":list(last),"relation_counts":dict(sorted(relcounts.items()))})+"\n")
                 members_count+=1; current_raw=current_out=current_path=None; current_rows=current_bytes=0; first=last=None; current_digest=None; relcounts={}
             for key,data in self._iter_final(manifest,directory):
@@ -197,15 +236,16 @@ class SerialTurboBuilder:
                 current_out.write(data); lw=frozen._logical_wire(row); current_digest.update(lw); global_digest.update(lw); current_rows+=1; current_bytes+=len(data); total+=1; last=identity; relcounts[row.relation]=relcounts.get(row.relation,0)+1
             close_member(); inv.flush(); _fsync(inventory,True)
         self.phase["final_merge_member_sealing"]=time.perf_counter()-final_start
+        self.phase["member_hashing_inventory_write"]=member_hash_seconds
         if total!=telemetry["input_rows"]: raise R5IntegrityError("row count changed during merge")
         inv_sha,inv_bytes=frozen._sha256_file(inventory)
         root_config=R5BuildConfig() if self.config.baseline_layout else R5BuildConfig(run_max_rows=self.config.run_max_rows,run_max_bytes=self.config.run_max_bytes,shard_max_rows=self.config.shard_max_rows,shard_max_bytes=self.config.shard_max_bytes,merge_fan_in=self.config.merge_fan_in,verified_spool_memory_bytes=1024*1024)
         release={"release_id":release_identity.release_id,"semantic_release_hash":release_identity.semantic_release_hash,"source_artifact_ref":dict(release_identity.source_artifact_ref),"source_release_manifest_hash":release_identity.source_release_manifest_hash,"m01_m18_coverage":{k:list(v) for k,v in sorted(release_identity.m01_m18_coverage.items())},"decoder_receipt":release_identity.decoder_receipt,"compiler_contract_digest":release_identity.compiler_contract_digest,"c11_authority_digest":release_identity.c11_authority_digest}
         unsigned={"root_schema_version":ROOT_SCHEMA_VERSION,"carrier_schema_version":frozen.CARRIER_SCHEMA_VERSION,"carrier_id":CARRIER_ID,"member_encoding":frozen.MEMBER_ENCODING,"typed_codec_version":CODEC_VERSION,"release_identity":release,"logical_stream_digest":global_digest.hexdigest(),"canonical_row_count":total,"member_inventory":{"path":inventory.name,"sha256":inv_sha,"byte_length":inv_bytes,"member_count":members_count},"build_config":asdict(root_config)}
-        root_id=hashlib.sha256(canonical_bytes(unsigned)).hexdigest(); root={**unsigned,"physical_root_id":root_id}; root_path=target/"root.json"; root_path.write_text(canonical_json(root)+"\n",encoding="ascii"); frozen._fsync_file(root_path); frozen._fsync_file(inventory); frozen._fsync_dir(members); frozen._fsync_dir(target)
-        self.phase["hash_inventory_root_closure"]=0.0
+        closure_start=time.perf_counter(); root_id=hashlib.sha256(canonical_bytes(unsigned)).hexdigest(); root={**unsigned,"physical_root_id":root_id}; root_path=target/"root.json"; root_path.write_text(canonical_json(root)+"\n",encoding="ascii"); frozen._fsync_file(root_path); frozen._fsync_file(inventory); frozen._fsync_dir(members); frozen._fsync_dir(target)
+        self.phase["hash_inventory_root_closure"]=time.perf_counter()-closure_start
         shutil.rmtree(work)
-        telemetry.update({"merge_passes":passes,"max_merge_open_runs":max_open,"final_shards":members_count,"member_bytes":actual_member,"inventory_bytes":inv_bytes,"root_bytes":root_path.stat().st_size,"canonical_steady_state_bytes":actual_member+inv_bytes+root_path.stat().st_size,"logical_stream_digest":global_digest.hexdigest(),"physical_root_id":root_id,"temp_bytes_written":self.temp_bytes_written,"phases":dict(self.phase)})
+        telemetry.update({"merge_passes":passes,"max_merge_open_runs":max_open,"actual_merge_fan_in":self.actual_merge_fan_in,"requested_merge_fan_in":self.config.merge_fan_in,"execution_config":asdict(self.config),"final_shards":members_count,"member_bytes":actual_member,"inventory_bytes":inv_bytes,"root_bytes":root_path.stat().st_size,"canonical_steady_state_bytes":actual_member+inv_bytes+root_path.stat().st_size,"logical_stream_digest":global_digest.hexdigest(),"physical_root_id":root_id,"temp_bytes_written":self.temp_bytes_written,"phases":dict(self.phase)})
         return telemetry
 
 

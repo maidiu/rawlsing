@@ -1,0 +1,20 @@
+{
+  "authority": "66 narrow compliance closure",
+  "starting_head": "c8859bebf5baccf0ac65932c08b5dbdcb60012d7",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "tests": {"passed": 77, "failed": 0, "skipped": 0, "safety_governor_tests": "PASS"},
+  "v4_execution_config": {"run_max_rows": 65536, "run_max_bytes": 67108864, "merge_fan_in": 64, "temp_level": 1, "temp_fsync": false, "shard_max_rows": 16384, "shard_max_bytes": 16777216, "final_level": 6},
+  "courts": {
+    "250000": {"V0": {"decode_open_seconds": 1.217763727, "build_seconds": 57.579907079, "reopen_seconds": 0.000172334, "audit_seconds": 26.480471519, "initial_runs": 62, "merge_passes": 1, "member_count": 16, "peak_rss_bytes": 200540160, "peak_scratch_bytes": 9016472, "density": 14.962512, "phase_seconds": {"initial_run_generation_sort_write": 25.135934542, "merge_reduction": 3.894239099, "final_merge_member_sealing": 28.546052908, "member_hashing_inventory_write": 0.012651692, "hash_inventory_root_closure": 0.000472087}}, "V4": {"decode_open_seconds": 0.596262660, "build_seconds": 53.911228971, "reopen_seconds": 0.000302625, "audit_seconds": 27.392200560, "initial_runs": 4, "merge_passes": 0, "member_count": 16, "peak_rss_bytes": 200540160, "peak_scratch_bytes": 9815373, "density": 14.962512, "phase_seconds": {"initial_run_generation_sort_write": 26.712962680, "merge_reduction": 0.000137914, "final_merge_member_sealing": 27.195181936, "member_hashing_inventory_write": 0.012098930, "hash_inventory_root_closure": 0.000424921}}, "exact_equivalence": true, "logical_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9", "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5"},
+    "2000000": {"V0": {"decode_open_seconds": 0.590461598, "build_seconds": 468.739862739, "reopen_seconds": 0.000347572, "audit_seconds": 209.875187720, "initial_runs": 489, "merge_passes": 2, "member_count": 123, "peak_rss_bytes": 200540160, "peak_scratch_bytes": 80562572, "density": 14.4385385, "phase_seconds": {"initial_run_generation_sort_write": 195.715326630, "merge_reduction": 62.164421781, "final_merge_member_sealing": 210.843177159, "member_hashing_inventory_write": 0.099406290, "hash_inventory_root_closure": 0.000572349}}, "V4": {"decode_open_seconds": 0.599560945, "build_seconds": 389.066875439, "reopen_seconds": 0.000319734, "audit_seconds": 210.809710158, "initial_runs": 31, "merge_passes": 0, "member_count": 123, "peak_rss_bytes": 200540160, "peak_scratch_bytes": 78693265, "density": 14.4385385, "phase_seconds": {"initial_run_generation_sort_write": 182.916965760, "merge_reduction": 0.000167355, "final_merge_member_sealing": 206.131144898, "member_hashing_inventory_write": 0.097521464, "hash_inventory_root_closure": 0.000510674}}, "exact_equivalence": true, "logical_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189", "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0"}
+  },
+  "member_bytes_and_hashes_equal": true,
+  "inventory_bytes_equal": true,
+  "root_bytes_equal": true,
+  "full_audit_equal": true,
+  "build_speedup_2m": 1.2047796724151805,
+  "total_certification_speedup_2m": 1.1312577497154286,
+  "projected_full_wvs_gib": 0.8013817659119237,
+  "scratch_clean": true,
+  "disposition": "R5_SERIAL_TURBO_V4_COMPLIANCE_CLOSED__READY_FOR_FULL_SOURCE_HQ_AUTHORITY"
+}
