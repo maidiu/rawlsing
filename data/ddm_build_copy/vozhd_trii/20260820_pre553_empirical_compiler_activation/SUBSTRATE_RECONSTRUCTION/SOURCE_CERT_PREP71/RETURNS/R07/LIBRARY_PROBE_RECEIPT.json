@@ -16,9 +16,7 @@
       "materialized_path": "/mnt/data/srcprep71_r07/LiTS_I.dta.zip",
       "size_bytes": 7686379,
       "sha256": "b2e90ee7ceefc230572e89687de28186544308949f8fd33c32b1d0ffb14b8feb",
-      "members_used": [
-        "LiTS_I.dta"
-      ]
+      "members_used": ["LiTS_I.dta"]
     },
     {
       "filename": "surveys.zip",
@@ -26,11 +24,7 @@
       "materialized_path": "/mnt/data/srcprep71_r07/surveys.zip",
       "size_bytes": 158180333,
       "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
-      "members_used": [
-        "surveys/LiTS_II.dta",
-        "surveys/LiTS_III.dta",
-        "surveys/LiTS_IV.dta"
-      ]
+      "members_used": ["surveys/LiTS_II.dta", "surveys/LiTS_III.dta", "surveys/LiTS_IV.dta"]
     }
   ],
   "extracted_source_sha256_before_packet_build": {
@@ -94,13 +88,14 @@
     "RESULT.md": "f1a4db06a4dbbf9960cc130269b09d881a1cf1b507dba1a3a5e83878cac25fcc",
     "RESULT.json": "911c596049ab97ff987ba603b96ed81c855f5e711125dbee86f9d71ee0b3d18f",
     "SOURCE_CERTIFICATION_LEDGER.csv": "e0116f126b2c16424d2dca0ed0750c1665f26b655354da7dc4e5a1d66c5facfa",
-    "HOSTILE_FIXTURES.csv": "2339ff80d41b14171e7769d347e0d4de6a379df8f483b2bc3680c274de47a3d3",
+    "HOSTILE_FIXTURES.csv": "5bef705c06b2c0cef99c8f1e115231129f33734c8c3c07ae331c86d41f9e3a11",
     "DOCUMENTARY_AUTHORITY_MAP.csv": "2dfcf9a538b952b6502f1f91af310bfd7a011475ec29c91ad0bdfb241350aa0c",
     "AUTHORITY_GAPS.csv": "0ef45ddc3847cedc114a97e3af96e436729d324977fb43bd011d60782a17c3c0",
     "FAMILY_REUSE_AND_DRIFT.csv": "58b7b772464383a89f14d81d31e9b5f6a26c77296f0f3ed34a24c72e8ae4893c",
     "FUTURE_EXECUTION_ORDER.md": "a1f2fa5756ecf9d437681d89577e5252072f56830596a895a918669c8662717b",
     "CHANGED_FILES.txt": "76a6bf057d4562f18111538c0ecd5092eae315e680aa20fb91337f11d46693da"
   },
+  "published_line_ending_note": "HOSTILE_FIXTURES.csv is published with LF line endings; its content matches the prepared ledger and the receipt records the published-byte SHA-256.",
   "probe_receipt_self_hash": "EXCLUDED_FROM_SELF_CONTENT_TO_AVOID_RECURSIVE_HASH",
   "expected_changed_files": [
     "RESULT.md",
@@ -114,5 +109,5 @@
     "LIBRARY_PROBE_RECEIPT.json",
     "CHANGED_FILES.txt"
   ],
-  "final_git_status": "NO_LOCAL_GIT_WORKTREE__CONNECTOR_ATOMIC_PUBLICATION_PATH; final remote branch diff and direct-parent audit are returned in the HQ receipt after publication."
+  "final_git_status": "NO_LOCAL_GIT_WORKTREE__CONNECTOR_FAST_FORWARD_PUBLICATION; authoritative final remote branch status is the post-publication compare returned in the HQ receipt."
 }
