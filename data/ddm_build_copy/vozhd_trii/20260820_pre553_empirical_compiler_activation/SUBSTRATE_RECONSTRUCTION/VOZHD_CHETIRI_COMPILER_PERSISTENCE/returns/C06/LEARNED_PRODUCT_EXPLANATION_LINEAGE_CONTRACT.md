@@ -20,6 +20,8 @@ For every governed accepted empirical relation/model/product, retain or exact-re
 
 - product/release schema, object ID and content hash;
 - source snapshot/release roots;
+- executable decoder replay identity/closure;
+- source→C11 respondent/question/topology/event-occurrence derivation or exact historical replay binding;
 - empirical universe/source family/wave/time/geography/scope;
 - canonical and native question identities;
 - target and conditioner predicates;
@@ -70,14 +72,14 @@ Downstream structural producer objects retain their own producer identity/build/
 
 For any published learned empirical relation or structural object, an auditor should be able to answer:
 
-> Which exact source evidence, authorities, search trajectory/frontier state, validation evidence, admissions, producer rules and historical releases caused Rawlsing to publish this object, and can those determinants be replayed against the pinned expected identity?
+> Which exact source evidence, source→C11 identity derivations, authorities, search trajectory/frontier state, validation evidence, admissions, producer rules and historical releases caused Rawlsing to publish this object, and can those determinants be replayed against the pinned expected identity?
 
-If the answer requires trusting a deleted cache/carrier or reconstructing meaning from prose, lineage is insufficient.
+If the answer requires trusting a deleted cache/carrier, re-inventing an occurrence index, or reconstructing meaning from prose, lineage is insufficient.
 
 ## Invalidation
 
-New identity/revalidation is required when a bound source release, question mapping, universe/time/scope, design/weight/estimand, search law, candidate ancestry, validation/model-selection rule, randomness/split, comparability authority, I04 admission rule, structural producer, publication policy, or interpretation-critical dependency changes.
+New identity/revalidation is required when a bound source release, decoder closure, source→C11 identity derivation, question mapping, universe/time/scope, design/weight/estimand, search law, candidate ancestry, validation/model-selection rule, randomness/split, comparability authority, I04 admission rule, structural producer, publication policy, or interpretation-critical dependency changes.
 
 ## Current missing authority
 
-The repository contains a closed exact-bounded I05 and exact I04 structural admission seam, but C06 does not find a frozen recovered adaptive search program or a complete recovered empirical validation/model-selection authority. Those gaps prevent a claim that the future empirical learned-world product lineage is already executable end to end.
+The repository contains a closed exact-bounded I05 and exact I04 structural admission seam, but C06 does not find a frozen general source→C11 event-occurrence derivation law, a frozen recovered adaptive search program, or a complete recovered empirical validation/model-selection authority; durable executable decoder closure is also not established. Those gaps prevent a claim that the future empirical learned-world product lineage is already executable end to end.
