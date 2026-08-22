@@ -1,0 +1,24 @@
+{
+  "authority": "70",
+  "starting_head": "d6206cd0e351100b64cdf3ace997733153c18eb7",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "source_rows": 97220,
+  "source_variables": 613,
+  "source_physical_cells": 59595860,
+  "preflight": {
+    "relevant_r5_tests": "96 passed in 40.11s; 0 failed; 0 skipped",
+    "authority69_hostile_tests": "19 passed in 0.58s; 0 failed; 0 skipped",
+    "q152_q157_full_decoder_rows": 97220,
+    "q152_q157_exact_physical_proof": "PASS",
+    "newer_superseding_authority": "NOT_FOUND",
+    "full_source_scratch_created": false
+  },
+  "blocking_witness": {
+    "physical_relation": "source_physical_cells",
+    "i03_required_input": "C11Repository",
+    "facade_behavior": "R5C11Facade.iter_objects filters to accepted C11 relations",
+    "release_path_requirement": "bounded materialization requires exactly one ReplayManifest",
+    "lawful_bridge_available": false
+  },
+  "disposition": "BLOCKED_POTENTIAL_FROZEN_CONTRACT_CONTRADICTION"
+}
