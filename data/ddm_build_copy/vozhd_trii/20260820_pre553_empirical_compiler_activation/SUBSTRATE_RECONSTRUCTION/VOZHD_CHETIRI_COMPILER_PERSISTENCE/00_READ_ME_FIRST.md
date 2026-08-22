@@ -169,8 +169,9 @@ That hypothesis is not accepted until proved.
 16. `06_BUILD_RUNTIME_PERSISTENCE_LAW.md`
 17. `07_MEASUREMENT_AND_BAKEOFF_LAW.md`
 18. `08_HQ_ADJUDICATION_TEMPLATE.md`
-19. exact cell order under `WORKER_ORDERS/`
-20. relevant prepared phase launch order.
+19. `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md` — mandatory cross-command education; non-dispositive
+20. exact cell order under `WORKER_ORDERS/`
+21. relevant prepared phase launch order.
 
 ### Current PRE553 parents
 
@@ -183,6 +184,7 @@ At minimum:
 - `../56_POST_R4_ROUND2_FINAL_SYNTHESIS_AND_R5_CARRIER_CONTRACT.md`
 - `../63_R5_WVS7_RESOURCE_FAILURE_AND_LONG_COMPACT_ENCODING_REPAIR_AUTHORITY.md`
 - `../64_R5_LONG_COMPACT_V2_EXACT_VALIDATION_AND_WVS_PREFIX_DENSITY_COURT.md`
+- `../65_R5_LONG_COMPACT_V2_PARALLEL12_COMPILER_AUTHORITY.md`
 - any newer current PRE553 authority at launch/adjudication time.
 
 Absolute law:
