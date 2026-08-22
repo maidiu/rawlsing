@@ -39,6 +39,17 @@ R5 provides a physical member/inventory completeness mechanism and current exact
 
 C06 defines the information requirement but does not self-create the canonical schema/authority.
 
+## U5 — Source→C11 event-occurrence identity derivation
+**Status:** `NAMED_AUTHORITY_OR_REPLAY_BINDING_REQUIRED`
+
+`09_SOURCE_NATIVE_CONSTITUTION.md` requires preservation of source occurrence/event/slot identity where the source supports repeated or ordered events. `RespondentEvent` makes `event_group_id` and `response_event_id_or_deterministic_index` identity-bearing semantic fields. `pre553_c11_integrity.py` can reject collapsed duplicate occurrence identities, but the inspected C11 ingest path consumes those fields; C06 did not find a general frozen rule that derives them from immutable source incidence for every applicable topology.
+
+Therefore content-addressed object hashing alone does not prove universal source-backed reconstruction of the same `RespondentEvent` ExactRefs. HQ must preserve/freeze either:
+- an exact deterministic source→occurrence derivation law whose inputs are all retained; or
+- an exact compact historical occurrence replay binding sufficient to regenerate the same identity-bearing values.
+
+This is **not** evidence that the complete event payload must persist. It is evidence that an identity-bearing derivation cannot be left implicit.
+
 ## Non-unresolved finding
 
-No inspected identity formula requires persistent full event payload bytes. `object_id`, `content_hash`, ExactRefs and semantic release identity are governed semantic identities and must not be equated with a physical R5 root.
+No inspected identity formula makes physical R5 layout itself semantic identity, and no inspected evidence proves that the permanent full event payload is the smallest object capable of closing U5. `object_id`, `content_hash`, ExactRefs and semantic release identity remain governed semantic identities distinct from a physical R5 root.
