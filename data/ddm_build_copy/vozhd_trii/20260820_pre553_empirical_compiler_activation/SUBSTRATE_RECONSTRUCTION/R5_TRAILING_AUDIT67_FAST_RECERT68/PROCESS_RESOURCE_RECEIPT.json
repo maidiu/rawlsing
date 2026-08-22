@@ -1,0 +1,37 @@
+{
+  "authority": "68",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "topology": {
+    "serial_v4_builder_count": 1,
+    "independent_trailing_auditor_count": 1,
+    "persistent_cache_store_count": 0,
+    "readiness_queue_capacity": 8,
+    "observed_queue_peak": 1
+  },
+  "queue_metrics": {
+    "pending_queue_depth_peak": null,
+    "auditor_inflight_peak": null,
+    "outstanding_closed_members_peak": null,
+    "note": "The frozen fast candidate reports queue_peak only; the hostile court separately proves bounded admission and ninth-pending rejection."
+  },
+  "resource_metrics": {
+    "250000": {
+      "builder_rss_bytes": 202948608,
+      "auditor_rss_bytes": 27713536,
+      "aggregate_rss_bytes": 230662144,
+      "scratch_peak_bytes": 3740628,
+      "cleanup": "PASS"
+    },
+    "2000000": {
+      "builder_rss_bytes": 202948608,
+      "auditor_rss_bytes": 21327872,
+      "aggregate_rss_bytes": 224276480,
+      "scratch_peak_bytes": 28877077,
+      "cleanup": "PASS"
+    }
+  },
+  "hard_queue_process_resource_integrity_gates": "PASS",
+  "preferred_speedup_gate": "MISS",
+  "preferred_builder_slowdown_gate": "MISS",
+  "final_disposition": "R5_TRAILING_AUDIT67_FAST_RECERTIFIED__MODEST_GAIN__HQ_ADJUDICATION_REQUIRED"
+}

@@ -1,0 +1,87 @@
+{
+  "authority": "68",
+  "builder_count": 1,
+  "builder_slowdown_2m": 0.4209297166787307,
+  "checkpoints": {
+    "2000000": {
+      "canonical_row_count": 2000614,
+      "checkpoint": 2000000,
+      "equality": {
+        "inventory_bytes": true,
+        "member_bytes_hashes": true,
+        "member_order_count": true,
+        "ordinary_audit_equals_ordinary": true,
+        "ordinary_audit_equals_trailing": true,
+        "root_bytes": true
+      },
+      "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+      "ordinary": {
+        "audit_seconds": 282.62911217599685,
+        "build_seconds": 398.8653456300017,
+        "peak_rss_bytes": 202948608,
+        "peak_scratch_bytes": 28877077,
+        "reopen_seconds": 0.0004457560025912244,
+        "total_seconds": 681.4949035620011
+      },
+      "overlap": {
+        "aggregate_peak_rss_bytes": 224276480,
+        "auditor_finish_lag_after_root_seal_seconds": 1.4388718400005018,
+        "auditor_rss_bytes": 21327872,
+        "auditor_seconds": 566.3898458570002,
+        "builder_blocked_seconds": 0.00780079099786235,
+        "builder_rss_bytes": 202948608,
+        "builder_seconds": 566.7596225590023,
+        "overlap_total_seconds": 566.752039545001,
+        "queue_peak": 1
+      },
+      "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0"
+    },
+    "250000": {
+      "canonical_row_count": 250614,
+      "checkpoint": 250000,
+      "equality": {
+        "inventory_bytes": true,
+        "member_bytes_hashes": true,
+        "member_order_count": true,
+        "ordinary_audit_equals_ordinary": true,
+        "ordinary_audit_equals_trailing": true,
+        "root_bytes": true
+      },
+      "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+      "ordinary": {
+        "audit_seconds": 22.102629848002834,
+        "build_seconds": 43.247835572998156,
+        "peak_rss_bytes": 202948608,
+        "peak_scratch_bytes": 3740628,
+        "reopen_seconds": 0.00017265900169149972,
+        "total_seconds": 65.35063808000268
+      },
+      "overlap": {
+        "aggregate_peak_rss_bytes": 230662144,
+        "auditor_finish_lag_after_root_seal_seconds": 1.0045199900014268,
+        "auditor_rss_bytes": 27713536,
+        "auditor_seconds": 44.37878845600062,
+        "builder_blocked_seconds": 0.0007250580056279432,
+        "builder_rss_bytes": 202948608,
+        "builder_seconds": 44.50347068300107,
+        "overlap_total_seconds": 44.49150997800098,
+        "queue_peak": 1
+      },
+      "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5"
+    }
+  },
+  "disposition": "R5_TRAILING_AUDIT67_FAST_RECERTIFIED__MODEST_GAIN__HQ_ADJUDICATION_REQUIRED",
+  "hostile_process_suite": {
+    "exit_code": 0,
+    "passed": 16,
+    "skipped": 0
+  },
+  "overlap_speedup_2m": 1.2024569053322116,
+  "persistent_cache_count": 0,
+  "preferred_builder_slowdown_gate": false,
+  "preferred_speedup_gate": false,
+  "queue_capacity": 8,
+  "source": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/WVS Wave 7.sav",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "trailing_auditor_count": 1
+}
