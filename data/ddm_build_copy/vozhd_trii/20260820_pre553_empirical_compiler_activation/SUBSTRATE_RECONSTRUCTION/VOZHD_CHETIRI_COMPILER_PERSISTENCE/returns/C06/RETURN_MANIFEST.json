@@ -1,0 +1,55 @@
+{
+  "campaign_tag": "VC4-COMPILER/PERSISTENCE",
+  "cell_id": "C06",
+  "branch": "agent/vozhd-chetiri-c06-replay-integrity",
+  "start_sha": "1f52af175f699fd9427265715fd22277833a8460",
+  "return_sha": "GIT_SELF_REFERENCE__RESOLVE_AS_BRANCH_HEAD_AT_RETURN",
+  "return_sha_note": "A Git commit cannot contain its own SHA without changing that SHA; HQ resolves this field as the exact branch HEAD reported with this return.",
+  "status": "RETURNED",
+  "independence": {"c01_c02_c07_conclusions_read": false},
+  "authorities_read_receipt": "AUTHORITY_READ_RECEIPT.md",
+  "material_reconciliation_items": ["R08", "R12", "R13", "R14", "R16", "R18", "R20", "R23", "R25"],
+  "trii_crosswalk": {"file": "TRII_OBLIGATION_CROSSWALK_MATRIX.csv", "rows": 24, "unresolved_rows": 4},
+  "source_files_probed": [],
+  "runtime_files_modified": [],
+  "runtime_files_inspected": [
+    "rawlsing_next/pre553_empirical_objects.py",
+    "rawlsing_next/pre553_c11_integrity.py",
+    "rawlsing_next/pre553_c11_repository.py",
+    "rawlsing_next/pre553_discovery_exact.py",
+    "rawlsing_next/pre553_replay_audit.py",
+    "rawlsing_next/pre553_physical_decoder.py",
+    "rawlsing_next/pre553_structural_admission.py",
+    "rawlsing_next/m4_v557_v558_publication_repository.py"
+  ],
+  "required_outputs": [
+    "SOURCE_BACKED_REPLAY_AND_INTEGRITY_CONTRACT.md",
+    "PROVENANCE_MINIMUM_SUFFICIENT_RECEIPT.md",
+    "IDENTITY_DERIVATION_MATRIX.csv",
+    "C06_RESULT.json",
+    "ADAPTIVE_DISCOVERY_REPLAY_REQUIREMENTS.md",
+    "EXECUTABLE_DECODER_REPLAY_REQUIREMENTS.md",
+    "LEARNED_PRODUCT_EXPLANATION_LINEAGE_CONTRACT.md",
+    "AUTHORITY_READ_RECEIPT.md",
+    "RETURN_MANIFEST.json",
+    "CHANGED_FILES.txt",
+    "TRII_OBLIGATION_CROSSWALK_MATRIX.csv",
+    "TERMINAL_VISION_CHECKSUM.csv",
+    "PERSISTENCE_STARVATION_BLOAT_MATRIX.csv",
+    "UNRESOLVED_EVIDENCE.md"
+  ],
+  "terminal_checksum": {
+    "file": "TERMINAL_VISION_CHECKSUM.csv",
+    "rows": 34,
+    "unresolved_rows": [21, 24, 25, 31, 34],
+    "starvation_or_leakage_rows": []
+  },
+  "unresolved_evidence": [
+    "adaptive discovery authority",
+    "durable executable decoder closure",
+    "empirical validation/model-selection authority",
+    "carrier-neutral completeness receipt authority"
+  ],
+  "final_disposition": "C06_RETURN__NAMED_EVIDENCE_REQUIRED",
+  "stop_token": "VC4_C06_RETURNED"
+}
