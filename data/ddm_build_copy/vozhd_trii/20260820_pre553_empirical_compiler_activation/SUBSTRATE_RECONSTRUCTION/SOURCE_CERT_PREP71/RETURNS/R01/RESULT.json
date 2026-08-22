@@ -1,0 +1,125 @@
+{
+  "worker_id": "R01",
+  "family": "AFROBAROMETER_R1_R5_R9",
+  "campaign": "SOURCE_CERT_PREP71",
+  "mission_status": "AUTHORIZED__NON_DISPOSITIVE_PACKET_PREPARATION",
+  "success_token": "PRE553_SOURCE_CERT_PREP71_R01_RETURNED",
+  "non_dispositive": true,
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/vozhd-trii-srcprep71-r01-afrobarometer",
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "accepted_evidence": {
+    "sr09_pre_r01_commit": "a9fb5b57e79627a2ecd23973878156778b78a37b",
+    "sr10_exception_queue_commit": "267426e3b5f06473ffc9cee6075609874529ab77",
+    "sr03_anchor": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/16_SR03_R3_ADJUDICATION.md@0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+    "authority71": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/71_REMAINING_34_SOURCE_CERTIFICATION_PACKET_PREPARATION_AUTHORITY.md@0ac2a8c00ca5718f293e98f98be6685f67ea2445"
+  },
+  "library_transport": {
+    "filename": "surveys.zip",
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "size_bytes": 158180333,
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f"
+  },
+  "source_packets": [
+    {
+      "source_file": "Afro Barometer Round 1.sav",
+      "sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+      "rows": 21531,
+      "variables": 144,
+      "packet_disposition": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+      "hostile_fixture_count": 7,
+      "documentary_blockers": [],
+      "bounded_unknowns": [
+        "R1-G01 CASENUMB vs codebook RESPNUMB relation",
+        "R1-G02 national-instrument variant equivalence beyond per-variable source documentation"
+      ],
+      "future_gate": "source-specific hostile court; no CASENUMB/respnumb equivalence; no national-instrument uniformity inference"
+    },
+    {
+      "source_file": "Afro Barometer Round 5.sav",
+      "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "rows": 51587,
+      "variables": 348,
+      "packet_disposition": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+      "hostile_fixture_count": 9,
+      "documentary_blockers": [
+        "R5-G01 exact SAV COUNTRY vs COUNTRY_ALPHA binding",
+        "R5-G02 Q10B=997 semantics",
+        "R5-G03 Q47C declared997 semantics"
+      ],
+      "bounded_unknowns": [
+        "R5-G04 administrative filter-carrier semantics may remain opaque"
+      ],
+      "future_gate": "documentary blockers resolved or semantic claims remain explicitly unresolved under later authority; physical declarations/states always preserved"
+    },
+    {
+      "source_file": "Afro Barometer Round 9.sav",
+      "sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+      "rows": 53444,
+      "variables": 427,
+      "packet_disposition": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+      "hostile_fixture_count": 10,
+      "documentary_blockers": [
+        "R9-G01 Q78F definition",
+        "R9-G02 Q118_11 definition",
+        "R9-G03 Q47C=94 semantic binding",
+        "R9-G04 V397_A/V399_A weight carrier binding"
+      ],
+      "bounded_unknowns": [
+        "R9-G05 Q118 slot position has physical order only; no rank semantics"
+      ],
+      "future_gate": "preserve unexercised Q78F declaration and eleven-slot topology; require named documentary closure before semantic certification"
+    }
+  ],
+  "hostile_fixture_count_total": 26,
+  "potential_frozen_contract_contradiction": {
+    "observed": false,
+    "status": "NONE_OBSERVED",
+    "note": "Source-document omissions/mismatches are source-specific authority gaps under the existing evidence-rank law, not decoder-contract contradictions."
+  },
+  "raw_probe_policy": {
+    "current_turn_full_scan": false,
+    "current_turn_targeted_cell_probe": false,
+    "accepted_sr03_sr09_physical_evidence_reused": true,
+    "reason": "Exact source identity was re-established; accepted physical census/sentinels already make hostile fixtures executable. Authority-71 work concentrated on documentary closure."
+  },
+  "documentary_sources": [
+    {
+      "name": "merged_r1_codebook2.pdf",
+      "library_file_id": "file_00000000328471f691257df059dc51ba",
+      "authority": "SOURCE_NATIVE"
+    },
+    {
+      "name": "merged_r5_codebook_2.pdf",
+      "library_file_id": "file_00000000520471f6a2c7b8e706e93ab5",
+      "authority": "SOURCE_NATIVE"
+    },
+    {
+      "name": "AB_R9.MergeCodebook_25Jun24.final_.pdf",
+      "library_file_id": "file_00000000e7e871f69de0c996a917d962",
+      "authority": "SOURCE_NATIVE"
+    }
+  ],
+  "changed_files": [
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/RESULT.md",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/RESULT.json",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/SOURCE_CERTIFICATION_LEDGER.csv",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/HOSTILE_FIXTURES.csv",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/DOCUMENTARY_AUTHORITY_MAP.csv",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/AUTHORITY_GAPS.csv",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/FAMILY_REUSE_AND_DRIFT.csv",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/FUTURE_EXECUTION_ORDER.md",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/LIBRARY_PROBE_RECEIPT.json",
+    "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/CHANGED_FILES.txt"
+  ],
+  "output_sha256_excluding_result_and_receipt": {
+    "RESULT.md": "9f3e0f01d966948b581fdf23bec378da5fb7190faaf284addab788fee8b4f25a",
+    "SOURCE_CERTIFICATION_LEDGER.csv": "8699236047c1e1e456d3d9ba9c579487c1e887ccc13de141165801a142ad02f4",
+    "HOSTILE_FIXTURES.csv": "11cb76001953b9a4740bd3e02cdc7a72b9258ff2348baf14bf963103830e4b54",
+    "DOCUMENTARY_AUTHORITY_MAP.csv": "2ed90f0803d0f5f40de820b5ba015ecd234d75e2f55ee44e49c16881fcb6e2b5",
+    "AUTHORITY_GAPS.csv": "3b5d525ee3428a06537d6bc8d579e96a059c74232ccd665f413bbb1ea5d2ce7a",
+    "FAMILY_REUSE_AND_DRIFT.csv": "9f5571ecf90ba150c9e0652911e42ed58ded2fbe4cd765965ec285a355eaaae4",
+    "FUTURE_EXECUTION_ORDER.md": "17483c151ed588ca130a1b1dab9ab9fcb43fef9ce4ba7b43881b800a0bd1c170",
+    "CHANGED_FILES.txt": "f1921faab971e22e977a93d77580dadabc10892bb7c7de81e19c3c7f595bd83e"
+  }
+}

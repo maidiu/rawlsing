@@ -1,0 +1,145 @@
+{
+  "worker_id": "R01",
+  "family": "AFROBAROMETER_R1_R5_R9",
+  "campaign": "SOURCE_CERT_PREP71",
+  "success_token": "PRE553_SOURCE_CERT_PREP71_R01_RETURNED",
+  "exact_starting_head_verified": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "worker_branch_verified": "agent/vozhd-trii-srcprep71-r01-afrobarometer",
+  "branch_start_verification": "GitHub compare showed worker branch identical to exact start (ahead=0, behind=0) before work.",
+  "governing_authority_ref": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "accepted_sr09_pre_r01_commit": "a9fb5b57e79627a2ecd23973878156778b78a37b",
+  "accepted_r10_exception_queue_commit": "267426e3b5f06473ffc9cee6075609874529ab77",
+  "library_bundle": {
+    "filename": "surveys.zip",
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "materialized_path": "/mnt/data/srcprep71-r01-afrobarometer/input/surveys.zip",
+    "size_bytes": 158180333,
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f"
+  },
+  "archive_members_extracted_only": [
+    "surveys/Afro Barometer Round 1.sav",
+    "surveys/Afro Barometer Round 5.sav",
+    "surveys/Afro Barometer Round 9.sav"
+  ],
+  "extracted_sources_before_packet_work": [
+    {
+      "source_file": "Afro Barometer Round 1.sav",
+      "size_bytes": 4492565,
+      "sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+      "scratch_path": "/mnt/data/srcprep71-r01-afrobarometer/extracted/Afro Barometer Round 1.sav"
+    },
+    {
+      "source_file": "Afro Barometer Round 5.sav",
+      "size_bytes": 49689458,
+      "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "scratch_path": "/mnt/data/srcprep71-r01-afrobarometer/extracted/Afro Barometer Round 5.sav"
+    },
+    {
+      "source_file": "Afro Barometer Round 9.sav",
+      "size_bytes": 70621348,
+      "sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+      "scratch_path": "/mnt/data/srcprep71-r01-afrobarometer/extracted/Afro Barometer Round 9.sav"
+    }
+  ],
+  "extracted_source_sha256_after_packet_work": {
+    "Afro Barometer Round 1.sav": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+    "Afro Barometer Round 5.sav": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "Afro Barometer Round 9.sav": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8"
+  },
+  "raw_source_bytes_unchanged": true,
+  "library_bundle_unchanged": true,
+  "current_turn_raw_full_scan_performed": false,
+  "current_turn_targeted_cell_probe_performed": false,
+  "raw_probe_reason": "No new raw scan required: exact source identity passed; accepted SR03/SR09 physical facts and hostile sentinels already make the physical packet executable. Current work targeted documentary authority.",
+  "documentary_library_search": {
+    "performed": true,
+    "documents_used": [
+      {
+        "name": "merged_r1_codebook2.pdf",
+        "file_id": "file_00000000328471f691257df059dc51ba",
+        "locations_used": [
+          "pp.1-2",
+          "pp.4-5",
+          "pp.90-92"
+        ]
+      },
+      {
+        "name": "merged_r5_codebook_2.pdf",
+        "file_id": "file_00000000520471f6a2c7b8e706e93ab5",
+        "locations_used": [
+          "p.3",
+          "p.13 Q10B",
+          "p.24 Q41D_ARB",
+          "p.27 Q47C",
+          "pp.71-72",
+          "Appendix3 pp.74-107"
+        ]
+      },
+      {
+        "name": "AB_R9.MergeCodebook_25Jun24.final_.pdf",
+        "file_id": "file_00000000e7e871f69de0c996a917d962",
+        "locations_used": [
+          "pp.2-3",
+          "p.39 Q47C",
+          "pp.52-53 Q78 family boundary",
+          "p.74 Q118_1",
+          "pp.83-84 Q118_10/Q118OTHER and weights"
+        ]
+      }
+    ],
+    "web_research_used": false
+  },
+  "documentary_boundary_checks": [
+    "R5 Q10B entry omits997 although exact SAV declares/exercises997 user-missing.",
+    "R5 Q47C entry omits997 although exact SAV declares997 and also exercises system missing.",
+    "R5 codebook COUNTRY_ALPHA is not silently substituted for exact SAV COUNTRY.",
+    "R9 Q78 codebook sequence has Q78A-E then Q84A; Q78F absent.",
+    "R9 Q118 codebook documents through Q118_10 then Q118OTHER; exact SAV additionally has Q118_11.",
+    "R9 Q47C codebook omits ordinary raw code94 present/labeled in exact SAV.",
+    "R9 codebook documents withinwt_ea/withinwt_hh concepts but not direct V397_A/V399_A carrier bindings."
+  ],
+  "potential_frozen_contract_contradiction": "NONE_OBSERVED",
+  "potential_frozen_contract_contradiction_note": "Exact-source/document mismatches are handled by existing evidence precedence and fail-closed semantic gaps; no generic SAV/source-native law change is required.",
+  "isolation_attestations": {
+    "users_local_rawlsing_directory_used": false,
+    "users_local_rawlsing_directory_inspected": false,
+    "authority70_wvs7_run_touched_or_inspected": false,
+    "wvs7_raw_probe_performed": false,
+    "DATABASE_URL_used": false,
+    "legacy_postgres_used_as_truth": false,
+    "production_runtime_modified": false
+  },
+  "tool_versions": {
+    "python": "3.13.5",
+    "git": "2.47.3",
+    "zlib": "1.3.1",
+    "zip_reader": "python stdlib zipfile",
+    "raw_decoder_current_turn": "NOT_INVOKED"
+  },
+  "packet_output_directory": "/mnt/data/srcprep71-r01-afrobarometer/return",
+  "repository_write_scope": "ONLY data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R01/",
+  "output_sha256_excluding_self_referential_receipt": {
+    "RESULT.md": "9f3e0f01d966948b581fdf23bec378da5fb7190faaf284addab788fee8b4f25a",
+    "RESULT.json": "17f20e9efa1017b39ea7eb11b74b1102de276eec1bc983b012723a50f2be2d53",
+    "SOURCE_CERTIFICATION_LEDGER.csv": "8699236047c1e1e456d3d9ba9c579487c1e887ccc13de141165801a142ad02f4",
+    "HOSTILE_FIXTURES.csv": "11cb76001953b9a4740bd3e02cdc7a72b9258ff2348baf14bf963103830e4b54",
+    "DOCUMENTARY_AUTHORITY_MAP.csv": "2ed90f0803d0f5f40de820b5ba015ecd234d75e2f55ee44e49c16881fcb6e2b5",
+    "AUTHORITY_GAPS.csv": "3b5d525ee3428a06537d6bc8d579e96a059c74232ccd665f413bbb1ea5d2ce7a",
+    "FAMILY_REUSE_AND_DRIFT.csv": "9f5571ecf90ba150c9e0652911e42ed58ded2fbe4cd765965ec285a355eaaae4",
+    "FUTURE_EXECUTION_ORDER.md": "17483c151ed588ca130a1b1dab9ab9fcb43fef9ce4ba7b43881b800a0bd1c170",
+    "CHANGED_FILES.txt": "f1921faab971e22e977a93d77580dadabc10892bb7c7de81e19c3c7f595bd83e"
+  },
+  "output_sha256_note": "LIBRARY_PROBE_RECEIPT.json intentionally does not embed its own final hash. Pushed commit SHA is verified after publication and therefore is not self-embedded in the committed receipt.",
+  "hostile_fixture_count_total": 26,
+  "source_fixture_counts": {
+    "Afro Barometer Round 1.sav": 7,
+    "Afro Barometer Round 5.sav": 9,
+    "Afro Barometer Round 9.sav": 10
+  },
+  "packet_dispositions": {
+    "Afro Barometer Round 1.sav": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+    "Afro Barometer Round 5.sav": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION",
+    "Afro Barometer Round 9.sav": "PACKET_READY__DOCUMENTARY_AUTHORITY_REQUIRED_BEFORE_CERTIFICATION"
+  },
+  "final_git_status": "NOT_APPLICABLE__BROWSER_CONNECTOR_PUBLICATION__REMOTE_DIFF_TO_BE_VERIFIED_AFTER_PUSH"
+}
