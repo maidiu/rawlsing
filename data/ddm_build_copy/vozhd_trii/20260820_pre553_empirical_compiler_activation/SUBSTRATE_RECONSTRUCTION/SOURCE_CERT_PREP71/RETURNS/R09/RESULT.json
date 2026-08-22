@@ -1,0 +1,90 @@
+{
+  "worker_id": "SOURCE_CERT_PREP71-R09",
+  "family": "WVS",
+  "branch": "agent/vozhd-trii-srcprep71-r09-wvs-other",
+  "exact_starting_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "status": "COMPLETE__NON_DISPOSITIVE_PACKET_PREPARATION__DO_NOT_CERTIFY",
+  "completion_token": "PRE553_SOURCE_CERT_PREP71_R09_RETURNED",
+  "isolation": {
+    "wvs_wave_7_assigned": false,
+    "wvs_wave_7_materialized": false,
+    "wvs_wave_7_local_run_inspected": false,
+    "wvs_wave_7_runtime_results_used_as_evidence": false,
+    "source_specific_wvs7_fixtures_imported": false
+  },
+  "raw_transport": {
+    "library_file_id": "file_0000000036e0822f963b9604cb2bad49",
+    "name": "surveys.zip",
+    "size_bytes": 158180333,
+    "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f"
+  },
+  "sources": [
+    {
+      "source_file": "WVS Wave 1.sav",
+      "archive_member": "surveys/WVS Wave 1.sav",
+      "size_bytes": 6358941,
+      "sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+      "hash_verified": true,
+      "packet_disposition": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+      "hostile_fixture_count": 7
+    },
+    {
+      "source_file": "WVS Wave 4.sav",
+      "archive_member": "surveys/WVS Wave 4.sav",
+      "size_bytes": 41997221,
+      "sha256": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+      "hash_verified": true,
+      "packet_disposition": "PACKET_READY__COMPOUND_HOSTILE_COURT_REQUIRED",
+      "hostile_fixture_count": 10
+    }
+  ],
+  "accepted_evidence": {
+    "sr09_pre_r09_result_json_blob_sha": "cd9f09a8a95220a25fb5afbddb0a1ee8c700bac0",
+    "sr09_pre_r09_hostile_sentinels_blob_sha": "88b68d16cd104a351f49b316672d77e2c2ea9b85",
+    "sr09_pre_r09_source_burden_blob_sha": "c7972d61d09fa456f85050b7d3ab1e082a64388f",
+    "sr09_pre_r10_accepted_commit": "267426e3b5f06473ffc9cee6075609874529ab77",
+    "sr09_pre_r10_exception_queue_path": "SR09_PRE_RECON/RETURNS/R10/SR09_EXCEPTION_QUEUE.csv"
+  },
+  "documentary_authority": {
+    "w1_questionnaire": {
+      "file_id": "file_0000000027ac722fa711c9fb9148195e",
+      "name": "WVS Wave 1 (1981) Questionnaire.pdf"
+    },
+    "w1_codebook": {
+      "file_id": "file_00000000fef0722faea41252a454245c",
+      "name": "WVS Wave 1 (1981) Codebook.pdf"
+    },
+    "w4_questionnaire": {
+      "file_id": "file_00000000455c722fad2c40384139692a",
+      "name": "WVS Wave 4 (2000) Questionnaire.pdf"
+    },
+    "w4_codebook": {
+      "file_id": "file_00000000cba8722fbbe723ad1531289f",
+      "name": "WVS Wave 4 (2000) Codebook.pdf"
+    },
+    "dedicated_methodology_manual_found": false,
+    "methodology_note": "W4 questionnaire supplies partial sample/dummy-variable/V245 authority; no separate W1/W4 methodology manual surfaced in Library search."
+  },
+  "counts": {
+    "source_count": 2,
+    "fixture_count": 17,
+    "w1_fixture_count": 7,
+    "w4_fixture_count": 10,
+    "authority_gap_count": 12,
+    "potential_frozen_contract_contradiction_count": 0
+  },
+  "source_certification_performed": false,
+  "semantic_authority_invented": false,
+  "full_source_content_scan_performed_by_prep71": false,
+  "full_source_content_scan_reason": "Not repeated: exact current member hashes match accepted exact-source SR09-PRE evidence; executable accepted hostile sentinels already exist; no new unresolved physical ambiguity justified duplicate full traversal.",
+  "future_execution_order": [
+    "source SHA",
+    "decoder/config",
+    "hostile physical fixtures",
+    "metadata/topology fixtures",
+    "documentary semantic assertions",
+    "exact carrier/C11 equivalence assertions",
+    "negative/fail-closed fixtures",
+    "future disposition gate"
+  ]
+}
