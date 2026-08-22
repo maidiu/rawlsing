@@ -1,0 +1,26 @@
+{
+  "authority": "67",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "topology": {
+    "serial_v4_builders": 1,
+    "independent_trailing_auditors": 1,
+    "persistent_cache_count": 0,
+    "readiness_queue_capacity": 8
+  },
+  "queue_metrics": {
+    "pending_queue_peak": 8,
+    "auditor_inflight_peak": 1,
+    "outstanding_closed_members_peak": 9,
+    "interpretation": "The outstanding peak is eight pending closed members plus one independently audited member; it is not a readiness-queue depth violation."
+  },
+  "oa_2m": {
+    "total_certification_speedup_raw": 1.2028573429833285,
+    "total_certification_speedup_reported": "1.202857x",
+    "builder_slowdown_fraction_raw": 0.20044430368023747,
+    "builder_slowdown_reported": "20.04%",
+    "preferred_speedup_gate": "MISS",
+    "preferred_builder_slowdown_gate": "MISS"
+  },
+  "hard_queue_process_integrity_gates": "PASS",
+  "final_disposition": "R5_TRAILING_AUDIT67_CORRECT__MODEST_GAIN__HQ_ADJUDICATION_REQUIRED"
+}

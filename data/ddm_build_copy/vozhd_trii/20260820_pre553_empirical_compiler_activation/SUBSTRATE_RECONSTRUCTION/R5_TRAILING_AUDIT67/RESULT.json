@@ -1,0 +1,211 @@
+{
+  "authority": "67",
+  "courts": {
+    "2000000": {
+      "audit_result_equal": true,
+      "build_slowdown_fraction": 0.20044430368023747,
+      "checkpoint": 2000000,
+      "ordinary": {
+        "audit": {
+          "canonical_rows": 2000614,
+          "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+          "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+          "relation_counts": {
+            "source_metadata": 1,
+            "source_physical_cells": 2000000,
+            "source_variables": 613
+          }
+        },
+        "audit_seconds": 188.48767559200132,
+        "build_seconds": 372.2783419479965,
+        "total_certification_seconds": 560.7662070250008
+      },
+      "output_bytes_root_inventory_member_hashes_equal": true,
+      "overlap": {
+        "audit": {
+          "canonical_rows": 2000614,
+          "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+          "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+          "relation_counts": {
+            "source_metadata": 1,
+            "source_physical_cells": 2000000,
+            "source_variables": 613
+          }
+        },
+        "audit_rows_per_second": 4291.397681956437,
+        "auditor_finish_lag_after_root_seal_seconds": 19.2386804739981,
+        "auditor_inflight": 0,
+        "auditor_inflight_peak": 1,
+        "auditor_start_seconds": 0.0034019329978036694,
+        "builder_blocked_seconds": 86.61601581503055,
+        "ordinary_audit": {
+          "canonical_rows": 2000614,
+          "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+          "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+          "relation_counts": {
+            "source_metadata": 1,
+            "source_physical_cells": 2000000,
+            "source_variables": 613
+          }
+        },
+        "outstanding_closed_members_peak": 9,
+        "overlap_wall_seconds": 466.19510642399837,
+        "pending_queue_depth": 0,
+        "pending_queue_peak": 8,
+        "target": "/private/tmp/r5-audit67-rerun.qJX01F/work/2000000/overlap/sealed",
+        "telemetry": {
+          "actual_merge_fan_in": 64,
+          "canonical_steady_state_bytes": 28877077,
+          "execution_config": {
+            "baseline_layout": true,
+            "final_level": 6,
+            "merge_fan_in": 64,
+            "name": "V4",
+            "run_max_bytes": 67108864,
+            "run_max_rows": 65536,
+            "shard_max_bytes": 16777216,
+            "shard_max_rows": 16384,
+            "temp_fsync": false,
+            "temp_level": 1
+          },
+          "final_shards": 123,
+          "initial_runs": 31,
+          "input_rows": 2000614,
+          "inventory_bytes": 85510,
+          "logical_stream_digest": "fa6249de1b0ae8ce34c5612e7d06eb10947ae967cdcd94e4e0016bf69ab8b189",
+          "max_buffered_run_bytes": 28953498,
+          "max_buffered_run_rows": 65536,
+          "max_merge_open_runs": 0,
+          "member_bytes": 28788877,
+          "merge_passes": 0,
+          "phases": {
+            "final_merge_member_sealing": 283.1482717399995,
+            "hash_inventory_root_closure": 0.0020253609982319176,
+            "initial_run_generation_sort_write": 163.7489703379979,
+            "member_hashing_inventory_write": 0.09520970001540263,
+            "merge_reduction": 0.00014753600044059567
+          },
+          "physical_root_id": "6e8b6c942ca563b74a8313a93a995db2666ec220f4b114d1d8a375012969ebb0",
+          "requested_merge_fan_in": 64,
+          "root_bytes": 2690,
+          "temp_bytes_written": 49900481
+        }
+      },
+      "overlap_speedup": 1.2028573429833285,
+      "v4_execution_config": {
+        "final_gzip_level": 6,
+        "merge_fan_in": 64,
+        "run_max_bytes": 67108864,
+        "run_max_rows": 65536,
+        "shard_max_bytes": 16777216,
+        "shard_max_rows": 16384,
+        "temp_fsync": false,
+        "temp_gzip_level": 1
+      }
+    },
+    "250000": {
+      "audit_result_equal": true,
+      "build_slowdown_fraction": 0.0433767068393891,
+      "checkpoint": 250000,
+      "ordinary": {
+        "audit": {
+          "canonical_rows": 250614,
+          "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+          "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+          "relation_counts": {
+            "source_metadata": 1,
+            "source_physical_cells": 250000,
+            "source_variables": 613
+          }
+        },
+        "audit_seconds": 27.294625913000345,
+        "build_seconds": 50.13290259800124,
+        "total_certification_seconds": 77.42770250100148
+      },
+      "output_bytes_root_inventory_member_hashes_equal": true,
+      "overlap": {
+        "audit": {
+          "canonical_rows": 250614,
+          "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+          "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+          "relation_counts": {
+            "source_metadata": 1,
+            "source_physical_cells": 250000,
+            "source_variables": 613
+          }
+        },
+        "audit_rows_per_second": 3642.8806425509506,
+        "auditor_finish_lag_after_root_seal_seconds": 16.480521923000197,
+        "auditor_inflight": 0,
+        "auditor_inflight_peak": 1,
+        "auditor_start_seconds": 0.004703230002633063,
+        "builder_blocked_seconds": 8.761199933360331e-05,
+        "ordinary_audit": {
+          "canonical_rows": 250614,
+          "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+          "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+          "relation_counts": {
+            "source_metadata": 1,
+            "source_physical_cells": 250000,
+            "source_variables": 613
+          }
+        },
+        "outstanding_closed_members_peak": 7,
+        "overlap_wall_seconds": 68.80025943700093,
+        "pending_queue_depth": 0,
+        "pending_queue_peak": 6,
+        "target": "/private/tmp/r5-audit67-rerun.qJX01F/work/250000/overlap/sealed",
+        "telemetry": {
+          "actual_merge_fan_in": 64,
+          "canonical_steady_state_bytes": 3740628,
+          "execution_config": {
+            "baseline_layout": true,
+            "final_level": 6,
+            "merge_fan_in": 64,
+            "name": "V4",
+            "run_max_bytes": 67108864,
+            "run_max_rows": 65536,
+            "shard_max_bytes": 16777216,
+            "shard_max_rows": 16384,
+            "temp_fsync": false,
+            "temp_level": 1
+          },
+          "final_shards": 16,
+          "initial_runs": 4,
+          "input_rows": 250614,
+          "inventory_bytes": 11106,
+          "logical_stream_digest": "a76aae65d6e0d767e53c5a9e651a38372d5569888daed38aa2d5f442426a2ed9",
+          "max_buffered_run_bytes": 28953498,
+          "max_buffered_run_rows": 65536,
+          "max_merge_open_runs": 0,
+          "member_bytes": 3726835,
+          "merge_passes": 0,
+          "phases": {
+            "final_merge_member_sealing": 28.245762310001737,
+            "hash_inventory_root_closure": 0.0010020869995059911,
+            "initial_run_generation_sort_write": 24.060564698000235,
+            "member_hashing_inventory_write": 0.012927088006108534,
+            "merge_reduction": 0.0001737220009090379
+          },
+          "physical_root_id": "8770a469068c7ba8f0b50d66f99a2a64a46528611d276a54e6d0e51a957fe1a5",
+          "requested_merge_fan_in": 64,
+          "root_bytes": 2687,
+          "temp_bytes_written": 6347011
+        }
+      },
+      "overlap_speedup": 1.125398408881009,
+      "v4_execution_config": {
+        "final_gzip_level": 6,
+        "merge_fan_in": 64,
+        "run_max_bytes": 67108864,
+        "run_max_rows": 65536,
+        "shard_max_bytes": 16777216,
+        "shard_max_rows": 16384,
+        "temp_fsync": false,
+        "temp_gzip_level": 1
+      }
+    }
+  },
+  "disposition": "R5_TRAILING_AUDIT67_CORRECT__MODEST_GAIN__HQ_ADJUDICATION_REQUIRED",
+  "source": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/WVS Wave 7.sav"
+}

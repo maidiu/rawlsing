@@ -95,8 +95,12 @@ def _read_record(handle):
 
 
 class SerialTurboBuilder:
-    def __init__(self, config: TurboConfig):
+    def __init__(self, config: TurboConfig, *, member_ready_hook=None):
         self.config = config
+        # Additive Authority-67 notification seam.  The hook is called only
+        # after a final member has been closed and fsynced; it receives no
+        # member truth such as hashes, counts, digests, or coverage.
+        self.member_ready_hook = member_ready_hook
         self.actual_merge_fan_in = actual_fan_in(config.merge_fan_in)
         if self.actual_merge_fan_in < 2:
             raise TurboSafetyAbort("RLIMIT_NOFILE leaves insufficient merge fan-in")
@@ -223,6 +227,9 @@ class SerialTurboBuilder:
                 current_raw.flush(); _fsync(current_path,True); current_raw.close()
                 hash_start=time.perf_counter(); sha,size=frozen._sha256_file(current_path); member_hash_seconds += time.perf_counter()-hash_start; actual_member+=size
                 inv.write(canonical_json({"inventory_schema_version":INVENTORY_SCHEMA_VERSION,"member":current_path.name,"member_encoding":frozen.MEMBER_ENCODING,"byte_length":size,"sha256":sha,"logical_digest":current_digest.hexdigest(),"row_count":current_rows,"first_identity":list(first),"last_identity":list(last),"relation_counts":dict(sorted(relcounts.items()))})+"\n")
+                inv.flush()
+                if self.member_ready_hook is not None:
+                    self.member_ready_hook(members_count, current_path.name)
                 members_count+=1; current_raw=current_out=current_path=None; current_rows=current_bytes=0; first=last=None; current_digest=None; relcounts={}
             for key,data in self._iter_final(manifest,directory):
                 row=frozen._decode_storage(data)
