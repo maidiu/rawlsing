@@ -1,0 +1,118 @@
+{
+  "worker_id": "SOURCE_CERT_PREP71_R07",
+  "branch": "agent/vozhd-trii-srcprep71-r07-lits",
+  "exact_checkout_head": "0ac2a8c00ca5718f293e98f98be6685f67ea2445",
+  "browser_library_preparation": true,
+  "user_local_rawlsing_used": false,
+  "g_sr08_executed": false,
+  "wvs70_touched": false,
+  "database_url_used": false,
+  "legacy_postgres_used_as_truth": false,
+  "production_runtime_modified": false,
+  "library_bundles": [
+    {
+      "filename": "LiTS_I.dta.zip",
+      "file_id": "file_000000000328820caec35ca18aeca59a",
+      "materialized_path": "/mnt/data/srcprep71_r07/LiTS_I.dta.zip",
+      "size_bytes": 7686379,
+      "sha256": "b2e90ee7ceefc230572e89687de28186544308949f8fd33c32b1d0ffb14b8feb",
+      "members_used": [
+        "LiTS_I.dta"
+      ]
+    },
+    {
+      "filename": "surveys.zip",
+      "file_id": "file_0000000036e0822f963b9604cb2bad49",
+      "materialized_path": "/mnt/data/srcprep71_r07/surveys.zip",
+      "size_bytes": 158180333,
+      "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+      "members_used": [
+        "surveys/LiTS_II.dta",
+        "surveys/LiTS_III.dta",
+        "surveys/LiTS_IV.dta"
+      ]
+    }
+  ],
+  "extracted_source_sha256_before_packet_build": {
+    "LiTS_I.dta": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "LiTS_II.dta": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+    "LiTS_III.dta": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+    "LiTS_IV.dta": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c"
+  },
+  "extracted_source_size_bytes": {
+    "LiTS_I.dta": 139531180,
+    "LiTS_II.dta": 199716969,
+    "LiTS_III.dta": 170487994,
+    "LiTS_IV.dta": 110465945
+  },
+  "source_files_unchanged": true,
+  "source_decodes_executed_by_this_worker": false,
+  "targeted_raw_probe_reason": "No new DTA decode/cell probe required: accepted SR03 and accepted SR09-PRE R07 already supply the physical measurements and hostile cells needed by this packet; current raw access is identity verification only.",
+  "governed_future_decoder": "decode_dta(source_path, encoding=\"latin1\")",
+  "compatibility_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+  "library_document_files_materialized": [
+    {
+      "file_id": "file_00000000f30c722fbb7e49e6c854897f",
+      "path": "/mnt/data/srcprep71_r07/source_docs/LiTSI_Questionnaire.pdf",
+      "size_bytes": 240732,
+      "sha256": "b94bdcf4a9f2e2e025bf35e5364f79acf0b1f5fa05c035064e674fa58a921eae"
+    },
+    {
+      "file_id": "file_00000000171471f9b12c8ec6c54b8a80",
+      "path": "/mnt/data/srcprep71_r07/source_docs/LiTS-III-Questionnaire.pdf",
+      "size_bytes": 231568,
+      "sha256": "7d42c71445f5f23d3dd318b857f7d2f0d0bda7efd4d7859a4ef103355f591203"
+    },
+    {
+      "file_id": "file_00000000ca1871f5b09fbdab297ebe0c",
+      "path": "/mnt/data/srcprep71_r07/source_docs/LITS-IV-Questionnaire.pdf",
+      "size_bytes": 1048664,
+      "sha256": "4f1516dbf59fd1c05153bd2954d17c619e70b04e8cc5535c474c3560a6165ea9"
+    }
+  ],
+  "repository_codebook_bundle": {
+    "filename": "final_codebooks(5).zip",
+    "file_id": "file_000000003de8820c911e9ab7e73a9f1c",
+    "materialized_path": "/mnt/data/srcprep71_r07/final_codebooks(5).zip",
+    "size_bytes": 7811557,
+    "sha256": "36a09da6c9216cfdee96bf7dd33af48b5b18c7aeff8514f20e42af58d3fc4f5c",
+    "members": {
+      "LITS-2006-codebook.csv": "91698cbc22d7498c3587bcacd7f96be47323d2bc9867cec5103e954e5099eb0c",
+      "LiTSII-codebook.csv": "451ff47530743f6307e5e6b5c7af8c8b67dffa2ff5b43641f3689879751d4d48",
+      "LITS-III-codebook.csv": "a1386c406b7deb51efcae56a8eae495272c8d460068a2c490defa696b68d7df9",
+      "LITS-IV-codebook.csv": "ef934a0a72ec5100aae5da1dce8b45eb00e9a51a8158d08aa8b4e958a549abf4"
+    }
+  },
+  "library_search_holding": "Standalone source-native questionnaires found for LiTS I/III/IV; no standalone LiTS II questionnaire/technical report recovered by bounded Library search, so official EBRD/World Bank web fallback was used as permitted.",
+  "accepted_evidence_used": [
+    "SR03 R3 accepted physical census",
+    "SR09-PRE R07 accepted RESULT/SOURCE_BURDEN/HOSTILE_SENTINELS/AUTHORITY_GAPS/CROSS_WAVE_DRIFT/PROBE_RECEIPT",
+    "accepted SR09-PRE R10 exception queue",
+    "Authority 71 binding parent chain"
+  ],
+  "output_file_sha256": {
+    "RESULT.md": "f1a4db06a4dbbf9960cc130269b09d881a1cf1b507dba1a3a5e83878cac25fcc",
+    "RESULT.json": "911c596049ab97ff987ba603b96ed81c855f5e711125dbee86f9d71ee0b3d18f",
+    "SOURCE_CERTIFICATION_LEDGER.csv": "e0116f126b2c16424d2dca0ed0750c1665f26b655354da7dc4e5a1d66c5facfa",
+    "HOSTILE_FIXTURES.csv": "2339ff80d41b14171e7769d347e0d4de6a379df8f483b2bc3680c274de47a3d3",
+    "DOCUMENTARY_AUTHORITY_MAP.csv": "2dfcf9a538b952b6502f1f91af310bfd7a011475ec29c91ad0bdfb241350aa0c",
+    "AUTHORITY_GAPS.csv": "0ef45ddc3847cedc114a97e3af96e436729d324977fb43bd011d60782a17c3c0",
+    "FAMILY_REUSE_AND_DRIFT.csv": "58b7b772464383a89f14d81d31e9b5f6a26c77296f0f3ed34a24c72e8ae4893c",
+    "FUTURE_EXECUTION_ORDER.md": "a1f2fa5756ecf9d437681d89577e5252072f56830596a895a918669c8662717b",
+    "CHANGED_FILES.txt": "76a6bf057d4562f18111538c0ecd5092eae315e680aa20fb91337f11d46693da"
+  },
+  "probe_receipt_self_hash": "EXCLUDED_FROM_SELF_CONTENT_TO_AVOID_RECURSIVE_HASH",
+  "expected_changed_files": [
+    "RESULT.md",
+    "RESULT.json",
+    "SOURCE_CERTIFICATION_LEDGER.csv",
+    "HOSTILE_FIXTURES.csv",
+    "DOCUMENTARY_AUTHORITY_MAP.csv",
+    "AUTHORITY_GAPS.csv",
+    "FAMILY_REUSE_AND_DRIFT.csv",
+    "FUTURE_EXECUTION_ORDER.md",
+    "LIBRARY_PROBE_RECEIPT.json",
+    "CHANGED_FILES.txt"
+  ],
+  "final_git_status": "NO_LOCAL_GIT_WORKTREE__CONNECTOR_ATOMIC_PUBLICATION_PATH; final remote branch diff and direct-parent audit are returned in the HQ receipt after publication."
+}
