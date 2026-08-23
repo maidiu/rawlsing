@@ -127,8 +127,8 @@ def _fixture(tag="facade"):
         )),
         ResponseSlotRule(PhysicalSlot(4,"O"), qbind["O"], tuple(
             ResponseValueRule(pkey(value), "SUBSTANTIVE_RESPONSE", (
-                OccurrenceRule("0", _ref("TOPOLOGY","c05r2a-O-ORDERED"), {"kind":"ORDERED_SEQUENCE","semantic_order":0}),
-                OccurrenceRule("1", _ref("TOPOLOGY","c05r2a-O-ORDERED"), {"kind":"ORDERED_SEQUENCE","semantic_order":1}),
+                OccurrenceRule("0", _ref("TOPOLOGY","c05r2a-O-ORDERED"), {"kind":"ORDERED_SEQUENCE","semantic_ordinal":0}),
+                OccurrenceRule("1", _ref("TOPOLOGY","c05r2a-O-ORDERED"), {"kind":"ORDERED_SEQUENCE","semantic_ordinal":1}),
             )) for value in ("AB","BA")
         )),
         ResponseSlotRule(PhysicalSlot(5,"R"), qbind["R"], tuple(
@@ -286,18 +286,18 @@ def test_physical_missing_requires_explicit_semantic_binding_and_one_cell_can_em
     with pytest.raises(SourceBackedC11FacadeError):
         project_c11_candidate_from_physical_cells(source_sha256=fx["source_sha"],row_count=3,cells=fx["cells"],projection=replace(p,response_slots=(x_without_missing,*p.response_slots[1:])))
     release=build_validated_source_backed_c11_release(fx["incidence"],p)
-    events=[e for e in release.public_objects if isinstance(e,RespondentEvent) and e.native_question_ref==fx["qrefs"]["M"]]
-    counts={rid:sum(e.scoped_respondent_ref==fx["respondents"][rid].ref for e in events) for rid in ("R1","R2","R3")}
+    events=[e for e in release.public_objects if isinstance(e,RespondentEvent) and e.native_question_ref==fx["qrefs"]["M"].as_dict()]
+    counts={rid:sum(e.scoped_respondent_ref==fx["respondents"][rid].ref.as_dict() for e in events) for rid in ("R1","R2","R3")}
     assert counts=={"R1":2,"R2":1,"R3":0}
     assert len({e.response_event_id_or_deterministic_index for e in events})==3
 
 
 def test_ordered_and_repeated_topology_fields_survive_projection_and_validation():
     fx=_fixture("topology"); release=build_validated_source_backed_c11_release(fx["incidence"],fx["projection"])
-    ordered=[e for e in release.public_objects if isinstance(e,RespondentEvent) and e.native_question_ref==fx["qrefs"]["O"]]
-    repeated=[e for e in release.public_objects if isinstance(e,RespondentEvent) and e.native_question_ref==fx["qrefs"]["R"]]
+    ordered=[e for e in release.public_objects if isinstance(e,RespondentEvent) and e.native_question_ref==fx["qrefs"]["O"].as_dict()]
+    repeated=[e for e in release.public_objects if isinstance(e,RespondentEvent) and e.native_question_ref==fx["qrefs"]["R"].as_dict()]
     assert {e.multiplicity_order_rank_fields["kind"] for e in ordered}=={"ORDERED_SEQUENCE"}
-    assert {e.multiplicity_order_rank_fields["semantic_order"] for e in ordered}=={0,1}
+    assert {e.multiplicity_order_rank_fields["semantic_ordinal"] for e in ordered}=={0,1}
     assert {e.multiplicity_order_rank_fields["kind"] for e in repeated}=={"REPEATED_EVENT"}
     assert {e.multiplicity_order_rank_fields["multiplicity_index"] for e in repeated}=={0,1}
 
