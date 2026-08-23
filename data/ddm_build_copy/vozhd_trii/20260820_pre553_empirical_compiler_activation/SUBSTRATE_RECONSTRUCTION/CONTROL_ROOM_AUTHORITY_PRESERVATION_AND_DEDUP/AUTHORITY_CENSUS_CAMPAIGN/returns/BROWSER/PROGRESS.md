@@ -1,47 +1,54 @@
-# Browser Authority Census — R1 Progress
+# Browser Authority Census — Post-HARVEST-001 Progress
 
-Status: `BROWSER_CENSUS_R1__INITIAL_UNIVERSE_BUILT__HARVEST_001_ISSUED`
+Status: `BROWSER_CENSUS__HARVEST_001_ADJUDICATED__QUESTION_STRUCTURE_MANUAL_CORE_RECOVERED__HARVEST_002_ISSUED`
 
 Start SHA: `b824c7d2b618b8e0987f6774b302e875d90b8fdd`
 Worker: `agent/vozhd-controlroom-authority-census-browser-r1`
 
-## Browser work completed
+## HARVEST-001 adjudicated
 
-- Verified the worker branch was identical to the exact start before writes.
-- Read the desk charter, browser/local protocol, master campaign authority, common evidence/classification contract, browser worker order and iteration protocol.
-- Read Authorities 38, 39, 40, 73 and 74 plus the accepted G1A return and its inventory/classification/DAG.
-- Located and searched the Library copy of `Rawlsing_and_RawlsingsExcess_tree_sha_size_date.txt` as physical-discovery evidence only.
-- Built 30 obligation-level expectations, 20 initial authority/content objects and 14 provenance/supersession edges.
-- No obligation is classified `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
+The returned packet was inspected from its actual uploaded bytes. ZIP SHA/size, ZIP integrity and all 114 `SHA256SUMS.txt` entries were independently verified.
 
-## Strongest new finding
+The central G1A-B01 question is materially closed:
 
-G1A-B01 is no longer accurately summarized as “no historical payload located.” The local manifest identifies at least three distinct byte identities named `question_structure_register.csv`:
+- three exact 18,792-row structure-register payloads recovered;
+- all share the same 52-column pre-driver structural/manual projection;
+- all share the same 562 manual-review row sequence;
+- all contain the same 35 source-family/wave pairs;
+- all include EVS 1999 and exclude Asian Barometer W6.
 
-- `f47c8adb...` — 23,612,534 bytes
-- `15f7b561...` — 26,582,348 bytes
-- `9139c1ab...` — 26,582,238 bytes
+The question-structure/manual-review authority therefore exists and is mapped. It is no longer a payload-recovery gap.
 
-It also exposes at least two builder identities and two YAML-summary identities.
+## Epistemic decomposition
 
-This does **not** prove which payload is canonical, whether their manual-review content is identical, or whether FQRA R1 losslessly supersedes any of them. G1A's rejection of FQRA-as-unproved-successor remains binding.
+The recovered register lineage contains two distinct kinds of evolution that must not be conflated with loss of manual structure authority:
 
-## Other browser-side lineage findings
+1. **Driver-semantic evolution:** 13,330 changed cells across 2,148 rows from the oldest register to the June register, confined to driver/semantic-master fields. This remains an `EXP-006/EXP-007` provenance problem.
+2. **Deterministic GSS SES structure classification:** 131 changed cells across 117 GSS rows from June to Aug. 16, confined to source-structure classification/review/confidence and aligned with explicit campaign-start governed code.
 
-- `question_wave_itinerary.csv` is directly readable and is real manual-review/designation/document-reference authority, but its 35-row composition is not the governed current 35: Asian Barometer W6 is present and EVS 1999 is absent.
-- `question_use_overrides.csv` directly preserves seven explicit GSS use decisions with reviewer/reason/date.
-- respondent source/semantic registries are live current carriers, while full historical absorption is unproved.
-- `questions_master_semantic.csv` and `questions_master_drivers.csv` each have materially different historical SHA/size versions in the local manifest; supersession is not inferred.
-- FQRA R1, QSMv2, QRA frozen precedent, response-scale authority and negative/block authority remain positive current authority findings within their exact accepted jurisdictions.
+FQRA R1 remains authoritative in its own relation/structural jurisdiction, but the earlier G1A rejection of FQRA as a wholesale question-structure-register successor remains intact.
 
-## Missingness discipline
+## Current-35 scope
 
-All open gaps remain recovery/supersession/conflict/search-incomplete states. The common ten-surface negative-search burden is not satisfied for any candidate genuine absence.
+The old itinerary remains stale: Asian W6 in, EVS1999 out. But the recovered structure registers themselves are already current-35.
 
-## Local collaboration
+Existing EVS1999 authority is also positively located in:
+- current respondent source and semantic registries;
+- the accepted PREP71 R04 EVS packet;
+- official ZA3811 documentary references retained by that packet.
 
-Issued `HARVEST-001 QUESTION_STRUCTURE_REGISTER_LINEAGE`, using exact SHA identities already discovered browser-side. It forbids regeneration and canonical selection by recency/row count.
+Therefore EVS1999 is not missing authority merely because the old itinerary omitted it.
 
-## Next browser action
+HARVEST-001 additionally exposed an Aug. 17 UID-bearing, hash-bound structure-register builder. The local manifest separately locates its required `source_structure_audit_binding_35wave_v1.json` and source-wave identity code. That layer is the smallest next evidentiary target.
 
-When the packet returns: inspect exact bytes, adjudicate lineage, update every ledger, prove or reject exact supersession, then choose the next narrow harvest.
+## Negative-search discipline
+
+The 54 HARVEST-001 missing historical audit-path occurrences collapse to three repeated LiTS III/IV basenames. Historical tree evidence shows case/alias-drifted LiTS audit objects. This is path/basename provenance debt, not proved authority loss.
+
+No expectation is classified `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
+
+## Next local request
+
+Issued `HARVEST-002 CURRENT_35_SCOPE_IDENTITY_AND_AUDIT_BINDING_LINEAGE`.
+
+It is limited to the Aug. 17 current-35 UID/binding/identity layer and any explicit migration/supersession material tying it to the immutable historical itinerary. No register regeneration, no semantic adjudication and no raw microdata are requested.
