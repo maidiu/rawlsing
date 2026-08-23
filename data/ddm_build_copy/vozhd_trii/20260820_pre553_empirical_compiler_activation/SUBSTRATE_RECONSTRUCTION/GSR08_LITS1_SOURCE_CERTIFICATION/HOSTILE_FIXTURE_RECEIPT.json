@@ -1,0 +1,34 @@
+{
+  "generic_c05r2a_evidence_is_not_source_certification": true,
+  "mandatory_terrain": [
+    {"claim":"all 29,002 rows retain exact source-row replay identity","id":"H01","status":"NOT_EXECUTED__DECODER_DEPENDENCY_BLOCK"},
+    {"claim":"native id remains separate from replay identity","id":"H02","status":"AUTHORITY_RULE_PRESERVED__SOURCE_INSTANCE_NOT_EXECUTED"},
+    {"claim":"Stata system missing remains physically distinct","id":"H03","status":"NOT_EXECUTED__DECODER_DEPENDENCY_BLOCK"},
+    {"claim":"ordinary absence-looking codes remain observed until semantic authority","id":"H04","status":"NOT_EXECUTED__DECODER_DEPENDENCY_BLOCK"},
+    {"claim":"accepted LiTS I semantic codes bind only under exact questionnaire/codebook authority","id":"H05","status":"AUTHORITY_RULE_PRESERVED__PROJECTION_NOT_CONSTRUCTED"},
+    {"claim":"value-label dictionaries remain recoverable","id":"H06","status":"NOT_EXECUTED__DECODER_DEPENDENCY_BLOCK"},
+    {"claim":"12-member household/repeated topology survives","id":"H07","status":"NOT_EXECUTED__DECODER_DEPENDENCY_BLOCK"},
+    {"claim":"q105_12 all-system-missing behavior survives","id":"H08","status":"NOT_EXECUTED__DECODER_DEPENDENCY_BLOCK"},
+    {"claim":"weight_0/weight_1/weight_2 remain separate","id":"H09","status":"NOT_EXECUTED__DECODER_DEPENDENCY_BLOCK"},
+    {"claim":"no default weight is invented","id":"H10","status":"PASS__AUTHORITY_RESTRAINT"},
+    {"claim":"routing/applicability is not inferred from missingness","id":"H11","status":"PASS__AUTHORITY_RESTRAINT__SOURCE_INSTANCE_NOT_EXECUTED"},
+    {"claim":"zero/one/many semantic occurrence law preserved","id":"H12","status":"GENERIC_C05R2A_PASS__LITS1_INSTANCE_NOT_EXECUTED"},
+    {"claim":"source SHA mismatch fails closed","id":"H13","status":"GENERIC_C05R2A_PASS__LITS1_POSITIVE_SHA_GATE_PASS"},
+    {"claim":"missing authority/replay closure fails closed","id":"H14","status":"GENERIC_C05R2A_PASS__LITS1_PROJECTION_NOT_EXECUTED"},
+    {"claim":"source-backed C11/I03 parity","id":"H15","status":"NOT_EXECUTED__NO_LITS1_C11_RELEASE"},
+    {"claim":"transport substitution cannot alter semantic identity","id":"H16","status":"GENERIC_C05R2A_PASS__EXACT_LIBRARY_TRANSPORT_POSITIVE_GATE_PASS"},
+    {"claim":"cross-release equivalence denied absent authority","id":"H17","status":"PASS__TYPED_UNKNOWN_PRESERVED"}
+  ],
+  "r07_fixture_inventory": {
+    "L1_COUNTRY_PAIR_ROW0":"NOT_EXECUTED",
+    "L1_DK_ORDINARY":"NOT_EXECUTED",
+    "L1_ENCODING_METADATA":"PASS__GOVERNED_CONFIG_AND_UNKNOWN_STATUS_PRESERVED",
+    "L1_ID_ROW0":"NOT_EXECUTED",
+    "L1_NA_ORDINARY":"NOT_EXECUTED",
+    "L1_RANKED_PRIORITY_METADATA":"DOCUMENTARY_AUTHORITY_READ__PHYSICAL_INSTANCE_NOT_EXECUTED",
+    "L1_REPEAT_SLOT_SYSTEM_MISSING":"NOT_EXECUTED",
+    "L1_WEIGHT0_SYSTEM_MISSING":"NOT_EXECUTED"
+  },
+  "status":"INCOMPLETE__LAWFUL_STOP_BEFORE_DECODER",
+  "stop_reason":"governed decoder/config cannot be reproduced in current browser environment because pyreadstat is absent"
+}
