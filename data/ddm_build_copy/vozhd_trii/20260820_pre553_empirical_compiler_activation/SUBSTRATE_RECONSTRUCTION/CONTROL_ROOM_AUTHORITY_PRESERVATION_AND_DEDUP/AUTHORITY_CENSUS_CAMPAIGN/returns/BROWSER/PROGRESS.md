@@ -1,54 +1,94 @@
-# Browser Authority Census — Post-HARVEST-001 Progress
+# Browser Authority Census — Post-HARVEST-002 Progress
 
-Status: `BROWSER_CENSUS__HARVEST_001_ADJUDICATED__QUESTION_STRUCTURE_MANUAL_CORE_RECOVERED__HARVEST_002_ISSUED`
+Status: `BROWSER_CENSUS__HARVEST_002_ADJUDICATED__EXISTING_SCOPE_AUTHORITY_NOT_INHERITED__HARVEST_003_ISSUED`
 
 Start SHA: `b824c7d2b618b8e0987f6774b302e875d90b8fdd`
 Worker: `agent/vozhd-controlroom-authority-census-browser-r1`
 
-## HARVEST-001 adjudicated
+## HARVEST-002 adjudicated
 
-The returned packet was inspected from its actual uploaded bytes. ZIP SHA/size, ZIP integrity and all 114 `SHA256SUMS.txt` entries were independently verified.
+Browser inspected the actual returned ZIP and independently verified:
 
-The central G1A-B01 question is materially closed:
+- packet SHA-256 `70789a6556f70c2c6be0771defe00fec918b7e64514e37d82744493431f1dc37`;
+- size `89,531` bytes;
+- ZIP integrity;
+- all 25 `SHA256SUMS.txt` entries.
 
-- three exact 18,792-row structure-register payloads recovered;
-- all share the same 52-column pre-driver structural/manual projection;
-- all share the same 562 manual-review row sequence;
-- all contain the same 35 source-family/wave pairs;
-- all include EVS 1999 and exclude Asian Barometer W6.
+## Current-35 scope identity exists
 
-The question-structure/manual-review authority therefore exists and is mapped. It is no longer a payload-recovery gap.
+The recovered audit binding is not a populated scope carrier. It is intentionally fail-closed:
 
-## Epistemic decomposition
+`BLOCKED_REQUIRES_HASH_BOUND_AUDIT_REPUBLICATION`
 
-The recovered register lineage contains two distinct kinds of evolution that must not be conflated with loss of manual structure authority:
+with 35 expected UIDs, 0 observed UIDs and 0 hash-bound audit artifacts.
 
-1. **Driver-semantic evolution:** 13,330 changed cells across 2,148 rows from the oldest register to the June register, confined to driver/semantic-master fields. This remains an `EXP-006/EXP-007` provenance problem.
-2. **Deterministic GSS SES structure classification:** 131 changed cells across 117 GSS rows from June to Aug. 16, confined to source-structure classification/review/confidence and aligned with explicit campaign-start governed code.
+Separately, Browser recovered the accepted SWID identity authority on `agent/source-wave-identity-repair-integration`:
 
-FQRA R1 remains authoritative in its own relation/structural jurisdiction, but the earlier G1A rejection of FQRA as a wholesale question-structure-register successor remains intact.
+`source_wave_identity_registry_35wave_v1.json`
 
-## Current-35 scope
+Git blob SHA-1 `ae09ab645d5d134c4462a012da57dbe02708b690`.
 
-The old itinerary remains stale: Asian W6 in, EVS1999 out. But the recovered structure registers themselves are already current-35.
+It declares exactly 35 production CLOSED_35 members, including EVS 1999 and explicitly recognizing Asian Barometer W6 as excluded.
 
-Existing EVS1999 authority is also positively located in:
-- current respondent source and semantic registries;
-- the accepted PREP71 R04 EVS packet;
-- official ZA3811 documentary references retained by that packet.
+HARVEST-002 also recovered `wave_authority_registry_35wave_v1.json` SHA-256 `3670d056c45c188843681535feb8543cf5a4ad20f2d0a067ce4f6b16b944888e`, with exactly 35 per-wave authority entries, EVS1999 present and Asian W6 absent.
 
-Therefore EVS1999 is not missing authority merely because the old itinerary omitted it.
+Therefore current-35 identity/scope authority exists. No new scope authority is authorized for creation.
 
-HARVEST-001 additionally exposed an Aug. 17 UID-bearing, hash-bound structure-register builder. The local manifest separately locates its required `source_structure_audit_binding_35wave_v1.json` and source-wave identity code. That layer is the smallest next evidentiary target.
+## Itinerary manual authority is preserved, not superseded
 
-## Negative-search discipline
+The historical itinerary remains one exact SHA:
 
-The 54 HARVEST-001 missing historical audit-path occurrences collapse to three repeated LiTS III/IV basenames. Historical tree evidence shows case/alias-drifted LiTS audit objects. This is path/basename provenance debt, not proved authority loss.
+`866eb3ab25fbd9479781c15a0aecbb00a9d547fdc947cc443e8b904262b86eb3`
+
+Its 35 rows still contain Asian W6 and omit EVS1999. Its manual fields remain epistemic capital: review priority, manual designation requirement, primary/secondary documents and review notes.
+
+The accepted SWID repair is positive preservation evidence. Its adjudicated W03-A repair was rejected once, then required to use governed UID itinerary/question-list joins. On the accepted repair branch, V550 resolves itinerary rows to `source_family_uid + wave_uid`, preserves the manual gate fields, and fails closed when duplicate UID-resolved rows carry divergent gate content.
+
+Thus identity authority does not retire itinerary semantics.
+
+## Current-control non-inheritance defect
+
+At Browser/control HEAD `20e8edbd0c9f2b07d31d1292f2d5864420c1a7c0`:
+
+- `source_wave_identity_registry_35wave_v1.json` is absent;
+- `ddm_source_wave_identity.py` is absent;
+- `ddm_v550_question_use.py` still literal-matches normalized `source + wave` against the historical itinerary and returns normal/false defaults for an unmatched row.
+
+The accepted SWID integration line and current Browser/control line diverge from merge base `25a63e08b0fcf7ef3dfc9de0c7b03325d26d918a`.
+
+The census therefore records:
+
+`EXISTING_ACCEPTED_AUTHORITY_NOT_INHERITED__CURRENT_CONTROL_EXECUTION_DIVERGENCE`
+
+not missing authority.
+
+## EVS1999 bounded residual gap
+
+EVS1999 has substantial positive authority:
+
+- current respondent source registry;
+- current respondent semantic registry;
+- accepted PREP71 R04 source/documentary packet;
+- 35-wave per-wave authority registry with a 513-row first-pass authority binding containing `manual_designation_required`, plus semantic/position/directionality overlays.
+
+But EVS1999 has no historical wave-level itinerary row, while EVS 1981/1990/2008/2017 are all `critical` and `manual_designation_required=true` there.
+
+No existing object yet proves that the absent EVS1999 wave-level itinerary judgment is losslessly encoded elsewhere. That remains a bounded preservation/supersession gap; no neighboring-wave or per-question inference is allowed.
+
+## Audit republication remains separate
+
+The source-structure audit binding's 0 observed artifacts is preserved as negative/fail-closed authority. It does not reopen the recovered question-structure/manual core and it does not erase current-35 identity authority.
+
+## No missing-authority promotion
 
 No expectation is classified `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
 
 ## Next local request
 
-Issued `HARVEST-002 CURRENT_35_SCOPE_IDENTITY_AND_AUDIT_BINDING_LINEAGE`.
+Issued:
 
-It is limited to the Aug. 17 current-35 UID/binding/identity layer and any explicit migration/supersession material tying it to the immutable historical itinerary. No register regeneration, no semantic adjudication and no raw microdata are requested.
+`HARVEST-003 QUESTION_SEMANTIC_MASTER_AND_DRIVER_FACET_LINEAGE`
+
+It is limited to the exact old/new `questions_master_semantic.csv` and `questions_master_drivers.csv` identities, the mechanically provable row/field deltas, and the narrow human triage/review/adjudication lineage that produced them.
+
+It explicitly forbids semantic regeneration, canonical selection by recency/completeness, and any reopening of the already recovered `EXP-001` manual/source-topology authority.
