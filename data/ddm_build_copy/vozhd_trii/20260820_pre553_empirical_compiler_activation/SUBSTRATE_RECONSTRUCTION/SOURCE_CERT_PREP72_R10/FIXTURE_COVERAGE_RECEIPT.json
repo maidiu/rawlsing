@@ -1,0 +1,28 @@
+{
+  "all_nine_family_fixture_files_ingested": true,
+  "all_sources_have_at_least_one_fixture": true,
+  "all_sources_present": true,
+  "authority": "72",
+  "coverage_status": "PASS",
+  "deduplication_policy": "NO_DEDUP_PERFORMED__CONSERVATIVE_LOSSLESS_ROW_PRESERVATION",
+  "exact_duplicate_count": 0,
+  "mapped_input_fixture_rows": 273,
+  "metadata_only_fixture_preservation": "PASS__NO_FIXTURE_DROPPED_FOR_LACK_OF_CELL_COORDINATES",
+  "normalization_method": "Each source receives one Authority72 bundle row that maps, by immutable worker HEAD + Git blob + exact source_file filter + expected count, every matching PREP71 hostile fixture row. This is one-to-many envelope normalization, NOT deduplication. Worker-native fixture kinds and cell/metadata distinctions remain authoritative and executable at the pinned rows.",
+  "normalized_fixture_envelope_rows": 34,
+  "normalized_fixture_row_count": 34,
+  "source_count_expected": 34,
+  "source_count_present": 34,
+  "worker_fixture_row_counts": {
+    "R01": 26,
+    "R02": 54,
+    "R03": 31,
+    "R04": 36,
+    "R05": 27,
+    "R06": 26,
+    "R07": 33,
+    "R08": 23,
+    "R09": 17
+  },
+  "worker_fixture_total": 273
+}
