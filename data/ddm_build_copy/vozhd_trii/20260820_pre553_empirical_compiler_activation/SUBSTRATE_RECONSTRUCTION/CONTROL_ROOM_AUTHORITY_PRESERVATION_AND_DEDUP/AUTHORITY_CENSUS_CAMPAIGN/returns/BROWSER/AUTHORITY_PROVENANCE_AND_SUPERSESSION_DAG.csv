@@ -1,20 +1,26 @@
 edge_id,from_authority_object_id,to_authority_object_id,edge_type,evidence_status,notes
-EDGE-001,OBJ-QSR-CSV-A,OBJ-QSR-CSV-B,MANUAL_CORE_LOSSLESS__DRIVER_SEMANTICS_EVOLVE,PROVED_BY_EXACT_ROW_COMPARISON,"52-column pre-driver structural projection identical SHA 500f0022...; 562 manual-review row sequence identical SHA 98a24a7b...; 13,330 changes confined to 9 driver/semantic columns across 2,148 rows"
-EDGE-002,OBJ-QSR-CSV-B,OBJ-QSR-CSV-C,MANUAL_AND_DRIVER_CORE_LOSSLESS__DETERMINISTIC_STRUCTURE_CLASS_CORRECTION,PROVED_BY_EXACT_ROW_COMPARISON_PLUS_GOVERNED_CODE,131 changed cells/117 GSS rows only: 117 source_structure_classification + 7 review flag + 7 confidence; aligns with exact GSS SES derivation helper at campaign start
+EDGE-001,OBJ-QSR-CSV-A,OBJ-QSR-CSV-B,MANUAL_CORE_LOSSLESS__DRIVER_SEMANTICS_EVOLVE,PROVED_BY_EXACT_ROW_COMPARISON,"52-column pre-driver projection identical; 562-review sequence identical; 13,330 changes confined to 9 driver/semantic columns across 2,148 rows"
+EDGE-002,OBJ-QSR-CSV-B,OBJ-QSR-CSV-C,MANUAL_AND_DRIVER_CORE_LOSSLESS__DETERMINISTIC_STRUCTURE_CLASS_CORRECTION,PROVED_BY_EXACT_ROW_COMPARISON_PLUS_GOVERNED_CODE,131 changed cells/117 GSS rows only; aligns with exact GSS SES derivation helper
 EDGE-003,OBJ-QSR-CSV-B,OBJ-QSR-YAML,SUMMARIZED_BY,PROVED_COUNTS_ONLY,"YAML declares 18,792 rows / 562 manual-review rows; summary is not row authority"
 EDGE-004,OBJ-QSR-BUILDER-A,OBJ-QSR-CSV-C,BUILD_MECHANISM_FOR,SUPPORTED_BY_CURRENT_PATH_AND_CODE_LINEAGE,current pre-UID builder consumes audits/taxonomy/questions_master_drivers and writes current register path; exact execution receipt not claimed
-EDGE-005,OBJ-QMD-OLD,OBJ-QMD-NEW,SEMANTIC_DRIVER_SUCCESSOR_CANDIDATE,SUPERSESSION_NOT_PROVED,exact bytes recovered; separate driver authority lineage required
-EDGE-006,OBJ-QMD-NEW,OBJ-QSR-CSV-B,REVIEW_INPUT_TO,SUPPORTED_BY_BUILDER_AND_PACKET,questions_master_drivers is explicit builder input; register A→B semantic-field delta is separated from invariant manual topology
-EDGE-007,OBJ-QSR-CSV-C,OBJ-FQRA,PARTIALLY_OVERLAPS,REJECTED_AS_LOSSLESS,G1A rejection remains binding; FQRA has different universe/provenance and does not replace recovered question-structure authority
+EDGE-005,OBJ-QMD-OLD,OBJ-QMD-NEW,SEMANTIC_DRIVER_SUCCESSOR_CANDIDATE,SUPERSESSION_NOT_PROVED,exact bytes recovered; HARVEST-003 issued
+EDGE-006,OBJ-QMD-NEW,OBJ-QSR-CSV-B,REVIEW_INPUT_TO,SUPPORTED_BY_BUILDER_AND_PACKET,questions_master_drivers is explicit builder input; semantic-field delta separated from invariant manual topology
+EDGE-007,OBJ-QSR-CSV-C,OBJ-FQRA,PARTIALLY_OVERLAPS,REJECTED_AS_LOSSLESS,G1A rejection remains binding; FQRA does not replace question-structure authority
 EDGE-008,OBJ-QRA,OBJ-FQRA,LOSSLESSLY_ABSORBS,PROVED_FOR_QRA_SCOPE,R1 preserves frozen QRA precedent
 EDGE-009,OBJ-QSMV2,OBJ-FQRA,LOSSLESSLY_ABSORBS,PROVED_FOR_QSMV2_SCOPE,R1 integrates QSMv2 including blockers
 EDGE-010,OBJ-NEG,OBJ-FQRA,REFERENCES,LIVE,negative states preserved
 EDGE-011,OBJ-RSCALE,OBJ-V550V551-BIND,DERIVED_FROM,PROVED,binding pins exact response-contract keys
-EDGE-012,OBJ-ITIN,OBJ-QSR-CSV-C,HISTORICAL_REVIEW_PLAN_VS_CURRENT_STRUCTURE_SCOPE,CONFLICT_ISOLATED,"itinerary has Asian W6/no EVS1999, while all three recovered registers have exact 35 family-wave pairs with EVS1999/no Asian W6; itinerary drift did not contaminate recovered register scope"
-EDGE-013,OBJ-RESP-SRC,OBJ-ITIN,REFERENCED_BY,HISTORICAL,itinerary names respondent source registry; current registry independently contains explicit EVS1999 mappings
+EDGE-012,OBJ-ITIN,OBJ-QSR-CSV-C,HISTORICAL_REVIEW_PLAN_VS_CURRENT_STRUCTURE_SCOPE,CONFLICT_ISOLATED,itinerary drift did not contaminate recovered QSR current-35 population
+EDGE-013,OBJ-RESP-SRC,OBJ-ITIN,REFERENCED_BY,HISTORICAL,itinerary names respondent source registry; current registry independently contains EVS1999 mappings
 EDGE-014,OBJ-RESP-SEM,OBJ-ITIN,REFERENCED_BY,HISTORICAL,itinerary names respondent semantics registry; current registry independently covers EVS1999
-EDGE-015,OBJ-SOURCE-CENSUS,OBJ-SWID-BIND-35,CURRENT_SCOPE_BASELINE_CANDIDATE,BINDING_PAYLOAD_PENDING,accepted source census defines exact current 35; Aug17 binding identity is located but content/provenance awaits HARVEST-002
-EDGE-016,OBJ-SWID-ID-CODE,OBJ-QSR-BUILDER-UID35,IMPORTED_BY,PROVED_BY_RECOVERED_BUILDER_CODE,UID builder imports closed_35_identities / resolve_source_wave_identity from ddm_source_wave_identity
-EDGE-017,OBJ-SWID-BIND-35,OBJ-QSR-BUILDER-UID35,REQUIRED_HASH_BOUND_INPUT,PROVED_BY_RECOVERED_BUILDER_CODE__PAYLOAD_PENDING,"builder requires READY_HASH_BOUND, exactly 35 declared/observed wave UIDs, 35 artifacts, exact hashes, and rejects Asian Barometer W6"
-EDGE-018,OBJ-ITIN,OBJ-SWID-BIND-35,POSSIBLE_SCOPE_SUCCESSOR_RELATION,NOT_PROVED,"old itinerary SHA persists unchanged in Aug17 packages; binding may supersede only physical/scope membership, not necessarily manual designation/docs/notes"
-EDGE-019,OBJ-EVS1999-PACKET,OBJ-ITIN,CURRENT_WAVE_AUTHORITY_AVAILABLE_FOR_RECLOSURE,PARTIAL_POSITIVE_AUTHORITY,accepted EVS1999 packet + respondent registries establish existing source/documentary/respondent authority; itinerary omission is not evidence of blank EVS1999 authority
+EDGE-015,OBJ-SOURCE-CENSUS,OBJ-SWID-REG,CURRENT_SCOPE_CORROBORATES,POSITIVE_EXISTING_AUTHORITY,accepted source census and SWID registry agree on governed current-35 composition
+EDGE-016,OBJ-SWID-REG,OBJ-SWID-ID-CODE,LOADED_BY,PROVED_BY_CODE_AND_GIT_REGISTRY,identity kernel loads source_wave_identity_registry_35wave_v1 and enforces count/state coherence
+EDGE-017,OBJ-SWID-REG,OBJ-SWID-BIND-35,EXPECTED_UID_UNIVERSE,PROVED_SCOPE_ONLY,audit binding expected 35 UID set matches governed scope but has 0 observed artifacts
+EDGE-018,OBJ-SWID-BIND-35,OBJ-QSR-BUILDER-UID35,REQUIRED_HASH_BOUND_INPUT,BLOCKED_FAIL_CLOSED,builder requires green hash-bound binding; recovered binding is blocked with 0 observed/0 artifacts
+EDGE-019,OBJ-ITIN,OBJ-V550-ITIN-SWID,PRESERVED_AND_REKEYED_BY_GOVERNED_UID,ACCEPTED_STATIC_REPAIR,SWID-016 repair retains review_priority/manual_designation/docs/notes and fails closed on divergent duplicate UID gate content
+EDGE-020,OBJ-SWID-TERMINAL,OBJ-V550-ITIN-SWID,ADJUDICATES,RESOLVED_TERMINAL_STATIC,SWID-016 terminal static closure; runtime pass explicitly not claimed
+EDGE-021,OBJ-V550-ITIN-SWID,OBJ-V550-ITIN-CURRENT,NOT_INHERITED__DIVERGENT_BRANCH,PROVED_BY_GIT_BRANCH_CONTENT_AND_ANCESTRY,current control lacks SWID registry/kernel and retains literal source+wave itinerary join
+EDGE-022,OBJ-ITIN,OBJ-V550-ITIN-CURRENT,CURRENT_LITERAL_LABEL_JOIN,PROVED_BY_CURRENT_CONTROL_CODE,unmatched current itinerary rows fall back to normal/false defaults; EVS1999 has no itinerary row
+EDGE-023,OBJ-WAVE-AUTH35,OBJ-SWID-REG,CURRENT35_SCOPE_CORROBORATES,PROVED_BY_PACKET_AND_GIT,35-entry per-wave authority registry agrees with SWID scope: EVS1999 in and Asian W6 absent
+EDGE-024,OBJ-WAVE-AUTH35,OBJ-ITIN,OVERLAPPING_MANUAL_AUTHORITY__NOT_LOSSLESS_SUPERSESSION,SUPERSESSION_NOT_PROVED,EVS1999 per-question authority includes manual_designation_required but does not establish absent wave-level itinerary judgment
+EDGE-025,OBJ-EVS1999-PACKET,OBJ-WAVE-AUTH35,CORROBORATES_EVS1999_AUTHORITY,PARTIAL_POSITIVE_AUTHORITY,accepted EVS packet plus 35-wave authority registry prove EVS1999 is not semantically blank; wave-level itinerary gate remains separate
