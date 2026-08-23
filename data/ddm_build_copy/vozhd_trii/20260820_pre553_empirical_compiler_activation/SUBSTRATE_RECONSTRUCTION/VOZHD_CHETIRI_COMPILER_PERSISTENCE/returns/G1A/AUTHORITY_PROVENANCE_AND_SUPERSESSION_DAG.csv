@@ -1,0 +1,21 @@
+edge_class,predecessor_or_input,successor_or_consumer,relation,g1a_disposition,evidence_or_reason
+GOVERNING,38_manual_authority_law,39_g1a_gate,requires,PASS,39 creates G1A and exact preservation burden
+GOVERNING,39_g1a_gate,G1A_inventory_and_contract,requires,PASS,seven required outputs
+SOURCE,SOURCE_BYTE_INVENTORY.csv,current_35_source_scope,defines,PASS,exact census used for scope checks
+HISTORICAL,question_wave_itinerary.csv,current_35_source_scope,must_cover_exactly,BLOCK,"35 rows but wrong composition: Asian W6 in, EVS1999 out"
+MANUAL,question_use_overrides.csv,V550_question_use_authority,direct_live_input,PASS,reviewer/reason/date preserved
+RESPONDENT,historical respondent-wave report registries,manifests/respondent_wave_source_registry.json,successor_candidate,PASS_PARTIAL,live JSON exists; full historical lossless supersession not adjudicated
+RESPONDENT,historical respondent-wave semantics report,manifests/respondent_wave_semantics_registry.json,successor_candidate,PASS_PARTIAL,live JSON exists; full historical lossless supersession not adjudicated
+STRUCTURE,per-file source_structure_audit rows,question_structure_register.csv,builder_input,BLOCK,manifest points to absolute historical local audit paths; tested row audit not repository-local
+STRUCTURE,question_type_taxonomy.yaml,question_structure_register.csv,deterministic_rule_input,PASS,live taxonomy
+STRUCTURE,questions_master_drivers.csv,question_structure_register.csv,semantic_driver_input,UNRESOLVED,builder dependency identified; full manual-triage supersession not proved
+STRUCTURE,question_structure_register.csv,question_structure_register.yaml,summary_of,BLOCK,summary survives but row-level canonical payload is absent
+STRUCTURE,question_structure_register.csv,Full_Question_Relation_R1,claimed_supersession,REJECTED_NOT_PROVED,different row universe and provenance; no lossless migration authority
+RESPONSE,family response-option authority packets,v550_v551_response_semantics_contract_binding_v1.csv,exact_contract_hash_inheritance,PASS_WITH_PROVENANCE_REFERENCE,binding is canonical compact governed mapping; manifest pins rule
+RESPONSE,response_scale_encoding_registry_35wave_active_v1.csv,v550_v551_response_semantics_contract_binding_v1.csv,pinned_registry_input,PASS,exact inherited key only
+QRA,frozen_QRA236,Full_Question_Relation_R1,frozen_precedent_integration,PASS,R1 README records regression and unchanged directional rows
+QSMV2,QSMv2 semantic units/blocks/coordinates,Full_Question_Relation_R1,governed_integration,PASS,3196 units / 4438 implementations; blockers preserved
+STRUCTURAL,July19_question_structural_mapping_live,R1_question_structural_mapping_PLUS4,governed_successor,PASS,R1 provenance names exact July19 input hash
+NEGATIVE,blocked_source_identity_structural_states,Full_Question_R1,preserved_negative_authority,PASS,blocked statuses explicit
+OVERLAYS,historical family/source semantic overlays,current dispersed overlay/binding corpus,supersession,UNRESOLVED,no exact exhaustive current-owner DAG located
+DRIVERS,historical final_driver_gap_triage,current driver/structural products,supersession,UNRESOLVED,exact retirement/lossless migration not proved

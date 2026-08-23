@@ -1,0 +1,16 @@
+epistemic_family,example_meaning,class,mechanically_regenerable,human_or_adjudicative_semantic_capital,accepted_derivation_or_authority_basis,fail_closed_rule
+SOURCE_BYTES,immutable SAV/DTA + SHA/size,MECHANICAL_SOURCE_IDENTITY,yes,no,hash/decoder law,source mismatch => BLOCK
+SOURCE_NATIVE_METADATA,decoder-extracted metadata,MECHANICAL_UNDER_FROZEN_DECODER,yes,no,frozen decoder/config,decode failure => BLOCK
+SOURCE_SEMANTIC_DOCUMENTARY,questionnaire/codebook/methodology meaning,MANUAL_DOCUMENTARY_OR_EXPLICIT_DERIVATION,no by default,yes,accepted source authority,UNKNOWN/BLOCKED
+RESPONDENT_SOURCE_MAPPING,respondent-wave canonical/fallback variables,MANUAL_OR_GOVERNED_MAPPING,no by default,yes,respondent-wave source registry,MISSING_AUTHORITY
+RESPONDENT_CATEGORY_SEMANTICS,category meanings/normalization,MANUAL_DOCUMENTARY,no by default,yes,respondent semantics/category authority,UNKNOWN/BLOCKED
+QUESTION_USE_OVERRIDE,eligibility/use exceptions,MANUAL_ADJUDICATED,no,yes,question_use_overrides reviewer/reason/date,governing default only; never infer override
+QUESTION_STRUCTURE_DERIVATION,merge of audits/taxonomy/driver master,DETERMINISTIC_COMPILATION_OF_MIXED_INPUTS,partly,"yes, because inputs include manual judgments",builder + exact input artifacts,BLOCK when any semantic/audit input absent
+QUESTION_TYPE_TAXONOMY,handling law per question kind,GOVERNED_RULE_TABLE,yes once classification is governed,yes for rule authorship,taxonomy version,review/block unknown kind
+RESPONSE_SEMANTICS_BINDING,V550→V551 exact inherited contract,DETERMINISTIC_GOVERNED_INHERITANCE,yes,underlying contract may be manual,pinned registry + inherited exact hash,missing/ambiguous hash => BLOCK
+QRA_DIRECTIONAL,polarity/directional calibration,FROZEN_ACCEPTED_PRECEDENT,no re-inference,yes,FROZEN_QRA236 coordinate authority,no scale/text inference
+QSMV2_STRUCTURAL,semantic unit/block/coordinate adjudication,MANUAL_ADJUDICATED_PLUS_GOVERNED_REUSE,no by default,yes,QSMv2 ledgers/R1,blocked coordinates stay blank
+FULL_QUESTION_RELATION_R1,integrated relation/structural authority,MIXED_GOVERNED,only via recorded rules,yes,authority_status + authority_rule_id + provenance,negative states remain first-class
+I05_ASSOCIATION,discovered empirical association,EMPIRICAL_DERIVED,yes,no,frozen I05 discovery law,never promotes itself to semantic/structural authority
+CROSSWAVE_REUSE,reuse of prior semantics across items/waves,GOVERNED_EQUIVALENCE_DERIVATION,yes only after positive equivalence,yes at equivalence decision,exact equivalence authority,no equivalence => no reuse
+BLOCKED_REVIEW_REQUIRED,negative/unresolved authority,GOVERNED_NEGATIVE_STATE,no,yes,explicit status/reason,must remain blocked/review-required

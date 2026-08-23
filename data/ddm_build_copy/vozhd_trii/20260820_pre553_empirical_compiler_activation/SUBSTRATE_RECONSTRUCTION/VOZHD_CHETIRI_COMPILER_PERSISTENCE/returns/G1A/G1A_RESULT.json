@@ -1,0 +1,95 @@
+{
+  "architecture_selected": false,
+  "c09_gate": "REMAINS_LOCKED_ON_G1A",
+  "disposition": "G1A_BLOCKED__MANUAL_SEMANTIC_AUTHORITY_PRESERVATION_NOT_PROVED",
+  "forbidden_conclusions": [
+    "raw source plus documents automatically recreate governed Rawlsing semantics",
+    "I05 statistical association creates structural authority",
+    "same label/code/family implies semantic equivalence",
+    "Full Question Relation R1 automatically supersedes the missing question structure register",
+    "35 itinerary rows means exact current 35-source coverage",
+    "historical manual artifacts may be retired without explicit lossless supersession proof"
+  ],
+  "gate_state": "G1A_MANUAL_SEMANTIC_AUTHORITY_INTEGRATION_CLOSURE__NOT_CLOSED",
+  "governing_authorities": [
+    "VOZHD_CHETIRI_COMPILER_PERSISTENCE/38_DVA_TRII_CHETIRI_MANUAL_SEMANTIC_AUTHORITY_PRESERVATION_AND_NON_AUTOMATION_LAW.md",
+    "VOZHD_CHETIRI_COMPILER_PERSISTENCE/39_MANUAL_AUTHORITY_INTEGRATION_GATE_AND_CRITICAL_PATH_CORRECTION.md",
+    "SUBSTRATE_RECONSTRUCTION/74_GSR07_GSR08_RETURN_ADJUDICATION_AND_PARALLEL_RECOVERY_AUTHORITY.md"
+  ],
+  "named_blockers": [
+    {
+      "code": "QUESTION_STRUCTURE_REGISTER_PAYLOAD_MISSING__LOSSLESS_SUCCESSOR_NOT_PROVED",
+      "evidence": {
+        "builder": "data/ddm_build_copy/build_question_structure_register.py",
+        "declared_manual_review_rows": 562,
+        "declared_rows": 18792,
+        "full_question_relation_r1_provenance_root": "/mnt/data/question_structural_mapping_live(1).csv",
+        "full_question_relation_r1_rows": 18518,
+        "lossless_supersession_proof": false,
+        "missing_payload": "data/ddm_build_copy/manifests/question_structure_register.csv",
+        "source_structure_manifest": "data/ddm_build_copy/manifests/source_structure_validation_manifest.csv",
+        "summary_artifact": "data/ddm_build_copy/manifests/question_structure_register.yaml",
+        "tested_row_audit_repository_path_status": "NOT_FOUND"
+      },
+      "id": "G1A-B01",
+      "smallest_closure": "Restore the exact content-addressed 18,792-row payload or issue an explicit governed successor with field-by-field lossless migration/provenance and current-scope reconciliation."
+    },
+    {
+      "code": "QUESTION_WAVE_ITINERARY_CURRENT_35_SOURCE_SCOPE_DRIFT",
+      "evidence": {
+        "current_census": "SOURCE_BYTE_INVENTORY.csv",
+        "itinerary_extra_relative_to_current_census": [
+          "Asian Barometer W6"
+        ],
+        "itinerary_missing_relative_to_current_census": [
+          "EVS 1999"
+        ],
+        "itinerary_rows": 35
+      },
+      "id": "G1A-B02",
+      "smallest_closure": "Issue a current governed itinerary/supersession layer that gives an explicit state to every exact current source wave, including EVS 1999, while preserving historical provenance."
+    },
+    {
+      "code": "DISPERSED_MANUAL_AUTHORITY_SUPERSESSION_CLOSURE_NOT_EXHAUSTIVE",
+      "evidence": {
+        "current_successor_candidates_exist": true,
+        "exact_lossless_supersession_dag_proved_for_every_live_decision": false,
+        "families": [
+          "family/wave respondent category maps and references",
+          "source/family semantic overlays",
+          "still-live driver-gap/manual triage authority"
+        ]
+      },
+      "id": "G1A-B03",
+      "smallest_closure": "Create a compact accepted supersession registry identifying exact canonical owner, predecessor identity, epistemic class, scope, and retirement status for every still-live manual decision family."
+    }
+  ],
+  "pinned_start_head": "a58a60d1c45008197378e203c04bffa8ac9911ef",
+  "pinned_start_tree": "06edabb1b559bab070a635b24509ca440e97ea19",
+  "positive_findings": {
+    "full_question_relation_authority_r1_located": true,
+    "negative_blocked_authority_preserved_within_r1": true,
+    "qra_frozen_precedent_preserved_within_r1": true,
+    "qsmv2_authority_within_r1_located": true,
+    "question_use_overrides_located": true,
+    "respondent_wave_semantics_registry_located": true,
+    "respondent_wave_source_registry_located": true,
+    "source_census_located": true,
+    "v550_v551_response_semantics_binding_located": true,
+    "v551_response_scale_registry_located": true
+  },
+  "raw_source_to_pre553_complete": false,
+  "repository": "maidiu/rawlsing",
+  "required_outputs": [
+    "PRE553_MANUAL_AND_GOVERNED_AUTHORITY_INVENTORY.csv",
+    "PRE553_COMPILER_AUTHORITY_INPUT_CONTRACT.md",
+    "AUTHORITY_PROVENANCE_AND_SUPERSESSION_DAG.csv",
+    "MANUAL_VS_DERIVED_EPISTEMIC_CLASS_MATRIX.csv",
+    "NEW_SURVEY_SEMANTIC_STRUCTURAL_ADMISSION_CONTRACT.md",
+    "AUTHORITY_INVALIDATION_AND_REBUILD_CROSSWALK.csv",
+    "G1A_RESULT.json"
+  ],
+  "runtime_modified": false,
+  "task": "G1A_MANUAL_SEMANTIC_AUTHORITY_INTEGRATION_CLOSURE",
+  "worker_branch": "agent/vozhd-chetiri-g1a-manual-authority-integration"
+}
