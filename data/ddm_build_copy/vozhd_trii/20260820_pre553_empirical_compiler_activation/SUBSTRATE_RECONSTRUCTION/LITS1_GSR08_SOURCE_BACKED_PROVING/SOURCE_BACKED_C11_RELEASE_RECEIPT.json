@@ -1,0 +1,27 @@
+{
+  "blocker": {
+    "blocker_class": "DECODER_EXECUTION_ENVIRONMENT_NONIDENTITY",
+    "environment_probe": "import pyreadstat",
+    "exception_message": "No module named 'pyreadstat'",
+    "exception_type": "ModuleNotFoundError",
+    "exit_code": 1,
+    "forbidden_substitute": "pandas.read_stata may be used only as a diagnostic; it cannot satisfy the frozen decode_dta/pyreadstat execution contract.",
+    "governed_decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "required_reader": "pyreadstat",
+    "why_dispositive": "R07 FUTURE_EXECUTION_ORDER.md names inability to reproduce the governed decoder/config as an explicit stop condition before hostile/C11 execution."
+  },
+  "c11_object_counts": null,
+  "c11_repository_resolution": null,
+  "candidate_constructed": false,
+  "contract": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+  "legacy_empirical_truth_used": false,
+  "m01_m18_validation_coverage": null,
+  "omitted_unmapped_physical_cells": null,
+  "physical_carrier_semantic_ownership_assumed": false,
+  "release_hash": null,
+  "release_ref": null,
+  "semantic_projected_occurrence_count": null,
+  "status": "NOT_REACHED__DECODER_PREFLIGHT_STOP",
+  "typed_state_counts": null,
+  "validated_release_constructed": false
+}

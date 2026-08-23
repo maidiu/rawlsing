@@ -1,0 +1,25 @@
+{
+  "accepted_c05r2a_prior_parity_evidence": {
+    "focused_facade_suite": "10 passed, 0 failed, 0 skipped",
+    "status": "PASS_PREEXISTING_AUTHORITY_ONLY",
+    "supplemental_i03_probes": "5 passed, 0 failed, 0 skipped"
+  },
+  "blocker": {
+    "blocker_class": "DECODER_EXECUTION_ENVIRONMENT_NONIDENTITY",
+    "environment_probe": "import pyreadstat",
+    "exception_message": "No module named 'pyreadstat'",
+    "exception_type": "ModuleNotFoundError",
+    "exit_code": 1,
+    "forbidden_substitute": "pandas.read_stata may be used only as a diagnostic; it cannot satisfy the frozen decode_dta/pyreadstat execution contract.",
+    "governed_decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "required_reader": "pyreadstat",
+    "why_dispositive": "R07 FUTURE_EXECUTION_ORDER.md names inability to reproduce the governed decoder/config as an explicit stop condition before hostile/C11 execution."
+  },
+  "default_weight_fallback_used": false,
+  "empirical_fact_refs": [],
+  "frozen_i03_executed": false,
+  "query_count": 0,
+  "raw_estimands_executed": false,
+  "status": "NOT_REACHED__DECODER_PREFLIGHT_STOP",
+  "weighted_or_design_estimands_executed": false
+}

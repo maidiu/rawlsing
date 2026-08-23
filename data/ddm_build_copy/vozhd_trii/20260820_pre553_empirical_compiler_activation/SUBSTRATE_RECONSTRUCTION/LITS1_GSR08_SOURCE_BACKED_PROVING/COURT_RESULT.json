@@ -1,0 +1,92 @@
+{
+  "blocker": {
+    "blocker_class": "DECODER_EXECUTION_ENVIRONMENT_NONIDENTITY",
+    "environment_probe": "import pyreadstat",
+    "exception_message": "No module named 'pyreadstat'",
+    "exception_type": "ModuleNotFoundError",
+    "exit_code": 1,
+    "forbidden_substitute": "pandas.read_stata may be used only as a diagnostic; it cannot satisfy the frozen decode_dta/pyreadstat execution contract.",
+    "governed_decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "required_reader": "pyreadstat",
+    "why_dispositive": "R07 FUTURE_EXECUTION_ORDER.md names inability to reproduce the governed decoder/config as an explicit stop condition before hostile/C11 execution."
+  },
+  "bounded_unknowns": [
+    {
+      "detail": "Intended human-language source-text encoding remains unresolved; latin1 is compatibility execution only.",
+      "id": "LiTS_I.dta_TEXT_ENCODING",
+      "state": "BOUNDED_UNKNOWN__NONBLOCKING_IF_NO_INTENDED_TEXT_CLAIM"
+    },
+    {
+      "detail": "No cross-release semantic equivalence is asserted or required.",
+      "id": "LiTS_I.dta_CROSS_RELEASE",
+      "state": "BOUNDED_UNKNOWN__NONBLOCKING"
+    },
+    {
+      "detail": "weight_0/1/2 remain distinct; no default/design estimand choice is authorized.",
+      "id": "L1_WEIGHT_DEFAULT",
+      "state": "BOUNDED_UNKNOWN__NONBLOCKING_FOR_PHYSICAL_PROVING__BLOCKING_FOR_DEFAULT_WEIGHT_SEMANTICS"
+    },
+    {
+      "detail": "No durable native-ID semantics are asserted beyond source SHA + zero-based physical row ordinal replay identity.",
+      "id": "L1_ID_SCOPE",
+      "state": "BOUNDED_UNKNOWN__NONBLOCKING"
+    }
+  ],
+  "c05r2a_facade_blob_verified_unchanged": true,
+  "c05r2a_test_blob_verified_unchanged": true,
+  "c05r2b_launched": false,
+  "c11_release_hash": null,
+  "changed_files": [
+    "COURT_RESULT.md",
+    "COURT_RESULT.json",
+    "SOURCE_IDENTITY_RECEIPT.json",
+    "LITS1_GOVERNED_PROJECTION.json",
+    "PROJECTION_AUTHORITY_LEDGER.csv",
+    "HOSTILE_FIXTURE_RECEIPT.json",
+    "SOURCE_BACKED_C11_RELEASE_RECEIPT.json",
+    "REPLAY_MANIFEST_RECEIPT.json",
+    "I03_PROVING_RECEIPT.json",
+    "RESOURCE_RUNTIME_RECEIPT.json",
+    "UNRESOLVED_AUTHORITY.md",
+    "CHANGED_FILES.txt"
+  ],
+  "compatibility_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+  "completion_token": "PRE553_TRII_LITS1_GSR08_PROVING_RETURNED",
+  "court": "VOZHD TRII G-SR08 LiTS I SOURCE-BACKED PROVING CERTIFICATION COURT",
+  "decoder_execution": "BLOCKED__REQUIRED_PYREADSTAT_UNAVAILABLE",
+  "exact_starting_head": "b41b2cc6b3907795813c19292da47c07874317d7",
+  "focused_c05r2a_tests_rerun": false,
+  "focused_tests_not_rerun_reason": "Court stop invoked at decoder preflight before further execution; accepted C05-R2A receipts remain prior evidence, not substituted for this court execution.",
+  "governed_decoder": "decode_dta(source_path, encoding=\"latin1\")",
+  "hostile_fixture_result": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP",
+  "i03_proving_result": "NOT_REACHED__DECODER_PREFLIGHT_STOP",
+  "legacy_empirical_truth_used": false,
+  "newer_authority_review": {
+    "authority_38_found": true,
+    "effect": "HARDENS_SEMANTIC_NON_AUTOMATION_AND_TYPED_UNKNOWN_PRESERVATION",
+    "supersedes_gsr08": false
+  },
+  "primary_disposition": "LITS1_GSR08_BLOCK__SOURCE_OR_DECODER_NONIDENTITY",
+  "projection_authority_status": "NOT_CONSTRUCTED__DECODER_PREFLIGHT_STOP",
+  "r5_semantic_ownership_used": false,
+  "replay_manifest_hash": null,
+  "resource_runtime": {
+    "final_execution_scratch_bytes": 0,
+    "max_rss_kib_observed": 114312,
+    "preflight_elapsed_seconds_to_receipt_generation": 481,
+    "scratch_cleanup_completed": true,
+    "scratch_peak_bytes_before_cleanup": 147217559
+  },
+  "semantic_occurrence_count": null,
+  "source_file": "LiTS_I.dta",
+  "source_identity": "PASS_EXACT",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "source_shape": {
+    "rows": 29002,
+    "variables": 1198
+  },
+  "status": "COMPLETE__FAIL_CLOSED_AT_PHASE_A_DECODER_PREFLIGHT",
+  "worker_branch": "agent/vozhd-trii-gsr08-lits1-proving",
+  "wvs7_launched": false,
+  "zip_identity": "PASS_EXACT"
+}

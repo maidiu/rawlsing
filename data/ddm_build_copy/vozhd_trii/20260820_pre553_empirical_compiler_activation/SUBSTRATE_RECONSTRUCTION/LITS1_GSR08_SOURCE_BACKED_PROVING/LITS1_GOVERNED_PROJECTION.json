@@ -1,0 +1,47 @@
+{
+  "authority_38_applied": true,
+  "authority_38_effect": "No semantic authority may be manufactured from raw source/documents by default; G-SR08 remains authorized only for positively governed source/C11 meanings and typed UNKNOWN must be preserved.",
+  "blocker": {
+    "blocker_class": "DECODER_EXECUTION_ENVIRONMENT_NONIDENTITY",
+    "environment_probe": "import pyreadstat",
+    "exception_message": "No module named 'pyreadstat'",
+    "exception_type": "ModuleNotFoundError",
+    "exit_code": 1,
+    "forbidden_substitute": "pandas.read_stata may be used only as a diagnostic; it cannot satisfy the frozen decode_dta/pyreadstat execution contract.",
+    "governed_decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "required_reader": "pyreadstat",
+    "why_dispositive": "R07 FUTURE_EXECUTION_ORDER.md names inability to reproduce the governed decoder/config as an explicit stop condition before hostile/C11 execution."
+  },
+  "bounded_unknowns": [
+    {
+      "detail": "Intended human-language source-text encoding remains unresolved; latin1 is compatibility execution only.",
+      "id": "LiTS_I.dta_TEXT_ENCODING",
+      "state": "BOUNDED_UNKNOWN__NONBLOCKING_IF_NO_INTENDED_TEXT_CLAIM"
+    },
+    {
+      "detail": "No cross-release semantic equivalence is asserted or required.",
+      "id": "LiTS_I.dta_CROSS_RELEASE",
+      "state": "BOUNDED_UNKNOWN__NONBLOCKING"
+    },
+    {
+      "detail": "weight_0/1/2 remain distinct; no default/design estimand choice is authorized.",
+      "id": "L1_WEIGHT_DEFAULT",
+      "state": "BOUNDED_UNKNOWN__NONBLOCKING_FOR_PHYSICAL_PROVING__BLOCKING_FOR_DEFAULT_WEIGHT_SEMANTICS"
+    },
+    {
+      "detail": "No durable native-ID semantics are asserted beyond source SHA + zero-based physical row ordinal replay identity.",
+      "id": "L1_ID_SCOPE",
+      "state": "BOUNDED_UNKNOWN__NONBLOCKING"
+    }
+  ],
+  "contract_required": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+  "court": "G-SR08 LiTS I",
+  "decoder_status": "BLOCKED__REQUIRED_PYREADSTAT_UNAVAILABLE",
+  "expected_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "governed_decoder": "decode_dta(source_path, encoding=\"latin1\")",
+  "projection_hash": null,
+  "projection_ref": null,
+  "projection_status": "NOT_CONSTRUCTED__DECODER_PREFLIGHT_STOP",
+  "semantic_assertions_created_by_this_court": [],
+  "semantic_projection_executed": false
+}

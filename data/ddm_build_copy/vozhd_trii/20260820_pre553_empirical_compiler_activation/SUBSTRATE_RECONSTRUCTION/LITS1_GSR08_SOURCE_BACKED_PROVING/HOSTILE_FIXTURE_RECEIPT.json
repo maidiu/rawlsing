@@ -1,0 +1,31 @@
+{
+  "accepted_r07_fixture_count": 8,
+  "blocker": {
+    "blocker_class": "DECODER_EXECUTION_ENVIRONMENT_NONIDENTITY",
+    "environment_probe": "import pyreadstat",
+    "exception_message": "No module named 'pyreadstat'",
+    "exception_type": "ModuleNotFoundError",
+    "exit_code": 1,
+    "forbidden_substitute": "pandas.read_stata may be used only as a diagnostic; it cannot satisfy the frozen decode_dta/pyreadstat execution contract.",
+    "governed_decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "required_reader": "pyreadstat",
+    "why_dispositive": "R07 FUTURE_EXECUTION_ORDER.md names inability to reproduce the governed decoder/config as an explicit stop condition before hostile/C11 execution."
+  },
+  "decoder_precondition": "FAIL__PYREADSTAT_MODULE_UNAVAILABLE",
+  "default_weight_selected": false,
+  "fixtures": [
+    {"fixture_id": "L1_ID_ROW0", "fixture_kind": "ROW_IDENTITY_REPLAY", "status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"},
+    {"fixture_id": "L1_COUNTRY_PAIR_ROW0", "fixture_kind": "COUNTRY_REGION_COORDINATE", "status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"},
+    {"fixture_id": "L1_WEIGHT0_SYSTEM_MISSING", "fixture_kind": "WEIGHT_DESIGN_CANDIDATE", "status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"},
+    {"fixture_id": "L1_DK_ORDINARY", "fixture_kind": "CELL_RAW_VALUE", "status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"},
+    {"fixture_id": "L1_NA_ORDINARY", "fixture_kind": "CELL_RAW_VALUE", "status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"},
+    {"fixture_id": "L1_REPEAT_SLOT_SYSTEM_MISSING", "fixture_kind": "REPEATED_RANKED_SLOT_TOPOLOGY", "status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"},
+    {"fixture_id": "L1_RANKED_PRIORITY_METADATA", "fixture_kind": "REPEATED_RANKED_SLOT_TOPOLOGY", "status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"},
+    {"fixture_id": "L1_ENCODING_METADATA", "fixture_kind": "SOURCE_ENCODING_READER_CONFIG", "status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"}
+  ],
+  "latin1_promoted_to_source_text_authority": false,
+  "ordinary_vs_missing_semantic_assertion_made": false,
+  "source_identity_precondition": "PASS_EXACT",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "suite_status": "NOT_EXECUTED__DECODER_PREFLIGHT_STOP"
+}

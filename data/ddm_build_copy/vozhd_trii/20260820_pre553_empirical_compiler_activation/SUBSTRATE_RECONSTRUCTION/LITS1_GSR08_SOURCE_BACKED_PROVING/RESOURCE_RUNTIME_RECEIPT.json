@@ -1,0 +1,41 @@
+{
+  "court_receipt_generation_utc": "2026-08-23T17:24:39Z",
+  "court_start_utc": "2026-08-23T17:16:38Z",
+  "decoder_dependency_probe": {
+    "command": "python -c \"import pyreadstat\"",
+    "exit_code": 1,
+    "max_rss_kib": 110368,
+    "stderr_witness": "ModuleNotFoundError: No module named 'pyreadstat'",
+    "wall_seconds": 0.6
+  },
+  "dependency_remediation_attempts": [
+    {"method": "pip install pyreadstat", "result": "FAILED__NO_CONTAINER_NETWORK_DNS"},
+    {"method": "browser-located PyPI binary wheel -> container ingestion", "result": "FAILED__BINARY_TRANSFER_UNAVAILABLE_IN_EXECUTION_SANDBOX"}
+  ],
+  "dependency_versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "psutil": "7.2.2",
+    "pyreadstat": null,
+    "pytest": "9.0.2",
+    "python": "3.13.5"
+  },
+  "final_execution_scratch_bytes": 0,
+  "full_source_c11_materialization_started": false,
+  "max_rss_kib_observed": 114312,
+  "max_rss_observation_scope": "pandas shape diagnostic process; governed decoder process failed at import and peaked at 110368 KiB",
+  "pandas_shape_diagnostic": {
+    "authority_status": "DIAGNOSTIC_ONLY__NOT_A_DECODER_SUBSTITUTE",
+    "max_rss_kib": 114312,
+    "rows": 29002,
+    "stata_format_version": 113,
+    "variables": 1198,
+    "wall_seconds": 0.64
+  },
+  "preflight_elapsed_seconds_to_receipt_generation": 481,
+  "resource_scalability_witness": false,
+  "scratch_cleanup_completed": true,
+  "scratch_cleanup_required": false,
+  "scratch_peak_bytes_before_cleanup": 147217559
+}
