@@ -16,6 +16,8 @@
     "decodes": 0,
     "peak_rss_bytes": null,
     "source_opens": 0,
+    "required_invocation": "decode_dta(source_path, encoding=\"latin1\")",
+    "required_dependency": "pyreadstat",
     "stop_reason": "required pyreadstat dependency unavailable before lawful decoder invocation",
     "wall_seconds": null
   },
@@ -25,7 +27,23 @@
     "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
     "psutil_version": "7.2.2",
     "pyreadstat_available": false,
-    "python": "3.13.5"
+    "python": "3.13.5",
+    "cython_version": "3.2.4",
+    "numpy_version": "2.3.5",
+    "narwhals_version": "2.21.2",
+    "gcc": "14.2.0",
+    "make": "4.4.1"
+  },
+  "dependency_supply_reprobe": {
+    "pyreadstat_import": "ModuleNotFoundError: No module named 'pyreadstat'",
+    "library_title_search_for_pyreadstat_or_wheel": "NO_RESULT",
+    "filesystem_cache_or_system_library_probe": "NO_PYREADSTAT_OR_READSTAT_RUNTIME_FOUND",
+    "public_package_install_attempt": "FAILED__NETWORK_DNS_UNAVAILABLE",
+    "binary_download_materialization_attempt": "FAILED__CONTAINER_DOWNLOAD_UNAVAILABLE_FOR_REQUIRED_ARTIFACT",
+    "local_extension_build_prerequisites": "AVAILABLE__CYTHON_GCC_MAKE_PRESENT",
+    "parser_substitution": "NOT_USED__FORBIDDEN",
+    "pandas_shim": "NOT_USED__FORBIDDEN",
+    "interpretation": "execution dependency supply failure only; no semantic or full-source resource verdict"
   },
   "i03_proving_queries": {
     "attempted": false,
@@ -34,9 +52,10 @@
   },
   "materialization": {
     "archive_bytes": 7686379,
-    "peak_worker_scratch_bytes_observed": 147458291,
-    "questionnaire_bytes": 240732,
-    "source_bytes": 139531180
+    "source_bytes": 139531180,
+    "current_session_archive_member_hash_reprobe": "PASS",
+    "current_session_combined_unzip_hash_wall_seconds": 0.29600242500004015,
+    "current_session_combined_unzip_hash_max_rss_kb": 111852
   },
   "projection": {
     "attempted": false,
@@ -47,11 +66,11 @@
     "attempted": false,
     "wall_seconds": null
   },
-  "resource_hard_gate_interpretation": "NO VERDICT: no full-source source-backed release execution occurred, so this return must not be cited as evidence that B/C is resource-pathological or resource-safe.",
+  "resource_hard_gate_interpretation": "NO VERDICT: no frozen decode, source-specific projection, validated release, repository, or I03 court executed. The dependency-supply failure must not be cited as evidence that source-backed B/C is resource-pathological or resource-safe.",
   "resource_hard_gate_reached": false,
-  "source_identity_sha": {
+  "source_identity_sha_original_receipt": {
     "max_rss_kb": 3888,
     "wall_seconds": 0.09
   },
-  "status": "STOPPED_PRE_DECODE__NAMED_EXECUTION_DEPENDENCY_UNAVAILABLE"
+  "status": "STOPPED_PRE_DECODE__NAMED_EXECUTION_DEPENDENCY_UNAVAILABLE__INDEPENDENTLY_REPROVED"
 }
