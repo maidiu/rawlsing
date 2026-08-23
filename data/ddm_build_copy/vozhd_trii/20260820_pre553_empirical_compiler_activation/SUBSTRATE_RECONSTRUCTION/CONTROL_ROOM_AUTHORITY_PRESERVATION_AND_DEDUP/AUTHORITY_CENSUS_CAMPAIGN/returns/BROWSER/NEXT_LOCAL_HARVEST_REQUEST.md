@@ -1,100 +1,147 @@
-# HARVEST-001 — QUESTION_STRUCTURE_REGISTER_LINEAGE
+# HARVEST-002 — CURRENT_35_SCOPE_IDENTITY_AND_AUDIT_BINDING_LINEAGE
 
 Status: `ISSUED__AWAITING_LOCAL_PACKET`
 
 ## Exact authority question
 
-Which exact historical/current `question_structure_register.csv` lineage carries the live question-structure semantic capital declared as **18,792 rows / 562 manual-review rows**; how do all distinct CSV, YAML-summary, builder, source-audit, taxonomy and driver-master versions relate; and has any later authority product losslessly absorbed every live decision?
+Does Rawlsing already possess an Aug. 17 UID-bearing, hash-bound current-35 scope layer that positively binds the governed CLOSED_35 universe — including EVS 1999 and excluding Asian Barometer W6 — and, separately, does any existing artifact explicitly preserve/supersede the historical `question_wave_itinerary.csv` manual-designation, documentary-reference and review-note authority?
 
-This is recovery/adjudication, **not regeneration**.
+Do **not** assume a physical/scope binding losslessly supersedes itinerary manual-review semantics. Recover the exact evidence and let Browser HQ adjudicate it.
+
+## Why this is now the smallest next request
+
+HARVEST-001 proved that all three recovered 18,792-row `question_structure_register.csv` payloads already have the correct 35 family-wave population. It also recovered an Aug. 17 builder whose source code requires a hash-bound 35-wave binding and fails closed if Asian Barometer W6 is present.
+
+The binding and source-wave identity payloads were not included in HARVEST-001.
 
 ## Search roots
+
 - `/Users/matthewsmith/Desktop/Rawlsing`
 - `/Users/matthewsmith/Desktop/RawlsingsExcess`
 
-## Known distinct target identities already found
+## Exact target identities / names
 
-### `question_structure_register.csv`
-- `f47c8adb65546b1c0a06dcd31dc0b827b59f8975a3806646f41a0742966c3d84` — 23,612,534 bytes
-- `15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b` — 26,582,348 bytes
-- `9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219` — 26,582,238 bytes
+Priority exact identities:
 
-### `build_question_structure_register.py`
-- `3cabb94b84e7e498cfc56c4d579d58047744ef545faae2e03586a7d5f0856175` — 13,522 bytes
-- `3d271c55e1596973a6e698919372b065ae5c279244aee877fbcddc2787ee0b69` — 11,538 bytes
+- `source_structure_audit_binding_35wave_v1.json`
+  - SHA-256 `d8b73c0fc2498084c69adf0703313286c417c0170431613a024eec39412a68ce`
+  - 1,943 bytes
 
-### `question_structure_register.yaml`
-- `0688635931b8fa9bd3461963256c8d71f3c623bdc55cde213d2101f1dbfbe05c` — 1,003 bytes
-- `56a344f5149b67ffb53e1f02ed1da5e0c6226b29dd29ebe15965c850b0152e28` — 1,008 bytes
+- `ddm_source_wave_identity.py`
+  - SHA-256 `4847f568d91ec7f94157e09c9a5d28052e85d7ff436877fb63bcd9343c24af7e`
+  - 18,750 bytes
 
-Do **not** assume newest/largest/same-row-count means canonical.
+- Aug. 17 `ddm_survey_identity.py`
+  - SHA-256 `9884b2886115e15c4636378c12bb7a2279c51411af298cd7ba74d0911ed93295`
+  - 3,088 bytes
 
-## Exact names / aliases to search
-- `question_structure_register.csv`
-- `question_structure_register.yaml`
-- `question_structure_register.yml`
-- `build_question_structure_register.py`
-- `source_structure_validation_manifest.csv`
-- `build_source_structure_validator.py`
-- `question_type_taxonomy.yaml`
-- `question_handling_schema_registry.csv`
-- `questions_master_drivers.csv`
-- `question_family_registry.yaml`
-- row-level source-structure audits referenced by builders/manifests
-- README/manifests/receipts containing `18792`, `562`, `manual_review`, `manual review`, or an exact target SHA
-- bridge/crosswalk/provenance files explicitly claiming FQRA R1 or another later artifact absorbed the structure register
+Also recover/distinguish if present:
 
-Inspect archives only when a filename/SHA/provenance clue points into them. Do not sweep unrelated gigabytes.
+- Aug. 16 `ddm_survey_identity.py`
+  - SHA-256 `a898524a9ba269dc9e3939287ecde011f2cce6618e67fa570703c4ace11bea5d`
+  - 8,622 bytes
+- historical `ddm_survey_identity.py`
+  - SHA-256 `18333b59b82f8faef7459b873f819e2cf4a38312bdd0ec68b1cdc7c172297158`
+  - 7,962 bytes
+- `source_dataset_manifest.csv`
+  - SHA-256 `7e51bda6cbf3ad813679ad109701b4475f09e11cb9f0c3f23fc737e5083db826`
+- `source_dataset_manifest.yaml`
+  - SHA-256 `330cb0f057d5684cc11c9f50e2bc49c94d6373aa6d8edcd74baccfa673aad937`
+- `question_wave_itinerary.csv`
+  - known SHA-256 `866eb3ab25fbd9479781c15a0aecbb00a9d547fdc947cc443e8b904262b86eb3`
+- `respondent_wave_source_registry.json`
+  - SHA-256 `9c6c194215caaf0acc426f6e2b4ae08000984b216fcd3151ad43c7aa9d5f9cc3`
+- `respondent_wave_semantics_registry.json`
+  - SHA-256 `5e1a836943ce660c4e1f21fe5077002c3f95fde004f442e40e80a48ad01c9c33`
+
+The Aug. 17 UID-bearing builder SHA
+`2ea25c11cde8bd2ee3b00d6ba6608ebf452dc05dbede227faf7fcbc3700a93dc`
+is already recovered in HARVEST-001. Do not duplicate its bytes unless needed to preserve package-local provenance; a hash/path reference is sufficient.
+
+Search aliases/provenance terms narrowly:
+- `CLOSED_35`
+- `current_35`
+- `source wave identity`
+- `source_wave_uid`
+- `wave_uid`
+- `SWID`
+- `source_structure_audit_binding`
+- `scope migration`
+- `itinerary`
+- `supersession`
+- `precedence`
+- `EVS 1999`
+- `Asian Barometer W6`
+
+Prefer the two Aug. 17 `rawlsing-agent-swid-pg8-*` package families already identified by HARVEST-001/tree evidence. Inspect other archives only when an exact name/SHA/provenance clue points to them.
 
 ## Mechanical evidence requested
 
-For every occurrence of every distinct target SHA:
-- absolute path, SHA-256, size, mtime;
+For every distinct responsive artifact:
+- absolute path;
+- SHA-256;
+- byte size;
+- mtime;
 - ordinary file versus archive member;
-- archive and member paths/member SHA where applicable.
+- archive/member identity where applicable.
 
-For each distinct register CSV:
-- exact header and row count;
-- purely mechanical value/null counts for columns whose names explicitly indicate `manual_review`, `review`, `status`, `authority`, `basis`, `classification`, or `provenance`;
-- do not interpret those values.
-
-For each YAML:
+For `source_structure_audit_binding_35wave_v1.json`, report without interpretation:
 - top-level keys;
-- declared row/manual-review counts;
-- named input/output paths and hashes if present.
+- exact `schema` and `status`;
+- exact ordered `expected_wave_uids`;
+- exact ordered `observed_wave_uids`;
+- list lengths and distinct counts;
+- exact artifact count;
+- for every artifact: `wave_uid`, `closed_35_member`, audit filename, audit SHA/hash fields and any explicit source/family/wave fields;
+- whether an exact string containing Asian Barometer W6 occurs;
+- whether an exact EVS1999/EVS 1999 UID/string occurs.
 
-For each builder:
-- exact mechanically referenced input/output filenames;
-- columns read/written;
-- explicit filter/join/key column names;
-- no semantic adjudication.
+For `ddm_source_wave_identity.py` and all distinct `ddm_survey_identity.py`:
+- exact mechanically defined constants/tables/aliases related to CLOSED_35/current-35 membership;
+- function names that construct or resolve source/wave UIDs;
+- exact explicit EVS 1999 and Asian W6 entries if present;
+- imported authority/config filenames;
+- no semantic interpretation.
 
-For source-structure validation inputs:
-- exact header/row counts;
-- mechanically stated relationship to register generation.
+For `source_dataset_manifest.csv|yaml`:
+- exact rows/count;
+- headers/top-level keys;
+- exact source/family/wave/UID/scope fields if present;
+- mechanically report whether EVS1999 is present and Asian W6 absent/present.
+
+For `question_wave_itinerary.csv`:
+- enumerate every distinct SHA identity found;
+- row count/header;
+- mechanically report EVS1999 and Asian W6 presence;
+- copy any exact nearby README/authority/migration object that explicitly says it supersedes, migrates, replaces, preserves, or retires itinerary scope/manual fields.
 
 ## Required returned ZIP
 
-One bounded ZIP containing:
+One bounded ZIP:
+
 - `README.md`
 - `EVIDENCE_MANIFEST.csv`
 - `SHA256SUMS.txt`
 - `SEARCH_RECEIPT.md`
-- `SCHEMA_COUNTS.csv`
+- `SCOPE_BINDING_MECHANICAL_RECEIPT.json`
+- `IDENTITY_CODE_MECHANICAL_RECEIPT.json`
+- `ITINERARY_LINEAGE_RECEIPT.csv`
 - `ARCHIVE_MEMBER_MANIFEST.csv` if archives were inspected
-- `payload/` exact bytes of every distinct responsive target CSV/YAML/builder and narrow provenance input
+- `payload/` exact bytes of each distinct responsive target and narrow explicit provenance/migration authority.
 
-`EVIDENCE_MANIFEST.csv` columns:
-`archive_relative_path,original_absolute_path,sha256,size_bytes,mtime_local,artifact_name,browser_request_id,collection_reason,exact_duplicate_group_if_known`
-
-`SEARCH_RECEIPT.md` must record roots, exact search patterns, omitted roots, found/not-found results, errors, archives inspected/collected, and transformations (expected: none).
+Do not include raw survey microdata.
 
 ## Forbidden
-- no deletion/move/rename/edit/normalization;
-- no builder execution/regeneration;
-- no raw survey microdata;
-- no semantic interpretation;
-- no canonical-version selection;
-- no lossless-supersession claim from recency, basename, row count or similar columns.
 
-Return the ZIP to HQ for browser adjudication.
+- no deletion/move/rename/edit/normalization;
+- no builder execution;
+- no itinerary regeneration;
+- no source-structure register regeneration;
+- no semantic adjudication;
+- no declaration that the binding supersedes itinerary manual meaning;
+- no canonical selection by recency, package name, row count or similarity;
+- no inference that same source/family label means same wave identity.
+
+Return the ZIP to HQ for Browser adjudication.
+
+`AUTHORITY_CENSUS_LOCAL_HARVEST_REQUEST__HARVEST_002`
