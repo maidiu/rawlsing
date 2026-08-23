@@ -1,0 +1,23 @@
+assertion_id,source_native_class,governing_claim,court_evidence,status,certification_effect,unresolved
+S01,exact source artifact bytes,member SHA is semantic physical identity,7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09,PASS,source identity closed,
+S02,Library transport,transport may vary only if member bytes identical,LiTS_I.dta.zip SHA b2e90ee7ceefc230572e89687de28186544308949f8fd33c32b1d0ffb14b8feb,PASS,transport exact; no substitution,
+S03,governed decoder/config,"decode_dta(source_path, encoding=""latin1""); compatibility only",pyreadstat unavailable,BLOCKED_EXECUTION_EVIDENCE,prevents all downstream source-specific execution,pyreadstat runtime dependency
+S04,row/variable shape,"29,002 x 1,198 accepted packet anchor",not re-decoded in this court,NOT_EXECUTED,cannot certify from prior count alone,decoder unavailable
+S05,source-row replay identity,source SHA + row ordinal for all rows,authority + packet only,NOT_EXECUTED,mandatory hostile proof pending,decoder unavailable
+S06,native id,preserve separately; no durable semantic identity from injectivity,R07 injective-id evidence,BOUNDED_UNKNOWN_PRESERVED,does not block source-scope certification,native ID semantics
+S07,Stata system missing,physical SYSTEM_MISSING distinct from ordinary values,"accepted R07 count 24,983,759; no current decode",NOT_EXECUTED,mandatory equivalence pending,decoder unavailable
+S08,ordinary semantic-looking numeric codes,remain OBSERVED_STORAGE_VALUE absent authority,q201=98/q301_1=6 packet fixtures; no current decode,NOT_EXECUTED,mandatory hostile proof pending,decoder unavailable
+S09,value-label dictionaries,recoverable physical metadata; text semantics authority-limited,packet/codebook evidence only,NOT_EXECUTED,recoverability not re-proved,decoder unavailable
+S10,household repeated topology,12-member topology preserved,q105_1..q105_12 packet authority,NOT_EXECUTED,mandatory hostile proof pending,decoder unavailable
+S11,q105_12 all-system-missing slot,"slot must survive despite 29,002 system missing",packet fixture,NOT_EXECUTED,mandatory hostile proof pending,decoder unavailable
+S12,ranked priority topology,q304a/q304b first/second remain distinct,source questionnaire + packet,DOCUMENTARY_AUTHORITY_CLOSED__PHYSICAL_NOT_EXECUTED,topology semantic claim supported; physical parity pending,decoder unavailable
+S13,weight candidates,"weight_0/1/2 remain separate; each 29,000 ordinary + 2 system missing accepted anchor",packet evidence only,NOT_EXECUTED,physical parity pending,decoder unavailable
+S14,default weight,no default may be invented,R07 L1_WEIGHT_DEFAULT,PASS__DENIED_ABSENT_AUTHORITY,bounded unknown carried,default/estimand authority absent
+S15,routing/applicability,never infer from missingness,source constitution + questionnaire boundaries,PASS__NONINFERENCE_RULE,no routing claim invented,per-variable routing remains authority-limited
+S16,zero/one/many occurrences,only explicit OccurrenceRule may emit semantic occurrences,C05-R2A hostile suite generic PASS,GENERIC_PASS__LITS1_NOT_EXECUTED,cannot certify LiTS I from generic fixture,decoder unavailable
+S17,source SHA mismatch negative,mismatch fails closed,C05-R2A generic PASS + exact positive LiTS SHA gate,GENERIC_PASS__POSITIVE_GATE_PASS,source identity safe,
+S18,authority/replay closure negative,missing required projection/replay authority fails closed,C05-R2A generic PASS,GENERIC_PASS__LITS1_NOT_EXECUTED,projection remains absent rather than guessed,decoder unavailable
+S19,transport semantic neutrality,transport label/order cannot alter semantic identity,C05-R2A generic PASS + exact member transport,GENERIC_PASS__POSITIVE_GATE_PASS,no transport semantic owner created,
+S20,cross-release equivalence,denied absent source-specific authority,R07 cross-release gap,PASS__DENIED_ABSENT_AUTHORITY,bounded unknown carried,cross-release authority absent
+S21,validated C11 release,must be built through accepted facade from frozen physical incidence + explicit projection,not built,NOT_EXECUTED,source not certified,decoder unavailable
+S22,frozen I03 parity,exact fact/ref/content parity against source-backed release,no LiTS I release,NOT_EXECUTED,C05-R2B cannot unlock,decoder unavailable
