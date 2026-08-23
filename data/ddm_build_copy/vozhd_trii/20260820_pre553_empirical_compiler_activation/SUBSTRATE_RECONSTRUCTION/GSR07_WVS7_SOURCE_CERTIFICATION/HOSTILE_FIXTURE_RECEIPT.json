@@ -1,0 +1,22 @@
+{
+  "fixture_scope": "BANKED_FROZEN_WVS7_HOSTILE_EVIDENCE_PLUS_DIRECT_DOCUMENTARY_REVIEW",
+  "new_full_source_fixture_execution": false,
+  "fixtures": [
+    {"id":"WVS7-SHA-ROW","status":"PASS_BY_GOVERNING_EVIDENCE","witness":"Authority-70 exact source identity; row ordinal remains replay coordinate"},
+    {"id":"WVS7-D-INTERVIEW","status":"PASS_BY_FROZEN_HOSTILE_ORACLE","witness":"D_INTERVIEW is noninjective; no replay promotion"},
+    {"id":"WVS7-Q152-Q157-MISSING","status":"PASS_BY_FROZEN_PHYSICAL_AND_DOCUMENTARY_EVIDENCE","witness":"source declares SPSS user-missing states; exact variable-specific code meanings retained"},
+    {"id":"WVS7-Q152-157-ORDER","status":"PASS_BY_DIRECT_DOCUMENTARY_EVIDENCE","witness":"three distinct first/second-choice pairs"},
+    {"id":"WVS7-I-PSU","status":"PARTIAL_FAIL_CLOSED","witness":"I_PSU and -4 Not delivered are documented; country-specific sampling/variance authority unresolved"},
+    {"id":"WVS7-WEIGHTS","status":"PASS_RAW_SEPARATION__SEMANTIC_USE_FAIL_CLOSED","witness":"W_WEIGHT and S018 have separate documented purposes; no default selected"},
+    {"id":"WVS7-Q223","status":"PASS_BY_DIRECT_DOCUMENTARY_EVIDENCE","witness":"country-specific party lists/codes remain source scoped"},
+    {"id":"WVS7-Q177-Q181-5WAY","status":"PASS_RECONSTRUCTION_CAPABILITY__FULL_RUN_NOT_EXECUTED","witness":"Q177-Q195 accepted 19-member source-native joint battery; source-row identity preserves same-respondent alignment"},
+    {"id":"WVS7-PHYSICAL-MISSING-NONCOLLAPSE","status":"PASS_BY_CONTRACT","witness":"physical missing cannot become semantic absence without explicit authority"},
+    {"id":"WVS7-GOVERNED-NOT","status":"BLOCKED_SOURCE_SPECIFIC","witness":"exact WVS7 risk-set authority is incomplete; physical row complement forbidden"},
+    {"id":"WVS7-ROUTING","status":"BLOCKED_SOURCE_SPECIFIC","witness":"routing/applicability cannot be inferred from observed missingness"},
+    {"id":"WVS7-NO-DEFAULT-WEIGHT","status":"PASS_FAIL_CLOSED","witness":"missing/ambiguous weight authority does not fall back to weight=1 or RAW"},
+    {"id":"WVS7-RELEASE-REPLAY-I03","status":"NOT_EXECUTED__PROJECTION_BLOCKED","witness":"source-specific release cannot be instantiated lawfully yet"},
+    {"id":"WVS7-R5-V4-NONSEMANTIC","status":"PASS_BY_AUTHORITY","witness":"physical layout is not semantic authority"}
+  ],
+  "strongest_hostile_witness": "ROUTING_APPLICABILITY_INDEPENDENT_OF_OBSERVED_MISSINGNESS",
+  "overall": "BLOCKED_BEFORE_FULL_FACADE_EXECUTION__NO_FROZEN_CONTRACT_CONTRADICTION_PROVED"
+}
