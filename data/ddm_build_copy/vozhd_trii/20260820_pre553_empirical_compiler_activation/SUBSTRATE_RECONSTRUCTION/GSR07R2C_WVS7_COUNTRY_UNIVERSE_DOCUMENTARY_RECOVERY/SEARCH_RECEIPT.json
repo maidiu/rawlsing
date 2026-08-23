@@ -1,0 +1,126 @@
+{
+  "court": "G-SR07-R2C WVS7 COUNTRY EMPIRICALUNIVERSE DOCUMENTARY RECOVERY",
+  "generated_at_utc": "2026-08-23T19:17:36.524064+00:00",
+  "branch": "agent/vozhd-trii-gsr07r2c-wvs7-country-universe-docs",
+  "exact_start_head": "be68423b5c48fbe5fc445e866963a964a59febfa",
+  "branch_start_verification": {
+    "status": "identical",
+    "ahead_by": 0,
+    "behind_by": 0,
+    "method": "connected GitHub compare"
+  },
+  "governing_inputs": [
+    {
+      "path": "SUBSTRATE_RECONSTRUCTION/00A_READ_BEFORE_ANY_TRII_ACTION.md",
+      "ref": "be68423b5c48fbe5fc445e866963a964a59febfa"
+    },
+    {
+      "path": "SUBSTRATE_RECONSTRUCTION/78_TRII_ROUTE_A_COMMAND_IDENTITY_AND_ANTI_DRIFT_LAW.md",
+      "ref": "be68423b5c48fbe5fc445e866963a964a59febfa"
+    },
+    {
+      "path": "SUBSTRATE_RECONSTRUCTION/79_GSR07R1_ACCEPTANCE_AND_WVS7_THREE_LANE_CLOSURE_AUTHORITY.md",
+      "ref": "be68423b5c48fbe5fc445e866963a964a59febfa"
+    },
+    {
+      "accepted_return": "GSR07R1_WVS7_AUTHORITY_RECOVERY",
+      "ref": "49a26e30c464ff1c5125e06a8ab872a9390bf0aa"
+    }
+  ],
+  "source_owner_web_surfaces": [
+    {
+      "title": "WVSA Wave-7 Country Documentation Index",
+      "url": "https://www.worldvaluessurvey.org/AJDocumentation.jsp?CndWAVE=7",
+      "use": "exact 66 source-present country/society + year denominator"
+    },
+    {
+      "title": "WVSA final WVS release summary",
+      "url": "https://www.worldvaluessurvey.org/WVSEVSjoint2017.jsp",
+      "use": "release 6-0-0, DOI, 66/66, 97,220 cases, 606 variables"
+    },
+    {
+      "title": "WVSA Fieldwork and Sampling",
+      "url": "https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=FieldworkSampling",
+      "use": "wave-level baseline only; not country substitution"
+    },
+    {
+      "title": "WVSA Documentation for Download",
+      "url": "https://www.worldvaluessurvey.org/WVSContents.jsp?CMSID=Documentation",
+      "use": "country technical reports/questionnaires are deposited"
+    },
+    {
+      "title": "WVSA Australia WVS7 analytical report",
+      "url": "https://www.worldvaluessurvey.org/WVSNewsShow.jsp?ID=389",
+      "use": "positive country target population/frame/design facts"
+    },
+    {
+      "title": "WVSA Australia WVS7 methodology presentation notice",
+      "url": "https://www.worldvaluessurvey.org/WVSNewsShow.jsp?ID=396",
+      "use": "positive country target population/frame/design facts"
+    }
+  ],
+  "library_documents": [
+    {
+      "file_id": "file_00000000e41c722f8d67a0fc93343951",
+      "name": "WVS Wave 7 (2017) Codebook.pdf",
+      "size_bytes": 3542402,
+      "sha256": "d13c892099ac6a4681acdad344b81f99d086a5694be94cf5e7a578a62bf02ad3"
+    },
+    {
+      "file_id": "file_00000000da80722f98a132205b69d244",
+      "name": "WVS Wave 7 (2017) Questionnaire.pdf",
+      "size_bytes": 885723,
+      "sha256": "5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b"
+    }
+  ],
+  "library_transport_note": {
+    "surveys_zip_materialized": true,
+    "surveys_zip_path": "/mnt/data/gsr07r2c_private/surveys.zip",
+    "surveys_zip_size_bytes": 158180333,
+    "surveys_zip_sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "WVS7_member_present": false,
+    "use": "transport inventory only; no WVS7 raw probing"
+  },
+  "mirror_recovery": {
+    "surface": "IHSN/World Bank catalog mirror of WVS country deposits",
+    "study_identities_recovered": 60,
+    "country_related_material_rows": 26,
+    "countries_with_named_related_materials_or_positive_existence": 10,
+    "authority_ceiling": "deposit/document identity and explicit mirrored producer attribution only; generic mirror sampling prose is not actual country design authority",
+    "metadata_cautions": [
+      "Armenia/Australia bounded mirror metadata inconsistencies preserved; not healed by inference",
+      "stale mirror prose mentioning 64 surveys not used for current release denominator"
+    ]
+  },
+  "recovery_counts": {
+    "source_present_countries": 66,
+    "positive_substantive_country_methodology_recovered": 1,
+    "countries_remaining_U03_documentary_required": 65,
+    "Australia_conditional_design_detail_gap": 1
+  },
+  "prohibitions_observed": {
+    "lane_A_or_B_provisional_output_consumed": false,
+    "raw_WVS7_source_probed": false,
+    "data_distribution_used_for_design_inference": false,
+    "I_PSU_used_for_design_inference": false,
+    "weights_used_for_design_inference": false,
+    "neighboring_wave_used_as_substitute": false,
+    "generic_WVS_rule_used_as_country_substitute": false,
+    "default_weight_selected": false,
+    "variance_estimator_invented": false,
+    "user_local_Rawlsing_directory_used": false,
+    "production_runtime_modified": false,
+    "C11_modified": false,
+    "V553_plus_modified": false
+  },
+  "output_file_sha256_excluding_receipt_and_changed_files": {
+    "RESULT.md": "f0df26a45095e0afdbb4163ca58b7f138bbd7d3d59e4e33b7d690c4a1f2147f5",
+    "RESULT.json": "be8df0abd36a840fe7976dc011a71ecbacf26c65baaf47c55cadc1c272c93d69",
+    "SOURCE_PRESENT_COUNTRY_INVENTORY.csv": "54b2fd4f0e4d9694956369b26b0dbd8360dfd16cb92c38bbb36213809e02fd1b",
+    "COUNTRY_EMPIRICAL_UNIVERSE_LEDGER.csv": "2c5ec593c2f5712958f1c2c6f4df87924c0dd362f3e592daec14d025d311b4cb",
+    "DOCUMENT_AUTHORITY_INDEX.csv": "44afe6a2eeb24c34ad1ae05e3be23beca45edfefde8ca775a0118d375c48e591",
+    "DOCUMENTARY_AUTHORITY_GAPS.csv": "2533c80a0ee24cac4956cf90e64995326a14abb33daf6c04ee5fb00d48d43909"
+  },
+  "receipt_self_hash_note": "Self hash intentionally not embedded; compute after serialization and report to HQ.",
+  "stop_token": "PRE553_GSR07R2C_WVS7_COUNTRY_UNIVERSE_RETURNED"
+}

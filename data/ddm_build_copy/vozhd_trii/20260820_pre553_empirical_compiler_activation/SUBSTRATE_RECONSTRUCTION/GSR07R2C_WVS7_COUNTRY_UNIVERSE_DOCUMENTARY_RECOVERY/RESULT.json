@@ -1,0 +1,72 @@
+{
+  "court": "G-SR07-R2C WVS7 COUNTRY EMPIRICALUNIVERSE DOCUMENTARY RECOVERY",
+  "status": "COMPLETE__NON_DISPOSITIVE_LANE_C_DOCUMENTARY_RECOVERY",
+  "stop_token": "PRE553_GSR07R2C_WVS7_COUNTRY_UNIVERSE_RETURNED",
+  "worker_branch": "agent/vozhd-trii-gsr07r2c-wvs7-country-universe-docs",
+  "exact_start_head": "be68423b5c48fbe5fc445e866963a964a59febfa",
+  "accepted_r1_return": "49a26e30c464ff1c5125e06a8ab872a9390bf0aa",
+  "lane": "C_ONLY",
+  "source_present_country_count": 66,
+  "source_present_inventory_authority": "https://www.worldvaluessurvey.org/AJDocumentation.jsp?CndWAVE=7",
+  "pooled_release": {
+    "version": "6-0-0",
+    "release_date": "2024-05-01",
+    "doi": "10.14281/18241.24",
+    "countries_territories": 66,
+    "surveys": 66,
+    "cases": 97220,
+    "variables": 606
+  },
+  "country_positive_content_recovery": {
+    "fully_or_partially_positive_country_count": 1,
+    "countries": [
+      "Australia"
+    ],
+    "Australia": {
+      "target_population": "Adults 18+ residing in private households in Australia",
+      "sample_frame": "Address-based sampling; mail primary contact",
+      "actual_design": "Sequential mixed-mode, online or paper self-completion",
+      "psu_strata_cluster_route": "DOCUMENTARY_AUTHORITY_REQUIRED_IF_DESIGN_VARIANCE_CLAIMED"
+    }
+  },
+  "country_document_identity_recovery": {
+    "ihsn_wvs_study_identity_count": 60,
+    "countries_with_named_country_related_materials_or_positive_existence": 10,
+    "country_related_material_rows": 26
+  },
+  "unresolved": {
+    "countries_with_u03_documentary_authority_required": 65,
+    "Australia_conditional_design_detail_gap": true,
+    "rule": "Unrecovered country facts remain DOCUMENTARY_AUTHORITY_REQUIRED; wave-level baseline, I_PSU, weights, data incidence, neighboring waves and generic convention are not substitutes."
+  },
+  "claim_scoped_design_use": {
+    "actually_claimed_by_this_lane": false,
+    "variance_estimator_invented": false,
+    "default_weight_selected": false
+  },
+  "non_inference_invariants": {
+    "raw_wvs7_source_probed": false,
+    "I_PSU_used_to_infer_design": false,
+    "weights_used_to_infer_design": false,
+    "data_distribution_used_to_infer_frame_or_design": false,
+    "neighboring_wave_substitution": false,
+    "generic_wvs_sampling_rule_used_as_country_fact": false,
+    "lane_A_or_B_provisional_output_consumed": false,
+    "user_local_rawlsing_directory_used": false
+  },
+  "documentary_cautions": [
+    "WVSA source-present portal and final release govern the 66-country denominator; stale mirror prose mentioning 64 countries is not used.",
+    "Bounded IHSN mirror metadata showed inconsistencies for Armenia/Australia; mirror deposit identities are preserved, but inconsistent metadata fields do not override WVSA country scope.",
+    "Library codebook internal VERSION/date text and the current WVSA final-release page are preserved as separate document identities rather than silently harmonized."
+  ],
+  "outputs": [
+    "RESULT.md",
+    "RESULT.json",
+    "SOURCE_PRESENT_COUNTRY_INVENTORY.csv",
+    "COUNTRY_EMPIRICAL_UNIVERSE_LEDGER.csv",
+    "DOCUMENT_AUTHORITY_INDEX.csv",
+    "DOCUMENTARY_AUTHORITY_GAPS.csv",
+    "SEARCH_RECEIPT.json",
+    "CHANGED_FILES.txt"
+  ]
+}
