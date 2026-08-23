@@ -1,131 +1,110 @@
-# HARVEST-003 — QUESTION_SEMANTIC_MASTER_AND_DRIVER_FACET_LINEAGE
+# HARVEST-004 — D62 DRIVER-MASTER PRODUCER AND DUPLICATE-SHADOWING PROVENANCE
 
 Status: `ISSUED__AWAITING_LOCAL_PACKET`
 
 ## Exact authority question
 
-Which exact historical/current `questions_master_semantic.csv` and `questions_master_drivers.csv` lineage carries the human/manual semantic-classification, driver, facet, scope and triage capital behind the **2,148-row driver-semantic evolution** isolated by HARVEST-001; what exact review/triage/adjudication artifacts caused those changes; and has any later accepted authority losslessly absorbed every live human decision?
+What exact updater/merge/adjudication process created `questions_master_drivers.csv` SHA-256 `d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011`, especially the duplicate `(source,wave,var_name)` rows whose later structural/context entries become the effective semantic source for Register B; was that shadowing explicitly intended and accepted, or is it an incidental carrier/key collision; and what exact pre-`d62` driver-master state generated Register A?
 
-This is an authority-recovery and provenance court. It is **not** a request to recompute drivers, infer semantics, or choose a preferred version by recency.
+This is provenance recovery. Do **not** repair, deduplicate, re-key, regenerate, or semantically adjudicate the master.
 
 ## Why this is now the smallest next request
 
-HARVEST-001 proved that the question-structure/manual core is invariant and recovered. It separately proved that the oldest→June register transition changes 13,330 cells across 2,148 rows, entirely in these driver/semantic fields:
+HARVEST-003 established:
 
-- `final_driver_id`
-- `final_driver_scope`
-- `final_driver_label`
-- `final_driver_origin`
-- `semantic_scope`
-- `semantic_primary_driver`
-- `semantic_secondary_driver`
-- `semantic_shared_driver`
-- `semantic_notes`
+- V525b `53feb282...` / `6e76965c...` are accepted canonical structural authority;
+- Register B's nine semantic/driver fields match the effective last-row-wins lookup of `d62accad...` exactly for every matched master key;
+- Register A -> B is exactly 2,148 changed keys / 13,330 changed cells under that lookup;
+- 2,056 changed keys have two `d62...` rows and 1,228 still retain the Register A state as the earlier duplicate;
+- winning rows are predominantly `accepted_context_only` or `accepted_block_child` and cause large nonblank-to-blank semantic-field transitions;
+- recovered facet-review files cover only 68/2,148 changed keys.
 
-The historical/current driver-master versions are already content-identified, but their human review lineage and lossless supersession are not adjudicated.
-
-HARVEST-002 closed a different question: current-35 identity authority exists, while its accepted SWID repair was not inherited by current control. Do not widen HARVEST-003 back into source-wave identity or itinerary work.
+The unresolved object is therefore the **producer and acceptance lineage of `d62...`**, not the existence of historical semantic authority.
 
 ## Search roots
 
 - `/Users/matthewsmith/Desktop/Rawlsing`
 - `/Users/matthewsmith/Desktop/RawlsingsExcess`
 
-## Exact target identities
+## Exact primary identities / aliases
 
-### `questions_master_semantic.csv`
-
-Recover every occurrence and exact bytes for at least these known identities:
-
-- `171d399da7e0f2bbd66dcce08a6c353978e48b69fee8d32ac6b1720d10d70ca5`
-  - known size: `6,586,323` bytes
-- `6e76965c1e00c90e1ae4a4647f99b851dc558a345c2a2792151143cb35fe2fc0`
-  - known size: `3,067,321` bytes
-
-### `questions_master_drivers.csv`
-
-Recover every occurrence and exact bytes for:
-
-- `d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011`
-  - `16,864,669` bytes
-- `53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711`
-  - `3,683,893` bytes
-
-Known locations include:
-
-- `/Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/questions_master_drivers.csv`
-- `Rawlsing_RETRIEVAL_PACKAGE_20260808/staging/04_QSM_ONTOLOGY_AUTHORITY/data/final_codebooks/questions_master_drivers.csv`
-- historical `RawlsingDriverBundle_recovered/{canonical,raw_inputs}/questions_master_drivers.csv`
-
-Do not assume any of these is canonical from its location.
-
-## Narrow provenance / review targets
-
-Search exact names and provenance terms only where they bear on the four target master identities or the nine changed fields:
-
-- `questions_master_semantic.csv`
 - `questions_master_drivers.csv`
-- files whose names contain `driver` plus `triage`, `review`, `gap`, `adjudication`, `facet`, `assignment`, `mapping`, or `authority`
-- files whose names contain `semantic` plus `triage`, `review`, `master`, `adjudication`, or `authority`
-- driver/facet registries, taxonomies or mapping tables explicitly read by a target builder/updater
-- builders/updaters/scripts that explicitly read one target master and write another target master or write any of the nine fields above
-- READMEs/manifests/receipts containing one of the four exact target SHA-256 identities
-- READMEs/manifests/receipts explicitly claiming semantic-master/driver-master replacement, promotion, retirement, migration, supersession or preservation
-- explicit reviewer/status/basis/provenance surfaces referenced by those builders/updaters
+  - target SHA-256 `d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011`
+- earlier accepted driver master
+  - SHA-256 `53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711`
+- later semantic master feeding the broader lineage
+  - SHA-256 `171d399da7e0f2bbd66dcce08a6c353978e48b69fee8d32ac6b1720d10d70ca5`
+- Register A SHA `f47c8adb65546b1c0a06dcd31dc0b827b59f8975a3806646f41a0742966c3d84`
+- Register B SHA `15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b`
 
-Do **not** collect unrelated QSM/FQRA/V550 artifacts merely because they mention drivers. Follow an exact filename, SHA, path, import/input, output or provenance clue from the target lineage.
+Search exact backup/version aliases:
 
-Inspect archives only when an exact filename/SHA/provenance clue points inside. Do not sweep unrelated archives or gigabytes.
+- `questions_master_drivers.csv.bak_v5_schema`
+- `questions_master_drivers*.bak*`
+- `questions_master_drivers*pre*`
+- `questions_master_drivers*backup*`
+- other exact driver-master copies dated between 2026-05-19 17:29 EDT and 2026-05-20 13:51 EDT.
+
+## Exact producer-content clues
+
+Search source/text/config files for these literal strings:
+
+- `accepted_context_only`
+- `accepted_block_child`
+- `context_not_applicable`
+- `women_rights_representation`
+- `p0_block_pattern`
+- `semantic_deepening_pass`
+- `prompt_shell_cleanup`
+- `mapping_status`
+- `evidence_kind`
+- `question_block_id`
+- `structural_domain_id`
+- `driver_facet_id`
+- `relation_axis_id`
+- `target_entity_id`
+- `missingness_code`
+- `does_not_measure`
+- `strata_relevance`
+- `channel_affordances`
+- `forbidden_inference`
+
+Also recover, when directly linked to the producer lineage:
+
+- `gss_p0_block_patterns.yaml`
+- `lits_p0_block_patterns.yaml`
+- `gss_lits_semantic_deepening_report.md`
+- `arab_barometer_prompt_shell_cleanup_review.csv`
+- source for any prompt-shell cleanup / semantic-deepening / block-pattern updater
+- any script/notebook/SQL that reads and writes `questions_master_drivers.csv`, or concatenates/appends/merges structural mapping rows into it
+- any receipt/README/manifest/commit note explicitly accepting this mutation or defining duplicate-row precedence.
+
+Do not collect unrelated QSM/FQRA artifacts unless an exact producer/input/output reference points to them.
 
 ## Mechanical evidence requested
 
-For every occurrence of every responsive artifact:
+For every distinct pre-`d62` driver-master candidate:
 
-- absolute path
-- SHA-256
-- size
-- mtime
-- ordinary file versus archive member
-- archive/member path and member SHA where applicable
-- exact-duplicate group
+- absolute path, SHA-256, bytes, mtime
+- exact header and row count
+- `(source,wave,var_name)` distinct/duplicate statistics
+- whether its effective last-row-wins nine-field projection matches Register A for the 18,262 matched structure keys; report count only, no semantic interpretation.
 
-For each of the four target master CSV identities:
+For every producer/updater:
 
-- exact header
-- exact row count
-- candidate row-key columns mechanically available in the file
-- uniqueness/null counts for those candidate keys
-- distinct-count/value-count summaries only for columns whose names explicitly indicate driver, facet, semantic, review, status, basis, authority, provenance, source, wave, question or variable identity
+- exact input/output filenames
+- whether rows are appended, concatenated, merged, replaced or updated in place
+- exact ordering law before write
+- exact key/join columns
+- exact columns copied/blanked/assigned
+- exact source of `mapping_status` and structural columns
+- whether duplicate `(source,wave,var_name)` rows are knowingly permitted
+- whether any explicit precedence law exists
+- any explicit review/acceptance gate, reviewer, status or authority reference.
 
-For each old→new pair (`questions_master_semantic` and `questions_master_drivers`):
+For any receipt/authority text:
 
-1. determine a **mechanical** stable row-key only if the columns make one exact and unambiguous;
-2. if such a key exists, report:
-   - rows only old
-   - rows only new
-   - rows present in both
-   - changed rows
-   - changed cells by column
-   - unchanged cells by column where useful
-3. if no exact key is mechanically defensible, say so and do not invent one.
-
-For every responsive builder/updater:
-
-- exact input filenames
-- exact output filenames
-- exact key/join/filter columns
-- exact columns assigned/written
-- any explicit manual-review/status/basis/provenance columns read or written
-- any explicit file/row selection law
-- do not interpret the semantic correctness of assignments.
-
-For every responsive triage/review/adjudication artifact:
-
-- exact header/schema
-- exact row count
-- mechanically report reviewer/review/status/basis/provenance/date columns
-- mechanically report which target row keys/driver/facet fields it references
-- do not decide whether a human judgment was right.
+- quote only the minimum exact lines that state acceptance, migration, supersession, preservation, duplicate precedence, or intentional semantic replacement.
 
 ## Required returned ZIP
 
@@ -135,32 +114,25 @@ One bounded ZIP containing:
 - `EVIDENCE_MANIFEST.csv`
 - `SHA256SUMS.txt`
 - `SEARCH_RECEIPT.md`
-- `SEMANTIC_MASTER_MECHANICAL_RECEIPT.json`
-- `DRIVER_MASTER_MECHANICAL_RECEIPT.json`
-- `MASTER_PAIR_DIFF_RECEIPT.json`
-- `BUILDER_UPDATER_LINEAGE_RECEIPT.csv`
-- `REVIEW_TRIAGE_LINEAGE_RECEIPT.csv`
-- `ARCHIVE_MEMBER_MANIFEST.csv` if archives were inspected
-- `payload/` exact bytes of the four target masters plus only narrow responsive provenance/review/build artifacts
+- `PRE_D62_MASTER_CENSUS.csv`
+- `D62_PRODUCER_LINEAGE_RECEIPT.csv`
+- `DUPLICATE_SHADOWING_MECHANICAL_RECEIPT.json`
+- `ACCEPTANCE_AND_PRECEDENCE_RECEIPT.csv`
+- `payload/` exact bytes of only responsive pre-master candidates, producer/updater/configs and explicit authority/receipt objects.
 
-`EVIDENCE_MANIFEST.csv` must preserve:
-
-`archive_relative_path,original_absolute_path,sha256,size_bytes,mtime_local,artifact_name,browser_request_id,collection_reason,exact_duplicate_group_if_known`
-
-`SEARCH_RECEIPT.md` must state roots searched, exact patterns/SHAs, omitted roots, found/not-found results, errors, archives inspected, and transformations. Expected transformation of payload bytes: none.
+Do not include raw survey microdata.
 
 ## Forbidden
 
-- no delete/move/rename/edit/normalize;
+- no deletion/move/rename/edit/normalization;
 - no builder/updater execution;
-- no regeneration of any semantic or driver master;
+- no regeneration of any master/register;
+- no deduplication or row reordering;
 - no semantic interpretation;
-- no LLM-derived driver/facet assignment;
-- no selection of a canonical version by recency, size, path, row count or apparent completeness;
-- no claim that a later QSM/FQRA/V550 artifact losslessly supersedes these masters without explicit positive evidence;
-- no raw survey microdata;
-- do not reopen `EXP-001 QUESTION_STRUCTURE`, whose manual/source-topology core is already recovered.
+- no declaration that `accepted_context_only` or `accepted_block_child` automatically supersedes semantic authority;
+- no canonical selection from recency/path/row count;
+- no repair proposal in the local packet.
 
-Return the ZIP to HQ for Browser adjudication.
+Return the ZIP to Browser HQ for adjudication.
 
-`AUTHORITY_CENSUS_LOCAL_HARVEST_REQUEST__HARVEST_003`
+`AUTHORITY_CENSUS_LOCAL_HARVEST_REQUEST__HARVEST_004`
