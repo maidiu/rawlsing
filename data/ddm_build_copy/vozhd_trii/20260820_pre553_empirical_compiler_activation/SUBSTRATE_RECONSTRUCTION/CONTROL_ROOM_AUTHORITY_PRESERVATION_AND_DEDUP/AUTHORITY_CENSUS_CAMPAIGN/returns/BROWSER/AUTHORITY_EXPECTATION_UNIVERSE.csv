@@ -1,6 +1,6 @@
 expectation_id,authority_family,semantic_obligation,scope_kind,scope_id,known_consumer,governing_authority_ref,required_for_current_35,required_for_new_survey_admission,search_status,final_disposition
 EXP-001,QUESTION_STRUCTURE,question structure manual-review/source-topology authority,GLOBAL_CURRENT_35,CURRENT_35,V550 source-structure admission; compiler,Authority38/39 + G1A-B01,true,true,LOCATED__MANUAL_CORE_RECOVERED__CURRENT_35_PROJECTION_PROVED,EXISTS__ACCEPTED_AUTHORITY_MAPPED
-EXP-002,CURRENT_35_SCOPE,current-35 question-wave scope/itinerary authority,GLOBAL_CURRENT_35,CURRENT_35,semantic review routing; V550,Authority38/39 + G1A-B02,true,true,LOCATED__CURRENT_35_SCOPE_EXISTS__ITINERARY_SUPERSESSION_NOT_PROVED,
+EXP-002,CURRENT_35_SCOPE,current-35 question-wave scope/itinerary authority,GLOBAL_CURRENT_35,CURRENT_35,semantic review routing; V550,Authority38/39 + G1A-B02,true,true,EXISTS__ACCEPTED_SCOPE_IDENTITY_AUTHORITY_MAPPED__CURRENT_CONTROL_NOT_INHERITED,
 EXP-003,QUESTION_USE,question-level manual use overrides with reviewer/reason provenance,QUESTION_SET,GSS_OVERRIDES,V550/V551 eligibility,Authority38,true,true,EXISTS__ACCEPTED_AUTHORITY_MAPPED,EXISTS__ACCEPTED_AUTHORITY_MAPPED
 EXP-004,RESPONDENT_SOURCE,respondent-wave source-variable/fallback authority,FAMILY_WAVE,CURRENT_35,C11/respondent extraction,Authority38/39,true,true,LOCATED__SUPERSESSION_NOT_PROVED,
 EXP-005,RESPONDENT_SEMANTICS,respondent-wave category/value normalization authority,FAMILY_WAVE,CURRENT_35,C11/demographic normalization,Authority38/39,true,true,LOCATED__SUPERSESSION_NOT_PROVED,
@@ -16,7 +16,7 @@ EXP-014,QRA,QRA directional calibration/frozen precedent,QUESTION_RESPONSE,QRA23
 EXP-015,QSM,QSM relation/structural predecessor lineage,QUESTION_RELATION,QSM_TARGET,QSMv2/FQRA,Authority38/39,true,true,LOCATED__SUPERSESSION_NOT_PROVED,
 EXP-016,QSMV2,QSMv2 semantic-unit/block/structural-coordinate authority,QUESTION_RELATION,3196_UNITS_4438_IMPL,FQRA/I04,Authority38/39,true,true,EXISTS__ACCEPTED_AUTHORITY_MAPPED,EXISTS__ACCEPTED_AUTHORITY_MAPPED
 EXP-017,FQRA_R1,Full Question Relation Authority R1,QUESTION_RELATION,18518_ROWS,V550-V552J/I04,Authority38/39,true,true,EXISTS__ACCEPTED_AUTHORITY_MAPPED,EXISTS__ACCEPTED_AUTHORITY_MAPPED
-EXP-018,V550,V550 question-use/semantic-role authority inputs,QUESTION_USE,CURRENT_35,V550 compiler,Authority38/39,true,true,SEARCH_IN_PROGRESS,
+EXP-018,V550,V550 question-use/semantic-role authority inputs,QUESTION_USE,CURRENT_35,V550 compiler,Authority38/39,true,true,LOCATED__CURRENT_CONTROL_LITERAL_ITINERARY_JOIN_DIVERGES_FROM_ACCEPTED_SWID_UID_REPAIR,
 EXP-019,V551,V551 response-scale/directionality/applicability authority,QUESTION_RESPONSE,CURRENT_35,V551 compiler,Authority38/39,true,true,EXISTS__ACCEPTED_AUTHORITY_MAPPED,EXISTS__ACCEPTED_AUTHORITY_MAPPED
 EXP-020,V552J,V552/V552J relation/structural handoff authority,STRUCTURAL_RELATION,CURRENT_35,V552/V553 handoff,Authority38/39,true,true,SEARCH_IN_PROGRESS,
 EXP-021,I04,I04 StructuralAdmissionRule/external authority bindings,STRUCTURAL_ADMISSION,CURRENT_35,I04->V553,Authority73,true,true,SEARCH_IN_PROGRESS,
@@ -24,7 +24,7 @@ EXP-022,NEGATIVE_AUTHORITY,negative/blocked/review-required/exclusion authority,
 EXP-023,WVS,WVS family manual/source semantic authority,FAMILY,WVS_CURRENT,C11/V550/V551/I04,Authority38/74,true,true,SEARCH_IN_PROGRESS,
 EXP-024,LITS,LiTS family manual/source semantic authority,FAMILY,LITS_CURRENT,C11/V550/V551/I04,Authority38,true,true,SEARCH_IN_PROGRESS,
 EXP-025,GSS,GSS response/direction/use manual authority,FAMILY,GSS_CURRENT,V550/V551/I04,Authority38,true,true,SEARCH_IN_PROGRESS,
-EXP-026,EVS,EVS manual category/source authority incl EVS1999 scope,FAMILY,EVS_CURRENT,C11/V550/itinerary,Authority38/40,true,true,LOCATED__EVS1999_SOURCE_DOCUMENTARY_RESPONDENT_AUTHORITY__MALFORMED_TEXT_BLOCK_EXPLICIT,EXISTS__PARTIAL_SCOPE__REMAINING_GAP_EXPLICIT
+EXP-026,EVS,EVS manual category/source authority incl EVS1999 scope,FAMILY,EVS_CURRENT,C11/V550/itinerary,Authority38/40,true,true,LOCATED__EVS1999_MULTIPLE_AUTHORITY_CARRIERS__WAVE_ITINERARY_GATE_SUPERSESSION_NOT_PROVED,EXISTS__PARTIAL_SCOPE__REMAINING_GAP_EXPLICIT
 EXP-027,LATINOBAROMETRO,Latinobarómetro driver/anomaly/manual authority,FAMILY,LATAM_CURRENT,C11/V550/V551,Authority38,true,true,SEARCH_IN_PROGRESS,
 EXP-028,SOUTH_ASIA,South Asia family manual/source authority,FAMILY,SOUTH_ASIA_CURRENT,C11/V550/V551,Authority38,true,true,SEARCH_IN_PROGRESS,
 EXP-029,OTHER_FAMILIES,Afrobarometer/Arab/Asian manual/source authority,FAMILY,OTHER_CURRENT_35,C11/V550/V551,Authority38,true,true,SEARCH_IN_PROGRESS,
