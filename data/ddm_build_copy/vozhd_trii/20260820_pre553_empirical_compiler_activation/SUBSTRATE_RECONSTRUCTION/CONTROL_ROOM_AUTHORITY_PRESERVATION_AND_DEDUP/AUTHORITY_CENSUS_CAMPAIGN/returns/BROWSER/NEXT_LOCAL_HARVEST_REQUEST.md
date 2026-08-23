@@ -1,147 +1,166 @@
-# HARVEST-002 — CURRENT_35_SCOPE_IDENTITY_AND_AUDIT_BINDING_LINEAGE
+# HARVEST-003 — QUESTION_SEMANTIC_MASTER_AND_DRIVER_FACET_LINEAGE
 
 Status: `ISSUED__AWAITING_LOCAL_PACKET`
 
 ## Exact authority question
 
-Does Rawlsing already possess an Aug. 17 UID-bearing, hash-bound current-35 scope layer that positively binds the governed CLOSED_35 universe — including EVS 1999 and excluding Asian Barometer W6 — and, separately, does any existing artifact explicitly preserve/supersede the historical `question_wave_itinerary.csv` manual-designation, documentary-reference and review-note authority?
+Which exact historical/current `questions_master_semantic.csv` and `questions_master_drivers.csv` lineage carries the human/manual semantic-classification, driver, facet, scope and triage capital behind the **2,148-row driver-semantic evolution** isolated by HARVEST-001; what exact review/triage/adjudication artifacts caused those changes; and has any later accepted authority losslessly absorbed every live human decision?
 
-Do **not** assume a physical/scope binding losslessly supersedes itinerary manual-review semantics. Recover the exact evidence and let Browser HQ adjudicate it.
+This is an authority-recovery and provenance court. It is **not** a request to recompute drivers, infer semantics, or choose a preferred version by recency.
 
 ## Why this is now the smallest next request
 
-HARVEST-001 proved that all three recovered 18,792-row `question_structure_register.csv` payloads already have the correct 35 family-wave population. It also recovered an Aug. 17 builder whose source code requires a hash-bound 35-wave binding and fails closed if Asian Barometer W6 is present.
+HARVEST-001 proved that the question-structure/manual core is invariant and recovered. It separately proved that the oldest→June register transition changes 13,330 cells across 2,148 rows, entirely in these driver/semantic fields:
 
-The binding and source-wave identity payloads were not included in HARVEST-001.
+- `final_driver_id`
+- `final_driver_scope`
+- `final_driver_label`
+- `final_driver_origin`
+- `semantic_scope`
+- `semantic_primary_driver`
+- `semantic_secondary_driver`
+- `semantic_shared_driver`
+- `semantic_notes`
+
+The historical/current driver-master versions are already content-identified, but their human review lineage and lossless supersession are not adjudicated.
+
+HARVEST-002 closed a different question: current-35 identity authority exists, while its accepted SWID repair was not inherited by current control. Do not widen HARVEST-003 back into source-wave identity or itinerary work.
 
 ## Search roots
 
 - `/Users/matthewsmith/Desktop/Rawlsing`
 - `/Users/matthewsmith/Desktop/RawlsingsExcess`
 
-## Exact target identities / names
+## Exact target identities
 
-Priority exact identities:
+### `questions_master_semantic.csv`
 
-- `source_structure_audit_binding_35wave_v1.json`
-  - SHA-256 `d8b73c0fc2498084c69adf0703313286c417c0170431613a024eec39412a68ce`
-  - 1,943 bytes
+Recover every occurrence and exact bytes for at least these known identities:
 
-- `ddm_source_wave_identity.py`
-  - SHA-256 `4847f568d91ec7f94157e09c9a5d28052e85d7ff436877fb63bcd9343c24af7e`
-  - 18,750 bytes
+- `171d399da7e0f2bbd66dcce08a6c353978e48b69fee8d32ac6b1720d10d70ca5`
+  - known size: `6,586,323` bytes
+- `6e76965c1e00c90e1ae4a4647f99b851dc558a345c2a2792151143cb35fe2fc0`
+  - known size: `3,067,321` bytes
 
-- Aug. 17 `ddm_survey_identity.py`
-  - SHA-256 `9884b2886115e15c4636378c12bb7a2279c51411af298cd7ba74d0911ed93295`
-  - 3,088 bytes
+### `questions_master_drivers.csv`
 
-Also recover/distinguish if present:
+Recover every occurrence and exact bytes for:
 
-- Aug. 16 `ddm_survey_identity.py`
-  - SHA-256 `a898524a9ba269dc9e3939287ecde011f2cce6618e67fa570703c4ace11bea5d`
-  - 8,622 bytes
-- historical `ddm_survey_identity.py`
-  - SHA-256 `18333b59b82f8faef7459b873f819e2cf4a38312bdd0ec68b1cdc7c172297158`
-  - 7,962 bytes
-- `source_dataset_manifest.csv`
-  - SHA-256 `7e51bda6cbf3ad813679ad109701b4475f09e11cb9f0c3f23fc737e5083db826`
-- `source_dataset_manifest.yaml`
-  - SHA-256 `330cb0f057d5684cc11c9f50e2bc49c94d6373aa6d8edcd74baccfa673aad937`
-- `question_wave_itinerary.csv`
-  - known SHA-256 `866eb3ab25fbd9479781c15a0aecbb00a9d547fdc947cc443e8b904262b86eb3`
-- `respondent_wave_source_registry.json`
-  - SHA-256 `9c6c194215caaf0acc426f6e2b4ae08000984b216fcd3151ad43c7aa9d5f9cc3`
-- `respondent_wave_semantics_registry.json`
-  - SHA-256 `5e1a836943ce660c4e1f21fe5077002c3f95fde004f442e40e80a48ad01c9c33`
+- `d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011`
+  - `16,864,669` bytes
+- `53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711`
+  - `3,683,893` bytes
 
-The Aug. 17 UID-bearing builder SHA
-`2ea25c11cde8bd2ee3b00d6ba6608ebf452dc05dbede227faf7fcbc3700a93dc`
-is already recovered in HARVEST-001. Do not duplicate its bytes unless needed to preserve package-local provenance; a hash/path reference is sufficient.
+Known locations include:
 
-Search aliases/provenance terms narrowly:
-- `CLOSED_35`
-- `current_35`
-- `source wave identity`
-- `source_wave_uid`
-- `wave_uid`
-- `SWID`
-- `source_structure_audit_binding`
-- `scope migration`
-- `itinerary`
-- `supersession`
-- `precedence`
-- `EVS 1999`
-- `Asian Barometer W6`
+- `/Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/questions_master_drivers.csv`
+- `Rawlsing_RETRIEVAL_PACKAGE_20260808/staging/04_QSM_ONTOLOGY_AUTHORITY/data/final_codebooks/questions_master_drivers.csv`
+- historical `RawlsingDriverBundle_recovered/{canonical,raw_inputs}/questions_master_drivers.csv`
 
-Prefer the two Aug. 17 `rawlsing-agent-swid-pg8-*` package families already identified by HARVEST-001/tree evidence. Inspect other archives only when an exact name/SHA/provenance clue points to them.
+Do not assume any of these is canonical from its location.
+
+## Narrow provenance / review targets
+
+Search exact names and provenance terms only where they bear on the four target master identities or the nine changed fields:
+
+- `questions_master_semantic.csv`
+- `questions_master_drivers.csv`
+- files whose names contain `driver` plus `triage`, `review`, `gap`, `adjudication`, `facet`, `assignment`, `mapping`, or `authority`
+- files whose names contain `semantic` plus `triage`, `review`, `master`, `adjudication`, or `authority`
+- driver/facet registries, taxonomies or mapping tables explicitly read by a target builder/updater
+- builders/updaters/scripts that explicitly read one target master and write another target master or write any of the nine fields above
+- READMEs/manifests/receipts containing one of the four exact target SHA-256 identities
+- READMEs/manifests/receipts explicitly claiming semantic-master/driver-master replacement, promotion, retirement, migration, supersession or preservation
+- explicit reviewer/status/basis/provenance surfaces referenced by those builders/updaters
+
+Do **not** collect unrelated QSM/FQRA/V550 artifacts merely because they mention drivers. Follow an exact filename, SHA, path, import/input, output or provenance clue from the target lineage.
+
+Inspect archives only when an exact filename/SHA/provenance clue points inside. Do not sweep unrelated archives or gigabytes.
 
 ## Mechanical evidence requested
 
-For every distinct responsive artifact:
-- absolute path;
-- SHA-256;
-- byte size;
-- mtime;
-- ordinary file versus archive member;
-- archive/member identity where applicable.
+For every occurrence of every responsive artifact:
 
-For `source_structure_audit_binding_35wave_v1.json`, report without interpretation:
-- top-level keys;
-- exact `schema` and `status`;
-- exact ordered `expected_wave_uids`;
-- exact ordered `observed_wave_uids`;
-- list lengths and distinct counts;
-- exact artifact count;
-- for every artifact: `wave_uid`, `closed_35_member`, audit filename, audit SHA/hash fields and any explicit source/family/wave fields;
-- whether an exact string containing Asian Barometer W6 occurs;
-- whether an exact EVS1999/EVS 1999 UID/string occurs.
+- absolute path
+- SHA-256
+- size
+- mtime
+- ordinary file versus archive member
+- archive/member path and member SHA where applicable
+- exact-duplicate group
 
-For `ddm_source_wave_identity.py` and all distinct `ddm_survey_identity.py`:
-- exact mechanically defined constants/tables/aliases related to CLOSED_35/current-35 membership;
-- function names that construct or resolve source/wave UIDs;
-- exact explicit EVS 1999 and Asian W6 entries if present;
-- imported authority/config filenames;
-- no semantic interpretation.
+For each of the four target master CSV identities:
 
-For `source_dataset_manifest.csv|yaml`:
-- exact rows/count;
-- headers/top-level keys;
-- exact source/family/wave/UID/scope fields if present;
-- mechanically report whether EVS1999 is present and Asian W6 absent/present.
+- exact header
+- exact row count
+- candidate row-key columns mechanically available in the file
+- uniqueness/null counts for those candidate keys
+- distinct-count/value-count summaries only for columns whose names explicitly indicate driver, facet, semantic, review, status, basis, authority, provenance, source, wave, question or variable identity
 
-For `question_wave_itinerary.csv`:
-- enumerate every distinct SHA identity found;
-- row count/header;
-- mechanically report EVS1999 and Asian W6 presence;
-- copy any exact nearby README/authority/migration object that explicitly says it supersedes, migrates, replaces, preserves, or retires itinerary scope/manual fields.
+For each old→new pair (`questions_master_semantic` and `questions_master_drivers`):
+
+1. determine a **mechanical** stable row-key only if the columns make one exact and unambiguous;
+2. if such a key exists, report:
+   - rows only old
+   - rows only new
+   - rows present in both
+   - changed rows
+   - changed cells by column
+   - unchanged cells by column where useful
+3. if no exact key is mechanically defensible, say so and do not invent one.
+
+For every responsive builder/updater:
+
+- exact input filenames
+- exact output filenames
+- exact key/join/filter columns
+- exact columns assigned/written
+- any explicit manual-review/status/basis/provenance columns read or written
+- any explicit file/row selection law
+- do not interpret the semantic correctness of assignments.
+
+For every responsive triage/review/adjudication artifact:
+
+- exact header/schema
+- exact row count
+- mechanically report reviewer/review/status/basis/provenance/date columns
+- mechanically report which target row keys/driver/facet fields it references
+- do not decide whether a human judgment was right.
 
 ## Required returned ZIP
 
-One bounded ZIP:
+One bounded ZIP containing:
 
 - `README.md`
 - `EVIDENCE_MANIFEST.csv`
 - `SHA256SUMS.txt`
 - `SEARCH_RECEIPT.md`
-- `SCOPE_BINDING_MECHANICAL_RECEIPT.json`
-- `IDENTITY_CODE_MECHANICAL_RECEIPT.json`
-- `ITINERARY_LINEAGE_RECEIPT.csv`
+- `SEMANTIC_MASTER_MECHANICAL_RECEIPT.json`
+- `DRIVER_MASTER_MECHANICAL_RECEIPT.json`
+- `MASTER_PAIR_DIFF_RECEIPT.json`
+- `BUILDER_UPDATER_LINEAGE_RECEIPT.csv`
+- `REVIEW_TRIAGE_LINEAGE_RECEIPT.csv`
 - `ARCHIVE_MEMBER_MANIFEST.csv` if archives were inspected
-- `payload/` exact bytes of each distinct responsive target and narrow explicit provenance/migration authority.
+- `payload/` exact bytes of the four target masters plus only narrow responsive provenance/review/build artifacts
 
-Do not include raw survey microdata.
+`EVIDENCE_MANIFEST.csv` must preserve:
+
+`archive_relative_path,original_absolute_path,sha256,size_bytes,mtime_local,artifact_name,browser_request_id,collection_reason,exact_duplicate_group_if_known`
+
+`SEARCH_RECEIPT.md` must state roots searched, exact patterns/SHAs, omitted roots, found/not-found results, errors, archives inspected, and transformations. Expected transformation of payload bytes: none.
 
 ## Forbidden
 
-- no deletion/move/rename/edit/normalization;
-- no builder execution;
-- no itinerary regeneration;
-- no source-structure register regeneration;
-- no semantic adjudication;
-- no declaration that the binding supersedes itinerary manual meaning;
-- no canonical selection by recency, package name, row count or similarity;
-- no inference that same source/family label means same wave identity.
+- no delete/move/rename/edit/normalize;
+- no builder/updater execution;
+- no regeneration of any semantic or driver master;
+- no semantic interpretation;
+- no LLM-derived driver/facet assignment;
+- no selection of a canonical version by recency, size, path, row count or apparent completeness;
+- no claim that a later QSM/FQRA/V550 artifact losslessly supersedes these masters without explicit positive evidence;
+- no raw survey microdata;
+- do not reopen `EXP-001 QUESTION_STRUCTURE`, whose manual/source-topology core is already recovered.
 
 Return the ZIP to HQ for Browser adjudication.
 
-`AUTHORITY_CENSUS_LOCAL_HARVEST_REQUEST__HARVEST_002`
+`AUTHORITY_CENSUS_LOCAL_HARVEST_REQUEST__HARVEST_003`
