@@ -1,0 +1,40 @@
+{
+  "authority_status_counts": {
+    "BLOCKED_STRUCTURAL_MAPPING_AUTHORITY": 2,
+    "GOVERNED_ADMINISTRATIVE_DISPOSITION": 5,
+    "GOVERNED_MANUAL_RELATION_AUTHORITY": 6,
+    "GOVERNED_NON_DIRECTIONAL_DISPOSITION": 405,
+    "GOVERNED_QSMV2_RELATION_AUTHORITY": 195
+  },
+  "bounded_structural_unknowns": [
+    {
+      "blocked_coordinates": ["driver", "facet", "structural_domain", "relation_axis", "target_entity"],
+      "display_text": "Leisure time",
+      "var_code": "Q3"
+    },
+    {
+      "blocked_coordinates": ["driver", "facet", "structural_domain", "relation_axis", "target_entity"],
+      "display_text": "How much freedom of choice and control",
+      "var_code": "Q48"
+    }
+  ],
+  "canonical_wave": "W7",
+  "derived_hash_scope": "sorted selected FQRA fields for exactly the 613 WVS7 rows; receipt only, not a new authority identity",
+  "derived_wvs7_subset_receipt_hash": "8ff0f1e6160168de3b62c8113a3f0d4d9ec2db0aad4706a53110dfc49cb17e92",
+  "duplicate_var_code_rows": 0,
+  "expected_source_variable_count": 613,
+  "fqra_artifact": {
+    "bytes": 47874248,
+    "path": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/QSM_FULL_QUESTION_RELATION_AUTHORITY_FINAL_R1.csv",
+    "sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13"
+  },
+  "holding": "Exhaustive accepted source-slot semantic disposition exists. No accepted automatic FQRA-role-to-C11-object-family derivation rule was located; that narrow bridge remains manual.",
+  "manual_semantic_lane_counts": {"administrative": 28, "context": 236, "position": 81, "relation": 203, "topology": 65},
+  "manual_semantic_role_counts": {"ADMINISTRATIVE_METADATA": 28, "POSITION_COORDINATE": 81, "RELATION_EVIDENCE": 203, "STRUCTURAL_CONTEXT": 301},
+  "mapping_status_counts": {"accepted_block_child": 58, "accepted_context_only": 358, "blocked_qsmv2_coordinate": 2, "governed_qsmv2_relation": 195},
+  "source_family": "WVS",
+  "status": "PASS__EXACT_WVS7_FQRA_DENOMINATOR_RECOVERED",
+  "structural_adjudication_required_counts": {"BLOCKED_COORDINATE_REMAINS": 2, "NO": 611},
+  "unique_var_code": 613,
+  "wvs7_rows": 613
+}
