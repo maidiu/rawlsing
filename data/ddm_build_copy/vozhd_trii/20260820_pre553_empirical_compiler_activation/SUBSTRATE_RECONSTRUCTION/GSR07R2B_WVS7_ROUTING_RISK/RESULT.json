@@ -1,0 +1,78 @@
+{
+  "accepted_r1_return": "49a26e30c464ff1c5125e06a8ab872a9390bf0aa",
+  "anti_inference_law": [
+    "no routing from missingness",
+    "no routing from response incidence",
+    "no routing from frequencies",
+    "no routing from populated-row complement",
+    "no Q294 A/B complement inference",
+    "no substitution of Q206/Q207 for Internet/social-media-use without explicit authority"
+  ],
+  "authority_hashes": {
+    "CODEBOOK": "d13c892099ac6a4681acdad344b81f99d086a5694be94cf5e7a578a62bf02ad3",
+    "QUESTIONNAIRE": "5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b",
+    "R14_AUDIT": "fa1d4d91692b7e5349657d0e3becd3ee248d8d4a76ceec1dd5238d34843a7fa0",
+    "R14_INDEX": "174de5af9c3bf0fc1929bac87fa8e62ace95b2aeab39c1ff6d718a14ad8194f2"
+  },
+  "branch": "agent/vozhd-trii-gsr07r2b-wvs7-routing-risk",
+  "certification_performed": false,
+  "closed_release_module_scopes": {
+    "gender_versions": {
+      "1": [
+        "Nigeria"
+      ],
+      "2": [
+        "Ethiopia",
+        "Kenya",
+        "Zimbabwe"
+      ],
+      "3": [
+        "India"
+      ]
+    },
+    "mena": [
+      "Iraq",
+      "Jordan",
+      "Lebanon",
+      "Egypt"
+    ],
+    "political_trust": [
+      "Ethiopia",
+      "Kenya",
+      "Iran",
+      "Kyrgyzstan",
+      "Libya",
+      "Morocco",
+      "Myanmar",
+      "Nicaragua",
+      "Philippines",
+      "Tajikistan",
+      "Venezuela",
+      "Vietnam",
+      "Zimbabwe"
+    ],
+    "wee": [
+      "India (2023)"
+    ]
+  },
+  "court": "G-SR07-R2B WVS7 ROUTING / RISK-SET CLOSURE",
+  "documentary_gap_count": 12,
+  "exact_start_head": "be68423b5c48fbe5fc445e866963a964a59febfa",
+  "frozen_contract_contradiction_found": false,
+  "lane": "B",
+  "lane_c_provisional_consumed": false,
+  "positive_child_rules": {
+    "H310": "exact gender target administration AND H309=Yes",
+    "MENA_26_27": "MENA module AND MENA_25=Yes",
+    "NG_13": "Nigeria item administration AND respondent sex=female",
+    "Q217_Q220": "respondent uses Internet/social-media; exact row determinant must be positively accepted",
+    "Q294A": "political trust module AND explicit form A",
+    "Q294B": "political trust module AND explicit form B"
+  },
+  "risk_ref_construction": "RISK_SET_REF_CONSTRUCTION_LAW.md",
+  "routing_rule_family_count": 15,
+  "source_rows_scanned": false,
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "status": "RETURNED__LANE_B_RULE_FAMILIES_FROZEN__DOCUMENTARY_JOIN_REQUIRED__NON_CERTIFYING",
+  "stop_token": "PRE553_GSR07R2B_WVS7_ROUTING_RISK_RETURNED"
+}
