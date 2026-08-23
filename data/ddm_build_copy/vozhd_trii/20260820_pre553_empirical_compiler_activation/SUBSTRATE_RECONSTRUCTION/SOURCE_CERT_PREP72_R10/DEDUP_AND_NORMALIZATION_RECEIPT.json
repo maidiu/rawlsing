@@ -1,0 +1,20 @@
+{
+  "authority": "72",
+  "bundled_without_deduplication": 239,
+  "exact_duplicates_removed": 0,
+  "future_executable_parser_rule": "Dereference each source envelope, select exactly source_file with the recorded count, then enforce every native fixture row's own fixture_kind, physical/metadata expectation, documentary scope, purpose and fail-closed condition.",
+  "input_fixture_rows": 273,
+  "mapped_input_fixture_rows": 273,
+  "normalization_decision": "CONSERVATIVE_REFERENCE_NORMALIZATION",
+  "normalization_envelope_rows": 34,
+  "normalized_fixture_rows": 34,
+  "rationale": "Authority72 creates 34 source-scoped envelope rows, each immutably selecting all of that source's worker-native fixture rows and asserting the exact expected count. No two hostile obligations are treated as duplicates; every native row remains independently enforceable at its pinned worker artifact.",
+  "silent_drops": 0,
+  "status": "PASS__NO_INFORMATION_LOSS",
+  "worker_vocabulary_normalization": {
+    "assertion_scope": "retained exactly at pinned row",
+    "authority_status": "retained exactly at pinned row",
+    "cell_vs_metadata": "retained exactly at pinned row; metadata-only rows are not coerced into cell-state rows",
+    "fixture_kind": "worker-native value retained at exact pinned row; Authority72 envelope = OTHER_NAMED_HOSTILE_FIXTURE"
+  }
+}
