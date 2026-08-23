@@ -13,10 +13,22 @@
   "member_sha_gate": "PASS",
   "sha_measurement": {
     "max_rss_kb": 3888,
-    "wall_seconds": 0.09
+    "wall_seconds": 0.09,
+    "note": "original SHA-only receipt retained"
+  },
+  "independent_current_session_reprobe": {
+    "archive_sha256": "b2e90ee7ceefc230572e89687de28186544308949f8fd33c32b1d0ffb14b8feb",
+    "archive_bytes": 7686379,
+    "archive_members": ["LiTS_I.dta", "__MACOSX/._LiTS_I.dta"],
+    "extracted_member_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "extracted_member_bytes": 139531180,
+    "combined_unzip_and_hash_wall_seconds": 0.29600242500004015,
+    "combined_process_max_rss_kb": 111852,
+    "measurement_scope_note": "combined Python ZIP extraction plus archive/member hashing; not comparable to the original SHA-only RSS measurement",
+    "verdict": "EXACT_REPRODUCED"
   },
   "source_semantic_identity": "EXACT_MEMBER_SHA256",
-  "status": "PASS",
+  "status": "PASS__INDEPENDENTLY_REPRODUCED",
   "transport_source": "ChatGPT Library",
   "transport_substitution_detected": false
 }
