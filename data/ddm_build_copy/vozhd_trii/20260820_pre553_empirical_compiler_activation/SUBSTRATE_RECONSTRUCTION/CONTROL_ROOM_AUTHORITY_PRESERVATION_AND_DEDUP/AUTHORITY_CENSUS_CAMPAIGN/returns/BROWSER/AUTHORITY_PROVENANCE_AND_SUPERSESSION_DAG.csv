@@ -1,0 +1,15 @@
+edge_id,from_authority_object_id,to_authority_object_id,edge_type,evidence_status,notes
+EDGE-001,OBJ-QSR-CSV-A,OBJ-QSR-CSV-B,PARALLEL_DIVERGENT_VERSION,LOCAL_MANIFEST_ONLY,distinct SHA/size; chronology is not supersession
+EDGE-002,OBJ-QSR-CSV-B,OBJ-QSR-CSV-C,PARALLEL_DIVERGENT_VERSION,LOCAL_MANIFEST_ONLY,distinct SHA/size; chronology is not supersession
+EDGE-003,OBJ-QSR-CSV-B,OBJ-QSR-YAML,PACKAGES,PARTIAL,summary relationship; exact path pairing awaits HARVEST-001
+EDGE-004,OBJ-QSR-BUILDER-A,OBJ-QSR-CSV-B,DERIVED_FROM,UNPROVED_INSTANCE,builder family known; exact output/input closure pending
+EDGE-005,OBJ-QSR-BUILDER-A,OBJ-QSR-CSV-C,DERIVED_FROM,UNPROVED_INSTANCE,regeneration narrative exists; exact provenance pending
+EDGE-006,OBJ-QMD-NEW,OBJ-QSR-CSV-C,REVIEW_INPUT_TO,UNPROVED_INSTANCE,G1A establishes questions_master_drivers dependency; exact version binding pending
+EDGE-007,OBJ-QSR-CSV-C,OBJ-FQRA,PARTIALLY_ABSORBS,REJECTED_AS_LOSSLESS,G1A rejects lossless supersession: different universe/provenance
+EDGE-008,OBJ-QRA,OBJ-FQRA,LOSSLESSLY_ABSORBS,PROVED_FOR_QRA_SCOPE,R1 preserves frozen QRA precedent
+EDGE-009,OBJ-QSMV2,OBJ-FQRA,LOSSLESSLY_ABSORBS,PROVED_FOR_QSMV2_SCOPE,R1 integrates QSMv2 including blockers
+EDGE-010,OBJ-NEG,OBJ-FQRA,REFERENCES,LIVE,negative states preserved
+EDGE-011,OBJ-RSCALE,OBJ-V550V551-BIND,DERIVED_FROM,PROVED,binding pins exact response-contract keys
+EDGE-012,OBJ-ITIN,OBJ-QSR-CSV-B,REFERENCES,HISTORICAL,itinerary names structure register for many waves
+EDGE-013,OBJ-RESP-SRC,OBJ-ITIN,REFERENCES,HISTORICAL,itinerary names respondent source registry
+EDGE-014,OBJ-RESP-SEM,OBJ-ITIN,REFERENCES,HISTORICAL,itinerary names respondent semantics registry
