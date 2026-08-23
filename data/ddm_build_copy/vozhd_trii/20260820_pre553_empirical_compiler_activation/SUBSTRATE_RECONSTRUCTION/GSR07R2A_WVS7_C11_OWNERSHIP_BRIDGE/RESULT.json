@@ -1,0 +1,65 @@
+{
+  "accepted_gsr07r1_head": "49a26e30c464ff1c5125e06a8ab872a9390bf0aa",
+  "all_role_membership_counts": {
+    "C11Internal:RespondentIdentity@1.0.0_INPUT": 2,
+    "EmpiricalCoordinateFact@1.0.0": 256,
+    "EmpiricalUniverse@1.0.0_INPUT": 13,
+    "RespondentEvent@1.0.0": 380,
+    "SOURCE_PRESERVED_NONPARTICIPATING_EXCLUDED": 1,
+    "WeightMeasureFact@1.0.0": 4
+  },
+  "campaign": "G-SR07-R2A",
+  "disposition": "GSR07R2A_LANE_A_COMPLETE__EXACT_613_C11_OWNERSHIP_BRIDGE_RETURNED__NO_STRUCTURAL_AUTHORITY_CREATED",
+  "exact_start_head": "be68423b5c48fbe5fc445e866963a964a59febfa",
+  "explicit_projection_exclusion": [
+    "PWGHT"
+  ],
+  "i04_or_rawlsing_structural_authority_created": false,
+  "lane": "A_ONLY",
+  "lane_b_consumed": false,
+  "lane_c_consumed": false,
+  "no_613_reinterpretation": true,
+  "ownership_not_derived_merely_from_machine_role_labels": true,
+  "primary_ownership_counts": {
+    "C11Internal:RespondentIdentity@1.0.0_INPUT": 2,
+    "EmpiricalCoordinateFact@1.0.0": 214,
+    "EmpiricalUniverse@1.0.0_INPUT": 12,
+    "RespondentEvent@1.0.0": 380,
+    "SOURCE_PRESERVED_NONPARTICIPATING_EXCLUDED": 1,
+    "WeightMeasureFact@1.0.0": 4
+  },
+  "questionnaire_dual_coordinate_count": 42,
+  "r14": {
+    "authority": "R14_ACCEPTED_SOURCE_OBJECT_INDEX_R4.csv exact WVS/W7 rows",
+    "membership_count": 305,
+    "object_count": 45,
+    "rule": "Reuse exact accepted R14 object IDs/memberships only; no adjacency grouping and no Lane-B routing inference.",
+    "unique_member_slots": 258
+  },
+  "repository": "maidiu/rawlsing",
+  "source": {
+    "file": "WVS Wave 7.sav",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "slot_count": 613
+  },
+  "source_section_counts": {
+    "CONTEXTUAL": 154,
+    "QUESTIONNAIRE": 380,
+    "TECHNICAL": 40,
+    "WVS_INDEX": 39
+  },
+  "status": "RETURNED__LANE_A_C11_OWNERSHIP_BRIDGE_COMPLETE__LANES_B_C_UNTOUCHED",
+  "success_token": "PRE553_GSR07R2A_WVS7_C11_OWNERSHIP_RETURNED",
+  "terminal_accounting": {
+    "authorized_projection_slots": 612,
+    "exact_slots": 613,
+    "source_preserved_excluded_slots": 1,
+    "unique_var_codes": 613,
+    "unowned_slots": 0
+  },
+  "typed_structural_unknowns": [
+    "Q3",
+    "Q48"
+  ],
+  "worker_branch": "agent/vozhd-trii-gsr07r2a-wvs7-c11-ownership-bridge"
+}
