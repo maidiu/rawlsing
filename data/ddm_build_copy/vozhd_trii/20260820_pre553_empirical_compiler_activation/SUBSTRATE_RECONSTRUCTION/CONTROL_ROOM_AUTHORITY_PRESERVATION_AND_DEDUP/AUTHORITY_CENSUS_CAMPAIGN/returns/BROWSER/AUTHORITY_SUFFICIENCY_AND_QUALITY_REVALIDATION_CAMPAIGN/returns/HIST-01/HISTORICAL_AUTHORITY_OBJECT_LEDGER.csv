@@ -1,0 +1,17 @@
+authority_object_id,historical_object,required_state,evidence_state,information_role,related_edges
+A001,data/final_codebooks/questions_master_drivers.csv,HISTORICAL_OBJECT_REFERENCED__EXACT_BYTES_OR_IDENTITY_NOT_RECOVERED,absent at root; direct consumer exists,question semantic/structural mapping input,B001
+A002,live Postgres runtime database selected by DATABASE_URL,HISTORICAL_OBJECT_REFERENCED__EXACT_BYTES_OR_IDENTITY_NOT_RECOVERED,intentionally excluded from source transfer,respondent/source/response/position/weight state,B002-B004
+A003,WEIGHT_ALLOWLIST + PRIMARY_WEIGHT_ORDER,IMPLICIT_AUTHORITY__CODE_OR_ENVIRONMENT_BEHAVIOR,root code recovered in a819fb35337ea28c4a83352d0040030b3da83a7a,weight eligibility and precedence,B005
+A004,manifests/question_use_overrides.csv,CURRENTLY_KNOWN_EXACT_OBJECT,root blob c5b6ac243cd250a2f91c334e813aceec3e7fa7e4,question-use overrides,B006
+A005,manifests/question_wave_itinerary.csv,CURRENTLY_KNOWN_EXACT_OBJECT,root blob 1ee8a6dec8b9e48aaeb48f03d6c16dc01365b206,source/wave itinerary,B007
+A006,data/final_codebooks/structural_registries/gss2010_structural_overlay.csv,HISTORICAL_OBJECT_REFERENCED__EXACT_BYTES_OR_IDENTITY_NOT_RECOVERED,root fetch 404,GSS2010 structural overlay,B008
+A007,generated family overlay report tree selected by ddm_v550_family_overlay.py,HISTORICAL_OBJECT_REFERENCED__EXACT_BYTES_OR_IDENTITY_NOT_RECOVERED,root code points to reports/ but source transfer omitted generated outputs,semantic/position/directionality/response/bridge/first-pass overlays,B009-B010
+A008,ddm_survey_identity.py,CURRENTLY_KNOWN_EXACT_OBJECT,blob 617e2b4fff72133dac623d5d0afb0e9446a15122 identical root→HIST01 start,canonical source/wave/country identity rules,B013
+A009,bindings/question_relation_registry_35wave_active_v1.csv,CURRENTLY_KNOWN_EXACT_OBJECT,blob daac001bb8da645c7d99408e2239f4e04b6e9f9b identical root→HIST01 start,35-wave question-level structural authority,B011
+A010,ddm_v550_question_relation_authority.py embedded aliases,IMPLICIT_AUTHORITY__CODE_OR_ENVIRONMENT_BEHAVIOR,root blob 922ff781a724478bf74bc708414dd58bd9698be1,lookup normalization including BF->LS and LY->YE,B014
+A011,RAWLSING_QUESTION_RELATION_AUTHORITY_PATH / DDM_AUTHORITY_ROOT,IMPLICIT_AUTHORITY__CODE_OR_ENVIRONMENT_BEHAVIOR,execution-time values not recovered,authority artifact selection,B012
+A012,ddm_v550j_registry_contract.py release IDs,HISTORICAL_OBJECT_RECOVERED__NOT_IN_CURRENT_TREE,"root blob changed by HIST01 start, but release IDs conserved",P3/joint release admissibility,B015
+A013,caller-supplied V550J joint registry instance,HISTORICAL_OBJECT_REFERENCED__EXACT_BYTES_OR_IDENTITY_NOT_RECOVERED,edge recovered; exact run object unresolved,joint configuration and item membership,B016
+A014,section85/authority/section85_binding_authority.json,CURRENTLY_KNOWN_EXACT_OBJECT,root blob 486e123f8d2aadecb3a584c5b2e7bf1b6b7aac8d,"DB bindings, forbidden stale relation, aliases, stage order, compatibility/privacy",B017
+A015,section85/authority/section85_stage_artifact_authority.csv,CURRENTLY_KNOWN_EXACT_OBJECT,root content inspected; exact root blob SHA needs CLI reproduction,per-scope stage artifact identities/hashes/purposes,B018
+A016,v550_shared_respondent_substrate.parquet,GENERATED_PRODUCT__EXACT_PRODUCER_AND_INPUTS_RECOVERED,producer/schema code recovered; exact historical run bytes not in Git by privacy design,respondent-level co-execution carrier with semantic/directionality/source-structure/joint provenance,C012
