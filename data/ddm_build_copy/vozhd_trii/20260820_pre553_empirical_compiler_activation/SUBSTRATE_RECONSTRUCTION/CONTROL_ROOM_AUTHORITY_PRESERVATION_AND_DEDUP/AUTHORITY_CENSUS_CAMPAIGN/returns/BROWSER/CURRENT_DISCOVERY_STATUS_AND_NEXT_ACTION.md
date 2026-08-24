@@ -1,8 +1,8 @@
 # Current Discovery Status & Next Action
 
-Status: `REC05X_ACCEPTED__REC07_ADOPTED_115__REC07X_V1_INPUT_BLOCKER_CORRECTED__REC07X_V2_OPEN__REC08_PARALLEL__HIST01_OPEN__P03_SWID_BLOCKED__SCHEMA_MIGRATION_BLOCKED`
+Status: `REC07X_V2_HQ_ADOPTED_588__REC08_OPEN__HIST01_V2_FULL_HISTORY_ARCHIVE_NECESSITY_OPEN__P03_SWID_BLOCKED__C09_BLOCKED`
 
-R00 and R01-R08 HQ reconciliation remain closed against the provisional frozen 68-row TIR denominator, subject now to HIST-01's explicit historical-completeness challenge.
+R00 and R01-R08 HQ reconciliation remain closed against the provisional 68-row TIR denominator, but HIST-01 V2 is now the explicit historical-completeness challenge before that denominator may be treated as migration-safe.
 
 ## Binding current HQ
 
@@ -10,81 +10,78 @@ Read as controlling:
 
 - `.../HQ/HQ_REC05X_REC07_INTAKE_AND_ADOPTION.md`
 - `.../HQ/HQ_REC07X_V1_INPUT_ACCESS_CORRECTION.md`
-- `.../HQ/RECOVERY_TASKS/REC07X_V2_LIBRARY_INPUT_ACCESS_PATCH.md`
-- `.../HQ/RECOVERY_TASKS/HIST01_ORIGINAL_DDM_BUILD_COPY_AUTHORITY_TRACE_TASK.md`
+- `.../HQ/HQ_REC07X_V2_ADOPTION_AND_HIST01_PARTIAL_ARCHIVE_INTAKE.md`
+- `.../HQ/RECOVERY_TASKS/HIST01_V2_FULL_HISTORY_AND_ARCHIVE_NECESSITY_TASK.md`
 - `.../HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-## REC-05X / REC-07
+## O03 topology repair
 
-REC-05X accepted exact return: `29cf12dd91cf644c234239e5782cb7544f8c5898`.
+REC-05X froze the full 2,884-row preserve denominator: 2,268 pass; 613 exact defects; 3 source-limited.
 
-R10F O03 preserve universe: 2,268 pass; 613 exact successor candidates; 3 source-limited; total 2,884. REC-07 covers exactly 25 of the 613 and HQ adopted 115 total successor records from its eligible packages at `28e7a1ef6a0ac883a980917b0bced465088f8a20`.
+REC-07 covered 25 of the defects and HQ adopted its eligible 115 total semantic successors.
 
-P09 closes no-repair. P03 SWID remains blocked on exact accepted predecessor registry/kernel identity.
+REC-07X V2 final HEAD:
 
-## REC-07X V1
+`0193cce0f126e9d447bb67a4fd3dbc084121f9f8`
 
-V1 final HEAD: `d054220b6e51affec3f356ea131ef2dda06b0565`.
+HQ adopted all **588** remaining exact O03 same-grain successors after exact Library R10F predecessor verification and 588/588 joins.
 
-V1 is preserved as a clean bounded receipt. It reproduced 613 = 25 + 588 and authored nothing, but its GitHub-only environment could not reach the exact R10F predecessor carrier.
+Therefore the O03 preserve defect-authoring frontier is closed except for the three explicit EVS-2008 SIOPS source ceilings preserved fail-closed.
 
-HQ subsequently recovered the exact governed predecessor in Library:
+## REC-08
 
-`/Rawlsing/R10F/Rawlsing_DDM_R10F_O03_O04_Central_Integration_Codex_Ready_20260810.zip`
+REC-08 C05-R2A pin/current-HQ intake remains open and must stop before C05-R2B.
 
-Outer ZIP SHA-256:
+## HIST-01 partial
 
-`c1fda991920f235963381a2a05697a053285961eaeaa178a4804273f4eda34a2`
+Accepted partial evidence HEAD:
 
-Required member:
+`08185a88a7ea8d3b2f50847db8f4606cc54258b3`
 
-`R10F_S2_CENTRAL_INTEGRATED_AUTHORITY.csv`
+Disposition:
 
-Member SHA-256:
+`ACCEPTED__PARTIAL_HISTORICAL_EVIDENCE_HANDOFF__NO_CLOSURE`
 
-`f593caa27f3eb9a7e49ff819626dc5294c6e7031748e74914aefc18f27b011d5`
+Principal result: the first proved Git `ddm_build_copy` root is a curated transfer boundary rather than the epistemic origin; historically reachable consumers immediately presume external/unversioned/generated authority and database state.
 
-Therefore V1 is not a substantive predecessor/join failure.
+No new terminal information class outside the 68 TIRs is yet proved, but that result is explicitly provisional.
 
-## Work authorized now
+## HIST-01 V2
 
-### REC-07X V2
+HIST-01 V2 is now the required local full-history continuation.
 
-Environment: connected GitHub + ChatGPT Library + container/Python.
+It must:
 
-Read original REC-07X task plus binding V2 Library input patch. Verify both exact ZIP and internal member hashes before any join. Then process only the same exact 588-row denominator.
+1. mechanically exhaust the original `ddm_build_copy` producer/consumer DAG across all reachable Git refs;
+2. consume the user-supplied `Rawlsing_Authority_Document_Archive_2026-08-24.zip` only as a recovery/index corpus;
+3. classify all 4,794 archive logical documents by actual necessity;
+4. crosswalk historically consumed information against the 68 TIRs only after the historical DAG is complete.
 
-### REC-08
+Archive SHA-256:
 
-REC-08 C05-R2A pin/current-HQ intake remains authorized in parallel and must stop before C05-R2B.
+`e3f9e947e522f032998e29a7ff740f8d66e7e08934ca74c232965705dfbe49c8`
 
-### HIST-01
+Archive inclusion is not necessity; archive absence is not historical nonexistence.
 
-Historical authority-consumption trace is authorized as a hard C09 prerequisite.
+## P03 SWID
 
-Start from the first canonical committed appearance of `data/ddm_build_copy`, trace all information-bearing producer inputs backward and all reachable Odin/Dva/Trii/Chetiri consumer dependencies forward, then crosswalk against current authority and the 68 TIRs.
-
-The 68-TIR universe must not be treated as historically exhaustive before HIST-01 returns.
+Still blocked on exact accepted predecessor registry/kernel identity. Do not reconstruct it from labels or membership coincidence.
 
 ## Gates
 
-`REC05X_GATE = CLOSED__FULL_2884_CENSUS_ACCEPTED`
-
-`REC07_GATE = CLOSED__115_SUCCESSORS_HQ_ADOPTED__P09_NO_REPAIR__P03_BLOCKED`
-
-`REC07X_V1 = CLOSED__NON_SUBSTANTIVE_INPUT_ACCESS_BLOCKER_RECEIPT`
-
-`REC07X_V2_GATE = OPEN__EXACT_LIBRARY_R10F_INPUT__588_ROWS_ONLY`
+`REC07X_V2_GATE = CLOSED__588_HQ_ADOPTED`
 
 `REC08_GATE = OPEN__C05R2A_PIN_AND_INTAKE_ONLY`
 
-`HIST01_GATE = OPEN__HARD_C09_PREREQUISITE`
+`HIST01_PARTIAL_GATE = CLOSED__EVIDENCE_HANDOFF_ACCEPTED__NO_CLOSURE`
+
+`HIST01_V2_GATE = OPEN__LOCAL_FULL_HISTORY__4794_ARCHIVE_NECESSITY_ROWS`
 
 `SWID_P03_GATE = BLOCKED__EXACT_ACCEPTED_PREDECESSOR_IDENTITY_REQUIRED`
 
 `C05R2B_GATE = BLOCKED_PENDING_REC08_CURRENT_HQ_ACCEPTANCE_AND_REAL_SOURCE_INSTANCE_AUTHORITY`
 
-`C09_GATE = BLOCKED_PENDING_REC07X_V2_REC08_HIST01_P03_TREATMENT_AND_REMAINING_LOGICAL_RECOVERY`
+`C09_GATE = BLOCKED_PENDING_REC08_HIST01_V2_P03_TREATMENT_AND_REMAINING_NAMED_LOGICAL_RECOVERY`
 
 `C10_GATE = BLOCKED_PENDING_C09`
 
