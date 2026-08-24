@@ -1,144 +1,123 @@
-# NEXT WORK ORDER — HQ TARGETED RECOVERY / EXPANSION PHASE
+# NEXT WORK ORDER — POST REC-03–REC-06 HQ RECONCILIATION
 
-Status: `ISSUED__REC01_RETIRED__REC02_ACCEPTED__C05_PRODUCTION_PROFILE_RECOVERED__REC03_REC06_ACTIVE__C05R2A_INTAKE_PENDING__SCHEMA_MIGRATION_BLOCKED`
+Status: `ISSUED__REC03_REC06_ACCEPTED__REC07_REC05X_REC08_PARALLEL__C09_BLOCKED`
 
-## Starting point
+## Binding state
 
-R00 is closed. R01-R08 are returned and HQ-reconciled.
+R00 and R01-R08 HQ reconciliation are closed. REC-01 is retired by recovered C02R2/G0 law. REC-02 is accepted. REC-03 through REC-06 are now also accepted by:
 
-The current binding queue is:
+`.../AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_REC03_REC06_RECONCILIATION.md`
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
+Current queue:
 
-Post-reconciliation corrections:
+`.../HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_TIR014_C02R2_RECOVERY_CORRECTION.md`
-- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_REC02_INTAKE_AND_C05_LINEAGE_RECOVERY_CORRECTION.md`
+## Do not rerun REC-03 through REC-06
 
-## Closed local recovery
+Accepted exact heads:
 
-### REC-01
+- REC-03 `70b871fc7afcc01f77099abe5e9a82b2e09855c8`
+- REC-04 `86a5b342a0a4e4a0cabb4831b2e9ec07dbf8e5d9`
+- REC-05 `15849198ef28905be9a1ca9d8680c87a15129d6f`
+- REC-06 `2278f6a180e6991a38a0b78acf2932d1cbc79a9c`
 
-Closed/retired by recovered accepted C02R2/G0 law. Do not launch V3.
+REC-04's historical outputs live at a shorter noncanonical path. HQ accepts them by exact immutable commit/blob identity; do not rerun or move them.
 
-### REC-02
+## Three courts may run concurrently now
 
-Accepted exact return:
+### REC-07 — exact bounded repair authoring
 
-`82df5653bef884b6b643b1689337f37b5cc424c9`
+Environment: Browser / connected GitHub.
 
-Do not rerun REC-02 broadly.
+Read:
 
-The return preserved evidence fragments and one blocked comparator feeder rather than declaring missing authority.
+- `.../HQ/REC07_EXACT_REPAIR_DOCKET.csv`
+- `.../HQ/RECOVERY_TASKS/REC07_EXACT_BOUNDED_SUCCESSOR_REPAIR_TASK.md`
 
-REC-02's U007 bounded-search result is superseded at global HQ level by recovered prior C05-R1B adoption.
+REC-07 may author only the frozen P01-P10 candidate packages. It may not self-expand into source-limited rows, unsampled O03 preserve rows, Q49STB/STC, q5185, or unrelated authority.
 
-## Recovered C05 production law
+Historical predecessors remain intact. Output remains pending HQ adoption.
 
-Prior HQ explicitly adopted C05-R1B return:
+### REC-05X — complete O03 preserve-stratum census
 
-`2ddddaa131ff54780fe232fd86a5c6442bec426b`
+Environment: Browser / connected GitHub / source-capable Browser or Library evidence, with container/Python permitted for deterministic census/replay.
 
-Binding profile:
+Read:
+
+`.../HQ/RECOVERY_TASKS/REC05X_O03_PRESERVE_2884_FULL_CENSUS_TASK.md`
+
+Frozen source authority:
+
+`R10F_S2_CENTRAL_INTEGRATED_AUTHORITY.csv`
+
+SHA-256:
+
+`f593caa27f3eb9a7e49ff819626dc5294c6e7031748e74914aefc18f27b011d5`
+
+Exact denominator:
+
+`2884 PRESERVE_SOURCE_TOPOLOGY rows`
+
+REC-05X must reproduce REC-05's exact 75-row preserve sample first and then census all 2,884 rows. It does not author successor authority.
+
+### REC-08 — C05-R2A exact pin/current-HQ intake
+
+Environment: Browser / connected GitHub.
+
+Use the already-issued REC-08 handoff branch and task. REC-08 is not a local-Mac source task and must STOP before C05-R2B.
+
+## Why REC-07 and REC-05X are separate
+
+REC-05 proved exact source contradictions on 22 sampled preserve rows. Those individual contradictions may be authored as bounded repairs now.
+
+But 22/75 = 29.33% also proves the preserve lineage needs expansion. It does **not** prove the unsampled rows are defective.
+
+Therefore:
+
+- REC-07 handles only exact already-proved rows;
+- REC-05X determines the complete 2,884-row preserve quality state;
+- additional REC-05X defects, if any, require a later HQ repair intake rather than self-installation.
+
+This separation is binding.
+
+## C05 law
+
+Prior adopted production profile remains:
 
 `C05R1B_PRODUCTION_DISCOVERY_RULE_PROFILE@1.0.0`
 
-Binding production operation:
+operation:
 
 `PRE553_PRODUCTION_EXACT_BOUNDED_AUTONOMOUS_DISCOVERY@1.0.0`
 
-Do not search again for a production DiscoveryAuthority as though this adoption were absent.
+Do not search again for DiscoveryAuthority, invent K/J/depth caps, or introduce heuristic pruning.
 
-A historical C05-R2A return reports:
+## Deferred
 
-`C05R2A_PASS__GENERIC_FACADE_PROVED__NAMED_REAL_SOURCE_INSTANCE_AUTHORITY_PENDING`
+C05-R2B is blocked pending REC-08/HQ acceptance + exact real-source instance authority.
 
-Its exact immutable final worker SHA/current-HQ acceptance still requires recovery/intake before C05-R2B can open.
+C09 is blocked pending REC-07, REC-05X, REC-08/C05 continuation, and remaining governed logical debts.
 
-## Browser / source-capable work authorized now
+C10 is blocked pending C09.
 
-### REC-03 — R10G semantic-role census
-
-Census every current `NORMATIVE_OR_POLICY_STANCE` unit against exact source proposition evidence. Preserve actor/target/modality and do not rewrite unrelated R10G coordinates.
-
-### REC-04 — QRA700 + O07 geometry
-
-Census all 700 bounded QRA rows; reconcile the exact 11-row signed-geometry seam; resolve p26/q814d/Q49STA-B-C and source-backed R07 witnesses. Preserve QRA bounded jurisdiction.
-
-### REC-05 — topology expansion + formal O03 sample
-
-Audit the complete LiTS 2006 Q3.13 and Arab Barometer II Q518 batteries and execute the governed deterministic O03 100-revised + 75-preserve hostile sample. Do not substitute convenience sampling.
-
-### REC-06 — Afrobarometer Q60 driver battery
-
-Audit Afrobarometer R5 Q60A-Q60G only. Determine whether Q60D is isolated or battery-patterned and whether current successors already repair historical defects.
-
-## Bounded successor work
-
-REC-07 may construct append-only successor/inheritance packages only after exact evidence contracts close and only for HQ-authorized targets. Preserve predecessors, provenance, negative states and explicit succession edges.
-
-## C05 continuation — REC-08
-
-REC-08 is NOT blocked on REC-02 anymore.
-
-Current mission:
-
-1. recover the exact immutable final HEAD of `agent/vozhd-chetiri-c05r2a-source-backed-c11-facade`;
-2. perform current-HQ intake of the historical C05-R2A return;
-3. if accepted, establish an exact real-source/release production instance with required semantic/source-certification authority;
-4. only then authorize C05-R2B production discovery instance construction and execution under the already adopted production profile.
-
-C05-R2B must not change the adopted production semantics to obtain tractability. In particular, do not shrink K/J/depth or introduce score/top-k/frequency/unary-screen/adaptive-stop reachability pruning without separate rule authority.
-
-## Deferred physical closure
-
-`REC-09 / C09` remains blocked pending remaining logical/execution recovery and source-quality expansion. It must incorporate recovered C02R2/G0 occurrence side-material law and the adopted C05 production profile.
-
-`REC-10 / C10` remains blocked pending C09 and must hostile-falsify the resulting physical synthesis.
-
-No wholesale C01-C08 rerun is authorized.
-
-## Common law
-
-- source-native evidence outranks semantic elegance;
-- unlocated is not missing proved;
-- blocked/unresolved/negative states are first-class;
-- later branch/artifact is not accepted authority without explicit adoption/succession;
-- no path/mtime/row-order/recency authority;
-- no canonical mutation except exact HQ-authorized bounded successor work;
-- no broad local-machine archaeology;
-- no physical schema selection before remaining recovery/expansion plus C09/C10 closure.
+Schema migration is blocked.
 
 ## Gates
 
-`R01_R08_REVALIDATION_GATE = CLOSED__HQ_RECONCILED`
+`REC03_REC06_RECONCILIATION_GATE = CLOSED__ACCEPTED`
 
-`REC01_TIR014_GATE = CLOSED__PRIOR_ACCEPTED_C02R2_G0_RECOVERED`
+`REC07_GATE = OPEN__EXACT_P01_P10_ONLY`
 
-`REC02_GATE = CLOSED__RETURN_ACCEPTED`
+`REC05X_GATE = OPEN__FULL_2884_CENSUS`
 
-`BROWSER_TARGETED_EXPANSION_GATE = OPEN__REC_03_TO_REC_06_ONLY`
+`REC08_GATE = OPEN__C05R2A_PIN_AND_INTAKE_ONLY`
 
-`C05_PRODUCTION_RULE_AUTHORITY = CLOSED__PRIOR_HQ_ADOPTION_RECOVERED`
+`C05R2B_GATE = BLOCKED`
 
-`C05R2A_GATE = PENDING_EXACT_RETURN_PIN_AND_CURRENT_HQ_INTAKE`
+`C09_GATE = BLOCKED`
 
-`C05R2B_GATE = BLOCKED_PENDING_C05R2A_ACCEPTANCE_AND_EXACT_REAL_SOURCE_INSTANCE_AUTHORITY`
+`C10_GATE = BLOCKED`
 
-`C09_GATE = BLOCKED_PENDING_LOGICAL_EXECUTION_RECOVERY`
+`SCHEMA_MIGRATION_GATE = BLOCKED`
 
-`C10_GATE = BLOCKED_PENDING_C09`
-
-`SCHEMA_MIGRATION_GATE = BLOCKED_PENDING_RECOVERY_EXPANSION_C09_C10`
-
-## Terminal sequence
-
-`HQ RECONCILED`
-→ `REC01 RETIRED / REC02 ACCEPTED`
-→ `REC03..REC06 SOURCE EXPANSION`
-→ `REC07 BOUNDED SUCCESSORS`
-→ `C05-R2A CURRENT HQ INTAKE`
-→ `C05-R2B IF AUTHORIZED`
-→ `C09`
-→ `C10`
-→ `PHYSICAL SCHEMA / MIGRATION GATE DECISION`.
+No other recovery/repair court is authorized by this work order.
