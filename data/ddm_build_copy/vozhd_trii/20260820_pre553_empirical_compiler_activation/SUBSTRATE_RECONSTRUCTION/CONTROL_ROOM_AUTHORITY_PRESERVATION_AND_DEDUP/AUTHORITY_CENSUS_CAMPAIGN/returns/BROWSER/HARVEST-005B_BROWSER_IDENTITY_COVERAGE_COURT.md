@@ -1,149 +1,82 @@
 # HARVEST-005B — Browser Current-35 Question-Occurrence Identity & Existing-Authority Coverage Court
 
-Status: `READY_ON_BROWSER_EVIDENCE__FINALIZE_AFTER_H005L_LOCAL_DELTA`
+Status: `ADJUDICATED__P2_18276_IMPLEMENTATION_UNIVERSE_RECOVERED__IDENTITY_LAW_RECOVERED_NOT_REINVENTED`
 
 ## Authority question
 
-Across the governed current-35 scope, what mechanically defensible candidate question/variable occurrence identities exist across the available source/codebook/master/register/relation authority surfaces, and which existing authority carriers bind to each occurrence at what cardinality?
+Across the governed current-35 scope, what mechanically defensible question/variable occurrence identities exist, and which existing authority carriers bind to each occurrence at what cardinality?
 
-This is a Browser-owned relational evidence court. It does not create canonical question identity or new semantics.
+## Court disposition
 
-## Inputs already available to Browser
+Closed.
 
-Normative availability list:
+Browser combined:
 
-`H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`
+- exact H001-H004 packet bytes;
+- H005L packet SHA `17854e15e32028c7f782c20abd375dc557419fff8f47770749f283fd7b6fafc5`;
+- governed GitHub authority;
+- Library P2/P3/R14 authority and historical artifacts;
+- indexed Browser relational computation.
 
-Browser already holds:
+The court recovered an existing governed identity architecture rather than creating a new one.
 
-- exact H001-H004 ZIP bytes and every member;
-- accepted current-35 GitHub identity/scope surfaces;
-- accepted/recovered semantic, driver, structure, FQRA/QSM/QRA/response/negative authority surfaces available through GitHub or prior packets;
-- Library filesystem/tree SHA indexes;
-- H005L local delta when returned.
+### Governing implementation baseline
 
-## Browser computation plan
+The frozen P2 universe contains exactly 18,276 question implementations across 35 active waves / 9 source families.
 
-### 1. Carrier schema census
+Recovered row-level skeleton:
 
-Read each distinct identity-bearing carrier once.
+`Rawlsing_P2_Phase0_Question_Node_Skeleton_v1.csv`
 
-For each carrier record:
+SHA-256:
 
-- exact content identity;
-- rows and columns;
-- source/wave coordinates;
-- item/question IDs;
-- variable names;
-- source-native/codebook IDs when present;
-- text fields and deterministic text hash when text exists;
-- parent/child/battery/constructed-column coordinates when explicit;
-- duplicate counts for each identity coordinate actually present.
+`d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6`
 
-No authority is inferred from the fact that a carrier is newer or wider.
+The separate count `18,831` refers to semantic-priority pair authorities, not question implementations.
 
-### 2. Candidate occurrence relation
+### Cross-era corroboration
 
-Construct a unioned candidate-occurrence relation from mechanically identifiable source/wave/question coordinates.
+- active-35 R14 source/codebook scope -> 18,276 records;
+- active-35 H005L `qsm_raw` -> 18,276 rows;
+- qsm_raw normalized source/wave/exact-variable coordinates equal the P2 population 18,276 / 18,276;
+- later P3 and runtime-repair records continue to treat the P2 18,276 universe as frozen/governing upstream identity.
 
-Preserve the raw identity coordinates from each originating carrier.
+### Carrier noncollapse
 
-Do **not** invent the final `question_uid`.
+QSR, FQRA/QSMv2, semantic helpers and driver helpers are not question-population authority merely because they contain question-like rows.
 
-A temporary Browser computation key may be used only as an internal row handle and must not be represented as governed identity.
+Their coverage/cardinality is recorded in:
 
-### 3. Indexed carrier joins
+- `H005B_CARRIER_COVERAGE_SUMMARY.csv`
+- `H005B_COVERAGE_COUNTS_BY_FAMILY_WAVE.csv`
+- `H005B_IDENTITY_COLLISION_AND_CROSSWALK_DEBT.csv`
 
-Use DuckDB/Polars/pandas hash-indexed relational operations or equivalent.
+Detailed adjudication:
 
-Naive nested row scans are forbidden.
+`HARVEST-005B_ADJUDICATION.md`
 
-For every carrier membership, report:
+Recovered identity law:
 
-- exact join fields;
-- `EXACT_UNIQUE`;
-- `EXACT_ONE_TO_MANY`;
-- `EXACT_MANY_TO_ONE`;
-- `AMBIGUOUS_DUPLICATE`;
-- `UNMATCHED`;
-- `KEY_UNAVAILABLE`.
+`QUESTION_OCCURRENCE_IDENTITY_LAW_RECOVERY.md`
 
-One-to-many relationships remain rows. Physical duplicates are not silently collapsed.
+## Planned outputs disposition
 
-### 4. Collision census
+The original Browser contract proposed creating a new 18,276-row candidate-universe file and large crosswalk copies.
 
-Mechanically inspect collisions under historically/currently used coordinates including:
+That is now deliberately rejected as redundant. The exact governed P2 skeleton already supplies the row-level implementation universe. Browser records only the mechanical coverage/delta/collision ledgers needed to interpret existing content-addressed authority carriers.
 
-- `item_id`;
-- `(source,wave,var_name)`;
-- question ID;
-- source/codebook variable ID;
-- text hash;
-- governed source/wave UID where available.
+This preserves provenance and avoids accidentally making a Browser-generated copy appear to supersede the recovered P2 authority.
 
-Explicitly isolate:
+## Remaining work
 
-- H004 GSS/LiTS d62 identity mismatch layer;
-- V525b natural-key duplicates/blank keys;
-- variable-code reuse across waves;
-- blank-ID cases;
-- one source/wave/var with conflicting IDs/text;
-- one item/question ID bound to conflicting source occurrence coordinates.
+H005B does not settle final production usability or semantic/structural quality for every implementation.
 
-### 5. Coverage census
+Next Browser work order:
 
-By governed family/wave and carrier, report descriptive counts for:
+`NEXT_BROWSER_WORK_ORDER.md`
 
-- candidate occurrences;
-- unique candidate identity tuples under each tested coordinate law;
-- semantic authority/carrier presence;
-- driver/facet carrier presence;
-- question-structure presence;
-- FQRA presence;
-- QSM/QSMv2 presence where joinable;
-- response/direction/manual/negative authority presence where explicitly joinable;
-- ambiguous joins;
-- blank critical identity fields.
+Mission:
 
-`uncovered` is descriptive only.
+`CURRENT-35 USABLE-UNIVERSE & NORMALIZED AUTHORITY-BINDING QUALITY COURT`
 
-### 6. Browser adjudication after mechanics
-
-After the mechanical relations exist, Browser may adjudicate:
-
-- which identity coordinates are reliable enough to contribute to the future question-occurrence identity law;
-- which collisions require explicit identity reconciliation;
-- what relation cardinalities the unified substrate must encode;
-- which existing authority can be bound cleanly and which remains ambiguous;
-- what evidence remains genuinely absent;
-- the Trii/Chetiri dependency implications.
-
-No semantic/content adjudication is implied merely by identity binding.
-
-## Planned Browser outputs
-
-- `CURRENT35_QUESTION_OCCURRENCE_CANDIDATE_UNIVERSE.csv`
-- `QUESTION_IDENTITY_CROSSWALK.csv`
-- `AUTHORITY_CARRIER_COVERAGE_MATRIX.csv`
-- `QUESTION_IDENTITY_COLLISION_LEDGER.csv`
-- `COVERAGE_COUNTS_BY_FAMILY_WAVE.csv`
-- `CARRIER_IDENTITY_AND_SCHEMA_RECEIPT.csv`
-- `COVERAGE_MECHANICAL_RECEIPT.json`
-- `HARVEST-005B_ADJUDICATION.md`
-
-These outputs belong in the Browser Control Room, not in a local evidence ZIP.
-
-## Forbidden
-
-- no source/authority mutation;
-- no canonical `question_uid` invention before the identity-law court;
-- no deduplication by row order;
-- no text-similarity equivalence promotion;
-- no `uncovered => missing` inference;
-- no semantic authority creation;
-- no d62 repair;
-- no flattening of legitimate one-to-many authority assertions.
-
-## Completion condition
-
-H005B closes when Browser has a reproducible current-35 candidate identity/coverage relation from all Browser-held evidence plus the H005L delta, with every ambiguous mapping preserved and every unresolved identity class explicit.
+No broad local harvest is required at the start of that court.
