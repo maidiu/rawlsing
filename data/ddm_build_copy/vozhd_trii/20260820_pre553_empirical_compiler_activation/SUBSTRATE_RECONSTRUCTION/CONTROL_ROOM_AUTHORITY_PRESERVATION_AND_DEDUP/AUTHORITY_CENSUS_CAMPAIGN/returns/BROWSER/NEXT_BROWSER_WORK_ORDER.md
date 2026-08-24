@@ -1,192 +1,111 @@
-# NEXT BROWSER WORK ORDER — R01-R08 R00-BASED AUTHORITY REVALIDATION LAUNCH
+# NEXT BROWSER WORK ORDER — HQ TARGETED EXPANSION PHASE
 
-Status: `ISSUED__R00_CLOSED__EIGHT_RABOCHII_COMMON_HEAD_REQUIRED__SCHEMA_MIGRATION_GATE_BLOCKED`
+Status: `ISSUED__HQ_RECONCILED__BOUNDED_RECOVERY_AND_EXPANSION_QUEUE_ACTIVE__SCHEMA_MIGRATION_BLOCKED`
 
 ## Starting point
 
-R00 information-necessity conservation is closed and its terminal information-requirement universe is frozen.
+R00 is closed. R01-R08 are returned. HQ has reconciled all eight sibling courts against the frozen 68-row terminal-information denominator.
 
-The next Browser campaign is not a file census and not an attempt to preserve the V550+ artifact suite. It is a sufficiency, succession and semantic-quality revalidation of the information Rawlsing's terminal consumers actually require.
+The binding next-work denominator is:
 
-Canonical campaign authority:
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/00_CAMPAIGN_AUTHORITY.md`
+The dispositive ruling is:
 
-Binding R00 overlay:
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/AUTHORITY_REVALIDATION_FINAL_ADJUDICATION.md`
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/06_R00_BINDING_ADDENDUM.md`
+This is no longer an R01-R08 launch work order.
 
-Governing denominator:
+## Browser / source-capable work authorized now
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/TERMINAL_INFORMATION_REQUIREMENT_UNIVERSE.csv`
+### REC-03 — R10G semantic-role census
 
-## Branch law before launch
+TIR: `TIR-015; TIR-016; TIR-017; TIR-025`.
 
-All eight worker branches and the revalidation control branch must point to one exact accepted common HEAD before any worker begins.
+Census every current R10G unit carrying canonical role `NORMATIVE_OR_POLICY_STANCE` against exact respondent-facing question text, parent/stem context and response evidence. Preserve actor, target, modality, horizon and evidence ceiling. Return row-level pass or bounded successor candidates. Do not rewrite unrelated R10G coordinates.
 
-The exact HEAD is supplied externally in the launch instruction and verified by each worker. It is intentionally not self-pinned in this committed document because committing a self-referential SHA changes the SHA.
+### REC-04 — QRA700 + O07 geometry
 
-Required refs:
+TIR: `TIR-012; TIR-013; TIR-021`.
 
-- control — `agent/vozhd-trii-authority-revalidation-control`
-- R01 — `agent/vozhd-trii-authority-revalidation-r01-coverage-sufficiency`
-- R02 — `agent/vozhd-trii-authority-revalidation-r02-semantic-quality`
-- R03 — `agent/vozhd-trii-authority-revalidation-r03-driver-facet-quality`
-- R04 — `agent/vozhd-trii-authority-revalidation-r04-response-directionality`
-- R05 — `agent/vozhd-trii-authority-revalidation-r05-routing-position`
-- R06 — `agent/vozhd-trii-authority-revalidation-r06-structure-relations`
-- R07 — `agent/vozhd-trii-authority-revalidation-r07-source-hostile`
-- R08 — `agent/vozhd-trii-authority-revalidation-r08-provenance-supersession`
+Census all 700 bounded QRA rows at their declared response/direction status. Reconcile the exact 11 QRA↔O07 signed-geometry seam and treat Q49STA/B/C as one source-native cluster. Latinobarómetro 1995 `p26` is already quarantined by HQ; LiTS III `q814d` requires exact source resolution. Preserve QRA's bounded jurisdiction and separate P2 directionality.
 
-No force-reset is authorized. Any divergent worker work must be preserved and adjudicated before launch.
+### REC-05 — topology expansion + formal O03 sample
 
-## Mandatory R00 reading
+TIR: `TIR-013; TIR-024; TIR-064`.
 
-Every worker must obey the exact reading order in `01_COMMON_WORKER_CONTRACT.md` and `05_LAUNCH_AND_RETURN_PROTOCOL.md`.
+Audit the full LiTS 2006 Q3.13 battery and Arab Barometer II Q518 battery against source-native response topology. Complete the governed R10F O03 deterministic sample of 100 revised + 75 preserve rows in an environment capable of reproducing the required ranking. Current O03 is not demoted merely because the earlier Browser court could not compute that queue.
 
-At minimum the worker must ground itself in:
+### REC-06 — Afrobarometer Q60 driver battery
 
-1. `00_CAMPAIGN_AUTHORITY.md`;
-2. `06_R00_BINDING_ADDENDUM.md`;
-3. `R00_INFORMATION_NECESSITY_CONSERVATION/00_R00_COURT_AUTHORITY.md`;
-4. `R00_INFORMATION_NECESSITY_CONSERVATION/R00_ADJUDICATION.md`;
-5. `R00_INFORMATION_NECESSITY_CONSERVATION/TERMINAL_INFORMATION_REQUIREMENT_UNIVERSE.csv`;
-6. `R00_INFORMATION_NECESSITY_CONSERVATION/BIDIRECTIONAL_INFORMATION_CONSERVATION_AND_ORPHAN_LEDGER.csv`;
-7. `01_COMMON_WORKER_CONTRACT.md`;
-8. the risk, HQ-escalation and assigned worker-task authorities;
-9. the exact historical/current authority and source-native evidence required by the task.
+TIR: `TIR-018`.
 
-Task-relevant workers must also read the R00 Joint Evidence and QSM succession audits required by the binding addendum.
+Audit Afrobarometer R5 Q60A-Q60G only. Compare exact source predicates and targets with historical/current driver assignments. The Q60D `corruptionTolerance` witness triggers battery review, not a global driver rewrite.
 
-## Mission
+## Work that is explicitly NOT Browser work
 
-Run eight parallel non-dispositive Rabochii courts against the frozen `TIR-*` denominator.
+### REC-01 — local source execution
 
-For every material terminal requirement in jurisdiction, answer independently:
+The WVS7 Q152-Q157 TIR-014 functional-dependency/exception court is a local-machine/source-execution obligation. Browser workers must not simulate or substitute for it.
 
-1. **Sufficiency** — does lawful existing authority/source/derivation cover the exact terminal scope and grain?
-2. **Succession** — if an old carrier or authority lineage retires, is the information it carried preserved by a lawful successor at the required grain?
-3. **Quality** — do legacy semantic/manual judgments survive hostile source-backed revalidation to current standards?
-4. **Negative authority** — are blocked, unresolved, forbidden-inference, does-not-measure, evidence-ceiling and related negative states conserved rather than flattened away?
-5. **Provider reality** — is a terminal contract merely specified, or does positive production authority/provider coverage actually exist?
+### REC-02 — bounded local evidence recovery
 
-Every material finding must cite applicable `TIR-*` IDs.
+The provider/history recovery court is local Codex evidence work restricted to R08 U003-U014 named historical/package roots plus the exact V525b and d62-92 payload debts. No unrelated filesystem crawl is allowed.
 
-## Worker courts
+## Bounded successor work
 
-### R01 — coverage sufficiency
+REC-07 may construct append-only successor/inheritance packages only for the HQ-authorized exact targets:
 
-Map the frozen terminal information requirements to actual provider/authority coverage and prove required denominators.
+- LiTS II `q713a`-`q713h` O09;
+- LiTS IV `q830` O08;
+- Latinobarómetro 1995 `p26` QRA;
+- accepted SWID/current35 execution inheritance.
 
-### R02 — semantic meaning / continuity quality
+Freeze exact package contracts and preserve predecessor assertions, source provenance and explicit supersession/history edges. Do not mutate old authority in place.
 
-Hostile-revalidate semantic units, concepts, continuity/equivalence, target/actor/condition/modality preservation and negative semantic authority.
+## Deferred Chetiri completion
 
-### R03 — driver/facet/domain/axis/target quality
+`REC-08 / C05R` is conditional and remains blocked until REC-02 resolves the production DiscoveryAuthority/frontier and source-backed provider prerequisites.
 
-Revalidate V525b and successor structural/driver classifications without collapsing exact implementation identity or source-native meaning.
+`REC-09 / C09` remains blocked until logical recovery and targeted expansions stabilize the candidate frontier.
 
-### R04 — response/directionality/measurement
+`REC-10 / C10` runs only after C09 and must attempt to falsify the final physical synthesis.
 
-Test response topology, measurement, polarity/directionality and bounded authority against exact source-native response evidence.
+No wholesale C01-C08 rerun is authorized.
 
-### R05 — routing/applicability/position/P5
+## Common law
 
-Audit routed universes, applicability, respondent/source position, branch/cohort conditions and replay-relevant membership authority.
+- every finding cites applicable `TIR-*` IDs;
+- source-native evidence outranks semantic elegance;
+- unlocated is not missing proved;
+- unresolved/blocked states are first-class;
+- no path/mtime/row-order/recency authority;
+- no canonical mutation outside an exact HQ-authorized successor package;
+- no physical schema selection before REC-01..REC-07 reconciliation and the required C09/C10 closure;
+- no broad local-machine archaeology.
 
-### R06 — source topology / structure / relations
+## Gates
 
-Audit source-native topology, batteries/stems/parents, FQRA/QSMv2, relation authority, joint composability and the preserved JE requirement family.
+`R01_R08_REVALIDATION_GATE = CLOSED__HQ_RECONCILED`
 
-### R07 — independent source-native hostile validation
+`BROWSER_TARGETED_EXPANSION_GATE = OPEN__REC_03_TO_REC_06_ONLY`
 
-Run blind-first hostile source-backed validation across all material source families and legacy semantic/manual lineages; estimate systematic defect risk independently of historical acceptance.
+`LOCAL_RECOVERY_GATE = OPEN__REC_01_AND_REC_02_ONLY`
 
-### R08 — provenance / legacy confidence / supersession
+`C05R_GATE = BLOCKED_PENDING_REC_02`
 
-Reconstruct producer/evidence lineage and lawful same-grain succession, including whether old information classes actually have current successors.
+`C09_GATE = BLOCKED_PENDING_LOGICAL_RECOVERY`
 
-## Common worker law
+`C10_GATE = BLOCKED_PENDING_C09`
 
-Workers obey:
-
-- `01_COMMON_WORKER_CONTRACT.md`
-- `02_RISK_STRATIFICATION_AND_SAMPLING_PROTOCOL.md`
-- `03_HQ_ADJUDICATION_AND_ESCALATION_PROTOCOL.md`
-- `05_LAUNCH_AND_RETURN_PROTOCOL.md`
-- `06_R00_BINDING_ADDENDUM.md`
-
-No worker is dispositive.
-
-No worker may create or mutate canonical semantic/manual authority, runtime/compiler code or source survey bytes.
-
-A R00 orphan candidate remains a search/revalidation obligation until exhaustive provider/successor search proves the exact bounded requirement genuinely missing.
-
-## HQ control obligations
-
-HQ must:
-
-1. verify all nine revalidation refs share one exact common start HEAD;
-2. content-address every worker return;
-3. verify `TIR-*` denominator and sampling compliance;
-4. reconcile cross-worker findings at the same assertion/information grain;
-5. distinguish intentional bounded jurisdiction and source limitation from accidental absence;
-6. distinguish contract/interface closure from positive production authority coverage;
-7. separately prove every missing-authority claim before authorizing successor work;
-8. preserve historical assertions and explicit succession edges when later corrections are required;
-9. keep the physical-schema gate closed through R01-R08 HQ reconciliation.
-
-## Required HQ outputs after returns
-
-- `HQ_WORKER_RETURN_ADJUDICATION_LEDGER.csv`
-- `AUTHORITY_REQUIREMENT_SUFFICIENCY_MATRIX.csv`
-- `LEGACY_AUTHORITY_QUALITY_CERTIFICATION_LEDGER.csv`
-- `SYSTEMATIC_DEFECT_AND_EXPANSION_LEDGER.csv`
-- `SOURCE_LIMITED_UNRESOLVED_LEDGER.csv`
-- `PROVED_MISSING_AUTHORITY_LEDGER.csv`
-- `SUPERSESSION_AND_SUCCESSOR_AUTHORITY_PLAN.csv`
-- `AUTHORITY_REVALIDATION_FINAL_ADJUDICATION.md`
-
-## Deferred audit coverage
-
-C09 physical/autonomous-discovery bakeoff and C10 hostile synthesis remain later obligations where still relevant. Their prior non-execution is audit debt, not a reason to infer missing semantic authority.
-
-Local-machine escalation remains bounded by `R00_INFORMATION_NECESSITY_CONSERVATION/R00_LOCAL_EVIDENCE_ESCALATION.md`; no broad local Mac archaeology is authorized.
-
-## Gate logic
-
-### Schema gate remains blocked when
-
-- a material `TIR-*` requirement lacks a proved provider or intentional fail-closed disposition;
-- required scope is undercovered;
-- a consequential legacy semantic lineage remains inadequately revalidated;
-- systematic defect triggers have fired but not been bounded;
-- succession remains ambiguous in a way that could cause physical canonicalization to lose information;
-- a terminal contract exists but required positive production authority/provider coverage is still unproved.
-
-### Schema gate may reopen only when
-
-HQ has adjudicated all material terminal requirements into governed terminal states, any necessary bounded successor-authority work is complete, and required C09/C10 physical/hostile closure has been performed.
-
-## Forbidden
-
-- no physical Parquet/DuckDB implementation during R01-R08;
-- no new question UID;
-- no wholesale semantic rewrite;
-- no broad local Mac archaeology;
-- no row-order/path/recency authority;
-- no conversion of unresolved states into guessed certainty;
-- no deletion of legacy authority when defects are found;
-- no inference that an old artifact's retirement proves its information unnecessary;
-- no inference that a Dva/Chetiri contract proves a positive authority/provider instance exists.
+`SCHEMA_MIGRATION_GATE = BLOCKED_PENDING_RECOVERY_EXPANSION_C09_C10`
 
 ## Terminal sequence
 
-`EXACT COMMON HEAD VERIFIED`
-→ `EIGHT R00-BASED RABOCHII RETURNS`
-→ `HQ RECONCILIATION`
-→ `TARGETED EXPANSION IF TRIGGERED`
-→ `SUFFICIENCY + QUALITY FINAL COURT`
-→ `BOUNDED SUCCESSOR AUTHORITY CREATION ONLY IF PROVED NECESSARY`
-→ `C09/C10 PHYSICAL + HOSTILE CLOSURE WHERE REQUIRED`
-→ `SCHEMA / MIGRATION / REPLAY GATE REOPENED OR EXPLICITLY REMAINS BLOCKED`.
+`HQ RECONCILED`
+→ `REC-01 / REC-02 LOCAL + REC-03..REC-06 SOURCE EXPANSION`
+→ `REC-07 BOUNDED SUCCESSORS`
+→ `C05R IF ENABLED`
+→ `C09`
+→ `C10`
+→ `PHYSICAL SCHEMA / MIGRATION GATE DECISION`.
