@@ -1,149 +1,45 @@
-# HARVEST-005L — LOCAL QUESTION-IDENTITY CARRIER DELTA DISCOVERY
+# Next Local Harvest Request
 
-Status: `ISSUED__LOCAL_DELTA_ONLY__NO_CROSS_CARRIER_COMPUTATION`
+Status: `NO_LOCAL_HARVEST_CURRENTLY_REQUIRED__BROWSER_HQ_NEXT`
 
-## Mission
+HARVEST-005L is complete and adjudicated.
 
-Search the live local filesystem for H005-responsive question-identity evidence that Browser HQ does **not already possess as exact bytes/content**.
+Packet:
 
-This is a bounded retrieval/delta harvest.
+`HARVEST-005L_LOCAL_QUESTION_IDENTITY_CARRIER_DELTA_DISCOVERY_EVIDENCE.zip`
 
-It is **not** the current-35 identity/coverage census itself. Browser HQ owns that computation under `HARVEST-005B_BROWSER_IDENTITY_COVERAGE_COURT.md`.
+SHA-256:
 
-## Governing Browser exclusion inventory
+`17854e15e32028c7f782c20abd375dc557419fff8f47770749f283fd7b6fafc5`
 
-Before collecting payload bytes, read:
+H005B is also adjudicated.
 
-`H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`
+## Current rule
 
-and:
+Do **not** launch another broad local filesystem harvest.
 
-`H005_BROWSER_LOCAL_SPLIT_CONTRACT.md`
+Browser HQ now has enough evidence to begin the next court:
 
-The governing rule is:
+`NEXT_BROWSER_WORK_ORDER.md`
 
-`H005_REQUIRED_EVIDENCE - BROWSER_AVAILABLE_EXACT_EVIDENCE = H005L_LOCAL_DELTA_SCOPE`
+`CURRENT-35 USABLE-UNIVERSE & NORMALIZED AUTHORITY-BINDING QUALITY COURT`
 
-If a responsive local file's SHA/content identity is already represented in the Browser inventory, do **not** package duplicate bytes. Record the local physical occurrence in the manifest/census if provenance matters.
+A new local harvest may be issued only if that Browser court identifies a **specific required authority object or exact byte surface that Browser cannot access**.
 
-If a responsive local file has a distinct SHA/content identity not represented in the Browser inventory, return the bounded exact bytes.
+Any future local request must therefore be a bounded content-addressed delta with an exact authority question, not a general search or cross-carrier computation assignment.
 
-Do not infer canonicality from recency, path, filename, mtime, size or row count.
+## Current evidence posture
 
-## Search roots
+Browser has:
 
-- `/Users/matthewsmith/Desktop/Rawlsing`
-- `/Users/matthewsmith/Desktop/RawlsingsExcess`
+- exact H001-H005L packet bytes;
+- the recovered P2 identity contract;
+- the existing 18,276-row P2 implementation population by exact SHA;
+- H005L FQRA/QSM/QSMv2/questions-master/R14 delta bytes;
+- current/preserved GitHub authority;
+- Library P2/P3/R14 and historical authority material;
+- H005B cross-carrier coverage/collision results.
 
-## Browser already has
+## Stop token
 
-Do not rebuild or repackage identical copies of the H001-H004 evidence universe.
-
-Browser has exact bytes of all four returned ZIPs and every member, including the known structure registers, semantic masters, driver masters, scope/identity registries/manifests, historical/current identity code, H004 producer lineage and review/provenance evidence listed in `H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`.
-
-Browser also has connected GitHub access to the current/preserved governed SWID, source-census, FQRA/QSM/QRA/response/manual/negative authority surfaces listed there.
-
-## High-priority local delta targets
-
-Search especially for the classes currently marked `BAV-GAP-*`:
-
-1. every distinct `questions_master.csv` identity;
-2. current final-codebook/question-index identity surfaces that enumerate source/wave/question/variable occurrences;
-3. local-only **distinct** FQRA/QSM/QSMv2 identity-bearing variants not represented by Browser's Git content;
-4. source-native codebook variable/question identity indexes or manifests needed to bind normalized question rows to source occurrences;
-5. any other exact identity-defining carrier clearly required to answer what source/wave/question occurrence a normalized row represents.
-
-Do not return raw respondent microdata.
-
-Do not broadly dump codebooks/PDFs merely because they exist. Return documentary/source files only if an exact identity surface depends on them and Browser does not already possess the relevant bounded evidence.
-
-## Required local work
-
-### A. Responsive content census
-
-For every H005-responsive local occurrence, record:
-
-- absolute path;
-- SHA-256;
-- size;
-- mtime;
-- basename/artifact class;
-- relevant identity columns/fields if cheaply inspectable without executing producers;
-- Browser inventory match state:
-  - `EXACT_BROWSER_HELD_SHA`
-  - `DISTINCT_SHA_RETURN_BYTES`
-  - `GIT_CURRENT_EQUIVALENT_OR_CANDIDATE`
-  - `LOCAL_ONLY_IDENTITY_SURFACE`
-  - `AMBIGUOUS_REQUIRES_BROWSER`.
-
-### B. Exact-byte delta
-
-Package only:
-
-- distinct responsive SHAs Browser does not already possess;
-- local-only identity surfaces;
-- minimal supporting schema/config/provenance bytes necessary to understand those new surfaces.
-
-For an exact Browser-held SHA, manifest the occurrence but do not duplicate the bytes.
-
-### C. Schema receipt only
-
-For each distinct returned identity carrier, mechanically report:
-
-- header/field names;
-- row count where tabular;
-- presence/absence of `source`, `wave`, `var_name`, `item_id`, question ID, question text, source/codebook ID or equivalent fields;
-- duplicate counts only for single-carrier identity fields if trivial to calculate.
-
-Do not join carriers to one another.
-
-## Explicitly forbidden computation
-
-The local worker must **not** produce:
-
-- a global current-35 candidate question universe;
-- a cross-carrier question identity crosswalk;
-- carrier coverage matrices;
-- per-wave cross-carrier coverage counts;
-- global collision adjudication;
-- candidate-by-carrier nested scans;
-- a canonical question UID or proposed UID law.
-
-Those are Browser H005B responsibilities.
-
-## Required returned ZIP
-
-One small bounded ZIP containing:
-
-- `README.md`
-- `EVIDENCE_MANIFEST.csv`
-- `SHA256SUMS.txt`
-- `SEARCH_RECEIPT.md`
-- `LOCAL_DELTA_CARRIER_CENSUS.csv`
-- `BROWSER_INVENTORY_MATCH_RECEIPT.csv`
-- `UNSEEN_DISTINCT_CONTENT.csv`
-- `LOCAL_ONLY_IDENTITY_SURFACES.csv`
-- `CARRIER_SCHEMA_RECEIPT.csv`
-- `payload/` containing only unseen/distinct H005-responsive exact bytes.
-
-If the exhaustive search finds no unseen responsive bytes, return an evidence ZIP with empty payload plus the search/match receipts. An empty content delta is a valid positive result.
-
-## Forbidden modifications
-
-- no edit/delete/move/rename/normalization of any source or authority file;
-- no governed producer/updater/compiler execution;
-- no semantic adjudication;
-- no deduplication;
-- no question-equivalence inference from similar text;
-- no authority choice by row order/path/recency;
-- no `uncovered => missing authority` inference;
-- no repair of d62;
-- no new semantic/driver/structural authority.
-
-## Return token
-
-`AUTHORITY_CENSUS_LOCAL_HARVEST_REQUEST__HARVEST_005L`
-
-## Stop condition
-
-Once the local complement and receipts are packaged and verified, stop. Do not continue into H005B computation.
+`AUTHORITY_CENSUS_LOCAL_HARVEST_QUEUE__EMPTY__BROWSER_HQ_CONTINUE`
