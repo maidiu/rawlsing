@@ -95,6 +95,14 @@ Older/local documents plus Git reload manifests materially strengthen DB/runtime
 
 Later QRA YAML/schema explicitly governs `BF -> LS` and `LY -> YE` as country identity replacements. HIST-01 must trace historical consumer meaning/use and succession rather than treat these mappings as wholly unexplained.
 
+## HIST-01 V2 worker
+
+Worker branch:
+
+`agent/vozhd-trii-hist01-v2-full-history-authority-necessity`
+
+The branch was pristine at prelaunch review time and is to be fast-forwarded to the final reconciled control HEAD before execution. The exact worker starting HEAD is therefore the final control HEAD containing this status update, the three-corpus review, patched task, and corrected queue. No work is authorized from the older `0b82e8ef...` branch state.
+
 ## P03 SWID
 
 Still blocked on exact accepted predecessor registry/kernel identity. Do not reconstruct it from labels or membership coincidence.
