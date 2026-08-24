@@ -22,11 +22,13 @@ The court mechanically joined the exact content-addressed P2/R10 authorities ava
 - R10I O09 P5 placement authority — all 3,324 semantic units and all 18,276 O08 implementation conditioner dispositions; SHA-256 `c430837467698860338711449076303ba39981642c879705c4abb0d41ebbdd02`.
 - H001-H005 recovered QSR, FQRA/QSMv2, V525b, later semantic/driver, source/SWID, QRA/response and provenance authority.
 
-The row-level P2 skeleton remains the identity master. `CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv` adds only governed disposition/binding fields keyed by `question_implementation_id`; it is not a second identity registry.
+The row-level P2 skeleton remains the identity master. `CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv` is a lossless **P2-ordinal bytepack**, not a second identity registry. Its 18,276-byte payload is anchored to the immutable P2 SHA-256 `d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6`; byte ordinal `N` addresses P2 row `N` (zero-based) for deterministic replay only. P2 row order does **not** establish authority precedence.
+
+The bytepack payload SHA-256 is `64a43ba2d7564d7681770065b843273330dc368b8d01bf328a8af7b19878bd98`. Bits 0–3 encode the primary-use code, bit 4 encodes the cross-cutting fail-closed flag, bit 5 encodes whether an executable routing predicate is required, and bits 6–7 are reserved zero. This gives exhaustive per-implementation accounting without copying the P2 identity column into another mutable master.
 
 ### Compact disposition-ledger codes
 
-The row ledger deliberately uses compact codes so the Control Room can preserve all 18,276 implementation dispositions without duplicating verbose authority text. The codes are lossless projections of the named governing authorities:
+The packed disposition ledger deliberately uses compact codes so the Control Room can preserve all 18,276 implementation dispositions without duplicating P2 identity or verbose authority text. The codes are lossless projections of the named governing authorities:
 
 - `use`: `SEM` semantic evidence; `TOP` source-topology/non-scalar structure; `POS` respondent-position/demographic coordinate; `END` accepted behavior/exposure endpoint; `CTX` source/respondent context; `SCX` structural context; `ADM` administrative/metadata; `REJ` preserved non-endpoint/rerouted O04 rejection; `CPC` context-position conditioner; `BLK` blocked/unresolved.
 - `o03`: `P` preserve source topology; `R` revise topology; blank = outside O03 jurisdiction.
@@ -40,7 +42,7 @@ The row ledger deliberately uses compact codes so the Control Room can preserve 
 
 ## 1. Every one of the 18,276 implementations is dispositioned
 
-The court produces exactly 18,276 disposition rows and exactly 18,276 unique P2 implementation IDs.
+The bytepack decodes to exactly 18,276 dispositions, one for each of the 18,276 unique P2 implementation IDs.
 
 Primary use classes:
 
