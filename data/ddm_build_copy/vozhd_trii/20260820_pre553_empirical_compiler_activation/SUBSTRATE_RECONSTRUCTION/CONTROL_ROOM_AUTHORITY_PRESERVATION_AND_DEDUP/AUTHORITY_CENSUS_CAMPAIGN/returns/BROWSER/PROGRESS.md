@@ -1,116 +1,121 @@
-# Browser Authority Census — Post-HARVEST-004 Progress
+# Browser Authority Census — Post-HARVEST-004 / H005 Split Progress
 
-Status: `BROWSER_CENSUS__HARVEST_004_ADJUDICATED__D62_IDENTITY_COLLISION_PROVED__SEMANTIC_ROW_ORDER_PRECEDENCE_REJECTED__H005_IDENTITY_COVERAGE_BASELINE_ISSUED`
+Status: `BROWSER_CENSUS__H004_ADJUDICATED__H005_SPLIT__BROWSER_AVAILABILITY_INVENTORY_PUBLISHED__H005L_LOCAL_DELTA_ISSUED__H005B_BROWSER_COURT_READY`
 
 Start SHA: `b824c7d2b618b8e0987f6774b302e875d90b8fdd`
 Worker: `agent/vozhd-controlroom-authority-census-browser-r1`
 
-## HARVEST-004 integrity
+## H004 remains closed
 
-Browser inspected the actual returned ZIP and independently verified:
+H004 proved the main d62 GSS/LiTS duplicate layer was produced by an identity-migration mismatch:
 
-- packet SHA-256 `b7ce4c0de1aea7db1e08d4c4faf3447f22809b62b95800502f0f3ee52c0c7abd`;
-- size `14,235,501` bytes;
-- ZIP integrity;
-- all `111/111` internal checksum entries;
-- requested receipt set present;
-- no updater/compiler execution by the local worker.
+- `apply_gss_lits_p0_structural_mappings.py` checks existing questions through `item_id`;
+- the earlier GSS/LiTS semantic rows were overwhelmingly blank in `item_id`;
+- 10,455 second representations were appended whose `(source,wave,var_name)` keys already existed;
+- a separate downstream dict keyed by `(source,wave,var_name)` converted physical row order into effective precedence;
+- no authority object authorizes last-row-wins as semantic supersession.
 
-## D62 duplicate producer and identity seam proved
-
-Recovered exact producer:
-
-- `apply_gss_lits_p0_structural_mappings.py`
-- SHA-256 `6ddb066f76001488debcb822352aa39b5eabe3fd544d832eed783080e41ea6b9`
-
-The producer intentionally appends GSS/LiTS questions that it believes are absent from `questions_master_drivers.csv`, but its absence test is based on `item_id` only.
-
-Exact d62 row geometry proves the failure mode:
-
-- `d62accad...`: 28,983 rows / 18,519 distinct `(source,wave,var_name)` keys;
-- first segment: 18,528 rows / 18,519 natural keys;
-- appended tail: 10,455 rows, exactly 6,021 GSS + 4,434 LiTS;
-- all 10,455 tail natural keys already exist in the first segment;
-- 10,454/10,455 corresponding first-segment GSS/LiTS rows have blank `item_id`;
-- all 10,455 appended tail rows have distinct nonblank `item_id` values.
-
-The updater therefore mistook already-present semantic question rows for missing rows because the old representation lacked the newer identity field and appended second representations of the same questions.
-
-## Downstream row order was accidental precedence, not authority
-
-The historical question-structure builder consumes the driver master through a dict keyed by `(source,wave,var_name)`. Duplicate rows therefore collapse to the last physical row.
-
-H003 had already proved that this exact lookup reproduces Register B and the full Register A→B 2,148-row / 13,330-cell delta. H004 now proves why those later rows existed.
-
-No recovered authority defines last-row-wins as semantic supersession law. The recovered producer explicitly calls its work a first-pass scaffold requiring review, and the migration contract requires preserving existing columns and backing up before writes.
-
-Governing ruling:
+Governing disposition remains:
 
 `DUPLICATE_SHADOWING_PRODUCER_PROVED__INCIDENTAL_CARRIER_KEY_COLLISION__NO_SEMANTIC_SUPERSESSION_AUTHORITY`
 
-The old semantic judgment and the later structural assertion must therefore be preserved noncollapsingly unless a separate positive authority proves a real semantic supersession.
+Prior semantic authority and later structural assertions must be preserved noncollapsingly.
 
-## Register A→d62 residuals
+## Browser evidence availability is now explicit
 
-Of the 2,148 nine-field Register-A→d62 changes:
+Published:
 
-- 2,056 are inside the proved duplicate-shadow mechanism;
-- 92 are single-key in-place remapping/normalization changes;
-- 81 of those 92 change only `final_driver_label`;
-- 11 change only `semantic_secondary_driver`, all Arab Barometer W8.
+`H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`
 
-Recovered `apply_arab_barometer_w8_p0_structural_mappings.py` explains the mechanical clearing of those 11 secondary-driver fields during direct P0 structural promotion. H004 does not prove all 92 changes are lossless semantic supersessions, so prior and later assertions remain preserved for later scope-quality adjudication.
+Browser has exact bytes of all four returned harvest packets:
 
-## Exact transient pre-A master remains unrecovered but nonblocking
+- H001 `e283735f6af208578b373a2e30d8df7fc8ad3f86edc05874fa43e4be9092db78`
+- H002 `70789a6556f70c2c6be0771defe00fec918b7e64514e37d82744493431f1dc37`
+- H003 `0ad166ec3da232f56a5a0c9612862e99b2091e8ba80626bc76417e7a4524e461`
+- H004 `b7ce4c0de1aea7db1e08d4c4faf3447f22809b62b95800502f0f3ee52c0c7abd`
 
-Only two physical driver-master identities were recovered in H004:
+Browser can inspect every member of those ZIPs directly.
 
-- accepted V525b `53feb282...` / 6,211 rows;
-- later d62 `d62accad...` / 28,983 rows.
+The inventory separately records exact Browser-held members including the structure registers, semantic/driver masters, current-35 scope/identity manifests and code, respondent registries, H004 producer lineage and related schema/build objects.
 
-V525b is not the immediate Register-A master: only 5,128 Register-A keys match it and 1,963 matched nine-field projections differ.
+Browser also has connected GitHub access to the accepted/preserved SWID, source-census, FQRA/QSM/QRA/response/manual/negative authority surfaces listed in the inventory.
 
-The exact transient full pre-shadow master was not recovered. Register A remains a positive downstream witness of the effective pre-shadow semantic/driver projection for its covered keys. No regeneration or guessed reconstruction is authorized.
+## Library discovery indexes now hash-bound in the Browser record
 
-The historical filesystem census identifies `build_questions_master_drivers.py` SHA `e056bd2b8b388a8ad133b8a98682e68fb1612aedf6e6689122054d8c26925b6b`, but H004 did not package its bytes. This is recorded historical provenance residue, not a blocker to the H004 duplicate-producer ruling.
+Browser materialized and hashed:
 
-## V525b small pre-existing identity imperfection
+- `rawlsing_full_tree.txt` — `3fcc51f1a125f2a1eff90d932133cc033fb1145432b9e25ae3f9542ed09ea145`
+- `Rawlsing_and_RawlsingsExcess_tree_sha_size_date.txt` — `1e93b7774ffffc977bc80b940becdd7576cda10c6bb4a0c211b01a5634da6668`
+- `Rawlsing_repo_tree_dates_sizes_sha256.txt` — `8064b2a6d5fdd7cb3916aedbea59f74728b3dddf7b08ba9384531d95d5cd9c44`
 
-H004 also established that the 6,211-row V525b driver master has:
+These are discovery/path/SHA aids, not substitutes for target authority bytes or fresh local delta evidence.
 
-- 6,202 distinct `(source,wave,var_name)` keys;
-- 7 duplicate natural keys;
-- 9 duplicate-excess rows;
-- 4 blank natural-key rows.
+## Original H005 mixed two capability domains
 
-This is preserved for the future question-identity audit. It is not the cause of the later 10,455-row GSS/LiTS duplicate layer.
+The original H005 order asked a local worker both to:
 
-## Unified empirical-authority implication
+1. discover local-only identity evidence; and
+2. build the global candidate universe, cross-carrier joins, collision census and coverage matrix.
 
-H004 materially confirms the previously logged architecture direction:
+That division was unnecessary and operationally poor.
 
-- one governed question-occurrence identity spine;
-- separate normalized authority assertions at their true cardinalities;
-- prior semantic authority and later structural mappings must not compete through duplicate physical rows;
-- no implicit row-order precedence;
-- negative/review/pending states remain first-class;
-- future Parquet canonical relations + deterministic DuckDB bundle + derived monster master view remain the planned end state.
+The original `HARVEST-005` is therefore superseded by:
+
+### H005L — Local delta discovery
+
+`NEXT_LOCAL_HARVEST_REQUEST.md`
+
+Local responsibilities are now limited to:
+
+- search `/Users/matthewsmith/Desktop/Rawlsing` and `/Users/matthewsmith/Desktop/RawlsingsExcess`;
+- hash H005-responsive identity carriers;
+- compare against `H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`;
+- return exact bytes only for unseen/distinct content or uniquely necessary local provenance;
+- especially recover `questions_master.csv`, current codebook/question-index identity surfaces, local-only distinct FQRA/QSM variants and source-native identity indexes if present.
+
+The local worker must not perform global joins or coverage computation.
+
+### H005B — Browser identity/coverage court
+
+`HARVEST-005B_BROWSER_IDENTITY_COVERAGE_COURT.md`
+
+Browser HQ owns:
+
+- carrier schema census;
+- candidate question-occurrence relation;
+- indexed relational joins;
+- explicit cardinality classification;
+- collision census;
+- per-family/wave coverage counts;
+- identity-law implications and Trii/Chetiri dependency adjudication.
+
+Browser will use indexed relational operations (DuckDB/Polars/pandas merge/hash indexes or equivalent), not naive candidate-by-carrier scans.
+
+## Current Browser-availability gaps motivating H005L
+
+The availability inventory currently marks as not exhaustively Browser-held:
+
+- exact `questions_master.csv` content identities;
+- current final codebook/question-index occurrence surfaces;
+- local-only distinct FQRA/QSM/QSMv2 identity-bearing variants;
+- bounded source-native codebook variable/question identity indexes/manifests needed for occurrence binding.
+
+These are evidence-availability gaps, not proved semantic-authority gaps.
 
 ## Current dispositions
 
-- `EXP-006 EARLY_SEMANTIC_MASTER`: accepted V525b authority protected; later heuristic semantic carrier and flat d62 carrier do not prove lossless semantic succession.
-- `EXP-007 DRIVER_FACET`: d62 duplicate producer/cause resolved; later structural capital exists but must be preserved separately from semantic retirement; full current quality remains pending.
-- `EXP-030 SUPERSESSION_REGISTRY`: no global registry yet; H004 specifically rejects row order as a supersession rule.
+- `EXP-006 EARLY_SEMANTIC_MASTER`: V525b accepted authority remains protected.
+- `EXP-007 DRIVER_FACET`: d62 identity collision mechanism resolved; structural capital preserved separately from semantic retirement.
+- `EXP-030 SUPERSESSION_REGISTRY`: still incomplete globally; row order is specifically rejected as supersession law.
 - no expectation is `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
 
-## Next local request
+## Next sequence
 
-Issued:
-
-`HARVEST-005 — CURRENT-35 QUESTION-OCCURRENCE IDENTITY AND EXISTING-AUTHORITY COVERAGE BASELINE`
-
-H005 will mechanically enumerate the current-35 candidate question-occurrence universe and cross-carrier coverage/cardinality without deduplicating, inventing canonical UIDs, adjudicating semantics or treating uncovered as missing authority.
-
-After H005 adjudication, the intended sequence is:
-
-`QUESTION IDENTITY LAW -> CURRENT-35 USABLE-UNIVERSE BOUNDARY -> NORMALIZED AUTHORITY BINDING -> FULL-UNIVERSE QUALITY COURT -> TRUE GAP ADJUDICATION -> UNIFIED PARQUET/DUCKDB AUTHORITY RELEASE`
+`H005L LOCAL EVIDENCE COMPLEMENT`
+→ `H005B BROWSER IDENTITY/COVERAGE COURT`
+→ `QUESTION OCCURRENCE IDENTITY LAW`
+→ `CURRENT-35 USABLE-UNIVERSE BOUNDARY`
+→ `NORMALIZED AUTHORITY BINDING`
+→ `FULL-UNIVERSE QUALITY COURT`
+→ `TRUE GAP ADJUDICATION`
+→ `UNIFIED PARQUET/DUCKDB AUTHORITY RELEASE`
