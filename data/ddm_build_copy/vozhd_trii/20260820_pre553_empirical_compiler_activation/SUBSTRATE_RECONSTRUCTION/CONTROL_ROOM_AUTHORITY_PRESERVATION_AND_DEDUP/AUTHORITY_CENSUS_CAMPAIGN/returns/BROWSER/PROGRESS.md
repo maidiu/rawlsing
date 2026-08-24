@@ -1,126 +1,103 @@
-# Browser Authority Census — Post-Binding-Court Progress
+# Browser Authority Census — Authority Revalidation Campaign Progress
 
-Status: `BROWSER_CENSUS__H005_COMPLETE__18276_IMPLEMENTATIONS_DISPOSITIONED__CURRENT_AUTHORITY_STACK_BOUND__NO_PROVED_NEW_SEMANTIC_GAPS__SCHEMA_MIGRATION_REPLAY_COURT_NEXT`
+Status: `AUTHORITY_INVENTORY_BINDING_RECOVERED__GLOBAL_SUFFICIENCY_AND_LEGACY_QUALITY_REVALIDATION_OPEN__R01_R08_PREPARED__SCHEMA_GATE_BLOCKED`
 
-Start SHA: `b824c7d2b618b8e0987f6774b302e875d90b8fdd`
-Worker: `agent/vozhd-controlroom-authority-census-browser-r1`
+Original census start SHA: `b824c7d2b618b8e0987f6774b302e875d90b8fdd`
+Sealed census/binding branch: `agent/vozhd-controlroom-authority-census-browser-r1`
+Revalidation control branch: `agent/vozhd-trii-authority-revalidation-control`
 
-## Closed foundations
+## What remains closed and preserved
 
-### H004
+- H001-H005 authority census and identity recovery;
+- P2 18,276 implementation identity spine;
+- H004 duplicate-shadowing/noncollapse ruling;
+- current authority object inventory and binding map;
+- R10F/R10G/R10H/R10I recovery and jurisdictional bindings;
+- FQRA/QSMv2/QSR/V525b/QRA/response/SWID/source-native provenance findings;
+- explicit negative/block/unresolved states.
 
-The d62 GSS/LiTS duplicate layer is a proved flat-carrier identity/cardinality defect. Physical row order has no semantic supersession authority.
+## What was reopened
 
-### H005L / H005B
+The prior planning frontier incorrectly compressed two claims:
 
-- H005L exact packet SHA-256 `17854e15e32028c7f782c20abd375dc557419fff8f47770749f283fd7b6fafc5` verified;
-- P2 question identity architecture recovered rather than reinvented;
-- governed current-35 population fixed at 18,276 implementations / 35 waves / 9 families;
-- P2 skeleton SHA-256 `d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6`;
-- R14 and qsm_raw independently corroborate the same implementation population;
-- QSR/FQRA/helper/driver coverage and crosswalk/cardinality debt explicitly mapped.
+`NO SPECIFIC MISSING AUTHORITY YET PROVED`
 
-## Current-35 usable-universe / normalized-binding court closed
+and
 
-Governing adjudication:
+`ALL REQUIRED AUTHORITY IS SUFFICIENT AND HIGH-QUALITY`.
 
-`USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`
+Only the first had been established.
 
-Required outputs are present:
+Therefore the physical schema/migration/replay gate is deferred while the campaign tests:
 
-- `CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv`
-- `NORMALIZED_AUTHORITY_BINDING_MATRIX.csv`
-- `AUTHORITY_BINDING_CARDINALITY_AND_CONFLICT_LEDGER.csv`
-- `CURRENT35_AUTHORITY_QUALITY_AND_GAP_LEDGER.csv`
-- `TRII_CHETIRI_AUTHORITY_REQUIREMENTS.md`
-- `USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`
+- actual required consumer denominators;
+- existing coverage versus required scope;
+- intentional bounded jurisdiction;
+- source-limited unresolved states;
+- legacy semantic/manual quality;
+- model/manual provenance confidence;
+- lawful succession versus coexistence;
+- systematic defect classes;
+- genuinely missing authority, if any.
 
-### Full implementation disposition
+## Campaign package created
 
-Exactly 18,276 implementations are dispositioned.
+Directory:
 
-Primary use counts:
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/`
 
-- semantic evidence 4,681;
-- source topology/non-scalar structure 3,667;
-- respondent-position/demographic coordinate 2,904;
-- accepted behavior/exposure endpoint 2,113;
-- source/respondent context 1,675;
-- structural context 1,506;
-- administrative/metadata 1,026;
-- O04 rejected/rerouted non-endpoint 454;
-- context-position conditioner 183;
-- primary blocked/unresolved 67.
+Common law:
 
-The disposition serialization is keyed to the immutable P2 row order/identity and does not establish a competing question registry.
+- `00_CAMPAIGN_AUTHORITY.md`
+- `01_COMMON_WORKER_CONTRACT.md`
+- `02_RISK_STRATIFICATION_AND_SAMPLING_PROTOCOL.md`
+- `03_HQ_ADJUDICATION_AND_ESCALATION_PROTOCOL.md`
+- `04_WORKER_BRANCH_AND_TASK_LEDGER.csv`
 
-## Current successor authority recovered and bound
+Worker task files:
 
-### R10F
+- R01 coverage sufficiency;
+- R02 semantic meaning/continuity;
+- R03 driver/facet/domain/axis/target;
+- R04 response/directionality/measurement;
+- R05 routing/applicability/position/P5;
+- R06 structure/source-topology/relations;
+- R07 independent source-native hostile validation;
+- R08 provenance/legacy confidence/supersession.
 
-O03 source/topology: 3,667 terminal = 2,884 preserve + 783 revise + 0 blocked.
+## Method
 
-O04 behavior/exposure: 2,627 terminal = 2,113 accept endpoint + 454 reject/reroute + 60 blocked.
+This is not a blind full-universe reread.
 
-### R10G
+Workers use deterministic risk-stratified source-backed review. High-risk/legacy/conflict/high-fanout assertions receive disproportionate attention, while representative low-risk controls estimate false security.
 
-Canonical semantic-coordinate authority covers the full governed 3,324 semantic-unit denominator.
+Expansion is triggered by explicit defect-rate, severity, clustering, provenance and downstream-consequence rules.
 
-### R10H
+## Worker authority
 
-O06/O07/O08 cover all 18,276 implementations.
+All Rabochii are non-dispositive.
 
-- routing unresolved remains explicit for 10,348 implementations;
-- O07 has 30 unresolved measurement/use rows;
-- O08 has 18 unresolved position-semantic rows.
+They may challenge accepted authority and propose systematic defects. They may not mutate or replace canonical authority.
 
-These are negative/uncertain authority states, not absent data and not permission for defaults.
+HQ/Vozhd owns:
 
-### R10I
+- cross-worker reconciliation;
+- targeted expansion orders;
+- final sufficiency/quality certification;
+- proved missing-authority rulings;
+- successor-authority authorization;
+- reopening the physical schema gate.
 
-O09 P5 placement/conditioning is current authority:
+## Current gate
 
-- 4,544 admitted conditioners;
-- 13,704 non-conditioners;
-- 28 explicit unresolved conditioner semantics.
+`SCHEMA_MIGRATION_REPLAY_CONTRACT__BLOCKED_PENDING_AUTHORITY_REVALIDATION`
 
-## Jurisdictional authority preserved
+## Next sequence
 
-- FQRA/QSMv2: 18,250 P2 implementations bound; nine explicit blocked identity/authority joins; 26 P2 implementations outside target.
-- QSR: structural/source-topology authority; not implementation-population authority.
-- V525b: accepted historical semantic/driver capital, preserved until positive same-grain supersession.
-- later semantic/helper carriers: generated/inherited discovery aid, not semantic authority by recency.
-- d62: useful later structural assertions retained; row-order semantic shadowing rejected.
-- QRA/manual directionality + response-scale contracts remain separate from measurement-use classification.
-- SWID/source-native identity remains complementary to P2 implementation identity.
-
-## Gap state
-
-No current authority class reaches:
-
-`MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`
-
-Live debt is represented as explicit blockers, uncertainty, crosswalk debt, historical supersession uncertainty, source-specific successor obligations and execution-inheritance divergence.
-
-No broad semantic-authority creation campaign is authorized.
-
-## Local worker queue
-
-Empty.
-
-Browser already has the exact bytes necessary to begin the next court. A local delta request may be issued only for a named indispensable object that proves inaccessible.
-
-## Next Browser court
-
-Issued in `NEXT_BROWSER_WORK_ORDER.md`:
-
-`UNIFIED SUBSTRATE SCHEMA, MIGRATION & REPLAY CONTRACT COURT`
-
-Sequence:
-
-`RECOVERED 18,276 IMPLEMENTATION SPINE`
-→ `USABLE-UNIVERSE / AUTHORITY BINDING CLOSED`
-→ `TRII/CHETIRI REQUIREMENTS EXPLICIT`
-→ **`NORMALIZED RELATION SCHEMA + MIGRATION + PRECEDENCE + REPLAY CONTRACT`**
-→ `PHYSICAL PARQUET/DUCKDB IMPLEMENTATION`
-→ `CONSERVATION / REPLAY / RUNTIME VALIDATION`
+`FREEZE COMMON CAMPAIGN START HEAD`
+→ `FORK / VERIFY R01-R08 WORKER BRANCHES`
+→ `PARALLEL NONDISPOSITIVE RETURNS`
+→ `HQ RETURN ADJUDICATION`
+→ `TARGETED EXPANSION IF TRIGGERED`
+→ `FINAL AUTHORITY SUFFICIENCY + QUALITY RULING`
+→ `SCHEMA GATE REOPEN OR REMAIN BLOCKED`.
