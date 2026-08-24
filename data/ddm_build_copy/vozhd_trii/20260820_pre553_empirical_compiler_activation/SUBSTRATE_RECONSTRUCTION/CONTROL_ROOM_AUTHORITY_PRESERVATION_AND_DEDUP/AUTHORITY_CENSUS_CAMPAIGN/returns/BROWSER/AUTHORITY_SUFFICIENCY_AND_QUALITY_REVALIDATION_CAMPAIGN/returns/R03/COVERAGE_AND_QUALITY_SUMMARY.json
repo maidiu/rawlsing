@@ -2,12 +2,62 @@
   "worker": "R03",
   "start_head": "0d321d02e17c171951cf25a0f76d02001adef2b4",
   "jurisdiction": "driver/facet/domain/axis/target quality and noncollapse",
-  "terminal_requirement_ids": ["TIR-018","TIR-055","TIR-056","TIR-057","TIR-058","TIR-059","TIR-060","TIR-061"],
+  "terminal_requirement_ids": [
+    "TIR-018",
+    "TIR-055",
+    "TIR-056",
+    "TIR-057",
+    "TIR-058",
+    "TIR-059",
+    "TIR-060",
+    "TIR-061"
+  ],
   "audit_records": 407,
-  "task_specific_counts": {"r10g_hostile_correction_census":64,"r10g_low_confidence_census":16,"r10g_current_deterministic_sample":100,"qsmv2_r10g_overlap_deterministic_sample":100,"qsm_final_state_representatives":27,"v525b_requested_sample_slots":100,"v525b_row_level_semantic_reviews_completed":0,"d62_singleton_delta_denominator":92,"d62_singleton_exact_rows_browser_exposed":0},
-  "known_denominators": {"v525b_rows":6211,"d62_rows":28983,"d62_natural_keys":18519,"register_A_B_changed_keys":2148,"d62_changed_duplicate_keys":2056,"r10g_units":3324,"r10g_structural_units":3274,"r10g_semantic_only_anti_joins":50,"qsmv2_units":3196,"qsmv2_implementations":4438,"r10g_qsmv2_overlap_units":3195,"qsmv2_final_qa_checks":4886,"qsmv2_final_qa_failures":0},
-  "expansion_triggers": {"provenance_trigger_d62":true,"cluster_trigger_d62_duplicate_shadow":true,"downstream_consequence_trigger_flat_precedence":true,"v525b_evidence_access_trigger":true,"singleton_92_evidence_access_trigger":true,"current_r10g_systematic_defect_trigger":false,"missing_proved_trigger":false},
-  "proposed_terminal_states": {"V525b":"EXISTS__LEGACY_AGENT__SOURCE_BACKED__NOT_REVALIDATED","d62_flat_carrier":"EXISTS__LEGACY_AGENT__SYSTEMATIC_DEFECT_DETECTED","R10G_final":"EXISTS__CURRENT_HIGH_CONFIDENCE__SOURCE_BACKED","QSMv2_FQRA":"EXISTS__CURRENT_HIGH_CONFIDENCE__SOURCE_BACKED_WITH_BOUNDED_JURISDICTION","new_authority":"NOT_AUTHORIZED"},
+  "task_specific_counts": {
+    "r10g_hostile_correction_census": 64,
+    "r10g_low_confidence_census": 16,
+    "r10g_current_deterministic_sample": 100,
+    "qsmv2_r10g_overlap_deterministic_sample": 100,
+    "qsm_final_state_representatives": 27,
+    "v525b_requested_sample_slots": 100,
+    "v525b_row_level_semantic_reviews_completed": 0,
+    "d62_singleton_delta_denominator": 92,
+    "d62_singleton_exact_rows_browser_exposed": 0
+  },
+  "known_denominators": {
+    "v525b_rows": 6211,
+    "d62_rows": 28983,
+    "d62_natural_keys": 18519,
+    "register_A_B_changed_keys": 2148,
+    "d62_changed_duplicate_keys": 2056,
+    "r10g_units": 3324,
+    "r10g_structural_units": 3274,
+    "r10g_semantic_only_anti_joins": 50,
+    "qsmv2_units": 3196,
+    "qsmv2_implementations": 4438,
+    "r10g_qsmv2_overlap_units": 3195,
+    "qsmv2_final_qa_checks": 4886,
+    "qsmv2_final_qa_failures": 0
+  },
+  "expansion_triggers": {
+    "provenance_trigger_d62": true,
+    "cluster_trigger_d62_duplicate_shadow": true,
+    "downstream_consequence_trigger_flat_precedence": true,
+    "v525b_evidence_access_trigger": true,
+    "singleton_92_evidence_access_trigger": true,
+    "current_r10g_systematic_defect_trigger": false,
+    "missing_proved_trigger": false
+  },
+  "proposed_terminal_states": {
+    "V525b": "EXISTS__LEGACY_AGENT__SOURCE_BACKED__NOT_REVALIDATED",
+    "d62_flat_carrier": "EXISTS__LEGACY_AGENT__SYSTEMATIC_DEFECT_DETECTED",
+    "R10G_final": "EXISTS__CURRENT_HIGH_CONFIDENCE__SOURCE_BACKED",
+    "QSMv2_FQRA": "EXISTS__CURRENT_HIGH_CONFIDENCE__SOURCE_BACKED"
+  },
   "validation": "PASS_WITH_EXPLICIT_BROWSER_EVIDENCE_CEILINGS",
-  "stop_token": "AUTHORITY_REVALIDATION_R03_RETURNED"
+  "stop_token": "AUTHORITY_REVALIDATION_R03_RETURNED",
+  "new_authority_creation_candidate_emitted": false,
+  "jurisdiction_notes": {
+    "QSMv2_FQRA": "current high-confidence source-backed within its bounded structural/relation jurisdiction; no automatic same-grain supersession over R10G"
+  }
 }
