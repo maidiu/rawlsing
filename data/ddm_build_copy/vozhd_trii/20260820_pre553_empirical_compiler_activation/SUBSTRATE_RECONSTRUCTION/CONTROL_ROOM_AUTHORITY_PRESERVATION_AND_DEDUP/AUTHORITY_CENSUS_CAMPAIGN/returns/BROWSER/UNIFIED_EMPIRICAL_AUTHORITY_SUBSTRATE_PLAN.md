@@ -1,247 +1,287 @@
 # Unified Empirical Authority Substrate — End-State Plan
 
-Status: `PLANNED_END_STATE__P2_IDENTITY_ARCHITECTURE_RECOVERED__18276_IMPLEMENTATION_BASELINE_GOVERNS__USABLE_UNIVERSE_AND_BINDING_COURT_NEXT`
+Status: `PLANNED_END_STATE__P2_18276_IDENTITY_RECOVERED__USABLE_UNIVERSE_AND_AUTHORITY_BINDING_CLOSED__SCHEMA_MIGRATION_REPLAY_CONTRACT_NEXT`
 
 Recorded: 2026-08-23
-Updated after H005L/H005B adjudication.
+Updated after current-35 usable-universe / authority-binding adjudication.
 
 ## Objective
 
-Rawlsing should ultimately have one governed empirical-authority universe covering the complete usable question/variable universe across every active survey family and wave.
+Rawlsing should have one governed empirical-authority universe covering the complete active current-35 survey scope.
 
-This should be one coherent authority system, not one giant mutable flat table.
+This means one coherent authority system, not one giant mutable flat table.
+
+The canonical system must preserve different authority grains independently and compile convenient wide views only as derived compatibility products.
 
 ## Identity architecture is recovered, not invented
 
-H005 established that Rawlsing already possesses a frozen P2 question-node identity architecture.
+H005 recovered the frozen P2 question-node identity architecture.
 
-The future unified substrate must preserve and bind that architecture rather than create a competing generic `question_uid` scheme.
+The unified substrate must preserve:
 
-Required identity grains:
-
-- `question_concept` — semantic meaning across implementations where positively governed;
-- `question_implementation` — exact source-family + wave/material instrument scope + exact case-sensitive source variable;
-- `response_binding` — response authority attached to an implementation;
+- `question_concept` — governed semantic meaning/continuity grain;
+- `question_implementation` — exact source-family + wave/instrument scope + exact case-sensitive source variable;
+- `response_binding` — response authority attached to implementation;
 - `source_structure` — source-native battery/stem/module/structural context.
 
-Recovered current-35 implementation baseline:
+Current-35 implementation baseline:
 
-- 18,276 exact question implementations;
+- 18,276 exact implementations;
 - 35 active waves;
 - 9 source families;
-- row-level skeleton SHA `d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6`.
+- P2 skeleton SHA-256 `d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6`.
 
-Later globally closed P2/P3 authority preserves the same 18,276 implementation universe. The 18,831 figure belongs to semantic-priority pair authority, not implementation population.
+The 18,831 figure belongs to semantic-priority pair authority, not implementation population.
 
-## Current identity composition
-
-The unified substrate should bind the recovered P2 implementation identity to later governed source identity:
+Current identity composition:
 
 `P2 QUESTION_IMPLEMENTATION_ID`
 +
-`CURRENT SOURCE-WAVE UID`
+`CURRENT SOURCE-WAVE UID / SWID`
 +
 `SOURCE-NATIVE EXACT VARIABLE / INSTRUMENT IDENTITY`
 
-Aliases, predecessor mappings and physical-variable mappings are explicit crosswalk edges, not silent identity collapse.
+Aliases, predecessor mappings and physical-variable mappings are explicit crosswalk relations. Casefold/text similarity is search-only and never identity law.
 
-Casefold/text normalization may be indexed for search but never determines identity.
+## Usable-universe / authority-binding closure
 
-## Normalized authority relations
+The Browser court `USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md` closes the prior authority-accounting frontier.
 
-Authority must be represented at its actual grain for:
+Exactly 18,276 implementations are dispositioned, while independent authority layers remain orthogonal.
 
-- P2 continuity/anti-continuity and pair authority;
-- P3/P3C concept/family/variant genealogy;
-- semantic role/content assertions;
-- drivers and facets;
-- structural blocks/domains/axes/targets;
-- response option/scale contracts;
-- directionality/polarity;
-- routing/applicability/risk sets;
-- respondent-position and respondent semantics;
-- source structure/battery/stem/parent-child relations;
-- family/wave membership;
-- source/document evidence;
-- review/adjudication state;
-- provenance;
-- supersession/alias/deprecation edges.
+Current recovered/bound stack includes:
 
-One implementation may lawfully have many authority assertions at these distinct grains. They must not compete by physical row position.
+- P2 implementation identity and semantic ancestry;
+- R10F O03 source-topology authority;
+- R10F O04 behavior/exposure endpoint authority;
+- R10G semantic-coordinate authority;
+- R10H O06 routing/applicability authority;
+- R10H O07 measurement/use authority;
+- R10H O08 respondent/source position authority;
+- R10I O09 P5 strata/Horizon placement authority;
+- FQRA/QSMv2 relation/structural authority;
+- QSR source-structure/topology authority;
+- V525b accepted historical semantic/driver authority;
+- QRA/manual directionality and response-scale contracts;
+- respondent/source registries;
+- SWID/source-native identity and source evidence;
+- explicit negative/review/block/provenance/supersession state.
+
+No current authority class has been proved `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
+
+## Normalized canonical authority relations
+
+The physical contract must preserve at least these independent grains:
+
+1. question implementation identity;
+2. question concept / continuity / family genealogy;
+3. source-wave/SWID identity;
+4. exact source-native variable/instrument identity;
+5. implementation use disposition;
+6. semantic-unit membership and canonical coordinates;
+7. semantic assertions;
+8. driver/facet/domain/axis/target assertions;
+9. source topology / battery / stem / parent-child structure;
+10. behavior/exposure endpoint authority;
+11. relation/structural assertions including FQRA/QSMv2;
+12. routing/applicability predicates;
+13. measurement/use / response topology;
+14. source-native response-option/scale contracts;
+15. bounded directionality/polarity authority;
+16. respondent/source extraction semantics;
+17. respondent/source position authority;
+18. P5 strata/Horizon placement and activation;
+19. evidence/provenance links;
+20. review/block/negative-state assertions;
+21. alias/crosswalk relations;
+22. explicit supersession/retirement relations.
+
+One implementation may lawfully carry many assertions at these grains. They must never compete by physical row position.
 
 ## Negative and non-executable authority
 
-States such as:
+States such as `NOT_APPLICABLE`, `EXCLUDED`, `CONTEXT_ONLY`, `ADMINISTRATIVE`, `REVIEW_REQUIRED`, `SOURCE_CONFLICT`, `UNRESOLVED` and `BLOCKED` are first-class authority.
 
-- `NOT_APPLICABLE`
-- `EXCLUDED`
-- `CONTEXT_ONLY`
-- `ADMINISTRATIVE`
-- `REVIEW_REQUIRED`
-- `SOURCE_CONFLICT`
-- `UNRESOLVED`
-- `BLOCKED`
+Current known examples include:
 
-are first-class knowledge rather than blank cells.
-
-H005B specifically preserves:
-
-- nine final FQRA `BLOCKED_IDENTITY_OR_AUTHORITY_JOIN` rows;
-- 26 P2 implementations absent from the FQRA target without treating absence as revocation;
+- 10,348 explicit O06 routing-unresolved implementations;
+- 30 O07 measurement/use unresolved rows;
+- 18 O08 position-semantics unresolved rows;
+- 28 O09 P5-conditioner-semantics unresolved rows;
+- 60 O04 endpoint/source blocks;
+- nine final FQRA blocked identity/authority joins;
+- 26 P2 implementations outside FQRA target without identity revocation;
 - seven LiTS exact-case collision groups;
-- explicit LiTS `I` ↔ `2006` wave-key crosswalk debt;
-- helper/source predecessor aliases requiring source/manual authority.
+- historical supersession and execution-inheritance debts.
+
+These are not blanks to be filled heuristically.
+
+## Historical authority preservation
+
+Accepted historical authority is epistemic capital.
+
+V525b and other accepted historical/manual artifacts must be:
+
+- migrated where identity/applicability is proved;
+- preserved with historical status where same-grain supersession is unproved;
+- retired only by explicit supersession authority;
+- never dropped because a later carrier omitted or rewrote them.
+
+Likewise later structural authority may coexist with earlier semantic authority.
+
+## Why normalization is mandatory
+
+H004 gives the destructive counterexample:
+
+- old rows lacked `item_id`;
+- GSS/LiTS onboarding tested existence using `item_id`;
+- 10,455 second representations were appended for already-existing source/wave/variable identities;
+- a downstream consumer keyed differently and made last physical row win.
+
+H005 adds further evidence:
+
+- QSR contains structural/access rows outside P2 and can lose exact-case identity;
+- FQRA has a distinct relation target with explicit blockers;
+- helper carriers contain parent/helper residues and coverage gaps;
+- current successor authorities operate at semantic-unit, routing, measurement, position and placement grains different from implementation identity.
+
+A single flat authority table cannot lawfully encode these relationships without hidden precedence risk.
+
+## Required invariants
+
+The substrate must fail closed on:
+
+- duplicate implementation identity where uniqueness is declared;
+- exact-case collapse;
+- source-wave/source-native disagreement without governed crosswalk;
+- unknown ontology IDs;
+- implicit row-order precedence;
+- recency/path/filename precedence;
+- unproved same-grain supersession;
+- heuristic/generated assignments promoted to accepted authority;
+- variable-code reuse treated as equivalence;
+- text similarity treated as equivalence;
+- unexplained accepted-to-blank transitions;
+- unresolved execution dependencies silently defaulted;
+- loss of negative/block/review states.
+
+Every authority assertion must have explicit assertion identity, binding grain, provenance/epistemic class, status and lifecycle/supersession state.
 
 ## Preferred physical release
 
 Planning target:
 
-1. versioned typed Parquet relations with explicit schemas, manifests, hashes and validation receipts;
-2. deterministic read-only DuckDB compilation/query bundle;
-3. derived compatibility/master views such as `question_authority_master` for convenient inspection and legacy consumers.
+1. typed versioned Parquet canonical relations;
+2. machine-readable relation schemas;
+3. content-addressed release manifest and SHA-256 identities;
+4. deterministic read-only DuckDB compilation/query bundle;
+5. derived wide compatibility/master views such as `question_authority_master`;
+6. replay/conservation receipts proving that normalized migration did not lose authority.
 
-The monster master view is not canonical authority. It is compiled from normalized canonical relations.
+The wide master is not canonical authority.
 
-## Why normalization is mandatory
+## Migration law
 
-H004 provides a concrete destructive failure case:
+The schema/migration court must name exact predecessor carriers for every canonical relation and encode precedence explicitly.
 
-- old semantic rows lacked `item_id`;
-- GSS/LiTS structural onboarding tested existence by `item_id`;
-- it appended 10,455 second representations whose source/wave/variable identities already existed;
-- a later consumer keyed differently and made last physical row win;
-- semantic authority was therefore accidentally shadowed by carrier order.
+Migration must distinguish:
 
-H005 adds further evidence:
+- current accepted authority;
+- historical accepted authority;
+- generated/discovery-only carriers;
+- mechanical build law;
+- source-native evidence;
+- blocked/review authority;
+- compatibility/helper carriers;
+- invalid incidental precedence.
 
-- QSR has 518 unique current structural/access keys outside the P2 implementation population;
-- QSR loses exact-case identity in seven LiTS pairs;
-- FQRA has its own 18,259-row target and explicit identity blockers;
-- semantic/driver helpers include parent/helper coordinates and omissions relative to P2.
+No newer file may destroy an older accepted assertion without an explicit same-grain supersession edge.
 
-No single flat carrier can lawfully define all of these grains.
+## Replay / conservation law
 
-## Required invariants
+The physical implementation must be testable against the recovered authority universe.
 
-The eventual substrate must fail closed on:
+At minimum replay must prove:
 
-- duplicate implementation identity where uniqueness is declared;
-- exact-case collapse;
-- source/wave identity disagreement without governed crosswalk;
-- unknown ontology IDs;
-- implicit row-order precedence;
-- recency/path/filename precedence;
-- unproved supersession;
-- heuristic assignments promoted to accepted authority;
-- variable-code reuse treated as equivalence;
-- text similarity treated as equivalence;
-- unexplained accepted-to-blank transitions;
-- executable authority with unresolved required dependencies.
+- all 18,276 P2 implementation IDs conserved unchanged;
+- exact-case identity preserved;
+- all accepted current/historical assertions preserved or explicitly superseded;
+- one-to-many relations conserved without duplicating implementation identity;
+- O03/O04/O06/O07/O08/O09 counts and statuses conserved;
+- all blocked/review/negative states conserved;
+- FQRA blockers/target absences preserved;
+- QSR structural residue not promoted to population identity;
+- V525b capital not silently dropped;
+- d62 row order has zero semantic precedence;
+- SWID/source-native bindings deterministic;
+- wide compatibility views derive only from canonical normalized relations;
+- rebuild from immutable inputs is deterministic under the release/version law.
 
-Every authority assertion should carry its own assertion identity, implementation/concept binding, epistemic/provenance class, status and lifecycle/supersession state.
+## Trii / Chetiri integration law
 
-## Historical authority preservation
+**Trii** owns/protects the exact source floor:
 
-Accepted historical authority, including V525b and later positively adjudicated manual/review artifacts, is epistemic capital.
+- source/member SHA identity;
+- current source-wave UID;
+- exact source-native variable/instrument identity;
+- questionnaire/codebook/methodological evidence;
+- source-native response/value-label evidence;
+- source-native routing/applicability evidence;
+- explicit source-evidence ceilings where meaning cannot be recovered.
 
-It should be:
+**Control Room** reconciles source truth with semantic/structural/manual authority, negative state and succession.
 
-- carried forward where applicability and identity are proved;
-- preserved separately where succession is unproved;
-- represented as historical/review/generated status where appropriate;
-- never mechanically rewritten simply because a later helper carrier changed or lost it.
+**Chetiri** must persist, replay, compile and serve the resulting authority graph for compiler/discovery, generated-person runtime, empirical inference and analytical/DDM consumers.
 
-H004 establishes that later structural assertions may be useful while apparent flat-carrier semantic replacement is invalid.
-
-H005 establishes that P2 identity/semantic authority remains upstream even where later QSR/QSM/FQRA/helper carriers differ in target or coverage.
-
-## Current coverage target
-
-The identity baseline is now governed at 18,276 implementations.
-
-The next task is **not** to enumerate a larger union of every question-like row from every carrier.
-
-The next task is to determine, for each of those 18,276 implementations, its current production disposition and bind all live authority at the proper grain.
-
-Required dispositions include substantive production use, routing/universe controls, respondent-position/demographic roles, administrative/metadata, source/context/structural support, battery/stem roles, exclusions, review states and blockers.
+A compact store is invalid if required authority cannot be reproduced or served.
 
 ## Preconditions and current state
 
 Before physical implementation of the replacement authority store:
 
-- [x] H004 resolves the main d62 duplicate-producer/precedence mystery.
-- [x] Browser evidence availability is explicit/content-addressed.
-- [x] H005L local identity-carrier delta is adjudicated.
-- [x] H005B recovers the 18,276 P2 implementation population and identity law.
-- [x] current source-wave identity/SWID is identified as complementary binding authority.
-- [ ] the 18,276 implementations receive governed production dispositions.
-- [ ] existing semantic/driver/response/structure/routing/position authority is bound at correct grains.
-- [ ] full current authority quality/conflict/gap state is adjudicated.
-- [ ] true missing authority is proved before new manual authority is created.
-- [ ] normalized schema/cardinality contract is accepted by HQ.
-- [ ] migration/replay and validation contract is accepted.
-
-The unrecovered transient pre-Register-A driver master remains historical provenance residue and does not block the recovered identity architecture.
-
-## Trii / Chetiri integration law
-
-The unified substrate is not an isolated cleanup artifact.
-
-**Trii** owns/protects exact source bytes, source-native identity and documentary/source evidence needed beneath P2 implementation identity.
-
-**Control Room** reconciles source truth with recovered semantic/structural/manual authority and explicit gap/supersession state.
-
-**Chetiri** compiler/persistence candidate architecture must persist, replay and serve the resulting authority universe without semantic loss.
-
-A Chetiri physical design does not satisfy project requirements if it stores survey data while discarding:
-
-- P2 implementation identity;
-- semantic/manual authority;
-- response/routing/direction/position authority;
-- structural authority;
-- negative/blocked states;
-- provenance;
-- governed crosswalks;
-- supersession edges.
-
-Governing composition:
-
-`TRII SOURCE TRUTH`
-+
-`P2 GOVERNED QUESTION IDENTITY`
-+
-`RECOVERED EPISTEMIC CAPITAL`
-+
-`CURRENT NORMALIZED AUTHORITY BINDINGS`
-+
-`CHETIRI PERSISTENCE/COMPILER REQUIREMENTS`
+- [x] H004 duplicate-producer/row-order failure proved and adjudicated.
+- [x] Browser evidence availability content-addressed.
+- [x] H005L local delta adjudicated.
+- [x] P2 18,276 implementation population and identity law recovered.
+- [x] current source-wave/SWID identified as complementary identity layer.
+- [x] all 18,276 implementations receive governed use dispositions.
+- [x] current semantic/topology/endpoint/routing/measurement/position/P5 authority stack recovered and bound.
+- [x] FQRA/QSR/V525b/QRA/response/source authority preserved at correct jurisdictional grains.
+- [x] authority quality/conflict/gap court completed at current census scope.
+- [x] no current semantic-authority class proved missing.
+- [x] Trii and Chetiri preservation/serving requirements stated.
+- [ ] normalized canonical relation schema/cardinality contract accepted.
+- [ ] exact migration source map and precedence/supersession law accepted.
+- [ ] release manifest/Parquet/DuckDB physical contract accepted.
+- [ ] replay/conservation validation contract accepted.
+- [ ] physical implementation and replay court executed.
 
 ## Immediate next court
 
 `NEXT_BROWSER_WORK_ORDER.md`
 
-`CURRENT-35 USABLE-UNIVERSE & NORMALIZED AUTHORITY-BINDING QUALITY COURT`
+`UNIFIED SUBSTRATE SCHEMA, MIGRATION & REPLAY CONTRACT COURT`
 
 No broad local harvest is required at its start.
 
 ## Terminal shape
 
-`ONE_GOVERNED_18276_IMPLEMENTATION_SPINE`
+`ONE GOVERNED 18,276 IMPLEMENTATION SPINE`
 +
-`GOVERNED_CONCEPT/CONTINUITY/FAMILY RELATIONS`
+`NORMALIZED CANONICAL AUTHORITY RELATIONS AT CORRECT GRAIN`
 +
-`NORMALIZED AUTHORITY ASSERTIONS AT CORRECT GRAIN`
+`EXPLICIT CURRENT + HISTORICAL + NEGATIVE AUTHORITY`
 +
-`VERSIONED PARQUET RELEASE`
+`EXPLICIT CROSSWALKS + SUPERSESSION`
 +
-`DETERMINISTIC DUCKDB QUERY BUNDLE`
+`VERSIONED CONTENT-ADDRESSED PARQUET RELEASE`
 +
-`DERIVED MONSTER MASTER / LEGACY VIEWS`
+`DETERMINISTIC DUCKDB QUERY/COMPILATION BUNDLE`
 +
-`EXPLICIT PROVENANCE / NEGATIVE STATES / CROSSWALKS`
+`DERIVED WIDE / LEGACY COMPATIBILITY VIEWS`
 +
-`EXPLICIT SUPERSESSION EDGES`
+`REPLAY + CONSERVATION RECEIPTS`
 +
 `NO IMPLICIT PRECEDENCE`
 
-This remains an end-state architecture plan, not present physical implementation authority.
+This is the governing end-state plan. Physical implementation remains deferred until the schema/migration/replay contract is accepted.
