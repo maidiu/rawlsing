@@ -1,0 +1,13 @@
+scope,source_key,coverage_rows,special_state_rule,current_anchor_violation_count,integrity_result,notes
+QRA700_ALL_ROWS,*,700,DK/refusal/no-answer/IAP/not-asked/missing and source-special states are non-substantive,1,PASS_WITH_ONE_QUARANTINED_QRA_DEFECT,Only Latinobarómetro|1995|p26 uses a detected source-special state as a current QRA anchor.
+NAMED_ROW,Latinobarómetro|1995|p26,1,no know (don't read) || no answer,1,QUARANTINE_CURRENT_QRA_ANCHOR,SUCCESSOR_CANDIDATE__QRA_ASSERTION_DEFECTIVE
+NAMED_ROW,LiTS|III|q814d,1,don't know || haven't heard enough to say,0,PRESERVED_NON_SUBSTANTIVE,SUCCESSOR_CANDIDATE__QRA_ASSERTION_DEFECTIVE
+NAMED_ROW,Arab Barometer|II|q5182,1,missing || i don't know || declined to answer,0,PRESERVED_NON_SUBSTANTIVE,SUCCESSOR_CANDIDATE__QRA_ASSERTION_DEFECTIVE
+NAMED_ROW,Arab Barometer|II|eg8117,1,missing || i don't know || declined to answer,0,PRESERVED_NON_SUBSTANTIVE,SUCCESSOR_CANDIDATE__QRA_ASSERTION_DEFECTIVE
+NAMED_ROW,Latinobarómetro|1995|p53,1,don't know (don't read) || no answer,0,SOURCE_LIMITED__FAIL_CLOSED,SOURCE_LIMITED__FAIL_CLOSED
+NAMED_ROW,Latinobarómetro|1995|p63,1,don't know (don't read) || no answer,0,SOURCE_LIMITED__FAIL_CLOSED,SOURCE_LIMITED__FAIL_CLOSED
+NAMED_ROW,Latinobarómetro|2011|S1NICC7,1,don´t know / no answer,0,SOURCE_LIMITED__FAIL_CLOSED,SOURCE_LIMITED__FAIL_CLOSED
+NAMED_ROW,Latinobarómetro|2024|S20A,1,NONE_OBSERVED,0,SOURCE_LIMITED__FAIL_CLOSED,SOURCE_LIMITED__FAIL_CLOSED
+NAMED_ROW,Latinobarómetro|2024|Q7NOIJ,1,NONE_OBSERVED,0,SOURCE_LIMITED__FAIL_CLOSED,SOURCE_LIMITED__FAIL_CLOSED
+NAMED_ROW,Latinobarómetro|2024|Q8NOIJ,1,NONE_OBSERVED,0,SOURCE_LIMITED__FAIL_CLOSED,SOURCE_LIMITED__FAIL_CLOSED
+RESIDUAL_ROWS,ALL_OTHER_QRA700_ROWS,689,Bound source/response-contract specials preserved outside substantive anchors,0,PASS,No additional detected current-anchor special-state violation.
