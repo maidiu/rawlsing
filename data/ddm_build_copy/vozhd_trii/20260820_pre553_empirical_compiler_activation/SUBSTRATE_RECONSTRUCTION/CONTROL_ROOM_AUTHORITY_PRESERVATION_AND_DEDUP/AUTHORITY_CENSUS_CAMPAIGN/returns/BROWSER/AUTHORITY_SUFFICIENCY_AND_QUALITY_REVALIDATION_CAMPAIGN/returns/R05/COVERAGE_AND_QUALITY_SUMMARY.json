@@ -1,0 +1,42 @@
+{
+  "schema": "R05_COVERAGE_AND_QUALITY_SUMMARY@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/vozhd-trii-authority-revalidation-r05-routing-position",
+  "start_head": "0d321d02e17c171951cf25a0f76d02001adef2b4",
+  "return_head": "SEALED_IN_FINAL_GIT_HANDOFF",
+  "status": "R05_COMPLETE__TARGETED_EXPANSION_REQUIRED__NO_CANONICAL_MUTATION",
+  "authority_state_overall": "EXISTS__LEGACY_AGENT__SYSTEMATIC_DEFECT_DETECTED",
+  "tir_ids": ["TIR-007","TIR-022","TIR-023","TIR-038","TIR-045","TIR-051","TIR-052","TIR-053","TIR-054","TIR-055","TIR-059","TIR-062","TIR-067"],
+  "denominators": {"O06":18276,"O06_unresolved":10348,"O08":18276,"O08_unresolved":18,"O09_conditioner":18276,"O09_unresolved":28,"O09_admitted":4544},
+  "audit": {
+    "O06_raw_audited":725,
+    "O06_unresolved_audited":600,
+    "O06_t4_candidate_denominator":1351,
+    "O06_risk_tiers":{"T4_CRITICAL":500,"T3_HIGH":100,"T2_MEDIUM":75,"T1_LOW":50},
+    "O06_defects":0,
+    "O08_unresolved_census":18,
+    "O08_unresolved_false_unresolved":0,
+    "O08_q830_upstream_defect":1,
+    "O09_unresolved_census":28,
+    "O09_false_unresolved_recoverable":8,
+    "O09_correct_fail_closed":20,
+    "O09_additional_admitted_sample":100,
+    "O09_additional_nonconditioner_sample":50,
+    "itinerary_current35_members":35,
+    "itinerary_membership_mismatches":2
+  },
+  "systematic_mechanical_checks": {
+    "O06_unresolved_obligations_resolve":"10348/10348",
+    "O06_conditional_clauses_present_and_resolve":"4447/4447",
+    "O06_unconditional_evidence_present":"1986/1986",
+    "O06_unconditional_default_fallthrough_rule_count":0,
+    "O08_admin_lane_admitted_to_P5":0,
+    "O09_horizon_actual_state_inference_allowed_count":0
+  },
+  "exact_census_rates":{"O09_unresolved_false_unresolved_rate":0.2857142857142857,"O08_unresolved_false_unresolved_rate":0.0},
+  "sampling_note":"No global O06 defect percentage is reported because the risk-stratified design is not a simple random sample. O09 8/28 is a full unresolved census, not an estimate.",
+  "expansion_triggers":{"false_unresolved_trigger_7":true,"cluster_trigger_3":true,"downstream_consequence_trigger_4":true,"false_certainty_trigger_8":false,"O06_systematic_rate_trigger_1":false},
+  "canonical_mutation":false,
+  "local_machine_source_recovery_launched":false,
+  "hq_reconciliation_performed":false
+}
