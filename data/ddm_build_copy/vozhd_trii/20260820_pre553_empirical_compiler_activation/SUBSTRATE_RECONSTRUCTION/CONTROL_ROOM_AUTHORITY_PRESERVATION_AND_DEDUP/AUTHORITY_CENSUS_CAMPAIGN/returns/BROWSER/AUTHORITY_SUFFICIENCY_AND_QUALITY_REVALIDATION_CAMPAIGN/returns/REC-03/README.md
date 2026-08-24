@@ -21,17 +21,42 @@ whole-machine input-contract audit. The exact denominator spine used here is
 `T06_NORM_SHORE_ACCOUNTING_R2.csv`, which carries current R10G semantic-unit ids and source memberships.
 Its 813 current normative-role source-membership rows collapse to exactly 594 unique semantic units.
 
-## Source evidence
+## Source-evidence relation
 
-`SOURCE_EVIDENCE_LEDGER.csv` preserves the exact source-reference set for every denominator unit.
+`SOURCE_EVIDENCE_LEDGER.csv` defines the governed evidence relation used for every denominator row.
+For each `semantic_unit_id`, exact proposition evidence is the complete set of rows in
+`T06_NORM_SHORE_ACCOUNTING_R2.csv` where `sem__audit_unit_id == semantic_unit_id`. Those rows preserve
+source family, wave, variable identity, exact question text, current predicate/target, and routing/accounting
+context. Exact `(source_family, wave, source_variable_code)` joins to the governed P2 question-node catalog
+supply response-authority/question-node binding for **811 / 813** source-membership rows. The two remaining
+memberships retain the T06 source proposition and bounded R14 parent/stem evidence where available; no
+missing proposition field is invented. R02 hostile rulings are reused only on exact matching units.
 
-- 811 / 813 source-membership rows join exactly to the governed P2 question-node catalog.
-- 2 / 813 retain exact current source membership but did not recover an exact P2 join; no source fields were invented.
-- R02's exact source-backed RR_NORM hostile rulings are reused only where they match the exact semantic unit.
-- No classification is based on moral/political keywords alone.
+## Compact row-code contract
 
-Proposition class codes in `ROW_LEVEL_ROLE_CENSUS.csv`:
-`NORM_MORAL`, `NORM_OBLIG`, `NORM_POLICY`, `NORM_OTHER`, `P_ACTOR_COMMIT`, `P_CAUSAL`, `P_FREQ`, `P_STATE`, `P_ACCESS`, `DESC_BELIEF`, `AFFECT_CONCERN`, `SALIENCE`, `EVAL`, `INTENT`, `EXPECT`, `P_POP_ATTR`, `OTHER_NONNORM`, `UNRESOLVED`.
+`R10G_NORMATIVE_ROLE_DENOMINATOR.csv` and `ROW_LEVEL_ROLE_CENSUS.csv` use:
+
+- `P` = `PASS__CURRENT_ROLE_SOURCE_SUPPORTED`
+- `S` = `SUCCESSOR_CANDIDATE__ROLE_MISCLASSIFIED`
+- `L` = `SOURCE_LIMITED__CANNOT_RESOLVE`
+
+`ROW_LEVEL_ROLE_CENSUS.csv` proposition-class codes are:
+`NORM_MORAL`, `NORM_OBLIG`, `NORM_POLICY`, `NORM_OTHER`, `P_ACTOR_COMMIT`, `P_CAUSAL`, `P_FREQ`,
+`P_EXTENT`, `REALIZED_STATE`, `P_ACCESS`, `DESC_BELIEF`, `AFFECT_CONCERN`, `SALIENCE`, `EVAL`,
+`INTENT`, `EXPECT`, `P_POP_ATTR`, `UNRESOLVED`.
+
+Its preservation codes mean:
+
+- `P1`: current normative speech-act role is source-supported; preserve source actor/operator/target/object,
+  condition, modality, timeframe/horizon, population/geography, parent/stem context and response topology.
+- `S1`: exact actor/target/modality preservation and role-dependent replay requirements are stated in
+  `SUCCESSOR_CANDIDATE_LEDGER.csv`; source condition/timeframe/population/geography and unrelated R03
+  coordinates remain preserved unless a separate exact defect is proved.
+- `L1`: proposition-defining dimensions remain UNKNOWN at the recovered evidence ceiling; do not infer them.
+
+`SOURCE_LIMITED_ROWS.csv` uses:
+- `NE1` = exact parent/stem/operator plus response frame/topology required to resolve the speech act.
+- `PI1` = no keyword, moral-content, neighboring-wave, label, or convenience inference is permitted.
 
 ## Adjudication counts
 
