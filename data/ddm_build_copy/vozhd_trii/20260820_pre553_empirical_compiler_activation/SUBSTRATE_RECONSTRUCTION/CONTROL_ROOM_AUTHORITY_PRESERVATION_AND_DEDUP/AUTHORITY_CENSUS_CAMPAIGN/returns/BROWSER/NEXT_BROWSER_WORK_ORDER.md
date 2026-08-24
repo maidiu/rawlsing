@@ -1,185 +1,134 @@
-# NEXT BROWSER WORK ORDER — UNIFIED SUBSTRATE SCHEMA, MIGRATION & REPLAY CONTRACT COURT
+# NEXT BROWSER WORK ORDER — AUTHORITY SUFFICIENCY & SEMANTIC QUALITY REVALIDATION CAMPAIGN CONTROL
 
-Status: `ISSUED__BROWSER_HQ__AUTHORITY_ACCOUNTING_CLOSED_ENOUGH_FOR_PHYSICAL_CONTRACT__NO_LOCAL_HARVEST_REQUIRED_AT_START`
+Status: `ISSUED__VOZHD_HQ_CONTROL__EIGHT_RABOCHII__SCHEMA_MIGRATION_GATE_BLOCKED`
 
 ## Starting point
 
-The current-35 authority-binding court is closed.
+The empirical authority inventory, P2 identity spine and current authority-binding map have been recovered.
 
-Established inputs:
+The campaign now corrects a narrower overclosure: absence of a proved missing-authority row is not proof that all required authority is fully covered or semantically revalidated.
 
-- 18,276 governed P2 question implementations;
-- recovered P2 identity law;
-- explicit current use/disposition for all 18,276;
-- R10F O03/O04 terminal topology/endpoint authority;
-- R10G semantic-coordinate authority;
-- R10H O06/O07/O08 current routing/measurement/position authority;
-- R10I O09 current P5 placement authority;
-- FQRA/QSMv2 structural/relation authority with explicit blockers;
-- QSR source-structure authority with explicit cardinality/case debt;
-- V525b accepted historical semantic/driver capital;
-- QRA/manual directionality and response-scale contracts;
-- SWID/source-native identity and Trii source evidence;
-- explicit negative/review/block/provenance/supersession state;
-- zero authority classes currently proved `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
+Canonical campaign authority:
 
-Governing court:
-
-`USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`
-
-Requirements:
-
-`TRII_CHETIRI_AUTHORITY_REQUIREMENTS.md`
-
-Do not reopen population discovery or semantic rewriting merely because a physical design is inconvenient.
-
-## Authority question
-
-What exact normalized physical contract can persist, migrate, replay and serve the recovered empirical authority universe without collapsing identity, provenance, one-to-many assertions, negative states or jurisdictional boundaries?
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/00_CAMPAIGN_AUTHORITY.md`
 
 ## Mission
 
-### A. Define canonical normalized relations
+Run eight parallel non-dispositive Rabochii courts to answer two independent questions for every material authority lineage:
 
-Specify typed canonical relations at the minimum grains required by recovered authority, including at least:
+1. **Sufficiency:** does existing authority cover the exact jurisdiction Rawlsing's recovered consumers require?
+2. **Quality:** do legacy semantic/manual judgments survive risk-stratified hostile source-backed revalidation to the current standard?
 
-1. question implementation identity;
-2. concept/continuity/family lineage;
-3. source-wave/SWID identity;
-4. exact source-native variable/instrument identity;
-5. implementation use disposition;
-6. semantic-unit membership and coordinates;
-7. driver/facet/domain/axis/target assertions;
-8. source topology / battery / parent-child structure;
-9. behavior/exposure endpoint authority;
-10. routing/applicability predicates;
-11. response topology / measurement-use authority;
-12. response-option/scale contracts;
-13. bounded directionality/polarity authority;
-14. respondent/source extraction semantics;
-15. position authority;
-16. P5 strata/Horizon placement and activation;
-17. evidence/provenance links;
-18. review/block/negative-state assertions;
-19. alias/crosswalk relations;
-20. explicit supersession/retirement relations.
+HQ must then reconcile the returns and decide where authority is sufficient, intentionally bounded, correctly unresolved, defective, still unlocated or genuinely missing.
 
-Do not force independent authorities into one implementation row.
+## Worker courts
 
-### B. Define identity and cardinality law
+### R01 — coverage sufficiency
 
-For every relation state:
+Reconstruct actual required denominators from consumer obligations and compare existing coverage.
 
-- primary key / assertion identity;
-- foreign-key grain;
-- allowed one-to-many and many-to-many relationships;
-- uniqueness constraints;
-- exact-case behavior;
-- alias/crosswalk requirements;
-- whether blank/null is legal versus an explicit negative state;
-- fail-closed behavior on unresolved dependencies.
+### R02 — semantic meaning / continuity quality
 
-P2 `question_implementation_id` remains the semantic implementation spine. New physical assertion IDs are allowed; a competing semantic question UID is not.
+Hostile-revalidate semantic units, concepts, equivalences, target/actor/condition/modality preservation and semantic-coordinate judgments.
 
-### C. Define migration law
+### R03 — driver/facet/domain/axis/target quality
 
-For each canonical relation name exact predecessor carriers and precedence/succession rules.
+Revalidate V525b and later driver/structural lineages while preserving H004 noncollapse law.
 
-Migration must distinguish:
+### R04 — response/directionality/measurement
 
-- current accepted authority;
-- historical accepted authority that must survive;
-- generated/discovery-only carriers;
-- mechanical build law;
-- explicit blocked/review authority;
-- source-native evidence;
-- compatibility/helper carriers;
-- invalid implicit precedence such as d62 row order.
+Test O07, QRA236, response contracts and source-native response semantics; prove whether bounded directional authority is jurisdiction-complete.
 
-No later file may overwrite earlier accepted authority unless a positive supersession edge authorizes it at the same assertion grain.
+### R05 — routing/applicability/position/P5
 
-### D. Define physical release
+Audit O06/O08/O09, itinerary/SWID applicability and source-native routing evidence, especially explicit unresolved surfaces.
 
-Planning target remains:
+### R06 — source topology / structure / relations
 
-- typed versioned Parquet canonical relations;
-- machine-readable schemas;
-- release manifest with SHA-256 identities;
-- deterministic read-only DuckDB compilation/query layer;
-- derived `question_authority_master` and legacy compatibility views that are explicitly noncanonical.
+Audit R10F O03/O04, QSR, batteries/stems/parents, FQRA/QSMv2, blocked joins and bounded relation targets.
 
-The court must decide exact directory/release structure, schema-version law and content-addressed object identity.
+### R07 — independent source-native hostile validation
 
-### E. Define replay and conservation proof
+Blind-first source-backed sample across all nine families and material legacy lineages; estimate defect rates and provenance correlations.
 
-Specify validators proving at minimum:
+### R08 — provenance / legacy confidence / supersession
 
-- exactly 18,276 P2 implementation IDs survive unchanged;
-- no exact-case identity collapse;
-- every accepted historical/current assertion is either preserved or has an explicit lawful supersession edge;
-- all one-to-many assertions survive without creating duplicate implementation identity;
-- all negative/block/review states survive;
-- O03/O04/O06/O07/O08/O09 denominators and terminal statuses are conserved;
-- FQRA blockers and bounded target absences remain explicit;
-- QSR structural residue is not silently promoted to population identity;
-- V525b capital is not silently dropped;
-- d62 physical row order has zero semantic precedence;
-- SWID/source-native bindings remain deterministic;
-- derived wide views round-trip to canonical normalized relations without inventing authority;
-- replay from immutable inputs regenerates byte/content-equivalent canonical outputs or an explicitly version-governed successor.
+Reconstruct producer/evidence lineage, model/manual provenance and lawful same-grain supersession versus augmentation/coexistence.
 
-### F. State Trii and Chetiri execution contract
+## Common worker law
 
-Trii requirements must identify which source SHA, source-wave UID, variable/instrument and source-document evidence fields are mandatory for source certification to bind into the new substrate.
+All workers obey:
 
-Chetiri requirements must identify what must be persisted, loaded, compiled and served for:
+- `01_COMMON_WORKER_CONTRACT.md`
+- `02_RISK_STRATIFICATION_AND_SAMPLING_PROTOCOL.md`
+- `03_HQ_ADJUDICATION_AND_ESCALATION_PROTOCOL.md`
 
-- generated-person runtime;
-- empirical inference;
-- analytical/DDM consumers;
-- compiler/discovery workflows;
-- replay/audit/provenance inspection.
+No worker is dispositive.
 
-A storage architecture that cannot serve required authority is invalid even if compact or fast.
+No worker may create or mutate canonical semantic/manual authority.
 
-## Browser-first execution
+No worker may infer defect solely from legacy model age, nor certify quality solely from historical project acceptance.
 
-Use connected GitHub, exact H001-H005 packets, recovered Library authority and Browser computation.
+## HQ control obligations
 
-No local harvest is required at court start. Issue a bounded local request only for a named indispensable byte that Browser cannot access.
+HQ must:
 
-## Minimum durable outputs
+1. verify all workers start from one exact common HEAD;
+2. content-address every return;
+3. verify sampling/denominator compliance;
+4. reconcile cross-worker conflicts at the same assertion grain;
+5. order targeted expansion only when common triggers fire;
+6. separate source-limited uncertainty from missed recoverable authority;
+7. separately prove any missing-authority claim;
+8. preserve historical assertions if successor authority is later required;
+9. keep the physical-schema gate closed until revalidation closure.
 
-- `UNIFIED_SUBSTRATE_CANONICAL_RELATION_SCHEMA.md`
-- `UNIFIED_SUBSTRATE_RELATION_CATALOG.csv`
-- `UNIFIED_SUBSTRATE_MIGRATION_SOURCE_MAP.csv`
-- `UNIFIED_SUBSTRATE_PRECEDENCE_AND_SUPERSESSION_LAW.md`
-- `UNIFIED_SUBSTRATE_RELEASE_MANIFEST_CONTRACT.md`
-- `UNIFIED_SUBSTRATE_REPLAY_AND_CONSERVATION_TEST_PLAN.md`
-- `UNIFIED_SUBSTRATE_DUCKDB_COMPILATION_CONTRACT.md`
-- `TRII_CHETIRI_PHYSICAL_INTEGRATION_CONTRACT.md`
-- `UNIFIED_SUBSTRATE_SCHEMA_MIGRATION_REPLAY_ADJUDICATION.md`
+## Required HQ outputs after returns
+
+- `HQ_WORKER_RETURN_ADJUDICATION_LEDGER.csv`
+- `AUTHORITY_REQUIREMENT_SUFFICIENCY_MATRIX.csv`
+- `LEGACY_AUTHORITY_QUALITY_CERTIFICATION_LEDGER.csv`
+- `SYSTEMATIC_DEFECT_AND_EXPANSION_LEDGER.csv`
+- `SOURCE_LIMITED_UNRESOLVED_LEDGER.csv`
+- `PROVED_MISSING_AUTHORITY_LEDGER.csv`
+- `SUPERSESSION_AND_SUCCESSOR_AUTHORITY_PLAN.csv`
+- `AUTHORITY_REVALIDATION_FINAL_ADJUDICATION.md`
+
+## Gate logic
+
+### Schema gate remains blocked when
+
+- a material consumer denominator is not yet proved;
+- required scope is undercovered;
+- a consequential legacy semantic lineage remains untested;
+- systematic defect triggers have fired but not been bounded;
+- succession remains ambiguous in a way that affects physical canonicalization.
+
+### Schema gate may reopen when
+
+All material authority classes are one of:
+
+- fully covered and quality-revalidated;
+- fully covered with bounded, explicitly accepted debt;
+- intentionally bounded and jurisdiction-complete;
+- source-limited and explicitly unresolved/fail-closed;
+- or governed by a bounded successor-authority creation plan.
 
 ## Forbidden
 
-- no new semantic question UID;
-- no broad re-adjudication of question meaning;
-- no generated/helper carrier promoted by recency;
-- no row-order precedence;
-- no casefold identity collapse;
-- no hidden deduplication;
-- no blocked/unresolved flattening;
-- no mutation of source survey bytes during the court;
-- no implementation of the physical store before the contract and replay invariants are explicit enough to test;
-- no new semantic/manual authority without a separately proved missing-authority disposition.
+- no physical Parquet/DuckDB implementation during this campaign;
+- no new question UID;
+- no wholesale semantic rewrite;
+- no broad local Mac archaeology unless a named Browser-inaccessible object becomes indispensable;
+- no row-order/path/recency authority;
+- no conversion of unresolved states into guessed certainty;
+- no deletion of legacy authority when defects are found.
 
-## Terminal objective
+## Terminal sequence
 
-`RECOVERED_AUTHORITY_UNIVERSE`
-→ `NORMALIZED_CANONICAL_RELATION_CONTRACT`
-→ `EXPLICIT_MIGRATION_AND_PRECEDENCE_LAW`
-→ `CONTENT_ADDRESSED_PARQUET_RELEASE_CONTRACT`
-→ `DETERMINISTIC_DUCKDB_COMPILATION_CONTRACT`
-→ `REPLAY_AND_CONSERVATION_PROOF_PLAN`
-→ `TRII_CHETIRI_PHYSICAL_INTEGRATION_CONTRACT`
-→ `PHYSICAL_IMPLEMENTATION_READY`
+`EIGHT RABOCHII RETURNS`
+→ `HQ RECONCILIATION`
+→ `TARGETED EXPANSION IF TRIGGERED`
+→ `SUFFICIENCY + QUALITY FINAL COURT`
+→ `BOUNDED SUCCESSOR AUTHORITY CREATION ONLY IF PROVED NECESSARY`
+→ `SCHEMA / MIGRATION / REPLAY GATE REOPENED OR EXPLICITLY REMAINS BLOCKED`.
