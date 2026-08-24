@@ -1,9 +1,9 @@
 # Unified Empirical Authority Substrate — End-State Plan
 
-Status: `PLANNED_END_STATE__H004_IDENTITY_COLLISION_RISK_CONFIRMED__IMPLEMENTATION_DEFERRED_PENDING_IDENTITY_AND_AUTHORITY_CLOSURE`
+Status: `PLANNED_END_STATE__H004_IDENTITY_COLLISION_RISK_CONFIRMED__H005_SPLIT_INTO_LOCAL_DELTA_PLUS_BROWSER_COURT__IMPLEMENTATION_DEFERRED`
 
 Recorded: 2026-08-23
-Updated after HARVEST-004 adjudication.
+Updated after HARVEST-004 adjudication and H005 Browser/local split.
 
 ## Objective
 
@@ -46,6 +46,21 @@ The future substrate must distinguish at least:
 
 One question may lawfully have multiple assertions at these different grains without becoming a duplicate question occurrence.
 
+## H005 operational split
+
+The original H005 order mixed local filesystem discovery with the global relational identity/coverage computation.
+
+That is now split into:
+
+- `HARVEST-005L`: local machine searches only for H005-responsive exact content that Browser does not already possess;
+- `HARVEST-005B`: Browser HQ performs the candidate-universe, cross-carrier joins, collision census, coverage counts and identity-law implications.
+
+Normative Browser availability is recorded in:
+
+`H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`
+
+Browser already has exact H001-H004 packet bytes plus governed GitHub authority and Library discovery indexes. Local harvesting is therefore a content-addressed delta, not a redundant rebuild of the H005 computation.
+
 ## Required invariants
 
 The eventual substrate should fail closed on:
@@ -79,7 +94,9 @@ The production target is the complete usable-question universe across the active
 Before implementation of the replacement authority store:
 
 - [x] H004 resolves the main `d62...` duplicate-producer/precedence mystery: identity/cardinality collision proved; row-order semantic supersession rejected.
-- [ ] H005 establishes the mechanical current-35 question-occurrence/cross-carrier coverage baseline.
+- [x] Browser H005 evidence availability inventory is explicit and content-addressed.
+- [ ] H005L closes the local-only question-identity carrier delta.
+- [ ] H005B establishes the mechanical current-35 question-occurrence/cross-carrier coverage baseline.
 - [ ] HQ adopts the governed question-occurrence identity law and cardinality contract.
 - [ ] the authority census maps enough historical/manual authority to distinguish live capital from true gaps.
 - [ ] the current-35 candidate and production-usable universe boundaries are governed.
@@ -88,6 +105,22 @@ Before implementation of the replacement authority store:
 - [ ] migration/replay and validation contracts for the new physical release are accepted.
 
 The unrecovered transient pre-Register-A full driver master is historical provenance residue, not a prerequisite for designing the new identity system; Register A preserves the effective pre-shadow projection and exact existing authority bytes remain protected.
+
+## Trii / Chetiri integration law
+
+The unified substrate is not an isolated data-cleanup artifact.
+
+Trii source certification determines and protects exact source identities and source-native evidence needed by the question-occurrence spine.
+
+Chetiri compiler/persistence candidate architectures must consume the live authority universe recovered here. A physical architecture does not satisfy project requirements if it stores or serves empirical data while silently discarding semantic/structural/manual authority, negative states, provenance or governed identity.
+
+The Control Room therefore remains the reconciliation layer between:
+
+`TRII SOURCE TRUTH`
++
+`RECOVERED EPISTEMIC CAPITAL`
++
+`CHETIRI COMPILER/PERSISTENCE REQUIREMENTS`
 
 ## Terminal shape
 
