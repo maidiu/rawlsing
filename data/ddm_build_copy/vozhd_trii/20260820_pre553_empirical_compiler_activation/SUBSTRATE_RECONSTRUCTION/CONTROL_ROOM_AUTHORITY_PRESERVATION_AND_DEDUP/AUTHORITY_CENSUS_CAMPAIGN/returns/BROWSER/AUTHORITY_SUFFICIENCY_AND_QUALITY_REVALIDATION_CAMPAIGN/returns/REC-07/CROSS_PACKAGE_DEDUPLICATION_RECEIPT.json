@@ -1,0 +1,98 @@
+{
+  "campaign": "AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN",
+  "recovery": "REC-07",
+  "exact_start_head": "7f9314e3dab2d500888af4e9c3fe565d2f310030",
+  "result": "PASS__ALL_EXACT_CARDINALITY_AND_DEDUPLICATION_ASSERTIONS_SATISFIED",
+  "total_successor_records": 115,
+  "successor_records_by_surface": {
+    "R10G": 66,
+    "QRA35V1": 4,
+    "R10H_O07": 11,
+    "R10F_O03": 25,
+    "R10H_O08": 1,
+    "R10I_O09": 8,
+    "SWID_EXECUTION_INHERITANCE": 0,
+    "Q313_NEW_O03_OR_O07": 0
+  },
+  "package_counts": {
+    "P01": 8,
+    "P02": 1,
+    "P03": 0,
+    "P04": 59,
+    "P05": 4,
+    "P06": 11,
+    "P07": 4,
+    "P08": 21,
+    "P09": 0,
+    "P10": 7
+  },
+  "exact_p08_rec05_sample_ranks": [1, 6, 14, 15, 16, 18, 22, 23, 29, 32, 36, 37, 39, 44, 49, 54, 57, 58, 64, 65, 73],
+  "assertions": [
+    {
+      "id": "D01_Q5182_CROSS_SURFACE",
+      "expected": "one P05 QRA successor and one P07 O03 successor; no duplicate within either surface",
+      "observed": {"QRA35V1": 1, "R10F_O03": 1},
+      "coordination_id": "COORD-Q5182-QRA-O03-REC07",
+      "status": "PASS"
+    },
+    {
+      "id": "D02_Q5181_P07_NOT_P08",
+      "expected": "q5181 appears exactly once in P07 and zero times in P08",
+      "observed": {"P07": 1, "P08": 0},
+      "rec05_rank55_role": "CORROBORATING_EVIDENCE_ONLY",
+      "status": "PASS"
+    },
+    {
+      "id": "D03_Q814D_CROSS_SURFACE",
+      "expected": "one P05 QRA successor and one P06 O07 successor with shared coordination id",
+      "observed": {"QRA35V1": 1, "R10H_O07": 1},
+      "coordination_id": "COORD-Q814D-QRA-O07-REC07",
+      "status": "PASS"
+    },
+    {
+      "id": "D04_Q313_NO_DUPLICATE_SEMANTIC_AUTHORITY",
+      "expected": "zero new R10F O03 and zero new R10H O07 successors for q313_1-q313_8",
+      "observed": {"R10F_O03": 0, "R10H_O07": 0},
+      "status": "PASS"
+    },
+    {
+      "id": "D05_REC03_SOURCE_LIMITED_EXCLUDED",
+      "expected": "only exact 59 REC-03 successor-candidate semantic units; no 72 source-limited rows and no 463 pass rows",
+      "observed": {"P04_successors": 59, "REC03_source_limited_authored": 0, "REC03_pass_authored": 0},
+      "status": "PASS"
+    },
+    {
+      "id": "D06_REC04_SCOPE_EXACT",
+      "expected": "P05 exactly p26 q814d q5182 eg8117; P06 exact 11-row seam; no Q49STB/Q49STC",
+      "observed": {"P05": 4, "P06": 11, "Q49STB": 0, "Q49STC": 0},
+      "status": "PASS"
+    },
+    {
+      "id": "D07_Q5185_O03_EXCLUDED",
+      "expected": "q5185 outside O03 denominator and absent from REC-07 O03 successors",
+      "observed": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "D08_P08_ONLY_SAMPLED_PRESERVE_DEFECTS",
+      "expected": "exact 21 REC-05 preserve-sample source contradictions after q5181 dedup; no unsampled preserve row",
+      "observed_count": 21,
+      "observed_ranks": [1, 6, 14, 15, 16, 18, 22, 23, 29, 32, 36, 37, 39, 44, 49, 54, 57, 58, 64, 65, 73],
+      "unsampled_rows_authored": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "D09_P03_FAIL_CLOSED",
+      "expected": "zero SWID successors if exact accepted predecessor registry/kernel identity not pinned",
+      "observed": 0,
+      "terminal_state": "BLOCKED__PREDECESSOR_IDENTITY_NOT_PROVED",
+      "status": "PASS"
+    },
+    {
+      "id": "D10_P02_NO_DIRECT_O09_PROMOTION",
+      "expected": "q830 O08 successor only; O09 remains fail-closed",
+      "observed": {"O08_successor": 1, "q830_O09_successor": 0},
+      "status": "PASS"
+    }
+  ]
+}
