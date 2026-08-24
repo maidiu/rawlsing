@@ -1,111 +1,91 @@
 # Current Discovery Status & Next Action
 
-Status: `REC05X_ACCEPTED__REC07_ADOPTED_115__REC07X_588_REPAIR_AUTHORIZED__REC08_PARALLEL__P03_SWID_BLOCKED__SCHEMA_MIGRATION_BLOCKED`
+Status: `REC05X_ACCEPTED__REC07_ADOPTED_115__REC07X_V1_INPUT_BLOCKER_CORRECTED__REC07X_V2_OPEN__REC08_PARALLEL__HIST01_OPEN__P03_SWID_BLOCKED__SCHEMA_MIGRATION_BLOCKED`
 
-R00 and R01-R08 HQ reconciliation remain closed against the frozen 68-row TIR denominator.
+R00 and R01-R08 HQ reconciliation remain closed against the provisional frozen 68-row TIR denominator, subject now to HIST-01's explicit historical-completeness challenge.
 
 ## Binding current HQ
 
 Read as controlling:
 
-- `.../HQ/HQ_REC03_REC06_RECONCILIATION.md`
 - `.../HQ/HQ_REC05X_REC07_INTAKE_AND_ADOPTION.md`
+- `.../HQ/HQ_REC07X_V1_INPUT_ACCESS_CORRECTION.md`
+- `.../HQ/RECOVERY_TASKS/REC07X_V2_LIBRARY_INPUT_ACCESS_PATCH.md`
+- `.../HQ/RECOVERY_TASKS/HIST01_ORIGINAL_DDM_BUILD_COPY_AUTHORITY_TRACE_TASK.md`
 - `.../HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-## REC-05X
+## REC-05X / REC-07
 
-Accepted exact return:
+REC-05X accepted exact return: `29cf12dd91cf644c234239e5782cb7544f8c5898`.
 
-`29cf12dd91cf644c234239e5782cb7544f8c5898`
+R10F O03 preserve universe: 2,268 pass; 613 exact successor candidates; 3 source-limited; total 2,884. REC-07 covers exactly 25 of the 613 and HQ adopted 115 total successor records from its eligible packages at `28e7a1ef6a0ac883a980917b0bced465088f8a20`.
 
-Frozen R10F O03 preserve denominator is now completely accounted:
+P09 closes no-repair. P03 SWID remains blocked on exact accepted predecessor registry/kernel identity.
 
-- 2,268 pass;
-- 613 exact successor candidates;
-- 3 source-limited;
-- total 2,884;
-- REC-05 75-row sample replay exact.
+## REC-07X V1
 
-Of the 613 candidate rows, 25 are already covered by REC-07 O03 packages. Exact new repair denominator = **588**.
+V1 final HEAD: `d054220b6e51affec3f356ea131ef2dda06b0565`.
 
-The three source-limited rows are EVS 2008 `v339SIOPS`, `v346SIOPS`, `v357SIOPS`. Preserve fail-closed unless exact source-native EVS-2008 SIOPS range/value authority is later recovered.
+V1 is preserved as a clean bounded receipt. It reproduced 613 = 25 + 588 and authored nothing, but its GitHub-only environment could not reach the exact R10F predecessor carrier.
 
-## REC-07
+HQ subsequently recovered the exact governed predecessor in Library:
 
-Accepted exact return:
+`/Rawlsing/R10F/Rawlsing_DDM_R10F_O03_O04_Central_Integration_Codex_Ready_20260810.zip`
 
-`28e7a1ef6a0ac883a980917b0bced465088f8a20`
+Outer ZIP SHA-256:
 
-HQ adopted 115 append-only successor records from P01/P02/P04/P05/P06/P07/P08/P10.
+`c1fda991920f235963381a2a05697a053285961eaeaa178a4804273f4eda34a2`
 
-P09 closes as:
+Required member:
 
-`NO_ACTIVE_STALE_CONSUMER__NO_REPAIR_NEEDED`
+`R10F_S2_CENTRAL_INTEGRATED_AUTHORITY.csv`
 
-P03 remains:
+Member SHA-256:
 
-`BLOCKED__PREDECESSOR_IDENTITY_NOT_PROVED`
+`f593caa27f3eb9a7e49ff819626dc5294c6e7031748e74914aefc18f27b011d5`
 
-Do not reconstruct accepted SWID/current-35 identity from labels, aliases, itinerary membership or path coincidence.
+Therefore V1 is not a substantive predecessor/join failure.
 
 ## Work authorized now
 
-### REC-07X — exact 588 additional O03 repairs
+### REC-07X V2
 
-Binding task:
+Environment: connected GitHub + ChatGPT Library + container/Python.
 
-`.../HQ/RECOVERY_TASKS/REC07X_O03_ADDITIONAL_588_SUCCESSOR_REPAIR_TASK.md`
+Read original REC-07X task plus binding V2 Library input patch. Verify both exact ZIP and internal member hashes before any join. Then process only the same exact 588-row denominator.
 
-Exact immutable source docket:
+### REC-08
 
-REC-05X `SUCCESSOR_CANDIDATE_LEDGER.csv` at `29cf12dd91cf644c234239e5782cb7544f8c5898`, blob SHA `8865ef9080230733a4cfac3c13cea4e5f56b1330`.
+REC-08 C05-R2A pin/current-HQ intake remains authorized in parallel and must stop before C05-R2B.
 
-Denominator:
+### HIST-01
 
-`rec07_exact_o03_overlap == FALSE`
+Historical authority-consumption trace is authorized as a hard C09 prerequisite.
 
-Expected rows: 588.
+Start from the first canonical committed appearance of `data/ddm_build_copy`, trace all information-bearing producer inputs backward and all reachable Odin/Dva/Trii/Chetiri consumer dependencies forward, then crosswalk against current authority and the 68 TIRs.
 
-REC-07X may change only exact R10F O03 response-topology assertions. No self-expansion, no directionality inference, no pass/source-limited rows, no duplicate 25-row REC-07 O03 overlap.
-
-### REC-08 — C05-R2A pin/current-HQ intake
-
-REC-08 remains authorized in parallel. It must stop before C05-R2B.
-
-Prior HQ production profile remains binding:
-
-`C05R1B_PRODUCTION_DISCOVERY_RULE_PROFILE@1.0.0`
-
-No new K/J/depth law or heuristic pruning is authorized.
+The 68-TIR universe must not be treated as historically exhaustive before HIST-01 returns.
 
 ## Gates
 
 `REC05X_GATE = CLOSED__FULL_2884_CENSUS_ACCEPTED`
 
-`O03_PRESERVE_UNIVERSE_ACCOUNTED = TRUE__2268_PASS__613_EXACT_DEFECT__3_SOURCE_LIMITED`
-
 `REC07_GATE = CLOSED__115_SUCCESSORS_HQ_ADOPTED__P09_NO_REPAIR__P03_BLOCKED`
 
-`REC07X_GATE = OPEN__EXACT_588_ROWS_ONLY`
+`REC07X_V1 = CLOSED__NON_SUBSTANTIVE_INPUT_ACCESS_BLOCKER_RECEIPT`
+
+`REC07X_V2_GATE = OPEN__EXACT_LIBRARY_R10F_INPUT__588_ROWS_ONLY`
 
 `REC08_GATE = OPEN__C05R2A_PIN_AND_INTAKE_ONLY`
+
+`HIST01_GATE = OPEN__HARD_C09_PREREQUISITE`
 
 `SWID_P03_GATE = BLOCKED__EXACT_ACCEPTED_PREDECESSOR_IDENTITY_REQUIRED`
 
 `C05R2B_GATE = BLOCKED_PENDING_REC08_CURRENT_HQ_ACCEPTANCE_AND_REAL_SOURCE_INSTANCE_AUTHORITY`
 
-`C09_GATE = BLOCKED_PENDING_REC07X_REC08_P03_TREATMENT_AND_REMAINING_LOGICAL_RECOVERY`
+`C09_GATE = BLOCKED_PENDING_REC07X_V2_REC08_HIST01_P03_TREATMENT_AND_REMAINING_LOGICAL_RECOVERY`
 
 `C10_GATE = BLOCKED_PENDING_C09`
 
 `SCHEMA_MIGRATION_GATE = BLOCKED`
-
-## Current sequence
-
-`REC-07X exact 588-row O03 authoring`
-+
-`REC-08 C05-R2A pin/intake`
-
-may run concurrently.
-
-After return, HQ must intake REC-07X before any downstream regeneration. P03 remains a distinct SWID predecessor-identity blocker and must not be hidden inside O03 closure.
