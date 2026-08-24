@@ -1,129 +1,100 @@
-# NEXT WORK ORDER — POST REC-05X / REC-07 HQ INTAKE
+# NEXT WORK ORDER — REC-07X V2 / REC-08 / HIST-01
 
-Status: `ISSUED__REC05X_CLOSED__REC07_115_ADOPTED__REC07X_588_OPEN__REC08_PARALLEL__C09_BLOCKED`
+Status: `ISSUED__REC07X_V1_PRESERVED__REC07X_V2_LIBRARY_RETRY__REC08_PARALLEL__HIST01_HARD_C09_PREREQUISITE__C09_BLOCKED`
 
 ## Binding state
 
 Read first:
 
-`.../AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_REC05X_REC07_INTAKE_AND_ADOPTION.md`
+- `.../HQ/HQ_REC05X_REC07_INTAKE_AND_ADOPTION.md`
+- `.../HQ/HQ_REC07X_V1_INPUT_ACCESS_CORRECTION.md`
+- `.../HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-Current queue:
+## REC-07X V1 — do not rerun on the old branch
 
-`.../HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
+Immutable blocked return:
 
-## Do not rerun REC-05X or REC-07
+`d054220b6e51affec3f356ea131ef2dda06b0565`
 
-Accepted exact heads:
+V1 was correctly fail-closed but its GitHub-only execution environment omitted the Library R10F predecessor package. V1 is retained as a protocol/input-access receipt and has no substantive negative predecessor-join meaning.
 
-- REC-05X `29cf12dd91cf644c234239e5782cb7544f8c5898`
-- REC-07 `28e7a1ef6a0ac883a980917b0bced465088f8a20`
+## Three courts may run concurrently
 
-REC-05X completed all 2,884 R10F O03 preserve rows:
+### REC-07X V2 — exact 588 O03 successors
 
-- 2,268 pass;
-- 613 exact defects;
-- 3 source-limited.
+Environment:
 
-REC-07 already covers exactly 25 of the 613 defect rows and HQ adopted its 115 total semantic successors.
-
-Therefore the only new O03 authoring denominator is exactly **588** rows.
-
-## Browser/GitHub work authorized now
-
-### REC-07X — exact 588-row O03 successor authoring
+- connected GitHub;
+- ChatGPT Library;
+- container/Python.
 
 Read:
 
-`.../HQ/RECOVERY_TASKS/REC07X_O03_ADDITIONAL_588_SUCCESSOR_REPAIR_TASK.md`
+- `.../HQ/RECOVERY_TASKS/REC07X_O03_ADDITIONAL_588_SUCCESSOR_REPAIR_TASK.md`
+- `.../HQ/RECOVERY_TASKS/REC07X_V2_LIBRARY_INPUT_ACCESS_PATCH.md`
 
-Immutable input:
+Exact Library predecessor ZIP:
 
-REC-05X final HEAD:
+`/Rawlsing/R10F/Rawlsing_DDM_R10F_O03_O04_Central_Integration_Codex_Ready_20260810.zip`
 
-`29cf12dd91cf644c234239e5782cb7544f8c5898`
+Required ZIP SHA-256:
 
-Candidate-ledger blob SHA:
+`c1fda991920f235963381a2a05697a053285961eaeaa178a4804273f4eda34a2`
 
-`8865ef9080230733a4cfac3c13cea4e5f56b1330`
+Required member:
 
-Frozen R10F authority SHA-256:
+`R10F_S2_CENTRAL_INTEGRATED_AUTHORITY.csv`
+
+Required member SHA-256:
 
 `f593caa27f3eb9a7e49ff819626dc5294c6e7031748e74914aefc18f27b011d5`
 
-Exact denominator construction:
+After both identity checks pass, exact denominator remains 588 = REC-05X candidates where `rec07_exact_o03_overlap == FALSE`.
 
-- candidate ledger = 613 rows;
-- `rec07_exact_o03_overlap == TRUE` = 25 rows — EXCLUDE;
-- `rec07_exact_o03_overlap == FALSE` = 588 rows — AUTHOR;
-- three SIOPS source-limited rows are outside candidate denominator — EXCLUDE;
-- 2,268 pass rows — EXCLUDE.
-
-REC-07X must author exactly one append-only same-grain R10F O03 topology successor per exact joined row and nothing else.
+No semantic rediscovery is authorized.
 
 ### REC-08 — C05-R2A exact pin/current-HQ intake
 
-REC-08 remains authorized in parallel under its existing exact task.
+Continue under its existing Browser/GitHub task. Stop before C05-R2B.
 
-It must stop before C05-R2B.
+### HIST-01 — original ddm_build_copy authority-consumption DAG
 
-## Existing adopted REC-07 state
+Environment: full-history Git-capable repository checkout.
 
-HQ adopted:
+Read:
 
-- P01 O09 8;
-- P02 O08 1;
-- P04 R10G role 59;
-- P05 QRA 4;
-- P06 O07 11;
-- P07 O03 Q518 4;
-- P08 O03 sampled preserve 21;
-- P10 R10G Q60 7.
+`.../HQ/RECOVERY_TASKS/HIST01_ORIGINAL_DDM_BUILD_COPY_AUTHORITY_TRACE_TASK.md`
 
-Total = 115 successor records.
+Begin from the first canonical committed appearance of `data/ddm_build_copy`. Trace producer/input edges backward and actual reachable Odin/Dva/Trii/Chetiri consumer dependencies forward. Only after reconstructing that historical DAG crosswalk it against current authority and the 68-TIR universe.
 
-P09: no active stale q313 consumer; no repair.
+HIST-01 is a hard prerequisite for C09 because current TIR completeness is not assumed historically exhaustive.
 
-P03: SWID/current-35 inheritance remains blocked because exact accepted predecessor registry/kernel identity is not pinned. Do not reconstruct it from labels or membership coincidence.
+## Existing blockers
 
-## EVS-2008 SIOPS source ceilings
+P03 SWID/current-35 inheritance remains blocked on exact accepted predecessor registry/kernel identity.
 
-Exactly three REC-05X rows remain fail-closed:
-
-- v339SIOPS;
-- v346SIOPS;
-- v357SIOPS.
-
-No guessed topology is authorized. A future reopening must be bounded to exact source-native EVS-2008 SIOPS range/value authority.
-
-## Deferred
+The three EVS-2008 SIOPS O03 rows remain source-limited and fail-closed; do not guess them merely to obtain aesthetic closure.
 
 C05-R2B remains blocked pending REC-08/HQ acceptance + exact real-source instance authority.
 
-C09 is blocked pending REC-07X, REC-08/C05 continuation, P03 treatment, and remaining governed logical debts.
-
-C10 is blocked pending C09.
-
-Schema migration remains blocked.
-
 ## Gates
 
-`REC05X_GATE = CLOSED__ACCEPTED`
+`REC07X_V1 = CLOSED__INPUT_ACCESS_RECEIPT`
 
-`REC07_GATE = CLOSED__HQ_ADOPTED_EXCEPT_P03_BLOCKED__P09_NO_REPAIR`
+`REC07X_V2_GATE = OPEN__EXACT_588__LIBRARY_R10F_PINNED`
 
-`REC07X_GATE = OPEN__EXACT_588_ONLY`
+`REC08_GATE = OPEN`
 
-`REC08_GATE = OPEN__C05R2A_PIN_AND_INTAKE_ONLY`
+`HIST01_GATE = OPEN__HARD_C09_PREREQUISITE`
 
 `P03_SWID_GATE = BLOCKED`
 
 `C05R2B_GATE = BLOCKED`
 
-`C09_GATE = BLOCKED`
+`C09_GATE = BLOCKED_PENDING_REC07X_V2_REC08_HIST01_P03_TREATMENT_AND_REMAINING_LOGICAL_RECOVERY`
 
-`C10_GATE = BLOCKED`
+`C10_GATE = BLOCKED_PENDING_C09`
 
 `SCHEMA_MIGRATION_GATE = BLOCKED`
 
-No other repair or expansion is authorized by this work order.
+No other recovery/repair court is authorized by this work order.
