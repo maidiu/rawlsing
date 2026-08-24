@@ -1,170 +1,126 @@
-# Browser Authority Census — Post-HARVEST-005 Progress
+# Browser Authority Census — Post-Binding-Court Progress
 
-Status: `BROWSER_CENSUS__H005L_ADJUDICATED__H005B_ADJUDICATED__P2_18276_IMPLEMENTATION_UNIVERSE_RECOVERED__IDENTITY_LAW_RECOVERED__USABLE_UNIVERSE_BINDING_COURT_NEXT`
+Status: `BROWSER_CENSUS__H005_COMPLETE__18276_IMPLEMENTATIONS_DISPOSITIONED__CURRENT_AUTHORITY_STACK_BOUND__NO_PROVED_NEW_SEMANTIC_GAPS__SCHEMA_MIGRATION_REPLAY_COURT_NEXT`
 
 Start SHA: `b824c7d2b618b8e0987f6774b302e875d90b8fdd`
 Worker: `agent/vozhd-controlroom-authority-census-browser-r1`
 
-## H004 remains closed
+## Closed foundations
 
-The d62 GSS/LiTS duplicate layer is a proved identity/cardinality carrier defect, not semantic supersession.
+### H004
 
-Governing disposition:
+The d62 GSS/LiTS duplicate layer is a proved flat-carrier identity/cardinality defect. Physical row order has no semantic supersession authority.
 
-`DUPLICATE_SHADOWING_PRODUCER_PROVED__INCIDENTAL_CARRIER_KEY_COLLISION__NO_SEMANTIC_SUPERSESSION_AUTHORITY`
+### H005L / H005B
 
-Prior semantic authority and later structural assertions remain separately preserved.
+- H005L exact packet SHA-256 `17854e15e32028c7f782c20abd375dc557419fff8f47770749f283fd7b6fafc5` verified;
+- P2 question identity architecture recovered rather than reinvented;
+- governed current-35 population fixed at 18,276 implementations / 35 waves / 9 families;
+- P2 skeleton SHA-256 `d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6`;
+- R14 and qsm_raw independently corroborate the same implementation population;
+- QSR/FQRA/helper/driver coverage and crosswalk/cardinality debt explicitly mapped.
 
-## H005L returned and adjudicated
+## Current-35 usable-universe / normalized-binding court closed
 
-Actual packet verified by Browser:
+Governing adjudication:
 
-- SHA-256 `17854e15e32028c7f782c20abd375dc557419fff8f47770749f283fd7b6fafc5`;
-- size `10,510,567` bytes;
-- ZIP integrity PASS;
-- internal checksums `38/38` PASS;
-- 96 responsive physical occurrences;
-- 37 distinct identities;
-- 30 Browser-unseen identities returned;
-- 22 local-only identity surfaces;
-- no cross-carrier computation or source mutation by the local worker.
+`USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`
 
-H005L recovered exact FQRA/QSM/QSMv2/questions-master/R14 identity carriers and, crucially, the P2 question-node identity contract.
+Required outputs are present:
 
-Detailed local-packet ruling:
+- `CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv`
+- `NORMALIZED_AUTHORITY_BINDING_MATRIX.csv`
+- `AUTHORITY_BINDING_CARDINALITY_AND_CONFLICT_LEDGER.csv`
+- `CURRENT35_AUTHORITY_QUALITY_AND_GAP_LEDGER.csv`
+- `TRII_CHETIRI_AUTHORITY_REQUIREMENTS.md`
+- `USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`
 
-`HARVEST-005L_ADJUDICATION.md`
+### Full implementation disposition
 
-## Existing governed identity architecture recovered
+Exactly 18,276 implementations are dispositioned.
 
-H005 established that Rawlsing already had the identity architecture we were preparing to design.
+Primary use counts:
 
-Recovered P2 law distinguishes:
+- semantic evidence 4,681;
+- source topology/non-scalar structure 3,667;
+- respondent-position/demographic coordinate 2,904;
+- accepted behavior/exposure endpoint 2,113;
+- source/respondent context 1,675;
+- structural context 1,506;
+- administrative/metadata 1,026;
+- O04 rejected/rerouted non-endpoint 454;
+- context-position conditioner 183;
+- primary blocked/unresolved 67.
 
-- question concept;
-- question implementation;
-- response binding;
-- source structure.
+The disposition serialization is keyed to the immutable P2 row order/identity and does not establish a competing question registry.
 
-Implementation identity is exact source-family + wave/instrument scope + exact case-sensitive source variable. Lowercase/text normalization is search/discovery only.
+## Current successor authority recovered and bound
 
-Recovered row-level P2 Phase-0 skeleton:
+### R10F
 
-- `Rawlsing_P2_Phase0_Question_Node_Skeleton_v1.csv`;
-- SHA `d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6`;
-- 18,276 rows;
-- 18,276 unique implementation IDs;
-- 18,276 unique exact identity hashes;
-- 35 active waves / 9 families.
+O03 source/topology: 3,667 terminal = 2,884 preserve + 783 revise + 0 blocked.
 
-Later P2/P3 records prove the globally closed P2 state still has exactly 18,276 implementations. The count 18,831 belongs to semantic-priority pair authorities, not implementations.
+O04 behavior/exposure: 2,627 terminal = 2,113 accept endpoint + 454 reject/reroute + 60 blocked.
 
-Detailed recovered law:
+### R10G
 
-`QUESTION_OCCURRENCE_IDENTITY_LAW_RECOVERY.md`
+Canonical semantic-coordinate authority covers the full governed 3,324 semantic-unit denominator.
 
-## H005B Browser relational court closed
+### R10H
 
-H005B used indexed relational comparison rather than naive row scans.
+O06/O07/O08 cover all 18,276 implementations.
 
-### Cross-era corroboration
+- routing unresolved remains explicit for 10,348 implementations;
+- O07 has 30 unresolved measurement/use rows;
+- O08 has 18 unresolved position-semantic rows.
 
-- active-35 R14 codebook-scope records: 18,276;
-- active-35 H005L `qsm_raw`: 18,276;
-- qsm_raw normalized source/wave/exact-variable coordinates = P2 population 18,276 / 18,276.
+These are negative/uncertain authority states, not absent data and not permission for defaults.
 
-This is positive corroboration of the frozen P2 implementation population.
+### R10I
 
-### QSR
+O09 P5 placement/conditioning is current authority:
 
-Register C:
+- 4,544 admitted conditioners;
+- 13,704 non-conditioners;
+- 28 explicit unresolved conditioner semantics.
 
-- 18,792 physical rows / 18,782 normalized exact unique keys;
-- 18,226 P2 exact-unique matches;
-- 9 P2 exact-one-to-many;
-- 29 unique casefold search matches;
-- 7 ambiguous LiTS casefold identities;
-- 5 P2 implementations absent;
-- 519 physical / 518 unique non-P2 structural/access/source-column rows.
+## Jurisdictional authority preserved
 
-QSR is therefore valuable structure/source-topology authority but not implementation-population authority.
+- FQRA/QSMv2: 18,250 P2 implementations bound; nine explicit blocked identity/authority joins; 26 P2 implementations outside target.
+- QSR: structural/source-topology authority; not implementation-population authority.
+- V525b: accepted historical semantic/driver capital, preserved until positive same-grain supersession.
+- later semantic/helper carriers: generated/inherited discovery aid, not semantic authority by recency.
+- d62: useful later structural assertions retained; row-order semantic shadowing rejected.
+- QRA/manual directionality + response-scale contracts remain separate from measurement-use classification.
+- SWID/source-native identity remains complementary to P2 implementation identity.
 
-### FQRA/QSMv2
+## Gap state
 
-Active-35 FQRA target:
+No current authority class reaches:
 
-- 18,259 rows;
-- 18,052 exact P2 matches;
-- 198 unique casefold search matches;
-- 18,250 P2 implementations bound;
-- 9 explicit `BLOCKED_IDENTITY_OR_AUTHORITY_JOIN` rows;
-- 26 P2 implementations outside the final relation target.
+`MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`
 
-Absence from FQRA does not revoke P2 identity.
+Live debt is represented as explicit blockers, uncertainty, crosswalk debt, historical supersession uncertainty, source-specific successor obligations and execution-inheritance divergence.
 
-### Semantic/driver helpers
-
-Later semantic carrier and d62 share a broad 18,259-key helper/target coordinate universe but do not define question population. d62 additionally retains the H004 one-to-many physical-row defect.
-
-Durable mechanics:
-
-- `H005B_CARRIER_COVERAGE_SUMMARY.csv`
-- `H005B_COVERAGE_COUNTS_BY_FAMILY_WAVE.csv`
-- `H005B_IDENTITY_COLLISION_AND_CROSSWALK_DEBT.csv`
-- `H005B_AUTHORITY_OBJECT_SUPPLEMENT.csv`
-- `H005B_PROVENANCE_SUPPLEMENT.csv`
-
-Detailed court:
-
-`HARVEST-005B_ADJUDICATION.md`
-
-## Current question-identity disposition
-
-`EXP-031 QUESTION_IMPLEMENTATION_IDENTITY` is positively mapped.
-
-Governing baseline:
-
-`CURRENT35_GOVERNED_QUESTION_IMPLEMENTATION_BASELINE__18276`
-
-No new question UID invention is required. The future substrate should preserve/reuse the P2 `question_implementation_id` lineage, bound to current governed SWID/source-native identity.
-
-## What remains open
-
-Identity discovery is no longer the frontier.
-
-Still open:
-
-- production-usable/nonusable disposition of the 18,276 implementations;
-- current semantic/driver/facet/structure quality and ownership by implementation;
-- response/routing/position/respondent authority normalized binding;
-- bounded crosswalk debt and explicit blockers;
-- global supersession registry;
-- migration/replay/schema contract for the unified release;
-- true missing-authority proof where existing authority genuinely does not exist.
-
-No substantive new semantic authority is authorized merely from downstream absence.
+No broad semantic-authority creation campaign is authorized.
 
 ## Local worker queue
 
 Empty.
 
-`NEXT_LOCAL_HARVEST_REQUEST.md` now records:
-
-`NO_LOCAL_HARVEST_CURRENTLY_REQUIRED__BROWSER_HQ_NEXT`
+Browser already has the exact bytes necessary to begin the next court. A local delta request may be issued only for a named indispensable object that proves inaccessible.
 
 ## Next Browser court
 
-Issued:
+Issued in `NEXT_BROWSER_WORK_ORDER.md`:
 
-`NEXT_BROWSER_WORK_ORDER.md`
-
-`CURRENT-35 USABLE-UNIVERSE & NORMALIZED AUTHORITY-BINDING QUALITY COURT`
+`UNIFIED SUBSTRATE SCHEMA, MIGRATION & REPLAY CONTRACT COURT`
 
 Sequence:
 
-`RECOVERED_18276_IMPLEMENTATION_UNIVERSE`
-→ `USABLE/NONUSABLE DISPOSITION`
-→ `NORMALIZED AUTHORITY BINDING`
-→ `FULL QUALITY + TRUE GAP COURT`
-→ `TRII/CHETIRI REQUIREMENTS`
-→ `UNIFIED PARQUET/DUCKDB SCHEMA + MIGRATION`
+`RECOVERED 18,276 IMPLEMENTATION SPINE`
+→ `USABLE-UNIVERSE / AUTHORITY BINDING CLOSED`
+→ `TRII/CHETIRI REQUIREMENTS EXPLICIT`
+→ **`NORMALIZED RELATION SCHEMA + MIGRATION + PRECEDENCE + REPLAY CONTRACT`**
+→ `PHYSICAL PARQUET/DUCKDB IMPLEMENTATION`
+→ `CONSERVATION / REPLAY / RUNTIME VALIDATION`
