@@ -16,7 +16,7 @@ This is not a request to reopen O03 semantics and not evidence of a defect. It i
 
 ## HQ-03 — Keep global QSM retirement gated to the remaining same-grain succession owners?
 
-R06 confirms source-structure/relation succession surfaces, but R00's QSM audit leaves global same-grain evidence-ceiling / forbidden-inference and full composability quality outside R06's sole jurisdiction. R06 proposes that QSM remain unreti red globally until those named succession obligations close. [TIR-019, TIR-024, TIR-025, TIR-026–TIR-043, TIR-045]
+R06 confirms source-structure/relation succession surfaces, but R00's QSM audit leaves global same-grain evidence-ceiling / forbidden-inference and full composability quality outside R06's sole jurisdiction. R06 proposes that QSM remain unretired globally until those named succession obligations close. [TIR-019, TIR-024, TIR-025, TIR-026–TIR-043, TIR-045]
 
 ## No HQ question created for the following
 
