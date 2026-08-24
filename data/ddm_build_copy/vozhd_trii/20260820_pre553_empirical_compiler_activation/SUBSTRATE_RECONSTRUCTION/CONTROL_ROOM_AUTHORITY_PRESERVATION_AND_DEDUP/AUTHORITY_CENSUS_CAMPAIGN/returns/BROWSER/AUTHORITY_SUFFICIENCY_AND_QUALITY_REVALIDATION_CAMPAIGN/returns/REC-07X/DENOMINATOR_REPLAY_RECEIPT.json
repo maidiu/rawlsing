@@ -1,0 +1,22 @@
+{
+  "court": "REC-07X",
+  "worker_branch": "agent/vozhd-trii-rec07x-o03-additional-588-repair",
+  "exact_start_head": "9be25a6cf7ffcffd1e6717d92c6eadfdc41c0832",
+  "exact_start_verified": true,
+  "rec05x_head": "29cf12dd91cf644c234239e5782cb7544f8c5898",
+  "candidate_ledger_blob_sha": "8865ef9080230733a4cfac3c13cea4e5f56b1330",
+  "candidate_ledger_blob_identity_verified": true,
+  "frozen_r10f_filename": "R10F_S2_CENTRAL_INTEGRATED_AUTHORITY.csv",
+  "frozen_r10f_sha256": "f593caa27f3eb9a7e49ff819626dc5294c6e7031748e74914aefc18f27b011d5",
+  "frozen_r10f_identity_documented_by_rec05x": true,
+  "frozen_r10f_carrier_reachable_in_permitted_github_environment": false,
+  "expected_candidate_rows": 613,
+  "expected_rec07_overlap_true": 25,
+  "expected_rec07_overlap_false_authoring_denominator": 588,
+  "expected_rec05x_pass_rows_excluded": 2268,
+  "expected_source_limited_siops_rows_excluded": 3,
+  "denominator_authoring_replay_status": "BLOCKED_BEFORE_PREDECESSOR_RESOLUTION__EXACT_R10F_CARRIER_UNREACHABLE",
+  "successor_authoring_started": false,
+  "reason": "REC07X preflight requires the exact SHA-pinned frozen R10F CSV to be reachable. Its identity is proved by REC-05X, but its 3,667-row carrier could not be fetched from the assigned start tree, REC-05X tree, REC-05 tree, R06 return branch, or checked control-room harvest/revalidation GitHub snapshots. The task forbids substituting a nearby file or identifying predecessors by r10f_data_row/source_variable_code alone.",
+  "terminal_blocker": "BLOCKED__EXACT_INPUT_NOT_REACHABLE"
+}
