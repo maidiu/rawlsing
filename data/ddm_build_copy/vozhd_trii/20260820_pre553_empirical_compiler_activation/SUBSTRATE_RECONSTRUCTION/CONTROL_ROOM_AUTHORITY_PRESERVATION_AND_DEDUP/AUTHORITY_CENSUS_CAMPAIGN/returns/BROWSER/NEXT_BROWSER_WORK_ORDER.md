@@ -1,6 +1,6 @@
 # NEXT WORK ORDER — HQ TARGETED RECOVERY / EXPANSION PHASE
 
-Status: `ISSUED__HQ_RECONCILED__REC01_RETIRED_BY_RECOVERED_C02R2_G0__REC02_AND_REC03_REC06_ACTIVE__SCHEMA_MIGRATION_BLOCKED`
+Status: `ISSUED__REC01_RETIRED__REC02_ACCEPTED__C05_PRODUCTION_PROFILE_RECOVERED__REC03_REC06_ACTIVE__C05R2A_INTAKE_PENDING__SCHEMA_MIGRATION_BLOCKED`
 
 ## Starting point
 
@@ -10,43 +10,50 @@ The current binding queue is:
 
 `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-The post-reconciliation TIR-014 correction is:
+Post-reconciliation corrections:
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_TIR014_C02R2_RECOVERY_CORRECTION.md`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_TIR014_C02R2_RECOVERY_CORRECTION.md`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_REC02_INTAKE_AND_C05_LINEAGE_RECOVERY_CORRECTION.md`
 
-## REC-01 is closed
+## Closed local recovery
 
-Do not launch REC-01 V3.
+### REC-01
 
-The earlier accepted C02R2/G0 lineage already adjudicated M04/M05 occurrence/topology derivability and C06 U5.
+Closed/retired by recovered accepted C02R2/G0 law. Do not launch V3.
 
-Binding recovered result:
+### REC-02
 
-`CLOSED_BY_RECOVERED_ACCEPTED_C02R2_G0__EXACT_NAMED_SEMANTIC_OCCURRENCE_SIDE_MATERIAL_REQUIRED__FULL_EVENT_PAYLOAD_NOT_REQUIRED`
+Accepted exact return:
 
-Operational meaning:
+`82df5653bef884b6b643b1689337f37b5cc424c9`
 
-- immutable source bytes can remain the raw payload authority;
-- native source row + variable/slot/set/member identity preserves native occurrence distinctions;
-- semantic C11 occurrence identity requires exact governed semantic/topology/routing/replay authority and occurrence-level side binding where derivation does not close;
-- no accepted evidence requires duplicating raw event payload in that side material;
-- C09 must later prove parity/replay under deletion/nonuse of a full transformed event carrier while preserving that exact side-material closure.
+Do not rerun REC-02 broadly.
 
-The two REC-01 blocker branches remain audit receipts only.
+The return preserved evidence fragments and one blocked comparator feeder rather than declaring missing authority.
 
-## Local work authorized now
+REC-02's U007 bounded-search result is superseded at global HQ level by recovered prior C05-R1B adoption.
 
-### REC-02 — bounded provider / succession evidence recovery
+## Recovered C05 production law
 
-Binding task:
+Prior HQ explicitly adopted C05-R1B return:
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/RECOVERY_TASKS/REC02_LOCAL_PROVIDER_RECOVERY_TASK.md`
+`2ddddaa131ff54780fe232fd86a5c6442bec426b`
 
-Binding sibling-input patch:
+Binding profile:
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/RECOVERY_TASKS/REC02_IMMUTABLE_SIBLING_INPUT_ACCESS_PATCH.md`
+`C05R1B_PRODUCTION_DISCOVERY_RULE_PROFILE@1.0.0`
 
-Process R08 U003-U014 plus V525b and d62-92 evidence-access warrants exactly. No broad local archaeology. No `MISSING_PROVED` declaration. C05R remains blocked until HQ ingests REC-02.
+Binding production operation:
+
+`PRE553_PRODUCTION_EXACT_BOUNDED_AUTONOMOUS_DISCOVERY@1.0.0`
+
+Do not search again for a production DiscoveryAuthority as though this adoption were absent.
+
+A historical C05-R2A return reports:
+
+`C05R2A_PASS__GENERIC_FACADE_PROVED__NAMED_REAL_SOURCE_INSTANCE_AUTHORITY_PENDING`
+
+Its exact immutable final worker SHA/current-HQ acceptance still requires recovery/intake before C05-R2B can open.
 
 ## Browser / source-capable work authorized now
 
@@ -70,13 +77,24 @@ Audit Afrobarometer R5 Q60A-Q60G only. Determine whether Q60D is isolated or bat
 
 REC-07 may construct append-only successor/inheritance packages only after exact evidence contracts close and only for HQ-authorized targets. Preserve predecessors, provenance, negative states and explicit succession edges.
 
-## Deferred Chetiri completion
+## C05 continuation — REC-08
 
-`REC-08 / C05R` — blocked pending REC-02.
+REC-08 is NOT blocked on REC-02 anymore.
 
-`REC-09 / C09` — blocked pending logical recovery. Its workload must incorporate the recovered C02R2/G0 requirement for exact semantic occurrence/topology/replay side material under transformed-carrier deletion/nonuse.
+Current mission:
 
-`REC-10 / C10` — blocked pending C09 and must hostile-falsify the resulting physical synthesis.
+1. recover the exact immutable final HEAD of `agent/vozhd-chetiri-c05r2a-source-backed-c11-facade`;
+2. perform current-HQ intake of the historical C05-R2A return;
+3. if accepted, establish an exact real-source/release production instance with required semantic/source-certification authority;
+4. only then authorize C05-R2B production discovery instance construction and execution under the already adopted production profile.
+
+C05-R2B must not change the adopted production semantics to obtain tractability. In particular, do not shrink K/J/depth or introduce score/top-k/frequency/unary-screen/adaptive-stop reachability pruning without separate rule authority.
+
+## Deferred physical closure
+
+`REC-09 / C09` remains blocked pending remaining logical/execution recovery and source-quality expansion. It must incorporate recovered C02R2/G0 occurrence side-material law and the adopted C05 production profile.
+
+`REC-10 / C10` remains blocked pending C09 and must hostile-falsify the resulting physical synthesis.
 
 No wholesale C01-C08 rerun is authorized.
 
@@ -85,6 +103,7 @@ No wholesale C01-C08 rerun is authorized.
 - source-native evidence outranks semantic elegance;
 - unlocated is not missing proved;
 - blocked/unresolved/negative states are first-class;
+- later branch/artifact is not accepted authority without explicit adoption/succession;
 - no path/mtime/row-order/recency authority;
 - no canonical mutation except exact HQ-authorized bounded successor work;
 - no broad local-machine archaeology;
@@ -96,13 +115,17 @@ No wholesale C01-C08 rerun is authorized.
 
 `REC01_TIR014_GATE = CLOSED__PRIOR_ACCEPTED_C02R2_G0_RECOVERED`
 
-`LOCAL_RECOVERY_GATE = OPEN__REC_02_ONLY`
+`REC02_GATE = CLOSED__RETURN_ACCEPTED`
 
 `BROWSER_TARGETED_EXPANSION_GATE = OPEN__REC_03_TO_REC_06_ONLY`
 
-`C05R_GATE = BLOCKED_PENDING_REC_02`
+`C05_PRODUCTION_RULE_AUTHORITY = CLOSED__PRIOR_HQ_ADOPTION_RECOVERED`
 
-`C09_GATE = BLOCKED_PENDING_LOGICAL_RECOVERY`
+`C05R2A_GATE = PENDING_EXACT_RETURN_PIN_AND_CURRENT_HQ_INTAKE`
+
+`C05R2B_GATE = BLOCKED_PENDING_C05R2A_ACCEPTANCE_AND_EXACT_REAL_SOURCE_INSTANCE_AUTHORITY`
+
+`C09_GATE = BLOCKED_PENDING_LOGICAL_EXECUTION_RECOVERY`
 
 `C10_GATE = BLOCKED_PENDING_C09`
 
@@ -111,10 +134,11 @@ No wholesale C01-C08 rerun is authorized.
 ## Terminal sequence
 
 `HQ RECONCILED`
-→ `TIR-014 PRIOR C02R2/G0 CLOSURE RECOVERED`
-→ `REC-02 LOCAL + REC-03..REC-06 SOURCE EXPANSION`
-→ `REC-07 BOUNDED SUCCESSORS`
-→ `C05R IF ENABLED`
+→ `REC01 RETIRED / REC02 ACCEPTED`
+→ `REC03..REC06 SOURCE EXPANSION`
+→ `REC07 BOUNDED SUCCESSORS`
+→ `C05-R2A CURRENT HQ INTAKE`
+→ `C05-R2B IF AUTHORIZED`
 → `C09`
 → `C10`
 → `PHYSICAL SCHEMA / MIGRATION GATE DECISION`.
