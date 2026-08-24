@@ -1,86 +1,81 @@
 # Current Discovery Status & Next Action
 
-Status: `R00_CLOSED__TERMINAL_INFORMATION_REQUIREMENT_UNIVERSE_FROZEN__COMMON_HEAD_ALIGNMENT_COMPLETED__R01_R08_LAUNCH_AUTHORIZED__SCHEMA_MIGRATION_GATE_BLOCKED`
+Status: `R00_CLOSED__R01_R08_RETURNED__HQ_RECONCILED__TARGETED_EXPANSION_AND_BOUNDED_LOCAL_RECOVERY_AUTHORIZED__SCHEMA_MIGRATION_GATE_BLOCKED`
 
-R00 information-necessity conservation is adjudicated and closed.
+R00 information-necessity conservation is closed. All eight R01-R08 non-dispositive revalidation courts have returned and HQ has completed the dispositive reconciliation against the frozen 68-row `TIR-*` denominator.
 
-The governing denominator for the authority sufficiency and semantic-quality campaign is no longer the set of authority files already found, the old V550+ artifact suite, or the pre-R00 expectation census by itself. It is the frozen terminal information-requirement universe established by R00.
+## Binding HQ result
 
-## Governing R00 result
+Read as controlling:
 
-Read as binding:
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/AUTHORITY_REVALIDATION_FINAL_ADJUDICATION.md`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/AUTHORITY_REQUIREMENT_SUFFICIENCY_MATRIX.csv`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/SYSTEMATIC_DEFECT_AND_EXPANSION_LEDGER.csv`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/SOURCE_LIMITED_UNRESOLVED_LEDGER.csv`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/SUPERSESSION_AND_SUCCESSOR_AUTHORITY_PLAN.csv`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/06_R00_BINDING_ADDENDUM.md`
-- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/00_R00_COURT_AUTHORITY.md`
-- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/R00_ADJUDICATION.md`
-- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/TERMINAL_INFORMATION_REQUIREMENT_UNIVERSE.csv`
-- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/BIDIRECTIONAL_INFORMATION_CONSERVATION_AND_ORPHAN_LEDGER.csv`
-
-R00 upheld D12's capability-level conservation work while making the semantic-authority succession seam explicit. Joint Evidence requirement identity is conserved; QSM is decomposed into terminal information classes rather than protected as one flat carrier; surviving backward/forward orphan candidates remain explicit search and revalidation obligations.
-
-R00 does **not** authorize fabrication of new authority for those orphan candidates.
-
-## R01-R08 governing question
-
-For every applicable `TIR-*` terminal information requirement:
-
-1. what exact scope and grain are required by terminal consumers?
-2. what current/historical authority, source-native fact, lawful derivation or learned-world product supplies it?
-3. is the coverage complete, intentionally bounded, source-limited, unlocated, defective or genuinely absent?
-4. does the governing semantic/manual judgment survive hostile revalidation to current standards?
-5. is succession from old carrier to current provider lossless at the required information class?
-6. if a provider still cannot be found, has exhaustive successor/provider search actually proved a bounded missing-authority candidate?
-
-The pre-R00 expectation and binding artifacts remain evidence and ancestry; they are not the terminal denominator.
-
-## Branch and launch law
-
-The revalidation control ref and all R01-R08 worker refs have been aligned by non-forced fast-forward onto one accepted R00 closure/common HEAD.
-
-They must remain exactly equal at worker launch:
-
-- `agent/vozhd-trii-authority-revalidation-control`
-- `agent/vozhd-trii-authority-revalidation-r01-coverage-sufficiency`
-- `agent/vozhd-trii-authority-revalidation-r02-semantic-quality`
-- `agent/vozhd-trii-authority-revalidation-r03-driver-facet-quality`
-- `agent/vozhd-trii-authority-revalidation-r04-response-directionality`
-- `agent/vozhd-trii-authority-revalidation-r05-routing-position`
-- `agent/vozhd-trii-authority-revalidation-r06-structure-relations`
-- `agent/vozhd-trii-authority-revalidation-r07-source-hostile`
-- `agent/vozhd-trii-authority-revalidation-r08-provenance-supersession`
-
-The exact common HEAD is supplied and verified externally at launch; it is not self-pinned in this file because committing a self-reference changes the HEAD.
-
-Any later unexpected branch divergence is a launch blocker for that worker and must be preserved and adjudicated rather than force-reset.
+HQ finds no broad architectural amnesia and no `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED` class. It does find bounded material semantic/response/topology defects, unclosed same-grain succession, positive-provider recovery debt and one exact source-execution proof that Browser cannot close.
 
 ## Immediate next action
 
-1. issue R01-R08 launch instructions with the exact accepted common HEAD;
-2. require each worker to verify its assigned branch equals that HEAD before substantive work;
-3. run the eight bounded non-dispositive courts under the frozen R00 `TIR-*` denominator;
-4. HQ reconciles returns before any successor-authority or physical-schema decision.
+Execute only the bounded HQ recovery queue:
 
-C09 physical/parity work and C10 hostile synthesis remain later audit-coverage obligations where still relevant. Their historical non-execution does not block R01-R08 launch and is not itself proof of missing semantic authority.
+1. `REC-01` — local C02R/TIR-014 WVS7 Q152-Q157 occurrence/slot FD court;
+2. `REC-02` — bounded local Codex provider/evidence recovery restricted to R08 U003-U014 named roots plus exact V525b and d62-92 payload debts;
+3. in parallel, `REC-03` — full R10G `NORMATIVE_OR_POLICY_STANCE` source census;
+4. `REC-04` — full bounded QRA700 source census plus exact 11-row QRA/O07 geometry reconciliation;
+5. `REC-05` — LiTS Q3.13 / Arab Q518 topology expansion plus compliant R10F O03 hostile sample;
+6. `REC-06` — Afrobarometer R5 Q60A-Q60G driver battery court;
+7. `REC-07` — construct only the explicitly authorized bounded successor/inheritance packages after exact package contracts are frozen.
 
-Local-machine evidence escalation remains bounded by `R00_INFORMATION_NECESSITY_CONSERVATION/R00_LOCAL_EVIDENCE_ESCALATION.md`; no broad Mac archaeology is authorized.
+`REC-08` C05R remains blocked until REC-02 resolves the production DiscoveryAuthority/frontier and provider prerequisites.
+
+`REC-09` C09 exact physical bakeoff remains blocked until the logical/authority recovery frontier is stable.
+
+`REC-10` C10 hostile synthesis remains blocked until C09 returns.
+
+C01-C08 are not rerun wholesale. Only the exact still-live proof obligations listed by HQ may reopen.
+
+No broad local-machine crawl is authorized.
+
+## Already-authorized bounded successor targets
+
+HQ authorizes append-only successor-package construction, with predecessor history and exact provenance preserved, only for:
+
+- LiTS II `q713a`-`q713h` O09 target labels;
+- LiTS IV `q830` O08 position/exposure classification;
+- Latinobarómetro 1995 `p26` QRA special-state anchor correction.
+
+Other defects require their targeted expansion courts before successor authority can be constructed.
 
 ## Gates
 
 `R00_INFORMATION_NECESSITY_CONSERVATION_GATE = CLOSED`
 
-`R01_R08_REVALIDATION_GATE = OPEN__EXACT_COMMON_HEAD_REQUIRED_AT_WORKER_START`
+`R01_R08_REVALIDATION_GATE = CLOSED__HQ_RECONCILED`
 
-`SCHEMA_MIGRATION_GATE = BLOCKED_PENDING_R01_R08_HQ_RECONCILIATION`
+`AUTHORITY_RECOVERY_EXPANSION_GATE = OPEN__BOUNDED_QUEUE_ONLY`
 
-`NEW_SUBSTANTIVE_AUTHORITY_CREATION_BY_RABOCHII = FORBIDDEN`
+`PROVED_MISSING_NEW_AUTHORITY = NONE`
 
-`BOUNDED_SUCCESSOR_AUTHORITY_CREATION = HQ_ONLY_AFTER_PROVED_MISSING_EXACT_OBLIGATION`
+`NEW_SUBSTANTIVE_AUTHORITY_CREATION = FORBIDDEN_EXCEPT_EXPLICIT_HQ_BOUNDED_SUCCESSOR_PLAN`
+
+`C05R_GATE = BLOCKED_PENDING_REC_02`
+
+`C09_GATE = BLOCKED_PENDING_LOGICAL_RECOVERY`
+
+`C10_GATE = BLOCKED_PENDING_C09`
+
+`SCHEMA_MIGRATION_GATE = BLOCKED_PENDING_RECOVERY_EXPANSION_C09_C10`
 
 ## Terminal sequence
 
-`R00 TERMINAL INFORMATION REQUIREMENT UNIVERSE FROZEN`
-→ `R01-R08 SUFFICIENCY + QUALITY REVALIDATION`
-→ `HQ RECONCILIATION / TARGETED EXPANSION IF TRIGGERED`
-→ `BOUNDED SUCCESSOR AUTHORITY ONLY IF PROVED NECESSARY`
-→ `C09/C10 PHYSICAL + HOSTILE CLOSURE WHERE STILL REQUIRED`
-→ `PHYSICAL SCHEMA + MIGRATION + REPLAY GATE REOPENED OR EXPLICITLY REMAINS BLOCKED`.
+`R00 TIR UNIVERSE FROZEN`
+→ `R01-R08 RETURNED`
+→ `HQ RECONCILED`
+→ `REC-01..REC-07 BOUNDED RECOVERY / EXPANSION`
+→ `C05R IF ENABLED`
+→ `C09 PHYSICAL BAKEOFF`
+→ `C10 HOSTILE KILL COURT`
+→ `SCHEMA / MIGRATION / REPLAY GATE REOPENED OR EXPLICITLY REMAINS BLOCKED`.
