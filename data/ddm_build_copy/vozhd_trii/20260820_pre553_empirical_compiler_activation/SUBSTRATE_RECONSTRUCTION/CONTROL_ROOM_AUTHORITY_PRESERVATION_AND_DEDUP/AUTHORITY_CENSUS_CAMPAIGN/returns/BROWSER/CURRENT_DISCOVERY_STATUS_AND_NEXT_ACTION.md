@@ -1,117 +1,78 @@
-# Current Discovery Status and Next Action
+# Current Discovery Status & Next Action
 
-Status: `CURRENT_STATE_RECORDED__AUTHORITY_INVENTORY_AND_BINDING_RECOVERED__SUFFICIENCY_AND_LEGACY_QUALITY_NOT_GLOBALLY_CERTIFIED__REVALIDATION_CAMPAIGN_NEXT__SCHEMA_GATE_BLOCKED`
+Status: `R00_INFORMATION_NECESSITY_CONSERVATION_COURT_REQUIRED__R01_R08_LAUNCH_PAUSED`
 
-Recorded: 2026-08-23
+The authority inventory/binding and revalidation campaign preparation remain preserved, but the R01–R08 revalidation launch is paused pending R00.
 
 ## Governing correction
 
-The preceding H005 and current-35 binding courts remain valid as **inventory, identity, provenance and authority-binding recovery**.
+The governing universe is not "all authority-bearing files" and is not "everything the legacy V550+ pipeline happened to consume."
 
-They do not establish that every required authority class is fully covered for its actual consumer jurisdiction, nor that every legacy semantic/manual judgment has been revalidated to the current reasoning/source-backed standard.
+The governing universe is the complete set of informational distinctions, authority decisions, source facts, learned-world products, provenance, negative states, and replay determinants required to realize the true Rawlsing terminal vision recovered through Dva, Trii, and Chetiri.
 
-The earlier statement that zero current authority classes had reached `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED` means only:
+The prior census/binding work remains valid evidence recovery. The prepared R01–R08 revalidation campaign remains useful, but its denominator must first be proven complete at the level of terminal information necessity.
 
-`NO_NEW_SUBSTANTIVE_AUTHORITY_YET_AUTHORIZED_BY_PROVED_ABSENCE`
+## R00 conservation law
 
-It does **not** mean:
+R00 must prove bidirectional information conservation:
 
-`ALL_AUTHORITY_COMPLETE_AND_HIGH_QUALITY`.
+1. **BACKWARD CONSERVATION** — every informational distinction used by an old Rawlsing capability that remains terminally required must have a lawful successor/provider in the Dva/Trii/Chetiri design, or be named as an architectural orphan.
+2. **FORWARD CONSERVATION** — every informational prerequisite introduced by the Dva/Trii/Chetiri terminal vision must have a lawful source/derivation/authority/persistence path, or be named as an architectural orphan.
+3. **DEAD LEGACY** — old authority may retire only where the old implementation-specific information is proved unnecessary to every surviving terminal capability.
+4. **TRANSFORMED NECESSITY** — retiring an old carrier/artifact does not retire the informational obligation it carried.
+5. **NO SILENT ARCHITECTURAL AMNESIA** — absence from the new design is not proof that an old informational dependency became unnecessary.
+6. **NO LEGACY FOSSILIZATION** — presence in the old 550+ pipeline is not proof that the new terminal model still needs that artifact or information at the same grain.
 
-## What remains established
+## R00 phases
 
-- P2 current-35 implementation identity: 18,276 exact implementations / 35 waves / 9 families.
-- H004 d62 row-order/duplicate-shadow semantic precedence remains invalid.
-- H005 cross-carrier identity/cardinality findings remain binding.
-- R10F/R10G/R10H/R10I, FQRA/QSMv2, QSR, V525b, QRA/response-scale, SWID/source-native and respondent authority objects remain mapped at their proven jurisdictions.
-- Explicit blocked/unresolved/review states remain first-class authority.
-- No worker may invent new semantic authority merely because a carrier is partial or an unresolved state exists.
+### R00-A — Chetiri unresolved/missing surface consolidation
 
-## Why further court is required
+Exhaustively enumerate every C01–C10 finding classified or described as missing authority, unresolved blocking evidence, unlocated governing reference, unproved derivability, incomplete program law, owner-confirmation-required lifecycle law, source limitation, or named evidence requirement.
 
-The original expectation universe still contains material obligations that were partial, search-in-progress, current-quality-pending or succession-unproved.
+Do not collapse duplicates across cells until their exact meanings and grains are compared.
 
-Examples include:
+### R00-B — old Rawlsing capability → information dependency recovery
 
-- driver/facet full current quality;
-- respondent source/semantics succession;
-- response-option authority succession/sufficiency;
-- position/manual-exception/routing obligations;
-- family-specific WVS/LiTS/GSS/EVS/Latinobarómetro/South Asia/other authority;
-- V552J/I04 obligations;
-- exhaustive supersession governance.
+Reconstruct what the intended old Rawlsing/V550+ system was supposed to accomplish and what information/authority each capability actually depended upon, including joint evidence/J-family, QSM lineage, question/response/source structure, routing/applicability, driver/facet, continuity/equivalence, directionality, position, structural handoff, analytical/discovery, and replay requirements.
 
-The current binding matrix also includes intentionally bounded or historical authority such as:
+Separate implementation-specific carriers from irreducible informational distinctions.
 
-- QRA directionality: 236 certified rows;
-- response contracts: 145 contracts for that bounded directional surface;
-- V525b historical semantic/driver coverage over only part of the current-35 universe;
-- FQRA target/block debt;
-- 10,348 O06 routing-unresolved implementations;
-- 30 O07 unresolved measurement rows;
-- 18 O08 unresolved position rows;
-- 28 O09 unresolved conditioner rows;
-- d62 conflicting/cardinality-defective mixed authority.
+### R00-C — Dva/Trii/Chetiri terminal information necessity reconstruction
 
-For each such class we still need to distinguish intentional bounded jurisdiction, correct source-limited uncertainty, incomplete search, inadequate legacy quality and genuine missing authority.
+Reconstruct the terminal capability/consumer universe from governing Dva whole-machine/terminal-demand authorities plus Trii/Chetiri requirement courts. For each terminal capability, enumerate the minimum information it must know, derive, persist, serve, validate, or replay.
 
-## Current campaign
+### R00-D — bidirectional conservation/orphan court
 
-Canonical campaign directory:
+For every old informational dependency and every new terminal informational prerequisite classify:
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/`
+- `SURVIVES__SUCCESSOR_PROVIDER_PROVED`
+- `SURVIVES_TRANSFORMED__SUCCESSOR_PROVIDER_PROVED`
+- `DEAD_LEGACY__TERMINAL_NONNECESSITY_PROVED`
+- `BACKWARD_ORPHAN__OLD_NECESSITY_SURVIVES__NEW_PROVIDER_NOT_PROVED`
+- `FORWARD_ORPHAN__NEW_TERMINAL_REQUIREMENT__PROVIDER_NOT_PROVED`
+- `UNCERTAIN__GOVERNING_VISION_OR_OLD_DEPENDENCY_EVIDENCE_INCOMPLETE`
 
-Governing files:
-
-- `00_CAMPAIGN_AUTHORITY.md`
-- `01_COMMON_WORKER_CONTRACT.md`
-- `02_RISK_STRATIFICATION_AND_SAMPLING_PROTOCOL.md`
-- `03_HQ_ADJUDICATION_AND_ESCALATION_PROTOCOL.md`
-- `04_WORKER_BRANCH_AND_TASK_LEDGER.csv`
-- R01-R08 task files.
-
-Eight non-dispositive Rabochii courts are prepared:
-
-1. R01 required-authority coverage sufficiency;
-2. R02 semantic meaning/concept/continuity quality;
-3. R03 driver/facet/domain/axis/target quality;
-4. R04 response/directionality/measurement quality;
-5. R05 routing/applicability/respondent-position/P5 quality;
-6. R06 source-topology/structure/relation quality;
-7. R07 independent cross-family source-native hostile validation;
-8. R08 provenance/legacy-confidence/supersession reconstruction.
-
-HQ/Vozhd alone issues dispositive rulings.
-
-## Schema gate
-
-`UNIFIED SUBSTRATE SCHEMA, MIGRATION & REPLAY CONTRACT COURT` is **deferred**.
-
-It may resume only after HQ has classified all material required authority under a sufficiency + quality standard strong enough to avoid canonizing partial or weakly revalidated legacy semantics.
-
-## Local-source state
-
-No broad local harvest is currently authorized.
-
-Workers use connected GitHub, Browser-held packets and Library/source-native authority first. A local harvest may be issued only for a named indispensable object inaccessible to Browser.
+R00 does not create the missing authority. It proves the requirement and names the gap.
 
 ## Immediate next action
 
-Launch R01-R08 from one exact common campaign-preparation HEAD.
+Execute R00 on branch:
 
-Workers return bounded evidence and proposed findings. They do not modify canonical authority.
+`agent/vozhd-trii-r00-information-conservation`
 
-After all returns:
+R01–R08 remain frozen at their common preparation HEAD and MUST NOT launch until HQ accepts R00's terminal information-requirement universe.
 
-`HQ CROSS-WORKER RECONCILIATION`
-→ `TARGETED EXPANSION IF TRIGGERED`
-→ `FINAL SUFFICIENCY + QUALITY ADJUDICATION`
-→ only then `SCHEMA / MIGRATION / REPLAY CONTRACT`.
+## Gates
 
-## Current sequence
+`SCHEMA_MIGRATION_GATE = BLOCKED`
 
-`AUTHORITY INVENTORY / IDENTITY / BINDING RECOVERED`
-→ **`SUFFICIENCY + LEGACY QUALITY REVALIDATION`**
-→ `HQ TARGETED EXPANSION / SUCCESSOR AUTHORITY DECISION IF NEEDED`
-→ `PHYSICAL SCHEMA + MIGRATION + REPLAY CONTRACT`
-→ `IMPLEMENTATION / CONSERVATION / RUNTIME VALIDATION`.
+`R01_R08_REVALIDATION_GATE = BLOCKED_PENDING_R00`
+
+`NEW_SUBSTANTIVE_AUTHORITY_CREATION = FORBIDDEN_IN_R00`
+
+After R00:
+
+`TRUE TERMINAL INFORMATION REQUIREMENT UNIVERSE`
+→ `R01-R08 SUFFICIENCY + QUALITY REVALIDATION`
+→ `HQ TARGETED EXPANSION / SUCCESSOR AUTHORITY IF REQUIRED`
+→ `PHYSICAL SCHEMA + MIGRATION + REPLAY CONTRACT`.
