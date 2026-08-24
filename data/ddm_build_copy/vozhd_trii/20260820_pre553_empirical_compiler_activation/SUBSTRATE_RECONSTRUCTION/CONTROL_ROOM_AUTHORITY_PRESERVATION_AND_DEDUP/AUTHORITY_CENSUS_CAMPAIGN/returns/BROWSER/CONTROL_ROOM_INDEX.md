@@ -1,166 +1,131 @@
 # Control Room — Canonical Navigation Index
 
-Status: `ACTIVE_CANONICAL_PROJECT_MEMORY__AUTHORITY_BINDING_CLOSED__PHYSICAL_CONTRACT_NEXT`
+Status: `ACTIVE_CANONICAL_PROJECT_MEMORY__AUTHORITY_REVALIDATION_CAMPAIGN`
 
-This directory is the Browser/HQ authority-recovery and substrate-reconstruction command record.
+This Control Room records both the completed authority-recovery/binding work and the now-active sufficiency/semantic-quality revalidation campaign.
 
-It is organized by epistemic function rather than chronology.
+## 1. Identity and recovered authority foundations
 
-## 1. Expected authority obligations
+Core current-35 identity and carrier recovery:
+
+- `QUESTION_OCCURRENCE_IDENTITY_LAW_RECOVERY.md`
+- `HARVEST-005B_ADJUDICATION.md`
+- `H005B_CARRIER_COVERAGE_SUMMARY.csv`
+- `H005B_IDENTITY_COLLISION_AND_CROSSWALK_DEBT.csv`
+
+Governing population:
+
+`18,276 exact P2 question implementations / 35 waves / 9 source families`
+
+H004 noncollapse ruling remains binding: d62 physical row order has no semantic precedence.
+
+## 2. What authority objects exist?
 
 - `AUTHORITY_EXPECTATION_UNIVERSE.csv`
-
-Defines the authority obligation universe and distinguishes expected authority from merely observed files.
-
-## 2. Recovered authority objects
-
 - `AUTHORITY_OBJECT_CENSUS.csv`
 - `H005B_AUTHORITY_OBJECT_SUPPLEMENT.csv`
-
-The H005 supplement is a normative extension of the earlier census until a later compaction.
-
-## 3. Physical evidence availability
-
 - `AUTHORITY_PHYSICAL_LOCATION_LEDGER.csv`
 - `H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`
 - `H005_POST_DELTA_BROWSER_AVAILABLE_EVIDENCE_SUPPLEMENT.csv`
 
-These answer what exact evidence Browser already possesses and what, if anything, requires external/local retrieval.
-
-## 4. Epistemic classification
+## 3. Provenance / epistemic class / succession
 
 - `AUTHORITY_EPISTEMIC_CLASSIFICATION.csv`
-- `H005B_AUTHORITY_OBJECT_SUPPLEMENT.csv`
-
-Keep accepted/manual authority, current successor authority, historical authority, generated/discovery carriers, mechanical build law, source evidence, negative authority and blocked states distinct.
-
-## 5. Provenance / supersession
-
 - `AUTHORITY_PROVENANCE_AND_SUPERSESSION_DAG.csv`
 - `H005B_PROVENANCE_SUPPLEMENT.csv`
 
-Never infer supersession from recency, path, filename, mapping status or physical row order.
+Never infer canonicality or supersession from recency, path, filename, mtime or row order.
 
-## 6. Quality / execution / gaps
+## 4. Current authority binding map
 
-- `AUTHORITY_QUALITY_AND_EXECUTION_STATUS.csv`
-- `AUTHORITY_GAP_LEDGER.csv`
-- `CURRENT35_AUTHORITY_QUALITY_AND_GAP_LEDGER.csv`
-
-The current binding court found zero authority classes at `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
-
-Explicit blocked/unresolved states remain knowledge and must fail closed where their jurisdiction requires resolution.
-
-## 7. Harvest history
-
-- `HARVEST_REQUEST_LEDGER.csv`
-- `HARVEST_PACKET_ADJUDICATION_LEDGER.csv`
-- `HARVEST-001_ADJUDICATION.md`
-- `HARVEST-002_ADJUDICATION.md`
-- `HARVEST-003_ADJUDICATION.md`
-- `HARVEST-004_ADJUDICATION.md`
-- `HARVEST-005L_ADJUDICATION.md`
-- `HARVEST-005B_ADJUDICATION.md`
-
-The local harvest queue is currently empty.
-
-## 8. Question identity / current-35 implementation universe
-
-Recovered law:
-
-- `QUESTION_OCCURRENCE_IDENTITY_LAW_RECOVERY.md`
-
-H005 coverage mechanics:
-
-- `H005B_CARRIER_COVERAGE_SUMMARY.csv`
-- `H005B_COVERAGE_COUNTS_BY_FAMILY_WAVE.csv`
-- `H005B_IDENTITY_COLLISION_AND_CROSSWALK_DEBT.csv`
-
-Governing baseline:
-
-`18,276 exact P2 question implementations / 35 active waves / 9 source families`
-
-The original content-addressed P2 skeleton remains the row-level identity master. No competing question UID is authorized.
-
-## 9. Current-35 usable-universe and authority binding
-
-Governing court:
+The completed binding court is preserved as inventory/binding evidence:
 
 - `USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`
-
-Machine/durable outputs:
-
 - `CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv`
 - `NORMALIZED_AUTHORITY_BINDING_MATRIX.csv`
 - `AUTHORITY_BINDING_CARDINALITY_AND_CONFLICT_LEDGER.csv`
 - `CURRENT35_AUTHORITY_QUALITY_AND_GAP_LEDGER.csv`
 - `TRII_CHETIRI_AUTHORITY_REQUIREMENTS.md`
 
-This court closes the previous frontier:
+Important correction: these prove what authority was recovered/bound and which explicit blockers exist. They do **not** globally certify required-scope sufficiency or the semantic quality of every legacy judgment.
 
-- all 18,276 implementations dispositioned;
-- R10F O03/O04 bound;
-- R10G semantic coordinates bound;
-- R10H O06/O07/O08 bound across all 18,276;
-- R10I O09 bound;
-- FQRA/QSMv2, QSR, V525b, QRA/response, SWID/source authority preserved at their own grains;
-- negative/block/review states preserved;
-- no new semantic-authority gap proved.
+## 5. Active authority sufficiency & quality revalidation campaign
 
-## 10. Current state / what next?
+Canonical directory:
 
-- `PROGRESS.md`
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/`
+
+Read first:
+
+1. `00_CAMPAIGN_AUTHORITY.md`
+2. `01_COMMON_WORKER_CONTRACT.md`
+3. `02_RISK_STRATIFICATION_AND_SAMPLING_PROTOCOL.md`
+4. `03_HQ_ADJUDICATION_AND_ESCALATION_PROTOCOL.md`
+5. `04_WORKER_BRANCH_AND_TASK_LEDGER.csv`
+
+Worker courts:
+
+- `R01_COVERAGE_SUFFICIENCY_TASK.md`
+- `R02_SEMANTIC_MEANING_CONTINUITY_TASK.md`
+- `R03_DRIVER_FACET_DOMAIN_AXIS_TASK.md`
+- `R04_RESPONSE_DIRECTIONALITY_MEASUREMENT_TASK.md`
+- `R05_ROUTING_APPLICABILITY_POSITION_TASK.md`
+- `R06_STRUCTURE_SOURCE_TOPOLOGY_RELATIONS_TASK.md`
+- `R07_SOURCE_NATIVE_HOSTILE_VALIDATION_TASK.md`
+- `R08_PROVENANCE_LEGACY_CONFIDENCE_SUPERSESSION_TASK.md`
+
+All workers are non-dispositive. HQ/Vozhd alone can certify, expand, supersede or prove missing authority.
+
+## 6. Current epistemic gate
+
+Governing distinction:
+
+`NO_NEW_AUTHORITY_YET_AUTHORIZED_BY_PROVED_ABSENCE`
+
+is **not**
+
+`ALL_REQUIRED_AUTHORITY_COMPLETE_AND_HIGH_QUALITY`.
+
+The campaign tests both:
+
+- **sufficiency** — actual required jurisdiction versus existing coverage;
+- **quality** — source-backed revalidation of semantic/manual legacy judgments.
+
+## 7. Current state / what next?
+
 - `CURRENT_DISCOVERY_STATUS_AND_NEXT_ACTION.md`
 - `NEXT_BROWSER_WORK_ORDER.md`
+- `PROGRESS.md`
 - `NEXT_LOCAL_HARVEST_REQUEST.md`
 
-Current Browser frontier:
+No broad local harvest is currently required.
 
-`UNIFIED SUBSTRATE SCHEMA, MIGRATION & REPLAY CONTRACT COURT`
+Immediate action is parallel R01-R08 execution from one exact common campaign start HEAD.
 
-Current local frontier:
-
-`NONE__NO_LOCAL_HARVEST_REQUIRED_AT_START`
-
-## 11. End-state architecture
+## 8. Physical substrate plan
 
 - `UNIFIED_EMPIRICAL_AUTHORITY_SUBSTRATE_PLAN.md`
 
-Target physical shape:
+The architecture target remains normalized typed Parquet + deterministic DuckDB + derived compatibility/master views.
 
-- normalized typed canonical relations;
-- versioned Parquet release;
-- schemas/manifests/SHA identities;
-- deterministic read-only DuckDB compilation/query bundle;
-- derived wide compatibility/master views that are explicitly noncanonical;
-- explicit provenance, crosswalk, negative-state and supersession relations;
-- deterministic replay/conservation validation.
+**But the physical schema/migration/replay contract is currently blocked** so we do not canonize partial authority or insufficiently revalidated legacy semantic judgments.
 
-## 12. Trii / Chetiri integration
+## 9. HQ reconciliation outputs expected after worker returns
 
-Control Room reconciles:
+- `HQ_WORKER_RETURN_ADJUDICATION_LEDGER.csv`
+- `AUTHORITY_REQUIREMENT_SUFFICIENCY_MATRIX.csv`
+- `LEGACY_AUTHORITY_QUALITY_CERTIFICATION_LEDGER.csv`
+- `SYSTEMATIC_DEFECT_AND_EXPANSION_LEDGER.csv`
+- `SOURCE_LIMITED_UNRESOLVED_LEDGER.csv`
+- `PROVED_MISSING_AUTHORITY_LEDGER.csv`
+- `SUPERSESSION_AND_SUCCESSOR_AUTHORITY_PLAN.csv`
+- `AUTHORITY_REVALIDATION_FINAL_ADJUDICATION.md`
 
-`TRII SOURCE TRUTH`
-+
-`P2 GOVERNED QUESTION IDENTITY`
-+
-`RECOVERED HISTORICAL + CURRENT EPISTEMIC CAPITAL`
-+
-`CURRENT NORMALIZED AUTHORITY BINDINGS`
-+
-`CHETIRI PERSISTENCE / COMPILER / SERVING REQUIREMENTS`
+## 10. Governing sequence
 
-Trii must certify the exact source floor beneath the authority graph.
-
-Chetiri must persist, replay, compile and serve the graph without dropping one-to-many authority, blockers, provenance, historical capital or source identity.
-
-## Governing sequence
-
-`IDENTITY / 18,276 POPULATION RECOVERED`
-→ `USABLE-UNIVERSE DISPOSITION COMPLETE`
-→ `NORMALIZED AUTHORITY BINDING COMPLETE`
-→ `QUALITY / TRUE-GAP COURT COMPLETE`
-→ `TRII / CHETIRI REQUIREMENTS EXPLICIT`
-→ **`UNIFIED SUBSTRATE SCHEMA + MIGRATION + REPLAY CONTRACT`**
-→ `PHYSICAL IMPLEMENTATION`
-→ `REPLAY / CONSERVATION / RUNTIME VALIDATION`
+`AUTHORITY / IDENTITY / BINDING RECOVERED`
+→ **`SUFFICIENCY + LEGACY QUALITY REVALIDATION`**
+→ `TARGETED EXPANSION / SUCCESSOR AUTHORITY IF PROVED NECESSARY`
+→ `PHYSICAL SCHEMA + MIGRATION + REPLAY CONTRACT`
+→ `PARQUET/DUCKDB IMPLEMENTATION`
+→ `CONSERVATION / REPLAY / RUNTIME VALIDATION`.
