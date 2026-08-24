@@ -1,170 +1,149 @@
-# HARVEST-005 — CURRENT-35 QUESTION-OCCURRENCE IDENTITY AND EXISTING-AUTHORITY COVERAGE BASELINE
+# HARVEST-005L — LOCAL QUESTION-IDENTITY CARRIER DELTA DISCOVERY
 
-Status: `ISSUED__AWAITING_LOCAL_PACKET`
+Status: `ISSUED__LOCAL_DELTA_ONLY__NO_CROSS_CARRIER_COMPUTATION`
 
-## Exact authority question
+## Mission
 
-Across the governed current-35 survey scope, what exact question/variable occurrence identities are physically represented by the present source/codebook/master/register authority surfaces, and which existing semantic/driver/structural authority carriers cover each occurrence?
+Search the live local filesystem for H005-responsive question-identity evidence that Browser HQ does **not already possess as exact bytes/content**.
 
-This is an **identity and coverage census**, not a semantic-adjudication or repair task.
+This is a bounded retrieval/delta harvest.
 
-The objective is to build the mechanical identity spine needed for the future unified empirical-authority substrate and the later full-universe quality court, while preserving disagreements among existing carriers rather than collapsing them.
+It is **not** the current-35 identity/coverage census itself. Browser HQ owns that computation under `HARVEST-005B_BROWSER_IDENTITY_COVERAGE_COURT.md`.
 
-## Governing findings from H001–H004
+## Governing Browser exclusion inventory
 
-Browser has established:
+Before collecting payload bytes, read:
 
-- current scope is 35 active family-wave identities, EVS1999 included and Asian Barometer W6 excluded;
-- the 18,792-row question-structure register has an invariant manual/source-topology core across its recovered lineage;
-- V525b 6,211-row semantic/driver masters are accepted historical structural authority for their historical scope;
-- later `questions_master_semantic.csv` SHA `171d399d...` is a generated/heuristic carrier, not a proved lossless successor;
-- later `questions_master_drivers.csv` SHA `d62accad...` is not safe as a flat question authority: H004 proves the GSS/LiTS updater appended a second representation of 10,455 already-present natural question keys because old rows lacked `item_id`, after which a downstream `(source,wave,var_name)` dict made row order effective precedence;
-- row-order precedence is not semantic authority;
-- the future canonical system therefore needs one governed question-occurrence identity spine and separately-grained authority assertions.
+`H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`
+
+and:
+
+`H005_BROWSER_LOCAL_SPLIT_CONTRACT.md`
+
+The governing rule is:
+
+`H005_REQUIRED_EVIDENCE - BROWSER_AVAILABLE_EXACT_EVIDENCE = H005L_LOCAL_DELTA_SCOPE`
+
+If a responsive local file's SHA/content identity is already represented in the Browser inventory, do **not** package duplicate bytes. Record the local physical occurrence in the manifest/census if provenance matters.
+
+If a responsive local file has a distinct SHA/content identity not represented in the Browser inventory, return the bounded exact bytes.
+
+Do not infer canonicality from recency, path, filename, mtime, size or row count.
 
 ## Search roots
 
 - `/Users/matthewsmith/Desktop/Rawlsing`
 - `/Users/matthewsmith/Desktop/RawlsingsExcess`
 
-Use checkout/repository authority first for governed scope identities where available. Local filesystem bytes remain evidence candidates until Browser adjudication.
+## Browser already has
 
-## Primary identity surfaces
+Do not rebuild or repackage identical copies of the H001-H004 evidence universe.
 
-Locate and hash every distinct relevant occurrence of:
+Browser has exact bytes of all four returned ZIPs and every member, including the known structure registers, semantic masters, driver masters, scope/identity registries/manifests, historical/current identity code, H004 producer lineage and review/provenance evidence listed in `H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`.
 
-- `questions_master.csv`
-- `questions_master_semantic.csv`
-- `questions_master_drivers.csv`
-- `question_structure_register.csv`
-- current source/wave identity registries/manifests
-- `SOURCE_BYTE_INVENTORY.csv`
-- current final codebook/question-index surfaces used to create or normalize question identities
-- FQRA question-relation authority carrier(s) where they expose source/wave/question identity
-- QSM/QSMv2 carriers where they expose source/wave/question identity
-- response-scale/directionality/manual-authority carriers only to the extent needed to mechanically report coverage by question identity; do not recursively harvest their full provenance in this packet.
+Browser also has connected GitHub access to the current/preserved governed SWID, source-census, FQRA/QSM/QRA/response/manual/negative authority surfaces listed there.
 
-Known exact identities that must be recognized, not silently substituted:
+## High-priority local delta targets
 
-- later semantic master: `171d399da7e0f2bbd66dcce08a6c353978e48b69fee8d32ac6b1720d10d70ca5`
-- later driver master: `d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011`
-- V525b semantic master: `6e76965c1e00c90e1ae4a4647f99b851dc558a345c2a2792151143cb35fe2fc0`
-- V525b driver master: `53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711`
-- question-structure Register A: `f47c8adb65546b1c0a06dcd31dc0b827b59f8975a3806646f41a0742966c3d84`
-- Register B: `15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b`
-- current recovered Register C: `9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219`
+Search especially for the classes currently marked `BAV-GAP-*`:
 
-## Mechanical identity work
+1. every distinct `questions_master.csv` identity;
+2. current final-codebook/question-index identity surfaces that enumerate source/wave/question/variable occurrences;
+3. local-only **distinct** FQRA/QSM/QSMv2 identity-bearing variants not represented by Browser's Git content;
+4. source-native codebook variable/question identity indexes or manifests needed to bind normalized question rows to source occurrences;
+5. any other exact identity-defining carrier clearly required to answer what source/wave/question occurrence a normalized row represents.
 
-### A. Enumerate candidate question occurrences
+Do not return raw respondent microdata.
 
-For each mechanically identifiable question/variable occurrence, preserve all available source identity coordinates rather than choosing one prematurely:
+Do not broadly dump codebooks/PDFs merely because they exist. Return documentary/source files only if an exact identity surface depends on them and Browser does not already possess the relevant bounded evidence.
 
-- source family
-- wave label as stored
-- governed/current wave identity if an existing accepted registry supplies one
-- item/question ID
-- variable name
-- question text hash where text exists
-- source/codebook variable identity
-- source file / codebook identity where available
-- parent/child or constructed-column identity where explicitly represented
+## Required local work
 
-Do not invent a new canonical `question_uid`. Instead emit a deterministic **candidate identity tuple** and enough raw coordinates for Browser to define the future UID law.
+### A. Responsive content census
 
-### B. Build cross-carrier membership flags
+For every H005-responsive local occurrence, record:
 
-For every candidate occurrence, mechanically report whether and how it appears in each located carrier, at minimum:
+- absolute path;
+- SHA-256;
+- size;
+- mtime;
+- basename/artifact class;
+- relevant identity columns/fields if cheaply inspectable without executing producers;
+- Browser inventory match state:
+  - `EXACT_BROWSER_HELD_SHA`
+  - `DISTINCT_SHA_RETURN_BYTES`
+  - `GIT_CURRENT_EQUIVALENT_OR_CANDIDATE`
+  - `LOCAL_ONLY_IDENTITY_SURFACE`
+  - `AMBIGUOUS_REQUIRES_BROWSER`.
 
-- questions master
-- semantic master(s)
-- driver master(s), preserving multiple physical rows rather than collapsing duplicates
-- question-structure register
-- FQRA
-- QSM/QSMv2 if exact question identity is available
-- response/directionality/manual authority presence when mechanically joinable by an existing explicit key
+### B. Exact-byte delta
 
-For each membership, record the exact join fields and whether the relationship is:
+Package only:
 
-- exact unique
-- exact one-to-many
-- exact many-to-one
-- ambiguous duplicate
-- unmatched
-- key unavailable
+- distinct responsive SHAs Browser does not already possess;
+- local-only identity surfaces;
+- minimal supporting schema/config/provenance bytes necessary to understand those new surfaces.
 
-Do not resolve ambiguous joins.
+For an exact Browser-held SHA, manifest the occurrence but do not duplicate the bytes.
 
-### C. Duplicate/collision census
+### C. Schema receipt only
 
-Mechanically enumerate collisions under all identity coordinates actually used by historical/current code, including when present:
+For each distinct returned identity carrier, mechanically report:
 
-- `item_id`
-- `(source,wave,var_name)`
-- question ID
-- source/codebook variable
-- question text hash
+- header/field names;
+- row count where tabular;
+- presence/absence of `source`, `wave`, `var_name`, `item_id`, question ID, question text, source/codebook ID or equivalent fields;
+- duplicate counts only for single-carrier identity fields if trivial to calculate.
 
-Explicitly isolate:
+Do not join carriers to one another.
 
-- the known GSS/LiTS d62 duplicate layer;
-- the 7 duplicated V525b natural keys / 9 excess rows;
-- variable-code reuse across waves;
-- blank-ID cases;
-- same question text attached to different source identities;
-- same source/wave/var attached to conflicting IDs or texts.
+## Explicitly forbidden computation
 
-Do not deduplicate.
+The local worker must **not** produce:
 
-### D. Coverage counts
+- a global current-35 candidate question universe;
+- a cross-carrier question identity crosswalk;
+- carrier coverage matrices;
+- per-wave cross-carrier coverage counts;
+- global collision adjudication;
+- candidate-by-carrier nested scans;
+- a canonical question UID or proposed UID law.
 
-Produce exact counts by current family/wave and carrier for:
-
-- candidate question occurrences;
-- unique candidate identity tuples;
-- semantic-master covered/uncovered;
-- driver-master covered/uncovered;
-- structure-register covered/uncovered;
-- FQRA covered/uncovered;
-- ambiguous or duplicate mappings;
-- blank critical identity fields.
-
-These are descriptive counts only. `uncovered` does **not** mean missing authority.
+Those are Browser H005B responsibilities.
 
 ## Required returned ZIP
 
-One bounded ZIP containing:
+One small bounded ZIP containing:
 
 - `README.md`
 - `EVIDENCE_MANIFEST.csv`
 - `SHA256SUMS.txt`
 - `SEARCH_RECEIPT.md`
-- `CURRENT35_QUESTION_OCCURRENCE_CANDIDATE_UNIVERSE.csv`
-- `QUESTION_IDENTITY_CROSSWALK.csv`
-- `AUTHORITY_CARRIER_COVERAGE_MATRIX.csv`
-- `QUESTION_IDENTITY_COLLISION_LEDGER.csv`
-- `COVERAGE_COUNTS_BY_FAMILY_WAVE.csv`
-- `CARRIER_IDENTITY_AND_SCHEMA_RECEIPT.csv`
-- `COVERAGE_MECHANICAL_RECEIPT.json`
-- `payload/` containing only exact bytes of identity-defining carriers/scripts/manifests necessary to reproduce the census; reference already-returned H001–H004 large objects by exact SHA when their bytes need not be duplicated.
+- `LOCAL_DELTA_CARRIER_CENSUS.csv`
+- `BROWSER_INVENTORY_MATCH_RECEIPT.csv`
+- `UNSEEN_DISTINCT_CONTENT.csv`
+- `LOCAL_ONLY_IDENTITY_SURFACES.csv`
+- `CARRIER_SCHEMA_RECEIPT.csv`
+- `payload/` containing only unseen/distinct H005-responsive exact bytes.
 
-No raw respondent microdata.
+If the exhaustive search finds no unseen responsive bytes, return an evidence ZIP with empty payload plus the search/match receipts. An empty content delta is a valid positive result.
 
-## Forbidden
+## Forbidden modifications
 
-- no edit/delete/move/rename/normalization of source files;
-- no producer/updater/compiler execution that writes repository/local authority files;
+- no edit/delete/move/rename/normalization of any source or authority file;
+- no governed producer/updater/compiler execution;
 - no semantic adjudication;
-- no choosing canonical authority from recency, path, filename, row count, `mapping_status`, or row order;
-- no collapse of one-to-many rows;
-- no invention of question equivalence from similar text;
-- no new question UID law;
-- no declaration that uncovered means missing;
+- no deduplication;
+- no question-equivalence inference from similar text;
+- no authority choice by row order/path/recency;
+- no `uncovered => missing authority` inference;
 - no repair of d62;
-- no creation of new semantic/driver/structural authority.
+- no new semantic/driver/structural authority.
 
-This packet is the mechanical substrate for Browser's next identity/coverage adjudication.
+## Return token
 
-Return token:
+`AUTHORITY_CENSUS_LOCAL_HARVEST_REQUEST__HARVEST_005L`
 
-`AUTHORITY_CENSUS_LOCAL_HARVEST_REQUEST__HARVEST_005`
+## Stop condition
+
+Once the local complement and receipts are packaged and verified, stop. Do not continue into H005B computation.
