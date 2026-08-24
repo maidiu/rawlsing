@@ -1,0 +1,47 @@
+{
+  "court": "R07_CROSS_FAMILY_SOURCE_NATIVE_HOSTILE_VALIDATION",
+  "exact_start_head": "0d321d02e17c171951cf25a0f76d02001adef2b4",
+  "sample": {
+    "governed_assertions": 500,
+    "source_anchors": 100,
+    "families": 9,
+    "risk_tiers": {"T3_HIGH": 200, "T2_MEDIUM": 200, "T1_LOW": 100},
+    "max_family_share": 0.12,
+    "source_resolved_scored": 313,
+    "evidence_ceiling_unscored": 187
+  },
+  "severity_counts_scored": {
+    "S0_NO_DEFECT": 307,
+    "S1_IMPRECISION_NO_DOWNSTREAM_EFFECT": 0,
+    "S2_MATERIAL_LOCAL_SEMANTIC_DEFECT": 2,
+    "S3_SYSTEMATIC_OR_HIGH_FANOUT_DEFECT": 0,
+    "S4_SOURCE_CONTRADICTION_OR_INVALID_AUTHORITY": 4
+  },
+  "material_findings": 6,
+  "source_resolved_audit_rate": {
+    "numerator": 6,
+    "denominator": 313,
+    "rate_pct": 1.917,
+    "wilson_95_pct_approx": [0.88, 4.12],
+    "warning": "R07 source-resolved audit rate only; not a universal project error rate"
+  },
+  "lineage_expansion_triggers": [
+    {"lineage": "QSMv2_FQRA_R10F_QRA_TOPOLOGY", "material": 2, "scored": 89, "rate_pct": 2.247, "trigger": true},
+    {"lineage": "QRA_DIRECTIONALITY", "material": 2, "scored": 78, "rate_pct": 2.564, "trigger": true}
+  ],
+  "routing_position_conditioner": {
+    "sampled": 100,
+    "scored": 0,
+    "evidence_ceiling": 100,
+    "error_rate": null
+  },
+  "blind_first": {
+    "r01_r06_conclusions_used_as_source_answer": false,
+    "full_blind_first_material_findings": ["R07-F005"],
+    "protocol_limit_material_findings": ["R07-F001", "R07-F002", "R07-F003", "R07-F004", "R07-F006"]
+  },
+  "canonical_corrections_created": false,
+  "hq_reconciliation_performed": false,
+  "verdict": "R07_VERDICT__MATERIAL_SOURCE_CONTRADICTIONS_FOUND__TARGETED_TOPOLOGY_AND_QRA_EXPANSION_REQUIRED__ROUTING_POSITION_EVIDENCE_CEILING_RETAINED__NO_CANONICAL_CORRECTION",
+  "stop_token": "R07_RETURNED"
+}
