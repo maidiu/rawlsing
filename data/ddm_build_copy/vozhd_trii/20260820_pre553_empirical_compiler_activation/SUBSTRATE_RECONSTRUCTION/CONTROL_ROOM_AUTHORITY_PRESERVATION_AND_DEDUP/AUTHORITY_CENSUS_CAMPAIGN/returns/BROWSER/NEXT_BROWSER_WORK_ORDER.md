@@ -1,6 +1,6 @@
 # NEXT BROWSER WORK ORDER — HQ TARGETED EXPANSION PHASE
 
-Status: `ISSUED__HQ_RECONCILED__BOUNDED_RECOVERY_AND_EXPANSION_QUEUE_ACTIVE__SCHEMA_MIGRATION_BLOCKED`
+Status: `ISSUED__HQ_RECONCILED__BOUNDED_RECOVERY_AND_EXPANSION_QUEUE_ACTIVE__REC01_REC02_EXECUTABLE_PROTOCOLS_BOUND__SCHEMA_MIGRATION_BLOCKED`
 
 ## Starting point
 
@@ -44,13 +44,27 @@ Audit Afrobarometer R5 Q60A-Q60G only. Compare exact source predicates and targe
 
 ## Work that is explicitly NOT Browser work
 
+REC-01 and REC-02 now have **binding executable task protocols**. The short descriptions below are only navigation summaries. A local worker must read and obey the complete task file; it may not reconstruct the mission from this synopsis or from chat.
+
 ### REC-01 — local source execution
 
-The WVS7 Q152-Q157 TIR-014 functional-dependency/exception court is a local-machine/source-execution obligation. Browser workers must not simulate or substitute for it.
+Binding task:
+
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/RECOVERY_TASKS/REC01_TIR014_WVS7_FD_EXECUTION_TASK.md`
+
+The WVS7 Q152-Q157 TIR-014 functional-dependency/exception court is a local-machine/source-execution obligation. The task file freezes preflight, source hash law, X/Y field binding, exhaustive census algorithm, typed-absence and rank-slot checks, the literal PASS/FAIL/BLOCKED decision table, required outputs, and stop conditions.
+
+Browser workers must not simulate or substitute for it.
 
 ### REC-02 — bounded local evidence recovery
 
-The provider/history recovery court is local Codex evidence work restricted to R08 U003-U014 named historical/package roots plus the exact V525b and d62-92 payload debts. No unrelated filesystem crawl is allowed.
+Binding task:
+
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/RECOVERY_TASKS/REC02_LOCAL_PROVIDER_RECOVERY_TASK.md`
+
+The provider/history recovery court is local Codex evidence work. The task file converts R08 U003-U014 plus the exact V525b and d62-92 evidence debts into individual warrants. Every warrant has bounded roots, positive proof requirements, fixed terminal states, evidence-fragment handling, search-exhaustion rules, required outputs, and an absolute prohibition on `MISSING_PROVED` or authority creation.
+
+No unrelated filesystem crawl is allowed.
 
 ## Bounded successor work
 
@@ -90,7 +104,7 @@ No wholesale C01-C08 rerun is authorized.
 
 `BROWSER_TARGETED_EXPANSION_GATE = OPEN__REC_03_TO_REC_06_ONLY`
 
-`LOCAL_RECOVERY_GATE = OPEN__REC_01_AND_REC_02_ONLY`
+`LOCAL_RECOVERY_GATE = OPEN__REC_01_AND_REC_02_ONLY__BINDING_EXECUTABLE_PROTOCOLS_REQUIRED`
 
 `C05R_GATE = BLOCKED_PENDING_REC_02`
 
