@@ -1,8 +1,9 @@
 # Unified Empirical Authority Substrate — End-State Plan
 
-Status: `PLANNED_END_STATE__IMPLEMENTATION_DEFERRED_PENDING_AUTHORITY_RECOVERY`
+Status: `PLANNED_END_STATE__H004_IDENTITY_COLLISION_RISK_CONFIRMED__IMPLEMENTATION_DEFERRED_PENDING_IDENTITY_AND_AUTHORITY_CLOSURE`
 
 Recorded: 2026-08-23
+Updated after HARVEST-004 adjudication.
 
 ## Objective
 
@@ -26,27 +27,67 @@ Planning target:
 
 The monster master view is for inspection and consumption. The normalized authority relations remain canonical so legitimate one-to-many facts cannot be collapsed by row order.
 
+## H004 architectural proof
+
+HARVEST-004 provides a concrete failure case that the replacement architecture must make impossible.
+
+The historical GSS/LiTS structural updater decided question existence using `item_id`, while existing semantic rows were overwhelmingly blank in that newer identity field. It therefore appended 10,455 second representations whose `(source,wave,var_name)` identities already existed. A separate downstream consumer keyed by `(source,wave,var_name)` and used ordinary dict last-row behavior, silently turning physical row order into effective semantic precedence.
+
+This proves that semantic authority and structural assertions must not be forced into one flat row model whose uniqueness depends on whichever identifier a producer happens to use.
+
+The future substrate must distinguish at least:
+
+- question occurrence identity;
+- semantic assertions about that question;
+- driver/facet assertions;
+- structural block/domain/axis/target assertions;
+- assertion provenance/status/review state;
+- explicit supersession edges where one assertion really replaces another.
+
+One question may lawfully have multiple assertions at these different grains without becoming a duplicate question occurrence.
+
 ## Required invariants
 
-The eventual substrate should fail closed on duplicate keys where uniqueness is declared, unknown ontology IDs, implicit row-order precedence, recency/path precedence, unproved supersession, heuristic assignments promoted to accepted authority, source/wave identity collisions, variable-code reuse treated as equivalence, unexplained accepted-to-blank transitions, and executable authority with unresolved required dependencies.
+The eventual substrate should fail closed on:
+
+- duplicate question identities where uniqueness is declared;
+- cross-identifier disagreement (`item_id` vs source/wave/variable vs source-native identity) that has not been reconciled;
+- unknown ontology IDs;
+- implicit row-order precedence;
+- recency/path precedence;
+- unproved supersession;
+- heuristic assignments promoted to accepted authority;
+- source/wave identity collisions;
+- variable-code reuse treated as equivalence;
+- unexplained accepted-to-blank transitions;
+- executable authority with unresolved required dependencies.
+
+Every authority assertion should carry its own identity, question binding, epistemic/provenance class, status and lifecycle/supersession state rather than inheriting authority from physical row position.
 
 ## Historical authority
 
 Accepted historical authority, including V525b and later positively adjudicated manual/review artifacts, is epistemic capital. It should be carried forward where identity/applicability are proved, preserved where succession is unproved, and never mechanically re-authored merely because a later carrier lost it.
 
+H004 specifically establishes that later structural assertions may be valuable while the flat carrier's apparent semantic replacement is invalid. The migration therefore needs **noncollapse**: preserve prior semantic authority and later structural authority as distinct assertions when both are live.
+
 ## Coverage target
 
 The production target is the complete usable-question universe across the active 35-wave scope, with every source variable/question sufficiently inventoried to distinguish substantive production material, routing/universe controls, respondent-position material, administrative/context material, batteries/families, exclusions and unresolved/source-conflict material.
 
-## Preconditions
+## Preconditions and current state
 
-Do not implement the replacement authority store until:
+Before implementation of the replacement authority store:
 
-- HARVEST-004 resolves or explicitly bounds the `d62...` producer and duplicate-precedence lineage;
-- the authority census maps the historical/manual authority that must survive;
-- true gaps are separated from unlocated or unproved-supersession cases;
-- HQ adopts an explicit schema, identity, provenance and cardinality contract;
-- the current-35 usable-universe identity baseline is governed.
+- [x] H004 resolves the main `d62...` duplicate-producer/precedence mystery: identity/cardinality collision proved; row-order semantic supersession rejected.
+- [ ] H005 establishes the mechanical current-35 question-occurrence/cross-carrier coverage baseline.
+- [ ] HQ adopts the governed question-occurrence identity law and cardinality contract.
+- [ ] the authority census maps enough historical/manual authority to distinguish live capital from true gaps.
+- [ ] the current-35 candidate and production-usable universe boundaries are governed.
+- [ ] full-universe semantic/driver/structural quality is adjudicated under the accepted ontology and source authority.
+- [ ] true gaps are positively proved before new manual authority is created.
+- [ ] migration/replay and validation contracts for the new physical release are accepted.
+
+The unrecovered transient pre-Register-A full driver master is historical provenance residue, not a prerequisite for designing the new identity system; Register A preserves the effective pre-shadow projection and exact existing authority bytes remain protected.
 
 ## Terminal shape
 
@@ -63,6 +104,8 @@ Do not implement the replacement authority store until:
 `ONE_MONSTER_MASTER_VIEW`
 +
 `EXPLICIT_PROVENANCE_AND_NEGATIVE_STATES`
++
+`EXPLICIT_SUPERSESSION_EDGES`
 +
 `NO_IMPLICIT_PRECEDENCE`
 
