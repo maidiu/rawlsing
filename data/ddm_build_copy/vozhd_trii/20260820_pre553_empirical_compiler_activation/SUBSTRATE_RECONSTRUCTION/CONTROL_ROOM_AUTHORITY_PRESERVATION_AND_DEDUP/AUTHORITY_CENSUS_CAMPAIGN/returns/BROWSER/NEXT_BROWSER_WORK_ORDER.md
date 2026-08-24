@@ -1,110 +1,104 @@
-# NEXT BROWSER WORK ORDER — HQ TARGETED EXPANSION PHASE
+# NEXT WORK ORDER — HQ TARGETED RECOVERY / EXPANSION PHASE
 
-Status: `ISSUED__HQ_RECONCILED__BOUNDED_RECOVERY_AND_EXPANSION_QUEUE_ACTIVE__REC01_REC02_EXECUTABLE_PROTOCOLS_BOUND__SCHEMA_MIGRATION_BLOCKED`
+Status: `ISSUED__HQ_RECONCILED__REC01_RETIRED_BY_RECOVERED_C02R2_G0__REC02_AND_REC03_REC06_ACTIVE__SCHEMA_MIGRATION_BLOCKED`
 
 ## Starting point
 
-R00 is closed. R01-R08 are returned. HQ has reconciled all eight sibling courts against the frozen 68-row terminal-information denominator.
+R00 is closed. R01-R08 are returned and HQ-reconciled.
 
-The binding next-work denominator is:
+The current binding queue is:
 
 `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-The dispositive ruling is:
+The post-reconciliation TIR-014 correction is:
 
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/AUTHORITY_REVALIDATION_FINAL_ADJUDICATION.md`
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_TIR014_C02R2_RECOVERY_CORRECTION.md`
 
-This is no longer an R01-R08 launch work order.
+## REC-01 is closed
 
-## Browser / source-capable work authorized now
+Do not launch REC-01 V3.
 
-### REC-03 — R10G semantic-role census
+The earlier accepted C02R2/G0 lineage already adjudicated M04/M05 occurrence/topology derivability and C06 U5.
 
-TIR: `TIR-015; TIR-016; TIR-017; TIR-025`.
+Binding recovered result:
 
-Census every current R10G unit carrying canonical role `NORMATIVE_OR_POLICY_STANCE` against exact respondent-facing question text, parent/stem context and response evidence. Preserve actor, target, modality, horizon and evidence ceiling. Return row-level pass or bounded successor candidates. Do not rewrite unrelated R10G coordinates.
+`CLOSED_BY_RECOVERED_ACCEPTED_C02R2_G0__EXACT_NAMED_SEMANTIC_OCCURRENCE_SIDE_MATERIAL_REQUIRED__FULL_EVENT_PAYLOAD_NOT_REQUIRED`
 
-### REC-04 — QRA700 + O07 geometry
+Operational meaning:
 
-TIR: `TIR-012; TIR-013; TIR-021`.
+- immutable source bytes can remain the raw payload authority;
+- native source row + variable/slot/set/member identity preserves native occurrence distinctions;
+- semantic C11 occurrence identity requires exact governed semantic/topology/routing/replay authority and occurrence-level side binding where derivation does not close;
+- no accepted evidence requires duplicating raw event payload in that side material;
+- C09 must later prove parity/replay under deletion/nonuse of a full transformed event carrier while preserving that exact side-material closure.
 
-Census all 700 bounded QRA rows at their declared response/direction status. Reconcile the exact 11 QRA↔O07 signed-geometry seam and treat Q49STA/B/C as one source-native cluster. Latinobarómetro 1995 `p26` is already quarantined by HQ; LiTS III `q814d` requires exact source resolution. Preserve QRA's bounded jurisdiction and separate P2 directionality.
+The two REC-01 blocker branches remain audit receipts only.
 
-### REC-05 — topology expansion + formal O03 sample
+## Local work authorized now
 
-TIR: `TIR-013; TIR-024; TIR-064`.
-
-Audit the full LiTS 2006 Q3.13 battery and Arab Barometer II Q518 battery against source-native response topology. Complete the governed R10F O03 deterministic sample of 100 revised + 75 preserve rows in an environment capable of reproducing the required ranking. Current O03 is not demoted merely because the earlier Browser court could not compute that queue.
-
-### REC-06 — Afrobarometer Q60 driver battery
-
-TIR: `TIR-018`.
-
-Audit Afrobarometer R5 Q60A-Q60G only. Compare exact source predicates and targets with historical/current driver assignments. The Q60D `corruptionTolerance` witness triggers battery review, not a global driver rewrite.
-
-## Work that is explicitly NOT Browser work
-
-REC-01 and REC-02 now have **binding executable task protocols**. The short descriptions below are only navigation summaries. A local worker must read and obey the complete task file; it may not reconstruct the mission from this synopsis or from chat.
-
-### REC-01 — local source execution
-
-Binding task:
-
-`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/RECOVERY_TASKS/REC01_TIR014_WVS7_FD_EXECUTION_TASK.md`
-
-The WVS7 Q152-Q157 TIR-014 functional-dependency/exception court is a local-machine/source-execution obligation. The task file freezes preflight, source hash law, X/Y field binding, exhaustive census algorithm, typed-absence and rank-slot checks, the literal PASS/FAIL/BLOCKED decision table, required outputs, and stop conditions.
-
-Browser workers must not simulate or substitute for it.
-
-### REC-02 — bounded local evidence recovery
+### REC-02 — bounded provider / succession evidence recovery
 
 Binding task:
 
 `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/RECOVERY_TASKS/REC02_LOCAL_PROVIDER_RECOVERY_TASK.md`
 
-The provider/history recovery court is local Codex evidence work. The task file converts R08 U003-U014 plus the exact V525b and d62-92 evidence debts into individual warrants. Every warrant has bounded roots, positive proof requirements, fixed terminal states, evidence-fragment handling, search-exhaustion rules, required outputs, and an absolute prohibition on `MISSING_PROVED` or authority creation.
+Binding sibling-input patch:
 
-No unrelated filesystem crawl is allowed.
+`AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/RECOVERY_TASKS/REC02_IMMUTABLE_SIBLING_INPUT_ACCESS_PATCH.md`
+
+Process R08 U003-U014 plus V525b and d62-92 evidence-access warrants exactly. No broad local archaeology. No `MISSING_PROVED` declaration. C05R remains blocked until HQ ingests REC-02.
+
+## Browser / source-capable work authorized now
+
+### REC-03 — R10G semantic-role census
+
+Census every current `NORMATIVE_OR_POLICY_STANCE` unit against exact source proposition evidence. Preserve actor/target/modality and do not rewrite unrelated R10G coordinates.
+
+### REC-04 — QRA700 + O07 geometry
+
+Census all 700 bounded QRA rows; reconcile the exact 11-row signed-geometry seam; resolve p26/q814d/Q49STA-B-C and source-backed R07 witnesses. Preserve QRA bounded jurisdiction.
+
+### REC-05 — topology expansion + formal O03 sample
+
+Audit the complete LiTS 2006 Q3.13 and Arab Barometer II Q518 batteries and execute the governed deterministic O03 100-revised + 75-preserve hostile sample. Do not substitute convenience sampling.
+
+### REC-06 — Afrobarometer Q60 driver battery
+
+Audit Afrobarometer R5 Q60A-Q60G only. Determine whether Q60D is isolated or battery-patterned and whether current successors already repair historical defects.
 
 ## Bounded successor work
 
-REC-07 may construct append-only successor/inheritance packages only for the HQ-authorized exact targets:
-
-- LiTS II `q713a`-`q713h` O09;
-- LiTS IV `q830` O08;
-- Latinobarómetro 1995 `p26` QRA;
-- accepted SWID/current35 execution inheritance.
-
-Freeze exact package contracts and preserve predecessor assertions, source provenance and explicit supersession/history edges. Do not mutate old authority in place.
+REC-07 may construct append-only successor/inheritance packages only after exact evidence contracts close and only for HQ-authorized targets. Preserve predecessors, provenance, negative states and explicit succession edges.
 
 ## Deferred Chetiri completion
 
-`REC-08 / C05R` is conditional and remains blocked until REC-02 resolves the production DiscoveryAuthority/frontier and source-backed provider prerequisites.
+`REC-08 / C05R` — blocked pending REC-02.
 
-`REC-09 / C09` remains blocked until logical recovery and targeted expansions stabilize the candidate frontier.
+`REC-09 / C09` — blocked pending logical recovery. Its workload must incorporate the recovered C02R2/G0 requirement for exact semantic occurrence/topology/replay side material under transformed-carrier deletion/nonuse.
 
-`REC-10 / C10` runs only after C09 and must attempt to falsify the final physical synthesis.
+`REC-10 / C10` — blocked pending C09 and must hostile-falsify the resulting physical synthesis.
 
 No wholesale C01-C08 rerun is authorized.
 
 ## Common law
 
-- every finding cites applicable `TIR-*` IDs;
 - source-native evidence outranks semantic elegance;
 - unlocated is not missing proved;
-- unresolved/blocked states are first-class;
+- blocked/unresolved/negative states are first-class;
 - no path/mtime/row-order/recency authority;
-- no canonical mutation outside an exact HQ-authorized successor package;
-- no physical schema selection before REC-01..REC-07 reconciliation and the required C09/C10 closure;
-- no broad local-machine archaeology.
+- no canonical mutation except exact HQ-authorized bounded successor work;
+- no broad local-machine archaeology;
+- no physical schema selection before remaining recovery/expansion plus C09/C10 closure.
 
 ## Gates
 
 `R01_R08_REVALIDATION_GATE = CLOSED__HQ_RECONCILED`
 
-`BROWSER_TARGETED_EXPANSION_GATE = OPEN__REC_03_TO_REC_06_ONLY`
+`REC01_TIR014_GATE = CLOSED__PRIOR_ACCEPTED_C02R2_G0_RECOVERED`
 
-`LOCAL_RECOVERY_GATE = OPEN__REC_01_AND_REC_02_ONLY__BINDING_EXECUTABLE_PROTOCOLS_REQUIRED`
+`LOCAL_RECOVERY_GATE = OPEN__REC_02_ONLY`
+
+`BROWSER_TARGETED_EXPANSION_GATE = OPEN__REC_03_TO_REC_06_ONLY`
 
 `C05R_GATE = BLOCKED_PENDING_REC_02`
 
@@ -117,7 +111,8 @@ No wholesale C01-C08 rerun is authorized.
 ## Terminal sequence
 
 `HQ RECONCILED`
-→ `REC-01 / REC-02 LOCAL + REC-03..REC-06 SOURCE EXPANSION`
+→ `TIR-014 PRIOR C02R2/G0 CLOSURE RECOVERED`
+→ `REC-02 LOCAL + REC-03..REC-06 SOURCE EXPANSION`
 → `REC-07 BOUNDED SUCCESSORS`
 → `C05R IF ENABLED`
 → `C09`
