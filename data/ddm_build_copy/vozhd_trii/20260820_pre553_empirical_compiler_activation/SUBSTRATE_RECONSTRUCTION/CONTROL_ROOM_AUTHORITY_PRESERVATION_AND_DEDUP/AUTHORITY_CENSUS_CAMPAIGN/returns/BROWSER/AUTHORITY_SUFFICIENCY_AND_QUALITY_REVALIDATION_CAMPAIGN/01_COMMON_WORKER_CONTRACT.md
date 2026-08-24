@@ -1,6 +1,6 @@
 # Authority Sufficiency & Quality Revalidation — Common Rabochii Contract
 
-Status: `BINDING_FOR_R01_R08`
+Status: `BINDING_FOR_R01_R08__R00_TERMINAL_INFORMATION_DENOMINATOR`
 
 ## Role
 
@@ -8,20 +8,39 @@ Every Rabochii is a **non-dispositive evidence court**. Workers may find, hash, 
 
 HQ/Vozhd alone issues campaign-wide acceptance, rejection, supersession, expansion or missing-authority rulings.
 
+## R00 denominator
+
+R00 has closed the cross-generation information-necessity conservation court.
+
+The governing denominator is now:
+
+`R00_INFORMATION_NECESSITY_CONSERVATION/TERMINAL_INFORMATION_REQUIREMENT_UNIVERSE.csv`
+
+Workers must not reduce their obligation universe to the authority objects already found or to the older `AUTHORITY_EXPECTATION_UNIVERSE.csv`.
+
+Every material finding must cite one or more `TIR-*` requirement IDs where applicable.
+
 ## Mandatory reading order
 
 Each worker must read before substantive analysis:
 
 1. `00_CAMPAIGN_AUTHORITY.md`
-2. this common contract;
-3. `02_RISK_STRATIFICATION_AND_SAMPLING_PROTOCOL.md`
-4. `03_HQ_ADJUDICATION_AND_ESCALATION_PROTOCOL.md`
-5. its own `R0X_*_TASK.md`;
-6. `AUTHORITY_EXPECTATION_UNIVERSE.csv`;
-7. `CURRENT35_AUTHORITY_QUALITY_AND_GAP_LEDGER.csv`;
-8. `NORMALIZED_AUTHORITY_BINDING_MATRIX.csv`;
-9. `USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`;
-10. the exact governing authority objects named by its task.
+2. `06_R00_BINDING_ADDENDUM.md`
+3. `R00_INFORMATION_NECESSITY_CONSERVATION/00_R00_COURT_AUTHORITY.md`
+4. `R00_INFORMATION_NECESSITY_CONSERVATION/R00_ADJUDICATION.md`
+5. `R00_INFORMATION_NECESSITY_CONSERVATION/TERMINAL_INFORMATION_REQUIREMENT_UNIVERSE.csv`
+6. `R00_INFORMATION_NECESSITY_CONSERVATION/BIDIRECTIONAL_INFORMATION_CONSERVATION_AND_ORPHAN_LEDGER.csv`
+7. this common contract;
+8. `02_RISK_STRATIFICATION_AND_SAMPLING_PROTOCOL.md`
+9. `03_HQ_ADJUDICATION_AND_ESCALATION_PROTOCOL.md`
+10. its own `R0X_*_TASK.md`;
+11. `AUTHORITY_EXPECTATION_UNIVERSE.csv` as historical/census evidence;
+12. `CURRENT35_AUTHORITY_QUALITY_AND_GAP_LEDGER.csv`;
+13. `NORMALIZED_AUTHORITY_BINDING_MATRIX.csv`;
+14. `USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`;
+15. the exact governing authority objects named by its task.
+
+Task-relevant workers must also read the R00 Joint Evidence and QSM succession audits specified by `06_R00_BINDING_ADDENDUM.md`.
 
 Workers must ground themselves in current checked-in/Library/Git evidence before reasoning from remembered project state.
 
@@ -39,7 +58,10 @@ Never collapse:
 - source-native fact vs Rawlsing interpretation;
 - conflict vs supersession;
 - later artifact vs lawful successor;
-- exact implementation identity vs concept/equivalence relation.
+- exact implementation identity vs concept/equivalence relation;
+- old artifact retirement vs old information retirement;
+- contract/interface closure vs positive production authority;
+- Dva terminal capability declaration vs provider existence.
 
 ## Required authority-state vocabulary
 
@@ -57,6 +79,7 @@ Workers must classify findings using only these states unless a task defines a s
 - `PARTIAL_SCOPE__PARTIALITY_INTENTIONAL`
 - `PARTIAL_SCOPE__EXPANSION_REQUIRED`
 - `SOURCE_LIMITED__EXPLICIT_UNRESOLVED_IS_CORRECT`
+- `CONTRACT_CLOSED__POSITIVE_PRODUCTION_AUTHORITY_NOT_PROVED`
 - `UNLOCATED__SEARCH_NOT_EXHAUSTED`
 - `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED_CANDIDATE`
 
@@ -96,6 +119,7 @@ A defect requires one or more of:
 
 Every audited item must retain enough identifiers to replay the judgment:
 
+- governing `TIR-*` terminal requirement ID(s);
 - governing implementation/semantic-unit/relation/assertion ID;
 - source family and wave;
 - exact variable/question identifier;
@@ -134,10 +158,12 @@ Workers must not write new canonical semantic, driver, directionality, routing, 
 
 If a required obligation appears genuinely absent, the worker must emit a bounded candidate record containing:
 
+- exact `TIR-*` requirement;
 - exact required assertion/grain;
 - exact consumers that require it;
-- exhaustive searches performed;
+- exhaustive successor/provider searches performed;
 - source-native evidence checked;
+- why intentional bounded jurisdiction or fail-closed nonapplicability does not satisfy the requirement;
 - why derivation from existing authority is impossible;
 - whether source evidence itself is sufficient to author it;
 - proposed authority-creation scope.
@@ -164,8 +190,8 @@ Every worker must produce, at minimum:
 - `README.md` — jurisdiction and verdict;
 - `EVIDENCE_MANIFEST.csv` — content-addressed inputs used;
 - `AUDIT_SAMPLE_OR_CENSUS.csv` — exact reviewed units;
-- `FINDING_LEDGER.csv` — machine-readable findings;
-- `COVERAGE_AND_QUALITY_SUMMARY.json` — counts by verdict/risk/source;
+- `FINDING_LEDGER.csv` — machine-readable findings with `TIR-*` references;
+- `COVERAGE_AND_QUALITY_SUMMARY.json` — counts by verdict/risk/source/terminal requirement;
 - `SYSTEMATIC_DEFECT_OR_EXPANSION_TRIGGERS.md` — explicit threshold results;
 - `OPEN_HQ_QUESTIONS.md` — only genuine cross-jurisdiction issues;
 - `RETURN_ADJUDICATION_PROPOSAL.md` — non-dispositive proposed ruling.
