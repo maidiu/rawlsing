@@ -1,6 +1,6 @@
 # Browser Authority Census — Post-HARVEST-003 Progress
 
-Status: `BROWSER_CENSUS__HARVEST_003_ADJUDICATED__V525B_ACCEPTED_AUTHORITY_RECOVERED__D62_SHADOWING_PROVENANCE_UNRESOLVED__HARVEST_004_ISSUED`
+Status: `BROWSER_CENSUS__HARVEST_003_ADJUDICATED__V525B_ACCEPTED_AUTHORITY_RECOVERED__D62_SHADOWING_PROVENANCE_UNRESOLVED__HARVEST_004_ISSUED__UNIFIED_AUTHORITY_END_STATE_LOGGED`
 
 Start SHA: `b824c7d2b618b8e0987f6774b302e875d90b8fdd`
 Worker: `agent/vozhd-controlroom-authority-census-browser-r1`
@@ -75,6 +75,17 @@ Recovered facet-deepening review files overlap only 68 of the 2,148 changed keys
 - `EXP-030 SUPERSESSION_REGISTRY`: still open; H003 supplies explicit non-supersession evidence for this lineage.
 - no expectation is `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
 
+## Unified empirical-authority end state logged
+
+Two durable planning/status records were added on 2026-08-23:
+
+- `UNIFIED_EMPIRICAL_AUTHORITY_SUBSTRATE_PLAN.md`
+- `CURRENT_DISCOVERY_STATUS_AND_NEXT_ACTION.md`
+
+The planned end state is one governed current-35 empirical-authority universe with one canonical question identity spine, normalized relations at their correct cardinality, explicit negative/review/block states, versioned Parquet authority relations, a deterministic read-only DuckDB query bundle, and one derived monster `question_authority_master` view.
+
+This is a planning target only. It does not authorize migration, normalization, redesign or new semantic creation before the current provenance/census work closes.
+
 ## Next local request
 
 Issued:
@@ -82,3 +93,5 @@ Issued:
 `HARVEST-004 — D62 DRIVER-MASTER PRODUCER AND DUPLICATE-SHADOWING PROVENANCE`
 
 This request is limited to the pre-`d62` master states, producer/updater scripts/configs, structural-enrichment row creation, and any explicit authority saying duplicate last-row precedence was intended or accepted. It forbids repair, deduplication, re-keying, regeneration, or semantic adjudication.
+
+After H004 adjudication, the intended sequence is: bind lawful semantic/driver lineage -> preserve all accepted authority -> close enough of the census to identify true gaps -> specify the unified-authority schema/identity/cardinality contract -> run the full current-35 usable-universe coverage/quality court -> build the unified authority release -> regenerate legacy convenience masters/atlases/registers from it.
