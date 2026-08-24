@@ -1,78 +1,84 @@
 # Current Discovery Status & Next Action
 
-Status: `R00_INFORMATION_NECESSITY_CONSERVATION_COURT_REQUIRED__R01_R08_LAUNCH_PAUSED`
+Status: `R00_CLOSED__TERMINAL_INFORMATION_REQUIREMENT_UNIVERSE_FROZEN__R01_R08_REBASE_AUTHORIZED__SCHEMA_MIGRATION_GATE_BLOCKED`
 
-The authority inventory/binding and revalidation campaign preparation remain preserved, but the R01–R08 revalidation launch is paused pending R00.
+R00 information-necessity conservation is adjudicated and closed.
 
-## Governing correction
+The governing denominator for the authority sufficiency and semantic-quality campaign is no longer the set of authority files already found, the old V550+ artifact suite, or the pre-R00 expectation census by itself. It is the frozen terminal information-requirement universe established by R00.
 
-The governing universe is not "all authority-bearing files" and is not "everything the legacy V550+ pipeline happened to consume."
+## Governing R00 result
 
-The governing universe is the complete set of informational distinctions, authority decisions, source facts, learned-world products, provenance, negative states, and replay determinants required to realize the true Rawlsing terminal vision recovered through Dva, Trii, and Chetiri.
+Read as binding:
 
-The prior census/binding work remains valid evidence recovery. The prepared R01–R08 revalidation campaign remains useful, but its denominator must first be proven complete at the level of terminal information necessity.
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/06_R00_BINDING_ADDENDUM.md`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/00_R00_COURT_AUTHORITY.md`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/R00_ADJUDICATION.md`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/TERMINAL_INFORMATION_REQUIREMENT_UNIVERSE.csv`
+- `AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/R00_INFORMATION_NECESSITY_CONSERVATION/BIDIRECTIONAL_INFORMATION_CONSERVATION_AND_ORPHAN_LEDGER.csv`
 
-## R00 conservation law
+R00 upheld D12's capability-level conservation work while making the semantic-authority succession seam explicit. Joint Evidence requirement identity is conserved; QSM is decomposed into terminal information classes rather than protected as one flat carrier; surviving backward/forward orphan candidates remain explicit search and revalidation obligations.
 
-R00 must prove bidirectional information conservation:
+R00 does **not** authorize fabrication of new authority for those orphan candidates.
 
-1. **BACKWARD CONSERVATION** — every informational distinction used by an old Rawlsing capability that remains terminally required must have a lawful successor/provider in the Dva/Trii/Chetiri design, or be named as an architectural orphan.
-2. **FORWARD CONSERVATION** — every informational prerequisite introduced by the Dva/Trii/Chetiri terminal vision must have a lawful source/derivation/authority/persistence path, or be named as an architectural orphan.
-3. **DEAD LEGACY** — old authority may retire only where the old implementation-specific information is proved unnecessary to every surviving terminal capability.
-4. **TRANSFORMED NECESSITY** — retiring an old carrier/artifact does not retire the informational obligation it carried.
-5. **NO SILENT ARCHITECTURAL AMNESIA** — absence from the new design is not proof that an old informational dependency became unnecessary.
-6. **NO LEGACY FOSSILIZATION** — presence in the old 550+ pipeline is not proof that the new terminal model still needs that artifact or information at the same grain.
+## R01-R08 governing question
 
-## R00 phases
+For every applicable `TIR-*` terminal information requirement:
 
-### R00-A — Chetiri unresolved/missing surface consolidation
+1. what exact scope and grain are required by terminal consumers?
+2. what current/historical authority, source-native fact, lawful derivation or learned-world product supplies it?
+3. is the coverage complete, intentionally bounded, source-limited, unlocated, defective or genuinely absent?
+4. does the governing semantic/manual judgment survive hostile revalidation to current standards?
+5. is succession from old carrier to current provider lossless at the required information class?
+6. if a provider still cannot be found, has exhaustive successor/provider search actually proved a bounded missing-authority candidate?
 
-Exhaustively enumerate every C01–C10 finding classified or described as missing authority, unresolved blocking evidence, unlocated governing reference, unproved derivability, incomplete program law, owner-confirmation-required lifecycle law, source limitation, or named evidence requirement.
+The pre-R00 expectation and binding artifacts remain evidence and ancestry; they are not the terminal denominator.
 
-Do not collapse duplicates across cells until their exact meanings and grains are compared.
+## Branch and launch law
 
-### R00-B — old Rawlsing capability → information dependency recovery
+R01-R08 may launch only from one exact common accepted campaign HEAD.
 
-Reconstruct what the intended old Rawlsing/V550+ system was supposed to accomplish and what information/authority each capability actually depended upon, including joint evidence/J-family, QSM lineage, question/response/source structure, routing/applicability, driver/facet, continuity/equivalence, directionality, position, structural handoff, analytical/discovery, and replay requirements.
+Before launch, the following refs must all point exactly to the accepted R00 closure/common HEAD:
 
-Separate implementation-specific carriers from irreducible informational distinctions.
+- `agent/vozhd-trii-authority-revalidation-control`
+- `agent/vozhd-trii-authority-revalidation-r01-coverage-sufficiency`
+- `agent/vozhd-trii-authority-revalidation-r02-semantic-quality`
+- `agent/vozhd-trii-authority-revalidation-r03-driver-facet-quality`
+- `agent/vozhd-trii-authority-revalidation-r04-response-directionality`
+- `agent/vozhd-trii-authority-revalidation-r05-routing-position`
+- `agent/vozhd-trii-authority-revalidation-r06-structure-relations`
+- `agent/vozhd-trii-authority-revalidation-r07-source-hostile`
+- `agent/vozhd-trii-authority-revalidation-r08-provenance-supersession`
 
-### R00-C — Dva/Trii/Chetiri terminal information necessity reconstruction
-
-Reconstruct the terminal capability/consumer universe from governing Dva whole-machine/terminal-demand authorities plus Trii/Chetiri requirement courts. For each terminal capability, enumerate the minimum information it must know, derive, persist, serve, validate, or replay.
-
-### R00-D — bidirectional conservation/orphan court
-
-For every old informational dependency and every new terminal informational prerequisite classify:
-
-- `SURVIVES__SUCCESSOR_PROVIDER_PROVED`
-- `SURVIVES_TRANSFORMED__SUCCESSOR_PROVIDER_PROVED`
-- `DEAD_LEGACY__TERMINAL_NONNECESSITY_PROVED`
-- `BACKWARD_ORPHAN__OLD_NECESSITY_SURVIVES__NEW_PROVIDER_NOT_PROVED`
-- `FORWARD_ORPHAN__NEW_TERMINAL_REQUIREMENT__PROVIDER_NOT_PROVED`
-- `UNCERTAIN__GOVERNING_VISION_OR_OLD_DEPENDENCY_EVIDENCE_INCOMPLETE`
-
-R00 does not create the missing authority. It proves the requirement and names the gap.
+The exact common HEAD is supplied and verified externally at launch; it is not self-pinned in this file because committing a self-reference changes the HEAD.
 
 ## Immediate next action
 
-Execute R00 on branch:
+1. fast-forward the control and R01-R08 refs onto the accepted R00 closure/common HEAD without force;
+2. verify exact ref equality and zero branch divergence;
+3. launch the eight bounded non-dispositive R01-R08 courts under the R00 denominator;
+4. HQ reconciles returns before any successor-authority or physical-schema decision.
 
-`agent/vozhd-trii-r00-information-conservation`
+C09 physical/parity work and C10 hostile synthesis remain later audit-coverage obligations where still relevant. Their historical non-execution does not block R01-R08 launch and is not itself proof of missing semantic authority.
 
-R01–R08 remain frozen at their common preparation HEAD and MUST NOT launch until HQ accepts R00's terminal information-requirement universe.
+Local-machine evidence escalation remains bounded by `R00_INFORMATION_NECESSITY_CONSERVATION/R00_LOCAL_EVIDENCE_ESCALATION.md`; no broad Mac archaeology is authorized.
 
 ## Gates
 
-`SCHEMA_MIGRATION_GATE = BLOCKED`
+`R00_INFORMATION_NECESSITY_CONSERVATION_GATE = CLOSED`
 
-`R01_R08_REVALIDATION_GATE = BLOCKED_PENDING_R00`
+`R01_R08_REVALIDATION_GATE = OPEN_ON_EXACT_COMMON_HEAD_ALIGNMENT`
 
-`NEW_SUBSTANTIVE_AUTHORITY_CREATION = FORBIDDEN_IN_R00`
+`SCHEMA_MIGRATION_GATE = BLOCKED_PENDING_R01_R08_HQ_RECONCILIATION`
 
-After R00:
+`NEW_SUBSTANTIVE_AUTHORITY_CREATION_BY_RABOCHII = FORBIDDEN`
 
-`TRUE TERMINAL INFORMATION REQUIREMENT UNIVERSE`
+`BOUNDED_SUCCESSOR_AUTHORITY_CREATION = HQ_ONLY_AFTER_PROVED_MISSING_EXACT_OBLIGATION`
+
+## Terminal sequence
+
+`R00 TERMINAL INFORMATION REQUIREMENT UNIVERSE FROZEN`
 → `R01-R08 SUFFICIENCY + QUALITY REVALIDATION`
-→ `HQ TARGETED EXPANSION / SUCCESSOR AUTHORITY IF REQUIRED`
-→ `PHYSICAL SCHEMA + MIGRATION + REPLAY CONTRACT`.
+→ `HQ RECONCILIATION / TARGETED EXPANSION IF TRIGGERED`
+→ `BOUNDED SUCCESSOR AUTHORITY ONLY IF PROVED NECESSARY`
+→ `C09/C10 PHYSICAL + HOSTILE CLOSURE WHERE STILL REQUIRED`
+→ `PHYSICAL SCHEMA + MIGRATION + REPLAY GATE REOPENED OR EXPLICITLY REMAINS BLOCKED`.
