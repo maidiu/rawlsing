@@ -1,119 +1,135 @@
 # Current Discovery Status and Next Action
 
-Status: `CURRENT_STATE_RECORDED__H004_CLOSED__H005_SPLIT__H005L_LOCAL_DELTA_NEXT__H005B_BROWSER_COURT_OWNS_INTEGRATION`
+Status: `CURRENT_STATE_RECORDED__H005_IDENTITY_RECOVERY_COMPLETE__P2_18276_BASELINE_GOVERNS__BROWSER_USABLE_UNIVERSE_BINDING_COURT_NEXT`
 
 Recorded: 2026-08-23
 
-## Established authority state
+## What is now established
 
-### Historical semantic/driver capital
+### 1. Current-35 question implementation identity is recovered
 
-V525b remains positively accepted historical structural authority for its 6-family / 18-wave scope:
+Rawlsing already possesses a governed question-identity architecture from frozen P1.5/P2 work.
 
-- semantic master `6e76965c...` / 6,211 rows;
-- driver master `53feb282...` / 6,211 rows.
+The governing implementation grain is not a flat helper-master row. It is `question_implementation`: one exact source-family + wave/material instrument scope + exact case-sensitive source-variable implementation.
 
-The later semantic carrier `171d399d...` is generated/heuristic-capable and is not a proved lossless successor.
+The frozen current-35 implementation population is exactly:
 
-### H004 d62 ruling
+**18,276 question implementations across 35 active waves / 9 source families.**
 
-H004 proved the main d62 GSS/LiTS duplicate layer arose because a structural updater decided question existence by `item_id` while the earlier semantic representation lacked that identity field. It appended 10,455 second representations whose natural `(source,wave,var_name)` identities already existed. A separate consumer keyed by `(source,wave,var_name)` then made the last physical row win.
+Recovered row-level carrier:
 
-No recovered authority authorizes row order as semantic supersession.
+`Rawlsing_P2_Phase0_Question_Node_Skeleton_v1.csv`
 
-Governing ruling:
+SHA:
+
+`d38301588fae27c66f6b8627c5007fb0d8ed4ac3d7eb25f32c74228c367b86b6`
+
+Later globally closed P2/P3 records preserve the same 18,276 implementation count. The separate 18,831 count is semantic-priority **pair authority**, not an enlarged implementation universe.
+
+Detailed law:
+
+`QUESTION_OCCURRENCE_IDENTITY_LAW_RECOVERY.md`
+
+### 2. Later source-native evidence corroborates the P2 population
+
+Active-35 R14 source/codebook scope reduces to 18,276 source occurrences.
+
+H005L `qsm_raw` also reduces to 18,276 active-35 rows and exactly reproduces the P2 normalized source/wave/exact-variable coordinate set after governed source/wave normalization.
+
+The P2 population is therefore cross-era corroborated rather than merely historical.
+
+### 3. Downstream carriers have their own jurisdictions
+
+QSR, FQRA/QSMv2, semantic masters and driver masters are not allowed to redefine question membership simply because they have extra or missing rows.
+
+H005B mapped their coverage/cardinality explicitly.
+
+Key results:
+
+- QSR C: 18,792 physical rows; includes 518 unique non-P2 structural/access/source-column keys; loses exact-case identity in seven LiTS III pairs; 5 P2 implementations absent.
+- FQRA active-35: 18,259 rows; 18,250 P2 implementations bound; 9 explicit blocked identity joins; 26 P2 implementations outside target.
+- later semantic helper: 18,259 unique coordinate surface; 26 P2 implementations unmatched plus nine unique helper/parent coordinates.
+- d62: same broad unique coordinate surface plus the already-adjudicated H004 mass one-to-many physical-row defect.
+
+These are authority projections/assertions around the P2 population, not competing population definitions.
+
+### 4. Existing semantic capital remains protected
+
+V525b remains positively accepted historical semantic/driver authority for its historical scope.
+
+Later generated/helper/structural carriers do not silently retire it.
+
+H004 remains binding:
 
 `DUPLICATE_SHADOWING_PRODUCER_PROVED__INCIDENTAL_CARRIER_KEY_COLLISION__NO_SEMANTIC_SUPERSESSION_AUTHORITY`
 
-Preserve prior semantic authority and later structural assertions as separate authority claims until positively adjudicated at their proper grains.
+### 5. Current source-wave identity remains a complementary governed layer
 
-The exact transient full pre-Register-A driver master remains unrecovered historical provenance residue. Register A preserves the effective pre-shadow projection for its covered keys. This does not block current identity work.
+P2 implementation identity must be bound to the accepted current source-wave UID/SWID system rather than replacing it.
 
-## Browser evidence availability is now governed explicitly
+Identity therefore becomes a governed composition of:
 
-New canonical availability record:
+`P2 QUESTION IMPLEMENTATION`
++
+`CURRENT SOURCE-WAVE UID`
++
+`SOURCE-NATIVE EXACT VARIABLE/INSTRUMENT IDENTITY`
 
-`H005_BROWSER_AVAILABLE_EVIDENCE_INVENTORY.csv`
+with explicit alias/crosswalk edges where necessary.
 
-It records what Browser HQ already has as exact content and therefore what a local worker must not redundantly harvest.
+## What remains unresolved
 
-Browser has exact bytes of all four H001-H004 returned ZIPs and all their members, plus connected GitHub access to the governed current/preserved authority surfaces listed in that inventory.
+The primary remaining work is no longer question-population discovery.
 
-Browser also has hash-bound Library discovery indexes for historical local file/path/SHA discovery.
+Open questions:
 
-## H005 division of labor corrected
+1. Which of the 18,276 implementations are production substantive versus routing/universe/respondent-position/administrative/context/structural support/excluded/review/blocked?
+2. For each implementation, which semantic/driver/facet/domain/axis/target assertions remain accepted, historical-preserve, review-only, generated-only, conflicted or blocked?
+3. What response-option/scale, routing/applicability, directionality, position and respondent authority binds lawfully to each implementation?
+4. Which existing P2 continuity/pair/P3 family authority must be preserved at concept/lineage/family grains rather than implementation grain?
+5. Which exact crosswalk debts remain unresolved, including the nine final FQRA identity blockers and bounded source/helper aliases?
+6. Which historical authority is genuinely superseded versus merely absent from a later carrier?
+7. Which gaps, if any, reach `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`?
+8. What exact normalized schema/cardinality/migration/replay contract should Chetiri implement once these bindings are accepted?
 
-The original H005 combined local filesystem discovery with Browser-suitable relational computation. It is superseded.
+## Local harvest state
 
-### Immediate local action: H005L
+No local harvest is currently required.
 
-Current local order:
+`NEXT_LOCAL_HARVEST_REQUEST.md` is closed to:
 
-`HARVEST-005L — LOCAL QUESTION-IDENTITY CARRIER DELTA DISCOVERY`
+`NO_LOCAL_HARVEST_CURRENTLY_REQUIRED__BROWSER_HQ_NEXT`
 
-Normative request file:
+A future local harvest is lawful only for a specific necessary object Browser cannot access.
 
-`NEXT_LOCAL_HARVEST_REQUEST.md`
+## Immediate next action
 
-H005L asks only:
+Browser HQ now owns:
 
-> Which H005-responsive identity-defining files exist on the live Rawlsing/RawlsingsExcess filesystem whose exact bytes/content are not already available to Browser?
+`NEXT_BROWSER_WORK_ORDER.md`
 
-High-priority delta classes:
+### `CURRENT-35 USABLE-UNIVERSE & NORMALIZED AUTHORITY-BINDING QUALITY COURT`
 
-1. `questions_master.csv` distinct identities;
-2. current final-codebook/question-index occurrence surfaces;
-3. local-only distinct FQRA/QSM/QSMv2 identity-bearing variants;
-4. source-native question/variable identity indexes/manifests needed for source occurrence binding.
+The court begins from the existing 18,276 P2 population. It must not re-enumerate a competing universe.
 
-H005L hashes and compares against the Browser inventory. Identical Browser-held SHAs are manifest-only. Unseen responsive SHAs return exact bounded bytes.
+Its job is to:
 
-H005L must not perform the global current-35 joins/census.
+1. disposition all 18,276 implementations;
+2. bind all existing authority at correct grains;
+3. preserve blocked/negative/historical states;
+4. adjudicate quality/conflicts and prove genuine gaps;
+5. state explicit Trii source-certification dependencies;
+6. state explicit Chetiri persistence/compiler requirements;
+7. leave the unified Parquet/DuckDB substrate ready for schema/migration design.
 
-### Browser action: H005B
+## Current terminal sequence
 
-Browser court contract:
+`IDENTITY/POPULATION RECOVERED`
+→ `USABLE-UNIVERSE DISPOSITION`
+→ `NORMALIZED AUTHORITY BINDING`
+→ `QUALITY + TRUE GAP COURT`
+→ `TRII/CHETIRI REQUIREMENTS`
+→ `UNIFIED SUBSTRATE SCHEMA/MIGRATION`
+→ `REPLAY/VALIDATION`
 
-`HARVEST-005B_BROWSER_IDENTITY_COVERAGE_COURT.md`
-
-Browser HQ will combine:
-
-`H001-H004 exact bytes + governed GitHub authority + Library discovery indexes + H005L delta`
-
-and produce the actual candidate question-occurrence universe, cross-carrier membership/cardinality, collision ledger and per-family/wave coverage counts using indexed relational operations.
-
-Browser owns the subsequent identity-law and Trii/Chetiri dependency adjudication.
-
-## Still not established
-
-The following remain open:
-
-1. terminal current-35 candidate question-occurrence identity set;
-2. governed canonical question-occurrence UID law;
-3. exact cross-carrier membership/cardinality across the complete current universe;
-4. production-usable versus administrative/routing/context/excluded/unresolved universe boundary;
-5. full-universe semantic/driver/structural quality adjudication;
-6. completed v2 ontology quality/reconciliation audit;
-7. full response/routing/directionality/position/respondent-semantic normalized binding;
-8. terminal global supersession registry;
-9. migration/replay contract into the unified authority substrate;
-10. final authority-census closure.
-
-No substantive new semantic authority is authorized merely because one of these remains open.
-
-## Planned architecture remains
-
-The target remains one governed question-occurrence identity spine with separate normalized authority relations at their true cardinalities, explicit provenance/supersession/negative states, versioned Parquet canonical release, deterministic DuckDB query compilation and a derived monster master view.
-
-H004 is now a concrete proof that this noncollapse architecture is required.
-
-## Next sequence
-
-`NEXT_NOW__H005L_LOCAL_DELTA`
-→ `H005B_BROWSER_IDENTITY_COVERAGE`
-→ `QUESTION_IDENTITY_LAW`
-→ `CURRENT35_USABLE_UNIVERSE`
-→ `NORMALIZED_AUTHORITY_BINDING`
-→ `FULL_UNIVERSE_QUALITY_COURT`
-→ `TRUE_GAP_ADJUDICATION`
-→ `UNIFIED_AUTHORITY_RELEASE`
+No substantive new semantic authority is authorized yet merely by an uncovered or unmatched downstream row.
