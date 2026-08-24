@@ -1,123 +1,185 @@
-# NEXT BROWSER WORK ORDER — CURRENT-35 USABLE-UNIVERSE & NORMALIZED AUTHORITY-BINDING QUALITY COURT
+# NEXT BROWSER WORK ORDER — UNIFIED SUBSTRATE SCHEMA, MIGRATION & REPLAY CONTRACT COURT
 
-Status: `ISSUED__BROWSER_HQ__NO_LOCAL_HARVEST_REQUIRED_AT_START`
+Status: `ISSUED__BROWSER_HQ__AUTHORITY_ACCOUNTING_CLOSED_ENOUGH_FOR_PHYSICAL_CONTRACT__NO_LOCAL_HARVEST_REQUIRED_AT_START`
 
 ## Starting point
 
-H005 has recovered the existing governed question-implementation identity architecture and closed the identity/coverage baseline:
+The current-35 authority-binding court is closed.
 
-- 18,276 frozen P2 question implementations;
-- exact P2 implementation identity law recovered;
-- R14 source-native active scope corroborates the 18,276 population;
-- H005L qsm_raw independently reproduces the same 18,276 coordinates;
-- downstream QSR/FQRA/semantic/driver carrier coverage and identity debt are explicit.
+Established inputs:
 
-Do not re-enumerate a new candidate universe and do not invent a competing question UID.
+- 18,276 governed P2 question implementations;
+- recovered P2 identity law;
+- explicit current use/disposition for all 18,276;
+- R10F O03/O04 terminal topology/endpoint authority;
+- R10G semantic-coordinate authority;
+- R10H O06/O07/O08 current routing/measurement/position authority;
+- R10I O09 current P5 placement authority;
+- FQRA/QSMv2 structural/relation authority with explicit blockers;
+- QSR source-structure authority with explicit cardinality/case debt;
+- V525b accepted historical semantic/driver capital;
+- QRA/manual directionality and response-scale contracts;
+- SWID/source-native identity and Trii source evidence;
+- explicit negative/review/block/provenance/supersession state;
+- zero authority classes currently proved `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
+
+Governing court:
+
+`USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`
+
+Requirements:
+
+`TRII_CHETIRI_AUTHORITY_REQUIREMENTS.md`
+
+Do not reopen population discovery or semantic rewriting merely because a physical design is inconvenient.
 
 ## Authority question
 
-For each of the 18,276 governed P2 question implementations, what is its current production disposition and what existing semantic/driver/facet/structural/response/direction/routing/position/source authority can be lawfully bound to it at the correct grain?
-
-This is the bridge from identity recovery to the unified empirical-authority substrate.
+What exact normalized physical contract can persist, migrate, replay and serve the recovered empirical authority universe without collapsing identity, provenance, one-to-many assertions, negative states or jurisdictional boundaries?
 
 ## Mission
 
-### A. Recover current implementation dispositions
+### A. Define canonical normalized relations
 
-For every P2 implementation, classify only from existing governed authority into explicit states such as:
+Specify typed canonical relations at the minimum grains required by recovered authority, including at least:
 
-- substantive production-usable;
-- response/routing/universe control;
-- respondent-position/demographic coordinate;
-- administrative/metadata;
-- source/context/structural support;
-- battery/stem/parent/container role;
-- excluded/inactive/not applicable;
-- review required;
-- source conflict;
-- blocked/unresolved.
+1. question implementation identity;
+2. concept/continuity/family lineage;
+3. source-wave/SWID identity;
+4. exact source-native variable/instrument identity;
+5. implementation use disposition;
+6. semantic-unit membership and coordinates;
+7. driver/facet/domain/axis/target assertions;
+8. source topology / battery / parent-child structure;
+9. behavior/exposure endpoint authority;
+10. routing/applicability predicates;
+11. response topology / measurement-use authority;
+12. response-option/scale contracts;
+13. bounded directionality/polarity authority;
+14. respondent/source extraction semantics;
+15. position authority;
+16. P5 strata/Horizon placement and activation;
+17. evidence/provenance links;
+18. review/block/negative-state assertions;
+19. alias/crosswalk relations;
+20. explicit supersession/retirement relations.
 
-Do not infer a substantive/usable state merely because a variable has responses or appears in a helper master.
+Do not force independent authorities into one implementation row.
 
-### B. Bind existing authority noncollapsingly
+### B. Define identity and cardinality law
 
-At minimum map, when lawfully joinable:
+For every relation state:
 
-- P2 semantic/continuity/pair authority;
-- V525b accepted semantic/driver capital;
-- later positively governed semantic/manual review;
-- driver/facet assertions;
-- QSMv2/FQRA structural coordinates and explicit blockers;
-- QRA/manual directionality authority;
-- response-scale/response-option authority;
-- routing/applicability/risk-set authority;
-- position-conditioning/respondent semantics;
-- source-structure/battery/parent-child authority;
-- current SWID/source-native identity and source evidence;
-- negative/review/block states;
-- provenance and supersession edges.
+- primary key / assertion identity;
+- foreign-key grain;
+- allowed one-to-many and many-to-many relationships;
+- uniqueness constraints;
+- exact-case behavior;
+- alias/crosswalk requirements;
+- whether blank/null is legal versus an explicit negative state;
+- fail-closed behavior on unresolved dependencies.
 
-A single implementation may lawfully have multiple authority assertions at different grains. Do not flatten them into a single winner row.
+P2 `question_implementation_id` remains the semantic implementation spine. New physical assertion IDs are allowed; a competing semantic question UID is not.
 
-### C. Quality and gap court
+### C. Define migration law
 
-For every required authority class distinguish:
+For each canonical relation name exact predecessor carriers and precedence/succession rules.
 
-- `EXISTS__ACCEPTED__BINDABLE`;
-- `EXISTS__HISTORICAL__PRESERVE_PENDING_CURRENT_QUALITY`;
-- `EXISTS__GENERATED_OR_DISCOVERY_ONLY`;
-- `EXISTS__BLOCKED_OR_REVIEW_REQUIRED`;
-- `EXISTS__CONFLICTING__ADJUDICATION_REQUIRED`;
-- `UNLOCATED__SEARCH_NOT_EXHAUSTED`;
-- `MISSING_PROVED__NEW_AUTHORITY_CREATION_REQUIRED`.
+Migration must distinguish:
 
-Only the last state may authorize new substantive semantic/manual authority.
+- current accepted authority;
+- historical accepted authority that must survive;
+- generated/discovery-only carriers;
+- mechanical build law;
+- explicit blocked/review authority;
+- source-native evidence;
+- compatibility/helper carriers;
+- invalid implicit precedence such as d62 row order.
 
-### D. Trii / Chetiri requirements
+No later file may overwrite earlier accepted authority unless a positive supersession edge authorizes it at the same assertion grain.
 
-Emit explicit requirements for:
+### D. Define physical release
 
-- Trii source certification and source-native identity/evidence dependencies;
-- Chetiri persistence/compiler schema and serving requirements;
-- which authority relations must survive replay/rebuild;
-- which blocked states must fail closed;
-- which helper/legacy carriers become derived compatibility views rather than canonical authority.
+Planning target remains:
+
+- typed versioned Parquet canonical relations;
+- machine-readable schemas;
+- release manifest with SHA-256 identities;
+- deterministic read-only DuckDB compilation/query layer;
+- derived `question_authority_master` and legacy compatibility views that are explicitly noncanonical.
+
+The court must decide exact directory/release structure, schema-version law and content-addressed object identity.
+
+### E. Define replay and conservation proof
+
+Specify validators proving at minimum:
+
+- exactly 18,276 P2 implementation IDs survive unchanged;
+- no exact-case identity collapse;
+- every accepted historical/current assertion is either preserved or has an explicit lawful supersession edge;
+- all one-to-many assertions survive without creating duplicate implementation identity;
+- all negative/block/review states survive;
+- O03/O04/O06/O07/O08/O09 denominators and terminal statuses are conserved;
+- FQRA blockers and bounded target absences remain explicit;
+- QSR structural residue is not silently promoted to population identity;
+- V525b capital is not silently dropped;
+- d62 physical row order has zero semantic precedence;
+- SWID/source-native bindings remain deterministic;
+- derived wide views round-trip to canonical normalized relations without inventing authority;
+- replay from immutable inputs regenerates byte/content-equivalent canonical outputs or an explicitly version-governed successor.
+
+### F. State Trii and Chetiri execution contract
+
+Trii requirements must identify which source SHA, source-wave UID, variable/instrument and source-document evidence fields are mandatory for source certification to bind into the new substrate.
+
+Chetiri requirements must identify what must be persisted, loaded, compiled and served for:
+
+- generated-person runtime;
+- empirical inference;
+- analytical/DDM consumers;
+- compiler/discovery workflows;
+- replay/audit/provenance inspection.
+
+A storage architecture that cannot serve required authority is invalid even if compact or fast.
 
 ## Browser-first execution
 
-Use connected GitHub, H001-H005 exact packet bytes, Library authority objects and Browser computation first.
+Use connected GitHub, exact H001-H005 packets, recovered Library authority and Browser computation.
 
-Issue a new local delta harvest only if the court identifies a specific necessary authority byte/object that Browser cannot access. Do not send local workers broad exploratory work that Browser can perform.
+No local harvest is required at court start. Issue a bounded local request only for a named indispensable byte that Browser cannot access.
 
-## Outputs
+## Minimum durable outputs
 
-Minimum durable outputs:
-
-- `CURRENT35_IMPLEMENTATION_DISPOSITION_LEDGER.csv`
-- `NORMALIZED_AUTHORITY_BINDING_MATRIX.csv`
-- `AUTHORITY_BINDING_CARDINALITY_AND_CONFLICT_LEDGER.csv`
-- `CURRENT35_AUTHORITY_QUALITY_AND_GAP_LEDGER.csv`
-- `TRII_CHETIRI_AUTHORITY_REQUIREMENTS.md`
-- `USABLE_UNIVERSE_AND_BINDING_ADJUDICATION.md`
-
-The row-level 18,276 implementation identity source remains the existing content-addressed P2 skeleton. Do not duplicate it merely to rename it.
+- `UNIFIED_SUBSTRATE_CANONICAL_RELATION_SCHEMA.md`
+- `UNIFIED_SUBSTRATE_RELATION_CATALOG.csv`
+- `UNIFIED_SUBSTRATE_MIGRATION_SOURCE_MAP.csv`
+- `UNIFIED_SUBSTRATE_PRECEDENCE_AND_SUPERSESSION_LAW.md`
+- `UNIFIED_SUBSTRATE_RELEASE_MANIFEST_CONTRACT.md`
+- `UNIFIED_SUBSTRATE_REPLAY_AND_CONSERVATION_TEST_PLAN.md`
+- `UNIFIED_SUBSTRATE_DUCKDB_COMPILATION_CONTRACT.md`
+- `TRII_CHETIRI_PHYSICAL_INTEGRATION_CONTRACT.md`
+- `UNIFIED_SUBSTRATE_SCHEMA_MIGRATION_REPLAY_ADJUDICATION.md`
 
 ## Forbidden
 
-- no new question UID scheme;
-- no semantic rewriting from helper masters;
-- no recency/path/row-order precedence;
+- no new semantic question UID;
+- no broad re-adjudication of question meaning;
+- no generated/helper carrier promoted by recency;
+- no row-order precedence;
 - no casefold identity collapse;
-- no equivalence from text similarity;
+- no hidden deduplication;
 - no blocked/unresolved flattening;
-- no source or runtime mutation during the court;
-- no new semantic authority before a proved missing-authority disposition.
+- no mutation of source survey bytes during the court;
+- no implementation of the physical store before the contract and replay invariants are explicit enough to test;
+- no new semantic/manual authority without a separately proved missing-authority disposition.
 
 ## Terminal objective
 
-`GOVERNED_18276_IMPLEMENTATION_UNIVERSE`
-→ `EXPLICIT_USABLE_AND_NONUSABLE_DISPOSITIONS`
-→ `ALL_EXISTING_AUTHORITY_BOUND_AT_CORRECT_GRAIN`
-→ `TRUE_GAPS_PROVED`
-→ `TRII_CHETIRI_REQUIREMENTS_EXPLICIT`
-→ `UNIFIED_SUBSTRATE_SCHEMA_AND_MIGRATION_READY`
+`RECOVERED_AUTHORITY_UNIVERSE`
+→ `NORMALIZED_CANONICAL_RELATION_CONTRACT`
+→ `EXPLICIT_MIGRATION_AND_PRECEDENCE_LAW`
+→ `CONTENT_ADDRESSED_PARQUET_RELEASE_CONTRACT`
+→ `DETERMINISTIC_DUCKDB_COMPILATION_CONTRACT`
+→ `REPLAY_AND_CONSERVATION_PROOF_PLAN`
+→ `TRII_CHETIRI_PHYSICAL_INTEGRATION_CONTRACT`
+→ `PHYSICAL_IMPLEMENTATION_READY`
