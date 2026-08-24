@@ -101,11 +101,7 @@ Worker branch:
 
 `agent/vozhd-trii-hist01-v2-full-history-authority-necessity`
 
-Binding worker start after three-corpus prelaunch reconciliation:
-
-`09f52b61c69ed577a7be0a728da3e2a3afa23962`
-
-The branch must be identical to that exact HEAD before work. No work is authorized from the older `0b82e8ef14def80e51ab837cb35a91746329e851` state.
+The branch must be fast-forwarded to and identical with the final reconciled control HEAD before execution. The launch handoff supplies that immutable start SHA. No work is authorized from the obsolete `0b82e8ef14def80e51ab837cb35a91746329e851` state.
 
 ## P03 SWID
 
