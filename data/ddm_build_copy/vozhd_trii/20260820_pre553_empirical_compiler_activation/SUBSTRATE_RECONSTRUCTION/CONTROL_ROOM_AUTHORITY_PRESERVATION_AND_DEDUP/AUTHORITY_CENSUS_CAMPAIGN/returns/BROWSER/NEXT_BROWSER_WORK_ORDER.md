@@ -1,116 +1,122 @@
-# NEXT WORK ORDER — POST REC-03–REC-06 HQ RECONCILIATION
+# NEXT WORK ORDER — POST REC-05X / REC-07 HQ INTAKE
 
-Status: `ISSUED__REC03_REC06_ACCEPTED__REC07_REC05X_REC08_PARALLEL__C09_BLOCKED`
+Status: `ISSUED__REC05X_CLOSED__REC07_115_ADOPTED__REC07X_588_OPEN__REC08_PARALLEL__C09_BLOCKED`
 
 ## Binding state
 
-R00 and R01-R08 HQ reconciliation are closed. REC-01 is retired by recovered C02R2/G0 law. REC-02 is accepted. REC-03 through REC-06 are now also accepted by:
+Read first:
 
-`.../AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_REC03_REC06_RECONCILIATION.md`
+`.../AUTHORITY_SUFFICIENCY_AND_QUALITY_REVALIDATION_CAMPAIGN/HQ/HQ_REC05X_REC07_INTAKE_AND_ADOPTION.md`
 
 Current queue:
 
 `.../HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
-## Do not rerun REC-03 through REC-06
+## Do not rerun REC-05X or REC-07
 
 Accepted exact heads:
 
-- REC-03 `70b871fc7afcc01f77099abe5e9a82b2e09855c8`
-- REC-04 `86a5b342a0a4e4a0cabb4831b2e9ec07dbf8e5d9`
-- REC-05 `15849198ef28905be9a1ca9d8680c87a15129d6f`
-- REC-06 `2278f6a180e6991a38a0b78acf2932d1cbc79a9c`
+- REC-05X `29cf12dd91cf644c234239e5782cb7544f8c5898`
+- REC-07 `28e7a1ef6a0ac883a980917b0bced465088f8a20`
 
-REC-04's historical outputs live at a shorter noncanonical path. HQ accepts them by exact immutable commit/blob identity; do not rerun or move them.
+REC-05X completed all 2,884 R10F O03 preserve rows:
 
-## Three courts may run concurrently now
+- 2,268 pass;
+- 613 exact defects;
+- 3 source-limited.
 
-### REC-07 — exact bounded repair authoring
+REC-07 already covers exactly 25 of the 613 defect rows and HQ adopted its 115 total semantic successors.
 
-Environment: Browser / connected GitHub.
+Therefore the only new O03 authoring denominator is exactly **588** rows.
 
-Read:
+## Browser/GitHub work authorized now
 
-- `.../HQ/REC07_EXACT_REPAIR_DOCKET.csv`
-- `.../HQ/RECOVERY_TASKS/REC07_EXACT_BOUNDED_SUCCESSOR_REPAIR_TASK.md`
-
-REC-07 may author only the frozen P01-P10 candidate packages. It may not self-expand into source-limited rows, unsampled O03 preserve rows, Q49STB/STC, q5185, or unrelated authority.
-
-Historical predecessors remain intact. Output remains pending HQ adoption.
-
-### REC-05X — complete O03 preserve-stratum census
-
-Environment: Browser / connected GitHub / source-capable Browser or Library evidence, with container/Python permitted for deterministic census/replay.
+### REC-07X — exact 588-row O03 successor authoring
 
 Read:
 
-`.../HQ/RECOVERY_TASKS/REC05X_O03_PRESERVE_2884_FULL_CENSUS_TASK.md`
+`.../HQ/RECOVERY_TASKS/REC07X_O03_ADDITIONAL_588_SUCCESSOR_REPAIR_TASK.md`
 
-Frozen source authority:
+Immutable input:
 
-`R10F_S2_CENTRAL_INTEGRATED_AUTHORITY.csv`
+REC-05X final HEAD:
 
-SHA-256:
+`29cf12dd91cf644c234239e5782cb7544f8c5898`
+
+Candidate-ledger blob SHA:
+
+`8865ef9080230733a4cfac3c13cea4e5f56b1330`
+
+Frozen R10F authority SHA-256:
 
 `f593caa27f3eb9a7e49ff819626dc5294c6e7031748e74914aefc18f27b011d5`
 
-Exact denominator:
+Exact denominator construction:
 
-`2884 PRESERVE_SOURCE_TOPOLOGY rows`
+- candidate ledger = 613 rows;
+- `rec07_exact_o03_overlap == TRUE` = 25 rows — EXCLUDE;
+- `rec07_exact_o03_overlap == FALSE` = 588 rows — AUTHOR;
+- three SIOPS source-limited rows are outside candidate denominator — EXCLUDE;
+- 2,268 pass rows — EXCLUDE.
 
-REC-05X must reproduce REC-05's exact 75-row preserve sample first and then census all 2,884 rows. It does not author successor authority.
+REC-07X must author exactly one append-only same-grain R10F O03 topology successor per exact joined row and nothing else.
 
 ### REC-08 — C05-R2A exact pin/current-HQ intake
 
-Environment: Browser / connected GitHub.
+REC-08 remains authorized in parallel under its existing exact task.
 
-Use the already-issued REC-08 handoff branch and task. REC-08 is not a local-Mac source task and must STOP before C05-R2B.
+It must stop before C05-R2B.
 
-## Why REC-07 and REC-05X are separate
+## Existing adopted REC-07 state
 
-REC-05 proved exact source contradictions on 22 sampled preserve rows. Those individual contradictions may be authored as bounded repairs now.
+HQ adopted:
 
-But 22/75 = 29.33% also proves the preserve lineage needs expansion. It does **not** prove the unsampled rows are defective.
+- P01 O09 8;
+- P02 O08 1;
+- P04 R10G role 59;
+- P05 QRA 4;
+- P06 O07 11;
+- P07 O03 Q518 4;
+- P08 O03 sampled preserve 21;
+- P10 R10G Q60 7.
 
-Therefore:
+Total = 115 successor records.
 
-- REC-07 handles only exact already-proved rows;
-- REC-05X determines the complete 2,884-row preserve quality state;
-- additional REC-05X defects, if any, require a later HQ repair intake rather than self-installation.
+P09: no active stale q313 consumer; no repair.
 
-This separation is binding.
+P03: SWID/current-35 inheritance remains blocked because exact accepted predecessor registry/kernel identity is not pinned. Do not reconstruct it from labels or membership coincidence.
 
-## C05 law
+## EVS-2008 SIOPS source ceilings
 
-Prior adopted production profile remains:
+Exactly three REC-05X rows remain fail-closed:
 
-`C05R1B_PRODUCTION_DISCOVERY_RULE_PROFILE@1.0.0`
+- v339SIOPS;
+- v346SIOPS;
+- v357SIOPS.
 
-operation:
-
-`PRE553_PRODUCTION_EXACT_BOUNDED_AUTONOMOUS_DISCOVERY@1.0.0`
-
-Do not search again for DiscoveryAuthority, invent K/J/depth caps, or introduce heuristic pruning.
+No guessed topology is authorized. A future reopening must be bounded to exact source-native EVS-2008 SIOPS range/value authority.
 
 ## Deferred
 
-C05-R2B is blocked pending REC-08/HQ acceptance + exact real-source instance authority.
+C05-R2B remains blocked pending REC-08/HQ acceptance + exact real-source instance authority.
 
-C09 is blocked pending REC-07, REC-05X, REC-08/C05 continuation, and remaining governed logical debts.
+C09 is blocked pending REC-07X, REC-08/C05 continuation, P03 treatment, and remaining governed logical debts.
 
 C10 is blocked pending C09.
 
-Schema migration is blocked.
+Schema migration remains blocked.
 
 ## Gates
 
-`REC03_REC06_RECONCILIATION_GATE = CLOSED__ACCEPTED`
+`REC05X_GATE = CLOSED__ACCEPTED`
 
-`REC07_GATE = OPEN__EXACT_P01_P10_ONLY`
+`REC07_GATE = CLOSED__HQ_ADOPTED_EXCEPT_P03_BLOCKED__P09_NO_REPAIR`
 
-`REC05X_GATE = OPEN__FULL_2884_CENSUS`
+`REC07X_GATE = OPEN__EXACT_588_ONLY`
 
 `REC08_GATE = OPEN__C05R2A_PIN_AND_INTAKE_ONLY`
+
+`P03_SWID_GATE = BLOCKED`
 
 `C05R2B_GATE = BLOCKED`
 
@@ -120,4 +126,4 @@ Schema migration is blocked.
 
 `SCHEMA_MIGRATION_GATE = BLOCKED`
 
-No other recovery/repair court is authorized by this work order.
+No other repair or expansion is authorized by this work order.
