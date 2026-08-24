@@ -1,8 +1,8 @@
 # Current Discovery Status & Next Action
 
-Status: `REC07X_V2_HQ_ADOPTED_588__REC08_OPEN__HIST01_V2_FULL_HISTORY_ARCHIVE_NECESSITY_OPEN__P03_SWID_BLOCKED__C09_BLOCKED`
+Status: `REC07X_V2_HQ_ADOPTED_588__REC08_OPEN__HIST01_V2_THREE_CORPUS_FULL_HISTORY_OPEN__P03_SWID_BLOCKED__C09_BLOCKED`
 
-R00 and R01-R08 HQ reconciliation remain closed against the provisional 68-row TIR denominator, but HIST-01 V2 is now the explicit historical-completeness challenge before that denominator may be treated as migration-safe.
+R00 and R01-R08 HQ reconciliation remain closed against the provisional 68-row TIR denominator, but HIST-01 V2 is the explicit historical-completeness challenge before that denominator may be treated as migration-safe.
 
 ## Binding current HQ
 
@@ -11,6 +11,7 @@ Read as controlling:
 - `.../HQ/HQ_REC05X_REC07_INTAKE_AND_ADOPTION.md`
 - `.../HQ/HQ_REC07X_V1_INPUT_ACCESS_CORRECTION.md`
 - `.../HQ/HQ_REC07X_V2_ADOPTION_AND_HIST01_PARTIAL_ARCHIVE_INTAKE.md`
+- `.../HQ/HQ_HIST01_PRELAUNCH_THREE_CORPUS_REVIEW.md`
 - `.../HQ/RECOVERY_TASKS/HIST01_V2_FULL_HISTORY_AND_ARCHIVE_NECESSITY_TASK.md`
 - `.../HQ/CHETIRI_RECOVERY_AND_LOCAL_ESCALATION_QUEUE.csv`
 
@@ -42,26 +43,57 @@ Disposition:
 
 `ACCEPTED__PARTIAL_HISTORICAL_EVIDENCE_HANDOFF__NO_CLOSURE`
 
-Principal result: the first proved Git `ddm_build_copy` root is a curated transfer boundary rather than the epistemic origin; historically reachable consumers immediately presume external/unversioned/generated authority and database state.
+The first proved Git `ddm_build_copy` root is provisionally a curated August-13 transfer boundary rather than the epistemic origin. Historically reachable consumers immediately presume external/local/generated authority and database state. No new terminal information class outside the 68 TIRs is yet proved, but this remains provisional.
 
-No new terminal information class outside the 68 TIRs is yet proved, but that result is explicitly provisional.
+## HIST-01 V2 — corrected prelaunch contract
 
-## HIST-01 V2
+The earlier 4,794-document-only V2 contract is superseded by the binding three-corpus review.
 
-HIST-01 V2 is now the required local full-history continuation.
+HIST-01 V2 must validate and consume:
 
-It must:
+1. Git authority archive — 4,794 source records / 3,875 unique contents;
+2. local 2026-04-24..2026-08-24 delta — 6,099 records / 6,099 unique contents, zero exact-content overlap with corpus 1;
+3. older local 2025-08-24..2026-04-23 archive — 73 records / 71 unique contents.
 
-1. mechanically exhaust the original `ddm_build_copy` producer/consumer DAG across all reachable Git refs;
-2. consume the user-supplied `Rawlsing_Authority_Document_Archive_2026-08-24.zip` only as a recovery/index corpus;
-3. classify all 4,794 archive logical documents by actual necessity;
-4. crosswalk historically consumed information against the 68 TIRs only after the historical DAG is complete.
+Expected combined source-record denominator:
 
-Archive SHA-256:
+`10,966`
 
-`e3f9e947e522f032998e29a7ff740f8d66e7e08934ca74c232965705dfbe49c8`
+Expected distinct exact SHA-256 byte objects:
 
-Archive inclusion is not necessity; archive absence is not historical nonexistence.
+`10,036`
+
+These archive/local records are recovery evidence, **not** the historical authority denominator. Historically reachable producer/consumer dependencies remain the denominator.
+
+### Material prelaunch recoveries
+
+`questions_master_drivers.csv` is no longer generic unrecovered evidence. Candidate exact historical bytes are recovered from local packages:
+
+SHA-256:
+
+`d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011`
+
+Observed shape:
+
+`28,983 x 40`
+
+HIST-01 V2 must prove exact producer/adoption/root-run version and field-level necessity.
+
+`gss2010_structural_overlay.csv` likewise has recovered candidate exact historical bytes:
+
+SHA-256:
+
+`fe503dd46c842ac53b0410bf73fd6a93c98cd4362958229f52684afb66c70751`
+
+Observed shape:
+
+`390 x 14`
+
+Generated `data/ddm_build_copy/reports/*` overlay authority is materially present in the local delta; the remaining problem is exact historical resolver selection and version/provenance, not generic absence.
+
+Older/local documents plus Git reload manifests materially strengthen DB/runtime provenance, but exact root-era live Postgres snapshot identity remains open unless proved unnecessary through exact source/replay reconstruction law.
+
+Later QRA YAML/schema explicitly governs `BF -> LS` and `LY -> YE` as country identity replacements. HIST-01 must trace historical consumer meaning/use and succession rather than treat these mappings as wholly unexplained.
 
 ## P03 SWID
 
@@ -75,7 +107,7 @@ Still blocked on exact accepted predecessor registry/kernel identity. Do not rec
 
 `HIST01_PARTIAL_GATE = CLOSED__EVIDENCE_HANDOFF_ACCEPTED__NO_CLOSURE`
 
-`HIST01_V2_GATE = OPEN__LOCAL_FULL_HISTORY__4794_ARCHIVE_NECESSITY_ROWS`
+`HIST01_V2_GATE = OPEN__LOCAL_FULL_HISTORY__THREE_CORPORA__10966_SOURCE_RECORDS__10036_EXPECTED_CONTENT_OBJECTS`
 
 `SWID_P03_GATE = BLOCKED__EXACT_ACCEPTED_PREDECESSOR_IDENTITY_REQUIRED`
 
