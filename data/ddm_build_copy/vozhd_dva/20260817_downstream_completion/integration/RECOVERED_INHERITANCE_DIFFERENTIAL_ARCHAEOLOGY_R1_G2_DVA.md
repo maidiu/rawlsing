@@ -7,8 +7,10 @@ Campaign: `DVA_TRII_CHETIRI_RECOVERED_INHERITANCE_DIFFERENTIAL_ARCHAEOLOGY_R1`
 Read first:
 - your own accepted G1 return;
 - common campaign charter;
-- `01_G1_HQ_BANK_AND_G2_ROUTING.md` only for the fact that G2 is authorized and this exact assignment exists; **do not use its undisclosed cross-role synthesis section as evidence**;
-- `02_G2_RETURN_SCHEMA.md`.
+- this G2 assignment;
+- `data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/02_G2_RETURN_SCHEMA.md`.
+
+Do **not** read `01_G1_HQ_BANK_AND_G2_ROUTING.md`: HQ has banked cross-role convergence there and it is deliberately withheld from all three Vozhdy until G3.
 
 Do not read Trii or Chetiri G1/G2 returns.
 
