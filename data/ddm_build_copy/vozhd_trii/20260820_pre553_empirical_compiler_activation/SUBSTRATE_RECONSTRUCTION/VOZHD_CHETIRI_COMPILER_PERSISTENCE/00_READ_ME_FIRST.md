@@ -139,6 +139,7 @@ Chetiri must separately reason about:
 23. `21_POST_FORWARD_CROSSWALK_CELL_ASSIGNMENT_AMENDMENT.md`
 24. exact cell order under `WORKER_ORDERS/`
 25. current phase launch order issued after the reconciliation base.
+26. `../SHARED_PRE553_DAG_AUTHORITY_CONSERVATION/00_READ_ME_FIRST.md` and its live concept/open-gate ledgers before any claim that the PRE553 semantic/capability obligation envelope is complete.
 
 ### Current PRE553 parents
 
@@ -220,3 +221,22 @@ Chetiri succeeds only when HQ can answer with evidence:
 - whether event-grain persistent materialization is actually necessary.
 
 > **The hard workload is not merely answering a question. It is finding the questions the data forces us to ask.**
+
+## 11. SHARED HISTORICAL AUTHORITY-CONSERVATION BINDING
+
+`SHARED_PRE553_DAG_AUTHORITY_CONSERVATION` is not a new campaign, candidate, or architecture route. It is the shared hostile obligation audit for the existing A/B/C comparison.
+
+Its purpose is to detect rigor, semantic capital, information-conservation requirements, authority precedence, negative-state distinctions, replay obligations, and functional capabilities that the historical P2/P3/P3A/P3C and V550–V552J machine had learned but current Trii/Chetiri contracts may name too coarsely or omit.
+
+Chetiri may still conclude that an old artifact or whole old stage should disappear. It may do so only after the live function/meaning represented by that object is shown to be:
+
+- directly reused;
+- exactly regenerated under governed law;
+- preserved in a smaller canonical authority/product;
+- or formally retired with positive proof that Rawlsing no longer needs the capability.
+
+`OLD_ARTIFACT_NOT_REQUIRED` does not imply `OLD_FUNCTION_NOT_REQUIRED`.
+
+`SOURCE_CAN_REGENERATE_PAYLOAD` does not imply `SOURCE_CAN_REGENERATE_HUMAN_SEMANTIC_CAPITAL`.
+
+Any new obligation discovered by the shared conservation audit must be embedded into G1A/common truth law/C08/C09/C10 or another existing Chetiri gate as jurisdiction requires. The audit may not become a fourth architecture by accretion.
