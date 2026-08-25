@@ -1,0 +1,1588 @@
+{
+  "worker_id": "T06W06",
+  "status": "PASS",
+  "error_count": 0,
+  "errors": [],
+  "summary": {
+    "accounting_rows": 3092,
+    "positive_relations": 9,
+    "crosswalk_rows": 35,
+    "crosswalk_dispositions": {
+      "POSITIVE_T06": 13,
+      "BLOCKED_SOURCE_AMBIGUITY": 12,
+      "NOT_T06_SOURCE_PROVEN_MISMATCH": 10
+    },
+    "blocker_records": 4,
+    "upstream_repairs": 2,
+    "source_coverage_defects": 0,
+    "positive_by_wave": {
+      "Arab Barometer::II": 3,
+      "GSS::1973": 1,
+      "GSS::2010": 1,
+      "Latinobarómetro::2024": 3,
+      "WVS::W1": 1
+    }
+  },
+  "checks": [
+    {
+      "check": "assigned_total",
+      "pass": true,
+      "detail": "3092"
+    },
+    {
+      "check": "unique_accounting_impl_ids",
+      "pass": true,
+      "detail": "3092/3092"
+    },
+    {
+      "check": "assigned_wave_set",
+      "pass": true,
+      "detail": "[('Arab Barometer', 'II'), ('GSS', '1973'), ('GSS', '2010'), ('GSS', '2024'), ('Latinobarómetro', '2024'), ('WVS', 'W1')]"
+    },
+    {
+      "check": "wave_total:('GSS', '2024')",
+      "pass": true,
+      "detail": "980/980"
+    },
+    {
+      "check": "wave_total:('GSS', '2010')",
+      "pass": true,
+      "detail": "922/922"
+    },
+    {
+      "check": "wave_total:('Arab Barometer', 'II')",
+      "pass": true,
+      "detail": "468/468"
+    },
+    {
+      "check": "wave_total:('GSS', '1973')",
+      "pass": true,
+      "detail": "339/339"
+    },
+    {
+      "check": "wave_total:('Latinobarómetro', '2024')",
+      "pass": true,
+      "detail": "195/195"
+    },
+    {
+      "check": "wave_total:('WVS', 'W1')",
+      "pass": true,
+      "detail": "188/188"
+    },
+    {
+      "check": "positive_count",
+      "pass": true,
+      "detail": "9"
+    },
+    {
+      "check": "unique_relation_ids",
+      "pass": true,
+      "detail": "9"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": "3/3"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": "norm=1 conduct=2"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": "('Arab Barometer', 'II')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-5b97a9993004e5dd",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": "3/3"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": "norm=1 conduct=2"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": "('Arab Barometer', 'II')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-ceeaed53e053a771",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": "3/3"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": "norm=1 conduct=2"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": "('Arab Barometer', 'II')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-45f4c7fac3b66ddd",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": "2/2"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": "norm=1 conduct=1"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": "('GSS', '1973')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-43b1fb8a0c81825a",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": "2/2"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": "norm=1 conduct=1"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": "('GSS', '2010')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-c94b453cbf196a63",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": "2/2"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": "norm=1 conduct=1"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": "('Latinobarómetro', '2024')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-9123623d6dd1f576",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": "2/2"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": "norm=1 conduct=1"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": "('Latinobarómetro', '2024')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-37fe2c643720db12",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": "2/2"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": "norm=1 conduct=1"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_STATED_OR_INTENDED_CONDUCT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": "('Latinobarómetro', '2024')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-3ae61c6bb440d151",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "impl_role_len:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": "3/3"
+    },
+    {
+      "check": "role_pattern:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": "norm=1 conduct=2"
+    },
+    {
+      "check": "role_vocab:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": "['RR_NORM', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT', 'RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT']"
+    },
+    {
+      "check": "members_bound:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "member_wave_match:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": "('WVS', 'W1')"
+    },
+    {
+      "check": "member_ids_role_order:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "source_variable_codes_carried:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": "role_assignments_json"
+    },
+    {
+      "check": "norm_search_flag:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "conduct_search_flag:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "not_frozen:T06W06-SRCFIRST-T06-83676e132a7b3cd6",
+      "pass": true,
+      "detail": "NOT_FROZEN_WORKER_SOURCE_FIRST"
+    },
+    {
+      "check": "unique_crosswalk_ids",
+      "pass": true,
+      "detail": "35/35"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-a5ce1d2556936794",
+      "pass": true,
+      "detail": "question_impl.phase0.47374f29b8910c164462"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-a5ce1d2556936794",
+      "pass": true,
+      "detail": "question_impl.phase0.b7934ea106ba6e09ae35"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-a5ce1d2556936794",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-a5ce1d2556936794",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-5b97a9993004e5dd"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-156de323df44fc9e",
+      "pass": true,
+      "detail": "question_impl.phase0.47374f29b8910c164462"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-156de323df44fc9e",
+      "pass": true,
+      "detail": "question_impl.phase0.a84a26cbe52a7db1b423"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-156de323df44fc9e",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-156de323df44fc9e",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-5b97a9993004e5dd"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-24fa167980a4a98e",
+      "pass": true,
+      "detail": "question_impl.phase0.de337840e05555473ab3"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-24fa167980a4a98e",
+      "pass": true,
+      "detail": "question_impl.phase0.c292ccea3b4729f0b312"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-24fa167980a4a98e",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-24fa167980a4a98e",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-ceeaed53e053a771"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-2ae4dd5b7d8521d9",
+      "pass": true,
+      "detail": "question_impl.phase0.de337840e05555473ab3"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-2ae4dd5b7d8521d9",
+      "pass": true,
+      "detail": "question_impl.phase0.0c42fdb42459019af7ce"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-2ae4dd5b7d8521d9",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-2ae4dd5b7d8521d9",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-ceeaed53e053a771"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-d1c9074fcb5e843d",
+      "pass": true,
+      "detail": "question_impl.phase0.743598186ce98f943bbe"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-d1c9074fcb5e843d",
+      "pass": true,
+      "detail": "question_impl.phase0.06f10a934153a6c507dd"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-d1c9074fcb5e843d",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-d1c9074fcb5e843d",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-45f4c7fac3b66ddd"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-7ee7c800fe4fcaa5",
+      "pass": true,
+      "detail": "question_impl.phase0.743598186ce98f943bbe"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-7ee7c800fe4fcaa5",
+      "pass": true,
+      "detail": "question_impl.phase0.7b901cde3cc7df5e5132"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-7ee7c800fe4fcaa5",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-7ee7c800fe4fcaa5",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-45f4c7fac3b66ddd"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-2ad874522245a31a",
+      "pass": true,
+      "detail": "question_impl.phase0.7edd43f49fd9aeb75848"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-2ad874522245a31a",
+      "pass": true,
+      "detail": "question_impl.phase0.feec26709edd67edfe8b"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-2ad874522245a31a",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-2ad874522245a31a",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-43b1fb8a0c81825a"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-58583296cc5d5521",
+      "pass": true,
+      "detail": "question_impl.phase0.9bdd236d55354b52517f"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-58583296cc5d5521",
+      "pass": true,
+      "detail": "question_impl.phase0.b6ea506e087e41b7c85a"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-58583296cc5d5521",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-58583296cc5d5521",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-c94b453cbf196a63"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-f049ec0b4396fb57",
+      "pass": true,
+      "detail": "question_impl.phase0.0a0eace43761c47fa5b1"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-f049ec0b4396fb57",
+      "pass": true,
+      "detail": "question_impl.phase0.ff08d9809340aef3fa4e"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-f049ec0b4396fb57",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-f049ec0b4396fb57",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-9123623d6dd1f576"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-1306ade56201ebf0",
+      "pass": true,
+      "detail": "question_impl.phase0.0a0eace43761c47fa5b1"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-1306ade56201ebf0",
+      "pass": true,
+      "detail": "question_impl.phase0.7cdb0fdcc4a6f23889d8"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-1306ade56201ebf0",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-1306ade56201ebf0",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-37fe2c643720db12"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-31a5ef1c9355dcae",
+      "pass": true,
+      "detail": "question_impl.phase0.0a0eace43761c47fa5b1"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-31a5ef1c9355dcae",
+      "pass": true,
+      "detail": "question_impl.phase0.0b965db85e8a8f9555d8"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-31a5ef1c9355dcae",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-31a5ef1c9355dcae",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-3ae61c6bb440d151"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-ee6fb4e66c423f43",
+      "pass": true,
+      "detail": "question_impl.phase0.880510142348cb1ca09b"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-ee6fb4e66c423f43",
+      "pass": true,
+      "detail": "question_impl.phase0.e4144602cc9e498c833d"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-ee6fb4e66c423f43",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-ee6fb4e66c423f43",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-83676e132a7b3cd6"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-bcae6822bc43c49d",
+      "pass": true,
+      "detail": "question_impl.phase0.880510142348cb1ca09b"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-bcae6822bc43c49d",
+      "pass": true,
+      "detail": "question_impl.phase0.7f4c3e6a0a16df887b2b"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-bcae6822bc43c49d",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_positive_relation:T06W06-XW-bcae6822bc43c49d",
+      "pass": true,
+      "detail": "T06W06-SRCFIRST-T06-83676e132a7b3cd6"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-b2c7b844193450a3",
+      "pass": true,
+      "detail": "question_impl.phase0.125a25d4af082c2a886c"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-b2c7b844193450a3",
+      "pass": true,
+      "detail": "question_impl.phase0.8a6d4861ca4d34ea7401"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-b2c7b844193450a3",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-b2c7b844193450a3",
+      "pass": true,
+      "detail": "T06W06-BLK-ABII-PRAYER-LOCATION-VS-FREQUENCY"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-978767db40b26682",
+      "pass": true,
+      "detail": "question_impl.phase0.125a25d4af082c2a886c"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-978767db40b26682",
+      "pass": true,
+      "detail": "question_impl.phase0.d2521baf9fdc0c65004f"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-978767db40b26682",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-978767db40b26682",
+      "pass": true,
+      "detail": "T06W06-BLK-ABII-PRAYER-LOCATION-VS-FREQUENCY"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-65fdef151652f6da",
+      "pass": true,
+      "detail": "question_impl.phase0.2e0b3d0aa46a13a47eb5"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-65fdef151652f6da",
+      "pass": true,
+      "detail": "question_impl.phase0.204d576247ce080709b3"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-65fdef151652f6da",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-65fdef151652f6da",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2010-SAMESEX-COMPOUND-ENDPOINT"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-be2926595a280bfb",
+      "pass": true,
+      "detail": "question_impl.phase0.2e0b3d0aa46a13a47eb5"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-be2926595a280bfb",
+      "pass": true,
+      "detail": "question_impl.phase0.8db4f1c2fe430987c45c"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-be2926595a280bfb",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-be2926595a280bfb",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2010-SAMESEX-COMPOUND-ENDPOINT"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-9571df4df18dbabe",
+      "pass": true,
+      "detail": "question_impl.phase0.2e0b3d0aa46a13a47eb5"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-9571df4df18dbabe",
+      "pass": true,
+      "detail": "question_impl.phase0.d9ed969371c5f22a374e"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-9571df4df18dbabe",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-9571df4df18dbabe",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2010-SAMESEX-COMPOUND-ENDPOINT"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-bcbfc7f28b5c6421",
+      "pass": true,
+      "detail": "question_impl.phase0.2e0b3d0aa46a13a47eb5"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-bcbfc7f28b5c6421",
+      "pass": true,
+      "detail": "question_impl.phase0.901971b06be2acb28bb7"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-bcbfc7f28b5c6421",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-bcbfc7f28b5c6421",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2010-SAMESEX-COMPOUND-ENDPOINT"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-8d6a74f46d3b241f",
+      "pass": true,
+      "detail": "question_impl.phase0.b4f8c7dd50c6948f4e13"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-8d6a74f46d3b241f",
+      "pass": true,
+      "detail": "question_impl.phase0.f493688cb9ec27223dda"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-8d6a74f46d3b241f",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-8d6a74f46d3b241f",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2024-SAMESEX-COMPOUND-ENDPOINT"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-edf19116342a3970",
+      "pass": true,
+      "detail": "question_impl.phase0.48a1b33ab038ad29fc86"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-edf19116342a3970",
+      "pass": true,
+      "detail": "question_impl.phase0.d44000072ac7e9e180f5"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-edf19116342a3970",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-edf19116342a3970",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2024-TLKFAM-NETWORK-CONDITION"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-587ba2ea6dae54f8",
+      "pass": true,
+      "detail": "question_impl.phase0.48a1b33ab038ad29fc86"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-587ba2ea6dae54f8",
+      "pass": true,
+      "detail": "question_impl.phase0.ff04d4ff7e2cd41936bb"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-587ba2ea6dae54f8",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-587ba2ea6dae54f8",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2024-TLKFAM-NETWORK-CONDITION"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-93991110134ed84d",
+      "pass": true,
+      "detail": "question_impl.phase0.48a1b33ab038ad29fc86"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-93991110134ed84d",
+      "pass": true,
+      "detail": "question_impl.phase0.434b2631c84878ab7fea"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-93991110134ed84d",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-93991110134ed84d",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2024-TLKFAM-NETWORK-CONDITION"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-2f69807ff30b9a6d",
+      "pass": true,
+      "detail": "question_impl.phase0.48a1b33ab038ad29fc86"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-2f69807ff30b9a6d",
+      "pass": true,
+      "detail": "question_impl.phase0.4d5bb9d5a26719171d8e"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-2f69807ff30b9a6d",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-2f69807ff30b9a6d",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2024-TLKFAM-NETWORK-CONDITION"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-bcf0562b29c4958a",
+      "pass": true,
+      "detail": "question_impl.phase0.48a1b33ab038ad29fc86"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-bcf0562b29c4958a",
+      "pass": true,
+      "detail": "question_impl.phase0.2a5783e321651c1c1a3c"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-bcf0562b29c4958a",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_blocker_ref:T06W06-XW-bcf0562b29c4958a",
+      "pass": true,
+      "detail": "T06W06-BLK-GSS2024-TLKFAM-NETWORK-CONDITION"
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-b8414495e030faea",
+      "pass": true,
+      "detail": "question_impl.phase0.c123778035acf43b3242"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-b8414495e030faea",
+      "pass": true,
+      "detail": "question_impl.phase0.ae708caf0124c33cd964"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-b8414495e030faea",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-b8414495e030faea",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-7c880bb757c04abd",
+      "pass": true,
+      "detail": "question_impl.phase0.71c3739b6e33a5d3a5f5"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-7c880bb757c04abd",
+      "pass": true,
+      "detail": "question_impl.phase0.992179426a8fbd285703"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-7c880bb757c04abd",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-7c880bb757c04abd",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-f48e5ddc48c0bf75",
+      "pass": true,
+      "detail": "question_impl.phase0.71c3739b6e33a5d3a5f5"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-f48e5ddc48c0bf75",
+      "pass": true,
+      "detail": "question_impl.phase0.02a720580e40c54cc7fc"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-f48e5ddc48c0bf75",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-f48e5ddc48c0bf75",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-f1a1059c31426664",
+      "pass": true,
+      "detail": "question_impl.phase0.71c3739b6e33a5d3a5f5"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-f1a1059c31426664",
+      "pass": true,
+      "detail": "question_impl.phase0.87af7e21ce7a1d404362"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-f1a1059c31426664",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-f1a1059c31426664",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-a37465ae9757504a",
+      "pass": true,
+      "detail": "question_impl.phase0.71c3739b6e33a5d3a5f5"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-a37465ae9757504a",
+      "pass": true,
+      "detail": "question_impl.phase0.56d412a725283e26d6ff"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-a37465ae9757504a",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-a37465ae9757504a",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-f44655b87660b1f6",
+      "pass": true,
+      "detail": "question_impl.phase0.0a0eace43761c47fa5b1"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-f44655b87660b1f6",
+      "pass": true,
+      "detail": "question_impl.phase0.16468040590a74a39a45"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-f44655b87660b1f6",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-f44655b87660b1f6",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-3b8c9b93219c26d8",
+      "pass": true,
+      "detail": "question_impl.phase0.0a0eace43761c47fa5b1"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-3b8c9b93219c26d8",
+      "pass": true,
+      "detail": "question_impl.phase0.a961ddac95db59baf240"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-3b8c9b93219c26d8",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-3b8c9b93219c26d8",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-4b0ae9f21962b126",
+      "pass": true,
+      "detail": "question_impl.phase0.0886add5f2b563710a0f"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-4b0ae9f21962b126",
+      "pass": true,
+      "detail": "question_impl.phase0.16468040590a74a39a45"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-4b0ae9f21962b126",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-4b0ae9f21962b126",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-c5c38a26b2db1036",
+      "pass": true,
+      "detail": "question_impl.phase0.0886add5f2b563710a0f"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-c5c38a26b2db1036",
+      "pass": true,
+      "detail": "question_impl.phase0.a961ddac95db59baf240"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-c5c38a26b2db1036",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-c5c38a26b2db1036",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "xw_norm_bound:T06W06-XW-c9ebe365326e8a6e",
+      "pass": true,
+      "detail": "question_impl.phase0.16c261dd10eb3b739b39"
+    },
+    {
+      "check": "xw_conduct_bound:T06W06-XW-c9ebe365326e8a6e",
+      "pass": true,
+      "detail": "question_impl.phase0.044640f8f7e4e2ed919b"
+    },
+    {
+      "check": "xw_bidirectional:T06W06-XW-c9ebe365326e8a6e",
+      "pass": true,
+      "detail": "COMPLETED/COMPLETED"
+    },
+    {
+      "check": "xw_mismatch_basis:T06W06-XW-c9ebe365326e8a6e",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "blocker_crosswalk_refs:T06W06-BLK-ABII-PRAYER-LOCATION-VS-FREQUENCY",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "blocker_impl_refs:T06W06-BLK-ABII-PRAYER-LOCATION-VS-FREQUENCY",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "blocker_crosswalk_refs:T06W06-BLK-GSS2010-SAMESEX-COMPOUND-ENDPOINT",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "blocker_impl_refs:T06W06-BLK-GSS2010-SAMESEX-COMPOUND-ENDPOINT",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "blocker_crosswalk_refs:T06W06-BLK-GSS2024-SAMESEX-COMPOUND-ENDPOINT",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "blocker_impl_refs:T06W06-BLK-GSS2024-SAMESEX-COMPOUND-ENDPOINT",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "blocker_crosswalk_refs:T06W06-BLK-GSS2024-TLKFAM-NETWORK-CONDITION",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "blocker_impl_refs:T06W06-BLK-GSS2024-TLKFAM-NETWORK-CONDITION",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "repair_impl_refs:T06W06-UPR-GSS2010-SAMESEX-ENDPOINT",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "repair_impl_refs:T06W06-UPR-GSS2024-SAMESEX-ENDPOINT",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "attestation_wave_rows",
+      "pass": true,
+      "detail": "[('Arab Barometer', 'II'), ('GSS', '1973'), ('GSS', '2010'), ('GSS', '2024'), ('Latinobarómetro', '2024'), ('WVS', 'W1')]"
+    },
+    {
+      "check": "att_total:('GSS', '2024')",
+      "pass": true,
+      "detail": "980/980"
+    },
+    {
+      "check": "att_class:('GSS', '2024'):NORM_SHORE",
+      "pass": true,
+      "detail": "62/62"
+    },
+    {
+      "check": "att_class:('GSS', '2024'):CONDUCT_SHORE",
+      "pass": true,
+      "detail": "88/88"
+    },
+    {
+      "check": "att_class:('GSS', '2024'):OTHER",
+      "pass": true,
+      "detail": "830/830"
+    },
+    {
+      "check": "att_class:('GSS', '2024'):SOURCE_AMBIGUOUS",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_pos:('GSS', '2024')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_block:('GSS', '2024')",
+      "pass": true,
+      "detail": "6/6"
+    },
+    {
+      "check": "att_mismatch:('GSS', '2024')",
+      "pass": true,
+      "detail": "4/4"
+    },
+    {
+      "check": "att_unresolved:('GSS', '2024')",
+      "pass": true,
+      "detail": "6/6"
+    },
+    {
+      "check": "zero_not_claimed_when_blocked:('GSS', '2024')",
+      "pass": true,
+      "detail": "NO__UNRESOLVED_BLOCKED_CASES_REMAIN"
+    },
+    {
+      "check": "att_total:('GSS', '2010')",
+      "pass": true,
+      "detail": "922/922"
+    },
+    {
+      "check": "att_class:('GSS', '2010'):NORM_SHORE",
+      "pass": true,
+      "detail": "35/35"
+    },
+    {
+      "check": "att_class:('GSS', '2010'):CONDUCT_SHORE",
+      "pass": true,
+      "detail": "70/70"
+    },
+    {
+      "check": "att_class:('GSS', '2010'):OTHER",
+      "pass": true,
+      "detail": "817/817"
+    },
+    {
+      "check": "att_class:('GSS', '2010'):SOURCE_AMBIGUOUS",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_pos:('GSS', '2010')",
+      "pass": true,
+      "detail": "1/1"
+    },
+    {
+      "check": "att_block:('GSS', '2010')",
+      "pass": true,
+      "detail": "4/4"
+    },
+    {
+      "check": "att_mismatch:('GSS', '2010')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_unresolved:('GSS', '2010')",
+      "pass": true,
+      "detail": "4/4"
+    },
+    {
+      "check": "att_total:('Arab Barometer', 'II')",
+      "pass": true,
+      "detail": "468/468"
+    },
+    {
+      "check": "att_class:('Arab Barometer', 'II'):NORM_SHORE",
+      "pass": true,
+      "detail": "60/60"
+    },
+    {
+      "check": "att_class:('Arab Barometer', 'II'):CONDUCT_SHORE",
+      "pass": true,
+      "detail": "182/182"
+    },
+    {
+      "check": "att_class:('Arab Barometer', 'II'):OTHER",
+      "pass": true,
+      "detail": "226/226"
+    },
+    {
+      "check": "att_class:('Arab Barometer', 'II'):SOURCE_AMBIGUOUS",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_pos:('Arab Barometer', 'II')",
+      "pass": true,
+      "detail": "3/3"
+    },
+    {
+      "check": "att_block:('Arab Barometer', 'II')",
+      "pass": true,
+      "detail": "2/2"
+    },
+    {
+      "check": "att_mismatch:('Arab Barometer', 'II')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_unresolved:('Arab Barometer', 'II')",
+      "pass": true,
+      "detail": "2/2"
+    },
+    {
+      "check": "att_total:('GSS', '1973')",
+      "pass": true,
+      "detail": "339/339"
+    },
+    {
+      "check": "att_class:('GSS', '1973'):NORM_SHORE",
+      "pass": true,
+      "detail": "10/10"
+    },
+    {
+      "check": "att_class:('GSS', '1973'):CONDUCT_SHORE",
+      "pass": true,
+      "detail": "12/12"
+    },
+    {
+      "check": "att_class:('GSS', '1973'):OTHER",
+      "pass": true,
+      "detail": "317/317"
+    },
+    {
+      "check": "att_class:('GSS', '1973'):SOURCE_AMBIGUOUS",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_pos:('GSS', '1973')",
+      "pass": true,
+      "detail": "1/1"
+    },
+    {
+      "check": "att_block:('GSS', '1973')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_mismatch:('GSS', '1973')",
+      "pass": true,
+      "detail": "1/1"
+    },
+    {
+      "check": "att_unresolved:('GSS', '1973')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_total:('Latinobarómetro', '2024')",
+      "pass": true,
+      "detail": "195/195"
+    },
+    {
+      "check": "att_class:('Latinobarómetro', '2024'):NORM_SHORE",
+      "pass": true,
+      "detail": "21/21"
+    },
+    {
+      "check": "att_class:('Latinobarómetro', '2024'):CONDUCT_SHORE",
+      "pass": true,
+      "detail": "71/71"
+    },
+    {
+      "check": "att_class:('Latinobarómetro', '2024'):OTHER",
+      "pass": true,
+      "detail": "102/102"
+    },
+    {
+      "check": "att_class:('Latinobarómetro', '2024'):SOURCE_AMBIGUOUS",
+      "pass": true,
+      "detail": "1/1"
+    },
+    {
+      "check": "att_pos:('Latinobarómetro', '2024')",
+      "pass": true,
+      "detail": "3/3"
+    },
+    {
+      "check": "att_block:('Latinobarómetro', '2024')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_mismatch:('Latinobarómetro', '2024')",
+      "pass": true,
+      "detail": "5/5"
+    },
+    {
+      "check": "att_unresolved:('Latinobarómetro', '2024')",
+      "pass": true,
+      "detail": "1/1"
+    },
+    {
+      "check": "att_total:('WVS', 'W1')",
+      "pass": true,
+      "detail": "188/188"
+    },
+    {
+      "check": "att_class:('WVS', 'W1'):NORM_SHORE",
+      "pass": true,
+      "detail": "19/19"
+    },
+    {
+      "check": "att_class:('WVS', 'W1'):CONDUCT_SHORE",
+      "pass": true,
+      "detail": "11/11"
+    },
+    {
+      "check": "att_class:('WVS', 'W1'):OTHER",
+      "pass": true,
+      "detail": "158/158"
+    },
+    {
+      "check": "att_class:('WVS', 'W1'):SOURCE_AMBIGUOUS",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_pos:('WVS', 'W1')",
+      "pass": true,
+      "detail": "1/1"
+    },
+    {
+      "check": "att_block:('WVS', 'W1')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_mismatch:('WVS', 'W1')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "att_unresolved:('WVS', 'W1')",
+      "pass": true,
+      "detail": "0/0"
+    },
+    {
+      "check": "wvs_recovered_positive",
+      "pass": true,
+      "detail": "1"
+    },
+    {
+      "check": "gss2024_hard_zero_not_claimed",
+      "pass": true,
+      "detail": "NO__UNRESOLVED_BLOCKED_CASES_REMAIN"
+    },
+    {
+      "check": "coverage_defects_zero",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "required_files",
+      "pass": true,
+      "detail": "[]"
+    }
+  ]
+}

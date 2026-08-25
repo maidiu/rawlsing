@@ -1,0 +1,4 @@
+from pathlib import Path
+import pandas as pd,json,sys
+R=Path(sys.argv[1] if len(sys.argv)>1 else '.')
+neg=pd.read_csv(R/'RESOLUTION/C3B13_DESCRIPTIVE_APPRAISAL_NEGATIVE_RR_NORM_AUTHORITY_R16C_N.csv'); res=pd.read_csv(R/'QUEUE/C3B_RESIDUAL_RR_NORM_REVIEW_SHORE_R16C_N.csv'); ret=pd.read_csv(R/'RESOLUTION/C3B13_RETIRED_T06_PRIMITIVE_ROWS_R16C_N.csv.gz'); q=pd.read_csv(R/'QUEUE/R16C_N_VOZHD_CENTRAL_QUEUE_SUCCESSOR.csv'); st=json.load(open(R/'CURRENT_STATUS_R16C_N.json')); ok=len(neg)==30 and len(res)==1079 and len(ret)==1402 and ret.opportunity_id.nunique()==1402 and int(q.decision_atom_count.sum())==33133 and st['c3_negative_rr_norm']+st['c3_positive_rr_norm']+st['residual_rr_norm']==3119 and not st['job3_authorized']; print(json.dumps({'pass':ok,'checks_total':7,'checks_passed':7 if ok else 0},indent=2)); raise SystemExit(0 if ok else 1)

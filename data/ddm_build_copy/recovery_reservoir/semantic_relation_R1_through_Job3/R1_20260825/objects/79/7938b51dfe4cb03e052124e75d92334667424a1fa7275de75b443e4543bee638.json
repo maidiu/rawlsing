@@ -1,0 +1,153 @@
+{
+  "worker": "W01",
+  "mode": "return",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "assigned_atom_count_exact",
+      "pass": true,
+      "detail": "19060/19060"
+    },
+    {
+      "check": "t07_reserved_count_exact",
+      "pass": true,
+      "detail": "42"
+    },
+    {
+      "check": "workbench_template_same_rows",
+      "pass": true,
+      "detail": "19060/19060"
+    },
+    {
+      "check": "decision_atom_ids_unique",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "identity_columns_present",
+      "pass": true,
+      "detail": "24"
+    },
+    {
+      "check": "mutable_fields_blank_in_template",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "job3_not_in_worker_task",
+      "pass": true,
+      "detail": "validator has no Job3 operation"
+    },
+    {
+      "check": "return_columns_exact",
+      "pass": true,
+      "detail": "24"
+    },
+    {
+      "check": "return_row_count_exact",
+      "pass": true,
+      "detail": "19060/19060"
+    },
+    {
+      "check": "return_atom_order_exact",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "immutable_worker_id",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_decision_atom_id",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_r13_packet_id",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_r12_child_packet_id",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_packet_class",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_source_family",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_wave",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_raw_origin_id",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_rule_scope",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_decision_atom_kind",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_r13_member_implementation_ids_json",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_r13_member_semantic_unit_ids_json",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "immutable_known_r6_relation_ids_fully_contained_json",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "no_blank_mutable_cells",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "check": "recommendation_enum",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "confidence_enum",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "all_json_fields_parse",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "check": "semantic_return_contract",
+      "pass": true,
+      "detail": "[]"
+    }
+  ],
+  "recommendation_counts": {
+    "WORKER_RECOMMEND_REJECT": 19008,
+    "WORKER_BLOCKED_NEEDS_VOZHD": 44,
+    "WORKER_RECOMMEND_PARTIAL_ACCEPT": 7,
+    "WORKER_RECOMMEND_ACCEPT": 1
+  }
+}

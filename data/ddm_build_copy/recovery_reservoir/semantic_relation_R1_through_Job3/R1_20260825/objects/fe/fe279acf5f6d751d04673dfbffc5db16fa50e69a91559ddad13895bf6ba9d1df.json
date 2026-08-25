@@ -1,0 +1,23 @@
+{
+  "worker_id": "W04",
+  "candidate_count": 136,
+  "unique_candidate_ids": 136,
+  "candidate_id_set_exact": true,
+  "disposition_counts": {
+    "ACCEPT": 81,
+    "REJECT": 46,
+    "BLOCKED": 9
+  },
+  "candidate_scope_defect_suspected_count": 43,
+  "semantic_hostile_qa_status": "PASS",
+  "checks": [
+    "immutable candidate-id set exact",
+    "one terminal decision per candidate",
+    "ACCEPT member-role implementation IDs equal candidate implementation IDs",
+    "T01 accepted targets distinct and common predicate present",
+    "T02 accepted conditions distinct",
+    "T12 gate+contingent payload exactly equals candidate membership and carries route/universe",
+    "all T05 rejects verified as homogeneous q219 or q306 cost-bearing willingness battery pairs",
+    "all T15 blocked cases preserve missing-bridge uncertainty rather than converting it to negative"
+  ]
+}

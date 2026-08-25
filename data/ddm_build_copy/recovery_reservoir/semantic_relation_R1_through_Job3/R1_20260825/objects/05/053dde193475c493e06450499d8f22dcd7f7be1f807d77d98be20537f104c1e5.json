@@ -1,0 +1,44 @@
+{
+  "status": "QUARANTINE__DO_NOT_RECONCILE_AS_FINAL_S14_AUTHORITY",
+  "audit_floor": "R16C-W",
+  "r15_total_atoms": 85892,
+  "r15_recommendations": {
+    "accept": 11,
+    "partial_accept": 18,
+    "retain_existing": 390,
+    "reject": 79757,
+    "blocked": 5716
+  },
+  "t06_total_atoms": 79148,
+  "t06_outcomes": {
+    "accept": 0,
+    "partial_accept": 1,
+    "reject": 77987,
+    "blocked": 1160
+  },
+  "non_t06_total_atoms": 6744,
+  "non_t06_outcomes": {
+    "accept": 11,
+    "partial": 17,
+    "retain": 390,
+    "reject": 1770,
+    "block": 4556
+  },
+  "c3_parent_keys": 3119,
+  "c3_final_positive_keys": 471,
+  "worker_t06_stage_a_keys": 1477,
+  "worker_keys_inside_c3_parent": 377,
+  "worker_keys_outside_c3_parent": 1100,
+  "c3_overlap_agreement": 327,
+  "c3_overlap_disagreement": 50,
+  "c3_overlap_agreement_rate": 0.8673740053050398,
+  "central_positive_overlap_keys": 145,
+  "central_positive_worker_misclassified_or_blocked": 45,
+  "central_positive_miss_rate": 0.3103448275862069,
+  "central_negative_overlap_keys": 232,
+  "central_negative_worker_misclassified_or_blocked": 5,
+  "central_negative_miss_rate": 0.021551724137931036,
+  "governance_action": "Quarantine R15 mass REJECT/BLOCK outputs pending admissibility reconstruction. Preserve novel ACCEPT/PARTIAL and RETAIN as candidates for central recheck; do not promote any worker mass rejection into negative S14 authority.",
+  "job3_authorized": false,
+  "s14_frozen": false
+}

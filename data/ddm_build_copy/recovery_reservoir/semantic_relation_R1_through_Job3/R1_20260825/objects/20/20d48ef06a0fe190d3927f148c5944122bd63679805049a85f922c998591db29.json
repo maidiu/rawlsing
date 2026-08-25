@@ -1,0 +1,86 @@
+{
+  "worker": "W03",
+  "status": "PASS",
+  "pack_path_library": "/Rawlsing/R10K/S14_RELATION_ROLE_BRIDGE_REPAIR/WORKER_PACKS_R15_20260811/Rawlsing_R10K_S14_R15_W03_Execution_Pack_20260811.zip",
+  "pack_sha256_expected": "3d0b3abd702376661cdfa25380af556825e8059dee9528b307433386938f8b8f",
+  "pack_sha256_observed": "3d0b3abd702376661cdfa25380af556825e8059dee9528b307433386938f8b8f",
+  "overlay_path_library": "/Rawlsing/R10K/S14_RELATION_ROLE_BRIDGE_REPAIR/R15_DISPATCH_OVERLAY_R16C_V_20260812/Rawlsing_R10K_S14_R15_Dispatch_Alignment_Overlay_R16C_V_20260812.zip",
+  "overlay_sha256_observed": "05b4fb3c2e8de16ba911ee4805de0e90a7fac07353a9731881276914b4ad0db7",
+  "overlay_sidecar_verified": true,
+  "read_order_ack": [
+    "overlay/README_FIRST.md",
+    "overlay/PROJECT_ORIENTATION.md",
+    "overlay/CONTRACTS/CURRENT_RELATION_ADJUDICATION_DOCTRINE_R16C_V.md",
+    "overlay/CONTRACTS/UNIFIED_RETURN_FIELD_SPEC.md",
+    "overlay worker helpers/overrides",
+    "worker/W03/00_README_FIRST.md",
+    "worker pack contracts/evidence"
+  ],
+  "preflight_validator": {
+    "worker": "W03",
+    "mode": "preflight",
+    "status": "PASS",
+    "checks": [
+      {
+        "check": "exact_pack_sha256",
+        "pass": true,
+        "detail": "3d0b3abd702376661cdfa25380af556825e8059dee9528b307433386938f8b8f"
+      },
+      {
+        "check": "assigned_atom_count_exact",
+        "pass": true,
+        "detail": "13339/13339"
+      },
+      {
+        "check": "t07_reserved_count_exact",
+        "pass": true,
+        "detail": "123"
+      },
+      {
+        "check": "workbench_template_same_rows",
+        "pass": true,
+        "detail": "13339/13339"
+      },
+      {
+        "check": "decision_atom_ids_unique",
+        "pass": true,
+        "detail": "0"
+      },
+      {
+        "check": "identity_columns_present",
+        "pass": true,
+        "detail": "24"
+      },
+      {
+        "check": "mutable_fields_blank_in_template",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "check": "job3_not_in_worker_task",
+        "pass": true,
+        "detail": "validator has no Job3 operation"
+      }
+    ]
+  },
+  "assignment": {
+    "r13_containers": 451,
+    "decision_atoms": 13339,
+    "sources_waves": [
+      "Arab Barometer::I",
+      "Asian Barometer::W4",
+      "EVS::1981",
+      "EVS::2017",
+      "GSS::2024",
+      "Latinobar\u00f3metro::1995"
+    ],
+    "job3_authorized": false
+  },
+  "reservations": {
+    "t07_all_reserved": true,
+    "t07_count": 123,
+    "w03_c4_duplicate_atom": "R15ATOM-4a035c650a59ffe2f186",
+    "w03_c4_duplicate_raw_origin": "R11T06X-b9fed947f53e58cd"
+  },
+  "external_browsing_used": false
+}

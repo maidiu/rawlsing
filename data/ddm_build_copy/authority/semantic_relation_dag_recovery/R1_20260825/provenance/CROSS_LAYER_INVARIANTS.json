@@ -1,0 +1,23 @@
+{
+  "build_id": "SEMANTIC_RELATION_DAG_RECOVERY_R1_20260825",
+  "job3_final_positive_relations": 1190,
+  "job3_existing_parent_relations": 638,
+  "job3_new_accepts": 552,
+  "job3_rejects": 697,
+  "job3_blocks": 15,
+  "r16f_positive_relations": 144,
+  "strict_t06_relations": 64,
+  "t15_relations": 188,
+  "checks": [
+    "1190 unique final authority IDs",
+    "638 O12 existing IDs all contained in Job3 final topology",
+    "552 accepted IDs all contained in final topology and disjoint from O12 existing",
+    "188 T15 IDs all contained in O12 existing",
+    "64 strict T06 IDs all contained in O12 existing",
+    "7 R16F T06 IDs absent from O12 existing as IDs and each maps 1:1 by exact implementation-member set to a strict source-first T06 ID",
+    "0 of the seven R16F T06 positives migrate to T15",
+    "137 non-T06 R16F IDs survive unchanged into Job3"
+  ],
+  "authority_ceiling": "typed semantic relation and discovery/capability authority only; no respondent composability, empirical co-travel absence, V553+ state, personality/psyche, or runtime persona authority",
+  "r16f_t06_relations_recertified_at_source_first_boundary": 7
+}

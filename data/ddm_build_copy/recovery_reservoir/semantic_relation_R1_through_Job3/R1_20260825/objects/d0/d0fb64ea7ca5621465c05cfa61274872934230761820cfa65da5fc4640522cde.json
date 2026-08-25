@@ -1,0 +1,279 @@
+{
+  "worker": "T06W03",
+  "timestamp_utc": "2026-08-12T20:51:27.944438+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "governing_authority_sha256",
+      "pass": true,
+      "detail": "e88cc035ca1d846e68ee208ec991f61f636d67ebbd19312057c8e44c37ff740d"
+    },
+    {
+      "check": "assigned_total_2995",
+      "pass": true,
+      "detail": "2995"
+    },
+    {
+      "check": "wave_count_LiTS_2006",
+      "pass": true,
+      "detail": "1198"
+    },
+    {
+      "check": "wave_count_GSS_1984",
+      "pass": true,
+      "detail": "675"
+    },
+    {
+      "check": "wave_count_EVS_2017",
+      "pass": true,
+      "detail": "474"
+    },
+    {
+      "check": "wave_count_Arab Barometer_V",
+      "pass": true,
+      "detail": "359"
+    },
+    {
+      "check": "wave_count_GSS_1972",
+      "pass": true,
+      "detail": "216"
+    },
+    {
+      "check": "wave_count_South Asia_W2",
+      "pass": true,
+      "detail": "73"
+    },
+    {
+      "check": "accounting_unique_implementation_ids",
+      "pass": true,
+      "detail": "2995"
+    },
+    {
+      "check": "all_substantive_classified",
+      "pass": true,
+      "detail": "all substantive rows in allowed class"
+    },
+    {
+      "check": "all_norm_search_complete",
+      "pass": true,
+      "detail": "148"
+    },
+    {
+      "check": "all_conduct_search_complete",
+      "pass": true,
+      "detail": "766"
+    },
+    {
+      "check": "crosswalk_dispositions_valid",
+      "pass": true,
+      "detail": "{'NOT_T06_SOURCE_PROVEN_MISMATCH': 13, 'POSITIVE_T06': 10, 'BLOCKED_SOURCE_AMBIGUITY': 4}"
+    },
+    {
+      "check": "all_positive_members_implementation_bound",
+      "pass": true,
+      "detail": "17 unique positive members"
+    },
+    {
+      "check": "positive_roles_current_T06_vocabulary",
+      "pass": true,
+      "detail": "['RR_BEHAVIOR_OR_EXPOSURE_ENDPOINT', 'RR_NORM', 'RR_STATED_OR_INTENDED_CONDUCT']"
+    },
+    {
+      "check": "positive_count_7",
+      "pass": true,
+      "detail": "7"
+    },
+    {
+      "check": "no_coverage_defects_unresolved",
+      "pass": true,
+      "detail": "0 source coverage defects found after native-source scan"
+    },
+    {
+      "check": "zero_wave_hostile_QA",
+      "pass": true,
+      "detail": [
+        {
+          "source_family": "GSS",
+          "wave": "1972"
+        }
+      ]
+    },
+    {
+      "check": "zero_wave_supportability",
+      "pass": true,
+      "detail": [
+        {
+          "source_family": "GSS",
+          "wave": "1972",
+          "zero_T06_wave_supportable": "YES"
+        }
+      ]
+    },
+    {
+      "check": "assigned_old_R16F_relations_rediscovered",
+      "pass": true,
+      "detail": "2/2"
+    },
+    {
+      "check": "no_freeze_claim",
+      "pass": true,
+      "detail": "worker return only"
+    }
+  ],
+  "counts": {
+    "assigned_implementations": 2995,
+    "substantive_implementations": 2828,
+    "norm_shores": 148,
+    "conduct_shores": 766,
+    "source_ambiguous_implementations": 4,
+    "positive_relations": 7,
+    "positive_crosswalk_pairs": 10,
+    "blocked_crosswalks": 4,
+    "source_proven_mismatches": 13,
+    "blocker_rows": 8,
+    "coverage_defects": 0,
+    "upstream_repairs": 16
+  },
+  "wave_counts": [
+    {
+      "source_family": "LiTS",
+      "wave": "2006",
+      "total_implementations": 1198,
+      "substantive_implementations_accounted": 1170,
+      "norm_shore_count": 22,
+      "conduct_shore_count": 667,
+      "source_ambiguous_implementation_count": 0,
+      "norm_to_conduct_crosswalk_complete": "YES",
+      "conduct_to_norm_crosswalk_complete": "YES",
+      "parallel_battery_reconstruction_complete": "YES",
+      "positive_T06_count": 1,
+      "blocked_candidate_count": 0,
+      "source_proven_mismatch_count": 3,
+      "source_coverage_defect_count": 0,
+      "unresolved_source_count": 0,
+      "zero_T06_wave_supportable": "NO",
+      "hostile_QA_result": "PASS",
+      "hostile_QA_basis": "SPARSE_WAVE_QA: reviewed neighboring source batteries and same-topic false friends for action/actor/target mismatch."
+    },
+    {
+      "source_family": "GSS",
+      "wave": "1984",
+      "total_implementations": 675,
+      "substantive_implementations_accounted": 636,
+      "norm_shore_count": 29,
+      "conduct_shore_count": 16,
+      "source_ambiguous_implementation_count": 0,
+      "norm_to_conduct_crosswalk_complete": "YES",
+      "conduct_to_norm_crosswalk_complete": "YES",
+      "parallel_battery_reconstruction_complete": "YES",
+      "positive_T06_count": 1,
+      "blocked_candidate_count": 0,
+      "source_proven_mismatch_count": 1,
+      "source_coverage_defect_count": 0,
+      "unresolved_source_count": 0,
+      "zero_T06_wave_supportable": "NO",
+      "hostile_QA_result": "PASS",
+      "hostile_QA_basis": "SPARSE_WAVE_QA: reviewed neighboring source batteries and same-topic false friends for action/actor/target mismatch."
+    },
+    {
+      "source_family": "EVS",
+      "wave": "2017",
+      "total_implementations": 474,
+      "substantive_implementations_accounted": 418,
+      "norm_shore_count": 48,
+      "conduct_shore_count": 29,
+      "source_ambiguous_implementation_count": 0,
+      "norm_to_conduct_crosswalk_complete": "YES",
+      "conduct_to_norm_crosswalk_complete": "YES",
+      "parallel_battery_reconstruction_complete": "YES",
+      "positive_T06_count": 2,
+      "blocked_candidate_count": 2,
+      "source_proven_mismatch_count": 2,
+      "source_coverage_defect_count": 0,
+      "unresolved_source_count": 0,
+      "zero_T06_wave_supportable": "NO",
+      "hostile_QA_result": "PASS",
+      "hostile_QA_basis": "Positive wave: hostile QA checked adjacent battery cells, routing, actor and target identity; sparse-result challenge passed."
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "V",
+      "total_implementations": 359,
+      "substantive_implementations_accounted": 349,
+      "norm_shore_count": 21,
+      "conduct_shore_count": 18,
+      "source_ambiguous_implementation_count": 4,
+      "norm_to_conduct_crosswalk_complete": "YES",
+      "conduct_to_norm_crosswalk_complete": "YES",
+      "parallel_battery_reconstruction_complete": "YES",
+      "positive_T06_count": 2,
+      "blocked_candidate_count": 1,
+      "source_proven_mismatch_count": 3,
+      "source_coverage_defect_count": 0,
+      "unresolved_source_count": 4,
+      "zero_T06_wave_supportable": "NO",
+      "hostile_QA_result": "PASS",
+      "hostile_QA_basis": "Positive wave: hostile QA checked adjacent battery cells, routing, actor and target identity; sparse-result challenge passed."
+    },
+    {
+      "source_family": "GSS",
+      "wave": "1972",
+      "total_implementations": 216,
+      "substantive_implementations_accounted": 184,
+      "norm_shore_count": 16,
+      "conduct_shore_count": 17,
+      "source_ambiguous_implementation_count": 0,
+      "norm_to_conduct_crosswalk_complete": "YES",
+      "conduct_to_norm_crosswalk_complete": "YES",
+      "parallel_battery_reconstruction_complete": "YES",
+      "positive_T06_count": 0,
+      "blocked_candidate_count": 0,
+      "source_proven_mismatch_count": 2,
+      "source_coverage_defect_count": 0,
+      "unresolved_source_count": 0,
+      "zero_T06_wave_supportable": "YES",
+      "hostile_QA_result": "PASS",
+      "hostile_QA_basis": "ZERO_WAVE_HOSTILE_QA: rescreened all native norm cues, all licensed conduct endpoints, routing, and same-action batteries; no unresolved plausible T06 remains. SPARSE_WAVE_QA: reviewed neighboring source batteries and same-topic false friends for action/actor/target mismatch."
+    },
+    {
+      "source_family": "South Asia",
+      "wave": "W2",
+      "total_implementations": 73,
+      "substantive_implementations_accounted": 71,
+      "norm_shore_count": 12,
+      "conduct_shore_count": 19,
+      "source_ambiguous_implementation_count": 0,
+      "norm_to_conduct_crosswalk_complete": "YES",
+      "conduct_to_norm_crosswalk_complete": "YES",
+      "parallel_battery_reconstruction_complete": "YES",
+      "positive_T06_count": 1,
+      "blocked_candidate_count": 1,
+      "source_proven_mismatch_count": 2,
+      "source_coverage_defect_count": 0,
+      "unresolved_source_count": 0,
+      "zero_T06_wave_supportable": "NO",
+      "hostile_QA_result": "PASS",
+      "hostile_QA_basis": "SPARSE_WAVE_QA: reviewed neighboring source batteries and same-topic false friends for action/actor/target mismatch."
+    }
+  ],
+  "authority_policy": {
+    "native_source_primary": true,
+    "r15_c4_r16d_candidates_used_for_discovery": false,
+    "r16f_used_for_schema_only_before_discovery": true,
+    "r16f_recall_comparison_after_discovery": true,
+    "job3_started": false,
+    "s14_freeze_claimed": false
+  },
+  "independent_return_validator": {
+    "status": "PASS",
+    "errors": [],
+    "counts": {
+      "positive_relations": 7,
+      "accounting_rows": 2995,
+      "crosswalk_rows": 27,
+      "repairs": 16,
+      "coverage_defects": 0,
+      "blockers": 8
+    }
+  }
+}

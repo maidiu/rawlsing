@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "protected_same_member_different_structure_groups_retained_separately",
+      "pass": true,
+      "detail": {
+        "groups": 12,
+        "rows": 102
+      }
+    },
+    {
+      "check": "protected_groups_incorrectly_fully_merged",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "check": "merged_containers_with_conflicting_nonempty_source_object_identity",
+      "pass": true,
+      "detail": 0
+    },
+    {
+      "check": "dedupe_is_container_only_not_decision_atom_collapse",
+      "pass": true,
+      "detail": {
+        "decision_atoms_before": 120970,
+        "decision_atoms_after": 120970
+      }
+    },
+    {
+      "check": "job3_remains_unauthorized",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "interpretation": "R13 merges identical work containers across rule views while preserving governed source-structure distinctions and every rule-specific decision atom."
+}
