@@ -9,7 +9,7 @@ This is a deterministic installation and provenance return, not a finding of sem
 - Starting branch: `agent/g1a-github-portability-install-r1`
 - Starting commit: `9b65e0232916f660d9a0bc343b01e94e438e2cbb`
 - Resulting branch: `agent/g1a-github-portability-install-r1`
-- Resulting commit: `PENDING_FINAL_LEDGER_SEAL`
+- Resulting installation commit: `9f684ba8bedaf72da6bc74435d73d9670ef3280d`
 
 The named coordination ref was checked before writes and currently resolved to `f805c6a0f79f00f66e1ecd7949a8bf05f707249c`; the mandated pinned commit remained fetchable and was used exactly. No files were written to the artifact workspace, `main`, live Trii, the coordination branch, or any C1-C5 execution branch.
 
