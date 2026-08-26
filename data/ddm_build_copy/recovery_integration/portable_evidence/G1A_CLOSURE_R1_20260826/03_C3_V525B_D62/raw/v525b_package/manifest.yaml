@@ -1,0 +1,135 @@
+pack_id: V525b
+status: green_driver_atlas_structural
+authority_layer_classification: structural_semantic_driver_atlas
+source_bundle: Rawlsing_Driver_Bundle
+notes:
+- Raw inputs were copied unchanged into raw_inputs/.
+- Canonical files are exact copies of raw inputs.
+- No measurement values, weights, or runtime artifacts were introduced.
+files:
+- file: README.md
+  authority_classification: lineage_documentation
+  sha256_raw: 49103527de843f55425fd53432f90ed945756c3e6890439a0ff8a8f88fa5ebaa
+  sha256_canonical: 49103527de843f55425fd53432f90ed945756c3e6890439a0ff8a8f88fa5ebaa
+  row_count: null
+  column_count: null
+  columns: null
+  rectangular: null
+- file: questions_master_semantic.csv
+  authority_classification: canonical_structural_authority
+  sha256_raw: 6e76965c1e00c90e1ae4a4647f99b851dc558a345c2a2792151143cb35fe2fc0
+  sha256_canonical: 6e76965c1e00c90e1ae4a4647f99b851dc558a345c2a2792151143cb35fe2fc0
+  row_count: 6211
+  column_count: 22
+  columns:
+  - item_id
+  - source
+  - wave
+  - var_name
+  - display_text
+  - option_count
+  - response_options
+  - status
+  - exact_content_id
+  - semantic_content_id
+  - semantic_cluster_id
+  - semantic_content_domain
+  - semantic_content_description
+  - semantic_match_method
+  - semantic_match_score
+  - semantic_match_confidence
+  - semantic_shared_driver
+  - semantic_regional_driver
+  - semantic_primary_driver
+  - semantic_secondary_driver
+  - semantic_scope
+  - semantic_notes
+  rectangular: true
+  validation:
+    blank_semantic_content_id: 0
+- file: semantic_concept_index.csv
+  authority_classification: canonical_structural_authority
+  sha256_raw: f524d4cef15fe5e0e0760b08326eb7333e4c53d333cb44a253a45c194881a1f9
+  sha256_canonical: f524d4cef15fe5e0e0760b08326eb7333e4c53d333cb44a253a45c194881a1f9
+  row_count: 3779
+  column_count: 14
+  columns:
+  - semantic_cluster_id
+  - semantic_content_id
+  - semantic_content_domain
+  - semantic_content_description
+  - row_count
+  - source_count
+  - sources
+  - wave_count
+  - waves
+  - high_confidence_rows
+  - match_methods
+  - sample_item_ids
+  - sample_var_names
+  - sample_labels
+  rectangular: true
+- file: questions_master_drivers.csv
+  authority_classification: canonical_structural_authority
+  sha256_raw: 53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711
+  sha256_canonical: 53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711
+  row_count: 6211
+  column_count: 26
+  columns:
+  - item_id
+  - source
+  - wave
+  - var_name
+  - display_text
+  - option_count
+  - response_options
+  - status
+  - exact_content_id
+  - semantic_content_id
+  - semantic_cluster_id
+  - semantic_content_domain
+  - semantic_content_description
+  - semantic_match_method
+  - semantic_match_score
+  - semantic_match_confidence
+  - semantic_shared_driver
+  - semantic_regional_driver
+  - semantic_primary_driver
+  - semantic_secondary_driver
+  - semantic_scope
+  - semantic_notes
+  - final_driver_id
+  - final_driver_scope
+  - final_driver_label
+  - final_driver_origin
+  rectangular: true
+  validation:
+    blank_final_driver_id: 0
+    final_driver_scope_counts:
+      metadata: 1113
+      shared_backbone: 3915
+      idiosyncratic_cluster: 1034
+      regional_subdriver: 149
+- file: driver_index_semantic.csv
+  authority_classification: canonical_structural_authority
+  sha256_raw: b18e86cfb8725f3912a182f5e23eb4a8323e00e4b76dd338d82b899d418bdce2
+  sha256_canonical: b18e86cfb8725f3912a182f5e23eb4a8323e00e4b76dd338d82b899d418bdce2
+  row_count: 1660
+  column_count: 12
+  columns:
+  - driver_id
+  - driver_scope
+  - driver_label
+  - driver_origin
+  - row_count
+  - source_count
+  - sources
+  - wave_count
+  - waves
+  - sample_item_ids
+  - sample_var_names
+  - sample_labels
+  rectangular: true
+  validation:
+    unique_driver_id_count: 1660
+    row_count_by_unique_driver_id: true

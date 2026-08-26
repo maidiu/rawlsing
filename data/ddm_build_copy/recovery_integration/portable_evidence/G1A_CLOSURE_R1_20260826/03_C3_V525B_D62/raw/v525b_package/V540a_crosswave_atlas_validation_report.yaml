@@ -1,0 +1,157 @@
+schema: crosswave_atlas_validation_report_v1
+status: green
+input_root: /Users/matthewsmith/Desktop/Rawlsing
+canonical_paths:
+  final_codebooks: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks
+  crosswave_driver_atlas: /Users/matthewsmith/Desktop/Rawlsing/outputs/crosswave_driver_atlas
+  raw_dataset_root: /Users/matthewsmith/Desktop/Rawlsing/data/Data
+  raw_inputs: /Users/matthewsmith/Desktop/Rawlsing/raw_inputs
+files_checked:
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/questions_master.csv
+  status: present
+  sha256: 2515380d7fd76544f55e3df30bc508ecc60471d8bf773fb8a9e285521ddf07e7
+  size_bytes: 1542073
+  row_count: 1838
+  column_count: 12
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/questions_master_semantic.csv
+  status: present
+  sha256: 6e76965c1e00c90e1ae4a4647f99b851dc558a345c2a2792151143cb35fe2fc0
+  size_bytes: 3067321
+  row_count: 6211
+  column_count: 22
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/questions_master_drivers.csv
+  status: present
+  sha256: 53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711
+  size_bytes: 3683893
+  row_count: 6211
+  column_count: 26
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/semantic_concept_index.csv
+  status: present
+  sha256: f524d4cef15fe5e0e0760b08326eb7333e4c53d333cb44a253a45c194881a1f9
+  size_bytes: 1190984
+  row_count: 3779
+  column_count: 14
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/driver_index_semantic.csv
+  status: present
+  sha256: b18e86cfb8725f3912a182f5e23eb4a8323e00e4b76dd338d82b899d418bdce2
+  size_bytes: 526265
+  row_count: 1660
+  column_count: 12
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/driver_source_coverage.csv
+  status: present
+  sha256: ae8cce0945bac747f232a246d8f6dcee5f47319aa15061fdf31011ea282aca95
+  size_bytes: 5131
+  row_count: 34
+  column_count: 5
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/item_content_map.csv
+  status: present
+  sha256: e5fc8971ec11ffceb28aa8a2ec40e0b515be7a2571b163db13ea5f3ceb7aa12d
+  size_bytes: 74822
+  row_count: 1204
+  column_count: 4
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/content_keys.csv
+  status: present
+  sha256: 498d98eac11603928bca63c0712441c98df2adc0b2e1f6f5a80b86a6a20fd1e1
+  size_bytes: 10694
+  row_count: 184
+  column_count: 5
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/codebook_index.json
+  status: present
+  sha256: 895cd3e442323ff3bd66cf777a2504a970f139192df63729314a538a17c76dad
+  size_bytes: 2042650
+  json_type: list
+  json_length: 1838
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/scale_transform_registry.yaml
+  status: present
+  sha256: 587375d3ac1e5447af4db88faa052866ea9558d288a82624866619daa3d81630
+  size_bytes: 163350
+  yaml_type: dict
+- path: /Users/matthewsmith/Desktop/Rawlsing/data/final_codebooks/README.md
+  status: present
+  sha256: 72712b2a637a3203cd68351fd0228866ef6a2ce1e1f9f5d3a9bf755fda0a217e
+  size_bytes: 2531
+  row_count: null
+  column_count: null
+- path: /Users/matthewsmith/Desktop/Rawlsing/outputs/crosswave_driver_atlas/Rawlsing_CrossWave_Driver_Atlas.xlsx
+  status: present
+  sha256: 468827487d7a8850672450a6b48bf7d2e8ce14af13e2bd7eac0fbd111e06dbc9
+  size_bytes: 917476
+- path: /Users/matthewsmith/Desktop/Rawlsing/outputs/crosswave_driver_atlas/atlas_data.json
+  status: present
+  sha256: 3fcbf0c7131585fe61516b06a16149a6eccb9bea9ee22e0088452add27bec012
+  size_bytes: 7135609
+  json_type: dict
+  json_length: 13
+- path: /Users/matthewsmith/Desktop/Rawlsing/outputs/crosswave_driver_atlas/csv_exports/FamilySummary.csv
+  status: present
+  sha256: 07c2d333840f1ff49cd9214dfdc8287aa8979db804ef798179d350f8a7f67ada
+  size_bytes: 16230
+  row_count: 6
+  column_count: 15
+- path: /Users/matthewsmith/Desktop/Rawlsing/outputs/crosswave_driver_atlas/csv_exports/WaveSummary.csv
+  status: present
+  sha256: f11ad3fcae8454ea5bf8ce9725e26cd214a0c1d030e29d278d96fa83679a93fa
+  size_bytes: 2444
+  row_count: 18
+  column_count: 13
+- path: /Users/matthewsmith/Desktop/Rawlsing/outputs/crosswave_driver_atlas/csv_exports/SharedGlossary.csv
+  status: present
+  sha256: b686dee9b555e5af8df56eecdd96fd087580f7c19f9f8abc33a13693a9339063
+  size_bytes: 21262
+  row_count: 29
+  column_count: 11
+- path: /Users/matthewsmith/Desktop/Rawlsing/outputs/crosswave_driver_atlas/csv_exports/RegionalGlossary.csv
+  status: present
+  sha256: 65ce240c109a28f719df525741935adc814dbffb5b95fef942aa95b06f29b7a1
+  size_bytes: 19417
+  row_count: 48
+  column_count: 12
+canonical_comparison:
+  questions_master_drivers:
+    rows: 6211
+    blank_final_driver_id: 0
+    missing_final_driver_ids: []
+    driver_index_coverage: complete
+  item_content_map:
+    rows: 1204
+    note: strict parse rows; pack docs note some lines are prose-comma sensitive
+  atlas_vs_final_codebooks:
+    atlas_item_mapping_rows: 324
+    atlas_driver_mapping_rows: 177
+    atlas_content_key_rows: 135
+    comparison_note: atlas coverage aligns with semantic/family coverage, not respondent
+      measurement
+coverage_summary:
+  family_count: 6
+  wave_count: 18
+  item_mapping_rows: 324
+  driver_mapping_rows: 177
+  content_key_rows: 135
+  item_mappings_without_codebook: 6
+  shared_glossary_rows: 29
+  regional_glossary_rows: 48
+  shared_drivers_all_families:
+  - authorityStyle
+  - civicEngagement
+  - collectiveAffectTone
+  - conflictExpression
+  - materialSecurity
+  - politicalStability
+  - trustEcology
+  shared_content_all_families:
+  - TRUST_ARMY
+  - TRUST_COURTS
+  - TRUST_GENERAL
+  - TRUST_GOVERNMENT
+  - TRUST_PARLIAMENT
+  - TRUST_POLICE
+blockers: []
+truth_law: Crosswave atlas validates coverage and lineage only. It cannot supply respondent
+  measurements.
+notes:
+- The repository does not contain a literal raw_inputs/ directory; data/final_codebooks
+  is the actual canonical authority path.
+- Atlas coverage is 6 families across 18 waves with 324 item mappings and 177 driver
+  mappings in atlas_data.json.
+- questions_master_drivers.csv has no blank final_driver_id values in the validated
+  parse.
