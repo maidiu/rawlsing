@@ -1,19 +1,111 @@
-# VOZHD TRII — G4 RECIPROCAL CROSS-EXAMINATION
+# VOZHD TRII — G4 TURN A: CONSERVATION THESIS
 
-Status: `AUTHORIZED__G4_ONLY__COUNCIL_OPEN__NON_DISPOSITIVE`
+Status: `AUTHORIZED__G4_TURN_A_ONLY__SERIAL_COUNCIL__OPENING_SPEAKER__NON_DISPOSITIVE`
 
-Read your own G1/G2 returns, live Trii authority, and the shared G3 council matrix/protocol/schema. You may now consume sibling testimony summarized there, but re-check claims against GitHub before adopting them.
+The earlier parallel-G4 order is superseded. You are the opening speaker in the serial council.
 
-Primary burdens:
+Read:
+- your own G1/G2 returns;
+- live Trii authority and mandatory front door;
+- G3 council claim matrix;
+- `01_G4_CROSS_EXAM_PROTOCOL.md` (now the serial dialectical protocol);
+- common G4 return schema insofar as compatible with this turn.
 
-1. **Attack Dva's universal census.** Test whether any current V550/V552/QRA object already preserves relation grouping, relation ID, role array, n-ary topology, relation state, or succession. Distinguish representation absence, member-lineage absence, and release authority. Test whether lack of a materialized QRA↔R3 member crosswalk weakens any Dva conclusion.
-2. **Minimum lossless R3 contract.** Produce the narrowest field/state contract needed for direct reuse. Classify what must be native typed relation semantics, what may be exact refs to separately governed source/routing/identity authority, what may remain producer-owned external authority referenced by I04, what is provenance-only, and what is not needed for structural reentry.
-3. **State-lattice court.** Resolve positive relation / independently proven exact negative / exact-candidate REJECT / BLOCKED / outside-unexamined / licensed absence / empirical association-nonassociation / I04 admission-denial without one dangerous universal enum. Cross-examine Dva's `semantic nonedge` terminology and Chetiri's empirical-state analogies.
-4. **Meta-completeness scope.** Define the operation-scoped prerequisite-universe proof burden Trii would accept. Reject both mere I05-frontier restatement and global omniscience. Require explicit owners or typed unavailable/BLOCKED states for intentionally excluded channels.
-5. **Future maintenance jurisdiction.** Refine nomination, source-semantic authority, Rawlsing semantic relation adjudication, negative production, BLOCKED reopen, ontology expansion, immutable lifecycle mechanics, and human adjudication into exact ownership boundaries. Do not resurrect Job3/R15/C4 machinery.
+Do not read or anticipate Dva/Chetiri G4 turns; none is authorized before yours is frozen.
 
-Secondary: attack whether the 19 canaries really establish a current owner/conservation gap; test whether R3 edge evidence ceilings are exact-equivalent to V557 permissions or require a one-way narrowing crosswalk; prove what n-ary semantics must survive without requiring every downstream stage to understand internals.
+## Turn-A mission
 
-No shared-ledger write, Route-A mutation, V553+ change, or semantic promotion.
+State the **narrowest lossless semantic/source-authority conservation thesis** that Dva and Chetiri must answer.
 
-End: `G4_RECIPROCAL_CROSS_EXAM_COMPLETE__AWAIT_G5_HQ_SYNTHESIS`
+Your burden is not `preserve R3 because it existed`. Your burden is:
+
+`WHAT_EXACT_INFORMATION/FUNCTION_MUST_SURVIVE__AT_WHAT_AUTHORITY_CEILING__AND_WHAT_CAN_LAWFULLY_BE_REFERENCED_OR_REGENERATED_INSTEAD?`
+
+## A1. Minimum lossless contract
+
+For the recovered terminal relation corpus, distinguish at minimum:
+- relation identity;
+- exact implementation/member identity;
+- n-ary cardinality/order where material;
+- relation-member roles distinct from node roles;
+- rule/family and T06-vs-T15 ontology;
+- actor/target/action/modality where applicable;
+- routing/source-wave/respondent-universe compatibility conditions;
+- evidence ceiling and prohibited inference;
+- positive typed relation authority;
+- independently proven exact typed negative;
+- exact-candidate REJECT;
+- BLOCKED + blocker/reopen obligation;
+- succession/recertification/ontology-expansion/current-selection semantics;
+- source/provenance bindings;
+- prerequisite-universe/coverage state where absence claims depend on it.
+
+For each classify:
+- `MUST_BE_FIRST_CLASS_SEMANTIC_AUTHORITY`
+- `MAY_BE_EXACT_REF_TO_SEPARATELY_GOVERNED_AUTHORITY`
+- `MAY_BE_REGENERATED_DETERMINISTICALLY`
+- `PROVENANCE_ONLY`
+- `NOT_REQUIRED_FOR_CURRENT_CONSUMER`
+- `UNRESOLVED`
+
+Do not over-preserve fields just because the historical CSV contains them.
+
+## A2. Relation-state law
+
+Give the exact non-collapse rules among:
+- positive semantic relation;
+- independently proven exact negative;
+- candidate REJECT;
+- BLOCKED;
+- outside/unexamined semantic space;
+- licensed semantic absence;
+- empirical association/nonassociation;
+- I04 admission/denial.
+
+Explicitly rule on the dangerous phrase `REJECT = semantic nonedge`.
+
+## A3. Meta-completeness thesis
+
+State the strongest **operation-scoped** prerequisite-universe completeness burden you would accept above I05's `COMPLETE_FOR_EXACT_DECLARED_FRONTIER`, while rejecting global omniscience.
+
+It must say how intentionally excluded semantic/source channels remain visible and how their lawful current owners or typed unavailable/BLOCKED states are proved.
+
+## A4. Future maintenance thesis
+
+State only the semantic/source-authority functions that must survive for future onboarding/correction:
+- nomination without authority;
+- adjudication;
+- exact-negative production;
+- BLOCKED reopen;
+- ontology expansion;
+- immutable revision/recertification;
+- withdrawal/current selection;
+- descendant invalidation hooks.
+
+Do not specify storage architecture unless semantic law itself demands a property.
+
+## A5. What may die
+
+Name the historical machinery that may be retired without loss, including where appropriate pair-census closure, R15/C4 bulk negatives, old worker queues, lexical/embedding truth heuristics, duplicate payloads, and deterministic opportunity/index surfaces.
+
+## A6. G2 position baseline
+
+For every major Turn-A thesis record:
+- `claim_id`
+- `G2_POSITION_BASELINE`
+- `current_turn_A_thesis`
+- `what_would_falsify_or_narrow_it`
+
+This creates the baseline for later position-delta accounting.
+
+## Stop law
+
+Do not propose a new numbered stage.
+Do not choose physical carrier or A/B/C.
+Do not mutate Route A, I05, V553+, live semantic authority, or shared conservation ledgers.
+
+Return a self-contained Turn-A testimony suitable for verbatim freezing into:
+`G3_COUNCIL/SERIAL_DISCOURSE/01_TRII_CONSERVATION_THESIS.md`
+
+End:
+`G4_TURN_A_TRII_COMPLETE__FREEZE_BEFORE_DVA_RESPONSE`
