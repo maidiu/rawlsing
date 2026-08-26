@@ -1,0 +1,63 @@
+{
+  "status": "PASS_FUSED_GSS_THROUGH_V551J_WITH_RESUME_DEFECT",
+  "commit": "babb256ca43e887ab1519339108ae3a29c1928f4",
+  "scope": {
+    "source": "GSS",
+    "wave": "2010",
+    "canonical_wave": "2010",
+    "country_code": "US",
+    "joint_configuration_id": "JCFG-GSS-ABORTION-CONDITIONS"
+  },
+  "database_boundary": {
+    "v550_live_extraction": "performed once for GSS/2010/US union extraction set",
+    "prefetched_response_rows": 25067,
+    "v550j_database_access": "forbidden",
+    "v550j_database_url_env": "unset during invocation"
+  },
+  "shared_substrate": {
+    "content_hash": "e58a708772ef20102182d3c4b57e4165021cecf86632d1a490bb7821b1a2c919",
+    "parquet_sha256": "d58541e5a7d5a8caf4f070d4f82990e84a528632c4ad8f46d541653a34055ad0",
+    "rows": 25067,
+    "manifest_sha256": "c6fd7f27c2ce9fc3e1afdc9a13234840fe8e60a8f5a7cc96b3391396c435d5ff",
+    "validation_sha256": "71843ce70bfa409ab6a7ee7a972ec18f7dbbad9adf5ba6827e1a2942ad265864",
+    "schema_sha256": "dfb2f27329882c633160b9aa19ce2bb5fad8a6c03543278556bc1856629631cf",
+    "parquet_packaged": false
+  },
+  "v550": {
+    "success": true,
+    "promotable": false,
+    "base_question_rows": 19,
+    "filter_questions": 20,
+    "skipped_questions": 1
+  },
+  "v550j": {
+    "success": true,
+    "validation_status": "pass",
+    "family_registry_status": "applicable",
+    "blocking_issues": [],
+    "pattern_rows": 94,
+    "item_rows": 463
+  },
+  "v551j": {
+    "final_status": "READY_V551J_JOINT_EVIDENCE_CONTRACT",
+    "ready_for_v552j_joint_evidence": true,
+    "candidate_packet_count": 94,
+    "certified_packet_count": 19,
+    "component_row_count": 463,
+    "review_required_packet_count": 75,
+    "blocked_packet_count": 0
+  },
+  "prior_gss_comparison": {
+    "prior_candidates": 94,
+    "prior_certified": 19,
+    "fused_candidates": 94,
+    "fused_certified": 19,
+    "matches_prior_counts": true
+  },
+  "resume_checkpoint_route": {
+    "status": "FAIL_V550_RESUME_STARTUP_REQUIRES_DATABASE_URL",
+    "classification": "resume_route_defect",
+    "detail": "--resume --resume-from-checkpoints-only with DATABASE_URL unset failed before checkpoint inspection with V550_SHARD_DB_UNAVAILABLE"
+  },
+  "respondent_data_packaging": "No respondent substrate Parquet is included in this checkpoint. Only substrate manifest/schema/validation identities are included."
+}

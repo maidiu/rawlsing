@@ -1,0 +1,42 @@
+{
+  "status": "G1A_PORTABILITY_AGENT_A_KNOWN_CORPUS_INSTALL_COMPLETE",
+  "g1a_github_portability": "PARTIAL__SHA_PINNED__CODEX_MIRROR_REQUIRED",
+  "scope_boundary": "Agent A installed and verified only the known supplied corpus. Historical SHA-located targets were neither searched nor classified NOT_FOUND.",
+  "starting_branch": "agent/g1a-github-portability-install-r1",
+  "starting_commit": "9b65e0232916f660d9a0bc343b01e94e438e2cbb",
+  "resulting_commit": "PENDING_FINAL_LEDGER_SEAL",
+  "carrier_verification": {
+    "core": {
+      "expected_sha256": "98326813914573a502f9b55b7c23418a181e31c8aed048380882f27649ee76a6",
+      "observed_sha256": "98326813914573a502f9b55b7c23418a181e31c8aed048380882f27649ee76a6",
+      "zip_integrity": "PASS"
+    },
+    "c4": {
+      "expected_sha256": "9668ca0951662fd79a7678297d8f10ff463cf21860667d1d4331107b32eaf95e",
+      "observed_sha256": "9668ca0951662fd79a7678297d8f10ff463cf21860667d1d4331107b32eaf95e",
+      "zip_integrity": "PASS"
+    }
+  },
+  "installed": {
+    "ready_objects_total": 13,
+    "installed_exact": 12,
+    "installed_derived_with_exact_provenance": 1,
+    "blocked_integrity_or_size": 0,
+    "internal_manifest_or_provenance_hashes_validated": 428,
+    "reassembly_hashes_validated": 1,
+    "ordinary_git_objects_at_or_above_95_mib": 0
+  },
+  "historical_recovery": {
+    "owner": "Agent B",
+    "not_found_claims_emitted_by_agent_a": 0,
+    "referral_status": "UNSEARCHED_BY_AGENT_A__NO_ADJUDICATION"
+  },
+  "prohibited_claims_not_emitted": [
+    "G1A_GITHUB_PORTABILITY_COMPLETE",
+    "G1A_GITHUB_PORTABILITY_COMPLETE",
+    "C1-C6 closure",
+    "P10 closure",
+    "G1A closure",
+    "P9 closure"
+  ]
+}

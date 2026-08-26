@@ -1,0 +1,85 @@
+registry_version: bounded-r184-v1
+source_family: Arab Barometer
+status: governed
+scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+joint_configuration_adjudication_set_hash: 3f10c787fe15e4c7efaab7654af6494e6a750cd11ac59a7794d0441707a28b7d
+response_portability_status: NOT_AUTHORIZED_BY_P3
+families:
+- family_id: JCFG-ARAB-I-POLITICAL-KNOWLEDGE
+  joint_configuration_id: JCFG-ARAB-I-POLITICAL-KNOWLEDGE
+  source_family: Arab Barometer
+  family_type: parallel_knowledge_item_configuration
+  family_structure_type: parallel_knowledge_item_configuration
+  expected_multi_target: true
+  family_label: Arab Barometer political-knowledge pair
+  eligible_waves:
+  - I
+  minimum_items_answered: 2
+  authority_metadata:
+    scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    p2_source_structure_id: arab_structure_273db16a2c1ee16c2748
+    p2_authority_effect: P2_DISCOVERY_EVIDENCE_ONLY_NOT_J_FAMILY_AUTHORITY
+    joint_configuration_adjudication_id: V550JADJ-0002
+    joint_configuration_decision_status: ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION
+    joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+    authority_basis_status: HUMAN_ADJUDICATED_FROM_EXACT_SOURCE_EVIDENCE
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_MEMBERSHIP_EXISTS
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+    configuration_authority_status: GOVERNED_BOUNDED_CANARY_ONLY
+    adjudication_rationale: The two adjacent items form a source-native political-knowledge
+      pair with a shared nominal response contract and distinct institutional targets.
+    authorized_inference: Raw joint answer configuration across the two knowledge
+      targets.
+    forbidden_inferences:
+    - correctness scoring without an answer-key authority
+    - proposition identity between targets
+    - signed support/opposition
+    - cross-source portability
+  item_role_groups:
+    foreign_minister_knowledge_item:
+    - var_code: q2571
+      condition_label: 'Political knowledge: foreign minister'
+      joint_configuration_adjudication_id: V550JADJ-0002
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_89ddb20c2460adb2f1a52f17
+      question_implementation_id: question_impl.phase0.d77e4a018ab7522d369f
+      p2_source_structure_id: arab_structure_273db16a2c1ee16c2748
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    parliamentary_leader_knowledge_item:
+    - var_code: q2572
+      condition_label: 'Political knowledge: parliamentary speaker or leader'
+      joint_configuration_adjudication_id: V550JADJ-0002
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_ca9dc64420f1f8cd048bcf03
+      question_implementation_id: question_impl.phase0.18864c82c30e41e739b8
+      p2_source_structure_id: arab_structure_273db16a2c1ee16c2748
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+  - applies_to_roles:
+    - foreign_minister_knowledge_item
+    - parliamentary_leader_knowledge_item
+    target_entity_template: jcfg-arab-i-political-knowledge_{condition_label}
+    target_domain: parallel_knowledge_item_configuration
+    target_group_label_from: condition_label
+    target_resolution_grain: condition_label
+    target_resolution_status: bounded_registry_resolved_item
+    target_resolution_authority_source: bounded_v550j_registry.item_role_groups
+    target_resolution_basis_source: P2 source structure plus exact source-wave variable
+      binding
+  boundary_rules: []
+registry_content_hash: b655807c107bfcdb0959b456f6256cff8af21a790f290f75fcfb32b36329c22f

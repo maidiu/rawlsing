@@ -1,0 +1,30 @@
+{
+  "r3_status": "PASS_WITH_GATED_SOURCE_CORRECTIONS",
+  "canonical_scope_entry_count": 35,
+  "canonical_scope_family_counts": {
+    "Afrobarometer": 3,
+    "Arab Barometer": 4,
+    "Asian Barometer": 3,
+    "EVS": 5,
+    "GSS": 8,
+    "Latinobar\u00f3metro": 3,
+    "LiTS": 4,
+    "South Asia": 2,
+    "WVS": 3
+  },
+  "queue_input_count": 445,
+  "semantic_review_ready": 431,
+  "semantic_review_ready_runtime_fail_closed": 3,
+  "source_correction_hold": 7,
+  "discovery_only_nonjoint": 3,
+  "legacy_normalization_hold": 1,
+  "proven_asb_w4_defect_count": 6,
+  "asb_w4_cross_parent_union_hold_count": 1,
+  "retrieval_package_sha256": "706393a07facff1b60bc0ae4369bb8bdb7d065171d831f5bc59f2e3eaad4884f",
+  "asb_w4_native_pdf_sha256": "5be5ed726287f83c6bf723ae563e434f7d17f623e630b31b6ba1b92d2cdcbba0",
+  "notes": [
+    "R3 corrects prior assistant-authored wave enumeration; wave_authority_registry_35wave_v1.json governs.",
+    "R3 source-integrity gate is not a full page-by-page recertification of all 445 structures.",
+    "Historical R14/P2/P3 authority remains immutable; correction overlay is proposed, not installed."
+  ]
+}

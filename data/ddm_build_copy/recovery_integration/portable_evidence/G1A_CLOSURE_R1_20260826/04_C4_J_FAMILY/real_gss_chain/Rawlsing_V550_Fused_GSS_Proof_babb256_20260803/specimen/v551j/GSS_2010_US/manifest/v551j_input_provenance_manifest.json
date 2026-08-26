@@ -1,0 +1,237 @@
+{
+  "run_id": "GSS_2010_US",
+  "schema_version": "v2.2.3",
+  "compiler_version": "v551j_joint_evidence_contract_v2_2_3",
+  "registry_path": "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/authority/registry_gss.yaml",
+  "registry_hash": "aff84c185fc8fbb43f8bc08f0029d5dbcfda0c4da61fdc892450a8a153a1ff2d",
+  "input_hashes": {
+    "v551_atoms_artifact_hash": "18fbbbca26fcf7dcfcaa94777565d736e147a39caab5be79fb9ef7a436c093af",
+    "v550j_pattern_index_artifact_hash": "dff13abdc8f1a63cdd9b07a531a7ac62cc63ce0f77cdcf694bff0f77f54839f0",
+    "v550j_pattern_item_index_artifact_hash": "dcbad2f4fee56c57339ef39dbe7064940a4ffffac73deefee0e65c19ebc7d139",
+    "v550j_relation_signature_artifact_hash": "d70aa4afeb1ca427ab2ea988382508082834b5ae2d81c0842b7988ebea6f8e40",
+    "v550j_manifest_hash": "d2ce6b65eda27a8c045c5fcb28cfd9530720d66f64140327bed7513ea2e09749",
+    "v550j_readiness_report_hash": "8328de947eb16997b945c3ee076c30ccc45295f7592619e8a830e1b027dbde25",
+    "question_family_registry_hash": "aff84c185fc8fbb43f8bc08f0029d5dbcfda0c4da61fdc892450a8a153a1ff2d"
+  },
+  "v550j_manifest_hash": "d2ce6b65eda27a8c045c5fcb28cfd9530720d66f64140327bed7513ea2e09749",
+  "v550j_readiness_report_hash": "8328de947eb16997b945c3ee076c30ccc45295f7592619e8a830e1b027dbde25",
+  "row_counts": {
+    "v551_atoms": 16,
+    "v550j_pattern_index": 94,
+    "v550j_pattern_item_index": 463,
+    "v550j_relation_signature": 94,
+    "candidate": 94,
+    "component": 463,
+    "certified": 19,
+    "review_surface": 75
+  },
+  "final_status": "READY_V551J_JOINT_EVIDENCE_CONTRACT",
+  "invocation_command": "02_CORE_REFERENCE/code/compile_v551j_joint_evidence_packets.py --run-id GSS_2010_US --v551-atoms-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v551/GSS_2010_US/relation_evidence_atoms.parquet --v550j-pattern-index-path /Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_response_pattern_index.parquet --v550j-pattern-item-index-path /Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_response_pattern_item_index.parquet --v550j-relation-signature-path /Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_pattern_relation_signature.parquet --v550j-manifest-path /Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/v550j_manifest.json --v550j-readiness-report-path /Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/v550j_source_wave_readiness_report.json --v550j-meaning-summary-path /Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_pattern_meaning_summary.parquet --registry-path 85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/authority/registry_gss.yaml --output-root /Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j --emit-review-surface --emit-certified-index --no-write-csv --write-parquet --strict --v552-question-semantic-hierarchy-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/question_semantic_hierarchy.parquet --v552-structural-channel-index-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/structural_channel_index.parquet --v552-relation-axis-pressure-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/relation_axis_pressure.parquet --v552-target-entity-pressure-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/target_entity_pressure.parquet --v552-driver-facet-pressure-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/driver_facet_pressure.parquet --v552-contradiction-surface-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/contradiction_surface.parquet --v552-horizon-constraint-index-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/horizon_constraint_index.parquet --v552-parent-prior-manifest-path /Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/parent_prior_manifest.parquet",
+  "invocation_argv": [
+    "02_CORE_REFERENCE/code/compile_v551j_joint_evidence_packets.py",
+    "--run-id",
+    "GSS_2010_US",
+    "--v551-atoms-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v551/GSS_2010_US/relation_evidence_atoms.parquet",
+    "--v550j-pattern-index-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_response_pattern_index.parquet",
+    "--v550j-pattern-item-index-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_response_pattern_item_index.parquet",
+    "--v550j-relation-signature-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_pattern_relation_signature.parquet",
+    "--v550j-manifest-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/v550j_manifest.json",
+    "--v550j-readiness-report-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/v550j_source_wave_readiness_report.json",
+    "--v550j-meaning-summary-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_pattern_meaning_summary.parquet",
+    "--registry-path",
+    "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/authority/registry_gss.yaml",
+    "--output-root",
+    "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j",
+    "--emit-review-surface",
+    "--emit-certified-index",
+    "--no-write-csv",
+    "--write-parquet",
+    "--strict",
+    "--v552-question-semantic-hierarchy-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/question_semantic_hierarchy.parquet",
+    "--v552-structural-channel-index-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/structural_channel_index.parquet",
+    "--v552-relation-axis-pressure-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/relation_axis_pressure.parquet",
+    "--v552-target-entity-pressure-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/target_entity_pressure.parquet",
+    "--v552-driver-facet-pressure-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/driver_facet_pressure.parquet",
+    "--v552-contradiction-surface-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/contradiction_surface.parquet",
+    "--v552-horizon-constraint-index-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/horizon_constraint_index.parquet",
+    "--v552-parent-prior-manifest-path",
+    "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/parent_prior_manifest.parquet"
+  ],
+  "invocation_executable": "/usr/local/bin/python3",
+  "invocation_cwd": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Codex_Ready_Cumulative_V550_Shared_Substrate_Implementation_Plan_R1_20260803/rawlsing-v550-shared-substrate-work-20260803T054239Z",
+  "invocation_script_path": "/Users/matthewsmith/Desktop/Rawlsing/Rawlsing_Codex_Ready_Cumulative_V550_Shared_Substrate_Implementation_Plan_R1_20260803/rawlsing-v550-shared-substrate-work-20260803T054239Z/02_CORE_REFERENCE/code/compile_v551j_joint_evidence_packets.py",
+  "input_documents": {
+    "v551_atoms_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v551/GSS_2010_US/relation_evidence_atoms.parquet",
+    "v550j_pattern_index_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_response_pattern_index.parquet",
+    "v550j_pattern_item_index_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_response_pattern_item_index.parquet",
+    "v550j_relation_signature_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/joint_pattern_relation_signature.parquet",
+    "v550j_manifest_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/v550j_manifest.json",
+    "v550j_readiness_report_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v550j/runs/gss_2010_fused_20260803T083000Z/GSS_2010_US/joint_patterns/v550j_source_wave_readiness_report.json",
+    "registry_path": "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/authority/registry_gss.yaml",
+    "v552_question_semantic_hierarchy_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/question_semantic_hierarchy.parquet",
+    "v552_structural_channel_index_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/structural_channel_index.parquet",
+    "v552_relation_axis_pressure_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/relation_axis_pressure.parquet",
+    "v552_target_entity_pressure_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/target_entity_pressure.parquet",
+    "v552_driver_facet_pressure_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/driver_facet_pressure.parquet",
+    "v552_contradiction_surface_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/contradiction_surface.parquet",
+    "v552_horizon_constraint_index_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/horizon_constraint_index.parquet",
+    "v552_parent_prior_manifest_path": "/Users/matthewsmith/Desktop/Rawlsing/outputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z/v552/GSS_2010_US/structural/parent_prior_manifest.parquet"
+  },
+  "output_artifacts": {
+    "candidate": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/packets/v551j_joint_packet_candidate_index.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_joint_packet_candidate_index.schema.json",
+      "rows": 94,
+      "columns": 125
+    },
+    "component": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/packets/v551j_joint_component_index.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_joint_component_index.schema.json",
+      "rows": 463,
+      "columns": 132
+    },
+    "certified": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/packets/v551j_certified_joint_packet_index.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_certified_joint_packet_index.schema.json",
+      "rows": 19,
+      "columns": 125
+    },
+    "review_surface": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/packets/v551j_review_surface.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_review_surface.schema.json",
+      "rows": 75,
+      "columns": 127
+    },
+    "pattern_context_sidecar": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/sidecars/v551j_pattern_context_sidecar.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_pattern_context_sidecar.schema.json",
+      "rows": 0,
+      "columns": 9
+    },
+    "association_context_sidecar": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/sidecars/v551j_association_context_sidecar.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_association_context_sidecar.schema.json",
+      "rows": 0,
+      "columns": 9
+    },
+    "position_context_sidecar": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/sidecars/v551j_position_context_sidecar.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_position_context_sidecar.schema.json",
+      "rows": 0,
+      "columns": 8
+    },
+    "meaning_summary_sidecar": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/sidecars/v551j_meaning_summary_sidecar.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_meaning_summary_sidecar.schema.json",
+      "rows": 0,
+      "columns": 9
+    },
+    "component_match_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_component_match_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_component_match_audit.schema.json",
+      "rows": 463,
+      "columns": 13
+    },
+    "cross_contract_comparison_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_cross_contract_comparison_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_cross_contract_comparison_audit.schema.json",
+      "rows": 6945,
+      "columns": 13
+    },
+    "target_layer_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_target_layer_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_target_layer_audit.schema.json",
+      "rows": 463,
+      "columns": 13
+    },
+    "denominator_separation_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_denominator_separation_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_denominator_separation_audit.schema.json",
+      "rows": 463,
+      "columns": 13
+    },
+    "measurement_separation_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_measurement_separation_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_measurement_separation_audit.schema.json",
+      "rows": 94,
+      "columns": 13
+    },
+    "certification_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_certification_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_certification_audit.schema.json",
+      "rows": 94,
+      "columns": 20
+    },
+    "certification_rejection_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_certification_rejection_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_certification_rejection_audit.schema.json",
+      "rows": 75,
+      "columns": 19
+    },
+    "input_scope_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_input_scope_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_input_scope_audit.schema.json",
+      "rows": 4,
+      "columns": 11
+    },
+    "input_provenance_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_input_provenance_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_input_provenance_audit.schema.json",
+      "rows": 7,
+      "columns": 14
+    },
+    "registry_contract_audit": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/audits/v551j_registry_contract_audit.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_registry_contract_audit.schema.json",
+      "rows": 1,
+      "columns": 9
+    },
+    "compatibility_candidate_trace": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/packets/v551j_packet_candidate_trace.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_packet_candidate_trace.schema.json",
+      "rows": 94,
+      "columns": 127
+    },
+    "compatibility_certified_packet_index": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/packets/v551j_certified_packet_index.parquet",
+      "csv_path": "",
+      "schema_path": "/Users/matthewsmith/Desktop/Rawlsing/fused_gss_v550_v550j_v551j_20260803T083000Z/v551j/GSS_2010_US/schemas/v551j_certified_packet_index.schema.json",
+      "rows": 19,
+      "columns": 125
+    }
+  },
+  "elapsed_seconds": 5.156
+}

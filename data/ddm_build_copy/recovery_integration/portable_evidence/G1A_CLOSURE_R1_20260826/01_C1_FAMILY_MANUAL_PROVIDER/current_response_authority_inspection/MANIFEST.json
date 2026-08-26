@@ -1,0 +1,169 @@
+{
+  "status": "PASS_RECONCILED_SAV_DERIVED_R2",
+  "build_date": "2026-08-15",
+  "supersedes": "Rawlsing_V550_Response_Option_Authority_SAV_Derived_20260815.zip",
+  "runtime_map": {
+    "rows": 392572,
+    "columns": 71,
+    "canonical_current_manual_rows": 350066,
+    "quarantined_legacy_rows": 42506,
+    "raw_alias_replica_rows": 0,
+    "signed_rows": 28239,
+    "intensity_rows": 28239,
+    "quarantined_legacy_signed_rows": 0,
+    "quarantined_legacy_intensity_rows": 0,
+    "quarantined_legacy_polarity_rows": 0,
+    "exact_duplicate_rows": 0,
+    "schema_note": "Established 71-column runtime schema. Five GSS-only source diagnostic fields remain preserved in authority_inputs/gss_response_option_authority.csv and are not added to runtime schema."
+  },
+  "latinobarometro_sav_binding": {
+    "authority_variables_covered": 775,
+    "binding_rows": 872,
+    "direct_aliases_requiring_resolution": 359,
+    "direct_aliases_by_wave": {
+      "2011": 215,
+      "2024": 144
+    },
+    "direct_alias_resolution_audit_pass": 359,
+    "direct_alias_resolution_audit_fail": 0,
+    "family_authorities": 13,
+    "family_raw_member_bindings": 110,
+    "raw_to_multiple_authority_collisions": 0
+  },
+  "historical_700_contract_court": {
+    "inventory_sha256": "0c8f14ba4a601b962425f1c4305b4bdcfbd023d2cff08d29f30d845120e38339",
+    "certified_active_response_scale": 236,
+    "certified_pass": 236,
+    "context_no_response_scale": 254,
+    "administrative_no_response_scale": 210,
+    "context_admin_unsigned_pass": 464,
+    "context_admin_contracts_with_runtime_rows": 354,
+    "context_admin_contracts_without_runtime_rows": 110,
+    "context_admin_runtime_rows": 7445,
+    "context_admin_signed_rows": 0,
+    "failures": 0,
+    "scope_warning": "Validates the supplied historical 700-contract inventory, not any subsequently generated fresh 700-variable selection."
+  },
+  "raw_sav_inputs": {
+    "Latinobarometro 1995.sav": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+    "Latinobarometro 2011.sav": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+    "Latinobarometro 2024.sav": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40"
+  },
+  "current_manual_packet_sha256": {
+    "afrobarometer_response_option_authority.csv": "305cb215485bc95ebecee395e578c52739311bc2fc15faed27318bd922f47332",
+    "arab_barometer_response_option_authority.csv": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15",
+    "asian_barometer_response_option_authority.csv": "639b665567d2dede8321725adb8d6d55fbd96a67b8c60870fc5b2a12f77a6612",
+    "evs_response_option_authority.csv": "e34520a2b4932d184d9616e7222f233732f8ebeed1ee9da06a79e093da4bc170",
+    "gss_response_option_authority.csv": "43d3f835bc4137060ddc1a84f36c47a320c8d99cb9585b33e7fc1cc6d3289de3",
+    "latinobarometro_response_option_authority.csv": "d6fb97bad57b20c92605c5338d96d1a3b33a3f119f81f76f9712f44a1e26c699",
+    "lits_response_option_authority.csv": "e696eb5084458cb5424a53f96c9461cdf8ec3da8e5eb47dc0a4458b413a2f867",
+    "south_asia_response_option_authority.csv": "c55fceaf1784cb4974e8fc5f3d33de0bb9c804c52661883477f66439cbfd1521",
+    "wvs_response_option_authority.csv": "c44ec8832c3804bd36d73a58234af63a75d73def48b6b596da32114ac658714a"
+  },
+  "files": {
+    "35wave_response_semantics_runtime_court_validation_r2.csv": {
+      "sha256": "40e653797afc174f0884a04253d7cf9a75156cd4d2b0e0489cc19740709c223d",
+      "bytes": 154133
+    },
+    "SECOND_PASS_QA.md": {
+      "sha256": "3e6d166ddb5dab53b342d98055a4cef3ef2d662588c9b2c37d26ed6748fe44a6",
+      "bytes": 2643
+    },
+    "V550_RUNTIME_INTEGRATION_CONTRACT_SAV_DERIVED_R2.md": {
+      "sha256": "ae563c42d0f921eebfae501fb6b72b16e9e69b383b8981eaf2c60132287ec603",
+      "bytes": 6962
+    },
+    "V550_response_option_map_reconciled_sav_derived_r2.csv": {
+      "sha256": "da87160a30d09c1b606c06cadd416a70f73a4dc5a940a188b391f72bb485a4cf",
+      "bytes": 392972041
+    },
+    "authority_inputs/35wave_active_response_semantics_contract_inventory.csv": {
+      "sha256": "0c8f14ba4a601b962425f1c4305b4bdcfbd023d2cff08d29f30d845120e38339",
+      "bytes": 96388
+    },
+    "authority_inputs/afrobarometer_response_option_authority.csv": {
+      "sha256": "305cb215485bc95ebecee395e578c52739311bc2fc15faed27318bd922f47332",
+      "bytes": 15498257
+    },
+    "authority_inputs/arab_barometer_response_option_authority.csv": {
+      "sha256": "5ef7a0e9da60c7c39eda494dd4a8684a2d7bfdd3714d55c91445afa82e1b1f15",
+      "bytes": 11033818
+    },
+    "authority_inputs/asian_barometer_response_option_authority.csv": {
+      "sha256": "639b665567d2dede8321725adb8d6d55fbd96a67b8c60870fc5b2a12f77a6612",
+      "bytes": 48941362
+    },
+    "authority_inputs/evs_response_option_authority.csv": {
+      "sha256": "e34520a2b4932d184d9616e7222f233732f8ebeed1ee9da06a79e093da4bc170",
+      "bytes": 47935510
+    },
+    "authority_inputs/gss_response_option_authority.csv": {
+      "sha256": "43d3f835bc4137060ddc1a84f36c47a320c8d99cb9585b33e7fc1cc6d3289de3",
+      "bytes": 162061424
+    },
+    "authority_inputs/latinobarometro_1995_first_pass_authority_table.csv": {
+      "sha256": "ed28ad404c593c08271762955433ea1c1cae33a166528f0eb36b4edbfa66156b",
+      "bytes": 84344
+    },
+    "authority_inputs/latinobarometro_2011_first_pass_authority_table.csv": {
+      "sha256": "570d79b093504706e0bafc2fe5110066cd9170ed223512e2c4f31e7fb261ef12",
+      "bytes": 165931
+    },
+    "authority_inputs/latinobarometro_2024_first_pass_authority_table.csv": {
+      "sha256": "465ec1d037640e94ffd0505f2aa5d3998f0a1e7e8c6fb6d04693d49bbb02bf62",
+      "bytes": 87046
+    },
+    "authority_inputs/latinobarometro_response_option_authority.csv": {
+      "sha256": "d6fb97bad57b20c92605c5338d96d1a3b33a3f119f81f76f9712f44a1e26c699",
+      "bytes": 8569562
+    },
+    "authority_inputs/lits_response_option_authority.csv": {
+      "sha256": "e696eb5084458cb5424a53f96c9461cdf8ec3da8e5eb47dc0a4458b413a2f867",
+      "bytes": 21986866
+    },
+    "authority_inputs/south_asia_response_option_authority.csv": {
+      "sha256": "c55fceaf1784cb4974e8fc5f3d33de0bb9c804c52661883477f66439cbfd1521",
+      "bytes": 1498266
+    },
+    "authority_inputs/wvs_response_option_authority.csv": {
+      "sha256": "c44ec8832c3804bd36d73a58234af63a75d73def48b6b596da32114ac658714a",
+      "bytes": 32649213
+    },
+    "latinobarometro_1995_sav_dictionary.csv": {
+      "sha256": "aa7967721d916785e410e6a40eee464c946863625b76769b2740fe5ba6dd7d9d",
+      "bytes": 104290
+    },
+    "latinobarometro_2011_sav_dictionary.csv": {
+      "sha256": "d87aefdf5c955c49b953bc92005b8cebed50eee81e3af22f32170577dd1952cc",
+      "bytes": 330769
+    },
+    "latinobarometro_2024_sav_dictionary.csv": {
+      "sha256": "242ef7bcdc03a2aed87401afe922c6c21c3c35ae163cc606f1c4872830f9d21e",
+      "bytes": 142135
+    },
+    "latinobarometro_sav_direct_alias_resolution_audit.csv": {
+      "sha256": "f72f19be829cb89dbbb57c3ccf52f294a8b6d421e842e1703577c10acd156622",
+      "bytes": 43754
+    },
+    "latinobarometro_sav_direct_identifier_alias_authority.csv": {
+      "sha256": "b5c0c324815b24364d4897378aa1b842f7761d43b86d5d40f6564a3fb8266f0c",
+      "bytes": 234451
+    },
+    "latinobarometro_sav_family_binding_authority.csv": {
+      "sha256": "775e79e1ee75349b2abc7fc38408c1411b0326279e70cb378ab0b61b484ddc9e",
+      "bytes": 64966
+    },
+    "latinobarometro_sav_to_authority_binding_registry.csv": {
+      "sha256": "6eaf7c81833107b78837b662d4c3e65f895830d924ead848168aebae0e07f691",
+      "bytes": 798243
+    },
+    "latinobarometro_sav_unbound_raw_variables_audit.csv": {
+      "sha256": "5b77c5f5ca2f37fe96605027f68c8255b21b8d37558aae378b2bd05a2ee75b0a",
+      "bytes": 16116
+    },
+    "verify_reconciled_package_r2.py": {
+      "sha256": "47f575a9f4a3de21522526e87b88676065fc20d374e2d5b6aade6e97cb0eba4c",
+      "bytes": 9089
+    }
+  }
+}

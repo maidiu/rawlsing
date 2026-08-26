@@ -1,0 +1,613 @@
+{
+  "database": "rawlsing_p3c_gss_r184",
+  "tables": {
+    "p3_object_registry": [
+      {
+        "name": "object_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "object_type",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "identity_strategy",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "idempotency_key",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "origin_phase",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "origin_authority_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "allocation_release_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "retired_release_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "content_hash",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "stable_identity_note",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_authority_release": [
+      {
+        "name": "release_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "parent_release_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "schema_version",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "builder_version",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "input_manifest_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "name": "object_counts",
+        "type": "jsonb",
+        "nullable": false
+      },
+      {
+        "name": "validation_return_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "migration_artifact",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "rollback_artifact",
+        "type": "text",
+        "nullable": true
+      }
+    ],
+    "p3_candidate_family": [
+      {
+        "name": "candidate_family_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "created_release_id",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_candidate_revision": [
+      {
+        "name": "candidate_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "candidate_family_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "revision_number",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "candidate_classification",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "candidate_origin_type",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "origin_key",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "canonical_signature_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "evidence_bundle_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "authority_release_id",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_candidate_evidence_snapshot": [
+      {
+        "name": "candidate_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "evidence_contract_version",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "canonical_payload",
+        "type": "jsonb",
+        "nullable": false
+      },
+      {
+        "name": "evidence_bundle_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "authority_release_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      }
+    ],
+    "p3_candidate_family_origin_ledger": [
+      {
+        "name": "candidate_family_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "family_origin_key",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "origin_payload_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "first_candidate_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "authority_release_id",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_candidate_revision_genealogy": [
+      {
+        "name": "candidate_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "candidate_family_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "revision_number",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "predecessor_candidate_family_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "predecessor_candidate_revision_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "predecessor_source",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "genealogy_branch",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "migration_reason",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "authority_release_id",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_candidate_membership": [
+      {
+        "name": "candidate_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "member_object_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "membership_role",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "membership_basis",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "authority_release_id",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_candidate_component_link": [
+      {
+        "name": "candidate_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "component_id",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_adjudication_decision": [
+      {
+        "name": "adjudication_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "candidate_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "decision_ordinal",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "decision_status",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "canonical_family_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "canonical_proposition",
+        "type": "jsonb",
+        "nullable": true
+      },
+      {
+        "name": "response_portability_status",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "rationale",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "evidence_bundle_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "supersedes_adjudication_id",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "authority_release_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      }
+    ],
+    "p3_adjudication_member": [
+      {
+        "name": "adjudication_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "member_object_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "member_disposition",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "variant_revision_id",
+        "type": "text",
+        "nullable": true
+      }
+    ],
+    "p3_proposition_signature": [
+      {
+        "name": "signature_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "subject_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "signature_status",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "content_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "authority_release_id",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_signature_field": [
+      {
+        "name": "signature_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "field_name",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "field_value",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "normalized_value_code",
+        "type": "text",
+        "nullable": true
+      },
+      {
+        "name": "evidence_state",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "confidence",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_canonical_family": [
+      {
+        "name": "canonical_family_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "created_by_adjudication_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "created_release_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "retired_release_id",
+        "type": "text",
+        "nullable": true
+      }
+    ],
+    "p3_canonical_family_revision": [
+      {
+        "name": "family_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "canonical_family_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "revision_number",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "canonical_signature_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "canonical_proposition",
+        "type": "jsonb",
+        "nullable": false
+      },
+      {
+        "name": "evidence_bundle_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "created_by_adjudication_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "authority_release_id",
+        "type": "text",
+        "nullable": false
+      }
+    ],
+    "p3_canonical_family_membership": [
+      {
+        "name": "family_revision_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "member_object_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "variant_revision_id",
+        "type": "text",
+        "nullable": true
+      }
+    ],
+    "p3_release_change_ledger": [
+      {
+        "name": "release_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "object_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "change_type",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "prior_content_hash",
+        "type": "character",
+        "nullable": true
+      },
+      {
+        "name": "content_hash",
+        "type": "character",
+        "nullable": false
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "nullable": true
+      }
+    ],
+    "p3_release_object_snapshot": [
+      {
+        "name": "release_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "object_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "content_hash",
+        "type": "character",
+        "nullable": false
+      }
+    ],
+    "p3_release_status_event": [
+      {
+        "name": "release_id",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "event_ordinal",
+        "type": "integer",
+        "nullable": false
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "nullable": false
+      },
+      {
+        "name": "occurred_at",
+        "type": "timestamp with time zone",
+        "nullable": false
+      },
+      {
+        "name": "evidence_hash",
+        "type": "character",
+        "nullable": false
+      }
+    ]
+  }
+}

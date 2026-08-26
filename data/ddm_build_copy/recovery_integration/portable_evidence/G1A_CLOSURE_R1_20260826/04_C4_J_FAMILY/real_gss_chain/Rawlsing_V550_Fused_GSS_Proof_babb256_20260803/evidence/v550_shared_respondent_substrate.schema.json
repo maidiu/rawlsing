@@ -1,0 +1,437 @@
+{
+  "name": "v550_shared_respondent_substrate",
+  "run_id": "gss_2010_fused_20260803T083000Z",
+  "row_count": 25067,
+  "column_count": 107,
+  "columns": [
+    {
+      "name": "run_id",
+      "dtype": "string"
+    },
+    {
+      "name": "source",
+      "dtype": "string"
+    },
+    {
+      "name": "source_id",
+      "dtype": "string"
+    },
+    {
+      "name": "wave",
+      "dtype": "string"
+    },
+    {
+      "name": "canonical_wave",
+      "dtype": "string"
+    },
+    {
+      "name": "country_code",
+      "dtype": "string"
+    },
+    {
+      "name": "respondent_id",
+      "dtype": "string"
+    },
+    {
+      "name": "respondent_id_norm",
+      "dtype": "string"
+    },
+    {
+      "name": "weight_value",
+      "dtype": "float64"
+    },
+    {
+      "name": "weight_status",
+      "dtype": "string"
+    },
+    {
+      "name": "var_code",
+      "dtype": "string"
+    },
+    {
+      "name": "var_code_norm",
+      "dtype": "string"
+    },
+    {
+      "name": "question_id",
+      "dtype": "string"
+    },
+    {
+      "name": "question_text",
+      "dtype": "string"
+    },
+    {
+      "name": "response_value",
+      "dtype": "string"
+    },
+    {
+      "name": "response_value_normalized",
+      "dtype": "string"
+    },
+    {
+      "name": "response_value_norm",
+      "dtype": "string"
+    },
+    {
+      "name": "response_label",
+      "dtype": "string"
+    },
+    {
+      "name": "normalized_response_label",
+      "dtype": "string"
+    },
+    {
+      "name": "response_direction",
+      "dtype": "string"
+    },
+    {
+      "name": "polarity",
+      "dtype": "string"
+    },
+    {
+      "name": "is_missing",
+      "dtype": "bool"
+    },
+    {
+      "name": "is_dk",
+      "dtype": "bool"
+    },
+    {
+      "name": "is_refusal",
+      "dtype": "bool"
+    },
+    {
+      "name": "is_iap",
+      "dtype": "bool"
+    },
+    {
+      "name": "is_valid_substantive_response",
+      "dtype": "bool"
+    },
+    {
+      "name": "semantic_response_role",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_response_role_status",
+      "dtype": "string"
+    },
+    {
+      "name": "response_semantics_authority_source",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_response_role_authority",
+      "dtype": "string"
+    },
+    {
+      "name": "directionality_status",
+      "dtype": "string"
+    },
+    {
+      "name": "directionality_authority_source",
+      "dtype": "string"
+    },
+    {
+      "name": "directionality_basis_source",
+      "dtype": "string"
+    },
+    {
+      "name": "target_entity_id",
+      "dtype": "string"
+    },
+    {
+      "name": "target_domain",
+      "dtype": "string"
+    },
+    {
+      "name": "target_condition_label",
+      "dtype": "string"
+    },
+    {
+      "name": "target_group_label",
+      "dtype": "string"
+    },
+    {
+      "name": "permission_domain",
+      "dtype": "string"
+    },
+    {
+      "name": "target_resolution_grain",
+      "dtype": "string"
+    },
+    {
+      "name": "target_resolution_status",
+      "dtype": "string"
+    },
+    {
+      "name": "target_resolution_authority_source",
+      "dtype": "string"
+    },
+    {
+      "name": "target_resolution_basis_source",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_role",
+      "dtype": "string"
+    },
+    {
+      "name": "v551_evidence_role",
+      "dtype": "string"
+    },
+    {
+      "name": "mapping_status",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_classification",
+      "dtype": "string"
+    },
+    {
+      "name": "question_type",
+      "dtype": "string"
+    },
+    {
+      "name": "handling_rule",
+      "dtype": "string"
+    },
+    {
+      "name": "recommended_computation",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_basis",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_confidence",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_source",
+      "dtype": "string"
+    },
+    {
+      "name": "source_structure_fields_joined",
+      "dtype": "bool"
+    },
+    {
+      "name": "is_substantive",
+      "dtype": "bool"
+    },
+    {
+      "name": "not_direct_evidence",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_association_feature",
+      "dtype": "bool"
+    },
+    {
+      "name": "allowed_as_attitude_cloud_feature",
+      "dtype": "bool"
+    },
+    {
+      "name": "association_lane",
+      "dtype": "string"
+    },
+    {
+      "name": "source_norm",
+      "dtype": "string"
+    },
+    {
+      "name": "wave_norm",
+      "dtype": "string"
+    },
+    {
+      "name": "canonical_wave_norm",
+      "dtype": "string"
+    },
+    {
+      "name": "country_code_norm",
+      "dtype": "string"
+    },
+    {
+      "name": "shard_id",
+      "dtype": "string"
+    },
+    {
+      "name": "selection_role",
+      "dtype": "string"
+    },
+    {
+      "name": "base_fixture_selected",
+      "dtype": "bool"
+    },
+    {
+      "name": "joint_configuration_selected",
+      "dtype": "bool"
+    },
+    {
+      "name": "joint_configuration_ids_json",
+      "dtype": "string"
+    },
+    {
+      "name": "survey_year",
+      "dtype": "int64"
+    },
+    {
+      "name": "value_raw",
+      "dtype": "float64"
+    },
+    {
+      "name": "value_text",
+      "dtype": "string"
+    },
+    {
+      "name": "weight_name",
+      "dtype": "string"
+    },
+    {
+      "name": "sex",
+      "dtype": "string"
+    },
+    {
+      "name": "age",
+      "dtype": "string"
+    },
+    {
+      "name": "age_group",
+      "dtype": "string"
+    },
+    {
+      "name": "education_level",
+      "dtype": "string"
+    },
+    {
+      "name": "income_level",
+      "dtype": "string"
+    },
+    {
+      "name": "religion_label",
+      "dtype": "string"
+    },
+    {
+      "name": "urban_rural",
+      "dtype": "string"
+    },
+    {
+      "name": "region",
+      "dtype": "string"
+    },
+    {
+      "name": "ethnicity",
+      "dtype": "string"
+    },
+    {
+      "name": "language",
+      "dtype": "string"
+    },
+    {
+      "name": "employment",
+      "dtype": "string"
+    },
+    {
+      "name": "marital",
+      "dtype": "string"
+    },
+    {
+      "name": "household_size",
+      "dtype": "string"
+    },
+    {
+      "name": "position_source_table",
+      "dtype": "string"
+    },
+    {
+      "name": "position_completeness_score",
+      "dtype": "int64"
+    },
+    {
+      "name": "question_block_id",
+      "dtype": "string"
+    },
+    {
+      "name": "structural_domain_id",
+      "dtype": "string"
+    },
+    {
+      "name": "driver_id",
+      "dtype": "string"
+    },
+    {
+      "name": "driver_facet_id",
+      "dtype": "string"
+    },
+    {
+      "name": "relation_axis_id",
+      "dtype": "string"
+    },
+    {
+      "name": "legacy_final_driver_id",
+      "dtype": "string"
+    },
+    {
+      "name": "legacy_driver_leak_flag",
+      "dtype": "bool"
+    },
+    {
+      "name": "response_family",
+      "dtype": "string"
+    },
+    {
+      "name": "normalization_confidence",
+      "dtype": "string"
+    },
+    {
+      "name": "response_intensity",
+      "dtype": "float64"
+    },
+    {
+      "name": "ordinal_rank",
+      "dtype": "float64"
+    },
+    {
+      "name": "scale_min",
+      "dtype": "float64"
+    },
+    {
+      "name": "scale_max",
+      "dtype": "float64"
+    },
+    {
+      "name": "scale_direction",
+      "dtype": "string"
+    },
+    {
+      "name": "is_special",
+      "dtype": "bool"
+    },
+    {
+      "name": "is_not_asked",
+      "dtype": "bool"
+    },
+    {
+      "name": "is_inapplicable",
+      "dtype": "bool"
+    },
+    {
+      "name": "response_option_map_matched",
+      "dtype": "bool"
+    },
+    {
+      "name": "response_semantics_status",
+      "dtype": "string"
+    },
+    {
+      "name": "response_semantics_source",
+      "dtype": "string"
+    },
+    {
+      "name": "response_semantics_contract_hash",
+      "dtype": "string"
+    }
+  ],
+  "schema_version": "v1"
+}

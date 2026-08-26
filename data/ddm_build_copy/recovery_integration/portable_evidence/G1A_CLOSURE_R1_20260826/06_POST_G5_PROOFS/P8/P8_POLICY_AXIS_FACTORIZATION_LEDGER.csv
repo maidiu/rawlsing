@@ -1,0 +1,32 @@
+axis_id,axis,domain,disposition,holding
+A1,REJECT terminal disposition / nontruth firewall,697 REJECT,FACTORIZABLE_EXACTLY,Shared EXACT_CANDIDATE_REJECT state; never negative/nonedge; exact candidate identity remains local.
+A2,BLOCKED terminal state / no-truth ceiling,15 BLOCKED,FACTORIZABLE_EXACTLY,Shared BLOCKED no-truth ceiling; disposition remains distinct from REJECT.
+A3,Cross-adjudication exact-negative firewall,712,FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA,Shared nontruth firewall; exact REJECT vs BLOCKED state must remain recoverable.
+B1,REJECT reason taxonomy root,697 REJECT,FACTORIZABLE_EXACTLY,FAILED_NAMED_O10_RELATION_PREREQUISITE is shared taxonomy only.
+B2,REJECT rule-level reason/prohibition grammar,7 exact rule domains,FACTORIZABLE_EXACTLY,Seven exact rule defaults factor by rule; rule identity remains exact.
+B3,Exact decisive REJECT rationale,697 REJECT,MUST_REMAIN_PER_OBJECT,P5 explicitly forbids taxonomy replacing exact decisive rationale.
+B4,REJECT construction/defect taxonomy,125 defect + 572 no-defect,FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA,Class meaning factors; exact flag/note and object scope remain local.
+C1,Global REJECT contract evidence ceiling,697 REJECT,FACTORIZABLE_EXACTLY,Explicit global_contract_ceiling is identical across all sealed records.
+C2,Historical row evidence-ceiling cell,697 REJECT,MUST_REMAIN_PER_OBJECT,Historical local value/state remains local even when repeated.
+C3,Global REJECT prohibited-inference firewall,697 REJECT,FACTORIZABLE_EXACTLY,Explicit global_firewall identical across all sealed records.
+C4,Rule-grammar prohibited-inference default,7 exact rule domains,FACTORIZABLE_EXACTLY,Explicit rule default is identical within each rule domain.
+C5,Historical row prohibited-inference cell,697 REJECT,MUST_REMAIN_PER_OBJECT,Local historical cell cannot be rewritten as rule/global policy.
+C6,Historical semantic_confidence cell,697 REJECT,MUST_REMAIN_PER_OBJECT,"Local adjudication metadata, including 46 EMPTY_STRING rows."
+C7,Historical value-state interpretation schema,712,FACTORIZABLE_EXACTLY,Encoding law factors; each object's actual EMPTY_STRING/NULL/ABSENT/etc state stays local.
+D1,Generator/scope defect class semantics,125 REJECT,FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA,Six classes factor; exact construction defect note remains local.
+D2,Exact generator/scope defect flag and note,697 REJECT,MUST_REMAIN_PER_OBJECT,125 exact notes and 572 exact false+EMPTY_STRING states preserved.
+D3,Append-only successor lifecycle template,125 REJECT,FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA,Common lifecycle fields factor; obligation ID/class/carrier and defect meaning remain exact.
+D4,No Job3 successor obligation recorded,572 REJECT,FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA,Interpretation factors; actual empty obligation state remains local; not a no-future theorem.
+E1,Historical immutability / explicit currentness,712,FACTORIZABLE_EXACTLY,P2/P5/P6 common lifecycle law.
+E2,REJECT future differently typed/new-scope possibility,697 REJECT,FACTORIZABLE_EXACTLY,Does not prohibit a different lawful future candidate; obligation never truth.
+E3,BLOCKED REOPENS_BLOCKED theorem,15 BLOCKED,FACTORIZABLE_EXACTLY,Exact prerequisites yield adjudication eligibility only.
+E4,Exact successor/blocker obligation identity,125 REJECT + 15 BLOCKED,MUST_REMAIN_PER_OBJECT,Obligation IDs and exact object linkage are object-specific.
+F1,BLOCKED blocker-class taxonomy,15 BLOCKED / 4 class domains,FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA,Class factors; COMMON_BLOCKER_CODE != COMMON_MISSING_PROOF.
+F2,BLOCKED review/resolution rule,15 BLOCKED / 2 review domains,FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA,Review standard and bypass prohibitions factor by exact class.
+F3,Exact BLOCKED missing proof / blocker detail,15 BLOCKED,MUST_REMAIN_PER_OBJECT,All 15 exact missing proofs remain local.
+F4,BLOCKED no-truth authority ceiling,15 BLOCKED,FACTORIZABLE_EXACTLY,Universal exact ceiling.
+G1,Exact source/evidence dereference rule,712,FACTORIZABLE_EXACTLY,Shared replay rule; policy never substitutes for required exact evidence.
+G2,"Exact source/evidence refs, SHAs, candidate/obligation refs",712,MUST_REMAIN_PER_OBJECT,Evidence/authority refs are not generic policy.
+H1,Historical downstream consumer-use permission,712,NOT_APPLICABLE,No object-level P5/P6 historical producer evidence supplies downstream consumer permission; later I04/V557 policy cannot be backfilled.
+I1,Candidate proposition identity / members / roles / material topology,712,MUST_REMAIN_PER_OBJECT,P1 constitutive identity cannot be policy-factored away.
+I2,Governing authority-instance refs,712,NOT_APPLICABLE,"May share exact authority metadata, but authority identity is not shared policy and is preserved separately."

@@ -1,0 +1,569 @@
+{
+  "derived_evidence_not_authority": true,
+  "source_p5_zip_sha256": "5f9895a9216d8663342f4c15d61c435f8f984f2b78a773f7c4360c80bd100871",
+  "source_p6_return_sha256": "1236e13cd9f0d2e832a1dd750bb7487fa11f2a731343f070f9757cab66786c03",
+  "policy_count": 38,
+  "policies": [
+    {
+      "policy_id": "P8-SP-ALL-001",
+      "name": "Non-truth-bearing adjudication firewall",
+      "domain_count": 712,
+      "domain_sha256_sorted_ids": "7a1bc6e49764c62c8e5c8f76b553085e3ba0d384184a10fe3726ac7cc039db08",
+      "domain_membership_rule": "EXACT_UNION(P5_REJECT_IDS_SHA256=4749389d... , P6_15_ACCEPTED_IDS)",
+      "semantic_content": {
+        "REJECT_not_proven_negative": true,
+        "BLOCKED_not_false": true,
+        "BLOCKED_not_proven_negative": true,
+        "BLOCKED_not_REJECT": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-ALL-002",
+      "name": "Historical immutability and explicit-currentness law",
+      "domain_count": 712,
+      "domain_sha256_sorted_ids": "7a1bc6e49764c62c8e5c8f76b553085e3ba0d384184a10fe3726ac7cc039db08",
+      "domain_membership_rule": "EXACT_ENUMERATED_OBJECT_SET",
+      "semantic_content": {
+        "history_immutable": true,
+        "currentness_requires_explicit_governed_selection": true,
+        "latest_timestamp_commit_filesystem_order_forbidden": true
+      },
+      "identity_classification": "LIFECYCLE_CURRENT_SELECTION_AUTHORITY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-ALL-003",
+      "name": "Exact source/evidence dereference firewall",
+      "domain_count": 712,
+      "domain_sha256_sorted_ids": "7a1bc6e49764c62c8e5c8f76b553085e3ba0d384184a10fe3726ac7cc039db08",
+      "domain_membership_rule": "EXACT_ENUMERATED_OBJECT_SET",
+      "semantic_content": {
+        "shared_policy_never_replaces_exact_required_source_or_evidence_binding": true,
+        "hash_identity_not_semantic_truth": true
+      },
+      "identity_classification": "EVIDENCE_PROVENANCE_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-ALL-004",
+      "name": "Historical value-state preservation schema",
+      "domain_count": 712,
+      "domain_sha256_sorted_ids": "7a1bc6e49764c62c8e5c8f76b553085e3ba0d384184a10fe3726ac7cc039db08",
+      "domain_membership_rule": "EXACT_ENUMERATED_OBJECT_SET",
+      "semantic_content": {
+        "distinguish": [
+          "EXPLICIT_LOCAL_VALUE",
+          "EMPTY_STRING",
+          "NULL",
+          "ABSENT_FIELD",
+          "NOT_APPLICABLE",
+          "UNRESOLVED",
+          "INHERITED_OR_SEPARATELY_GOVERNED_POLICY_REF"
+        ],
+        "shared_policy_ref_may_not_rewrite_historical_local_field_state": true
+      },
+      "identity_classification": "HISTORICAL_REPLAY_NORMALIZATION_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-001",
+      "name": "REJECT terminal state / truth firewall",
+      "domain_count": 697,
+      "domain_sha256_sorted_ids": "4749389d56d86cf75bb4927fe230b73d1c0f04ea7a0be6a610eec992a7fa0c8b",
+      "domain_membership_rule": "EXACT_P5_REJECT_ID_SET",
+      "semantic_content": {
+        "state": "EXACT_CANDIDATE_REJECT",
+        "historical_job3_token": "REJECT",
+        "truth_bearing": false,
+        "does_not_mean": [
+          "PROVEN_NEGATIVE",
+          "NONEDGE",
+          "GENERIC_FALSE",
+          "UNIVERSAL_RELATION_ABSENCE"
+        ]
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-002",
+      "name": "Exact-candidate adjudication scope",
+      "domain_count": 697,
+      "domain_sha256_sorted_ids": "4749389d56d86cf75bb4927fe230b73d1c0f04ea7a0be6a610eec992a7fa0c8b",
+      "domain_membership_rule": "EXACT_P5_REJECT_ID_SET",
+      "semantic_content": {
+        "scope": "EXACT_IMMUTABLE_O12_CANDIDATE_OBJECT_ONLY",
+        "subset_rescue": "PROHIBITED",
+        "membership_mutation": "PROHIBITED",
+        "silent_retyping": "PROHIBITED"
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-003",
+      "name": "Global Job3 REJECT authority ceiling",
+      "domain_count": 697,
+      "domain_sha256_sorted_ids": "4749389d56d86cf75bb4927fe230b73d1c0f04ea7a0be6a610eec992a7fa0c8b",
+      "domain_membership_rule": "EXACT_P5_REJECT_ID_SET",
+      "semantic_content": {
+        "global_contract_ceiling": "EXACT_CANDIDATE_RELATION_SEMANTICS__SOURCE_NATIVE_MEANING_AND_BOUNDARY_PROVENANCE_ONLY"
+      },
+      "identity_classification": "EVIDENCE_CEILING_PROHIBITED_INFERENCE_AUTHORITY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-004",
+      "name": "Global REJECT prohibited-inference firewall",
+      "domain_count": 697,
+      "domain_sha256_sorted_ids": "4749389d56d86cf75bb4927fe230b73d1c0f04ea7a0be6a610eec992a7fa0c8b",
+      "domain_membership_rule": "EXACT_P5_REJECT_ID_SET",
+      "semantic_content": {
+        "global_firewall": [
+          "DO_NOT_CONVERT_PROPOSITION_NONEQUIVALENCE_TO_UNIVERSAL_RELATION_REJECTION",
+          "DO_NOT_INFER_DOWNSTREAM_PRESSURE_OR_PERSONALITY",
+          "DO_NOT_RETYPE_OR_RESCUE_SUBSET"
+        ]
+      },
+      "identity_classification": "EVIDENCE_CEILING_PROHIBITED_INFERENCE_AUTHORITY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-005",
+      "name": "REJECT reason taxonomy root",
+      "domain_count": 697,
+      "domain_sha256_sorted_ids": "4749389d56d86cf75bb4927fe230b73d1c0f04ea7a0be6a610eec992a7fa0c8b",
+      "domain_membership_rule": "EXACT_P5_REJECT_ID_SET",
+      "semantic_content": {
+        "root": "FAILED_NAMED_O10_RELATION_PREREQUISITE"
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-006",
+      "name": "REJECT future-candidate non-prohibition",
+      "domain_count": 697,
+      "domain_sha256_sorted_ids": "4749389d56d86cf75bb4927fe230b73d1c0f04ea7a0be6a610eec992a7fa0c8b",
+      "domain_membership_rule": "EXACT_P5_REJECT_ID_SET",
+      "semantic_content": {
+        "historical_reject_future_effect": "DOES_NOT_PROHIBIT_DIFFERENT_CORRECTLY_TYPED_OR_NEW_SCOPE_FUTURE_CANDIDATE",
+        "obligation_is_truth": false
+      },
+      "identity_classification": "LIFECYCLE_CURRENT_SELECTION_AUTHORITY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-007",
+      "name": "REJECT no-current-selection implication",
+      "domain_count": 697,
+      "domain_sha256_sorted_ids": "4749389d56d86cf75bb4927fe230b73d1c0f04ea7a0be6a610eec992a7fa0c8b",
+      "domain_membership_rule": "EXACT_P5_REJECT_ID_SET",
+      "semantic_content": {
+        "current_select_asserted": false,
+        "meaning": "NO_CURRENT_SELECTION_INFERRED_FROM_TIMESTAMP_COMMIT_ORDER_OR_ABSENCE_OF_NEWER_ROW"
+      },
+      "identity_classification": "LIFECYCLE_CURRENT_SELECTION_AUTHORITY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-008",
+      "name": "Immutable Job3 historical REJECT freeze ref",
+      "domain_count": 697,
+      "domain_sha256_sorted_ids": "4749389d56d86cf75bb4927fe230b73d1c0f04ea7a0be6a610eec992a7fa0c8b",
+      "domain_membership_rule": "EXACT_P5_REJECT_ID_SET; shared authority metadata, not shared policy",
+      "semantic_content": {
+        "immutable_historical_reject": "JOB3_R3_FINAL_STATE_R1.json#sha256=0260fe104d1387dcaff06d54f54227775dcf09f97db275628d7465fd8bc1263a#state_id=R10K_JOB3_R3_CENTRAL_INTEGRATION_FREEZE_R1"
+      },
+      "identity_classification": "GOVERNING_AUTHORITY_INSTANCE_METADATA",
+      "factoring_disposition": "NOT_APPLICABLE"
+    },
+    {
+      "policy_id": "P8-SP-R-RULE-T01",
+      "name": "S14-T01 rule-grammar prohibited-inference default",
+      "domain_count": 142,
+      "domain_sha256_sorted_ids": "6b401291feac1ffe2b61f5662c7c806b89aa420f28eb7e52320b75634cf04be4",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE candidate_type_rule.rule_id == S14-T01",
+      "semantic_content": {
+        "rule_id": "S14-T01",
+        "rule_grammar_default": "Do not infer a global trait or untested-target generalization."
+      },
+      "identity_classification": "SEMANTIC_DEFINITION_OR_RULE_LEVEL_EVIDENCE_BOUNDARY_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-RULE-T02",
+      "name": "S14-T02 rule-grammar prohibited-inference default",
+      "domain_count": 7,
+      "domain_sha256_sorted_ids": "9c548ca3b250d6f04a77c63b9bfffbad7c3596fa4002e7c895bb621874b4345d",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE candidate_type_rule.rule_id == S14-T02",
+      "semantic_content": {
+        "rule_id": "S14-T02",
+        "rule_grammar_default": "Do not infer causal triggers or beliefs under untested conditions."
+      },
+      "identity_classification": "SEMANTIC_DEFINITION_OR_RULE_LEVEL_EVIDENCE_BOUNDARY_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-RULE-T05",
+      "name": "S14-T05 rule-grammar prohibited-inference default",
+      "domain_count": 59,
+      "domain_sha256_sorted_ids": "4e2866a12c648c4b2e2d369a66438a828ba7af6b8ba3209e614de7f62da93f21",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE candidate_type_rule.rule_id == S14-T05",
+      "semantic_content": {
+        "rule_id": "S14-T05",
+        "rule_grammar_default": "Do not infer actual sacrifice, altruism or causal effect of income."
+      },
+      "identity_classification": "SEMANTIC_DEFINITION_OR_RULE_LEVEL_EVIDENCE_BOUNDARY_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-RULE-T06",
+      "name": "S14-T06 rule-grammar prohibited-inference default",
+      "domain_count": 4,
+      "domain_sha256_sorted_ids": "6d024dd82853667b4355f1bf3b4cae61a5a361608064a00ec7e806d116e2f29b",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE candidate_type_rule.rule_id == S14-T06",
+      "semantic_content": {
+        "rule_id": "S14-T06",
+        "rule_grammar_default": "Do not convert stated/expected conduct into observed behavior or infer moral character."
+      },
+      "identity_classification": "SEMANTIC_DEFINITION_OR_RULE_LEVEL_EVIDENCE_BOUNDARY_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-RULE-T11",
+      "name": "S14-T11 rule-grammar prohibited-inference default",
+      "domain_count": 476,
+      "domain_sha256_sorted_ids": "6181c18dcef33842e843d4941879150f93c407eea6f26a2c3e95aaef71112583",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE candidate_type_rule.rule_id == S14-T11",
+      "semantic_content": {
+        "rule_id": "S14-T11",
+        "rule_grammar_default": "Do not create a latent psychometric scale without separate measurement authority."
+      },
+      "identity_classification": "SEMANTIC_DEFINITION_OR_RULE_LEVEL_EVIDENCE_BOUNDARY_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-RULE-T12",
+      "name": "S14-T12 rule-grammar prohibited-inference default",
+      "domain_count": 6,
+      "domain_sha256_sorted_ids": "d9ae86c5a1abab69eb1e6075d634f048fa23a51501e939dc1d12f852aaeaf799",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE candidate_type_rule.rule_id == S14-T12",
+      "semantic_content": {
+        "rule_id": "S14-T12",
+        "rule_grammar_default": "Non-applicability must not become opposition, neutrality or ordinary missingness."
+      },
+      "identity_classification": "SEMANTIC_DEFINITION_OR_RULE_LEVEL_EVIDENCE_BOUNDARY_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-RULE-T15",
+      "name": "S14-T15 rule-grammar prohibited-inference default",
+      "domain_count": 3,
+      "domain_sha256_sorted_ids": "155cd3d191df1eb8aa28e4075d31ab335dc2f0ee840363ac49d491e9e003a4a2",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE candidate_type_rule.rule_id == S14-T15",
+      "semantic_content": {
+        "rule_id": "S14-T15",
+        "rule_grammar_default": "Do not infer causal motive, moral character, latent trait, or actual individual enactment without respondent-composable evidence. Do not treat stated/intended conduct as observed behavior. Do not infer means/end linkage from general social-science knowledge."
+      },
+      "identity_classification": "SEMANTIC_DEFINITION_OR_RULE_LEVEL_EVIDENCE_BOUNDARY_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-R-DEFECT-CLASSIFY",
+      "name": "Generator/scope-defect classification interpretation",
+      "domain_count": 125,
+      "domain_sha256_sorted_ids": "2059a5b541bad98199009cf80997649440f84e3a5b420955061859dfdd9b08f4",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE generator_defect.suspected == true",
+      "semantic_content": {
+        "construction_status": "CANDIDATE_SCOPE_OR_GENERATOR_DEFECT_FLAGGED",
+        "taxonomy_only": true,
+        "exact_defect_note_must_remain_per_object": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-NODEFECT-INTERPRET",
+      "name": "No recorded scope-defect interpretation",
+      "domain_count": 572,
+      "domain_sha256_sorted_ids": "288087c634f3a2075985f7610bbd818a4b08c48e576c701b91b1c47a49cf5b9f",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE generator_defect.suspected == false",
+      "semantic_content": {
+        "construction_status": "NO_CANDIDATE_SCOPE_DEFECT_FLAG",
+        "empty_defect_note_is_historical_local_state": true,
+        "no_universal_future_nondefect_theorem": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-DEFECT-ba0b7a45",
+      "name": "Successor defect class: COMMON_PREDICATE_OR_SCOPE_OVERGENERALIZATION",
+      "domain_count": 42,
+      "domain_sha256_sorted_ids": "ceffb4ee8dd927b539026e3a5be82d534228035846166d2bd6e088ff587fa23c",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE reason_class.governed_successor_obligation_class == COMMON_PREDICATE_OR_SCOPE_OVERGENERALIZATION",
+      "semantic_content": {
+        "governed_successor_obligation_class": "COMMON_PREDICATE_OR_SCOPE_OVERGENERALIZATION",
+        "classification_only": true,
+        "exact_defect_note_and_obligation_id_remain_per_object": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-DEFECT-f5c1a05b",
+      "name": "Successor defect class: CONDITION_AXIS_OR_RESPONSE_TOPOLOGY_DEFECT",
+      "domain_count": 7,
+      "domain_sha256_sorted_ids": "9c548ca3b250d6f04a77c63b9bfffbad7c3596fa4002e7c895bb621874b4345d",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE reason_class.governed_successor_obligation_class == CONDITION_AXIS_OR_RESPONSE_TOPOLOGY_DEFECT",
+      "semantic_content": {
+        "governed_successor_obligation_class": "CONDITION_AXIS_OR_RESPONSE_TOPOLOGY_DEFECT",
+        "classification_only": true,
+        "exact_defect_note_and_obligation_id_remain_per_object": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-DEFECT-22ae3efb",
+      "name": "Successor defect class: IMPLEMENTATION_VARIANT_MISTAKEN_FOR_TARGET",
+      "domain_count": 13,
+      "domain_sha256_sorted_ids": "05d1ffcaa3fc54035f035cb5cf7e771a11da1c6df2abaed35eef4a389d6bc88b",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE reason_class.governed_successor_obligation_class == IMPLEMENTATION_VARIANT_MISTAKEN_FOR_TARGET",
+      "semantic_content": {
+        "governed_successor_obligation_class": "IMPLEMENTATION_VARIANT_MISTAKEN_FOR_TARGET",
+        "classification_only": true,
+        "exact_defect_note_and_obligation_id_remain_per_object": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-DEFECT-99b8c59b",
+      "name": "Successor defect class: RELATION_ROLE_TYPING_DEFECT",
+      "domain_count": 42,
+      "domain_sha256_sorted_ids": "16c64eeec618f4407c416b6cf5b366275e16ba33ee4642497b80124020f8d413",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE reason_class.governed_successor_obligation_class == RELATION_ROLE_TYPING_DEFECT",
+      "semantic_content": {
+        "governed_successor_obligation_class": "RELATION_ROLE_TYPING_DEFECT",
+        "classification_only": true,
+        "exact_defect_note_and_obligation_id_remain_per_object": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-DEFECT-818ece2f",
+      "name": "Successor defect class: ROUTED_SCOPE_GENERATION_DEFECT",
+      "domain_count": 6,
+      "domain_sha256_sorted_ids": "d9ae86c5a1abab69eb1e6075d634f048fa23a51501e939dc1d12f852aaeaf799",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE reason_class.governed_successor_obligation_class == ROUTED_SCOPE_GENERATION_DEFECT",
+      "semantic_content": {
+        "governed_successor_obligation_class": "ROUTED_SCOPE_GENERATION_DEFECT",
+        "classification_only": true,
+        "exact_defect_note_and_obligation_id_remain_per_object": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-DEFECT-080438a3",
+      "name": "Successor defect class: TARGET_CONDITION_AXIS_CONFUSION",
+      "domain_count": 15,
+      "domain_sha256_sorted_ids": "b7d694f84cfe030a78fa6ec1d2760eb11a303bf8291ce8d180c2be1919aa276e",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE reason_class.governed_successor_obligation_class == TARGET_CONDITION_AXIS_CONFUSION",
+      "semantic_content": {
+        "governed_successor_obligation_class": "TARGET_CONDITION_AXIS_CONFUSION",
+        "classification_only": true,
+        "exact_defect_note_and_obligation_id_remain_per_object": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-SUCCESSOR-125",
+      "name": "Append-only successor-obligation lifecycle template",
+      "domain_count": 125,
+      "domain_sha256_sorted_ids": "2059a5b541bad98199009cf80997649440f84e3a5b420955061859dfdd9b08f4",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WITH one successor_obligation_ref; exact set equals 125 defect-bearing IDs",
+      "semantic_content": {
+        "central_disposition": "APPEND_ONLY_O12_SUCCESSOR_OBLIGATION__DO_NOT_MUTATE_R3",
+        "current_r3_effect": "SUPPLIED_CANDIDATE_REMAINS_TERMINAL_REJECT",
+        "future_scope": "INSPECT_GENERATION_MECHANISM_AND_TEST_FOR_MISSING_CORRECTLY_TYPED_CANDIDATE_WITHOUT_REOPENING_THIS_JOB3_VERDICT",
+        "blocks_job3_r3_freeze": "false",
+        "carrier": "O12_R3_SUCCESSOR_OBLIGATIONS_FROM_JOB3_R1.csv#sha256=8a3083f213ac5daac123288d02a381e9e92e7e98663b3dc4dc61f155cfaaa205",
+        "successor_event_type": "APPENDS_SUCCESSOR_OBLIGATION",
+        "successor_obligation_is_truth": false
+      },
+      "identity_classification": "LIFECYCLE_CURRENT_SELECTION_AUTHORITY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-NO-SUCCESSOR-572",
+      "name": "No Job3 successor obligation recorded is not a no-future-successor theorem",
+      "domain_count": 572,
+      "domain_sha256_sorted_ids": "288087c634f3a2075985f7610bbd818a4b08c48e576c701b91b1c47a49cf5b9f",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WITH successor_obligation_refs == []",
+      "semantic_content": {
+        "successor_obligation_refs_state": "EMPTY_LIST",
+        "interpretation": "NO_JOB3_SUCCESSOR_OBLIGATION_RECORDED__NOT_UNIVERSAL_NO_SUCCESSOR_THEOREM"
+      },
+      "identity_classification": "LIFECYCLE_CURRENT_SELECTION_AUTHORITY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-R-W04-EMPTY-46",
+      "name": "W04 historical local empty-string preservation",
+      "domain_count": 46,
+      "domain_sha256_sorted_ids": "3f5bbebd5706fb7d5fb5b74dad73628997fdd38bc73795e7a2782be3f42ad919",
+      "domain_membership_rule": "EXACT_P5_OBJECTS_WHERE lifecycle_provenance_refs.source_worker_id == W04",
+      "semantic_content": {
+        "historical_local_states": {
+          "semantic_confidence": "EMPTY_STRING",
+          "evidence_ceiling": "EMPTY_STRING",
+          "prohibited_inference": "EMPTY_STRING"
+        },
+        "may_not_be_rewritten_as_explicit_shared_nonempty_local_value": true
+      },
+      "identity_classification": "HISTORICAL_REPLAY_NORMALIZATION_POLICY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-B-001",
+      "name": "BLOCKED terminal no-truth ceiling",
+      "domain_count": 15,
+      "domain_sha256_sorted_ids": "ec0e03018eed120d45f8b165c2fc736f2f0361413b8024e63436ea99862234e1",
+      "domain_membership_rule": "EXACT_P6_15_CANDIDATE_SET",
+      "semantic_content": {
+        "terminal_disposition": "BLOCKED",
+        "no_truth_ceiling": "NO_POSITIVE_OR_NEGATIVE_RELATION_AUTHORITY_BEYOND_TERMINAL_BLOCKED_STATUS",
+        "does_not_mean": [
+          "FALSE",
+          "PROVEN_NEGATIVE",
+          "REJECT",
+          "ACCEPT"
+        ]
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_POLICY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    },
+    {
+      "policy_id": "P8-SP-B-CLASS-80ab6664",
+      "name": "BLOCKED blocker class: NATIVE_SOURCE_MEMBER_BINDING_UNRESOLVED",
+      "domain_count": 4,
+      "domain_sha256_sorted_ids": "1086fcef50b614f43a3a55e85a8258a689f569b0980e83828af76ea455b13797",
+      "domain_membership_rule": "EXACT_P6_OBJECTS_WHERE blocker_class == NATIVE_SOURCE_MEMBER_BINDING_UNRESOLVED",
+      "semantic_content": {
+        "blocker_class": "NATIVE_SOURCE_MEMBER_BINDING_UNRESOLVED",
+        "common_blocker_code_not_common_missing_proof": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-B-CLASS-b9cfb1d6",
+      "name": "BLOCKED blocker class: T15_DIRECT_VIOLATION_BRIDGE_NOT_SOURCE_PROVEN",
+      "domain_count": 1,
+      "domain_sha256_sorted_ids": "5119a6e5a8f002d53fe0306793b0edc96589cf9fb2109af8e5df134dc5eb0b7f",
+      "domain_membership_rule": "EXACT_P6_OBJECTS_WHERE blocker_class == T15_DIRECT_VIOLATION_BRIDGE_NOT_SOURCE_PROVEN",
+      "semantic_content": {
+        "blocker_class": "T15_DIRECT_VIOLATION_BRIDGE_NOT_SOURCE_PROVEN",
+        "common_blocker_code_not_common_missing_proof": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-B-CLASS-5de8c9ee",
+      "name": "BLOCKED blocker class: T15_EXPLICIT_REALIZATION_OR_MEANS_BRIDGE_NOT_ESTABLISHED",
+      "domain_count": 9,
+      "domain_sha256_sorted_ids": "5fc6ee84939de789b6026fb37b5ceb545c38e556f7fdce643e2b396df69b0d1d",
+      "domain_membership_rule": "EXACT_P6_OBJECTS_WHERE blocker_class == T15_EXPLICIT_REALIZATION_OR_MEANS_BRIDGE_NOT_ESTABLISHED",
+      "semantic_content": {
+        "blocker_class": "T15_EXPLICIT_REALIZATION_OR_MEANS_BRIDGE_NOT_ESTABLISHED",
+        "common_blocker_code_not_common_missing_proof": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-B-CLASS-3132217d",
+      "name": "BLOCKED blocker class: T15_INSTITUTIONAL_REALIZATION_BRIDGE_NOT_SOURCE_PROVEN",
+      "domain_count": 1,
+      "domain_sha256_sorted_ids": "359bab4fb23faa4e894d0763d5ba08f5eccef7fbdd23be8e077582a875d1f856",
+      "domain_membership_rule": "EXACT_P6_OBJECTS_WHERE blocker_class == T15_INSTITUTIONAL_REALIZATION_BRIDGE_NOT_SOURCE_PROVEN",
+      "semantic_content": {
+        "blocker_class": "T15_INSTITUTIONAL_REALIZATION_BRIDGE_NOT_SOURCE_PROVEN",
+        "common_blocker_code_not_common_missing_proof": true
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_TAXONOMY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-B-REVIEW-5b04f7b7",
+      "name": "BLOCKED review/reopen evidence class: SOURCE_NATIVE_MEMBER_BINDING_REVIEW",
+      "domain_count": 4,
+      "domain_sha256_sorted_ids": "1086fcef50b614f43a3a55e85a8258a689f569b0980e83828af76ea455b13797",
+      "domain_membership_rule": "EXACT_P6_OBJECTS_WHERE resolution_class == SOURCE_NATIVE_MEMBER_BINDING_REVIEW",
+      "semantic_content": {
+        "resolution_class": "SOURCE_NATIVE_MEMBER_BINDING_REVIEW",
+        "satisfying_evidence": "SOURCE_NATIVE_GOVERNED_EVIDENCE_CLOSES_EXACT_MISSING_MEMBER_STEM_TARGET_SEMANTICS",
+        "bypass_forbidden": [
+          "VARIABLE_LABEL",
+          "NEIGHBORING_Q018_STEM",
+          "R11_MEMBERSHIP_WITHOUT_NEEDED_NATIVE_PROOF",
+          "GUESSED_COUNTRY_SPECIFIC_LABEL"
+        ]
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_REVIEW_POLICY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-B-REVIEW-8c1ca803",
+      "name": "BLOCKED review/reopen evidence class: T15_EXPLICIT_BRIDGE_EVIDENCE_REVIEW",
+      "domain_count": 11,
+      "domain_sha256_sorted_ids": "7f67f0a81cf9c4787d5ac073d32a280e9dbca14c4a5ef67d3e354cbec4cc617e",
+      "domain_membership_rule": "EXACT_P6_OBJECTS_WHERE resolution_class == T15_EXPLICIT_BRIDGE_EVIDENCE_REVIEW",
+      "semantic_content": {
+        "resolution_class": "T15_EXPLICIT_BRIDGE_EVIDENCE_REVIEW",
+        "satisfying_evidence": "GOVERNED_EVIDENCE_ESTABLISHES_THE_EXACT_MISSING_T15_BRIDGE",
+        "bypass_forbidden": [
+          "ADJACENCY",
+          "SAME_POLITICAL_TOPIC",
+          "BROAD_DEMOCRACY_THEORY",
+          "COMMON_RESPONSE_TOPOLOGY",
+          "GENERAL_POLITICAL_SCIENCE_CAUSAL_INFERENCE",
+          "PROHIBITED_RESPONDENT_VALUE_JOIN"
+        ]
+      },
+      "identity_classification": "GOVERNING_SEMANTIC_ADJUDICATION_REVIEW_POLICY",
+      "factoring_disposition": "FACTORIZABLE_WITH_EXACT_PER_OBJECT_DELTA"
+    },
+    {
+      "policy_id": "P8-SP-B-REOPEN-001",
+      "name": "REOPENS_BLOCKED theorem",
+      "domain_count": 15,
+      "domain_sha256_sorted_ids": "ec0e03018eed120d45f8b165c2fc736f2f0361413b8024e63436ea99862234e1",
+      "domain_membership_rule": "EXACT_P6_15_CANDIDATE_SET",
+      "semantic_content": {
+        "requires": [
+          "EXACT_PREDECESSOR_BLOCKED_ADJUDICATION",
+          "EXACT_SAME_CANDIDATE_PROPOSITION",
+          "EXACT_BLOCKER_OBLIGATION",
+          "GOVERNED_RESOLUTION_EVIDENCE_SATISFYING_EXACT_BLOCKER",
+          "EXACT_NEW_ADJUDICATION_JURISDICTION"
+        ],
+        "result": "NEW_ADJUDICATION_ELIGIBILITY",
+        "does_not_assert_truth": true,
+        "old_blocked_history_remains_immutable": true
+      },
+      "identity_classification": "LIFECYCLE_CURRENT_SELECTION_AUTHORITY",
+      "factoring_disposition": "FACTORIZABLE_EXACTLY"
+    }
+  ],
+  "domain_membership_evidence_file": "P8_SHARED_POLICY_DOMAIN_MEMBERSHIP.csv",
+  "domain_membership_rows": 10746
+}

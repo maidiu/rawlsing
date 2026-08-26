@@ -1,0 +1,141 @@
+registry_version: bounded-r184-v1
+source_family: EVS
+status: governed
+scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+joint_configuration_adjudication_set_hash: 3f10c787fe15e4c7efaab7654af6494e6a750cd11ac59a7794d0441707a28b7d
+response_portability_status: NOT_AUTHORIZED_BY_P3
+families:
+- family_id: JCFG-EVS-1981-MORAL-JUSTIFIABILITY
+  joint_configuration_id: JCFG-EVS-1981-MORAL-JUSTIFIABILITY
+  source_family: EVS
+  family_type: moral_justifiability_battery
+  family_structure_type: moral_justifiability_battery
+  expected_multi_target: true
+  family_label: EVS moral-justifiability canary battery
+  eligible_waves:
+  - '1981'
+  minimum_items_answered: 3
+  authority_metadata:
+    scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+    production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+    p2_source_structure_id: evs_structure_ef2f7c70914e905b8adf
+    p2_authority_effect: P2_DISCOVERY_EVIDENCE_ONLY_NOT_J_FAMILY_AUTHORITY
+    joint_configuration_adjudication_id: V550JADJ-0004
+    joint_configuration_decision_status: ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION
+    joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+    authority_basis_status: HUMAN_ADJUDICATED_FROM_EXACT_SOURCE_EVIDENCE
+    p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+    p3_authority_effect: QUESTION_PROPOSITION_IDENTITY_ONLY_WHERE_MEMBERSHIP_EXISTS
+    response_portability_status: NOT_AUTHORIZED_BY_P3
+    configuration_authority_status: GOVERNED_BOUNDED_CANARY_ONLY
+    adjudication_rationale: The four items are exact children of one questionnaire
+      justifiability parent and share the certified 1-never to 10-always response
+      contract. They form a moral-permissibility profile while retaining case-specific
+      propositions.
+    authorized_inference: Joint signed response-role profile across the four listed
+      moral cases.
+    forbidden_inferences:
+    - case equivalence
+    - unidimensional moral score
+    - cross-source value equivalence
+    - production-family completeness
+  item_role_groups:
+    fare_evasion_justifiability:
+    - var_code: v471
+      condition_label: 'do you justify: avoiding fare on public transport'
+      joint_configuration_adjudication_id: V550JADJ-0004
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_6db3133e85fb0dd379ba53da
+      question_implementation_id: question_impl.phase0.1c463c9b4e8512fc3a63
+      p2_source_structure_id: evs_structure_ef2f7c70914e905b8adf
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    tax_cheating_justifiability:
+    - var_code: v472
+      condition_label: 'do you justify: cheating on tax'
+      joint_configuration_adjudication_id: V550JADJ-0004
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_5610b9b61f7601eb8f5be081
+      question_implementation_id: question_impl.phase0.eaca327ed88b9df4a493
+      p2_source_structure_id: evs_structure_ef2f7c70914e905b8adf
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    suicide_justifiability:
+    - var_code: v514
+      condition_label: 'do you justify: suicide'
+      joint_configuration_adjudication_id: V550JADJ-0004
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_67a70d74ddd93e4590472c63
+      question_implementation_id: question_impl.phase0.a970e180b43ab4528437
+      p2_source_structure_id: evs_structure_ef2f7c70914e905b8adf
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+    self_defence_killing_justifiability:
+    - var_code: v517
+      condition_label: 'do you justify: killing in self-defence'
+      joint_configuration_adjudication_id: V550JADJ-0004
+      joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+      p2_lineage_id: p2lineage_be87e5a88798d5d03f325459
+      question_implementation_id: question_impl.phase0.eb0db552fdb6df5da9b1
+      p2_source_structure_id: evs_structure_ef2f7c70914e905b8adf
+      p3_canonical_family_id: ''
+      p3_current_family_revision_id: ''
+      p3_variant_revision_id: ''
+      p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+      p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      response_portability_status: NOT_AUTHORIZED_BY_P3
+  target_resolution_rules:
+  - applies_to_roles:
+    - fare_evasion_justifiability
+    - tax_cheating_justifiability
+    - suicide_justifiability
+    - self_defence_killing_justifiability
+    target_entity_template: jcfg-evs-1981-moral-justifiability_{condition_label}
+    target_domain: moral_justifiability_battery
+    target_group_label_from: condition_label
+    target_resolution_grain: condition_label
+    target_resolution_status: bounded_registry_resolved_item
+    target_resolution_authority_source: bounded_v550j_registry.item_role_groups
+    target_resolution_basis_source: P2 source structure plus exact source-wave variable
+      binding
+  boundary_rules:
+  - boundary_pattern_type: broad_support
+    support_share_min: 0.75
+    oppose_share_max: 0.25
+  - boundary_pattern_type: broad_opposition
+    oppose_share_min: 0.75
+    support_share_max: 0.25
+  - boundary_pattern_type: mixed_signed_configuration
+    require_any:
+    - role: fare_evasion_justifiability
+      semantic_response_role: support
+    - role: tax_cheating_justifiability
+      semantic_response_role: support
+    - role: suicide_justifiability
+      semantic_response_role: support
+    - role: self_defence_killing_justifiability
+      semantic_response_role: support
+    - role: fare_evasion_justifiability
+      semantic_response_role: oppose
+    - role: tax_cheating_justifiability
+      semantic_response_role: oppose
+    - role: suicide_justifiability
+      semantic_response_role: oppose
+    - role: self_defence_killing_justifiability
+      semantic_response_role: oppose
+registry_content_hash: b78791f933a63136c81bcbeca5882932c864b859a6f7e0c2aa05c20fdf5f8030

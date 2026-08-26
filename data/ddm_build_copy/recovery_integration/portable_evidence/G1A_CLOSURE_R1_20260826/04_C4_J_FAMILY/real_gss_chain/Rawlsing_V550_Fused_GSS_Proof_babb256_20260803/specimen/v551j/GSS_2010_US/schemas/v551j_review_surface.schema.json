@@ -1,0 +1,516 @@
+{
+  "name": "v551j_review_surface",
+  "run_id": "GSS_2010_US",
+  "row_count": 75,
+  "column_count": 127,
+  "columns": [
+    {
+      "name": "run_id",
+      "dtype": "string"
+    },
+    {
+      "name": "packet_id",
+      "dtype": "string"
+    },
+    {
+      "name": "packet_contract_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "pattern_id",
+      "dtype": "string"
+    },
+    {
+      "name": "family_id",
+      "dtype": "string"
+    },
+    {
+      "name": "family_label",
+      "dtype": "string"
+    },
+    {
+      "name": "family_type",
+      "dtype": "string"
+    },
+    {
+      "name": "family_structure_type",
+      "dtype": "string"
+    },
+    {
+      "name": "source",
+      "dtype": "string"
+    },
+    {
+      "name": "source_family",
+      "dtype": "string"
+    },
+    {
+      "name": "wave",
+      "dtype": "string"
+    },
+    {
+      "name": "canonical_wave",
+      "dtype": "string"
+    },
+    {
+      "name": "country_code",
+      "dtype": "string"
+    },
+    {
+      "name": "survey_year",
+      "dtype": "float64"
+    },
+    {
+      "name": "created_at",
+      "dtype": "string"
+    },
+    {
+      "name": "schema_version",
+      "dtype": "string"
+    },
+    {
+      "name": "compiler_version",
+      "dtype": "string"
+    },
+    {
+      "name": "boundary_pattern_type",
+      "dtype": "string"
+    },
+    {
+      "name": "target_structure_status",
+      "dtype": "string"
+    },
+    {
+      "name": "v551_schema_version",
+      "dtype": "string"
+    },
+    {
+      "name": "v551_input_artifact_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "v550j_pattern_index_artifact_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "v550j_pattern_item_index_artifact_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "v550j_relation_signature_artifact_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "v550j_schema_version",
+      "dtype": "string"
+    },
+    {
+      "name": "v550j_manifest_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "v550j_readiness_report_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "question_family_registry_path",
+      "dtype": "string"
+    },
+    {
+      "name": "question_family_registry_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "question_family_registry_status",
+      "dtype": "string"
+    },
+    {
+      "name": "pattern_item_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "matched_relation_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "matched_context_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "special_or_missing_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "unmatched_explained_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "unmatched_unexplained_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "ambiguous_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "cross_contract_conflict_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "component_contract_complete",
+      "dtype": "bool"
+    },
+    {
+      "name": "component_order_integrity_status",
+      "dtype": "string"
+    },
+    {
+      "name": "matched_atom_ids_json",
+      "dtype": "string"
+    },
+    {
+      "name": "matched_atom_contract_hashes_json",
+      "dtype": "string"
+    },
+    {
+      "name": "matched_empirical_object_ids_json",
+      "dtype": "string"
+    },
+    {
+      "name": "matched_empirical_distribution_ids_json",
+      "dtype": "string"
+    },
+    {
+      "name": "distinct_matched_empirical_distribution_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "component_question_denominator_nonnull_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "component_question_denominator_null_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "component_question_denominator_min",
+      "dtype": "int64"
+    },
+    {
+      "name": "component_question_denominator_max",
+      "dtype": "int64"
+    },
+    {
+      "name": "component_question_denominators_ordered_json",
+      "dtype": "string"
+    },
+    {
+      "name": "denominator_separation_status",
+      "dtype": "string"
+    },
+    {
+      "name": "v552_pressure_linkable_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "v552_pressure_ineligible_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "v552_pressure_review_required_component_count",
+      "dtype": "int64"
+    },
+    {
+      "name": "v552_pressure_linkage_status_summary_json",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_response_identity_signature",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_empirical_distribution_signature",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_semantic_signature",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_orientation_signature",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_topology_signature",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_target_signature",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_structural_signature",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_component_measurement_signature",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_measurement_contract_hash",
+      "dtype": "string"
+    },
+    {
+      "name": "component_contract_hashes_ordered_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_measurement_contract_hashes_ordered_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_empirical_object_ids_ordered_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_empirical_distribution_ids_ordered_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_response_vector_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_semantic_vector_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_orientation_vector_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_topology_vector_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_target_vector_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_structural_vector_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_denominator_vector_json",
+      "dtype": "string"
+    },
+    {
+      "name": "component_pressure_linkage_vector_json",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_pattern_count_unweighted",
+      "dtype": "int64"
+    },
+    {
+      "name": "joint_pattern_count_weighted",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_probability_unweighted",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_probability_weighted",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_probability_basis",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_probability",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_n_unweighted",
+      "dtype": "int64"
+    },
+    {
+      "name": "joint_n_weighted",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_weighted_count_basis",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_support_threshold",
+      "dtype": "int64"
+    },
+    {
+      "name": "joint_support_ratio",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_support_ratio_margin",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_support_score",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_support_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_support_gate_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_prevalence_score",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_completion_rate",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_missingness_rate",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_effective_n",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_effective_n_ratio",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_confidence_score",
+      "dtype": "float64"
+    },
+    {
+      "name": "joint_weight_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_measurement_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_evidence_class",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_semantic_authority_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_directionality_authority_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_family_target_authority_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_structural_authority_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_measurement_authority_status",
+      "dtype": "string"
+    },
+    {
+      "name": "joint_evidence_authority_status",
+      "dtype": "string"
+    },
+    {
+      "name": "semantic_conflict_status",
+      "dtype": "string"
+    },
+    {
+      "name": "shared_structural_status",
+      "dtype": "string"
+    },
+    {
+      "name": "family_target_status",
+      "dtype": "string"
+    },
+    {
+      "name": "target_resolution_coverage",
+      "dtype": "float64"
+    },
+    {
+      "name": "mapping_coverage",
+      "dtype": "float64"
+    },
+    {
+      "name": "certification_status",
+      "dtype": "string"
+    },
+    {
+      "name": "review_required",
+      "dtype": "bool"
+    },
+    {
+      "name": "review_reason_codes_json",
+      "dtype": "string"
+    },
+    {
+      "name": "blocking_reason_codes_json",
+      "dtype": "string"
+    },
+    {
+      "name": "ready_for_v552j_joint_evidence",
+      "dtype": "bool"
+    },
+    {
+      "name": "ready_for_v552j_component_linkage",
+      "dtype": "bool"
+    },
+    {
+      "name": "ready_for_v553",
+      "dtype": "bool"
+    },
+    {
+      "name": "pressure_anchor_eligible",
+      "dtype": "bool"
+    },
+    {
+      "name": "temporal_pressure_authorized",
+      "dtype": "bool"
+    },
+    {
+      "name": "runtime_use_class",
+      "dtype": "string"
+    },
+    {
+      "name": "allowed_future_targets_json",
+      "dtype": "string"
+    },
+    {
+      "name": "forbidden_future_targets_json",
+      "dtype": "string"
+    },
+    {
+      "name": "forbidden_claim_ids_json",
+      "dtype": "string"
+    },
+    {
+      "name": "known_absences_json",
+      "dtype": "string"
+    },
+    {
+      "name": "review_priority",
+      "dtype": "string"
+    },
+    {
+      "name": "review_triage_priority_score",
+      "dtype": "float64"
+    }
+  ]
+}

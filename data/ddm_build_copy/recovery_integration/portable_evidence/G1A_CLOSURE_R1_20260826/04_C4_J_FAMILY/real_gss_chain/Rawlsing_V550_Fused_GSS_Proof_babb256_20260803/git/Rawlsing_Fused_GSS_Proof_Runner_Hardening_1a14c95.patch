@@ -1,0 +1,178 @@
+From 1a14c950e2e44c80eae1bcd8292683e23f3a050f Mon Sep 17 00:00:00 2001
+From: maidiu <matthewdavidsmith86@gmail.com>
+Date: Mon, 3 Aug 2026 11:00:23 -0400
+Subject: [PATCH] Harden bounded J-chain runner for fused proof
+
+---
+ .gitignore                                    |  2 +
+ .../run_bounded_nine_v550j_v551j_v552j.py     | 73 +++++++++++++++++--
+ 2 files changed, 68 insertions(+), 7 deletions(-)
+
+diff --git a/.gitignore b/.gitignore
+index 2ec1bfa..81bf453 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -14,5 +14,7 @@ checkpoints/respondent_substrate/
+ **/checkpoints/respondent_substrate/
+ **/v550_shared_respondent_substrate.parquet
+ **/v550_shared_respondent_substrate*.tmp
++**/ddm_repository_copy/v550/shared_cache/
++**/ddm_repository_copy/v550/validation/
+ 91_RECONSTRUCTION_CONTROL/manifests/*_PAYLOAD_SHA256.txt
+ 91_RECONSTRUCTION_CONTROL/manifests/*_GIT_BUNDLE_VERIFY.txt
+diff --git a/85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/code/run_bounded_nine_v550j_v551j_v552j.py b/85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/code/run_bounded_nine_v550j_v551j_v552j.py
+index eb86539..9c21484 100755
+--- a/85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/code/run_bounded_nine_v550j_v551j_v552j.py
++++ b/85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY/code/run_bounded_nine_v550j_v551j_v552j.py
+@@ -13,6 +13,7 @@ import time
+ import unicodedata
+ from pathlib import Path
+ from typing import Any
++from urllib.parse import urlsplit, urlunsplit
+ 
+ 
+ def norm(value: str) -> str:
+@@ -41,6 +42,37 @@ def find_script(repo_root: Path, name: str) -> Path:
+     raise FileNotFoundError(f"Missing compiler {name}; searched {candidates}")
+ 
+ 
++def runtime_pythonpath(repo_root: Path) -> str:
++    return str((repo_root / "35_V552J_COMPONENT_AWARE_STRATA_HORIZON_RUNTIME_BRIDGE" / "runtime_reproducibility_code").resolve())
++
++
++def command_for_report(command: list[str]) -> list[str]:
++    out: list[str] = []
++    redact_next = False
++    for item in command:
++        if redact_next:
++            out.append(redact_db_url(item))
++            redact_next = False
++            continue
++        out.append(item)
++        if item == "--db-url":
++            redact_next = True
++    return out
++
++
++def redact_db_url(value: str) -> str:
++    try:
++        parsed = urlsplit(value)
++    except Exception:
++        return "***"
++    if not parsed.scheme or not parsed.netloc:
++        return "***"
++    host = parsed.hostname or ""
++    port = f":{parsed.port}" if parsed.port else ""
++    netloc = f"***@{host}{port}" if parsed.username or parsed.password else parsed.netloc
++    return urlunsplit((parsed.scheme, netloc, parsed.path, parsed.query, parsed.fragment))
++
++
+ def read_manifest(path: Path) -> list[dict[str, str]]:
+     with path.open(encoding="utf-8", newline="") as handle:
+         return list(csv.DictReader(handle))
+@@ -65,14 +97,15 @@ def invoke(command: list[str], *, cwd: Path, log_path: Path, timeout: int, env:
+     started = time.time()
+     completed = subprocess.run(command, cwd=cwd, env=env, text=True, capture_output=True, timeout=timeout)
+     elapsed = round(time.time() - started, 3)
++    report_command = command_for_report(command)
+     log_path.write_text(
+-        "$ " + shlex.join(command) + "\n\n--- STDOUT ---\n" + completed.stdout + "\n--- STDERR ---\n" + completed.stderr,
++        "$ " + shlex.join(report_command) + "\n\n--- STDOUT ---\n" + completed.stdout + "\n--- STDERR ---\n" + completed.stderr,
+         encoding="utf-8",
+     )
+     return {
+         "exit_code": completed.returncode,
+         "elapsed_seconds": elapsed,
+-        "command": command,
++        "command": report_command,
+         "log_path": str(log_path),
+         "stdout_tail": completed.stdout[-4000:],
+         "stderr_tail": completed.stderr[-4000:],
+@@ -111,6 +144,18 @@ def load_json(path: Path) -> dict[str, Any]:
+         return {}
+ 
+ 
++def plan_for_report(plan: list[dict[str, Any]]) -> list[dict[str, Any]]:
++    redacted: list[dict[str, Any]] = []
++    for entry in plan:
++        out = dict(entry)
++        out["commands"] = {
++            stage: command_for_report(command)
++            for stage, command in entry.get("commands", {}).items()
++        }
++        redacted.append(out)
++    return redacted
++
++
+ def build_plan(args: argparse.Namespace) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+     repo = args.repo_root.resolve()
+     section = args.section.resolve()
+@@ -264,13 +309,14 @@ def main() -> int:
+     parser.add_argument("--continue-on-failure", action="store_true")
+     parser.add_argument("--timeout-seconds", type=int, default=3600)
+     parser.add_argument("--substrate-mode", choices=("prepared_required", "prepared_or_build", "prepared_or_forensic_fallback", "forensic_reharmonize"), default="prepared_or_build")
++    parser.add_argument("--stop-after", choices=("v550j", "v551j", "v552j"), default="v552j")
+     args = parser.parse_args()
+ 
+     args.output_root.mkdir(parents=True, exist_ok=True)
+     plan, preflight = build_plan(args)
+     reports = args.output_root / "reports"
+     reports.mkdir(parents=True, exist_ok=True)
+-    (reports / "bounded_nine_canary_execution_plan.json").write_text(json.dumps({"preflight": preflight, "plan": plan}, indent=2) + "\n", encoding="utf-8")
++    (reports / "bounded_nine_canary_execution_plan.json").write_text(json.dumps({"preflight": preflight, "plan": plan_for_report(plan)}, indent=2) + "\n", encoding="utf-8")
+ 
+     if args.plan_only:
+         print(json.dumps({"status": "PASS_PLAN_ONLY", "preflight": preflight, "scope_count": len(plan)}, indent=2))
+@@ -282,13 +328,18 @@ def main() -> int:
+         raise RuntimeError("MISSING_RUNTIME_MODULES: " + ",".join(missing_modules))
+ 
+     environment = os.environ.copy()
++    runtime_path = runtime_pythonpath(args.repo_root.resolve())
++    prior_pythonpath = environment.get("PYTHONPATH", "")
++    environment["PYTHONPATH"] = runtime_path if not prior_pythonpath else runtime_path + os.pathsep + prior_pythonpath
++    stage_order = ("v550j", "v551j", "v552j")
++    stages_to_run = stage_order[: stage_order.index(args.stop_after) + 1]
+     results: list[dict[str, Any]] = []
+     for entry in plan:
+         scope = entry["scope_dir"]
+         result: dict[str, Any] = {key: entry[key] for key in ("source_family", "wave", "country_code", "scope_dir", "run_id", "shard_id", "joint_configuration_id")}
+         result["stages"] = {}
+         failed = False
+-        for stage in ("v550j", "v551j", "v552j"):
++        for stage in stages_to_run:
+             run = invoke(entry["commands"][stage], cwd=args.repo_root, log_path=args.output_root / "logs" / scope / f"{stage}.log", timeout=args.timeout_seconds, env=environment)
+             result["stages"][stage] = run
+             if run["exit_code"] != 0:
+@@ -306,9 +357,15 @@ def main() -> int:
+                 "v550j_registry_applicable": v550j_ready.get("family_registry_status") == "applicable",
+                 "v550j_not_blocked": not v550j_ready.get("blocking_issues"),
+                 "v551j_ready_for_v552j": bool(v551j_ready.get("ready_for_v552j_joint_evidence")),
+-                "v552j_readiness_present": bool(v552j_ready),
+             }
++            if "v552j" in stages_to_run:
++                checks.update({
++                    "v552j_readiness_present": bool(v552j_ready),
++                    "v552j_not_blocked": not str(v552j_ready.get("status", "")).startswith("BLOCKED"),
++                    "v552j_runtime_ready": bool(v552j_ready.get("runtime_ready") or v552j_ready.get("ready_for_runtime_consumption") or v552j_ready.get("packet_ready_for_v553")),
++                })
+             result["functional_checks"] = checks
++            result["completed_through_stage"] = args.stop_after
+             result["status"] = "PASS" if all(checks.values()) else "FAIL"
+             if result["status"] == "FAIL":
+                 result["failure_stage"] = "functional_gate"
+@@ -319,8 +376,10 @@ def main() -> int:
+         if failed and not args.continue_on_failure:
+             break
+ 
+-    status = "PASS_BOUNDED_NINE_J_CHAIN" if len(results) == len(plan) and all(row.get("status") == "PASS" for row in results) else "FAIL_BOUNDED_NINE_J_CHAIN"
+-    final = {"status": status, "preflight": preflight, "attempted_scope_count": len(results), "planned_scope_count": len(plan), "passed_scope_count": sum(row.get("status") == "PASS" for row in results), "results": results}
++    status_prefix = "PASS_BOUNDED_NINE_J_CHAIN_THROUGH_" + args.stop_after.upper()
++    fail_prefix = "FAIL_BOUNDED_NINE_J_CHAIN_THROUGH_" + args.stop_after.upper()
++    status = status_prefix if len(results) == len(plan) and all(row.get("status") == "PASS" for row in results) else fail_prefix
++    final = {"status": status, "stop_after": args.stop_after, "preflight": preflight, "attempted_scope_count": len(results), "planned_scope_count": len(plan), "passed_scope_count": sum(row.get("status") == "PASS" for row in results), "results": results}
+     (reports / "BOUNDED_NINE_J_CHAIN_RETURN.json").write_text(json.dumps(final, indent=2) + "\n", encoding="utf-8")
+     with (reports / "bounded_nine_j_chain_summary.csv").open("w", encoding="utf-8", newline="") as handle:
+         fields = ["source_family", "wave", "country_code", "scope_dir", "joint_configuration_id", "status", "failure_stage", "failure_reason"]
+-- 
+2.43.0
+

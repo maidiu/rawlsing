@@ -1,0 +1,45 @@
+{
+  "campaign": "G1A_CLOSURE_R1_20260826",
+  "agent": "A",
+  "scope": "known supplied portability corpus only",
+  "base": {
+    "coordination_branch_named_by_mandate": "agent/vozhd-to-vozhdy-inheritance-integration-r1",
+    "pinned_start_commit": "9b65e0232916f660d9a0bc343b01e94e438e2cbb",
+    "working_branch": "agent/g1a-github-portability-install-r1",
+    "remote_coordination_ref_observed_before_writes": "f805c6a0f79f00f66e1ecd7949a8bf05f707249c",
+    "pinned_commit_verified_fetchable": true,
+    "pinned_commit_is_ancestor_of_observed_coordination_ref": true
+  },
+  "transfer_carriers": [
+    {
+      "filename": "Rawlsing_G1A_GitHub_Portability_R1_CORE_20260826.zip",
+      "expected_sha256": "98326813914573a502f9b55b7c23418a181e31c8aed048380882f27649ee76a6",
+      "observed_sha256": "98326813914573a502f9b55b7c23418a181e31c8aed048380882f27649ee76a6",
+      "zip_integrity": "PASS",
+      "sidecar_identity": "PASS"
+    },
+    {
+      "filename": "Rawlsing_G1A_GitHub_Portability_R1_C4_20260826.zip",
+      "expected_sha256": "9668ca0951662fd79a7678297d8f10ff463cf21860667d1d4331107b32eaf95e",
+      "observed_sha256": "9668ca0951662fd79a7678297d8f10ff463cf21860667d1d4331107b32eaf95e",
+      "zip_integrity": "PASS",
+      "sidecar_identity": "PASS"
+    }
+  ],
+  "ready_transfer_objects": {
+    "declared_and_verified": 13,
+    "inner_zip_integrity_passed": 10,
+    "duplicate_control_filename_collisions": "4 cross-carrier names checked; all byte-identical"
+  },
+  "internal_provenance_validation": {
+    "validated_member_hashes": 428,
+    "gss_split_reassembly_sha256": "43d3f835bc4137060ddc1a84f36c47a320c8d99cb9585b33e7fc1cc6d3289de3",
+    "status": "PASS"
+  },
+  "transport_constraints": {
+    "ordinary_git_objects_at_or_above_95_mib": 0,
+    "largest_installed_object_bytes": 90150883,
+    "largest_installed_object": "99_PROVENANCE/transfer_carriers/Rawlsing_G1A_GitHub_Portability_R1_C4_20260826.zip"
+  },
+  "result": "PASS_KNOWN_CORPUS_ONLY__HISTORICAL_SHA_LOCATE_TARGETS_REFERRED_TO_AGENT_B"
+}
