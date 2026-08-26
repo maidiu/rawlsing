@@ -1,21 +1,60 @@
-# VOZHD DVA — G4 RECIPROCAL CROSS-EXAMINATION
+# VOZHD DVA — G4 TURN B: ARCHITECTURAL RESPONSE TO TRII
 
-Status: `AUTHORIZED__G4_ONLY__COUNCIL_OPEN__NON_DISPOSITIVE`
+Status: `NOT_YET_AUTHORIZED__WAIT_FOR_FROZEN_TURN_A__SERIAL_COUNCIL__NON_DISPOSITIVE`
 
-Read your own G1/G2 returns, live Dva authority, and the shared G3 council matrix/protocol/schema.
+The earlier parallel-G4 order is superseded.
 
-You may now consume sibling G2 testimony summarized in the council, but re-check it against GitHub before adopting it.
+Do not execute this turn until HQ has banked:
+
+`G3_COUNCIL/SERIAL_DISCOURSE/01_TRII_CONSERVATION_THESIS.md`
+
+and advanced the coordination branch with a specific Turn-B authorization.
+
+When authorized, read:
+- your own G1/G2 returns;
+- live Dva authority;
+- the serial G4 protocol;
+- frozen Trii Turn A;
+- the G3 claim matrix.
+
+## Turn-B mission
+
+Assume only what Trii has actually proved in Turn A. Then ask:
+
+`WHERE_DOES_THAT_SEMANTIC_CAPITAL_LAWFULLY_LIVE_IN_THE_WHOLE_MACHINE_WITH_THE_SMALLEST_ARCHITECTURAL_DISTURBANCE?`
+
+You must respond claim-by-claim using:
+- `ACCEPT`
+- `NARROW`
+- `REJECT`
+- `OWNER_ALREADY_EXISTS`
+- `DIRECT_REFERENCE_SUFFICIENT`
+- `NEW_BOUNDARY_REQUIRED`
+- `ARCHITECTURAL_DUPLICATION_RISK`
+- `UNRESOLVED`
 
 Primary burdens:
+1. locate existing lawful producer/authority families before proposing any new surface;
+2. distinguish producer-owned first-class semantics from exact referenced external authority and downstream queryability;
+3. prove how V553+ may preserve the admitted semantics without re-owning or reconstructing them;
+4. close or preserve as unresolved the independent axes of semantic relation, measurement portability, respondent composability, empirical co-travel, V555 route, V556 interaction, V557 permission, and V558 query fidelity;
+5. determine whether succession/lifecycle semantics fit existing authority/version structures or require a bounded new authority boundary;
+6. correct any REJECT/nonedge terminology that widens authority;
+7. reject duplicate graph ownership between full QRA/V550 and recovered typed relation authority.
 
-1. **Whole-machine owner.** Attack the conclusion that Rawlsing needs a new owner/surface upstream of V553. Try to locate an existing lawful producer/authority family that can own or exactly reference R3. Distinguish existing stage/jurisdiction, public object/API, authority kind, and actual load. Do not infer a new numbered stage.
-2. **Load vs direct reuse.** Challenge Trii's load-gap conclusion from terminal demand. Determine which R3 fields must be first-class producer semantics, which may remain exact referenced authority, which must be queryable at I04, which are provenance-only, and which are not downstream-demanded. Lossless must not mean duplicate-everything.
-3. **Inferential-axis owner map.** Use Trii/Chetiri evidence to close or narrow current owners for empirical co-travel/discovery, measurement portability, and respondent composability. Do not assign by convenience.
-4. **Lifecycle economy.** Challenge whether Chetiri's semantic lifecycle requires a new architecture component versus producer-owned succession metadata / existing authority relation vocabulary consumed by current immutable infrastructure.
-5. **REJECT terminology.** Your G2 P2 title called 697 REJECTs `semantic nonedges`; its body correctly limited them to exact-candidate rejection. Resolve this against Trii's exact-negative/REJECT distinction. Retire any label that can widen authority.
+Mandatory position-delta ledger for every material Trii claim:
+- `prior_claim_id`
+- `speaker_previous_position`
+- `encountered_claim`
+- `delta`
+- `reason`
+- `governing_evidence`
+- `remaining_falsifier`
 
-Secondary: attack global-versus-operation-scoped meta-completeness; attack whether n-ary objects need downstream materialization or only exact producer identity/reachability.
+No PR #125 release ruling, architecture reopen, V553+ mutation, or live authority load.
 
-No release ruling, architecture mutation, V553+ reopen, or live authority load.
+Return a self-contained Turn-B testimony suitable for freezing into:
+`G3_COUNCIL/SERIAL_DISCOURSE/02_DVA_ARCHITECTURAL_RESPONSE.md`
 
-End: `G4_RECIPROCAL_CROSS_EXAM_COMPLETE__AWAIT_G5_HQ_SYNTHESIS`
+End:
+`G4_TURN_B_DVA_COMPLETE__FREEZE_BEFORE_CHETIRI_RESPONSE`
