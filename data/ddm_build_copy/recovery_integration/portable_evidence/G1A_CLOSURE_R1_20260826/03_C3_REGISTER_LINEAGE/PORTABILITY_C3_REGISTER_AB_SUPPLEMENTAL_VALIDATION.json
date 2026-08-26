@@ -1,0 +1,34 @@
+{
+  "scope": "C3 Register A/B exact-byte supplemental recovery only",
+  "base_head": "ea4d76557343e6eb72394d1c559020c63a551731",
+  "result": "C3_REGISTER_AB_PORTABILITY_SUBSTRATE_RECOVERED_EXACT",
+  "mechanical_validation_only": true,
+  "no_builder_executed": true,
+  "no_semantic_comparison_performed": true,
+  "objects": [
+    {
+      "object_id": "REGISTER_A",
+      "filename": "question_structure_register.csv",
+      "sha256": "f47c8adb65546b1c0a06dcd31dc0b827b59f8975a3806646f41a0742966c3d84",
+      "bytes": 23612534,
+      "data_rows_header_excluded": 18792,
+      "columns": 62,
+      "csv_parse": "PASS",
+      "installed_path": "03_C3_REGISTER_LINEAGE/REGISTER_A/question_structure_register.csv"
+    },
+    {
+      "object_id": "REGISTER_B",
+      "filename": "question_structure_register.csv",
+      "sha256": "15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b",
+      "bytes": 26582348,
+      "data_rows_header_excluded": 18792,
+      "columns": 69,
+      "csv_parse": "PASS",
+      "installed_path": "03_C3_REGISTER_LINEAGE/REGISTER_B/question_structure_register.csv"
+    }
+  ],
+  "excluded_candidate": {
+    "sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+    "disposition": "NOT_USED_NOT_INSTALLED"
+  }
+}
