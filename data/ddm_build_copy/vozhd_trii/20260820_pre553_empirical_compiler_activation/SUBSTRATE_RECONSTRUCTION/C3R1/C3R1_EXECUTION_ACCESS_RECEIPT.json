@@ -1,0 +1,73 @@
+{
+  "court": "G1A_C3R1_V525B_D62_ASSERTION_GRAIN_SUCCESSION_CLOSURE",
+  "launch_head": "71d72cb20fb592b421e05630861a61e98a12f99b",
+  "branch": "agent/vozhd-trii-g1a-c3r1-assertion-grain-closure",
+  "sibling_blind": true,
+  "status": "EXECUTION_BLOCKED_BY_REPO_ACCESS_SURFACE",
+  "semantic_status": "C3R1_STILL_BLOCKED",
+  "authorized_recovery_commit": "aece04ac3fa2e488c6993c6b9c88eda296b2e6b8",
+  "verified_recovered_objects": {
+    "REGISTER_A": {
+      "sha256": "f47c8adb65546b1c0a06dcd31dc0b827b59f8975a3806646f41a0742966c3d84",
+      "bytes": 23612534,
+      "data_rows": 18792,
+      "columns": 62
+    },
+    "REGISTER_B": {
+      "sha256": "15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b",
+      "bytes": 26582348,
+      "data_rows": 18792,
+      "columns": 69
+    }
+  },
+  "required_large_blobs": [
+    {
+      "path": "data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_REGISTER_LINEAGE/REGISTER_A/question_structure_register.csv",
+      "git_blob_sha": "ffd2c1173c7dba064ab1472cd95865eecfb68661",
+      "bytes": 23612534
+    },
+    {
+      "path": "data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_REGISTER_LINEAGE/REGISTER_B/question_structure_register.csv",
+      "git_blob_sha": "54c2f30af5eb6e66364864c6dc85f2ac36d5ea94",
+      "bytes": 26582348
+    },
+    {
+      "path": "data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_V525B_D62/raw/d62/questions_master_drivers.csv",
+      "git_blob_sha": "92b3b2b8728488c055b9d0d743d0bf43dea9a146",
+      "bytes": 16864669
+    },
+    {
+      "path": "data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_V525B_D62/raw/v525b/questions_master_drivers.csv",
+      "git_blob_sha": "c05c33734ceb0f3a476d1a61016a48c587b8a217",
+      "bytes": 3683893
+    }
+  ],
+  "access_observation": {
+    "github_connector_decoded_blob_limit_bytes": 4194304,
+    "register_a_blob_read": "REJECTED_OVER_LIMIT",
+    "register_b_blob_read": "REJECTED_OVER_LIMIT",
+    "d62_blob_read": "REJECTED_OVER_LIMIT",
+    "direct_raw_fetch": "UNAVAILABLE_IN_CURRENT_EXECUTION_SURFACE"
+  },
+  "banked_residual_counts": {
+    "final_driver_id_transitions": 879,
+    "singleton_register_a_to_d62_deltas": 92
+  },
+  "adjudication_ledgers_emitted": false,
+  "reason_ledgers_not_emitted": "Exact row identities and payloads could not be read. Emitting ordinal or aggregate-only ledgers would violate the court's same-grain exact-evidence requirement.",
+  "unresolved_count": 971,
+  "unresolved_count_scope": "banked explicit residual items only; no claim that this is the full authority-bearing assertion count",
+  "smallest_remaining_falsifier_set": [
+    "Provide byte-readable access to the exact pinned Register A, Register B, d62, and V525b payloads in the execution environment, or provide already-derived exact 879-transition and 92-singleton row ledgers whose identities are bound to those hashes.",
+    "Then perform source-backed same-grain disposition and row-complete assertion decomposition without chronology/row-order inference."
+  ],
+  "prohibitions_preserved": [
+    "NO_SIBLING_FINDINGS_CONSUMED",
+    "NO_LIVE_ARCHITECTURE_MUTATION",
+    "NO_P9_EXECUTION",
+    "NO_G1A_CLOSURE",
+    "NO_V525B_RETIREMENT",
+    "NO_CURRENTNESS_BY_RECENCY",
+    "NO_SYNTHETIC_ROW_IDENTITIES"
+  ]
+}
