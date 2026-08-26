@@ -1,0 +1,167 @@
+{
+  "court": "G1A_PORTABILITY_AGENT_C_HOSTILE_GITHUB_INDEPENDENCE_ADJUDICATION",
+  "adjudication_date": "2026-08-26",
+  "original_portability_root": "9b65e0232916f660d9a0bc343b01e94e438e2cbb",
+  "coordination_head_observed": "f805c6a0f79f00f66e1ecd7949a8bf05f707249c",
+  "agent_a_head_adjudicated": "ca107d57f1a6b0187c5d7d9e9b8f0ee5c7f120ae",
+  "agent_b_head_adjudicated": "ea4d76557343e6eb72394d1c559020c63a551731",
+  "independent_validation": {
+    "agent_a_sha256sums": "PASS",
+    "agent_b_sha256sums": "PASS",
+    "agent_a_zip_integrity": {"status": "PASS", "archives_tested": 15},
+    "agent_b_zip_integrity": {"status": "PASS", "archives_tested": 3},
+    "gss_split_reassembly": {
+      "status": "PASS",
+      "parts": 9,
+      "reconstructed_bytes": 162061424,
+      "reconstructed_sha256": "43d3f835bc4137060ddc1a84f36c47a320c8d99cb9585b33e7fc1cc6d3289de3"
+    },
+    "r184_bundle_verify": "PASS_COMPLETE_HISTORY",
+    "r184_dump_pg_restore_list": "PASS",
+    "repository_tar_zstd_test": "PASS",
+    "agent_a_declared_ready_objects": 13,
+    "agent_a_validated_member_hashes": 428,
+    "agent_b_search_denominator": 26,
+    "agent_b_present_exact": 24,
+    "agent_b_not_found": 1,
+    "agent_b_excluded_optional": 1
+  },
+  "denominators": {
+    "forward_continuation_operation_rows": 8,
+    "forward_distinct_residual_blockers": 1,
+    "full_historical_reexecution_court_rows": 5,
+    "historical_distinct_residual_blockers": 3
+  },
+  "theorems": {
+    "forward_continuation": "G1A_GITHUB_FORWARD_CONTINUATION_PORTABILITY_STILL_BLOCKED",
+    "full_historical_reexecution": "G1A_GITHUB_FULL_HISTORICAL_REEXECUTION_PORTABILITY_STILL_BLOCKED"
+  },
+  "hostile_cases": [
+    {
+      "id": 1,
+      "attack": "A and B both omitted the same object",
+      "result": "FAIL_FOUND",
+      "finding": "Both omit exact C3 Register A f47c8adb... and Register B 15f7b561... byte objects. Both also lack the C1 266d... archive, although B records an adequate negative search."
+    },
+    {
+      "id": 2,
+      "attack": "same filename wrong SHA",
+      "result": "PASS_DETECTED_AND_NOT_PROMOTED",
+      "finding": "Three related universality_9family archives are 44895227 bytes and SHA 27fbbb...; none substitutes for 266d.... Same-name C2 and C3 variants are segregated by hash."
+    },
+    {
+      "id": 3,
+      "attack": "SHA only cited while required bytes are absent",
+      "result": "FAIL_FOUND",
+      "finding": "The coordination tree cites C3 register hashes f47c... and 15f7... but contains neither byte object."
+    },
+    {
+      "id": 4,
+      "attack": "derived representation confused with source authority",
+      "result": "PASS_GRAIN_PRESERVED",
+      "finding": "A labels the exploded C1 inspection as derived and separately preserves the exact 42e86d... source archive; no derived CSV or JSON is promoted."
+    },
+    {
+      "id": 5,
+      "attack": "split large object cannot reconstruct original",
+      "result": "PASS_INDEPENDENTLY_RECONSTRUCTED",
+      "finding": "Nine GSS CSV parts reconstruct exactly 162061424 bytes at SHA 43d3f835...."
+    },
+    {
+      "id": 6,
+      "attack": "archive present but required members cannot be resolved",
+      "result": "PASS_FOR_PRESENT_ARCHIVES",
+      "finding": "All 15 A ZIPs and 3 B ZIPs pass CRC/member resolution; A verifies 428 member hashes and B H003 contains 252 members."
+    },
+    {
+      "id": 7,
+      "attack": "portable object lacks provenance chain to court requirement",
+      "result": "MIXED_FAIL_C3",
+      "finding": "A and B have usable provenance for installed objects, but C3's two register identities have no Git byte object or complete provenance binding."
+    },
+    {
+      "id": 8,
+      "attack": "B NOT_FOUND did not exhaust required search channel",
+      "result": "PASS_SEARCH_ADEQUATE",
+      "finding": "The exact C1 archive search covered supplied roots, the user home, 454 Git refs and 27500 object-path records, 2311 ZIP member sets, indexes, manifests, exact SHA and exact basename."
+    },
+    {
+      "id": 9,
+      "attack": "hidden Library dependency survives nested handoff",
+      "result": "FAIL_FOUND_FOR_HISTORICAL_REEXECUTION",
+      "finding": "C1 explicitly consumed a non-Git Library channel, while its return does not enumerate and byte-bind every carrier supporting the 108 census cells."
+    },
+    {
+      "id": 10,
+      "attack": "accepted theorem unnecessarily forced into historical replay",
+      "result": "PASS_AVOIDED",
+      "finding": "C1's exact return/provider census is sufficient for forward C6 only after HQ acceptance; the absent 266d archive is not placed in the forward denominator."
+    },
+    {
+      "id": 11,
+      "attack": "historical carrier promoted because Git preserves it",
+      "result": "PASS_NO_PROMOTION",
+      "finding": "C1 historical authority, C4 R2/R3 and C5 replay carriers retain historical or function-evidence ceilings."
+    },
+    {
+      "id": 12,
+      "attack": "current schema capability confused with current governed owner",
+      "result": "PASS_NO_OWNER_INFERENCE",
+      "finding": "C5's four current-owner or execution gaps remain substantive blockers despite portable schemas, laws and frozen replay."
+    },
+    {
+      "id": 13,
+      "attack": "V525b d62 identities or authority grains flattened",
+      "result": "PASS_GRAINS_SEPARATED",
+      "finding": "V525b driver, V525b semantic, later heuristic semantic, d62 mixed carrier, Register A and Register B remain separate object identities and roles."
+    },
+    {
+      "id": 14,
+      "attack": "historical itinerary semantics flattened into current-35 membership",
+      "result": "PASS_GRAINS_SEPARATED",
+      "finding": "The exact old itinerary and current source/semantics registries are separate; current membership is not treated as manual-field succession."
+    },
+    {
+      "id": 15,
+      "attack": "P3 P3A P3C function evidence mistaken for current ownership",
+      "result": "PASS_NO_OWNER_INFERENCE",
+      "finding": "A's function-history pack and B's R184 cold-replay carriers are treated as historical function/replay evidence only."
+    },
+    {
+      "id": 16,
+      "attack": "court return treated as banked before HQ acceptance",
+      "result": "PASS_NOT_BANKED",
+      "finding": "C1 C3 and C5 returns are exact and bankable inputs but remain explicitly NOT_BANKED in this portability court."
+    },
+    {
+      "id": 17,
+      "attack": "missing source archive treated as irrelevant because child completed",
+      "result": "PASS_DUAL_STATUS",
+      "finding": "The 266d archive remains required and blocking for full C1 historical reexecution even though C1 returned COMPLETE."
+    },
+    {
+      "id": 18,
+      "attack": "source archive required for future consumers that only consume theorem",
+      "result": "PASS_NOT_OVERREQUIRED",
+      "finding": "Routing law makes C6 consume the HQ-accepted C1 provider map and makes bounded P10 reclosure consume banked lane theorems; neither future operation is shown to consume the 266d ZIP bytes."
+    }
+  ],
+  "nonblocking_defects": [
+    {
+      "id": "A-LEDGER-TYPO-01",
+      "finding": "Agent A's deferred C2_SWID_BIND expected hash ends 12e68ce; the manifest, Agent B ledger and independently verified Git blob end 12a68ce.",
+      "effect": "NONBLOCKING because A marked the row BLOCKED_OTHER and B installed the correct exact object; the typo must not be copied into future controls."
+    }
+  ],
+  "scope_firewall": {
+    "g1a_closed": false,
+    "child_courts_substantively_adjudicated": false,
+    "historical_artifacts_promoted": false,
+    "architecture_selected": false,
+    "p9_executed": false,
+    "carriers_retired": false,
+    "main_mutated": false,
+    "live_trii_mutated": false,
+    "coordination_mutated": false
+  }
+}
