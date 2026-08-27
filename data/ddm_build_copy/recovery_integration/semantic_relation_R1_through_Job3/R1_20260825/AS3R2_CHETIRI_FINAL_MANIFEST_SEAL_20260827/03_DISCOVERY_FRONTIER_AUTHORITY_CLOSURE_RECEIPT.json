@@ -1,0 +1,40 @@
+{
+  "schema": "AS3R2_DISCOVERY_FRONTIER_AUTHORITY_CLOSURE_RECEIPT@1.0.0",
+  "status": "PASS",
+  "authority_snapshot_ref": {
+    "kind": "AuthoritySnapshot@1.0.0",
+    "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:c553cb8a05923f4d344366a47460050888cd4b602e09d61d05a2f79100200980",
+    "content_hash": "c553cb8a05923f4d344366a47460050888cd4b602e09d61d05a2f79100200980"
+  },
+  "authority_ref": {
+    "authority_id": "urn:rawlsing:pre553:verkhovod:as3r2:discovery-frontier-adoption",
+    "authority_version": "git:8e97730bed689b478901ecddd222848802cfd617",
+    "authority_content_hash": "08a00dae22e08905b42b650125920653897c6a88b66682699932a31ccb230115"
+  },
+  "decision_state": "ALLOW",
+  "authority_kind": "DISCOVERY_FRONTIER",
+  "required_operation": "PRE553_PRODUCTION_EXACT_BOUNDED_AUTONOMOUS_DISCOVERY@1.0.0",
+  "operation_present": true,
+  "required_families": [
+    "DiscoveryAuthority@1.0.0",
+    "DiscoveryResultReceipt@1.0.0"
+  ],
+  "families_present": true,
+  "source_scope_ref": {
+    "kind": "EmpiricalUniverse@1.0.0",
+    "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:83af05f5891e8accc18eeb99e5a1fd99242a509d9a38276004675c0e26be8080",
+    "content_hash": "83af05f5891e8accc18eeb99e5a1fd99242a509d9a38276004675c0e26be8080"
+  },
+  "governing_adoption_ref": {
+    "commit_sha": "8e97730bed689b478901ecddd222848802cfd617",
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/22_AS3R1_SUPPORT_RULE_ADOPTION_AND_AS3R2_FINAL_SEAL_AUTHORIZATION.md",
+    "content_sha256": "44e031a7ad23ecb048aac907b766a4351556bec38a5f7f67dfc179d3f2c5c91c"
+  },
+  "registry_resolution_mode": "EXACT_KEY_ONLY__NO_LATEST_DEFAULT_FUZZY_FALLBACK",
+  "closure_result": "DISCOVERY_FRONTIER_AUTHORITY_CLOSURE_PASS",
+  "identity": {
+    "kind": "AS3R2_DISCOVERY_FRONTIER_CLOSURE",
+    "object_id": "urn:rawlsing:pre553:i05:frontier-authority-closure:sha256:13621ac619b85709ae3ea282bc460e0c1abe8712f2d944ce5a76938d448c5780",
+    "content_hash": "13621ac619b85709ae3ea282bc460e0c1abe8712f2d944ce5a76938d448c5780"
+  }
+}
