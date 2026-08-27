@@ -1,0 +1,73 @@
+{
+  "schema": "AS4I0_BOUNDED_VALIDATION_RECEIPT@1.0.0",
+  "status": "PASS_WITH_EXECUTION_HOST_LIMITATION",
+  "starting_branch_head": {
+    "expected": "40e27a552eadeab89d101b2ed0267fa939a283a0",
+    "observed": "40e27a552eadeab89d101b2ed0267fa939a283a0",
+    "status": "PASS"
+  },
+  "browser_artifact_validation": {
+    "status": "PASS",
+    "passed": 21,
+    "failed": 0,
+    "checks": [
+      "DiscoveryAuthority exact hash/ref",
+      "candidate grammar ref",
+      "support floor 0",
+      "no pruning",
+      "canonical tie order",
+      "RNG NONE",
+      "19 atoms",
+      "3 query templates",
+      "82 rules",
+      "19 runtime predicate bindings",
+      "3 runtime query bindings",
+      "predicate ref set equality",
+      "query ref set equality",
+      "official frontier hash",
+      "82-candidate frontier",
+      "preexecution candidate count 0",
+      "no membership additions/deletions",
+      "replay closure binds DA/grammar/frontier",
+      "fairness blockers 0",
+      "candidate execution count 0"
+    ]
+  },
+  "banked_exactness": {
+    "status": "PASS",
+    "method": "Git blob identity equality against accepted commits",
+    "samples_checked": 6,
+    "samples_failed": 0
+  },
+  "local_syntax_probe": {
+    "status": "PASS",
+    "command": "python -m py_compile on AS4I0 module/runner/test drafts before repository write",
+    "files": 3,
+    "failed": 0
+  },
+  "repository_execution_host": {
+    "status": "UNAVAILABLE",
+    "details": [
+      "active container has no repository checkout",
+      "container DNS cannot resolve github.com",
+      "branch-local GitHub Actions workflow produced no visible workflow run after subsequent push"
+    ],
+    "effect": "exact committed Python unittest execution could not be performed in this lane"
+  },
+  "real_source_execution": {
+    "performed": false,
+    "candidate_execution_count": 0
+  },
+  "runtime_catalog_blocker": {
+    "id": "AS4I0-B01__AS3R2_RUNTIME_CATALOG_CANONICAL_OBJECT_PREIMAGES_NOT_SERIALIZED",
+    "status": "FAIL_CLOSED_FOR_PRODUCTION",
+    "detail": "accepted AS3R2 artifacts seal 19 EmpiricalPredicate refs and 3 EmpiricalQuerySpec refs but do not serialize their full canonical object projections/replay roots; exact refs cannot be inverted or guessed"
+  },
+  "hostile_cases_implemented": [
+    "wrong DiscoveryAuthority content hash -> SealValidationError",
+    "wrong official frontier content hash -> SealValidationError",
+    "malformed banked JSON -> SealValidationError",
+    "missing runtime-catalog preimages -> RuntimeCatalogPreimageMissing"
+  ],
+  "claim_boundary": "No final governed C05R2B real-source 82-candidate execution was launched."
+}
