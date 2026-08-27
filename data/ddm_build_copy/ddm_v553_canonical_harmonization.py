@@ -31,8 +31,11 @@ from data.ddm_build_copy.ddm_survey_identity import canonical_country_code
 from data.ddm_build_copy.ddm_v552j_handoff import (
     AUDIT_COLUMNS,
     JOIN_COLUMNS,
+    V552J_CONSERVATION_STATUS,
     V552J_JOIN_COMPILER_VERSION,
     V552J_JOIN_SCHEMA_VERSION,
+    V552J_NONSCALAR_POLICY,
+    decode_v552j_conservation_envelope,
 )
 from data.ddm_build_copy.ddm_v553_harmonization import WaveDescriptor
 
@@ -387,8 +390,60 @@ def _verify_artifact(
     )
     if schema_error:
         return None, {"status": SURFACE_SCHEMA_INVALID, "reason": schema_error}, SURFACE_SCHEMA_INVALID, schema_error
+    if artifact_name in {"v552j_structural_join_index","v552j_v553_input_index","v552j_to_v553_handoff_index"} and not frame.empty:
+        try:
+            _read_v551j_conservation_envelopes(frame)
+        except Exception as exc:
+            reason = f"artifact_v551j_conservation_invalid:{artifact_name}:{type(exc).__name__}:{exc}"
+            return None, {"status": SURFACE_INTEGRITY_INVALID, "reason": reason}, SURFACE_INTEGRITY_INVALID, reason
     status = SURFACE_VALID_EMPTY if frame.empty else SURFACE_VALID_PRESENT
     return frame, {"status": status, "row_count": int(len(frame)), "path": str(path)}, None, None
+
+
+def _read_v551j_conservation_envelopes(frame: pd.DataFrame) -> list[dict[str, Any]]:
+    if frame.empty:
+        return []
+    envelopes: list[dict[str, Any]] = []
+    required_packet_fields = (
+        "family_id","pattern_id","packet_contract_hash","joint_response_identity_signature",
+        "joint_measurement_contract_hash","denominator_separation_status",
+        "joint_semantic_authority_status","joint_directionality_authority_status",
+        "joint_family_target_authority_status","joint_structural_authority_status",
+        "joint_measurement_authority_status","joint_evidence_authority_status",
+        "component_response_vector_json","component_semantic_vector_json",
+        "component_orientation_vector_json","component_topology_vector_json",
+        "component_target_vector_json","component_structural_vector_json",
+        "component_denominator_vector_json",
+    )
+    for row in frame.to_dict("records"):
+        decoded = decode_v552j_conservation_envelope(row)
+        packet = decoded["packet"]
+        components = decoded["components"]
+        missing = [field for field in required_packet_fields if packet.get(field) in (None, "")]
+        if missing:
+            raise ValueError("V553_V551J_CONSERVATION_PACKET_FIELDS_MISSING:" + ",".join(missing))
+        if _clean(row.get("v551j_conservation_status")) != V552J_CONSERVATION_STATUS:
+            raise ValueError("V553_V551J_CONSERVATION_STATUS_INVALID")
+        if _clean(row.get("v551j_scalarization_policy")) != V552J_NONSCALAR_POLICY:
+            raise ValueError("V553_V551J_NONSCALAR_POLICY_INVALID")
+        if not components:
+            raise ValueError("V553_V551J_COMPONENT_ENVELOPE_EMPTY")
+        last_order: float | None = None
+        for index, component in enumerate(components):
+            if not isinstance(component, dict):
+                raise ValueError("V553_V551J_COMPONENT_NOT_OBJECT")
+            for field in ("component_id","item_order","component_contract_hash","v550j_item_role","component_evidence_role","component_certification_contribution"):
+                if component.get(field) in (None, ""):
+                    raise ValueError(f"V553_V551J_COMPONENT_FIELD_MISSING:{index}:{field}")
+            try:
+                order = float(component["item_order"])
+            except Exception as exc:
+                raise ValueError(f"V553_V551J_COMPONENT_ORDER_INVALID:{index}") from exc
+            if last_order is not None and order <= last_order:
+                raise ValueError("V553_V551J_COMPONENT_ORDER_NOT_STRICTLY_INCREASING")
+            last_order = order
+        envelopes.append(decoded)
+    return envelopes
 
 
 def _same_frame(left: pd.DataFrame, right: pd.DataFrame) -> bool:
@@ -542,6 +597,21 @@ def inspect_v552j_canonical_surface(item: WaveDescriptor | dict[str, Any]) -> di
         )
 
     all_empty = len(join_df) == 0 and len(input_df) == 0 and len(handoff_df) == 0
+    conservation_envelopes = _read_v551j_conservation_envelopes(input_df)
+    conservation_packets = [item["packet"] for item in conservation_envelopes]
+    conservation_components = [component for item in conservation_envelopes for component in item["components"]]
+    authority_vectors = [
+        {
+            "packet_id": packet.get("packet_id"),
+            "joint_semantic_authority_status": packet.get("joint_semantic_authority_status"),
+            "joint_directionality_authority_status": packet.get("joint_directionality_authority_status"),
+            "joint_family_target_authority_status": packet.get("joint_family_target_authority_status"),
+            "joint_structural_authority_status": packet.get("joint_structural_authority_status"),
+            "joint_measurement_authority_status": packet.get("joint_measurement_authority_status"),
+            "joint_evidence_authority_status": packet.get("joint_evidence_authority_status"),
+        }
+        for packet in conservation_packets
+    ]
     surface_status = SURFACE_VALID_EMPTY if all_empty else SURFACE_VALID_PRESENT
     context.update(
         {
@@ -559,6 +629,15 @@ def inspect_v552j_canonical_surface(item: WaveDescriptor | dict[str, Any]) -> di
             "driver_facet_ids": _collect_ids([input_df], ("driver_facet_id", "driver_facet_ids_json")),
             "structural_channel_ids": _collect_ids([input_df], ("structural_channel_id", "structural_channel_ids_json")),
             "horizon_constraint_ids": _collect_ids([input_df], ("horizon_constraint_id", "horizon_constraint_ids_json")),
+            "v551j_conservation_status": "VALID_EMPTY" if not conservation_envelopes else "CONSUMED_AND_VALIDATED",
+            "v551j_conservation_envelope_count": len(conservation_envelopes),
+            "v551j_conservation_component_count": len(conservation_components),
+            "v551j_conservation_envelope_sha256s": sorted(item["envelope_sha256"] for item in conservation_envelopes),
+            "v551j_joint_configuration_ids": sorted({_clean(packet.get("family_id")) for packet in conservation_packets if _clean(packet.get("family_id"))}),
+            "v551j_joint_response_identity_signatures": sorted({_clean(packet.get("joint_response_identity_signature")) for packet in conservation_packets if _clean(packet.get("joint_response_identity_signature"))}),
+            "v551j_denominator_separation_statuses": sorted({_clean(packet.get("denominator_separation_status")) for packet in conservation_packets if _clean(packet.get("denominator_separation_status"))}),
+            "v551j_joint_authority_vectors_json": json.dumps(authority_vectors, sort_keys=True, separators=(",", ":"), ensure_ascii=False),
+            "v551j_scalarization_policy": V552J_NONSCALAR_POLICY if conservation_envelopes else "",
         }
     )
     return context
@@ -642,6 +721,15 @@ def _build_canonical_wave_bundle(item: WaveDescriptor | dict[str, Any]) -> tuple
         "wave_driver_facet_ids": context["driver_facet_ids"],
         "wave_structural_channel_ids": context["structural_channel_ids"],
         "wave_horizon_constraint_ids": context["horizon_constraint_ids"],
+        "v551j_conservation_status": context["v551j_conservation_status"],
+        "v551j_conservation_envelope_count": context["v551j_conservation_envelope_count"],
+        "v551j_conservation_component_count": context["v551j_conservation_component_count"],
+        "v551j_conservation_envelope_sha256s": context["v551j_conservation_envelope_sha256s"],
+        "v551j_joint_configuration_ids": context["v551j_joint_configuration_ids"],
+        "v551j_joint_response_identity_signatures": context["v551j_joint_response_identity_signatures"],
+        "v551j_denominator_separation_statuses": context["v551j_denominator_separation_statuses"],
+        "v551j_joint_authority_vectors_json": context["v551j_joint_authority_vectors_json"],
+        "v551j_scalarization_policy": context["v551j_scalarization_policy"],
         "overlay_paths": overlay_paths,
         "overlay_row_counts": overlay_row_counts,
         "overlay_certified_row_counts": overlay_certified_row_counts,
@@ -672,6 +760,8 @@ def build_v553_wave_harmonization(
     report = _legacy.build_v553_wave_harmonization_report(table)
     report["v552j_consumer_surface"] = "canonical_v552j_input_handoff_indexes"
     report["v552j_consumer_surface_validation"] = "fail_closed_full_publication_verification"
+    report["v551j_semantic_conservation_validation"] = "fail_closed_inline_envelope_parse_hash_order_authority_denominator_validation"
+    report["v551j_non_scalarization_policy"] = V552J_NONSCALAR_POLICY
     report["obsolete_v552j_structural_handoff_packet_required"] = False
     report["v552j_canonical_surface_by_wave"] = [
         {
