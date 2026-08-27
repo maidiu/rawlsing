@@ -1,0 +1,59 @@
+{
+  "schema": "AS3_DISCOVERY_AUTHORITY_FREEZE_STATE@1.0.0",
+  "status": "BLOCKED__VALID_DISCOVERY_AUTHORITY_NOT_CONSTRUCTIBLE_WITHOUT_NEW_SUPPORT_RULE_AUTHORITY",
+  "would_bind": {
+    "profile": "C05R1B_PRODUCTION_DISCOVERY_RULE_PROFILE@1.0.0",
+    "operation": "PRE553_PRODUCTION_EXACT_BOUNDED_AUTONOMOUS_DISCOVERY@1.0.0",
+    "algorithm": "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "c11_logical_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "repository_snapshot_hash": "ff8a49d2560fe3cf229f4d5a0f87a14c52d08086a74649968d8c9c9d0225aa77",
+    "replay_manifest_hash": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+    "predicate_catalog_ref": {
+      "kind": "AS3_PREDICATE_CATALOG",
+      "object_id": "urn:rawlsing:pre553:as3:predicate-catalog:sha256:8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293",
+      "content_hash": "8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293"
+    },
+    "query_catalog_ref": {
+      "kind": "AS3_QUERY_TEMPLATE_CATALOG",
+      "object_id": "urn:rawlsing:pre553:as3:query-catalog:sha256:f76ddf2b8a99e6a05884d503aa7a5da8fbf1fb3b07fbcd4cc93597457defa423",
+      "content_hash": "f76ddf2b8a99e6a05884d503aa7a5da8fbf1fb3b07fbcd4cc93597457defa423"
+    },
+    "partition_ref": {
+      "kind": "AS3_PARTITION_MANIFEST",
+      "object_id": "urn:rawlsing:pre553:as3:partitions:sha256:ed3b76242a588a5e2d4dacbb76f17ceef6185cd27a4080a2e8fb436056abfabf",
+      "content_hash": "ed3b76242a588a5e2d4dacbb76f17ceef6185cd27a4080a2e8fb436056abfabf"
+    },
+    "K": 18,
+    "J": 2,
+    "recursive_depth": 18,
+    "candidate_frontier_pre_authority_ref": {
+      "kind": "AS3_PREAUTHORITY_CANDIDATE_FRONTIER",
+      "object_id": "urn:rawlsing:pre553:as3:pre-frontier:sha256:ec85fc2c6460a8a014ae90c54e5847f883c495708c32898ea44bfc0ef78c54e6",
+      "content_hash": "ec85fc2c6460a8a014ae90c54e5847f883c495708c32898ea44bfc0ef78c54e6"
+    },
+    "pruning": {
+      "kind": "NONE_EXACT_EVALUATE_ALL"
+    },
+    "rng": "NONE",
+    "tie_order": "CANONICAL_CANDIDATE_HASH_ORDER",
+    "coverage": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+    "validation_kinds": [
+      "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+      "JOINT_NOT_PRODUCT_OF_MARGINALS",
+      "CONDITIONAL_REVERSAL",
+      "TARGET_CELL_SUPPORTED"
+    ]
+  },
+  "missing_required_field_authority": {
+    "field": "support_rules.minimum_raw_denominator or exact operation-valid equivalent",
+    "finding": "C05R1B explicitly forbids inventing a new minimum-support threshold; Authority 36 adds none; AS2B carries UNCERTAINTY_UNQUANTIFIED but no production I05 minimum_raw_denominator; value 1 appears only in test fixture/default implementation terrain and is not promoted"
+  },
+  "blocker_id": "AS3-B01__PRODUCTION_I05_SUPPORT_RULE_AUTHORITY_NOT_BOUND",
+  "forbidden_shortcut": "DO_NOT_USE_ENGINE_DEFAULT_OR_TEST_FIXTURE_MINIMUM_RAW_DENOMINATOR_1_AS_PRODUCTION_AUTHORITY",
+  "blocked_material_identity": {
+    "kind": "AS3_BLOCKED_DISCOVERY_AUTHORITY_MATERIAL",
+    "object_id": "urn:rawlsing:pre553:as3:blocked-da:sha256:6342b901ff9fbd9d47dd5460da7382249a6874ec668beb071845e5d76511ba36",
+    "content_hash": "6342b901ff9fbd9d47dd5460da7382249a6874ec668beb071845e5d76511ba36"
+  }
+}

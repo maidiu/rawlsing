@@ -1,0 +1,53 @@
+{
+  "schema": "AS3_COMPLETION_AND_REPLAY_LAW@1.0.0",
+  "pruning": "NONE_EXACT_EVALUATE_ALL",
+  "rng": "NONE",
+  "canonical_candidate_order": "CANONICAL_CANDIDATE_HASH_ORDER",
+  "terminal_coverage_states": [
+    "EVALUATED_SUPPORTED",
+    "EVALUATED_VALID_EMPTY",
+    "EVALUATED_UNDERPOWERED",
+    "EVALUATED_NONCOMPARABLE",
+    "EVALUATED_DENIED_BY_EXACT_AUTHORITY",
+    "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY"
+  ],
+  "completion_condition": "candidate_count == covered_candidate_count AND every compiled candidate has an accepted terminal exact coverage state AND evaluated frontier identity equals pre-execution frozen frontier",
+  "exact_negative_noncollapse": [
+    "COMPLETE_AUTHORIZED_SEARCH__NO_RELATION",
+    "PARTIAL_FRONTIER",
+    "SEARCH_BUDGET_EXHAUSTED",
+    "UNSUPPORTED_OR_NONCOMPARABLE_DOMAIN",
+    "CANDIDATE_FOUND__VALIDATION_FAILED",
+    "CANDIDATE_FOUND__VALIDATED"
+  ],
+  "replay_determinants": [
+    "source SHA",
+    "decoder call/version/config",
+    "AS2A source-specific projection authority",
+    "GovernedC11Projection hash",
+    "C11SourceReleaseCandidate hash",
+    "C11LogicalRelease hash",
+    "C11Repository snapshot hash",
+    "ReplayManifest hash",
+    "production rule profile",
+    "DiscoveryAuthority ref once valid",
+    "predicate catalog ref",
+    "query-template catalog ref",
+    "risk/measure/topology partition ref",
+    "K",
+    "J",
+    "recursive depth",
+    "candidate grammar/frontier ref",
+    "canonical candidate hash order",
+    "validation rule bindings",
+    "support/uncertainty authority",
+    "I03 query contract",
+    "P10 authority envelope"
+  ],
+  "current_state": "COMPLETION_LAW_FROZEN__OFFICIAL_FRONTIER_REPLAY_REF_AWAITS_AS3_B01",
+  "identity": {
+    "kind": "AS3_COMPLETION_REPLAY_LAW",
+    "object_id": "urn:rawlsing:pre553:as3:completion-replay:sha256:9a1e96068b82f5698729ed3678447b20d3affefe4a97227085ec06b25ccdbb05",
+    "content_hash": "9a1e96068b82f5698729ed3678447b20d3affefe4a97227085ec06b25ccdbb05"
+  }
+}

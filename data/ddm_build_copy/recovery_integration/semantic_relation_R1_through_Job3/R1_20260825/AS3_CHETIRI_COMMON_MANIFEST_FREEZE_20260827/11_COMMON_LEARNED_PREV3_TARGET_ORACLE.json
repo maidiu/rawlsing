@@ -1,0 +1,26 @@
+{
+  "schema": "AS3_COMMON_LEARNED_PREV3_TARGET_ORACLE@1.0.0",
+  "logical_sequence": [
+    "C11",
+    "I03",
+    "PRODUCTION_I05",
+    "VALIDATION_EMPIRICAL_LEARNED_RESULT",
+    "I04",
+    "PRE_V3_STRUCTURAL_RESULT"
+  ],
+  "common_source_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+  "positive_structural_admission_authority_for_bounded_lits1_release": "NOT_ESTABLISHED",
+  "evidence": "AS2B q301 QuestionVariableBinding canonical_question_ref is NOT_AUTHORIZED; no source-specific positive structural-admission rule is supplied by AS2B",
+  "frozen_i04_target": {
+    "admission_decision_state": "MISSING_STRUCTURAL_ADMISSION_AUTHORITY",
+    "public_typed_state": "MISSING_AUTHORITY",
+    "positive_pre_v3_structural_product": "NONE"
+  },
+  "parity_rule": "A/B/C must produce the identical typed refusal and identical I04 receipt identity once production I05 facts are supplied; no candidate may manufacture structural authority",
+  "note": "This target does not execute I04 in AS3.",
+  "identity": {
+    "kind": "AS3_COMMON_LEARNED_PREV3_TARGET",
+    "object_id": "urn:rawlsing:pre553:as3:learned-prev3:sha256:e69f49c705b79bf469e67ee12b705747693a260e67c9cc1b9262900a89b5c33e",
+    "content_hash": "e69f49c705b79bf469e67ee12b705747693a260e67c9cc1b9262900a89b5c33e"
+  }
+}

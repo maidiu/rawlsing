@@ -1,0 +1,138 @@
+{
+  "schema": "AS3_ROUTE_C_CANDIDATE_SPEC@1.0.0",
+  "route": "C",
+  "name": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
+  "authority_floor": "IDENTICAL_TO_ROUTE_B",
+  "accelerator_inventory": [
+    {
+      "id": "CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE",
+      "purpose": "amortize repeated LiTS-I decoder and source-backed C11 physical projection work without becoming truth",
+      "logical_content": [
+        "row_ordinal",
+        "q301_2 exact raw value/physical-missing state/projected response typed state",
+        "q301_7 exact raw value/physical-missing state/projected response typed state",
+        "country/city/region/tablec/tabled canonical-json encoded raw coordinate value plus missing state",
+        "exact q301 common routing/risk membership"
+      ],
+      "physical_representation": {
+        "format": "AS3_CANONICAL_ARROW_IPC_EXECUTION_BUNDLE_V1",
+        "record_order": "source row ordinal ascending",
+        "record_batch_count": 1,
+        "compression": "NONE",
+        "dictionary_encoding": "NONE",
+        "field_order": [
+          "row_ordinal",
+          "q301_2_raw",
+          "q301_2_state",
+          "q301_7_raw",
+          "q301_7_state",
+          "country_raw_cjson",
+          "city_raw_cjson",
+          "region_raw_cjson",
+          "tablec_raw_cjson",
+          "tabled_raw_cjson",
+          "q301_risk_member"
+        ],
+        "encoder_version_rule": "exact Arrow implementation/version must be pinned before execution; logical bundle hash remains separately content-addressed"
+      },
+      "scope": {
+        "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "c11_logical_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+      },
+      "determinant_key": [
+        "source SHA",
+        "decoder call/version/config",
+        "AS2A projection authority hash",
+        "slot ledger hash",
+        "GovernedC11Projection hash",
+        "C11LogicalRelease hash",
+        "ReplayManifest hash",
+        "response/routing/coordinate semantic authority closure"
+      ],
+      "invalidation": [
+        "any determinant-key mismatch",
+        "source/release replacement",
+        "decoder/config change",
+        "semantic mapping/state change",
+        "routing/risk change",
+        "coordinate projection change"
+      ],
+      "persistence_class": "PERSIST_REGENERABLE_CACHE_OPTIONAL",
+      "authority_class": "OPERATIONALLY_RETAINED_REGENERABLE_REPRESENTATION",
+      "build": "decode exact source; apply accepted AS2B projection only; emit canonical logical bundle; seal logical content and physical byte hashes",
+      "regeneration": "delete and deterministically rebuild from exact source plus governed authority",
+      "consumers": [
+        "I03 source-backed facade",
+        "I05 query execution"
+      ],
+      "absence_permitted": true,
+      "missing_behavior": "execute Route-B-equivalent path or rebuild",
+      "stale_behavior": "REJECT_AND_REBUILD",
+      "corrupt_behavior": "FAIL_CLOSED_AND_REBUILD",
+      "measurement_category": "PERSISTENT_REGENERABLE_CACHE_BYTES",
+      "survives_session_boundary": true
+    },
+    {
+      "id": "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK",
+      "purpose": "avoid repeated evaluation of exact frozen atomic predicate/risk membership across production frontier",
+      "logical_content": "one exact 29002-bit membership mask for each included AS3 predicate atom plus exact common risk set; no compound candidate masks, query results, joint cube, or learned-result cache",
+      "physical_representation": {
+        "format": "AS3_DENSE_BITSET_BANK_V1",
+        "bit_index": "row_ordinal_minus_1",
+        "bit_order_within_byte": "LSB_FIRST",
+        "trailing_unused_bits": "ZERO",
+        "entry_order": "atom content hash ascending",
+        "manifest": "canonical JSON with exact atom/risk refs and per-mask SHA256"
+      },
+      "scope": {
+        "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "c11_logical_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+        "predicate_catalog_hash": "8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293",
+        "preauthority_frontier_hash": "ec85fc2c6460a8a014ae90c54e5847f883c495708c32898ea44bfc0ef78c54e6"
+      },
+      "determinant_key": [
+        "all CACC1 determinants",
+        "valid DiscoveryAuthority ref once AS3-B01 resolved",
+        "predicate catalog hash",
+        "risk partition hash",
+        "production operation identity",
+        "candidate frontier identity"
+      ],
+      "invalidation": [
+        "any determinant-key mismatch",
+        "atom catalog/frontier/risk change",
+        "source or semantic determinant change"
+      ],
+      "persistence_class": "PERSIST_REGENERABLE_CACHE_OPTIONAL",
+      "authority_class": "OPTIONAL_CACHE",
+      "build": "evaluate only frozen atomic predicates against exact governed risk set; pack deterministic dense masks; do not evaluate candidate validation outcomes",
+      "regeneration": "recompute from CACC1 if valid or from exact source+governed authority",
+      "consumers": [
+        "I05 condition construction",
+        "I03 predicate execution"
+      ],
+      "absence_permitted": true,
+      "missing_behavior": "recompute atomic predicates without cache",
+      "stale_behavior": "REJECT_AND_REBUILD",
+      "corrupt_behavior": "FAIL_CLOSED_AND_REBUILD",
+      "measurement_category": "PERSISTENT_REGENERABLE_CACHE_BYTES",
+      "survives_session_boundary": true,
+      "forbidden_contents": [
+        "candidate terminal states",
+        "candidate validation outcomes",
+        "EmpiricalFact result cache",
+        "DiscoveryResultReceipt cache",
+        "compound search pruning index",
+        "learned product"
+      ]
+    }
+  ],
+  "no_other_accelerators": "FROZEN__NO_ACCELERATOR_MAY_BE_ADDED_OR_ENLARGED_AFTER_A_B_C_RESULTS_WITHOUT_WITHDRAWING_THIS_CANDIDATE_AND_OPENING_NEW_GOVERNED_VERSION",
+  "truth_owner": "NEVER_ACCELERATOR",
+  "note": "CACC2 construction remains non-executable until AS3-B01 is resolved because its determinant key must bind the valid DiscoveryAuthority/frontier.",
+  "identity": {
+    "kind": "AS3_ROUTE_C_CANDIDATE",
+    "object_id": "urn:rawlsing:pre553:as3:route-c:sha256:a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c",
+    "content_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c"
+  }
+}

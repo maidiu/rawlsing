@@ -1,0 +1,33 @@
+{
+  "schema": "AS3_ROUTE_A_COMPARATOR_SPEC@1.0.0",
+  "route": "A",
+  "name": "R5_LONG_COMPACT_V2__SERIAL_V4__AUDIT69__C05R2A_FACADE",
+  "redesign_authorized": false,
+  "refs": {
+    "compact_v2_frozen_implementation_head": "b643ea6ea08a6ed29e31453135ac9113286d581d",
+    "validated_serial_reference_head": "11877f5a043418100773b8a476ee425ec63305cd",
+    "accepted_serial_v4_compliance_head": "55d4bae445b5eb837aec6f3c67083e131d8e3b0c",
+    "audit69_validated_return": "d6206cd0e351100b64cdf3ace997733153c18eb7",
+    "c05r2a_accepted_facade_return": "0336eb60fce9fbc17a36cadcd36a5720eabd706b"
+  },
+  "config": {
+    "run_max_rows": 65536,
+    "run_max_bytes": 67108864,
+    "merge_fan_in": 64,
+    "temp_compression": "deterministic gzip level 1",
+    "temp_fsync": false,
+    "final_shard_max_rows": 16384,
+    "final_shard_max_bytes": 16777216,
+    "final_member_compression": "deterministic gzip level 6",
+    "builder_process_count": 1,
+    "persistent_cache_store_count": 0,
+    "audit_implementation": "rawlsing_next/pre553_r5_single_pass_audit69.py"
+  },
+  "source_specific_adaptation": "MECHANICAL_ONLY__consume same accepted LiTS-I release/common manifest through C05R2A carrier-neutral facade; no new persistent-carrier architecture",
+  "excluded_pre_as3_variants": "Authority67/68 trailing-audit overlap lines remain historical evidence and are not the frozen comparator",
+  "identity": {
+    "kind": "AS3_ROUTE_A_COMPARATOR",
+    "object_id": "urn:rawlsing:pre553:as3:route-a:sha256:d550bcf4150d1823109bf818f5265a38f8fe97185629f36ec80908427991a5da",
+    "content_hash": "d550bcf4150d1823109bf818f5265a38f8fe97185629f36ec80908427991a5da"
+  }
+}

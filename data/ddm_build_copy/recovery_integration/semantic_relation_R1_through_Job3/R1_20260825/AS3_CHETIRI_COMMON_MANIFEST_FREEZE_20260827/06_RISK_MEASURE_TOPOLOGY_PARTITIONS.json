@@ -1,0 +1,53 @@
+{
+  "schema": "AS3_LITS1_RISK_MEASURE_TOPOLOGY_PARTITIONS@1.0.0",
+  "risk_sets": [
+    {
+      "id": "RISK_Q301_COMMON",
+      "member_count": 29002,
+      "questions": [
+        "q301_2",
+        "q301_7"
+      ],
+      "state": "ELIGIBLE_APPLICABLE",
+      "membership_law": "EXACT AS2B ROUTING FACTS; no observed-missingness inference"
+    }
+  ],
+  "measures": [
+    {
+      "id": "MEASURE_RAW",
+      "measure_kind": "RAW",
+      "weight_facts": 0,
+      "status": "AUTHORIZED"
+    },
+    {
+      "id": "MEASURE_WEIGHTED",
+      "status": "EXCLUDED__NO_WEIGHT_AUTHORITY"
+    }
+  ],
+  "topology": [
+    {
+      "id": "TOPO_SCALAR",
+      "arity": 1,
+      "class": "SCALAR_SINGULAR",
+      "targets": [
+        "q301_2",
+        "q301_7"
+      ]
+    },
+    {
+      "id": "TOPO_JOINT_2",
+      "arity": 2,
+      "class": "SEMANTIC_ORDERED_SCALAR_JOINT",
+      "targets": [
+        "q301_2",
+        "q301_7"
+      ]
+    }
+  ],
+  "coordinate_predicate_domain_exclusion": "five raw coordinates remain available to I03 as projected facts but are excluded from the production atom catalog until a finite exact coordinate-value-domain authority is positively serialized; no empirical frequency/domain scan may define frontier reachability",
+  "identity": {
+    "kind": "AS3_PARTITION_MANIFEST",
+    "object_id": "urn:rawlsing:pre553:as3:partitions:sha256:ed3b76242a588a5e2d4dacbb76f17ceef6185cd27a4080a2e8fb436056abfabf",
+    "content_hash": "ed3b76242a588a5e2d4dacbb76f17ceef6185cd27a4080a2e8fb436056abfabf"
+  }
+}

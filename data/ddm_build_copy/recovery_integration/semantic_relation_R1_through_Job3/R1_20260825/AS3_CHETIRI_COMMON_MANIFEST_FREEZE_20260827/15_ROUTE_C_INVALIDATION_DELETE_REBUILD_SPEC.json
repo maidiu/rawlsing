@@ -1,0 +1,49 @@
+{
+  "schema": "AS3_ROUTE_C_INVALIDATION_DELETE_REBUILD_SPEC@1.0.0",
+  "candidate_ref": {
+    "kind": "AS3_ROUTE_C_CANDIDATE",
+    "object_id": "urn:rawlsing:pre553:as3:route-c:sha256:a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c",
+    "content_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c"
+  },
+  "invalidation_law": "invalidate only accelerator partitions whose exact determinant key intersects the changed source/decoder/semantic/release/risk/frontier determinant; stale reuse forbidden",
+  "phases": [
+    {
+      "phase": "C_ACCELERATOR_PRESENT",
+      "required": "record exact governed identities and metrics"
+    },
+    {
+      "phase": "DELETE_ALL_C_ACCELERATORS",
+      "required": "delete CACC1 and CACC2 only; source, governed authority, mandatory receipts and accepted learned products remain"
+    },
+    {
+      "phase": "CACHELESS_FRESH_PROCESS",
+      "required": "exact governed outputs/capability identical"
+    },
+    {
+      "phase": "REGENERATE_ACCELERATORS",
+      "required": "rebuild only from exact source+governed determinants"
+    },
+    {
+      "phase": "REGENERATED_FRESH_PROCESS",
+      "required": "exact governed outputs/capability identical again"
+    }
+  ],
+  "exact_identity_categories": [
+    "C11LogicalRelease",
+    "ReplayManifest",
+    "I03 EmpiricalFact refs/states",
+    "I05 DiscoveryAuthority/frontier",
+    "I05 candidate identities",
+    "I05 terminal candidate states",
+    "empirical learned products",
+    "I04 receipts",
+    "structural/pre-V3 typed result if applicable"
+  ],
+  "failure_law": "IF_DELETION_OR_REGENERATION_CHANGES_TRUTH_CAPABILITY_OR_REPLAY_IDENTITY__C_AS_FROZEN_FAILS",
+  "stale_corrupt_law": "stale/corrupt/mismatched accelerator must fail closed or recompute; never serve plausible output",
+  "identity": {
+    "kind": "AS3_ROUTE_C_DELETE_REBUILD_LAW",
+    "object_id": "urn:rawlsing:pre553:as3:route-c-delete-rebuild:sha256:a582e303c8cd4ffabd3971ddc0b2d4b37d6d7327707e4df9778660088171cacc",
+    "content_hash": "a582e303c8cd4ffabd3971ddc0b2d4b37d6d7327707e4df9778660088171cacc"
+  }
+}

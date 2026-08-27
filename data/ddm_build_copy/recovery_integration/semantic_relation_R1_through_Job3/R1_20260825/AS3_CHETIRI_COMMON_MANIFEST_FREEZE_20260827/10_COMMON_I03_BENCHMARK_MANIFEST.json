@@ -1,0 +1,85 @@
+{
+  "schema": "AS3_COMMON_I03_BENCHMARK_MANIFEST@1.0.0",
+  "source_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+  "oracle_basis": "AS2B 06_I03_CERTIFICATION_RECEIPT.csv + accepted C04 full frozen-I03 frontier",
+  "operations": [
+    {
+      "operation": "univariate_distribution",
+      "execution": "EXECUTED",
+      "expected_state": "UNRESOLVED",
+      "as2b_empirical_fact_hash": "ff43b2c51d29f93954e075f6005774b5b06e93bc581ad60f97b4155148418168"
+    },
+    {
+      "operation": "two_way_joint_pair_cotravel",
+      "execution": "EXECUTED",
+      "expected_state": "UNRESOLVED",
+      "as2b_empirical_fact_hash": "52605100f1fea74908cc61b2adeae5eaaaf9d91030d3f2ff31bc585561dcd82d"
+    },
+    {
+      "operation": "conditional_distribution",
+      "execution": "EXECUTED",
+      "expected_state": "UNRESOLVED",
+      "as2b_empirical_fact_hash": "c3c574330a74b2aad76df8a36879150a9ca076639e9854902606443baed60c6a"
+    },
+    {
+      "operation": "subgroup_country_equal",
+      "execution": "EXECUTED",
+      "expected_state": "UNRESOLVED",
+      "as2b_empirical_fact_hash": "7ec508674cbb4071c4651e1fb00d094268e4dcdc44459e569be7ac2a522b5e76"
+    },
+    {
+      "operation": "subgroup_country_complement",
+      "execution": "EXECUTED",
+      "expected_state": "UNRESOLVED",
+      "as2b_empirical_fact_hash": "fc2b2080c995d11b1d34e027e83c2257dbebf62d2092945181ef093738ec4408"
+    },
+    {
+      "operation": "recursive_and_or_not",
+      "execution": "EXECUTED",
+      "expected_state": "SUPPORTED",
+      "as2b_empirical_fact_hash": "516c1a8b1bfa2f84a39f0423220ecb37f8880e8916e961e61909f5cc933d7cd8"
+    },
+    {
+      "operation": "typed_special_state_condition",
+      "execution": "EXECUTED",
+      "expected_state": "UNRESOLVED",
+      "as2b_empirical_fact_hash": "987460d16cc1d00dcf7e07a66d4129c52f1df22526aae18652945a446683bc22"
+    },
+    {
+      "operation": "weighted_no_default",
+      "execution": "EXECUTED",
+      "expected_state": "UNAVAILABLE",
+      "as2b_empirical_fact_hash": "ae38615ac2d3c98dac8965fb14c1d6d41bbb4c31f39dc427aaa16e4df4341dad"
+    },
+    {
+      "operation": "three_way_conjunction",
+      "execution": "NOT_EXECUTED",
+      "expected_state": "TYPED_NOT_APPLICABLE__ONLY_TWO_POSITIVE_BOUNDED_RESPONSE_SLOTS",
+      "as2b_empirical_fact_hash": ""
+    },
+    {
+      "operation": "five_way_conjunction",
+      "execution": "NOT_EXECUTED",
+      "expected_state": "TYPED_NOT_APPLICABLE__ONLY_TWO_POSITIVE_BOUNDED_RESPONSE_SLOTS",
+      "as2b_empirical_fact_hash": ""
+    },
+    {
+      "operation": "source_indexed_multi_universe",
+      "execution": "NOT_EXECUTED",
+      "expected_state": "TYPED_NOT_APPLICABLE__ONE_EXACT_ACCEPTED_SOURCE_UNIVERSE",
+      "as2b_empirical_fact_hash": ""
+    },
+    {
+      "operation": "non_scalar_topology_gather",
+      "execution": "NOT_EXECUTED",
+      "expected_state": "TYPED_NOT_APPLICABLE__BOUNDED_PROVING_RESPONSE_SLOTS_ARE_SCALAR",
+      "as2b_empirical_fact_hash": ""
+    }
+  ],
+  "law": "all candidates execute identical operations and preserve typed not-applicable/nonpositive states; no candidate-specific positive expansion",
+  "identity": {
+    "kind": "AS3_COMMON_I03_MANIFEST",
+    "object_id": "urn:rawlsing:pre553:as3:i03:sha256:e5555061eed45aad81cb5d0b014db54899f72167e0cd1d70911528e02f6bd93c",
+    "content_hash": "e5555061eed45aad81cb5d0b014db54899f72167e0cd1d70911528e02f6bd93c"
+  }
+}

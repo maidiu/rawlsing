@@ -1,0 +1,206 @@
+{
+  "schema": "AS3_COMMON_MEASUREMENT_MANIFEST@1.0.0",
+  "law": "same definitions for A/B/C; persistent and transient bytes separated; cache build/deletion cost visible; no opaque weighted score; preferred bounds never converted to hard gates",
+  "metrics": [
+    {
+      "metric": "SOURCE_AUTHORITATIVE_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "SEMANTIC_AUTHORITY_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "PROVENANCE_RECEIPT_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "PERSISTENT_EMPIRICAL_LEARNED_PRODUCT_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "PERSISTENT_STRUCTURAL_LEARNED_PRODUCT_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "PERSISTENT_CANONICAL_EMPIRICAL_CARRIER_BYTES",
+      "threshold_state": "AUTH61_LITS1_CANONICAL_CARRIER_HARD_MAX_3_GIB",
+      "authority_scope": "Authority 61 sec7; canonical carrier category, principally Route A"
+    },
+    {
+      "metric": "PERSISTENT_REGENERABLE_CACHE_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "TOTAL_REQUIRED_PERMANENT_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "TOTAL_OPTIONAL_CACHE_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "PEAK_TRANSIENT_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "PEAK_RSS",
+      "threshold_state": "AUTH61_HARD_MAX_4_GIB",
+      "authority_scope": "Authority 61 sec7 peak RSS"
+    },
+    {
+      "metric": "PEAK_SCRATCH_BYTES",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "FIRST_BUILD_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "REPEAT_BUILD_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "I03_WORKLOAD_SECONDS",
+      "threshold_state": "AUTH61_FROZEN_HOSTILE_I03_SUITE_HARD_MAX_900_SECONDS",
+      "authority_scope": "Authority 61 sec7"
+    },
+    {
+      "metric": "I05_PRIMITIVE_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "I05_DISCOVERY_PROGRAM_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": "Authority 61 blind-I05 2700s is certification-fixture-specific and is not promoted to AS3 production-I05"
+    },
+    {
+      "metric": "DISCOVERY_CANDIDATE_EVALUATIONS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "SOURCE_OPEN_COUNT",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "DECODE_PASS_COUNT",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "VALIDATION_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "EMPIRICAL_MODEL_COMPILE_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "STRUCTURAL_COMPILE_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "INFERENCE_LATENCY",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "ANALYTICAL_QUERY_LATENCY",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "AUDIT_REPLAY_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": "No single combined threshold; component hard gates below remain binding"
+    },
+    {
+      "metric": "CACHELESS_REBUILD_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "INCREMENTAL_REBUILD_SECONDS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "MOVING_PART_COUNT",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "FAILURE_RECOVERY_DISPOSITION",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "PERSISTENT_BYTES_REMOVABLE_WITH_ZERO_INFORMATION_LOSS",
+      "threshold_state": "NO_PREEXISTING_HARD_THRESHOLD__REPORT_PARETO",
+      "authority_scope": ""
+    },
+    {
+      "metric": "TERMINAL_VISION_PARITY_STATUS",
+      "threshold_state": "HARD_CORRECTNESS_GATE__MUST_PASS",
+      "authority_scope": "Chetiri 07 parity-before-performance"
+    },
+    {
+      "metric": "FULL_BUILD_SEAL_PROMOTE_REOPEN_AUDIT_SECONDS",
+      "threshold_state": "AUTH61_LITS1_HARD_MAX_10800_SECONDS",
+      "authority_scope": "Authority 61 sec7"
+    },
+    {
+      "metric": "COLD_ROOT_REOPEN_SECONDS",
+      "threshold_state": "AUTH61_HARD_MAX_300_SECONDS",
+      "authority_scope": "Authority 61 sec7"
+    },
+    {
+      "metric": "FULL_STREAMING_AUDIT_SECONDS",
+      "threshold_state": "AUTH61_LITS1_HARD_MAX_5400_SECONDS",
+      "authority_scope": "Authority 61 sec7"
+    },
+    {
+      "metric": "AUTH61_BLIND_I05_CERTIFICATION_FIXTURE_SECONDS",
+      "threshold_state": "AUTH61_HARD_MAX_2700_SECONDS",
+      "authority_scope": "Authority 61 sec7; not AS3 production-I05 threshold"
+    },
+    {
+      "metric": "I04_FROZEN_SUITE_SECONDS",
+      "threshold_state": "AUTH61_HARD_MAX_300_SECONDS",
+      "authority_scope": "Authority 61 sec7"
+    },
+    {
+      "metric": "SELECTED_REPLAY_SOURCE_RECONSTRUCTION_SECONDS",
+      "threshold_state": "AUTH61_HARD_MAX_600_SECONDS",
+      "authority_scope": "Authority 61 sec7"
+    },
+    {
+      "metric": "BOUNDED_INTEGRITY_FAULT_SECONDS",
+      "threshold_state": "AUTH61_HARD_MAX_1800_SECONDS",
+      "authority_scope": "Authority 61 sec7"
+    }
+  ],
+  "identity": {
+    "kind": "AS3_COMMON_MEASUREMENT_MANIFEST",
+    "object_id": "urn:rawlsing:pre553:as3:measurement:sha256:832f9fcc1a458c83589208bdd9fdb0591bdad1fa10c3380025f164ab742fddbe",
+    "content_hash": "832f9fcc1a458c83589208bdd9fdb0591bdad1fa10c3380025f164ab742fddbe"
+  }
+}
