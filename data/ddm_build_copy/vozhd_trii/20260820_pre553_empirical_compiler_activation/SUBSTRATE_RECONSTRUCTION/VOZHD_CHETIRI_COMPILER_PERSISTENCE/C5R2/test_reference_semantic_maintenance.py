@@ -62,8 +62,21 @@ class C5R2HostileTests(unittest.TestCase):
         return owner, executor, candidate, decision_auth, decision, authority
 
     def test_nomination_is_not_authority(self):
-        owner, _, candidate, _ = fixture()
+        owner = Pre553SemanticMaintenanceOwner()
+        family_rule = make_ref("SEMANTIC_FAMILY_RULE", "T06_RULE_NOM", {"family": "T06"})
+        decision_auth = make_ref("COURT_DECISION_AUTHORITY", "C5R2_NOM", OWNER_CONTRACT)
+        binding = make_ref("EVIDENCE_BINDING_AUTHORITY", "BINDING_NOM", {"complete": True})
+        evidence = make_ref("SOURCE_EVIDENCE", "DOC-NOM", {"text": "fixture"})
+        owner.register_governance_authority(decision_auth)
+        owner.register_family_rule("T06", family_rule)
+        bundle = EvidenceBundle("EB-NOM", (evidence,), "COMPLETE", binding)
+        candidate = Candidate("CAND-NOM", "T06", ("N","C"), (("N","NORM"),("C","CONDUCT")), {"actor":"R","target":"RULE","action_domain":"COMPLY","modality":"EXPECTED"}, {"source":"FIX","wave":"W1"}, family_rule, bundle.ref)
         owner.nominate(candidate)
+        self.assertEqual(len(owner.authorities), 0)
+        with self.assertRaises(SemanticMaintenanceError):
+            owner.adjudicate(GovernedDecision("ADJ-NOM", candidate.ref, "ACCEPT", decision_auth, "UNBOUND_EVIDENCE_MUST_FAIL"))
+        owner.bind_evidence(bundle)
+        owner.adjudicate(GovernedDecision("ADJ-NOM-2", candidate.ref, "ACCEPT", decision_auth, "BOUND_EVIDENCE_MAY_PROCEED"))
         self.assertEqual(len(owner.authorities), 0)
 
     def test_ambiguous_split_fails_closed(self):
