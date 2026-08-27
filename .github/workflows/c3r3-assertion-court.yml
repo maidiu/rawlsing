@@ -19,14 +19,15 @@ jobs:
       - name: Checkout isolated C3 branch
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
       - name: Recover exact commanded Git objects
         shell: bash
         run: |
           set -euo pipefail
-          git fetch origin agent/g1a-github-portability-recovery-r1
-          REF="origin/agent/g1a-github-portability-recovery-r1"
+          RECOVERY_SHA="aece04ac3fa2e488c6993c6b9c88eda296b2e6b8"
+          git fetch --depth=1 origin "$RECOVERY_SHA"
+          REF="$RECOVERY_SHA"
           mkdir -p /tmp/c3inputs
           git show "$REF:data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_REGISTER_LINEAGE/REGISTER_A/question_structure_register.csv" > /tmp/c3inputs/register_a.csv
           git show "$REF:data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_REGISTER_LINEAGE/REGISTER_B/question_structure_register.csv" > /tmp/c3inputs/register_b.csv
@@ -41,7 +42,12 @@ jobs:
         run: |
           set -euo pipefail
           OUT="data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/C3R3"
-          python "$OUT/c3r3_close.py"             --a /tmp/c3inputs/register_a.csv             --b /tmp/c3inputs/register_b.csv             --d62 /tmp/c3inputs/d62.csv             --v525b /tmp/c3inputs/v525b.csv             --out "$OUT"
+          python "$OUT/c3r3_close.py" \
+            --a /tmp/c3inputs/register_a.csv \
+            --b /tmp/c3inputs/register_b.csv \
+            --d62 /tmp/c3inputs/d62.csv \
+            --v525b /tmp/c3inputs/v525b.csv \
+            --out "$OUT"
 
       - name: Commit complete C3 closure package
         shell: bash
