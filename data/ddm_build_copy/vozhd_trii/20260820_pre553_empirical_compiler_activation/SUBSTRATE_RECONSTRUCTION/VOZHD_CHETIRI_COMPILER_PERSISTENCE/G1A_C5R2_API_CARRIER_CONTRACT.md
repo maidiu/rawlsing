@@ -105,7 +105,7 @@ Record kinds:
 - `EXPLICIT_RELEASE_PROMOTION`
 - `EXPLICIT_RELEASE_ROLLBACK`
 
-Every journal record receives a deterministic content hash. The witness persists both journals and their roots.
+Every journal record receives a deterministic content hash. The reference execution emits both append-only journals. The persisted witness records their deterministic roots, record counts/kinds, exact predecessor/successor refs, and replay results; the executable implementation is the reproducer for the full journal payloads.
 
 The carrier classification is:
 
