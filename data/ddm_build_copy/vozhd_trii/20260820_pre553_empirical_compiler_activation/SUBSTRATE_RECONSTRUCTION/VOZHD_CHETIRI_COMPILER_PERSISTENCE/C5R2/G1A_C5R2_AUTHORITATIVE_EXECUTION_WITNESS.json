@@ -1,0 +1,110 @@
+{
+  "authority_ceiling": "C5R2_ISOLATED_REFERENCE_EXECUTION_ONLY__NOT_LIVE_PROMOTION",
+  "current_release_after_rollback": {
+    "content_hash": "fe982ae88dbfa330edf6f8e89d240808d4a0f4abea5b89de6e54377e94f0527f",
+    "kind": "SEMANTIC_RELEASE",
+    "object_id": "REL-001"
+  },
+  "exact_replay": {
+    "predecessor_authority": {
+      "content_hash": "0cfdb82ac12996846a6d2da3579e8ab2e8954107cc4460a5cd4479359a9610bf",
+      "kind": "SEMANTIC_AUTHORITY",
+      "object_id": "SEM-AUTH-001@1.0.0"
+    },
+    "predecessor_release": {
+      "content_hash": "fe982ae88dbfa330edf6f8e89d240808d4a0f4abea5b89de6e54377e94f0527f",
+      "kind": "SEMANTIC_RELEASE",
+      "object_id": "REL-001"
+    },
+    "successor_authority": {
+      "content_hash": "1be016e3db71f8b18e3978ee70b1c2718389f2484ec7e2bd4ceb36350a421c4c",
+      "kind": "SEMANTIC_AUTHORITY",
+      "object_id": "SEM-AUTH-002@1.0.0"
+    },
+    "successor_release": {
+      "content_hash": "83ee190efed81961d12cb6fcf3132c84c8b08df0968288e7fcad0cfac4fce5b6",
+      "kind": "SEMANTIC_RELEASE",
+      "object_id": "REL-002"
+    }
+  },
+  "execution_receipt": {
+    "command": "python -m unittest -v",
+    "compile_check": "PASS",
+    "errors": 0,
+    "failures": 0,
+    "note": "Roots/counts are from the append-only journals emitted by the reference implementation during this execution; exact objects/releases are replayed by pinned ExactRef with no fallback.",
+    "tests_run": 11
+  },
+  "executor": "PRE553_SEMANTIC_RELEASE_EXECUTOR_C5R2_REF_V1",
+  "journal_record_count": 19,
+  "journal_record_kinds": [
+    "GOVERNANCE_AUTHORITY_BINDING",
+    "FAMILY_RULE_BINDING",
+    "COMPLETE_EVIDENCE_BINDING",
+    "CANDIDATE_NOMINATION",
+    "GOVERNED_ADJUDICATION",
+    "IMMUTABLE_SEMANTIC_AUTHORITY",
+    "TYPED_LIFECYCLE_EVENT",
+    "IMMUTABLE_FORWARD_DEPENDENCY_BINDING",
+    "DESCENDANT_REVALIDATION",
+    "COMPLETE_EVIDENCE_BINDING",
+    "CANDIDATE_NOMINATION",
+    "GOVERNED_ADJUDICATION",
+    "IMMUTABLE_SEMANTIC_AUTHORITY",
+    "TYPED_LIFECYCLE_EVENT",
+    "TYPED_LIFECYCLE_EVENT",
+    "GOVERNED_GENEALOGY_ADJUDICATION",
+    "APPEND_ONLY_GENEALOGY",
+    "IMMUTABLE_FORWARD_DEPENDENCY_BINDING",
+    "DESCENDANT_REVALIDATION"
+  ],
+  "owner": "PRE553_SEMANTIC_MAINTENANCE_OWNER_C5R2_REF_V1",
+  "owner_contract_hash": "b8d4cfeb6f3312009bec1b216886e25a6bbc6a5cb2698feb88f4094ebc71b97e",
+  "owner_journal_root": "2a570d698810727ef1143492065aa1edfa67f7bfc5222b1f22f2397c99dce080",
+  "positive_chain": [
+    "CORRECTED_EVIDENCE",
+    "CANDIDATE_NOMINATION",
+    "COMPLETE_EVIDENCE_BINDING",
+    "FAMILY_SPECIFIC_ADJUDICATION",
+    "IMMUTABLE_SEMANTIC_AUTHORITY",
+    "TYPED_LIFECYCLE_EVENT_RECERTIFIES",
+    "EXPLICIT_CURRENT_SELECT",
+    "APPEND_ONLY_GENEALOGY",
+    "DESCENDANT_REVALIDATION",
+    "SEMANTIC_RELEASE",
+    "EXPLICIT_PROMOTION",
+    "EXPLICIT_ROLLBACK",
+    "EXACT_PREDECESSOR_SUCCESSOR_REPLAY"
+  ],
+  "predecessor_authority_ref": {
+    "content_hash": "0cfdb82ac12996846a6d2da3579e8ab2e8954107cc4460a5cd4479359a9610bf",
+    "kind": "SEMANTIC_AUTHORITY",
+    "object_id": "SEM-AUTH-001@1.0.0"
+  },
+  "predecessor_release_ref": {
+    "content_hash": "fe982ae88dbfa330edf6f8e89d240808d4a0f4abea5b89de6e54377e94f0527f",
+    "kind": "SEMANTIC_RELEASE",
+    "object_id": "REL-001"
+  },
+  "release_journal_record_count": 5,
+  "release_journal_record_kinds": [
+    "IMMUTABLE_SEMANTIC_RELEASE",
+    "EXPLICIT_RELEASE_PROMOTION",
+    "IMMUTABLE_SEMANTIC_RELEASE",
+    "EXPLICIT_RELEASE_PROMOTION",
+    "EXPLICIT_RELEASE_ROLLBACK"
+  ],
+  "release_journal_root": "850a5fa8430d2a86837bf50d56dd32eda9ae0f644a6d012b20d3fb7a349fa4c3",
+  "same_semantic_claim_under_recertification": true,
+  "status": "C5R2_AUTHORITATIVE_REFERENCE_WITNESS_PASS",
+  "successor_authority_ref": {
+    "content_hash": "1be016e3db71f8b18e3978ee70b1c2718389f2484ec7e2bd4ceb36350a421c4c",
+    "kind": "SEMANTIC_AUTHORITY",
+    "object_id": "SEM-AUTH-002@1.0.0"
+  },
+  "successor_release_ref": {
+    "content_hash": "83ee190efed81961d12cb6fcf3132c84c8b08df0968288e7fcad0cfac4fce5b6",
+    "kind": "SEMANTIC_RELEASE",
+    "object_id": "REL-002"
+  }
+}
