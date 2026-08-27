@@ -1,0 +1,474 @@
+{
+  "court": "G1A_C4R2B_BOUNDED_EMPIRICAL_POSITIVE_LOAD_CLOSURE",
+  "launch_head": "4fedf24084a317806141f4799aa8359ad40c8f7c",
+  "branch": "agent/vozhd-dva-g1a-c4r2b-positive-load-closure",
+  "sibling_blind": true,
+  "consumed_second_round_siblings": [],
+  "status": "C4R2B_STILL_BLOCKED",
+  "court_boundary": {
+    "adjudicates": "independent bounded empirical positive-load blocker only",
+    "does_not_adjudicate": "seven C4 information-loss gaps reserved to C4R2A",
+    "no_live_mutation": true,
+    "no_p9": true,
+    "no_g1a_closure": true
+  },
+  "denominator": {
+    "scope_count": 9,
+    "configured_item_count": 26,
+    "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+    "authority_release": "V550J-BOUNDED-AUTHORITY-2026-08-02-R1",
+    "production_completeness_claim": "NO_PRODUCTION_COMPLETENESS_CLAIM",
+    "scopes": [
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "Afrobarometer",
+        "wave": "R1",
+        "country_code": "LS",
+        "scope_dir": "Afrobarometer_R1_LS",
+        "filter_file": "afrobarometer_r1.json",
+        "filter_sha256": "ee11bf5c3967cb3d888cf941cc7060469a2ee4d4dd44ca07cbf2017c574e274a",
+        "v550_response_semantics_audit": "v550/shard_runs/afrobarometer_r1_20260729T074523Z/Afrobarometer_R1_LS/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "9732757f771f188a89b29a455adf71ad396571e23c5c7bd5c095bd0600ff3273",
+        "joint_configuration_id": "JCFG-AFRO-R1-MIP-RANKED",
+        "configured_items": [
+          {
+            "var_code": "mip1",
+            "item_order": 1,
+            "item_role": "first_ranked_priority"
+          },
+          {
+            "var_code": "mip2",
+            "item_order": 2,
+            "item_role": "second_ranked_priority"
+          }
+        ]
+      },
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "Arab Barometer",
+        "wave": "I",
+        "country_code": "YE",
+        "scope_dir": "Arab Barometer_I_YE",
+        "filter_file": "arabbarometer_i.json",
+        "filter_sha256": "d97f0a54a72ffb00215e60f2075ef010eb01a27ddb2af51b28a1e354d7f20895",
+        "v550_response_semantics_audit": "v550/shard_runs/arabbarometer_i_20260729T074523Z/Arab Barometer_I_YE/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "e40935652112fea899c2f9f0fdf362644b6f4b2b36be27d3583f66c65477d847",
+        "joint_configuration_id": "JCFG-ARAB-I-POLITICAL-KNOWLEDGE",
+        "configured_items": [
+          {
+            "var_code": "q2571",
+            "item_order": 1,
+            "item_role": "foreign_minister_knowledge_item"
+          },
+          {
+            "var_code": "q2572",
+            "item_order": 2,
+            "item_role": "parliamentary_leader_knowledge_item"
+          }
+        ]
+      },
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "Asian Barometer",
+        "wave": "W1",
+        "country_code": "PH",
+        "scope_dir": "Asian Barometer_W1_PH",
+        "filter_file": "asianbarometer_w1.json",
+        "filter_sha256": "2ef326dfa7555efff3b708d26ef6c3f6b0d866270866cb8c926c7ac0e2e6fcff",
+        "v550_response_semantics_audit": "v550/shard_runs/asianbarometer_w1_20260729T074523Z/Asian Barometer_W1_PH/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "bab7178b7ce05a4f91458bd2340756112e1df8fe14d2614d54cc05ad2118fde9",
+        "joint_configuration_id": "JCFG-ASIAN-W1-CHANGE-EVALUATION",
+        "configured_items": [
+          {
+            "var_code": "q109",
+            "item_order": 1,
+            "item_role": "distributional_change_evaluation"
+          },
+          {
+            "var_code": "q111",
+            "item_order": 2,
+            "item_role": "economic_development_change_evaluation"
+          }
+        ]
+      },
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "EVS",
+        "wave": "1981",
+        "country_code": "BE",
+        "scope_dir": "EVS_1981_BE",
+        "filter_file": "evs_1981.json",
+        "filter_sha256": "035d4a99ed2763bbc98c743f25dfc0b037936ce31011fee3e4e759ebc2f2ffd8",
+        "v550_response_semantics_audit": "v550/shard_runs/evs_1981_20260729T074523Z/EVS_1981_BE/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "a9343ecd09ecfe7ef1527913dd362e348c89a210bbc17ae2d326dfc1bcbdee3f",
+        "joint_configuration_id": "JCFG-EVS-1981-MORAL-JUSTIFIABILITY",
+        "configured_items": [
+          {
+            "var_code": "v471",
+            "item_order": 1,
+            "item_role": "fare_evasion_justifiability"
+          },
+          {
+            "var_code": "v472",
+            "item_order": 2,
+            "item_role": "tax_cheating_justifiability"
+          },
+          {
+            "var_code": "v514",
+            "item_order": 3,
+            "item_role": "suicide_justifiability"
+          },
+          {
+            "var_code": "v517",
+            "item_order": 4,
+            "item_role": "self_defence_killing_justifiability"
+          }
+        ]
+      },
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "GSS",
+        "wave": "2010",
+        "country_code": "US",
+        "scope_dir": "GSS_2010_US",
+        "filter_file": "gss_2010.json",
+        "filter_sha256": "af054af053d083865331d6d0fac5382ca69adf9356a1d84e2b00d16feef9108b",
+        "v550_response_semantics_audit": "v550/shard_runs/gss_2010_20260729T074523Z/GSS_2010_US/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "6ccd7e438e73727f1edb59b09ab59bc50b86bc738656f71a00c60dac215e9c0c",
+        "joint_configuration_id": "JCFG-GSS-ABORTION-CONDITIONS",
+        "configured_items": [
+          {
+            "var_code": "abdefect",
+            "item_order": 1,
+            "item_role": "condition_item"
+          },
+          {
+            "var_code": "abhlth",
+            "item_order": 2,
+            "item_role": "condition_item"
+          },
+          {
+            "var_code": "abrape",
+            "item_order": 3,
+            "item_role": "condition_item"
+          },
+          {
+            "var_code": "abany",
+            "item_order": 4,
+            "item_role": "condition_item"
+          },
+          {
+            "var_code": "absingle",
+            "item_order": 5,
+            "item_role": "condition_item"
+          },
+          {
+            "var_code": "abnomore",
+            "item_order": 6,
+            "item_role": "condition_item"
+          }
+        ]
+      },
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "Latinobarómetro",
+        "wave": "1995",
+        "country_code": "BR",
+        "scope_dir": "Latinobarómetro_1995_BR",
+        "filter_file": "latinobarometro_1995.json",
+        "filter_sha256": "313306c7556aee4eacade8bfa994dcf86a14edc58d028cb4375538d7d98b0978",
+        "v550_response_semantics_audit": "v550/shard_runs/latinobarometro_1995_20260729T074523Z/Latinobarómetro_1995_BR/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "16011ce88ee235243555d257c96e4b27253793a74b3924780596cd5949c86907",
+        "joint_configuration_id": "JCFG-LATINOBAROMETRO-1995-INSTITUTION-CONFIDENCE",
+        "configured_items": [
+          {
+            "var_code": "p27e",
+            "item_order": 1,
+            "item_role": "press_confidence"
+          },
+          {
+            "var_code": "p27g",
+            "item_order": 2,
+            "item_role": "public_administration_confidence"
+          },
+          {
+            "var_code": "p27m",
+            "item_order": 3,
+            "item_role": "government_confidence"
+          }
+        ]
+      },
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "LiTS",
+        "wave": "2006",
+        "country_code": "BY",
+        "scope_dir": "LiTS_2006_BY",
+        "filter_file": "lits_2006.json",
+        "filter_sha256": "4f7e519b3d3d994b901b56c7880a4cfbe699a77fb1724eb0d88077e7206b813b",
+        "v550_response_semantics_audit": "v550/shard_runs/lits_2006_20260729T074523Z/LiTS_2006_BY/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "7529bac5c1dfeb962bcc72f8d0e701b3061b900717221f05d7f68ba0f43b1f0f",
+        "joint_configuration_id": "JCFG-LITS-2006-TRANSITION-EVALUATION",
+        "configured_items": [
+          {
+            "var_code": "q301_1",
+            "item_order": 1,
+            "item_role": "economy_vs_1989_evaluation"
+          },
+          {
+            "var_code": "q301_8",
+            "item_order": 2,
+            "item_role": "children_future_evaluation"
+          },
+          {
+            "var_code": "q301_11",
+            "item_order": 3,
+            "item_role": "corruption_vs_1989_evaluation"
+          }
+        ]
+      },
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "South Asia",
+        "wave": "W1",
+        "country_code": "IN",
+        "scope_dir": "South Asia_W1_IN",
+        "filter_file": "southasia_w1.json",
+        "filter_sha256": "5c34c6022b92fcd1f6734d948c3d33e4a26b0c3d4359727af43ded63a5247ed9",
+        "v550_response_semantics_audit": "v550/shard_runs/southasia_w1_20260729T074523Z/South Asia_W1_IN/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "2fae197698ac542e0d45f4a1a4b8d7b91d01efdefbcb5465cf87d813d0c36102",
+        "joint_configuration_id": "JCFG-SOUTH-ASIA-W1-INSTITUTION-TRUST",
+        "configured_items": [
+          {
+            "var_code": "c13f",
+            "item_order": 1,
+            "item_role": "army_trust"
+          },
+          {
+            "var_code": "c13h",
+            "item_order": 2,
+            "item_role": "parliament_trust"
+          }
+        ]
+      },
+      {
+        "scope_id": "BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY",
+        "source_family": "WVS",
+        "wave": "W1",
+        "country_code": "SE",
+        "scope_dir": "WVS_W1_SE",
+        "filter_file": "wvs_w1.json",
+        "filter_sha256": "40ee5ad2dbfc1fe681f302548f84f3f8038d3ad9f6091922412de476c7c240c5",
+        "v550_response_semantics_audit": "v550/shard_runs/wvs_w1_20260729T074523Z/WVS_W1_SE/bridge/response_semantics_audit.csv",
+        "v550_response_semantics_audit_sha256": "6e57ef505feccf88ff868877944269f9624e77939175e3ec2e0bfa8ad5639935",
+        "joint_configuration_id": "JCFG-WVS-W1-CHILD-QUALITIES",
+        "configured_items": [
+          {
+            "var_code": "V22",
+            "item_order": 1,
+            "item_role": "religious_faith_child_quality"
+          },
+          {
+            "var_code": "V24",
+            "item_order": 2,
+            "item_role": "obedience_child_quality"
+          }
+        ]
+      }
+    ]
+  },
+  "static_inputs_used": [
+    {
+      "path": "section85/authority/BOUNDED_V550J_AUTHORITY_RETURN.json",
+      "git_blob_sha": "c0c28f7cdce0aa19e66be82d7b8d9bcc06313840",
+      "sha256_from_self_contained_reproduction": "3fa503aa2f14bf0642680cab1eca849fab63d9d238e67c3e37ad14335213760d"
+    },
+    {
+      "path": "section85/authority/bounded_nine_scope_manifest.csv",
+      "git_blob_sha": "3ac97ab1e8d83589d5ddbff9a3691351704cb29a",
+      "sha256_from_self_contained_reproduction": "2ac861914aeb4714a1a78ba6b0d7832da30197c301e87950911f792d327f68d"
+    },
+    {
+      "path": "section85/authority/bounded_joint_configuration_item_crosswalk.csv",
+      "git_blob_sha": "ab7fc8f8b01b4f41bffd4d30df4990d923f8df61",
+      "sha256_from_self_contained_reproduction": "77be9a9373094c8def8d13e853522031c39ce8d17d1a72674b932752e39effa6"
+    },
+    {
+      "path": "section85/CURRENT_STATE.json",
+      "git_blob_sha": "4439d305667a19917ad0ff2b79cf0dd5035fe610"
+    },
+    {
+      "path": "section85/LIVE_HOST_DATABASE_CONTRACT.md",
+      "git_blob_sha": "811c45a44eea859bbc86f97c36a5f6b4dc5e5494"
+    },
+    {
+      "path": "section85/CODEX_EXECUTION_INSTRUCTIONS.md",
+      "git_blob_sha": "c212d7c879a92ed87fca390d4fb4a475d25aa36f"
+    },
+    {
+      "path": "section85/code/check_live_respondent_database.py",
+      "git_blob_sha": "7bb3b150105d00224fb322d7ba96faecd0583b48"
+    },
+    {
+      "path": "section85/code/run_bounded_nine_v550j_v551j_v552j.py",
+      "git_blob_sha": "18d68bcb5b7ee622252d30b916e65a9d9ea32884"
+    },
+    {
+      "path": "data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py",
+      "git_blob_sha": "9ac6feb919f45bcd33e6976dcde9dda4c8617895"
+    },
+    {
+      "path": "data/ddm_build_copy/build_v550j_prepared_substrate.py",
+      "git_blob_sha": "5226fef27903bf55984e0ca4134b6d42404305c2"
+    },
+    {
+      "path": "data/ddm_build_copy/compile_v550j_joint_response_patterns.py",
+      "git_blob_sha": "b42b00cadca6284ff99889116e8aebbc109e940e"
+    }
+  ],
+  "recovered_static_archive_identity": {
+    "expected_path": "section85/inputs/universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z.zip",
+    "expected_sha256": "27fbbb3ba5d204ccf1184c45d56bdd70543cedf385638eb70d6b93d7de9605e4",
+    "launch_tree_presence": "ABSENT",
+    "exact_fetch_result": "404_NOT_FOUND",
+    "launch_tree_zip_count": 0,
+    "semantic_capability_if_recovered": "STATIC_ONLY__NO_RESPONDENT_IDENTIFIER_SCHEMA__NOT_SUFFICIENT_FOR_REAL_V550J_EXECUTION"
+  },
+  "required_empirical_substrate_alternatives": {
+    "live_database": {
+      "status": "NOT_RECOVERED",
+      "required_public_view_one_of": [
+        "v_ddm_response_long_facet_ready_authority",
+        "v_ddm_response_long_facet_ready"
+      ],
+      "required_minimum_columns": [
+        "source",
+        "canonical_wave",
+        "country_code",
+        "var_code",
+        "respondent_id"
+      ],
+      "required_payload_characteristics": [
+        "real respondent identifiers",
+        "response rows for every configured item in every bounded scope",
+        "raw or normalized response value/label",
+        "missingness/special-response state where applicable",
+        "weight value/status where applicable"
+      ],
+      "connection_locator": "NO_GOVERNED_DSN_OR_LIVE_PIPELINE_DATABASE_LOCATOR_RECOVERED_FROM_REPOSITORY_OR_LIBRARY",
+      "preexecution_gate": "section85/code/check_live_respondent_database.py",
+      "required_gate_result": "PASS_LIVE_RESPONDENT_DATABASE_CONTRACT__9_OF_9_SCOPES"
+    },
+    "prepared_substrate": {
+      "status": "NOT_RECOVERED",
+      "required_per_scope_objects": [
+        "v550_shared_respondent_substrate.parquet or v550j_prepared_response_substrate.parquet",
+        "governing manifest with exact parquet/hash/content binding"
+      ],
+      "schema_version": "v1",
+      "execution_contract_version": "v550-v550j-coexecution-v1",
+      "required_core_columns": [
+        "run_id",
+        "source",
+        "source_id",
+        "wave",
+        "canonical_wave",
+        "country_code",
+        "respondent_id",
+        "respondent_id_norm",
+        "weight_value",
+        "weight_status",
+        "var_code",
+        "var_code_norm",
+        "question_id",
+        "question_text",
+        "response_value",
+        "response_value_normalized",
+        "response_value_norm",
+        "response_label",
+        "normalized_response_label",
+        "response_direction",
+        "polarity",
+        "is_missing",
+        "is_dk",
+        "is_refusal",
+        "is_iap",
+        "is_valid_substantive_response",
+        "semantic_response_role",
+        "semantic_response_role_status",
+        "response_semantics_authority_source",
+        "semantic_response_role_authority",
+        "directionality_status",
+        "directionality_authority_source",
+        "directionality_basis_source",
+        "target_entity_id",
+        "target_domain",
+        "target_condition_label",
+        "target_group_label",
+        "permission_domain",
+        "target_resolution_grain",
+        "target_resolution_status",
+        "target_resolution_authority_source",
+        "target_resolution_basis_source",
+        "semantic_role",
+        "v551_evidence_role",
+        "mapping_status",
+        "source_structure_classification",
+        "question_type",
+        "handling_rule",
+        "recommended_computation",
+        "source_structure_basis",
+        "source_structure_confidence",
+        "source_structure_source",
+        "source_structure_fields_joined",
+        "is_substantive",
+        "not_direct_evidence",
+        "allowed_as_association_feature",
+        "allowed_as_attitude_cloud_feature",
+        "association_lane",
+        "source_norm",
+        "wave_norm",
+        "canonical_wave_norm",
+        "country_code_norm"
+      ],
+      "additive_columns": [
+        "shard_id",
+        "selection_role",
+        "base_fixture_selected",
+        "joint_configuration_selected",
+        "joint_configuration_ids_json"
+      ],
+      "launch_tree_matching_parquet_count": 0,
+      "launch_tree_matching_prepared_artifact_count": 0
+    }
+  },
+  "channel_exhaustion": {
+    "repository": {
+      "recursive_launch_tree_examined": true,
+      "matching_zip_or_expected_archive_hash_objects": 0,
+      "respondent_or_prepared_parquet_objects": 0,
+      "database_locator_search_results": 0
+    },
+    "library": {
+      "non_generated_inventory_complete": true,
+      "pages_scanned": 3,
+      "items_scanned": 201,
+      "filename_matches_for_rawlsing_section85_respondent_v550_v551_v552_zip_dump_sql_db_postgres_canary": 0,
+      "exact_or_semantic_substrate_search": "NO_RESPONDENT_DATABASE_OR_PREPARED_SUBSTRATE_RECOVERED"
+    }
+  },
+  "execution": {
+    "live_database_contract_check": "NOT_RUN__NO_LAWFUL_EMPIRICAL_SUBSTRATE_OR_CONNECTION_LOCATOR",
+    "bounded_j_chain": "NOT_RUN__PREEXECUTION_SUBSTRATE_GATE_UNSATISFIED",
+    "positive_load_scope_count": 0,
+    "positive_load_unproved_scope_count": 9,
+    "empirical_configured_item_coverage_proved": "0/26",
+    "static_configured_item_binding": "26/26",
+    "interpretation": "NOT_RUN_NOT_PROVED__DO_NOT_INFER_EMPIRICAL_EMPTY"
+  },
+  "smallest_remaining_substrate_blocker": {
+    "primary": "Provide one governed respondent-level substrate path for all 9 scopes: either a live DDM PostgreSQL relation satisfying the Section85 contract or exact prepared-substrate Parquet+manifest objects satisfying v550-v550j-coexecution-v1.",
+    "additional_runner_input": "Provide/recover the exact canary root required by the Section85 G4 runner, beginning with archive universality_9family_20var_v550_552_after_bridge_repair_20260729T074523Z.zip at SHA-256 27fbbb3ba5d204ccf1184c45d56bdd70543cedf385638eb70d6b93d7de9605e4, plus current exact V551/V552 producer manifests/bytes where required by G4.",
+    "prohibition": "Do not synthesize respondents from aggregate n_respondents or response marginals."
+  }
+}
