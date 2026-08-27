@@ -1,0 +1,11 @@
+check_id,hostile_mutation,required_disposition
+H01_WRONG_SOURCE,LiTS-I SHA differs from 7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09,FAIL_CLOSED
+H02_WRONG_DISCOVERY_AUTHORITY,DiscoveryAuthority exact ref/hash differs,FAIL_CLOSED
+H03_WRONG_OFFICIAL_FRONTIER,official evaluated-frontier exact ref/hash differs,FAIL_CLOSED
+H04_MISSING_OR_SUBSTITUTED_CANDIDATE,82-member frozen candidate membership is incomplete duplicated or substituted,FAIL_CLOSED
+H05_CORRUPT_OR_INCOMPLETE_DISCOVERY_RECEIPT,required DiscoveryResultReceipt field or exact replay/ref material is missing/corrupt,FAIL_CLOSED
+H06_FRESH_PROCESS_SEMANTIC_MISMATCH,semantic identity/result/state/replay content differs across two fresh processes,FAIL_CLOSED
+H07_WRONG_AS2B_REPLAY_MANIFEST,ReplayManifest differs from 6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd,FAIL_CLOSED
+H08_HIDDEN_TRANSFORMED_PERSISTENCE,forbidden transformed empirical payload/accelerator survives Route-B session boundary,FAIL_CLOSED
+H09_I04_POSITIVE_AUTHORITY_MANUFACTURE,I04 emits positive pre-V3 structural product despite frozen missing authority target,FAIL_CLOSED
+H10_UNEVALUATED_OR_NONTERMINAL_CANDIDATE,any candidate lacks an accepted exact terminal coverage state,FAIL_CLOSED
