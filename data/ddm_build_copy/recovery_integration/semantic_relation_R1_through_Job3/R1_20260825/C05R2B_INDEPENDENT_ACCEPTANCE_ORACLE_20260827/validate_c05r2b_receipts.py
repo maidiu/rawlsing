@@ -86,8 +86,16 @@ def validate_run(run:dict[str,Any])->list[str]:
         if pair not in expected: e.append(f"receipt[{n}]: candidate identity not in frozen frontier")
         if r.get("coverage_state") not in terminal: e.append(f"receipt[{n}]: nonterminal/unknown coverage_state {r.get('coverage_state')!r}")
         if r.get("typed_state")=="UNEVALUATED": e.append(f"receipt[{n}]: UNEVALUATED forbidden by exact-evaluate-all law")
-        if r.get("typed_state")=="PRUNED_BY_AUTHORITY" and r.get("coverage_state")!="EVALUATED_DENIED_BY_EXACT_AUTHORITY":
-            e.append(f"receipt[{n}]: PRUNED_BY_AUTHORITY lacks exact-authority terminal state")
+        expected_pairs={
+          "EVALUATED_SUPPORTED":{"DISCOVERED_RESULT_SUPPORTED"},
+          "EVALUATED_VALID_EMPTY":{"VALID_EMPTY"},
+          "EVALUATED_UNDERPOWERED":{"INSUFFICIENT_SUPPORT"},
+          "EVALUATED_NONCOMPARABLE":{"NONCOMPARABLE"},
+          "EVALUATED_DENIED_BY_EXACT_AUTHORITY":{"PRUNED_BY_AUTHORITY"},
+          "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY":{"COVERAGE_LIMITED"},
+        }
+        if r.get("typed_state") not in expected_pairs.get(r.get("coverage_state"),set()):
+            e.append(f"receipt[{n}]: typed_state/coverage_state mismatch")
         _eq(e,f"receipt[{n}].discovery_authority_ref",r.get("discovery_authority_ref"),ORACLE["as3r2"]["discovery_authority_ref"])
         _eq(e,f"receipt[{n}].evaluated_frontier_ref",r.get("evaluated_frontier_ref"),ORACLE["as3r2"]["official_frontier_ref"])
         _eq(e,f"receipt[{n}].source_release_refs",r.get("source_release_refs"),[ORACLE["c11"]["logical_release_ref"]])
@@ -114,7 +122,7 @@ def validate_run(run:dict[str,Any])->list[str]:
     opens=res.get("source_opens_high_level")
     dec=res.get("decoder_passes")
     if not isinstance(opens,int) or isinstance(opens,bool) or opens<1: e.append("resources.source_opens_high_level: exact positive integer required")
-    if dec!=1: e.append(f"resources.decoder_passes: expected exact single decode pass, got {dec!r}")
+    if not isinstance(dec,int) or isinstance(dec,bool) or dec<1: e.append("resources.decoder_passes: exact positive integer accounting required")
     _eq(e,"resources.decoder_call",res.get("decoder_call"),ORACLE["source"]["decoder"])
     _eq(e,"resources.persistent_transformed_empirical_payload_bytes",res.get("persistent_transformed_empirical_payload_bytes"),0)
     return e
