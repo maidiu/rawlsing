@@ -1,0 +1,104 @@
+{
+  "schema": "AS3R1_AS3_MECHANICAL_UNBLOCK_RECEIPT@1.0.0",
+  "as3_commit": "da36f2457513acf2ce734f3509236ef6d2dceec5",
+  "frozen_as3": {
+    "predicate_catalog_count": 19,
+    "predicate_catalog_hash": "8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293",
+    "query_template_catalog_count": 3,
+    "query_template_catalog_hash": "f76ddf2b8a99e6a05884d503aa7a5da8fbf1fb3b07fbcd4cc93597457defa423",
+    "risk_partition_count": 1,
+    "measure_partition": "RAW_ONLY",
+    "topology_partition_count": 2,
+    "K": 18,
+    "J": 2,
+    "recursive_depth": 18,
+    "preauthority_candidate_commitment_count": 82,
+    "preauthority_frontier_hash": "ec85fc2c6460a8a014ae90c54e5847f883c495708c32898ea44bfc0ef78c54e6",
+    "completion_law": "NONE_EXACT_EVALUATE_ALL",
+    "rng": "NONE",
+    "tie_order": "CANONICAL_CANDIDATE_HASH_ORDER",
+    "route_b_hash": "51836c44c7400a0d11f514c2bca4c21dd201461667728ed3335bc9ffd2462810",
+    "route_c_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c",
+    "route_a_hash": "d550bcf4150d1823109bf818f5265a38f8fe97185629f36ec80908427991a5da",
+    "common_i03_hash": "e5555061eed45aad81cb5d0b014db54899f72167e0cd1d70911528e02f6bd93c",
+    "common_learned_prev3_hash": "e69f49c705b79bf469e67ee12b705747693a260e67c9cc1b9262900a89b5c33e",
+    "common_measurement_hash": "832f9fcc1a458c83589208bdd9fdb0591bdad1fa10c3380025f164ab742fddbe"
+  },
+  "proposed_support_rule_ref": {
+    "kind": "AS3R1_PRODUCTION_I05_SUPPORT_RULE",
+    "object_id": "urn:rawlsing:pre553:as3r1:support-rule:sha256:6df2664f4a9cd8fe5d334b954aed4db1b97de4937b4d03e5ce63bcc322baab4c",
+    "content_hash": "6df2664f4a9cd8fe5d334b954aed4db1b97de4937b4d03e5ce63bcc322baab4c"
+  },
+  "proposed_support_rules": {
+    "minimum_raw_denominator": 0
+  },
+  "discovery_authority_fixed_material_ref": {
+    "kind": "AS3R1_POST_ADOPTION_DA_FIXED_MATERIAL",
+    "object_id": "urn:rawlsing:pre553:as3r1:da-fixed:sha256:1c6330b71c612b4ca42810962803bddf345a6326388788adca410c3ee4885744",
+    "content_hash": "1c6330b71c612b4ca42810962803bddf345a6326388788adca410c3ee4885744"
+  },
+  "official_frontier_effect": {
+    "candidate_set_change": "NONE",
+    "candidate_count_before": 82,
+    "candidate_count_after_hq_adoption": 82,
+    "candidate_order_change": "NONE",
+    "official_frontier_identity_change": "YES__FINAL_FRONTIER_HASH_MUST_BIND_THE_POST_ADOPTION_DISCOVERY_AUTHORITY_REF",
+    "preauthority_commitment_hash_remains": "ec85fc2c6460a8a014ae90c54e5847f883c495708c32898ea44bfc0ef78c54e6",
+    "exact_final_frontier_hash_now": "NOT_YET_LAWFULLY_FINALIZABLE__HQ_ADOPTION_REF_REQUIRED"
+  },
+  "as3_artifacts_requiring_modification": [],
+  "future_additive_artifacts_after_hq_adoption": [
+    "binding DiscoveryAuthority seal",
+    "official I05 frontier seal",
+    "updated replay closure receipt"
+  ],
+  "no_candidate_execution": true,
+  "identity": {
+    "kind": "AS3R1_AS3_MECHANICAL_UNBLOCK_RECEIPT",
+    "object_id": "urn:rawlsing:pre553:as3r1:unblock:sha256:52c34763382f4947698d877dda55961072e73025e76d1c9c090fcc32cb1fdead",
+    "content_hash": "52c34763382f4947698d877dda55961072e73025e76d1c9c090fcc32cb1fdead"
+  },
+  "completed_discovery_authority_fixed_material": {
+    "schema": "AS3R1_POST_ADOPTION_DISCOVERY_AUTHORITY_FIXED_MATERIAL@1.0.0",
+    "status": "MECHANICALLY_COMPLETE_EXCEPT_HQ_ADOPTION_AUTHORITY_REF",
+    "profile": "C05R1B_PRODUCTION_DISCOVERY_RULE_PROFILE@1.0.0",
+    "operation": "PRE553_PRODUCTION_EXACT_BOUNDED_AUTONOMOUS_DISCOVERY@1.0.0",
+    "algorithm": "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "c11_logical_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "repository_snapshot_hash": "ff8a49d2560fe3cf229f4d5a0f87a14c52d08086a74649968d8c9c9d0225aa77",
+    "replay_manifest_hash": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+    "predicate_catalog_hash": "8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293",
+    "query_template_catalog_hash": "f76ddf2b8a99e6a05884d503aa7a5da8fbf1fb3b07fbcd4cc93597457defa423",
+    "K": 18,
+    "J": 2,
+    "recursive_depth": 18,
+    "candidate_frontier_pre_authority_hash": "ec85fc2c6460a8a014ae90c54e5847f883c495708c32898ea44bfc0ef78c54e6",
+    "support_rule_ref": {
+      "kind": "AS3R1_PRODUCTION_I05_SUPPORT_RULE",
+      "object_id": "urn:rawlsing:pre553:as3r1:support-rule:sha256:6df2664f4a9cd8fe5d334b954aed4db1b97de4937b4d03e5ce63bcc322baab4c",
+      "content_hash": "6df2664f4a9cd8fe5d334b954aed4db1b97de4937b4d03e5ce63bcc322baab4c"
+    },
+    "support_rules": {
+      "minimum_raw_denominator": 0
+    },
+    "pruning": {
+      "kind": "NONE_EXACT_EVALUATE_ALL"
+    },
+    "rng": "NONE",
+    "tie_order": "CANONICAL_CANDIDATE_HASH_ORDER",
+    "coverage": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+    "validation_kinds": [
+      "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+      "JOINT_NOT_PRODUCT_OF_MARGINALS",
+      "CONDITIONAL_REVERSAL",
+      "TARGET_CELL_SUPPORTED"
+    ],
+    "required_final_step": "HQ adopts the exact rule artifact unchanged and supplies its exact governing authority ref/snapshot; then runtime DiscoveryAuthority identity is recomputed from the already-frozen exact predicate/query/partition objects plus this support rule.",
+    "identity": {
+      "kind": "AS3R1_POST_ADOPTION_DA_FIXED_MATERIAL",
+      "object_id": "urn:rawlsing:pre553:as3r1:da-fixed:sha256:1c6330b71c612b4ca42810962803bddf345a6326388788adca410c3ee4885744",
+      "content_hash": "1c6330b71c612b4ca42810962803bddf345a6326388788adca410c3ee4885744"
+    }
+  }
+}

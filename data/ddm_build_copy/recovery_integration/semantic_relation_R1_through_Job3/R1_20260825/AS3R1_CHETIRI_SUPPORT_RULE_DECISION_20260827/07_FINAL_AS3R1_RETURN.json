@@ -1,0 +1,85 @@
+{
+  "schema": "AS3R1_CHETIRI_FINAL_RETURN@1.0.0",
+  "disposition": "AS3R1_NEW_VERSIONED_PRODUCTION_SUPPORT_RULE_PROPOSED_FOR_HQ_ADOPTION",
+  "role": "VOZHD_CHETIRI_ROLE_RECONFIRMED",
+  "actual_chetiri_control_head": "04a0109aa170c6041b199e5c6130a39a8e0f6029",
+  "actual_coordination_head": "8c6e0101a7c51deb67e6abc786450eb845b64eda",
+  "as3r1_branch": "as3r1-chetiri-support-rule-20260827",
+  "accepted_as3_commit": "da36f2457513acf2ce734f3509236ef6d2dceec5",
+  "exact_prior_production_support_authority_exists": false,
+  "zero_rule_adjudication": {
+    "option": "0",
+    "exact_value": "0",
+    "semantic_meaning": "NO_ADDITIONAL_COUNT_BASED_MINIMUM_SUPPORT_FLOOR",
+    "underpowered_reachability": "UNREACHABLE_THROUGH_THIS_FIELD",
+    "zero_denominator_terrain": "Existing terminal fact law classifies all-zero/ZERO_SUPPORT/VALID_EMPTY sets before threshold check",
+    "statistical_adequacy_claim": "NONE",
+    "low_support_effect": "Preserved; no count-floor override",
+    "truth_effect": "No frontier or truth-condition change; validators unchanged",
+    "uncertainty_compatibility": "YES__UNCERTAINTY_UNQUANTIFIED_PRESERVED",
+    "fixture_independence": "YES",
+    "disposition": "PROPOSE_FOR_HQ_ADOPTION"
+  },
+  "one_rule_adjudication": {
+    "option": "1",
+    "exact_value": "1",
+    "semantic_meaning": "EVERY_PRIMARY_FACT_MUST_HAVE_POSITIVE_RAW_DENOMINATOR",
+    "underpowered_reachability": "REACHABLE_ONLY_IF_A_PRIMARY_FACT_WITH_DENOMINATOR_0_SURVIVES_PRIOR_TERMINAL_HANDLING; SUPPORTED/OBSERVED_ZERO ALREADY REQUIRE POSITIVE DENOMINATOR, SO UNIQUE EFFECT IS PRINCIPALLY MIXED LOW_SUPPORT ZERO-DENOMINATOR TERRAIN",
+    "zero_denominator_terrain": "All-zero candidate fact sets already become VALID_EMPTY; value 1 adds a mixed-role cross-fact reclassification policy",
+    "statistical_adequacy_claim": "CAN_BE_READ NARROWLY AS EXISTENCE NOT POWER, BUT IS NOT RECOVERED PRODUCTION AUTHORITY",
+    "low_support_effect": "LOW_SUPPORT denominator 0 in a mixed primary set would be overridden to UNDERPOWERED",
+    "truth_effect": "No frontier change, but adds a new terminal classification policy",
+    "uncertainty_compatibility": "FORMALLY_COMPATIBLE_BUT_NOT_INDEPENDENTLY_REQUIRED",
+    "fixture_independence": "NO_ACCEPTED_INDEPENDENT_PRODUCTION_AUTHORITY_RECOVERED; test/default precedent explicitly insufficient",
+    "disposition": "REJECT_FOR_AS3R1_PRODUCTION_ADOPTION"
+  },
+  "other_rule_adjudication": {
+    "option": ">=2",
+    "exact_value": "ANY_INTEGER_2_OR_GREATER",
+    "semantic_meaning": "POSITIVE COUNT-BASED ADEQUACY FLOOR",
+    "underpowered_reachability": "INCREASES WITH FLOOR",
+    "zero_denominator_terrain": "VALID_EMPTY remains prior, but positive-denominator primary facts below floor become UNDERPOWERED",
+    "statistical_adequacy_claim": "IMPLIES A NUMERIC ADEQUACY POLICY REQUIRING OPERATION-SPECIFIC AUTHORITY",
+    "low_support_effect": "May override LOW_SUPPORT and other primary facts based only on count",
+    "truth_effect": "No frontier change but materially changes terminal empirical classification",
+    "uncertainty_compatibility": "NOT JUSTIFIED WITHOUT A SEPARATE SUPPORT/UNCERTAINTY POLICY",
+    "fixture_independence": "NO",
+    "disposition": "REJECT__ARBITRARY_WITHOUT_NEW_HIGHER_ORDER_SUPPORT_POLICY"
+  },
+  "final_proposed_support_rule": {
+    "rule_id": "PRE553_PRODUCTION_I05_NO_ADDITIONAL_MINIMUM_RAW_DENOMINATOR@1.0.0",
+    "rule_hash": "6df2664f4a9cd8fe5d334b954aed4db1b97de4937b4d03e5ce63bcc322baab4c",
+    "support_rules": {
+      "minimum_raw_denominator": 0
+    },
+    "authority_status": "PROPOSED_FOR_VERKHOVOD_HQ_ADOPTION__NOT_BINDING_UNTIL_ADOPTED"
+  },
+  "semantic_interpretation": "I05 adds no raw-denominator adequacy floor beyond the exact typed support states already emitted by I03. This value does not state that denominator zero or one is statistically adequate; it states only that this production profile does not introduce a new count threshold.",
+  "effects": {
+    "low_support": "LOW_SUPPORT remains an I03 empirical-fact state and remains visible in discovery support summaries; this rule does not add a count-floor override that relabels it UNDERPOWERED.",
+    "underpowered": "EVALUATED_UNDERPOWERED is intentionally unreachable through this count-floor field under this rule. The vocabulary remains part of the frozen engine and may become reachable only under a separately authorized and newly versioned positive support rule or another exact operation-valid support authority.",
+    "valid_empty": "All-zero-denominator or ZERO_SUPPORT/VALID_EMPTY candidate fact sets are classified by the existing terminal fact law before the minimum-denominator check; this rule does not change VALID_EMPTY.",
+    "observed_zero": "OBSERVED_ZERO already requires positive raw denominator and zero numerator; this rule does not change it.",
+    "uncertainty_unquantified": "UNCERTAINTY_UNQUANTIFIED remains exactly unquantified. No estimator, confidence rule, effect threshold, or power claim is introduced.",
+    "frontier_identity": {
+      "candidate_set_change": "NONE",
+      "candidate_count_before": 82,
+      "candidate_count_after_hq_adoption": 82,
+      "candidate_order_change": "NONE",
+      "official_frontier_identity_change": "YES__FINAL_FRONTIER_HASH_MUST_BIND_THE_POST_ADOPTION_DISCOVERY_AUTHORITY_REF",
+      "preauthority_commitment_hash_remains": "ec85fc2c6460a8a014ae90c54e5847f883c495708c32898ea44bfc0ef78c54e6",
+      "exact_final_frontier_hash_now": "NOT_YET_LAWFULLY_FINALIZABLE__HQ_ADOPTION_REF_REQUIRED"
+    },
+    "preauthority_82_candidate_commitment_changes": "NO"
+  },
+  "remaining_blocker_count": 1,
+  "remaining_blocker": "AS3R1-B01__HQ_ADOPTION_OF_EXACT_PROPOSED_SUPPORT_RULE_PENDING",
+  "candidate_executed": false,
+  "route_selected": false,
+  "status": "AS3R1_SUPPORT_RULE_AUTHORITY_DECISION_COMPLETE",
+  "identity": {
+    "kind": "AS3R1_FINAL_RETURN",
+    "object_id": "urn:rawlsing:pre553:as3r1:final:sha256:08a2a22ebe3d5a98700638d7161211ea39c534d3eb577a19d478591f93a10643",
+    "content_hash": "08a2a22ebe3d5a98700638d7161211ea39c534d3eb577a19d478591f93a10643"
+  }
+}
