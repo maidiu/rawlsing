@@ -1,0 +1,96 @@
+{
+  "status": "RETURNED__W5_POSITIVE_DOCUMENTARY_RECOVERY__UNKNOWN_PRESERVED__NON_CERTIFYING",
+  "stop_token": "PRE553_GSR07R3_WVS7_DOC_W5_RETURNED",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/vozhd-trii-gsr07r3-wvs7-doc-w5",
+  "exact_starting_head": "d643edc4d4a0be155e92c374b8d1d4b560140fbb",
+  "governing_authority": {
+    "authority_84_control_commit": "04a0109aa170c6041b199e5c6130a39a8e0f6029",
+    "authority_83": "83_GSR07R2_ABC_ACCEPTANCE_AND_WVS7_DOCUMENTARY_RECOVERY_WAVE_AUTHORITY.md",
+    "route_a_front_door": [
+      "00A_READ_BEFORE_ANY_TRII_ACTION.md",
+      "78_TRII_ROUTE_A_COMMAND_IDENTITY_AND_ANTI_DRIFT_LAW.md"
+    ],
+    "accepted_r2": {
+      "A": "a06f2bced8677453cf77fec5e622cb334a9810a5",
+      "B": "a07f449221256e0c52cffd3f85812d30c0f047fc",
+      "C": "930d89b8930c21c9a8f1180093ee15ed10c495e4"
+    }
+  },
+  "batch": [
+    {"country": "Puerto Rico", "year": 2018},
+    {"country": "Romania", "year": 2018},
+    {"country": "Russia", "year": 2017},
+    {"country": "Serbia", "year": 2017},
+    {"country": "Singapore", "year": 2020},
+    {"country": "Slovakia", "year": 2022},
+    {"country": "South Korea", "year": 2018},
+    {"country": "Taiwan ROC", "year": 2019},
+    {"country": "Tajikistan", "year": 2020},
+    {"country": "Thailand", "year": 2018},
+    {"country": "Tunisia", "year": 2019}
+  ],
+  "document_identity_recovery": {
+    "study_deposits": 11,
+    "wvsa_related_materials": 47,
+    "questionnaires": 14,
+    "methodology_or_technical_reports": 11,
+    "sample_designs": 11,
+    "team_documents": 11,
+    "substantive_sample_design_bodies_recovered": ["Romania 2018"]
+  },
+  "country_universe": {
+    "recovered_source_owner_authority_rows": 1,
+    "document_identified_content_not_recovered_rows": 10,
+    "romania": {
+      "target_population_size": 16266394,
+      "target_population_coverage": "UNKNOWN__COUNTRY_DEFINITION_OR_COVERAGE_DEVIATION_NOT_POSITIVELY_RECOVERED",
+      "sample_frame": "Voting-precinct PSUs and registered-adult electoral lists, with documented 2012-panel recontact and 18-22 dwelling supplement.",
+      "design": "Stratified two-stage probability sampling; 150 voting-precinct PSUs selected PPS by registered adults; 10 electors per selected precinct by systematic equal-probability sampling.",
+      "preserved_internal_numerical_distinction": "Document states target sample size 1200 and later uses n=1500 in the PSU-allocation formula; W5 does not repair the source."
+    }
+  },
+  "routing": {
+    "rows": 100,
+    "status_counts": {
+      "DOCUMENT_IDENTIFIED_CONTENT_NOT_RECOVERED": 33,
+      "NOT_APPLICABLE_TO_CLAIM": 65,
+      "RECOVERED_SOURCE_OWNER_AUTHORITY": 2
+    },
+    "D01": "UNKNOWN for exact target/country administration matrices in all 11 W5 societies",
+    "D02": "UNKNOWN exact row determinant in all 11 W5 societies",
+    "D04": {
+      "Tajikistan": "DOCUMENT_IDENTIFIED_CONTENT_NOT_RECOVERED",
+      "other_W5": "NOT_APPLICABLE_TO_CLAIM under accepted R2B Political Trust release scope"
+    },
+    "D05_D06": "NOT_APPLICABLE_TO_CLAIM for all W5 under exact released MENA scope Iraq/Jordan/Lebanon/Egypt",
+    "D07": "NOT_APPLICABLE_TO_CLAIM for all W5 under India-only WEE scope",
+    "D08_D09": "NOT_APPLICABLE_TO_CLAIM for all W5 under accepted Gender-version country scope",
+    "D10_positive": [
+      "Puerto Rico exact RB14 country scope for PRI_Q258b and PRI_QB1..PRI_QB13",
+      "South Korea KR_Q290_2 exact predicate: No spouse/partner"
+    ],
+    "D10_unknown": [
+      "South Korea KR_A24",
+      "South Korea KR_A25",
+      "Any other W5 country-specific narrower predicate not positively recovered from readable source-owner text"
+    ]
+  },
+  "unresolved_gap_rows": 44,
+  "anti_inference": [
+    "Missing documentation is not negative truth.",
+    "No design was inferred from incidence, I_PSU, weights, neighboring waves, or standard practice.",
+    "No routing membership was inferred from missing codes, response incidence, complements, or variable prefixes.",
+    "UNKNOWN is preserved."
+  ],
+  "excluded_actions": [
+    "sibling W-lane inspection",
+    "raw response-data scan",
+    "D03/D11/D12 HQ joins",
+    "full WVS7 certification",
+    "semantic mutation",
+    "C05-R2B",
+    "architecture selection",
+    "raw data or document binary commits"
+  ]
+}
