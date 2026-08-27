@@ -1,0 +1,32 @@
+{
+  "schema": "AS4I0_NO_HIDDEN_TRANSFORMED_PERSISTENCE_RECEIPT@1.0.0",
+  "status": "PASS_BY_CONSTRUCTION_AND_CHANGED_FILE_CENSUS",
+  "changed_file_classes": {
+    "code": [
+      "rawlsing_next/pre553_as4i0_route_b_driver.py",
+      "rawlsing_next/tests/test_pre553_as4i0_route_b_driver.py",
+      ".github/workflows/as4i0-bounded-validation.yml"
+    ],
+    "banked_authority_or_constructor_inputs": [
+      "banked_as3r2/*.json",
+      "banked_as2a/01_LITS1_1198_SLOT_OWNERSHIP_PROJECTION_EXCLUSION_LEDGER.csv",
+      "banked_as2a/04_SOURCE_SPECIFIC_PROJECTION_AUTHORITY_PACKAGE.json",
+      "banked_as2b/run_as2b_lits1_mechanical_certification.py"
+    ],
+    "receipts_and_docs": [
+      "00_IMPLEMENTATION_SCOPE_AND_BLOCKER.md",
+      "01_BOUNDED_VALIDATION_RECEIPT.json",
+      "02_NO_HIDDEN_TRANSFORMED_PERSISTENCE_RECEIPT.json"
+    ],
+    "runners": [
+      "run_as4i0_route_b.py",
+      "run_route_b_production.py"
+    ]
+  },
+  "persistent_empirical_payload_files": [],
+  "persistent_transformed_empirical_payload_bytes": 0,
+  "runtime_storage_law": "Route B rebuilds the accepted source-backed C11 release/repository from the exact physical LiTS-I source in process memory only; RouteBSourceSession.close clears held repository/release/context references.",
+  "receipt_boundary": "Production receipt contains exact refs, hashes, counts, coverage, replay refs, resource/session metadata only; it does not serialize RespondentEvent, EmpiricalCoordinateFact, RoutingEligibilityFact, raw source rows, decoded frames, or transformed C11 payload.",
+  "source_artifact_not_banked": true,
+  "candidate_execution_count": 0
+}
