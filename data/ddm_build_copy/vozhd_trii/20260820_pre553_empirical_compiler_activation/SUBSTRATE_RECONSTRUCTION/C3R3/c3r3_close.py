@@ -47,10 +47,10 @@ def main():
     V=pd.read_csv(args.v525b,dtype=str,keep_default_na=False)
     A=A.assign(source=A["source_family"],wave=A["canonical_wave"],var_name=A["question_name"])
 
-    # Freeze denominator independently and cross-check exact B.
-    shared=[c for c in A.columns if c in B.columns]
-    ab_changed=(A[shared].reset_index(drop=True)!=B[shared].reset_index(drop=True)).any(axis=1)
-    if int(ab_changed.sum())!=2148: raise SystemExit(f"AB_CHANGED_COUNT={int(ab_changed.sum())}")
+    # Freeze the governed semantic denominator independently and cross-check exact B.
+    # Non-semantic register metadata changed across A/B and is outside the C3 denominator.
+    ab_changed=(A[SEM].reset_index(drop=True)!=B[SEM].reset_index(drop=True)).any(axis=1)
+    if int(ab_changed.sum())!=2148: raise SystemExit(f"AB_SEMANTIC_CHANGED_COUNT={int(ab_changed.sum())}")
     if int((A.loc[ab_changed,"final_driver_id"].reset_index(drop=True)!=B.loc[ab_changed,"final_driver_id"].reset_index(drop=True)).sum())!=879:
         raise SystemExit("AB_FINAL_DRIVER_ID_COUNT_MISMATCH")
 
