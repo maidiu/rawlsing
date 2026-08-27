@@ -54,7 +54,7 @@ Worker tips at HQ intake:
 
 These exact commits are the authoritative archaeological return locations if a future Vozhd needs the original ledgers. The returns are evidence, not live Rawlsing authority.
 
-## Current R1 whole-history holding
+## Current R1/R2 whole-history holding
 
 Across otherwise different historical lineages, Rawlsing repeatedly learned the same meta-discipline:
 
@@ -69,9 +69,16 @@ Across otherwise different historical lineages, Rawlsing repeatedly learned the 
 9. do not promote heuristic/model-rich generated constructs into empirical truth;
 10. preserve enough history/dependency context that downstream interpretation does not have to guess or reopen archaeology.
 
-The first 44-row current-trajectory crosswalk finds **zero whole concept classes yet proved genuinely missing from modern Trii/Chetiri**. The dominant residual risk is finer-grain preservation, owner/load/execution, currentness, and closure—not wholesale conceptual amnesia.
+The first 44-row current-trajectory crosswalk found zero whole concept classes then proved genuinely missing from modern Trii/Chetiri. That remains a useful provisional R1 result, but it was not the final person-world disposition.
 
-That is provisional R1, not final closure. Several historical forms remain richer or unresolved, especially V550J configuration/scope grammar, statistical design authority, authority-role conservation fixtures, sparse-slice degradation, structural-channel inference, alienation/mediation succession, and developmental availability.
+Project-owner correction LM-C1 R2 establishes two strengthened conservation obligations:
+
+- `ABSOLUTE_HORIZON_IDENTIFICATION_ALIENATION_FUNCTION_REQUIRED`: identification/alienation relative to each finite stratum determines whether that stratum remains naturalized/invisible or becomes objectified/visible to the persona, altering critical-distance and agency possibilities without erasing material pressure;
+- `PERSON_HISTORY_RESPONSIVE_CONSTRUCT_AVAILABILITY_REQUIRED_AS_SUCCESSOR_TARGET`: historical fixed age-gated driver introduction should be generalized into actor-history-responsive developmental availability where the same construct may become causally available earlier or later under governed generated-life prerequisites.
+
+Therefore `05_CURRENT_CAMPAIGN_CROSSWALK_R1.csv` rows LMX-034 and LMX-035 are superseded by `CURRENT_CAMPAIGN_CROSSWALK_R2_OWNER_CORRECTION_DELTA.csv`.
+
+The dominant residual risk remains finer-grain preservation, owner/load/execution, currentness, and closure—not a new sovereign architecture.
 
 ## Required read order for any successor HQ/Vozhd
 
@@ -83,10 +90,13 @@ That is provisional R1, not final closure. Several historical forms remain riche
 6. `03_CROSS_WORKER_COLLISIONS_AND_RECONCILIATION.md`
 7. `04_MASTER_MISSING_RESOURCE_AND_PROOF_QUEUE.csv`
 8. `05_CURRENT_CAMPAIGN_CROSSWALK_R1.csv`
-9. `05_CURRENT_CAMPAIGN_CROSSWALK_R1.md`
-10. `06_HQ_NEXT_DAG_AND_COMPLETION_CRITERIA.md`
-11. the six original worker returns at the exact worker-tip commits above when source-level detail is required;
-12. current banked P1-P10/Trii/Chetiri authorities before any later comparison is called current.
+9. `CURRENT_CAMPAIGN_CROSSWALK_R2_OWNER_CORRECTION_DELTA.csv` — supersedes R1 rows LMX-034 and LMX-035
+10. `05_CURRENT_CAMPAIGN_CROSSWALK_R1.md`
+11. `06_HQ_NEXT_DAG_AND_COMPLETION_CRITERIA.md`
+12. `COURTS/LM_C1_PERSON_WORLD_FUNCTIONAL_SUCCESSION_R1.md` — preserved historical intermediate ruling
+13. `COURTS/LM_C1_PERSON_WORLD_FUNCTIONAL_SUCCESSION_R2_OWNER_CORRECTION.md` — binding correction over the affected C1 holdings
+14. the six original worker returns at the exact worker-tip commits above when source-level detail is required;
+15. current banked P1-P10/Trii/Chetiri authorities before any later comparison is called current.
 
 ## Resume protocol
 
@@ -95,7 +105,7 @@ A successor Vozhd shall:
 1. re-query `agent/rawlsing-conservation-hq-integration` and the six worker branches rather than assuming these recorded tips are still current;
 2. re-query `agent/vozhd-to-vozhdy-inheritance-integration-r1` before consuming P10 state;
 3. re-query the live Trii/Chetiri control branches before issuing any current-coverage conclusion;
-4. continue from `06_HQ_NEXT_DAG_AND_COMPLETION_CRITERIA.md`;
+4. continue from `06_HQ_NEXT_DAG_AND_COMPLETION_CRITERIA.md` while applying all later additive corrections such as LM-C1 R2;
 5. preserve all uncertainty/currentness classes rather than flattening old findings into current truth;
 6. never use a missing filename as proof of missing function or a newer file as proof of current authority.
 
