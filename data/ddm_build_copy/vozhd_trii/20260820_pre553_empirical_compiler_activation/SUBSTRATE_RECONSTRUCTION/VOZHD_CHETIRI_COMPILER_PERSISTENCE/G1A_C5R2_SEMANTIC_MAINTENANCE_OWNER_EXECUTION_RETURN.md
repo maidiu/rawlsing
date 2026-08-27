@@ -137,7 +137,7 @@ After rollback, the current release pointer equals the exact predecessor release
 
 Owner journal root:
 
-`2a570d698810727ef1143492065aa1edfa67f7bfc5222b1f22f2397c99dce080`
+`26000d8923ad04bc67f96eb454f29329bc01b2ac9c1ef2e94d3b4a30169fc73f`
 
 Release journal root:
 
