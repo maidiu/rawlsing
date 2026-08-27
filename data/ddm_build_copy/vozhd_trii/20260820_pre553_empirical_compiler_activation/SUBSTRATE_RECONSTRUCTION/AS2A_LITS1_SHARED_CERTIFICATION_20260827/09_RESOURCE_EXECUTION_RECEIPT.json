@@ -1,0 +1,54 @@
+{
+  "status": "PART_B_EXECUTION_BLOCKED_BEFORE_FROZEN_DECODER_REPLAY",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "source_size_bytes": 139531180,
+  "frozen_decoder_required": "rawlsing_next.pre553_physical_decoder.decode_dta(..., encoding=\"latin1\") imports pyreadstat",
+  "parser_substitution_permitted": false,
+  "dependency_attempt": {
+    "pip_install_pyreadstat_1_2_8": "FAILED__NO_NETWORK_NAME_RESOLUTION"
+  },
+  "decoder_passes_full_part_b": 0,
+  "wall_time_full_part_b": null,
+  "peak_rss_full_part_b": null,
+  "peak_scratch_full_part_b": null,
+  "source_opens_full_part_b": null,
+  "persistent_outputs": [],
+  "transient_outputs": [
+    "uploaded source bytes",
+    "AS2A Part-A ledgers"
+  ],
+  "cleanup_behavior": "no canonical C11 outputs created because decoder gate did not open",
+  "runtime": {
+    "python": "3.13.5",
+    "pandas": "2.2.3",
+    "pyreadstat_available": false,
+    "platform": "Linux x86_64"
+  },
+  "nonauthoritative_diagnostic": {
+    "authority_status": "DIAGNOSTIC_ONLY__NOT_FROZEN_DECODER_CERTIFICATION",
+    "rows": 29002,
+    "variables": 1198,
+    "pandas_stata_format_version": 113,
+    "codebook_var_order_match": true,
+    "id_rows_distinct": [
+      29002,
+      29002
+    ],
+    "country_distinct": 29,
+    "q105_12_system_missing_diagnostic": 29002,
+    "weight_0_present_missing": [
+      29000,
+      2
+    ],
+    "weight_1_present_missing": [
+      29000,
+      2
+    ],
+    "weight_2_present_missing": [
+      29000,
+      2
+    ],
+    "q201_eq_98_count": 32,
+    "q301_1_eq_6_count": 1677
+  }
+}

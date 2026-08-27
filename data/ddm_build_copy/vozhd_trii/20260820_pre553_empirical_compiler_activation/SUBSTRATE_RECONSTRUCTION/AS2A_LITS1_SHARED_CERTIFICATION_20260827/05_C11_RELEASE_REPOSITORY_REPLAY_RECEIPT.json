@@ -1,0 +1,27 @@
+{
+  "status": "AS2A_LITS1_SHARED_CERTIFICATION_STILL_BLOCKED",
+  "part_a": "PASS",
+  "part_b": "BLOCKED_BEFORE_MECHANICAL_C11_PROJECTION_EXECUTION",
+  "source_specific_projection_authority_ref": {
+    "kind": "AS2A_LITS1_SOURCE_SPECIFIC_PROJECTION_AUTHORITY",
+    "object_id": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+    "content_hash": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06"
+  },
+  "governed_c11_projection_runtime_object": "NOT_CONSTRUCTED__BLOCKED_AT_FROZEN_DECODER_DEPENDENCY",
+  "c11_logical_release": "NOT_ESTABLISHED",
+  "replay_manifest": "NOT_ESTABLISHED",
+  "c11_repository_validation": "NOT_RUN",
+  "first_accepted_real_source_source_backed_c11_release": "NO",
+  "c05r2b_unlock_condition": "NOT_SATISFIED",
+  "blockers": [
+    {
+      "id": "AS2A-B01",
+      "class": "FROZEN_DECODER_DEPENDENCY_UNAVAILABLE_IN_CURRENT_EXECUTION_ENVIRONMENT",
+      "candidate_specific": false,
+      "required": "pyreadstat import used by accepted rawlsing_next.pre553_physical_decoder.decode_dta",
+      "observed": "pyreadstat module absent; package installation cannot reach package index because network/name resolution unavailable",
+      "forbidden_workaround": "pandas/StataReader parser substitution",
+      "smallest_resolution": "supply a compatible pyreadstat wheel/runtime or reroute the already-defined Part-B mechanical continuation to an authorized environment with pyreadstat; use same exact LiTS_I.dta SHA and frozen decoder call"
+    }
+  ]
+}
