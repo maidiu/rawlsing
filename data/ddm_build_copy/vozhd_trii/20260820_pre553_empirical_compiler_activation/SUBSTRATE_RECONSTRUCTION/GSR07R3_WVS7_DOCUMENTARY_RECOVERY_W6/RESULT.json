@@ -1,0 +1,106 @@
+{
+  "status": "COMPLETE__NON_DISPOSITIVE_W6_DOCUMENTARY_RECOVERY__POSITIVE_AUTHORITY_ONLY__HQ_JOIN_REQUIRED",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/vozhd-trii-gsr07r3-wvs7-doc-w6",
+  "exact_start_head": "d643edc4d4a0be155e92c374b8d1d4b560140fbb",
+  "authority_84_control_head": "04a0109aa170c6041b199e5c6130a39a8e0f6029",
+  "accepted_r2": {
+    "lane_a": "a06f2bced8677453cf77fec5e622cb334a9810a5",
+    "lane_b": "a07f449221256e0c52cffd3f85812d30c0f047fc",
+    "lane_c": "930d89b8930c21c9a8f1180093ee15ed10c495e4"
+  },
+  "batch": "W6",
+  "countries": [
+    "Turkey 2018",
+    "Ukraine 2020",
+    "United Kingdom - Great Britain 2022",
+    "United Kingdom - Northern Ireland 2022",
+    "Uruguay 2022",
+    "USA 2017",
+    "Uzbekistan 2022",
+    "Venezuela 2021",
+    "Vietnam 2020",
+    "Zimbabwe 2020"
+  ],
+  "country_count": 10,
+  "sibling_outputs_consumed": false,
+  "country_document_authority_counts": {
+    "DOCUMENT_IDENTIFIED_CONTENT_NOT_RECOVERED": 6,
+    "RECOVERED_SOURCE_OWNER_AUTHORITY": 3,
+    "DOCUMENT_NOT_LOCATED": 1
+  },
+  "country_universe_counts": {
+    "target_population_or_coverage": {
+      "DOCUMENT_IDENTIFIED_CONTENT_NOT_RECOVERED": 6,
+      "RECOVERED_SOURCE_OWNER_AUTHORITY": 3,
+      "DOCUMENT_NOT_LOCATED": 1
+    },
+    "sample_frame": {
+      "DOCUMENT_IDENTIFIED_CONTENT_NOT_RECOVERED": 7,
+      "RECOVERED_SOURCE_OWNER_AUTHORITY": 2,
+      "DOCUMENT_NOT_LOCATED": 1
+    },
+    "actual_design": {
+      "DOCUMENT_IDENTIFIED_CONTENT_NOT_RECOVERED": 6,
+      "RECOVERED_SOURCE_OWNER_AUTHORITY": 3,
+      "DOCUMENT_NOT_LOCATED": 1
+    }
+  },
+  "positive_universe_recovery": {
+    "Ukraine 2020": [
+      "target_population_coverage",
+      "actual_sampling_design",
+      "mode"
+    ],
+    "United Kingdom - Great Britain 2022": [
+      "target_population_coverage",
+      "sample_frame",
+      "actual_sampling_design",
+      "positive_design_detail"
+    ],
+    "United Kingdom - Northern Ireland 2022": [
+      "target_population_coverage",
+      "sample_frame",
+      "actual_sampling_design",
+      "positive_design_detail"
+    ]
+  },
+  "routing_row_count": 19,
+  "routing_status_counts": {
+    "RECOVERED_SOURCE_OWNER_AUTHORITY": 4,
+    "DOCUMENT_IDENTIFIED_CONTENT_NOT_RECOVERED": 6,
+    "DOCUMENT_NOT_LOCATED": 3,
+    "NOT_APPLICABLE_TO_CLAIM": 6
+  },
+  "positive_routing_claims": [
+    {
+      "country_year": "United Kingdom - Great Britain 2022",
+      "gap_id": "D01"
+    },
+    {
+      "country_year": "United Kingdom - Great Britain 2022",
+      "gap_id": "D10"
+    },
+    {
+      "country_year": "United Kingdom - Northern Ireland 2022",
+      "gap_id": "D01"
+    },
+    {
+      "country_year": "United Kingdom - Northern Ireland 2022",
+      "gap_id": "D10"
+    }
+  ],
+  "unresolved_gap_rows": 12,
+  "explicit_worker_exclusions": [
+    "NO_INCIDENCE_INFERENCE",
+    "NO_D03_ADJUDICATION",
+    "NO_D11_ADJUDICATION",
+    "NO_D12_ADJUDICATION",
+    "NO_FULL_GSR07_CERTIFICATION",
+    "NO_C05R2B",
+    "NO_SEMANTIC_OR_V553_PLUS_MUTATION",
+    "NO_ARCHITECTURE_SELECTION",
+    "NO_RAW_SOURCE_OR_LARGE_DOCUMENT_BINARY_COMMITS"
+  ],
+  "disposition": "W6_DOCUMENTARY_HARVEST_COMPLETE__GB_NI_POSITIVE_TARGET_FRAME_DESIGN_D01_D10__UKRAINE_POSITIVE_TARGET_COVERAGE_ACTUAL_DESIGN__OTHER_COUNTRY_CLAIMS_FAIL_CLOSED__D02_D04_GENDER_RESIDUALS_PRESERVED__HQ_JOIN_ONLY"
+}
