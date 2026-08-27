@@ -1,0 +1,39 @@
+{
+  "dependency_supply": {
+    "alternate_parser_used_for_certification": false,
+    "pip_install_attempt": "FAILED__CONTAINER_DNS_NETWORK_UNAVAILABLE",
+    "python_import": "ModuleNotFoundError: No module named 'pyreadstat'",
+    "system_or_cache_probe": "NO_PYREADSTAT_OR_READSTAT_RUNTIME_FOUND"
+  },
+  "governed_decoder": {
+    "attempted": false,
+    "cleanup_behavior": "NO_PART_B_SCRATCH_CREATED",
+    "decoder_passes": 0,
+    "dependency_available": false,
+    "object_counts": null,
+    "peak_rss_bytes": null,
+    "peak_scratch_bytes": null,
+    "persistent_outputs": [],
+    "required": "decode_dta(source_path, encoding=\"latin1\")",
+    "required_dependency": "pyreadstat",
+    "source_opens": 0,
+    "transient_outputs": [],
+    "wall_seconds": null
+  },
+  "host": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+    "psutil": "7.2.2",
+    "python": "3.13.5"
+  },
+  "interpretation": "DEPENDENCY_SUPPLY_BLOCKER_ONLY__NOT_SEMANTIC_FAILURE__NOT_RESOURCE_HARD_GATE",
+  "source": {
+    "bytes": 139531180,
+    "path_runtime": "/mnt/data/LiTS_I.dta",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "sha256_peak_rss_kb": 3888,
+    "sha256_wall_seconds": 0.1
+  },
+  "status": "PART_A_AND_SOURCE_IDENTITY_MEASURED__PART_B_FULL_SOURCE_RESOURCE_RECEIPT_NOT_AVAILABLE"
+}

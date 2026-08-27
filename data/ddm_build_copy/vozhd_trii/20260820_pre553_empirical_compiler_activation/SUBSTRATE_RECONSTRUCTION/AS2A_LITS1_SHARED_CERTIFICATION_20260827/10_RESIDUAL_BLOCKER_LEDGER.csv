@@ -1,0 +1,2 @@
+blocker_id,part,class,exact_requirement,current_state,why_blocking,smallest_resolution,candidate_specific,semantic_authority_gap,resource_hard_gate
+AS2A-B01,PART_B,EXECUTION_DEPENDENCY_SUPPLY,pyreadstat importable in Python 3.13 Linux x86_64 environment,ABSENT,"Frozen decoder decode_dta(source_path, encoding=""latin1"") imports pyreadstat; parser substitution forbidden.",Provide a compatible CPython 3.13 Linux x86_64 pyreadstat wheel or otherwise lawful local pyreadstat runtime; then resume same branch/package without reopening Part A.,NO__SHARED_PREREQUISITE,NO,NO
