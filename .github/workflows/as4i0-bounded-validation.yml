@@ -1,0 +1,20 @@
+name: AS4I0 bounded validation
+on:
+  push:
+    branches:
+      - as4i0-chetiri-route-b-production-driver-20260827
+  workflow_dispatch:
+jobs:
+  bounded:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile AS4I0
+        run: |
+          python -m py_compile rawlsing_next/pre553_as4i0_route_b_driver.py
+          python -m py_compile data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/run_as4i0_route_b.py
+      - name: Run bounded AS4I0 tests
+        run: python -m unittest rawlsing_next.tests.test_pre553_as4i0_route_b_driver -v
