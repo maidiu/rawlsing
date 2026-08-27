@@ -4,10 +4,13 @@ from __future__ import annotations
 import hashlib, json
 from typing import Any, Mapping
 import pandas as pd
+from data.ddm_build_copy.ddm_v551j_schema import V551J_V22_COMPONENT_INDEX_COLUMNS, V551J_V22_PACKET_COLUMNS
 
-V552J_JOIN_SCHEMA_VERSION = "v1.0"
-V552J_JOIN_COMPILER_VERSION = "v552j_structural_join_v1"
-JOIN_COLUMNS = """run_id v552j_join_id packet_id source_packet_kind source wave canonical_wave country_code shard_id v551j_lane v551j_certification_status v551j_review_status support_status directionality_status authority_status v552_structural_fact_id source_v552_artifact source_v552_structural_fact_ids_json source_v552_structural_fact_lane source_v552_structural_fact_grain source_v552_temporal_key_source_id relation_axis_id target_entity_id driver_facet_id structural_channel_id horizon_constraint_id question_id pressure_score pressure_score_status measurement_evidence_status observed_zero v552_structural_match_status v552_structural_match_score matched_fact_count structural_dimension_status structural_dimensions_resolved_for_v553 resolution_status join_status join_permission repair_debt_status allowed_downstream_use ready_for_v553_probe ready_for_v553_temporal_field allowed_for_v553_probe allowed_for_v553_temporal_field v553_handoff_mode v553_handoff_allowed v553_probe_allowed v553_temporal_field_allowed v553_handoff_blocked_reason certification_score support_score directionality_score authority_score comparability_score confidence_score readiness_score source_v551j_manifest_sha256 source_v552_manifest_sha256 schema_version compiler_version""".split()
+V552J_JOIN_SCHEMA_VERSION = "v1.1"
+V552J_JOIN_COMPILER_VERSION = "v552j_structural_join_v1_1"
+V552J_CONSERVATION_STATUS = "PRESERVED_EXACT_V551J_SEMANTIC_ENVELOPE"
+V552J_NONSCALAR_POLICY = "PRESERVE_NONSCALAR_V551J_SEMANTICS__READINESS_SCORES_DERIVED_ONLY"
+JOIN_COLUMNS = """run_id v552j_join_id packet_id source_packet_kind source wave canonical_wave country_code shard_id v551j_lane v551j_certification_status v551j_review_status support_status directionality_status authority_status v551j_conservation_status v551j_conservation_blockers_json v551j_conservation_envelope_sha256 v551j_joint_packet_semantics_json v551j_components_semantics_json v551j_component_count v551j_same_respondent_premise_status v551j_scalarization_policy v552_structural_fact_id source_v552_artifact source_v552_structural_fact_ids_json source_v552_structural_fact_lane source_v552_structural_fact_grain source_v552_temporal_key_source_id relation_axis_id target_entity_id driver_facet_id structural_channel_id horizon_constraint_id question_id pressure_score pressure_score_status measurement_evidence_status observed_zero v552_structural_match_status v552_structural_match_score matched_fact_count structural_dimension_status structural_dimensions_resolved_for_v553 resolution_status join_status join_permission repair_debt_status allowed_downstream_use ready_for_v553_probe ready_for_v553_temporal_field allowed_for_v553_probe allowed_for_v553_temporal_field v553_handoff_mode v553_handoff_allowed v553_probe_allowed v553_temporal_field_allowed v553_handoff_blocked_reason certification_score support_score directionality_score authority_score comparability_score confidence_score readiness_score source_v551j_manifest_sha256 source_v552_manifest_sha256 schema_version compiler_version""".split()
 AUDIT_COLUMNS = "run_id packet_id source_packet_kind source canonical_wave country_code join_status reason scope_candidate_count semantic_match_count schema_version compiler_version".split()
 
 def _clean(v: Any) -> str:
@@ -115,8 +118,125 @@ def _packet_rows(certified:pd.DataFrame,review:pd.DataFrame)->list[tuple[str,dic
             if pid and pid not in seen:out.append((kind,row));seen.add(pid)
     return out
 
+def _json_scalar(v:Any)->Any:
+    if v is None:return None
+    if isinstance(v,(str,bool,int)):return v
+    if isinstance(v,float):return None if pd.isna(v) else v
+    try:
+        if pd.isna(v):return None
+    except Exception:pass
+    if hasattr(v,"item"):
+        try:return _json_scalar(v.item())
+        except Exception:pass
+    return str(v)
+
+def _canonical_record(row:Mapping[str,Any]|pd.Series,columns:list[str]|tuple[str,...])->dict[str,Any]:
+    return {column:_json_scalar(row.get(column)) for column in columns}
+
+def _canonical_json(payload:Any)->str:
+    return json.dumps(payload,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False)
+
+def _conservation_hash(packet:Mapping[str,Any],components:list[dict[str,Any]],policy:str)->str:
+    raw=_canonical_json({"packet":dict(packet),"components":components,"scalarization_policy":policy}).encode("utf-8")
+    return hashlib.sha256(raw).hexdigest()
+
+def _component_records_for_packet(components:pd.DataFrame,packet_id:str)->list[dict[str,Any]]:
+    if components is None or components.empty or "packet_id" not in components.columns:return []
+    subset=components.loc[components["packet_id"].map(_clean).eq(packet_id)].copy()
+    if subset.empty:return []
+    if "item_order" in subset.columns:
+        subset["_c4r2a_order"]=pd.to_numeric(subset["item_order"],errors="coerce")
+        subset=subset.sort_values(["_c4r2a_order","component_id"] if "component_id" in subset.columns else ["_c4r2a_order"],kind="mergesort",na_position="last").drop(columns=["_c4r2a_order"])
+    return [_canonical_record(row,V551J_V22_COMPONENT_INDEX_COLUMNS) for row in subset.to_dict("records")]
+
+def _build_conservation_envelope(packet:Mapping[str,Any],components:pd.DataFrame)->dict[str,Any]:
+    packet_record=_canonical_record(packet,V551J_V22_PACKET_COLUMNS)
+    pid=_clean(packet_record.get("packet_id"))
+    component_records=_component_records_for_packet(components,pid)
+    blockers=[]
+    required_packet_fields=(
+        "packet_id","family_id","pattern_id","packet_contract_hash",
+        "joint_response_identity_signature","joint_semantic_signature","joint_orientation_signature",
+        "joint_topology_signature","joint_target_signature","joint_structural_signature",
+        "joint_measurement_contract_hash","component_contract_hashes_ordered_json",
+        "component_response_vector_json","component_semantic_vector_json","component_orientation_vector_json",
+        "component_topology_vector_json","component_target_vector_json","component_structural_vector_json",
+        "component_denominator_vector_json","denominator_separation_status",
+        "joint_semantic_authority_status","joint_directionality_authority_status",
+        "joint_family_target_authority_status","joint_structural_authority_status",
+        "joint_measurement_authority_status","joint_evidence_authority_status",
+        "v550j_pattern_index_artifact_hash","v550j_pattern_item_index_artifact_hash","v550j_manifest_hash",
+    )
+    for field in required_packet_fields:
+        if packet_record.get(field) in (None,""):blockers.append(f"missing_packet_field:{field}")
+    if packet_record.get("joint_n_unweighted") is None:blockers.append("missing_packet_field:joint_n_unweighted")
+    if packet_record.get("joint_pattern_count_unweighted") is None:blockers.append("missing_packet_field:joint_pattern_count_unweighted")
+    if not component_records:blockers.append("missing_component_records")
+    observed_hashes=[_clean(row.get("component_contract_hash")) for row in component_records]
+    declared_hashes=_parse_json_array(packet_record.get("component_contract_hashes_ordered_json"))
+    if component_records and declared_hashes!=observed_hashes:blockers.append("component_contract_hash_order_mismatch")
+    orders=[row.get("item_order") for row in component_records]
+    if component_records and (any(value is None for value in orders) or len({_clean(value) for value in orders})!=len(orders)):blockers.append("component_order_invalid")
+    expected_count=packet_record.get("pattern_item_count")
+    try:
+        if expected_count is not None and int(expected_count)!=len(component_records):blockers.append("component_count_mismatch")
+    except Exception:blockers.append("component_count_invalid")
+    required_component_fields=("component_id","item_order","component_contract_hash","v550j_item_role","component_evidence_role","component_certification_contribution")
+    for index,row in enumerate(component_records):
+        for field in required_component_fields:
+            if row.get(field) in (None,""):blockers.append(f"component_{index}_missing:{field}")
+        if _clean(row.get("packet_id"))!=pid:blockers.append(f"component_{index}_packet_id_mismatch")
+        if _clean(row.get("family_id"))!=_clean(packet_record.get("family_id")):blockers.append(f"component_{index}_family_id_mismatch")
+        if _clean(row.get("pattern_id"))!=_clean(packet_record.get("pattern_id")):blockers.append(f"component_{index}_pattern_id_mismatch")
+    same_respondent_required=(
+        "joint_response_identity_signature","joint_measurement_contract_hash",
+        "v550j_pattern_index_artifact_hash","v550j_pattern_item_index_artifact_hash","v550j_manifest_hash",
+    )
+    same_respondent_ok=all(packet_record.get(field) not in (None,"") for field in same_respondent_required) and packet_record.get("joint_n_unweighted") is not None
+    if not same_respondent_ok:blockers.append("same_respondent_premise_incomplete")
+    packet_json=_canonical_json(packet_record)
+    components_json=_canonical_json(component_records)
+    envelope_hash=_conservation_hash(packet_record,component_records,V552J_NONSCALAR_POLICY)
+    blockers=sorted(set(blockers))
+    return {
+        "v551j_conservation_status":V552J_CONSERVATION_STATUS if not blockers else "BLOCKED_INCOMPLETE_V551J_SEMANTIC_ENVELOPE",
+        "v551j_conservation_blockers_json":_canonical_json(blockers),
+        "v551j_conservation_envelope_sha256":envelope_hash,
+        "v551j_joint_packet_semantics_json":packet_json,
+        "v551j_components_semantics_json":components_json,
+        "v551j_component_count":len(component_records),
+        "v551j_same_respondent_premise_status":"PRESERVED_V550J_RESPONDENT_GROUPED_PATTERN_VIA_V551J_JOINT_IDENTITY" if same_respondent_ok else "BLOCKED_SAME_RESPONDENT_PREMISE_INCOMPLETE",
+        "v551j_scalarization_policy":V552J_NONSCALAR_POLICY,
+    }
+
+def decode_v552j_conservation_envelope(row:Mapping[str,Any]|pd.Series)->dict[str,Any]:
+    if _clean(row.get("v551j_conservation_status"))!=V552J_CONSERVATION_STATUS:
+        raise ValueError("V552J_CONSERVATION_STATUS_NOT_PRESERVED")
+    if _clean(row.get("v551j_scalarization_policy"))!=V552J_NONSCALAR_POLICY:
+        raise ValueError("V552J_CONSERVATION_SCALARIZATION_POLICY_MISMATCH")
+    try:
+        packet=json.loads(_clean(row.get("v551j_joint_packet_semantics_json")))
+        components=json.loads(_clean(row.get("v551j_components_semantics_json")))
+    except Exception as exc:
+        raise ValueError(f"V552J_CONSERVATION_JSON_INVALID:{type(exc).__name__}") from exc
+    if not isinstance(packet,dict) or not isinstance(components,list):
+        raise ValueError("V552J_CONSERVATION_JSON_WRONG_SHAPE")
+    expected=_clean(row.get("v551j_conservation_envelope_sha256"))
+    actual=_conservation_hash(packet,components,V552J_NONSCALAR_POLICY)
+    if not expected or expected!=actual:raise ValueError("V552J_CONSERVATION_HASH_MISMATCH")
+    try: declared_count=int(row.get("v551j_component_count"))
+    except Exception as exc: raise ValueError("V552J_CONSERVATION_COMPONENT_COUNT_INVALID") from exc
+    if declared_count!=len(components):raise ValueError("V552J_CONSERVATION_COMPONENT_COUNT_MISMATCH")
+    declared_hashes=_parse_json_array(packet.get("component_contract_hashes_ordered_json"))
+    observed_hashes=[_clean(item.get("component_contract_hash")) for item in components if isinstance(item,dict)]
+    if declared_hashes!=observed_hashes:raise ValueError("V552J_CONSERVATION_COMPONENT_ORDER_OR_HASH_MISMATCH")
+    if _clean(row.get("v551j_same_respondent_premise_status"))!="PRESERVED_V550J_RESPONDENT_GROUPED_PATTERN_VIA_V551J_JOINT_IDENTITY":
+        raise ValueError("V552J_CONSERVATION_SAME_RESPONDENT_PREMISE_NOT_PRESERVED")
+    return {"packet":packet,"components":components,"envelope_sha256":actual,"scalarization_policy":V552J_NONSCALAR_POLICY}
+
 def _derive_join_state(a:Mapping[str,Any],b:Mapping[str,Any],join:pd.DataFrame)->dict[str,str]:
     evidence={_clean(a.get("evidence_status")),_clean(b.get("evidence_status"))}; perms={_clean(a.get("downstream_permission_status")),_clean(b.get("downstream_permission_status"))}
+    if not join.empty and "v551j_conservation_status" in join.columns and join["v551j_conservation_status"].map(_clean).ne(V552J_CONSERVATION_STATUS).any():return {"run_integrity_status":"PASS","evidence_status":"APPLICABLE_UNRESOLVED","downstream_permission_status":"DENY","state_detail":"V551J_SEMANTIC_CONSERVATION_INCOMPLETE"}
     if "APPLICABLE_UNRESOLVED" in evidence:return {"run_integrity_status":"PASS","evidence_status":"APPLICABLE_UNRESOLVED","downstream_permission_status":"DENY","state_detail":"UPSTREAM_APPLICABLE_UNRESOLVED"}
     if not join.empty and join["join_permission"].eq("ALLOW").any():return {"run_integrity_status":"PASS","evidence_status":"PRESENT","downstream_permission_status":"ALLOW","state_detail":"EXACT_SCOPE_JOIN_PRESENT"}
     if not join.empty:return {"run_integrity_status":"PASS","evidence_status":"PRESENT","downstream_permission_status":"DENY","state_detail":"REVIEW_OR_NONPERMITTED_JOIN_PRESENT"}
@@ -128,16 +248,16 @@ def _mean_or_none(df:pd.DataFrame,col:str)->float|None:
     if df.empty or col not in df:return None
     v=pd.to_numeric(df[col],errors="coerce").dropna(); return None if v.empty else round(float(v.mean()),6)
 
-def build_v552j_join(*,run_id:str,v551j_certified:pd.DataFrame,v551j_review:pd.DataFrame,v552_structural_facts:pd.DataFrame,v552_temporal_keys:pd.DataFrame|None=None,v551j_state:Mapping[str,Any],v552_state:Mapping[str,Any],v551j_manifest_sha256:str="",v552_manifest_sha256:str="")->dict[str,Any]:
-    temporal=v552_temporal_keys if v552_temporal_keys is not None else pd.DataFrame(); rows=[]; audits=[]; present=_clean(v551j_state.get("evidence_status"))=="PRESENT" and _clean(v552_state.get("evidence_status"))=="PRESENT"
+def build_v552j_join(*,run_id:str,v551j_certified:pd.DataFrame,v551j_review:pd.DataFrame,v552_structural_facts:pd.DataFrame,v552_temporal_keys:pd.DataFrame|None=None,v551j_components:pd.DataFrame|None=None,v551j_state:Mapping[str,Any],v552_state:Mapping[str,Any],v551j_manifest_sha256:str="",v552_manifest_sha256:str="")->dict[str,Any]:
+    temporal=v552_temporal_keys if v552_temporal_keys is not None else pd.DataFrame(); components=v551j_components if v551j_components is not None else pd.DataFrame(); rows=[]; audits=[]; present=_clean(v551j_state.get("evidence_status"))=="PRESENT" and _clean(v552_state.get("evidence_status"))=="PRESENT"
     if present:
         for kind,p in _packet_rows(v551j_certified,v551j_review):
-            ps=pd.Series(p); res=_packet_structural_dimension_resolution(ps,v552_structural_facts,temporal); pid=_clean(p.get("packet_id") or p.get("v551j_packet_id")); scope_count=sum(_same_scope(p,f) for f in v552_structural_facts.to_dict("records")); matches=res.get("source_v552_fact_matches") or []
+            ps=pd.Series(p); envelope=_build_conservation_envelope(p,components); res=_packet_structural_dimension_resolution(ps,v552_structural_facts,temporal); pid=_clean(p.get("packet_id") or p.get("v551j_packet_id")); scope_count=sum(_same_scope(p,f) for f in v552_structural_facts.to_dict("records")); matches=res.get("source_v552_fact_matches") or []
             if not res["source_v552_structural_fact_id"]:
                 audits.append({"run_id":run_id,"packet_id":pid,"source_packet_kind":kind,"source":_scope_identity(p)["source"],"canonical_wave":_scope_identity(p)["wave"],"country_code":_scope_identity(p)["country_code"],"join_status":"UNRESOLVED_NO_STRUCTURAL_MATCH","reason":res["v552_structural_match_reason"],"scope_candidate_count":scope_count,"semantic_match_count":int(res.get("matched_fact_count",0)),"schema_version":V552J_JOIN_SCHEMA_VERSION,"compiler_version":V552J_JOIN_COMPILER_VERSION});continue
-            fact=matches[0] if matches else {}; lane,cert,review=_packet_lane(p,kind); scores=_packet_score_bundle(ps); pstatus=_clean(fact.get("pressure_score_status") or fact.get("pressure_computation_status")); pvalue=_number(fact.get("pressure_score")); mstatus=_clean(fact.get("measurement_evidence_status") or fact.get("structural_fact_status")); producer_allow=_clean(v551j_state.get("downstream_permission_status"))=="ALLOW" and _clean(v552_state.get("downstream_permission_status"))=="ALLOW"; observed=pstatus in {"OBSERVED_ZERO","OBSERVED_NONZERO"} and mstatus not in {"APPLICABLE_BUT_UNRESOLVED","NOT_APPLICABLE"}; allow=kind=="certified" and producer_allow and _clean(fact.get("downstream_permission_status"))=="ALLOW" and observed; permission="ALLOW" if allow else ("REVIEW_ONLY" if kind=="review" else "DENY"); debt="APPLICABLE_BUT_UNRESOLVED" if "APPLICABLE_BUT_UNRESOLVED" in {pstatus,mstatus} else ("REVIEW_REQUIRED" if kind=="review" else "NONE"); fid=_clean(res["source_v552_structural_fact_id"]); scope=_scope_identity(p)
-            row={"run_id":run_id,"v552j_join_id":_stable_id({"run_id":run_id,"packet_id":pid,"v552_structural_fact_id":fid}),"packet_id":pid,"source_packet_kind":kind,"source":scope["source"],"wave":scope["wave"],"canonical_wave":scope["wave"],"country_code":scope["country_code"],"shard_id":scope["shard_id"],"v551j_lane":lane,"v551j_certification_status":cert,"v551j_review_status":review,"support_status":_first_nonempty(p.get("joint_support_status"),p.get("support_status")),"directionality_status":_first_nonempty(p.get("joint_directionality_authority_status"),p.get("directionality_status")),"authority_status":_first_nonempty(p.get("joint_evidence_authority_status"),p.get("authority_status")),"v552_structural_fact_id":fid,"source_v552_artifact":_clean(res["source_v552_artifact"]),"source_v552_structural_fact_ids_json":res["source_v552_structural_fact_ids_json"],"source_v552_structural_fact_lane":res["source_v552_structural_fact_lane"],"source_v552_structural_fact_grain":res["source_v552_structural_fact_grain"],"source_v552_temporal_key_source_id":res["source_v552_temporal_key_source_id"],"relation_axis_id":res["relation_axis_id"],"target_entity_id":res["target_entity_id"],"driver_facet_id":res["driver_facet_id"],"structural_channel_id":res["structural_channel_id"],"horizon_constraint_id":res["horizon_constraint_id"],"question_id":_clean(fact.get("question_id")),"pressure_score":pvalue,"pressure_score_status":pstatus,"measurement_evidence_status":mstatus,"observed_zero":bool(pstatus=="OBSERVED_ZERO" and pvalue is not None and abs(pvalue)<=1e-12),"v552_structural_match_status":res["v552_structural_match_status"],"v552_structural_match_score":res["v552_structural_match_score"],"matched_fact_count":res["matched_fact_count"],"structural_dimension_status":res["structural_dimension_status"],"structural_dimensions_resolved_for_v553":res["structural_dimension_status"]=="resolved","resolution_status":res["resolution_status"],"join_status":"MATCHED_EXACT_SCOPE","join_permission":permission,"repair_debt_status":debt,"allowed_downstream_use":permission=="ALLOW","ready_for_v553_probe":permission=="ALLOW","ready_for_v553_temporal_field":False,"allowed_for_v553_probe":permission=="ALLOW","allowed_for_v553_temporal_field":False,"v553_handoff_mode":"probe_only" if permission=="ALLOW" else "blocked_context","v553_handoff_allowed":permission=="ALLOW","v553_probe_allowed":permission=="ALLOW","v553_temporal_field_allowed":False,"v553_handoff_blocked_reason":"" if permission=="ALLOW" else (debt if debt!="NONE" else "producer_permission_denied"),**scores,"source_v551j_manifest_sha256":v551j_manifest_sha256,"source_v552_manifest_sha256":v552_manifest_sha256,"schema_version":V552J_JOIN_SCHEMA_VERSION,"compiler_version":V552J_JOIN_COMPILER_VERSION};rows.append(row);audits.append({"run_id":run_id,"packet_id":pid,"source_packet_kind":kind,"source":row["source"],"canonical_wave":row["canonical_wave"],"country_code":row["country_code"],"join_status":row["join_status"],"reason":permission,"scope_candidate_count":scope_count,"semantic_match_count":int(res.get("matched_fact_count",0)),"schema_version":V552J_JOIN_SCHEMA_VERSION,"compiler_version":V552J_JOIN_COMPILER_VERSION})
-    join=pd.DataFrame(rows,columns=JOIN_COLUMNS); audit=pd.DataFrame(audits,columns=AUDIT_COLUMNS); st=_derive_join_state(v551j_state,v552_state,join); constraints=join.loc[join["join_permission"].eq("ALLOW")].copy() if not join.empty else join.copy(); metrics={"constraint_count":len(constraints),"review_context_count":int(join["join_permission"].eq("REVIEW_ONLY").sum()) if not join.empty else 0,"denied_join_count":int(join["join_permission"].eq("DENY").sum()) if not join.empty else 0,"observed_zero_count":int(join["observed_zero"].map(_truthy).sum()) if not join.empty else 0,"unresolved_join_count":int(audit["join_status"].eq("UNRESOLVED_NO_STRUCTURAL_MATCH").sum()) if not audit.empty else 0}
+            fact=matches[0] if matches else {}; lane,cert,review=_packet_lane(p,kind); scores=_packet_score_bundle(ps); pstatus=_clean(fact.get("pressure_score_status") or fact.get("pressure_computation_status")); pvalue=_number(fact.get("pressure_score")); mstatus=_clean(fact.get("measurement_evidence_status") or fact.get("structural_fact_status")); producer_allow=_clean(v551j_state.get("downstream_permission_status"))=="ALLOW" and _clean(v552_state.get("downstream_permission_status"))=="ALLOW"; observed=pstatus in {"OBSERVED_ZERO","OBSERVED_NONZERO"} and mstatus not in {"APPLICABLE_BUT_UNRESOLVED","NOT_APPLICABLE"}; allow=kind=="certified" and producer_allow and _clean(fact.get("downstream_permission_status"))=="ALLOW" and observed and envelope["v551j_conservation_status"]==V552J_CONSERVATION_STATUS; permission="ALLOW" if allow else ("REVIEW_ONLY" if kind=="review" else "DENY"); debt="CONSERVATION_GAP" if envelope["v551j_conservation_status"]!=V552J_CONSERVATION_STATUS else ("APPLICABLE_BUT_UNRESOLVED" if "APPLICABLE_BUT_UNRESOLVED" in {pstatus,mstatus} else ("REVIEW_REQUIRED" if kind=="review" else "NONE")); fid=_clean(res["source_v552_structural_fact_id"]); scope=_scope_identity(p)
+            row={"run_id":run_id,"v552j_join_id":_stable_id({"run_id":run_id,"packet_id":pid,"v552_structural_fact_id":fid}),"packet_id":pid,"source_packet_kind":kind,"source":scope["source"],"wave":scope["wave"],"canonical_wave":scope["wave"],"country_code":scope["country_code"],"shard_id":scope["shard_id"],"v551j_lane":lane,"v551j_certification_status":cert,"v551j_review_status":review,"support_status":_first_nonempty(p.get("joint_support_status"),p.get("support_status")),"directionality_status":_first_nonempty(p.get("joint_directionality_authority_status"),p.get("directionality_status")),"authority_status":_first_nonempty(p.get("joint_evidence_authority_status"),p.get("authority_status")),"v552_structural_fact_id":fid,"source_v552_artifact":_clean(res["source_v552_artifact"]),"source_v552_structural_fact_ids_json":res["source_v552_structural_fact_ids_json"],"source_v552_structural_fact_lane":res["source_v552_structural_fact_lane"],"source_v552_structural_fact_grain":res["source_v552_structural_fact_grain"],"source_v552_temporal_key_source_id":res["source_v552_temporal_key_source_id"],"relation_axis_id":res["relation_axis_id"],"target_entity_id":res["target_entity_id"],"driver_facet_id":res["driver_facet_id"],"structural_channel_id":res["structural_channel_id"],"horizon_constraint_id":res["horizon_constraint_id"],"question_id":_clean(fact.get("question_id")),"pressure_score":pvalue,"pressure_score_status":pstatus,"measurement_evidence_status":mstatus,"observed_zero":bool(pstatus=="OBSERVED_ZERO" and pvalue is not None and abs(pvalue)<=1e-12),"v552_structural_match_status":res["v552_structural_match_status"],"v552_structural_match_score":res["v552_structural_match_score"],"matched_fact_count":res["matched_fact_count"],"structural_dimension_status":res["structural_dimension_status"],"structural_dimensions_resolved_for_v553":res["structural_dimension_status"]=="resolved","resolution_status":res["resolution_status"],"join_status":"MATCHED_EXACT_SCOPE","join_permission":permission,"repair_debt_status":debt,"allowed_downstream_use":permission=="ALLOW","ready_for_v553_probe":permission=="ALLOW","ready_for_v553_temporal_field":False,"allowed_for_v553_probe":permission=="ALLOW","allowed_for_v553_temporal_field":False,"v553_handoff_mode":"probe_only" if permission=="ALLOW" else "blocked_context","v553_handoff_allowed":permission=="ALLOW","v553_probe_allowed":permission=="ALLOW","v553_temporal_field_allowed":False,"v553_handoff_blocked_reason":"" if permission=="ALLOW" else (debt if debt!="NONE" else "producer_permission_denied"),**envelope,**scores,"source_v551j_manifest_sha256":v551j_manifest_sha256,"source_v552_manifest_sha256":v552_manifest_sha256,"schema_version":V552J_JOIN_SCHEMA_VERSION,"compiler_version":V552J_JOIN_COMPILER_VERSION};rows.append(row);audits.append({"run_id":run_id,"packet_id":pid,"source_packet_kind":kind,"source":row["source"],"canonical_wave":row["canonical_wave"],"country_code":row["country_code"],"join_status":row["join_status"],"reason":permission,"scope_candidate_count":scope_count,"semantic_match_count":int(res.get("matched_fact_count",0)),"schema_version":V552J_JOIN_SCHEMA_VERSION,"compiler_version":V552J_JOIN_COMPILER_VERSION})
+    join=pd.DataFrame(rows,columns=JOIN_COLUMNS); audit=pd.DataFrame(audits,columns=AUDIT_COLUMNS); st=_derive_join_state(v551j_state,v552_state,join); constraints=join.loc[join["join_permission"].eq("ALLOW")].copy() if not join.empty else join.copy(); metrics={"constraint_count":len(constraints),"review_context_count":int(join["join_permission"].eq("REVIEW_ONLY").sum()) if not join.empty else 0,"denied_join_count":int(join["join_permission"].eq("DENY").sum()) if not join.empty else 0,"observed_zero_count":int(join["observed_zero"].map(_truthy).sum()) if not join.empty else 0,"unresolved_join_count":int(audit["join_status"].eq("UNRESOLVED_NO_STRUCTURAL_MATCH").sum()) if not audit.empty else 0,"conservation_pass_count":int(join["v551j_conservation_status"].map(_clean).eq(V552J_CONSERVATION_STATUS).sum()) if not join.empty else 0,"conservation_gap_count":int(join["v551j_conservation_status"].map(_clean).ne(V552J_CONSERVATION_STATUS).sum()) if not join.empty else 0}
     for col in ("certification_score","support_score","directionality_score","authority_score","comparability_score","confidence_score","readiness_score"):metrics[f"mean_{col}"]=_mean_or_none(constraints,col)
     return {"join_index":join,"join_audit":audit,"state":st,"metrics":metrics}
 
