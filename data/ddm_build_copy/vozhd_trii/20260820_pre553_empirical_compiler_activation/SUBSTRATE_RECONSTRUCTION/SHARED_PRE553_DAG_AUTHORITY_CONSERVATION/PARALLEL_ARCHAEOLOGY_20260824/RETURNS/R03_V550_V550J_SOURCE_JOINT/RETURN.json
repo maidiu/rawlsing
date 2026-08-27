@@ -2,8 +2,9 @@
   "worker": "R03_V550_V550J_SOURCE_JOINT",
   "repository": "maidiu/rawlsing",
   "branch": "agent/rawlsing-conservation-r03-v550-v550j-source-joint",
-  "starting_head": "2e6f39b0c2465e3d2a15788c06ec0ec37f764688",
-  "commit_note": "Final worker commit SHA is returned to HQ outside this self-contained file; embedding a commit's own SHA into its content is self-referential.",
+  "campaign_starting_head": "2e6f39b0c2465e3d2a15788c06ec0ec37f764688",
+  "prior_worker_return_commit": "d7bbb29b58802a68b3dbd71b24f8498787177562",
+  "commit_note": "Final completion-grade worker commit SHA is returned to HQ outside this self-contained file; embedding a commit's own SHA into its content would be self-referential.",
   "return_directory": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SHARED_PRE553_DAG_AUTHORITY_CONSERVATION/PARALLEL_ARCHAEOLOGY_20260824/RETURNS/R03_V550_V550J_SOURCE_JOINT/",
   "outputs": [
     "ARTIFACT_AUDIT_LEDGER.csv",
@@ -14,64 +15,81 @@
     "RETURN.json"
   ],
   "counts": {
-    "artifact_audit_rows": 30,
-    "concept_capability_rows": 26,
+    "artifact_audit_rows": 33,
+    "concept_capability_rows": 28,
     "missing_significant_resource_rows": 11,
-    "lineage_supersession_rows": 11,
+    "lineage_supersession_rows": 14,
     "assigned_top_level_input_objects_inventoried": 17,
-    "deep_audit_rows": 13,
-    "structure_and_identity_verified_rows": 13,
-    "metadata_only_rows": 4
+    "deep_audit_rows": 30,
+    "structure_and_identity_verified_rows": 3,
+    "metadata_only_rows": 0
   },
-  "territory_inventory_status": "EXHAUSTIVE_TOP_LEVEL_ASSIGNED_INVENTORY__DEEP_CURRENT_SUCCESSOR_AUDIT__NAMED_HISTORICAL_MEMBER_QUEUE_REMAINS",
+  "territory_inventory_status": "EXHAUSTIVE_ASSIGNED_INVENTORY__ALL_HIGH_PRIORITY_R03_PRIMARY_ARTIFACTS_DIRECTLY_INSPECTED__CROSS_LINEAGE_ARCHIVES_STRUCTURALLY_INVENTORIED_AND_R03_RELEVANT_MEMBERS_AUDITED",
   "assigned_territory_exhaustively_inventoried": true,
-  "assigned_territory_deeply_audited": false,
-  "deep_audit_limitation": "Large historical wrappers/DOCX were not directly mounted. Package identities, shared recovered member evidence, current rebased artifacts, and later commit-level successors were audited; uninspected objects are named rather than silently treated as complete.",
-  "named_unaudited_or_partially_audited_objects": [
-    "Rawlsing_Authority_Document_Archive_2026-08-24.zip",
-    "Rawlsing_Authority_Document_Delta_2026-04-24_to_2026-08-24.zip",
-    "question_structure_register(3).csv (exact payload/hash recovered; not directly opened by this worker)",
-    "Rawlsing_J_Family_Authority_Strategy_Handoff_v40_WORKING.zip (full wrapper; Section35 member evidence audited)",
-    "Rawlsing_J_Family_Authority_Strategy_Master_Handoff_v23_20260731.docx",
-    "Rawlsing_V550J_Semantic_Authority_Convergence_Audit_Codex_Ready_Cumulative_20260808_R3(1).zip",
-    "Rawlsing_R3_Routing_Applicability_Retrieval_Delta_20260808(1).zip",
-    "Rawlsing_R3_R14_Convergence_Work_Transfer_20260808(1).zip",
-    "Rawlsing_V550J_Joint_Authority_Creation_Document_Pack(1).zip",
-    "Rawlsing_GSS_P3C_Joint_Authority_12_NATIVE_RECONSTRUCTION_AND_IMPLEMENTATION_RUNBOOK_R1(1).zip",
-    "Rawlsing_GSS_P3C_Joint_Authority_07_FULL_GSS_SEMANTIC_AUTHORITY_R1(1).zip",
-    "R4_FINAL_14_SEMANTIC_RESOLUTION_V1(1).zip",
-    "Rawlsing_V550_Existing_Authority_Propagation_Repair_5b500e1_SMALL(1).zip (full tree; recovered findings member audited)",
-    "Rawlsing_V550_Response_Option_Authority_SAV_Derived_R2_20260815(1).zip (full tree; recovered contract lineage audited)",
-    "Rawlsing_V550_Response_Option_Authority_Reconciled_20260815(1).zip (full tree; recovered contract lineage audited)",
-    "85_V550J_BOUNDED_NINE_FAMILY_AUTHORITY_ADAPTER_AND_CANARY.zip historical wrapper tree (current rebased section85 deeply audited)"
+  "assigned_territory_deeply_audited": true,
+  "deep_audit_scope_note": "All high-priority primary R03 artifacts named by the worker order were directly recovered/inspected, including exact registered historical wrappers where applicable. The two authority archive/delta mega-corpora are structure/identity verified and their R03-relevant member lineages were audited; semantic adjudication of thousands of non-R03 cross-lane members is outside R03 jurisdiction. The SHA sidecar is identity evidence only by nature.",
+  "named_unaudited_or_partially_audited_primary_r03_objects": [],
+  "structural_only_cross_lane_or_identity_objects": [
+    "Rawlsing_Authority_Document_Archive_2026-08-24.zip — direct exact wrapper recovered; non-R03 member corpus not exhaustively semantically adjudicated",
+    "Rawlsing_Authority_Document_Delta_2026-04-24_to_2026-08-24.zip — direct exact wrapper recovered; non-R03 member corpus not exhaustively semantically adjudicated",
+    "Rawlsing_V550J_Semantic_Authority_Convergence_Audit_Codex_Ready_Cumulative_20260808_R3.zip.sha256 — identity receipt only"
   ],
   "highest_significance_open_gaps": [
-    "Executable source-native routing predicates for 99 source-signaled rows",
-    "Governed closure/known-absence for separate 600 unresolved routing rows",
-    "Product-wide/all-wave production-complete V550J joint-configuration authority release",
-    "All-wave executable scope-variant/risk-set authority",
-    "Promoted canonical-wave GSS joint-family registry/live semantic release",
-    "Exact current successor/live installation proof for historical component-aware authority-vector bridge"
+    "Executable exact source-native routing predicates for 99 source-signaled rows",
+    "Authoritative source recovery/known-absence for 320 no-exact-source-row-match + 280 absent/unresolved routing rows",
+    "Valid post-quarantine production-complete V550J joint authority over 2,499 raw structures / 15,990 memberships",
+    "All-wave executable scope-variant/risk-set authority derived from a valid joint release",
+    "Exact GSS_P3C_NATIVE_CLOSURE_RETURN.json terminal native reconciliation receipt",
+    "Promoted valid GSS joint-family authority distinct from upstream P3C semantic registry",
+    "Exact current successor/live installation proof for historical component-aware authority-vector bridge",
+    "Fresh selected 35-wave response-semantics empirical execution proof distinct from registry/contract closure"
+  ],
+  "invalidated_false_closures": [
+    {
+      "artifact": "Rawlsing_GSS_P3C_Joint_Authority_08_NINE_FAMILY_ALL_WAVE_V550J_AUTHORITY_R1.zip",
+      "holding": "OBSOLETE_OR_REJECTED__FULLY_QUARANTINED_FORENSIC_ATTEMPT_DO_NOT_PROMOTE",
+      "reason": "Later hostile review found every generated registry schema-invalid; 1,302/1,717 review units machine-grouped, 478 heuristic units accepted; successor authority resets reconstruction to 2,499 raw structures / 15,990 memberships and states production-complete joint authority does not exist."
+    }
   ],
   "strong_later_successors_proved": [
-    "Full R1 18,518-row question-relation authority for the July19 QSM target; not lossless proof for 18,792-row question_structure_register",
-    "Active 1,223-scale response encoding registry and exact V550/V551 semantic binding/hash tests",
-    "Current V550 applicability-vs-promotability typed state law",
-    "Current rebased Section85 bounded joint-authority and typed producer acceptance surface"
+    "Full R1 18,518-row question-relation authority for its exact QSM target; not lossless proof for the 18,792-row source-native question_structure_register",
+    "Active 1,223-scale response encoding registry and exact V550/V551 semantic binding/hash tests; historical chronology corrected to Reconciled -> SAV-Derived R2 -> current",
+    "Current V550 applicability-vs-promotability typed state law; does not compile the 699 unresolved source-routing predicates",
+    "Current rebased Section85 bounded joint-authority and typed producer acceptance surface; remains valid bounded authority despite invalid Archive08 global promotion attempt"
   ],
+  "historical_execution_corrections": [
+    "R3/R14 transfer contains real bounded respondent-level GSS1972/GSS2010 V550J execution evidence and prepared GSS2010 respondent substrate; historical execution was not limited to synthetic plans.",
+    "Section35 component bridge was executed/validated on 19 packets/109 components but explicitly not installed to the live user repo."
+  ],
+  "routing_exact_partition": {
+    "selected_rows": 700,
+    "explicit_universal": 1,
+    "unresolved_total": 699,
+    "source_signal_requires_predicate": 99,
+    "no_exact_source_row_match": 320,
+    "source_evidence_absent_or_explicitly_unresolved": 280
+  },
+  "valid_v550j_reconstruction_frontier": {
+    "raw_source_structures": 2499,
+    "raw_memberships": 15990,
+    "prior_generated_review_units_forensic_only": 1717
+  },
   "hostile_noncollapse_checks": {
     "source_cooccurrence_ne_semantic_relation": "SUPPORTED",
     "semantic_relation_ne_p3c_proposition_equivalence": "SUPPORTED",
     "p3c_equivalence_ne_respondent_joint_authority": "SUPPORTED",
-    "multiple_columns_ne_v550j_joint_configuration_authority": "SUPPORTED",
+    "multiple_columns_ne_v550j_joint_configuration_authority": "SUPPORTED_AND_HISTORICALLY_FALSIFIED_BY_ARCHIVE08",
     "source_structure_support_ne_executable_routing_predicate": "SUPPORTED"
   },
   "production_status_summary": {
+    "source_native_question_structure": "DIRECT_18792_ROW_35_SCOPE_AUDIT_SURFACE__SEPARATE_FROM_18518_QSM",
     "response_scale_authority": "CURRENT_EXHAUSTIVE_WITHIN_DECLARED_1223_SCALE_UNIVERSE",
     "question_relation_authority": "CURRENT_EXHAUSTIVE_WITHIN_18518_ROW_R1_QSM_TARGET",
-    "v550j_joint_authority": "STRONG_GOVERNED_BOUNDED_NINE_FAMILY_CANARY__NO_PRODUCT_WIDE_COMPLETENESS_PROOF",
-    "gss_family_registry": "RICH_CURRENT_DRAFT_PLUS_BOUNDED_EXECUTABLE_CONTROL__FULL_PROMOTED_SUCCESSOR_NOT_PROVED",
-    "routing_applicability": "TYPED_CURRENT_STATE_LAW__SOURCE_NATIVE_PREDICATE_GAPS_REMAIN"
+    "v550j_bounded_joint_authority": "STRONG_GOVERNED_BOUNDED_NINE_CONFIGURATION_CANARY",
+    "v550j_product_wide_joint_authority": "DOES_NOT_EXIST_IN_INSPECTED_POST_QUARANTINE_STATE__ARCHIVE08_FALSE_CLOSURE_REJECTED",
+    "gss_semantic_p3c_authority": "OFFLINE_COMPLETE_STRONG__NATIVE_TERMINAL_CLOSURE_RECEIPT_NOT_PROVED__NOT_V550J",
+    "routing_applicability": "700_SELECTED_ROUTING_ROWS_EXHAUSTIVELY_DISPOSITIONED__699_FAIL_CLOSED_UNRESOLVED__ONE_UNIVERSAL",
+    "component_authority_bridge": "HISTORICALLY_EXECUTED_AND_VALIDATED__LIVE_INSTALL_OR_LOSSLESS_SUCCESSOR_NOT_PROVED"
   },
   "no_trii_chetiri_coverage_verdict": true,
   "hq_crosswalk_pending": true,
