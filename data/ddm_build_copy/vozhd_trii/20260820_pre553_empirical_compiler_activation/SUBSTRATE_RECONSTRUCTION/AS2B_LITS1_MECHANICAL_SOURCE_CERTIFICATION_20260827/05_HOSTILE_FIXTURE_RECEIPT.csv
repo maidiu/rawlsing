@@ -1,0 +1,9 @@
+fixture_id,status,evidence
+L1_ID_ROW_ORDINAL,PASS,"Respondent identity is source SHA plus 1-based row ordinal; native id remains physical attribute only; physical sequence digest c5831f42fde711b553e89099842eaf34cb41e1410bd3201e5d67d2e124eab6ae."
+L1_COUNTRY_CONTEXT_EXACT,PASS,"Five raw coordinate slots x 29,002 rows; 29 observed country codes; country sequence digest ba3a870bcd3e2450910fe9944cfa99b62524e6e07931a857abef358676410a3f."
+L1_WEIGHT_SURFACES_DISTINCT,PASS,"Distinct physical slots and sequence digests: weight_0 9ce88bff3ababe46eb8b71c76fabe624df93d8461496bb566ee541edc80f6f42; weight_1 78fc01d601cbbd4a709ce43ed81d73bdf5abb54cfa2c8c52d4dd5ff4424116d6; weight_2 f46c836692cada055d4491caef685f5de6ab4a0bdde7149e5e655ec65e083120."
+L1_NO_DEFAULT_WEIGHT,PASS,"WeightMeasureFact count is zero; no default weight selected."
+L1_DK_NA_NOT_AUTOMATIC,PASS,"Raw codes 6 and 7 are SOURCE_SPECIFIC_SPECIAL rather than semantic DK or IAP; q301_2 has 28,998 observed and 4 system-missing cells; q301_7 has 28,991 observed and 11 system-missing cells."
+L1_Q105_12_PHYSICAL_MISSING,PASS,"All 29,002 q105_12 cells remain physical SYSTEM_MISSING evidence."
+L1_RANKED_ORDERED_SOURCE_TOPOLOGY,PASS,"q304a and q304b remain distinct physical slots; sequence digests ca052e7663a5a3b116c24b0e6ad25f1e235556c7775518836042f94b527bcfc3 and 2642bd2c6f1894cbe69d8e733776873f3bec17e1951e9c40ffbebbd05e7b783d."
+L1_ENCODING_PROVENANCE,PASS,"decode_dta(source_path, encoding=latin1); COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY."
