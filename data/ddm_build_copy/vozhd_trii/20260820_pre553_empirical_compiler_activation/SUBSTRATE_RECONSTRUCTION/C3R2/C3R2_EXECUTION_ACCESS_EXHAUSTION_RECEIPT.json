@@ -1,0 +1,149 @@
+{
+  "court": "G1A_C3R2_BYTE_READABLE_V525B_D62_ASSERTION_GRAIN_SUCCESSION_CLOSURE",
+  "launch_head": "4fedf24084a317806141f4799aa8359ad40c8f7c",
+  "branch": "agent/vozhd-trii-g1a-c3r2-byte-readable-assertion-grain-closure",
+  "sibling_blind": true,
+  "status": "EXECUTION_BLOCKED__PINNED_BYTES_NOT_BYTE_READABLE_IN_CURRENT_EXECUTION_SURFACE",
+  "semantic_status": "C3R2_STILL_BLOCKED",
+  "authorized_recovery_substrate": {
+    "branch": "agent/g1a-github-portability-recovery-r1",
+    "commit": "aece04ac3fa2e488c6993c6b9c88eda296b2e6b8"
+  },
+  "pinned_objects": {
+    "REGISTER_A": {
+      "path": "data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_REGISTER_LINEAGE/REGISTER_A/question_structure_register.csv",
+      "git_blob_sha": "ffd2c1173c7dba064ab1472cd95865eecfb68661",
+      "expected_sha256": "f47c8adb65546b1c0a06dcd31dc0b827b59f8975a3806646f41a0742966c3d84",
+      "expected_bytes": 23612534,
+      "checksum_authority": "03_C3_REGISTER_LINEAGE/99_PROVENANCE/SHA256SUMS.txt",
+      "current_execution_byte_rehash": "NOT_POSSIBLE"
+    },
+    "REGISTER_B": {
+      "path": "data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_REGISTER_LINEAGE/REGISTER_B/question_structure_register.csv",
+      "git_blob_sha": "54c2f30af5eb6e66364864c6dc85f2ac36d5ea94",
+      "expected_sha256": "15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b",
+      "expected_bytes": 26582348,
+      "checksum_authority": "03_C3_REGISTER_LINEAGE/99_PROVENANCE/SHA256SUMS.txt",
+      "current_execution_byte_rehash": "NOT_POSSIBLE"
+    },
+    "D62": {
+      "path": "data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_V525B_D62/raw/d62/questions_master_drivers.csv",
+      "git_blob_sha": "92b3b2b8728488c055b9d0d743d0bf43dea9a146",
+      "expected_sha256": "d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011",
+      "expected_bytes": 16864669,
+      "checksum_authority": "G1A_CLOSURE_R1_20260826/99_PROVENANCE/SHA256SUMS.txt",
+      "current_execution_byte_rehash": "NOT_POSSIBLE"
+    },
+    "V525B": {
+      "path": "data/ddm_build_copy/recovery_integration/portable_evidence/G1A_CLOSURE_R1_20260826/03_C3_V525B_D62/raw/v525b/questions_master_drivers.csv",
+      "git_blob_sha": "c05c33734ceb0f3a476d1a61016a48c587b8a217",
+      "expected_sha256": "53feb28296705d2005f8c3d2548c136e2c15fabd62c103694f05caa555063711",
+      "expected_bytes": 3683893,
+      "checksum_authority": "G1A_CLOSURE_R1_20260826/99_PROVENANCE/SHA256SUMS.txt",
+      "current_execution_byte_rehash": "NOT_POSSIBLE"
+    }
+  },
+  "exhausted_access_paths": [
+    {
+      "path_type": "GITHUB_FILE_RANGE_UTF8",
+      "request": "first three lines of each pinned carrier by exact recovery commit",
+      "result": {
+        "REGISTER_A": {
+          "content_bytes_returned": 0,
+          "git_blob_sha": "ffd2c1173c7dba064ab1472cd95865eecfb68661"
+        },
+        "REGISTER_B": {
+          "content_bytes_returned": 0,
+          "git_blob_sha": "54c2f30af5eb6e66364864c6dc85f2ac36d5ea94"
+        },
+        "D62": {
+          "content_bytes_returned": 0,
+          "git_blob_sha": "92b3b2b8728488c055b9d0d743d0bf43dea9a146"
+        },
+        "V525B": {
+          "content_bytes_returned": 0,
+          "git_blob_sha": "c05c33734ceb0f3a476d1a61016a48c587b8a217"
+        }
+      },
+      "disposition": "NOT_BYTE_READABLE"
+    },
+    {
+      "path_type": "GITHUB_FILE_RANGE_BASE64",
+      "request": "Register A first three lines",
+      "result": {
+        "content_bytes_returned": 0,
+        "git_blob_sha": "ffd2c1173c7dba064ab1472cd95865eecfb68661"
+      },
+      "disposition": "NOT_BYTE_READABLE"
+    },
+    {
+      "path_type": "GITHUB_GIT_BLOB_DECODE",
+      "request": "Register A exact Git blob ffd2c1173c7dba064ab1472cd95865eecfb68661",
+      "result": "REJECTED__DECODED_MESSAGE_47491040_BYTES_EXCEEDS_4194304_BYTE_LIMIT",
+      "disposition": "NOT_BYTE_READABLE"
+    },
+    {
+      "path_type": "GITHUB_RAW_FILE_FETCH",
+      "request": "V525b exact raw recovery URL at aece04ac3fa2e488c6993c6b9c88eda296b2e6b8",
+      "result": "HTTP_400__FILE_MAY_BE_TOO_LARGE_OR_UNSUPPORTED",
+      "disposition": "NOT_BYTE_READABLE"
+    },
+    {
+      "path_type": "WEB_RAW_URL_FETCH",
+      "request": "Register A exact raw recovery URL",
+      "result": "DISABLED_ERROR",
+      "disposition": "NOT_BYTE_READABLE"
+    },
+    {
+      "path_type": "LOCAL_GIT_HTTPS_CHECKOUT",
+      "request": "git clone/fetch exact recovery and launch commits",
+      "result": "FAILED__COULD_NOT_RESOLVE_HOST_github.com",
+      "disposition": "NO_NETWORK_PATH"
+    },
+    {
+      "path_type": "LOCAL_DNS_PROBE",
+      "request": "resolve github.com, raw.githubusercontent.com, api.github.com",
+      "result": "ALL_FAILED__TEMPORARY_FAILURE_IN_NAME_RESOLUTION",
+      "disposition": "NO_NETWORK_PATH"
+    }
+  ],
+  "checksum_status": {
+    "manifest_declared_sha256s_resolved": true,
+    "exact_git_blob_identities_resolved": true,
+    "independent_current_execution_byte_hash_verification": false,
+    "pass_precondition_satisfied": false
+  },
+  "required_adjudication_denominator": {
+    "final_driver_id_transitions": 879,
+    "singleton_register_a_to_d62_semantic_deltas": 92,
+    "explicit_residual_items": 971,
+    "row_complete_assertion_denominator": "NOT_ENUMERABLE_WITHOUT_PINNED_BYTES"
+  },
+  "adjudication_outputs": {
+    "transition_879_ledger_emitted": false,
+    "singleton_92_ledger_emitted": false,
+    "assertion_ledger_emitted": false,
+    "typed_edge_ledger_emitted": false,
+    "reason": "The court forbids fabricated row/assertion identities. Exact pinned bytes were not byte-readable and could not be independently re-hashed in this execution surface."
+  },
+  "unresolved_count": 971,
+  "unresolved_count_scope": "BANKED_EXPLICIT_RESIDUAL_ITEMS_ONLY__ROW_COMPLETE_ASSERTION_AMBIGUITY_NOT_ENUMERATED",
+  "smallest_exact_residual_blocker_set": [
+    "Provide an execution surface that returns actual bytes for the exact Git blobs ffd2c1173c7dba064ab1472cd95865eecfb68661, 54c2f30af5eb6e66364864c6dc85f2ac36d5ea94, 92b3b2b8728488c055b9d0d743d0bf43dea9a146, and c05c33734ceb0f3a476d1a61016a48c587b8a217, or provide exact derived 879/92/row-complete assertion ledgers cryptographically bound to the authorized SHA-256 values.",
+    "Independently verify the four pinned SHA-256 values from returned bytes before semantic adjudication.",
+    "Then execute the 879 transitions, 92 singleton deltas, row-complete assertion decomposition, and typed succession/coexistence edge ledger with zero unresolved authority-bearing assertion ambiguity."
+  ],
+  "prohibitions_preserved": [
+    "NO_C4R2A_FINDINGS_CONSUMED",
+    "NO_C4R2B_FINDINGS_CONSUMED",
+    "NO_C5R2_FINDINGS_CONSUMED",
+    "NO_C6R1_FINDINGS_CONSUMED",
+    "NO_LIVE_MUTATION",
+    "NO_P9_EXECUTION",
+    "NO_G1A_CLOSURE",
+    "NO_BLANKET_D62_PROMOTION",
+    "NO_BLANKET_D62_DELETION",
+    "NO_GLOBAL_V525B_RETIREMENT",
+    "NO_SYNTHETIC_LEDGER_ROWS"
+  ]
+}
