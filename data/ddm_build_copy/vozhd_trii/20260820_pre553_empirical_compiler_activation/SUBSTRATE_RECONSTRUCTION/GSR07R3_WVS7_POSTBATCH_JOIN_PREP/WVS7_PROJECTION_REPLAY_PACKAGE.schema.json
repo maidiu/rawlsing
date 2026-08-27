@@ -1,0 +1,35 @@
+{
+  "$comment": "Cross-record exact country coverage, dedupe/contradiction, UNKNOWN provenance, frozen routing, D01-D12 completeness, and package hash are enforced by wvs7_postbatch_join.py because JSON Schema alone cannot express all set constraints.",
+  "$id": "urn:rawlsing:gsr07r3:wvs7-projection-replay-package:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority_pins": {"type": "object"},
+    "batch_input_manifest": {"maxItems": 6, "minItems": 6, "type": "array"},
+    "contradictions": {"type": "array"},
+    "country_union": {"items": {"required": ["country", "year"], "type": "object"}, "maxItems": 65, "minItems": 65, "type": "array"},
+    "d03_adjudication": {"type": "object"},
+    "d11_country_empirical_universe_bindings": {"maxItems": 66, "minItems": 66, "type": "array"},
+    "d12_respondent_replay_bindings": {"minItems": 1, "type": "array"},
+    "document_identity_projection": {"type": "array"},
+    "non_authority_notice": {"type": "string"},
+    "package_sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+    "preflight": {
+      "properties": {
+        "all_d01_d12_surfaces_present": {"const": true},
+        "blockers": {"items": {"type": "string"}, "type": "array"},
+        "no_batch_facts_consumed_by_lane12_prep": {"const": true},
+        "status": {"enum": ["PASS", "FAIL_CLOSED"]}
+      },
+      "required": ["status", "blockers", "all_d01_d12_surfaces_present", "no_batch_facts_consumed_by_lane12_prep"],
+      "type": "object"
+    },
+    "routing_documentary_join": {"type": "array"},
+    "schema_name": {"const": "wvs7-postbatch-join-report-v1"},
+    "source_present_country_universe": {"items": {"required": ["country", "year"], "type": "object"}, "maxItems": 66, "minItems": 66, "type": "array"},
+    "unknown_ledger": {"type": "array"}
+  },
+  "required": ["schema_name", "authority_pins", "batch_input_manifest", "country_union", "source_present_country_universe", "document_identity_projection", "routing_documentary_join", "d03_adjudication", "d11_country_empirical_universe_bindings", "d12_respondent_replay_bindings", "unknown_ledger", "contradictions", "preflight", "non_authority_notice", "package_sha256"],
+  "title": "WVS7 content-addressed post-batch projection/replay package",
+  "type": "object"
+}
