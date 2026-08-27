@@ -29,13 +29,94 @@ def packet(packet_id: str = "p1", **overrides):
         "driver_facet_ids_json": '["facet"]',
         "question_ids_json": '["q1"]',
         "certification_status": "CERTIFIED_JOINT_RELATION_EVIDENCE",
+        "family_id": "family",
+        "pattern_id": "pattern",
+        "packet_contract_hash": "packet-contract",
+        "pattern_item_count": 2,
+        "component_contract_hashes_ordered_json": '["component-contract-1","component-contract-2"]',
+        "joint_response_identity_signature": "joint-response",
+        "joint_semantic_signature": "joint-semantic",
+        "joint_orientation_signature": "joint-orientation",
+        "joint_topology_signature": "joint-topology",
+        "joint_target_signature": "joint-target",
+        "joint_structural_signature": "joint-structural",
+        "joint_measurement_contract_hash": "joint-measurement",
+        "component_response_vector_json": '["r1","r2"]',
+        "component_semantic_vector_json": '["s1","s2"]',
+        "component_orientation_vector_json": '["o1","o2"]',
+        "component_topology_vector_json": '["t1","t2"]',
+        "component_target_vector_json": '["target1","target2"]',
+        "component_structural_vector_json": '["struct1","struct2"]',
+        "component_denominator_vector_json": '[100,100]',
+        "denominator_separation_status": "PASS",
+        "joint_n_unweighted": 100,
+        "joint_pattern_count_unweighted": 10,
         "joint_support_status": "sufficient_support",
+        "joint_semantic_authority_status": "CERTIFIED",
         "joint_directionality_authority_status": "CERTIFIED",
+        "joint_family_target_authority_status": "CERTIFIED",
+        "joint_structural_authority_status": "CERTIFIED",
+        "joint_measurement_authority_status": "CERTIFIED",
         "joint_evidence_authority_status": "CERTIFIED",
+        "v550j_pattern_index_artifact_hash": "a" * 64,
+        "v550j_pattern_item_index_artifact_hash": "b" * 64,
+        "v550j_manifest_hash": "c" * 64,
         "review_required": False,
     }
     row.update(overrides)
     return row
+
+
+def component(packet_row: dict, item_order: int):
+    return {
+        "run_id": packet_row.get("run_id", "run"),
+        "packet_id": packet_row.get("packet_id", "p1"),
+        "pattern_id": packet_row.get("pattern_id", "pattern"),
+        "family_id": packet_row.get("family_id", "family"),
+        "item_order": item_order,
+        "component_id": f"component-{item_order}",
+        "component_contract_hash": f"component-contract-{item_order}",
+        "source": packet_row.get("source", "TEST"),
+        "source_family": packet_row.get("source_family", "TEST"),
+        "canonical_wave": packet_row.get("canonical_wave", "W1"),
+        "country_code": packet_row.get("country_code", "XX"),
+        "v550j_item_role": f"role-{item_order}",
+        "v551_evidence_role": "relation",
+        "v551_evidence_role_status": "CERTIFIED",
+        "component_evidence_role": "relation_component",
+        "component_certification_contribution": "relation_component",
+        "v551_empirical_distribution_id": f"dist-{item_order}",
+        "v551_n_respondents": 100,
+        "v551_semantic_role_authority_status": "CERTIFIED",
+        "v551_response_semantics_authority_status": "CERTIFIED",
+        "v551_directionality_authority_status": "CERTIFIED",
+        "v551_provenance_basis": "fixture",
+        "schema_version": "v2.2.3",
+        "compiler_version": "v551j_joint_evidence_contract_v2_2_3",
+    }
+
+
+def components_for_frames(*frames):
+    rows = []
+    seen = set()
+    for frame in frames:
+        if frame is None or frame.empty:
+            continue
+        for packet_row in frame.to_dict("records"):
+            packet_id = str(packet_row.get("packet_id") or "")
+            if not packet_id or packet_id in seen:
+                continue
+            seen.add(packet_id)
+            rows.extend([component(packet_row, 1), component(packet_row, 2)])
+    return pd.DataFrame(rows)
+
+
+def build_v552j_join(**kwargs):
+    if "v551j_components" not in kwargs:
+        kwargs["v551j_components"] = components_for_frames(
+            kwargs.get("v551j_certified"), kwargs.get("v551j_review")
+        )
+    return handoff.build_v552j_join(**kwargs)
 
 
 def fact(fact_id: str = "f1", **overrides):
@@ -112,7 +193,7 @@ class TestW06BV552JSemantics(unittest.TestCase):
         self.assertNotIn("wrong", resolved["source_v552_structural_fact_ids_diagnostic_json"])
 
     def test_present_packet_with_no_exact_scope_candidate_is_typed_unresolved_without_primary(self):
-        result = handoff.build_v552j_join(
+        result = build_v552j_join(
             run_id="run", v551j_certified=pd.DataFrame([packet()]), v551j_review=pd.DataFrame(),
             v552_structural_facts=pd.DataFrame([fact(source="OTHER", source_family="OTHER")]),
             v551j_state=state(), v552_state=state(),
@@ -130,7 +211,7 @@ class TestW06BV552JSemantics(unittest.TestCase):
         self.assertEqual(handoff._structural_fact_match_score(p, f), -1)
 
     def test_no_evidence_has_zero_primary_rows_and_null_constraint_metrics(self):
-        result = handoff.build_v552j_join(
+        result = build_v552j_join(
             run_id="run",
             v551j_certified=pd.DataFrame(),
             v551j_review=pd.DataFrame(),
@@ -149,7 +230,7 @@ class TestW06BV552JSemantics(unittest.TestCase):
 
     def test_review_only_packet_is_preserved_but_not_zero_constraint(self):
         review = pd.DataFrame([packet(certification_status="REVIEW_REQUIRED_AUTHORITY_GAP", review_required=True, joint_support_status="underpowered")])
-        result = handoff.build_v552j_join(
+        result = build_v552j_join(
             run_id="run", v551j_certified=pd.DataFrame(), v551j_review=review,
             v552_structural_facts=pd.DataFrame([fact()]),
             v551j_state=state("PRESENT", "DENY"), v552_state=state(),
@@ -162,7 +243,7 @@ class TestW06BV552JSemantics(unittest.TestCase):
 
     def test_observed_zero_is_measurement_not_absence(self):
         zero_fact = fact(pressure_score=0.0, pressure_score_status="OBSERVED_ZERO", measurement_evidence_status="PRESENT")
-        result = handoff.build_v552j_join(
+        result = build_v552j_join(
             run_id="run", v551j_certified=pd.DataFrame([packet()]), v551j_review=pd.DataFrame(),
             v552_structural_facts=pd.DataFrame([zero_fact]), v551j_state=state(), v552_state=state(),
         )
@@ -180,7 +261,7 @@ class TestW06BV552JSemantics(unittest.TestCase):
             measurement_evidence_status="APPLICABLE_BUT_UNRESOLVED",
             downstream_permission_status="DENY",
         )
-        result = handoff.build_v552j_join(
+        result = build_v552j_join(
             run_id="run", v551j_certified=pd.DataFrame([packet()]), v551j_review=pd.DataFrame(),
             v552_structural_facts=pd.DataFrame([unresolved_fact]), v551j_state=state(), v552_state=state(),
         )
@@ -282,9 +363,11 @@ class TestW06BV552JProducerBoundary(unittest.TestCase):
         producer_state = SimpleNamespace(run_integrity_status="PASS", evidence_status="PRESENT", downstream_permission_status="DENY")
         candidate = pd.DataFrame([packet(certification_status="REVIEW_REQUIRED_AUTHORITY_GAP", review_required=True)])
         certified = pd.DataFrame(columns=candidate.columns)
+        component_index = components_for_frames(candidate)
         review = pd.DataFrame([{"run_id": "run", "packet_id": "p1", "certification_status": "REVIEW_REQUIRED_AUTHORITY_GAP", "review_required": True}])
         def declared(_path, declaration, *, label, expected_schema):
             if label == "V551J_CANDIDATE": return candidate.copy()
+            if label == "V551J_COMPONENT": return component_index.copy()
             if label == "V551J_CERTIFIED": return certified.copy()
             if label == "V551J_REVIEW": return review.copy()
             raise AssertionError(label)
@@ -318,7 +401,7 @@ class TestW06BV552JProducerBoundary(unittest.TestCase):
             v551j.assert_not_called()
 
     def test_v553_compatibility_view_preserves_packet_and_probe_aliases(self):
-        result = handoff.build_v552j_join(
+        result = build_v552j_join(
             run_id="run", v551j_certified=pd.DataFrame([packet()]), v551j_review=pd.DataFrame(),
             v552_structural_facts=pd.DataFrame([fact()]), v551j_state=state(), v552_state=state(),
         )
@@ -332,7 +415,7 @@ class TestW06BV552JProducerBoundary(unittest.TestCase):
         self.assertFalse(bool(row["ready_for_runtime_consumption"]))
 
     def test_stale_output_is_replaced_transactionally(self):
-        joined = handoff.build_v552j_join(
+        joined = build_v552j_join(
             run_id="run", v551j_certified=pd.DataFrame(), v551j_review=pd.DataFrame(),
             v552_structural_facts=pd.DataFrame(),
             v551j_state=state("NOT_APPLICABLE", "NOT_APPLICABLE"),
