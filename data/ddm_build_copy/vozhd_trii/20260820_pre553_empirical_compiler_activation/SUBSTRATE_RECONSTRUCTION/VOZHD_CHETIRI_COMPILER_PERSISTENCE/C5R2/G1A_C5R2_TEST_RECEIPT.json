@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "repository": "maidiu/rawlsing",
+  "launch_head": "4fedf24084a317806141f4799aa8359ad40c8f7c",
+  "branch": "agent/vozhd-chetiri-g1a-c5r2-owner-execution-proof",
+  "command": "python -m unittest -v",
+  "tests_run": 11,
+  "failures": 0,
+  "errors": 0,
+  "positive": [
+    "test_authoritative_end_to_end_witness",
+    "test_governed_split_merge_variant_exclusion_execute"
+  ],
+  "hostile": [
+    "test_nomination_is_not_authority",
+    "test_ambiguous_split_fails_closed",
+    "test_split_member_conservation",
+    "test_ungoverned_variant_exclusion_fails_closed",
+    "test_blocked_reopening_is_not_truth",
+    "test_newest_is_not_current",
+    "test_correction_vs_recertification_identity",
+    "test_rollback_does_not_rewrite_history",
+    "test_dependency_traversal_does_not_infer_lifecycle"
+  ],
+  "compile_check": "PASS",
+  "authority_ceiling": "C5R2_ISOLATED_REFERENCE_EXECUTION_ONLY__NOT_LIVE_PROMOTION"
+}
