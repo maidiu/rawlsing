@@ -1,0 +1,62 @@
+{
+  "status": "C09_READINESS_PREREQUISITE_LEDGER_RETURNED__NO_BAKEOFF_NO_RANKING",
+  "repository": "maidiu/rawlsing",
+  "branch": "c09-readiness-prerequisite-ledger-20260827",
+  "verified_start_head": "40e27a552eadeab89d101b2ed0267fa939a283a0",
+  "c09_launch_ready": false,
+  "benchmark_execution_count": 0,
+  "candidate_ranking_count": 0,
+  "architecture_selection_count": 0,
+  "semantic_mutation_count": 0,
+  "prerequisite_count": 41,
+  "status_counts": {
+    "SATISFIED": 18,
+    "SATISFIED_ONLY_FOR_LITS_I": 2,
+    "MISSING_AUTHORITY": 5,
+    "EXECUTION_NOT_YET_PERFORMED": 12,
+    "SUPERSEDED": 3,
+    "UNRESOLVED_EXACT_REASON": 1
+  },
+  "current_gate_state": {
+    "C01": "SATISFIED",
+    "C02": "SATISFIED",
+    "C03": "SATISFIED",
+    "C04": "SATISFIED",
+    "C05": "AUTHORITY_FRONTIER_SATISFIED__C05R2B_EXECUTION_NOT_YET_PERFORMED",
+    "C06": "CORE_U5_SATISFIED__END_TO_END_REAL_SOURCE_PARITY_SATISFIED_ONLY_FOR_LITS_I",
+    "C07": "DAG_SATISFIED__FOUR_RULE_AUTHORITIES_MISSING",
+    "C08": "BANKED_MATRIX_SATISFIED__FINAL_RECONCILIATION_NOT_YET_PERFORMED",
+    "HISTORICAL_CHETIRI_G1": "OPEN",
+    "C09": "LOCKED"
+  },
+  "minimal_residual_chain": [
+    [
+      "AS4I0_COMMON_LOADER_PLUS_B_DRIVER",
+      "C05R2B_INDEPENDENT_ORACLE"
+    ],
+    "C05R2B_REAL_LITS1_PRODUCTION_I05_EXECUTION",
+    "C08_FINAL_RECONCILIATION",
+    "HISTORICAL_CHETIRI_G1_CLOSURE",
+    "CONVERGE_WITH_WVS7_DOCUMENTARY_JOIN_AND_GSR07_CERTIFICATION",
+    "HQ_DISPOSE_LEARNED_WORLD_RULE_AUTHORITY_LAUNCH_CONSEQUENCE",
+    "SEAL_FINAL_C09_IMPLEMENTATION_SOURCE_WORKLOAD_ORACLE_RESOURCE_PINS",
+    "C09_LAUNCH_WHEN_LAWFUL"
+  ],
+  "parallel_wvs7_chain": [
+    "W1_W6_DOCUMENTARY_RETURNS",
+    "HQ_COUNTRY_ROUTING_D03_D11_D12_JOIN",
+    "WVS7_PROJECTION_ROUTING_UNIVERSE_REPLAY_PACKAGE",
+    "BOUNDED_HOSTILE_PARITY",
+    "FULL_GSR07_REAL_SOURCE_CERTIFICATION"
+  ],
+  "ambiguous_present_authority": [
+    {
+      "item": "FOUR_C07_LEARNED_WORLD_RULE_AUTHORITY_GAPS",
+      "exact_ambiguity": "Their MISSING_AUTHORITY state is clear; current authority does not explicitly state whether they must all close before C09 process launch or may remain typed BLOCKED_MISSING_AUTHORITY inside a non-dispositive court."
+    },
+    {
+      "item": "HQ26_LANE11_DVA_TERMINAL_RECEIPT_CONTRACT",
+      "exact_ambiguity": "HQ26 says it should feed the full C09 harness before freeze but does not explicitly declare it a hard launch gate."
+    }
+  ]
+}
