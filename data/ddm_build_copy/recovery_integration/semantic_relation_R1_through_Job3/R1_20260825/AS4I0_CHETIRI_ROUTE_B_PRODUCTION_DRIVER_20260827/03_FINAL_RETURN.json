@@ -1,0 +1,48 @@
+{
+  "schema": "AS4I0_CHETIRI_FINAL_RETURN@1.0.0",
+  "status": "FAIL_CLOSED_BLOCKER",
+  "branch": "as4i0-chetiri-route-b-production-driver-20260827",
+  "starting_head": "40e27a552eadeab89d101b2ed0267fa939a283a0",
+  "implementation": "AS4I0_COMMON_AS3R2_LOADER_AND_ROUTE_B_PRODUCTION_DRIVER",
+  "authority_validation": {
+    "discovery_authority": "98d52062a0acc04a1949053a8f83397621e810950ff70ceff0260b68d17fd28c",
+    "candidate_grammar": "85d314d8222d96328b3e0449495ea3946d02cecaf3f2ccd3b249270a3fca2b66",
+    "official_frontier": "84349595622ed6eec5bd6af60de5b74df26ae6752ae64e40d7595fd7560b7d67",
+    "candidate_count": 82,
+    "predicate_count": 19,
+    "query_template_count": 3,
+    "pre_candidate_fairness_blockers": 0,
+    "status": "PASS"
+  },
+  "bounded_validation": {
+    "browser_artifact_checks": {
+      "passed": 21,
+      "failed": 0
+    },
+    "banked_blob_identity_samples": {
+      "passed": 6,
+      "failed": 0
+    },
+    "local_py_compile_drafts": {
+      "passed": 3,
+      "failed": 0
+    },
+    "real_source_execution_performed": false,
+    "candidate_execution_count": 0
+  },
+  "blocker": {
+    "id": "AS4I0-B01__AS3R2_RUNTIME_CATALOG_CANONICAL_OBJECT_PREIMAGES_NOT_SERIALIZED",
+    "exact_grain": "AS3R2 seals 19 EmpiricalPredicate refs and 3 EmpiricalQuerySpec refs, but the accepted artifact package does not contain the full canonical object projections/replay roots needed to instantiate those exact immutable objects. execute_exact_bounded_discovery verifies exact object semantic identity, so refs alone are insufficient and guessing would manufacture identity material.",
+    "required_cure": "Recover/export the exact 22 canonical runtime objects from the authoritative AS3R2 construction that produced the sealed refs; no semantic changes are authorized."
+  },
+  "production_entry_point": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/run_route_b_production.py",
+  "preflight_entry_point": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/run_as4i0_route_b.py",
+  "persistence": {
+    "hidden_transformed_empirical_payload": false,
+    "persistent_empirical_payload_files": [],
+    "source_artifact_banked": false,
+    "session_boundary": "in-memory C11 session released before production receipt write"
+  },
+  "environment_limit": "Exact committed unittest execution was not available: the active container had no repository checkout and DNS could not resolve github.com; the branch-local GitHub Actions workflow had no visible run after subsequent pushes.",
+  "return_token": "AS4I0_FAIL_CLOSED__AS3R2_RUNTIME_CATALOG_CANONICAL_OBJECT_PREIMAGES_REQUIRED"
+}
