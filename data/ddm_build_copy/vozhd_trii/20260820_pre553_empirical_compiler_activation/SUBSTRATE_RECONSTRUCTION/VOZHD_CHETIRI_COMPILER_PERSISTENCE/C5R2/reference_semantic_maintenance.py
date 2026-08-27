@@ -382,8 +382,8 @@ class Pre553SemanticMaintenanceOwner:
         governed_rule = self.family_rule_refs.get(candidate.family)
         if governed_rule is None or governed_rule != candidate.family_rule_ref:
             raise SemanticMaintenanceError("candidate family rule is not the registered exact governed rule")
-        if candidate.evidence_bundle_ref not in {b.ref for b in self.evidence_bundles.values()}:
-            raise SemanticMaintenanceError("candidate lacks an exact registered complete evidence bundle")
+        if candidate.evidence_bundle_ref.kind != "SEMANTIC_EVIDENCE_BUNDLE":
+            raise SemanticMaintenanceError("candidate must name an exact semantic evidence-bundle ref")
         self.candidates[candidate.candidate_id] = candidate
         self._append("CANDIDATE_NOMINATION", candidate)
         return candidate
@@ -394,6 +394,8 @@ class Pre553SemanticMaintenanceOwner:
         candidate = self.candidates[decision.candidate_ref.object_id]
         if candidate.ref != decision.candidate_ref:
             raise SemanticMaintenanceError("adjudication candidate ref mismatch")
+        if candidate.evidence_bundle_ref not in {b.ref for b in self.evidence_bundles.values()}:
+            raise SemanticMaintenanceError("adjudication requires the candidate's exact COMPLETE evidence bundle to be bound")
         self._require_governance_ref(decision.decision_authority_ref)
         if decision.decision_id in self.decisions:
             raise SemanticMaintenanceError("decision id already exists")
@@ -687,7 +689,6 @@ def build_authoritative_witness() -> dict[str, Any]:
     owner.register_family_rule("T06", family_rule)
 
     bundle_v1 = EvidenceBundle("EB-001", (evidence_v1,), "COMPLETE", binding_authority)
-    owner.bind_evidence(bundle_v1)
     candidate_v1 = Candidate(
         candidate_id="CAND-001",
         family="T06",
@@ -701,6 +702,7 @@ def build_authoritative_witness() -> dict[str, Any]:
     owner.nominate(candidate_v1)
     if owner.authorities:
         raise AssertionError("nomination created authority")
+    owner.bind_evidence(bundle_v1)
     decision_v1 = owner.adjudicate(GovernedDecision("ADJ-001", candidate_v1.ref, "ACCEPT", court_decision_authority, "EXACT_T06_EVIDENCE_ACCEPT"))
     authority_v1 = owner.create_authority(authority_id="SEM-AUTH-001", authority_version="1.0.0", decision=decision_v1)
     select_v1 = owner.select_current(event_id="EV-SEL-001", authority_ref=authority_v1.ref, jurisdiction_key="T06|C5R2_FIXTURE|W1", decision_authority_ref=court_decision_authority)
@@ -713,7 +715,6 @@ def build_authoritative_witness() -> dict[str, Any]:
     executor.promote(release_v1.ref, decision_authority_ref=court_decision_authority)
 
     bundle_v2 = EvidenceBundle("EB-002", (evidence_v1, evidence_v2), "COMPLETE", binding_authority)
-    owner.bind_evidence(bundle_v2)
     candidate_v2 = Candidate(
         candidate_id="CAND-002",
         family="T06",
@@ -725,6 +726,7 @@ def build_authoritative_witness() -> dict[str, Any]:
         evidence_bundle_ref=bundle_v2.ref,
     )
     owner.nominate(candidate_v2)
+    owner.bind_evidence(bundle_v2)
     decision_v2 = owner.adjudicate(GovernedDecision("ADJ-002", candidate_v2.ref, "ACCEPT", court_decision_authority, "CORRECTED_EVIDENCE_RECERTIFIES_SAME_CLAIM"))
     authority_v2 = owner.create_authority(authority_id="SEM-AUTH-002", authority_version="1.0.0", decision=decision_v2, predecessor_authority_ref=authority_v1.ref)
     if authority_v1.semantic_claim_id != authority_v2.semantic_claim_id:
