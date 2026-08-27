@@ -18,7 +18,7 @@ The unit of conservation is not the historical file. The unit is the irreducible
 
 The parallel recovered-inheritance campaign is a powerful but narrower preservation court focused on historically manual/adjudicated semantic authority and the exact machinery needed to preserve it through producer-owned PRE553 semantic authority, I04 binding, and the existing structural lineage.
 
-Long Memory does not compete with that campaign and does not enter P10. It treats P1-P10 as one already-developed proof body to be consumed later during HQ crosswalk.
+Long Memory does not compete with that campaign and does not enter P10. It consumes banked P1-P10 holdings as one proof body during HQ crosswalk and waits for final bounded P10 reclosure before issuing final dispositions on overlapping manual/adjudicated authority.
 
 Long Memory is broader. It also searches for historical capital outside manual/adjudicated semantic authority, including:
 
@@ -37,23 +37,9 @@ Long Memory is broader. It also searches for historical capital outside manual/a
 - unfinished but conceptually significant historical ambitions;
 - lawfully superseded mechanisms whose learned theorem must survive.
 
-The eventual comparison classes are:
+## Archaeology campaign returned and banked
 
-`ALREADY_EXPLICITLY_COVERED_BY_CURRENT_CAMPAIGN`
-`COVERED_IN_FUNCTION_BUT_UNDER_DIFFERENT_TERMINOLOGY`
-`PARTIALLY_COVERED__OLDER_FORM_IS_RICHER`
-`CURRENT_CAMPAIGN_PRESERVES_THE_AUTHORITY_BUT_NOT_THE_BROADER_IDEA`
-`CURRENT_P10_SHOULD_DISCOVER_THIS_IF_ITS_SEARCH_IS_COMPLETE`
-`OUTSIDE_P10_JURISDICTION_BUT_RELEVANT_TO_FINAL_RAWLSING`
-`GENUINELY_MISSING_FROM_CURRENT_TRAJECTORY`
-`HISTORICAL_IDEA_LAWFULLY_SUPERSEDED`
-`UNRESOLVED__DO_NOT_COLLAPSE`
-
-No final class is assigned merely from vocabulary resemblance.
-
-## Archaeology campaign now returned
-
-All six bounded Rabochii archaeology cells have returned their required six-file outputs from common start HEAD:
+All six bounded Rabochii archaeology cells returned their required six-file outputs from common start HEAD:
 
 `2e6f39b0c2465e3d2a15788c06ec0ec37f764688`
 
@@ -66,9 +52,9 @@ Worker tips at HQ intake:
 - R05 whole PRE553 conservation/freeze: `4a0647a5ddc28140837795aa5b52733c95b2274f`
 - R06 meta-completeness/authority-loss/missing resources: `7167fb81bbb745d91a96535efb4b95d57e798e43`
 
-The six returns are archaeological evidence, not live Rawlsing authority. Their overlap and disagreements must be reconciled by HQ before modern coverage conclusions.
+These exact commits are the authoritative archaeological return locations if a future Vozhd needs the original ledgers. The returns are evidence, not live Rawlsing authority.
 
-## Strongest whole-history pattern already visible
+## Current R1 whole-history holding
 
 Across otherwise different historical lineages, Rawlsing repeatedly learned the same meta-discipline:
 
@@ -83,18 +69,35 @@ Across otherwise different historical lineages, Rawlsing repeatedly learned the 
 9. do not promote heuristic/model-rich generated constructs into empirical truth;
 10. preserve enough history/dependency context that downstream interpretation does not have to guess or reopen archaeology.
 
-This common spine does not erase lane-specific obligations. Person-world ontology, joint-source configuration, statistical design authority, structural-channel inference, component vectors, and future semantic-authority production remain distinct questions.
+The first 44-row current-trajectory crosswalk finds **zero whole concept classes yet proved genuinely missing from modern Trii/Chetiri**. The dominant residual risk is finer-grain preservation, owner/load/execution, currentness, and closure—not wholesale conceptual amnesia.
+
+That is provisional R1, not final closure. Several historical forms remain richer or unresolved, especially V550J configuration/scope grammar, statistical design authority, authority-role conservation fixtures, sparse-slice degradation, structural-channel inference, alienation/mediation succession, and developmental availability.
 
 ## Required read order for any successor HQ/Vozhd
 
-1. this file;
-2. `01_WORKER_RETURN_ACCEPTANCE_AND_PROVENANCE.md`;
-3. `02_WHOLE_HISTORY_CONSERVATION_SPINE.md`;
-4. `03_CROSS_WORKER_COLLISIONS_AND_RECONCILIATION.md`;
-5. `04_MASTER_MISSING_RESOURCE_AND_PROOF_QUEUE.csv`;
-6. `05_HQ_NEXT_DAG_AND_COMPLETION_CRITERIA.md`;
-7. the six original worker returns when a specific finding needs source-level detail;
-8. only after the historical inheritance universe is stable, the current P1-P10/Trii/Chetiri crosswalk.
+1. `00_START_HERE.md`
+2. `01_WORKER_RETURN_ACCEPTANCE_AND_PROVENANCE.md`
+3. `02A_IDENTITY_AUTHORITY_AND_EPISTEMIC_GRAIN.md`
+4. `02B_PERSON_WORLD_AND_ANALYTICAL_CAPABILITIES.md`
+5. `02C_WHOLE_MACHINE_INFORMATION_CONSERVATION.md`
+6. `03_CROSS_WORKER_COLLISIONS_AND_RECONCILIATION.md`
+7. `04_MASTER_MISSING_RESOURCE_AND_PROOF_QUEUE.csv`
+8. `05_CURRENT_CAMPAIGN_CROSSWALK_R1.csv`
+9. `05_CURRENT_CAMPAIGN_CROSSWALK_R1.md`
+10. `06_HQ_NEXT_DAG_AND_COMPLETION_CRITERIA.md`
+11. the six original worker returns at the exact worker-tip commits above when source-level detail is required;
+12. current banked P1-P10/Trii/Chetiri authorities before any later comparison is called current.
+
+## Resume protocol
+
+A successor Vozhd shall:
+
+1. re-query `agent/rawlsing-conservation-hq-integration` and the six worker branches rather than assuming these recorded tips are still current;
+2. re-query `agent/vozhd-to-vozhdy-inheritance-integration-r1` before consuming P10 state;
+3. re-query the live Trii/Chetiri control branches before issuing any current-coverage conclusion;
+4. continue from `06_HQ_NEXT_DAG_AND_COMPLETION_CRITERIA.md`;
+5. preserve all uncertainty/currentness classes rather than flattening old findings into current truth;
+6. never use a missing filename as proof of missing function or a newer file as proof of current authority.
 
 ## Anti-sprawl law
 
