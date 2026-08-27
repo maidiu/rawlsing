@@ -7,8 +7,8 @@
     },
     "REGISTER_B": {
       "expected_sha256": "15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b",
-      "observed_sha256": null,
-      "status": "MISSING_EXACT_BYTES"
+      "observed_sha256": "15f7b5613b7cb106c2d2db233925891d5392917b66eee19c1a5eff8e0655585b",
+      "status": "MATCH"
     },
     "D62": {
       "expected_sha256": "d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011",
@@ -21,13 +21,17 @@
       "status": "MATCH"
     }
   },
-  "excluded_candidate": {
-    "sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
-    "disposition": "REGISTER_C__NOT_USED_AS_REGISTER_B"
+  "rows": {
+    "REGISTER_A": 18792,
+    "REGISTER_B": 18792,
+    "D62": 28983,
+    "V525B": 6211
   },
-  "denominator_derivation": "Exact Register A mapped directly to exact d62; Register B not used to derive 2148/879/92.",
-  "live_heads": {
-    "coordination": "7d541c83fb278271501caef6938ac7b9802ae553",
-    "trii": "04a0109aa170c6041b199e5c6130a39a8e0f6029"
-  }
+  "denominators": {
+    "changed_semantic_rows": 2148,
+    "final_driver_id_transitions": 879,
+    "singleton_deltas": 92
+  },
+  "register_b_crosscheck": "2148 changed rows and exact d62 last-row semantic projection reproduced",
+  "result": "ALL_REQUIRED_INPUT_BYTES_VERIFIED"
 }
