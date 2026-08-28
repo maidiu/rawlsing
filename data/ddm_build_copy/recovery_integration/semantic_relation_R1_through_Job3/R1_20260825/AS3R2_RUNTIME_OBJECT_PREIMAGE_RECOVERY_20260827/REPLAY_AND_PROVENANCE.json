@@ -1,0 +1,57 @@
+{
+  "schema":"rawlsing.as3r2.runtime_object_preimage_recovery.replay_and_provenance",
+  "schema_version":1,
+  "status":"FAIL_CLOSED",
+  "blocker":"AS3R2-B01__AUTHORITATIVE_RUNTIME_OBJECT_PRODUCER_UNREACHABLE_AND_CANONICAL_PREIMAGES_UNSERIALIZED",
+  "authoritative_refs":{
+    "as3r2":"aae978928d2416c23d6b1562e7ac559b106b2cf7",
+    "as3":"da36f2457513acf2ce734f3509236ef6d2dceec5",
+    "as3r1":"601e756976c281f522bb58b1827080df7674dc9c",
+    "as4i0_fail":"3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "runtime_schema_intro":"b349b6979949aee82a2bfa23226f78fd558daffe"
+  },
+  "accepted_serialized_sources":[
+    {"ref":"da36f2457513acf2ce734f3509236ef6d2dceec5","path":"data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3_CHETIRI_COMMON_MANIFEST_FREEZE_20260827/04_PREDICATE_ATOM_CATALOG.csv","finding":"AS3 atom semantics and AS3 identities; not complete EmpiricalPredicate canonical projections"},
+    {"ref":"da36f2457513acf2ce734f3509236ef6d2dceec5","path":"data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3_CHETIRI_COMMON_MANIFEST_FREEZE_20260827/05_QUERY_TEMPLATE_CATALOG.csv","finding":"AS3 query-template semantics and AS3 identities; not complete EmpiricalQuerySpec canonical projections"},
+    {"ref":"aae978928d2416c23d6b1562e7ac559b106b2cf7","path":"data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3R2_CHETIRI_FINAL_MANIFEST_SEAL_20260827/04_RUNTIME_CATALOG_BINDING_MANIFEST.json","finding":"exact 19+3 AS3-to-runtime identity binding; runtime refs only"},
+    {"ref":"aae978928d2416c23d6b1562e7ac559b106b2cf7","path":"data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3R2_CHETIRI_FINAL_MANIFEST_SEAL_20260827/05_FINAL_DISCOVERY_AUTHORITY.json","finding":"final frozen authority/frontier consumes refs; does not serialize the 22 runtime object preimages"}
+  ],
+  "runtime_identity_law":{
+    "ref":"da36f2457513acf2ce734f3509236ef6d2dceec5",
+    "path":"rawlsing_next/pre553_empirical_objects.py",
+    "canonical_projection_fields":["schema_id","schema_version","typed_state","authority_snapshot_refs","dependency_refs","producer_replay_locator_or_reference_root","semantic_fields"],
+    "normalization":"authority_snapshot_refs and dependency_refs canonicalized to sorted unique exact refs; family set-like semantic fields canonicalized; semantic projection hashed by semantic_hash/canonical JSON",
+    "object_id_rule":"urn:rawlsing:pre553:<family_name>:sha256:<semantic_hash>",
+    "predicate_required_semantic_fields":["predicate_ast","predicate_hash","grammar_authority_ref","coordinate_question_value_refs","risk_set_refs","scope_refs","same_respondent_binding_semantics","operator_semantics_refs"],
+    "query_required_semantic_fields":["target_refs","target_arity_and_topology","condition_predicate_ref","risk_set_ref","empirical_universe_refs","scope_refs","measure_basis_ref","requested_output_grain","query_authority_refs"]
+  },
+  "recorded_runtime_construction_lineage":{
+    "producer_commit":"b0ed3d1509421011816f5ac694f9d1ec875c5bf5",
+    "producer_path":"rawlsing_next/pre553_late_run_evidence.py",
+    "producer_file_sha256":"17852eb0e8369550f629375e0fcc03053dfe77b2ae4faa1728cf4cf8e1c019fb",
+    "recovery_result":"UNREACHABLE_OR_UNRESOLVABLE_IN_CURRENT_REPOSITORY_GRAPH",
+    "path_at_accepted_as3_as3r1_as3r2_heads":"ABSENT",
+    "exact_file_sha_search_result":"NO_REACHABLE_MATCH_RECOVERED"
+  },
+  "reachable_lineage_findings":{
+    "pre553_discovery_exact.py":"verifies exact identity of already-instantiated EmpiricalPredicate/EmpiricalQuerySpec inputs and consumes them; it does not construct the frozen 22 canonical preimages",
+    "as3r1":"preserves frozen 19/3 counts and aggregate hashes and addresses the I05 support-rule field; it does not serialize the 22 canonical runtime projections",
+    "tests_and_fixtures":"not promoted to authority; no test/fixture was found that was proven byte/identity-equivalent to the missing production construction"
+  },
+  "unproved_identity_material":[
+    "exact typed_state per object",
+    "exact canonical authority_snapshot_refs per object",
+    "exact canonical dependency_refs per object",
+    "exact producer_replay_locator_or_reference_root per object",
+    "complete normalized family semantic_fields per object"
+  ],
+  "deterministic_reconstruction_procedure":null,
+  "serialized_canonical_representation":null,
+  "canonical_preimages_recovered":0,
+  "candidate_execution_performed":false,
+  "LiTS_I_run":false,
+  "semantic_fields_modified":false,
+  "as3r2_authority_modified":false,
+  "as4i0_branch_modified":false,
+  "conclusion":"Hash targets plus partial AS3 semantics do not prove constructor preimages. Any completion would be semantic manufacture or hash-preimage guessing. Recovery therefore fails closed."
+}
