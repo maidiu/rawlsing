@@ -1,0 +1,26 @@
+{
+  "schema": "B09_COMMITTED_CONTENT_VALIDATION_RECEIPT_R1",
+  "status": "PASS_CONNECTOR_NATIVE_EXACT_CONTENT_ASSERTIONS",
+  "validated_commit": "9ce0af18297ea83670a86f1a1eb2f03bd7aa8bf7",
+  "validated_blobs": {
+    "positive_configuration_member_ledger": "a7a1ccbfdb1e8c8a90b1e97f674c131ae7f5858a",
+    "denominator_dependency_ledger": "34eb33b499c44d61e22c5e0bbdfd1d25d3009f7e"
+  },
+  "assertions": {
+    "exact_positive_member_count_5": true,
+    "south_asia_exact_member_order_c13f_c13h": true,
+    "lits_exact_member_order_q301_1_q301_8_q301_11": true,
+    "every_positive_product_variant_blocked_on_routing_member_applicability": true,
+    "exact_dependency_ids_B09_D01_through_B09_D10": true,
+    "raw_first_frontier_2499_structures_15990_memberships_preserved_fail_closed": true,
+    "archive08_quarantined_non_authoritative": true
+  },
+  "implemented_validator": "06_validate_b09_v550j_authority.py",
+  "implemented_pytest": "07_test_b09_v550j_authority.py",
+  "local_python_pytest_execution_claimed": false,
+  "local_python_pytest_execution_note": "No materialized repository/runtime process is available in the connected GitHub worker. Exact assertions above were executed directly against the committed Git blob contents; no synthetic respondent execution is substituted.",
+  "representative_v550j_execution_claimed": false,
+  "representative_v550j_execution_note": "No live respondent runtime is exposed here and Authority43 leaves product routing/member-applicability gated from B09. Existing Section85 bounded execution authority is preserved but not relabeled as a fresh B09 run.",
+  "stale_receipt_promoted": false,
+  "product_complete_authority": false
+}
