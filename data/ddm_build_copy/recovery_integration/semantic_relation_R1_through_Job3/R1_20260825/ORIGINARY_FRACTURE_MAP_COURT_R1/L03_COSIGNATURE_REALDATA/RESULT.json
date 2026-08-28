@@ -1,0 +1,39 @@
+{
+  "status": "L03_BRANCH_COSIGNATURE_REALDATA_R1_COMPLETE",
+  "success_token": "L03_BRANCH_COSIGNATURE_REALDATA_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-fracturemap-l03-cosignature-realdata-r1",
+  "verified_start_head": "ea40d252401f789982d2b94dab26fefbba5042cb",
+  "scope": "sibling-blind documentary plus exact real-data court; no production mutation; no architecture ranking",
+  "holding": "BRANCH_CONDITIONED_SAME_RESPONDENT_COSIGNATURE_REALDATA_PROVED__PAIRWISE_ONLY_NOT_INFORMATION_EQUIVALENT__PREDICTORS_REMAIN_NON_ATTITUDE",
+  "fallback_NO_REALDATA_CASE_PROVED": false,
+  "source": {
+    "sav": {"name":"ArabBarometer_WaveVIII_English_v3.sav","library_file_id":"file_00000000e4a8722f9131ea801a527554","sha256":"a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998","size_bytes":12275728},
+    "codebook": {"name":"Arab Barometer Wave 8 codebook.csv","library_file_id":"file_00000000102c71fbbd6a569011ead989","sha256":"328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc"},
+    "questionnaire": {"name":"ENG-Arab-Barometer-Wave-VIII-Questionnaire-RELEASE-FIN-NOV-2024-1.pdf","library_file_id":"file_00000000682c722f9ea8eb2e8830e790","sha256":"d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb"}
+  },
+  "decode_integrity": {"layout_code":2,"nominal_case_size":692,"compression":1,"declared_cases":15627,"decoded_cases":15627,"bias":100.0,"data_offset":176848,"retained_numeric_variables":688,"decoder_final_offset":12275728,"source_size_bytes":12275728},
+  "universe": {"country":"Lebanon","country_code":10,"n":2403,"unique_ids":2403,"sorted_id_sha256":"a6eddf236aa11073caa813a79a92a02fa74068c85176afc03f495e3be6735e7a"},
+  "branch": {"predicate":"COUNTRY==10 AND Q873_1==1","semantic":"respondent selected socioeconomic class as one perceived basis of discrimination; Q873 is multi-select","n":1334,"raw_share":0.5551394090719933,"sorted_id_sha256":"ee6d4b46cdfc6dbcab7acc3673231517283fed65aabdbf9bfa2e43b6c65f3d50"},
+  "complement": {"predicate":"COUNTRY==10 AND Q873_1==0","n":1069,"sorted_id_sha256":"cc0ca1d852d94445130843bb3d18bc3f03ff211795b35d76fc3b800b29c92184"},
+  "bounded_marginal_screen": {
+    "question_count": 9,
+    "provided_WT_used_for_descriptive_marginals_only": true,
+    "branch_vs_complement_weighted_tv": {"Q885":0.1980292254094118,"Q605":0.13851444521628348,"Q533_4":0.11493772037702338,"Q511":0.11368717748103599,"Q601_3":0.11166313821544332,"Q512":0.1086860129105396,"Q601_4":0.10015890888697201,"Q606_2":0.09280406907196967,"Q606_4":0.08511904599753697}
+  },
+  "branch_specific_pair": {
+    "variables":["Q606_4","Q867B"],"measure":"raw complete-case Cramer's V",
+    "branch":{"n":1208,"cramers_v":0.17683543166138382},"overall":{"n":2181,"cramers_v":0.11664040376167224},"complement":{"n":973,"cramers_v":0.054349840672116234}
+  },
+  "higher_order_pairwise_loss": {
+    "variables":["Q201A_3","Q606_2","Q606_8"],
+    "model":"maximum-entropy/no-three-way table matching all three observed pairwise margins by IPF",
+    "branch":{"n":1265,"max_pairwise_margin_error":4.547473508864641e-13,"joint_tv_observed_vs_pairwise_maxent":0.08395055830683337,"g2":87.32678818699358,"df":27,"p_value_diagnostic":2.7984229934402097e-08},
+    "complement":{"n":1004,"max_pairwise_margin_error":1.7053025658242404e-13,"joint_tv_observed_vs_pairwise_maxent":0.04403338817639841,"g2":29.901475377432007,"df":27,"p_value_diagnostic":0.31859890562524396},
+    "information_holding":"all pairwise margins can be reproduced essentially exactly while the observed three-way joint remains non-identical"
+  },
+  "analysis_script": {"name":"run_l03_cosignature_realdata.py","sha256":"4887d3f9405f1d3b0a69a14a6d6a64ce084b2158a738fe6fe4a2f7a6d03432fd"},
+  "minimum_semantic_capability": "exact same-respondent incidence or positively proved information-equivalent carrier sufficient to replay authorized branch-conditioned pair/k-way joints with exact denominators, source identity, branch predicate, response semantics, weight authority, typed negatives and provenance",
+  "negative_ceiling": ["no causation","no actor belief/personality/ideology inference","Q873_1 branch membership is not socioeconomic class itself","demographic predictors remain outside attitude-node ontology","no universal significance threshold","no architecture ranking","no production mutation"],
+  "required_outputs_complete": true
+}
