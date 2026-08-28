@@ -1,0 +1,71 @@
+{
+  "schema": "AS3R3_NODE5A_IDENTITY_CARDINALITY_COURT_R1_RESULT@1.0.0",
+  "status": "COMPLETE__DISPOSITION_A__19_ROLES_18_CANONICAL_PREDICATES",
+  "disposition": "A",
+  "starting_branch": "agent/verkhovod-as3r3-node5a-identity-cardinality-court-r1",
+  "starting_head": "3b58ccb5d77f16de8447c421cc55543e736a1e0d",
+  "holding": {
+    "predicate_source_role_count": 19,
+    "source_to_successor_mapping_row_count": 19,
+    "distinct_canonical_successor_predicate_count": 18,
+    "canonical_alias_classes": [["A000", "A1RAPP"]],
+    "alias_law": "ROLE_ALIASING_WITHOUT_ROLE_ERASURE",
+    "canonical_identity_law": "IDENTICAL_CANONICAL_PROJECTION_REQUIRES_IDENTICAL_EXACTREF",
+    "source_identity_injection_forbidden": true,
+    "old_as3r2_hash_inequality_is_not_successor_semantic_evidence": true
+  },
+  "semantic_holding": {
+    "A000_role": "BASELINE_RISK_COHORT role over exact frozen common q301 risk cohort",
+    "A1RAPP_role": "q301_2 ELIGIBLE_APPLICABLE routing-applicability atom role",
+    "accepted_node4a_runtime_realization_for_both": "q301_2 ELIGIBLE_APPLICABLE routing leaf",
+    "canonical_predicate_semantics_distinct": false,
+    "source_or_candidate_roles_distinct": true,
+    "role_retirement_authorized": false
+  },
+  "historical_as3r2": {
+    "A000_old_runtime_ref_hash": "695187f3287129924ce997cfe55abec38cf1dd7f75b78af3b41bf7bcc632670f",
+    "A1RAPP_old_runtime_ref_hash": "917aa220d1b7f5c24c3c4977806ef4b470b501f3223cc3cfe71425c8aa4b4d8a",
+    "status": "PRESERVED_SUPERSEDED_NON_REPLAYABLE_CANONICAL_PREIMAGE_UNRECOVERED",
+    "court_effect": "distinct historical hashes do not authorize a successor semantic discriminator"
+  },
+  "count_law": {
+    "as3_predicate_catalog": "19 frozen semantic source/role rows",
+    "node4a_predicate_inputs": "19 complete frozen input records",
+    "node5a_constructor_invocations": 19,
+    "node5a_role_to_ref_rows": 19,
+    "node5a_distinct_predicate_objects": 18,
+    "succession_crosswalk_rows_total": 22,
+    "succession_crosswalk_successor_ref_uniqueness_required": false,
+    "query_cardinality": "not adjudicated in this court"
+  },
+  "terrain": {
+    "candidate_count": 82,
+    "candidate_semantics_modified": false,
+    "candidate_identity_modified": false,
+    "A_B_C_fairness_modified": false,
+    "route_specific_change": false
+  },
+  "downstream": {
+    "node4b_query_binding_rule": "resolve AS3 predicate source/role ID through the 19-row role-to-successor-ref map",
+    "node5a_replay_rule": "reproduce 19/19 role mappings and exactly 18 distinct predicate refs with sole alias A000/A1RAPP",
+    "runtime_catalog_rule": "serialize each canonical predicate object once and preserve separate 19-row role/source crosswalk",
+    "hostile_oracle_rule": "keep 19-source-role membership check; do not equate it to 19 unique successor predicate refs",
+    "as4i0_loader_rule": "validate 19 predicate role mappings plus 18 distinct canonical predicate representations"
+  },
+  "prohibitions_observed": {
+    "queries_minted": 0,
+    "discovery_authority_or_frontier_created": 0,
+    "lits_i_runs": 0,
+    "i05_candidate_executions": 0,
+    "c05r2b_runs": 0,
+    "producer_or_schema_mutations": 0,
+    "as3r2_mutations": 0,
+    "as4i0_mutations": 0,
+    "A_B_C_architecture_changes": 0,
+    "source_id_identity_injection": 0,
+    "mx01_r2_findings_consumed": 0,
+    "mx02_r2_findings_consumed": 0
+  },
+  "required_hq_next_action": "adopt bounded count-law correction before resuming Node5A/Node4B; no semantic or producer change required",
+  "return_token": "AS3R3_NODE5A_IDENTITY_CARDINALITY_COURT_R1_COMPLETE"
+}

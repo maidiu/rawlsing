@@ -1,0 +1,17 @@
+dimension,A000,A1RAPP,identity_bearing_in_successor_predicate,court_holding
+AS3 source id,A000,A1RAPP,NO,distinct preserved source/role identities
+AS3 source kind,BASELINE_RISK_COHORT,ROUTING_APPLICABILITY_STATE,NO as source wrapper; role remains externally preserved,role-distinct
+AS3 source semantic,all 29002 selected respondents in exact q301 bounded risk set,q301_2 ELIGIBLE_APPLICABLE,mechanically mapped by accepted Node4A,different description; same accepted executable predicate
+candidate role,baseline_atom_id / baseline cohort,atom or condition role,NO,both roles remain independently addressable
+Node4A predicate leaf type,ROUTING_APPLICABILITY_STATE,ROUTING_APPLICABILITY_STATE,YES,identical
+Node4A question ref hash,d827e1c0a4363a7f45430a717bb5fd809f85be5d72e0ef9b339942f0418a7f83,d827e1c0a4363a7f45430a717bb5fd809f85be5d72e0ef9b339942f0418a7f83,YES,identical q301_2 ref
+routing/applicability state,ELIGIBLE_APPLICABLE,ELIGIBLE_APPLICABLE,YES,identical
+operator semantics hash,d5ac8b41c204360ac27f97a83d90e0922111d691d8e0709a31e07d94f4ea6156,d5ac8b41c204360ac27f97a83d90e0922111d691d8e0709a31e07d94f4ea6156,YES,identical exact-state operator
+risk/source scope,common frozen q301 risk/source scope,common frozen q301 risk/source scope,YES,identical
+same-respondent law,EXACT_SAME_RESPONDENT_ONLY,EXACT_SAME_RESPONDENT_ONLY,YES,identical
+authority ref count,7,7,YES,identical closure count; Node5A proves full projection equality
+dependency ref count,8,8,YES,identical closure count; Node5A proves full projection equality
+producer replay root,frozen AS3R3 producer cfc240aa...,frozen AS3R3 producer cfc240aa...,YES,identical
+old AS3R2 runtime hash,695187f3287129924ce997cfe55abec38cf1dd7f75b78af3b41bf7bcc632670f,917aa220d1b7f5c24c3c4977806ef4b470b501f3223cc3cfe71425c8aa4b4d8a,NO for successor construction,historically distinct but preimages unrecovered
+Node5A successor canonical projection,IDENTICAL,IDENTICAL,YES,same canonical predicate ExactRef
+final disposition,ROLE ALIAS TO SHARED CANONICAL PREDICATE,ROLE ALIAS TO SHARED CANONICAL PREDICATE,N/A,Disposition A: 19 roles / 18 canonical predicates
