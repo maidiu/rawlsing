@@ -1,0 +1,67 @@
+{
+  "schema": "RAWLSING_A02_Z05_CURRENT_LINE_NATIVE_ADMISSION_RETURN",
+  "schema_version": "1.0.0",
+  "status": "ADMITTED",
+  "terminal_token": "A02_Z05_CURRENT_LINE_VERTICAL_PROOF_ADMITTED_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-a02-z05-native-admission-r1",
+  "verified_starting_head": "54a21b52ce8ad7f6233a31a085b538be8e4a880a",
+  "governing_authority": {
+    "name": "AUTHORITY 41 — ZERO-LOSS REPAIR WAVE R1 RETURN JOIN + FINAL CLOSURE WAVE",
+    "blob_sha": "59f28b73440bd27a8e5210d33f959b85ad3c7aca"
+  },
+  "authorized_z05_final": "c05a2d7a762cc639ec6499eaa479685cfbaecac8",
+  "tested_current_line_commit": "53d91d2950520cfe45f543ca80b4ab98ef0687b0",
+  "admitted_harness": {
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_ZERO_LOSS_REPAIR_WAVE_R1/Z05_VERTICAL_LINEAGE_INVALIDATION/run_z05_vertical_proof.py",
+    "blob_sha": "dc70e124686d793f6ba6fa7163372e77e48c64d8",
+    "byte_exact_from_z05": true
+  },
+  "native_test": {
+    "path": "rawlsing_next/tests/test_z05_vertical_lineage_native_admission.py",
+    "blob_sha": "c6b8565b1fdd10d2e8fc3f857f5b01ff28199098"
+  },
+  "current_line_receipt": {
+    "workflow_run_id": 33208296432,
+    "job_id": 98974915716,
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "passed": 94,
+    "failed": 0,
+    "duration_seconds": 0.49,
+    "executed_files": [
+      "rawlsing_next/tests/test_z05_vertical_lineage_native_admission.py",
+      "rawlsing_next/tests/test_pre553_c11_repository_ingest.py",
+      "rawlsing_next/tests/test_pre553_empirical_objects_authority.py",
+      "rawlsing_next/tests/test_pre553_replay_audit.py"
+    ]
+  },
+  "reproduced_z05_pins": {
+    "graph_hash": "69417e48cf33de159c8e2cf3a56917dc3afff0c7b6a29ad1b3afdbe5a90abc6b",
+    "explanation_hash": "da73c482b22ca097066318785f85d2c3ac3d04f2a5b7b097604a7ee93682fbf4",
+    "terminal_hash": "f10a47a8eee765b9c43a86d4479123e0001e1e1ac2e7c7371e3b0a075f427af4",
+    "mutation_receipt_hash": "e7f1ac10dd0aee6ab2860927a7845c5dae29afbe6491f4ecfb10a33bef646ce9",
+    "restart_receipt_hash": "ac03f7b77b4f290e9611edd8fdbf70018bbd745672bdcca783bd3cb1b2e90403",
+    "hostile_receipt_hash": "771f529c975e9f0cb7812f4002b9d95c5f5340bc2e6b7c83b1953363ffd81584"
+  },
+  "proved_current_line": [
+    "REPRESENTATIVE_SOURCE_TO_TERMINAL_REVERSE_LINEAGE",
+    "PRODUCER_CONSUMER_AUTHORITY_ROLE_ORDER_CARDINALITY_MULTIPLICITY",
+    "SELECTIVE_DETERMINANT_INVALIDATION",
+    "UNRELATED_IDENTITY_STABILITY",
+    "DESTRUCTIVE_CACHELESS_REBUILD",
+    "RELAYOUT_MATERIALIZATION_IDENTITY_PARITY",
+    "INTERRUPTED_STAGE_PROMOTE_CURRENT_ROOT_RECOVERY",
+    "STALE_CORRUPT_INCOMPLETE_FAIL_CLOSED"
+  ],
+  "production_runtime_code_modified": false,
+  "sibling_returns_consumed": [],
+  "negative_ceiling": [
+    "NO_PRODUCT_WIDE_SOURCE_COVERAGE",
+    "NO_NEW_EMPIRICAL_OR_STRUCTURAL_AUTHORITY",
+    "NO_MX04_ARCHITECTURE_RANKING",
+    "NO_MX05_C09_RANKING",
+    "NO_AB_C_SELECTION",
+    "NO_V3_WORK"
+  ]
+}

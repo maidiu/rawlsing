@@ -1,0 +1,74 @@
+A02 — Z05 CURRENT-LINE VERTICAL PROOF ADMISSION R1
+TEST RECEIPT
+
+STATUS
+ADMITTED
+
+TESTED CURRENT-LINE COMMIT
+53d91d2950520cfe45f543ca80b4ab98ef0687b0
+
+HOSTED EXECUTION
+workflow_run_id=33208296432
+job_id=98974915716
+python=3.12.14
+pytest=9.1.1
+
+COMMAND
+python -m pytest -q   rawlsing_next/tests/test_z05_vertical_lineage_native_admission.py   rawlsing_next/tests/test_pre553_c11_repository_ingest.py   rawlsing_next/tests/test_pre553_empirical_objects_authority.py   rawlsing_next/tests/test_pre553_replay_audit.py
+
+RESULT
+94 passed in 0.49s
+0 failed
+
+CURRENT-LINE NATIVE ADMISSION COVERAGE
+PASS representative source->terminal reverse lineage
+PASS producer/consumer authority roles
+PASS edge order/cardinality/multiplicity
+PASS selective v555 determinant invalidation
+PASS exact transitive descendant recompute
+PASS unrelated identity stability
+PASS destructive cache/materialization rebuild
+PASS relayout/materialization identity parity
+PASS interrupted stage/promote/current-root recovery
+PASS completed promotion to new current generation
+PASS stale/corrupt generation fail-closed
+PASS corrupt/mixed current-pointer fail-closed
+PASS incomplete critical lineage fail-closed
+PASS producer-role drift fail-closed
+PASS exact Z05 graph/explanation/terminal identity parity
+PASS current C11 repository-ingest regressions
+PASS current empirical-object/authority regressions
+PASS current replay-audit regressions
+
+REPRODUCED EXACT Z05 PINS
+graph=69417e48cf33de159c8e2cf3a56917dc3afff0c7b6a29ad1b3afdbe5a90abc6b
+explanation=da73c482b22ca097066318785f85d2c3ac3d04f2a5b7b097604a7ee93682fbf4
+terminal=f10a47a8eee765b9c43a86d4479123e0001e1e1ac2e7c7371e3b0a075f427af4
+mutation=e7f1ac10dd0aee6ab2860927a7845c5dae29afbe6491f4ecfb10a33bef646ce9
+restart=ac03f7b77b4f290e9611edd8fdbf70018bbd745672bdcca783bd3cb1b2e90403
+hostile=771f529c975e9f0cb7812f4002b9d95c5f5340bc2e6b7c83b1953363ffd81584
+
+EXACT ADMITTED Z05 HARNESS BLOB
+dc70e124686d793f6ba6fa7163372e77e48c64d8
+
+NATIVE ADMISSION TEST BLOB
+c6b8565b1fdd10d2e8fc3f857f5b01ff28199098
+
+NEGATIVE CEILING
+Representative bounded proof only.
+No product-wide source coverage.
+No new empirical/structural authority.
+No physical persistence architecture ranking.
+No MX04.
+No MX05/C09.
+No A/B/C selection.
+No V3 work.
+
+SIBLING BLINDNESS
+No A01/A03-A10 sibling return consumed.
+
+FINAL DISPOSITION
+Z05_CURRENT_LINE_VERTICAL_PROOF=ADMITTED
+
+TERMINAL
+A02_Z05_CURRENT_LINE_VERTICAL_PROOF_ADMITTED_R1_COMPLETE
