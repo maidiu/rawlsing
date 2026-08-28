@@ -1,0 +1,102 @@
+{
+  "receipt_id": "MX02_R2_HOSTILE_COMPONENT_VECTOR_TEST_RECEIPT@1.0.0",
+  "status": "PASS__COMMON_RECEIPT_HOSTILE_ORACLE_CLOSED",
+  "starting_head": "d8d092bf52df0976d9bbfc76aa7d4b65638fbd21",
+  "production_contract": "rawlsing_next/pre553_component_authority_vector.py",
+  "production_blob_sha": "7c5993540e3dcfde5110f882fd1e26a298f47ac6",
+  "test_path": "rawlsing_next/tests/test_pre553_component_authority_vector.py",
+  "test_blob_sha": "919e77a024c486acb7b63fb976417e253828c050",
+  "binding_oracle": "SCALARIZE iff COMPLETE_COVERAGE && ALL_GOVERNED_COMPONENTS_NONEMPTY && UNANIMOUS_AUTHORITATIVE_VALUE",
+  "execution": {
+    "receipt_semantic_execution": "PASS",
+    "fresh_subprocess_reload_execution": "PASS",
+    "semantic_execution_basis": "isolated Python execution of the exact committed receipt module source with exact-ref/authority/canonical-hash primitives matching the inspected PRE553 implementations",
+    "repository_ci_runner_available": false,
+    "m4_carrier_authority": "Authority33 H33-02 adopts R1 proof that current M4/V557/V558 carrier machinery is sufficient",
+    "m4_integration_evidence": "committed executable integration test + exact current M4 contract inspection; not mislabeled as CI execution"
+  },
+  "cases": [
+    {
+      "case_id": "HETEROGENEOUS_COMPLETE",
+      "status": "PASS",
+      "object_id": "urn:rawlsing:pre553:ComponentAuthorityVectorReceipt:sha256:7c03237cf473d242f1816ea01b18b8e28f12113809675ea83777dce172fa00da",
+      "content_hash": "7c03237cf473d242f1816ea01b18b8e28f12113809675ea83777dce172fa00da",
+      "coverage_proof_hash": "82dd4010618f3c9edc5c9b1f8e3fa8e85bb50bca441f6f360a189e5afc159d57",
+      "nonempty_proof_hash": "0e86a91651f8d2a82f800725be753580802b96e0e89779ece7b9dcb3a8a782c9",
+      "unanimity_proof_hash": "869ba219dcda394030b93e9f8ebf92b0e1522eabbcd50085b9a05f29cb74b9a0",
+      "disposition": "VECTOR_HETEROGENEOUS_COMPLETE",
+      "scalar_value_digest": null,
+      "producer_families": ["V551J", "V552"]
+    },
+    {
+      "case_id": "INCOMPLETE_COVERAGE",
+      "status": "PASS",
+      "object_id": "urn:rawlsing:pre553:ComponentAuthorityVectorReceipt:sha256:7f13a4b44b879c97ed54a7cd590fbaca94722721b39b194840676fec3754c187",
+      "content_hash": "7f13a4b44b879c97ed54a7cd590fbaca94722721b39b194840676fec3754c187",
+      "coverage_proof_hash": "e939ff96931060ffe1ae980209b54edb21fdc4335d86a76045f2a3d551a255d8",
+      "disposition": "VECTOR_INCOMPLETE_COVERAGE",
+      "scalar_value_digest": null,
+      "missing_component_ids": ["c2"]
+    },
+    {
+      "case_id": "GOVERNED_EMPTY_COMPONENT",
+      "status": "PASS",
+      "object_id": "urn:rawlsing:pre553:ComponentAuthorityVectorReceipt:sha256:9329dfa0af69babcf8492f1afca03d37aaf9d3016f47060b36d8af6f39bce9bd",
+      "content_hash": "9329dfa0af69babcf8492f1afca03d37aaf9d3016f47060b36d8af6f39bce9bd",
+      "coverage_proof_hash": "a3572dcf722002dbfd955273d4bad2f97dd63f0f9b37ebfd75c0bd94ce002229",
+      "disposition": "VECTOR_GOVERNED_EMPTY_COMPONENT",
+      "scalar_value_digest": null,
+      "governed_empty_component_ids": ["c2"]
+    },
+    {
+      "case_id": "DENIED_COMPONENT",
+      "status": "PASS",
+      "object_id": "urn:rawlsing:pre553:ComponentAuthorityVectorReceipt:sha256:1b9e0abc5fceca236dab3c0e2d977ac7c4e45ae2dd65dcfec421121bf59b55a7",
+      "content_hash": "1b9e0abc5fceca236dab3c0e2d977ac7c4e45ae2dd65dcfec421121bf59b55a7",
+      "disposition": "VECTOR_DENIED_OR_NONCOMPARABLE_COMPONENT",
+      "scalar_value_digest": null,
+      "negative_ref_preserved": true
+    },
+    {
+      "case_id": "NONCOMPARABLE_COMPONENT",
+      "status": "PASS",
+      "object_id": "urn:rawlsing:pre553:ComponentAuthorityVectorReceipt:sha256:de45a3cc07461e78b29462b573df9c1c784f6656d4fc02592601c6cf25785fbf",
+      "content_hash": "de45a3cc07461e78b29462b573df9c1c784f6656d4fc02592601c6cf25785fbf",
+      "disposition": "VECTOR_DENIED_OR_NONCOMPARABLE_COMPONENT",
+      "scalar_value_digest": null,
+      "negative_ref_preserved": true
+    },
+    {
+      "case_id": "UNANIMOUS_COMPLETE_NONEMPTY",
+      "status": "PASS",
+      "object_id": "urn:rawlsing:pre553:ComponentAuthorityVectorReceipt:sha256:009ba8ab535f15a003c3a43c73c69a2e0f5484afbe978734b96065a9a47574ee",
+      "content_hash": "009ba8ab535f15a003c3a43c73c69a2e0f5484afbe978734b96065a9a47574ee",
+      "coverage_proof_hash": "82dd4010618f3c9edc5c9b1f8e3fa8e85bb50bca441f6f360a189e5afc159d57",
+      "nonempty_proof_hash": "0e86a91651f8d2a82f800725be753580802b96e0e89779ece7b9dcb3a8a782c9",
+      "unanimity_proof_hash": "9e84859b8945055a67249e7e946e2b825b1b792d6cd1440ee1b1b1c4b4b732f0",
+      "disposition": "SCALARIZED_COMPLETE_UNANIMOUS_NONEMPTY",
+      "scalar_value_digest": "3999cc1b6cab17ab589858c55ada3429f7555beb6fdbf7a4a8f54a79934aebf8",
+      "vector_retained": true
+    },
+    {
+      "case_id": "MIXED_PRODUCER_PUBLICATION_RELOAD",
+      "status": "PASS__ADOPTED_M4_CARRIER_LAW_PLUS_EXACT_INTEGRATION_TEST",
+      "receipt_producer_family": "PRE553_COMMON",
+      "component_producer_families": ["V551J", "V552"],
+      "receipt_spoofed_as_v554_v555_v556": false,
+      "role_order_cardinality_multiplicity_edges_asserted": true,
+      "permission_monotonicity_asserted": true,
+      "exact_external_hash_resolution_asserted": true,
+      "negative_ceiling": "No claim of repository CI execution; M4 carrier sufficiency is inherited from Authority33 and bound to an executable exact-contract test."
+    }
+  ],
+  "forbidden_scalar_cases_with_nonnull_scalar": 0,
+  "semantic_gap_remaining": false,
+  "negative_ceiling": [
+    "no architecture selection",
+    "no component payload reownership",
+    "no V557 root widening",
+    "no A/B/C carrier claim",
+    "no V3 claim"
+  ]
+}
