@@ -1,0 +1,88 @@
+{
+  "schema": "C05R2B_LITS1_EXECUTION_PREFLIGHT@1.0.0",
+  "status": "READY_EXCEPT_AS3R3_SUCCESSOR_IDENTITIES_AND_POST_ADAPTATION_VALIDATION",
+  "source": {
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows": 29002,
+    "variables": 1198,
+    "physical_cells": 34744396,
+    "decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "encoding_authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+  },
+  "dependencies": {
+    "python": "3.11.3",
+    "pyreadstat": "1.3.2",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2",
+    "pyarrow": "22.0.0",
+    "duckdb": "1.5.2",
+    "parser_substitution": false
+  },
+  "as2b_c11": {
+    "governed_projection_hash": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "source_release_candidate_hash": "7f81a222ea2611638d7ce7ac55c695120b57323832e6dc17ff65c1992201659c",
+    "source_release_manifest_hash": "de8ca7761a05cbff544fb9b1d48aa1ebcd8ed9e3343b9c8552bf7fdfd13232cd",
+    "logical_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "repository_snapshot_hash": "ff8a49d2560fe3cf229f4d5a0f87a14c52d08086a74649968d8c9c9d0225aa77",
+    "replay_manifest_hash": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd"
+  },
+  "expected_completion": {
+    "candidate_count": 82,
+    "covered_candidate_count": 82,
+    "no_pruning": true,
+    "frontier_frozen_before_empirical_evaluation": true,
+    "candidate_addition_count": 0,
+    "candidate_deletion_count": 0,
+    "forbidden_complete_state": "UNEVALUATED",
+    "coverage_claim": "COMPLETE_FOR_EXACT_DECLARED_FRONTIER"
+  },
+  "terminal_coverage_states": [
+    "EVALUATED_SUPPORTED",
+    "EVALUATED_VALID_EMPTY",
+    "EVALUATED_UNDERPOWERED",
+    "EVALUATED_NONCOMPARABLE",
+    "EVALUATED_DENIED_BY_EXACT_AUTHORITY",
+    "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY"
+  ],
+  "process_replay": {
+    "clean_process_runs": 2,
+    "both_fresh": true,
+    "c11_replay_must_equal_as2b": true
+  },
+  "resource_receipts_required": [
+    "source_opens_high_level",
+    "source_opens_method",
+    "decoder_passes",
+    "decoder_call",
+    "persistent_transformed_empirical_payload_bytes"
+  ],
+  "route_b_receipts_required": [
+    "session_boundary",
+    "session_boundary_closed",
+    "retained_transformed_empirical_accelerator_count",
+    "persistent_transformed_empirical_payload_bytes",
+    "persistent_forbidden_survivors",
+    "no_hidden_transformed_persistence",
+    "delete_reconstruction.source_reopened",
+    "delete_reconstruction.authority_reloaded",
+    "delete_reconstruction.c11_reconstructed",
+    "delete_reconstruction.fresh_process_reconstruction"
+  ],
+  "demonstrated_as2b_environment": {
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "system_ram_bytes": 17179869184,
+    "peak_rss_bytes": 1983172608,
+    "minimum_observed_disk_free_bytes": 2162315264,
+    "note": "demonstrated successful baseline; not newly declared universal architecture threshold"
+  },
+  "execution_environment_requirements": [
+    "exact repository/authority artifacts available",
+    "exact LiTS-I source hash verified before decode",
+    "dependency versions pinned as above for continuity run unless separately revalidated",
+    "two fresh processes supported",
+    "artifact persistence supported",
+    "resource measurement supported",
+    "sufficient RAM/disk; do not run if host cannot exceed demonstrated AS2B envelope"
+  ],
+  "execution_authorization": false
+}

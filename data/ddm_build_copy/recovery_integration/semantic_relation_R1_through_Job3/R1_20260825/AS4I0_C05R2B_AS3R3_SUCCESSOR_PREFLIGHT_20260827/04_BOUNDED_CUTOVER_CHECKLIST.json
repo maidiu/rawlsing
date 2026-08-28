@@ -1,0 +1,97 @@
+{
+  "schema": "AS4I0_C05R2B_AS3R3_BOUNDED_CUTOVER_CHECKLIST@1.0.0",
+  "status": "BLOCKED_AWAITING_FINAL_SUCCESSOR_IDENTITIES",
+  "no_invented_future_values": true,
+  "required_before_any_lits1_i05_execution": [
+    {
+      "id": "S01",
+      "identity": "final AS3R3 successor package/seal exact commit or immutable replay root",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S02",
+      "identity": "19 successor EmpiricalPredicate ExactRefs plus canonical representations",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S03",
+      "identity": "3 successor EmpiricalQuerySpec ExactRefs plus canonical representations",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S04",
+      "identity": "successor predicate catalog aggregate hash",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S05",
+      "identity": "successor query catalog aggregate hash",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S06",
+      "identity": "successor combined runtime catalog/binding manifest ExactRef/hash",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S07",
+      "identity": "22-row old-AS3R2-to-new-AS3R3 succession crosswalk ExactRef/hash",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S08",
+      "identity": "semantic-terrain invariance receipt ExactRef/hash",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S09",
+      "identity": "fresh-process combined 22/22 successor replay seal ExactRef/hash",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S10",
+      "identity": "successor discovery-frontier AuthoritySnapshot ExactRef",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S11",
+      "identity": "successor discovery-frontier authority/adoption exact ref",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S12",
+      "identity": "successor DiscoveryAuthority ExactRef",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S13",
+      "identity": "successor official evaluated-frontier ExactRef",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S14",
+      "identity": "successor preexecution replay-closure ExactRef",
+      "value": "PENDING_AS3R3_FINAL_SUCCESSOR_PACKAGE"
+    },
+    {
+      "id": "S15",
+      "identity": "AS4I0 successor-adaptation commit and bounded revalidation PASS receipt",
+      "value": "PENDING_POST_AS3R3_CUTOVER"
+    },
+    {
+      "id": "S16",
+      "identity": "new Lane-02 successor oracle package/validator exact commit and hostile PASS receipt",
+      "value": "PENDING_POST_AS3R3_CUTOVER"
+    }
+  ],
+  "preserved_invariance_proofs_required": [
+    "candidate grammar remains 85d314d8222d96328b3e0449495ea3946d02cecaf3f2ccd3b249270a3fca2b66",
+    "candidate count=82 and exact semantic membership/order unchanged",
+    "support rule/minimum_raw_denominator unchanged",
+    "LiTS-I/AS2B C11/replay pins unchanged",
+    "Route-B source-backed session and persistence law unchanged",
+    "common I03 and typed-nonpositive I04 law unchanged"
+  ],
+  "authorization_rule": "ALL_S01_THROUGH_S16_POSITIVELY_GROUNDED_AND_INVARIANCE_PROOFS_PASS__THEN_C05R2B_MAY_BEGIN",
+  "currently_authorized": false
+}
