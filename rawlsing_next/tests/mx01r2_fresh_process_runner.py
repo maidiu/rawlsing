@@ -74,25 +74,25 @@ def run(child_bundle_path: Path, output_path: Path) -> dict:
     if len(child_handoffs) != 1:
         raise AssertionError("fresh runner requires exactly one child handoff")
     child = child_handoffs[0]
+    child_members = replay_recursive_branch_membership(
+        repository=source["repo"],
+        handoff=child,
+        authority_registry=_registry(source, qauth),
+    )
+    if child_members != tuple(sorted(_refs_for(source, ("R1", "R2", "R3", "R4")), key=lambda ref: ref.key)):
+        raise AssertionError("fresh-process child membership replay mismatch")
 
-    # Generation 2: CHILD is consumed from persisted public handoff; it is not rebuilt.
+    # Generation 2 consumes the persisted CHILD. It is never pre-authored.
     h1 = _predicate(source, qauth, _response_leaf(source, qauth, "H", 1), tag="mx01r2-h1")
     h_query = _query(source, qauth, child.winning_predicate, ("H",), tag="mx01r2-g2-h")
     g2_dauth = _d_auth("mx01r2-g2-discovery")
     g2_grammar = _grammar(
         operation="I03-OP-mx01r2-g2-discovery",
-        atoms=[
-            recursive_parent_atom(child, "CHILD"),
-            _atom("H1", h1, "RESPONSE"),
-        ],
+        atoms=[recursive_parent_atom(child, "CHILD"), _atom("H1", h1, "RESPONSE")],
         templates=[_qt("H", h_query)],
         rules=[_rule(
-            "grandchild",
-            "RECURSIVE_SUBGROUP_FORK",
-            "SINGLE_ATOM",
-            atom_ids=("H1",),
-            baseline_atom_id="CHILD",
-            query_template_id="H",
+            "grandchild", "RECURSIVE_SUBGROUP_FORK", "SINGLE_ATOM",
+            atom_ids=("H1",), baseline_atom_id="CHILD", query_template_id="H",
             validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
         )],
         k=2,
@@ -111,9 +111,7 @@ def run(child_bundle_path: Path, output_path: Path) -> dict:
         raise AssertionError("generation 2 must materialize one supported grandchild handoff")
     grandchild = g2.handoffs[0]
     grandchild_members = replay_recursive_branch_membership(
-        repository=source["repo"],
-        handoff=grandchild,
-        authority_registry=g2_registry,
+        repository=source["repo"], handoff=grandchild, authority_registry=g2_registry
     )
     if grandchild_members != tuple(sorted(_refs_for(source, ("R1", "R2")), key=lambda ref: ref.key)):
         raise AssertionError("grandchild exact membership replay mismatch")
@@ -134,18 +132,11 @@ def run(child_bundle_path: Path, output_path: Path) -> dict:
     cot_dauth = _d_auth("mx01r2-cotravel-discovery")
     cot_grammar = _grammar(
         operation="I03-OP-mx01r2-cotravel-discovery",
-        atoms=[
-            recursive_parent_atom(grandchild, "GRANDCHILD"),
-            _atom("Y1", y1, "RESPONSE"),
-        ],
+        atoms=[recursive_parent_atom(grandchild, "GRANDCHILD"), _atom("Y1", y1, "RESPONSE")],
         templates=[_qt("Z", z_gc_query)],
         rules=[_rule(
-            "grandchild-y-z",
-            "BRANCH_CONDITIONED_COTRAVEL",
-            "SINGLE_ATOM",
-            atom_ids=("Y1",),
-            baseline_atom_id="GRANDCHILD",
-            query_template_id="Z",
+            "grandchild-y-z", "BRANCH_CONDITIONED_COTRAVEL", "SINGLE_ATOM",
+            atom_ids=("Y1",), baseline_atom_id="GRANDCHILD", query_template_id="Z",
             validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
         )],
         k=2,
@@ -172,12 +163,8 @@ def run(child_bundle_path: Path, output_path: Path) -> dict:
         atoms=[_atom("ALL", all_p, "BRANCH"), _atom("Y1", y1, "RESPONSE")],
         templates=[_qt("Z", z_all_query)],
         rules=[_rule(
-            "whole-y-z",
-            "PAIR_RESPONSE_COTRAVEL",
-            "SINGLE_ATOM",
-            atom_ids=("Y1",),
-            baseline_atom_id="ALL",
-            query_template_id="Z",
+            "whole-y-z", "PAIR_RESPONSE_COTRAVEL", "SINGLE_ATOM",
+            atom_ids=("Y1",), baseline_atom_id="ALL", query_template_id="Z",
             validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
         )],
         k=2,
@@ -207,27 +194,16 @@ def run(child_bundle_path: Path, output_path: Path) -> dict:
     under_dauth = _d_auth("mx01r2-underpowered-discovery")
     under_grammar = _grammar(
         operation="I03-OP-mx01r2-underpowered-discovery",
-        atoms=[
-            _atom("PARENT", parent, "BRANCH"),
-            _atom("X0", x0, "RESPONSE"),
-            _atom("H1", h1, "RESPONSE"),
-        ],
+        atoms=[_atom("PARENT", parent, "BRANCH"), _atom("X0", x0, "RESPONSE"), _atom("H1", h1, "RESPONSE")],
         templates=[_qt("X", x_parent_query)],
         rules=[_rule(
-            "one-member",
-            "RECURSIVE_SUBGROUP_FORK",
-            "AND_COMBINATIONS",
-            atom_ids=("X0", "H1"),
-            arity=2,
-            baseline_atom_id="PARENT",
-            query_template_id="X",
+            "one-member", "RECURSIVE_SUBGROUP_FORK", "AND_COMBINATIONS",
+            atom_ids=("X0", "H1"), arity=2, baseline_atom_id="PARENT", query_template_id="X",
             validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
         )],
         k=2,
     )
-    under_authority = _authority_with_minimum(
-        source, under_grammar, under_dauth, 2, tag="mx01r2-underpowered"
-    )
+    under_authority = _authority_with_minimum(source, under_grammar, under_dauth, 2, tag="mx01r2-underpowered")
     under = execute_exact_bounded_discovery_with_handoffs(
         repository=source["repo"],
         discovery_authority=under_authority,
@@ -245,6 +221,7 @@ def run(child_bundle_path: Path, output_path: Path) -> dict:
         "child_handoff_ref": child.ref,
         "child_predicate_ref": child.winning_predicate.ref,
         "child_immediate_parent_ref": child.immediate_parent_branch_ref,
+        "child_member_refs": child_members,
         "grandchild_handoff_ref": grandchild.ref,
         "grandchild_predicate_ref": grandchild.winning_predicate.ref,
         "grandchild_immediate_parent_ref": grandchild.immediate_parent_branch_ref,
