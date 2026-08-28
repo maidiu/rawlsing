@@ -1,0 +1,25 @@
+{
+  "schema": "rawlsing.as3r2.runtime_object_preimage_recovery.result",
+  "schema_version": 1,
+  "status": "FAIL_CLOSED",
+  "return_token": "AS3R2_RUNTIME_OBJECT_PREIMAGE_RECOVERY_FAIL_CLOSED__AS3R2-B01__AUTHORITATIVE_RUNTIME_OBJECT_PRODUCER_UNREACHABLE_AND_CANONICAL_PREIMAGES_UNSERIALIZED",
+  "starting_branch": "as3r2-runtime-object-preimage-recovery-20260827",
+  "starting_head": "aae978928d2416c23d6b1562e7ac559b106b2cf7",
+  "blocker": "AS3R2-B01__AUTHORITATIVE_RUNTIME_OBJECT_PRODUCER_UNREACHABLE_AND_CANONICAL_PREIMAGES_UNSERIALIZED",
+  "summary": "All 22 frozen runtime refs were recovered exactly from the AS3R2 binding manifest, but zero exact canonical preimages can be positively replayed from reachable authoritative construction evidence. The recorded production constructor lineage is unreachable and accepted AS3/AS3R1/AS3R2 artifacts do not serialize the required canonical projection fields.",
+  "frozen_anchors": {
+    "predicate_count": 19,
+    "query_count": 3,
+    "predicate_catalog_aggregate_hash": "8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293",
+    "query_catalog_aggregate_hash": "f76ddf2b8a99e6a05884d503aa7a5da8fbf1fb3b07fbcd4cc93597457defa423",
+    "discovery_authority": "98d52062a0acc04a1949053a8f83397621e810950ff70ceff0260b68d17fd28c",
+    "official_frontier": "84349595622ed6eec5bd6af60de5b74df26ae6752ae64e40d7595fd7560b7d67",
+    "candidate_count": 82
+  },
+  "frozen_runtime_identity_count": 22,
+  "canonical_preimage_count_recovered": 0,
+  "as4i0_revalidation_ready": false,
+  "runtime_catalogs_usable_by_as4i0": false,
+  "candidate_execution_count": 0,
+  "semantic_manufacture_performed": false
+}
