@@ -1,0 +1,26 @@
+{
+  "schema":"rawlsing.as3r2.runtime_object_preimage_recovery.validation_receipt",
+  "schema_version":1,
+  "overall":"FAIL_CLOSED",
+  "blocker":"AS3R2-B01__AUTHORITATIVE_RUNTIME_OBJECT_PRODUCER_UNREACHABLE_AND_CANONICAL_PREIMAGES_UNSERIALIZED",
+  "checks":[
+    {"check":"predicate_count","expected":19,"observed":19,"result":"PASS__FROZEN_BINDINGS_REPRESENTED_EXACTLY_ONCE"},
+    {"check":"query_count","expected":3,"observed":3,"result":"PASS__FROZEN_BINDINGS_REPRESENTED_EXACTLY_ONCE"},
+    {"check":"predicate_catalog_aggregate_hash","expected":"8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293","observed":"8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293","result":"PASS__UNCHANGED_SEALED_ANCHOR__NOT_RECOMPUTED_FROM_MISSING_PREIMAGES"},
+    {"check":"query_catalog_aggregate_hash","expected":"f76ddf2b8a99e6a05884d503aa7a5da8fbf1fb3b07fbcd4cc93597457defa423","observed":"f76ddf2b8a99e6a05884d503aa7a5da8fbf1fb3b07fbcd4cc93597457defa423","result":"PASS__UNCHANGED_SEALED_ANCHOR__NOT_RECOMPUTED_FROM_MISSING_PREIMAGES"},
+    {"check":"DiscoveryAuthority","expected":"98d52062a0acc04a1949053a8f83397621e810950ff70ceff0260b68d17fd28c","observed":"98d52062a0acc04a1949053a8f83397621e810950ff70ceff0260b68d17fd28c","result":"PASS__UNCHANGED_SEALED_ANCHOR"},
+    {"check":"official_frontier","expected":"84349595622ed6eec5bd6af60de5b74df26ae6752ae64e40d7595fd7560b7d67","observed":"84349595622ed6eec5bd6af60de5b74df26ae6752ae64e40d7595fd7560b7d67","result":"PASS__UNCHANGED_SEALED_ANCHOR"},
+    {"check":"candidate_count","expected":82,"observed":82,"result":"PASS__UNCHANGED_SEALED_ANCHOR"},
+    {"check":"all_expected_runtime_identities_exactly_once","expected":22,"observed":22,"result":"PASS__AS3R2_BINDING_MANIFEST_IDENTITY_ONLY"},
+    {"check":"canonical_preimages_recovered","expected":22,"observed":0,"result":"FAIL__NOT_PROVABLE"},
+    {"check":"canonical_hashes_reproduced_from_recovered_preimages","expected":22,"observed":0,"result":"FAIL__NO_ADMISSIBLE_PREIMAGES_TO_HASH"},
+    {"check":"candidate_execution","expected":0,"observed":0,"result":"PASS"},
+    {"check":"LiTS_I_execution","expected":false,"observed":false,"result":"PASS"},
+    {"check":"semantic_field_changes","expected":0,"observed":0,"result":"PASS"},
+    {"check":"AS3R2_authority_changes","expected":0,"observed":0,"result":"PASS"},
+    {"check":"AS4I0_branch_changes","expected":0,"observed":0,"result":"PASS"}
+  ],
+  "success_condition_met":false,
+  "as4i0_revalidation_ready":false,
+  "return_token":"AS3R2_RUNTIME_OBJECT_PREIMAGE_RECOVERY_FAIL_CLOSED__AS3R2-B01__AUTHORITATIVE_RUNTIME_OBJECT_PRODUCER_UNREACHABLE_AND_CANONICAL_PREIMAGES_UNSERIALIZED"
+}
