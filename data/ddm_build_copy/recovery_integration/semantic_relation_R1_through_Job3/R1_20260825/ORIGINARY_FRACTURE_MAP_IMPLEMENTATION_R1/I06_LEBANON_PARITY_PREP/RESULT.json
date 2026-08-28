@@ -1,0 +1,98 @@
+{
+  "anti_leak": {
+    "observation_must_bind_authority37": true,
+    "observation_must_bind_exact_seed_hash": true,
+    "oracle_may_control_controller_reachability": false,
+    "phase_order": "SEED_AND_CONTROLLER_OBSERVATIONS_SEALED_BEFORE_L02_ORACLE_LOAD",
+    "seed_contains_oracle_answers": false,
+    "seed_injection_selftest": "PASS"
+  },
+  "artifact_sha256_excluding_RESULT_json": {
+    "CHANGED_FILES.txt": "cadf99013a82822f8fb7e046c6a2834aa58fa6fa44a2ff544bc541854b38f535",
+    "CONTROLLER_SEED.json": "454b858e8f9677419fd6e386feb7cd06e9115788d8a5e87deee7d76f1c271f36",
+    "FROZEN_L02_PARITY_ORACLE.json": "856001d87bab197a4d09a3bdab3e356141c26d8021e2d86ceedc66eefd6e37fe",
+    "REALDATA_PARITY_CONTRACT.md": "988fe91d7893efa6005f209931b734b79446e73027793870861b776ff45c7424",
+    "RESULT.md": "0e676319a6a1941d24f2c939203fd6be2287016f65a89889b9c64a13f819f11e",
+    "SOURCE_SHA_LEDGER.csv": "0cd7148042717ffc535f1a15ce9a256ab220aeb725cae1323847d79b964a401e",
+    "TEST_RECEIPT.txt": "00259f94e0eb294c4aa9d44a0e0c2cec55cda12bc36fa1ad635adb0097022752",
+    "run_i06_lebanon_parity_harness.py": "f61fe46b4656fff65934199040baa386aaf04c2d965bd8521b8c0a78f6a57f1e"
+  },
+  "authority37_commit": "9bafaf2cb96cc3fb46fef6785d486f08987ab71c",
+  "changed_file_count": 9,
+  "frozen_acceptance_surfaces": [
+    "routed Wave-VIII denominator correction and weighted SES share",
+    "Lebanon weighted SES share",
+    "exact multi-label response-pattern morphology",
+    "Lebanon SES/non-SES branch supports",
+    "no-formal and MA+ support/stop behavior",
+    "MA+ non-SES alternative response distribution",
+    "descriptive determinicity ordering/values",
+    "exact source/routing/weight semantics",
+    "deterministic replay"
+  ],
+  "frozen_oracle": {
+    "legacy_43_523_pct_disposition": "CORRECTED_DENOMINATOR_ARTIFACT",
+    "response_pattern_canonical_sha256": "8a642a5cf133843512d84b039af475f70c13b739f3e26908899193ccee886ed9",
+    "response_pattern_census_rows": 370,
+    "schema": "I06_FROZEN_L02_PARITY_ORACLE@1.0.0",
+    "sha256": "856001d87bab197a4d09a3bdab3e356141c26d8021e2d86ceedc66eefd6e37fe",
+    "tolerances": {
+      "normalized_mi_abs": 1e-12,
+      "weighted_or_pct_abs": 1e-09
+    }
+  },
+  "holding": "DETERMINISTIC_REAL_LEBANON_PARITY_HARNESS_PREPARED__ORACLE_SEPARATED_FROM_CONTROLLER_REACHABILITY__PRODUCTION_PARITY_NOT_YET_EXECUTED",
+  "l02_exact_return_commit": "c9acd7e9ff887dd3a4a29d91f45688cb9c0705a3",
+  "noninterference": {
+    "A_B_C_ranked": false,
+    "actor_or_persona_inference": false,
+    "architecture_selected": false,
+    "production_controller_semantics_modified": false,
+    "raw_survey_bytes_committed": false
+  },
+  "production_controller_parity_execution": "NOT_RUN_PREP_ONLY",
+  "repository": "maidiu/rawlsing",
+  "required_outputs_complete": true,
+  "schema": "I06_LEBANON_PARITY_PREP_RESULT@1.0.0",
+  "seed": {
+    "allowed_content": "Q873 source semantics + source/universe/routing/weight/coordinate authority + Authority37 policy only",
+    "deterministic_regeneration": "PASS",
+    "schema": "I06_LEBANON_CONTROLLER_SEED@1.0.0",
+    "sha256": "454b858e8f9677419fd6e386feb7cd06e9115788d8a5e87deee7d76f1c271f36"
+  },
+  "selftest": {
+    "anti_leak_injection_rejected": "PASS",
+    "committed_seed_matches_regeneration": "PASS",
+    "comparator_rejects_incomplete_observation": "PASS",
+    "negative_compare_exit_code": 2,
+    "negative_compare_failed_checks": 150,
+    "oracle_schema": "PASS",
+    "oracle_source_hash_binding": "PASS",
+    "python_compile": "PASS",
+    "seed_deterministic_replay": "PASS",
+    "source_hash_verification": "PASS"
+  },
+  "source": {
+    "codebook": {
+      "library_file_id": "file_00000000102c71fbbd6a569011ead989",
+      "sha256": "328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc",
+      "size_bytes": 677029
+    },
+    "library_mutated": false,
+    "questionnaire": {
+      "library_file_id": "file_00000000682c722f9ea8eb2e8830e790",
+      "sha256": "d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb",
+      "size_bytes": 1395546
+    },
+    "raw_source_committed": false,
+    "sav": {
+      "library_file_id": "file_00000000e4a8722f9131ea801a527554",
+      "sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "size_bytes": 12275728
+    }
+  },
+  "status": "I06_LEBANON_PARITY_PREP_R1_COMPLETE",
+  "success_token": "I06_LEBANON_PARITY_PREP_R1_COMPLETE",
+  "verified_start_head": "1f19084bf3c2c5e92cdc3faaa8e61ffcaf483c23",
+  "worker_branch": "agent/verkhovod-fracturemap-i06-lebanon-parity-prep-r1"
+}

@@ -1,0 +1,52 @@
+I06 REAL LEBANON FRACTURE-MAP PARITY HARNESS PREP R1
+TEST RECEIPT
+
+STATUS: PASS__HARNESS_PREP_ONLY__PRODUCTION_CONTROLLER_PARITY_NOT_RUN
+SUCCESS_TOKEN: I06_LEBANON_PARITY_PREP_R1_COMPLETE
+
+WORKER_BRANCH: agent/verkhovod-fracturemap-i06-lebanon-parity-prep-r1
+VERIFIED_START_HEAD: 1f19084bf3c2c5e92cdc3faaa8e61ffcaf483c23
+AUTHORITY37_COMMIT: 9bafaf2cb96cc3fb46fef6785d486f08987ab71c
+L02_EXACT_RETURN: c9acd7e9ff887dd3a4a29d91f45688cb9c0705a3
+
+EXACT_LIBRARY_SOURCE_HASHES:
+  SAV:           a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998
+  QUESTIONNAIRE: d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb
+  CODEBOOK:      328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc
+
+HARNESS_ARTIFACT_HASHES_AT_TEST:
+  CONTROLLER_SEED.json:                454b858e8f9677419fd6e386feb7cd06e9115788d8a5e87deee7d76f1c271f36
+  FROZEN_L02_PARITY_ORACLE.json:       856001d87bab197a4d09a3bdab3e356141c26d8021e2d86ceedc66eefd6e37fe
+  run_i06_lebanon_parity_harness.py:   f61fe46b4656fff65934199040baa386aaf04c2d965bd8521b8c0a78f6a57f1e
+  REALDATA_PARITY_CONTRACT.md:          988fe91d7893efa6005f209931b734b79446e73027793870861b776ff45c7424
+  SOURCE_SHA_LEDGER.csv:               0cd7148042717ffc535f1a15ce9a256ab220aeb725cae1323847d79b964a401e
+
+CHECKS:
+  [PASS] python -m py_compile run_i06_lebanon_parity_harness.py
+  [PASS] exact SAV/questionnaire/codebook SHA-256 verification
+  [PASS] prepare mode regenerated CONTROLLER_SEED.json deterministically
+  [PASS] regenerated seed byte-identical to committed seed candidate
+  [PASS] audit-seed accepted answer-free committed seed candidate
+  [PASS] selftest source_hash_verification
+  [PASS] selftest seed_deterministic_replay
+  [PASS] selftest committed_seed_matches_regeneration
+  [PASS] selftest anti_leak_injection_rejected
+  [PASS] selftest oracle_schema
+  [PASS] selftest oracle_source_hash_binding
+  [PASS] selftest comparator_rejects_incomplete_observation
+  [PASS] negative compare test exited RC=2 as required
+  [PASS] negative compare receipt status=FAIL as required
+  [PASS] negative compare retained anti-leak phase order OBSERVATION_SEALED_BEFORE_ORACLE_LOAD
+  [PASS] negative compare produced 150 failed checks rather than false acceptance
+  [PASS] comparator recomputes response-pattern census SHA from row content; self-reported hash is not trusted
+  [PASS] compare mode binds observation/replay to exact seed SHA and Authority-37 controller/policy refs before oracle load
+  [PASS] no production controller source modified by I06
+  [PASS] no raw SAV/PDF/source survey bytes included in I06 output set
+
+SELFTEST_MACHINE_RESULT:
+{"checks":{"anti_leak_injection_rejected":"PASS","committed_seed_matches_regeneration":"PASS","comparator_rejects_incomplete_observation":"PASS","oracle_schema":"PASS","oracle_source_hash_binding":"PASS","production_controller_execution":"NOT_RUN_PREP_ONLY","seed_deterministic_replay":"PASS","source_hash_verification":"PASS"},"status":"PASS"}
+
+EXECUTION CEILING:
+  I06 is a preparation worker. It does not claim the integrated production fracture-map controller has passed the real Lebanon oracle. A later production run must create two independently sealed controller observations from CONTROLLER_SEED.json without access to FROZEN_L02_PARITY_ORACLE.json, then run compare mode and require every check to pass.
+
+HARNESS_PREP_PASS != PRODUCTION_CONTROLLER_PARITY_PASS
