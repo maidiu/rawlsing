@@ -326,7 +326,6 @@ def test_multilabel_exact_patterns_and_presence_marginals_remain_distinct():
     topology = dict(fields["target_arity_and_topology"])
     components = [dict(topology["components"][0])]
     components[0]["domain"] = ["A+B", "A_ONLY", "B_ONLY", "NONE"]
-    components[0]["topology"] = "MULTISELECT_PATTERN"
     topology["components"] = components
     fields["target_arity_and_topology"] = topology
     root = EmpiricalQuerySpec(
