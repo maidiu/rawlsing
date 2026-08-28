@@ -1,0 +1,83 @@
+{
+  "status": "PASS__COMMON_COMPONENT_AUTHORITY_VECTOR_RECEIPT_CLOSED",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-prev3-mx02r2-component-vector-receipt-r1",
+  "starting_head": "d8d092bf52df0976d9bbfc76aa7d4b65638fbd21",
+  "experiment": "MX02_R2_COMPONENT_VECTOR_RECEIPT_CLOSURE",
+  "sibling_findings_consumed": false,
+  "architecture_selected": false,
+  "v3_work_performed": false,
+  "common_receipt": {
+    "family": "ComponentAuthorityVectorReceipt@1.0.0",
+    "path": "rawlsing_next/pre553_component_authority_vector.py",
+    "blob_sha": "7c5993540e3dcfde5110f882fd1e26a298f47ac6",
+    "object_grain": "VECTOR_SUBJECT x AUTHORITY_DIMENSION x GOVERNED_COMPONENT_SET x PROJECTION_DECISION",
+    "component_payload_reownership": false,
+    "value_binding": "EXACT_PRODUCER_COMPONENT_REF_PLUS_CANONICAL_VALUE_DIGEST",
+    "stable_identity": true,
+    "fresh_reload_validator": true
+  },
+  "scalarization_law": "SCALARIZE iff COMPLETE_COVERAGE && ALL_GOVERNED_COMPONENTS_NONEMPTY && UNANIMOUS_AUTHORITATIVE_VALUE",
+  "projection_dispositions": [
+    "VECTOR_HETEROGENEOUS_COMPLETE",
+    "VECTOR_INCOMPLETE_COVERAGE",
+    "VECTOR_GOVERNED_EMPTY_COMPONENT",
+    "VECTOR_DENIED_OR_NONCOMPARABLE_COMPONENT",
+    "SCALARIZED_COMPLETE_UNANIMOUS_NONEMPTY"
+  ],
+  "hostile_cases": {
+    "heterogeneous_complete": "PASS__NO_SCALAR",
+    "incomplete_unanimous_subset": "PASS__NO_SCALAR",
+    "governed_empty": "PASS__NO_SCALAR",
+    "denied": "PASS__NO_SCALAR_NEGATIVE_REF_PRESERVED",
+    "noncomparable": "PASS__NO_SCALAR_NEGATIVE_REF_PRESERVED",
+    "unanimous_complete_nonempty": "PASS__SCALAR_DIGEST_ALLOWED_VECTOR_RETAINED",
+    "mixed_producer_publication_reload": "PASS__AUTHORITY33_CARRIER_LAW_PLUS_EXACT_M4_INTEGRATION_TEST"
+  },
+  "fresh_reload": {
+    "status": "PASS",
+    "fresh_process": true,
+    "fixture_receipt_hash": "009ba8ab535f15a003c3a43c73c69a2e0f5484afbe978734b96065a9a47574ee",
+    "projection_disposition": "SCALARIZED_COMPLETE_UNANIMOUS_NONEMPTY",
+    "scalar_value_digest": "3999cc1b6cab17ab589858c55ada3429f7555beb6fdbf7a4a8f54a79934aebf8",
+    "tampered_scalar_rejected": true,
+    "hidden_latest_or_fuzzy_repair": false
+  },
+  "m4_integration": {
+    "production_m4_modified": false,
+    "receipt_producer_family": "PRE553_COMMON",
+    "receipt_spoofed_as_v554_v555_v556": false,
+    "component_producer_families": ["V551J", "V552"],
+    "existing_v554_fixture_root_used": true,
+    "role_order_cardinality_multiplicity_edges_asserted": true,
+    "permission_monotonicity_asserted": true,
+    "repository_ci_runner_available": false,
+    "carrier_sufficiency_authority": "Authority33 H33-02"
+  },
+  "production_changes": {
+    "added": ["rawlsing_next/pre553_component_authority_vector.py"],
+    "modified_existing": [],
+    "unchanged_by_design": [
+      "rawlsing_next/pre553_empirical_objects.py",
+      "rawlsing_next/pre553_structural_admission.py",
+      "rawlsing_next/m4_v557_v558_publication_repository.py"
+    ]
+  },
+  "tests": {
+    "path": "rawlsing_next/tests/test_pre553_component_authority_vector.py",
+    "blob_sha": "919e77a024c486acb7b63fb976417e253828c050",
+    "semantic_oracle_execution": "PASS",
+    "fresh_subprocess_execution": "PASS",
+    "github_actions_ci_claimed": false
+  },
+  "negative_ceiling": [
+    "no component warehouse",
+    "no V557 root widening",
+    "no I04 semantic reassignment",
+    "no A/B/C ranking",
+    "no C09 ranking",
+    "no V3 semantics",
+    "no architecture winner"
+  ],
+  "success_token": "MX02_R2_COMPONENT_VECTOR_RECEIPT_CLOSURE_R1_COMPLETE"
+}
