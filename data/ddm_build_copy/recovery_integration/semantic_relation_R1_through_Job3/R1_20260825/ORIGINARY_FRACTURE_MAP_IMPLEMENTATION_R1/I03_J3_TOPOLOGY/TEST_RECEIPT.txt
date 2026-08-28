@@ -1,0 +1,57 @@
+I03 AUTHORITY-37 J=3 TARGET TOPOLOGY — TEST RECEIPT
+
+TESTED IMPLEMENTATION COMMIT
+3b5dece60b17bc774ea8de8829985eb62c5a23f3
+
+SUCCESSFUL HOSTED RUN
+workflow_run_id=33195637429
+job_id=98931928678
+python=3.12.14
+pytest=9.1.1
+
+COMMAND
+python -m pytest -q \
+  rawlsing_next/tests/test_pre553_empirical_query.py \
+  rawlsing_next/tests/test_pre553_discovery_exact.py \
+  rawlsing_next/tests/test_pre553_replay_audit.py \
+  rawlsing_next/tests/test_pre553_empirical_objects_authority.py \
+  rawlsing_next/tests/test_pre553_query_frontier_hostile.py
+
+RESULT
+126 passed in 3.16s
+0 failed
+
+COVERAGE OF AUTHORITY-37 J=3 DELTA
+PASS explicit versioned J=3 authority required
+PASS legacy authority remains lawful only through J<=2
+PASS exact J=3 canonical target ordering
+PASS duplicate/noncanonical J=3 target triple fails closed
+PASS J ceiling below requested arity fails closed
+PASS J>3 fails closed in I03 query execution
+PASS J>3 fails closed in exact discovery authority/grammar
+PASS direct exact same-respondent J=3 Cartesian cells
+PASS exact cell membership refs preserved in J=3 fact/replay identity
+PASS source/risk denominator conserved separately
+PASS branch denominator conserved separately
+PASS three per-target denominators conserved separately
+PASS three-way joint denominator conserved separately
+PASS raw and governed-weighted supports remain separate
+PASS branch-conditioned J=3 predicate compatibility
+PASS deterministic exact replay
+PASS parity branch and anti-parity complement have identical XxY/XxZ/YxZ pairwise cell counts but different J=3 tensors
+PASS pairwise outputs cannot masquerade as J=3 identity
+PASS ordered/ranked/repeated response topology regression
+PASS typed special-state regression
+PASS authority/object integrity regression
+
+DIAGNOSTIC RUN
+workflow_run_id=33195559454
+job_id=98931662242
+result=125 passed, 1 failed
+The one failure was a stale test-only four-value unpack in the historical four-target parity assertion after the fixture had been lawfully reduced to Authority-37 J=3. Production arity, denominator, domain, supported-cell and zero-cell assertions had already passed. The stale assertion was corrected; no production semantic patch followed from that failure.
+
+TEST HARNESS DISPOSITION
+The temporary push-trigger workflow existed only to obtain an execution receipt in the repository's hosted runner. It is deleted from the final tree. Final post-test changes are documentary return artifacts only.
+
+TERMINAL
+I03_AUTH37_J3_TOPOLOGY_R1_COMPLETE

@@ -1,0 +1,76 @@
+{
+  "schema": "RAWLSING_AUTH37_I03_J3_TOPOLOGY_IMPLEMENTATION_RETURN",
+  "schema_version": "1.0.0",
+  "status": "I03_AUTH37_J3_TOPOLOGY_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-fracturemap-i03-j3-topology-r1",
+  "verified_starting_head": "8fa80c13080b4f0b3a1eddbf8ea1bacc4e56d103",
+  "authority_37": {
+    "maximum_target_arity_J": 3,
+    "explicit_versioned_authority_required_for_J3": true,
+    "legacy_implicit_ceiling_J": 2,
+    "J_greater_than_3": "FAIL_CLOSED"
+  },
+  "object_compatibility": {
+    "new_public_object_family": false,
+    "empirical_query_spec_family": "EmpiricalQuerySpec@1.0.0",
+    "empirical_fact_family": "EmpiricalFact@1.0.0",
+    "query_execution_contract": "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+    "j_le_2_serialized_semantics_preserved": true,
+    "controller_enumeration_added": false
+  },
+  "j3_semantics": {
+    "exact_unique_target_count": 3,
+    "ordering": "CANONICAL_SET_ORDER",
+    "direct_same_respondent_cells": true,
+    "exact_cell_member_refs": true,
+    "denominator_contract": "AUTHORITY37_J3_DENOMINATOR_CONSERVATION@1.0.0",
+    "denominator_grains": [
+      "SOURCE_RISK",
+      "BRANCH",
+      "PER_TARGET",
+      "THREE_WAY_JOINT"
+    ],
+    "raw_and_governed_weighted_separate": true,
+    "source_native_topology_and_typed_states_preserved": true,
+    "direct_higher_order_marker": "DIRECT_EXACT_SAME_RESPONDENT_THREE_WAY_JOINT",
+    "pairwise_projection_not_identity_equivalent": true
+  },
+  "discovery_boundary": {
+    "authority_topology_scope_hard_cap_J": 3,
+    "candidate_grammar_hard_cap_J": 3,
+    "adaptive_controller_added": false,
+    "target_enumeration_added": false
+  },
+  "hostile_proof": {
+    "fixture": "BRANCH_PARITY_VS_ANTI_PARITY",
+    "pairwise_projections": [
+      "XxY",
+      "XxZ",
+      "YxZ"
+    ],
+    "pairwise_cell_counts_equal": true,
+    "three_way_joint_equal": false,
+    "conclusion": "ALL_PAIRWISE_MARGINS_EQUAL != THREE_WAY_JOINT_EQUAL"
+  },
+  "test_receipt": {
+    "tested_implementation_commit": "3b5dece60b17bc774ea8de8829985eb62c5a23f3",
+    "workflow_run_id": 33195637429,
+    "job_id": 98931928678,
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "passed": 126,
+    "failed": 0,
+    "duration_seconds": 3.16,
+    "temporary_test_workflow_removed_in_final_tree": true
+  },
+  "prohibitions_obeyed": {
+    "production_repair_beyond_i03_topology_boundary": false,
+    "fracture_map_controller_implemented": false,
+    "architecture_selection": false,
+    "actor_personality_inference": false,
+    "j4_success_path": false,
+    "pairwise_as_j3_substitution": false
+  },
+  "success_token": "I03_AUTH37_J3_TOPOLOGY_R1_COMPLETE"
+}
