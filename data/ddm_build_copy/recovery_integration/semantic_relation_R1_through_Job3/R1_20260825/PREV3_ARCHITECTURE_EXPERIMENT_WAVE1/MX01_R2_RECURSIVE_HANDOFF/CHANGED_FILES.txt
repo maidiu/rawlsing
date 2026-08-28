@@ -1,0 +1,48 @@
+MX01 R2 RECURSIVE HANDOFF CLOSURE R1
+starting HEAD: 54029e1e8ad11c023aed72be3d8b5962a915577e
+worker branch: agent/verkhovod-prev3-mx01r2-recursive-handoff-r1
+
+PRODUCTION RUNTIME
+rawlsing_next/pre553_recursive_handoff.py
+  Semantic reason: bounded common PRE553 recursive handoff layer. Reuses DiscoveryBranchReplayBinding; resolves and persists the exact receipt-selected compiled child predicate; records exact immediate-parent role; hash-binds replay context; persists/reloads canonical bundles; replays exact membership; exposes N+1 parent-atom consumption; fails closed on mismatches/tamper. No new public semantic-object family.
+
+HOSTILE / FRESH-PROCESS TESTS
+rawlsing_next/tests/test_pre553_recursive_handoff.py
+  Reason: frozen eight-respondent MX01 R2 depth-two hostile test, exact child membership replay, two independent fresh-process equality check, conditioned-vs-unconditional distinction, underpowered typing, and tamper fail-closed test.
+
+rawlsing_next/tests/mx01r2_fresh_process_runner.py
+  Reason: independent-process consumer that loads persisted CHILD, replays CHILD membership, discovers GRANDCHILD from the persisted predicate, persists/reloads GRANDCHILD, evaluates branch-conditioned cotravel, unconditional VALID_EMPTY lookalike, and underpowered lane, and emits identity-bearing replay observations.
+
+MANDATED RETURN ARTIFACTS
+data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PREV3_ARCHITECTURE_EXPERIMENT_WAVE1/MX01_R2_RECURSIVE_HANDOFF/RESULT.md
+  Reason: human-readable governed verdict using CLAIM -> EXACT REF -> FILE/TEST/RECEIPT -> OBJECT GRAIN -> STATUS -> NEGATIVE CEILING discipline.
+
+data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PREV3_ARCHITECTURE_EXPERIMENT_WAVE1/MX01_R2_RECURSIVE_HANDOFF/RESULT.json
+  Reason: machine-readable PASS verdict, contract scope, fixture outcomes, exact-ref digest ledger, changed runtime/test files, and negative ceiling.
+
+data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PREV3_ARCHITECTURE_EXPERIMENT_WAVE1/MX01_R2_RECURSIVE_HANDOFF/CONTRACT_DELTA.md
+  Reason: exact before/after description of the first irreducible common recursive-handoff seam and explicit preservation boundaries.
+
+data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PREV3_ARCHITECTURE_EXPERIMENT_WAVE1/MX01_R2_RECURSIVE_HANDOFF/EXACT_REF_LEDGER.csv
+  Reason: exact object/ref ledger for parent, child, grandchild, replay bindings/bundles, member identities, discovery receipts/replays, supported cotravel facts, VALID_EMPTY lookalike, and underpowered result.
+
+data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PREV3_ARCHITECTURE_EXPERIMENT_WAVE1/MX01_R2_RECURSIVE_HANDOFF/TEST_AND_REPLAY_RECEIPT.json
+  Reason: preserved verification-run and two-independent-process replay receipt from GitHub Actions run 33154504645 at verification HEAD 438c9bfe1c73d33faa58c1bf6e40a08b8f6a5e2a; 14 passed in 2.20s.
+
+data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PREV3_ARCHITECTURE_EXPERIMENT_WAVE1/MX01_R2_RECURSIVE_HANDOFF/CHANGED_FILES.txt
+  Reason: this exact final change manifest.
+
+TEMPORARY VERIFICATION SCAFFOLDING REMOVED BEFORE RETURN
+.github/workflows/mx01r2-recursive-handoff.yml
+rawlsing_next/tests/mx01r2_emit_receipt.py
+rawlsing_next/tests/mx01r2_identity_debug.py
+
+The temporary files above are not present in the final diff against the starting HEAD.
+
+UNCHANGED SEMANTIC BOUNDARIES
+- rawlsing_next/pre553_discovery_exact.py unchanged
+- no A/B/C carrier changes
+- no V3 changes
+- no downstream architecture changes
+- no adaptive discovery/frontier redesign
+- no support-threshold relaxation
