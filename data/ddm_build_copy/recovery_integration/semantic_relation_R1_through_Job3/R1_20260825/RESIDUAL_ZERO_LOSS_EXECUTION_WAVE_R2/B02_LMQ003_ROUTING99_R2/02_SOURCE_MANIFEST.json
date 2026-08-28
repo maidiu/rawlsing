@@ -1,7 +1,16 @@
 {
   "lane": "B02_LMQ003_ROUTING99_R2",
-  "status": "BLOCKED",
-  "wrapper": {
+  "authority_44": {
+    "commit": "9d845a71c767addd45a106c00f13ff523ca3676c",
+    "status": "CORRECTIVE_AUTHORITY__700_TRIAL_SET_DEMOTED_TO_FORENSIC_HISTORY",
+    "current_adoptability": "NOT_ADOPTABLE_AS_MODERN_COMPLETENESS_COURT",
+    "historical_700_trial_set_role": "FORENSIC_HISTORY_ONLY",
+    "historical_99_partition_role": "FORENSIC_HISTORY_ONLY",
+    "current_governed_active_implementation_surface_count": 18276,
+    "current_routing_debt_denominator": "UNCOMPUTED_FROM_COMPLETE_CURRENT_SURFACE"
+  },
+  "historical_execution_status": "BLOCKED",
+  "historical_wrapper": {
     "filename": "Rawlsing_R3_Routing_Applicability_Retrieval_Delta_20260808.zip",
     "library_file_id": "file_000000003dd4822f96b9fea78fb5565b",
     "materialized_path_used": "/mnt/data/lmq003_b02/Rawlsing_R3_Routing_Applicability_Retrieval_Delta_20260808.zip",
@@ -10,24 +19,23 @@
     "sha256_verified": true,
     "archive_entry_count": 21
   },
-  "member_path": "Rawlsing_pre_dep_separability_bundle/R3_Routing_Applicability/R3_Routing_Applicability.xlsx",
-  "member_present": false,
-  "member_verified": false,
-  "password_contract": "\"",
-  "password_attempted": false,
-  "sheet": "App_Matrix",
-  "sheet_verified": false,
-  "historical_signal_column": "Artifact Source",
-  "predicate_column": "Routing Predicate",
-  "current_id_column": "Routing ID",
-  "headers_verified": false,
-  "canonical_source_signal": "Rawlsing_pre_dep_separability_bundle/R3_Routing_Applicability.pdf",
-  "expected_recovered_count": 99,
-  "recovered_count": 0,
-  "current_ids_used_for_membership": false,
+  "historical_member_path": "Rawlsing_pre_dep_separability_bundle/R3_Routing_Applicability/R3_Routing_Applicability.xlsx",
+  "historical_member_present": false,
+  "historical_member_verified": false,
+  "historical_sheet": "App_Matrix",
+  "historical_sheet_verified": false,
+  "historical_headers_verified": false,
+  "historical_canonical_source_signal": "Rawlsing_pre_dep_separability_bundle/R3_Routing_Applicability.pdf",
+  "historical_trial_expected_source_signaled_count": 99,
+  "historical_recovered_count": 0,
+  "salvageable_source_native_findings": 0,
+  "current_rebinding_actions_performed": 0,
+  "current_ids_used_for_historical_membership": false,
   "inferred_membership_used": false,
   "generic_routing_flag_substitution_used": false,
   "populated_row_shortcut_used": false,
   "alternative_member_substitution_used": false,
-  "blocker": "BLOCKED__SHA_VERIFIED_WRAPPER_LACKS_EXACT_COMMANDED_MEMBER"
+  "historical_blocker": "BLOCKED__SHA_VERIFIED_WRAPPER_LACKS_EXACT_COMMANDED_MEMBER",
+  "modern_completeness_claim": null,
+  "modern_zero_loss_claim": null
 }
