@@ -1,0 +1,131 @@
+{
+  "adjudication": {
+    "EXACT_GOVERNED_KNOWN_ABSENCE_OR_NONAPPLICABILITY": 0,
+    "EXACT_LATER_POSITIVE_ROUTING_AUTHORITY": 0,
+    "STILL_UNRESOLVED": 600,
+    "governed_reasoning": [
+      "Later source-node identity/coverage is evidence, not by itself executable routing authority.",
+      "ROUTING_OR_INAPPLICABILITY_SIGNAL_PRESENT with EXACT_ROUTING_INSTRUCTION_NOT_RECOVERED_SIGNAL_ONLY is unresolved, not positive routing or known absence.",
+      "NO_ROUTING_SIGNAL_IN_RESPONSE_AUTHORITY / NO_EXPLICIT_ROUTING_SIGNAL_IN_PACKET / NO_ROUTING_SIGNAL_RECOVERED are absence-of-recovered-signal states, not source-level known absence licenses.",
+      "Country_scope/observed coverage is not promoted into nonapplicability when exact routing instruction or exact universe is explicitly not recovered/asserted.",
+      "Historical FAIL_CLOSED_NO_SOURCE_ROW_MATCH and FAIL_CLOSED_UNRESOLVED remain distinct."
+    ],
+    "historical_origin_preserved": {
+      "FAIL_CLOSED_NO_SOURCE_ROW_MATCH": 320,
+      "FAIL_CLOSED_UNRESOLVED": 280
+    },
+    "later_status_counts": [
+      {"historical_authority_status":"FAIL_CLOSED_NO_SOURCE_ROW_MATCH","later_respondent_universe_status":"COUNTRY_INSTRUMENT_AVAILABILITY_VARIANT_EXACT_UNIVERSE_NOT_ASSERTED","later_routing_signal_status":"NO_ROUTING_SIGNAL_IN_RESPONSE_AUTHORITY","rows":9},
+      {"historical_authority_status":"FAIL_CLOSED_NO_SOURCE_ROW_MATCH","later_respondent_universe_status":"EXACT_UNIVERSE_NOT_ASSERTED_NO_ROUTING_SIGNAL","later_routing_signal_status":"NO_ROUTING_SIGNAL_IN_RESPONSE_AUTHORITY","rows":14},
+      {"historical_authority_status":"FAIL_CLOSED_NO_SOURCE_ROW_MATCH","later_respondent_universe_status":"EXACT_ROUTING_INSTRUCTION_NOT_RECOVERED_SIGNAL_ONLY","later_routing_signal_status":"ROUTING_OR_INAPPLICABILITY_SIGNAL_PRESENT","rows":297},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"ADMINISTRATIVE_OR_DERIVED_UNIVERSE","later_routing_signal_status":"NO_EXPLICIT_ROUTING_SIGNAL_IN_AVAILABLE_MERGED_METADATA","rows":2},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"ROUND_GENERAL_RESPONDENT_UNIVERSE","later_routing_signal_status":"NO_EXPLICIT_ROUTING_SIGNAL_IN_AVAILABLE_MERGED_METADATA","rows":41},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"EXPLICIT_PACKET_RESPONDENT_SCOPE","later_routing_signal_status":"NO_EXPLICIT_ROUTING_SIGNAL_IN_PACKET","rows":50},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"WAVE_OR_RELEASE_GENERAL_UNIVERSE","later_routing_signal_status":"NO_EXPLICIT_ROUTING_SIGNAL_IN_PACKET","rows":124},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"CONDITIONAL_UNIVERSE_SOURCE_SIGNAL_PRESERVED","later_routing_signal_status":"NO_ROUTING_SIGNAL_RECOVERED","rows":4},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"EXACT_RESPONDENT_UNIVERSE_NOT_ASSERTED","later_routing_signal_status":"NO_ROUTING_SIGNAL_RECOVERED","rows":26},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"ADMINISTRATIVE_OR_DERIVED_UNIVERSE","later_routing_signal_status":"ROUTING_UNRESOLVED_RESPONSE_AUTHORITY_GAP","rows":3},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"EXPLICIT_PACKET_RESPONDENT_SCOPE","later_routing_signal_status":"ROUTING_UNRESOLVED_RESPONSE_AUTHORITY_GAP","rows":14},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"ROUND_GENERAL_RESPONDENT_UNIVERSE","later_routing_signal_status":"ROUTING_UNRESOLVED_RESPONSE_AUTHORITY_GAP","rows":3},
+      {"historical_authority_status":"FAIL_CLOSED_UNRESOLVED","later_respondent_universe_status":"WAVE_OR_RELEASE_GENERAL_UNIVERSE","later_routing_signal_status":"ROUTING_UNRESOLVED_RESPONSE_AUTHORITY_GAP","rows":13}
+    ]
+  },
+  "authority_41_ref": "0502c942d683dc3aad107d2b04c4b9e307cfa9be:41_ZERO_LOSS_REPAIR_WAVE_R1_RETURN_JOIN_AND_FINAL_CLOSURE_WAVE_AUTHORITY.md",
+  "court": "A07_LMQ004_EXACT_320_PLUS_280_ROUTING_CLOSURE_R1",
+  "current_launch_tree_check": {
+    "absence_does_not_itself_prove_semantic_absence": true,
+    "both_absent_at_launch_head_via_github_contents_404": true,
+    "canonical_historical_applicability_authority_path": "data/ddm_build_copy/authority/question_applicability_predicate_authority_full_v1.json",
+    "canonical_historical_routing_provenance_path": "data/ddm_build_copy/phase_readiness/routing_provenance_ledger.csv"
+  },
+  "exact_crosswalk": {
+    "historical_rows": 600,
+    "match_rules": {"QUESTION_IMPLEMENTATION_ID_EXACT":280,"SOURCE_FAMILY_WAVE_VARIABLE_EXACT":320},
+    "multi_match_rows": 0,
+    "one_to_one_later_matches": 600,
+    "row_ledger_codebook": {
+      "adjudication": {"UNRESOLVED":"STILL_UNRESOLVED"},
+      "hist_state": {"NSRM":"FAIL_CLOSED_NO_SOURCE_ROW_MATCH","UNRES":"FAIL_CLOSED_UNRESOLVED"},
+      "match": {"FWV":"SOURCE_FAMILY_WAVE_VARIABLE_EXACT","IMPL":"QUESTION_IMPLEMENTATION_ID_EXACT"},
+      "route": {
+        "NO_EXPLICIT_ROUTING_SIGNAL_IN_AVAILABLE_MERGED_METADATA":"R01",
+        "NO_EXPLICIT_ROUTING_SIGNAL_IN_PACKET":"R02",
+        "NO_ROUTING_SIGNAL_IN_RESPONSE_AUTHORITY":"R03",
+        "NO_ROUTING_SIGNAL_RECOVERED":"R04",
+        "ROUTING_OR_INAPPLICABILITY_SIGNAL_PRESENT":"R05",
+        "ROUTING_UNRESOLVED_RESPONSE_AUTHORITY_GAP":"R06"
+      },
+      "universe": {
+        "ADMINISTRATIVE_OR_DERIVED_UNIVERSE":"U01",
+        "CONDITIONAL_UNIVERSE_SOURCE_SIGNAL_PRESERVED":"U02",
+        "COUNTRY_INSTRUMENT_AVAILABILITY_VARIANT_EXACT_UNIVERSE_NOT_ASSERTED":"U03",
+        "EXACT_RESPONDENT_UNIVERSE_NOT_ASSERTED":"U04",
+        "EXACT_ROUTING_INSTRUCTION_NOT_RECOVERED_SIGNAL_ONLY":"U05",
+        "EXACT_UNIVERSE_NOT_ASSERTED_NO_ROUTING_SIGNAL":"U06",
+        "EXPLICIT_PACKET_RESPONDENT_SCOPE":"U07",
+        "ROUND_GENERAL_RESPONDENT_UNIVERSE":"U08",
+        "WAVE_OR_RELEASE_GENERAL_UNIVERSE":"U09"
+      }
+    },
+    "row_ledger_sha256": "f63d58a119a5bb7337f89b154a688ff769e62032f0eb9410f9103fca6d0abecd",
+    "unmatched_rows": 0
+  },
+  "historical_partition": {
+    "EXPLICIT_UNIVERSAL_SOURCE_AUTHORITY":1,
+    "FAIL_CLOSED_NO_SOURCE_ROW_MATCH":320,
+    "FAIL_CLOSED_UNRESOLVED":280,
+    "SOURCE_ROUTING_SIGNAL_REQUIRES_EXACT_PREDICATE_COMPILATION":99,
+    "lmq004_target_rows":600,
+    "lmq004_target_unique_closure_hashes":600,
+    "no_source_row_match_historical_impl_id_blank":true,
+    "total_rows":700,
+    "unresolved_historical_impl_id_present":true
+  },
+  "historical_wrapper": {
+    "bytes":1791065,
+    "library_file_id":"file_000000003dd4822f96b9fea78fb5565b",
+    "members": {
+      "ARTIFACT_MANIFEST.csv":{"bytes":1888,"sha256":"485ad3f77c07920dfeaba77b7aec9b700e18f62b5a4863111ceebdd5f13710af"},
+      "authority/question_applicability_predicate_authority_full_v1.json":{"bytes":31703780,"sha256":"71cec3a5084601f890db9ba5439fd31c5f9cd300d3953bb4f584685fa5a77dda"},
+      "phase_readiness/routing_authority_compile_summary.json":{"bytes":2365,"sha256":"b75f7b98a5357cd8c6d73e4c25d077f225406ab41e804d14f48a99cf4ef0979d"},
+      "phase_readiness/routing_provenance_ledger.csv":{"bytes":392243,"sha256":"ce10e4c9ed9b5128329a093beaf266ea775031a11b47e43ca6edd25eb2937fbb"},
+      "phase_readiness/routing_unresolved_ledger.csv":{"bytes":391336,"sha256":"b4aef414eb7230e9c710b4fc5fdb5263f7d75f8c69a1a91526f51167deacce99"},
+      "validation/validate_full_runtime_applicability_authority.output.txt":{"bytes":94,"sha256":"a47692305a15a68f9856d96e3db049b7766ff46429c6354535545cbca6189408"},
+      "validation/validate_routing_authority.output.txt":{"bytes":59,"sha256":"c5c83a62439a55ffa307cf9a5f345d8a1b3bb52332b6bf310e417364bda417fe"}
+    },
+    "name":"Rawlsing_R3_Routing_Applicability_Retrieval_Delta_20260808.zip",
+    "sha256":"e27ceb340eac5d7124e44b80081e5c0309a342326c045df6d6f6d0cd71910c46"
+  },
+  "later_governed_catalogs": {
+    "audit_package":{"bytes":5360218,"governed_selection_input_sufficiency":"PASS","library_file_id":"file_00000000c458822fbe27f0151bf6fd4b","name":"87_PRE_V553_LAYER1_35WAVE_CONTRACT_AUDIT.zip","raw_codebook_completeness":"NOT_ASSERTED","sha256":"fc7e687829a8f5cae175609761d7605b1cb541fc9fdc47bdf9ec2b17ebf5659f"},
+    "bytes":5257954,
+    "catalog_total_rows":18276,
+    "catalogs": {
+      "Rawlsing_P2_Afrobarometer_Deep_Question_Node_Catalog_v1.csv":{"rows":913,"sha256":"01561b89960c10a77cec15552a8b065a0d043fe29c99bc77f4cb316991225181"},
+      "Rawlsing_P2_Arab_Barometer_Deep_Question_Node_Catalog_v1.csv":{"rows":1698,"sha256":"1111699fdde0bbd082267b1ba5eb3b76bbfdcf89aa1e08f500c8393200c394cf"},
+      "Rawlsing_P2_Asian_Barometer_Deep_Question_Node_Catalog_v2.csv":{"rows":814,"sha256":"b27afc4e1ba8bd5707db61388b592525467657d522e782a07c31d04d6b4430cd"},
+      "Rawlsing_P2_EVS_Deep_Question_Node_Catalog_v1.csv":{"rows":2224,"sha256":"61c6f77d266e59f5218babecbd07636619ff90d04b4ffc837357204225729d3b"},
+      "Rawlsing_P2_GSS_Deep_Question_Node_Catalog_v1.csv":{"rows":6021,"sha256":"74496af09f5feba9defc1d2991977e79343da97c87c1fce93f1e9ab4ada31b99"},
+      "Rawlsing_P2_Latinobarometro_Deep_Question_Node_Catalog_v2.csv":{"rows":812,"sha256":"9993607de206a00ed1d6c63b599e5115dc0c1925bffcb10a81544eadaf83cf8c"},
+      "Rawlsing_P2_LiTS_Deep_Question_Node_Catalog_v2.csv":{"rows":4434,"sha256":"068cd24a9bcbaaf0e8b70c6c384296884247467f09fd380753d941e09afd39ea"},
+      "Rawlsing_P2_South_Asia_Deep_Question_Node_Catalog_v2.csv":{"rows":141,"sha256":"1e31a8bc40a76a921668497ad8268e4d048c5c19e65003d44424a89b5a4f73f1"},
+      "Rawlsing_P2_WVS_Deep_Question_Node_Catalog_v1.csv":{"rows":1219,"sha256":"cc538e7208e96f2a3333082e3ffdc88faf1bba0eee273664fe2ff213c3821ec0"}
+    },
+    "library_file_id":"file_000000006f64822f8ac5e0b134e6976b",
+    "name":"LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+    "sha256":"b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d"
+  },
+  "negative_ceiling":["NO_SOURCE_ROW_MATCH != UNRESOLVED","NO_ROUTING_SIGNAL_RECOVERED != GOVERNED_KNOWN_ABSENCE","OBSERVED_COUNTRY_COVERAGE != ROUTING_NONAPPLICABILITY_AUTHORITY","SOURCE_NODE_MATCH != EXECUTABLE_ROUTING_PREDICATE","SIGNAL_PRESENT != EXACT_ROUTING_INSTRUCTION","LMQ004_REMAINS_OPEN"],
+  "repository":"maidiu/rawlsing",
+  "starting_head":"0502c942d683dc3aad107d2b04c4b9e307cfa9be",
+  "status":"FAIL_CLOSED__EXACT_600_ROW_IDENTITY_AND_LATER_SOURCE_NODE_CROSSWALK_RECOVERED__0_POSITIVE_ROUTING__0_GOVERNED_KNOWN_ABSENCE__600_STILL_UNRESOLVED",
+  "validation": {
+    "a07_denominator_assertions":"PASS",
+    "historical_applicability_captured_validator":{"all_fail_closed":true,"duplicate_keys":false,"rows":18518,"status":"PASS"},
+    "historical_applicability_validator_reexecuted_after_materialization":true,
+    "historical_routing_captured_validator":{"rows":700,"status":"PASS","unresolved":699},
+    "historical_routing_validator_reexecution_note":"Captured output exact; standalone extracted script expects ledger/summary adjacent and was not treated as a semantic failure."
+  },
+  "worker_branch":"agent/verkhovod-a07-lmq004-routing600-r1",
+  "z03_ref":"0c0e0704be91a5e19c9c524e3f29cd081495b721"
+}
