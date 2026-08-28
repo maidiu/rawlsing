@@ -1,0 +1,35 @@
+{
+  "schema": "rawlsing.prev3.mx01.replay_oracle",
+  "schema_version": 1,
+  "experiment": "MX01_RECURSIVE_TOPOLOGY_CLOSURE_R1",
+  "required_fresh_process_identity": [
+    "parent_predicate_ref",
+    "child_predicate_ref",
+    "child_immediate_parent_ref",
+    "child_membership_replay_or_exact_member_set",
+    "grandchild_predicate_ref",
+    "grandchild_immediate_parent_ref",
+    "grandchild_membership_replay_or_exact_member_set",
+    "conditioned_cotravel_receipt_ref",
+    "conditioned_cotravel_empirical_fact_refs",
+    "valid_empty_receipt_ref",
+    "underpowered_receipt_ref"
+  ],
+  "current_positive_replay_capabilities": [
+    "I05 candidate identity is content-addressed",
+    "I05 evaluated frontier identity is content-addressed",
+    "I05 candidate replay ref is content-addressed",
+    "DiscoveryResultReceipt carries winning_predicate_ref",
+    "DiscoveryResultReceipt carries branch_or_parent_ancestry_refs",
+    "catalog-order perturbation is already tested to preserve frontier/receipt/replay identity"
+  ],
+  "current_missing_recursive_handoff": [
+    "ExactBoundedDiscoveryResult does not return the compiled winning EmpiricalPredicate object or a canonical predicate catalog containing it",
+    "the C11 source repository does not automatically commit post-I05 compiled predicates",
+    "DiscoveryResultReceipt ancestry is set-like and does not encode an exact role-bearing immediate-parent edge",
+    "I05 does not materialize a PRESENT DiscoveryBranchReplayBinding for the discovered branch",
+    "no public next-generation API consumes a discovered branch receipt and resolves its winning predicate/membership as the next baseline"
+  ],
+  "replay_disposition": "NOT_CLOSED_FOR_DEPTH_GT_1_RECURSIVE_DISCOVERY",
+  "negative_ceiling": "One-level I05 receipt replay remains positive evidence; this oracle does not claim generic I05 nondeterminism."
+}
