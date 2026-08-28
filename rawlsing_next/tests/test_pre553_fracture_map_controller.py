@@ -281,3 +281,83 @@ def test_partial_generation_cannot_mutate_open_I05_frontier():
         authority_registry=registry, release_refs=(source["release_ref"],), depth=0,
     )
     assert binder.blocked_mutation is True
+
+
+def test_authorized_weighted_support_controls_modal_selection():
+    rows = [
+        {"id": "R1", "responses": {"Y": 0}, "coords": {"G": "A"}},
+        {"id": "R2", "responses": {"Y": 0}, "coords": {"G": "B"}},
+        {"id": "R3", "responses": {"Y": 1}, "coords": {"G": "A"}},
+    ]
+    weights = {
+        "R1": ("WEIGHT_VALID_AUTHORIZED", "1"),
+        "R2": ("WEIGHT_VALID_AUTHORIZED", "1"),
+        "R3": ("WEIGHT_VALID_AUTHORIZED", "10"),
+    }
+    source = _build_source("weighted-modal-controller", rows, weights=weights)
+    qauth = _query_authority("weighted-modal-controller")
+    dauth = _controller_discovery_authority("weighted-modal-controller-discovery")
+    parent = _branch_predicate(source, qauth)
+    root = _query(
+        source, qauth, parent, ("Y",), measure="GOVERNED_WEIGHTED", tag="weighted-modal"
+    )
+    controller = FractureMapController(policy=_policy())
+    morphology = controller.root_morphology(
+        repository=source["repo"], root_query=root, root_predicate=parent,
+        authority_registry=_registry(source, qauth, dauth), release_refs=(source["release_ref"],),
+    )
+    assert morphology.support_basis == "GOVERNED_WEIGHTED"
+    assert morphology.unique_modal_cell == "1"
+
+
+def test_multilabel_exact_patterns_and_presence_marginals_remain_distinct():
+    rows = [
+        {"id": "R1", "responses": {"Y": "A+B"}, "coords": {"G": "A"}},
+        {"id": "R2", "responses": {"Y": "A_ONLY"}, "coords": {"G": "A"}},
+        {"id": "R3", "responses": {"Y": "B_ONLY"}, "coords": {"G": "B"}},
+        {"id": "R4", "responses": {"Y": "NONE"}, "coords": {"G": "B"}},
+    ]
+    source = _build_source("multilabel-controller", rows)
+    qauth = _query_authority("multilabel-controller")
+    dauth = _controller_discovery_authority("multilabel-controller-discovery")
+    parent = _branch_predicate(source, qauth)
+    base = _query(source, qauth, parent, ("Y",), tag="multilabel-base")
+    fields = dict(base.semantic_fields)
+    topology = dict(fields["target_arity_and_topology"])
+    components = [dict(topology["components"][0])]
+    components[0]["domain"] = ["A+B", "A_ONLY", "B_ONLY", "NONE"]
+    components[0]["topology"] = "MULTISELECT_PATTERN"
+    topology["components"] = components
+    fields["target_arity_and_topology"] = topology
+    root = EmpiricalQuerySpec(
+        typed_state=base.typed_state,
+        authority_snapshot_refs=base.authority_snapshot_refs,
+        dependency_refs=base.dependency_refs,
+        producer_replay_locator_or_reference_root=base.producer_replay_locator_or_reference_root,
+        **fields,
+    )
+    policy = _policy(presence_labels_by_cell={
+        canonical_json("A+B"): ("A", "B"),
+        canonical_json("A_ONLY"): ("A",),
+        canonical_json("B_ONLY"): ("B",),
+        canonical_json("NONE"): (),
+    })
+    controller = FractureMapController(policy=policy)
+    morphology = controller.root_morphology(
+        repository=source["repo"], root_query=root, root_predicate=parent,
+        authority_registry=_registry(source, qauth, dauth), release_refs=(source["release_ref"],),
+    )
+    assert {cell.cell for cell in morphology.cells} == {"A+B", "A_ONLY", "B_ONLY", "NONE"}
+    assert set(morphology.presence_support) == {"A", "B"}
+    assert morphology.presence_support["A"] == {"$exact_fraction": [2, 1]}
+    assert morphology.presence_support["B"] == {"$exact_fraction": [2, 1]}
+
+
+def test_authority37_stop_thresholds_are_retention_not_deletion():
+    controller = FractureMapController(policy=Authority37ControllerPolicy())
+    assert controller.continuation_disposition(raw_n=24, depth=0, remaining_candidates=3) == "RETAIN_REPORT_ONLY_LOW_N"
+    assert controller.continuation_disposition(raw_n=25, depth=0, remaining_candidates=3) == "RETAIN_REPORT_ONLY_EXPLORATORY"
+    assert controller.continuation_disposition(raw_n=49, depth=0, remaining_candidates=3) == "RETAIN_REPORT_ONLY_EXPLORATORY"
+    assert controller.continuation_disposition(raw_n=50, depth=0, remaining_candidates=3) == "CONTINUE_ELIGIBLE"
+    assert controller.continuation_disposition(raw_n=50, depth=4, remaining_candidates=3) == "STOP_MAX_DEPTH"
+    assert controller.continuation_disposition(raw_n=50, depth=0, remaining_candidates=0) == "STOP_NO_REMAINING_ELIGIBLE_PREDICTORS"
