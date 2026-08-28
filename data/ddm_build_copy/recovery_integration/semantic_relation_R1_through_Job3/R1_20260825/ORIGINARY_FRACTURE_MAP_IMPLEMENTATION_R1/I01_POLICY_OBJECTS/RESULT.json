@@ -1,0 +1,45 @@
+{
+  "schema": "I01_FRACTURE_MAP_POLICY_OBJECTS_R1_RESULT@1.0.0",
+  "status": "I01_FRACTURE_MAP_POLICY_OBJECTS_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-fracturemap-i01-policy-objects-r1",
+  "verified_start_head": "23d6ce5b6f9fbcd700ecacb0168f577b54b572a5",
+  "scope": "I01_ONLY",
+  "implementation": {
+    "controller_traversal": false,
+    "i05_semantics_modified": false,
+    "query_j3_modified": false,
+    "cosignature_enumeration": false,
+    "v3_work": false,
+    "policy_contract": true,
+    "continuation_decision_contract": true,
+    "empirical_fracture_map_receipt_public_family": true
+  },
+  "policy_v1": {
+    "policy_id": "AUTHORITY37_CONSERVATIVE_PARITY_V1",
+    "policy_version": "1.0.0",
+    "minimum_split_raw_n": 50,
+    "minimum_report_raw_n": 25,
+    "maximum_depth": 4,
+    "tuning_requires_new_policy_version": true
+  },
+  "public_family": "EmpiricalFractureMapReceipt@1.0.0",
+  "receipt_ref_only": true,
+  "copied_empirical_payload_forbidden": true,
+  "retention_equals_recursion": false,
+  "producer_typed_states_preserved": true,
+  "pre_v3_actor_independent": true,
+  "test_evidence": {
+    "focused_tests_authored": 9,
+    "behavioral_contract_harness_passed": 9,
+    "behavioral_contract_harness_failed": 0,
+    "ast_syntax_checks_passed": 2,
+    "full_repository_pytest": "NOT_RUN__NO_REPOSITORY_COMMAND_RUNNER_OR_EXISTING_ACTIONS_WORKFLOW_AVAILABLE"
+  },
+  "production_blobs": {
+    "pre553_empirical_objects": "8f73aaa1dc1934791840199f9a7af711d5a6a1ee",
+    "pre553_fracture_map_contract": "47ca3b404fdad620beb93055d18101ebeda97192",
+    "focused_tests": "371746bf416a1189f408bfeb3715dfdc3dc184f2"
+  },
+  "success_token": "I01_FRACTURE_MAP_POLICY_OBJECTS_R1_COMPLETE"
+}

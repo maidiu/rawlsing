@@ -34,6 +34,7 @@ PUBLIC_OBJECT_FAMILIES = (
     "DiscoveryResultReceipt@1.0.0",
     "StructuralEmpiricalAdmission@1.0.0",
     "ReplayReceipt@1.0.0",
+    "EmpiricalFractureMapReceipt@1.0.0",
 )
 PUBLIC_OBJECT_FAMILY_NAMES = frozenset(x.split("@", 1)[0] for x in PUBLIC_OBJECT_FAMILIES)
 
@@ -116,6 +117,10 @@ STATE_FAMILIES: Mapping[str, frozenset[str]] = MappingProxyType({
         "ADMITTED_FOR_EXACT_STRUCTURAL_USE", "ADMISSION_DENIED", "MISSING_AUTHORITY",
         "DEFERRED", "NONCOMPARABLE", "INSUFFICIENT_EVIDENCE", "OUT_OF_SCOPE",
         "UNRESOLVED", "INTEGRITY_FAILURE",
+    }),
+    "FRACTURE_MAP_RECEIPT_STATE": frozenset({
+        "FRACTURE_MAP_CLOSURE_COMPLETE", "FRACTURE_MAP_CLOSURE_PARTIAL",
+        "FRACTURE_MAP_CLOSURE_BLOCKED",
     }),
     "REPLAY_STATE": frozenset({
         "REPLAY_VERIFIED", "REPLAY_INPUT_MISSING", "AUTHORITY_UNAVAILABLE",
