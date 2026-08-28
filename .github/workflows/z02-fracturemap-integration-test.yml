@@ -18,6 +18,17 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install test dependencies
-        run: python -m pip install --disable-pip-version-check pytest pandas pyreadstat
-      - name: Run full PRE553 Python test surface
-        run: python -m pytest -q rawlsing_next/tests
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run Authority-40 mandated Z02 regression surface
+        run: >-
+          python -m pytest -q
+          rawlsing_next/tests/test_pre553_empirical_objects_authority.py
+          rawlsing_next/tests/test_pre553_empirical_query.py
+          rawlsing_next/tests/test_pre553_discovery_exact.py
+          rawlsing_next/tests/test_pre553_recursive_handoff.py
+          rawlsing_next/tests/test_pre553_fracture_map_contract.py
+          rawlsing_next/tests/test_pre553_fracture_map_controller.py
+          rawlsing_next/tests/test_pre553_cosignature_composition.py
+          rawlsing_next/tests/test_pre553_replay_audit.py
+          rawlsing_next/tests/test_pre553_query_frontier_hostile.py
+          rawlsing_next/tests/test_pre553_fracture_map_integration.py

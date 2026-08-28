@@ -11,6 +11,7 @@ from rawlsing_next.pre553_fracture_map_contract import (
     EmpiricalFractureMapReceipt,
     FractureMapControllerPolicy,
 )
+from rawlsing_next.pre553_empirical_objects import authority_ref, exact_ref
 from rawlsing_next.pre553_fracture_map_controller import (
     FractureMapController,
     FractureMapControllerError,
@@ -174,8 +175,8 @@ def test_i04_direct_j3_closure_wires_ref_only_into_i01_public_map_receipt():
     )
     assert isinstance(receipt, EmpiricalFractureMapReceipt)
     assert receipt.FAMILY == "EmpiricalFractureMapReceipt@1.0.0"
-    assert receipt.controller_policy_ref == policy.ref
-    assert receipt.controller_policy_authority_ref == policy.policy_authority_ref
+    assert exact_ref(receipt.controller_policy_ref) == policy.ref
+    assert authority_ref(receipt.controller_policy_authority_ref) == policy.policy_authority_ref
     assert result.closure_receipt.ref in receipt.branch_cosignature_topology_closure_refs
     assert decision.ref in receipt.continuation_decision_refs
     assert triple.ref in receipt.empirical_fact_refs
