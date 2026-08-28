@@ -1,0 +1,66 @@
+{
+  "oracle_id": "MX02_COMPONENT_VECTOR_SCALARIZATION_ORACLE@1.0.0",
+  "binding_expression": "SCALARIZE iff COMPLETE_COVERAGE && ALL_GOVERNED_COMPONENTS_NONEMPTY && UNANIMOUS_AUTHORITATIVE_VALUE",
+  "inputs": {
+    "complete_coverage": "boolean proven from exact governed-component identity closure",
+    "all_governed_components_nonempty": "boolean proven from every governed component typed authority state/value binding",
+    "unanimous_authoritative_value": "boolean proven only after complete coverage and non-empty authority for every governed component"
+  },
+  "dispositions": {
+    "SCALARIZED_COMPLETE_UNANIMOUS_NONEMPTY": "scalar projection lawful; exact vector and proof remain authoritative lineage",
+    "VECTOR_HETEROGENEOUS_COMPLETE": "complete and non-empty but two or more authoritative values differ; scalar forbidden",
+    "VECTOR_INCOMPLETE_COVERAGE": "governed component set not completely and exactly dispositioned; scalar forbidden regardless of matched-subset agreement",
+    "VECTOR_GOVERNED_EMPTY_COMPONENT": "complete identity coverage includes a lawfully empty component; scalar forbidden",
+    "VECTOR_DENIED_OR_NONCOMPARABLE_COMPONENT": "one or more governed components carries denial/noncomparability; scalar forbidden unless a separately accepted authority explicitly defines another operation"
+  },
+  "forbidden_operations": [
+    "average values",
+    "majority vote",
+    "select first component",
+    "select parent label",
+    "ignore empty component",
+    "fill null/empty with default",
+    "treat resolved subset as full governed set"
+  ],
+  "required_hostile_cases": [
+    {
+      "case_id": "HETEROGENEOUS_COMPLETE",
+      "complete_coverage": true,
+      "all_governed_components_nonempty": true,
+      "unanimous_authoritative_value": false,
+      "expected_disposition": "VECTOR_HETEROGENEOUS_COMPLETE",
+      "scalar_allowed": false
+    },
+    {
+      "case_id": "INCOMPLETE_COVERAGE",
+      "complete_coverage": false,
+      "all_governed_components_nonempty": false,
+      "unanimous_authoritative_value": false,
+      "expected_disposition": "VECTOR_INCOMPLETE_COVERAGE",
+      "scalar_allowed": false
+    },
+    {
+      "case_id": "GOVERNED_EMPTY_COMPONENT",
+      "complete_coverage": true,
+      "all_governed_components_nonempty": false,
+      "unanimous_authoritative_value": false,
+      "expected_disposition": "VECTOR_GOVERNED_EMPTY_COMPONENT",
+      "scalar_allowed": false
+    },
+    {
+      "case_id": "UNANIMOUS_COMPLETE_NONEMPTY",
+      "complete_coverage": true,
+      "all_governed_components_nonempty": true,
+      "unanimous_authoritative_value": true,
+      "expected_disposition": "SCALARIZED_COMPLETE_UNANIMOUS_NONEMPTY",
+      "scalar_allowed": true
+    },
+    {
+      "case_id": "MIXED_PRODUCER_PUBLICATION",
+      "additional_oracle": "publication/reload preserves every component producer ref exactly and cannot alter scalar disposition or semantic ownership"
+    }
+  ],
+  "historical_basis": "Accepted Section35 component-aware bridge law recovered in R03/R04 and adopted by Authority 32",
+  "current_repository_status": "COMPUTATION_EXPRESSIBLE__COMMON_SEMANTIC_PROJECTION_AUTHORITY_MISSING",
+  "negative_ceiling": "A computed equality is not an authorized scalar semantic object absent a governed common projection receipt."
+}
