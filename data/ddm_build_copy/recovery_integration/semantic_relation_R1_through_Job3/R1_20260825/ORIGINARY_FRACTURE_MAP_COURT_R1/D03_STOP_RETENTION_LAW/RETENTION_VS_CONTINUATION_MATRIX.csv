@@ -1,0 +1,19 @@
+branch_or_result_class,retain_branch_or_typed_result,may_recurse,default_if_continuation_authority_missing,required_for_recurse,terminal_or_report_only_behavior
+SUPPORTED_BRANCH,YES,YES_CONDITIONALLY,RETAIN_REPORT_ONLY_STOP,"exact continuation authority; support/stability pass; depth available; lawful remaining frontier",retain exact branch and stop reason if any condition fails
+SUPPORTED_STABLE_MINORITY,YES,YES_CONDITIONALLY,RETAIN_REPORT_ONLY_STOP,"governed stable-minority/branch identity; support/stability; depth; remaining frontier",never discard because minority
+SUPPORTED_SPLIT_MULTIMODAL,YES_ALL_SUPPORTED_CONFIGURATIONS,YES_CONDITIONALLY,RETAIN_REPORT_ONLY_STOP,"governed branch construction for competing modes; support/stability; depth; remaining frontier",never select one modal winner merely to simplify
+SUPPORTED_RESIDUAL_NONE_CATEGORY_FAILURE,YES,YES_CONDITIONALLY,RETAIN_REPORT_ONLY_STOP,"source-semantic substantive residual; exact branch predicate; support/stability; depth; remaining frontier",retain as empirical category-failure/residual without motive invention
+LOW_SUPPORT_OBSERVED,YES,ONLY_IF_SEPARATELY_AUTHORIZED,RETAIN_REPORT_ONLY_STOP,"versioned low-support exploratory continuation rule plus all ordinary continuation requirements",preserve LOW_SUPPORT and uncertainty; do not silently upgrade
+UNDERPOWERED_INSUFFICIENT_SUPPORT,YES_IF_OBSERVED_OR_REPORTABLE,NO_BY_RECOVERED_DEFAULT,RETAIN_REPORT_ONLY_STOP,"future explicitly governed exploratory exception if HQ chooses",retain distribution/support; block deeper split and strong interpretation
+VALID_EMPTY,YES_TYPED_RESULT,NO,RETAIN_TYPED_NONPOSITIVE_STOP,"none",retain exact valid-empty identity/provenance/replay; fabricate no branch
+ZERO_SUPPORT,YES_TYPED_RESULT,NO,RETAIN_TYPED_NONPOSITIVE_STOP,"none",retain zero-support result; distinguish from observed zero
+ZERO_OVERLAP,YES_TYPED_RESULT,NO,RETAIN_TYPED_NONPOSITIVE_STOP,"none",retain exact overlap failure; no reconstructed joint branch
+MISSING_UNAVAILABLE,YES_TYPED_RESULT,NO,RETAIN_TYPED_NONPOSITIVE_STOP,"new future exact data/authority and reevaluation creates new result",retain failure receipt; no positive branch
+UNRESOLVED_MISSING_AUTHORITY,YES_TYPED_RESULT,NO,RETAIN_TYPED_NONPOSITIVE_STOP,"new future exact authority and reevaluation creates new result",retain unresolved receipt; fail closed
+NONCOMPARABLE,YES_TYPED_RESULT,NO,RETAIN_TYPED_NONPOSITIVE_STOP,"new comparison authority/state and reevaluation creates new result",retain noncomparability; no pooling or continuation
+SUPPORTED_AT_MAX_DEPTH,YES,NO,RETAIN_TERMINAL_STOP,"none under current controller identity",retain branch as terminal MAX_DEPTH
+SUPPORTED_NO_MEANINGFUL_SPLIT,YES,NO,RETAIN_TERMINAL_STOP,"none after governed no-gain decision",retain branch as terminal NO_MEANINGFUL_SPLIT
+UNSTABLE_BRANCH,YES,NO_BY_RECOVERED_DEFAULT,RETAIN_REPORT_ONLY_STOP,"future versioned exploratory instability rule if HQ chooses",retain branch with stability warning
+SUPPORTED_NO_REMAINING_PREDICTORS,YES,NO,RETAIN_TERMINAL_STOP,"new governed frontier/version if eligibility law changes",retain terminal predictor-exhaustion receipt
+SUPPORTED_NO_REMAINING_QUESTIONS,YES,NO_FOR_COSIGNATURE_CONTINUATION,RETAIN_TERMINAL_STOP,"new governed question frontier/version if enumeration law changes",retain terminal question-exhaustion receipt
+OBSERVED_ZERO_CELL_WITH_SUPPORTED_BRANCH_CONTEXT,YES,CONDITIONAL_ON_PARENT_BRANCH_NOT_ZERO_CELL_ITSELF,RETAIN_CURRENT_EMPIRICAL_RESULT,"ordinary branch continuation law",preserve observed zero cell inside supported denominator; do not treat as no-data

@@ -1,0 +1,96 @@
+{
+  "court": "D03_FRACTURE_MAP_CONTINUATION_STOP_RETENTION_LAW_R1",
+  "status": "PASS__STOP_RETENTION_LAW_RECOVERED__NUMERIC_CONTINUATION_POLICY_REMAINS_VERSIONED_AUTHORITY",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-fracturemap-d03-stop-retention-law-r1",
+  "starting_head": "626b2d04b13afbb13b46938987f4c1da11109c75",
+  "scope": "Authority36A_D03_documentary_authority_only",
+  "core_laws": [
+    "BRANCH_RETENTION != RECURSION_ELIGIBILITY",
+    "STOP_RECURSION != DELETE_BRANCH",
+    "UNDERPOWERED != VALID_EMPTY != MISSING",
+    "NONE_OF_THESE != MISSING/DK/REFUSAL/NOT_APPLICABLE"
+  ],
+  "continuation_dispositions": [
+    "RETAIN_AND_CONTINUE_ELIGIBLE",
+    "RETAIN_REPORT_ONLY_STOP",
+    "RETAIN_TERMINAL_STOP",
+    "RETAIN_TYPED_NONPOSITIVE_STOP"
+  ],
+  "retention_rule": {
+    "positive_or_reportable_branch": "retain exact branch/result identity, distribution, support, authority, ancestry and replay even when recursion stops",
+    "typed_nonpositive": "retain exact typed result/receipt; never fabricate positive branch"
+  },
+  "binding_stop_concepts": [
+    "LOW_N_OR_INSUFFICIENT_SUPPORT",
+    "NO_MEANINGFUL_SPLIT_OR_NO_GAIN",
+    "MAX_DEPTH",
+    "UNSTABLE_BRANCH",
+    "NO_REMAINING_ELIGIBLE_PREDICTORS",
+    "NO_REMAINING_ELIGIBLE_QUESTIONS",
+    "VALID_EMPTY",
+    "MISSING_OR_UNAVAILABLE",
+    "UNRESOLVED_OR_MISSING_AUTHORITY",
+    "NONCOMPARABLE",
+    "ZERO_SUPPORT_WHERE_APPLICABLE"
+  ],
+  "nonbinding_historical_examples": {
+    "n_lt_50": "exploratory_only_example_not_universal",
+    "n_lt_25": "report_distribution_do_not_split_example_not_universal",
+    "selected_option_count_lt_10": "do_not_infer_channel_example_not_universal"
+  },
+  "current_pre553_measure_inputs": [
+    "raw_denominator_support",
+    "raw_numerator_support_or_raw_resolved_target_support",
+    "complete_target_cell_raw_counts",
+    "weighted_denominator_support_if_authorized",
+    "weighted_cell_support_if_authorized",
+    "risk_set_member_identity",
+    "measure_basis_ref",
+    "uncertainty_method_or_typed_state",
+    "source_universe_identity",
+    "replay_identity"
+  ],
+  "current_i05_support_rule": {
+    "rule_id": "PRE553_PRODUCTION_I05_NO_ADDITIONAL_MINIMUM_RAW_DENOMINATOR@1.0.0",
+    "semantic_hash": "6df2664f4a9cd8fe5d334b954aed4db1b97de4937b4d03e5ce63bcc322baab4c",
+    "minimum_raw_denominator": 0,
+    "meaning": "I05 adds no additional count-based adequacy floor beyond producer typed states",
+    "not_a_recursion_rule": true
+  },
+  "state_holdings": {
+    "SUPPORTED": "retain; continue-eligible only under separate governed continuation predicates",
+    "SUPPORTED_TERMINAL": "retain as learned branch; stop with exact reason",
+    "STABLE_MINORITY": "retain; shape does not itself mandate prune or recurse",
+    "SPLIT_MULTIMODAL": "retain competing supported configurations; recurse only under governed branch construction and continuation law",
+    "VALID_EMPTY": "retain typed empty result and replay; no positive branch; stop",
+    "UNDERPOWERED_INSUFFICIENT_SUPPORT": "retain observed/reportable distribution with limitation; block deeper split unless separately authorized",
+    "LOW_SUPPORT": "retain producer state; no automatic recurse eligibility",
+    "RESIDUAL_NONE_CATEGORY_FAILURE": "retain if source-semantic and observed; continuation subject to ordinary governed rules",
+    "MISSING_UNAVAILABLE_UNRESOLVED_NONCOMPARABLE": "retain typed nonpositive receipt; no positive branch; stop",
+    "MAX_DEPTH": "retain current branch; terminal stop",
+    "NO_MEANINGFUL_SPLIT_NO_GAIN": "retain current branch; terminal stop after governed criterion",
+    "UNSTABLE_BRANCH": "retain with uncertainty/stability qualification; report-only stop absent new authority",
+    "NO_REMAINING_ELIGIBLE_FRONTIER": "retain current branch; terminal stop"
+  },
+  "minimum_hq_law_gaps": [
+    "exact branch continuation support/stability policy",
+    "exact no-meaningful-split/no-gain criterion",
+    "exact unstable-branch criterion",
+    "exact stable-minority/split/multimodal classifier if used for continuation",
+    "exact maximum depth per controller operation",
+    "exact low-support exploratory continuation policy if desired",
+    "predictor frontier exhaustion semantics after D02 eligibility law",
+    "co-signature question frontier exhaustion semantics after D04 enumeration law",
+    "optional pure/near-pure classifier or alias to no-meaningful-split"
+  ],
+  "noninterference": {
+    "consumed_L02_L03": false,
+    "production_code_changed": false,
+    "i03_i05_semantics_changed": false,
+    "numeric_threshold_invented": false,
+    "architecture_selected": false,
+    "v3_changed": false
+  },
+  "terminal_token": "D03_FRACTURE_MAP_STOP_RETENTION_LAW_R1_COMPLETE"
+}
