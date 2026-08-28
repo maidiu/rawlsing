@@ -55,6 +55,9 @@ from rawlsing_next.pre553_empirical_objects import (
 )
 
 QUERY_EXECUTION_CONTRACT_ID = "PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0"
+LEGACY_MAXIMUM_TARGET_ARITY_J = 2
+MAXIMUM_SUPPORTED_TARGET_ARITY_J = 3
+TARGET_ARITY_AUTHORITY_SCOPE_FIELD = "maximum_target_arity_J"
 
 SOURCE_SCOPE_MODES = frozenset({
     "SINGLE_UNIVERSE",
@@ -178,6 +181,8 @@ class _Evaluation:
     cell_material: Mapping[str, Any]
     weighted_denominator: Fraction | None
     weighted_cells: Mapping[str, Fraction] | None
+    denominator_material: Mapping[str, Any]
+    cell_member_refs: Mapping[str, tuple[ExactRef, ...]]
     used_objects: tuple[CanonicalSemanticObject | C11InternalRecord, ...]
     used_authority_refs: tuple[AuthorityRef, ...]
 
@@ -305,6 +310,38 @@ def _profile(query: EmpiricalQuerySpec) -> _ExecutionProfile:
     return _ExecutionProfile(mode, measure, risk, state_ref, weight_basis, canonicalize(uncertainty))
 
 
+def _query_target_arity_ceiling(
+    query: EmpiricalQuerySpec,
+    registry: AuthorityRegistry,
+) -> tuple[int, bool]:
+    """Return the strictest exact query-authority J ceiling.
+
+    Historical I03 query authority predates an explicit J field and remains lawful
+    only through the accepted J<=2 envelope. Authority-37 J=3 therefore requires a
+    positively versioned authority snapshot whose exact scope envelope carries
+    maximum_target_arity_J. Multiple exact query authorities compose conservatively
+    by the strictest declared ceiling.
+    """
+    explicit: list[int] = []
+    for value in query.query_authority_refs:
+        ref = _authority(value, "query.query_authority_refs")
+        snapshot = registry.resolve_exact(ref).snapshot
+        scope = snapshot.scope_envelope
+        if not isinstance(scope, Mapping):
+            raise Pre553AuthorityError("query authority scope_envelope must be an exact mapping")
+        if TARGET_ARITY_AUTHORITY_SCOPE_FIELD not in scope:
+            continue
+        ceiling = scope[TARGET_ARITY_AUTHORITY_SCOPE_FIELD]
+        if not isinstance(ceiling, int) or isinstance(ceiling, bool) or ceiling < 1:
+            raise Pre553AuthorityError(
+                "query authority maximum_target_arity_J must be a positive integer"
+            )
+        explicit.append(ceiling)
+    if not explicit:
+        return LEGACY_MAXIMUM_TARGET_ARITY_J, False
+    return min(explicit), True
+
+
 def _parse_target_plan(query: EmpiricalQuerySpec, registry: AuthorityRegistry) -> _TargetPlan:
     spec = _require_mapping(query.target_arity_and_topology, "target_arity_and_topology")
     target_refs = tuple(_exact(v, "target_refs") for v in query.target_refs)
@@ -314,6 +351,38 @@ def _parse_target_plan(query: EmpiricalQuerySpec, registry: AuthorityRegistry) -
     order_semantics = spec.get("joint_order_semantics")
     if order_semantics not in JOINT_ORDER_SEMANTICS:
         raise EmpiricalQueryExecutionError("joint_order_semantics is invalid")
+
+    authority_ceiling, explicit_ceiling = _query_target_arity_ceiling(query, registry)
+    if arity > MAXIMUM_SUPPORTED_TARGET_ARITY_J:
+        raise Pre553AuthorityError(
+            f"requested target arity J={arity} exceeds implementation ceiling "
+            f"J={MAXIMUM_SUPPORTED_TARGET_ARITY_J}"
+        )
+    if arity > authority_ceiling:
+        raise Pre553AuthorityError(
+            f"requested target arity J={arity} exceeds exact query-authority ceiling "
+            f"J={authority_ceiling}"
+        )
+    if arity == 3 and not explicit_ceiling:
+        raise Pre553AuthorityError(
+            "J=3 requires an explicit versioned query authority with maximum_target_arity_J>=3"
+        )
+    if arity == 3:
+        target_keys = [ref.key for ref in target_refs]
+        if len(set(target_keys)) != 3:
+            raise EmpiricalQueryExecutionError(
+                "J=3 target triple requires exactly three unique exact target refs"
+            )
+        if order_semantics != "CANONICAL_SET_ORDER":
+            raise EmpiricalQueryExecutionError(
+                "J=3 target triple requires CANONICAL_SET_ORDER target semantics"
+            )
+        canonical_targets = tuple(sorted(target_refs, key=lambda ref: ref.key))
+        if target_refs != canonical_targets:
+            raise EmpiricalQueryExecutionError(
+                "J=3 target triple must already be canonical exact-ref sorted"
+            )
+
     components_raw = _require_sequence(spec.get("components"), "target components")
     if len(components_raw) != arity:
         raise EmpiricalQueryExecutionError("target components length must equal declared arity")

@@ -125,8 +125,8 @@ FIXTURE_ORACLES: Mapping[str, FixtureOracle] = {
     ),
     "K_WAY_BOUNDED_JOINT": FixtureOracle(
         "K_WAY_BOUNDED_JOINT", ("K_WAY", "PARITY", "BOUNDED_JOINT"),
-        {"arity": 4, "denominator": 8, "domain_cells": 16, "supported_cells": 8, "zero_cells": 8},
-        "All lower-order views can miss a bounded higher-order parity relation; the exact 4-way topology must survive.",
+        {"arity": 3, "denominator": 4, "domain_cells": 8, "supported_cells": 4, "zero_cells": 4},
+        "All pairwise views can miss a bounded parity relation; the exact Authority-37 J=3 topology must survive.",
     ),
 }
 FIXTURE_INVENTORY = tuple(FIXTURE_ORACLES)
@@ -172,7 +172,7 @@ def xor_zero_unary_fixture():
         {"id": "R00", "responses": {"X": 0, "Y": 0, "Z": 0}}, {"id": "R01", "responses": {"X": 0, "Y": 1, "Z": 1}},
         {"id": "R10", "responses": {"X": 1, "Y": 0, "Z": 1}}, {"id": "R11", "responses": {"X": 1, "Y": 1, "Z": 0}},
     ])
-    qa = _query_authority("r12-xor")
+    qa = _query_authority("r12-xor", max_target_arity_J=3)
     facts = {}
     for var in ("X", "Y"):
         for value in (0, 1):
@@ -364,9 +364,17 @@ def topology_fixture():
 
 
 def k_way_bounded_joint_fixture():
-    rows = [{"id": f"R{a}{b}{c}", "responses": {"A": a, "B": b, "C": c, "Y": a ^ b ^ c}} for a in (0, 1) for b in (0, 1) for c in (0, 1)]
-    source = _build_source("r12-kway", rows); qa = _query_authority("r12-kway"); pred = _branch_predicate(source, qa, tag="all")
-    return source, _run(source, qa, pred, _query(source, qa, pred, ("A", "B", "C", "Y"), tag="four-way")).facts[0]
+    rows = [
+        {"id": f"R{x}{y}", "responses": {"X": x, "Y": y, "Z": x ^ y}}
+        for x in (0, 1) for y in (0, 1)
+    ]
+    source = _build_source("r12-kway", rows)
+    qa = _query_authority("r12-kway", max_target_arity_J=3)
+    pred = _branch_predicate(source, qa, tag="all")
+    return source, _run(
+        source, qa, pred,
+        _query(source, qa, pred, ("X", "Y", "Z"), tag="authority37-j3"),
+    ).facts[0]
 
 
 __all__ = [

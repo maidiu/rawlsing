@@ -50,7 +50,7 @@ def _qt(template_id, query):
     return {"template_id": template_id, "query_ref": query.ref}
 
 
-def _grammar(*, operation, atoms, templates, rules, k=3, j=4, allow_empty=False):
+def _grammar(*, operation, atoms, templates, rules, k=3, j=2, allow_empty=False):
     return {
         "schema": CANDIDATE_GRAMMAR_SCHEMA,
         "discovery_operation": operation,
@@ -316,31 +316,32 @@ def test_bounded_response_x_position_cartesian_frontier_is_fully_evaluated():
     assert all(r.coverage_state.startswith("EVALUATED_") for r in result.receipts)
 
 
-def test_higher_order_parity_uses_exact_joint_not_lower_order_signal():
-    rows = []
-    for a in (0, 1):
-        for b in (0, 1):
-            for c in (0, 1):
-                rows.append({"id": f"R{a}{b}{c}", "responses": {"A": a, "B": b, "C": c, "Z": a ^ b ^ c}})
-    source = _build_source("i05-parity4", rows)
-    qauth, dauth = _query_authority("i05-parity4"), _d_auth("i05-parity4-discovery")
+def test_higher_order_parity_uses_exact_j3_joint_not_lower_order_signal():
+    rows = [
+        {"id": f"R{x}{y}", "responses": {"X": x, "Y": y, "Z": x ^ y}}
+        for x in (0, 1) for y in (0, 1)
+    ]
+    source = _build_source("i05-parity3", rows)
+    qauth = _query_authority("i05-parity3", max_target_arity_J=3)
+    dauth = _d_auth("i05-parity3-discovery")
     all_p = _branch_predicate(source, qauth, tag="all")
-    joint = _query(source, qauth, all_p, ("A", "B", "C", "Z"), tag="joint")
-    marginals = [_query(source, qauth, all_p, (q,), tag=f"m-{q}") for q in ("A", "B", "C", "Z")]
+    joint = _query(source, qauth, all_p, ("X", "Y", "Z"), tag="joint")
+    marginals = [_query(source, qauth, all_p, (q,), tag=f"m-{q}") for q in ("X", "Y", "Z")]
     grammar = _grammar(
-        operation="I03-OP-i05-parity4-discovery",
+        operation="I03-OP-i05-parity3-discovery",
         atoms=[_atom("ALL", all_p, "BRANCH")],
         templates=[_qt("J", joint), *[_qt(f"M{i}", q) for i, q in enumerate(marginals)]],
         rules=[_rule(
-            "parity4", "BOUNDED_K_WAY_RESPONSE_CONFIGURATION", "JOINT_DEPENDENCE",
-            baseline_atom_id="ALL", joint_template_id="J", marginal_template_ids=("M0", "M1", "M2", "M3"),
+            "parity3", "BOUNDED_K_WAY_RESPONSE_CONFIGURATION", "JOINT_DEPENDENCE",
+            baseline_atom_id="ALL", joint_template_id="J",
+            marginal_template_ids=("M0", "M1", "M2"),
             validation={"kind": "JOINT_NOT_PRODUCT_OF_MARGINALS"},
         )],
-        k=3, j=4,
+        k=2, j=3,
     )
     result = _execute(source, qauth, dauth, grammar, (all_p,), (joint, *marginals))
     assert result.receipts[0].typed_state == "DISCOVERED_RESULT_SUPPORTED"
-    assert len(result.receipts[0].empirical_fact_refs) == 5
+    assert len(result.receipts[0].empirical_fact_refs) == 4
 
 
 def test_bounded_higher_order_configuration_cells_are_individually_covered():
@@ -348,7 +349,8 @@ def test_bounded_higher_order_configuration_cells_are_individually_covered():
         {"id": f"R{x}{y}", "responses": {"X": x, "Y": y, "Z": x ^ y}}
         for x in (0, 1) for y in (0, 1)
     ])
-    qauth, dauth = _query_authority("i05-config3"), _d_auth("i05-config3-discovery")
+    qauth = _query_authority("i05-config3", max_target_arity_J=3)
+    dauth = _d_auth("i05-config3-discovery")
     all_p = _branch_predicate(source, qauth, tag="all")
     joint = _query(source, qauth, all_p, ("X", "Y", "Z"), tag="joint")
     cells = tuple((str(x), str(y), str(z)) for x in (0, 1) for y in (0, 1) for z in (0, 1))
@@ -368,6 +370,29 @@ def test_bounded_higher_order_configuration_cells_are_individually_covered():
     assert sum(r.typed_state == "DISCOVERED_RESULT_SUPPORTED" for r in result.receipts) == 4
     assert sum(r.typed_state == "VALID_EMPTY" for r in result.receipts) == 4
     assert result.valid_empty is False
+
+
+def test_j4_discovery_frontier_fails_closed_at_authority37_implementation_ceiling():
+    source = _build_source("i05-j4-reject", [
+        {"id": "R1", "responses": {"W": 0, "X": 0, "Y": 0, "Z": 0}},
+    ])
+    qauth = _query_authority("i05-j4-reject", max_target_arity_J=4)
+    dauth = _d_auth("i05-j4-reject-discovery")
+    all_p = _branch_predicate(source, qauth, tag="all")
+    joint = _query(source, qauth, all_p, ("W", "X", "Y", "Z"), tag="joint")
+    grammar = _grammar(
+        operation="I03-OP-i05-j4-reject-discovery",
+        atoms=[_atom("ALL", all_p, "BRANCH")],
+        templates=[_qt("J", joint)],
+        rules=[_rule(
+            "j4", "BOUNDED_K_WAY_RESPONSE_CONFIGURATION", "BASE_QUERY",
+            baseline_atom_id="ALL", query_template_id="J", target_cells=(),
+            validation={"kind": "TARGET_CELL_SUPPORTED"},
+        )],
+        k=2, j=4, allow_empty=True,
+    )
+    with pytest.raises(ExactBoundedDiscoveryError, match="implementation ceiling J=3"):
+        _execute(source, qauth, dauth, grammar, (all_p,), (joint,))
 
 
 def test_valid_empty_frontier_is_typed_and_complete():

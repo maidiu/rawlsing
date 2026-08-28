@@ -181,7 +181,7 @@ def test_ordered_ranked_and_repeated_topologies_preserve_exact_information():
     assert facts["ordered"].ref != facts["ranked"].ref != facts["repeated"].ref
 
 
-def test_four_way_bounded_joint_retains_higher_order_parity_frontier():
+def test_authority37_j3_bounded_joint_retains_higher_order_parity_frontier():
     oracle = FIXTURE_ORACLES["K_WAY_BOUNDED_JOINT"].expected
     _, fact = k_way_bounded_joint_fixture()
     cells = fact.target_topology["complete_cell_semantic_projection"]
