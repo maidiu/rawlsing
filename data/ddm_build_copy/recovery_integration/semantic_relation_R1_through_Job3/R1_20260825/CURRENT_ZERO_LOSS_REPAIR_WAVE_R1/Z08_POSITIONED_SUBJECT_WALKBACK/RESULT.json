@@ -1,0 +1,87 @@
+{
+  "assignment": "Z08_POSITIONED_SUBJECT_POSSIBILITY_SPECIFICITY_WALKBACK_CLOSURE_R1",
+  "status": "PASS__BOUNDED_POSITIONED_SUBJECT_MODEL_AND_VISIBLE_SPECIFICITY_WALKBACK_IMPLEMENTED",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-z08-positioned-subject-walkback-r1",
+  "user_mandated_starting_head": "4e56e80f39edccf600534efbb8ab6956ca1bf0ba",
+  "command_precommand_launch_base": "c649d57ca660c5e2e38133698f5f12d1fc695d78",
+  "authority_refs": {
+    "authority_40": "40_LONG_MEMORY_DELTA_FULL_JOIN_AND_BOUNDED_ZERO_LOSS_REPAIR_AUTHORITY.md",
+    "d03_learned_world": "fa6ea6c957bd350b31e5adb504dbb854a0464dfa",
+    "c07_reconciliation": "dc4a263d7e1d402fcb325dec1ebe9f02765e0ff8",
+    "c07_positioned_subject_court": "25e8e99d471af561fd590122c83a5b3fdceaaad5",
+    "long_memory": "669062e6c319f31214f403939dded91300639bde"
+  },
+  "production": {
+    "module": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+    "implementation_commit": "269de28814d2187fedebbedbbecd5b63f6a67521",
+    "test_file": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+    "test_commit": "f4158912a230f682a68f28d2aff5ee9051ce0a78",
+    "pre553_i03_modified": false,
+    "pre553_objects_modified": false,
+    "queryspace_modified": false,
+    "v3_modified": false
+  },
+  "model_rule": {
+    "contract_id": "SOURCE_BACKED_POSITIONED_SUBJECT_POSSIBILITY@1.0.0",
+    "query_contract": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+    "field_contract": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_FIELD@1",
+    "rule_id": "POSITIONED_SUBJECT_EXACT_CONDITIONAL_WITH_GOVERNED_WALKBACK@1.0.0",
+    "algorithm_id": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+    "new_numeric_support_threshold_invented": false,
+    "smoothing": false,
+    "interpolation": false,
+    "extrapolation": false,
+    "nearest_neighbor": false,
+    "cross_source_proxy": false,
+    "actor_inference": false
+  },
+  "two_lane_law": {
+    "exact_lane_never_broadens": true,
+    "underpowered_exact_disposition": "UNRESOLVED",
+    "absent_exact_disposition": "UNRESOLVED",
+    "valid_empty_is_terminal_exact": true,
+    "noncomparable_is_terminal_exact": true,
+    "proxy_is_separate_lane": true,
+    "proxy_can_satisfy_exact_request": false,
+    "binding_noncollapse": "PROXY != EXACT FACT != ACTOR BELIEF"
+  },
+  "walkback": {
+    "authority_declared_finite_ladder": true,
+    "strictly_decreasing_conditioner_sets": true,
+    "positive_proxy_authority_list_required": true,
+    "same_source_required_v1": true,
+    "same_release_required_v1": true,
+    "specificity_loss_fields": [
+      "requested_conditioner_ids",
+      "retained_conditioner_ids",
+      "dropped_conditioner_ids",
+      "loss_count",
+      "loss_fraction"
+    ],
+    "fallback_attempt_replay": true
+  },
+  "replay": {
+    "result_identity_hash_sealed": true,
+    "model_rule_hash_bound": true,
+    "consumed_evidence_refs_bound": true,
+    "unused_evidence_not_a_determinant": true,
+    "verification_function": "verify_positioned_subject_possibility_replay"
+  },
+  "validation": {
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "frozen_obligations_all_covered": true,
+    "whole_repo_suite_claimed": false,
+    "execution_boundary": "bounded local compatibility harness over exact committed Z08 module/test content"
+  },
+  "scope": {
+    "z08_only": true,
+    "sibling_findings_consumed": false,
+    "architecture_selected": false,
+    "pre_v3_semantics_changed": false,
+    "actor_or_personality_semantics_added": false
+  },
+  "success_token": "Z08_POSITIONED_SUBJECT_WALKBACK_R1_COMPLETE"
+}
