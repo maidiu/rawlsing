@@ -86,6 +86,8 @@ These helper fields are **descriptive splitters only**, never actor beliefs, per
 
 The parser fails closed unless it decodes exactly 15,627 cases, ends on a complete case, and consumes the source file exactly to its byte size.
 
+Repository replay then runs `normalize_and_shard_oracles.py`, which performs serialization only: CRLF/LF normalization to canonical LF and deterministic 50-row sharding of the 370-row response-pattern census. The required `RESPONSE_PATTERN_ORACLE.csv` is the manifest emitted by that step; the eight part files contain every monolithic data row in order.
+
 ## Weight, support, and uncertainty law
 
 Every branch carries unweighted `n`, sum of `WT`, and Kish effective sample size. Binary selection uncertainty uses an approximate 95% Wald interval with Kish effective `n`. This is a **descriptive approximation, not a full complex-survey variance estimator**; no design-based precision claim beyond that approximation is made.
