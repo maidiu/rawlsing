@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install --upgrade pip pytest pandas pyyaml python-dotenv
+      - run: python -m pip install --upgrade pip pytest pandas pyyaml python-dotenv scikit-learn
       - run: >
           python -m pytest -q
           data/ddm_build_copy/tests/test_v550j_b08_asian_latin_authority.py
