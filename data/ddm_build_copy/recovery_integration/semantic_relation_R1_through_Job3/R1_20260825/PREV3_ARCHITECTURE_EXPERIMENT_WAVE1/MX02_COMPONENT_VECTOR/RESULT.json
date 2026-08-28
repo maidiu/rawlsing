@@ -1,0 +1,79 @@
+{
+  "status": "FAIL_CLOSED__MISSING_COMMON_COMPONENT_AUTHORITY_VECTOR_RECEIPT",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-prev3-mx02-component-vector-r1",
+  "starting_head": "7a86a8e0631adb85fba7d727b556fffd06c00e4d",
+  "experiment": "MX02_COMPONENT_VECTOR_AUTHORITY_CLOSURE",
+  "production_semantic_contract_modified": false,
+  "architecture_selected": false,
+  "sibling_findings_consumed": false,
+  "carrier_layer": {
+    "exact_producer_refs": true,
+    "role_order_cardinality_multiplicity_edges": true,
+    "negative_dependency_refs": true,
+    "mixed_producer_publication": true,
+    "permission_monotonicity": true,
+    "immutable_standalone_repository_closure": true,
+    "verdict": "SUFFICIENT_FOR_REFERENCE_PRESERVATION"
+  },
+  "current_component_prerequisites": {
+    "v551j_component_id": true,
+    "v551j_item_order": true,
+    "v551j_component_contract_hash": true,
+    "v551j_unresolved_component_state": true,
+    "v551j_component_contract_complete": true,
+    "v551j_component_order_integrity_status": true,
+    "component_structural_value_fields_present": true
+  },
+  "missing_common_semantics": {
+    "governed_vector_subject_binding": true,
+    "authority_dimension_binding": true,
+    "complete_governed_component_set_receipt": true,
+    "per_component_typed_value_state_binding": true,
+    "coverage_proof": true,
+    "nonempty_proof": true,
+    "unanimity_or_heterogeneity_proof": true,
+    "lawful_scalarization_disposition": true,
+    "fresh_replay_identity_for_vector_decision": true
+  },
+  "public_common_object_negative_proof": {
+    "source": "rawlsing_next/pre553_empirical_objects.py@7a86a8e0631adb85fba7d727b556fffd06c00e4d",
+    "blob_sha": "91974c52ce8c0acafa939be0d7d83f4a5c8085b7",
+    "component_authority_vector_family_present": false
+  },
+  "hostile_cases": [
+    {"id":"HETEROGENEOUS_COMPLETE","oracle":"VECTOR_HETEROGENEOUS_COMPLETE","scalar_allowed":false,"carrier_status":"REPRESENTABLE","semantic_status":"MISSING_COMMON_VECTOR_RECEIPT"},
+    {"id":"INCOMPLETE_COVERAGE","oracle":"VECTOR_INCOMPLETE_COVERAGE","scalar_allowed":false,"carrier_status":"REPRESENTABLE_WITH_EXPLICIT_NEGATIVE_OR_UNRESOLVED_MEMBER","semantic_status":"MISSING_COMMON_COVERAGE_RECEIPT"},
+    {"id":"GOVERNED_EMPTY_COMPONENT","oracle":"VECTOR_GOVERNED_EMPTY_COMPONENT","scalar_allowed":false,"carrier_status":"REPRESENTABLE","semantic_status":"MISSING_COMMON_VECTOR_EMPTY_SCALARIZATION_OWNER"},
+    {"id":"UNANIMOUS_COMPLETE_NONEMPTY","oracle":"SCALARIZED_COMPLETE_UNANIMOUS_NONEMPTY","scalar_allowed":true,"carrier_status":"COMPUTABLE","semantic_status":"NO_ACCEPTED_COMMON_AUTHORITY_TO_MINT_SCALAR_PROOF"},
+    {"id":"MIXED_PRODUCER_PUBLICATION","oracle":"PRESERVE_EXACT_PRODUCER_IDENTITY","scalar_allowed":false,"carrier_status":"CURRENT_M4_SUFFICIENT","semantic_status":"PUBLICATION_MUST_NOT_REOWN_VECTOR_SEMANTICS"}
+  ],
+  "scalarization_oracle": "SCALARIZE iff COMPLETE_COVERAGE && ALL_GOVERNED_COMPONENTS_NONEMPTY && UNANIMOUS_AUTHORITATIVE_VALUE",
+  "proposition_A": "REJECTED_AT_SEMANTIC_AUTHORITY_LAYER",
+  "proposition_B": "SUPPORTED_IN_MINIMUM_REF_ONLY_RECEIPT_FORM",
+  "minimum_common_delta": {
+    "provisional_family": "ComponentAuthorityVectorReceipt@1.0.0",
+    "storage_family_required": false,
+    "route_specific": false,
+    "component_payload_reownership_allowed": false,
+    "purpose": "Bind exact producer-owned component refs to one governed authority dimension, prove coverage/nonempty/unanimity state, and expose a scalar only under the binding oracle."
+  },
+  "harness": {
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PREV3_ARCHITECTURE_EXPERIMENT_WAVE1/MX02_COMPONENT_VECTOR/mx02_component_vector_harness.py",
+    "receipt": "HARNESS_RECEIPT.json",
+    "oracle_cases_executed": 5,
+    "oracle_assertions_passed": 5,
+    "repo_code_imported": false,
+    "repo_sufficiency_adjudication": "EXACT_GITHUB_CODE_INSPECTION"
+  },
+  "negative_ceiling": [
+    "no architecture selection",
+    "no A/B/C benchmark",
+    "no C09 ranking",
+    "no source-data execution claim",
+    "no product-wide V550J/V551J closure claim",
+    "no V3 runtime claim",
+    "no MX01/MX03 sibling inference"
+  ],
+  "success_token": "MX02_COMPONENT_VECTOR_AUTHORITY_CLOSURE_R1_COMPLETE"
+}
