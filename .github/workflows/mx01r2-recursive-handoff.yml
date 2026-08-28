@@ -1,0 +1,20 @@
+name: mx01r2-recursive-handoff
+
+on:
+  push:
+    branches:
+      - agent/verkhovod-prev3-mx01r2-recursive-handoff-r1
+  workflow_dispatch:
+
+jobs:
+  targeted:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python -m pip install --upgrade pip pytest
+      - name: Run MX01 R2 and existing I05 tests
+        run: python -m pytest -q rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_pre553_discovery_exact.py
