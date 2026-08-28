@@ -93,6 +93,6 @@ The blocking residual is therefore cumulative:
 4. D11 exact accepted `EmpiricalUniverse` refs absent (0/66);
 5. D12 governed respondent replay absent (0/66).
 
-Package content identity: `bc9cac8fa93ce64e09cf1b9c1d9e2877ff5aeba43b253fbb8514d7eadf74b3ad` (`HQ_JOIN_EXACT_PACKAGE.json`).
+Package content identity: `33d0ba17136142e6fe78e81e577468d715ceb2d744cf032e6dcb242c986d3295` (`HQ_JOIN_EXACT_PACKAGE.json`).
 
 `GSR07R3_WVS7_HQ_JOIN_FAIL_CLOSED__U03_FULL_3_OF_66__ROUTING_UNRESOLVED_222_OF_585__D03_ROUTING_UNKNOWN__D11_ACCEPTED_REFS_0_OF_66__D12_REPLAY_0_OF_66__NL_RO_CONTRADICTIONS_PRESERVED`
