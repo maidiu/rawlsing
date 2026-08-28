@@ -8,6 +8,7 @@ import pandas as pd
 import pytest
 
 from data.ddm_build_copy import ddm_pipeline_boundary_contract as boundary
+from data.ddm_build_copy import ddm_v552j_handoff as handoff
 from data.ddm_build_copy import ddm_v553_canonical_harmonization as adapter
 from data.ddm_build_copy import ddm_v553_harmonization as legacy
 from data.ddm_build_copy.ddm_pipeline_boundary_contract import (
@@ -45,6 +46,57 @@ def _write_pickle_parquet(frame: pd.DataFrame, path: Path) -> None:
 def _write_overlay(path: Path, column: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame([{column: "fixture"}]).to_csv(path, index=False)
+
+
+def _z04_valid_conservation_envelope() -> dict[str, object]:
+    packet = {
+        "run_id": "r", "packet_id": "p1", "packet_contract_hash": "packet-contract",
+        "pattern_id": "pattern-1", "family_id": "JCFG-FIXTURE", "source": "GSS", "source_family": "GSS",
+        "wave": "2010", "canonical_wave": "2010", "country_code": "US", "pattern_item_count": 2,
+        "component_contract_hashes_ordered_json": json.dumps(["component-contract-1", "component-contract-2"]),
+        "joint_response_identity_signature": "joint-response", "joint_semantic_signature": "joint-semantic",
+        "joint_orientation_signature": "joint-orientation", "joint_topology_signature": "joint-topology",
+        "joint_target_signature": "joint-target", "joint_structural_signature": "joint-structural",
+        "joint_measurement_contract_hash": "joint-measurement",
+        "component_response_vector_json": json.dumps(["yes", "context"]),
+        "component_semantic_vector_json": json.dumps(["support", "context"]),
+        "component_orientation_vector_json": json.dumps(["positive", "not_applicable"]),
+        "component_topology_vector_json": json.dumps(["binary", "context"]),
+        "component_target_vector_json": json.dumps(["target-current", ""]),
+        "component_structural_vector_json": json.dumps(["axis-current", ""]),
+        "component_denominator_vector_json": json.dumps([
+            {"item_order": 1, "empirical_distribution_id": "dist-1", "n_respondents": 100},
+            {"item_order": 2, "empirical_distribution_id": "", "n_respondents": None},
+        ]),
+        "denominator_separation_status": "PASS", "joint_pattern_count_unweighted": 25, "joint_n_unweighted": 80,
+        "joint_semantic_authority_status": "CERTIFIED", "joint_directionality_authority_status": "CERTIFIED",
+        "joint_family_target_authority_status": "CERTIFIED", "joint_structural_authority_status": "CERTIFIED",
+        "joint_measurement_authority_status": "CERTIFIED", "joint_evidence_authority_status": "CERTIFIED",
+        "certification_status": "CERTIFIED_JOINT_RELATION_EVIDENCE_WITH_CONTEXT",
+        "v550j_pattern_index_artifact_hash": "a" * 64, "v550j_pattern_item_index_artifact_hash": "b" * 64,
+        "v550j_manifest_hash": "c" * 64,
+    }
+    components = pd.DataFrame([
+        {
+            "run_id": "r", "packet_id": "p1", "pattern_id": "pattern-1", "family_id": "JCFG-FIXTURE",
+            "item_order": 1, "component_id": "component-1", "component_contract_hash": "component-contract-1",
+            "v550j_item_role": "substantive_response", "component_evidence_role": "relation_component",
+            "component_certification_contribution": "relation_component", "v551_evidence_role": "RELATION_EVIDENCE",
+            "v551_evidence_role_status": "VALID_RELATION_EVIDENCE_ROLE", "v551_empirical_distribution_id": "dist-1",
+            "v551_n_respondents": 100, "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3",
+        },
+        {
+            "run_id": "r", "packet_id": "p1", "pattern_id": "pattern-1", "family_id": "JCFG-FIXTURE",
+            "item_order": 2, "component_id": "component-2", "component_contract_hash": "component-contract-2",
+            "v550j_item_role": "context_only", "component_evidence_role": "context_component",
+            "component_certification_contribution": "context_component", "v551_evidence_role": "CONTEXT_EVIDENCE",
+            "v551_evidence_role_status": "VALID_CONTEXT_EVIDENCE_ROLE", "v551_empirical_distribution_id": "",
+            "v551_n_respondents": None, "schema_version": "v2.2.3", "compiler_version": "v551j_joint_evidence_contract_v2_2_3",
+        },
+    ])
+    envelope = handoff._build_conservation_envelope(packet, components)
+    assert envelope["v551j_conservation_status"] == handoff.V552J_CONSERVATION_STATUS
+    return envelope
 
 
 def _compat_frame(*, empty: bool = False) -> pd.DataFrame:
@@ -95,6 +147,7 @@ def _compat_frame(*, empty: bool = False) -> pd.DataFrame:
             "compiler_version": V552J_JOIN_COMPILER_VERSION,
         }
     )
+    row.update(_z04_valid_conservation_envelope())
     return pd.DataFrame([row], columns=columns)
 
 
