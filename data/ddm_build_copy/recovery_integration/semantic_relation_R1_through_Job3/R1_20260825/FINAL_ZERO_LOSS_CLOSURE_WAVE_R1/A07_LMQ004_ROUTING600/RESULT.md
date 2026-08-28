@@ -243,8 +243,8 @@ A07:
 
 Machine-readable denominator proof:
 `DENOMINATOR_PROOF.json`
-SHA-256:
-`8d4379da4cc29cfbda2a60f78d162bc79bca104dbff19fd1800f0ad3a231719f`
+Git blob SHA-1:
+`45acd17d3460d5b25f2f84b08541a493a7d44ba7`
 
 Terminal:
 
