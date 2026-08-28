@@ -1,0 +1,78 @@
+B10 — GSS V550J CURRENT-AUTHORITY HARDENING / PROMOTION COURT R1
+TEST RECEIPT
+
+TESTED COMMIT
+54976e903f4226d3294ce59087a267ce7b290bb1
+
+FINAL SUCCESSFUL HOSTED RUN
+workflow_run_id=33217520779
+job_id=99004362864
+python=3.12.14
+pytest=9.1.1
+pyarrow=25.0.1
+
+COMMAND
+python -m pytest -q   data/ddm_build_copy/tests/test_v550j_gss_current_authority.py   section85/tests/test_bounded_v550j_adapter.py   data/ddm_build_copy/test_w03_v551j_v550j_surface.py   data/ddm_build_copy/test_w03_v551j_v550j_typed_stop.py   data/ddm_build_copy/test_w06_v552j_join.py   section85/tests/test_section85_g4_exact_producers.py   section85/tests/test_source_authority_dependencies.py
+
+RESULT
+68 passed, 3 skipped in 6.47s
+0 failed
+
+B10-SPECIFIC PROOF
+PASS exact current GSS governed registry
+PASS exact six-member GSS-2010-US control
+PASS 25/25 draft-member reconciliation
+PASS 6 approved / 19 typed unresolved members
+PASS 33/33 family-wave reconciliation
+PASS 1 approved bounded scope / 32 typed unresolved scopes
+PASS abpoor remains unresolved
+PASS civil-liberties speak family remains unresolved
+PASS civil-liberties library family remains unresolved
+PASS non-2010 abortion scopes remain unresolved
+PASS target entity vs condition-label noncollapse
+PASS minimum-3 completion law
+PASS response semantics 1=support/positive; 2=oppose/negative
+PASS observed-response-only routing ceiling
+PASS missing/unanswered does not become routing-negative evidence
+PASS selected Section85 bounded runtime validator
+PASS hostile draft/adjudication/scope/member mutations fail closed
+PASS controlled current V550 -> V550J -> V551J -> V552J execution
+PASS V552J missing structural evidence returns UNRESOLVED_NO_STRUCTURAL_MATCH
+PASS live respondent-backed chain not substituted by controlled chain
+PASS no product-wide completeness claim
+
+DIAGNOSTIC RUNS
+33217102670 @ 63704bc75d34f4d9f3d2d04eb5941eb78a27104c:
+collection stopped; python-dotenv missing; no B10 assertion executed.
+
+33217175989 @ 536452424e45cdde83362171f31de806a625e952:
+collection stopped; scikit-learn missing; no B10 assertion executed.
+
+33217273239 @ 6c8f4232ab1cb997533f2345259e160f70a961b8:
+54 passed, 14 failed, 3 skipped.
+Twelve failures were selected V551J parquet regressions lacking pyarrow.
+Two were B10 representation/test defects: source-registry hash field name and hostile abpoor role-group insertion.
+No semantic widening followed.
+
+33217406660 @ a5a81e748d4ebb8fb0634c917be59ebca5166259:
+68 passed, 3 skipped in 6.14s.
+
+33217520779 @ 54976e903f4226d3294ce59087a267ce7b290bb1:
+68 passed, 3 skipped in 6.47s.
+PASS on final exact authority bytes.
+
+LIVE-CHAIN CEILING
+section85/CURRENT_STATE.json retains:
+real_empirical_j_chain_status=NOT_RUN_REQUIRES_LIVE_RESPONDENT_DATABASE_AND_PYARROW
+The final CI supplied pyarrow but did not supply an authorized live respondent database.
+Controlled current-runtime execution is not a live-data substitute.
+
+PRODUCT-WIDE CEILING
+LMQ-002 not closed.
+LMQ-005 not closed.
+Eight non-GSS families untouched.
+2,499/15,990 denominator not promoted.
+Archive08 not used.
+
+TERMINAL
+B10_V550J_GSS_HARDEN_R1_COMPLETE

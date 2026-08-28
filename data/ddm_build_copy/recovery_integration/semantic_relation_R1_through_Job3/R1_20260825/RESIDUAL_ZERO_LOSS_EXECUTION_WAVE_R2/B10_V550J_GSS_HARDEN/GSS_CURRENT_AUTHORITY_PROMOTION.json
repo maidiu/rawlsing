@@ -4,17 +4,22 @@
   "status": "APPROVED_CURRENT_EXECUTABLE_GSS_V550J_AUTHORITY__BOUNDED_2010_CONTROL__DRAFT_REMAINDER_TYPED_UNRESOLVED",
   "current_authority_id": "V550J-GSS-CURRENT-AUTHORITY-2026-08-28-R1",
   "current_authority_content_hash": "d7cef36fd22434d0a24321a4482dae548e04b3c08e057d500d27c7b40d826103",
+  "current_authority_hash_basis": "V550J-GSS-CURRENT-AUTHORITY-2026-08-28-R1|26cd8d5cad9cfa05ee70dc2f4f006e45030394aee79abc7c7f15c30332b7ca5a|V550JADJ-0005|2010|US|abdefect,abhlth,abrape,abany,absingle,abnomore",
   "current_authority_path": "data/ddm_build_copy/authority/v550j_gss_current_authority_r1.yaml",
-  "current_authority_git_blob_sha": "030556c6653b02404e6d08ea4478dd5859ebaa34",
+  "current_authority_git_blob_sha": "65a5885b093390678b98111e5c1b2181582d7da3",
+  "tested_current_authority_commit": "54976e903f4226d3294ce59087a267ce7b290bb1",
   "selected_source_registry": {
     "path": "section85/authority/registry_gss.yaml",
     "git_blob_sha": "aaa4dad6bff46f9d1e30130a3554a8d6b91d64ac",
-    "registry_content_hash": "26cd8d5cad9cfa05ee70dc2f4f006e45030394aee79abc7c7f15c30332b7ca5a"
+    "source_registry_content_hash": "26cd8d5cad9cfa05ee70dc2f4f006e45030394aee79abc7c7f15c30332b7ca5a",
+    "adjudication_id": "V550JADJ-0005",
+    "decision": "ACCEPTED_EXISTING_GSS_EXECUTABLE_CONTROL"
   },
   "historical_draft_registry": {
     "path": "data/ddm_build_copy/manifests/question_family_registry.yaml",
     "git_blob_sha": "54eb6dd138b5e30305b0308fcdb8f078994b1c40",
     "status": "draft",
+    "executable": false,
     "family_count": 3,
     "member_count": 25,
     "family_wave_scope_count": 33
@@ -25,8 +30,6 @@
     "country_code": "US",
     "joint_configuration_id": "JCFG-GSS-ABORTION-CONDITIONS",
     "inherited_draft_family_id": "gss_abortion_condition_family",
-    "joint_configuration_adjudication_id": "V550JADJ-0005",
-    "joint_configuration_authority_release_id": "V550J-BOUNDED-AUTHORITY-2026-08-02-R1",
     "member_order": [
       "abdefect",
       "abhlth",
@@ -59,18 +62,21 @@
     "typed_unresolved_member_count": 19,
     "approved_family_wave_scope_count": 1,
     "typed_unresolved_family_wave_scope_count": 32,
-    "member_ledger_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/RESIDUAL_ZERO_LOSS_EXECUTION_WAVE_R2/B10_V550J_GSS_HARDEN/GSS_DRAFT_MEMBER_RECONCILIATION.csv",
-    "member_ledger_git_blob_sha": "1038b5daaf33c70b46b5ee022bc3c2135b372516",
-    "scope_ledger_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/RESIDUAL_ZERO_LOSS_EXECUTION_WAVE_R2/B10_V550J_GSS_HARDEN/GSS_WAVE_SCOPE_DISPOSITIONS.csv",
-    "scope_ledger_git_blob_sha": "ada8c0f7bd9a22282a72fc97ba709995b4889757",
-    "blocker_ledger_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/RESIDUAL_ZERO_LOSS_EXECUTION_WAVE_R2/B10_V550J_GSS_HARDEN/GSS_TYPED_BLOCKERS.csv",
-    "blocker_ledger_git_blob_sha": "6cf60b5ddb369812cc9163eb08b5369c726d0288"
+    "abpoor": "STILL_UNRESOLVED",
+    "civil_liberties_speak_family": "STILL_UNRESOLVED",
+    "civil_liberties_library_family": "STILL_UNRESOLVED",
+    "non_2010_abortion_scopes": "STILL_UNRESOLVED"
   },
   "runtime": {
-    "current_v550j_registry_status": "governed",
-    "controlled_current_runtime_chain": "TO_BE_EXECUTED_BY_B10_TEST",
-    "live_respondent_backed_chain": "EXTERNAL_RUNTIME_BLOCKER__DATABASE_URL_AND_PYARROW_REQUIRED",
-    "archive_substitution_for_live_respondents": false
+    "controlled_current_runtime_chain": "PASS__V550_TO_V550J_TO_V551J_TO_V552J_WITH_TYPED_V552J_UNRESOLVED_STRUCTURAL_MATCH",
+    "live_respondent_backed_chain": "EXTERNAL_RUNTIME_BLOCKER__LIVE_RESPONDENT_DATABASE_REQUIRED; SECTION85_BASELINE_ALSO_NAMES_PYARROW",
+    "live_chain_substituted_by_controlled_test": false,
+    "workflow_run_id": 33217520779,
+    "job_id": 99004362864,
+    "passed": 68,
+    "failed": 0,
+    "skipped": 3,
+    "duration_seconds": 6.47
   },
   "product_wide_closure": false,
   "lmq_002_closed": false,

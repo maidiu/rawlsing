@@ -1,0 +1,79 @@
+{
+  "schema": "RAWLSING_B10_V550J_GSS_CURRENT_AUTHORITY_RETURN",
+  "schema_version": "1.0.0",
+  "status": "APPROVED_CURRENT_EXECUTABLE_GSS_V550J_AUTHORITY__BOUNDED_2010_CONTROL__DRAFT_REMAINDER_TYPED_UNRESOLVED",
+  "terminal_token": "B10_V550J_GSS_HARDEN_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-b10-v550j-gss-harden-r1",
+  "verified_starting_head": "0204bea907bbce09b1f246a19fb376edd8347003",
+  "governing_authority_43_blob": "de47cbe0a8af98cdbc37bd33f0493bc4ca48eac7",
+  "tested_commit": "54976e903f4226d3294ce59087a267ce7b290bb1",
+  "current_authority": {
+    "path": "data/ddm_build_copy/authority/v550j_gss_current_authority_r1.yaml",
+    "git_blob_sha": "65a5885b093390678b98111e5c1b2181582d7da3",
+    "authority_id": "V550J-GSS-CURRENT-AUTHORITY-2026-08-28-R1",
+    "authority_content_hash": "d7cef36fd22434d0a24321a4482dae548e04b3c08e057d500d27c7b40d826103",
+    "selected_source_registry_content_hash": "26cd8d5cad9cfa05ee70dc2f4f006e45030394aee79abc7c7f15c30332b7ca5a",
+    "status": "governed",
+    "production_completeness_claim": "NO_PRODUCTION_COMPLETENESS_CLAIM"
+  },
+  "approved_surface": {
+    "source_family": "GSS",
+    "wave": "2010",
+    "country_code": "US",
+    "joint_configuration_id": "JCFG-GSS-ABORTION-CONDITIONS",
+    "adjudication_id": "V550JADJ-0005",
+    "members": [
+      "abdefect",
+      "abhlth",
+      "abrape",
+      "abany",
+      "absingle",
+      "abnomore"
+    ],
+    "member_count": 6,
+    "minimum_items_answered": 3,
+    "target_entity_id": "abortion_permission",
+    "target_condition_grain": "condition_label",
+    "response_semantics_contract_hash": "9573e1f8fb4e0b7126fa44c74892a2acb70db046e5d2e110079a30fe15730821",
+    "routing_authority_state": "NO_SEPARATE_ROUTING_PREDICATE_AUTHORIZED__OBSERVED_RESPONSE_SCOPE_ONLY"
+  },
+  "draft_reconciliation": {
+    "draft_family_count": 3,
+    "draft_member_count": 25,
+    "draft_family_wave_scope_count": 33,
+    "approved_member_count": 6,
+    "typed_unresolved_member_count": 19,
+    "approved_family_wave_scope_count": 1,
+    "typed_unresolved_family_wave_scope_count": 32
+  },
+  "runtime_receipt": {
+    "workflow_run_id": 33217520779,
+    "job_id": 99004362864,
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "pyarrow": "25.0.1",
+    "passed": 68,
+    "failed": 0,
+    "skipped": 3,
+    "duration_seconds": 6.47,
+    "controlled_v550_v550j_v551j_v552j_chain": "PASS_WITH_TYPED_UNRESOLVED_V552J_STRUCTURAL_MATCH",
+    "live_respondent_chain": "EXTERNAL_RUNTIME_RESIDUAL__NO_LIVE_DATABASE"
+  },
+  "blockers": [
+    "B10-GSS-ABPOOR-NOT-IN-V550JADJ-0005",
+    "B10-GSS-NON2010-SCOPE-NOT-PROMOTED",
+    "B10-GSS-SPEAK-FAMILY-NO-CURRENT-JOINT-ADJUDICATION",
+    "B10-GSS-LIBRARY-FAMILY-NO-CURRENT-JOINT-ADJUDICATION",
+    "B10-GSS-LIVE-J-CHAIN-EXTERNAL-RUNTIME"
+  ],
+  "product_wide": {
+    "lmq_002_closed": false,
+    "lmq_005_closed": false,
+    "eight_non_gss_families_touched": false,
+    "adjudication_denominator_promoted": false,
+    "archive08_used": false
+  },
+  "sibling_blind": true,
+  "consumed_b02_b09_returns": []
+}
