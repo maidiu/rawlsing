@@ -1,0 +1,70 @@
+{
+  "receipt_id": "Z07_ADAPTIVE_EXPLORATORY_DISCOVERY_RUNTIME_REPLAY_R1",
+  "status": "IMPLEMENTED_CANDIDATE__ISOLATED_HOSTILE_HARNESS_PASS__REPOSITORY_CI_NOT_EXECUTED_IN_WORKER_ENVIRONMENT",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-z07-adaptive-discovery-r1",
+  "governing_launch_ref": "d247e1759eb63927afb6869824b0892e779a3c64",
+  "authority_40_ref": "c649d57c14ca6c0f84571beab4610c007c2484f2",
+  "d03_ref": "fa6ea6c957bd350b31e5adb504dbb854a0464dfa",
+  "d06_ref": "93e84b084f14db2db410cbad5555e7820507d4d9",
+  "long_memory_ref": "669062e6c319f31214f403939dded91300639bde",
+  "production_commit": "57193e4d1cd6476d2989323226df2cb40a6f25c3",
+  "production_path": "rawlsing_next/pre553_discovery_adaptive.py",
+  "production_blob_at_initial_commit": "58e32770381fa8d901701d6a2c676f28261aa3e3",
+  "test_commit": "2fc7404383c4470690f146d63fb9607fbd41e487",
+  "test_path": "rawlsing_next/tests/test_pre553_discovery_adaptive.py",
+  "exact_i05_path": "rawlsing_next/pre553_discovery_exact.py",
+  "exact_i05_start_blob": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+  "exact_i05_modified": false,
+  "contracts": {
+    "adaptive_algorithm": "PRE553_ADAPTIVE_EXPLORATORY_DISCOVERY@1.0.0",
+    "adaptive_coverage": "EXACT_RESULTS__NONEXHAUSTIVE_FRONTIER_COVERAGE",
+    "exact_i05_algorithm": "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0",
+    "partial_search_negative": "FORBIDDEN",
+    "unvisited_state": "UNKNOWN_UNVISITED",
+    "actor_v3_effect": false,
+    "semantic_truth_effect": false
+  },
+  "isolated_hostile_harness": {
+    "executed": true,
+    "result": "8 passed in 0.09s",
+    "scope": "interface-faithful isolated harness using the same public semantic/authority shapes; not a substitute for repository-native pytest",
+    "cases": [
+      "budget truncation preserves explicit unvisited frontier and rejects global negative",
+      "result-driven widening/reprioritization occurs only after a sealed unit closes",
+      "serialized checkpoint restart equals one-shot eventual exhaustive completion under reordered initial storage",
+      "interruption occurs only after a complete sealed unit and restart cannot skip remaining units",
+      "identical frozen policy/determinant/budget yields deterministic replay; divergence is typed NONDETERMINISTIC_REPLAY",
+      "policy-version/content change changes search-policy identity and old checkpoint cannot resume",
+      "partial exact VALID_EMPTY outcome never becomes a global negative",
+      "exact-bounded authority/mode is rejected by adaptive service and contracts remain distinct"
+    ]
+  },
+  "repository_native_pytest": {
+    "executed": false,
+    "reason": "No repository execution runner/CI status was available to this GitHub-connected worker. The committed pytest file is the exact HQ rerun surface.",
+    "github_commit_statuses_observed_after_test_commit": 0,
+    "claim": "NOT_RUN__NO_PASS_INFERRED"
+  },
+  "replay_contract_evidence": {
+    "checkpoint_roundtrip": "AdaptiveSearchCheckpoint.as_dict/from_dict",
+    "visited_unvisited_identity": "explicit exact refs",
+    "resume_drift_checks": [
+      "DiscoveryAuthority ref",
+      "content-hashed search-policy ref",
+      "determinant-state ref",
+      "root-unit universe",
+      "root-unit scheduling material"
+    ],
+    "public_replay_receipt": "verify_adaptive_replay emits ReplayReceipt@1.0.0 with REPLAY_VERIFIED or NONDETERMINISTIC_REPLAY",
+    "search_rank_authority": "SEARCH_ORDER_ONLY__NEVER_EMPIRICAL_OR_STRUCTURAL_TRUTH"
+  },
+  "negative_ceiling": [
+    "EXPLORATORY_POLICY_FRONTIER_EXHAUSTED is not a global empirical negative",
+    "partial/unvisited territory remains unknown/unvisited",
+    "adaptive search never mutates an open exact I05 frontier",
+    "search heuristics do not create EmpiricalFact or structural truth",
+    "promoted learned facts still require exact empirical validation/authority",
+    "no actor/V3 inference"
+  ]
+}
