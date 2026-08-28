@@ -42,8 +42,10 @@ def _ref(kind: str, tag: str) -> ExactRef:
     return ExactRef(kind, f"urn:test:i03:{kind.lower()}:{tag}", _h(f"i03:{kind}:{tag}"))
 
 
-def _auth(tag: str, kind: str, *, families) -> AuthoritySnapshot:
+def _auth(tag: str, kind: str, *, families, scope_envelope=None) -> AuthoritySnapshot:
     digest = _h(f"i03-authority:{tag}:1.0.0")
+    if scope_envelope is None:
+        scope_envelope = {"source_universe_refs": "EXPLICIT_UNRESTRICTED"}
     return AuthoritySnapshot(
         typed_state="ALLOW",
         authority_snapshot_refs=(),
@@ -56,7 +58,7 @@ def _auth(tag: str, kind: str, *, families) -> AuthoritySnapshot:
         decision_state="ALLOW",
         governed_operations=(f"I03-OP-{tag}",),
         governed_object_families=families,
-        scope_envelope={"source_universe_refs": "EXPLICIT_UNRESTRICTED"},
+        scope_envelope=scope_envelope,
         effective_time_or_interval="ALL_TIME",
         parent_authority_refs=(),
         negative_limit_refs=(),
@@ -66,11 +68,15 @@ def _auth(tag: str, kind: str, *, families) -> AuthoritySnapshot:
     )
 
 
-def _query_authority(tag: str = "query") -> AuthoritySnapshot:
+def _query_authority(tag: str = "query", *, max_target_arity_J=None) -> AuthoritySnapshot:
+    scope = {"source_universe_refs": "EXPLICIT_UNRESTRICTED"}
+    if max_target_arity_J is not None:
+        scope["maximum_target_arity_J"] = max_target_arity_J
     return _auth(
         tag,
         "PREDICATE_GRAMMAR",
         families=("EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0", "EmpiricalFact@1.0.0"),
+        scope_envelope=scope,
     )
 
 
@@ -453,6 +459,14 @@ def _query(
         universe_refs = (source["universe"].ref,)
     if target_authority_refs is None:
         target_authority_refs = (source["source_auth"].authority_ref,)
+    target_items = [(source["qrefs"][target], target) for target in targets]
+    if len(target_items) == 3:
+        target_items = sorted(target_items, key=lambda item: item[0].key)
+    ordered_target_refs = tuple(item[0] for item in target_items)
+    ordered_target_names = tuple(item[1] for item in target_items)
+    joint_order_semantics = (
+        "CANONICAL_SET_ORDER" if len(target_items) == 3 else "SEMANTIC_ORDERED"
+    )
     components = [
         {
             "target_ref": source["qrefs"][target],
@@ -463,7 +477,7 @@ def _query(
             "response_semantic_authority_refs": list(target_authority_refs),
             "included_states": ["SUBSTANTIVE_RESPONSE"],
         }
-        for target in targets
+        for target in ordered_target_names
     ]
     grain = {
         "source_scope_mode": source_mode,
@@ -481,10 +495,10 @@ def _query(
         authority_snapshot_refs=(qauth.authority_ref,),
         dependency_refs=(predicate.ref,),
         producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", f"query-{tag}"),
-        target_refs=tuple(source["qrefs"][target] for target in targets),
+        target_refs=ordered_target_refs,
         target_arity_and_topology={
-            "arity": len(targets),
-            "joint_order_semantics": "SEMANTIC_ORDERED",
+            "arity": len(ordered_target_refs),
+            "joint_order_semantics": joint_order_semantics,
             "components": components,
         },
         condition_predicate_ref=predicate.ref,
@@ -596,7 +610,7 @@ def test_k_way_parity_full_joint_is_not_pairwise_or_unary_synthesis():
         {"id": f"R{x}{y}", "responses": {"X": x, "Y": y, "Z": x ^ y}}
         for x in (0, 1) for y in (0, 1)
     ])
-    qa = _query_authority("parity")
+    qa = _query_authority("parity", max_target_arity_J=3)
     pred = _branch_predicate(source, qa)
     fact = _run(source, qa, pred, _query(source, qa, pred, ("X", "Y", "Z"), tag="parity")).facts[0]
     cells = _cell_map(fact)
@@ -607,6 +621,204 @@ def test_k_way_parity_full_joint_is_not_pairwise_or_unary_synthesis():
             z = x ^ y
             assert cells[(str(x), str(y), str(z))]["raw_numerator_support"] == 1
             assert cells[(str(x), str(y), str(1 - z))]["raw_numerator_support"] == 0
+
+
+def test_authority37_j3_branch_denominators_membership_pairwise_insufficiency_and_replay():
+    rows = []
+    branch_ids = []
+    complement_ids = []
+    for x in (0, 1):
+        for y in (0, 1):
+            z = x ^ y
+            branch_id = f"B{x}{y}{z}"
+            complement_id = f"C{x}{y}{1-z}"
+            branch_ids.append(branch_id)
+            complement_ids.append(complement_id)
+            rows.append({"id": branch_id, "responses": {"X": x, "Y": y, "Z": z}})
+            rows.append({"id": complement_id, "responses": {"X": x, "Y": y, "Z": 1-z}})
+
+    source = _build_source("auth37-j3-branch", rows)
+    qa = _query_authority("auth37-j3-branch", max_target_arity_J=3)
+    branch = _branch_predicate(
+        source, qa,
+        members=tuple(source["respondents"][rid] for rid in branch_ids),
+        tag="parity-branch",
+    )
+    complement = _branch_predicate(
+        source, qa,
+        members=tuple(source["respondents"][rid] for rid in complement_ids),
+        tag="anti-parity-complement",
+    )
+
+    query = _query(source, qa, branch, ("Z", "X", "Y"), tag="j3-canonical")
+    fact = _run(source, qa, branch, query).facts[0]
+    assert fact.typed_state == "SUPPORTED"
+    assert fact.target_topology["arity"] == 3
+    assert fact.target_topology["joint_order_semantics"] == "CANONICAL_SET_ORDER"
+    assert fact.target_topology["higher_order_evidence_semantics"] == "DIRECT_EXACT_SAME_RESPONDENT_THREE_WAY_JOINT"
+    assert fact.target_topology["pairwise_projection_not_identity_equivalent"] is True
+
+    denominators = fact.target_topology["authority37_j3_denominators"]
+    assert denominators["source_risk"]["raw_denominator_support"] == 8
+    assert denominators["branch"]["raw_denominator_support"] == 4
+    assert [item["raw_denominator_support"] for item in denominators["per_target"]] == [4, 4, 4]
+    assert denominators["three_way_joint"]["raw_denominator_support"] == 4
+
+    cells = _cell_map(fact)
+    assert sum(row["raw_numerator_support"] for row in cells.values()) == 4
+    assert all(
+        len(row["exact_same_respondent_member_refs"]) == row["raw_numerator_support"]
+        for row in cells.values()
+    )
+    assert len({cell for cell, row in cells.items() if row["raw_numerator_support"]}) == 4
+
+    for pair in (("X", "Y"), ("X", "Z"), ("Y", "Z")):
+        branch_pair = _run(
+            source, qa, branch,
+            _query(source, qa, branch, pair, tag=f"branch-{pair[0]}-{pair[1]}"),
+        ).facts[0]
+        complement_pair = _run(
+            source, qa, complement,
+            _query(source, qa, complement, pair, tag=f"complement-{pair[0]}-{pair[1]}"),
+        ).facts[0]
+        branch_counts = {
+            cell: row["raw_numerator_support"] for cell, row in _cell_map(branch_pair).items()
+        }
+        complement_counts = {
+            cell: row["raw_numerator_support"] for cell, row in _cell_map(complement_pair).items()
+        }
+        assert branch_counts == complement_counts == {
+            ("0", "0"): 1, ("0", "1"): 1, ("1", "0"): 1, ("1", "1"): 1,
+        }
+
+    complement_j3 = _run(
+        source, qa, complement,
+        _query(source, qa, complement, ("X", "Y", "Z"), tag="anti-j3"),
+    ).facts[0]
+    assert _cell_map(complement_j3) != cells
+
+    replayed = replay_empirical_query(
+        repository=source["repo"], query=query, predicate=branch,
+        authority_registry=_registry(source, qa),
+        release_refs=(source["release_ref"],), expected_fact_refs=(fact.ref,),
+    )
+    assert replayed.facts[0].ref == fact.ref
+
+
+def test_j3_requires_explicit_authority_and_respects_lower_exact_ceiling():
+    source = _build_source("j3-ceiling", [
+        {"id": "R1", "responses": {"X": 0, "Y": 0, "Z": 0}},
+        {"id": "R2", "responses": {"X": 1, "Y": 1, "Z": 0}},
+    ])
+    for qa in (
+        _query_authority("j3-no-explicit"),
+        _query_authority("j3-max2", max_target_arity_J=2),
+    ):
+        pred = _branch_predicate(source, qa, tag=qa.authority_id)
+        fact = _run(
+            source, qa, pred,
+            _query(source, qa, pred, ("X", "Y", "Z"), tag=qa.authority_id),
+        ).facts[0]
+        assert fact.typed_state == "UNAVAILABLE"
+        assert fact.p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
+
+
+def test_j4_fails_closed_even_under_claimed_higher_authority():
+    source = _build_source("j4-ceiling", [
+        {"id": "R1", "responses": {"W": 0, "X": 0, "Y": 0, "Z": 0}},
+    ])
+    qa = _query_authority("j4-ceiling", max_target_arity_J=4)
+    pred = _branch_predicate(source, qa)
+    fact = _run(
+        source, qa, pred,
+        _query(source, qa, pred, ("W", "X", "Y", "Z"), tag="j4"),
+    ).facts[0]
+    assert fact.typed_state == "UNAVAILABLE"
+    assert fact.p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
+    assert "implementation ceiling J=3" in fact.execution_detail
+
+
+def test_j3_noncanonical_or_duplicate_target_triple_fails_closed():
+    source = _build_source("j3-canonical-fail", [
+        {"id": "R1", "responses": {"X": 0, "Y": 1, "Z": 1}},
+    ])
+    qa = _query_authority("j3-canonical-fail", max_target_arity_J=3)
+    pred = _branch_predicate(source, qa)
+    base = _query(source, qa, pred, ("X", "Y", "Z"), tag="base")
+
+    fields = dict(base.semantic_fields)
+    fields["target_refs"] = tuple(reversed(fields["target_refs"]))
+    topology = dict(fields["target_arity_and_topology"])
+    topology["components"] = list(reversed(topology["components"]))
+    fields["target_arity_and_topology"] = topology
+    unsorted = EmpiricalQuerySpec(
+        typed_state=base.typed_state,
+        authority_snapshot_refs=base.authority_snapshot_refs,
+        dependency_refs=base.dependency_refs,
+        producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", "j3-unsorted"),
+        **fields,
+    )
+    unsorted_fact = _run(source, qa, pred, unsorted).facts[0]
+    assert unsorted_fact.typed_state == "INTEGRITY_FAILURE"
+
+    fields = dict(base.semantic_fields)
+    target_refs = list(fields["target_refs"])
+    target_refs[2] = target_refs[1]
+    fields["target_refs"] = target_refs
+    topology = dict(fields["target_arity_and_topology"])
+    components = [dict(item) for item in topology["components"]]
+    components[2]["target_ref"] = target_refs[2]
+    topology["components"] = components
+    fields["target_arity_and_topology"] = topology
+    duplicate = EmpiricalQuerySpec(
+        typed_state=base.typed_state,
+        authority_snapshot_refs=base.authority_snapshot_refs,
+        dependency_refs=base.dependency_refs,
+        producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", "j3-duplicate"),
+        **fields,
+    )
+    duplicate_fact = _run(source, qa, pred, duplicate).facts[0]
+    assert duplicate_fact.typed_state == "INTEGRITY_FAILURE"
+
+
+def test_j3_raw_and_weighted_denominators_remain_separate():
+    rows = [
+        {"id": "R1", "responses": {"X": 0, "Y": 0, "Z": 0}},
+        {"id": "R2", "responses": {"X": 0, "Y": 1, "Z": 1}},
+        {"id": "R3", "responses": {"X": 1, "Y": 0, "Z": 1}},
+        {"id": "R4", "responses": {"X": 1, "Y": 1, "Z": 0}},
+    ]
+    source = _build_source(
+        "j3-weighted", rows,
+        weights={
+            "R1": ("WEIGHT_VALID_AUTHORIZED", "1"),
+            "R2": ("WEIGHT_VALID_AUTHORIZED", "2"),
+            "R3": ("WEIGHT_VALID_AUTHORIZED", "3"),
+            "R4": ("WEIGHT_VALID_AUTHORIZED", "4"),
+        },
+    )
+    qa = _query_authority("j3-weighted", max_target_arity_J=3)
+    pred = _branch_predicate(source, qa)
+    raw = _run(
+        source, qa, pred,
+        _query(source, qa, pred, ("X", "Y", "Z"), measure="RAW", tag="j3-raw"),
+    ).facts[0]
+    weighted = _run(
+        source, qa, pred,
+        _query(
+            source, qa, pred, ("X", "Y", "Z"),
+            measure="GOVERNED_WEIGHTED", tag="j3-weighted",
+        ),
+    ).facts[0]
+    assert raw.ref != weighted.ref
+    assert raw.raw_denominator_support == weighted.raw_denominator_support == 4
+    assert raw.weighted_denominator_support_if_authorized is None
+    assert weighted.weighted_denominator_support_if_authorized == {"$exact_fraction": [10, 1]}
+    assert (
+        weighted.target_topology["authority37_j3_denominators"]["branch"]
+        ["weighted_denominator_support_if_authorized"]
+        == {"$exact_fraction": [10, 1]}
+    )
 
 
 def test_same_marginals_different_joint_are_distinct_source_indexed_facts():

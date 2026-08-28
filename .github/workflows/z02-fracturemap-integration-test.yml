@@ -1,0 +1,23 @@
+name: Z02 fracture-map integration tests
+
+on:
+  push:
+    branches:
+      - agent/verkhovod-z02-fracturemap-integration-r1
+
+permissions:
+  contents: read
+
+jobs:
+  z02-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run full PRE553 Python test surface
+        run: python -m pytest -q rawlsing_next/tests

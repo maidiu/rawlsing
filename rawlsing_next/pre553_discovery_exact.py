@@ -35,7 +35,11 @@ from rawlsing_next.pre553_empirical_objects import (
     semantic_hash,
 )
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
-from rawlsing_next._pre553_query_common import QUERY_EXECUTION_CONTRACT_ID, QueryExecutionResult
+from rawlsing_next._pre553_query_common import (
+    MAXIMUM_SUPPORTED_TARGET_ARITY_J,
+    QUERY_EXECUTION_CONTRACT_ID,
+    QueryExecutionResult,
+)
 
 I05_CONTRACT_ID = "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0"
 CANDIDATE_GRAMMAR_SCHEMA = "PRE553_I05_EXACT_BOUNDED_CANDIDATE_GRAMMAR@1.0.0"
@@ -317,6 +321,10 @@ def _validate_catalog_scope(
     max_j = topology_scope.get("maximum_target_arity_J")
     if not isinstance(max_j, int) or isinstance(max_j, bool) or max_j < 1:
         raise ExactBoundedDiscoveryError("topology_scope.maximum_target_arity_J must be positive integer")
+    if max_j > MAXIMUM_SUPPORTED_TARGET_ARITY_J:
+        raise ExactBoundedDiscoveryError(
+            f"topology_scope.maximum_target_arity_J exceeds implementation ceiling J={MAXIMUM_SUPPORTED_TARGET_ARITY_J}"
+        )
     for atom in atoms.values():
         for ref_value in atom.predicate.scope_refs:
             ref = exact_ref(ref_value, f"atom {atom.atom_id}.scope_ref")
@@ -530,6 +538,10 @@ def _compile_frontier(
     max_j = int(_mapping(definition.get("limits", {}), "limits").get("maximum_target_arity_J", 0))
     if max_k < 0 or max_j < 1:
         raise ExactBoundedDiscoveryError("invalid exact K/J frontier limits")
+    if max_j > MAXIMUM_SUPPORTED_TARGET_ARITY_J:
+        raise ExactBoundedDiscoveryError(
+            f"candidate grammar maximum_target_arity_J exceeds implementation ceiling J={MAXIMUM_SUPPORTED_TARGET_ARITY_J}"
+        )
 
     def atom(atom_id: str) -> _Atom:
         if atom_id not in atoms:

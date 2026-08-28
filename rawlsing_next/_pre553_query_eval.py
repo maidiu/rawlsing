@@ -310,6 +310,23 @@ def _evaluate_index_group(
         {canonical_json(cell): Fraction(0, 1) for cell in plan.full_domain}
         if profile.measure_kind == "GOVERNED_WEIGHTED" else None
     )
+    j3_enabled = plan.arity == 3
+    j3_cell_members: dict[str, list[ExactRef]] = (
+        {canonical_json(cell): [] for cell in plan.full_domain} if j3_enabled else {}
+    )
+    j3_source_risk_members: list[ExactRef] = []
+    j3_branch_members: list[ExactRef] = []
+    j3_target_members: list[list[ExactRef]] = [[] for _ in plan.components]
+    j3_weighted_source_risk = (
+        Fraction(0, 1) if j3_enabled and weighted_cells is not None else None
+    )
+    j3_weighted_branch = (
+        Fraction(0, 1) if j3_enabled and weighted_cells is not None else None
+    )
+    j3_weighted_targets: list[Fraction] | None = (
+        [Fraction(0, 1) for _ in plan.components]
+        if j3_enabled and weighted_cells is not None else None
+    )
     used: list[CanonicalSemanticObject | C11InternalRecord] = []
     used_auth: list[AuthorityRef] = []
     risk_members: list[ExactRef] = []
@@ -338,6 +355,44 @@ def _evaluate_index_group(
                 per_target_states.append(str(fact.routing_state))
                 if fact.routing_state in ELIGIBLE_ROUTING_STATES:
                     component_positive[i] = True
+            j3_condition = None
+            j3_weight = None
+            if j3_enabled:
+                # The source/risk denominator precedes branch and per-target routing
+                # filters. Reaching this point proves exact routing/risk facts exist
+                # for every declared target under the query's risk_set_ref.
+                eligible_flags = [
+                    state in ELIGIBLE_ROUTING_STATES for state in per_target_states
+                ]
+                j3_source_risk_members.append(respondent.ref)
+                j3_condition = _eval_predicate(
+                    predicate.predicate_ast,
+                    respondent=respondent,
+                    index=index,
+                    registry=registry,
+                    used=used,
+                    used_auth=used_auth,
+                )
+                if weighted_cells is not None:
+                    j3_weight = _weight_for(
+                        respondent,
+                        index,
+                        profile=profile,
+                        registry=registry,
+                        used=used,
+                        used_auth=used_auth,
+                    )
+                    j3_weighted_source_risk += j3_weight
+                if j3_condition:
+                    j3_branch_members.append(respondent.ref)
+                    if j3_weighted_branch is not None:
+                        j3_weighted_branch += j3_weight
+                    for target_index, eligible in enumerate(eligible_flags):
+                        if eligible:
+                            j3_target_members[target_index].append(respondent.ref)
+                            if j3_weighted_targets is not None:
+                                j3_weighted_targets[target_index] += j3_weight
+
             member, explicitly_inapplicable = _risk_membership(
                 respondent,
                 index,
@@ -353,7 +408,7 @@ def _evaluate_index_group(
             if not member:
                 continue
             risk_members.append(respondent.ref)
-            condition = _eval_predicate(
+            condition = j3_condition if j3_enabled else _eval_predicate(
                 predicate.predicate_ast,
                 respondent=respondent,
                 index=index,
@@ -364,13 +419,17 @@ def _evaluate_index_group(
             if not condition:
                 continue
             denominator_members.append(respondent.ref)
-            weight = _weight_for(
-                respondent,
-                index,
-                profile=profile,
-                registry=registry,
-                used=used,
-                used_auth=used_auth,
+            weight = (
+                j3_weight
+                if j3_enabled and weighted_cells is not None
+                else _weight_for(
+                    respondent,
+                    index,
+                    profile=profile,
+                    registry=registry,
+                    used=used,
+                    used_auth=used_auth,
+                )
             )
             if weighted_denominator is not None:
                 weighted_denominator += weight
@@ -393,6 +452,8 @@ def _evaluate_index_group(
                 )
             raw_resolved += 1
             raw_cells[key] += 1
+            if j3_enabled:
+                j3_cell_members[key].append(respondent.ref)
             if weighted_cells is not None and weighted_resolved is not None:
                 weighted_resolved += weight
                 weighted_cells[key] += weight
@@ -424,6 +485,61 @@ def _evaluate_index_group(
         state = "SUPPORTED"
         detail = "exact governed target distribution resolved"
 
+    if j3_enabled:
+        source_risk_refs = _canonical_refs(j3_source_risk_members)
+        branch_refs = _canonical_refs(j3_branch_members)
+        target_refs_by_component = tuple(
+            _canonical_refs(values) for values in j3_target_members
+        )
+        denominator_material = MappingProxyType(canonicalize({
+            "contract": "AUTHORITY37_J3_DENOMINATOR_CONSERVATION@1.0.0",
+            "source_risk": {
+                "membership_semantics": "UNION_OF_EXACT_TARGET_RISK_ELIGIBILITY_BEFORE_BRANCH",
+                "raw_denominator_support": len(source_risk_refs),
+                "member_refs": source_risk_refs,
+                "weighted_denominator_support_if_authorized": _fraction_material(
+                    j3_weighted_source_risk
+                ),
+            },
+            "branch": {
+                "membership_semantics": "EXACT_CONDITION_PREDICATE_WITHIN_SOURCE_RISK",
+                "raw_denominator_support": len(branch_refs),
+                "member_refs": branch_refs,
+                "weighted_denominator_support_if_authorized": _fraction_material(
+                    j3_weighted_branch
+                ),
+            },
+            "per_target": [
+                {
+                    "target_ref": component.target_ref,
+                    "raw_denominator_support": len(member_refs),
+                    "member_refs": member_refs,
+                    "weighted_denominator_support_if_authorized": (
+                        _fraction_material(j3_weighted_targets[idx])
+                        if j3_weighted_targets is not None else None
+                    ),
+                }
+                for idx, (component, member_refs) in enumerate(
+                    zip(plan.components, target_refs_by_component)
+                )
+            ],
+            "three_way_joint": {
+                "target_refs": tuple(component.target_ref for component in plan.components),
+                "raw_denominator_support": raw_denominator,
+                "member_refs": denominator_refs,
+                "weighted_denominator_support_if_authorized": _fraction_material(
+                    weighted_denominator
+                ),
+            },
+        }))
+        cell_member_refs = MappingProxyType({
+            key: _canonical_refs(values)
+            for key, values in sorted(j3_cell_members.items())
+        })
+    else:
+        denominator_material = MappingProxyType({})
+        cell_member_refs = MappingProxyType({})
+
     return _Evaluation(
         fact_state=state,
         detail=detail,
@@ -436,6 +552,8 @@ def _evaluate_index_group(
         weighted_denominator=weighted_denominator,
         weighted_cells=(MappingProxyType(dict(sorted(weighted_cells.items())))
                         if weighted_cells is not None else None),
+        denominator_material=denominator_material,
+        cell_member_refs=cell_member_refs,
         used_objects=tuple(sorted({obj.ref.key: obj for obj in used}.values(), key=lambda obj: obj.ref.key)),
         used_authority_refs=_canonical_authorities(used_auth),
     )
@@ -447,7 +565,11 @@ def _fraction_material(value: Fraction | None) -> Any:
     return {"$exact_fraction": [value.numerator, value.denominator]}
 
 
-def _cell_projection(evaluation: _Evaluation) -> tuple[Mapping[str, Any], ...]:
+def _cell_projection(
+    evaluation: _Evaluation,
+    *,
+    include_member_refs: bool = False,
+) -> tuple[Mapping[str, Any], ...]:
     rows: list[Mapping[str, Any]] = []
     for key in sorted(evaluation.cell_material):
         raw = evaluation.raw_cells[key]
@@ -458,12 +580,17 @@ def _cell_projection(evaluation: _Evaluation) -> tuple[Mapping[str, Any], ...]:
         else:
             cell_state = "ZERO_SUPPORT"
         weighted = evaluation.weighted_cells[key] if evaluation.weighted_cells is not None else None
-        rows.append(MappingProxyType({
+        row = {
             "cell": evaluation.cell_material[key],
             "cell_state": cell_state,
             "raw_numerator_support": raw,
             "weighted_numerator_support_if_authorized": _fraction_material(weighted),
-        }))
+        }
+        if include_member_refs:
+            row["exact_same_respondent_member_refs"] = [
+                ref.as_dict() for ref in evaluation.cell_member_refs.get(key, ())
+            ]
+        rows.append(MappingProxyType(row))
     return tuple(rows)
 
 
@@ -488,8 +615,12 @@ def _make_execution_replay_ref(
         "target_domain_identity": plan.domain_identity,
         "risk_member_refs": [ref.as_dict() for ref in evaluation.risk_members],
         "denominator_member_refs": [ref.as_dict() for ref in evaluation.denominator_members],
-        "complete_cells": list(_cell_projection(evaluation)),
+        "complete_cells": list(_cell_projection(
+            evaluation, include_member_refs=(plan.arity == 3)
+        )),
     }
+    if plan.arity == 3:
+        material["authority37_j3_denominators"] = evaluation.denominator_material
     digest = semantic_hash(material)
     return ExactRef(
         "PRE553_I03_QUERY_REPLAY",
@@ -550,6 +681,25 @@ def _build_fact(
     if evaluation.weighted_cells is not None:
         weighted_resolved = sum(evaluation.weighted_cells.values(), Fraction(0, 1))
 
+    target_topology = {
+        "arity": plan.arity,
+        "joint_order_semantics": plan.joint_order_semantics,
+        "target_domain_identity": plan.domain_identity,
+        "complete_cell_semantic_projection": list(_cell_projection(
+            evaluation, include_member_refs=(plan.arity == 3)
+        )),
+    }
+    if plan.arity == 3:
+        target_topology.update({
+            "target_refs": [
+                component.target_ref.as_dict() for component in plan.components
+            ],
+            "maximum_target_arity_J": MAXIMUM_SUPPORTED_TARGET_ARITY_J,
+            "authority37_j3_denominators": evaluation.denominator_material,
+            "higher_order_evidence_semantics": "DIRECT_EXACT_SAME_RESPONDENT_THREE_WAY_JOINT",
+            "pairwise_projection_not_identity_equivalent": True,
+        })
+
     return EmpiricalFact(
         typed_state=evaluation.fact_state,
         authority_snapshot_refs=all_auth,
@@ -557,12 +707,7 @@ def _build_fact(
         producer_replay_locator_or_reference_root=replay_ref,
         empirical_query_spec_ref=query.ref,
         empirical_universe_refs=universe_refs,
-        target_topology={
-            "arity": plan.arity,
-            "joint_order_semantics": plan.joint_order_semantics,
-            "target_domain_identity": plan.domain_identity,
-            "complete_cell_semantic_projection": list(_cell_projection(evaluation)),
-        },
+        target_topology=target_topology,
         condition_predicate_ref=condition_ref,
         risk_set_ref=risk_ref,
         raw_numerator_support=evaluation.raw_resolved_target_support,

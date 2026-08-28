@@ -181,7 +181,7 @@ def test_ordered_ranked_and_repeated_topologies_preserve_exact_information():
     assert facts["ordered"].ref != facts["ranked"].ref != facts["repeated"].ref
 
 
-def test_four_way_bounded_joint_retains_higher_order_parity_frontier():
+def test_authority37_j3_bounded_joint_retains_higher_order_parity_frontier():
     oracle = FIXTURE_ORACLES["K_WAY_BOUNDED_JOINT"].expected
     _, fact = k_way_bounded_joint_fixture()
     cells = fact.target_topology["complete_cell_semantic_projection"]
@@ -193,7 +193,7 @@ def test_four_way_bounded_joint_retains_higher_order_parity_frontier():
     assert len(supported) == oracle["supported_cells"]
     assert len(zero) == oracle["zero_cells"]
     for row in cells:
-        a, b, c, y = map(int, row["cell"])
-        expected = a ^ b ^ c
-        assert row["raw_numerator_support"] == (1 if y == expected else 0)
-        assert row["cell_state"] == ("OBSERVED_POSITIVE" if y == expected else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET")
+        x, y, z = map(int, row["cell"])
+        expected = x ^ y
+        assert row["raw_numerator_support"] == (1 if z == expected else 0)
+        assert row["cell_state"] == ("OBSERVED_POSITIVE" if z == expected else "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET")
