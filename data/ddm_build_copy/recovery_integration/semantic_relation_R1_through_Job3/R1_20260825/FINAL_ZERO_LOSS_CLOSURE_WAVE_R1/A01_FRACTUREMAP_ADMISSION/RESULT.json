@@ -1,0 +1,61 @@
+{
+  "schema": "A01_FRACTUREMAP_INDEPENDENT_ADMISSION_RESULT@1.0.0",
+  "status": "FAIL_CLOSED__MANDATORY_INDEPENDENT_ADMISSION_NOT_EXECUTABLE__GOVERNED_WAVEVIII_SAV_DECODER_UNAVAILABLE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-a01-fracturemap-admission-r1",
+  "starting_head": "a1745d3214a13a779b2d91a5ba4660b71b69663d",
+  "authority": "41_ZERO_LOSS_REPAIR_WAVE_R1_RETURN_JOIN_AND_FINAL_CLOSURE_WAVE_AUTHORITY",
+  "z02": {
+    "final_ref": "cf3b376710e61695ab37a24269728152bd58f53e",
+    "tested_code_ref": "d164f14dd6edd63a30b02639ed93cfb90c51ee92",
+    "existing_integration_tests_passed": 157,
+    "independent_admission_established": false
+  },
+  "frozen_harness_refs": {
+    "I05": "030521d57e3fc5f4582d43f90efb0056aa69d8cd",
+    "I06": "dc2d53d6176021e66098ba513fde1509f7621254",
+    "I07": "f8ec01cfdcadcfeb4001eeaf01b5ce09f46ccc80",
+    "I08": "1d4b44c3b1fd8ccabccfb06f87fcd42140717eb1"
+  },
+  "source_preflight": {
+    "exact_hashes_pass": true,
+    "files": {
+      "sav": {"bytes": 12275728, "sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998"},
+      "questionnaire": {"bytes": 1395546, "sha256": "d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb"},
+      "codebook": {"bytes": 677029, "sha256": "328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc"}
+    }
+  },
+  "execution_environment": {
+    "python": "3.13.5",
+    "pyreadstat": "MISSING",
+    "savReaderWriter": "MISSING",
+    "pspp_convert": "MISSING",
+    "readstat": "MISSING",
+    "R": "MISSING",
+    "libreoffice_sav_decode": "UNAVAILABLE",
+    "matching_decoder_artifact_in_library": "NOT_FOUND"
+  },
+  "gates": {
+    "I05_hostile_synthetic": "NOT_EXECUTED_AS_A01_PRODUCTION_ADMISSION",
+    "I06_lebanon_real_parity": "BLOCKED_PRE_PRODUCTION_EXECUTION",
+    "I07_real_pair_direct_J3": "BLOCKED_PRE_PRODUCTION_EXECUTION",
+    "I08_structural_anti_cheat": "NOT_EXECUTED_NO_COMPLETED_PRODUCTION_BUNDLE",
+    "two_run_exact_replay": "NOT_EXECUTED",
+    "determinant_mutation_noninterference": "NOT_EXECUTED"
+  },
+  "oracle_control": {
+    "frozen_expected_answer_artifacts_opened": 0,
+    "oracle_content_supplied_to_production": false,
+    "production_observation_sealed": false,
+    "stop_phase": "MANDATORY_EXECUTION_PRECONDITION"
+  },
+  "mutations": {
+    "production_code": false,
+    "harness_semantics": false,
+    "survey_source_bytes_committed": false,
+    "sibling_A01_A10_findings_consumed": false,
+    "architecture_selected": false,
+    "V3_or_MX04_or_MX05": false
+  },
+  "terminal_token": "A01_FRACTUREMAP_ADMISSION_BLOCKED__EXACT_WAVEVIII_BYTES_PASS__GOVERNED_SAV_DECODER_UNAVAILABLE__INDEPENDENT_ADMISSION_NOT_ESTABLISHED__ORACLES_UNOPENED"
+}

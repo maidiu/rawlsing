@@ -1,0 +1,18 @@
+{
+  "schema": "A01_ORACLE_CONTROL_RECEIPT@1.0.0",
+  "status": "PASS_FAIL_CLOSED_ORACLE_ORDERING",
+  "autonomous_production_run_started": false,
+  "production_observation_A_sealed": false,
+  "production_observation_B_sealed": false,
+  "frozen_expected_answer_oracle_artifacts_opened": 0,
+  "oracle_content_supplied_to_production": false,
+  "oracle_comparison_performed": false,
+  "stop_phase": "MANDATORY_SOURCE_DECODER_EXECUTION_PRECONDITION",
+  "contract_files_read_before_stop": [
+    "I06 REALDATA_PARITY_CONTRACT.md",
+    "I07 REALDATA_COSIGNATURE_ACCEPTANCE_CONTRACT.md",
+    "I08 ANTI_CHEAT_CONTRACT.md"
+  ],
+  "contract_read_purpose": "Establish lawful input boundary, required execution order, observability requirements, and fail-closed rules only.",
+  "assertion": "ORACLE_MAY_JUDGE_OUTPUT_AFTER_RUN != ORACLE_MAY_SEED_CONTROLLER_INPUT"
+}

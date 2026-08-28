@@ -1,0 +1,60 @@
+A01 INTEGRATED FRACTURE-MAP INDEPENDENT ADMISSION R1 — TEST RECEIPT
+
+WORKER IDENTITY
+PASS branch = agent/verkhovod-a01-fracturemap-admission-r1
+PASS start HEAD = a1745d3214a13a779b2d91a5ba4660b71b69663d
+PASS Authority 41 read before admission decision
+
+FROZEN REF RESOLUTION
+PASS Z02 final = cf3b376710e61695ab37a24269728152bd58f53e
+PASS Z02 tested code = d164f14dd6edd63a30b02639ed93cfb90c51ee92
+PASS I05 final = 030521d57e3fc5f4582d43f90efb0056aa69d8cd
+PASS I06 final = dc2d53d6176021e66098ba513fde1509f7621254
+PASS I07 final = f8ec01cfdcadcfeb4001eeaf01b5ce09f46ccc80
+PASS I08 final = 1d4b44c3b1fd8ccabccfb06f87fcd42140717eb1
+
+EXISTING Z02 RECEIPT
+PASS identity only: 157 relevant integration tests passed at tested Z02 commit.
+NOT ADMISSION: existing Z02 integration tests do not satisfy A01 independent admission.
+
+LIBRARY MATERIALIZATION + HASH
+PASS SAV 12275728 bytes a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998
+PASS questionnaire 1395546 bytes d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb
+PASS codebook 677029 bytes 328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc
+PASS source substitution = false
+
+EXECUTION ENVIRONMENT
+python = 3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]
+pyreadstat = MISSING
+savReaderWriter = MISSING
+pspp-convert = MISSING
+readstat = MISSING
+R = MISSING
+libreoffice = PRESENT; SAV source load/convert unavailable
+Library search for pyreadstat/savReaderWriter/readstat/pspp executable package = NO MATCH
+
+ADMISSION EXECUTION
+BLOCKED I06 exact-SAV production execution cannot cross governed decoder preflight
+BLOCKED I07 exact-SAV production execution cannot cross governed decoder preflight
+NOT RUN I05 as A01 production admission after mandatory conjunctive execution precondition failed
+NOT RUN I08: no completed autonomous production bundle exists
+NOT RUN two-run exact replay
+NOT RUN determinant mutation/noninterference
+
+ORACLE CONTROL
+PASS frozen expected-answer/oracle artifact opens = 0
+PASS oracle content supplied to production = false
+PASS production patched to oracle = false
+PASS production run never started under a substituted decoder/carrier
+
+MUTATION / SCOPE
+PASS production code modified = false
+PASS harness semantics modified = false
+PASS proprietary survey bytes committed = false
+PASS sibling A01-A10 findings consumed = false
+PASS architecture selected = false
+PASS V3/MX04/MX05 executed = false
+
+FINAL
+FAIL_CLOSED A01 independent admission is not established.
+A01_FRACTUREMAP_ADMISSION_BLOCKED__EXACT_WAVEVIII_BYTES_PASS__GOVERNED_SAV_DECODER_UNAVAILABLE__INDEPENDENT_ADMISSION_NOT_ESTABLISHED__ORACLES_UNOPENED
