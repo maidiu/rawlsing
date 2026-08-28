@@ -1,0 +1,61 @@
+Z06 AUTHORITY MAINTENANCE EXECUTOR R1 — TEST RECEIPT
+
+START HEAD:
+7032ac632fe244bc6d815b3e5a962ef3ea32a8cc
+
+WORKER COMMAND BLOB:
+900647b7a81f5530edebbfd0f0c1cc649bf36917
+
+AUTHORITY 40 BLOB:
+6b8a4449b4c5304d122231848b07880ac4858cf4
+
+D05 ACCEPTED RETURN:
+b7dd1bce667651c88ddd71c17c065f2b33ec38ec
+
+PRODUCTION MODULE:
+rawlsing_next/pre553_authority_maintenance.py
+blob ac7f3a013129bc148debf8f011597971a2c99442
+
+HOSTILE TEST MODULE:
+rawlsing_next/tests/test_pre553_authority_maintenance.py
+blob e7ac05848fd6489751a0ff37d4ae85037412751b
+
+STATIC EXACT-SOURCE CONTRACT CHECKS: PASS
+- no C5R2 prototype commit/owner identity in production module
+- existing AuthoritySnapshot is minted; no new public semantic authority family
+- explicit APPROVED adjudication gate before revision mint
+- no resolve_latest / resolve_default API
+- latest/default/fuzzy/nearest selector tokens rejected
+- same id/version conflicting content fails closed
+- correction target/scope/genealogy guards present
+- prior-lawful-release rollback guard present
+- semantic determinant selective affected-set walk present
+- exact affected-set recompilation receipt guard present
+- new-source semantic-authority candidate onboarding present
+- deterministic checkpoint restore + replay audit present
+- atomic promotion mutation occurs only after recompiler returns and release/event objects are constructed
+
+HOSTILE TEST COVERAGE AUTHORED:
+- source onboarding without prebuilt AuthoritySnapshot
+- positive adjudication and complete evidence gate
+- rejected/deferred typed states
+- same id/version conflict
+- latest/default/fuzzy selector prohibition
+- collision/split/exclusion/boundary correction genealogy
+- evidence accumulation genealogy
+- selective invalidation/recompilation and unaffected stability
+- recompiler failure leaves current selection/event chain unchanged
+- affected dependents without recompiler fail closed
+- rollback to exact prior lawful release
+- deterministic checkpoint/restart/replay identity
+- historical exact authority remains replayable after later current revision
+- exact current-selection receipt required
+
+RUNTIME PYTEST:
+NOT_EXECUTED__NO_REPOSITORY_RUNNER_OR_GITHUB_ACTIONS_WORKFLOW_AVAILABLE_TO_THIS_WORKER
+
+HQ EXECUTION COMMAND:
+pytest -q rawlsing_next/tests/test_pre553_authority_maintenance.py
+
+NEGATIVE CEILING:
+IMPLEMENTATION_AND_EXECUTABLE_HOSTILE_TESTS_AUTHORED__NO_RUNTIME_PASS_FABRICATED
