@@ -511,6 +511,10 @@ class FractureMapController:
         ancestry_refs: Iterable[ExactRef] = (),
     ) -> SealedFrontier:
         self._between_invocations()
+        coordinate_conditions = tuple(sorted(
+            coordinate_conditions,
+            key=lambda item: (item.coordinate_ref.key, item.exact_value, item.atom_id),
+        ))
         atoms = [{
             "atom_id": "PARENT",
             "predicate_ref": parent_predicate.ref,
@@ -566,6 +570,7 @@ class FractureMapController:
         ancestry_refs: Iterable[ExactRef] = (),
     ) -> SealedFrontier:
         self._between_invocations()
+        branch_roles = tuple(sorted(branch_roles, key=lambda item: item.role))
         atoms = [{
             "atom_id": "PARENT",
             "predicate_ref": parent_predicate.ref,

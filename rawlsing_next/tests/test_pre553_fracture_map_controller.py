@@ -1,5 +1,3 @@
-from dataclasses import FrozenInstanceError
-import canonicaljson
 import pytest
 
 from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec, canonical_json
