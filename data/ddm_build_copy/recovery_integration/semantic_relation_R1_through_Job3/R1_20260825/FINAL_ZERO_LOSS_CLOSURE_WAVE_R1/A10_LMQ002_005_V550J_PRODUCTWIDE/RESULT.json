@@ -1,0 +1,88 @@
+{
+  "court_id": "A10_LMQ002_005_V550J_PRODUCTWIDE_R1",
+  "status": "DEPENDENCY_BLOCKED__LMQ002_OPEN__LMQ005_OPEN__ROW_LEVEL_ROUTING_CLOSURE_REQUIRED__NO_PRODUCTWIDE_AUTHORITY_INSTALLED",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-a10-lmq002-005-v550j-productwide-r1",
+  "verified_starting_head": "51a10cef4bd664928328c776cb00fcd0f8f1648c",
+  "worker_command_pre_command_base": "477ca6997087676a844e997a1f12d809908119b3",
+  "governing_authority": "41_ZERO_LOSS_REPAIR_WAVE_R1_RETURN_JOIN_AND_FINAL_CLOSURE_WAVE_AUTHORITY.md",
+  "accepted_z03_ref": "0c0e0704be91a5e19c9c524e3f29cd081495b721",
+  "lmq_002": {
+    "disposition": "OPEN__DEPENDENCY_BLOCKED_ON_EXACT_ROW_LEVEL_ROUTING_AND_APPLICABILITY_CLOSURE_PLUS_APPROVED_SOURCE_FAMILY_SERIALIZATION",
+    "productwide_authority_installed": false,
+    "current_selected_registry": {
+      "path": "data/ddm_build_copy/manifests/question_family_registry.yaml",
+      "git_blob": "54eb6dd138b5e30305b0308fcdb8f078994b1c40",
+      "source_family": "GSS",
+      "status": "draft",
+      "family_count": 3
+    }
+  },
+  "lmq_005": {
+    "disposition": "OPEN__DEPENDENCY_BLOCKED_ON_699_EXACT_ROUTING_ROWS_AND_NON_GSS_APPROVED_REGISTRY_CLOSURE",
+    "all_wave_executable_scope_registry_installed": false,
+    "required_scope_dimensions": [
+      "configuration",
+      "country",
+      "wave",
+      "form",
+      "module",
+      "split",
+      "routing",
+      "member_applicability",
+      "completion"
+    ]
+  },
+  "routing_dependency": {
+    "historical_partition_total": 700,
+    "universal_closed_outside_target_debt": 1,
+    "target_rows_dependency_blocked": 699,
+    "classes": [
+      {
+        "class": "SOURCE_SIGNAL_REQUIRES_PREDICATE",
+        "row_count": 99,
+        "missing_closure": "exact historical row identity -> current executable predicate"
+      },
+      {
+        "class": "NO_SOURCE_ROW_MATCH",
+        "row_count": 320,
+        "missing_closure": "exact historical row identity -> later source closure or governed known absence"
+      },
+      {
+        "class": "UNRESOLVED",
+        "row_count": 280,
+        "missing_closure": "exact historical row identity -> later source closure or governed known absence"
+      }
+    ],
+    "aggregate_counts_promoted_to_row_authority": false
+  },
+  "recovery_denominator": {
+    "source_structures": 2499,
+    "memberships": 15990,
+    "promoted_to_executable_authority": false
+  },
+  "nine_source_target": [
+    "GSS",
+    "WVS",
+    "EVS",
+    "Arab Barometer",
+    "Afrobarometer",
+    "Asian Barometer",
+    "Latinobarometro",
+    "South Asia",
+    "LiTS"
+  ],
+  "excluded_sibling_consumption": {
+    "A06": false,
+    "A07": false
+  },
+  "noninterference": {
+    "archive08_promoted": false,
+    "production_code_modified": false,
+    "selected_manifest_modified": false,
+    "architecture_selected": false,
+    "v3_work": false,
+    "typed_unresolved_known_absence_preserved": true
+  },
+  "terminal_token": "A10_LMQ002_005_V550J_PRODUCTWIDE_R1_COMPLETE__DEPENDENCY_BLOCKED__NO_INFERRED_COMPLETENESS"
+}
