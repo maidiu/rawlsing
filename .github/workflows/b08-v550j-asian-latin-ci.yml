@@ -1,0 +1,23 @@
+name: B08 V550J Asian Latin verification
+on:
+  push:
+    branches:
+      - agent/verkhovod-b08-v550j-asian-latin-r1
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip pytest pandas pyyaml
+      - run: >
+          python -m pytest -q
+          data/ddm_build_copy/tests/test_v550j_b08_asian_latin_authority.py
+          data/ddm_build_copy/test_v550j_w03_authority.py
+      - run: python data/ddm_build_copy/validate_v550j_b08_source_family_authority.py
+      - run: sha256sum
+          data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/RESIDUAL_ZERO_LOSS_EXECUTION_WAVE_R2/B08_V550J_ASIAN_LATIN/ASIAN_BAROMETER_V550J_AUTHORITY_SERIALIZATION.json
+          data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/RESIDUAL_ZERO_LOSS_EXECUTION_WAVE_R2/B08_V550J_ASIAN_LATIN/LATINOBAROMETRO_V550J_AUTHORITY_SERIALIZATION.json
+          data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/RESIDUAL_ZERO_LOSS_EXECUTION_WAVE_R2/B08_V550J_ASIAN_LATIN/R14_SOURCE_STRUCTURE_EVIDENCE_DISPOSITION.csv
