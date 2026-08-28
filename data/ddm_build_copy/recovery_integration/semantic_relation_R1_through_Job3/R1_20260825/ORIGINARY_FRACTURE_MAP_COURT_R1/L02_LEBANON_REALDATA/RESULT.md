@@ -58,6 +58,7 @@ For **MA+ non-SES religion selection**, combined denomination ranks first (`norm
 
 The committed CSVs freeze:
 
+- `RESPONSE_PATTERN_ORACLE.csv` is a hash-sealed manifest over eight full census shards (`RESPONSE_PATTERN_ORACLE_PART_01.csv` through `_08.csv`). Concatenating shard data rows beneath one header reconstructs all 370 replay rows with canonical monolithic SHA-256 `89822d967bf98b76d9a2607061a6970650d7e71e8a72bc0e9d5e9cc252888df5`; no row is omitted.
 - branch definitions, support, weights, and alternative-response presence;
 - exact same-respondent multi-label patterns;
 - descriptive branch determinicity profiles;
