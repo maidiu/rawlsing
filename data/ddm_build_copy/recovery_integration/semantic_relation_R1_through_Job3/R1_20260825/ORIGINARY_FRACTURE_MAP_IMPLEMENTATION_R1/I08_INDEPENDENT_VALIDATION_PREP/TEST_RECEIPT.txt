@@ -1,0 +1,48 @@
+I08 INDEPENDENT FRACTURE-MAP VALIDATION PREP — TEST RECEIPT
+
+contract_version: I08_INDEPENDENT_VALIDATION_CONTRACT@1.0.0
+harness: independent_validation_prep.py
+execution_mode: Python standard library only
+production_rawlsing_code_imported: false
+I01_I07_implementation_code_or_findings_imported_or_read: false
+integrated_I01_I04_execution_performed: false
+
+SELFTEST RESULT
+checks_total: 19
+checks_passed: 19
+failed_checks: []
+
+checks:
+PASS good
+PASS leak_modal_pattern
+PASS leak_primary_predictor
+PASS leak_branch_members
+PASS leak_secondary_splitter
+PASS leak_grandchild_path
+PASS leak_cotravel_targets
+PASS frontier_mutation
+PASS pruning
+PASS not_p_missing
+PASS nm_special
+PASS fake_j3
+PASS private_membership
+PASS retention_loss
+PASS nondeterminism
+PASS actor_v3
+PASS r_only_noninterference
+PASS irrelevant_invalidation
+PASS relevant_not_invalidated
+
+The valid synthetic normalized bundle passes with zero findings.
+The adversarial cases prove that the validator itself detects the command's anti-cheat/replay/noninterference failure classes.
+The R-only metamorphic positive control changes only the R-dependent artifact and passes.
+The over-invalidation negative control changes an unrelated Q child and is detected.
+The under-invalidation negative control leaves an R-dependent artifact unchanged and is detected.
+
+This receipt is NOT an integrated production acceptance result.
+It proves only that the merge-independent validation harness is internally executable and discriminatorily self-tested before HQ points an adapter at the merged I01-I04 implementation.
+
+Future invocation after checkout/integration:
+python3 data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/ORIGINARY_FRACTURE_MAP_IMPLEMENTATION_R1/I08_INDEPENDENT_VALIDATION_PREP/independent_validation_prep.py
+
+I08_INDEPENDENT_FRACTURE_MAP_VALIDATION_PREP_R1_COMPLETE
