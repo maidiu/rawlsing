@@ -1,0 +1,74 @@
+A03 Z06 SEMANTIC-AUTHORITY MAINTENANCE RUNTIME ADMISSION R1
+================================================================
+
+USER-DISPATCH START HEAD
+26cd5fdb6e5ea419525d733dceb80bdb9ad21242
+
+WORKER COMMAND BLOB
+8b361abc7de250da978a3e65cb4c8dee38cae9d8
+
+AUTHORITY 41 BLOB
+59f28b73440bd27a8e5210d33f959b85ad3c7aca
+
+EXACT Z06 RETURN HEAD
+7a96397be8f77f5cd4c1ba396b6c70783bdeb613
+
+EXACT RUNTIME INPUT BLOBS
+rawlsing_next/pre553_empirical_objects.py
+91974c52ce8c0acafa939be0d7d83f4a5c8085b7
+40719 bytes
+
+rawlsing_next/pre553_empirical_authority.py
+6714340facfe186c6cc521884cc85ab6340ad989
+13566 bytes
+
+rawlsing_next/pre553_authority_maintenance.py
+ac7f3a013129bc148debf8f011597971a2c99442
+86203 bytes
+
+rawlsing_next/tests/test_pre553_authority_maintenance.py
+e7ac05848fd6489751a0ff37d4ae85037412751b
+22165 bytes
+
+BYTE/IDENTITY PRECHECK
+PASS — every local runtime input reproduced its exact Git blob SHA.
+
+EXECUTED COMMAND
+PYTHONPATH=/tmp/a03-z06-runtime python -m pytest -q /tmp/a03-z06-runtime/rawlsing_next/tests/test_pre553_authority_maintenance.py
+
+RUNTIME
+Python 3.13.5
+pytest 9.0.2
+
+EXECUTED RESULT
+.....................                                                    [100%]
+21 passed in 0.19s
+
+COLLECTION RECEIPT
+21 tests collected in 0.01s
+
+STATIC NEGATIVE-CEILING PRECHECKS
+PASS no_c5r2_commit_identity
+PASS no_resolve_latest_api
+PASS no_resolve_default_api
+PASS explicit_approved_gate
+PASS same_id_version_conflict
+PASS rollback_exact_prior_release
+PASS selective_invalidation
+PASS source_onboarding_candidate
+PASS checkpoint_replay
+
+AUTHORITY-41 ACCEPTANCE LAW
+current authority: Authority 41 + inherited current PRE553 exact authority law
+implementation: exact Z06 module blob above
+executed test/receipt: 21/21 PASS above
+negative ceiling: PASS, see NEGATIVE_CEILING_VERIFICATION.md
+
+SIBLING-BLINDNESS
+PASS — no A01-A10 sibling return consumed.
+
+ADMISSION
+LMQ006/LMX004 CURRENTLY_PROVED
+
+TERMINAL
+A03_Z06_MAINTENANCE_RUNTIME_ADMISSION_R1_COMPLETE
