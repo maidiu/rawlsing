@@ -1,0 +1,59 @@
+{
+  "oracle_schema": "AUTH35_BRANCH_COSIGNATURE_ORACLE_R1",
+  "question_pair": [
+    "C1",
+    "C2"
+  ],
+  "global": {
+    "scope": "all 48 substantive respondents",
+    "contingency": {
+      "10": 21,
+      "11": 3,
+      "00": 3,
+      "01": 21
+    },
+    "phi": -0.75,
+    "holding": "globally reversed/negative"
+  },
+  "branch": {
+    "branch_id": "DEVIANT_Q1_A",
+    "parent_handoff": [
+      "P_PLUS_NOT_M",
+      "Q=1"
+    ],
+    "raw_n": 6,
+    "members": [
+      "SYN-R021",
+      "SYN-R022",
+      "SYN-R023",
+      "SYN-R024",
+      "SYN-R025",
+      "SYN-R026"
+    ],
+    "contingency": {
+      "10": 0,
+      "11": 3,
+      "00": 3,
+      "01": 0
+    },
+    "phi": 1,
+    "holding": "perfect positive same-respondent co-signature inside discovered branch"
+  },
+  "deep_child": {
+    "branch_id": "DEEP_S1",
+    "parent_handoff": [
+      "P_PLUS_NOT_M",
+      "Q=1",
+      "S=1"
+    ],
+    "raw_n": 4,
+    "contingency": {
+      "10": 0,
+      "11": 3,
+      "00": 1,
+      "01": 0
+    },
+    "holding": "supported depth>1 child; continuation must preserve actual parent membership"
+  },
+  "anti_collapse": "global pairwise association cannot substitute for branch-conditioned co-signature topology"
+}

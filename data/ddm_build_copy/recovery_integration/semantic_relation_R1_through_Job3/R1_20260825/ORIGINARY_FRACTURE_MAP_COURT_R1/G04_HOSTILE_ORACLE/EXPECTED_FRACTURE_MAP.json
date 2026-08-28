@@ -1,0 +1,263 @@
+{
+  "oracle_schema": "AUTH35_FULL_FRACTURE_MAP_ORACLE_R1",
+  "fixture": {
+    "fixture_id": "AUTH35-G04-SYNTHETIC-FRACTUREMAP-R1",
+    "csv_sha256": "83c496c9482c2e9736a6797e243965110899c1aa97436d752795b15d483a8215",
+    "logical_digest": "e4ef71ccf3815b0734013a5ebf1c85f9f3ac94720b30f2c5cf6285aa784a0017",
+    "total_rows": 52,
+    "substantive_rows": 48,
+    "minimum_raw_support": 3,
+    "weights": "integer fixture weights; 2 when numeric respondent id divisible by 4, otherwise 1"
+  },
+  "modal_response": {
+    "question": "TARGET_MULTISELECT",
+    "pattern": "A+B",
+    "raw_n": 24,
+    "weighted_n": 30
+  },
+  "primary_predictor": {
+    "id": "P",
+    "kind": "POSITIONAL",
+    "P1": {
+      "raw_n": 28,
+      "modal_raw_n": 20,
+      "weighted_n": 35,
+      "modal_weighted_n": 25
+    },
+    "P0": {
+      "raw_n": 20,
+      "modal_raw_n": 4,
+      "weighted_n": 25,
+      "modal_weighted_n": 5
+    },
+    "raw_modal_rate_difference": "18/35"
+  },
+  "fracture_quadrants": [
+    {
+      "id": "P_PLUS_M",
+      "predicate": "P=1 AND TARGET_MULTISELECT=A+B",
+      "raw_n": 20,
+      "weighted_n": 25,
+      "role": "P+M conformers"
+    },
+    {
+      "id": "P_PLUS_NOT_M",
+      "predicate": "P=1 AND TARGET_MULTISELECT!=A+B",
+      "raw_n": 8,
+      "weighted_n": 10,
+      "role": "P+not-M predictor-violating deviants"
+    },
+    {
+      "id": "NOT_P_PLUS_M",
+      "predicate": "P=0 AND TARGET_MULTISELECT=A+B",
+      "raw_n": 4,
+      "weighted_n": 5,
+      "role": "not-P+M alternative-route convergers"
+    },
+    {
+      "id": "NOT_P_PLUS_NOT_M",
+      "predicate": "P=0 AND TARGET_MULTISELECT!=A+B",
+      "raw_n": 16,
+      "weighted_n": 20,
+      "role": "not-P+not-M coherent minority branch"
+    }
+  ],
+  "secondary_predictors": {
+    "Q": {
+      "parent": "P_PLUS_NOT_M",
+      "Q1": {
+        "raw_n": 6,
+        "weighted_n": 7,
+        "patterns": {
+          "A_ONLY": 6
+        }
+      },
+      "Q0": {
+        "raw_n": 2,
+        "weighted_n": 3,
+        "patterns": {
+          "NONE": 2
+        }
+      },
+      "holding": "Q separates A_ONLY deviant exit from NONE category-failure residual"
+    },
+    "R": {
+      "parent": "P=0",
+      "R1": {
+        "raw_n": 6,
+        "modal_raw_n": 4,
+        "weighted_n": 7,
+        "modal_weighted_n": 5
+      },
+      "R0": {
+        "raw_n": 14,
+        "modal_raw_n": 0,
+        "weighted_n": 18,
+        "modal_weighted_n": 0
+      },
+      "holding": "R identifies an alternative route to the same modal A+B response"
+    },
+    "S": {
+      "parent": "P_PLUS_NOT_M -> Q=1 -> A_ONLY",
+      "S1": {
+        "raw_n": 4,
+        "weighted_n": 5,
+        "FOLLOWUP": {
+          "F_HIGH": 4
+        }
+      },
+      "S0": {
+        "raw_n": 2,
+        "weighted_n": 2,
+        "FOLLOWUP": {
+          "F_LOW": 2
+        }
+      },
+      "holding": "depth>1 child requires the discovered Q1 parent membership; S0 is underpowered and stops"
+    }
+  },
+  "multi_label_morphology": {
+    "pattern_counts": {
+      "A+B": 24,
+      "A_ONLY": 14,
+      "B_ONLY": 6,
+      "NONE": 4
+    },
+    "presence_marginals": {
+      "A_present": 38,
+      "B_present": 30
+    },
+    "same_marginals_alternative": {
+      "A+B": 22,
+      "A_ONLY": 16,
+      "B_ONLY": 8,
+      "NONE": 2
+    },
+    "holding": "presence marginals do not identify response-pattern morphology"
+  },
+  "higher_order": {
+    "variables": [
+      "XOR_A",
+      "XOR_B",
+      "XOR_C"
+    ],
+    "law": "XOR_C = XOR_A XOR XOR_B",
+    "triple_cells": {
+      "101": 12,
+      "110": 12,
+      "000": 12,
+      "011": 12
+    },
+    "all_other_triple_cells": 0,
+    "pairwise_tables": {
+      "XOR_A:XOR_B": {
+        "10": 12,
+        "11": 12,
+        "00": 12,
+        "01": 12
+      },
+      "XOR_A:XOR_C": {
+        "10": 12,
+        "11": 12,
+        "00": 12,
+        "01": 12
+      },
+      "XOR_B:XOR_C": {
+        "10": 12,
+        "11": 12,
+        "00": 12,
+        "01": 12
+      }
+    },
+    "pairwise_phi": 0,
+    "holding": "all pairwise analyses are null while the K-way constraint is exact"
+  },
+  "stable_minority": {
+    "id": "STABLE_MINORITY_B",
+    "predicate": "P=0 AND TARGET_MULTISELECT=B_ONLY",
+    "raw_n": 6,
+    "weighted_n": 7,
+    "members": [
+      "SYN-R041",
+      "SYN-R042",
+      "SYN-R043",
+      "SYN-R044",
+      "SYN-R045",
+      "SYN-R046"
+    ]
+  },
+  "stops": {
+    "underpowered": {
+      "id": "UNDERPOWERED_U1",
+      "predicate": "P=0 AND TARGET_MULTISELECT=B_ONLY AND U=1",
+      "raw_n": 2,
+      "weighted_n": 2,
+      "minimum_raw_support": 3,
+      "terminal_state": "UNDERPOWERED"
+    },
+    "valid_empty": {
+      "id": "VALID_EMPTY_P1_B",
+      "predicate": "P=1 AND TARGET_MULTISELECT=B_ONLY",
+      "raw_n": 0,
+      "weighted_n": 0,
+      "terminal_state": "VALID_EMPTY"
+    }
+  },
+  "residual_none": {
+    "predicate": "TARGET_MULTISELECT=NONE",
+    "raw_n": 4,
+    "weighted_n": 6,
+    "response_state": "SUBSTANTIVE",
+    "holding": "NONE is category-failure/residual response morphology and is not MISSING, REFUSED, NOT_APPLICABLE, or UNKNOWN"
+  },
+  "typed_nonresponses": {
+    "MISSING": [
+      "SYN-R049"
+    ],
+    "REFUSED": [
+      "SYN-R050"
+    ],
+    "NOT_APPLICABLE": [
+      "SYN-R051"
+    ],
+    "UNKNOWN": [
+      "SYN-R052"
+    ]
+  },
+  "replay": {
+    "identity_rule": "FRACTUREMAP-R1:<respondent_id>",
+    "unique_replay_keys": 52,
+    "canonical_sort": "respondent_id"
+  },
+  "perturbation": {
+    "id": "PERTURB_R_SYN_R035",
+    "single_change": {
+      "respondent_id": "SYN-R035",
+      "field": "R",
+      "from": 0,
+      "to": 1
+    },
+    "before": {
+      "P0_R1_raw_n": 6,
+      "P0_R1_modal_raw_n": 4,
+      "P0_R0_raw_n": 14,
+      "P0_R0_modal_raw_n": 0
+    },
+    "after": {
+      "P0_R1_raw_n": 7,
+      "P0_R1_modal_raw_n": 4,
+      "P0_R0_raw_n": 13,
+      "P0_R0_modal_raw_n": 0
+    },
+    "invariants": [
+      "overall response morphology",
+      "P fracture quadrants",
+      "Q deviant split",
+      "S recursive child",
+      "global C1/C2 cosignature",
+      "XOR K-way structure",
+      "replay identity"
+    ],
+    "holding": "only topology dependent on determinant R changes"
+  }
+}

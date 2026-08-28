@@ -1,0 +1,11 @@
+case_id,predicate_or_case,raw_n,weighted_n,expected_state,stop_reason,child_expansion_allowed,semantic_holding
+UNDERPOWERED_U1,P=0 AND TARGET_MULTISELECT=B_ONLY AND U=1,2,2,UNDERPOWERED,MINIMUM_RAW_DENOMINATOR_3,false,Concentration cannot override the exact support stop
+DEVIANT_Q0_NONE,P=1 AND TARGET_MULTISELECT!=A+B AND Q=0,2,3,UNDERPOWERED,MINIMUM_RAW_DENOMINATOR_3,false,NONE remains typed category-failure even when this child is too small to recurse
+DEEP_S0,P_PLUS_NOT_M -> Q=1 -> S=0,2,2,UNDERPOWERED,MINIMUM_RAW_DENOMINATOR_3,false,Depth child stops without erasing its parent
+VALID_EMPTY_P1_B,P=1 AND TARGET_MULTISELECT=B_ONLY,0,0,VALID_EMPTY,EXACT_ZERO_MATCHES,false,Zero matches is valid-empty not failure and not a substantive negative
+RESIDUAL_NONE,TARGET_MULTISELECT=NONE,4,6,SUPPORTED_CATEGORY_FAILURE,NONE,true,NONE is a supported empirical response pattern distinct from nonresponse states
+TYPED_MISSING,SYN-R049,1,1,MISSING,SOURCE_RESPONSE_STATE,false,Missing is not NONE
+TYPED_REFUSED,SYN-R050,1,1,REFUSED,SOURCE_RESPONSE_STATE,false,Refused is not NONE
+TYPED_NOT_APPLICABLE,SYN-R051,1,1,NOT_APPLICABLE,SOURCE_RESPONSE_STATE,false,Not-applicable is not NONE
+TYPED_UNKNOWN,SYN-R052,1,2,UNRESOLVED,MISSING_OR_UNRESOLVED_AUTHORITY,false,Unknown remains unresolved
+NONCOMPARABLE_SENTINEL,UNBRIDGED_CROSS_UNIVERSE_METRIC,,,NONCOMPARABLE,NO_COMMON_COMPARISON_AUTHORITY,false,Do not force comparability
