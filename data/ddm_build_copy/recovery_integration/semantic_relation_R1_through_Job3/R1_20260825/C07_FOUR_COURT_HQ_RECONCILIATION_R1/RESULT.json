@@ -1,0 +1,106 @@
+{
+  "status": "C07_FOUR_COURT_HQ_RECONCILIATION_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-c07-four-court-hq-reconciliation-r1",
+  "starting_head": "ba4aeffb87cf374c20fba4363883b4e767065b59",
+  "parent_prev3_hq_ref": "0a030b914dbb748a6741c0ca2805c52733a21290",
+  "scope": "FOUR_EXACT_C07_AUTHORITY_COURTS_ONLY",
+  "architecture_selection": "NOT_PERFORMED_FORBIDDEN",
+  "production_code_modified": false,
+  "adjudications": [
+    {
+      "court": "EMPIRICAL_VALIDATION",
+      "exact_ref": "ea1e2aa4195a92f9d46f51f9d03f9cfabe9b22ac",
+      "before": "MISSING_AUTHORITY__EMPIRICAL_VALIDATION_LAW",
+      "after": "PARTIALLY_CLOSED",
+      "hq_adoption": "C07_EMPIRICAL_VALIDATION_TRANSITION_META_LAW@1.0.0",
+      "closed_scope": [
+        "candidate_vs_validation_noncollapse",
+        "explicit_VALIDATED_and_REJECTED_transition_discipline",
+        "typed_terminal_precedence",
+        "validation_release_provenance_replay_invalidation",
+        "fail_closed_missing_rule_behavior"
+      ],
+      "residual_authority": [
+        "product_or_operation_specific_validation_rule_binding_where_absent",
+        "rule_specific_support_uncertainty_or_statistical_parameters_where_not_positively_supplied"
+      ],
+      "implementation_execution_ready": false
+    },
+    {
+      "court": "EMPIRICAL_COMPARABILITY",
+      "exact_ref": "e07fc5f48f149beda2c4155d0584c9559fe5ca60",
+      "before": "MISSING_AUTHORITY__EMPIRICAL_COMPARABILITY_LAW",
+      "after": "CLOSED",
+      "hq_adoption": "C07-COMP-01_THROUGH_C07-COMP-10",
+      "closed_scope": [
+        "general_operation_scoped_comparability_decision_rule",
+        "distinct_by_default",
+        "all_material_mismatches_require_exact_positive_bridge",
+        "explicit_noncomparability_preservation",
+        "missing_bridge_fail_closed_without_fabricated_negative"
+      ],
+      "residual_authority": [
+        "operation_specific_positive_bridge_instances_such_as_measurement_portability_temporal_risk_population_semantic_or_actor_conditioner_binding"
+      ],
+      "implementation_execution_ready": false
+    },
+    {
+      "court": "POSITIONED_SUBJECT_POSSIBILITY",
+      "exact_ref": "25e8e99d471af561fd590122c83a5b3fdceaaad5",
+      "before": "MISSING_AUTHORITY__POSITIONED_SUBJECT_POSSIBILITY_MODEL_LAW",
+      "after": "REFRAMED",
+      "hq_adoption": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1 + POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_FIELD@1_CAPABILITY_CONTRACT",
+      "closed_scope": [
+        "capability_exists",
+        "learned_world_jurisdiction",
+        "A_B_C_logical_parity_interface",
+        "actor_state_firewall",
+        "required_input_output_fail_closed_classes"
+      ],
+      "residual_authority": [
+        "POSITIONED_SUBJECT_POSSIBILITY_MODEL_RULE_AUTHORITY_NOT_POSITIVELY_CLOSED",
+        "exact_EMPIRICAL_COMPARABILITY_BINDING_instances_for_each_conditioner"
+      ],
+      "implementation_execution_ready": false
+    },
+    {
+      "court": "SOURCE_UNIVERSE_COMPOSITION",
+      "exact_ref": "a3c2088add7281f70e5013d4a7378a1f88336618",
+      "before": "MISSING_AUTHORITY__SOURCE_UNIVERSE_COMPOSITION_LAW",
+      "after": "CLOSED",
+      "hq_adoption": "C07-1_THROUGH_C07-6_GENERAL_SOURCE_UNIVERSE_COMPOSITION_LAW",
+      "closed_scope": [
+        "default_distinctness",
+        "source_indexed_federated_joint_query",
+        "identity_preserving_tagged_container",
+        "metric_scoped_comparison",
+        "first_class_noncomparability",
+        "explicit_bridge_requirement_for_semantic_merger"
+      ],
+      "residual_authority": [
+        "specific_pooling_harmonization_weight_scale_population_routing_design_estimand_or_portability_bridge_when_an_operation_requires_semantic_merger"
+      ],
+      "implementation_execution_ready": false
+    }
+  ],
+  "c09": {
+    "launch_ready_declared": false,
+    "reason": "This court reconciles only the four C07 authority gaps; unrelated C05R2B C08_G1 WVS7 and harness gates remain outside scope.",
+    "prior_rows": {
+      "R12": "SPLIT_META_SATISFIED__EXACT_RULE_BINDINGS_GATED",
+      "R13": "GENERAL_RULE_SATISFIED__CELL_SPECIFIC_BRIDGES_GATED",
+      "R14": "CAPABILITY_INTERFACE_SATISFIED__MODEL_RULE_MISSING",
+      "R15": "GENERAL_RULE_SATISFIED"
+    }
+  },
+  "mandatory_noncollapse": [
+    "AUTHORITY_RECOVERED != IMPLEMENTATION_COMPLETE",
+    "NEGATIVE_BOUNDARY_CLOSED != POSITIVE_MODEL_AUTHORITY_CLOSED",
+    "COMPARABILITY_LAW != ACTOR_STATE_ASSIGNMENT",
+    "SOURCE_COMPOSITION_AUTHORITY != SHARED_LABEL_SIMILARITY",
+    "VALIDATION_AUTHORITY != DISCOVERY_AUTHORITY",
+    "C07_GAP_CLOSURE != ARCHITECTURE_SELECTION"
+  ],
+  "success_token": "C07_FOUR_COURT_HQ_RECONCILIATION_R1_COMPLETE"
+}
