@@ -1,0 +1,73 @@
+{
+  "oracle_id": "MX02_COMPONENT_VECTOR_AUTHORITY_ORACLE@1.0.0",
+  "status": "EXPERIMENT_ORACLE__NOT_PRODUCTION_AUTHORITY",
+  "object_grain": "one exact vector subject + one governed authority dimension + one complete governed component binding set",
+  "binding_law": "component semantic ownership remains with exact producers; vector closure/projection authority may bind refs but may not reown component payload semantics",
+  "required_vector_subject": {
+    "vector_subject_ref": "ExactRef required",
+    "authority_dimension_contract_ref": "ExactRef or exact immutable authority ref required",
+    "producer_replay_locator_or_reference_root": "exact immutable replay/reference root required"
+  },
+  "required_component_binding_fields": [
+    "component_id",
+    "component_ref",
+    "producer_family",
+    "role",
+    "ordinal_or_null",
+    "multiplicity_index",
+    "authority_state",
+    "authoritative_value_binding_or_digest",
+    "authority_ref",
+    "negative_or_limit_refs"
+  ],
+  "authority_states": [
+    "VALUE",
+    "GOVERNED_EMPTY",
+    "UNRESOLVED",
+    "DENIED",
+    "NONCOMPARABLE"
+  ],
+  "coverage_law": {
+    "complete_coverage": "every governed component identity has exactly one exact component binding and a resolvable typed authority state for the projected authority dimension",
+    "incomplete_coverage": "any governed component identity is absent, unresolved as a binding, multiply/ambiguously bound, or otherwise not exactly dispositioned",
+    "matched_subset_unanimity_is_complete_unanimity": false
+  },
+  "nonempty_law": {
+    "all_governed_components_nonempty": "complete coverage and every governed component has authority_state=VALUE with one non-empty authoritative value binding",
+    "governed_empty_counts_as_nonempty": false,
+    "unresolved_counts_as_nonempty": false,
+    "denied_counts_as_nonempty": false,
+    "noncomparable_counts_as_nonempty": false
+  },
+  "vector_persistence_law": {
+    "vector_retained_when_scalar_lawful": true,
+    "scalar_replaces_vector_authority": false,
+    "component_ids_and_producer_refs_must_remain_replayable": true,
+    "role_order_cardinality_multiplicity_preserved_when_governed": true,
+    "negative_states_preserved": true
+  },
+  "forbidden_collapses": [
+    "AVERAGING",
+    "MAJORITY_VOTE",
+    "FIRST_COMPONENT_SELECTION",
+    "PARENT_LABEL_SUBSTITUTION",
+    "COERCIVE_NULL_FILLING",
+    "DROP_EMPTY_COMPONENT",
+    "MATCHED_SUBSET_AS_COMPLETE_SET",
+    "PUBLICATION_REOWNERSHIP"
+  ],
+  "replay_oracle": [
+    "same vector subject ref",
+    "same authority-dimension contract ref",
+    "same governed component identities",
+    "same producer refs",
+    "same roles/order/multiplicity where governed",
+    "same typed authority states/value bindings",
+    "same coverage disposition",
+    "same nonempty disposition",
+    "same unanimity/heterogeneity disposition",
+    "same scalarization disposition and scalar value if lawful"
+  ],
+  "current_repository_disposition": "MISSING_ACCEPTED_COMMON_SEMANTIC_OWNER_FOR_THIS_ORACLE",
+  "negative_ceiling": "This oracle specifies the minimum semantic test only; it does not install a production object family, select architecture, or authorize route-specific storage."
+}
