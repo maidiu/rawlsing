@@ -56,9 +56,11 @@ For **MA+ non-SES religion selection**, combined denomination ranks first (`norm
 
 ## Acceptance oracle
 
+The committed replay pipeline is `analyze_lebanon_fracture_map.py -> normalize_and_shard_oracles.py`. The second script is serialization-only: it canonicalizes CSV newlines to LF and converts the full response-pattern monolith to the repository sharded form without changing any empirical row. Two fresh executions of this exact two-step pipeline were byte-identical.
+
 The committed CSVs freeze:
 
-- `RESPONSE_PATTERN_ORACLE.csv` is a hash-sealed manifest over eight full census shards (`RESPONSE_PATTERN_ORACLE_PART_01.csv` through `_08.csv`). Concatenating shard data rows beneath one header reconstructs all 370 replay rows with canonical monolithic SHA-256 `89822d967bf98b76d9a2607061a6970650d7e71e8a72bc0e9d5e9cc252888df5`; no row is omitted.
+- `RESPONSE_PATTERN_ORACLE.csv` is a hash-sealed manifest over eight full census shards (`RESPONSE_PATTERN_ORACLE_PART_01.csv` through `_08.csv`). Concatenating shard data rows beneath one header reconstructs all 370 replay rows with canonical monolithic SHA-256 `8a642a5cf133843512d84b039af475f70c13b739f3e26908899193ccee886ed9`; no row is omitted.
 - branch definitions, support, weights, and alternative-response presence;
 - exact same-respondent multi-label patterns;
 - descriptive branch determinicity profiles;
