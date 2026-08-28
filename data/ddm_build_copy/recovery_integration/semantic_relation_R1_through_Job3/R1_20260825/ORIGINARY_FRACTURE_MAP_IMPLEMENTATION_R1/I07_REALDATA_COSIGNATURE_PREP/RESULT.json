@@ -1,0 +1,125 @@
+{
+  "schema": "I07_REALDATA_COSIGNATURE_PREP_R1",
+  "status": "PREP_COMPLETE__SOURCE_BACKED_ORACLE_FROZEN__TARGET_CONTROLLER_INTERFACE_ABSENT_FAIL_CLOSED",
+  "success_token": "I07_REALDATA_COSIGNATURE_PREP_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-fracturemap-i07-realdata-cosignature-prep-r1",
+  "verified_starting_head": "4c3453b81179464670600992ef2b2bdafd871127",
+  "authority37": {
+    "commit": "9bafaf2cb96cc3fb46fef6785d486f08987ab71c",
+    "blob_sha": "48c0860ff2d7548ff2fa98d20021149aa2049953",
+    "maximum_target_arity_J": 3,
+    "law": "DIRECT_SAME_RESPONDENT_J3_REQUIRED__NO_J3_FROM_J2_RECONSTRUCTION"
+  },
+  "accepted_l03": {
+    "commit": "74834f5028cae0cdd3c525483494437f81c721e0",
+    "result_blob_sha": "1683bf0f5d42f34a42d5fb050e6e1e1e7b409616",
+    "oracle_blob_sha": "fc8f596f0810ed2e6edcd53e6caab54d98c0c5d3",
+    "pairwise_matrix_blob_sha": "0549e827409fb190ae3c0b1cdd15ee7265712bfc",
+    "source_ledger_blob_sha": "f54da938fad7ede5187f5add579dd1a25d18954b",
+    "replay_script_git_blob_sha": "48e87d763520aab4ec10846c509ad5859d12edc2",
+    "replay_script_sha256_from_accepted_result": "4887d3f9405f1d3b0a69a14a6d6a64ce084b2158a738fe6fe4a2f7a6d03432fd"
+  },
+  "library_source_receipt": {
+    "sav": {
+      "file_id": "file_00000000e4a8722f9131ea801a527554",
+      "name": "ArabBarometer_WaveVIII_English_v3.sav",
+      "sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "size_bytes": 12275728
+    },
+    "codebook": {
+      "file_id": "file_00000000102c71fbbd6a569011ead989",
+      "name": "Arab Barometer Wave 8 codebook.csv",
+      "sha256": "328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc",
+      "size_bytes": 677029
+    },
+    "questionnaire": {
+      "file_id": "file_00000000682c722f9ea8eb2e8830e790",
+      "name": "ENG-Arab-Barometer-Wave-VIII-Questionnaire-RELEASE-FIN-NOV-2024-1.pdf",
+      "sha256": "d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb",
+      "size_bytes": 1395546
+    },
+    "all_current_materialized_hashes_match_l03": true
+  },
+  "sav_replay": {
+    "layout": 2,
+    "case_size": 692,
+    "compression": 1,
+    "declared_cases": 15627,
+    "decoded_cases": 15627,
+    "bias": "100.0",
+    "data_offset": 176848,
+    "retained_numeric_variables": 688,
+    "final_offset": 12275728,
+    "final_offset_equals_source_size": true
+  },
+  "branch_oracle": {
+    "universe": "Wave VIII Lebanon; COUNTRY=10",
+    "root_surface": "Q873 multi-select perceived bases of discrimination",
+    "expected_branch": "Q873_1=1; socioeconomic class selected as one perceived basis of discrimination",
+    "lebanon_raw_n": 2403,
+    "branch_raw_n": 1334,
+    "complement_raw_n": 1069,
+    "lebanon_respondent_id_sha256": "a6eddf236aa11073caa813a79a92a02fa74068c85176afc03f495e3be6735e7a",
+    "branch_respondent_id_sha256": "ee6d4b46cdfc6dbcab7acc3673231517283fed65aabdbf9bfa2e43b6c65f3d50",
+    "complement_respondent_id_sha256": "cc0ca1d852d94445130843bb3d18bc3f03ff211795b35d76fc3b800b29c92184",
+    "weighted_denominators_exact_source_double_fraction": {
+      "LEBANON": "43288601587674396853/18014398509481984",
+      "BRANCH": "6041736647516061767/4503599627370496",
+      "COMPLEMENT": "19121654997610149785/18014398509481984"
+    },
+    "weighted_denominators_decimal_display": {
+      "LEBANON": "2403.000109323061",
+      "BRANCH": "1341.535026958787",
+      "COMPLEMENT": "1061.465082364274"
+    },
+    "noninference": "Q873_1 branch is a response branch, not objective socioeconomic class or actor identity"
+  },
+  "bounded_target_catalog": {
+    "substantive_targets": ["Q201A_1", "Q201A_3", "Q511", "Q512", "Q533_4", "Q601_3", "Q601_4", "Q605", "Q606_2", "Q606_4", "Q606_8", "Q631", "Q867B", "Q885"],
+    "conditioner_only_not_cosignature_targets": ["Q1001", "Q1002", "Q1003"],
+    "root_branch_surface_not_other_target": "Q873",
+    "future_controller_rule": "enumerate eligible targets from ordinary authority/catalog; no oracle winner list"
+  },
+  "pair_witnesses": {
+    "P001": {"variables": ["Q201A_1", "Q601_4"], "cramers_v": {"BRANCH": 0.09410435250419058, "OVERALL": 0.14877303864980299, "COMPLEMENT": 0.24001995990139308}, "raw_n": {"BRANCH": 1276, "OVERALL": 2295, "COMPLEMENT": 1019}},
+    "P002": {"variables": ["Q511", "Q601_4"], "cramers_v": {"BRANCH": 0.26823494415235805, "OVERALL": 0.19762740917237048, "COMPLEMENT": 0.14158535567063227}, "raw_n": {"BRANCH": 1307, "OVERALL": 2364, "COMPLEMENT": 1057}},
+    "P003": {"variables": ["Q606_4", "Q867B"], "cramers_v": {"BRANCH": 0.17683543166138382, "OVERALL": 0.11664040376167224, "COMPLEMENT": 0.054349840672116234}, "raw_n": {"BRANCH": 1208, "OVERALL": 2181, "COMPLEMENT": 973}},
+    "P004": {"variables": ["Q512", "Q631"], "cramers_v": {"BRANCH": 0.28609885263899415, "OVERALL": 0.21206844860987328, "COMPLEMENT": 0.16841262491944498}, "raw_n": {"BRANCH": 1327, "OVERALL": 2385, "COMPLEMENT": 1058}},
+    "P005": {"variables": ["Q606_4", "Q606_8"], "cramers_v": {"BRANCH": 0.39622754736530613, "OVERALL": 0.3482247108118129, "COMPLEMENT": 0.2908000878590915}, "raw_n": {"BRANCH": 1315, "OVERALL": 2349, "COMPLEMENT": 1034}}
+  },
+  "direct_tensor_receipts": {
+    "P001": {"BRANCH": {"weighted_n_fraction": "22923256994437849871/18014398509481984", "raw_tensor_sha256": "c4389f56ab964eff22f9538c757e7bb6fce6223ae23335d480f3cbc3510952f6", "weighted_tensor_sha256": "8a68646e34226fb230be52cb394d0a865eab56035093ee9f13988355cfce72f9"}, "COMPLEMENT": {"weighted_n_fraction": "18178200087070905307/18014398509481984", "raw_tensor_sha256": "933fd656d5b5b30403d5ebae310bb86a203bcc7d738e81008cacf9733f5177c8", "weighted_tensor_sha256": "4620887cb05bdbfa7624ec8ee93451ef9fa340b04ebd13de78fb3dd33aaf66a8"}, "OVERALL": {"weighted_n_fraction": "20550728540754377589/9007199254740992", "raw_tensor_sha256": "5d0fd095c59d079f8ace389f943f14ee423a59c457772e609322b981e03d3660", "weighted_tensor_sha256": "8a5f4376fb605a810e51f7b57ea357623a21000bd147ccee577c2bc8c6cf050b"}},
+    "P002": {"BRANCH": {"weighted_n_fraction": "23478968868062816241/18014398509481984", "raw_tensor_sha256": "5235d9c92d1f32c9ba31bcc4c6c372fe161a9349c215f31e321624033352ea5f", "weighted_tensor_sha256": "112f97e582879238a130851de2b2513ad26dd97cf755215385497fcd4848b6ae"}, "COMPLEMENT": {"weighted_n_fraction": "18866163017983683047/18014398509481984", "raw_tensor_sha256": "a993d287f4db285645dc6726a36dba3e2e090a23314074f16f880847e7f3d0a0", "weighted_tensor_sha256": "a98bd307605e8850109cf0c3910177247e07e9406122cd607b56fb449b15812c"}, "OVERALL": {"weighted_n_fraction": "5293141485755812411/2251799813685248", "raw_tensor_sha256": "b40c097fc27cd3c509269c79c05ba6301fb676371e5a307451fb13dcd9ce43b7", "weighted_tensor_sha256": "ebd6d8c3cad40268631c48bf165bd5f48b8a6a1957fe8adcf911d03774e05c45"}},
+    "P003": {"BRANCH": {"weighted_n_fraction": "21547916237205287527/18014398509481984", "raw_tensor_sha256": "bfaa6f4ca4eeb0536a1e42a784aeeae36fd6520976f957562e72f787459193da", "weighted_tensor_sha256": "58eb7f4b77c1e13ab83f461949a4be2768cf575621e761e45218afba0c3bb857"}, "COMPLEMENT": {"weighted_n_fraction": "17304123308721906121/18014398509481984", "raw_tensor_sha256": "5966fc2ea21546f59a96bbada443c12b4e0e26558752b51d1b1350de901b573f", "weighted_tensor_sha256": "4657259c7f5078d3b0908f02ad9f8b98c64784dda22462a30c7bd457709499f4"}, "OVERALL": {"weighted_n_fraction": "2428252471620449603/1125899906842624", "raw_tensor_sha256": "247633533ab5626d4a9345cd0d5d721d2929c33264ad85b9fb4a37144c815862", "weighted_tensor_sha256": "43eab4cfc5f4259cc48873f13b0c8c818f52e3d72f60379612f6c3cfa64c211f"}},
+    "P004": {"BRANCH": {"weighted_n_fraction": "24040037232169762993/18014398509481984", "raw_tensor_sha256": "3bf28a22d4d1debba738069793a640b7902a35b3f69c2b5b17c0ace1f850bfb3", "weighted_tensor_sha256": "ff872798df415e5015a24c530a41b0223f76f21d417b1b4e7db666e04303ee1a"}, "COMPLEMENT": {"weighted_n_fraction": "18896397203381107039/18014398509481984", "raw_tensor_sha256": "01c0adc50242081cbd1ce189932e87c30e75d9657d70bc09f8f542b1a1bd83b6", "weighted_tensor_sha256": "994bcf199712ef07a4cbf5c79e92ce01e2ca36f00c5b8aa5a769f62e1d2d8f5a"}, "OVERALL": {"weighted_n_fraction": "2683527152221929377/1125899906842624", "raw_tensor_sha256": "373072f12cec4f9b5072466db304913a59968dc2a9f5614b343bb9737b2739fc", "weighted_tensor_sha256": "46522d7eef8e0652c6d659cf8c62909b98e793ea4694cafe7e76315cfd1717bb"}},
+    "P005": {"BRANCH": {"weighted_n_fraction": "23654919063086386261/18014398509481984", "raw_tensor_sha256": "38f1c183cd10e7da9a71d80764bf34c5d3a227082a30dc81490a536f2ba1f907", "weighted_tensor_sha256": "49d2a29955c2b092fe31c14540e831465b13fd67cdbee3b5f0f0e1605c7ceacb"}, "COMPLEMENT": {"weighted_n_fraction": "18409329894028142435/18014398509481984", "raw_tensor_sha256": "f1cd7d82b8c33f6298cbc10e987571302b7dd4f03b9d33c329d33eec297341b7", "weighted_tensor_sha256": "408356673608572d2f9f1b25ec2f72d91717cc06e6a00e776856e41cb3e803c6"}, "OVERALL": {"weighted_n_fraction": "5258031119639316087/2251799813685248", "raw_tensor_sha256": "298b88c7a1bff0e99baf82b45580a9266d386416a5acdcceeebf71bf965c2650", "weighted_tensor_sha256": "bdea54d8a1634e94206f1d9618f4a96407314b503e58efd0d2bb998c352cf110"}},
+    "H01": {"variables": ["Q201A_3", "Q606_2", "Q606_8"], "BRANCH": {"raw_n": 1265, "weighted_n_fraction": "22689411435814542979/18014398509481984", "raw_tensor_sha256": "734077830a27ac3a2a3961e520f4ac6c4907070259357f718770b506784a89bb", "weighted_tensor_sha256": "02dee6ed7352a4fe0db8cb557801da3aa1a389e0022bb4409e4c2b2ba1b5021d"}, "COMPLEMENT": {"raw_n": 1004, "weighted_n_fraction": "1119426255918164647/1125899906842624", "raw_tensor_sha256": "70e3597f8def78553c6c588b9dac700544832cd0814163de7b779c5797cd143a", "weighted_tensor_sha256": "f3d1b8f59ac8d4eb8525c2a4463b882abb6b18da075830da57a2fea642ee2a54"}, "OVERALL": {"raw_n": 2269, "weighted_n_fraction": "40600231530505177331/18014398509481984", "raw_tensor_sha256": "8dc41e2e634fbbb4992dea12dd85f8075aa720c3645a66e0307a8bea8f11aa16", "weighted_tensor_sha256": "42123517b42b98a9cdefd1949be5ca74e310d292a07ffc09915ef9835d4dd455"}},
+    "H02": {"variables": ["Q606_2", "Q606_4", "Q601_4"], "BRANCH": {"raw_n": 1299, "weighted_n_fraction": "11636702508324549299/9007199254740992", "raw_tensor_sha256": "6ce8e3afc3f528d8dd24c52eeab9076878fb9b6004a355b6dd400eaa63a6840a", "weighted_tensor_sha256": "4cff2fe7ab36cacdbc4611cfc564a836a742cdf711a69495029bf7aec55c6890"}, "COMPLEMENT": {"raw_n": 1038, "weighted_n_fraction": "9265931201049728953/9007199254740992", "raw_tensor_sha256": "74f342a36a1ae9a0932b696a986dd5a89d361b24a5dc8daa53f28391f5109cdd", "weighted_tensor_sha256": "c53d263b7975df4b1b7c08188b7aa7c5d10a8e206c49e5fe4f3756bdf9565c50"}, "OVERALL": {"raw_n": 2337, "weighted_n_fraction": "5225658427343569563/2251799813685248", "raw_tensor_sha256": "f2bd9f2b20e2b46a9bdd5eeb84b1fc513a9670e2ad2d9502a62a0e1a60e4872b", "weighted_tensor_sha256": "f0b5217c85ad4828cc88ad32deba5ce2d2fc801f0fcf72a09cedfc65473de2f0"}},
+    "H03": {"variables": ["Q533_4", "Q606_8", "Q631"], "BRANCH": {"raw_n": 1296, "weighted_n_fraction": "726841595072089263/562949953421312", "raw_tensor_sha256": "057c08b4d9a20caf84b202cfbee19e5bf9ff14a6d7db73e350fd715223238136", "weighted_tensor_sha256": "278c6c3211f430a5db2e4cb2238f648d913f9ebdf0f8a1e5f5e46a5b6008ebb8"}, "COMPLEMENT": {"raw_n": 1024, "weighted_n_fraction": "18190634781082692459/18014398509481984", "raw_tensor_sha256": "f208733eafd75690362ea2a786633e7a7b36bf3f3344d3a693d34ed7e690b9a0", "weighted_tensor_sha256": "f1fe14f2afd1adb1da83b06fd57d5f5b5cfeb9cb14c8ec3278f0520501cbe8ba"}, "OVERALL": {"raw_n": 2320, "weighted_n_fraction": "41449565823389548875/18014398509481984", "raw_tensor_sha256": "7d254304ea26e88db4eea910606b1ed969ae9065d762694f46ed3b4ff70c714e", "weighted_tensor_sha256": "34f7dd1f80df20f7c71ec7dd90f583d25d42b6914145e9eb1b131d367b837514"}}
+  },
+  "j3_pairwise_information_loss_witnesses": {
+    "H01": {"variables": ["Q201A_3", "Q606_2", "Q606_8"], "BRANCH": {"g2": 87.32678818699358, "df": 27, "p_diagnostic_only": 2.7984229934402097e-08, "joint_tv": 0.08395055830683337, "pairwise_margin_error": 4.547473508864641e-13, "largest_cell": "4|4|1", "observed": 204.0, "pairwise_maxent_expected": 224.13897891630518}, "COMPLEMENT": {"g2": 29.901475377432007, "df": 27, "joint_tv": 0.04403338817639841, "pairwise_margin_error": 1.7053025658242404e-13}, "OVERALL": {"g2": 77.93421059311753, "df": 27, "joint_tv": 0.061364685599260185, "pairwise_margin_error": 2.2737367544323206e-13}},
+    "H02": {"variables": ["Q606_2", "Q606_4", "Q601_4"], "BRANCH": {"g2": 79.38228015444534, "df": 27, "joint_tv": 0.06396104408108777, "pairwise_margin_error": 3.410605131648481e-13}, "COMPLEMENT": {"g2": 34.99876716070869, "df": 27, "joint_tv": 0.03789035857893133, "pairwise_margin_error": 4.4231285301066237e-13}, "OVERALL": {"g2": 82.175165601035, "df": 27, "joint_tv": 0.043765613196712225, "pairwise_margin_error": 1.1368683772161603e-13}},
+    "H03": {"variables": ["Q533_4", "Q606_8", "Q631"], "BRANCH": {"g2": 70.33397818240019, "df": 27, "joint_tv": 0.08561175190061374, "pairwise_margin_error": 1.4210854715202004e-13}, "COMPLEMENT": {"g2": 32.54704757417155, "df": 27, "joint_tv": 0.06017593953527609, "pairwise_margin_error": 5.684341886080802e-14}, "OVERALL": {"g2": 69.4629546458481, "df": 27, "joint_tv": 0.06262704463071202, "pairwise_margin_error": 5.684341886080802e-14}}
+  },
+  "tensor_canonicalization": {
+    "raw": "ordered variable list + complete Cartesian substantive-domain cell map including zeros + exact raw denominator; canonical JSON sort_keys/separators then SHA256",
+    "weighted": "same cell map after normalizing each source-decoded WT to exact Fraction.from_float and exact summation; fraction strings numerator/denominator; canonical JSON then SHA256",
+    "comparison_rule": "production exact numerics may use another exact representation but harness normalizes to rational numeric value before oracle hashing"
+  },
+  "anti_leakage": {
+    "seed_may_contain": ["governed Q873 surface and all ordinary Q873 component semantics without winner flag", "exact source/release/universe/risk/routing/measure authority", "bounded individual substantive target catalog", "coordinate authority with demographics typed only as conditioners"],
+    "seed_must_not_contain": ["Q873_1 branch member list/digest as an answer", "any P001-P005 winner pair tuple/list/priority flag", "any H01-H03 winner triple tuple/list/priority flag", "expected Cramers V/G2/TV values", "expected raw/weighted tensor hashes", "oracle-derived target ranking"],
+    "individual_question_identity_rule": "winner variables may appear individually only because they are ordinary undifferentiated catalog members; the known combinations must not be precomposed for the implementation"
+  },
+  "target_interface_probe": {
+    "launch_tree_empirical_fracture_map_symbol_search": "NO_MATCH",
+    "launch_tree_pre553_fracture_module_path_search": "NO_MATCH",
+    "lineage_since_authority36a": "Authority37 documentary adoption plus I07 command only",
+    "execution_status": "NOT_EXECUTED_FAIL_CLOSED__AUTHORITY37_CONTROLLER_INTERFACE_NOT_PRESENT_AT_LAUNCH_HEAD",
+    "production_repair_performed": false
+  },
+  "acceptance_oracle_sha256": "150b6ea7e7ccb08e906cf43eea207aea716a29dec0e0a33eba3d18eea1dac851",
+  "negative_ceiling": ["no survey bytes committed", "no production controller/query/I05 changes", "no synthetic substitution for real-data witnesses", "no J3 inference from J2", "no significance threshold created from diagnostic p-values", "no demographic conditioner promoted to attitude node", "no actor belief/personality/causal inference", "no A/B/C or physical architecture selection"]
+}
