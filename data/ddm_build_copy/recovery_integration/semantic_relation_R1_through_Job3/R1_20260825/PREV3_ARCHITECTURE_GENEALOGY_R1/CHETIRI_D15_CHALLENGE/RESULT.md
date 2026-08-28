@@ -1,0 +1,89 @@
+# CHETIRI D15 CHALLENGE / PERSISTENCE-NECESSITY ARCHAEOLOGY R1
+
+Status: `COMPLETE__DOCUMENTARY_ARCHAEOLOGY_ONLY__NO_ARCHITECTURE_SELECTED`
+
+Starting worker HEAD: `6f000d76506a03ab980760a742678bf0e6cd718c`
+Historical D15 ref: `4450c54930533527b7bbb7ceb73a6a46b6ac9eba`
+
+## Executive holding
+
+Chetiri did **not** reopen the need for an exact governed PRE-V3 empirical semantics layer. It reopened D15's stronger physical presumption that this layer had to live as a permanently materialized canonical normalized respondent/event payload substrate.
+
+The earliest Chetiri constitution asks whether Rawlsing can preserve every C11/I03/I05/I04, discovery, replay, learned-world, structural and V3-boundary obligation while keeping immutable source bytes as raw-payload authority and persisting only non-source-derivable semantic/topology/routing/replay material plus independently justified learned products. Evidence: `e88c34b141761ed0b55d66e3da60a03f6822926d:data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/VOZHD_CHETIRI_COMPILER_PERSISTENCE/00_READ_ME_FIRST.md`. Negative ceiling: that framing selects no physical candidate.
+
+Historical D15 had selected `C11_MINIMUM_NORMALIZED_RESPONDENT_EVENT_COORDINATE_INCIDENCE_PLUS_AUTHORITY_PROVENANCE` with an append-only normalized physical strategy, while leaving engine/index choices open and explicitly leaving populated source→C11 equivalence, production cost, autonomous-frontier runtime, cache rates and hardware budget unknown. Evidence: `4450c54930533527b7bbb7ceb73a6a46b6ac9eba:data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D15/RESULT.json`. Negative ceiling: D15 was a design closure, not a populated production proof.
+
+Chetiri's strongest information-theoretic result is the G0 C02R2 adjudication: all 35 governed sources decoded; 887,232 source-row replay coordinates and 18,413 native variable identities were checked; WVS7 supplied equal-value/distinct-slot collision witnesses. The ruling is `RAW PAYLOAD RECONSTRUCTABLE FROM SOURCE` while `SEMANTIC OCCURRENCE IDENTITY REQUIRES SOURCE COORDINATES + GOVERNED MEANING`. No accepted witness required duplicate transformed raw payload, but exact semantic/topology/occurrence/routing/replay side material remained mandatory. Evidence: `797b358652b321a363d98f9d51c07c47c61d38db:.../VOZHD_CHETIRI_COMPILER_PERSISTENCE/G0_C02R2_HQ_ADJUDICATION/G0_FINAL_ADJUDICATION.md`. Negative ceiling: this does not prove source-native execution is fast enough or that B/C beats A.
+
+Therefore the proposition `PERMANENT_CANONICAL_C11_IS_ARCHITECTURALLY_NECESSARY` is **not established as an information/semantic necessity** by the examined GitHub lineage. A persistent canonical carrier remains a lawful Route-A engineering contender whose possible advantages are operational: repeated compilation, amortized decoding, query/discovery working-set reuse, predictable replay service, and production-scale latency. Those advantages remain incompletely measured on an equal governed workload. No winner is selected here.
+
+## A. What Chetiri was invented to challenge
+
+Chetiri's original challenge decomposes into separate questions:
+
+1. **Persistence itself:** not generally challenged. Immutable source evidence, non-source-derivable authority/replay material, governed learned releases, and V3-owned life history can each earn persistence independently. `e88c...:.../00_READ_ME_FIRST.md`; `35042be0a7b289c33335ddafbe7705ee1c4f0dbc:.../returns/C07/LEARNED_WORLD_PRODUCT_AND_SERVICE_CONSTITUTION.md`. Negative ceiling: physical persistence is product-specific, not globally rejected.
+2. **Permanent canonical normalized event payload persistence:** explicitly reopened. Candidate A = persistent canonical carrier; B = source-backed virtual C11; C = source-backed hybrid. Same earliest constitution. Negative ceiling: reopening is not rejection.
+3. **Eager materialization / database dependency:** weakened from semantic requirement to possible operational strategy. C04 proves the frozen I03 logical frontier source-backable without an authoritative permanent full payload table. `86f4e979f02fe689b529f5573f41e7b2359cfdf5:.../returns/C04/C04_RESULT.json`. Negative ceiling: C04 did not rebenchmark raw-source throughput or I05.
+4. **Replay strategy:** preserved and strengthened. C06/G0 distinguish semantic/release identity from physical carrier identity and require exact determinant/receipt closure. `6fd91b6fb3d7087faaf971aecc9687bbd33fa00f:.../returns/C06/C06_RESULT.json`; `797b358...:.../G0_FINAL_ADJUDICATION.md`. Negative ceiling: complete delete-and-rebuild replay was not universally certified.
+5. **Learned-product retention:** made more explicit, not reduced. C07 separates semantic-product requirement from physical representation persistence and retains empirical-social, structural, and shared replay/authority releases. `35042be...:.../LEARNED_WORLD_PRODUCT_AND_SERVICE_CONSTITUTION.md`. Negative ceiling: four major authorities remain fail-closed.
+6. **Incremental compilation:** C08 models minimum lawful recompilation as changed exact determinant scope plus transitive dependency closure. `b433435bfc9ca0c7a7ba9ec349faec069479656c:.../returns/C08/C08_RESULT.json`. Negative ceiling: C08 was pre-reconciliation evidence and lacked final C04/C05 operational closure.
+7. **Source-native reconstruction:** materially supported by C02R2 and C03/C03R1; bounded reads/chunks work and exact source identity/topology facts are recoverable. Negative ceiling: byte-level parser pruning and complete PRE-V3 compilation are not thereby proved.
+
+## B. D15 semantics Chetiri preserves
+
+Exact continuity is supported for: carrier-neutral logical C11 serviceability; exact source/universe identity; governed semantic/topology/routing/weight authority; exact/no-latest replay identity; query truth conditions; discovery authority-before-search and exact-bounded completeness; typed negative/absence preservation; structural admission as a separate authority seam; positioned-subject possibility as distinct from actor life; and the V553+ downstream DAG. Evidence spans `797b358...:G0_FINAL_ADJUDICATION.md`, `86f4e979...:C04_RESULT.json`, `35042be...:LEARNED_WORLD_PRODUCT_AND_SERVICE_CONSTITUTION.md`, and `6f000d...:78_TRII_ROUTE_A_COMMAND_IDENTITY_AND_ANTI_DRIFT_LAW.md`. Negative ceiling: similar names alone were not treated as continuity; adaptive discovery and positioned-subject model/comparability authority remain incomplete.
+
+## C. What executable evidence actually proves
+
+- C02R2: **source-native real execution + populated-source certification of bounded source identity/topology facts** across 35 governed sources. It is not a C11 constructor, discovery run, or replay certification.
+- C03/C03R1: **source-native real execution** on four pinned sources showing selected-column/chunk access and material fresh-reader setup cost. It is not byte-level pruning proof or a complete compiler benchmark.
+- C04: **bounded source-backed I03 logical proof**, relying on frozen zero-cache parity evidence; C04 itself did not execute raw source bytes. It is not autonomous I05 proof.
+- C05: **insufficient execution evidence** for production I05; it correctly failed closed because the production DiscoveryAuthority/frontier and facade were not frozen.
+- C05R2A: **bounded generic facade only / deterministic fixture parity**. 10 hostile/parity tests + 5 frozen-I03 probes passed; WVS7 instance authority and full I05 were explicitly not run. `0336eb60fce9fbc17a36cadcd36a5720eabd706b:.../returns/C05R2A/C05R2A_RESULT.json`.
+- AS4I0 Route-B driver: **bounded production-driver implementation/preflight only**. It validated the sealed 82-candidate/19-predicate/3-template authority package but executed zero real-source candidates and failed closed on 22 missing canonical object preimages. `3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f:.../AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/03_FINAL_RETURN.json`.
+
+Binding ceiling: `GENERIC_FACADE != NAMED_SOURCE_CERTIFICATION`; `SOURCE_BACKED_PRIMITIVE_EXECUTION != COMPLETE_PREV3_COMPILER_PROOF`.
+
+## D. Learned-world product model
+
+C07's learned world is a provenance-bound DAG:
+
+- **THE PAST:** immutable source bytes/identity, decoder and source-semantic/question/topology/routing/design authority roots.
+- **EMPIRICAL-SOCIAL LEARNED PRODUCTS:** discovery receipts/candidates; validation/release state; accepted relations; interactions/cotravel; higher-order joints; multimodal/minority/contradictory modes; source-universe-specific and historical fields; positioned-subject possibility service; DDM analytical service.
+- **STRUCTURAL LEARNED PRODUCTS:** V553-V558 governed structural material, ContextResolver-related products, temporal/geo/scope applicability, mediation/pressure-flow prerequisites, support/uncertainty/admission provenance, direct upstream structural references, justified runtime indexes.
+- **SHARED RELEASE/REPLAY GRAPH:** authority/source roots, release identities, dependency fingerprints, explanation lineage, invalidation determinants and replay receipts.
+- **THE LIFE:** V3-owned generated history, relationships, exposure, action, memory, realized disposition and biography.
+
+C07 explicitly permits intermediate empirical facts/serving representations to be rebuilt while preserving first-class semantic release identity where downstream governance cites the learned release. Rebuildability and semantic disposability are independent predicates. Exact evidence: `35042be...:.../returns/C07/LEARNED_WORLD_PRODUCT_AND_SERVICE_CONSTITUTION.md`; independently upheld by C07R1 at `5320a69b531eff45f69612f51b546c71c04756c9:.../returns/C07R1/C07R1_RESULT.json`. Negative ceiling: empirical validation, comparability, positioned-subject model and source-universe composition authorities remained missing there.
+
+## E. Persistent C11: necessity versus utility
+
+Information sufficiency weighs against mandatory duplicate payload: G0 shows source bytes + source coordinates + governed meaning can preserve the required distinction without duplicate event payload. Semantic authority weighs against source-only minimalism: source bytes do not contain canonical question/component, semantic occurrence, event-group, routing/applicability or release meaning. Runtime performance is unresolved at architecture scale: C03 shows repeated reader overhead and strong selected/full-frame differences, but C05 never completed a governed production I05 benchmark. Storage amplification plausibly weighs against a monolith, and C08 says physical monoliths can amplify write cost without changing semantic invalidation; exact production storage/bakeoff evidence remains absent. Replay favors persistent exact authority/release roots but does not establish carrier identity as semantic identity. Future query flexibility favors keeping logical C11/I03/I05 capability, not necessarily a permanently transformed payload. Source retention remains mandatory until source-equivalence/retirement gates close. Repeated-compilation economics are the principal unresolved operational case for Route A or hybrid C.
+
+## F. Broad architecture lineages versus Route A/B/C
+
+The Dva/Trii/Chetiri history is broader than the later physical carrier bakeoff. Dva contributes whole-machine/DAG/non-starvation/direct-reuse reasoning; Trii recovers autonomous empirical social discovery and reverse positioned-subject possibility as PRE-V3 obligations; Chetiri asks which evidence, learned products and physical representations must persist between THE PAST and THE LEARNED WORLD. Exact crosswalk: `6f000d...:.../VOZHD_CHETIRI_COMPILER_PERSISTENCE/18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`.
+
+Route A/B/C is a later fair comparison inside PRE553: A = source→persistent canonical empirical substrate→C11/I03/I05/I04; B = source+authority→virtual C11→I03/I05/I04; C = source+authority→virtual C11 + transient/regenerable accelerators→I03/I05/I04. All must produce the same lawful PRE-V3 products and enter the unchanged V553+ DAG. Exact law: `6f000d...:.../78_TRII_ROUTE_A_COMMAND_IDENTITY_AND_ANTI_DRIFT_LAW.md`. Negative ceiling: shared prerequisites do not imply architectural convergence, and later Route-B work is not the definition of Chetiri.
+
+## G. Remaining discriminators
+
+See `REMAINING_DISCRIMINATORS.csv`. The highest-information unresolved tests are: named-source end-to-end virtual-C11 certification; governed production I05 execution on identical real-source frontier across A/B/C; delete/rebuild exact replay under named side material; repeated-compilation amortization and working-set scaling; storage/write amplification under the same release; and closure of positioned-subject comparability/model authority before benchmarking that service. No winner is recommended.
+
+## Final disposition
+
+`PERMANENT_CANONICAL_C11_IS_ARCHITECTURALLY_NECESSARY = NOT_ESTABLISHED`
+
+`PERMANENT_CANONICAL_C11_MAY_BE_OPERATIONALLY_USEFUL = OPEN_EMPIRICAL_QUESTION`
+
+`LOGICAL_C11_SERVICEABILITY_AND_GOVERNED_MEANING = PRESERVED_REQUIREMENT`
+
+`SOURCE_BYTES_ALONE_ARE_SUFFICIENT = FALSE`
+
+`SELECTIVE_LEARNED_PRODUCT_AND_REPLAY_PERSISTENCE = POSITIVELY_SUPPORTED`
+
+`COMPLETE_SOURCE_BACKED_PREV3_PRODUCTION_CERTIFICATION = NOT_ESTABLISHED`
+
+`ARCHITECTURE_WINNER = NOT_SELECTED`
+
+`CHETIRI_D15_CHALLENGE_AND_PERSISTENCE_NECESSITY_R1_COMPLETE`
