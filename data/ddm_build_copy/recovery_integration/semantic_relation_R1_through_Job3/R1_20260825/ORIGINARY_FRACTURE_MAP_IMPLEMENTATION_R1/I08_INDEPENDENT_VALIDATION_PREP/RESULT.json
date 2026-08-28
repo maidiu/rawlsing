@@ -1,0 +1,89 @@
+{
+  "assignment": "I08_INDEPENDENT_FRACTURE_MAP_ANTI_CHEAT_REPLAY_VALIDATION_PREP_R1",
+  "status": "COMPLETE__MERGE_INDEPENDENT_VALIDATION_CONTRACT_AND_SELFTEST_READY__INTEGRATED_I01_I04_NOT_CONSUMED",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-fracturemap-i08-independent-validation-prep-r1",
+  "mandated_starting_head": "ee161a1d1f05fad02dfd44c56ade9f9b9e3b1e30",
+  "authority37_adoption_ref": "9bafaf2cb96cc3fb46fef6785d486f08987ab71c",
+  "contract_version": "I08_INDEPENDENT_VALIDATION_CONTRACT@1.0.0",
+  "accepted_evidence_refs": {
+    "G04": "8620265b95f5b3bf8c210674a7735e0ce8dac88c",
+    "G05": "21b4bfbe4f609aeca7a5850a738eff7f663f3ba4",
+    "L02": "c9acd7e9ff887dd3a4a29d91f45688cb9c0705a3",
+    "L03": "74834f5028cae0cdd3c525483494437f81c721e0",
+    "D01": "125fe2ee118dcf51239528a9a15b66fe8a2ef402",
+    "D02": "ead65727cf1f46e038b1fa8cf94b9a83a3245d88",
+    "D03": "d088d1b10e63084c61e1ed31f42cc55e53b0a2d9",
+    "D04": "a99596e2692a71379d09c352ccd6fcd622509573"
+  },
+  "scope": {
+    "implementation_sibling_findings_consumed": false,
+    "i01_i07_read": false,
+    "production_code_modified": false,
+    "production_semantics_modified": false,
+    "architecture_selected": false,
+    "v3_or_actor_semantics_modified": false,
+    "integrated_i01_i04_acceptance_executed": false,
+    "ready_for_hq_post_merge_adapter": true
+  },
+  "core_noncollapse_laws": [
+    "INDEPENDENT_VALIDATOR_PREP_PASS != INTEGRATED_IMPLEMENTATION_ACCEPTANCE_PASS",
+    "ORACLE_MAY_JUDGE_OUTPUT_AFTER_RUN != ORACLE_MAY_SEED_CONTROLLER_INPUT",
+    "PARTIAL_RESULT != AUTHORITY_TO_MUTATE_OPEN_FRONTIER",
+    "DESCRIPTIVE_RANK != CANDIDATE_REACHABILITY",
+    "PREDICTOR_ABSENT != PREDICTOR_MISSING_OR_UNRESOLVED",
+    "SUBSTANTIVE_NM != DK_REFUSAL_MISSING_INAPPLICABLE",
+    "PAIRWISE_PROJECTION != J3_JOINT_TOPOLOGY",
+    "PRIVATE_RECONSTRUCTION != EXACT_BRANCH_HANDOFF_REPLAY",
+    "STOP_RECURSION != DELETE_BRANCH",
+    "EMPIRICAL_BRANCH_FIELD != ACTOR_V3_PERSONALITY",
+    "DEPENDENT_ARTIFACT_MUST_INVALIDATE__INDEPENDENT_ARTIFACT_MUST_STAY_STABLE"
+  ],
+  "validation_modes": [
+    "SINGLE_RUN_STRUCTURAL_ANTI_CHEAT",
+    "EXACT_REPLAY_PAIR",
+    "DETERMINANT_MUTATION_NONINTERFERENCE_PAIR"
+  ],
+  "required_failure_detection": [
+    "CALLER_ORACLE_LEAKAGE",
+    "OPEN_FRONTIER_MUTATION",
+    "FORBIDDEN_CANDIDATE_PRUNING",
+    "NOT_P_SWALLOWS_PREDICTOR_MISSINGNESS",
+    "NM_SWALLOWS_TYPED_NONRESPONSE",
+    "PAIRWISE_PROJECTION_MISLABELED_J3",
+    "PRIVATE_BRANCH_MEMBERSHIP_RECONSTRUCTION",
+    "STOPPED_BRANCH_RETENTION_LOSS",
+    "NONDETERMINISTIC_REPLAY_IDENTITY",
+    "ACTOR_V3_PERSONALITY_LEAKAGE",
+    "IRRELEVANT_DETERMINANT_INVALIDATED_UNRELATED_TOPOLOGY",
+    "RELEVANT_DETERMINANT_FAILED_TO_INVALIDATE_DESCENDANT"
+  ],
+  "adapter_contract": {
+    "may": [
+      "normalize exact evidence emitted by the integrated implementation",
+      "derive an independent lawful candidate catalog from exact authority/source metadata",
+      "compare post-run output against frozen G04/L02/L03 oracles"
+    ],
+    "must_not": [
+      "reconstruct missing branch membership in place of an exact handoff/replay receipt",
+      "derive the independent lawful candidate catalog from the controller's own declared frontier",
+      "infer J=3 from J=2 projections",
+      "repair stopped-branch retention in the adapter",
+      "insert oracle answers into generation-side caller input",
+      "invent semantic, actor, V3 or personality content"
+    ],
+    "missing_evidence_disposition": "FAIL_OR_UNVERIFIABLE__NEVER_INFER_PASS"
+  },
+  "production_independent_harness": {
+    "file": "independent_validation_prep.py",
+    "stdlib_only": true,
+    "imports_rawlsing_next": false,
+    "imports_i01_i07": false,
+    "selftest": {
+      "checks_total": 19,
+      "checks_passed": 19,
+      "failed_checks": []
+    }
+  },
+  "success_token": "I08_INDEPENDENT_FRACTURE_MAP_VALIDATION_PREP_R1_COMPLETE"
+}
