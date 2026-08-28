@@ -1,0 +1,43 @@
+{
+  "worker": "I02_FRACTURE_MAP_CONTROLLER_COMPOSITION_R1",
+  "role": "VOZHD_TRII",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/verkhovod-fracturemap-i02-controller-composition-r1",
+  "starting_head": "9a3898db2d4765251661b4f0e120a4a44569a1f1",
+  "tested_code_head": "f62f1646e0c5db102bdb006e401a675e12946d84",
+  "authority_37_blob": "48c0860ff2d7548ff2fa98d20021149aa2049953",
+  "implementation": {
+    "controller_path": "rawlsing_next/pre553_fracture_map_controller.py",
+    "controller_blob": "e6a6a62fed0dce537bbc22115b6f0b5b827be62c",
+    "mx01r2_handoff_path": "rawlsing_next/pre553_recursive_handoff.py",
+    "mx01r2_handoff_blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+    "hostile_test_path": "rawlsing_next/tests/test_pre553_fracture_map_controller.py",
+    "hostile_test_blob": "7c8195529128cbfc37f5973ec28e7c44aa963fd1",
+    "i05_modified": false
+  },
+  "controller_contract": "PRE553_AUTH37_FRACTURE_MAP_CONTROLLER@1.0.0",
+  "authority37_v1_policy": {
+    "minimum_report_raw_n": 25,
+    "minimum_split_raw_n": 50,
+    "maximum_depth": 4,
+    "modal_measure": "GOVERNED_WEIGHTED_IF_AUTHORIZED_ELSE_RAW",
+    "maximal_tie": "UNRESOLVED_NO_FORCED_WINNER",
+    "predictor_missingness": "EXCLUDED_FROM_PRESENT_AND_ABSENT",
+    "focal_nonresponse": "EXCLUDED_FROM_SUBSTANTIVE_NONMODAL",
+    "predictor_retention": "ALL_SUPPORTED_CONDITIONS"
+  },
+  "tests": {
+    "run_id": 33195098646,
+    "job_id": 98930104554,
+    "command": "python -m pytest -q rawlsing_next/tests/test_pre553_fracture_map_controller.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_empirical_query.py",
+    "result": "46 passed in 2.57s"
+  },
+  "forbidden_work": {
+    "j3_cosignature_target_enumeration": false,
+    "abc_selection": false,
+    "mx04": false,
+    "v3": false,
+    "i05_semantic_repair": false
+  },
+  "success_token": "I02_FRACTURE_MAP_CONTROLLER_COMPOSITION_R1_COMPLETE"
+}
