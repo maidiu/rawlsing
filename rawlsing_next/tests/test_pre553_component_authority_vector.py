@@ -234,4 +234,4 @@ def test_mixed_producer_repository_preserves_receipt_and_component_owners():
                              key=lambda e:e.semantic_ordinal)
     assert [e.semantic_ordinal for e in component_edges] == [1,2]
     assert all(e.order_significant and e.declared_cardinality == "2" for e in component_edges)
-    assert repo.entries[0].governance.v557_allowed_uses <= repo.entries[0].obj.producer_allowed_uses
+    assert all(set(e.governance.v557_allowed_uses) <= set(e.obj.producer_allowed_uses) for e in repo.entries)
