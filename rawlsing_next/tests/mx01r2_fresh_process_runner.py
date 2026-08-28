@@ -60,6 +60,10 @@ def _authority_with_minimum(source, grammar, dauth, minimum, *, tag):
     )
 
 
+def _respondents_for(source, ids):
+    return tuple(source["respondents"][rid] for rid in ids)
+
+
 def _refs_for(source, ids):
     return tuple(source["respondents"][rid].ref for rid in ids)
 
@@ -195,7 +199,7 @@ def run(child_bundle_path: Path, output_path: Path) -> dict:
     parent = _branch_predicate(
         source,
         qauth,
-        members=_refs_for(source, ("R1", "R2", "R3", "R4", "R5", "R6")),
+        members=_respondents_for(source, ("R1", "R2", "R3", "R4", "R5", "R6")),
         tag="mx01r2-parent",
     )
     x0 = _predicate(source, qauth, _response_leaf(source, qauth, "X", 0), tag="mx01r2-x0")
