@@ -1,0 +1,21 @@
+{
+  "schema":"rawlsing.as3r3.behavioral_equivalence_and_fairness_test_plan",
+  "schema_version":1,
+  "precondition":"HQ_SUCCESSION_AUTHORITY_ADOPTED_AND_SUCCESSOR_OBJECTS_MECHANICALLY_SEALED",
+  "tests":[
+    {"id":"T01_SEMANTIC_CATALOG_CROSSWALK","require":"19+3 one-to-one crosswalk; each successor maps to exactly one frozen AS3 semantic source; no extras/missing"},
+    {"id":"T02_PREDICATE_BEHAVIOR","require":"for exhaustive frozen atom fixtures and hostile typed-state cases, successor predicate truth/typed failure equals the HQ-adopted semantic oracle; no comparison to guessed old preimages"},
+    {"id":"T03_QUERY_BEHAVIOR","require":"for common I03 fixture/repository states, successor query target/risk/source/measure/grain semantics equal frozen AS3 query-template oracle"},
+    {"id":"T04_SCOPE","require":"source universe, one risk partition, RAW-only measure, and two topology partitions exactly match invariant manifest"},
+    {"id":"T05_CANDIDATE_MEMBERSHIP","require":"recompile without evaluation; exactly 82 candidate semantic descriptors and ordered candidate_commitment_hash sequence match AS3 preauthority commitment"},
+    {"id":"T06_ORDER_COMPLETION_RNG","require":"CANONICAL_CANDIDATE_HASH_ORDER; NONE_EXACT_EVALUATE_ALL; no pruning; RNG NONE"},
+    {"id":"T07_SUPPORT_TERMINAL","require":"minimum_raw_denominator=0 and typed-nonpositive target semantics unchanged; successor identity metadata may not change terminal classification"},
+    {"id":"T08_AUTHORITY_CLOSURE","require":"every successor authority/dependency ref resolves exactly; no mutable/latest/fuzzy selection; changes are those explicitly named by HQ succession authority only"},
+    {"id":"T09_REPLAY","require":"fresh process reconstructs all 22 canonical projections and hashes exactly from committed producer+serialized inputs"},
+    {"id":"T10_ROUTE_SYMMETRY","require":"A, B and C loader inputs reference byte-identical successor catalogs/DiscoveryAuthority/frontier and invariant manifest"},
+    {"id":"T11_NO_ROUTE_SPECIFIC_SEMANTIC_DELTA","require":"zero candidate-specific/route-specific predicate/query/authority construction fields"}
+  ],
+  "field_change_governance_rule":"If a newly supplied value can alter predicate/query evaluation, source/risk/candidate scope, candidate membership/order, authority resolution, terminal/support semantics, or replay behavior, HQ must positively fix that value/rule before producer execution; otherwise FAIL_CLOSED.",
+  "fairness_pass":"COMMON_IDENTITY_SUCCESSION_APPLIED_SYMMETRICALLY",
+  "fairness_fail":"CANDIDATE_DEFINITION_CHANGE"
+}

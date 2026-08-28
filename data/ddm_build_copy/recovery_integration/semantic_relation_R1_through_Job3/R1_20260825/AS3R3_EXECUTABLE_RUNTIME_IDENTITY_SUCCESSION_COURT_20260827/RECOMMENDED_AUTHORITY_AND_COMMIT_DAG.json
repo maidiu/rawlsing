@@ -1,0 +1,17 @@
+{
+  "schema":"rawlsing.as3r3.recommended_authority_and_commit_dag",
+  "schema_version":1,
+  "nodes":[
+    {"n":1,"name":"HQ_ADOPT_SUCCESSION_LAW","kind":"AUTHORITY","requires":[],"must_preexist_before_next":true},
+    {"n":2,"name":"COMMIT_BOUNDED_RUNTIME_OBJECT_PRODUCER","kind":"CODE_COMMIT","requires":[1],"must_not_mint_objects":true},
+    {"n":3,"name":"FREEZE_PRODUCER_COMMIT_AND_FILE_SHA256","kind":"RECEIPT","requires":[2]},
+    {"n":4,"name":"SERIALIZE_AND_COMMIT_COMPLETE_PRODUCER_INPUTS","kind":"INPUT_COMMIT","requires":[3],"includes":"all HQ-decided identity fields plus exact AS3 semantic-source crosswalk"},
+    {"n":5,"name":"MECHANICAL_SUCCESSOR_RUNTIME_SEAL","kind":"OBJECT_MINT","requires":[4],"action":"invoke already-existing producer; mint 19+3 new canonical objects"},
+    {"n":6,"name":"COMMIT_COMPLETE_CANONICAL_OBJECT_REPRESENTATIONS","kind":"OBJECT_COMMIT","requires":[5],"includes":"all semantic_projection fields, object_id, content_hash, aggregate catalogs, 22-row crosswalk"},
+    {"n":7,"name":"FRESH_PROCESS_EXACT_RECONSTRUCTION","kind":"VALIDATION","requires":[6],"pass":"22/22 hashes and aggregate hashes reproduce exactly"},
+    {"n":8,"name":"SEAL_SUCCESSOR_DISCOVERY_AUTHORITY_FRONTIER_REPLAY","kind":"DOWNSTREAM_IDENTITY_SEAL","requires":[7],"rule":"only now bind successor refs; semantic terrain must still pass invariants"},
+    {"n":9,"name":"REVALIDATE_AS4I0","kind":"DOWNSTREAM_VALIDATION","requires":[8],"rule":"validate unchanged AS4I0 implementation against completed successor package only"}
+  ],
+  "non_circularity":"producer commit/file SHA must be frozen before any object that cites it is minted; no object identity may require the SHA of the commit that first contains that object",
+  "forbidden":["LiTS-I execution in governance/seal court","I05 candidate execution before completed successor seal","route ranking","candidate-specific semantic mutation","reuse of old runtime ref without exact canonical identity proof"]
+}

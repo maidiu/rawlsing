@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"rawlsing.as3r3.runtime_succession_crosswalk.schema.json",
+  "title":"AS3R2 to AS3R3 22-row runtime succession crosswalk",
+  "type":"array",
+  "minItems":22,"maxItems":22,
+  "items":{"type":"object","additionalProperties":false,"required":["family","semantic_source_identity","old_as3r2_runtime_ref","old_replayability_status","successor_semantic_invariance_proof","successor_authority_basis","future_successor_runtime_ref","behavioral_equivalence_evidence","disposition"],"properties":{
+    "family":{"enum":["EmpiricalPredicate@1.0.0","EmpiricalQuerySpec@1.0.0"]},
+    "semantic_source_identity":{"type":"object","required":["as3_id","object_id","content_hash"],"properties":{"as3_id":{"type":"string"},"object_id":{"type":"string"},"content_hash":{"type":"string","pattern":"^[0-9a-f]{64}$"}}},
+    "old_as3r2_runtime_ref":{"type":"object","required":["object_id","content_hash"],"properties":{"object_id":{"type":"string"},"content_hash":{"type":"string","pattern":"^[0-9a-f]{64}$"}}},
+    "old_replayability_status":{"const":"SUPERSEDED_NON_REPLAYABLE__CANONICAL_PREIMAGE_UNRECOVERED"},
+    "successor_semantic_invariance_proof":{"type":"object","required":["invariant_manifest_ref","semantic_source_match","behavioral_test_ref"]},
+    "successor_authority_basis":{"type":"object","required":["hq_succession_authority_ref","producer_ref"]},
+    "future_successor_runtime_ref":{"oneOf":[{"type":"null"},{"type":"object","required":["object_id","content_hash"]}]},
+    "behavioral_equivalence_evidence":{"oneOf":[{"type":"null"},{"type":"object"}]},
+    "disposition":{"enum":["PENDING_SUCCESSOR_SEAL","SEMANTICALLY_EQUIVALENT_SUCCESSOR__NEW_IDENTITY","FAIL_CLOSED"]}
+  }},
+  "allOf":[{"description":"Rows must be unique by semantic_source_identity and old_as3r2_runtime_ref; exact 19 predicate + 3 query rows required. IDENTICAL is not an allowed disposition."}]
+}
