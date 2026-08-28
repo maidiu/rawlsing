@@ -1,13 +1,14 @@
 {
   "artifact_sha256_excluding_result_json_and_changed_files": {
-    "BRANCH_DETERMINICITY_ORACLE.csv": "361c4d5b31d6d1b45187ed5ff202d161c9cd9f7cad31a17125824b76579381b4",
-    "LEBANON_BRANCH_ORACLE.csv": "3fc4dcb8287f07366f6f4b0f2fe23f8898ad70843aecda62dfa8e87957886420",
-    "ORIGINARY_CLAIM_REPLICATION_MATRIX.csv": "ec88ae51f5d9ea1148bc84edbfd2bd1e4937b3b0ba4e5da58ba86ed362c766bf",
-    "RESPONSE_PATTERN_ORACLE.csv": "dac6aeeb3b201f257f57c612928356801a0db979d6ce2183680b45a3116020e5",
-    "RESULT.md": "1038f2362ec07b21a1f324c57197c50b063beddafa45b8e99921c0c2e4b1dcd3",
-    "SOURCE_AND_VARIABLE_AUTHORITY.md": "701ec0e67fdcd8c76fcae1b251ec0d4b81f6cb6aefe11d9ce4ac5b3f987df0d0",
-    "SUPPORT_WEIGHT_MISSINGNESS_LEDGER.csv": "efccaab2b98bfb38dea9a1439612ed3df120faf4421908d036f0650b9138411c",
-    "analyze_lebanon_fracture_map.py": "d482e0f24086e539eae7b4bbc18104b2828fc5bdc21bdc0a92b516b5d4fc228e"
+    "BRANCH_DETERMINICITY_ORACLE.csv": "18e80ae20daa3ceb2ed41c71bc73df918e3f531819bb4a788bb477d8ab229d2b",
+    "LEBANON_BRANCH_ORACLE.csv": "3dd0e6857b2ce939eb74385a5050629f482b4e03668c15e390875ea675fede19",
+    "ORIGINARY_CLAIM_REPLICATION_MATRIX.csv": "471a14fdd68e9d22c8144ef2109258972505029116a1167b84e5b96fb1ea4774",
+    "RESPONSE_PATTERN_ORACLE.csv": "5c85be41a9752ef1a3c8eb3bd47fb2e81641091ec7619784ab17fc4fb94ab7e2",
+    "RESULT.md": "fcdbbc156497b09024139f6ac7475c238a832a96eda6fb7c10a78859d9c56b1a",
+    "SOURCE_AND_VARIABLE_AUTHORITY.md": "0f782d48d5042d0d317b79e33dda2921936c097db19d89994d18dcf80ab06ade",
+    "SUPPORT_WEIGHT_MISSINGNESS_LEDGER.csv": "0df110569bf563a108630415404b9e421e7b952719f8370144487192f238209d",
+    "analyze_lebanon_fracture_map.py": "d482e0f24086e539eae7b4bbc18104b2828fc5bdc21bdc0a92b516b5d4fc228e",
+    "normalize_and_shard_oracles.py": "163f0b1aab4a3c18d71f62031dcbc1109d5594bde606643cbb0f199b365c0574"
   },
   "counts": {
     "lebanon_q873_substantive_n": 2339,
@@ -42,14 +43,19 @@
   "fresh_process_replay": {
     "outputs_byte_identical": true,
     "replayed_artifact_sha256": {
-      "BRANCH_DETERMINICITY_ORACLE.csv": "361c4d5b31d6d1b45187ed5ff202d161c9cd9f7cad31a17125824b76579381b4",
-      "LEBANON_BRANCH_ORACLE.csv": "3fc4dcb8287f07366f6f4b0f2fe23f8898ad70843aecda62dfa8e87957886420",
-      "ORIGINARY_CLAIM_REPLICATION_MATRIX.csv": "ec88ae51f5d9ea1148bc84edbfd2bd1e4937b3b0ba4e5da58ba86ed362c766bf",
-      "RESPONSE_PATTERN_ORACLE.csv": "89822d967bf98b76d9a2607061a6970650d7e71e8a72bc0e9d5e9cc252888df5",
-      "SUPPORT_WEIGHT_MISSINGNESS_LEDGER.csv": "efccaab2b98bfb38dea9a1439612ed3df120faf4421908d036f0650b9138411c"
+      "BRANCH_DETERMINICITY_ORACLE.csv": "18e80ae20daa3ceb2ed41c71bc73df918e3f531819bb4a788bb477d8ab229d2b",
+      "LEBANON_BRANCH_ORACLE.csv": "3dd0e6857b2ce939eb74385a5050629f482b4e03668c15e390875ea675fede19",
+      "ORIGINARY_CLAIM_REPLICATION_MATRIX.csv": "471a14fdd68e9d22c8144ef2109258972505029116a1167b84e5b96fb1ea4774",
+      "RESPONSE_PATTERN_ORACLE.csv": "5c85be41a9752ef1a3c8eb3bd47fb2e81641091ec7619784ab17fc4fb94ab7e2",
+      "SUPPORT_WEIGHT_MISSINGNESS_LEDGER.csv": "0df110569bf563a108630415404b9e421e7b952719f8370144487192f238209d"
     },
     "same_script_same_exact_source_hashes": true,
-    "status": "PASS"
+    "status": "PASS",
+    "pipeline": [
+      "analyze_lebanon_fracture_map.py",
+      "normalize_and_shard_oracles.py"
+    ],
+    "monolithic_response_pattern_sha256": "8a642a5cf133843512d84b039af475f70c13b739f3e26908899193ccee886ed9"
   },
   "key_findings": {
     "lebanon_non_ses": {
@@ -148,8 +154,8 @@
   "worker_branch": "agent/verkhovod-fracturemap-l02-lebanon-realdata-r1",
   "response_pattern_oracle_repository_representation": {
     "mode": "HASH_SEALED_SHARDED_FULL_CENSUS",
-    "manifest_sha256": "dac6aeeb3b201f257f57c612928356801a0db979d6ce2183680b45a3116020e5",
-    "monolithic_fresh_replay_sha256": "89822d967bf98b76d9a2607061a6970650d7e71e8a72bc0e9d5e9cc252888df5",
+    "manifest_sha256": "5c85be41a9752ef1a3c8eb3bd47fb2e81641091ec7619784ab17fc4fb94ab7e2",
+    "monolithic_fresh_replay_sha256": "8a642a5cf133843512d84b039af475f70c13b739f3e26908899193ccee886ed9",
     "data_rows": 370,
     "header_rule": "ONE_COMMON_HEADER_PLUS_ALL_SHARD_DATA_ROWS_IN_PART_ORDER",
     "parts": [
@@ -193,6 +199,7 @@
         "data_rows": 20,
         "sha256": "dc831f33f6dc0b2e741223e911a42bbcddd0dc8637723b1ff280e524f92c2b81"
       }
-    ]
+    ],
+    "pipeline": "analyze_lebanon_fracture_map.py -> normalize_and_shard_oracles.py"
   }
 }
