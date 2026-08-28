@@ -1,0 +1,14 @@
+case_id,case,exact_lane_expected,proxy_lane_expected,authority_replay_expectation,implemented_test,status
+Z08-V01,exact supported positioned subject,SUPPORTED/N exact grain,None,Exact evidence ref + model rule hash replay identically,test_exact_supported_positioned_subject,PASS
+Z08-V02,exact underpowered positioned subject,UNRESOLVED with EXACT_UNDERPOWERED,Explicit same-source broader proxy,Exact state remains unresolved; dropped conditioner and proxy authority replay,test_exact_underpowered_remains_unresolved_and_proxy_is_explicit,PASS
+Z08-V03,absent exact stratum with admissible surrogate ladder,UNRESOLVED with EXACT_POSITIONED_STRATUM_ABSENT,First supported authorized lower-specificity step after typed prior attempt,All attempted steps + specificity losses + selected evidence replay,test_absent_exact_stratum_walks_authorized_ladder_and_replays_path,PASS
+Z08-V04,no admissible surrogate,UNRESOLVED,None,Authorized ladder attempts remain visible and replayable,test_no_admissible_surrogate_is_unresolved,PASS
+Z08-V05,mixed-source proxy step,UNRESOLVED,None / FAIL_CLOSED,Source-universe mismatch yields FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE,test_mixed_source_proxy_fails_closed,PASS
+Z08-V06,cross-release proxy step,UNRESOLVED,None / FAIL_CLOSED,Release mismatch fails closed; no hidden latest/nearest substitution,test_release_crossing_proxy_fails_closed,PASS
+Z08-V07,non-monotone walkback ladder,No result,None,Strictly decreasing specificity contract rejects widening/reordering,test_walkback_must_strictly_lose_specificity_and_cannot_reorder_back_up,PASS
+Z08-V08,different specificity losses,UNRESOLVED,Distinct explicit proxies,Loss count/path participates in result identity,test_proxy_specificity_is_not_hidden_by_result_identity,PASS
+Z08-V09,exact valid-empty,VALID_EMPTY,None,Exact typed state remains distinct from missing/underpowered; no proxy fabrication,test_valid_empty_remains_exact_typed_state_and_is_not_broadened,PASS
+Z08-V10,exact noncomparable,NONCOMPARABLE,None,Noncomparability blocks proxy concealment,test_noncomparable_exact_state_blocks_proxy_walkback,PASS
+Z08-V11,conditioner comparability binding crosses query source,Construction rejected,None,Exact conditioner source/release must match query,test_conditioner_binding_cannot_cross_exact_query_source,PASS
+Z08-V12,proxy authority ref not positively listed by model rule,Construction rejected,None,Each walkback step requires exact positive proxy authority inclusion,test_unlisted_proxy_authority_is_rejected,PASS
+Z08-V13,irrelevant unconsumed evidence added,Unchanged,Unchanged,Unused evidence is not a replay determinant,test_irrelevant_unconsumed_evidence_does_not_change_replay_identity,PASS
