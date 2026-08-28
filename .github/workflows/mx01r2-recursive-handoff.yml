@@ -17,6 +17,6 @@ jobs:
       - name: Install pytest
         run: python -m pip install --upgrade pip pytest
       - name: Diagnose predicate identity
-        run: python rawlsing_next/tests/mx01r2_identity_debug.py
+        run: python -m rawlsing_next.tests.mx01r2_identity_debug
       - name: Run MX01 R2 and existing I05 tests
         run: python -m pytest -q rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_pre553_discovery_exact.py
