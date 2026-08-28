@@ -177,9 +177,11 @@ def test_i04_direct_j3_closure_wires_ref_only_into_i01_public_map_receipt():
     assert receipt.FAMILY == "EmpiricalFractureMapReceipt@1.0.0"
     assert exact_ref(receipt.controller_policy_ref) == policy.ref
     assert authority_ref(receipt.controller_policy_authority_ref) == policy.policy_authority_ref
-    assert result.closure_receipt.ref in receipt.branch_cosignature_topology_closure_refs
-    assert decision.ref in receipt.continuation_decision_refs
-    assert triple.ref in receipt.empirical_fact_refs
+    assert result.closure_receipt.ref in tuple(
+        exact_ref(ref) for ref in receipt.branch_cosignature_topology_closure_refs
+    )
+    assert decision.ref in tuple(exact_ref(ref) for ref in receipt.continuation_decision_refs)
+    assert triple.ref in tuple(exact_ref(ref) for ref in receipt.empirical_fact_refs)
     assert receipt.copied_empirical_payload is False
     assert receipt.actor_state_effect is False
     assert receipt.v3_state_effect is False
