@@ -1,0 +1,7 @@
+claim,exact_ref,receipt_or_test,object_grain,status,negative_ceiling
+Exact LiTS-I bytes are required before destructive replay,00_WORKER_COMMAND.md,P0_SOURCE_AVAILABILITY_RECEIPT.json,SOURCE_BYTES,BLOCKED_MISSING_EXACT_SOURCE_OR_DURABLE_AUTHORITY,Prior hash receipts are not source bytes
+Accepted durable authority is readable,AS2A@661c02694b7dd60d0c86a8dbe9c1b682631457e8,DURABLE_SIDE_MATERIAL_LEDGER.csv,SEMANTIC_AUTHORITY,VERIFIED_REFERENCE_ONLY,Availability does not prove replay without source
+Accepted logical C11 oracle is known,AS2B@923f2c00b6145182a5e2be5038f579845951da19,BASELINE_IDENTITY_RECEIPT.json,C11_LOGICAL_RELEASE,REFERENCE_ONLY,Not remeasured in MX03A
+No deletion occurred,MX03A worker run,DELETION_MANIFEST.json,ISOLATED_EXPERIMENT_COPY,PASS_NO_DELETION,Does not test regenerability
+No rebuild occurred,MX03A worker run,REBUILD_IDENTITY_RECEIPT.json,FRESH_PROCESS_REPLAY,NOT_EXECUTED,Does not support Proposition A or B
+Phase B remains forbidden,Authority32 + 00_WORKER_COMMAND.md,RESULT.json,LEARNED_RELEASE_PHASE_B,NOT_AUTHORIZED,No learned-product persistence claim

@@ -1,0 +1,25 @@
+{
+  "status": "BLOCKED_EXACT_SOURCE_BYTES_MISSING",
+  "expected_source": {
+    "filename": "LiTS_I.dta",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "accepted_size_bytes": 139531180,
+    "rows": 29002,
+    "variables": 1198
+  },
+  "accepted_as2b_execution_local_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_I.dta",
+  "worker_environment_checks": [
+    {"path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_I.dta", "exists": false},
+    {"path": "/mnt/data/LiTS_I.dta", "exists": false},
+    {"path": "/home/oai/share/LiTS_I.dta", "exists": false}
+  ],
+  "mounted_search_roots": ["/mnt/data", "/home/oai/share"],
+  "matching_lits_dta_or_sav_candidates": [],
+  "source_hash_recomputed_in_this_run": false,
+  "source_substitution_attempted": false,
+  "isolated_workspace": "/mnt/data/mx03a_lits1_destructive_replay_r1_isolated",
+  "isolated_workspace_established": true,
+  "isolation_marker_only": true,
+  "deletion_authorized_after_this_receipt": false,
+  "fail_closed_law": "A prior receipt of a hash/shape/path cannot substitute for possession and re-verification of the exact authoritative bytes."
+}

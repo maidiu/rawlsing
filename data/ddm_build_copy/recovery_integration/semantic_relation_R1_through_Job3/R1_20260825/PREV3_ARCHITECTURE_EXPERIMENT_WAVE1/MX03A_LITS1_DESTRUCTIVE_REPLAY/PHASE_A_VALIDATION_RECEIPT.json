@@ -1,0 +1,29 @@
+{
+  "status": "PASS__BLOCKER_PACKAGE_INTERNALLY_CONSISTENT",
+  "required_outputs_present": [
+    "RESULT.md",
+    "RESULT.json",
+    "BASELINE_IDENTITY_RECEIPT.json",
+    "DELETION_MANIFEST.json",
+    "DURABLE_SIDE_MATERIAL_LEDGER.csv",
+    "REBUILD_IDENTITY_RECEIPT.json",
+    "REPLAY_PARITY_MATRIX.csv",
+    "RESOURCE_OBSERVATIONS.json",
+    "EXACT_REF_LEDGER.csv",
+    "CHANGED_FILES.txt"
+  ],
+  "extra_receipt": "P0_SOURCE_AVAILABILITY_RECEIPT.json",
+  "invariants": {
+    "phase_a_only": true,
+    "phase_b_not_executed": true,
+    "p0_blocker_typed": true,
+    "p1_not_executed": true,
+    "p2_destructive_operations_performed": false,
+    "p3_not_executed": true,
+    "p4_not_executed": true,
+    "source_substitution_used": false,
+    "prior_as2b_receipts_not_misrepresented_as_new_measurements": true,
+    "architecture_selected": false
+  },
+  "terminal_token": "MX03A_LITS1_NAMED_SOURCE_DESTRUCTIVE_C11_REPLAY_R1_COMPLETE"
+}

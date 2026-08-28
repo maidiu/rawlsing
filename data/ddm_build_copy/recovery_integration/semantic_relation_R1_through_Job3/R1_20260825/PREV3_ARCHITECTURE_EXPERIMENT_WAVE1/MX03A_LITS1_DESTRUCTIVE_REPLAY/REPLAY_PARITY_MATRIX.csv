@@ -1,0 +1,12 @@
+oracle_id,semantic_binding,accepted_as2b_reference,mx03a_baseline_observed,mx03a_rebuild_observed,status,reason
+P0_SOURCE,exact source identity,7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09,NOT_OBSERVED,NOT_OBSERVED,BLOCKED,Exact source bytes unavailable
+P0_DECODER,decoder/config identity,"decode_dta(source_path encoding=latin1); pyreadstat 1.3.2",NOT_EXECUTED,NOT_EXECUTED,BLOCKED,Decoder cannot lawfully run without exact source
+P4_C11_RELEASE,logical C11 semantic/release identity,e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26,NOT_OBSERVED,NOT_OBSERVED,NOT_TESTED,P1/P3 not executed
+P4_RESPONDENTS,respondent identity/count,"source SHA + 1-based row ordinal + SELECTED_RESPONDENT; 29002",NOT_OBSERVED,NOT_OBSERVED,NOT_TESTED,P1/P3 not executed
+P4_ROUTING,routing typed state,ELIGIBLE_APPLICABLE__SECTION3_Q301_UNCONDITIONAL_SELECTED_RESPONDENT,NOT_OBSERVED,NOT_OBSERVED,NOT_TESTED,P1/P3 not executed
+P4_TOPOLOGY,topology/typed-state outcomes,"AS2B hostile oracle 8/8 PASS; q304a/q304b distinct ranked physical slots",NOT_OBSERVED,NOT_OBSERVED,NOT_TESTED,P1/P3 not executed
+P4_QUERY_UNIVARIATE,representative exact query observable,"UNRESOLVED; fact ff43b2c51d29f93954e075f6005774b5b06e93bc581ad60f97b4155148418168; 24897/29002",NOT_OBSERVED,NOT_OBSERVED,NOT_TESTED,P1/P3 not executed
+P4_QUERY_COTRAVEL,representative exact query observable,"UNRESOLVED; fact 52605100f1fea74908cc61b2adeae5eaaaf9d91030d3f2ff31bc585561dcd82d; 24630/29002",NOT_OBSERVED,NOT_OBSERVED,NOT_TESTED,P1/P3 not executed
+P4_QUERY_RECURSIVE,representative exact query observable,"SUPPORTED; fact 516c1a8b1bfa2f84a39f0423220ecb37f8880e8916e961e61909f5cc933d7cd8; 5155/5155",NOT_OBSERVED,NOT_OBSERVED,NOT_TESTED,P1/P3 not executed
+P4_REPLAY,replay determinant closure,6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd,NOT_OBSERVED,NOT_OBSERVED,NOT_TESTED,P1/P3 not executed
+P4_PHYSICAL_CARRIER,physical carrier byte identity,NOT_SEMANTICALLY_REQUIRED,NOT_APPLICABLE,NOT_APPLICABLE,NOT_EVALUATED,Logical replay never reached
