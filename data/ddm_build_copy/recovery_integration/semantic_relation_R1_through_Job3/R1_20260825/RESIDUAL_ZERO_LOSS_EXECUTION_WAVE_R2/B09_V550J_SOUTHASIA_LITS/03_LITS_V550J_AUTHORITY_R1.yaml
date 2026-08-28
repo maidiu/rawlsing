@@ -1,0 +1,81 @@
+registry_version: b09-r1
+source_family: LiTS
+status: review_only
+authority_scope: B09_EXACT_SERIALIZATION_OF_EXISTING_BOUNDED_AUTHORITY
+product_completeness_claim: NO_PRODUCT_COMPLETENESS_CLAIM
+archive08_authority_status: QUARANTINED_NON_AUTHORITATIVE
+raw_first_frontier:
+  global_source_structures: 2499
+  global_memberships: 15990
+  source_family_row_partition_status: BLOCKED_EXACT_ROWS_NOT_MATERIALIZED_ON_B09_START
+product_execution_status: BLOCKED_EXACT_ROUTING_AND_MEMBER_APPLICABILITY_AUTHORITY_NOT_AVAILABLE_TO_B09
+inherited_bounded_registry:
+  path: section85/authority/registry_lits.yaml
+  git_blob: b762704bbfdb8750544eb43e97fb479b5300ff76
+  status: governed
+  scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+families:
+  - family_id: JCFG-LITS-2006-TRANSITION-EVALUATION
+    joint_configuration_id: JCFG-LITS-2006-TRANSITION-EVALUATION
+    configuration_status: GOVERNED_BOUNDED_CANARY_ONLY
+    product_variant_status: BLOCKED_ROUTING_MEMBER_APPLICABILITY
+    source_family: LiTS
+    family_type: transition_evaluation_battery
+    family_structure_type: transition_evaluation_battery
+    expected_multi_target: true
+    eligible_waves: ["2006"]
+    exact_bounded_country_coordinate: BY
+    minimum_items_answered: 2
+    completion_denominator_items: 3
+    source_structure_id: lits_struct_24bdd9b458c7689bbb
+    source_structure_authority_status: INVENTORY_ONLY_NOT_J_FAMILY
+    joint_configuration_adjudication_id: V550JADJ-0007
+    joint_configuration_decision_status: ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION
+    member_order_semantics: ORDER_RECORDED__NO_SCALAR_COLLAPSE
+    members:
+      - item_order: 1
+        var_code: q301_1
+        role: economy_vs_1989_evaluation
+        condition_label: present economic situation relative to 1989
+        target_identity: economy_vs_1989
+        question_implementation_id: question_impl.phase0.98ca6998565911147d8e
+        p2_lineage_id: p2lineage_48be642be88ee77aff1ab912
+        p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      - item_order: 2
+        var_code: q301_8
+        role: children_future_evaluation
+        condition_label: children's future living conditions
+        target_identity: children_future
+        question_implementation_id: question_impl.phase0.364f1b8fd6b6478d652c
+        p2_lineage_id: p2lineage_30e868f42c5d0dd11ed15d3f
+        p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      - item_order: 3
+        var_code: q301_11
+        role: corruption_vs_1989_evaluation
+        condition_label: present corruption relative to 1989
+        target_identity: corruption_vs_1989
+        question_implementation_id: question_impl.phase0.48ab9a93a3f8ccfc21d1
+        p2_lineage_id: p2lineage_617916f7203f831254f82893
+        p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+    response_handling:
+      authority_source: section85/authority/bounded_joint_configuration_item_crosswalk.csv
+      response_semantics_contract_hash: 2fcd905d3dd0476aad71002668833ac5510891168fcf69d268c96ebcb5a4900f
+      response_family: agree_disagree_scale
+      topology: scalar
+      substantive_values: ["1", "2", "3", "4", "5"]
+      special_non_substantive_values:
+        "6": not applicable
+        "7": don't know
+      directionality: INHERIT_EXACT_SECTION85_CERTIFIED_RESPONSE_ROLE_AUTHORITY__DO_NOT_REDERIVE
+    authorized_inference: Joint signed response-role profile across the three listed transition-evaluation statements.
+    forbidden_inferences:
+      - single transition optimism score
+      - item-direction homogenization beyond certified response roles
+      - proposition identity
+      - cross-source portability
+    routing_member_applicability:
+      bounded_jurisdiction: INHERIT_SECTION85_EXACT_2006_BY_CANARY_ONLY
+      product_scope: BLOCKED__B09_MAY_NOT_INFER_OR_CONSUME_B02_B05

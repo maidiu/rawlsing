@@ -1,0 +1,75 @@
+registry_version: b09-r1
+source_family: South Asia
+status: review_only
+authority_scope: B09_EXACT_SERIALIZATION_OF_EXISTING_BOUNDED_AUTHORITY
+product_completeness_claim: NO_PRODUCT_COMPLETENESS_CLAIM
+archive08_authority_status: QUARANTINED_NON_AUTHORITATIVE
+raw_first_frontier:
+  global_source_structures: 2499
+  global_memberships: 15990
+  source_family_row_partition_status: BLOCKED_EXACT_ROWS_NOT_MATERIALIZED_ON_B09_START
+product_execution_status: BLOCKED_EXACT_ROUTING_AND_MEMBER_APPLICABILITY_AUTHORITY_NOT_AVAILABLE_TO_B09
+inherited_bounded_registry:
+  path: section85/authority/registry_south_asia.yaml
+  git_blob: 2d7db65810d32983e2e66d6fd39232064bbc0d1a
+  status: governed
+  scope_id: BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY
+  production_completeness_claim: NO_PRODUCTION_COMPLETENESS_CLAIM
+p3_authority_release_id: P3-AUTHORITY-2026-08-02-R184
+joint_configuration_authority_release_id: V550J-BOUNDED-AUTHORITY-2026-08-02-R1
+families:
+  - family_id: JCFG-SOUTH-ASIA-W1-INSTITUTION-TRUST
+    joint_configuration_id: JCFG-SOUTH-ASIA-W1-INSTITUTION-TRUST
+    configuration_status: GOVERNED_BOUNDED_CANARY_ONLY
+    product_variant_status: BLOCKED_ROUTING_MEMBER_APPLICABILITY
+    source_family: South Asia
+    family_type: institution_trust_battery
+    family_structure_type: institution_trust_battery
+    expected_multi_target: true
+    eligible_waves: [W1]
+    exact_bounded_country_coordinate: IN
+    minimum_items_answered: 2
+    completion_denominator_items: 2
+    source_structure_id: south_asia_struct_ee2ce47eea6de1d296
+    source_structure_authority_status: INVENTORY_ONLY_NOT_J_FAMILY
+    joint_configuration_adjudication_id: V550JADJ-0008
+    joint_configuration_decision_status: ACCEPTED_BOUNDED_SOURCE_NATIVE_CONFIGURATION
+    member_order_semantics: ORDER_RECORDED__NO_SCALAR_COLLAPSE
+    members:
+      - item_order: 1
+        var_code: c13f
+        role: army_trust
+        condition_label: Army
+        target_identity: army
+        question_implementation_id: question_impl.phase0.f3fde179f6dc13aa715e
+        p2_lineage_id: p2lineage_664ad2b356c428eb27bb3de7
+        p3_membership_status: SOURCE_LOCAL_ONLY_NOT_ON_P3_CANONICAL_SURFACE
+      - item_order: 2
+        var_code: c13h
+        role: parliament_trust
+        condition_label: Parliament
+        target_identity: parliament
+        question_implementation_id: question_impl.phase0.84e61fee36b8da6c75c7
+        p2_lineage_id: p2lineage_87296931e17a0ac37f8ce734
+        p3_membership_status: BOUND_TO_CURRENT_CANONICAL_FAMILY
+        p3_canonical_family_id: JFAM-000173
+        p3_current_family_revision_id: JFAMREV-000173-R0001
+        p3_variant_revision_id: P3VARREV-000236-R0001
+    response_handling:
+      authority_source: section85/authority/bounded_joint_configuration_item_crosswalk.csv
+      response_semantics_contract_hash: dc7f3bc324c77fcaa77a1cc127d64523f4f4c213e37b483c25af401b2f60ecd8
+      response_family: trust_scale
+      topology: scalar
+      substantive_values: ["1", "2", "3", "4"]
+      special_non_substantive_values:
+        "8": no opinion
+      directionality: INHERIT_EXACT_SECTION85_CERTIFIED_RESPONSE_ROLE_AUTHORITY__DO_NOT_REDERIVE
+    authorized_inference: Joint signed trust profile across army and parliament.
+    forbidden_inferences:
+      - institutional target collapse
+      - cross-source response portability
+      - single proposition identity
+      - no-opinion treated as substantive
+    routing_member_applicability:
+      bounded_jurisdiction: INHERIT_SECTION85_EXACT_W1_IN_CANARY_ONLY
+      product_scope: BLOCKED__B09_MAY_NOT_INFER_OR_CONSUME_B02_B05
