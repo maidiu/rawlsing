@@ -128,7 +128,7 @@ def test_broad_draft_remains_nonexecuting_and_current_surface_is_executable():
         (lambda r: r.update(status="draft"), "must be governed"),
         (lambda r: r["families"][0].update(eligible_waves=["1972", "2010"]), None),
         (
-            lambda r: r["families"][0]["item_role_groups"]["economic_condition"].append(
+            lambda r: r["families"][0]["item_role_groups"].setdefault("economic_condition", []).append(
                 {
                     "var_code": "abpoor",
                     "condition_label": "low_income",
