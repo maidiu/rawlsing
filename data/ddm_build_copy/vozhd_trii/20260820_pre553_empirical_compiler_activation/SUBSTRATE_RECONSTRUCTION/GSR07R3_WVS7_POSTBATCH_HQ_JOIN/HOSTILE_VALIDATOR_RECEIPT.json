@@ -1,0 +1,41 @@
+{
+  "actual_hq_surface_probe": {
+    "d03_status": "HQ_ADJUDICATED__BLOCKING_ROUTING_UNKNOWN",
+    "d11_bindings_supplied": 66,
+    "d11_hq_accepted": 0,
+    "d12_binding_status": "BLOCKED_NO_GOVERNED_REPLAY_MANIFEST",
+    "d12_hq_accepted_country_coverage": 0,
+    "exception": "D12 respondent replay country coverage mismatch",
+    "function": "validate_hq_surfaces",
+    "missing_country_count": 66,
+    "status": "FAIL_CLOSED"
+  },
+  "anti_cheat": "No synthetic or placeholder HQ_ACCEPTED D11/D12 authority was injected to force the real preflight past its substantive gates.",
+  "hostile_unit_tests": {
+    "command": "python3 -m unittest -v test_wvs7_postbatch_join.py",
+    "covered_fail_closed_modes": [
+      "missing batch",
+      "missing country",
+      "duplicate country",
+      "malformed provenance",
+      "unresolved contradiction",
+      "illegal HQ UNKNOWN widening",
+      "unbacked batch UNKNOWN",
+      "incomplete documentary D-gap coverage",
+      "unresolved UNKNOWN"
+    ],
+    "errors": 0,
+    "failures": 0,
+    "status": "PASS",
+    "synthetic_good_fixture_deterministic": "PASS",
+    "tests_run": 10
+  },
+  "normal_mode_join_status": "NOT_RUN_AS_PASS_ATTEMPT__LAWFUL_INPUT_CANNOT_SATISFY_D12_AND_D11; RAW_WVS7_NOT_AUTHORIZED",
+  "prepared_harness": {
+    "frozen_join_authority_git_blob_sha": "29237347252c91f90c47797ae8eaa6871562bea0",
+    "git_ref": "c9c8cc6df614c1f6abaf95c9a81df9b6f8af8958",
+    "test_wvs7_postbatch_join.py_git_blob_sha": "2f381b6306b9d97483981ba24c57f40fd44e3cc1",
+    "wvs7_postbatch_join.py_git_blob_sha": "66e6ee96ac58c76fd6682bf32d2afe1188055b7c"
+  },
+  "schema_name": "gsr07r3-wvs7-hq-join-validator-receipt-v1"
+}
