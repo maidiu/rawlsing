@@ -65,7 +65,7 @@ The released SAV encodes these as one 0/1 toggle per item: `Q873_1` … `Q873_13
 | `Q1002` | gender |
 | `STRATUM`, `PSU` | released sampling identifiers, preserved as source metadata; not used to fabricate a variance estimator |
 
-Two deterministic descriptive helper fields are derived by the analysis script:
+Three deterministic descriptive helper fields are derived by the analysis script:
 
 - `DENOMINATION_COMBINED`: source-preserving union of Muslim and Christian denomination variables under `Q1012` routing.
 - `COUNTRY_INCOME_RANK_QUINTILE`: country-local percentile quintile of source `Q1015`; used so local-currency income values are not compared numerically across countries.
