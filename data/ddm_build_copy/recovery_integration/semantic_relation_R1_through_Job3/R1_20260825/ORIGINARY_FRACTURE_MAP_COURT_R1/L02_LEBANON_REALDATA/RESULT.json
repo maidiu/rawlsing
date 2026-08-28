@@ -3,8 +3,8 @@
     "BRANCH_DETERMINICITY_ORACLE.csv": "361c4d5b31d6d1b45187ed5ff202d161c9cd9f7cad31a17125824b76579381b4",
     "LEBANON_BRANCH_ORACLE.csv": "3fc4dcb8287f07366f6f4b0f2fe23f8898ad70843aecda62dfa8e87957886420",
     "ORIGINARY_CLAIM_REPLICATION_MATRIX.csv": "ec88ae51f5d9ea1148bc84edbfd2bd1e4937b3b0ba4e5da58ba86ed362c766bf",
-    "RESPONSE_PATTERN_ORACLE.csv": "89822d967bf98b76d9a2607061a6970650d7e71e8a72bc0e9d5e9cc252888df5",
-    "RESULT.md": "7a4dd2966a9be418092d12e180f15e55d8c3c621da765e69d1bf496d22026d2d",
+    "RESPONSE_PATTERN_ORACLE.csv": "dac6aeeb3b201f257f57c612928356801a0db979d6ce2183680b45a3116020e5",
+    "RESULT.md": "1038f2362ec07b21a1f324c57197c50b063beddafa45b8e99921c0c2e4b1dcd3",
     "SOURCE_AND_VARIABLE_AUTHORITY.md": "701ec0e67fdcd8c76fcae1b251ec0d4b81f6cb6aefe11d9ce4ac5b3f987df0d0",
     "SUPPORT_WEIGHT_MISSINGNESS_LEDGER.csv": "efccaab2b98bfb38dea9a1439612ed3df120faf4421908d036f0650b9138411c",
     "analyze_lebanon_fracture_map.py": "d482e0f24086e539eae7b4bbc18104b2828fc5bdc21bdc0a92b516b5d4fc228e"
@@ -145,5 +145,54 @@
     "uncertainty": "Kish effective-n approximate 95% Wald CI; not full complex-survey variance",
     "weight": "WT"
   },
-  "worker_branch": "agent/verkhovod-fracturemap-l02-lebanon-realdata-r1"
+  "worker_branch": "agent/verkhovod-fracturemap-l02-lebanon-realdata-r1",
+  "response_pattern_oracle_repository_representation": {
+    "mode": "HASH_SEALED_SHARDED_FULL_CENSUS",
+    "manifest_sha256": "dac6aeeb3b201f257f57c612928356801a0db979d6ce2183680b45a3116020e5",
+    "monolithic_fresh_replay_sha256": "89822d967bf98b76d9a2607061a6970650d7e71e8a72bc0e9d5e9cc252888df5",
+    "data_rows": 370,
+    "header_rule": "ONE_COMMON_HEADER_PLUS_ALL_SHARD_DATA_ROWS_IN_PART_ORDER",
+    "parts": [
+      {
+        "filename": "RESPONSE_PATTERN_ORACLE_PART_01.csv",
+        "data_rows": 50,
+        "sha256": "c52339c08d6b46729ae7fb0201654b1e68a7817f410715bfa5e23eabf00fe8a0"
+      },
+      {
+        "filename": "RESPONSE_PATTERN_ORACLE_PART_02.csv",
+        "data_rows": 50,
+        "sha256": "1eb271958f6937c6a07743abba4dcd3cfcd3c90aa9a274a2b88a3d31e28c9fc6"
+      },
+      {
+        "filename": "RESPONSE_PATTERN_ORACLE_PART_03.csv",
+        "data_rows": 50,
+        "sha256": "3cc7c13b3bea0d91e0f97f6c4d45398dd0949bef2bbee6f2ecaa828e9c5ee9ac"
+      },
+      {
+        "filename": "RESPONSE_PATTERN_ORACLE_PART_04.csv",
+        "data_rows": 50,
+        "sha256": "d953f69256c10fd753dbb9eed414320533ab4879471ded85eb08ec03b1f751d4"
+      },
+      {
+        "filename": "RESPONSE_PATTERN_ORACLE_PART_05.csv",
+        "data_rows": 50,
+        "sha256": "3359a25a5c3a25d21c91a7139830fd101b33f8ff90a1006c51294c313d8d080b"
+      },
+      {
+        "filename": "RESPONSE_PATTERN_ORACLE_PART_06.csv",
+        "data_rows": 50,
+        "sha256": "937cd9d0d8cd63472f419b731c9ee5a31dc7f988d4682e16ad796f97ae83ab9c"
+      },
+      {
+        "filename": "RESPONSE_PATTERN_ORACLE_PART_07.csv",
+        "data_rows": 50,
+        "sha256": "263c2c6b55d3d90dbde139fa6ba948356fbd4596aea20a9253a9355e98cc4245"
+      },
+      {
+        "filename": "RESPONSE_PATTERN_ORACLE_PART_08.csv",
+        "data_rows": 20,
+        "sha256": "dc831f33f6dc0b2e741223e911a42bbcddd0dc8637723b1ff280e524f92c2b81"
+      }
+    ]
+  }
 }
