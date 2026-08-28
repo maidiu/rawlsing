@@ -131,11 +131,19 @@ Result:
 - zero inferred/fuzzy/theme joins.
 - zero duplicate matches.
 
-The complete row ledger is `LMQ004_ROUTING600_ROW_LEDGER.csv`, SHA-256:
+The complete 600-row ledger is returned as four ordered 150-row shards:
 
-`f63d58a119a5bb7337f89b154a688ff769e62032f0eb9410f9103fca6d0abecd`
+- `LMQ004_ROUTING600_ROW_LEDGER_001_150.csv` — SHA-256 `4a0cb8f2eab6eb809ec64b17c1b0ba489790045ff865ac7b833f115118d421cb`
+- `LMQ004_ROUTING600_ROW_LEDGER_151_300.csv` — SHA-256 `3936553981195fa54703106376418d5738621a2ee33d94838e58534b8dce0e56`
+- `LMQ004_ROUTING600_ROW_LEDGER_301_450.csv` — SHA-256 `16700a0088f11849a7ff4cbb35bf015d767d9136da2ae89eed1c8361586e08c6`
+- `LMQ004_ROUTING600_ROW_LEDGER_451_600.csv` — SHA-256 `b0a5bf6a6cb6ef4fd8de51be6a2c42a6acba2bbf8670aee42b748642e06b172c`
 
-The row ledger uses compact lossless codes to keep the governed return bounded. `DENOMINATOR_PROOF.json` carries the exact codebook for `hist_state`, `match`, `route`, `universe`, and `adjudication`; no semantic state is dropped by the encoding.
+Ordered shard-set SHA-256:
+
+`ed39860434a509e9b234beb01e0297ae4decb19ee7d73c882f252dd3d4fd41c6`
+
+
+The row ledger shards use a compact lossless encoding to keep the governed return bounded. The historical `closure_hash` and later `exact_identity_sha256` are encoded as unpadded base64url of their exact 32-byte SHA-256 digests; single-character codes preserve historical state, match rule, routing status, and respondent-universe status. `DENOMINATOR_PROOF.json` carries the exact decoding codebook. Every ledger row has the A07 adjudication `STILL_UNRESOLVED`.
 
 ## 5. Why later node recovery does not close routing
 
@@ -236,7 +244,7 @@ A07:
 Machine-readable denominator proof:
 `DENOMINATOR_PROOF.json`
 SHA-256:
-`3106bf267580f60c15c4396922cfefd41dcf0782c5e41ea593edfd316bd0fd11`
+`8d4379da4cc29cfbda2a60f78d162bc79bca104dbff19fd1800f0ad3a231719f`
 
 Terminal:
 
