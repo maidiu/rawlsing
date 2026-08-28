@@ -1,0 +1,55 @@
+{
+  "acceptance_properties": [
+    "modal_and_multilabel_pattern",
+    "four_fracture_quadrants",
+    "distinct_secondary_predictors",
+    "depth_gt_1_recursion",
+    "global_vs_branch_relation_reversal",
+    "multilabel_nonidentifiability_from_marginals",
+    "three_way_xor_pairwise_insufficiency",
+    "stable_minority_visibility",
+    "underpowered_stop",
+    "valid_empty_stop",
+    "none_distinct_from_typed_nonresponse",
+    "deterministic_replay",
+    "selective_invalidation"
+  ],
+  "answer_leakage_guard": {
+    "expected_oracle_separate": true,
+    "forbidden_answer_key_scan": true,
+    "seed_contains_expected_answers": false,
+    "segment_stripped": true
+  },
+  "authority_37": {
+    "git_blob": "48c0860ff2d7548ff2fa98d20021149aa2049953",
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/37_ORIGINARY_FRACTURE_MAP_FULL_JOIN_AND_IMPLEMENTATION_AUTHORITY.md"
+  },
+  "current_integration": {
+    "disposition": "FAIL_CLOSED__PRODUCTION_CONTROLLER_ADAPTER_ABSENT",
+    "production_acceptance_pass_claimed": false,
+    "production_controller_adapter_present": false
+  },
+  "exact_start_head": "b05334772b39a974d251fee268f11b640baa64a1",
+  "future_entrypoint": {
+    "canonical_actual_schema": "I05_HOSTILE_ACCEPTANCE_ACTUAL_R1",
+    "file": "hostile_acceptance_adapter.py",
+    "sha256": "4b870b60db4fded456b5493903d08bb697ccff0fd417c94a34ac301afaa19066"
+  },
+  "g04_hostile_oracle": {
+    "commit": "8620265b95f5b3bf8c210674a7735e0ce8dac88c",
+    "fixture_git_blob": "4e535ac553e3e58d29390c94c964535b050a51a0",
+    "fixture_sha256": "83c496c9482c2e9736a6797e243965110899c1aa97436d752795b15d483a8215",
+    "logical_digest": "e4ef71ccf3815b0734013a5ebf1c85f9f3ac94720b30f2c5cf6285aa784a0017"
+  },
+  "noninterference": {
+    "A_B_C_judgment": false,
+    "V3_work": false,
+    "production_semantics_modified": false,
+    "sibling_implementation_consumed": false
+  },
+  "repository": "maidiu/rawlsing",
+  "schema": "I05_HOSTILE_ACCEPTANCE_PREP_RESULT_R1",
+  "status": "PREP_COMPLETE__FUTURE_CONTRACT_FROZEN__CURRENT_INTEGRATION_FAIL_CLOSED",
+  "success_token": "I05_HOSTILE_ACCEPTANCE_PREP_R1_COMPLETE",
+  "worker_branch": "agent/verkhovod-fracturemap-i05-hostile-acceptance-prep-r1"
+}
