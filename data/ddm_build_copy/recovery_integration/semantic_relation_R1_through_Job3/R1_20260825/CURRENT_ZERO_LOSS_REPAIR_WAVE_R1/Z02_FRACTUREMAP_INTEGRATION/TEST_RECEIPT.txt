@@ -1,0 +1,84 @@
+Z02 FRACTURE-MAP PRODUCTION INTEGRATION / ADMISSION R1 — TEST RECEIPT
+
+TESTED INTEGRATION COMMIT
+d164f14dd6edd63a30b02639ed93cfb90c51ee92
+
+SUCCESSFUL HOSTED RUN
+workflow_run_id=33203654968
+job_id=98959108997
+python=3.12.14
+pytest=9.1.1
+
+COMMAND
+python -m pytest -q \
+  rawlsing_next/tests/test_pre553_empirical_objects_authority.py \
+  rawlsing_next/tests/test_pre553_empirical_query.py \
+  rawlsing_next/tests/test_pre553_discovery_exact.py \
+  rawlsing_next/tests/test_pre553_recursive_handoff.py \
+  rawlsing_next/tests/test_pre553_fracture_map_contract.py \
+  rawlsing_next/tests/test_pre553_fracture_map_controller.py \
+  rawlsing_next/tests/test_pre553_cosignature_composition.py \
+  rawlsing_next/tests/test_pre553_replay_audit.py \
+  rawlsing_next/tests/test_pre553_query_frontier_hostile.py \
+  rawlsing_next/tests/test_pre553_fracture_map_integration.py
+
+RESULT
+157 passed in 6.18s
+0 failed
+
+PROVED IN THIS RUN
+PASS I01 public fracture-map object and policy identity
+PASS I01 typed continuation/stop law
+PASS I02 exact complete-frontier temporal noninterference
+PASS I02 controller with I01 exact policy owner
+PASS I02 operational envelope -> I01 public ref-only receipt wiring
+PASS accepted MX01R2 exact recursive handoff and replay semantics
+PASS I03 exact query execution and direct J3 authority boundary
+PASS I05 exact complete-frontier discovery regression
+PASS I04 complete governed substantive target enumeration
+PASS I04 direct J1/J2/J3 composition
+PASS positional/demographic target exclusion
+PASS exact J3 denominator conservation and same-respondent membership
+PASS J>3 fail closed
+PASS raw vs governed-weighted noncollapse
+PASS typed special states
+PASS deterministic replay
+PASS hostile higher-order query frontier
+PASS PRE-V3/V3 no-effect firewall
+PASS cross-interface I01/I02/I03/I04 integration regression
+
+DIAGNOSTIC HISTORY
+33203306601 @ 56ebdd02967b9f98ba6597ac03522037c0b49e90:
+collection stopped because clean runner lacked pandas; no semantic test body ran.
+
+33203381365 @ 54a49c294b7bff36b5d612484b462893125e40d5:
+collection stopped because clean runner lacked pyreadstat; no semantic test body ran.
+
+33203458712 @ 27d5ecd50db83d406df93bde4ec315ec72ebaff8:
+652 passed, 11 failed, 1 skipped under an overbroad all-tests command.
+Seven failures were missing-pyarrow carrier-environment failures.
+Two were pre-existing source-relation exception-shape expectations outside Z02 minimum.
+One was a Z02 test-only serialized-ref comparison.
+One was a frozen whole-machine semantic-blob pin against a pre-I01/I03 base.
+The frozen downstream pin was quarantined and was not used to modify production.
+
+33203571706 @ c9e009f35f92cfc0912bf53384c1daa45455f3e3:
+156 passed, 1 failed.
+The sole failure was a Z02 test-only ExactRef vs canonical serialized mapping comparison.
+No production semantic change resulted.
+
+33203654968 @ d164f14dd6edd63a30b02639ed93cfb90c51ee92:
+157 passed in 6.18s.
+PASS.
+
+ORACLE ISOLATION
+I05/I06/I07/I08 expected-answer artifacts were not read as implementation inputs.
+The frozen whole-machine pin surfaced only in an overbroad post-implementation test command.
+No production behavior was changed in response to that pin.
+
+TEST HARNESS DISPOSITION
+The temporary branch workflow is removed in the final seal commit.
+Post-tested-commit changes are return documentation plus workflow removal only.
+
+STATUS
+Z02_FRACTUREMAP_PRODUCTION_INTEGRATION_R1_COMPLETE

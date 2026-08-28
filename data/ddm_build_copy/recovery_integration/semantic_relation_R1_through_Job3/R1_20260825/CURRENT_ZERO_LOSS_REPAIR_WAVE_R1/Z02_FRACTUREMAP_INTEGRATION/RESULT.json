@@ -1,0 +1,69 @@
+{
+  "schema": "RAWLSING_Z02_FRACTUREMAP_PRODUCTION_INTEGRATION_RETURN",
+  "schema_version": "1.0.0",
+  "status": "Z02_FRACTUREMAP_PRODUCTION_INTEGRATION_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-z02-fracturemap-integration-r1",
+  "verified_worker_starting_head": "1020e4af5d7f7658a82acb80b374a0a99f24282e",
+  "worker_command_parent_authority_head": "c649d57c14ca6c0f84571beab4610c007c2484f2",
+  "tested_integration_commit": "d164f14dd6edd63a30b02639ed93cfb90c51ee92",
+  "admitted_inputs": {
+    "I01_final": "dd3f3aca306e303d5aea7b7d732f291f4bff330e",
+    "I02_final": "9b6d6824739ba01ff9912fab20c740b05d6fef21",
+    "I02_tested": "f62f1646e0c5db102bdb006e401a675e12946d84",
+    "I03_final": "658dc1d610249eac97abf82a2bb61cb9ceb689b1",
+    "I03_tested": "3b5dece60b17bc774ea8de8829985eb62c5a23f3",
+    "I04_final": "2474f8ef5907d5f5b70344e4a1c9ea9dbe14ecd8",
+    "MX01R2": "1773c9a12b3f60489635c562ff60f7190e99a2f5"
+  },
+  "integrated_behavior": {
+    "i05_complete_frontier_evaluation_semantics_preserved": true,
+    "result_driven_change_only_between_i05_invocations": true,
+    "exact_policy_owner": "FractureMapControllerPolicy",
+    "typed_continuation_owner": "FractureMapContinuationDecision",
+    "public_aggregate_family": "EmpiricalFractureMapReceipt@1.0.0",
+    "public_aggregate_ref_only": true,
+    "copied_empirical_payload": false,
+    "maximum_target_arity_J": 3,
+    "j3_requires_exact_versioned_authority": true,
+    "j_greater_than_3": "FAIL_CLOSED",
+    "i04_complete_target_frontier": [
+      "J1",
+      "J2",
+      "J3"
+    ],
+    "positional_demographic_as_cosignature_targets": false,
+    "mx01r2_public_replay_handoff": true,
+    "caller_respondent_list_reconstruction": false,
+    "denominator_grains": [
+      "SOURCE_RISK",
+      "BRANCH",
+      "PER_TARGET",
+      "JOINT"
+    ],
+    "raw_vs_governed_weight_noncollapse": true,
+    "retention_vs_continuation_noncollapse": true,
+    "pre_v3_v3_firewall": true
+  },
+  "test_receipt": {
+    "workflow_run_id": 33203654968,
+    "job_id": 98959108997,
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "passed": 157,
+    "failed": 0,
+    "duration_seconds": 6.18
+  },
+  "oracle_isolation": {
+    "expected_answers_consumed_before_or_during_design": false,
+    "downstream_frozen_pin_seen_only_in_overbroad_post_implementation_test": true,
+    "downstream_pin_used_to_modify_production": false
+  },
+  "prohibited_work": {
+    "MX04": false,
+    "MX05_C09": false,
+    "route_selection": false,
+    "V553_plus_redesign": false,
+    "V3_work": false
+  }
+}
