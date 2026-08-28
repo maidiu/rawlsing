@@ -51,7 +51,7 @@ def main() -> None:
         part.write_text(header + "".join(block), encoding="utf-8", newline="")
         parts.append((i, filename, start + 1, start + len(block), len(block), sha256(part)))
 
-    manifest = args.out / "RESPONSE_PATTERN_ORACLE_MANIFEST.csv"
+    manifest = args.out / "RESPONSE_PATTERN_ORACLE.csv"
     with manifest.open("w", encoding="utf-8", newline="") as f:
         f.write("schema,monolithic_replay_sha256,part,filename,data_row_start,data_row_end,data_row_count,sha256\n")
         for i, filename, start, end, count, digest in parts:
