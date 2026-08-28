@@ -1,6 +1,6 @@
 import pytest
 
-from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec, canonical_json
+from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot, EmpiricalQuerySpec, canonical_json
 from rawlsing_next.pre553_fracture_map_controller import (
     Authority37ControllerPolicy,
     FractureMapController,
@@ -54,6 +54,30 @@ def _policy(**kwargs):
     return Authority37ControllerPolicy(**defaults)
 
 
+def _controller_discovery_authority(tag):
+    base = _d_auth(tag)
+    fields = dict(base.semantic_fields)
+    fields["governed_operations"] = (
+        "AUTH37-FRACTURE-PREDICTOR-GEN-0",
+        "AUTH37-FRACTURE-BRANCH-GEN-0",
+        "AUTH37-FRACTURE-PREDICTOR-GEN-1",
+        "AUTH37-FRACTURE-BRANCH-GEN-1",
+        "AUTH37-FRACTURE-PREDICTOR-GEN-2",
+        "AUTH37-FRACTURE-BRANCH-GEN-2",
+        "AUTH37-FRACTURE-PREDICTOR-GEN-3",
+        "AUTH37-FRACTURE-BRANCH-GEN-3",
+        "AUTH37-FRACTURE-PREDICTOR-GEN-4",
+        "AUTH37-FRACTURE-BRANCH-GEN-4",
+    )
+    return AuthoritySnapshot(
+        typed_state=base.typed_state,
+        authority_snapshot_refs=base.authority_snapshot_refs,
+        dependency_refs=base.dependency_refs,
+        producer_replay_locator_or_reference_root=base.producer_replay_locator_or_reference_root,
+        **fields,
+    )
+
+
 def _setup(tag="controller"):
     rows = [
         {"id": "R1", "responses": {"Y": 1}, "coords": {"G": "A", "H": "X"}},
@@ -65,7 +89,7 @@ def _setup(tag="controller"):
         {"id": "R7", "responses": {"Y": 1}, "coords": {"H": "X"}},
     ]
     source = _build_source(tag, rows)
-    qauth, dauth = _query_authority(tag), _d_auth(tag + "-discovery")
+    qauth, dauth = _query_authority(tag), _controller_discovery_authority(tag + "-discovery")
     parent = _branch_predicate(source, qauth, tag="root")
     root = _query(source, qauth, parent, ("Y",), tag="root")
     registry = _registry(source, qauth, dauth)
