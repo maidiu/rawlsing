@@ -1,0 +1,54 @@
+Z08 POSITIONED-SUBJECT POSSIBILITY + SPECIFICITY WALKBACK — TEST RECEIPT
+
+production_module:
+rawlsing_next/source_backed_positioned_subject_possibility.py
+
+production_test:
+rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
+
+production_implementation_commit:
+269de28814d2187fedebbedbbecd5b63f6a67521
+
+production_test_commit:
+f4158912a230f682a68f28d2aff5ee9051ce0a78
+
+LOCAL BOUNDED EXECUTION
+python compile: PASS
+pytest tests_total: 13
+pytest tests_passed: 13
+pytest tests_failed: 0
+elapsed: 0.07s on final compact implementation/test content
+
+Executed command equivalent:
+PYTHONPATH=/tmp/z08 pytest -q rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
+
+PASS cases:
+- exact supported positioned subject
+- exact underpowered remains UNRESOLVED while explicit proxy is returned
+- absent exact stratum follows authorized surrogate ladder
+- no admissible surrogate remains UNRESOLVED
+- mixed-source proxy fails closed
+- cross-release proxy fails closed
+- non-monotone/widening walkback is rejected
+- specificity-loss difference changes result identity
+- exact VALID_EMPTY remains exact and is not broadened
+- exact NONCOMPARABLE remains exact and is not broadened
+- conditioner binding cannot silently cross query source/release
+- proxy authority must be positively listed by the model rule
+- irrelevant unconsumed evidence does not change replay identity
+
+Execution boundary:
+The repository checkout was not materialized in the local runtime. The exact committed Z08 production module and test content were executed against a compatibility-local copy of the already-inspected PRE553 ExactRef / AuthorityRef / canonicalize / semantic_hash interface. The committed module itself imports the repository-native rawlsing_next.pre553_empirical_objects implementation. This receipt therefore claims bounded Z08 unit execution, not the full repository suite or an end-to-end source-data run.
+
+Repository-native interface compatibility was grounded before implementation against current:
+- rawlsing_next/pre553_empirical_objects.py @ starting HEAD, blob 91974c52ce8c0acafa939be0d7d83f4a5c8085b7
+- rawlsing_next/pre553_empirical_query.py @ starting HEAD, blob d81e4ebebaf314ad39b4c56452f9331811c7e3a0
+- rawlsing_next/pre553_source_relations.py @ starting HEAD, blob 5b67e3f98a5faf95a6c82700af2346fef6e306a5
+
+NO PRE553 I03 MODIFICATION.
+NO QUERYSPACE MODIFICATION.
+NO PRE-V3 MODIFICATION.
+NO ACTOR/V3/PERSONALITY SEMANTICS.
+NO SIBLING FINDINGS CONSUMED.
+
+Z08_POSITIONED_SUBJECT_WALKBACK_R1_COMPLETE
