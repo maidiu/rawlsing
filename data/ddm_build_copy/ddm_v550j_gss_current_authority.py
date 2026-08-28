@@ -135,7 +135,7 @@ def validate_gss_current_authority() -> dict[str, Any]:
     _require(current.get("current_authority_content_hash") == PROMOTION_HASH, "promotion authority hash drift")
     basis = str(current.get("current_authority_hash_basis", ""))
     _require(hashlib.sha256(basis.encode()).hexdigest() == PROMOTION_HASH, "promotion authority hash basis mismatch")
-    _require(current.get("registry_content_hash") == SOURCE_REGISTRY_HASH, "selected source registry hash drift")
+    _require(current.get("source_registry_content_hash") == SOURCE_REGISTRY_HASH, "selected source registry hash drift")
     _require(source.get("registry_content_hash") == SOURCE_REGISTRY_HASH, "Section85 GSS source registry semantic hash drift")
     _require(current.get("production_completeness_claim") == "NO_PRODUCTION_COMPLETENESS_CLAIM", "production completeness overclaim")
     _require(current.get("response_portability_status") == "NOT_AUTHORIZED_BY_P3", "response portability overclaim")
