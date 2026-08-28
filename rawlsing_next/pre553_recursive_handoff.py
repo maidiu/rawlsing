@@ -5,34 +5,27 @@ MX01 R2 closes one bounded common-contract gap only:
     discovered child -> exact persisted parent for discovery generation N+1
 
 The semantic carrier is the existing C11-internal ``DiscoveryBranchReplayBinding``.
-This module does not add a public semantic-object family, does not change the I05
-frontier law, and does not introduce adaptive traversal.  It materializes exact
-I05 compiler output together with the existing replay binding, persists the
-predicate semantic projection and all hash-bound replay side material, and
-provides a public N+1 consumption path that does not reconstruct the child from
-caller knowledge.
+This module does not add a public semantic-object family, change the I05 frontier
+law, or introduce adaptive traversal.  It resolves the exact receipt-bound child
+predicate from the governed public grammar/predicate catalog, materializes the
+existing replay binding, persists all hash-bound side material, and exposes a
+public N+1 consumption path.  Fresh-process reuse never requires ``_Candidate``
+or private ``_compile_frontier`` state.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
+from itertools import combinations, product
 import json
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next._pre553_query_predicate import _build_release_index, _eval_predicate
-from rawlsing_next.pre553_c11_integrity import (
-    DiscoveryBranchReplayBinding,
-    TypedAbsence,
-)
+from rawlsing_next.pre553_c11_integrity import DiscoveryBranchReplayBinding, TypedAbsence
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_discovery_exact import (
     I05_CONTRACT_ID,
-    ExactBoundedDiscoveryError,
     ExactBoundedDiscoveryResult,
-    _catalog_atoms,
-    _catalog_templates,
-    _compile_frontier,
-    _verify_discovery_authority,
     execute_exact_bounded_discovery,
 )
 from rawlsing_next.pre553_empirical_authority import (
@@ -51,11 +44,18 @@ from rawlsing_next.pre553_empirical_objects import (
     canonical_json,
     canonicalize,
     exact_ref,
+    make_empirical_predicate,
     semantic_hash,
 )
 
 RECURSIVE_HANDOFF_CONTRACT_ID = "PRE553_MX01R2_RECURSIVE_HANDOFF@1.0.0"
 RECURSIVE_BRANCH_FAMILIES = frozenset({"RECURSIVE_SUBGROUP_FORK"})
+_SUPPORTED_RECURSIVE_FORMS = frozenset({
+    "SINGLE_ATOM",
+    "AND_COMBINATIONS",
+    "AND_CARTESIAN_GROUPS",
+    "XOR_EXACTLY_ONE_COMBINATIONS",
+})
 
 
 class RecursiveHandoffError(Pre553IntegrityError):
@@ -64,15 +64,43 @@ class RecursiveHandoffError(Pre553IntegrityError):
 
 def _derived_ref(kind: str, namespace: str, material: Any) -> ExactRef:
     digest = semantic_hash(material)
-    return ExactRef(
-        kind,
-        f"urn:rawlsing:pre553:mx01r2:{namespace}:sha256:{digest}",
-        digest,
-    )
+    return ExactRef(kind, f"urn:rawlsing:pre553:mx01r2:{namespace}:sha256:{digest}", digest)
+
+
+def _i05_derived_ref(kind: str, namespace: str, material: Any) -> ExactRef:
+    """Reproduce I05's public content-addressing rule without private compiler state."""
+    digest = semantic_hash(material)
+    return ExactRef(kind, f"urn:rawlsing:pre553:i05:{namespace}:sha256:{digest}", digest)
 
 
 def _canonical_refs(values: Iterable[ExactRef | Mapping[str, Any]]) -> tuple[ExactRef, ...]:
-    return tuple(sorted({exact_ref(value).key: exact_ref(value) for value in values}.values(), key=lambda r: r.key))
+    by_key = {exact_ref(value).key: exact_ref(value) for value in values}
+    return tuple(sorted(by_key.values(), key=lambda ref: ref.key))
+
+
+def _canonical_auths(values: Iterable[AuthorityRef | Mapping[str, Any]]) -> tuple[AuthorityRef, ...]:
+    by_key = {authority_ref(value).key: authority_ref(value) for value in values}
+    return tuple(sorted(by_key.values(), key=lambda ref: ref.key))
+
+
+def _mapping(value: Any, name: str) -> Mapping[str, Any]:
+    if not isinstance(value, Mapping):
+        raise RecursiveHandoffError(f"{name} must be an exact mapping")
+    return value
+
+
+def _sequence(value: Any, name: str, *, allow_empty: bool = False) -> Sequence[Any]:
+    if isinstance(value, (str, bytes, bytearray)) or not isinstance(value, Sequence):
+        raise RecursiveHandoffError(f"{name} must be a sequence")
+    if not allow_empty and not value:
+        raise RecursiveHandoffError(f"{name} may not be empty")
+    return value
+
+
+def _text(value: Any, name: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise RecursiveHandoffError(f"{name} must be non-empty text")
+    return value.strip()
 
 
 def _typed_absence(value: Mapping[str, Any]) -> TypedAbsence:
@@ -96,9 +124,7 @@ def _authority_or_absence(value: Any) -> AuthorityRef | TypedAbsence:
 def _text_or_absence(value: Any) -> str | TypedAbsence:
     if isinstance(value, Mapping) and "typed_absence_state" in value:
         return _typed_absence(value)
-    if not isinstance(value, str) or not value.strip():
-        raise RecursiveHandoffError("text-or-absence field must contain exact text or TypedAbsence")
-    return value.strip()
+    return _text(value, "text-or-absence")
 
 
 def _restore_predicate(payload: Mapping[str, Any]) -> EmpiricalPredicate:
@@ -118,7 +144,7 @@ def _restore_predicate(payload: Mapping[str, Any]) -> EmpiricalPredicate:
         schema_version=payload.get("schema_version"),
         **dict(fields),
     )
-    if predicate.as_dict() != canonicalize(payload):
+    if canonical_json(predicate.as_dict()) != canonical_json(payload):
         raise RecursiveHandoffError("persisted predicate projection is not identity-exact")
     return predicate
 
@@ -168,14 +194,217 @@ def _restore_binding(payload: Mapping[str, Any]) -> DiscoveryBranchReplayBinding
     return binding
 
 
+def _compose_predicates(
+    predicates: Sequence[EmpiricalPredicate],
+    *,
+    op: str,
+    tag_material: Any,
+) -> EmpiricalPredicate:
+    """Exact public re-materialization of I05 boolean predicate composition."""
+    if not predicates:
+        raise RecursiveHandoffError("cannot compose empty recursive predicate set")
+    grammar_refs = {canonical_json(predicate.grammar_authority_ref) for predicate in predicates}
+    bindings = {predicate.same_respondent_binding_semantics for predicate in predicates}
+    if len(grammar_refs) != 1 or len(bindings) != 1:
+        raise RecursiveHandoffError("recursive predicates must share exact grammar/respondent binding")
+    if op not in {"AND", "OR"}:
+        raise RecursiveHandoffError("recursive predicate composition supports AND/OR only")
+    ast = {"op": op, "children": [predicate.predicate_ast for predicate in predicates]}
+    return make_empirical_predicate(
+        predicate_ast=ast,
+        typed_state="PREDICATE_RESOLVED_AUTHORIZED",
+        authority_snapshot_refs=_canonical_auths(
+            ref for predicate in predicates for ref in predicate.authority_snapshot_refs
+        ),
+        dependency_refs=_canonical_refs(predicate.ref for predicate in predicates),
+        producer_replay_locator_or_reference_root=_i05_derived_ref(
+            "PRE553_I05_PREDICATE_REPLAY_ROOT", "predicate-replay", tag_material
+        ),
+        grammar_authority_ref=predicates[0].grammar_authority_ref,
+        coordinate_question_value_refs=_canonical_refs(
+            ref
+            for predicate in predicates
+            for ref in predicate.coordinate_question_value_refs
+        ),
+        risk_set_refs=_canonical_refs(
+            ref for predicate in predicates for ref in predicate.risk_set_refs
+        ),
+        scope_refs=_canonical_refs(
+            ref for predicate in predicates for ref in predicate.scope_refs
+        ),
+        same_respondent_binding_semantics=predicates[0].same_respondent_binding_semantics,
+        operator_semantics_refs=_canonical_refs(
+            ref for predicate in predicates for ref in predicate.operator_semantics_refs
+        ),
+    )
+
+
+def _xor_exactly_one(
+    predicates: Sequence[EmpiricalPredicate],
+    *,
+    tag_material: Any,
+) -> EmpiricalPredicate:
+    if len(predicates) < 2:
+        raise RecursiveHandoffError("XOR_EXACTLY_ONE requires at least two predicates")
+    ors = {"op": "OR", "children": [predicate.predicate_ast for predicate in predicates]}
+    pair_ands = [
+        {"op": "AND", "children": [left.predicate_ast, right.predicate_ast]}
+        for left, right in combinations(predicates, 2)
+    ]
+    no_pair = {"op": "NOT", "children": [{"op": "OR", "children": pair_ands}]}
+    common = _compose_predicates(predicates, op="OR", tag_material={"probe": tag_material})
+    return make_empirical_predicate(
+        predicate_ast={"op": "AND", "children": [ors, no_pair]},
+        typed_state="PREDICATE_RESOLVED_AUTHORIZED",
+        authority_snapshot_refs=common.authority_snapshot_refs,
+        dependency_refs=_canonical_refs(predicate.ref for predicate in predicates),
+        producer_replay_locator_or_reference_root=_i05_derived_ref(
+            "PRE553_I05_PREDICATE_REPLAY_ROOT", "xor-predicate-replay", tag_material
+        ),
+        grammar_authority_ref=common.grammar_authority_ref,
+        coordinate_question_value_refs=common.coordinate_question_value_refs,
+        risk_set_refs=common.risk_set_refs,
+        scope_refs=common.scope_refs,
+        same_respondent_binding_semantics=common.same_respondent_binding_semantics,
+        operator_semantics_refs=common.operator_semantics_refs,
+    )
+
+
+def _predicate_catalog_by_ref(
+    predicates: Sequence[EmpiricalPredicate],
+) -> Mapping[str, EmpiricalPredicate]:
+    by_ref: dict[str, EmpiricalPredicate] = {}
+    for predicate in predicates:
+        if not isinstance(predicate, EmpiricalPredicate):
+            raise RecursiveHandoffError("recursive handoff predicate catalog contains wrong object type")
+        if semantic_hash(predicate.semantic_projection()) != predicate.content_hash:
+            raise RecursiveHandoffError("recursive handoff predicate catalog identity mismatch")
+        if predicate.ref.key in by_ref:
+            raise RecursiveHandoffError("duplicate exact predicate ref in recursive handoff catalog")
+        by_ref[predicate.ref.key] = predicate
+    return by_ref
+
+
+def _rule_selected_groups(
+    rule: Mapping[str, Any],
+    atom_predicates: Mapping[str, EmpiricalPredicate],
+) -> tuple[tuple[tuple[str, EmpiricalPredicate], ...], ...]:
+    form = _text(rule.get("form"), "recursive rule form")
+    if form not in _SUPPORTED_RECURSIVE_FORMS:
+        raise RecursiveHandoffError(f"recursive handoff does not support rule form {form!r}")
+    if form == "SINGLE_ATOM":
+        return tuple(
+            ((atom_id, atom_predicates[atom_id]),)
+            for atom_id in (_text(value, "atom_id") for value in _sequence(rule.get("atom_ids"), "atom_ids"))
+        )
+    if form in {"AND_COMBINATIONS", "XOR_EXACTLY_ONE_COMBINATIONS"}:
+        ids = tuple(_text(value, "atom_id") for value in _sequence(rule.get("atom_ids"), "atom_ids"))
+        arity = rule.get("arity")
+        if not isinstance(arity, int) or isinstance(arity, bool) or arity < 1:
+            raise RecursiveHandoffError("recursive combination arity must be a positive integer")
+        return tuple(
+            tuple((atom_id, atom_predicates[atom_id]) for atom_id in selected)
+            for selected in combinations(ids, arity)
+        )
+    raw_groups = _sequence(rule.get("atom_groups"), "atom_groups")
+    groups = [
+        tuple(_text(value, "atom_id") for value in _sequence(group, "atom group"))
+        for group in raw_groups
+    ]
+    return tuple(
+        tuple((atom_id, atom_predicates[atom_id]) for atom_id in selected)
+        for selected in product(*groups)
+    )
+
+
+def _resolve_receipt_winning_predicate(
+    *,
+    receipt: DiscoveryResultReceipt,
+    candidate_universe_definition: Mapping[str, Any],
+    predicate_catalog: Sequence[EmpiricalPredicate],
+) -> tuple[EmpiricalPredicate, EmpiricalPredicate]:
+    """Resolve exact winner + role-bearing parent from governed public material.
+
+    The receipt's exact ``winning_predicate_ref`` is the selector.  Candidate
+    predicates are deterministically materialized from the authority-frozen
+    grammar and exact input predicate objects.  A unique exact-ref match is
+    required; no labels, scores, or caller-supplied member guesses participate.
+    """
+    identity = _mapping(receipt.candidate_identity, "candidate_identity")
+    family = _text(identity.get("family"), "candidate family")
+    rule_id = _text(identity.get("rule_id"), "candidate rule_id")
+    if family not in RECURSIVE_BRANCH_FAMILIES:
+        raise RecursiveHandoffError("receipt is not a recursive branch family")
+
+    by_ref = _predicate_catalog_by_ref(predicate_catalog)
+    atom_predicates: dict[str, EmpiricalPredicate] = {}
+    for raw_atom in _sequence(
+        candidate_universe_definition.get("atoms", ()), "candidate grammar atoms", allow_empty=True
+    ):
+        atom = _mapping(raw_atom, "candidate atom")
+        atom_id = _text(atom.get("atom_id"), "atom_id")
+        predicate_ref = exact_ref(atom.get("predicate_ref"), f"atom {atom_id}.predicate_ref")
+        predicate = by_ref.get(predicate_ref.key)
+        if predicate is None:
+            raise RecursiveHandoffError(f"candidate atom {atom_id!r} predicate is not publicly resolvable")
+        atom_predicates[atom_id] = predicate
+
+    matching_rules = [
+        _mapping(raw_rule, "candidate rule")
+        for raw_rule in _sequence(
+            candidate_universe_definition.get("rules", ()), "candidate rules", allow_empty=True
+        )
+        if _mapping(raw_rule, "candidate rule").get("rule_id") == rule_id
+        and _mapping(raw_rule, "candidate rule").get("family") == family
+    ]
+    if len(matching_rules) != 1:
+        raise RecursiveHandoffError("receipt must resolve to exactly one governed recursive rule")
+    rule = matching_rules[0]
+    baseline_id = _text(rule.get("baseline_atom_id"), "baseline_atom_id")
+    if baseline_id not in atom_predicates:
+        raise RecursiveHandoffError("recursive baseline predicate is not publicly resolvable")
+    baseline = atom_predicates[baseline_id]
+    form = _text(rule.get("form"), "recursive rule form")
+
+    exact_matches: list[EmpiricalPredicate] = []
+    for selected in _rule_selected_groups(rule, atom_predicates):
+        selected_ids = [atom_id for atom_id, _ in selected]
+        selected_predicates = [predicate for _, predicate in selected]
+        if form == "SINGLE_ATOM":
+            condition = selected_predicates[0]
+        elif form == "XOR_EXACTLY_ONE_COMBINATIONS":
+            condition = _xor_exactly_one(
+                selected_predicates,
+                tag_material={"rule": rule_id, "atoms": selected_ids},
+            )
+        else:
+            condition = _compose_predicates(
+                selected_predicates,
+                op="AND",
+                tag_material={"rule": rule_id, "atoms": selected_ids},
+            )
+        if baseline_id not in selected_ids:
+            condition = _compose_predicates(
+                (baseline, condition),
+                op="AND",
+                tag_material={
+                    "rule": rule_id,
+                    "baseline": baseline_id,
+                    "condition": condition.ref.as_dict(),
+                },
+            )
+        if condition.ref == receipt.winning_predicate_ref:
+            exact_matches.append(condition)
+    if len(exact_matches) != 1:
+        raise RecursiveHandoffError(
+            "receipt winning predicate must resolve to exactly one governed compiled predicate"
+        )
+    return exact_matches[0], baseline
+
+
 @dataclass(frozen=True)
 class RecursiveBranchHandoff:
-    """Public operational handle over an existing DiscoveryBranchReplayBinding.
-
-    ``ref`` is the exact existing replay-binding ref.  The additional mappings
-    are hash-bound side material required to replay the binding, not new semantic
-    ownership of the source payload.
-    """
+    """Public operational handle over an existing DiscoveryBranchReplayBinding."""
 
     receipt_ref: ExactRef
     branch_replay_binding: DiscoveryBranchReplayBinding
@@ -196,7 +425,7 @@ class RecursiveBranchHandoff:
         if not isinstance(parent, ExactRef):
             raise RecursiveHandoffError("recursive handoff requires exact immediate parent branch ref")
         if not isinstance(winner, ExactRef) or winner != self.winning_predicate.ref:
-            raise RecursiveHandoffError("replay binding winning predicate does not bind persisted predicate")
+            raise RecursiveHandoffError("replay binding winner does not bind persisted predicate")
         if not self.source_release_refs:
             raise RecursiveHandoffError("recursive handoff requires exact source release refs")
         candidate_ref = self.branch_replay_binding.candidate_universe_ref_or_typed_absence
@@ -248,12 +477,14 @@ class RecursiveHandoffDiscoveryResult:
     handoffs: tuple[RecursiveBranchHandoff, ...]
 
     def __post_init__(self) -> None:
-        if tuple(sorted(self.handoffs, key=lambda h: h.ref.key)) != self.handoffs:
+        if tuple(sorted(self.handoffs, key=lambda handoff: handoff.ref.key)) != self.handoffs:
             raise RecursiveHandoffError("recursive handoffs must be exact-ref sorted")
-        if len({h.ref.key for h in self.handoffs}) != len(self.handoffs):
+        if len({handoff.ref.key for handoff in self.handoffs}) != len(self.handoffs):
             raise RecursiveHandoffError("duplicate recursive handoff ref")
 
-    def handoff_for_receipt(self, receipt_ref: ExactRef | Mapping[str, Any]) -> RecursiveBranchHandoff:
+    def handoff_for_receipt(
+        self, receipt_ref: ExactRef | Mapping[str, Any]
+    ) -> RecursiveBranchHandoff:
         target = exact_ref(receipt_ref)
         matches = [handoff for handoff in self.handoffs if handoff.receipt_ref == target]
         if len(matches) != 1:
@@ -263,26 +494,25 @@ class RecursiveHandoffDiscoveryResult:
 
 def _make_handoff(
     *,
-    candidate: Any,
+    winning_predicate: EmpiricalPredicate,
+    immediate_parent: EmpiricalPredicate,
     receipt: DiscoveryResultReceipt,
     discovery_authority: DiscoveryAuthority,
     discovery_result: ExactBoundedDiscoveryResult,
     release_refs: tuple[ExactRef, ...],
     candidate_universe_definition: Mapping[str, Any],
 ) -> RecursiveBranchHandoff:
-    baseline_roles = [role for role in candidate.query_roles if role.role == "BASELINE"]
-    if len(baseline_roles) != 1:
-        raise RecursiveHandoffError("recursive branch candidate requires one exact BASELINE parent role")
-    parent_ref = baseline_roles[0].predicate.ref
-    if receipt.winning_predicate_ref != candidate.winning_predicate.ref:
-        raise RecursiveHandoffError("receipt/winning compiled predicate ref mismatch")
+    if receipt.winning_predicate_ref != winning_predicate.ref:
+        raise RecursiveHandoffError("receipt/winning predicate ref mismatch")
+    identity = _mapping(receipt.candidate_identity, "candidate_identity")
+    family = _text(identity.get("family"), "candidate family")
 
     scope_context = canonicalize({
         "source_universe_scope": discovery_authority.source_universe_scope,
         "risk_set_scope": discovery_authority.risk_set_scope,
         "topology_scope": discovery_authority.topology_scope,
         "measure_scope": discovery_authority.measure_scope,
-        "same_respondent_binding_semantics": candidate.winning_predicate.same_respondent_binding_semantics,
+        "same_respondent_binding_semantics": winning_predicate.same_respondent_binding_semantics,
         "discovery_authority_ref": discovery_authority.ref,
         "evaluated_frontier_ref": discovery_result.evaluated_frontier_ref,
         "source_release_refs": release_refs,
@@ -300,18 +530,10 @@ def _make_handoff(
     deterministic_parameters = canonicalize({
         "receipt_ref": receipt.ref,
         "candidate_identity": receipt.candidate_identity,
-        "winning_predicate_ref": candidate.winning_predicate.ref,
-        "immediate_parent_branch_ref": parent_ref,
+        "winning_predicate_ref": winning_predicate.ref,
+        "immediate_parent_branch_ref": immediate_parent.ref,
         "support_rules": discovery_authority.support_rules,
         "validation_rules": discovery_authority.validation_rules,
-        "query_role_refs": [
-            {
-                "role": role.role,
-                "predicate_ref": role.predicate.ref,
-                "query_ref": role.query.ref,
-            }
-            for role in candidate.query_roles
-        ],
     })
     scope_ref = _derived_ref("PRE553_RECURSIVE_SCOPE_CONTEXT", "scope-context", scope_context)
     coverage_ref = _derived_ref(
@@ -331,24 +553,22 @@ def _make_handoff(
     )
     binding = DiscoveryBranchReplayBinding(
         state="PRESENT",
-        search_family_id_or_typed_absence=candidate.family,
+        search_family_id_or_typed_absence=family,
         candidate_universe_ref_or_typed_absence=discovery_result.candidate_grammar_ref,
-        grammar_authority_ref_or_typed_absence=authority_ref(
-            candidate.winning_predicate.grammar_authority_ref
-        ),
+        grammar_authority_ref_or_typed_absence=authority_ref(winning_predicate.grammar_authority_ref),
         source_risk_topology_measure_scope_ref_or_typed_absence=scope_ref,
         algorithm_identity_ref_or_typed_absence=algorithm_ref,
         coverage_pruning_contract_ref_or_typed_absence=coverage_ref,
         deterministic_parameters_ref_or_typed_absence=deterministic_ref,
         rng_state_ref_or_typed_absence=TypedAbsence("NOT_APPLICABLE"),
-        parent_branch_ref_or_typed_absence=parent_ref,
-        winning_predicate_ref_or_typed_absence=candidate.winning_predicate.ref,
+        parent_branch_ref_or_typed_absence=immediate_parent.ref,
+        winning_predicate_ref_or_typed_absence=winning_predicate.ref,
         pruned_trace_ref_or_typed_absence=TypedAbsence("NOT_APPLICABLE"),
     )
     return RecursiveBranchHandoff(
         receipt_ref=receipt.ref,
         branch_replay_binding=binding,
-        winning_predicate=candidate.winning_predicate,
+        winning_predicate=winning_predicate,
         source_release_refs=release_refs,
         discovery_authority_ref=discovery_authority.ref,
         evaluated_frontier_ref=discovery_result.evaluated_frontier_ref,
@@ -368,13 +588,7 @@ def execute_exact_bounded_discovery_with_handoffs(
     predicate_catalog: Iterable[EmpiricalPredicate],
     query_template_catalog: Iterable[EmpiricalQuerySpec],
 ) -> RecursiveHandoffDiscoveryResult:
-    """Execute I05 and materialize supported recursive branch children.
-
-    The compiler is rerun deterministically from the same authority-declared
-    pre-search grammar only to expose the already identity-matched compiled
-    predicate.  The returned/persisted handoff, not compiler-private state, is
-    the N+1 input.
-    """
+    """Execute I05 and materialize supported recursive child branches."""
     releases = _canonical_refs(release_refs)
     predicates = tuple(predicate_catalog)
     queries = tuple(query_template_catalog)
@@ -386,30 +600,28 @@ def execute_exact_bounded_discovery_with_handoffs(
         predicate_catalog=predicates,
         query_template_catalog=queries,
     )
-
-    definition = _verify_discovery_authority(discovery_authority, authority_registry)
-    atoms = _catalog_atoms(definition, predicates)
-    templates = _catalog_templates(definition, queries)
-    candidates = _compile_frontier(definition, atoms, templates)
-    candidates_by_identity = {
-        (candidate.candidate_id, candidate.candidate_hash): candidate for candidate in candidates
-    }
-    if len(candidates_by_identity) != len(candidates):
-        raise RecursiveHandoffError("compiled candidate identities are not unique")
+    definition = _mapping(
+        discovery_authority.candidate_universe_definition,
+        "candidate_universe_definition",
+    )
+    grammar_ref = exact_ref(discovery_authority.candidate_grammar_ref)
+    if grammar_ref != result.candidate_grammar_ref or grammar_ref.content_hash != semantic_hash(definition):
+        raise RecursiveHandoffError("executed discovery grammar identity mismatch")
 
     handoffs: list[RecursiveBranchHandoff] = []
     for receipt in result.receipts:
-        identity = receipt.candidate_identity
-        key = (identity.get("candidate_id"), identity.get("candidate_hash"))
-        candidate = candidates_by_identity.get(key)
-        if candidate is None:
-            raise RecursiveHandoffError("discovery receipt has no exact compiled candidate match")
-        if candidate.family not in RECURSIVE_BRANCH_FAMILIES:
+        identity = _mapping(receipt.candidate_identity, "candidate_identity")
+        family = _text(identity.get("family"), "candidate family")
+        if family not in RECURSIVE_BRANCH_FAMILIES or receipt.typed_state != "DISCOVERED_RESULT_SUPPORTED":
             continue
-        if receipt.typed_state != "DISCOVERED_RESULT_SUPPORTED":
-            continue
+        winner, parent = _resolve_receipt_winning_predicate(
+            receipt=receipt,
+            candidate_universe_definition=definition,
+            predicate_catalog=predicates,
+        )
         handoffs.append(_make_handoff(
-            candidate=candidate,
+            winning_predicate=winner,
+            immediate_parent=parent,
             receipt=receipt,
             discovery_authority=discovery_authority,
             discovery_result=result,
@@ -418,7 +630,7 @@ def execute_exact_bounded_discovery_with_handoffs(
         ))
     return RecursiveHandoffDiscoveryResult(
         discovery_result=result,
-        handoffs=tuple(sorted(handoffs, key=lambda h: h.ref.key)),
+        handoffs=tuple(sorted(handoffs, key=lambda handoff: handoff.ref.key)),
     )
 
 
@@ -427,10 +639,9 @@ def recursive_parent_atom(
     atom_id: str,
 ) -> Mapping[str, Any]:
     """Return the exact N+1 grammar atom for a persisted discovered branch."""
-    if not isinstance(atom_id, str) or not atom_id.strip():
-        raise RecursiveHandoffError("recursive parent atom_id must be non-empty")
+    atom_id = _text(atom_id, "recursive parent atom_id")
     return canonicalize({
-        "atom_id": atom_id.strip(),
+        "atom_id": atom_id,
         "predicate_ref": handoff.winning_predicate.ref,
         "kind": "BRANCH",
         "ancestry_refs": (handoff.ref,),
@@ -446,13 +657,9 @@ def replay_recursive_branch_membership(
 ) -> tuple[ExactRef, ...]:
     """Replay the exact respondent cohort represented by a persisted handoff."""
     validate_object_authority_closure(handoff.winning_predicate, authority_registry)
-    requested = (
-        handoff.source_release_refs
-        if release_refs is None
-        else _canonical_refs(release_refs)
-    )
+    requested = handoff.source_release_refs if release_refs is None else _canonical_refs(release_refs)
     if tuple(requested) != tuple(handoff.source_release_refs):
-        raise RecursiveHandoffError("membership replay requires the exact persisted source-release set")
+        raise RecursiveHandoffError("membership replay requires exact persisted source-release set")
 
     universe_refs = [
         exact_ref(value)
@@ -491,8 +698,8 @@ def write_recursive_handoff_bundle(
     path: str | Path,
     handoffs: Sequence[RecursiveBranchHandoff],
 ) -> ExactRef:
-    """Persist exact handoff side material; physical file bytes are not semantic authority."""
-    canonical_handoffs = tuple(sorted(handoffs, key=lambda h: h.ref.key))
+    """Persist exact side material; physical file bytes are not semantic authority."""
+    canonical_handoffs = tuple(sorted(handoffs, key=lambda handoff: handoff.ref.key))
     if len({handoff.ref.key for handoff in canonical_handoffs}) != len(canonical_handoffs):
         raise RecursiveHandoffError("cannot persist duplicate handoff refs")
     payload = canonicalize({
@@ -500,10 +707,7 @@ def write_recursive_handoff_bundle(
         "handoffs": [handoff.as_dict() for handoff in canonical_handoffs],
     })
     bundle_ref = _derived_ref("PRE553_RECURSIVE_HANDOFF_BUNDLE", "handoff-bundle", payload)
-    envelope = canonicalize({
-        "bundle_ref": bundle_ref,
-        "payload": payload,
-    })
+    envelope = canonicalize({"bundle_ref": bundle_ref, "payload": payload})
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(canonical_json(envelope) + "\n", encoding="utf-8")
@@ -551,7 +755,7 @@ def load_recursive_handoff_bundle(
         if exact_ref(raw.get("handoff_ref")) != handoff.ref:
             raise RecursiveHandoffError("handoff entry exact ref mismatch")
         restored.append(handoff)
-    canonical_restored = tuple(sorted(restored, key=lambda h: h.ref.key))
+    canonical_restored = tuple(sorted(restored, key=lambda handoff: handoff.ref.key))
     if len({handoff.ref.key for handoff in canonical_restored}) != len(canonical_restored):
         raise RecursiveHandoffError("loaded bundle contains duplicate handoff refs")
     return bundle_ref, canonical_restored
