@@ -1,0 +1,25 @@
+{
+  "disposition": "METADATA_IDENTITY_RECOVERED__PAYLOAD_AND_EXACT_99_MEMBERSHIP_NOT_RECOVERED__NOT_USED_FOR_AUTHORITY",
+  "expected_historical_outputs": [
+    "data/ddm_build_copy/authority/question_applicability_predicate_authority_full_v1.json",
+    "data/ddm_build_copy/phase_readiness/routing_provenance_ledger.csv",
+    "data/ddm_build_copy/phase_readiness/routing_authority_compile_summary.json",
+    "data/ddm_build_copy/phase_readiness/routing_unresolved_ledger.csv"
+  ],
+  "historical_wrapper": {
+    "inventory_sha256": "e27ceb340eac5d7124e44b80081e5c0309a342326c045df6d6f6d0cd71910c46",
+    "inventory_source": "Library Rawlsing_repo_tree_dates_sizes_sha256.txt exact row",
+    "name": "Rawlsing_R3_Routing_Applicability_Retrieval_Delta_20260808.zip",
+    "payload_hash_recomputed": false,
+    "payload_materialized": false,
+    "payload_used": false,
+    "size_bytes": 1791065
+  },
+  "recovery_surfaces_checked": [
+    {"result": "NO_MATERIALIZABLE_EXACT_WRAPPER_OR_EXPECTED_OUTPUT", "surface": "Library exact-title and semantic search"},
+    {"result": "NO_EXACT_WRAPPER_OR_EXPECTED_OUTPUT_FILE", "surface": "conversation + Library exact-title search"},
+    {"result": "NO_WRAPPER_OR_EXPECTED_OUTPUT_IN_OUTER_OR_NESTED_CUMULATIVE_ZIP", "sha256": "84fa0cf71488f69c9c362619d8fb557ea6f48828da095dd4b551a439e190b388", "surface": "Rawlsing_DDM_Semantic_Reconciliation_ZeroLoss_Checkpoint_20260825_ZL1.zip"},
+    {"result": "POSITIVELY_DOCUMENTS_EXPECTED_OUTPUTS_OMITTED_AND_EXACT_BYTES_UNRECOVERED", "surface": "historical R3/R14 transfer review/retrieval records"}
+  ],
+  "schema": "A06_WRAPPER_AND_LIBRARY_RECOVERY_RECEIPT@1.0.0"
+}

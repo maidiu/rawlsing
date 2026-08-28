@@ -1,0 +1,20 @@
+{
+  "exact_join": {"fuzzy_matching": false, "matched": 700, "unmatched": 0},
+  "historical_target_denominator": 99,
+  "later_routing_signal_status_counts": {
+    "NO_EXPLICIT_ROUTING_SIGNAL_IN_AVAILABLE_MERGED_METADATA": 43,
+    "NO_EXPLICIT_ROUTING_SIGNAL_IN_PACKET": 174,
+    "NO_ROUTING_SIGNAL_IN_RESPONSE_AUTHORITY": 23,
+    "NO_ROUTING_SIGNAL_RECOVERED": 30,
+    "QUESTIONNAIRE_OR_VARIABLE_ROUTING_SIGNAL_PRESENT": 47,
+    "RESPONSE_AUTHORITY_ROUTING_SIGNAL_PRESENT": 3,
+    "ROUTING_OR_APPLICABILITY_SIGNAL_PRESENT": 50,
+    "ROUTING_OR_INAPPLICABILITY_SIGNAL_PRESENT": 297,
+    "ROUTING_UNRESOLVED_RESPONSE_AUTHORITY_GAP": 33
+  },
+  "registry": {"exact_key": ["source_family", "canonical_wave", "var_code"], "rows": 700, "sha256": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b"},
+  "ruling": "No later status class or union of source-column-presence signals is accepted as proof of historical R3 membership. Exact continuity of all 700 rows does not identify the historical 99 subset.",
+  "schema": "A06_SUCCESSOR_SUBSTITUTION_AUDIT@1.0.0",
+  "status": "PASS__SUCCESSOR_NOT_USED_AS_HISTORICAL_MEMBERSHIP_PROXY",
+  "successor": {"exact_key": ["source_family", "wave", "source_variable_code"], "rows": 18276, "sha256": "c8b6cfd4a027a4b7b2c04c47d7ca0e37640082595ac058e77f99a0810d671554"}
+}

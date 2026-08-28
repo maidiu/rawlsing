@@ -1,0 +1,53 @@
+{
+  "checkpoint_archive_target_hits": [],
+  "disposition": "LMQ003_REMAINS_OPEN__99_OF_99_EXACT_HISTORICAL_SOURCE_SIGNALED_ROW_IDENTITIES_UNRECOVERED",
+  "exact_historical_rows_positively_recovered": 0,
+  "exact_historical_rows_remaining_blocked": 99,
+  "exact_registry_successor_join_rows": 700,
+  "historical_denominator": 99,
+  "historical_target_marker_occurrences_in_inspected_row_artifacts": 0,
+  "historical_target_status": "SOURCE_ROUTING_SIGNAL_REQUIRES_EXACT_PREDICATE_COMPILATION",
+  "hostile_tests": {
+    "checkpoint_does_not_materialize_wrapper_or_expected_outputs": "PASS",
+    "historical_target_membership_marker_absent_from_inspected_row_artifacts": "PASS",
+    "later_routing_statuses_not_substituted_for_historical_99": "PASS",
+    "no_fuzzy_matching_used": "PASS",
+    "registry_exact_hash_and_700_rows": "PASS",
+    "registry_to_successor_exact_key_join_700_of_700": "PASS",
+    "source_column_presence_not_substituted_for_historical_99": "PASS"
+  },
+  "input_sha256": {
+    "checkpoint": "84fa0cf71488f69c9c362619d8fb557ea6f48828da095dd4b551a439e190b388",
+    "r14": "fa1d4d91692b7e5349657d0e3becd3ee248d8d4a76ceec1dd5238d34843a7fa0",
+    "registry": "a91239a5e630c554d2c397f739a60f1313ea8ab7377780ee3c64f4969e49267b",
+    "s0": "c8b6cfd4a027a4b7b2c04c47d7ca0e37640082595ac058e77f99a0810d671554"
+  },
+  "later_routing_signal_status_counts": {
+    "NO_EXPLICIT_ROUTING_SIGNAL_IN_AVAILABLE_MERGED_METADATA": 43,
+    "NO_EXPLICIT_ROUTING_SIGNAL_IN_PACKET": 174,
+    "NO_ROUTING_SIGNAL_IN_RESPONSE_AUTHORITY": 23,
+    "NO_ROUTING_SIGNAL_RECOVERED": 30,
+    "QUESTIONNAIRE_OR_VARIABLE_ROUTING_SIGNAL_PRESENT": 47,
+    "RESPONSE_AUTHORITY_ROUTING_SIGNAL_PRESENT": 3,
+    "ROUTING_OR_APPLICABILITY_SIGNAL_PRESENT": 50,
+    "ROUTING_OR_INAPPLICABILITY_SIGNAL_PRESENT": 297,
+    "ROUTING_UNRESOLVED_RESPONSE_AUTHORITY_GAP": 33
+  },
+  "negative_ceiling": [
+    "AGGREGATE_99_COUNT != EXACT_99_ROW_IDENTITIES",
+    "SOURCE_COLUMN_PRESENCE != ROUTING_AUTHORITY",
+    "LATER_ROUTING_SIGNAL_STATUS != HISTORICAL_R3_PARTITION_MEMBERSHIP",
+    "QUESTION_TEXT_OR_THEME != HISTORICAL_ROW_IDENTITY",
+    "EXACT_700_KEY_CONTINUITY != PROOF_OF_WHICH_99_ROWS",
+    "CURRENT_ROUTING_PREDICATE_ENGINE != ROW_SPECIFIC_ROUTING_AUTHORITY"
+  ],
+  "registry_rows": 700,
+  "schema": "A06_LMQ003_EXACT_IDENTITY_RECOVERY_COURT@1.0.0",
+  "status": "BLOCKED_EXACT_HISTORICAL_ROW_IDENTITIES_NOT_RECOVERED",
+  "wrapper": {
+    "inventory_sha256": "e27ceb340eac5d7124e44b80081e5c0309a342326c045df6d6f6d0cd71910c46",
+    "name": "Rawlsing_R3_Routing_Applicability_Retrieval_Delta_20260808.zip",
+    "payload_materialized": false,
+    "used_as_semantic_input": false
+  }
+}
