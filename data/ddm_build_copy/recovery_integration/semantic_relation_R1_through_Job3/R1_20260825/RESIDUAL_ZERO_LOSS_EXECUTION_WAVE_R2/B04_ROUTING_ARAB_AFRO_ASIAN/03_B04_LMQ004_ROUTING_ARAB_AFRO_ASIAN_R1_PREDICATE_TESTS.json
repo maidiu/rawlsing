@@ -1,0 +1,71 @@
+{
+  "worker": "B04",
+  "tests": [
+    {
+      "source_family": "Arab Barometer",
+      "wave": "II",
+      "scope": "JO",
+      "var": "q408",
+      "question_implementation_id": "question_impl.phase0.b45336f05b20fdc96b27",
+      "predicate": "Q407 IN {1,2,3,4,5}",
+      "hostile_positive_input": {"Q407": 1},
+      "hostile_positive_result": true,
+      "hostile_negative_input": {"Q407": 6},
+      "hostile_negative_result": false,
+      "replay_positive_result": true,
+      "replay_negative_result": false,
+      "status": "PASS"
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "V",
+      "scope": "QA",
+      "var": "Q412A4",
+      "question_implementation_id": "question_impl.phase0.6fd4afa9020defb0185d",
+      "predicate": "Q409 IN {1,2,3,4,5}",
+      "hostile_positive_input": {"Q409": 1},
+      "hostile_positive_result": true,
+      "hostile_negative_input": {"Q409": 6},
+      "hostile_negative_result": false,
+      "replay_positive_result": true,
+      "replay_negative_result": false,
+      "status": "PASS"
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "V",
+      "scope": "QA",
+      "var": "Q412A9",
+      "question_implementation_id": "question_impl.phase0.09784157d9d0405db073",
+      "predicate": "Q409 IN {1,2,3,4,5}",
+      "hostile_positive_input": {"Q409": 1},
+      "hostile_positive_result": true,
+      "hostile_negative_input": {"Q409": 6},
+      "hostile_negative_result": false,
+      "replay_positive_result": true,
+      "replay_negative_result": false,
+      "status": "PASS"
+    },
+    {
+      "source_family": "Arab Barometer",
+      "wave": "V",
+      "scope": "QA",
+      "var": "Q104B_OTHER",
+      "question_implementation_id": "question_impl.phase0.4058750de342b45b0ca3",
+      "predicate": "Q104A == 1 AND 24 IN Q104B_SELECTIONS",
+      "hostile_positive_input": {"Q104A": 1, "Q104B_SELECTIONS": [24]},
+      "hostile_positive_result": true,
+      "hostile_negative_input": {"Q104A": 1, "Q104B_SELECTIONS": [2]},
+      "hostile_negative_result": false,
+      "replay_positive_result": true,
+      "replay_negative_result": false,
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "positive_rows_tested": 4,
+    "hostile_positive_pass": 4,
+    "hostile_negative_pass": 4,
+    "replay_pass": 4
+  }
+}
