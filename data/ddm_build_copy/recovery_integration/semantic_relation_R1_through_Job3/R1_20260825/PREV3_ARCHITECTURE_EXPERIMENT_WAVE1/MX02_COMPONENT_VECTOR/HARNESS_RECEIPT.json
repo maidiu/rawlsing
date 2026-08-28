@@ -1,0 +1,51 @@
+{
+  "harness_version": "mx02_component_vector_harness@1.0.0",
+  "oracle_cases_executed": 5,
+  "oracle_assertions_passed": 5,
+  "repo_code_imported": false,
+  "repo_sufficiency_basis": "Exact GitHub code inspection is bound in EXACT_REF_LEDGER.csv; the executable harness exercises the Authority-32 scalarization oracle only.",
+  "expected_experiment_verdict": "FAIL_CLOSED__MISSING_COMMON_COMPONENT_AUTHORITY_VECTOR_RECEIPT",
+  "cases": [
+    {
+      "case_id": "HETEROGENEOUS_COMPLETE",
+      "complete_identity_coverage": true,
+      "all_governed_components_nonempty": true,
+      "unanimous_authoritative_value": false,
+      "scalar_disposition": "VECTOR_HETEROGENEOUS_COMPLETE",
+      "scalar_value": null
+    },
+    {
+      "case_id": "INCOMPLETE_COVERAGE",
+      "complete_identity_coverage": false,
+      "all_governed_components_nonempty": false,
+      "unanimous_authoritative_value": false,
+      "scalar_disposition": "VECTOR_INCOMPLETE_COVERAGE",
+      "scalar_value": null
+    },
+    {
+      "case_id": "GOVERNED_EMPTY_COMPONENT",
+      "complete_identity_coverage": true,
+      "all_governed_components_nonempty": false,
+      "unanimous_authoritative_value": false,
+      "scalar_disposition": "VECTOR_GOVERNED_EMPTY_COMPONENT",
+      "scalar_value": null
+    },
+    {
+      "case_id": "UNANIMOUS_COMPLETE_NONEMPTY",
+      "complete_identity_coverage": true,
+      "all_governed_components_nonempty": true,
+      "unanimous_authoritative_value": true,
+      "scalar_disposition": "SCALARIZED_COMPLETE_UNANIMOUS_NONEMPTY",
+      "scalar_value": "stratum:A"
+    },
+    {
+      "case_id": "MIXED_PRODUCER_PUBLICATION",
+      "producer_families": ["V551J", "V552"],
+      "producer_identity_preservation_required": true,
+      "scalar_disposition": "VECTOR_HETEROGENEOUS_COMPLETE",
+      "scalar_value": null
+    }
+  ],
+  "execution_note": "The five scalar-oracle assertions were executed in an isolated standard-library harness. Modern repository sufficiency is adjudicated from exact current source refs, not inferred from this synthetic execution.",
+  "result": "PASS_ORACLE_EXECUTION__COMMON_SEMANTIC_OBJECT_STILL_MISSING"
+}
