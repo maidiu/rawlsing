@@ -1,0 +1,211 @@
+{
+  "schema": "G02_CURRENT_I05_FRACTURE_MAP_CAPABILITY_AUDIT_R1@1.0.0",
+  "status": "COMPLETE_AUDIT_ONLY",
+  "return_token": "G02_CURRENT_I05_FRACTURE_MAP_AUDIT_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/verkhovod-fracturemap-g02-current-i05-audit-r1",
+  "starting_head": "68af4fe87a4fb14ca3692043a3a7c2d1e84f4715",
+  "authority35": {
+    "commit": "c3785cfc525868278133d2939d8da06f4927a8d7",
+    "blob": "1679d011b8034a49a7a77dc95cda15e7c05e7417"
+  },
+  "disposition": "PARTIALLY_CONSERVED__CURRENT_I05_IS_AUTHORITY_FROZEN_EXACT_EVALUATOR__MX01R2_CLOSES_RECURSIVE_TRANSPORT__AUTONOMOUS_FRACTURE_MAP_CONTROLLER_ABSENT",
+  "candidate_generation_model": {
+    "authority_precedes_search": true,
+    "atom_binding": "exact caller-supplied EmpiricalPredicate refs",
+    "query_template_binding": "exact caller-supplied EmpiricalQuerySpec refs",
+    "frontier_compiled_before_first_i03_query": true,
+    "empirical_results_control_frontier_reachability": false,
+    "autonomous_fracture_role_discovery": false
+  },
+  "mx01r2": {
+    "accepted_commit": "1773c9a12b3f60489635c562ff60f7190e99a2f5",
+    "accepted_by_authority34": true,
+    "capability": "DISCOVERED_SUPPORTED_RECURSIVE_CHILD -> PERSISTED_EXACT_CHILD -> N+1_ROLE_BEARING_PARENT -> GRANDCHILD",
+    "autonomous_controller": false,
+    "accepted_files_present_on_g02_starting_branch": false
+  },
+  "status_counts": {
+    "PARTIAL": 10,
+    "REPRESENTABLE_NOT_GENERATED": 4,
+    "EXECUTABLE_AND_TESTED": 4,
+    "MISSING_COMMON_CONTRACT": 2
+  },
+  "clauses": [
+    {
+      "requirement_id": "R01",
+      "requirement": "overall/modal response configuration",
+      "status": "PARTIAL",
+      "finding": "I03 executes exact complete distributions and I05 BASE_QUERY can test declared target cells, but no current common routine derives or labels the modal configuration from the distribution.",
+      "autonomous_generation": "NO__modal role is not autonomously classified",
+      "evidence": "pre553_empirical_query.py; pre553_discovery_exact.py; test_unary_distribution_and_observed_zero_are_exact"
+    },
+    {
+      "requirement_id": "R02",
+      "requirement": "primary demographic/structural/positional predictors",
+      "status": "PARTIAL",
+      "finding": "Coordinate predicates, response×coordinate and bounded coordinate-conjunction candidate families execute, but the predictor inventory/primary-role choice must be supplied in the candidate grammar.",
+      "autonomous_generation": "NO__caller declares coordinate atoms/rules",
+      "evidence": "pre553_discovery_exact.py; test_bounded_response_x_position_cartesian_frontier_is_fully_evaluated"
+    },
+    {
+      "requirement_id": "R03",
+      "requirement": "predictor+modal conformers",
+      "status": "REPRESENTABLE_NOT_GENERATED",
+      "finding": "Boolean AND and bounded combination forms can represent predictor∧response cohorts, but I05 has no modal-role derivation that emits conformer branches from governed inputs.",
+      "autonomous_generation": "NO__requires predeclared modal/predictor atoms",
+      "evidence": "EmpiricalPredicate AND; AND_COMBINATIONS/AND_CARTESIAN_GROUPS"
+    },
+    {
+      "requirement_id": "R04",
+      "requirement": "predictor+nonmodal / predictor-violating deviants",
+      "status": "PARTIAL",
+      "finding": "MINORITY_OR_NONMODAL_DEPARTURE is an accepted candidate family and a non-top minority candidate is tested against prevalence pruning, but nonmodal/deviant role assignment is caller-declared.",
+      "autonomous_generation": "NO__family/rule role is supplied by grammar",
+      "evidence": "test_supported_non_top_minority_is_not_prevalence_pruned"
+    },
+    {
+      "requirement_id": "R05",
+      "requirement": "predictor-absent + modal convergers",
+      "status": "REPRESENTABLE_NOT_GENERATED",
+      "finding": "NOT and AND can represent ¬predictor∧modal, but exact I05 does not synthesize complement/converger roles from a discovered predictor/modal pair.",
+      "autonomous_generation": "NO__complement role must be predeclared",
+      "evidence": "EmpiricalPredicate NOT/AND; candidate grammar atom binding"
+    },
+    {
+      "requirement_id": "R06",
+      "requirement": "predictor-absent + nonmodal alternative/minority branches",
+      "status": "REPRESENTABLE_NOT_GENERATED",
+      "finding": "The predicate algebra can represent ¬predictor∧nonmodal and minority candidates are not prevalence-pruned, but no generator constructs this alternative-route role automatically.",
+      "autonomous_generation": "NO__role/atoms predeclared",
+      "evidence": "EmpiricalPredicate NOT/AND; MINORITY_OR_NONMODAL_DEPARTURE"
+    },
+    {
+      "requirement_id": "R07",
+      "requirement": "secondary predictors inside each branch including conformity/exit/alternative/residual",
+      "status": "PARTIAL",
+      "finding": "Branch-conditioned queries and MX01R2 N→N+1 parent transport make a discovered recursive child reusable; the next predictor atoms and rule roles still come from a newly caller-authored grammar, and residual/category-failure coverage is incomplete.",
+      "autonomous_generation": "NO__next-generation grammar remains caller-authored",
+      "evidence": "Authority34; MX01R2 accepted ref 1773c9a; recursive_parent_atom"
+    },
+    {
+      "requirement_id": "R08",
+      "requirement": "recursive continuation from any discovered branch",
+      "status": "PARTIAL",
+      "finding": "MX01R2 is executable/tested for supported RECURSIVE_SUBGROUP_FORK handoffs across fresh processes with exact membership replay. It does not hand off every discovery family and does not autonomously decide what next branch to search.",
+      "autonomous_generation": "NO__transport closure only",
+      "evidence": "pre553_recursive_handoff.py@1773c9a; test_depth_two_recursive_handoff..."
+    },
+    {
+      "requirement_id": "R09",
+      "requirement": "same-respondent cross-question co-signatures within conditioned branches",
+      "status": "PARTIAL",
+      "finding": "Exact same-respondent pair cotravel and branch-conditioned cotravel are tested, including inside an MX01R2 grandchild. Generic multi-target query topology exists, but no autonomous branch co-signature enumerator/product is present.",
+      "autonomous_generation": "NO__queries/rules supplied",
+      "evidence": "test_same_respondent_cotravel...; MX01R2 fresh-process runner"
+    },
+    {
+      "requirement_id": "R10",
+      "requirement": "minority-supported configurations protected from majority/pairwise erasure",
+      "status": "EXECUTABLE_AND_TESTED",
+      "finding": "Exact evaluate-all forbids prevalence/top-k pruning; tests prove a supported non-top minority and a higher-order parity signal not reducible to lower-order summaries.",
+      "autonomous_generation": "NO__protection is tested on declared frontier; discovery inventory still declared",
+      "evidence": "test_supported_non_top_minority_is_not_prevalence_pruned; test_higher_order_parity_uses_exact_joint_not_lower_order_signal"
+    },
+    {
+      "requirement_id": "R11",
+      "requirement": "multi-label presence branches and response-pattern branches",
+      "status": "REPRESENTABLE_NOT_GENERATED",
+      "finding": "I03 explicitly supports UNORDERED_MULTISELECT/MULTISELECT/set topology and SURVEY_RESPONSE_EVENT predicates can test event presence; NOT can represent absence. Pattern cells can be represented by exact multiselect target domains. No positive multiselect fracture-map generation test/controller was found on the current branch.",
+      "autonomous_generation": "NO__multi-select branch inventory/pattern roles not generated",
+      "evidence": "_pre553_query_common.py; _pre553_query_eval.py; negative scalar-collapse test only"
+    },
+    {
+      "requirement_id": "R12",
+      "requirement": "residual/none/category-failure branches as typed structure",
+      "status": "PARTIAL",
+      "finding": "Exact response values, NOT, typed response states, VALID_EMPTY and explicit special states can conserve declared residual/none surfaces. There is no CATEGORY_FAILURE state/product or residual-search controller in current common I05.",
+      "autonomous_generation": "NO__residual/category-failure branch role not generated",
+      "evidence": "STATE_FAMILIES; predicate TYPED_RESPONSE_STATE; no category-failure contract"
+    },
+    {
+      "requirement_id": "R13",
+      "requirement": "weighted/unweighted support, missingness, uncertainty/confidence, exact stop reasons at every node",
+      "status": "PARTIAL",
+      "finding": "RAW and governed weighted execution, support denominators, typed missing/unavailable states, uncertainty field, and underpowered terminal coverage are implemented/tested. Confidence estimation and autonomous recursive stop-reason policy are not implemented; uncertainty may remain UNCERTAINTY_UNQUANTIFIED.",
+      "autonomous_generation": "NO__support law is supplied; no fracture-map stop controller",
+      "evidence": "test_raw_and_authorized_weighted_measure...; test_missing_or_invalid_weight...; I05 support_uncertainty_state"
+    },
+    {
+      "requirement_id": "R14",
+      "requirement": "typed supported/empty/underpowered/noncomparable/unresolved/missing-authority/category-failure states",
+      "status": "PARTIAL",
+      "finding": "Current I03/I05 covers supported, valid-empty, underpowered, noncomparable, unavailable/unresolved→coverage-limited, authority denial and integrity failure distinctions. CATEGORY_FAILURE is absent from current state families.",
+      "autonomous_generation": "N/A",
+      "evidence": "STATE_FAMILIES; TERMINAL_COVERAGE_STATES; hostile/query tests"
+    },
+    {
+      "requirement_id": "R15",
+      "requirement": "explicit branch-shape descriptions: gradient/polarization/stable-minority/fragmented/category-collapse",
+      "status": "MISSING_COMMON_CONTRACT",
+      "finding": "No current common production source defines a fracture/branch-shape object, enum, classifier, or receipt for these morphology classes.",
+      "autonomous_generation": "NO",
+      "evidence": "repository-wide rawlsing_next production-source term scan"
+    },
+    {
+      "requirement_id": "R16",
+      "requirement": "distinct determinicity profiles overall/conforming/exit/alternative/residual",
+      "status": "MISSING_COMMON_CONTRACT",
+      "finding": "No determinicity semantic field, profile object, classifier, or branch-role determinicity receipt exists in current common production source.",
+      "autonomous_generation": "NO",
+      "evidence": "repository-wide rawlsing_next production-source term scan"
+    },
+    {
+      "requirement_id": "R17",
+      "requirement": "exact source/wave/universe/risk/routing/measure/response authority and replay lineage",
+      "status": "EXECUTABLE_AND_TESTED",
+      "finding": "EmpiricalUniverse, RespondentEvent, RoutingEligibilityFact, WeightMeasureFact, authority snapshots, exact query profile, risk membership and replay identities are explicit and fail closed; hostile/query tests cover these distinctions.",
+      "autonomous_generation": "N/A",
+      "evidence": "pre553_empirical_objects.py; _pre553_query_common/eval; query hostile tests"
+    },
+    {
+      "requirement_id": "R18",
+      "requirement": "demographic predictor cannot become attitude/causal/personality/direct actor belief",
+      "status": "EXECUTABLE_AND_TESTED",
+      "finding": "Predicate leaf types distinguish empirical coordinates from survey responses; diagnostic semantic collapse is rejected; PRE553 objects forbid positive actor/persona/belief effects; structural admission rejects actor-belief/position targets.",
+      "autonomous_generation": "N/A",
+      "evidence": "assert_zero_actor_v3_v2_effect; test_query_execution_has_zero_structural_actor_v3_v2_effect; structural-admission hostile test"
+    },
+    {
+      "requirement_id": "R19",
+      "requirement": "learned branches enter relation/structural/possibility only under separate transformation/admission law",
+      "status": "PARTIAL",
+      "finding": "The I05 receipt sets structural_truth_effect=False and I04 provides an exact separately-authorized StructuralEmpiricalAdmission path with fail-closed negatives. Positive possibility-field transformation remains deferred/outside current I05, so the whole three-destination clause is not closed by current common I05 alone.",
+      "autonomous_generation": "N/A__downstream positive transformation is separate jurisdiction",
+      "evidence": "pre553_structural_admission.py; test_pre553_structural_admission.py; DEFERRED_PUBLIC_FAMILIES"
+    },
+    {
+      "requirement_id": "R20",
+      "requirement": "PRE-V3 actor-independent; V3 alone owns actor-specific realization/history/belief/response",
+      "status": "EXECUTABLE_AND_TESTED",
+      "finding": "PRE553 object guard rejects positive actor/V3/V2/persona/belief/response effects; I03 and I05 explicitly emit zero actor/V3 structural effect and tests enforce the boundary.",
+      "autonomous_generation": "N/A",
+      "evidence": "assert_zero_actor_v3_v2_effect; test_query_execution_has_zero_structural_actor_v3_v2_effect; I05 receipt flags"
+    }
+  ],
+  "minimum_gap": {
+    "primary": "MISSING_CONTROLLER/GENERATOR",
+    "statement": "Current I05 can exactly evaluate a frozen declared frontier and MX01R2 can transport a supported recursive child to N+1, but no common controller derives the modal/predictor/conformer/deviant/converger/alternative/residual roles and next-generation grammars from governed empirical inputs.",
+    "missing_common_contracts": [
+      "AUTH35_R15_BRANCH_SHAPE_MORPHOLOGY",
+      "AUTH35_R16_ROLE_SPECIFIC_DETERMINICITY_PROFILES"
+    ]
+  },
+  "prohibited_work_performed": {
+    "production_code_changes": false,
+    "new_semantic_tests": false,
+    "sibling_findings_consumed": false,
+    "architecture_selection": false,
+    "v3_work": false
+  }
+}

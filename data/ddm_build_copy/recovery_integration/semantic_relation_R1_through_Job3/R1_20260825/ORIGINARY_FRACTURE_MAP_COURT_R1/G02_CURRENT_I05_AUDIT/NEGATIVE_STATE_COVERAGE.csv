@@ -1,0 +1,22 @@
+layer,state_or_condition,coverage,tested_or_enforced,note
+RespondentEvent,MISSING/DK/REFUSAL/IAP/NOT_ASKED/SOURCE_SPECIFIC_SPECIAL,EXECUTABLE,TESTED,typed response states remain noncollapsed
+EmpiricalFact,SUPPORTED,EXECUTABLE,TESTED,positive exact support
+EmpiricalFact,OBSERVED_ZERO cell in supported fact,EXECUTABLE,TESTED,distinct from zero support
+EmpiricalFact,ZERO_SUPPORT,EXECUTABLE,TESTED,zero denominator/risk/condition support
+EmpiricalFact,ZERO_OVERLAP,EXECUTABLE,TESTED,target-specific eligible sets with no exact common overlap
+EmpiricalFact,LOW_SUPPORT,REPRESENTABLE/EXECUTABLE,TESTED via structural admission and discovery support paths,exact support retained
+EmpiricalFact,NONCOMPARABLE,EXECUTABLE,TESTED,e.g. composite without authority
+EmpiricalFact,NOT_APPLICABLE,EXECUTABLE,TESTED,routing inapplicability
+EmpiricalFact,UNAVAILABLE,EXECUTABLE,TESTED,missing release/weight/authority surfaces
+EmpiricalFact,UNRESOLVED,EXECUTABLE,TESTED,unsupported topology/resolution
+EmpiricalFact,VALID_EMPTY,EXECUTABLE,TESTED,declared target domain empty
+EmpiricalFact,INTEGRITY_FAILURE,EXECUTABLE_FAIL_CLOSED,TESTED,cannot be laundered into terminal I05 coverage
+EmpiricalFact uncertainty,UNCERTAINTY_UNQUANTIFIED,REPRESENTABLE/COMMON,TESTED IN FIXTURES,no confidence estimator implied
+DiscoveryResult,DISCOVERED_RESULT_SUPPORTED / EVALUATED_SUPPORTED,EXECUTABLE,TESTED,supported candidate
+DiscoveryResult,VALID_EMPTY / EVALUATED_VALID_EMPTY,EXECUTABLE,TESTED,complete negative result
+DiscoveryResult,INSUFFICIENT_SUPPORT / EVALUATED_UNDERPOWERED,EXECUTABLE,TESTED,minimum raw denominator
+DiscoveryResult,NONCOMPARABLE / EVALUATED_NONCOMPARABLE,EXECUTABLE,CODE PATH + query tests,typed noncomparability
+DiscoveryResult,COVERAGE_LIMITED / EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY,EXECUTABLE,CODE PATH,unavailable/unresolved authority/input
+DiscoveryResult,PRUNED_BY_AUTHORITY / EVALUATED_DENIED_BY_EXACT_AUTHORITY,REPRESENTABLE,CODE PATH,authority-only denial; heuristic pruning forbidden
+DiscoveryResult,UNEVALUATED,REPRESENTABLE_BUT_FORBIDDEN_IN_COMPLETE_RUN,ENFORCED,not lawful terminal for exact evaluate-all completion
+Authority35 required,CATEGORY_FAILURE,MISSING_COMMON_CONTRACT,NO,no current state/product found
