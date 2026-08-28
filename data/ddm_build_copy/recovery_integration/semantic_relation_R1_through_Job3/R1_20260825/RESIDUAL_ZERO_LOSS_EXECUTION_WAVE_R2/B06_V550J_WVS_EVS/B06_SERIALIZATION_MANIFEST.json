@@ -1,0 +1,65 @@
+{
+  "authority_refs": {
+    "a10_adopted_result_blob": "d745d3f67f50483067f3f2a7f1780fe205188805",
+    "authority_43_blob": "de47cbe0a8af98cdbc37bd33f0493bc4ca48eac7",
+    "bounded_adjudications_blob": "b312a0bed7772f475c943d4e79caecf28de7c4f5",
+    "bounded_configuration_authority_blob": "92d5f21a8f3d11314b665449ebb84a48fc7eb718",
+    "bounded_item_crosswalk_blob": "ab7fc8f8b01b4f41bffd4d30df4990d923f8df61",
+    "bounded_validation_return_blob": "51159eee68d6b7034ac54d4c9595897192543287",
+    "r03_denominator_authority_commit": "391114916ded6cf607eb4ab77d7c4cdf012bb1c5",
+    "section85_bounded_return_blob": "c0c28f7cdce0aa19e66be82d7b8d9bcc06313840"
+  },
+  "global_recovery_denominator": {
+    "authority_effect": "RECOVERY_ADJUDICATION_DENOMINATOR_ONLY__NOT_EXECUTABLE_AUTHORITY",
+    "memberships": 15990,
+    "per_source_raw_row_carrier_on_start": "NOT_MATERIALIZED",
+    "source_structures": 2499
+  },
+  "manifest_content_hash": "04132006c53685d35b581522b9179e17bf8e9c5c5aabe6d61ff6a7b0d516cddc",
+  "negative_ceiling": [
+    "P2_STRUCTURE != J_FAMILY_AUTHORITY",
+    "LOGICAL_CONFIGURATION != EXECUTABLE_SCOPE_VARIANT",
+    "SOURCE_WAVE_ELIGIBILITY != MEMBER_PRESENCE",
+    "SOURCE_STRUCTURE != EXECUTABLE_ROUTING_PREDICATE",
+    "RECOVERY_DENOMINATOR != EXECUTABLE_AUTHORITY",
+    "BOUNDED_CANARY != SOURCE_FAMILY_COMPLETENESS",
+    "SOURCE_FAMILY_SERIALIZATION != CROSS_SOURCE_PORTABILITY",
+    "NO_IMPLICIT_ROUTING_OR_MEMBER_APPLICABILITY"
+  ],
+  "production_completeness_claim": "NO_PRODUCTION_COMPLETENESS_CLAIM",
+  "schema": "B06V550JSourceFamilySerializationManifest@1.0.0",
+  "sources": [
+    {
+      "adjudication_id": "V550JADJ-0009",
+      "admitted_configuration_id": "JCFG-WVS-W1-CHILD-QUALITIES",
+      "admitted_member_count": 2,
+      "admitted_members": ["V22", "V24"],
+      "admitted_scope": {"country_code": "SE", "wave": "W1"},
+      "declared_registry_content_hash": "b3086ee4996f4cc7c67f3ad1649992029eb9ab5a4b670c359d6e78afbce3ba72",
+      "git_blob": "e4f303fc2e4967d6a48e8e457c27adf213d85d7a",
+      "live_routing_member_applicability": "BLOCKED__B02_B05_NOT_CONSUMED",
+      "registry_filename": "registry_wvs.yaml",
+      "remaining_raw_candidate_count": null,
+      "remaining_raw_candidate_disposition": "UNRESOLVED__EXACT_RAW_FIRST_PER_SOURCE_DENOMINATOR_ROWS_UNAVAILABLE",
+      "source_family": "WVS",
+      "source_wave_terrain": ["W1", "W4", "W7"]
+    },
+    {
+      "additional_ceiling": "EVS_1999_2008_LATIN1_COMPATIBILITY_EXECUTION_IS_NOT_SOURCE_TEXT_AUTHORITY",
+      "adjudication_id": "V550JADJ-0004",
+      "admitted_configuration_id": "JCFG-EVS-1981-MORAL-JUSTIFIABILITY",
+      "admitted_member_count": 4,
+      "admitted_members": ["v471", "v472", "v514", "v517"],
+      "admitted_scope": {"country_code": "BE", "wave": "1981"},
+      "declared_registry_content_hash": "b78791f933a63136c81bcbeca5882932c864b859a6f7e0c2aa05c20fdf5f8030",
+      "git_blob": "12b9bed71f203464cf48b6d52cb32af6a3358428",
+      "live_routing_member_applicability": "BLOCKED__B02_B05_NOT_CONSUMED",
+      "registry_filename": "registry_evs.yaml",
+      "remaining_raw_candidate_count": null,
+      "remaining_raw_candidate_disposition": "UNRESOLVED__EXACT_RAW_FIRST_PER_SOURCE_DENOMINATOR_ROWS_UNAVAILABLE",
+      "source_family": "EVS",
+      "source_wave_terrain": ["1981", "1990", "1999", "2008", "2017"]
+    }
+  ],
+  "status": "PARTIAL_POSITIVE__EXACT_BOUNDED_EXECUTABLE_REGISTRIES_SERIALIZED__FULL_SOURCE_FAMILY_DENOMINATOR_AND_LIVE_ROUTING_BLOCKED"
+}

@@ -1,0 +1,52 @@
+B06 V550J WVS / EVS R1 — VALIDATION RECEIPT
+================================================
+
+START HEAD
+9fa8e49f9c076b5fe57273748a663bdd1aa07911
+
+WORKER COMMAND BLOB
+6da93fe56917a14a8298f06e38f25fab0fe1ea29
+
+AUTHORITY 43 BLOB
+de47cbe0a8af98cdbc37bd33f0493bc4ca48eac7
+
+SERIALIZATION MANIFEST CONTENT HASH
+04132006c53685d35b581522b9179e17bf8e9c5c5aabe6d61ff6a7b0d516cddc
+
+EXECUTABLE SOURCE REGISTRY IDENTITIES
+WVS git blob: e4f303fc2e4967d6a48e8e457c27adf213d85d7a
+WVS declared content hash: b3086ee4996f4cc7c67f3ad1649992029eb9ab5a4b670c359d6e78afbce3ba72
+EVS git blob: 12b9bed71f203464cf48b6d52cb32af6a3358428
+EVS declared content hash: b78791f933a63136c81bcbeca5882932c864b859a6f7e0c2aa05c20fdf5f8030
+
+FRESH B06 TEST
+python -m pytest -q test_b06_v550j_wvs_evs_authority.py
+
+RESULT
+4 passed in 0.04s
+
+TESTS
+1. exact source serialization refs/config/member sets + manifest identity
+2. 2,499/15,990 remains non-authoritative and per-source counts remain unset
+3. routing/member-applicability remains blocked without B02-B05
+4. completeness mutation invalidates deterministic identity
+
+INHERITED SECTION85 VALIDATION
+blob 51159eee68d6b7034ac54d4c9595897192543287
+status PASS_BOUNDED_V550J_AUTHORITY_VALIDATION
+6/6 checks PASS
+
+REPRESENTATIVE LIVE V550J EXECUTION
+NOT CLAIMED.
+Section85 current instructions require governed respondent-level substrate and exact current producer contracts.
+B06 is sibling-blind to B02-B05 and exact live routing/member-applicability authority is not available on the start surface.
+No aggregate/source-structure/synthetic substitute is promoted into live evidence.
+
+ARCHIVE08 PROMOTION
+NO
+
+B02-B05 CONSUMED
+NO
+
+TERMINAL
+B06_V550J_WVS_EVS_AUTHORITY_R1_COMPLETE
