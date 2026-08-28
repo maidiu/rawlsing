@@ -5,7 +5,7 @@
     "ORIGINARY_CLAIM_REPLICATION_MATRIX.csv": "471a14fdd68e9d22c8144ef2109258972505029116a1167b84e5b96fb1ea4774",
     "RESPONSE_PATTERN_ORACLE.csv": "5c85be41a9752ef1a3c8eb3bd47fb2e81641091ec7619784ab17fc4fb94ab7e2",
     "RESULT.md": "fcdbbc156497b09024139f6ac7475c238a832a96eda6fb7c10a78859d9c56b1a",
-    "SOURCE_AND_VARIABLE_AUTHORITY.md": "0f782d48d5042d0d317b79e33dda2921936c097db19d89994d18dcf80ab06ade",
+    "SOURCE_AND_VARIABLE_AUTHORITY.md": "e3deab306feb7567a8eee2e2451a8ba72e0935ecc9001347a63ed4bf5514de49",
     "SUPPORT_WEIGHT_MISSINGNESS_LEDGER.csv": "0df110569bf563a108630415404b9e421e7b952719f8370144487192f238209d",
     "analyze_lebanon_fracture_map.py": "d482e0f24086e539eae7b4bbc18104b2828fc5bdc21bdc0a92b516b5d4fc228e",
     "normalize_and_shard_oracles.py": "163f0b1aab4a3c18d71f62031dcbc1109d5594bde606643cbb0f199b365c0574"
@@ -159,47 +159,20 @@
     "data_rows": 370,
     "header_rule": "ONE_COMMON_HEADER_PLUS_ALL_SHARD_DATA_ROWS_IN_PART_ORDER",
     "parts": [
-      {
-        "filename": "RESPONSE_PATTERN_ORACLE_PART_01.csv",
-        "data_rows": 50,
-        "sha256": "c52339c08d6b46729ae7fb0201654b1e68a7817f410715bfa5e23eabf00fe8a0"
-      },
-      {
-        "filename": "RESPONSE_PATTERN_ORACLE_PART_02.csv",
-        "data_rows": 50,
-        "sha256": "1eb271958f6937c6a07743abba4dcd3cfcd3c90aa9a274a2b88a3d31e28c9fc6"
-      },
-      {
-        "filename": "RESPONSE_PATTERN_ORACLE_PART_03.csv",
-        "data_rows": 50,
-        "sha256": "3cc7c13b3bea0d91e0f97f6c4d45398dd0949bef2bbee6f2ecaa828e9c5ee9ac"
-      },
-      {
-        "filename": "RESPONSE_PATTERN_ORACLE_PART_04.csv",
-        "data_rows": 50,
-        "sha256": "d953f69256c10fd753dbb9eed414320533ab4879471ded85eb08ec03b1f751d4"
-      },
-      {
-        "filename": "RESPONSE_PATTERN_ORACLE_PART_05.csv",
-        "data_rows": 50,
-        "sha256": "3359a25a5c3a25d21c91a7139830fd101b33f8ff90a1006c51294c313d8d080b"
-      },
-      {
-        "filename": "RESPONSE_PATTERN_ORACLE_PART_06.csv",
-        "data_rows": 50,
-        "sha256": "937cd9d0d8cd63472f419b731c9ee5a31dc7f988d4682e16ad796f97ae83ab9c"
-      },
-      {
-        "filename": "RESPONSE_PATTERN_ORACLE_PART_07.csv",
-        "data_rows": 50,
-        "sha256": "263c2c6b55d3d90dbde139fa6ba948356fbd4596aea20a9253a9355e98cc4245"
-      },
-      {
-        "filename": "RESPONSE_PATTERN_ORACLE_PART_08.csv",
-        "data_rows": 20,
-        "sha256": "dc831f33f6dc0b2e741223e911a42bbcddd0dc8637723b1ff280e524f92c2b81"
-      }
+      {"filename": "RESPONSE_PATTERN_ORACLE_PART_01.csv", "data_rows": 50, "sha256": "c52339c08d6b46729ae7fb0201654b1e68a7817f410715bfa5e23eabf00fe8a0"},
+      {"filename": "RESPONSE_PATTERN_ORACLE_PART_02.csv", "data_rows": 50, "sha256": "1eb271958f6937c6a07743abba4dcd3cfcd3c90aa9a274a2b88a3d31e28c9fc6"},
+      {"filename": "RESPONSE_PATTERN_ORACLE_PART_03.csv", "data_rows": 50, "sha256": "3cc7c13b3bea0d91e0f97f6c4d45398dd0949bef2bbee6f2ecaa828e9c5ee9ac"},
+      {"filename": "RESPONSE_PATTERN_ORACLE_PART_04.csv", "data_rows": 50, "sha256": "d953f69256c10fd753dbb9eed414320533ab4879471ded85eb08ec03b1f751d4"},
+      {"filename": "RESPONSE_PATTERN_ORACLE_PART_05.csv", "data_rows": 50, "sha256": "3359a25a5c3a25d21c91a7139830fd101b33f8ff90a1006c51294c313d8d080b"},
+      {"filename": "RESPONSE_PATTERN_ORACLE_PART_06.csv", "data_rows": 50, "sha256": "937cd9d0d8cd63472f419b731c9ee5a31dc7f988d4682e16ad796f97ae83ab9c"},
+      {"filename": "RESPONSE_PATTERN_ORACLE_PART_07.csv", "data_rows": 50, "sha256": "263c2c6b55d3d90dbde139fa6ba948356fbd4596aea20a9253a9355e98cc4245"},
+      {"filename": "RESPONSE_PATTERN_ORACLE_PART_08.csv", "data_rows": 20, "sha256": "dc831f33f6dc0b2e741223e911a42bbcddd0dc8637723b1ff280e524f92c2b81"}
     ],
     "pipeline": "analyze_lebanon_fracture_map.py -> normalize_and_shard_oracles.py"
+  },
+  "final_documentary_receipt": {
+    "SOURCE_AND_VARIABLE_AUTHORITY.md_git_blob_sha1": "2898eced6ce455380058724629a4188b44088daf",
+    "SOURCE_AND_VARIABLE_AUTHORITY.md_sha256": "e3deab306feb7567a8eee2e2451a8ba72e0935ecc9001347a63ed4bf5514de49",
+    "receipt_sync_status": "PASS"
   }
 }
