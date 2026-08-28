@@ -1,0 +1,31 @@
+I04 FRACTURE-MAP CO-SIGNATURE COMPOSITION R1 — TEST RECEIPT
+
+SOURCE STATIC CONTRACT CHECK: PASS
+MODULE BLOB: dee52dbcb7e60245cc51054f6c55544893f7ba67
+TEST BLOB: 98850d825e00c3bd6194ef2b271d85d7385d0e84
+
+Verified exact-source checks:
+PASS no import/call of pre553_discovery_exact / execute_exact_bounded_discovery
+PASS target catalog seals ranking_controls_reachability=False
+PASS explicit positional-coordinate exclusion
+PASS CURRENT_EXECUTOR_MAXIMUM_TARGET_ARITY_J=2
+PASS Authority-37 J=3 future executor interface present
+PASS denominator-substitution guards present
+PASS ref-only closure seals copied_empirical_payload=False
+PASS branch-vs-overall mandatory test present
+PASS minority-branch mandatory test present
+PASS caller-winner injection mandatory test present
+PASS demographic-target mandatory test present
+PASS denominator-substitution mandatory test present
+PASS J>available fail-closed mandatory test present
+PASS deterministic replay/closure mandatory test present
+
+Bounded test module also covers RAW vs GOVERNED_WEIGHTED identity separation.
+
+PYTEST EXECUTION:
+NOT_EXECUTED__GITHUB_ONLY_WORKER_HAS_NO_REPOSITORY_CHECKOUT_TERMINAL_OR_ACTIONS_WORKFLOW
+
+No runtime PASS is claimed or fabricated. HQ/next integration runner should execute:
+pytest -q rawlsing_next/tests/test_pre553_cosignature_composition.py
+
+The worker did not change I05 or any existing test/production file.
