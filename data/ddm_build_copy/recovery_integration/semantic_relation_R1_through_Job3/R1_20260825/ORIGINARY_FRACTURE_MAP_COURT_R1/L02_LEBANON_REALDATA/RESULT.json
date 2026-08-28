@@ -1,0 +1,149 @@
+{
+  "artifact_sha256_excluding_result_json_and_changed_files": {
+    "BRANCH_DETERMINICITY_ORACLE.csv": "361c4d5b31d6d1b45187ed5ff202d161c9cd9f7cad31a17125824b76579381b4",
+    "LEBANON_BRANCH_ORACLE.csv": "3fc4dcb8287f07366f6f4b0f2fe23f8898ad70843aecda62dfa8e87957886420",
+    "ORIGINARY_CLAIM_REPLICATION_MATRIX.csv": "ec88ae51f5d9ea1148bc84edbfd2bd1e4937b3b0ba4e5da58ba86ed362c766bf",
+    "RESPONSE_PATTERN_ORACLE.csv": "89822d967bf98b76d9a2607061a6970650d7e71e8a72bc0e9d5e9cc252888df5",
+    "RESULT.md": "7a4dd2966a9be418092d12e180f15e55d8c3c621da765e69d1bf496d22026d2d",
+    "SOURCE_AND_VARIABLE_AUTHORITY.md": "701ec0e67fdcd8c76fcae1b251ec0d4b81f6cb6aefe11d9ce4ac5b3f987df0d0",
+    "SUPPORT_WEIGHT_MISSINGNESS_LEDGER.csv": "efccaab2b98bfb38dea9a1439612ed3df120faf4421908d036f0650b9138411c",
+    "analyze_lebanon_fracture_map.py": "d482e0f24086e539eae7b4bbc18104b2828fc5bdc21bdc0a92b516b5d4fc228e"
+  },
+  "counts": {
+    "lebanon_q873_substantive_n": 2339,
+    "lebanon_q873_substantive_weighted_n": 2334.69558434176,
+    "lebanon_released_n": 2403,
+    "wave8_q873_observed_rows": 14417,
+    "wave8_q873_structural_missing_country": "Kuwait (COUNTRY=9)",
+    "wave8_q873_structural_missing_rows": 1210,
+    "wave8_q873_substantive_n": 14024,
+    "wave8_q873_substantive_weighted_n": 13990.283246276707,
+    "wave8_released_rows": 15627
+  },
+  "determinicity_method": {
+    "interpretation_limit": "DESCRIPTIVE_ASSOCIATION_ONLY__NOT_CAUSAL_NOT_PERSONA",
+    "lebanon_ses_top_normalized_mi": 0.02866172519445555,
+    "lebanon_ses_top_predictor": "COUNTRY_INCOME_RANK_QUINTILE",
+    "ma_plus_non_ses_religion_top_normalized_mi": 0.1307397230551967,
+    "ma_plus_non_ses_religion_top_predictor": "DENOMINATION_COMBINED",
+    "metric": "weighted mutual information normalized by target entropy",
+    "wave8_ses_top_normalized_mi": 0.06219659150220942,
+    "wave8_ses_top_predictor": "COUNTRY"
+  },
+  "empirical_surface": {
+    "lebanon_country_code": 10,
+    "none_exclusivity_violations_lebanon": 0,
+    "question": "Q873",
+    "question_form": "MULTI_SELECT_0_1_TOGGLES",
+    "substantive_denominator_rule": "Q873_1 nonmissing AND Q873_98!=1 AND Q873_99!=1",
+    "weight": "WT"
+  },
+  "exact_start_head": "066519ead239dcde3328248b8420b59d2db6c7a9",
+  "fresh_process_replay": {
+    "outputs_byte_identical": true,
+    "replayed_artifact_sha256": {
+      "BRANCH_DETERMINICITY_ORACLE.csv": "361c4d5b31d6d1b45187ed5ff202d161c9cd9f7cad31a17125824b76579381b4",
+      "LEBANON_BRANCH_ORACLE.csv": "3fc4dcb8287f07366f6f4b0f2fe23f8898ad70843aecda62dfa8e87957886420",
+      "ORIGINARY_CLAIM_REPLICATION_MATRIX.csv": "ec88ae51f5d9ea1148bc84edbfd2bd1e4937b3b0ba4e5da58ba86ed362c766bf",
+      "RESPONSE_PATTERN_ORACLE.csv": "89822d967bf98b76d9a2607061a6970650d7e71e8a72bc0e9d5e9cc252888df5",
+      "SUPPORT_WEIGHT_MISSINGNESS_LEDGER.csv": "efccaab2b98bfb38dea9a1439612ed3df120faf4421908d036f0650b9138411c"
+    },
+    "same_script_same_exact_source_hashes": true,
+    "status": "PASS"
+  },
+  "key_findings": {
+    "lebanon_non_ses": {
+      "n": 1005,
+      "nationality_pct": 21.76515996737455,
+      "none_pct": 30.60200258468415,
+      "region_pct": 21.490660517584676,
+      "religion_pct": 35.99816104397047,
+      "weighted_n": 993.1605573829727
+    },
+    "lebanon_ses_unweighted_pct": 57.03292005130398,
+    "lebanon_ses_weighted_pct": 57.460811420389824,
+    "legacy_denominator_artifact_weighted_pct": 43.52302383575661,
+    "ma_plus": {
+      "n": 156,
+      "none_pct": 12.580787842112093,
+      "religion_pct": 47.12322127589162,
+      "ses_pct": 54.05468642713267,
+      "weighted_n": 165.82088083887203
+    },
+    "ma_plus_non_ses": {
+      "n": 72,
+      "nationality_pct": 32.246742089958225,
+      "none_pct": 27.382091586249572,
+      "region_pct": 23.124214721099815,
+      "religion_pct": 40.433778470302,
+      "weighted_n": 76.18692367071046
+    },
+    "ma_plus_non_ses_non_religion": {
+      "migration_pct": 11.480581925380381,
+      "n": 42,
+      "nationality_pct": 22.312931000829977,
+      "none_pct": 45.96915984103115,
+      "region_pct": 7.198144984671765,
+      "skin_pct": 12.820479480073383,
+      "support": "EXPLORATORY_ONLY",
+      "weighted_n": 45.381671730357304
+    },
+    "no_formal": {
+      "n": 45,
+      "ses_pct": 74.52592312736425,
+      "support": "EXPLORATORY_ONLY",
+      "weighted_n": 44.614739951504504
+    },
+    "no_formal_non_ses": {
+      "n": 12,
+      "nationality_pct": 21.982337097468488,
+      "none_pct": 26.116751028851905,
+      "region_pct": 18.083485984251304,
+      "religion_pct": 34.433000685402625,
+      "support": "UNDERPOWERED_STOP_NO_SPLIT",
+      "weighted_n": 11.365193151772791
+    },
+    "remembered_43_5_pct_disposition": "CORRECTED_DENOMINATOR_ARTIFACT",
+    "wave8_ses_source_routed_weighted_pct": 47.287269199071936
+  },
+  "mandatory_library_sources": {
+    "ArabBarometer_WaveVIII_English_v3.sav": {
+      "mutation": "NONE",
+      "sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998"
+    },
+    "ENG-Arab-Barometer-Wave-VIII-Questionnaire-RELEASE-FIN-NOV-2024-1.pdf": {
+      "mutation": "NONE",
+      "sha256": "d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb"
+    },
+    "rawlsing chatlog DDM chatgpt(1).txt": {
+      "mutation": "NONE",
+      "sha256": "b0ff181b0d1f6a591b005b829aafeb27b0740249332b49e08bd381800ab1745a"
+    }
+  },
+  "noninterference": {
+    "architecture_or_A_B_C_judgment": false,
+    "library_mutated": false,
+    "persona_or_actor_inference": false,
+    "production_rawlsing_modified": false,
+    "sibling_findings_consumed": false
+  },
+  "parent_authority": {
+    "blob_sha": "1679d011b8034a49a7a77dc95cda15e7c05e7417",
+    "name": "Authority 35",
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/35_ORIGINARY_EMPIRICAL_FRACTURE_MAP_CONSERVATION_AND_10_LANE_COURT_AUTHORITY.md"
+  },
+  "repository": "maidiu/rawlsing",
+  "schema": "L02_LEBANON_WAVEVIII_FRACTURE_MAP_REALDATA_RESULT@1.0.0",
+  "status": "PASS__REAL_SOURCE_RECONSTRUCTED__ORACLE_FROZEN",
+  "success_token": "L02_LEBANON_WAVEVIII_FRACTURE_MAP_REALDATA_R1_COMPLETE",
+  "support_uncertainty": {
+    "stop_law": {
+      "n_25_to_49": "EXPLORATORY_ONLY",
+      "n_ge_50": "DESCRIPTIVE_ORACLE_SUPPORTED",
+      "n_lt_25": "UNDERPOWERED_STOP_NO_SPLIT"
+    },
+    "uncertainty": "Kish effective-n approximate 95% Wald CI; not full complex-survey variance",
+    "weight": "WT"
+  },
+  "worker_branch": "agent/verkhovod-fracturemap-l02-lebanon-realdata-r1"
+}
