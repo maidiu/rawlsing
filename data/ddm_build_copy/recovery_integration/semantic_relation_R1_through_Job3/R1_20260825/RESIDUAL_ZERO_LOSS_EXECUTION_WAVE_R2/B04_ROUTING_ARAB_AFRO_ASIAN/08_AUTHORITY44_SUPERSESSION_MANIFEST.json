@@ -1,0 +1,49 @@
+{
+  "authority_commit": "9d845a71c767addd45a106c00f13ff523ca3676c",
+  "correction_rule": "Historical 700-derived membership and partitions are forensic history only; current routing completeness derives from the full 18,276-row governed active implementation surface.",
+  "preservation_policy": "ADD_CORRECTION_ONLY__DO_NOT_DELETE_OR_REWRITE_HISTORICAL_B04_ARTIFACTS",
+  "historical_artifacts": [
+    {
+      "path": "01A_B04_AFROBAROMETER_LEDGER.csv",
+      "status_after_authority44": "PRESERVED_FORENSIC_WITNESS_LEDGER__NOT_CURRENT_ROUTING_DENOMINATOR"
+    },
+    {
+      "path": "01B_B04_ARAB_BAROMETER_LEDGER.csv",
+      "status_after_authority44": "PRESERVED_FORENSIC_WITNESS_LEDGER__NOT_CURRENT_ROUTING_DENOMINATOR"
+    },
+    {
+      "path": "01C_B04_ASIAN_BAROMETER_LEDGER.csv",
+      "status_after_authority44": "PRESERVED_FORENSIC_WITNESS_LEDGER__NOT_CURRENT_ROUTING_DENOMINATOR"
+    },
+    {
+      "path": "02_B04_LMQ004_ROUTING_ARAB_AFRO_ASIAN_R1_FAMILY_COUNTS.json",
+      "status_after_authority44": "PRESERVED_HISTORICAL_SAMPLE_COUNTS__NONAUTHORITATIVE_FOR_CURRENT_COMPLETENESS"
+    },
+    {
+      "path": "03_B04_LMQ004_ROUTING_ARAB_AFRO_ASIAN_R1_PREDICATE_TESTS.json",
+      "status_after_authority44": "PRESERVED_FORENSIC_TEST_EVIDENCE__FOUR_TESTED_PREDICATES_REBOUND_IN_06"
+    },
+    {
+      "path": "04_B04_LMQ004_ROUTING_ARAB_AFRO_ASIAN_R1_RETURN.md",
+      "status_after_authority44": "SUPERSEDED_AS_MODERN_COMPLETENESS_RETURN__PRESERVED_AS_HISTORICAL_EXECUTION_RECORD"
+    }
+  ],
+  "new_authoritative_worker_correction_artifacts": [
+    "05_AUTHORITY44_B04_CORRECTION_RETURN.md",
+    "06_AUTHORITY44_CURRENT_18276_IMPLEMENTATION_REBINDINGS.csv",
+    "07_AUTHORITY44_B04_VALIDATION.json",
+    "08_AUTHORITY44_SUPERSESSION_MANIFEST.json"
+  ],
+  "modern_claims_revoked": [
+    "127 as exact current B04 denominator",
+    "4 + 7 + 116 as a complete modern disposition partition",
+    "116 as a current routing-debt count",
+    "11 lawfully closed rows as a completeness delta against a current denominator"
+  ],
+  "evidence_retained": {
+    "exact_current_implementation_bindings": 11,
+    "executable_routing_predicate_evidence": 4,
+    "country_nonapplicability_evidence": 7
+  },
+  "modern_routing_completeness_status": "UNADJUDICATED_BY_B04__REQUIRES_FULL_18276_IMPLEMENTATION_COURT"
+}
