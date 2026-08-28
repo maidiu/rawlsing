@@ -72,12 +72,8 @@ def _generation_one(source, qauth):
         atoms=[_atom("PARENT", parent, "BRANCH"), _atom("X1", x1, "RESPONSE")],
         templates=[_qt("X", x_query)],
         rules=[_rule(
-            "child",
-            "RECURSIVE_SUBGROUP_FORK",
-            "SINGLE_ATOM",
-            atom_ids=("X1",),
-            baseline_atom_id="PARENT",
-            query_template_id="X",
+            "child", "RECURSIVE_SUBGROUP_FORK", "SINGLE_ATOM",
+            atom_ids=("X1",), baseline_atom_id="PARENT", query_template_id="X",
             validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
         )],
         k=2,
@@ -103,9 +99,7 @@ def test_depth_two_recursive_handoff_frozen_hostile_fixture_and_fresh_process_re
     assert g1.discovery_result.receipts[0].typed_state == "DISCOVERED_RESULT_SUPPORTED"
     assert child.immediate_parent_branch_ref == parent.ref
     child_members = replay_recursive_branch_membership(
-        repository=source["repo"],
-        handoff=child,
-        authority_registry=g1_registry,
+        repository=source["repo"], handoff=child, authority_registry=g1_registry
     )
     assert child_members == _refs(source, ("R1", "R2", "R3", "R4"))
 
@@ -118,13 +112,18 @@ def test_depth_two_recursive_handoff_frozen_hostile_fixture_and_fresh_process_re
     assert loaded[0].winning_predicate.ref == child.winning_predicate.ref
     assert loaded[0].immediate_parent_branch_ref == parent.ref
 
-    runner = Path(__file__).with_name("mx01r2_fresh_process_runner.py")
     repo_root = Path(__file__).resolve().parents[2]
     outputs = []
     for index in (1, 2):
         out = tmp_path / f"fresh-{index}.json"
         completed = subprocess.run(
-            [sys.executable, str(runner), str(bundle_path), str(out)],
+            [
+                sys.executable,
+                "-m",
+                "rawlsing_next.tests.mx01r2_fresh_process_runner",
+                str(bundle_path),
+                str(out),
+            ],
             cwd=repo_root,
             check=True,
             text=True,
@@ -133,13 +132,14 @@ def test_depth_two_recursive_handoff_frozen_hostile_fixture_and_fresh_process_re
         assert completed.returncode == 0, completed.stderr
         outputs.append(json.loads(out.read_text(encoding="utf-8")))
 
-    # Two independent processes must reproduce every identity-bearing observable.
+    # Two independent Python processes must reproduce every identity-bearing observable.
     assert outputs[0] == outputs[1]
     replay = outputs[0]
     assert replay["child_bundle_ref"] == bundle_ref.as_dict()
     assert replay["child_handoff_ref"] == child.ref.as_dict()
     assert replay["child_predicate_ref"] == child.winning_predicate.ref.as_dict()
     assert replay["child_immediate_parent_ref"] == parent.ref.as_dict()
+    assert replay["child_member_refs"] == [ref.as_dict() for ref in _refs(source, ("R1", "R2", "R3", "R4"))]
     assert replay["grandchild_immediate_parent_ref"] == child.winning_predicate.ref.as_dict()
     assert replay["grandchild_member_refs"] == [ref.as_dict() for ref in _refs(source, ("R1", "R2"))]
     assert replay["conditioned_cotravel_state"] == "DISCOVERED_RESULT_SUPPORTED"
@@ -148,9 +148,6 @@ def test_depth_two_recursive_handoff_frozen_hostile_fixture_and_fresh_process_re
     assert replay["lookalike_coverage_state"] == "EVALUATED_VALID_EMPTY"
     assert replay["underpowered_state"] == "INSUFFICIENT_SUPPORT"
     assert replay["underpowered_coverage_state"] == "EVALUATED_UNDERPOWERED"
-
-    # The branch-conditioned and superficially similar unconditional paths must
-    # remain distinct empirical/replay identities.
     assert replay["conditioned_cotravel_receipt_ref"] != replay["lookalike_receipt_ref"]
     assert replay["conditioned_cotravel_replay_ref"] != replay["lookalike_replay_ref"]
 
