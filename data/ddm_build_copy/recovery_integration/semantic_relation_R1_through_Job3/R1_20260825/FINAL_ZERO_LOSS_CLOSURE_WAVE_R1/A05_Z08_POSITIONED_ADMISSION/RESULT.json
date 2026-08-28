@@ -1,0 +1,60 @@
+{
+  "schema": "A05_Z08_POSITIONED_SUBJECT_WALKBACK_ADMISSION_R1_RESULT@1.0.0",
+  "status": "PASS__Z08_CURRENT_LINE_ADMITTED_SUCCESSOR",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-a05-z08-positioned-admission-r1",
+  "dispatched_start_head": "d3c2b7c86dd51957e890db53e05c87fd4b9c6264",
+  "command_precommand_base": "477ca6997087676a844e997a1f12d809908119b3",
+  "authority_41_blob": "59f28b73440bd27a8e5210d33f959b85ad3c7aca",
+  "z08_return_ref": "125bf28d29aa638d29f741e7069ed4d8c1b45aeb",
+  "production": {
+    "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+    "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "original_commit": "269de28814d2187fedebbedbbecd5b63f6a67521",
+    "byte_identical_recovery": true
+  },
+  "tests": {
+    "z08_path": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+    "z08_blob": "c48342fc5b9d7ae6701b5399c656d3c300cc407a",
+    "original_z08_test_commit": "f4158912a230f682a68f28d2aff5ee9051ce0a78",
+    "a05_path": "rawlsing_next/tests/test_a05_z08_positioned_admission.py",
+    "a05_blob": "9edba1a56d5fec12e28e6e7a79da95e32aa08d37",
+    "current_native_dependency_path": "rawlsing_next/pre553_empirical_objects.py",
+    "current_native_dependency_blob": "91974c52ce8c0acafa939be0d7d83f4a5c8085b7",
+    "pytest_command": "PYTHONPATH=. python -m pytest -q rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_a05_z08_positioned_admission.py",
+    "passed": 16,
+    "failed": 0,
+    "elapsed_seconds": 0.06,
+    "full_repository_suite_claimed": false
+  },
+  "acceptance": {
+    "exact_supported_conditional_possibility": true,
+    "underpowered_exact_remains_unresolved_with_proxy": true,
+    "absent_exact_remains_unresolved_with_proxy": true,
+    "only_explicit_authority_declared_walkback": true,
+    "valid_empty_terminal": true,
+    "noncomparable_terminal": true,
+    "cross_source_proxy_forbidden": true,
+    "cross_release_proxy_forbidden": true,
+    "unauthorized_proxy_forbidden": true,
+    "specificity_loss_is_replay_determinant": true,
+    "fallback_path_is_replay_determinant": true,
+    "unused_evidence_not_replay_determinant": true,
+    "proxy_is_exact_fact": false,
+    "proxy_is_actor_belief": false,
+    "actor_inference_allowed": false,
+    "actor_or_v3_imports": false,
+    "smoothing": false,
+    "nearest_neighbor": false,
+    "interpolation": false,
+    "extrapolation": false
+  },
+  "living_ledger_affected": [
+    "LMX-029",
+    "LMX-036"
+  ],
+  "sibling_a01_a10_returns_consumed": false,
+  "architecture_selected": false,
+  "current_machine_zero_loss_proved": false,
+  "success_token": "A05_Z08_POSITIONED_SUBJECT_WALKBACK_ADMISSION_R1_COMPLETE"
+}

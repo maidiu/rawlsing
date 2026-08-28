@@ -1,0 +1,63 @@
+A05 Z08 POSITIONED-SUBJECT / WALKBACK CURRENT-LINE TEST RECEIPT
+
+GOVERNING_AUTHORITY_41_BLOB=59f28b73440bd27a8e5210d33f959b85ad3c7aca
+A05_START_HEAD=d3c2b7c86dd51957e890db53e05c87fd4b9c6264
+Z08_RETURN_REF=125bf28d29aa638d29f741e7069ed4d8c1b45aeb
+
+EXECUTED_CURRENT_NATIVE_DEPENDENCY:
+rawlsing_next/pre553_empirical_objects.py
+git_blob=91974c52ce8c0acafa939be0d7d83f4a5c8085b7
+git_hash_object_check=PASS__EXACT_MATCH
+
+EXECUTED_PRODUCTION:
+rawlsing_next/source_backed_positioned_subject_possibility.py
+git_blob=62e5eced47b64512f47b004e3e13a6ef3fe21de7
+git_hash_object_check=PASS__EXACT_MATCH
+
+EXECUTED_Z08_TEST:
+rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
+git_blob=c48342fc5b9d7ae6701b5399c656d3c300cc407a
+git_hash_object_check=PASS__EXACT_MATCH
+
+EXECUTED_A05_TEST:
+rawlsing_next/tests/test_a05_z08_positioned_admission.py
+git_blob=9edba1a56d5fec12e28e6e7a79da95e32aa08d37
+git_hash_object_check=PASS__EXACT_MATCH
+
+COMMAND:
+PYTHONPATH=. python -m pytest -q rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_a05_z08_positioned_admission.py
+
+RESULT:
+16 passed in 0.06s
+0 failed
+
+Z08 ORIGINAL CASES=13
+A05 ADMISSION CASES=3
+
+A05 ADMISSION CASES:
+1 actor/prediction purpose rejected; rule actor_inference_allowed=false; proxy cannot satisfy exact request.
+2 nearest-neighbor/smoothing/extrapolation algorithm identities rejected.
+3 underpowered exact lane stays UNRESOLVED while proxy remains EXPLICIT_LOWER_SPECIFICITY_PROXY, is_exact_fact=false, is_actor_belief=false.
+
+STATIC JURISDICTION AUDIT:
+imports=[
+  __future__,
+  dataclasses,
+  fractions,
+  typing,
+  rawlsing_next.pre553_empirical_objects
+]
+forbidden_actor_v3_persona_imports=[]
+PASS
+
+EXECUTION NOTE:
+The environment could not network-clone the repository and no existing Actions workflow was present.
+The targeted checkout was therefore assembled under repository-native package paths from exact Git blobs.
+The complete current-line pre553_empirical_objects.py file was materialized and independently verified
+to hash exactly to 91974c52ce8c0acafa939be0d7d83f4a5c8085b7 before pytest.
+The admitted production and original Z08 test files likewise matched their exact Git blobs before execution.
+
+This receipt is a current-line targeted admission receipt, not a claim of a full-repository pytest run.
+
+PROXY != EXACT FACT != ACTOR BELIEF
+A05_Z08_POSITIONED_SUBJECT_WALKBACK_ADMISSION_R1_COMPLETE
