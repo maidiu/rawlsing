@@ -1,0 +1,116 @@
+I07 REAL-DATA BRANCH CO-SIGNATURE / J=3 PARITY HARNESS PREP R1
+
+WORKER
+branch=agent/verkhovod-fracturemap-i07-realdata-cosignature-prep-r1
+verified_starting_head=4c3453b81179464670600992ef2b2bdafd871127
+worker_command_blob=a7a6c833360ce422f74b2a4528adf04d16b62413
+
+GOVERNING AUTHORITY
+authority37_commit=9bafaf2cb96cc3fb46fef6785d486f08987ab71c
+authority37_blob=48c0860ff2d7548ff2fa98d20021149aa2049953
+accepted_l03_commit=74834f5028cae0cdd3c525483494437f81c721e0
+l03_result_blob=1683bf0f5d42f34a42d5fb050e6e1e1e7b409616
+l03_pairwise_matrix_blob=0549e827409fb190ae3c0b1cdd15ee7265712bfc
+l03_oracle_blob=fc8f596f0810ed2e6edcd53e6caab54d98c0c5d3
+
+LIBRARY MATERIALIZATION
+SAV file_id=file_00000000e4a8722f9131ea801a527554
+SAV size=12275728
+SAV sha256=a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998
+SAV expected_hash_match=PASS
+
+CODEBOOK file_id=file_00000000102c71fbbd6a569011ead989
+CODEBOOK size=677029
+CODEBOOK sha256=328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc
+CODEBOOK expected_hash_match=PASS
+
+QUESTIONNAIRE file_id=file_00000000682c722f9ea8eb2e8830e790
+QUESTIONNAIRE size=1395546
+QUESTIONNAIRE sha256=d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb
+QUESTIONNAIRE expected_hash_match=PASS
+
+SAV DIRECT DECODE
+layout=2
+case_size=692
+compression=1
+declared_cases=15627
+decoded_cases=15627
+bias=100.0
+data_offset=176848
+retained_numeric_variables=688
+final_offset=12275728
+final_offset_equals_source_size=PASS
+
+LEBANON / BRANCH REPLAY
+COUNTRY=10 raw_n=2403 respondent_id_sha256=a6eddf236aa11073caa813a79a92a02fa74068c85176afc03f495e3be6735e7a
+Q873_1=1 raw_n=1334 respondent_id_sha256=ee6d4b46cdfc6dbcab7acc3673231517283fed65aabdbf9bfa2e43b6c65f3d50
+Q873_1=0 raw_n=1069 respondent_id_sha256=cc0ca1d852d94445130843bb3d18bc3f03ff211795b35d76fc3b800b29c92184
+branch_identity_match_l03=PASS
+
+EXACT WT SUMS FROM SOURCE-DECODED IEEE VALUES
+Lebanon=43288601587674396853/18014398509481984 display=2403.000109323061
+branch=6041736647516061767/4503599627370496 display=1341.535026958787
+complement=19121654997610149785/18014398509481984 display=1061.465082364274
+raw_weighted_separation=PASS
+
+PAIR REPLAY AGAINST ACCEPTED L03
+P001 Q201A_1|Q601_4 branch_n=1276 V=0.09410435250419058 overall_n=2295 V=0.14877303864980299 complement_n=1019 V=0.24001995990139308 PASS
+P002 Q511|Q601_4 branch_n=1307 V=0.26823494415235805 overall_n=2364 V=0.19762740917237048 complement_n=1057 V=0.14158535567063227 PASS
+P003 Q606_4|Q867B branch_n=1208 V=0.17683543166138382 overall_n=2181 V=0.11664040376167224 complement_n=973 V=0.054349840672116234 PASS
+P004 Q512|Q631 branch_n=1327 V=0.28609885263899415 overall_n=2385 V=0.21206844860987328 complement_n=1058 V=0.16841262491944498 PASS
+P005 Q606_4|Q606_8 branch_n=1315 V=0.39622754736530613 overall_n=2349 V=0.3482247108118129 complement_n=1034 V=0.2908000878590915 PASS
+multiple_supported_cosignature_witnesses_reproduced=PASS
+
+DIRECT J=3 REPLAY AGAINST ACCEPTED L03
+H01 Q201A_3|Q606_2|Q606_8
+ branch raw_n=1265 G2=87.32678818699358 joint_tv=0.08395055830683337 pairwise_margin_error=4.547473508864641e-13
+ branch raw_tensor_sha256=734077830a27ac3a2a3961e520f4ac6c4907070259357f718770b506784a89bb
+ branch weighted_n=22689411435814542979/18014398509481984
+ branch weighted_tensor_sha256=02dee6ed7352a4fe0db8cb557801da3aa1a389e0022bb4409e4c2b2ba1b5021d
+ status=PASS
+
+H02 Q606_2|Q606_4|Q601_4
+ branch raw_n=1299 G2=79.38228015444534 joint_tv=0.06396104408108777 pairwise_margin_error=3.410605131648481e-13
+ branch raw_tensor_sha256=6ce8e3afc3f528d8dd24c52eeab9076878fb9b6004a355b6dd400eaa63a6840a
+ branch weighted_n=11636702508324549299/9007199254740992
+ branch weighted_tensor_sha256=4cff2fe7ab36cacdbc4611cfc564a836a742cdf711a69495029bf7aec55c6890
+ status=PASS
+
+H03 Q533_4|Q606_8|Q631
+ branch raw_n=1296 G2=70.33397818240019 joint_tv=0.08561175190061374 pairwise_margin_error=1.4210854715202004e-13
+ branch raw_tensor_sha256=057c08b4d9a20caf84b202cfbee19e5bf9ff14a6d7db73e350fd715223238136
+ branch weighted_n=726841595072089263/562949953421312
+ branch weighted_tensor_sha256=278c6c3211f430a5db2e4cb2238f648d913f9ebdf0f8a1e5f5e46a5b6008ebb8
+ status=PASS
+
+PAIRWISE-ONLY NEGATIVE CONTROL
+H01 pairwise margins reproduced within 4.547473508864641e-13 while direct three-way joint TV=0.08395055830683337
+pairwise_margin_equivalence_is_not_j3_parity=PASS
+
+TYPED RESPONSE SEMANTICS
+98/99 treated as DK/refusal non-substantive for frozen targets=PASS
+Q885=97 retained substantive under source semantics=PASS
+demographic Q1001/Q1002/Q1003 excluded from response-target graph=PASS
+PRE_V3_actor_belief_personality_effect=NONE
+
+ACCEPTANCE ORACLE
+combined_oracle_sha256=150b6ea7e7ccb08e906cf43eea207aea716a29dec0e0a33eba3d18eea1dac851
+
+PRODUCTION TARGET PROBE
+launch-tree EmpiricalFractureMap symbol/path search=NO_MATCH
+launch-tree pre553 fracture-controller path search=NO_MATCH
+lineage after Authority36A=Authority37 documentary adoption + I07 worker command only
+production_controller_or_J3_integration_repair_in_this_lane=NO
+executable_target_test=NOT_EXECUTED_FAIL_CLOSED__AUTHORITY37_CONTROLLER_INTERFACE_NOT_PRESENT_AT_LAUNCH_HEAD
+
+FINAL PREP DISPOSITION
+SOURCE_HASHES=PASS
+SOURCE_DECODE=PASS
+L03_BRANCH_REPLAY=PASS
+L03_PAIR_WITNESSES=PASS
+L03_DIRECT_J3_WITNESSES=PASS
+RAW_WEIGHTED_ORACLE=PASS
+ANTI_J2_COLLAPSE_ORACLE=PASS
+TARGET_CONTROLLER_EXECUTION=BLOCKED_FAIL_CLOSED_EXPECTED
+
+I07_REALDATA_COSIGNATURE_PREP_R1_COMPLETE
