@@ -1,0 +1,61 @@
+{
+  "authority_refs": {
+    "authority_41_blob_sha1": "59f28b73440bd27a8e5210d33f959b85ad3c7aca",
+    "authority_41_head": "0df921b4b45f8f6539cfabe498581ae66caf7206",
+    "worker_command_blob_sha1": "98d415e4d4a250c5d12335e0be30bc404ff98eac",
+    "z03_final": "0c0e0704be91a5e19c9c524e3f29cd081495b721",
+    "z03_qsr_producer_provenance_blob_sha1": "9df5f538bd03a95e0c68d64f375c22529d2a6b9c",
+    "z03_qsr_succession_blob_sha1": "42f845c56f21f046d4de29da81a6bba68057f102",
+    "z03_result_blob_sha1": "93288e35e32c3e85b6142ea835c65f3657486ad3"
+  },
+  "branch": "agent/verkhovod-a08-lmq010-qsr-replay-r1",
+  "contract": "A08_LMQ010_QSR_REPLAY_CLOSURE_R1@1.0.0",
+  "core_hashes": {
+    "builder": "3cabb94b84e7e498cfc56c4d579d58047744ef545faae2e03586a7d5f0856175",
+    "question_type_taxonomy": "3612c6b400008467471b71cc38d811b8c5349bac0617e974a72e76e584e86b27",
+    "semantic_driver_master": "d62accad0e956f739eada0718e4fb222429e7a90ed7889fff6f4f292b1a8a011",
+    "source_structure_rule": "609a02e1615ba3c028d284b5f11e198df1eda26e53bae2a0b50d6609d749a0e0",
+    "survey_identity_helper": "18333b59b82f8faef7459b873f819e2cf4a38312bdd0ec68b1cdc7c172297158",
+    "validation_manifest": "7e9899151530740517f0b2e054164ff9a761dc8c2fae4bb8fcc32728ac34344e"
+  },
+  "negative_ceiling": [
+    "CURRENT_QSR_IS_REFERENCE_ONLY_AND_MUST_NOT_BE_A_REPLAY_INPUT",
+    "AUDIT_PRODUCER_HASH_PARITY_DOES_NOT_CREATE_ROUTING_AUTHORITY",
+    "D62_MECHANICAL_CONSUMPTION_DOES_NOT_READJUDICATE_LMQ_011_OR_PROMOTE_BLANKET_SEMANTIC_AUTHORITY",
+    "PRIMARY_SOURCE_SHA_LINEAGE_DOES_NOT_CLAIM_RAW_TO_AUDIT_REEXECUTION_IN_A08",
+    "ASIAN_BAROMETER_W6_IS_EXCLUDED_FROM_CLOSED_35",
+    "A08_DOES_NOT_ADJUDICATE_LMQ_011_OR_LMQ_013_OR_PRODUCT_WIDE_ROUTING"
+  ],
+  "producer_set": {
+    "asian_barometer_w6": "EXCLUDED",
+    "audit_producers": 35,
+    "audit_rows": 18792,
+    "closed_scope": "CLOSED_35",
+    "core_producers": 6,
+    "primary_source_hash_lineage_entries": 35
+  },
+  "replay": {
+    "columns": 69,
+    "differing_cells": 0,
+    "differing_rows": 0,
+    "fresh_qsr_sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+    "manual_review_yes": 562,
+    "ordered_row_identity_root": "ac9f897b782f467e777f881e8d251d6f3b85a0dd0acdfc0c6f6482bd356e8569",
+    "raw_bytes_equal": true,
+    "reference_qsr_sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+    "rows": 18792,
+    "source_structure_review_required": 937,
+    "unknown_classification": 377
+  },
+  "repository": "maidiu/rawlsing",
+  "scope": "LMQ-010 only",
+  "starting_head": "0df921b4b45f8f6539cfabe498581ae66caf7206",
+  "status": "PASS__LMQ010_COMPLETE_QSR_LOWER_LEVEL_PRODUCER_DEPENDENCY_AND_DESTRUCTIVE_REPLAY_CLOSED",
+  "terminal": "A08_LMQ010_QSR_REPLAY_R1_COMPLETE",
+  "test_receipt": {
+    "failed": 0,
+    "focused_hostile_tests": 6,
+    "passed": 6,
+    "receipt": "TEST_RECEIPT.md"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "builder": {
+    "returncode": 0,
+    "stderr": "<REPLAY_ROOT>/data/ddm_build_copy/build_question_structure_register.py:80: DtypeWarning: Columns (5,35) have mixed types. Specify dtype option on import or set low_memory=False.\n  df = pd.read_csv(MASTER_PATH)\n",
+    "stdout": "Wrote 18792 question structure rows to <REPLAY_ROOT>/data/ddm_build_copy/manifests/question_structure_register.csv\n"
+  },
+  "committed_dependency_manifest_git_blob_sha1": "c528a852d7c0070d175aa179c2d81a153abdeb6b",
+  "contract": "QSR_LOWER_LEVEL_REPLAY@1.0.0",
+  "execution_dependency_manifest_sha256": "8679edabdd07a78b612d8e6036bcec138f4ea47b6f03a5075723ecb6f33b3f8e",
+  "manifest_serialization_relation": "SAME_JSON_CONTRACT_AND_PRODUCER_SET__COMMITTED_COPY_IS_WHITESPACE_COMPACTED",
+  "negative_ceiling": [
+    "CURRENT_QSR_IS_REFERENCE_ONLY_AND_MUST_NOT_BE_A_REPLAY_INPUT",
+    "AUDIT_PRODUCER_HASH_PARITY_DOES_NOT_CREATE_ROUTING_AUTHORITY",
+    "D62_MECHANICAL_CONSUMPTION_DOES_NOT_READJUDICATE_LMQ_011_OR_PROMOTE_BLANKET_SEMANTIC_AUTHORITY",
+    "PRIMARY_SOURCE_SHA_LINEAGE_DOES_NOT_CLAIM_RAW_TO_AUDIT_REEXECUTION_IN_A08",
+    "ASIAN_BAROMETER_W6_IS_EXCLUDED_FROM_CLOSED_35"
+  ],
+  "parity": {
+    "checks": {
+      "columns": true,
+      "expected_sha": true,
+      "manual_review": true,
+      "raw_parity": true,
+      "reference_sha": true,
+      "row_cell_parity": true,
+      "row_identity_root": true,
+      "rows": true,
+      "source_structure_review": true,
+      "unknown_classification": true
+    },
+    "columns_equal": true,
+    "differing_cells": 0,
+    "differing_rows": 0,
+    "generated_columns": 69,
+    "generated_rows": 18792,
+    "generated_sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+    "manual_review_yes_count": 562,
+    "ordered_row_identity_root": "ac9f897b782f467e777f881e8d251d6f3b85a0dd0acdfc0c6f6482bd356e8569",
+    "pass": true,
+    "raw_bytes_equal": true,
+    "reference_columns": 69,
+    "reference_rows": 18792,
+    "reference_sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+    "shape_equal": true,
+    "source_structure_review_required_count": 937,
+    "unique_row_content_hashes": 18791,
+    "unknown_classification_count": 377
+  },
+  "producer_census": {
+    "audit_producer_count": 35,
+    "audit_row_count": 18792,
+    "core_producer_count": 6,
+    "scope": "CLOSED_35"
+  },
+  "reference_opened_only_after_generation": true,
+  "status": "PASS",
+  "transport_manifest": {
+    "non_path_cells_identical": true,
+    "path_rewrite_count": 88,
+    "replay_transport_manifest_sha256": "74d7c9fbd43bf9cd207806cc5a387908278e7a85ce9b241fc458ddf69b982bd2",
+    "source_manifest_sha256": "7e9899151530740517f0b2e054164ff9a761dc8c2fae4bb8fcc32728ac34344e"
+  }
+}
