@@ -1,0 +1,47 @@
+{
+  "schema": "rawlsing.prev3.mx01.semantic_oracle",
+  "schema_version": 1,
+  "experiment": "MX01_RECURSIVE_TOPOLOGY_CLOSURE_R1",
+  "scope": "PRE_V3_COMMON_SEMANTIC_CAPABILITY_ONLY",
+  "fixture": {
+    "respondents": 8,
+    "parent_members": ["R1","R2","R3","R4","R5","R6"],
+    "child_rule": "PARENT AND X=1",
+    "child_members": ["R1","R2","R3","R4"],
+    "grandchild_rule": "CHILD AND H=1",
+    "grandchild_members": ["R1","R2"]
+  },
+  "required_positive_assertions": [
+    "PARENT is an exact derived branch cohort, not a synthetic question key",
+    "CHILD is generated under PARENT and carries exact immediate-parent identity",
+    "GRANDCHILD is generated under CHILD at depth greater than one and carries exact immediate-parent identity",
+    "branch-conditioned Y-to-Z cotravel is evaluated on exact same respondents inside GRANDCHILD",
+    "recursive grandchild-conditioned cotravel differs from the unconditional Y-to-Z lookalike"
+  ],
+  "conditioned_cotravel": {
+    "grandchild_baseline_Z": {"0":1,"1":1},
+    "grandchild_and_Y1_Z": {"1":1},
+    "expected_disposition": "DISCOVERED_RESULT_SUPPORTED"
+  },
+  "unconditional_lookalike": {
+    "full_baseline_Z": {"0":4,"1":4},
+    "full_and_Y1_Z": {"0":2,"1":2},
+    "expected_disposition": "VALID_EMPTY",
+    "expected_coverage_state": "EVALUATED_VALID_EMPTY"
+  },
+  "underpowered_lane": {
+    "rule": "PARENT AND X=0 AND H=1",
+    "members": ["R5"],
+    "minimum_raw_denominator": 2,
+    "expected_disposition": "INSUFFICIENT_SUPPORT",
+    "expected_coverage_state": "EVALUATED_UNDERPOWERED"
+  },
+  "forbidden_substitutions": [
+    "question-level branch key for exact cohort membership",
+    "generic pairwise same-respondent association for branch-conditioned cotravel",
+    "pre-authoring a grandchild independently instead of consuming the discovered child",
+    "unordered opaque ancestry refs as a substitute for exact immediate-parent recursive lineage",
+    "private compiler reconstruction or caller guesswork as a public recursive handoff"
+  ],
+  "stop_oracle": "FAIL_CLOSED_AT_FIRST_IRREDUCIBLE_COMMON_RECURSIVE_HANDOFF_GAP"
+}
