@@ -20,7 +20,7 @@ No other source family.
 
 - parent J01-A R1 return `085dcb9d7d92d427038b634c55b8b4f3ce5235da`;
 - Library current source carrier `libfile_f4d6104cdc64819184fed7938f603239`;
-- Library current J-candidate carrier `libfile_9338d56ded20819184fed7938f603239` is NOT valid; do not use this mistyped ID. The valid J-candidate carrier is `libfile_9338d56ded208191ae1583a5f0de9977`.
+- Library current J-candidate carrier `libfile_9338d56ded208191ae1583a5f0de9977`.
 
 Known current governed deep catalogs:
 
