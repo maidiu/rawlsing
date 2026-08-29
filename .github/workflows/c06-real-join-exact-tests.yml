@@ -36,27 +36,38 @@ jobs:
           root = "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C03_ROUTING_WVS_EVS"
           def show(path: str) -> bytes:
               return subprocess.check_output(["git", "show", f"{commit}:{root}/{path}"])
+          def sha(payload: bytes) -> str:
+              return hashlib.sha256(payload).hexdigest()
 
           manifest = json.loads(show("02_LEDGER_MANIFEST.json").decode("utf-8"))
           parts = []
+          hash_basis = set()
           for spec in manifest["ordered_chunks"]:
               raw = show(spec["path"])
-              payload = raw.rstrip(b"\n")
-              assert len(payload) == spec["chars_without_terminal_lf"]
-              assert hashlib.sha256(payload).hexdigest() == spec["sha256"]
+              payload = raw[:-1] if raw.endswith(b"\n") else raw
+              if len(payload) != spec["chars_without_terminal_lf"]:
+                  raise SystemExit(f"chunk length mismatch {spec['path']}: {len(payload)} != {spec['chars_without_terminal_lf']}")
+              if sha(raw) == spec["sha256"]:
+                  hash_basis.add("RAW_FILE_BYTES")
+              elif sha(payload) == spec["sha256"]:
+                  hash_basis.add("BYTES_WITHOUT_TERMINAL_LF")
+              else:
+                  raise SystemExit(f"chunk hash mismatch {spec['path']}: raw={sha(raw)} payload={sha(payload)} expected={spec['sha256']}")
               parts.append(payload)
           encoded = b"".join(parts)
-          assert len(encoded) == manifest["base64_chars"]
+          if len(encoded) != manifest["base64_chars"]:
+              raise SystemExit(f"base64 char count mismatch {len(encoded)} != {manifest['base64_chars']}")
           compressed = base64.b64decode(encoded)
-          assert len(compressed) == manifest["xz_bytes"]
-          assert hashlib.sha256(compressed).hexdigest() == manifest["xz_sha256"]
+          if len(compressed) != manifest["xz_bytes"] or sha(compressed) != manifest["xz_sha256"]:
+              raise SystemExit("XZ transport identity mismatch")
           canonical = lzma.decompress(compressed)
-          assert len(canonical) == manifest["canonical_bytes"]
-          assert hashlib.sha256(canonical).hexdigest() == manifest["canonical_sha256"]
+          if len(canonical) != manifest["canonical_bytes"] or sha(canonical) != manifest["canonical_sha256"]:
+              raise SystemExit("canonical C03 identity mismatch")
           out = Path("/tmp/C03_CURRENT_ROUTING_APPLICABILITY_LEDGER.csv")
           out.write_bytes(canonical)
           header = canonical.splitlines()[0].decode("utf-8-sig")
-          print("C03_RECONSTRUCTION_PASS", manifest["canonical_rows"], manifest["canonical_sha256"])
+          print("C03_CHUNK_HASH_BASIS", ",".join(sorted(hash_basis)))
+          print("C03_RECONSTRUCTION_PASS", manifest["canonical_rows"], manifest["canonical_bytes"], manifest["canonical_sha256"])
           print("C03_HEADER", header)
           try:
               read_family_ledger(out)
