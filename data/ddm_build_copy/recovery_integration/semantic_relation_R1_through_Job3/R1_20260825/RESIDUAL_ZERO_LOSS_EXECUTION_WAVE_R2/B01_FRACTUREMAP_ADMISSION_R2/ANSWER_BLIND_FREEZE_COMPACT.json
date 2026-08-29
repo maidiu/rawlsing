@@ -1,0 +1,142 @@
+{
+  "autonomous_runner_sha256": "b70ff88091b67a0b5b8580ded2c41c3ba4d57a17b004bac89599fc709c8df753",
+  "autonomous_seed_rows": 128,
+  "autonomous_seed_rule": "FIRST_128_SUBSTANTIVE_SOURCE_ORDER_CASES",
+  "branch_count": 136,
+  "branch_identity_set_sha256": "a69d10bced0a21a7f3cfcf8a1ce3d53da6b7664fc780089437f069aa68523cae",
+  "contract": "B01_R2_ANSWER_BLIND_FREEZE_COMPACT@1.0.0",
+  "decoder": {
+    "implementation_sha256": "f744a7a48c40415b104bf99324b1a6963ab1abe88605851ec1b14df54ceb092a",
+    "receipt_runner_sha256": "a158686b2d613f07c3f831156db0a895025b95bdded90d91909fc22c8c295c7a",
+    "receipts_byte_identical": true,
+    "run_A_receipt_sha256": "50a616a7257ee448b9f23dec9d08d87ce959c8f8ae3fda4d52523c04d1ef9710",
+    "run_B_receipt_sha256": "50a616a7257ee448b9f23dec9d08d87ce959c8f8ae3fda4d52523c04d1ef9710"
+  },
+  "freeze_note": "The full autonomous A/B JSON byte streams are frozen by SHA-256 and deterministically replayable from exact SAV + decoder + runner. The pre-oracle 128-row source-order seed is only the independent answer-blind runtime seed; it does not replace the exact 2339-row named Lebanon I06/I07 parity burden.",
+  "frontier": {
+    "candidate_count": 34,
+    "coordinate_condition_count": 34,
+    "covered_candidate_count": 34,
+    "evaluated_frontier_ref": {
+      "content_hash": "a8611709f8e62ce86dbd3467328bfadc7f4c996c01a10ab4eb28d76b8711ad22",
+      "kind": "PRE553_I05_EVALUATED_FRONTIER",
+      "object_id": "urn:rawlsing:pre553:i05:frontier:sha256:a8611709f8e62ce86dbd3467328bfadc7f4c996c01a10ab4eb28d76b8711ad22"
+    },
+    "grammar_ref": {
+      "content_hash": "528411b331d3c884464699991c03c22d903eba096b8509b7f9ba3bbbcf436c7e",
+      "kind": "PRE553_I05_CANDIDATE_GRAMMAR",
+      "object_id": "urn:rawlsing:pre553:fracture-controller:grammar:sha256:528411b331d3c884464699991c03c22d903eba096b8509b7f9ba3bbbcf436c7e"
+    },
+    "receipt_state_counts": {
+      "DISCOVERED_RESULT_SUPPORTED": 34
+    },
+    "replay_ref": {
+      "content_hash": "1a6b553f2a5c3a9d76f2af760f6c873682da12437625eac16acd895784d7bc22",
+      "kind": "PRE553_I05_FRONTIER_REPLAY",
+      "object_id": "urn:rawlsing:pre553:i05:frontier-replay:sha256:1a6b553f2a5c3a9d76f2af760f6c873682da12437625eac16acd895784d7bc22"
+    }
+  },
+  "full_observation_bytes_equal": true,
+  "map_receipt": {
+    "actor_state_effect": false,
+    "belief_effect": false,
+    "content_hash": "f77a60496b8e11c0d3f8e3e9149d84f998c1d0a05447db8db0975287678108a8",
+    "final_replay_ref": {
+      "content_hash": "61010506eb0a471c5c535d3753e2bfc43d139728dfd5b2e8d1c436ddde5f56a5",
+      "kind": "B01_AUTONOMOUS_FINAL_REPLAY",
+      "object_id": "urn:rawlsing:b01:run:sha256:61010506eb0a471c5c535d3753e2bfc43d139728dfd5b2e8d1c436ddde5f56a5"
+    },
+    "object_id": "urn:rawlsing:pre553:EmpiricalFractureMapReceipt:sha256:f77a60496b8e11c0d3f8e3e9149d84f998c1d0a05447db8db0975287678108a8",
+    "persona_effect": false,
+    "pre_v3_actor_independent": true,
+    "response_effect": false,
+    "v2_state_effect": false,
+    "v3_state_effect": false
+  },
+  "oracle_state_at_freeze": "I05_I06_I07_EXPECTED_ANSWER_ARTIFACTS_NOT_OPENED",
+  "root": {
+    "morphology": {
+      "cells": [
+        {
+          "cell": "0",
+          "raw_support": 56,
+          "substantive": true,
+          "weighted_support_if_authorized": {
+            "$exact_fraction": [
+              2720623716490974233,
+              50000000000000000
+            ]
+          }
+        },
+        {
+          "cell": "1",
+          "raw_support": 72,
+          "substantive": true,
+          "weighted_support_if_authorized": {
+            "$exact_fraction": [
+              3621320826241094119,
+              50000000000000000
+            ]
+          }
+        }
+      ],
+      "modal_cells": [
+        "1"
+      ],
+      "substantive_cells": [
+        "0",
+        "1"
+      ],
+      "support_basis": "GOVERNED_WEIGHTED",
+      "unresolved_maximal_tie": false
+    },
+    "predicate_ref": {
+      "content_hash": "3a0cd2278609ccac6b731cb74bb588513c4dcfd8fd78210692f254dd5f2c98aa",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3a0cd2278609ccac6b731cb74bb588513c4dcfd8fd78210692f254dd5f2c98aa"
+    },
+    "query_ref": {
+      "content_hash": "69b91eb8a28530cfb0bba3449d3e910eec9244bf0bd78143d0657147e0a1852f",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:69b91eb8a28530cfb0bba3449d3e910eec9244bf0bd78143d0657147e0a1852f"
+    }
+  },
+  "run_A": {
+    "file_sha256": "cbbdedbccc95e4f8571f07b2cc311e151f4cf4e8d9c00be9a3e2e2b3bfea2d98",
+    "semantic_sha256": "0e04f8662cf6a3691c5ea1bad058ba68a1897d23e5533bbef607f3546be8d6b8"
+  },
+  "run_B": {
+    "file_sha256": "cbbdedbccc95e4f8571f07b2cc311e151f4cf4e8d9c00be9a3e2e2b3bfea2d98",
+    "semantic_sha256": "0e04f8662cf6a3691c5ea1bad058ba68a1897d23e5533bbef607f3546be8d6b8"
+  },
+  "source": {
+    "autonomous_seed_rows": 128,
+    "autonomous_seed_rule": "FIRST_128_SUBSTANTIVE_SOURCE_ORDER_CASES",
+    "decoded_rows": 15627,
+    "decoder_structure": {
+      "bias": "100.0",
+      "case_size": 692,
+      "compression": 1,
+      "data_pos": 176848,
+      "file_end": 12275728,
+      "file_size": 12275728,
+      "layout": 2,
+      "ncases": 15627,
+      "variable_count": 692
+    },
+    "lebanon_substantive_rows": 2339,
+    "questionnaire_sha256": "d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb",
+    "release_ref": {
+      "content_hash": "61e9338c981aa1eb49df41eba9c53506a29b78dfdd06ab2b314802269cbadea6",
+      "kind": "C11LogicalRelease",
+      "object_id": "ENGLISH_V3"
+    },
+    "sav_sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+    "source_authority_sha256": "e3deab306feb7567a8eee2e2451a8ba72e0935ecc9001347a63ed4bf5514de49"
+  },
+  "supported_predictor_count": 34,
+  "supported_predictor_identity_set_sha256": "be9856c4d052dac31ea2cc424883360eeae722051c647358dee603c73c430a6d",
+  "worker_start_head": "ed77f229f9ce3eb910b7a74738fa42c14d25fbb5",
+  "z02_candidate": "d164f14dd6edd63a30b02639ed93cfb90c51ee92",
+  "z02_sealed_return": "cf3b376710e61695ab37a24269728152bd58f53e"
+}
