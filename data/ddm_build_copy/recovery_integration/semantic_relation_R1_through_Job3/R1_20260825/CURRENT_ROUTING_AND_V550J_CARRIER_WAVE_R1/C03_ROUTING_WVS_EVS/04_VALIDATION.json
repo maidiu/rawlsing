@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "court_execution_status": "COMPLETE_WITH_TYPED_UNRESOLVED",
+  "routing_authority_completeness": "NOT_COMPLETE",
+  "checks": {
+    "exact_input_denominator_3443": true,
+    "unique_input_ids_3443": true,
+    "exact_output_rows_3443": true,
+    "evs_exact_2224": true,
+    "wvs_exact_1219": true,
+    "no_missing_current_ids": true,
+    "no_coordinate_mismatches_family_wave_variable": true,
+    "exact_one_disposition_per_current_id": true,
+    "no_historical_trial_membership_used": true,
+    "no_sibling_c_wave_material_used": true,
+    "derivative_conditional_not_promoted": true,
+    "native_conditional_without_executable_proof_not_promoted": true,
+    "positive_routing_requires_executable_and_3way_proof": true,
+    "positive_routing_rows_emitted": 0,
+    "all_unresolved_typed": true,
+    "scope_refs_expand_losslessly": true,
+    "ledger_transport_reconstructs_exact_canonical_csv": true,
+    "scope_transport_reconstructs_exact_canonical_csv": true
+  },
+  "qid_set_sha256_algorithm": "sha256(UTF8(sorted_qids joined by LF, with terminal LF))",
+  "combined_sorted_qid_set_sha256": "f2501553005d220680a4ae9b2288965bbcd3ea423322fb80ce7d701e34eb7af4",
+  "ledger_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+  "ledger_size_bytes": 1032676,
+  "scope_dictionary_sha256": "957cee048fbdefe7d276b15d31a86074b26d3b1bb695d48843149fa3612c2eeb",
+  "scope_dictionary_rows": 349,
+  "source_reference_scheme": "source_record_ref = pinned worker archive O06_IMPLEMENTATION_ROUTING record at exact current qid; archive IDs/hashes in 05_SOURCE_MANIFEST.json; clause IDs retained in row",
+  "transport": {
+    "ledger": {
+      "kind": "BASE64_CHUNKED_XZ_1K",
+      "canonical_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "xz_sha256": "a317b664799b87b287eb32c35225ec6f5cc82d53fc7994cd03e2fa90cc03d60d",
+      "chunks": 81,
+      "reconstruction_verified": true
+    },
+    "scope_dictionary": {
+      "kind": "BASE64_CHUNKED_XZ_1K",
+      "canonical_sha256": "957cee048fbdefe7d276b15d31a86074b26d3b1bb695d48843149fa3612c2eeb",
+      "xz_sha256": "64724be541444d9ed2b60c27fe6e0044b238398108a4d264f76f0433c262c417",
+      "chunks": 28,
+      "reconstruction_verified": true
+    }
+  }
+}

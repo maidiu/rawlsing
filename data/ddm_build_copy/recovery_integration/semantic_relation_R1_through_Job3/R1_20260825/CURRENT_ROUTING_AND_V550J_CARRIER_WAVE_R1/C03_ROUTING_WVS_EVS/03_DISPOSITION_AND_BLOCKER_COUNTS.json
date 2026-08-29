@@ -1,0 +1,56 @@
+{
+  "court": "C03_ROUTING_WVS_EVS_R1",
+  "starting_head": "804afe672ea9718f98919ecf257bc9626dde0026",
+  "authority45_commit": "16a212b7343206c81634b26f2546ad8b60a77475",
+  "b03_adopted_evidence_commit": "3d1cdd242fe10f544bdcbb5bb91cf042c56ef787",
+  "lawful_current_denominator": 3443,
+  "family_denominator": {
+    "EVS": 2224,
+    "WVS": 1219
+  },
+  "disposition_counts": {
+    "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT": 393,
+    "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT": 2447,
+    "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE": 603
+  },
+  "unresolved_blocker_counts": {
+    "SOURCE_ROUTING_UNRESOLVED_AFTER_BOUNDED_REVIEW": 2241,
+    "NATIVE_CONDITIONAL_LACKS_EXECUTABLE_PREDICATE_AND_C03_3WAY_PROOF": 158,
+    "DERIVATIVE_ONLY_CONDITIONAL_NOT_NATIVE_AUTHORITY": 48
+  },
+  "by_family": {
+    "EVS": {
+      "input_rows": 2224,
+      "unique_input_ids": 2224,
+      "output_rows": 2224,
+      "dispositions": {
+        "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT": 188,
+        "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT": 1433,
+        "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE": 603
+      },
+      "blockers": {
+        "SOURCE_ROUTING_UNRESOLVED_AFTER_BOUNDED_REVIEW": 1263,
+        "NATIVE_CONDITIONAL_LACKS_EXECUTABLE_PREDICATE_AND_C03_3WAY_PROOF": 122,
+        "DERIVATIVE_ONLY_CONDITIONAL_NOT_NATIVE_AUTHORITY": 48
+      },
+      "sorted_qid_set_sha256": "bfe14401ed202851e9a39821c07e8f2cbba00e491c0319afb05d269eba9c636d"
+    },
+    "WVS": {
+      "input_rows": 1219,
+      "unique_input_ids": 1219,
+      "output_rows": 1219,
+      "dispositions": {
+        "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT": 1014,
+        "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT": 205
+      },
+      "blockers": {
+        "SOURCE_ROUTING_UNRESOLVED_AFTER_BOUNDED_REVIEW": 978,
+        "NATIVE_CONDITIONAL_LACKS_EXECUTABLE_PREDICATE_AND_C03_3WAY_PROOF": 36
+      },
+      "sorted_qid_set_sha256": "a3f61effa26dbdad01d2a6d6cacc587ab5cc9766e95d4f646e7734f779b27cf1"
+    }
+  },
+  "positive_executable_routing_rows": 0,
+  "governed_scoped_nonapplicability_rows": 0,
+  "note": "Native conditional source evidence is preserved but not promoted because the pinned W05/W07 O06 clause schemas contain prose condition summaries/predicate types only, with no structured executable predicate or C03 positive/negative/replay proof."
+}
