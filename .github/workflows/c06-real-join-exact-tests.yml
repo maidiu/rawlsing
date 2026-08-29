@@ -14,6 +14,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -21,3 +23,45 @@ jobs:
         run: python -m pip install --disable-pip-version-check pytest
       - name: Run exact admitted C06 tests
         run: python -m pytest -q rawlsing_next/tests/test_current_routing_ledger.py
+      - name: Reconstruct exact frozen C03 carrier and execute C06 schema admission
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64, hashlib, json, lzma, subprocess
+          from pathlib import Path
+          from rawlsing_next.current_routing_ledger import read_family_ledger, RoutingLedgerError
+
+          commit = "cbaa97ac11c4e8d517b49663f2037f8ea0e04267"
+          root = "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C03_ROUTING_WVS_EVS"
+          def show(path: str) -> bytes:
+              return subprocess.check_output(["git", "show", f"{commit}:{root}/{path}"])
+
+          manifest = json.loads(show("02_LEDGER_MANIFEST.json").decode("utf-8"))
+          parts = []
+          for spec in manifest["ordered_chunks"]:
+              raw = show(spec["path"])
+              payload = raw.rstrip(b"\n")
+              assert len(payload) == spec["chars_without_terminal_lf"]
+              assert hashlib.sha256(payload).hexdigest() == spec["sha256"]
+              parts.append(payload)
+          encoded = b"".join(parts)
+          assert len(encoded) == manifest["base64_chars"]
+          compressed = base64.b64decode(encoded)
+          assert len(compressed) == manifest["xz_bytes"]
+          assert hashlib.sha256(compressed).hexdigest() == manifest["xz_sha256"]
+          canonical = lzma.decompress(compressed)
+          assert len(canonical) == manifest["canonical_bytes"]
+          assert hashlib.sha256(canonical).hexdigest() == manifest["canonical_sha256"]
+          out = Path("/tmp/C03_CURRENT_ROUTING_APPLICABILITY_LEDGER.csv")
+          out.write_bytes(canonical)
+          header = canonical.splitlines()[0].decode("utf-8-sig")
+          print("C03_RECONSTRUCTION_PASS", manifest["canonical_rows"], manifest["canonical_sha256"])
+          print("C03_HEADER", header)
+          try:
+              read_family_ledger(out)
+          except RoutingLedgerError as exc:
+              print("C03_C06_SCHEMA_ADMISSION_BLOCKED_AS_EXECUTED", str(exc))
+          else:
+              raise SystemExit("unexpected: C03 carrier admitted directly to C06 schema")
+          PY
