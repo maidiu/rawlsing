@@ -1,0 +1,48 @@
+{
+  "authority37": "9bafaf2cb96cc3fb46fef6785d486f08987ab71c",
+  "case": "AC11_IRRELEVANT_MUTATION_OVERINVALIDATES",
+  "controlled_mutation": {
+    "after": "1",
+    "before": "0",
+    "determinant": "R",
+    "fixture_atom": "SYN-R035"
+  },
+  "i08_contract": "I08_INDEPENDENT_VALIDATION_CONTRACT@1.0.0",
+  "i08_prep_commit": "1d4b44c3b1fd8ccabccfb06f87fcd42140717eb1",
+  "identity_observation": {
+    "cause": "SOURCE_RELEASE_IDENTITY_PROPAGATES_INTO_DEPENDENCY_ADDRESSABLE_ARTIFACT_REFS",
+    "dependency_graph_unchanged": true,
+    "expected_r_dependent_invalidation_observed": true,
+    "unexpectedly_changed_artifacts": [
+      "ROOT",
+      "P_CONFORMER",
+      "P_DEVIANT",
+      "ALT_CONVERGER",
+      "ALT_MINORITY",
+      "Q_CHILD",
+      "S_CHILD",
+      "COSIG",
+      "J3"
+    ]
+  },
+  "schema": "B01_I08_INDEPENDENT_VALIDATION_FAILURE@1.0.0",
+  "semantic_observation": {
+    "r0_support_after": 13,
+    "r0_support_before": 14,
+    "r1_support_after": 7,
+    "r1_support_before": 6,
+    "unchanged_semantic_surfaces": [
+      "ROOT_MORPHOLOGY",
+      "P_CONFORMER",
+      "P_DEVIANT",
+      "ALT_CONVERGER",
+      "ALT_MINORITY",
+      "Q_CHILD",
+      "S_CHILD",
+      "C1_C2_GLOBAL",
+      "XOR_J3"
+    ]
+  },
+  "status": "FAIL",
+  "validator_failure_code": "IRRELEVANT_DETERMINANT_INVALIDATED_UNRELATED_TOPOLOGY"
+}

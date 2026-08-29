@@ -1,0 +1,84 @@
+{
+  "answer_blind_freeze_commit": "ef800907a43e01e83357abce97aa5d3fc8eb5b4c",
+  "candidate_blob_verification": {
+    "_pre553_query_common.py": "92bb0102af6e89c3e9e7b6e9119a280e6889f527",
+    "_pre553_query_eval.py": "c669729d617d5150586fc700e604a7d7cebf7114",
+    "pre553_cosignature_composition.py": "6192d5690a2ccac1b8c28025630e9ea77702af39",
+    "pre553_empirical_objects.py": "8f73aaa1dc1934791840199f9a7af711d5a6a1ee",
+    "pre553_fracture_map_controller.py": "954aa6cccebb39a91facfc0278fd2f4322b17911",
+    "pre553_recursive_handoff.py": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4"
+  },
+  "disposition": {
+    "architecture_selection": false,
+    "mx04_unlock": false,
+    "mx05_c09_unlock": false,
+    "success_token_issued": false,
+    "v3_change": false
+  },
+  "gates": {
+    "I05_hostile_semantic_parity": {
+      "notes": "four-way P fracture, Q child, depth>1 S, alternate R, retained low/empty states, branch-conditioned C1/C2 reversal, direct XOR J3",
+      "status": "PASS"
+    },
+    "I06_lebanon_realdata_parity": {
+      "lebanon_non_ses_n": 1005,
+      "lebanon_ses_n": 1334,
+      "lebanon_ses_weighted_pct": 57.460811420389824,
+      "lebanon_substantive_n": 2339,
+      "ma_plus_n": 156,
+      "ma_plus_non_ses_n": 72,
+      "ma_plus_non_ses_non_religion_n": 42,
+      "no_formal_n": 45,
+      "no_formal_non_ses_n": 12,
+      "response_pattern_rows": 370,
+      "response_pattern_sha256": "8a642a5cf133843512d84b039af475f70c13b739f3e26908899193ccee886ed9",
+      "status": "PASS",
+      "wave8_routed_ses_weighted_pct": 47.287269199071936
+    },
+    "I07_realdata_cosignature_direct_j3": {
+      "catalog_targets": 14,
+      "named_direct_j3_raw_tensor_sha256": {
+        "H01_branch": "734077830a27ac3a2a3961e520f4ac6c4907070259357f718770b506784a89bb",
+        "H02_branch": "6ce8e3afc3f528d8dd24c52eeab9076878fb9b6004a355b6dd400eaa63a6840a",
+        "H03_branch": "057c08b4d9a20caf84b202cfbee19e5bf9ff14a6d7db73e350fd715223238136"
+      },
+      "note": "Exact source-backed tensors were reproduced after oracle opening. Z02 executor/composer J3 blobs are exact-verified. Full C11 end-to-end replay is not used to promote the candidate because I08 independently fails a mandatory gate.",
+      "pair_frontier_count": 91,
+      "status": "SOURCE_BACKED_PARITY_PASS__EXACT_PRODUCTION_J3_SURFACE_BLOB_VERIFIED",
+      "triple_frontier_count": 364
+    },
+    "I08_independent_anti_cheat_replay_mutation": {
+      "case": "AC11",
+      "failure_code": "IRRELEVANT_DETERMINANT_INVALIDATED_UNRELATED_TOPOLOGY",
+      "failure_receipt": "I08_FAILURE_RECEIPT.json",
+      "status": "FAIL"
+    },
+    "answer_blind_autonomous_replay": {
+      "oracle_state_at_freeze": "I05_I06_I07_EXPECTED_ANSWER_ARTIFACTS_NOT_OPENED",
+      "run_A_file_sha256": "cbbdedbccc95e4f8571f07b2cc311e151f4cf4e8d9c00be9a3e2e2b3bfea2d98",
+      "run_B_file_sha256": "cbbdedbccc95e4f8571f07b2cc311e151f4cf4e8d9c00be9a3e2e2b3bfea2d98",
+      "semantic_sha256": "0e04f8662cf6a3691c5ea1bad058ba68a1897d23e5533bbef607f3546be8d6b8",
+      "status": "PASS"
+    },
+    "source_hash_and_decoder": {
+      "decoder_receipt_sha256": "50a616a7257ee448b9f23dec9d08d87ce959c8f8ae3fda4d52523c04d1ef9710",
+      "status": "PASS"
+    }
+  },
+  "mandated_start_head": "ed77f229f9ce3eb910b7a74738fa42c14d25fbb5",
+  "pre_final_worker_head": "703572387888b63dbeebe2119763e2556c76c7f8",
+  "repository": "maidiu/rawlsing",
+  "schema": "B01_FRACTUREMAP_INDEPENDENT_ADMISSION_R2_RETURN@1.0.0",
+  "source": {
+    "codebook_sha256": "328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc",
+    "decoded_rows": 15627,
+    "lebanon_substantive_rows": 2339,
+    "questionnaire_sha256": "d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb",
+    "sav_sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998"
+  },
+  "status": "NOT_ADMITTED__I08_SELECTIVE_INVALIDATION_FAILURE",
+  "verdict": "FRACTURE_MAP_INDEPENDENT_ADMISSION = NOT_ADMITTED__I08_SELECTIVE_INVALIDATION_FAILURE",
+  "worker_branch": "agent/verkhovod-b01-fracturemap-admission-r2",
+  "z02_candidate": "d164f14dd6edd63a30b02639ed93cfb90c51ee92",
+  "z02_sealed_return": "cf3b376710e61695ab37a24269728152bd58f53e"
+}
