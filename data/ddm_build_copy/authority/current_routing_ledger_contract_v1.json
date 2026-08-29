@@ -1,0 +1,97 @@
+{
+  "schema": "AUTHORITY45_CURRENT_ROUTING_LEDGER_COMPILER_CONTRACT",
+  "schema_version": "1.0.0",
+  "disposition_schema_version": "authority45_current_routing_disposition_v1",
+  "governing_authority": "Authority 45",
+  "authority45_blob_sha": "44edd0f87da778a2c08e33869a129e5a36830bbc",
+  "current_catalog": {
+    "contract_version": "authority45_layer1_35wave_active_catalog_v1",
+    "archive_name": "LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+    "archive_sha256": "b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d",
+    "total_rows": 18276,
+    "active_scopes": 35,
+    "source_family_count": 9,
+    "families": [
+      {
+        "source_family": "GSS",
+        "filename": "Rawlsing_P2_GSS_Deep_Question_Node_Catalog_v1.csv",
+        "rows": 6021,
+        "sha256": "74496af09f5feba9defc1d2991977e79343da97c87c1fce93f1e9ab4ada31b99"
+      },
+      {
+        "source_family": "LiTS",
+        "filename": "Rawlsing_P2_LiTS_Deep_Question_Node_Catalog_v2.csv",
+        "rows": 4434,
+        "sha256": "068cd24a9bcbaaf0e8b70c6c384296884247467f09fd380753d941e09afd39ea"
+      },
+      {
+        "source_family": "EVS",
+        "filename": "Rawlsing_P2_EVS_Deep_Question_Node_Catalog_v1.csv",
+        "rows": 2224,
+        "sha256": "61c6f77d266e59f5218babecbd07636619ff90d04b4ffc837357204225729d3b"
+      },
+      {
+        "source_family": "Arab Barometer",
+        "filename": "Rawlsing_P2_Arab_Barometer_Deep_Question_Node_Catalog_v1.csv",
+        "rows": 1698,
+        "sha256": "1111699fdde0bbd082267b1ba5eb3b76bbfdcf89aa1e08f500c8393200c394cf"
+      },
+      {
+        "source_family": "WVS",
+        "filename": "Rawlsing_P2_WVS_Deep_Question_Node_Catalog_v1.csv",
+        "rows": 1219,
+        "sha256": "cc538e7208e96f2a3333082e3ffdc88faf1bba0eee273664fe2ff213c3821ec0"
+      },
+      {
+        "source_family": "Afrobarometer",
+        "filename": "Rawlsing_P2_Afrobarometer_Deep_Question_Node_Catalog_v1.csv",
+        "rows": 913,
+        "sha256": "01561b89960c10a77cec15552a8b065a0d043fe29c99bc77f4cb316991225181"
+      },
+      {
+        "source_family": "Asian Barometer",
+        "filename": "Rawlsing_P2_Asian_Barometer_Deep_Question_Node_Catalog_v2.csv",
+        "rows": 814,
+        "sha256": "b27afc4e1ba8bd5707db61388b592525467657d522e782a07c31d04d6b4430cd"
+      },
+      {
+        "source_family": "Latinobarómetro",
+        "filename": "Rawlsing_P2_Latinobarometro_Deep_Question_Node_Catalog_v2.csv",
+        "rows": 812,
+        "sha256": "9993607de206a00ed1d6c63b599e5115dc0c1925bffcb10a81544eadaf83cf8c"
+      },
+      {
+        "source_family": "South Asia",
+        "filename": "Rawlsing_P2_South_Asia_Deep_Question_Node_Catalog_v2.csv",
+        "rows": 141,
+        "sha256": "1e31a8bc40a76a921668497ad8268e4d048c5c19e65003d44424a89b5a4f73f1"
+      }
+    ]
+  },
+  "dispositions": [
+    "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE",
+    "POSITIVE_EXECUTABLE_ROUTING_AUTHORITY",
+    "GOVERNED_SCOPED_NONAPPLICABILITY",
+    "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT",
+    "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT"
+  ],
+  "membership_basis_required": "EXACT_CURRENT_IMPLEMENTATION_CATALOG_ID",
+  "forbidden_membership_bases": [
+    "HISTORICAL_700_TRIAL_SET",
+    "HISTORICAL_99_SOURCE_SIGNALED",
+    "HISTORICAL_600_LMQ004",
+    "HISTORICAL_699_UNRESOLVED",
+    "AGGREGATE_COUNT",
+    "SOURCE_COLUMN_PRESENCE",
+    "INFERRED_COMPLETION",
+    "QUESTION_TEXT_OR_THEME",
+    "NEIGHBORING_WAVE_ANALOGY"
+  ],
+  "source_authority_decision_policy": "COMPILER_DECIDES_NONE",
+  "unresolved_policy": "MUST_REMAIN_EXPLICITLY_TYPED; compiler never converts missing evidence to another disposition",
+  "nonapplicability_policy": "MUST_PRESERVE_EXACT_IMPLEMENTATION_AND_EVIDENCE_SCOPE; widening tokens rejected",
+  "executable_predicate_policy": "POSITIVE_EXECUTABLE_ROUTING_AUTHORITY requires canonical JSON SHA-256 plus explicit predicate/replay contract refs; other dispositions cannot carry executable predicate semantics",
+  "joined_coverage_policy": "all nine exact family ledgers; no missing, duplicate, extra or cross-family implementation IDs; exact total 18,276",
+  "historical_trial_policy": "700/99/600/699 partitions are forensic history only and cannot select current ledger membership",
+  "output_hash_policy": "joined ledger and unresolved summary hashes are SHA-256 of canonical JSON projections over caller-supplied dispositions only"
+}
