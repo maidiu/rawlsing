@@ -2,7 +2,7 @@
 
 Status:
 
-`B08_EXECUTION_COMPLETE__SOURCE_FAMILY_SERIALIZATION_FAIL_CLOSED__PRODUCT_EXECUTABLE_AUTHORITY_DEPENDENCY_BLOCKED`
+`DEPENDENCY_BLOCKED__EXACT_RAW_SOURCE_FAMILY_DENOMINATOR_ROW_CARRIER_ABSENT__BOUNDED_CANARY_REVALIDATED__NO_FALSE_PRODUCT_COMPLETENESS`
 
 Repository:
 `maidiu/rawlsing`
@@ -16,244 +16,138 @@ Verified exact starting HEAD:
 Governing Authority 43 blob:
 `de47cbe0a8af98cdbc37bd33f0493bc4ca48eac7`
 
-## 1. Central holding
+Worker command blob:
+`4f99f7b7717842d18ca5bb62cb3b17be6c88cc1b`
 
-B08 does **not** emit a false positive product-executable V550J registry.
+## Dispositive holding
 
-The accepted predecessor law establishes an exact global recovery/adjudication denominator of:
+B08 cannot lawfully install a complete Asian Barometer or Latinobarómetro V550J source-family authority registry on the accepted start surface because the exact raw per-source rows of the governed 2,499-source-structure / 15,990-membership reconstruction denominator are not materialized in the repository or its retained recovery index.
 
-- `2,499` recovered source structures;
-- `15,990` memberships.
+Authority 43 expressly forbids promoting the aggregate 2,499 / 15,990 counts into executable authority.
 
-But Authority 43 is explicit:
+The B08 command requires one exact disposition for every candidate/member. Without the raw per-source denominator rows, B08 cannot truthfully enumerate the full Asian Barometer or Latinobarómetro candidate/member universe. Guessing from naming recurrence, R14 relation structures, microdata column presence, bounded canaries, or cross-wave analogy would manufacture authority.
 
-`AGGREGATE_COUNT != EXACT_ROW_AUTHORITY`
+Therefore:
 
-and:
+- Asian Barometer full source-family serialization: `OPEN__DEPENDENCY_BLOCKED_ON_EXACT_RAW_DENOMINATOR_ROW_CARRIER`
+- Latinobarómetro full source-family serialization: `OPEN__DEPENDENCY_BLOCKED_ON_EXACT_RAW_DENOMINATOR_ROW_CARRIER`
+- product-complete executable registries installed: **NO**
+- Archive08 promoted: **NO**
+- B02-B05 consumed: **NO**
+- V3 / architecture work: **NO**
 
-`SOURCE_NODE_RECOVERED != EXECUTABLE_ROUTING_AUTHORITY`.
+## Lawful current positive surface preserved
 
-On the exact B08 start surface, the source-family-partitioned 2,499 / 15,990 row objects required to give **one exact disposition to every Asian/Latin candidate/member** are not materialized. Accepted A10 proof names the retained cross-source reconciliation object by Library file ID, but the connected Library did not resolve that exact object during B08; the current recovery reservoir also does not contain the 2,499/15,990 row tables as materialized objects.
+The accepted repository contains governed Section85 bounded canaries only.
 
-B08 therefore serializes exact known authority/scope/evidence plus exact blockers. It does not manufacture candidate/member identities from counts, R14 structures, Section85 canaries, source-item presence, or naming similarity.
+Asian Barometer:
+- registry blob `68a85a4da8d702bdf39719f0b461f66cc3bd8909`
+- scope: `BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY`
+- configuration: `JCFG-ASIAN-W1-CHANGE-EVALUATION`
+- exact members: `q109`, `q111`
+- source structure: `asian_barometer_struct_run_634ba9e4e52393e941`
+- status: `GOVERNED_BOUNDED_CANARY_ONLY`
+- explicit ceiling: `NO_PRODUCTION_COMPLETENESS_CLAIM`
 
-## 2. Asian Barometer exact scope
+Latinobarómetro:
+- registry blob `74eac8d8814514a1acd20eb6c48cecf7ea62e01a`
+- scope: `BOUNDED_9_SOURCE_FAMILY_20_VARIABLE_CANARY`
+- configuration: `JCFG-LATINOBAROMETRO-1995-INSTITUTION-CONFIDENCE`
+- exact members: `p27e`, `p27g`, `p27m`
+- source structure: `latinobarometro_struct_a75ba74fad9b602c3d`
+- status: `GOVERNED_BOUNDED_CANARY_ONLY`
+- explicit ceiling: `NO_PRODUCTION_COMPLETENESS_CLAIM`
 
-Independent governing source scope:
+B08 preserves those exact governed canaries and does not widen them into source-family completeness.
 
-`SR09_PRE_RECON/R03_ASIAN_BAROMETER.md`
-blob:
-`83f99e22fe1275794e9ded3d7720f4a6d1bcf530`
+## Exact denominator audit
 
-Exact B08 eligible waves:
+Retained recovery index:
 
-- `W1`
-- `W4`
-- `W5`
+`data/ddm_build_copy/recovery_reservoir/semantic_relation_R1_through_Job3/R1_20260825/OBJECT_INDEX.tsv`
+@
+`2982f27c918c86e7315c436a652a94ce16c77c35`
 
-Explicitly excluded:
+A direct accepted-index audit found no materialized recovered-path carrier named or keyed as:
 
-- `W6`
+- V550J product/source-family candidate denominator;
+- V550J membership denominator;
+- nine-source joint-configuration authority candidate table;
+- 2,499 structure row ledger;
+- 15,990 membership row ledger;
+- non-GSS V550J product denominator.
 
-The serialization records:
-
-`W6 = EXCLUDED_BY_GOVERNING_CLOSED_35_SCOPE_LAW`.
-
-No B08 file treats W6 as eligible, evidence-bearing, or executable authority.
-
-Current independent source-native coverage for the eligible waves is preserved as context only:
-
-- W1: 217 implementation rows; 102 existing R11-member implementations;
-- W4: 289 / 156;
-- W5: 308 / 23.
-
-These counts do not become J-family authority.
-
-## 3. Latinobarómetro exact scope
-
-Independent governing source scope:
-
-`SR09_PRE_RECON/R06_LATINOBAROMETRO.md`
-blob:
-`894952355a53365a4fe99fb08ae6ce25ff02d8fa`
-
-Exact B08 eligible waves:
-
-- `1995`
-- `2011`
-- `2024`
-
-Current source-native coverage is preserved as context only:
-
-- 1995: 203 implementation rows; 19 existing R11-member implementations;
-- 2011: 414 / 230;
-- 2024: 195 / 50.
-
-The 2024 source-width/header/dictionary inconsistency remains an explicit caution requiring exact guards; no broad applicability inference is made from item presence.
-
-## 4. R14 source-structure evidence
-
-B08 preserves and dispositions every Asian/Latin row from the current R14 source-structure crosswalk:
-
-- Asian Barometer: 37 relation rows / 30 unique source structures;
-- Latinobarómetro: 36 relation rows / 36 unique source structures;
-- total: 73 rows.
-
-Every row is explicitly typed:
-
-`R14_RELATION_BACKED_SOURCE_STRUCTURE_EVIDENCE_ONLY__NOT_V550J_J_FAMILY_AUTHORITY`.
-
-This preserves useful evidence without violating:
-
-`P2_SOURCE_STRUCTURE = CANDIDATE_NOT_AUTHORITY`.
-
-## 5. Existing bounded canaries
-
-B08 preserves but does not widen the existing Section85 bounded canaries.
-
-Asian:
-- `JCFG-ASIAN-W1-CHANGE-EVALUATION`;
-- exact bounded registry blob `68a85a4da8d702bdf39719f0b461f66cc3bd8909`.
-
-Latin:
-- `JCFG-LATINOBAROMETRO-1995-INSTITUTION-CONFIDENCE`;
-- exact bounded registry blob `74eac8d8814514a1acd20eb6c48cecf7ea62e01a`.
-
-Both remain:
-
-`PRESERVED_BOUNDED_CANARY__NOT_PROMOTED_TO_PRODUCT_SCOPE`.
-
-No product configuration is admitted from those examples.
-
-## 6. Routing/member-applicability boundary
-
-The worker command forbids consumption of B02-B05.
-
-B08 complied.
-
-No B02-B05 return was inspected or consumed.
-
-Because exact current routing/member-applicability authority sufficient for the required product registry is absent on the B08 start surface, both source-family serializations record:
-
-`BLOCKED_EXACT_ROUTING_MEMBER_APPLICABILITY_AUTHORITY_NOT_ON_START_SURFACE`.
-
-B08 does not infer:
-
-- universal respondent applicability;
-- country applicability;
-- form/module/split applicability;
-- routing predicates;
-- member risk-set inclusion;
-- completion eligibility.
+The only directly relevant recovered source-structure crosswalk is R14 relation-oriented evidence; that is not a complete J-family candidate/member denominator and is not substituted for it.
 
 Thus:
 
-`MISSING_ROUTING != UNIVERSAL_APPLICABILITY`.
+`AGGREGATE_RECOVERY_COUNTS != ROW_LEVEL_EXECUTABLE_AUTHORITY`
 
-## 7. Source-family product authority disposition
+and:
 
-Asian Barometer:
+`R14_RELATION_STRUCTURE_CROSSWALK != COMPLETE_V550J_SOURCE_FAMILY_DENOMINATOR`.
 
-`OPEN_DEPENDENCY_BLOCKED__EXACT_SOURCE_FAMILY_CANDIDATE_MEMBER_DENOMINATOR_AND_ROUTING_AND_FULL_J_FAMILY_ADJUDICATION_REQUIRED`
+## Asian Barometer W6 exclusion
 
-Latinobarómetro:
+The current reload manifest contains W6 physical data, but B08 does not treat file presence as governed V550J scope.
 
-`OPEN_DEPENDENCY_BLOCKED__EXACT_SOURCE_FAMILY_CANDIDATE_MEMBER_DENOMINATOR_AND_ROUTING_AND_FULL_J_FAMILY_ADJUDICATION_REQUIRED`
+Because the command expressly requires preservation of CLOSED_35 exclusion wherever it governs, and because no exact row-level source-family denominator/applicability authority on the B08 start surface positively admits Asian Barometer W6, B08 installs no W6 configuration and makes no W6 completeness claim.
 
-Both machine-readable serializations contain:
+Therefore:
 
-- exact source family;
-- exact independently governed wave scope;
-- explicit exclusions/cautions;
-- accepted A10 recovery-denominator identity;
-- exact bounded canary identity;
-- exact R14 evidence census;
-- exact blocker classes;
-- no admitted product configurations;
-- `denominator_disposition_complete = false`;
-- `production_executable_registry = false`;
-- `product_completeness_claim = false`;
-- `routing_dependency.product_execution_authorized = false`;
-- `archive08_promotion = false`;
-- `v3_effect = false`;
-- `architecture_selection = false`.
+`PHYSICAL_W6_DATA_PRESENT != V550J_W6_AUTHORITY`.
 
-## 8. Deterministic serialization hashes
+## Routing/member-applicability dependency
 
-Asian serialization SHA-256:
+B02-B05 were not consumed.
 
-`284b5a75cf165a948372ee5d58caf5571ddeea5406f048629cfea85ead58d9bb`
+No missing routing/member-applicability fact was inferred from source labels, topology, or data presence.
 
-Latin serialization SHA-256:
+Any future positive full-source serialization must bind exact configuration/member rows to accepted routing/member-applicability authority before product execution.
 
-`8dd949afedd14fb5131d0bb9725ae3bc4749f3b3d8d74cecf84fefd3f6bc118d`
+## Repository-native bounded verification
 
-R14 evidence-disposition ledger SHA-256:
+Tested current-line commit:
+`f12e89032ffadb00addb8e47bfe738f4d514825d`
 
-`ff8f59c60c7208eb1f9e5866451ec63d5c59b14b0acb8528cf65b5e4a6c22176`
+GitHub Actions run:
+`33256916342`
 
-These hashes are execution receipts for the B08 blocked serialization objects. They are not positive product-authority hashes.
+Job:
+`99112155924`
 
-## 9. Repository-native tests
+Command:
 
-Final successful CI:
+`python -m pytest -q section85/tests/test_bounded_v550j_adapter.py section85/tests/test_source_authority_dependencies.py data/ddm_build_copy/test_v550j_w03_authority.py`
 
-- run: `33217005922`
-- job: `99002782555`
-- tested commit: `e369754bb6a1f7f407ae43a34d3d9e496943518c`
-- result: `17 passed in 2.58s`
+Result:
 
-Executed:
+`23 passed, 3 skipped in 4.38s`
 
-`python -m pytest -q data/ddm_build_copy/tests/test_v550j_b08_asian_latin_authority.py data/ddm_build_copy/test_v550j_w03_authority.py`
+This revalidates the bounded V550J authority adapter, source-authority dependency guards, and fail-closed V550J registry semantics on the current B08 line.
 
-The standalone validator also passed:
+It does not prove source-family completeness.
 
-`PASS_BLOCKED_SERIALIZATION_FAILS_CLOSED`
+## Exact future unblock condition
 
-with:
+A later B08-style positive closure requires, for Asian Barometer and Latinobarómetro separately:
 
-- `r14_evidence_rows = 73`;
-- `production_executable_registries = 0`;
-- `denominator_disposition_complete = false`.
+1. exact row-level candidate structure denominator from the governed 2,499 reconstruction;
+2. exact row-level membership denominator from the governed 15,990 reconstruction;
+3. one terminal disposition for every source-family candidate/member;
+4. exact source/wave/country/form/module/split applicability;
+5. exact member roles/order/set treatment and target/condition distinctions;
+6. completion/minimum-items law and response handling;
+7. accepted routing/member-applicability refs;
+8. explicit typed excluded/unresolved/superseded preservation;
+9. deterministic content hashes;
+10. representative bounded execution under the resulting admitted authority.
 
-Two earlier CI attempts stopped during collection because the temporary runner lacked existing W03 dependencies (`python-dotenv`, then `scikit-learn`). No semantic guard was weakened; after installing the declared runner dependencies, the unchanged semantic test command passed.
+Until those row carriers are accepted on the current line, full serialization remains open.
 
-## 10. Hostile closure
+## Terminal
 
-Current tests fail closed if anyone attempts to:
-
-- add Asian W6 to eligible scope;
-- convert the aggregate 2,499/15,990 recovery denominator into exact B08 row authority;
-- promote a bounded canary to product scope;
-- claim product executability while routing remains blocked;
-- consume B02-B05 implicitly;
-- promote Archive08;
-- assign V3/architecture effect.
-
-## 11. Negative ceiling
-
-B08 proves the exact current boundary. It does not prove the missing authority.
-
-No claim is made that:
-
-- every Asian/Latin V550J candidate/member has been individually adjudicated;
-- the Asian/Latin subset of the 2,499/15,990 denominator has been reconstructed from aggregate counts;
-- R14 source structures are J-family authority;
-- the Section85 canaries are product-wide authority;
-- routing/member applicability is complete;
-- a representative product execution is authorized;
-- LMQ-002 or LMQ-005 is globally closed;
-- the whole machine is zero-loss.
-
-No Archive08 promotion.
-No V3 work.
-No architecture work.
-No B02-B05 sibling consumption.
-
-## 12. Terminal
-
-`B08_SOURCE_SCOPE_AND_FAIL_CLOSED_SERIALIZATION_COMPLETE__PRODUCT_EXECUTABLE_V550J_AUTHORITY_REMAINS_EXACT_DEPENDENCY_BLOCKED`
+`B08_ASIAN_LATIN_FULL_SERIALIZATION_DEPENDENCY_BLOCKED__BOUNDED_CANARY_CURRENTLY_REVALIDATED__NO_INFERRED_COMPLETENESS`
 
 Success token:
 
