@@ -406,14 +406,10 @@ def _validate_evidence_scope(row: Mapping[str, str], catalog: CatalogRow) -> dic
                     f"{catalog.question_implementation_id}"
                 )
         else:
-            if explicit:
-                _reject_widening_token(explicit, key)
-                if actual != explicit:
-                    raise RoutingLedgerError(
-                        f"evidence scope {key} must preserve ledger scope {explicit!r}"
-                    )
-            elif actual:
-                _reject_widening_token(actual, f"evidence_scope_json.{key}")
+            if explicit and actual != explicit:
+                raise RoutingLedgerError(
+                    f"evidence scope {key} must preserve ledger scope {explicit!r}"
+                )
 
     if row["disposition"] == SCOPED_NONAPPLICABILITY:
         for key in (
@@ -431,15 +427,21 @@ def _validate_evidence_scope(row: Mapping[str, str], catalog: CatalogRow) -> dic
     return scope
 
 
-def _validate_scope_json_field(raw: str, field: str) -> dict[str, Any]:
+def _validate_scope_json_field(
+    raw: str,
+    field: str,
+    *,
+    reject_widening: bool = False,
+) -> dict[str, Any]:
     value = _parse_json_object(raw, field, allow_empty=True)
-    for key, item in value.items():
-        if isinstance(item, str):
-            _reject_widening_token(item, f"{field}.{key}")
+    if reject_widening:
+        for key, item in value.items():
+            if isinstance(item, str):
+                _reject_widening_token(item, f"{field}.{key}")
     return value
 
 
-def _validate_predicate_contract(row: Mapping[str, str]) -> None:
+def _validate_predicate_contract(row: Mapping[str, str]) -> str:
     disposition = row["disposition"]
     predicate_json = _clean(row["executable_predicate_json"])
     predicate_hash = _clean(row["executable_predicate_sha256"])
@@ -453,16 +455,19 @@ def _validate_predicate_contract(row: Mapping[str, str]) -> None:
                 "positive executable routing requires predicate and replay contract/version refs"
             )
         predicate = _parse_json_object(predicate_json, "executable_predicate_json")
+        canonical_predicate = _canonical_json(predicate)
         expected = _sha256_json(predicate)
         if _require_sha256(predicate_hash, "executable_predicate_sha256") != expected:
             raise RoutingLedgerError(
                 f"executable predicate hash mismatch: {predicate_hash} != {expected}"
             )
+        return canonical_predicate
     else:
         if predicate_json or predicate_hash or predicate_version or replay_version or replay_ref:
             raise RoutingLedgerError(
                 f"{disposition} may not carry executable predicate/replay semantics"
             )
+        return ""
 
 
 def _validate_ledger_row(raw: Mapping[str, str], catalog: CatalogRow) -> dict[str, str]:
@@ -522,14 +527,22 @@ def _validate_ledger_row(raw: Mapping[str, str], catalog: CatalogRow) -> dict[st
             raise RoutingLedgerError("resolved disposition requires evidence_authority_ref")
         _require_sha256(evidence_hash, "evidence_authority_sha256")
 
-    _validate_evidence_scope(row, catalog)
-    _validate_scope_json_field(
-        row["member_applicability_scope_json"], "member_applicability_scope_json"
+    evidence_scope = _validate_evidence_scope(row, catalog)
+    member_scope = _validate_scope_json_field(
+        row["member_applicability_scope_json"],
+        "member_applicability_scope_json",
+        reject_widening=(disposition == SCOPED_NONAPPLICABILITY),
     )
-    _validate_scope_json_field(
-        row["source_universe_filter_scope_json"], "source_universe_filter_scope_json"
+    universe_scope = _validate_scope_json_field(
+        row["source_universe_filter_scope_json"],
+        "source_universe_filter_scope_json",
+        reject_widening=(disposition == SCOPED_NONAPPLICABILITY),
     )
-    _validate_predicate_contract(row)
+    canonical_predicate = _validate_predicate_contract(row)
+    row["evidence_scope_json"] = _canonical_json(evidence_scope)
+    row["member_applicability_scope_json"] = _canonical_json(member_scope)
+    row["source_universe_filter_scope_json"] = _canonical_json(universe_scope)
+    row["executable_predicate_json"] = canonical_predicate
 
     if not row["adjudication_provenance_ref"]:
         raise RoutingLedgerError("adjudication_provenance_ref is required")
