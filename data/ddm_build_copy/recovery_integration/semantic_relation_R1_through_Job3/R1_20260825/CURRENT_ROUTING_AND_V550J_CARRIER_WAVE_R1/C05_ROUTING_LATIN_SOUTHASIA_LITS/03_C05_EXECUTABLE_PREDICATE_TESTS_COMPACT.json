@@ -1,0 +1,71 @@
+{
+  "schema": "c05.executable_predicate_tests.v1",
+  "authority45_adopted_b05_predicates": {
+    "currently_disposed_as_positive_executable": 50,
+    "currently_subsumed_by_administrative_context": 1,
+    "upstream_evidence_count": 51,
+    "upstream_validation_receipt": "B05 02_AUTH44_REBIND_VALIDATION.json: 51/51 hostile-positive, hostile-negative, serialization replay PASS"
+  },
+  "new_current_predicates": {
+    "count": 5,
+    "tests": [
+      {
+        "ast": {"field":"S18A","op":"in","values":[4,5]},
+        "authority_code": "LATIN2024_S18B_PRINTED_FOR_THOSE_WHO",
+        "authority_rule": "FOR THOSE WHO ANSWERED 4 OR 5 IN S18A",
+        "expression": "S18A IN {4,5}",
+        "hostile_negative": {"actual":false,"context":{"S18A":1},"expected":false},
+        "hostile_positive": {"actual":true,"context":{"S18A":4},"expected":true},
+        "predicate_id": "c05.latin.2024.S18B",
+        "question_implementation_id": "question_impl.phase0.94a4f718016943bc50b3",
+        "serialization_replay": {"negative_actual":false,"pass":true,"positive_actual":true}
+      },
+      {
+        "ast": {"field":"S18A","op":"in","values":[1,2,3]},
+        "authority_code": "LATIN2024_S19_PRINTED_FOR_THOSE_WHO",
+        "authority_rule": "FOR THOSE WHO ANSWERED 1, 2 OR 3 IN S18A",
+        "expression": "S18A IN {1,2,3}",
+        "hostile_negative": {"actual":false,"context":{"S18A":4},"expected":false},
+        "hostile_positive": {"actual":true,"context":{"S18A":1},"expected":true},
+        "predicate_id": "c05.latin.2024.S19",
+        "question_implementation_id": "question_impl.phase0.f92f19f46349ab8716cd",
+        "serialization_replay": {"negative_actual":false,"pass":true,"positive_actual":true}
+      },
+      {
+        "ast": {"field":"S22A","op":"in","values":[4,5]},
+        "authority_code": "LATIN2024_S22B_PRINTED_FOR_THOSE_WHO",
+        "authority_rule": "FOR THOSE WHO ANSWERED 4 OR 5 IN S22A",
+        "expression": "S22A IN {4,5}",
+        "hostile_negative": {"actual":false,"context":{"S22A":1},"expected":false},
+        "hostile_positive": {"actual":true,"context":{"S22A":4},"expected":true},
+        "predicate_id": "c05.latin.2024.S22B",
+        "question_implementation_id": "question_impl.phase0.3c3da7debec4bd9e9179",
+        "serialization_replay": {"negative_actual":false,"pass":true,"positive_actual":true}
+      },
+      {
+        "ast": {"field":"S22A","op":"in","values":[1,2,3]},
+        "authority_code": "LATIN2024_S23_PRINTED_FOR_THOSE_WHO",
+        "authority_rule": "FOR THOSE WHO ANSWERED 1, 2 OR 3 IN S22A",
+        "expression": "S22A IN {1,2,3}",
+        "hostile_negative": {"actual":false,"context":{"S22A":4},"expected":false},
+        "hostile_positive": {"actual":true,"context":{"S22A":1},"expected":true},
+        "predicate_id": "c05.latin.2024.S23",
+        "question_implementation_id": "question_impl.phase0.db94f533baa158ef27ae",
+        "serialization_replay": {"negative_actual":false,"pass":true,"positive_actual":true}
+      },
+      {
+        "ast": {"args":[{"field":"GBC31a","op":"exists"},{"field":"GBC31b","op":"exists"},{"field":"GBC31c","op":"exists"}],"op":"any"},
+        "authority_code": "SOUTHasiaW2_GBC32_PRINTED_Q31_GATE",
+        "authority_rule": "Q32 is asked only if answered for Q31.",
+        "expression": "EXISTS(GBC31a) OR EXISTS(GBC31b) OR EXISTS(GBC31c)",
+        "hostile_negative": {"actual":false,"context":{},"expected":false},
+        "hostile_positive": {"actual":true,"context":{"GBC31a":"unemployment"},"expected":true},
+        "predicate_id": "c05.southasia.W2.GBC32",
+        "question_implementation_id": "question_impl.phase0.9e03667a08983178dd85",
+        "serialization_replay": {"negative_actual":false,"pass":true,"positive_actual":true}
+      }
+    ]
+  },
+  "current_positive_executable_disposition_total": 55,
+  "validation": "PASS"
+}

@@ -1,0 +1,79 @@
+{
+  "anti_drift": [
+    "NO_ROUTING_SIGNAL != UNCONDITIONAL",
+    "MISSING_METADATA != KNOWN_NONAPPLICABILITY",
+    "QUESTION_EXISTS != RESPONDENT_APPLICABILITY",
+    "COUNTRY_SCOPE_EVIDENCE != GLOBAL_IMPLEMENTATION_ABSENCE",
+    "DERIVATIVE_DECISION_BASIS != NATIVE_SOURCE_AUTHORITY",
+    "NO_700_OR_600_SAMPLE_DENOMINATOR_USED"
+  ],
+  "governed_current_surface": {
+    "c05_exact_id_set_equality_between_phase0_and_deep_carrier": true,
+    "c05_rows": 5387,
+    "deep_35wave_catalog_bundle": {
+      "artifact": "LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+      "rows": 18276,
+      "sha256": "b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d"
+    },
+    "phase0_catalog": {
+      "artifact": "Rawlsing_P2_Phase0_Governed_Question_Node_Catalog_v1.json",
+      "rows": 18276,
+      "sha256": "2a13ca0551f812e71ad254ab65e3f1ccf99ccfa789eeac4ade708cdbfaa568b8"
+    }
+  },
+  "new_executable_routing": {"Latinobarómetro_2024":4,"South_Asia_W2":1},
+  "positive_general_authority": {
+    "Latinobarómetro_2011": {
+      "implementations": 229,
+      "objects": 37,
+      "rule": "native page instructs interviewer to read each statement and record one answer for each; exact members from T11 exact_bound_members_json"
+    },
+    "LiTS": {
+      "implementations": 13,
+      "objects": 3,
+      "objects_used": [
+        "LiTS-R14-III-Q406-PRIORITIES",
+        "LiTS-R14-II-Q407-CLIMATE_STATEMENTS",
+        "LiTS-R14-II-Q713-VOLUNTARY_ORGANIZATIONS"
+      ],
+      "rule": "only explicit ASK ALL or affirmative 'battery is asked' source-native structures; absence-only no-skip structures excluded"
+    }
+  },
+  "schema": "c05.source_authority_and_blocker_manifest.v1",
+  "scoped_nonapplicability": {
+    "count": 10,
+    "question_implementation_ids": [
+      "question_impl.phase0.17a168cf5ed94cb35348",
+      "question_impl.phase0.185e22163fffbb4fdba6",
+      "question_impl.phase0.19689ed1e20d64f6da20",
+      "question_impl.phase0.3cc771d5fd7e4e4a8f81",
+      "question_impl.phase0.4f9d427c0a5404a621d0",
+      "question_impl.phase0.5e802ee7415c4cb921bb",
+      "question_impl.phase0.957f3c805bc3e59c208a",
+      "question_impl.phase0.e208ada185688a4818ed",
+      "question_impl.phase0.e6c66d4d4903712099bc",
+      "question_impl.phase0.f0e7503758fab893db7a"
+    ],
+    "rule": "scope preserved; no global implementation absence inflation",
+    "source": "Authority-45-adopted B05 exact-current evidence"
+  },
+  "source_native_authority": {
+    "B05_AUTH44_RETURN": {
+      "commit": "2e695b964e9d2b31e28b3dbda4aa5e86abb4ef98",
+      "use": "Authority-45-adopted 51 executable predicates + 10 scoped nonapplicability findings at exact current ID/scope"
+    },
+    "R14_SOURCE_NATIVE_CANDIDATE_INTEGRITY_AUDIT_R3.csv": {
+      "sha256": "fa1d4d91692b7e5349657d0e3becd3ee248d8d4a76ceec1dd5238d34843a7fa0",
+      "use": "exact native routing/universe/applicability statements and questionnaire locators"
+    },
+    "T11_R14_596_SOURCE_OBJECT_ACCOUNTING_R7.csv": {
+      "sha256": "8d9e6fdb7fb50ba8817c811649788e0032816bb00db0995549ae28f920fe4247",
+      "use": "exact_bound_members_json used only for positively worded R14 general/ASK-ALL objects"
+    }
+  },
+  "unresolved_blockers": {
+    "EXACT_EXECUTABLE_PREDICATE_NOT_RECOVERED": 540,
+    "NO_AFFIRMATIVE_GENERAL_OR_ROUTING_AUTHORITY_RECOVERED": 3097,
+    "ROUTING_OR_UNIVERSE_AUTHORITY_REMAINS_UNRESOLVED": 1131
+  }
+}

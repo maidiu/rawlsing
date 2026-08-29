@@ -1,0 +1,51 @@
+{
+  "actual_family_counts": {"Latinobarómetro": 812, "LiTS": 4434, "South Asia": 141},
+  "checks": {
+    "all_output_dispositions_in_authority45_vocabulary": true,
+    "b05_adopted_executable_ids_present": 51,
+    "b05_adopted_scoped_nonapp_ids_present": 10,
+    "deep_c05_rows": 5387,
+    "duplicate_output_ids": 0,
+    "exactly_one_disposition_per_id": true,
+    "extra_ids": 0,
+    "input_unique_ids": 5387,
+    "missing_ids": 0,
+    "new_predicates_hostile_positive_negative_replay_pass": true,
+    "old_sample_denominator_used": false,
+    "output_rows": 5387,
+    "output_unique_ids": 5387,
+    "phase0_c05_rows": 5387,
+    "phase0_deep_exact_id_set_equal": true,
+    "phase0_full_active_rows": 18276
+  },
+  "committed_ledger": {
+    "format": "compact exact-current disposition carrier + deterministic reconstructor",
+    "carrier": "01_C05_COMPACT_EXACT_CURRENT_LEDGER.json",
+    "reconstructor": "01_C05_RECONSTRUCT_EXACT_CURRENT_LEDGER.py",
+    "part_rows": 5387,
+    "part_unique_ids": 5387,
+    "exact_id_set_equal_to_full_internal_court_ledger": true,
+    "aggregate_disposition_counts": {
+      "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT": 312,
+      "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE": 242,
+      "GOVERNED_SCOPED_NONAPPLICABILITY": 10,
+      "POSITIVE_EXECUTABLE_ROUTING_AUTHORITY": 55,
+      "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT": 4768
+    },
+    "reconstructor_local_validation": "PASS",
+    "reconstructed_tsv_rows_excluding_header": 5387,
+    "reconstructed_tsv_sha256": "44c6371fb093694f03d374ae606e59a1c8c0bebd6c8768c3c9d5cb8809831607",
+    "ordered_current_id_sha256": "319a74f2bd00d6cd4f3ef434aafbc4ebee635597e6a68d17a86a07462da9ae62",
+    "id_code_pair_stream_sha256": "1d72efe346cced887b65e396b0f69645e668415e7dd9cbc69b9e69d420498013"
+  },
+  "disposition_counts": {
+    "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT": 312,
+    "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE": 242,
+    "GOVERNED_SCOPED_NONAPPLICABILITY": 10,
+    "POSITIVE_EXECUTABLE_ROUTING_AUTHORITY": 55,
+    "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT": 4768
+  },
+  "expected_family_counts": {"Latinobarómetro": 812, "LiTS": 4434, "South Asia": 141},
+  "schema": "c05.full_current_validation.v1",
+  "status": "PASS"
+}
