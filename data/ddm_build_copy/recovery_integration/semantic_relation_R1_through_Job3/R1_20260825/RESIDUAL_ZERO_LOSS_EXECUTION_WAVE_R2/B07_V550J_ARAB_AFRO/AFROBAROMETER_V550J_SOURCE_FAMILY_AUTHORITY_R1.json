@@ -1,0 +1,85 @@
+{
+  "schema": "rawlsing.v550j.source-family-authority/1.0.0",
+  "governing_authority": {
+    "id": "AUTHORITY_43",
+    "blob": "de47cbe0a8af98cdbc37bd33f0493bc4ca48eac7",
+    "head": "8fe15195d6b749bbe33449175b184ae5ff411b7d"
+  },
+  "global_recovery_denominator": {
+    "raw_source_structures": 2499,
+    "raw_memberships": 15990,
+    "authority_ref": "391114916ded6cf607eb4ab77d7c4cdf012bb1c5",
+    "effect": "ADJUDICATION_DENOMINATOR_ONLY__NOT_EXECUTABLE_AUTHORITY",
+    "source_family_slice_materialized": false
+  },
+  "archive08_status": "FORENSIC_ONLY__NONAUTHORITATIVE",
+  "full_family_completeness_claim": false,
+  "production_wide_execution_authorized": false,
+  "source_family": "Afrobarometer",
+  "known_source_waves": [
+    "R1",
+    "R5",
+    "R9"
+  ],
+  "manifest_blob": "bc3244dde1da7893f38b05f008af834aed086db1",
+  "registry_state": "PARTIAL_GOVERNED_BOUNDED_CANARY__FULL_DENOMINATOR_BLOCKED",
+  "admitted_configurations": [
+    {
+      "configuration_id": "JCFG-AFRO-R1-MIP-RANKED",
+      "state": "ADMITTED_BOUNDED_CONFIGURATION",
+      "eligible_waves": [
+        "R1"
+      ],
+      "country_scope": [
+        "LS"
+      ],
+      "family_type": "ranked_priority_configuration",
+      "member_order_semantics": "ORDER_SIGNIFICANT__RANK_IDENTITY_BEARING",
+      "target_condition_distinction": "TARGET_TARGET__NO_CONDITION_MEMBER",
+      "minimum_items_answered": 2,
+      "completion_law": "BOTH_RANKED_MEMBERS_GOVERNED_SUBSTANTIVE",
+      "response_handling": "SOURCE_NATIVE_NOMINAL_PRIORITIES__PRESERVE_RANK",
+      "routing_member_applicability_state": "BOUNDED_SECTION85_CANARY_ONLY__NO_PRODUCTWIDE_ROUTING_CLAIM",
+      "allowed_inference": [
+        "ordered co-occurrence across listed source-native priority responses"
+      ],
+      "forbidden_inference": [
+        "signed support/opposition",
+        "rank collapse",
+        "cross-wave category-code portability",
+        "cross-source portability",
+        "unlisted scope/member extension"
+      ],
+      "provenance_refs": [
+        "section85/authority/bounded_joint_configuration_authority.csv@92d5f21a8f3d11314b665449ebb84a48fc7eb718",
+        "section85/authority/registry_afrobarometer.yaml@bbba658bddcde43d9a4855a29ec1f2f725adaa51"
+      ],
+      "members": [
+        {
+          "member_id": "mip1",
+          "role": "first_ranked_priority",
+          "order": 1,
+          "question_implementation_id": "question_impl.phase0.e8dc21a068cc141b3efd",
+          "p2_lineage_id": "p2lineage_e2d5afb23b92db2f37c421d3",
+          "p2_source_structure_id": "afro_struct_338388735c9d7618",
+          "disposition": "ADMITTED_BOUNDED_MEMBER"
+        },
+        {
+          "member_id": "mip2",
+          "role": "second_ranked_priority",
+          "order": 2,
+          "question_implementation_id": "question_impl.phase0.cc272e2364e864acb793",
+          "p2_lineage_id": "p2lineage_78ccc8f09a7cf1897cc4adae",
+          "p2_source_structure_id": "afro_struct_338388735c9d7618",
+          "disposition": "ADMITTED_BOUNDED_MEMBER"
+        }
+      ]
+    }
+  ],
+  "unresolved_denominator": {
+    "state": "STILL_UNRESOLVED__SOURCE_FAMILY_CANDIDATE_MEMBER_SLICE_NOT_MATERIALIZED",
+    "reason": "global 2499/15990 denominator is preserved but exact Afrobarometer slice is absent on B07 start; no row-wise promotion beyond bounded canary",
+    "required_closure": "exact Afrobarometer raw structure/member slice + row-wise adjudication + routing/member-applicability authority"
+  },
+  "authority_content_hash": "402d0d65b5323c9295d2419161cd3566acfd17e1ba4614191f2f36481e419907"
+}

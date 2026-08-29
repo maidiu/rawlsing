@@ -1,0 +1,86 @@
+{
+  "schema": "rawlsing.v550j.source-family-authority/1.0.0",
+  "governing_authority": {
+    "id": "AUTHORITY_43",
+    "blob": "de47cbe0a8af98cdbc37bd33f0493bc4ca48eac7",
+    "head": "8fe15195d6b749bbe33449175b184ae5ff411b7d"
+  },
+  "global_recovery_denominator": {
+    "raw_source_structures": 2499,
+    "raw_memberships": 15990,
+    "authority_ref": "391114916ded6cf607eb4ab77d7c4cdf012bb1c5",
+    "effect": "ADJUDICATION_DENOMINATOR_ONLY__NOT_EXECUTABLE_AUTHORITY",
+    "source_family_slice_materialized": false
+  },
+  "archive08_status": "FORENSIC_ONLY__NONAUTHORITATIVE",
+  "full_family_completeness_claim": false,
+  "production_wide_execution_authorized": false,
+  "source_family": "Arab Barometer",
+  "known_source_waves": [
+    "I",
+    "II",
+    "V",
+    "VIII"
+  ],
+  "manifest_blob": "ca297d2e664189628e6f4a8a72714fbf6a1ed620",
+  "registry_state": "PARTIAL_GOVERNED_BOUNDED_CANARY__FULL_DENOMINATOR_BLOCKED",
+  "admitted_configurations": [
+    {
+      "configuration_id": "JCFG-ARAB-I-POLITICAL-KNOWLEDGE",
+      "state": "ADMITTED_BOUNDED_CONFIGURATION",
+      "eligible_waves": [
+        "I"
+      ],
+      "country_scope": [
+        "YE"
+      ],
+      "family_type": "parallel_knowledge_item_configuration",
+      "member_order_semantics": "SET_DISTINCT_TARGETS__SOURCE_ORDER_REPLAY_ONLY",
+      "target_condition_distinction": "TARGET_TARGET__NO_CONDITION_MEMBER",
+      "minimum_items_answered": 2,
+      "completion_law": "BOTH_LISTED_MEMBERS_GOVERNED_SUBSTANTIVE",
+      "response_handling": "RAW_NOMINAL_JOINT__NO_CORRECTNESS_SCORING",
+      "routing_member_applicability_state": "BOUNDED_SECTION85_CANARY_ONLY__NO_PRODUCTWIDE_ROUTING_CLAIM",
+      "allowed_inference": [
+        "raw joint answer configuration across listed knowledge targets"
+      ],
+      "forbidden_inference": [
+        "correctness scoring without answer-key authority",
+        "proposition identity between targets",
+        "signed support/opposition",
+        "cross-source portability",
+        "unlisted scope/member extension"
+      ],
+      "provenance_refs": [
+        "section85/authority/bounded_joint_configuration_authority.csv@92d5f21a8f3d11314b665449ebb84a48fc7eb718",
+        "section85/authority/registry_arab_barometer.yaml@e6ee4d3971a4e22c2bf0b1e06eb7e4e85c62ae0c"
+      ],
+      "members": [
+        {
+          "member_id": "q2571",
+          "role": "foreign_minister_knowledge_item",
+          "order": 1,
+          "question_implementation_id": "question_impl.phase0.d77e4a018ab7522d369f",
+          "p2_lineage_id": "p2lineage_89ddb20c2460adb2f1a52f17",
+          "p2_source_structure_id": "arab_structure_273db16a2c1ee16c2748",
+          "disposition": "ADMITTED_BOUNDED_MEMBER"
+        },
+        {
+          "member_id": "q2572",
+          "role": "parliamentary_leader_knowledge_item",
+          "order": 2,
+          "question_implementation_id": "question_impl.phase0.18864c82c30e41e739b8",
+          "p2_lineage_id": "p2lineage_ca9dc64420f1f8cd048bcf03",
+          "p2_source_structure_id": "arab_structure_273db16a2c1ee16c2748",
+          "disposition": "ADMITTED_BOUNDED_MEMBER"
+        }
+      ]
+    }
+  ],
+  "unresolved_denominator": {
+    "state": "STILL_UNRESOLVED__SOURCE_FAMILY_CANDIDATE_MEMBER_SLICE_NOT_MATERIALIZED",
+    "reason": "global 2499/15990 denominator is preserved but exact Arab Barometer slice is absent on B07 start; no row-wise promotion beyond bounded canary",
+    "required_closure": "exact Arab Barometer raw structure/member slice + row-wise adjudication + routing/member-applicability authority"
+  },
+  "authority_content_hash": "ca0d6130bf0a3a4572b18af715f38afa06ce6dbfa9a33f0d69c6325e10286bbd"
+}
