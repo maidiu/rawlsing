@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "checks": {
+    "registry_original_sha256_match": true,
+    "memberships_original_sha256_match": true,
+    "registry_original_size_match": true,
+    "memberships_original_size_match": true,
+    "registry_row_count_from_rows": true,
+    "membership_row_count_from_rows": true,
+    "registry_structure_ids_unique": true,
+    "membership_structures_cover_all_registry_structures": true,
+    "membership_no_orphan_structure_ids": true,
+    "declared_member_counts_equal_actual_rows_for_all_structures": true,
+    "recovered_member_counts_equal_actual_rows_for_all_structures": true,
+    "declared_member_count_sum_15990": true,
+    "recovered_member_count_sum_15990": true,
+    "membership_family_matches_registry": true,
+    "membership_wave_matches_registry": true,
+    "member_order_unique_and_complete_1_to_n_per_structure": true,
+    "question_implementation_id_nonblank": true,
+    "lineage_id_nonblank": true,
+    "source_variable_code_nonblank": true,
+    "registry_exact_duplicate_rows_zero": true,
+    "membership_exact_duplicate_rows_zero": true,
+    "membership_structure_member_order_duplicate_zero": true,
+    "all_registry_membership_recovery_status_complete": true,
+    "all_registry_cross_source_use_discovery_only": true,
+    "family_partition_structure_sum_2499": true,
+    "family_partition_membership_sum_15990": true,
+    "wave_partition_structure_sum_2499": true,
+    "wave_partition_membership_sum_15990": true,
+    "library_persisted_carrier_roundtrip_byte_identical": true
+  },
+  "failures": [],
+  "observed": {
+    "source_structures": 2499,
+    "structure_memberships": 15990,
+    "unique_source_structure_ids": 2499,
+    "unique_membership_structure_ids": 2499,
+    "registry_sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd",
+    "membership_sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c",
+    "registry_size_bytes": 2595849,
+    "membership_size_bytes": 2752901,
+    "source_family_structure_rows": {
+      "Afrobarometer": 230,
+      "Arab Barometer": 159,
+      "Asian Barometer": 71,
+      "EVS": 182,
+      "GSS": 722,
+      "Latinobarómetro": 123,
+      "LiTS": 882,
+      "South Asia": 15,
+      "WVS": 115
+    },
+    "source_family_membership_rows": {
+      "Afrobarometer": 1264,
+      "Arab Barometer": 856,
+      "Asian Barometer": 479,
+      "EVS": 1237,
+      "GSS": 2823,
+      "Latinobarómetro": 680,
+      "LiTS": 7878,
+      "South Asia": 76,
+      "WVS": 697
+    },
+    "registry_source_authority_status_counts": {
+      "INVENTORY_ONLY_NOT_J_FAMILY_AUTHORITY": 1154,
+      "INVENTORY_ONLY_NOT_J_FAMILY": 1091,
+      "INVENTORY_ONLY_NO_J_FAMILY_AUTHORITY": 230,
+      "EXISTING_IMPLEMENTATION_REFERENCE_NOT_NEW_P2_FAMILY_AUTHORITY": 24
+    },
+    "membership_recovery_status_counts": {
+      "EXPOSED_GOVERNING_MEMBERSHIP_FILE": 9113,
+      "NESTED_GOVERNING_SOURCE_PACKAGE_MEMBERSHIP_FILE": 5613,
+      "EXPOSED_GOVERNING_MEMBERSHIP_FILE::EXACT_SOURCE_WAVE_VARIABLE_LOOKUP": 1264
+    },
+    "persisted_carrier_library_file_id": "libfile_cec6f3a01f988191b94a97354d0b9143",
+    "persisted_carrier_sha256": "1687b4fea789aabf90e3906f104250f4d7bfa0055586a71066598fd9541f0286"
+  },
+  "negative_ceiling": "PASS proves byte-exact historical carrier recovery and row arithmetic only. It does not adjudicate source structures into J-family authority or authorize respondent/runtime use."
+}

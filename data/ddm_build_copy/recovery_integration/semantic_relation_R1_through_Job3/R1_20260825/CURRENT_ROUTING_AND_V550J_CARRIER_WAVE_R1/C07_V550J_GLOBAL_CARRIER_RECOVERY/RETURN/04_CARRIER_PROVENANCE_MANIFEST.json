@@ -1,0 +1,160 @@
+{
+  "court": "C07_V550J_2499_15990_EXACT_ROW_CARRIER_RECOVERY_R1",
+  "status": "EXACT_HISTORICAL_ROW_CARRIER_RECOVERED__NOT_PROMOTED_TO_V550J_AUTHORITY",
+  "worker_branch": "agent/verkhovod-c07-v550j-global-carrier-recovery-r1",
+  "exact_starting_head": "e2f20cc8d442e053e60e10b517601d16fb395297",
+  "governing_authority": {
+    "authority": 45,
+    "commit": "16a212b7343206c81634b26f2546ad8b60a77475"
+  },
+  "authority_chain": {
+    "B06": "116e72efa36053bb20141096e79f2887b75a7ca3",
+    "B07": "65c7de5d5e15d9b5cb2f6e8a8d826340faafab11",
+    "B08": "a93553f3e2fa889ff3c5575cf986dd2c4132e394",
+    "B09": "8a7fdb4cb8d290bfb56a81c9394d89ec87965eeb",
+    "A10_LMQ002_005": "c1d2d7f4df9ebbe209c3809cc540f389570ab5a1",
+    "R03_V550_V550J_SOURCE_JOINT": "391114916ded6cf607eb4ab77d7c4cdf012bb1c5"
+  },
+  "long_memory_trace": {
+    "LMQ-002": "A10 explicitly treats 2,499/15,990 as exact recovery denominator != executable product-wide J authority.",
+    "LMQ-005": "A10 requires no-loss reconciliation to the governed source-structure/member universe before all-wave executable scope closure.",
+    "LMQ-013": "Authority 45 separately preserves live external runtime residual; not C07 terrain."
+  },
+  "library_recovery_source": {
+    "library_file_id": "file_00000000da58822faa16f3d25a37a809",
+    "name": "Rawlsing_J_Family_Authority_Strategy_Handoff_v40_20260801.zip",
+    "historical_internal_directory": "32_P2_GLOBAL_CROSS_SOURCE_RECONCILIATION_TRANCHE1/",
+    "method": "Exact historical bytes extracted from retained Library handoff; original filenames, byte sizes and SHA-256s match the historical section manifest/tree inventory."
+  },
+  "recovered_original_files": {
+    "registry": {
+      "filename": "Rawlsing_P2_Normalized_Source_Structure_Registry_v1.csv",
+      "size_bytes": 2595849,
+      "sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd",
+      "row_count": 2499,
+      "columns": [
+        "source_structure_id",
+        "source_family",
+        "wave",
+        "structure_type",
+        "structure_label",
+        "declared_member_count",
+        "source_authority_status",
+        "source_rationale",
+        "first_source_row_index",
+        "last_source_row_index",
+        "recovered_member_count",
+        "membership_recovery_status",
+        "member_lineage_count",
+        "member_lineages_json",
+        "semantic_content_ids_json",
+        "exact_content_ids_json",
+        "semantic_roles_json",
+        "semantic_subroles_json",
+        "response_topologies_json",
+        "cross_source_use_status"
+      ]
+    },
+    "memberships": {
+      "filename": "Rawlsing_P2_Normalized_Source_Structure_Memberships_v1.csv",
+      "size_bytes": 2752901,
+      "sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c",
+      "row_count": 15990,
+      "columns": [
+        "source_structure_id",
+        "source_family",
+        "wave",
+        "source_variable_code",
+        "question_implementation_id",
+        "lineage_id",
+        "member_order",
+        "membership_recovery_status"
+      ]
+    },
+    "carrier_pair_proof_sha256": "602d8209f90a7403272a381fda0a0772d2cd5cab7711857858537669ab51e059",
+    "pair_digest_note": "Proof digest over filename\\0bytes\\0 for the two recovered files in registry-then-memberships order; not a historical identity primitive."
+  },
+  "historical_support_files": {
+    "SECTION_MANIFEST.csv": {
+      "size_bytes": 2973,
+      "sha256": "26c1154450ce7ab80978408eb847e258299d1a4394ef75a9927062d77afd4217"
+    },
+    "VALIDATION.json": {
+      "size_bytes": 3925,
+      "sha256": "c4f70a5a4024220937313153b2b218de3816070532d187bb8c03c51245b731b9"
+    },
+    "P2_GLOBAL_RECONCILIATION_TRANCHE1_REPORT.md": {
+      "size_bytes": 5077,
+      "sha256": "d0b815e96563d39f754040de6a7a47e7d37bb01aada0fba443374b331a22503b"
+    },
+    "AUTHORITY_BOUNDARY_AND_METHOD.md": {
+      "size_bytes": 3255,
+      "sha256": "36107675c2c3591548ff532513958586ba24e3b76b71e7bc6760076bf567a5b2"
+    },
+    "build_p2_global_reconciliation_tranche1.py": {
+      "size_bytes": 50696,
+      "sha256": "6b4c0a46c5b91a403cfcd109931443a916d31621c3cf116338b553d77fa9f3c3"
+    }
+  },
+  "row_derived_totals": {
+    "source_structures": 2499,
+    "structure_memberships": 15990,
+    "declared_member_count_sum": 15990,
+    "recovered_member_count_sum": 15990
+  },
+  "source_family_partitions": [
+    {"source_family": "Afrobarometer", "structure_rows": 230, "membership_rows": 1264},
+    {"source_family": "Arab Barometer", "structure_rows": 159, "membership_rows": 856},
+    {"source_family": "Asian Barometer", "structure_rows": 71, "membership_rows": 479},
+    {"source_family": "EVS", "structure_rows": 182, "membership_rows": 1237},
+    {"source_family": "GSS", "structure_rows": 722, "membership_rows": 2823},
+    {"source_family": "Latinobarómetro", "structure_rows": 123, "membership_rows": 680},
+    {"source_family": "LiTS", "structure_rows": 882, "membership_rows": 7878},
+    {"source_family": "South Asia", "structure_rows": 15, "membership_rows": 76},
+    {"source_family": "WVS", "structure_rows": 115, "membership_rows": 697}
+  ],
+  "authority_boundary": {
+    "carrier_role": "RECOVERY_AND_LATER_ADJUDICATION_DENOMINATOR",
+    "not_authorized_as": [
+      "J_FAMILY_AUTHORITY",
+      "RESPONDENT_COMPOSITION_AUTHORITY",
+      "EXECUTABLE_V550J_REGISTRY",
+      "ROUTING_AUTHORITY"
+    ],
+    "registry_cross_source_use_status_counts": {
+      "DISCOVERY_STRUCTURE_ONLY_NOT_J_FAMILY_AUTHORITY": 2499
+    },
+    "registry_source_authority_status_counts": {
+      "INVENTORY_ONLY_NOT_J_FAMILY_AUTHORITY": 1154,
+      "INVENTORY_ONLY_NOT_J_FAMILY": 1091,
+      "INVENTORY_ONLY_NO_J_FAMILY_AUTHORITY": 230,
+      "EXISTING_IMPLEMENTATION_REFERENCE_NOT_NEW_P2_FAMILY_AUTHORITY": 24
+    },
+    "membership_recovery_status_counts": {
+      "EXPOSED_GOVERNING_MEMBERSHIP_FILE": 9113,
+      "NESTED_GOVERNING_SOURCE_PACKAGE_MEMBERSHIP_FILE": 5613,
+      "EXPOSED_GOVERNING_MEMBERSHIP_FILE::EXACT_SOURCE_WAVE_VARIABLE_LOOKUP": 1264
+    }
+  },
+  "persisted_exact_carrier": {
+    "surface": "ChatGPT Library",
+    "path": "/Rawlsing/C07_V550J_GLOBAL_CARRIER_RECOVERY_R1/C07_EXACT_P2_SOURCE_STRUCTURE_CARRIER.tar.xz",
+    "file_id": "file_000000002c8081f582bbe8da1552f0a4",
+    "library_file_id": "libfile_cec6f3a01f988191b94a97354d0b9143",
+    "size_bytes": 506528,
+    "sha256": "1687b4fea789aabf90e3906f104250f4d7bfa0055586a71066598fd9541f0286",
+    "roundtrip_materialization": "BYTE_IDENTICAL_PASS",
+    "archive_members": {
+      "Rawlsing_P2_Normalized_Source_Structure_Registry_v1.csv": {
+        "size_bytes": 2595849,
+        "sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd",
+        "rows": 2499
+      },
+      "Rawlsing_P2_Normalized_Source_Structure_Memberships_v1.csv": {
+        "size_bytes": 2752901,
+        "sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c",
+        "rows": 15990
+      }
+    }
+  }
+}
