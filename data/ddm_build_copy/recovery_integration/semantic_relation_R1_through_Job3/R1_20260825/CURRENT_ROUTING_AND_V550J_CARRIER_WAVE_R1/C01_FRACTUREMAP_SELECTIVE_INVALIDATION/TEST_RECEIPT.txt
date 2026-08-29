@@ -1,0 +1,65 @@
+C01 FRACTURE-MAP SELECTIVE INVALIDATION REPAIR + READMISSION R1
+=================================================================
+
+START HEAD
+abc056b4a0c0f571404b7921a27d21ad3034589e
+
+WORKER COMMAND BLOB
+88eeeb6d1d64f4c784fbbdf0e673eab7f36d2b84
+
+AUTHORITY 45
+commit 16a212b7343206c81634b26f2546ad8b60a77475
+blob   44edd0f87da778a2c08e33869a129e5a36830bbc
+
+ACCEPTED B01 RETURN
+a24e0082357f6d01425f0b12b63b121d6a36b7df
+
+EXACT Z02 CANDIDATE
+d164f14dd6edd63a30b02639ed93cfb90c51ee92
+
+PRODUCTION REPAIR
+rawlsing_next/pre553_fracture_map_invalidation.py
+blob 56eb9883cd447fc3cc8431835ca20d23f2fa3712
+
+FOCUSED HOSTILE TEST
+rawlsing_next/tests/test_pre553_fracture_map_invalidation.py
+blob 85adaceb7a19f39a63848f44a3b33621bd95769d
+
+LOCAL RUNTIME
+Python 3.13.5
+pytest 9.0.2
+
+COMMAND
+PYTHONPATH=/tmp/c01 python -m pytest -q rawlsing_next/tests/test_pre553_fracture_map_invalidation.py
+
+RESULT
+......                                                                   [100%]
+6 passed in 0.04s
+
+FOCUSED GATES
+PASS legacy whole-release identity reproduces AC11 all-artifact churn
+PASS R:0->1 invalidates exactly R_TOPO
+PASS ROOT/P/Q/S/COSIG/J3 unrelated identities remain stable
+PASS upstream TARGET mutation invalidates all and only lawful descendants
+PASS Q_CHILD local semantic change propagates only to Q_CHILD/S_CHILD/COSIG
+PASS replay identity deterministic under mapping/dependency order permutation
+PASS source-release/provenance changes do not change dependency-local identity
+PASS provenance/replay/address-field leakage into local semantic projection fails closed
+PASS unknown dependency/cycle/dependency-graph mutation fail closed
+
+FULL INDEPENDENT READMISSION
+BLOCKED AT ORDERED STEP 1: exact Wave-VIII source materialization.
+
+Required exact source SHA-256:
+SAV           a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998
+QUESTIONNAIRE d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb
+CODEBOOK      328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc
+
+The connected File Library did not expose exact objects matching those identities.
+Therefore the mandated ordered I05/I06/I07/I08 readmission sequence was not rerun.
+
+Prior B01 I05/I06/I07 PASS is retained as accepted prior evidence only; it is not relabeled as a fresh C01 runtime PASS.
+
+FINAL
+FRACTURE_MAP_INDEPENDENT_READMISSION = BLOCKED__EXACT_WAVEVIII_SOURCE_RUNTIME_UNAVAILABLE
+SUCCESS TOKEN ISSUED: NO

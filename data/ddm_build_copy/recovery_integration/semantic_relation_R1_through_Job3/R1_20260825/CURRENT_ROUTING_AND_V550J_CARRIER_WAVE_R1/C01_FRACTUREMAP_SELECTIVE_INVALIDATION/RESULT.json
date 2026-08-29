@@ -1,0 +1,80 @@
+{
+  "schema": "C01_FRACTUREMAP_SELECTIVE_INVALIDATION_REPAIR_READMISSION_R1@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-c01r2-fracturemap-selective-invalidation",
+  "start_head": "abc056b4a0c0f571404b7921a27d21ad3034589e",
+  "authority45_commit": "16a212b7343206c81634b26f2546ad8b60a77475",
+  "authority45_blob": "44edd0f87da778a2c08e33869a129e5a36830bbc",
+  "accepted_b01_return": "a24e0082357f6d01425f0b12b63b121d6a36b7df",
+  "z02_candidate": "d164f14dd6edd63a30b02639ed93cfb90c51ee92",
+  "repair": {
+    "contract_id": "PRE553_AUTH45_FRACTUREMAP_SELECTIVE_INVALIDATION@1.0.0",
+    "production_blob": "56eb9883cd447fc3cc8431835ca20d23f2fa3712",
+    "test_blob": "85adaceb7a19f39a63848f44a3b33621bd95769d",
+    "focused_runtime": {
+      "python": "3.13.5",
+      "pytest": "9.0.2",
+      "command": "PYTHONPATH=/tmp/c01 python -m pytest -q rawlsing_next/tests/test_pre553_fracture_map_invalidation.py",
+      "tests_passed": 6,
+      "tests_failed": 0,
+      "elapsed_seconds": 0.04,
+      "status": "PASS"
+    },
+    "ac11": {
+      "fixture_atom": "SYN-R035",
+      "changed_determinant": "R",
+      "before": "0",
+      "after": "1",
+      "support_before": {
+        "r0": 14,
+        "r1": 6
+      },
+      "support_after": {
+        "r0": 13,
+        "r1": 7
+      },
+      "expected_invalidated_artifacts": [
+        "R_TOPO"
+      ],
+      "observed_invalidated_artifacts": [
+        "R_TOPO"
+      ],
+      "stable_artifacts": [
+        "ROOT",
+        "P_CONFORMER",
+        "P_DEVIANT",
+        "ALT_CONVERGER",
+        "ALT_MINORITY",
+        "Q_CHILD",
+        "S_CHILD",
+        "COSIG",
+        "J3"
+      ],
+      "status": "PASS"
+    },
+    "upstream_and_replay_regressions": "PASS"
+  },
+  "ordered_readmission": {
+    "source_materialization": {
+      "required_source_hashes": {
+        "sav": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+        "questionnaire": "d72c3afc4529703376dc1133a3d984541c2ceebd1af6cb03a1562f6ce104c2fb",
+        "codebook": "328bbbbfa6cb8a78eacad52847b1432a56a81ec9ecfcd4f18754e05532afd4fc"
+      },
+      "current_runtime_status": "BLOCKED__EXACT_SOURCE_OBJECTS_NOT_EXPOSED_IN_CONNECTED_FILE_LIBRARY"
+    },
+    "I05_hostile_semantic_parity": "NOT_RERUN__ORDERED_COURT_BLOCKED_AT_SOURCE_MATERIALIZATION",
+    "I06_lebanon_realdata_parity": "NOT_RERUN__EXACT_WAVEVIII_SOURCE_UNAVAILABLE",
+    "I07_realdata_cosignature_direct_j3": "NOT_RERUN__EXACT_WAVEVIII_SOURCE_UNAVAILABLE",
+    "I08_full_independent_admission": "NOT_RERUN__ORDERED_COURT_INCOMPLETE",
+    "inherited_prior_b01_evidence": {
+      "I05": "PASS",
+      "I06": "PASS",
+      "I07": "PASS"
+    }
+  },
+  "verdict": "FRACTURE_MAP_INDEPENDENT_READMISSION = BLOCKED__EXACT_WAVEVIII_SOURCE_RUNTIME_UNAVAILABLE",
+  "success_token_issued": false,
+  "sibling_blind_to_C02_C10": true,
+  "architecture_or_v3_change": false
+}
