@@ -1,0 +1,46 @@
+{
+  "accidental_exposures": [
+    {
+      "action": "IGNORED; no memberships, counts, decisions, or source conclusions admitted.",
+      "identity": "R14_SOURCE_NATIVE_CANDIDATE_INTEGRITY_AUDIT_R3.csv and older pasted WVS/Asian work snippets",
+      "surface": "Library broad search"
+    },
+    {
+      "action": "Aliases resolved to payloads different from frozen manifest. Payload contents excluded after mismatch discovery; only size/hash/row mismatch retained as integrity evidence.",
+      "identity": "CURRENT_SOURCE_STRUCTURE_UNIVERSE.csv / CURRENT_J_CANDIDATE_UNIVERSE.csv",
+      "surface": "authorized R1 Library aliases"
+    },
+    {
+      "action": "Not used in final R2 carriers, lineage, counts, or structure decisions.",
+      "identity": "some later carrier rows were visible before mutation was established",
+      "surface": "Library parsed preview during integrity diagnosis"
+    }
+  ],
+  "allowed_r1_counts_used_only_for_integrity_or_lineage_denominator_context": true,
+  "final_blindness_status": "PASS_WITH_RECORDED_ACCIDENTAL_EXPOSURE_IGNORED",
+  "forbidden_inputs_checked": [
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "historical J membership carriers",
+    "Archive08 promoted J material",
+    "historical V550J/P2 J inventory",
+    "sibling R2 lanes",
+    "J01-B"
+  ],
+  "historical_expected_counts_used_as_targets": false,
+  "historical_j_carriers_consumed": false,
+  "jurisdiction": [
+    "WVS W1",
+    "WVS W4",
+    "WVS W7",
+    "Asian Barometer W1",
+    "Asian Barometer W4",
+    "Asian Barometer W5"
+  ],
+  "schema_version": "J01A_R2_ANSWER_BLINDNESS_RECEIPT",
+  "sibling_r2_branches_or_outputs_consumed": false,
+  "starting_head": "bb2d350d34b188db5bee9e4ac3b36919af264e16",
+  "worker_branch": "agent/rabochii-j01a-r2-wvs-asian"
+}
