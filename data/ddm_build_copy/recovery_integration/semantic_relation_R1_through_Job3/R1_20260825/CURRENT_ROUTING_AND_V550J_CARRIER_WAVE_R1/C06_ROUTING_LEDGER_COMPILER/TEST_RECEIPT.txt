@@ -1,0 +1,88 @@
+C06 CURRENT 18,276 ROUTING LEDGER COMPILER / COVERAGE VALIDATOR R1
+TEST RECEIPT
+
+TESTED COMMIT
+1c657b984406695e57a1790ad9590d7de4caf417
+
+SUCCESSFUL HOSTED RUN
+workflow_run_id=33240338272
+job_id=99068478664
+python=3.12
+pytest=9.1.1
+
+COMMAND
+python -m pytest -q rawlsing_next/tests/test_current_routing_ledger.py
+
+RESULT
+22 passed in 0.13s
+0 failed
+
+PROVED
+PASS exact Authority-45 18,276 catalog contract constants
+PASS exact nine family counts
+PASS exact nine family catalog SHA-256 pins
+PASS exact five-disposition vocabulary
+PASS current catalog file bytes hash-pinned
+PASS current catalog row cardinality hash-pinned
+PASS exact implementation ID uniqueness
+PASS duplicate current IDs rejected
+PASS extra/non-current IDs rejected
+PASS cross-family current IDs rejected
+PASS family subsets rejected
+PASS all nine families required for joined compilation
+PASS exact joined coverage required
+PASS historical 700 membership rejected
+PASS historical 99 membership rejected
+PASS historical 600 membership rejected
+PASS historical 699 membership rejected
+PASS aggregate-count membership rejected
+PASS source-column-presence membership rejected
+PASS inferred-completion membership rejected
+PASS question-text/theme membership rejected
+PASS neighboring-wave analogy membership rejected
+PASS exact catalog-row SHA-256 binding
+PASS family/wave/variable identity preservation
+PASS exact evidence scope preservation
+PASS scoped nonapplicability widening rejected
+PASS positive predicate canonical hash validation
+PASS positive replay contract required
+PASS unresolved blocker required
+PASS unresolved executable-semantics leakage rejected
+PASS resolved evidence authority ref/hash required
+PASS deterministic joined-ledger hash
+PASS deterministic unresolved-summary hash
+PASS input family-order invariance
+
+FIXTURE IDENTITIES
+joined_ledger_sha256=97e96e539c1e328ade142d559ed336597d29b1ec3a7ebc512437e5df7392f39c
+unresolved_summary_sha256=58520955874699f896f2afb429dddc6d133bffb1b60784924a73429f462397f1
+fixture_unresolved_total=4
+
+SOURCE-AUTHORITY CEILING
+No real routing/unconditional/nonapplicable/administrative/unresolved disposition was decided by C06.
+No C02-C05 result was consumed.
+No real 18,276 joined ledger was generated.
+
+FIRST RUN NOTE
+run=33240256945
+commit=440313fac4869306814583d7c8a83dcfd17289b1
+result=3 passed, 19 failed
+cause=mechanical missing stdlib io import in CSV reader
+semantic/authority failure=false
+
+SECOND RUN
+run=33240291359
+commit=ab812579fd86c5f569bc114aeda9ff7066fd54ea
+result=22 passed in 0.14s
+
+FINAL RUN
+run=33240338272
+commit=1c657b984406695e57a1790ad9590d7de4caf417
+result=22 passed in 0.13s
+status=PASS
+
+TEMPORARY CI WORKFLOW
+Removed in final seal commit.
+
+TERMINAL
+C06_CURRENT_ROUTING_LEDGER_COMPILER_R1_COMPLETE

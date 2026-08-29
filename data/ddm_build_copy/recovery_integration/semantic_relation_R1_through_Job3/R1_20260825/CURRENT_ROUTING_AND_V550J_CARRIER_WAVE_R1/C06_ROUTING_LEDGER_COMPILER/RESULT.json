@@ -1,0 +1,74 @@
+{
+  "schema": "RAWLSING_C06_CURRENT_ROUTING_LEDGER_COMPILER_RETURN",
+  "schema_version": "1.0.0",
+  "status": "COMPILER_VALIDATOR_IMPLEMENTED__NO_SOURCE_AUTHORITY_DECISIONS",
+  "terminal_token": "C06_CURRENT_ROUTING_LEDGER_COMPILER_R1_COMPLETE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-c06-routing-ledger-compiler-r1",
+  "verified_starting_head": "2a733b78d63f6582acfd1ec68c0ef87cca5a8faa",
+  "governing_authority": {
+    "authority45_blob": "44edd0f87da778a2c08e33869a129e5a36830bbc",
+    "authority44_blob": "a301e4c8fe0aa08f9c462228130d078099c06dcf"
+  },
+  "tested_commit": "1c657b984406695e57a1790ad9590d7de4caf417",
+  "current_catalog": {
+    "archive_name": "LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+    "archive_sha256": "b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d",
+    "active_rows": 18276,
+    "active_scopes": 35,
+    "family_counts": {
+      "GSS": 6021,
+      "LiTS": 4434,
+      "EVS": 2224,
+      "Arab Barometer": 1698,
+      "WVS": 1219,
+      "Afrobarometer": 913,
+      "Asian Barometer": 814,
+      "Latinobarómetro": 812,
+      "South Asia": 141
+    }
+  },
+  "disposition_schema": [
+    "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE",
+    "POSITIVE_EXECUTABLE_ROUTING_AUTHORITY",
+    "GOVERNED_SCOPED_NONAPPLICABILITY",
+    "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT",
+    "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT"
+  ],
+  "compiler_decides_source_authority": false,
+  "real_dispositions_generated": 0,
+  "exact_membership_basis": "EXACT_CURRENT_IMPLEMENTATION_CATALOG_ID",
+  "hostile_forbidden_membership_bases": [
+    "HISTORICAL_700_TRIAL_SET",
+    "HISTORICAL_99_SOURCE_SIGNALED",
+    "HISTORICAL_600_LMQ004",
+    "HISTORICAL_699_UNRESOLVED",
+    "AGGREGATE_COUNT",
+    "SOURCE_COLUMN_PRESENCE",
+    "INFERRED_COMPLETION",
+    "QUESTION_TEXT_OR_THEME",
+    "NEIGHBORING_WAVE_ANALOGY"
+  ],
+  "fixture_receipt": {
+    "joined_ledger_sha256": "97e96e539c1e328ade142d559ed336597d29b1ec3a7ebc512437e5df7392f39c",
+    "unresolved_summary_sha256": "58520955874699f896f2afb429dddc6d133bffb1b60784924a73429f462397f1",
+    "unresolved_total": 4
+  },
+  "test_receipt": {
+    "workflow_run_id": 33240338272,
+    "job_id": 99068478664,
+    "python": "3.12",
+    "pytest": "9.1.1",
+    "passed": 22,
+    "failed": 0,
+    "duration_seconds": 0.13
+  },
+  "sibling_results_consumed": [],
+  "forbidden_work": {
+    "source_authority_decisions": false,
+    "C02_C05_consumption": false,
+    "V550J": false,
+    "architecture": false,
+    "V3": false
+  }
+}
