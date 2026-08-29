@@ -1,0 +1,43 @@
+name: B01 exact candidate transport
+
+on:
+  push:
+    branches:
+      - agent/verkhovod-b01-fracturemap-admission-r2
+
+permissions:
+  contents: read
+
+env:
+  Z02_REF: d164f14dd6edd63a30b02639ed93cfb90c51ee92
+
+jobs:
+  package-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact Z02 candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.Z02_REF }}
+          path: candidate
+      - name: Verify exact candidate
+        shell: bash
+        run: |
+          test "$(git -C candidate rev-parse HEAD)" = "$Z02_REF"
+          git -C candidate rev-parse HEAD > candidate/Z02_EXACT_HEAD.txt
+          git -C candidate ls-tree -r HEAD rawlsing_next > candidate/Z02_RAWLSING_NEXT_TREE.txt
+      - name: Package exact production surface
+        shell: bash
+        run: |
+          tar -C candidate -czf z02_rawlsing_next_d164.tar.gz rawlsing_next Z02_EXACT_HEAD.txt Z02_RAWLSING_NEXT_TREE.txt
+          sha256sum z02_rawlsing_next_d164.tar.gz > z02_rawlsing_next_d164.tar.gz.sha256
+      - name: Upload transport artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: b01-z02-exact-candidate-d164
+          path: |
+            z02_rawlsing_next_d164.tar.gz
+            z02_rawlsing_next_d164.tar.gz.sha256
+          if-no-files-found: error
+          retention-days: 1
