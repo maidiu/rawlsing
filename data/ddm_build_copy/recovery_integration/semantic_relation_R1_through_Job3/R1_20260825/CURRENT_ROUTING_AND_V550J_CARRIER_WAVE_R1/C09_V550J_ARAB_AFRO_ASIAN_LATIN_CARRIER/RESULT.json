@@ -1,0 +1,63 @@
+{
+  "schema": "C09_V550J_ARAB_AFRO_ASIAN_LATIN_CARRIER_ARCHAEOLOGY_R1_RESULT@1.0.0",
+  "status": "COMPLETE__EXACT_PARTIAL_CARRIER_RECOVERY_WITH_TYPED_MISSING_OBJECTS",
+  "worker_branch": "agent/verkhovod-c09-v550j-arab-afro-asian-latin-carrier-r1",
+  "starting_head": "8e644be2471e662b7d4ec5d4826e90d7919bb4d9",
+  "governing_authority": {
+    "commit": "16a212b7343206c81634b26f2546ad8b60a77475",
+    "authority_number": 45,
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/45_RESIDUAL_ZERO_LOSS_WAVE_R2_RETURN_JOIN_AND_MODERN_ROUTING_COURT_AUTHORITY.md"
+  },
+  "recovered_exact_bytes": [
+    {
+      "source_family": "Arab Barometer",
+      "role": "source_structure_inventory",
+      "filename": "Rawlsing_P2_Arab_Barometer_Source_Structure_Inventory_v1.csv",
+      "size_bytes": 94356,
+      "sha256": "24d25a92d388be17493ad55ecca0dcbd8fe08836e416cdd60912b5a6393e57db",
+      "scope": ["I", "II", "V", "VIII"]
+    },
+    {
+      "source_family": "Afrobarometer",
+      "role": "source_structure_inventory",
+      "filename": "Rawlsing_P2_Afrobarometer_Source_Structure_Inventory_v1.csv",
+      "size_bytes": 68659,
+      "sha256": "242a31737415f803045080ba2cae58ecd04f251b44495b2ff42a21cd1b364302",
+      "scope": ["R1", "R5", "R9"]
+    }
+  ],
+  "known_exact_unresolved_file_identities": [
+    {"source_family":"Afrobarometer","role":"source_structure_memberships","filename":"Rawlsing_P2_Afrobarometer_Source_Structure_Memberships_v1.csv","size_bytes":76518,"sha256":"baf604ba5d04110afb99c6d6aad80e18be7d17123ee20465ac23bbad1b12fdd1"},
+    {"source_family":"Asian Barometer","role":"source_structure_inventory","filename":"Rawlsing_P2_Asian_Barometer_Source_Structure_Inventory_v2.csv","size_bytes":21274,"sha256":"b4a51da7d7a195902537b82fa7744e9c1c7d8bf8ecf3130265ab3a4de8b76d30"},
+    {"source_family":"Asian Barometer","role":"source_structure_memberships","filename":"Rawlsing_P2_Asian_Barometer_Source_Structure_Memberships_v2.csv","size_bytes":54500,"sha256":"676ffa6a94b99a5fc039d6536ac519040a4c4cfd45f059ebcb8f28100dfd159e"},
+    {"source_family":"Latinobarómetro","role":"source_structure_inventory","filename":"Rawlsing_P2_Latinobarometro_Source_Structure_Inventory_v2.csv","size_bytes":35263,"sha256":"650090f1ebb4aa6481bc6519114e324a6fa5865669ecc86b3e8c7fe167223afc"},
+    {"source_family":"Latinobarómetro","role":"source_structure_memberships","filename":"Rawlsing_P2_Latinobarometro_Source_Structure_Memberships_v2.csv","size_bytes":78734,"sha256":"ebaaf1322499461eccb675d506e335e20e7dfeccb9ad41590b3caea5f04e77f6"},
+    {"source_family":"CROSS_SOURCE","role":"normalized_structure_registry","filename":"Rawlsing_P2_Normalized_Source_Structure_Registry_v1.csv","size_bytes":2595849,"sha256":"d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd"},
+    {"source_family":"CROSS_SOURCE","role":"normalized_structure_memberships","filename":"Rawlsing_P2_Normalized_Source_Structure_Memberships_v1.csv","size_bytes":2752901,"sha256":"52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c"}
+  ],
+  "arab_membership_missing": {
+    "type": "NESTED_GOVERNING_MEMBERSHIP_PAYLOAD__INNER_FILE_IDENTITY_UNRESOLVED",
+    "governing_package": {"filename":"Rawlsing_P2_Arab_Barometer_AllWave_Deep_Pass_v1_20260731.zip","size_bytes":775354,"sha256":"54a23501e60c26fa408637b52804f315ff749cc7f542a10b05eb62209efd5597"}
+  },
+  "family_scopes": {
+    "Arab Barometer": ["I", "II", "V", "VIII"],
+    "Afrobarometer": ["R1", "R5", "R9"],
+    "Asian Barometer": ["W1", "W4", "W5"],
+    "Latinobarómetro": ["1995", "2011", "2024"]
+  },
+  "asian_w6": "EXCLUDED_FROM_CLOSED_35",
+  "forbidden_inputs_consumed": {
+    "Archive08": 0,
+    "C07": 0,
+    "C08": 0,
+    "C10": 0,
+    "siblings": 0,
+    "R14_as_carrier_source": 0,
+    "bounded_canaries_as_carrier_source": 0,
+    "aggregate_count_row_synthesis": 0,
+    "inventory_range_membership_synthesis": 0
+  },
+  "authority_or_routing_adjudicated": false,
+  "executable_v550j_authority_created": false,
+  "return_token": "C09_ARAB_AFRO_ASIAN_LATIN_V550J_CARRIER_RECOVERY_R1_COMPLETE"
+}
