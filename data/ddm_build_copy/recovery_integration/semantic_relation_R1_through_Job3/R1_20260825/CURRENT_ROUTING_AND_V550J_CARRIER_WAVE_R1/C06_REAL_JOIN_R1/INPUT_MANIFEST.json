@@ -1,0 +1,81 @@
+{
+  "authorities": {
+    "46": {
+      "git_blob_sha": "4503a5e381ea4af75ac694e3b90bafa7893457fc"
+    },
+    "47": {
+      "git_blob_sha": "b48508492f58465c938ec480aa6a457bc6818586"
+    }
+  },
+  "catalog_contract": {
+    "active_scopes": 35,
+    "archive_name": "LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+    "archive_sha256": "b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d",
+    "family_sha256": {
+      "Afrobarometer": "01561b89960c10a77cec15552a8b065a0d043fe29c99bc77f4cb316991225181",
+      "Arab Barometer": "1111699fdde0bbd082267b1ba5eb3b76bbfdcf89aa1e08f500c8393200c394cf",
+      "Asian Barometer": "b27afc4e1ba8bd5707db61388b592525467657d522e782a07c31d04d6b4430cd",
+      "EVS": "61c6f77d266e59f5218babecbd07636619ff90d04b4ffc837357204225729d3b",
+      "GSS": "74496af09f5feba9defc1d2991977e79343da97c87c1fce93f1e9ab4ada31b99",
+      "Latinobarómetro": "9993607de206a00ed1d6c63b599e5115dc0c1925bffcb10a81544eadaf83cf8c",
+      "LiTS": "068cd24a9bcbaaf0e8b70c6c384296884247467f09fd380753d941e09afd39ea",
+      "South Asia": "1e31a8bc40a76a921668497ad8268e4d048c5c19e65003d44424a89b5a4f73f1",
+      "WVS": "cc538e7208e96f2a3333082e3ffdc88faf1bba0eee273664fe2ff213c3821ec0"
+    },
+    "rows": 18276
+  },
+  "command": {
+    "git_blob_sha": "2fdae39c2504720f738a676c531ad55f0a1fb9ad",
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C06_REAL_JOIN_R1/00_WORKER_COMMAND.md"
+  },
+  "frozen_inputs": {
+    "C02": {
+      "bytes": 2367789,
+      "commit": "2177fb8767d363ecb77697f5e259f1e10bd05c0b",
+      "library_file_id": "libfile_678a9111cfdc8191b6baffd5eb05a17b",
+      "library_path": "/Rawlsing/C02_GSS_FULL_CURRENT_ROUTING_COURT_R1/CURRENT_GSS_ROUTING_DISPOSITION_LEDGER.csv",
+      "rows": 6021,
+      "sha256": "0197c20dc6d48106d6070d8b1ba390d43815cd36d92e2f03e70cad04a0a1be4d",
+      "transport": "ChatGPT Library exact byte carrier"
+    },
+    "C03": {
+      "bytes": 1032676,
+      "chunk_manifest_blob": "37a8fdc7ecd13391cc646e92eff7c3183d3e651c",
+      "commit": "cbaa97ac11c4e8d517b49663f2037f8ea0e04267",
+      "rows": 3443,
+      "sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "transport": "Git deterministic 81-chunk XZ/base64 reconstruction"
+    },
+    "C04": {
+      "bytes": 2130313,
+      "commit": "2fe01e4a9508b64f041d6bc13d3c9880661489d3",
+      "library_file_id": "libfile_6ba5f516cac0819190981ef575d1e8d3",
+      "library_path": "/Rawlsing/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C04_ROUTING_ARAB_AFRO_ASIAN/C04_FULL_CURRENT_ROUTING_LEDGER.csv",
+      "rows": 3425,
+      "sha256": "c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90",
+      "transport": "ChatGPT Library exact byte carrier"
+    },
+    "C05": {
+      "commit": "509dacadaf863be88d0c6e0d95e9aff6f401af23",
+      "compact_carrier_blob": "de6872c8089d2e8caa08eb1130868583b95f47cd",
+      "disposition_pair_stream_sha256": "1d72efe346cced887b65e396b0f69645e668415e7dd9cbc69b9e69d420498013",
+      "ordered_id_sha256": "319a74f2bd00d6cd4f3ef434aafbc4ebee635597e6a68d17a86a07462da9ae62",
+      "reconstructor_blob": "d150e77234cd1d754c785e4946c4c267be1c2b68",
+      "rows": 5387,
+      "transport": "Git deterministic compact code-stream reconstruction against exact governed phase-0 catalog"
+    },
+    "C06": {
+      "commit": "93aa22b13b8e5ac5eedd28127f8ddedb46b042bc",
+      "implementation_blobs": {
+        "data/ddm_build_copy/authority/current_routing_ledger_contract_v1.json": "8b6c52f96334a8dd0cc23a55f661e9c4c2798f5a",
+        "rawlsing_next/current_routing_ledger.py": "5f65801afd6f74935a172357bcb1a798f96938b1",
+        "rawlsing_next/tests/test_current_routing_ledger.py": "fceada0441da7cd800369bd03236005c7c3a427e"
+      }
+    }
+  },
+  "local_exact_precompilation_audit_sha256": "cfb288be8197482374f8dff629e003e3415afe637a95c952a52fa9c3ca36e7ad",
+  "repository": "maidiu/rawlsing",
+  "starting_head": "46c6aaf883b6224b1fe6429557d1b09c2c46f174",
+  "status": "BLOCKED__NO_ADMITTED_LOSSLESS_SIBLING_ADAPTER",
+  "worker_branch": "agent/rabochii-c06-real-routing-join-r1"
+}

@@ -1,0 +1,41 @@
+{
+  "c03_reconstruction": {
+    "bytes": 1032676,
+    "rows": 3443,
+    "sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+    "status": "PASS"
+  },
+  "canonical_join_emitted": false,
+  "compiled": false,
+  "compiler_tests": {
+    "failed": 0,
+    "job_id": 99158136342,
+    "passed": 22,
+    "run_id": 33274270929,
+    "status": "PASS"
+  },
+  "court": "C06_REAL_CURRENT_ROUTING_JOIN_R1",
+  "executed": true,
+  "frozen_refs": {
+    "C02": "2177fb8767d363ecb77697f5e259f1e10bd05c0b",
+    "C03": "cbaa97ac11c4e8d517b49663f2037f8ea0e04267",
+    "C04": "2fe01e4a9508b64f041d6bc13d3c9880661489d3",
+    "C05": "509dacadaf863be88d0c6e0d95e9aff6f401af23",
+    "C06": "93aa22b13b8e5ac5eedd28127f8ddedb46b042bc"
+  },
+  "pre_return_head": "778a682b280af3c7dbb5f81692c9150cbd9b9ce6",
+  "semantic_repairs_performed": 0,
+  "starting_head": "46c6aaf883b6224b1fe6429557d1b09c2c46f174",
+  "status": "BLOCKED__NO_ADMITTED_LOSSLESS_SIBLING_ADAPTER",
+  "success_token_emitted": false,
+  "terminal_blocker": "Frozen sibling carriers are not directly admissible to the C06 26-column ledger schema, and the admitted C06 implementation defines no explicit lossless sibling-carrier adapter. C05 lacks authority-bearing evidence/provenance/predicate/replay fields entirely.",
+  "unresolved_taxonomy_emitted": false,
+  "verified_disposition_aggregate": {
+    "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT": 1274,
+    "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE": 1025,
+    "GOVERNED_SCOPED_NONAPPLICABILITY": 17,
+    "POSITIVE_EXECUTABLE_ROUTING_AUTHORITY": 1574,
+    "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT": 14386
+  },
+  "verified_rows": 18276
+}
