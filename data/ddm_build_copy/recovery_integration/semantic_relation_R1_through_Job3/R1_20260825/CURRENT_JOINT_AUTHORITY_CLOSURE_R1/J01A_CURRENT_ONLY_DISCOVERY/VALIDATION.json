@@ -1,0 +1,36 @@
+{
+  "carrier_sha256": {
+    "CURRENT_J_CANDIDATE_UNIVERSE.csv": "3fe61d274c4b0d78c9b1ba142709125831a4c7d8e3418e0a69fc257879b743f9",
+    "CURRENT_SOURCE_STRUCTURE_UNIVERSE.csv": "47913a300402b65e4fd92197220ced0195b6b50704679e3cc088d15604d4b7ad",
+    "SOURCE_EVIDENCE_MANIFEST.csv": "2198e7b76ce074a2843fdd05c0fc48539b4b4780c6078ff1b92ffc9b48b0b6ed",
+    "SOURCE_GAPS.csv": "18d83cccdeef392f2004573109df7fd2c8768fa9289d468a033f83f12312fd33"
+  },
+  "checks": {
+    "J_candidate_carrier_equals_exact_CURRENT_J_CANDIDATE_subset": true,
+    "all_exact_bound_question_implementation_ids_are_in_consumed_current_catalogs": true,
+    "current_scope_enforcement_pass_for_admitted_rows": true,
+    "deterministic_identity_rederivation_pass": true,
+    "duplicate_current_source_structure_id_count_zero": true,
+    "every_row_has_exactly_one_allowed_candidacy_disposition": true,
+    "evidence_locator_or_typed_gap_present": true,
+    "global_CLOSED_35_source_surface_frozen": false,
+    "historical_J_carrier_inputs_zero": true
+  },
+  "global_freeze_blocker": "MATERIAL_CURRENT_SOURCE/CROSSWALK_GAPS_AND_NONEXHAUSTIVE_AVAILABLE-DOCUMENT_REVIEW",
+  "hostile_tests": {
+    "adjacency_implies_membership": "PASS__REJECTED",
+    "administrative_block_implies_J_candidate": "PASS__TWO_EXPLICIT_ADMIN_BLOCKS_TYPED_ADMINISTRATIVE_GROUP",
+    "distinct_form_module_split_scopes_collapsed_without_authority": "PASS_BY_NONPROMOTION__VARIANT_DECOMPOSITION_UNRESOLVED_ROWS_NOT_PROMOTED_TO_CURRENT_J_CANDIDATE",
+    "duplicate_or_collision_structure_ids": "PASS__ZERO",
+    "generic_battery_heading_implies_executable_J": "PASS__NO_EXECUTABLE_J_PROMOTION",
+    "historical_expected_count_driving_discovery": "PASS__NOT_CONSUMED",
+    "historical_membership_driving_discovery": "PASS__NOT_CONSUMED",
+    "missing_source_implies_no_structure": "PASS__SOURCE_GAPS_PRESERVED",
+    "neighboring_wave_implies_current_structure": "PASS__REJECTED",
+    "partial_binding_implies_complete_exact_membership": "PASS__INCOMPLETE_BINDINGS_PRESERVED",
+    "same_data_file_implies_coadministration": "PASS__REJECTED",
+    "shared_label_implies_source_structure": "PASS__REJECTED"
+  },
+  "schema_version": "J01A_VALIDATION_R1",
+  "status": "STRUCTURAL_PASS__GLOBAL_FREEZE_BLOCKED"
+}
