@@ -1,0 +1,62 @@
+{
+  "schema": "C08_GSS_WVS_EVS_V550J_CARRIER_RECOVERY_R1_RESULT@1.0.0",
+  "status": "PASS__EXACT_ROW_CARRIER_RECOVERED_FOR_ALL_ASSIGNED_FAMILIES",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/verkhovod-c08-v550j-gss-wvs-evs-carrier-r1",
+  "verified_start_head": "a7f481383cdb651fbc39370ed8c64ff0512b09ed",
+  "authority_45_blob": "44edd0f87da778a2c08e33869a129e5a36830bbc",
+  "historical_carrier_ref": "93fbd1ee96dcc167d578de454ea6cd9bd67d668a",
+  "global_carrier": {
+    "structures": {
+      "git_blob": "c7953f1463bc898bdef8f368eb7ebf721630b2e7",
+      "sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd",
+      "rows": 2499
+    },
+    "memberships": {
+      "git_blob": "7dfe564753f9385ff459513cefd174fc4496bc64",
+      "sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c",
+      "rows": 15990
+    }
+  },
+  "source_partitions": {
+    "GSS": {
+      "structures": 722,
+      "memberships": 2823,
+      "structure_blob": "f50b7cd8aa7056287cab8103886537d31485beac",
+      "membership_blob": "79c29e1e07a2d581b47238d4924ca8f0735796ee"
+    },
+    "WVS": {
+      "structures": 115,
+      "memberships": 697,
+      "structure_blob": "145ea856d8aed1e7cec764ccc2e61192e9ac9056",
+      "membership_blob": "bf1abff2ba03820d6339bcc415c2834ca14df522"
+    },
+    "EVS": {
+      "structures": 182,
+      "memberships": 1237,
+      "structure_blob": "1a69119a4c36b48e462419fd366853f078c62dff",
+      "membership_blob": "80661b4047d2b98954f4a50c9ce8e24975c81ae7"
+    }
+  },
+  "assigned_totals": {
+    "structures": 1019,
+    "memberships": 4757
+  },
+  "integrity": {
+    "unique_ids": true,
+    "no_missing_structure_memberships": true,
+    "no_orphan_memberships": true,
+    "recovered_counts_match": true,
+    "declared_counts_match": true,
+    "all_complete": true,
+    "member_order_contiguous": true
+  },
+  "count_to_row_reconstruction": false,
+  "r14_similarity_used": false,
+  "bounded_canary_used": false,
+  "archive08_used": false,
+  "sibling_c07_used": false,
+  "family_authority_adjudicated": false,
+  "routing_adjudicated": false,
+  "success_token": "C08_GSS_WVS_EVS_V550J_CARRIER_RECOVERY_R1_COMPLETE"
+}

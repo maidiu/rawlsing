@@ -1,0 +1,65 @@
+{
+  "schema": "C08_V550J_GSS_WVS_EVS_CARRIER_VALIDATION@1.0.0",
+  "source_global_carrier": {
+    "structures": {
+      "git_blob": "c7953f1463bc898bdef8f368eb7ebf721630b2e7",
+      "manifest_sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd",
+      "rows": 2499,
+      "unique_structure_ids": 2499
+    },
+    "memberships": {
+      "git_blob": "7dfe564753f9385ff459513cefd174fc4496bc64",
+      "manifest_sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c",
+      "rows": 15990,
+      "unique_structure_ids": 2499
+    }
+  },
+  "assigned": {
+    "GSS": {
+      "structures": 722,
+      "memberships": 2823,
+      "unique_structure_ids": 722,
+      "missing_membership_structures": 0,
+      "orphan_memberships": 0,
+      "recovered_count_mismatches": 0,
+      "declared_vs_recovered_mismatches": 0,
+      "noncomplete_structures": 0,
+      "bad_member_order": 0
+    },
+    "WVS": {
+      "structures": 115,
+      "memberships": 697,
+      "unique_structure_ids": 115,
+      "missing_membership_structures": 0,
+      "orphan_memberships": 0,
+      "recovered_count_mismatches": 0,
+      "declared_vs_recovered_mismatches": 0,
+      "noncomplete_structures": 0,
+      "bad_member_order": 0
+    },
+    "EVS": {
+      "structures": 182,
+      "memberships": 1237,
+      "unique_structure_ids": 182,
+      "missing_membership_structures": 0,
+      "orphan_memberships": 0,
+      "recovered_count_mismatches": 0,
+      "declared_vs_recovered_mismatches": 0,
+      "noncomplete_structures": 0,
+      "bad_member_order": 0
+    }
+  },
+  "assigned_totals": {
+    "structures": 1019,
+    "memberships": 4757
+  },
+  "extraction_rule": "FILTER_EXACT_SERIALIZED_GLOBAL_ROWS_BY_LITERAL_SOURCE_FAMILY_ONLY__PRESERVE_ORIGINAL_ROW_ORDER_AND_VALUES",
+  "count_to_row_reconstruction": false,
+  "r14_similarity_used": false,
+  "bounded_canary_used": false,
+  "archive08_used": false,
+  "sibling_c07_used": false,
+  "family_authority_adjudicated": false,
+  "routing_adjudicated": false,
+  "status": "PASS__EXACT_ASSIGNED_CARRIER_PARTITIONS_RECOVERED"
+}
