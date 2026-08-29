@@ -1,0 +1,76 @@
+{
+  "schema": "C10_V550J_SOURCE_FAMILY_CARRIER_BINDING_R1",
+  "status": "POSITIVE_EXACT_HISTORICAL_CARRIER_RECOVERY",
+  "repository": "maidiu/rawlsing",
+  "worker_start_head": "e64e70c7cf3559b0c1bf7c166215424604625354",
+  "historical_carrier_ref": "93fbd1ee96dcc167d578de454ea6cd9bd67d668a",
+  "global_reconciliation": {
+    "stage": "P2_GLOBAL_CROSS_SOURCE_RECONCILIATION_TRANCHE1_EXACT_AND_STRUCTURAL_FOUNDATION",
+    "validation_status": "PASS",
+    "source_structures": 2499,
+    "structure_memberships": 15990,
+    "authority_boundary": "No J-family membership, respondent join, registry installation, or runtime execution authorized.",
+    "normalized_registry": {
+      "git_blob": "c7953f1463bc898bdef8f368eb7ebf721630b2e7",
+      "sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd"
+    },
+    "normalized_memberships": {
+      "git_blob": "7dfe564753f9385ff459513cefd174fc4496bc64",
+      "sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c"
+    }
+  },
+  "family_partitions": {
+    "South Asia": {
+      "structure_rows": 15,
+      "membership_rows": 76,
+      "waves": {
+        "W1": {
+          "structures": 7,
+          "memberships": 41
+        },
+        "W2": {
+          "structures": 8,
+          "memberships": 35
+        }
+      },
+      "inventory_blob": "0aa68f7305009bbea3c3ccdf80eec6d900e6ed3e",
+      "membership_blob": "c788e3545ed8d9c82b7e4b69b61aeecef64c174c"
+    },
+    "LiTS": {
+      "structure_rows": 882,
+      "membership_rows": 7878,
+      "waves": {
+        "2006": {
+          "structures": 210,
+          "memberships": 2130
+        },
+        "II": {
+          "structures": 192,
+          "memberships": 1320
+        },
+        "III": {
+          "structures": 335,
+          "memberships": 3057
+        },
+        "IV": {
+          "structures": 145,
+          "memberships": 1371
+        }
+      },
+      "inventory_blob": "ef729b789580dee6e8399ed5af3c2c26fb656731",
+      "membership_blob": "3e9ce2102f6ae54f73a0f9f6beff6113ed9dc637"
+    }
+  },
+  "integrity": {
+    "missing_structure_refs": 0,
+    "declared_member_count_mismatches": 0,
+    "duplicate_structure_ids": 0,
+    "duplicate_membership_identity_tuples": 0
+  },
+  "authority_status": "INVENTORY_ONLY_NOT_J_FAMILY",
+  "family_authority_adjudicated": false,
+  "routing_adjudicated": false,
+  "sibling_c07_c09_consumed": false,
+  "archive08_consumed": false,
+  "success_token": "C10_SOUTHASIA_LITS_V550J_CARRIER_RECOVERY_R1_COMPLETE"
+}
