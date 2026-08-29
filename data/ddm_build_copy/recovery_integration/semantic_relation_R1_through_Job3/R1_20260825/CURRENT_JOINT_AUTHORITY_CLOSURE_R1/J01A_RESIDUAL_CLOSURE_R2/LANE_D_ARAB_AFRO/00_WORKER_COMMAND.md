@@ -1,4 +1,4 @@
-# BECOME RABOCHII 1 — J01-A R2 ARAB BAROMETER / AFROBAROMETER EXHAUSTIVE CURRENT-ONLY CLOSURE
+# BECOME RABOCHII 3 — J01-A R2 ARAB BAROMETER / AFROBAROMETER EXHAUSTIVE CURRENT-ONLY CLOSURE
 
 Repository: `maidiu/rawlsing`
 Worker branch: `agent/rabochii-j01a-r2-arab-afro`
@@ -7,7 +7,7 @@ Read first and obey exactly:
 
 `data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_RESIDUAL_CLOSURE_R2/00_SHARED_RESIDUAL_AUTHORITY.md`
 
-You are the continuation worker from J01-A R1, but this is a NEW bounded lane. Do not continue global nine-family work.
+You are a **fresh sibling-blind Library + GitHub worker**. You are not the original J01-A worker. Do not consume that worker's live chat state or any sibling R2 lane return. Your only inherited baseline is the exact frozen current-only R1 return and carriers explicitly permitted below.
 
 ## Jurisdiction
 
