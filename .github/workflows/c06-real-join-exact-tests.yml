@@ -1,0 +1,23 @@
+name: C06 real join exact compiler tests
+
+on:
+  push:
+    branches:
+      - agent/rabochii-c06-real-routing-join-r1
+
+permissions:
+  contents: read
+
+jobs:
+  c06-exact-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Run exact admitted C06 tests
+        run: python -m pytest -q rawlsing_next/tests/test_current_routing_ledger.py
