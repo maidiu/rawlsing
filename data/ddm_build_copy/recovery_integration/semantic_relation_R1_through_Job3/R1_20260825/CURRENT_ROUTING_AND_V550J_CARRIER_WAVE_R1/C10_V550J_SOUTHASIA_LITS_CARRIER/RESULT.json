@@ -3,16 +3,45 @@
   "repository": "maidiu/rawlsing",
   "branch": "agent/verkhovod-c10-v550j-southasia-lits-carrier-r1",
   "verified_start_head": "e64e70c7cf3559b0c1bf7c166215424604625354",
-  "disposition": "COMPLETE__EXACT_PRESERVED_ROW_CARRIERS_RECOVERED",
+  "disposition": "COMPLETE__EXACT_PRESERVED_ROW_CARRIERS_RECOVERED__BYTE_IDENTITY_VERIFIED",
   "historical_carrier_ref": "93fbd1ee96dcc167d578de454ea6cd9bd67d668a",
+  "materialization_commit": "8f6bdfb2b18b1ef00cf84458b178c776740f93b2",
   "recovered": {
     "South Asia": {
       "structures": 15,
-      "memberships": 76
+      "memberships": 76,
+      "waves": {
+        "W1": {
+          "structures": 7,
+          "memberships": 41
+        },
+        "W2": {
+          "structures": 8,
+          "memberships": 35
+        }
+      }
     },
     "LiTS": {
       "structures": 882,
-      "memberships": 7878
+      "memberships": 7878,
+      "waves": {
+        "2006": {
+          "structures": 210,
+          "memberships": 2130
+        },
+        "II": {
+          "structures": 192,
+          "memberships": 1320
+        },
+        "III": {
+          "structures": 335,
+          "memberships": 3057
+        },
+        "IV": {
+          "structures": 145,
+          "memberships": 1371
+        }
+      }
     },
     "combined": {
       "structures": 897,
@@ -24,7 +53,8 @@
     "memberships": 15990,
     "validation": "PASS"
   },
-  "copied_byte_identity_required": true,
+  "byte_identity_verified": true,
+  "byte_identity_check_count": 4,
   "family_authority_adjudicated": false,
   "routing_adjudicated": false,
   "siblings_consumed": false,

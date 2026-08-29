@@ -1,0 +1,54 @@
+{
+  "schema": "C10_V550J_CARRIER_BYTE_IDENTITY_VALIDATION_R1",
+  "status": "PASS__ALL_FOUR_MATERIALIZED_CARRIERS_BYTE_IDENTICAL_TO_HISTORICAL_SOURCES",
+  "historical_ref": "93fbd1ee96dcc167d578de454ea6cd9bd67d668a",
+  "materialization_commit": "8f6bdfb2b18b1ef00cf84458b178c776740f93b2",
+  "checks": [
+    {
+      "artifact": "South Asia structure inventory",
+      "historical_blob": "0aa68f7305009bbea3c3ccdf80eec6d900e6ed3e",
+      "materialized_blob": "0aa68f7305009bbea3c3ccdf80eec6d900e6ed3e",
+      "byte_identical": true
+    },
+    {
+      "artifact": "South Asia structure memberships",
+      "historical_blob": "c788e3545ed8d9c82b7e4b69b61aeecef64c174c",
+      "materialized_blob": "c788e3545ed8d9c82b7e4b69b61aeecef64c174c",
+      "byte_identical": true
+    },
+    {
+      "artifact": "LiTS structure inventory",
+      "historical_blob": "ef729b789580dee6e8399ed5af3c2c26fb656731",
+      "materialized_blob": "ef729b789580dee6e8399ed5af3c2c26fb656731",
+      "byte_identical": true
+    },
+    {
+      "artifact": "LiTS structure memberships",
+      "historical_blob": "3e9ce2102f6ae54f73a0f9f6beff6113ed9dc637",
+      "materialized_blob": "3e9ce2102f6ae54f73a0f9f6beff6113ed9dc637",
+      "byte_identical": true
+    }
+  ],
+  "row_integrity": {
+    "south_asia": {
+      "structures": 15,
+      "memberships": 76,
+      "missing_structure_refs": 0,
+      "declared_member_count_mismatches": 0,
+      "duplicate_structure_ids": 0,
+      "duplicate_membership_identity_tuples": 0
+    },
+    "lits": {
+      "structures": 882,
+      "memberships": 7878,
+      "missing_structure_refs": 0,
+      "declared_member_count_mismatches": 0,
+      "duplicate_structure_ids": 0,
+      "duplicate_membership_identity_tuples": 0
+    }
+  },
+  "family_authority_adjudicated": false,
+  "routing_adjudicated": false,
+  "sibling_c07_c09_consumed": false,
+  "archive08_consumed": false
+}
