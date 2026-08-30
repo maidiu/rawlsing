@@ -1,0 +1,21 @@
+{
+  "node": "D6_Z08",
+  "source_sha": "125bf28d29aa638d29f741e7069ed4d8c1b45aeb",
+  "admission_sha": "090a9350f701120c259761a60fa2ce100ef5632d",
+  "source_files": ["rawlsing_next/source_backed_positioned_subject_possibility.py", "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py"],
+  "admission_test": "rawlsing_next/tests/test_a05_z08_positioned_admission.py",
+  "byte_status": "BYTE_IDENTICAL",
+  "production_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+  "dependency_changes": [],
+  "tests_run": [
+    {"scope":"exact source + exact A05 admission test files","tests":16,"passed":16,"failed":0,"errors":0},
+    {"scope":"canonical-base PSEPF zero-positive evidence ceiling","tests":22,"passed":22,"failed":0,"errors":0}
+  ],
+  "core_obligation_proof": "Exact Z08 RESULT enumerates 6 frozen command cases plus 8 additional hostile coverage obligations = 14 semantic core obligations; its committed source suite is explicitly 13 pytest cases. All exact cases execute green on the base.",
+  "regression_obligation_proof": "A05 admission adds exact actor/prediction, smoothing/interpolation, and proxy-separation regressions; additional canonical-base zero-positive guard executes 22/22 without adding or modifying V3 code.",
+  "documentary_reconciliation": "W23/W26 14 core + 7 regression is not an exact historical pytest collection count. Exact source says 13 tests; the two admitted test files collect 16. W32 preserves the semantic obligation set and adds stronger evidence-ceiling regression without inventing 21 historical pytest cases.",
+  "semantic_equivalence": "EXACT_ADMITTED_BYTES_EXECUTED_ON_FINAL_BASE",
+  "authority_ceiling": ["PROXY != EXACT FACT != ACTOR BELIEF","EMPIRICAL_POSSIBILITY != INDIVIDUAL_PREDICTION","no cross-source/release proxy","no smoothing/interpolation/extrapolation","upstream authority/evidence ceilings preserved"],
+  "collateral_change_check": "PASS",
+  "node_disposition": "PASS_READY_FOR_W35"
+}
