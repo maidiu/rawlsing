@@ -1,0 +1,21 @@
+edge_id	from_delta	to_delta_or_dependency	edge_type	required	detail	confidence
+E01	R4_FD_COMPACTION	Python stdlib	CODE_IMPORT	YES	module import layer is stdlib-only; preserve accepted input/output contract	HIGH
+E02	R5_SERIAL_TURBO_V4	pre553_r5_codec.py	CODE_IMPORT	YES	V4 imports codec	HIGH
+E03	R5_SERIAL_TURBO_V4	pre553_r5_compact_carrier.py	CODE_IMPORT	YES	V4 imports Compact-V2 carrier	HIGH
+E04	R5_SERIAL_TURBO_V4	pre553_r5_model.py	CODE_IMPORT	YES	V4 imports model types	HIGH
+E05	R5_AUDIT69	R5_SERIAL_TURBO_V4	SELECTED_STACK	YES	Audit69 is selected on top of V4 lineage	HIGH
+E06	R5_AUDIT69	pre553_r5_codec.py	CODE_IMPORT	YES	Audit69 uses codec	HIGH
+E07	R5_AUDIT69	pre553_r5_compact_carrier.py	CODE_IMPORT	YES	Audit69 uses Compact-V2 carrier	HIGH
+E08	C06_CONTRACT2_ADAPTER	2177fb8767d363ecb77697f5e259f1e10bd05c0b	FROZEN_C02_INPUT	YES	consume exact GSS routing carrier; no semantic reinterpretation	HIGH
+E09	C06_CONTRACT2_ADAPTER	cbaa97ac11c4e8d517b49663f2037f8ea0e04267	FROZEN_C03_INPUT	YES	consume exact WVS/EVS carrier; no semantic reinterpretation	HIGH
+E10	C06_CONTRACT2_ADAPTER	2fe01e4a9508b64f041d6bc13d3c9880661489d3	FROZEN_C04_INPUT	YES	consume exact Arab/Afro/Asian carrier; no semantic reinterpretation	HIGH
+E11	C06_CONTRACT2_ADAPTER	509dacadaf863be88d0c6e0d95e9aff6f401af23	FROZEN_C05_INPUT	YES	consume exact Latin/South Asia/LiTS carrier and unresolved sidecar identity; do not synthesize row-level blocker taxonomy	HIGH
+E12	MX01R2_RECURSIVE_HANDOFF	Authority33/34 common contract	SEMANTIC_CONTRACT	YES	implementation is adopted at common-contract handoff grain only	HIGH
+E13	MX02R2_COMPONENT_VECTOR	Authority33/34 common contract	SEMANTIC_CONTRACT	YES	vector/inverse helpers apply authority exactly once; no architecture winner	HIGH
+E14	Z06_AUTHORITY_MAINTENANCE	rawlsing_next/pre553_empirical_authority.py	CODE_INTERFACE	YES	accepted maintenance runtime depends on governed empirical authority interface; anchor already contains module	HIGH
+E15	Z07_ADAPTIVE_DISCOVERY	rawlsing_next/pre553_empirical_objects.py	CODE_INTERFACE	YES	accepted source imports empirical object types; exact final-base API compatibility must be proved	HIGH
+E16	Z08_POSITIONED_WALKBACK	source-backed admissible evidence contract	SEMANTIC_CONTRACT	YES	may not bypass upstream authority/source-backed evidence ceilings	HIGH
+E17	Z02_FRACTURE_MAP_BOUNDED	MX01R2_RECURSIVE_HANDOFF	CODE_INTERFACE	YES_IF_PHYSICAL_FALLBACK_PRESERVED	Z02 tested bundle carries recursive handoff behavior; avoid duplicate divergent implementation	HIGH
+E18	Z02_FRACTURE_MAP_BOUNDED	exact Z02 query/empirical-object interfaces	CODE_INTERFACE	YES_IF_PHYSICAL_FALLBACK_PRESERVED	bundle parity is only meaningful with tested interface set	HIGH
+E19	R5_SELECTED_INACTIVE_STACK	serving selector	NEGATIVE_EDGE	NO	no serving selector may be introduced by preservation alone	HIGH
+E20	C06_CONTRACT2_ADAPTER	C02-C05 semantic re-adjudication	NEGATIVE_EDGE	NO	Contract@2 preserves frozen judgments and is forbidden to reopen them	HIGH
