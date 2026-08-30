@@ -1,0 +1,25 @@
+C06 LOSSLESS ADAPTER R2 — TEST RECEIPT
+
+ADMITTED C06 REGRESSION
+- GitHub Actions run: 33274270929
+- job: 99158136342 (c06-exact-tests)
+- result: PASS
+- pytest: 22 passed in 0.13s
+- exact frozen C03 reconstruction in job: 3443 rows, 1032676 bytes
+- C03 canonical SHA-256: b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c
+- direct old 26-column C06 admission: blocked as expected because sibling carrier schema is heterogeneous
+
+CONTRACT@2 HOSTILE SUITE
+- exact rerun command: cd /mnt/data/c06_r2_package && python -m unittest -q test_contract2.py
+- result: PASS
+- 8 tests passed; 0 failed; 0 errors
+- hostile cases include duplicate ID, identity-coordinate drift, disposition mutation, non-unresolved taxonomy pollution, and C05 aggregate-blocker-to-row synthesis.
+
+REAL INPUT HASH GATES
+- exact 18,276-row phase0 catalog SHA-256: PASS
+- exact C02 6,021-row carrier SHA-256: PASS
+- exact C04 3,425-row carrier SHA-256: PASS
+- C03 exact Git reconstruction and C05 exact Git reconstruction are hash-gated by compile_contract2.py and independently evidenced by the frozen returns / Actions execution.
+
+NOTE
+An attempted unittest invocation from outside the package directory failed only because Python could not import the sibling compile_contract2 module. It performed no compilation. The canonical rerun command above was then executed from the package directory and passed 8/8.
