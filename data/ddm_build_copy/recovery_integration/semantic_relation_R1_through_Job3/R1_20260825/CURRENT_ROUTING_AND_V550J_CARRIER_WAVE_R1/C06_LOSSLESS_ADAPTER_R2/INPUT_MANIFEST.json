@@ -1,0 +1,74 @@
+{
+  "carriers": {
+    "C02": {
+      "library_path": "/Rawlsing/C02_GSS_FULL_CURRENT_ROUTING_COURT_R1/CURRENT_GSS_ROUTING_DISPOSITION_LEDGER.csv",
+      "predicate_sidecar_sha256": "bf8b109137c4d6b512d94e559ba77f57e91192dead3903cdac9dac2a229dfe86",
+      "predicate_test_receipts_sha256": "1a785319ce35dd2b8add3931da1191ca06291980940b42d945ab6f71bb511789",
+      "rows": 6021,
+      "sha256": "0197c20dc6d48106d6070d8b1ba390d43815cd36d92e2f03e70cad04a0a1be4d"
+    },
+    "C03": {
+      "canonical_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "rows": 3443,
+      "scope_evidence_dictionary_sha256": "957cee048fbdefe7d276b15d31a86074b26d3b1bb695d48843149fa3612c2eeb",
+      "transport": "81-part Git Base64/XZ canonical carrier",
+      "xz_sha256": "a317b664799b87b287eb32c35225ec6f5cc82d53fc7994cd03e2fa90cc03d60d"
+    },
+    "C04": {
+      "full_archive_sha256": "04297a2b9bc9297d5a79a88bb39277bf28617566ccd166c5f7ef1295d9ff1d57",
+      "library_path": "/Rawlsing/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C04_ROUTING_ARAB_AFRO_ASIAN/C04_FULL_CURRENT_ROUTING_LEDGER.csv",
+      "rows": 3425,
+      "sha256": "c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90"
+    },
+    "C05": {
+      "compact_carrier_git_blob": "de6872c8089d2e8caa08eb1130868583b95f47cd",
+      "ordered_id_sha256": "319a74f2bd00d6cd4f3ef434aafbc4ebee635597e6a68d17a86a07462da9ae62",
+      "pair_stream_sha256": "1d72efe346cced887b65e396b0f69645e668415e7dd9cbc69b9e69d420498013",
+      "predicate_tests_git_blob": "18aae96cebd82eb727954ba8e9e3ed75e5d6fa6c",
+      "rows": 5387,
+      "source_scope_blocker_manifest_git_blob": "39f44f2e76d005369abda42d87455abd3df0d726"
+    }
+  },
+  "catalog": {
+    "artifact": "Rawlsing_P2_Phase0_Governed_Question_Node_Catalog_v1.json",
+    "purpose": "current membership and identity-coordinate validation only",
+    "rows": 18276,
+    "sha256": "2a13ca0551f812e71ad254ab65e3f1ccf99ccfa789eeac4ade708cdbfaa568b8"
+  },
+  "contract": "CURRENT_ROUTING_LEDGER_CONTRACT@2",
+  "court": "C06_LOSSLESS_ADAPTER_R2",
+  "failed_parent_court": "bb7282a25067b310523675468838bdec8c8f955d",
+  "frozen_commits": {
+    "C02": "2177fb8767d363ecb77697f5e259f1e10bd05c0b",
+    "C03": "cbaa97ac11c4e8d517b49663f2037f8ea0e04267",
+    "C04": "2fe01e4a9508b64f041d6bc13d3c9880661489d3",
+    "C05": "509dacadaf863be88d0c6e0d95e9aff6f401af23",
+    "C06_IMPLEMENTATION": "93aa22b13b8e5ac5eedd28127f8ddedb46b042bc"
+  },
+  "outputs": {
+    "ledger": {
+      "bytes": 5535,
+      "file_id": "file_0000000018b881f784efc8bf0ac9d753",
+      "library_file_id": "libfile_c2e18b363d5881919d67637e89f9ddec",
+      "library_path": "/Rawlsing/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C06_LOSSLESS_ADAPTER_R2/CURRENT_ROUTING_DISPOSITION_LEDGER.contract2.carrier.json",
+      "rows": 18276,
+      "sha256": "5fe7fc719453479397fb759a00341dd6dc51184c8547306f7955220091405dde"
+    },
+    "unresolved": {
+      "bytes": 1460,
+      "file_id": "file_00000000b8ec81f7a247348b9b490652",
+      "library_file_id": "libfile_55b975b854088191a53b6d2a064c8df3",
+      "library_path": "/Rawlsing/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C06_LOSSLESS_ADAPTER_R2/UNRESOLVED_TAXONOMY_INPUT.contract2.carrier.json",
+      "rows": 14386,
+      "sha256": "36bd6f3be7f12e938183285dbee30c1db5198a65beab3890f889990e5d8c82ed"
+    }
+  },
+  "path": "PATH_B",
+  "r1_execution_receipt": {
+    "commit": "bb7282a25067b310523675468838bdec8c8f955d",
+    "purpose": "independent exact carrier/hash/18,276 ID accounting and old-schema fail-closed proof",
+    "validation_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C06_REAL_JOIN_R1/VALIDATION.json"
+  },
+  "starting_head": "d73d841b9325c08e8691eae5164886568b929c6d",
+  "worker_branch": "agent/rabochii-c06-lossless-adapter-r2"
+}
