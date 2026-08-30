@@ -1,0 +1,82 @@
+{
+  "aggregate_counts_used_to_manufacture_rows": false,
+  "contract": "CURRENT_ROUTING_LEDGER_CONTRACT@2",
+  "court": "C06_LOSSLESS_ADAPTER_R2",
+  "execution": {
+    "current_packaging_hash_gates": {
+      "C02_rows": 6021,
+      "C04_rows": 3425,
+      "catalog_rows": 18276,
+      "status": "PASS"
+    },
+    "independent_r1_reconciliation": {
+      "carrier_hashes": "PASS",
+      "commit": "bb7282a25067b310523675468838bdec8c8f955d",
+      "disposition_vector": "PASS",
+      "extra": 0,
+      "missing": 0,
+      "old_26_column_admission": "FAIL_CLOSED_AS_EXPECTED",
+      "rows": 18276,
+      "status": "PASS"
+    },
+    "worker_session_exact_reconciliation": {
+      "basis": "exact frozen C02/C03/C04 row carriers plus exact frozen C05 ordered ID/disposition stream; counts used only as post-join invariants",
+      "disposition_counts": {
+        "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT": 1274,
+        "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE": 1025,
+        "GOVERNED_SCOPED_NONAPPLICABILITY": 17,
+        "POSITIVE_EXECUTABLE_ROUTING_AUTHORITY": 1574,
+        "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT": 14386
+      },
+      "duplicates": 0,
+      "extra": 0,
+      "family_leakage": 0,
+      "identity_coordinate_drift": 0,
+      "missing": 0,
+      "rows_in": 18276,
+      "rows_out": 18276,
+      "status": "PASS",
+      "unique_ids": 18276,
+      "unresolved_rows": 14386
+    }
+  },
+  "note": "Canonical durable outputs are exact content-addressed Library composite carriers plus Git manifests; flat CSV is a deterministic materialized view, not a second source of authority.",
+  "outputs": {
+    "ledger": {
+      "bytes": 5535,
+      "file_id": "file_0000000018b881f784efc8bf0ac9d753",
+      "library_file_id": "libfile_c2e18b363d5881919d67637e89f9ddec",
+      "library_path": "/Rawlsing/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C06_LOSSLESS_ADAPTER_R2/CURRENT_ROUTING_DISPOSITION_LEDGER.contract2.carrier.json",
+      "rows": 18276,
+      "sha256": "5fe7fc719453479397fb759a00341dd6dc51184c8547306f7955220091405dde"
+    },
+    "unresolved": {
+      "bytes": 1460,
+      "file_id": "file_00000000b8ec81f7a247348b9b490652",
+      "library_file_id": "libfile_55b975b854088191a53b6d2a064c8df3",
+      "library_path": "/Rawlsing/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C06_LOSSLESS_ADAPTER_R2/UNRESOLVED_TAXONOMY_INPUT.contract2.carrier.json",
+      "rows": 14386,
+      "sha256": "36bd6f3be7f12e938183285dbee30c1db5198a65beab3890f889990e5d8c82ed"
+    }
+  },
+  "path": "B",
+  "semantic_reinterpretation_performed": false,
+  "status": "PASS",
+  "success_token": "C06_REAL_CURRENT_ROUTING_JOIN_R2_PASS",
+  "tests": {
+    "admitted_c06": {
+      "c03_reconstruction_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "failed": 0,
+      "job_id": 99158136342,
+      "passed": 22,
+      "run_id": 33274270929,
+      "status": "PASS"
+    },
+    "contract2_hostile": {
+      "command": "cd /mnt/data/c06_r2_package && python -m unittest -q test_contract2.py",
+      "failed": 0,
+      "passed": 8,
+      "status": "PASS"
+    }
+  }
+}
