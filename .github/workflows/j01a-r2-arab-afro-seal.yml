@@ -21,16 +21,16 @@ jobs:
           T=.j01a_r2_arab_afro_transport
           OUT=data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_RESIDUAL_CLOSURE_R2/LANE_D_ARAB_AFRO
           cat "$T"/chunk_* > /tmp/payload.b64
-          base64 -d /tmp/payload.b64 > /tmp/payload.tgz
-          echo 'd48bdf0e1484df7d62b1c848ffb32a6ceff28870b2e4b94b2a7effd909ac4c35  /tmp/payload.tgz' | sha256sum -c -
+          base64 -d /tmp/payload.b64 > /tmp/payload.tar.xz
+          echo '16d40d01f02b6338b245110719f58a42c815bb722217ba99633020022e3dfbe8  /tmp/payload.tar.xz' | sha256sum -c -
           mkdir -p "$OUT"
-          tar -xzf /tmp/payload.tgz -C "$OUT"
+          tar -xJf /tmp/payload.tar.xz -C "$OUT"
           test "$(find "$OUT" -maxdepth 1 -type f | wc -l)" -eq 13
           rm -rf "$T" .github/workflows/j01a-r2-arab-afro-seal.yml
           git config user.name 'rawlsing-rabochii-3'
           git config user.email 'actions@users.noreply.github.com'
           git add -A
           git diff --cached --name-only | sort
-          test "$(git diff --cached --name-only | wc -l)" -eq 20
+          test "$(git diff --cached --name-only | wc -l)" -eq 19
           git commit -m 'J01A R2 Arab/Afro: seal exhaustive current-only closure'
           git push origin "HEAD:${GITHUB_REF_NAME}"
