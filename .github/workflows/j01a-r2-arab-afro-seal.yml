@@ -27,7 +27,21 @@ jobs:
           echo '16d40d01f02b6338b245110719f58a42c815bb722217ba99633020022e3dfbe8  /tmp/payload.tar.xz' | sha256sum -c -
           mkdir -p "$OUT"
           tar -xJf /tmp/payload.tar.xz -C "$OUT"
-          test "$(find "$OUT" -maxdepth 1 -type f | wc -l)" -eq 13
+          test "$(find "$OUT" -maxdepth 1 -type f | wc -l)" -eq 14
+          test -f "$OUT/00_WORKER_COMMAND.md"
+          test -f "$OUT/CURRENT_J_CANDIDATE_UNIVERSE_R2.csv"
+          test -f "$OUT/CURRENT_SOURCE_STRUCTURE_UNIVERSE_R2.csv"
+          test -f "$OUT/R1_LINEAGE.csv"
+          test -f "$OUT/SCOPE_DOCUMENT_REVIEW_LEDGER.csv"
+          test -f "$OUT/SOURCE_EVIDENCE_MANIFEST_R2.csv"
+          test -f "$OUT/SOURCE_GAPS_R2.csv"
+          test -f "$OUT/ANSWER_BLINDNESS_RECEIPT_R2.json"
+          test -f "$OUT/COUNTS_R2.json"
+          test -f "$OUT/RETURN_POINTER.json"
+          test -f "$OUT/VALIDATION_R2.json"
+          test -f "$OUT/METHOD.md"
+          test -f "$OUT/RESULT.md"
+          test -f "$OUT/CHANGED_FILES.txt"
           rm -rf "$T" .github/workflows/j01a-r2-arab-afro-seal.yml
           git config user.name 'rawlsing-rabochii-3'
           git config user.email 'actions@users.noreply.github.com'
