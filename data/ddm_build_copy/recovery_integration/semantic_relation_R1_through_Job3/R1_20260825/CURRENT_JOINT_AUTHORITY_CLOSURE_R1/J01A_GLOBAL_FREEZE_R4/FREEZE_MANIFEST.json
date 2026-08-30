@@ -1,0 +1,73 @@
+{
+  "carriers": {
+    "CURRENT_J_CANDIDATE_UNIVERSE_FROZEN.csv": {
+      "bytes": 1641446,
+      "file_id": "file_000000005144822fa27f7502f6e9307b",
+      "library_file_id": "libfile_3f6b0d93bb74819195702d808e3093ec",
+      "library_path": "/J01A_CURRENT_ONLY_GLOBAL_FREEZE_R4/CURRENT_J_CANDIDATE_UNIVERSE_FROZEN.csv",
+      "rematerialized_bytes": 1641446,
+      "rematerialized_path": "/mnt/data/j01a_r4_rematerialized/candidate_rematerialized.csv",
+      "rematerialized_rows": 1411,
+      "rematerialized_sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64",
+      "roundtrip_verified": true,
+      "rows": 1411,
+      "schema": ["current_source_structure_id","source_family","wave_or_scope","country","form","module","split","source_structure_type","source_native_label_or_locator","member_count","source_native_member_identities","current_question_implementation_ids","current_member_binding_status","current_member_binding_gap","source_document_identity","source_document_sha256","source_locator","evidence_class","discovery_confidence","candidacy_disposition","candidacy_rationale","binding_note","global_identity_sha256","terminal_input_group","terminal_input_ref","terminal_input_row_sha256","wvs_r3_disposition","wvs_r3_terminal_status","wvs_r3_evidence_set"],
+      "sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64"
+    },
+    "CURRENT_SOURCE_STRUCTURE_UNIVERSE_FROZEN.csv": {
+      "bytes": 2268501,
+      "file_id": "file_00000000e28c822f86958de710573152",
+      "library_file_id": "libfile_3b7ee9030f4c8191bd59fac79d2d10c6",
+      "library_path": "/J01A_CURRENT_ONLY_GLOBAL_FREEZE_R4/CURRENT_SOURCE_STRUCTURE_UNIVERSE_FROZEN.csv",
+      "rematerialized_bytes": 2268501,
+      "rematerialized_path": "/mnt/data/j01a_r4_rematerialized/source_rematerialized.csv",
+      "rematerialized_rows": 1879,
+      "rematerialized_sha256": "d74ce5266daa007c6500385922d4f66de962ab5cf8a388bbbc60cd540f6656d2",
+      "roundtrip_verified": true,
+      "rows": 1879,
+      "schema": ["current_source_structure_id","source_family","wave_or_scope","country","form","module","split","source_structure_type","source_native_label_or_locator","member_count","source_native_member_identities","current_question_implementation_ids","current_member_binding_status","current_member_binding_gap","source_document_identity","source_document_sha256","source_locator","evidence_class","discovery_confidence","candidacy_disposition","candidacy_rationale","binding_note","global_identity_sha256","terminal_input_group","terminal_input_ref","terminal_input_row_sha256","wvs_r3_disposition","wvs_r3_terminal_status","wvs_r3_evidence_set"],
+      "sha256": "d74ce5266daa007c6500385922d4f66de962ab5cf8a388bbbc60cd540f6656d2"
+    }
+  },
+  "global_denominator_freeze": {
+    "current_j_candidates": 1411,
+    "current_source_structures": 1879,
+    "families": 9,
+    "scopes": 35
+  },
+  "large_library_artifacts": {
+    "GLOBAL_SOURCE_EVIDENCE_MANIFEST.csv": {
+      "bytes": 589324,
+      "file_id": "file_00000000f030822fb09d5822b8d815e7",
+      "library_file_id": "libfile_4ff56bd0bc4881919155590b15180c09",
+      "library_path": "/J01A_CURRENT_ONLY_GLOBAL_FREEZE_R4/GLOBAL_SOURCE_EVIDENCE_MANIFEST.csv",
+      "rematerialized_bytes": 589324,
+      "rematerialized_rows": 1870,
+      "rematerialized_sha256": "09c30143de456e82afa254cdd1121dc9ca171dfa71298e19fff9dbdbec9af50a",
+      "roundtrip_verified": true,
+      "rows": 1870,
+      "schema": ["evidence_id","source_family","wave_or_scope","source_document_identity","source_document_sha256","source_locator","evidence_class","terminal_input_ref","structure_rows_supported","provenance_state"],
+      "sha256": "09c30143de456e82afa254cdd1121dc9ca171dfa71298e19fff9dbdbec9af50a"
+    },
+    "GLOBAL_SOURCE_GAPS.csv": {
+      "bytes": 37016,
+      "file_id": "file_00000000eeac822f90e2a464b92acdf1",
+      "library_file_id": "libfile_d032817f535c81918a6318165011762a",
+      "library_path": "/J01A_CURRENT_ONLY_GLOBAL_FREEZE_R4/GLOBAL_SOURCE_GAPS.csv",
+      "rematerialized_bytes": 37016,
+      "rematerialized_rows": 37,
+      "rematerialized_sha256": "cefb323e82c13bd58b64b7060b2856d37e33582781d7d7dd5d7e4b63b573271c",
+      "roundtrip_verified": true,
+      "rows": 37,
+      "schema": ["global_gap_id","source_family","wave_or_scope","gap_class","affected_structure_ids_or_members","terminal_state","current_evidence_exhausted","material_effect","authority_ceiling_or_required_authority","blocks_global_freeze","input_ref","source_payload_json"],
+      "sha256": "cefb323e82c13bd58b64b7060b2856d37e33582781d7d7dd5d7e4b63b573271c"
+    }
+  },
+  "library_folder": {
+    "directory_id": "6a93b844a37c8191aee06d3e88463c87",
+    "path": "/J01A_CURRENT_ONLY_GLOBAL_FREEZE_R4"
+  },
+  "schema_version": "J01A_R4_FREEZE_MANIFEST_V1",
+  "status": "FROZEN__UPLOAD_AND_REMATERIALIZATION_HASH_VERIFIED",
+  "success_token": "J01A_CURRENT_ONLY_GLOBAL_FREEZE_PASS"
+}

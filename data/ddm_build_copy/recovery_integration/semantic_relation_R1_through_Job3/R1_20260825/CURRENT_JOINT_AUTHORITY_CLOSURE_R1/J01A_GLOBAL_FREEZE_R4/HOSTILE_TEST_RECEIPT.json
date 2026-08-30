@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "tests": [
+    {
+      "finding": "All five terminal family-group carrier pairs match pinned rows/bytes/SHA-256.",
+      "status": "PASS",
+      "test": "carrier_hash_mismatch"
+    },
+    {
+      "finding": "0 duplicate current_source_structure_id values.",
+      "status": "PASS",
+      "test": "duplicate_structure_id_conflicting_identity"
+    },
+    {
+      "finding": "0 candidate IDs absent from global source universe.",
+      "status": "PASS",
+      "test": "candidate_absent_from_source"
+    },
+    {
+      "finding": "Every final row carries exactly one allowed candidacy disposition.",
+      "status": "PASS",
+      "test": "source_zero_or_multiple_candidacy_dispositions"
+    },
+    {
+      "finding": "0 rows outside their admitted terminal input group family set.",
+      "status": "PASS",
+      "test": "cross_family_row_leakage"
+    },
+    {
+      "finding": "Asian terminal input is R3 only; WVS filter alone is taken from R2 Lane B.",
+      "status": "PASS",
+      "test": "superseded_asian_r2_retained"
+    },
+    {
+      "finding": "110 WVS rows = 110 unique patch keys; every ID matched exactly once.",
+      "status": "PASS",
+      "test": "wvs_patch_zero_or_multiple_application"
+    },
+    {
+      "finding": "27 W1 + 1 W4 + 4 W7 typed/partial/nonmembership dispositions preserved; binding-change count 0.",
+      "status": "PASS",
+      "test": "wvs_typed_nonbinding_converted_to_exact"
+    },
+    {
+      "finding": "Candidacy unchanged by WVS R3; all lane typed binding gaps retained independently of candidacy.",
+      "status": "PASS",
+      "test": "missing_current_member_binding_converted_to_non_j"
+    },
+    {
+      "finding": "Latin/South Asia native-byte gaps and all other source ceilings retained explicitly; structures remain present.",
+      "status": "PASS",
+      "test": "missing_source_document_converted_to_no_structure"
+    },
+    {
+      "finding": "0 semantic R1 rows reconstructed; loss permanently typed.",
+      "status": "PASS",
+      "test": "r1_lost_bytes_reconstructed_from_later_rows"
+    },
+    {
+      "finding": "No historical J/C07/C08/C09/C10 carrier contents accessed.",
+      "status": "PASS",
+      "test": "historical_j_carrier_access"
+    },
+    {
+      "finding": "1879/1411 derived mechanically; prior hints used only after derivation as hostile reconciliation.",
+      "status": "PASS",
+      "test": "expected_count_used_to_add_delete_identities"
+    },
+    {
+      "finding": "0 duplicate canonical global identity SHA-256 keys.",
+      "status": "PASS",
+      "test": "deterministic_identity_collision"
+    },
+    {
+      "finding": "1411 candidacy-derived core rows equal union of exact lane candidate core rows by ID and canonical semantic hash.",
+      "status": "PASS",
+      "test": "candidate_union_byte_semantic_equivalence"
+    },
+    {
+      "finding": "35/35 governed family-wave scopes represented; no unreviewed available current source surface.",
+      "status": "PASS",
+      "test": "all_35_scopes_covered"
+    }
+  ]
+}
