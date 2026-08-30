@@ -20,8 +20,10 @@ jobs:
           set -euo pipefail
           T=.j01a_r2_arab_afro_transport
           OUT=data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_RESIDUAL_CLOSURE_R2/LANE_D_ARAB_AFRO
+          for f in "$T"/chunk_*; do wc -c "$f"; sha256sum "$f"; done
           cat "$T"/chunk_* > /tmp/payload.b64
           base64 -d /tmp/payload.b64 > /tmp/payload.tar.xz
+          sha256sum /tmp/payload.tar.xz
           echo '16d40d01f02b6338b245110719f58a42c815bb722217ba99633020022e3dfbe8  /tmp/payload.tar.xz' | sha256sum -c -
           mkdir -p "$OUT"
           tar -xJf /tmp/payload.tar.xz -C "$OUT"
