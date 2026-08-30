@@ -1,0 +1,110 @@
+{
+  "checks": {
+    "C02_hash_and_rows": {
+      "rows": 6021,
+      "sha256": "0197c20dc6d48106d6070d8b1ba390d43815cd36d92e2f03e70cad04a0a1be4d",
+      "status": "PASS"
+    },
+    "C03_reconstruction": {
+      "canonical_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "rows": 3443,
+      "status": "PASS",
+      "xz_sha256": "a317b664799b87b287eb32c35225ec6f5cc82d53fc7994cd03e2fa90cc03d60d"
+    },
+    "C04_hash_and_rows": {
+      "rows": 3425,
+      "sha256": "c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90",
+      "status": "PASS"
+    },
+    "C05_exact_reconstruction": {
+      "ordered_id_sha256": "319a74f2bd00d6cd4f3ef434aafbc4ebee635597e6a68d17a86a07462da9ae62",
+      "pair_stream_sha256": "1d72efe346cced887b65e396b0f69645e668415e7dd9cbc69b9e69d420498013",
+      "rows": 5387,
+      "status": "PASS"
+    },
+    "admitted_c06_tests": {
+      "job_id": 99158136342,
+      "passed": 22,
+      "run_id": 33274270929,
+      "status": "PASS"
+    },
+    "c05_row_blocker_nonfabrication": {
+      "aggregate_blocker_sum": 4768,
+      "row_mapping_emitted": false,
+      "status": "PASS",
+      "synthetic_allocation_performed": false
+    },
+    "catalog_exact_current_universe": {
+      "rows": 18276,
+      "sha256": "2a13ca0551f812e71ad254ab65e3f1ccf99ccfa789eeac4ade708cdbfaa568b8",
+      "status": "PASS"
+    },
+    "contract2_hostile_tests": {
+      "passed": 8,
+      "status": "PASS"
+    },
+    "frozen_commits_exact": {
+      "status": "PASS",
+      "values": {
+        "C02": "2177fb8767d363ecb77697f5e259f1e10bd05c0b",
+        "C03": "cbaa97ac11c4e8d517b49663f2037f8ea0e04267",
+        "C04": "2fe01e4a9508b64f041d6bc13d3c9880661489d3",
+        "C05": "509dacadaf863be88d0c6e0d95e9aff6f401af23",
+        "C06_IMPLEMENTATION": "93aa22b13b8e5ac5eedd28127f8ddedb46b042bc"
+      }
+    },
+    "full_join": {
+      "disposition_counts": {
+        "ADMINISTRATIVE_OR_NONRESPONDENT_CONTEXT": 1274,
+        "GOVERNED_GENERAL_OR_UNCONDITIONAL_UNIVERSE": 1025,
+        "GOVERNED_SCOPED_NONAPPLICABILITY": 17,
+        "POSITIVE_EXECUTABLE_ROUTING_AUTHORITY": 1574,
+        "STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT": 14386
+      },
+      "duplicates": 0,
+      "extra": 0,
+      "family_leakage": 0,
+      "identity_coordinate_drift": 0,
+      "missing": 0,
+      "rows_in": 18276,
+      "rows_out": 18276,
+      "status": "PASS"
+    },
+    "library_ledger_carrier": {
+      "bytes": 5535,
+      "sha256": "5fe7fc719453479397fb759a00341dd6dc51184c8547306f7955220091405dde",
+      "status": "PASS"
+    },
+    "library_unresolved_carrier": {
+      "bytes": 1460,
+      "sha256": "36bd6f3be7f12e938183285dbee30c1db5198a65beab3890f889990e5d8c82ed",
+      "status": "PASS"
+    },
+    "unresolved_taxonomy_view": {
+      "rows": 14386,
+      "source_counts": {
+        "C02": 4414,
+        "C03": 2447,
+        "C04": 2757,
+        "C05": 4768
+      },
+      "status": "PASS"
+    },
+    "worker_start_head": {
+      "expected": "d73d841b9325c08e8691eae5164886568b929c6d",
+      "status": "PASS"
+    }
+  },
+  "contract": "CURRENT_ROUTING_LEDGER_CONTRACT@2",
+  "forbidden_actions": {
+    "disposition_from_aggregate_counts": false,
+    "evidence_synthesis": false,
+    "membership_from_aggregate_counts": false,
+    "predicate_synthesis": false,
+    "provenance_synthesis": false,
+    "routing_readjudication": false
+  },
+  "path": "B",
+  "semantic_reinterpretation_performed": false,
+  "status": "PASS"
+}
