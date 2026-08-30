@@ -2,27 +2,69 @@
   "blocker_codes": [
     "R1_CARRIER_PAYLOAD_MISMATCH",
     "WVS_W1_EQUIVALENCE_BYTES_UNRECOVERED",
+    "WVS_W4_V77_VARIANT_SLOT",
+    "WVS_W7_MIDDLE_EAST_MN_CODES_NOT_IN_CURRENT_DEEP_CATALOG",
     "ASIAN_W1_NATIVE_BYTES_NOT_MATERIALIZED",
     "ASIAN_CURRENT_DEEP_CATALOG_UNRECOVERED",
     "ASIAN_W5_CURRENT_PDF_HASH_UNBOUND"
   ],
-  "certified_r2_candidate_subset_emitted": false,
-  "certified_r2_source_carrier_emitted": false,
-  "duplicate_current_structure_ids_checked": null,
+  "candidate_carrier_equals_exact_candidate_subset": true,
+  "carrier_hashes": {
+    "candidate": {
+      "bytes": 121503,
+      "rows": 156,
+      "sha256": "b601aecfc00e4462e7c8ea0c004b89b20f8f41e93dd7e32aa1242ee95c2ae654"
+    },
+    "source": {
+      "bytes": 124533,
+      "rows": 160,
+      "sha256": "eef38ced374272700f45009b1e66d41e869edee1dfd3895e1b95977fcffc6b3e"
+    }
+  },
+  "duplicate_current_structure_id_count": 0,
+  "every_emitted_structure_has_one_candidacy_disposition": true,
   "every_r1_lane_row_accounted_for_exactly_once": false,
+  "exact_carrier_transport": {
+    "candidate": {
+      "bytes": 121503,
+      "library_id": "libfile_022cfb411524819186cd2eabc52c5b1d",
+      "library_path": "/J01A_R2_WVS_ASIAN_FINAL/CURRENT_J_CANDIDATE_UNIVERSE_R2.csv",
+      "rows": 156,
+      "sha256": "b601aecfc00e4462e7c8ea0c004b89b20f8f41e93dd7e32aa1242ee95c2ae654"
+    },
+    "git_files_are_transport_stubs": true,
+    "source": {
+      "bytes": 124533,
+      "library_id": "libfile_8d2f2a473b208191b7b1c68e361ef168",
+      "library_path": "/J01A_R2_WVS_ASIAN_FINAL/CURRENT_SOURCE_STRUCTURE_UNIVERSE_R2.csv",
+      "rows": 160,
+      "sha256": "eef38ced374272700f45009b1e66d41e869edee1dfd3895e1b95977fcffc6b3e"
+    }
+  },
+  "exact_current_member_binding_only_where_unique_source_variable_identity": true,
   "frozen_r1_j_candidate_carrier_hash_match": false,
   "frozen_r1_source_carrier_hash_match": false,
   "fuzzy_or_positional_binding_promoted": false,
+  "governed_scopes_with_unavailable_material_authority": [
+    "WVS W1 crosswalk bytes",
+    "Asian W1 native bytes",
+    "Asian W1/W4/W5 current deep catalog",
+    "Asian W5 official PDF binary hash"
+  ],
   "historical_j_input_used": false,
+  "independently_verified_partial_candidate_carrier_emitted": true,
+  "independently_verified_partial_source_carrier_emitted": true,
   "jurisdiction_only": true,
   "lane_complete": false,
   "missing_asian_deep_catalog_treated_as_absence": false,
-  "out_of_lane_family_leakage_checked": true,
-  "remaining_gaps_typed": true,
+  "neighboring_wave_binding_or_structure_projection_promoted": false,
+  "out_of_lane_family_leakage_count": 0,
+  "partial_candidate_carrier_rows": 156,
+  "partial_source_carrier_rows": 160,
   "same_number_wvs_w1_binding_promoted": false,
-  "schema_version": "J01A_R2_WVS_ASIAN_VALIDATION",
-  "scope_review_coverage_recorded": true,
+  "schema_version": "J01A_R2_WVS_ASIAN_VALIDATION_V2",
   "sibling_r2_output_used": false,
+  "source_document_review_unfinished_on_accessible_bytes": false,
   "success_token_justified": false,
-  "validation_outcome": "BLOCKED_INPUT_AUTHORITY_NOT_CERTIFIABLE"
+  "validation_outcome": "BLOCKED_R1_LINEAGE_AND_CURRENT_BINDING_AUTHORITY"
 }

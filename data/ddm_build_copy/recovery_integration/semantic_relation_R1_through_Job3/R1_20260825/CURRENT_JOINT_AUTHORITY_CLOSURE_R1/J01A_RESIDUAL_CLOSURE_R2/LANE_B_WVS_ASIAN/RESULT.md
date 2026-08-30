@@ -1,59 +1,50 @@
 # J01-A R2 LANE B — WVS / ASIAN BAROMETER CURRENT-ONLY RETURN
 
-Status: `BLOCKED__NO_SUCCESS_TOKEN`
+Status: `BLOCKED_R1_LINEAGE_AND_CURRENT_BINDING_AUTHORITY`
 
-Jurisdiction executed only for WVS W1/W4/W7 and Asian Barometer W1/W4/W5. No sibling R2 branch or historical J carrier was admitted.
+Success token: **NOT EMITTED**
 
-## Terminal finding
+## What is finished
 
-This lane cannot lawfully emit a certified R2 source-structure universe, candidate universe, or exact R1 lineage. The hard blocker is not a negative substantive finding; it is loss of the exact frozen R1 carrier payload named by the command. The command-authorized Library aliases now resolve to different bytes than the frozen R1 manifest.
+The previously unfinished current-source archaeology is now completed across every accessible source surface in this lane. The emitted partial current-only carrier contains **160 independently verified source structures**, of which **156 are current J candidates** and **4 are administrative groups**. This is no longer a schema-only return. The exact 160-row and 156-row carriers are stored in ChatGPT Library and hash-bound from Git because the Git connector is not a safe transport for these large exact CSV payloads.
 
-Frozen source carrier required by the command:
-- SHA-256 `47913a300402b65e4fd92197220ced0195b6b50704679e3cc088d15604d4b7ad`
-- 253,503 bytes
-- 299 rows
+Exact independently reviewed structure counts by scope:
 
-Current payload behind that Library alias during this court:
-- SHA-256 `de4a097b1059be2c398ed0eef5876f308a37e38c0fc315d936b42213d1ba8ba7`
-- 394,454 bytes
-- 439 parsed data rows
+- WVS W1: **27** source structures / **27** candidate dispositions; full 21-page questionnaire surface reviewed; all current-member bindings remain typed-unresolved because the native-to-current crosswalk is unsafe.
+- WVS W4: **32** / **32**; full 25-page questionnaire surface reviewed; **31** structures have fully exact current-ID binding and the V68–V77 neighbors structure has an exact typed V77 country/form-variant gap.
+- WVS W7: **51** source structures / **50** candidates + **1** administrative recode group; full 27-page questionnaire including Political Trust and Middle East regional modules reviewed; **47** structures bind fully exactly and **4** Middle East module structures retain typed catalog gaps.
+- Asian Barometer W1: **not enumerable from accessible current bytes**; no zero/absence inference is made.
+- Asian Barometer W4: **23** source structures / **21** candidates + **2** administrative groups; full 44-page native questionnaire surface reviewed. Exact current IDs remain unavailable because the current Asian deep catalog is not recoverable.
+- Asian Barometer W5: **27** source structures / **26** candidates + **1** administrative group from the full usable official current 44-page questionnaire surface. Exact current IDs and a hash-bound official PDF binary remain unavailable.
 
-Frozen J-candidate carrier required by the command:
-- SHA-256 `3fe61d274c4b0d78c9b1ba142709125831a4c7d8e3418e0a69fc257879b743f9`
-- 216,925 bytes
-- 257 rows
+Across the emitted partial carrier, **78 structures have exact current WVS member binding** and **82 retain explicit typed binding gaps**. No fuzzy, positional, same-number W1, or neighboring-wave binding was promoted.
 
-Current Library path is 288,879 bytes; the materialized payload checked during this court hashes to `329840cc555b791c1cebca8328a317009d5ce201c4b60e72edec1900923ac550` with 328 parsed data rows.
+## Positive omission/correction findings from the completion pass
 
-The original manifest-bound file IDs could not be materialized from the current Library surface. Because shared R2 authority requires every R1 lane row to be accounted for exactly once, reading the mutated alias as if it were the frozen baseline would consume uncommanded later content and violate sibling blindness. Therefore it was rejected.
+The exhaustive pass found source-native structures that the earlier bounded review had not yet carried into its result, including WVS W4 economic-value scales (`V141`–`V144`), the `V220`–`V222` linked party-choice sequence, WVS W7 international-organization knowledge and role/recode structures, Asian W4 `Q83`–`Q86`, optional `Q99/Q99a/Q99b`, socioeconomic matrices, and interviewer administrative blocks. These are admitted from current source text only; they are not historical-target reproductions.
+
+The WVS W4 `V77` case also required a correction in binding treatment: the native core questionnaire makes V77 a locally substitutable minority-group slot, while the current catalog exposes multiple `V77_01`…`V77_27` variants. The carrier therefore refuses to collapse those variants without exact country/form authority.
 
 ## WVS W1 crosswalk result
 
 `SAFE_NATIVE_TO_CURRENT_MEMBER_CROSSWALK = UNRESOLVED`
 
-Positive current evidence demonstrates why same-number mapping is forbidden:
-- native `WVS Wave 1 (1981) Questionnaire.pdf` SHA `199bb069...` has `V111` as the leisure-time relaxing-versus-active item;
-- current `WVS Wave 1 (1981) Codebook.pdf` SHA `80ceb7ef...` has `V111` as `Future changes: Less emphasis on money and material possessions`;
-- current WVS deep catalog SHA `cc538e72...` binds current W1 `V111` to `question_impl.phase0.678c69fb141c9abed7a7` with that future-changes meaning.
+Native W1 `V111` and current W1 `V111` have different semantics, positively disproving same-number identity. The current WVS variables/equivalences workbook is listed by official documentation but its mapping bytes were not recovered. All 27 W1 structures are therefore source-preserved with typed incomplete binding.
 
-The current official WVS longitudinal documentation explicitly lists `WVS Time Series List of Variables and equivalences 1981 2022 v3.1 (Excel)`. That is the correct class of current authority for W1 identity, but the actual workbook/mapping payload was not recoverable through the governed Library/web surface in this run. No positional, ordinal, same-number, label-only, or neighboring-wave substitution was used.
+## Asian recovery result
 
-## Asian Barometer recovery result
+W4 native source is hash-bound and fully reviewed. W5 current official questionnaire is fully reviewed at the usable source surface, and local-tree metadata independently attests canonical W5 filenames/hashes, but official-mirror byte identity/hash is not asserted. W1 local-tree source locators/hashes are known, but the source bytes are not accessible for review. No exact current Asian deep catalog was recovered, so no Asian current implementation IDs are guessed.
 
-W1 current locator recovery succeeded at the file-identity level: the governed locator ledger names `CoreQs-May25rev.doc`, `Wave1_codebook_20170327.txt`, and `Wave1_20170906.sav`; the current official Asian Barometer site also confirms the First Wave core questionnaire is downloadable. Exact W1 questionnaire/codebook bytes were not materialized, so no hash-bound W1 source structure was certified.
+## Why this still cannot receive the lane success token
 
-W4 native source recovery is strong: `ABS4_Core_Questionnaire.pdf`, SHA `5be5ed726287f83c6bf723ae563e434f7d17f623e630b31b6ba1b92d2cdcbba0`, was rendered and text-extracted over all 44 pages. Numerous explicit respondent-facing multi-member/ranking blocks are directly present.
+The command requires exact one-for-one lineage for every frozen R1 WVS/Asian row. The command-authorized Library aliases no longer materialize to their frozen manifest hashes, and the original bytes are unavailable. The mutated aliases are excluded. `R1_LINEAGE.csv` therefore truthfully remains blocked instead of fabricating preservation/correction mappings.
 
-W5 current native source existence was recovered more strongly than R1: the official current `CoreQ_W5.pdf` is directly reachable as a 44-page PDF, and the governed locator ledger names `CoreQ_W5_R1.pdf`, `ABS5_Core_Questionnaire_20190805.pdf`, and `20230505_W5_merge_15_codebook.pdf`. The binary could not be locally materialized for SHA binding, so deterministic source-hash identity was not certified.
+This also means the **160/156 counts are exact for the independently reviewed emitted carrier, not certified exact six-scope lane denominators**. Certified lane counts remain null because Asian W1 cannot be independently enumerated and mandatory R1 lineage cannot be completed.
 
-No exact current `Rawlsing_P2_Asian_Barometer_*Deep_Question_Node_Catalog*.csv` was recovered by exact-title/locator-ledger search. Absence is not inferred; exact current member binding therefore remains open for W1/W4/W5.
+No sibling R2 output or historical J carrier was used.
 
-## Carrier decision
+## Exact carrier transport
 
-The two required R2 carrier CSVs are emitted as schema-only placeholders with **zero certified data rows**. Zero is not asserted as the lane universe count. `COUNTS_R2.json` marks both certified counts `null`; `VALIDATION_R2.json` marks carrier and lineage validation false. This avoids turning an input-integrity failure into a fake substantive answer.
-
-## Required next authority
-
-To resume this lane without violating the command, SUB-VOZHD must restore or provide the exact frozen R1 carrier payloads bound by `CARRIER_MANIFEST.json` (or an independently authenticated byte-identical copy), and provide/recover the actual current WVS equivalence workbook plus the exact current Asian deep catalog if available.
-
-Success token **not emitted**.
+- Source carrier: `libfile_8d2f2a473b208191b7b1c68e361ef168`, 124,533 bytes, 160 rows, SHA-256 `eef38ced374272700f45009b1e66d41e869edee1dfd3895e1b95977fcffc6b3e`.
+- J-candidate carrier: `libfile_022cfb411524819186cd2eabc52c5b1d`, 121,503 bytes, 156 rows, SHA-256 `b601aecfc00e4462e7c8ea0c004b89b20f8f41e93dd7e32aa1242ee95c2ae654`.
+- The two Git `.csv` files are transport stubs that bind these exact Library carriers by Library ID, path, row count, byte size, schema, and SHA-256.

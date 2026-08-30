@@ -1,23 +1,94 @@
 {
-  "carrier_emission_status": "SCHEMA_ONLY_UNCERTIFIED_DUE_FROZEN_R1_LINEAGE_BASELINE_INTEGRITY_BLOCKER",
+  "by_candidacy_disposition": {
+    "ADMINISTRATIVE_GROUP": 4,
+    "CURRENT_J_CANDIDATE": 156
+  },
+  "by_current_member_binding_status": {
+    "EXACT_CURRENT_SOURCE_VARIABLE_IDENTITY": 78,
+    "INCOMPLETE_TYPED_GAP": 1,
+    "UNRESOLVED_TYPED_GAP": 81
+  },
+  "by_governed_scope": {
+    "Asian Barometer::W4": {
+      "administrative_groups": 2,
+      "current_j_candidates": 21,
+      "exact_current_member_binding_structures": 0,
+      "source_structures": 23,
+      "typed_incomplete_or_unresolved_binding_structures": 23
+    },
+    "Asian Barometer::W5": {
+      "administrative_groups": 1,
+      "current_j_candidates": 26,
+      "exact_current_member_binding_structures": 0,
+      "source_structures": 27,
+      "typed_incomplete_or_unresolved_binding_structures": 27
+    },
+    "WVS::W1": {
+      "administrative_groups": 0,
+      "current_j_candidates": 27,
+      "exact_current_member_binding_structures": 0,
+      "source_structures": 27,
+      "typed_incomplete_or_unresolved_binding_structures": 27
+    },
+    "WVS::W4": {
+      "administrative_groups": 0,
+      "current_j_candidates": 32,
+      "exact_current_member_binding_structures": 31,
+      "source_structures": 32,
+      "typed_incomplete_or_unresolved_binding_structures": 1
+    },
+    "WVS::W7": {
+      "administrative_groups": 1,
+      "current_j_candidates": 50,
+      "exact_current_member_binding_structures": 47,
+      "source_structures": 51,
+      "typed_incomplete_or_unresolved_binding_structures": 4
+    }
+  },
+  "by_source_structure_type": {
+    "ADMINISTRATIVE_PROCESS_BLOCK": 4,
+    "GROUPED_ITEM_BLOCK": 4,
+    "MATRIX_GRID": 116,
+    "MULTIPLE_RESPONSE_SET": 17,
+    "RANKING_SET": 14,
+    "ROSTER_ITERATION": 5
+  },
   "certified_lane_j_candidate_count": null,
   "certified_lane_source_structure_count": null,
+  "exact_current_member_binding_structures": 78,
   "frozen_r1_metadata_context_only": {
     "Asian_Barometer_rows": 16,
     "WVS_rows": 94,
     "lane_rows_requiring_exact_lineage": 110,
-    "note": "These are allowed R1 reconnaissance counts used only to quantify the missing lineage obligation; they are not R2 expected answers."
+    "note": "Allowed R1 reconnaissance counts quantify the missing lineage obligation only; they are not R2 targets and did not drive discovery."
   },
   "governed_scopes": 6,
-  "j_candidate_carrier_bytes": 428,
-  "j_candidate_carrier_sha256": "abdade55ee1c8d0fdc99f100b7d6a2e7c4475af09f8631bbf3b45b9a8c49b27b",
+  "independently_verified_partial_current_j_candidate_rows": 156,
+  "independently_verified_partial_source_structure_rows": 160,
   "lane_complete": false,
-  "schema_only_j_candidate_carrier_rows": 0,
-  "schema_only_source_carrier_rows": 0,
-  "schema_version": "J01A_R2_WVS_ASIAN_COUNTS",
-  "scopes_complete_at_available_current_source_ceiling": 0,
-  "scopes_with_typed_blockers": 6,
-  "source_carrier_bytes": 428,
-  "source_carrier_sha256": "abdade55ee1c8d0fdc99f100b7d6a2e7c4475af09f8631bbf3b45b9a8c49b27b",
-  "success_token_emitted": false
+  "partial_j_candidate_carrier": {
+    "bytes": 121503,
+    "library_id": "libfile_022cfb411524819186cd2eabc52c5b1d",
+    "library_path": "/J01A_R2_WVS_ASIAN_FINAL/CURRENT_J_CANDIDATE_UNIVERSE_R2.csv",
+    "rows": 156,
+    "schema": "current_source_structure_id,source_family,wave_or_scope,country,form,module,split,source_structure_type,source_native_label_or_locator,member_count,source_native_member_identities,current_question_implementation_ids,current_member_binding_status,current_member_binding_gap,source_document_identity,source_document_sha256,source_locator,evidence_class,discovery_confidence,candidacy_disposition,candidacy_rationale,binding_note",
+    "sha256": "b601aecfc00e4462e7c8ea0c004b89b20f8f41e93dd7e32aa1242ee95c2ae654",
+    "transport": "CHATGPT_LIBRARY"
+  },
+  "partial_source_carrier": {
+    "bytes": 124533,
+    "library_id": "libfile_8d2f2a473b208191b7b1c68e361ef168",
+    "library_path": "/J01A_R2_WVS_ASIAN_FINAL/CURRENT_SOURCE_STRUCTURE_UNIVERSE_R2.csv",
+    "rows": 160,
+    "schema": "current_source_structure_id,source_family,wave_or_scope,country,form,module,split,source_structure_type,source_native_label_or_locator,member_count,source_native_member_identities,current_question_implementation_ids,current_member_binding_status,current_member_binding_gap,source_document_identity,source_document_sha256,source_locator,evidence_class,discovery_confidence,candidacy_disposition,candidacy_rationale,binding_note",
+    "sha256": "eef38ced374272700f45009b1e66d41e869edee1dfd3895e1b95977fcffc6b3e",
+    "transport": "CHATGPT_LIBRARY"
+  },
+  "reason_certified_lane_counts_are_null": "Asian Barometer W1 source bytes are not accessible for exhaustive source discovery, and the exact frozen R1 lane carrier needed for mandatory one-to-one lineage is unrecoverable. The emitted carrier is therefore exact only for independently reviewed source surfaces, not an exact six-scope lane denominator.",
+  "schema_version": "J01A_R2_WVS_ASIAN_COUNTS_V2",
+  "scopes_complete_at_available_current_source_ceiling": 2,
+  "scopes_with_exact_remaining_material_gap": 4,
+  "success_token_emitted": false,
+  "terminal_status": "BLOCKED_R1_LINEAGE_AND_CURRENT_BINDING_AUTHORITY",
+  "typed_incomplete_or_unresolved_binding_structures": 82
 }

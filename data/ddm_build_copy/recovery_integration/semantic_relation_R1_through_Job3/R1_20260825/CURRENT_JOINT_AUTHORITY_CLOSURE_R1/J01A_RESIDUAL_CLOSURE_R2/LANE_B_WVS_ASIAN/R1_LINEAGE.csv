@@ -1,2 +1,2 @@
 record_type,r1_current_source_structure_id,r2_current_source_structure_id,lineage_state,source_family,wave_or_scope,status,reason
-LINEAGE_BLOCKER,,,,WVS / Asian Barometer,ALL,BLOCKED,Frozen R1 carrier bytes named by CARRIER_MANIFEST.json are no longer retrievable at their manifest-bound SHA/size; the Library aliases now resolve to different payloads. No row identity from the mutated aliases is admitted.
+LINEAGE_BLOCKER,,,,WVS / Asian Barometer,ALL,BLOCKED,Frozen R1 carrier bytes named by the authorized manifest are no longer retrievable at their manifest-bound SHA/size. Current Library aliases resolve to later/different payloads and are excluded. No row identity from those mutated aliases is admitted; exact one-to-one R1 lineage cannot be fabricated.
