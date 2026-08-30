@@ -1,6 +1,18 @@
 {
   "schema": "PREMAIN_W34_VALIDATION@1.0.0",
-  "validation_scope": "W34 preservation payload; exact final payload SHA recorded in RETURN_POINTER.json",
+  "validated_payload_commit": "798cc0c48ee8f8546244c6b893a3f6b70721ed3c",
+  "validated_against_start": "daffee545fc60a8cd635aee9aafbe77a920f4c19",
+  "payload_compare": {
+    "status": "ahead",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "changed_file_count": 13,
+    "all_changed_files_under_w34_report_root": true,
+    "rawlsing_next_files_changed": 0,
+    "serving_selector_files_changed": 0,
+    "field_forge_source_files_copied": 0,
+    "historical_branch_payload_files_copied": 0
+  },
   "checks": {
     "01_r5_selected_capital_preserved": "PASS__V4_AND_AUDIT69_EXACT_REFS_SOURCE_TEST_PROOF_FLOOR_RESOLVED",
     "02_r5_not_importable_or_selected_by_w34": "PASS__ZERO_R5_CODE_FILES_ADDED",
