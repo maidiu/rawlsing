@@ -30,6 +30,111 @@ jobs:
           git fetch origin '+refs/heads/*:refs/remotes/origin/*' --force --prune
           git update-ref -d refs/remotes/origin/agent/rabochii-premain-w1-global-dag-trigger-r1 || true
 
+      - name: Audit frozen reconstruction delta
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
+
+          START = '0777a34e50221bde6801dbaca26c058a7350c9e8'
+          EXPECTED = {'ref_count': 638, 'unique_tip_count': 581, 'alias_surplus': 57}
+          WAVE1 = {
+              'agent/rabochii-premain-w1-acceptance-semantics-r1',
+              'agent/rabochii-premain-w1-field-forge-architecture-r1',
+              'agent/rabochii-premain-w1-global-dag-r1',
+              'agent/rabochii-premain-w1-joint-authority-r1',
+              'agent/rabochii-premain-w1-main-succession-r1',
+              'agent/rabochii-premain-w1-recovery-continuity-r1',
+              'agent/rabochii-premain-w1-routing-carrier-r1',
+              'agent/rabochii-premain-w1-semantic-relation-r1',
+              'agent/rabochii-premain-w1-substrate-runtime-r1',
+              'agent/rabochii-premain-w1-validation-map-r1',
+          }
+          OUT = Path('data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WAVE1/W01_GLOBAL_DAG')
+          OUT.mkdir(parents=True, exist_ok=True)
+
+          def out(*args):
+              return subprocess.check_output(args, text=True).strip()
+
+          raw = out('git','for-each-ref','--format=%(refname:strip=3)\t%(objectname)','refs/remotes/origin/')
+          live = {}
+          for line in raw.splitlines():
+              if not line.strip():
+                  continue
+              branch, sha = line.split('\t', 1)
+              if branch == 'HEAD':
+                  continue
+              live[branch] = sha
+
+          missing = sorted(WAVE1 - set(live))
+          if missing:
+              raise RuntimeError(f'missing Wave-1 refs: {missing}')
+
+          def counts(mapping):
+              vals = list(mapping.values())
+              return {
+                  'ref_count': len(vals),
+                  'unique_tip_count': len(set(vals)),
+                  'alias_surplus': len(vals) - len(set(vals)),
+              }
+
+          reconstructed = dict(live)
+          moved_wave1 = []
+          first_wave1_commit_rows = []
+          for branch in sorted(WAVE1):
+              tip = live[branch]
+              if subprocess.run(['git','merge-base','--is-ancestor',START,tip]).returncode != 0:
+                  raise RuntimeError(f'Wave-1 tip is not descendant of launch HEAD: {branch} {tip}')
+              if tip != START:
+                  moved_wave1.append(branch)
+                  lines = out('git','log','--reverse','--format=%H\t%cI\t%s',f'{START}..{tip}').splitlines()
+                  if not lines:
+                      raise RuntimeError(f'no unique commit found for moved Wave-1 branch {branch}')
+                  sha, iso, subject = lines[0].split('\t',2)
+                  first_wave1_commit_rows.append({'branch':branch,'sha':sha,'committer_iso':iso,'subject':subject})
+              reconstructed[branch] = START
+
+          live_counts = counts(live)
+          reconstructed_counts = counts(reconstructed)
+          if reconstructed_counts != EXPECTED:
+              raise RuntimeError(f'reconstructed invariant mismatch: {reconstructed_counts} != {EXPECTED}')
+
+          earliest = min((r['committer_iso'] for r in first_wave1_commit_rows), default=None)
+          non_wave1_fresh = []
+          if earliest:
+              for branch, tip in sorted(live.items()):
+                  if branch in WAVE1:
+                      continue
+                  iso = out('git','show','-s','--format=%cI',tip)
+                  if iso >= earliest:
+                      non_wave1_fresh.append({'branch':branch,'tip_sha':tip,'tip_committer_iso':iso,'tip_subject':out('git','show','-s','--format=%s',tip)})
+
+          audit = {
+              'jurisdiction': 'TOPOLOGY_ONLY_RECONSTRUCTION_AUDIT',
+              'wave1_launch_sha': START,
+              'expected_frozen_counts': EXPECTED,
+              'current_live_counts_excluding_synthetic_trigger': live_counts,
+              'reconstructed_counts_after_wave1_rewind': reconstructed_counts,
+              'wave1_ref_count': len(WAVE1),
+              'wave1_refs_moved_from_launch_count': len(moved_wave1),
+              'wave1_refs_moved_from_launch': moved_wave1,
+              'unique_tip_delta_live_minus_reconstructed': live_counts['unique_tip_count'] - reconstructed_counts['unique_tip_count'],
+              'alias_surplus_delta_live_minus_reconstructed': live_counts['alias_surplus'] - reconstructed_counts['alias_surplus'],
+              'earliest_postlaunch_wave1_commit_iso': earliest,
+              'first_postlaunch_commit_by_wave1_ref': first_wave1_commit_rows,
+              'non_wave1_refs_whose_current_tip_committer_date_is_at_or_after_earliest_wave1_commit': non_wave1_fresh,
+              'non_wave1_fresh_tip_count': len(non_wave1_fresh),
+              'interpretation_limit': 'Commit-date audit cannot prove absence of force-ref movement to an older pre-existing commit; it tests normal append-only post-freeze movement and aggregate cancellation risk.',
+              'semantic_authority_adjudication': 'NOT_PERFORMED',
+              'wave2_started': False,
+          }
+          (OUT/'FREEZE_RECONSTRUCTION_AUDIT.json').write_text(json.dumps(audit,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(audit,indent=2,sort_keys=True))
+          PY
+
       - name: Execute the banked topology reducer without reading sibling payloads
         shell: bash
         run: |
@@ -59,5 +164,5 @@ jobs:
             echo 'No forensic changes to commit.'
             exit 0
           fi
-          git commit -m 'W01 topology: exhaustive frozen DAG reduction [skip w01-dag]'
+          git commit -m 'W01 topology: audit frozen reconstruction and rerun reduction [skip w01-dag]'
           git push origin HEAD:agent/rabochii-premain-w1-global-dag-r1
