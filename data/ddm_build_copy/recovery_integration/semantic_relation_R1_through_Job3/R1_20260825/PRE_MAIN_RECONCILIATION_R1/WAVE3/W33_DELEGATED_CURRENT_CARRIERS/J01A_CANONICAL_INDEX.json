@@ -1,0 +1,58 @@
+{
+  "schema": "J01A_CANONICAL_DELEGATED_CURRENT_INDEX_V1",
+  "status": "CURRENT__FROZEN__EXACT_INDEX_ONLY",
+  "terminal_sha": "44e97e420d38b6a2b0c44034929b5994a352d8b6",
+  "substantive_freeze_sha": "42cd266ca869183d3c2576cb15826c46129119da",
+  "artifact_tree_sha": "8ebc72a03ff3a03363036a01c8e009f128682d64",
+  "authority": {
+    "scope": "CURRENT_JOINT_SOURCE_CANDIDACY",
+    "grain": "CURRENT_JOINT_SOURCE_CANDIDACY",
+    "authority_level": "DELEGATED_ACCEPTED_AUTHORITY",
+    "currentness": "PROJECT_CURRENT_AT_GRAIN",
+    "banking": "HQ_UNBANKED",
+    "global_effect": "NO_GLOBAL_SOVEREIGNTY_EFFECT"
+  },
+  "frozen_denominator": {
+    "current_source_structures": 1879,
+    "current_j_candidates": 1411,
+    "families": 9,
+    "scopes": 35
+  },
+  "family_source_rows": {
+    "GSS": 672, "EVS": 176, "Arab Barometer": 155, "Afrobarometer": 132, "WVS": 110, "Asian Barometer": 98, "Latinobarómetro": 102, "South Asia": 15, "LiTS": 419
+  },
+  "family_candidate_rows": {
+    "GSS": 662, "EVS": 130, "Arab Barometer": 122, "Afrobarometer": 66, "WVS": 109, "Asian Barometer": 80, "Latinobarómetro": 73, "South Asia": 7, "LiTS": 162
+  },
+  "frozen_carriers": {
+    "CURRENT_SOURCE_STRUCTURE_UNIVERSE_FROZEN.csv": {"rows": 1879, "bytes": 2268501, "sha256": "d74ce5266daa007c6500385922d4f66de962ab5cf8a388bbbc60cd540f6656d2", "library_file_id": "libfile_3b7ee9030f4c8191bd59fac79d2d10c6", "library_path": "/J01A_CURRENT_ONLY_GLOBAL_FREEZE_R4/CURRENT_SOURCE_STRUCTURE_UNIVERSE_FROZEN.csv"},
+    "CURRENT_J_CANDIDATE_UNIVERSE_FROZEN.csv": {"rows": 1411, "bytes": 1641446, "sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64", "library_file_id": "libfile_3f6b0d93bb74819195702d808e3093ec", "library_path": "/J01A_CURRENT_ONLY_GLOBAL_FREEZE_R4/CURRENT_J_CANDIDATE_UNIVERSE_FROZEN.csv"},
+    "GLOBAL_SOURCE_EVIDENCE_MANIFEST.csv": {"rows": 1870, "bytes": 589324, "sha256": "09c30143de456e82afa254cdd1121dc9ca171dfa71298e19fff9dbdbec9af50a", "library_file_id": "libfile_4ff56bd0bc4881919155590b15180c09"},
+    "GLOBAL_SOURCE_GAPS.csv": {"rows": 37, "bytes": 37016, "sha256": "cefb323e82c13bd58b64b7060b2856d37e33582781d7d7dd5d7e4b63b573271c", "library_file_id": "libfile_d032817f535c81918a6318165011762a"}
+  },
+  "wvs_patch": {"rows": 110, "sha256": "7cbaa3fbf0ec93a68247612f4059fe66456ab537e8ad980e27990066a1289638"},
+  "admitted_upstream_refs": {
+    "GSS_EVS": "462b5f59fda5de90992d53fa87e831a0a4c7f5e5",
+    "ARAB_AFRO": "ba23b0fc1d22bb35abb8a6e8f9ab6100df8f7564",
+    "WVS_R2": "5a0d4e396320372ec0dbf8ff9d931ce3b38cd72f",
+    "WVS_R3": "77035f51883b3af99d26c2105b5c466fe8db7fba",
+    "ASIAN_R3": "d15a5530495de29bf9104b691ea5dcbaa208fc7d",
+    "LATIN_SA_LITS": "a55c13a4f454715626ea9374bfa75e972640a191",
+    "R1_LINEAGE_LOSS": "f690d9c5927ca149a48e57c73273247cf95effbe"
+  },
+  "historical_separation_law": {
+    "historical_j_inputs_consumed": false,
+    "j01b_dispatches_are_authority": false,
+    "denominator_mutable_by_j01b": false,
+    "historical_2499_15990_used_as_targets": false,
+    "r1_lost_semantic_rows_reconstructed": false,
+    "rule": "J01-B may classify historical succession against this frozen denominator but may not add/delete/merge/split current candidates or mutate current source membership."
+  },
+  "upstream_evidence_paths": [
+    "CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_GLOBAL_FREEZE_R4/RETURN_POINTER.json@44e97e420d38b6a2b0c44034929b5994a352d8b6",
+    "CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_GLOBAL_FREEZE_R4/FREEZE_MANIFEST.json@42cd266ca869183d3c2576cb15826c46129119da",
+    "CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_GLOBAL_FREEZE_R4/INPUT_RETURN_MANIFEST.json@42cd266ca869183d3c2576cb15826c46129119da",
+    "CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_GLOBAL_FREEZE_R4/COUNTS.json@42cd266ca869183d3c2576cb15826c46129119da",
+    "PRE_MAIN_RECONCILIATION_R1/WAVE2/W26_TERMINAL_CANONICALIZATION_SYNTHESIS/DELEGATED_CURRENT_SURFACES.tsv@2a7c15952a36181d6065fa84a41f55eab430c728"
+  ]
+}

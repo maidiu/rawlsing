@@ -1,0 +1,30 @@
+{
+  "schema": "W33_CONTRACT2_NONFABRICATION_RECEIPT_V1",
+  "status": "PASS",
+  "c05": {
+    "source_commit": "509dacadaf863be88d0c6e0d95e9aff6f401af23",
+    "target_rows": 5387,
+    "unresolved_rows": 4768,
+    "row_level_blocker_mapping_emitted_by_source": false,
+    "contract2_unresolved_token_kind": "NOT_EMITTED_AT_ROW_GRAIN",
+    "contract2_unresolved_token": "",
+    "aggregate_blocker_allocation_to_ids": false,
+    "pair_stream_sha256": "1d72efe346cced887b65e396b0f69645e668415e7dd9cbc69b9e69d420498013",
+    "policy": "Preserve authoritative absence. Retain aggregate blocker manifest by immutable reference only."
+  },
+  "global_nonfabrication": {
+    "disposition_from_aggregate_counts": false,
+    "membership_from_aggregate_counts": false,
+    "evidence_synthesis": false,
+    "predicate_synthesis": false,
+    "provenance_synthesis": false,
+    "routing_readjudication": false,
+    "default_filling": false,
+    "historical_denominator_substitution": false
+  },
+  "fresh_output_carrier_check": {
+    "authority_conservation_synthesis_forbidden": true,
+    "c05_row_blocker_synthesis": false,
+    "unresolved_view_c05_policy_contains_never_allocate": true
+  }
+}

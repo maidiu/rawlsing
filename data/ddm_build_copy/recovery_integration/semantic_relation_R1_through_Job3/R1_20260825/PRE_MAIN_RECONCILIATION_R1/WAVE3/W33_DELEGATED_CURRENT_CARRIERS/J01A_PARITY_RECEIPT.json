@@ -1,0 +1,21 @@
+{
+  "schema": "W33_J01A_PARITY_RECEIPT_V1",
+  "status": "PASS",
+  "execution_mode": "FRESH_LIBRARY_BYTE_REHASH_PLUS_ROW_AND_SCOPE_ACCOUNTING",
+  "checks": {
+    "source_carrier": {"rows": 1879, "bytes": 2268501, "sha256": "d74ce5266daa007c6500385922d4f66de962ab5cf8a388bbbc60cd540f6656d2", "match": true},
+    "candidate_carrier": {"rows": 1411, "bytes": 1641446, "sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64", "match": true},
+    "evidence_manifest": {"rows": 1870, "bytes": 589324, "sha256": "09c30143de456e82afa254cdd1121dc9ca171dfa71298e19fff9dbdbec9af50a", "match": true},
+    "source_gaps": {"rows": 37, "bytes": 37016, "sha256": "cefb323e82c13bd58b64b7060b2856d37e33582781d7d7dd5d7e4b63b573271c", "match": true},
+    "family_count": {"actual": 9, "expected": 9, "match": true},
+    "scope_count": {"definition": "distinct (source_family,wave_or_scope) over frozen source carrier", "actual": 35, "expected": 35, "match": true},
+    "unique_source_ids": {"actual": 1879, "expected": 1879, "match": true},
+    "unique_candidate_ids": {"actual": 1411, "expected": 1411, "match": true},
+    "candidate_subset_of_source": {"extra_candidate_ids": 0, "match": true},
+    "candidate_disposition": {"CURRENT_J_CANDIDATE": 1411, "other": 0, "match": true},
+    "terminal_input_groups": {"GSS_EVS": 848, "LATIN_SA_LITS": 536, "ARAB_AFRO": 287, "WVS_R2_PLUS_R3": 110, "ASIAN_R3": 98},
+    "historical_or_j01b_terminal_input_refs": {"count": 0, "match": true}
+  },
+  "denominator_mutated": false,
+  "historical_membership_consumed": false
+}
