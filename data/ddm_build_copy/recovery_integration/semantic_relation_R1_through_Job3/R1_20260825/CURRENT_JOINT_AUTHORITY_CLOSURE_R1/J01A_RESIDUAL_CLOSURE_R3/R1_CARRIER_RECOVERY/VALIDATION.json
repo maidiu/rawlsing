@@ -1,0 +1,55 @@
+{
+  "schema_version": "J01A_R3_FROZEN_R1_CARRIER_RECOVERY_VALIDATION_V1",
+  "status": "FAIL_CLOSED__RECOVERY_INCOMPLETE",
+  "checks": {
+    "worker_starting_head_verified": true,
+    "frozen_r1_git_manifest_identity_verified": true,
+    "direct_source_backing_id_attempted": true,
+    "direct_candidate_backing_id_attempted": true,
+    "direct_frozen_backing_objects_visible": false,
+    "stable_library_ids_resolved": true,
+    "stable_library_source_alias_rejected_by_exact_identity": true,
+    "stable_library_candidate_alias_rejected_by_exact_identity": true,
+    "library_version_probe_attempted": true,
+    "library_version_probe_exposed_exact_frozen_source": false,
+    "library_version_probe_exposed_exact_frozen_candidate": false,
+    "exact_immutable_duplicate_search_attempted": true,
+    "exact_immutable_source_duplicate_found": false,
+    "exact_immutable_candidate_duplicate_found": false,
+    "original_r1_git_branch_contains_carrier_bytes": false,
+    "original_r1_git_transport_manifest_confirmed_library_only": true,
+    "semantic_reconstruction_performed": false,
+    "later_carrier_rows_used_as_recovery_source": false,
+    "historical_j_inventory_consumed": false,
+    "both_exact_hash_byte_row_identity_matches": false,
+    "both_rebound_under_new_immutable_library_ids": false,
+    "success_condition_satisfied": false,
+    "fail_closed_required": true
+  },
+  "expected": {
+    "source": {
+      "rows": 299,
+      "bytes": 253503,
+      "sha256": "47913a300402b65e4fd92197220ced0195b6b50704679e3cc088d15604d4b7ad"
+    },
+    "candidate": {
+      "rows": 257,
+      "bytes": 216925,
+      "sha256": "3fe61d274c4b0d78c9b1ba142709125831a4c7d8e3418e0a69fc257879b743f9"
+    }
+  },
+  "observed_current_aliases": {
+    "source": {
+      "rows": 439,
+      "bytes": 394454,
+      "sha256": "de4a097b1059be2c398ed0eef5876f308a37e38c0fc315d936b42213d1ba8ba7"
+    },
+    "candidate": {
+      "rows": 328,
+      "bytes": 288879,
+      "sha256": "329840cc555b791c1cebca8328a317009d5ce201c4b60e72edec1900923ac550"
+    }
+  },
+  "success_token": "J01A_R3_FROZEN_R1_CARRIER_BYTES_RECOVERED_PASS",
+  "success_token_emitted": false
+}

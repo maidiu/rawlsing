@@ -1,0 +1,51 @@
+{
+  "schema_version": "J01A_R3_FROZEN_R1_CARRIER_RECOVERY_MANIFEST_V1",
+  "status": "BLOCKED__EXACT_FROZEN_R1_CARRIER_BYTES_NOT_RECOVERABLE_FROM_AUTHORIZED_VISIBLE_STORAGE_PATHS",
+  "frozen_authority_commit": "085dcb9d7d92d427038b634c55b8b4f3ce5235da",
+  "frozen_manifest": "J01A_CURRENT_ONLY_DISCOVERY/CARRIER_MANIFEST.json",
+  "carriers": {
+    "CURRENT_SOURCE_STRUCTURE_UNIVERSE.csv": {
+      "expected": {
+        "library_path": "/J01A_CURRENT_ONLY_DISCOVERY_R1/CURRENT_SOURCE_STRUCTURE_UNIVERSE.csv",
+        "library_file_id": "libfile_f4d6104cdc64819184fed7938f603239",
+        "backing_file_id": "file_00000000f50881f7b9569c40882e37b9",
+        "rows": 299,
+        "bytes": 253503,
+        "sha256": "47913a300402b65e4fd92197220ced0195b6b50704679e3cc088d15604d4b7ad"
+      },
+      "recovered": false,
+      "current_alias_observation": {
+        "resolved_backing_file_id": "file_000000009dc881f79b5040c56f61e6d3",
+        "rows": 439,
+        "bytes": 394454,
+        "sha256": "de4a097b1059be2c398ed0eef5876f308a37e38c0fc315d936b42213d1ba8ba7",
+        "identity_match": false
+      },
+      "new_immutable_library_copy": null
+    },
+    "CURRENT_J_CANDIDATE_UNIVERSE.csv": {
+      "expected": {
+        "library_path": "/J01A_CURRENT_ONLY_DISCOVERY_R1/CURRENT_J_CANDIDATE_UNIVERSE.csv",
+        "library_file_id": "libfile_9338d56ded208191ae1583a5f0de9977",
+        "backing_file_id": "file_00000000050481f79dcbc99e80c39912",
+        "rows": 257,
+        "bytes": 216925,
+        "sha256": "3fe61d274c4b0d78c9b1ba142709125831a4c7d8e3418e0a69fc257879b743f9"
+      },
+      "recovered": false,
+      "current_alias_observation": {
+        "resolved_backing_file_id": "file_00000000ddec81f79f81bf65c27cbe04",
+        "rows": 328,
+        "bytes": 288879,
+        "sha256": "329840cc555b791c1cebca8328a317009d5ce201c4b60e72edec1900923ac550",
+        "identity_match": false
+      },
+      "new_immutable_library_copy": null
+    }
+  },
+  "frozen_bytes_recovered_count": 0,
+  "required_frozen_bytes_recovered_count": 2,
+  "semantic_rows_reconstructed": 0,
+  "semantic_repairs_performed": 0,
+  "success_token_emitted": false
+}

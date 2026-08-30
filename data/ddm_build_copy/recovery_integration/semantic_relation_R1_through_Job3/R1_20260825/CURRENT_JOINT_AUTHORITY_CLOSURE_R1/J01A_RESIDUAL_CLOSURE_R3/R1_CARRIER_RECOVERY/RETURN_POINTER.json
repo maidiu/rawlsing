@@ -1,0 +1,23 @@
+{
+  "schema_version": "J01A_R3_FROZEN_R1_CARRIER_RECOVERY_RETURN_POINTER_V1",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-j01a-r3-r1-carrier-recovery",
+  "starting_head": "518deae1b234ee31f1380bc82fb7d3c7e6f74b62",
+  "parent_return": "5a0d4e396320372ec0dbf8ff9d931ce3b38cd72f",
+  "frozen_r1_authority_commit": "085dcb9d7d92d427038b634c55b8b4f3ce5235da",
+  "status": "BLOCKED__EXACT_FROZEN_R1_CARRIER_BYTES_NOT_RECOVERABLE_FROM_AUTHORIZED_VISIBLE_STORAGE_PATHS",
+  "frozen_carriers_required": 2,
+  "frozen_carriers_recovered": 0,
+  "new_immutable_library_copies_created": 0,
+  "semantic_rows_reconstructed": 0,
+  "historical_j_inventory_consumed": false,
+  "success_condition_satisfied": false,
+  "success_token": "J01A_R3_FROZEN_R1_CARRIER_BYTES_RECOVERED_PASS",
+  "success_token_emitted": false,
+  "recovery_attempt_ledger": "RECOVERY_ATTEMPTS.csv",
+  "recovery_manifest": "RECOVERED_CARRIER_MANIFEST.json",
+  "validation": "VALIDATION.json",
+  "answer_blindness_receipt": "ANSWER_BLINDNESS_RECEIPT.json",
+  "terminal_ref_rule": "worker branch HEAD containing this return pointer is the terminal court commit",
+  "required_subvozhd_action": "Obtain storage-layer restoration/version-history access to the two frozen backing file IDs or an independently exact immutable copy matching frozen hash + bytes + rows. Do not reconstruct the R1 carriers from later semantic carriers."
+}

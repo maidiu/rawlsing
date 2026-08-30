@@ -1,0 +1,26 @@
+{
+  "schema_version": "J01A_R3_FROZEN_R1_CARRIER_RECOVERY_BLINDNESS_V1",
+  "status": "PASS",
+  "jurisdiction": "BYTE_IDENTITY_AND_TRANSPORT_ONLY",
+  "frozen_current_r1_authority_opened": [
+    "J01A R1 CARRIER_MANIFEST.json",
+    "J01A R1 RESULT.md",
+    "J01A R1 METHOD.md",
+    "J01A R1 RETURN_POINTER.json",
+    "J01A R1 transport/commit metadata"
+  ],
+  "forbidden_historical_artifacts_opened": [],
+  "forbidden_classes_not_consumed": [
+    "C07/C08/C09/C10 historical J result contents",
+    "V550J historical inventories",
+    "historical J membership inventories",
+    "historical J expected counts or identities"
+  ],
+  "later_carrier_semantic_rows_consumed": false,
+  "semantic_rows_reconstructed_from_later_carriers": false,
+  "semantic_interpretation_performed": false,
+  "content_inspection_scope": "transport metadata; raw byte sizes; SHA-256 hashes; CSV record counts needed solely for identity rejection",
+  "csv_record_count_only_inspection": true,
+  "semantic_repairs_performed": 0,
+  "statement": "The worker remained inside frozen current-R1 byte-recovery jurisdiction. Nonmatching live aliases were rejected mechanically and were not used to reconstruct or reinterpret frozen carrier semantics."
+}
