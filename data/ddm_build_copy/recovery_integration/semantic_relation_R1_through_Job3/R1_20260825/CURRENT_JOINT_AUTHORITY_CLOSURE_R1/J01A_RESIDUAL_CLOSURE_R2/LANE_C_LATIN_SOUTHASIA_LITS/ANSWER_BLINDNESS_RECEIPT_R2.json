@@ -1,0 +1,41 @@
+{
+  "branch": "agent/rabochii-j01a-r2-latin-southasia-lits",
+  "exact_start_head": "caf686bda6cf831d06d11b64ae897a2526057922",
+  "answer_blind": true,
+  "sibling_blind": true,
+  "authorized_inputs_used": [
+    "frozen J01-A R1 lane rows only",
+    "exact current governed deep catalogs for LiTS/Latinobarómetro/South Asia",
+    "current canonical row-authority masters and provenance manifests",
+    "LiTS I-II-III-IV native questionnaires",
+    "Latinobarómetro 1995 native normalized codebook",
+    "South Asia W1 native normalized codebook"
+  ],
+  "explicitly_not_consumed": [
+    "historical J carrier answers",
+    "historical expected source/J counts",
+    "C07/C08/C09/C10 semantic answers",
+    "historical V550J memberships/identities",
+    "Rawlsing_P2_*_Source_Structure_Inventory* contents",
+    "Rawlsing_P2_*_Source_Structure_Memberships* contents",
+    "sibling worker branches/outputs"
+  ],
+  "accidental_exposure": [
+    {
+      "surface": "Library broad search snippet",
+      "detail": "A search result exposed a snippet from an old R14/V550J crosswalk. It was immediately identified as forbidden historical-J material; no identities, counts, membership, or semantic answer from it were used."
+    },
+    {
+      "surface": "archive directory names",
+      "detail": "Forbidden historical source-structure inventory/membership filenames were visible during archive listings; their contents were never opened or used as discovery seeds."
+    },
+    {
+      "surface": "temporary transport archive",
+      "detail": "An older project handoff container was briefly used to locate exact catalog filenames before the exact current P2 Remaining Four closure package was recovered. Final catalog evidence was re-grounded to the current hash-pinned P2 package; no historical J answer surfaces from the transport archive were read."
+    }
+  ],
+  "no_neighboring_wave_inference": true,
+  "no_j01b": true,
+  "no_executable_j_authority": true,
+  "liTS_separation_rule_enforced": "SOURCE_STRUCTURE_EXISTENCE != EXACT_CURRENT_MEMBER_BINDING"
+}
