@@ -1,0 +1,62 @@
+name: W01 Global Frozen DAG Reduction PR Trigger
+
+on:
+  pull_request:
+    branches:
+      - agent/rabochii-premain-w1-global-dag-r1
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: w01-global-dag-r1
+  cancel-in-progress: false
+
+jobs:
+  reduce-frozen-dag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen-court base branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/rabochii-premain-w1-global-dag-r1
+          fetch-depth: 0
+
+      - name: Fetch branch graph and remove synthetic trigger ref locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' --force --prune
+          git update-ref -d refs/remotes/origin/agent/rabochii-premain-w1-global-dag-trigger-r1 || true
+
+      - name: Execute the banked topology reducer without reading sibling payloads
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import textwrap
+
+          p = Path('.github/workflows/w01-global-dag-r1.yml')
+          text = p.read_text(encoding='utf-8')
+          marker = "          python3 - <<'PY'\n"
+          start = text.index(marker) + len(marker)
+          end = text.index("\n          PY\n", start)
+          code = textwrap.dedent(text[start:end])
+          exec(compile(code, str(p) + ':embedded-reducer', 'exec'), {'__name__': '__main__'})
+          PY
+
+      - name: Commit exhaustive forensic artifacts to W01 worker branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Maidiu W01 topology court'
+          git config user.email '103524263+maidiu@users.noreply.github.com'
+          git add data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WAVE1/W01_GLOBAL_DAG
+          if git diff --cached --quiet; then
+            echo 'No forensic changes to commit.'
+            exit 0
+          fi
+          git commit -m 'W01 topology: exhaustive frozen DAG reduction [skip w01-dag]'
+          git push origin HEAD:agent/rabochii-premain-w1-global-dag-r1
