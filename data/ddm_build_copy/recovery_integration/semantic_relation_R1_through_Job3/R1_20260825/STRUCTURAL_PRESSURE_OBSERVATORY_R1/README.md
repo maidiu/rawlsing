@@ -1,0 +1,1 @@
+Placeholder: this branch is being used to develop the Structural Pressure Observatory onboarding and design dossier. This directory is exploratory and non-binding until HQ adoption.
