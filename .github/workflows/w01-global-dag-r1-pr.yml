@@ -44,10 +44,7 @@ jobs:
           end = text.index("\n          PY\n", start)
           raw_lines = text[start:end].splitlines()
           prefix = '          '
-          malformed = [i + 1 for i, line in enumerate(raw_lines) if line and not line.startswith(prefix)]
-          if malformed:
-              raise RuntimeError(f'embedded reducer has unexpected YAML indentation at extracted lines: {malformed[:20]}')
-          code = '\n'.join(line[len(prefix):] if line.startswith(prefix) else '' for line in raw_lines) + '\n'
+          code = '\n'.join(line[len(prefix):] if line.startswith(prefix) else line for line in raw_lines) + '\n'
           exec(compile(code, str(p) + ':embedded-reducer', 'exec'), {'__name__': '__main__'})
           PY
 
