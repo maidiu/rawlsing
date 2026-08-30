@@ -149,4 +149,4 @@ A canonical architecture/vision index can satisfy this without merging explorato
 - `ARCHITECTURE_COLLISION_CANDIDATES.tsv`
 - `PREMAIN_KNOWLEDGE_REQUIRED.tsv`
 
-No merge performed. No integration performed. Report-only commit required.
+No merge performed. No integration performed. Final branch delta is report-only: exactly the six requested W08 artifacts.
