@@ -1,0 +1,483 @@
+name: W01 Global Frozen DAG Reduction R1
+
+on:
+  push:
+    branches:
+      - agent/rabochii-premain-w1-global-dag-r1
+
+permissions:
+  contents: write
+
+concurrency:
+  group: w01-global-dag-r1
+  cancel-in-progress: false
+
+jobs:
+  reduce-frozen-dag:
+    if: ${{ !contains(github.event.head_commit.message, '[skip w01-dag]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout worker branch with full history
+        uses: actions/checkout@v4
+        with:
+          ref: agent/rabochii-premain-w1-global-dag-r1
+          fetch-depth: 0
+
+      - name: Fetch every branch ref without reading sibling file contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' --force --prune
+
+      - name: Execute frozen topology reduction
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from __future__ import annotations
+
+          import csv
+          import json
+          import os
+          import subprocess
+          from collections import defaultdict
+          from pathlib import Path
+
+          REPO = Path.cwd()
+          OUT = REPO / 'data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WAVE1/W01_GLOBAL_DAG'
+          OUT.mkdir(parents=True, exist_ok=True)
+
+          FROZEN_REF_COUNT = 638
+          FROZEN_UNIQUE_TIP_COUNT = 581
+          FROZEN_ALIAS_SURPLUS = 57
+          WAVE1_START = '0777a34e50221bde6801dbaca26c058a7350c9e8'
+          WAVE1_BRANCHES = {
+              'agent/rabochii-premain-w1-global-dag-r1',
+              'agent/rabochii-premain-w1-main-succession-r1',
+              'agent/rabochii-premain-w1-acceptance-semantics-r1',
+              'agent/rabochii-premain-w1-recovery-continuity-r1',
+              'agent/rabochii-premain-w1-substrate-runtime-r1',
+              'agent/rabochii-premain-w1-joint-authority-r1',
+              'agent/rabochii-premain-w1-routing-carrier-r1',
+              'agent/rabochii-premain-w1-field-forge-architecture-r1',
+              'agent/rabochii-premain-w1-semantic-relation-r1',
+              'agent/rabochii-premain-w1-validation-map-r1',
+          }
+
+          def run(*args: str, check: bool = True) -> str:
+              cp = subprocess.run(args, cwd=REPO, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+              if check and cp.returncode != 0:
+                  raise RuntimeError(f"command failed ({cp.returncode}): {' '.join(args)}\nSTDOUT:\n{cp.stdout}\nSTDERR:\n{cp.stderr}")
+              return cp.stdout
+
+          # Preserve the initial manually API-proved evidence before replacing aggregate tables.
+          seeded_containment = OUT / 'CONTAINMENT_EDGES.tsv'
+          if seeded_containment.exists() and not (OUT / 'SEEDED_API_CONTAINMENT_PROOFS.tsv').exists():
+              (OUT / 'SEEDED_API_CONTAINMENT_PROOFS.tsv').write_bytes(seeded_containment.read_bytes())
+          seeded_divergence = OUT / 'UNRESOLVED_TOPOLOGY.tsv'
+          if seeded_divergence.exists() and not (OUT / 'SEEDED_API_DIVERGENCE_PROOFS.tsv').exists():
+              (OUT / 'SEEDED_API_DIVERGENCE_PROOFS.tsv').write_bytes(seeded_divergence.read_bytes())
+
+          raw = run('git', 'for-each-ref', '--format=%(refname:strip=3)\t%(objectname)', 'refs/remotes/origin/')
+          live: dict[str, str] = {}
+          for line in raw.splitlines():
+              if not line.strip():
+                  continue
+              branch, sha = line.split('\t', 1)
+              if branch == 'HEAD':
+                  continue
+              live[branch] = sha
+
+          # This court's frozen snapshot predates Wave-1 worker execution. All ten workers were launched
+          # from the same exact HEAD. We therefore rewind only those exact refs; no other live ref is altered.
+          missing_wave1 = sorted(WAVE1_BRANCHES - set(live))
+          if missing_wave1:
+              raise RuntimeError(f'missing expected Wave-1 refs: {missing_wave1}')
+
+          frozen = dict(live)
+          drift_rows = []
+          for branch in sorted(WAVE1_BRANCHES):
+              live_sha = live[branch]
+              anc = subprocess.run(
+                  ['git', 'merge-base', '--is-ancestor', WAVE1_START, live_sha],
+                  cwd=REPO,
+              ).returncode == 0
+              if not anc:
+                  raise RuntimeError(f'Wave-1 ref {branch} is not a descendant of frozen launch HEAD: {live_sha}')
+              frozen[branch] = WAVE1_START
+              drift_rows.append((branch, live_sha, WAVE1_START, 'REWOUND_TO_COMMON_WAVE1_LAUNCH_HEAD'))
+
+          unique_tips = sorted(set(frozen.values()))
+          tip_to_branches: dict[str, list[str]] = defaultdict(list)
+          for branch, sha in frozen.items():
+              tip_to_branches[sha].append(branch)
+          for branches in tip_to_branches.values():
+              branches.sort()
+
+          ref_count = len(frozen)
+          unique_count = len(unique_tips)
+          alias_surplus = sum(len(v) - 1 for v in tip_to_branches.values())
+          if ref_count != FROZEN_REF_COUNT:
+              raise RuntimeError(f'frozen ref-count invariant failed: got {ref_count}, expected {FROZEN_REF_COUNT}')
+          if unique_count != FROZEN_UNIQUE_TIP_COUNT:
+              raise RuntimeError(f'frozen unique-tip invariant failed: got {unique_count}, expected {FROZEN_UNIQUE_TIP_COUNT}')
+          if alias_surplus != FROZEN_ALIAS_SURPLUS:
+              raise RuntimeError(f'frozen alias-surplus invariant failed: got {alias_surplus}, expected {FROZEN_ALIAS_SURPLUS}')
+
+          # Materialize the complete reachable commit graph exactly once. rev-list emits descendants before parents.
+          rev = run('git', 'rev-list', '--topo-order', '--parents', *unique_tips)
+          graph_lines = [line.split() for line in rev.splitlines() if line.strip()]
+          if not graph_lines:
+              raise RuntimeError('empty commit graph')
+
+          parents: dict[str, list[str]] = {}
+          order: list[str] = []
+          for parts in graph_lines:
+              sha, *ps = parts
+              order.append(sha)
+              parents[sha] = ps
+
+          missing_tip_objects = [sha for sha in unique_tips if sha not in parents]
+          if missing_tip_objects:
+              raise RuntimeError(f'unreachable/missing frozen tip objects: {missing_tip_objects[:20]}')
+
+          # Bitset propagation: bit i marks frozen tip i. A bit propagated onto commit C means that tip contains C.
+          tip_index = {sha: i for i, sha in enumerate(unique_tips)}
+          reach: dict[str, int] = {sha: 0 for sha in parents}
+          for sha, i in tip_index.items():
+              reach[sha] |= 1 << i
+
+          for sha in order:
+              bits = reach.get(sha, 0)
+              if not bits:
+                  continue
+              for p in parents.get(sha, []):
+                  reach[p] = reach.get(p, 0) | bits
+
+          def iter_set_bits(bits: int):
+              while bits:
+                  lsb = bits & -bits
+                  i = lsb.bit_length() - 1
+                  yield i
+                  bits ^= lsb
+
+          descendants_by_tip: dict[str, list[str]] = {}
+          maximal_tips: list[str] = []
+          for sha in unique_tips:
+              desc = [unique_tips[i] for i in iter_set_bits(reach[sha])]
+              descendants_by_tip[sha] = desc
+              others = [d for d in desc if d != sha]
+              if not others:
+                  maximal_tips.append(sha)
+
+          maximal_set = set(maximal_tips)
+          maximal_mask = 0
+          for sha in maximal_tips:
+              maximal_mask |= 1 << tip_index[sha]
+
+          collapsed_to_maxima: dict[str, list[str]] = {}
+          for sha in unique_tips:
+              if sha in maximal_set:
+                  collapsed_to_maxima[sha] = [sha]
+              else:
+                  maxima = [unique_tips[i] for i in iter_set_bits(reach[sha] & maximal_mask)]
+                  if not maxima:
+                      raise RuntimeError(f'non-maximal tip has no maximal containing tip: {sha}')
+                  collapsed_to_maxima[sha] = maxima
+
+          # Pure-topology relation to frozen main.
+          if 'main' not in frozen:
+              raise RuntimeError('main ref missing from frozen census')
+          main_sha = frozen['main']
+          main_i = tip_index[main_sha]
+
+          def relation_to_main(sha: str) -> str:
+              if sha == main_sha:
+                  return 'SAME_AS_MAIN'
+              # reach[sha] = tips that descend from sha. If main bit is present, sha is ancestor of main.
+              if reach[sha] & (1 << main_i):
+                  return 'TIP_ANCESTOR_OF_MAIN'
+              # If sha bit is present at main, sha descends from main.
+              if reach[main_sha] & (1 << tip_index[sha]):
+                  return 'TIP_DESCENDANT_OF_MAIN'
+              return 'DIVERGED_FROM_MAIN'
+
+          # Commit metadata is topology-audit metadata only; no file contents are read.
+          meta: dict[str, tuple[str, str]] = {}
+          meta_raw = run(
+              'git', 'log', '--no-walk=unsorted', '--format=%H%x09%cI%x09%s', *unique_tips
+          )
+          for line in meta_raw.splitlines():
+              parts = line.split('\t', 2)
+              if len(parts) == 3:
+                  meta[parts[0]] = (parts[1], parts[2])
+          if len(meta) != len(unique_tips):
+              missing = sorted(set(unique_tips) - set(meta))
+              raise RuntimeError(f'missing commit metadata for {len(missing)} frozen tips: {missing[:20]}')
+
+          def write_tsv(path: Path, header: list[str], rows):
+              with path.open('w', newline='', encoding='utf-8') as f:
+                  w = csv.writer(f, delimiter='\t', lineterminator='\n')
+                  w.writerow(header)
+                  w.writerows(rows)
+
+          write_tsv(
+              OUT / 'WAVE1_REF_REWIND.tsv',
+              ['branch', 'live_tip_sha', 'frozen_tip_sha', 'reconstruction_action'],
+              drift_rows,
+          )
+
+          # Exact branch census, one row per frozen ref.
+          census_rows = []
+          for branch in sorted(frozen):
+              sha = frozen[branch]
+              branches = tip_to_branches[sha]
+              is_alias = len(branches) > 1
+              is_max = sha in maximal_set
+              frozen_source = 'WAVE1_REWOUND_TO_LAUNCH_HEAD' if branch in WAVE1_BRANCHES else 'LIVE_REF_UNCHANGED_FROM_RECONSTRUCTION_BASE'
+              status = (
+                  'MAXIMAL_EXACT_ALIAS_TIP' if is_max and is_alias else
+                  'MAXIMAL_UNIQUE_TIP' if is_max else
+                  'NONMAXIMAL_EXACT_ALIAS_TIP' if is_alias else
+                  'NONMAXIMAL_UNIQUE_TIP'
+              )
+              commit_iso, subject = meta[sha]
+              census_rows.append([
+                  branch,
+                  live[branch],
+                  sha,
+                  frozen_source,
+                  f'TIP_{sha[:12]}',
+                  len(branches),
+                  status,
+                  'YES' if is_max else 'NO',
+                  relation_to_main(sha),
+                  ';'.join(collapsed_to_maxima[sha]),
+                  commit_iso,
+                  subject,
+                  'HIGH_COUNTS_AND_GRAPH_PROVED',
+              ])
+          write_tsv(
+              OUT / 'BRANCH_CENSUS.tsv',
+              [
+                  'branch','live_tip_sha_at_reduction','frozen_tip_sha','frozen_tip_source',
+                  'exact_tip_group_id','exact_tip_branch_count','topological_status','is_maximal_tip',
+                  'relation_to_frozen_main','contained_by_maximal_tip_sha','tip_commit_iso','tip_subject',
+                  'confidence'
+              ],
+              census_rows,
+          )
+
+          alias_rows = []
+          for sha in sorted(tip_to_branches):
+              branches = tip_to_branches[sha]
+              if len(branches) > 1:
+                  alias_rows.append([
+                      f'TIP_{sha[:12]}', sha, len(branches), len(branches) - 1,
+                      'YES' if sha in maximal_set else 'NO',
+                      ';'.join(branches),
+                  ])
+          write_tsv(
+              OUT / 'EXACT_TIP_ALIASES.tsv',
+              ['alias_group_id','tip_sha','branch_count','alias_surplus','is_maximal_tip','branches'],
+              alias_rows,
+          )
+
+          unique_rows = []
+          for sha in unique_tips:
+              commit_iso, subject = meta[sha]
+              unique_rows.append([
+                  sha,
+                  len(tip_to_branches[sha]),
+                  'YES' if sha in maximal_set else 'NO',
+                  relation_to_main(sha),
+                  len(descendants_by_tip[sha]) - 1,
+                  ';'.join(collapsed_to_maxima[sha]),
+                  commit_iso,
+                  subject,
+                  ';'.join(tip_to_branches[sha]),
+              ])
+          write_tsv(
+              OUT / 'UNIQUE_TIPS.tsv',
+              [
+                  'tip_sha','branch_count','is_maximal_tip','relation_to_frozen_main',
+                  'strict_descendant_tip_count','contained_by_maximal_tip_sha','tip_commit_iso','tip_subject','branches'
+              ],
+              unique_rows,
+          )
+
+          maximal_rows = []
+          for sha in maximal_tips:
+              commit_iso, subject = meta[sha]
+              ancestor_tip_count = sum(1 for anc in unique_tips if anc != sha and sha in descendants_by_tip[anc])
+              maximal_rows.append([
+                  sha,
+                  len(tip_to_branches[sha]),
+                  ancestor_tip_count,
+                  relation_to_main(sha),
+                  commit_iso,
+                  subject,
+                  ';'.join(tip_to_branches[sha]),
+              ])
+          maximal_rows.sort(key=lambda r: (r[4], r[0]), reverse=True)
+          write_tsv(
+              OUT / 'MAXIMAL_TIPS.tsv',
+              ['tip_sha','branch_count','contained_frozen_tip_count','relation_to_frozen_main','tip_commit_iso','tip_subject','branches'],
+              maximal_rows,
+          )
+
+          # Complete strict containment relation among all 581 unique tips.
+          containment_rows = []
+          for anc in unique_tips:
+              for desc in descendants_by_tip[anc]:
+                  if desc == anc:
+                      continue
+                  containment_rows.append([
+                      anc,
+                      desc,
+                      'STRICT_ANCESTOR',
+                      'YES' if desc in maximal_set else 'NO',
+                      ';'.join(tip_to_branches[anc]),
+                      ';'.join(tip_to_branches[desc]),
+                      'COMMIT_GRAPH_BITSET_PROPAGATION',
+                      'HIGH',
+                  ])
+          write_tsv(
+              OUT / 'CONTAINMENT_EDGES.tsv',
+              ['ancestor_tip_sha','descendant_tip_sha','relation','descendant_is_maximal','ancestor_branches','descendant_branches','proof_basis','confidence'],
+              containment_rows,
+          )
+
+          # Every pair of distinct maximal tips is provably incomparable by construction.
+          incomparable_rows = []
+          max_sorted = sorted(maximal_tips)
+          for i, left in enumerate(max_sorted):
+              for right in max_sorted[i+1:]:
+                  incomparable_rows.append([
+                      left, right, 'INCOMPARABLE_MAXIMAL_TIPS',
+                      ';'.join(tip_to_branches[left]), ';'.join(tip_to_branches[right]),
+                      'EXHAUSTIVE_COMMIT_GRAPH_REDUCTION', 'HIGH'
+                  ])
+          write_tsv(
+              OUT / 'MAXIMAL_INCOMPARABLE_PAIRS.tsv',
+              ['left_tip_sha','right_tip_sha','relation','left_branches','right_branches','proof_basis','confidence'],
+              incomparable_rows,
+          )
+
+          # With full object closure and exact bitset propagation, unresolved topology is empty.
+          write_tsv(
+              OUT / 'UNRESOLVED_TOPOLOGY.tsv',
+              ['tip_or_ref','issue','status','confidence'],
+              [],
+          )
+
+          summary = {
+              'court': 'PRE_MAIN_RECONCILIATION_R1/WAVE1/W01_GLOBAL_DAG',
+              'jurisdiction': 'TOPOLOGY_ONLY',
+              'frozen_ref_count': ref_count,
+              'frozen_unique_tip_count': unique_count,
+              'exact_tip_alias_group_count': len(alias_rows),
+              'exact_tip_alias_surplus': alias_surplus,
+              'strict_containment_edge_count': len(containment_rows),
+              'maximal_tip_count': len(maximal_tips),
+              'maximal_incomparable_pair_count': len(incomparable_rows),
+              'unresolved_topology_count': 0,
+              'frozen_main_tip_sha': main_sha,
+              'wave1_launch_sha': WAVE1_START,
+              'wave1_refs_rewound': sorted(WAVE1_BRANCHES),
+              'reconstruction_invariants': {
+                  'expected_ref_count': FROZEN_REF_COUNT,
+                  'expected_unique_tip_count': FROZEN_UNIQUE_TIP_COUNT,
+                  'expected_alias_surplus': FROZEN_ALIAS_SURPLUS,
+                  'all_passed': True,
+              },
+              'sibling_blindness': 'NO_SIBLING_FILE_CONTENTS_READ; ONLY REF NAMES, COMMIT SHAS, PARENT GRAPH, AND TIP COMMIT METADATA',
+              'semantic_authority_adjudication': 'NOT_PERFORMED',
+              'wave2_started': False,
+          }
+          (OUT / 'REDUCTION_SUMMARY.json').write_text(json.dumps(summary, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+
+          proof = f'''# W01 GLOBAL DAG — EXHAUSTIVE TOPOLOGY PROOF R1
+
+## Jurisdiction
+
+Topology only. No branch is classified as worthy, canonical, superseded, garbage, exploratory, binding, or suitable for pre-main. No Wave 2 work is performed.
+
+## Frozen-census reconstruction
+
+The prior frozen observation established the invariant sequence:
+
+- `{FROZEN_REF_COUNT}` branch refs
+- `{FROZEN_UNIQUE_TIP_COUNT}` unique tip SHAs
+- `{FROZEN_ALIAS_SURPLUS}` exact-tip alias surplus
+
+The ten Wave-1 workers were all launched from exact SHA `{WAVE1_START}`. The live repository necessarily moved those worker refs after the snapshot. This reduction therefore rewinds **only those ten exact Wave-1 refs** to the common launch SHA and leaves every other observed ref unchanged. The reconstructed census reproduces all three frozen invariants exactly; failure of any invariant aborts the court.
+
+## Exhaustive ancestry method
+
+1. Collapse the 638 frozen refs by exact SHA to 581 unique tips.
+2. Materialize the union commit graph reachable from all 581 tips in one `git rev-list --topo-order --parents` pass.
+3. Assign one bit to each unique frozen tip.
+4. Propagate descendant-tip bitsets from every commit to its parents in topological order.
+5. For frozen tip `A`, any other frozen-tip bit present at `A` is a mathematical proof that `A` is a strict ancestor of that tip.
+6. A frozen tip is topologically maximal iff no other frozen-tip bit reaches it.
+7. Every non-maximal tip is mapped to every maximal tip that contains it.
+8. `CONTAINMENT_EDGES.tsv` emits the complete strict ancestry relation among frozen unique tips; `MAXIMAL_TIPS.tsv` emits the irreducible independent tip set.
+
+## Sibling blindness
+
+The reducer reads ref names, commit SHAs, commit parent edges, and tip commit metadata only. It does **not** read sibling worker return files, diffs, source files, semantic claims, or branch payloads. Later Wave-1 sibling tips are explicitly excluded from the frozen census by rewind.
+
+## Semantic non-conclusion
+
+Topological maximality says only that Git cannot collapse a tip into another frozen tip. It says nothing about whether that tip contains living project capital or should be admitted to pre-main. Those questions remain for later authority courts.
+'''
+          (OUT / 'TOPOLOGY_PROOF.md').write_text(proof, encoding='utf-8')
+
+          ret = f'''# PRE-MAIN RECONCILIATION R1 — W01 GLOBAL DAG
+
+## FINAL WORKER RETURN — TOPOLOGY CLOSED
+
+**Jurisdiction:** topology only.  
+**Semantic authority adjudication:** not performed.  
+**Wave 2:** not started.  
+**Frozen launch SHA for all Wave-1 refs:** `{WAVE1_START}`.
+
+### Exact reduction
+
+```text
+{ref_count} frozen refs
+→ {unique_count} unique tip SHAs
+→ {len(alias_rows)} exact-tip alias groups / {alias_surplus} alias-ref surplus
+→ exhaustive strict-ancestry reduction
+→ {len(maximal_tips)} topologically maximal independent tips
+→ {len(containment_rows)} proved strict tip-containment relations
+→ 0 unresolved topology
+```
+
+The complete frozen branch census is `BRANCH_CENSUS.tsv`. Exact-tip aliases are in `EXACT_TIP_ALIASES.tsv`; all 581 unique tips and their maximal containers are in `UNIQUE_TIPS.tsv`; the irreducible head universe is `MAXIMAL_TIPS.tsv`; the complete strict containment relation is `CONTAINMENT_EDGES.tsv`; all pairwise relations among maximal tips are recorded as incomparable in `MAXIMAL_INCOMPARABLE_PAIRS.tsv`.
+
+### Frozen-census integrity
+
+The live repository had advanced Wave-1 worker refs. This court rewound only the ten exact Wave-1 branches to their common launch SHA and asserted the prior frozen invariants: 638 refs, 581 unique tips, 57 alias surplus. All invariants passed or this return could not have been written.
+
+### Governing non-conclusion
+
+`MAXIMAL_TIPS.tsv` is **not** a pre-main admission list. A maximal tip may later prove to be superseded, experimental, command-only, exploratory, or otherwise nonbinding. W01 establishes only that Git topology cannot collapse it into another frozen tip. Authority valuation remains outside this worker.
+'''
+          (OUT / '00_WORKER_RETURN.md').write_text(ret, encoding='utf-8')
+          PY
+
+      - name: Commit exhaustive forensic artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Maidiu W01 topology court'
+          git config user.email '103524263+maidiu@users.noreply.github.com'
+          git add data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WAVE1/W01_GLOBAL_DAG
+          if git diff --cached --quiet; then
+            echo 'No forensic changes to commit.'
+            exit 0
+          fi
+          git commit -m 'W01 topology: exhaustive frozen DAG reduction [skip w01-dag]'
+          git push origin HEAD:agent/rabochii-premain-w1-global-dag-r1
