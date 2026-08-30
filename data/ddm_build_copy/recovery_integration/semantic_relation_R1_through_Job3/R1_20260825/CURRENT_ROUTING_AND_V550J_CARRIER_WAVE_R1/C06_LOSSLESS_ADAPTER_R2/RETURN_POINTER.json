@@ -1,0 +1,50 @@
+{
+  "contract": "CURRENT_ROUTING_LEDGER_CONTRACT@2",
+  "final_branch_head": "RESOLVE_BRANCH_HEAD_AFTER_THIS_POINTER_IS_COMMITTED",
+  "frozen_commits": {
+    "C02": "2177fb8767d363ecb77697f5e259f1e10bd05c0b",
+    "C03": "cbaa97ac11c4e8d517b49663f2037f8ea0e04267",
+    "C04": "2fe01e4a9508b64f041d6bc13d3c9880661489d3",
+    "C05": "509dacadaf863be88d0c6e0d95e9aff6f401af23",
+    "C06_IMPLEMENTATION": "93aa22b13b8e5ac5eedd28127f8ddedb46b042bc"
+  },
+  "git_artifacts": {
+    "changed_files": "CHANGED_FILES.txt",
+    "compilation_receipt": "COMPILATION_RECEIPT.json",
+    "compiler": "compile_contract2.py",
+    "input_manifest": "INPUT_MANIFEST.json",
+    "ledger_manifest": "CURRENT_ROUTING_DISPOSITION_LEDGER.manifest.json",
+    "matrix": "FIELD_LOSSLESSNESS_MATRIX.csv",
+    "result": "RESULT.md",
+    "spec": "ADAPTER_OR_CONTRACT_SPEC.md",
+    "test_receipt": "TEST_RECEIPT.txt",
+    "tests": "test_contract2.py",
+    "unresolved_manifest": "UNRESOLVED_TAXONOMY_INPUT.manifest.json",
+    "validation": "VALIDATION.json"
+  },
+  "note": "Final branch HEAD is intentionally resolved externally after RETURN_POINTER.json is committed; embedding its own commit SHA would be self-referential.",
+  "outputs": {
+    "ledger": {
+      "bytes": 5535,
+      "file_id": "file_0000000018b881f784efc8bf0ac9d753",
+      "library_file_id": "libfile_c2e18b363d5881919d67637e89f9ddec",
+      "library_path": "/Rawlsing/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C06_LOSSLESS_ADAPTER_R2/CURRENT_ROUTING_DISPOSITION_LEDGER.contract2.carrier.json",
+      "rows": 18276,
+      "sha256": "5fe7fc719453479397fb759a00341dd6dc51184c8547306f7955220091405dde"
+    },
+    "unresolved": {
+      "bytes": 1460,
+      "file_id": "file_00000000b8ec81f7a247348b9b490652",
+      "library_file_id": "libfile_55b975b854088191a53b6d2a064c8df3",
+      "library_path": "/Rawlsing/CURRENT_ROUTING_AND_V550J_CARRIER_WAVE_R1/C06_LOSSLESS_ADAPTER_R2/UNRESOLVED_TAXONOMY_INPUT.contract2.carrier.json",
+      "rows": 14386,
+      "sha256": "36bd6f3be7f12e938183285dbee30c1db5198a65beab3890f889990e5d8c82ed"
+    }
+  },
+  "path": "B",
+  "repository": "maidiu/rawlsing",
+  "starting_head": "d73d841b9325c08e8691eae5164886568b929c6d",
+  "status": "PASS",
+  "success_token": "C06_REAL_CURRENT_ROUTING_JOIN_R2_PASS",
+  "worker_branch": "agent/rabochii-c06-lossless-adapter-r2"
+}
