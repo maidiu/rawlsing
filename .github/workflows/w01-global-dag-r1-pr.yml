@@ -36,14 +36,18 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          import textwrap
 
           p = Path('.github/workflows/w01-global-dag-r1.yml')
           text = p.read_text(encoding='utf-8')
           marker = "          python3 - <<'PY'\n"
           start = text.index(marker) + len(marker)
           end = text.index("\n          PY\n", start)
-          code = textwrap.dedent(text[start:end])
+          raw_lines = text[start:end].splitlines()
+          prefix = '          '
+          malformed = [i + 1 for i, line in enumerate(raw_lines) if line and not line.startswith(prefix)]
+          if malformed:
+              raise RuntimeError(f'embedded reducer has unexpected YAML indentation at extracted lines: {malformed[:20]}')
+          code = '\n'.join(line[len(prefix):] if line.startswith(prefix) else '' for line in raw_lines) + '\n'
           exec(compile(code, str(p) + ':embedded-reducer', 'exec'), {'__name__': '__main__'})
           PY
 
