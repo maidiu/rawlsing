@@ -1,8 +1,20 @@
 # RAWLSING PROJECT INHERITANCE R1 — READ ME FIRST
 
+## W55 mandatory decision precondition
+
+This remains the deep conceptual front door, but it is no longer the first cognitive surface for an agent exercising project-level judgment.
+
+For **changing, redesigning, adjudicating, accepting, or synthesizing Rawlsing at project/campaign level**, begin first at:
+
+`../00_RAWLSING_GROUND.md`
+
+then `../CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md`, and issue a valid grounding receipt under `../GOVERNANCE_PROTOCOLS_R1/DECISION_AGENT_GROUNDING_PROTOCOL.md`.
+
+Use this inheritance home after grounding to descend into the relevant campaign/evidence. A purely historical reader may enter here directly, but direct reading does not itself grant project decision authority.
+
 ## The question this home answers
 
-This is the conceptual front door for **changing or redesigning Rawlsing**. It is not the operating-authority entrypoint. If you are validating or operating current Rawlsing, begin instead at `../00_CANONICAL_ENTRYPOINT.md` and `../CANONICAL_GOVERNANCE_R1/`.
+This is the conceptual inheritance layer for **changing or redesigning Rawlsing**. It is not the operating-authority entrypoint. If you are validating or operating current Rawlsing, begin instead at `../00_CANONICAL_ENTRYPOINT.md` and `../CANONICAL_GOVERNANCE_R1/`.
 
 Rawlsing is trying to build a governed machine that can carry source-native empirical meaning through exact authority/provenance, composability, learned-world structure, PRE-V3 structural construction, and eventually V3/person-world realization without laundering uncertainty, collapsing distinct semantic grains, or allowing implementation convenience to become ontology. Its history is therefore not a linear software release train. It is a succession of architectural and epistemic courts in which later campaigns often corrected only one grain of an earlier design while leaving its conceptual lesson, open question, or failed alternative alive.
 
@@ -14,11 +26,14 @@ Three dimensions are independent:
 2. **Conceptual/exploration status** — whether the question is closed, partially closed, open, suspended, return-required, superseded only at a grain, abandoned, stranded, or unresolved.
 3. **Ideation relevance** — what a future architect must still factor even when it is historical or nonbinding.
 
+W55 adds a fourth operational dimension: **reintegration status** — whether significant work has been centrally reconciled and canonically inherited, or remains local/unbanked/stranded.
+
 `CURRENT_AUTHORITY != MUST_FACTOR_INTO_IDEATION`.
 `NOT_CURRENT != NOT_INTELLECTUALLY_IMPORTANT`.
 `SUPERSEDED_IMPLEMENTATION != SUPERSEDED_CONCEPTUAL_LESSON`.
 `SPAWNING_A_SUCCESSOR_PROBLEM != CLOSING_THE_PARENT_PROBLEM`.
 `PRESERVATION != LIVE_PROMOTION`.
+`LOCAL_COMPLETION != PROJECT_COMPLETION`.
 
 PRE-MAIN may contain contradiction; it may not contain **invisible** contradiction.
 
@@ -54,7 +69,7 @@ This era turns repeated failures into explicit constitutional law. Same bytes/ID
 
 ### 8. Long Memory / recovery / conservation / whole-history inheritance
 
-These campaigns discover that a project can preserve bytes and still lose its mind. The R3 project-memory design distinguishes live/DAG-ready authority, a research reservoir, a historical knowledge graph of failures/repairs/supersessions, and executable WHY-NOT memory. Authority39 and later recovery work establish living succession/conservation methods, but W46 shows major reasons, examples, orphan goals, and old intent surfaces remained difficult to discover from current command. This W50 home exists to close that discoverability failure without promoting historical material. See N020–N022 and N030–N031.
+These campaigns discover that a project can preserve bytes and still lose its mind. The R3 project-memory design distinguishes live/DAG-ready authority, a research reservoir, a historical knowledge graph of failures/repairs/supersessions, and executable WHY-NOT memory. Authority39 and later recovery work establish living succession/conservation methods, but W46 shows major reasons, examples, orphan goals, and old intent surfaces remained difficult to discover from current command. W50-W54 substantially close the current project-home discoverability failure; W55 converts discoverability and reintegration into an ongoing central-state obligation rather than pretending preservation stays discoverable automatically. See N020–N022 and N030–N031.
 
 ### 9. R5, source preparation, current admission, Current Joint, C06
 
@@ -66,19 +81,21 @@ Field Forge is a forward architectural exploration, not current authority. It as
 
 ## What is currently authoritative versus inherited design capital?
 
-Current authority remains defined by the W35 canonical governance surfaces. W50 does not change those authority ceilings. Conceptual materialization into this directory changes **discoverability**, not authority. In particular: Field Forge remains exploratory; R5 remains inactive/non-serving; Z02 remains tested/not-admitted; the physical architecture winner remains open; J01-B and WVS7 certification remain unresolved at their stated grains.
+Current authority remains defined by the W35 canonical governance surfaces. W50-W55 do not change those authority ceilings. Conceptual materialization into this directory changes **discoverability**, not authority. In particular: Field Forge remains exploratory; R5 remains inactive/non-serving; Z02 remains tested/not-admitted; the physical architecture winner remains open; J01-B and WVS7 certification remain unresolved at their stated grains.
 
 ## What remains unfinished?
 
-The raw W41 census records **27** unfinished threads in `05_UNFINISHED_FRONTIER.tsv` and **13** strong return-required candidates in `07_RETURN_REQUIRED.tsv`. W42–W49 add finer-grained unfinished material in `05A_ADDITIONAL_UNFINISHED_FRONTIER.tsv`.
+The historical source ledgers record **27** W41 unfinished threads, **13** W41 strong return-required candidates, and **26** W42-W49 finer-grained fronts. W55 normalizes their current operational state into `../CENTRAL_PROJECT_STATE_R1/OPEN_OBLIGATIONS.tsv` rather than treating every older status as frozen forever.
 
-The highest-cost live fronts include: persistent vs virtual vs hybrid physical architecture; PRE553 publication seam vs continuous DAG; full learned-world succession; full source→PRE-V3 compiler; Dva W3 and later stranded implementation; Trii comparator/PSEPF/source-composition/replay/source-retirement/economics; Chetiri C05R2B/C08/validation/comparability/PSEPF/source-universe composition; C01 readmission; Job3 BLOCKED/O12 successors; WVS7 certification; J01-B; measurement portability; Field Forge POSITION_ROLE_AUTHORITY and external-group crosswalk; and several exploratory geometry/weight/homology questions.
+The old W41 return requiring a complete conceptual-inheritance census is satisfied at that grain by W50-W54. Current discoverability survives as a standing maintenance/reintegration obligation, not a fake unfinished census.
 
-A parent question is not closed merely because it spawned a prerequisite campaign. `RETURN_TO` edges in `04_CONCEPTUAL_RELATION_GRAPH.tsv` make those obligations explicit.
+The highest-cost live fronts include: persistent vs virtual/source-backed vs hybrid physical architecture; PRE553 publication seam vs continuous DAG; full learned-world succession; full source→PRE-V3 compiler; Dva W3 and later stranded implementation; Trii comparator/PSEPF/source-composition/replay/source-retirement/economics; Chetiri C05R2B/C08/validation/comparability/source-universe composition; C01 readmission; Job3 BLOCKED/O12 successors; WVS7 certification; J01-B; measurement portability; Field Forge POSITION_ROLE_AUTHORITY and external-group crosswalk; and exploratory geometry/weight/homology/mode questions.
+
+A parent question is not closed merely because it spawned a prerequisite campaign. W55's `../CENTRAL_PROJECT_STATE_R1/DEPENDENCY_RETURN_GRAPH.tsv` makes the return obligations operationally explicit.
 
 ## What tensions remain non-harmonized?
 
-Read `09_TENSIONS_AND_NONHARMONIZED_RELATIONS.tsv`. Central unresolved tensions include:
+Read `09_TENSIONS_AND_NONHARMONIZED_RELATIONS.tsv` and the current normalized `../CENTRAL_PROJECT_STATE_R1/KNOWN_TENSIONS.tsv`. Central unresolved tensions include:
 
 - Trii D15's historical persistent-C11 choice versus Chetiri's carrier-neutral conservation theorem;
 - persistent versus source-backed/virtual versus hybrid physical architecture;
@@ -87,32 +104,25 @@ Read `09_TENSIONS_AND_NONHARMONIZED_RELATIONS.tsv`. Central unresolved tensions 
 - preservation sufficiency versus practical discoverability;
 - source-native evidence versus generated structural/person-world inference.
 
-The table records what is actually superseded, what survives, and what would be required to harmonize the remainder.
-
 ## Where is the exact evidence?
 
-`SOURCE_CORPORA/` contains exact Git-tree copies of all nine frozen W41–W49 Wave-4A report bundles. Their bytes are not rewritten. `11_FULL_DEVELOPMENT_ENVELOPES.tsv` and `12_MATERIALIZATION_MANIFEST.tsv` give exact refs, paths, facets, supersession notes, and copy/ref-only dispositions. Deep historical sources that are not copied locally remain reachable through exact immutable refs exposed by those report bundles; no vague branch archaeology is required to know what to fetch.
+`SOURCE_CORPORA/` contains exact Git-tree copies of all nine frozen W41–W49 Wave-4A report bundles. `11_FULL_DEVELOPMENT_ENVELOPES.tsv`, `12_MATERIALIZATION_MANIFEST.tsv`, and W53's `19A`/`19B`/`19C` navigation indexes give exact refs, physical availability and cross-campaign routes. Unavailable primaries remain typed and must not be replaced by asserted equivalents.
 
-## How to read this home
+## How to read this home after grounding
 
-1. Read this file.
-2. Read `01_GLOBAL_LACE.md` for the project-wide intellectual succession.
+1. Start at `../00_RAWLSING_GROUND.md` and the central state.
+2. Use this file and `01_GLOBAL_LACE.md` for project-wide succession.
 3. Use `15_TERMINAL_NODE_REGISTRY.tsv` to choose a node.
-4. Use the exact W41 campaign/problem registries (`02`, `03`) for coverage.
-5. Read unfinished, return-required, tension, and must-factor ledgers (`05`–`10`) before proposing architecture.
+4. Use the exact W41 campaign/problem registries (`02`, `03`) for historical coverage.
+5. Use the central obligation/tension/unknown IDs before proposing architecture.
 6. Read the node's `CAMPAIGNS/<NODE>/00_READ_FIRST.md` route.
-7. Drill into `SOURCE_CORPORA/` and the full-development envelope when a claim matters.
-8. For Field Forge work, read `FIELD_FORGE_REINDUCTION_BRIDGE.md` last, after the global inheritance.
+7. Drill into `SOURCE_CORPORA/` / local `CORPUS/` and the full-development envelope when a claim matters.
+8. For Field Forge work, read `FIELD_FORGE_REINDUCTION_BRIDGE.md` after current Ground and global inheritance.
 
 ## Non-negotiable architect rule
 
-A new proposal must state which inherited constraints it preserves, which open/return-required questions it closes, which tensions it resolves or leaves open, and which authority act would be required for adoption. A proposal that simply begins from the latest implementation or latest exploratory corpus has not inherited Rawlsing.
+A new proposal must state which inherited constraints it preserves, which central obligations it closes or leaves open, which tensions it resolves or leaves open, which new obligations it creates, and which authority/reintegration act would be required for adoption. A proposal that simply begins from the latest implementation or exploratory corpus has not inherited Rawlsing.
 
-## W51C deep-corpus local originals
+## Deep-corpus originals
 
-The adjudicated W51A/W51B original corpus is locally routed through `19_DEEP_CORPUS_MANIFEST.tsv` and campaign `W51C_DEEP_CORPUS_ROUTE.tsv` files. These copies are historical/project-memory only and do not promote authority or runtime status.
-
-
-## W53 navigation indices
-
-Use `19A_DEEP_CORPUS_STATUS_INDEX.tsv` for availability, `19B_DEDUP_FINAL_RESOLUTION.tsv` for final duplicate targets, and `19C_CROSS_CAMPAIGN_CORPUS_ROUTES.tsv` for cross-node routes. Unavailable primaries remain typed, not substituted.
+The adjudicated W51A/W51B corpus is routed through `19_DEEP_CORPUS_MANIFEST.tsv`; W53 adds `19A_DEEP_CORPUS_STATUS_INDEX.tsv`, `19B_DEDUP_FINAL_RESOLUTION.tsv`, and `19C_CROSS_CAMPAIGN_CORPUS_ROUTES.tsv`. These copies are historical/project-memory unless separately current by independent authority.

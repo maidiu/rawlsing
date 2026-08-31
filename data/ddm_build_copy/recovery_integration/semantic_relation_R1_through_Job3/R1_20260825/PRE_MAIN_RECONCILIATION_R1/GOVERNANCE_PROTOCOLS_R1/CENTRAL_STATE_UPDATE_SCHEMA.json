@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rawlsing Central State Update Packet R1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["canonical_project_head","ground_version","grounding_receipt_id","authority_ceiling","return_destination","touched_state_ids","touched_obligation_ids","obligation_dispositions","new_obligations","successor_return_paths","reintegration_status","anti_resurrection_acknowledged"],
+  "properties": {
+    "canonical_project_head":{"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "ground_version":{"const":"RAWLSING_GROUND_R1"},
+    "grounding_receipt_id":{"type":"string","minLength":1},
+    "authority_ceiling":{"type":"string","minLength":1},
+    "return_destination":{"type":"string","minLength":1},
+    "touched_state_ids":{"type":"array","items":{"type":"string"}},
+    "touched_obligation_ids":{"type":"array","items":{"type":"string"}},
+    "obligation_dispositions":{"type":"array","items":{"type":"object","required":["obligation_id","status"],"properties":{"obligation_id":{"type":"string"},"status":{"type":"string"}}}},
+    "new_obligations":{"type":"array","items":{"type":"string"}},
+    "successor_return_paths":{"type":"array","items":{"type":"object","required":["successor_id","return_to"],"properties":{"successor_id":{"type":"string"},"return_to":{"type":"string"}}}},
+    "reintegration_status":{"type":"string","minLength":1},
+    "anti_resurrection_acknowledged":{"const":true}
+  }
+}
