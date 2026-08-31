@@ -37,7 +37,9 @@ Fresh Vozhd ruling: `VOZHD_CONTINUITY_PASS`.
 
 Material discrepancy versus W55 intent: W55A requires exact parent-inherited bounded execution, live canonical-head validation, scope-relevant grounding, complete touched-obligation disposition, typed reintegration, and meaningful anti-resurrection acknowledgement. W55B's validator does not enforce those requirements, while its 12 fixtures do not exercise the decisive bypasses.
 
-PRE-MAIN and `main` were not modified by this audit. Their exact final ref identities are verified externally after the worker commit.
+Ref-safety proof after the audit commit:
+- `integration/pre-main-reconciliation-r1` remained `8b13b67df8f055761b432191eca564c1840250ec`;
+- `main` remained `0777a34e50221bde6801dbaca26c058a7350c9e8`.
 
 Terminal SHA is returned externally because embedding a commit's own SHA in content determining that commit is self-referential.
 
