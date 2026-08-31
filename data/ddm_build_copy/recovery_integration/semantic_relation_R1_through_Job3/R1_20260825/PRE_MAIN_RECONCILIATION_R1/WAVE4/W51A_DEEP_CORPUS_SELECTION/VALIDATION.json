@@ -1,0 +1,61 @@
+{
+  "schema": "W51A_DEEP_CORPUS_SELECTION_VALIDATION_R1",
+  "starting_head": "f9dc54ae723486557a1dd40849595ef87e2c1445",
+  "worker_branch": "agent/rabochii-premain-w4c-w51a-deep-corpus-selection-r1",
+  "write_scope": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WAVE4/W51A_DEEP_CORPUS_SELECTION/",
+  "status": "PASS",
+  "counts": {
+    "selection_rows": 133,
+    "MATERIALIZE_REQUIRED": 94,
+    "MATERIALIZE_SELECTED": 28,
+    "EXACT_REF_ONLY_SUFFICIENT": 11,
+    "multi_ref_envelope_families": 10,
+    "unresolved_selection_ambiguities": 3,
+    "authority_promotion_violations": 0
+  },
+  "checks": {
+    "all_36_w50_nodes_reviewed": true,
+    "reviewed_node_count": 36,
+    "all_must_factor_nodes_dispositioned": true,
+    "must_factor_nodes_total": 34,
+    "must_factor_nodes_dispositioned": 34,
+    "whole_branch_dumping_used": false,
+    "arbitrary_latest_branch_rule_used": false,
+    "major_facet_omitted_merely_as_redundant": false,
+    "authority_status_changed": false,
+    "architecture_winner_selected": false,
+    "premain_modified": false,
+    "sibling_w51b_consumed": false,
+    "source_ref_format": "ALL_SELECTION_SOURCE_REFS_ARE_EXACT_40_HEX_COMMIT_IDS",
+    "chetiri_exact_source_map_rechecked": true,
+    "invalid_swid_candidate_removed_before_commit": true
+  },
+  "selection_principles": [
+    "irreducible intellectual content is the unit",
+    "older unique rationale/failure/unfinished state survives later supersession",
+    "large executable/data evidence is exact-ref-only when compact originals preserve the intellectual content",
+    "materialization does not alter authority/currentness",
+    "unknown source identity remains unknown rather than inferred from thematic similarity"
+  ],
+  "unresolved_selection_ambiguities": [
+    {
+      "id": "A001",
+      "scope": "Dva conditional-meaning / exact-query antecedents (N002/N003)",
+      "status": "UNRESOLVED_ORIGINAL_TERMINAL_PIN",
+      "reason": "W42/W50 identify the lineages and preserve their conceptual content, but no single immutable original terminal artifact was safely recovered without guessing."
+    },
+    {
+      "id": "A002",
+      "scope": "SR09PRE / SRCPREP71 / SRCPREP72 source-preparation lineage (N025)",
+      "status": "UNRESOLVED_ORIGINAL_TERMINAL_PIN",
+      "reason": "W41 identifies the lineage while current J01-A originals are exact; no single immutable source-preparation terminal artifact was safely established as the finite original reading representative."
+    },
+    {
+      "id": "A003",
+      "scope": "W50 coverage gaps (N036)",
+      "status": "UNKNOWN_REQUIRES_SYNTHESIS",
+      "reason": "Seven named gaps remain unresolved and the eighth is only partially resolved; W51A does not manufacture original-source identity from thematic similarity."
+    }
+  ],
+  "terminal_token": "W51A_DEEP_CORPUS_SELECTION_COMPLETE__FULL_DEVELOPMENT_ENVELOPES_ADJUDICATED__NO_LOSS_NO_BLOAT__READY_FOR_W51C"
+}
