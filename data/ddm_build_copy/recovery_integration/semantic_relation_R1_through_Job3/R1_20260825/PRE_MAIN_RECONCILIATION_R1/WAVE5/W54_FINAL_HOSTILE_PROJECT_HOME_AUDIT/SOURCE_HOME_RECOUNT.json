@@ -1,0 +1,28 @@
+{
+  "candidate": "564feddf4228759aed970f42061aeae4e6b96478",
+  "manifest_rows": 258,
+  "copy_status_counts": {
+    "MATERIALIZED_EXACT": 142,
+    "RECOVERED_EXACT_GIT": 15,
+    "BYTE_DUPLICATE_ROUTED": 51,
+    "EXACT_REF_ONLY_SUFFICIENT": 6,
+    "PRESENT_UNRETRIEVED": 13,
+    "BLOCKED_OTHER": 31
+  },
+  "sum_check": 258,
+  "normalized_unique_source_objects": 207,
+  "normalization_rule": "258 manifest rows - 51 byte-duplicate routes = 207 unique source objects",
+  "typed_residual_counts": {
+    "EXACT_PATH_NOT_IN_COMMIT": 13,
+    "EXTERNAL_ARCHIVE_NOT_LOCALLY_AVAILABLE": 13,
+    "EXACT_COMMIT_MISSING_LOCALLY_AND_REMOTELY": 13,
+    "DESCRIPTIVE_LOCATOR_NOT_MECHANICALLY_RESOLVABLE": 5
+  },
+  "typed_residual_total": 44,
+  "false_locality_detected": 0,
+  "evidence": [
+    "PROJECT_INHERITANCE_R1/19_DEEP_CORPUS_MANIFEST.tsv",
+    "PROJECT_INHERITANCE_R1/19A_DEEP_CORPUS_STATUS_INDEX.tsv",
+    "PROJECT_INHERITANCE_R1/19B_DEDUP_FINAL_RESOLUTION.tsv"
+  ]
+}

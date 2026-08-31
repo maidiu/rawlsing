@@ -1,0 +1,34 @@
+{
+  "audit": "W54_FINAL_HOSTILE_PROJECT_HOME_AUDIT_R1",
+  "candidate": "564feddf4228759aed970f42061aeae4e6b96478",
+  "overall_ruling": "PASS_WITH_BOUNDED_NONBLOCKING_PRIMARY_GAPS__PREMAIN_SUCCESSION_READY",
+  "question_score": {
+    "PASS_DIRECT": 28,
+    "PASS_WITH_EXPLICIT_PRIMARY_GAP": 2,
+    "PASS_WITH_FRICTION": 0,
+    "AMBIGUOUS": 0,
+    "FAIL": 0
+  },
+  "source_home": {
+    "MATERIALIZED_EXACT": 142,
+    "RECOVERED_EXACT_GIT": 15,
+    "BYTE_DUPLICATE_ROUTED": 51,
+    "EXACT_REF_ONLY_SUFFICIENT": 6,
+    "PRESENT_UNRETRIEVED": 13,
+    "BLOCKED_OTHER": 31,
+    "normalized_unique_source_objects": 207
+  },
+  "dedup_hostile_failures": 0,
+  "dedup_routing_false_locality": 0,
+  "cross_campaign_hidden_core_artifacts": 0,
+  "unavailable_primary": "SAFE_WITH_EXPLICIT_PRIMARY_GAP",
+  "false_promotion": {"AMBIGUOUS": 0, "FAIL": 0},
+  "false_closure": {"AMBIGUOUS": 0, "FAIL": 0},
+  "anti_resurrection_violations": 0,
+  "fresh_agent_sufficiency": "BOUNDED_PRIMARY_DETAIL_LOSS",
+  "material_discrepancies_vs_w53": 0,
+  "runtime_change_in_w52b_w53_delta": 0,
+  "authority_promotion_violations": 0,
+  "canonical_ref_safety": "RECHECK_EXTERNALLY_AFTER_WORKER_COMMIT",
+  "terminal_token": "W54_FINAL_HOSTILE_PROJECT_HOME_AUDIT_COMPLETE__PREMAIN_SUCCESSION_READY_WITH_EXPLICIT_PRIMARY_GAPS__NO_HIDDEN_ARCHITECTURAL_LOSS__READY_FOR_GLOBAL_HQ_ADOPTION"
+}
