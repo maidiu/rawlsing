@@ -1,0 +1,10 @@
+visibility_class	row_count	cold_read_meaning	visibility_before_reliance	bounded_issue
+MATERIALIZED_EXACT	142	Exact Git blob is physically local in an inert campaign corpus and byte identity is recorded.	YES	None at row level.
+BYTE_DUPLICATE_ROUTED	51	Artifact is deduplicated to an earlier adjudicated row rather than copied again.	YES_WITH_TARGET_FOLLOW	The duplicate row does not denormalize the target row's final availability; target may itself be blocked/unretrieved.
+EXACT_REF_ONLY_SUFFICIENT	6	No local copy is intended; immutable ref/path is retained because later/local material is sufficient at this grain.	YES	Reader must understand ref-only is deliberate, not missing evidence.
+PRESENT_UNRETRIEVED	28	Exact Git tree/blob identity is known but blob is absent from the local object database; no substitute was selected.	YES	Primary detail cannot be cold-read locally despite exact locator.
+BLOCKED_OTHER	31	Exact source could not be retrieved as a local Git ref:path object or is command/archive-only; no substitute was silently chosen.	YES	Primary detail unavailable locally; several rows are conceptually important.
+TOTAL	258	All deep-corpus manifest rows classified.	YES	Counts are row counts, not 258 unique semantic objects.
+
+# Cold-test note
+The cold reader derived physical-presence truth from PROJECT_INHERITANCE_R1/19_DEEP_CORPUS_MANIFEST.tsv before opening W51C receipts. After the cold score was locked, W51C/FINAL_VALIDATION_SUMMARY.json confirmed the same 142/51/6/28/31 row counts. The comparison did not alter any cold classification.
