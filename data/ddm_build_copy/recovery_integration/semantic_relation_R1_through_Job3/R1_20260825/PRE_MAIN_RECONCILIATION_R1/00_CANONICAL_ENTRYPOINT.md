@@ -2,7 +2,23 @@
 
 **Status:** `PREMAIN_CANDIDATE__TECHNICALLY_ADMITTED_BY_W35__NOT_GLOBAL_HQ_ADOPTED`
 
-**W50 extension:** this entrypoint now has two explicitly different reading modes. W50 does **not** alter the W35 authority ceilings or mint global sovereignty.
+## W55 GROUNDING GATE — PROJECT-LEVEL JUDGMENT
+
+For **project-level decision, redesign, adjudication, acceptance, succession, adoption, or cross-campaign interpretation**, do **not** begin from runtime/current-law surfaces alone.
+
+Start at:
+
+`00_RAWLSING_GROUND.md`
+
+Then issue a valid grounding receipt under:
+
+`GOVERNANCE_PROTOCOLS_R1/DECISION_AGENT_GROUNDING_PROTOCOL.md`.
+
+`NO_VALID_GROUNDING_RECEIPT = DECISION_AUTHORITY_DISABLED`.
+
+A purely operating/validation agent may continue directly through the current-governance route below. Runtime observations do not become architectural/project authority unless that agent changes mode and becomes grounded.
+
+**W50 extension:** this entrypoint has two explicitly different reading modes. W50 does **not** alter the W35 authority ceilings or mint global sovereignty.
 
 ## CHOOSE YOUR MODE
 
@@ -10,17 +26,21 @@
 
 Start with `CANONICAL_GOVERNANCE_R1/CANONICAL_KNOWLEDGE_READ_ORDER.md`, then the W35 current-authority/current-function/preservation/exploration/open-state surfaces summarized below.
 
+If the task begins to infer what Rawlsing should become, what a historical result means for architecture, or whether an obligation is closed, stop and enter the W55 Grounding Gate.
+
 ### CHANGING / REDESIGNING RAWLSING
 
-Start with `PROJECT_INHERITANCE_R1/00_READ_ME_FIRST.md`.
+Start with `00_RAWLSING_GROUND.md`, then use `CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md` and the relevant state/obligation routes. `PROJECT_INHERITANCE_R1/00_READ_ME_FIRST.md` is the deeper conceptual inheritance layer after grounding.
 
-That second mode contains the project-wide conceptual inheritance, unfinished explorations, return-required questions, full-development envelopes, negative lessons, and nonharmonized tensions. Reading only current law is **not** sufficient preparation for redesign.
+Reading only current law is **not** sufficient preparation for redesign.
 
 > `CURRENT_AUTHORITY != MUST_FACTOR_INTO_IDEATION`
 >
 > `PRESERVATION != LIVE_PROMOTION`
 >
 > `GLOBAL_HQ_SOVEREIGNTY != DELEGATED_CURRENT_AUTHORITY != CANONICAL_GIT_ANCESTRY != PHYSICAL_PRESENCE`
+>
+> `LOCAL_COMPLETION != PROJECT_COMPLETION`
 
 ## W35 CURRENT CORE — PRESERVED WITHOUT AUTHORITY CHANGE
 
@@ -92,7 +112,7 @@ The W35 authoritative open ledger remains `CANONICAL_GOVERNANCE_R1/OPEN_QUESTION
 10. other explicit no-winner architecture forks;
 11. C01 independent fracture-map readmission.
 
-W50 discovers and preserves a richer **conceptual** frontier without pretending those additional rows are new W35 current-authority propositions. See `PROJECT_INHERITANCE_R1/05_UNFINISHED_FRONTIER.tsv`, `05A_ADDITIONAL_UNFINISHED_FRONTIER.tsv`, and `07_RETURN_REQUIRED.tsv`.
+W50 discovers and preserves a richer **conceptual** frontier without pretending those additional rows are new W35 current-authority propositions. W55 normalizes the operational current view in `CENTRAL_PROJECT_STATE_R1/OPEN_OBLIGATIONS.tsv`; the historical source ledgers remain `PROJECT_INHERITANCE_R1/05_UNFINISHED_FRONTIER.tsv`, `05A_ADDITIONAL_UNFINISHED_FRONTIER.tsv`, and `07_RETURN_REQUIRED.tsv`.
 
 ### 6. WHAT MUST NOT BE RESURRECTED
 
@@ -123,10 +143,10 @@ Use `CANONICAL_GOVERNANCE_R1/AUTHORITY_LEVELS.tsv`.
 `EVIDENCE_ACCEPTANCE != EXECUTABLE_AUTHORITY`
 `GIT_ANCESTRY != AUTHORITY_INHERITANCE`
 
-W50 does not alter any of these relations.
+W55 adds `LOCAL_COMPLETION != PROJECT_COMPLETION` and makes reintegration state centrally explicit. It does not alter any pre-existing authority ceiling.
 
 ### 9. VALIDATION / REPLAY
 
-W35 validation remains under `WAVE3/W35_TERMINAL_JOIN_VALIDATION/`; W50 conceptual-synthesis and materialization receipts live under `WAVE4/W50_GLOBAL_CONCEPTUAL_INHERITANCE/`.
+W35 validation remains under `WAVE3/W35_TERMINAL_JOIN_VALIDATION/`; W50 conceptual-synthesis/materialization receipts live under `WAVE4/W50_GLOBAL_CONCEPTUAL_INHERITANCE/`; W53 project-home seal and W54 hostile audit establish the succession-ready PRE-MAIN baseline consumed by W55.
 
-For operating correctness, trust W35's exact runtime/current-authority receipts. For redesign inheritance, trust W50's exact W41–W49 corpus tree identities, ledgers, envelopes and cold-reader validation. Neither mode substitutes for the other.
+For operating correctness, trust W35's exact runtime/current-authority receipts. For redesign inheritance, start at the Ground, then use the central state to route into W50-W54 evidence. Neither mode substitutes for the other.
