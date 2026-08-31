@@ -18,3 +18,7 @@ For **changing/redesigning Rawlsing**:
 12. `FIELD_FORGE_REINDUCTION_BRIDGE.md` only after the above when doing forward Field Forge work.
 
 Do not read a historical/exploratory corpus and infer authority from physical presence. Do not read only current law and infer that everything outside it is intellectually dead.
+
+## W51C deep-corpus local originals
+
+The adjudicated W51A/W51B original corpus is locally routed through `19_DEEP_CORPUS_MANIFEST.tsv` and campaign `W51C_DEEP_CORPUS_ROUTE.tsv` files. These copies are historical/project-memory only and do not promote authority or runtime status.
