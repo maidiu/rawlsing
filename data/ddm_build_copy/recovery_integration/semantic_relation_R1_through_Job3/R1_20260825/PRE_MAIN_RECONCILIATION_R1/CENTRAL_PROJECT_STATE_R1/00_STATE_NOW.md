@@ -2,6 +2,14 @@
 
 This is the recurring Vozhd sweep surface. It summarizes current state; the TSV ledgers are authoritative for exact IDs/routes.
 
+## Constitutional cognition / reintegration state
+
+W55A Ground and W55B fail-closed governance enforcement are now physically inherited by PRE-MAIN. `00_RAWLSING_GROUND.md` is the mandatory cognitive front door for project-level decision authority; the central state/open-obligation/reintegration ledgers are the sweep surfaces; the validator enforces grounding, exact canonical-head/version matching, touched-obligation disposition, successor return paths, reintegration status, and anti-resurrection acknowledgement.
+
+W55B mechanically counted the Ground at 457 lines / 2,956 words / 24,234 bytes and conservatively flagged the earlier ~3,500–6,000 prose target for Vozhd review. Vozhd disposition `WAVE6/W55B_GROUND_ENFORCEMENT_SEAL/VOZHD_WORDCOUNT_VARIANCE_DISPOSITION_R1.md` rules that variance `ACCEPTED_NONBLOCKING`: the range was an approximate anti-bloat design target, not a constitutional minimum, and W55B otherwise passed all 12 hostile fixtures with zero referential/dependency-return errors, authority promotions, or runtime changes.
+
+The reconciliation-level next act is therefore **independent W55C hostile constitutional audit**. Global HQ adoption remains prohibited until that audit passes. No PRE-MAIN rollback or Ground padding is required.
+
 ## What Rawlsing currently does
 
 The W35-selected current runtime plus six accepted W32 reconstructed function units remains the serving functional core. Current delegated source/joint/routing carriers remain governed at their admitted grains. W50-W55 conceptual/home material is inert project cognition, not serving runtime.
@@ -62,4 +70,6 @@ The W53/W54 source home retains explicit primary gaps, including some Dva, origi
 
 ## What Vozhd attacks next
 
-Use `NEXT_ACTIONS.tsv`. It orders only by dependency/readiness, not architectural preference. Before launching work, issue/consume a valid grounding receipt and attach exact state/obligation IDs. Every work unit requires a return destination and central reintegration disposition.
+For project development, use `NEXT_ACTIONS.tsv`: it orders only by dependency/readiness, not architectural preference. Before launching work, issue/consume a valid grounding receipt and attach exact state/obligation IDs. Every work unit requires a return destination and central reintegration disposition.
+
+For **PRE-MAIN reconciliation itself**, do not launch another architecture/recovery wave. Run the independent W55C hostile constitutional audit against the exact current PRE-MAIN. Only a passing W55C may authorize the later Global HQ adoption/succession act.
