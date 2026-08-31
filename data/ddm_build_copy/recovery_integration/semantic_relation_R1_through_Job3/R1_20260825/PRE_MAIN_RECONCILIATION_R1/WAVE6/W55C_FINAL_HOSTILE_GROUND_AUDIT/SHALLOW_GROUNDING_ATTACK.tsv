@@ -1,0 +1,6 @@
+attack	classification	mechanical_bypass
+Physical architecture winner while reading only Ground and ignoring Dva/Trii/Chetiri/PRE-V3/OBL001	BYPASS_FOUND	Validator does not validate binding_authority_surfaces_read or must_factor_surfaces_read and allows any self-asserted scope PASS
+Field Forge while ignoring current authority/reinduction	BYPASS_FOUND	Validator never checks scope-relevant FF routes/OBL005-006/040-043
+J01-B while ignoring J01-A freeze	BYPASS_FOUND	Validator does not require N025/N027 or OBL009 relevance; empty relevant-ID arrays also pass
+Dva implementation while ignoring current runtime	BYPASS_FOUND	Validator does not enforce S037/current-runtime evidence for declared Dva implementation scope
+Physical persistence while ignoring Chetiri	BYPASS_FOUND	Validator does not inspect substantive must-factor coverage

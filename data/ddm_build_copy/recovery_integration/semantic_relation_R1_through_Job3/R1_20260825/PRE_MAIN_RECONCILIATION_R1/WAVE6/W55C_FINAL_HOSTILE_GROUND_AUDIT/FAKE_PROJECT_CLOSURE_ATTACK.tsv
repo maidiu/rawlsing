@@ -1,0 +1,8 @@
+reintegration_state	protocol_result	validator_result
+LOCAL_COMPLETE_UNRECONCILED	FAIL	BYPASS_FOUND
+CAMPAIGN_ACCEPTED_UNBANKED	FAIL	BYPASS_FOUND
+HQ_BANKED_NOT_CANONICALLY_INHERITED	FAIL	BYPASS_FOUND
+SPAWNED_SUCCESSOR_RETURN_REQUIRED	FAIL	BYPASS_FOUND
+BLOCKED_ON_DEPENDENCY	FAIL	BYPASS_FOUND
+INTERRUPTED_STRANDED	FAIL	BYPASS_FOUND
+NOTE		The validator rejects only literal reintegration_status PROJECT_CLOSED or empty. It ignores local_status/adoption claim fields, so a packet may claim PROJECT_CLOSED in local_status while using any listed open reintegration status and still pass.

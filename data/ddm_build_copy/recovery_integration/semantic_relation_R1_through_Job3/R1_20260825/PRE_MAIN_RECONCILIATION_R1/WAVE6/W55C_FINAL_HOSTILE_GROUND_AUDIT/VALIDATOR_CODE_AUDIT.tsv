@@ -1,0 +1,17 @@
+property	classification	finding
+Default-allow behavior	BYPASS_FOUND	Several checks use vacuous truth/default empty containers; PASS can be assembled from self-asserted fields
+Missing-key coercion	BYPASS_FOUND	Schemas are never invoked; many schema-required fields are ignored and empty arrays pass
+Unknown enum acceptance	BYPASS_FOUND	agent_mode is unrestricted except one special case; reintegration accepts any nonempty value except PROJECT_CLOSED
+Stale-head bypass	BYPASS_FOUND	Receipt head is compared to packet head, not live canonical ref; both can be stale and equal
+Warning-only acceptance	CODE_PROVES_FAIL_CLOSED	Validator has no warning-success path; false check produces overall FAIL
+Empty touched-obligation loopholes	BYPASS_FOUND	all([]) is True; no declared touched set is reconciled to dispositions
+Empty return destination	CODE_PROVES_FAIL_CLOSED	bool(required_return_destination) rejects empty string/missing, though nonempty fake destinations are not validated
+Fake bounded-parent receipt	BYPASS_FOUND	No exact parent receipt/ref/inheritance/ceiling check exists; F02 passes without a parent
+Deliberately-ungrounded direct-adoption loophole	CODE_PROVES_FAIL_CLOSED	Explicit exploration mode forces GROUNDING_PASS false
+Project-closed/reintegration mismatch	BYPASS_FOUND	Only reintegration_status literal PROJECT_CLOSED is rejected; local_status/project claim is ignored
+Successor-without-return loophole	BYPASS_FOUND	Any nonempty return_to_ids satisfies all successors; targets and per-successor edges are unvalidated
+Anti-resurrection acknowledgement loophole	BYPASS_FOUND	Any nonempty anti_resurrection_constraints list passes; content is not checked
+TOTAL_CODE_PROVES_FAIL_CLOSED	3	
+TOTAL_TEST_RECEIPT_ONLY	0	
+TOTAL_AMBIGUOUS	0	
+TOTAL_BYPASS_FOUND	9	BLOCKER
