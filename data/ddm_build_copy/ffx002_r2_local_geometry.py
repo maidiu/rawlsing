@@ -14,6 +14,11 @@ import json
 import math
 from typing import Any, Iterable, Mapping, Sequence
 
+try:
+    from data.ddm_build_copy.field_forge_ffx002_harness import HarnessViolation as _HarnessViolation, compute_common_hash as _shared_common_hash
+except ModuleNotFoundError:  # direct script execution
+    from field_forge_ffx002_harness import HarnessViolation as _HarnessViolation, compute_common_hash as _shared_common_hash
+
 PRODUCER_SCHEMA_VERSION = "FFX002_R2_LOCAL_GEOMETRIC_OUTPUT_R1"
 METHOD_SCHEMA_VERSION = "FFX002_R2_LOCAL_GEOMETRIC_METHOD_R1"
 NUMERIC_REPLAY_VERSION = "FFX002_R2_LOCAL_GEOMETRIC_NUMERIC_REPLAY_R1"
@@ -111,22 +116,11 @@ def _normalize_manifest_value(value: Any, path: tuple[str, ...], set_paths: set[
 
 
 def compute_common_manifest_hash(common_manifest: Mapping[str, Any]) -> str:
-    """Independently recompute the common manifest hash under the declared R2 rules."""
-    if not isinstance(common_manifest, Mapping):
-        raise LocalGeometryContractError("common_manifest must be an object")
-    spec = common_manifest.get("canonicalization_spec")
-    if not isinstance(spec, Mapping):
-        raise LocalGeometryContractError("common_manifest.canonicalization_spec must be an object")
-    algorithm = str(spec.get("hash_algorithm", "SHA-256")).upper().replace("_", "-")
-    if algorithm not in {"SHA-256", "SHA256"}:
-        raise LocalGeometryContractError("Core-B R1 supports only SHA-256 common-manifest attestation")
-    encoding = str(spec.get("encoding", "UTF-8")).upper().replace("_", "-")
-    if encoding != "UTF-8":
-        raise LocalGeometryContractError("Core-B R1 supports only UTF-8 common-manifest canonicalization")
-    payload = copy.deepcopy(dict(common_manifest))
-    payload.pop("manifest_hash", None)
-    normalized = _normalize_manifest_value(payload, (), _parse_set_paths(spec))
-    return _sha256(normalized)
+    """Recompute only through the FFP009 frozen canonicalization contract."""
+    try:
+        return _shared_common_hash(common_manifest)
+    except _HarnessViolation as exc:
+        raise LocalGeometryContractError(f"{exc.state}: {exc.detail}") from exc
 
 
 def attest_common_manifest(common_manifest: Mapping[str, Any]) -> dict[str, Any]:
