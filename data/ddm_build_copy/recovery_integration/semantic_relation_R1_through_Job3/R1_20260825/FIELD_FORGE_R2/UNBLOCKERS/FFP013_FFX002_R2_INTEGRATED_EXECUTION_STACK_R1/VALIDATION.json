@@ -1,0 +1,42 @@
+{
+  "schema_version": "FFP013_FFX002_R2_INTEGRATED_STACK_VALIDATION@1",
+  "status": "PASS__FFX002_R2_INTEGRATED_SOFTWARE_STACK_READY_PENDING_FROZEN_EMPIRICAL_AUTHORITY_BINDINGS",
+  "branch": "agent/rabochii-field-forge-r2-ffp013-ffx002r2-integrated-execution-stack-r1",
+  "starting_head": "729c569f869f8f6c0dc0123f384cce2409e1c9b2",
+  "common_sibling_base": "9611a9067ab28e17eb45b565398c7e604a24e77b",
+  "governing_design": "5343862783959a1455735c0a5eb7b330c76f42d5",
+  "sibling_history_merge_commit": "649e2dbcf527e80ac89cc0c763945797aa71fd4a",
+  "consumed_terminals": {
+    "A": "862279e95100bc1c57acb0ead0695eb8c27cbcd7",
+    "B": "db912242e0f6bfefa61a2a83e11f701d17947af4",
+    "C": "38bc815d3edc8d8c75c8d8240de1da24cc588e5b"
+  },
+  "tested_code_head": "ef52f0790ad8408d534b613bef0ee77d7c65ee62",
+  "github_actions": {
+    "workflow": "FFP013 Integrated Synthetic Stack",
+    "successful_run_id": 33560895833,
+    "conclusion": "success",
+    "py_compile": "PASS",
+    "pytest": {
+      "passed": 71,
+      "failed": 0,
+      "elapsed_seconds": 0.63
+    }
+  },
+  "executable_entrypoint": "python data/ddm_build_copy/ffx002_r2_integrated_stack.py --input-json <FROZEN_FFX002_R2_EXECUTION_BUNDLE.json> --output-dir <FFX002_R2_OUTPUT_DIR>",
+  "genuine_empirical_canary_executed": false,
+  "production_respondent_data_accessed": false,
+  "semantic_authority_changed": false,
+  "pra_cim_citc_minted": false,
+  "exe005_empirical_runner_and_scoring": "CLOSED__SOFTWARE_STACK",
+  "residual_blocker_class": "FROZEN_EXTERNAL_EMPIRICAL_AUTHORITY_BINDINGS_ONLY",
+  "tested_git_blobs": {
+    "harness": "5e912bffa45d552a23a73320f0dd086f3c89cf41",
+    "core_a": "3841f868e95ea3267eada1b6af01ef0adfbf8add",
+    "core_b": "7679864216b51d6a0b005b2fb1d72f00a86172a4",
+    "core_c": "994128d0638dbb109e4bbcb95ac509c70d606dca",
+    "integrated_stack": "40e0150714c71f505bf67997954916915907cc05",
+    "integrated_tests": "5038e509c76f7aa072757c207aa49e7b9885f54f",
+    "ci_workflow": "b562c6d9a8e5861492814d3a46e2c0167b0ea351"
+  }
+}
