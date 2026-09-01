@@ -1,0 +1,37 @@
+name: FFP013 Integrated Synthetic Stack
+
+on:
+  push:
+    branches:
+      - agent/rabochii-field-forge-r2-ffp013-ffx002r2-integrated-execution-stack-r1
+
+permissions:
+  contents: read
+
+jobs:
+  integrated-synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install synthetic test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Compile integrated stack
+        run: |
+          python -m py_compile \
+            data/ddm_build_copy/field_forge_ffx002_harness.py \
+            data/ddm_build_copy/ddm_ffx_exact_configuration.py \
+            data/ddm_build_copy/ffx002_r2_local_geometry.py \
+            data/ddm_build_copy/ddm_ffx002_r2_direct_conditional.py \
+            data/ddm_build_copy/ffx002_r2_integrated_stack.py
+      - name: Run FFP009-FFP013 synthetic suite together
+        run: |
+          python -m pytest -q \
+            data/ddm_build_copy/test_field_forge_ffx002_harness.py \
+            data/ddm_build_copy/test_ffx_exact_configuration.py \
+            data/ddm_build_copy/test_ffx002_r2_local_geometry.py \
+            data/ddm_build_copy/tests/test_ffx002_r2_direct_conditional.py \
+            data/ddm_build_copy/test_ffx002_r2_integrated_stack.py
