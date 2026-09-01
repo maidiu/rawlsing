@@ -1,0 +1,48 @@
+{
+  "status": "PASS__DETERMINISTIC_REPLAY_AND_HOSTILE_GATES",
+  "executed_builder_sha256": "69f4341e904a297e6d73cae3df6de552542d34b3b61eb7e6f7e6aec677d30c6b",
+  "full_replay_receipt_sha256": "548b88be3a5df043e8e5129b7b46f3660d2c451f9bb177afb381f7829679f209",
+  "full_replay_receipt_library_ref": "libfile_bea346c880bc81918d13c193a1888f09",
+  "inputs": {
+    "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "source_rows": 51587,
+    "ffp014_carrier_identity": "sha256:6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5",
+    "ffp014_physical_member_sha256": "f55741a53a4caed3f74980afba2488233caa93dd4f1a2edcfde8d90e2fcce4be",
+    "ffp014_q73a_exposure_sidecar_sha256": "2ff4e74a3fc04a49da95925b02dad7865384f896849b4309c06f92464a85a3bf",
+    "c04_positive_predicate_carrier_sha256": "87efc75f02b782988120c96b4bc5bf2236f88f7b2e1969d6641d944611336a9c"
+  },
+  "validation": {
+    "source_case_count": 51587,
+    "source_carrier_key_sets_equal": true,
+    "respondent_local_ids_reused_from_ffp014_not_regenerated": true,
+    "decoder_crosscheck_fields": ["Q96", "Q73D"],
+    "decoder_crosscheck_mismatches": 0,
+    "all_selected_predicate_inputs_are_COUNTRY_ALPHA3": true,
+    "all_selected_predicate_inputs_resolved": true,
+    "core_predicate_intersection_equals_declared_common_country_scope_for_all_respondents": true,
+    "independent_second_full_run_all_output_hashes_identical": true,
+    "all_persisted_library_artifacts_cold_rematerialized_byte_identical": true
+  },
+  "hostile_assertions": {
+    "missing_response_used_as_nonexposure": false,
+    "substantive_response_used_as_exposure_proof": false,
+    "row_copresence_used_as_coexposure": false,
+    "source_block_membership_used_as_coexposure": false,
+    "row_order_used_as_respondent_identity": false,
+    "unresolved_predicate_input_coerced_false": false,
+    "q73d_paid_employment_mapping_consumed": false,
+    "survey_weights_applied": false,
+    "q03_redistribution_computed": false,
+    "representation_outputs_inspected": false
+  },
+  "output_hashes": {
+    "core_claim_common_risk_set": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+    "supplementary_q93c_sensitivity_risk_set": "c7f5ec4ca3001f38d8f2e0ceb2b5d2dc86437ddbee278731cad5a2459c201117",
+    "q73a_contrast_membership": "425a23d2b70e902e832ba7d989abc7d861e0c132046da3965687d685411d0c02",
+    "j3_native_q86abc_respondent_facts": "c8e26789d271dd1b3975a82223d58414bfc8b33664a853beaf06cec3aedecc17",
+    "j3_native_q86abc_support_inventory": "472e4b873b1cff882c57b54dab5b66d19b5cd434b9392ead755c6f8d8e287fbf",
+    "selected_response_facts": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+    "selected_exposure_facts": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce",
+    "unresolved_noncomparable_manifest": "fe841b49a8d7b4f0bfb1a9943fb18e0c63511966510b5c7f95da81c3d204baf6"
+  }
+}
