@@ -1,0 +1,21 @@
+{
+  "selected_measurement_exposure_unresolved": [],
+  "external_preserved_unresolved": [
+    {
+      "source_variable": "Q73D",
+      "qimpl": "question_impl.phase0.391123a4e7d3c8f0fd3b",
+      "predicate_id": "C04P.f751f53c113a339f2cb8",
+      "state": "EXPOSURE_BINDING_UNRESOLVED",
+      "reason": "RESPONDENT_HAS_PAID_EMPLOYMENT exact governed respondent-level source binding remains unresolved under FFP008/FFP014",
+      "claim_use": "EXCLUDED_FROM_REPAIRED_CANARY"
+    }
+  ],
+  "noncomparable_or_special_state_rules": [
+    {"source_variable":"Q84","rule":"Native category identity remains COUNTRY_ALPHA3-qualified; no cross-country category harmonization."},
+    {"source_variable":"Q73A","rule":"Only native 0 and 1 are contrast members; all other source states remain typed NON_CONTRAST_STATE."},
+    {"source_variable":"Q86A-F","rule":"Special states remain exact native states; J3_NATIVE_Q86ABC performs no collapse."},
+    {"source_variable":"Q93C","rule":"SUPPLEMENTARY only; its availability does not define or silently narrow CORE_CLAIM_COMMON_RISK_SET."}
+  ],
+  "library_full_manifest_sha256": "fe841b49a8d7b4f0bfb1a9943fb18e0c63511966510b5c7f95da81c3d204baf6",
+  "library_ref": "libfile_f3e43dcab7708191874b370b4c9d16fa"
+}
