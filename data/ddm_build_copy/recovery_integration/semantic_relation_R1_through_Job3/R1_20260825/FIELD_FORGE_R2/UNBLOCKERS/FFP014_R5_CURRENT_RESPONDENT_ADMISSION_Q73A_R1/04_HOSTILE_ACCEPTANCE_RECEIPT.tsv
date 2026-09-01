@@ -1,0 +1,17 @@
+test_id	status	evidence
+T01_RESPONDENT_KEY_COLLISION	PASS	51,587 source keys = 51,587 unique (COUNTRY,RESPNO); zero duplicates in source and reused member.
+T02_SOURCE_LOCAL_AS_GLOBAL	PASS	Respondent local ID hash includes source_family=Afrobarometer,wave=R5,COUNTRY,RESPNO; entity namespace additionally pins current carrier identity.
+T03_NEIGHBORING_WAVE_MAPPING	PASS	Qimpl and empirical measurement are exact Afrobarometer R5 Q73A; no neighboring-wave source used.
+T04_SAME_CODE_CHANGED_MEANING	PASS	Measurement identity is Afrobarometer:R5:Q73A under exact qimpl and source hash; raw code alone is not treated as portable.
+T05_SCOPE_COORDINATE_DROPPED	PASS	Exact Q73A administration predicate requires country only; family/wave and respondent country token are retained on every execution row.
+T06_PREDICATE_INPUT_WRONG_SCOPE	PASS	COUNTRY_ALPHA3 is taken from the same respondent source key RESPNO and exhaustively validated against the same row COUNTRY; no cross-carrier/scope lookup.
+T07_MISSING_RESPONSE_LAUNDERED	PASS	Exposed BEN0001 has Q73A=9 yet remains EXPOSED__PROVED; response sidecar is absent from exposure input serialization.
+T08_HISTORICAL_ROW_AS_CURRENT	PASS	Currentness comes from FFC001 admission over exact Path-B source/carrier package, not historical DB state.
+T09_REMATERIALIZATION_IDENTITY_DRIFT	PASS	Source and carrier key sets are exactly identical; local identity derives from governed source key; row order is explicitly nonidentity.
+T10_STALE_QIMPL_MAPPING	PASS	Binding pins qimpl exact identity, C04 predicate ID, FFP007 commit, and source hash; change requires recertification rather than raw-code survival.
+T11_WRONG_WEIGHT_UNIVERSE	PASS_NOT_APPLICABLE	No weight/design fact is consumed by this bounded execution/admission proof.
+T12_DUAL_CURRENT_CARRIER_INCOMPATIBLE_IDENTITY	PASS	FFP008 provisional root is explicitly NOT current; FFP014 issues one selected current carrier identity over the reused exact member. No second incompatible current carrier is admitted by consumed authority.
+T13_RESPONSE_PRESENCE_AS_SOLE_EXPOSURE	PASS	Exposure ledger is generated without Q73A response state; observed/nonobserved response never repairs routing.
+T14_UNRESOLVED_INPUT_FALSE_COERCION	PASS	Builder hostile fixture sends missing COUNTRY_ALPHA3 to EXPOSURE__UNRESOLVED, never FALSE/NONEXPOSURE.
+T15_TWO_TO_ONE_MEASUREMENT_COLLISION	PASS	Bounded package contains exactly one qimpl->measurement relation: Q73A qimpl -> Afrobarometer:R5:Q73A.
+T16_BACKEND_AUTHORITY_LAUNDERING	PASS	No PostgreSQL/DuckDB currentness claim is consumed; package is source-hash + rematerialized-file based under FFC001.
