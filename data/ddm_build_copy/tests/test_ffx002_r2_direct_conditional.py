@@ -5,6 +5,7 @@ import random
 
 import pytest
 
+from data.ddm_build_copy import field_forge_ffx002_harness as harness
 from data.ddm_build_copy.ddm_ffx002_r2_direct_conditional import (
     DirectConditionalContractError,
     produce_direct_conditional_redistribution,
@@ -14,32 +15,28 @@ from data.ddm_build_copy.ddm_ffx002_r2_direct_conditional import (
 
 def manifest():
     m = {
-        "manifest_schema_version": "TEST_COMMON_R1",
-        "current_execution_sha": "synthetic-sha",
+        "manifest_schema_version": harness.SCHEMA_VERSION,
+        "current_execution_sha": "a" * 40,
         "observation_substrate_ref": {"ref": "synthetic-observations", "hash": "obs"},
         "respondent_entity_binding_ref": {"ref": "synthetic-respondents"},
         "exposure_risk_set_ref": {"ref": "synthetic-risk"},
         "source_scope_ref": {"source": "SYNTHETIC"},
         "source_native_measurement_refs": ["C1", "C2", "D1"],
-        "qimpl_measurement_binding_refs": {"C1": "C1", "C2": "C2", "D1": "D1"},
+        "qimpl_measurement_binding_refs": [{"id": "Q:C1"}, {"id": "Q:C2"}, {"id": "Q:D1"}],
         "response_state_semantics_ref": {"ref": "synthetic-response-semantics"},
         "special_state_semantics_ref": {"ref": "synthetic-special-states"},
-        "ttar_execution_sequence": [],
+        "ttar_execution_sequence": "NONE",
         "post_transform_state_manifest": {"ref": "synthetic-frozen-states"},
         "claim_scope_ref": {"claim": "synthetic-P(D|C)"},
         "estimand_ref": {"estimand": "sample-descriptive"},
         "weight_design_refs": "NONE",
-        "analytic_role_authority_refs": {"pra": "synthetic-pra"},
+        "analytic_role_authority_refs": [{"id": "PRA:SYNTHETIC"}],
         "ancestry_disjointness_receipt": {"status": "PASS"},
-        "unresolved_noncomparable_manifest": [],
+        "unresolved_noncomparable_manifest": {"ref": "synthetic-none"},
         "source_native_ancestry_ref": {"ref": "synthetic-ancestry"},
-        "loss_profile": [],
-        "holdout_generation_inputs_hash": "synthetic-holdout-inputs",
-        "canonicalization_spec": {
-            "encoding": "UTF-8",
-            "hash_algorithm": "sha256",
-            "set_valued_paths": [],
-        },
+        "loss_profile": {"ref": "synthetic-loss-profile"},
+        "holdout_generation_inputs_hash": "b" * 64,
+        "canonicalization_spec": copy.deepcopy(harness.CANON),
         "manifest_hash": "pending",
     }
     m["manifest_hash"] = recompute_common_manifest_hash(m)
