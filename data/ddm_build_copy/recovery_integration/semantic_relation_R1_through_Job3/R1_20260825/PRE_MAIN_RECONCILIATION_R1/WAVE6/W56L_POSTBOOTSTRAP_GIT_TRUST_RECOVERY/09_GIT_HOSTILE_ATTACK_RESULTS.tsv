@@ -1,0 +1,21 @@
+id	attack	result	evidence
+01	PATH_PREPENDED_FAKE_GIT	PASS_EXECUTED	Parent PATH prepended with hostile git; marker remained absent because trusted executable is explicit absolute path and child env has no PATH.
+02	REPOSITORY_LOCAL_FAKE_GIT	PASS_EXECUTED	Executable named git placed in repository and repository prepended to parent PATH; marker remained absent.
+03	SYMLINKED_TRUSTED_GIT_TO_REPO_ATTACK	PASS_EXECUTED	Repository-local symlink passed as trusted Git was rejected: trusted-git-path-has-symlink-component.
+04	GIT_EXEC_PATH_INJECTION	PASS_EXECUTED	Injected GIT_EXEC_PATH was not inherited; no helper executed.
+05	GIT_DIR_GIT_WORK_TREE_INJECTION	PASS_EXECUTED	Injected repository/worktree selectors were stripped; live canonical resolved from explicitly supplied repository.
+06	GIT_OBJECT_DIRECTORY_ALTERNATES_INJECTION	PASS_EXECUTED	Injected object-directory/alternate environment was stripped; canonical ref remained expected.
+07	CONFIG_GLOBAL_CONFIG_SYSTEM_HOME_ATTACK	PASS_EXECUTED	Hostile HOME/global/system config did not alter live canonical; child forces global/system config suppression.
+08	GIT_EXTERNAL_DIFF_ATTACK	PASS_EXECUTED	Environment and repository-config external-diff marker did not execute; diff-tree also uses --no-ext-diff --no-textconv.
+09	PAGER_ATTACK	PASS_EXECUTED	Hostile pager marker did not execute; --no-pager and empty pager env.
+10	REPLACE_REF_ATTACK	PASS_EXECUTED	Presence of refs/replace caused repository-object-or-ancestry-hardening-failed; raw parent traversal additionally avoids replace semantics.
+11	NAMESPACE_ATTACK	PASS_EXECUTED	Injected GIT_NAMESPACE was not inherited; exact canonical ref resolved unchanged.
+12	CANDIDATE_REPO_CONFIG_ATTACK	PASS_EXECUTED	Repository alias/diff config could not override builtins or execute diff helper; root mismatch would fail closed.
+13	MALICIOUS_GIT_OUTPUT	PASS_EXECUTED	Explicit executable emitting malformed success output failed repository hardening/output validation.
+14	TRUSTED_GIT_PATH_UNAVAILABLE	PASS_EXECUTED	Missing trusted path failed trust-root initialization; no fallback.
+15	PYTHON_SHADOW_REGRESSION	PASS_EXECUTED	Sibling argparse.py marker did not execute under -I -S.
+16	RAWLSING_HELPER_REGRESSION	PASS_STATIC_AST	AST import inventory contains zero Rawlsing/governance helper imports.
+17	CANDIDATE_SCHEMA_MANIFEST_MUTATION	PASS_EXECUTED_SYNTHETIC	Synthetic candidate weakened its own auth/result schemas; canonical predecessor still rejected invalid audit against canonical schema.
+18	CURRENT_LEDGER_OVERCLAIM	PASS_REPOSITORY_PROOF	RI027-RI029 untouched; RI030 records W56K blocker and RI031 leaves W56L LOCAL_COMPLETE_UNRECONCILED/NOT_HOSTILE_CERTIFIED.
+19	BOOTSTRAP_REUSE_ATTACK	PASS_PROTOCOL_PROOF	Protocol marks W56I bootstrap exhausted and defines recovery as distinct one-time POST_BOOTSTRAP_TRUST_ROOT_RECOVERY.
+20	SELF_ADOPTION_ATTACK	PASS_SCOPE_PROOF	W56L grants no PRE-MAIN/main movement or Global HQ adoption; recovery requires later external authorization, hostile PASS, and external ref act.
