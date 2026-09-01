@@ -487,7 +487,7 @@ def _extract_c_distribution(answer: Mapping[str, Any]) -> list[dict[str, Any]] |
     rows = answer.get("destination_distribution")
     if not isinstance(rows, list):
         return None
-    return [{"state_id": row["state_id"], "probability": row["probability"]} for row in rows]
+    return [{"state_id": row["destination_state_id"], "probability": row["probability"]} for row in rows]
 
 
 def score_query_cases(
