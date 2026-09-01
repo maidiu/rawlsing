@@ -90,11 +90,13 @@ The repository root is likewise an explicit absolute host input. The gate MUST e
 
 The trusted repository metadata/object root is not discovered by Git. It is deterministically pinned to the concrete directory `<repository-root>/.git` before the first Git subprocess. A `.git` gitfile, symlinked `.git`, linked-worktree/common-directory indirection, symlinked top-level object directory, missing `.git/objects`, or any Git-reported metadata/common directory differing from this pinned root MUST fail closed. Trust-sensitive Git calls are invoked with explicit `--git-dir=<repository-root>/.git` and `--work-tree=<repository-root>`; `git -C` repository discovery is not an authority mechanism.
 
+Authoritative ref storage is part of that pinned repository identity. A symlinked/noncanonical `.git/refs` directory or `.git/packed-refs` file is forbidden. Before resolving any exact canonical or authorized branch ref, the gate MUST syntax-bound the full ref name and reject symlink components in the exact loose-ref path. A mutable branch ref may select an exact commit OID as repository authority, but it may not redirect ref storage outside the explicit repository-root contract.
+
 The gate MUST NOT inherit process `PATH` into trust-sensitive Git subprocesses. It constructs a minimal child environment rather than copying the parent environment. At minimum the authoritative envelope suppresses or replaces inherited Git configuration, repository redirection, object-store redirection, namespace, executable-helper, replacement-object, lazy-fetch, pager, prompt, and equivalent environment authority. The current implementation explicitly reconstructs the child environment and does not include `PATH`.
 
 The trusted-host process contract does not make the Git executable Rawlsing authority. It makes candidate-controlled substitution of the host prerequisite impossible within the repository threat model.
 
-## Git configuration, helper, and object-store law
+## Git configuration, helper, ref-store, and object-integrity law
 
 The predecessor gate uses only a minimized set of exact Git builtins/plumbing. It MUST NOT depend on Git aliases, external subcommands, hooks, filters, textconv, external diff, pager, editor, credential helper, remote helper, or candidate-selected executable helper behavior.
 
@@ -102,25 +104,34 @@ System and global Git configuration are disabled for the trust-sensitive subproc
 
 The allowed Git operation families are bounded to:
 
-- `rev-parse --verify` and repository-hardening probes;
-- `cat-file` exact commit/blob existence and reads;
-- `diff-tree -z --name-only --no-renames --no-ext-diff --no-textconv` for changed-path enumeration;
+- `rev-parse --verify` for exact ref resolution and exact `<commit_oid>:<path>` to blob-OID resolution, plus repository-hardening probes;
+- `cat-file commit <oid>` and `cat-file blob <oid>` for exact object reads;
+- `fsck --full --no-reflogs --no-progress` as the mandatory pre-read object-database integrity gate;
+- `diff-tree -z --name-only --no-renames --no-ext-diff --no-textconv` for changed-path enumeration after object integrity is established;
 - `for-each-ref` only as a replacement-ref rejection probe.
 
-Canonical schema/manifest/evidence bytes are read with exact object addressing through `cat-file`, not worktree files.
+Canonical schema/manifest/evidence bytes are never trusted merely because Git accepted an object pathname. Before trust-bearing canonical facts are consumed, the complete pinned object database MUST pass full Git object-integrity verification. Returned trust-bearing raw commit and blob bytes MUST additionally be re-hashed inside the standalone Python gate using Git object framing `<type> <length>\0<payload>` and the computed 40- or 64-hex OID MUST equal the requested exact OID.
 
-Ancestry and direct-parent facts are derived by the standalone Python gate from raw exact commit-object `parent` headers. They are not delegated to replacement/graft-sensitive `merge-base`, `rev-list`, or similar graph interpretation.
+This requirement is necessary because an ordinary `git cat-file <type> <oid>` read can return bytes stored at an OID pathname without independently proving that those bytes still hash to that OID. `EXACT_OBJECT_PATHNAME != AUTHENTICATED_IMMUTABLE_OBJECT` until the integrity gate and per-read authentication hold.
+
+Canonical schema/manifest/evidence paths are first anchored in an authenticated exact commit and resolved to an exact blob OID; only the authenticated blob payload is trusted. Candidate worktree bytes never substitute for those objects.
+
+Ancestry and direct-parent facts are derived by the standalone Python gate from authenticated raw exact commit-object `parent` headers. They are not delegated to replacement/graft-sensitive `merge-base`, `rev-list`, or similar graph interpretation.
 
 The gate MUST fail closed when:
 
 - replacement refs are present;
-- a graft file is nonempty;
-- an object alternates file is nonempty;
+- a graft file is nonempty or its locator escapes through symlink indirection;
+- an object alternates file is nonempty or its locator escapes through symlink indirection;
 - the repository is shallow for an ancestry-sensitive decision;
 - `.git` is not the concrete canonical metadata directory immediately beneath the externally supplied repository root;
 - `.git/objects` is absent, redirected, or symlinked at its top-level path;
+- `.git/refs` or `.git/packed-refs` is symlinked/noncanonical;
+- an exact authoritative loose-ref path contains symlink indirection;
 - linked-worktree/common-directory indirection is present;
 - Git reports an absolute Git directory or common directory different from the pinned `<repository-root>/.git`;
+- the complete pinned object database fails full object-integrity verification;
+- a returned trust-bearing commit/blob payload does not recompute to its requested exact OID;
 - the trusted Git command exits nonzero;
 - an expected object/ref cannot be read;
 - SHA/ref output is malformed;
@@ -129,7 +140,7 @@ The gate MUST fail closed when:
 
 Both the `--no-replace-objects` global Git option and `GIT_NO_REPLACE_OBJECTS=1` are used as defense in depth. `GIT_NO_LAZY_FETCH=1` prevents missing objects from becoming an implicit remote/helper execution path.
 
-No fallback to bare Git, discovery-selected Git metadata, candidate helper code, candidate schemas, candidate manifests, or worktree authority is permitted.
+No fallback to bare Git, discovery-selected Git metadata, external ref storage, unauthenticated object payloads, candidate helper code, candidate schemas, candidate manifests, or worktree authority is permitted.
 
 ## Trusted-host prerequisite law
 
@@ -137,7 +148,7 @@ The enduring external host prerequisite set is:
 
 `TRUSTED_HOST_EXECUTION_PREREQUISITES = { trusted Python interpreter, trusted absolute non-symlink Git executable, stable operating-system process/filesystem semantics, externally supplied absolute repository root }`
 
-The repository root contract deterministically binds the metadata/object root to `<repository-root>/.git`; no additional discovery-selected repository locator is admitted.
+The repository root contract deterministically binds the metadata/object/ref-storage root to `<repository-root>/.git`; no additional discovery-selected repository locator or external ref store is admitted. Immutable repository object identity is then authenticated cryptographically rather than inferred from filesystem pathname alone.
 
 Compromise or substitution of those exact host prerequisites is outside the candidate-controlled repository threat model.
 
@@ -151,11 +162,11 @@ Candidate repository authority stops at this boundary. The repository remains re
 4. competent external VOZHD/HQ creates an immutable hostile-audit authorization commit rooted directly at the live canonical PRE-MAIN, outside the candidate lineage, naming the exact candidate, audit branch, challenge nonce, audit write scope, and exact allowed PASS rulings;
 5. perform the hostile audit on the separately authorized audit branch;
 6. validate the exact candidate + exact authorization + exact hostile-audit result using the **standalone canonical predecessor copy** of `tools/validate_enforcement_candidate_from_canonical.py` under the authoritative Python + repository-root + trusted-Git invocation contract above;
-7. that predecessor copy must obtain its Git facts and governance schemas/manifests only through the closed trusted-host Git envelope and exact live-canonical objects;
+7. that predecessor copy must obtain its Git facts and governance schemas/manifests only through the closed trusted-host Git envelope, pinned in-root ref store, full object-integrity gate, and authenticated exact live-canonical objects;
 8. if that predecessor gate passes, competent external VOZHD/HQ may advance canonical PRE-MAIN to the exact audited candidate by an explicit reintegration act;
 9. only after canonical movement does the new enforcement version become eligible to validate ordinary adoptive packets.
 
-The predecessor gate self-checks that its executing bytes are exactly the bytes stored at live canonical PRE-MAIN. A modified candidate helper/schema/sibling Python module or PATH-injected Git executable cannot stand in for any transitive predecessor dependency.
+The predecessor gate self-checks that its executing bytes are exactly the authenticated bytes stored at live canonical PRE-MAIN. A modified candidate helper/schema/sibling Python module, PATH-injected Git executable, redirected ref store, or substituted object payload cannot stand in for any transitive predecessor dependency.
 
 The gate also requires exact authorization/result schemas, direct-canonical-root authorization ancestry, branch/write-scope separation, exact candidate binding, challenge matching, and exact authorized PASS enumeration. Substring heuristics such as `READY` or `_PASS` are forbidden.
 
@@ -175,7 +186,7 @@ Physical canonical ancestry does not retroactively convert the defective gate in
 
 `CANONICAL_ANCESTRY != ENFORCEMENT_CERTIFICATION`
 
-No candidate validator, schema, scope registry, anti-resurrection map, helper library, protected-path manifest, audit-authorization schema, hostile-audit-result schema, independence protocol, sibling Python module, meta-validator, or Git process can be its own proof of adoption.
+No candidate validator, schema, scope registry, anti-resurrection map, helper library, protected-path manifest, audit-authorization schema, hostile-audit-result schema, independence protocol, sibling Python module, meta-validator, Git process, ref store, or object pathname can be its own proof of adoption.
 
 ## Extraordinary post-bootstrap trust-root recovery after W56K
 
@@ -190,7 +201,7 @@ The only lawful recovery sequence is:
 3. leave that candidate `LOCAL_COMPLETE_UNRECONCILED`;
 4. a later **external** authorization commit must be rooted directly at exact `b53f8843092e776fb83ec584399641f5f2fc3de3`, outside the W56L candidate lineage, and bind the exact candidate SHA, exact hostile branch, fresh challenge nonce, exact audit write prefix, exact allowed PASS rulings, and exact terminal-token prefixes;
 5. an independent hostile court must attack the exact candidate, including the entire Python/Git/OS/repository trust envelope, using an evidence path independent of the defective current predecessor gate;
-6. the hostile court must independently prove immutable Git/ref/object/ancestry facts, authorization independence, candidate jurisdiction, Git executable provenance, environment/config closure, explicit metadata/object-root pinning, replacement/graft/alternate/shallow closure, no helper execution, no PATH authority, and nonpromotion;
+6. the hostile court must independently prove immutable Git/ref/object/ancestry facts, authorization independence, candidate jurisdiction, Git executable provenance, environment/config closure, explicit metadata/object-root pinning, in-root ref-storage confinement, complete object-ID integrity/authentication, replacement/graft/alternate/shallow closure, no helper execution, no PATH authority, and nonpromotion;
 7. only an exact authorized hostile PASS may permit competent external VOZHD/HQ to move canonical PRE-MAIN to the exact audited W56L candidate;
 8. the candidate branch and hostile worker possess no integration authority;
 9. immediately after any such external movement, the newly canonical predecessor gate must be exercised against a fresh harmless probe successor or dedicated post-installation verification fixture, under the exact trusted-host invocation contract;
@@ -200,4 +211,4 @@ The only lawful recovery sequence is:
 
 This W56L candidate may document this recovery sequence but **cannot authorize it**. Merely containing this section grants no project adoption, no PRE-MAIN movement, no main movement, and no Global HQ authority.
 
-The canonical-predecessor / isolated-Python-process / trusted-host-Git-process / host-pinned-repository-metadata-root / canonical-dependency-closure / external-authorization / hostile-auditor / external-ref-movement separation is the enduring security boundary.
+The canonical-predecessor / isolated-Python-process / trusted-host-Git-process / host-pinned-repository-metadata-and-ref-root / authenticated-immutable-object / canonical-dependency-closure / external-authorization / hostile-auditor / external-ref-movement separation is the enduring security boundary.
