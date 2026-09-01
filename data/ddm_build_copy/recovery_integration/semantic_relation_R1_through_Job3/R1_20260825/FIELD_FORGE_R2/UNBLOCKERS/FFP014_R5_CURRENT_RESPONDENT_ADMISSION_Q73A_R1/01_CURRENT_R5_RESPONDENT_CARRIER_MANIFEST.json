@@ -1,0 +1,48 @@
+{
+  "admission_commission": "FFC001@d3e93ab491dbbdc1763c019f44992b6884456b5b",
+  "authority_owner": "COMPETENT_CURRENT_ADMISSION_AND_SOURCE_AUTHORITY_UNDER_GLOBAL_HQ_COMMISSION",
+  "carrier_manifest_schema_version": "FFP014_R5_CURRENT_RESPONDENT_CARRIER@1",
+  "negative_ceiling": [
+    "Q73D_RESPONDENT_HAS_PAID_EMPLOYMENT_BINDING_NOT_ADMITTED",
+    "Q73D_EXPOSURE_NOT_ADMITTED",
+    "NO_GLOBAL_RESPONDENT_ID",
+    "NO_ROW_ORDER_IDENTITY",
+    "NO_MISSINGNESS_AS_EXPOSURE",
+    "NO_PRA_CIM_CITC_FFX002"
+  ],
+  "physical_member": {
+    "bytes": 139442,
+    "file_id": "file_000000005d6881f6aa1501897a52c40f",
+    "library_file_id": "libfile_23bfb6d5340881918ac372b6b8b4cf3b",
+    "library_path": "/Rawlsing/FIELD_FORGE_R2/FFP014_R5_CURRENT_RESPONDENT_ADMISSION_Q73A_R1/carrier-00000.tsv.gz",
+    "logical_uncompressed_sha256": "dd2f12232270d872405ffe4d8111540168b672aa1c9b88cac7c44ee3be13cfd7",
+    "post_upload_byte_recheck": "PASS",
+    "rows": 51587,
+    "sha256": "f55741a53a4caed3f74980afba2488233caa93dd4f1a2edcfde8d90e2fcce4be"
+  },
+  "reconstruction_code": {
+    "lawful_reuse_ceiling": "SPSS decode, source-byte validation, respondent (COUNTRY,RESPNO) identity, source-field projection, deterministic serialization; Q73D paid-employment/exposure semantics explicitly excluded",
+    "sha256": "ca0afd16475d9cabfbcac8b09ad68612c8ced680a3bb3051f9b1ea8a828ce774"
+  },
+  "respondent_carrier_identity": "sha256:6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5",
+  "respondent_grain": "one source R5 adult survey respondent per governed (COUNTRY, RESPNO) key",
+  "respondent_key_fields": ["COUNTRY", "RESPNO"],
+  "respondent_local_id_rule": "sha256(canonical_json({source_family:'Afrobarometer',wave:'R5',COUNTRY:<int>,RESPNO:<exact source string>}))",
+  "restoration_path": "CURRENT_REMATERIALIZATION_FROM_ALREADY_GOVERNED_SOURCE_DATA",
+  "row_order_is_identity": false,
+  "source": {
+    "bytes": 49689458,
+    "dataset_id": "Afrobarometer_Round_5_Afro_Barometer_Round_5",
+    "path": "Data/Afro Barometer Round 5.sav",
+    "rows": 51587,
+    "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "source_family": "Afrobarometer",
+    "wave": "R5"
+  },
+  "source_measurements_physically_projected": [
+    "Afrobarometer:R5:COUNTRY",
+    "Afrobarometer:R5:RESPNO",
+    "Afrobarometer:R5:Q96",
+    "Afrobarometer:R5:Q73D"
+  ]
+}
