@@ -1,0 +1,56 @@
+{
+  "schema": "FFP012_CORE_C_DIRECT_CONDITIONAL_REDISTRIBUTION_VALIDATION_R1",
+  "status": "PASS__EXE004_CLOSED__CORE_C_PRODUCER_IMPLEMENTED",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-field-forge-r2-ffp012-core-c-direct-redistribution-r1",
+  "starting_head": "9611a9067ab28e17eb45b565398c7e604a24e77b",
+  "governing_ffx002_r2": "5343862783959a1455735c0a5eb7b330c76f42d5",
+  "blocker_closed": "EXE004__CORE_C_DIRECT_CONDITIONAL_REDISTRIBUTION_PRODUCER_ABSENT",
+  "producer": {
+    "arm_id": "C",
+    "view_family": "DIRECT_CONDITIONAL_REDISTRIBUTION",
+    "respondent_level": true,
+    "exact_common_risk_set": true,
+    "positive_coexposure_required": true,
+    "exact_condition_outcome_identity": true,
+    "full_destination_distribution": true,
+    "support_backoff_abstention_explicit": true,
+    "estimand_weight_design_consumed": true,
+    "uncertainty_output": "KISH_WILSON_SCORE_R1",
+    "common_manifest_attestation": true,
+    "typed_loss_receipt": true,
+    "typed_replay_receipt": true,
+    "v551_relabeling": false
+  },
+  "semantic_boundary": {
+    "outcome_pooling_or_omission_forbidden": true,
+    "unknown_state_rebinning_forbidden": true,
+    "backoff_state_replacement_forbidden": true,
+    "risk_set_change_forbidden": true,
+    "estimand_switch_forbidden": true,
+    "postfork_role_change_forbidden": true
+  },
+  "tests": {
+    "synthetic_only": true,
+    "count": 14,
+    "expected_result": "14 passed",
+    "production_data_consumed": false
+  },
+  "validation_commands": [
+    "python -m py_compile data/ddm_build_copy/ddm_ffx002_r2_direct_conditional.py data/ddm_build_copy/compile_ffx002_r2_direct_conditional.py",
+    "pytest -q data/ddm_build_copy/tests/test_ffx002_r2_direct_conditional.py"
+  ],
+  "changed_files": [
+    "data/ddm_build_copy/ddm_ffx002_r2_direct_conditional.py",
+    "data/ddm_build_copy/compile_ffx002_r2_direct_conditional.py",
+    "data/ddm_build_copy/tests/test_ffx002_r2_direct_conditional.py",
+    "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/FIELD_FORGE_R2/UNBLOCKERS/FFP012_CORE_C_DIRECT_CONDITIONAL_REDISTRIBUTION_R1/00_WORKER_RETURN.md",
+    "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/FIELD_FORGE_R2/UNBLOCKERS/FFP012_CORE_C_DIRECT_CONDITIONAL_REDISTRIBUTION_R1/VALIDATION.json"
+  ],
+  "blockers_not_closed": [
+    "EXE001",
+    "EXE002",
+    "EXE003",
+    "EXE005"
+  ]
+}
