@@ -88,6 +88,8 @@ The trusted Git executable is an **external host prerequisite**. It MUST be supp
 
 The repository root is likewise an explicit absolute host input. The gate MUST establish it without invoking Git and reject a relative, nonexistent, symlink-containing, or noncanonical root. The executing predecessor script must lie beneath that root.
 
+The trusted repository metadata/object root is not discovered by Git. It is deterministically pinned to the concrete directory `<repository-root>/.git` before the first Git subprocess. A `.git` gitfile, symlinked `.git`, linked-worktree/common-directory indirection, symlinked top-level object directory, missing `.git/objects`, or any Git-reported metadata/common directory differing from this pinned root MUST fail closed. Trust-sensitive Git calls are invoked with explicit `--git-dir=<repository-root>/.git` and `--work-tree=<repository-root>`; `git -C` repository discovery is not an authority mechanism.
+
 The gate MUST NOT inherit process `PATH` into trust-sensitive Git subprocesses. It constructs a minimal child environment rather than copying the parent environment. At minimum the authoritative envelope suppresses or replaces inherited Git configuration, repository redirection, object-store redirection, namespace, executable-helper, replacement-object, lazy-fetch, pager, prompt, and equivalent environment authority. The current implementation explicitly reconstructs the child environment and does not include `PATH`.
 
 The trusted-host process contract does not make the Git executable Rawlsing authority. It makes candidate-controlled substitution of the host prerequisite impossible within the repository threat model.
@@ -96,7 +98,7 @@ The trusted-host process contract does not make the Git executable Rawlsing auth
 
 The predecessor gate uses only a minimized set of exact Git builtins/plumbing. It MUST NOT depend on Git aliases, external subcommands, hooks, filters, textconv, external diff, pager, editor, credential helper, remote helper, or candidate-selected executable helper behavior.
 
-System and global Git configuration are disabled for the trust-sensitive subprocesses. Injected `GIT_CONFIG_COUNT` entries are not inherited. Repository-local configuration is not treated as governance authority; the exact command set is chosen so that local aliases cannot override builtins and diff/textconv/helper execution is disabled or irrelevant. Repository configuration may describe the repository's own format, but may not redirect a trust-bearing command into candidate/worktree executable behavior.
+System and global Git configuration are disabled for the trust-sensitive subprocesses. Injected `GIT_CONFIG_COUNT` entries are not inherited. Repository-local configuration is not treated as governance authority; the exact command set is chosen so that local aliases cannot override builtins and diff/textconv/helper execution is disabled or irrelevant. Repository configuration may describe the repository's own storage format, but explicit `--git-dir` / `--work-tree` binding prevents it from selecting a different repository or worktree, and Git-reported metadata/common-directory identity is cross-checked against the host-pinned metadata root.
 
 The allowed Git operation families are bounded to:
 
@@ -115,6 +117,10 @@ The gate MUST fail closed when:
 - a graft file is nonempty;
 - an object alternates file is nonempty;
 - the repository is shallow for an ancestry-sensitive decision;
+- `.git` is not the concrete canonical metadata directory immediately beneath the externally supplied repository root;
+- `.git/objects` is absent, redirected, or symlinked at its top-level path;
+- linked-worktree/common-directory indirection is present;
+- Git reports an absolute Git directory or common directory different from the pinned `<repository-root>/.git`;
 - the trusted Git command exits nonzero;
 - an expected object/ref cannot be read;
 - SHA/ref output is malformed;
@@ -123,13 +129,15 @@ The gate MUST fail closed when:
 
 Both the `--no-replace-objects` global Git option and `GIT_NO_REPLACE_OBJECTS=1` are used as defense in depth. `GIT_NO_LAZY_FETCH=1` prevents missing objects from becoming an implicit remote/helper execution path.
 
-No fallback to bare Git, candidate helper code, candidate schemas, candidate manifests, or worktree authority is permitted.
+No fallback to bare Git, discovery-selected Git metadata, candidate helper code, candidate schemas, candidate manifests, or worktree authority is permitted.
 
 ## Trusted-host prerequisite law
 
 The enduring external host prerequisite set is:
 
 `TRUSTED_HOST_EXECUTION_PREREQUISITES = { trusted Python interpreter, trusted absolute non-symlink Git executable, stable operating-system process/filesystem semantics, externally supplied absolute repository root }`
+
+The repository root contract deterministically binds the metadata/object root to `<repository-root>/.git`; no additional discovery-selected repository locator is admitted.
 
 Compromise or substitution of those exact host prerequisites is outside the candidate-controlled repository threat model.
 
@@ -182,7 +190,7 @@ The only lawful recovery sequence is:
 3. leave that candidate `LOCAL_COMPLETE_UNRECONCILED`;
 4. a later **external** authorization commit must be rooted directly at exact `b53f8843092e776fb83ec584399641f5f2fc3de3`, outside the W56L candidate lineage, and bind the exact candidate SHA, exact hostile branch, fresh challenge nonce, exact audit write prefix, exact allowed PASS rulings, and exact terminal-token prefixes;
 5. an independent hostile court must attack the exact candidate, including the entire Python/Git/OS/repository trust envelope, using an evidence path independent of the defective current predecessor gate;
-6. the hostile court must independently prove immutable Git/ref/object/ancestry facts, authorization independence, candidate jurisdiction, Git executable provenance, environment/config closure, replacement/graft/alternate/shallow closure, no helper execution, no PATH authority, and nonpromotion;
+6. the hostile court must independently prove immutable Git/ref/object/ancestry facts, authorization independence, candidate jurisdiction, Git executable provenance, environment/config closure, explicit metadata/object-root pinning, replacement/graft/alternate/shallow closure, no helper execution, no PATH authority, and nonpromotion;
 7. only an exact authorized hostile PASS may permit competent external VOZHD/HQ to move canonical PRE-MAIN to the exact audited W56L candidate;
 8. the candidate branch and hostile worker possess no integration authority;
 9. immediately after any such external movement, the newly canonical predecessor gate must be exercised against a fresh harmless probe successor or dedicated post-installation verification fixture, under the exact trusted-host invocation contract;
@@ -192,4 +200,4 @@ The only lawful recovery sequence is:
 
 This W56L candidate may document this recovery sequence but **cannot authorize it**. Merely containing this section grants no project adoption, no PRE-MAIN movement, no main movement, and no Global HQ authority.
 
-The canonical-predecessor / isolated-Python-process / trusted-host-Git-process / canonical-dependency-closure / external-authorization / hostile-auditor / external-ref-movement separation is the enduring security boundary.
+The canonical-predecessor / isolated-Python-process / trusted-host-Git-process / host-pinned-repository-metadata-root / canonical-dependency-closure / external-authorization / hostile-auditor / external-ref-movement separation is the enduring security boundary.
