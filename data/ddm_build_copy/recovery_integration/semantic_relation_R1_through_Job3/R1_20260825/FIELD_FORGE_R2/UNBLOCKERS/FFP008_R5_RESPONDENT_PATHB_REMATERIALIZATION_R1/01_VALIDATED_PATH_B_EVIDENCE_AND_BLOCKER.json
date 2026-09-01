@@ -1,0 +1,75 @@
+{
+  "authorized_path": "CURRENT_REMATERIALIZATION_FROM_ALREADY_GOVERNED_SOURCE_DATA",
+  "blocker": {
+    "missing_premise": "An exact governed respondent-level source measurement or governed deterministic expression that owns RESPONDENT_HAS_PAID_EMPLOYMENT for Afrobarometer R5 Q73D.",
+    "next_lawful_action": "Finite source-semantic/input-binding adjudication only; no rematerialization rerun is needed unless that adjudication changes the required carrier fields.",
+    "why_Q96_is_not_auto_admissible": "Q96 cash-income-job status is not source-authorized as semantic identity with Q73D paid employee/wage/employer status; Q73E separately distinguishes self-employment. C04 does not supply the mapping. FFP008 code may not mint it."
+  },
+  "branch": "agent/rabochii-field-forge-r2-ffp008-r5-respondent-pathb-rematerialization-r1",
+  "current_qimpl_predicate": {
+    "c04_semantic_input_binding_for_RESPONDENT_HAS_PAID_EMPLOYMENT": "ABSENT__C04_NAMES_ABSTRACT_PREDICATE_SYMBOL_ONLY",
+    "c04_source_condition": "Country predicate: * Not asked in ALG, EGY, MRC, SUD, TUN || Eligibility predicate: Respondent has paid employment",
+    "measurement": "Afrobarometer:R5:Q73D",
+    "predicate": "COUNTRY_ALPHA3 NOT IN {ALG,EGY,MRC,SUD,TUN} AND RESPONDENT_HAS_PAID_EMPLOYMENT == True",
+    "predicate_id": "C04P.f751f53c113a339f2cb8",
+    "qimpl": "question_impl.phase0.391123a4e7d3c8f0fd3b"
+  },
+  "explicit_nonactions": [
+    "NO_CURRENT_RESPONDENT_EXECUTION_BINDING_PACKAGE_ADMITTED",
+    "NO_FFX002",
+    "NO_PRA",
+    "NO_CIM",
+    "NO_CITC",
+    "NO_SOURCE_ACQUISITION",
+    "NO_MISSINGNESS_AS_EXPOSURE",
+    "NO_ROW_ORDER_IDENTITY"
+  ],
+  "provisional_reconstruction": {
+    "authority_status": "PROVISIONAL_NONAUTHORITATIVE__NOT_CURRENT_ADMITTED",
+    "provisional_carrier_identity": "sha256:0bab747c04b346396c2b4b66273a3277e9da3e97369015942237800dca6926a7",
+    "run1_equals_run2": true,
+    "run1_inventory_sha256": "2dde13d14e4a7f68710a0e6896254d8bef4483a2240fb937f7f4d6f44d7a341b",
+    "run1_member_sha256": "f55741a53a4caed3f74980afba2488233caa93dd4f1a2edcfde8d90e2fcce4be",
+    "run1_root_sha256": "7b9fbf15db0182f3e152d18c17f324471e8529c25d10ba6b2a06f037a084ec1b",
+    "run1_witness_sha256": "6f3a0a3853fee5e4ca6d31f9b8a3a842c83107bb54afe4bfc86d9bd5662085ab",
+    "script_sha256": "ca0afd16475d9cabfbcac8b09ad68612c8ced680a3bb3051f9b1ea8a828ce774"
+  },
+  "respondent_identity": {
+    "duplicate_source_keys": 0,
+    "governed_key_fields": [
+      "COUNTRY",
+      "RESPNO"
+    ],
+    "governed_unit": "adult citizen survey respondent",
+    "provisional_local_id_rule": "sha256(canonical_json({source_family:'Afrobarometer',wave:'R5',COUNTRY:<source integer>,RESPNO:<exact source string>}))",
+    "row_order_is_identity": false,
+    "source_key_rows": 51587,
+    "unique_source_keys": 51587
+  },
+  "source": {
+    "byte_length": 49689458,
+    "path": "Data/Afro Barometer Round 5.sav",
+    "row_count": 51587,
+    "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"
+  },
+  "source_semantic_facts": {
+    "Q73D": "If you have paid employment ... income tax ... deducted from your wages by your employer",
+    "Q73E": "If you are self employed ... tax on the earnings from your business or job",
+    "Q96": "Do you have a job that pays a cash income? If yes, is it full-time or part-time?",
+    "Q96_positive_codes": [
+      2,
+      3
+    ],
+    "Q96_positive_rows_by_Q73D_source_state": {
+      "-1": 105,
+      "0": 2334,
+      "1": 6973,
+      "7": 4819,
+      "9": 485,
+      "997": 2336
+    }
+  },
+  "starting_head": "232f5996d7115d12e3a3c46cd44219bd6caed381",
+  "status": "BLOCKED__EXACT_FINITE_PREDICATE_INPUT_BINDING_GAP",
+  "terminal_ruling": "BLOCKED__Q73D_RESPONDENT_HAS_PAID_EMPLOYMENT_INPUT_HAS_NO_EXACT_GOVERNED_R5_SOURCE_MEASUREMENT_BINDING"
+}
