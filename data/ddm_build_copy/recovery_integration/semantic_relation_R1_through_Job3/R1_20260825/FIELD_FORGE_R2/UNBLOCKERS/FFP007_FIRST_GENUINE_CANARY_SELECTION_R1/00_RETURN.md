@@ -1,207 +1,221 @@
 # FFP007 — FIRST GENUINE CANARY SELECTION + CLAIM-SCOPE BINDING PREPARATION R1
 
-Status: `CANDIDATE_SELECTED__CLAIM_SCOPE_READY_FOR_BOUNDED_PRA__RESPONDENT_EXECUTION_ADMISSION_STILL_EXTERNAL`
+Status: `CANDIDATE_SUBSTRATE_SELECTED__FINITE_OPERAND_FLOOR_READY_AT_SOURCE_ROUTING_GRAIN__PRA_AND_RESPONDENT_COEXPOSURE_PENDING`
 
-Worker mode: bounded candidate-selection / claim-scope preparation only.
+Worker mode: bounded candidate selection and claim-scope/PRA handoff preparation only.
 
-This worker does **not** issue PRA, freeze CIM, mint TTAR, set CITC materiality, admit a respondent carrier, infer exposure from missingness, or execute FFX002-R2.
+This worker does **not** issue PRA, freeze CIM, mint TTAR, set CITC materiality, admit/rematerialize a respondent carrier, infer exposure from missingness, or execute FFX002-R2.
 
-## 1. Ruling
+## 0. Exact authority consumed and ceiling
 
-The smallest exact Afrobarometer R5 candidate substrate found that meets the **candidate-selection** form of the FFX002-R2 first-canary floor is:
+- Global HQ commission: `d3e93ab491dbbdc1763c019f44992b6884456b5b`
+  - `FFC001 = RESPONDENT_EXECUTION_BINDING_ADMISSION`
+  - `FFC002 = PRA_BOUNDED_POSITION_ROLE_COURT`
+  - FFC002 ceiling: finite first-claim assignments only; no global ontology, STRATA promotion, runtime role inference, source-semantic minting, or empirical-fact minting.
+- FFX002-R2: `5343862783959a1455735c0a5eb7b330c76f42d5`
+  - requires >=4 admitted `ACTIVE_POSITION` variables, >=3 independently authorized analytic-role families if lawfully supplied, no single-block position heterogeneity, an additional sensitivity candidate, >=8 respondent-facing dispositions over >=2 batteries, order>=3 J/configuration support, exact respondent/coexposure authority, and an explicit estimand/weight-design posture.
+- FFP002: `232f5996d7115d12e3a3c46cd44219bd6caed381`
+  - proves exact R5 source bytes and Q73D source/qimpl/predicate seam; does **not** admit a current respondent execution binding.
+- FFP003: `0b69ce72f0ead8c9dad3e89f9ca92993b6c5f8b5`
+  - fixes Q86A-F ceiling as `ATTITUDE_OR_DISPOSITION_ONLY`; final PRA requires exact first-canary claim-scope binding.
+- FFP004: `0eaee36a8ecddfc221daf91e74f0663c801982fd`
+  - fixes `Q03 / CANARY_LOCAL = one bounded positional contrast -> conditional redistribution`; CIM remains candidate-only; exact estimand and weight/design authority slots remain pending.
 
-### Proposed active-position candidates
+FFP007 therefore selects a finite **PRA docket and source/qimpl substrate**. It cannot truthfully say the final FFX002 admission floor is already satisfied because PRA and actual respondent/coexposure admission are separate commissioned acts.
 
-1. `Q70B` — household receipt of government school-feeding support.
-   - candidate role family: `HOUSEHOLD_SOCIAL_PROTECTION_MATERIAL_RELATION`
+## 1. Smallest finite R5 position docket
+
+The smallest exact source/qimpl set found that can be submitted to FFC002 without relying on one source block is:
+
+1. `Q70B` — whether respondent or anyone in household receives food for children from a government-run school feeding program.
    - exact qimpl: `question_impl.phase0.311d905b2baab867642e`
-2. `Q73A` — respondent/household-facing requirement to pay general sales tax / VAT on goods bought from shops or traders.
-   - candidate role family: `FISCAL_INCORPORATION_OBLIGATION_RELATION`
+   - candidate PRA role: `ACTIVE_POSITION`
+   - nonauthoritative family-evidence bucket: household material/public-benefit relation
+2. `Q73A` — whether respondent is required to pay general sales tax/VAT on goods bought from shops or traders.
    - exact qimpl: `question_impl.phase0.cae005624221d7b00dd2`
-3. `Q73D` — paid-employment-linked requirement to pay employer-deducted income tax.
-   - candidate role family: `EMPLOYMENT_LINKED_FISCAL_RELATION`
+   - candidate PRA role: `ACTIVE_POSITION`
+   - nonauthoritative family-evidence bucket: fiscal incorporation/obligation relation
+3. `Q73D` — if respondent has paid employment, whether respondent is required to pay employer-deducted income tax.
    - exact qimpl: `question_impl.phase0.391123a4e7d3c8f0fd3b`
-4. `Q84` — respondent's own ethnic community / cultural group / tribe.
-   - candidate role family: `RELATIONAL_IDENTITY_BACKGROUND_POSITION`
+   - candidate PRA role: `ACTIVE_POSITION`
+   - nonauthoritative family-evidence bucket: employment-linked fiscal relation
+4. `Q84` — respondent's own ethnic community, cultural group, or tribe.
    - exact qimpl: `question_impl.phase0.5a05ce882452ef85debd`
+   - candidate PRA role: `ACTIVE_POSITION`
+   - source meaning supports a relational-identity-family docket; the closest already-recognized PRA vocabulary is `RELATIONAL_IDENTITY_POSITION`, but **FFP007 does not issue that role**.
 
-These four candidates arise from three source blocks (`Q70`, `Q73`, `Q84`) and at least three materially different candidate role families. Position heterogeneity is therefore not supplied by one source block alone.
+The family-evidence descriptions above are evidence summaries, **not newly minted PRA vocabulary**. For the FFX002 family floor, the bounded PRA court must independently decide whether these rows lawfully instantiate at least three authorized analytic-role families. The source evidence supports at least three materially distinct family questions: (a) household material/public-benefit relation, (b) fiscal/employment relation, and (c) relational identity. Q73A/Q73D may be treated by the court as one family if that is the lawful classification; the candidate still presents three distinct evidence buckets across `Q70`, `Q73`, and `Q84`.
+
+No single source block is the sole source of proposed position heterogeneity.
 
 ### Position-side sensitivity candidate
 
-5. `Q93C` — respondent frequency of using a mobile phone to send/receive money or pay a bill.
-   - candidate role: `SUPPLEMENTARY`
-   - candidate family: `DIGITAL_FINANCIAL_PRACTICE_POSITION_SIDE_SENSITIVITY`
-   - exact qimpl: `question_impl.phase0.f62bceafa49dd85eb525`
-   - ceiling: this is not thereby wealth, class, capital volume, employment relation, or social hierarchy.
+`Q93C` — frequency of using a mobile phone to send/receive money or pay a bill.
 
-### Active-disposition candidates
+- exact qimpl: `question_impl.phase0.f62bceafa49dd85eb525`
+- candidate PRA role: `SUPPLEMENTARY`
+- use: supplementary/conditioning/exclusion sensitivity only unless FFC002 positively rules otherwise
+- ceiling: digital-financial practice/access is not thereby wealth, class, capital volume, income, employment relation, or hierarchy.
 
-Two source batteries provide exactly eight separately respondent-facing disposition measurements:
+## 2. Disposition docket
 
-- Q76 battery:
-  - `Q76A` — normative judgment of not paying for government services;
-  - `Q76B` — normative judgment of not paying owed income taxes.
-- Q86 citizenship-rights matrix:
-  - `Q86A;Q86B;Q86C;Q86D;Q86E;Q86F`.
+Exactly eight separately respondent-facing disposition candidates are nominated from two source batteries:
 
-The Q86 items retain the exact FFP003 ceiling: `ATTITUDE_OR_DISPOSITION_ONLY`. None is a respondent social-position operand.
+### Q76 normative fiscal-civic battery
+- `Q76A` — judgment of not paying for government services.
+- `Q76B` — judgment of not paying taxes owed on income.
 
-### Higher-order configuration
+Candidate PRA role for each: `ACTIVE_DISPOSITION`.
 
-The exact current source structure
+### Q86 citizenship-rights matrix
+- `Q86A;Q86B;Q86C;Q86D;Q86E;Q86F`
+
+Candidate PRA role for each: `ACTIVE_DISPOSITION`.
+
+FFP003's exact ceiling controls all Q86 rows: `ATTITUDE_OR_DISPOSITION_ONLY`. No hypothetical subject attribute in Q86 may become respondent social-position evidence.
+
+## 3. Higher-order source-native configuration candidate
+
+Exact source structure:
 
 `cssu.r1.afrobarometer.r5.d8478014cb0a506fe6c4`
 
-is a six-member `MATRIX_GRID` over `Q86A-F`, with complete exact current binding. The smallest lawful order>=3 source-native configuration candidate is:
+- type: `MATRIX_GRID`
+- native label: `Explicit source block Q86`
+- members: `Q86A|Q86B|Q86C|Q86D|Q86E|Q86F`
+- current member binding: complete exact binding
+- source-level disposition: `CURRENT_J_CANDIDATE`
+
+Smallest order>=3 candidate:
 
 `J3_NATIVE_Q86ABC := (Q86A,Q86B,Q86C)`
 
-with no many-to-one state collapse and no inferred coexposure. Native substantive response states are preserved. Actual respondent-level J support remains downstream of the current respondent execution binding.
+No state collapse or semantic recode is needed. This is only a source-native configuration candidate until actual same-respondent exposure/coexposure is positively materialized under the respondent execution binding.
 
-## 2. Exact source ancestry
+## 4. Exact source ancestry and routing grain
 
 All selected rows descend from:
 
-- source family / wave: `Afrobarometer / R5`;
-- exact source object: `Data/Afro Barometer Round 5.sav`;
-- SHA-256: `c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651`;
-- source bytes: `49,689,458`;
-- evidenced source rows: `51,587`;
-- dataset identity: `Afrobarometer_Round_5_Afro_Barometer_Round_5`;
-- exact same-byte alias previously proved: `mergedr5data0.sav`.
+- source family / wave: `Afrobarometer / R5`
+- exact source object: `Data/Afro Barometer Round 5.sav`
+- SHA-256: `c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651`
+- bytes: `49,689,458`
+- evidenced rows: `51,587`
+- dataset identity: `Afrobarometer_Round_5_Afro_Barometer_Round_5`
+- proved same-byte historical alias: `mergedr5data0.sav`
 
-Source semantics were checked against `merged_r5_codebook_2.pdf`, SHA-256 `7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735`.
+Source semantics: `merged_r5_codebook_2.pdf`, SHA-256 `7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735`.
 
-Current routing authority was checked against `C04_FULL_CURRENT_ROUTING_LEDGER.csv`, SHA-256 `c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90`.
+Routing authority: `C04_FULL_CURRENT_ROUTING_LEDGER.csv`, SHA-256 `c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90`.
 
-Every selected qimpl row in `01_EXACT_CANARY_CANDIDATE_MATRIX.tsv` has `POSITIVE_EXECUTABLE_ROUTING_AUTHORITY` at the exact current routing grain.
+Every selected row in `01_EXACT_CANARY_CANDIDATE_MATRIX.tsv` has `POSITIVE_EXECUTABLE_ROUTING_AUTHORITY` at **qimpl/routing-specification grain**. That does not equal actual respondent exposure.
 
-## 3. Common claim-scope candidate
-
-The smallest conservative country scope common to all selected core operands and both disposition batteries is:
-
-`Afrobarometer R5 respondents excluding COUNTRY_ALPHA3 IN {ALG, EGY, MRC, SUD, TUN, SWZ}`
-
-This is a candidate claim scope, not respondent exposure proof.
-
-Additional exact Q73D eligibility remains:
+The exact FFP002 Q73D predicate remains:
 
 `COUNTRY_ALPHA3 NOT IN {ALG,EGY,MRC,SUD,TUN} AND RESPONDENT_HAS_PAID_EMPLOYMENT == True`
 
-under predicate `C04P.f751f53c113a339f2cb8`.
+under `C04P.f751f53c113a339f2cb8`.
 
-The current respondent carrier must materialize the required predicate inputs and execute them deterministically. Blank or non-substantive responses are not routing evidence.
+## 5. Common claim-scope candidate
 
-## 4. Exact Q03 bounded positional contrast candidate
+Smallest conservative source-country scope common to the selected core position operands and both disposition batteries:
 
-Candidate Q03:
+`COUNTRY_ALPHA3 NOT IN {ALG,EGY,MRC,SUD,TUN,SWZ}`
 
-> Among lawfully exposed Afrobarometer R5 respondents in the common risk set who satisfy the governed Q73D paid-employment eligibility predicate, how do the native disposition-state distributions redistribute between respondents coded `Q73D=0` and respondents coded `Q73D=1`?
+Q73D adds the paid-employment predicate above.
 
-Native contrast only:
+This is a **candidate source/routing scope**, not a materialized respondent risk set. Final `R*` must come from an authoritative `CURRENT_RESPONDENT_EXECUTION_BINDING_CONTRACT@1` or successor binding with exact respondent identity, qimpl->measurement mapping, predicate inputs/results, exposure states, response binding, and ancestry.
 
-- `Q73D=0`: not required to pay employer-deducted income tax;
-- `Q73D=1`: required to pay employer-deducted income tax.
+Hard negatives:
 
-Do **not** fold `7=Not applicable`, `9=Don't know`, `997=Not asked`, `998=Refused`, or `-1=Missing` into either contrast state.
+`SOURCE_PRESENCE != EXPOSURE`
 
-Conditional targets:
+`ROUTING_SPECIFICATION != EXECUTED_RESPONDENT_EXPOSURE`
 
-- each of `Q76A,Q76B,Q86A-Q86F` at native state identity;
-- supplementary higher-order target `J3_NATIVE_Q86ABC` if same-respondent exposure is positively established.
+`RESPONSE_MISSINGNESS != NONEXPOSURE`
 
-No causal effect, latent class, field, pressure, homology, or structural mechanism is asserted by Q03.
+`CURRENT_J_CANDIDATE != EXECUTABLE_SAME_RESPONDENT_J`
 
-## 5. Candidate estimand and design posture
+## 6. Exact Q03 candidate
+
+Candidate claim/target-use identity:
+
+`FFR2_R5_Q03_Q73D_CONDITIONAL_DISPOSITION_REDISTRIBUTION_CANARY@1`
+
+Q03:
+
+> Among lawfully exposed Afrobarometer R5 respondents in `R*` who satisfy the governed Q73D paid-employment predicate, how do native disposition-state distributions redistribute between `Q73D=0` and `Q73D=1`?
+
+Native bounded contrast:
+
+- `Q73D=0`: not required to pay employer-deducted income tax
+- `Q73D=1`: required to pay employer-deducted income tax
+
+Do not fold `7=Not applicable`, `9=Don't know`, `997=Not asked`, `998=Refused`, or `-1=Missing` into either contrast state.
+
+Targets:
+- `Q76A,Q76B,Q86A-Q86F` at native state identity
+- `J3_NATIVE_Q86ABC` only if same-respondent coexposure is positively proved.
+
+No causal effect, latent class, field, pressure, homology, STRATA, capital, or structural mechanism is asserted.
+
+## 7. Candidate estimand and weight/design authority slots
 
 Candidate estimand identity:
 
 `UNWEIGHTED_SAMPLE_DESCRIPTIVE_CONDITIONAL_STATE_REDISTRIBUTION@1`
 
-For each disposition `D` and native substantive state `s`:
+Candidate formula:
 
 `Delta_D(s) = P_sample(D=s | R*, Q73D=1) - P_sample(D=s | R*, Q73D=0)`
 
-where `R*` is the positively governed common respondent exposure risk set.
+and, only after executable same-respondent J admission:
 
-For the order-3 native Q86 configuration, if executable same-respondent J is admitted:
+`Delta_J3(c) = P_sample(J3_NATIVE_Q86ABC=c | R*, Q73D=1) - P_sample(J3_NATIVE_Q86ABC=c | R*, Q73D=0)`.
 
-`Delta_J3(c) = P_sample(J3_NATIVE_Q86ABC=c | R*, Q73D=1) - P_sample(J3_NATIVE_Q86ABC=c | R*, Q73D=0)`
+Candidate interpretation: sample-descriptive, unweighted, noncausal, no population generalization.
 
-This is explicitly:
+Authority status is intentionally **not upgraded**:
 
-- sample-descriptive;
-- unweighted;
-- noncausal;
-- not a population target;
-- not a substitute for a separately governed weighted estimand.
+`ESTIMAND_AUTHORITY = ESTIMAND_AUTHORITY_PENDING_EXACT_CANARY`
 
-`WITHINWT` or any other weight is **not** silently activated here. FFX002-R2 permits an explicit unweighted sample-descriptive target; if a governed weighted target is later desired it must be registered as a separate pre-fork estimand/common-input variant with exact weight/design authority.
+`REQUESTED_WEIGHT_DESIGN_POSTURE = NONE__EXPLICIT_UNWEIGHTED_SAMPLE_DESCRIPTIVE_TARGET`
 
-Report raw denominators/state counts alongside proportions. Non-substantive states must remain typed and visible rather than being used to infer exposure.
+`WEIGHT_DESIGN_AUTHORITY = WEIGHT_DESIGN_AUTHORITY_PENDING_EXACT_CANARY`
 
-## 6. FFX002-R2 floor crosswalk
+No `WITHINWT` or other survey weight is activated. A competent pre-fork estimand/weight-design authority must explicitly bind the unweighted `NONE` posture before FFX002 execution. Any later weighted target is a separate common-input/estimand variant.
 
-| Floor requirement | FFP007 candidate ruling |
+## 8. Floor crosswalk at FFP007 preparation grain
+
+| FFX002-R2 requirement | FFP007 result |
 |---|---|
-| >=4 ACTIVE_POSITION candidates | `PASS_CANDIDATE__PRA_PENDING` — Q70B, Q73A, Q73D, Q84 |
-| >=3 independently supportable position-role families | `PASS_CANDIDATE__PRA_PENDING` — social-protection/material; fiscal-incorporation/employment-fiscal; relational identity |
-| no single source block as sole position heterogeneity | `PASS` — Q70, Q73, Q84 |
-| >=1 position sensitivity candidate | `PASS_CANDIDATE` — Q93C supplementary |
+| >=4 candidate ACTIVE_POSITION rows | `READY_FOR_PRA` — Q70B, Q73A, Q73D, Q84 |
+| >=3 independently supportable position-role families | `EVIDENCE_READY__AUTHORITY_PENDING_PRA` — material/public-benefit; fiscal/employment; relational identity |
+| no single source block as sole position heterogeneity | `PASS_SOURCE_SELECTION` — Q70, Q73, Q84 |
+| >=1 position sensitivity candidate | `READY_FOR_PRA` — Q93C as `SUPPLEMENTARY` |
 | >=8 respondent-facing dispositions | `PASS_SOURCE_SEMANTIC` — Q76A/B + Q86A-F |
-| >=2 disposition blocks/batteries | `PASS_SOURCE_SEMANTIC` — Q76 and Q86 |
-| lawful order>=3 higher-order subset | `PASS_SOURCE_STRUCTURE_CANDIDATE` — native Q86 ABC matrix subset; executable respondent J still pending |
-| exact Q03 contrast -> conditional redistribution | `PASS_CANDIDATE` — Q73D 0 vs 1 -> Q76/Q86 state distributions |
-| estimand + weight/design posture | `PASS_CANDIDATE` — explicit unweighted sample-descriptive target; weighted target remains separate authority path |
-| current respondent execution | `EXTERNAL_DEPENDENCY_NOT_CLOSED_BY_FFP007` |
-| PRA | `NOT_ISSUED__HANDOFF_READY` |
+| >=2 disposition batteries | `PASS_SOURCE_SEMANTIC` — Q76 + Q86 |
+| order>=3 configuration candidate | `PASS_SOURCE_STRUCTURE_CANDIDATE` — Q86ABC |
+| exact Q03 bounded contrast | `PASS_CANDIDATE` — Q73D 0 vs 1 -> Q76/Q86 redistribution |
+| explicit candidate estimand | `PASS_CANDIDATE__AUTHORITY_SLOT_OPEN` |
+| weight/design posture | `EXACT_UNRESOLVED_AUTHORITY_SLOT_RECORDED` |
+| actual respondent identity/exposure/coexposure | `PENDING_FFC001 / CURRENT_RESPONDENT_EXECUTION_BINDING_CONTRACT@1` |
+| final ACTIVE_POSITION / role-family admission | `PENDING_FFC002 PRA` |
 | CIM | `NOT_FROZEN` |
+| holdout/support | `DOWNSTREAM_FFX002_EXECUTION_DEPENDENCY__NOT_ASSERTED_WITHOUT_RESPONDENT_CARRIER` |
 
-Therefore the mandated rejection token is **not** returned at this preparation grain. The source/qimpl substrate is sufficient to hand to the bounded PRA/claim-scope court, but FFX002 execution remains prohibited until respondent execution and PRA dependencies are positively closed.
+The mandated rejection token is **not** returned at candidate-selection grain because a finite exact source/qimpl docket exists for every requested operand class. But downstream admission is fail-closed:
 
-## 7. Exact remaining authority boundaries
+- if FFC002 admits fewer than four `ACTIVE_POSITION` rows or fewer than three authorized analytic-role families, return `CANARY_REJECTED__NO_GOVERNED_R5_CANDIDATE_MEETS_FFX002_R2_ADMISSION_FLOOR`;
+- if FFC001 cannot materialize positive common exposure/coexposure for the required active measurements/J subset, return the same rejection token;
+- if the estimand/weight-design authority does not bind an exact posture, FFX002 execution remains blocked.
 
-### PRA
+## 9. Exact handoff
 
-FFP007 only nominates roles. Final role status must be issued by the competent bounded PRA court. No `ACTIVE_POSITION` or `ACTIVE_DISPOSITION` status in this package is authoritative until that court accepts the exact claim scope and allowed-use boundary.
+The exact claim-scope/PRA handoff packet is `02_CLAIM_SCOPE_PRA_HANDOFF_PACKET.md`.
 
-### Respondent execution
-
-FFP002 did not itself establish a current respondent carrier/execution binding. This package therefore depends externally on an authoritative instantiation of:
-
-`CURRENT_RESPONDENT_EXECUTION_BINDING_CONTRACT@1`
-
-covering this exact R5 source, respondent identity, qimpl-to-measurement binding, predicate inputs/results, exposure states, and response binding.
-
-### CIM
-
-The proposition in this package is a candidate claim-scope binding only. FFP007 does not freeze claim identity.
-
-### TTAR
-
-No TTAR is required for the proposed Q73D 0-vs-1 contrast or for preserving native Q76/Q86 states. Any category collapse, ordinal-to-continuous reinterpretation, cross-item equivalence, or cross-context transport would require separate typed authority before fork.
-
-### Materiality
-
-No thresholds/tolerances are set. That remains CITC jurisdiction.
-
-## 8. Targeted Library use
-
-Repository/known-commit evidence was used first. Targeted Library retrieval was limited to:
-
-- exact R5 codebook wording/value semantics;
-- exact current C04 routing rows absent from the commanded starting tree;
-- exact current source-structure/J-candidate row needed to pin the Q86 structure identity.
-
-No broad project archaeology was used to create roles or relax the FFX002-R2 floor.
-
-## 9. Handoff
-
-The exact claim-scope/PRA handoff packet is:
-
-`02_CLAIM_SCOPE_PRA_HANDOFF_PACKET.md`
+It supplies the FFP003 missing premise: immutable candidate target-use identity, intended operation, exact source/country/respondent-risk-set contract, and allowed-use boundary, while leaving PRA itself unissued.
 
 Terminal worker state:
 
-`CANDIDATE_SELECTED__CLAIM_SCOPE_READY_FOR_BOUNDED_PRA__RESPONDENT_EXECUTION_ADMISSION_STILL_EXTERNAL`
+`CANDIDATE_SUBSTRATE_SELECTED__FINITE_OPERAND_FLOOR_READY_AT_SOURCE_ROUTING_GRAIN__PRA_AND_RESPONDENT_COEXPOSURE_PENDING`
