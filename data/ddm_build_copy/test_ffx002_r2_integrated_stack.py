@@ -346,7 +346,7 @@ def test_minority_destination_states_remain_represented_in_a_and_c():
         for row in a_q["selected_attempt"]["disposition_distribution"]
     }
     c_states = {
-        row["state_id"]
+        row["destination_state_id"]
         for row in result["arm_outputs"]["C"][0]["result"]["destination_distribution"]
     }
     assert {"d0", "d1", "d2"} <= a_states
