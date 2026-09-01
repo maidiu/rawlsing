@@ -60,15 +60,14 @@ def main():
 
  audit=immutable_json(a.audit_evidence_ref); checks["AUDIT_EVIDENCE_IMMUTABLE_JSON"]=bool(audit)
  audit_schema_ok,_=schema_check(audit,GOV/"HOSTILE_AUDIT_RESULT_SCHEMA_R1.json") if audit else (False,[]); checks["AUDIT_RESULT_SCHEMA_VALID"]=audit_schema_ok
- audit_sha,audit_path=split_ref(a.audit_evidence_ref); terminal=str((audit or {}).get("terminal_sha","")); branch=str((audit or {}).get("audit_branch","")); expected_branch=str((auth or {}).get("expected_audit_branch","")); prefix=str((auth or {}).get("audit_write_prefix",""))
- checks["AUDIT_EVIDENCE_COMMIT_IS_DECLARED_TERMINAL"]=bool(audit_sha and audit_sha==terminal)
+ audit_sha,audit_path=split_ref(a.audit_evidence_ref); branch=str((audit or {}).get("audit_branch","")); expected_branch=str((auth or {}).get("expected_audit_branch","")); prefix=str((auth or {}).get("audit_write_prefix",""))
  checks["AUDIT_RESULT_PATH_WITHIN_AUTHORIZED_PREFIX"]=bool(prefix and audit_path.startswith(prefix))
  bok,btip,bsource=branch_tip(expected_branch) if expected_branch else (False,"",""); details["audit_branch_source"]=bsource
  checks["AUTHORIZED_AUDIT_BRANCH_RESOLVES"]=bok
- checks["AUDIT_BRANCH_TIP_IS_DECLARED_TERMINAL"]=bool(bok and btip==terminal)
+ checks["AUDIT_EVIDENCE_COMMIT_IS_AUTHORIZED_BRANCH_TIP"]=bool(bok and audit_sha and btip==audit_sha)
  checks["AUDIT_RESULT_BRANCH_MATCHES_AUTHORIZATION"]=bool(audit and branch==expected_branch)
- aok,_=run_git("merge-base","--is-ancestor",a.candidate_sha,terminal) if terminal else (False,""); checks["AUDIT_DESCENDS_FROM_CANDIDATE"]=aok
- adok,adiff=git_lines("diff","--name-only",a.candidate_sha,terminal) if terminal else (False,[]); audit_changed=set(adiff)
+ aok,_=run_git("merge-base","--is-ancestor",a.candidate_sha,audit_sha) if audit_sha else (False,""); checks["AUDIT_DESCENDS_FROM_CANDIDATE"]=aok
+ adok,adiff=git_lines("diff","--name-only",a.candidate_sha,audit_sha) if audit_sha else (False,[]); audit_changed=set(adiff)
  checks["AUDIT_COMMIT_JURISDICTION_PURE"]=bool(adok and audit_changed and prefix and all(x.startswith(prefix) for x in audit_changed) and not(audit_changed&protected)); details["audit_changed_paths"]=sorted(audit_changed)
  checks["AUDIT_BINDS_EXACT_AUTHORIZATION_REF"]=bool(audit and audit.get("authorization_ref")==a.audit_authorization_ref)
  checks["AUDIT_CHALLENGE_MATCH"]=bool(audit and auth and audit.get("challenge_nonce")==auth.get("challenge_nonce"))
