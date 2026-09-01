@@ -122,6 +122,8 @@ Integrated tests prove:
 14. special-state semantics cannot be redefined by one arm.
 15. target-removed ablations are explicit, including \`A+B\` for full-minus-C.
 16. the top-level CLI runs the complete synthetic bundle and writes deterministic receipts.
+17. execution mode is explicit: `SYNTHETIC_FIXTURE` versus `FROZEN_EMPIRICAL_CANARY`.
+18. the synthetic suite proves no genuine empirical execution is mislabeled, while a future lawfully supplied empirical-mode bundle is explicitly marked as such.
 
 ## Exact runnable top-level entrypoint
 
