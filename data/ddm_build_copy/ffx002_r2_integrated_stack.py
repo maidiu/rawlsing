@@ -267,6 +267,9 @@ def _assert_c_query_roles(c: Mapping[str, Any], position_ids: Sequence[str], dis
 def preflight_integrated_bundle(bundle: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(bundle, Mapping) or bundle.get("schema_version") != INPUT_SCHEMA_VERSION:
         raise IntegratedStackError("INTEGRATED_INPUT_SCHEMA_INVALID")
+    execution_mode = bundle.get("execution_mode")
+    if execution_mode not in {"SYNTHETIC_FIXTURE", "FROZEN_EMPIRICAL_CANARY"}:
+        raise IntegratedStackError("INTEGRATED_EXECUTION_MODE_INVALID")
     common = harness.validate_common_manifest(bundle.get("common_manifest"))
     holdout = bundle.get("holdout_manifest")
     query_manifest = bundle.get("query_manifest")
@@ -331,6 +334,7 @@ def preflight_integrated_bundle(bundle: Mapping[str, Any]) -> dict[str, Any]:
         "disposition_measurement_ids": list(disposition_ids),
         "code_refs": dict(code_refs),
         "citc_ref": citc["citc_ref"],
+        "execution_mode": execution_mode,
     }
 
 
@@ -787,7 +791,13 @@ def run_integrated_stack(bundle: Mapping[str, Any]) -> dict[str, Any]:
 
     result = {
         "schema_version": OUTPUT_SCHEMA_VERSION,
-        "terminal_state": TERMINAL_READY,
+        "software_stack_state": TERMINAL_READY,
+        "execution_mode": preflight["execution_mode"],
+        "execution_state": (
+            "SYNTHETIC_FIXTURE_EXECUTION_COMPLETE"
+            if preflight["execution_mode"] == "SYNTHETIC_FIXTURE"
+            else "FROZEN_EMPIRICAL_CANARY_EXECUTION_COMPLETE"
+        ),
         "design_ref": DESIGN_REF,
         "common_hash_attestation": common_attestation,
         "arm_outputs": outputs,
@@ -799,7 +809,7 @@ def run_integrated_stack(bundle: Mapping[str, Any]) -> dict[str, Any]:
         "prev3_ablation": prev3,
         "receipt_collection": receipts,
         "authority_minted": False,
-        "genuine_empirical_execution_performed": False,
+        "genuine_empirical_execution_performed": preflight["execution_mode"] == "FROZEN_EMPIRICAL_CANARY",
         "preferred_view": None,
         "master_score": None,
     }
@@ -844,7 +854,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     result = run_integrated_stack(bundle)
     write_integrated_outputs(result, args.output_dir)
     print(json.dumps({
-        "terminal_state": result["terminal_state"],
+        "software_stack_state": result["software_stack_state"],
+        "execution_state": result["execution_state"],
         "common_manifest_hash": result["common_hash_attestation"]["expected_common_manifest_hash"],
         "integrated_output_hash": result["integrated_output_hash"],
         "output_dir": str(Path(args.output_dir)),
