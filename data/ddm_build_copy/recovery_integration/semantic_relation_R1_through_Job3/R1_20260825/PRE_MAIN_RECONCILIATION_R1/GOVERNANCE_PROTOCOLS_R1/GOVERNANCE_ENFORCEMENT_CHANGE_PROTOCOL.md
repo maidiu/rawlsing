@@ -32,6 +32,46 @@ The live canonical protected-path manifest must itself declare the predecessor s
 
 Candidate worktree code may be inspected as the candidate under review. It may never supply executable machinery or governance facts used to authorize its own integration.
 
+## Python process-isolation law
+
+`STDLIB_NAME != TRUSTED_STDLIB_IMPORT` when repository-controlled search paths can shadow that name before the predecessor gate establishes its trust boundary.
+
+Therefore the predecessor gate is not valid merely because its source text contains only apparent standard-library imports.
+
+The authoritative invocation MUST use Python isolated, safe-path, no-site execution:
+
+`python3 -I -S tools/validate_enforcement_candidate_from_canonical.py <candidate_sha> <audit_evidence_ref> <audit_authorization_ref>`
+
+The gate itself MUST fail before importing any path-resolved module unless all of the following interpreter flags are already true:
+
+- `sys.flags.isolated`;
+- `sys.flags.ignore_environment`;
+- `sys.flags.no_user_site`;
+- `sys.flags.no_site`;
+- `sys.flags.safe_path`.
+
+Only the built-in `sys` module may be imported before this barrier. The gate must then additionally reject execution if any active `sys.path` entry resolves inside the repository.
+
+This means repository-local files such as:
+
+- `argparse.py`;
+- `csv.py`;
+- `json.py`;
+- `re.py`;
+- `subprocess.py`;
+- `pathlib.py`;
+- `typing.py`;
+- `sitecustomize.py`;
+- `usercustomize.py`;
+
+cannot become predecessor executable dependencies merely by being added beside the canonical gate or elsewhere in the repository.
+
+`PYTHONPATH`, user-site initialization, `sitecustomize`, `usercustomize`, script-directory prepending, and current-working-directory prepending are outside the trusted path under the required isolated invocation.
+
+A direct shebang launch or ordinary `python3 script.py` invocation is intentionally non-authoritative and must fail closed before shadowable imports occur.
+
+The trusted interpreter/runtime itself is an external machine prerequisite, not candidate repository authority. Compromise or replacement of the host Python executable is outside this repository-governance threat model.
+
 ## Lawful change sequence after bootstrap
 
 1. begin from exact live canonical PRE-MAIN;
@@ -39,12 +79,12 @@ Candidate worktree code may be inspected as the candidate under review. It may n
 3. record the candidate as `LOCAL_COMPLETE_UNRECONCILED`;
 4. competent external VOZHD/HQ creates an immutable hostile-audit authorization commit rooted directly at the live canonical PRE-MAIN, outside the candidate lineage, naming the exact candidate, audit branch, challenge nonce, audit write scope, and exact allowed PASS rulings;
 5. perform the hostile audit on the separately authorized audit branch;
-6. validate the exact candidate + exact authorization + exact hostile-audit result using the **standalone canonical predecessor copy** of `tools/validate_enforcement_candidate_from_canonical.py`;
-7. that predecessor copy must obtain its Git facts and governance schemas/manifests only from its own stdlib logic and exact live-canonical objects;
+6. validate the exact candidate + exact authorization + exact hostile-audit result using the **standalone canonical predecessor copy** of `tools/validate_enforcement_candidate_from_canonical.py` launched under `python3 -I -S`;
+7. that predecessor copy must obtain its Git facts and governance schemas/manifests only from its own isolated stdlib logic and exact live-canonical objects;
 8. if that predecessor gate passes, competent VOZHD/HQ may advance canonical PRE-MAIN to the exact audited candidate by an explicit reintegration act;
 9. only after canonical movement does the new enforcement version become eligible to validate ordinary adoptive packets.
 
-The meta-validator self-checks that its executing blob is exactly the blob at live canonical PRE-MAIN. Because the authoritative script is standalone and its trusted artifacts are loaded from `live:<path>`, a modified candidate helper/schema cannot stand in for any transitive predecessor dependency.
+The meta-validator self-checks that its executing blob is exactly the blob at live canonical PRE-MAIN. Because the authoritative script is standalone, interpreter-isolated before shadowable imports, and its trusted artifacts are loaded from `live:<path>`, a modified candidate helper/schema/sibling Python module cannot stand in for any transitive predecessor dependency.
 
 The meta-validator also requires exact authorization/result schemas, direct-canonical-root authorization ancestry, branch/write-scope separation, exact candidate binding, challenge matching, and exact authorized PASS enumeration. Substring heuristics such as `READY` or `_PASS` are forbidden.
 
@@ -52,12 +92,20 @@ The meta-validator also requires exact authorization/result schemas, direct-cano
 
 The live PRE-MAIN preceding this repaired protocol does not yet contain the canonical-predecessor meta-validator or authorization schemas. Therefore the first installation cannot execute the future predecessor gate without circularly pretending the new script is already canonical.
 
-Exactly one bootstrap is allowed for the exact post-W56F transitive-dependency repair candidate. It must remain off PRE-MAIN, receive a separate external audit-authorization artifact rooted directly at the current canonical PRE-MAIN, receive an independent hostile audit of the exact candidate using that authorization/challenge, and then be integrated only by an explicit external VOZHD/HQ canonical-ref act after a clean hostile ruling.
+Exactly one bootstrap is allowed for the exact post-W56H Python-isolation repair candidate. It must remain off PRE-MAIN, receive a separate external audit-authorization artifact rooted directly at the current canonical PRE-MAIN, receive an independent hostile audit of the exact candidate using that authorization/challenge, and then be integrated only by an explicit external VOZHD/HQ canonical-ref act after a clean hostile ruling.
 
-The hostile bootstrap audit MUST explicitly inspect the standalone/no-Rawlsing-import property and prove that every trusted schema/manifest dependency is canonical-loaded rather than candidate-loaded.
+The hostile bootstrap audit MUST explicitly inspect:
 
-Once that exact candidate is canonical, the bootstrap exception is exhausted permanently. All later enforcement changes require the canonical-predecessor standalone meta-validator + external authorization + hostile-audit sequence above.
+- the pre-import `sys` isolation barrier;
+- the requirement for `python3 -I -S`;
+- candidate sibling-module shadowing attempts;
+- `PYTHONPATH` / sitecustomize / usercustomize attacks;
+- repository-path exclusion from `sys.path`;
+- the standalone/no-Rawlsing-import property;
+- canonical loading of every trusted schema/manifest dependency.
 
-No candidate validator, schema, scope registry, anti-resurrection map, helper library, protected-path manifest, audit-authorization schema, hostile-audit-result schema, independence protocol, or meta-validator can be its own proof of adoption.
+Once that exact candidate is canonical, the bootstrap exception is exhausted permanently. All later enforcement changes require the canonical-predecessor isolated standalone meta-validator + external authorization + hostile-audit sequence above.
 
-The canonical-predecessor / canonical-dependency-closure / external-authorization / hostile-auditor / external-ref-movement separation is the enduring security boundary.
+No candidate validator, schema, scope registry, anti-resurrection map, helper library, protected-path manifest, audit-authorization schema, hostile-audit-result schema, independence protocol, sibling Python module, or meta-validator can be its own proof of adoption.
+
+The canonical-predecessor / isolated-Python-process / canonical-dependency-closure / external-authorization / hostile-auditor / external-ref-movement separation is the enduring security boundary.
