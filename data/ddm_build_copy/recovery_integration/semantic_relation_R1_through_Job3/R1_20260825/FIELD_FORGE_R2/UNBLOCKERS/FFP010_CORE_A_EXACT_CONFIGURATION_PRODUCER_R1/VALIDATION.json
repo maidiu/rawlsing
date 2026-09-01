@@ -1,0 +1,40 @@
+{
+  "blocker_closed": "EXE002__CORE_A_CONTRACT_COMPLETE_PRODUCER_ABSENT",
+  "direct_v550j_runtime_import": false,
+  "forbidden_method_surfaces": {
+    "distance_metric": false,
+    "latent_model": false,
+    "missingness_exposure_inference": false,
+    "ontology_induction": false,
+    "semantic_inference": false,
+    "similarity_search": false
+  },
+  "outputs": [
+    "common_input_attestation",
+    "method_manifest",
+    "configuration_set",
+    "configuration_to_disposition",
+    "counterpattern_index",
+    "query_results",
+    "loss_manifest",
+    "build_manifest",
+    "replay_receipt"
+  ],
+  "repository": "maidiu/rawlsing",
+  "schema": "FFP010_CORE_A_EXACT_CONFIGURATION_VALIDATION_R1",
+  "starting_head": "9611a9067ab28e17eb45b565398c7e604a24e77b",
+  "status": "PASS__EXE002_CLOSED",
+  "terminal_return": "EXE002__CLOSED",
+  "validation": {
+    "database_used": false,
+    "external_empirical_fixture_used": false,
+    "production_data_used": false,
+    "py_compile": "PASS",
+    "pytest_command": "python -m pytest -q data/ddm_build_copy/test_ffx_exact_configuration.py",
+    "pytest_result": "13 passed",
+    "synthetic_only": true
+  },
+  "view_family": "EXACT_CONFIGURATION_SET",
+  "v550j_reuse_ruling": "NO_DIRECT_IMPORT__SOURCE_FAMILY_AUTHORITY_AND_ASSOCIATION_SEMANTICS_NOT_POSTFORK_COMPATIBLE",
+  "worker_branch": "agent/rabochii-field-forge-r2-ffp010-core-a-exact-configuration-r1"
+}
