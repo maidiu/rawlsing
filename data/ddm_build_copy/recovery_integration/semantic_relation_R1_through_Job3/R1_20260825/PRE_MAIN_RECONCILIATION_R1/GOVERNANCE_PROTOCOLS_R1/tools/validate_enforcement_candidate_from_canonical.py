@@ -12,6 +12,9 @@ Trust boundary:
 - after that barrier, only Python stdlib is imported;
 - the repository root and Git executable are explicit host inputs, never
   discovered through PATH or candidate-controlled helper code;
+- the repository metadata/object root is pinned to the real directory
+  ``<repository-root>/.git`` before the first Git subprocess; gitfile,
+  symlink, linked-worktree/common-dir, and discovery-based selection are rejected;
 - every Git subprocess uses the exact validated absolute Git executable and a
   minimal reconstructed environment with no inherited PATH;
 - canonical schemas/manifests are read only from exact live-canonical objects.
@@ -87,7 +90,7 @@ def _has_symlink_component(path: Path) -> bool:
         return True
 
 
-def _validated_repository_root(raw: str) -> Path:
+def _validated_repository_root(raw: str) -> tuple[Path, Path]:
     p = Path(raw)
     if not p.is_absolute():
         raise TrustFailure("repository-root-not-absolute")
@@ -103,7 +106,34 @@ def _validated_repository_root(raw: str) -> Path:
         raise TrustFailure("repository-root-not-directory")
     if not _path_is_within(SCRIPT_PATH, real):
         raise TrustFailure("executing-script-outside-declared-repository-root")
-    return real
+
+    git_dir = real / ".git"
+    if _has_symlink_component(git_dir):
+        raise TrustFailure("repository-git-dir-symlink-component")
+    try:
+        git_real = git_dir.resolve(strict=True)
+    except Exception as ex:
+        raise TrustFailure(f"repository-git-dir-unresolvable:{ex}") from ex
+    if git_real != git_dir:
+        raise TrustFailure("repository-git-dir-not-canonical-path")
+    if not git_real.is_dir():
+        raise TrustFailure("repository-git-dir-not-directory")
+
+    objects_dir = git_real / "objects"
+    if _has_symlink_component(objects_dir):
+        raise TrustFailure("repository-object-dir-symlink-component")
+    try:
+        objects_real = objects_dir.resolve(strict=True)
+    except Exception as ex:
+        raise TrustFailure(f"repository-object-dir-unresolvable:{ex}") from ex
+    if objects_real != objects_dir or not objects_real.is_dir():
+        raise TrustFailure("repository-object-dir-not-canonical-directory")
+
+    commondir = git_real / "commondir"
+    if commondir.exists():
+        raise TrustFailure("repository-common-dir-indirection-rejected")
+
+    return real, git_real
 
 
 def _fingerprint_executable(path: Path) -> dict[str, Any]:
@@ -187,9 +217,16 @@ def _git_env() -> dict[str, str]:
 
 
 class GitTrust:
-    def __init__(self, executable: Path, repo: Path, fingerprint: dict[str, Any]):
+    def __init__(
+        self,
+        executable: Path,
+        repo: Path,
+        git_dir: Path,
+        fingerprint: dict[str, Any],
+    ):
         self.executable = executable
         self.repo = repo
+        self.git_dir = git_dir
         self.fingerprint_before = fingerprint
         self.env = _git_env()
 
@@ -198,8 +235,8 @@ class GitTrust:
             str(self.executable),
             "--no-pager",
             "--no-replace-objects",
-            "-C",
-            str(self.repo),
+            f"--git-dir={self.git_dir}",
+            f"--work-tree={self.repo}",
         ]
 
     def run_bytes(
@@ -279,7 +316,7 @@ class GitTrust:
             return False, Path()
         p = Path(out)
         if not p.is_absolute():
-            p = self.repo / p
+            p = self.git_dir / p
         try:
             return True, p.resolve(strict=False)
         except Exception:
@@ -309,7 +346,25 @@ class GitTrust:
 
         gok, gitdir = self.run_text("rev-parse", "--absolute-git-dir")
         details["absolute_git_dir"] = gitdir if gok else "UNRESOLVED"
-        if not gok or not Path(gitdir).is_absolute():
+        if not gok:
+            return False, details
+        try:
+            if Path(gitdir).resolve(strict=True) != self.git_dir:
+                return False, details
+        except Exception:
+            return False, details
+
+        cok, common = self.run_text("rev-parse", "--git-common-dir")
+        details["git_common_dir"] = common if cok else "UNRESOLVED"
+        if not cok:
+            return False, details
+        common_path = Path(common)
+        if not common_path.is_absolute():
+            common_path = self.git_dir / common_path
+        try:
+            if common_path.resolve(strict=True) != self.git_dir:
+                return False, details
+        except Exception:
             return False, details
 
         for rel, key in (
@@ -319,6 +374,9 @@ class GitTrust:
             pok, path = self.git_path(rel)
             if not pok:
                 details[key] = "UNRESOLVED"
+                return False, details
+            if not _path_is_within(path, self.git_dir):
+                details[key] = {"path": str(path), "outside_git_dir": True}
                 return False, details
             try:
                 payload = path.read_bytes() if path.exists() else b""
@@ -537,7 +595,7 @@ def main() -> int:
     a = ap.parse_args()
 
     try:
-        repo = _validated_repository_root(a.repository_root)
+        repo, git_dir = _validated_repository_root(a.repository_root)
         git_exe, git_fp = _validated_git_executable(a.trusted_git_executable, repo)
     except TrustFailure as ex:
         return _emit_failure(str(ex))
@@ -549,7 +607,7 @@ def main() -> int:
             {"repo_import_paths": repo_import_paths},
         )
 
-    git = GitTrust(git_exe, repo, git_fp)
+    git = GitTrust(git_exe, repo, git_dir, git_fp)
     hard_ok, hard_details = git.repository_hardening()
     if not hard_ok:
         return _emit_failure(
@@ -568,6 +626,7 @@ def main() -> int:
         "python_execution_flags": dict(_REQUIRED_FLAGS),
         "repo_import_paths": list(repo_import_paths),
         "repository_root": str(repo),
+        "repository_git_dir": str(git_dir),
         "trusted_git_executable": str(git_exe),
         "trusted_git_fingerprint_before": git_fp,
         "git_subprocess_environment_keys": sorted(git.env),
@@ -583,6 +642,7 @@ def main() -> int:
     C["NO_PATH_AUTHORITY_FOR_GIT_EXECUTABLE"] = "PATH" not in git.env
     C["TRUSTED_GIT_OUTSIDE_REPOSITORY"] = not _path_is_within(git_exe, repo)
     C["TRUSTED_GIT_PATH_ABSOLUTE"] = git_exe.is_absolute()
+    C["REPOSITORY_METADATA_ROOT_PINNED"] = git.git_dir == repo / ".git"
 
     cok, canon_self = canonical_bytes(git, live, SELF_REL)
     try:
@@ -592,7 +652,10 @@ def main() -> int:
     C["EXECUTING_COPY_IS_CANONICAL_PREDECESSOR"] = bool(cok and canon_self == current_self)
     C["NO_RAWLSING_RUNTIME_IMPORTS"] = True
 
-    C["CANDIDATE_COMMIT_EXISTS"] = git.object_exists(f"{a.candidate_sha}^{{commit}}")
+    C["CANDIDATE_SHA_IS_EXACT_OID"] = bool(OID_RE.fullmatch(a.candidate_sha or ""))
+    C["CANDIDATE_COMMIT_EXISTS"] = bool(
+        C["CANDIDATE_SHA_IS_EXACT_OID"] and git.object_exists(f"{a.candidate_sha}^{{commit}}")
+    )
     C["CANDIDATE_DESCENDS_FROM_LIVE_CANONICAL"] = (
         C["CANDIDATE_COMMIT_EXISTS"] and is_ancestor(git, live, a.candidate_sha)
     )
