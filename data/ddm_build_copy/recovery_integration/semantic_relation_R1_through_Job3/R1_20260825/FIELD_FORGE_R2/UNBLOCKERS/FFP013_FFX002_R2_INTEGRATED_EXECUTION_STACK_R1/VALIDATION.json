@@ -11,16 +11,16 @@
     "B": "db912242e0f6bfefa61a2a83e11f701d17947af4",
     "C": "38bc815d3edc8d8c75c8d8240de1da24cc588e5b"
   },
-  "tested_code_head": "ef52f0790ad8408d534b613bef0ee77d7c65ee62",
+  "tested_code_head": "ff63cffc5da087265a45aad2254c248f388e6184",
   "github_actions": {
     "workflow": "FFP013 Integrated Synthetic Stack",
-    "successful_run_id": 33560895833,
+    "successful_run_id": 33561230402,
     "conclusion": "success",
     "py_compile": "PASS",
     "pytest": {
-      "passed": 71,
+      "passed": 73,
       "failed": 0,
-      "elapsed_seconds": 0.63
+      "elapsed_seconds": 0.79
     }
   },
   "executable_entrypoint": "python data/ddm_build_copy/ffx002_r2_integrated_stack.py --input-json <FROZEN_FFX002_R2_EXECUTION_BUNDLE.json> --output-dir <FFX002_R2_OUTPUT_DIR>",
@@ -35,8 +35,13 @@
     "core_a": "3841f868e95ea3267eada1b6af01ef0adfbf8add",
     "core_b": "7679864216b51d6a0b005b2fb1d72f00a86172a4",
     "core_c": "994128d0638dbb109e4bbcb95ac509c70d606dca",
-    "integrated_stack": "40e0150714c71f505bf67997954916915907cc05",
-    "integrated_tests": "5038e509c76f7aa072757c207aa49e7b9885f54f",
+    "integrated_stack": "b07ae543d82651f0e31af50f79055884492bac65",
+    "integrated_tests": "051dfe74ba958726c7ecf3c3e02a5f6c34687b03",
     "ci_workflow": "b562c6d9a8e5861492814d3a46e2c0167b0ea351"
+  },
+  "execution_mode_contract": {
+    "synthetic_fixture": "SYNTHETIC_FIXTURE",
+    "future_frozen_empirical": "FROZEN_EMPIRICAL_CANARY",
+    "tested_synthetic_genuine_empirical_execution_performed": false
   }
 }
