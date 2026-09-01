@@ -16,6 +16,11 @@ import math
 from statistics import NormalDist
 from typing import Any, Mapping, Sequence
 
+try:
+    from data.ddm_build_copy.field_forge_ffx002_harness import HarnessViolation as _HarnessViolation, compute_common_hash as _shared_common_hash
+except ModuleNotFoundError:  # direct script execution
+    from field_forge_ffx002_harness import HarnessViolation as _HarnessViolation, compute_common_hash as _shared_common_hash
+
 ARM_ID = "C"
 VIEW_FAMILY = "DIRECT_CONDITIONAL_REDISTRIBUTION"
 PRODUCER_VERSION = "FFX002_R2_CORE_C_DIRECT_CONDITIONAL_REDISTRIBUTION_R1"
@@ -104,34 +109,11 @@ def _canon_manifest(value: Any, set_paths: frozenset[str], path: tuple[str, ...]
 
 
 def recompute_common_manifest_hash(common_manifest: Mapping[str, Any]) -> str:
-    if not isinstance(common_manifest, Mapping):
-        _fail("COMMON_INPUT_MISSING_HARD_FIELD", "common_manifest must be an object")
-    missing = [f for f in COMMON_MANIFEST_REQUIRED_FIELDS if f not in common_manifest]
-    if missing:
-        _fail("COMMON_INPUT_MISSING_HARD_FIELD", "missing fields: " + ",".join(missing))
-    if not isinstance(common_manifest.get("manifest_hash"), str) or not common_manifest["manifest_hash"]:
-        _fail("COMMON_INPUT_MISSING_HARD_FIELD", "manifest_hash must be a nonempty string")
-
-    set_paths: frozenset[str] = frozenset()
-    spec = common_manifest.get("canonicalization_spec")
-    if isinstance(spec, Mapping):
-        alg = str(spec.get("hash_algorithm", "sha256")).lower().replace("-", "")
-        if alg != "sha256":
-            _fail("COMMON_INPUT_UNSUPPORTED_HASH_ALGORITHM", f"unsupported hash algorithm {alg!r}")
-        raw_paths = spec.get("set_valued_paths", ())
-        if raw_paths is None:
-            raw_paths = ()
-        if isinstance(raw_paths, (str, bytes)) or not isinstance(raw_paths, Sequence):
-            _fail("COMMON_INPUT_INVALID_CANONICALIZATION_SPEC", "set_valued_paths must be an array")
-        parsed = []
-        for item in raw_paths:
-            if not isinstance(item, str) or (item and not item.startswith("/")):
-                _fail("COMMON_INPUT_INVALID_CANONICALIZATION_SPEC", "invalid JSON pointer")
-            parsed.append(item)
-        set_paths = frozenset(parsed)
-
-    payload = {k: v for k, v in common_manifest.items() if k != "manifest_hash"}
-    return _hash(_canon_manifest(payload, set_paths))
+    """Recompute only through the FFP009 frozen canonicalization contract."""
+    try:
+        return _shared_common_hash(common_manifest)
+    except _HarnessViolation as exc:
+        _fail(exc.state, exc.detail)
 
 
 def attest_common_manifest(common_manifest: Mapping[str, Any]) -> dict[str, Any]:
