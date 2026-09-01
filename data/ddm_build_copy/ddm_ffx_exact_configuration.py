@@ -14,6 +14,11 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+try:
+    from data.ddm_build_copy.field_forge_ffx002_harness import HarnessViolation as _HarnessViolation, compute_common_hash as _shared_common_hash
+except ModuleNotFoundError:  # direct script execution
+    from field_forge_ffx002_harness import HarnessViolation as _HarnessViolation, compute_common_hash as _shared_common_hash
+
 ARM_ID = "A"
 VIEW_FAMILY = "EXACT_CONFIGURATION_SET"
 INPUT_SCHEMA_VERSION = "FFX_EXACT_CONFIGURATION_INPUT_R1"
@@ -89,20 +94,11 @@ def _manifest_normalize(value: Any, path: str, set_paths: set[str]) -> Any:
 
 
 def recompute_common_manifest_hash(manifest: dict[str, Any]) -> str:
-    missing = [f for f in COMMON_MANIFEST_REQUIRED_FIELDS if f not in manifest]
-    if missing:
-        fail("COMMON_INPUT_MISSING_HARD_FIELD", ",".join(missing))
-    spec = manifest["canonicalization_spec"]
-    if not isinstance(spec, dict):
-        fail("COMMON_INPUT_CANONICALIZATION_UNSUPPORTED", "canonicalization_spec must be object")
-    algo = str(spec.get("hash_algorithm", "")).replace("_", "-").upper()
-    if algo not in {"SHA-256", "SHA256"}:
-        fail("COMMON_INPUT_CANONICALIZATION_UNSUPPORTED", "SHA-256 required")
-    set_paths = spec.get("set_array_paths", [])
-    if not isinstance(set_paths, list) or any(not isinstance(x, str) for x in set_paths):
-        fail("COMMON_INPUT_CANONICALIZATION_UNSUPPORTED", "set_array_paths must be string array")
-    payload = {k: v for k, v in manifest.items() if k != "manifest_hash"}
-    return stable_hash(_manifest_normalize(payload, "", set(set_paths)))
+    """Recompute only through the FFP009 frozen canonicalization contract."""
+    try:
+        return _shared_common_hash(manifest)
+    except _HarnessViolation as exc:
+        fail(exc.state, exc.detail)
 
 
 def attest_common_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
