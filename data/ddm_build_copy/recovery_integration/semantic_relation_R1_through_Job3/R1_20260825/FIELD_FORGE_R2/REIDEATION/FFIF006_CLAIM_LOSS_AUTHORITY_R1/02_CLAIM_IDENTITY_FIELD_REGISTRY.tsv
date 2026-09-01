@@ -1,0 +1,30 @@
+field_id	field_name	layer	constitutive_status	required_when	authority_owner_or_source	enters_proposition_hash	enters_comparison_hash	execution_metadata_boundary	fail_closed_state
+CIF001	schema_version	MANIFEST_IDENTITY	ALWAYS	all claims	claim schema authority	YES	YES	not an implementation version	CLAIM_UNDERSPECIFIED
+CIF002	claim_id_and_version	MANIFEST_IDENTITY	ALWAYS	all claims	claim registry	YES	YES	new version required for constitutive mutation	CLAIM_UNDERSPECIFIED
+CIF003	normalized_empirical_proposition	PROPOSITION	ALWAYS	all claims	claim semantic authority	YES	YES	prose prompt is evidence only	CLAIM_UNDERSPECIFIED
+CIF004	assertion_slot_type	PROPOSITION	ALWAYS	all claims	claim normalization registry	YES	YES	view output format does not select slot	CLAIM_UNDERSPECIFIED
+CIF005	proposition_operands	PROPOSITION	ALWAYS	all claims	measurement/TTAR/PRA authority as applicable	YES	YES	labels and display names excluded	CLAIM_UNDERSPECIFIED
+CIF006	claim_scope	DOMAIN	ALWAYS	all claims	claim semantic authority	YES	YES	execution file paths excluded	CLAIM_UNDERSPECIFIED
+CIF007	empirical_unit	DOMAIN	ALWAYS	all claims	empirical-unit authority	YES	YES	row number or inferred unit forbidden	CLAIM_UNDERSPECIFIED
+CIF008	risk_set	DOMAIN	ALWAYS	respondent/opportunity claims	governed exposure/risk-set authority	YES	YES	observed filtered rows cannot redefine it	CLAIM_UNDERSPECIFIED
+CIF009	population_target	DOMAIN	ALWAYS	population or sample claims	estimand authority	YES	YES	realized sample counts are results	CLAIM_UNDERSPECIFIED
+CIF010	temporal_context_scope	DOMAIN	ALWAYS	all claims	context/source authority	YES	YES	execution date excluded	CLAIM_UNDERSPECIFIED
+CIF011	estimand	INFERENCE	ALWAYS	all distribution/contrast/generalization claims	estimand authority	YES	YES	estimator choice excluded	CLAIM_UNDERSPECIFIED
+CIF012	weight_target	INFERENCE	CONSTITUTIVE_IF_APPLICABLE	weighted/population claims	weight/design-purpose authority	YES	YES	weight implementation diagnostics are execution metadata	CLAIM_UNDERSPECIFIED
+CIF013	semantic_input_manifest_hash	SEMANTIC_UNIVERSE	ALWAYS	all comparison claims	COMMON_SEMANTIC_INPUT_MANIFEST + TTAR	YES	YES	arm-local recoding forbidden	CLAIM_SEMANTIC_INPUT_UNRESOLVED
+CIF014	target_invariant_or_bundle	PROPOSITION	ALWAYS	all claims	claim/bundle authority	YES	YES	view-discovered attractive features excluded	CLAIM_UNDERSPECIFIED
+CIF015	quantifier	PROPOSITION	ALWAYS	all claims	claim semantic authority	YES	YES	observed prevalence cannot silently select quantifier	CLAIM_UNDERSPECIFIED
+CIF016	conditioning_set	PROPOSITION	CONSTITUTIVE_IF_APPLICABLE	conditional/local/stratified claims	claim semantic + role authority	YES	YES	model covariates not constitutive unless claim conditions on them	CLAIM_UNDERSPECIFIED
+CIF017	comparison_baseline	PROPOSITION	CONSTITUTIVE_IF_APPLICABLE	contrast/change/redistribution claims	claim/estimand authority	YES	YES	optimizer reference level excluded unless semantically constitutive	CLAIM_UNDERSPECIFIED
+CIF018	assertion_scale_and_value_domain	PROPOSITION	ALWAYS	all numeric/order/topology/status claims	measurement/order/claim authority	YES	YES	internal link/coordinate scale excluded unless asserted	CLAIM_UNDERSPECIFIED
+CIF019	inferential_class	PROPOSITION	ALWAYS	all claims	claim semantic authority	YES	YES	descriptive/predictive/causal may not be inferred from method	CLAIM_UNDERSPECIFIED
+CIF020	support_uncertainty_contract_ref_hash	COMPARISON_CONTRACT	ALWAYS	all comparative/materiality claims	design/error-model/claim authority	NO	YES	observed interval belongs in result receipt	CLAIM_COMPARISON_CONTRACT_UNRESOLVED
+CIF021	invariant_tolerance_contract_ref_hash	COMPARISON_CONTRACT	ALWAYS	agreement/sufficiency/loss/nonreducibility claims	claim materiality authority	NO	YES	view/CVCR may apply but not choose it	CLAIM_COMPARISON_CONTRACT_UNRESOLVED
+CIF022	source_native_ancestry_ceiling	EVIDENCE_BOUNDARY	ALWAYS	all claims	provenance/currentness authority	YES	YES	view replay details may reference but not widen it	CLAIM_UNDERSPECIFIED
+CIF023	representation_scope_mode	REPRESENTATION_BOUNDARY	ALWAYS	all claims	claim semantic authority	YES	YES	defaults REPRESENTATION_NEUTRAL	CLAIM_UNDERSPECIFIED
+CIF024	allowed_representation_family	REPRESENTATION_BOUNDARY	ONLY_IF_GENUINELY_CONSTITUTIVE	representation-indexed claims only	claim semantic authority	YES	YES	ordinary arm admission stays execution metadata	CLAIM_UNDERSPECIFIED
+CIF025	authority_validity_supersession	LIFECYCLE	ALWAYS	all claims	project authority/lifecycle	YES	YES	commit timestamp alone is insufficient	CLAIM_IDENTITY_AUTHORITY_MISSING
+CIF026	algorithm_estimator_seed	EXECUTION	NEVER_CONSTITUTIVE	all executions	view/execution producer	NO	NO	stored in execution/view receipt	N/A
+CIF027	holdout_partition_and_code_version	EXECUTION	NEVER_CONSTITUTIVE	learned/evaluated claims	experiment authority	NO	NO	bound by execution design; leakage can invalidate result	N/A
+CIF028	observed_support_uncertainty_and_output	RESULT	NEVER_CONSTITUTIVE	all executed claims	view/comparator output	NO	NO	stored after freeze; cannot rewrite claim	N/A
+CIF029	storage_latency_compression	ENGINEERING	NEVER_CONSTITUTIVE	engineering evaluation	engineering receipt	NO	NO	cannot set empirical identity/materiality	N/A

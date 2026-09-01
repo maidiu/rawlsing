@@ -1,0 +1,19 @@
+fixture_id	attack	nominal_same_label	constitutive_mutation	expected_state	required_guard
+CAL001	GLOBAL_TO_SUBGROUP	Does education matter?	population/risk_set global -> subgroup	DIFFERENT_CLAIM	population_target_ref + risk_set_ref hash mismatch
+CAL002	UNCONDITIONAL_TO_CONDITIONAL	Do groups differ?	conditioning_set NONE -> C	DIFFERENT_CLAIM	conditioning_set_ref mismatch
+CAL003	SAMPLE_DESCRIPTIVE_TO_WEIGHTED_POPULATION	Is X prevalent?	estimand SAMPLE_DESCRIPTIVE -> TARGET_POPULATION; weight_target changes	DIFFERENT_CLAIM	estimand/weight_target mismatch
+CAL004	EXISTENCE_TO_PREVALENCE	Is the minority branch present?	quantifier EXISTS -> PREVALENCE_AT_LEAST(t)	DIFFERENT_CLAIM	quantifier mismatch
+CAL005	ORDINAL_TO_CARDINAL	Does A exceed B?	scale ORDER_RELATION -> CARDINAL_DISTANCE	DIFFERENT_CLAIM	assertion_scale mismatch; order authority cannot cardinalize
+CAL006	EXACT_STATE_TO_COLLAPSED_STATE	Does configuration X exist?	TTAR adds CATEGORY_COLLAPSE	DIFFERENT_CLAIM	semantic_input_manifest_hash mismatch
+CAL007	LOCAL_TO_POOLED	Is there separation?	LOCAL_AROUND anchors -> pooled/global geometry	DIFFERENT_CLAIM	quantifier/locality/context mismatch
+CAL008	WITHIN_CONTEXT_TO_TRANSPORTED_RECURRENCE	Does the same structure occur?	inferential class LOCAL_DESCRIPTION -> TRANSPORT_RECURRENCE	DIFFERENT_CLAIM	transport slot + mapping authority required
+CAL009	ASSOCIATION_TO_CAUSAL_MECHANISM	Does education affect Y?	inferential class DESCRIPTIVE_ASSOCIATION -> CAUSAL_MECHANISM	DIFFERENT_CLAIM	inferential_class mismatch; causal authority absent
+CAL010	ONE_INVARIANT_TO_BUNDLE	Does geometry add anything?	target invariant NEIGHBORHOOD -> {NEIGHBORHOOD,MINORITY,HIGHER_ORDER}	DIFFERENT_CLAIM_OR_BUNDLE_AUTHORITY_REQUIRED	bundle ref/hash mismatch
+CAL011	DIFFERENT_BASELINE_SAME_LABEL	Do groups differ?	comparison baseline overall marginal -> matched subgroup	DIFFERENT_CLAIM	baseline_ref mismatch
+CAL012	DIFFERENT_QUANTIFIER_SAME_PROSE	Is separation present?	EXISTS -> FOR_ALL_IN_SCOPE	DIFFERENT_CLAIM	quantifier mismatch
+CAL013	PRA_ROLE_SWAP	Does educational position condition Y?	education ACTIVE_POSITION -> CONDITIONING_ONLY	DIFFERENT_CLAIM_OR_INVALID_ARM	PRA ref + operand/conditioning mismatch
+CAL014	TTAR_ORDER_SWAP	Does ordered status predict Y?	ordered TTAR execution sequence changed	DIFFERENT_CLAIM	semantic manifest hash mismatch
+CAL015	UNCERTAINTY_REGIME_SWAP	Do views agree?	confidence/equivalence regime changed after results	SAME_PROPOSITION_DIFFERENT_COMPARISON_CONTRACT	comparison_claim_hash mismatch
+CAL016	TOLERANCE_SWAP	Do views materially disagree?	materiality margin widened/narrowed after outputs	SAME_PROPOSITION_DIFFERENT_COMPARISON_CONTRACT__POSTHOC_INVALID	invariant_tolerance_contract_hash mismatch + freeze receipt
+CAL017	SOURCE_ANCESTRY_WIDENING	Does relation recur over time?	source-native ancestry ceiling silently expands to harmonized successor	DIFFERENT_CLAIM	source ancestry ceiling mismatch
+CAL018	REPRESENTATION_RESTRICTION_INJECTION	Is there a stable neighborhood?	representation-neutral claim silently restricted to preferred geometry	DIFFERENT_CLAIM_OR_INVALID_RESTRICTION	representation_scope_mode mismatch
