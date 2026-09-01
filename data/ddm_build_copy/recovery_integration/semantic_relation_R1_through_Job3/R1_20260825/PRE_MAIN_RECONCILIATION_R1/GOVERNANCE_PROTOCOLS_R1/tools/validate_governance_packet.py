@@ -45,7 +45,7 @@ def main():
   if keys<=set(bp):
    try:
     raw=immutable_bytes(str(bp["parent_packet_ref"])); parent=immutable_json(str(bp["parent_packet_ref"])); pg=(parent or {}).get("grounding_receipt",{})
-    parent_ok=all([raw is not None,raw is not None and sha256_bytes(raw)==bp.get("parent_packet_sha256"),parent_packet_grounding_ok(parent,scopes,states,obligations,levels,ar,live_sha,gv),pg.get("grounding_receipt_id")==bp.get("parent_grounding_receipt_id"),immutable_ref(str(bp.get("governing_adjudication_ref",""))),BOUNDED_PROHIBITIONS<=set(bp.get("forbidden_reinterpretation",[])),set(relevant_states)<=set(pg.get("relevant_state_ids",[])),set(relevant_obls)<=set(pg.get("relevant_obligation_ids",[]))])
+    parent_ok=all([raw is not None,raw is not None and sha256_bytes(raw)==bp.get("parent_packet_sha256"),(parent or {}).get("decision_domain")==domain,parent_packet_grounding_ok(parent,scopes,states,obligations,levels,ar,live_sha,gv),pg.get("grounding_receipt_id")==bp.get("parent_grounding_receipt_id"),immutable_ref(str(bp.get("governing_adjudication_ref",""))),BOUNDED_PROHIBITIONS<=set(bp.get("forbidden_reinterpretation",[])),set(relevant_states)<=set(pg.get("relevant_state_ids",[])),set(relevant_obls)<=set(pg.get("relevant_obligation_ids",[]))])
    except Exception as ex: parent_ok=False; parent_reason=str(ex)
  else: parent_ok=bp=={}
  C["BOUNDED_PARENT_VALID"]=bool(parent_ok); D["bounded_parent_error"]=parent_reason
