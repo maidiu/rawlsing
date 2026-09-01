@@ -1,0 +1,50 @@
+{
+  "work_unit": "W56N_OBJECT_IDENTITY_REF_PROVENANCE_RECOVERY",
+  "worker_branch": "agent/vozhd-premain-w6s-object-identity-ref-provenance-recovery-r1",
+  "starting_head": "a94c5613dba1f3d3121be244296d0d3733003507",
+  "w56m_hostile_terminal": "4d7e806ac31317d500b94a18171d76295ebf01f7",
+  "local_ruling": "LOCAL_COMPLETE_UNRECONCILED__OBJECT_IDENTITY_AND_REF_PROVENANCE_RECOVERY_READY_FOR_EXTERNAL_REVIEW",
+  "local_pass": true,
+  "required_propositions": {
+    "TRUST_BEARING_GIT_OBJECT_BYTES_ARE_CRYPTOGRAPHICALLY_BOUND_TO_THEIR_REQUESTED_OBJECT_IDS": true,
+    "TRUST_BEARING_REF_VALUES_ORIGINATE_ONLY_FROM_BOUNDED_NONREDIRECTED_REPOSITORY_REF_STORAGE": true
+  },
+  "object_identity_rule": "For an exact 40/64 lowercase-hex requested OID, select SHA-1/SHA-256 from OID width; trusted Git must return the expected object type and exact payload; Python stdlib recomputes H(type + SP + decimal_byte_length + NUL + payload) and requires exact equality to the requested OID before bytes become governance evidence.",
+  "ref_provenance_rule": "Only exact full refs/heads/... and refs/remotes/... values read directly through non-following bounded .git loose-ref and/or packed-refs storage are admissible; symbolic, redirected, malformed, unsupported, duplicate, or loose/packed-conflicting storage fails closed; the resulting OID must independently verify as a commit.",
+  "commit_path_authority_removed": true,
+  "diff_tree_authority_removed": true,
+  "git_ref_resolution_authority_removed": true,
+  "verified_commit_parent_traversal": true,
+  "verified_tree_changed_paths": true,
+  "object_location_is_not_object_identity": true,
+  "defensive_verification": {
+    "total": 24,
+    "pass": 24,
+    "fail": 0,
+    "w56m_grain_raw_git_success_but_hash_rebind_rejects": true,
+    "normal_loose_objects": true,
+    "normal_packed_objects": true,
+    "sha256_fixture_when_supported": true
+  },
+  "w56l_regression": {
+    "python_I_S": true,
+    "no_repository_import_path": true,
+    "explicit_trusted_git": true,
+    "no_PATH_selected_git": true,
+    "trusted_git_fingerprint_stable": true,
+    "repository_and_git_roots_explicit": true,
+    "replacement_graft_alternate_shallow_protections": true,
+    "bootstrap_exhausted": true
+  },
+  "ledger": {
+    "append_only": true,
+    "w56m_preserved": true,
+    "w56n_status": "LOCAL_COMPLETE_UNRECONCILED",
+    "global_hq_adoption": false,
+    "premain_inheritance": false
+  },
+  "integration_performed": false,
+  "premain_moved_by_w56n": false,
+  "main_moved_by_w56n": false,
+  "terminal_sha": "RETURNED_EXTERNALLY_AFTER_FINAL_LEDGER_COMMIT"
+}
