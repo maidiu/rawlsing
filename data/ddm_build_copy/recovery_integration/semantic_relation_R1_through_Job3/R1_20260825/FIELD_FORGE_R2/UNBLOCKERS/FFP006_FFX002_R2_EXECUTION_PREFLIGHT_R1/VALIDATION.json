@@ -1,0 +1,71 @@
+{
+  "schema": "FFP006_FFX002_R2_EXECUTION_PREFLIGHT_VALIDATION_R1",
+  "status": "PASS_PREFLIGHT__FINITE_EXECUTABLE_BLOCKERS",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-field-forge-r2-ffp006-ffx002r2-execution-preflight-r1",
+  "starting_head": "954ab630c6307cce2df7b5e0be99de45b0abdee6",
+  "prewrite_branch_relation": {
+    "status": "identical",
+    "ahead_by": 0,
+    "behind_by": 0
+  },
+  "consumed_ffx002_r2": "5343862783959a1455735c0a5eb7b330c76f42d5",
+  "consumed_ffx002_r2_common_parent": "ac88a482a3623b5c711999525c49bf7c1020e5fe",
+  "ffx002_r2_change_surface": {
+    "files_added": 16,
+    "executable_files_added": 0,
+    "tests_added": 0,
+    "design_only": true
+  },
+  "exact_tree_scan": {
+    "tree_sha": "5f970e337083c652f993395d80f4fc354eb1f978",
+    "entries": 4605,
+    "truncated": false,
+    "ffx002_r2_python_runner_found": false,
+    "local_geometry_python_producer_found": false,
+    "ffx002_direct_conditional_redistribution_producer_found": false
+  },
+  "mandatory_views": {
+    "EXACT_CONFIGURATION_SET": {
+      "physically_executable_as_ffx002_r2": false,
+      "reusable_support": [
+        "data/ddm_build_copy/compile_v550j_joint_response_patterns.py",
+        "data/ddm_build_copy/ddm_v550j_joint_patterns.py",
+        "data/ddm_build_copy/ddm_v550_shared_respondent_substrate.py"
+      ],
+      "blocker": "EXE002__CORE_A_CONTRACT_COMPLETE_PRODUCER_ABSENT"
+    },
+    "LOCAL_GEOMETRY": {
+      "physically_executable_as_ffx002_r2": false,
+      "reusable_support": [],
+      "blocker": "EXE003__CORE_B_LOCAL_GEOMETRY_PRODUCER_ABSENT"
+    },
+    "DIRECT_CONDITIONAL_REDISTRIBUTION": {
+      "physically_executable_as_ffx002_r2": false,
+      "reusable_support": [
+        "data/ddm_build_copy/ddm_v551_conditional.py (non-equivalent conditional-determinicity helper only)"
+      ],
+      "blocker": "EXE004__CORE_C_DIRECT_CONDITIONAL_REDISTRIBUTION_PRODUCER_ABSENT"
+    }
+  },
+  "optional_control": {
+    "MEASUREMENT_INCIDENCE_GRAPH_HYPERGRAPH": "NOT_REQUIRED_FOR_THREE_CORE_PREFLIGHT"
+  },
+  "blockers": [
+    "EXE001__FFX002_R2_EXECUTION_HARNESS_ABSENT",
+    "EXE002__CORE_A_CONTRACT_COMPLETE_PRODUCER_ABSENT",
+    "EXE003__CORE_B_LOCAL_GEOMETRY_PRODUCER_ABSENT",
+    "EXE004__CORE_C_DIRECT_CONDITIONAL_REDISTRIBUTION_PRODUCER_ABSENT",
+    "EXE005__FFX_HOSTILE_QUERY_ABLATION_REPLAY_RUNNERS_ABSENT"
+  ],
+  "genuine_comparison_run": false,
+  "semantics_changed": false,
+  "authority_created": false,
+  "redesign_performed": false,
+  "output_files": [
+    "00_WORKER_RETURN.md",
+    "01_EXECUTION_PREFLIGHT_MATRIX.tsv",
+    "VALIDATION.json"
+  ],
+  "terminal_return": "FINITE_EXECUTABLE_BLOCKERS"
+}
