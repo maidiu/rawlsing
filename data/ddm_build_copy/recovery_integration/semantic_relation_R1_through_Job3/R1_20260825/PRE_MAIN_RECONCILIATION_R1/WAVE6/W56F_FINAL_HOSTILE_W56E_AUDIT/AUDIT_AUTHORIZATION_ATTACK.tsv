@@ -1,0 +1,19 @@
+id	attack	result	evidence_class	basis
+A	candidate-lineage audit JSON with no external authorization	FAILS_CLOSED	CODE_PROVED	immutable authorization schema/direct-canonical-child/outside-candidate checks required
+B	authorization commit descending from candidate	FAILS_CLOSED	CODE_PROVED	direct child of live canonical plus candidate-not-ancestor check
+C	authorization not directly rooted at live PRE-MAIN	FAILS_CLOSED	CODE_PROVED	direct_child_of(auth_sha, live) required
+D	authorization names wrong candidate	FAILS_CLOSED	CODE_PROVED	auth.candidate_sha must equal CLI candidate SHA
+E	wrong audit branch	FAILS_CLOSED	CODE_PROVED	audit branch must equal authorization expected_audit_branch
+F	wrong challenge nonce	FAILS_CLOSED	CODE_PROVED	audit nonce must equal authorization nonce
+G	unauthorized audit write prefix	FAILS_CLOSED	CODE_PROVED	result path and all candidate-to-audit changed paths must be under authorized prefix
+H	audit branch modifies protected governance file	FAILS_CLOSED	CODE_PROVED	audit_changed & canonical protected set must be empty
+I	audit result commit not current authorized branch tip	FAILS_CLOSED	CODE_PROVED	audit evidence commit must equal resolved expected branch tip
+J	audit result path outside authorized prefix	FAILS_CLOSED	CODE_PROVED	AUDIT_RESULT_PATH_WITHIN_AUTHORIZED_PREFIX
+K	ruling READY	FAILS_CLOSED	CODE_PROVED	exact set membership only
+L	ruling SOMETHING_PASS_SOMETHING	FAILS_CLOSED	CODE_PROVED	exact set membership only
+M	ruling PASS_BUT_ACTUALLY_BLOCKED	FAILS_CLOSED	CODE_PROVED	exact set membership only
+N	old W56F-R1 authorization replay	FAILS_CLOSED	CODE_PROVED	old authorization binds candidate be0d564..., branch ...r1 and nonce b738... rather than exact R2 candidate/branch/nonce
+O	terminal token with unauthorized prefix	FAILS_CLOSED	CODE_PROVED	token must start one authorization-listed prefix
+P	candidate leaves meta-validator script unchanged but modifies imported governance_r2_support.py	BYPASS_REMAINS	CODE_PROVED	only SELF_REL script blob is compared to live canonical; wildcard-imported helper is current-worktree code and controls run_git/immutable_json/schema_check used by the gate
+Q	candidate leaves script unchanged but modifies worktree hostile-audit schemas	DEPENDENCY_NOT_CANONICAL_BOUND	CODE_PROVED	schema paths are read through current GOV path, not immutable live:<path>; helper modification makes this fully exploitable
+OVERALL	BLOCKED	CODE_PROVED	procedural authorization is materially stronger but canonical predecessor execution is not closed over its transitive dependency set

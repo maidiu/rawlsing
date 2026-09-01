@@ -1,0 +1,9 @@
+attack	result	evidence_class	basis
+PHYSICAL_ARCHITECTURE_to_PHYSICAL_PERSISTENCE	FAILS_CLOSED	CODE_PROVED	bounded parent predicate requires parent.decision_domain == child decision_domain before deep-parent acceptance
+FIELD_FORGE_to_PHYSICAL_ARCHITECTURE	FAILS_CLOSED	CODE_PROVED	same exact domain-equality predicate
+PHYSICAL_ARCHITECTURE_to_FIELD_FORGE	FAILS_CLOSED	CODE_PROVED	same exact domain-equality predicate
+J01B_to_DVA_IMPLEMENTATION	FAILS_CLOSED	CODE_PROVED	same exact domain-equality predicate
+DVA_IMPLEMENTATION_to_PHYSICAL_PERSISTENCE	FAILS_CLOSED	CODE_PROVED	same exact domain-equality predicate
+cross_domain_even_when_child_scope_subset	FAILS_CLOSED	CODE_PROVED	domain equality is independent of relevant-state/relevant-obligation subset predicates
+same_domain_exact_parent_child_subset_WORKER_LOCAL_RESULT	PERMITTED_AT_PREDICATE_GRAIN	STATICALLY_SUPPORTED_NOT_EXECUTED	domain equality succeeds; retained immutable-parent/deep-grounding/subset/non-escalation predicates permit lawful narrowing when all are satisfied
+OVERALL	CROSS_DOMAIN_CLOSED	CODE_PROVED	W56D bounded-parent domain bypass closed
