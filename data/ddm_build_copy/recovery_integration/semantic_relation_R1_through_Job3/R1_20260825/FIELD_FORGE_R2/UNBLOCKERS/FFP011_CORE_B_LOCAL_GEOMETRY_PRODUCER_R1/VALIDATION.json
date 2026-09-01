@@ -1,0 +1,59 @@
+{
+  "closed_blocker": "EXE003__CORE_B_LOCAL_GEOMETRY_PRODUCER_ABSENT",
+  "contract_surfaces": {
+    "deterministic_versioned_numeric_replay": true,
+    "explicit_decomposition_manifest": true,
+    "explicit_dimensionality_manifest": true,
+    "explicit_metric_manifest": true,
+    "frozen_manifest_independent_hash_attestation": true,
+    "invariant_loss_receipt": true,
+    "local_neighborhood_output": true,
+    "local_opposition_output": true,
+    "local_order_output": true,
+    "no_cross_component_forced_metric": true,
+    "no_social_axis_interpretation": true,
+    "separate_position_disposition_geometries": true,
+    "stability_diagnostics": true
+  },
+  "ffx002_r2_design_ref": "5343862783959a1455735c0a5eb7b330c76f42d5",
+  "producer": {
+    "arm_id": "B",
+    "cli": "data/ddm_build_copy/compile_ffx002_r2_local_geometry.py",
+    "method_schema_version": "FFX002_R2_LOCAL_GEOMETRIC_METHOD_R1",
+    "module": "data/ddm_build_copy/ffx002_r2_local_geometry.py",
+    "numeric_replay_version": "FFX002_R2_LOCAL_GEOMETRIC_NUMERIC_REPLAY_R1",
+    "output_schema_version": "FFX002_R2_LOCAL_GEOMETRIC_OUTPUT_R1",
+    "test": "data/ddm_build_copy/test_ffx002_r2_local_geometry.py",
+    "view_family": "LOCAL_GEOMETRIC"
+  },
+  "remaining_out_of_scope_blockers": [
+    "EXE001",
+    "EXE002",
+    "EXE004",
+    "EXE005"
+  ],
+  "repository": "maidiu/rawlsing",
+  "schema": "FFP011_CORE_B_LOCAL_GEOMETRY_VALIDATION_R1",
+  "semantic_firewall": {
+    "collapse_rejected": true,
+    "cross_side_ancestry_overlap_rejected": true,
+    "merge_rejected": true,
+    "rebin_rejected": true,
+    "reorder_rejected": true,
+    "risk_set_change_rejected": true,
+    "role_change_rejected": true,
+    "special_state_pool_rejected": true,
+    "unknown_state_rejected": true
+  },
+  "starting_head": "9611a9067ab28e17eb45b565398c7e604a24e77b",
+  "status": "PASS__EXE003_CLOSED",
+  "synthetic_validation": {
+    "execution_context": "isolated Python against exact staged module/test content",
+    "failed": 0,
+    "passed": 17,
+    "production_data_used": false,
+    "test_count": 17
+  },
+  "terminal_return": "EXE003_CLOSED__BOUNDED_LOCAL_GEOMETRIC_PRODUCER_AND_SYNTHETIC_HOSTILE_TESTS_PRESENT",
+  "worker_branch": "agent/rabochii-field-forge-r2-ffp011-core-b-local-geometry-r1"
+}
