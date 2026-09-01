@@ -1,0 +1,27 @@
+attack	ruling	basis
+missing_parent	FAILS_CLOSED	required bounded-parent keys absent
+mutable_parent_path	FAILS_CLOSED	immutable_ref requires 40-hex Git identity; parent packet requires commit:path
+wrong_sha256	FAILS_CLOSED	parent bytes hash compared
+wrong_parent_receipt_id	FAILS_CLOSED	parent receipt ID exact match
+parent_is_bounded_worker	FAILS_CLOSED	parent helper requires GROUNDED_PROJECT_DECISION
+parent_is_exploratory	FAILS_CLOSED	parent helper requires GROUNDED_PROJECT_DECISION
+parent_is_forensic	FAILS_CLOSED	parent helper requires GROUNDED_PROJECT_DECISION
+stale_parent_canonical_head	FAILS_CLOSED	parent heads must equal live canonical SHA
+stale_Ground_version	FAILS_CLOSED	parent Ground version exact match
+parent_domain_differs_from_child	BYPASS	NO parent-domain == child-domain predicate; PHYSICAL_ARCHITECTURE parent can cover PHYSICAL_PERSISTENCE child's required scope
+parent_required_state_omitted	FAILS_CLOSED	domain_requirements on parent
+parent_required_obligation_omitted	FAILS_CLOSED	domain_requirements on parent
+parent_required_must_factor_surface_omitted	FAILS_CLOSED	domain_requirements on parent
+parent_required_binding_surface_omitted	FAILS_CLOSED	domain_requirements on parent
+parent_active_obligation_silently_omitted	FAILS_CLOSED	active_accounting on parent
+parent_domain_subject_bound_failure	FAILS_CLOSED	parent touched IDs tested against its own declared domain allowlists
+parent_invalid_authority_ceiling	FAILS_CLOSED	parent ceiling registry/effect checks
+parent_invalid_anti_resurrection_gates	PARTIAL_STATIC_SUPPORT	gate IDs are checked but helper does not run full parent authority-effect/gate semantics
+parent_invalid_return_destination	PARTIAL_STATIC_SUPPORT	receipt/update destination checked; helper does not reproduce full work_return return_to_ids predicate
+child_state_exceeds_parent_scope	BYPASS_POSSIBLE_BY_PREDICATE_GAP	caller subsets child relevant IDs, not child touched IDs, against parent
+child_obligation_exceeds_parent_scope	BYPASS_POSSIBLE_BY_PREDICATE_GAP	caller subsets child relevant IDs, not child touched IDs, against parent
+child_changes_authority	FAILS_CLOSED	bounded mode requires empty authority_effects/authority_obtained
+child_closes_obligation	FAILS_CLOSED	bounded terminal disposition forbidden
+child_substitutes_or_reinterprets	FAILS_CLOSED	bounded prohibition token set enforced structurally
+STRUCTURALLY_EXACT_BUT_SHALLOW_PARENT	BYPASS	Same-domain promise is not machine-enforced and parent is not fully re-run through ordinary validator invariants
+OVERALL	BYPASS_REMAINS	W56D-G4 FAIL

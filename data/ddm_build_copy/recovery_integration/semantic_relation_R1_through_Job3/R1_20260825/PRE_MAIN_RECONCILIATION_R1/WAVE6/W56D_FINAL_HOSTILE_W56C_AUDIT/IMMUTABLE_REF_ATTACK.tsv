@@ -1,0 +1,13 @@
+attack	ruling	basis
+existing_file_path_without_hash	FAILS_CLOSED	regex requires 40-hex object identity
+branch_name	FAILS_CLOSED	regex rejects
+ tag_name	FAILS_CLOSED	regex rejects
+short_SHA	FAILS_CLOSED	regex requires exactly 40 hex
+40_char_commit_SHA	ACCEPTED_IMMUTABLE_FORM	cat-file object existence required
+commit:path	ACCEPTED_IMMUTABLE_FORM	cat-file exact tree path existence required; JSON loaders additionally require path form
+blob_SHA	ACCEPTED_IMMUTABLE_FORM	object existence required where raw immutable refs are permitted
+nonexistent_40_char_SHA	FAILS_CLOSED	cat-file -e fails
+path_traversal	FAILS_CLOSED_BY_GIT_OBJECT_RESOLUTION	commit:path must resolve inside Git tree
+candidate_working_tree_path	FAILS_CLOSED	mutable locator does not match immutable form
+current_canonical_historical_object	ACCEPTED_IMMUTABLE_FORM	identity is immutable
+OVERALL	SAFE	mutable locator alone cannot justify terminal/adoptive evidence

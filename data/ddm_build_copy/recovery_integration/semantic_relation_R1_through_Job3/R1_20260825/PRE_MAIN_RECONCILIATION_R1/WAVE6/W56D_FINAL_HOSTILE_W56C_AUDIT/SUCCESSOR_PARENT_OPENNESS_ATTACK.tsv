@@ -1,0 +1,10 @@
+attack	ruling	basis
+successor_present_parent_CLOSED	FAILS_CLOSED	successor parent must be SPAWNED_SUCCESSOR_RETURN_REQUIRED and terminal intersection forbidden
+successor_present_parent_ABANDONED	FAILS_CLOSED	ABANDONED is terminal and cannot intersect successor parents
+parent_missing_from_touched_obligations	FAILS_CLOSED	parent IDs subset touched required
+parent_wrong_disposition	FAILS_CLOSED	all successor parents require SPAWNED_SUCCESSOR_RETURN_REQUIRED
+wrong_reintegration_status	FAILS_CLOSED	work_return reintegration must be SPAWNED_SUCCESSOR_RETURN_REQUIRED
+missing_successor_return_path	FAILS_CLOSED	exact successor IDs equal path IDs
+multiple_or_duplicate_successor_path	FAILS_CLOSED	uniq path successor IDs
+unknown_return_target	FAILS_CLOSED	return_to must be known state/obligation and mirrored in return_to_ids
+OVERALL	SUCCESSOR_PARENT_OPENNESS_CLOSED	W56D-G6 satisfied statically

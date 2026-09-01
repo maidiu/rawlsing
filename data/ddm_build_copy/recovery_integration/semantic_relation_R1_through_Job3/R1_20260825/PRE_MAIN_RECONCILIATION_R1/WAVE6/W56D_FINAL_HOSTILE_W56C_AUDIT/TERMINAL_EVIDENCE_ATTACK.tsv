@@ -1,0 +1,16 @@
+attack	ruling	basis
+arbitrary_existing_repository_path	FAILS_CLOSED	supporting evidence must be immutable commit:path JSON
+mutable_branch_name	FAILS_CLOSED	immutable-ref regex rejects
+mutable_tag	FAILS_CLOSED	immutable-ref regex rejects
+working_tree_file	FAILS_CLOSED	immutable-ref regex rejects
+irrelevant_immutable_SHA_as_supporting_packet	FAILS_CLOSED	closure support requires immutable JSON packet matching schema/fields
+immutable_JSON_for_wrong_obligation	FAILS_CLOSED	exact obligation equality
+correct_obligation_wrong_closure_condition	FAILS_CLOSED	exact canonical closure_condition equality
+correct_obligation_wrong_closure_authority	FAILS_CLOSED	exact competent authority equality
+correct_condition_wrong_grounding_receipt	FAILS_CLOSED	exact authorizing grounding receipt equality
+empty_evidence_refs	FAILS_CLOSED	closure evidence schema minItems=1
+mutable_evidence_ref_inside_packet	FAILS_CLOSED	immutable_ref checked for every evidence_ref
+irrelevant_packet_with_arbitrary_condition_prose	FAILS_CLOSED	packet closure_condition must equal canonical row
+agent_role_not_competent_closure_authority	FAILS_CLOSED	agent_role exact equality to row authority
+lawful_binding_grain	SAFE	machine binds identity/status/condition/authority/receipt/immutability without judging intellectual persuasiveness
+OVERALL	SAFE	W56D-G7 satisfied at commanded structural grain

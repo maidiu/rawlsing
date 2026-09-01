@@ -1,0 +1,19 @@
+attack	ruling	basis
+GENERAL_PROJECT_DECISION+PROJECT_ADOPTION	FAILS_CLOSED	requested effect absent from domain allowed list; adoption_eligible=NO
+GENERAL_PROJECT_DECISION+PROJECT_CLOSURE_AT_GRAIN	FAILS_CLOSED	requested effect absent from domain allowed list; adoption_eligible=NO
+GENERAL_PROJECT_DECISION+HQ_BANKING	FAILS_CLOSED	requested effect absent from domain allowed list; adoption_eligible=NO
+GENERAL_PROJECT_DECISION+GLOBAL_ADOPTION	FAILS_CLOSED	requested effect absent from domain allowed list; adoption_eligible=NO
+CUSTOM+PROJECT_ADOPTION	FAILS_CLOSED	CUSTOM allows only FORENSIC_RETURN/EXPLORATORY_RETURN; adoption_eligible=NO
+CUSTOM+CAMPAIGN_ACCEPTANCE	FAILS_CLOSED	CUSTOM nonadoptive
+CUSTOM+HQ_BANKING	FAILS_CLOSED	CUSTOM nonadoptive
+CUSTOM+GLOBAL_ADOPTION	FAILS_CLOSED	CUSTOM nonadoptive
+CUSTOM+PROJECT_CLOSURE_AT_GRAIN	FAILS_CLOSED	CUSTOM nonadoptive
+PHYSICAL_ARCHITECTURE touches FIELD_FORGE state	FAILS_CLOSED	touched state outside PHYSICAL_ARCHITECTURE allowed_state_ids
+FIELD_FORGE touches PHYSICAL_PERSISTENCE state	FAILS_CLOSED	touched state outside FIELD_FORGE allowed_state_ids
+J01B touches unrelated obligation	FAILS_CLOSED	touched obligation outside J01B allowed_obligation_ids
+DVA_IMPLEMENTATION touches outside-domain obligation	FAILS_CLOSED	touched obligation outside DVA_IMPLEMENTATION allowed_obligation_ids
+required_state_ids omission	FAILS_CLOSED	domain_requirements requires subset
+required_obligation_ids omission	FAILS_CLOSED	domain_requirements requires subset
+required surface omission	FAILS_CLOSED	domain_requirements requires declared binding/must-factor surfaces
+allowed_requested_effects violation	FAILS_CLOSED	DECISION_DOMAIN_EFFECT_BOUND
+OVERALL	DOMAIN_LAUNDERING_CLOSED	At the explicit machine-encoded subject attacks required by W56D
