@@ -9,7 +9,6 @@
     "authorization_ref",
     "challenge_nonce",
     "audit_branch",
-    "terminal_sha",
     "overall_ruling",
     "terminal_token"
   ],
@@ -20,7 +19,6 @@
     "authorization_ref": {"type": "string", "pattern": "^[0-9a-f]{40}:.+$"},
     "challenge_nonce": {"type": "string", "minLength": 16},
     "audit_branch": {"type": "string", "minLength": 1},
-    "terminal_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "overall_ruling": {
       "enum": [
         "PASS__ENFORCEMENT_PREMAIN_INTEGRATION_READY",
