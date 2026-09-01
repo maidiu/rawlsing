@@ -1,0 +1,10 @@
+attack	ruling
+unknown_target	FAILS_CLOSED
+known_target_unknown_requested_effect	BYPASS
+missing_applicable_gate	FAILS_CLOSED
+nonexistent_supporting_authority_ref	FAILS_CLOSED
+authority_obtained_not_exactly_mirrored	FAILS_CLOSED
+structured_effect_omitted_from_authority_obtained	FAILS_CLOSED
+harmless_known_noop_effect	DEPENDS_ON_MAP
+OVERALL	BYPASS
+root_cause	SCHEMA_AND_CODE_DEFAULT_ALLOW	requested_effect is nonempty string; code forbids listed values rather than requiring a known allowed enum/class.
