@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import json
 from pathlib import Path
 
 import pytest
@@ -418,3 +419,33 @@ def test_write_integrated_outputs_is_deterministic(tmp_path: Path):
     assert sorted(p.name for p in a.iterdir()) == sorted(p.name for p in b.iterdir())
     for name in h1:
         assert (a / name).read_bytes() == (b / name).read_bytes()
+
+
+def test_special_state_semantics_cannot_be_redefined_in_one_arm():
+    b = _bundle()
+    b["arm_inputs"]["A"]["special_state_semantics_ref"] = {"ref": "arm-local-special-state"}
+    with pytest.raises(stack.IntegratedStackError) as exc:
+        stack.preflight_integrated_bundle(b)
+    assert exc.value.state == "EXPERIMENT_INVALID__POSTFORK_SPECIAL_STATE_DIVERGENCE"
+
+
+def test_ablation_plan_explicitly_carries_weaker_added_removed_and_multiview_packages():
+    result = stack.run_integrated_stack(_bundle())
+    plan = result["ablation_plan"]
+    assert [p["package_id"] for p in plan["packages"]] == ["SUBSTRATE", "C", "A+C", "B+C", "A+B", "A+B+C"]
+    rows = {row["target_view"]: row for row in plan["target_add_remove_rows"]}
+    assert rows["A"]["target_removed_package"] == "B+C"
+    assert rows["B"]["target_removed_package"] == "A+C"
+    assert rows["C"]["target_removed_package"] == "A+B"
+    assert plan["preferred_view"] is None
+    assert plan["master_score"] is None
+
+
+def test_cli_entrypoint_runs_complete_synthetic_stack(tmp_path: Path):
+    bundle_path = tmp_path / "bundle.json"
+    output_dir = tmp_path / "out"
+    bundle_path.write_text(json.dumps(_bundle(), sort_keys=True), encoding="utf-8")
+    assert stack.main(["--input-json", str(bundle_path), "--output-dir", str(output_dir)]) == 0
+    summary = json.loads((output_dir / "00_INTEGRATED_EXECUTION_RETURN.json").read_text(encoding="utf-8"))
+    assert summary["terminal_state"] == stack.TERMINAL_READY
+    assert (output_dir / "10_REPLAY_OUTPUT_RECEIPTS.json").is_file()
