@@ -1,0 +1,51 @@
+{
+  "schema_version": "FFP009_FFX002_R2_HARNESS_VALIDATION@1",
+  "status": "PASS__EXE001_CLOSED__EXE005_FRAMEWORK_PORTION_CLOSED__NO_EMPIRICAL_EXECUTION",
+  "branch": "agent/rabochii-field-forge-r2-ffp009-ffx002r2-harness-r1",
+  "starting_head": "9611a9067ab28e17eb45b565398c7e604a24e77b",
+  "design_ref": "5343862783959a1455735c0a5eb7b330c76f42d5",
+  "authority_minted": false,
+  "genuine_empirical_execution": false,
+  "validations": [
+    {
+      "command": "python -m py_compile field_forge_ffx002_harness.py test_field_forge_ffx002_harness.py",
+      "status": "PASS"
+    },
+    {
+      "command": "pytest -q test_field_forge_ffx002_harness.py",
+      "status": "PASS",
+      "tests_passed": 9,
+      "elapsed_seconds_reported": 0.04
+    },
+    {
+      "command": "python field_forge_ffx002_harness.py --help",
+      "status": "PASS",
+      "commands": [
+        "compile",
+        "attest",
+        "holdout",
+        "queries"
+      ]
+    }
+  ],
+  "artifacts": {
+    "data/ddm_build_copy/field_forge_ffx002_harness.py": {
+      "sha256": "b9af3f2db3b87dc44ca3fffbd0811fc58a237447f3b131f01bb9825c5b06089b",
+      "git_blob": "5e912bffa45d552a23a73320f0dd086f3c89cf41"
+    },
+    "data/ddm_build_copy/test_field_forge_ffx002_harness.py": {
+      "sha256": "56d591afadcaa979a4e949c213089cc4e6e1c6154cddf3f174b807ef487d71a8",
+      "git_blob": "26677eb0c4201c2b75e909d4784e68437e68f5f9"
+    },
+    "data/ddm_build_copy/COMMON_SEMANTIC_INPUT_MANIFEST.schema.json": {
+      "sha256": "ab0a89345a672bb240a14d697abf821e5556c1379577369b30d69ac90c4ae4dd",
+      "git_blob": "b99c0d731b0313915063724e73ac6fb32f0eeeda"
+    }
+  },
+  "remaining_open": [
+    "EXE002",
+    "EXE003",
+    "EXE004",
+    "EXE005_EMPIRICAL_RUNNER_AND_SCORING"
+  ]
+}
