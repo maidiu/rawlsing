@@ -1,12 +1,14 @@
 operation	purpose	input_authority	config_consulted_security_effect	worktree_state_needed	external_helper_possible	trust_bearing_output
-rev-parse --verify <full-ref>^{commit}	resolve exact branch/ref tip	canonical repository refs	malformed/non-OID output rejected; namespace/env stripped	NO	NO builtin	YES exact ref SHA
+rev-parse --verify <full-ref>^{commit}	resolve exact branch/ref tip after ref-path confinement	pinned in-root canonical repository refs	ref syntax bounded; loose ref path and packed-refs symlink escape rejected; malformed/non-OID output rejected; namespace/env stripped	NO	NO builtin	YES exact ref SHA, followed by authenticated commit read
+rev-parse --verify <commit_oid>:<path>	resolve exact blob OID within an authenticated commit after full object fsck	immutable commit/tree object graph	path syntax bounded; object database integrity preverified	NO	NO builtin	YES exact blob OID, followed by Python-rehashed blob read
 rev-parse --is-shallow-repository	reject shallow ancestry state	repository metadata	local repository format only	NO	NO builtin	YES hardening predicate
-for-each-ref refs/replace	reject replacement refs	repository refs	env namespace stripped	NO	NO builtin	YES hardening predicate
-rev-parse --show-toplevel	cross-check explicit repository identity	external repo root + repository metadata	core.worktree mismatch causes fail closed	NO	NO builtin	YES identity predicate
-rev-parse --absolute-git-dir	record repository metadata root	external repo root + repository metadata	redirection env stripped	NO	NO builtin	YES diagnostic/locator
-rev-parse --git-path info/grafts	locate graft file	repository metadata	redirection env stripped	NO	NO builtin	YES hardening locator
-rev-parse --git-path objects/info/alternates	locate alternates file	repository metadata	redirection env stripped	NO	NO builtin	YES hardening locator
-cat-file -e <oid/spec>	exact object existence	immutable object id	no worktree filters/hooks	NO	NO builtin	YES existence
-cat-file blob <oid:path>	read canonical schema/manifest/evidence bytes	immutable exact object locator	no worktree filters/hooks/textconv	NO	NO builtin	YES trusted bytes
-cat-file commit <oid>	read raw commit object for parent traversal	immutable commit oid	replacements disabled; graft file rejected	NO	NO builtin	YES ancestry bytes
-diff-tree -r -z --name-only --no-renames --no-ext-diff --no-textconv	enumerate candidate/audit changed paths	immutable base/head commits	external diff/textconv/rename config neutralized	NO	NO builtin	YES jurisdiction paths
+for-each-ref refs/replace	reject replacement refs	repository refs	env namespace stripped; replacements also disabled	NO	NO builtin	YES hardening predicate
+rev-parse --show-toplevel	cross-check explicit repository identity	external repo root + repository metadata	explicit --git-dir/--work-tree; mismatch fails closed	NO	NO builtin	YES identity predicate
+rev-parse --absolute-git-dir	cross-check pinned repository metadata root	external repo root + derived .git root	must resolve exactly to pinned <root>/.git	NO	NO builtin	YES identity predicate
+rev-parse --git-common-dir	reject linked/common-dir indirection	external repo root + repository metadata	must resolve exactly to pinned <root>/.git	NO	NO builtin	YES identity predicate
+rev-parse --git-path info/grafts	locate graft file inside pinned metadata root	repository metadata	redirection env stripped; escaped locator rejected	NO	NO builtin	YES hardening locator
+rev-parse --git-path objects/info/alternates	locate alternates file inside pinned metadata root	repository metadata	redirection env stripped; escaped locator rejected	NO	NO builtin	YES hardening locator
+fsck --full --no-reflogs --no-progress	authenticate complete pinned object database before trust-bearing object facts	pinned repository object database	no network; lazy fetch disabled; replacements disabled	NO	NO builtin	YES object-integrity prerequisite
+cat-file commit <oid>	read raw commit object for parent traversal	immutable exact commit OID	returned bytes independently re-hashed in Python and must equal OID	NO	NO builtin	YES authenticated ancestry bytes
+cat-file blob <oid>	read canonical schema/manifest/evidence bytes	immutable exact blob OID	returned bytes independently re-hashed in Python and must equal OID; no worktree filters/hooks/textconv	NO	NO builtin	YES authenticated trusted bytes
+diff-tree -r -z --name-only --no-renames --no-ext-diff --no-textconv	enumerate candidate/audit changed paths	authenticated immutable base/head commits after full object fsck	external diff/textconv/rename config neutralized	NO	NO builtin	YES jurisdiction paths
