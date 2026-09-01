@@ -122,6 +122,27 @@ def _assert_common_echo(arm_id: str, arm_input: Mapping[str, Any], common: Mappi
         )
 
 
+def _assert_semantic_echo_fields(arm_id: str, arm_input: Mapping[str, Any], common: Mapping[str, Any]) -> None:
+    expected_by_leaf = {
+        "risk_set_ref": ("COMMON_INPUT_RISK_SET_DIVERGENCE", common["exposure_risk_set_ref"]),
+        "estimand_ref": ("COMMON_INPUT_ESTIMAND_DIVERGENCE", common["estimand_ref"]),
+        "weight_design_refs": ("COMMON_INPUT_ESTIMAND_DIVERGENCE", common["weight_design_refs"]),
+        "analytic_role_binding_ref": ("EXPERIMENT_INVALID__ANALYTIC_ROLE_DIVERGENCE", common["analytic_role_authority_refs"]),
+        "special_state_semantics_ref": ("EXPERIMENT_INVALID__POSTFORK_SPECIAL_STATE_DIVERGENCE", common["special_state_semantics_ref"]),
+        "response_state_semantics_ref": ("EXPERIMENT_INVALID__POSTFORK_STATE_IDENTITY_DIVERGENCE", common["response_state_semantics_ref"]),
+        "post_transform_state_manifest_ref": ("EXPERIMENT_INVALID__POSTFORK_STATE_IDENTITY_DIVERGENCE", common["post_transform_state_manifest"]),
+    }
+    for key_path, value in _walk_keys(arm_input):
+        if "common_manifest" in key_path or "common_semantic_input_manifest" in key_path:
+            continue
+        leaf = key_path[-1]
+        if leaf not in expected_by_leaf:
+            continue
+        state, expected = expected_by_leaf[leaf]
+        if _clone(value) != _clone(expected):
+            raise IntegratedStackError(state, f"arm={arm_id} field={'.'.join(key_path)}")
+
+
 def _respondent_ids_from_a(a: Mapping[str, Any]) -> tuple[str, ...]:
     units = a.get("frozen_units")
     if not isinstance(units, list) or not units:
@@ -264,6 +285,7 @@ def preflight_integrated_bundle(bundle: Mapping[str, Any]) -> dict[str, Any]:
             raise IntegratedStackError("INTEGRATED_ARM_INPUT_INVALID", arm_id)
         _reject_cross_arm_or_semantic_overrides(arm_inputs[arm_id], arm_id)
         _assert_common_echo(arm_id, arm_inputs[arm_id], common)
+        _assert_semantic_echo_fields(arm_id, arm_inputs[arm_id], common)
 
     a, b, c = arm_inputs["A"], arm_inputs["B"], arm_inputs["C"]
     ids_a = _respondent_ids_from_a(a)
@@ -578,6 +600,52 @@ def apply_citc(observations: Sequence[Mapping[str, Any]], citc: Mapping[str, Any
     return out
 
 
+def build_full_ablation_orchestration(common_hash: str, query_hash: str) -> dict[str, Any]:
+    base = harness.ablation_plan(common_hash, query_hash, harness.CORE)
+    packages = {row["package_id"]: row for row in base["packages"]}
+    packages["SUBSTRATE"] = {"package_id": "SUBSTRATE", "views": []}
+    packages["A+B"] = {"package_id": "A+B", "views": ["A", "B"]}
+    targets = [
+        {
+            "target_view": "A",
+            "weaker_baseline_package": "B+C",
+            "target_added_package": "A+B+C",
+            "full_admitted_package": "A+B+C",
+            "target_removed_package": "B+C",
+        },
+        {
+            "target_view": "B",
+            "weaker_baseline_package": "A+C",
+            "target_added_package": "A+B+C",
+            "full_admitted_package": "A+B+C",
+            "target_removed_package": "A+C",
+        },
+        {
+            "target_view": "C",
+            "weaker_baseline_package": "SUBSTRATE",
+            "target_added_package": "C",
+            "full_admitted_package": "A+B+C",
+            "target_removed_package": "A+B",
+        },
+    ]
+    out = {
+        "schema_version": "FFX002_R2_FULL_ABLATION_ORCHESTRATION_PLAN@1",
+        "design_ref": DESIGN_REF,
+        "common_manifest_hash": common_hash,
+        "query_manifest_hash": query_hash,
+        "packages": [packages[k] for k in ("SUBSTRATE", "C", "A+C", "B+C", "A+B", "A+B+C")],
+        "target_add_remove_rows": targets,
+        "legacy_ffp009_plan_hash": base["ablation_plan_hash"],
+        "query_specific_weaker_baseline_resolution": "REQUIRED_AT_SCORING_TIME",
+        "materiality_source": "CITC_ONLY",
+        "preferred_view": None,
+        "master_score": None,
+        "execution_status": "FRAMEWORK_READY__NO_GENUINE_EMPIRICAL_EXECUTION",
+    }
+    out["ablation_plan_hash"] = _hash(out)
+    return out
+
+
 def build_prev3_ablation(
     common: Mapping[str, Any],
     query_results: Mapping[str, Any],
@@ -706,10 +774,9 @@ def run_integrated_stack(bundle: Mapping[str, Any]) -> dict[str, Any]:
         bundle.get("hostile_variant_bindings"),
     )
     fork_tamper = build_fork_tamper_hostile_receipt(common)
-    ablation = harness.ablation_plan(
+    ablation = build_full_ablation_orchestration(
         common["manifest_hash"],
         bundle["query_manifest"]["query_manifest_hash"],
-        harness.CORE,
     )
     observations = score_query_cases(bundle.get("scoring_cases", []), query_results, outputs)
     scoring = apply_citc(observations, bundle["citc"])
