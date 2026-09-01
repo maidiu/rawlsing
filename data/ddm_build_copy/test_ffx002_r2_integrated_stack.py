@@ -236,6 +236,7 @@ def _bundle():
 
     return {
         "schema_version": stack.INPUT_SCHEMA_VERSION,
+        "execution_mode": "SYNTHETIC_FIXTURE",
         "common_manifest": common,
         "holdout_manifest": holdout,
         "query_manifest": queries,
@@ -289,7 +290,9 @@ def test_integrated_stack_all_three_arms_attest_identical_common_hash():
     att = result["common_hash_attestation"]
     assert att["status"] == "A_B_C_ATTEST_IDENTICAL"
     assert set(att["arm_recomputed_hashes"].values()) == {b["common_manifest"]["manifest_hash"]}
-    assert result["terminal_state"] == stack.TERMINAL_READY
+    assert result["software_stack_state"] == stack.TERMINAL_READY
+    assert result["execution_mode"] == "SYNTHETIC_FIXTURE"
+    assert result["genuine_empirical_execution_performed"] is False
 
 
 def test_one_arm_semantic_tamper_fails_before_any_producer_execution(monkeypatch):
@@ -447,5 +450,24 @@ def test_cli_entrypoint_runs_complete_synthetic_stack(tmp_path: Path):
     bundle_path.write_text(json.dumps(_bundle(), sort_keys=True), encoding="utf-8")
     assert stack.main(["--input-json", str(bundle_path), "--output-dir", str(output_dir)]) == 0
     summary = json.loads((output_dir / "00_INTEGRATED_EXECUTION_RETURN.json").read_text(encoding="utf-8"))
-    assert summary["terminal_state"] == stack.TERMINAL_READY
+    assert summary["software_stack_state"] == stack.TERMINAL_READY
+    assert summary["execution_state"] == "SYNTHETIC_FIXTURE_EXECUTION_COMPLETE"
     assert (output_dir / "10_REPLAY_OUTPUT_RECEIPTS.json").is_file()
+
+
+def test_future_empirical_mode_is_explicitly_labeled_when_lawfully_supplied():
+    b = _bundle()
+    b["execution_mode"] = "FROZEN_EMPIRICAL_CANARY"
+    result = stack.run_integrated_stack(b)
+    assert result["execution_mode"] == "FROZEN_EMPIRICAL_CANARY"
+    assert result["execution_state"] == "FROZEN_EMPIRICAL_CANARY_EXECUTION_COMPLETE"
+    assert result["genuine_empirical_execution_performed"] is True
+
+
+def test_unknown_execution_mode_fails_before_producer_execution(monkeypatch):
+    b = _bundle()
+    b["execution_mode"] = "UNKNOWN"
+    monkeypatch.setattr(stack.core_a, "produce_exact_configuration_set", _bomb)
+    with pytest.raises(stack.IntegratedStackError) as exc:
+        stack.run_integrated_stack(b)
+    assert exc.value.state == "INTEGRATED_EXECUTION_MODE_INVALID"
