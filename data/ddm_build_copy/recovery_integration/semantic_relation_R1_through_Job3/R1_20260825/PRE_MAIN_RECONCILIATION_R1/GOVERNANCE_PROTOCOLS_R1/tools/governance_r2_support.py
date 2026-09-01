@@ -26,20 +26,21 @@ EFFECT_AUTHORITY={
  "PROJECT_CLOSURE_AT_GRAIN":{"PROJECT_CURRENT_AUTHORITY","HQ_BANKED_AUTHORITY","GLOBAL_SOVEREIGN_CONTROL"},
 }
 DISPOSITIONS={"OPEN","PARTIALLY_CLOSED","BLOCKED_ON_DEPENDENCY","SUSPENDED_ON_DEPENDENCY","SPAWNED_SUCCESSOR_RETURN_REQUIRED","INTERRUPTED_STRANDED","RETURN_REQUIRED","UNKNOWN_REQUIRES_SYNTHESIS","SUPERSEDED_AT_GRAIN_WITH_SURVIVING_OBLIGATION","ABANDONED_BY_EXPLICIT_DECISION","CLOSED"}
+TERMINAL_DISPOSITIONS={"CLOSED","ABANDONED_BY_EXPLICIT_DECISION"}
 CLOSURE_FORBIDDEN_REINTEGRATION={"LOCAL_COMPLETE_UNRECONCILED","CAMPAIGN_ACCEPTED_UNBANKED","HQ_BANKED_NOT_CANONICALLY_INHERITED","SPAWNED_SUCCESSOR_RETURN_REQUIRED","BLOCKED_ON_DEPENDENCY","INTERRUPTED_STRANDED","UNKNOWN_REQUIRES_SYNTHESIS","EXPLORATORY_UNRECONCILED","ACTIVE_GROUNDED"}
 BOUNDED_PROHIBITIONS={"NO_NEW_PROJECT_DECISIONS","NO_AUTHORITY_REINTERPRETATION","NO_OPEN_OBLIGATION_CLOSURE","NO_SUBSTITUTION","NO_FROZEN_ADJUDICATION_REINTERPRETATION"}
-CURRENT_NONTERMINAL={"OPEN","PARTIALLY_CLOSED","BLOCKED_ON_DEPENDENCY","SUSPENDED_ON_DEPENDENCY","SPAWNED_SUCCESSOR_RETURN_REQUIRED","INTERRUPTED_STRANDED","RETURN_REQUIRED","UNKNOWN_REQUIRES_SYNTHESIS","SUPERSEDED_AT_GRAIN_WITH_SURVIVING_OBLIGATION"}
+CURRENT_NONTERMINAL=DISPOSITIONS-TERMINAL_DISPOSITIONS
+AUTHORITY_EFFECT_CLASSES={"PRESERVE_CURRENT_STATUS","CURRENT_SERVING_RUNTIME","SERVING_RUNTIME","CURRENT_RUNTIME","BINDING_CURRENT_ARCHITECTURE","PROJECT_CURRENT_AUTHORITY","CURRENT_SEMANTIC_AUTHORITY","ADMITTED_AUTHORITY","UNIVERSAL_LAW","CURRENT_ONTOLOGY","CURRENT_DENOMINATORS","CURRENT_ROUTING_AUTHORITY","ACCEPTED_RESULT","HQ_BANKED_AUTHORITY","NEGATIVE_TRUTH","FALSE","CLOSED"}
+IMMUTABLE_REF_RE=re.compile(r"^(?P<sha>[0-9a-f]{40})(?::(?P<path>[^:\n]+))?$")
 
 if os.environ.get("RAWLSING_SCHEMA_ENGINE") == "internal_subset":
- jsonschema=None
- SCHEMA_ENGINE="internal_subset"
+ jsonschema=None; SCHEMA_ENGINE="internal_subset"
 else:
  try:
   import jsonschema  # type: ignore
   SCHEMA_ENGINE="jsonschema"
  except Exception:
-  jsonschema=None
-  SCHEMA_ENGINE="internal_subset"
+  jsonschema=None; SCHEMA_ENGINE="internal_subset"
 
 def tsv(path:Path):
  with path.open(encoding="utf-8",newline="") as f: return list(csv.DictReader(f,delimiter="\t"))
@@ -62,23 +63,58 @@ def live_canonical():
 def ground_version():
  try: text=(PREMAIN/"00_RAWLSING_GROUND.md").read_text(encoding="utf-8")
  except Exception: return False,""
- m=re.search(r"\*\*Ground version:\*\*\s*`([^`]+)`",text); return bool(m),m.group(1) if m else ""
-def resolve_ref(v:str):
- if not v: return False
- for p in [PREMAIN/v, repo_root()/v]:
-  try:
-   if p.exists(): return True
-  except Exception: pass
- ok,_=run_git("cat-file","-e",v); return ok
+ ms=re.findall(r"\*\*Ground version:\*\*\s*`([^`]+)`",text)
+ return len(ms)==1,ms[0] if len(ms)==1 else ""
+def immutable_ref(v:str):
+ m=IMMUTABLE_REF_RE.fullmatch(v or "")
+ if not m: return False
+ target=f"{m.group('sha')}:{m.group('path')}" if m.group("path") else m.group("sha")
+ ok,_=run_git("cat-file","-e",target)
+ return ok
+def immutable_json(v:str):
+ if not immutable_ref(v) or ":" not in v: return None
+ ok,out=run_git("show",v)
+ if not ok: return None
+ try: return json.loads(out)
+ except Exception: return None
+def immutable_bytes(v:str):
+ if not immutable_ref(v) or ":" not in v: return None
+ ok,out=run_git("show",v)
+ return out.encode("utf-8") if ok else None
+def sha256_bytes(b:bytes): return hashlib.sha256(b).hexdigest()
 def sha256(path:Path):
  h=hashlib.sha256()
  with path.open("rb") as f:
   for chunk in iter(lambda:f.read(65536),b""): h.update(chunk)
  return h.hexdigest()
-def locate_path(v:str):
- for p in [PREMAIN/v,repo_root()/v]:
-  if p.exists(): return p
- return PREMAIN/v
+def exact_id_mentions(values, known):
+ found=set(); pat=re.compile(r"\b(?:OBL\d{3}|N\d{3}|S\d{3})\b")
+ for value in values:
+  for tok in pat.findall(str(value)):
+   if tok in known: found.add(tok)
+ return found
+def domain_requirements(scope, g):
+ if not scope: return False,{}
+ reqs=set(split(scope.get("required_state_ids"))); reqo=set(split(scope.get("required_obligation_ids")))
+ reqb=split(scope.get("required_binding_surfaces")); reqm=split(scope.get("required_must_factor_surfaces"))
+ bset=set(g.get("binding_authority_surfaces_read",[])) if isinstance(g.get("binding_authority_surfaces_read"),list) else set()
+ mset=set(g.get("must_factor_surfaces_read",[])) if isinstance(g.get("must_factor_surfaces_read"),list) else set()
+ rs=set(g.get("relevant_state_ids",[])) if isinstance(g.get("relevant_state_ids"),list) else set()
+ ro=set(g.get("relevant_obligation_ids",[])) if isinstance(g.get("relevant_obligation_ids"),list) else set()
+ paths_ok=all((PREMAIN/x).exists() for x in reqb+reqm)
+ return bool(reqs<=rs and reqo<=ro and set(reqb)<=bset and set(reqm)<=mset and paths_ok), {"required_states":sorted(reqs),"required_obligations":sorted(reqo),"required_surfaces":reqb+reqm}
+def enforcement_integrity(live_sha:str):
+ try: rows=tsv(GOV/"GOVERNANCE_ENFORCEMENT_PROTECTED_PATHS.tsv")
+ except Exception: return False,["manifest-unreadable"]
+ mismatches=[]; root=repo_root()
+ for r in rows:
+  rel=r.get("path",""); p=root/rel
+  if not rel or not p.exists(): mismatches.append(rel or "<empty>"); continue
+  ok,canon=run_git("rev-parse",f"{live_sha}:{rel}")
+  if not ok: mismatches.append(rel); continue
+  ok,cur=run_git("hash-object",str(p))
+  if not ok or cur!=canon: mismatches.append(rel)
+ return not mismatches,mismatches
 
 def _type(v,t):
  return {"object":isinstance(v,dict),"array":isinstance(v,list),"string":isinstance(v,str),"boolean":isinstance(v,bool),"integer":isinstance(v,int) and not isinstance(v,bool),"number":isinstance(v,(int,float)) and not isinstance(v,bool),"null":v is None}.get(t,False)

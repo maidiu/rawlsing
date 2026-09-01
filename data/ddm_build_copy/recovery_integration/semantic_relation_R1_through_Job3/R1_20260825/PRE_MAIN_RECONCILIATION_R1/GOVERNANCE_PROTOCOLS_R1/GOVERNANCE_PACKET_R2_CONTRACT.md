@@ -1,15 +1,31 @@
-# RAWLSING GOVERNANCE PACKET R2 CONTRACT
+# RAWLSING GOVERNANCE PACKET R2.1 CONTRACT
 
-R2 is a machine-only cross-field enforcement wrapper over the unchanged R1 Grounding Receipt, Work Return, and Central State Update schemas. It does not alter semantic, architectural, runtime, or authority law.
+R2.1 hardens the R2 machine wrapper after the W56B hostile audit. It changes enforcement, not Rawlsing semantic/runtime/architectural authority.
 
-`PACKET_VALID` answers whether the packet is structurally honest and internally/live-state consistent. `ADOPTION_ELIGIBLE` answers whether the requested effect can acquire adoption/banking authority. `PROJECT_CLOSURE_ELIGIBLE` answers whether closure claims are structurally admissible. These are distinct.
+## Positive authorization, never deny-list default allow
 
-The validator MUST load every R1 schema and `GOVERNANCE_PACKET_SCHEMA_R2.json`; resolve the canonical PRE-MAIN ref from Git rather than packet data; parse the live Ground version; load canonical authority levels, open obligations, scope requirements, anti-resurrection gates and protected-target map; and fail closed on missing/unknown/contradictory data.
+Adoptive packets must use an explicitly registered `decision_domain` whose `allowed_requested_effects` includes the requested effect. `GENERAL_PROJECT_DECISION` and `CUSTOM` are non-adoptive. A new adoptive subject therefore requires an explicit governance-scope change before it can be adopted; relabeling specialized work as "general" cannot lower its grounding burden.
 
-Bounded execution inherits evidence context from one exact verified grounded project-decision receipt but never inherits the parent's authority. It may only return bounded execution, obtain no new authority, make no closure claim, and preserve all forbidden reinterpretation tokens.
+Protected authority targets use a closed `requested_effect` vocabulary and an explicit per-target `allowed_promotion_classes` list. Unknown/typo effects fail schema. At this version protected targets permit only `PRESERVE_CURRENT_STATUS`; a future positive promotion requires an explicit, separately audited enforcement-map change.
 
-Scope exclusions are explicit non-closure declarations: excluded obligations remain open. Domain-required obligations cannot be excluded.
+## Bounded execution
 
-A successor must have one explicit return edge per successor. A touched obligation must have exactly one typed disposition in both return and central-state update. `all([])` is never proof of accounting.
+A bounded executor inherits only from one exact immutable **parent governance packet**, not a free-standing receipt. The parent packet must be a schema-valid `GROUNDED_PROJECT_DECISION`, current to the live canonical head/Ground, adoptive in the same registered decision domain, and fully satisfy that domain's machine grounding requirements. Child state/obligation scope must be a subset of the parent. Bounded execution never inherits the parent's authority.
 
-Anti-resurrection enforcement is two-layered: gate IDs must be real, and structured authority effects are checked against protected targets. Acknowledgement alone cannot legalize a forbidden promotion.
+## Successor-parent openness
+
+Every successor-return edge carries `successor_id`, `parent_obligation_id`, and `return_to`. Every parent obligation must be touched and disposed `SPAWNED_SUCCESSOR_RETURN_REQUIRED`; the work return must itself remain in that reintegration status. Outstanding successors and terminal parent dispositions cannot coexist.
+
+## Terminal disposition evidence
+
+`CLOSED` and `ABANDONED_BY_EXPLICIT_DECISION` are terminal dispositions. Each requires an immutable `<40hex>:<repo-path>` closure-evidence packet validating against `CLOSURE_EVIDENCE_SCHEMA_R1.json`. The evidence packet is bound to the exact obligation, canonical closure condition, competent closure authority, authorizing Grounding Receipt ID, and immutable evidence refs. Bare paths, branches, tags, mutable working-tree files, and arbitrary prose do not satisfy terminal disposition.
+
+The machine verifies identity/binding, not intellectual sufficiency.
+
+## Governance self-modification
+
+The paths in `GOVERNANCE_ENFORCEMENT_PROTECTED_PATHS.tsv` are meta-governance. The validator compares the executing working-copy blobs against the same paths at the live canonical PRE-MAIN SHA. If they differ, `GOVERNANCE_SELF_INTEGRITY = false` and **no adoptive effect is machine-eligible**.
+
+This is intentional: a candidate enforcement implementation cannot validate its own adoption. Enforcement changes must be candidate-local, independently hostile-audited, and then adopted by competent external canonical-ref succession. Once integrated, the new canonical copy becomes the validator allowed to govern later ordinary packets.
+
+A worker may never weaken governance and use the weakened candidate validator as proof of its own adoption.
