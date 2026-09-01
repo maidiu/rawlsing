@@ -7,13 +7,14 @@ from pathlib import Path
 import pytest
 
 from data.ddm_build_copy import ddm_ffx_exact_configuration as m
+from data.ddm_build_copy import field_forge_ffx002_harness as harness
 from data.ddm_build_copy.compile_ffx_exact_configuration import main as cli_main
 
 
 def _manifest():
     manifest = {
-        "manifest_schema_version": "COMMON_SEMANTIC_INPUT_MANIFEST_R1",
-        "current_execution_sha": "synthetic-sha",
+        "manifest_schema_version": harness.SCHEMA_VERSION,
+        "current_execution_sha": "a" * 40,
         "observation_substrate_ref": {"ref": "synthetic-observations", "hash": "obs-hash"},
         "respondent_entity_binding_ref": {"ref": "synthetic-unit-binding"},
         "exposure_risk_set_ref": {"ref": "synthetic-exposure"},
@@ -22,27 +23,18 @@ def _manifest():
         "qimpl_measurement_binding_refs": [{"id": "QP1"}, {"id": "QP2"}, {"id": "QD1"}, {"id": "QD2"}, {"id": "QD3"}],
         "response_state_semantics_ref": {"ref": "opaque-frozen-state-ids"},
         "special_state_semantics_ref": {"ref": "synthetic-special-states"},
-        "ttar_execution_sequence": [],
+        "ttar_execution_sequence": "NONE",
         "post_transform_state_manifest": {"ref": "synthetic-frozen-state-manifest"},
         "claim_scope_ref": "SYNTHETIC_CANARY",
         "estimand_ref": "SYNTHETIC_SAMPLE_DESCRIPTIVE",
-        "weight_design_refs": [],
+        "weight_design_refs": "NONE",
         "analytic_role_authority_refs": [{"id": "PRA-SYNTHETIC"}],
         "ancestry_disjointness_receipt": {"status": "PASS_SYNTHETIC"},
-        "unresolved_noncomparable_manifest": [],
+        "unresolved_noncomparable_manifest": {"ref": "synthetic-none"},
         "source_native_ancestry_ref": {"ref": "synthetic-ancestry"},
-        "loss_profile": [],
-        "holdout_generation_inputs_hash": "synthetic-holdout-inputs",
-        "canonicalization_spec": {
-            "hash_algorithm": "SHA-256",
-            "set_array_paths": [
-                "/source_native_measurement_refs",
-                "/qimpl_measurement_binding_refs",
-                "/weight_design_refs",
-                "/analytic_role_authority_refs",
-                "/unresolved_noncomparable_manifest",
-            ],
-        },
+        "loss_profile": {"ref": "synthetic-loss-profile"},
+        "holdout_generation_inputs_hash": "b" * 64,
+        "canonicalization_spec": copy.deepcopy(harness.CANON),
         "manifest_hash": "",
     }
     manifest["manifest_hash"] = m.recompute_common_manifest_hash(manifest)
