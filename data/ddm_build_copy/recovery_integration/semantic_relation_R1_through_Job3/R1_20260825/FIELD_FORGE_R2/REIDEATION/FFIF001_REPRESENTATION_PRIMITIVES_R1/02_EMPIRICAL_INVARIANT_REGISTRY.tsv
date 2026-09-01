@@ -1,0 +1,29 @@
+invariant_id	invariant	priority_class	primitive_or_derived	claim_dependence	preservation_requirement	primary_threats	minimum_evidence
+INV001	empirical_unit_identity	HARD_FLOOR	PRIMITIVE_AUTHORITY	LOW	must remain exact/replayable without guessed row alignment	fuzzy joins; row-order inference; carrier drift	governed unit identity binding
+INV002	measurement_implementation_identity	HARD_FLOOR	PRIMITIVE_AUTHORITY	LOW	preserve exact qimpl/source variable/scope identity	canonical-slot collapse; fuzzy variable matching	current source/qimpl authority
+INV003	source_native_structure_type	HARD_FLOOR	PRIMITIVE_AUTHORITY	LOW	preserve parent/member semantics such as MATRIX_GRID vs MULTIPLE_RESPONSE_SET	structure-type-blind expansion	current source-structure authority
+INV004	routing_eligibility_topology	HARD_FLOOR	PRIMITIVE_OR_EXECUTED	LOW	preserve exact predicate and scope; unresolved stays unresolved	missingness inference; scope dropping	current routing/predicate authority
+INV005	actual_exposure_coadministration	HARD_FLOOR	OBSERVATION_DERIVED	LOW	preserve exact respondent x measurement opportunity when lawfully executable	source-presence substitution; J-candidacy promotion	governed respondent binding + executed routing
+INV006	response_state_and_source_native_value	HARD_FLOOR	OBSERVATION	LOW	preserve substantive/refusal/DK/nonresponse semantics and native value	forced recode; nonexposure conflation	governed response carrier + semantic authority
+INV007	source_and_instrument_ancestry	HARD_FLOOR	PROVENANCE	LOW	full recursive ancestry must remain replayable	clone inflation; derivation overlap	immutable source/provenance refs
+INV008	sample_estimand_weight_purpose	HARD_FOR_POPULATION_CLAIMS	PROVENANCE/AUTHORITY	MEDIUM	preserve exact target and weight purpose; no default population claim	weight availability treated as authority	explicit estimand/weight authority
+INV009	exact_same_unit_cooccurrence	HIGH	DERIVED_VIEW	MEDIUM	preserve exact member set + exact risk set	pairwise reconstruction; imputation	lawful unit+exposure+response
+INV010	higher_order_J	HIGH_WHEN_CLAIM_REQUIRES	DERIVED_VIEW	HIGH	preserve exact k-way relation and lower-order ancestry	pairwise projection; sparse pruning	executable same-unit J
+INV011	marginal_distributions	HIGH	DERIVED_VIEW	MEDIUM	preserve by exact risk set and estimand	conditioning drift; weighting drift	lawful observation set
+INV012	conditional_distributions	HIGH	DERIVED_VIEW	HIGH	preserve full destination distribution, support, baseline and conditioning manifest	scalar effect collapse; support pooling	exact conditioning/risk-set contract
+INV013	minority_branches	HIGH	DERIVED_BUT_REALITY_PRESERVING	MEDIUM	observed lawful rare branches may not disappear because unstable for generalization	frequency merge; class assignment; geometry leverage control	exact observation fact
+INV014	contradictions	HIGH	DERIVED_BUT_REALITY_PRESERVING	MEDIUM	inconsistent/heterogeneous same-unit states remain representable	coherence scoring; latent hard assignment	exact joint state
+INV015	measurement_coadministration_components	HIGH	INSTRUMENT/EXPOSURE_VIEW	MEDIUM	disconnected components remain disconnected absent governed bridge	semantic-label bridging; imputation	routing/exposure authority
+INV016	neighborhood_relations	CLAIM_SPECIFIC	GEOMETRIC_DERIVED	HIGH	report metric/method sensitivity and stability; never primitive	hidden distance; active-variable choice	admitted geometry contract
+INV017	rank_relations	CLAIM_SPECIFIC	DERIVED	HIGH	preserve only under declared ordered/metric semantics	arbitrary category ordering	semantic/method authority
+INV018	gradients	CLAIM_SPECIFIC	GEOMETRIC_OR_MODEL_DERIVED	HIGH	require stable local representation and encoding robustness	discretization; rare leverage	validated local view
+INV019	opposition_structure	CLAIM_SPECIFIC	GEOMETRIC/DEPENDENCE_DERIVED	HIGH	direction/opposition must survive nuisance perturbation	axis storytelling; sign arbitrariness	validated view + numeric criterion
+INV020	multimodality	CLAIM_SPECIFIC	MODEL/GEOMETRY_DERIVED	HIGH	retain observed modes without forcing class ontology	class-count choice; smoothing	validated model/view
+INV021	sparse_exact_configurations	HIGH_FACT_LOW_GENERALIZATION	DERIVED_VIEW	MEDIUM	fact preserved even where inference abstains	minimum-support deletion	exact configuration query
+INV022	block_ancestry	HARD_GUARD	PROVENANCE	LOW	separate source instrument block, analytic block, and coadministration block	questionnaire block=ontology	exact source/role manifests
+INV023	temporal_recurrence	CLAIM_SPECIFIC	CROSS_CONTEXT_DERIVED	HIGH	requires explicit longitudinal/comparability/transport contract	wave label equivalence	admitted cross-time transport
+INV024	cross_context_structural_recurrence	CLAIM_SPECIFIC	CROSS_CONTEXT_DERIVED	VERY_HIGH	must state invariant being transported, not assume common metric	canonical slot equivalence; common-axis forcing	claim-scoped transport authority
+INV025	uncertainty_and_support	HARD_OUTPUT_GUARD	DERIVED/PROVENANCE	MEDIUM	preserve raw n, effective support where authorized, abstention, resampling posture	point-estimate collapse	current support/design authority
+INV026	evidence_status_and_currentness	HARD_FLOOR	PROVENANCE/AUTHORITY	LOW	CURRENT/HISTORICAL/EXPLORATORY and observability limits remain typed	authority widening	current project authority
+INV027	continuous_source_value_fidelity	HIGH	OBSERVATION	MEDIUM	preserve native continuous/ordered value beneath any binning	discrete atlas partition; quantile binning	source-native value carrier
+INV028	overlapping_membership_or_formation_evidence	CLAIM_SPECIFIC	DERIVED_VIEW	HIGH	must permit non-exclusive overlap where data support it	mutually exclusive latent classes/config labels	claim-scoped set/model contract
