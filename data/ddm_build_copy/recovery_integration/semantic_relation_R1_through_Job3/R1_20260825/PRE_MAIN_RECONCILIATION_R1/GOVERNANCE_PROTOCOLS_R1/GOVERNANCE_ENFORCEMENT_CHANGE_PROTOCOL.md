@@ -201,3 +201,5 @@ The only lawful recovery sequence is:
 This W56L candidate may document this recovery sequence but **cannot authorize it**. Merely containing this section grants no project adoption, no PRE-MAIN movement, no main movement, and no Global HQ authority.
 
 The canonical-predecessor / isolated-Python-process / trusted-host-Git-process / host-pinned-repository-metadata-root / canonical-dependency-closure / external-authorization / hostile-auditor / external-ref-movement separation is the enduring security boundary.
+
+<!-- W56P_POST_INSTALLATION_ORDINARY_PREDECESSOR_PROBE_R1 -->
