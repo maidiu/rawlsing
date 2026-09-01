@@ -28,6 +28,8 @@ jobs:
             data/ddm_build_copy/ddm_ffx002_r2_direct_conditional.py \
             data/ddm_build_copy/ffx002_r2_integrated_stack.py
       - name: Run FFP009-FFP013 synthetic suite together
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/data/ddm_build_copy
         run: |
           python -m pytest -q \
             data/ddm_build_copy/test_field_forge_ffx002_harness.py \
