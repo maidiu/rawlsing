@@ -1,0 +1,16 @@
+proposition_or_operation	primary_owner	secondary_dependency	code_may_infer	may_vary_by_representation	must_freeze_before_common_input	boundary
+physical byte/row/object identity	PROVENANCE_LAYER	immutable artifact references	yes from exact identifiers/checksums	no	yes where relied upon	physical sameness has no semantic consequence by itself
+source-native state label/meaning	SOURCE_NATIVE_SEMANTIC_AUTHORITY	source/codebook evidence	code may ingest explicit declarations; may not invent meaning	no	yes	source meaning survives every downstream transform
+source-native code normalization	DETERMINISTIC_SYNTAX_NORMALIZATION	source-native state IDs	yes only when mapping is bijective and semantics untouched	no	yes	must preserve exact original code/value ancestry
+project semantic identity	FINITE_PROJECT_SEMANTIC_ADJUDICATION	source evidence + project authority	no	no	yes	stronger than analytic convenience and must survive representation change
+ordinal ordering	SOURCE_NATIVE_SEMANTIC_AUTHORITY if explicit; otherwise FINITE_PROJECT_SEMANTIC_ADJUDICATION	measurement evidence	no from numeric codes alone	no if order is common semantic input	yes when consumed by both arms	order never authorizes equal interval/cardinality
+claim-scoped category collapse	CLAIM_SCOPED_ANALYTIC_AUTHORITY	source-native ancestry + claim definition	no	no if duel is to share input	yes	permission for claim C is not semantic identity
+claim-scoped binning/partition	CLAIM_SCOPED_ANALYTIC_AUTHORITY	threshold rationale + ancestry	no except executing already-authorized rule	no if cells define common states	yes	method convenience cannot mint cutpoints as ontology
+cross-wave/project crosswalk	FINITE_PROJECT_SEMANTIC_ADJUDICATION	source wording/forms/time context	no	no	yes	same label is evidence, not authority
+transport/comparability invariant	CLAIM_SCOPED_ANALYTIC_AUTHORITY	source/project semantic evidence	no	no	yes	must name contexts and invariant
+special-response-state decoding	SOURCE_NATIVE_SEMANTIC_AUTHORITY	form/routing provenance	code may decode explicit source rules; may not infer from missingness	no	yes	DK/refused/not asked/routed/etc remain separate
+representation-specific coordinate scaling	REPRESENTATION_METHOD_CHOICE	frozen semantic input	yes after method specified	yes	no if semantics/eligibility unchanged	cannot flow backward into semantic authority
+supplementary/active representation role	REPRESENTATION_METHOD_CHOICE	frozen state universe + method contract	yes after rule specified	yes	no unless it changes semantic eligibility	must not become category deletion or equivalence
+social-position analytic role	POSITION_ROLE_AUTHORITY	lawful measurement/transform substrate	no	yes only within PRA's own lawful scope	PRA result may be common input only when FFX002 design explicitly requires it	PRA does not own decoding, ordering, crosswalking, or basic equivalence
+person/actor identity	SEPARATE_IDENTITY_AUTHORITY	respondent/person carrier system	no within FFIF002	no	outside FFIF002	negative boundary only
+NONCOMPARABLE / UNRESOLVED disposition	FINITE_PROJECT_SEMANTIC_ADJUDICATION or CLAIM_SCOPED_ANALYTIC_AUTHORITY	evidence record	no	no	yes when it bounds duel input	uncertainty cannot be runtime-coerced into equivalence
