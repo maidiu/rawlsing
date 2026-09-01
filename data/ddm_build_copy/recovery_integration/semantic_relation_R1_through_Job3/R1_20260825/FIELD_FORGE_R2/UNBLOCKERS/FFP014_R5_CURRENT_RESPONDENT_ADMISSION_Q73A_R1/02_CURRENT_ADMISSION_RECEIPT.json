@@ -1,0 +1,119 @@
+{
+  "admission_receipt_schema_version": "FFP014_CURRENT_RESPONDENT_EXECUTION_BINDING_ADMISSION_RECEIPT@1",
+  "authority_owner": "COMPETENT_CURRENT_ADMISSION_AND_SOURCE_AUTHORITY_UNDER_GLOBAL_HQ_COMMISSION",
+  "commission": "FFC001@d3e93ab491dbbdc1763c019f44992b6884456b5b",
+  "consumed_refs": {
+    "FFC001": "d3e93ab491dbbdc1763c019f44992b6884456b5b",
+    "FFP002": "232f5996d7115d12e3a3c46cd44219bd6caed381",
+    "FFP007": "44f98c639ae72b5963e00eda6793ae5aea327846",
+    "FFP008": "71530e83219c9fb5b201cae9eeb9c55750dcba79"
+  },
+  "current_admission_receipt_id": "sha256:1a01cf216a4c70ffe9e9663ea8dd77381b2aecf8bea2d59c5853c234955ca244",
+  "hostile_acceptance": "PASS__16_OF_16_AT_BOUNDED_PACKAGE_GRAIN",
+  "negative_ceiling": [
+    "NOT_GLOBAL_R5_QIMPL_EXPOSURE_CLOSURE",
+    "UNRESOLVED_MEASUREMENTS_MAY_NOT_ENTER_CLAIMS_REQUIRING_THEM",
+    "NO_PRA",
+    "NO_CIM",
+    "NO_CITC",
+    "NO_FFX002",
+    "NO_GENERAL_RULE_THAT_UNRESOLVED_EXPOSURE_IS_HARMLESS"
+  ],
+  "q73a_chain": {
+    "bounded_witness": {
+      "COUNTRY_ALPHA3": "BEN",
+      "exposure_state": "EXPOSED__PROVED",
+      "independent_Q73A_source_state": "1",
+      "predicate_result": true,
+      "respondent_local_id": "sha256:cd60ba8e8879643f15535d9eb704f8bd73fd7a2e058dbe7172b7cb9e7526e729",
+      "source_key": {"COUNTRY": 1, "RESPNO": "BEN0002"}
+    },
+    "empirical_measurement": "Afrobarometer:R5:Q73A",
+    "execution": {
+      "builder_sha256": "6a80c05d452669bd3123789de12cf9ca8f9c293386d0ed669f3a5682856f1687",
+      "exposed": 45598,
+      "nonexposed": 5989,
+      "receipt_sha256": "c1ec9102c21e244537e7e007f124b7e378ba08e0ce1ad23da7ad9ffc1026d312",
+      "unresolved": 0
+    },
+    "exposure_sidecar": {
+      "file_id": "file_00000000277881f6a949703b98f66984",
+      "library_file_id": "libfile_0335c485ec6081918e15b4c3f2cd3ec5",
+      "library_path": "/Rawlsing/FIELD_FORGE_R2/FFP014_R5_CURRENT_RESPONDENT_ADMISSION_Q73A_R1/q73a_exposure_execution.tsv.gz",
+      "post_upload_byte_recheck": "PASS",
+      "semantic_sorted_root_sha256": "e8bcd698b8d93401a85bd4e39d4ba1056a2ee5871da2fab9ad256210cb6e2aac",
+      "sha256": "2ff4e74a3fc04a49da95925b02dad7865384f896849b4309c06f92464a85a3bf"
+    },
+    "missing_response_hostile_witness": {
+      "COUNTRY_ALPHA3": "BEN",
+      "Q73A_source_state": "9",
+      "exposure_state": "EXPOSED__PROVED",
+      "predicate_result": true,
+      "source_key": {"COUNTRY": 1, "RESPNO": "BEN0001"}
+    },
+    "predicate": "COUNTRY_ALPHA3 NOT IN {ALG,EGY,MRC,SUD,TUN}",
+    "predicate_id": "C04P.b651b9af6671a2fe1166",
+    "predicate_input_provenance": {
+      "bounded_expression": "first 3 exact characters of same respondent governed source RESPNO",
+      "complete_validation": "functional against same respondent governed source COUNTRY for all 51,587 source/carrier keys; raw COUNTRY 31/32/33/34/35 -> exact source tokens ALG/EGY/MRC/SUD/TUN",
+      "governed_country_mapping_ref": "data/ddm_build_copy/manifests/country_source_mapping_registry.csv@71530e83219c9fb5b201cae9eeb9c55750dcba79",
+      "scope_ceiling": "Afrobarometer R5 Q73A only; not general ISO/country ontology",
+      "symbol": "COUNTRY_ALPHA3"
+    },
+    "qimpl": "question_impl.phase0.cae005624221d7b00dd2",
+    "qimpl_exact_identity_sha256": "cae005624221d7b00dd2e8dcc31a8c73d2d4f1446a06d428ab40f1ee2809ad14",
+    "response_sidecar": {
+      "file_id": "file_00000000a37081f6b43f8e9f861887d4",
+      "library_file_id": "libfile_3195f7a5f158819189b63f28b1e8c49c",
+      "library_path": "/Rawlsing/FIELD_FORGE_R2/FFP014_R5_CURRENT_RESPONDENT_ADMISSION_Q73A_R1/q73a_response_binding.tsv.gz",
+      "post_upload_byte_recheck": "PASS",
+      "response_participates_in_exposure": false,
+      "semantic_sorted_root_sha256": "f52d81e5286b60aecad6c12c6b59c7e124f0138d513b8eafcfb692eca44c6a94",
+      "sha256": "ad62093fbc98eb7453a72015cc0fccdee9578379e46d8a9f35d64d99d5efa39d"
+    },
+    "source_variable": "Q73A"
+  },
+  "q73d_preservation": {
+    "authority_ref": "FFP008@71530e83219c9fb5b201cae9eeb9c55750dcba79",
+    "claim_use": "FORBIDDEN_WHERE_Q73D_EXPOSURE_IS_REQUIRED",
+    "predicate_id": "C04P.f751f53c113a339f2cb8",
+    "qimpl": "question_impl.phase0.391123a4e7d3c8f0fd3b",
+    "state": "EXPOSURE_BINDING_UNRESOLVED",
+    "unresolved_edge": "RESPONDENT_HAS_PAID_EMPLOYMENT -> exact governed respondent-level source measurement/expression"
+  },
+  "reconstruction_code": {
+    "path": "FFP008 recovered exact Path-B rematerializer; identity pinned by SHA-256",
+    "reuse_ceiling": "decoder/respondent identity/raw projection only; Q73D paid-employment mapping and FFP008 provisional exposure/root not admitted",
+    "sha256": "ca0afd16475d9cabfbcac8b09ad68612c8ced680a3bb3051f9b1ea8a828ce774"
+  },
+  "respondent_carrier": {
+    "identity": "sha256:6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5",
+    "manifest_path": "01_CURRENT_R5_RESPONDENT_CARRIER_MANIFEST.json",
+    "physical_member": {
+      "bytes": 139442,
+      "file_id": "file_000000005d6881f6aa1501897a52c40f",
+      "library_file_id": "libfile_23bfb6d5340881918ac372b6b8b4cf3b",
+      "library_path": "/Rawlsing/FIELD_FORGE_R2/FFP014_R5_CURRENT_RESPONDENT_ADMISSION_Q73A_R1/carrier-00000.tsv.gz",
+      "post_upload_byte_recheck": "PASS",
+      "rows": 51587,
+      "sha256": "f55741a53a4caed3f74980afba2488233caa93dd4f1a2edcfde8d90e2fcce4be"
+    },
+    "schema_version": "FFP014_R5_CURRENT_RESPONDENT_CARRIER@1"
+  },
+  "respondent_identity": {
+    "duplicates": 0,
+    "local_id_rule": "sha256(canonical_json({source_family:'Afrobarometer',wave:'R5',COUNTRY:<int>,RESPNO:<exact source string>}))",
+    "row_order_is_identity": false,
+    "source_key_fields": ["COUNTRY", "RESPNO"],
+    "unique_rows": 51587
+  },
+  "restoration_path": "CURRENT_REMATERIALIZATION_FROM_ALREADY_GOVERNED_SOURCE_DATA",
+  "source": {
+    "bytes": 49689458,
+    "path": "Data/Afro Barometer Round 5.sav",
+    "rows": 51587,
+    "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"
+  },
+  "starting_head": "71530e83219c9fb5b201cae9eeb9c55750dcba79",
+  "status": "PASS__CURRENT_R5_RESPONDENT_EXECUTION_BINDING_PACKAGE_ADMITTED__Q73D_EXPOSURE_REMAINS_UNRESOLVED"
+}
