@@ -1,0 +1,17 @@
+state	level	entry_condition	closure_required	lawful_conclusion	forbidden_promotion
+INVALID_FOR_CLAIM	OBJECT	admissibility, authority, hard-zero, or validity gate fails	NO	remove object for exact claim	object family universally invalid
+CLAIM_INSUFFICIENT	OBJECT	one or more constitutive slots fail CITC or are undefined	NO	object alone cannot answer C	object has no value
+CLAIM_SUFFICIENT	OBJECT	all constitutive slots pass CITC/support without stronger-view dependency	NO	object alone answers C	object is globally sufficient
+STRICTLY_SUFFICIENT_WEAKER_OBJECT	PAIR	A and B sufficient; A <_C B	YES for global-within-U wording	B is empirically unnecessary for C within U	A is truer or universally weaker
+CLAIM_EQUIVALENT_OBJECTS	PAIR	equivalent claim interface and commitment vector	NO; U needed only for universe-wide result	engineering criteria may choose	independent corroborating methods counted as objects
+NONCOMPARABLE_OBJECTS	PAIR	commitment coordinates cross or interfaces are nonnested	NO	no dominance relation	a tie or scalar ranking
+STRICTLY_DOMINATED_OBJECT	OBJECT_SET	an included AOS is sufficient and strictly weaker	YES when asserted within U	stronger object cannot be required for C within U	object must be deleted from project
+ADDS_NONREDUNDANT_INVARIANT	OBJECT_SET	object uniquely supplies a constitutive slot in a sufficient set	NO for tested set; YES for U-wide necessity	retention contributes empirically	ontological plurality
+ADDS_ONLY_UTILITY	OBJECT_SET	no unique constitutive slot; utility improves	NO	optional engineering/downstream value	utility authorizes loss
+SINGLE_OBJECT_SUFFICIENT_WITHIN_U	UNIVERSE	at least one valid single AOS is sufficient after passed closure	YES	no multi-object necessity within U	unique canonical representation
+MULTIPLE_SINGLE_OBJECTS_SUFFICIENT_NONDOMINATED	UNIVERSE	several single AOS sufficient and mutually nondominated	YES	report all; engineering selection later	method vote or arbitrary winner
+MINIMAL_SUFFICIENT_SET	SET	set sufficient and every proper subset fails	YES for within-U status	set is inclusion-minimal within U	unique minimality
+MULTIPLE_NONDOMINATED_MINIMAL_SUFFICIENT_SETS	UNIVERSE	more than one inclusion-minimal set; none set-dominates another	YES	report complete frontier	first-found set is canonical
+NO_SINGLE_OBJECT_SUFFICIENT_WITHIN_U	UNIVERSE	no valid AOS alone passes; closure passed	YES	bounded non-single-object result	absolute nonreducibility
+NO_SUFFICIENT_SET_WITHIN_U	UNIVERSE	no lawful subset covers bundle	YES	current object universe cannot answer claim	claim false
+UNRESOLVED	ANY	closure, identity, tolerance, commitment, or evidence gap	AS_APPLICABLE	abstain with typed blocker	negative or positive necessity
