@@ -2,13 +2,51 @@
 """Fail-closed governance-enforcement predecessor gate.
 
 SECURITY PROPERTY:
-This file is intentionally stdlib-only. It imports no Rawlsing helper module and
-reads every governance dependency it trusts from the immutable LIVE CANONICAL
-predecessor commit via `git show <live>:<path>`. Candidate worktree governance
-code, schemas, manifests, and helpers are never executable/trusted inputs.
+This file is intentionally self-contained and must be launched under Python
+isolated + no-site + safe-path mode. Before importing any shadowable module it
+checks the interpreter flags using only the built-in `sys` module. After that
+barrier it imports only Python standard-library modules, imports no Rawlsing
+helper module, and reads every repository governance dependency it trusts from
+the immutable LIVE CANONICAL predecessor commit via
+`git show <live>:<path>`.
+
+Required invocation shape:
+    python3 -I -S validate_enforcement_candidate_from_canonical.py ...
+
+A normal `python3 script.py` or direct shebang launch MUST fail before argparse,
+csv, json, pathlib, subprocess, typing, or any other path-resolved module is
+imported. Candidate worktree modules, PYTHONPATH, user-site/sitecustomize, local
+sibling modules, schemas, manifests, and helpers are therefore outside the
+trusted execution dependency closure.
 """
 from __future__ import annotations
-import argparse, csv, json, re, subprocess, sys
+
+# `sys` is a built-in module. It is the only runtime import permitted before the
+# isolation barrier because it cannot be shadowed by a repository-local sys.py.
+import sys
+
+_required_flags = {
+    "isolated": bool(getattr(sys.flags, "isolated", 0)),
+    "ignore_environment": bool(getattr(sys.flags, "ignore_environment", 0)),
+    "no_user_site": bool(getattr(sys.flags, "no_user_site", 0)),
+    "no_site": bool(getattr(sys.flags, "no_site", 0)),
+    "safe_path": bool(getattr(sys.flags, "safe_path", False)),
+}
+if not all(_required_flags.values()):
+    sys.stderr.write(
+        "FAIL_PYTHON_EXECUTION_NOT_ISOLATED: invoke with `python3 -I -S "
+        "validate_enforcement_candidate_from_canonical.py ...`; "
+        + ",".join(f"{k}={int(v)}" for k, v in _required_flags.items())
+        + "\n"
+    )
+    raise SystemExit(97)
+
+# Only after the fail-closed interpreter barrier may normal stdlib imports occur.
+import argparse
+import csv
+import json
+import re
+import subprocess
 from pathlib import Path
 from typing import Any
 
@@ -31,6 +69,27 @@ def _git_cwd() -> Path:
     return Path(p.stdout.strip())
 
 REPO = _git_cwd()
+
+def _path_under_repo(entry: str) -> bool:
+    if not entry:
+        return True
+    try:
+        p = Path(entry).resolve()
+        return p == REPO or REPO in p.parents
+    except Exception:
+        return True
+
+# Defense in depth: -I -S -P semantics should already keep the script directory,
+# cwd, user-site, and PYTHONPATH entries out of sys.path. Refuse execution if any
+# active import-search entry nevertheless resolves inside the repository.
+REPO_IMPORT_PATHS = [x for x in sys.path if _path_under_repo(x)]
+if REPO_IMPORT_PATHS:
+    sys.stderr.write(
+        "FAIL_CANDIDATE_CONTROLLED_IMPORT_PATH_PRESENT: "
+        + repr(REPO_IMPORT_PATHS)
+        + "\n"
+    )
+    raise SystemExit(98)
 
 def git(*args: str) -> tuple[bool, str]:
     try:
@@ -173,16 +232,25 @@ def main() -> int:
 
     ok, live, source = live_canonical()
     C: dict[str, bool] = {"LIVE_CANONICAL_REF_RESOLVED": ok}
-    D: dict[str, Any] = {"live_sha": live, "live_source": source}
+    D: dict[str, Any] = {
+        "live_sha": live,
+        "live_source": source,
+        "python_execution_flags": dict(_required_flags),
+        "repo_import_paths": list(REPO_IMPORT_PATHS),
+    }
     if not ok:
         print(json.dumps({"checks": C, "EXTERNAL_INTEGRATION_ELIGIBLE": False, "details": D}, sort_keys=True))
         return 1
 
-    # The executable authority is one self-contained canonical blob.
+    C["PYTHON_EXECUTION_ISOLATED"] = all(_required_flags.values())
+    C["NO_REPOSITORY_IMPORT_PATHS"] = not REPO_IMPORT_PATHS
+
+    # The executable authority is one self-contained canonical blob operating
+    # behind the interpreter-isolation barrier above.
     ok1, canon_blob = git("rev-parse", f"{live}:{SELF_REL}")
     ok2, current_blob = git("hash-object", str(SCRIPT_PATH))
     C["EXECUTING_COPY_IS_CANONICAL_PREDECESSOR"] = bool(ok1 and ok2 and canon_blob == current_blob)
-    C["NO_RAWLSING_RUNTIME_IMPORTS"] = True  # enforced structurally by this stdlib-only source file
+    C["NO_RAWLSING_RUNTIME_IMPORTS"] = True
 
     cok, _ = git("cat-file", "-e", f"{a.candidate_sha}^{{commit}}")
     C["CANDIDATE_COMMIT_EXISTS"] = cok
