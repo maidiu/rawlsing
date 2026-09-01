@@ -5,6 +5,7 @@ import json
 
 import pytest
 
+from data.ddm_build_copy import field_forge_ffx002_harness as harness
 from data.ddm_build_copy.ffx002_r2_local_geometry import (
     DISPOSITION_ROLE,
     METHOD_SCHEMA_VERSION,
@@ -17,7 +18,7 @@ from data.ddm_build_copy.ffx002_r2_local_geometry import (
 
 def _manifest() -> dict:
     manifest = {
-        "manifest_schema_version": "SYNTHETIC_COMMON_MANIFEST_R1",
+        "manifest_schema_version": harness.SCHEMA_VERSION,
         "current_execution_sha": "9611a9067ab28e17eb45b565398c7e604a24e77b",
         "observation_substrate_ref": "synthetic://observation#sha256:01",
         "respondent_entity_binding_ref": "synthetic://respondents#sha256:02",
@@ -27,22 +28,18 @@ def _manifest() -> dict:
         "qimpl_measurement_binding_refs": ["Q:P1", "Q:P2", "Q:D1", "Q:D2"],
         "response_state_semantics_ref": "synthetic://response-semantics",
         "special_state_semantics_ref": "synthetic://special-states",
-        "ttar_execution_sequence": [],
+        "ttar_execution_sequence": "NONE",
         "post_transform_state_manifest": "synthetic://state-manifest",
         "claim_scope_ref": "synthetic://claim",
         "estimand_ref": "UNWEIGHTED_SAMPLE_RELATIONAL_VIEW",
         "weight_design_refs": "NONE",
         "analytic_role_authority_refs": ["synthetic://pra"],
         "ancestry_disjointness_receipt": "PASS",
-        "unresolved_noncomparable_manifest": [],
+        "unresolved_noncomparable_manifest": {"ref": "synthetic-none"},
         "source_native_ancestry_ref": "synthetic://ancestry",
-        "loss_profile": [],
-        "holdout_generation_inputs_hash": "synthetic-holdout-inputs",
-        "canonicalization_spec": {
-            "encoding": "UTF-8",
-            "hash_algorithm": "SHA-256",
-            "set_array_paths": [],
-        },
+        "loss_profile": {"ref": "synthetic-loss-profile"},
+        "holdout_generation_inputs_hash": "b" * 64,
+        "canonicalization_spec": copy.deepcopy(harness.CANON),
     }
     manifest["manifest_hash"] = compute_common_manifest_hash(manifest)
     return manifest
