@@ -118,8 +118,10 @@ def main():
     if hostile_unknown != ('UNRESOLVED','EXPOSURE__UNRESOLVED'):
         raise RuntimeError('hostile unresolved input coercion')
 
+    # independent response facts: deliberately omit predicate/exposure fields
     rs=io.StringIO(newline=''); rw=csv.writer(rs,delimiter='\t',lineterminator='\n')
     rw.writerow(['respondent_carrier_identity','COUNTRY','RESPNO','respondent_local_id','empirical_measurement_id','Q73A_source_state'])
+    # exposure execution: deliberately omit response state
     es=io.StringIO(newline=''); ew=csv.writer(es,delimiter='\t',lineterminator='\n')
     ew.writerow(['respondent_carrier_identity','COUNTRY','RESPNO','respondent_local_id','question_implementation_id','empirical_measurement_id','predicate_id','COUNTRY_ALPHA3','predicate_result','exposure_state'])
     response_root=hashlib.sha256(); exposure_root=hashlib.sha256()
