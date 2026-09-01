@@ -1,0 +1,11 @@
+attack	static predicate result	ruling
+trusted authorization schema absent from canonical manifest	CANONICAL_DEPENDENCY_CLOSURE_DECLARED=false	FAILS_CLOSED
+trusted result schema absent from canonical manifest	CANONICAL_DEPENDENCY_CLOSURE_DECLARED=false	FAILS_CLOSED
+manifest missing itself	dependency_closure subset check false	FAILS_CLOSED
+meta-validator missing from manifest	dependency_closure subset check false	FAILS_CLOSED
+authorization schema path missing/unparseable	CANONICAL_AUTH_SCHEMA_AVAILABLE=false and canonical schema check fails	FAILS_CLOSED
+result schema path missing/unparseable	CANONICAL_RESULT_SCHEMA_AVAILABLE=false and canonical schema check fails	FAILS_CLOSED
+manifest missing/unreadable	CANONICAL_PROTECTED_MANIFEST_LOADED=false	FAILS_CLOSED
+manifest malformed without usable path column	protected empty/insufficient	FAILS_CLOSED
+silent fallback to candidate schema/manifest	no fallback path in source	NONE
+OVERALL	data-level dependency absence is represented in all(C.values())	PASS_CONDITIONAL_ON_AUTHENTIC_EXECUTION_ENVIRONMENT

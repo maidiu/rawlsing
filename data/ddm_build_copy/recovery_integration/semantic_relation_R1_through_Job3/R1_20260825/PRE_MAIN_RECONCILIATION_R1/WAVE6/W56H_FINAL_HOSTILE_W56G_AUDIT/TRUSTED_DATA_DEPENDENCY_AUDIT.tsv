@@ -1,0 +1,8 @@
+artifact	intended_source	candidate_direct_influence	ruling
+GOVERNANCE_ENFORCEMENT_PROTECTED_PATHS.tsv	git show LIVE_CANONICAL_SHA:path	NO	CANONICAL_LOADED
+HOSTILE_AUDIT_AUTHORIZATION_SCHEMA_R1.json	git show LIVE_CANONICAL_SHA:path	NO	CANONICAL_LOADED
+HOSTILE_AUDIT_RESULT_SCHEMA_R1.json	git show LIVE_CANONICAL_SHA:path	NO	CANONICAL_LOADED
+meta-validator canonical blob identity	git rev-parse LIVE_CANONICAL_SHA:path + hash-object executing script	NO at data locator grain	CANONICAL_BOUND
+candidate authorization JSON	immutable commit:path supplied externally	YES as audited evidence, schema constrained by canonical schema	EXPECTED_UNTRUSTED_INPUT
+candidate audit-result JSON	immutable commit:path supplied externally	YES as audited evidence, schema constrained by canonical schema	EXPECTED_UNTRUSTED_INPUT
+OVERALL	canonical_text/canonical_json paths use live canonical objects	0 direct candidate-controlled trusted-data paths	ALL_TRUSTED_GOVERNANCE_DEPENDENCIES_CANONICAL_LOADED__BUT_EXECUTION_PROVENANCE_BLOCKER_SEPARATE
