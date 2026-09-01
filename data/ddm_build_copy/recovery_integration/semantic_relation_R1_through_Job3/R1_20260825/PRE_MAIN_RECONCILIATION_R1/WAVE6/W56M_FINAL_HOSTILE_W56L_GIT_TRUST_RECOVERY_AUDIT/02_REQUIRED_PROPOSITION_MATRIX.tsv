@@ -1,0 +1,15 @@
+id	status	finding
+1	PASS	W56L is eight commits ahead of exact b53f884 merge-base and remains governance-enforcement bounded.
+2	PASS	Trusted Git is an explicit absolute non-symlink host input; repository-contained and symlink paths are rejected.
+3	PASS	Git executable selection is not PATH-based; child environment contains no PATH and independent fake-git replay did not execute the shim.
+4	FAIL	Top-level repository/.git/objects is pinned, but internal object paths are not; a symlinked loose object survived initialization/hardening and redirected cat-file bytes.
+5	FAIL	Environment/config redirection defenses are materially strong, but object-database and ref output can still be redirected through filesystem symlinks inside the pinned .git tree.
+6	FAIL	Ancestry/ref/object facts are not cryptographically rebound to requested OIDs after cat-file reads; independent replay returned bytes whose actual blob OID differed from the requested OID.
+7	PASS	Exact candidate retains the pre-import five-flag Python -I -S barrier; independent flag/shadow replay produced all flags true and did not execute sibling argparse.py.
+8	PASS	Exact candidate import inventory is stdlib-only after built-in sys; no Rawlsing runtime/governance helper enters the predecessor executable graph.
+9	PASS	W56K finding is preserved and its narrow PATH-resolved Git executable defect is genuinely closed rather than reclassified away.
+10	PASS	RI023-RI029 match prior canonical text; RI030 and RI031 are appended after them without historical-row rewrite.
+11	PASS	RI027/RI029 and W56L recovery law preserve bootstrap exhaustion and prohibit reuse.
+12	PASS	W56L cannot self-authorize; external b53-rooted authorization and independent hostile court are required before any competent ref act.
+13	PASS	This court did not use the defective b53 predecessor gate as the sole proof path; lineage/ref facts came from external immutable GitHub evidence and disputed trust properties from independent deterministic fixtures.
+14	FAIL	Independent evidence establishes candidate/authorization/jurisdiction facts, but the required trust-boundary proposition fails because intended object/ref bytes remain redirectable inside .git.

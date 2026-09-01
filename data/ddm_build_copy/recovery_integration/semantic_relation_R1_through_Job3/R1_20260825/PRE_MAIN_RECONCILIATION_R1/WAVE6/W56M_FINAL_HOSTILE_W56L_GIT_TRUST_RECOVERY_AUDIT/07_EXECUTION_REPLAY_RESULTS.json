@@ -1,0 +1,38 @@
+{
+  "replay_kind": "INDEPENDENT_DETERMINISTIC_HOST_GIT_FIXTURE",
+  "candidate_sha": "a94c5613dba1f3d3121be244296d0d3733003507",
+  "git": {
+    "path": "/usr/bin/git",
+    "version": "git version 2.47.3",
+    "sha256": "356db14e102d68a1a37d8a1ac577dfd678d45d46e92f468bef8b7154e7bfdc60"
+  },
+  "python_isolation_flags": {
+    "isolated": 1,
+    "ignore_environment": 1,
+    "no_user_site": 1,
+    "no_site": 1,
+    "safe_path": true
+  },
+  "path_prepend_fake_git": {
+    "marker_executed": false,
+    "result": "PASS_W56K_PATH_SUBSTITUTION_CLOSED"
+  },
+  "object_symlink_attack": {
+    "requested_oid": "f49b81645e9b3e194103fb700187016b10427bf5",
+    "attacker_payload_oid": "5c64a24ef99cfc362b44e32eda32327aaecec25f",
+    "requested_oid_equals_attacker_payload_oid": false,
+    "loose_object_file_replaced_by_external_symlink": true,
+    "w56l_hardening_predicates_remained_passing": true,
+    "cat_file_exit_code": 0,
+    "cat_file_stdout": "EVIL_BYTES_FROM_EXTERNAL_SYMLINK\n",
+    "returned_external_attacker_bytes": true,
+    "result": "FAIL_FATAL_OBJECT_BYTES_NOT_BOUND_TO_REQUESTED_OID"
+  },
+  "ref_symlink_attack": {
+    "internal_ref_file_replaced_by_external_symlink": true,
+    "rev_parse_exit_code": 0,
+    "rev_parse_followed_external_ref_value": true,
+    "result": "FAIL_CORROBORATING_REF_FILESYSTEM_REDIRECTION"
+  },
+  "terminal_security_conclusion": "FAIL_CLOSED__INTERNAL_GIT_OBJECT_STORE_SYMLINK_REDIRECTION_ALLOWS_OID_BYTES_SUBSTITUTION"
+}
