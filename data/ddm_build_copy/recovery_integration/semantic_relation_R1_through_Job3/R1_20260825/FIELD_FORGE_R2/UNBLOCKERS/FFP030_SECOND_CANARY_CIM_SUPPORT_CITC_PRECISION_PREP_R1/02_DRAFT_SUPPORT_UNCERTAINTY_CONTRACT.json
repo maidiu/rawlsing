@@ -1,0 +1,79 @@
+{
+  "schema_version": "FFP030_DRAFT_SUPPORT_UNCERTAINTY_CONTRACT@1",
+  "contract_id": "FFP030_DRAFT_SECOND_CANARY_EXACT_SAMPLE_DESCRIPTIVE_SUPPORT_UNCERTAINTY_CONTRACT@1",
+  "status": "PREPARED_NOT_FROZEN__PRA_BINDING_PENDING__TARGET_RESULTS_UNINSPECTED",
+  "candidate_claim_id": "FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1",
+  "authority_basis": [
+    "FFIF006@787b02e8eed5e0b3079fbaed5624393443f3f652",
+    "FFIF010@dd7e154ec1b32afaef5da9324327a7dbc7c08bd9",
+    "FFIF011@4702e279244fee13f5dccd2a28bf5a9c0b3bc0eb",
+    "FFC003_CLAIM_MATERIALITY_AUTHORITY__d3e93ab491dbbdc1763c019f44992b6884456b5b",
+    "FFP019_FIRST_CANARY_SUPPORT_PRECEDENT@04b3e361f900ad89d8d4d8562c00f6cdf20cf312"
+  ],
+  "pra_ref": "PENDING_FFP029",
+  "freeze_blocker": "VALID_SECOND_CANARY_PRA_REF_REQUIRED_BEFORE_FINAL_SUPPORT_CONTRACT_FREEZE",
+  "risk_set": {
+    "id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "respondent_count": 19210,
+    "semantic_member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "empirical_unit": "FFP014_R5_CURRENT_RESPONDENT_CARRIER@1/(COUNTRY,RESPNO)"
+  },
+  "estimand": "UNWEIGHTED_EXACT_REALIZED_SAMPLE_F01_EVENT_CONTRAST",
+  "target_disposition": "EXACT_REALIZED_ADMITTED_SAMPLE__NO_EXTERNAL_POPULATION_PARAMETER",
+  "weight_target": "NONE__EXPLICIT_UNWEIGHTED_SAMPLE_DESCRIPTIVE_CLAIM",
+  "support_law": "EXACT_IDENTITIES_AND_REPLAY + EXACT_NUMERATOR_COUNTS + POSITIVE_DENOMINATORS -> EXACT_REALIZED_SAMPLE_CONDITIONAL_IDENTIFIED",
+  "support_requirements": {
+    "empirical_unit_identity": "EXACT_REQUIRED",
+    "risk_set_membership": "EXACT_REQUIRED__19210_MEMBER_SET_HASH_BOUND",
+    "actual_coexposure": "EXACT_REQUIRED_FOR_Q73A_Q70B_Q70C_Q84_Q86A",
+    "C_identity_and_arm_membership": "EXACT_REQUIRED__Q73A_NATIVE_1_MINUS_0",
+    "D_event_identity": "EXACT_REQUIRED__Q86A_NATIVE_STATE_1_LITERAL_YES_EVENT",
+    "Z_joint_predicate_identity": "EXACT_REQUIRED__Q70B_Q70C_COUNTRY_QUALIFIED_Q84_NATIVE_STATES",
+    "joint_domain_generator": "EXACT_REQUIRED__COMPLETE_OBSERVED_Z_DOMAIN_GENERATED_WITHOUT_D",
+    "numerator_counts": "EXACT_REQUIRED_PER_EXECUTED_BROAD_OR_WITHIN_STATE_QUERY",
+    "denominator_counts": "EXACT_REQUIRED_PER_EXECUTED_BROAD_OR_WITHIN_STATE_QUERY_AND_Q73A_ARM",
+    "minimum_support_threshold": "NONE__NO_CONVENTIONAL_THRESHOLD_INVENTED",
+    "broad_query_existence_gate": "n(c0)>0 AND n(c1)>0",
+    "within_state_query_existence_gate": "n(s,c0)>0 AND n(s,c1)>0",
+    "zero_denominator_policy": "ABSTAIN__ZERO_DENOMINATOR__DO_NOT_FABRICATE",
+    "unsupported_query_policy": "ABSTAIN__PRESERVE_ROSTER_ROW__DO_NOT_POOL_BACKOFF_OR_DELETE",
+    "source_native_state_preservation": "EXACT_REQUIRED__NO_COLLAPSE",
+    "q84_identity_ceiling": "COUNTRY_ALPHA3_QUALIFIED_NATIVE_CATEGORY__NO_CROSS_COUNTRY_EQUIVALENCE"
+  },
+  "broad_structural_denominator_evidence": {
+    "Q73A_native_0_count": 7466,
+    "Q73A_native_1_count": 10161,
+    "typed_noncontrast_total": 1583,
+    "evidence_class": "OUTCOME_BLIND_C_ONLY_STRUCTURAL_EVIDENCE__NOT_TARGET_RESULT"
+  },
+  "uncertainty_disposition": "NO_INFERENTIAL_UNCERTAINTY_CONTRACT_REQUIRED_TO_IDENTIFY_EXACT_REALIZED_SAMPLE_DESCRIPTIVE_TARGET",
+  "error_model_or_design_precision_ref": "NONE__NOT_REQUIRED_FOR_EXACT_REALIZED_SAMPLE_IDENTIFICATION",
+  "inferential_ceiling": {
+    "population_generalization": "NOT_AUTHORIZED",
+    "statistical_significance": "NOT_AUTHORIZED",
+    "confidence_or_credible_interval_claim": "NOT_AUTHORIZED",
+    "power_or_sampling_adequacy_claim": "NOT_AUTHORIZED",
+    "causal_inference": "NOT_AUTHORIZED",
+    "survey_weighting": "FORBIDDEN_WITHIN_THIS_PROPOSITION"
+  },
+  "materiality_firewall": {
+    "support_counts_do_not_authorize_materiality": true,
+    "nonzero_Delta_does_not_imply_material_difference": true,
+    "same_sign_does_not_imply_magnitude_persistence": true,
+    "exact_zero_does_not_imply_practical_disappearance": true,
+    "exact_zero_does_not_imply_null_equivalence": true
+  },
+  "finite_sample_diagnostic": {
+    "ref": "DELETE_ONE_RESPONDENT_DIRECTION_STABILITY@1",
+    "source_contract": "FFIF011/04_DELETE_ONE_RESPONDENT_DIRECTION_STABILITY_CONTRACT.tsv",
+    "status": "NONCONSTITUTIVE_DIAGNOSTIC",
+    "claim_truth_effect": "NONE",
+    "support_admission_effect": "NONE",
+    "materiality_effect": "NONE",
+    "inferential_effect": "NONE",
+    "state_deletion_effect": "NONE",
+    "required_evidence_if_executed": "RETAIN_COMPLETE_PER_QUERY_PER_DELETED_UNIT_WITNESS_EVIDENCE"
+  },
+  "support_uncertainty_contract_hash": null,
+  "hash_disposition": "NOT_MINTED__DRAFT_ONLY__FINAL_HASH_AFTER_VALID_PRA_AND_COMPETENT_FREEZE"
+}
