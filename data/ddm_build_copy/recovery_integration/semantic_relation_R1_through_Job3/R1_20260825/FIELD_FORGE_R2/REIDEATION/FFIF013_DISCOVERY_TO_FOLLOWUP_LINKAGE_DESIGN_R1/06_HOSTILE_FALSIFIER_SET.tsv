@@ -1,0 +1,21 @@
+hostile_id	attack	failure_detected	mandatory_or_conditional	lawful_disposition
+H01	Allow X identity or values to influence discovered predicate roster/subset	Outcome leakage / target-conditioned discovery	MANDATORY	INVALID__OUTCOME_FIREWALL_BREACH
+H02	Change empirical-unit or risk-set law between challengers	Common-input counterfeit	MANDATORY	INVALID__COMMON_INPUT_OR_RISK_SET_DIVERGENCE
+H03	Infer exposure/coexposure from response presence or missingness	Eligibility/exposure laundering	MANDATORY	BLOCKED_OR_INVALID__EXPOSURE_AUTHORITY
+H04	Collapse source-native special/non-substantive states for computability	Semantic-state loss	MANDATORY	INVALID__SEMANTIC_INPUT_DIVERGENCE
+H05	Join at wrong grain, duplicate respondent rows, or perform accidental many-to-many expansion	Same-unit linkage counterfeit	MANDATORY	INVALID__UNIT_OR_JOIN_INTEGRITY_FAILURE
+H06	Let W1 silently consult a FIELD-FORGE-local membership/cache surface	False direct-requery PASS	MANDATORY	INVALID_W1__HIDDEN_LOCAL_CARRIER_DEPENDENCY
+H07	Remove lawful producer dereference and let W1 continue by fallback	Replay dependency laundering	MANDATORY	W1_MUST_EMIT_UNDEFINED_OR_BLOCKED
+H08	Treat a saved final answer as replay without regeneration evidence	Persistence laundering	MANDATORY	W0_FAILS_AS07__SAVED_RESULT_NOT_REPLAY
+H09	Use W3 query-specific summary to claim generic arbitrary-future capability	Quantifier laundering	MANDATORY	INVALID_GENERALIZATION__Q1_QF_ONLY
+H10	Drop sparse/singleton predicates or predicate members from W4 for convenience	Minority/support loss	MANDATORY	W4_EXACT_SUFFICIENCY_FAIL
+H11	Let W5 possession of atomic states self-authorize the follow-up relation	Relation-commitment laundering	MANDATORY	INVALID__QUERY_RELATION_AUTHORITY_MISSING
+H12	Convert UNDEFINED_FOR_OBJECT, zero-denominator abstention, unsupported, or blocked into numeric zero/false	Negative-state collapse	MANDATORY	EXACT_SUFFICIENCY_FAIL
+H13	Add/split/fuse/delete a challenger after seeing target outputs	Finite-universe contamination	MANDATORY	INVALID__PREOUTPUT_CLOSURE_BROKEN
+H14	Use target result direction/strength/interest to replace X or query	Candidate-selection leakage	MANDATORY	INVALID__OUTCOME_FIREWALL_BREACH
+H15	Replay against mutable/current producer state instead of immutable frozen ancestry	Nonreplay/currentness drift	MANDATORY	REPLAY_OR_INTEGRITY_FAILURE
+H16	Use exact output equality to claim general semantic equivalence among W1-W5	Representation overgeneralization	MANDATORY	FORBIDDEN_INTERPRETATION
+H17	Use one W1 failure to infer universal carrier necessity	Quantifier inversion	MANDATORY	FORBIDDEN_INTERPRETATION
+H18	Use one W1 PASS to claim all future queries are direct-requery sufficient	Arbitrary-future laundering	MANDATORY	FORBIDDEN_INTERPRETATION
+H19	If weighted/estimated query introduced, change weight target or estimator-specific missingness across challengers	Estimand divergence	CONDITIONAL	INVALID__DIFFERENT_CLAIM
+H20	If approximation/stability threshold introduced after outputs, select a convenient tolerance	Retroactive materiality	CONDITIONAL	INVALID__CITC_NOT_PREOUTPUT_AUTHORIZED
