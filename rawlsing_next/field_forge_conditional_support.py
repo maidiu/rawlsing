@@ -62,10 +62,6 @@ class FieldForgePermissionWideningError(FieldForgeConditionalSupportError):
     """The relation attempted to exceed the producer permission ceiling."""
 
 
-class FieldForgeProducerStateBlocked(FieldForgeConditionalSupportError):
-    """Reserved for callers that require a positive relation rather than typed blocking."""
-
-
 def _text(value: Any, name: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise FieldForgeConditionalSupportError(f"{name} must be non-empty")
@@ -122,10 +118,6 @@ def _freeze(value: Any) -> Any:
     return value
 
 
-def _ref_dict(ref: ExactRef) -> dict[str, str]:
-    return ref.as_dict()
-
-
 def _auth_dict(ref: AuthorityRef) -> dict[str, str]:
     return ref.as_dict()
 
@@ -176,7 +168,21 @@ def _query_component_material(
             "target_domain_replay_ref": replay_ref.as_dict(),
         })
 
-    full_domain = tuple(canonicalize(list(v)) for v in product(*domains))
+    cartesian_domain = tuple(canonicalize(list(v)) for v in product(*domains))
+    explicit_joint = spec.get("joint_domain")
+    if explicit_joint is None:
+        full_domain = cartesian_domain
+    else:
+        full_domain = tuple(canonicalize(v) for v in _sequence(
+            explicit_joint, "query target joint_domain", allow_empty=True))
+        if len({canonical_json(v) for v in full_domain}) != len(full_domain):
+            raise FieldForgeConditionalSupportError(
+                "explicit joint domain contains duplicate exact cells")
+        if {canonical_json(v) for v in full_domain} != {
+            canonical_json(v) for v in cartesian_domain
+        }:
+            raise FieldForgeConditionalSupportError(
+                "GT2 explicit joint domain must preserve the complete native Q86B x Q86A product")
     identity = semantic_hash({
         "components": normalized,
         "joint_order_semantics": FROZEN_TARGET_ORDER,
@@ -372,6 +378,27 @@ class ExactConditionalSupportProfile:
     conditional_count_profile: tuple[Mapping[str, Any], ...]
     content_hash: str
     object_id: str
+
+    def __post_init__(self) -> None:
+        if self.typed_state not in ALLOWED_PRODUCER_STATES:
+            raise FieldForgeConditionalSupportError(
+                f"invalid relation typed_state {self.typed_state!r}")
+        if self.producer_state_blocking != (self.typed_state != "SUPPORTED"):
+            raise FieldForgeConditionalSupportError(
+                "producer_state_blocking must exactly reflect producer typed state")
+        if not set(self.relation_permission_ceiling).issubset(
+            set(self.producer_permission_ceiling)
+        ):
+            raise FieldForgePermissionWideningError(
+                "stored relation permission exceeds producer permission ceiling")
+        if self.producer_state_blocking and self.conditional_count_profile:
+            raise FieldForgeConditionalSupportError(
+                "blocked relation/result may not carry a positive count profile")
+        digest = semantic_hash(self.semantic_projection())
+        expected_id = f"urn:rawlsing:field-forge:conditional-support:sha256:{digest}"
+        if self.content_hash != digest or self.object_id != expected_id:
+            raise FieldForgeConditionalSupportError(
+                "relation object_id/content_hash do not match deterministic semantic projection")
 
     @property
     def family(self) -> str:
