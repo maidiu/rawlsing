@@ -1,0 +1,89 @@
+{
+  "ablations": {
+    "A_ADDED": {
+      "from": "P0",
+      "non_q03_information_gain": {
+        "counterpattern_position_configurations": 1033,
+        "exact_disposition_configurations": 1856,
+        "exact_position_configurations": 1561,
+        "j3_q86abc_distinct_configurations": 38,
+        "minority_destination_branches": 9692,
+        "observed_full_12_measurement_joint_configuration_pairs": 13269,
+        "source_state_recoverability_cells": 230520
+      },
+      "q03_incremental_component_coverage": 0,
+      "to": "P1"
+    },
+    "A_REMOVED": {
+      "configuration_information_lost": "ALL_CORE_A_EXACT_CONFIGURATION_COUNTERPATTERN_AND_HIGHER_ORDER_SURFACES",
+      "from": "P1",
+      "q03_component_loss": 0,
+      "to": "P0"
+    },
+    "C_ONLY_BASELINE": {
+      "package": "P0",
+      "q03_components": "34/34"
+    }
+  },
+  "anti_sterilization": [
+    "Q03_INSUFFICIENT != USELESS",
+    "NO_REQUIREMENT_FOR_Q03 != DO_NOT_MEASURE"
+  ],
+  "authority_ceiling": "PARTIAL_TYPED_EXECUTION_ONLY__NO_CORE_B__NO_FULL_P0_P3_REPRESENTATION_DEPENDENCE_CONCLUSION",
+  "core_b_status": "PENDING__NOT_EXECUTED",
+  "geometry_utility_ruling": "NOT_EVALUATED__ABSENCE_OF_B_IS_NOT_EVIDENCE_OF_ABSENCE_OF_GEOMETRY_UTILITY",
+  "hostile_null_ref": "11_APPLICABLE_HOSTILE_NULL_RESULTS.json",
+  "packages": {
+    "P0": {
+      "higher_order": "DOES_NOT_REPRESENT",
+      "minority_information": "FULL_NATIVE_STATE_NONMODAL_MASS_PER_OUTCOME__NO_JOINT_CONFIGURATION",
+      "q03_exact_native_state_components_recoverable": "34/34",
+      "q03_reference_equality": "EXACT_VIA_RETAINED_COUNTS_AND_EXACT_DENOMINATORS",
+      "query_coverage": "34/34_COMPONENTS__NO_BACKOFF__NO_ABSTENTION",
+      "views": [
+        "C"
+      ]
+    },
+    "P1": {
+      "A_added_information": {
+        "configuration_to_disposition_position_rows": 1561,
+        "counterpattern_position_configuration_rows": 1033,
+        "destination_branch_rows": 13269,
+        "disposition_configuration_count": 1856,
+        "disposition_configuration_order": 8,
+        "disposition_configuration_support_max": 1169,
+        "disposition_configuration_support_min": 1,
+        "full_cross_surface_coexposed_units": 19210,
+        "full_disposition_coexposed_units": 19210,
+        "full_position_coexposed_units": 19210,
+        "input_units": 19210,
+        "j3_q86abc_distinct_configuration_count": 38,
+        "j3_q86abc_order": 3,
+        "j3_q86abc_same_respondent_support": 19210,
+        "minority_destination_branch_rows": 9692,
+        "modal_or_modal_tie_branch_rows": 3577,
+        "observed_full_12_measurement_joint_configuration_pair_count": 13269,
+        "position_configuration_count": 1561,
+        "position_configuration_order": 4,
+        "position_configuration_support_max": 574,
+        "position_configuration_support_min": 1,
+        "q03_queries_abstain": 0,
+        "q03_queries_answer_exact": 2,
+        "q03_queries_backoff": 0,
+        "q03_queries_declared": 2,
+        "source_state_recoverability_cells_checked": 230520,
+        "source_state_recoverability_mismatches": 0,
+        "source_state_recoverability_status": "EXACT_ZERO_LOSS_FOR_ALL_12_ACTIVE_MEASUREMENTS"
+      },
+      "q03_exact_native_state_components_recoverable": "34/34",
+      "q03_reference_equality": "EXACT_FROM_C_AND_INDEPENDENTLY_EXACT_FROM_A_MARGINALIZED_JOINT_SUPPORT",
+      "query_coverage": "34/34_COMPONENTS__A_2_OF_2_EXACT_QUERIES__C_16_OF_16_EXACT_INVOCATIONS",
+      "views": [
+        "C",
+        "A"
+      ]
+    }
+  },
+  "schema_version": "FFP022_PARTIAL_P0_P1_UTILITY_R1",
+  "storage_runtime_compression_ref": "10_STORAGE_RUNTIME_COMPRESSION_RECEIPT.json"
+}

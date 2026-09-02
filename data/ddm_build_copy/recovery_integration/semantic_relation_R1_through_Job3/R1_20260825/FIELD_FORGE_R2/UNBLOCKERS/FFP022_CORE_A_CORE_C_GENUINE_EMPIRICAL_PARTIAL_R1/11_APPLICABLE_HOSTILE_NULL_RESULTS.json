@@ -1,0 +1,61 @@
+{
+  "all_executed_cases_passed": true,
+  "ceiling": "No absent fixture authority is converted into a synthetic PASS. No CVCR/COCR conclusion.",
+  "executed_producer_fail_closed_cases": [
+    {
+      "arm": "A",
+      "case": "COMMON_MANIFEST_POSTFORK_TAMPER_A",
+      "expected": "COMMON_INPUT_ARM_HASH_DIVERGENCE",
+      "observed": "COMMON_INPUT_ARM_HASH_DIVERGENCE",
+      "pass": true,
+      "return_code": 2
+    },
+    {
+      "arm": "A",
+      "case": "ACTIVE_SPACE_OVERLAP_A",
+      "expected": "CORE_A_ACTIVE_SPACE_OVERLAP",
+      "observed": "CORE_A_ACTIVE_SPACE_OVERLAP",
+      "pass": true,
+      "return_code": 2
+    },
+    {
+      "arm": "C",
+      "case": "COMMON_MANIFEST_POSTFORK_TAMPER_C",
+      "expected": "EXPERIMENT_INVALID__POSTFORK_SEMANTIC_DIVERGENCE",
+      "observed": "EXPERIMENT_INVALID__POSTFORK_SEMANTIC_DIVERGENCE",
+      "pass": true,
+      "return_code": 2
+    },
+    {
+      "arm": "C",
+      "case": "NATIVE_STATE_POOLING_C",
+      "expected": "DIRECT_CONDITIONAL_OUTCOME_STATE_POOLING_FORBIDDEN",
+      "observed": "DIRECT_CONDITIONAL_OUTCOME_STATE_POOLING_FORBIDDEN",
+      "pass": true,
+      "return_code": 2
+    },
+    {
+      "arm": "C",
+      "case": "MISSING_ROW_CANNOT_IMPLY_EXPOSURE_C",
+      "expected": "DIRECT_CONDITIONAL_COEXPOSURE_UNPROVED",
+      "observed": "DIRECT_CONDITIONAL_COEXPOSURE_UNPROVED",
+      "pass": true,
+      "return_code": 2
+    }
+  ],
+  "inherited_variant_dependent_cases_not_executed": [
+    {
+      "name": "QUESTIONNAIRE_BLOCK_COUNTERFEIT",
+      "perturbation_id": "R2F002",
+      "reason": "Producer-local schema mutation would itself violate the common semantic-input law; this partial did not mint a new fixture authority.",
+      "status": "NOT_EXECUTED_IN_THIS_PARTIAL__NO_REGISTERED_COUNTERFEIT_COMMON_INPUT_VARIANT_BOUND"
+    },
+    {
+      "name": "RESPONDENT_LINK_ASSOCIATION_NULL",
+      "perturbation_id": "R2F003",
+      "reason": "The inherited design requires a separately registered COMMON_INPUT_FIXTURE_VARIANT with exact permutation receipt; inventing one inside FFP022 would exceed authority.",
+      "status": "NOT_EXECUTED_IN_THIS_PARTIAL__NO_EXACT_PERMUTATION_FIXTURE_VARIANT_RECEIPT_BOUND"
+    }
+  ],
+  "schema_version": "FFP022_APPLICABLE_HOSTILE_NULL_RESULTS_R1"
+}

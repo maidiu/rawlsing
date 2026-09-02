@@ -1,0 +1,71 @@
+{
+  "ceiling": "Mechanical evidence only. Independent final CVCR court not issued here.",
+  "citc_hash": "sha256:f51de0091cae4a79c86d6021b27e69e87645ef43a2e0dd9bdd2637b53f3367e2",
+  "comparison_hash": "sha256:e1ca9afcf0a52fec3a95dd468729e07fbb11a9d4008899bbe573e122d003c788",
+  "final_cvcr_ruling": "NOT_PERFORMED",
+  "observations": [
+    {
+      "citc_row_id": "CITC001",
+      "evidence": "same 19,210 governed unit_ids in A and C exact risk set",
+      "metric": "empirical_unit_identity_mismatch_count",
+      "value": 0
+    },
+    {
+      "citc_row_id": "CITC002",
+      "evidence": "exact FFP017 19,210 member set bound in both arms",
+      "metric": "risk_set_symmetric_difference_count",
+      "value": 0
+    },
+    {
+      "citc_row_id": "CITC003",
+      "evidence": "both arms exact n0=7466,n1=10161",
+      "metric": "Q73A_group_denominator_mismatch_count",
+      "value": 0
+    },
+    {
+      "citc_row_id": "CITC004",
+      "evidence": "unweighted sample descriptive; weight_design_refs=NONE in both arms",
+      "metric": "estimand_or_weight_target_mismatch_count",
+      "value": 0
+    },
+    {
+      "citc_row_id": "CITC005",
+      "evidence": "FFP018 authoritative semantic hash sha256:6895a6a9dac8833b58a8d426c34c9d9e821b1af12e8f4b7b62c557236f43e417 explicitly bound inside byte-identical A/C wrapper manifest 66af293bff64599fbd8fa75cdb69bf60f8771ea2e7640a9aed5217133e822127",
+      "metric": "authoritative_semantic_input_binding_mismatch_count",
+      "value": 0
+    },
+    {
+      "citc_row_id": "CITC006",
+      "evidence": "ordered_sequence=[] in common manifest and both arm inputs",
+      "metric": "unauthorized_TTAR_operation_count",
+      "value": 0
+    },
+    {
+      "citc_row_id": "CITC007",
+      "evidence": "34/34 exact native disposition state components retained/recovered",
+      "metric": "native_disposition_state_identity_set_mismatch_count",
+      "value": 0
+    },
+    {
+      "citc_row_id": "CITC008",
+      "evidence": "-1 and 9 remain distinct native states where present; no pooling",
+      "metric": "special_state_collapse_count",
+      "value": 0
+    },
+    {
+      "citc_row_id": "Q03_COMPONENT_VECTOR",
+      "evidence": "34/34 exact via retained counts and denominators",
+      "metric": "componentwise_target_mismatch_count_core_c",
+      "value": 0
+    },
+    {
+      "citc_row_id": "Q03_COMPONENT_VECTOR",
+      "evidence": "34/34 exact via marginalization of joint configuration supports",
+      "metric": "componentwise_target_mismatch_count_core_a",
+      "value": 0
+    }
+  ],
+  "proposition_hash": "sha256:b967da7084c319193237980e17ac0e40443dad88b6608b9d73abd1eae3e97430",
+  "schema_version": "FFP022_FFP019_MECHANICAL_EVIDENCE_VECTOR_R1",
+  "support_contract_hash": "sha256:a977c670888c38690a6cd4f842dd523293389a5774c42cfdc85837492a742d10"
+}

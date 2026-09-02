@@ -1,0 +1,38 @@
+{
+  "interpretation_ceiling": "Raw values only; no legacy threshold PASS/FAIL, no CVCR/COCR, no B-dependent representation-dependence conclusion.",
+  "not_computed_without_b_or_separately_bound_fixture": [
+    "IVM02 independent high-support recall target",
+    "IVM03 independent frozen minority-branch recall target",
+    "IVM04 B-comparative higher-order recall",
+    "IVM06 heldout log loss",
+    "IVM07 counterpattern mass error against independent target",
+    "IVM08 registered block-counterfeit fixture",
+    "IVM09 >=999 registered respondent-link null permutations",
+    "IVM10 geometry stability",
+    "IVM12 cross-view compression-fidelity adjudication",
+    "IVM13 full incremental-view gain"
+  ],
+  "raw_values": {
+    "IVM01_COMMON_SEMANTIC_HASH_EQUALITY_A_C": 1.0,
+    "IVM05_Q03_CONDITIONAL_DISTRIBUTION_TV_CORE_A_VS_REFERENCE": 0.0,
+    "IVM05_Q03_CONDITIONAL_DISTRIBUTION_TV_CORE_C_EXACT_COUNT_RECONSTRUCTION_VS_REFERENCE": 0.0,
+    "IVM11_CORE_A_SERIALIZED_OUTPUT_BYTES": 26847402,
+    "IVM11_CORE_A_SERIALIZED_OUTPUT_GZIP9_BYTES": 1907084,
+    "IVM11_CORE_C_SERIALIZED_OUTPUT_BYTES": 114834,
+    "IVM14_CORE_A_QUERY_COVERAGE_WITH_ABSTENTION": "2/2 exact; 0 backoff; 0 abstention",
+    "IVM14_CORE_C_QUERY_COVERAGE_WITH_ABSTENTION": "16/16 exact invocations; 34/34 native-state components",
+    "IVM15_UNAUTHORIZED_POPULATION_INFERENCE_CLAIMS": 0,
+    "core_a_counterpattern_position_rows": 1033,
+    "core_a_disposition_configuration_count": 1856,
+    "core_a_j3_q86abc_distinct_configuration_count": 38,
+    "core_a_joint_configuration_pair_count": 13269,
+    "core_a_minority_branch_rows": 9692,
+    "core_a_position_configuration_count": 1561,
+    "q73a_n0": 7466,
+    "q73a_n1": 10161,
+    "risk_set_n": 19210
+  },
+  "schema_version": "FFP022_NONAUTHORITATIVE_FFX002_DESIGN_DIAGNOSTIC_R1",
+  "status": "NONAUTHORITATIVE_FFX002_DESIGN_DIAGNOSTIC",
+  "threshold_authority": "LEGACY_FFX002_R2_VALUES_PRESERVED_WHERE_MECHANICALLY_AVAILABLE__NOT_USED_FOR_CLAIM_ADMISSION"
+}
