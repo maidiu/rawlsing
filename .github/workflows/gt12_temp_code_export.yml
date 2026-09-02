@@ -1,0 +1,22 @@
+name: GT12 Temp Code Export
+on:
+  push:
+    branches:
+      - agent/vozhd-gt12-temp-code-export-r1
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 42c4a1ed753071026a5186e8c1770b6359a9e48c
+          fetch-depth: 1
+      - name: Verify exact integration head
+        run: test "$(git rev-parse HEAD)" = "42c4a1ed753071026a5186e8c1770b6359a9e48c"
+      - name: Archive exact runtime tree
+        run: tar -czf /tmp/rawlsing_gt12_code.tar.gz rawlsing_next
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rawlsing-gt12-code-42c4a1ed
+          path: /tmp/rawlsing_gt12_code.tar.gz
+          if-no-files-found: error
