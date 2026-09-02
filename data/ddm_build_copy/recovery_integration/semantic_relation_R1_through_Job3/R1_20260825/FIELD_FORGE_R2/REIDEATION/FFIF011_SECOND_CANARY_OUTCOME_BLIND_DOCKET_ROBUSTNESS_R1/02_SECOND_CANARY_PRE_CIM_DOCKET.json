@@ -1,0 +1,122 @@
+{
+  "schema_version": "FFIF011_SECOND_CANARY_PRE_CIM_DOCKET@1",
+  "status": "DESIGN_ONLY__PRE_PRA_PRE_CIM_PRE_CITC__TARGET_RESULTS_UNINSPECTED",
+  "starting_head": "bb3ed7cd2c1121bfae019ea0a9de3ace50a26a8e",
+  "precedent_refs": {
+    "FFIF009": "86d52b524e9ca2b6b8959ab079cf88c7c5b3ab62",
+    "FFIF010": "dd7e154ec1b32afaef5da9324327a7dbc7c08bd9",
+    "FFP028": "bb3ed7cd2c1121bfae019ea0a9de3ace50a26a8e"
+  },
+  "candidate": {
+    "candidate_id": "FFP028.CAND.001",
+    "court_disposition": "AFFIRMED__PRIMARY_SECOND_CANARY",
+    "R": {
+      "id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "n": 19210,
+      "semantic_member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+      "empirical_unit": "FFP014_R5_CURRENT_RESPONDENT_CARRIER@1/(COUNTRY,RESPNO)"
+    },
+    "C": {
+      "source_variable": "Q73A",
+      "qimpl": "question_impl.phase0.cae005624221d7b00dd2",
+      "identity_sha256": "cae005624221d7b00dd2e8dcc31a8c73d2d4f1446a06d428ab40f1ee2809ad14",
+      "c0_native_state": 0,
+      "c1_native_state": 1,
+      "contrast_direction": "c1_minus_c0",
+      "typed_noncontrast_states": [9, -1]
+    },
+    "D": {
+      "source_variable": "Q86A",
+      "qimpl": "question_impl.phase0.67f036c0efb7fb98ff4a",
+      "identity_sha256": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+      "source_semantic_meaning": "Opinion whether a person born in-country to one national and one non-national parent has the right to be a citizen.",
+      "native_substantive_domain": [0, 1],
+      "destination_event": {
+        "predicate": "Q86A_NATIVE_STATE == 1",
+        "native_state": 1,
+        "source_label": "Yes",
+        "selection_rule": "SOURCE_SEMANTIC_POSITIVE_EVENT__FREEZE_LITERAL_NATIVE_YES_STATE_BEFORE_ANY_D_X_C_OR_D_X_C_X_Z_INSPECTION",
+        "semantic_ceiling": "EVENT_MEMBERSHIP_ONLY__NO_ORDINAL_SCALE__NO_CATEGORY_COLLAPSE__NO_RESPONDENT_CITIZENSHIP_INFERENCE"
+      }
+    },
+    "Z": {
+      "ordered_tuple": ["Q70B", "Q70C", "Q84"],
+      "k": 3,
+      "identities": {
+        "Q70B": {
+          "qimpl": "question_impl.phase0.311d905b2baab867642e",
+          "identity_sha256": "311d905b2baab867642e2be9ed3595aa3c556d9d4508db7510f648e96fb9a8fd"
+        },
+        "Q70C": {
+          "qimpl": "question_impl.phase0.575fb5e032fab4cd18a4",
+          "identity_sha256": "575fb5e032fab4cd18a4a5bc3f55f233530a243cfa5ff7ecc75740b286b812e8"
+        },
+        "Q84": {
+          "qimpl": "question_impl.phase0.5a05ce882452ef85debd",
+          "identity_sha256": "5a05ce882452ef85debd9e7031211b1cd884f8b8c063b5080cfd87c40fa8fcb2",
+          "state_identity_ceiling": "COUNTRY_ALPHA3_QUALIFIED_NATIVE_CATEGORY__NO_CROSS_COUNTRY_EQUIVALENCE"
+        }
+      }
+    }
+  },
+  "observed_joint_domain_generator": {
+    "rule": "ENUMERATE_COMPLETE_OBSERVED_EXACT_SAME_UNIT_Z_CONJUNCTION_DOMAIN_OVER_R_USING_SOURCE_NATIVE_OR_ALREADY_GOVERNED_PROJECT_STATE_IDENTITIES_ONLY",
+    "target_variable_used": false,
+    "state_selection_by_outcome_forbidden": true,
+    "support_inventory": "FOR_EACH_EXACT_Z_PREDICATE_REPORT_n_s_c0_AND_n_s_c1_USING_C_AND_Z_ONLY",
+    "domain_preservation": "RETAIN_COMPLETE_OBSERVED_Z_ROSTER_INCLUDING_ZERO_ARM_PREDICATES_AS_TYPED_NONEXECUTABLE_ROWS",
+    "positive_both_arm_count_from_FFP028": 441
+  },
+  "support_law": {
+    "law": "EXACT_IDENTITIES_AND_REPLAY + EXACT_NUMERATOR_COUNTS + POSITIVE_DENOMINATORS -> EXACT_REALIZED_SAMPLE_CONDITIONAL_IDENTIFIED",
+    "minimum_support_threshold": "NONE__NO_THRESHOLD_INVENTED",
+    "within_state_execution_gate": "n(s,c0)>0 AND n(s,c1)>0",
+    "zero_denominator": "ABSTAIN__ZERO_DENOMINATOR__DO_NOT_FABRICATE",
+    "inferential_ceiling": "NO_POPULATION_INFERENCE__NO_SIGNIFICANCE__NO_MATERIALITY_FROM_SUPPORT_COUNTS"
+  },
+  "direction_functional": {
+    "family": "F01__EXACT_NATIVE_SINGLE_STATE_EVENT_CONTRAST",
+    "formula": "Delta_h = P_sample(Q86A=1 | R,Q73A=1,h) - P_sample(Q86A=1 | R,Q73A=0,h)",
+    "h_domain": "BROAD_TRUE_OR_ONE_EXACT_SUPPORT_ADMITTED_Z_PREDICATE",
+    "sign_domain": [-1, 0, 1],
+    "event_denominator_policy": "USE_THE_EXACT_QUERY_DENOMINATOR_DEFINED_BY_R_C_AND_h; Q86A EVENT MEMBERSHIP IS TRUE_ONLY_FOR_NATIVE_STATE_1; OTHER_NATIVE_STATES_REMAIN_TYPED_AND_ARE_NOT_DECLARED_SEMANTICALLY_EQUIVALENT",
+    "ttar_required": false
+  },
+  "state_level_status_logic": {
+    "EXACT_DIRECTIONAL_REVERSAL": "broad_sign in {-1,+1} AND state_sign == -broad_sign",
+    "EXACT_DIRECTIONAL_PERSISTENCE": "broad_sign in {-1,+1} AND state_sign == broad_sign",
+    "EXACT_ZERO_DIFFERENCE_IN_REALIZED_SAMPLE": "state_or_broad_exact_Delta == 0",
+    "ABSTAIN": "required denominator zero OR prerequisite authority/identity unresolved"
+  },
+  "compound_logic": {
+    "EXACT_DIRECTIONAL_SPLIT": "among support-admitted within-state scalar contrasts EXISTS sign=+1 AND EXISTS sign=-1",
+    "EXACT_DIRECTIONAL_REVERSAL_PRESENT": "broad_sign nonzero AND EXISTS support-admitted state_sign == -broad_sign",
+    "EXACT_DIRECTIONAL_PERSISTENCE_ACROSS_ADMITTED_STATES": "broad_sign nonzero AND at least one support-admitted state AND EVERY support-admitted state has the same nonzero sign as broad_sign",
+    "BROAD_EXACT_ZERO_ROUTE": "record exact broad zero; broad-relative persistence/reversal is not manufactured",
+    "abstention_preservation": "unsupported/unresolved roster members remain explicit and cannot be silently deleted",
+    "materiality_or_null_equivalence": "NOT_AUTHORIZED_HERE__CITC_JURISDICTION"
+  },
+  "finite_sample_fragility_diagnostic": "DELETE_ONE_RESPONDENT_DIRECTION_STABILITY@1",
+  "fallback_order": ["FFP028.CAND.001", "FFP028.CAND.002", "FFP028.CAND.003", "FFP028.CAND.004"],
+  "fallback_trigger_ceiling": "PREOUTPUT_AUTHORITY_SEMANTIC_EXPOSURE_PRA_OR_DOCKET_FAILURE_ONLY__NEVER_TARGET_RESULT_OR_FRAGILITY_RESULT",
+  "pra_subset_required": ["Q73A", "Q70B", "Q70C", "Q84", "Q86A"],
+  "pra_precedent": "FFP016@04c604be2ee4e32367f2074fdad380c7c563b740__REISSUANCE_OR_EXPLICIT_SECOND_CLAIM_SCOPE_ADJUDICATION_REQUIRED",
+  "ttar": {
+    "required": false,
+    "disposition": "NONE__SOURCE_NATIVE_EXACT_STATES_AND_LITERAL_NATIVE_EVENT_ONLY",
+    "would_be_required_if": ["Q84_cross_country_equivalence", "state_collapse_or_merge", "ordinal_or_numeric_scoring", "binning", "transport"]
+  },
+  "fusion_preoutput": {
+    "trigger": "NEW_PRIMITIVE_RELATION_CREATED_BY_COMBINATION",
+    "identified": false,
+    "disposition": "OF010_NOT_OWED_PREOUTPUT__QUERY_COMPOSITION_WITHOUT_FUSION",
+    "reason": "Exact joint predicate identity, support counts, direct conditional event contrasts, sign comparison, and deterministic existential/universal compound logic require no learned bridge, new semantic equivalence, metric, smoothing, or interaction estimand."
+  },
+  "absolute_firewall": {
+    "D_X_C_inspected": false,
+    "D_X_C_X_Z_inspected": false,
+    "Q86A_conditional_probability_inspected": false,
+    "effect_sign_reversal_split_persistence_inspected": false,
+    "representation_output_inspected": false
+  }
+}
