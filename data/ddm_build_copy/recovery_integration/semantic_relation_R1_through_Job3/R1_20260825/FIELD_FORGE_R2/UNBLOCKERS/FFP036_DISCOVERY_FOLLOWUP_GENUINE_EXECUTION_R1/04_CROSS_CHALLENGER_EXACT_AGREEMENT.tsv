@@ -1,0 +1,8 @@
+challenger_id	execution_status	target_rows	positive_cells	zero_cells	canonical_semantic_sha256	equals_oracle	support_sum_or_membership_failures	local_predicate_membership	notes
+W0	SERVES_FROZEN_CACHE	688699	259991	428708	0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df	YES__AS06_CACHE_ONLY	NA	NO	AS07 replay incomplete
+W1	PASS__EXACT_COMPLETE	688699	259991	428708	0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df	YES	0	NO	direct producer-owned response-fact requery; cold repeat byte-identical
+W2	UNDEFINED_FOR_OBJECT					NA	NA	NO	AS06 unavailable from support-only object; no value fabricated
+W3	PASS__EXACT_Q1_ONLY	688699	259991	428708	0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df	YES	0	NO	reconstructed from post-target Q1 sufficient statistic
+W4	PASS__EXACT_COMPLETE	688699	259991	428708	0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df	YES	0	YES__4898550_MEMBERSHIP_ROWS	membership materialized in execution; persistence not required
+W5	PASS__EXACT_COMPLETE	688699	259991	428708	0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df	YES	0	YES__FULL_CLAIM_RELEVANT_STATE	independent 4600 full-profile-country groups -> 255 subset marginalization
+W6	EXCLUDED					NA	NA	AS_FROZEN	NO_PREOUTPUT_FUSION_TRIGGER

@@ -1,0 +1,87 @@
+{
+  "W0": {
+    "AS06": "PASS__CACHE_SERVING",
+    "AS07": "INCOMPLETE__CANNOT_INDEPENDENTLY_REGENERATE_AS07"
+  },
+  "W2": {
+    "AS06": "UNDEFINED_FOR_OBJECT",
+    "numeric_values_fabricated": false
+  },
+  "W3": {
+    "q1": {
+      "gzip_bytes": 5351763,
+      "gzip_sha256": "b6ff598cc7fd9e7c67529a05a4971364bf864e406abdd03b305f06717bedde2d",
+      "rows": 688699,
+      "semantic_bytes": 59653929,
+      "semantic_sha256": "e414ca55a43486fd70842d9e2baa67c8ac9d1f2b5dbbca9254cf5ca29e3e1e14"
+    },
+    "w3": {
+      "bytes": 134174630,
+      "positive": 259991,
+      "rows": 688699,
+      "sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+      "support_sum_invariant_failures": 0,
+      "zero": 428708
+    }
+  },
+  "W4": {
+    "bytes": 134174630,
+    "membership_rows": 4898550,
+    "membership_semantic_bytes": 671101383,
+    "membership_semantic_sha256": "b7610d52a789094ac32ce8a20c109606c043d9b01ce303fd45cf481effa4e439",
+    "positive": 259991,
+    "rows": 688699,
+    "sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+    "support_or_membership_failures": 0,
+    "zero": 428708
+  },
+  "W6": "EXCLUDED__NO_PREOUTPUT_FUSION_TRIGGER",
+  "all_executed_exact_reconstruction_hashes_equal_oracle": true,
+  "all_predicate_support_sum_invariants_hold": true,
+  "bank_cold_rematerialization": {
+    "ffp036_canonical_oracle_target.tsv.gz": {
+      "byte_identical": true,
+      "sha256": "e60a96a4674143db1280e15c354e2a071501ba28782fd3314438f2c414b88f67"
+    },
+    "ffp036_w3_q1_sufficient_statistic.tsv.gz": {
+      "byte_identical": true,
+      "sha256": "b6ff598cc7fd9e7c67529a05a4971364bf864e406abdd03b305f06717bedde2d"
+    },
+    "ffp036_w5_full_state_surface.tsv.gz": {
+      "byte_identical": true,
+      "sha256": "9a66ad31ce423f8b1972b9cf126f91eda4e228707b868b57e64e185c36ac9cd4"
+    }
+  },
+  "committed_deterministic_replay_code_sha256": "7fb08917abc75792cc7539367f31c5e272de1754d338deb6635376ff75956d0e",
+  "executed_engine_sha256": "a6c1f5369250102815a811e10088022fe603dc8ba8e8216e64036e7036c3e303",
+  "observed_zero_cells_explicit": 428708,
+  "oracle": {
+    "deterministic_gzip_bytes": 5886444,
+    "deterministic_gzip_sha256": "e60a96a4674143db1280e15c354e2a071501ba28782fd3314438f2c414b88f67",
+    "positive_cells": 259991,
+    "rows": 688699,
+    "semantic_bytes": 134174630,
+    "semantic_sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+    "zero_cells": 428708
+  },
+  "oracle_a_repeat": {
+    "byte_for_byte_equal": true,
+    "runA_bytes": 134174630,
+    "runA_semantic_sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+    "runB_bytes": 134174630,
+    "runB_semantic_sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df"
+  },
+  "oracle_b_W5": {
+    "bytes": 134174630,
+    "full_profile_country_groups": 4600,
+    "positive": 259991,
+    "positive_joint_keys": 259991,
+    "rows": 688699,
+    "sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+    "support_sum_invariant_failures": 0,
+    "zero": 428708
+  },
+  "schema_version": "FFP036_REPLAY_AND_INDEPENDENT_RECONSTRUCTION_RECEIPT@1",
+  "status": "PASS__EXACT_REPLAY_AND_INDEPENDENT_RECONSTRUCTION",
+  "unregistered_or_dropped_cells": 0
+}

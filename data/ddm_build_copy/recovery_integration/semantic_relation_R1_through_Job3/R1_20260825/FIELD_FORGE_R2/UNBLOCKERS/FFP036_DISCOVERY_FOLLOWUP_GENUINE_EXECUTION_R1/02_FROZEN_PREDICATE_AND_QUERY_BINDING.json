@@ -1,0 +1,76 @@
+{
+  "W6": "EXCLUDED__NO_PREOUTPUT_FUSION_TRIGGER",
+  "X": {
+    "domain_lexical": [
+      "BFO",
+      "BOT",
+      "CVE",
+      "KEN",
+      "LES",
+      "MAU",
+      "MLW",
+      "MOZ",
+      "NAM",
+      "SAF",
+      "UGA"
+    ],
+    "identity": "COUNTRY_ALPHA3"
+  },
+  "canonical_fields": [
+    "predicate_id",
+    "subset_size",
+    "subset_mask",
+    "variables",
+    "state_pairs_json",
+    "original_support",
+    "COUNTRY_ALPHA3",
+    "country_support",
+    "status"
+  ],
+  "cell_universe": 688699,
+  "challengers_included": [
+    "W0",
+    "W1",
+    "W2",
+    "W3",
+    "W4",
+    "W5"
+  ],
+  "claim_identity": "DISCOVERY_TO_FOLLOWUP_LINKAGE_MINIMUM@1",
+  "discovery_surface": [
+    "Q76A",
+    "Q76B",
+    "Q86A",
+    "Q86B",
+    "Q86C",
+    "Q86D",
+    "Q86E",
+    "Q86F"
+  ],
+  "materiality_citc_required": false,
+  "predicate_roster": {
+    "canonical_uncompressed_sha256": "5bf42464f3ff93e97d80f8ce178d670aa7fee98d13144f9c2d29d4f59032bced",
+    "deterministic_gzip_sha256": "4968bb74fc733cbbd3dd4db4d3aa4dfe7439b172d3fcdf62ee0ee2bc2f01319c",
+    "rows": 62609
+  },
+  "relation_id": "COMPLETE_COUNTRY_STRATIFIED_PREDICATE_SUPPORT@1",
+  "result_firewall_mutations": 0,
+  "risk_set": {
+    "identity": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "physical_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+    "respondents": 19210
+  },
+  "schema_version": "FFP036_FROZEN_PREDICATE_AND_QUERY_BINDING@1",
+  "sort_law": [
+    "frozen_predicate_roster_order",
+    "frozen_country_lexical_order"
+  ],
+  "status": "EXECUTED_WITHOUT_POSTFREEZE_MUTATION",
+  "status_law": {
+    "country_support==0": "OBSERVED_ZERO",
+    "country_support>0": "OBSERVED_POSITIVE"
+  },
+  "support_law": "for every predicate: sum_country(country_support) == original_support",
+  "terminal_relevant_quantifier": "Q1_ONE_PREREGISTERED_FOLLOWUP",
+  "weighting": "NONE"
+}
