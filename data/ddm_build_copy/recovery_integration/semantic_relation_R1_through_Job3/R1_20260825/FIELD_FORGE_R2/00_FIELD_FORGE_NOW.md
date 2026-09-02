@@ -2,11 +2,23 @@
 
 Status:
 
-`EXPLORATORY_TERMINAL_SYNTHESIS_ISSUED__AWAITING_INDEPENDENT_HOSTILE_AUDIT__NOT_GLOBAL_HQ_ADOPTED`
+`EXPLORATORY_TERMINAL_SYNTHESIS_REPAIRED_AFTER_INDEPENDENT_AUDIT__PENDING_BOUNDED_REREVIEW__NOT_GLOBAL_HQ_ADOPTED`
 
-Current FIELD FORGE exploratory terminal branch:
+Current FIELD FORGE exploratory repair branch:
 
-`agent/vozhd-field-forge-r2-terminal-synthesis-r1`
+`agent/vozhd-field-forge-r2-terminal-synthesis-repair-r1`
+
+Original sealed terminal synthesis:
+
+`418a2e788be9f3274131aa14f7fca09078e64621`
+
+Independent architecture audit:
+
+`054657a8ed6ee4fb39461acb41d52089e0d89bdb`
+
+Independent evidence + PRE-MAIN seam audit:
+
+`8652c7c480c568f655785f30c9211912c02573a7`
 
 Canonical PRE-MAIN sovereign base remains:
 
@@ -18,32 +30,29 @@ Global-HQ FIELD FORGE commissioning act remains:
 
 No PRE-MAIN or main movement has been performed.
 
-## 1. Terminal trajectory
+## 1. Audit outcome and bounded repair
 
-FIELD FORGE R2 preserved two independent lanes:
+The independent evidence/PRE-MAIN seam audit passed with no material defect and independently reproduced the decisive FFP036 and FFIF012F evidence.
 
-- Lane A — make current empirical/authority machinery executable enough to test real structural propositions;
-- Lane B — repeatedly attack the architecture itself.
+The independent architecture audit preserved the core architecture/no-starvation thesis but found one bounded semantic-typing defect:
 
-The R2 loop was:
+`UNOWNED_STRONG_NOUN_ADMISSION_MIS_TYPED_AS_DOWNSTREAM_OWNED`.
 
-`IDEATE -> FREEZE DISCRIMINATING PROPOSITION -> EXECUTE -> INDEPENDENT COURT -> RE-IDEATE`.
+The repair does not reopen Lane B empirical research, does not require another canary, and does not change FFP036/FFIF012F results.
 
-It did not terminate because a canary count was reached.
+It freezes the distinction:
 
-FFIF012D's representation-neutral stopping contract now passes SC-01 through SC-10 after the post-second-canary re-ideation wave, FFIF012F unknown-claim discovery ablation and FFIF013/FFP035/FFIF014/FFP036 discovery-to-follow-up campaign.
+`NOT_FIELD_FORGE_OWNER != ESTABLISHED_DOWNSTREAM_OWNER`.
 
-Therefore FIELD FORGE R2 is now terminal-synthesis ready and the terminal synthesis has been issued under:
+Where no competent current owner is established for a strong-noun admission, the terminal disposition is `BLOCKED_EXPLICIT_AUTHORITY`, not `TYPED_DOWNSTREAM_ONLY`.
 
-`FIELD_FORGE_R2/TERMINAL_SYNTHESIS_R1/`.
+The compact negative-state vocabulary also now explicitly includes `UNDEFINED_FOR_OBJECT`.
 
-It awaits a fresh independent hostile architecture audit before any adoption/reintegration act.
-
-## 2. Terminal architectural thesis
+## 2. Terminal architectural thesis survives
 
 FIELD FORGE inherits the burden/functions of the old structural-world architecture, not its historical nine-strata ontology.
 
-Its learned architecture is a producer-preserving, relation-explicit, claim/discovery-indexed structural-observatory layer.
+Its learned architecture remains a producer-preserving, relation-explicit, claim/discovery-indexed structural-observatory layer.
 
 ```text
 GOVERNED PRODUCER-OWNED EMPIRICAL DAG
@@ -53,8 +62,8 @@ GOVERNED PRODUCER-OWNED EMPIRICAL DAG
     -> optional lossless index/cache/carrier/materialization
     -> optional claim-constitutive order/metric/topology
     -> optional lossy model/coordinate interfaces
-    -> separate structural-semantic admission
-    -> downstream PRE-V3 / V553+ semantic owners
+    -> separate competent structural-semantic admission OR typed blocker
+    -> established PRE-V3 / V553+ semantic owners where jurisdiction exists
     -> V3 actor-indexed realization
 ```
 
@@ -71,106 +80,72 @@ FIELD FORGE must preserve or direct-reference, where relevant:
 - explicit relation/query identity when a relation is asserted;
 - exact same-unit higher-order predicates when claim/discovery requires them;
 - minority/counterpattern and contradictory alternatives;
-- typed zero/empty/abstain/out-of-scope/denied/unresolved/noncomparable/integrity states;
+- typed zero/empty/abstain/undefined-for-object/out-of-scope/denied/unresolved/noncomparable/observability/integrity states;
 - immutable authority/provenance dependency closure;
 - deterministic replay/reconstruction law;
 - information-loss and follow-up-quantifier ceilings;
-- exact downstream semantic-owner references.
+- exact semantic-owner references where established, otherwise exact typed blockers.
 
 This is a capability/relation contract, not a mandatory physical table contract.
 
-## 4. Late decisive empirical result
+## 4. Late decisive empirical result remains unchanged
 
-FFP036 terminal:
+FFP036 terminal evidence remains the exact frozen `DISCOVERY_TO_FOLLOWUP_LINKAGE_MINIMUM@1` court over `62,609 × 11 = 688,699` cells.
 
-`957628a3653e55757404ecf62822c4dd12f77430`
+- W1 direct producer re-query: `PASS__EXACT_COMPLETE` without FIELD-FORGE-local respondent membership;
+- W3: exact Q1-only sufficiency;
+- W4/W5: exact complete sufficiency;
+- W1/W3/W4/W5 semantic SHA-256: `0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df`;
+- W2: `UNDEFINED_FOR_OBJECT__AS06`;
+- W0: replay-incomplete at AS07;
+- 259,991 observed-positive cells;
+- 428,708 observed-zero cells;
+- support-sum failures = 0.
 
-Frozen court:
+The independent evidence audit also independently rebuilt FFIF012F's bounded discovery result: 19,210 respondents, 1,856 exact full profiles, all 255 nonempty subsets, 62,609 observed conjunction-support rows and zero marginalization mismatches.
 
-`DISCOVERY_TO_FOLLOWUP_LINKAGE_MINIMUM@1`.
+## 5. Owner seam after repair
 
-On the complete 62,609-predicate × 11-country domain (`688,699` cells):
-
-- W1 direct upstream producer re-query, with no FIELD-FORGE-local respondent-membership object, returned `PASS__EXACT_COMPLETE`;
-- W3 returned exact Q1-only sufficiency;
-- W4 and W5 returned exact complete sufficiency;
-- all four lawful realizations had canonical SHA-256 `0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df`;
-- W2 correctly returned `UNDEFINED_FOR_OBJECT__AS06`;
-- W0 remained replay-incomplete at AS07;
-- W6 remained excluded;
-- 259,991 cells were observed-positive and 428,708 observed-zero;
-- support-sum failures = 0;
-- firewall breaches = 0;
-- typed blockers = none.
-
-Central ruling:
-
-`UNIVERSAL_FIELD_FORGE_LOCAL_RESPONDENT_MEMBERSHIP_NECESSITY = EMPIRICALLY_FALSIFIED_AS_REQUIRED`.
-
-This does not establish arbitrary-future follow-up sufficiency. Future stronger claim-specific objects may still be earned by a new named starvation witness.
-
-## 5. What is not universal ontology
-
-The terminal synthesis does not promote as universal FIELD FORGE primitives:
-
-- nine strata;
-- one integrated social space;
-- geometry/coordinates;
-- persistent configuration tables;
-- respondent-membership carriers;
-- full-state carriers;
-- motif/repertoire ontologies;
-- generic graph/hypergraph ontology;
-- common cross-context coordinate space;
-- field/capital/hegemony/homology/pressure-mechanism nouns.
-
-Each may remain useful or even required for a named claim class if it survives the relevant weakest-object/authority court.
-
-## 6. Stronger sociology and downstream meaning
-
-Neutral empirical precursors may support stronger structural interpretation, but stronger nouns require separate admission.
-
-FIELD FORGE does not pre-own:
+Established downstream owner jurisdictions remain:
 
 - V553 temporal meaning;
-- V554 basis/equivalence/affordance semantics;
+- V554 basis/equivalence/affordance;
 - V555 mediation-route semantics;
-- V556 higher-order route interaction/topology/attractor-prerequisite semantics;
-- V557/V558 publication/resolution authority;
-- V3 actor encounter, uptake, memory, relationship history, developmental path, biography or realized personhood.
+- V556 governed higher-order route interaction/topology/attractor prerequisites when required;
+- V557/V558 publication/repository/resolution;
+- V3 actor encounter, uptake, memory, relationship history, developmental path, biography and realized personhood.
 
-## 7. Residual slots
+No competent current owner is established by the terminal record for generic admission of:
 
-Remaining authority/observability work is typed rather than architecture-blocking, including where invoked:
+- FIELD;
+- FIELD_SPECIFIC_CAPITAL / strong CONVERSION;
+- HEGEMONY / SUBHEGEMONY;
+- HOMOLOGY;
+- PRESSURE_FOOTPRINT / PRESSURE_PATHWAY / STRUCTURAL_MECHANISM.
 
-- finite Position Role Authority / OBL005;
-- external political-group crosswalk / OBL006;
-- weight/estimand authority;
-- continuous/ordinal transformations;
-- cross-context transport maps;
-- structural-noun admission;
-- temporal interpretation;
-- statistical adequacy/materiality;
-- source-bound observability limits.
+Those strong-noun admissions are therefore `BLOCKED_EXPLICIT_AUTHORITY` at the current terminal grain while their neutral precursor evidence remains available.
 
-No missing authority is repaired by proxy invention.
+`BLOCKED != FALSE`.
 
-## 8. Immediate next act
+## 6. Stopping condition after repair
 
-A fresh independent reviewer must hostile-audit the terminal synthesis against:
+The architecture audit marked SC-01, SC-07 and SC-10 for material repair only because of the owner-seam typing defect. The bounded repair re-adjudicates those three gates as PASS:
 
-- canonical PRE-MAIN seam and Authority31/39 inheritance;
-- complete R2 Lane-B evidence;
-- FFIF012D SC-01..SC-10;
-- FFP033/034 representation courts;
-- FFIF012F unknown-claim discovery evidence;
-- FFIF013/035/014/036 discovery-follow-up evidence;
-- PRE-V3/V553+/V3 owner boundaries;
-- negative-state, replay and information-conservation laws.
+- SC-01: every strong-noun terminal demand now has an allowed explicit authority-blocked disposition with no fabricated substitute;
+- SC-07: established downstream owners are distinguished from currently unowned strong-noun admissions;
+- SC-10: no affected terminal frontier remains in an unallowed or fictitiously downstream-owned state.
 
-Only after that independent review may a competent central act decide whether the terminal synthesis is acceptable for reintegration/adoption consideration.
+SC-02 through SC-06 and SC-08 through SC-09 are unchanged from the prior readiness court.
 
-## 9. Authority ceiling
+No new universal starvation witness or empirical architecture frontier was exposed by either audit.
+
+## 7. Immediate next act
+
+Run one fresh, bounded independent rereview of this repair only. It must verify the owner-seam correction, `UNDEFINED_FOR_OBJECT` conservation, SC-01/07/10 restoration, no regression of established V553+/V3 owners, and no drift of the empirical/no-starvation architecture.
+
+Only after that rereview may a competent central act decide whether the repaired terminal synthesis is acceptable for reintegration/adoption consideration.
+
+## 8. Authority ceiling
 
 This state does not:
 
@@ -182,4 +157,4 @@ This state does not:
 - promote a physical implementation;
 - infer V3/person facts.
 
-`TERMINAL_SYNTHESIS_ISSUED != PROJECT_ADOPTION`.
+`TERMINAL_SYNTHESIS_REPAIRED != PROJECT_ADOPTION`.
