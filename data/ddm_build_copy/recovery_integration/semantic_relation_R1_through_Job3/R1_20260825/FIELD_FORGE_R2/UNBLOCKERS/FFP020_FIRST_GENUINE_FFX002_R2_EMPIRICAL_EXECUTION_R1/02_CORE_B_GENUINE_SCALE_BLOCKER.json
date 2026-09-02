@@ -1,0 +1,41 @@
+{
+  "schema_version": "FFP020_CORE_B_GENUINE_SCALE_BLOCKER_R1",
+  "terminal_state": "BLOCKED__MANDATORY_CORE_B_IMPLEMENTATION_NOT_EXECUTABLE_AT_FROZEN_RSTAR_SCALE",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-field-forge-r2-ffp020-first-genuine-ffx002r2-empirical-execution-r1",
+  "exact_starting_head": "433104a5bb1e7ada710c6243413e6061a4ca41cf",
+  "affected_arm": "B__LOCAL_GEOMETRIC_VIEW",
+  "affected_complete_comparison": "A_B_C_COMPLETE_COMPARISON_BLOCKED",
+  "experiment_invalidity": false,
+  "semantic_input_invalidity": false,
+  "blocker_class": "MANDATORY_ARM_IMPLEMENTATION_SCALABILITY_FAILURE",
+  "frozen_risk_set_n": 19210,
+  "implementation_proof": {
+    "source_ref": "433104a5bb1e7ada710c6243413e6061a4ca41cf:data/ddm_build_copy/ffx002_r2_local_geometry.py",
+    "distance_matrix": "_distance_matrix allocates an n-by-n Python list-of-lists and fills every respondent pair",
+    "classical_mds": "_classical_mds allocates n-by-n squared-distance and Gram matrices and calls full _jacobi_eigh",
+    "jacobi": "_jacobi_eigh copies the n-by-n Gram matrix, allocates an n-by-n identity/eigenvector matrix, and scans all upper-triangle pairs for each rotation",
+    "repetition": "_build_component reruns _classical_mds for dimensionality-sensitivity variants and constructs another n-by-n embedded-distance matrix"
+  },
+  "scale_receipt": {
+    "n_squared_cells": 369024100,
+    "unique_pair_count": 184502445,
+    "packed_float64_lower_bound_gib_per_n_squared_matrix": 2.7494437992572784,
+    "packed_float64_lower_bound_gib_for_five_n_squared_matrices": 13.747218996286392,
+    "approx_cpython_list_plus_float_gib_per_filled_n_squared_matrix": 10.998920202255249,
+    "approx_cpython_list_plus_float_gib_for_five_matrix_scale_structures": 54.994601011276245,
+    "note": "The CPython estimates count roughly 8 bytes per list pointer plus 24 bytes per float object and row-list overhead; they are an engineering-order estimate, not a semantic or claim-materiality threshold. The packed-float64 figures are hard lower-bound arithmetic for dense n-by-n storage."
+  },
+  "entrypoint_disposition": "NOT_LAUNCHED_ON_FULL_RSTAR_AFTER_STATIC_EXECUTABILITY_GATE_PROVED_MANDATORY_B_CANNOT_COMPLETE_UNDER_FROZEN_IMPLEMENTATION",
+  "why_no_forced_launch": "The exact integrated stack invokes Core A, then Core B, then Core C and only writes integrated outputs after all mandatory producers return. Forcing a known dense n-by-n/full-Jacobi path at n=19,210 would consume resources without creating a lawful complete output and would not convert an implementation failure into empirical evidence.",
+  "surviving_evidence_policy": "DO_NOT_ERASE_VALID_FFP017_SUBSTRATE_OR_FFP020_REFERENCE_TARGET_EVIDENCE",
+  "q03_status": "EXACT_REALIZED_SAMPLE_TARGET_ADJUDICABLE__PER_ARM_Q03_SUFFICIENCY_NOT_ADJUDICABLE_WITHOUT_GENUINE_ARM_OUTPUTS",
+  "supplementary_utility_status": "SUBSTRATE_INFORMATION_REMAINS_INTERPRETABLE__REPRESENTATION_SPECIFIC_UNIQUE_UTILITY_NOT_YET_EMPIRICALLY_ADJUDICABLE",
+  "smallest_blocker_to_completion": "Replace or separately authorize a Core-B implementation that preserves the already-frozen semantic/method contract while avoiding the full respondent n-by-n Jacobi-MDS execution path, then rerun the exact FROZEN_EMPIRICAL_CANARY bundle. No CIM, CITC, comparison identity, semantic state, PRA role, or TTAR change is required by this blocker receipt.",
+  "authority_mutated": false,
+  "cim_mutated": false,
+  "citc_mutated": false,
+  "comparison_identity_mutated": false,
+  "new_materiality_thresholds_minted": false,
+  "final_cvcr_cocr_performed": false
+}
