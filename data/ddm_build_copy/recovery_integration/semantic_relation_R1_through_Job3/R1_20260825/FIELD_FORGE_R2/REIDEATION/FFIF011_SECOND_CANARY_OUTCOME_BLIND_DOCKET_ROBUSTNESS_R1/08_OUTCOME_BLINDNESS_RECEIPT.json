@@ -1,0 +1,53 @@
+{
+  "receipt_id": "FFIF011_OUTCOME_BLINDNESS_RECEIPT@1",
+  "status": "PASS__TARGET_RESULTS_UNINSPECTED",
+  "starting_head": "bb3ed7cd2c1121bfae019ea0a9de3ace50a26a8e",
+  "allowed_evidence_consumed": [
+    "FFIF009@86d52b524e9ca2b6b8959ab079cf88c7c5b3ab62__design_doctrine",
+    "FFIF010@dd7e154ec1b32afaef5da9324327a7dbc7c08bd9__support_direction_preclosure_doctrine",
+    "FFP028@bb3ed7cd2c1121bfae019ea0a9de3ace50a26a8e__00_RETURN_outcome_blind_structural_return",
+    "FFP028@bb3ed7cd2c1121bfae019ea0a9de3ace50a26a8e__01_FROZEN_CANDIDATE_ORDER_structural_counts",
+    "FFP028@bb3ed7cd2c1121bfae019ea0a9de3ace50a26a8e__04_TARGET_RESULT_FIREWALL_RECEIPT",
+    "FFP015@f1d4474c24a0127cf4e37719d2c857664db8b38a__source_semantic_precedent_only",
+    "FFP016@04c604be2ee4e32367f2074fdad380c7c563b740__role_ancestry_precedent_only",
+    "AFROBAROMETER_ROUND_5_CODEBOOK__Q86A_SOURCE_LABEL_AND_NATIVE_VALUE_LABELS_ONLY"
+  ],
+  "structural_candidate_evidence": {
+    "CAND001": {"Z": ["Q70B", "Q70C", "Q84"], "positive_both_C_arms": 441, "median_min_arm_count": 3, "max_min_arm_count": 162},
+    "CAND002": {"Z": ["Q70B", "Q84"], "positive_both_C_arms": 329, "median_min_arm_count": 5, "max_min_arm_count": 165},
+    "CAND003": {"Z": ["Q70C", "Q84"], "positive_both_C_arms": 297, "median_min_arm_count": 5, "max_min_arm_count": 206},
+    "CAND004": {"Z": ["Q70B", "Q70C"], "positive_both_C_arms": 17, "median_min_arm_count": 25, "max_min_arm_count": 3514}
+  },
+  "forbidden_inspection": {
+    "D_X_C": "NOT_INSPECTED__NOT_COMPUTED_BY_FFIF011",
+    "D_X_C_X_Z": "NOT_INSPECTED__NOT_COMPUTED_BY_FFIF011",
+    "Q86A_conditional_probability": "NOT_INSPECTED",
+    "effect_or_contrast_value": "NOT_INSPECTED",
+    "effect_sign": "NOT_INSPECTED",
+    "reversal": "NOT_INSPECTED",
+    "split": "NOT_INSPECTED",
+    "persistence": "NOT_INSPECTED",
+    "representation_output": "NOT_INSPECTED"
+  },
+  "candidate_decision_inputs": [
+    "k and exact joint-state breadth",
+    "cross-block/source semantic diversity",
+    "C-by-Z structural arm support counts only",
+    "support concentration summaries",
+    "human interpretability of exact predicates",
+    "exact-query/composition architecture stress",
+    "risk of finite-sample directional fragility inferred only from target-free support geometry"
+  ],
+  "explicitly_not_used": [
+    "any Q86A-by-Q73A count",
+    "any Q86A-by-Q73A-by-Z count",
+    "any target numerator under C or Z",
+    "any conditional probability",
+    "any sign or effect magnitude",
+    "any representation score/output",
+    "DELETE_ONE diagnostic result"
+  ],
+  "direction_event_selection": "Q86A native state 1 selected from source semantics 1=Yes before any target join; no observed conditional frequency or direction used.",
+  "fragility_contract_timing": "DELETE_ONE_RESPONDENT_DIRECTION_STABILITY frozen before target outputs and therefore cannot be tuned to them.",
+  "final": "PASS__TARGET_RESULTS_UNINSPECTED"
+}
