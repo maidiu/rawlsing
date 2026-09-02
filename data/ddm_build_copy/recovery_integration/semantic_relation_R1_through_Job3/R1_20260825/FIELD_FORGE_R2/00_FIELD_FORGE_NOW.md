@@ -1,235 +1,219 @@
 # FIELD FORGE R2 — STATE NOW
 
-Status: `EXPLORATORY_UNRECONCILED`
+Status:
 
-Branch: `agent/field-forge-r2-grounded-continuation`
+`EXPLORATORY_RECONSOLIDATED_POST_SECOND_CANARY_REIDEATION__ONE_CORE_DISCRIMINATING_CAMPAIGN_AWAY__NOT_TERMINAL_SYNTHESIS_READY`
 
-Frozen canonical launch head: `8b13b67df8f055761b432191eca564c1840250ec`
+Current FIELD FORGE exploratory branch:
 
-Historical design-capital ref: `3065c22ab03be56796399d266856cbc7fa22f933`
+`agent/vozhd-field-forge-r2-ffif012-post-second-canary-central-reideation-r1`
 
-Historical induction ref: `a68fd5a946f17fa2470b541f716cb32a439453b7`
+Canonical PRE-MAIN sovereign base remains:
 
-Primary state: `N028 — FIELD_FORGE`
+`5bfcb9ddfc30a9f0958e675a5af6c611978284bf`
 
-This continuation is not a resurrection of the historical FIELD FORGE branch. It is a re-grounded continuation from canonical PRE-MAIN, consuming historical FIELD FORGE as nonbinding design capital.
+Global-HQ FIELD FORGE commissioning act:
 
-## 1. Current binding law
+`d3e93ab491dbbdc1763c019f44992b6884456b5b`
 
-FIELD FORGE inherits current Rawlsing governance rather than inventing its own currentness rules. In particular:
+Grounded R2 continuation ancestry:
 
-- source identity/currentness, semantic authority, routing/applicability, respondent evidence, measurement/composability, and generated-object authority remain separate jurisdictions;
-- `CURRENT_AUTHORITY != MUST_FACTOR_INTO_IDEATION`;
-- `CANONICAL_GIT_ANCESTRY != CURRENT_RUNTIME != CURRENT_AUTHORITY`;
-- `WORKER_PASS != PROJECT_ACCEPTANCE`;
-- `BLOCKED != FALSE`;
-- `LOCAL_COMPLETION != PROJECT_COMPLETION`;
-- physical architecture remains open and FIELD FORGE may not select it accidentally while solving semantic architecture;
-- PRE-V3 population/social-world possibility remains categorically distinct from V3 realized personhood.
+`ac88a482a3623b5c711999525c49bf7c1020e5fe`
 
-The frozen launch head already contains the W55A/W55B governance-ground/enforcement inheritance. That changes the local background from the older historical room but does not elevate FIELD FORGE's own authority: N028 remains exploratory/nonbinding.
+Physical post-second-canary convergence commit:
 
-## 2. Current executed/admitted substrate relevant to FIELD FORGE
+`671d1f24eb6b24ee46c966a61f605e60cf2e95bc`
 
-FIELD FORGE may consume, without casually re-litigating:
+No PRE-MAIN or main movement is performed by this FIELD FORGE state.
 
-- the current 35-scope governed question/semantic substrate;
-- current J01-A exact current-only source-structure/candidacy freeze: 1,879 source structures and 1,411 J candidates across 9 families / 35 scopes, at source/candidate denominator grain only;
-- current C06 `CURRENT_ROUTING_LEDGER_CONTRACT@2`: 18,276 exact current question implementations, including exact routing/applicability dispositions and immutable provenance backreferences;
-- current respondent/source fields, weights/design-purpose authority where actually available, and existing W32/W35 admitted functional units at their exact current grains;
-- Job3 typed semantic-relation lifecycle, O12 successor law, P1/P2/P3/P4/P10, Authority31 information-conservation/physical-neutrality law, and Authority39 living-succession/project-memory law.
+## 1. What FIELD FORGE is now understood to be
 
-Neither J01-A candidacy nor Contract@2 may be silently promoted into executable same-respondent J.
+FIELD FORGE is Rawlsing's exploratory successor-design effort for the old structural-world architecture.
 
-## 3. Bounded valid historical function
+It is not the immediate post-source stage. It consumes an already-governed empirical-social world containing source semantics/currentness, routing/applicability, respondent/same-unit information where admitted, weights/estimands, exact empirical queries/facts/discovery, negative states, provenance and replay.
 
-The strongest original FIELD FORGE design capital survives substantially:
+Its job is to determine the weakest actor-independent structural semantics and information/relation grammar that downstream PRE-V3 functions actually require without:
 
-1. `NO NEW SOURCES`: theory must work against Rawlsing's governed empirical world and type observability limits rather than invent proxies or procurement programs.
-2. Observability precedes ontology.
-3. A source variable is not a social-position variable merely because a theorist could use it that way.
-4. Position-role authority is a finite semantic-authority problem before it is a geometry problem.
-5. Questionnaire/instrument topology is itself an empirical nuisance structure and can counterfeit geometry or weight.
-6. Source presence, routing eligibility, respondent exposure, response, refusal, and substantive response are distinct states.
-7. Same-respondent J is part of metric admissibility, not a decorative downstream join.
-8. One universal social space is not licensed; local/disconnected/dual geometry families may be required.
-9. Number of items / questionnaire block size is not sociological importance or weight.
-10. Position and disposition spaces must be identifiable independently before respondent-linked homology is tested.
-11. Shared measurement ancestry, common weights, joint optimization, form effects, or questionnaire design can manufacture apparent homology.
-12. Pressure footprints remain descriptive estimands unless a separate causal design warrants mechanism claims.
-13. Association is not capital value; capital value is not conversion; cluster/factor is not field; majority/prevalence is not hegemony.
-14. PRE-V3 positioned social-world possibility does not become actor belief, identity, personality, motive, psychopathology, life event, or realized worldview.
-15. Any V3 personal relational field is downstream realization, never a shortcut from population structure.
+- re-owning upstream producer facts;
+- turning a representation into ontology;
+- restoring the historical nine strata by inertia;
+- promoting a strong sociological noun from mere association;
+- or projecting population structure into a V3 person.
 
-## 4. Historical assumptions invalidated or narrowed by current Rawlsing
+Core law:
 
-R2 rejects or narrows the following historical/currentness assumptions:
+`FUNCTIONAL_CONSERVATION != NINE_STRATA_ONTOLOGY_CONSERVATION`.
 
-- historical FIELD FORGE branch state is not a current project base;
-- historical source/routing/J denominators are not current denominators;
-- catalog co-presence cannot stand in for respondent exposure;
-- a source-native multi-member structure cannot stand in for executable same-respondent J;
-- a positive item-routing disposition cannot stand in for proof that a named respondent was exposed;
-- a multi-response coding set cannot automatically be treated as several separately prompted measurements;
-- a single common observation matrix cannot be assumed before exposure topology is compiled;
-- default MCA/factor/correlation geometry is not licensed merely because variables are available;
-- measurement ancestry cannot identify homology;
-- canonical respondent slots do not solve external political-group crosswalk identity;
-- old implementation/runtime shapes do not determine FIELD FORGE's semantic architecture.
+The old nine-strata/inter-strata-pressure architecture is functional/design ancestry, not a required terminal ontology.
 
-## 5. Open inherited obligations
+## 2. Current seam
 
-FIELD FORGE remains responsible for or materially touches:
+```text
+PRE_FIELD_FORGE_GOVERNED_EMPIRICAL_DAG
+  -> exact same-unit empirical relations / queries / discovery
+  -> FIELD FORGE weakest-object and structural-grammar research
+  -> competent positive StructuralEmpiricalAdmission where warranted
+  -> V553 temporal meaning only where required
+  -> V554 basis/equivalence/dedup/affordance
+  -> V555 mediation routes
+  -> V556 higher-order interaction/topology/attractor prerequisites
+  -> V557/V558 publication/repository/resolution
+  -> PRE-V3 possibility world
+  -> V3 actor-specific realization
+```
 
-- `OBL005 — POSITION_ROLE_AUTHORITY`
-- `OBL006 — external political-group crosswalk authority`
-- `OBL020 — FIELD FORGE terminal synthesis`
-- `OBL040 — multi-grain observability / routing geometry lawfulness`
-- `OBL041 — geometry family / disconnected space / block-size problem`
-- `OBL042 — weight / estimand / homology provenance`
-- `OBL043 — mode/form effects; association vs capital vs conversion`
+`FIELD_FORGE_RESEARCH_INPUT != POSITIVE_STRUCTURAL_INGRESS`.
 
-Adjacent obligations remain visible where invoked: `OBL012`, `OBL014`, `OBL029–OBL034`, `OBL001/OBL037`, and `N029/OBL021`.
+`FIELD_FORGE_EXPLORATION != STRUCTURAL_ADMISSION_AUTHORITY`.
 
-## 6. Exact dependency ruling
+## 3. Second genuine-canary cycle
 
-The seven obligations do **not** admit a truthful simple linear topological order.
+FFP032 execution:
 
-Current central dependency records form a closure cycle among:
+`0f6f74b74d990f9e18cc94b00341c2f110a81475`
 
-`SCC_A = {OBL005, OBL040, OBL041}`
+FFP033 CVCR:
 
-because:
+`8af4f0a8d2bf4b5cf18d7a431dfa5f922c2c8608`
 
-- OBL005 centrally depends on OBL041;
-- OBL040 centrally depends on OBL005;
-- OBL041 centrally depends on OBL040.
+FFP034 COCR:
 
-R2 therefore distinguishes **bootstrap entry** from **terminal closure dependency** rather than falsifying the graph into a flat list.
+`50aceddb41240d632d2f836666e3011e9f3fc88c`
 
-### Bootstrap/closure order
+Ruling at the exact frozen claim grain:
 
-1. `OBL040.bootstrap` — compile role-neutral source/context capability and routing/exposure-admissibility topology **without** assigning sociological roles or geometry.
-2. `OBL005` — on the finitely observable surface, adjudicate what exact evidence and competent semantic authority may license position/resource roles.
-3. `OBL041` — with observability and role authority in hand, test local/disconnected geometry families and instrument/block-size artifacts.
-4. Return OBL041 results into the final closure conditions of `OBL005` and `OBL040`; close the SCC only when all three can jointly state their lawful domains.
-5. `OBL006` proceeds as an independent side lane whenever external political-group identity linkage is invoked. No group equivalence follows from names, country, ideology, or geometric resemblance.
-6. `OBL042` follows sufficient OBL040 law and, where cross-group comparison is invoked, OBL006: every weight requires an estimand/provenance story and every homology claim an independently identified relation plus falsification.
-7. `OBL043` follows sufficient OBL040/OBL042 and relevant role authority: mode/form artifacts, association, descriptive valuation, capital-value candidacy, and conversion candidacy must remain distinct.
-8. `OBL020` is terminal synthesis only after all required returns have been centrally reconciled.
+- W1-W5 each represent AS01-AS07 exactly;
+- W1-W5 are each individually sufficient inside the frozen finite registered universe;
+- W4 is a single-AOS counterexample to the bounded no-single-object proposition;
+- W1 ephemerality does not erase exact conjunction relation commitment;
+- W3 persistence adds exact information/replay/index value but no additional frozen claim truth detected there;
+- 371 zero-denominator states remain typed abstentions;
+- no master representation, general semantic equivalence, future-claim sufficiency, structural-noun authority or architecture verdict follows.
 
-This is an execution ordering for uncertainty reduction, not a claim that inherited obligations have been closed.
+## 4. Post-second-canary parallel re-ideation wave
 
-## 7. Smallest next attack
+Eight independent lanes have been physically reconsolidated:
 
-Ruling: `FFX001 — ROLE-NEUTRAL EXACT OBSERVABILITY / EXPOSURE-ADMISSIBILITY CANARY`.
+- FFIF012A PRE-MAIN seam / functional succession `98ff23320e22253b401de929122690364feec679`
+- FFIF012B object grammar `5e88159bcacb3e4aeafbda661bb8ae059776e04d`
+- FFIF012C semantic-transform authority audit `72c9eca7428c39e744f7da70b2e2f4fdb697dbe5`
+- FFIF012D downstream consumer/stopping contract `334b354c5494d41c3904e2d26f7a708d46aac403`
+- FFIF012E position/observability/geometry stress `3ee4e1f6503529f32930edc528d5f09c75dd3c2c`
+- FFIF012F disposition/motif/sparsity discovery `2d5981127ce19125ffca6653cf21343acee1e4f1`
+- FFIF012G cross-context/temporal/homology docket `752b7769ae139d046568de9ae7aedcadb539905a`
+- FFIF012H strong-noun precursor observability `ea7478f718551bd315fac5f31e2649ce2c6db0d6`
 
-The experiment asks the smallest upstream question that conditions almost every later architecture choice:
+Central synthesis is under:
 
-> Before assigning social roles or fitting geometry, what exact source structures and measurement members can Rawlsing lawfully say are jointly eligible / jointly exposable in an exact context, and what additional authority would be required to say that a respondent was actually exposed?
+`REIDEATION/FFIF012_CENTRAL_POST_SECOND_CANARY_REIDEATION_R1/`.
 
-This attack is deliberately upstream of position-role assignment, geometry, weighting, homology, pressure, field, hegemony, and V3.
+## 5. Current weakest object/relation grammar
 
-## 8. FFX001 first result
+The strongest current exploratory hypothesis is:
 
-A first exact canary pass has begun against immutable current J01-A and C04/Contract@2 carrier material.
+```text
+GOVERNED PRODUCER-OWNED EMPIRICAL DAG
+  -> exact information availability/recoverability when required
+  -> optional lossless reusable/regenerable index/carrier
+  -> explicit typed empirical relation commitments
+  -> claim-native or discovery-native query operators
+  -> optional materialized/cache/index forms
+  -> optional lossy/model/coordinate views
+  -> separate structural-semantic admission
+  -> downstream PRE-V3 semantic owners
+```
 
-Two deliberately different structures were used:
+Important dispositions:
 
-### Hostile structural-type canary — Arab Barometer VIII Q629
+- persistent respondent carrier: engineering/replay/discovery value, not semantic primitive by default;
+- exact configuration: exact joint-state relation/view/index, not master ontology;
+- direct conditional: claim-native query relation, not world representation;
+- coordinates/embedding: optional lossy/model interface unless claim-indexed;
+- graph/hypergraph: only explicit incidence/topology relation, not generic relational ontology;
+- motif/repertoire: no universal primitive established;
+- transport: independent local objects + authorized map + comparator; no common world-space required;
+- field/capital/hegemony/homology/pressure/mechanism: neutral precursor or later admission/downstream interpretation, not primitive merely by name.
 
-J01-A freezes an eight-member `MULTIPLE_RESPONSE_SET` for Q629. Current C04 routing gives all eight members positive executable routing authority under a shared native parent condition: country != 9 and prior Q625 response in {1,2,3}.
+## 6. Worker-F discovery result
 
-Result:
+On one current governed Afrobarometer R5 eight-disposition surface over 19,210 coexposed respondents:
 
-- source-native membership: provable;
-- member identity: provable;
-- item/category-level routing eligibility: provable;
-- treating the eight coded members as eight separately prompted measurements: **not licensed**;
-- executable same-respondent J: **not licensed by J01-A**;
-- named-respondent exposure: **not established by the retrieved current carriers**.
+- 1,856 exact labeled full profiles;
+- 62,609 observed exact conjunction-support rows over all 255 nonempty variable subsets;
+- the 1,856-row full exact profile-count dictionary regenerates all 62,609 rows exactly by marginalization;
+- an ephemeral dynamic exact enumerator is an even weaker lawful discovery procedure;
+- persistent respondent membership, metric geometry and motif ontology are not necessary for bounded fixed-surface unconditioned exact-conjunction discovery.
 
-The native questionnaire itself describes Q629 as `SELECT ALL THAT APPLY`; this is precisely why source-structure type must remain in the producer story.
+This closes the broad `UNKNOWN_CLAIM_DISCOVERY_REQUIRES_PERSISTENT_RESPONDENT_CARRIER_OR_MOTIF_OBJECT` hypothesis at that bounded grain.
 
-### Matrix canary — Afrobarometer R5 Q86
+It leaves one architecture-relevant question:
 
-J01-A freezes Q86 as a six-member `MATRIX_GRID` with complete exact current membership. C04 gives all six members positive executable routing authority.
+`DISCOVERY_TO_FOLLOWUP_LINKAGE`.
 
-Result:
+## 7. Current core frontier
 
-- a genuine repeated measurement block can be identified;
-- its members can all receive lawful positive routing dispositions;
-- yet J01-A still explicitly withholds executable same-respondent authorization beyond the source/candidate grain.
+At current central judgment exactly one frontier remains capable of changing the minimum universal information/replay grammar:
 
-Therefore even the cleaner matrix case does not justify `J_CANDIDATE == EXECUTABLE_J`.
+> After exact outcome-blind discovery, what is the weakest lawful object/capability required when a discovered predicate becomes the input to a later query over respondent/context information outside the discovery surface?
 
-### R2 architectural refinement
+Candidate outcomes include:
 
-The old broad notion of `RESPONDENT_MEASUREMENT_EXPOSURE_TOPOLOGY` must be factored into at least three producer levels:
+- direct re-query against upstream producer-owned respondent facts using exact predicate identity;
+- a weaker stratified/profile summary;
+- profile dictionary + respondent membership;
+- another exact recoverable linkage representation;
+- explicit current-admission/observability blocker.
 
-1. `CONTEXT_CAPABILITY_OBSERVABILITY` — what a source/context structurally contains and could support;
-2. `MEASUREMENT_ELIGIBILITY_TOPOLOGY` — what exact routing/applicability predicates make a measurement eligible for an exact context/respondent state;
-3. `RESPONDENT_MEASUREMENT_EXPOSURE_TOPOLOGY` — what exact respondent-level evidence proves was actually exposed.
+The question is about minimum information and replay, not about ontology.
 
-Hard inequality:
+## 8. Research that remains valuable but is not currently a universal-grammar blocker
 
-`SOURCE_PRESENCE != ELIGIBILITY != EXPOSURE != RESPONSE`
+Unless a new downstream no-starvation witness is demonstrated, terminal synthesis is not held hostage by:
 
-and:
+- GSS temporal recurrence execution;
+- EVS motif/topology transport;
+- GSS/EVS cross-family signature transport;
+- generic geometry execution;
+- OBL006 external political-group crosswalk for later hegemony work;
+- field/capital/hegemony/homology admission;
+- pressure-footprint reference-sensitivity;
+- particular order/cardinal/topology claims whose current role/carrier authority is absent.
 
-`CURRENT_J_CANDIDATE != EXECUTABLE_SAME_RESPONDENT_J`
+These remain typed research, dependency, downstream-admission or observability questions.
 
-A bounded Library search did not surface an exact governed Arab Barometer VIII respondent microdata carrier. R2 therefore records the present boundary as:
+## 9. Stopping condition
 
-`RESPONDENT_EXPOSURE_AUTHORITY_REQUIRED`
+Worker D's SC-01..SC-10 contract remains governing design capital.
 
-not as negative evidence and not as proof that no such carrier exists anywhere in project history.
+After Worker F, the central assessment is:
 
-## 9. Immediate successor
+`ONE_CORE_DISCRIMINATING_CAMPAIGN_AWAY__NOT_TERMINAL_SYNTHESIS_READY`.
 
-`FFX001-B — RESPONDENT CARRIER / PREDICATE EXECUTION BINDING RECONNAISSANCE`
+SC-10 fails only on `DISCOVERY_TO_FOLLOWUP_LINKAGE` at current central judgment.
 
-Question:
+If that campaign returns without exposing a new starvation witness, the default successor should be a terminal FIELD FORGE R2 synthesis/readiness court rather than another broad ideation wave.
 
-> Does current governed Rawlsing already contain an exact respondent-level carrier and executable predicate binding sufficient to turn lawful eligibility into respondent exposure for one bounded canary, without using response missingness as a routing proxy?
+## 10. Immediate successor campaign
 
-If yes, bind it exactly and execute one canary.
+Run in parallel from this central checkpoint:
 
-If no, return `OBSERVABILITY_LIMIT` / `RESPONDENT_EXPOSURE_AUTHORITY_REQUIRED` with exact missing authority and do not synthesize exposure.
+1. representation-neutral `DISCOVERY_TO_FOLLOWUP_LINKAGE` invariant / weakest-object / closure design;
+2. current governed carrier + outcome-blind external-followup candidate/preflight using Library/current evidence.
 
-## 10. Current FIELD FORGE prospective contract
+Join those returns before target execution.
 
-At this point FIELD FORGE may prospectively require later geometry producers to consume:
+Do not launch unrelated third canaries merely to accumulate evidence.
 
-- source/context capability;
-- source-structure type;
-- exact routing/applicability predicates;
-- exact respondent exposure authority where respondent geometry is claimed;
-- explicit unresolved states rather than imputed coadministration;
-- role authority frozen separately from measurement topology;
-- geometry-family choice justified by estimand and connectedness;
-- measurement ancestry/mode/form audits;
-- held-out/permutation/cross-fit falsification where homology is claimed;
-- typed PRE-V3/V3 boundary metadata.
+## 11. Authority ceiling
 
-This is a prospective exploratory contract only. It is not current Rawlsing architecture.
+This `STATE NOW` is FIELD FORGE exploratory state only.
 
-## 11. What this session changes / does not change
+It does not:
 
-Changes within FIELD FORGE exploratory reasoning:
-
-- exact dependency treatment is now SCC-aware rather than falsely linear;
-- OBL040 has a lawful role-neutral bootstrap entry;
-- exposure architecture is factored into capability, eligibility, and actual respondent exposure;
-- FFX001 has produced a partial positive result plus a precise authority boundary.
-
-Does **not** change:
-
-- current Rawlsing authority;
-- global HQ banking/adoption;
-- current runtime;
-- the open status of OBL005/006/020/040/041/042/043;
-- J01-A's authority ceiling;
-- Contract@2's authority ceiling;
-- PRE-V3/V3 law;
-- the still-open physical architecture question.
+- move PRE-MAIN or main;
+- claim Global-HQ adoption;
+- mint structural nouns;
+- close inherited project obligations globally;
+- make the current object grammar binding Rawlsing architecture;
+- authorize V3/person inference;
+- or declare FIELD FORGE R2 complete.
