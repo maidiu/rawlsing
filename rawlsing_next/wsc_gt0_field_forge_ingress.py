@@ -32,7 +32,7 @@ def run_gt0_field_forge_ingress(preff: GT0SourcePreFFResult) -> GT0StageReceipt:
     )
     return GT0StageReceipt(
         stage_id="GT0_FIELD_FORGE_INGRESS",
-        status=GT0StageStatus.PASS,
+        status=source.status,
         input_envelope_hashes=(source.content_hash,),
         output_envelope=env,
         upstream_refs=preff.receipt.upstream_refs,
