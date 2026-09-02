@@ -16,7 +16,6 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
     evaluate_positioned_subject_possibility,
 )
 from rawlsing_next.wsc_gt0_v3_runtime import (
-    GT0ProtocolIntegrationError,
     GT0V3RuntimeCheckpoint,
     GT0V3RuntimeIntegrityError,
     run_gt0_prev3_v3,
@@ -242,13 +241,14 @@ def test_gt0_baseline_undefined_prev3_blocks_comparator_without_fabricating_psep
     assert out.stage_receipt.consumer_permission == "ZERO_EFFECT_ONLY__NO_ACTOR_MUTATION"
 
 
-def test_exact_supported_psepf_remains_learned_world_and_current_guard_is_zero_positive() -> None:
-    out = run(psepf=exact_supported(), status=FakeStatus.PASS)
+def test_exact_supported_psepf_preserves_full_exact_ref_and_current_guard_is_zero_positive() -> None:
+    psepf = exact_supported()
+    out = run(psepf=psepf, status=FakeStatus.PASS)
     assert_zero_effect(out)
     assert out.disposition.decision_status == "BLOCKED_COMPARATOR_ANCESTRY"
     assert out.stage_receipt.status is FakeStatus.BLOCKED_COMPARATOR_ANCESTRY
-    assert out.disposition.psepf_result_ref is not None
-    assert out.disposition.psepf_result_hash is not None
+    assert out.disposition.psepf_result_ref == psepf.ref.key
+    assert out.disposition.psepf_result_hash == psepf.result_hash
     assert out.disposition.guard_outcome == "DENY_ZERO_EFFECT"
     assert out.disposition.guard_reason == "ZERO_POSITIVE_REGISTRY"
     assert "OBL031" in out.disposition.reason_code
@@ -320,15 +320,4 @@ def test_actor_checkpoint_mismatch_fails_closed() -> None:
             runtime_checkpoint=checkpoint(),
             prev3_producer_refs=("urn:test:gt0:producer:f0",),
             protocol_module=FakeProtocol,
-        )
-
-
-def test_isolated_worker_requires_protocol_double_until_wsc002_central_integration() -> None:
-    with pytest.raises(GT0ProtocolIntegrationError, match="sibling WSC002 candidate"):
-        run_gt0_prev3_v3(
-            envelope(),
-            prev3(),
-            actor_id="gt0-actor",
-            runtime_checkpoint=checkpoint(),
-            prev3_producer_refs=("urn:test:gt0:producer:f0",),
         )
