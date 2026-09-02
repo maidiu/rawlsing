@@ -1,473 +1,441 @@
-# WSC001D — PRE-V3 LEARNED-WORLD TOPOLOGY / LIFECYCLE / REPLAY SEAM CONTRACT R1
+# WSC001D — PRE-V3 Learned-World Seam Contract R1
 
-Status: `CONSTITUTED__ARCHITECTURE_NEUTRAL__NO_PHYSICAL_WINNER_SELECTED`
+## 1. Contract identity and scope
 
-## 1. Semantic producer / owner
+Candidate contract label:
 
-This seam is not one semantic producer.
+`PREV3_LEARNED_WORLD_TOPOLOGY_LIFECYCLE_REPLAY_CONTRACT_R1`
 
-It is a governed **learned-world region** composed of exact producer-owned semantic objects and product roots. Each transformation owns only the meaning it uniquely creates. Physical co-location, repository presence, cache residence, or publication packaging does not transfer semantic ownership.
+This is an architecture/interface constitution for central fan-in. It is not a new semantic authority instance, not a physical-backend decision and not a claim that `OBL001/002/003/004/034/035/036/037` are closed.
 
-The minimum logical ownership classes entering or inside this region are:
+The contract governs the learned-world region between lawful upstream empirical/structural production and the downstream PRE-V3→V3 intake boundary.
 
-1. source/current empirical producers;
-2. empirical query/fact/discovery producers;
-3. validation/release owners where positive authority exists;
-4. structural empirical admission owner;
-5. temporal/comparability owner;
-6. structural affordance/applicability owner;
-7. atomic actor-independent mediation-route owner;
-8. higher-order interaction/topology owner;
-9. publication/use-permission owner;
-10. immutable repository/resolution owner;
-11. authority-maintenance and replay/audit owners.
+It does not own:
 
-No stage name implies a mandatory physical file boundary.
+- source-native truth;
+- FIELD FORGE semantics;
+- empirical→structural admission;
+- PSEPF/positioned-subject metabolism;
+- actor opportunity/encounter/exposure/history/belief/response;
+- V2 expression.
 
-## 2. Consumer
+## 2. Semantic owner and consumer
 
-Primary consumers are:
+There is **no single learned-world semantic owner**.
 
-- downstream PRE-V3 structural producers that dereference prior exact producer objects;
-- V557 publication and V558 repository/resolution machinery;
-- later PRE-V3 -> V3 comparator/PSEPF consumers at their own governed seam;
-- audit/replay and lifecycle-maintenance processes.
+The region is a producer-preserving graph of distinct owners/services:
 
-The seam does not authorize V3 actor realization.
+```text
+source / source-native evidence
+    -> validated logical empirical serviceability (C11 where used)
+        -> exact query service
+        -> discovery service [terminal output allowed]
+        -> separately governed structural admission
+            -> V553 temporal/comparability producer      [if exact use requires]
+            -> V554 affordance/applicability producer    [if exact use requires]
+            -> V555 atomic mediation-route producer      [if exact use requires]
+            -> V556 higher-order topology producer       [if exact use requires]
+                -> V557 publication/use governance
+                -> V558 immutable repository/index/resolution
+                -> ResolvedStructuralContext
+                -> downstream V3 intake
+```
+
+Cross-cutting services:
+
+- authority maintenance/current selection;
+- replay/audit;
+- source/release provenance;
+- recursive discovery handoff;
+- component authority vector closure;
+- optional physical cache/materialization.
+
+Consumers include later exact query/discovery calls, structural producer stages, V557/V558, audit/replay tooling and the downstream V3 intake seam. A consumer receives only the permission granted for its exact use.
 
 ## 3. Minimum input identities
 
-Any learned-world realization MUST be able to consume or dereference, where applicable:
+Every operation through this region consumes the subset of these identities required by its exact owner; missing required identities fail closed rather than being guessed.
 
-- exact producer object family / object id / content hash;
-- exact producer contract/rule id, version and hash;
-- exact source/wave/universe/risk-set identities;
-- exact query/predicate identity and relation identity;
-- exact respondent/joint information or information-equivalent reconstruction capability when the learned function depends on same-unit joint information;
-- exact routing/applicability/exposure/topology identities;
-- exact measure/weight/estimand authority where used;
-- exact source relation/comparability authority where required;
-- exact structural-admission authority for empirical -> structural meaning;
-- exact temporal/comparability prerequisites for temporal meaning;
-- exact role/cardinality/order/multiplicity bindings where meaning-bearing;
-- exact positive and negative dependency refs;
-- exact authority snapshots / historical authority refs;
-- exact replay/reconstruction roots;
-- exact producer permission ceiling.
+### 3.1 Universal exact identity envelope
 
-No `latest`, `default`, fuzzy, nearest, label-equivalent, or repository-presence fallback is permitted.
+- semantic object family/class;
+- object ID;
+- content hash;
+- schema ID/version when applicable;
+- producer family/owner;
+- exact typed state;
+- exact authority id/version/hash refs;
+- exact dependency refs;
+- exact source/release/universe/scope/risk-set refs where applicable;
+- exact consumer/use identity or requested permission class;
+- negative/limit/noncomparability refs where applicable;
+- replay root / determinant refs where applicable.
 
-## 4. Minimum output identity
+### 3.2 Source/C11 service inputs when that lane is used
 
-A positive learned-world output MUST expose:
+- exact source artifact ref and byte/content identity;
+- source family / study product / release / instrument release identity;
+- source snapshot retention ref;
+- exact empirical universes;
+- exact respondent identity/binding where respondent-grain meaning is used;
+- exact question/topology/value-transform authority;
+- routing and weight/estimand authority where used;
+- source relation/composition authority when the operation requires it;
+- replay protocol and tie-order identity.
 
-`LEARNED_PRODUCT_REF = (semantic_family, object_id, content_hash)`
+A physical slot, column, table or row acquires no semantic meaning from its storage position alone.
 
-plus, directly or by immutable dereference:
+### 3.3 Producer-publication inputs
 
-- semantic producer;
-- semantic class / typed state;
-- producer contract/rule identity;
-- originating exact producer refs;
-- positive dependency closure;
-- negative/limit dependency closure;
-- source/universe/risk-set/estimand identity where applicable;
-- allowed downstream uses;
-- release/publication identity if the object is a durable learned product;
-- deterministic replay/reconstruction receipt or root;
-- provenance locator;
-- invalidation determinants;
-- lifecycle state.
+For V553/V554/V555/V556 publication:
 
-A physical carrier hash is not the learned product identity unless a competent product contract explicitly makes those bytes semantic.
+- exact producer-owned semantic object;
+- exact producer permission ceiling;
+- complete interpretation-critical dependency closure;
+- exact negative/limit refs;
+- exact V557 target use;
+- no forbidden actor/PSEPF class.
+
+## 4. Minimum output identities
+
+This contract deliberately reuses existing producer and publication identities rather than minting a universal new learned-world semantic object.
+
+Minimum outputs by function:
+
+- C11 path: exact `C11LogicalRelease` ref plus exact public/internal object refs and `ReplayManifest`;
+- query: exact query result / exact typed result identity at the existing query contract;
+- discovery: exact `DiscoveryResultReceipt` or adaptive sealed-unit/replay receipt; terminal use is lawful;
+- recursive handoff: exact persisted predicate/replay binding sufficient for fresh-process next-generation consumption;
+- component authority: exact `ComponentAuthorityVectorReceipt` preserving component states and scalarization disposition;
+- V553/V554/V555/V556: existing producer-owned object ref;
+- V557: exact immutable publication/use decision/bundle preserving producer refs and narrowed permissions;
+- V558: exact producer-preserving locator/index/resolution receipt and `ResolvedStructuralContext`;
+- lifecycle: exact authority/selection/correction/release receipts at the current governing lifecycle owner;
+- replay: exact release/replay/audit closure refs.
+
+A hard physical seam may add a nonsemantic serialization/closure envelope, but that envelope is courier material only. It may not become the canonical semantic identity of the objects it transports.
 
 ## 5. Permissions
 
-Permissions are monotone-narrowing.
+### 5.1 Permission law
 
-A learned-world product may be:
+`consumer_allowed_uses ⊆ publication_allowed_uses ⊆ producer_allowed_uses`
 
-- `REVIEW`;
-- `CONTEXT`;
-- `ACTIVE_CAUSAL` only where a competent downstream authority grants that exact use;
-- or a narrower typed permission set defined by its producer.
+No carrier, cache, repository, path reachability, successful query, source equivalence certificate, or provenance edge may widen permission.
 
-Publication, repository or resolver presence may never widen producer permission.
+### 5.2 Repository rule
 
-Direct producer reuse is lawful and preferred to semantic republishing for neatness.
+`REPOSITORY_PRESENCE != PERMISSION`.
+
+V558 may resolve only exact objects permitted by V557 and their producer ceilings. No `latest`, fuzzy, nearest, label-equivalent or semver fallback is permitted for semantic resolution.
+
+### 5.3 Discovery rule
+
+Discovery ranking/order has zero empirical/structural truth authority. A discovered candidate needs the normal exact validation/admission path before becoming learned truth or structure.
+
+### 5.4 Source-equivalence rule
+
+Source↔C11 equivalence certification proves only its exact certified dimensions. It does not authorize source retirement, pooling, structural promotion, cutover or actor/V3 semantics.
 
 ## 6. Typed negatives / abstentions
 
-The region MUST preserve typed nonpositive states, including at minimum where applicable:
+This contract preserves producer-native typed states; it does not collapse them into one universal enum.
 
-- `VALID_EMPTY`;
-- `MISSING_AUTHORITY`;
-- `UNKNOWN_AUTHORITY`;
-- `CONFLICTING_AUTHORITY`;
-- `DENIED`;
-- `DEFERRED`;
-- `OUT_OF_SCOPE`;
+At minimum the seam must transport and distinguish, where emitted by the lawful owner:
+
+- `VALID_EMPTY` / `GOVERNED_EMPTY`;
+- `UNRESOLVED` / `UNKNOWN` / `DEFERRED`;
+- `DENIED` / `NOT_AUTHORIZED` / negative authority;
 - `NONCOMPARABLE`;
-- `INSUFFICIENT_EVIDENCE`;
-- `ZERO_DENOMINATOR_ABSTENTION`;
-- `INTEGRITY_FAILURE`;
-- `UNRESOLVED`;
-- `NO_POSITIVE_OUTPUT`;
-- explicit source/composition/temporal negative states.
+- `NOT_APPLICABLE`;
+- `MISSING_AUTHORITY`;
+- `INTEGRITY_FAILURE` / hash or closure mismatch;
+- source-native `MISSING`, `DK`, `REFUSAL`, `IAP`, `NOT_ASKED` where relevant;
+- `DISTINCT_BY_DEFAULT` for source plurality where relevant;
+- partial discovery states with explicit unknown/unvisited territory;
+- V557 denial/review/context-only decision classes;
+- component-vector incomplete/heterogeneous/empty/noncomparable dispositions.
 
-These are not interchangeable with numeric zero, semantic absence, or falsehood.
+Rules:
 
-A valid-empty learned product may be publishable if its owning contract permits that state; it may not be replaced with a filler positive object.
+1. missing key/value is never a substitute for typed absence;
+2. zero is never a substitute for empty/unknown/denied/noncomparable;
+3. partial/unvisited discovery territory never becomes a negative empirical claim;
+4. `BLOCKED` / `MISSING_AUTHORITY` never becomes falsehood;
+5. a newer lifecycle selection cannot retroactively change the typed state of a historical replay object.
 
-## 7. Producer-DAG topology contract
+## 7. Replay / provenance burden
 
-### 7.1 Logical topology
+A learned-world assertion is replay-complete only at the grain it claims.
 
-The binding logical topology is a producer-owned DAG:
+Minimum replay closure, as applicable:
 
-`SOURCE/GOVERNED_AUTHORITY`
-`-> RECONSTRUCTIBLE_EMPIRICAL_INFORMATION`
-`-> EMPIRICAL QUERY / FACT / DISCOVERY / RELEASE PRODUCTS`
-`-> STRUCTURAL ADMISSION`
-`-> TEMPORAL / AFFORDANCE / ROUTE / HIGHER-ORDER STRUCTURAL PRODUCTS AS REQUIRED`
-`-> V557 PUBLICATION`
-`-> V558 IMMUTABLE RESOLUTION`
-
-with lawful direct edges that may skip non-owning logical stages.
-
-### 7.2 Physical topology
-
-The physical topology is intentionally unresolved.
-
-The following are all contract-compatible if they satisfy Sections 3-12:
-
-- persistent canonical empirical/learned carriers;
-- source-backed / virtual reconstruction;
-- hybrid realization with bounded regenerable accelerators;
-- a hard PRE553 publish/reopen seam;
-- a continuous producer DAG with publication only at independently durable product roots.
-
-Therefore:
-
-`LOGICAL_PRODUCER_BOUNDARY != MANDATORY_PHYSICAL_STAGE_BOUNDARY`.
-
-### 7.3 Hard-seam versus continuous-DAG criterion
-
-A hard PRE553 seam is justified only if it supplies independently required:
-
-- integrity isolation;
-- replay identity;
-- independent release lifecycle;
-- service boundary;
-- incremental invalidation boundary;
-- recovery/audit value;
-
-that cannot be supplied equivalently by immutable producer refs and durable product roots in a continuous DAG.
-
-A continuous DAG is lawful only if it preserves the same semantic owners, release identities, permissions, negative states, deterministic replay and invalidation closure.
-
-WSC001D does not decide between them.
-
-## 8. Learned-world function / owner inventory
-
-Minimum functions any complete realization must cover:
-
-| Function | Minimum owner | Required status |
-|---|---|---|
-| exact empirical object/query execution | empirical producer | reusable current function |
-| exact discovery candidate generation / branch replay | discovery owner | reusable, authority-gated |
-| recursive branch handoff | discovery/replay owner | reusable current function |
-| heterogeneous component authority vector | exact authority-vector owner | reusable current function |
-| structural empirical admission | structural-admission owner | reusable current function |
-| temporal structural meaning | V553/temporal owner | downstream logical producer |
-| structural affordance / applicability | V554 owner | downstream logical producer |
-| atomic mediation route | V555 owner | downstream logical producer |
-| higher-order interaction/topology | V556 owner | downstream only when positively required |
-| publication/use governance | V557 owner | reusable current function |
-| immutable repository/context resolution | V558 owner | reusable current function |
-| historical exact replay | replay/audit owner | reusable current function |
-| authority revision / current selection / rollback | authority-maintenance owner | reusable current function |
-| release lifecycle | product owner + lifecycle authority | contract required; OBL034 open at whole-region grain |
-| invalidation / incremental rebuild | producer DAG + lifecycle owner | determinant scope + transitive closure |
-| source-backed reconstruction | source-backed facade / source producer | reusable capability, not winner |
-| physical persistence/cache | implementation owner | optional unless separately required |
-
-This inventory is minimum functional coverage, not final total closure of OBL003.
-
-## 9. Publication / repository / service responsibilities
-
-### Publication
-
-A publication bundle MUST:
-
-- reference exact producer-owned product roots;
-- preserve producer identity;
-- preserve typed state;
-- preserve positive and negative dependencies;
-- preserve producer permission ceiling;
-- be immutable/content-addressed;
-- avoid semantic copy/reownership.
-
-### Repository
-
-A repository MUST:
-
-- resolve exact identities only;
-- reject fuzzy/latest/default repair;
-- preserve producer locator and provenance;
-- preserve dependency closure;
-- preserve role/cardinality/order/multiplicity where required;
-- preserve negative dependencies;
-- reject actor/V3/persona/render objects from PRE-V3 structural-prior storage;
-- permit direct mixed-producer resolution.
-
-### Service
-
-A service interface MAY expose cached/materialized indexes, but service-layer speed or presence is not semantic authority.
-
-A consumer must be able to distinguish:
-
-`NOT_FOUND`
-from
-`NOT_APPLICABLE`
-from
-`DENIED`
-from
-`NONCOMPARABLE`
-from
-`VALID_EMPTY`
-from
-`MISSING_AUTHORITY`.
-
-## 10. Replay / provenance burden
-
-A learned-world product is replay-complete only if replay can re-establish:
-
-- exact product semantic identity;
-- exact historical authority tuple(s);
 - exact source content refs;
-- exact producer contract/rule refs;
-- exact dependency closure;
-- exact semantic projection;
-- exact typed negative state;
-- exact release identity;
-- exact permission ceiling;
-- exact reconstruction inputs or immutable stored payload;
-- deterministic replay receipt.
+- exact source/release/universe identity;
+- exact semantic projection / product identity;
+- exact authority id/version/hash tuple set;
+- exact current-selection/release/correction event refs;
+- query/predicate/grammar/algorithm identity;
+- search family and candidate-universe identity;
+- deterministic parameters / tie-order / RNG state where used;
+- parent branch / winning predicate / pruned trace for recursive discovery where used;
+- routing/read-path receipts;
+- subtree/output evidence receipts;
+- structural admission replay binding where used;
+- producer object/dependency graph;
+- V557 publication decision and permission ceiling;
+- V558 resolution query, selected refs and resolver-policy identity;
+- scenario/execution identity where relevant;
+- reconstruction/build instructions;
+- exact negative/noncomparable/valid-empty states.
 
-`REBUILDABLE != REPLAY_COMPLETE`.
+Replay must resolve the historical authority tuple active for that object/release. Superseding authority does not reinterpret history unless a competent lifecycle law explicitly creates a new object/claim.
 
-A reconstructed product must preserve the same semantic/release identity if the product contract defines it independently of physical carrier bytes.
+## 8. Logical topology contract
 
-A cache may be deleted without semantic loss only when deterministic regeneration is proved and no learned semantic identity is stored only in the cache.
+### 8.1 Earliest-owner rule
 
-## 11. Lifecycle contract
+Reuse exact upstream semantic objects directly. A downstream function creates a new semantic object only when it owns genuinely new meaning.
 
-Each independently durable learned product root MUST have an explicit lifecycle state. Minimum states:
+Physical co-location/co-execution never transfers ownership.
 
-- `CANDIDATE`;
-- `VALIDATED_OR_AUTHORIZED`;
-- `RELEASED`;
-- `CURRENT_FOR_EXACT_GRAIN` when current-selection authority exists;
-- `SUPERSEDED_BUT_REPLAYABLE`;
-- `INVALIDATED`;
-- `RETIRED_PAYLOAD_RECONSTRUCTIBLE` only after exact retirement authority;
-- `BLOCKED`;
-- `VALID_EMPTY`.
+### 8.2 Conditional producer rule
 
-Lifecycle rules:
+V553/V554/V555/V556 are not mandatory transit buses. An exact use may require only the subset of producer transforms whose meaning it actually needs.
 
-1. discovery does not self-release;
-2. validation does not self-promote into structural authority;
-3. release identity is distinct from current-selection identity;
-4. supersession does not erase historical replay;
-5. current selection changes only through an exact governed receipt;
-6. changed determinants invalidate the product and transitive dependents at exact scope;
-7. unchanged producer refs outside the determinant closure remain reusable;
-8. retirement of transformed payload is separate from source retirement;
-9. source retirement requires its own equivalence/retirement proof;
-10. deletion is never inferred from reconstructibility alone.
+The physical implementation may fuse calls, but it must keep each produced semantic identity and dependency independently addressable before downstream use.
 
-## 12. Source-backed reconstructibility / deletion / retirement gates
+### 8.3 Publication rule
 
-### Payload deletion is lawful only when all hold
+An exact runtime-authorized producer object may publish to V557 without being forced through unrelated producer stages. V557 then owns publication/use governance only; V558 owns repository/index/resolution only.
 
-- the deleted payload is not the sole carrier of semantic meaning;
-- exact producer semantic identity survives;
-- exact release identity survives;
-- exact replay/reconstruction recipe survives;
-- exact source bytes/content refs required for reconstruction remain governed and reachable;
-- all non-source-derivable authority/provenance/semantic mappings survive;
-- deterministic regeneration at equal semantic grain is proved;
-- downstream refs remain stable or a governed successor mapping exists;
-- audit/replay remains possible;
-- deletion is authorized by lifecycle policy.
+### 8.4 Hard-seam candidate contract
 
-### Source retirement is stricter
+If a hard seam is implemented, close over every interpretation-critical exact dependency by immutable packaged content or deterministic content-addressed reference. Reopening must not require mutable network/latest lookup or label reconstruction.
 
-Source retirement additionally requires:
+### 8.5 Continuous-DAG candidate contract
 
-- exact source->carrier or source->learned information equivalence at every still-required operation;
-- no future authorized query/discovery/replay obligation depends on source-only information;
-- positive source-retirement authority;
-- preserved historical replay requirements;
-- no unresolved source-composition/backfill dependency;
-- no unresolved measurement/source relation requiring the source.
+If a continuous DAG is implemented, independently durable semantic/replay roots must make the same objects and historical executions reconstructible without relying on process memory, private transient state or current-only in-memory pointers.
 
-Thus:
+### 8.6 Hybrid candidate contract
 
-`SOURCE_BACKED_RECONSTRUCTIBLE != SOURCE_RETIREMENT_AUTHORIZED`.
+A hybrid implementation may choose object-specific persistence/cache policies only if semantic identity, permission, replay and failure-state behavior remain equivalent. Cache policy is not semantic law.
 
-## 13. Invalidation / incremental rebuild
+## 9. Learned-world function/owner inventory
 
-The minimum invalidation rule is:
+| ID | Function | Owner/status | Current reusable basis | Missing/open burden |
+|---|---|---|---|---|
+| LW01 | source snapshot identity/retention | upstream source owner | source refs + retention refs | `OBL029` retirement |
+| LW02 | validated logical C11 release/serviceability | PRE553 C11 service | c11 ingest/integrity/repository | source-specific production/reconciliation where required |
+| LW03 | exact empirical query | PRE553 query owner | empirical query/objects/authority | exact operation authority required |
+| LW04 | exact bounded discovery | PRE553 discovery owner | discovery exact | `OBL030` production authority |
+| LW05 | adaptive discovery | PRE553 discovery owner | discovery adaptive | partial territory remains unknown |
+| LW06 | recursive discovery successor handoff | PRE553 handoff owner | recursive_handoff | exact source/workload authority |
+| LW07 | component authority closure | PRE553 helper/receipt owner | component_authority_vector | no false scalarization |
+| LW08 | structural admission | separate competent owner | structural_admission machinery | not owned by learned-world storage |
+| LW09 | temporal/comparability semantic production | V553 | inherited producer law | operation-specific comparability/measurement premises |
+| LW10 | affordance/applicability production | V554 | M1 | exact accepted basis/use |
+| LW11 | atomic route production | V555 | M2 | exact accepted V554 route basis |
+| LW12 | higher-order topology production | V556 | M3 | genuinely new higher-order meaning only |
+| LW13 | publication/use governance | V557 | M4 | exact producer permission + closure |
+| LW14 | repository/index/resolution | V558 | M4 | exact deterministic resolution |
+| LW15 | authority maintenance/current selection | PRE553 maintenance + P1/P2 | authority_maintenance | no newest-wins |
+| LW16 | replay/audit | replay inspectorate | replay_audit | full vertical proof still open |
+| LW17 | physical cache/materialization | nonsemantic implementation | R4/parquet/duckdb/etc. | policy/economics open |
+| LW18 | learned-product lifecycle/economics | `OPEN_OWNER` | historical discriminator requirements | `OBL034` |
+| LW19 | complete vertical compiler composition | `OPEN_PARENT` | component tests/assets | `OBL004` |
+| LW20 | physical architecture winner | `NO_CURRENT_OWNER_DECISION` | Authority31 constraints + discriminator evidence plan | `OBL001/037` |
 
-`CHANGED_DETERMINANT_SCOPE + TRANSITIVE_DEPENDENCY_CLOSURE`.
+This table is the WSC001D candidate inventory. It does not self-close `OBL003`.
 
-Determinants include as applicable:
+## 10. Lifecycle responsibilities
 
-- source content;
+### 10.1 Immutable semantic identity
+
+A semantic object/release retains its original producer/content identity permanently. Current selection is separate from identity.
+
+### 10.2 Governed authority lifecycle
+
+Authority evidence/candidates/adjudication/seal/release/current promotion/rollback must remain ref-addressed and append-only according to the existing maintenance/current-selection law. Only explicit governed selection changes currentness.
+
+### 10.3 Learned-product lifecycle responsibility remains open
+
+`OBL034` prevents this worker from inventing a universal learned-product lifecycle state vocabulary or a single owner/policy for all learned products.
+
+The future competent lifecycle owner must at minimum govern:
+
+- build/rebuild eligibility;
+- validation/admission state where applicable;
+- publication and current-selection relation;
+- invalidation triggers and affected dependency closure;
+- correction/supersession behavior;
+- retention class for semantic roots, replay material and optional caches;
+- source/release correction propagation;
+- stale/unavailable/blocked behavior;
+- audit/replay retention horizon at the required claim grain;
+- economics evidence collection for physical selection.
+
+Until that owner exists, physical storage state must not be interpreted as lifecycle state, and this contract does not assign canonical learned-product lifecycle enum values.
+
+## 11. Incremental invalidation / rebuild responsibility
+
+The minimum information law is:
+
+`CHANGED_DETERMINANT_SCOPE -> EXACT_TRANSITIVE_DEPENDENCY_CLOSURE`
+
+Any later lifecycle/invalidation owner must be able to identify affected dependents without treating a monolithic full rebuild as semantic law.
+
+Determinants can include, where applicable:
+
+- exact source content/release;
 - source/universe relation authority;
-- semantic authority snapshot;
-- query/predicate definition;
-- measurement/estimand/weight authority;
+- semantic authority snapshot/current selection;
+- query/predicate/grammar/algorithm definition;
+- measurement/weight/estimand authority;
 - structural-admission authority;
 - temporal/comparability authority;
-- route/higher-order rules;
-- producer permission;
-- lifecycle/release rule.
+- V554/V555/V556 producer rule;
+- producer permission/publication rule;
+- lifecycle/release rule itself.
 
-A monolithic full rebuild may be operationally chosen, but cannot be the semantic invalidation law by convention.
+Unchanged exact producer refs outside the affected closure remain semantically reusable unless another competent rule invalidates them. This section defines the minimum determinant/dependency information that must survive; it does not invent the still-open OBL034 lifecycle policy.
 
-## 14. Lifecycle / economics evidence required before physical selection
+## 12. Source-backed reconstructibility / deletion gates
 
-Any later A/B/C or seam-topology physical court MUST first prove semantic parity.
+### 12.1 Reconstructibility is a capability claim
 
-Then it MUST use the same governed workload and record at minimum:
+A source-backed/hybrid implementation must prove it can reconstruct the exact required logical service/product from exact source bytes plus governed semantic/authority/replay side material.
 
-- source read bytes / transformed bytes / stored bytes;
-- storage amplification;
-- cold build wall time;
-- CPU time;
-- peak RSS;
-- I/O volume;
-- repeated compilation N=1/2/5 or another predeclared equal cadence;
-- warm/cold cache behavior;
-- query latency for identical semantic workloads;
-- destructive delete/rebuild replay;
-- one determinant mutation and transitive invalidation/rebuild cost;
-- release publication cost;
-- repository resolution cost;
-- audit/replay cost;
-- operational failure/recovery behavior;
-- hardware/runtime environment identity.
+### 12.2 Reconstructibility is not retirement authority
 
-No candidate may win by omitting difficult semantic functions.
+Even exact source→C11 equivalence certification does not authorize source retirement or cutover. Source retirement remains `OBL029`.
 
-Performance is adjudicable only after identical semantic workload parity.
+### 12.3 Optional-cache deletion
 
-## 15. Existing reusable implementation / tests
+A cache may be treated as optional only when:
 
-Reuse directly or adapt:
+- it owns no unique semantic identity;
+- all semantic roots/dependencies survive elsewhere;
+- the exact workload can reconstruct it in a fresh process;
+- historical authority/replay interpretation is unchanged;
+- typed states/permissions/consumer observables are unchanged;
+- failure is detected rather than silently repaired from mutable fallback.
 
-- `rawlsing_next/pre553_replay_audit.py`;
-- `rawlsing_next/pre553_authority_maintenance.py`;
-- `rawlsing_next/pre553_source_backed_c11_facade.py`;
-- `rawlsing_next/pre553_c11_repository.py`;
-- `rawlsing_next/pre553_c11_ingest.py`;
-- `rawlsing_next/pre553_c11_integrity.py`;
-- `rawlsing_next/pre553_empirical_objects.py`;
-- `rawlsing_next/pre553_empirical_query.py`;
-- `rawlsing_next/pre553_discovery_exact.py`;
-- `rawlsing_next/pre553_discovery_adaptive.py`;
-- `rawlsing_next/pre553_recursive_handoff.py`;
-- `rawlsing_next/pre553_component_authority_vector.py`;
-- `rawlsing_next/pre553_structural_admission.py`;
-- `rawlsing_next/m1_temporal_v554_admission_dedup.py`;
-- `rawlsing_next/m2_v555_atomic_route.py`;
-- `rawlsing_next/m3_v556_higher_order_structural.py`;
-- `rawlsing_next/m4_v557_v558_publication_repository.py`.
+### 12.4 Product/replay retention
 
-Reuse/adapt tests:
+Never retire the only durable object/release/determinant/evidence root required to explain an accepted historical learned product or publication.
 
-- `test_pre553_replay_audit.py`;
-- `test_pre553_source_backed_c11_facade.py`;
-- `test_pre553_c11_repository_ingest.py`;
-- `test_pre553_authority_maintenance.py`;
-- `test_pre553_discovery_adaptive.py`;
-- `test_pre553_recursive_handoff.py`;
-- `test_pre553_component_authority_vector.py`;
-- `test_pre553_structural_admission.py`;
-- `test_m1_temporal_v554_admission_dedup.py`;
-- `test_m2_v555_atomic_route.py`;
-- `test_m3_v556_higher_order_structural.py`;
-- `test_m4_v557_v558_publication_repository.py`;
-- `test_pre553_whole_machine_hostile_acceptance.py`.
+## 13. Physical-selection / economics evidence
 
-No new implementation is authorized by this contract.
+No candidate can win on cost/performance before semantic parity.
 
-## 16. Exact forbidden inferences
+### Gate P0 — semantic capability
 
-Forbidden:
+Prove common recursive topology, component authority, typed negative states, exact source/service/query behavior and required authorities.
 
-- persistent C11 is selected because it exists;
-- source-backed B is selected because reconstruction is feasible;
-- hybrid C is selected because caches are convenient;
-- hard PRE553 seam is selected from historical stage names;
-- continuous DAG is selected because direct refs are elegant;
-- repository presence = permission;
-- cache presence = semantic authority;
-- reconstructibility = semantic disposability;
-- reconstructibility = source retirement;
-- source filename/label/path similarity = source identity/equivalence;
-- successful local stage tests = complete OBL004 closure;
-- discovery result = validation or structural admission;
-- publication = semantic ownership;
-- physical carrier identity = semantic/release identity;
-- `VALID_EMPTY` = missing or failure;
-- `NONCOMPARABLE` = zero;
-- `BLOCKED` = false;
-- PRE-V3 possibility = V3 actor state;
-- V556 higher-order object is required when no higher-order semantics are governed;
-- old physical courier stages must survive to conserve function.
+### Gate P1 — destructive rebuild
 
-## 17. Exact open gates
+For an exact source/workload, delete declared nonsemantic intermediate state and require fresh-process equivalence of semantic identities, exact outputs, authority/replay closure and negative states.
 
-This contract dispositions but does not close:
+### Gate P2 — topology parity
 
-- `OBL001` physical persistent/source-backed/hybrid winner;
-- `OBL002` hard PRE553 seam vs continuous producer DAG;
-- `OBL003` complete learned-world function/owner inventory;
-- `OBL004` complete source->PRE-V3 composed executable proof;
-- `OBL034` learned-product lifecycle/economics owner and governed evidence;
-- `OBL035` C05R2B real-source production I05 where selected architecture requires it;
-- `OBL036` C08 final reconciliation;
-- `OBL037` equal-governed-workload A/B/C bakeoff.
+Execute the same frozen producer graph under hard seam and continuous DAG. Hold semantic graph/owners/authorities/inputs fixed. Compare only physical topology effects. If both are semantically/replay identical, a hard seam has no semantic-necessity claim; it may still have operational value.
 
-Additional dependencies remain relevant:
+### Gate P3 — A/B/C lifecycle economics
 
-- `OBL029` carrier equivalence/retirement;
-- `OBL030` production discovery/validation;
-- `OBL033` source composition/linkage/backfill/replay;
-- operation-scoped comparability/measurement authorities.
+Only after P0-P2 and prerequisite authority closure, run equal-workload persistent/source-backed/hybrid economics. Record raw Pareto dimensions rather than an opaque composite score.
 
-## 18. Minimal GT0-compatible path
+Required observation families include bytes, cache amplification, build/rebuild, source opens/decode passes, CPU/RSS/scratch/I/O, query/discovery cost, audit/replay, invalidation/selective rebuild and failure recovery.
 
-A minimal GT0-compatible PRE-V3 learned-world path is:
+No thresholds or winner are defined in WSC001D.
 
-1. consume one exact governed empirical query/fact or valid typed nonpositive result;
-2. if structural use is requested, require exact structural-admission authority;
-3. emit exact admission result or typed negative;
-4. if positive structural use requires no new temporal meaning, allow direct V554 basis path; otherwise require exact temporal owner output;
-5. create V555 atomic route only when exact route authority and source/channel/receiver refs exist;
-6. create zero V556 objects when no governed higher-order relation is required; otherwise require exact V556 rule/participant authority;
-7. publish exact positive or permitted valid-empty product roots through V557 without reownership;
-8. resolve exact context through V558 with permission narrowing and dependency closure;
-9. retain replay/release receipts so the same PRE-V3 context can be exactly re-established;
-10. stop before actor realization.
+## 14. Existing implementation / tests to reuse
 
-A GT0 may lawfully take a blocked/valid-empty branch at any missing authority boundary. That is preferable to manufacturing a positive learned-world object.
+Priority implementations:
 
-Terminal:
+- `pre553_r4_compaction.py`
+- `pre553_discovery_adaptive.py`
+- `pre553_component_authority_vector.py`
+- `pre553_recursive_handoff.py`
+- `pre553_authority_maintenance.py`
+- `pre553_replay_audit.py`
+- `pre553_c11_ingest.py`
+- `pre553_c11_integrity.py`
+- `pre553_c11_repository.py`
+- `pre553_source_backed_c11_facade.py`
+- `pre553_source_equivalence.py`
+- M1/M2/M3/M4 structural publication stack
+
+Priority tests include existing M1-M4, C11, recursive handoff, replay audit, source-backed C11, source equivalence/relations, authority maintenance, whole-machine hostile acceptance and whole-machine integration fixtures.
+
+`02_EXISTING_ASSET_REUSE.tsv` gives the exact reuse disposition.
+
+## 15. Exact forbidden inferences
+
+The following inferences are forbidden:
+
+- carrier possession -> semantic ownership;
+- repository presence -> permission;
+- source↔C11 equivalence -> source retirement;
+- source-backed feasibility -> source-backed winner;
+- persistent historical implementation -> persistence requirement;
+- one local stage PASS -> full vertical compiler closure;
+- provenance reachability -> source pooling/composition;
+- successful rebuild -> replay completeness;
+- discovery ranking/result -> empirical truth or structural admission;
+- partial/unvisited discovery -> negative empirical claim;
+- cache miss -> semantic absence;
+- missing field -> typed empty/zero;
+- V558 repository contents -> actor truth;
+- PSEPF -> structural repository object;
+- physical seam -> new semantic owner;
+- continuous co-execution -> merged logical owner;
+- cheaper/faster candidate -> lawful winner before semantic parity;
+- newest/semver/latest -> current authority selection.
+
+## 16. Exact open gates
+
+Primary: `OBL001;OBL002;OBL003;OBL004;OBL034;OBL035;OBL036;OBL037`.
+
+Supporting dependencies visible to this seam: `OBL012;OBL029;OBL030;OBL033`.
+
+Exact dispositions are in `03_OPEN_GATES.tsv`.
+
+## 17. Minimal GT0-compatible path
+
+GT0-D exercises the learned-world region with the smallest lawful producer set:
+
+```text
+UPSTREAM_EXACT_PREV3_PRODUCER_OBJECT
+    -> V557 publication decision
+        -> V558 exact producer-preserving repository/resolution
+            -> ResolvedStructuralContext
+                -> downstream V3 seam
+```
+
+Rules:
+
+1. Use exactly one upstream producer object if one is sufficient; do not add V555/V556 filler stages.
+2. Preserve producer ID/hash/authority/dependency/negative refs.
+3. V557 may grant only a subset of producer permission.
+4. V558 exact lookup/resolution may not widen permission or re-own semantics.
+5. Preserve one exact replay chain back to producer/source/release/authority determinants.
+6. If any required positive authority is missing, return the native typed blocked/denied/valid-empty/noncomparable state instead of fabricating a positive context.
+7. This path is valid under hard seam, continuous DAG or hybrid realization because physical topology is outside the semantic contract.
+
+## 18. Central fan-in acceptance test for WSC001D
+
+Central fan-in preserves this contract only if its Whole-Spine Constitution:
+
+- keeps semantic producer ownership independent of physical packaging;
+- treats hard seam vs continuous DAG as a later physical/topology court, not a semantic-owner question;
+- retains C11/query/discovery/replay/lifecycle services even when not directly consumed by V3;
+- preserves exact historical replay and typed negatives;
+- keeps source retirement and source composition separately governed;
+- retains V557/V558 logical distinctness and permission monotonicity;
+- keeps PSEPF outside the structural repository;
+- specifies lifecycle/economics evidence before any physical architecture selection;
+- reuses existing executable/test capital before rewriting equivalent mechanisms;
+- and leaves the parent open gates visible until competently closed.
 
 `PASS__WSC001D_PREV3_LEARNED_WORLD_CONTRACT_CONSTITUTED__READY_FOR_CENTRAL_FANIN`
