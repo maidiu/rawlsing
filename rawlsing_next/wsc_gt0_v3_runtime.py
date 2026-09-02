@@ -85,6 +85,8 @@ def _stable_ref(value: Any, name: str) -> str:
 
     if isinstance(value, str):
         return _text(value, name)
+    if hasattr(value, "key"):
+        return _text(str(value.key), name)
 
     for attr in ("ref", "receipt_ref", "object_ref", "stage_ref"):
         if hasattr(value, attr):
@@ -474,7 +476,6 @@ def _build_stage_receipt(
     receipt_id = f"urn:rawlsing:gt0:stage:prev3-v3:sha256:{receipt_hash}"
 
     candidates = {
-        # canonical candidate names
         "receipt_id": receipt_id,
         "content_hash": receipt_hash,
         "receipt_hash": receipt_hash,
@@ -578,8 +579,6 @@ def run_gt0_prev3_v3(
             information_loss,
         ) = _evaluate_psepf_state(psepf_result, runtime_checkpoint)
 
-    # WSC002E is zero-effect by construction.  No actor causal event/checkpoint
-    # mutation is attempted, and the same immutable checkpoint is returned.
     post_checkpoint = runtime_checkpoint
     replay_determinants = (
         envelope_ref,
