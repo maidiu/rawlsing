@@ -1,0 +1,49 @@
+{
+  "W4_membership_not_persisted": {
+    "materialized_rows_during_execution": 4898550,
+    "reason": "handoff permits banking membership only if useful; deterministic recipe rematerializes it from immutable facts",
+    "semantic_bytes": 671101383,
+    "semantic_sha256": "b7610d52a789094ac32ce8a20c109606c043d9b01ce303fd45cf481effa4e439"
+  },
+  "artifacts": [
+    {
+      "bytes": 5886444,
+      "canonical_uncompressed_bytes": 134174630,
+      "canonical_uncompressed_sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+      "cold_rematerialize_byte_identical": true,
+      "file_id": "file_00000000db5c81f6b1fcbfbe6318c026",
+      "library_file_id": "libfile_e559629628c08191b1335aaf8d62b1f0",
+      "name": "ffp036_canonical_oracle_target.tsv.gz",
+      "path": "/Rawlsing/FIELD_FORGE_R2/FFP036_DISCOVERY_FOLLOWUP_GENUINE_EXECUTION_R1/ffp036_canonical_oracle_target.tsv.gz",
+      "rows": 688699,
+      "sha256": "e60a96a4674143db1280e15c354e2a071501ba28782fd3314438f2c414b88f67"
+    },
+    {
+      "bytes": 800484,
+      "cold_rematerialize_byte_identical": true,
+      "file_id": "file_00000000c89c81f6a3213e7f978b14fc",
+      "library_file_id": "libfile_f938b342224c81918031457ffc620e30",
+      "name": "ffp036_w5_full_state_surface.tsv.gz",
+      "path": "/Rawlsing/FIELD_FORGE_R2/FFP036_DISCOVERY_FOLLOWUP_GENUINE_EXECUTION_R1/ffp036_w5_full_state_surface.tsv.gz",
+      "rows": 19210,
+      "semantic_bytes": 1767604,
+      "semantic_sha256": "0e9474ec119fb3c45eeba4f59703343fb37bb9a85f4f2647df5852af0faa76f4",
+      "sha256": "9a66ad31ce423f8b1972b9cf126f91eda4e228707b868b57e64e185c36ac9cd4"
+    },
+    {
+      "bytes": 5351763,
+      "cold_rematerialize_byte_identical": true,
+      "file_id": "file_00000000bb8c81f68cd2fd5950eb4085",
+      "library_file_id": "libfile_0810ca4507808191b0d0b894183ec6d2",
+      "name": "ffp036_w3_q1_sufficient_statistic.tsv.gz",
+      "path": "/Rawlsing/FIELD_FORGE_R2/FFP036_DISCOVERY_FOLLOWUP_GENUINE_EXECUTION_R1/ffp036_w3_q1_sufficient_statistic.tsv.gz",
+      "rows": 688699,
+      "semantic_bytes": 59653929,
+      "semantic_sha256": "e414ca55a43486fd70842d9e2baa67c8ac9d1f2b5dbbca9254cf5ca29e3e1e14",
+      "sha256": "b6ff598cc7fd9e7c67529a05a4971364bf864e406abdd03b305f06717bedde2d"
+    }
+  ],
+  "folder": "/Rawlsing/FIELD_FORGE_R2/FFP036_DISCOVERY_FOLLOWUP_GENUINE_EXECUTION_R1/",
+  "schema_version": "FFP036_LIBRARY_EVIDENCE_BANK_MANIFEST@1",
+  "status": "BANKED_AND_COLD_REMATERIALIZED_BYTE_IDENTICAL"
+}
