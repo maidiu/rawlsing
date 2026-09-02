@@ -18,7 +18,7 @@ Immutable instruction/evidence ref:
 
 `e1b9ae0bbfeea000efee65a22622196cce40aa3e`
 
-No sibling WSC001 branch was consumed. Library was not used. No empirical experiment, runtime implementation, physical-backend selection, project adoption, ref movement, or parent-obligation closure was performed.
+No sibling WSC001 branch was consumed. No Library primary was consumed. A narrowly scoped lookup of the exact J01-A Library route was attempted only because current PRE-MAIN explicitly routed a materially necessary current-source carrier there; that route was unavailable in this account, so GT0 was bound instead from immutable Git evidence. No empirical experiment, runtime implementation, physical-backend selection, project adoption, ref movement, or parent-obligation closure was performed.
 
 ## Grounding receipt
 
@@ -88,12 +88,26 @@ Physical carrier, cache, materialization and execution process are not semantic-
 
 GT0 is intentionally a semantic-conservation thread, not a sociological demonstration.
 
-Its source seed must be one **real, current governed empirical fact** whose exact producer/source identity is admitted at implementation time under current J01-A/C06-compatible authority and PRE553 empirical authority. This lane does not fabricate a source value and does not use a synthetic fixture as project evidence. If an implementation cannot dereference and verify that exact fact, GT0 fails as `INTEGRITY_FAILURE/UNAVAILABLE`.
+The baseline source seed is now bound to one **real governed current source-structure fact** from immutable Git evidence admitted by the current J01-A freeze:
+
+- `F0_ID = cssu.r1.afrobarometer.r1.005b474d6eb4253cb166`
+- source family / wave: `Afrobarometer / R1`
+- exact upstream admission ref: `ba23b0fc1d22bb35abb8a6e8f9ab6100df8f7564`
+- exact file: `CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_RESIDUAL_CLOSURE_R2/LANE_D_ARAB_AFRO/CURRENT_SOURCE_STRUCTURE_UNIVERSE_R2.csv`
+- file blob: `16edf3f4170d6f910e701154b0a2e2b394491a08`
+- source-native type/label: `MATRIX_GRID / Current-versus-past freedoms and equality`
+- member count: `6`
+- member identities: `pfesol|pfrsay|pfrass|pfrvot|pfreql|pfpsaf`
+- binding status: `COMPLETE_EXACT_CURRENT_BINDING`
+- native evidence: `merged_r1_codebook2.pdf`, SHA-256 `f603d9f5f95a3898dc42661b3cf8da749f874594b8770fe5fd5fb44f696eb537`, native codebook p.53
+- candidacy: `CURRENT_J_CANDIDATE`, with the source record explicitly preserving that executable J is **not adjudicated here**.
+
+This is a fact about the governed current source structure, not a fabricated respondent value and not evidence that the six members are executable jointly downstream. The global J01-A index at the WSC001 base admits `ba23...` as the Arab/Afro upstream source and freezes Afrobarometer inside the current 1,879-source-structure universe.
 
 The minimum lawful thread is:
 
-`REAL GOVERNED SOURCE FACT`
-→ exact PRE-FF query/reference with producer ownership intact
+`F0__REAL_GOVERNED_CURRENT_SOURCE_STRUCTURE_FACT`
+→ exact PRE-FF source-relation/query/reference with producer ownership intact
 → FIELD FORGE producer-preserving actor-independent reference/relation receipt
 → PRE-V3 exact structural admission/publication-resolution object
 → positioned-subject empirical possibility only
