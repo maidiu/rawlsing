@@ -1,0 +1,106 @@
+{
+  "exact_starting_head": "b942acdf5055b72e7e3c337f326345de4f08f77d",
+  "frozen_jacobi_execution": {
+    "current_realization": "largest-offdiagonal Jacobi; every rotation rescans complete upper triangle; max iteration bound 100*K^2 after quotient if same routine is applied",
+    "disposition": {
+      "configured_rotation_upper_bound_if_current_routine_applied": 344473600,
+      "upper_triangle_scan_cells_per_rotation": 1721440
+    },
+    "family": "CLASSICAL_MDS_JACOBI_R1",
+    "genuine_scale_completed": false,
+    "lawful_core_b_output_banked": false,
+    "position": {
+      "configured_rotation_upper_bound_if_current_routine_applied": 243672100,
+      "upper_triangle_scan_cells_per_rotation": 1217580
+    },
+    "reason": "No genuine-scale deterministic Jacobi eigensystem execution satisfying the frozen decomposition family completed in this worker. The exact quotient removes respondent-scale N^2 storage but does not itself constitute the required Jacobi eigendecomposition."
+  },
+  "frozen_substrate": {
+    "local_byte_recheck": "PASS",
+    "note": "Country-qualified response_state_identity is required so Q84 categories from different countries are not collapsed by equal raw codes.",
+    "q84_country_qualified_state_identity_count": 235,
+    "q84_raw_numeric_code_count": 199,
+    "respondent_count": 19210,
+    "risk_set_semantic_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "risk_set_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+    "selected_response_fact_rows": 670631,
+    "selected_response_facts_sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+    "state_identity_field_used": "response_state_identity"
+  },
+  "mutation_receipt": {
+    "cim_mutated": false,
+    "citc_mutated": false,
+    "comparison_identity_mutated": false,
+    "respondent_set_mutated": false,
+    "roles_mutated": false,
+    "state_universe_mutated": false,
+    "ttar_sequence_mutated": false
+  },
+  "nonadmissible_engineering_probe": {
+    "disposition": {
+      "elapsed_seconds": 0.27601870600005896,
+      "fresh_process_peak_rss_kib": 159276,
+      "top10_desc": [1245.4526904447787,657.3321397450959,455.42941325015653,437.6774696852371,412.75666658878106,375.0194264203522,304.6809821802807,241.83175833767604,209.981047691961,208.74951020313978]
+    },
+    "materiality_authority": "NONE__ENGINEERING_EVIDENCE_ONLY",
+    "position": {
+      "elapsed_seconds": 0.1403608969999368,
+      "fresh_process_peak_rss_kib": 143228,
+      "top10_desc": [1436.8750829313822,1107.2739176150133,747.4834670245102,356.701629808458,288.7323769546494,238.42210517198004,68.2296403340126,56.31770320823746,55.82602171976656,52.59494213387924]
+    },
+    "purpose": "Isolate whether the quotient matrices themselves are tractable; this probe may not be substituted for frozen Jacobi.",
+    "software": {
+      "driver": "evr",
+      "numpy": "2.3.5",
+      "routine": "scipy.linalg.eigh",
+      "scipy": "1.17.0",
+      "subset": "largest 10 eigenpairs"
+    },
+    "status": "COMPLETED__NOT_CORE_B_EVIDENCE__DIFFERENT_EIGENSOLVER"
+  },
+  "not_performed": ["CORE_A","CORE_C","CVCR","COCR","SOCIOLOGICAL_INTERPRETATION"],
+  "output_reconstruction": {
+    "duplicate_coordinates": "EXPAND_PROFILE_COORDINATE_TO_EVERY_MEMBER_ID",
+    "expanded_n_by_n_serialization_required": false,
+    "full_distance_order": "EXACTLY_RECONSTRUCTIBLE_FROM_PROFILE_DISTANCE_TABLE_PLUS_PROFILE_MEMBER_IDS_SORTED_BY_RESPONDENT_ID",
+    "k_neighborhood": "EXACT_PREFIX_OF_RECONSTRUCTED_COMPLETE_ORDER",
+    "opposition": "EXACT_FARTHEST_DISTANCE_PROFILE_TIE_GROUP_EXPANDED_TO_MEMBER_IDS",
+    "semantic_loss": false
+  },
+  "profile_quotient": {
+    "disposition": {
+      "exact_profile_count": 1856,
+      "max_multiplicity": 1169,
+      "measurements": ["Q76A","Q76B","Q86A","Q86B","Q86C","Q86D","Q86E","Q86F"],
+      "median_multiplicity": 1.0,
+      "packed_float64_square_mib": 26.28125,
+      "profile_pair_count": 1721440,
+      "quotient_square_cells": 3444736,
+      "respondents_recoverable": 19210
+    },
+    "exact_reconstruction_available": true,
+    "position": {
+      "exact_profile_count": 1561,
+      "max_multiplicity": 574,
+      "measurements": ["Q70B","Q70C","Q73A","Q84"],
+      "median_multiplicity": 3.0,
+      "packed_float64_square_mib": 18.59070587158203,
+      "profile_pair_count": 1217580,
+      "quotient_square_cells": 2436721,
+      "respondents_recoverable": 19210
+    },
+    "respondent_deletion_count": 0,
+    "risk_set_change_count": 0,
+    "semantic_state_merge_count": 0,
+    "ttar_sequence": []
+  },
+  "schema_version": "FFP021_CORE_B_GENUINE_SCALE_EXECUTABILITY_RECEIPT_R1",
+  "smallest_method_coordinate_requiring_lawful_revision": {
+    "authority_minted": false,
+    "candidate_name_only_not_authorized": "CLASSICAL_MDS_EXACT_PROFILE_QUOTIENT_SYMMETRIC_EIGEN_R1",
+    "coordinate": "method_manifest.decomposition.family",
+    "current": "CLASSICAL_MDS_JACOBI_R1",
+    "required_revision_scope": "Only the Jacobi eigensolver requirement. A lawful variant could keep exact classical-MDS double-centering, the exact multiplicity-weighted profile quotient, frozen metric, dimensionality, risk set, semantic states, tie rules, sensitivity obligations and replay tolerance while authorizing a deterministic symmetric eigensolver that is genuinely executable on the quotient operator."
+  },
+  "status": "BLOCKED__CORE_B_FROZEN_METHOD_CONTRACT_NOT_GENUINE_SCALE_EXECUTABLE__EXPLICIT_METHOD_VARIANT_REQUIRED"
+}

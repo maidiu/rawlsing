@@ -1,0 +1,54 @@
+{
+  "ceiling": "BOUNDED_FIXTURE_PROOF_ONLY__DOES_NOT_CERTIFY_GENUINE_SCALE_JACOBI_EXECUTION",
+  "duplicate_zero_structure": "B_N=Q B_R Q^T; the N-K orthogonal profile-difference complement is an exact zero eigenspace in addition to zero modes inside B_R.",
+  "fixtures": {
+    "unweighted_duplicate_fixture": {
+      "complete_distance_order_and_ties_exact": true,
+      "d_minus_1_d_d_plus_1_max_embedding_distance_error": 4.107825191113079e-15,
+      "exact_profiles": 6,
+      "expanded_gram_max_abs_error": 1.6653345369377348e-16,
+      "k_neighborhood_exact": true,
+      "metric_distance_max_abs_error": 0.0,
+      "opposition_peers_exact": true,
+      "positive_eigenvalue_max_abs_error": 2.220446049250313e-16,
+      "respondents": 9,
+      "retained_embedding_distance_max_abs_error": 3.885780586188048e-15,
+      "stress_dense": 0.19424711399191805,
+      "stress_quotient": 0.1942471139919183
+    },
+    "weighted_duplicate_fixture": {
+      "complete_distance_order_and_ties_exact": true,
+      "d_minus_1_d_d_plus_1_max_embedding_distance_error": 9.595208896476645e-15,
+      "exact_profiles": 7,
+      "expanded_gram_max_abs_error": 1.6653345369377348e-16,
+      "k_neighborhood_exact": true,
+      "metric_distance_max_abs_error": 0.0,
+      "opposition_peers_exact": true,
+      "positive_eigenvalue_max_abs_error": 8.881784197001252e-16,
+      "respondents": 10,
+      "retained_embedding_distance_max_abs_error": 9.595208896476645e-15,
+      "stress_dense": 0.17204281331403298,
+      "stress_quotient": 0.17204281331403287,
+      "weights": [1.0, 2.0, 3.0, 5.0]
+    }
+  },
+  "jackknife_equivalence": {
+    "dense_vs_exact_analytic": true,
+    "rule": "For k<n-1, holding a baseline neighbor gives (k-1)/k and another peer gives 1; for k=n-1 the score is 1. Respondent-ID tie order is preserved.",
+    "tested_k": {
+      "unweighted_n9": [1, 3, 8],
+      "weighted_n10": [1, 3, 9]
+    }
+  },
+  "respondent_deletion_count": 0,
+  "schema_version": "FFP021_CORE_B_EXACT_QUOTIENT_EQUIVALENCE_R1",
+  "semantic_state_merge_count": 0,
+  "source_algorithm_binding": {
+    "current_core_b_blob_sha": "7679864216b51d6a0b005b2fb1d72f00a86172a4",
+    "decomposition_family": "CLASSICAL_MDS_JACOBI_R1",
+    "ffp011_commit": "db912242e0f6bfefa61a2a83e11f701d17947af4",
+    "numeric_absolute_tolerance": 1e-10,
+    "numeric_relative_tolerance": 1e-10
+  },
+  "status": "PASS__BOUNDED_EXACT_PROFILE_QUOTIENT_EQUIVALENCE_PROVED"
+}

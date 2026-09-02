@@ -1,0 +1,17 @@
+coordinate	classification	frozen_or_realization_value	ruling
+metric.family	FROZEN_METHOD_IDENTITY	EXACT_STATE_HAMMING_R1 or explicitly authorized EXACT_STATE_WEIGHTED_HAMMING_R1	May not change metric family.
+metric.state_comparison	FROZEN_METHOD_IDENTITY	EXACT_FROZEN_STATE_IDENTITY_ONLY	No state merge, recode, order inference, or semantic similarity.
+metric.measurement_weights	FROZEN_WHEN_DECLARED	Exact positive measurement weights	A computational quotient must preserve the same normalized weighted mismatch sum.
+decomposition.family	FROZEN_METHOD_IDENTITY	CLASSICAL_MDS_JACOBI_R1	Classical MDS plus Jacobi eigendecomposition is frozen; changing eigensolver is not a mere optimization under this worker.
+dimensionality.rule + retained_d	FROZEN_METHOD_IDENTITY	Preserve the incoming lawful declaration	No dimension reduction beyond the already declared rule.
+neighborhood.k	FROZEN_METHOD_IDENTITY	Preserve the incoming lawful declaration	No approximate kNN and no k relaxation.
+position/disposition separation	FROZEN_REPRESENTATION_MEANING	Separate ACTIVE_POSITION and ACTIVE_DISPOSITION geometry	No cross-space pooling or re-optimization.
+complete metric order/ties/opposition	FROZEN_OUTPUT_MEANING	Exact Hamming order, respondent-ID tie break, metric opposition	May be represented by an exact reversible quotient/reconstruction carrier.
+numeric replay tolerance	FROZEN_REPLAY_CONTRACT	absolute=1e-10; relative=1e-10; degenerate eigenspaces by distance/Gram invariants	No new numerical tolerance is minted.
+claim ceiling	FROZEN_REPRESENTATION_CEILING	LOCAL_GEOMETRIC_RELATIONS_ONLY__NO_EMPIRICAL_WORLD_OR_SOCIAL_ONTOLOGY	No sociological interpretation.
+respondent-dense Python distance list-of-lists	COMPUTATIONAL_REALIZATION	NOT method identity	May be replaced by profile distances if every respondent relation is exactly reconstructible.
+respondent-dense squared-distance/Gram Python matrices	COMPUTATIONAL_REALIZATION	NOT method identity	May be replaced by exact multiplicity-weighted quotient Gram.
+n-by-n identity/eigenvector storage	COMPUTATIONAL_REALIZATION	NOT method identity	Duplicate zero modes and respondent coordinates may be represented reversibly.
+largest-offdiagonal full rescan implementation	COMPUTATIONAL_REALIZATION_WITHIN_JACOBI_FAMILY	Not separately declared in method manifest	A different deterministic Jacobi realization would be permissible only after fixture equivalence; none reached genuine-scale acceptance here.
+repeated full MDS for d-1/d/d+1 sensitivity	COMPUTATIONAL_REALIZATION	NOT method identity	Exact reuse/update identities are permissible; sensitivity outputs themselves remain required.
+expanded n-by-n distance/order serialization	COMPUTATIONAL_REALIZATION	NOT method identity	Exact profile-table + member-list reconstruction is permissible because no relation is dropped.
