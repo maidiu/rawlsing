@@ -1,0 +1,32 @@
+{
+  "schema_version": "FIELD_FORGE_R2_TERMINAL_INDEPENDENT_EVIDENCE_SEAM_FINAL_DISPOSITION@1",
+  "overall_disposition": "PASS__FIELD_FORGE_R2_TERMINAL_SYNTHESIS_INDEPENDENT_EVIDENCE_SEAM_AUDIT__NO_MATERIAL_DEFECT",
+  "finding_counts": {
+    "FATAL_EVIDENCE_OR_AUTHORITY_DEFECT": 0,
+    "MATERIAL_REPAIR_REQUIRED": 0,
+    "NONBLOCKING_CLARIFICATION": 1,
+    "PASS_NO_FINDING": 6
+  },
+  "nonblocking_clarifications": [
+    {
+      "id": "NC01_EXECUTED_ENGINE_VS_COMMITTED_REPLAY_CODE",
+      "finding_type": "NONBLOCKING_CLARIFICATION",
+      "summary": "FFP036 hash-identifies the originally executed engine separately from the committed deterministic replay script. The audit preserves that distinction. Independent input/output bank checks and reconstruction convergence make it nonmaterial to the audited empirical disposition."
+    }
+  ],
+  "fatal_or_material_findings": [],
+  "lineage_verified": true,
+  "premain_authority_seam_preserved": true,
+  "premain_observed_head": "5bfcb9ddfc30a9f0958e675a5af6c611978284bf",
+  "ffp036_core_bank_spotcheck_pass": true,
+  "ffif012f_independent_discovery_reconstruction_pass": true,
+  "summary_only_citation_laundering_detected": false,
+  "residual_blockers_remain_typed": true,
+  "physical_architecture_winner_selected": false,
+  "concurrent_architecture_audit_consumed": false,
+  "adoption_authorized": false,
+  "premain_movement_authorized": false,
+  "main_movement_authorized": false,
+  "architecture_redesign_issued": false,
+  "terminal": "PASS__FIELD_FORGE_R2_TERMINAL_SYNTHESIS_INDEPENDENT_EVIDENCE_SEAM_AUDIT__NO_MATERIAL_DEFECT"
+}
