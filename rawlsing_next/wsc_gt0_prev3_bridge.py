@@ -32,6 +32,17 @@ GT0_BASELINE_TARGET_USE = "GT0_BASELINE_PREV3_STRUCTURAL_REQUEST"
 INFORMATION_LOSS = "NONE__REFERENCE_PRESERVING"
 ZERO_V556_MARKER = "ZERO_V556_OBJECTS"
 
+WSC001C_CORRECTION_REF = GT0ExactRef(
+    kind="GIT_COMMIT",
+    value="3f9017ae3de22d8d9d5ab538096ce2f951c1681c",
+    content_hash="3f9017ae3de22d8d9d5ab538096ce2f951c1681c",
+)
+WSC002_COMMISSION_REF = GT0ExactRef(
+    kind="GIT_COMMIT",
+    value="dceacb137e1ab111dc4b389d9bf45bea15971d3b",
+    content_hash="dceacb137e1ab111dc4b389d9bf45bea15971d3b",
+)
+
 
 class GT0Prev3BridgeError(GT0IntegrityError):
     """The PRE-V3 bridge would violate the GT0 authority or identity ceiling."""
@@ -152,7 +163,10 @@ def run_gt0_prev3(
         permission_ceiling=permissions,
         status=status,
         dependency_refs=_merged_refs(source_env.dependency_refs, (upstream_stage_ref,)),
-        provenance_refs=_merged_refs(source_env.provenance_refs, (upstream_stage_ref, f0)),
+        provenance_refs=_merged_refs(
+            source_env.provenance_refs,
+            (upstream_stage_ref, f0, WSC001C_CORRECTION_REF, WSC002_COMMISSION_REF),
+        ),
         replay_refs=_merged_refs(source_env.replay_refs, (upstream_stage_ref,)),
         information_loss=source_env.information_loss,
     )
@@ -173,8 +187,12 @@ def run_gt0_prev3(
         input_envelope_hashes=(source_env.content_hash,),
         output_envelope=output_env,
         upstream_refs=_merged_refs(upstream_receipt.upstream_refs, (upstream_stage_ref, f0)),
-        authority_refs=upstream_receipt.authority_refs,
-        replay_refs=_merged_refs(upstream_receipt.replay_refs, (upstream_stage_ref,)),
+        authority_refs=_merged_refs(upstream_receipt.authority_refs, source_env.authority_refs),
+        replay_refs=_merged_refs(
+            upstream_receipt.replay_refs,
+            source_env.replay_refs,
+            (upstream_stage_ref,),
+        ),
         detail_code=detail_code,
     )
 
@@ -186,6 +204,8 @@ __all__ = [
     "GT0_BASELINE_TARGET_USE",
     "INFORMATION_LOSS",
     "ZERO_V556_MARKER",
+    "WSC001C_CORRECTION_REF",
+    "WSC002_COMMISSION_REF",
     "GT0Prev3BridgeError",
     "run_gt0_prev3",
 ]
