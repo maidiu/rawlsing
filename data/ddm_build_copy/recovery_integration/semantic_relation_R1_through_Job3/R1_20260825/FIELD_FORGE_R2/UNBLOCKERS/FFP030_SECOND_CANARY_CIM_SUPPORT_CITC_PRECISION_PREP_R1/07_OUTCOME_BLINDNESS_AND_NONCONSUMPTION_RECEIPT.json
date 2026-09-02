@@ -1,0 +1,56 @@
+{
+  "schema_version": "FFP030_OUTCOME_BLINDNESS_AND_NONCONSUMPTION_RECEIPT@1",
+  "status": "PASS__TARGET_RESULTS_UNINSPECTED__FFP029_NOT_CONSUMED",
+  "worker_starting_head": "4702e279244fee13f5dccd2a28bf5a9c0b3bc0eb",
+  "permitted_consumed_authority": {
+    "FFIF006": "787b02e8eed5e0b3079fbaed5624393443f3f652",
+    "FFIF007": "2d4f455fff5d7e888e32a1618d40d27161d7a1be",
+    "FFIF009": "86d52b524e9ca2b6b8959ab079cf88c7c5b3ab62",
+    "FFIF010": "dd7e154ec1b32afaef5da9324327a7dbc7c08bd9",
+    "FFIF011": "4702e279244fee13f5dccd2a28bf5a9c0b3bc0eb",
+    "FFP018": "abf9ca848b25ba65e7183b14e86bb70e60c8d8d7",
+    "FFP019": "04b3e361f900ad89d8d4d8562c00f6cdf20cf312",
+    "GLOBAL_HQ_FFC003_COMMISSION": "d3e93ab491dbbdc1763c019f44992b6884456b5b"
+  },
+  "FFP029": {
+    "required_placeholder": "PENDING_FFP029",
+    "content_consumed": false,
+    "commit_or_branch_searched": false,
+    "file_opened": false,
+    "result_used": false,
+    "rule": "THIS_PREPARATION_MUST_NOT_DEPEND_ON_FFP029_CONTENT; ONLY A FUTURE FINAL_FREEZE_ACT_MAY CONSUME_AND_VALIDATE_A_SUPPLIED_SECOND_CANARY_PRA_REF"
+  },
+  "forbidden_target_surfaces": {
+    "D_X_C_table": "NOT_COMPUTED_OR_INSPECTED",
+    "D_X_C_X_Z_table": "NOT_COMPUTED_OR_INSPECTED",
+    "Q86A_conditional_probability": "NOT_COMPUTED_OR_INSPECTED",
+    "broad_F01_target_contrast": "NOT_COMPUTED_OR_INSPECTED",
+    "within_state_F01_target_contrast": "NOT_COMPUTED_OR_INSPECTED",
+    "effect_sign": "NOT_INSPECTED",
+    "directional_reversal_result": "NOT_INSPECTED",
+    "directional_persistence_result": "NOT_INSPECTED",
+    "directional_split_result": "NOT_INSPECTED",
+    "exact_zero_target_result": "NOT_INSPECTED",
+    "delete_one_target_diagnostic_result": "NOT_COMPUTED_OR_INSPECTED",
+    "representation_output": "NOT_INSPECTED"
+  },
+  "permitted_structural_evidence_only": [
+    "exact R identity and member-set hash",
+    "exact source/qimpl/state identities",
+    "outcome-blind C-only arm counts already banked by predecessors",
+    "outcome-blind complete Z-domain generator design",
+    "FFIF011 support/direction/diagnostic/challenger contracts",
+    "first-canary CIM/CITC canonicalization and constitutional precedent",
+    "Global-HQ FFC003 jurisdiction"
+  ],
+  "freeze_actions_performed": {
+    "CIM_frozen": false,
+    "support_contract_frozen": false,
+    "CITC_frozen": false,
+    "comparison_hash_minted": false,
+    "AOS_issued": false,
+    "COCR_issued": false,
+    "implementation_performed": false
+  },
+  "terminal_receipt": "PASS__FFP030_PREPARATION_OUTCOME_BLIND__FFP029_NONCONSUMPTION_PROVED_BY_WORKER_ACTION_LOG"
+}
