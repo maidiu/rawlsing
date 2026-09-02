@@ -1,0 +1,42 @@
+{
+  "schema_version": "FFIF012F_INDEPENDENT_DISCOVERY_SPOTCHECK@1",
+  "status": "PASS_NO_FINDING",
+  "source_ref": "2d5981127ce19125ffca6653cf21343acee1e4f1",
+  "independent_reconstruction_inputs": {
+    "risk_set": {
+      "file_id": "file_00000000031881f68ac1040f9e354c69",
+      "sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc"
+    },
+    "response_facts": {
+      "file_id": "file_00000000b5f081f6b2e311e133a13ab9",
+      "sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709"
+    }
+  },
+  "variables": ["Q76A", "Q76B", "Q86A", "Q86B", "Q86C", "Q86D", "Q86E", "Q86F"],
+  "risk_respondents": 19210,
+  "duplicate_risk_respondent_variable_cells": 0,
+  "incomplete_eight_variable_respondents": 0,
+  "full_exact_profiles": 1856,
+  "singleton_profiles": 947,
+  "support_min": 1,
+  "support_max": 1169,
+  "nonempty_subset_count": 255,
+  "observed_conjunction_rows_by_order": {
+    "1": 34,
+    "2": 469,
+    "3": 2861,
+    "4": 9736,
+    "5": 18865,
+    "6": 19218,
+    "7": 9570,
+    "8": 1856
+  },
+  "observed_conjunction_rows_total": 62609,
+  "profile_count_dictionary_marginalization": {
+    "procedure": "Construct the exact 1,856-row eight-variable profile-count dictionary from the governed same-unit facts; for each of all 255 nonempty variable subsets, marginalize full-profile counts to the subset and compare against a direct respondent-level subset enumeration.",
+    "mismatched_subsets": 0,
+    "exact_regeneration": true
+  },
+  "nongeneralization": "This independently validates the bounded FFIF012F finite-state discovery facts only. It does not establish that every source/surface admits the same finite profile representation or that all future discovery/follow-up claims require no richer object.",
+  "result": "PASS__FFIF012F_BOUNDED_DISCOVERY_FACTS_AND_PROFILE_MARGINALIZATION_INDEPENDENTLY_REPRODUCED"
+}

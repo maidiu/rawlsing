@@ -1,0 +1,109 @@
+{
+  "schema_version": "FFP036_INDEPENDENT_EVIDENCE_SPOTCHECK@1",
+  "status": "PASS_NO_FINDING",
+  "execution_ref": "957628a3653e55757404ecf62822c4dd12f77430",
+  "sealed_preoutput_start": "b7798a9bc48582e341309610c218aadce4355ea2",
+  "library_spotcheck": {
+    "risk": {
+      "file_id": "file_00000000031881f68ac1040f9e354c69",
+      "path": "/Rawlsing/FIELD_FORGE_R2/FFP017_FIRST_GENUINE_CANARY_COEXPOSURE_RISKSET_R1/core_claim_common_risk_set.tsv.gz",
+      "bytes": 832756,
+      "observed_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+      "expected_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+      "data_rows": 19210,
+      "match": true
+    },
+    "responses": {
+      "file_id": "file_00000000b5f081f6b2e311e133a13ab9",
+      "path": "/Rawlsing/FIELD_FORGE_R2/FFP017_FIRST_GENUINE_CANARY_COEXPOSURE_RISKSET_R1/selected_response_facts.tsv.gz",
+      "bytes": 5200620,
+      "observed_sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+      "expected_sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+      "match": true
+    },
+    "exposures": {
+      "file_id": "file_00000000e06481f68c53413b0235a90f",
+      "path": "/Rawlsing/FIELD_FORGE_R2/FFP017_FIRST_GENUINE_CANARY_COEXPOSURE_RISKSET_R1/selected_exposure_facts.tsv.gz",
+      "bytes": 5203076,
+      "observed_sha256": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce",
+      "expected_sha256": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce",
+      "match": true
+    },
+    "frozen_roster": {
+      "file_id": "file_000000001cf081f6826488105b9ab29d",
+      "path": "/Rawlsing/FIELD_FORGE_R2/FFIF014_DISCOVERY_FOLLOWUP_PREOUTPUT_JOIN_R1/ffif014_frozen_discovery_predicate_roster.tsv.gz",
+      "bytes": 2811474,
+      "data_rows": 62609,
+      "observed_gzip_sha256": "4968bb74fc733cbbd3dd4db4d3aa4dfe7439b172d3fcdf62ee0ee2bc2f01319c",
+      "expected_gzip_sha256": "4968bb74fc733cbbd3dd4db4d3aa4dfe7439b172d3fcdf62ee0ee2bc2f01319c",
+      "observed_uncompressed_semantic_sha256": "5bf42464f3ff93e97d80f8ce178d670aa7fee98d13144f9c2d29d4f59032bced",
+      "expected_uncompressed_semantic_sha256": "5bf42464f3ff93e97d80f8ce178d670aa7fee98d13144f9c2d29d4f59032bced",
+      "match": true
+    },
+    "canonical_oracle": {
+      "file_id": "file_00000000db5c81f6b1fcbfbe6318c026",
+      "path": "/Rawlsing/FIELD_FORGE_R2/FFP036_DISCOVERY_FOLLOWUP_GENUINE_EXECUTION_R1/ffp036_canonical_oracle_target.tsv.gz",
+      "bytes": 5886444,
+      "data_rows": 688699,
+      "observed_gzip_sha256": "e60a96a4674143db1280e15c354e2a071501ba28782fd3314438f2c414b88f67",
+      "expected_gzip_sha256": "e60a96a4674143db1280e15c354e2a071501ba28782fd3314438f2c414b88f67",
+      "observed_semantic_sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+      "expected_semantic_sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+      "match": true
+    },
+    "w3_q1_summary": {
+      "file_id": "file_00000000bb8c81f68cd2fd5950eb4085",
+      "bytes": 5351763,
+      "data_rows": 688699,
+      "observed_gzip_sha256": "b6ff598cc7fd9e7c67529a05a4971364bf864e406abdd03b305f06717bedde2d",
+      "match": true
+    },
+    "w5_full_state": {
+      "file_id": "file_00000000c89c81f6a3213e7f978b14fc",
+      "bytes": 800484,
+      "data_rows": 19210,
+      "observed_gzip_sha256": "9a66ad31ce423f8b1972b9cf126f91eda4e228707b868b57e64e185c36ac9cd4",
+      "match": true
+    }
+  },
+  "independent_oracle_recalculation": {
+    "target_rows": 688699,
+    "predicate_n": 62609,
+    "country_n": 11,
+    "country_domain": ["BFO", "BOT", "CVE", "KEN", "LES", "MAU", "MLW", "MOZ", "NAM", "SAF", "UGA"],
+    "observed_positive_cells": 259991,
+    "observed_zero_cells": 428708,
+    "support_sum_invariant_failures": 0,
+    "statuses": {
+      "OBSERVED_POSITIVE": 259991,
+      "OBSERVED_ZERO": 428708
+    },
+    "semantic_sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df"
+  },
+  "challenger_receipt_crosscheck": {
+    "W0": "INCOMPLETE__AS07",
+    "W1": "PASS__EXACT_COMPLETE__NO_LOCAL_PREDICATE_MEMBERSHIP__COLD_REPEAT_BYTE_IDENTICAL",
+    "W2": "UNDEFINED_FOR_OBJECT__AS06__NO_VALUE_FABRICATED",
+    "W3": "PASS__EXACT_Q1_ONLY",
+    "W4": "PASS__EXACT_COMPLETE__MEMBERSHIP_MATERIALIZED_DURING_EXECUTION",
+    "W5": "PASS__EXACT_COMPLETE__INDEPENDENT_FULL_PROFILE_COUNTRY_MARGINALIZATION",
+    "W6": "EXCLUDED__NO_PREOUTPUT_FUSION_TRIGGER",
+    "W1_W3_W4_W5_normalized_semantic_sha256": "0746052037bf815f953c4a0e06094350d3fcbd7557c782513b212c8667a9b6df",
+    "all_equal": true
+  },
+  "result_firewall": {
+    "preoutput_roster_and_query_frozen_before_execution": true,
+    "execution_exact_start_matches_preoutput_seal": true,
+    "court_mutated": false,
+    "reported_result_firewall_breaches": 0,
+    "finding": "PASS_NO_FINDING"
+  },
+  "replay_artifact_clarification": {
+    "finding_type": "NONBLOCKING_CLARIFICATION",
+    "executed_engine_sha256": "a6c1f5369250102815a811e10088022fe603dc8ba8e8216e64036e7036c3e303",
+    "committed_deterministic_replay_code_sha256": "7fb08917abc75792cc7539367f31c5e272de1754d338deb6635376ff75956d0e",
+    "same_artifact_claimed": false,
+    "why_nonblocking": "FFP036 explicitly discloses the distinction; immutable inputs and banked outputs match; the receipt records byte-identical cold bank rematerialization and independent W5 reconstruction; this audit independently rehashed the banked inputs/oracle and recomputed the target-domain invariants."
+  },
+  "result": "PASS__FFP036_EVIDENCE_BANK_AND_CORE_INVARIANTS_INDEPENDENTLY_SPOTCHECKED"
+}
