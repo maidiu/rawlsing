@@ -1,0 +1,157 @@
+{
+  "schema_version": "FFP030_SECOND_CANARY_DRAFT_CIM@1",
+  "status": "PREPARED_NOT_FROZEN__PRA_BINDING_PENDING__TARGET_RESULTS_UNINSPECTED",
+  "candidate_claim_id": "FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1",
+  "claim_identity_state": "CLAIM_ROLE_AUTHORITY_UNRESOLVED__PRA_REF_PENDING_FFP029",
+  "normalized_empirical_proposition": "Among governed Afrobarometer Round-5 respondents in FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1, compare the exact unweighted realized-sample probability of the literal native event Q86A=1 (Yes) between Q73A native state 1 and native state 0, first broadly and then within every exact observed same-unit conjunction predicate over Z=(Q70B,Q70C,Q84) generated outcome-blindly from the complete observed Z domain. Preserve the exact broad and within-state F01 contrasts, exact signs, exact zero, typed abstention, and the deterministic exact directional reversal, directional persistence, and directional split statuses. This proposition does not assert material difference, magnitude persistence, practical disappearance, null equivalence, statistical significance, causal effect, or population inference.",
+  "assertion_slot_type": "BROAD_PLUS_EXACT_JOINT_CONDITIONED_F01_DIRECTIONAL_STATUS_BUNDLE",
+  "empirical_unit_ref": {
+    "schema": "FFP014_R5_CURRENT_RESPONDENT_CARRIER@1",
+    "governed_respondent_key": ["COUNTRY", "RESPNO"],
+    "carrier_identity": "sha256:6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5"
+  },
+  "claim_scope_ref": {
+    "source_family": "Afrobarometer",
+    "wave": "R5",
+    "source_object_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "country_scope": "COUNTRY_ALPHA3 NOT IN {ALG,BDI,BEN,CAM,CDI,EGY,GHA,GUI,LIB,MAD,MLI,MRC,NGR,NIG,SEN,SRL,SUD,SWZ,TAN,TOG,TUN,ZAM,ZIM}",
+    "temporal_context_scope": "AFROBAROMETER_ROUND_5_SOURCE_WAVE"
+  },
+  "risk_set_ref": {
+    "id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "respondent_count": 19210,
+    "semantic_member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "physical_artifact_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc"
+  },
+  "population_target_ref": "EXACT_ADMITTED_19210_MEMBER_RISK_SET_SAMPLE_ONLY__NO_EXTERNAL_POPULATION_TARGET",
+  "estimand_ref": "PREPARED__UNWEIGHTED_EXACT_REALIZED_SAMPLE_F01_EVENT_CONTRAST@1",
+  "weight_target_ref_or_NONE": "NONE__EXPLICIT_UNWEIGHTED_SAMPLE_DESCRIPTIVE_CLAIM",
+  "inferential_class": "SAMPLE_DESCRIPTIVE__NONCAUSAL__NO_POPULATION_GENERALIZATION",
+  "proposition_operands": {
+    "C": {
+      "source_variable": "Q73A",
+      "qimpl": "question_impl.phase0.cae005624221d7b00dd2",
+      "identity_sha256": "cae005624221d7b00dd2e8dcc31a8c73d2d4f1446a06d428ab40f1ee2809ad14",
+      "c0_native_state": 0,
+      "c1_native_state": 1,
+      "contrast_direction": "c1_minus_c0",
+      "typed_noncontrast_states": [9, -1],
+      "pra_ref": "PENDING_FFP029"
+    },
+    "D": {
+      "source_variable": "Q86A",
+      "qimpl": "question_impl.phase0.67f036c0efb7fb98ff4a",
+      "identity_sha256": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+      "source_semantic_meaning": "Opinion whether a person born in-country to one national and one non-national parent has the right to be a citizen.",
+      "native_substantive_domain": [0, 1],
+      "pra_ref": "PENDING_FFP029"
+    },
+    "E": {
+      "predicate": "Q86A_NATIVE_STATE == 1",
+      "native_state": 1,
+      "source_label": "Yes",
+      "semantic_ceiling": "LITERAL_NATIVE_EVENT_MEMBERSHIP_ONLY__NO_ORDINAL_SCORE__NO_CATEGORY_COLLAPSE__NO_RESPONDENT_CITIZENSHIP_INFERENCE"
+    },
+    "Z": {
+      "ordered_tuple": ["Q70B", "Q70C", "Q84"],
+      "k": 3,
+      "members": {
+        "Q70B": {
+          "qimpl": "question_impl.phase0.311d905b2baab867642e",
+          "identity_sha256": "311d905b2baab867642e2be9ed3595aa3c556d9d4508db7510f648e96fb9a8fd",
+          "pra_ref": "PENDING_FFP029"
+        },
+        "Q70C": {
+          "qimpl": "question_impl.phase0.575fb5e032fab4cd18a4",
+          "identity_sha256": "575fb5e032fab4cd18a4a5bc3f55f233530a243cfa5ff7ecc75740b286b812e8",
+          "pra_ref": "PENDING_FFP029"
+        },
+        "Q84": {
+          "qimpl": "question_impl.phase0.5a05ce882452ef85debd",
+          "identity_sha256": "5a05ce882452ef85debd9e7031211b1cd884f8b8c063b5080cfd87c40fa8fcb2",
+          "state_identity_ceiling": "COUNTRY_ALPHA3_QUALIFIED_NATIVE_CATEGORY__NO_CROSS_COUNTRY_EQUIVALENCE",
+          "pra_ref": "PENDING_FFP029"
+        }
+      }
+    },
+    "F": {
+      "family": "F01__EXACT_NATIVE_SINGLE_STATE_EVENT_CONTRAST",
+      "formula": "Delta_h=P_sample(Q86A=1|R,Q73A=1,h)-P_sample(Q86A=1|R,Q73A=0,h)",
+      "h_domain": "BROAD_TRUE_OR_ONE_EXACT_SUPPORT_ADMITTED_Z_PREDICATE",
+      "sign_domain": [-1, 0, 1]
+    }
+  },
+  "ttar": {
+    "disposition": "NONE__SOURCE_NATIVE_EXACT_STATES_AND_LITERAL_NATIVE_EVENT_ONLY",
+    "ordered_sequence": []
+  },
+  "observed_joint_domain_generator": {
+    "rule": "ENUMERATE_COMPLETE_OBSERVED_EXACT_SAME_UNIT_Z_CONJUNCTION_DOMAIN_OVER_R_USING_SOURCE_NATIVE_OR_ALREADY_GOVERNED_PROJECT_STATE_IDENTITIES_ONLY",
+    "target_variable_used": false,
+    "state_selection_by_outcome_forbidden": true,
+    "domain_preservation": "RETAIN_COMPLETE_OBSERVED_Z_ROSTER_INCLUDING_ZERO_ARM_PREDICATES_AS_TYPED_NONEXECUTABLE_ROWS",
+    "within_state_query_gate": "n(s,c0)>0 AND n(s,c1)>0"
+  },
+  "target_invariant_ref_or_bundle_ref": "PREPARED__SECOND_CANARY_EXACT_F01_DIRECTIONAL_STATUS_BUNDLE@1",
+  "assertion_scale_and_value_domain": {
+    "event_probability_domain": "[0,1]",
+    "contrast_domain": "[-1,1]",
+    "contrast_unit": "PROBABILITY_POINT_DIFFERENCE",
+    "sign_domain": [-1, 0, 1],
+    "joint_predicate_scale": "EXACT_SOURCE_PROJECT_NATIVE_CONJUNCTION_IDENTITY",
+    "q84_equivalence_rule": "NO_CROSS_COUNTRY_Q84_EQUIVALENCE"
+  },
+  "quantifier": "BROAD_ONCE__THEN_FOR_EACH_COMPLETE_OBSERVED_Z_PREDICATE_REPORT_EXACT_SUPPORT_STATE_AND_EITHER_EXACT_F01_CONTRAST_STATUS_OR_TYPED_ABSTENTION__THEN_APPLY_FROZEN_COMPOUND_SIGN_LOGIC",
+  "state_level_status_logic": {
+    "EXACT_DIRECTIONAL_REVERSAL": "broad_sign in {-1,+1} AND state_sign == -broad_sign",
+    "EXACT_DIRECTIONAL_PERSISTENCE": "broad_sign in {-1,+1} AND state_sign == broad_sign",
+    "EXACT_ZERO_DIFFERENCE_IN_REALIZED_SAMPLE": "exact_Delta == 0",
+    "ABSTAIN": "required denominator zero OR constitutive authority/identity unresolved"
+  },
+  "compound_status_logic": {
+    "EXACT_DIRECTIONAL_SPLIT": "among support-admitted within-state scalar contrasts EXISTS sign=+1 AND EXISTS sign=-1",
+    "REVERSAL_PRESENT": "broad_sign nonzero AND EXISTS support-admitted state_sign == -broad_sign",
+    "PERSISTENCE_ACROSS_ADMITTED_STATES": "broad_sign nonzero AND at least one support-admitted state AND EVERY support-admitted state has same nonzero sign as broad_sign",
+    "BROAD_EXACT_ZERO_ROUTE": "record exact broad zero; do not manufacture broad-relative reversal or persistence",
+    "abstention_preservation": "unsupported or unresolved roster members remain explicit"
+  },
+  "explicitly_omitted_stronger_concepts": [
+    "MATERIAL_DIFFERENCE",
+    "MAGNITUDE_PERSISTENCE",
+    "PRACTICAL_DISAPPEARANCE",
+    "NULL_EQUIVALENCE",
+    "POPULATION_INFERENCE"
+  ],
+  "representation_scope_mode": "REPRESENTATION_NEUTRAL",
+  "constitutive_representation_restriction": "NONE",
+  "diagnostic_nonconstitutive_ref": "DELETE_ONE_RESPONDENT_DIRECTION_STABILITY@1",
+  "support_uncertainty_contract_ref": "FFP030_DRAFT_SECOND_CANARY_EXACT_SAMPLE_DESCRIPTIVE_SUPPORT_UNCERTAINTY_CONTRACT@1",
+  "support_uncertainty_contract_hash": null,
+  "invariant_tolerance_contract_ref": "FFP030_DRAFT_SECOND_CANARY_CITC@1",
+  "invariant_tolerance_contract_hash": null,
+  "common_semantic_input_manifest_ref": "PENDING_FINAL_PRA_BOUND_SECOND_CANARY_COMMON_SEMANTIC_INPUT_BINDING",
+  "common_semantic_input_manifest_hash": null,
+  "pra_binding": {
+    "required_subset": ["Q73A", "Q70B", "Q70C", "Q84", "Q86A"],
+    "ref": "PENDING_FFP029",
+    "validity_requirement": "VALID_SECOND_CANARY_SCOPE_PRA_BINDING_REQUIRED_BEFORE_CIM_FREEZE"
+  },
+  "proposition_hash": null,
+  "comparison_claim_hash": null,
+  "hash_disposition": "NOT_MINTED__FINAL_CANONICAL_HASHING_FORBIDDEN_UNTIL_VALID_PRA_REF_AND_FINAL_SUPPORT_CITC_REFS_EXIST",
+  "canonicalization_plan": "FOLLOW_FFP019_UTF8_SORTED_KEYS_COMPACT_JSON_NFC_ARRAY_ORDER_PRESERVED_NO_TRAILING_NEWLINE_AT_FINAL_FREEZE_ONLY",
+  "forbidden_promotions": [
+    "materiality from nonzero sign",
+    "magnitude persistence from same sign",
+    "practical disappearance from exact zero",
+    "null equivalence from exact zero",
+    "population inference",
+    "survey weighting",
+    "causal inference",
+    "delete-one stability as support threshold or claim truth",
+    "Q84 cross-country equivalence",
+    "geometry/topology/latent/motif/transport as claim identity",
+    "structural noun admission",
+    "post-output CIM mutation"
+  ]
+}
