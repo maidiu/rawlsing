@@ -1,0 +1,17 @@
+gate_id	gate	current_state	seam_disposition	positive_evidence_required	fail_closed_state_or_rule
+C-G01	FIELD FORGE relation -> structural admission authority	CLAIM_USE_SCOPED	REQUIRE_EXACT_I04_P06_RULE_AND_AUTHORITY	named admission rule/authority + exact target proposition/use/scope/dependency closure	MISSING_STRUCTURAL_ADMISSION_AUTHORITY / UNKNOWN_OR_CONFLICTING_REQUIRED_AUTHORITY / DENIED / DEFERRED
+C-G02	V553 temporal meaning requirement	DOWNSTREAM_OWNER	DEFER_TO_V553_M1_DECISION	exact temporal/comparability authority when new temporal meaning is required	NO_POSITIVE_V553_OUTPUT or exact temporal negative
+C-G03	V554 basis/equivalence/affordance	DOWNSTREAM_OWNER	DEFER_TO_M1_V554	exact eligible basis, rule/equivalence and required authority closure	INELIGIBLE_* / EQUIVALENCE_UNKNOWN / VALID_EMPTY
+C-G04	V555 atomic mediation route	DOWNSTREAM_OWNER	DEFER_TO_V555	exact eligible V554 basis + route authority/rule/shape/source-channel-receiver bindings	NO_GOVERNED_ROUTE_AUTHORITY / ROUTE_* / VALID_EMPTY
+C-G05	V556 higher-order relation/topology	DOWNSTREAM_OWNER	DEFER_TO_V556	exact higher-order-required flag + rule authority + participants/composition + governed result	ZERO_V556_OBJECTS when not required; otherwise typed V556 negative
+C-G06	V557 publication permission	DOWNSTREAM_OWNER	DEFER_TO_V557	exact producer allowed uses + V557 governance authority	DENY_CAUSAL_USE / NOT_APPLICABLE / typed exception
+C-G07	V558 immutable resolution	DOWNSTREAM_OWNER	DEFER_TO_V558	exact published producer roots/locators/dependency closure and resolver policy	NOT_FOUND/negative/integrity state; no fuzzy repair
+C-G08	cross-context map/comparator/transport	OPEN_CLAIM_SPECIFIC	REQUIRE_SEPARATE_MAP_AND_COMPARATOR_AUTHORITY	exact local refs + typed map authority + comparator + compatibility scope + falsifiers + replay	NO_TRANSPORT / NONCOMPARABLE / MISSING_AUTHORITY
+C-G09	FIELD / FIELD_SPECIFIC_CAPITAL / CONVERSION / HEGEMONY / HOMOLOGY / strong PRESSURE / STRUCTURAL_MECHANISM	NO_CURRENT_COMPETENT_OWNER_ESTABLISHED	BLOCK_PROMOTION	separate competent current owner/court with exact admission authority	BLOCKED_EXPLICIT_AUTHORITY; BLOCKED_OBSERVABILITY_LIMIT where evidence unavailable
+C-G10	PRA / position-role authority	OPEN_CLAIM_SPECIFIC	DO_NOT_WIDEN	separately issued exact PRA for requested role/operation	UNRESOLVED_AUTHORITY / MISSING_AUTHORITY
+C-G11	TTAR/equivalence/recoding/scalarization	OPEN_CLAIM_SPECIFIC	DO_NOT_WIDEN	separately issued exact transform/equivalence authority	UNRESOLVED_AUTHORITY / NONCOMPARABLE
+C-G12	weight/estimand/measurement/CITC/generalization	OPEN_CLAIM_SPECIFIC	DO_NOT_WIDEN	exact operation-specific authority and declared estimand/measure/tolerance	OUT_OF_SCOPE / MISSING_AUTHORITY / INSUFFICIENT_EVIDENCE
+C-G13	PRE-V3 structural possibility -> V3 actor realization	FIREWALL	FORBIDDEN_IN_THIS_SEAM	must pass later comparator/PSEPF/metabolism and V3 causal authority	NO_ACTOR_INFERENCE
+C-G14	global physical persistence/source-backed/hybrid choice	OPEN_PROJECT	OUT_OF_JURISDICTION	equal semantic workload/economics/replay evidence in later physical court	PHYSICAL_PERSISTENCE != SEMANTIC_TRUTH
+C-G15	hard PRE553 seam vs continuous producer DAG	OPEN_PROJECT	OUT_OF_JURISDICTION	later topology/lifecycle court preserving logical producer distinctions	LOGICAL_PRODUCER_BOUNDARY != MANDATORY_PHYSICAL_TRANSIT_STAGE
+C-G16	complete source->PRE-V3 vertical compiler	OBL004_OPEN	NOT_CLOSED_BY_THIS_SEAM	central composed GT0 execution with exact authority/replay/negative closure	LOCAL_PASS_DOES_NOT_SUM_TO_PARENT_CLOSURE
