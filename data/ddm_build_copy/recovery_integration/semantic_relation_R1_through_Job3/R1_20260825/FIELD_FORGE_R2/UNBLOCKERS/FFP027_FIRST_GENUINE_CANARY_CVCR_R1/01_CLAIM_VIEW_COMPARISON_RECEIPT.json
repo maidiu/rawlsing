@@ -1,0 +1,195 @@
+{
+  "canonicalization_spec": {
+    "encoding": "UTF-8",
+    "hash_algorithm": "SHA-256",
+    "hash_input": "payload only",
+    "json_normalization": "JSON object keys sorted lexicographically; compact separators ',' and ':'; ensure_ascii=false; Unicode strings NFC; array order preserved",
+    "trailing_newline": "none for hashed payload bytes"
+  },
+  "cvcr_hash": "sha256:e22823cff06dd956deb8d02bce55048934264f0a9002329a549a59fdb874f9dc",
+  "payload": {
+    "citc_application": {
+      "authoritative_rows": "CITC001-CITC030",
+      "constitutive_exact_zero_rows": "CITC001-CITC017",
+      "core_b_rule": "DOES_NOT_REPRESENT is not approximation failure; claim-recovery rows are not scored as error for B",
+      "exact_row_application_artifact": "02_CITC_ROW_APPLICATION.tsv",
+      "exact_row_application_sha256": "sha256:f03c7f9126520378e7741c724f8adab9b4e450b82fa334fb7924e01d02788fac",
+      "nonconstitutive_no_q03_penalty_rows": "CITC018-CITC030"
+    },
+    "citc_hash": "sha256:f51de0091cae4a79c86d6021b27e69e87645ef43a2e0dd9bdd2637b53f3367e2",
+    "claim_id": "FFR2_R5_Q03_Q73A_CONDITIONAL_DISPOSITION_REDISTRIBUTION_CANARY@1",
+    "cocr_import": {
+      "cvcr_reperformed_challenger_completeness": false,
+      "effect": "JURISDICTIONALLY_SEPARATE__NO_SINGLE_OBJECT_NECESSITY_CLAIM_ISSUED",
+      "ruling": "COCR_NONREDUCIBILITY_CLAIM_FALSE__AT_LEAST_ONE_SINGLE_ADMISSIBLE_VIEW_Q03_SUFFICIENT",
+      "source_commit": "df33d3aaa75e4a7fc6139653f512f2a2fa510168"
+    },
+    "common_semantic_input_hash": "sha256:6895a6a9dac8833b58a8d426c34c9d9e821b1af12e8f4b7b62c557236f43e417",
+    "comparison_claim_hash": "sha256:e1ca9afcf0a52fec3a95dd468729e07fbb11a9d4008899bbe573e122d003c788",
+    "consumed_refs": {
+      "FFIF004": "ce6c735f6a338d506fac370da25477be61b81f21",
+      "FFIF006": "787b02e8eed5e0b3079fbaed5624393443f3f652",
+      "FFIF007": "2d4f455fff5d7e888e32a1618d40d27161d7a1be",
+      "FFP018": "abf9ca848b25ba65e7183b14e86bb70e60c8d8d7",
+      "FFP019": "04b3e361f900ad89d8d4d8562c00f6cdf20cf312",
+      "FFP022": "be2a4712018ad993a9ce2dabaa0dfd9b92237c88",
+      "FFP024": "4874db1e47c9d57549fcd8e5701afd1cf5d1e45a",
+      "FFP025": "5ec39a6f91e921d3b7dcfeff2b21add1f124aa50",
+      "FFP026": "df33d3aaa75e4a7fc6139653f512f2a2fa510168"
+    },
+    "explicit_nonimplications": [
+      "C_IS_MASTER_REPRESENTATION",
+      "A_IS_REDUNDANT",
+      "B_IS_USELESS",
+      "CONDITIONAL_TABLES_EXHAUST_SOCIAL_STRUCTURE",
+      "A_C_Q03_AGREEMENT_ESTABLISHES_GENERAL_REPRESENTATION_EQUIVALENCE",
+      "RESULT_GENERALIZES_TO_FUTURE_CLAIMS",
+      "STRUCTURAL_NOUN_ADMISSION",
+      "V3_INTERPRETATION",
+      "SECOND_CANARY",
+      "ARCHITECTURE_REDESIGN"
+    ],
+    "final_disposition": "PASS__FIRST_GENUINE_CANARY_CVCR_ISSUED",
+    "hostile_prerequisite_disposition": {
+      "R2F002": "NOT_EXECUTED__NOT_REQUIRED_PREREQUISITE_FOR_EXACT_Q03_CVCR__REMAINS_REGISTERED_REQUIRED_FFX002_FIXTURE",
+      "R2F003": "NOT_EXECUTED__NOT_REQUIRED_PREREQUISITE_FOR_EXACT_Q03_CVCR__REMAINS_REGISTERED_REQUIRED_FFX002_FIXTURE",
+      "R2F004": "NOT_EXECUTED__NOT_REQUIRED_PREREQUISITE_FOR_EXACT_Q03_CVCR__REMAINS_REGISTERED_REQUIRED_FFX002_FIXTURE",
+      "R2F016": "NOT_EXECUTED__NOT_REQUIRED_PREREQUISITE_FOR_EXACT_Q03_CVCR__REMAINS_REGISTERED_REQUIRED_FFX002_FIXTURE",
+      "artifact": "03_HOSTILE_PREREQUISITE_DISPOSITION.tsv",
+      "artifact_sha256": "sha256:b92e77b1ee5c4b13aac20d9230b800b4ffb50744ccaa6f938fe9991e2dd77f0e"
+    },
+    "independence": {
+      "comparison_inputs_consumed_as_immutable_prior_evidence": true,
+      "role": "INDEPENDENT_SEMANTIC_REVIEW_WORKER",
+      "this_act_performed_ffp025": false,
+      "this_act_produced_core_a": false,
+      "this_act_produced_core_b": false,
+      "this_act_produced_core_c": false
+    },
+    "jurisdiction": {
+      "adjudicates": [
+        "Q03 claim truth/sufficiency under frozen comparison identity",
+        "Q03 representation dependence across admitted Q03 assertion interfaces and executed P0-P3 packages"
+      ],
+      "court": "CLAIM_SCOPED_VIEW_COMPARISON",
+      "does_not": [
+        "general representation usefulness ranking",
+        "COCR challenger completeness",
+        "structural-noun admission",
+        "V3 interpretation",
+        "second canary",
+        "architecture redesign"
+      ]
+    },
+    "per_package": {
+      "P0": {
+        "composition": [
+          "C"
+        ],
+        "q03_disposition": "EXACT__34_OF_34",
+        "representing_basis": [
+          "C"
+        ]
+      },
+      "P1": {
+        "a_incremental_q03_components": 0,
+        "composition": [
+          "C",
+          "A"
+        ],
+        "q03_disposition": "EXACT__34_OF_34",
+        "representing_basis": [
+          "C",
+          "A"
+        ]
+      },
+      "P2": {
+        "b_incremental_q03_components": 0,
+        "b_q03_interface": "DOES_NOT_REPRESENT",
+        "composition": [
+          "C",
+          "B"
+        ],
+        "q03_disposition": "EXACT__34_OF_34",
+        "representing_basis": [
+          "C"
+        ]
+      },
+      "P3": {
+        "a_incremental_q03_components": 0,
+        "b_incremental_q03_components": 0,
+        "b_q03_interface": "DOES_NOT_REPRESENT",
+        "composition": [
+          "C",
+          "A",
+          "B"
+        ],
+        "q03_disposition": "EXACT__34_OF_34",
+        "representing_basis": [
+          "C",
+          "A"
+        ]
+      }
+    },
+    "per_view": {
+      "CORE_A": {
+        "claim_disposition": "Q03_SUFFICIENT__EXACT__INDEPENDENT_RECONSTRUCTION",
+        "claim_interface": "REPRESENTS",
+        "component_mismatch_count": 0,
+        "q03_exact_components": "34/34"
+      },
+      "CORE_B": {
+        "claim_disposition": "DOES_NOT_REPRESENT__NOT_APPROXIMATION_FAILURE",
+        "claim_interface": "DOES_NOT_REPRESENT",
+        "component_mismatch_count": "NOT_APPLICABLE",
+        "q03_exact_components": "NOT_APPLICABLE",
+        "reason": "ADMITTED_INTERFACE_CONTAINS_NO_CROSS_SPACE_CONDITIONAL_REDISTRIBUTION_DECODER"
+      },
+      "CORE_C": {
+        "claim_disposition": "Q03_SUFFICIENT__EXACT",
+        "claim_interface": "REPRESENTS",
+        "component_mismatch_count": 0,
+        "q03_exact_components": "34/34"
+      }
+    },
+    "proposition_hash": "sha256:b967da7084c319193237980e17ac0e40443dad88b6608b9d73abd1eae3e97430",
+    "receipt_id": "FFP027_FIRST_GENUINE_CANARY_CVCR_R1",
+    "representation_dependence": {
+      "core_a_non_q03_information": {
+        "active_respondent_state_cells_exactly_recoverable": 230520,
+        "counterpattern_position_configurations": 1033,
+        "disposition_configurations": 1856,
+        "full_cross_surface_configuration_pair_rows": 13269,
+        "minority_destination_branches": 9692,
+        "position_configurations": 1561,
+        "q03_components_added": 0,
+        "q86abc_j3_exact_configurations": 38
+      },
+      "core_b_non_q03_information": {
+        "exact_profile_quotient": "DETERMINISTIC_REEXPRESSION_OF_INFORMATION_ALREADY_AVAILABLE_FROM_A_AT_ACTIVE_STATE_CELL_GRAIN",
+        "interfaces": [
+          "EXACT_HAMMING_LOCAL_NEIGHBORHOOD",
+          "COMPLETE_METRIC_ORDER",
+          "OPPOSITION"
+        ],
+        "primary_retained_10d_coordinate_representation": "LOSSY_BUT_USEFUL_DERIVED_VIEW",
+        "q03_components_added": 0
+      },
+      "frozen_q03_answer_materially_depends_on_executed_lawful_package_choice": false,
+      "information_content_disposition": "DEMONSTRABLY_FALSE",
+      "non_equivalence_rule": "A_AND_C_Q03_AGREEMENT_DOES_NOT_ESTABLISH_GENERAL_INFORMATION_EQUIVALENCE",
+      "reason": "A and C independently recover the same exact Q03 34/34 target; every executed package contains C; B has no admitted Q03 assertion interface and therefore does not supply a conflicting or approximate Q03 answer",
+      "representation_independent_information_content": false,
+      "status": "REPRESENTATION_ROBUST_CLAIM_ANSWER__EXECUTED_P0_P1_P2_P3"
+    },
+    "risk_set": {
+      "respondent_count": 19210,
+      "semantic_member_set_hash": "sha256:0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+    },
+    "schema_version": "CLAIM_VIEW_COMPARISON_RECEIPT@1",
+    "starting_head": "5ec39a6f91e921d3b7dcfeff2b21add1f124aa50",
+    "support_uncertainty_contract_hash": "sha256:a977c670888c38690a6cd4f842dd523293389a5774c42cfdc85837492a742d10",
+    "typed_q03_ruling": "Q03_CLAIM_ANSWER_EXACT_AND_REPRESENTATION_ROBUST_ACROSS_EXECUTED_P0_P1_P2_P3__A_C_EXACT_AGREEMENT__B_DOES_NOT_REPRESENT"
+  },
+  "schema_version": "CLAIM_VIEW_COMPARISON_RECEIPT_WRAPPER@1"
+}
