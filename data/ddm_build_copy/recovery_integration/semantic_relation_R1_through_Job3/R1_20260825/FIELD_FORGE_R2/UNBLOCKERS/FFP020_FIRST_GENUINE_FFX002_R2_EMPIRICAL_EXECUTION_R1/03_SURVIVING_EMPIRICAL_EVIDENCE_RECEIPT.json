@@ -1,0 +1,51 @@
+{
+  "schema_version": "FFP020_SURVIVING_EMPIRICAL_EVIDENCE_RECEIPT_R1",
+  "status": "VALID_FROZEN_SUBSTRATE_EVIDENCE_RETAINED_DESPITE_COMPLETE_MULTIVIEW_EXECUTION_BLOCKER",
+  "source_authority_ref": "97ad8148a5227e8be6d80e5beaccc4d80db8d5a8",
+  "source_library_folder": "/Rawlsing/FIELD_FORGE_R2/FFP017_FIRST_GENUINE_CANARY_COEXPOSURE_RISKSET_R1",
+  "frozen_risk_set": {
+    "respondent_count": 19210,
+    "semantic_hash": "sha256:0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "member_artifact_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc"
+  },
+  "verified_source_artifacts": [
+    {"name": "core_claim_common_risk_set.tsv.gz", "sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc", "bytes": 832756},
+    {"name": "q73a_contrast_membership.tsv.gz", "sha256": "425a23d2b70e902e832ba7d989abc7d861e0c132046da3965687d685411d0c02", "bytes": 837878},
+    {"name": "j3_native_q86abc_respondent_facts.tsv.gz", "sha256": "c8e26789d271dd1b3975a82223d58414bfc8b33664a853beaf06cec3aedecc17", "bytes": 844167},
+    {"name": "j3_native_q86abc_support_inventory.tsv.gz", "sha256": "472e4b873b1cff882c57b54dab5b66d19b5cd434b9392ead755c6f8d8e287fbf", "bytes": 406},
+    {"name": "selected_response_facts.tsv.gz", "sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709", "bytes": 5200620},
+    {"name": "selected_exposure_facts.tsv.gz", "sha256": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce", "bytes": 5203076},
+    {"name": "per_measurement_exposure_summary.tsv.gz", "sha256": "1ad4e78a10a4980bcbcb405a43c0920fe78aa26f1fefb6556eb430f763ec944b", "bytes": 1016},
+    {"name": "deterministic_replay_receipt.json", "sha256": "548b88be3a5df043e8e5129b7b46f3660d2c451f9bb177afb381f7829679f209", "bytes": 11995},
+    {"name": "unresolved_noncomparable_manifest.json", "sha256": "fe841b49a8d7b4f0bfb1a9943fb18e0c63511966510b5c7f95da81c3d204baf6", "bytes": 1133}
+  ],
+  "respondent_measurement_completeness": {
+    "selected_measurement_count": 13,
+    "expected_rows": 249730,
+    "observed_rows_inside_exact_risk_set": 249730,
+    "missing_risk_set_measurement_cells": 0,
+    "exposure_inferred_from_missingness": false
+  },
+  "q73a_frozen_native_state_counts": {
+    "-1": 5,
+    "0": 7466,
+    "1": 10161,
+    "9": 1578
+  },
+  "q03_reference_target": {
+    "artifact_path": "01_Q03_EXACT_REALIZED_SAMPLE_TARGET_VECTOR.json",
+    "artifact_sha256": "8c5e69b2f1aeb86a5988b4ef587016bab10ef214a955e96d357db08dae49781b",
+    "component_count": 34,
+    "contrast_direction": "P_sample(D=s|Q73A=1)-P_sample(D=s|Q73A=0)",
+    "denominator_q73a_0": 7466,
+    "denominator_q73a_1": 10161,
+    "derivation": "Filter selected_response_facts to the exact 19,210-member FFP017 risk set; for each FFP016 ACTIVE_DISPOSITION measurement and every frozen native state, count rows separately for exact native Q73A=0 and Q73A=1 membership; divide by the exact respective denominators; subtract 0-group probability from 1-group probability. No weighting, rebinning, state pooling, imputation, response-missingness exposure inference, or TTAR operation is applied.",
+    "view_status": "REFERENCE_TARGET_FROM_FROZEN_SUBSTRATE__NOT_A_REPRESENTATION_ARM_OUTPUT"
+  },
+  "j3_native_q86abc": {
+    "configuration_count": 38,
+    "total_respondent_support": 19210,
+    "status": "SURVIVING_HIGHER_ORDER_SUBSTRATE_INFORMATION__NOT_Q03_CONSTITUTIVE__NOT_A_CORE_A_OUTPUT"
+  },
+  "interpretation_ceiling": "This receipt preserves frozen empirical substrate and reference-target evidence only. It does not certify Core A/B/C view validity, Q03 sufficiency of any view, representation-specific utility, a preferred representation, actor/V3 interpretation, or final CVCR/COCR disposition."
+}
