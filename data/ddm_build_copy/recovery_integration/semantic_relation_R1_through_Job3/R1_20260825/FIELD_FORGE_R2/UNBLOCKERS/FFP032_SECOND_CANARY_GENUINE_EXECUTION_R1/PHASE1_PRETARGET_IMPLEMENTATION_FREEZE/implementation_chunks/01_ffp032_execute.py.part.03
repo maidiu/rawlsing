@@ -1,0 +1,112 @@
+redicate_id": r["z_predicate_id"], "support_state": r["support_state"], "directional_status": r["directional_status"]} for r in within],
+    }
+
+
+def challenger_w1(respondents: Sequence[Respondent]) -> Dict[str, object]:
+    # Direct query set: exact conjunction relation is instantiated ephemerally by build_roster.
+    return slot_views(compute_canonical(respondents))
+
+
+def challenger_w2(respondents: Sequence[Respondent]) -> Dict[str, object]:
+    # OF001 exact fact/support object + OF003 direct conditional object, exact-key joined.
+    roster, groups = build_roster(respondents)
+    broad = compute_counts(respondents)
+    bsign = int(broad.get("sign", 0)) if broad["defined"] else 0
+    conditionals = {r["z_predicate_id"]: compute_counts(groups[(r["Q70B_state_identity"], r["Q70C_state_identity"], r["Q84_state_identity"])]) for r in roster}
+    within = []
+    for r in roster:
+        q = conditionals[r["z_predicate_id"]]
+        x = dict(r); x["query"] = q; x["directional_status"] = classify_state(bsign, q); within.append(x)
+    admitted_signs = [int(x["query"]["sign"]) for x in within if x["query"]["defined"]]
+    statuses = Counter(x["directional_status"] for x in within)
+    compound = _compound_from_parts(bsign, roster, admitted_signs, statuses)
+    return slot_views({"broad": broad, "roster": roster, "within": within, "compound": compound})
+
+
+def _compound_from_parts(bsign: int, roster: Sequence[Mapping[str, object]], signs: Sequence[int], statuses: Counter) -> Dict[str, object]:
+    split = "EXACT_DIRECTIONAL_SPLIT" if (1 in signs and -1 in signs) else "NO_EXACT_DIRECTIONAL_SPLIT"
+    if bsign == 0:
+        rev = "ABSTAIN__BROAD_ZERO__REVERSAL_PRESENT_NOT_DEFINED"; per = "ABSTAIN__BROAD_ZERO__PERSISTENCE_ACROSS_NOT_DEFINED"
+    else:
+        rev = "EXACT_DIRECTIONAL_REVERSAL_PRESENT" if any(s == -bsign for s in signs) else "NO_EXACT_DIRECTIONAL_REVERSAL_PRESENT"
+        per = "EXACT_DIRECTIONAL_PERSISTENCE_ACROSS_ADMITTED_STATES" if signs and all(s == bsign and s != 0 for s in signs) else "NO_EXACT_DIRECTIONAL_PERSISTENCE_ACROSS_ADMITTED_STATES"
+    return {"broad_sign": bsign, "split": split, "reversal_present": rev, "persistence_across_admitted_states": per,
+            "roster_observed_states": len(roster), "admitted_states": sum((int(r["n_c0"]) > 0 and int(r["n_c1"]) > 0) for r in roster),
+            "abstaining_states": sum(not (int(r["n_c0"]) > 0 and int(r["n_c1"]) > 0) for r in roster),
+            "state_sign_positive": sum(s == 1 for s in signs), "state_sign_negative": sum(s == -1 for s in signs), "state_sign_zero": sum(s == 0 for s in signs),
+            "status_counts": dict(sorted(statuses.items()))}
+
+
+def carrier_rows(respondents: Sequence[Respondent]) -> List[Dict[str, object]]:
+    rows = []
+    for r in sorted(respondents, key=lambda x: x.key):
+        rows.append({"COUNTRY": r.country, "RESPNO": r.respno, "respondent_local_id": r.local_id, "COUNTRY_ALPHA3": r.country_alpha3,
+                     "Q73A_state_identity": r.state_identity["Q73A"], "Q73A_native": r.source_state["Q73A"],
+                     "Q70B_state_identity": r.state_identity["Q70B"], "Q70B_native": r.source_state["Q70B"],
+                     "Q70C_state_identity": r.state_identity["Q70C"], "Q70C_native": r.source_state["Q70C"],
+                     "Q84_state_identity": r.state_identity["Q84"], "Q84_native": r.source_state["Q84"],
+                     "Q86A_state_identity": r.state_identity["Q86A"], "Q86A_native": r.source_state["Q86A"]})
+    return rows
+
+CARRIER_FIELDS = ["COUNTRY","RESPNO","respondent_local_id","COUNTRY_ALPHA3","Q73A_state_identity","Q73A_native","Q70B_state_identity","Q70B_native","Q70C_state_identity","Q70C_native","Q84_state_identity","Q84_native","Q86A_state_identity","Q86A_native"]
+
+
+def respondents_from_carrier_rows(rows: Sequence[Mapping[str, object]]) -> List[Respondent]:
+    out=[]
+    for x in rows:
+        out.append(Respondent(str(x["COUNTRY"]),str(x["RESPNO"]),str(x["respondent_local_id"]),str(x["COUNTRY_ALPHA3"]),
+            {v:str(x[f"{v}_state_identity"]) for v in VARIABLES}, {v:int(x[f"{v}_native"]) for v in VARIABLES}))
+    return out
+
+
+def read_plain_tsv(path: Path, expected_header: Sequence[str]) -> List[Dict[str,str]]:
+    with path.open("r",encoding="utf-8",newline="") as f:
+        r=csv.DictReader(f,delimiter="\t")
+        if r.fieldnames != list(expected_header): raise FailClosed(f"HEADER_MISMATCH::{path.name}")
+        return list(r)
+
+
+def read_gz_tsv_all(path: Path, expected_header: Sequence[str]) -> List[Dict[str,str]]:
+    return list(read_tsv_gz(path, expected_header))
+
+
+def challenger_w3(respondents: Sequence[Respondent], artifact_path: Path) -> Dict[str, object]:
+    rows = carrier_rows(respondents)
+    write_tsv_gz_deterministic(artifact_path, CARRIER_FIELDS, rows)
+    reread = read_gz_tsv_all(artifact_path, CARRIER_FIELDS)
+    return slot_views(compute_canonical(respondents_from_carrier_rows(reread)))
+
+
+def challenger_w4(respondents: Sequence[Respondent], artifact_path: Path) -> Dict[str, object]:
+    # OF002 exact joint relation: one exact same-unit configuration row per R member.
+    # C/D are attached exact native facts needed by the frozen claim-query interface; no learned relation is added.
+    rows = carrier_rows(respondents)
+    fields = CARRIER_FIELDS + ["z_predicate_id"]
+    outrows=[]
+    for row, r in zip(rows, sorted(respondents,key=lambda x:x.key)):
+        q=dict(row); q["z_predicate_id"] = z_key_id(r.z_key); outrows.append(q)
+    write_tsv_gz_deterministic(artifact_path, fields, outrows)
+    reread = read_gz_tsv_all(artifact_path, fields)
+    rs = respondents_from_carrier_rows(reread)
+    # Validate stored exact joint key against reconstructed exact opaque identities.
+    for x,r in zip(reread,rs):
+        if x["z_predicate_id"] != z_key_id(r.z_key): raise FailClosed("W4_JOINT_KEY_REPLAY_FAILURE")
+    return slot_views(compute_canonical(rs))
+
+
+def challenger_w5(respondents: Sequence[Respondent], w4_artifact_path: Path) -> Dict[str, object]:
+    # Independently read OF002 for AS02/AS03 and compute OF003 conditional relations from exact source carrier, then exact-key compose.
+    fields = CARRIER_FIELDS + ["z_predicate_id"]
+    of2_rows = read_gz_tsv_all(w4_artifact_path, fields)
+    of2_resp = respondents_from_carrier_rows(of2_rows)
+    roster, _ = build_roster(of2_resp)
+    # OF003 direct conditional independently from original respondents.
+    _, direct_groups = build_roster(respondents)
+    broad = compute_counts(respondents); bsign=int(broad.get("sign",0)) if broad["defined"] else 0
+    qmap={z_key_id(z):compute_counts(rows) for z,rows in direct_groups.items()}
+    within=[]
+    for r in roster:
+        q=qmap[r["z_predicate_id"]]; x=dict(r); x["query"]=q; x["directional_status"]=classify_state(bsign,q); within.append(x)
+    signs=[int(x["query"]["sign"]) for x in within if x["query"]["defined"]]
+    statuses=Counter(x["directional_status"] for x in within)
+    compound=_compound_from_parts(bsign,roster,sign

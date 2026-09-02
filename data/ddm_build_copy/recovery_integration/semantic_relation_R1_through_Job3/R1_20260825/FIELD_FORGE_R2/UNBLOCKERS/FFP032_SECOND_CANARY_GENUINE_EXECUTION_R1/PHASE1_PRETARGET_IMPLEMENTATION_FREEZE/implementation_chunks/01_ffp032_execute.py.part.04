@@ -1,0 +1,94 @@
+s,statuses)
+    return slot_views({"broad":broad,"roster":roster,"within":within,"compound":compound})
+
+
+def coverage_rows(challenger_id: str, result: Mapping[str, object], canonical_slots: Mapping[str, object]) -> List[Dict[str, object]]:
+    rows=[]
+    for asid in AS_IDS:
+        if asid not in result:
+            state="DOES_NOT_REPRESENT"; reason="FROZEN_INTERFACE_DOES_NOT_RETURN_SLOT"
+        else:
+            a=canonical_json_bytes(result[asid]); b=canonical_json_bytes(canonical_slots[asid])
+            if a==b:
+                state="EXACT_MATCH"; reason="EXACT_COMPONENTWISE_EQUALITY_TO_CANONICAL_GENUINE_TARGET"
+            else:
+                state="FAIL"; reason=f"FROZEN_INTERFACE_VALUE_MISMATCH::{hashlib.sha256(a).hexdigest()}::{hashlib.sha256(b).hexdigest()}"
+        rows.append({"challenger_id":challenger_id,"assertion_slot":asid,"typed_state":state,"reason":reason,
+                     "canonical_slot_sha256":sha256_obj(canonical_slots[asid]),"challenger_slot_sha256":sha256_obj(result[asid]) if asid in result else ""})
+    return rows
+
+
+def execute(input_dir: Path, out_dir: Path) -> Dict[str, object]:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    actual_hashes=validate_input_hashes(input_dir)
+    risk=load_risk_set(input_dir/"core_claim_common_risk_set.tsv.gz")
+    exposure_summary=validate_exposure(input_dir/"selected_exposure_facts.tsv.gz", risk)
+    respondents=load_respondents(input_dir/"selected_response_facts.tsv.gz", risk)
+    if len(respondents)!=RISK_SET_ROWS: raise FailClosed("RESPONDENT_COUNT_MISMATCH")
+
+    canonical=compute_canonical(respondents)
+    # Replay frozen structural docket before any state filtering: exact expected state counts from FFP028/FFIF011.
+    roster=canonical["roster"]
+    admitted=[r for r in roster if r["support_state"]=="ADMITTED_FOR_EXACT_QUERY"]
+    min_support=min(min(int(r["n_c0"]),int(r["n_c1"])) for r in admitted)
+    support_vals=sorted(min(int(r["n_c0"]),int(r["n_c1"])) for r in admitted)
+    median_support=support_vals[len(support_vals)//2] if len(support_vals)%2==1 else (support_vals[len(support_vals)//2-1]+support_vals[len(support_vals)//2])/2
+    max_support=max(support_vals)
+    structural={"observed_joint_predicates":len(roster),"positive_both_c_arms":len(admitted),"minimum_two_arm_support":min_support,"median_two_arm_support":median_support,"maximum_two_arm_support":max_support}
+    expected_structural={"observed_joint_predicates":812,"positive_both_c_arms":441,"minimum_two_arm_support":1,"median_two_arm_support":3,"maximum_two_arm_support":162}
+    if structural != expected_structural: raise FailClosed(f"FFP028_FFIF011_STRUCTURAL_REPLAY_MISMATCH::{structural}::{expected_structural}")
+
+    # Bank canonical target outputs.
+    write_json(out_dir/"02_BROAD_TARGET_EVIDENCE.json", {"claim_id":CLAIM_ID,"F":FAMILY,"C":"Q73A","c1":1,"c0":0,"D":"Q86A","E":"Q86A_NATIVE_STATE==1","broad":canonical["broad"]})
+    roster_fields=["z_predicate_id","Q70B_state_identity","Q70C_state_identity","Q84_state_identity","observed_r_count","n_c0","n_c1","support_state"]
+    write_tsv_gz_deterministic(out_dir/"03_JOINT_STATE_ROSTER_SUPPORT.tsv.gz",roster_fields,canonical["roster"])
+    within_fields=roster_fields+["event_c0","event_c1","p_c0_exact","p_c1_exact","delta_exact","sign","directional_status"]
+    within_rows=[]
+    for x in canonical["within"]:
+        q=x["query"]
+        within_rows.append({**{k:x[k] for k in roster_fields},"event_c0":q["event_c0"],"event_c1":q["event_c1"],
+            "p_c0_exact":q.get("p_c0",{}).get("canonical",""),"p_c1_exact":q.get("p_c1",{}).get("canonical",""),"delta_exact":q.get("delta",{}).get("canonical",""),
+            "sign":q.get("sign", ""),"directional_status":x["directional_status"]})
+    write_tsv_gz_deterministic(out_dir/"04_WITHIN_STATE_TARGET_EVIDENCE.tsv.gz",within_fields,within_rows)
+    write_json(out_dir/"05_DIRECTIONAL_DISPOSITIONS.json",canonical["compound"])
+
+    # Delete-one broad + every admitted state.
+    witnesses=[]; dsum=[]
+    w,s=delete_one_for_context("BROAD_TRUE",respondents,canonical["broad"]); witnesses.extend(w); dsum.append(s)
+    group_by_pid={z_key_id(z):rows for z,rows in canonical["groups"].items()}
+    query_by_pid={x["z_predicate_id"]:x["query"] for x in canonical["within"]}
+    status_by_pid={x["z_predicate_id"]:x["directional_status"] for x in canonical["within"]}
+    for rr in canonical["roster"]:
+        pid=rr["z_predicate_id"]
+        q=query_by_pid[pid]
+        if q["defined"]:
+            w,s=delete_one_for_context(pid,group_by_pid[pid],q); witnesses.extend(w); s["directional_status"]=status_by_pid[pid]; dsum.append(s)
+    dw_fields=["query_context_id","COUNTRY","RESPNO","respondent_local_id","deleted_c_arm","deleted_event_membership","pre_n_c0","pre_event_c0","pre_n_c1","pre_event_c1","pre_sign","post_n_c0","post_event_c0","post_n_c1","post_event_c1","post_defined","post_delta_exact","post_sign","witness_state"]
+    write_tsv_gz_deterministic(out_dir/"06_DELETE_ONE_WITNESSES.tsv.gz",dw_fields,witnesses)
+    ds_fields=["query_context_id","original_sign","witness_count","classifications","direction_fragile","not_fully_evaluable","directional_status"]
+    write_tsv(out_dir/"07_DELETE_ONE_SUMMARY.tsv",ds_fields,[{**x,"classifications":"|".join(x["classifications"])} for x in dsum])
+
+    canonical_slots=slot_views(canonical)
+    challenge_results={}
+    challenge_results["W1"]=challenger_w1(respondents)
+    challenge_results["W2"]=challenger_w2(respondents)
+    challenge_results["W3"]=challenger_w3(respondents,out_dir/"17_W3_LOSSLESS_CARRIER.tsv.gz")
+    challenge_results["W4"]=challenger_w4(respondents,out_dir/"18_W4_OF002_EXACT_JOINT_RELATION.tsv.gz")
+    challenge_results["W5"]=challenger_w5(respondents,out_dir/"18_W4_OF002_EXACT_JOINT_RELATION.tsv.gz")
+
+    all_cov=[]
+    for i,wid in enumerate(CHALLENGERS, start=8):
+        cov=coverage_rows(wid,challenge_results[wid],canonical_slots); all_cov.extend(cov)
+        write_tsv(out_dir/f"{i:02d}_{wid}_AS01_AS07_COVERAGE.tsv",["challenger_id","assertion_slot","typed_state","reason","canonical_slot_sha256","challenger_slot_sha256"],cov)
+    # exact cross-challenger slot equality/nonrepresentation evidence
+    eq_rows=[]
+    for asid in AS_IDS:
+        canon_hash=sha256_obj(canonical_slots[asid])
+        for wid in CHALLENGERS:
+            h=sha256_obj(challenge_results[wid][asid]) if asid in challenge_results[wid] else ""
+            eq_rows.append({"assertion_slot":asid,"challenger_id":wid,"canonical_slot_sha256":canon_hash,"challenger_slot_sha256":h,"relation":"EXACT_MATCH" if h==canon_hash else ("DOES_NOT_REPRESENT" if not h else "FAIL")})
+    write_tsv(out_dir/"13_CROSS_CHALLENGER_EQUALITY.tsv",["assertion_slot","challenger_id","canonical_slot_sha256","challenger_slot_sha256","relation"],eq_rows)
+
+    all_exact={wid:all(r["typed_state"]=="EXACT_MATCH" for r in all_cov if r["challenger_id"]==wid) for wid in CHALLENGERS}
+    arch={
+        "W1_entire_compound_assertion_with_exact_conjuncti

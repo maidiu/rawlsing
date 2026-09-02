@@ -1,0 +1,28 @@
+ound"]["split"]=="EXACT_DIRECTIONAL_SPLIT"
+    assert any(v["directional_status"]=="EXACT_ZERO_DIFFERENCE_IN_REALIZED_SAMPLE" for v in x["within"])
+    assert any(v["directional_status"]=="ABSTAIN__ZERO_DENOMINATOR__DO_NOT_FABRICATE" for v in x["within"])
+    # exact fraction arithmetic
+    q=compute_counts([rr(100,1,1,(0,0,0)),rr(101,1,0,(0,0,0)),rr(102,0,0,(0,0,0)),rr(103,0,0,(0,0,0))])
+    assert q["delta"]["canonical"]=="1/2"
+    # delete-one witness completeness
+    w,s=delete_one_for_context("T",[rr(200,1,1,(0,0,0)),rr(201,1,1,(0,0,0)),rr(202,0,0,(0,0,0)),rr(203,0,0,(0,0,0))],compute_counts([rr(200,1,1,(0,0,0)),rr(201,1,1,(0,0,0)),rr(202,0,0,(0,0,0)),rr(203,0,0,(0,0,0))]))
+    assert len(w)==4 and s["classifications"]==["DELETE_ONE_DIRECTION_STABLE"]
+    return {"status":"PASS__DETERMINISTIC_SYNTHETIC_UNIT_TESTS","tests":["exact_fraction","complete_roster","support_abstention","reversal_persistence_zero_split_logic","delete_one_witness_completeness"]}
+
+
+def main() -> int:
+    ap=argparse.ArgumentParser()
+    ap.add_argument("--self-test",action="store_true")
+    ap.add_argument("--input-dir",type=Path)
+    ap.add_argument("--output-dir",type=Path)
+    args=ap.parse_args()
+    try:
+        if args.self_test:
+            print(json.dumps(self_test(),sort_keys=True,separators=(",",":"))); return 0
+        if not args.input_dir or not args.output_dir: ap.error("--input-dir and --output-dir required unless --self-test")
+        execute(args.input_dir,args.output_dir); return 0
+    except FailClosed as e:
+        print(f"FAIL_CLOSED::{e}",file=sys.stderr); return 2
+
+if __name__=="__main__":
+    raise SystemExit(main())

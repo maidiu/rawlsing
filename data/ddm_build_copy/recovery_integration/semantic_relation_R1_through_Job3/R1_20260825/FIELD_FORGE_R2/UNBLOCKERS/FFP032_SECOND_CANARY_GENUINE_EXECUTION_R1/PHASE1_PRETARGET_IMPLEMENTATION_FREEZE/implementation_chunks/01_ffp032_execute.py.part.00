@@ -1,0 +1,182 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import csv
+import gzip
+import hashlib
+import io
+import json
+import os
+import platform
+import re
+import sys
+from collections import Counter, defaultdict
+from dataclasses import dataclass
+from fractions import Fraction
+from pathlib import Path
+from typing import Dict, Iterable, List, Mapping, MutableMapping, Optional, Sequence, Tuple
+
+CLAIM_ID = "FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1"
+START_HEAD = "ccfd3fb6f7be96c95bdded7eb6cd0a743e257c79"
+FFP017_REF = "97ad8148a5227e8be6d80e5beaccc4d80db8d5a8"
+FFIF011_REF = "4702e279244fee13f5dccd2a28bf5a9c0b3bc0eb"
+FFP029_REF = "77624c24a2125545ee1005c7bb876c4528caf80d"
+FFP031_REF = START_HEAD
+
+FROZEN_HASHES = {
+    "SEMANTIC_INPUT": "sha256:026dcc5a69a546188ea9ea207be50fa46d8be8091369a149dee9465f16c1b254",
+    "PROPOSITION": "sha256:13f4c1be9e29f4b26df286d863c5cb07a7e6713e315850f748a1fe33f4c313b0",
+    "SUPPORT": "sha256:97200c2dd2a1b8b857e1256210a466a5a3a5b507dfe7d16a7476fa659e37aaaa",
+    "CITC": "sha256:7b5156b53818d97add3a1316ab97184d6f10993e0e008bd022ef87320f10529b",
+    "COMPARISON": "sha256:3b01550178424191b7f31df672e57ca968629e1e455bd3db9b208ab9d523c437",
+    "CHALLENGER_UNIVERSE": "sha256:0758b832877d5e971e2e0dea2b20b1066cdc8a6a145e57b07179d2b11c534eaf",
+}
+
+INPUT_SHA256 = {
+    "selected_response_facts.tsv.gz": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+    "core_claim_common_risk_set.tsv.gz": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+    "selected_exposure_facts.tsv.gz": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce",
+}
+
+CARRIER_IDENTITY = "sha256:6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5"
+RISK_SET_PHYSICAL_SHA256 = INPUT_SHA256["core_claim_common_risk_set.tsv.gz"]
+RISK_SET_SEMANTIC_SHA256 = "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+RISK_SET_ROWS = 19210
+RISK_SET_FILE_ID = "CORE_CLAIM_COMMON_RISK_SET@1"
+RISK_SET_LOGICAL_ID = "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+
+RESPONSE_HEADER = [
+    "respondent_carrier_identity", "COUNTRY", "RESPNO", "respondent_local_id", "COUNTRY_ALPHA3",
+    "empirical_measurement_id", "source_variable", "response_state_identity", "source_response_state",
+]
+RISK_HEADER = [
+    "risk_set_id", "respondent_carrier_identity", "COUNTRY", "RESPNO", "respondent_local_id", "COUNTRY_ALPHA3",
+]
+EXPOSURE_HEADER = [
+    "respondent_carrier_identity", "COUNTRY", "RESPNO", "respondent_local_id", "COUNTRY_ALPHA3",
+    "question_implementation_id", "empirical_measurement_id", "predicate_id", "predicate_input_symbol",
+    "predicate_input_value", "predicate_result", "exposure_state",
+]
+
+VARIABLES = ("Q73A", "Q70B", "Q70C", "Q84", "Q86A")
+MEASUREMENT_IDS = {v: f"Afrobarometer:R5:{v}" for v in VARIABLES}
+QIMPL = {
+    "Q73A": "question_impl.phase0.cae005624221d7b00dd2",
+    "Q70B": "question_impl.phase0.311d905b2baab867642e",
+    "Q70C": "question_impl.phase0.575fb5e032fab4cd18a4",
+    "Q84": "question_impl.phase0.5a05ce882452ef85debd",
+    "Q86A": "question_impl.phase0.67f036c0efb7fb98ff4a",
+}
+EXPECTED_IDENTITY_SHA = {
+    "Q73A": "cae005624221d7b00dd2e8dcc31a8c73d2d4f1446a06d428ab40f1ee2809ad14",
+    "Q70B": "311d905b2baab867642e2be9ed3595aa3c556d9d4508db7510f648e96fb9a8fd",
+    "Q70C": "575fb5e032fab4cd18a4a5bc3f55f233530a243cfa5ff7ecc75740b286b812e8",
+    "Q84": "5a05ce882452ef85debd9e7031211b1cd884f8b8c063b5080cfd87c40fa8fcb2",
+    "Q86A": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+}
+
+C_VAR = "Q73A"
+D_VAR = "Q86A"
+Z_VARS = ("Q70B", "Q70C", "Q84")
+C0 = 0
+C1 = 1
+EVENT_STATE = 1
+FAMILY = "F01__EXACT_NATIVE_SINGLE_STATE_EVENT_CONTRAST"
+TTAR = "NONE"
+
+AS_IDS = ("AS01", "AS02", "AS03", "AS04", "AS05", "AS06", "AS07")
+CHALLENGERS = ("W1", "W2", "W3", "W4", "W5")
+
+class FailClosed(RuntimeError):
+    pass
+
+
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def canonical_json_bytes(obj: object) -> bytes:
+    return json.dumps(obj, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+
+
+def sha256_obj(obj: object) -> str:
+    return hashlib.sha256(canonical_json_bytes(obj)).hexdigest()
+
+
+def write_json(path: Path, obj: object) -> None:
+    path.write_bytes(canonical_json_bytes(obj))
+
+
+def write_tsv(path: Path, fieldnames: Sequence[str], rows: Iterable[Mapping[str, object]]) -> None:
+    with path.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t", lineterminator="\n", extrasaction="raise")
+        w.writeheader()
+        for row in rows:
+            w.writerow({k: row.get(k, "") for k in fieldnames})
+
+
+def write_tsv_gz_deterministic(path: Path, fieldnames: Sequence[str], rows: Iterable[Mapping[str, object]]) -> None:
+    with path.open("wb") as raw:
+        with gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as gz:
+            with io.TextIOWrapper(gz, encoding="utf-8", newline="") as text:
+                w = csv.DictWriter(text, fieldnames=fieldnames, delimiter="\t", lineterminator="\n", extrasaction="raise")
+                w.writeheader()
+                for row in rows:
+                    w.writerow({k: row.get(k, "") for k in fieldnames})
+
+
+def read_tsv_gz(path: Path, expected_header: Sequence[str]) -> Iterable[Dict[str, str]]:
+    with gzip.open(path, "rt", encoding="utf-8", newline="") as f:
+        r = csv.DictReader(f, delimiter="\t")
+        if r.fieldnames != list(expected_header):
+            raise FailClosed(f"HEADER_MISMATCH::{path.name}::{r.fieldnames!r}")
+        for row in r:
+            yield row
+
+
+def parse_native_int(value: str) -> int:
+    # Physical lexical normalization only: integer-valued source codes may serialize as 1 or 1.0.
+    if re.fullmatch(r"-?\d+", value):
+        return int(value)
+    if re.fullmatch(r"-?\d+\.0+", value):
+        return int(value.split(".", 1)[0])
+    raise FailClosed(f"NON_INTEGER_NATIVE_STATE::{value!r}")
+
+
+@dataclass(frozen=True)
+class Respondent:
+    country: str
+    respno: str
+    local_id: str
+    country_alpha3: str
+    state_identity: Mapping[str, str]
+    source_state: Mapping[str, int]
+
+    @property
+    def key(self) -> Tuple[str, str]:
+        return (self.country, self.respno)
+
+    @property
+    def c(self) -> int:
+        return self.source_state[C_VAR]
+
+    @property
+    def event(self) -> int:
+        return 1 if self.source_state[D_VAR] == EVENT_STATE else 0
+
+    @property
+    def z_key(self) -> Tuple[str, str, str]:
+        return tuple(self.state_identity[z] for z in Z_VARS)  # exact opaque state identities
+
+
+def validate_input_hashes(input_dir: Path) -> Dict[str, str]:
+    actual = {}
+    for name, expected in INPUT_SHA256.items():
+        path = input_dir / name
+        if not path.exists():
+            raise FailClosed(f"MISSING_INP

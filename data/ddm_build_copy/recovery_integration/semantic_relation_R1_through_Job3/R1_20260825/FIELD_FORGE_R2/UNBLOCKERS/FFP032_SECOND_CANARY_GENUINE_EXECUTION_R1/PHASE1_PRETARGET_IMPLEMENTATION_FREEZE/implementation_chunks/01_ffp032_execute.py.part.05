@@ -1,0 +1,101 @@
+on_commitment": "EVIDENCE__YES" if all_exact["W1"] else "EVIDENCE__NO",
+        "W2_supplies_claim_slot_unavailable_to_W1": "EVIDENCE__NO" if all_exact["W1"] and all_exact["W2"] else "EVIDENCE__UNRESOLVED",
+        "W3_claim_truth_increment": "EVIDENCE__NONE_DETECTED__EXACT_OUTPUT_EQUALITY" if all_exact["W3"] else "EVIDENCE__UNRESOLVED",
+        "W3_engineering_value": "EVIDENCE__LOSSLESS_REUSABLE_CARRIER_AND_REPLAY_SURFACE",
+        "W4_alone_exposes_AS01_AS07": "EVIDENCE__YES" if all_exact["W4"] else "EVIDENCE__NO",
+        "W5_needed_to_complete_W4": "EVIDENCE__NO" if all_exact["W4"] and all_exact["W5"] else "EVIDENCE__UNRESOLVED",
+        "slot_unavailable_to_every_single_but_available_to_valid_set": "EVIDENCE__NONE_DETECTED" if all(all_exact.values()) else "EVIDENCE__CHECK_COVERAGE_MATRIX",
+        "prefrozen_interface_impossibility_discovered": "NONE" if all(all_exact.values()) else "SEE_COVERAGE_MATRIX",
+        "W6": "EXCLUDED__NO_PREOUTPUT_FUSION_TRIGGER_DEMONSTRATED__NOT_EXECUTED",
+        "ceiling": "MECHANICAL_EVIDENCE_ONLY__NO_CVCR_COCR_OR_FINAL_ARCHITECTURE_VERDICT",
+    }
+    write_json(out_dir/"14_ARCHITECTURE_EVIDENCE_VECTOR.json",arch)
+
+    # Summary counts for delete-one grouped by directional status.
+    dcounts=Counter()
+    for x in dsum:
+        st=x.get("directional_status","BROAD")
+        for c in x["classifications"]: dcounts[f"{st}::{c}"] += 1
+
+    common_receipt={
+        "status":"PASS__COMMON_INPUT_IDENTITY_EXPOSURE_AND_STRUCTURAL_REPLAY",
+        "input_sha256":actual_hashes,"risk_rows":len(risk),"respondent_rows":len(respondents),
+        "carrier_identity":CARRIER_IDENTITY,"risk_set_logical_id":RISK_SET_LOGICAL_ID,"risk_set_semantic_sha256":RISK_SET_SEMANTIC_SHA256,
+        "exposure_validation":exposure_summary,"required_variables":list(VARIABLES),"qimpl":QIMPL,"exact_identity_sha256":EXPECTED_IDENTITY_SHA,
+        "PRA":FFP029_REF,"TTAR":"NONE","structural_replay":structural,"structural_expected":expected_structural,
+        "q84_ceiling":"COUNTRY_QUALIFIED_OPAQUE_STATE_IDENTITY_VALIDATED_NO_CROSS_COUNTRY_IDENTITY_REUSE",
+    }
+    write_json(out_dir/"01_COMMON_INPUT_REPLAY_RECEIPT.json",common_receipt)
+
+    output_hashes={p.name:sha256_file(p) for p in sorted(out_dir.iterdir()) if p.is_file()}
+    # no self-reference in 19; this hashes all prior deterministic evidence artifacts.
+    write_json(out_dir/"19_CHALLENGER_AND_EVIDENCE_HASHES.json",{"artifact_hashes_before_19":output_hashes,
+        "W3_relation_to_W1":"SAME_EMPIRICAL_RELATION_DIFFERENT_PHYSICAL_PERSISTENCE",
+        "W1_W2_W4_W5_relation":"GENUINELY_DIFFERENT_CLAIM_INTERFACE_OR_RELATION_COMMITMENT_WHERE_FROZEN_SPEC_DIFFERS__ALL_MECHANICALLY_COMPARED_ONLY"})
+
+    machine={
+        "terminal":"PASS__SECOND_CANARY_GENUINE_EXECUTION_COMPLETE__W1_W5_CHALLENGER_EVIDENCE_BANKED__READY_FOR_INDEPENDENT_CVCR_COCR_AND_ARCHITECTURE_VERDICT",
+        "claim_id":CLAIM_ID,"frozen_hashes":FROZEN_HASHES,"FFP017":FFP017_REF,"FFIF011":FFIF011_REF,"PRA":FFP029_REF,"FFP031":FFP031_REF,"TTAR":"NONE",
+        "broad":canonical["broad"],"compound":canonical["compound"],"delete_one_summary_counts":dict(sorted(dcounts.items())),
+        "challenger_all_AS01_AS07_exact_match":all_exact,"architecture_evidence_ceiling":arch["ceiling"],
+    }
+    write_json(out_dir/"00_MACHINE_RETURN.json",machine)
+
+    # Human summary, empirical result first.
+    b=canonical["broad"]
+    lines=["# FFP032 — Second-canary genuine empirical execution", "", "## What happened in the data", ""]
+    if b["defined"]:
+        lines += [f"Broad F01 contrast: `{b['delta']['canonical']}` (decimal `{b['delta']['decimal_12']}`), sign `{b['sign']}`.",
+                  f"Arm counts: Q73A=1: `{b['event_c1']}/{b['n_c1']}` Q86A=1; Q73A=0: `{b['event_c0']}/{b['n_c0']}` Q86A=1."]
+    c=canonical["compound"]
+    lines += [f"Observed exact Z states: `{c['roster_observed_states']}`; admitted: `{c['admitted_states']}`; abstaining: `{c['abstaining_states']}`.",
+              f"Admitted within-state signs: positive `{c['state_sign_positive']}`, negative `{c['state_sign_negative']}`, zero `{c['state_sign_zero']}`.",
+              f"State-level exact status counts: `{json.dumps(c['status_counts'],sort_keys=True)}`.",
+              f"Compound: `{c['split']}`; `{c['reversal_present']}`; `{c['persistence_across_admitted_states']}`.",
+              "", "## Delete-one diagnostic", "",
+              f"Query-level delete-one classification counts: `{json.dumps(dict(sorted(dcounts.items())),sort_keys=True)}`.",
+              "The delete-one diagnostic is nonconstitutive and does not alter any original exact claim status.",
+              "", "## W1–W5 mechanical coverage", ""]
+    for wid in CHALLENGERS: lines.append(f"- {wid}: `{'AS01–AS07 EXACT_MATCH' if all_exact[wid] else 'SEE COVERAGE MATRIX'}`")
+    lines += ["", "No CVCR, COCR, sufficiency/necessity conclusion, or final architecture verdict is issued here.", "",
+              f"Terminal: `{machine['terminal']}`", ""]
+    (out_dir/"16_HUMAN_EMPIRICAL_SUMMARY.md").write_text("\n".join(lines),encoding="utf-8")
+
+    # Hostiles that do not require unminted fixture authority.
+    hostiles={
+        "input_hash_tamper_gate":"PASS__EXACT_SHA256_REQUIRED_BEFORE_READ",
+        "respondent_identity_uniqueness":"PASS",
+        "required_coexposure":"PASS",
+        "qimpl_exactness":"PASS",
+        "q84_country_qualified_identity":"PASS",
+        "roster_generated_without_D":"PASS__IMPLEMENTATION_PATH_USES_ONLY_Z_AND_C_FOR_SUPPORT",
+        "no_minimum_n":"PASS",
+        "no_pooling_backoff_or_state_deletion":"PASS",
+        "W6":"NOT_EXECUTED__EXCLUDED_BY_FFP031",
+        "synthetic_fixture_hostiles_requiring_unminted_fixture_authority":"NOT_EXECUTED__FIXTURE_AUTHORITY_UNAVAILABLE",
+        "deterministic_replay":"PENDING_EXTERNAL_SECOND_RUN_COMPARISON",
+    }
+    write_json(out_dir/"15_HOSTILE_REPLAY_RECEIPT.json",hostiles)
+    return machine
+
+
+def self_test() -> Dict[str, object]:
+    # Synthetic rows exercise persistence, reversal, exact zero, abstention and delete-one logic. Not project fixture evidence.
+    def rr(i,c,d,z):
+        return Respondent("T",f"R{i}",f"L{i}","TST",
+            {"Q73A":f"C:{c}","Q70B":f"B:{z[0]}","Q70C":f"C2:{z[1]}","Q84":f"TST:Q84:{z[2]}","Q86A":f"D:{d}"},
+            {"Q73A":c,"Q70B":z[0],"Q70C":z[1],"Q84":z[2],"Q86A":d})
+    rows=[]; i=0
+    # A: broad/state positive: c1 yes yes; c0 no no
+    for c,d in [(1,1),(1,1),(0,0),(0,0)]: i+=1; rows.append(rr(i,c,d,(0,0,0)))
+    # B: negative within: c1 no no; c0 yes yes
+    for c,d in [(1,0),(1,0),(0,1),(0,1)]: i+=1; rows.append(rr(i,c,d,(0,0,1)))
+    # C: exact zero within
+    for c,d in [(1,1),(1,0),(0,1),(0,0)]: i+=1; rows.append(rr(i,c,d,(0,1,0)))
+    # D: zero denominator (only c1)
+    for c,d in [(1,1),(1,0)]: i+=1; rows.append(rr(i,c,d,(1,0,0)))
+    x=compute_canonical(rows)
+    assert len(x["roster"])==4
+    assert x["compound"]["admitted_states"]==3
+    assert x["compound"]["abstaining_states"]==1
+    assert x["comp

@@ -1,0 +1,138 @@
+UT::{name}")
+        got = sha256_file(path)
+        actual[name] = got
+        if got != expected:
+            raise FailClosed(f"INPUT_SHA256_MISMATCH::{name}::{got}::{expected}")
+    return actual
+
+
+def load_risk_set(path: Path) -> Dict[Tuple[str, str], Dict[str, str]]:
+    out: Dict[Tuple[str, str], Dict[str, str]] = {}
+    rows = 0
+    for row in read_tsv_gz(path, RISK_HEADER):
+        rows += 1
+        if row["risk_set_id"] != RISK_SET_FILE_ID:
+            raise FailClosed(f"RISK_SET_ID_MISMATCH::{row['risk_set_id']}")
+        if row["respondent_carrier_identity"] != CARRIER_IDENTITY:
+            raise FailClosed("RISK_CARRIER_IDENTITY_MISMATCH")
+        key = (row["COUNTRY"], row["RESPNO"])
+        if key in out:
+            raise FailClosed(f"DUPLICATE_RISK_KEY::{key}")
+        out[key] = row
+    if rows != RISK_SET_ROWS:
+        raise FailClosed(f"RISK_ROW_COUNT_MISMATCH::{rows}")
+    return out
+
+
+def validate_exposure(path: Path, risk: Mapping[Tuple[str, str], Mapping[str, str]]) -> Dict[str, object]:
+    seen: Dict[Tuple[str, str], set] = {k: set() for k in risk}
+    total_rows = 0
+    risk_rows = 0
+    for row in read_tsv_gz(path, EXPOSURE_HEADER):
+        total_rows += 1
+        key = (row["COUNTRY"], row["RESPNO"])
+        if key not in risk:
+            continue
+        mid = row["empirical_measurement_id"]
+        var = mid.rsplit(":", 1)[-1]
+        if var not in VARIABLES:
+            continue
+        risk_rows += 1
+        rr = risk[key]
+        if row["respondent_carrier_identity"] != CARRIER_IDENTITY:
+            raise FailClosed("EXPOSURE_CARRIER_IDENTITY_MISMATCH")
+        if row["respondent_local_id"] != rr["respondent_local_id"] or row["COUNTRY_ALPHA3"] != rr["COUNTRY_ALPHA3"]:
+            raise FailClosed(f"EXPOSURE_RESPONDENT_IDENTITY_MISMATCH::{key}::{var}")
+        if mid != MEASUREMENT_IDS[var]:
+            raise FailClosed(f"EXPOSURE_MEASUREMENT_ID_MISMATCH::{key}::{var}::{mid}")
+        if row["question_implementation_id"] != QIMPL[var]:
+            raise FailClosed(f"QIMPL_MISMATCH::{key}::{var}")
+        if row["predicate_input_symbol"] != "COUNTRY_ALPHA3" or row["predicate_input_value"] != rr["COUNTRY_ALPHA3"]:
+            raise FailClosed(f"EXPOSURE_PREDICATE_INPUT_MISMATCH::{key}::{var}")
+        if row["predicate_result"] != "TRUE" or row["exposure_state"] != "EXPOSED__PROVED":
+            raise FailClosed(f"REQUIRED_COEXPOSURE_NOT_PROVED::{key}::{var}::{row['predicate_result']}::{row['exposure_state']}")
+        if var in seen[key]:
+            raise FailClosed(f"DUPLICATE_REQUIRED_EXPOSURE::{key}::{var}")
+        seen[key].add(var)
+    missing = [(k, sorted(set(VARIABLES) - v)) for k, v in seen.items() if v != set(VARIABLES)]
+    if missing:
+        raise FailClosed(f"MISSING_REQUIRED_EXPOSURE::{missing[:3]}")
+    return {"total_exposure_rows": total_rows, "required_risk_exposure_rows": risk_rows, "expected_required_risk_exposure_rows": RISK_SET_ROWS * len(VARIABLES)}
+
+
+def load_respondents(path: Path, risk: Mapping[Tuple[str, str], Mapping[str, str]]) -> List[Respondent]:
+    states: Dict[Tuple[str, str], Dict[str, Tuple[str, int]]] = defaultdict(dict)
+    total_rows = 0
+    required_risk_rows = 0
+    q84_identity_to_countries: Dict[str, set] = defaultdict(set)
+    q84_pair_to_identity: Dict[Tuple[str, int], set] = defaultdict(set)
+    for row in read_tsv_gz(path, RESPONSE_HEADER):
+        total_rows += 1
+        key = (row["COUNTRY"], row["RESPNO"])
+        if key not in risk:
+            continue
+        var = row["source_variable"]
+        if var not in VARIABLES:
+            continue
+        required_risk_rows += 1
+        rr = risk[key]
+        if row["respondent_carrier_identity"] != CARRIER_IDENTITY:
+            raise FailClosed("RESPONSE_CARRIER_IDENTITY_MISMATCH")
+        if row["respondent_local_id"] != rr["respondent_local_id"] or row["COUNTRY_ALPHA3"] != rr["COUNTRY_ALPHA3"]:
+            raise FailClosed(f"RESPONSE_RESPONDENT_IDENTITY_MISMATCH::{key}::{var}")
+        if row["empirical_measurement_id"] != MEASUREMENT_IDS[var]:
+            raise FailClosed(f"RESPONSE_MEASUREMENT_ID_MISMATCH::{key}::{var}::{row['empirical_measurement_id']}")
+        if var in states[key]:
+            raise FailClosed(f"DUPLICATE_REQUIRED_RESPONSE::{key}::{var}")
+        native = parse_native_int(row["source_response_state"])
+        sid = row["response_state_identity"]
+        if not sid:
+            raise FailClosed(f"EMPTY_RESPONSE_STATE_IDENTITY::{key}::{var}")
+        states[key][var] = (sid, native)
+        if var == "Q84":
+            ca3 = rr["COUNTRY_ALPHA3"]
+            q84_identity_to_countries[sid].add(ca3)
+            q84_pair_to_identity[(ca3, native)].add(sid)
+    if total_rows != 670631:
+        raise FailClosed(f"SELECTED_RESPONSE_ROW_COUNT_MISMATCH::{total_rows}")
+    if required_risk_rows != RISK_SET_ROWS * len(VARIABLES):
+        raise FailClosed(f"REQUIRED_RISK_RESPONSE_ROW_COUNT_MISMATCH::{required_risk_rows}")
+    respondents: List[Respondent] = []
+    for key in sorted(risk):
+        if set(states[key]) != set(VARIABLES):
+            raise FailClosed(f"MISSING_REQUIRED_RESPONSE::{key}::{sorted(set(VARIABLES)-set(states[key]))}")
+        rr = risk[key]
+        respondents.append(Respondent(
+            country=key[0], respno=key[1], local_id=rr["respondent_local_id"], country_alpha3=rr["COUNTRY_ALPHA3"],
+            state_identity={v: states[key][v][0] for v in VARIABLES},
+            source_state={v: states[key][v][1] for v in VARIABLES},
+        ))
+    # Exact Q84 ceiling: no opaque Q84 state identity may cross country; a (country,native-code) pair is deterministic.
+    crossing = {sid: sorted(cs) for sid, cs in q84_identity_to_countries.items() if len(cs) != 1}
+    ambiguous = {f"{k[0]}::{k[1]}": sorted(v) for k, v in q84_pair_to_identity.items() if len(v) != 1}
+    if crossing or ambiguous:
+        raise FailClosed(f"Q84_COUNTRY_QUALIFICATION_FAILURE::{list(crossing.items())[:3]}::{list(ambiguous.items())[:3]}")
+    return respondents
+
+
+def frac_record(f: Fraction) -> Dict[str, object]:
+    return {"numerator": f.numerator, "denominator": f.denominator, "canonical": f"{f.numerator}/{f.denominator}", "decimal_12": f"{float(f):.12f}"}
+
+
+def sign_of_fraction(f: Fraction) -> int:
+    return 1 if f > 0 else (-1 if f < 0 else 0)
+
+
+def compute_counts(rows: Sequence[Respondent]) -> Dict[str, object]:
+    n0 = n1 = y0 = y1 = 0
+    for r in rows:
+        if r.c == C0:
+            n0 += 1; y0 += r.event
+        elif r.c == C1:
+            n1 += 1; y1 += r.event
+    if n0 == 0 or n1 == 0:
+        return {"defined": False, "n_c0": n0, "n_c1": n1, "event_c0": y0, "event_c1": y1, "abstention": "ABSTAIN__ZERO_DENOMINATOR__DO_NOT_FABRICATE"}
+    delta = Fraction(y1, n1) - Fraction(y0, n0)
+    return {"defined": True, "n_c0": n0, "n_c1": n1, "event_c0": y0, "event_c1": y1,
+            "p_c0": frac_record(Fraction(y0, n0)), "p_c1": frac_record(Fraction(y1, n1)),
+            "delta": frac_record(delta), "sign": sign_of_fraction(d
