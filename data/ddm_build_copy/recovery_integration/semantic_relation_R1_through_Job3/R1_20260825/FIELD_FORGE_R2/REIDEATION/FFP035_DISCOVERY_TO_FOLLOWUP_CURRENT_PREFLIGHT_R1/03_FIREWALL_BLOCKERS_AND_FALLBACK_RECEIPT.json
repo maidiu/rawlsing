@@ -1,0 +1,76 @@
+{
+  "schema_version": "FFP035_FIREWALL_BLOCKERS_AND_FALLBACK_RECEIPT@1",
+  "status": "PASS__PREFLIGHT_IDENTITY_AUTHORITY_AND_QUERYABILITY_CHECKS__TARGET_RELATION_NOT_EXECUTED",
+  "result_firewall": {
+    "candidate_selected_before_any_discovered_profile_x_X_query": true,
+    "candidate_selection_inputs": [
+      "FFP014 admitted current carrier schema/identity/provenance",
+      "FFP017 governed common coexposure risk-set identity and routing/exposure matrix",
+      "FFIF012F exact eight-variable discovery-surface identity and aggregate result-bank receipts"
+    ],
+    "permitted_preflight_inspection_only": [
+      "identity",
+      "currentness",
+      "exposure/coexposure",
+      "domain existence",
+      "lawful queryability",
+      "deterministic implementation feasibility"
+    ],
+    "discovered_profile_x_COUNTRY_ALPHA3_distribution_computed": false,
+    "conditional_effect_direction_computed": false,
+    "subgroup_contrast_computed": false,
+    "reversal_persistence_computed": false,
+    "association_strength_computed": false,
+    "predictive_value_computed": false,
+    "motif_recurrence_computed": false,
+    "representation_output_used_to_select_candidate": false
+  },
+  "cold_library_byte_checks": {
+    "FFP014_carrier_physical_sha256": "f55741a53a4caed3f74980afba2488233caa93dd4f1a2edcfde8d90e2fcce4be",
+    "FFP017_core_risk_set_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+    "FFP017_selected_response_facts_sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+    "FFP017_selected_exposure_facts_sha256": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce",
+    "all_match_git_bound_receipts": true
+  },
+  "mechanical_hostile_checks": {
+    "current_carrier_rows": 51587,
+    "risk_set_rows": 19210,
+    "risk_set_reconstructed_from_current_carrier_and_exact_governed_country_scope": true,
+    "reconstructed_risk_set_source_key_set_equals_materialized_risk_set": true,
+    "risk_set_country_alpha3_missing": 0,
+    "risk_set_country_alpha3_domain_cardinality": 11,
+    "eight_variable_expected_response_pairs": 153680,
+    "eight_variable_unique_response_pairs": 153680,
+    "eight_variable_duplicate_response_pairs": 0,
+    "risk_respondents_not_exactly_eight_response_facts": 0,
+    "eight_variable_unique_exposure_pairs": 153680,
+    "eight_variable_nonproved_exposure_rows": 0
+  },
+  "fail_closed_preoutput_blockers": [
+    "source object SHA-256, row count, or source identity differs from the bound Afrobarometer R5 object",
+    "FFP014 current carrier identity or physical bytes fail their exact bound identity/hash",
+    "FFP017 selected response or exposure facts fail their bound byte hashes",
+    "the governed common coexposure rule no longer reconstructs the exact 19,210-member current source-key set",
+    "any of the eight discovery qimpl/measurement/C04 predicate identities differs from the exact FFIF012F/FFP017 binding",
+    "any current risk-set respondent lacks exactly one native response fact for any of the eight discovery variables",
+    "any of the eight discovery measurements is not EXPOSED__PROVED for every current risk-set respondent",
+    "COUNTRY_ALPHA3 is absent, unresolved, no longer governed at current respondent grain, or cannot be deterministically attached to the same respondent identity",
+    "a later court requires a semantic equivalence, role, recoding, weighting, causal, predictive, motif, or transport claim not already authorized at preoutput freeze"
+  ],
+  "deterministic_fallback": {
+    "activation_condition": "ONLY a preoutput identity/authority/observability failure of candidate X=COUNTRY_ALPHA3 before target execution",
+    "never_activation_condition": "any observed discovered-predicate relation result, effect, direction, subgroup contrast, reversal, association, predictive value, or interestingness",
+    "procedure": [
+      "do not inspect target relation outputs",
+      "return first to the exact FFP017 routing/exposure matrix at authority ref 97ad8148a5227e8be6d80e5beaccc4d80db8d5a8",
+      "restrict to exact source-native external measurements outside Q76A,Q76B,Q86A,Q86B,Q86C,Q86D,Q86E,Q86F that are already EXPOSED__PROVED over the same 19,210-member core risk set and require no new role/equivalence authority for an exact native-state query",
+      "choose by fixed lexical source_variable order, not by any observed relation to discovered predicates",
+      "if no such measurement remains lawful, fail closed rather than acquire a new source or invent semantic authority"
+    ],
+    "current_activation": false
+  },
+  "current_blocker": null,
+  "authority_minted": "NONE",
+  "architecture_verdict_issued": false,
+  "target_followup_comparison_executed": false
+}
