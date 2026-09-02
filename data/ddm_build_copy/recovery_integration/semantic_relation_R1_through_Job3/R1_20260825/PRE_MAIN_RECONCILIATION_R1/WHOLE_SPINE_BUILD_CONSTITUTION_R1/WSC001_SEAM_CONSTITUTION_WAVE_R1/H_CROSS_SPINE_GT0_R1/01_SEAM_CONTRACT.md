@@ -142,7 +142,7 @@ Preserve unresolved C06 rows, source gaps, nonapplicability, valid emptiness, ze
 `OBL012;OBL016;OBL029;OBL030;OBL033`.
 
 ### GT0-compatible minimum
-Use one unary/single-producer governed fact requiring no cross-source pooling or unproved measurement transport. If the fact cannot be exactly dereferenced, terminate `INTEGRITY_FAILURE/UNAVAILABLE`.
+Use the bound real current source-structure fact `F0 = cssu.r1.afrobarometer.r1.005b474d6eb4253cb166` from `ba23b0f...` / blob `16edf3f...`. PRE-FF may query/reference its exact source-native relation identity, but may not infer respondent answer values or executable jointability from the source-structure record.
 
 ## 6. PRE-FF -> FIELD FORGE compatibility
 
@@ -184,7 +184,7 @@ Canonical FIELD FORGE R2 adopted-authority capsule; PRE553 exact query/replay ma
 Claim-specific PRA/TTAR/estimand/weight/transport/strong-noun authority, plus `OBL005;OBL006;OBL040;OBL041;OBL042;OBL043` when a GT0 claim actually requires them.
 
 ### GT0-compatible minimum
-Carry the exact governed fact as an actor-independent producer-preserving FIELD FORGE reference/relation receipt with no strong noun and no transport.
+Carry F0's exact source-native matrix-grid relation only as an actor-independent producer-preserving FIELD FORGE reference/relation receipt. Preserve the explicit ceiling `SOURCE_NATIVE_RELATION != EXECUTABLE_J != ACTOR_FACT`; use no strong noun and no transport.
 
 ## 7. FIELD FORGE -> PRE-V3 compatibility
 
@@ -226,7 +226,7 @@ Publication/resolution does not re-own producer semantics and does not select a 
 `OBL002;OBL003;OBL004;OBL034;OBL035;OBL036`, plus any claim-specific map/measurement/transport authority.
 
 ### GT0-compatible minimum
-Admit only a direct producer-preserving structural precursor or valid empty/no-higher-order path. Do not require a V556 object if GT0 needs none.
+Because F0 proves source structure rather than respondent answer content, PRE-V3 must preserve it as a producer prerequisite/reference and return `UNDEFINED_FOR_OBJECT` or a narrower typed blocked/empty state for any requested actor/world structural assertion that requires unavailable empirical content. No V556 object is required.
 
 ## 8. PRE-V3 -> V3 compatibility
 
