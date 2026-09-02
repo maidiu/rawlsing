@@ -29,45 +29,63 @@ The WSC001 central fan-in can review this contract now against current PRE-MAIN 
 
 ### 1.2 Execution conformance
 
-An executable GT0 requires one exact source-fact binding, `F0`, supplied by the competent source/runtime path.
+The baseline now binds `F0` to immutable Git evidence rather than leaving a synthetic/future placeholder:
 
-WSC001H intentionally does **not** invent an empirical row or substitute a synthetic test fixture for project evidence.
+`F0_ID = cssu.r1.afrobarometer.r1.005b474d6eb4253cb166`
 
-The current Git-visible J01-A index proves the exact current source/candidacy universe and current J01-A authority grain. C06 Contract@2 proves the current routing/applicability carrier grain. The frozen producer carriers are not all Git-local at this branch, and WSC001 common law says Library is not expected. Therefore `F0` is an implementation binding, not architecture evidence to fabricate.
+Exact governing current-source lineage:
 
-If implementation cannot lawfully dereference and verify `F0`, execution terminates:
+- source family / wave: `Afrobarometer / R1`;
+- J01-A-admitted upstream ref: `ba23b0fc1d22bb35abb8a6e8f9ab6100df8f7564`;
+- exact path: `data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/CURRENT_JOINT_AUTHORITY_CLOSURE_R1/J01A_RESIDUAL_CLOSURE_R2/LANE_D_ARAB_AFRO/CURRENT_SOURCE_STRUCTURE_UNIVERSE_R2.csv`;
+- exact file blob: `16edf3f4170d6f910e701154b0a2e2b394491a08`;
+- source-native label: `Current-versus-past freedoms and equality`;
+- source-structure type: `MATRIX_GRID`;
+- member count / identities: `6 / pfesol|pfrsay|pfrass|pfrvot|pfreql|pfpsaf`;
+- current binding: `COMPLETE_EXACT_CURRENT_BINDING`;
+- current candidacy: `CURRENT_J_CANDIDATE`;
+- source document: `merged_r1_codebook2.pdf`;
+- source-document SHA-256: `f603d9f5f95a3898dc42661b3cf8da749f874594b8770fe5fd5fb44f696eb537`;
+- locator: `native merged codebook p.53; explicit source block Current-versus-past freedoms and equality`;
+- row identity SHA-256: `ef21f9f95c26e7ddd833401618e70cddcebdb7250ba7605de97a3387665843c6`.
 
-`GT0_FAIL__F0_UNAVAILABLE_OR_INTEGRITY_FAILURE`.
+The current global J01-A canonical index at the WSC001 base explicitly admits `ba23...` as the Arab/Afro upstream source and includes Afrobarometer in the frozen 1,879-source-structure universe.
 
-## 2. Required F0 binding
+The source row itself states that the native multi-member relation **may carry** irreducible joint empirical information while **executable J is not adjudicated here**. GT0 preserves that ceiling exactly.
 
-`F0` must be a source-native or exact governed empirical fact that satisfies all applicable fields:
+A narrowly scoped lookup of the J01-A Library route was attempted only because PRE-MAIN explicitly routes exact current carriers there; the route was unavailable in this account. No Library primary was consumed, and the baseline therefore remains fully bound from Git evidence.
 
-- exact producer/source family;
-- exact source/wave/context;
-- exact question/variable/source-structure identity;
-- exact source content/ref/hash or lawful producer dereference;
-- exact current-selection authority when currentness is part of the claim;
-- J01-A current source/candidate membership when applicable;
-- C06 Contract@2 route/applicability identity when applicable;
-- exact universe/scope/risk set;
-- exact denominator/weight/estimand identity if the fact uses them;
-- exact target-use permission;
-- exact typed source state;
-- exact authority refs;
-- exact replay dependencies.
+This `F0` is a real governed fact about current source structure. It is **not** a respondent answer, joint distribution, measurement-portability ruling, executable-J ruling, structural-person fact, or actor belief.
 
-For the baseline, choose an **already governed single-producer fact that does not require**:
+## 2. Bound F0 semantic ceiling
 
-- cross-source pooling;
-- measurement portability;
-- external-group crosswalk;
-- unproved source/carrier retirement;
-- unknown-claim discovery;
-- a strong FIELD FORGE noun;
-- an actor-specific empirical assertion.
+The exact baseline claim is only:
 
-This is a dependency minimization rule, not a semantic preference.
+> Under the current J01-A-admitted Afrobarometer R1 source authority, the source-native codebook establishes one six-member `MATRIX_GRID` source structure named `Current-versus-past freedoms and equality`, with exact current member bindings and current-J candidacy at source-structure grain.
+
+GT0 may carry the following source-native identities:
+
+- `pfesol`
+- `pfrsay`
+- `pfrass`
+- `pfrvot`
+- `pfreql`
+- `pfpsaf`
+
+GT0 must **not** infer from F0:
+
+- any respondent answer or marginal;
+- co-observation beyond what the admitted source relation actually establishes;
+- executable joint-query authority;
+- a joint distribution;
+- measurement equivalence/portability;
+- cross-wave or cross-source transport;
+- population weight/estimand;
+- structural position;
+- actor encounter/exposure/belief/memory/action;
+- FIELD, capital, hegemony, homology, pressure or mechanism.
+
+This is intentionally the smallest possible real-source seed because its positive content and its negative ceiling are both exact.
 
 ## 3. Golden Thread stage ledger
 
@@ -75,28 +93,30 @@ This is a dependency minimization rule, not a semantic preference.
 
 **Producer/owner:** exact source-native/current empirical producer.
 
-**Input:** competent producer bindings sufficient to identify and verify `F0`.
+**Input:** the exact immutable F0 row, its source-evidence lineage and current J01-A admission described above.
 
-**Output:** `F0_REF` plus conservation envelope.
+**Output:** `F0_SOURCE_STRUCTURE_REF` plus conservation envelope.
 
 **Required checks:**
 
-1. current/source identity is exact;
-2. no historical denominator is substituted;
-3. source content or exact producer dereference verifies;
-4. target-use permission is explicit;
-5. source state is typed;
-6. dependency/replay closure is present.
+1. `F0_ID` matches exactly;
+2. upstream ref is exactly `ba23b0f...`;
+3. file blob is exactly `16edf3f...`;
+4. row identity SHA-256 is exactly `ef21f9f...`;
+5. source document hash/locator match the row;
+6. global J01-A still admits the Arab/Afro upstream source at current-source grain;
+7. source state/candidacy and its non-executable-J ceiling remain typed;
+8. dependency/replay closure is present.
 
-**Positive result:** `F0_BOUND_VERIFIED`.
+**Positive result:** `F0_BOUND_VERIFIED__SOURCE_STRUCTURE_GRAIN`.
 
 **Fail-closed results:** `UNAVAILABLE`, `DENIED`, `OUT_OF_SCOPE`, `INTEGRITY_FAILURE`, `UNRESOLVED_AUTHORITY`.
 
-**Forbidden:** synthetic fixture -> project evidence; nearest source -> exact source; repository presence -> permission.
+**Forbidden:** synthetic fixture -> project evidence; source structure -> response content; current J candidacy -> executable J; nearest source -> exact source; repository presence -> permission.
 
 ---
 
-### GT0-S1 — PRE-FF EXACT QUERY / FACT PROJECTION
+### GT0-S1 — PRE-FF EXACT SOURCE-RELATION QUERY / REFERENCE
 
 **Producer/owner:** source producer remains owner of `F0`; PRE-FF owns only exact query/result identity it lawfully constitutes.
 
@@ -109,29 +129,35 @@ This is a dependency minimization rule, not a semantic preference.
 
 **Input:**
 
-- `F0_REF`;
-- exact `EmpiricalQuerySpec` or exact producer dereference request;
+- `F0_SOURCE_STRUCTURE_REF`;
+- exact source-relation/query/reference request;
 - exact authority bindings;
-- target use.
+- target use `GT0_SOURCE_STRUCTURE_IDENTITY_CONSERVATION`.
 
-**Output:** `E0`, an exact producer-preserving empirical fact/query result with:
+**Output:** `E0`, an exact producer-preserving source-relation/query receipt carrying only:
 
-- source semantic refs;
+- exact source semantic refs;
+- exact six member identities;
+- exact source-relation type `MATRIX_GRID`;
+- exact current-binding/candidacy state;
 - exact authority refs;
-- support/denominator/uncertainty state where applicable;
 - permission;
 - typed outcome;
 - replay closure.
 
-**Baseline constraint:** no joint query unless same-unit incidence or exact information-equivalent carrier is separately proved.
+No respondent-value payload is requested.
 
-**Positive result:** `E0_EXACT`.
+**Baseline constraint:** executable joint query remains unavailable because F0's source row does not adjudicate executable J.
 
-**Fail-closed results:** typed valid-empty, zero-denominator abstention, unresolved, noncomparable, denied, integrity failure.
+**Positive result:** `E0_EXACT_SOURCE_RELATION_REFERENCE`.
 
-**Conservation assertion:**
+**Fail-closed results:** unresolved, noncomparable, denied, integrity failure.
 
-`SEMANTIC_OWNER(E0.UPSTREAM_FACT) = SEMANTIC_OWNER(F0)`.
+**Conservation assertions:**
+
+`SEMANTIC_OWNER(E0.UPSTREAM_SOURCE_STRUCTURE) = SEMANTIC_OWNER(F0)`.
+
+`CURRENT_J_CANDIDATE != EXECUTABLE_J`.
 
 ---
 
@@ -143,9 +169,9 @@ This is a dependency minimization rule, not a semantic preference.
 
 **Input:**
 
-- exact `E0` reference or lawful dereference;
+- exact `E0` source-structure relation reference;
 - explicit H-candidate interface identity `GT0_FF_PRODUCER_REFERENCE_RECEIPT@1`;
-- exact empirical unit/scope/risk set;
+- exact source scope;
 - permission and negative authority;
 - dependency/provenance closure;
 - replay law.
@@ -182,7 +208,7 @@ unless the implementation explicitly uses a lawful projection, in which case the
 - PRESSURE;
 - STRUCTURAL_MECHANISM.
 
-**Positive result:** neutral `FF0` reference/relation.
+**Positive result:** neutral `FF0` producer-reference receipt for the source-native matrix relation, carrying the explicit ceiling `SOURCE_NATIVE_RELATION != EXECUTABLE_J != ACTOR_FACT`.
 
 **Fail-closed result for an unauthorized strong noun:** `BLOCKED_EXPLICIT_AUTHORITY`.
 
@@ -218,19 +244,27 @@ unless the implementation explicitly uses a lawful projection, in which case the
 - exact producer refs;
 - typed negative and permission ceiling.
 
-**Minimal output:** `P0`, an exact direct structural-admission/publication-resolution object sufficient to preserve the neutral actor-independent precursor.
+**Minimal output:** `P0`, a producer-preserving PRE-V3 prerequisite/reference disposition.
 
-A V555 route or V556 higher-order object is created **only if** GT0 actually requires its separately governed semantics.
+Because F0 contains source-structure identity but no respondent answer content, GT0 does **not** ask I04/V553-V556 to manufacture an actor/world structural assertion. For such a request the lawful baseline disposition is:
+
+`P0.STRUCTURAL_ASSERTION_STATE = UNDEFINED_FOR_OBJECT`
+
+or a narrower exact `BLOCKED_EXPLICIT_AUTHORITY` if a named semantic authority is the missing prerequisite.
+
+The exact F0/E0/FF0 producer reference and blocker remain replayable.
+
+No V555 route is minted.
 
 `ZERO_V556_OBJECTS = LAWFUL_GT0_STATE`.
 
-**Physical-neutrality rule:** logical V553→V558 identities do not require a matching sequence of persisted physical tables/services.
+**Physical-neutrality rule:** the logical PRE-V3 disposition does not require a matching sequence of persisted physical tables/services.
 
 **Fail-closed outputs:** denied admission, valid empty, undefined-for-object, noncomparable, blocked authority, integrity failure.
 
 **Conservation assertion:**
 
-`PUBLICATION_OR_RESOLUTION(P0) != TRANSFER_OF_UPSTREAM_SEMANTIC_OWNERSHIP`.
+`PREV3_REFERENCE_OR_BLOCKER(P0) != TRANSFER_OF_UPSTREAM_SEMANTIC_OWNERSHIP`.
 
 ---
 
@@ -269,9 +303,15 @@ from `rawlsing_next/source_backed_positioned_subject_possibility.py`.
 - `NONCOMPARABLE`;
 - `FAIL_CLOSED`.
 
-Because `OBL031` exact predicate ancestry/actor comparator remains open, GT0 must not invent a comparator. If the chosen implementation path lacks an exact competent comparator binding, `PS0` is `UNRESOLVED/NONCOMPARABLE`, not a guessed nearest cohort.
+F0 supplies no respondent-answer content and `OBL031` exact predicate ancestry/actor comparator remains open. GT0 therefore must not invent either an empirical possibility slice or a comparator.
 
-A nonpositive `PS0` remains sufficient to test the next firewall.
+The baseline expected state is:
+
+`PS0 = UNRESOLVED` or `UNAVAILABLE` at exact possibility grain,
+
+with the exact reason preserved: source-structure evidence exists, actor-positioned empirical possibility evidence does not.
+
+A nonpositive `PS0` is the intended input class for the next firewall.
 
 ---
 
@@ -508,7 +548,7 @@ Replay must reject:
 
 GT0 execution passes only if all are true:
 
-1. **REAL_SOURCE:** `F0` is an exact real governed producer fact, not a synthetic project-evidence substitute.
+1. **REAL_SOURCE:** `F0` equals `cssu.r1.afrobarometer.r1.005b474d6eb4253cb166` at exact admitted ref/blob/row hash and is not a synthetic project-evidence substitute.
 2. **EXACT_IDENTITY:** all semantic identities and refs verify.
 3. **PRODUCER_PRESERVATION:** no downstream physical/logical object re-owns upstream meaning.
 4. **PERMISSION_MONOTONICITY:** no unauthorized widening occurs.
@@ -566,9 +606,9 @@ If any answer fails, the seam set is not GT0-compatible even if each local worke
 
 ## 11. H-lane final holding
 
-The present project has enough accepted executable capital to implement a **blocked-positive but end-to-end semantically conserved** GT0 once `F0` is bound through a competent real-source path.
+The present project now has a Git-bound real current source seed plus enough accepted executable capital to implement a **blocked-positive but end-to-end semantically conserved** GT0 without inventing respondent answer content.
 
-The missing positive V3/mediation/render authorities are not defects to paper over. They are the exact frontier the baseline GT0 is designed to expose without corrupting source meaning.
+The baseline intentionally demonstrates two independent fail-closed ceilings: F0's source-native relation does not become executable J or respondent empirical content, and PRE-V3 evidence does not become V3 actor state. The missing positive V3/mediation/render authorities are not defects to paper over; they are the exact frontier the baseline GT0 is designed to expose without corrupting source meaning.
 
 Terminal:
 
