@@ -1,0 +1,37 @@
+{
+  "receipt_id": "FFIF011_Q86A_DIRECTION_EVENT_SELECTION@1",
+  "status": "FROZEN__OUTCOME_BLIND__DESIGN_ONLY",
+  "D": "Q86A",
+  "D_qimpl": "question_impl.phase0.67f036c0efb7fb98ff4a",
+  "D_identity_sha256": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+  "source_question_meaning": "Opinion whether a person born in-country to one national and one non-national parent has the right to be a citizen, including passport and adult national-voting rights in the questionnaire explanation.",
+  "source_native_values": {
+    "0": "No",
+    "1": "Yes",
+    "9": "Don't know",
+    "-1": "Missing in governed project carrier where present"
+  },
+  "selected_event": {
+    "d_star": 1,
+    "predicate": "Q86A_NATIVE_STATE == 1",
+    "meaning": "Yes: the described person has a right to be a citizen.",
+    "functional_family": "F01__EXACT_NATIVE_SINGLE_STATE_EVENT_CONTRAST"
+  },
+  "selection_rule": "FFP028 already selected Q86A outcome-blind as the lexically first source-native binary ACTIVE_DISPOSITION destination. FFIF011 selects the literal source-native affirmative event STATE=1 because the source codebook defines 1=Yes. This semantic event was frozen without any Q86A-by-Q73A or Q86A-by-Q73A-by-Z result.",
+  "formula": "Delta_h = P_sample(Q86A=1 | R,Q73A=1,h) - P_sample(Q86A=1 | R,Q73A=0,h)",
+  "semantic_nonimplications": [
+    "No ordering of Q86A native categories is asserted.",
+    "No numeric score is asserted.",
+    "No category collapse is asserted; Boolean event membership does not make non-event native states semantically equivalent.",
+    "No respondent citizenship, parentage, migration, or position attribute is inferred from the hypothetical-attitude item.",
+    "No population, causal, significance, materiality, or null-equivalence claim is authorized."
+  ],
+  "ttar": "NONE_REQUIRED__LITERAL_SOURCE_NATIVE_EVENT",
+  "evidence_refs": [
+    "FFP015@f1d4474c24a0127cf4e37719d2c857664db8b38a",
+    "FFP016@04c604be2ee4e32367f2074fdad380c7c563b740",
+    "FFP028@bb3ed7cd2c1121bfae019ea0a9de3ace50a26a8e",
+    "AFROBAROMETER_ROUND_5_MERGED_CODEBOOK__Q86A__0_NO__1_YES"
+  ],
+  "target_result_inspection": "ZERO"
+}
