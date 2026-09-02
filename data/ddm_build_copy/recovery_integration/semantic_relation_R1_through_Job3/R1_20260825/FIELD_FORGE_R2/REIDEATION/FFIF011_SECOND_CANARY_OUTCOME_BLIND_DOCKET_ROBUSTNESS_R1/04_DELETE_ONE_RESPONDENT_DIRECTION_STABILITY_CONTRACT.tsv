@@ -1,0 +1,24 @@
+field	frozen_rule
+DIAGNOSTIC_ID	DELETE_ONE_RESPONDENT_DIRECTION_STABILITY@1
+STATUS	PREREGISTERED__NONINFERENTIAL__NONMATERIALITY__DOES_NOT_CHANGE_EXACT_DESCRIPTIVE_RESULT
+QUERY_SCOPE	EVERY_EXECUTED_BROAD_OR_WITHIN_STATE_F01_SCALAR_CONTRAST
+RELEVANT_UNIT_SET	For query context h, every governed empirical unit u satisfying R, h, and Q73A in {0,1}; broad h is TRUE. Event membership is literal Q86A==1.
+ORIGINAL_STATISTIC	Delta_h = P_sample(Q86A=1 | R,Q73A=1,h) - P_sample(Q86A=1 | R,Q73A=0,h)
+ORIGINAL_SIGN	sigma_h = sign(Delta_h) in {-1,0,+1}
+DELETE_ONE_OPERATION	For every u in the relevant unit set, delete exactly u and recompute the identical frozen scalar contrast with every semantic/risk-set/event rule unchanged.
+POST_DELETE_DEFINED	Both Q73A arm denominators remain >0 after deletion.
+POST_DELETE_ZERO_DENOMINATOR	If either required arm denominator becomes 0, record DELETE_ONE_UNDEFINED__ZERO_DENOMINATOR_AFTER_DELETION for that u; do not omit the witness and do not back off or pool.
+POST_DELETE_SIGN	If defined, sigma_h_minus_u = sign(Delta_h_minus_u) in {-1,0,+1}.
+STABLE	DELETE_ONE_DIRECTION_STABLE iff every lawful single-unit deletion is defined and every sigma_h_minus_u equals original sigma_h.
+FRAGILE	DELETE_ONE_DIRECTION_FRAGILE iff at least one defined single-unit deletion yields sigma_h_minus_u != original sigma_h.
+NOT_FULLY_EVALUABLE	DELETE_ONE_NOT_FULLY_EVALUABLE__ZERO_DENOMINATOR_AFTER_DELETION iff at least one lawful deletion creates a zero required denominator. This flag may coexist with FRAGILE if another deletion changes sign.
+ORIGINAL_ZERO	If sigma_h=0, STABLE requires every deletion to remain defined and sign 0. Any defined nonzero post-delete sign is FRAGILE; any zero-denominator deletion is NOT_FULLY_EVALUABLE.
+COMPLETE_EVIDENCE	Retain one row per query-context/deleted-unit witness with empirical-unit key, deleted Q73A arm, deleted event membership, pre/post exact arm denominators and event numerators or an exactly replayable equivalent, post-delete defined state, post-delete sign, and diagnostic flags.
+NO_STATE_DELETION	All original candidate joint-state roster rows remain. Diagnostic instability never deletes, pools, suppresses, or changes support admission of an exact descriptive row.
+ANNOTATION_EXAMPLE	EXACT_DIRECTIONAL_REVERSAL__DELETE_ONE_STABLE versus EXACT_DIRECTIONAL_REVERSAL__DELETE_ONE_FRAGILE; NOT_FULLY_EVALUABLE flag remains separately visible.
+COMPOUND_USE	Compound exact sign status is computed from original exact contrasts only. Delete-one results are annotations/evidence and cannot change REVERSAL/PERSISTENCE/SPLIT/ZERO/ABSTAIN classification.
+SUPPORT_THRESHOLD_FIREWALL	DELETE_ONE_STABILITY_IS_NOT_A_MINIMUM_SUPPORT_THRESHOLD__unstable_or_not_fully_evaluable_exact_rows_remain_exact_descriptive_rows.
+INFERENCE_FIREWALL	No population inference, confidence interval, p-value, significance, power, exchangeability, sampling adequacy, or causal robustness is implied.
+MATERIALITY_FIREWALL	No materiality, practical importance, disappearance, or null-equivalence is implied; CITC jurisdiction remains untouched.
+REPRESENTATION_NEUTRALITY	PASS__definition depends only on frozen empirical-unit membership and normalized F01 query semantics, not on storage, carrier, configuration, geometry, or representation producer.
+OUTCOME_BLINDNESS	Contract frozen before any D×C or D×C×Z target result inspection.
