@@ -1,0 +1,117 @@
+{
+  "schema_version": "FFP035_CURRENT_CARRIER_SURFACE_AND_X_BINDING@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-field-forge-r2-ffp035-discovery-followup-current-preflight-r1",
+  "exact_starting_head": "7c80885c8f59614b79f881af20c94a2195d6dab2",
+  "instruction_evidence": {
+    "ref": "7afd7e7d8753797cd1327bce43817952d9891121",
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/FIELD_FORGE_R2/REIDEATION/FFIF012_CENTRAL_POST_SECOND_CANARY_REIDEATION_R1/09_EXACT_NEXT_HANDOFFS.md",
+    "role": "INSTRUCTION_EVIDENCE_ONLY"
+  },
+  "concurrent_ffif013_consumed": false,
+  "new_sources_acquired": false,
+  "source_object": {
+    "logical_path": "Data/Afro Barometer Round 5.sav",
+    "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "bytes": 49689458,
+    "rows": 51587,
+    "family_wave": "Afrobarometer / R5"
+  },
+  "current_respondent_carrier": {
+    "authority_ref": "34c0136840757d748c90d6733240ddb675d05c88",
+    "schema_version": "FFP014_R5_CURRENT_RESPONDENT_CARRIER@1",
+    "carrier_identity": "sha256:6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5",
+    "physical_member_sha256": "f55741a53a4caed3f74980afba2488233caa93dd4f1a2edcfde8d90e2fcce4be",
+    "logical_uncompressed_member_sha256": "dd2f12232270d872405ffe4d8111540168b672aa1c9b88cac7c44ee3be13cfd7",
+    "rows": 51587,
+    "respondent_source_key": ["COUNTRY", "RESPNO"],
+    "row_order_is_identity": false,
+    "library_ref": "libfile_23bfb6d5340881918ac372b6b8b4cf3b",
+    "library_file_snapshot": "file_000000005d6881f6aa1501897a52c40f",
+    "library_byte_recheck": "PASS"
+  },
+  "current_upstream_facts": {
+    "authority_ref": "97ad8148a5227e8be6d80e5beaccc4d80db8d5a8",
+    "selected_response_facts": {
+      "rows": 670631,
+      "sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+      "library_ref": "libfile_2befdf759ad88191b608ff30bed717ed"
+    },
+    "selected_exposure_facts": {
+      "rows": 670631,
+      "sha256": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce",
+      "library_ref": "libfile_0cf848f0ca6c8191a5c992e473517a18"
+    },
+    "all_selected_predicate_inputs_are_COUNTRY_ALPHA3": true,
+    "all_selected_predicate_inputs_resolved": true
+  },
+  "discovery_risk_set": {
+    "logical_identity": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "physical_row_label": "CORE_CLAIM_COMMON_RISK_SET@1",
+    "respondents": 19210,
+    "semantic_member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "physical_artifact_sha256": "c5281c564c1cafdcbe6769013b46834bc4da9bb481e56a172a581fee745cb8dc",
+    "library_ref": "libfile_2851ba4555a88191a427ba4785ceba81",
+    "declared_common_country_scope": "COUNTRY_ALPHA3 NOT IN {ALG,BDI,BEN,CAM,CDI,EGY,GHA,GUI,LIB,MAD,MLI,MRC,NGR,NIG,SEN,SRL,SUD,SWZ,TAN,TOG,TUN,ZAM,ZIM}",
+    "independent_reconstruction_from_current_carrier_rows": 19210,
+    "independent_reconstructed_source_key_set_equals_materialized_risk_set": true,
+    "empirical_unit_identity": "current admitted respondent identified by (respondent_carrier_identity, respondent_local_id), with respondent_local_id inherited from governed (COUNTRY, RESPNO) source identity"
+  },
+  "ffif012f_discovery_surface": {
+    "authority_ref": "2d5981127ce19125ffca6653cf21343acee1e4f1",
+    "surface_kind": "exact current eight-disposition same-unit native-state surface",
+    "respondents": 19210,
+    "variables": [
+      {"source_variable":"Q76A","empirical_measurement_id":"Afrobarometer:R5:Q76A","question_implementation_id":"question_impl.phase0.6a1a2eb3ed5d31e7e0cf","predicate_id":"C04P.9bdcc5c20d1ea29494cb","predicate_input_symbol":"COUNTRY_ALPHA3","source_evidence_ref":"SEP.U1.NATIVE.c16e1235f0d08a339b4ff353"},
+      {"source_variable":"Q76B","empirical_measurement_id":"Afrobarometer:R5:Q76B","question_implementation_id":"question_impl.phase0.2d7f53868dd52feea700","predicate_id":"C04P.3ef9d75ad37a9afd9538","predicate_input_symbol":"COUNTRY_ALPHA3","source_evidence_ref":"SEP.U1.NATIVE.7426e28136508c6b2daab427"},
+      {"source_variable":"Q86A","empirical_measurement_id":"Afrobarometer:R5:Q86A","question_implementation_id":"question_impl.phase0.67f036c0efb7fb98ff4a","predicate_id":"C04P.9c3bd54f111f068a22f8","predicate_input_symbol":"COUNTRY_ALPHA3","source_evidence_ref":"SEP.U1.NATIVE.9c63ebbd5ad1126a9d88ba07"},
+      {"source_variable":"Q86B","empirical_measurement_id":"Afrobarometer:R5:Q86B","question_implementation_id":"question_impl.phase0.2fb3a62609dad4c1306d","predicate_id":"C04P.34fb5970fdb1af3cbaec","predicate_input_symbol":"COUNTRY_ALPHA3","source_evidence_ref":"SEP.U1.NATIVE.b67bc175b86139b78d81f118"},
+      {"source_variable":"Q86C","empirical_measurement_id":"Afrobarometer:R5:Q86C","question_implementation_id":"question_impl.phase0.5e173e45a10de7c832fd","predicate_id":"C04P.40fdf23da878e2774e48","predicate_input_symbol":"COUNTRY_ALPHA3","source_evidence_ref":"SEP.U1.NATIVE.4236462666e913b0f36f4196"},
+      {"source_variable":"Q86D","empirical_measurement_id":"Afrobarometer:R5:Q86D","question_implementation_id":"question_impl.phase0.b2b6525f8699525e60ea","predicate_id":"C04P.b75dfbead8f71621ac5f","predicate_input_symbol":"COUNTRY_ALPHA3","source_evidence_ref":"SEP.U1.NATIVE.c3ff715d3830f3c01f49c3fb"},
+      {"source_variable":"Q86E","empirical_measurement_id":"Afrobarometer:R5:Q86E","question_implementation_id":"question_impl.phase0.2aef51cfcb3d44e4870a","predicate_id":"C04P.a93e49ae75ebbe415686","predicate_input_symbol":"COUNTRY_ALPHA3","source_evidence_ref":"SEP.U1.NATIVE.a18cdf46693c2ff716ce0c31"},
+      {"source_variable":"Q86F","empirical_measurement_id":"Afrobarometer:R5:Q86F","question_implementation_id":"question_impl.phase0.0bdb38e7f76aadd487da","predicate_id":"C04P.153aaa6fa7f3c82c4230","predicate_input_symbol":"COUNTRY_ALPHA3","source_evidence_ref":"SEP.U1.NATIVE.965fe312a83fed515af1e2b8"}
+    ],
+    "native_state_identity_rule": "Afrobarometer:R5:<SOURCE_VARIABLE>:STATE=<exact source_response_state>; no recoding or special-state deletion",
+    "risk_set_response_pairs_expected": 153680,
+    "risk_set_response_pairs_observed_unique": 153680,
+    "risk_set_response_duplicate_pairs": 0,
+    "respondents_not_exactly_eight_response_facts": 0,
+    "risk_set_exposure_pairs_observed_unique": 153680,
+    "risk_set_nonproved_exposure_rows": 0,
+    "ffif012f_exact_eight_variable_profiles": 1856,
+    "ffif012f_exact_observed_conjunction_support_rows_all_nonempty_subsets": 62609
+  },
+  "candidate_X": {
+    "identity": "COUNTRY_ALPHA3",
+    "grain": "exact current respondent context token",
+    "outside_discovery_response_surface": true,
+    "already_constitutive_of_current_carrier_or_governed_scope": true,
+    "provenance": "first three exact source characters of the same respondent RESPNO, functionally validated against source COUNTRY for all 51,587 admitted carrier rows under FFP014",
+    "risk_set_domain": ["BFO","BOT","CVE","KEN","LES","MAU","MLW","MOZ","NAM","SAF","UGA"],
+    "risk_set_domain_cardinality": 11,
+    "risk_set_missing_values": 0,
+    "selection_basis": "Handoff-B preference order item 1: existing respondent/context identity minimizes new semantic-role and PRA/TTAR contamination",
+    "selection_used_observed_discovered_profile_relation": false,
+    "new_PRA_TTAR_required_for_identity_or_queryability": false
+  },
+  "direct_requery_structural_fact": {
+    "every_ffif012f_discovered_predicate_form": "finite exact conjunction of equality predicates over a nonempty subset of the eight exact native-state identities",
+    "reconstructible_from_current_upstream_response_facts_without_stored_discovered_predicate_membership": true,
+    "reason": "the current risk set has exactly one response fact for every respondent x each of the eight exact variables, keyed by governed respondent identity; conjunction membership can therefore be recomputed mechanically from predicate identity",
+    "stored_ffif012f_predicate_membership_required": false,
+    "stored_risk_set_membership_required": false,
+    "risk_set_reconstruction_basis": "current carrier + exact FFP017 governed common-country/coexposure rule",
+    "materialized_risk_set_may_be_used_only_as_replay_check": true
+  },
+  "outcome_firewall": {
+    "discovered_profile_x_X_distribution_inspected": false,
+    "conditional_effect_or_direction_inspected": false,
+    "subgroup_contrast_inspected": false,
+    "reversal_or_persistence_inspected": false,
+    "association_strength_inspected": false,
+    "predictive_value_inspected": false,
+    "motif_recurrence_inspected": false,
+    "target_followup_comparison_executed": false
+  },
+  "authority_minted": "NONE"
+}
