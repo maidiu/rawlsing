@@ -11,6 +11,11 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any, Mapping, Sequence
 
+from rawlsing_next.pre553_empirical_objects import (
+    AuthorityRef as Pre553AuthorityRef,
+    ExactRef as Pre553ExactRef,
+)
+
 from rawlsing_next.m1_temporal_v554_admission_dedup import (
     CONDITION_DISPOSITION,
     M1DecisionState,
@@ -153,13 +158,91 @@ def _contains_forbidden_key(value: Any) -> str | None:
 
 
 def _authority_ref(value: Any, name: str) -> dict[str, str]:
+    """Normalize exact PRE553 or legacy relation-lane authority identity losslessly."""
+    if isinstance(value, Pre553AuthorityRef):
+        return {
+            "authority_id": _nonempty(value.authority_id, f"{name}.authority_id"),
+            "authority_version": _nonempty(
+                value.authority_version, f"{name}.authority_version"
+            ),
+            "authority_content_hash": _sha(
+                value.authority_content_hash, f"{name}.authority_content_hash"
+            ),
+        }
     if not isinstance(value, Mapping):
-        raise RelationIngressIntegrity(f"{name} must be mapping")
-    return {
-        "id": _nonempty(value.get("id"), f"{name}.id"),
-        "version": _nonempty(value.get("version"), f"{name}.version"),
-        "hash": _sha(value.get("hash"), f"{name}.hash"),
-    }
+        raise RelationIngressIntegrity(f"{name} must be exact authority identity")
+    if set(value) == {
+        "authority_id", "authority_version", "authority_content_hash"
+    }:
+        return {
+            "authority_id": _nonempty(value.get("authority_id"), f"{name}.authority_id"),
+            "authority_version": _nonempty(
+                value.get("authority_version"), f"{name}.authority_version"
+            ),
+            "authority_content_hash": _sha(
+                value.get("authority_content_hash"),
+                f"{name}.authority_content_hash",
+            ),
+        }
+    if set(value) == {"id", "version", "hash"}:
+        return {
+            "authority_id": _nonempty(value.get("id"), f"{name}.id"),
+            "authority_version": _nonempty(value.get("version"), f"{name}.version"),
+            "authority_content_hash": _sha(value.get("hash"), f"{name}.hash"),
+        }
+    if set(value) == {"id", "version", "content_hash"}:
+        return {
+            "authority_id": _nonempty(value.get("id"), f"{name}.id"),
+            "authority_version": _nonempty(value.get("version"), f"{name}.version"),
+            "authority_content_hash": _sha(
+                value.get("content_hash"), f"{name}.content_hash"
+            ),
+        }
+    raise RelationIngressIntegrity(
+        f"{name} must preserve exact authority id/version/hash fields"
+    )
+
+
+def _relation_exact_ref(value: Any, name: str) -> dict[str, str]:
+    if isinstance(value, Pre553ExactRef):
+        return {
+            "kind": _nonempty(value.kind, f"{name}.kind"),
+            "object_id": _nonempty(value.object_id, f"{name}.object_id"),
+            "content_hash": _sha(value.content_hash, f"{name}.content_hash"),
+        }
+    return _exact_ref(value, name)
+
+
+def _typed_identity(value: Any, name: str) -> Any:
+    """Preserve exact typed identity; never reduce refs/authorities to labels."""
+    if isinstance(value, str):
+        return _nonempty(value, name)
+    if isinstance(value, Pre553ExactRef):
+        return _relation_exact_ref(value, name)
+    if isinstance(value, Pre553AuthorityRef):
+        return _authority_ref(value, name)
+    if isinstance(value, Mapping):
+        keys = set(value)
+        if keys == {"kind", "object_id", "content_hash"}:
+            return _relation_exact_ref(value, name)
+        if keys in (
+            {"authority_id", "authority_version", "authority_content_hash"},
+            {"id", "version", "hash"},
+            {"id", "version", "content_hash"},
+        ):
+            return _authority_ref(value, name)
+        # Participant/closure material may itself be a typed canonical mapping.
+        canonical_json(value)
+        return dict(value)
+    raise RelationIngressIntegrity(
+        f"{name} must be exact string/ref/authority/canonical mapping identity"
+    )
+
+
+def _typed_sequence(value: Any, name: str) -> tuple[Any, ...]:
+    if isinstance(value, (str, bytes)) or not isinstance(value, Sequence):
+        raise RelationIngressIntegrity(f"{name} must be sequence")
+    return tuple(_typed_identity(item, name) for item in value)
 
 
 def _relation_eq(value: Any) -> dict[str, Any]:
@@ -224,12 +307,14 @@ def _validate_positive_admission(value: Any) -> dict[str, Any]:
             "relation admission is not bound to exact relation M1 ingress contract"
         )
     _admission_ref(admission)
-    _exact_ref(admission.get("field_forge_relation_ref"), "field_forge_relation_ref")
+    _relation_exact_ref(
+        admission.get("field_forge_relation_ref"), "field_forge_relation_ref"
+    )
     _nonempty(admission.get("relation_owner_ref_or_id"), "relation_owner_ref_or_id")
-    _authority_ref(admission.get("relation_rule_ref"), "relation_rule_ref")
+    _typed_identity(admission.get("relation_rule_ref"), "relation_rule_ref")
     _nonempty(admission.get("relation_typed_state"), "relation_typed_state")
     _authority_ref(admission.get("admission_authority_ref"), "admission_authority_ref")
-    _authority_ref(admission.get("admission_rule_ref"), "admission_rule_ref")
+    _typed_identity(admission.get("admission_rule_ref"), "admission_rule_ref")
     if (
         _nonempty(
             admission.get("relation_information_loss_declaration"),
@@ -284,7 +369,7 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
                 f"forbidden empirical/V553 coercion key on relation path: {forbidden}"
             )
         admission = _validate_positive_admission(payload.get("relation_admission"))
-        basis_ref = _exact_ref(payload.get("basis_ref"), "basis_ref")
+        basis_ref = _relation_exact_ref(payload.get("basis_ref"), "basis_ref")
         expected_basis_ref = {
             "kind": RELATION_BASIS_KIND,
             "object_id": _admission_ref(admission)["object_id"],
@@ -310,7 +395,7 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
             raise RelationIngressIntegrity("relation projection hash mismatch")
 
         if (
-            _exact_ref(
+            _relation_exact_ref(
                 projection["relation_admission_ref"],
                 "projection.relation_admission_ref",
             )
@@ -327,10 +412,10 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
             raise RelationIngressIntegrity(
                 "projection relation admission authority mismatch"
             )
-        if _authority_ref(
+        if _typed_identity(
             projection["relation_admission_rule_ref"],
             "projection.relation_admission_rule_ref",
-        ) != _authority_ref(
+        ) != _typed_identity(
             admission["admission_rule_ref"], "admission.admission_rule_ref"
         ):
             raise RelationIngressIntegrity("projection relation admission rule mismatch")
@@ -342,10 +427,10 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
             != RELATION_ADMISSION_POSITIVE_STATE
         ):
             raise RelationIngressIntegrity("projection admission decision is not ADMITTED")
-        if _exact_ref(
+        if _relation_exact_ref(
             projection["field_forge_relation_ref"],
             "projection.field_forge_relation_ref",
-        ) != _exact_ref(
+        ) != _relation_exact_ref(
             admission["field_forge_relation_ref"], "admission.field_forge_relation_ref"
         ):
             raise RelationIngressIntegrity("projection FIELD FORGE relation ref mismatch")
@@ -383,11 +468,11 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
                 (),
             )
 
-        _seq(
+        _typed_sequence(
             projection["relation_semantic_identity_refs"],
             "relation_semantic_identity_refs",
         )
-        participants = _seq(
+        participants = _typed_sequence(
             projection["relation_participant_role_order_cardinality_refs"],
             "relation_participant_role_order_cardinality_refs",
         )
@@ -395,44 +480,46 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
             raise RelationIngressIntegrity(
                 "relation participant role/order/cardinality identity required"
             )
-        scopes = _seq(
+        scopes = _typed_sequence(
             projection["native_scope_identity_refs"], "native_scope_identity_refs"
         )
         if not scopes:
             raise RelationIngressIntegrity("native scope identity required")
-        universes = _seq(projection["source_universe_refs"], "source_universe_refs")
+        universes = _typed_sequence(
+            projection["source_universe_refs"], "source_universe_refs"
+        )
         if not universes:
             raise RelationIngressIntegrity("source universe identity required")
-        risks = _seq(projection["risk_set_refs"], "risk_set_refs")
+        risks = _typed_sequence(projection["risk_set_refs"], "risk_set_refs")
         if not risks:
             raise RelationIngressIntegrity("risk-set identity required")
-        permissions = _seq(
+        permissions = _typed_sequence(
             projection["target_use_permission_refs"], "target_use_permission_refs"
         )
         if not permissions:
             raise RelationIngressIntegrity("target-use permission refs required")
-        _seq(
+        _typed_sequence(
             projection["effective_time_or_interval_refs_required_by_target_use"],
             "effective_time_or_interval_refs_required_by_target_use",
         )
-        _seq(projection["estimand_refs"], "estimand_refs")
-        _seq(
+        _typed_sequence(projection["estimand_refs"], "estimand_refs")
+        _typed_sequence(
             projection["measure_and_weight_authority_refs"],
             "measure_and_weight_authority_refs",
         )
-        _seq(
+        _typed_sequence(
             projection["source_relation_comparability_authority_refs_where_required"],
             "source_relation_comparability_authority_refs_where_required",
         )
-        _seq(
+        _typed_sequence(
             projection["applicable_negative_denial_noncomparability_refs"],
             "applicable_negative_denial_noncomparability_refs",
         )
-        _seq(
+        _typed_sequence(
             projection["interpretation_critical_authority_refs"],
             "interpretation_critical_authority_refs",
         )
-        closure_refs = _seq(
+        closure_refs = _typed_sequence(
             projection["authority_current_selection_dependency_provenance_refs"],
             "authority_current_selection_dependency_provenance_refs",
         )
@@ -440,7 +527,7 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
             raise RelationIngressIntegrity(
                 "authority/currentness/dependency/provenance closure required"
             )
-        _nonempty(
+        _typed_identity(
             projection["producer_replay_locator_or_reference_root"],
             "producer_replay_locator_or_reference_root",
         )
@@ -471,13 +558,18 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
             "authority_current_selection_dependency_provenance_refs",
         )
         for field in shared_sequence_fields:
-            if tuple(projection[field]) != tuple(admission.get(field, ())):
+            projected = _typed_sequence(projection[field], field)
+            admitted = _typed_sequence(admission.get(field, ()), field)
+            if semantic_hash(list(projected)) != semantic_hash(list(admitted)):
                 raise RelationIngressIntegrity(
                     f"projection/admission exact sequence mismatch: {field}"
                 )
-        if (
-            projection["producer_replay_locator_or_reference_root"]
-            != admission.get("producer_replay_locator_or_reference_root")
+        if _typed_identity(
+            projection["producer_replay_locator_or_reference_root"],
+            "projection.producer_replay_locator_or_reference_root",
+        ) != _typed_identity(
+            admission.get("producer_replay_locator_or_reference_root"),
+            "admission.producer_replay_locator_or_reference_root",
         ):
             raise RelationIngressIntegrity("projection/admission replay root mismatch")
 
@@ -491,13 +583,22 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
             )
         expected_fingerprints = {
             "rule_relevant_structural_semantic_identity_fingerprint": semantic_hash(
-                list(projection["relation_semantic_identity_refs"])
+                list(_typed_sequence(
+                    projection["relation_semantic_identity_refs"],
+                    "relation_semantic_identity_refs",
+                ))
             ),
             "relation_participant_role_order_cardinality_fingerprint": semantic_hash(
-                list(projection["relation_participant_role_order_cardinality_refs"])
+                list(_typed_sequence(
+                    projection["relation_participant_role_order_cardinality_refs"],
+                    "relation_participant_role_order_cardinality_refs",
+                ))
             ),
             "native_scope_identity_fingerprint": semantic_hash(
-                list(projection["native_scope_identity_refs"])
+                list(_typed_sequence(
+                    projection["native_scope_identity_refs"],
+                    "native_scope_identity_refs",
+                ))
             ),
             "rule_relevant_effective_time_semantics_fingerprint": semantic_hash(
                 {
@@ -513,21 +614,33 @@ def prepare_admitted_field_forge_relation_basis(payload: Any) -> RelationBasisPr
                 projection["relation_admission_ref"]
             ),
             "source_universe_fingerprint": semantic_hash(
-                list(projection["source_universe_refs"])
+                list(_typed_sequence(
+                    projection["source_universe_refs"],
+                    "source_universe_refs",
+                ))
             ),
-            "estimand_fingerprint": semantic_hash(list(projection["estimand_refs"])),
+            "estimand_fingerprint": semantic_hash(list(_typed_sequence(
+                projection["estimand_refs"], "estimand_refs"
+            ))),
             "measure_and_weight_authority_fingerprint": semantic_hash(
-                list(projection["measure_and_weight_authority_refs"])
+                list(_typed_sequence(
+                    projection["measure_and_weight_authority_refs"],
+                    "measure_and_weight_authority_refs",
+                ))
             ),
             "rule_relevant_source_relation_comparability_authority_fingerprint": semantic_hash(
-                list(
+                list(_typed_sequence(
                     projection[
                         "source_relation_comparability_authority_refs_where_required"
-                    ]
-                )
+                    ],
+                    "source_relation_comparability_authority_refs_where_required",
+                ))
             ),
             "interpretation_critical_semantic_authority_fingerprint": semantic_hash(
-                list(projection["interpretation_critical_authority_refs"])
+                list(_typed_sequence(
+                    projection["interpretation_critical_authority_refs"],
+                    "interpretation_critical_authority_refs",
+                ))
             ),
         }
         for field, expected in expected_fingerprints.items():
@@ -871,6 +984,29 @@ def evaluate_m1_admitted_field_forge_relation_v554(
             "authority_bundle_fingerprint": authority_fp,
         }
         f1_id = _urn("v554:f1", f1_material)
+        exact_basis_refs = sorted(
+            (candidate["basis_ref"] for candidate in counting),
+            key=canonical_json,
+        )
+        exact_admission_refs = sorted(
+            (
+                candidate["projection"]["relation_admission_ref"]
+                for candidate in counting
+            ),
+            key=canonical_json,
+        )
+        exact_relation_refs = sorted(
+            (
+                candidate["projection"]["field_forge_relation_ref"]
+                for candidate in counting
+            ),
+            key=canonical_json,
+        )
+        lineage_closure_fingerprint = semantic_hash({
+            "basis_refs": exact_basis_refs,
+            "admission_refs": exact_admission_refs,
+            "field_forge_relation_refs": exact_relation_refs,
+        })
         f1 = {
             "family": "F1",
             "state": "ELIGIBLE",
@@ -879,6 +1015,10 @@ def evaluate_m1_admitted_field_forge_relation_v554(
             "provenance_alias_refs": sorted(
                 {candidate["basis_ref"]["object_id"] for candidate in counting}
             ),
+            "provenance_alias_exact_refs": exact_basis_refs,
+            "originating_relation_admission_exact_refs": exact_admission_refs,
+            "originating_field_forge_relation_exact_refs": exact_relation_refs,
+            "lineage_closure_fingerprint": lineage_closure_fingerprint,
             "authority_bundle_fingerprint": authority_fp,
             "material": f1_material,
         }
