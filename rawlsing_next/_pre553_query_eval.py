@@ -1,6 +1,7 @@
 """Exact denominator, target, measure and EmpiricalFact construction for PRE553 I03."""
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next._pre553_query_predicate import (
+    _compile_derived_branch_memberships,
     _eval_predicate,
     _question_matches,
     _validate_public_object_authorities,
@@ -319,6 +320,7 @@ def _evaluate_index_group(
     weighted_resolved = Fraction(0, 1) if weighted_cells is not None else None
     inapplicable_count = 0
     component_positive = [False] * plan.arity
+    derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
 
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
         used.extend([index.universe, index.release.replay_manifest])
@@ -347,6 +349,7 @@ def _evaluate_index_group(
                 registry=registry,
                 used=used,
                 used_auth=used_auth,
+                derived_branch_memberships=derived_branch_memberships,
             )
             if explicitly_inapplicable:
                 inapplicable_count += 1
