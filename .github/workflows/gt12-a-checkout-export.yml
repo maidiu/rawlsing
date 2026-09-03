@@ -1,0 +1,22 @@
+name: GT12 A checkout export
+on:
+  push:
+    branches:
+      - agent/rabochii-gt12-closure-a-real-execution-r1
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pack exact checkout
+        run: |
+          git rev-parse HEAD > GT12_A_CHECKOUT_HEAD.txt
+          tar -czf /tmp/rawlsing-gt12-a-checkout.tgz --exclude=.git .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rawlsing-gt12-a-checkout
+          path: |
+            /tmp/rawlsing-gt12-a-checkout.tgz
+            GT12_A_CHECKOUT_HEAD.txt
+          if-no-files-found: error
+          retention-days: 1
