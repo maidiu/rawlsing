@@ -1,0 +1,135 @@
+{
+  "schema": "GT12_FINAL_E2A_DOWNSTREAM_INPUT_RECEIPT@1",
+  "disposition": "FAIL_CLOSED__INTEGRATED_QUERY_AUTHORITY_CLOSURE_CHANGES_GT2_IDENTITY__CENTRAL_DISPOSITION_REQUIRED",
+  "requested_pass_terminal_not_issued": true,
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt12-final-e2a-real-gt2-rerun-r1",
+  "exact_starting_head": "820311811b3e4094aea7e0e665fd0a228520cd1a",
+  "governing_refs": {
+    "frozen_canary_contract": "a9416094cbb4653dd2de2e4aa7b67577a355560c",
+    "closure_a_program": "a473091473f5729dd9aa6e54d68b88de49f9d608",
+    "a3_execution_evidence_tip": "843fd5ae70c578226f96ffa6c0a220493360c856"
+  },
+  "a1_boundary": {
+    "release_ref": {"kind":"C11LogicalRelease","object_id":"R5_GT12_Q86A_Q86B_FROZEN","content_hash":"8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"},
+    "replay_manifest_ref": {"kind":"C11Internal:ReplayManifest","object_id":"urn:rawlsing:pre553:c11:ReplayManifest:sha256:c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa","content_hash":"c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa"},
+    "source_artifact_ref": {"kind":"SOURCE_ARTIFACT","object_id":"Data/Afro Barometer Round 5.sav","content_hash":"c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"},
+    "source_rows": 51587,
+    "claim_members": 19210,
+    "public_objects": 96057,
+    "internal_records": 19212,
+    "risk_set_ref": {"kind":"RISK_SET","object_id":"FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1","content_hash":"0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"},
+    "empirical_universe_ref": {"kind":"EmpiricalUniverse@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1","content_hash":"4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"}
+  },
+  "carriers": {
+    "respondent_semantic_identity": "sha256:6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5",
+    "response_fact_carrier_sha256": "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3ce70fe1709",
+    "exposure_fact_carrier_sha256": "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce"
+  },
+  "gt2": {
+    "claim_id": "GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1",
+    "semantic_component_order": ["Q86B","Q86A"],
+    "conditioner": "Q86B",
+    "target": "Q86A",
+    "state": "SUPPORTED",
+    "denominator": 19210,
+    "raw_resolved_target_support": 19210,
+    "measure": "RAW",
+    "weights": "NOT_APPLICABLE",
+    "typed_administrative_states": ["DK","NOT_ASKED","REFUSAL","MISSING"],
+    "source_native_domains": {
+      "Q86A": ["0","1","9","997","998","-1"],
+      "Q86B": ["0","1","9","997","998","-1"]
+    },
+    "complete_joint_support": [
+      {"q86b":"0","q86a":"0","count":2112},{"q86b":"0","q86a":"1","count":4493},{"q86b":"0","q86a":"9","count":178},{"q86b":"0","q86a":"997","count":0},{"q86b":"0","q86a":"998","count":0},{"q86b":"0","q86a":"-1","count":1},
+      {"q86b":"1","q86a":"0","count":491},{"q86b":"1","q86a":"1","count":11232},{"q86b":"1","q86a":"9","count":63},{"q86b":"1","q86a":"997","count":0},{"q86b":"1","q86a":"998","count":0},{"q86b":"1","q86a":"-1","count":1},
+      {"q86b":"9","q86a":"0","count":40},{"q86b":"9","q86a":"1","count":250},{"q86b":"9","q86a":"9","count":334},{"q86b":"9","q86a":"997","count":0},{"q86b":"9","q86a":"998","count":0},{"q86b":"9","q86a":"-1","count":0},
+      {"q86b":"997","q86a":"0","count":0},{"q86b":"997","q86a":"1","count":0},{"q86b":"997","q86a":"9","count":0},{"q86b":"997","q86a":"997","count":0},{"q86b":"997","q86a":"998","count":0},{"q86b":"997","q86a":"-1","count":0},
+      {"q86b":"998","q86a":"0","count":0},{"q86b":"998","q86a":"1","count":0},{"q86b":"998","q86a":"9","count":0},{"q86b":"998","q86a":"997","count":0},{"q86b":"998","q86a":"998","count":0},{"q86b":"998","q86a":"-1","count":0},
+      {"q86b":"-1","q86a":"0","count":0},{"q86b":"-1","q86a":"1","count":9},{"q86b":"-1","q86a":"9","count":0},{"q86b":"-1","q86a":"997","count":0},{"q86b":"-1","q86a":"998","count":0},{"q86b":"-1","q86a":"-1","count":6}
+    ]
+  },
+  "predicate": {
+    "ref": {"kind":"EmpiricalPredicate@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3","content_hash":"bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"},
+    "exact_member_count": 19210,
+    "risk_member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "semantic_projection_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+  },
+  "query": {
+    "ref": {"kind":"EmpiricalQuerySpec@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0","content_hash":"e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"},
+    "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+    "authority_snapshot_refs": [
+      {"authority_id":"GT12-A3-GT2-I03-QUERY","authority_version":"1.0.0","authority_content_hash":"c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16"},
+      {"authority_id":"GT12-A3-GT2-TARGET-USE","authority_version":"1.0.0","authority_content_hash":"8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e"}
+    ],
+    "condition_predicate_ref": {"kind":"EmpiricalPredicate@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3","content_hash":"bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"},
+    "risk_set_ref": {"kind":"RISK_SET","object_id":"FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1","content_hash":"0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"},
+    "empirical_universe_ref": {"kind":"EmpiricalUniverse@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1","content_hash":"4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"},
+    "target_refs": [
+      {"kind":"QUESTION_IMPLEMENTATION","object_id":"question_impl.phase0.2fb3a62609dad4c1306d","content_hash":"2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506"},
+      {"kind":"QUESTION_IMPLEMENTATION","object_id":"question_impl.phase0.67f036c0efb7fb98ff4a","content_hash":"67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3"}
+    ],
+    "target_domain_replay_refs": [
+      {"kind":"TARGET_DOMAIN_REPLAY","object_id":"Afrobarometer:R5:Q86B:TARGET_DOMAIN_REPLAY","content_hash":"a76eb90265baa8c741c0538886c2fb4f04ce6a07a1acceb8e5db8f9f170853ca"},
+      {"kind":"TARGET_DOMAIN_REPLAY","object_id":"Afrobarometer:R5:Q86A:TARGET_DOMAIN_REPLAY","content_hash":"105da4745dbcafd391d8987e3e59093d769e7bb154c1543d71c0c1fa8be61e2d"}
+    ],
+    "measure_basis_ref": {"kind":"MEASURE_BASIS","object_id":"urn:rawlsing:gt12b:raw-measure:sha256:77f5cd66605ec3560fcebb748c06dfb6a5f58732897b6ffe9e4f90ccb1b05170","content_hash":"77f5cd66605ec3560fcebb748c06dfb6a5f58732897b6ffe9e4f90ccb1b05170"},
+    "target_use_ref": {"kind":"TARGET_USE","object_id":"GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1","content_hash":"e69e8de7c227d1d77c54c1113c68472873128e9fa76b0b2c9ba998b105fd208f"},
+    "permission_ceiling": "EMPIRICAL_INPUT_TO_FROZEN_EXACT_CONDITIONAL_SUPPORT_ONLY__NO_CAUSAL_OR_ACTOR_PROMOTION"
+  },
+  "fact": {
+    "ref": {"kind":"EmpiricalFact@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalFact:sha256:540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46","content_hash":"540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46"},
+    "semantic_projection": {
+      "typed_state":"SUPPORTED",
+      "empirical_query_spec_ref":{"kind":"EmpiricalQuerySpec@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0","content_hash":"e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"},
+      "condition_predicate_ref":{"kind":"EmpiricalPredicate@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalPredicate:sha256:bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3","content_hash":"bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"},
+      "empirical_universe_ref":{"kind":"EmpiricalUniverse@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1","content_hash":"4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"},
+      "risk_set_ref":{"kind":"RISK_SET","object_id":"FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1","content_hash":"0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"},
+      "raw_denominator_support":19210,
+      "raw_resolved_target_support":19210,
+      "semantic_component_order":["Q86B","Q86A"],
+      "complete_joint_support_source":"gt2.complete_joint_support",
+      "authority_snapshot_refs":[
+        {"authority_id":"GT12-A3-GT2-I03-QUERY","authority_version":"1.0.0","authority_content_hash":"c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16"},
+        {"authority_id":"GT12-A3-GT2-TARGET-USE","authority_version":"1.0.0","authority_content_hash":"8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e"}
+      ],
+      "large_exact_closure_binding": {
+        "risk_set_member_count":19210,
+        "risk_set_semantic_member_set_sha256":"0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+        "source_rows_provenance_count":51587,
+        "source_artifact_sha256":"c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"
+      }
+    }
+  },
+  "replay": {
+    "ref": {"kind":"PRE553_I03_QUERY_REPLAY","object_id":"urn:rawlsing:pre553:i03-query-replay:sha256:c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f","content_hash":"c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"},
+    "authoritative_replay_exact_result_equality": true
+  },
+  "authorities": {
+    "predicate_grammar": {
+      "authority_ref":{"authority_id":"GT12-A3-GT2-I03-QUERY","authority_version":"1.0.0","authority_content_hash":"c0ec18e231c8b934acc1fd072b8cd26d59ee2d784c9fb5b29b345b944a757a16"},
+      "snapshot":{"typed_state":"ALLOW","authority_kind":"PREDICATE_GRAMMAR","decision_state":"ALLOW","governed_operations":["GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1"],"governed_object_families":["EmpiricalFact@1.0.0","EmpiricalPredicate@1.0.0","EmpiricalQuerySpec@1.0.0"],"scope_envelope":{"source_universe_refs":[{"kind":"EmpiricalUniverse@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1","content_hash":"4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"}],"predicate_or_risk_set_refs":[{"kind":"RISK_SET","object_id":"FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1","content_hash":"0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"}]},"effective_time_or_interval":"GT12_FROZEN_CANARY_CURRENTNESS","replay_protocol_ref":{"kind":"REPLAY_PROTOCOL_SPEC","object_id":"PRE553_SOURCE_BACKED_C11_FACADE@1.0.0__GT12_R5_Q86","content_hash":"a7ad0926affb53dc93198fd63d637cee0c4ec19412adbfc871df165bc6aafb8b"}}
+    },
+    "target_use_permission": {
+      "authority_ref":{"authority_id":"GT12-A3-GT2-TARGET-USE","authority_version":"1.0.0","authority_content_hash":"8be1db868deb8b1d613495a2120d2092df2fe55aa5f8884830d7a7e85e221a0e"},
+      "snapshot":{"typed_state":"ALLOW","authority_kind":"TARGET_USE_PERMISSION","decision_state":"ALLOW","governed_operations":["GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1"],"governed_object_families":["EmpiricalFact@1.0.0"],"scope_envelope":{"source_universe_refs":[{"kind":"EmpiricalUniverse@1.0.0","object_id":"urn:rawlsing:pre553:EmpiricalUniverse:sha256:4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1","content_hash":"4dc56730f5c3b06838cc8a6116e0f4c78662b76d75b578918f7207cea3902dd1"}],"predicate_or_risk_set_refs":[{"kind":"RISK_SET","object_id":"FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1","content_hash":"0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"}],"target_use_refs":[{"kind":"TARGET_USE","object_id":"GT2_R5_Q86A_X_Q86B_RAW_JOINT_EXACT_RISK_SET@1","content_hash":"e69e8de7c227d1d77c54c1113c68472873128e9fa76b0b2c9ba998b105fd208f"}]},"effective_time_or_interval":"GT12_FROZEN_CANARY_CURRENTNESS","replay_protocol_ref":{"kind":"REPLAY_PROTOCOL_SPEC","object_id":"PRE553_SOURCE_BACKED_C11_FACADE@1.0.0__GT12_R5_Q86","content_hash":"a7ad0926affb53dc93198fd63d637cee0c4ec19412adbfc871df165bc6aafb8b"}}
+    },
+    "inherited_a1_refs": [
+      {"authority_id":"GT12-A-R5-Q86-CARRIER-REEXPRESSION","authority_version":"1.0.0","authority_content_hash":"a62630cdc2c81161bcce4c3be7f3757bb4a7e279c9cb334e0b9b013d7339a435"},
+      {"authority_id":"GT12-A-R5-Q86-COMMON-RISK-ROUTING","authority_version":"1.0.0","authority_content_hash":"943fa2c44710480948f1dc7a5ae2fe512b806462776e89dcd6de761c5c956d0a"},
+      {"authority_id":"GT12-A-R5-Q86-SOURCE-SEMANTICS","authority_version":"1.0.0","authority_content_hash":"c89c04fcaeb0742e5c6248f526082f90156af78f978f44023ab75eef53e830a4"}
+    ]
+  },
+  "permission_ceiling": "EMPIRICAL_INPUT_TO_FROZEN_EXACT_CONDITIONAL_SUPPORT_ONLY__NO_CAUSAL_OR_ACTOR_PROMOTION",
+  "forbidden_inferences": ["CAUSAL_INTERPRETATION","ACTOR_STATE","V3_POSITIVE_TRANSITION","V2_EXPRESSION","GENERALIZED_FIELD_HEGEMONY_PRESSURE_MECHANISM"],
+  "a3_comparison": {
+    "expected":{"predicate":"bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3","query":"e91970c161736113201a3e9880034f8d088099aad67300a5aa689b7a08200670","fact":"7bdb8752df31905a737d1a21c2ada61fe0c64d9cb4db17ea9bb748a1cf25b27f","replay":"10c4c50af557fe92866c6033a424ba2ab56847400bf9f970e6666612f435cae0"},
+    "integrated":{"predicate":"bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3","query":"e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0","fact":"540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46","replay":"c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"},
+    "release_hash_identical":true,"empirical_universe_hash_identical":true,"predicate_hash_identical":true,"query_hash_identical":false,"fact_hash_identical":false,"replay_hash_identical":false,"denominator_identical":true,"complete_36_cell_payload_identical":true,"administrative_typed_states_identical":true,"same_selected_predicate_authority":true,"same_selected_target_use_authority":true,
+    "exact_identity_drift_reason":"Integrated candidate carries the same exact A3 TARGET_USE_PERMISSION authority ref in EmpiricalQuerySpec.authority_snapshot_refs alongside PREDICATE_GRAMMAR; A3 legacy query carried only PREDICATE_GRAMMAR there. The stronger authority closure changes query identity and therefore fact/replay identity. This is not exact identity equivalence and requires central disposition."
+  },
+  "timings_seconds": {"c11_claim_projection":19.745604393,"c11_candidate_sealing":33.759659992,"c11_validation":36.850393941,"gt2_plan":3.433379488,"current_i03_gt2_execution":21.368472868,"authoritative_deterministic_replay":21.558146247},
+  "tests": {"command":"PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. pytest -q rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py rawlsing_next/tests/test_wave1_gt12_a2_real_gt1.py rawlsing_next/tests/test_wave1_r5_q86_c11_projection.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py","result":"54 passed in 2.38s"},
+  "transport_law": "EVIDENCE_TRANSPORT_ONLY__NO_NEW_SEMANTIC_OWNER__NO_FIELD_FORGE_RELATION_PRODUCED"
+}
