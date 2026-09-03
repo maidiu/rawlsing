@@ -220,8 +220,10 @@ def _leaf_match(
         branch_id = node.get("branch_definition_id")
         if not isinstance(branch_id, str) or not branch_id.strip():
             raise EmpiricalQueryResolutionError("branch_definition_id is required")
-        _exact(node.get("resolved_predicate_hash_or_exact_membership_ref"),
-               "resolved_predicate_hash_or_exact_membership_ref")
+        membership_ref = _exact(
+            node.get("resolved_predicate_hash_or_exact_membership_ref"),
+            "resolved_predicate_hash_or_exact_membership_ref",
+        )
         _exact(node.get("parent_ancestry_ref"), "parent_ancestry_ref")
         branch_auth = _authority(node.get("branch_algorithm_authority_ref"),
                                  "branch_algorithm_authority_ref")
@@ -231,7 +233,19 @@ def _leaf_match(
             raise Pre553AuthorityError("branch predicate authority is not positive")
         member_values = _require_sequence(node.get("exact_member_respondent_refs"),
                                           "exact_member_respondent_refs", allow_empty=True)
-        member_refs = _canonical_refs(_exact(v, "branch member ref") for v in member_values)
+        cache_key = (membership_ref.key, id(member_values))
+        cached = _DERIVED_BRANCH_MEMBER_REF_CACHE.get(cache_key)
+        if cached is None:
+            member_refs = frozenset(
+                _canonical_refs(_exact(v, "branch member ref") for v in member_values)
+            )
+            _DERIVED_BRANCH_MEMBER_REF_CACHE[cache_key] = (member_values, member_refs)
+        else:
+            owner, member_refs = cached
+            if owner is not member_values:
+                raise EmpiricalQueryResolutionError(
+                    "derived-branch membership cache identity collision"
+                )
         used_auth.append(branch_auth)
         return respondent.ref in member_refs
 
