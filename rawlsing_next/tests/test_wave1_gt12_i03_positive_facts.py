@@ -136,6 +136,7 @@ def test_lawful_current_i03_fixture_yields_gt1_and_gt2_positive_empirical_facts_
     assert isinstance(gt1.fact, EmpiricalFact)
     assert gt1.fact.typed_state == "SUPPORTED"
     assert gt1.fact.raw_denominator_support == 3
+    assert binding.gt1_target_use.authority_ref in gt1.fact.authority_snapshot_refs
     assert gt1.plan.query.requested_output_grain["measure_kind"] == "RAW"
     assert gt1.plan.query.requested_output_grain["source_scope_mode"] == "SINGLE_UNIVERSE"
     assert gt1.plan.query.requested_output_grain["target_use_ref"] == binding.gt1_target_use.target_use_ref.as_dict()
