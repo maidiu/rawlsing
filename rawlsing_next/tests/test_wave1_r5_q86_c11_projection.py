@@ -3,10 +3,14 @@ import hashlib
 
 import pytest
 
-from rawlsing_next.pre553_empirical_objects import RespondentEvent
+from rawlsing_next.pre553_empirical_objects import RespondentEvent, semantic_hash
 from rawlsing_next.pre553_source_backed_c11_facade import (
     SourceBackedC11FacadeError,
     build_validated_source_backed_c11_release_from_stream,
+    project_c11_candidate_from_physical_cells,
+)
+from rawlsing_next.pre553_c11_ingest import (
+    _candidate_projection, _candidate_projection_semantic_hash,
 )
 from rawlsing_next.wave1_r5_q86_c11_projection import (
     FROZEN_BINDINGS,
@@ -166,8 +170,8 @@ def test_claim_scope_preserves_source_row_count_but_projects_only_exact_member_s
     release = build_validated_source_backed_c11_release_from_stream(
         package.stream, package.projection
     )
-    assert len(release.public_objects) == 6
-    assert len(release.internal_records) == 4
+    assert len(release.public_objects) == 12
+    assert len(release.internal_records) == 3
 
 
 def test_claim_scope_member_and_source_reordering_are_semantically_inert():
@@ -206,11 +210,23 @@ def test_claim_scope_hash_missing_extra_duplicate_and_ref_tamper_fail_closed():
     with pytest.raises(R5Q86ProjectionError, match="member count"):
         _validate_claim_scope(rows, (), contract.risk_set_member_set_sha256, contract)
 
+    second_risk_row = replace(
+        rows[1],
+        country_native="BOT",
+        country_alpha3="BOT",
+        q86a_exposure_state="EXPOSED__PROVED",
+        q86b_exposure_state="EXPOSED__PROVED",
+    )
+    two_risk_rows = (rows[0], second_risk_row)
     duplicate_contract = replace(contract, risk_set_row_count=2)
-    with pytest.raises(R5Q86ProjectionError, match="duplicate exact risk-set respondent"):
+    second_member = _risk_member_for(second_risk_row)
+    duplicate_ref_member = replace(
+        second_member, respondent_local_id=member.respondent_local_id
+    )
+    with pytest.raises(R5Q86ProjectionError, match="duplicate exact risk-set respondent ref"):
         _validate_claim_scope(
-            rows, (member, member), duplicate_contract.risk_set_member_set_sha256,
-            duplicate_contract,
+            two_risk_rows, (member, duplicate_ref_member),
+            duplicate_contract.risk_set_member_set_sha256, duplicate_contract,
         )
 
     wrong_ref = replace(member, respondent_local_id="sha256:" + _h("wrong-ref"))
@@ -220,11 +236,9 @@ def test_claim_scope_hash_missing_extra_duplicate_and_ref_tamper_fail_closed():
         )
 
     extra = _risk_member_for(rows[1])
-    extra_contract = replace(contract, risk_set_row_count=2)
     with pytest.raises(R5Q86ProjectionError, match="membership mismatch"):
         _validate_claim_scope(
-            rows, (member, extra), extra_contract.risk_set_member_set_sha256,
-            extra_contract,
+            rows, (extra,), contract.risk_set_member_set_sha256, contract
         )
 
 
@@ -240,3 +254,16 @@ def test_claim_scoped_stream_accepts_noncontiguous_preserved_source_ordinals():
         package.stream, package.projection
     )
     assert release.release_ref.content_hash == release.semantic_release_hash
+
+
+def test_streaming_candidate_projection_hash_is_identical_to_legacy_projection_hash():
+    package = _build(_rows(), _tiny_contract())
+    candidate = project_c11_candidate_from_physical_cells(
+        source_sha256=package.stream.source_sha256,
+        row_count=package.stream.row_count,
+        cells=package.stream.iter_cells(),
+        projection=package.projection,
+    )
+    legacy_hash = semantic_hash(_candidate_projection(candidate))
+    assert _candidate_projection_semantic_hash(candidate) == legacy_hash
+    assert candidate.candidate_replay_manifest.semantic_projection_hash == legacy_hash
