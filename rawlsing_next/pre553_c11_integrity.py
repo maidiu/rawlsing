@@ -8,6 +8,7 @@ relations.
 from __future__ import annotations
 
 from dataclasses import dataclass, fields
+from functools import cached_property
 from types import MappingProxyType
 from typing import Any, ClassVar, Iterable, Mapping, Sequence
 
@@ -150,15 +151,18 @@ class C11InternalRecord:
             "semantic_fields": material,
         }
 
-    @property
+    @cached_property
     def content_hash(self) -> str:
+        # Internal records are frozen dataclasses.  Their deterministic identity
+        # is therefore immutable and may be memoized without changing bytes or
+        # semantic projection.
         return semantic_hash(self.semantic_projection())
 
-    @property
+    @cached_property
     def object_id(self) -> str:
         return f"urn:rawlsing:pre553:c11:{self.RECORD_FAMILY}:sha256:{self.content_hash}"
 
-    @property
+    @cached_property
     def ref(self) -> ExactRef:
         return ExactRef(f"C11Internal:{self.RECORD_FAMILY}", self.object_id, self.content_hash)
 
