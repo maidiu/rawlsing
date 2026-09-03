@@ -1,0 +1,130 @@
+{
+  "schema": "GT12_FINAL_E1_INTEGRATED_REGRESSION_COURT_RECEIPT@1",
+  "terminal": "PASS__GT12_FINAL_E1_INTEGRATED_REGRESSION_COURT_GREEN",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt12-final-e1-integrated-regression-r1",
+  "frozen_integrated_candidate_sha": "820311811b3e4094aea7e0e665fd0a228520cd1a",
+  "exact_court_execution_sha": "f1c7ea61a8583e0ca47efecbf6b86ed92569ddbb",
+  "terminal_sha_resolution": "FINAL_BRANCH_TIP_CONTAINING_THIS_RECEIPT",
+  "closure_tips": {
+    "a1": "2753d1abbcb702e9260f4ab60c528748fb28c7d2",
+    "a2": "eb625ef51a99d9661d90e9ac3e496b00f7e9032a",
+    "b": "a4c6e57d628c94cf1a6cda9e149371d230dacd62",
+    "c": "24eccabda8a15ad885ece71351b8464e68eebda3",
+    "d": "5ce9b13285f5ac42297e01a21e8dba4026c0a5ac"
+  },
+  "test_only_corrections": {
+    "commit": "f1c7ea61a8583e0ca47efecbf6b86ed92569ddbb",
+    "production_modules_changed": false,
+    "files": [
+      "rawlsing_next/tests/test_pre553_replay_audit.py",
+      "rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py"
+    ],
+    "classification": "STALE_FIXTURE_TEST_ASSUMPTION",
+    "details": [
+      "Replay-audit fixtures now patch _candidate_projection_semantic_hash, the exact helper used by the accepted A1 streaming identity path, instead of the obsolete materialized _candidate_projection helper.",
+      "ReplayManifest tamper assertion pins the current fail-closed semantic-identity-tamper message.",
+      "Closure-C V3 leakage assertion now structurally rejects actual V3_/ACTOR_ fields and V3/actor authority namespaces while permitting lawful PREV3 provenance/admission identifiers."
+    ],
+    "asserted_contract_weakened": false
+  },
+  "environment": {
+    "runner": "GitHub-hosted ubuntu-latest",
+    "os": "Ubuntu 24.04.4 LTS",
+    "python_executable": "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python",
+    "python_version": "3.11.16",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "pytest_version": "9.1.1",
+    "pip_version": "26.2.1",
+    "setuptools_version": "79.0.1",
+    "optional_dependencies_activated": {
+      "pandas": "3.0.5",
+      "numpy": "2.4.6"
+    },
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONHASHSEED": "0",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH_added": false,
+    "repository_root_cwd": true
+  },
+  "exact_test_paths": [
+    "rawlsing_next/tests/test_wave1_r5_q86_c11_projection.py",
+    "rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py",
+    "rawlsing_next/tests/test_field_forge_conditional_support.py",
+    "rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py",
+    "rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py",
+    "rawlsing_next/tests/test_wave1_gt1_gt2_positive_prev3_integration.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+    "rawlsing_next/tests/test_pre553_empirical_query.py",
+    "rawlsing_next/tests/test_pre553_replay_audit.py",
+    "rawlsing_next/tests/test_pre553_structural_admission.py",
+    "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+    "rawlsing_next/tests/test_m4_v557_v558_publication_repository.py",
+    "rawlsing_next/tests/test_psepf_zero_positive_guard.py",
+    "rawlsing_next/tests/test_wsc002r_a_typed_negative_conservation.py",
+    "rawlsing_next/tests/test_wsc002r_b_v3_authoritative_guard_binding.py",
+    "rawlsing_next/tests/test_wsc_gt0_prev3_bridge.py",
+    "rawlsing_next/tests/test_wsc_gt0_end_to_end_integrated.py",
+    "rawlsing_next/tests/test_whole_machine_integration.py",
+    "rawlsing_next/tests/test_wave1_gt12_a2_real_gt1.py",
+    "rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py",
+    "rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py",
+    "rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py",
+    "rawlsing_next/tests/test_pre553_c11_repository_ingest.py"
+  ],
+  "m5_included": true,
+  "extra_shared_direct_test": "rawlsing_next/tests/test_pre553_c11_repository_ingest.py",
+  "pytest": {
+    "command": "python -m pytest -q <23 exact literal paths> --junitxml=/tmp/rawlsing-gt12-closure-pytest.xml",
+    "tests_passed": 354,
+    "tests_failed": 0,
+    "errors": 0,
+    "exit_code": 0,
+    "pytest_summary_seconds": 3.14,
+    "measured_command_seconds": 3.654702958,
+    "junit_path": "/tmp/rawlsing-gt12-closure-pytest.xml",
+    "junit_sha256": "dd47adfaa074b14935c3b0886901749d57ee21bcc66991d24a149beb12261aaf",
+    "action_run_id": 33787185431,
+    "action_job_id": 100754681149,
+    "pre_head": "f1c7ea61a8583e0ca47efecbf6b86ed92569ddbb",
+    "post_head": "f1c7ea61a8583e0ca47efecbf6b86ed92569ddbb",
+    "pre_tree_clean": true,
+    "post_tree_clean": true
+  },
+  "prior_diagnostics": [
+    {
+      "run_id": 33786678343,
+      "classification": "IMPORT_OR_ENVIRONMENT",
+      "blocker": "ModuleNotFoundError: No module named 'pandas'",
+      "candidate_failure": false
+    },
+    {
+      "run_id": 33786764512,
+      "exact_candidate_sha": "820311811b3e4094aea7e0e665fd0a228520cd1a",
+      "result": "347 passed, 7 failed",
+      "failing_node_ids": [
+        "rawlsing_next/tests/test_pre553_replay_audit.py::test_replay_manifest_tamper_fails_against_pinned_identity",
+        "rawlsing_next/tests/test_pre553_replay_audit.py::test_i02_validate_replay_accepts_only_exact_manifest",
+        "rawlsing_next/tests/test_pre553_replay_audit.py::test_i02_validate_replay_rejects_semantic_projection_tamper",
+        "rawlsing_next/tests/test_pre553_replay_audit.py::test_i02_validate_replay_rejects_source_content_tamper",
+        "rawlsing_next/tests/test_pre553_replay_audit.py::test_i02_validate_replay_rejects_authority_set_tamper",
+        "rawlsing_next/tests/test_pre553_replay_audit.py::test_i02_validate_replay_rejects_missing_replay_authority",
+        "rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py::test_actor_or_v3_authority_is_not_created_by_bridge_payload"
+      ],
+      "classification": "STALE_FIXTURE_TEST_ASSUMPTION",
+      "candidate_semantic_regression": false,
+      "pre_tree_clean": true,
+      "post_tree_clean": true
+    }
+  ],
+  "prohibitions_confirmed": {
+    "real_governed_gt2_rerun": false,
+    "final_hostile_audit": false,
+    "gt1_gt2_adoption": false,
+    "semantic_production_change": false,
+    "library_or_source_acquisition": false,
+    "pre_main_moved": false,
+    "main_moved": false,
+    "temporary_github_actions_scaffold_retained_in_final_tree": false
+  }
+}

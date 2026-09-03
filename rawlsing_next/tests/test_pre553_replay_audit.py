@@ -237,13 +237,13 @@ def test_replay_manifest_tamper_fails_against_pinned_identity():
     manifest = _manifest("historical")
     expected = manifest.ref
     object.__setattr__(manifest, "semantic_projection_hash", _h("tampered-projection"))
-    with pytest.raises(ReplayAuditError, match="pinned historical replay identity"):
+    with pytest.raises(ReplayAuditError, match="ReplayManifest semantic identity tamper"):
         assert_replay_manifest_integrity(manifest, expected_ref=expected)
 
 
 def test_i02_validate_replay_accepts_only_exact_manifest(monkeypatch):
     candidate, replay_authority, projection, closure_refs = _i02_replay_fixture("exact")
-    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_candidate_projection_semantic_hash", lambda _: semantic_hash(projection))
     monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
     registry = AuthorityRegistry((replay_authority,))
     assert c11_ingest._validate_replay(candidate, registry) is candidate.candidate_replay_manifest
@@ -251,7 +251,7 @@ def test_i02_validate_replay_accepts_only_exact_manifest(monkeypatch):
 
 def test_i02_validate_replay_rejects_semantic_projection_tamper(monkeypatch):
     candidate, replay_authority, projection, closure_refs = _i02_replay_fixture("projection-tamper")
-    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_candidate_projection_semantic_hash", lambda _: semantic_hash(projection))
     monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
     tampered_manifest = replace(
         candidate.candidate_replay_manifest,
@@ -268,7 +268,7 @@ def test_i02_validate_replay_rejects_semantic_projection_tamper(monkeypatch):
 
 def test_i02_validate_replay_rejects_source_content_tamper(monkeypatch):
     candidate, replay_authority, projection, closure_refs = _i02_replay_fixture("source-tamper")
-    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_candidate_projection_semantic_hash", lambda _: semantic_hash(projection))
     monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
     source_ref = candidate.source_release_manifest.source_artifact_ref
     tampered_source_ref = ExactRef(source_ref.kind, source_ref.object_id, _h("tampered-source-bytes"))
@@ -283,7 +283,7 @@ def test_i02_validate_replay_rejects_source_content_tamper(monkeypatch):
 
 def test_i02_validate_replay_rejects_authority_set_tamper(monkeypatch):
     candidate, replay_authority, projection, closure_refs = _i02_replay_fixture("authority-set")
-    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_candidate_projection_semantic_hash", lambda _: semantic_hash(projection))
     monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
     tampered_manifest = replace(
         candidate.candidate_replay_manifest,
@@ -300,7 +300,7 @@ def test_i02_validate_replay_rejects_authority_set_tamper(monkeypatch):
 
 def test_i02_validate_replay_rejects_missing_replay_authority(monkeypatch):
     candidate, _replay_authority, projection, closure_refs = _i02_replay_fixture("missing-replay-auth")
-    monkeypatch.setattr(c11_ingest, "_candidate_projection", lambda _: projection)
+    monkeypatch.setattr(c11_ingest, "_candidate_projection_semantic_hash", lambda _: semantic_hash(projection))
     monkeypatch.setattr(c11_ingest, "_all_nonmanifest_refs", lambda _: closure_refs)
     with pytest.raises(c11_ingest.C11IngestValidationError, match="replay protocol authority unavailable"):
         c11_ingest._validate_replay(candidate, AuthorityRegistry(()))
