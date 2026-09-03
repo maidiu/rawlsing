@@ -282,6 +282,8 @@ class FieldForgeRelationAdmissionRule:
         object.__setattr__(self, "required_source_artifact_ref", exact_ref(self.required_source_artifact_ref))
         object.__setattr__(self, "required_risk_set_ref", exact_ref(self.required_risk_set_ref))
         object.__setattr__(self, "allowed_relation_states", _tokens(self.allowed_relation_states, "allowed_relation_states"))
+        if not set(self.allowed_relation_states).issubset(POSITIVE_RELATION_STATES):
+            raise RelationAdmissionError("GT2 rule may allow only genuinely positive FIELD FORGE relation states")
         object.__setattr__(self, "output_permission_subset", _tokens(self.output_permission_subset, "output_permission_subset"))
         if self.output_permission_subset != (GT2_TARGET_USE,):
             raise RelationAdmissionError("GT2 rule may grant only STRUCTURAL_MEDIATION_INPUT")
