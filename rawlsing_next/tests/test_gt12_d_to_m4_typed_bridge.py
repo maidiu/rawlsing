@@ -440,9 +440,27 @@ def test_actor_or_v3_authority_is_not_created_by_bridge_payload():
     bridge = prepare_typed_d_to_e_relation_basis(
         _admission(), v554_rule_ref=_v554_rule()
     )
-    text = repr(bridge.payload)
-    assert "V3_" not in text
-    assert "Actor" not in text
+
+    authority_ids: list[str] = []
+    mapping_keys: list[str] = []
+
+    def walk(value):
+        if isinstance(value, dict):
+            mapping_keys.extend(str(key) for key in value)
+            authority_id = value.get("authority_id")
+            if isinstance(authority_id, str):
+                authority_ids.append(authority_id)
+            for item in value.values():
+                walk(item)
+        elif isinstance(value, (list, tuple)):
+            for item in value:
+                walk(item)
+
+    walk(bridge.payload)
+    assert not any(identifier.startswith("V3") for identifier in authority_ids)
+    assert not any("ACTOR" in identifier.upper() for identifier in authority_ids)
+    assert not any(key.lower().startswith("actor") for key in mapping_keys)
+    assert not any("v3_transition" in key.lower() for key in mapping_keys)
     assert bridge.payload["projection"]["temporal_semantic_disposition"] == (
         "NO_NEW_V553_TEMPORAL_MEANING_REQUIRED"
     )
