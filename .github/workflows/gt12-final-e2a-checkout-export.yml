@@ -1,0 +1,20 @@
+name: GT12 E2A checkout export
+on:
+  push:
+    branches:
+      - agent/rabochii-gt12-final-e2a-real-gt2-rerun-r1
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Pack exact checkout
+        run: |
+          tar --exclude=.git -czf /tmp/rawlsing-gt12-e2a-checkout.tar.gz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rawlsing-gt12-e2a-checkout
+          path: /tmp/rawlsing-gt12-e2a-checkout.tar.gz
+          retention-days: 1
