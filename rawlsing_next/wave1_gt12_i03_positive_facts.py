@@ -557,11 +557,7 @@ def _predicate_for_members(
     return make_empirical_predicate(
         predicate_ast=ast,
         typed_state="PREDICATE_RESOLVED_AUTHORIZED",
-        # The target-use permission remains a distinct TARGET_USE_PERMISSION
-        # authority.  Carry it in the query closure so a positive EmpiricalFact
-        # preserves the exact permission snapshot rather than only naming it in
-        # requested_output_grain.
-        authority_snapshot_refs=(binding.query_authority_ref, target_use.authority_ref),
+        authority_snapshot_refs=(binding.query_authority_ref,),
         dependency_refs=(binding.risk_set_ref, membership_ref, _frozen_contract_ref()),
         producer_replay_locator_or_reference_root=replay_ref,
         grammar_authority_ref=binding.query_authority_ref,
@@ -611,7 +607,11 @@ def _query_for_targets(
     deps.extend(target.target_domain_replay_ref for target in targets)
     return EmpiricalQuerySpec(
         typed_state="QUERY_AUTHORIZED_RESOLVABLE",
-        authority_snapshot_refs=(binding.query_authority_ref,),
+        # The target-use permission remains a distinct TARGET_USE_PERMISSION
+        # authority.  Carry it in the query closure so a positive EmpiricalFact
+        # preserves the exact permission snapshot rather than only naming it in
+        # requested_output_grain.
+        authority_snapshot_refs=(binding.query_authority_ref, target_use.authority_ref),
         dependency_refs=tuple(deps),
         producer_replay_locator_or_reference_root=_dref("GT12_I03_QUERY_REPLAY_ROOT", "query-replay", replay_material),
         target_refs=tuple(target.native_question_ref for target in targets),
