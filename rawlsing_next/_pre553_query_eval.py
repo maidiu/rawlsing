@@ -349,7 +349,6 @@ def _evaluate_index_group(
                 registry=registry,
                 used=used,
                 used_auth=used_auth,
-                derived_branch_memberships=derived_branch_memberships,
             )
             if explicitly_inapplicable:
                 inapplicable_count += 1
@@ -363,6 +362,7 @@ def _evaluate_index_group(
                 registry=registry,
                 used=used,
                 used_auth=used_auth,
+                derived_branch_memberships=derived_branch_memberships,
             )
             if not condition:
                 continue
