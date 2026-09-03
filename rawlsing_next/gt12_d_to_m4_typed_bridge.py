@@ -239,9 +239,10 @@ def _admission_mapping(
             _ref(x, "negative_or_limit_ref")
             for x in admission.applicable_negative_denial_noncomparability_refs
         ],
-        "interpretation_critical_authority_refs": [
-            _auth(x, "relation_authority_ref") for x in admission.relation_authority_refs
-        ],
+        # D preserves relation authorities, but does not declare them to be
+        # V554 interpretation-critical authorities.  They remain exact in the
+        # closure and M1 authority bundle below without semantic relabeling.
+        "interpretation_critical_authority_refs": [],
         "relation_information_loss_declaration": (
             admission.relation_information_loss_declaration
         ),
