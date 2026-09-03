@@ -148,6 +148,12 @@ def test_rule_cannot_grant_general_prev3_permission():
         replace(rule, output_permission_subset=(adm.GT2_TARGET_USE, "GENERAL_PREV3"))
 
 
+def test_rule_cannot_reclassify_observed_zero_as_positive():
+    rule = base_rule()
+    with pytest.raises(adm.RelationAdmissionError, match="genuinely positive"):
+        replace(rule, allowed_relation_states=("SUPPORTED", "OBSERVED_ZERO"))
+
+
 def test_relation_rule_tamper_is_integrity_failure():
     rel, rule = relation()
     other = ref("FIELD_FORGE_RELATION_RULE", "other", "other-rule")
