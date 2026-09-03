@@ -105,6 +105,7 @@ def _leaf_match(
     registry: AuthorityRegistry,
     used: list[CanonicalSemanticObject | C11InternalRecord],
     used_auth: list[AuthorityRef],
+    derived_branch_memberships: Mapping[ExactRef, frozenset[ExactRef]] | None = None,
 ) -> bool:
     leaf_type = node.get("leaf_type")
     respondent_key = respondent.ref.key
@@ -220,8 +221,8 @@ def _leaf_match(
         branch_id = node.get("branch_definition_id")
         if not isinstance(branch_id, str) or not branch_id.strip():
             raise EmpiricalQueryResolutionError("branch_definition_id is required")
-        _exact(node.get("resolved_predicate_hash_or_exact_membership_ref"),
-               "resolved_predicate_hash_or_exact_membership_ref")
+        membership_ref = _exact(node.get("resolved_predicate_hash_or_exact_membership_ref"),
+                                "resolved_predicate_hash_or_exact_membership_ref")
         _exact(node.get("parent_ancestry_ref"), "parent_ancestry_ref")
         branch_auth = _authority(node.get("branch_algorithm_authority_ref"),
                                  "branch_algorithm_authority_ref")
@@ -229,13 +230,63 @@ def _leaf_match(
         _exact(node.get("branch_source_scope_ref"), "branch_source_scope_ref")
         if registry.resolve_exact(branch_auth).snapshot.typed_state != "ALLOW":
             raise Pre553AuthorityError("branch predicate authority is not positive")
-        member_values = _require_sequence(node.get("exact_member_respondent_refs"),
-                                          "exact_member_respondent_refs", allow_empty=True)
-        member_refs = _canonical_refs(_exact(v, "branch member ref") for v in member_values)
+        if derived_branch_memberships is not None and membership_ref in derived_branch_memberships:
+            member_refs = derived_branch_memberships[membership_ref]
+        else:
+            member_values = _require_sequence(node.get("exact_member_respondent_refs"),
+                                              "exact_member_respondent_refs", allow_empty=True)
+            member_refs = frozenset(
+                _canonical_refs(_exact(v, "branch member ref") for v in member_values)
+            )
         used_auth.append(branch_auth)
         return respondent.ref in member_refs
 
     raise Pre553SemanticCollapseError("unknown or forbidden empirical predicate leaf")
+
+
+def _compile_derived_branch_memberships(
+    node: Mapping[str, Any],
+) -> dict[ExactRef, frozenset[ExactRef]]:
+    """Compile exact derived-cohort membership once for one verified predicate AST.
+
+    The predicate's semantic identity is verified before evaluation.  This cache is
+    execution-local and nonauthoritative: it only avoids reparsing/re-sorting the
+    same immutable exact member refs for every respondent.
+    """
+    compiled: dict[ExactRef, frozenset[ExactRef]] = {}
+
+    def walk(raw: Mapping[str, Any]) -> None:
+        op = raw.get("op")
+        if op == "LEAF":
+            if raw.get("leaf_type") != "DERIVED_BRANCH_COHORT":
+                return
+            membership_ref = _exact(
+                raw.get("resolved_predicate_hash_or_exact_membership_ref"),
+                "resolved_predicate_hash_or_exact_membership_ref",
+            )
+            member_values = _require_sequence(
+                raw.get("exact_member_respondent_refs"),
+                "exact_member_respondent_refs",
+                allow_empty=True,
+            )
+            member_refs = frozenset(
+                _canonical_refs(_exact(v, "branch member ref") for v in member_values)
+            )
+            prior = compiled.get(membership_ref)
+            if prior is not None and prior != member_refs:
+                raise EmpiricalQueryResolutionError(
+                    "one exact derived-branch membership ref resolves to conflicting member sets"
+                )
+            compiled[membership_ref] = member_refs
+            return
+        children = raw.get("children")
+        if children is None:
+            return
+        for child in _require_sequence(children, f"{op} children", allow_empty=False):
+            walk(_require_mapping(child, f"{op} child"))
+
+    walk(node)
+    return compiled
 
 
 def _eval_predicate(
@@ -246,23 +297,33 @@ def _eval_predicate(
     registry: AuthorityRegistry,
     used: list[CanonicalSemanticObject | C11InternalRecord],
     used_auth: list[AuthorityRef],
+    derived_branch_memberships: Mapping[ExactRef, frozenset[ExactRef]] | None = None,
 ) -> bool:
     op = node.get("op")
     if op == "LEAF":
-        return _leaf_match(node, respondent=respondent, index=index, registry=registry,
-                           used=used, used_auth=used_auth)
+        return _leaf_match(
+            node, respondent=respondent, index=index, registry=registry,
+            used=used, used_auth=used_auth,
+            derived_branch_memberships=derived_branch_memberships,
+        )
     if op == "NOT":
         children = _require_sequence(node.get("children"), "NOT children")
         if len(children) != 1:
             raise EmpiricalQueryResolutionError("NOT requires exactly one child")
-        return not _eval_predicate(_require_mapping(children[0], "NOT child"),
-                                   respondent=respondent, index=index, registry=registry,
-                                   used=used, used_auth=used_auth)
+        return not _eval_predicate(
+            _require_mapping(children[0], "NOT child"),
+            respondent=respondent, index=index, registry=registry,
+            used=used, used_auth=used_auth,
+            derived_branch_memberships=derived_branch_memberships,
+        )
     if op in {"AND", "OR"}:
         children = _require_sequence(node.get("children"), f"{op} children")
         values = [
-            _eval_predicate(_require_mapping(child, f"{op} child"), respondent=respondent,
-                            index=index, registry=registry, used=used, used_auth=used_auth)
+            _eval_predicate(
+                _require_mapping(child, f"{op} child"), respondent=respondent,
+                index=index, registry=registry, used=used, used_auth=used_auth,
+                derived_branch_memberships=derived_branch_memberships,
+            )
             for child in children
         ]
         return all(values) if op == "AND" else any(values)
