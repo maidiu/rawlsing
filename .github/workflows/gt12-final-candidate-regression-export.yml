@@ -17,13 +17,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install pytest
-        run: python -m pip install --disable-pip-version-check pytest
+      - name: Install exact required test dependencies
+        run: python -m pip install --disable-pip-version-check pytest pandas
       - name: Verify exact candidate and environment
         run: |
           test "$(git rev-parse HEAD)" = "f077e5bc2c90bbfc02e5a859388fb9d7f00604da"
           test -z "$(git status --porcelain=v1)"
-          python -c 'import pathlib,platform,sys,pytest,rawlsing_next; p=pathlib.Path(next(iter(rawlsing_next.__path__))).resolve(); print("python_executable="+sys.executable); print("python_version="+platform.python_version()); print("platform="+platform.platform()); print("pytest_version="+pytest.__version__); print("rawlsing_next_path="+str(p))'
+          python -c 'import pathlib,platform,sys,pytest,pandas,rawlsing_next; p=pathlib.Path(next(iter(rawlsing_next.__path__))).resolve(); print("python_executable="+sys.executable); print("python_version="+platform.python_version()); print("platform="+platform.platform()); print("pytest_version="+pytest.__version__); print("pandas_version="+pandas.__version__); print("rawlsing_next_path="+str(p))'
       - name: Run exact GT12 closure regression gate
         env:
           PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
