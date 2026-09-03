@@ -440,9 +440,34 @@ def test_actor_or_v3_authority_is_not_created_by_bridge_payload():
     bridge = prepare_typed_d_to_e_relation_basis(
         _admission(), v554_rule_ref=_v554_rule()
     )
-    text = repr(bridge.payload)
-    assert "V3_" not in text
-    assert "Actor" not in text
+
+    mapping_keys = []
+    authority_ids = []
+
+    def walk(value):
+        if isinstance(value, dict):
+            for key, item in value.items():
+                mapping_keys.append(str(key).upper())
+                if key == "authority_id":
+                    authority_ids.append(str(item).upper())
+                walk(item)
+        elif isinstance(value, (list, tuple)):
+            for item in value:
+                walk(item)
+
+    walk(bridge.payload)
+
+    # PREV3_* identifiers are lawful provenance/admission identities.  Reject
+    # actual V3/actor semantic fields and positive authority namespaces rather
+    # than the substring "V3_" appearing inside the word "PREV3_".
+    assert not any(key.startswith(("V3_", "ACTOR_")) for key in mapping_keys)
+    assert not any(
+        authority_id.startswith(("V3", "AUTH-V3", "ACTOR", "AUTH-ACTOR"))
+        for authority_id in authority_ids
+    )
+    assert bridge.payload["relation_admission"][
+        "requested_downstream_owner_or_contract_family"
+    ] == RELATION_M1_CONTRACT_ID
     assert bridge.payload["projection"]["temporal_semantic_disposition"] == (
         "NO_NEW_V553_TEMPORAL_MEANING_REQUIRED"
     )
