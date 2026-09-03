@@ -47,8 +47,9 @@ WAVE_PROGRAM_COMMIT = "17b9abc5c8c3038d14670c6e68136bb868f5073a"
 WAVE1_CENTRAL_FANIN_COMMIT = "6a4bf89c5403459d43dcb925c1f98a7b30dd6f49"
 ADMISSION_LOCAL_INFORMATION_LOSS = "NONE__REFERENCE_PRESERVING"
 
-POSITIVE_RELATION_STATES = frozenset({"SUPPORTED", "OBSERVED_ZERO"})
+POSITIVE_RELATION_STATES = frozenset({"SUPPORTED"})
 UPSTREAM_NEGATIVE_TO_DECISION = MappingProxyType({
+    "OBSERVED_ZERO": "UNRESOLVED",
     "VALID_EMPTY": "VALID_EMPTY",
     "ZERO_DENOMINATOR_ABSTENTION": "VALID_EMPTY",
     "UNDEFINED_FOR_OBJECT": "OUT_OF_SCOPE",
@@ -281,6 +282,8 @@ class FieldForgeRelationAdmissionRule:
         object.__setattr__(self, "required_source_artifact_ref", exact_ref(self.required_source_artifact_ref))
         object.__setattr__(self, "required_risk_set_ref", exact_ref(self.required_risk_set_ref))
         object.__setattr__(self, "allowed_relation_states", _tokens(self.allowed_relation_states, "allowed_relation_states"))
+        if not set(self.allowed_relation_states).issubset(POSITIVE_RELATION_STATES):
+            raise RelationAdmissionError("GT2 rule may allow only genuinely positive FIELD FORGE relation states")
         object.__setattr__(self, "output_permission_subset", _tokens(self.output_permission_subset, "output_permission_subset"))
         if self.output_permission_subset != (GT2_TARGET_USE,):
             raise RelationAdmissionError("GT2 rule may grant only STRUCTURAL_MEDIATION_INPUT")

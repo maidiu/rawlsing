@@ -83,11 +83,15 @@ def test_positive_gt2_admission_is_exact_and_narrow():
     assert receipt.material()["semantic_ceiling"]["actor_inference_allowed"] is False
 
 
-def test_observed_zero_is_relation_state_not_admission_denial():
-    rel, rule = relation(state="OBSERVED_ZERO")
+def test_observed_zero_is_nonpositive_even_without_blocker_refs():
+    rel, rule = relation(state="OBSERVED_ZERO", negatives=())
     receipt = evaluate(rel, rule)
-    assert receipt.decision is adm.AdmissionDecision.ADMITTED
+    assert adm.POSITIVE_RELATION_STATES == frozenset({"SUPPORTED"})
+    assert receipt.decision is adm.AdmissionDecision.UNRESOLVED
+    assert receipt.reason_code == "UPSTREAM_RELATION_OBSERVED_ZERO"
     assert receipt.relation_typed_state == "OBSERVED_ZERO"
+    assert receipt.target_use_permissions == ()
+    assert receipt.applicable_negative_denial_noncomparability_refs == ()
 
 
 @pytest.mark.parametrize(
@@ -144,6 +148,12 @@ def test_rule_cannot_grant_general_prev3_permission():
         replace(rule, output_permission_subset=(adm.GT2_TARGET_USE, "GENERAL_PREV3"))
 
 
+def test_rule_cannot_reclassify_observed_zero_as_positive():
+    rule = base_rule()
+    with pytest.raises(adm.RelationAdmissionError, match="genuinely positive"):
+        replace(rule, allowed_relation_states=("SUPPORTED", "OBSERVED_ZERO"))
+
+
 def test_relation_rule_tamper_is_integrity_failure():
     rel, rule = relation()
     other = ref("FIELD_FORGE_RELATION_RULE", "other", "other-rule")
@@ -182,6 +192,15 @@ def test_upstream_negative_refs_block_even_supported_relation():
     assert receipt.decision is adm.AdmissionDecision.UNRESOLVED
     assert receipt.target_use_permissions == ()
     assert receipt.applicable_negative_denial_noncomparability_refs == rel.relation_negative_or_limit_refs
+
+
+def test_supported_without_required_positive_authority_closure_does_not_admit():
+    rel, rule = relation(state="SUPPORTED")
+    tampered = replace(rel, relation_authority_refs=())
+    receipt = evaluate(tampered, rule)
+    assert receipt.decision is adm.AdmissionDecision.MISSING_AUTHORITY
+    assert receipt.reason_code == "UPSTREAM_RELATION_AUTHORITY_OR_CURRENT_SELECTION_MISSING"
+    assert receipt.target_use_permissions == ()
 
 
 def test_admission_authority_denial_is_typed_and_zero_permission():

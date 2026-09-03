@@ -154,9 +154,33 @@ def test_c_observed_zero_blocker_cannot_be_laundered_to_admitted():
     result = bridge.admit_gt12_c_relation(relation)
     assert result.evidence.relation_typed_state == "OBSERVED_ZERO"
     assert result.evidence.relation_negative_or_limit_refs
-    assert result.admission.decision is not adm.AdmissionDecision.ADMITTED
+    assert result.admission.decision is adm.AdmissionDecision.UNRESOLVED
+    assert result.admission.reason_code == "UPSTREAM_RELATION_OBSERVED_ZERO"
     assert result.admission.target_use_permissions == ()
     assert result.admission.relation_typed_state == "OBSERVED_ZERO"
+
+
+def test_c_observed_zero_remains_nonpositive_when_blocker_ref_is_stripped():
+    relation, _ = _fixture(fact_state="OBSERVED_ZERO")
+    evidence = bridge.bridge_gt12_c_relation_to_d_evidence(relation)
+    rule = bridge.make_gt12_c_to_d_admission_rule(relation)
+    assert evidence.relation_negative_or_limit_refs
+    stripped = replace(evidence, relation_negative_or_limit_refs=())
+    receipt = adm.evaluate_gt2_relation_admission(adm.RelationAdmissionRequest(stripped), rule)
+    assert receipt.decision is adm.AdmissionDecision.UNRESOLVED
+    assert receipt.reason_code == "UPSTREAM_RELATION_OBSERVED_ZERO"
+    assert receipt.relation_typed_state == "OBSERVED_ZERO"
+    assert receipt.target_use_permissions == ()
+    assert receipt.applicable_negative_denial_noncomparability_refs == ()
+
+
+def test_c_typed_state_tamper_changes_exact_identity_and_fails_bridge_closure():
+    relation, _ = _fixture()
+    original_ref = relation.ref
+    object.__setattr__(relation, "typed_state", "OBSERVED_ZERO")
+    assert semantic_hash(relation.semantic_projection()) != original_ref.content_hash
+    with pytest.raises(bridge.GT12CToDBridgeError, match="hash"):
+        bridge.bridge_gt12_c_relation_to_d_evidence(relation)
 
 
 @pytest.mark.parametrize("state", ["VALID_EMPTY", "NONCOMPARABLE", "UNRESOLVED", "INTEGRITY_FAILURE"])
