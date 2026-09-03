@@ -12,7 +12,9 @@ from rawlsing_next.wave1_r5_q86_c11_projection import (
     FROZEN_BINDINGS,
     R5Q86GovernedRow,
     R5Q86ProjectionError,
+    R5Q86RiskSetMember,
     _build,
+    _validate_claim_scope,
     domain_ref,
     projection_identity_ref,
     q86_target_domain,
@@ -56,6 +58,7 @@ def _rows(*, bad_exposure: bool = False):
             q86b_raw_value="0",
             q86b_response_state="SUBSTANTIVE_RESPONSE",
             q86b_exposure_state="EXPOSED__PROVED",
+            respondent_local_id="sha256:" + _h("respondent-ken-1"),
         ),
         R5Q86GovernedRow(
             row_ordinal=2,
@@ -68,6 +71,7 @@ def _rows(*, bad_exposure: bool = False):
             q86b_raw_value="998",
             q86b_response_state="REFUSAL",
             q86b_exposure_state="NOT_EXPOSED__PROVED",
+            respondent_local_id="sha256:" + _h("respondent-egy-2"),
         ),
     )
 
@@ -134,3 +138,105 @@ def test_projection_and_validated_release_identity_are_deterministic_under_row_r
     assert len(events) == 4
     assert {event.typed_state for event in events} == {"SUBSTANTIVE_RESPONSE", "DK", "REFUSAL"}
     assert first.q86a_target_domain_replay_ref != first.q86b_target_domain_replay_ref
+
+
+def _risk_member_for(row):
+    return R5Q86RiskSetMember(
+        row.country_native,
+        row.respno,
+        row.respondent_local_id,
+        row.country_alpha3,
+    )
+
+
+def test_claim_scope_preserves_source_row_count_but_projects_only_exact_member_set():
+    contract = _tiny_contract()
+    rows = _rows()
+    members = (_risk_member_for(rows[0]),)
+    selected = _validate_claim_scope(
+        rows, members, contract.risk_set_member_set_sha256, contract
+    )
+    assert contract.source_row_count == 2
+    assert contract.risk_set_row_count == 1
+    assert tuple(r.row_ordinal for r in selected) == (1,)
+
+    package = _build(rows, contract, projection_rows=selected)
+    assert package.stream.row_count == 1
+    assert tuple(x.row_ordinal for x in package.projection.row_bindings) == (1,)
+    release = build_validated_source_backed_c11_release_from_stream(
+        package.stream, package.projection
+    )
+    assert len(release.public_objects) == 6
+    assert len(release.internal_records) == 4
+
+
+def test_claim_scope_member_and_source_reordering_are_semantically_inert():
+    contract = _tiny_contract()
+    rows = _rows()
+    members = (_risk_member_for(rows[0]),)
+    first_rows = _validate_claim_scope(
+        rows, members, contract.risk_set_member_set_sha256, contract
+    )
+    second_rows = _validate_claim_scope(
+        tuple(reversed(rows)),
+        tuple(reversed(members)),
+        contract.risk_set_member_set_sha256,
+        contract,
+    )
+    first = _build(rows, contract, projection_rows=first_rows)
+    second = _build(tuple(reversed(rows)), contract, projection_rows=second_rows)
+    release_a = build_validated_source_backed_c11_release_from_stream(
+        first.stream, first.projection
+    )
+    release_b = build_validated_source_backed_c11_release_from_stream(
+        second.stream, second.projection
+    )
+    assert release_a.release_ref == release_b.release_ref
+    assert release_a.replay_manifest.ref == release_b.replay_manifest.ref
+
+
+def test_claim_scope_hash_missing_extra_duplicate_and_ref_tamper_fail_closed():
+    contract = _tiny_contract()
+    rows = _rows()
+    member = _risk_member_for(rows[0])
+
+    with pytest.raises(R5Q86ProjectionError, match="semantic member-set SHA"):
+        _validate_claim_scope(rows, (member,), _h("tampered-risk"), contract)
+
+    with pytest.raises(R5Q86ProjectionError, match="member count"):
+        _validate_claim_scope(rows, (), contract.risk_set_member_set_sha256, contract)
+
+    duplicate_contract = replace(contract, risk_set_row_count=2)
+    with pytest.raises(R5Q86ProjectionError, match="duplicate exact risk-set respondent"):
+        _validate_claim_scope(
+            rows, (member, member), duplicate_contract.risk_set_member_set_sha256,
+            duplicate_contract,
+        )
+
+    wrong_ref = replace(member, respondent_local_id="sha256:" + _h("wrong-ref"))
+    with pytest.raises(R5Q86ProjectionError, match="exact respondent ref mismatch"):
+        _validate_claim_scope(
+            rows, (wrong_ref,), contract.risk_set_member_set_sha256, contract
+        )
+
+    extra = _risk_member_for(rows[1])
+    extra_contract = replace(contract, risk_set_row_count=2)
+    with pytest.raises(R5Q86ProjectionError, match="membership mismatch"):
+        _validate_claim_scope(
+            rows, (member, extra), extra_contract.risk_set_member_set_sha256,
+            extra_contract,
+        )
+
+
+def test_claim_scoped_stream_accepts_noncontiguous_preserved_source_ordinals():
+    contract = _tiny_contract()
+    rows = _rows()
+    # Exercise the shared facade repair directly: row_count is cardinality,
+    # while exact source row ordinal 2 remains the row identity.
+    package = _build(rows, contract, projection_rows=(rows[1],))
+    assert package.stream.row_count == 1
+    assert tuple(x.row_ordinal for x in package.projection.row_bindings) == (2,)
+    release = build_validated_source_backed_c11_release_from_stream(
+        package.stream, package.projection
+    )
+    assert release.release_ref.content_hash == release.semantic_release_hash
