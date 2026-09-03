@@ -214,6 +214,7 @@ class R5Q86GovernedRow:
     q86b_raw_value: str | int
     q86b_response_state: str
     q86b_exposure_state: str
+    respondent_local_id: str | None = None
 
     def __post_init__(self):
         if not isinstance(self.row_ordinal, int) or isinstance(self.row_ordinal, bool) or self.row_ordinal < 1:
@@ -223,6 +224,11 @@ class R5Q86GovernedRow:
             _text(getattr(self, name), name)
         _native(self.q86a_raw_value, self.q86a_response_state, "Q86A")
         _native(self.q86b_raw_value, self.q86b_response_state, "Q86B")
+        if self.respondent_local_id is not None:
+            value = _text(self.respondent_local_id, "respondent_local_id")
+            if not value.startswith("sha256:"):
+                raise R5Q86ProjectionError("respondent_local_id must be sha256-prefixed")
+            _sha(value.split(":", 1)[1], "respondent_local_id")
 
     @property
     def respondent_key(self): return f"{self.country_native}|{self.respno}"
@@ -234,6 +240,35 @@ class R5Q86GovernedRow:
 class R5Q86GovernedInputs:
     bindings: R5Q86CarrierBindings
     rows: tuple[R5Q86GovernedRow, ...]
+
+
+@dataclass(frozen=True)
+class R5Q86RiskSetMember:
+    country_native: str
+    respno: str
+    respondent_local_id: str
+    country_alpha3: str
+
+    def __post_init__(self):
+        for name in ("country_native", "respno", "respondent_local_id", "country_alpha3"):
+            _text(getattr(self, name), name)
+        if not self.respondent_local_id.startswith("sha256:"):
+            raise R5Q86ProjectionError("risk-set respondent_local_id must be sha256-prefixed")
+        _sha(self.respondent_local_id.split(":", 1)[1], "risk-set respondent_local_id")
+
+    @property
+    def respondent_key(self): return f"{self.country_native}|{self.respno}"
+
+
+@dataclass(frozen=True)
+class R5Q86ClaimScopedGovernedInputs:
+    bindings: R5Q86CarrierBindings
+    source_rows: tuple[R5Q86GovernedRow, ...]
+    risk_set_members: tuple[R5Q86RiskSetMember, ...]
+    risk_set_member_set_sha256: str
+
+    def __post_init__(self):
+        _sha(self.risk_set_member_set_sha256, "risk_set_member_set_sha256")
 
 
 @dataclass(frozen=True)
@@ -358,8 +393,55 @@ def _validate_rows(rows: tuple[R5Q86GovernedRow, ...], b: R5Q86CarrierBindings):
             raise R5Q86ProjectionError("common-risk routing requires independent EXPOSED__PROVED Q86A/Q86B facts")
 
 
-def _build(rows: tuple[R5Q86GovernedRow, ...], b: R5Q86CarrierBindings) -> R5Q86ProjectionPackage:
-    _validate_rows(rows, b); rows = tuple(sorted(rows, key=lambda r: r.row_ordinal))
+def _validate_claim_scope(
+    rows: tuple[R5Q86GovernedRow, ...],
+    members: tuple[R5Q86RiskSetMember, ...],
+    member_set_sha256: str,
+    b: R5Q86CarrierBindings,
+) -> tuple[R5Q86GovernedRow, ...]:
+    _validate_rows(rows, b)
+    if member_set_sha256 != b.risk_set_member_set_sha256:
+        raise R5Q86ProjectionError("risk-set semantic member-set SHA differs from frozen contract")
+    if len(members) != b.risk_set_row_count:
+        raise R5Q86ProjectionError("exact risk-set member count differs from frozen contract")
+    member_keys = [m.respondent_key for m in members]
+    if len(set(member_keys)) != len(member_keys):
+        raise R5Q86ProjectionError("duplicate exact risk-set respondent")
+    if len({m.respondent_local_id for m in members}) != len(members):
+        raise R5Q86ProjectionError("duplicate exact risk-set respondent ref")
+    source_by_key = {r.respondent_key: r for r in rows}
+    expected_keys = {r.respondent_key for r in rows if r.in_common_risk_set}
+    if set(member_keys) != expected_keys:
+        missing = expected_keys - set(member_keys)
+        extra = set(member_keys) - expected_keys
+        raise R5Q86ProjectionError(
+            f"exact risk-set membership mismatch missing={len(missing)} extra={len(extra)}"
+        )
+    selected = []
+    for member in members:
+        row = source_by_key.get(member.respondent_key)
+        if row is None:
+            raise R5Q86ProjectionError("risk-set member absent from governed source carrier")
+        if row.country_alpha3 != member.country_alpha3:
+            raise R5Q86ProjectionError("risk-set member country identity mismatch")
+        if row.respondent_local_id is None:
+            raise R5Q86ProjectionError("claim-scoped materialization requires exact respondent_local_id")
+        if row.respondent_local_id != member.respondent_local_id:
+            raise R5Q86ProjectionError("risk-set exact respondent ref mismatch")
+        if row.q86a_exposure_state != "EXPOSED__PROVED" or row.q86b_exposure_state != "EXPOSED__PROVED":
+            raise R5Q86ProjectionError("risk-set member lacks exact Q86A/Q86B exposure proof")
+        selected.append(row)
+    return tuple(sorted(selected, key=lambda r: r.row_ordinal))
+
+
+def _build(
+    rows: tuple[R5Q86GovernedRow, ...],
+    b: R5Q86CarrierBindings,
+    *,
+    projection_rows: tuple[R5Q86GovernedRow, ...] | None = None,
+) -> R5Q86ProjectionPackage:
+    _validate_rows(rows, b)
+    rows = tuple(sorted(rows if projection_rows is None else projection_rows, key=lambda r: r.row_ordinal))
     source_auth, routing_auth, coord_auth, projection_auth, replay_auth, permission_auth = _authorities(b)
     auths = (source_auth, routing_auth, coord_auth, projection_auth, replay_auth, permission_auth)
     universe = EmpiricalUniverse(
@@ -440,7 +522,7 @@ def _build(rows: tuple[R5Q86GovernedRow, ...], b: R5Q86CarrierBindings) -> R5Q86
                     _declaration(variable, state, b.response_fact_carrier_sha256), _STATE[token].label)
             yield PhysicalCell(r.row_ordinal, 3, "COUNTRY_ALPHA3", r.country_alpha3,
                 PhysicalMissingState.OBSERVED_STORAGE_VALUE, None, None)
-    stream = ExactPhysicalCellStream(b.source_sha256, b.source_row_count, cells,
+    stream = ExactPhysicalCellStream(b.source_sha256, len(rows), cells,
         "FFP014_FFP017_GOVERNED_REPLAY_EQUIVALENT_Q86_CURRENT_CARRIER_STREAM@1")
     return R5Q86ProjectionPackage(stream, projection, AuthorityRegistry(auths), question_ref("Q86A"), question_ref("Q86B"),
         domain_ref("Q86A"), domain_ref("Q86B"), target_domain_replay_ref("Q86A"), target_domain_replay_ref("Q86B"),
@@ -454,15 +536,46 @@ def build_r5_q86_c11_projection(inputs: R5Q86GovernedInputs) -> R5Q86ProjectionP
 
 
 def build_validated_r5_q86_c11_release(inputs: R5Q86GovernedInputs):
-    """Validate current C11 only. I03 execution remains GT12-B-owned."""
+    """Validate current full-source C11 only. I03 execution remains GT12-B-owned."""
     package = build_r5_q86_c11_projection(inputs)
     return build_validated_source_backed_c11_release_from_stream(package.stream, package.projection)
+
+
+def build_claim_scoped_r5_q86_c11_projection(
+    inputs: R5Q86ClaimScopedGovernedInputs,
+) -> R5Q86ProjectionPackage:
+    if not isinstance(inputs, R5Q86ClaimScopedGovernedInputs):
+        raise R5Q86ProjectionError("R5Q86ClaimScopedGovernedInputs required")
+    validate_frozen_bindings(inputs.bindings)
+    claim_rows = _validate_claim_scope(
+        tuple(inputs.source_rows),
+        tuple(inputs.risk_set_members),
+        inputs.risk_set_member_set_sha256,
+        FROZEN_BINDINGS,
+    )
+    return _build(
+        tuple(inputs.source_rows),
+        FROZEN_BINDINGS,
+        projection_rows=claim_rows,
+    )
+
+
+def build_validated_claim_scoped_r5_q86_c11_release(
+    inputs: R5Q86ClaimScopedGovernedInputs,
+):
+    """Build exact 19,210-member claim-scoped C11 after full-source/risk proof."""
+    package = build_claim_scoped_r5_q86_c11_projection(inputs)
+    return build_validated_source_backed_c11_release_from_stream(
+        package.stream, package.projection
+    )
 
 
 __all__ = [
     "CONTRACT_ID", "R5Q86ProjectionError", "NativeState", "Q86_NATIVE_STATES", "Q86", "R5Q86CarrierBindings",
     "FROZEN_BINDINGS", "COMMON_RISK_COUNTRIES", "CURRENTNESS_REF", "GT1_TARGET_USE_REF", "GT2_TARGET_USE_REF",
-    "R5Q86GovernedRow", "R5Q86GovernedInputs", "R5Q86ProjectionPackage", "question_ref", "exposure_predicate_ref",
+    "R5Q86GovernedRow", "R5Q86GovernedInputs", "R5Q86RiskSetMember", "R5Q86ClaimScopedGovernedInputs",
+    "R5Q86ProjectionPackage", "question_ref", "exposure_predicate_ref",
     "domain_ref", "target_domain_replay_ref", "q86_target_domain", "validate_frozen_bindings", "projection_identity_ref",
     "build_r5_q86_c11_projection", "build_validated_r5_q86_c11_release",
+    "build_claim_scoped_r5_q86_c11_projection", "build_validated_claim_scoped_r5_q86_c11_release",
 ]
