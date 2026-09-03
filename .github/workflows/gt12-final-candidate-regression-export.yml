@@ -1,0 +1,70 @@
+name: GT12 final candidate regression export
+
+on:
+  push:
+    branches:
+      - agent/vozhd-gt12-final-test-runner-r1
+
+jobs:
+  regress-and-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: f077e5bc2c90bbfc02e5a859388fb9d7f00604da
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Verify exact candidate and environment
+        run: |
+          test "$(git rev-parse HEAD)" = "f077e5bc2c90bbfc02e5a859388fb9d7f00604da"
+          test -z "$(git status --porcelain=v1)"
+          python -c 'import pathlib,platform,sys,pytest,rawlsing_next; p=pathlib.Path(next(iter(rawlsing_next.__path__))).resolve(); print("python_executable="+sys.executable); print("python_version="+platform.python_version()); print("platform="+platform.platform()); print("pytest_version="+pytest.__version__); print("rawlsing_next_path="+str(p))'
+      - name: Run exact GT12 closure regression gate
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+          PYTHONHASHSEED: '0'
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python -m pytest -q \
+            rawlsing_next/tests/test_wave1_r5_q86_c11_projection.py \
+            rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py \
+            rawlsing_next/tests/test_field_forge_conditional_support.py \
+            rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py \
+            rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py \
+            rawlsing_next/tests/test_wave1_gt1_gt2_positive_prev3_integration.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
+            rawlsing_next/tests/test_pre553_empirical_query.py \
+            rawlsing_next/tests/test_pre553_replay_audit.py \
+            rawlsing_next/tests/test_pre553_structural_admission.py \
+            rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py \
+            rawlsing_next/tests/test_m4_v557_v558_publication_repository.py \
+            rawlsing_next/tests/test_psepf_zero_positive_guard.py \
+            rawlsing_next/tests/test_wsc002r_a_typed_negative_conservation.py \
+            rawlsing_next/tests/test_wsc002r_b_v3_authoritative_guard_binding.py \
+            rawlsing_next/tests/test_wsc_gt0_prev3_bridge.py \
+            rawlsing_next/tests/test_wsc_gt0_end_to_end_integrated.py \
+            rawlsing_next/tests/test_whole_machine_integration.py \
+            rawlsing_next/tests/test_wave1_gt12_a2_real_gt1.py \
+            rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
+            rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py \
+            --junitxml=/tmp/rawlsing-gt12-closure-pytest.xml
+          test -z "$(git status --porcelain=v1)"
+      - name: Export exact candidate
+        if: always()
+        run: |
+          git archive --format=tar.gz -o /tmp/rawlsing-gt12-final-candidate.tar.gz f077e5bc2c90bbfc02e5a859388fb9d7f00604da
+          sha256sum /tmp/rawlsing-gt12-final-candidate.tar.gz > /tmp/rawlsing-gt12-final-candidate.tar.gz.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gt12-final-candidate
+          path: |
+            /tmp/rawlsing-gt12-final-candidate.tar.gz
+            /tmp/rawlsing-gt12-final-candidate.tar.gz.sha256
+            /tmp/rawlsing-gt12-closure-pytest.xml
+          if-no-files-found: warn
