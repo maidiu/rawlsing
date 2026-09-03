@@ -88,6 +88,15 @@ def test_frozen_source_and_risk_set_tamper_fail_closed():
         validate_frozen_bindings(
             replace(FROZEN_BINDINGS, risk_set_member_set_sha256=_h("wrong-risk"))
         )
+    for field in (
+        "respondent_carrier_sha256",
+        "response_fact_carrier_sha256",
+        "exposure_fact_carrier_sha256",
+    ):
+        with pytest.raises(R5Q86ProjectionError, match="differs from frozen"):
+            validate_frozen_bindings(
+                replace(FROZEN_BINDINGS, **{field: _h("wrong-" + field)})
+            )
 
 
 def test_source_native_domain_is_exact_and_administrative_states_are_not_dropped():
@@ -227,6 +236,22 @@ def test_claim_scope_hash_missing_extra_duplicate_and_ref_tamper_fail_closed():
         _validate_claim_scope(
             two_risk_rows, (member, duplicate_ref_member),
             duplicate_contract.risk_set_member_set_sha256, duplicate_contract,
+        )
+
+    duplicate_source_rows = (
+        rows[0],
+        replace(
+            rows[1],
+            country_native=rows[0].country_native,
+            respno=rows[0].respno,
+        ),
+    )
+    with pytest.raises(
+        R5Q86ProjectionError, match=r"duplicate \(COUNTRY, RESPNO\) identity"
+    ):
+        _validate_claim_scope(
+            duplicate_source_rows, (member,),
+            contract.risk_set_member_set_sha256, contract,
         )
 
     wrong_ref = replace(member, respondent_local_id="sha256:" + _h("wrong-ref"))
