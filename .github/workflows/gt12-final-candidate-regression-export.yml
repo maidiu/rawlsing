@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 7a08a70397d1f6616db2c8e338b01c5761423586
+          ref: 48bc83924151b172b4abad650ec6aac7ded97716
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
@@ -21,7 +21,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check pytest pandas
       - name: Verify exact candidate and environment
         run: |
-          test "$(git rev-parse HEAD)" = "7a08a70397d1f6616db2c8e338b01c5761423586"
+          test "$(git rev-parse HEAD)" = "48bc83924151b172b4abad650ec6aac7ded97716"
           test -z "$(git status --porcelain=v1)"
           python -c 'import pathlib,platform,sys,pytest,pandas,rawlsing_next; p=pathlib.Path(next(iter(rawlsing_next.__path__))).resolve(); print("python_executable="+sys.executable); print("python_version="+platform.python_version()); print("platform="+platform.platform()); print("pytest_version="+pytest.__version__); print("pandas_version="+pandas.__version__); print("rawlsing_next_path="+str(p))'
       - name: Run exact GT12 closure regression gate
@@ -57,7 +57,7 @@ jobs:
       - name: Export exact candidate
         if: always()
         run: |
-          git archive --format=tar.gz -o /tmp/rawlsing-gt12-final-candidate.tar.gz 7a08a70397d1f6616db2c8e338b01c5761423586
+          git archive --format=tar.gz -o /tmp/rawlsing-gt12-final-candidate.tar.gz 48bc83924151b172b4abad650ec6aac7ded97716
           sha256sum /tmp/rawlsing-gt12-final-candidate.tar.gz > /tmp/rawlsing-gt12-final-candidate.tar.gz.sha256
       - uses: actions/upload-artifact@v4
         if: always()
