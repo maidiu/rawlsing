@@ -339,6 +339,133 @@ def _validate_target_events(
             raise GT12BI03BindingError("validated projection domain omits an observed exact source-native response state")
 
 
+def _validate_release_member_scope_linear(
+    release: C11LogicalRelease,
+    binding: R5Q86I03ExecutionBinding,
+) -> tuple[ExactRef, ...]:
+    """Validate the frozen two-target carrier in one compact pass.
+
+    The original bounded adapter independently materialized two routing maps and
+    two event maps over the same 19,210-member release.  At genuine scale those
+    duplicate maps create a memory-pressure cliff.  This routine preserves the
+    exact checks while indexing immutable ref keys once.
+    """
+    respondent_by_key = {
+        ref.key: ref for ref in _release_respondent_refs(release, binding.empirical_universe_ref)
+    }
+    if not respondent_by_key:
+        raise GT12BI03BindingError("validated release contains no frozen respondents")
+
+    universe_key = binding.empirical_universe_ref.key
+    risk_key = binding.risk_set_ref.key
+    target_keys = {
+        binding.q86a.native_question_ref.key: "Q86A",
+        binding.q86b.native_question_ref.key: "Q86B",
+    }
+    routing: dict[str, dict[str, tuple[str, str, str]]] = {"Q86A": {}, "Q86B": {}}
+
+    for obj in release.public_objects:
+        if not isinstance(obj, RoutingEligibilityFact):
+            continue
+        if exact_ref(obj.empirical_universe_ref, "routing.empirical_universe_ref").key != universe_key:
+            continue
+        target_name = target_keys.get(
+            exact_ref(obj.question_or_target_ref, "routing.question_or_target_ref").key
+        )
+        if target_name is None:
+            continue
+        if exact_ref(obj.risk_set_ref, "routing.risk_set_ref").key != risk_key:
+            continue
+        respondent_key = exact_ref(
+            obj.scoped_respondent_ref, "routing.scoped_respondent_ref"
+        ).key
+        signature = (
+            str(obj.routing_state),
+            str(obj.applicability_state),
+            exact_ref(obj.member_set_replay_ref, "routing.member_set_replay_ref").key,
+        )
+        prior = routing[target_name].get(respondent_key)
+        if prior is not None and prior != signature:
+            raise GT12BI03BindingError(
+                "conflicting routing facts for one respondent/target/risk set"
+            )
+        routing[target_name][respondent_key] = signature
+
+    all_keys = set(respondent_by_key)
+    for target_name in ("Q86A", "Q86B"):
+        if set(routing[target_name]) != all_keys:
+            raise GT12BI03BindingError(
+                "exact routing facts must cover every release respondent for both Q86A and Q86B; response presence is not routing"
+            )
+    unresolved = {"ROUTING_UNKNOWN", "RULE_UNAVAILABLE"}
+    if any(
+        signature[0] in unresolved
+        for target_name in ("Q86A", "Q86B")
+        for signature in routing[target_name].values()
+    ):
+        raise GT12BI03BindingError(
+            "unresolved routing cannot be coerced into frozen common-risk membership"
+        )
+    a_keys = {key for key, signature in routing["Q86A"].items() if signature[0] == "ELIGIBLE_APPLICABLE"}
+    b_keys = {key for key, signature in routing["Q86B"].items() if signature[0] == "ELIGIBLE_APPLICABLE"}
+    if a_keys != b_keys:
+        raise GT12BI03BindingError(
+            "Q86A/Q86B exact eligible member sets differ; jointability may not be inferred from source-block membership"
+        )
+    if len(a_keys) != FROZEN_RISK_SET_MEMBER_COUNT:
+        raise GT12BI03BindingError(
+            f"frozen common risk-set count mismatch: {len(a_keys)} != {FROZEN_RISK_SET_MEMBER_COUNT}"
+        )
+
+    domains = {
+        "Q86A": {canonical_json(value) for value in binding.q86a.domain},
+        "Q86B": {canonical_json(value) for value in binding.q86b.domain},
+    }
+    included = {
+        "Q86A": set(binding.q86a.included_states),
+        "Q86B": set(binding.q86b.included_states),
+    }
+    event_target_keys = {
+        binding.q86a.native_question_ref.key: "Q86A",
+        binding.q86b.native_question_ref.key: "Q86B",
+    }
+    seen: dict[str, set[str]] = {"Q86A": set(), "Q86B": set()}
+    for obj in release.public_objects:
+        if not isinstance(obj, RespondentEvent):
+            continue
+        if exact_ref(obj.empirical_universe_ref, "event.empirical_universe_ref").key != universe_key:
+            continue
+        target_name = event_target_keys.get(
+            exact_ref(obj.native_question_ref, "event.native_question_ref").key
+        )
+        if target_name is None or obj.typed_state not in included[target_name]:
+            continue
+        respondent_key = exact_ref(
+            obj.scoped_respondent_ref, "event.scoped_respondent_ref"
+        ).key
+        if respondent_key not in a_keys:
+            continue
+        if respondent_key in seen[target_name]:
+            raise GT12BI03BindingError(
+                "each frozen risk-set respondent must resolve exactly one included scalar response event per target"
+            )
+        fields = obj.multiplicity_order_rank_fields
+        if not isinstance(fields, dict) or fields.get("kind") != "SCALAR_SINGULAR":
+            raise GT12BI03BindingError("Q86 event carrier topology drift from SCALAR_SINGULAR")
+        if canonical_json(_event_value(obj)) not in domains[target_name]:
+            raise GT12BI03BindingError(
+                "validated projection domain omits an observed exact source-native response state"
+            )
+        seen[target_name].add(respondent_key)
+
+    for target_name in ("Q86A", "Q86B"):
+        if seen[target_name] != a_keys:
+            raise GT12BI03BindingError(
+                "each frozen risk-set respondent must resolve exactly one included scalar response event per target"
+            )
+    return tuple(sorted((respondent_by_key[key] for key in a_keys), key=lambda ref: ref.key))
+
+
 def _validate_release_and_members(
     release: C11LogicalRelease,
     binding: R5Q86I03ExecutionBinding,
@@ -351,10 +478,7 @@ def _validate_release_and_members(
     if release.source_artifact_ref.content_hash != FROZEN_R5_SOURCE_SHA256:
         raise GT12BI03BindingError("validated release source SHA drift from frozen R5 source")
     _release_universe(release, binding.empirical_universe_ref)
-    members = _common_exact_risk_members(release, binding)
-    _validate_target_events(release, universe_ref=binding.empirical_universe_ref, members=members, target=binding.q86a)
-    _validate_target_events(release, universe_ref=binding.empirical_universe_ref, members=members, target=binding.q86b)
-    return members
+    return _validate_release_member_scope_linear(release, binding)
 
 
 def _resolve_positive_authority(registry: AuthorityRegistry, ref: AuthorityRef, *, name: str):
@@ -433,7 +557,11 @@ def _predicate_for_members(
     return make_empirical_predicate(
         predicate_ast=ast,
         typed_state="PREDICATE_RESOLVED_AUTHORIZED",
-        authority_snapshot_refs=(binding.query_authority_ref,),
+        # The target-use permission remains a distinct TARGET_USE_PERMISSION
+        # authority.  Carry it in the query closure so a positive EmpiricalFact
+        # preserves the exact permission snapshot rather than only naming it in
+        # requested_output_grain.
+        authority_snapshot_refs=(binding.query_authority_ref, target_use.authority_ref),
         dependency_refs=(binding.risk_set_ref, membership_ref, _frozen_contract_ref()),
         producer_replay_locator_or_reference_root=replay_ref,
         grammar_authority_ref=binding.query_authority_ref,
