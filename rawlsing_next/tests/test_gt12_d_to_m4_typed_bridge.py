@@ -347,12 +347,11 @@ def test_wrong_adoption_receipt_identity_hash_fails_before_v554():
 
 @pytest.mark.parametrize("field", ["admission_authority_ref", "admission_rule_ref", "admission_current_selection_ref"])
 def test_wrong_prev3_authority_rule_or_current_selection_fails_before_v554(field):
-    admission = _admission()
+    admission, _, evaluation = _evaluate()
     if field == "admission_authority_ref":
         bad = replace(admission, admission_authority_ref=_auth("WRONG-PREV3"))
     else:
         bad = replace(admission, **{field: _ref("WRONG", field)})
-    _, _, evaluation = _evaluate(bad)
     with pytest.raises(GT12TypedBridgeError, match="translation PRE-V3"):
         _publish(bad, evaluation)
 
@@ -366,10 +365,10 @@ def test_wrong_prev3_authority_rule_or_current_selection_fails_before_v554(field
     ],
 )
 def test_wrong_relation_family_owner_or_hash_fails_before_v554(bad):
-    admission = bad(_admission())
-    _, _, evaluation = _evaluate(admission)
+    admission, _, evaluation = _evaluate()
+    tampered = bad(admission)
     with pytest.raises(GT12TypedBridgeError, match="translation relation"):
-        _publish(admission, evaluation)
+        _publish(tampered, evaluation)
 
 
 def test_wrong_admission_ref_hash_fails_against_m1_lineage():
@@ -388,10 +387,10 @@ def test_wrong_admission_ref_hash_fails_against_m1_lineage():
     ],
 )
 def test_wrong_target_use_or_non_singleton_upstream_permission_fails(bad):
-    admission = bad(_admission())
-    _, _, evaluation = _evaluate(admission)
+    admission, _, evaluation = _evaluate()
+    tampered = bad(admission)
     with pytest.raises(GT12TypedBridgeError):
-        _publish(admission, evaluation)
+        _publish(tampered, evaluation)
 
 
 @pytest.mark.parametrize(
@@ -406,20 +405,20 @@ def test_wrong_target_use_or_non_singleton_upstream_permission_fails(bad):
     ],
 )
 def test_typed_negative_or_nonpositive_input_cannot_translate_even_with_refs_stripped(decision, state):
-    admission = replace(
-        _admission(),
+    admission, _, evaluation = _evaluate()
+    tampered = replace(
+        admission,
         decision=decision,
         relation_typed_state=state,
         target_use_permissions=("STRUCTURAL_MEDIATION_INPUT",) if decision is AdmissionDecision.ADMITTED else (),
         applicable_negative_denial_noncomparability_refs=(),
     )
-    _, _, evaluation = _evaluate(admission)
     with pytest.raises(GT12TypedBridgeError):
-        _publish(admission, evaluation)
+        _publish(tampered, evaluation)
 
 
 def test_wrong_source_dependency_risk_set_or_participant_order_cannot_reuse_authority():
-    base = _admission()
+    base, _, evaluation = _evaluate()
     no_source = replace(
         base,
         dependency_refs=tuple(x for x in base.dependency_refs if x.kind != "SOURCE_ARTIFACT"),
@@ -427,7 +426,6 @@ def test_wrong_source_dependency_risk_set_or_participant_order_cannot_reuse_auth
     wrong_risk = replace(base, risk_set_ref=_ref("RISK_SET", "wrong-risk"))
     wrong_order = replace(base, participants=tuple(reversed(base.participants)))
     for bad in (no_source, wrong_risk, wrong_order):
-        _, _, evaluation = _evaluate(bad)
         with pytest.raises(GT12TypedBridgeError):
             _publish(bad, evaluation)
 
