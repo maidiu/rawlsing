@@ -65,6 +65,16 @@ from rawlsing_next.m4_v557_v558_publication_repository import (
     make_producer_locator,
     resolve_v558,
 )
+from rawlsing_next.gt12_permission_translation_authority import (
+    ADOPTED_ADOPTION_RECEIPT_REF,
+    ADOPTED_AUTHORITY_REF,
+    ADOPTED_PRODUCER_ALLOWED_USES,
+    ADOPTED_V557_ALLOWED_USES,
+    ADOPTED_V558_REQUESTED_USES,
+    GT12PermissionTranslationError,
+    derive_adopted_permission_binding,
+    require_exact_downstream_use_shape,
+)
 
 
 BRIDGE_CONTRACT_ID = "GT12_D_TO_E_TO_M4_V558_TYPED_BRIDGE@1.0.0"
@@ -228,9 +238,6 @@ def _admission_mapping(
         "risk_set_refs": [_ref(admission.risk_set_ref, "risk_set_ref")],
         "relation_participant_role_order_cardinality_refs": participants,
         "target_use_permission_refs": list(admission.target_use_permissions),
-        # GT2 frozen contract is explicitly non-temporal and RAW count-profile only.
-        # D carries no separate estimand/measure semantic objects, so the bridge
-        # does not fabricate them.
         "effective_time_or_interval_refs_required_by_target_use": [],
         "estimand_refs": [],
         "measure_and_weight_authority_refs": [],
@@ -239,9 +246,6 @@ def _admission_mapping(
             _ref(x, "negative_or_limit_ref")
             for x in admission.applicable_negative_denial_noncomparability_refs
         ],
-        # D preserves relation authorities, but does not declare them to be
-        # V554 interpretation-critical authorities.  They remain exact in the
-        # closure and M1 authority bundle below without semantic relabeling.
         "interpretation_critical_authority_refs": [],
         "relation_information_loss_declaration": (
             admission.relation_information_loss_declaration
@@ -471,19 +475,44 @@ class RelationV558Terminal:
     repository: V558RepositoryBundle
     resolution: ResolutionResult
     resolution_keys: tuple[str, ...]
+    permission_binding: Mapping[str, Any]
+
+
+def _require_evaluation_matches_admission(
+    admission: Prev3FieldForgeRelationAdmission,
+    evaluation: M1Evaluation,
+) -> None:
+    if evaluation.f1 is None:
+        raise GT12TypedBridgeError("eligible relation M1 lacks F1 lineage")
+    expected_admission_ref = admission.ref.as_dict()
+    expected_relation_ref = admission.relation_ref.as_dict()
+    admission_refs = tuple(evaluation.f1.get("originating_relation_admission_exact_refs", ()))
+    relation_refs = tuple(evaluation.f1.get("originating_field_forge_relation_exact_refs", ()))
+    if admission_refs != (expected_admission_ref,):
+        raise GT12TypedBridgeError("M1 relation admission exact ref/hash does not match permission authority input")
+    if relation_refs != (expected_relation_ref,):
+        raise GT12TypedBridgeError("M1 FIELD FORGE relation exact ref/hash does not match permission authority input")
+    handoff = evaluation.direct_v557_handoff
+    if not isinstance(handoff, Mapping) or handoff.get("route") != "V554_TO_V557_DIRECT":
+        raise GT12TypedBridgeError("relation M1 direct V554_TO_V557 handoff missing")
 
 
 def publish_and_resolve_relation_v554_at_current_m4(
+    admission: Prev3FieldForgeRelationAdmission,
     evaluation: M1Evaluation,
     *,
-    producer_allowed_uses: Sequence[str],
     v557_allowed_uses: Sequence[str],
     requested_resolution_uses: Sequence[str],
     v557_authority_ref: M4AuthorityRef,
     v557_decision_state: V557DecisionState | str,
+    permission_translation_authority_ref: M4AuthorityRef = ADOPTED_AUTHORITY_REF,
+    permission_translation_adoption_ref: M4AuthorityRef = ADOPTED_ADOPTION_RECEIPT_REF,
     producer_rule_bindings: Sequence[M4AuthorityRef] = (),
 ) -> RelationV558Terminal:
-    """Traverse actual current M4 V557 publication and V558 exact resolution."""
+    """Traverse M4 only under the adopted exact GT12 permission descent.
+
+    The relation-specific producer ceiling is derived, never caller-selected.
+    """
     if not isinstance(evaluation, M1Evaluation):
         raise GT12TypedBridgeError("M4 bridge requires exact M1Evaluation")
     if evaluation.contract_id != RELATION_M1_CONTRACT_ID:
@@ -499,9 +528,24 @@ def publish_and_resolve_relation_v554_at_current_m4(
     if any(not isinstance(x, M4AuthorityRef) for x in producer_rule_bindings):
         raise GT12TypedBridgeError("producer rule bindings must be exact M4 AuthorityRef")
 
+    try:
+        permission_binding = derive_adopted_permission_binding(
+            admission,
+            authority_ref=permission_translation_authority_ref,
+            adoption_receipt_ref=permission_translation_adoption_ref,
+        )
+        require_exact_downstream_use_shape(
+            v557_decision_state=v557_decision_state,
+            v557_allowed_uses=v557_allowed_uses,
+            requested_resolution_uses=requested_resolution_uses,
+        )
+    except GT12PermissionTranslationError as exc:
+        raise GT12TypedBridgeError(str(exc)) from exc
+    _require_evaluation_matches_admission(admission, evaluation)
+
     objects = structural_objects_from_accepted_m1(
         evaluation,
-        producer_allowed_uses=producer_allowed_uses,
+        producer_allowed_uses=ADOPTED_PRODUCER_ALLOWED_USES,
     )
     if not objects:
         raise GT12TypedBridgeError("eligible relation M1 produced no V554 objects")
@@ -509,6 +553,8 @@ def publish_and_resolve_relation_v554_at_current_m4(
         raise GT12TypedBridgeError("relation M1 may publish only V554 producer family")
     if any(obj.source_stage != "M1_RELATION_V554_TO_V557" for obj in objects):
         raise GT12TypedBridgeError("relation M1 attempted non-relation M4 source stage")
+    if any(obj.producer_allowed_uses != ADOPTED_PRODUCER_ALLOWED_USES for obj in objects):
+        raise GT12TypedBridgeError("relation V554 producer permission did not derive exact CONTEXT singleton")
 
     build_material = {
         "bridge_contract": BRIDGE_CONTRACT_ID,
@@ -516,6 +562,7 @@ def publish_and_resolve_relation_v554_at_current_m4(
         "decision_state": evaluation.decision_state.value,
         "canonical_basis_semantic_id": evaluation.canonical_basis_semantic_id,
         "direct_v557_handoff": evaluation.direct_v557_handoff,
+        "permission_translation_binding": dict(permission_binding),
     }
     build_hash = semantic_hash(build_material)
     build_id = f"GT12-D-E-M4-V558:{build_hash}"
@@ -524,7 +571,18 @@ def publish_and_resolve_relation_v554_at_current_m4(
             "contract_id": evaluation.contract_id,
             "basis_kind": evaluation.required_basis_kind,
             "signature": SIG_004,
+            "permission_translation_binding_hash": permission_binding["binding_hash"],
         }
+    )
+    exact_rule_bindings = tuple(
+        sorted(
+            {
+                *tuple(producer_rule_bindings),
+                permission_translation_authority_ref,
+                permission_translation_adoption_ref,
+            },
+            key=lambda ref: (ref.authority_id, ref.authority_version, ref.authority_hash),
+        )
     )
 
     entries = []
@@ -532,8 +590,8 @@ def publish_and_resolve_relation_v554_at_current_m4(
     for obj in objects:
         governance = govern_v557(
             obj,
-            decision_state=v557_decision_state,
-            v557_allowed_uses=v557_allowed_uses,
+            decision_state=V557DecisionState.ALLOW_CONTEXT_ONLY,
+            v557_allowed_uses=ADOPTED_V557_ALLOWED_USES,
             authority_ref=v557_authority_ref,
         )
         locator = make_producer_locator(
@@ -545,9 +603,9 @@ def publish_and_resolve_relation_v554_at_current_m4(
             producer_contract_id=evaluation.contract_id,
             producer_contract_version="1.0.0",
             producer_contract_hash=contract_hash,
-            producer_rule_bindings=producer_rule_bindings,
+            producer_rule_bindings=exact_rule_bindings,
             provenance_locator=(
-                f"audit://GT12_D_TO_E_TO_V558/{obj.content_hash}"
+                f"audit://GT12_D_TO_E_TO_V558/{permission_binding['binding_hash']}/{obj.content_hash}"
             ),
         )
         entry = RepositoryEntry(obj, governance, locator)
@@ -559,7 +617,7 @@ def publish_and_resolve_relation_v554_at_current_m4(
     keys = tuple(exact_resolution_key(entry.locator) for entry in entries)
     query = make_context_query(
         tuple(
-            ContextQueryItem(key, tuple(requested_resolution_uses))
+            ContextQueryItem(key, ADOPTED_V558_REQUESTED_USES)
             for key in keys
         )
     )
@@ -579,6 +637,7 @@ def publish_and_resolve_relation_v554_at_current_m4(
         repository,
         resolution,
         keys,
+        permission_binding,
     )
 
 
