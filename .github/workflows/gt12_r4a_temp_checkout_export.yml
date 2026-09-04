@@ -1,0 +1,22 @@
+name: GT12 R4A temporary exact-checkout export
+on:
+  push:
+    branches:
+      - agent/rabochii-gt12-r4a-constructor-complete-transport-seal-r1
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Pack exact checkout
+        run: |
+          tar --exclude=.git -czf /tmp/rawlsing-r4a-checkout.tar.gz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rawlsing-r4a-checkout
+          path: /tmp/rawlsing-r4a-checkout.tar.gz
+          retention-days: 1
