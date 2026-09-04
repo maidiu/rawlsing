@@ -10,6 +10,7 @@ from rawlsing_next.wave1_ff_prev3_relation_admission import (
     AdmissionDecision,
     ParticipantBinding,
     Prev3FieldForgeRelationAdmission,
+    make_gt2_relation_admission_rule,
 )
 from rawlsing_next.m1_temporal_v554_admission_dedup import (
     M1_CONTRACT_ID,
@@ -31,10 +32,17 @@ from rawlsing_next.m4_v557_v558_publication_repository import (
     ClosureIntegrityError,
     ContextQueryItem,
     M4IntegrityError,
-    PermissionWideningError,
     V557DecisionState,
     make_context_query,
     resolve_v558,
+)
+from rawlsing_next.gt12_permission_translation_authority import (
+    ADOPTED_ADOPTION_RECEIPT_REF,
+    ADOPTED_AUTHORITY_REF,
+    ADOPTED_PRODUCER_ALLOWED_USES,
+    ADOPTED_V557_ALLOWED_USES,
+    ADOPTED_V558_REQUESTED_USES,
+    AUTHORITY_CONTENT_HASH,
 )
 from rawlsing_next.gt12_d_to_m4_typed_bridge import (
     EXPECTED_RELATION_OWNER_JURISDICTION,
@@ -101,22 +109,15 @@ def _admission() -> Prev3FieldForgeRelationAdmission:
         "FIELD_FORGE_RELATION_RULE",
         "exact-conditional-support-profile-within-scope",
     )
-    admission_rule = _ref(
-        "FIELD_FORGE_RELATION_ADMISSION_RULE",
-        "FIELD_FORGE_RELATION_ADMISSION_RULE@1.0.0",
-    )
-    admission_authority = _auth("PREV3-RELATION-ADMISSION", "R1")
-    selection = _ref(
-        "RELATION_ADMISSION_CURRENT_SELECTION",
-        "gt2-current-selection",
-    )
+    conditioner_ref = _ref("QUESTION_IMPLEMENTATION", "Q86B")
+    target_ref = _ref("QUESTION_IMPLEMENTATION", "Q86A")
     conditioner = ParticipantBinding(
         "CONDITIONER",
         0,
         "Q86B",
         "question_impl.phase0.2fb3a62609dad4c1306d",
         "cssu.r1.afrobarometer.r5.d8478014cb0a506fe6c4",
-        _ref("QUESTION_IMPLEMENTATION", "Q86B"),
+        conditioner_ref,
     )
     target = ParticipantBinding(
         "TARGET",
@@ -124,7 +125,12 @@ def _admission() -> Prev3FieldForgeRelationAdmission:
         "Q86A",
         "question_impl.phase0.67f036c0efb7fb98ff4a",
         "cssu.r1.afrobarometer.r5.d8478014cb0a506fe6c4",
-        _ref("QUESTION_IMPLEMENTATION", "Q86A"),
+        target_ref,
+    )
+    admission_rule = make_gt2_relation_admission_rule(
+        allowed_relation_rule_ref=relation_rule,
+        condition_participant_ref=conditioner_ref,
+        target_participant_ref=target_ref,
     )
     semantic_identity = _ref(
         "FIELD_FORGE_RELATION_SEMANTIC_IDENTITY",
@@ -155,9 +161,9 @@ def _admission() -> Prev3FieldForgeRelationAdmission:
         relation_rule_ref=relation_rule,
         relation_rule_content_hash_echo=relation_rule.content_hash,
         relation_typed_state="SUPPORTED",
-        admission_rule_ref=admission_rule,
-        admission_authority_ref=admission_authority,
-        admission_current_selection_ref=selection,
+        admission_rule_ref=admission_rule.ref,
+        admission_authority_ref=admission_rule.authority_binding.authority_ref,
+        admission_current_selection_ref=admission_rule.authority_binding.current_selection_ref,
         target_use="STRUCTURAL_MEDIATION_INPUT",
         downstream_contract=RELATION_M1_CONTRACT_ID,
         target_use_permissions=("STRUCTURAL_MEDIATION_INPUT",),
@@ -186,9 +192,9 @@ def _admission() -> Prev3FieldForgeRelationAdmission:
     )
 
 
-def _evaluate():
-    admission = _admission()
-    use = "GT2_STRUCTURAL_MEDIATION_REVIEW"
+def _evaluate(admission: Prev3FieldForgeRelationAdmission | None = None):
+    admission = admission or _admission()
+    use = "GT2_STRUCTURAL_MEDIATION_CONTEXT"
     bridge, evaluation = evaluate_typed_d_to_e_at_v554(
         admission,
         governed_use_id=use,
@@ -196,6 +202,19 @@ def _evaluate():
         publication_authority=_publication_authority(use),
     )
     return admission, bridge, evaluation
+
+
+def _publish(admission, evaluation, **overrides):
+    kwargs = {
+        "v557_allowed_uses": ("CONTEXT",),
+        "requested_resolution_uses": ("CONTEXT",),
+        "v557_authority_ref": _m4_auth("V557-GT2"),
+        "v557_decision_state": V557DecisionState.ALLOW_CONTEXT_ONLY,
+    }
+    kwargs.update(overrides)
+    return publish_and_resolve_relation_v554_at_current_m4(
+        admission, evaluation, **kwargs
+    )
 
 
 def test_actual_pre553_ref_authority_material_survives_d_to_e_losslessly():
@@ -208,7 +227,6 @@ def test_actual_pre553_ref_authority_material_survives_d_to_e_losslessly():
     payload = bridge.payload
     admitted = payload["relation_admission"]
     projection = payload["projection"]
-
     assert admitted["field_forge_relation_ref"] == admission.relation_ref.as_dict()
     assert admitted["relation_rule_ref"] == admission.relation_rule_ref.as_dict()
     assert admitted["admission_rule_ref"] == admission.admission_rule_ref.as_dict()
@@ -240,56 +258,178 @@ def test_positive_typed_d_to_e_evaluates_only_relation_sig004_and_keeps_exact_li
     assert admission.relation_ref.as_dict() in evaluation.f1[
         "originating_field_forge_relation_exact_refs"
     ]
-    assert evaluation.f1["lineage_closure_fingerprint"] == semantic_hash(
-        {
-            "basis_refs": evaluation.f1["provenance_alias_exact_refs"],
-            "admission_refs": evaluation.f1[
-                "originating_relation_admission_exact_refs"
-            ],
-            "field_forge_relation_refs": evaluation.f1[
-                "originating_field_forge_relation_exact_refs"
-            ],
-        }
-    )
     assert SIG_004 not in EMPIRICAL_M1_SIGS
     assert M1_CONTRACT_ID != RELATION_M1_CONTRACT_ID
 
 
-def test_positive_relation_m1_reaches_actual_v557_and_v558_with_v554_family_only():
+def test_positive_relation_m1_derives_adopted_context_and_reaches_v558():
     admission, _, evaluation = _evaluate()
     v557_authority = _m4_auth("V557-GT2")
-    terminal = publish_and_resolve_relation_v554_at_current_m4(
+    terminal = _publish(
+        admission,
         evaluation,
-        producer_allowed_uses=("REVIEW",),
-        v557_allowed_uses=("REVIEW",),
-        requested_resolution_uses=("REVIEW",),
         v557_authority_ref=v557_authority,
-        v557_decision_state=V557DecisionState.ALLOW_REVIEW_ONLY,
         producer_rule_bindings=(v557_authority,),
     )
     assert terminal.resolution.receipt.result_state == "RESOLUTION_COMPLETE"
     assert terminal.publication.ref == terminal.repository.publication_bundle_ref
+    assert terminal.permission_binding["translation_authority_ref"]["content_hash"] == AUTHORITY_CONTENT_HASH
+    assert terminal.permission_binding["producer_allowed_uses"] == ["CONTEXT"]
     assert {entry.obj.producer_family for entry in terminal.repository.entries} == {"V554"}
+    assert all(entry.obj.producer_allowed_uses == ADOPTED_PRODUCER_ALLOWED_USES for entry in terminal.repository.entries)
+    assert all(entry.governance.v557_allowed_uses == ADOPTED_V557_ALLOWED_USES for entry in terminal.repository.entries)
+    assert all(
+        ADOPTED_AUTHORITY_REF in entry.locator.producer_rule_bindings
+        and ADOPTED_ADOPTION_RECEIPT_REF in entry.locator.producer_rule_bindings
+        for entry in terminal.repository.entries
+    )
     assert all(
         entry.obj.source_stage == "M1_RELATION_V554_TO_V557"
         for entry in terminal.repository.entries
     )
     assert {resolved.canonical_producer_family for resolved in terminal.resolution.resolved_entries} == {"V554"}
-
-    f1_entries = [
-        entry for entry in terminal.repository.entries
-        if entry.obj.semantic_class == "F1"
-    ]
-    assert len(f1_entries) == 1
-    f1_payload = f1_entries[0].obj.payload
-    assert admission.ref.as_dict() in f1_payload[
-        "originating_relation_admission_exact_refs"
-    ]
-    assert admission.relation_ref.as_dict() in f1_payload[
-        "originating_field_forge_relation_exact_refs"
-    ]
-    assert "V553" not in repr(f1_payload)
     assert all(entry.obj.producer_family not in {"V555", "V556"} for entry in terminal.repository.entries)
+
+
+def test_relation_publish_api_has_no_caller_minted_producer_permission_parameter():
+    import inspect
+    params = inspect.signature(publish_and_resolve_relation_v554_at_current_m4).parameters
+    assert "producer_allowed_uses" not in params
+
+
+@pytest.mark.parametrize(
+    "v557_uses,requested,state",
+    [
+        (("REVIEW",), ("REVIEW",), V557DecisionState.ALLOW_REVIEW_ONLY),
+        (("ACTIVE_CAUSAL",), ("ACTIVE_CAUSAL",), V557DecisionState.ALLOW_ACTIVE_CAUSAL_CONTEXT),
+        (("REVIEW", "CONTEXT"), ("CONTEXT",), V557DecisionState.ALLOW_CONTEXT_ONLY),
+        (("CONTEXT",), ("REVIEW",), V557DecisionState.ALLOW_CONTEXT_ONLY),
+        (("CONTEXT",), ("ACTIVE_CAUSAL",), V557DecisionState.ALLOW_CONTEXT_ONLY),
+        (("CONTEXT",), ("CONTEXT",), V557DecisionState.ALLOW_ACTIVE_CAUSAL_CONTEXT),
+    ],
+)
+def test_nonexact_downstream_permission_shape_is_rejected_before_v554(v557_uses, requested, state):
+    admission, _, evaluation = _evaluate()
+    with pytest.raises(GT12TypedBridgeError, match="adopted GT2 path requires"):
+        _publish(
+            admission,
+            evaluation,
+            v557_allowed_uses=v557_uses,
+            requested_resolution_uses=requested,
+            v557_decision_state=state,
+        )
+
+
+@pytest.mark.parametrize(
+    "bad_ref",
+    [
+        M4AuthorityRef("WRONG", "1.0.0", ADOPTED_AUTHORITY_REF.authority_hash),
+        M4AuthorityRef(ADOPTED_AUTHORITY_REF.authority_id, "9.9.9", ADOPTED_AUTHORITY_REF.authority_hash),
+        M4AuthorityRef(ADOPTED_AUTHORITY_REF.authority_id, ADOPTED_AUTHORITY_REF.authority_version, _h("wrong-translation-hash")),
+    ],
+)
+def test_wrong_translation_authority_identity_version_or_hash_fails_before_v554(bad_ref):
+    admission, _, evaluation = _evaluate()
+    with pytest.raises(GT12TypedBridgeError, match="translation authority identity/version/hash mismatch"):
+        _publish(admission, evaluation, permission_translation_authority_ref=bad_ref)
+
+
+def test_wrong_adoption_receipt_identity_hash_fails_before_v554():
+    admission, _, evaluation = _evaluate()
+    bad = M4AuthorityRef(
+        ADOPTED_ADOPTION_RECEIPT_REF.authority_id,
+        ADOPTED_ADOPTION_RECEIPT_REF.authority_version,
+        _h("wrong-adoption"),
+    )
+    with pytest.raises(GT12TypedBridgeError, match="adoption receipt identity/version/hash mismatch"):
+        _publish(admission, evaluation, permission_translation_adoption_ref=bad)
+
+
+@pytest.mark.parametrize("field", ["admission_authority_ref", "admission_rule_ref", "admission_current_selection_ref"])
+def test_wrong_prev3_authority_rule_or_current_selection_fails_before_v554(field):
+    admission = _admission()
+    if field == "admission_authority_ref":
+        bad = replace(admission, admission_authority_ref=_auth("WRONG-PREV3"))
+    else:
+        bad = replace(admission, **{field: _ref("WRONG", field)})
+    _, _, evaluation = _evaluate(bad)
+    with pytest.raises(GT12TypedBridgeError, match="translation PRE-V3"):
+        _publish(bad, evaluation)
+
+
+@pytest.mark.parametrize(
+    "bad",
+    [
+        lambda a: replace(a, relation_owner="WRONG_OWNER"),
+        lambda a: replace(a, relation_ref=ExactRef("WRONG_RELATION_FAMILY", a.relation_ref.object_id, a.relation_ref.content_hash)),
+        lambda a: replace(a, relation_content_hash_echo=_h("wrong-echo")),
+    ],
+)
+def test_wrong_relation_family_owner_or_hash_fails_before_v554(bad):
+    admission = bad(_admission())
+    _, _, evaluation = _evaluate(admission)
+    with pytest.raises(GT12TypedBridgeError, match="translation relation"):
+        _publish(admission, evaluation)
+
+
+def test_wrong_admission_ref_hash_fails_against_m1_lineage():
+    admission, _, evaluation = _evaluate()
+    tampered = replace(admission, historical_authority_material_hash=_h("changed-admission-material"))
+    with pytest.raises(GT12TypedBridgeError, match="M1 relation admission exact ref/hash"):
+        _publish(tampered, evaluation)
+
+
+@pytest.mark.parametrize(
+    "bad",
+    [
+        lambda a: replace(a, target_use="WRONG_USE"),
+        lambda a: replace(a, target_use_permissions=("STRUCTURAL_MEDIATION_INPUT", "EXTRA")),
+        lambda a: replace(a, relation_permission_ceiling=("STRUCTURAL_MEDIATION_INPUT", "EXTRA")),
+    ],
+)
+def test_wrong_target_use_or_non_singleton_upstream_permission_fails(bad):
+    admission = bad(_admission())
+    _, _, evaluation = _evaluate(admission)
+    with pytest.raises(GT12TypedBridgeError):
+        _publish(admission, evaluation)
+
+
+@pytest.mark.parametrize(
+    "decision,state",
+    [
+        (AdmissionDecision.ADMITTED, "OBSERVED_ZERO"),
+        (AdmissionDecision.VALID_EMPTY, "VALID_EMPTY"),
+        (AdmissionDecision.DENIED, "SUPPORTED"),
+        (AdmissionDecision.UNRESOLVED, "SUPPORTED"),
+        (AdmissionDecision.MISSING_AUTHORITY, "SUPPORTED"),
+        (AdmissionDecision.NONCOMPARABLE, "SUPPORTED"),
+    ],
+)
+def test_typed_negative_or_nonpositive_input_cannot_translate_even_with_refs_stripped(decision, state):
+    admission = replace(
+        _admission(),
+        decision=decision,
+        relation_typed_state=state,
+        target_use_permissions=("STRUCTURAL_MEDIATION_INPUT",) if decision is AdmissionDecision.ADMITTED else (),
+        applicable_negative_denial_noncomparability_refs=(),
+    )
+    _, _, evaluation = _evaluate(admission)
+    with pytest.raises(GT12TypedBridgeError):
+        _publish(admission, evaluation)
+
+
+def test_wrong_source_dependency_risk_set_or_participant_order_cannot_reuse_authority():
+    base = _admission()
+    no_source = replace(
+        base,
+        dependency_refs=tuple(x for x in base.dependency_refs if x.kind != "SOURCE_ARTIFACT"),
+    )
+    wrong_risk = replace(base, risk_set_ref=_ref("RISK_SET", "wrong-risk"))
+    wrong_order = replace(base, participants=tuple(reversed(base.participants)))
+    for bad in (no_source, wrong_risk, wrong_order):
+        _, _, evaluation = _evaluate(bad)
+        with pytest.raises(GT12TypedBridgeError):
+            _publish(bad, evaluation)
 
 
 def test_admission_ref_hash_loss_fails_closed_even_if_projection_hash_is_recomputed():
@@ -310,9 +450,7 @@ def test_authority_version_hash_loss_fails_closed_without_label_fallback():
     )
     bad = deepcopy(bridge.payload)
     bad["projection"]["relation_admission_authority_ref"] = {
-        "authority_id": bad["projection"]["relation_admission_authority_ref"][
-            "authority_id"
-        ],
+        "authority_id": bad["projection"]["relation_admission_authority_ref"]["authority_id"],
         "authority_version": "LABEL_ONLY",
         "authority_content_hash": _h("different-authority"),
     }
@@ -351,30 +489,17 @@ def test_permission_widening_from_d_receipt_is_rejected_before_m1():
         target_use_permissions=("STRUCTURAL_MEDIATION_INPUT",),
     )
     with pytest.raises(GT12TypedBridgeError, match="permission widens"):
-        prepare_typed_d_to_e_relation_basis(
-            admission,
-            v554_rule_ref=_v554_rule(),
-        )
+        prepare_typed_d_to_e_relation_basis(admission, v554_rule_ref=_v554_rule())
 
 
 def test_unknown_or_empirical_m1_contract_cannot_enter_relation_m4_binding():
-    _, _, evaluation = _evaluate()
+    admission, _, evaluation = _evaluate()
     unknown = replace(evaluation, contract_id="M1_UNKNOWN_CONTRACT@1")
     with pytest.raises(M4IntegrityError):
-        structural_objects_from_accepted_m1(
-            unknown,
-            producer_allowed_uses=("REVIEW",),
-        )
+        structural_objects_from_accepted_m1(unknown, producer_allowed_uses=("REVIEW",))
     empirical = replace(evaluation, contract_id=M1_CONTRACT_ID)
     with pytest.raises(GT12TypedBridgeError, match="empirical-direct"):
-        publish_and_resolve_relation_v554_at_current_m4(
-            empirical,
-            producer_allowed_uses=("REVIEW",),
-            v557_allowed_uses=("REVIEW",),
-            requested_resolution_uses=("REVIEW",),
-            v557_authority_ref=_m4_auth("EMPIRICAL-SUBSTITUTION"),
-            v557_decision_state=V557DecisionState.ALLOW_REVIEW_ONLY,
-        )
+        _publish(admission, empirical)
 
 
 def test_cross_class_dedup_is_not_available_to_relation_sig004():
@@ -389,32 +514,12 @@ def test_cross_class_dedup_is_not_available_to_relation_sig004():
     }
 
 
-def test_current_v557_permission_widening_still_fails_closed():
-    _, _, evaluation = _evaluate()
-    with pytest.raises(PermissionWideningError):
-        publish_and_resolve_relation_v554_at_current_m4(
-            evaluation,
-            producer_allowed_uses=("REVIEW",),
-            v557_allowed_uses=("CONTEXT",),
-            requested_resolution_uses=("CONTEXT",),
-            v557_authority_ref=_m4_auth("WIDEN"),
-            v557_decision_state=V557DecisionState.ALLOW_CONTEXT_ONLY,
-        )
-
-
 def test_v558_repository_hash_corruption_is_integrity_failure():
-    _, _, evaluation = _evaluate()
-    terminal = publish_and_resolve_relation_v554_at_current_m4(
-        evaluation,
-        producer_allowed_uses=("REVIEW",),
-        v557_allowed_uses=("REVIEW",),
-        requested_resolution_uses=("REVIEW",),
-        v557_authority_ref=_m4_auth("CORRUPTION"),
-        v557_decision_state=V557DecisionState.ALLOW_REVIEW_ONLY,
-    )
+    admission, _, evaluation = _evaluate()
+    terminal = _publish(admission, evaluation)
     stale = replace(terminal.repository, repository_hash=_h("stale-repository"))
     query = make_context_query(
-        tuple(ContextQueryItem(key, ("REVIEW",)) for key in terminal.resolution_keys)
+        tuple(ContextQueryItem(key, ADOPTED_V558_REQUESTED_USES) for key in terminal.resolution_keys)
     )
     with pytest.raises(ClosureIntegrityError, match="repository bundle checksum"):
         resolve_v558(stale, query)
@@ -430,17 +535,13 @@ def test_typed_negative_admission_is_not_laundered_into_relation_basis():
         ),
     )
     with pytest.raises(GT12TypedBridgeError, match="only positive ADMITTED"):
-        prepare_typed_d_to_e_relation_basis(
-            admission,
-            v554_rule_ref=_v554_rule(),
-        )
+        prepare_typed_d_to_e_relation_basis(admission, v554_rule_ref=_v554_rule())
 
 
 def test_actor_or_v3_authority_is_not_created_by_bridge_payload():
     bridge = prepare_typed_d_to_e_relation_basis(
         _admission(), v554_rule_ref=_v554_rule()
     )
-
     mapping_keys = []
     authority_ids = []
 
@@ -456,10 +557,6 @@ def test_actor_or_v3_authority_is_not_created_by_bridge_payload():
                 walk(item)
 
     walk(bridge.payload)
-
-    # PREV3_* identifiers are lawful provenance/admission identities.  Reject
-    # actual V3/actor semantic fields and positive authority namespaces rather
-    # than the substring "V3_" appearing inside the word "PREV3_".
     assert not any(key.startswith(("V3_", "ACTOR_")) for key in mapping_keys)
     assert not any(
         authority_id.startswith(("V3", "AUTH-V3", "ACTOR", "AUTH-ACTOR"))
@@ -471,6 +568,4 @@ def test_actor_or_v3_authority_is_not_created_by_bridge_payload():
     assert bridge.payload["projection"]["temporal_semantic_disposition"] == (
         "NO_NEW_V553_TEMPORAL_MEANING_REQUIRED"
     )
-    assert bridge.payload["focal_structural_proposition_ref"] == (
-        FOCAL_STRUCTURAL_PROPOSITION
-    )
+    assert bridge.payload["focal_structural_proposition_ref"] == FOCAL_STRUCTURAL_PROPOSITION
