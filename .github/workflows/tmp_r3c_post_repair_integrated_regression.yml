@@ -1,0 +1,66 @@
+name: tmp-r3c-post-repair-integrated-regression
+on:
+  push:
+    branches:
+      - agent/tmp-r3c-post-repair-integrated-regression-run
+jobs:
+  court:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 3ca5b1479e42cd8fc56de522b3f7bba9f5552edc
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pytest
+      - name: candidate identity
+        run: |
+          test "$(git rev-parse HEAD)" = "3ca5b1479e42cd8fc56de522b3f7bba9f5552edc"
+          git rev-parse HEAD
+          git status --short
+      - name: integrated regression court
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+          PYTHONHASHSEED: '0'
+        run: |
+          python -m pytest -q \
+            rawlsing_next/tests/test_field_forge_conditional_support.py \
+            rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py \
+            rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py \
+            rawlsing_next/tests/test_pre553_replay_audit.py \
+            rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py \
+            rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py \
+            rawlsing_next/tests/test_m4_v557_v558_publication_repository.py \
+            rawlsing_next/tests/test_wsc002r_a_typed_negative_conservation.py \
+            rawlsing_next/tests/test_psepf_zero_positive_guard.py \
+            rawlsing_next/tests/test_wsc002r_b_v3_authoritative_guard_binding.py \
+            rawlsing_next/tests/test_wsc_gt0_prev3_bridge.py \
+            rawlsing_next/tests/test_wave1_gt1_gt2_positive_prev3_integration.py
+      - name: explicit E3 semantic assertions
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+          PYTHONHASHSEED: '0'
+        run: |
+          python - <<'PY'
+          import inspect
+          import rawlsing_next.wave1_ff_prev3_relation_admission as adm
+          import rawlsing_next.gt12_d_to_m4_typed_bridge as bridge
+          import rawlsing_next.gt12_permission_translation_authority as auth
+          from rawlsing_next.m4_v557_v558_publication_repository import V557DecisionState
+          assert adm.POSITIVE_RELATION_STATES == frozenset({'SUPPORTED'})
+          assert 'producer_allowed_uses' not in inspect.signature(bridge.publish_and_resolve_relation_v554_at_current_m4).parameters
+          assert auth.ADOPTED_PRODUCER_ALLOWED_USES == ('CONTEXT',)
+          assert auth.ADOPTED_V557_ALLOWED_USES == ('CONTEXT',)
+          assert auth.ADOPTED_V558_REQUESTED_USES == ('CONTEXT',)
+          assert auth.ADOPTED_V557_DECISION_STATE == V557DecisionState.ALLOW_CONTEXT_ONLY.value
+          assert auth.AUTHORITY_CONTENT_HASH == 'd052e299206b837292225853fca7ffcf8a3c02b6479c53065ad3aca135be489c'
+          assert auth.ADOPTION_RECEIPT_CONTENT_HASH == 'fe527dd7d6f5163edd5867adf9da2b03ea581c7d78758fe07bf6857c3fd4c46f'
+          print('EXPLICIT_E3_ASSERTIONS_PASS')
+          PY
+      - name: final identity
+        if: always()
+        run: |
+          git rev-parse HEAD
+          git status --short
