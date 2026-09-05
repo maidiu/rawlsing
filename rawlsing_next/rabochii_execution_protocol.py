@@ -309,7 +309,7 @@ def validate_court_spec(spec: Mapping[str, Any]) -> tuple[str, ...]:
     if spec.get("schema_id") != COURT_SPEC_SCHEMA:
         errors.append(f"schema_id must be {COURT_SPEC_SCHEMA}")
 
-    version = spec.get("python_version")
+    candidate = spec.get("semantic_candidate_sha")\n    if not _is_sha(candidate):\n        errors.append("semantic_candidate_sha must be a lowercase 40-hex SHA")\n\n    version = spec.get("python_version")
     if not isinstance(version, str) or not _PYTHON_RE.fullmatch(version):
         errors.append("python_version must look like 3.N")
 
