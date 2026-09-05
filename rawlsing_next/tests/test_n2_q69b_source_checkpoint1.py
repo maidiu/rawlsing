@@ -76,6 +76,7 @@ def test_n2_checkpoint1_exact_source_bytes_and_inventory() -> None:
             str(source),
             metadataonly=True,
             disable_datetime_conversion=True,
+            output_format="dict",
         )
         names = tuple(metadata.column_names)
         missing = tuple(name for name in REQUIRED_VARIABLES if name not in names)
