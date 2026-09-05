@@ -145,6 +145,45 @@ def test_coordinate_states_and_values_preserve_typed_negatives(release):
     assert max(dates) == "2013-06-04"
 
 
+def test_coordinate_replay_provenance_explicitly_binds_l1a_minimum(release):
+    coords = [x for x in release.public_objects if isinstance(x, EmpiricalCoordinateFact)]
+    required_dependencies = {
+        q69b.SOURCE_REF,
+        q69b.CODEBOOK_REF,
+        q69b.TRANSPORT_REF,
+        q69b.CURRENTNESS_REF,
+        q69b.MEASURE_BASIS_REF,
+        q69b.CANONICAL_COORDINATE_REF,
+    }
+    assert len(coords) == 51_587
+    for fact in coords:
+        assert required_dependencies.issubset(set(fact.dependency_refs))
+        authority_ids = {ref.authority_id for ref in fact.authority_snapshot_refs}
+        assert q69b.REPAIRED_COORDINATE_AUTHORITY_ID in authority_ids
+        assert q69b.CROSSWALK_ID in authority_ids
+        assert q69b.TIME_RULE_ID in authority_ids
+
+
+def test_crosswalk_and_time_candidate_snapshots_preserve_negative_law(release):
+    authorities = {
+        x.authority_id: x
+        for x in release.public_objects
+        if isinstance(x, AuthoritySnapshot)
+    }
+    crosswalk = authorities[q69b.CROSSWALK_ID]
+    assert crosswalk.scope_envelope["frequency_order_discarded"] is True
+    assert crosswalk.scope_envelope["source_specific_law_only"] is True
+    assert crosswalk.scope_envelope["named_problem_occurrence_not_promoted_to_actor_history"] is True
+    assert crosswalk.scope_envelope["question_text_sha256"] == q69b.QUESTION_TEXT_SHA256
+    assert crosswalk.scope_envelope["routing_note_sha256"] == q69b.ROUTING_NOTE_SHA256
+
+    time_rule = authorities[q69b.TIME_RULE_ID]
+    assert time_rule.scope_envelope["query_time_substitution"] == "FORBIDDEN"
+    assert time_rule.scope_envelope["wall_clock_substitution"] == "FORBIDDEN"
+    assert time_rule.scope_envelope["actor_current_time_substitution"] == "FORBIDDEN"
+    assert time_rule.scope_envelope["invented_edge_inclusion"] == "FORBIDDEN"
+
+
 def test_only_repaired_coordinate_authority_is_packaged(release):
     authorities = [x for x in release.public_objects if isinstance(x, AuthoritySnapshot)]
     hashes = {x.authority_content_hash for x in authorities}
