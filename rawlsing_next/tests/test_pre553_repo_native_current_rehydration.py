@@ -1,0 +1,200 @@
+from __future__ import annotations
+
+import hashlib
+import inspect
+import json
+from pathlib import Path
+
+import pytest
+
+import rawlsing_next.pre553_repo_native_current_payload as current
+import rawlsing_next.pre553_repo_native_seal as seal
+from rawlsing_next.pre553_empirical_objects import (
+    EmpiricalFact,
+    EmpiricalQuerySpec,
+    ExactRef,
+    exact_ref,
+    semantic_hash,
+)
+
+
+@pytest.fixture(scope="module")
+def actual_current_objects():
+    return seal.load_current_gt2_query_fact()
+
+
+def _transport_bytes():
+    return current._read_committed_transport()
+
+
+def test_fixed_manifest_and_all_binary_payload_commitments_are_exact():
+    manifest_bytes, payloads = _transport_bytes()
+    assert hashlib.sha256(manifest_bytes).hexdigest() == current._MANIFEST_SHA256
+    assert set(payloads) == set(current._BINARY_SPECS)
+    for name, spec in current._BINARY_SPECS.items():
+        raw = payloads[name]
+        assert len(raw) == spec["bytes"]
+        assert len(raw) // 32 == spec["count"]
+        assert hashlib.sha256(raw).hexdigest() == spec["sha256"]
+
+
+def test_binary_hash_closures_reconstruct_exact_canonical_refs():
+    _, payloads = _transport_bytes()
+    for name, spec in current._BINARY_SPECS.items():
+        refs = current._decode_exact_ref_hashes(name, payloads[name])
+        assert len(refs) == spec["count"]
+        assert len(refs) == len(set(refs))
+        assert refs == tuple(sorted(refs, key=lambda ref: ref.key))
+        for ref in (refs[0], refs[-1]):
+            assert ref.kind == spec["kind"]
+            assert ref.object_id == spec["object_id_template"].format(hash=ref.content_hash)
+
+
+def test_no_argument_current_loader_returns_ordinary_exact_current_objects(actual_current_objects):
+    query, fact = actual_current_objects
+    assert type(query) is EmpiricalQuerySpec
+    assert type(fact) is EmpiricalFact
+    assert query.content_hash == current.CURRENT_QUERY_HASH
+    assert fact.content_hash == current.CURRENT_FACT_HASH
+    assert semantic_hash(query.semantic_projection()) == current.CURRENT_QUERY_HASH
+    assert semantic_hash(fact.semantic_projection()) == current.CURRENT_FACT_HASH
+
+    predicate = exact_ref(query.condition_predicate_ref, "query.condition_predicate_ref")
+    replay = exact_ref(fact.replay_ref, "fact.replay_ref")
+    assert predicate.content_hash == current.CURRENT_PREDICATE_HASH
+    assert replay.content_hash == current.CURRENT_REPLAY_HASH
+    assert exact_ref(fact.empirical_query_spec_ref, "fact.empirical_query_spec_ref") == query.ref
+    assert exact_ref(fact.condition_predicate_ref, "fact.condition_predicate_ref") == predicate
+
+    assert fact.raw_denominator_support == 19_210
+    assert len(fact.risk_set_member_refs) == 19_210
+    assert len(fact.denominator_member_refs) == 19_210
+    assert fact.risk_set_member_refs == fact.denominator_member_refs
+    assert len(fact.source_empirical_provenance_refs) == 76_843
+    assert len(fact.dependency_refs) == 76_846
+
+
+def test_exact_provenance_and_dependency_closures_are_reconstructed(actual_current_objects):
+    query, fact = actual_current_objects
+    provenance = tuple(
+        exact_ref(ref, "fact.source_empirical_provenance_refs")
+        for ref in fact.source_empirical_provenance_refs
+    )
+    dependencies = tuple(fact.dependency_refs)
+    predicate = exact_ref(query.condition_predicate_ref, "query.condition_predicate_ref")
+    replay = exact_ref(fact.replay_ref, "fact.replay_ref")
+
+    assert provenance == tuple(sorted(set(provenance), key=lambda ref: ref.key))
+    assert dependencies == tuple(sorted(set(dependencies), key=lambda ref: ref.key))
+    assert {query.ref, predicate, replay, *provenance} == set(dependencies)
+
+
+def test_manifest_tamper_fails_before_rehydration():
+    manifest_bytes, payloads = _transport_bytes()
+    tampered = bytearray(manifest_bytes)
+    tampered[-2] ^= 1
+    with pytest.raises(current.CurrentGT2RehydrationError, match="manifest sha256"):
+        current._rehydrate_verified_transport(bytes(tampered), payloads)
+
+
+@pytest.mark.parametrize("name", ["respondent_refs", "routing_refs", "event_refs"])
+def test_any_binary_payload_tamper_fails(name):
+    manifest_bytes, payloads = _transport_bytes()
+    damaged = dict(payloads)
+    raw = bytearray(damaged[name])
+    raw[len(raw) // 2] ^= 1
+    damaged[name] = bytes(raw)
+    with pytest.raises(current.CurrentGT2RehydrationError, match="payload sha256"):
+        current._rehydrate_verified_transport(manifest_bytes, damaged)
+
+
+@pytest.mark.parametrize("mode", ["truncate", "extra"])
+def test_truncated_or_extra_payload_fails_exact_byte_count(mode):
+    manifest_bytes, payloads = _transport_bytes()
+    damaged = dict(payloads)
+    raw = damaged["respondent_refs"]
+    damaged["respondent_refs"] = raw[:-1] if mode == "truncate" else raw + b"\x00"
+    with pytest.raises(current.CurrentGT2RehydrationError, match="byte count"):
+        current._rehydrate_verified_transport(manifest_bytes, damaged)
+
+
+def test_wrong_manifest_ref_count_fails_reconstruction_law():
+    manifest_bytes, _ = _transport_bytes()
+    manifest = json.loads(manifest_bytes)
+    manifest["closure_rehydration"]["respondent_refs"]["count"] += 1
+    with pytest.raises(current.CurrentGT2RehydrationError, match="metadata drift"):
+        current._verify_binary_manifest(manifest)
+
+
+def test_wrong_fixed_identity_and_historical_a3_cannot_impersonate_current():
+    manifest_bytes, _ = _transport_bytes()
+    manifest = json.loads(manifest_bytes)
+
+    wrong = json.loads(json.dumps(manifest))
+    wrong["identity"]["query"] = "0" * 64
+    with pytest.raises(current.CurrentGT2RehydrationError, match="fixed current"):
+        current._require_manifest_identity(wrong)
+
+    historical = json.loads(json.dumps(manifest))
+    historical["identity"]["query"] = current._HISTORICAL_A3_QUERY_HASH
+    historical["identity"]["fact"] = current._HISTORICAL_A3_FACT_HASH
+    historical["identity"]["replay"] = current._HISTORICAL_A3_REPLAY_HASH
+    with pytest.raises(current.CurrentGT2RehydrationError, match="historical A3"):
+        current._require_manifest_identity(historical)
+
+
+def test_current_entrypoints_expose_no_path_authority_permission_or_identity_selector():
+    for fn in (
+        seal.load_current_gt2_query_fact,
+        current.load_current_gt2_query_fact_from_committed_transport,
+    ):
+        assert not inspect.signature(fn).parameters
+
+    for forbidden in (
+        "path",
+        "root",
+        "authority",
+        "permission",
+        "identity",
+        "query_hash",
+        "fact_hash",
+        "replay_hash",
+        "predicate_hash",
+    ):
+        assert forbidden not in inspect.signature(seal.load_current_gt2_query_fact).parameters
+
+
+def test_runtime_reads_only_four_fixed_repo_transport_resources(monkeypatch):
+    real_read_bytes = Path.read_bytes
+    seen: list[str] = []
+    allowed = {
+        "02_CONSTRUCTOR_COMPLETE_MANIFEST.json",
+        "payload/respondent_ref_hashes.bin",
+        "payload/routing_ref_hashes.bin",
+        "payload/event_ref_hashes.bin",
+    }
+
+    def guarded_read_bytes(path: Path) -> bytes:
+        rendered = path.as_posix()
+        seen.append(rendered)
+        assert "Library" not in rendered
+        assert ".sav" not in rendered
+        assert "source_rows" not in rendered
+        assert "carrier" not in rendered.lower()
+        assert any(rendered.endswith(suffix) for suffix in allowed)
+        return real_read_bytes(path)
+
+    monkeypatch.setattr(Path, "read_bytes", guarded_read_bytes)
+    query, fact = current.load_current_gt2_query_fact_from_committed_transport()
+    assert query.content_hash == current.CURRENT_QUERY_HASH
+    assert fact.content_hash == current.CURRENT_FACT_HASH
+    assert len(seen) == 4
+    assert {next(suffix for suffix in allowed if item.endswith(suffix)) for item in seen} == allowed
+
+
+def test_binary_payload_set_is_fixed_and_missing_member_fails():
+    manifest_bytes, payloads = _transport_bytes()
+    missing = dict(payloads)
+    missing.pop("event_refs")
+    with pytest.raises(current.CurrentGT2RehydrationError, match="payload set"):
+        current._rehydrate_verified_transport(manifest_bytes, missing)
