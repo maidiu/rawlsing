@@ -131,9 +131,7 @@ def require_current_r1c_actual_objects(
         raise GT12E2BHarnessError("query semantic identity is stale or corrupt")
     if semantic_hash(fact.semantic_projection()) != fact.content_hash:
         raise GT12E2BHarnessError("fact semantic identity is stale or corrupt")
-    replay_ref = fact.replay_ref
-    if not isinstance(replay_ref, ExactRef):
-        raise GT12E2BHarnessError("future real entry requires exact PRE553 replay ref")
+    replay_ref = exact_ref(fact.replay_ref, "fact.replay_ref")
     _require_current_identity_values(
         query_hash=query.content_hash,
         fact_hash=fact.content_hash,

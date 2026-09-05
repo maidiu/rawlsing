@@ -20,6 +20,8 @@ from rawlsing_next.gt12_permission_translation_authority import (
 )
 from rawlsing_next.m4_v557_v558_publication_repository import (
     AuthorityRef as M4AuthorityRef,
+    M4IntegrityError,
+    PermissionWideningError,
     V557DecisionState,
 )
 from rawlsing_next.pre553_empirical_objects import (
@@ -302,39 +304,40 @@ def test_observed_zero_cannot_promote_to_positive_prev3_or_m1():
 
 def test_forbidden_substitute_lanes_permissions_and_actor_contamination_fail():
     result = _run()
-    terminal = result.v558_terminal
-    entry = terminal.repository.entries[0]
+    entry = result.v558_terminal.repository.entries[0]
+
+    # These hostile mutations are rejected by stronger M4 integrity/permission
+    # invariants before an inconsistent repository can reach terminal validation.
     for family in ("V553", "V555", "V556"):
-        bad = replace(entry, obj=replace(entry.obj, producer_family=family))
-        repo = replace(terminal.repository, entries=(bad, *terminal.repository.entries[1:]))
-        with pytest.raises(harness.GT12E2BHarnessError, match="V553/V555/V556"):
-            harness._require_repository_surface(replace(terminal, repository=repo))
+        with pytest.raises(M4IntegrityError, match="producer locator"):
+            replace(entry, obj=replace(entry.obj, producer_family=family))
     for uses in (("REVIEW",), ("ACTIVE_CAUSAL",), ("CONTEXT", "REVIEW")):
-        bad = replace(entry, obj=replace(entry.obj, producer_allowed_uses=uses))
-        repo = replace(terminal.repository, entries=(bad, *terminal.repository.entries[1:]))
-        with pytest.raises(harness.GT12E2BHarnessError):
-            harness._require_repository_surface(replace(terminal, repository=repo))
-    bad = replace(entry, obj=replace(entry.obj, semantic_class="ACTOR_STATE"))
-    repo = replace(terminal.repository, entries=(bad, *terminal.repository.entries[1:]))
-    with pytest.raises(harness.GT12E2BHarnessError, match="actor/V3/V2"):
-        harness._require_repository_surface(replace(terminal, repository=repo))
+        with pytest.raises(PermissionWideningError, match="producer ceiling differs"):
+            replace(entry, obj=replace(entry.obj, producer_allowed_uses=uses))
+    with pytest.raises(M4IntegrityError, match="does not bind exact producer object"):
+        replace(entry, obj=replace(entry.obj, semantic_class="ACTOR_STATE"))
 
 
 def test_wrong_v557_and_v558_use_fail_terminal_validation():
     result = _run()
-    terminal = result.v558_terminal
-    entry = terminal.repository.entries[0]
-    gov = replace(entry.governance, decision_state=V557DecisionState.ALLOW_REVIEW_ONLY, v557_allowed_uses=("REVIEW",))
-    repo = replace(terminal.repository, entries=(replace(entry, governance=gov), *terminal.repository.entries[1:]))
-    with pytest.raises(harness.GT12E2BHarnessError, match="V557"):
-        harness._require_repository_surface(replace(terminal, repository=repo))
-    resolved = terminal.resolution.resolved_entries[0]
-    resolution = replace(
-        terminal.resolution,
-        resolved_entries=(replace(resolved, resolver_allowed_uses=("REVIEW",)), *terminal.resolution.resolved_entries[1:]),
-    )
-    with pytest.raises(harness.GT12E2BHarnessError, match="V558"):
-        harness._require_repository_surface(replace(terminal, resolution=resolution))
+    with pytest.raises(GT12TypedBridgeError, match="ALLOW_CONTEXT_ONLY"):
+        publish_and_resolve_relation_v554_at_current_m4(
+            result.admission,
+            result.m1_evaluation,
+            v557_allowed_uses=("REVIEW",),
+            requested_resolution_uses=("CONTEXT",),
+            v557_authority_ref=_m4_auth("V557"),
+            v557_decision_state=V557DecisionState.ALLOW_REVIEW_ONLY,
+        )
+    with pytest.raises(GT12TypedBridgeError, match="exact V558 requested uses"):
+        publish_and_resolve_relation_v554_at_current_m4(
+            result.admission,
+            result.m1_evaluation,
+            v557_allowed_uses=("CONTEXT",),
+            requested_resolution_uses=("REVIEW",),
+            v557_authority_ref=_m4_auth("V557"),
+            v557_decision_state=V557DecisionState.ALLOW_CONTEXT_ONLY,
+        )
 
 
 def test_wrong_permission_authority_is_rejected_by_frozen_lower_bridge():
