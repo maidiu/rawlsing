@@ -1,0 +1,1265 @@
+{
+  "accepted_anchor": {
+    "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+    "tree": "196e81b7c8a284304b9aa7998e79590439b19524"
+  },
+  "active_candidate": {
+    "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+    "inspected": true,
+    "project_accepted_by_this_audit": false,
+    "tree": "3c33be9c92443fa558c14753a456b0e1ec27d3bc"
+  },
+  "audit_date_utc": "2026-09-05",
+  "contract_probe_results": {
+    "current_query_target_representation": {
+      "candidate_harness_equality": false,
+      "full_current_fact_constructed": false,
+      "normalized_types": [
+        "ExactRef",
+        "ExactRef"
+      ],
+      "ordinary_query_constructor_verified": true,
+      "query_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "semantic_exact_ref_equality": true,
+      "target_types": [
+        "dict",
+        "dict"
+      ]
+    },
+    "query_authority_scope_negative_controls": [
+      {
+        "authority_ref_hash_matches_declared_body": true,
+        "direct_authority_validator": "object family not named by exact authority",
+        "query_and_authority_hashes_valid": true,
+        "query_execution_state": "SUPPORTED",
+        "scope": "isolated synthetic source; one authority dimension is unfit",
+        "variant": "family_only"
+      },
+      {
+        "authority_ref_hash_matches_declared_body": true,
+        "direct_authority_validator": "exact authority scope does not include source_universe_refs",
+        "query_and_authority_hashes_valid": true,
+        "query_execution_state": "SUPPORTED",
+        "scope": "isolated synthetic source; one authority dimension is unfit",
+        "variant": "source_scope_only"
+      }
+    ],
+    "sealed_source_immutability": {
+      "after_cells": [
+        {
+          "cell": [
+            "0",
+            "0"
+          ],
+          "n": 0
+        },
+        {
+          "cell": [
+            "0",
+            "1"
+          ],
+          "n": 1
+        },
+        {
+          "cell": [
+            "1",
+            "0"
+          ],
+          "n": 1
+        },
+        {
+          "cell": [
+            "1",
+            "1"
+          ],
+          "n": 0
+        }
+      ],
+      "after_state": "SUPPORTED",
+      "before_cells": [
+        {
+          "cell": [
+            "0",
+            "0"
+          ],
+          "n": 1
+        },
+        {
+          "cell": [
+            "0",
+            "1"
+          ],
+          "n": 0
+        },
+        {
+          "cell": [
+            "1",
+            "0"
+          ],
+          "n": 0
+        },
+        {
+          "cell": [
+            "1",
+            "1"
+          ],
+          "n": 1
+        }
+      ],
+      "before_state": "SUPPORTED",
+      "event_projection_hashes_stale": [
+        true,
+        true
+      ],
+      "event_refs_unchanged": true,
+      "fact_identity_changed": true,
+      "known_expected_fact_replay_would_detect": true,
+      "query_ref_unchanged": true,
+      "release_ref_unchanged": true,
+      "same_provenance_refs": true,
+      "scope": "isolated two-respondent synthetic sealed C11 release",
+      "separate_carrier_integrity_check": "public object semantic projection/hash mismatch"
+    }
+  },
+  "counterevidence_results": {
+    "future_guard_binding": {
+      "decisions_equal_for_distinct_sources": true,
+      "delegation_result": "DELEGATE_TO_ACCEPTED_OWNER",
+      "internal_test_registry_only": true,
+      "owner_executed": false,
+      "public_production_outcome": "DENY_ZERO_EFFECT",
+      "state_mutations": false
+    },
+    "relation_m4_boundary": {
+      "generic_adapter_producer_uses": [
+        [
+          "REVIEW"
+        ],
+        [
+          "REVIEW"
+        ]
+      ],
+      "governed_wrapper_result": "adopted GT2 path requires ALLOW_CONTEXT_ONLY",
+      "production_v3_invoked": false,
+      "relation_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+      "scope": "existing synthetic relation fixture; REVIEW-only negative control"
+    }
+  },
+  "coverage": {
+    "accepted_direct_dependencies": 9,
+    "accepted_file_count": 54,
+    "accepted_governing_evidence_documents": 9,
+    "accepted_requested_surfaces": 20,
+    "accepted_test_modules": 16,
+    "active_code_test_surfaces": 7,
+    "active_file_count": 11,
+    "active_transport_documents": 4,
+    "repository_wide_audit": false,
+    "source_mirror_blob_reverification": "ALL_65_MATCH"
+  },
+  "current_closure_conditions": [
+    "Dispose ASTRA-003 before closing/adopting the audited E2B candidate.",
+    "Use scoped GT12 builders and governed exact CONTEXT wrapper, retaining current identity pins.",
+    "Prove genuine ordinary current pair through the public E2B boundary when loader is ready."
+  ],
+  "finding_counts": {
+    "by_class": {
+      "AUTHORITY_RISK": 1,
+      "CLEAN_SHEET_ALTERNATIVE": 0,
+      "CROSS_LAYER_CONTRADICTION": 1,
+      "DEFECT": 0,
+      "FUTURE_GT3_GT4_RISK": 1,
+      "IDENTITY_OR_PROVENANCE_RISK": 1,
+      "IDENTITY_PRESERVING_OPTIMIZATION": 1,
+      "MISSING_EXECUTABLE_INVARIANT": 0,
+      "OPEN_QUESTION": 1,
+      "TECHNICAL_DEBT": 0,
+      "TEST_COVERAGE_GAP": 0
+    },
+    "by_semantic_change_required": {
+      "NO": 4,
+      "UNCERTAIN": 1,
+      "YES": 1
+    },
+    "by_severity": {
+      "CRITICAL": 0,
+      "HIGH": 5,
+      "LOW": 0,
+      "MEDIUM": 1
+    },
+    "by_urgency": {
+      "BANK_FOR_LATER": 0,
+      "BEFORE_GT3_GT4": 4,
+      "HIGH_VALUE_AFTER_GT12": 1,
+      "STOP_THE_LINE": 1
+    },
+    "open_questions": 1,
+    "substantive_findings": 5,
+    "total": 6
+  },
+  "finding_ids": [
+    "ASTRA-001",
+    "ASTRA-002",
+    "ASTRA-003",
+    "ASTRA-004",
+    "ASTRA-005",
+    "ASTRA-006"
+  ],
+  "frozen_identities": {
+    "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "permission_adoption": "fe527dd7d6f5163edd5867adf9da2b03ea581c7d78758fe07bf6857c3fd4c46f",
+    "permission_translation_authority": "d052e299206b837292225853fca7ffcf8a3c02b6479c53065ad3aca135be489c",
+    "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+    "risk_set": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+  },
+  "frozen_permission": {
+    "adoption_commit": "5ce90e304a25359672591ed2b4a2dd605e3175c0",
+    "authority_id": "GT12_RELATION_SPECIFIC_PREV3_TO_M4_PRODUCER_PERMISSION_TRANSLATION_AUTHORITY",
+    "authority_version": "1.0.0",
+    "producer_allowed_uses": [
+      "CONTEXT"
+    ],
+    "upstream": "STRUCTURAL_MEDIATION_INPUT",
+    "v3_terminal": "DENY_ZERO_EFFECT",
+    "v557_decision": "ALLOW_CONTEXT_ONLY",
+    "v558_requested_uses": [
+      "CONTEXT"
+    ]
+  },
+  "frozen_risk_member_count": 19210,
+  "frozen_target_order": [
+    "Q86B",
+    "Q86A"
+  ],
+  "gt3_gt4_scope": "No enabling positive V3 authority on these contracts until ASTRA-001/002/004 are disposed and ASTRA-006 answered. Preparatory work on those gates is appropriate.",
+  "highest_value_correctness_action": "ASTRA-001",
+  "highest_value_future_action": "ASTRA-004",
+  "highest_value_optimization": "ASTRA-005",
+  "invariant_count": 24,
+  "invariant_counts_by_disposition": {
+    "CONTRADICTION": 1,
+    "GAP": 5,
+    "PARTIAL": 6,
+    "SOUND": 12
+  },
+  "invariant_matrix": [
+    {
+      "astra_disposition": "PARTIAL",
+      "confidence": 0.99,
+      "failure_behavior": "Wrong current hashes reject; ASTRA-003 also rejects valid target representation.",
+      "governing_authority_document": "[R1C current identity disposition](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_R1C_INTEGRATED_GT2_IDENTITY_AUTHORITY_DISPOSITION_R1/00_DISPOSITION.md)",
+      "id": "I01",
+      "invariant": "Current != historical",
+      "production_enforcement": "[_require_current_identity_values; require_current_r1c_actual_objects](https://github.com/maidiu/rawlsing/blob/a1630969f8e0b1003e657a38f77abbc413f83f2e/rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py)",
+      "runtime_replay_evidence": "Exact current query reconstructed; genuine full current pair not traversed.",
+      "test_enforcement": "[historical/synthetic public-entry rejection](https://github.com/maidiu/rawlsing/blob/a1630969f8e0b1003e657a38f77abbc413f83f2e/rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py)",
+      "type_constructor_enforcement": "Ordinary query/fact constructors authenticate self-identity; current pins are an additional consumer law."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "Nonpositive producer blocks positive profile/admission; typed decision remains nonpositive.",
+      "governing_authority_document": "Commission frozen facts B/D/E/J; governing returns provide intent, not proof.",
+      "id": "I02",
+      "invariant": "Only SUPPORTED enters the positive relation path",
+      "production_enforcement": "[produce_exact_conditional_support_profile](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/field_forge_conditional_support.py); [evaluate_gt2_relation_admission](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/wave1_ff_prev3_relation_admission.py)",
+      "runtime_replay_evidence": "Focused end-to-end synthetic shape path and typed-negative cases pass.",
+      "test_enforcement": "[observed-zero with stripped blocker; other typed negatives](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py)",
+      "type_constructor_enforcement": "POSITIVE_RELATION_STATES is exactly SUPPORTED; typed admission cannot relabel OBSERVED_ZERO positive."
+    },
+    {
+      "astra_disposition": "CONTRADICTION",
+      "confidence": 1.0,
+      "failure_behavior": "Accepted path rejects reversal; active public path falsely rejects lawful representation (ASTRA-003).",
+      "governing_authority_document": "[R1C current identity disposition](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_R1C_INTEGRATED_GT2_IDENTITY_AUTHORITY_DISPOSITION_R1/00_DISPOSITION.md); [D bounded return / commissioned frozen law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/D_FF_PREV3_ADMISSION_R1/00_RETURN.md)",
+      "id": "I03",
+      "invariant": "Exact ordered Q86B -> Q86A semantics",
+      "production_enforcement": "[_query_component_material](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/field_forge_conditional_support.py); [_validate](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_c_to_d_relation_bridge.py)",
+      "runtime_replay_evidence": "Current query hash verified; target equivalence true only after symmetric exact-ref normalization.",
+      "test_enforcement": "[test_role_order_is_frozen_q86b_conditioner_q86a_target](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_field_forge_conditional_support.py); [test_role_reversal_is_rejected_by_d_integrity](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py)",
+      "type_constructor_enforcement": "Ordered components/participants bind role, target ref and domain; active checker uses inconsistent Python types."
+    },
+    {
+      "astra_disposition": "PARTIAL",
+      "confidence": 0.97,
+      "failure_behavior": "Wrong risk identity/common eligibility fails; no independent actual member re-enumeration here.",
+      "governing_authority_document": "[R1C current identity disposition](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_R1C_INTEGRATED_GT2_IDENTITY_AUTHORITY_DISPOSITION_R1/00_DISPOSITION.md)",
+      "id": "I04",
+      "invariant": "Frozen 19,210-member exact risk set",
+      "production_enforcement": "[_validate_frozen_binding; _common_exact_risk_members; _validate_release_member_scope_linear](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/wave1_gt12_i03_positive_facts.py)",
+      "runtime_replay_evidence": "Frozen risk hash and current manifest checked; focused fixture reduces membership. No 19,210-row rerun.",
+      "test_enforcement": "[frozen literals; tampered risk; mismatched common routing](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py)",
+      "type_constructor_enforcement": "Exact risk ref, count and source membership checks; ref integrity depends on sealed body immutability."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "Mismatched query/hash rejected on FF boundary; correct binding included in fact hash.",
+      "governing_authority_document": "[R1C current identity disposition](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_R1C_INTEGRATED_GT2_IDENTITY_AUTHORITY_DISPOSITION_R1/00_DISPOSITION.md)",
+      "id": "I05",
+      "invariant": "EmpiricalFact binds the exact query",
+      "production_enforcement": "[_build_fact](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/_pre553_query_eval.py); [_validate_common_closure](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/field_forge_conditional_support.py)",
+      "runtime_replay_evidence": "Synthetic fixture query/fact closure checks pass; no full current fact reconstructed.",
+      "test_enforcement": "[test_tampered_query_predicate_or_replay_reference_fails_closed](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_pre553_empirical_query.py); [closure preservation](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_field_forge_conditional_support.py)",
+      "type_constructor_enforcement": "Fact semantic projection includes empirical_query_spec_ref and predicate binding."
+    },
+    {
+      "astra_disposition": "GAP",
+      "confidence": 0.99,
+      "failure_behavior": "Explicit carrier rehash detects stale body if invoked; ordinary sealed I03 read does not.",
+      "governing_authority_document": "[R1C current identity disposition](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_R1C_INTEGRATED_GT2_IDENTITY_AUTHORITY_DISPOSITION_R1/00_DISPOSITION.md); [D bounded return / commissioned frozen law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/D_FF_PREV3_ADMISSION_R1/00_RETURN.md)",
+      "id": "I06",
+      "invariant": "Provenance closure conserves exact source meaning",
+      "production_enforcement": "[_build_fact](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/_pre553_query_eval.py); [_closure_identities](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_d_to_m4_typed_bridge.py)",
+      "runtime_replay_evidence": "ASTRA-001: same source/provenance refs, changed SUPPORTED joint cells.",
+      "test_enforcement": "[reference-preserving closure](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_field_forge_conditional_support.py); [test_actual_pre553_ref_authority_material_survives_d_to_e_losslessly](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py)",
+      "type_constructor_enforcement": "Exact refs conserved downstream, but PRE553 nested source bodies remain writable after seal."
+    },
+    {
+      "astra_disposition": "PARTIAL",
+      "confidence": 0.99,
+      "failure_behavior": "Known expected fact/replay detects changed result; general durable-input premise needs ASTRA-001.",
+      "governing_authority_document": "[R1C current identity disposition](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_R1C_INTEGRATED_GT2_IDENTITY_AUTHORITY_DISPOSITION_R1/00_DISPOSITION.md)",
+      "id": "I07",
+      "invariant": "Replay conservation and exact recomputation",
+      "production_enforcement": "[replay_empirical_query](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/pre553_empirical_query.py); [replay_exact_conditional_support_profile](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/field_forge_conditional_support.py); [replay_gt2_relation_admission](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/wave1_ff_prev3_relation_admission.py)",
+      "runtime_replay_evidence": "Focused replay tests pass; ASTRA-001 changes result identity under stale upstream refs.",
+      "test_enforcement": "[storage order/replay tamper](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_pre553_empirical_query.py); [test_bridge_and_admission_replay_are_deterministic](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py)",
+      "type_constructor_enforcement": "Replay refs and historical authority commitments retained; immutable-input premise incomplete."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.98,
+      "failure_behavior": "Wrong permissions reject; relation output does not constitute actor authority.",
+      "governing_authority_document": "Commission frozen facts B/D/E/J; governing returns provide intent, not proof.",
+      "id": "I08",
+      "invariant": "FIELD FORGE is actor-independent structural relation production",
+      "production_enforcement": "[SEMANTIC_OWNER; produce_exact_conditional_support_profile](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/field_forge_conditional_support.py)",
+      "runtime_replay_evidence": "Pure relation construction and bounded chain tested; no actor runtime invoked.",
+      "test_enforcement": "[permission ceiling and nonpositive producer states](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_field_forge_conditional_support.py); [test_actor_or_v3_authority_is_not_created_by_bridge_payload](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py)",
+      "type_constructor_enforcement": "Frozen structural permission and relation payload; no actor execution interface."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "Integrity or typed nonpositive result; no generic PRE-V3 permission.",
+      "governing_authority_document": "[D bounded return / commissioned frozen law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/D_FF_PREV3_ADMISSION_R1/00_RETURN.md)",
+      "id": "I09",
+      "invariant": "PRE-V3 exact relation admission",
+      "production_enforcement": "[_integrity_decision; evaluate_gt2_relation_admission](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/wave1_ff_prev3_relation_admission.py); [admit_gt12_c_relation](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_c_to_d_relation_bridge.py)",
+      "runtime_replay_evidence": "Synthetic exact relation chain and replay pass.",
+      "test_enforcement": "[risk/order/hash tamper; nonpositive states; exact positive authority](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py)",
+      "type_constructor_enforcement": "Exact relation owner/hash/rule/authority/participants and typed decision."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "Wrong lane rejected before relation M1.",
+      "governing_authority_document": "[D bounded return / commissioned frozen law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/D_FF_PREV3_ADMISSION_R1/00_RETURN.md); [E bounded return / commissioned frozen law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/E_M1_RELATION_INGRESS_R1/00_RETURN.md)",
+      "id": "I10",
+      "invariant": "No empirical-direct substitute for admitted FIELD FORGE relation",
+      "production_enforcement": "[prepare_admitted_field_forge_relation_basis](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py); [prepare_typed_d_to_e_relation_basis](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_d_to_m4_typed_bridge.py)",
+      "runtime_replay_evidence": "Focused direct substitute/duck coercion negatives pass.",
+      "test_enforcement": "[test_empirical_direct_basis_substitution_is_rejected](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py); [test_no_i04_empirical_fact_or_duck_coercion](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py)",
+      "type_constructor_enforcement": "Relation contract and admission mapping required; empirical-direct keys rejected."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "Wrong contract/family rejected; permission gap ASTRA-002 does not create another family.",
+      "governing_authority_document": "[E bounded return / commissioned frozen law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/E_M1_RELATION_INGRESS_R1/00_RETURN.md)",
+      "id": "I11",
+      "invariant": "V554-only relation ingress",
+      "production_enforcement": "[evaluate_m1_admitted_field_forge_relation_v554](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py); [structural_objects_from_accepted_m1](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m4_m1_evaluation_binding.py)",
+      "runtime_replay_evidence": "Positive synthetic chain retains V554 producer family.",
+      "test_enforcement": "[test_exact_admitted_relation_sig004_emits_one_f1_and_direct_handoff](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py); [test_positive_typed_d_to_e_evaluates_only_relation_sig004_and_keeps_exact_lineage](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py)",
+      "type_constructor_enforcement": "Exact relation contract/SIG004 and V554_TO_V557_DIRECT; F1/F2/B1 exact refs."
+    },
+    {
+      "astra_disposition": "PARTIAL",
+      "confidence": 0.99,
+      "failure_behavior": "Wrapper rejects wrong binding; shared adapter can omit translation court (ASTRA-002).",
+      "governing_authority_document": "[Adopted permission law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/04_ADOPTION.md)",
+      "id": "I12",
+      "invariant": "STRUCTURAL_MEDIATION_INPUT -> CONTEXT requires adopted authority",
+      "production_enforcement": "[derive_adopted_permission_binding](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_permission_translation_authority.py); [publish_and_resolve_relation_v554_at_current_m4](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_d_to_m4_typed_bridge.py)",
+      "runtime_replay_evidence": "Governed wrapper derives lawful singleton and reaches V558 in focused tests.",
+      "test_enforcement": "[wrong authority/adoption/source/risk/order negatives](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py)",
+      "type_constructor_enforcement": "Exact authority id/version/hash and adoption receipt; exact admitted lineage."
+    },
+    {
+      "astra_disposition": "GAP",
+      "confidence": 0.99,
+      "failure_behavior": "Wrapper sound; exported shared boundary does not enforce singleton.",
+      "governing_authority_document": "[Adopted permission law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/04_ADOPTION.md)",
+      "id": "I13",
+      "invariant": "Producer allowed uses exactly CONTEXT",
+      "production_enforcement": "[publish_and_resolve_relation_v554_at_current_m4](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_d_to_m4_typed_bridge.py); [structural_objects_from_accepted_m1](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m4_m1_evaluation_binding.py)",
+      "runtime_replay_evidence": "ASTRA-002 direct shared adapter emits REVIEW-bearing objects from valid relation evaluation.",
+      "test_enforcement": "[signature-only and nonexact downstream shape tests](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py)",
+      "type_constructor_enforcement": "Wrapper derives tuple; shared relation branch accepts producer_allowed_uses argument."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "Exact GT12 wrapper denies other decisions; generic court depends on valid producer authority.",
+      "governing_authority_document": "[Adopted permission law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/04_ADOPTION.md)",
+      "id": "I14",
+      "invariant": "V557 exactly ALLOW_CONTEXT_ONLY on GT12 path",
+      "production_enforcement": "[require_exact_downstream_use_shape](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_permission_translation_authority.py); [govern_v557](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m4_v557_v558_publication_repository.py)",
+      "runtime_replay_evidence": "Governed negative controls reject before publication.",
+      "test_enforcement": "[test_nonexact_downstream_permission_shape_is_rejected_before_v554](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py)",
+      "type_constructor_enforcement": "Exact wrapper decision and singleton; generic governance checks non-widening relative to producer."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "No inheritance of root permission to dependencies; singleton enforced by GT12 wrapper.",
+      "governing_authority_document": "[Adopted permission law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/04_ADOPTION.md)",
+      "id": "I15",
+      "invariant": "V558 requests exactly CONTEXT on GT12 path",
+      "production_enforcement": "[require_exact_downstream_use_shape](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_permission_translation_authority.py); [resolve_v558](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m4_v557_v558_publication_repository.py)",
+      "runtime_replay_evidence": "Synthetic lawful wrapper resolves; wrong request shape fails.",
+      "test_enforcement": "[exact downstream shape controls](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py); [dependency permission checked itemwise](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_m4_v557_v558_publication_repository.py)",
+      "type_constructor_enforcement": "Wrapper exact request tuple; resolver itemwise root/dependency use checks."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.98,
+      "failure_behavior": "Reject substitution; typed temporalization requirement does not fabricate an alternative lane.",
+      "governing_authority_document": "Commission frozen facts B/D/E/J; governing returns provide intent, not proof. [E bounded return / commissioned frozen law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/E_M1_RELATION_INGRESS_R1/00_RETURN.md)",
+      "id": "I16",
+      "invariant": "No V553/V555/V556 substitute lane for relation ingress",
+      "production_enforcement": "[_contains_forbidden_key; prepare_admitted_field_forge_relation_basis](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py); [_require_repository_surface](https://github.com/maidiu/rawlsing/blob/a1630969f8e0b1003e657a38f77abbc413f83f2e/rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py)",
+      "runtime_replay_evidence": "Focused relation lane tests pass. Active synthetic private-chain test checks repository family.",
+      "test_enforcement": "[test_v553_coercion_key_is_rejected_on_relation_path](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py); [temporalization required never fabricates V553](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py)",
+      "type_constructor_enforcement": "Relation-specific accepted contract, direct V554 family; general M4 retains unrelated lawful families."
+    },
+    {
+      "astra_disposition": "GAP",
+      "confidence": 0.99,
+      "failure_behavior": "Local wrapper rejects; whole API invariant has ASTRA-002 gap.",
+      "governing_authority_document": "[Adopted permission law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/04_ADOPTION.md)",
+      "id": "I17",
+      "invariant": "No REVIEW or ACTIVE_CAUSAL widening",
+      "production_enforcement": "[require_exact_downstream_use_shape](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_permission_translation_authority.py); [structural_objects_from_accepted_m1](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m4_m1_evaluation_binding.py)",
+      "runtime_replay_evidence": "REVIEW accepted by shared adapter and denied by wrapper in separate controls; no publication or V3 effect claimed.",
+      "test_enforcement": "[permission shape tests at wrapper](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py)",
+      "type_constructor_enforcement": "Typed wrapper exact; shared relation adapter accepts generic use atoms."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "ReferenceClassError/closure rejection before acceptance; does not inspect future owner behavior.",
+      "governing_authority_document": "Commission frozen facts B/D/E/J; governing returns provide intent, not proof.",
+      "id": "I18",
+      "invariant": "Structural repository excludes actor/V3/V2 reverse material",
+      "production_enforcement": "[_is_forbidden_class; build_v558_repository_bundle](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m4_v557_v558_publication_repository.py)",
+      "runtime_replay_evidence": "Parametrized root and dependency rejection tests pass.",
+      "test_enforcement": "[actor/V3/V2/render classes; forbidden reverse-lane dependency](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_m4_v557_v558_publication_repository.py)",
+      "type_constructor_enforcement": "Forbidden semantic classes and reverse dependency classes rejected at construction."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 1.0,
+      "failure_behavior": "Deny with zero effects; no public positive delegation available.",
+      "governing_authority_document": "Commission frozen facts B/D/E/J; governing returns provide intent, not proof. [Adopted permission law](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/04_ADOPTION.md)",
+      "id": "I19",
+      "invariant": "GT1/GT2 V3 terminal is DENY_ZERO_EFFECT",
+      "production_enforcement": "[DEFAULT_ACCEPTED_POSITIVE_TRANSITION_AUTHORITIES; evaluate_psepf_zero_positive_guard](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/v3_psepf_zero_positive_guard.py)",
+      "runtime_replay_evidence": "Public probe remains DENY_ZERO_EFFECT despite claimed accepted authority.",
+      "test_enforcement": "[test_active_registry_is_exactly_zero_positive; test_runtime_caller_cannot_override_zero_positive_registry](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_psepf_zero_positive_guard.py)",
+      "type_constructor_enforcement": "Immutable empty accepted-positive registry; public function has no registry override."
+    },
+    {
+      "astra_disposition": "PARTIAL",
+      "confidence": 0.99,
+      "failure_behavior": "Current denial cannot mutate absent runtime; returned counters do not prove future stateful effects.",
+      "governing_authority_document": "Commission frozen facts B/D/E/J; governing returns provide intent, not proof.",
+      "id": "I20",
+      "invariant": "Zero actor/ledger/cursor/RNG/scheduler effects where asserted",
+      "production_enforcement": "[GuardDecision; evaluate_psepf_zero_positive_guard](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/v3_psepf_zero_positive_guard.py); [zero-effect consumer checks](https://github.com/maidiu/rawlsing/blob/a1630969f8e0b1003e657a38f77abbc413f83f2e/rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py)",
+      "runtime_replay_evidence": "Pure function path sound; real actor/ledger/runtime state integration not executed or observed.",
+      "test_enforcement": "[guarded truth zero effects](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_psepf_zero_positive_guard.py); [synthetic full bounded chain](https://github.com/maidiu/rawlsing/blob/a1630969f8e0b1003e657a38f77abbc413f83f2e/rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py)",
+      "type_constructor_enforcement": "Pure guard returns zero counters and unchanged supplied fingerprints; no stateful owner exists here."
+    },
+    {
+      "astra_disposition": "GAP",
+      "confidence": 0.99,
+      "failure_behavior": "Validator rejects; shared operation misses family/source fit (ASTRA-002).",
+      "governing_authority_document": "Commission frozen facts B/D/E/J; governing returns provide intent, not proof.",
+      "id": "I21",
+      "invariant": "Exact positive authority fits operation, object family and source",
+      "production_enforcement": "[require_positive_authority](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/pre553_empirical_authority.py); [_validate_query_authority](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/wave1_gt12_i03_positive_facts.py)",
+      "runtime_replay_evidence": "Two independent valid-hash negative controls still return SUPPORTED through shared I03.",
+      "test_enforcement": "[test_positive_authority_is_exact_operation_family_and_scope_bounded](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_pre553_empirical_objects_authority.py)",
+      "type_constructor_enforcement": "Scoped validator and GT12 builders enforce; shared I03 only checks ALLOW in relevant ordinary path."
+    },
+    {
+      "astra_disposition": "GAP",
+      "confidence": 0.99,
+      "failure_behavior": "Ingest rehash works, post-seal I03 read misses drift.",
+      "governing_authority_document": "[C11LogicalRelease immutable-record contract](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/pre553_c11_repository.py)",
+      "id": "I22",
+      "invariant": "A sealed content-addressed source remains immutable",
+      "production_enforcement": "[validated ingest](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/pre553_c11_ingest.py); [resolve_release_exact](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/pre553_c11_repository.py)",
+      "runtime_replay_evidence": "ASTRA-001 produces different joint cells with stale event identities through public nested aliases.",
+      "test_enforcement": "[ingest/seal integrity controls](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_pre553_c11_repository_ingest.py)",
+      "type_constructor_enforcement": "Outer freezing only; nested fields and public projection aliases writable."
+    },
+    {
+      "astra_disposition": "PARTIAL",
+      "confidence": 0.9,
+      "failure_behavior": "Declared missing dependencies reject; reconstruction trust boundary is ASTRA-006 OPEN_QUESTION.",
+      "governing_authority_document": "Commission frozen facts B/D/E/J; governing returns provide intent, not proof.",
+      "id": "I23",
+      "invariant": "Standalone required/negative dependency closure",
+      "production_enforcement": "[build_v558_repository_bundle; resolve_v558](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m4_v557_v558_publication_repository.py)",
+      "runtime_replay_evidence": "Ordinary builder/resolver tests sound; accepted codec roundtrip not inspected.",
+      "test_enforcement": "[standalone closure; itemwise permission tests](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_m4_v557_v558_publication_repository.py)",
+      "type_constructor_enforcement": "Builder validates declared edges; object dependency-role metadata not all covered in checksum material."
+    },
+    {
+      "astra_disposition": "SOUND",
+      "confidence": 0.99,
+      "failure_behavior": "Missing/corrupt exact object fails; no latest/fuzzy repair.",
+      "governing_authority_document": "[R1C current identity disposition](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_R1C_INTEGRATED_GT2_IDENTITY_AUTHORITY_DISPOSITION_R1/00_DISPOSITION.md)",
+      "id": "I24",
+      "invariant": "Currentness is exact selection, not latest/fuzzy fallback",
+      "production_enforcement": "[resolve_release_exact](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/pre553_c11_repository.py); [exact_resolution_key; resolve_v558](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/m4_v557_v558_publication_repository.py)",
+      "runtime_replay_evidence": "Exact-key failure tests pass. Current full loader is pending in audited active candidate.",
+      "test_enforcement": "[missing exact release no latest fallback](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_pre553_empirical_query.py); [exact index and frozen resolver policy](https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/tests/test_m4_v557_v558_publication_repository.py)",
+      "type_constructor_enforcement": "Exact key/hash and frozen resolver policy; a valid self-hash alone is not current identity."
+    }
+  ],
+  "limitations": [
+    "Bounded source mirror; direct imports outside the requested surfaces are not full subsystem audits.",
+    "Actual current query construction does not establish full current fact reconstruction or E2B execution.",
+    "Cost is inferred exact UTF-8 representation size, not measured memory/time speedup.",
+    "R4A binary body commitments were inspected as metadata; bodies not downloaded.",
+    "No present public positive V3 leakage demonstrated.",
+    "No banked current GT2 fact corruption demonstrated.",
+    "Dependency-role reconstruction remains an open question.",
+    "Findings are pinned to commissioned commits; later work not adjudicated."
+  ],
+  "most_consequential_falsified_defect": "Caller-claimed positive authority or registry override cannot make the public V3 guard positive at the accepted anchor.",
+  "optimization_opportunities": [
+    {
+      "authority_effect": "NONE",
+      "current_cost": "3,108,906 compact manifest/inventory bytes expand to an inferred 47,238,068 canonical document bytes, 192,109 repeated exact-ref occurrences in four arrays and 2,884 default 16,384-character shards. Full text/parse/canonical constructor intermediates recur.",
+      "evidence": [
+        "ASTRA-005",
+        "https://github.com/maidiu/rawlsing/blob/a1630969f8e0b1003e657a38f77abbc413f83f2e/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/R4_E2A_RUNTIME_TRANSPORT_SEAL_R1/R4A_CURRENT_GT2_EXECUTION_CONSTRUCTOR_COMPLETE_EXTRACTION_R2/02_CONSTRUCTOR_COMPLETE_MANIFEST.json",
+        "https://github.com/maidiu/rawlsing/blob/a1630969f8e0b1003e657a38f77abbc413f83f2e/rawlsing_next/pre553_repo_native_seal.py"
+      ],
+      "expected_value": "VERY_HIGH",
+      "identity_effect": "PRESERVING",
+      "implementation_cost": "MEDIUM",
+      "proposed_change_class": "IDENTITY_PRESERVING_OPTIMIZATION",
+      "recommended_timing": "HIGH_VALUE_AFTER_GT12",
+      "semantic_risk": "LOW",
+      "title": "Keep exact provenance compact through seal/rehydration",
+      "verification_required": "Preserve every canonical query/fact byte, authority/ref/order commitment and current pin; reject hostile transport corruption; benchmark the same actual input for wall time and peak memory. Use streaming or dictionary-backed views without changing semantic projection."
+    },
+    {
+      "authority_effect": "NONE",
+      "current_cost": "Hand-maintained ref/projection conversions repeat across PRE553, FF, admission, M1, M4 and the active consumer; ASTRA-003 is a concrete recurring defect class rather than a style concern.",
+      "evidence": [
+        "ASTRA-003",
+        "https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/pre553_empirical_objects.py",
+        "https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_d_to_m4_typed_bridge.py",
+        "https://github.com/maidiu/rawlsing/blob/a1630969f8e0b1003e657a38f77abbc413f83f2e/rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py"
+      ],
+      "expected_value": "HIGH",
+      "identity_effect": "PRESERVING",
+      "implementation_cost": "MEDIUM",
+      "proposed_change_class": "SAFE_REFACTOR",
+      "recommended_timing": "Fix ASTRA-003 during GT12; consolidate proven mechanical conversions after closure.",
+      "semantic_risk": "LOW",
+      "title": "One tested exact-reference conversion contract at each semantic boundary",
+      "verification_required": "Golden roundtrip tests distinguish ordered refs from canonical sets and PRE553 kind refs from M4 schema refs. Preserve every field/version/hash. Do not unify semantic roles just because their dictionaries look similar."
+    },
+    {
+      "authority_effect": "NONE",
+      "current_cost": "Canonicalization, integrity checks and large closure traversals repeat across constructors and bridges; current nested mutability prevents safely treating a ref as a permanent validation-cache key.",
+      "evidence": [
+        "ASTRA-001",
+        "ASTRA-002",
+        "https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/pre553_empirical_objects.py",
+        "https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_c_to_d_relation_bridge.py",
+        "https://github.com/maidiu/rawlsing/blob/abd0b5ff2ffcf235b67140641f88cc61ca45c12c/rawlsing_next/gt12_d_to_m4_typed_bridge.py"
+      ],
+      "expected_value": "HIGH",
+      "identity_effect": "PRESERVING",
+      "implementation_cost": "MEDIUM",
+      "proposed_change_class": "IDENTITY_PRESERVING_OPTIMIZATION",
+      "recommended_timing": "After ASTRA-001 and ASTRA-002; bank until a measured hot path justifies caching.",
+      "semantic_risk": "MEDIUM",
+      "title": "Validate immutable evidence once per exact operation scope",
+      "verification_required": "Prove deep immutability first. Cache keys must include exact authority/adoption, operation, family, source and other relevant scope; content hash alone is not operation fitness. Reuse only the same proof proposition, never a broader authority decision."
+    }
+  ],
+  "package_file_digests_excluding_this_summary": {
+    "00_EXECUTIVE_DISPOSITION.md": {
+      "bytes": 4551,
+      "sha256": "2da74b3f74ac09844ddbc056d492ac65d8c016af372f63d5a3b4354eeee919ba"
+    },
+    "01_SCOPE_AND_COVERAGE.md": {
+      "bytes": 22974,
+      "sha256": "fb0645f3b48d882c8e661b2425b9a606573058f050eca258be831732d68af0c5"
+    },
+    "02_FINDINGS_LEDGER.jsonl": {
+      "bytes": 47314,
+      "sha256": "1507b942daf3f7a7764e7ddd2434ce963a32b00cdecaa0dd70a577251fd35fd1"
+    },
+    "03_INVARIANT_TRACE_MATRIX.md": {
+      "bytes": 32137,
+      "sha256": "44252c17e1b5c375784971b4edb37801969d3a7a93549280f38250cf2833db3c"
+    },
+    "04_ARCHITECTURAL_CONTRADICTIONS.md": {
+      "bytes": 7583,
+      "sha256": "78a816e740207357691639ecc27557c721e5665cf0ec4bbb33befe0e1f6dc962"
+    },
+    "05_TEST_ADEQUACY.md": {
+      "bytes": 12500,
+      "sha256": "71729e618b80ea21e8c042acefea13290f792c5b07c5768e3e331360b4cdce3c"
+    },
+    "06_OPTIMIZATION_AND_SIMPLIFICATION_LEDGER.md": {
+      "bytes": 7759,
+      "sha256": "61b8d9b18d09dba7e31a1a1e208c9bfe57e6bec441188e0f848572e1b078251e"
+    },
+    "07_GT3_GT4_PREMORTEM.md": {
+      "bytes": 4914,
+      "sha256": "0beb1e35a70aeb7d6d9b7426337cb4ef0b082066f0d0d993bf2a6e41f4da5c12"
+    },
+    "08_PATH_DEPENDENCE_AND_BLIND_SPOTS.md": {
+      "bytes": 8260,
+      "sha256": "4a1f1bb8f37c5a3b756488051f0be05e44f7cc63911777bd52ea368a6c4744ed"
+    },
+    "09_OPEN_QUESTIONS_AND_NEXT_AUDITS.md": {
+      "bytes": 5764,
+      "sha256": "c30dbdc355cd51e8d92a7de1b770e1283a8e1c5fc280f040360ebce7b4c76f76"
+    }
+  },
+  "persistence": {
+    "audit_directory": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/ASTRA_DEEP_SYSTEM_AUDIT_R1",
+    "branch": "agent/astra-rawlsing-deep-system-audit-r1",
+    "branch_created_from": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+    "files": [
+      "00_EXECUTIVE_DISPOSITION.md",
+      "01_SCOPE_AND_COVERAGE.md",
+      "02_FINDINGS_LEDGER.jsonl",
+      "03_INVARIANT_TRACE_MATRIX.md",
+      "04_ARCHITECTURAL_CONTRADICTIONS.md",
+      "05_TEST_ADEQUACY.md",
+      "06_OPTIMIZATION_AND_SIMPLIFICATION_LEDGER.md",
+      "07_GT3_GT4_PREMORTEM.md",
+      "08_PATH_DEPENDENCE_AND_BLIND_SPOTS.md",
+      "09_OPEN_QUESTIONS_AND_NEXT_AUDITS.md",
+      "10_MACHINE_SUMMARY.json"
+    ],
+    "final_commit_sha_reported_out_of_band": true,
+    "main_or_pre_main_move_authorized": false,
+    "prior_verified_checkpoint": "8f2b411db0beeef930b2bb97d6d5653d5f3dacf0",
+    "production_changes_authorized": false,
+    "project_acceptance_issued": false,
+    "reason": "A commit cannot include its own SHA without changing its identity; final branch/tree/file readback is reported at delivery.",
+    "required_parent_of_final_commit": "8f2b411db0beeef930b2bb97d6d5653d5f3dacf0"
+  },
+  "repository": "maidiu/rawlsing",
+  "representation_cost_inference": {
+    "A_compact_manifest_plus_binary_bytes": 3108906,
+    "B_constructor_document_canonical_bytes": 47238068,
+    "B_default_16384_char_shard_count": 2884,
+    "B_to_A_byte_ratio": 15.194,
+    "calculation": "exact UTF-8 length inferred from committed templates/counts; not a full fact materialization benchmark",
+    "fact_as_dict_canonical_bytes": 47230656,
+    "fact_exact_ref_occurrences_in_four_large_arrays": 192109,
+    "query_as_dict_canonical_bytes": 7329
+  },
+  "runtime_validation": {
+    "accepted_focused_tests": {
+      "module_count": 16,
+      "passed": 298,
+      "seconds": 1.16
+    },
+    "active_focused_tests": {
+      "module_count": 3,
+      "passed": 33,
+      "seconds": 0.35
+    },
+    "current_full_public_e2b_executed": false,
+    "exact_current_query_ordinary_constructor_verified": true,
+    "external_pytest_plugins_disabled": true,
+    "full_current_fact_materialized": false,
+    "positive_owner_executed": false,
+    "pytest": "9.1.1",
+    "python": "3.12.13",
+    "real_current_source_query_reexecuted": false,
+    "test_count_is_acceptance": false
+  },
+  "safe_to_begin_gt3_gt4_after_closure": "NO",
+  "safe_to_continue_current_gt12_closure": "YES_WITH_CONDITIONS",
+  "schema": "ASTRA_DEEP_SYSTEM_AUDIT_R1@1.0.0",
+  "self_hostile_pass": {
+    "completed": true,
+    "dependency_hypothesis_downgraded_to_open_question": true,
+    "duplicate_authority_instances_merged": true,
+    "location": "04_ARCHITECTURAL_CONTRADICTIONS.md",
+    "top_five_ids": [
+      "ASTRA-001",
+      "ASTRA-002",
+      "ASTRA-003",
+      "ASTRA-004",
+      "ASTRA-005"
+    ]
+  },
+  "source_catalog": [
+    {
+      "bytes": 15680,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "92fa01689a82f12fa2c9a70faa06695dcfe87f75",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_FINAL_E2A_REAL_GT2_RERUN_R1/01_DOWNSTREAM_INPUT_RECEIPT.json",
+      "scope": "accepted",
+      "sha256": "fcc96dcaba67791ac8728b684fab34c6d66cc5e1e52932b54d44be3ea61d9660"
+    },
+    {
+      "bytes": 4226,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "2a6e12177b4d09ddf3fe91fc0819076d9c02778e",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT12_R1C_INTEGRATED_GT2_IDENTITY_AUTHORITY_DISPOSITION_R1/00_DISPOSITION.md",
+      "scope": "accepted",
+      "sha256": "996a71b3fe06dffb84fbcf7c1e59a672ce1fb5c3a218823e26b2ee439d1c66a3"
+    },
+    {
+      "bytes": 5441,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "23698f212cdfe977dd85028b38c5a6bb755dac88",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/00_AUTHORITY_CANDIDATE.json",
+      "scope": "accepted",
+      "sha256": "4b08ee14b530850b98e952a2d086d5af5c334a2e5a5e071196fb006e358b8692"
+    },
+    {
+      "bytes": 7680,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "4a095e7c5d401c1d3f3654aa6a2bc0b1d81934c8",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/01_CONSTITUTION.md",
+      "scope": "accepted",
+      "sha256": "94ac4f235af938fbfc267309535e3eebbdde9e66018f092ac6c238361b4e37fe"
+    },
+    {
+      "bytes": 3166,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "648e0aee2914266a21fa7e9bcb5caae95169aaf5",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/03_VOZHD_ADOPTION.json",
+      "scope": "accepted",
+      "sha256": "bcad05ba1b251ba51fb87e25e1f1755d6cbb03f3cd007565f9d7fa507706556e"
+    },
+    {
+      "bytes": 3307,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "ce29ebb787680419b34ae8af699a95c389593b22",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/04_ADOPTION.md",
+      "scope": "accepted",
+      "sha256": "e9006dd55dcd0674c3d2bae1ccc567285becf654551c0a4ff60874e6a438a3ed"
+    },
+    {
+      "bytes": 4106,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "e4f46d9e4edee2f7a93e763e168014c64f76c79c",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/FINAL_E2B_REAL_INTEGRATED_GT2_POSITIVE_CHAIN_R1/00_RETURN.md",
+      "scope": "accepted",
+      "sha256": "3de085b767b5bc13c5ffd17d12dd064f14da09ac957bea91dae7a2600fadcf2c"
+    },
+    {
+      "bytes": 7485,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "121c1dcbfbbe792bd07016bccdf2e54075017a66",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/D_FF_PREV3_ADMISSION_R1/00_RETURN.md",
+      "scope": "accepted",
+      "sha256": "6047650c7ad1421b6b703ad826d50a56bd53ef7418fcb3fa977bb88c108b771d"
+    },
+    {
+      "bytes": 7656,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "a048675cc1a3e94ba618f0731dd9d388b562406d",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_IMPLEMENTATION_WAVE_R1/E_M1_RELATION_INGRESS_R1/00_RETURN.md",
+      "scope": "accepted",
+      "sha256": "34eccd70cc498331b6b0f25bd7521ea90706a152050524f599879ab0ab88174f"
+    },
+    {
+      "bytes": 16717,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "6b38b0b749961358b65b31871a8cd5ca4a98fe77",
+      "path": "rawlsing_next/_pre553_query_common.py",
+      "scope": "accepted",
+      "sha256": "4bdd4a85bca4723e2f490efe799acf10e72eea31b2539e0101743e5853e10550"
+    },
+    {
+      "bytes": 28498,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "492d9346c2164740af9c99cafd80e9855675a6f4",
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "scope": "accepted",
+      "sha256": "e3ab21c7535a81a64beec5492c19632500d80720d2e1a2c00f9412e97238528c"
+    },
+    {
+      "bytes": 17238,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "902b179817f02a46fc0844971f268113123347f4",
+      "path": "rawlsing_next/_pre553_query_predicate.py",
+      "scope": "accepted",
+      "sha256": "55af0e45631a273bf4ead77236b19de264b06871742d8c10de3eb21960d6fe0d"
+    },
+    {
+      "bytes": 27753,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "path": "rawlsing_next/field_forge_conditional_support.py",
+      "scope": "accepted",
+      "sha256": "ec9558c68a2138de7d44796986db39df28a679ccc1506785b79929d624d32034"
+    },
+    {
+      "bytes": 9785,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "ea04ec079e8d60e6e5c7236ec5b54898876be4b3",
+      "path": "rawlsing_next/gt12_c_to_d_relation_bridge.py",
+      "scope": "accepted",
+      "sha256": "3360a93574750aaa1a67b43966e67b08d3ff89ea022bc0e59a69273dab920910"
+    },
+    {
+      "bytes": 28866,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "ec098591f765ca09b200503b7c399219d2179e10",
+      "path": "rawlsing_next/gt12_d_to_m4_typed_bridge.py",
+      "scope": "accepted",
+      "sha256": "47ff920b53d916cd390471d2b06194eb95325dcc1b2157ea15370e1de071ee87"
+    },
+    {
+      "bytes": 10809,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6",
+      "path": "rawlsing_next/gt12_permission_translation_authority.py",
+      "scope": "accepted",
+      "sha256": "a24ea09cc0dbda12579273195963f5ae7b5f6c398e8366df07c8443910813219"
+    },
+    {
+      "bytes": 42249,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+      "path": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+      "scope": "accepted",
+      "sha256": "cc4a137263ba87631d01366751809ab8a008f4c13f1c29c8af8a0806234bc154"
+    },
+    {
+      "bytes": 23847,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "scope": "accepted",
+      "sha256": "5f6bf653d287dab8063696f2b81a79ab4083e44eaa9b901cfb5aa4589a098ec0"
+    },
+    {
+      "bytes": 16377,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "path": "rawlsing_next/m2_v555_atomic_route.py",
+      "scope": "accepted",
+      "sha256": "71fcd8b2acb0f9ce4fbed470420b38131a3b9246028b7e764bfda8ca4d04582c"
+    },
+    {
+      "bytes": 28872,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "a4749541273c921ebe4ff7a0b91460bb1e016b87",
+      "path": "rawlsing_next/m3_v556_higher_order_structural.py",
+      "scope": "accepted",
+      "sha256": "576c0f4a816e56f431a1af4ca58bcee038c25e716083856333095c7828e592b6"
+    },
+    {
+      "bytes": 4633,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "491233f9d21e4c851bd3075aef65b5d3022d4127",
+      "path": "rawlsing_next/m4_m1_evaluation_binding.py",
+      "scope": "accepted",
+      "sha256": "5d6516658bfd335f9a1f93f484b645c240f85cbb9bea11d2f87299675d088316"
+    },
+    {
+      "bytes": 64415,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "9005308fb06686b593783666e77d06619645b2bb",
+      "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "scope": "accepted",
+      "sha256": "f3e4bed0868a48b9d6c265263a62e0990e372e7ac52a179aa19969fe4a58d5f5"
+    },
+    {
+      "bytes": 86203,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "ac7f3a013129bc148debf8f011597971a2c99442",
+      "path": "rawlsing_next/pre553_authority_maintenance.py",
+      "scope": "accepted",
+      "sha256": "289a2834924ce9120b97a91036a4fa9def160fc759bfeb36a881bff05f0bdc58"
+    },
+    {
+      "bytes": 26965,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "2d291600b9a10c56d9c6f6de7f7d619f6c52e829",
+      "path": "rawlsing_next/pre553_batch_runner.py",
+      "scope": "accepted",
+      "sha256": "5071bde0180db05f59386884d5de2bdea503cd26db2024806a92887d2a5a1e04"
+    },
+    {
+      "bytes": 40034,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "scope": "accepted",
+      "sha256": "0c56a0f6f656547a096982a6adab21c9b47d749385411a5d159f2b5390eec8bf"
+    },
+    {
+      "bytes": 25344,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "path": "rawlsing_next/pre553_c11_integrity.py",
+      "scope": "accepted",
+      "sha256": "3963facef5c8ae2981991ffa8c5c5c9b717fb4e09f342eec277198fc5cf38a33"
+    },
+    {
+      "bytes": 5278,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "scope": "accepted",
+      "sha256": "84a71fe43307cca30f9eeaaedb269d8390468a4744a0fac251aebc2cda7b498e"
+    },
+    {
+      "bytes": 13566,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "6714340facfe186c6cc521884cc85ab6340ad989",
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "scope": "accepted",
+      "sha256": "d5fdf4f7e214af5c02046855f632a70f3c52fc9711113b5d2a46e89ddbaefc79"
+    },
+    {
+      "bytes": 40719,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "91974c52ce8c0acafa939be0d7d83f4a5c8085b7",
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "scope": "accepted",
+      "sha256": "22574c2fac13bbc644b4f1861f853d813b2342d928dd8c49111d849f0f102acf"
+    },
+    {
+      "bytes": 17635,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "d81e4ebebaf314ad39b4c56452f9331811c7e3a0",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "scope": "accepted",
+      "sha256": "0c7b4798167558d794dc0bd05e131352137b380cd4addbaf96fc1cf9c4a8dde8"
+    },
+    {
+      "bytes": 2892,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+      "path": "rawlsing_next/pre553_physical_c11_bridge.py",
+      "scope": "accepted",
+      "sha256": "c1cd1d0855520b93521259cca698e9f5843402081f819adccc013d96a27afb74"
+    },
+    {
+      "bytes": 11943,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "scope": "accepted",
+      "sha256": "6ca15efcb6df4cdfd91c0592ae771f6e9e463546c9ff826670909c6306cd1e02"
+    },
+    {
+      "bytes": 25996,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "7c509c2098d0030f253344eb3f682471378812a8",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "scope": "accepted",
+      "sha256": "9406f84b50ecd853873d4906f11f5f99670f1e0e19c0f5e2c862a63fa83d1afe"
+    },
+    {
+      "bytes": 14523,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "e0c4a041ab26254823ac5608177aa593d5f3a1ab",
+      "path": "rawlsing_next/tests/test_field_forge_conditional_support.py",
+      "scope": "accepted",
+      "sha256": "58ebc00a039fd56c91d15d731459e1802cfa4106e156b365a9e713ccc9028b03"
+    },
+    {
+      "bytes": 13868,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "7beacf0a0cdae15c18e118f57a09961a667f9b52",
+      "path": "rawlsing_next/tests/test_gt12_closure_b_c_to_d_bridge.py",
+      "scope": "accepted",
+      "sha256": "a0ca81923ccaff7d61df5c5d563f771d987f5004e4abb2cc33cf40d8c5c1c269"
+    },
+    {
+      "bytes": 22747,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "e8f3a19734e3f7e290d6029e97e027d1778784a2",
+      "path": "rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py",
+      "scope": "accepted",
+      "sha256": "9930c86cf1556c1d2d78a3ae8d69d9d9f00df456032e9ed7da9791f728c10c50"
+    },
+    {
+      "bytes": 17842,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "09e38c324a4f6711709255c6d8d7da3ba75cf04f",
+      "path": "rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py",
+      "scope": "accepted",
+      "sha256": "ff0bee7282665c897b3d95898e57e6bb8f38e14f9c6fcd47125b87b696ee59c8"
+    },
+    {
+      "bytes": 20744,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "e6471ace122466988bb17019f70816a59a04f1f7",
+      "path": "rawlsing_next/tests/test_m1_temporal_v554_admission_dedup.py",
+      "scope": "accepted",
+      "sha256": "7a6b82880b27946e1e7cf0953bca0032ea192c1825cf280f89357214c49016d1"
+    },
+    {
+      "bytes": 24838,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "f29a06ba2d3e43786a5562cae86a356721c6b922",
+      "path": "rawlsing_next/tests/test_m4_v557_v558_publication_repository.py",
+      "scope": "accepted",
+      "sha256": "587db37a4a2c91f5d38e7d3cef3d13a671df3993bee77c35d85055d0417ed3ca"
+    },
+    {
+      "bytes": 22165,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "e7ac05848fd6489751a0ff37d4ae85037412751b",
+      "path": "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+      "scope": "accepted",
+      "sha256": "7199015d8ecd717495f1351cc47dad8e6984ad46bdb52a5ce16c64b9df43e339"
+    },
+    {
+      "bytes": 17656,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "d22a1196008233e12f9b04918d417b32e0f53576",
+      "path": "rawlsing_next/tests/test_pre553_batch_runner.py",
+      "scope": "accepted",
+      "sha256": "dd7c78824bde3f3229940e7a97279fadd6078dbeba3366f8df4456bfacb5dad6"
+    },
+    {
+      "bytes": 21761,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "31f731093aaafff7ecd4ca5a8c2c9a8e05a46936",
+      "path": "rawlsing_next/tests/test_pre553_c11_repository_ingest.py",
+      "scope": "accepted",
+      "sha256": "2977b7d5298b5cfeb701fb9d84f07383abdcb87ea73001ad80fa2ee1fddf1715"
+    },
+    {
+      "bytes": 20424,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "b73e2fbd983ea8642b5de9614ab8a17ac0e07f51",
+      "path": "rawlsing_next/tests/test_pre553_empirical_objects_authority.py",
+      "scope": "accepted",
+      "sha256": "5ca1dc0a3ab0a9a935522c6f740ac4a72d5fb82ac88d5d3406abe432c61b16f4"
+    },
+    {
+      "bytes": 49346,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "4134bb60376d05c9d32ac877f1d89a680a6a9292",
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "scope": "accepted",
+      "sha256": "5ba204105df1a82fc92ba0b65392a4b108f0aad1854e717d33feb460f3fb2fe2"
+    },
+    {
+      "bytes": 7178,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "21cfdee118d70d41def6ba654bbada5214cc1112",
+      "path": "rawlsing_next/tests/test_psepf_zero_positive_guard.py",
+      "scope": "accepted",
+      "sha256": "ce8a20f2bb695cd4b03d613a186ce7e41063d380dad68e9d7a839cce7d171df0"
+    },
+    {
+      "bytes": 12146,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "943e0b01e04919d347281b72894dc1e874ecb83e",
+      "path": "rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py",
+      "scope": "accepted",
+      "sha256": "42a0e7f0b058c5b4edf5ad76485fc6bf3cf3e6ec711179328f67d0517e2cd162"
+    },
+    {
+      "bytes": 2808,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "3e1733779710945724c349ead21e28e8b78e1165",
+      "path": "rawlsing_next/tests/test_wave1_gt12_a2_real_gt1.py",
+      "scope": "accepted",
+      "sha256": "c981b9ec4d7e83f1862a4c89476dc5cb12664563f31ac10e195adab142c02bdd"
+    },
+    {
+      "bytes": 10591,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "747857536bc1ea04e4ceac8ed79894acca864359",
+      "path": "rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py",
+      "scope": "accepted",
+      "sha256": "79d99a1c9e6056cfb03b1478048e74e679562c868d1b49e8d895ceea763eafec"
+    },
+    {
+      "bytes": 11535,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "3ba4cc1202d08f56cb714c9d3ed0124df2bb46ed",
+      "path": "rawlsing_next/tests/test_wave1_r5_q86_c11_projection.py",
+      "scope": "accepted",
+      "sha256": "7b56b75905fec1f71401457cae1997b43d01b826af5f2eec6757c6adb0a09101"
+    },
+    {
+      "bytes": 13703,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "e0528d65215cb431196570c38bac4eae94217a1b",
+      "path": "rawlsing_next/v3_psepf_zero_positive_guard.py",
+      "scope": "accepted",
+      "sha256": "12b2c49f664662cbfe993fc4817751ed9edfff3ce89c44cac489a00cb5e42177"
+    },
+    {
+      "bytes": 32150,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "c5fb675fd6f95cb7dc9e0ad505224803839cc645",
+      "path": "rawlsing_next/wave1_ff_prev3_relation_admission.py",
+      "scope": "accepted",
+      "sha256": "6a47f85644076e140e0d57cb4a8c064be6ce8c2eedba99dca8c7fa50f0355ceb"
+    },
+    {
+      "bytes": 11822,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "595610fd3a0c453d8a4528f52fdd9be458db5e9c",
+      "path": "rawlsing_next/wave1_gt12_a2_real_gt1.py",
+      "scope": "accepted",
+      "sha256": "1baee48cfa5cb19c8b672366094a9d848ee2a2df2d545c77691faee50387f756"
+    },
+    {
+      "bytes": 32938,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "60c2d11ab450aecb472de4b4853e03dccb7fcf89",
+      "path": "rawlsing_next/wave1_gt12_i03_positive_facts.py",
+      "scope": "accepted",
+      "sha256": "94b300b42227a779d3e264b7173b02be439ea6428f7ac5960491df759f3c9dd2"
+    },
+    {
+      "bytes": 32527,
+      "commit": "abd0b5ff2ffcf235b67140641f88cc61ca45c12c",
+      "git_blob_sha": "d96933180d310b4078f23127bb5a97a3677728d1",
+      "path": "rawlsing_next/wave1_r5_q86_c11_projection.py",
+      "scope": "accepted",
+      "sha256": "9df59e1d578a7b8c95242c899ca47fee971f04a7a01e80260a3522cfeb1f8d4e"
+    },
+    {
+      "bytes": 1100,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "154509fe3ab6059fe033b96011c4fc3a4f8f0615",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/R4_E2A_RUNTIME_TRANSPORT_SEAL_R1/R4A_CURRENT_GT2_EXECUTION_CONSTRUCTOR_COMPLETE_EXTRACTION_R2/00_RETURN.md",
+      "scope": "active",
+      "sha256": "1f0499696c76010b4a28113ed2562cbc767771015feee647fd53c0fd25dcc69e"
+    },
+    {
+      "bytes": 3745,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "5a88bbde9ddd730b595b68b5c9a6672b10e20f7f",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/R4_E2A_RUNTIME_TRANSPORT_SEAL_R1/R4A_CURRENT_GT2_EXECUTION_CONSTRUCTOR_COMPLETE_EXTRACTION_R2/01_EXECUTION_EVIDENCE.json",
+      "scope": "active",
+      "sha256": "732564404711009fc76d6904a3b4247e869226a76de570c5b28fa5afa5dc28d2"
+    },
+    {
+      "bytes": 35306,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "db2c660daf666411bbb2917c8ac3e959e3adcc9e",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/R4_E2A_RUNTIME_TRANSPORT_SEAL_R1/R4A_CURRENT_GT2_EXECUTION_CONSTRUCTOR_COMPLETE_EXTRACTION_R2/02_CONSTRUCTOR_COMPLETE_MANIFEST.json",
+      "scope": "active",
+      "sha256": "c2d008a96ce1cf9156cd9e10ebaf513f300139853a60db5856569f1375233c89"
+    },
+    {
+      "bytes": 1376,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "dfd35b2ab25fa9fc915b6d2a085885ab0fa43989",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT1_GT2_BOUNDED_CLOSURE_FANOUT_R1/R3_PERMISSION_TRANSLATION_AUTHORITY_CONSTITUTION_R1/R4_E2A_RUNTIME_TRANSPORT_SEAL_R1/R4A_CURRENT_GT2_EXECUTION_CONSTRUCTOR_COMPLETE_EXTRACTION_R2/04_SEAL_INPUT.json",
+      "scope": "active",
+      "sha256": "aac2874c50d679b4df4da5c3260c6296e8ab936557842086ad223609c4cf5434"
+    },
+    {
+      "bytes": 29013,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "e2d91984541df7c692a1b2f32370500838a2a000",
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "scope": "active",
+      "sha256": "a098c23f41123ad50540de8333a17a294881f27e1e83f9cd47df94b060038447"
+    },
+    {
+      "bytes": 662,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "6ce3416f445842701b5c48c7f78284e0792483b8",
+      "path": "rawlsing_next/pre553_repo_native_current_payload.py",
+      "scope": "active",
+      "sha256": "d0a19cbbb1a6df425566d33e0ac5a0553cc1950c282aefdae8a57468a674efcd"
+    },
+    {
+      "bytes": 18192,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "bbeb88c85ce99755577b01aedd05aa8afd28262c",
+      "path": "rawlsing_next/pre553_repo_native_seal.py",
+      "scope": "active",
+      "sha256": "dfb48111a7da47474dba895dd57568fb697d6516b7670270f28b519460b74ac5"
+    },
+    {
+      "bytes": 14994,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "90bb6a7ef352a8a12b0c2ab8daad85adbf6865e2",
+      "path": "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py",
+      "scope": "active",
+      "sha256": "417864f847948737c6d5912bca2ee55e15dff0772a392e328c442c34111c62de"
+    },
+    {
+      "bytes": 15716,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "23695170514f45c2e2310ac7e68eba530efe744b",
+      "path": "rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py",
+      "scope": "active",
+      "sha256": "8da9cd93f919813e6b80a537d93f6d8b495f928c8843457c9409e851948f9090"
+    },
+    {
+      "bytes": 8928,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "14e53b01305d3b91535608845de9fe4941237de2",
+      "path": "rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py",
+      "scope": "active",
+      "sha256": "d39678a9f0053fde0038fbcda12eef03344426c06ffc1fa3bfcd88348f3aba17"
+    },
+    {
+      "bytes": 8201,
+      "commit": "a1630969f8e0b1003e657a38f77abbc413f83f2e",
+      "git_blob_sha": "5aeaad18290682504f290699e9b1405e5453a17c",
+      "path": "rawlsing_next/tests/test_pre553_repo_native_seal.py",
+      "scope": "active",
+      "sha256": "7a4a55d81ef26edcd722ab2724a8ea777c386caeba6de92062682a87862161e3"
+    }
+  ],
+  "special_question_count": 15,
+  "terminal": "ASTRA_AUDIT_COMPLETE__STOP_THE_LINE_DISPOSITION_REQUIRED",
+  "top_five_hq_actions": [
+    {
+      "action": "Dispose ordinary current-query representation contradiction and prove genuine public E2B entry.",
+      "finding_id": "ASTRA-003"
+    },
+    {
+      "action": "Make sealed source bodies deeply immutable or authenticated on read; preserve canonical identities.",
+      "finding_id": "ASTRA-001"
+    },
+    {
+      "action": "Fit authority at shared I03 and relation M4 operation boundaries.",
+      "finding_id": "ASTRA-002"
+    },
+    {
+      "action": "Accept invocation-bound positive-owner authority and actual-effect tests before positive V3.",
+      "finding_id": "ASTRA-004"
+    },
+    {
+      "action": "Carry compact exact refs through seal/rehydration after GT12; measure cost with identical commitments.",
+      "finding_id": "ASTRA-005"
+    }
+  ]
+}
