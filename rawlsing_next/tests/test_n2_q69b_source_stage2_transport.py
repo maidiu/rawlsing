@@ -48,6 +48,16 @@ EXPECTED_Q69B_LABELS = {
     9: ("Don't know/Haven't heard enough", "e2bd218d70323f28920ab60cf5b45e45a632f994923797d2a50f8b24e7dec07c"),
     998: ("Refused to answer", "72196a7335e840e69a58c27a8b2ef83d02e788d86130b60e0e905d8cf38b98c9"),
 }
+EXPECTED_Q69B_PHYSICAL_LABELS = {
+    -1: "Missing",
+    0: "Never",
+    1: "Once or Twice",
+    2: "A Few Times",
+    3: "Often",
+    7: "No experience with public clinics in past year",
+    9: "Don't Know",
+    998: "Refused",
+}
 EXPECTED_DATEINTR_LABEL = "Date of interview"
 
 Q69B_TYPED = {
@@ -214,15 +224,8 @@ def test_n2_stage2_exact_source_rows_and_transport() -> None:
             RuntimeWarning,
             stacklevel=1,
         )
+        assert q69b_labels == EXPECTED_Q69B_PHYSICAL_LABELS
         for code, (expected_label, expected_hash) in EXPECTED_Q69B_LABELS.items():
-            physical_label = q69b_labels[code]
-            if code == 7:
-                assert physical_label == "No experience with public clinics in past year"
-                assert expected_label == "No experience with public clinics in last 12 months"
-            else:
-                assert physical_label.casefold() == expected_label.casefold(), (
-                    code, physical_label, expected_label
-                )
             assert _hash_text(expected_label) == expected_hash
 
         date_label = meta.column_names_to_labels["DATEINTR"]
