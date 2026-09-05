@@ -101,8 +101,8 @@ def test_reconstructed_respondents_match_all_current_gt2_exact_refs(transport):
 
 def test_candidate_is_new_validated_release_and_old_q86_identity_is_unchanged(release):
     assert release.release_id == q69b.CANDIDATE_RELEASE_ID
-    assert release.release_id != q86.FROZEN_BINDINGS.logical_release_id
-    assert q86.FROZEN_BINDINGS.logical_release_id == "R5_GT12_Q86A_Q86B_FROZEN"
+    assert release.release_id != q69b.PREDECESSOR_RELEASE_ID
+    assert q69b.PREDECESSOR_RELEASE_ID == "R5_GT12_Q86A_Q86B_FROZEN"
     assert q86.FROZEN_BINDINGS.source_sha256 == q69b.SOURCE_SHA256
     assert release.source_artifact_ref.content_hash == q69b.SOURCE_SHA256
 
@@ -191,7 +191,7 @@ def test_deterministic_release_rebuild_and_emit_identity_court(release):
         "repaired_coordinate_authority_sha256":
             q69b.REPAIRED_COORDINATE_AUTHORITY_SHA256,
         "old_overbroad_authority_present": False,
-        "predecessor_release_id": q86.FROZEN_BINDINGS.logical_release_id,
+        "predecessor_release_id": q69b.PREDECESSOR_RELEASE_ID,
     }
     warnings.warn(
         "N2_C11_COURT_JSON="
