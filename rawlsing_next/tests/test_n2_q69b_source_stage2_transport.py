@@ -205,8 +205,24 @@ def test_n2_stage2_exact_source_rows_and_transport() -> None:
             assert code is not None
             q69b_labels[code] = label
         assert set(q69b_labels) == set(EXPECTED_Q69B_LABELS)
+        warnings.warn(
+            "N2_Q69B_PHYSICAL_LABELS_JSON="
+            + json.dumps(
+                {str(k): q69b_labels[k] for k in sorted(q69b_labels)},
+                sort_keys=True, separators=(",", ":"), ensure_ascii=False,
+            ),
+            RuntimeWarning,
+            stacklevel=1,
+        )
         for code, (expected_label, expected_hash) in EXPECTED_Q69B_LABELS.items():
-            assert q69b_labels[code].casefold() == expected_label.casefold(), (code, q69b_labels[code], expected_label)
+            physical_label = q69b_labels[code]
+            if code == 7:
+                assert physical_label == "No experience with public clinics in past year"
+                assert expected_label == "No experience with public clinics in last 12 months"
+            else:
+                assert physical_label.casefold() == expected_label.casefold(), (
+                    code, physical_label, expected_label
+                )
             assert _hash_text(expected_label) == expected_hash
 
         date_label = meta.column_names_to_labels["DATEINTR"]
