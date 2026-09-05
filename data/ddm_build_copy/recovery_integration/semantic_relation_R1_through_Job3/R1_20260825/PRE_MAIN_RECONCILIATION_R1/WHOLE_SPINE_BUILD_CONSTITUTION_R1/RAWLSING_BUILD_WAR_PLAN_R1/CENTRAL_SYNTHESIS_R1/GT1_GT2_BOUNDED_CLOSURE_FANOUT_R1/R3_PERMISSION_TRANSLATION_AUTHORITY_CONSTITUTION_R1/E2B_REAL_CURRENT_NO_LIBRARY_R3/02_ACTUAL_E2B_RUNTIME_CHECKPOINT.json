@@ -1,0 +1,326 @@
+{
+  "schema": "GT12_E2B_R3_ACTUAL_E2B_RUNTIME_CHECKPOINT@1.0.0",
+  "status": "ACTUAL_CURRENT_E2B_RUNTIME_SUCCEEDED__CHECKPOINTED_BEFORE_HOSTILE_REGRESSION",
+  "working_start": "62202de75aa8bbd73a0895730d19dba4c06658e2",
+  "checkpoint_1_commit": "e8c52bb5fb237338a7f0d0b420ef3932b9311627",
+  "real_entry": "rawlsing_next.tests.gt12_e2b_actual_object_consumer_harness.run_current_r1c_e2b_actual_objects",
+  "execution": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 33987208384,
+    "job_id": 101362897852,
+    "evidence_execution_sha": "cfec9665f2266f30f5f6b5435de9051fedae0310",
+    "pr_synthetic_merge_sha": "c46bf8aa9eb39241005b3280a364d82fcf09f0a5",
+    "protocol_self_tests": "20 passed in 0.06s",
+    "real_execution_probe": "1 passed, 1 evidence warning in 13.55s",
+    "artifact_id": 9975527389,
+    "result": "PASS"
+  },
+  "probe_correction_history": {
+    "first_probe_run_id": 33987156948,
+    "first_probe_job_id": 101362759412,
+    "first_probe_evidence_execution_sha": "a50343001835924038917417dddb6dab2582c001",
+    "disposition": "TEST_ONLY_EVIDENCE_ASSERTION_ERROR_AFTER_REAL_CHAIN_RETURNED",
+    "incorrect_assertion": "M1 internal B1 must be None",
+    "correction": "B1 may exist inside eligible M1; adopted law forbids B1 PUBLICATION. Direct V557 handoff remains exactly F1-only.",
+    "production_code_changed": false
+  },
+  "runtime_evidence": {
+    "actual_input": {
+      "denominator": 19210,
+      "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+      "state": "SUPPORTED",
+      "target_order": [
+        "question_impl.phase0.2fb3a62609dad4c1306d",
+        "question_impl.phase0.67f036c0efb7fb98ff4a"
+      ]
+    },
+    "adopted_publication_governance_bundle_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+    "f1_publication_roots": [
+      {
+        "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+        "kind": "F1",
+        "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+      }
+    ],
+    "field_forge_relation_ref": {
+      "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+      "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19"
+    },
+    "m1_evaluation": {
+      "canonical_basis_semantic_id": "urn:rawlsing:v554:basis:sha256:06f95c1e58baaf3454c315340f7d13e16d44c28c5b88b48259fd411a745d78ef",
+      "contract_id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+      "decision_state": "ELIGIBLE",
+      "direct_v557_handoff": {
+        "handoff_id": "urn:rawlsing:v554:v557-handoff:sha256:252d4c98edf50c02a21d46a49af718b3db832d5b35ced68d0ddcc9f1584db090",
+        "material": {
+          "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1",
+          "object_refs": [
+            {
+              "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+              "family": "F1",
+              "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+            }
+          ],
+          "publication_authority": {
+            "authority_hash": "1b2c1238139287e30acaa418e28967585a34a7fae9c937a9322b7c9e9a76322a",
+            "authority_id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+            "authority_version": "1.0.0"
+          },
+          "route": "V554_TO_V557_DIRECT",
+          "v554_rule_ref": {
+            "hash": "da431544e57ed4b418cd746be3f0a9aa486cd3c2fb2007a022005821b25e194b",
+            "id": "GT12_V554_SIG004_ADMITTED_RELATION_CONTEXT_PUBLICATION_RULE",
+            "version": "1.0.0"
+          }
+        },
+        "object_refs": [
+          {
+            "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+            "family": "F1",
+            "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+          }
+        ],
+        "route": "V554_TO_V557_DIRECT"
+      },
+      "evidence_hash": "2d0acb74c8a1722ce339c7b014fb3e5eb630d4a88bee4e2560653d0efc13a036",
+      "governed_use_id": "GT12_GT2_Q86B_CONDITIONAL_SUPPORT_Q86A_F1_CONTEXT_PUBLICATION@1",
+      "required_basis_kind": "ADMITTED_FIELD_FORGE_RELATION"
+    },
+    "permission_binding": {
+      "adoption_commit": "00374882168f8ca64606fef3ca84e246f1c573e9",
+      "authorized_effect": "ACTOR_INDEPENDENT_STRUCTURAL_CONTEXT_AVAILABILITY_AND_EXACT_V558_RESOLUTION_ONLY",
+      "binding_hash": "35381ce38e9cb6254c5f0c7608efcdc4a3f77c58313d433c6af74ff1ade5ab3d",
+      "field_forge_relation_owner": "FIELD_FORGE_ACTOR_INDEPENDENT_RELATION_OWNER",
+      "field_forge_relation_ref": {
+        "content_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+        "kind": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+        "object_id": "urn:rawlsing:field-forge:conditional-support:sha256:1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19"
+      },
+      "field_forge_relation_rule_ref": {
+        "content_hash": "cddf66e255e6cb780111f120a32ebdc6820fd4b483565b0e1388124e6830f2f9",
+        "kind": "FIELD_FORGE_RELATION_RULE",
+        "object_id": "urn:rawlsing:gt12:c-to-d:conditional-support-rule:sha256:cddf66e255e6cb780111f120a32ebdc6820fd4b483565b0e1388124e6830f2f9"
+      },
+      "participants": [
+        {
+          "multiplicity": 1,
+          "native_variable": "Q86B",
+          "ordinal": 0,
+          "participant_ref": {
+            "content_hash": "2fb3a62609dad4c1306d8cfa14f997eab4d6e65ada56083279386a202544a506",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.2fb3a62609dad4c1306d"
+          },
+          "question_impl_id": "question_impl.phase0.2fb3a62609dad4c1306d",
+          "role": "CONDITIONER",
+          "source_structure_id": "cssu.r1.afrobarometer.r5.d8478014cb0a506fe6c4"
+        },
+        {
+          "multiplicity": 1,
+          "native_variable": "Q86A",
+          "ordinal": 1,
+          "participant_ref": {
+            "content_hash": "67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3",
+            "kind": "QUESTION_IMPLEMENTATION",
+            "object_id": "question_impl.phase0.67f036c0efb7fb98ff4a"
+          },
+          "question_impl_id": "question_impl.phase0.67f036c0efb7fb98ff4a",
+          "role": "TARGET",
+          "source_structure_id": "cssu.r1.afrobarometer.r5.d8478014cb0a506fe6c4"
+        }
+      ],
+      "producer_allowed_uses": [
+        "CONTEXT"
+      ],
+      "relation_permission_ceiling": [
+        "STRUCTURAL_MEDIATION_INPUT"
+      ],
+      "relation_typed_state": "SUPPORTED",
+      "risk_set_ref": {
+        "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+        "kind": "RISK_SET",
+        "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1"
+      },
+      "schema": "GT12_ADOPTED_PREV3_TO_M4_PERMISSION_BINDING@1.0.0",
+      "target_use": "STRUCTURAL_MEDIATION_INPUT",
+      "target_use_permissions": [
+        "STRUCTURAL_MEDIATION_INPUT"
+      ],
+      "translation_adoption_receipt_ref": {
+        "content_hash": "fe527dd7d6f5163edd5867adf9da2b03ea581c7d78758fe07bf6857c3fd4c46f",
+        "id": "GT12_PERMISSION_TRANSLATION_AUTHORITY_ADOPTION",
+        "version": "1.0.0"
+      },
+      "translation_authority_ref": {
+        "content_hash": "d052e299206b837292225853fca7ffcf8a3c02b6479c53065ad3aca135be489c",
+        "id": "GT12_RELATION_SPECIFIC_PREV3_TO_M4_PRODUCER_PERMISSION_TRANSLATION_AUTHORITY",
+        "version": "1.0.0"
+      },
+      "upstream_admission_authority_ref": {
+        "authority_content_hash": "c22347920bcbd02fb90bbb96478a3cac8c2562c723d292b95164d0532138f3fd",
+        "authority_id": "GT2_FF_PREV3_RELATION_ADMISSION_AUTHORITY",
+        "authority_version": "R1"
+      },
+      "upstream_admission_current_selection_ref": {
+        "content_hash": "d90a05d5a3519c36c252a6d1bb1c67187f752d7e240b28ef5b22c78ce28e2b98",
+        "kind": "RELATION_ADMISSION_CURRENT_SELECTION",
+        "object_id": "urn:rawlsing:prev3:gt2-relation-admission-current-selection"
+      },
+      "upstream_admission_ref": {
+        "content_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d",
+        "kind": "PREV3_FIELD_FORGE_RELATION_ADMISSION",
+        "object_id": "PREV3_FIELD_FORGE_RELATION_ADMISSION@1.0.0"
+      },
+      "upstream_admission_rule_ref": {
+        "content_hash": "fb9257e1d49e1c446bb49e33c7e61cf3ee66ee029c3cf31229c00341a7502afc",
+        "kind": "FIELD_FORGE_RELATION_ADMISSION_RULE",
+        "object_id": "FIELD_FORGE_RELATION_ADMISSION_RULE@1.0.0"
+      },
+      "v557_allowed_uses": [
+        "CONTEXT"
+      ],
+      "v557_required_decision_state": "ALLOW_CONTEXT_ONLY",
+      "v558_requested_uses": [
+        "CONTEXT"
+      ]
+    },
+    "prev3_admission_decision": "ADMITTED",
+    "prev3_admission_ref": {
+      "content_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d",
+      "kind": "PREV3_FIELD_FORGE_RELATION_ADMISSION",
+      "object_id": "PREV3_FIELD_FORGE_RELATION_ADMISSION@1.0.0"
+    },
+    "prev3_target_use_permissions": [
+      "STRUCTURAL_MEDIATION_INPUT"
+    ],
+    "schema": "GT12_E2B_R3_REAL_RUNTIME_EVIDENCE@1.0.0",
+    "v3_decision": {
+      "actor_id": "GT12_E2B_NO_ACTOR_PROMOTION_SENTINEL",
+      "actor_state_effect": "ZERO",
+      "causal_cursor_delta": 0,
+      "causal_ledger_appends": 0,
+      "delegated_owner_rule_id": null,
+      "evidence_hash": "216f8db74b89a7c168b0db0da91404e0fffb69d8b704710e59ec63a53d42d988",
+      "guard_id": "IG_PSEPF_ZERO_POSITIVE_GUARD",
+      "guard_version": "ACTIVE_ZERO_POSITIVE_FIRST_TRANCHE@1",
+      "operation_class": "NO_POSITIVE_TRANSITION_AUTHORIZED",
+      "outcome": "DENY_ZERO_EFFECT",
+      "post_guard_state_fingerprint": {
+        "actor_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+        "causal_cursor": "0",
+        "causal_ledger_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+        "rng_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+        "scheduler_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723"
+      },
+      "pre_state_fingerprint": {
+        "actor_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+        "causal_cursor": "0",
+        "causal_ledger_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+        "rng_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+        "scheduler_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723"
+      },
+      "reason": "ZERO_POSITIVE_REGISTRY",
+      "rng_mutations": 0,
+      "scheduler_mutations": 0,
+      "source_class": "V553_V558_STRUCTURAL_OBJECT",
+      "transition_surface_id": "GT12_E2B_STRUCTURAL_CONTEXT_TO_ACTOR_STATE",
+      "zero_effect": true
+    },
+    "v557_governance_records": [
+      {
+        "authority_ref": {
+          "content_hash": "b071d9b34825b2c73fefa47cdef0ba23003d79cf5a2fa78cab802e02ee0cd6f4",
+          "id": "GT12_CAN003_V557_F1_CONTEXT_ONLY_CURRENT_BINDING",
+          "version": "1.0.0"
+        },
+        "decision_state": "ALLOW_CONTEXT_ONLY",
+        "producer_allowed_uses": [
+          "CONTEXT"
+        ],
+        "ref": {
+          "content_hash": "845522a7101f2632ac37d4fa1bbe15515ad29a0551a31570e4138796eaab48b6",
+          "kind": "V557_GOVERNANCE_RECORD",
+          "object_id": "V557GOV:845522a7101f2632ac37d4fa1bbe15515ad29a0551a31570e4138796eaab48b6"
+        },
+        "v557_allowed_uses": [
+          "CONTEXT"
+        ]
+      }
+    ],
+    "v557_publication_bundle_ref": {
+      "content_hash": "2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a",
+      "kind": "V557_PUBLICATION_BUNDLE",
+      "object_id": "V557PUB:2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a"
+    },
+    "v558_query": {
+      "content_hash": "73a47dcb4ab5497aadb16c1f3d074ef0e0203995e9d175b7fe5ee02b19cf2b54",
+      "kind": "V558_CONTEXT_QUERY",
+      "object_id": "V558QUERY:73a47dcb4ab5497aadb16c1f3d074ef0e0203995e9d175b7fe5ee02b19cf2b54",
+      "requested_uses": [
+        [
+          "CONTEXT"
+        ]
+      ]
+    },
+    "v558_repository_ref": {
+      "content_hash": "47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1",
+      "kind": "V558_REPOSITORY_BUNDLE",
+      "object_id": "V558REPO:47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1"
+    },
+    "v558_resolution_receipt_ref": {
+      "content_hash": "730dbe577966b34587c5cb9ef3931ae83219cb62b945fdea6675a0cd53520b34",
+      "kind": "V558_RESOLUTION_RECEIPT",
+      "object_id": "V558REC:730dbe577966b34587c5cb9ef3931ae83219cb62b945fdea6675a0cd53520b34"
+    },
+    "v558_resolution_state": "RESOLUTION_COMPLETE",
+    "v558_resolved_entries": [
+      {
+        "decision_state": "ELIGIBLE",
+        "producer_family": "V554",
+        "producer_object_ref": {
+          "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+          "kind": "F1",
+          "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d"
+        },
+        "resolver_allowed_uses": [
+          "CONTEXT"
+        ]
+      }
+    ]
+  },
+  "zero_effect_proof": {
+    "pre_state_fingerprint": {
+      "actor_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+      "causal_cursor": "0",
+      "causal_ledger_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+      "rng_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+      "scheduler_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723"
+    },
+    "post_state_fingerprint": {
+      "actor_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+      "causal_cursor": "0",
+      "causal_ledger_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+      "rng_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723",
+      "scheduler_state_hash": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723"
+    },
+    "fingerprints_equal": true,
+    "actor_state_effect": "ZERO",
+    "causal_ledger_appends": 0,
+    "causal_cursor_delta": 0,
+    "rng_mutations": 0,
+    "scheduler_mutations": 0,
+    "outcome": "DENY_ZERO_EFFECT",
+    "zero_effect": true
+  },
+  "forbidden_inputs_used": {
+    "library": false,
+    "source_data": false,
+    "empirical_reexecution": false,
+    "historical_a3": false,
+    "synthetic_authority": false
+  }
+}
