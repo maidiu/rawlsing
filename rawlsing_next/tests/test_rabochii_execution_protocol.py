@@ -177,6 +177,7 @@ def test_pass_requires_compatible_proof_and_terminal_phase():
 def test_court_spec_accepts_only_bounded_pytest_surface():
     spec = {
         "schema_id": "RABOCHII_COURT_SPEC@1.0.0",
+        "semantic_candidate_sha": SHA_A,
         "python_version": "3.12",
         "determinism_mode": "EXACT",
         "tests": [
@@ -194,6 +195,7 @@ def test_court_spec_accepts_only_bounded_pytest_surface():
 def test_court_spec_rejects_shell_escape_and_arbitrary_env():
     spec = {
         "schema_id": "RABOCHII_COURT_SPEC@1.0.0",
+        "semantic_candidate_sha": SHA_A,
         "python_version": "3.12",
         "determinism_mode": "EXACT",
         "tests": ["../../etc/passwd"],
