@@ -205,3 +205,61 @@ def test_court_spec_rejects_shell_escape_and_arbitrary_env():
     assert any("safe relative path" in error for error in errors)
     assert any("rawlsing_next/tests/*.py" in error for error in errors)
     assert any("env key 'PATH' is not allowed" in error for error in errors)
+
+
+def _real_execution_state():
+    state = _state()
+    state["profile"] = "REAL_EXECUTION"
+    state["phase"] = "REAL_EXECUTION"
+    state["current_action"] = {
+        "kind": "EXECUTE_STAGE",
+        "advances_claim_id": "C1",
+        "description": "Execute the current bounded stage.",
+    }
+    state["checkpoint_state"] = {
+        "mode": "WRITE_AHEAD",
+        "last_completed_stage": "VALIDATE",
+        "volatile_result_pending": False,
+        "recompute_cost": "HIGH",
+        "durable_checkpoint_ref": "git:checkpoint-before-execute",
+    }
+    return state
+
+
+def test_real_execution_requires_write_ahead_checkpoint_state():
+    state = _state()
+    state["profile"] = "REAL_EXECUTION"
+    state["phase"] = "REAL_EXECUTION"
+    errors = validate_execution_state(state)
+    assert any("REAL_EXECUTION requires checkpoint_state" in error for error in errors)
+
+
+def test_real_execution_with_durable_checkpoint_can_continue():
+    assert validate_execution_state(_real_execution_state()) == ()
+
+
+def test_volatile_expensive_result_forces_persist_as_next_action():
+    state = _real_execution_state()
+    state["checkpoint_state"]["volatile_result_pending"] = True
+    state["checkpoint_state"]["durable_checkpoint_ref"] = None
+    errors = validate_execution_state(state)
+    assert any("next legal action must be PERSIST_CHECKPOINT" in error for error in errors)
+
+
+def test_volatile_result_is_valid_only_when_current_action_persists_it():
+    state = _real_execution_state()
+    state["checkpoint_state"]["volatile_result_pending"] = True
+    state["checkpoint_state"]["durable_checkpoint_ref"] = None
+    state["current_action"] = {
+        "kind": "PERSIST_CHECKPOINT",
+        "advances_claim_id": "C1",
+        "description": "Persist the expensive result before further execution.",
+    }
+    assert validate_execution_state(state) == ()
+
+
+def test_volatile_pending_cannot_claim_already_durable_checkpoint():
+    state = _real_execution_state()
+    state["checkpoint_state"]["volatile_result_pending"] = True
+    errors = validate_execution_state(state)
+    assert any("cannot coexist with durable_checkpoint_ref" in error for error in errors)
