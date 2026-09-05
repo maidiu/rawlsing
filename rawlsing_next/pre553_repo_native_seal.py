@@ -320,11 +320,11 @@ def rehydrate_repo_native_query_fact(payload: RepoNativeSealPayload) -> tuple[Em
 
 
 def load_current_gt2_query_fact() -> tuple[EmpiricalQuerySpec, EmpiricalFact]:
-    """No-argument frozen entrypoint; the sole payload seam remains pending Worker A."""
-    from rawlsing_next.pre553_repo_native_current_payload import CURRENT_GT2_PAYLOAD
-    if CURRENT_GT2_PAYLOAD is None:
-        raise RealGT2PayloadPendingError("real current GT2 constructor-complete repo payload is pending Worker A")
-    return rehydrate_repo_native_query_fact(CURRENT_GT2_PAYLOAD)
+    """No-argument frozen current entrypoint over the committed Worker-A repo transport."""
+    from rawlsing_next.pre553_repo_native_current_payload import (
+        load_current_gt2_query_fact_from_committed_transport,
+    )
+    return load_current_gt2_query_fact_from_committed_transport()
 
 
 __all__ = [
