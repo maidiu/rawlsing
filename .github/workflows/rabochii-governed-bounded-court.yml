@@ -7,6 +7,9 @@ on:
       - agent/vozhd-rabochii-execution-constitution-r1
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   governed-court:
     runs-on: ubuntu-latest
