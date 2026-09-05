@@ -25,6 +25,9 @@ from rawlsing_next.gt12_permission_translation_authority import (
     ADOPTED_V557_ALLOWED_USES,
     ADOPTED_V558_REQUESTED_USES,
 )
+from rawlsing_next.gt12_e2b_publication_governance_binding import (
+    load_current_gt12_e2b_publication_governance_binding,
+)
 from rawlsing_next.m1_temporal_v554_admission_dedup import M1DecisionState
 from rawlsing_next.m4_v557_v558_publication_repository import (
     AuthorityRef as M4AuthorityRef,
@@ -154,7 +157,9 @@ def require_current_r1c_actual_objects(
         raise GT12E2BHarnessError("real positive E2B requires current SUPPORTED EmpiricalFact")
     if fact.raw_denominator_support != adm.GT2_RISK_SET_ROWS:
         raise GT12E2BHarnessError("current R1C fact denominator is not exact frozen 19,210")
-    targets = tuple(query.target_refs)
+    targets = tuple(
+        exact_ref(ref, "query.target_refs") for ref in query.target_refs
+    )
     if len(targets) != 2:
         raise GT12E2BHarnessError("current R1C query must contain exact two-target Q86B -> Q86A order")
     topology = query.target_arity_and_topology
@@ -165,17 +170,19 @@ def require_current_r1c_actual_objects(
     components = topology.get("components")
     if not isinstance(components, (list, tuple)) or len(components) != 2:
         raise GT12E2BHarnessError("current query requires exact two ordered target components")
-    component_refs = tuple(
-        item.get("target_ref") if isinstance(item, Mapping) else None
-        for item in components
-    )
-    normalized = tuple(
-        ref if isinstance(ref, ExactRef) else ExactRef(
-            ref["kind"], ref["object_id"], ref["content_hash"]
-        ) if isinstance(ref, Mapping) else None
-        for ref in component_refs
-    )
-    if normalized != targets:
+    try:
+        component_refs = tuple(
+            exact_ref(
+                item.get("target_ref") if isinstance(item, Mapping) else None,
+                "query.target_arity_and_topology.components.target_ref",
+            )
+            for item in components
+        )
+    except (TypeError, ValueError, KeyError) as exc:
+        raise GT12E2BHarnessError(
+            "current query target component refs are not exact refs"
+        ) from exc
+    if component_refs != targets:
         raise GT12E2BHarnessError("current query target component order/ref binding drift")
 
 
@@ -310,21 +317,17 @@ def _run_bounded_chain(
 def run_current_r1c_e2b_actual_objects(
     query: EmpiricalQuerySpec,
     fact: EmpiricalFact,
-    *,
-    governed_use_id: str,
-    v554_rule_ref: Mapping[str, Any],
-    publication_authority: Mapping[str, Any],
-    v557_authority_ref: M4AuthorityRef,
 ) -> GT12E2BHarnessTerminal:
-    """Future real entry contract: exact R1C objects first, frozen chain second."""
+    """Real current entry: exact R1C objects plus fixed adopted authority binding."""
     require_current_r1c_actual_objects(query, fact)
+    binding = load_current_gt12_e2b_publication_governance_binding()
     return _run_bounded_chain(
         query,
         fact,
-        governed_use_id=governed_use_id,
-        v554_rule_ref=v554_rule_ref,
-        publication_authority=publication_authority,
-        v557_authority_ref=v557_authority_ref,
+        governed_use_id=binding.governed_use_id,
+        v554_rule_ref=binding.v554_rule_ref,
+        publication_authority=binding.publication_authority,
+        v557_authority_ref=binding.v557_authority_ref,
     )
 
 
