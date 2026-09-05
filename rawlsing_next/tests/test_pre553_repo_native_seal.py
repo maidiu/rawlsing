@@ -3,7 +3,6 @@ import builtins, hashlib, inspect, json
 import pytest
 import rawlsing_next.pre553_repo_native_seal as seal
 from rawlsing_next.pre553_empirical_objects import AuthorityRef, EmpiricalFact, EmpiricalQuerySpec, ExactRef, canonical_json
-from rawlsing_next.pre553_repo_native_current_payload import CURRENT_GT2_PAYLOAD
 
 
 def _h(x): return hashlib.sha256(f"SYNTHETIC_TEST_ONLY::{x}".encode()).hexdigest()
@@ -108,10 +107,10 @@ def test_role_commitment_alias_fails():
     with pytest.raises(seal.RepoNativeSealError, match="commitment drift"): seal.rehydrate_repo_native_query_fact(bad)
 
 
-def test_current_entrypoint_is_frozen_and_payload_pending():
-    assert CURRENT_GT2_PAYLOAD is None and not inspect.signature(seal.load_current_gt2_query_fact).parameters
-    with pytest.raises(seal.RealGT2PayloadPendingError, match="pending Worker A"): seal.load_current_gt2_query_fact()
-    with pytest.raises(TypeError): seal.load_current_gt2_query_fact("override")
+def test_current_entrypoint_is_frozen_and_not_caller_selectable():
+    assert not inspect.signature(seal.load_current_gt2_query_fact).parameters
+    with pytest.raises(TypeError):
+        seal.load_current_gt2_query_fact("override")
 
 
 def test_transport_is_not_fact_and_rehydration_needs_no_runtime_file(monkeypatch):
