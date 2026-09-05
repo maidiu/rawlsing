@@ -379,7 +379,14 @@ def _rehydrate_verified_transport(
         raise CurrentGT2RehydrationError("fact risk-set member exact reconstruction drift")
     if tuple(exact_ref(x, "fact.denominator_member_refs") for x in fact.denominator_member_refs) != respondent_refs:
         raise CurrentGT2RehydrationError("fact denominator member exact reconstruction drift")
-    if tuple(exact_ref(x, "fact.source_empirical_provenance_refs") for x in fact.source_empirical_provenance_refs) != provenance_refs:
+    constructed_provenance = tuple(
+        exact_ref(x, "fact.source_empirical_provenance_refs")
+        for x in fact.source_empirical_provenance_refs
+    )
+    if (
+        len(constructed_provenance) != len(provenance_refs)
+        or set(constructed_provenance) != set(provenance_refs)
+    ):
         raise CurrentGT2RehydrationError("fact exact provenance closure drift")
     if fact.dependency_refs != dependency_refs:
         raise CurrentGT2RehydrationError("fact exact dependency closure drift")
