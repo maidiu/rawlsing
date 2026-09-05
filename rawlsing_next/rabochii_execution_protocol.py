@@ -54,6 +54,7 @@ BLOCKER_CLASSES = frozenset({
 })
 COMPATIBILITY_STATES = frozenset({"VERIFIED", "INCOMPATIBLE", "UNVERIFIED"})
 VOLATILITY = frozenset({"IMMUTABLE", "SNAPSHOT", "EVENTUALLY_CONSISTENT", "LIVE"})
+RECOMPUTE_COSTS = frozenset({"LOW", "MEDIUM", "HIGH", "UNKNOWN"})
 _SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 _PYTHON_RE = re.compile(r"^3\.\d+$")
 _ALLOWED_COURT_ENV = frozenset({"PYTHONHASHSEED", "PYTEST_DISABLE_PLUGIN_AUTOLOAD"})
@@ -294,6 +295,31 @@ def validate_execution_state(state: Mapping[str, Any]) -> tuple[str, ...]:
                     errors.append(
                         f"BLOCKED claim {claim_id} still has active proof owner {owner_id}; "
                         "use PENDING_EXTERNAL or refresh/resolve the owner"
+                    )
+
+    checkpoint = state.get("checkpoint_state")
+    if profile == "REAL_EXECUTION" or phase == "REAL_EXECUTION":
+        if not isinstance(checkpoint, Mapping):
+            errors.append("REAL_EXECUTION requires checkpoint_state")
+        else:
+            if checkpoint.get("mode") != "WRITE_AHEAD":
+                errors.append("REAL_EXECUTION checkpoint_state.mode must be WRITE_AHEAD")
+            pending = checkpoint.get("volatile_result_pending")
+            if not isinstance(pending, bool):
+                errors.append("checkpoint_state.volatile_result_pending must be boolean")
+                pending = False
+            recompute_cost = checkpoint.get("recompute_cost")
+            if recompute_cost not in RECOMPUTE_COSTS:
+                errors.append(f"unknown checkpoint recompute_cost {recompute_cost!r}")
+            durable_ref = checkpoint.get("durable_checkpoint_ref")
+            if durable_ref is not None and (not isinstance(durable_ref, str) or not durable_ref):
+                errors.append("durable_checkpoint_ref must be null or a nonempty string")
+            if pending:
+                if durable_ref is not None:
+                    errors.append("volatile_result_pending cannot coexist with durable_checkpoint_ref")
+                if not isinstance(action, Mapping) or action.get("kind") != "PERSIST_CHECKPOINT":
+                    errors.append(
+                        "volatile REAL_EXECUTION result is pending; next legal action must be PERSIST_CHECKPOINT"
                     )
 
     envelope = state.get("mutation_envelope")
