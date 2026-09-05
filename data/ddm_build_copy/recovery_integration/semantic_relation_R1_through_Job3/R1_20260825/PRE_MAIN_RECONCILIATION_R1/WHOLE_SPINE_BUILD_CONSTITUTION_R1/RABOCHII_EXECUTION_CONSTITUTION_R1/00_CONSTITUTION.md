@@ -386,3 +386,68 @@ A worker operating under a waiver must cite it in the return. Silent validator b
 UNMODELED_LAWFUL_TASK != FORCE_INTO_WRONG_PROFILE
 EXPLICIT_HQ_WAIVER != SILENT_PROTOCOL_BYPASS
 ```
+
+## 22. REAL_EXECUTION write-ahead checkpoint law
+
+REAL_EXECUTION workers must not treat the final terminal commit as the first durable project write.
+
+When a stage produces a result whose recomputation is expensive, fragile, source/material dependent, or likely to exceed a later tool/execution window, that result must be made durable before another expensive stage begins.
+
+```
+EXPENSIVE_OR_FRAGILE_RESULT_PRODUCED
++ NOT_YET_DURABLE
+=> NEXT_LEGAL_ACTION = PERSIST_CHECKPOINT
+```
+
+```
+VOLATILE_RESULT + HIGH_RECOMPUTE_COST => CHECKPOINT_NOW
+PROCESS_LOSS MUST NOT FORCE REEXECUTION OF A PROVEN EXPENSIVE STAGE
+NONTERMINAL_CHECKPOINT != PROJECT_ACCEPTANCE
+```
+
+A durable checkpoint may be:
+- a Git commit on the worker branch containing bounded evidence/payload material;
+- an immutable content-addressed artifact with a recorded ref/hash and retrieval path available to the next turn;
+- another explicitly governed durable execution artifact.
+
+A local-only workspace path such as `/mnt/data/...` is volatile project state unless it is subsequently banked or referenced by an immutable artifact accessible after worker/tool loss.
+
+For staged REAL_EXECUTION, prefer:
+
+`MATERIALIZE -> CHECKPOINT`
+
+`HASH_VERIFY/PROJECT/VALIDATE -> CHECKPOINT`
+
+`INDEX/EXECUTE -> CHECKPOINT ACTUAL OBJECT IDENTITIES`
+
+`EXTRACT -> CHECKPOINT PAYLOAD/MANIFEST`
+
+`SEAL -> TERMINAL RETURN`
+
+Checkpoint granularity is cost-sensitive. Cheap deterministic intermediates need not be persisted merely to create Git noise. Persist when recomputation/materialization is expensive, fragile, identity-bearing, or execution-window-sensitive.
+
+### Atomic persistence
+
+When a checkpoint consists of many already-prepared files/shards, prefer one bounded atomic Git object update:
+
+`CREATE BLOBS -> CREATE TREE -> CREATE COMMIT -> UPDATE WORKER REF ONCE`
+
+rather than a long sequence of individual file commits whose partial completion can exhaust the remaining execution window.
+
+### Resume law
+
+On `finish` or recovery:
+1. inspect durable checkpoints first;
+2. inspect already-prepared volatile workspace artifacts if still available;
+3. verify their recorded hashes/identities;
+4. persist them before any re-execution;
+5. re-run an expensive stage only if the required result is genuinely unavailable or incompatible.
+
+```
+PREPARED_PAYLOAD_AVAILABLE => PERSIST_BEFORE_REEXECUTE
+DURABLE_COMPATIBLE_CHECKPOINT_AVAILABLE => REEXECUTION_FORBIDDEN
+```
+
+### Persistence failure
+
+If a result has been proved locally but cannot be persisted before the execution surface closes, the worker must report the exact volatile artifact set and enter a persistence-recovery state. A continuation is then `CLOSURE/PERSISTENCE_ONLY`, not a fresh REAL_EXECUTION authorization.
