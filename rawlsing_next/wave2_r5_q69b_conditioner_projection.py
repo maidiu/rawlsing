@@ -66,6 +66,12 @@ SOURCE_ARTIFACT_ID: Final[str] = "Data/Afro Barometer Round 5.sav"
 CODEBOOK_SHA256: Final[str] = (
     "7e02c649c8ae69c61f88c116fdad92353b7f06cba9e160d9ae4be18e72276735"
 )
+QUESTION_TEXT_SHA256: Final[str] = (
+    "d235a464e0b36db851134fe2ced54f9ccade94370c719ebdafe89cc14ab4ff9d"
+)
+ROUTING_NOTE_SHA256: Final[str] = (
+    "62823c05f73b724d96fba327511bf1e82b4c3afd17ad0ad54dd36fe0e4c4cb20"
+)
 RESPONDENT_CARRIER_ID: Final[str] = "FFP014_R5_CURRENT_RESPONDENT_CARRIER@1"
 RESPONDENT_CARRIER_SHA256: Final[str] = (
     "6c2277e8832c8f070d1213f8f68adf54f115e4978f59702d150ab69fffd4a6d5"
@@ -115,6 +121,11 @@ RESPONDENT_CARRIER_REF: Final[ExactRef] = q86.FROZEN_BINDINGS.respondent_ref
 SOURCE_STRUCTURE_REF: Final[ExactRef] = q86.FROZEN_BINDINGS.structure_ref
 PREDECESSOR_RELEASE_REF: Final[ExactRef] = ExactRef(
     "C11LogicalRelease", PREDECESSOR_RELEASE_ID, PREDECESSOR_RELEASE_SHA256
+)
+CODEBOOK_REF: Final[ExactRef] = ExactRef(
+    "INSTRUMENT_RELEASE",
+    "merged_r5_codebook_2.pdf",
+    CODEBOOK_SHA256,
 )
 CANONICAL_COORDINATE_REF: Final[ExactRef] = ExactRef(
     "COORDINATE_NATIVE",
@@ -531,6 +542,10 @@ def _authority_bundle(
             "coordinate_ref": CANONICAL_COORDINATE_REF,
             "currentness_ref": CURRENTNESS_REF,
             "logical_release_predecessor": PREDECESSOR_RELEASE_REF,
+            "logical_release_law": (
+                "Q69B_NOT_IN_Q86_PREDECESSOR__NEW_BOUNDED_RELEASE_REQUIRED__"
+                "PREDECESSOR_IMMUTABLE"
+            ),
             "d08_use": "CONDITIONER_ONLY__NO_STRUCTURAL_POSITION__NO_ACTOR_FACT_PROMOTION",
             "portability": "NONE",
         },
@@ -548,6 +563,14 @@ def _authority_bundle(
         scope={
             "source_ref": SOURCE_REF,
             "coordinate_ref": CANONICAL_COORDINATE_REF,
+            "native_variable": "Q69B",
+            "question_text_sha256": QUESTION_TEXT_SHA256,
+            "routing_note_sha256": ROUTING_NOTE_SHA256,
+            "codebook_sha256": CODEBOOK_SHA256,
+            "codebook_normalized_variable_label_sha256":
+                metadata["q69b_codebook_normalized_variable_label_sha256"],
+            "codebook_normalized_value_label_hashes":
+                metadata["q69b_codebook_normalized_value_label_hashes"],
             "map": {
                 "0": "PUBLIC_CLINIC_EXPERIENCE_PRESENT",
                 "1": "PUBLIC_CLINIC_EXPERIENCE_PRESENT",
@@ -559,6 +582,8 @@ def _authority_bundle(
                 "-1": "MISSING",
             },
             "frequency_order_discarded": True,
+            "source_specific_law_only": True,
+            "named_problem_occurrence_not_promoted_to_actor_history": True,
             "portability": "NONE",
         },
         dependencies=(SOURCE_REF, TRANSPORT_REF, CANONICAL_COORDINATE_REF),
@@ -573,6 +598,10 @@ def _authority_bundle(
             "source_ref": SOURCE_REF,
             "anchor_variable": "DATEINTR",
             "source_native_interval": "PAST_12_MONTHS",
+            "query_time_substitution": "FORBIDDEN",
+            "wall_clock_substitution": "FORBIDDEN",
+            "actor_current_time_substitution": "FORBIDDEN",
+            "invented_edge_inclusion": "FORBIDDEN",
             "edge_inclusion_if_disputed": "NONCOMPARABLE_UNTIL_SEPARATE_AUTHORITY",
         },
         dependencies=(SOURCE_REF, TRANSPORT_REF),
@@ -788,11 +817,12 @@ def _candidate_from_transport(transport: Q69BTransport) -> C11SourceReleaseCandi
             "typed_state": row.q69b_typed_state,
             "dateintr_raw": row.dateintr_raw_exact_token,
             "dateintr_iso": row.dateintr_iso,
-            "time_rule_ref": {
-                "authority_id": TIME_RULE_ID,
-                "authority_version": TIME_RULE_VERSION,
-                "authority_content_hash": TIME_RULE_SHA256,
-            },
+            "codebook_ref": CODEBOOK_REF.as_dict(),
+            "crosswalk_ref": crosswalk_auth.authority_ref.as_dict(),
+            "time_rule_ref": temporal_auth.authority_ref.as_dict(),
+            "coordinate_authority_ref": coordinate_auth.authority_ref.as_dict(),
+            "currentness_ref": CURRENTNESS_REF.as_dict(),
+            "measure_basis_ref": MEASURE_BASIS_REF.as_dict(),
         }
         coordinates.append(
             EmpiricalCoordinateFact(
@@ -803,7 +833,16 @@ def _candidate_from_transport(transport: Q69BTransport) -> C11SourceReleaseCandi
                     crosswalk_auth.authority_ref,
                     temporal_auth.authority_ref,
                 ),
-                dependency_refs=(SOURCE_REF, TRANSPORT_REF, respondent.ref, native_question_ref),
+                dependency_refs=(
+                    SOURCE_REF,
+                    CODEBOOK_REF,
+                    TRANSPORT_REF,
+                    CURRENTNESS_REF,
+                    MEASURE_BASIS_REF,
+                    CANONICAL_COORDINATE_REF,
+                    respondent.ref,
+                    native_question_ref,
+                ),
                 producer_replay_locator_or_reference_root=_eref(
                     "REPLAY_ROOT",
                     f"GT34:N2:R5:Q69B:COORDINATE:{row.row_ordinal}",
