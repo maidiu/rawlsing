@@ -34,8 +34,10 @@ MEASURE_BASIS_HASH = "f2a33c3674e924cb535038e96554f838616c034141e265aa391c864f53
 PYREADSTAT_VERSION = "1.3.6"
 USECOLS = ["COUNTRY", "RESPNO", "Q69B", "DATEINTR"]
 
-EXPECTED_Q69B_VARIABLE_LABEL = "Problems with public clinic: lack of medicine/supplies"
-EXPECTED_Q69B_VARIABLE_LABEL_HASH = "78750307701922ed45ff5df4c7d83c57ffb7cb1b273134ef6594fe777f1e5ff0"
+EXPECTED_Q69B_PHYSICAL_VARIABLE_LABEL = "Q69b. Problems with public clinic: lack of medicine/supplies"
+EXPECTED_Q69B_PHYSICAL_VARIABLE_LABEL_HASH = "dde1209298f540807c76b4df0131ef3defdbfab954523d51cf88bc105569c656"
+ACCEPTED_CODEBOOK_NORMALIZED_VARIABLE_LABEL = "Problems with public clinic: lack of medicine/supplies"
+ACCEPTED_CODEBOOK_NORMALIZED_VARIABLE_LABEL_HASH = "78750307701922ed45ff5df4c7d83c57ffb7cb1b273134ef6594fe777f1e5ff0"
 EXPECTED_Q69B_LABELS = {
     -1: ("Missing", "6be36ca49ee85210c5d1ad9c377d90a9859c66d889110a2a5b0dccd390d12e20"),
     0: ("Never", "6300ef800bb884295b0b4b35682b75cecd7cc550d202db56d04a0643b8fb873f"),
@@ -191,8 +193,10 @@ def test_n2_stage2_exact_source_rows_and_transport() -> None:
         assert [name for name in USECOLS if name not in meta.column_names] == []
 
         q69b_var_label = meta.column_names_to_labels["Q69B"]
-        assert q69b_var_label == EXPECTED_Q69B_VARIABLE_LABEL
-        assert _hash_text(q69b_var_label) == EXPECTED_Q69B_VARIABLE_LABEL_HASH
+        assert q69b_var_label == EXPECTED_Q69B_PHYSICAL_VARIABLE_LABEL
+        assert _hash_text(q69b_var_label) == EXPECTED_Q69B_PHYSICAL_VARIABLE_LABEL_HASH
+        assert q69b_var_label.removeprefix("Q69b. ") == ACCEPTED_CODEBOOK_NORMALIZED_VARIABLE_LABEL
+        assert _hash_text(q69b_var_label.removeprefix("Q69b. ")) == ACCEPTED_CODEBOOK_NORMALIZED_VARIABLE_LABEL_HASH
 
         q69b_labels_raw = meta.variable_value_labels["Q69B"]
         q69b_labels = {}
@@ -209,8 +213,10 @@ def test_n2_stage2_exact_source_rows_and_transport() -> None:
         assert date_label == EXPECTED_DATEINTR_LABEL
 
         metadata_material = {
-            "q69b_variable_label": q69b_var_label,
-            "q69b_variable_label_sha256": _hash_text(q69b_var_label),
+            "q69b_physical_variable_label": q69b_var_label,
+            "q69b_physical_variable_label_sha256": _hash_text(q69b_var_label),
+            "q69b_codebook_normalized_variable_label": ACCEPTED_CODEBOOK_NORMALIZED_VARIABLE_LABEL,
+            "q69b_codebook_normalized_variable_label_sha256": ACCEPTED_CODEBOOK_NORMALIZED_VARIABLE_LABEL_HASH,
             "q69b_value_labels": {str(k): q69b_labels[k] for k in sorted(q69b_labels)},
             "q69b_value_label_hashes": {
                 str(k): _hash_text(q69b_labels[k]) for k in sorted(q69b_labels)
