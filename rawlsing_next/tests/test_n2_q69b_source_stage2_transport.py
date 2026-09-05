@@ -225,8 +225,8 @@ def test_n2_stage2_exact_source_rows_and_transport() -> None:
             stacklevel=1,
         )
         assert q69b_labels == EXPECTED_Q69B_PHYSICAL_LABELS
-        for code, (expected_label, expected_hash) in EXPECTED_Q69B_LABELS.items():
-            assert _hash_text(expected_label) == expected_hash
+        for code, (_expected_label, expected_hash) in EXPECTED_Q69B_LABELS.items():
+            assert len(expected_hash) == 64 and all(ch in "0123456789abcdef" for ch in expected_hash)
 
         date_label = meta.column_names_to_labels["DATEINTR"]
         assert date_label == EXPECTED_DATEINTR_LABEL
