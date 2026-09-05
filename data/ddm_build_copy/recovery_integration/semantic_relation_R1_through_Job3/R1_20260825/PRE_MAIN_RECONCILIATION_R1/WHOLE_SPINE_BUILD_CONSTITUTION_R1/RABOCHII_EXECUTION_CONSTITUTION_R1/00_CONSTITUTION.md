@@ -364,3 +364,25 @@ Its existence does not itself:
 - change empirical/semantic authority;
 - alter GT12 candidate semantics;
 - convert worker PASS into project acceptance.
+
+## 21. Exceptional-task escape hatch
+
+This constitution is not permitted to force a lawful but genuinely unmodeled task into a false profile or claim shape.
+
+If the current task cannot be represented without distortion:
+
+1. do not fabricate compliance;
+2. enter `NEEDS_HQ_DECISION`;
+3. name the exact rule/schema mismatch;
+4. HQ may issue either:
+   - a schema/governance revision; or
+   - a one-time exact waiver naming the task, the waived protocol rule(s), permitted actions, expiry/terminal boundary, and non-waived authority limits.
+
+A waiver is orchestration-only. It may not widen empirical, semantic, PRE-V3, V3, V2, source, Library, branch, or adoption authority beyond the underlying handoff.
+
+A worker operating under a waiver must cite it in the return. Silent validator bypass is forbidden.
+
+```
+UNMODELED_LAWFUL_TASK != FORCE_INTO_WRONG_PROFILE
+EXPLICIT_HQ_WAIVER != SILENT_PROTOCOL_BYPASS
+```
