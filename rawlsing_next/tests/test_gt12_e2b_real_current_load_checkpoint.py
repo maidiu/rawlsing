@@ -36,4 +36,4 @@ def test_real_current_no_library_load_checkpoint():
     assert targets == component_refs
     assert len(targets) == 2
     assert targets[0].object_id == "question_impl.phase0.2fb3a62609dad4c1306d"
-    assert targets[1].object_id == "question_impl.phase0.67f036c0efb7fb98ff4a93dc811bf59cfc095608eda374f6534b006a62241bd3"[:len(targets[1].object_id)]
+    assert targets[1].object_id == "question_impl.phase0.67f036c0efb7fb98ff4a"
