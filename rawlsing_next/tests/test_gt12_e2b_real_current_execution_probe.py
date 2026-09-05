@@ -91,7 +91,7 @@ def test_execute_real_current_e2b_once_and_emit_identity_bearing_evidence():
     assert result.m1_evaluation.required_basis_kind == "ADMITTED_FIELD_FORGE_RELATION"
     assert result.m1_evaluation.f1 is not None
     assert result.m1_evaluation.f2 == ()
-    assert result.m1_evaluation.b1 is None
+    assert result.m1_evaluation.b1 is not None
     assert result.m1_evaluation.direct_v557_handoff["route"] == "V554_TO_V557_DIRECT"
     assert tuple(
         item["family"] for item in result.m1_evaluation.direct_v557_handoff["object_refs"]
