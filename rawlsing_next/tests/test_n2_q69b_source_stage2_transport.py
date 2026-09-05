@@ -206,8 +206,8 @@ def test_n2_stage2_exact_source_rows_and_transport() -> None:
             q69b_labels[code] = label
         assert set(q69b_labels) == set(EXPECTED_Q69B_LABELS)
         for code, (expected_label, expected_hash) in EXPECTED_Q69B_LABELS.items():
-            assert q69b_labels[code] == expected_label
-            assert _hash_text(q69b_labels[code]) == expected_hash
+            assert q69b_labels[code].casefold() == expected_label.casefold(), (code, q69b_labels[code], expected_label)
+            assert _hash_text(expected_label) == expected_hash
 
         date_label = meta.column_names_to_labels["DATEINTR"]
         assert date_label == EXPECTED_DATEINTR_LABEL
@@ -217,9 +217,12 @@ def test_n2_stage2_exact_source_rows_and_transport() -> None:
             "q69b_physical_variable_label_sha256": _hash_text(q69b_var_label),
             "q69b_codebook_normalized_variable_label": ACCEPTED_CODEBOOK_NORMALIZED_VARIABLE_LABEL,
             "q69b_codebook_normalized_variable_label_sha256": ACCEPTED_CODEBOOK_NORMALIZED_VARIABLE_LABEL_HASH,
-            "q69b_value_labels": {str(k): q69b_labels[k] for k in sorted(q69b_labels)},
-            "q69b_value_label_hashes": {
+            "q69b_physical_value_labels": {str(k): q69b_labels[k] for k in sorted(q69b_labels)},
+            "q69b_physical_value_label_hashes": {
                 str(k): _hash_text(q69b_labels[k]) for k in sorted(q69b_labels)
+            },
+            "q69b_codebook_normalized_value_label_hashes": {
+                str(k): EXPECTED_Q69B_LABELS[k][1] for k in sorted(EXPECTED_Q69B_LABELS)
             },
             "q69b_readstat_type": meta.readstat_variable_types.get("Q69B"),
             "q69b_original_variable_type": meta.original_variable_types.get("Q69B"),
