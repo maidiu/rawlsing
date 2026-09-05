@@ -10,19 +10,19 @@ Exact working ancestry start:
 
 Evidence execution commit:
 
-`c447d1dd652df522d7317555bd2a5f1d5b60aaec`
+`7f4d899b888117c0fe28f8b79e75e7e5e00e271d`
 
 Governed court run:
 
-`33998634132`
+`33999047513`
 
 Governed court job:
 
-`101393426249`
+`101394520381`
 
 Focused result:
 
-`9 passed, 1 warning in 148.86s`
+`11 passed, 1 warning in 164.49s`
 
 The warning is the machine-readable N2 C11 court identity receipt.
 
@@ -106,7 +106,7 @@ Release ID:
 
 Release semantic SHA-256:
 
-`ed22b363d2949033794adaf7da56ee0850aacae3bdd303724acce86f5488245f`
+`2343023560ea963b6b290575d93361256825897a7c32ff31519e3d2425b595ec`
 
 Source-release-manifest SHA-256:
 
@@ -115,8 +115,20 @@ Source-release-manifest SHA-256:
 Replay manifest:
 
 - kind: `C11Internal:ReplayManifest`
-- content hash: `5c78244d5e4c54d80a0cfbafd542f0815102a4155681a5e553a522bea33939fa`
-- object ID: `urn:rawlsing:pre553:c11:ReplayManifest:sha256:5c78244d5e4c54d80a0cfbafd542f0815102a4155681a5e553a522bea33939fa`
+- content hash: `8ec8450d41524015c8e6b2716c00f622a9792334d2b952cac585b3b2971cb539`
+- object ID: `urn:rawlsing:pre553:c11:ReplayManifest:sha256:8ec8450d41524015c8e6b2716c00f622a9792334d2b952cac585b3b2971cb539`
+
+The final reseal additionally proves every coordinate fact explicitly binds:
+- exact source snapshot ref;
+- exact codebook ref;
+- exact transport ref;
+- exact currentness ref;
+- exact measure-basis ref;
+- exact coordinate ref;
+- exact respondent ref;
+- exact native-question ref;
+
+and carries the repaired coordinate authority, exact crosswalk authority, and exact DATEINTR temporal-rule authority in its authority closure.
 
 Materialized candidate counts:
 
