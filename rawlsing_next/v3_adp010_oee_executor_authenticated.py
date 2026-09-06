@@ -432,4 +432,180 @@ def _mat_ref_dict(ref: ExactRef) -> dict[str, str]:
 def _materializer_owner_material(m: MaterializationReceiptContent) -> dict[str, Any]:
     return {
         "schema_id": MATERIALIZER_OWNER_BINDING_SCHEMA,
-        "semantic_
+        "semantic_owner_authority": {
+            "id": m.semantic_owner_authority_id,
+            "version": m.semantic_owner_authority_version,
+            "content_hash": m.semantic_owner_authority_hash,
+        },
+        "semantic_object_ref": _mat_ref_dict(m.semantic_object_ref),
+        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materialization evidence", True)],
+        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materialization provenance", True)],
+    }
+
+def _materializer_subject_identity_material(m: MaterializationReceiptContent) -> dict[str, Any]:
+    return {
+        "scheme": MATERIALIZER_SUBJECT_REF_SCHEME,
+        "semantic_owner_authority": {
+            "id": m.semantic_owner_authority_id,
+            "version": m.semantic_owner_authority_version,
+            "content_hash": m.semantic_owner_authority_hash,
+        },
+        "semantic_object_ref": _mat_ref_dict(m.semantic_object_ref),
+        "owner_binding_content_hash": m.owner_binding_content_hash,
+        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materialization evidence", True)],
+        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materialization provenance", True)],
+    }
+
+def _materializer_receipt_body(m: MaterializationReceiptContent) -> dict[str, Any]:
+    return {
+        "schema_id": MATERIALIZER_RECEIPT_SCHEMA,
+        "subject_ref": m.subject_ref,
+        "subject_ref_hash": m.subject_ref_hash,
+        "materializer_id": m.materializer_id,
+        "materializer_version": m.materializer_version,
+        "adoption_artifact_blob": m.obl053_adoption_artifact_blob,
+        "accepted_owner_root_hash": m.accepted_owner_root_hash,
+        "materialization_permit_id": m.materialization_permit_id,
+        "materialization_permit_hash": m.materialization_permit_hash,
+        "semantic_owner_authority": {
+            "id": m.semantic_owner_authority_id,
+            "version": m.semantic_owner_authority_version,
+            "content_hash": m.semantic_owner_authority_hash,
+        },
+        "semantic_object_ref": _mat_ref_dict(m.semantic_object_ref),
+        "owner_binding_content_hash": m.owner_binding_content_hash,
+        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materialization evidence", True)],
+        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materialization provenance", True)],
+        "replay_input_hash": m.replay_input_hash,
+        "integrity_state": m.integrity_state,
+        "semantic_owner_transfer": m.semantic_owner_transfer,
+        "semantic_fields_interpreted": m.semantic_fields_interpreted,
+    }
+
+def _validate_currentness(value: str, *, allow_noncurrent: bool, n: str) -> str:
+    value = _s(value, n)
+    if allow_noncurrent:
+        if value != NONCURRENT_SYNTHETIC_TEST_ONLY:
+            raise OEEAdmissionError(f"{n} must be NONCURRENT_SYNTHETIC_TEST_ONLY in synthetic court")
+    elif value != CURRENT_ACCEPTED:
+        raise OEEAdmissionError(f"{n} must be CURRENT_ACCEPTED")
+    return value
+
+def _validate_materialization_receipt(
+    m: MaterializationReceiptContent,
+    *,
+    allow_noncurrent: bool,
+) -> MaterializationReceiptContent:
+    if not isinstance(m, MaterializationReceiptContent):
+        raise OEEIntegrityError("materialization receipt content is required")
+    _validate_currentness(m.currentness_state, allow_noncurrent=allow_noncurrent, n="materialization currentness")
+    _s(m.receipt_id, "materialization receipt id")
+    _h(m.receipt_hash, "materialization receipt hash")
+    _s(m.subject_ref, "materialization subject_ref")
+    _h(m.subject_ref_hash, "materialization subject_ref_hash")
+    _s(m.materializer_id, "materializer id")
+    _s(m.materializer_version, "materializer version")
+    _blob(m.obl054_adoption_artifact_blob, "OBL054 adoption artifact blob")
+    _blob(m.obl053_adoption_artifact_blob, "OBL053 adoption artifact blob")
+    _h(m.accepted_owner_root_hash, "accepted owner root hash")
+    _s(m.materialization_permit_id, "materialization permit id")
+    _h(m.materialization_permit_hash, "materialization permit hash")
+    _s(m.semantic_owner_authority_id, "semantic owner id")
+    _s(m.semantic_owner_authority_version, "semantic owner version")
+    _h(m.semantic_owner_authority_hash, "semantic owner hash")
+    _ref(m.semantic_object_ref, "semantic object ref")
+    _h(m.owner_binding_content_hash, "owner binding hash")
+    _refs(m.evidence_refs, "materialization evidence", True)
+    _refs(m.provenance_refs, "materialization provenance", True)
+    _h(m.replay_input_hash, "materialization replay input hash")
+    _s(m.integrity_state, "materialization integrity state")
+    if m.semantic_owner_transfer is not False or m.semantic_fields_interpreted is not False:
+        raise OEEAdmissionError("materializer semantic opacity/owner preservation violated")
+
+    if not allow_noncurrent:
+        expected = (
+            OBL054_MATERIALIZER_ID,
+            OBL054_MATERIALIZER_VERSION,
+            OBL054_ADOPTION_ARTIFACT_BLOB,
+            OBL053_ADOPTION_ARTIFACT_BLOB,
+            OBL054_ACCEPTED_ROOT_HASH,
+            OBL054_PERMIT_ID,
+            OBL054_PERMIT_HASH,
+            OBL053_AUTHORITY_ID,
+            OBL053_AUTHORITY_VERSION,
+            OBL053_AUTHORITY_HASH,
+            OBL053_SEMANTIC_OBJECT_ID,
+            OBL053_SEMANTIC_OBJECT_HASH,
+        )
+        actual = (
+            m.materializer_id,
+            m.materializer_version,
+            m.obl054_adoption_artifact_blob,
+            m.obl053_adoption_artifact_blob,
+            m.accepted_owner_root_hash,
+            m.materialization_permit_id,
+            m.materialization_permit_hash,
+            m.semantic_owner_authority_id,
+            m.semantic_owner_authority_version,
+            m.semantic_owner_authority_hash,
+            m.semantic_object_ref.ref,
+            m.semantic_object_ref.content_hash,
+        )
+        if actual != expected:
+            raise OEEAdmissionError("subject ingress is not bound to exact adopted OBL054/current OBL053 root")
+        if m.integrity_state != "AUTHENTICATED_FRESH_OBL053_ROOT__OWNER_BOUND_INPUT_VERIFIED":
+            raise OEEAdmissionError("materialization receipt integrity state is not current")
+    else:
+        if m.materializer_id == OBL054_MATERIALIZER_ID and m.obl054_adoption_artifact_blob == OBL054_ADOPTION_ARTIFACT_BLOB:
+            raise OEEAdmissionError("noncurrent synthetic fixture may not masquerade as current OBL054")
+
+    expected_owner_binding = _digest_bytes(
+        MATERIALIZER_OWNER_BINDING_DOMAIN,
+        _materializer_owner_material(m),
+    )
+    if m.owner_binding_content_hash != expected_owner_binding:
+        raise OEEIntegrityError("materialization owner binding hash mismatch")
+    subject_material = _materializer_subject_identity_material(m)
+    expected_subject_hash = _digest_bytes(MATERIALIZER_SUBJECT_REF_DOMAIN, subject_material)
+    if m.subject_ref_hash != expected_subject_hash:
+        raise OEEIntegrityError("materialization subject_ref_hash mismatch")
+    if not allow_noncurrent:
+        if m.subject_ref != f"urn:rawlsing:v3:subject:sha256:{expected_subject_hash}":
+            raise OEEIntegrityError("materialization subject_ref identity mismatch")
+    expected_replay = sha256(
+        json.dumps(subject_material, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+    if m.replay_input_hash != expected_replay:
+        raise OEEIntegrityError("materialization replay_input_hash mismatch")
+    expected_receipt_hash = _digest_bytes(MATERIALIZER_RECEIPT_DOMAIN, _materializer_receipt_body(m))
+    if m.receipt_hash != expected_receipt_hash:
+        raise OEEIntegrityError("materialization receipt hash mismatch")
+    if not m.receipt_id.endswith(m.receipt_hash):
+        raise OEEIntegrityError("materialization receipt id/hash mismatch")
+    return m
+
+def _causal_use_material(c: CausalUsePermissionAuthentication, permission_ref: ExactRef) -> dict[str, Any]:
+    return {
+        "authority": [c.authority_id, c.authority_version, c.authority_content_hash],
+        "authority_acceptance_ref": c.authority_acceptance_ref,
+        "permission_ref": permission_ref,
+        "permission_receipt_ref": c.permission_receipt_ref,
+        "subject_ref": c.subject_ref,
+        "semantic_object_hash": c.semantic_object_hash,
+        "materialization_receipt_ref": c.materialization_receipt_ref,
+        "scope": c.scope,
+        "provenance_refs": _refs(c.provenance_refs, "causal use provenance", True),
+        "currentness_state": c.currentness_state,
+    }
+
+def _validate_causal_use(
+    c: CausalUsePermissionAuthentication,
+    permission_ref: ExactRef,
+    materialization_ref: ExactRef,
+    subject_ref: str,
+    semantic_object_hash: str,
+    *,
+    allow_noncurrent: bool,
+) -> ExactRef:
+    if not isinstance(c, CausalUsePermissionAuthentication):
+        raise OEEIntegrityError("authenticated causal-use permission is requi
