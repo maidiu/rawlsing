@@ -11,8 +11,8 @@
 - exact working-ancestry starting HEAD: `50cd903fbd6fdb4ed1dc248ab2ff5db9a2060733`
 - immutable instruction ref: `50cd903fbd6fdb4ed1dc248ab2ff5db9a2060733`
 - instruction blob: `9e0944a37371992fcda41a16e109282a79bb9f3a`
-- semantic candidate artifact commit: `e58822e9b5468eb0dc8fc0dfb9f22792be3709ae`
-- semantic candidate artifact blob: `24ee49208a8988bf0b34b4204a197699c3ae873e`
+- semantic candidate artifact commit: `633c6b673e2ecf90e3a288b93a50d1478320132d`
+- semantic candidate artifact blob: `59c88df41b90f3ca932f52326fe4b275e84c4551`
 - PRE-MAIN observed before worker writes: `50cd903fbd6fdb4ed1dc248ab2ff5db9a2060733`
 - `main` observed before worker writes: `b53f8843092e776fb83ec584399641f5f2fc3de3`
 - `main` movement: NONE
@@ -60,7 +60,7 @@ Authority version:
 
 Authority semantic/content hash:
 
-`867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29`
+`e024220dfd21bd2544f86dd9ceec332b42115ff55afdc94183811d2ed52924ed`
 
 Candidate status:
 
@@ -75,15 +75,15 @@ The JSON artifact contains the exact semantic projections and all four content-a
 - generation seed hash:
   `b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53`
 - authority hash:
-  `867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29`
+  `e024220dfd21bd2544f86dd9ceec332b42115ff55afdc94183811d2ed52924ed`
 - prospective semantic object hash:
-  `9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547`
+  `d9647033de698e38e16001984580e1e0af3ba30c362acf3258aef3b78070cb53`
 - objective evidence receipt hash:
-  `153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c`
+  `1561942f1fe4fc43b248c61be866c0bc459773b7c6dbb8e393e13b064cdacce0`
 
 Prospective semantic object identity:
 
-`urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547`
+`urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:d9647033de698e38e16001984580e1e0af3ba30c362acf3258aef3b78070cb53`
 
 This is a semantic-object identity only.
 
