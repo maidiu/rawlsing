@@ -66,11 +66,11 @@ Q69B_CURRENT_MANIFEST_SHA256: Final[str] = "15b39da2a58bdb0716e8e84dd63b215e2fc5
 
 Q86_ACCEPTED_RELEASE_SHA256: Final[str] = "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"
 Q86_ACCEPTED_REPLAY_MANIFEST_SHA256: Final[str] = "c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa"
-Q86AB_SOURCE_KEY_SEQUENCE_SHA256: Final[str] = "a906fa88169828bd823df3c8ee7dc8e3abb99ab5f26d7e7b33d7296a3636c045"
-Q86AB_STATE_PAIRS_RAW_SHA256: Final[str] = "b5ec90e648b1ee9da248df4d74fa84bc1a3ecad75765d41bc420da75d7190cbb"
-Q86AB_STATE_PAIRS_GZIP_SHA256: Final[str] = "261c53bb36c79d2dc7c5551d4fbe3e50fbee39845d249d38d2d547e0ac3b2655"
+Q86AB_SOURCE_KEY_SEQUENCE_SHA256: Final[str] = "b5370c6df7f0e5a987a4469820c44e5cfa7da140da96737418ca9d22b3df7b37"
+Q86AB_STATE_PAIRS_RAW_SHA256: Final[str] = "b49116eabdc74c3292795c25f0921545ec148300d078bb8c30d1091796684595"
+Q86AB_STATE_PAIRS_GZIP_SHA256: Final[str] = "567aa614d477423ccc0def12f9337290c23050504634c11693c952556cd1e2a8"
 Q86AB_STATE_PAIRS_RAW_BYTES: Final[int] = 51_587
-Q86AB_STATE_PAIRS_GZIP_BYTES: Final[int] = 12_626
+Q86AB_STATE_PAIRS_GZIP_BYTES: Final[int] = 12_508
 FFP014_RISK_KEY_LOCAL_ID_PAIRS_CARRIER_ORDER_SHA256: Final[str] = "a4ea782fcbc3f1f6e50061c80ba304ce91dddfc0e70ba2da79e40613b636928b"
 FFP014_RISK_KEY_LOCAL_ID_PAIR_SET_SHA256: Final[str] = "32579518a258ba376e3221a9fa1416c656027cc5f45188eb5b9ca97c3c103dc6"
 _Q86_STATE_ORDER: Final[tuple[str, ...]] = ("-1", "0", "1", "9", "997", "998")
@@ -372,7 +372,9 @@ def _ffp014_respondent_local_id(country_native: str, respno: str) -> str:
     return "sha256:" + _sha256(material.encode("utf-8"))
 
 
-def _load_q86ab_state_pairs(q69b_transport: q69b.Q69BTransport) -> Mapping[str, tuple[str, str]]:
+def _load_q86ab_state_pairs(
+    q69b_transport: q69b.Q69BTransport,
+) -> tuple[tuple[str, str, str], ...]:
     compressed = _q86ab_state_pairs_path().read_bytes()
     if len(compressed) != Q86AB_STATE_PAIRS_GZIP_BYTES or _sha256(compressed) != Q86AB_STATE_PAIRS_GZIP_SHA256:
         raise Q2SameSourceMaterializationError("Q86 accepted-path replay carrier gzip identity mismatch")
@@ -381,50 +383,52 @@ def _load_q86ab_state_pairs(q69b_transport: q69b.Q69BTransport) -> Mapping[str, 
         raise Q2SameSourceMaterializationError("Q86 accepted-path replay carrier semantic identity mismatch")
     if len(q69b_transport.rows) != q69b.SOURCE_ROWS or len(raw) != q69b.SOURCE_ROWS:
         raise Q2SameSourceMaterializationError("Q86 accepted-path source-row count mismatch")
-    if tuple(row.row_ordinal for row in q69b_transport.rows) != tuple(range(1, q69b.SOURCE_ROWS + 1)):
-        raise Q2SameSourceMaterializationError("Q69B accepted transport no longer covers exact source-row ordinals")
 
-    # Row order is explicitly not respondent identity.  The retained FFP017
-    # replay bytes are keyed by canonical sorted exact COUNTRY|RESPNO keys and
-    # are joined back to Q69B by that exact source key, never by position.
-    source_keys = sorted(row.respondent_key for row in q69b_transport.rows)
-    if len(source_keys) != len(set(source_keys)):
-        raise Q2SameSourceMaterializationError("Q86 accepted-path source-key collision")
-    if _sha256(canonical_json(source_keys).encode("utf-8")) != Q86AB_SOURCE_KEY_SEQUENCE_SHA256:
-        raise Q2SameSourceMaterializationError("Q86 accepted-path canonical source-key set identity mismatch")
+    # Accepted FFP014/FFP017 row order is a replay coordinate, not respondent
+    # identity: numeric COUNTRY then exact RESPNO.  Preserve that exact producer
+    # order for Q86 event identity, while separately proving that the key set is
+    # exactly the same source respondent set carried by accepted Q69B.
+    q69b_keys = [row.respondent_key for row in q69b_transport.rows]
+    if len(q69b_keys) != len(set(q69b_keys)):
+        raise Q2SameSourceMaterializationError("Q69B accepted source respondent key collision")
+    accepted_order_keys = sorted(
+        q69b_keys,
+        key=lambda key: (int(key.split("|", 1)[0]), key.split("|", 1)[1]),
+    )
+    if _sha256(canonical_json(accepted_order_keys).encode("utf-8")) != Q86AB_SOURCE_KEY_SEQUENCE_SHA256:
+        raise Q2SameSourceMaterializationError("accepted Q86 carrier-order respondent-key identity mismatch")
 
-    decoded: dict[str, tuple[str, str]] = {}
+    decoded: list[tuple[str, str, str]] = []
     width = len(_Q86_STATE_ORDER)
-    for respondent_key, packed in zip(source_keys, raw):
+    for respondent_key, packed in zip(accepted_order_keys, raw):
         q86a_index, q86b_index = divmod(packed, width)
         if q86a_index >= width or q86b_index >= width:
             raise Q2SameSourceMaterializationError("Q86 accepted-path replay state byte outside frozen domain")
-        decoded[respondent_key] = (
-            _Q86_STATE_ORDER[q86a_index],
-            _Q86_STATE_ORDER[q86b_index],
+        decoded.append(
+            (
+                respondent_key,
+                _Q86_STATE_ORDER[q86a_index],
+                _Q86_STATE_ORDER[q86b_index],
+            )
         )
     if len(decoded) != q69b.SOURCE_ROWS:
-        raise Q2SameSourceMaterializationError("Q86 accepted-path exact-key replay cardinality drift")
-    return decoded
+        raise Q2SameSourceMaterializationError("Q86 accepted-path replay cardinality drift")
+    return tuple(decoded)
 
 
 @lru_cache(maxsize=1)
 def _rehydrate_accepted_q86_release():
     """Re-run the accepted claim-scoped Q86 producer and require exact accepted identities."""
     q69b_transport = q69b.load_q69b_transport()
-    state_pairs_by_key = _load_q86ab_state_pairs(q69b_transport)
+    accepted_replay_rows = _load_q86ab_state_pairs(q69b_transport)
 
     source_rows = []
     exposure_counts = {"EXPOSED__PROVED": 0, "NONEXPOSURE__PROVED": 0}
     alpha_by_country: dict[str, str] = {}
-    for qrow in q69b_transport.rows:
-        state_pair = state_pairs_by_key.get(qrow.respondent_key)
-        if state_pair is None:
-            raise Q2SameSourceMaterializationError(
-                "Q69B exact respondent key absent from accepted-path Q86 replay carrier"
-            )
-        q86a_code, q86b_code = state_pair
-        country_native, respno = qrow.respondent_key.split("|", 1)
+    for accepted_row_ordinal, (respondent_key, q86a_code, q86b_code) in enumerate(
+        accepted_replay_rows, 1
+    ):
+        country_native, respno = respondent_key.split("|", 1)
         country_alpha3 = respno[:3]
         if len(country_alpha3) != 3 or country_alpha3.upper() != country_alpha3:
             raise Q2SameSourceMaterializationError("FFP014 exact RESPNO country token is malformed")
@@ -438,7 +442,7 @@ def _rehydrate_accepted_q86_release():
         )
         exposure_counts[exposure_state] += 1
         source_rows.append(q86.R5Q86GovernedRow(
-            row_ordinal=qrow.row_ordinal,
+            row_ordinal=accepted_row_ordinal,
             country_native=country_native,
             respno=respno,
             country_alpha3=country_alpha3,
