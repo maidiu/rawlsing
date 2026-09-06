@@ -190,4 +190,246 @@ class ActorPhaseEvidence:
     currentness_state: str = CURRENT_ACCEPTED
 
 @dataclass(frozen=True, slots=True)
-class Posit
+class PositiveApplicabilityReceipt:
+    receipt: ExactRef
+    authority_id: str
+    authority_version: str
+    authority_content_hash: str
+    result: str
+    provenance_refs: tuple[ExactRef, ...]
+    authority_acceptance_ref: ExactRef | None = None
+    authentication_ref: ExactRef | None = None
+    currentness_state: str = CURRENT_ACCEPTED
+
+@dataclass(frozen=True, slots=True)
+class OpportunityBasisEvidence:
+    basis_ref: ExactRef
+    actor_id: str
+    subject_ref: str
+    applicability_receipts: tuple[PositiveApplicabilityReceipt, ...]
+    context_or_world_receipt_refs: tuple[ExactRef, ...]
+    position_or_other_constraint_refs: tuple[ExactRef, ...] = ()
+    provenance_refs: tuple[ExactRef, ...] = ()
+
+@dataclass(frozen=True, slots=True)
+class ContactOccurrenceWitness:
+    witness_ref: ExactRef
+    witness_authority_id: str
+    witness_authority_version: str
+    witness_authority_content_hash: str
+    actor_id: str
+    subject_ref: str
+    occurrence_time: str
+    semantic: str
+    independence_ref: ExactRef
+    provenance_refs: tuple[ExactRef, ...]
+    authority_acceptance_ref: ExactRef | None = None
+    contact_basis_refs: tuple[ExactRef, ...] = ()
+    authentication_ref: ExactRef | None = None
+    independence_authority_id: str | None = None
+    independence_authority_version: str | None = None
+    independence_authority_content_hash: str | None = None
+    independence_authority_acceptance_ref: ExactRef | None = None
+    independence_receipt_ref: ExactRef | None = None
+    independence_basis_refs: tuple[ExactRef, ...] = ()
+    independence_authentication_ref: ExactRef | None = None
+    currentness_state: str = CURRENT_ACCEPTED
+
+@dataclass(frozen=True, slots=True)
+class V3OEERealizationRecord:
+    record_id: str
+    actor_id: str
+    authority_id: str
+    authority_version: str
+    registry_id: str
+    registry_version: str
+    rule_id: str
+    rule_version: str
+    realization_state: str
+    subject_ref: str
+    parent_record_id: str | None
+    effective_from: str
+    effective_until: str
+    time_granularity: str
+    source_candidate_id: str
+    source_candidate_replay_hash: str
+    context_or_world_receipt_refs: tuple[ExactRef, ...]
+    applicability_receipt_refs: tuple[ExactRef, ...]
+    phase_state_ref: ExactRef
+    position_or_other_constraint_refs: tuple[ExactRef, ...]
+    causal_witness_refs: tuple[ExactRef, ...]
+    rng_decision_receipt_ref: ExactRef | None
+    event_id: str | None
+    event_effect_kind: str | None
+    prior_ledger_anchor_ref: ExactRef
+    provenance_refs: tuple[ExactRef, ...]
+    record_hash: str
+
+@dataclass(frozen=True, slots=True)
+class OEEExecutionResult:
+    record: V3OEERealizationRecord
+
+_RULES = {
+    STATE_AVAILABLE: (RULE_AVAILABLE, "BASIS_TO_AVAILABLE", None, None),
+    STATE_OPPORTUNITY: (RULE_OPPORTUNITY, "AVAILABLE_TO_OPPORTUNITY", STATE_AVAILABLE, EFFECT_OPPORTUNITY),
+    STATE_ENCOUNTER: (RULE_ENCOUNTER, "OPPORTUNITY_TO_ENCOUNTER", STATE_OPPORTUNITY, EFFECT_ENCOUNTER),
+}
+
+def _s(v: Any, n: str) -> str:
+    if not isinstance(v, str):
+        raise OEEIntegrityError(f"{n} must be non-empty string")
+    out = unicodedata.normalize("NFC", v.strip())
+    if not out:
+        raise OEEIntegrityError(f"{n} must be non-empty string")
+    return out
+
+def _h(v: Any, n: str) -> str:
+    v = _s(v, n)
+    if not _HASH64.fullmatch(v):
+        raise OEEIntegrityError(f"{n} must be lowercase SHA-256 hex")
+    return v
+
+def _blob(v: Any, n: str) -> str:
+    v = _s(v, n)
+    if not _BLOB40.fullmatch(v):
+        raise OEEIntegrityError(f"{n} must be lowercase Git SHA-1 hex")
+    return v
+
+def _ref(v: Any, n: str) -> ExactRef:
+    if not isinstance(v, ExactRef):
+        raise OEEIntegrityError(f"{n} must be ExactRef")
+    _s(v.kind, n + ".kind")
+    _s(v.ref, n + ".ref")
+    _h(v.content_hash, n + ".content_hash")
+    return v
+
+def _refs(xs: Iterable[ExactRef], n: str, required: bool = False) -> tuple[ExactRef, ...]:
+    xs = tuple(xs)
+    if required and not xs:
+        raise OEEIntegrityError(f"{n} must be non-empty")
+    validated = tuple(_ref(x, n) for x in xs)
+    keyed = {(x.kind, x.ref, x.content_hash): x for x in validated}
+    return tuple(keyed[k] for k in sorted(keyed))
+
+def _merge(*groups: Iterable[ExactRef]) -> tuple[ExactRef, ...]:
+    return _refs((x for g in groups for x in g), "refs", True)
+
+def _time(v: Any, n: str) -> str:
+    raw = _s(v, n)
+    p = raw[:-1] + "+00:00" if raw.endswith("Z") else raw
+    try:
+        dt = datetime.fromisoformat(p)
+    except ValueError as e:
+        raise OEEIntegrityError(f"{n} must be ISO-8601") from e
+    if dt.tzinfo is None or dt.utcoffset() is None:
+        raise OEEIntegrityError(f"{n} must be timezone-aware")
+    return dt.astimezone(timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
+
+def _dt(v: str) -> datetime:
+    return datetime.fromisoformat(v[:-1] + "+00:00")
+
+def _interval(a: Any, b: Any) -> tuple[str, str]:
+    a, b = _time(a, "effective_from"), _time(b, "effective_until")
+    if _dt(b) < _dt(a):
+        raise OEEIntegrityError("effective_until precedes effective_from")
+    return a, b
+
+def _norm(v: Any) -> Any:
+    if isinstance(v, ExactRef):
+        return {"kind": v.kind, "ref": v.ref, "content_hash": _h(v.content_hash, "content_hash")}
+    if isinstance(v, Mapping):
+        return {str(k): _norm(x) for k, x in v.items()}
+    if isinstance(v, (tuple, list)):
+        return [_norm(x) for x in v]
+    if isinstance(v, str):
+        return unicodedata.normalize("NFC", v)
+    return v
+
+def _canonical_json(v: Any) -> str:
+    return json.dumps(_norm(v), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+def _digest(domain: str, v: Any) -> str:
+    return sha256((domain + _canonical_json(v)).encode("utf-8")).hexdigest()
+
+def _digest_bytes(domain: bytes, v: Any) -> str:
+    return sha256(domain + json.dumps(v, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")).hexdigest()
+
+def _content_ref(kind: str, prefix: str, material: Any, *, domain: str = _AUTH_BINDING_DOMAIN) -> ExactRef:
+    digest = _digest(domain, material)
+    return ExactRef(kind, prefix + digest, digest)
+
+def _validate_content_addressed_ref(ref: ExactRef, n: str, kind: str, prefix: str) -> ExactRef:
+    r = _ref(ref, n)
+    if r.kind != kind:
+        raise OEEIntegrityError(f"{n} kind mismatch")
+    if r.ref != prefix + r.content_hash:
+        raise OEEIntegrityError(f"{n} is not content-addressed")
+    return r
+
+def _fixed_ref(kind: str, ref: str, material: Any) -> ExactRef:
+    return ExactRef(kind, ref, _digest(_FIXED_PROVENANCE_DOMAIN, material))
+
+ADP010_AUTHORITY_HASH_REF = _fixed_ref(
+    "ADP010_AUTHORITY_HASH",
+    f"urn:rawlsing:authority-artifact:git-blob:{ADP010_AUTHORITY_ARTIFACT_BLOB_SHA}",
+    [ADP010_AUTHORITY_ID, ADP010_AUTHORITY_VERSION, ADP010_AUTHORITY_ARTIFACT_BLOB_SHA],
+)
+ADP010_REGISTRY_HASH_REF = _fixed_ref(
+    "ADP010_REGISTRY_HASH",
+    f"urn:rawlsing:registry:{ADP010_REGISTRY_ID}@{ADP010_REGISTRY_VERSION}",
+    [ADP010_REGISTRY_ID, ADP010_REGISTRY_VERSION, ADP010_AUTHORITY_ARTIFACT_BLOB_SHA],
+)
+ADP008_AUTHORITY_HASH_REF = _fixed_ref(
+    "ADP008_AUTHORITY_HASH",
+    f"urn:rawlsing:authority-artifact:git-blob:{ADP008_AUTHORITY_ARTIFACT_BLOB_SHA}",
+    [ADP008_AUTHORITY_ID, ADP008_AUTHORITY_VERSION, ADP008_AUTHORITY_ARTIFACT_BLOB_SHA],
+)
+ADP008_REGISTRY_CONTENT_HASH = _digest(
+    _FIXED_PROVENANCE_DOMAIN,
+    [ADP008_REGISTRY_ID, ADP008_REGISTRY_VERSION, ADP008_AUTHORITY_ARTIFACT_BLOB_SHA],
+)
+ADP008_REGISTRY_HASH_REF = ExactRef(
+    "ADP008_REGISTRY_HASH",
+    f"urn:rawlsing:registry:{ADP008_REGISTRY_ID}@{ADP008_REGISTRY_VERSION}",
+    ADP008_REGISTRY_CONTENT_HASH,
+)
+ADP020_AUTHORITY_HASH_REF = _fixed_ref(
+    "ADP020_AUTHORITY_HASH",
+    f"urn:rawlsing:authority-artifact:git-blob:{ADP020_AUTHORITY_ARTIFACT_BLOB_SHA}",
+    [ADP020_AUTHORITY_ID, ADP020_AUTHORITY_VERSION, ADP020_AUTHORITY_ARTIFACT_BLOB_SHA],
+)
+
+def _rule_hash_ref(state: str) -> ExactRef:
+    rule_id = _RULES[state][0]
+    return _fixed_ref(
+        "ADP010_RULE_HASH",
+        f"urn:rawlsing:adp010:rule:{rule_id}@{RULE_VERSION}",
+        [
+            ADP010_AUTHORITY_ID, ADP010_AUTHORITY_VERSION,
+            ADP010_REGISTRY_ID, ADP010_REGISTRY_VERSION,
+            ADP010_AUTHORITY_ARTIFACT_BLOB_SHA, rule_id, RULE_VERSION,
+        ],
+    )
+
+def _required_fixed_provenance(state: str) -> tuple[ExactRef, ...]:
+    return _refs(
+        (
+            ADP010_AUTHORITY_HASH_REF,
+            ADP010_REGISTRY_HASH_REF,
+            _rule_hash_ref(state),
+            ADP008_AUTHORITY_HASH_REF,
+            ADP008_REGISTRY_HASH_REF,
+            ADP020_AUTHORITY_HASH_REF,
+        ),
+        "fixed provenance",
+        True,
+    )
+
+def _mat_ref_dict(ref: ExactRef) -> dict[str, str]:
+    r = _ref(ref, "semantic_object_ref")
+    return {"kind": r.kind, "ref_id": r.ref, "sha256": r.content_hash}
+
+def _materializer_owner_material(m: MaterializationReceiptContent) -> dict[str, Any]:
+    return {
+        "schema_id": MATERIALIZER_OWNER_BINDING_SCHEMA,
+        "semantic_
