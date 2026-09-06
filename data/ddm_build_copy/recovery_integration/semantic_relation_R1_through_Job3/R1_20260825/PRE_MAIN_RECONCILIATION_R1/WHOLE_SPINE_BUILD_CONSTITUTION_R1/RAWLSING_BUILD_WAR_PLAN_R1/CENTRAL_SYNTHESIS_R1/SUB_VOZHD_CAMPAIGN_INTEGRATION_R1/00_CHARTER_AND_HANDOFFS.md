@@ -37,6 +37,16 @@ Every SUB-VOZHD and every worker it commissions is bound by:
 
 and its adopted disposition.
 
+Every SUB-VOZHD is also bound by:
+
+`01_INTER_CAMPAIGN_ORCHESTRATION_LAW_R1.md`
+
+as adopted by:
+
+`02_VOZHD_ADOPTION_R1.md`
+
+This later inter-campaign law governs sibling ownership, cross-campaign dependency routing, proof-collision avoidance, trajectory amendment, and candidate consumption. It does not widen any campaign charter.
+
 The SUB-VOZHD must optimize critical-path progress, not worker utilization.
 
 It must enforce:
