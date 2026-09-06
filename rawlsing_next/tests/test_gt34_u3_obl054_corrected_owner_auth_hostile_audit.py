@@ -57,6 +57,28 @@ REAL_SUBJECT_PATTERN = re.compile(
     r"urn:rawlsing:v3:subject:sha256:[0-9a-f]{64}"
 )
 
+EXPECTED_U2_MODULE_BLOB = "b0cb39a9a975381f3f3b4a03e7e435b2932e89b9"
+EXPECTED_FRESH_ADOPTION_BLOB = "f561765bad4fdad2bbf4591f35fe7f81f8486428"
+EXPECTED_CURRENT_ROOT_HASH = (
+    "1563a1661d3e0a76e6781633f1b590147e26ab21014674bbe732f68cef6acfa8"
+)
+EXPECTED_CURRENT_PERMIT_HASH = (
+    "3eeea2dcfa0a70f1a5b6ce15d41d9f83d84e39ecde816896150fff21e77573dc"
+)
+HISTORICAL_ADOPTION_BLOB = "286ff7b851e920ff2760082d8b2fb194560ab127"
+HISTORICAL_AUTHORITY_HASH = (
+    "e024220dfd21bd2544f86dd9ceec332b42115ff55afdc94183811d2ed52924ed"
+)
+HISTORICAL_OBJECT_HASH = (
+    "d9647033de698e38e16001984580e1e0af3ba30c362acf3258aef3b78070cb53"
+)
+HISTORICAL_RECEIPT_HASH = (
+    "1561942f1fe4fc43b248c61be866c0bc459773b7c6dbb8e393e13b064cdacce0"
+)
+
+U3_TEST = ROOT / "rawlsing_next/tests/test_gt34_u3_obl054_corrected_owner_auth_hostile_audit.py"
+COURT_SPEC = ROOT / ".rabochii/court_spec.json"
+
 
 def _canonical_json(value: object) -> str:
     return json.dumps(
@@ -75,6 +97,11 @@ def _hash_domain(domain: bytes, value: object) -> str:
 
 def _sha256(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
+
+
+def _git_blob_sha1(raw: bytes) -> str:
+    header = f"blob {len(raw)}\0".encode("ascii")
+    return hashlib.sha1(header + raw).hexdigest()
 
 
 def _sorted_refs(refs: tuple[u2.ExactImmutableRef, ...]) -> list[dict[str, str]]:
@@ -217,7 +244,14 @@ def _shadow_fixture() -> tuple[
 
 
 def test_independently_recompute_current_root_and_permit_from_fresh_adoption() -> None:
-    adoption = json.loads(ADOPTION.read_text(encoding="utf-8"))
+    adoption_raw = ADOPTION.read_bytes()
+    independent_adoption_blob = _git_blob_sha1(adoption_raw)
+    assert independent_adoption_blob == EXPECTED_FRESH_ADOPTION_BLOB
+
+    u2_module_raw = U2_MODULE.read_bytes()
+    assert _git_blob_sha1(u2_module_raw) == EXPECTED_U2_MODULE_BLOB
+
+    adoption = json.loads(adoption_raw)
 
     evidence_ref = {
         "kind": "GT34_OBL053_OBJECTIVE_EVIDENCE_RECEIPT",
@@ -250,7 +284,7 @@ def test_independently_recompute_current_root_and_permit_from_fresh_adoption() -
     )
     root_material = {
         "schema_id": "GT34_OBL054_ACCEPTED_OBL053_OWNER_ROOT@1.0.0",
-        "adoption_artifact_blob": u2.FRESH_OBL053_ADOPTION_ARTIFACT_BLOB,
+        "adoption_artifact_blob": independent_adoption_blob,
         "semantic_owner_authority": {
             "id": adoption["authority"]["authority_id"],
             "version": adoption["authority"]["authority_version"],
@@ -271,6 +305,7 @@ def test_independently_recompute_current_root_and_permit_from_fresh_adoption() -
         "object_cardinality": 1,
     }
     root_hash = _hash_domain(ACCEPTED_ROOT_DOMAIN, root_material)
+    assert root_hash == EXPECTED_CURRENT_ROOT_HASH
     assert root_hash == u2.CURRENT_ACCEPTED_OWNER_ROOT_HASH
 
     permit_material = {
@@ -281,6 +316,7 @@ def test_independently_recompute_current_root_and_permit_from_fresh_adoption() -
         "object_cardinality": 1,
     }
     permit_hash = _hash_domain(PERMIT_DOMAIN, permit_material)
+    assert permit_hash == EXPECTED_CURRENT_PERMIT_HASH
     assert permit_hash == u2.CURRENT_ONE_OBJECT_MATERIALIZATION_PERMIT.permit_hash
     assert (
         u2.CURRENT_ONE_OBJECT_MATERIALIZATION_PERMIT.permit_id
@@ -333,11 +369,11 @@ def test_structurally_valid_hostile_root_and_permit_are_noncurrent() -> None:
     [
         replace(
             u2.CURRENT_ACCEPTED_OWNER_ROOT,
-            adoption_artifact_blob=u2.HISTORICAL_INVALID_OBL053_ADOPTION_ARTIFACT_BLOB,
+            adoption_artifact_blob=HISTORICAL_ADOPTION_BLOB,
         ),
         replace(
             u2.CURRENT_ACCEPTED_OWNER_ROOT,
-            semantic_owner_authority_hash=u2.HISTORICAL_INVALID_AUTHORITY_HASH,
+            semantic_owner_authority_hash=HISTORICAL_AUTHORITY_HASH,
         ),
         replace(
             u2.CURRENT_ACCEPTED_OWNER_ROOT,
@@ -345,14 +381,14 @@ def test_structurally_valid_hostile_root_and_permit_are_noncurrent() -> None:
                 u2.CURRENT_ACCEPTED_OWNER_ROOT.semantic_object_ref,
                 ref_id=(
                     "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:"
-                    "sha256:" + u2.HISTORICAL_INVALID_OBJECT_HASH
+                    "sha256:" + HISTORICAL_OBJECT_HASH
                 ),
-                sha256=u2.HISTORICAL_INVALID_OBJECT_HASH,
+                sha256=HISTORICAL_OBJECT_HASH,
             ),
         ),
         replace(
             u2.CURRENT_ACCEPTED_OWNER_ROOT,
-            objective_evidence_receipt_hash=u2.HISTORICAL_INVALID_RECEIPT_HASH,
+            objective_evidence_receipt_hash=HISTORICAL_RECEIPT_HASH,
         ),
     ],
 )
@@ -530,6 +566,20 @@ def test_production_receipt_contract_binds_adoption_root_and_permit() -> None:
         "semantic_fields_interpreted",
     } <= names
 
+    source = inspect.getsource(u2._build_production_receipt)
+    for exact_binding in (
+        "root.adoption_artifact_blob",
+        "permit.accepted_owner_root_hash",
+        "permit.permit_id",
+        "permit.permit_hash",
+        "semantic_owner_authority_id=root.semantic_owner_authority_id",
+        "semantic_owner_authority_version=root.semantic_owner_authority_version",
+        "semantic_owner_authority_hash=root.semantic_owner_authority_hash",
+        "semantic_owner_transfer=False",
+        "semantic_fields_interpreted=False",
+    ):
+        assert exact_binding in source
+
 
 def test_public_production_path_does_not_parse_semantic_object_bytes() -> None:
     source = "\n".join(
@@ -558,21 +608,25 @@ def test_public_contract_adds_no_downstream_semantic_authority() -> None:
     public = " ".join(u2.__all__).lower()
     for forbidden in (
         "classifier",
+        "actor",
         "encounter",
+        "comparator",
         "psepf",
         "metabolism",
         "can008",
+        "can_008",
         "positive_v3",
         "actor_effect",
+        "v2_authority",
     ):
         assert forbidden not in public
     assert u2.MATERIALIZER_VERSION == "2.0.0"
 
 
-def test_u2_artifacts_persist_no_concrete_real_subject_ref() -> None:
+def test_u2_u3_artifacts_persist_no_concrete_real_subject_ref() -> None:
     corpus = "\n".join(
         path.read_text(encoding="utf-8")
-        for path in (U2_MODULE, U2_TEST, U2_RETURN, U2_EVIDENCE)
+        for path in (U2_MODULE, U2_TEST, U2_RETURN, U2_EVIDENCE, U3_TEST, COURT_SPEC)
     )
     assert REAL_SUBJECT_PATTERN.search(corpus) is None
 
