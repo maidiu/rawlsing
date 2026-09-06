@@ -65,13 +65,13 @@ Already adopted/current at exact grain:
 - ASTRA-001 deep PRE553 immutability closed;
 - ASTRA-002 shared authority-boundary defect closed.
 
-Latest integrated Q-wave / post-Q HQ state:
+Latest integrated R-wave / post-R HQ state:
 
-- **P1 / ASTRA-006:** `PASS__GT34_P1_ASTRA006_FIRST_POSITIVE_PATH_ROLE_AUTHENTICATION_CLOSED__LEGACY_NONCANARY_DEBT_BANKED`. The future first-positive V558 path has exact content-addressed dependency-role authentication. Legacy unauthenticated noncanary reconstruction debt survives as OBL050.
-- **Q1 / subject-owner decomposition:** repaired O4 requirement v1.1.0 (`219fe6714efbcda30b6d9ea69cec6b99f3fe86a92c43ae7122a68e404f795fca`) remains the controlling ownership split: subject owner proves only `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL`; ADP-010 proves `ACTOR_ENCOUNTERED_EXACT_SUBJECT`.
-- **Q2 / same-source materialization:** HQ adopted `R5_GT34_Q2_Q69B_Q86A_SAME_SOURCE_CANDIDATE_R1` at the exact bounded canary grain after governed court run `34014116929` / job `101434850326` passed `6 passed, 55 warnings`. Exact release semantic SHA-256: `86a3c75c9f50a0399b6283dd427f0158f4c4767b2dfbfd6e36b231a17c321c58`. The repair reuses actual accepted Q86A identities; predecessor Q69B/Q86 releases are unchanged. **OBL049 is closed at this canary grain.**
-- **Q3 / first-canary subject discovery:** `BLOCKED__GT34_Q3_EXACT_FIRST_CANARY_SUBJECT_REF_NOT_MATERIALIZED__SUBJECT_CLASSIFICATION_PROOF_CANNOT_BE_LAWFULLY_DEFINED`. HQ accepts the blocker evidence. No exact first-canary `subject_ref` and no separately authoritative clinic/hospital entity evidence are current. Q3 therefore spawns **OBL052**, the exact prior subject-identity/entity-evidence materialization obligation. OBL048 is now blocked on OBL052 rather than being treated as an immediately constructible classifier.
-- **Post-Q HQ disposition:** `ADOPTED__GT34_Q2_Q69B_Q86A_SAME_SOURCE_RELEASE__OBL049_CLOSED_AT_CANARY_GRAIN` and `BANKED__GT34_Q3_FIRST_CANARY_SUBJECT_NOT_MATERIALIZED__NEW_PRIOR_BLOCKER_ISOLATED`.
+- **Q2 / same-source materialization:** remains HQ-adopted at the exact 19,210-row Q69B+Q86A canary grain. OBL049 remains closed there. No portability, pooling or general release-composition authority follows.
+- **Q3 / subject discovery:** proved no exact first-canary `subject_ref` or independent clinic/hospital entity evidence is current.
+- **R1 / semantic archaeology:** `BLOCKED__GT34_R1_OBL052_NO_EXISTING_COMPETENT_SUBJECT_ENTITY_OWNER_OR_EVIDENCE_PATH`. HQ banked the result. Existing identity/registry surfaces preserve semantic ownership but do not supply a facility/world-subject owner or objective entity-evidence bundle.
+- **R2 / execution preflight:** `BLOCKED__GT34_R2_OBL052_NO_LAWFUL_CURRENT_SUBJECT_MATERIALIZATION_SEAM`. HQ banked the result. ADP-010 already has an exact subject ingress contract, but neither a current V3-P1-class owner-preserving subject registry/materializer nor a current V3-P5-class OEE realization executor exists.
+- **Post-R HQ fan-in:** creates OBL053, OBL054 and OBL055 rather than launching further archaeology.
 
 Therefore:
 
@@ -81,16 +81,17 @@ No actor mutation, positive CAN-008 rule, positive metabolism operation, causal 
 
 ## Open project fronts materially changed by post-PRE-MAIN work
 
-- OBL004 is partially closed by a real source-backed vertical canary, but full project-wide source→PRE-V3 composition remains open.
-- OBL012 is partially closed at the current canary grain: measurement portability is not required for the current same-source operation; broader transfer portability remains open if later claimed.
-- **OBL052 is the immediate critical-path gate:** materialize or identify one exact first-canary generated-world subject object/ref plus separately authoritative entity evidence.
-- OBL048 is blocked on OBL052; only after the exact subject instance/evidence exists may the narrow `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL` proposition be defined and reviewed.
-- OBL031 remains blocked on OBL048; the repaired O4 field-specific comparator is still not adopted.
-- OBL032 is now blocked on OBL031 only at the prerequisite grain: the exact same-source Q69B+Q86A material required for the unary target is current through Q2, but no first PSEPF has yet been constructed.
-- OBL033 remains partially open for general composition/replay, but its exact Q69B↔Q86A canary seam is closed through Q2; that closure does not imply portability, pooling or general release-composition authority.
-- OBL050 preserves legacy noncanary V558 role-authentication debt without reopening the first-positive path.
-- OBL039 remains a standing discoverability-maintenance obligation; the Sep 2–6 drift demonstrated that it is real.
-- OBL051 records physical branch-ref retirement as a bounded hygiene task. Ref count observed during reconciliation: 942. Physical ref count does not define project authority.
+- OBL004 remains partially closed by the real source-backed vertical canary.
+- OBL012 remains dormant for this same-source canary; broader portability is still unowned if a future transfer claim requires it.
+- **OBL053:** create the narrowest one-object nonactor subject/entity semantic owner plus objective entity evidence. It must not become a general world/facility ontology or own encounter/contact/use.
+- **OBL054:** implement the smallest V3-P1-compatible owner-preserving subject-ref registry/materializer. It may emit immutable identity and provenance only; it may not assign entity meaning.
+- **OBL052:** blocked on OBL053 + OBL054. Once both close, materialize the exact first-canary subject object/ref and evidence bundle.
+- **OBL048:** blocked on OBL052; only then may the narrow `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL` proposition be defined and adopted.
+- **OBL055:** implement the bounded ADP-010/V3-P5 OEE executor under the already accepted OEE authority. This may proceed in parallel with OBL053/054, but actual first-canary invocation waits for lawful subject identity and exact contact evidence.
+- **OBL031:** now depends on both OBL048 and OBL055 for an operable positive comparator path.
+- **OBL032:** remains blocked on OBL031; Q2 already supplies the exact same-source Q69B+Q86A empirical material.
+- OBL033 remains partially open only beyond the exact Q2 canary composition grain.
+- OBL050, OBL039 and OBL051 remain nonblocking legacy/discoverability/hygiene debts.
 
 ## Centralization / reintegration state
 
@@ -104,17 +105,30 @@ Post-Q fan-in obeys this rule: Q2 and Q3 were banked through PRs #217/#218, HQ d
 
 ## What Vozhd attacks next
 
-Dependency order now begins with:
+Dependency order now begins with three parallel bounded construction tasks:
 
-1. **OBL052** — identify or materialize one exact content-addressed first-canary generated-world subject object/ref from a competent entity/source authority, together with independently authoritative entity evidence; do not derive the subject or its type from Q69B wording, labels, ADP-010 encounter semantics, co-location, structural position, fixtures or common sense;
-2. **OBL048** — once OBL052 is closed, define/adopt the smallest exact subject-classification proposition proving only `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL`; ADP-010 retains encounter ownership;
-3. **OBL031** — rerun the bounded hostile review and adopt the repaired field-specific ADP-010↔Q69B comparator only after OBL048;
-4. **OBL032** — construct the first unary Q69B-conditioned Q86A PSEPF from the already-adopted Q2 same-source release and exact comparator evidence;
-5. define one exact positive metabolism operation and one exact CAN-008 rule bound to the actual comparator/PSEPF identities;
-6. run the invocation-bound ASTRA-004 hostile court required before any first positive V3 execution.
+1. **OBL053** — define and hostile-review the smallest one-object generated-world nonactor subject/entity semantic authority + objective evidence package. Reuse existing generated-entity identity laws, but do not import unrelated entity-family jurisdiction.
+2. **OBL054** — implement and hostile-review the smallest V3-P1-compatible owner-preserving one-object subject-ref registry/materializer against synthetic owner-bound fixtures only. It must emit identity/provenance, not meaning.
+3. **OBL055** — implement and hostile-review the bounded ADP-010/V3-P5 OEE realization executor under the already accepted `AVAILABLE -> OPPORTUNITY -> ENCOUNTER` law. It must not create/classify subjects or infer encounter from co-location.
 
-OBL049 is closed at the exact Q2 canary grain and must not be reopened or generalized unless a later concrete claim requires broader composition authority.
+Then:
 
-Branch-ref cleanup OBL051 is maintenance work and must not interrupt the semantic critical path unless ref ambiguity begins to affect project-state discoverability.
+`OBL053 + OBL054 -> OBL052`
+
+`OBL052 -> OBL048`
+
+and independently:
+
+`OBL055`
+
+then:
+
+`OBL048 + OBL055 -> OBL031 -> OBL032`
+
+After OBL031, construct the first unary Q69B-conditioned Q86A PSEPF from the adopted Q2 release, then bind one exact positive metabolism operation and one exact CAN-008 rule, and finally run the invocation-bound ASTRA-004 hostile court before any first positive V3 execution.
+
+OBL049 remains closed at the exact Q2 canary grain and must not be reopened by this work.
+
+Branch-ref cleanup OBL051 remains maintenance and must not interrupt this semantic critical path.
 
 **Ground first. Sweep centrally. Launch from the canonical reconciled head. Return explicitly. Reintegrate before the next major wave.**
