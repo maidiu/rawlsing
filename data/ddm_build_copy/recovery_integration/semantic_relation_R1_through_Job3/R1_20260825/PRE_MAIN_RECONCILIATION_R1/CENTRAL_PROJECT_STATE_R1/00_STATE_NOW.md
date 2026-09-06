@@ -65,7 +65,7 @@ Already adopted/current at exact grain:
 - ASTRA-001 deep PRE553 immutability closed;
 - ASTRA-002 shared authority-boundary defect closed.
 
-Latest integrated S-wave / post-S banking state:
+Latest integrated T-wave / post-T hostile disposition state:
 
 - **Q2 / same-source materialization:** remains HQ-adopted at the exact 19,210-row Q69B+Q86A canary grain. OBL049 remains closed there. No portability, pooling or general release-composition authority follows.
 - **Q3 / subject discovery:** proved no exact first-canary `subject_ref` or independent clinic/hospital entity evidence is current.
@@ -75,7 +75,10 @@ Latest integrated S-wave / post-S banking state:
 - **S1 / OBL053:** `PASS__GT34_S1_OBL053_ONE_OBJECT_SUBJECT_ENTITY_SEMANTIC_AUTHORITY_CANDIDATE_DEFINED__NO_ADOPTION`. Candidate authority `GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY@1.0.0`, hash `e024220dfd21bd2544f86dd9ceec332b42115ff55afdc94183811d2ed52924ed`, is banked but not adopted. Its authority-local generated-truth seed must survive independent hostile review.
 - **S2 / OBL054:** `PASS__GT34_S2_OBL054_V3P1_ONE_OBJECT_OWNER_PRESERVING_SUBJECT_MATERIALIZER_GREEN__NO_SEMANTIC_AUTHORITY`. Governed court `34016836165` passed on evidence SHA `e9df80b9b4aca29f7002257d8bf044fa21eef45e`. Candidate is banked but not adopted.
 - **S3 / OBL055:** `PASS__GT34_S3_OBL055_ADP010_V3P5_BOUNDED_OEE_EXECUTOR_GREEN__NO_CURRENT_CANARY_INVOCATION`. Governed court `34017875248` passed on evidence SHA `c70808c993b7e236e5535a03e22fe89cc3759d1e`. Candidate is banked but not adopted.
-- **Post-S HQ banking:** S1/S2/S3 are exact candidate/evidence surfaces only; worker PASS is not project authority.
+- **Post-S HQ banking:** S1/S2/S3 were exact candidate/evidence surfaces only; worker PASS was not project authority.
+- **T1 / OBL053:** `PASS__GT34_T1_OBL053_S1_ONE_OBJECT_SEMANTIC_AUTHORITY_LAWFUL_FOR_BOUNDED_ADOPTION`. HQ adopted S1 at its exact one-object constitutive semantic grain. **OBL053 is closed.** The exact current semantic object is `d9647033de698e38e16001984580e1e0af3ba30c362acf3258aef3b78070cb53`; its five objective entity facts are generated-world constitutive truth, not empirical observation. No V3 `subject_ref` exists yet.
+- **T2 / OBL054:** `FAIL__GT34_T2_OBL054_S2_OWNER_AUTHENTICATION_FAIL_OPEN_AND_ONE_OBJECT_SCOPE_ESCAPE_PROVED`. S2 remains not adopted. Repair must authenticate against the exact OBL053 HQ adoption root and make one-object scope an immutable permit-level invariant.
+- **T3 / OBL055:** `FAIL__GT34_T3_OBL055_S3_ADP010_V3P5_EXECUTOR_AUTHENTICATION_AND_REPLAY_INTEGRITY_GAPS`. S3 remains not adopted. Transition shape is reusable, but subject ingress, phase/applicability/contact authority and replay bindings require repair. OBL055 is held behind OBL054 so it can bind the final adopted materializer.
 
 Therefore:
 
@@ -87,11 +90,11 @@ No actor mutation, positive CAN-008 rule, positive metabolism operation, causal 
 
 - OBL004 remains partially closed by the real source-backed vertical canary.
 - OBL012 remains dormant for this same-source canary; broader portability is still unowned if a future transfer claim requires it.
-- **OBL053:** S1 candidate exists and is banked; independent hostile semantic review and HQ adoption/rejection are now the exact next gate.
-- **OBL054:** S2 materializer candidate is green and banked; independent hostile owner-preservation/identity review and HQ adoption/rejection are now the exact next gate.
+- **OBL053:** CLOSED at exact one-object constitutive semantic grain; current semantic object/evidence exists, but no `subject_ref` has been materialized.
+- **OBL054:** immediate critical-path repair. T2 proved exact owner-authentication and one-object-scope defects. Repair must bind only the exact adopted OBL053 authority/object and an immutable one-object permit, preserve semantic opacity, then rerun S2 + T2 hostile courts.
 - **OBL052:** blocked on OBL053 + OBL054. Once both close, materialize the exact first-canary subject object/ref and evidence bundle.
 - **OBL048:** blocked on OBL052; only then may the narrow `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL` proposition be defined and adopted.
-- **OBL055:** S3 bounded OEE executor candidate is green and banked; independent hostile authority-fidelity/contact-witness/replay review and HQ adoption/rejection are now the exact next gate. Actual first-canary invocation still waits for lawful subject identity and exact contact evidence.
+- **OBL055:** blocked on OBL054 for its final subject-ingress authentication contract. T3's exact authentication/replay defects remain the repair specification.
 - **OBL031:** now depends on both OBL048 and OBL055 for an operable positive comparator path.
 - **OBL032:** remains blocked on OBL031; Q2 already supplies the exact same-source Q69B+Q86A empirical material.
 - OBL033 remains partially open only beyond the exact Q2 canary composition grain.
@@ -103,29 +106,23 @@ The post-PRE-MAIN engineering campaign remained one cumulative ancestry with bou
 
 `SIGNIFICANT_HQ_ADOPTION_OR_CENTRAL_FANIN -> CENTRAL_STATE_DELTA_BEFORE_NEXT_MAJOR_WAVE`.
 
-Post-Q and post-S fan-in obey this rule: Q2/Q3 and then S1/S2/S3 were banked through bounded PR fan-in, exact HQ dispositions were recorded, and the central state/dependency/reintegration ledgers were updated before commissioning each successor wave.
+Post-Q, post-S and post-T fan-in obey this rule: worker evidence was banked, exact HQ dispositions were recorded, stale-base ancestry was repaired without force, and central-state/dependency/reintegration surfaces were updated before commissioning each successor wave.
 
 `integration/pre-main-reconciliation-r1` and the de facto cumulative working ref were successfully advanced together by non-forced fast-forward through validated reconciliation terminal `7909c0683874738be491cf6c0c7131579e51fdaf`; `main` remained unchanged. This post-move status seal is the direct successor used to record that canonicalization. Long-lived worker/integration branch names are not themselves authority.
 
 ## What Vozhd attacks next
 
-Dependency order now begins with three parallel **independent hostile reviews**:
+Dependency order now begins with one immediate bounded repair:
 
-1. **OBL053 / S1** — attack the exact one-object semantic authority/hash/evidence graph, especially the lawfulness of an authority-local deterministic generation seed as the basis for generated-world objective facility facts. PASS may recommend adoption only at the frozen one-object grain.
-2. **OBL054 / S2** — attack the exact V3-P1 owner-preserving materializer for hidden semantic interpretation/transfer, identity instability, one-object escape, replay weakness and fail-open behavior.
-3. **OBL055 / S3** — attack the exact ADP-010/V3-P5 executor for authority drift, parent/subject continuity defects, contact-witness laundering, replay instability, implicit exposure or actor-effect widening.
+1. **OBL054 / S2 repair** — authenticate the exact adopted OBL053 authority/object against immutable HQ adoption root `286ff7b851e920ff2760082d8b2fb194560ab127`; replace per-instance cardinality with one immutable content-addressed materialization permit naming only semantic object hash `d9647033de698e38e16001984580e1e0af3ba30c362acf3258aef3b78070cb53`; gate every materialization path through that permit; rerun original S2 and T2 hostile probes under governed court.
 
 Then:
 
-`OBL053 + OBL054 -> OBL052`
+`repaired/adopted OBL054 -> materialize exact adopted OBL053 object -> OBL052 CLOSED`
 
-`OBL052 -> OBL048`
+After OBL054 adoption, repair OBL055 against that exact materializer contract. After OBL052 closes, define/adopt OBL048 classifier.
 
-and independently:
-
-`OBL055`
-
-then:
+At that point:
 
 `OBL048 + OBL055 -> OBL031 -> OBL032`
 
