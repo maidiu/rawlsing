@@ -1,0 +1,132 @@
+{
+  "schema": "GT34_W3_OBL048_EXACT_SUBJECT_CLASSIFICATION_GOVERNED_EVIDENCE@1.0.0",
+  "status": "CANDIDATE_GREEN__INDEPENDENT_HOSTILE_REVIEW_REQUIRED__NO_ADOPTION",
+  "terminal": "PASS__GT34_W3_OBL048_EXACT_SUBJECT_CLASSIFICATION_AUTHORITY_CANDIDATE_GREEN__NO_ADOPTION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt34-w3-obl048-exact-subject-classification-authority-r1",
+  "commissioning_ref": "8e45a995eb6b1e8132075f99124c22d48c6e61ad",
+  "semantic_candidate_sha": "01645806c98b8a83070389e5375e2b7fde781c6a",
+  "candidate_artifacts": {
+    "authority": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT3_GT4_POST_W1_W2_PARALLEL_AUTHORITY_AUDIT_WAVE_R1/W3_OBL048_EXACT_SUBJECT_CLASSIFICATION_AUTHORITY_R1/01_EXACT_SUBJECT_CLASSIFICATION_AUTHORITY_CANDIDATE.json",
+      "blob": "a0be5530a3fab5a0b18746750ff461b0e7ff2d91",
+      "authority_id": "GT34_OBL048_EXACT_FIRST_CANARY_SUBJECT_CLASSIFICATION_AUTHORITY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "a0cd9714145ea4c7edd862b2a0dfdd50c2912c5ae2de598632dbe6fd2bc62794"
+    },
+    "proposition": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT3_GT4_POST_W1_W2_PARALLEL_AUTHORITY_AUDIT_WAVE_R1/W3_OBL048_EXACT_SUBJECT_CLASSIFICATION_AUTHORITY_R1/02_EXACT_SUBJECT_CLASSIFICATION_PROPOSITION_CANDIDATE.json",
+      "blob": "c8c9ec0d708acfe864beede72c062b13b5aa0f58",
+      "proposition_id": "urn:rawlsing:gt34:obl048:exact-first-canary-subject-classification-proposition:sha256:90c69c1d6f548214ae4c33f3aceac76e78b083d5b03218fcf4139f3922e3ea11",
+      "proposition_content_hash": "90c69c1d6f548214ae4c33f3aceac76e78b083d5b03218fcf4139f3922e3ea11"
+    }
+  },
+  "exact_current_subject": {
+    "subject_ref": "urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+    "subject_ref_hash": "a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+    "w1_materialization_receipt_id": "urn:rawlsing:v3:authenticated-subject-materialization-receipt:sha256:e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f",
+    "w1_materialization_receipt_hash": "e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f"
+  },
+  "exact_semantic_basis": {
+    "semantic_object_id": "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "semantic_object_hash": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "semantic_owner_authority": {
+      "id": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY",
+      "version": "1.0.0",
+      "hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29"
+    },
+    "objective_evidence_receipt": {
+      "id": "urn:rawlsing:gt34:obl053:objective-evidence-receipt:sha256:153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c",
+      "hash": "153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c"
+    },
+    "objective_facts": {
+      "entity_family": "NONACTOR_FACILITY",
+      "facility_domain": "HEALTHCARE_DELIVERY",
+      "facility_form": "CLINIC",
+      "facility_function": "OUTPATIENT_HEALTHCARE_SERVICE_DELIVERY",
+      "ownership_status": "PUBLIC_SECTOR"
+    },
+    "q1_subject_requirement": {
+      "id": "GT34_ADP010_Q69B_PUBLIC_CLINIC_SUBJECT_SEMANTIC_REQUIREMENT",
+      "version": "1.1.0",
+      "hash": "219fe6714efbcda30b6d9ea69cec6b99f3fe86a92c43ae7122a68e404f795fca"
+    }
+  },
+  "classification": {
+    "proposition": "SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL",
+    "result": true,
+    "subject_cardinality": 1,
+    "general_facility_ontology": false
+  },
+  "final_governed_court": {
+    "semantic_candidate_sha": "01645806c98b8a83070389e5375e2b7fde781c6a",
+    "evidence_execution_sha": "3efb73af8bcba84f1b0fd1c77ebc2fd6c61aaa88",
+    "exact_checkout_sha": "3efb73af8bcba84f1b0fd1c77ebc2fd6c61aaa88",
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 34054644018,
+    "job_id": 101544191263,
+    "protocol_self_test": "20 passed in 0.13s",
+    "w3_tests": "15 passed in 0.67s",
+    "conclusion": "success",
+    "receipt_artifact_id": 9995582801,
+    "receipt_artifact_digest": "sha256:185619abb0a8cd6dd578256227e2fa3a0d16042ec6cc455094146c08ae446f97"
+  },
+  "evidence_compatibility": {
+    "authority_blob_same_at_candidate_and_evidence_execution": true,
+    "authority_blob": "a0be5530a3fab5a0b18746750ff461b0e7ff2d91",
+    "proposition_blob_same_at_candidate_and_evidence_execution": true,
+    "proposition_blob": "c8c9ec0d708acfe864beede72c062b13b5aa0f58",
+    "candidate_to_evidence_delta": [
+      ".rabochii/court_spec.json__TEMPORARY_PROOF_CONFIGURATION",
+      "rawlsing_next/tests/test_gt34_w3_obl048_exact_subject_classification.py__PROOF_ONLY_FAIL_CLOSED_SHAPE_ASSERTION"
+    ],
+    "semantic_delta": "NONE",
+    "compatibility": "ADMISSIBLE_PROOF_ONLY_DELTA"
+  },
+  "preserved_prior_red_evidence": {
+    "evidence_execution_sha": "08afac57be1d0944a18c3f744177432ccdc05557",
+    "run_id": 34054591749,
+    "job_id": 101544028993,
+    "result": "1 failed, 14 passed",
+    "receipt_artifact_id": 9995567678,
+    "receipt_artifact_digest": "sha256:94076de03c7880861b5c6c8f16976bf6facd602543a29dff174103f630d8eadc",
+    "failure_class": "TEST_FAILURE__HARNESS_ASSERTION_TYPE_DEFECT",
+    "exact_failure": "lexical-label negative raised KeyError before expected fail-closed AssertionError",
+    "disposition": "PRESERVED__TEST_ONLY_CORRECTION__NO_SEMANTIC_ARTIFACT_CHANGE"
+  },
+  "proof_matrix": {
+    "exact_current_chain_positive": "PASS",
+    "authority_and_proposition_hash_recomputation": "PASS",
+    "subject_ref_mutation": "REJECTED",
+    "materialization_receipt_mutation": "REJECTED",
+    "semantic_object_owner_evidence_mutation": "REJECTED",
+    "non_clinic_hospital_form": "REJECTED",
+    "non_public_ownership": "REJECTED",
+    "lexical_label_without_objective_evidence": "REJECTED",
+    "second_subject": "REJECTED",
+    "contact_use_encounter_fields": "ABSENT_AND_REJECTED_FROM_PROPOSITION_SHAPE",
+    "q1_requirement_hash_binding": "PASS",
+    "replay_idempotence": "PASS",
+    "broader_authority": "NONE_EMITTED"
+  },
+  "authority_ceiling": {
+    "exact_subject_classification_only": true,
+    "contact_use_encounter_exposure": false,
+    "comparator": false,
+    "psepf": false,
+    "metabolism": false,
+    "can008": false,
+    "v2": false,
+    "positive_v3": false,
+    "second_subject": false,
+    "general_facility_ontology": false
+  },
+  "non_actions": {
+    "obl048_adopted": false,
+    "adp010_invoked": false,
+    "central_moved": false,
+    "pre_main_moved": false,
+    "main_moved": false,
+    "w4_consumed": false
+  }
+}
