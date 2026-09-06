@@ -77,8 +77,14 @@ def _hostile_input(tag: str = "A") -> s2.OwnerBoundSubjectInput:
 
 
 def _manual_identities(material: s2.OwnerBoundSubjectInput) -> tuple[str, str, str, str]:
-    evidence = sorted(ref.as_dict() for ref in material.evidence_refs)
-    provenance = sorted(ref.as_dict() for ref in material.provenance_refs)
+    evidence = sorted(
+        (ref.as_dict() for ref in material.evidence_refs),
+        key=lambda item: (item["kind"], item["ref_id"], item["sha256"]),
+    )
+    provenance = sorted(
+        (ref.as_dict() for ref in material.provenance_refs),
+        key=lambda item: (item["kind"], item["ref_id"], item["sha256"]),
+    )
     owner = {
         "id": material.semantic_owner_authority_id,
         "version": material.semantic_owner_authority_version,
