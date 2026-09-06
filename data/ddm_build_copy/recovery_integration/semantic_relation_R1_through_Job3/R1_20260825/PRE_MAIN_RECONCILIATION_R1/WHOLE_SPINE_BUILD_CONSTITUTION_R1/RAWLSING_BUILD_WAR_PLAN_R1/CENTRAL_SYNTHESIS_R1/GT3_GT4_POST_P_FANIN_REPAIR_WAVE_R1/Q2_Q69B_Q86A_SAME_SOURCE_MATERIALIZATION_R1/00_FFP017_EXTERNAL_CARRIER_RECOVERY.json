@@ -45,7 +45,10 @@
       "EXPOSED__PROVED": 19210
     },
     "canonical_rows_sha256": "8dbbd0bfa86a5770fa73e1b47daa389430af774728e1655c87abac204f8c4909",
-    "canonical_material_sha256": "60a16e091f0c1f6da7caaefdccea1c7dc8c4c03d552546253b165722b972c23a"
+    "canonical_material_sha256": "60a16e091f0c1f6da7caaefdccea1c7dc8c4c03d552546253b165722b972c23a",
+    "risk_respondent_key_list_sha256": "2d93873cdbc03178a3b21b7f51f198e00b0c19a4f99588b01f2c6219f4be67f5",
+    "risk_key_alpha3_pairs_sha256": "fb4a2e93e6a1b75fe3f8d644705109540aa71d1688b62ec714352a7eb68d3019",
+    "ffp014_key_local_id_pairs_sha256": "a4ea782fcbc3f1f6e50061c80ba304ce91dddfc0e70ba2da79e40613b636928b"
   },
   "risk_country_binding": {
     "2": "BOT",
@@ -61,5 +64,10 @@
     "21": "MAU"
   },
   "raw_sav_materialized": false,
-  "authority_effect": "NONE__RECOVERY_OF_ALREADY_ACCEPTED_EXTERNAL_CARRIERS_ONLY"
+  "authority_effect": "NONE__RECOVERY_OF_ALREADY_ACCEPTED_EXTERNAL_CARRIERS_ONLY",
+  "identity_domain_law": {
+    "ffp014_respondent_local_id": "CARRIER_NATIVE_IDENTITY__DO_NOT_EQUATE_TO_PRE553_RESPONDENTIDENTITY_CONTENT_HASH",
+    "pre553_respondent_identity": "RECONSTRUCTED_FROM_SAME_FFP014_CARRIER_REF_PLUS_EXACT_COUNTRY_RESPNO_KEY",
+    "alignment": "EXACT_SHARED_CARRIER_NAMESPACE_PLUS_COUNTRY_RESPNO_KEY__NO_IDENTITY_COLLAPSE"
+  }
 }
