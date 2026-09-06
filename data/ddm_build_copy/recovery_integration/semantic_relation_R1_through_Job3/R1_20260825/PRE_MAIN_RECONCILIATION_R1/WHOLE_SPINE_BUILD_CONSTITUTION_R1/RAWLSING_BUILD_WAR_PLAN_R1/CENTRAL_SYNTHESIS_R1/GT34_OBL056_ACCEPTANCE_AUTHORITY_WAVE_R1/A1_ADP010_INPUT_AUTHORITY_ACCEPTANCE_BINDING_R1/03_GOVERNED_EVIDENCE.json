@@ -1,0 +1,117 @@
+{
+  "schema_id": "GT34_OBL056_A1_GOVERNED_EVIDENCE@1.0.0",
+  "worker": "A1_ADP010_INPUT_AUTHORITY_ACCEPTANCE_BINDING_R1",
+  "starting_head": "ee71ea855e722742f97309de36294f55c35623b2",
+  "semantic_candidate_sha": "966aea1a42b30840670f4b69f779999bfd4a2307",
+  "evidence_execution_sha": "f53df8dc7534e41792e2920ff7c8b65f293aa1b2",
+  "pr_synthetic_merge_sha": "0788e4dfbf56272d274bec3691b2531e2599ff8a",
+  "candidate_files": {
+    "implementation": {
+      "path": "rawlsing_next/gt34_adp010_input_authority_acceptance.py",
+      "blob": "62b9cc43b0acf7cecc4647215929ef12ada955f2"
+    },
+    "focused_tests": {
+      "path": "rawlsing_next/tests/test_gt34_obl056_adp010_input_authority_acceptance.py",
+      "blob": "a5144ff943497d6636810fd6a593d7d0e76e222d"
+    },
+    "authority_registry_artifact": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT34_OBL056_ACCEPTANCE_AUTHORITY_WAVE_R1/A1_ADP010_INPUT_AUTHORITY_ACCEPTANCE_BINDING_R1/01_CANDIDATE_AUTHORITY_REGISTRY.json",
+      "blob": "6435b489a37c16f21dfb1ded63bcbd825e4cb65e"
+    },
+    "receipt_schema_example_artifact": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT34_OBL056_ACCEPTANCE_AUTHORITY_WAVE_R1/A1_ADP010_INPUT_AUTHORITY_ACCEPTANCE_BINDING_R1/02_RECEIPT_SCHEMA_AND_SYNTHETIC_EXAMPLE.json",
+      "blob": "68c77894d320ac91826efbee4c812bc468cb2dd2"
+    }
+  },
+  "candidate_identity": {
+    "authority_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "41b79e7f622f3c9eb0d6df649254c812fcb769db45cf6e47a808a95eebe2a50f",
+    "registry_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "registry_version": "1.0.0",
+    "registry_content_hash": "9ef38509ad5798c038bbcfa1b3a6e343df5a7c4f2a1ed4fd2af33f31f19e3a9e",
+    "receipt_schema": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+    "consumer": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE@1.0.0",
+    "status": "CANDIDATE_NOT_ADOPTED",
+    "current_positive_entry_count": 0
+  },
+  "roles": [
+    "CAUSAL_USE_PERMISSION",
+    "POSITIVE_APPLICABILITY",
+    "CONTACT_OCCURRENCE_WITNESS",
+    "CONTACT_WITNESS_INDEPENDENCE"
+  ],
+  "governed_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "workflow_run_id": 34059241185,
+    "job_id": 101556671724,
+    "result": "PASS",
+    "focused_test_result": "21 passed in 0.12s",
+    "protocol_self_test_result": "20 passed in 0.10s",
+    "spec_validation": "PASS",
+    "determinism_mode": "EXACT",
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "exit_code": 0,
+    "elapsed_seconds": 0.320802,
+    "spec_sha256": "7296f077b0cdb1c9f434b0b4fc74b2d99b59527c4bf4f2e3b4514f9a566c78f2",
+    "test_path": "rawlsing_next/tests/test_gt34_obl056_adp010_input_authority_acceptance.py",
+    "artifact": {
+      "id": 9996930772,
+      "name": "rabochii-court-receipt-34059241185",
+      "size_bytes": 608,
+      "zip_sha256": "4df1ce3c4f78108fc4c1a5770e45af3ff02f992efbfe00b28833428ad53b7c47"
+    },
+    "receipt": {
+      "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+      "result": "PASS",
+      "exit_code": 0,
+      "semantic_candidate_sha": "966aea1a42b30840670f4b69f779999bfd4a2307",
+      "evidence_execution_sha": "f53df8dc7534e41792e2920ff7c8b65f293aa1b2",
+      "pr_synthetic_merge_sha": "0788e4dfbf56272d274bec3691b2531e2599ff8a",
+      "determinism_mode": "EXACT",
+      "python": "3.12.14",
+      "implementation": "CPython",
+      "spec_sha256": "7296f077b0cdb1c9f434b0b4fc74b2d99b59527c4bf4f2e3b4514f9a566c78f2"
+    }
+  },
+  "execution_trigger": {
+    "pull_request": 233,
+    "purpose": "EXECUTION_ONLY_GOVERNED_COURT_TRIGGER",
+    "draft": true,
+    "merged": false,
+    "final_state": "CLOSED_UNMERGED"
+  },
+  "hostile_control_disposition": {
+    "arbitrary_caller_self_issue": "REJECTED",
+    "separately_issued_positive_synthetic_receipt": "VALIDATED_NONCURRENT_TEST_ONLY",
+    "authority_id_mutation": "REJECTED",
+    "authority_version_mutation": "REJECTED",
+    "authority_content_hash_mutation": "REJECTED",
+    "role_mutation": "REJECTED",
+    "consumer_mutation": "REJECTED",
+    "transition_use_scope_mutation": "REJECTED",
+    "source_acceptance_evidence_mutation": "REJECTED",
+    "currentness_mutation": "REJECTED",
+    "receipt_content_hash_mismatch": "REJECTED",
+    "absent_entry_or_receipt": "FAIL_CLOSED",
+    "cross_role_reuse": "REJECTED",
+    "same_contact_authority_for_occurrence_and_independence": "REJECTED",
+    "same_contact_receipt_for_occurrence_and_independence": "REJECTED",
+    "synthetic_current_masquerade": "REJECTED",
+    "replay_idempotence": "PROVEN",
+    "underlying_semantic_proposition_emitted": false,
+    "downstream_authority_widening": false
+  },
+  "scope_guards": {
+    "w2_executor_modified": false,
+    "project_current_semantic_authority_invented": false,
+    "current_positive_registry_entries_created": false,
+    "obl056_adopted": false,
+    "current_oee_executed": false,
+    "central_moved": false,
+    "pre_main_moved": false,
+    "main_moved": false,
+    "sub_vozhd_branch_moved": false
+  }
+}
