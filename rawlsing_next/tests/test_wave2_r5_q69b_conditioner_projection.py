@@ -252,6 +252,15 @@ def test_o1_q69b_candidate_release_replay_authority_and_transport_identities_unc
     )
     assert release.release_id == "R5_GT34_N2_Q69B_BOUNDED_CANDIDATE_R1"
     assert release.semantic_release_hash == (
+        "2343023560ea963b6b290575d93361256825897a7c32ff31519e3d2425b595ec"
+    )
+    assert release.release_ref.content_hash == (
+        "2343023560ea963b6b290575d93361256825897a7c32ff31519e3d2425b595ec"
+    )
+    # HQ's shorthand "candidate release hash" 15b39... is the banked
+    # source-release-manifest identity; N2 records the semantic release hash
+    # separately as 234302...
+    assert release.source_release_manifest_hash == (
         "15b39da2a58bdb0716e8e84dd63b215e2fc5b6abdc3bc6edf8c282cf4813dbc4"
     )
     assert release.replay_manifest.content_hash == (
