@@ -1,0 +1,167 @@
+{
+  "schema_id": "GT34_W2_OBL055_S3_AUTHENTICATION_REPLAY_REPAIR_EVIDENCE@1.0.0",
+  "terminal": "PASS__GT34_W2_OBL055_S3_AUTHENTICATION_REPLAY_REPAIRED__NO_ADOPTION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt34-w2-obl055-s3-authentication-replay-repair-r1",
+  "exact_working_ancestry_start": "8f2d13c4ab3c54a82f990fb9b7e384f546949c11",
+  "immutable_instruction_ref": "8f2d13c4ab3c54a82f990fb9b7e384f546949c11",
+  "worker": "WORKER W2 — OBL055 S3 ADP-010 AUTHENTICATION + REPLAY REPAIR R1",
+  "context_discipline": {
+    "w1_inflight_work_or_conclusions_consumed": false,
+    "unrelated_project_history_recursively_ingested": false
+  },
+  "historical_s3": {
+    "semantic_candidate_sha": "5bed04b83f0dc61e500da26130892e46ce9c86ff",
+    "evidence_execution_sha": "c70808c993b7e236e5535a03e22fe89cc3759d1e",
+    "module_path": "rawlsing_next/v3_adp010_oee_executor.py",
+    "module_blob_sha": "cd6e978eea25384482ef2ab75547b8d33bcc4fb7",
+    "original_test_path": "rawlsing_next/tests/test_v3_adp010_oee_executor.py",
+    "original_test_blob_sha": "0d29a69e9f88beb72ebfb4ddb85bdb5c40fc74d5",
+    "t3_hostile_test_blob_sha": "948121e7c61b89aaafbb5b8a0814619d108f269e",
+    "preserved_unchanged": true,
+    "adopted": false
+  },
+  "successor": {
+    "semantic_candidate_sha": "39e4efc35cec5f1bbb7aafbf165698e6f6cc72ea",
+    "implementation_id": "GT34_V3P5_ADP010_AUTHENTICATED_REPLAY_EXECUTOR",
+    "implementation_version": "2.0.0",
+    "module_path": "rawlsing_next/v3_adp010_oee_executor_authenticated.py",
+    "module_blob_sha": "54d9acba40f0eb1db8bb03aec3c1bb900f849588",
+    "test_files": {
+      "s3_semantic_compatibility": {
+        "path": "rawlsing_next/tests/test_gt34_w2_adp010_successor_compatibility.py",
+        "blob_sha": "8c877af2692214140bb45522fbceb06671192306"
+      },
+      "t3_hostile_closure": {
+        "path": "rawlsing_next/tests/test_gt34_w2_t3_hostile_closure.py",
+        "blob_sha": "4cb81a96040caab8c7ac0693c28f769f696a13b6"
+      },
+      "repair_specific": {
+        "path": "rawlsing_next/tests/test_gt34_w2_adp010_repair_specific.py",
+        "blob_sha": "d14c3d9b12395073eb7b35407c1aad32a00b84ca"
+      }
+    },
+    "distinct_from_historical_s3": true
+  },
+  "adopted_obl054_binding": {
+    "adoption_artifact_blob": "fc46d377dafa5b2c4e274d702e7f26268aa429cb",
+    "materializer_id": "GT34_V3P1_CORRECTED_OWNER_AUTHENTICATED_ONE_OBJECT_SUBJECT_MATERIALIZER",
+    "materializer_version": "2.0.0",
+    "materializer_module_blob": "b0cb39a9a975381f3f3b4a03e7e435b2932e89b9",
+    "accepted_root_hash": "1563a1661d3e0a76e6781633f1b590147e26ab21014674bbe732f68cef6acfa8",
+    "permit_id": "urn:rawlsing:gt34:obl054:one-object-materialization-permit:sha256:3eeea2dcfa0a70f1a5b6ce15d41d9f83d84e39ecde816896150fff21e77573dc",
+    "permit_hash": "3eeea2dcfa0a70f1a5b6ce15d41d9f83d84e39ecde816896150fff21e77573dc",
+    "fresh_obl053_adoption_blob": "f561765bad4fdad2bbf4591f35fe7f81f8486428",
+    "historical_invalid_obl053_adoption_blob": "286ff7b851e920ff2760082d8b2fb194560ab127",
+    "semantic_object_hash": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547"
+  },
+  "accepted_authorities": {
+    "adp010": {
+      "authority_id": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE",
+      "authority_version": "1.0.0",
+      "registry_id": "V3_OEE_REALIZATION_RULE_REGISTRY",
+      "registry_version": "1.0.0",
+      "artifact_blob_sha": "0eac41d081b112255dcfc6dd42a6afab15a2928b"
+    },
+    "adp008": {
+      "authority_id": "V3_DEVELOPMENTAL_PHASE_RULE",
+      "authority_version": "1.1.0",
+      "registry_id": "V3_DEVELOPMENTAL_PHASE_REGISTRY",
+      "registry_version": "1.1.0",
+      "artifact_blob_sha": "c6564c5c2793e9ed86ec0c5cecbcf84ff6f427d6",
+      "required_base_phase": "V3DP_DEVELOPMENT_ACTIVE"
+    },
+    "adp020": {
+      "authority_id": "ADP-020",
+      "authority_version": "1.0.0",
+      "artifact_blob_sha": "1f13dc7ccc69bda562613d6215acc996a9c092e4",
+      "core_v1_rng": "ZERO_DRAW"
+    }
+  },
+  "t3_blockers_closed": {
+    "subject_ingress_authentication": true,
+    "exact_adp008_phase_state_authentication": true,
+    "positive_applicability_authority_authentication": true,
+    "contact_occurrence_authority_and_independence_authentication": true,
+    "anti_laundering": true,
+    "accepted_adp010_provenance": true,
+    "source_candidate_id_derived_and_validated": true,
+    "reconstructible_candidate_replay": true,
+    "validate_record_recomputes_all_mutable_record_bindings": true,
+    "historical_hostile_defect_classes_closed_against_successor": true
+  },
+  "preserved_semantics": {
+    "available_opportunity_encounter_sequence": true,
+    "parent_actor_continuity": true,
+    "parent_subject_continuity": true,
+    "zero_draw": true,
+    "hidden_rng": false,
+    "exposure_api": false,
+    "broader_actor_mutation": false,
+    "deterministic_identity": true,
+    "direct_insufficient_contact_rejection": true,
+    "canonical_record_field_contract_unchanged": true
+  },
+  "synthetic_current_boundary": {
+    "synthetic_fixture_state": "NONCURRENT_SYNTHETIC_TEST_ONLY",
+    "public_current_executor_state": "CURRENT_ACCEPTED",
+    "synthetic_can_masquerade_as_current": false,
+    "w1_current_first_canary_consumed": false,
+    "current_first_canary_subject_materialized_by_w2": false,
+    "current_first_canary_oee_invoked_by_w2": false,
+    "synthetic_record_claimed_current_truth": false
+  },
+  "governed_court": {
+    "semantic_candidate_sha": "39e4efc35cec5f1bbb7aafbf165698e6f6cc72ea",
+    "evidence_execution_sha": "12dad53a3a18097de3ea0416f2741bb2bb4c68b6",
+    "run_id": 34052025729,
+    "job_id": 101537227092,
+    "conclusion": "success",
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "protocol_self_test": "20 passed",
+    "bounded_court": "93 passed",
+    "determinism_mode": "EXACT",
+    "court_spec_git_blob": "796d9008d4983196377914698673505b5bc5d2c7",
+    "court_spec_sha256": "d18f11a7e14a5a031d2ac2e6da1a00120dc2e8e4f99fcdbd93e70e7857ac9a43",
+    "receipt_artifact_id": 9994828958,
+    "receipt_artifact_zip_sha256": "78135a51cb51dc61fffdaa119003d83ec4aa97fa1329f82a09f8010e1283d18b",
+    "exact_checkout_verified": true,
+    "tests": [
+      "rawlsing_next/tests/test_v3_adp010_oee_executor.py",
+      "rawlsing_next/tests/test_gt34_t3_s3_adp010_oee_executor_hostile_audit.py",
+      "rawlsing_next/tests/test_gt34_w2_adp010_successor_compatibility.py",
+      "rawlsing_next/tests/test_gt34_w2_t3_hostile_closure.py",
+      "rawlsing_next/tests/test_gt34_w2_adp010_repair_specific.py"
+    ]
+  },
+  "court_cleanup": {
+    "cleanup_commit": "cd06f1bccb003c1d83064552b5b379154d0d29fb",
+    "original_workflow_blob": "a974469aa1d83514d896e3de591d7618310ca493",
+    "transient_workflow_blob": "6ff0f50f64ae2b7737b6c4d153c52d1e408eda7c",
+    "workflow_restored_exact": true,
+    "transient_court_spec_absent": true,
+    "cleanup_tree_byte_identical_to_semantic_candidate_tree": true
+  },
+  "authority_ceiling": {
+    "obl055_adopted": false,
+    "obl055_closed_by_worker": false,
+    "exposure_created": false,
+    "comparator_authority_created": false,
+    "psepf_authority_created": false,
+    "metabolism_authority_created": false,
+    "can008_authority_created": false,
+    "v2_authority_created": false,
+    "positive_v3_actor_mutation_authority_created": false
+  },
+  "branch_movement": {
+    "worker_branch_only": true,
+    "central_moved": false,
+    "pre_main_moved": false,
+    "main_moved": false
+  },
+  "final_worker_tip": {
+    "embedded_in_self_referential_commit": false,
+    "reported_out_of_band_in_worker_handoff": true
+  }
+}
