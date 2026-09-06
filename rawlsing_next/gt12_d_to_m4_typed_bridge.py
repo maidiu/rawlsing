@@ -45,6 +45,7 @@ from rawlsing_next.m1_admitted_field_forge_relation_v554_ingress import (
     prepare_admitted_field_forge_relation_basis,
 )
 from rawlsing_next.m4_m1_evaluation_binding import (
+    _issue_validated_relation_producer_use_binding,
     structural_objects_from_accepted_m1,
 )
 from rawlsing_next.m4_v557_v558_publication_repository import (
@@ -542,10 +543,17 @@ def publish_and_resolve_relation_v554_at_current_m4(
     except GT12PermissionTranslationError as exc:
         raise GT12TypedBridgeError(str(exc)) from exc
     _require_evaluation_matches_admission(admission, evaluation)
+    try:
+        validated_producer_use_binding = _issue_validated_relation_producer_use_binding(
+            evaluation,
+            permission_binding,
+        )
+    except M4IntegrityError as exc:
+        raise GT12TypedBridgeError(str(exc)) from exc
 
     objects = structural_objects_from_accepted_m1(
         evaluation,
-        producer_allowed_uses=ADOPTED_PRODUCER_ALLOWED_USES,
+        validated_producer_use_binding=validated_producer_use_binding,
     )
     if not objects:
         raise GT12TypedBridgeError("eligible relation M1 produced no V554 objects")
