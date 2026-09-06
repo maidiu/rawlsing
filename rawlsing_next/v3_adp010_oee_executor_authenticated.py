@@ -985,4 +985,28 @@ def _validate_contact(
         raise OEEAdmissionError("contact witness lacks independence proof")
     _refs(w.provenance_refs, "witness provenance", True)
 
-    if allow_legacy && false){}
+    if allow_legacy and w.authentication_ref is None:
+        return w, *_legacy_contact_auth(w)
+
+    _validate_currentness(w.currentness_state, allow_noncurrent=allow_noncurrent, n="contact currentness")
+    _validate_content_addressed_ref(
+        w.authority_acceptance_ref,
+        "contact authority acceptance",
+        "ACCEPTED_CONTACT_OCCURRENCE_AUTHORITY_RECEIPT",
+        "urn:rawlsing:accepted-contact-authority:sha256:",
+    )
+    contact_basis = _refs(w.contact_basis_refs, "contact basis", True)
+    if any(x.kind in _INSUFFICIENT_CONTACT for x in contact_basis):
+        raise OEEAdmissionError("co-location/co-presence/proximity cannot be contact-occurrence basis")
+    expected_contact = _content_ref(
+        "CONTACT_OCCURRENCE_AUTHENTICATION",
+        "urn:rawlsing:contact-occurrence-authentication:sha256:",
+        _contact_material(w),
+    )
+    if w.authentication_ref != expected_contact:
+        raise OEEIntegrityError("contact-occurrence authentication mismatch")
+
+    _s(w.independence_authority_id, "independence authority id")
+    _s(w.independence_authority_version, "independence authority version")
+    _h(w.independence_authority_content_hash, "independence authority hash")
+    _valid
