@@ -7,6 +7,7 @@ from rawlsing_next.m4_v557_v558_publication_repository import (
     ClosureIntegrityError,
     ContextQueryItem,
     ExactRef,
+    M4IntegrityError,
     RepositoryEntry,
     V557DecisionState,
     V557PublicationEntry,
@@ -219,6 +220,23 @@ def test_role_reclassification_cannot_reuse_accepted_binding(required, negative)
             reference_edges=(pos_edge, neg_edge),
             dependency_role_bindings=complete.dependency_role_bindings,
             dependency_role_authentication=V558_DEPENDENCY_ROLE_AUTH_EXACT,
+        )
+
+
+def test_noncanonical_authentication_mode_spelling_fails_before_hashing():
+    root, positive, negative, root_e, pos_e, neg_e, publication, pos_edge, neg_edge = _closure_fixture()
+    complete = build_role_authenticated_v558_repository_bundle(
+        publication,
+        (root_e, pos_e, neg_e),
+        reference_edges=(pos_edge, neg_edge),
+    )
+    with pytest.raises(M4IntegrityError, match="must be canonical exact text"):
+        build_v558_repository_bundle(
+            publication,
+            (root_e, pos_e, neg_e),
+            reference_edges=(pos_edge, neg_edge),
+            dependency_role_bindings=complete.dependency_role_bindings,
+            dependency_role_authentication=f" {V558_DEPENDENCY_ROLE_AUTH_EXACT} ",
         )
 
 
