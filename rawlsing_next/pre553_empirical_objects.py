@@ -229,62 +229,18 @@ def canonical_set(values: Iterable[Any]) -> tuple[Any, ...]:
     return tuple(by_json[key] for key in sorted(by_json))
 
 
-class _FrozenSemanticDict(dict):
-    """Dict-compatible immutable descendant for sealed semantic material."""
+class _FrozenSemanticList(tuple):
+    """Tuple-backed marker for semantic material that canonically originated as a list."""
 
-    __slots__ = ("_sealed",)
-
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        if getattr(self, "_sealed", False):
-            raise TypeError("identity-bearing semantic descendants are immutable")
-        dict.__init__(self, *args, **kwargs)
-        object.__setattr__(self, "_sealed", True)
-
-    def _immutable(self, *args: Any, **kwargs: Any) -> None:
-        raise TypeError("identity-bearing semantic descendants are immutable")
-
-    __setitem__ = _immutable
-    __delitem__ = _immutable
-    clear = _immutable
-    pop = _immutable
-    popitem = _immutable
-    setdefault = _immutable
-    update = _immutable
-    __ior__ = _immutable
-
-
-class _FrozenSemanticList(list):
-    """List-compatible immutable descendant for sealed semantic material."""
-
-    __slots__ = ("_sealed",)
-
-    def __init__(self, *args: Any) -> None:
-        if getattr(self, "_sealed", False):
-            raise TypeError("identity-bearing semantic descendants are immutable")
-        list.__init__(self, *args)
-        object.__setattr__(self, "_sealed", True)
-
-    def _immutable(self, *args: Any, **kwargs: Any) -> None:
-        raise TypeError("identity-bearing semantic descendants are immutable")
-
-    __setitem__ = _immutable
-    __delitem__ = _immutable
-    __iadd__ = _immutable
-    __imul__ = _immutable
-    append = _immutable
-    clear = _immutable
-    extend = _immutable
-    insert = _immutable
-    pop = _immutable
-    remove = _immutable
-    reverse = _immutable
-    sort = _immutable
+    __slots__ = ()
 
 
 def _freeze_semantic_descendants(value: Any) -> Any:
     """Recursively freeze already-canonical semantic descendants without byte drift."""
     if isinstance(value, Mapping):
-        return _FrozenSemanticDict(
+        # The backing dict is created here and never exported. MappingProxyType
+        # therefore cannot be bypassed through dict.__setitem__ on the public value.
+        return MappingProxyType(
             {key: _freeze_semantic_descendants(value[key]) for key in sorted(value)}
         )
     if isinstance(value, list):
@@ -295,9 +251,11 @@ def _freeze_semantic_descendants(value: Any) -> Any:
 
 
 def _detach_semantic_descendants(value: Any) -> Any:
-    """Return a mutation-safe detached export while preserving public container shape."""
+    """Return a detached ordinary export preserving the pre-repair public shape."""
     if isinstance(value, Mapping):
         return {key: _detach_semantic_descendants(value[key]) for key in value}
+    if isinstance(value, _FrozenSemanticList):
+        return [_detach_semantic_descendants(item) for item in value]
     if isinstance(value, tuple):
         return tuple(_detach_semantic_descendants(item) for item in value)
     if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
