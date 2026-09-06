@@ -501,8 +501,6 @@ def _rehydrate_accepted_q86_release():
     )
     if release.source_artifact_ref != expected_source_artifact_ref:
         raise Q2SameSourceMaterializationError("accepted Q86 producer source artifact identity drift")
-    if release.source_snapshot_retention_ref != q86.FROZEN_BINDINGS.source_ref:
-        raise Q2SameSourceMaterializationError("accepted Q86 producer source snapshot identity drift")
     return release
 
 
