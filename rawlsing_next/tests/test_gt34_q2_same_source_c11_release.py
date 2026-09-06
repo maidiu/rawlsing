@@ -73,6 +73,61 @@ def test_q2_builds_one_validated_same_source_release_without_identity_collapse(b
     assert replay.scope_envelope["predecessor_mutation"] is False
 
 
+def test_q2_reuses_exact_objects_from_accepted_q86_claim_scoped_release(built_q2) -> None:
+    candidate, _release = built_q2
+    accepted = q2._rehydrate_accepted_q86_release()
+
+    assert accepted.semantic_release_hash == q2.Q86_ACCEPTED_RELEASE_SHA256
+    assert accepted.replay_manifest.content_hash == q2.Q86_ACCEPTED_REPLAY_MANIFEST_SHA256
+
+    accepted_q86a_events = {
+        event.ref.key: event
+        for event in accepted.public_objects
+        if hasattr(event, "native_question_ref")
+        and q2.exact_ref(event.native_question_ref).key == q86.question_ref("Q86A").key
+    }
+    accepted_q86a_routing = {
+        fact.ref.key: fact
+        for fact in accepted.public_objects
+        if hasattr(fact, "question_or_target_ref")
+        and q2.exact_ref(fact.question_or_target_ref).key == q86.question_ref("Q86A").key
+    }
+    candidate_q86a_events = {
+        event.ref.key: event
+        for event in candidate.respondent_events
+        if q2.exact_ref(event.native_question_ref).key == q86.question_ref("Q86A").key
+    }
+    candidate_q86a_routing = {
+        fact.ref.key: fact
+        for fact in candidate.routing_eligibility_facts_or_exact_rules
+        if q2.exact_ref(fact.question_or_target_ref).key == q86.question_ref("Q86A").key
+    }
+
+    assert len(accepted_q86a_events) == len(candidate_q86a_events) == 19_210
+    assert len(accepted_q86a_routing) == len(candidate_q86a_routing) == 19_210
+    assert set(candidate_q86a_events) == set(accepted_q86a_events)
+    assert set(candidate_q86a_routing) == set(accepted_q86a_routing)
+    assert all(
+        candidate_q86a_events[key] is accepted_q86a_events[key]
+        for key in accepted_q86a_events
+    )
+    assert all(
+        candidate_q86a_routing[key] is accepted_q86a_routing[key]
+        for key in accepted_q86a_routing
+    )
+
+    accepted_q86a_binding = next(
+        record for record in accepted.internal_records
+        if hasattr(record, "native_question_ref")
+        and q2.exact_ref(record.native_question_ref).key == q86.question_ref("Q86A").key
+    )
+    candidate_q86a_binding = next(
+        binding for binding in candidate.question_variable_bindings
+        if q2.exact_ref(binding.native_question_ref).key == q86.question_ref("Q86A").key
+    )
+    assert candidate_q86a_binding is accepted_q86a_binding
+
+
 def test_q2_release_identity_is_deterministic_and_bounded(built_q2) -> None:
     candidate, release = built_q2
     again = validate_c11_source_release(candidate)

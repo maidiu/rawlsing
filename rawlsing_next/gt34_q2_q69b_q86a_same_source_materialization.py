@@ -11,11 +11,11 @@ metabolism, CAN-008, V3, or V2 authority is created.
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
+from functools import lru_cache
 import gzip
 import hashlib
 import json
 from pathlib import Path
-from types import SimpleNamespace
 from typing import Any, Final, Mapping
 
 from rawlsing_next.pre553_c11_ingest import (
@@ -26,24 +26,17 @@ from rawlsing_next.pre553_c11_ingest import (
     record_counts_for_candidate,
     validate_c11_source_release,
 )
-from rawlsing_next.pre553_c11_integrity import QuestionVariableBinding, TypedAbsence
+from rawlsing_next.pre553_c11_integrity import QuestionVariableBinding, RespondentIdentity, TypedAbsence
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
     AuthoritySnapshot,
+    EmpiricalUniverse,
     ExactRef,
+    RespondentEvent,
     RoutingEligibilityFact,
     canonical_json,
     exact_ref,
     semantic_hash,
-)
-from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState
-from rawlsing_next.pre553_source_backed_c11_facade import (
-    OccurrenceRule,
-    PhysicalSlot,
-    ResponseSlotRule,
-    ResponseValueRule,
-    _event,
-    physical_value_binding_key,
 )
 import rawlsing_next.pre553_repo_native_current_payload as current_gt2
 import rawlsing_next.wave1_r5_q86_c11_projection as q86
@@ -71,6 +64,21 @@ FFP017_EXPOSURE_SHA256: Final[str] = "0920c350aeb900b5922cf3872f86609de6a8cebb8d
 Q69B_CURRENT_RELEASE_SHA256: Final[str] = "2343023560ea963b6b290575d93361256825897a7c32ff31519e3d2425b595ec"
 Q69B_CURRENT_MANIFEST_SHA256: Final[str] = "15b39da2a58bdb0716e8e84dd63b215e2fc5b6abdc3bc6edf8c282cf4813dbc4"
 
+Q86_ACCEPTED_RELEASE_SHA256: Final[str] = "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295"
+Q86_ACCEPTED_REPLAY_MANIFEST_SHA256: Final[str] = "c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa"
+Q86AB_SOURCE_KEY_SEQUENCE_SHA256: Final[str] = "b5370c6df7f0e5a987a4469820c44e5cfa7da140da96737418ca9d22b3df7b37"
+Q86AB_STATE_PAIRS_RAW_SHA256: Final[str] = "b49116eabdc74c3292795c25f0921545ec148300d078bb8c30d1091796684595"
+Q86AB_STATE_PAIRS_GZIP_SHA256: Final[str] = "567aa614d477423ccc0def12f9337290c23050504634c11693c952556cd1e2a8"
+Q86AB_STATE_PAIRS_RAW_BYTES: Final[int] = 51_587
+Q86AB_STATE_PAIRS_GZIP_BYTES: Final[int] = 12_508
+FFP014_RISK_KEY_LOCAL_ID_PAIRS_SHA256: Final[str] = "a4ea782fcbc3f1f6e50061c80ba304ce91dddfc0e70ba2da79e40613b636928b"
+_Q86_STATE_ORDER: Final[tuple[str, ...]] = ("-1", "0", "1", "9", "997", "998")
+_Q86_NONEXPOSED_ALPHA3: Final[frozenset[str]] = frozenset({"ALG", "EGY", "MRC", "SUD", "TUN"})
+_EXPECTED_Q86_SOURCE_EXPOSURE_COUNTS: Final[dict[str, int]] = {
+    "EXPOSED__PROVED": 45_598,
+    "NONEXPOSURE__PROVED": 5_989,
+}
+
 _TRANSPORT_RELATIVE: Final[Path] = Path(
     "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/"
     "R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/"
@@ -78,6 +86,15 @@ _TRANSPORT_RELATIVE: Final[Path] = Path(
     "GT3_GT4_POST_P_FANIN_REPAIR_WAVE_R1/"
     "Q2_Q69B_Q86A_SAME_SOURCE_MATERIALIZATION_R1/transport/"
     "q69b_q86a_same_source_transport.json.gz"
+)
+
+_Q86AB_STATE_PAIRS_RELATIVE: Final[Path] = Path(
+    "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/"
+    "R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/"
+    "RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/"
+    "GT3_GT4_POST_P_FANIN_REPAIR_WAVE_R1/"
+    "Q2_Q69B_Q86A_SAME_SOURCE_MATERIALIZATION_R1/transport/"
+    "q86ab_ffp017_source_state_pairs.bin.gz"
 )
 
 TRANSPORT_REF: Final[ExactRef] = ExactRef(
@@ -330,129 +347,164 @@ def _q2_replay_authority(
     )
 
 
-def _exact_q86a_question_binding(universe_ref: ExactRef, source_auth: AuthoritySnapshot) -> QuestionVariableBinding:
-    return QuestionVariableBinding(
-        empirical_universe_ref=universe_ref,
-        native_question_ref=q86.question_ref("Q86A"),
-        instrument_question_version="Afrobarometer_R5",
-        canonical_question_ref_or_typed_absence=TypedAbsence("NOT_AUTHORIZED"),
-        component_subitem_ref_or_typed_absence=TypedAbsence("NOT_APPLICABLE"),
-        semantic_authority_ref=source_auth.authority_ref,
-        topology_authority_ref=source_auth.authority_ref,
-    )
+def _q86ab_state_pairs_path() -> Path:
+    return _repo_root() / _Q86AB_STATE_PAIRS_RELATIVE
 
 
-def _exact_q86a_event(
-    row: SameSourceRow,
-    respondent,
-    question: QuestionVariableBinding,
-    source_auth: AuthoritySnapshot,
-    projection_auth: AuthoritySnapshot,
-):
-    state = q86._STATE[row.q86a_native_code]
-    topology_ref = q86._ref(
-        "RESPONSE_TOPOLOGY",
-        "Afrobarometer:R5:Q86A:SCALAR_SINGULAR",
-        {"variable": "Q86A", "kind": "SCALAR_SINGULAR", "numeric_order_authorized": False},
-    )
-    occurrence = OccurrenceRule(
-        "0",
-        topology_ref,
-        {"kind": "SCALAR_SINGULAR", "index": 0},
-    )
-    declaration = q86._declaration(
-        "Q86A", state.response_state, q86.FROZEN_BINDINGS.response_fact_carrier_sha256
-    )
-    value = ResponseValueRule(
-        physical_value_binding_key(
-            row.q86a_native_code,
-            PhysicalMissingState.OBSERVED_STORAGE_VALUE,
-            declaration,
-        ),
-        state.response_state,
-        (occurrence,),
-        None,
-        None,
-        (),
-    )
-    slot = ResponseSlotRule(PhysicalSlot(1, "Q86A"), question, (value,))
-    cell = PhysicalCell(
-        row.source_row_ordinal,
-        1,
-        "Q86A",
-        row.q86a_native_code,
-        PhysicalMissingState.OBSERVED_STORAGE_VALUE,
-        declaration,
-        state.label,
-    )
-    projection = SimpleNamespace(
-        projection_identity_ref=q86.projection_identity_ref(q86.FROZEN_BINDINGS),
-        projection_authority_ref=projection_auth.authority_ref,
-    )
-    return _event(
-        q69b.SOURCE_SHA256,
-        row.source_row_ordinal,
-        respondent,
-        slot,
-        cell,
-        value,
-        occurrence,
-        projection,
-    )
-
-
-def _exact_q86a_routing(
-    row: SameSourceRow,
-    respondent,
-    routing_auth: AuthoritySnapshot,
-) -> RoutingEligibilityFact:
-    b = q86.FROZEN_BINDINGS
-    exposure_predicate = q86.exposure_predicate_ref("Q86A")
-    routing_rule = q86._ref(
-        "ROUTING_RULE",
-        "GT12:R5:Q86:COMMON_COEXPOSURE_MEMBERSHIP",
+def _ffp014_respondent_local_id(country_native: str, respno: str) -> str:
+    """Reproduce the accepted FFP014 carrier-native identity rule, not PRE553 identity."""
+    try:
+        country = int(country_native)
+    except (TypeError, ValueError) as exc:
+        raise Q2SameSourceMaterializationError("FFP014 COUNTRY identity is not exact integer text") from exc
+    material = json.dumps(
         {
-            "risk": b.risk_ref.as_dict(),
-            "countries": q86.COMMON_RISK_COUNTRIES,
-            "q86a": q86.exposure_predicate_ref("Q86A").as_dict(),
-            "q86b": q86.exposure_predicate_ref("Q86B").as_dict(),
-            "response_presence_is_exposure_evidence": False,
+            "source_family": "Afrobarometer",
+            "wave": "R5",
+            "COUNTRY": country,
+            "RESPNO": respno,
         },
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ) + "\n"
+    return "sha256:" + _sha256(material.encode("utf-8"))
+
+
+def _load_q86ab_state_pairs(q69b_transport: q69b.Q69BTransport) -> tuple[tuple[str, str], ...]:
+    compressed = _q86ab_state_pairs_path().read_bytes()
+    if len(compressed) != Q86AB_STATE_PAIRS_GZIP_BYTES or _sha256(compressed) != Q86AB_STATE_PAIRS_GZIP_SHA256:
+        raise Q2SameSourceMaterializationError("Q86 accepted-path replay carrier gzip identity mismatch")
+    raw = gzip.decompress(compressed)
+    if len(raw) != Q86AB_STATE_PAIRS_RAW_BYTES or _sha256(raw) != Q86AB_STATE_PAIRS_RAW_SHA256:
+        raise Q2SameSourceMaterializationError("Q86 accepted-path replay carrier semantic identity mismatch")
+    if len(q69b_transport.rows) != q69b.SOURCE_ROWS or len(raw) != q69b.SOURCE_ROWS:
+        raise Q2SameSourceMaterializationError("Q86 accepted-path source-row count mismatch")
+
+    source_keys = [row.respondent_key for row in q69b_transport.rows]
+    if _sha256(canonical_json(source_keys).encode("utf-8")) != Q86AB_SOURCE_KEY_SEQUENCE_SHA256:
+        raise Q2SameSourceMaterializationError("Q86 accepted-path source-key sequence identity mismatch")
+    if tuple(row.row_ordinal for row in q69b_transport.rows) != tuple(range(1, q69b.SOURCE_ROWS + 1)):
+        raise Q2SameSourceMaterializationError("Q69B accepted transport no longer covers exact source-row ordinals")
+
+    decoded: list[tuple[str, str]] = []
+    width = len(_Q86_STATE_ORDER)
+    for packed in raw:
+        q86a_index, q86b_index = divmod(packed, width)
+        if q86a_index >= width or q86b_index >= width:
+            raise Q2SameSourceMaterializationError("Q86 accepted-path replay state byte outside frozen domain")
+        decoded.append((_Q86_STATE_ORDER[q86a_index], _Q86_STATE_ORDER[q86b_index]))
+    return tuple(decoded)
+
+
+@lru_cache(maxsize=1)
+def _rehydrate_accepted_q86_release():
+    """Re-run the accepted claim-scoped Q86 producer and require exact accepted identities."""
+    q69b_transport = q69b.load_q69b_transport()
+    state_pairs = _load_q86ab_state_pairs(q69b_transport)
+
+    source_rows = []
+    exposure_counts = {"EXPOSED__PROVED": 0, "NONEXPOSURE__PROVED": 0}
+    alpha_by_country: dict[str, str] = {}
+    for qrow, (q86a_code, q86b_code) in zip(q69b_transport.rows, state_pairs):
+        country_native, respno = qrow.respondent_key.split("|", 1)
+        country_alpha3 = respno[:3]
+        if len(country_alpha3) != 3 or country_alpha3.upper() != country_alpha3:
+            raise Q2SameSourceMaterializationError("FFP014 exact RESPNO country token is malformed")
+        prior_alpha = alpha_by_country.setdefault(country_native, country_alpha3)
+        if prior_alpha != country_alpha3:
+            raise Q2SameSourceMaterializationError("FFP014 COUNTRY to exact RESPNO alpha token is non-functional")
+        exposure_state = (
+            "NONEXPOSURE__PROVED"
+            if country_alpha3 in _Q86_NONEXPOSED_ALPHA3
+            else "EXPOSED__PROVED"
+        )
+        exposure_counts[exposure_state] += 1
+        source_rows.append(q86.R5Q86GovernedRow(
+            row_ordinal=qrow.row_ordinal,
+            country_native=country_native,
+            respno=respno,
+            country_alpha3=country_alpha3,
+            q86a_raw_value=q86a_code,
+            q86a_response_state=q86._STATE[q86a_code].response_state,
+            q86a_exposure_state=exposure_state,
+            q86b_raw_value=q86b_code,
+            q86b_response_state=q86._STATE[q86b_code].response_state,
+            q86b_exposure_state=exposure_state,
+            respondent_local_id=_ffp014_respondent_local_id(country_native, respno),
+        ))
+    if exposure_counts != _EXPECTED_Q86_SOURCE_EXPOSURE_COUNTS:
+        raise Q2SameSourceMaterializationError("FFP017 exact Q86 source exposure counts drift")
+
+    same_source = load_same_source_transport()
+    risk_members = []
+    risk_local_id_pairs = []
+    for row in same_source.rows:
+        country_native, respno = row.respondent_key.split("|", 1)
+        if row.country_alpha3 != respno[:3]:
+            raise Q2SameSourceMaterializationError("Q2 risk-set alpha identity differs from accepted FFP014 rule")
+        local_id = _ffp014_respondent_local_id(country_native, respno)
+        risk_local_id_pairs.append([row.respondent_key, local_id])
+        risk_members.append(q86.R5Q86RiskSetMember(
+            country_native=country_native,
+            respno=respno,
+            respondent_local_id=local_id,
+            country_alpha3=row.country_alpha3,
+        ))
+    if _sha256(canonical_json(risk_local_id_pairs).encode("utf-8")) != FFP014_RISK_KEY_LOCAL_ID_PAIRS_SHA256:
+        raise Q2SameSourceMaterializationError("FFP014 risk-set carrier-native identity replay drift")
+
+    inputs = q86.R5Q86ClaimScopedGovernedInputs(
+        bindings=q86.FROZEN_BINDINGS,
+        source_rows=tuple(source_rows),
+        risk_set_members=tuple(risk_members),
+        risk_set_member_set_sha256=FFP017_RISK_SET_SHA256,
     )
-    member_replay = q86._ref(
-        "MEMBER_SET_REPLAY",
-        f"{b.risk_set_id}:REPLAY",
-        {
-            "risk": b.risk_ref.as_dict(),
-            "member_hash": b.risk_set_member_set_sha256,
-            "countries": q86.COMMON_RISK_COUNTRIES,
-        },
+    release = q86.build_validated_claim_scoped_r5_q86_c11_release(inputs)
+    if release.semantic_release_hash != Q86_ACCEPTED_RELEASE_SHA256:
+        raise Q2SameSourceMaterializationError(
+            "accepted Q86 producer path did not reproduce accepted release identity"
+        )
+    if release.replay_manifest.content_hash != Q86_ACCEPTED_REPLAY_MANIFEST_SHA256:
+        raise Q2SameSourceMaterializationError(
+            "accepted Q86 producer path did not reproduce accepted replay identity"
+        )
+    if release.source_artifact_ref != q86.FROZEN_BINDINGS.source_ref:
+        raise Q2SameSourceMaterializationError("accepted Q86 producer source identity drift")
+    return release
+
+
+def _accepted_q86_objects(release):
+    universe = tuple(obj for obj in release.public_objects if isinstance(obj, EmpiricalUniverse))
+    respondents = tuple(obj for obj in release.internal_records if isinstance(obj, RespondentIdentity))
+    questions = tuple(obj for obj in release.internal_records if isinstance(obj, QuestionVariableBinding))
+    events = tuple(obj for obj in release.public_objects if isinstance(obj, RespondentEvent))
+    routing = tuple(obj for obj in release.public_objects if isinstance(obj, RoutingEligibilityFact))
+    authorities = tuple(obj for obj in release.public_objects if isinstance(obj, AuthoritySnapshot))
+    if (
+        len(universe) != 1
+        or len(respondents) != MATERIALIZED_ROWS
+        or len(questions) != 2
+        or len(events) != MATERIALIZED_ROWS * 2
+        or len(routing) != MATERIALIZED_ROWS * 2
+    ):
+        raise Q2SameSourceMaterializationError("accepted Q86 object graph cardinality drift")
+
+    q86a_question = tuple(
+        binding for binding in questions
+        if exact_ref(binding.native_question_ref).key == q86.question_ref("Q86A").key
     )
-    state = "ELIGIBLE_APPLICABLE"
-    return RoutingEligibilityFact(
-        typed_state=state,
-        authority_snapshot_refs=(routing_auth.authority_ref,),
-        dependency_refs=(respondent.ref, b.risk_ref, b.exposure_ref, exposure_predicate),
-        producer_replay_locator_or_reference_root=q86._ref(
-            "REPLAY_ROOT",
-            f"GT12:R5:Q86A:ROUTING:{row.respondent_key}",
-            {
-                "respondent": respondent.ref.as_dict(),
-                "risk": b.risk_ref.as_dict(),
-                "predicate": exposure_predicate.as_dict(),
-                "state": state,
-            },
-        ),
-        empirical_universe_ref=respondent.empirical_universe_ref,
-        scoped_respondent_ref=respondent.ref,
-        question_or_target_ref=q86.question_ref("Q86A"),
-        risk_set_ref=b.risk_ref,
-        routing_rule_ref=routing_rule,
-        applicability_state=state,
-        routing_state=state,
-        parent_predicate_refs=(exposure_predicate,),
-        member_set_replay_ref=member_replay,
+    q86a_events = tuple(
+        event for event in events
+        if exact_ref(event.native_question_ref).key == q86.question_ref("Q86A").key
     )
+    q86a_routing = tuple(
+        fact for fact in routing
+        if exact_ref(fact.question_or_target_ref).key == q86.question_ref("Q86A").key
+    )
+    if len(q86a_question) != 1 or len(q86a_events) != MATERIALIZED_ROWS or len(q86a_routing) != MATERIALIZED_ROWS:
+        raise Q2SameSourceMaterializationError("accepted Q86A object selection drift")
+    return universe[0], respondents, q86a_question[0], q86a_events, q86a_routing, authorities
 
 
 def _assert_q86a_exact_current_identity(events, routing) -> None:
@@ -467,6 +519,7 @@ def _assert_q86a_exact_current_identity(events, routing) -> None:
         raise Q2SameSourceMaterializationError("Q86A routing identities differ from accepted GT2 payload")
 
 
+@lru_cache(maxsize=1)
 def build_q69b_q86a_same_source_candidate() -> C11SourceReleaseCandidate:
     transport = load_same_source_transport()
 
@@ -479,20 +532,53 @@ def build_q69b_q86a_same_source_candidate() -> C11SourceReleaseCandidate:
     if q69b_release.source_release_manifest_hash != Q69B_CURRENT_MANIFEST_SHA256:
         raise Q2SameSourceMaterializationError("Q69B predecessor manifest identity drift")
 
+    # Rehydrate the actual accepted Q86 release through its accepted public producer path.
+    # Exact release + replay equality is mandatory before any Q86A object may be reused.
+    q86_release = _rehydrate_accepted_q86_release()
+    (
+        q86_universe,
+        q86_respondents,
+        q86a_question,
+        q86a_events,
+        q86a_routing,
+        q86_authorities,
+    ) = _accepted_q86_objects(q86_release)
+    _assert_q86a_exact_current_identity(q86a_events, q86a_routing)
+
+    q69b_universe = q69b_candidate.empirical_universes[0]
+    if (
+        q69b_universe.content_hash != q69b.ACCEPTED_UNIVERSE_SHA256
+        or q86_universe.ref != q69b_universe.ref
+    ):
+        raise Q2SameSourceMaterializationError(
+            "accepted Q69B and Q86 releases do not share exact empirical-universe identity"
+        )
+
     rows_by_key = {row.respondent_key: row for row in transport.rows}
     selected_keys = set(rows_by_key)
-    respondents = tuple(
-        respondent
+    q69b_respondent_by_key = {
+        respondent.respondent_key: respondent
         for respondent in q69b_candidate.respondent_identities
         if respondent.respondent_key in selected_keys
-    )
-    if len(respondents) != MATERIALIZED_ROWS:
+    }
+    q86_respondent_by_key = {respondent.respondent_key: respondent for respondent in q86_respondents}
+    if len(q69b_respondent_by_key) != MATERIALIZED_ROWS or len(q86_respondent_by_key) != MATERIALIZED_ROWS:
         raise Q2SameSourceMaterializationError("Q2 respondent subset cardinality drift")
-    respondent_by_key = {respondent.respondent_key: respondent for respondent in respondents}
+
+    respondents = []
     for key, row in rows_by_key.items():
-        respondent = respondent_by_key.get(key)
-        if respondent is None or respondent.content_hash != row.pre553_respondent_content_hash:
-            raise Q2SameSourceMaterializationError("Q2 respondent exact identity bridge drift")
+        q69b_respondent = q69b_respondent_by_key.get(key)
+        q86_respondent = q86_respondent_by_key.get(key)
+        if q69b_respondent is None or q86_respondent is None:
+            raise Q2SameSourceMaterializationError("Q2 respondent absent from accepted predecessor")
+        if (
+            q69b_respondent.ref != q86_respondent.ref
+            or q86_respondent.content_hash != row.pre553_respondent_content_hash
+        ):
+            raise Q2SameSourceMaterializationError(
+                "accepted Q69B/Q86 PRE553 respondent identities are not exactly co-resident"
+            )
+        respondents.append(q86_respondent)
 
     selected_ref_keys = {respondent.ref.key for respondent in respondents}
     q69b_events = tuple(
@@ -515,23 +601,19 @@ def build_q69b_q86a_same_source_candidate() -> C11SourceReleaseCandidate:
     ):
         raise Q2SameSourceMaterializationError("Q69B exact subset materialization drift")
 
-    q86_source_auth, q86_routing_auth, _q86_coord_auth, q86_projection_auth, q86_replay_auth, _q86_permission_auth = (
-        q86._authorities(q86.FROZEN_BINDINGS)
+    q86_auth_by_id = {authority.authority_id: authority for authority in q86_authorities}
+    required_q86_authority_ids = (
+        "GT12-A-R5-Q86-SOURCE-SEMANTICS",
+        "GT12-A-R5-Q86-COMMON-RISK-ROUTING",
+        "GT12-A-R5-Q86-CARRIER-REEXPRESSION",
+        "GT12-A-R5-Q86-C11-REPLAY",
     )
-    universe = q69b_candidate.empirical_universes[0]
-    if universe.content_hash != q69b.ACCEPTED_UNIVERSE_SHA256:
-        raise Q2SameSourceMaterializationError("shared empirical universe identity drift")
-
-    q86a_question = _exact_q86a_question_binding(universe.ref, q86_source_auth)
-    q86a_events = tuple(
-        _exact_q86a_event(row, respondent_by_key[row.respondent_key], q86a_question, q86_source_auth, q86_projection_auth)
-        for row in transport.rows
-    )
-    q86a_routing = tuple(
-        _exact_q86a_routing(row, respondent_by_key[row.respondent_key], q86_routing_auth)
-        for row in transport.rows
-    )
-    _assert_q86a_exact_current_identity(q86a_events, q86a_routing)
+    try:
+        q86_source_auth, q86_routing_auth, q86_projection_auth, q86_replay_auth = (
+            q86_auth_by_id[authority_id] for authority_id in required_q86_authority_ids
+        )
+    except KeyError as exc:
+        raise Q2SameSourceMaterializationError("accepted Q86 required authority object missing") from exc
 
     q69b_replay_auth = next(
         authority for authority in q69b_candidate.authority_snapshots
@@ -561,12 +643,12 @@ def build_q69b_q86a_same_source_candidate() -> C11SourceReleaseCandidate:
             release_id=CANDIDATE_RELEASE_ID,
             instrument_release_id=f"merged_r5_codebook_2.pdf@sha256:{q69b.CODEBOOK_SHA256}",
             ingest_contract_version=INGEST_CONTRACT_VERSION,
-            declared_universe_refs=(universe.ref,),
+            declared_universe_refs=(q86_universe.ref,),
             declared_authority_snapshot_refs=tuple(authority.authority_ref for authority in authorities),
             declared_record_counts_by_logical_family={},
             source_snapshot_retention_ref=q69b.SOURCE_REF,
         ),
-        empirical_universes=(universe,),
+        empirical_universes=(q86_universe,),
         respondent_identities=tuple(sorted(respondents, key=lambda respondent: respondent.ref.key)),
         question_variable_bindings=tuple(sorted(
             (*q69b_candidate.question_variable_bindings, q86a_question),
@@ -652,6 +734,15 @@ def identity_report() -> Mapping[str, Any]:
         "q86a_exact_current_routing_refs": len(q86a_routing_refs),
         "q69b_predecessor_release_sha256": Q69B_CURRENT_RELEASE_SHA256,
         "q86_predecessor_release_sha256": q69b.PREDECESSOR_RELEASE_SHA256,
+        "q86_predecessor_replay_manifest_sha256": Q86_ACCEPTED_REPLAY_MANIFEST_SHA256,
+        "q86_accepted_path_rehydrated_release_sha256": Q86_ACCEPTED_RELEASE_SHA256,
+        "q86_accepted_path_rehydrated_replay_sha256": Q86_ACCEPTED_REPLAY_MANIFEST_SHA256,
+        "q86ab_source_key_sequence_sha256": Q86AB_SOURCE_KEY_SEQUENCE_SHA256,
+        "q86ab_state_pairs_raw_sha256": Q86AB_STATE_PAIRS_RAW_SHA256,
+        "q86ab_state_pairs_gzip_sha256": Q86AB_STATE_PAIRS_GZIP_SHA256,
+        "ffp014_risk_key_local_id_pairs_sha256": FFP014_RISK_KEY_LOCAL_ID_PAIRS_SHA256,
+        "q86a_identity_reuse_mode": "ACTUAL_ACCEPTED_CLAIM_SCOPED_Q86_OBJECTS__NO_INDEPENDENT_EVENT_OR_ROUTING_RECONSTRUCTION",
+        "q86a_exact_identity_reuse_proved": True,
         "predecessors_mutated": False,
         "semantic_owner_transfer": False,
         "portability": "NONE",
