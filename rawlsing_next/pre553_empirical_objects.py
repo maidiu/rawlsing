@@ -229,6 +229,82 @@ def canonical_set(values: Iterable[Any]) -> tuple[Any, ...]:
     return tuple(by_json[key] for key in sorted(by_json))
 
 
+class _FrozenSemanticDict(dict):
+    """Dict-compatible immutable descendant for sealed semantic material."""
+
+    __slots__ = ("_sealed",)
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        if getattr(self, "_sealed", False):
+            raise TypeError("identity-bearing semantic descendants are immutable")
+        dict.__init__(self, *args, **kwargs)
+        object.__setattr__(self, "_sealed", True)
+
+    def _immutable(self, *args: Any, **kwargs: Any) -> None:
+        raise TypeError("identity-bearing semantic descendants are immutable")
+
+    __setitem__ = _immutable
+    __delitem__ = _immutable
+    clear = _immutable
+    pop = _immutable
+    popitem = _immutable
+    setdefault = _immutable
+    update = _immutable
+    __ior__ = _immutable
+
+
+class _FrozenSemanticList(list):
+    """List-compatible immutable descendant for sealed semantic material."""
+
+    __slots__ = ("_sealed",)
+
+    def __init__(self, *args: Any) -> None:
+        if getattr(self, "_sealed", False):
+            raise TypeError("identity-bearing semantic descendants are immutable")
+        list.__init__(self, *args)
+        object.__setattr__(self, "_sealed", True)
+
+    def _immutable(self, *args: Any, **kwargs: Any) -> None:
+        raise TypeError("identity-bearing semantic descendants are immutable")
+
+    __setitem__ = _immutable
+    __delitem__ = _immutable
+    __iadd__ = _immutable
+    __imul__ = _immutable
+    append = _immutable
+    clear = _immutable
+    extend = _immutable
+    insert = _immutable
+    pop = _immutable
+    remove = _immutable
+    reverse = _immutable
+    sort = _immutable
+
+
+def _freeze_semantic_descendants(value: Any) -> Any:
+    """Recursively freeze already-canonical semantic descendants without byte drift."""
+    if isinstance(value, Mapping):
+        return _FrozenSemanticDict(
+            {key: _freeze_semantic_descendants(value[key]) for key in sorted(value)}
+        )
+    if isinstance(value, list):
+        return _FrozenSemanticList(_freeze_semantic_descendants(item) for item in value)
+    if isinstance(value, tuple):
+        return tuple(_freeze_semantic_descendants(item) for item in value)
+    return value
+
+
+def _detach_semantic_descendants(value: Any) -> Any:
+    """Return a mutation-safe detached export while preserving public container shape."""
+    if isinstance(value, Mapping):
+        return {key: _detach_semantic_descendants(value[key]) for key in value}
+    if isinstance(value, tuple):
+        return tuple(_detach_semantic_descendants(item) for item in value)
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        return [_detach_semantic_descendants(item) for item in value]
+    return value
+
+
 @dataclass(frozen=True, order=True)
 class ExactRef:
     kind: str
@@ -368,9 +444,9 @@ class CanonicalSemanticObject:
             if key in self.SET_LIKE_FIELDS:
                 if isinstance(value, (str, bytes, bytearray)) or not isinstance(value, Iterable):
                     raise Pre553IntegrityError(f"{key} must be a set-like iterable")
-                normalized[key] = canonical_set(value)
+                normalized[key] = _freeze_semantic_descendants(canonical_set(value))
             else:
-                normalized[key] = canonicalize(value)
+                normalized[key] = _freeze_semantic_descendants(canonicalize(value))
 
         replay_root = _replay_root(producer_replay_locator_or_reference_root)
         projection = {
@@ -442,7 +518,7 @@ class CanonicalSemanticObject:
             "dependency_refs": [x.as_dict() for x in self.dependency_refs],
             "producer_replay_locator_or_reference_root": canonicalize(
                 self.producer_replay_locator_or_reference_root),
-            "semantic_fields": dict(self._semantic_fields),
+            "semantic_fields": _detach_semantic_descendants(self._semantic_fields),
         }
 
     def as_dict(self) -> dict[str, Any]:
