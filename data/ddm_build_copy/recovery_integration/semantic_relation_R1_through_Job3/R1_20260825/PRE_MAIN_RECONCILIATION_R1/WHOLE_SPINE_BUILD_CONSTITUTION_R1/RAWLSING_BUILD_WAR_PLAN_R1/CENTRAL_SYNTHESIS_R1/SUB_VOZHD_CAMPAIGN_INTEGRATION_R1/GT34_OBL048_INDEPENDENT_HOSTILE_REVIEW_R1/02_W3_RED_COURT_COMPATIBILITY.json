@@ -1,0 +1,32 @@
+{
+  "schema_id": "GT34_OBL048_W3_RED_COURT_COMPATIBILITY@1.0.0",
+  "frozen_semantic_candidate": "01645806c98b8a83070389e5375e2b7fde781c6a",
+  "authority_blob": "a0be5530a3fab5a0b18746750ff461b0e7ff2d91",
+  "proposition_blob": "c8c9ec0d708acfe864beede72c062b13b5aa0f58",
+  "first_red": {
+    "evidence_execution_sha": "08afac57be1d0944a18c3f744177432ccdc05557",
+    "run_id": 34054591749,
+    "job_id": 101544028993,
+    "result": "1 failed, 14 passed",
+    "candidate_to_red_delta": [
+      ".rabochii/court_spec.json__ADDED_ONLY"
+    ],
+    "authority_or_proposition_changed": false,
+    "failure_test": "test_lexical_clinic_label_without_objective_evidence_fails",
+    "failure_exception": "KeyError: 'objective_entity_facts'",
+    "expected_by_harness": "AssertionError",
+    "classification": "TEST_FAILURE__HARNESS_ASSERTION_TYPE_DEFECT"
+  },
+  "later_green": {
+    "evidence_execution_sha": "3efb73af8bcba84f1b0fd1c77ebc2fd6c61aaa88",
+    "run_id": 34054644018,
+    "job_id": 101544191263,
+    "result": "15 passed",
+    "candidate_to_green_delta": [
+      ".rabochii/court_spec.json__ADDED",
+      "rawlsing_next/tests/test_gt34_w3_obl048_exact_subject_classification.py__PROOF_ONLY_3_LINE_SHAPE_ASSERTION"
+    ],
+    "authority_or_proposition_changed": false
+  },
+  "independent_holding": "FIRST_RED_WAS_HARNESS_ONLY__NO_SEMANTIC_ARTIFACT_CHANGE"
+}
