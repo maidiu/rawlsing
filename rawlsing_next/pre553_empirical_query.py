@@ -225,6 +225,124 @@ def _negative_for_index(
     )
 
 
+def _require_exact_i03_authority_fitness(
+    *,
+    query: EmpiricalQuerySpec,
+    predicate: EmpiricalPredicate,
+    authority_registry: AuthorityRegistry,
+    universe_refs: tuple[ExactRef, ...],
+) -> None:
+    """Require operation/family/source/use fitness at the shared I03 boundary.
+
+    Object closure proves that referenced snapshots exist and are positive.  It
+    does not prove that an ALLOW snapshot governs this exact operation, public
+    object family, source universe, or declared target use.  Shared execution
+    therefore performs that fit check itself instead of relying on a stronger
+    caller/wrapper having done so earlier.
+    """
+    query_authority_refs = _canonical_authorities(
+        _authority(ref, "query.query_authority_refs")
+        for ref in query.query_authority_refs
+    )
+    if not query_authority_refs:
+        raise Pre553AuthorityError("I03 query requires exact query_authority_refs")
+
+    grammar_ref = _authority(predicate.grammar_authority_ref, "predicate.grammar_authority_ref")
+    if grammar_ref not in query_authority_refs:
+        raise Pre553AuthorityError(
+            "predicate grammar authority is not an exact query authority"
+        )
+
+    snapshots = tuple(
+        authority_registry.resolve_exact(ref).snapshot for ref in query_authority_refs
+    )
+    grain = _require_mapping(query.requested_output_grain, "requested_output_grain")
+    explicit_query_operation = grain.get("query_operation")
+    if explicit_query_operation is not None:
+        if not isinstance(explicit_query_operation, str) or not explicit_query_operation.strip():
+            raise Pre553AuthorityError("query_operation must be an exact non-empty string")
+        query_operation = explicit_query_operation.strip()
+    else:
+        operation_sets = tuple(tuple(snapshot.governed_operations) for snapshot in snapshots)
+        if any(len(operations) != 1 for operations in operation_sets):
+            raise Pre553AuthorityError(
+                "I03 query operation is ambiguous; exact query_operation or singleton authority operation required"
+            )
+        inferred = {operations[0] for operations in operation_sets}
+        if len(inferred) != 1:
+            raise Pre553AuthorityError(
+                "I03 query authorities do not agree on one exact operation"
+            )
+        query_operation = next(iter(inferred))
+
+    for snapshot in snapshots:
+        for family in (
+            "EmpiricalPredicate@1.0.0",
+            "EmpiricalQuerySpec@1.0.0",
+            "EmpiricalFact@1.0.0",
+        ):
+            for universe_ref in universe_refs:
+                require_positive_authority(
+                    snapshot,
+                    authority_kind="PREDICATE_GRAMMAR",
+                    operation=query_operation,
+                    object_family=family,
+                    source_universe_ref=universe_ref.as_dict(),
+                )
+
+    target_keys = (
+        "target_use_ref",
+        "target_use_authority_ref",
+        "target_use_operation",
+    )
+    declared_target_keys = tuple(
+        key for key in target_keys if grain.get(key) is not None
+    )
+    if declared_target_keys and len(declared_target_keys) != len(target_keys):
+        raise Pre553AuthorityError(
+            "I03 target-use permission must bind ref, authority, and operation together"
+        )
+    if not declared_target_keys:
+        return
+
+    target_use_ref = _exact(grain["target_use_ref"], "requested_output_grain.target_use_ref")
+    target_use_authority_ref = _authority(
+        grain["target_use_authority_ref"],
+        "requested_output_grain.target_use_authority_ref",
+    )
+    target_use_operation = grain["target_use_operation"]
+    if not isinstance(target_use_operation, str) or not target_use_operation.strip():
+        raise Pre553AuthorityError("target_use_operation must be an exact non-empty string")
+    target_use_operation = target_use_operation.strip()
+
+    query_closure_authorities = _canonical_authorities(
+        _authority(ref, "query.authority_snapshot_refs")
+        for ref in query.authority_snapshot_refs
+    )
+    if target_use_authority_ref not in query_closure_authorities:
+        raise Pre553AuthorityError(
+            "target-use authority is not present in exact query authority closure"
+        )
+    query_dependencies = _canonical_refs(
+        _exact(ref, "query.dependency_refs") for ref in query.dependency_refs
+    )
+    if target_use_ref not in query_dependencies:
+        raise Pre553AuthorityError(
+            "target-use ref is not present in exact query dependency closure"
+        )
+
+    snapshot = authority_registry.resolve_exact(target_use_authority_ref).snapshot
+    for universe_ref in universe_refs:
+        require_positive_authority(
+            snapshot,
+            authority_kind="TARGET_USE_PERMISSION",
+            operation=target_use_operation,
+            object_family="EmpiricalFact@1.0.0",
+            source_universe_ref=universe_ref.as_dict(),
+            target_use_ref=target_use_ref.as_dict(),
+        )
+
+
 def execute_empirical_query(
     *,
     repository: C11Repository,
@@ -275,6 +393,12 @@ def execute_empirical_query(
     try:
         _validate_public_object_authorities(query, authority_registry)
         _validate_public_object_authorities(predicate, authority_registry)
+        _require_exact_i03_authority_fitness(
+            query=query,
+            predicate=predicate,
+            authority_registry=authority_registry,
+            universe_refs=universe_refs,
+        )
         plan = _parse_target_plan(query, authority_registry)
     except Pre553SemanticCollapseError:
         raise
