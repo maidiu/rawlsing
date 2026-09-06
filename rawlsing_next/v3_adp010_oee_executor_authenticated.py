@@ -1009,4 +1009,198 @@ def _validate_contact(
     _s(w.independence_authority_id, "independence authority id")
     _s(w.independence_authority_version, "independence authority version")
     _h(w.independence_authority_content_hash, "independence authority hash")
-    _valid
+    _validate_content_addressed_ref(
+        w.independence_authority_acceptance_ref,
+        "independence authority acceptance",
+        "ACCEPTED_CONTACT_INDEPENDENCE_AUTHORITY_RECEIPT",
+        "urn:rawlsing:accepted-contact-independence-authority:sha256:",
+    )
+    _ref(w.independence_receipt_ref, "independence receipt")
+    independence_basis = _refs(w.independence_basis_refs, "independence basis", True)
+    if any(x.kind in _INSUFFICIENT_CONTACT for x in independence_basis):
+        raise OEEAdmissionError("proximity cannot establish contact-witness independence")
+    expected_ind = _content_ref(
+        "CONTACT_INDEPENDENCE_AUTHENTICATION",
+        "urn:rawlsing:contact-independence-authentication:sha256:",
+        _independence_material(w, expected_contact),
+    )
+    if w.independence_authentication_ref != expected_ind:
+        raise OEEIntegrityError("contact-witness independence authentication mismatch")
+    return w, expected_contact, expected_ind
+
+def _within(a: str, b: str, parent: V3OEERealizationRecord) -> None:
+    if _dt(a) < _dt(parent.effective_from) or _dt(b) > _dt(parent.effective_until):
+        raise OEEAdmissionError("child effective scope must remain within active parent scope")
+
+def _candidate_material_from_record(r: V3OEERealizationRecord) -> dict[str, Any]:
+    # Every mutable persisted record field except self-derived IDs/hashes/event ID
+    # is committed here. validate_record() recomputes this exact material.
+    return {
+        "executor": [EXECUTOR_ID, EXECUTOR_VERSION],
+        "actor_id": r.actor_id,
+        "authority": [r.authority_id, r.authority_version],
+        "registry": [r.registry_id, r.registry_version],
+        "rule": [r.rule_id, r.rule_version],
+        "realization_state": r.realization_state,
+        "subject_ref": r.subject_ref,
+        "parent_record_id": r.parent_record_id,
+        "effective_scope": [r.effective_from, r.effective_until, r.time_granularity],
+        "context_or_world_receipt_refs": r.context_or_world_receipt_refs,
+        "applicability_receipt_refs": r.applicability_receipt_refs,
+        "phase_state_ref": r.phase_state_ref,
+        "position_or_other_constraint_refs": r.position_or_other_constraint_refs,
+        "causal_witness_refs": r.causal_witness_refs,
+        "rng_decision_receipt_ref": r.rng_decision_receipt_ref,
+        "event_effect_kind": r.event_effect_kind,
+        "prior_ledger_anchor_ref": r.prior_ledger_anchor_ref,
+        "provenance_refs": r.provenance_refs,
+    }
+
+def _record_identity(r: V3OEERealizationRecord) -> dict[str, Any]:
+    return {
+        "actor": r.actor_id,
+        "authority": [r.authority_id, r.authority_version],
+        "registry": [r.registry_id, r.registry_version],
+        "rule": [r.rule_id, r.rule_version],
+        "state": r.realization_state,
+        "subject": r.subject_ref,
+        "parent": r.parent_record_id,
+        "effective_scope": [r.effective_from, r.effective_until, r.time_granularity],
+        "canonical_witnesses": r.causal_witness_refs,
+        "candidate_replay_hash": r.source_candidate_replay_hash,
+        "rng_decision_receipt_ref": r.rng_decision_receipt_ref,
+    }
+
+def _build(
+    state: str,
+    actor: ActorPhaseEvidence,
+    subject: SubjectIngressEvidence,
+    parent: str | None,
+    start: str,
+    end: str,
+    granularity: str,
+    context: tuple[ExactRef, ...],
+    applicability: tuple[ExactRef, ...],
+    constraints: tuple[ExactRef, ...],
+    witnesses: tuple[ExactRef, ...],
+    prior: ExactRef,
+    provenance: tuple[ExactRef, ...],
+) -> V3OEERealizationRecord:
+    rule_id, _, _, effect = _RULES[state]
+    provisional = V3OEERealizationRecord(
+        "", actor.actor_id, ADP010_AUTHORITY_ID, ADP010_AUTHORITY_VERSION,
+        ADP010_REGISTRY_ID, ADP010_REGISTRY_VERSION, rule_id, RULE_VERSION,
+        state, subject.subject_ref, parent, start, end, granularity, "", "",
+        context, applicability, actor.phase_state_ref, constraints, witnesses,
+        None, None, effect, prior, provenance, "",
+    )
+    candidate_hash = _digest(_CANDIDATE_DOMAIN, _candidate_material_from_record(provisional))
+    candidate_id = f"urn:rawlsing:v3:oee:candidate:sha256:{candidate_hash}"
+    with_candidate = replace(
+        provisional,
+        source_candidate_id=candidate_id,
+        source_candidate_replay_hash=candidate_hash,
+    )
+    record_hash = _digest(_RECORD_DOMAIN, _record_identity(with_candidate))
+    event = None if effect is None else (
+        f"urn:rawlsing:v3:oee:event:sha256:"
+        f"{_digest(_EVENT_DOMAIN, {'record_hash': record_hash, 'effect': effect})}"
+    )
+    return replace(
+        with_candidate,
+        record_id=f"urn:rawlsing:v3:oee:record:sha256:{record_hash}",
+        event_id=event,
+        record_hash=record_hash,
+    )
+
+def _required_ref_present(provenance: tuple[ExactRef, ...], required: ExactRef, label: str) -> None:
+    if required not in provenance:
+        raise OEEIntegrityError(f"missing exact {label} provenance")
+
+def validate_record(r: Any) -> V3OEERealizationRecord:
+    if not isinstance(r, V3OEERealizationRecord):
+        raise OEEIntegrityError("record must be V3OEERealizationRecord")
+    if (
+        r.authority_id, r.authority_version, r.registry_id, r.registry_version
+    ) != (
+        ADP010_AUTHORITY_ID, ADP010_AUTHORITY_VERSION, ADP010_REGISTRY_ID, ADP010_REGISTRY_VERSION
+    ):
+        raise OEEIntegrityError("ADP-010 authority/registry mismatch")
+    if r.realization_state not in _RULES:
+        raise OEEIntegrityError("unsupported realization state")
+    rule_id, _, _, effect = _RULES[r.realization_state]
+    if (r.rule_id, r.rule_version) != (rule_id, RULE_VERSION):
+        raise OEEIntegrityError("rule identity mismatch")
+    _s(r.actor_id, "actor_id")
+    _s(r.subject_ref, "subject_ref")
+    _h(r.source_candidate_replay_hash, "source_candidate_replay_hash")
+    _ref(r.phase_state_ref, "phase_state_ref")
+    if r.phase_state_ref.kind != "V3DevelopmentalPhaseState":
+        raise OEEIntegrityError("phase_state_ref kind mismatch")
+    _ref(r.prior_ledger_anchor_ref, "prior_ledger_anchor_ref")
+    context = _refs(r.context_or_world_receipt_refs, "context", True)
+    apps = _refs(r.applicability_receipt_refs, "applicability", r.realization_state != STATE_AVAILABLE)
+    constraints = _refs(r.position_or_other_constraint_refs, "constraints")
+    witnesses = _refs(r.causal_witness_refs, "witnesses", True)
+    provenance = _refs(r.provenance_refs, "provenance", True)
+    if (
+        context != r.context_or_world_receipt_refs
+        or apps != r.applicability_receipt_refs
+        or constraints != r.position_or_other_constraint_refs
+        or witnesses != r.causal_witness_refs
+        or provenance != r.provenance_refs
+    ):
+        raise OEEIntegrityError("record refs are not canonical")
+    _interval(r.effective_from, r.effective_until)
+    _s(r.time_granularity, "time_granularity")
+    if r.rng_decision_receipt_ref is not None:
+        raise OEEIntegrityError("ADP-010 core-v1 is ZERO_DRAW")
+
+    for req, label in (
+        (ADP010_AUTHORITY_HASH_REF, "ADP-010 authority hash"),
+        (ADP010_REGISTRY_HASH_REF, "ADP-010 registry hash"),
+        (_rule_hash_ref(r.realization_state), "ADP-010 rule hash"),
+        (ADP008_AUTHORITY_HASH_REF, "ADP-008 authority hash"),
+        (ADP008_REGISTRY_HASH_REF, "ADP-008 registry hash"),
+        (ADP020_AUTHORITY_HASH_REF, "ADP-020 authority hash"),
+    ):
+        _required_ref_present(provenance, req, label)
+
+    by_kind: dict[str, list[ExactRef]] = {}
+    for item in provenance:
+        by_kind.setdefault(item.kind, []).append(item)
+    def require_auth(kind: str, prefix: str, label: str, *, at_least: int = 1) -> None:
+        refs = by_kind.get(kind, [])
+        if len(refs) < at_least:
+            raise OEEIntegrityError(f"missing exact {label}")
+        for item in refs:
+            _validate_content_addressed_ref(item, label, kind, prefix)
+
+    require_auth(
+        "SUBJECT_INGRESS_AUTHENTICATION",
+        "urn:rawlsing:subject-ingress-authentication:sha256:",
+        "subject ingress authentication",
+    )
+    require_auth(
+        "ADP008_PHASE_STATE_AUTHENTICATION",
+        "urn:rawlsing:adp008-phase-authentication:sha256:",
+        "ADP-008 phase-state authentication",
+    )
+    if r.realization_state != STATE_AVAILABLE:
+        require_auth(
+            "POSITIVE_APPLICABILITY_AUTHENTICATION",
+            "urn:rawlsing:positive-applicability-authentication:sha256:",
+            "positive applicability authentication",
+        )
+    if r.realization_state == STATE_ENCOUNTER:
+        require_auth(
+            "CONTACT_OCCURRENCE_AUTHENTICATION",
+            "urn:rawlsing:contact-occurrence-authentication:sha256:",
+            "contact-occurrence authentication",
+        )
+        require_auth(
+            "CONTACT_INDEPENDENCE_AUTHENTICATION",
+            "urn:rawlsing:contact-independence-authentication:sha256:",
+            "contact-witness independence authentication",
+        )
+        kinds = {x.kind 
