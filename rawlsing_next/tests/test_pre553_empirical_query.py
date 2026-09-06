@@ -1182,7 +1182,7 @@ def test_astra002_shared_i03_rejects_allow_authority_missing_fact_family():
     query = _query(source, qa, predicate, ("Y",), tag="astra002-wrong-family")
     result = _run(source, qa, predicate, query, registry=_registry(source, qa))
     _assert_no_supported(result)
-    assert result.facts[0].p02_failure_state == "MISSING_AUTHORITY"
+    assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
 
 
 def test_astra002_shared_i03_rejects_allow_authority_excluding_actual_universe():
@@ -1198,7 +1198,7 @@ def test_astra002_shared_i03_rejects_allow_authority_excluding_actual_universe()
     query = _query(source, qa, predicate, ("Y",), tag="astra002-wrong-source")
     result = _run(source, qa, predicate, query, registry=_registry(source, qa))
     _assert_no_supported(result)
-    assert result.facts[0].p02_failure_state == "MISSING_AUTHORITY"
+    assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
 
 
 def test_astra002_shared_i03_rejects_wrong_target_use_even_with_positive_authorities():
@@ -1227,7 +1227,7 @@ def test_astra002_shared_i03_rejects_wrong_target_use_even_with_positive_authori
     registry = AuthorityRegistry((*source["authorities"], qa, target_auth))
     result = _run(source, qa, predicate, query, registry=registry)
     _assert_no_supported(result)
-    assert result.facts[0].p02_failure_state == "MISSING_AUTHORITY"
+    assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
 
 
 def test_astra002_shared_i03_preserves_exact_lawful_target_use():
@@ -1266,4 +1266,4 @@ def test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive():
     query = _query(source, qa, predicate, ("Y",), tag="astra002-deny")
     result = _run(source, qa, predicate, query, registry=_registry(source, qa))
     _assert_no_supported(result)
-    assert result.facts[0].p02_failure_state == "MISSING_AUTHORITY"
+    assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
