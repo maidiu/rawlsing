@@ -229,10 +229,30 @@ def canonical_set(values: Iterable[Any]) -> tuple[Any, ...]:
     return tuple(by_json[key] for key in sorted(by_json))
 
 
-class _FrozenSemanticList(tuple):
-    """Tuple-backed marker for semantic material that canonically originated as a list."""
+class _FrozenSemanticList(Sequence[Any]):
+    """Immutable list-compatible semantic sequence without a list base-class bypass."""
 
-    __slots__ = ()
+    __slots__ = ("_items",)
+
+    def __init__(self, values: Iterable[Any]) -> None:
+        object.__setattr__(self, "_items", tuple(values))
+
+    def __len__(self) -> int:
+        return len(self._items)
+
+    def __getitem__(self, index: Any) -> Any:
+        return self._items[index]
+
+    def __iter__(self):
+        return iter(self._items)
+
+    def __repr__(self) -> str:
+        return repr(list(self._items))
+
+    def __eq__(self, other: Any) -> bool:
+        if isinstance(other, Sequence) and not isinstance(other, (str, bytes, bytearray)):
+            return list(self._items) == list(other)
+        return False
 
 
 def _freeze_semantic_descendants(value: Any) -> Any:
