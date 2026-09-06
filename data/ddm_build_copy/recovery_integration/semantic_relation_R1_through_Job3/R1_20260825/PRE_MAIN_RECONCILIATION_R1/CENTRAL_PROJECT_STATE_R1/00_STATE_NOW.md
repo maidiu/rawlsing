@@ -83,6 +83,7 @@ Latest integrated T-wave / post-T hostile disposition state:
 - **V2 / OBL053 INDEPENDENT HOSTILE REVIEW:** `PASS__GT34_V2_OBL053_REPAIRED_HASH_GRAPH_LAWFUL_FOR_FRESH_BOUNDED_ADOPTION`. Exact evidence checkout `89ba48207cd79c700529e6ae55b8a1c18890d76b`; run `34045974114`, job `101520965853`; hostile court `9 passed` after independent derivation, exact semantic-diff proof, mutation attack, and historical-identity reversion attacks.
 - **Fresh OBL053 HQ adoption:** `PASS__GT34_OBL053_REPAIRED_HASH_GRAPH_FRESHLY_HQ_ADOPTED__OBL053_CLOSED`. Fresh adoption artifact blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`; corrected one-object constitutive semantic truth is current again at the unchanged semantic ceiling. No V3 `subject_ref` exists yet.
 - **T2 / OBL054:** `FAIL__GT34_T2_OBL054_S2_OWNER_AUTHENTICATION_FAIL_OPEN_AND_ONE_OBJECT_SCOPE_ESCAPE_PROVED`. S2 remains not adopted. Repair must authenticate against the exact OBL053 HQ adoption root and make one-object scope an immutable permit-level invariant.
+- **U2 / OBL054 SUCCESSOR REPAIR:** `PASS__GT34_U2_OBL054_CORRECTED_OWNER_AUTH_AND_ONE_OBJECT_PERMIT_REPAIRED__NO_ADOPTION`. Candidate `15002c7f87656d57eb0c56d68942f4b24765d55f`; governed evidence `09cc0da92eb047686aecbb68f25d6fed91c9aa37`; run `34046703322`, job `101522919696`; `20 passed`. Fresh accepted-root hash `1563a166...`; exact one-object permit hash `3eeea2dc...`. No real subject_ref was materialized; candidate awaits independent hostile review.
 - **T3 / OBL055:** `FAIL__GT34_T3_OBL055_S3_ADP010_V3P5_EXECUTOR_AUTHENTICATION_AND_REPLAY_INTEGRITY_GAPS`. S3 remains not adopted. Transition shape is reusable, but subject ingress, phase/applicability/contact authority and replay bindings require repair. OBL055 is held behind OBL054 so it can bind the final adopted materializer.
 
 Therefore:
@@ -96,7 +97,7 @@ No actor mutation, positive CAN-008 rule, positive metabolism operation, causal 
 - OBL004 remains partially closed by the real source-backed vertical canary.
 - OBL012 remains dormant for this same-source canary; broader portability is still unowned if a future transfer claim requires it.
 - **OBL053:** CLOSED at repaired content-addressed identity grain. Fresh current adoption root blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`; authority `86796209...`, semantic object `9a5fbe9a...`, receipt `153ff1cd...`. Historical `e024...` / `d964...` / `156194...` identities and adoption blob `286ff7...` remain historical only.
-- **OBL054:** RETURN_REQUIRED and now unblocked. T2's owner-authentication + immutable one-object permit repair remains exact. A fresh successor worker must authenticate only against adoption blob `f561765bad4fdad2bbf4591f35fe7f81f8486428` and corrected object hash `9a5fbe9a...`; the old U1 branch remains frozen because its commission names the invalid historical root.
+- **OBL054:** RETURN_REQUIRED / repaired successor candidate banked awaiting independent hostile review. U2 closes the two T2 defects in candidate form with materializer `GT34_V3P1_CORRECTED_OWNER_AUTHENTICATED_ONE_OBJECT_SUBJECT_MATERIALIZER@2.0.0`, accepted-root hash `1563a166...`, permit `3eeea2dc...`. It is not adopted; the old U1 branch remains frozen.
 - **OBL052:** blocked only on OBL054. OBL053 now supplies a current authenticated semantic object/evidence root; after OBL054 repair + hostile PASS + adoption, materialize the exact first-canary subject_ref and receipt.
 - **OBL048:** blocked on OBL052; only then may the narrow `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL` proposition be defined and adopted.
 - **OBL055:** blocked on OBL054 for its final subject-ingress authentication contract. T3's exact authentication/replay defects remain the repair specification.
@@ -119,7 +120,7 @@ Post-Q, post-S and post-T fan-in obey this rule: worker evidence was banked, exa
 
 Dependency order now begins with one immediate bounded repair:
 
-1. **OBL054 / S2 successor repair** — preserve S2's deterministic/opaque identity mechanics but repair both T2 defects against the fresh OBL053 adoption blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`: independently authenticated owner/object binding + immutable content-addressed one-object permit. The old U1 commission is abandoned in place; launch a fresh successor from current canonical head.
+1. **OBL054 independent hostile review** — independently attack U2 candidate `15002c7f87656d57eb0c56d68942f4b24765d55f`: forged owner/root/permit, historical-root reversion, direct-path bypass, registry re-instantiation, semantic-opacity and shadow/production separation. Only hostile PASS permits HQ adoption.
 
 Then:
 
