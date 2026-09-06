@@ -1,6 +1,6 @@
 # RAWLSING CENTRAL STATE NOW R2
 
-> **CURRENT INTEGRITY OVERRIDE — OBL053:** independent recomputation against exact S1 candidate blob `59c88df41b90f3ca932f52326fe4b275e84c4551` disproves T1's claimed exact hash recomputation for the authority, semantic object, and objective-evidence receipt. The seed hash alone matches. T1's semantic/constitutive reading remains preserved, but its hash-integrity PASS is superseded at that exact grain. HQ adoption blob `286ff7b851e920ff2760082d8b2fb194560ab127` is immutable historical evidence but is **not a competent current OBL054 authentication root**. OBL053 = `RETURN_REQUIRED__REPAIRED_CANDIDATE_BANKED_AWAITING_HOSTILE_REVIEW` at content-addressed identity integrity; V1 repaired candidate `d14454bf2b464617e617fec5406a11bc2a754c09` is banked with governed court `34044557072` / `9 passed`, but is not adopted. OBL054 = `SUSPENDED_ON_DEPENDENCY`; OBL052 = blocked on OBL053 + OBL054. Controlling disposition: `../WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT3_GT4_OBL053_HASH_INTEGRITY_EMERGENCY_DISPOSITION_R1/00_VOZHD_DISPOSITION.md`.
+> **OBL053 HASH-INTEGRITY CORRECTION — RESOLVED:** the historical T1/HQ identity chain remains preserved as failed currentness history, but V1 repaired it and V2 independently hostile-passed the repair. Fresh HQ adoption artifact blob `f561765bad4fdad2bbf4591f35fe7f81f8486428` is now the sole current OBL053 downstream trust root. Current authority hash = `867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29`; current semantic object hash = `9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547`; current receipt hash = `153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c`. **OBL053 is CLOSED. OBL054 is the immediate critical path.** Historical adoption blob `286ff7...` is forbidden as a current materializer authentication root.
 
 This is the recurring Vozhd sweep surface for the post-PRE-MAIN project. The TSV ledgers remain authoritative for exact IDs, dependencies, reintegration status and open obligations.
 
@@ -80,6 +80,8 @@ Latest integrated T-wave / post-T hostile disposition state:
 - **Post-S HQ banking:** S1/S2/S3 were exact candidate/evidence surfaces only; worker PASS was not project authority.
 - **T1 / OBL053 — HISTORICAL, HASH PASS SUPERSEDED:** T1 returned `PASS__GT34_T1_OBL053_S1_ONE_OBJECT_SEMANTIC_AUTHORITY_LAWFUL_FOR_BOUNDED_ADOPTION`, and HQ subsequently adopted S1. Independent central recomputation now disproves T1's exact hash-recomputation finding for authority/object/receipt. The semantic reading is preserved, but the adopted identity chain is not current. **OBL053 is RETURN_REQUIRED at hash-integrity grain.** No V3 `subject_ref` exists.
 - **V1 / OBL053 HASH-INTEGRITY REPAIR:** `PASS__GT34_V1_OBL053_CONTENT_ADDRESSED_HASH_GRAPH_REPAIRED__NO_ADOPTION`. Candidate `d14454bf2b464617e617fec5406a11bc2a754c09`; governed evidence `e1afc3c1d8c746ffcc75f79c8a5f0c87689aa08e`; run `34044557072`, job `101517181138`; exact repaired hashes: authority `867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29`, object `9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547`, receipt `153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c`. Await independent hostile review; no adoption/current generated-world truth yet.
+- **V2 / OBL053 INDEPENDENT HOSTILE REVIEW:** `PASS__GT34_V2_OBL053_REPAIRED_HASH_GRAPH_LAWFUL_FOR_FRESH_BOUNDED_ADOPTION`. Exact evidence checkout `89ba48207cd79c700529e6ae55b8a1c18890d76b`; run `34045974114`, job `101520965853`; hostile court `9 passed` after independent derivation, exact semantic-diff proof, mutation attack, and historical-identity reversion attacks.
+- **Fresh OBL053 HQ adoption:** `PASS__GT34_OBL053_REPAIRED_HASH_GRAPH_FRESHLY_HQ_ADOPTED__OBL053_CLOSED`. Fresh adoption artifact blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`; corrected one-object constitutive semantic truth is current again at the unchanged semantic ceiling. No V3 `subject_ref` exists yet.
 - **T2 / OBL054:** `FAIL__GT34_T2_OBL054_S2_OWNER_AUTHENTICATION_FAIL_OPEN_AND_ONE_OBJECT_SCOPE_ESCAPE_PROVED`. S2 remains not adopted. Repair must authenticate against the exact OBL053 HQ adoption root and make one-object scope an immutable permit-level invariant.
 - **T3 / OBL055:** `FAIL__GT34_T3_OBL055_S3_ADP010_V3P5_EXECUTOR_AUTHENTICATION_AND_REPLAY_INTEGRITY_GAPS`. S3 remains not adopted. Transition shape is reusable, but subject ingress, phase/applicability/contact authority and replay bindings require repair. OBL055 is held behind OBL054 so it can bind the final adopted materializer.
 
@@ -93,9 +95,9 @@ No actor mutation, positive CAN-008 rule, positive metabolism operation, causal 
 
 - OBL004 remains partially closed by the real source-backed vertical canary.
 - OBL012 remains dormant for this same-source canary; broader portability is still unowned if a future transfer claim requires it.
-- **OBL053:** RETURN_REQUIRED / repaired candidate banked awaiting independent hostile review. V1 mechanically repaired the recursive identity graph without semantic widening; exact candidate `d14454bf...`, authority `86796209...`, object `9a5fbe9a...`, receipt `153ff1cd...`. Historical adoption remains noncurrent until hostile PASS + fresh HQ adoption.
-- **OBL054:** SUSPENDED_ON_DEPENDENCY. T2's owner-authentication/one-object-scope repair remains required, but U1 must not bind to the invalidated OBL053 adoption root. Resume only after repaired OBL053 graph receives independent hostile PASS and fresh HQ adoption.
-- **OBL052:** blocked on OBL053 + OBL054. First repair/re-adopt OBL053 identity integrity; then repair/adopt OBL054; only then materialize the exact first-canary subject object/ref and receipt.
+- **OBL053:** CLOSED at repaired content-addressed identity grain. Fresh current adoption root blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`; authority `86796209...`, semantic object `9a5fbe9a...`, receipt `153ff1cd...`. Historical `e024...` / `d964...` / `156194...` identities and adoption blob `286ff7...` remain historical only.
+- **OBL054:** RETURN_REQUIRED and now unblocked. T2's owner-authentication + immutable one-object permit repair remains exact. A fresh successor worker must authenticate only against adoption blob `f561765bad4fdad2bbf4591f35fe7f81f8486428` and corrected object hash `9a5fbe9a...`; the old U1 branch remains frozen because its commission names the invalid historical root.
+- **OBL052:** blocked only on OBL054. OBL053 now supplies a current authenticated semantic object/evidence root; after OBL054 repair + hostile PASS + adoption, materialize the exact first-canary subject_ref and receipt.
 - **OBL048:** blocked on OBL052; only then may the narrow `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL` proposition be defined and adopted.
 - **OBL055:** blocked on OBL054 for its final subject-ingress authentication contract. T3's exact authentication/replay defects remain the repair specification.
 - **OBL031:** now depends on both OBL048 and OBL055 for an operable positive comparator path.
@@ -117,13 +119,13 @@ Post-Q, post-S and post-T fan-in obey this rule: worker evidence was banked, exa
 
 Dependency order now begins with one immediate bounded repair:
 
-1. **OBL053 independent hostile review** — attack exact repaired candidate `d14454bf2b464617e617fec5406a11bc2a754c09`, independently recompute all hashes and semantic-diff boundaries, and verify the V1 court evidence. Only hostile PASS permits a fresh HQ adoption.
+1. **OBL054 / S2 successor repair** — preserve S2's deterministic/opaque identity mechanics but repair both T2 defects against the fresh OBL053 adoption blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`: independently authenticated owner/object binding + immutable content-addressed one-object permit. The old U1 commission is abandoned in place; launch a fresh successor from current canonical head.
 
 Then:
 
-`repaired/re-hostile-reviewed/re-adopted OBL053 -> repaired/adopted OBL054 -> materialize exact adopted OBL053 object -> OBL052 CLOSED`
+`freshly adopted corrected OBL053 -> repaired/adopted OBL054 -> materialize exact adopted OBL053 object -> OBL052 CLOSED`
 
-After OBL053 is re-adopted, resume OBL054 against that corrected trust anchor. After OBL054 adoption, repair OBL055 against that exact materializer contract. After OBL052 closes, define/adopt OBL048 classifier.
+Repair OBL054 now against the corrected trust anchor. After OBL054 adoption, repair OBL055 against that exact materializer contract. After OBL052 closes, define/adopt OBL048 classifier.
 
 At that point:
 
