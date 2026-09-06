@@ -1,0 +1,327 @@
+{
+  "schema": "B3_OBL035_C05R2B_AS3R2_RUNTIME_OBJECT_RECOVERY_MANIFEST@1.0.0",
+  "status": "EXACT_BLOCKER_PROVED",
+  "terminal_claim": "C05R2B_AS3R2_EXACT_22_RUNTIME_OBJECT_PAYLOADS_RECOVERED_OR_EXACT_BLOCKER_PROVED",
+  "terminal_branch": "EXACT_BLOCKER_PROVED",
+  "branch": "agent/rabochii-subv-b-obl035-c05r2b-runtime-object-recovery-r1",
+  "handoff_commit": "d74e679b65391c64caf39017004780828b86ac94",
+  "authorized_starting_head": "7b8c4118e2b4effe2fb51a18a1b0cbc0c95822e3",
+  "frozen_anchors": {
+    "discovery_authority": "98d52062a0acc04a1949053a8f83397621e810950ff70ceff0260b68d17fd28c",
+    "candidate_grammar": "85d314d8222d96328b3e0449495ea3946d02cecaf3f2ccd3b249270a3fca2b66",
+    "official_frontier": "84349595622ed6eec5bd6af60de5b74df26ae6752ae64e40d7595fd7560b7d67",
+    "candidate_count": 82,
+    "sealed_predicate_ref_count": 19,
+    "sealed_query_ref_count": 3,
+    "pre_candidate_fairness_blockers": 0
+  },
+  "exact_blocker": {
+    "class": "BLOCKED_MATERIAL_UNAVAILABLE",
+    "id": "B3-B01__AS3R2_AUTHORITATIVE_RUNTIME_OBJECT_PRODUCER_UNREACHABLE_AND_CANONICAL_PREIMAGES_UNSERIALIZED",
+    "statement": "The sealed AS3R2 package preserves the exact 19 EmpiricalPredicate and 3 EmpiricalQuerySpec refs, but not their complete canonical semantic projections. The recorded authoritative producer commit b0ed3d1509421011816f5ac694f9d1ec875c5bf5 remains unresolvable, and rawlsing_next/pre553_late_run_evidence.py is absent at the B3 handoff ref. Target hashes plus descriptive AS3 semantics cannot prove the missing identity-bearing fields without manufacturing identity material.",
+    "recorded_producer": {
+      "commit": "b0ed3d1509421011816f5ac694f9d1ec875c5bf5",
+      "path": "rawlsing_next/pre553_late_run_evidence.py",
+      "recorded_file_sha256": "17852eb0e8369550f629375e0fcc03053dfe77b2ae4faa1728cf4cf8e1c019fb",
+      "current_resolution": "UNRESOLVABLE__GITHUB_COMMIT_LOOKUP_NO_COMMIT_FOUND",
+      "path_at_handoff_ref": "ABSENT"
+    },
+    "identity_fields_not_provably_recovered": [
+      "typed_state",
+      "authority_snapshot_refs",
+      "dependency_refs",
+      "producer_replay_locator_or_reference_root",
+      "complete normalized family semantic_fields"
+    ]
+  },
+  "binding_execution_authority_ceiling": {
+    "status": "OLD_AS3R2_RUNTIME_REFS_NOT_EXECUTABLE",
+    "current_ancestry_authority_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/28_AS3R3_RUNTIME_IDENTITY_SUCCESSION_HQ_ADOPTION.md",
+    "current_ancestry_authority_blob": "a12bba8aa727222bc668324954d9549dd97b3ab5",
+    "governing_historical_commit": "a23144c3b93a7c986b08ffcd802a430670d3311d",
+    "exact_holding": "PRESERVED__SUPERSEDED_NON_REPLAYABLE_FOR_EXECUTABLE_USE",
+    "law": [
+      "SEMANTIC_SUCCESSION != IDENTITY_RECOVERY",
+      "NEW_EXECUTABLE_OBJECT != RECOVERED_OLD_OBJECT"
+    ],
+    "consequence": "Even a later historical recovery of the old bytes would not make the AS3R2 refs a lawful executable C05R2B runtime package under the current ancestry; executable continuation is the separately governed AS3R3 successor path."
+  },
+  "successor_state_visible_on_current_ancestry": {
+    "authority_29": "AS3R3_PRODUCER_IDENTITY_FROZEN__COMPLETE_PRODUCER_INPUT_FREEZE_AUTHORIZED__NO_SUCCESSOR_OBJECTS_MINTED",
+    "authority_30": "AS3R3_TWO_PHASE_CAUSAL_SEQUENCE_ADOPTED__PREDICATE_INPUT_FREEZE_AND_MINT_FIRST__QUERY_INPUT_FREEZE_AND_MINT_SECOND",
+    "authority_34_count_law": "19 SOURCE/ROLE ROWS -> 19 ROLE-TO-REF MAPPINGS -> 18 DISTINCT CANONICAL PREDICATE OBJECTS",
+    "authority_34_alias_class": [
+      "A000",
+      "A1RAPP"
+    ],
+    "implication": "The governed successor is explicitly new executable identity material, not recovery of the 19 historical AS3R2 predicate identities."
+  },
+  "evidence_refs": [
+    {
+      "ref": "aae978928d2416c23d6b1562e7ac559b106b2cf7",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3R2_CHETIRI_FINAL_MANIFEST_SEAL_20260827/04_RUNTIME_CATALOG_BINDING_MANIFEST.json",
+      "finding": "Exact 19+3 runtime refs sealed; canonical preimages not serialized."
+    },
+    {
+      "ref": "155248987a41af42cb3bab838791fb3a0b04761b",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3R2_RUNTIME_OBJECT_PREIMAGE_RECOVERY_20260827/RESULT.md",
+      "finding": "Historical independent recovery already failed closed on the same unreachable producer and missing canonical preimages."
+    },
+    {
+      "ref": "155248987a41af42cb3bab838791fb3a0b04761b",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3R2_RUNTIME_OBJECT_PREIMAGE_RECOVERY_20260827/REPLAY_AND_PROVENANCE.json",
+      "finding": "Records producer commit/path/file SHA-256 and exact missing identity-bearing fields."
+    },
+    {
+      "ref": "d74e679b65391c64caf39017004780828b86ac94",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/28_AS3R3_RUNTIME_IDENTITY_SUCCESSION_HQ_ADOPTION.md",
+      "finding": "Binding current-ancestry HQ holding supersedes historical AS3R2 runtime refs for executable use."
+    },
+    {
+      "ref": "d74e679b65391c64caf39017004780828b86ac94",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/34_PREV3_WAVE1_R2_AND_AS3R3_CARDINALITY_ADOPTION.md",
+      "finding": "Current successor law has 19 semantic source/role rows but 18 distinct canonical successor predicate objects, confirming succession is not old-identity recovery."
+    }
+  ],
+  "predicates": [
+    {
+      "order": 0,
+      "source_id": "A000",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:695187f3287129924ce997cfe55abec38cf1dd7f75b78af3b41bf7bcc632670f",
+      "content_hash": "695187f3287129924ce997cfe55abec38cf1dd7f75b78af3b41bf7bcc632670f",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 1,
+      "source_id": "A1V1",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ab147c30f80eb18b1582ada9ea6215062876cfee80d50cb11fc7f86a13f9ddc4",
+      "content_hash": "ab147c30f80eb18b1582ada9ea6215062876cfee80d50cb11fc7f86a13f9ddc4",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 2,
+      "source_id": "A1V2",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:4c89d8505ac8c5af49b829618bbdc40722fb0262389ffc68c33ef3e638710fed",
+      "content_hash": "4c89d8505ac8c5af49b829618bbdc40722fb0262389ffc68c33ef3e638710fed",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 3,
+      "source_id": "A1V3",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:8968b5340f3bdcc9e60b0f39e6dde01c5001a863b82a047f237c32d66f4c9f22",
+      "content_hash": "8968b5340f3bdcc9e60b0f39e6dde01c5001a863b82a047f237c32d66f4c9f22",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 4,
+      "source_id": "A1V4",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:adb43c755c12fe6dc40668a1e7c7a936d3b517c2fa3f506c1072530a7d2578a3",
+      "content_hash": "adb43c755c12fe6dc40668a1e7c7a936d3b517c2fa3f506c1072530a7d2578a3",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 5,
+      "source_id": "A1V5",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:789f2ef116ef42a83c02299650fdbb45c2e7300f09172d30e0d00878cc659223",
+      "content_hash": "789f2ef116ef42a83c02299650fdbb45c2e7300f09172d30e0d00878cc659223",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 6,
+      "source_id": "A1SSUB",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:2832575d35a0dff8d241386a6c5a731d2172b59f1ba49382ef0d4ade41822686",
+      "content_hash": "2832575d35a0dff8d241386a6c5a731d2172b59f1ba49382ef0d4ade41822686",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 7,
+      "source_id": "A1SSPS",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:6d8a6e28a15fba7d883b51560da5082db6fa847df692187338daefd6671046dc",
+      "content_hash": "6d8a6e28a15fba7d883b51560da5082db6fa847df692187338daefd6671046dc",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 8,
+      "source_id": "A1SMIS",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:8945249f57c12f79afc4e11663d1431d3e78d4869913e60ba7bf490740d3746b",
+      "content_hash": "8945249f57c12f79afc4e11663d1431d3e78d4869913e60ba7bf490740d3746b",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 9,
+      "source_id": "A1RAPP",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:917aa220d1b7f5c24c3c4977806ef4b470b501f3223cc3cfe71425c8aa4b4d8a",
+      "content_hash": "917aa220d1b7f5c24c3c4977806ef4b470b501f3223cc3cfe71425c8aa4b4d8a",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 10,
+      "source_id": "A2V1",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:eac8cf9900ea2f1a6edcb520421cabb381f506310199c20ddadc149d63dcaa4c",
+      "content_hash": "eac8cf9900ea2f1a6edcb520421cabb381f506310199c20ddadc149d63dcaa4c",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 11,
+      "source_id": "A2V2",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:d6b51eec3ce938f25ebd80414856f9f14fe9d4a91ad5260dc1f3357a99cf9f05",
+      "content_hash": "d6b51eec3ce938f25ebd80414856f9f14fe9d4a91ad5260dc1f3357a99cf9f05",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 12,
+      "source_id": "A2V3",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:338ec26543d63be0e6cb2b53d6f158402bd36d23fdf6338fdf3ef6649749f9e5",
+      "content_hash": "338ec26543d63be0e6cb2b53d6f158402bd36d23fdf6338fdf3ef6649749f9e5",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 13,
+      "source_id": "A2V4",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:65f604e90474a57ebd8057807921800858227198927b89f940bf08902bb7574b",
+      "content_hash": "65f604e90474a57ebd8057807921800858227198927b89f940bf08902bb7574b",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 14,
+      "source_id": "A2V5",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ab4feac28b36056e1ee59dfa61deac94844710bc49b9b311fd8bbb8c825f718b",
+      "content_hash": "ab4feac28b36056e1ee59dfa61deac94844710bc49b9b311fd8bbb8c825f718b",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 15,
+      "source_id": "A2SSUB",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:f3e4356df08dd5db33913da02a98e5d2efdc30cb89afc5c51bbc944c0ad191bf",
+      "content_hash": "f3e4356df08dd5db33913da02a98e5d2efdc30cb89afc5c51bbc944c0ad191bf",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 16,
+      "source_id": "A2SSPS",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:93650c906b4a6420ae6f043a550002ce8c50dd2777dcea59c1c203c449f5f088",
+      "content_hash": "93650c906b4a6420ae6f043a550002ce8c50dd2777dcea59c1c203c449f5f088",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 17,
+      "source_id": "A2SMIS",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:254949f24251f0a53f3747629b37c300cdb4889d8b3fba2a515a2e84dad66bf9",
+      "content_hash": "254949f24251f0a53f3747629b37c300cdb4889d8b3fba2a515a2e84dad66bf9",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 18,
+      "source_id": "A2RAPP",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:a8db9c27647433d4eb29ddb0d453c20aa89875379c04ff2dddd5051b5b521fc2",
+      "content_hash": "a8db9c27647433d4eb29ddb0d453c20aa89875379c04ff2dddd5051b5b521fc2",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    }
+  ],
+  "queries": [
+    {
+      "order": 0,
+      "source_id": "T_Q301_2_RAW",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:9e1c788ba63958319417fe4cd69ab086f181a10ca455826a810879cc289ab5f0",
+      "content_hash": "9e1c788ba63958319417fe4cd69ab086f181a10ca455826a810879cc289ab5f0",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 1,
+      "source_id": "T_Q301_7_RAW",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:879eebee12b70f94ef6a151fa9762e9d8596ce37774ef4f429f91d5709dcc95b",
+      "content_hash": "879eebee12b70f94ef6a151fa9762e9d8596ce37774ef4f429f91d5709dcc95b",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    },
+    {
+      "order": 2,
+      "source_id": "T_Q301_2_Q301_7_RAW",
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:38b5c1d439c34c007ae10550a8e56b0c696628d18a7e77d6534cc57ba3916bd3",
+      "content_hash": "38b5c1d439c34c007ae10550a8e56b0c696628d18a7e77d6534cc57ba3916bd3",
+      "canonical_payload_recovered": false,
+      "replay_material_recovered": false,
+      "disposition": "SEALED_IDENTITY_ONLY__NO_ADMISSIBLE_PREIMAGE"
+    }
+  ],
+  "recovery_counts": {
+    "sealed_runtime_refs_accounted_for": 22,
+    "canonical_payloads_recovered": 0,
+    "replay_materials_recovered": 0,
+    "emitted_runtime_object_packet_files": 0
+  },
+  "prohibited_actions_observed": {
+    "production_i05_executed": false,
+    "candidate_execution_count": 0,
+    "semantic_regeneration_attempted": false,
+    "target_hash_fitting_attempted": false,
+    "discovery_semantics_changed": false,
+    "production_rawlsing_next_modified": false,
+    "architecture_ranked_or_selected": false
+  },
+  "later_c05r2b_usable_packet": false,
+  "disposition_to_sub_vozhd_b": "RECOMPOSE_OBL035_CRITICAL_PATH_AGAINST_BINDING_AS3R3_SUCCESSION_AUTHORITIES__DO_NOT_RELAUNCH_AS3R2_EXECUTABLE_PREIMAGE_RECOVERY"
+}
