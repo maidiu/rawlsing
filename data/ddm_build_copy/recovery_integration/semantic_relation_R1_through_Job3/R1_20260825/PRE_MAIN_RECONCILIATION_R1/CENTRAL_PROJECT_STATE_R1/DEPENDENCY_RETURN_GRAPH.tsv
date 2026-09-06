@@ -40,6 +40,11 @@ DR007	OBL007	N016	RETURN_TO	RR07	NO	ACTIVE	Exact successor evidence returns appe
 DR008	OBL008	N024	RETURN_TO	RR08	NO	ACTIVE	WVS7 certification returns to Authority70 state
 DR009	OBL009	N027	RETURN_TO	RR09	NO	ACTIVE	J01-B terminal result returns to historical contract state
 DR010	OBL011	N015	RETURN_TO	RR10	NO	ACTIVE	Readmission evidence returns to C01 parent
-DR011	OBL012	N018	RETURN_TO	RR11	NO	ACTIVE	Portability owner/evidence decision returns to measurement parent
+DR011	OBL012	N018	RETURN_TO	RR11	YES_AT_CURRENT_SAME_SOURCE_CANARY_GRAIN	PARTIALLY_SATISFIED	Current Q69B/Q86 canary does not require portability; broader transfer portability remains standing
 DR012	OBL017	N025	RETURN_TO	RR12	NO	ACTIVE	Staged admission recomposition returns to parent admission architecture
 DR013	N032	N022	RETURN_TO	RR13	YES_BY_W50_W54	SATISFIED	W41 complete-inheritance-map return was fulfilled by W50-W54; W55 creates ongoing maintenance law rather than keeping old census question falsely open
+DR014	OBL048	OBL031	PREREQUISITE	GT34_P2	NO	ACTIVE	Comparator cannot become operably positive before exact independent subject-semantic owner exists
+DR015	OBL031	OBL032	PREREQUISITE	GT34_P2/P3	NO	ACTIVE	First PSEPF needs lawful actor↔empirical comparator evidence
+DR016	OBL049	OBL032	PREREQUISITE	GT34_P3	NO	ACTIVE	First PSEPF needs Q69B and Q86A in one exact respondent-aligned queryable release
+DR017	OBL050	N009	RETURN_TO	GT34_P1	NO	ACTIVE_NONBLOCKING_FIRST_POSITIVE	Legacy V558 role-auth debt returns to compiler/publication parent but does not block authenticated first-positive path
+DR018	OBL051	N031	RETURN_TO	POSTPREMAIN_CENSUS_20260906	NO	ACTIVE_MAINTENANCE	Physical ref cleanup returns to discoverability parent and must preserve exact evidence pointers
