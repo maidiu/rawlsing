@@ -1108,6 +1108,8 @@ def test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detache
     assert not isinstance(components, list)
     with pytest.raises(TypeError):
         list.__setitem__(components, 0, {"mutated": True})
+    with pytest.raises((AttributeError, TypeError)):
+        object.__setattr__(components, "_items", ({"mutated": True},))
 
     # semantic_fields no longer exposes a writable nested alias.
     with pytest.raises(TypeError):
