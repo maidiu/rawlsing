@@ -95,7 +95,7 @@ The post-PRE-MAIN engineering campaign remained one cumulative ancestry with bou
 
 `SIGNIFICANT_HQ_ADOPTION_OR_CENTRAL_FANIN -> CENTRAL_STATE_DELTA_BEFORE_NEXT_MAJOR_WAVE`.
 
-The intended canonical ref after this bounded repair is `integration/pre-main-reconciliation-r1`, advanced only by non-forced fast-forward to the reconciled descendant. The long-lived historical worker/integration branch names are not themselves authority.
+`integration/pre-main-reconciliation-r1` and the de facto cumulative working ref were successfully advanced together by non-forced fast-forward through validated reconciliation terminal `7909c0683874738be491cf6c0c7131579e51fdaf`; `main` remained unchanged. This post-move status seal is the direct successor used to record that canonicalization. Long-lived worker/integration branch names are not themselves authority.
 
 ## What Vozhd attacks next
 
