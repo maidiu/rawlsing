@@ -64,6 +64,7 @@ class ValidatedM1ProducerUseBinding:
         "authority_binding_hash",
         "evaluation_binding_hash",
         "_seal",
+        "_frozen",
     )
 
     def __init__(
@@ -79,11 +80,17 @@ class ValidatedM1ProducerUseBinding:
             raise M4IntegrityError(
                 "validated M1 producer-use binding may be issued only by a governed authority wrapper"
             )
-        self.m1_contract_id = m1_contract_id
-        self.producer_allowed_uses = producer_allowed_uses
-        self.authority_binding_hash = authority_binding_hash
-        self.evaluation_binding_hash = evaluation_binding_hash
-        self._seal = _seal
+        object.__setattr__(self, "m1_contract_id", m1_contract_id)
+        object.__setattr__(self, "producer_allowed_uses", producer_allowed_uses)
+        object.__setattr__(self, "authority_binding_hash", authority_binding_hash)
+        object.__setattr__(self, "evaluation_binding_hash", evaluation_binding_hash)
+        object.__setattr__(self, "_seal", _seal)
+        object.__setattr__(self, "_frozen", True)
+
+    def __setattr__(self, name: str, value: Any) -> None:
+        if getattr(self, "_frozen", False):
+            raise AttributeError("validated M1 producer-use binding is immutable")
+        object.__setattr__(self, name, value)
 
 
 def _issue_validated_relation_producer_use_binding(
@@ -196,6 +203,8 @@ def structural_objects_from_accepted_m1(
         raise M4IntegrityError(
             "relation M1 requires exact validated producer-use authority binding"
         )
+    if validated_producer_use_binding._seal is not _VALIDATED_RELATION_USE_BINDING_SEAL:
+        raise M4IntegrityError("validated producer-use binding seal mismatch")
     if validated_producer_use_binding.m1_contract_id != evaluation.contract_id:
         raise M4IntegrityError("validated producer-use binding contract mismatch")
     if (
