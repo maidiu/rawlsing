@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - agent/vozhd-rabochii-execution-constitution-r1\n      - agent/rabochii-gt34-w4-obl055-w2-independent-hostile-audit-r1
+      - agent/vozhd-rabochii-execution-constitution-r1
   workflow_dispatch:
 
 permissions:
@@ -19,12 +19,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-
-      - name: Materialize W4 governed court spec
-        shell: bash
-        run: |
-          mkdir -p .rabochii
-          cp data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT3_GT4_POST_W1_W2_PARALLEL_AUTHORITY_AUDIT_WAVE_R1/W4_OBL055_W2_INDEPENDENT_HOSTILE_AUDIT_R1/02_COURT_SPEC.json .rabochii/court_spec.json
 
       - name: Detect governed court spec
         id: spec
