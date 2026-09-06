@@ -238,3 +238,34 @@ def test_deterministic_release_rebuild_and_emit_identity_court(release):
         RuntimeWarning,
         stacklevel=1,
     )
+
+
+def test_o1_q69b_candidate_release_replay_authority_and_transport_identities_unchanged(release):
+    assert q69b.TRANSPORT_SEMANTIC_SHA256 == (
+        "c90ef7eaeea4b1536d3153beb344ce22156bf15bf835a3182c1b5784b8f238c5"
+    )
+    assert q69b.REPAIRED_COORDINATE_AUTHORITY_SHA256 == (
+        "cb84cf0962f5d11e7713912bc80d2078c89635ac09d7a24e39b7586591b4135c"
+    )
+    assert q69b.COORDINATE_SHA256 == (
+        "7a9910beead34e2617f5fdbacdd762fdde89b3614b90444c2e30f61a1a601937"
+    )
+    assert release.release_id == "R5_GT34_N2_Q69B_BOUNDED_CANDIDATE_R1"
+    assert release.semantic_release_hash == (
+        "2343023560ea963b6b290575d93361256825897a7c32ff31519e3d2425b595ec"
+    )
+    assert release.release_ref.content_hash == (
+        "2343023560ea963b6b290575d93361256825897a7c32ff31519e3d2425b595ec"
+    )
+    # HQ's shorthand "candidate release hash" 15b39... is the banked
+    # source-release-manifest identity; N2 records the semantic release hash
+    # separately as 234302...
+    assert release.source_release_manifest_hash == (
+        "15b39da2a58bdb0716e8e84dd63b215e2fc5b6abdc3bc6edf8c282cf4813dbc4"
+    )
+    assert release.replay_manifest.content_hash == (
+        "8ec8450d41524015c8e6b2716c00f622a9792334d2b952cac585b3b2971cb539"
+    )
+    assert release.replay_manifest.ref.content_hash == (
+        "8ec8450d41524015c8e6b2716c00f622a9792334d2b952cac585b3b2971cb539"
+    )

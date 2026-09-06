@@ -19,6 +19,7 @@ from rawlsing_next.pre553_empirical_objects import (
     EmpiricalQuerySpec,
     EmpiricalUniverse,
     ExactRef,
+    Pre553IntegrityError,
     Pre553SemanticCollapseError,
     RespondentEvent,
     RoutingEligibilityFact,
@@ -1067,3 +1068,131 @@ def test_authorized_composite_requires_and_uses_operation_specific_positive_auth
     assert cells["0"]["raw_numerator_support"] == 1
     assert cells["1"]["raw_numerator_support"] == 1
     assert len(fact.empirical_universe_refs) == 2
+
+
+def test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detached():
+    source = _build_source("astra001-deep-immutability", [
+        {"id": "R1", "responses": {"X": 0, "Y": 0}},
+        {"id": "R2", "responses": {"X": 1, "Y": 1}},
+    ])
+    qa = _query_authority("astra001-deep-immutability")
+    predicate = _branch_predicate(source, qa, tag="astra001")
+    query = _query(source, qa, predicate, ("X", "Y"), tag="astra001")
+    registry = _registry(source, qa)
+
+    before = _run(source, qa, predicate, query, registry=registry)
+    before_fact_exports = tuple(fact.as_dict() for fact in before.facts)
+    release = source["repo"].resolve_release_exact(source["release_ref"])
+    release_ref_before = release.release_ref
+    query_ref_before = query.ref
+
+    event = next(obj for obj in release.public_objects if isinstance(obj, RespondentEvent))
+    event_ref_before = event.ref
+    event_projection_before = event.semantic_projection()
+
+    # Direct semantic-field attributes are dict/list-compatible for existing
+    # consumers, but identity-bearing descendants themselves are immutable.
+    with pytest.raises(TypeError):
+        event.scoped_respondent_ref["object_id"] = "urn:mutated"
+    with pytest.raises(TypeError):
+        event.multiplicity_order_rank_fields["kind"] = "RANKED_RESPONSE"
+
+    # Explicit base-class mutation cannot bypass the immutable representation:
+    # these values are not writable dict/list subclasses.
+    with pytest.raises(TypeError):
+        dict.__setitem__(event.multiplicity_order_rank_fields, "kind", "BASE_BYPASS")
+    with pytest.raises(TypeError):
+        dict.__setitem__(event.scoped_respondent_ref, "object_id", "urn:base-bypass")
+
+    components = query.target_arity_and_topology["components"]
+    assert not isinstance(components, list)
+    with pytest.raises(TypeError):
+        list.__setitem__(components, 0, {"mutated": True})
+    with pytest.raises((AttributeError, TypeError)):
+        object.__setattr__(components, "_items", ({"mutated": True},))
+
+    # semantic_fields no longer exposes a writable nested alias.
+    with pytest.raises(TypeError):
+        event.semantic_fields["scoped_respondent_ref"]["content_hash"] = "0" * 64
+
+    # semantic_projection()/as_dict() are detached exports. They remain ordinary
+    # mutable representations, but mutation cannot alter the sealed object.
+    projection_export = event.semantic_projection()
+    projection_export["semantic_fields"]["scoped_respondent_ref"]["object_id"] = "urn:detached"
+    projection_export["semantic_fields"]["multiplicity_order_rank_fields"]["kind"] = "DETACHED"
+    dict_export = event.as_dict()
+    dict_export["semantic_fields"]["scoped_respondent_ref"]["content_hash"] = "1" * 64
+    dict_export["semantic_fields"]["multiplicity_order_rank_fields"]["kind"] = "DETACHED"
+
+    assert event.ref == event_ref_before
+    assert event.semantic_projection() == event_projection_before
+
+    # Exact repository resolution returns the sealed immutable object, not a
+    # writable identity-bearing body.
+    resolved_event = source["repo"].resolve_object_exact(event.ref)
+    assert resolved_event is event
+    with pytest.raises(TypeError):
+        resolved_event.multiplicity_order_rank_fields["kind"] = "REPOSITORY_MUTATION"
+
+    source_authority = source["source_auth"]
+    source_authority_ref_before = source_authority.authority_ref
+    source_authority_projection_before = source_authority.semantic_projection()
+    with pytest.raises(TypeError):
+        source_authority.scope_envelope["source_universe_refs"] = "MUTATED"
+    with pytest.raises(TypeError):
+        source_authority.semantic_fields["scope_envelope"]["source_universe_refs"] = "MUTATED"
+    authority_export = source_authority.as_dict()
+    authority_export["semantic_fields"]["scope_envelope"]["source_universe_refs"] = "DETACHED"
+    assert source_authority.authority_ref == source_authority_ref_before
+    assert source_authority.semantic_projection() == source_authority_projection_before
+
+    respondent = next(
+        record for record in release.internal_records if isinstance(record, RespondentIdentity)
+    )
+    respondent_ref_before = respondent.ref
+    respondent_projection_before = respondent.semantic_projection()
+    with pytest.raises(AttributeError):
+        respondent.empirical_universe_ref.object_id = "urn:mutated"
+    respondent_export = respondent.as_dict()
+    respondent_export["semantic_fields"]["empirical_universe_ref"]["object_id"] = "urn:detached"
+    assert respondent.ref == respondent_ref_before
+    assert respondent.semantic_projection() == respondent_projection_before
+    assert source["repo"].resolve_object_exact(respondent.ref) is respondent
+
+    # A reconstructed object whose body is changed while retaining the stale
+    # sealed identity is rejected by the canonical constructor before it can
+    # enter ordinary execution.
+    corrupted = event.as_dict()
+    corrupted_fields = corrupted["semantic_fields"]
+    corrupted_fields["raw_response_value"] = "CHANGED"
+    with pytest.raises(Pre553IntegrityError, match="object_id|content_hash"):
+        RespondentEvent(
+            typed_state=corrupted["typed_state"],
+            authority_snapshot_refs=corrupted["authority_snapshot_refs"],
+            dependency_refs=corrupted["dependency_refs"],
+            producer_replay_locator_or_reference_root=corrupted[
+                "producer_replay_locator_or_reference_root"
+            ],
+            object_id=corrupted["object_id"],
+            content_hash=corrupted["content_hash"],
+            schema_id=corrupted["schema_id"],
+            schema_version=corrupted["schema_version"],
+            **corrupted_fields,
+        )
+
+    after = _run(source, qa, predicate, query, registry=registry)
+    assert after == before
+    assert tuple(fact.as_dict() for fact in after.facts) == before_fact_exports
+    assert query.ref == query_ref_before
+    assert release.release_ref == release_ref_before
+    assert event.ref == event_ref_before
+
+    replayed = replay_empirical_query(
+        repository=source["repo"],
+        query=query,
+        predicate=predicate,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        expected_fact_refs=tuple(fact.ref for fact in before.facts),
+    )
+    assert replayed == before

@@ -199,3 +199,34 @@ def test_binary_payload_set_is_fixed_and_missing_member_fails():
     missing.pop("event_refs")
     with pytest.raises(current.CurrentGT2RehydrationError, match="payload set"):
         current._rehydrate_verified_transport(manifest_bytes, missing)
+
+
+def test_o1_current_gt2_and_q86_identity_pins_remain_exact(actual_current_objects):
+    query, fact = actual_current_objects
+    assert current.CURRENT_PREDICATE_HASH == (
+        "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3"
+    )
+    assert current.CURRENT_QUERY_HASH == (
+        "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0"
+    )
+    assert current.CURRENT_FACT_HASH == (
+        "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46"
+    )
+    assert current.CURRENT_REPLAY_HASH == (
+        "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f"
+    )
+    assert query.content_hash == current.CURRENT_QUERY_HASH
+    assert fact.content_hash == current.CURRENT_FACT_HASH
+    assert semantic_hash(query.semantic_projection()) == current.CURRENT_QUERY_HASH
+    assert semantic_hash(fact.semantic_projection()) == current.CURRENT_FACT_HASH
+
+    manifest_bytes, _ = _transport_bytes()
+    manifest = json.loads(manifest_bytes.decode("utf-8"))
+    assert manifest["release"]["ref"] == {
+        "kind": "C11LogicalRelease",
+        "object_id": "R5_GT12_Q86A_Q86B_FROZEN",
+        "content_hash": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295",
+    }
+    assert manifest["release"]["replay_manifest_ref"]["content_hash"] == (
+        "c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa"
+    )

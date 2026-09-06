@@ -12,7 +12,7 @@ the real E2B terminal.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Mapping
+from typing import Any, Mapping, Sequence
 
 from rawlsing_next import field_forge_conditional_support as ff
 from rawlsing_next import gt12_c_to_d_relation_bridge as c_to_d
@@ -168,7 +168,11 @@ def require_current_r1c_actual_objects(
     if topology.get("joint_order_semantics") != ff.FROZEN_TARGET_ORDER:
         raise GT12E2BHarnessError("current query semantic order is not SEMANTIC_ORDERED")
     components = topology.get("components")
-    if not isinstance(components, (list, tuple)) or len(components) != 2:
+    if (
+        not isinstance(components, Sequence)
+        or isinstance(components, (str, bytes, bytearray))
+        or len(components) != 2
+    ):
         raise GT12E2BHarnessError("current query requires exact two ordered target components")
     try:
         component_refs = tuple(

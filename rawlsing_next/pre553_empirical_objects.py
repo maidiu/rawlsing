@@ -229,6 +229,53 @@ def canonical_set(values: Iterable[Any]) -> tuple[Any, ...]:
     return tuple(by_json[key] for key in sorted(by_json))
 
 
+class _FrozenSemanticList(tuple):
+    """Attribute-free immutable marker for canonical material that originated as a list."""
+
+    __slots__ = ()
+
+    def __new__(cls, values: Iterable[Any]):
+        return tuple.__new__(cls, tuple(values))
+
+    def __repr__(self) -> str:
+        return repr(list(self))
+
+    def __eq__(self, other: Any) -> bool:
+        if isinstance(other, Sequence) and not isinstance(other, (str, bytes, bytearray)):
+            return list(self) == list(other)
+        return False
+
+    __hash__ = tuple.__hash__
+
+
+def _freeze_semantic_descendants(value: Any) -> Any:
+    """Recursively freeze already-canonical semantic descendants without byte drift."""
+    if isinstance(value, Mapping):
+        # The backing dict is created here and never exported. MappingProxyType
+        # therefore cannot be bypassed through dict.__setitem__ on the public value.
+        return MappingProxyType(
+            {key: _freeze_semantic_descendants(value[key]) for key in sorted(value)}
+        )
+    if isinstance(value, list):
+        return _FrozenSemanticList(_freeze_semantic_descendants(item) for item in value)
+    if isinstance(value, tuple):
+        return tuple(_freeze_semantic_descendants(item) for item in value)
+    return value
+
+
+def _detach_semantic_descendants(value: Any) -> Any:
+    """Return a detached ordinary export preserving the pre-repair public shape."""
+    if isinstance(value, Mapping):
+        return {key: _detach_semantic_descendants(value[key]) for key in value}
+    if isinstance(value, _FrozenSemanticList):
+        return [_detach_semantic_descendants(item) for item in value]
+    if isinstance(value, tuple):
+        return tuple(_detach_semantic_descendants(item) for item in value)
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        return [_detach_semantic_descendants(item) for item in value]
+    return value
+
+
 @dataclass(frozen=True, order=True)
 class ExactRef:
     kind: str
@@ -368,9 +415,9 @@ class CanonicalSemanticObject:
             if key in self.SET_LIKE_FIELDS:
                 if isinstance(value, (str, bytes, bytearray)) or not isinstance(value, Iterable):
                     raise Pre553IntegrityError(f"{key} must be a set-like iterable")
-                normalized[key] = canonical_set(value)
+                normalized[key] = _freeze_semantic_descendants(canonical_set(value))
             else:
-                normalized[key] = canonicalize(value)
+                normalized[key] = _freeze_semantic_descendants(canonicalize(value))
 
         replay_root = _replay_root(producer_replay_locator_or_reference_root)
         projection = {
@@ -442,7 +489,7 @@ class CanonicalSemanticObject:
             "dependency_refs": [x.as_dict() for x in self.dependency_refs],
             "producer_replay_locator_or_reference_root": canonicalize(
                 self.producer_replay_locator_or_reference_root),
-            "semantic_fields": dict(self._semantic_fields),
+            "semantic_fields": _detach_semantic_descendants(self._semantic_fields),
         }
 
     def as_dict(self) -> dict[str, Any]:
