@@ -1,0 +1,295 @@
+{
+  "artifact_schema": "GT34_S1_OBL053_ONE_OBJECT_SUBJECT_ENTITY_AUTHORITY_EVIDENCE_PACKAGE@1.0.0",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "repository": "maidiu/rawlsing",
+  "instruction_ref": "50cd903fbd6fdb4ed1dc248ab2ff5db9a2060733",
+  "candidate_authority": {
+    "authority_id": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29",
+    "semantic_projection": {
+      "schema": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY@1.0.0",
+      "authority_id": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY",
+      "authority_version": "1.0.0",
+      "owner": "V3_GENERATED_WORLD_NONACTOR_SUBJECT_ENTITY_SEMANTIC_OWNER__ONE_OBJECT_ONLY",
+      "jurisdiction": {
+        "object_cardinality": 1,
+        "object_slot": "FIRST_CANARY_NONACTOR_SUBJECT_001",
+        "entity_kind_ceiling": "ONE_GENERATED_WORLD_NONACTOR_FACILITY_SUBJECT_ONLY",
+        "admitted_seed_schema": "GT34_OBL053_FIRST_CANARY_NONACTOR_SUBJECT_GENERATION_SEED@1.0.0",
+        "admitted_seed_content_hash": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53",
+        "additional_seed_hashes": "FORBIDDEN",
+        "additional_objects": "FORBIDDEN",
+        "general_world_object_creation": "FORBIDDEN",
+        "general_facility_ontology": "FORBIDDEN"
+      },
+      "seed_admission_rule": {
+        "rule_id": "GT34_OBL053_EXACT_ONE_OBJECT_SEED_ADMISSION_RULE",
+        "rule_version": "1.0.0",
+        "positive_condition": "EXACT_SEED_SCHEMA_AND_CONTENT_HASH_MATCH_AND_PROVENANCE_COMPLETE",
+        "generation_mode": "DETERMINISTIC_SINGLETON_NO_RNG",
+        "external_empirical_source_required": false,
+        "semantic_basis": "EXPLICIT_GOVERNED_GENERATION_SEED__NOT_INFERENCE_FROM_EXTERNAL_OBSERVATION",
+        "idempotence": "REPLAY_OF_IDENTICAL_VERIFIED_SEED_PRODUCES_IDENTICAL_SEMANTIC_OBJECT",
+        "changed_seed": "NOT_ADMITTED_UNDER_V1",
+        "missing_or_unknown_seed": "FAIL_CLOSED",
+        "unowned_or_malformed_evidence": "FAIL_CLOSED"
+      },
+      "owned_objective_fact_schema": {
+        "entity_family": {
+          "allowed_exact_value": "NONACTOR_FACILITY",
+          "meaning": "OBJECT_IS_A_NONACTOR_FACILITY_ENTITY"
+        },
+        "facility_domain": {
+          "allowed_exact_value": "HEALTHCARE_DELIVERY",
+          "meaning": "FACILITY_DOMAIN_IS_HEALTHCARE_DELIVERY"
+        },
+        "facility_form": {
+          "allowed_exact_value": "CLINIC",
+          "meaning": "FACILITY_FORM_IS_CLINIC_AS_AN_OBJECTIVE_ENTITY_FACT_NOT_A_NAME_OR_LABEL_INFERENCE"
+        },
+        "facility_function": {
+          "allowed_exact_value": "OUTPATIENT_HEALTHCARE_SERVICE_DELIVERY",
+          "meaning": "FACILITY_OBJECTIVELY_PERFORMS_OUTPATIENT_HEALTHCARE_SERVICE_DELIVERY"
+        },
+        "ownership_status": {
+          "allowed_exact_value": "PUBLIC_SECTOR",
+          "meaning": "FACILITY_OWNERSHIP_STATUS_IS_PUBLIC_SECTOR"
+        }
+      },
+      "semantic_output": {
+        "object_schema": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_SEMANTIC_OBJECT@1.0.0",
+        "objective_fact_ownership": "OWNED_BY_THIS_AUTHORITY_AT_THIS_EXACT_ONE_OBJECT_GRAIN",
+        "later_classifier_required": true,
+        "classifier_target_proposition": "SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL",
+        "classifier_proposition_is_not_emitted_by_this_authority": true,
+        "subject_ref_materialization_is_not_emitted_by_this_authority": true
+      },
+      "forbidden_inference_and_nonownership": [
+        "NO_Q69B_WORDING_OR_SURVEY_SEMANTICS_AS_GENERATED_WORLD_EVIDENCE",
+        "NO_NAME_LABEL_STRING_FIXTURE_COLOCATION_STRUCTURAL_POSITION_OR_ENCOUNTER_INFERENCE",
+        "NO_ACTOR_IDENTITY",
+        "NO_ACTOR_CONTACT_USE_ENCOUNTER_EXPOSURE",
+        "NO_LOCATION_OR_COLOCATION_TRUTH",
+        "NO_MEDICINE_OR_SUPPLIES_PROBLEM",
+        "NO_Q69B_RESPONSE_OR_ACTOR_HISTORY",
+        "NO_ACTOR_AWARENESS_BELIEF_MEMORY_RESPONSE_PSYCHOLOGY",
+        "NO_COMPARATOR_PSEPF_METABOLISM_CAN008_V2_OR_POSITIVE_V3_AUTHORITY",
+        "NO_REGISTRY_OR_MATERIALIZER_SEMANTIC_OWNER_TRANSFER"
+      ],
+      "fail_closed_states": [
+        "SEED_MISSING",
+        "SEED_SCHEMA_MISMATCH",
+        "SEED_HASH_MISMATCH",
+        "PROVENANCE_INCOMPLETE",
+        "OBJECTIVE_FACT_MISSING",
+        "OBJECTIVE_FACT_VALUE_MISMATCH",
+        "SECOND_OBJECT_ATTEMPT",
+        "UNAUTHORIZED_FIELD_OR_SEMANTIC_WIDENING",
+        "INTEGRITY_FAILURE"
+      ],
+      "content_addressing_law": {
+        "algorithm": "SHA-256",
+        "encoding": "UTF-8",
+        "canonical_json": {
+          "mapping_key_order": "LEXICOGRAPHIC_ASCENDING",
+          "separators": "COMPACT_COMMA_COLON",
+          "unicode": "PRESERVE_UNICODE_NO_ASCII_ESCAPE",
+          "ordered_sequences": "PRESERVE_EXACT_ORDER"
+        },
+        "derived_hash_field_rule": "EXCLUDE_ONLY_THE_OBJECTS_OWN_DERIVED_HASH_FROM_ITS_SEMANTIC_PROJECTION"
+      },
+      "constitutional_refs": {
+        "post_r_hq_disposition_blob": "7ba52ffbad42f098db00c27fa0943663e502bfae",
+        "r1_negative_archaeology_blob": "adb79a7a9c39dddf819166243e7206ad26877ee6",
+        "q1_subject_owner_split_blob": "dfbf0b9280ad321beecd5b5e1ef6eca7198454fd",
+        "q3_first_canary_negative_proof_blob": "39577f34c0c0ebf2ace79a487a72f073e69437d8",
+        "adp007_identity_law_blob": "28813c575c681abf3c6235ff23c6f01f7123acc7",
+        "adp015_generated_entity_pattern_blob": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+        "v3_completion_boundary_blob": "49095f763c5c371d98bb57a01aaf5f47dc7b1ae1",
+        "ra_r00_release_constitution_blob": "7ddb327bf317cae1334a4e10026ba42d9ee97904"
+      }
+    }
+  },
+  "generation_seed": {
+    "seed_content_hash": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53",
+    "semantic_projection": {
+      "schema": "GT34_OBL053_FIRST_CANARY_NONACTOR_SUBJECT_GENERATION_SEED@1.0.0",
+      "seed_id": "GT34_OBL053_FIRST_CANARY_NONACTOR_SUBJECT_SEED_001",
+      "seed_kind": "AUTHORITY_LOCAL_GOVERNED_GENERATION_SEED",
+      "jurisdiction": "EXACTLY_ONE_FIRST_CANARY_NONACTOR_SUBJECT",
+      "object_slot": "FIRST_CANARY_NONACTOR_SUBJECT_001",
+      "external_empirical_source": "NONE__GENERATED_WORLD_TRUTH_IF_AND_ONLY_IF_AUTHORITY_IS_ADOPTED_AND_THIS_EXACT_SEED_IS_ADMITTED",
+      "objective_entity_fact_seed": {
+        "entity_family": "NONACTOR_FACILITY",
+        "facility_domain": "HEALTHCARE_DELIVERY",
+        "facility_form": "CLINIC",
+        "facility_function": "OUTPATIENT_HEALTHCARE_SERVICE_DELIVERY",
+        "ownership_status": "PUBLIC_SECTOR"
+      },
+      "semantic_nonclaims": [
+        "SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL",
+        "ACTOR_ENCOUNTERED_SUBJECT",
+        "ACTOR_CONTACTED_SUBJECT",
+        "ACTOR_USED_SUBJECT",
+        "ACTOR_EXPOSED_TO_SUBJECT",
+        "MEDICINE_OR_SUPPLIES_PROBLEM",
+        "Q69B_RESPONSE_OR_HISTORY",
+        "ACTOR_AWARENESS_BELIEF_MEMORY_RESPONSE",
+        "LOCATION_OR_COLOCATION"
+      ],
+      "provenance": {
+        "commissioning_instruction_ref": "50cd903fbd6fdb4ed1dc248ab2ff5db9a2060733",
+        "commissioning_instruction_blob": "9e0944a37371992fcda41a16e109282a79bb9f3a",
+        "post_r_hq_disposition_blob": "7ba52ffbad42f098db00c27fa0943663e502bfae",
+        "r1_negative_archaeology_blob": "adb79a7a9c39dddf819166243e7206ad26877ee6",
+        "q1_subject_owner_split_blob": "dfbf0b9280ad321beecd5b5e1ef6eca7198454fd",
+        "q3_first_canary_negative_proof_blob": "39577f34c0c0ebf2ace79a487a72f073e69437d8",
+        "adp007_identity_law_blob": "28813c575c681abf3c6235ff23c6f01f7123acc7",
+        "adp015_generated_entity_pattern_blob": "a4dab0a12102aaa0b584ef6ff4fdc9206a28d456",
+        "v3_completion_boundary_blob": "49095f763c5c371d98bb57a01aaf5f47dc7b1ae1",
+        "ra_r00_release_constitution_blob": "7ddb327bf317cae1334a4e10026ba42d9ee97904"
+      },
+      "content_addressing_law": {
+        "algorithm": "SHA-256",
+        "encoding": "UTF-8",
+        "canonical_json": {
+          "mapping_key_order": "LEXICOGRAPHIC_ASCENDING",
+          "separators": "COMPACT_COMMA_COLON",
+          "unicode": "PRESERVE_UNICODE_NO_ASCII_ESCAPE",
+          "ordered_sequences": "PRESERVE_EXACT_ORDER"
+        },
+        "derived_hash_field_rule": "EXCLUDE_ONLY_THE_OBJECTS_OWN_DERIVED_HASH_FROM_ITS_SEMANTIC_PROJECTION"
+      }
+    }
+  },
+  "prospective_semantic_object": {
+    "semantic_object_id": "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "semantic_object_content_hash": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "semantic_projection": {
+      "schema": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_SEMANTIC_OBJECT@1.0.0",
+      "object_slot": "FIRST_CANARY_NONACTOR_SUBJECT_001",
+      "semantic_owner_authority": {
+        "authority_id": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29"
+      },
+      "generation_seed": {
+        "seed_schema": "GT34_OBL053_FIRST_CANARY_NONACTOR_SUBJECT_GENERATION_SEED@1.0.0",
+        "seed_id": "GT34_OBL053_FIRST_CANARY_NONACTOR_SUBJECT_SEED_001",
+        "seed_content_hash": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53"
+      },
+      "objective_entity_facts": {
+        "entity_family": "NONACTOR_FACILITY",
+        "facility_domain": "HEALTHCARE_DELIVERY",
+        "facility_form": "CLINIC",
+        "facility_function": "OUTPATIENT_HEALTHCARE_SERVICE_DELIVERY",
+        "ownership_status": "PUBLIC_SECTOR"
+      },
+      "semantic_ceiling": [
+        "OBJECT_IDENTITY_AND_OBJECTIVE_ENTITY_FACTS_ONLY",
+        "NO_SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL_CLASSIFIER_PROPOSITION",
+        "NO_ACTOR_CONTACT_USE_ENCOUNTER_EXPOSURE",
+        "NO_LOCATION_OR_COLOCATION",
+        "NO_Q69B_RESPONSE_OR_HISTORY",
+        "NO_ACTOR_PSYCHOLOGY_OR_RESPONSE",
+        "NO_COMPARATOR_PSEPF_METABOLISM_CAN008_V2_OR_POSITIVE_V3"
+      ],
+      "provenance_refs": [
+        {
+          "kind": "GOVERNED_GENERATION_SEED",
+          "content_hash": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53"
+        },
+        {
+          "kind": "SEMANTIC_OWNER_AUTHORITY",
+          "content_hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29"
+        }
+      ],
+      "content_addressing_law": {
+        "algorithm": "SHA-256",
+        "encoding": "UTF-8",
+        "canonical_json": {
+          "mapping_key_order": "LEXICOGRAPHIC_ASCENDING",
+          "separators": "COMPACT_COMMA_COLON",
+          "unicode": "PRESERVE_UNICODE_NO_ASCII_ESCAPE",
+          "ordered_sequences": "PRESERVE_EXACT_ORDER"
+        },
+        "derived_hash_field_rule": "EXCLUDE_ONLY_THE_OBJECTS_OWN_DERIVED_HASH_FROM_ITS_SEMANTIC_PROJECTION"
+      }
+    },
+    "current_subject_ref": "NONE__S2_MATERIALIZATION_REQUIRED_AFTER_ADOPTION",
+    "current_generated_world_truth_status": "NOT_CURRENT__CANDIDATE_ONLY"
+  },
+  "objective_evidence_receipt": {
+    "receipt_content_hash": "153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c",
+    "semantic_projection": {
+      "schema": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_OBJECTIVE_EVIDENCE_RECEIPT@1.0.0",
+      "semantic_object_id": "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+      "semantic_object_content_hash": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+      "semantic_owner_authority": {
+        "authority_id": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29"
+      },
+      "generation_seed": {
+        "seed_id": "GT34_OBL053_FIRST_CANARY_NONACTOR_SUBJECT_SEED_001",
+        "seed_content_hash": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53",
+        "evidence_mode": "AUTHORITY_LOCAL_GOVERNED_GENERATION_SEED_NOT_EXTERNAL_EMPIRICAL_OBSERVATION"
+      },
+      "objective_entity_facts": {
+        "entity_family": "NONACTOR_FACILITY",
+        "facility_domain": "HEALTHCARE_DELIVERY",
+        "facility_form": "CLINIC",
+        "facility_function": "OUTPATIENT_HEALTHCARE_SERVICE_DELIVERY",
+        "ownership_status": "PUBLIC_SECTOR"
+      },
+      "evidence_sufficiency_ceiling": {
+        "sufficient_for_later_classifier_inputs": [
+          "ENTITY_FAMILY",
+          "FACILITY_DOMAIN",
+          "FACILITY_FORM",
+          "FACILITY_FUNCTION",
+          "OWNERSHIP_STATUS"
+        ],
+        "does_not_itself_assert": "SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL",
+        "later_classifier_must_bind_exact_object_hash_and_authority_hash": true
+      },
+      "integrity_state": "CANDIDATE_SEMANTIC_MATERIAL_COMPLETE__NOT_CURRENT_GENERATED_WORLD_TRUTH_UNTIL_AUTHORITY_ADOPTION_AND_LATER_MATERIALIZATION",
+      "content_addressing_law": {
+        "algorithm": "SHA-256",
+        "encoding": "UTF-8",
+        "canonical_json": {
+          "mapping_key_order": "LEXICOGRAPHIC_ASCENDING",
+          "separators": "COMPACT_COMMA_COLON",
+          "unicode": "PRESERVE_UNICODE_NO_ASCII_ESCAPE",
+          "ordered_sequences": "PRESERVE_EXACT_ORDER"
+        },
+        "derived_hash_field_rule": "EXCLUDE_ONLY_THE_OBJECTS_OWN_DERIVED_HASH_FROM_ITS_SEMANTIC_PROJECTION"
+      }
+    }
+  },
+  "authority_ceiling": [
+    "EXACTLY_ONE_FIRST_CANARY_NONACTOR_SUBJECT_OBJECT",
+    "OBJECT_IDENTITY_PLUS_DECOMPOSED_OBJECTIVE_ENTITY_FACTS_ONLY",
+    "NO_GENERAL_FACILITY_OR_WORLD_ONTOLOGY",
+    "NO_SUBJECT_CLASSIFIER_PROPOSITION",
+    "NO_ACTOR_OR_ENCOUNTER_SEMANTICS",
+    "NO_SUBJECT_REF_MATERIALIZATION_AUTHORITY"
+  ],
+  "required_next_steps": [
+    "HOSTILE_REVIEW_EXACT_AUTHORITY_AND_HASH_GRAPH",
+    "HQ_ADOPTION_REQUIRED_BEFORE_ANY_GENERATED_WORLD_TRUTH_EXISTS",
+    "AFTER_ADOPTION_S2_OWNER_PRESERVING_MATERIALIZER_MAY_ISSUE_EXACT_SUBJECT_REF",
+    "LATER_SEPARATE_OBL048_CLASSIFIER_MAY_EVALUATE_SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL_FROM_EXACT_OWNED_FACTS"
+  ],
+  "required_hostile_review_cases": [
+    "EXACT_SEED_REPLAY_REPRODUCES_ALL_HASHES",
+    "ONE_BIT_OR_ONE_FACT_SEED_CHANGE_IS_REJECTED_AS_UNADMITTED_V1_SEED",
+    "MISSING_OR_UNKNOWN_OBJECTIVE_FACT_FAILS_CLOSED",
+    "SECOND_OBJECT_OR_SECOND_SEED_ATTEMPT_IS_FORBIDDEN",
+    "Q69B_WORDING_LABEL_NAME_FIXTURE_COLOCATION_POSITION_OR_ADP010_INPUT_CANNOT_CREATE_OR_RECLASSIFY_OBJECT",
+    "REGISTRY_OR_MATERIALIZER_CANNOT_TRANSFER_SEMANTIC_OWNERSHIP",
+    "OBJECT_AUTHORITY_CANNOT_EMIT_SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL",
+    "OBJECT_AUTHORITY_CANNOT_EMIT_ACTOR_CONTACT_USE_ENCOUNTER_OR_EXPOSURE"
+  ]
+}
