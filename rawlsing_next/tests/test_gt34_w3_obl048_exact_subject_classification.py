@@ -109,6 +109,9 @@ def _validate_proposition_semantics(projection: dict, authority: dict) -> dict:
         "version": AUTHORITY_VERSION,
         "sha256": AUTHORITY_HASH,
     }
+    assert set(projection["classification_basis"]) == {
+        "objective_entity_facts", "rule_satisfaction"
+    }
     assert projection["classification_basis"]["objective_entity_facts"] == EXPECTED_FACTS
     satisfaction = projection["classification_basis"]["rule_satisfaction"]
     required = authority["positive_rule"]["required_objective_facts"]
