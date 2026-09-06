@@ -144,3 +144,37 @@ OBL049 remains closed at the exact Q2 canary grain and must not be reopened by t
 Branch-ref cleanup OBL051 remains maintenance and must not interrupt this semantic critical path.
 
 **Ground first. Sweep centrally. Launch from the canonical reconciled head. Return explicitly. Reintegrate before the next major wave.**
+
+
+## FIELD FORGE POST-R2 CURRENT TRAJECTORY
+
+SUB-VOZHD C initial fanout is banked through two-parent central merge `71a0b81c43367a9d4de6d89bb5df061cb2fdcdc8`.
+
+HQ disposition:
+
+`HQ_DISPOSITION__FIELD_FORGE_INITIAL_FANOUT_BANKED__OBL040_HOSTILE_GATE_REQUIRED__OBL006_CLAIM_CONDITIONAL__OBL042_TRANSPORT_FREE_GRAIN_AUTHORIZED`
+
+Current exact trajectory:
+
+```text
+OBL040 candidate
+    -> independent hostile review
+    -> HQ OBL040 adoption
+
+HQ OBL040 current
+    -> OBL041
+    || narrowed local OBL042
+
+OBL041 current
+    -> OBL005
+
+OBL005 current + narrowed OBL042 current
+    -> OBL043
+
+active local closures
+    -> surviving bounded OBL020 post-R2 synthesis
+```
+
+OBL006 is not a generic blocker for local FIELD FORGE work. It remains claim-conditional and reactivates only for an exact concrete external political-group transport claim. Without a lawful map, preserve `NO_TRANSPORT / NONCOMPARABLE`.
+
+FIELD FORGE R2 remains the adopted semantic/architecture authority. This trajectory closes only surviving exact post-R2 obligations and does not reopen R2.
