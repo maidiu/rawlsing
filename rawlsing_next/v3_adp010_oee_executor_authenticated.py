@@ -1,20 +1,19 @@
 """GT3/GT4 W2 successor ADP-010 bounded OEE executor.
 
-Distinct candidate successor to historical S3.  Historical S3 remains immutable
-at semantic candidate 5bed04b83f0dc61e500da26130892e46ce9c86ff and module
-blob cd6e978eea25384482ef2ab75547b8d33bcc4fb7.
+Distinct candidate successor to historical S3. Historical S3 remains immutable
+and unadopted. This module preserves deterministic
+AVAILABLE -> OPPORTUNITY -> ENCOUNTER semantics while repairing only the
+authentication/replay seams identified by T3.
 
-This module preserves only deterministic BASIS->AVAILABLE->OPPORTUNITY->
-ENCOUNTER semantics.  It adds authentication and reconstructible replay
-bindings required by the T3 hostile audit.  It never materializes a subject,
-classifies a subject, infers contact from proximity, creates EXPOSURE, mutates
-actor state, or creates comparator/PSEPF/metabolism/CAN-008/V2 authority.
+It does not materialize or classify subjects, infer contact from proximity,
+create EXPOSURE, mutate actor state, or create comparator/PSEPF/metabolism/
+CAN-008/V2/positive-V3 authority.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from datetime import datetime, timezone
-from hashlib import sha1, sha256
+from hashlib import sha256
 import json
 import re
 import unicodedata
@@ -22,6 +21,7 @@ from typing import Any, Iterable, Mapping, Sequence
 
 EXECUTOR_ID = "GT34_V3P5_ADP010_AUTHENTICATED_REPLAY_EXECUTOR"
 EXECUTOR_VERSION = "2.0.0"
+
 HISTORICAL_S3_SEMANTIC_CANDIDATE_SHA = "5bed04b83f0dc61e500da26130892e46ce9c86ff"
 HISTORICAL_S3_EVIDENCE_EXECUTION_SHA = "c70808c993b7e236e5535a03e22fe89cc3759d1e"
 HISTORICAL_S3_MODULE_BLOB_SHA = "cd6e978eea25384482ef2ab75547b8d33bcc4fb7"
@@ -31,19 +31,16 @@ ADP010_AUTHORITY_ID = "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE"
 ADP010_AUTHORITY_VERSION = "1.0.0"
 ADP010_REGISTRY_ID = "V3_OEE_REALIZATION_RULE_REGISTRY"
 ADP010_REGISTRY_VERSION = "1.0.0"
-ADP010_AUTHORITY_ARTIFACT_PATH = "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/ADP_010_V3_ENCOUNTER_EXPOSURE/AUTHORITY.json"
 ADP010_AUTHORITY_ARTIFACT_BLOB_SHA = "0eac41d081b112255dcfc6dd42a6afab15a2928b"
 
 ADP008_AUTHORITY_ID = "V3_DEVELOPMENTAL_PHASE_RULE"
 ADP008_AUTHORITY_VERSION = "1.1.0"
 ADP008_REGISTRY_ID = "V3_DEVELOPMENTAL_PHASE_REGISTRY"
 ADP008_REGISTRY_VERSION = "1.1.0"
-ADP008_AUTHORITY_ARTIFACT_PATH = "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_008_V3_DEVELOPMENTAL_PHASE/AUTHORITY.json"
 ADP008_AUTHORITY_ARTIFACT_BLOB_SHA = "c6564c5c2793e9ed86ec0c5cecbcf84ff6f427d6"
 
 ADP020_AUTHORITY_ID = "ADP-020"
 ADP020_AUTHORITY_VERSION = "1.0.0"
-ADP020_AUTHORITY_ARTIFACT_PATH = "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W0_AUTHORITY_FOUNDATION/ADP_020_V3_CAUSAL_RNG/AUTHORITY.json"
 ADP020_AUTHORITY_ARTIFACT_BLOB_SHA = "1f13dc7ccc69bda562613d6215acc996a9c092e4"
 
 OBL054_ADOPTION_ARTIFACT_BLOB = "fc46d377dafa5b2c4e274d702e7f26268aa429cb"
@@ -51,55 +48,78 @@ OBL054_MATERIALIZER_ID = "GT34_V3P1_CORRECTED_OWNER_AUTHENTICATED_ONE_OBJECT_SUB
 OBL054_MATERIALIZER_VERSION = "2.0.0"
 OBL054_ACCEPTED_ROOT_HASH = "1563a1661d3e0a76e6781633f1b590147e26ab21014674bbe732f68cef6acfa8"
 OBL054_PERMIT_HASH = "3eeea2dcfa0a70f1a5b6ce15d41d9f83d84e39ecde816896150fff21e77573dc"
-OBL054_PERMIT_ID = "urn:rawlsing:gt34:obl054:one-object-materialization-permit:sha256:" + OBL054_PERMIT_HASH
+OBL054_PERMIT_ID = (
+    "urn:rawlsing:gt34:obl054:one-object-materialization-permit:sha256:"
+    + OBL054_PERMIT_HASH
+)
 OBL053_ADOPTION_ARTIFACT_BLOB = "f561765bad4fdad2bbf4591f35fe7f81f8486428"
 HISTORICAL_INVALID_OBL053_ADOPTION_ARTIFACT_BLOB = "286ff7b851e920ff2760082d8b2fb194560ab127"
 OBL053_AUTHORITY_ID = "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY"
 OBL053_AUTHORITY_VERSION = "1.0.0"
 OBL053_AUTHORITY_HASH = "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29"
+OBL053_GENERATION_SEED_HASH = "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53"
+OBL053_OBJECTIVE_EVIDENCE_RECEIPT_HASH = "153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c"
+OBL053_SEMANTIC_OBJECT_HASH = "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547"
 OBL053_SEMANTIC_OBJECT_ID = (
     "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:"
-    "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547"
+    + OBL053_SEMANTIC_OBJECT_HASH
 )
-OBL053_SEMANTIC_OBJECT_HASH = "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547"
 
 MATERIALIZER_RECEIPT_SCHEMA = "V3P1_CORRECTED_OWNER_AUTHENTICATED_ONE_OBJECT_SUBJECT_RECEIPT@2.0.0"
-MATERIALIZER_SUBJECT_REF_SCHEME = "RAWLSING_V3_OWNER_PRESERVING_SUBJECT_REF_V1"
 MATERIALIZER_OWNER_BINDING_SCHEMA = "V3P1_OWNER_BOUND_SUBJECT_INGRESS_BINDING@1.0.0"
-MATERIALIZER_SUBJECT_REF_DOMAIN = b"RAWLSING\0GT34-S2\0V3P1-OWNER-PRESERVING-SUBJECT-REF-V1\0"
+MATERIALIZER_SUBJECT_REF_SCHEME = "RAWLSING_V3_OWNER_PRESERVING_SUBJECT_REF_V1"
 MATERIALIZER_OWNER_BINDING_DOMAIN = b"RAWLSING\0GT34-S2\0V3P1-OWNER-BOUND-SUBJECT-INGRESS-V1\0"
+MATERIALIZER_SUBJECT_REF_DOMAIN = b"RAWLSING\0GT34-S2\0V3P1-OWNER-PRESERVING-SUBJECT-REF-V1\0"
 MATERIALIZER_RECEIPT_DOMAIN = b"RAWLSING\0GT34-U2\0V3P1-AUTHENTICATED-SUBJECT-RECEIPT-V2\0"
 
 DEVELOPMENT_ACTIVE_PHASE = "V3DP_DEVELOPMENT_ACTIVE"
-STATE_AVAILABLE, STATE_OPPORTUNITY, STATE_ENCOUNTER = "AVAILABLE", "OPPORTUNITY", "ENCOUNTER"
+STATE_AVAILABLE = "AVAILABLE"
+STATE_OPPORTUNITY = "OPPORTUNITY"
+STATE_ENCOUNTER = "ENCOUNTER"
 RULE_AVAILABLE = "OEE_CORE_AVAILABLE_BASIS_V1"
 RULE_OPPORTUNITY = "OEE_CORE_OPPORTUNITY_FROM_EXPLICIT_BASIS_V1"
 RULE_ENCOUNTER = "OEE_CORE_ENCOUNTER_FROM_EXPLICIT_CONTACT_WITNESS_V1"
 RULE_VERSION = "V1"
-EFFECT_OPPORTUNITY, EFFECT_ENCOUNTER = "OEE_OPPORTUNITY_ESTABLISHED", "OEE_ENCOUNTER_OCCURRED"
-CONTACT_WITNESS_KIND = "CONTACT_OCCURRENCE_WITNESS"
-CONTACT_INDEPENDENCE_KIND = "CONTACT_WITNESS_INDEPENDENCE"
-CONTACT_OCCURRENCE_SEMANTIC = "CONTACT_OCCURRENCE"
+EFFECT_OPPORTUNITY = "OEE_OPPORTUNITY_ESTABLISHED"
+EFFECT_ENCOUNTER = "OEE_ENCOUNTER_OCCURRED"
+
 EP_GENERATED_RUNTIME_FACT = "GENERATED_RUNTIME_FACT"
 EP_RESOLVER_CONTEXT = "RESOLVER_DERIVED_CONTEXT"
 EP_ADMITTED_CAUSAL_EVENT = "ADMITTED_CAUSAL_EVENT"
-_ADMISSIBLE_EP = {EP_GENERATED_RUNTIME_FACT, EP_RESOLVER_CONTEXT, EP_ADMITTED_CAUSAL_EVENT}
+_ADMISSIBLE_EP = {
+    EP_GENERATED_RUNTIME_FACT,
+    EP_RESOLVER_CONTEXT,
+    EP_ADMITTED_CAUSAL_EVENT,
+}
+
+CONTACT_WITNESS_KIND = "CONTACT_OCCURRENCE_WITNESS"
+CONTACT_INDEPENDENCE_KIND = "CONTACT_WITNESS_INDEPENDENCE"
+CONTACT_OCCURRENCE_SEMANTIC = "CONTACT_OCCURRENCE"
+
 _INSUFFICIENT_CONTACT = {
-    "COLOCATION", "CO_LOCATION", "COPRESENCE", "CO_PRESENCE",
-    "SAME_GEOGRAPHY_TIME", "SHARED_V555_ENDPOINT", "SAME_STRUCTURAL_TARGET",
-    "SAME_INSTITUTION_CATEGORY", "SIMULTANEOUS_RESOLVER_SELECTION",
+    "COLOCATION",
+    "CO_LOCATION",
+    "COPRESENCE",
+    "CO_PRESENCE",
+    "SAME_GEOGRAPHY_TIME",
+    "SHARED_V555_ENDPOINT",
+    "SAME_STRUCTURAL_TARGET",
+    "SAME_INSTITUTION_CATEGORY",
+    "SIMULTANEOUS_RESOLVER_SELECTION",
     "NARRATIVE_PLAUSIBILITY",
 }
+
 CURRENT_ACCEPTED = "CURRENT_ACCEPTED"
 NONCURRENT_SYNTHETIC_TEST_ONLY = "NONCURRENT_SYNTHETIC_TEST_ONLY"
 
 _HASH64 = re.compile(r"^[0-9a-f]{64}$")
 _BLOB40 = re.compile(r"^[0-9a-f]{40}$")
 _SUBJECT_URN = re.compile(r"^urn:rawlsing:v3:subject:sha256:([0-9a-f]{64})$")
+
 _RECORD_DOMAIN = "RAWLSING\0ADP-010\0V3_OEE_REALIZATION_RECORD_V1\0"
 _CANDIDATE_DOMAIN = "RAWLSING\0ADP-010\0OEE_CANDIDATE_AUTHENTICATED_REPLAY_V2\0"
 _EVENT_DOMAIN = "RAWLSING\0ADP-010\0OEE_EVENT_V1\0"
-_AUTH_BINDING_DOMAIN = "RAWLSING\0GT34-W2\0AUTHENTICATION_BINDING_V1\0"
+_AUTH_DOMAIN = "RAWLSING\0GT34-W2\0AUTHENTICATION_BINDING_V1\0"
 _FIXED_PROVENANCE_DOMAIN = "RAWLSING\0GT34-W2\0FIXED_AUTHORITY_PROVENANCE_V1\0"
 
 class OEEAdmissionError(ValueError):
@@ -108,22 +128,21 @@ class OEEAdmissionError(ValueError):
 class OEEIntegrityError(OEEAdmissionError):
     pass
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True, order=True, slots=True)
 class ExactRef:
     kind: str
     ref: str
     content_hash: str
 
 @dataclass(frozen=True, slots=True)
-class MaterializationReceiptContent:
+class SubjectMaterializationReceipt:
     receipt_id: str
     receipt_hash: str
     subject_ref: str
     subject_ref_hash: str
     materializer_id: str
     materializer_version: str
-    obl054_adoption_artifact_blob: str
-    obl053_adoption_artifact_blob: str
+    adoption_artifact_blob: str
     accepted_owner_root_hash: str
     materialization_permit_id: str
     materialization_permit_hash: str
@@ -138,56 +157,53 @@ class MaterializationReceiptContent:
     integrity_state: str
     semantic_owner_transfer: bool
     semantic_fields_interpreted: bool
-    currentness_state: str = CURRENT_ACCEPTED
+    currentness_state: str
 
 @dataclass(frozen=True, slots=True)
-class CausalUsePermissionAuthentication:
+class CausalUsePermission:
+    permission_ref: ExactRef
     authority_id: str
     authority_version: str
     authority_content_hash: str
     authority_acceptance_ref: ExactRef
-    permission_receipt_ref: ExactRef
     subject_ref: str
-    semantic_object_hash: str
+    semantic_object_ref: ExactRef
     materialization_receipt_ref: ExactRef
     scope: str
     provenance_refs: tuple[ExactRef, ...]
     authentication_ref: ExactRef
-    currentness_state: str = CURRENT_ACCEPTED
+    currentness_state: str
 
 @dataclass(frozen=True, slots=True)
 class SubjectIngressEvidence:
-    # Historical S3 positional surface retained; authentication extensions follow.
     subject_ref: str
     semantic_owner_authority_id: str
     semantic_owner_authority_version: str
     semantic_owner_authority_content_hash: str
-    semantic_object_hash: str
-    materialization_receipt: ExactRef
+    semantic_object_ref: ExactRef
+    materialization_receipt: SubjectMaterializationReceipt
+    obl054_adoption_artifact_blob: str
     epistemic_class: str
-    causal_use_permission: ExactRef
+    causal_use_permission: CausalUsePermission
     provenance_refs: tuple[ExactRef, ...]
-    semantic_object_id: str | None = None
-    materialization_receipt_content: MaterializationReceiptContent | None = None
-    causal_use_authentication: CausalUsePermissionAuthentication | None = None
-    ingress_authentication_ref: ExactRef | None = None
-    currentness_state: str = CURRENT_ACCEPTED
+    authentication_ref: ExactRef
+    currentness_state: str
 
 @dataclass(frozen=True, slots=True)
 class ActorPhaseEvidence:
     actor_id: str
     phase_state_ref: ExactRef
-    phase_authority_id: str = ADP008_AUTHORITY_ID
-    phase_authority_version: str = ADP008_AUTHORITY_VERSION
-    phase_authority_artifact_blob_sha: str = ADP008_AUTHORITY_ARTIFACT_BLOB_SHA
-    base_phase_id: str = DEVELOPMENT_ACTIVE_PHASE
-    provenance_refs: tuple[ExactRef, ...] = ()
-    phase_state_receipt_ref: ExactRef | None = None
-    phase_registry_id: str = ADP008_REGISTRY_ID
-    phase_registry_version: str = ADP008_REGISTRY_VERSION
-    phase_registry_content_hash: str | None = None
-    authentication_ref: ExactRef | None = None
-    currentness_state: str = CURRENT_ACCEPTED
+    phase_state_receipt_ref: ExactRef
+    phase_authority_id: str
+    phase_authority_version: str
+    phase_authority_artifact_blob_sha: str
+    phase_registry_id: str
+    phase_registry_version: str
+    phase_registry_content_hash: str
+    base_phase_id: str
+    provenance_refs: tuple[ExactRef, ...]
+    authentication_ref: ExactRef
+    currentness_state: str
 
 @dataclass(frozen=True, slots=True)
 class PositiveApplicabilityReceipt:
@@ -195,11 +211,11 @@ class PositiveApplicabilityReceipt:
     authority_id: str
     authority_version: str
     authority_content_hash: str
+    authority_acceptance_ref: ExactRef
     result: str
     provenance_refs: tuple[ExactRef, ...]
-    authority_acceptance_ref: ExactRef | None = None
-    authentication_ref: ExactRef | None = None
-    currentness_state: str = CURRENT_ACCEPTED
+    authentication_ref: ExactRef
+    currentness_state: str
 
 @dataclass(frozen=True, slots=True)
 class OpportunityBasisEvidence:
@@ -208,8 +224,8 @@ class OpportunityBasisEvidence:
     subject_ref: str
     applicability_receipts: tuple[PositiveApplicabilityReceipt, ...]
     context_or_world_receipt_refs: tuple[ExactRef, ...]
-    position_or_other_constraint_refs: tuple[ExactRef, ...] = ()
-    provenance_refs: tuple[ExactRef, ...] = ()
+    position_or_other_constraint_refs: tuple[ExactRef, ...]
+    provenance_refs: tuple[ExactRef, ...]
 
 @dataclass(frozen=True, slots=True)
 class ContactOccurrenceWitness:
@@ -217,23 +233,23 @@ class ContactOccurrenceWitness:
     witness_authority_id: str
     witness_authority_version: str
     witness_authority_content_hash: str
+    witness_authority_acceptance_ref: ExactRef
     actor_id: str
     subject_ref: str
     occurrence_time: str
     semantic: str
+    contact_basis_refs: tuple[ExactRef, ...]
+    contact_authentication_ref: ExactRef
     independence_ref: ExactRef
+    independence_authority_id: str
+    independence_authority_version: str
+    independence_authority_content_hash: str
+    independence_authority_acceptance_ref: ExactRef
+    independence_receipt_ref: ExactRef
+    independence_basis_refs: tuple[ExactRef, ...]
+    independence_authentication_ref: ExactRef
     provenance_refs: tuple[ExactRef, ...]
-    authority_acceptance_ref: ExactRef | None = None
-    contact_basis_refs: tuple[ExactRef, ...] = ()
-    authentication_ref: ExactRef | None = None
-    independence_authority_id: str | None = None
-    independence_authority_version: str | None = None
-    independence_authority_content_hash: str | None = None
-    independence_authority_acceptance_ref: ExactRef | None = None
-    independence_receipt_ref: ExactRef | None = None
-    independence_basis_refs: tuple[ExactRef, ...] = ()
-    independence_authentication_ref: ExactRef | None = None
-    currentness_state: str = CURRENT_ACCEPTED
+    currentness_state: str
 
 @dataclass(frozen=True, slots=True)
 class V3OEERealizationRecord:
@@ -275,96 +291,108 @@ _RULES = {
     STATE_ENCOUNTER: (RULE_ENCOUNTER, "OPPORTUNITY_TO_ENCOUNTER", STATE_OPPORTUNITY, EFFECT_ENCOUNTER),
 }
 
-def _s(v: Any, n: str) -> str:
-    if not isinstance(v, str):
-        raise OEEIntegrityError(f"{n} must be non-empty string")
-    out = unicodedata.normalize("NFC", v.strip())
-    if not out:
-        raise OEEIntegrityError(f"{n} must be non-empty string")
-    return out
+def _s(value: Any, field: str) -> str:
+    if not isinstance(value, str):
+        raise OEEIntegrityError(f"{field} must be non-empty string")
+    value = unicodedata.normalize("NFC", value.strip())
+    if not value:
+        raise OEEIntegrityError(f"{field} must be non-empty string")
+    return value
 
-def _h(v: Any, n: str) -> str:
-    v = _s(v, n)
-    if not _HASH64.fullmatch(v):
-        raise OEEIntegrityError(f"{n} must be lowercase SHA-256 hex")
-    return v
+def _h(value: Any, field: str) -> str:
+    value = _s(value, field)
+    if not _HASH64.fullmatch(value):
+        raise OEEIntegrityError(f"{field} must be lowercase SHA-256 hex")
+    return value
 
-def _blob(v: Any, n: str) -> str:
-    v = _s(v, n)
-    if not _BLOB40.fullmatch(v):
-        raise OEEIntegrityError(f"{n} must be lowercase Git SHA-1 hex")
-    return v
+def _blob(value: Any, field: str) -> str:
+    value = _s(value, field)
+    if not _BLOB40.fullmatch(value):
+        raise OEEIntegrityError(f"{field} must be lowercase Git SHA-1 hex")
+    return value
 
-def _ref(v: Any, n: str) -> ExactRef:
-    if not isinstance(v, ExactRef):
-        raise OEEIntegrityError(f"{n} must be ExactRef")
-    _s(v.kind, n + ".kind")
-    _s(v.ref, n + ".ref")
-    _h(v.content_hash, n + ".content_hash")
-    return v
+def _ref(value: Any, field: str) -> ExactRef:
+    if not isinstance(value, ExactRef):
+        raise OEEIntegrityError(f"{field} must be ExactRef")
+    _s(value.kind, field + ".kind")
+    _s(value.ref, field + ".ref")
+    _h(value.content_hash, field + ".content_hash")
+    return value
 
-def _refs(xs: Iterable[ExactRef], n: str, required: bool = False) -> tuple[ExactRef, ...]:
-    xs = tuple(xs)
-    if required and not xs:
-        raise OEEIntegrityError(f"{n} must be non-empty")
-    validated = tuple(_ref(x, n) for x in xs)
-    keyed = {(x.kind, x.ref, x.content_hash): x for x in validated}
-    return tuple(keyed[k] for k in sorted(keyed))
+def _refs(values: Iterable[ExactRef], field: str, required: bool = False) -> tuple[ExactRef, ...]:
+    values = tuple(values)
+    if required and not values:
+        raise OEEIntegrityError(f"{field} must be non-empty")
+    validated = tuple(_ref(v, field) for v in values)
+    return tuple(sorted(set(validated)))
 
 def _merge(*groups: Iterable[ExactRef]) -> tuple[ExactRef, ...]:
-    return _refs((x for g in groups for x in g), "refs", True)
+    return _refs((x for group in groups for x in group), "refs", True)
 
-def _time(v: Any, n: str) -> str:
-    raw = _s(v, n)
-    p = raw[:-1] + "+00:00" if raw.endswith("Z") else raw
+def _norm(value: Any) -> Any:
+    if isinstance(value, ExactRef):
+        return {"kind": value.kind, "ref": value.ref, "content_hash": value.content_hash}
+    if isinstance(value, Mapping):
+        return {str(k): _norm(v) for k, v in value.items()}
+    if isinstance(value, (tuple, list)):
+        return [_norm(v) for v in value]
+    if isinstance(value, str):
+        return unicodedata.normalize("NFC", value)
+    return value
+
+def _canonical_json(value: Any) -> str:
+    return json.dumps(_norm(value), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+
+def _digest(domain: str, value: Any) -> str:
+    return sha256((domain + _canonical_json(value)).encode("utf-8")).hexdigest()
+
+def _digest_bytes(domain: bytes, value: Any) -> str:
+    raw = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    return sha256(domain + raw).hexdigest()
+
+def _time(value: Any, field: str) -> str:
+    raw = _s(value, field)
+    parsed = raw[:-1] + "+00:00" if raw.endswith("Z") else raw
     try:
-        dt = datetime.fromisoformat(p)
-    except ValueError as e:
-        raise OEEIntegrityError(f"{n} must be ISO-8601") from e
+        dt = datetime.fromisoformat(parsed)
+    except ValueError as exc:
+        raise OEEIntegrityError(f"{field} must be ISO-8601") from exc
     if dt.tzinfo is None or dt.utcoffset() is None:
-        raise OEEIntegrityError(f"{n} must be timezone-aware")
+        raise OEEIntegrityError(f"{field} must be timezone-aware")
     return dt.astimezone(timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
 
-def _dt(v: str) -> datetime:
-    return datetime.fromisoformat(v[:-1] + "+00:00")
+def _dt(value: str) -> datetime:
+    return datetime.fromisoformat(value[:-1] + "+00:00")
 
-def _interval(a: Any, b: Any) -> tuple[str, str]:
-    a, b = _time(a, "effective_from"), _time(b, "effective_until")
-    if _dt(b) < _dt(a):
+def _interval(start: Any, end: Any) -> tuple[str, str]:
+    start = _time(start, "effective_from")
+    end = _time(end, "effective_until")
+    if _dt(end) < _dt(start):
         raise OEEIntegrityError("effective_until precedes effective_from")
-    return a, b
+    return start, end
 
-def _norm(v: Any) -> Any:
-    if isinstance(v, ExactRef):
-        return {"kind": v.kind, "ref": v.ref, "content_hash": _h(v.content_hash, "content_hash")}
-    if isinstance(v, Mapping):
-        return {str(k): _norm(x) for k, x in v.items()}
-    if isinstance(v, (tuple, list)):
-        return [_norm(x) for x in v]
-    if isinstance(v, str):
-        return unicodedata.normalize("NFC", v)
-    return v
+def _content_ref(kind: str, prefix: str, material: Any) -> ExactRef:
+    h = _digest(_AUTH_DOMAIN, material)
+    return ExactRef(kind, prefix + h, h)
 
-def _canonical_json(v: Any) -> str:
-    return json.dumps(_norm(v), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+def _validate_content_ref(ref: ExactRef, kind: str, prefix: str, field: str) -> ExactRef:
+    ref = _ref(ref, field)
+    if ref.kind != kind or ref.ref != prefix + ref.content_hash:
+        raise OEEIntegrityError(f"{field} is not exact content-addressed {kind}")
+    return ref
 
-def _digest(domain: str, v: Any) -> str:
-    return sha256((domain + _canonical_json(v)).encode("utf-8")).hexdigest()
-
-def _digest_bytes(domain: bytes, v: Any) -> str:
-    return sha256(domain + json.dumps(v, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")).hexdigest()
-
-def _content_ref(kind: str, prefix: str, material: Any, *, domain: str = _AUTH_BINDING_DOMAIN) -> ExactRef:
-    digest = _digest(domain, material)
-    return ExactRef(kind, prefix + digest, digest)
-
-def _validate_content_addressed_ref(ref: ExactRef, n: str, kind: str, prefix: str) -> ExactRef:
-    r = _ref(ref, n)
-    if r.kind != kind:
-        raise OEEIntegrityError(f"{n} kind mismatch")
-    if r.ref != prefix + r.content_hash:
-        raise OEEIntegrityError(f"{n} is not content-addressed")
-    return r
+def _authority_acceptance_ref(kind: str, authority_id: str, version: str, content_hash: str, currentness: str) -> ExactRef:
+    prefix = f"urn:rawlsing:{kind.lower().replace('_','-')}:sha256:"
+    return _content_ref(
+        kind,
+        prefix,
+        {
+            "authority_id": authority_id,
+            "authority_version": version,
+            "authority_content_hash": content_hash,
+            "currentness_state": currentness,
+        },
+    )
 
 def _fixed_ref(kind: str, ref: str, material: Any) -> ExactRef:
     return ExactRef(kind, ref, _digest(_FIXED_PROVENANCE_DOMAIN, material))
@@ -405,9 +433,13 @@ def _rule_hash_ref(state: str) -> ExactRef:
         "ADP010_RULE_HASH",
         f"urn:rawlsing:adp010:rule:{rule_id}@{RULE_VERSION}",
         [
-            ADP010_AUTHORITY_ID, ADP010_AUTHORITY_VERSION,
-            ADP010_REGISTRY_ID, ADP010_REGISTRY_VERSION,
-            ADP010_AUTHORITY_ARTIFACT_BLOB_SHA, rule_id, RULE_VERSION,
+            ADP010_AUTHORITY_ID,
+            ADP010_AUTHORITY_VERSION,
+            ADP010_REGISTRY_ID,
+            ADP010_REGISTRY_VERSION,
+            ADP010_AUTHORITY_ARTIFACT_BLOB_SHA,
+            rule_id,
+            RULE_VERSION,
         ],
     )
 
@@ -425,11 +457,36 @@ def _required_fixed_provenance(state: str) -> tuple[ExactRef, ...]:
         True,
     )
 
-def _mat_ref_dict(ref: ExactRef) -> dict[str, str]:
-    r = _ref(ref, "semantic_object_ref")
-    return {"kind": r.kind, "ref_id": r.ref, "sha256": r.content_hash}
+CURRENT_SEMANTIC_OBJECT_REF = ExactRef(
+    "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_SEMANTIC_OBJECT",
+    OBL053_SEMANTIC_OBJECT_ID,
+    OBL053_SEMANTIC_OBJECT_HASH,
+)
+CURRENT_EVIDENCE_REFS = (
+    ExactRef(
+        "GT34_OBL053_OBJECTIVE_EVIDENCE_RECEIPT",
+        "urn:rawlsing:gt34:obl053:objective-evidence-receipt:sha256:" + OBL053_OBJECTIVE_EVIDENCE_RECEIPT_HASH,
+        OBL053_OBJECTIVE_EVIDENCE_RECEIPT_HASH,
+    ),
+)
+CURRENT_PROVENANCE_REFS = (
+    ExactRef(
+        "GOVERNED_GENERATION_SEED",
+        "urn:rawlsing:gt34:obl053:generation-seed:sha256:" + OBL053_GENERATION_SEED_HASH,
+        OBL053_GENERATION_SEED_HASH,
+    ),
+    ExactRef(
+        "SEMANTIC_OWNER_AUTHORITY",
+        "urn:rawlsing:gt34:obl053:semantic-owner-authority:sha256:" + OBL053_AUTHORITY_HASH,
+        OBL053_AUTHORITY_HASH,
+    ),
+)
 
-def _materializer_owner_material(m: MaterializationReceiptContent) -> dict[str, Any]:
+def _mat_ref_dict(ref: ExactRef) -> dict[str, str]:
+    ref = _ref(ref, "materializer ref")
+    return {"kind": ref.kind, "ref_id": ref.ref, "sha256": ref.content_hash}
+
+def _materializer_owner_material(m: SubjectMaterializationReceipt) -> dict[str, Any]:
     return {
         "schema_id": MATERIALIZER_OWNER_BINDING_SCHEMA,
         "semantic_owner_authority": {
@@ -438,11 +495,11 @@ def _materializer_owner_material(m: MaterializationReceiptContent) -> dict[str, 
             "content_hash": m.semantic_owner_authority_hash,
         },
         "semantic_object_ref": _mat_ref_dict(m.semantic_object_ref),
-        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materialization evidence", True)],
-        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materialization provenance", True)],
+        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materializer evidence", True)],
+        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materializer provenance", True)],
     }
 
-def _materializer_subject_identity_material(m: MaterializationReceiptContent) -> dict[str, Any]:
+def _materializer_subject_material(m: SubjectMaterializationReceipt) -> dict[str, Any]:
     return {
         "scheme": MATERIALIZER_SUBJECT_REF_SCHEME,
         "semantic_owner_authority": {
@@ -452,18 +509,18 @@ def _materializer_subject_identity_material(m: MaterializationReceiptContent) ->
         },
         "semantic_object_ref": _mat_ref_dict(m.semantic_object_ref),
         "owner_binding_content_hash": m.owner_binding_content_hash,
-        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materialization evidence", True)],
-        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materialization provenance", True)],
+        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materializer evidence", True)],
+        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materializer provenance", True)],
     }
 
-def _materializer_receipt_body(m: MaterializationReceiptContent) -> dict[str, Any]:
+def _materializer_receipt_body(m: SubjectMaterializationReceipt) -> dict[str, Any]:
     return {
         "schema_id": MATERIALIZER_RECEIPT_SCHEMA,
         "subject_ref": m.subject_ref,
         "subject_ref_hash": m.subject_ref_hash,
         "materializer_id": m.materializer_id,
         "materializer_version": m.materializer_version,
-        "adoption_artifact_blob": m.obl053_adoption_artifact_blob,
+        "adoption_artifact_blob": m.adoption_artifact_blob,
         "accepted_owner_root_hash": m.accepted_owner_root_hash,
         "materialization_permit_id": m.materialization_permit_id,
         "materialization_permit_hash": m.materialization_permit_hash,
@@ -474,39 +531,29 @@ def _materializer_receipt_body(m: MaterializationReceiptContent) -> dict[str, An
         },
         "semantic_object_ref": _mat_ref_dict(m.semantic_object_ref),
         "owner_binding_content_hash": m.owner_binding_content_hash,
-        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materialization evidence", True)],
-        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materialization provenance", True)],
+        "evidence_refs": [_mat_ref_dict(x) for x in _refs(m.evidence_refs, "materializer evidence", True)],
+        "provenance_refs": [_mat_ref_dict(x) for x in _refs(m.provenance_refs, "materializer provenance", True)],
         "replay_input_hash": m.replay_input_hash,
         "integrity_state": m.integrity_state,
         "semantic_owner_transfer": m.semantic_owner_transfer,
         "semantic_fields_interpreted": m.semantic_fields_interpreted,
     }
 
-def _validate_currentness(value: str, *, allow_noncurrent: bool, n: str) -> str:
-    value = _s(value, n)
-    if allow_noncurrent:
-        if value != NONCURRENT_SYNTHETIC_TEST_ONLY:
-            raise OEEAdmissionError(f"{n} must be NONCURRENT_SYNTHETIC_TEST_ONLY in synthetic court")
-    elif value != CURRENT_ACCEPTED:
-        raise OEEAdmissionError(f"{n} must be CURRENT_ACCEPTED")
-    return value
+def _validate_currentness(value: str, expected: str, field: str) -> None:
+    if _s(value, field) != expected:
+        raise OEEAdmissionError(f"{field} must be {expected}")
 
-def _validate_materialization_receipt(
-    m: MaterializationReceiptContent,
-    *,
-    allow_noncurrent: bool,
-) -> MaterializationReceiptContent:
-    if not isinstance(m, MaterializationReceiptContent):
-        raise OEEIntegrityError("materialization receipt content is required")
-    _validate_currentness(m.currentness_state, allow_noncurrent=allow_noncurrent, n="materialization currentness")
+def _validate_materialization_receipt(m: Any, currentness: str) -> SubjectMaterializationReceipt:
+    if not isinstance(m, SubjectMaterializationReceipt):
+        raise OEEIntegrityError("subject materialization receipt wire is required")
+    _validate_currentness(m.currentness_state, currentness, "materialization currentness")
     _s(m.receipt_id, "materialization receipt id")
     _h(m.receipt_hash, "materialization receipt hash")
     _s(m.subject_ref, "materialization subject_ref")
     _h(m.subject_ref_hash, "materialization subject_ref_hash")
     _s(m.materializer_id, "materializer id")
     _s(m.materializer_version, "materializer version")
-    _blob(m.obl054_adoption_artifact_blob, "OBL054 adoption artifact blob")
-    _blob(m.obl053_adoption_artifact_blob, "OBL053 adoption artifact blob")
+    _blob(m.adoption_artifact_blob, "materializer adoption artifact blob")
     _h(m.accepted_owner_root_hash, "accepted owner root hash")
     _s(m.materialization_permit_id, "materialization permit id")
     _h(m.materialization_permit_hash, "materialization permit hash")
@@ -514,19 +561,17 @@ def _validate_materialization_receipt(
     _s(m.semantic_owner_authority_version, "semantic owner version")
     _h(m.semantic_owner_authority_hash, "semantic owner hash")
     _ref(m.semantic_object_ref, "semantic object ref")
-    _h(m.owner_binding_content_hash, "owner binding hash")
-    _refs(m.evidence_refs, "materialization evidence", True)
-    _refs(m.provenance_refs, "materialization provenance", True)
-    _h(m.replay_input_hash, "materialization replay input hash")
-    _s(m.integrity_state, "materialization integrity state")
+    _h(m.owner_binding_content_hash, "owner binding content hash")
+    _refs(m.evidence_refs, "materializer evidence", True)
+    _refs(m.provenance_refs, "materializer provenance", True)
+    _h(m.replay_input_hash, "materializer replay input hash")
     if m.semantic_owner_transfer is not False or m.semantic_fields_interpreted is not False:
-        raise OEEAdmissionError("materializer semantic opacity/owner preservation violated")
+        raise OEEAdmissionError("materializer owner preservation / semantic opacity violated")
 
-    if not allow_noncurrent:
+    if currentness == CURRENT_ACCEPTED:
         expected = (
             OBL054_MATERIALIZER_ID,
             OBL054_MATERIALIZER_VERSION,
-            OBL054_ADOPTION_ARTIFACT_BLOB,
             OBL053_ADOPTION_ARTIFACT_BLOB,
             OBL054_ACCEPTED_ROOT_HASH,
             OBL054_PERMIT_ID,
@@ -534,113 +579,116 @@ def _validate_materialization_receipt(
             OBL053_AUTHORITY_ID,
             OBL053_AUTHORITY_VERSION,
             OBL053_AUTHORITY_HASH,
-            OBL053_SEMANTIC_OBJECT_ID,
-            OBL053_SEMANTIC_OBJECT_HASH,
+            CURRENT_SEMANTIC_OBJECT_REF,
+            CURRENT_EVIDENCE_REFS,
+            CURRENT_PROVENANCE_REFS,
+            "AUTHENTICATED_FRESH_OBL053_ROOT__OWNER_BOUND_INPUT_VERIFIED",
         )
         actual = (
             m.materializer_id,
             m.materializer_version,
-            m.obl054_adoption_artifact_blob,
-            m.obl053_adoption_artifact_blob,
+            m.adoption_artifact_blob,
             m.accepted_owner_root_hash,
             m.materialization_permit_id,
             m.materialization_permit_hash,
             m.semantic_owner_authority_id,
             m.semantic_owner_authority_version,
             m.semantic_owner_authority_hash,
-            m.semantic_object_ref.ref,
-            m.semantic_object_ref.content_hash,
+            m.semantic_object_ref,
+            m.evidence_refs,
+            m.provenance_refs,
+            m.integrity_state,
         )
         if actual != expected:
-            raise OEEAdmissionError("subject ingress is not bound to exact adopted OBL054/current OBL053 root")
-        if m.integrity_state != "AUTHENTICATED_FRESH_OBL053_ROOT__OWNER_BOUND_INPUT_VERIFIED":
-            raise OEEAdmissionError("materialization receipt integrity state is not current")
+            raise OEEAdmissionError("subject ingress is not exact adopted OBL054/current OBL053 materialization contract")
     else:
-        if m.materializer_id == OBL054_MATERIALIZER_ID and m.obl054_adoption_artifact_blob == OBL054_ADOPTION_ARTIFACT_BLOB:
-            raise OEEAdmissionError("noncurrent synthetic fixture may not masquerade as current OBL054")
+        if (
+            m.materializer_id == OBL054_MATERIALIZER_ID
+            or m.adoption_artifact_blob == OBL053_ADOPTION_ARTIFACT_BLOB
+            or m.accepted_owner_root_hash == OBL054_ACCEPTED_ROOT_HASH
+            or m.materialization_permit_hash == OBL054_PERMIT_HASH
+        ):
+            raise OEEAdmissionError("synthetic fixture may not masquerade as current OBL054")
 
-    expected_owner_binding = _digest_bytes(
-        MATERIALIZER_OWNER_BINDING_DOMAIN,
-        _materializer_owner_material(m),
-    )
-    if m.owner_binding_content_hash != expected_owner_binding:
-        raise OEEIntegrityError("materialization owner binding hash mismatch")
-    subject_material = _materializer_subject_identity_material(m)
-    expected_subject_hash = _digest_bytes(MATERIALIZER_SUBJECT_REF_DOMAIN, subject_material)
-    if m.subject_ref_hash != expected_subject_hash:
-        raise OEEIntegrityError("materialization subject_ref_hash mismatch")
-    if not allow_noncurrent:
-        if m.subject_ref != f"urn:rawlsing:v3:subject:sha256:{expected_subject_hash}":
-            raise OEEIntegrityError("materialization subject_ref identity mismatch")
-    expected_replay = sha256(
+    owner_hash = _digest_bytes(MATERIALIZER_OWNER_BINDING_DOMAIN, _materializer_owner_material(m))
+    if m.owner_binding_content_hash != owner_hash:
+        raise OEEIntegrityError("materializer owner binding mismatch")
+    subject_material = _materializer_subject_material(m)
+    subject_hash = _digest_bytes(MATERIALIZER_SUBJECT_REF_DOMAIN, subject_material)
+    if m.subject_ref_hash != subject_hash:
+        raise OEEIntegrityError("materializer subject_ref_hash mismatch")
+    if m.subject_ref != "urn:rawlsing:v3:subject:sha256:" + subject_hash:
+        raise OEEIntegrityError("materializer subject_ref mismatch")
+    replay_hash = sha256(
         json.dumps(subject_material, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
     ).hexdigest()
-    if m.replay_input_hash != expected_replay:
-        raise OEEIntegrityError("materialization replay_input_hash mismatch")
-    expected_receipt_hash = _digest_bytes(MATERIALIZER_RECEIPT_DOMAIN, _materializer_receipt_body(m))
-    if m.receipt_hash != expected_receipt_hash:
-        raise OEEIntegrityError("materialization receipt hash mismatch")
-    if not m.receipt_id.endswith(m.receipt_hash):
-        raise OEEIntegrityError("materialization receipt id/hash mismatch")
+    if m.replay_input_hash != replay_hash:
+        raise OEEIntegrityError("materializer replay_input_hash mismatch")
+    receipt_hash = _digest_bytes(MATERIALIZER_RECEIPT_DOMAIN, _materializer_receipt_body(m))
+    if m.receipt_hash != receipt_hash:
+        raise OEEIntegrityError("materializer receipt hash mismatch")
+    if m.receipt_id != (
+        "urn:rawlsing:v3:authenticated-subject-materialization-receipt:sha256:" + receipt_hash
+    ):
+        raise OEEIntegrityError("materializer receipt id/hash mismatch")
     return m
 
-def _causal_use_material(c: CausalUsePermissionAuthentication, permission_ref: ExactRef) -> dict[str, Any]:
+def _permission_material(p: CausalUsePermission) -> dict[str, Any]:
     return {
-        "authority": [c.authority_id, c.authority_version, c.authority_content_hash],
-        "authority_acceptance_ref": c.authority_acceptance_ref,
-        "permission_ref": permission_ref,
-        "permission_receipt_ref": c.permission_receipt_ref,
-        "subject_ref": c.subject_ref,
-        "semantic_object_hash": c.semantic_object_hash,
-        "materialization_receipt_ref": c.materialization_receipt_ref,
-        "scope": c.scope,
-        "provenance_refs": _refs(c.provenance_refs, "causal use provenance", True),
-        "currentness_state": c.currentness_state,
+        "permission_ref": p.permission_ref,
+        "authority": [p.authority_id, p.authority_version, p.authority_content_hash],
+        "authority_acceptance_ref": p.authority_acceptance_ref,
+        "subject_ref": p.subject_ref,
+        "semantic_object_ref": p.semantic_object_ref,
+        "materialization_receipt_ref": p.materialization_receipt_ref,
+        "scope": p.scope,
+        "provenance_refs": _refs(p.provenance_refs, "causal use provenance", True),
+        "currentness_state": p.currentness_state,
     }
 
-def _validate_causal_use(
-    c: CausalUsePermissionAuthentication,
-    permission_ref: ExactRef,
-    materialization_ref: ExactRef,
+def _validate_permission(
+    p: Any,
     subject_ref: str,
-    semantic_object_hash: str,
-    *,
-    allow_noncurrent: bool,
-) -> ExactRef:
-    if not isinstance(c, CausalUsePermissionAuthentication):
+    semantic_object_ref: ExactRef,
+    materialization_receipt_ref: ExactRef,
+    currentness: str,
+) -> CausalUsePermission:
+    if not isinstance(p, CausalUsePermission):
         raise OEEIntegrityError("authenticated causal-use permission is required")
-    _validate_currentness(c.currentness_state, allow_noncurrent=allow_noncurrent, n="causal use currentness")
-    _s(c.authority_id, "causal use authority id")
-    _s(c.authority_version, "causal use authority version")
-    _h(c.authority_content_hash, "causal use authority hash")
-    _validate_content_addressed_ref(
-        c.authority_acceptance_ref,
-        "causal use authority acceptance",
+    _validate_currentness(p.currentness_state, currentness, "causal use currentness")
+    if p.permission_ref.kind != "CAUSAL_USE_PERMISSION":
+        raise OEEAdmissionError("causal-use permission ref kind mismatch")
+    _ref(p.permission_ref, "causal use permission")
+    _s(p.authority_id, "causal use authority id")
+    _s(p.authority_version, "causal use authority version")
+    _h(p.authority_content_hash, "causal use authority hash")
+    expected_accept = _authority_acceptance_ref(
         "ACCEPTED_CAUSAL_USE_AUTHORITY_RECEIPT",
-        "urn:rawlsing:accepted-causal-use-authority:sha256:",
+        p.authority_id,
+        p.authority_version,
+        p.authority_content_hash,
+        currentness,
     )
-    _ref(permission_ref, "causal use permission")
-    _ref(c.permission_receipt_ref, "causal use permission receipt")
-    if (c.subject_ref, c.semantic_object_hash, c.materialization_receipt_ref) != (
-        subject_ref, semantic_object_hash, materialization_ref
+    if p.authority_acceptance_ref != expected_accept:
+        raise OEEIntegrityError("causal-use authority acceptance binding mismatch")
+    if (p.subject_ref, p.semantic_object_ref, p.materialization_receipt_ref) != (
+        subject_ref,
+        semantic_object_ref,
+        materialization_receipt_ref,
     ):
-        raise OEEAdmissionError("causal-use permission does not bind exact subject/materialization/object")
-    _s(c.scope, "causal use scope")
-    _refs(c.provenance_refs, "causal use provenance", True)
-    expected = _content_ref(
+        raise OEEAdmissionError("causal-use permission does not bind exact subject/object/materialization")
+    if p.scope != "ADP010_CAUSAL_USE":
+        raise OEEAdmissionError("causal-use permission scope mismatch")
+    expected_auth = _content_ref(
         "CAUSAL_USE_PERMISSION_AUTHENTICATION",
         "urn:rawlsing:causal-use-authentication:sha256:",
-        _causal_use_material(c, permission_ref),
+        _permission_material(p),
     )
-    if c.authentication_ref != expected:
+    if p.authentication_ref != expected_auth:
         raise OEEIntegrityError("causal-use authentication mismatch")
-    return expected
+    return p
 
-def _subject_ingress_material(
-    s: SubjectIngressEvidence,
-    materialization: MaterializationReceiptContent,
-    causal_auth_ref: ExactRef,
-) -> dict[str, Any]:
+def _subject_material(s: SubjectIngressEvidence) -> dict[str, Any]:
     return {
         "subject_ref": s.subject_ref,
         "semantic_owner_authority": [
@@ -648,196 +696,117 @@ def _subject_ingress_material(
             s.semantic_owner_authority_version,
             s.semantic_owner_authority_content_hash,
         ],
-        "semantic_object": [s.semantic_object_id, s.semantic_object_hash],
-        "materialization_receipt_ref": s.materialization_receipt,
-        "materialization_receipt_wire": _materializer_receipt_body(materialization),
-        "materialization_receipt_id": materialization.receipt_id,
-        "materialization_receipt_hash": materialization.receipt_hash,
-        "obl054_adoption_artifact_blob": materialization.obl054_adoption_artifact_blob,
-        "accepted_owner_root_hash": materialization.accepted_owner_root_hash,
-        "materialization_permit": [
-            materialization.materialization_permit_id,
-            materialization.materialization_permit_hash,
-        ],
-        "causal_use_permission": s.causal_use_permission,
-        "causal_use_authentication_ref": causal_auth_ref,
+        "semantic_object_ref": s.semantic_object_ref,
+        "materialization_receipt_ref": ExactRef(
+            "SUBJECT_MATERIALIZATION_RECEIPT",
+            s.materialization_receipt.receipt_id,
+            s.materialization_receipt.receipt_hash,
+        ),
+        "obl054_adoption_artifact_blob": s.obl054_adoption_artifact_blob,
         "epistemic_class": s.epistemic_class,
+        "causal_use_authentication_ref": s.causal_use_permission.authentication_ref,
         "provenance_refs": _refs(s.provenance_refs, "subject provenance", True),
         "currentness_state": s.currentness_state,
     }
 
-def _legacy_fixture_auth_ref(kind: str, material: Any) -> ExactRef:
-    prefixes = {
-        "SUBJECT_INGRESS_AUTHENTICATION": "urn:rawlsing:subject-ingress-authentication:sha256:",
-        "ADP008_PHASE_STATE_AUTHENTICATION": "urn:rawlsing:adp008-phase-authentication:sha256:",
-        "POSITIVE_APPLICABILITY_AUTHENTICATION": "urn:rawlsing:positive-applicability-authentication:sha256:",
-        "CONTACT_OCCURRENCE_AUTHENTICATION": "urn:rawlsing:contact-occurrence-authentication:sha256:",
-        "CONTACT_INDEPENDENCE_AUTHENTICATION": "urn:rawlsing:contact-independence-authentication:sha256:",
-    }
-    try:
-        prefix = prefixes[kind]
-    except KeyError as exc:
-        raise OEEIntegrityError("unsupported legacy compatibility authentication kind") from exc
-    return _content_ref(kind, prefix, material)
-
-def _legacy_subject_auth(s: SubjectIngressEvidence) -> ExactRef:
-    if (
-        s.semantic_owner_authority_id != "SYNTHETIC_EXACT_SUBJECT_OWNER"
-        or s.semantic_owner_authority_version != "1.0.0"
-        or s.semantic_owner_authority_content_hash != sha256(b"owner").hexdigest()
-        or s.materialization_receipt.kind != "SUBJECT_MATERIALIZATION_RECEIPT"
-        or s.causal_use_permission.kind != "CAUSAL_USE_PERMISSION"
-    ):
-        raise OEEAdmissionError("legacy synthetic subject fixture is not trusted by W2 compatibility court")
-    return _legacy_fixture_auth_ref(
-        "SUBJECT_INGRESS_AUTHENTICATION",
-        [
-            s.subject_ref, s.semantic_owner_authority_id, s.semantic_owner_authority_version,
-            s.semantic_owner_authority_content_hash, s.semantic_object_hash,
-            s.materialization_receipt, s.causal_use_permission,
-            _refs(s.provenance_refs, "subject provenance", True),
-            NONCURRENT_SYNTHETIC_TEST_ONLY,
-        ],
-    )
-
-def _validate_subject(
-    s: Any,
-    *,
-    allow_noncurrent: bool,
-    allow_legacy: bool,
-) -> tuple[SubjectIngressEvidence, ExactRef]:
+def _validate_subject(s: Any, currentness: str) -> tuple[SubjectIngressEvidence, ExactRef]:
     if not isinstance(s, SubjectIngressEvidence):
         raise OEEIntegrityError("subject must be SubjectIngressEvidence")
+    _validate_currentness(s.currentness_state, currentness, "subject currentness")
     _s(s.subject_ref, "subject_ref")
-    _s(s.semantic_owner_authority_id, "semantic_owner_authority_id")
-    _s(s.semantic_owner_authority_version, "semantic_owner_authority_version")
-    _h(s.semantic_owner_authority_content_hash, "semantic_owner_authority_content_hash")
-    _h(s.semantic_object_hash, "semantic_object_hash")
-    materialization_ref = _ref(s.materialization_receipt, "materialization_receipt")
-    permission_ref = _ref(s.causal_use_permission, "causal_use_permission")
-    _refs(s.provenance_refs, "subject.provenance_refs", True)
+    _s(s.semantic_owner_authority_id, "semantic owner id")
+    _s(s.semantic_owner_authority_version, "semantic owner version")
+    _h(s.semantic_owner_authority_content_hash, "semantic owner hash")
+    _ref(s.semantic_object_ref, "semantic object ref")
+    _blob(s.obl054_adoption_artifact_blob, "OBL054 adoption artifact blob")
+    if currentness == CURRENT_ACCEPTED and s.obl054_adoption_artifact_blob != OBL054_ADOPTION_ARTIFACT_BLOB:
+        raise OEEAdmissionError("subject ingress is not bound to adopted OBL054 adoption artifact")
+    if currentness == NONCURRENT_SYNTHETIC_TEST_ONLY and s.obl054_adoption_artifact_blob == OBL054_ADOPTION_ARTIFACT_BLOB:
+        raise OEEAdmissionError("synthetic subject may not impersonate current OBL054 adoption")
     if s.epistemic_class not in _ADMISSIBLE_EP:
         raise OEEAdmissionError("subject basis epistemic class is not ADP-010-admissible")
+    _refs(s.provenance_refs, "subject provenance", True)
 
-    if allow_legacy and s.materialization_receipt_content is None:
-        return s, _legacy_subject_auth(s)
-
-    _validate_currentness(s.currentness_state, allow_noncurrent=allow_noncurrent, n="subject ingress currentness")
-    if s.semantic_object_id is None:
-        raise OEEIntegrityError("semantic_object_id is required")
-    m = _validate_materialization_receipt(
-        s.materialization_receipt_content,
-        allow_noncurrent=allow_noncurrent,
-    )
-    expected_mat_ref = ExactRef(
-        "SUBJECT_MATERIALIZATION_RECEIPT",
-        m.receipt_id,
-        m.receipt_hash,
-    )
-    if materialization_ref != expected_mat_ref:
-        raise OEEIntegrityError("materialization receipt ref/content mismatch")
+    m = _validate_materialization_receipt(s.materialization_receipt, currentness)
+    mat_ref = ExactRef("SUBJECT_MATERIALIZATION_RECEIPT", m.receipt_id, m.receipt_hash)
     if (
         s.subject_ref,
         s.semantic_owner_authority_id,
         s.semantic_owner_authority_version,
         s.semantic_owner_authority_content_hash,
-        s.semantic_object_id,
-        s.semantic_object_hash,
+        s.semantic_object_ref,
     ) != (
         m.subject_ref,
         m.semantic_owner_authority_id,
         m.semantic_owner_authority_version,
         m.semantic_owner_authority_hash,
-        m.semantic_object_ref.ref,
-        m.semantic_object_ref.content_hash,
+        m.semantic_object_ref,
     ):
-        raise OEEAdmissionError("subject ingress fields do not match exact materialization receipt")
-    causal_auth_ref = _validate_causal_use(
-        s.causal_use_authentication,
-        permission_ref,
-        materialization_ref,
+        raise OEEAdmissionError("subject ingress does not match exact materialization receipt")
+    _validate_permission(
+        s.causal_use_permission,
         s.subject_ref,
-        s.semantic_object_hash,
-        allow_noncurrent=allow_noncurrent,
+        s.semantic_object_ref,
+        mat_ref,
+        currentness,
     )
-    expected_ingress = _content_ref(
+    expected_auth = _content_ref(
         "SUBJECT_INGRESS_AUTHENTICATION",
         "urn:rawlsing:subject-ingress-authentication:sha256:",
-        _subject_ingress_material(s, m, causal_auth_ref),
+        _subject_material(s),
     )
-    if s.ingress_authentication_ref != expected_ingress:
+    if s.authentication_ref != expected_auth:
         raise OEEIntegrityError("subject ingress authentication mismatch")
-    return s, expected_ingress
+    return s, expected_auth
 
 def _phase_material(a: ActorPhaseEvidence) -> dict[str, Any]:
     return {
         "actor_id": a.actor_id,
         "phase_state_ref": a.phase_state_ref,
         "phase_state_receipt_ref": a.phase_state_receipt_ref,
-        "phase_authority": [
+        "authority": [
             a.phase_authority_id,
             a.phase_authority_version,
             a.phase_authority_artifact_blob_sha,
         ],
-        "phase_registry": [
+        "registry": [
             a.phase_registry_id,
             a.phase_registry_version,
             a.phase_registry_content_hash,
         ],
         "base_phase_id": a.base_phase_id,
-        "provenance_refs": _refs(a.provenance_refs, "actor provenance", True),
+        "provenance_refs": _refs(a.provenance_refs, "actor phase provenance", True),
         "currentness_state": a.currentness_state,
     }
 
-def _legacy_phase_auth(a: ActorPhaseEvidence) -> ExactRef:
-    return _legacy_fixture_auth_ref(
-        "ADP008_PHASE_STATE_AUTHENTICATION",
-        [
-            a.actor_id, a.phase_state_ref,
-            a.phase_authority_id, a.phase_authority_version, a.phase_authority_artifact_blob_sha,
-            a.base_phase_id, _refs(a.provenance_refs, "actor provenance", True),
-            NONCURRENT_SYNTHETIC_TEST_ONLY,
-        ],
-    )
-
-def _validate_actor(
-    a: Any,
-    *,
-    allow_noncurrent: bool,
-    allow_legacy: bool,
-) -> tuple[ActorPhaseEvidence, ExactRef]:
+def _validate_actor(a: Any, currentness: str) -> tuple[ActorPhaseEvidence, ExactRef]:
     if not isinstance(a, ActorPhaseEvidence):
         raise OEEIntegrityError("actor must be ActorPhaseEvidence")
+    _validate_currentness(a.currentness_state, currentness, "phase currentness")
     _s(a.actor_id, "actor_id")
-    r = _ref(a.phase_state_ref, "phase_state_ref")
-    if r.kind != "V3DevelopmentalPhaseState":
+    if _ref(a.phase_state_ref, "phase_state_ref").kind != "V3DevelopmentalPhaseState":
         raise OEEAdmissionError("phase_state_ref must be V3DevelopmentalPhaseState")
+    if _ref(a.phase_state_receipt_ref, "phase_state_receipt_ref").kind != "V3DevelopmentalPhaseStateReceipt":
+        raise OEEAdmissionError("phase_state_receipt_ref kind mismatch")
     if (
         a.phase_authority_id,
         a.phase_authority_version,
         a.phase_authority_artifact_blob_sha,
         a.phase_registry_id,
         a.phase_registry_version,
+        a.phase_registry_content_hash,
     ) != (
         ADP008_AUTHORITY_ID,
         ADP008_AUTHORITY_VERSION,
         ADP008_AUTHORITY_ARTIFACT_BLOB_SHA,
         ADP008_REGISTRY_ID,
         ADP008_REGISTRY_VERSION,
+        ADP008_REGISTRY_CONTENT_HASH,
     ):
-        raise OEEAdmissionError("wrong ADP-008 authority/registry binding")
-    _blob(a.phase_authority_artifact_blob_sha, "phase authority blob")
+        raise OEEAdmissionError("wrong ADP-008 authority/registry authentication")
     if a.base_phase_id != DEVELOPMENT_ACTIVE_PHASE:
         raise OEEAdmissionError("V3DP_DEVELOPMENT_ACTIVE is required")
-    _refs(a.provenance_refs, "actor.provenance_refs", True)
-
-    if allow_legacy and a.phase_state_receipt_ref is None:
-        return a, _legacy_phase_auth(a)
-
-    _validate_currentness(a.currentness_state, allow_noncurrent=allow_noncurrent, n="phase currentness")
-    _ref(a.phase_state_receipt_ref, "phase state receipt")
-    if a.phase_registry_content_hash != ADP008_REGISTRY_CONTENT_HASH:
-        raise OEEAdmissionError("ADP-008 phase registry content hash mismatch")
+    _refs(a.provenance_refs, "actor phase provenance", True)
     expected = _content_ref(
         "ADP008_PHASE_STATE_AUTHENTICATION",
         "urn:rawlsing:adp008-phase-authentication:sha256:",
@@ -857,39 +826,25 @@ def _app_material(x: PositiveApplicabilityReceipt) -> dict[str, Any]:
         "currentness_state": x.currentness_state,
     }
 
-def _legacy_app_auth(x: PositiveApplicabilityReceipt) -> ExactRef:
-    if (
-        x.authority_id != "SYNTHETIC_APPLICABILITY_OWNER"
-        or x.authority_version != "1.0.0"
-        or x.authority_content_hash != sha256(b"app-owner").hexdigest()
-    ):
-        raise OEEAdmissionError("legacy synthetic applicability owner is not trusted by W2 compatibility court")
-    return _legacy_fixture_auth_ref("POSITIVE_APPLICABILITY_AUTHENTICATION", _app_material(x))
-
-def _validate_app(
-    x: Any,
-    *,
-    allow_noncurrent: bool,
-    allow_legacy: bool,
-) -> tuple[ExactRef, ExactRef]:
+def _validate_app(x: Any, currentness: str) -> tuple[ExactRef, ExactRef]:
     if not isinstance(x, PositiveApplicabilityReceipt) or x.result != "POSITIVE":
         raise OEEAdmissionError("opportunity requires positive applicability")
-    _ref(x.receipt, "applicability receipt")
-    _s(x.authority_id, "applicability authority")
-    _s(x.authority_version, "applicability version")
+    _validate_currentness(x.currentness_state, currentness, "applicability currentness")
+    if _ref(x.receipt, "applicability receipt").kind != "POSITIVE_APPLICABILITY_RECEIPT":
+        raise OEEAdmissionError("applicability receipt kind mismatch")
+    _s(x.authority_id, "applicability authority id")
+    _s(x.authority_version, "applicability authority version")
     _h(x.authority_content_hash, "applicability authority hash")
-    _refs(x.provenance_refs, "applicability provenance", True)
-
-    if allow_legacy and x.authentication_ref is None:
-        return x.receipt, _legacy_app_auth(x)
-
-    _validate_currentness(x.currentness_state, allow_noncurrent=allow_noncurrent, n="applicability currentness")
-    _validate_content_addressed_ref(
-        x.authority_acceptance_ref,
-        "applicability authority acceptance",
+    expected_accept = _authority_acceptance_ref(
         "ACCEPTED_APPLICABILITY_AUTHORITY_RECEIPT",
-        "urn:rawlsing:accepted-applicability-authority:sha256:",
+        x.authority_id,
+        x.authority_version,
+        x.authority_content_hash,
+        currentness,
     )
+    if x.authority_acceptance_ref != expected_accept:
+        raise OEEIntegrityError("applicability authority acceptance mismatch")
+    _refs(x.provenance_refs, "applicability provenance", True)
     expected = _content_ref(
         "POSITIVE_APPLICABILITY_AUTHENTICATION",
         "urn:rawlsing:positive-applicability-authentication:sha256:",
@@ -907,13 +862,13 @@ def _contact_material(w: ContactOccurrenceWitness) -> dict[str, Any]:
             w.witness_authority_version,
             w.witness_authority_content_hash,
         ],
-        "authority_acceptance_ref": w.authority_acceptance_ref,
+        "witness_authority_acceptance_ref": w.witness_authority_acceptance_ref,
         "actor_id": w.actor_id,
         "subject_ref": w.subject_ref,
         "occurrence_time": _time(w.occurrence_time, "contact occurrence time"),
         "semantic": w.semantic,
-        "contact_basis_refs": _refs(w.contact_basis_refs, "contact basis", True),
-        "provenance_refs": _refs(w.provenance_refs, "witness provenance", True),
+        "contact_basis_refs": _refs(w.contact_basis_refs, "contact basis refs", True),
+        "provenance_refs": _refs(w.provenance_refs, "contact provenance", True),
         "currentness_state": w.currentness_state,
     }
 
@@ -928,113 +883,88 @@ def _independence_material(w: ContactOccurrenceWitness, contact_auth: ExactRef) 
         ],
         "independence_authority_acceptance_ref": w.independence_authority_acceptance_ref,
         "independence_receipt_ref": w.independence_receipt_ref,
-        "independence_basis_refs": _refs(w.independence_basis_refs, "independence basis", True),
+        "independence_basis_refs": _refs(w.independence_basis_refs, "independence basis refs", True),
         "currentness_state": w.currentness_state,
     }
-
-def _legacy_contact_auth(w: ContactOccurrenceWitness) -> tuple[ExactRef, ExactRef]:
-    if (
-        w.witness_authority_id != "SYNTHETIC_CONTACT_OCCURRENCE_OWNER"
-        or w.witness_authority_version != "1.0.0"
-        or w.witness_authority_content_hash != sha256(b"contact-owner").hexdigest()
-    ):
-        raise OEEAdmissionError("legacy synthetic contact owner is not trusted by W2 compatibility court")
-    contact_auth = _legacy_fixture_auth_ref(
-        "CONTACT_OCCURRENCE_AUTHENTICATION",
-        [
-            w.witness_ref, w.witness_authority_id, w.witness_authority_version,
-            w.witness_authority_content_hash, w.actor_id, w.subject_ref,
-            _time(w.occurrence_time, "contact occurrence time"), w.semantic,
-            _refs(w.provenance_refs, "witness provenance", True),
-            NONCURRENT_SYNTHETIC_TEST_ONLY,
-        ],
-    )
-    independence_auth = _legacy_fixture_auth_ref(
-        "CONTACT_INDEPENDENCE_AUTHENTICATION",
-        [contact_auth, w.independence_ref, NONCURRENT_SYNTHETIC_TEST_ONLY],
-    )
-    return contact_auth, independence_auth
 
 def _validate_contact(
     w: Any,
     actor_id: str,
     subject_ref: str,
     effective_time: str,
-    *,
-    allow_noncurrent: bool,
-    allow_legacy: bool,
+    currentness: str,
 ) -> tuple[ContactOccurrenceWitness, ExactRef, ExactRef]:
     if not isinstance(w, ContactOccurrenceWitness):
         raise OEEAdmissionError("ENCOUNTER requires exact ContactOccurrenceWitness")
+    _validate_currentness(w.currentness_state, currentness, "contact currentness")
     wr = _ref(w.witness_ref, "contact witness")
     if wr.kind in _INSUFFICIENT_CONTACT:
         raise OEEAdmissionError("co-location/co-presence or structural proximity is insufficient for ENCOUNTER")
     if wr.kind != CONTACT_WITNESS_KIND:
-        raise OEEAdmissionError("contact witness must be independently supplied contact-occurrence witness")
+        raise OEEAdmissionError("contact witness must be exact CONTACT_OCCURRENCE_WITNESS")
     if w.actor_id != actor_id or w.subject_ref != subject_ref:
         raise OEEAdmissionError("contact witness actor/subject mismatch")
-    _s(w.witness_authority_id, "witness authority")
-    _s(w.witness_authority_version, "witness authority version")
-    _h(w.witness_authority_content_hash, "witness authority hash")
     if w.semantic != CONTACT_OCCURRENCE_SEMANTIC:
         raise OEEAdmissionError("contact witness does not assert CONTACT_OCCURRENCE")
     if _time(w.occurrence_time, "contact occurrence time") != effective_time:
         raise OEEAdmissionError("encounter time must equal contact occurrence time")
-    ir = _ref(w.independence_ref, "independence ref")
-    if ir.kind != CONTACT_INDEPENDENCE_KIND:
-        raise OEEAdmissionError("contact witness lacks independence proof")
-    _refs(w.provenance_refs, "witness provenance", True)
-
-    if allow_legacy and w.authentication_ref is None:
-        return w, *_legacy_contact_auth(w)
-
-    _validate_currentness(w.currentness_state, allow_noncurrent=allow_noncurrent, n="contact currentness")
-    _validate_content_addressed_ref(
-        w.authority_acceptance_ref,
-        "contact authority acceptance",
+    _s(w.witness_authority_id, "contact authority id")
+    _s(w.witness_authority_version, "contact authority version")
+    _h(w.witness_authority_content_hash, "contact authority hash")
+    expected_accept = _authority_acceptance_ref(
         "ACCEPTED_CONTACT_OCCURRENCE_AUTHORITY_RECEIPT",
-        "urn:rawlsing:accepted-contact-authority:sha256:",
+        w.witness_authority_id,
+        w.witness_authority_version,
+        w.witness_authority_content_hash,
+        currentness,
     )
-    contact_basis = _refs(w.contact_basis_refs, "contact basis", True)
-    if any(x.kind in _INSUFFICIENT_CONTACT for x in contact_basis):
-        raise OEEAdmissionError("co-location/co-presence/proximity cannot be contact-occurrence basis")
+    if w.witness_authority_acceptance_ref != expected_accept:
+        raise OEEIntegrityError("contact witness authority acceptance mismatch")
+    contact_basis = _refs(w.contact_basis_refs, "contact basis refs", True)
+    if any(r.kind in _INSUFFICIENT_CONTACT for r in contact_basis):
+        raise OEEAdmissionError("co-location/co-presence/proximity cannot be laundered into contact occurrence")
     expected_contact = _content_ref(
         "CONTACT_OCCURRENCE_AUTHENTICATION",
         "urn:rawlsing:contact-occurrence-authentication:sha256:",
         _contact_material(w),
     )
-    if w.authentication_ref != expected_contact:
+    if w.contact_authentication_ref != expected_contact:
         raise OEEIntegrityError("contact-occurrence authentication mismatch")
 
+    if _ref(w.independence_ref, "independence ref").kind != CONTACT_INDEPENDENCE_KIND:
+        raise OEEAdmissionError("contact witness lacks independence proof")
     _s(w.independence_authority_id, "independence authority id")
     _s(w.independence_authority_version, "independence authority version")
     _h(w.independence_authority_content_hash, "independence authority hash")
-    _validate_content_addressed_ref(
-        w.independence_authority_acceptance_ref,
-        "independence authority acceptance",
+    expected_ind_accept = _authority_acceptance_ref(
         "ACCEPTED_CONTACT_INDEPENDENCE_AUTHORITY_RECEIPT",
-        "urn:rawlsing:accepted-contact-independence-authority:sha256:",
+        w.independence_authority_id,
+        w.independence_authority_version,
+        w.independence_authority_content_hash,
+        currentness,
     )
-    _ref(w.independence_receipt_ref, "independence receipt")
-    independence_basis = _refs(w.independence_basis_refs, "independence basis", True)
-    if any(x.kind in _INSUFFICIENT_CONTACT for x in independence_basis):
-        raise OEEAdmissionError("proximity cannot establish contact-witness independence")
+    if w.independence_authority_acceptance_ref != expected_ind_accept:
+        raise OEEIntegrityError("contact independence authority acceptance mismatch")
+    if _ref(w.independence_receipt_ref, "independence receipt").kind != "CONTACT_WITNESS_INDEPENDENCE_RECEIPT":
+        raise OEEAdmissionError("contact independence receipt kind mismatch")
+    independence_basis = _refs(w.independence_basis_refs, "independence basis refs", True)
+    if any(r.kind in _INSUFFICIENT_CONTACT for r in independence_basis):
+        raise OEEAdmissionError("proximity cannot establish contact witness independence")
     expected_ind = _content_ref(
         "CONTACT_INDEPENDENCE_AUTHENTICATION",
         "urn:rawlsing:contact-independence-authentication:sha256:",
         _independence_material(w, expected_contact),
     )
     if w.independence_authentication_ref != expected_ind:
-        raise OEEIntegrityError("contact-witness independence authentication mismatch")
+        raise OEEIntegrityError("contact witness independence authentication mismatch")
+    _refs(w.provenance_refs, "contact provenance", True)
     return w, expected_contact, expected_ind
 
-def _within(a: str, b: str, parent: V3OEERealizationRecord) -> None:
-    if _dt(a) < _dt(parent.effective_from) or _dt(b) > _dt(parent.effective_until):
+def _within(start: str, end: str, parent: V3OEERealizationRecord) -> None:
+    if _dt(start) < _dt(parent.effective_from) or _dt(end) > _dt(parent.effective_until):
         raise OEEAdmissionError("child effective scope must remain within active parent scope")
 
-def _candidate_material_from_record(r: V3OEERealizationRecord) -> dict[str, Any]:
-    # Every mutable persisted record field except self-derived IDs/hashes/event ID
-    # is committed here. validate_record() recomputes this exact material.
+def _candidate_material(r: V3OEERealizationRecord) -> dict[str, Any]:
     return {
         "executor": [EXECUTOR_ID, EXECUTOR_VERSION],
         "actor_id": r.actor_id,
@@ -1044,7 +974,9 @@ def _candidate_material_from_record(r: V3OEERealizationRecord) -> dict[str, Any]
         "realization_state": r.realization_state,
         "subject_ref": r.subject_ref,
         "parent_record_id": r.parent_record_id,
-        "effective_scope": [r.effective_from, r.effective_until, r.time_granularity],
+        "effective_from": r.effective_from,
+        "effective_until": r.effective_until,
+        "time_granularity": r.time_granularity,
         "context_or_world_receipt_refs": r.context_or_world_receipt_refs,
         "applicability_receipt_refs": r.applicability_receipt_refs,
         "phase_state_ref": r.phase_state_ref,
@@ -1075,7 +1007,7 @@ def _build(
     state: str,
     actor: ActorPhaseEvidence,
     subject: SubjectIngressEvidence,
-    parent: str | None,
+    parent_record_id: str | None,
     start: str,
     end: str,
     granularity: str,
@@ -1088,119 +1020,776 @@ def _build(
 ) -> V3OEERealizationRecord:
     rule_id, _, _, effect = _RULES[state]
     provisional = V3OEERealizationRecord(
-        "", actor.actor_id, ADP010_AUTHORITY_ID, ADP010_AUTHORITY_VERSION,
-        ADP010_REGISTRY_ID, ADP010_REGISTRY_VERSION, rule_id, RULE_VERSION,
-        state, subject.subject_ref, parent, start, end, granularity, "", "",
-        context, applicability, actor.phase_state_ref, constraints, witnesses,
-        None, None, effect, prior, provenance, "",
+        record_id="",
+        actor_id=actor.actor_id,
+        authority_id=ADP010_AUTHORITY_ID,
+        authority_version=ADP010_AUTHORITY_VERSION,
+        registry_id=ADP010_REGISTRY_ID,
+        registry_version=ADP010_REGISTRY_VERSION,
+        rule_id=rule_id,
+        rule_version=RULE_VERSION,
+        realization_state=state,
+        subject_ref=subject.subject_ref,
+        parent_record_id=parent_record_id,
+        effective_from=start,
+        effective_until=end,
+        time_granularity=granularity,
+        source_candidate_id="",
+        source_candidate_replay_hash="",
+        context_or_world_receipt_refs=context,
+        applicability_receipt_refs=applicability,
+        phase_state_ref=actor.phase_state_ref,
+        position_or_other_constraint_refs=constraints,
+        causal_witness_refs=witnesses,
+        rng_decision_receipt_ref=None,
+        event_id=None,
+        event_effect_kind=effect,
+        prior_ledger_anchor_ref=prior,
+        provenance_refs=provenance,
+        record_hash="",
     )
-    candidate_hash = _digest(_CANDIDATE_DOMAIN, _candidate_material_from_record(provisional))
-    candidate_id = f"urn:rawlsing:v3:oee:candidate:sha256:{candidate_hash}"
+    candidate_hash = _digest(_CANDIDATE_DOMAIN, _candidate_material(provisional))
     with_candidate = replace(
         provisional,
-        source_candidate_id=candidate_id,
+        source_candidate_id="urn:rawlsing:v3:oee:candidate:sha256:" + candidate_hash,
         source_candidate_replay_hash=candidate_hash,
     )
     record_hash = _digest(_RECORD_DOMAIN, _record_identity(with_candidate))
-    event = None if effect is None else (
-        f"urn:rawlsing:v3:oee:event:sha256:"
-        f"{_digest(_EVENT_DOMAIN, {'record_hash': record_hash, 'effect': effect})}"
-    )
+    event_id = None
+    if effect is not None:
+        event_hash = _digest(_EVENT_DOMAIN, {"record_hash": record_hash, "effect": effect})
+        event_id = "urn:rawlsing:v3:oee:event:sha256:" + event_hash
     return replace(
         with_candidate,
-        record_id=f"urn:rawlsing:v3:oee:record:sha256:{record_hash}",
-        event_id=event,
+        record_id="urn:rawlsing:v3:oee:record:sha256:" + record_hash,
+        event_id=event_id,
         record_hash=record_hash,
     )
 
-def _required_ref_present(provenance: tuple[ExactRef, ...], required: ExactRef, label: str) -> None:
-    if required not in provenance:
-        raise OEEIntegrityError(f"missing exact {label} provenance")
+def _require_exact_provenance(provenance: tuple[ExactRef, ...], state: str) -> None:
+    required = set(_required_fixed_provenance(state))
+    if not required.issubset(set(provenance)):
+        raise OEEIntegrityError("missing exact accepted ADP-010/008/020 provenance")
 
-def validate_record(r: Any) -> V3OEERealizationRecord:
-    if not isinstance(r, V3OEERealizationRecord):
+def _require_auth_ref(provenance: tuple[ExactRef, ...], kind: str, prefix: str) -> None:
+    refs = tuple(r for r in provenance if r.kind == kind)
+    if not refs:
+        raise OEEIntegrityError(f"missing {kind}")
+    for ref in refs:
+        _validate_content_ref(ref, kind, prefix, kind)
+
+def validate_record(record: Any) -> V3OEERealizationRecord:
+    if not isinstance(record, V3OEERealizationRecord):
         raise OEEIntegrityError("record must be V3OEERealizationRecord")
     if (
-        r.authority_id, r.authority_version, r.registry_id, r.registry_version
+        record.authority_id,
+        record.authority_version,
+        record.registry_id,
+        record.registry_version,
     ) != (
-        ADP010_AUTHORITY_ID, ADP010_AUTHORITY_VERSION, ADP010_REGISTRY_ID, ADP010_REGISTRY_VERSION
+        ADP010_AUTHORITY_ID,
+        ADP010_AUTHORITY_VERSION,
+        ADP010_REGISTRY_ID,
+        ADP010_REGISTRY_VERSION,
     ):
         raise OEEIntegrityError("ADP-010 authority/registry mismatch")
-    if r.realization_state not in _RULES:
+    if record.realization_state not in _RULES:
         raise OEEIntegrityError("unsupported realization state")
-    rule_id, _, _, effect = _RULES[r.realization_state]
-    if (r.rule_id, r.rule_version) != (rule_id, RULE_VERSION):
+    rule_id, _, _, effect = _RULES[record.realization_state]
+    if (record.rule_id, record.rule_version) != (rule_id, RULE_VERSION):
         raise OEEIntegrityError("rule identity mismatch")
-    _s(r.actor_id, "actor_id")
-    _s(r.subject_ref, "subject_ref")
-    _h(r.source_candidate_replay_hash, "source_candidate_replay_hash")
-    _ref(r.phase_state_ref, "phase_state_ref")
-    if r.phase_state_ref.kind != "V3DevelopmentalPhaseState":
+
+    _s(record.actor_id, "actor_id")
+    _s(record.subject_ref, "subject_ref")
+    _h(record.source_candidate_replay_hash, "source_candidate_replay_hash")
+    phase = _ref(record.phase_state_ref, "phase_state_ref")
+    if phase.kind != "V3DevelopmentalPhaseState":
         raise OEEIntegrityError("phase_state_ref kind mismatch")
-    _ref(r.prior_ledger_anchor_ref, "prior_ledger_anchor_ref")
-    context = _refs(r.context_or_world_receipt_refs, "context", True)
-    apps = _refs(r.applicability_receipt_refs, "applicability", r.realization_state != STATE_AVAILABLE)
-    constraints = _refs(r.position_or_other_constraint_refs, "constraints")
-    witnesses = _refs(r.causal_witness_refs, "witnesses", True)
-    provenance = _refs(r.provenance_refs, "provenance", True)
+    _ref(record.prior_ledger_anchor_ref, "prior_ledger_anchor_ref")
+    context = _refs(record.context_or_world_receipt_refs, "context", True)
+    apps = _refs(
+        record.applicability_receipt_refs,
+        "applicability",
+        record.realization_state != STATE_AVAILABLE,
+    )
+    constraints = _refs(record.position_or_other_constraint_refs, "constraints")
+    witnesses = _refs(record.causal_witness_refs, "witnesses", True)
+    provenance = _refs(record.provenance_refs, "provenance", True)
     if (
-        context != r.context_or_world_receipt_refs
-        or apps != r.applicability_receipt_refs
-        or constraints != r.position_or_other_constraint_refs
-        or witnesses != r.causal_witness_refs
-        or provenance != r.provenance_refs
+        context != record.context_or_world_receipt_refs
+        or apps != record.applicability_receipt_refs
+        or constraints != record.position_or_other_constraint_refs
+        or witnesses != record.causal_witness_refs
+        or provenance != record.provenance_refs
     ):
         raise OEEIntegrityError("record refs are not canonical")
-    _interval(r.effective_from, r.effective_until)
-    _s(r.time_granularity, "time_granularity")
-    if r.rng_decision_receipt_ref is not None:
+    _interval(record.effective_from, record.effective_until)
+    _s(record.time_granularity, "time_granularity")
+    if record.rng_decision_receipt_ref is not None:
         raise OEEIntegrityError("ADP-010 core-v1 is ZERO_DRAW")
 
-    for req, label in (
-        (ADP010_AUTHORITY_HASH_REF, "ADP-010 authority hash"),
-        (ADP010_REGISTRY_HASH_REF, "ADP-010 registry hash"),
-        (_rule_hash_ref(r.realization_state), "ADP-010 rule hash"),
-        (ADP008_AUTHORITY_HASH_REF, "ADP-008 authority hash"),
-        (ADP008_REGISTRY_HASH_REF, "ADP-008 registry hash"),
-        (ADP020_AUTHORITY_HASH_REF, "ADP-020 authority hash"),
-    ):
-        _required_ref_present(provenance, req, label)
-
-    by_kind: dict[str, list[ExactRef]] = {}
-    for item in provenance:
-        by_kind.setdefault(item.kind, []).append(item)
-    def require_auth(kind: str, prefix: str, label: str, *, at_least: int = 1) -> None:
-        refs = by_kind.get(kind, [])
-        if len(refs) < at_least:
-            raise OEEIntegrityError(f"missing exact {label}")
-        for item in refs:
-            _validate_content_addressed_ref(item, label, kind, prefix)
-
-    require_auth(
+    _require_exact_provenance(provenance, record.realization_state)
+    _require_auth_ref(
+        provenance,
         "SUBJECT_INGRESS_AUTHENTICATION",
         "urn:rawlsing:subject-ingress-authentication:sha256:",
-        "subject ingress authentication",
     )
-    require_auth(
+    _require_auth_ref(
+        provenance,
         "ADP008_PHASE_STATE_AUTHENTICATION",
         "urn:rawlsing:adp008-phase-authentication:sha256:",
-        "ADP-008 phase-state authentication",
     )
-    if r.realization_state != STATE_AVAILABLE:
-        require_auth(
+    if record.realization_state != STATE_AVAILABLE:
+        _require_auth_ref(
+            provenance,
             "POSITIVE_APPLICABILITY_AUTHENTICATION",
             "urn:rawlsing:positive-applicability-authentication:sha256:",
-            "positive applicability authentication",
         )
-    if r.realization_state == STATE_ENCOUNTER:
-        require_auth(
+    if record.realization_state == STATE_ENCOUNTER:
+        _require_auth_ref(
+            provenance,
             "CONTACT_OCCURRENCE_AUTHENTICATION",
             "urn:rawlsing:contact-occurrence-authentication:sha256:",
-            "contact-occurrence authentication",
         )
-        require_auth(
+        _require_auth_ref(
+            provenance,
             "CONTACT_INDEPENDENCE_AUTHENTICATION",
             "urn:rawlsing:contact-independence-authentication:sha256:",
-            "contact-witness independence authentication",
         )
-        kinds = {x.kind 
+        kinds = {r.kind for r in witnesses}
+        if CONTACT_WITNESS_KIND not in kinds or CONTACT_INDEPENDENCE_KIND not in kinds:
+            raise OEEIntegrityError("ENCOUNTER record lacks exact contact/independence witness refs")
+        if any(r.kind in _INSUFFICIENT_CONTACT for r in witnesses):
+            raise OEEIntegrityError("insufficient proximity evidence cannot be ENCOUNTER witness")
+    if record.realization_state == STATE_AVAILABLE:
+        kinds = {r.kind for r in witnesses}
+        if "SUBJECT_MATERIALIZATION_RECEIPT" not in kinds or "CAUSAL_USE_PERMISSION" not in kinds:
+            raise OEEIntegrityError("AVAILABLE record lacks materialization/use witnesses")
+
+    candidate_hash = _digest(_CANDIDATE_DOMAIN, _candidate_material(record))
+    if record.source_candidate_replay_hash != candidate_hash:
+        raise OEEIntegrityError("source candidate replay hash mismatch")
+    if record.source_candidate_id != "urn:rawlsing:v3:oee:candidate:sha256:" + candidate_hash:
+        raise OEEIntegrityError("source_candidate_id is not derived from candidate material")
+
+    record_hash = _digest(_RECORD_DOMAIN, _record_identity(record))
+    if record.record_hash != record_hash or record.record_id != "urn:rawlsing:v3:oee:record:sha256:" + record_hash:
+        raise OEEIntegrityError("record identity/hash mismatch")
+    event_id = None
+    if effect is not None:
+        event_hash = _digest(_EVENT_DOMAIN, {"record_hash": record_hash, "effect": effect})
+        event_id = "urn:rawlsing:v3:oee:event:sha256:" + event_hash
+    if (record.event_id, record.event_effect_kind) != (event_id, effect):
+        raise OEEIntegrityError("event identity/effect mismatch")
+    return record
+
+class _Executor:
+    def __init__(self, currentness: str) -> None:
+        if currentness not in {CURRENT_ACCEPTED, NONCURRENT_SYNTHETIC_TEST_ONLY}:
+            raise OEEIntegrityError("unsupported executor currentness")
+        self.currentness = currentness
+
+    def _parent(self, record: Any, expected_state: str, actor_id: str, subject_ref: str) -> V3OEERealizationRecord:
+        record = validate_record(record)
+        if record.realization_state != expected_state:
+            raise OEEAdmissionError(f"expected {expected_state} parent")
+        if record.actor_id != actor_id:
+            raise OEEAdmissionError("parent actor continuity failure")
+        if record.subject_ref != subject_ref:
+            raise OEEAdmissionError("parent subject continuity failure")
+        return record
+
+    def admit_available(
+        self,
+        *,
+        subject: SubjectIngressEvidence,
+        actor: ActorPhaseEvidence,
+        effective_from: str,
+        effective_until: str,
+        time_granularity: str,
+        context_or_world_receipt_refs: Iterable[ExactRef],
+        prior_ledger_anchor_ref: ExactRef,
+        provenance_refs: Iterable[ExactRef],
+    ) -> OEEExecutionResult:
+        subject, subject_auth = _validate_subject(subject, self.currentness)
+        actor, phase_auth = _validate_actor(actor, self.currentness)
+        start, end = _interval(effective_from, effective_until)
+        granularity = _s(time_granularity, "time_granularity")
+        context = _refs(context_or_world_receipt_refs, "context", True)
+        prior = _ref(prior_ledger_anchor_ref, "prior_ledger_anchor_ref")
+        mat_ref = ExactRef(
+            "SUBJECT_MATERIALIZATION_RECEIPT",
+            subject.materialization_receipt.receipt_id,
+            subject.materialization_receipt.receipt_hash,
+        )
+        witnesses = _refs(
+            (mat_ref, subject.causal_use_permission.permission_ref),
+            "available basis witnesses",
+            True,
+        )
+        provenance = _merge(
+            subject.provenance_refs,
+            actor.provenance_refs,
+            context,
+            provenance_refs,
+            (
+                mat_ref,
+                subject.causal_use_permission.permission_ref,
+                actor.phase_state_ref,
+                actor.phase_state_receipt_ref,
+                prior,
+                subject_auth,
+                subject.causal_use_permission.authentication_ref,
+                phase_auth,
+            ),
+            _required_fixed_provenance(STATE_AVAILABLE),
+        )
+        return OEEExecutionResult(
+            _build(
+                STATE_AVAILABLE,
+                actor,
+                subject,
+                None,
+                start,
+                end,
+                granularity,
+                context,
+                (),
+                (),
+                witnesses,
+                prior,
+                provenance,
+            )
+        )
+
+    def admit_opportunity(
+        self,
+        *,
+        parent_available: V3OEERealizationRecord,
+        subject: SubjectIngressEvidence,
+        actor: ActorPhaseEvidence,
+        opportunity_basis: OpportunityBasisEvidence,
+        effective_from: str,
+        effective_until: str,
+        time_granularity: str,
+        prior_ledger_anchor_ref: ExactRef,
+        provenance_refs: Iterable[ExactRef],
+    ) -> OEEExecutionResult:
+        subject, subject_auth = _validate_subject(subject, self.currentness)
+        actor, phase_auth = _validate_actor(actor, self.currentness)
+        parent = self._parent(parent_available, STATE_AVAILABLE, actor.actor_id, subject.subject_ref)
+        basis = opportunity_basis
+        if not isinstance(basis, OpportunityBasisEvidence):
+            raise OEEIntegrityError("opportunity_basis must be OpportunityBasisEvidence")
+        if basis.actor_id != actor.actor_id or basis.subject_ref != subject.subject_ref:
+            raise OEEAdmissionError("opportunity basis actor/subject mismatch")
+        _ref(basis.basis_ref, "basis_ref")
+        context = _refs(basis.context_or_world_receipt_refs, "context", True)
+        constraints = _refs(basis.position_or_other_constraint_refs, "constraints")
+        _refs(basis.provenance_refs, "basis provenance", True)
+        if not basis.applicability_receipts:
+            raise OEEAdmissionError("opportunity requires positive applicability")
+        app_refs: list[ExactRef] = []
+        app_auths: list[ExactRef] = []
+        for receipt in basis.applicability_receipts:
+            ref, auth = _validate_app(receipt, self.currentness)
+            app_refs.append(ref)
+            app_auths.append(auth)
+        apps = _refs(app_refs, "applicability", True)
+        start, end = _interval(effective_from, effective_until)
+        _within(start, end, parent)
+        granularity = _s(time_granularity, "time_granularity")
+        prior = _ref(prior_ledger_anchor_ref, "prior_ledger_anchor_ref")
+        witnesses = _refs((basis.basis_ref,), "opportunity basis witnesses", True)
+        provenance = _merge(
+            parent.provenance_refs,
+            subject.provenance_refs,
+            actor.provenance_refs,
+            basis.provenance_refs,
+            *(receipt.provenance_refs for receipt in basis.applicability_receipts),
+            context,
+            constraints,
+            provenance_refs,
+            (
+                basis.basis_ref,
+                actor.phase_state_ref,
+                actor.phase_state_receipt_ref,
+                prior,
+                subject_auth,
+                phase_auth,
+                *app_auths,
+            ),
+            _required_fixed_provenance(STATE_OPPORTUNITY),
+        )
+        return OEEExecutionResult(
+            _build(
+                STATE_OPPORTUNITY,
+                actor,
+                subject,
+                parent.record_id,
+                start,
+                end,
+                granularity,
+                context,
+                apps,
+                constraints,
+                witnesses,
+                prior,
+                provenance,
+            )
+        )
+
+    def admit_encounter(
+        self,
+        *,
+        parent_opportunity: V3OEERealizationRecord,
+        subject: SubjectIngressEvidence,
+        actor: ActorPhaseEvidence,
+        contact_witness: ContactOccurrenceWitness,
+        effective_time: str,
+        time_granularity: str,
+        prior_ledger_anchor_ref: ExactRef,
+        declared_precondition_refs: Iterable[ExactRef],
+        provenance_refs: Iterable[ExactRef],
+    ) -> OEEExecutionResult:
+        subject, subject_auth = _validate_subject(subject, self.currentness)
+        actor, phase_auth = _validate_actor(actor, self.currentness)
+        parent = self._parent(parent_opportunity, STATE_OPPORTUNITY, actor.actor_id, subject.subject_ref)
+        t = _time(effective_time, "effective_time")
+        _within(t, t, parent)
+        granularity = _s(time_granularity, "time_granularity")
+        witness, contact_auth, independence_auth = _validate_contact(
+            contact_witness,
+            actor.actor_id,
+            subject.subject_ref,
+            t,
+            self.currentness,
+        )
+        preconditions = _refs(declared_precondition_refs, "preconditions", True)
+        prior = _ref(prior_ledger_anchor_ref, "prior_ledger_anchor_ref")
+        witnesses = _merge((witness.witness_ref, witness.independence_ref), preconditions)
+        context = _refs(parent.context_or_world_receipt_refs, "context", True)
+        apps = _refs(parent.applicability_receipt_refs, "applicability", True)
+        constraints = _refs(parent.position_or_other_constraint_refs, "constraints")
+        provenance = _merge(
+            parent.provenance_refs,
+            subject.provenance_refs,
+            actor.provenance_refs,
+            witness.provenance_refs,
+            witness.contact_basis_refs,
+            witness.independence_basis_refs,
+            provenance_refs,
+            witnesses,
+            (
+                actor.phase_state_ref,
+                actor.phase_state_receipt_ref,
+                prior,
+                subject_auth,
+                phase_auth,
+                contact_auth,
+                independence_auth,
+            ),
+            _required_fixed_provenance(STATE_ENCOUNTER),
+        )
+        return OEEExecutionResult(
+            _build(
+                STATE_ENCOUNTER,
+                actor,
+                subject,
+                parent.record_id,
+                t,
+                t,
+                granularity,
+                context,
+                apps,
+                constraints,
+                witnesses,
+                prior,
+                provenance,
+            )
+        )
+
+_CURRENT_EXECUTOR = _Executor(CURRENT_ACCEPTED)
+_NONCURRENT_TEST_EXECUTOR = _Executor(NONCURRENT_SYNTHETIC_TEST_ONLY)
+
+def admit_available(**kwargs: Any) -> OEEExecutionResult:
+    return _CURRENT_EXECUTOR.admit_available(**kwargs)
+
+def admit_opportunity(**kwargs: Any) -> OEEExecutionResult:
+    return _CURRENT_EXECUTOR.admit_opportunity(**kwargs)
+
+def admit_encounter(**kwargs: Any) -> OEEExecutionResult:
+    return _CURRENT_EXECUTOR.admit_encounter(**kwargs)
+
+def _admit_available_noncurrent_for_test(**kwargs: Any) -> OEEExecutionResult:
+    return _NONCURRENT_TEST_EXECUTOR.admit_available(**kwargs)
+
+def _admit_opportunity_noncurrent_for_test(**kwargs: Any) -> OEEExecutionResult:
+    return _NONCURRENT_TEST_EXECUTOR.admit_opportunity(**kwargs)
+
+def _admit_encounter_noncurrent_for_test(**kwargs: Any) -> OEEExecutionResult:
+    return _NONCURRENT_TEST_EXECUTOR.admit_encounter(**kwargs)
+
+def validate_basis_available_opportunity_encounter_chain(
+    records: Sequence[V3OEERealizationRecord],
+) -> tuple[V3OEERealizationRecord, V3OEERealizationRecord, V3OEERealizationRecord]:
+    if len(records) != 3:
+        raise OEEAdmissionError("bounded chain must contain exactly AVAILABLE, OPPORTUNITY, ENCOUNTER")
+    available, opportunity, encounter = (validate_record(r) for r in records)
+    if [r.realization_state for r in (available, opportunity, encounter)] != [
+        STATE_AVAILABLE,
+        STATE_OPPORTUNITY,
+        STATE_ENCOUNTER,
+    ]:
+        raise OEEAdmissionError("bounded chain state order invalid")
+    if opportunity.parent_record_id != available.record_id or encounter.parent_record_id != opportunity.record_id:
+        raise OEEAdmissionError("bounded chain parentage invalid")
+    if len({r.actor_id for r in (available, opportunity, encounter)}) != 1:
+        raise OEEAdmissionError("bounded chain actor continuity failure")
+    if len({r.subject_ref for r in (available, opportunity, encounter)}) != 1:
+        raise OEEAdmissionError("bounded chain subject continuity failure")
+    return available, opportunity, encounter
+
+def authority_identity_manifest() -> dict[str, Any]:
+    return {
+        "successor": {"executor_id": EXECUTOR_ID, "executor_version": EXECUTOR_VERSION},
+        "ADP-010": {
+            "authority_id": ADP010_AUTHORITY_ID,
+            "authority_version": ADP010_AUTHORITY_VERSION,
+            "registry_id": ADP010_REGISTRY_ID,
+            "registry_version": ADP010_REGISTRY_VERSION,
+            "artifact_blob_sha": ADP010_AUTHORITY_ARTIFACT_BLOB_SHA,
+        },
+        "ADP-008": {
+            "authority_id": ADP008_AUTHORITY_ID,
+            "authority_version": ADP008_AUTHORITY_VERSION,
+            "registry_id": ADP008_REGISTRY_ID,
+            "registry_version": ADP008_REGISTRY_VERSION,
+            "artifact_blob_sha": ADP008_AUTHORITY_ARTIFACT_BLOB_SHA,
+            "required_phase": DEVELOPMENT_ACTIVE_PHASE,
+        },
+        "ADP-020": {
+            "authority_id": ADP020_AUTHORITY_ID,
+            "authority_version": ADP020_AUTHORITY_VERSION,
+            "artifact_blob_sha": ADP020_AUTHORITY_ARTIFACT_BLOB_SHA,
+            "core_rule_rng": "ZERO_DRAW",
+        },
+        "OBL054": {
+            "adoption_artifact_blob": OBL054_ADOPTION_ARTIFACT_BLOB,
+            "materializer_id": OBL054_MATERIALIZER_ID,
+            "materializer_version": OBL054_MATERIALIZER_VERSION,
+            "accepted_root_hash": OBL054_ACCEPTED_ROOT_HASH,
+            "permit_id": OBL054_PERMIT_ID,
+            "permit_hash": OBL054_PERMIT_HASH,
+            "historical_invalid_obl053_adoption_blob": HISTORICAL_INVALID_OBL053_ADOPTION_ARTIFACT_BLOB,
+        },
+        "historical_S3": {
+            "semantic_candidate_sha": HISTORICAL_S3_SEMANTIC_CANDIDATE_SHA,
+            "evidence_execution_sha": HISTORICAL_S3_EVIDENCE_EXECUTION_SHA,
+            "module_blob_sha": HISTORICAL_S3_MODULE_BLOB_SHA,
+            "test_blob_sha": HISTORICAL_S3_TEST_BLOB_SHA,
+        },
+    }
+
+def _fixture_ref(kind: str, tag: str) -> ExactRef:
+    h = sha256(tag.encode("utf-8")).hexdigest()
+    return ExactRef(kind, f"urn:w2:synthetic:{tag}", h)
+
+def _synthetic_materialization(tag: str = "subject") -> SubjectMaterializationReceipt:
+    owner_id = "W2_SYNTHETIC_SUBJECT_OWNER"
+    owner_version = "test-1"
+    owner_hash = sha256((tag + ":owner").encode()).hexdigest()
+    object_ref = _fixture_ref("SYNTHETIC_SEMANTIC_OBJECT", tag + ":object")
+    evidence = (_fixture_ref("SYNTHETIC_EVIDENCE", tag + ":evidence"),)
+    provenance = (_fixture_ref("SYNTHETIC_PROVENANCE", tag + ":provenance"),)
+    dummy = SubjectMaterializationReceipt(
+        receipt_id="",
+        receipt_hash="0" * 64,
+        subject_ref="",
+        subject_ref_hash="0" * 64,
+        materializer_id="W2_NONCURRENT_SYNTHETIC_MATERIALIZER",
+        materializer_version="test-1",
+        adoption_artifact_blob="1" * 40,
+        accepted_owner_root_hash=sha256((tag + ":root").encode()).hexdigest(),
+        materialization_permit_id="urn:w2:synthetic:permit:" + tag,
+        materialization_permit_hash=sha256((tag + ":permit").encode()).hexdigest(),
+        semantic_owner_authority_id=owner_id,
+        semantic_owner_authority_version=owner_version,
+        semantic_owner_authority_hash=owner_hash,
+        semantic_object_ref=object_ref,
+        owner_binding_content_hash="0" * 64,
+        evidence_refs=evidence,
+        provenance_refs=provenance,
+        replay_input_hash="0" * 64,
+        integrity_state=NONCURRENT_SYNTHETIC_TEST_ONLY,
+        semantic_owner_transfer=False,
+        semantic_fields_interpreted=False,
+        currentness_state=NONCURRENT_SYNTHETIC_TEST_ONLY,
+    )
+    owner_binding = _digest_bytes(MATERIALIZER_OWNER_BINDING_DOMAIN, _materializer_owner_material(dummy))
+    with_owner = replace(dummy, owner_binding_content_hash=owner_binding)
+    subject_material = _materializer_subject_material(with_owner)
+    subject_hash = _digest_bytes(MATERIALIZER_SUBJECT_REF_DOMAIN, subject_material)
+    subject_ref = "urn:rawlsing:v3:subject:sha256:" + subject_hash
+    replay_hash = sha256(
+        json.dumps(subject_material, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+    with_subject = replace(
+        with_owner,
+        subject_ref=subject_ref,
+        subject_ref_hash=subject_hash,
+        replay_input_hash=replay_hash,
+    )
+    receipt_hash = _digest_bytes(MATERIALIZER_RECEIPT_DOMAIN, _materializer_receipt_body(with_subject))
+    return replace(
+        with_subject,
+        receipt_hash=receipt_hash,
+        receipt_id="urn:rawlsing:v3:authenticated-subject-materialization-receipt:sha256:" + receipt_hash,
+    )
+
+def _synthetic_subject(tag: str = "subject") -> SubjectIngressEvidence:
+    m = _synthetic_materialization(tag)
+    mat_ref = ExactRef("SUBJECT_MATERIALIZATION_RECEIPT", m.receipt_id, m.receipt_hash)
+    perm_authority_id = "W2_SYNTHETIC_CAUSAL_USE_OWNER"
+    perm_authority_version = "test-1"
+    perm_authority_hash = sha256((tag + ":causal-owner").encode()).hexdigest()
+    perm_ref = _fixture_ref("CAUSAL_USE_PERMISSION", tag + ":causal-use")
+    perm_accept = _authority_acceptance_ref(
+        "ACCEPTED_CAUSAL_USE_AUTHORITY_RECEIPT",
+        perm_authority_id,
+        perm_authority_version,
+        perm_authority_hash,
+        NONCURRENT_SYNTHETIC_TEST_ONLY,
+    )
+    perm0 = CausalUsePermission(
+        permission_ref=perm_ref,
+        authority_id=perm_authority_id,
+        authority_version=perm_authority_version,
+        authority_content_hash=perm_authority_hash,
+        authority_acceptance_ref=perm_accept,
+        subject_ref=m.subject_ref,
+        semantic_object_ref=m.semantic_object_ref,
+        materialization_receipt_ref=mat_ref,
+        scope="ADP010_CAUSAL_USE",
+        provenance_refs=(_fixture_ref("SYNTHETIC_PROVENANCE", tag + ":causal-prov"),),
+        authentication_ref=_fixture_ref("PLACEHOLDER", tag + ":perm-placeholder"),
+        currentness_state=NONCURRENT_SYNTHETIC_TEST_ONLY,
+    )
+    perm = replace(
+        perm0,
+        authentication_ref=_content_ref(
+            "CAUSAL_USE_PERMISSION_AUTHENTICATION",
+            "urn:rawlsing:causal-use-authentication:sha256:",
+            _permission_material(perm0),
+        ),
+    )
+    s0 = SubjectIngressEvidence(
+        subject_ref=m.subject_ref,
+        semantic_owner_authority_id=m.semantic_owner_authority_id,
+        semantic_owner_authority_version=m.semantic_owner_authority_version,
+        semantic_owner_authority_content_hash=m.semantic_owner_authority_hash,
+        semantic_object_ref=m.semantic_object_ref,
+        materialization_receipt=m,
+        obl054_adoption_artifact_blob="2" * 40,
+        epistemic_class=EP_GENERATED_RUNTIME_FACT,
+        causal_use_permission=perm,
+        provenance_refs=(_fixture_ref("SYNTHETIC_PROVENANCE", tag + ":subject-prov"),),
+        authentication_ref=_fixture_ref("PLACEHOLDER", tag + ":subject-placeholder"),
+        currentness_state=NONCURRENT_SYNTHETIC_TEST_ONLY,
+    )
+    return replace(
+        s0,
+        authentication_ref=_content_ref(
+            "SUBJECT_INGRESS_AUTHENTICATION",
+            "urn:rawlsing:subject-ingress-authentication:sha256:",
+            _subject_material(s0),
+        ),
+    )
+
+def _synthetic_actor(tag: str = "actor", phase_tag: str = "phase") -> ActorPhaseEvidence:
+    a0 = ActorPhaseEvidence(
+        actor_id="urn:w2:synthetic:actor:" + tag,
+        phase_state_ref=_fixture_ref("V3DevelopmentalPhaseState", tag + ":" + phase_tag + ":state"),
+        phase_state_receipt_ref=_fixture_ref("V3DevelopmentalPhaseStateReceipt", tag + ":" + phase_tag + ":receipt"),
+        phase_authority_id=ADP008_AUTHORITY_ID,
+        phase_authority_version=ADP008_AUTHORITY_VERSION,
+        phase_authority_artifact_blob_sha=ADP008_AUTHORITY_ARTIFACT_BLOB_SHA,
+        phase_registry_id=ADP008_REGISTRY_ID,
+        phase_registry_version=ADP008_REGISTRY_VERSION,
+        phase_registry_content_hash=ADP008_REGISTRY_CONTENT_HASH,
+        base_phase_id=DEVELOPMENT_ACTIVE_PHASE,
+        provenance_refs=(_fixture_ref("SYNTHETIC_PROVENANCE", tag + ":" + phase_tag + ":phase-prov"),),
+        authentication_ref=_fixture_ref("PLACEHOLDER", tag + ":phase-placeholder"),
+        currentness_state=NONCURRENT_SYNTHETIC_TEST_ONLY,
+    )
+    return replace(
+        a0,
+        authentication_ref=_content_ref(
+            "ADP008_PHASE_STATE_AUTHENTICATION",
+            "urn:rawlsing:adp008-phase-authentication:sha256:",
+            _phase_material(a0),
+        ),
+    )
+
+def _synthetic_app(tag: str = "app", authority_tag: str = "owner") -> PositiveApplicabilityReceipt:
+    authority_id = "W2_SYNTHETIC_APPLICABILITY_" + authority_tag
+    authority_version = "test-1"
+    authority_hash = sha256((tag + ":" + authority_tag).encode()).hexdigest()
+    a0 = PositiveApplicabilityReceipt(
+        receipt=_fixture_ref("POSITIVE_APPLICABILITY_RECEIPT", tag + ":receipt"),
+        authority_id=authority_id,
+        authority_version=authority_version,
+        authority_content_hash=authority_hash,
+        authority_acceptance_ref=_authority_acceptance_ref(
+            "ACCEPTED_APPLICABILITY_AUTHORITY_RECEIPT",
+            authority_id,
+            authority_version,
+            authority_hash,
+            NONCURRENT_SYNTHETIC_TEST_ONLY,
+        ),
+        result="POSITIVE",
+        provenance_refs=(_fixture_ref("SYNTHETIC_PROVENANCE", tag + ":app-prov"),),
+        authentication_ref=_fixture_ref("PLACEHOLDER", tag + ":app-placeholder"),
+        currentness_state=NONCURRENT_SYNTHETIC_TEST_ONLY,
+    )
+    return replace(
+        a0,
+        authentication_ref=_content_ref(
+            "POSITIVE_APPLICABILITY_AUTHENTICATION",
+            "urn:rawlsing:positive-applicability-authentication:sha256:",
+            _app_material(a0),
+        ),
+    )
+
+def _synthetic_basis(subject: SubjectIngressEvidence, actor: ActorPhaseEvidence, app: PositiveApplicabilityReceipt | None = None) -> OpportunityBasisEvidence:
+    return OpportunityBasisEvidence(
+        basis_ref=_fixture_ref("ACTOR_SPECIFIC_OPPORTUNITY_BASIS", "basis"),
+        actor_id=actor.actor_id,
+        subject_ref=subject.subject_ref,
+        applicability_receipts=(app or _synthetic_app(),),
+        context_or_world_receipt_refs=(
+            _fixture_ref("WORLD_RECEIPT", "world"),
+            _fixture_ref("CONTEXT_RECEIPT", "context"),
+        ),
+        position_or_other_constraint_refs=(_fixture_ref("CONSTRAINT_RECEIPT", "constraint"),),
+        provenance_refs=(_fixture_ref("SYNTHETIC_PROVENANCE", "basis-prov"),),
+    )
+
+def _synthetic_contact(
+    subject: SubjectIngressEvidence,
+    actor: ActorPhaseEvidence,
+    authority_tag: str = "owner",
+    contact_basis: tuple[ExactRef, ...] | None = None,
+    independence_basis: tuple[ExactRef, ...] | None = None,
+    witness_kind: str = CONTACT_WITNESS_KIND,
+    semantic: str = CONTACT_OCCURRENCE_SEMANTIC,
+    occurrence_time: str = "2031-01-01T12:00:00Z",
+) -> ContactOccurrenceWitness:
+    contact_id = "W2_SYNTHETIC_CONTACT_" + authority_tag
+    contact_version = "test-1"
+    contact_hash = sha256(("contact:" + authority_tag).encode()).hexdigest()
+    ind_id = "W2_SYNTHETIC_INDEPENDENCE_" + authority_tag
+    ind_version = "test-1"
+    ind_hash = sha256(("ind:" + authority_tag).encode()).hexdigest()
+    w0 = ContactOccurrenceWitness(
+        witness_ref=_fixture_ref(witness_kind, "contact-witness"),
+        witness_authority_id=contact_id,
+        witness_authority_version=contact_version,
+        witness_authority_content_hash=contact_hash,
+        witness_authority_acceptance_ref=_authority_acceptance_ref(
+            "ACCEPTED_CONTACT_OCCURRENCE_AUTHORITY_RECEIPT",
+            contact_id,
+            contact_version,
+            contact_hash,
+            NONCURRENT_SYNTHETIC_TEST_ONLY,
+        ),
+        actor_id=actor.actor_id,
+        subject_ref=subject.subject_ref,
+        occurrence_time=occurrence_time,
+        semantic=semantic,
+        contact_basis_refs=contact_basis or (_fixture_ref("DIRECT_CONTACT_OBSERVATION", "contact-basis"),),
+        contact_authentication_ref=_fixture_ref("PLACEHOLDER", "contact-auth-placeholder"),
+        independence_ref=_fixture_ref(CONTACT_INDEPENDENCE_KIND, "contact-independence"),
+        independence_authority_id=ind_id,
+        independence_authority_version=ind_version,
+        independence_authority_content_hash=ind_hash,
+        independence_authority_acceptance_ref=_authority_acceptance_ref(
+            "ACCEPTED_CONTACT_INDEPENDENCE_AUTHORITY_RECEIPT",
+            ind_id,
+            ind_version,
+            ind_hash,
+            NONCURRENT_SYNTHETIC_TEST_ONLY,
+        ),
+        independence_receipt_ref=_fixture_ref("CONTACT_WITNESS_INDEPENDENCE_RECEIPT", "contact-independence-receipt"),
+        independence_basis_refs=independence_basis or (_fixture_ref("INDEPENDENT_OBSERVER_CHAIN", "ind-basis"),),
+        independence_authentication_ref=_fixture_ref("PLACEHOLDER", "ind-auth-placeholder"),
+        provenance_refs=(_fixture_ref("SYNTHETIC_PROVENANCE", "contact-prov"),),
+        currentness_state=NONCURRENT_SYNTHETIC_TEST_ONLY,
+    )
+    contact_auth = _content_ref(
+        "CONTACT_OCCURRENCE_AUTHENTICATION",
+        "urn:rawlsing:contact-occurrence-authentication:sha256:",
+        _contact_material(w0),
+    )
+    w1 = replace(w0, contact_authentication_ref=contact_auth)
+    ind_auth = _content_ref(
+        "CONTACT_INDEPENDENCE_AUTHENTICATION",
+        "urn:rawlsing:contact-independence-authentication:sha256:",
+        _independence_material(w1, contact_auth),
+    )
+    return replace(w1, independence_authentication_ref=ind_auth)
+
+__all__ = [
+    "EXECUTOR_ID",
+    "EXECUTOR_VERSION",
+    "ADP010_AUTHORITY_ID",
+    "ADP010_AUTHORITY_VERSION",
+    "ADP010_REGISTRY_ID",
+    "ADP010_REGISTRY_VERSION",
+    "ADP010_AUTHORITY_ARTIFACT_BLOB_SHA",
+    "ADP008_AUTHORITY_ID",
+    "ADP008_AUTHORITY_VERSION",
+    "ADP008_REGISTRY_ID",
+    "ADP008_REGISTRY_VERSION",
+    "ADP008_AUTHORITY_ARTIFACT_BLOB_SHA",
+    "ADP020_AUTHORITY_ID",
+    "ADP020_AUTHORITY_VERSION",
+    "ADP020_AUTHORITY_ARTIFACT_BLOB_SHA",
+    "OBL054_ADOPTION_ARTIFACT_BLOB",
+    "OBL054_MATERIALIZER_ID",
+    "OBL054_MATERIALIZER_VERSION",
+    "OBL054_ACCEPTED_ROOT_HASH",
+    "OBL054_PERMIT_ID",
+    "OBL054_PERMIT_HASH",
+    "HISTORICAL_INVALID_OBL053_ADOPTION_ARTIFACT_BLOB",
+    "DEVELOPMENT_ACTIVE_PHASE",
+    "STATE_AVAILABLE",
+    "STATE_OPPORTUNITY",
+    "STATE_ENCOUNTER",
+    "EFFECT_OPPORTUNITY",
+    "EFFECT_ENCOUNTER",
+    "CONTACT_WITNESS_KIND",
+    "CONTACT_INDEPENDENCE_KIND",
+    "CONTACT_OCCURRENCE_SEMANTIC",
+    "EP_GENERATED_RUNTIME_FACT",
+    "EP_RESOLVER_CONTEXT",
+    "EP_ADMITTED_CAUSAL_EVENT",
+    "ExactRef",
+    "SubjectMaterializationReceipt",
+    "CausalUsePermission",
+    "SubjectIngressEvidence",
+    "ActorPhaseEvidence",
+    "PositiveApplicabilityReceipt",
+    "OpportunityBasisEvidence",
+    "ContactOccurrenceWitness",
+    "V3OEERealizationRecord",
+    "OEEExecutionResult",
+    "OEEAdmissionError",
+    "OEEIntegrityError",
+    "admit_available",
+    "admit_opportunity",
+    "admit_encounter",
+    "validate_record",
+    "validate_basis_available_opportunity_encounter_chain",
+    "authority_identity_manifest",
+]
