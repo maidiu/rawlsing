@@ -1,0 +1,43 @@
+{
+  "schema": "GT34_POST_Q_FANIN_HQ_DISPOSITION@1.0.0",
+  "disposition_id": "GT34_POST_Q_FANIN_HQ_DISPOSITION_R1",
+  "anchor_before_disposition": "b86ff7a22b2d9047e75ca61ba421788eda876833",
+  "q2": {
+    "worker_terminal": "PASS__GT34_Q2_Q69B_Q86A_SAME_SOURCE_RELEASE_MATERIALIZED__NO_ADOPTION",
+    "worker_tip": "6279debbc6bc02b91612e593c77dfdc79034211c",
+    "court_binding_tip": "211d1f97aad41661d0120b2834bf166ce42448d9",
+    "semantic_evidence_tip": "258b16365b9acc7844932e34dc500d4e829a60fc",
+    "court_run": 34014116929,
+    "court_job": 101434850326,
+    "court_result": "6 passed, 55 warnings in 212.65s",
+    "central_merge": "911fabf7ff2b4eae86df107a18f9618f3e12f033",
+    "adopted_at_grain": "EXACT_SAME_SOURCE_Q69B_Q86A_RESPONDENT_ALIGNED_RELEASE_MATERIALIZATION_AND_PACKAGE_LOCAL_REPLAY",
+    "release_id": "R5_GT34_Q2_Q69B_Q86A_SAME_SOURCE_CANDIDATE_R1",
+    "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+    "rows": 19210,
+    "release_semantic_sha256": "86a3c75c9f50a0399b6283dd427f0158f4c4767b2dfbfd6e36b231a17c321c58",
+    "release_manifest_sha256": "a8692ba4c0dbd7e53342bb9b73cd5f3ada2a7cce22310b445c5251a550d786e5",
+    "replay_manifest_sha256": "2c03d0076d3b30768d2fe10caed826f3123fbc94538434bfb6321d0eacd63698",
+    "transport_semantic_sha256": "f179a516f6bd14618e507ca1ebff0cdf85a954e792889d74f37ea93fc1561a61",
+    "transport_gzip_sha256": "bac725d53f1a125636d0687ecee89ad9ca8a11f5e558e7fe9089a8fb1d57ed82",
+    "q69b_predecessor_release_sha256": "2343023560ea963b6b290575d93361256825897a7c32ff31519e3d2425b595ec",
+    "q86_predecessor_release_sha256": "8315b104a94ae985a3ee3d77c8c365d5fcef6b6cb51a606df5bf141434668295",
+    "q86_predecessor_replay_sha256": "c80d08ca9a5bb4814bdca3c0c21cb4c708da32840d6459b190cca206c3e3b4aa",
+    "obl049": "CLOSED_AT_CANARY_GRAIN",
+    "predecessor_mutation": false,
+    "portability": "NONE",
+    "pooling": "NONE",
+    "semantic_owner_transfer": false
+  },
+  "q3": {
+    "worker_terminal": "BLOCKED__GT34_Q3_EXACT_FIRST_CANARY_SUBJECT_REF_NOT_MATERIALIZED__SUBJECT_CLASSIFICATION_PROOF_CANNOT_BE_LAWFULLY_DEFINED",
+    "worker_tip": "03cf4c33c8b03f58a4dff0118daf6778328a4376",
+    "central_merge": "b86ff7a22b2d9047e75ca61ba421788eda876833",
+    "obl048": "BLOCKED_ON_OBL052",
+    "subject_classification_authority_adopted": false,
+    "exact_first_canary_subject_ref": "NONE_CURRENT",
+    "new_prior_obligation": "OBL052"
+  },
+  "positive_v3_authorized": false,
+  "main_moved": false
+}
