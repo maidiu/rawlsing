@@ -1046,8 +1046,11 @@ def build_v558_repository_bundle(
     normalized = tuple(sorted(entries, key=lambda e: (e.obj.producer_family, e.obj.object_id, e.obj.content_hash)))
     edges = tuple(sorted(reference_edges, key=lambda e: e.edge_hash))
     external = tuple(sorted(external_bindings, key=lambda b: b.binding_id))
+    auth_mode = _text(dependency_role_authentication, "dependency_role_authentication")
+    if auth_mode != dependency_role_authentication:
+        raise M4IntegrityError("dependency-role authentication mode must be canonical exact text")
     role_bindings = _validated_dependency_role_bindings(
-        normalized, dependency_role_bindings, dependency_role_authentication,
+        normalized, dependency_role_bindings, auth_mode,
     )
     by_object: dict[tuple[str, str, str], RepositoryEntry] = {}
     by_locator: dict[tuple[str, str, str], RepositoryEntry] = {}
@@ -1112,12 +1115,12 @@ def build_v558_repository_bundle(
         raise ClosureIntegrityError("logical index manifest hash mismatch")
     material = _repository_material_from_ref(
         publication.ref, normalized, edges, external, manifest,
-        role_bindings, dependency_role_authentication,
+        role_bindings, auth_mode,
     )
     h = semantic_hash(material)
     return V558RepositoryBundle(
         f"V558REPO:{h}", h, V558_REPOSITORY_SCHEMA, publication.ref,
-        normalized, edges, external, manifest, role_bindings, dependency_role_authentication,
+        normalized, edges, external, manifest, role_bindings, auth_mode,
     )
 
 
@@ -1337,15 +1340,18 @@ def _validate_repository_checksum(repository: V558RepositoryBundle) -> None:
     expected_index_hash = semantic_hash(index_material)
     if repository.index_manifest.manifest_hash != expected_index_hash or repository.index_manifest.manifest_id != f"V558IDX:{expected_index_hash}":
         raise ClosureIntegrityError("repository index manifest checksum mismatch")
+    auth_mode = _text(repository.dependency_role_authentication, "dependency_role_authentication")
+    if auth_mode != repository.dependency_role_authentication:
+        raise ClosureIntegrityError("repository dependency-role authentication mode is noncanonical")
     role_bindings = _validated_dependency_role_bindings(
         repository.entries,
         repository.dependency_role_bindings,
-        repository.dependency_role_authentication,
+        auth_mode,
     )
     material = _repository_material_from_ref(
         repository.publication_bundle_ref, repository.entries, repository.reference_edges,
         repository.external_bindings, repository.index_manifest,
-        role_bindings, repository.dependency_role_authentication,
+        role_bindings, auth_mode,
     )
     expected = semantic_hash(material)
     if repository.repository_hash != expected or repository.repository_id != f"V558REPO:{expected}":
