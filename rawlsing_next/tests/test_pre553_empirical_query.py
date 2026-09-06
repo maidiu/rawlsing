@@ -1257,13 +1257,18 @@ def test_astra002_shared_i03_preserves_exact_lawful_target_use():
     assert result.facts[0].typed_state == "SUPPORTED"
 
 
-def test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive():
-    source = _build_source("astra002-deny", [
+@pytest.mark.parametrize(
+    "authority_state",
+    ("DENY", "OUT_OF_SCOPE", "SUPERSEDED_NOT_REPLAYABLE"),
+)
+def test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive(authority_state):
+    tag = f"astra002-nonpositive-{authority_state.lower()}"
+    source = _build_source(tag, [
         {"id": "R1", "responses": {"Y": 1}},
     ])
-    qa = _astra_query_authority("deny", state="DENY")
-    predicate = _branch_predicate(source, qa, tag="astra002-deny")
-    query = _query(source, qa, predicate, ("Y",), tag="astra002-deny")
+    qa = _astra_query_authority(tag, state=authority_state)
+    predicate = _branch_predicate(source, qa, tag=tag)
+    query = _query(source, qa, predicate, ("Y",), tag=tag)
     result = _run(source, qa, predicate, query, registry=_registry(source, qa))
     _assert_no_supported(result)
     assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
