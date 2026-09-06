@@ -14,7 +14,7 @@ structural, actor, or V3/V2 promotion.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Iterable
+from typing import Any, Iterable, Mapping
 
 from rawlsing_next.pre553_c11_integrity import RespondentIdentity
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
@@ -333,7 +333,7 @@ def _validate_target_events(
             )
         event = eligible[0]
         fields = event.multiplicity_order_rank_fields
-        if not isinstance(fields, dict) or fields.get("kind") != "SCALAR_SINGULAR":
+        if not isinstance(fields, Mapping) or fields.get("kind") != "SCALAR_SINGULAR":
             raise GT12BI03BindingError("Q86 event carrier topology drift from SCALAR_SINGULAR")
         if canonical_json(_event_value(event)) not in domain_keys:
             raise GT12BI03BindingError("validated projection domain omits an observed exact source-native response state")
@@ -450,7 +450,7 @@ def _validate_release_member_scope_linear(
                 "each frozen risk-set respondent must resolve exactly one included scalar response event per target"
             )
         fields = obj.multiplicity_order_rank_fields
-        if not isinstance(fields, dict) or fields.get("kind") != "SCALAR_SINGULAR":
+        if not isinstance(fields, Mapping) or fields.get("kind") != "SCALAR_SINGULAR":
             raise GT12BI03BindingError("Q86 event carrier topology drift from SCALAR_SINGULAR")
         if canonical_json(_event_value(obj)) not in domains[target_name]:
             raise GT12BI03BindingError(
