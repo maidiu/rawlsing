@@ -26,6 +26,7 @@ from rawlsing_next.m1_admitted_field_forge_relation_v554_ingress import (
 )
 from rawlsing_next.m4_m1_evaluation_binding import (
     ValidatedM1ProducerUseBinding,
+    _issue_validated_relation_producer_use_binding,
     structural_objects_from_accepted_m1,
 )
 from rawlsing_next.m4_v557_v558_publication_repository import (
@@ -647,3 +648,24 @@ def test_astra002_lawful_gt12_context_path_remains_exact_singleton():
         entry.governance.v557_allowed_uses == ("CONTEXT",)
         for entry in terminal.repository.entries
     )
+
+
+def test_astra002_issued_relation_use_capability_is_immutable():
+    admission, _, evaluation = _evaluate()
+    from rawlsing_next.gt12_permission_translation_authority import (
+        derive_adopted_permission_binding,
+    )
+    authority_binding = derive_adopted_permission_binding(admission)
+    token = _issue_validated_relation_producer_use_binding(
+        evaluation,
+        authority_binding,
+    )
+    assert token.producer_allowed_uses == ("CONTEXT",)
+    with pytest.raises(AttributeError, match="immutable"):
+        token.producer_allowed_uses = ("REVIEW",)
+    objects = structural_objects_from_accepted_m1(
+        evaluation,
+        validated_producer_use_binding=token,
+    )
+    assert objects
+    assert all(obj.producer_allowed_uses == ("CONTEXT",) for obj in objects)
