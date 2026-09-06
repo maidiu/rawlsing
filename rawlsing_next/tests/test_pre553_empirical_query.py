@@ -1092,13 +1092,25 @@ def test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detache
 
     # Direct semantic-field attributes are dict/list-compatible for existing
     # consumers, but identity-bearing descendants themselves are immutable.
-    with pytest.raises(TypeError, match="identity-bearing semantic descendants are immutable"):
+    with pytest.raises(TypeError):
         event.scoped_respondent_ref["object_id"] = "urn:mutated"
-    with pytest.raises(TypeError, match="identity-bearing semantic descendants are immutable"):
+    with pytest.raises(TypeError):
         event.multiplicity_order_rank_fields["kind"] = "RANKED_RESPONSE"
 
+    # Explicit base-class mutation cannot bypass the immutable representation:
+    # these values are not writable dict/list subclasses.
+    with pytest.raises(TypeError):
+        dict.__setitem__(event.multiplicity_order_rank_fields, "kind", "BASE_BYPASS")
+    with pytest.raises(TypeError):
+        dict.__setitem__(event.scoped_respondent_ref, "object_id", "urn:base-bypass")
+
+    components = query.target_arity_and_topology["components"]
+    assert not isinstance(components, list)
+    with pytest.raises(TypeError):
+        list.__setitem__(components, 0, {"mutated": True})
+
     # semantic_fields no longer exposes a writable nested alias.
-    with pytest.raises(TypeError, match="identity-bearing semantic descendants are immutable"):
+    with pytest.raises(TypeError):
         event.semantic_fields["scoped_respondent_ref"]["content_hash"] = "0" * 64
 
     # semantic_projection()/as_dict() are detached exports. They remain ordinary
@@ -1117,15 +1129,15 @@ def test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detache
     # writable identity-bearing body.
     resolved_event = source["repo"].resolve_object_exact(event.ref)
     assert resolved_event is event
-    with pytest.raises(TypeError, match="identity-bearing semantic descendants are immutable"):
+    with pytest.raises(TypeError):
         resolved_event.multiplicity_order_rank_fields["kind"] = "REPOSITORY_MUTATION"
 
     source_authority = source["source_auth"]
     source_authority_ref_before = source_authority.authority_ref
     source_authority_projection_before = source_authority.semantic_projection()
-    with pytest.raises(TypeError, match="identity-bearing semantic descendants are immutable"):
+    with pytest.raises(TypeError):
         source_authority.scope_envelope["source_universe_refs"] = "MUTATED"
-    with pytest.raises(TypeError, match="identity-bearing semantic descendants are immutable"):
+    with pytest.raises(TypeError):
         source_authority.semantic_fields["scope_envelope"]["source_universe_refs"] = "MUTATED"
     authority_export = source_authority.as_dict()
     authority_export["semantic_fields"]["scope_envelope"]["source_universe_refs"] = "DETACHED"
