@@ -812,4 +812,177 @@ def _validate_actor(
     r = _ref(a.phase_state_ref, "phase_state_ref")
     if r.kind != "V3DevelopmentalPhaseState":
         raise OEEAdmissionError("phase_state_ref must be V3DevelopmentalPhaseState")
-    i
+    if (
+        a.phase_authority_id,
+        a.phase_authority_version,
+        a.phase_authority_artifact_blob_sha,
+        a.phase_registry_id,
+        a.phase_registry_version,
+    ) != (
+        ADP008_AUTHORITY_ID,
+        ADP008_AUTHORITY_VERSION,
+        ADP008_AUTHORITY_ARTIFACT_BLOB_SHA,
+        ADP008_REGISTRY_ID,
+        ADP008_REGISTRY_VERSION,
+    ):
+        raise OEEAdmissionError("wrong ADP-008 authority/registry binding")
+    _blob(a.phase_authority_artifact_blob_sha, "phase authority blob")
+    if a.base_phase_id != DEVELOPMENT_ACTIVE_PHASE:
+        raise OEEAdmissionError("V3DP_DEVELOPMENT_ACTIVE is required")
+    _refs(a.provenance_refs, "actor.provenance_refs", True)
+
+    if allow_legacy and a.phase_state_receipt_ref is None:
+        return a, _legacy_phase_auth(a)
+
+    _validate_currentness(a.currentness_state, allow_noncurrent=allow_noncurrent, n="phase currentness")
+    _ref(a.phase_state_receipt_ref, "phase state receipt")
+    if a.phase_registry_content_hash != ADP008_REGISTRY_CONTENT_HASH:
+        raise OEEAdmissionError("ADP-008 phase registry content hash mismatch")
+    expected = _content_ref(
+        "ADP008_PHASE_STATE_AUTHENTICATION",
+        "urn:rawlsing:adp008-phase-authentication:sha256:",
+        _phase_material(a),
+    )
+    if a.authentication_ref != expected:
+        raise OEEIntegrityError("ADP-008 phase-state authentication mismatch")
+    return a, expected
+
+def _app_material(x: PositiveApplicabilityReceipt) -> dict[str, Any]:
+    return {
+        "receipt": x.receipt,
+        "authority": [x.authority_id, x.authority_version, x.authority_content_hash],
+        "authority_acceptance_ref": x.authority_acceptance_ref,
+        "result": x.result,
+        "provenance_refs": _refs(x.provenance_refs, "applicability provenance", True),
+        "currentness_state": x.currentness_state,
+    }
+
+def _legacy_app_auth(x: PositiveApplicabilityReceipt) -> ExactRef:
+    if (
+        x.authority_id != "SYNTHETIC_APPLICABILITY_OWNER"
+        or x.authority_version != "1.0.0"
+        or x.authority_content_hash != sha256(b"app-owner").hexdigest()
+    ):
+        raise OEEAdmissionError("legacy synthetic applicability owner is not trusted by W2 compatibility court")
+    return _legacy_fixture_auth_ref("POSITIVE_APPLICABILITY_AUTHENTICATION", _app_material(x))
+
+def _validate_app(
+    x: Any,
+    *,
+    allow_noncurrent: bool,
+    allow_legacy: bool,
+) -> tuple[ExactRef, ExactRef]:
+    if not isinstance(x, PositiveApplicabilityReceipt) or x.result != "POSITIVE":
+        raise OEEAdmissionError("opportunity requires positive applicability")
+    _ref(x.receipt, "applicability receipt")
+    _s(x.authority_id, "applicability authority")
+    _s(x.authority_version, "applicability version")
+    _h(x.authority_content_hash, "applicability authority hash")
+    _refs(x.provenance_refs, "applicability provenance", True)
+
+    if allow_legacy and x.authentication_ref is None:
+        return x.receipt, _legacy_app_auth(x)
+
+    _validate_currentness(x.currentness_state, allow_noncurrent=allow_noncurrent, n="applicability currentness")
+    _validate_content_addressed_ref(
+        x.authority_acceptance_ref,
+        "applicability authority acceptance",
+        "ACCEPTED_APPLICABILITY_AUTHORITY_RECEIPT",
+        "urn:rawlsing:accepted-applicability-authority:sha256:",
+    )
+    expected = _content_ref(
+        "POSITIVE_APPLICABILITY_AUTHENTICATION",
+        "urn:rawlsing:positive-applicability-authentication:sha256:",
+        _app_material(x),
+    )
+    if x.authentication_ref != expected:
+        raise OEEIntegrityError("positive applicability authentication mismatch")
+    return x.receipt, expected
+
+def _contact_material(w: ContactOccurrenceWitness) -> dict[str, Any]:
+    return {
+        "witness_ref": w.witness_ref,
+        "witness_authority": [
+            w.witness_authority_id,
+            w.witness_authority_version,
+            w.witness_authority_content_hash,
+        ],
+        "authority_acceptance_ref": w.authority_acceptance_ref,
+        "actor_id": w.actor_id,
+        "subject_ref": w.subject_ref,
+        "occurrence_time": _time(w.occurrence_time, "contact occurrence time"),
+        "semantic": w.semantic,
+        "contact_basis_refs": _refs(w.contact_basis_refs, "contact basis", True),
+        "provenance_refs": _refs(w.provenance_refs, "witness provenance", True),
+        "currentness_state": w.currentness_state,
+    }
+
+def _independence_material(w: ContactOccurrenceWitness, contact_auth: ExactRef) -> dict[str, Any]:
+    return {
+        "contact_authentication_ref": contact_auth,
+        "independence_ref": w.independence_ref,
+        "independence_authority": [
+            w.independence_authority_id,
+            w.independence_authority_version,
+            w.independence_authority_content_hash,
+        ],
+        "independence_authority_acceptance_ref": w.independence_authority_acceptance_ref,
+        "independence_receipt_ref": w.independence_receipt_ref,
+        "independence_basis_refs": _refs(w.independence_basis_refs, "independence basis", True),
+        "currentness_state": w.currentness_state,
+    }
+
+def _legacy_contact_auth(w: ContactOccurrenceWitness) -> tuple[ExactRef, ExactRef]:
+    if (
+        w.witness_authority_id != "SYNTHETIC_CONTACT_OCCURRENCE_OWNER"
+        or w.witness_authority_version != "1.0.0"
+        or w.witness_authority_content_hash != sha256(b"contact-owner").hexdigest()
+    ):
+        raise OEEAdmissionError("legacy synthetic contact owner is not trusted by W2 compatibility court")
+    contact_auth = _legacy_fixture_auth_ref(
+        "CONTACT_OCCURRENCE_AUTHENTICATION",
+        [
+            w.witness_ref, w.witness_authority_id, w.witness_authority_version,
+            w.witness_authority_content_hash, w.actor_id, w.subject_ref,
+            _time(w.occurrence_time, "contact occurrence time"), w.semantic,
+            _refs(w.provenance_refs, "witness provenance", True),
+            NONCURRENT_SYNTHETIC_TEST_ONLY,
+        ],
+    )
+    independence_auth = _legacy_fixture_auth_ref(
+        "CONTACT_INDEPENDENCE_AUTHENTICATION",
+        [contact_auth, w.independence_ref, NONCURRENT_SYNTHETIC_TEST_ONLY],
+    )
+    return contact_auth, independence_auth
+
+def _validate_contact(
+    w: Any,
+    actor_id: str,
+    subject_ref: str,
+    effective_time: str,
+    *,
+    allow_noncurrent: bool,
+    allow_legacy: bool,
+) -> tuple[ContactOccurrenceWitness, ExactRef, ExactRef]:
+    if not isinstance(w, ContactOccurrenceWitness):
+        raise OEEAdmissionError("ENCOUNTER requires exact ContactOccurrenceWitness")
+    wr = _ref(w.witness_ref, "contact witness")
+    if wr.kind in _INSUFFICIENT_CONTACT:
+        raise OEEAdmissionError("co-location/co-presence or structural proximity is insufficient for ENCOUNTER")
+    if wr.kind != CONTACT_WITNESS_KIND:
+        raise OEEAdmissionError("contact witness must be independently supplied contact-occurrence witness")
+    if w.actor_id != actor_id or w.subject_ref != subject_ref:
+        raise OEEAdmissionError("contact witness actor/subject mismatch")
+    _s(w.witness_authority_id, "witness authority")
+    _s(w.witness_authority_version, "witness authority version")
+    _h(w.witness_authority_content_hash, "witness authority hash")
+    if w.semantic != CONTACT_OCCURRENCE_SEMANTIC:
+        raise OEEAdmissionError("contact witness does not assert CONTACT_OCCURRENCE")
+    if _time(w.occurrence_time, "contact occurrence time") != effective_time:
+        raise OEEAdmissionError("encounter time must equal contact occurrence time")
+    ir = _ref(w.independence_ref, "independence ref")
+    if ir.kind != CONTACT_INDEPENDENCE_KIND:
+        raise OEEAdmissionError("contact witness lacks independence proof")
+    _refs(w.provenance_refs, "witness provenance", True)
+
+    if allow_legacy && false){}
