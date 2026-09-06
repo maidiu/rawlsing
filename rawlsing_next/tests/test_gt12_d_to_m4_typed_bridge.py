@@ -25,6 +25,8 @@ from rawlsing_next.m1_admitted_field_forge_relation_v554_ingress import (
     prepare_admitted_field_forge_relation_basis,
 )
 from rawlsing_next.m4_m1_evaluation_binding import (
+    ValidatedM1ProducerUseBinding,
+    _issue_validated_relation_producer_use_binding,
     structural_objects_from_accepted_m1,
 )
 from rawlsing_next.m4_v557_v558_publication_repository import (
@@ -567,3 +569,103 @@ def test_actor_or_v3_authority_is_not_created_by_bridge_payload():
         "NO_NEW_V553_TEMPORAL_MEANING_REQUIRED"
     )
     assert bridge.payload["focal_structural_proposition_ref"] == FOCAL_STRUCTURAL_PROPOSITION
+
+
+# ASTRA-002 shared M1->M4 authority-boundary hostile controls.
+
+@pytest.mark.parametrize(
+    "raw_uses",
+    [
+        ("REVIEW",),
+        ("ACTIVE_CAUSAL",),
+        ("CONTEXT", "REVIEW"),
+        ("CONTEXT",),
+    ],
+)
+def test_astra002_shared_relation_adapter_rejects_all_raw_caller_selected_uses(raw_uses):
+    _, _, evaluation = _evaluate()
+    with pytest.raises(
+        M4IntegrityError,
+        match="relation M1 producer uses may not be caller-selected",
+    ):
+        structural_objects_from_accepted_m1(
+            evaluation,
+            producer_allowed_uses=raw_uses,
+        )
+
+
+def test_astra002_shared_relation_adapter_rejects_absent_validated_binding():
+    _, _, evaluation = _evaluate()
+    with pytest.raises(
+        M4IntegrityError,
+        match="requires exact validated producer-use authority binding",
+    ):
+        structural_objects_from_accepted_m1(evaluation)
+
+
+def test_astra002_shared_relation_adapter_rejects_raw_mapping_as_validated_binding():
+    admission, _, evaluation = _evaluate()
+    # Even a mapping produced from the lawful authority derivation is evidence,
+    # not the non-forgeable capability consumed by the shared adapter.
+    from rawlsing_next.gt12_permission_translation_authority import (
+        derive_adopted_permission_binding,
+    )
+    raw_binding = derive_adopted_permission_binding(admission)
+    with pytest.raises(
+        M4IntegrityError,
+        match="requires exact validated producer-use authority binding",
+    ):
+        structural_objects_from_accepted_m1(
+            evaluation,
+            validated_producer_use_binding=raw_binding,
+        )
+
+
+def test_astra002_validated_relation_binding_cannot_be_caller_forged():
+    _, _, evaluation = _evaluate()
+    with pytest.raises(
+        M4IntegrityError,
+        match="may be issued only by a governed authority wrapper",
+    ):
+        ValidatedM1ProducerUseBinding(
+            m1_contract_id=evaluation.contract_id,
+            producer_allowed_uses=("REVIEW",),
+            authority_binding_hash=_h("caller-minted-authority-binding"),
+            evaluation_binding_hash=_h("caller-minted-evaluation-binding"),
+            _seal=object(),
+        )
+
+
+def test_astra002_lawful_gt12_context_path_remains_exact_singleton():
+    admission, _, evaluation = _evaluate()
+    terminal = _publish(admission, evaluation)
+    assert terminal.permission_binding["producer_allowed_uses"] == ["CONTEXT"]
+    assert all(
+        entry.obj.producer_allowed_uses == ("CONTEXT",)
+        for entry in terminal.repository.entries
+    )
+    assert all(
+        entry.governance.v557_allowed_uses == ("CONTEXT",)
+        for entry in terminal.repository.entries
+    )
+
+
+def test_astra002_issued_relation_use_capability_is_immutable():
+    admission, _, evaluation = _evaluate()
+    from rawlsing_next.gt12_permission_translation_authority import (
+        derive_adopted_permission_binding,
+    )
+    authority_binding = derive_adopted_permission_binding(admission)
+    token = _issue_validated_relation_producer_use_binding(
+        evaluation,
+        authority_binding,
+    )
+    assert token.producer_allowed_uses == ("CONTEXT",)
+    with pytest.raises(AttributeError, match="immutable"):
+        token.producer_allowed_uses = ("REVIEW",)
+    objects = structural_objects_from_accepted_m1(
+        evaluation,
+        validated_producer_use_binding=token,
+    )
+    assert objects
+    assert all(obj.producer_allowed_uses == ("CONTEXT",) for obj in objects)
