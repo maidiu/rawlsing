@@ -65,13 +65,17 @@ Already adopted/current at exact grain:
 - ASTRA-001 deep PRE553 immutability closed;
 - ASTRA-002 shared authority-boundary defect closed.
 
-Latest integrated R-wave / post-R HQ state:
+Latest integrated S-wave / post-S banking state:
 
 - **Q2 / same-source materialization:** remains HQ-adopted at the exact 19,210-row Q69B+Q86A canary grain. OBL049 remains closed there. No portability, pooling or general release-composition authority follows.
 - **Q3 / subject discovery:** proved no exact first-canary `subject_ref` or independent clinic/hospital entity evidence is current.
 - **R1 / semantic archaeology:** `BLOCKED__GT34_R1_OBL052_NO_EXISTING_COMPETENT_SUBJECT_ENTITY_OWNER_OR_EVIDENCE_PATH`. HQ banked the result. Existing identity/registry surfaces preserve semantic ownership but do not supply a facility/world-subject owner or objective entity-evidence bundle.
 - **R2 / execution preflight:** `BLOCKED__GT34_R2_OBL052_NO_LAWFUL_CURRENT_SUBJECT_MATERIALIZATION_SEAM`. HQ banked the result. ADP-010 already has an exact subject ingress contract, but neither a current V3-P1-class owner-preserving subject registry/materializer nor a current V3-P5-class OEE realization executor exists.
-- **Post-R HQ fan-in:** creates OBL053, OBL054 and OBL055 rather than launching further archaeology.
+- **Post-R HQ fan-in:** created OBL053, OBL054 and OBL055 rather than launching further archaeology.
+- **S1 / OBL053:** `PASS__GT34_S1_OBL053_ONE_OBJECT_SUBJECT_ENTITY_SEMANTIC_AUTHORITY_CANDIDATE_DEFINED__NO_ADOPTION`. Candidate authority `GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY@1.0.0`, hash `e024220dfd21bd2544f86dd9ceec332b42115ff55afdc94183811d2ed52924ed`, is banked but not adopted. Its authority-local generated-truth seed must survive independent hostile review.
+- **S2 / OBL054:** `PASS__GT34_S2_OBL054_V3P1_ONE_OBJECT_OWNER_PRESERVING_SUBJECT_MATERIALIZER_GREEN__NO_SEMANTIC_AUTHORITY`. Governed court `34016836165` passed on evidence SHA `e9df80b9b4aca29f7002257d8bf044fa21eef45e`. Candidate is banked but not adopted.
+- **S3 / OBL055:** `PASS__GT34_S3_OBL055_ADP010_V3P5_BOUNDED_OEE_EXECUTOR_GREEN__NO_CURRENT_CANARY_INVOCATION`. Governed court `34017875248` passed on evidence SHA `c70808c993b7e236e5535a03e22fe89cc3759d1e`. Candidate is banked but not adopted.
+- **Post-S HQ banking:** S1/S2/S3 are exact candidate/evidence surfaces only; worker PASS is not project authority.
 
 Therefore:
 
@@ -83,11 +87,11 @@ No actor mutation, positive CAN-008 rule, positive metabolism operation, causal 
 
 - OBL004 remains partially closed by the real source-backed vertical canary.
 - OBL012 remains dormant for this same-source canary; broader portability is still unowned if a future transfer claim requires it.
-- **OBL053:** create the narrowest one-object nonactor subject/entity semantic owner plus objective entity evidence. It must not become a general world/facility ontology or own encounter/contact/use.
-- **OBL054:** implement the smallest V3-P1-compatible owner-preserving subject-ref registry/materializer. It may emit immutable identity and provenance only; it may not assign entity meaning.
+- **OBL053:** S1 candidate exists and is banked; independent hostile semantic review and HQ adoption/rejection are now the exact next gate.
+- **OBL054:** S2 materializer candidate is green and banked; independent hostile owner-preservation/identity review and HQ adoption/rejection are now the exact next gate.
 - **OBL052:** blocked on OBL053 + OBL054. Once both close, materialize the exact first-canary subject object/ref and evidence bundle.
 - **OBL048:** blocked on OBL052; only then may the narrow `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL` proposition be defined and adopted.
-- **OBL055:** implement the bounded ADP-010/V3-P5 OEE executor under the already accepted OEE authority. This may proceed in parallel with OBL053/054, but actual first-canary invocation waits for lawful subject identity and exact contact evidence.
+- **OBL055:** S3 bounded OEE executor candidate is green and banked; independent hostile authority-fidelity/contact-witness/replay review and HQ adoption/rejection are now the exact next gate. Actual first-canary invocation still waits for lawful subject identity and exact contact evidence.
 - **OBL031:** now depends on both OBL048 and OBL055 for an operable positive comparator path.
 - **OBL032:** remains blocked on OBL031; Q2 already supplies the exact same-source Q69B+Q86A empirical material.
 - OBL033 remains partially open only beyond the exact Q2 canary composition grain.
@@ -99,17 +103,17 @@ The post-PRE-MAIN engineering campaign remained one cumulative ancestry with bou
 
 `SIGNIFICANT_HQ_ADOPTION_OR_CENTRAL_FANIN -> CENTRAL_STATE_DELTA_BEFORE_NEXT_MAJOR_WAVE`.
 
-Post-Q fan-in obeys this rule: Q2 and Q3 were banked through PRs #217/#218, HQ disposition was recorded, and the central state/dependency/reintegration ledgers were updated before commissioning the next major successor.
+Post-Q and post-S fan-in obey this rule: Q2/Q3 and then S1/S2/S3 were banked through bounded PR fan-in, exact HQ dispositions were recorded, and the central state/dependency/reintegration ledgers were updated before commissioning each successor wave.
 
 `integration/pre-main-reconciliation-r1` and the de facto cumulative working ref were successfully advanced together by non-forced fast-forward through validated reconciliation terminal `7909c0683874738be491cf6c0c7131579e51fdaf`; `main` remained unchanged. This post-move status seal is the direct successor used to record that canonicalization. Long-lived worker/integration branch names are not themselves authority.
 
 ## What Vozhd attacks next
 
-Dependency order now begins with three parallel bounded construction tasks:
+Dependency order now begins with three parallel **independent hostile reviews**:
 
-1. **OBL053** — define and hostile-review the smallest one-object generated-world nonactor subject/entity semantic authority + objective evidence package. Reuse existing generated-entity identity laws, but do not import unrelated entity-family jurisdiction.
-2. **OBL054** — implement and hostile-review the smallest V3-P1-compatible owner-preserving one-object subject-ref registry/materializer against synthetic owner-bound fixtures only. It must emit identity/provenance, not meaning.
-3. **OBL055** — implement and hostile-review the bounded ADP-010/V3-P5 OEE realization executor under the already accepted `AVAILABLE -> OPPORTUNITY -> ENCOUNTER` law. It must not create/classify subjects or infer encounter from co-location.
+1. **OBL053 / S1** — attack the exact one-object semantic authority/hash/evidence graph, especially the lawfulness of an authority-local deterministic generation seed as the basis for generated-world objective facility facts. PASS may recommend adoption only at the frozen one-object grain.
+2. **OBL054 / S2** — attack the exact V3-P1 owner-preserving materializer for hidden semantic interpretation/transfer, identity instability, one-object escape, replay weakness and fail-open behavior.
+3. **OBL055 / S3** — attack the exact ADP-010/V3-P5 executor for authority drift, parent/subject continuity defects, contact-witness laundering, replay instability, implicit exposure or actor-effect widening.
 
 Then:
 
