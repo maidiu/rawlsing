@@ -71,7 +71,8 @@ Q86AB_STATE_PAIRS_RAW_SHA256: Final[str] = "b5ec90e648b1ee9da248df4d74fa84bc1a3e
 Q86AB_STATE_PAIRS_GZIP_SHA256: Final[str] = "261c53bb36c79d2dc7c5551d4fbe3e50fbee39845d249d38d2d547e0ac3b2655"
 Q86AB_STATE_PAIRS_RAW_BYTES: Final[int] = 51_587
 Q86AB_STATE_PAIRS_GZIP_BYTES: Final[int] = 12_626
-FFP014_RISK_KEY_LOCAL_ID_PAIRS_SHA256: Final[str] = "a4ea782fcbc3f1f6e50061c80ba304ce91dddfc0e70ba2da79e40613b636928b"
+FFP014_RISK_KEY_LOCAL_ID_PAIRS_CARRIER_ORDER_SHA256: Final[str] = "a4ea782fcbc3f1f6e50061c80ba304ce91dddfc0e70ba2da79e40613b636928b"
+FFP014_RISK_KEY_LOCAL_ID_PAIR_SET_SHA256: Final[str] = "32579518a258ba376e3221a9fa1416c656027cc5f45188eb5b9ca97c3c103dc6"
 _Q86_STATE_ORDER: Final[tuple[str, ...]] = ("-1", "0", "1", "9", "997", "998")
 _Q86_NONEXPOSED_ALPHA3: Final[frozenset[str]] = frozenset({"ALG", "EGY", "MRC", "SUD", "TUN"})
 _EXPECTED_Q86_SOURCE_EXPOSURE_COUNTS: Final[dict[str, int]] = {
@@ -467,8 +468,12 @@ def _rehydrate_accepted_q86_release():
             respondent_local_id=local_id,
             country_alpha3=row.country_alpha3,
         ))
-    if _sha256(canonical_json(risk_local_id_pairs).encode("utf-8")) != FFP014_RISK_KEY_LOCAL_ID_PAIRS_SHA256:
-        raise Q2SameSourceMaterializationError("FFP014 risk-set carrier-native identity replay drift")
+    # FFP014 explicitly declares row order non-identity.  Preserve its original
+    # carrier-order checksum as provenance, but prove the exact COUNTRY|RESPNO
+    # -> respondent_local_id mapping as an order-insensitive canonical set.
+    risk_local_id_pairs = sorted(risk_local_id_pairs, key=lambda pair: pair[0])
+    if _sha256(canonical_json(risk_local_id_pairs).encode("utf-8")) != FFP014_RISK_KEY_LOCAL_ID_PAIR_SET_SHA256:
+        raise Q2SameSourceMaterializationError("FFP014 risk-set carrier-native identity set replay drift")
 
     inputs = q86.R5Q86ClaimScopedGovernedInputs(
         bindings=q86.FROZEN_BINDINGS,
@@ -756,7 +761,8 @@ def identity_report() -> Mapping[str, Any]:
         "q86ab_source_key_sequence_sha256": Q86AB_SOURCE_KEY_SEQUENCE_SHA256,
         "q86ab_state_pairs_raw_sha256": Q86AB_STATE_PAIRS_RAW_SHA256,
         "q86ab_state_pairs_gzip_sha256": Q86AB_STATE_PAIRS_GZIP_SHA256,
-        "ffp014_risk_key_local_id_pairs_sha256": FFP014_RISK_KEY_LOCAL_ID_PAIRS_SHA256,
+        "ffp014_risk_key_local_id_pairs_carrier_order_sha256": FFP014_RISK_KEY_LOCAL_ID_PAIRS_CARRIER_ORDER_SHA256,
+        "ffp014_risk_key_local_id_pair_set_sha256": FFP014_RISK_KEY_LOCAL_ID_PAIR_SET_SHA256,
         "q86a_identity_reuse_mode": "ACTUAL_ACCEPTED_CLAIM_SCOPED_Q86_OBJECTS__NO_INDEPENDENT_EVENT_OR_ROUTING_RECONSTRUCTION",
         "q86a_exact_identity_reuse_proved": True,
         "predecessors_mutated": False,
