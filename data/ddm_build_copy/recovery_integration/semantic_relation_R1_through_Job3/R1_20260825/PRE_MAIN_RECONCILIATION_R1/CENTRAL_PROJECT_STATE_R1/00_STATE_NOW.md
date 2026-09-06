@@ -84,6 +84,8 @@ Latest integrated T-wave / post-T hostile disposition state:
 - **Fresh OBL053 HQ adoption:** `PASS__GT34_OBL053_REPAIRED_HASH_GRAPH_FRESHLY_HQ_ADOPTED__OBL053_CLOSED`. Fresh adoption artifact blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`; corrected one-object constitutive semantic truth is current again at the unchanged semantic ceiling. No V3 `subject_ref` exists yet.
 - **T2 / OBL054:** `FAIL__GT34_T2_OBL054_S2_OWNER_AUTHENTICATION_FAIL_OPEN_AND_ONE_OBJECT_SCOPE_ESCAPE_PROVED`. S2 remains not adopted. Repair must authenticate against the exact OBL053 HQ adoption root and make one-object scope an immutable permit-level invariant.
 - **U2 / OBL054 SUCCESSOR REPAIR:** `PASS__GT34_U2_OBL054_CORRECTED_OWNER_AUTH_AND_ONE_OBJECT_PERMIT_REPAIRED__NO_ADOPTION`. Candidate `15002c7f87656d57eb0c56d68942f4b24765d55f`; governed evidence `09cc0da92eb047686aecbb68f25d6fed91c9aa37`; run `34046703322`, job `101522919696`; `20 passed`. Fresh accepted-root hash `1563a166...`; exact one-object permit hash `3eeea2dc...`. No real subject_ref was materialized; candidate awaits independent hostile review.
+- **U3 / OBL054 INDEPENDENT HOSTILE REVIEW:** `PASS__GT34_U3_OBL054_CORRECTED_OWNER_AUTH_MATERIALIZER_LAWFUL_FOR_BOUNDED_ADOPTION`. Exact hostile execution `30ae291db00fac5649a6db932e243fdbd87a7f97`; run `34048037051`, job `101526511315`; `22 passed`. Independent root/permit recomputation exactly matches U2.
+- **OBL054 HQ ADOPTION:** `PASS__GT34_OBL054_CORRECTED_MATERIALIZER_HQ_ADOPTED__OBL054_CLOSED`. Adoption artifact blob `fc46d377dafa5b2c4e274d702e7f26268aa429cb`; materializer `GT34_V3P1_CORRECTED_OWNER_AUTHENTICATED_ONE_OBJECT_SUBJECT_MATERIALIZER@2.0.0`; accepted-root hash `1563a166...`; one-object permit `3eeea2dc...`. Adoption emits no subject_ref by itself.
 - **T3 / OBL055:** `FAIL__GT34_T3_OBL055_S3_ADP010_V3P5_EXECUTOR_AUTHENTICATION_AND_REPLAY_INTEGRITY_GAPS`. S3 remains not adopted. Transition shape is reusable, but subject ingress, phase/applicability/contact authority and replay bindings require repair. OBL055 is held behind OBL054 so it can bind the final adopted materializer.
 
 Therefore:
@@ -97,10 +99,10 @@ No actor mutation, positive CAN-008 rule, positive metabolism operation, causal 
 - OBL004 remains partially closed by the real source-backed vertical canary.
 - OBL012 remains dormant for this same-source canary; broader portability is still unowned if a future transfer claim requires it.
 - **OBL053:** CLOSED at repaired content-addressed identity grain. Fresh current adoption root blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`; authority `86796209...`, semantic object `9a5fbe9a...`, receipt `153ff1cd...`. Historical `e024...` / `d964...` / `156194...` identities and adoption blob `286ff7...` remain historical only.
-- **OBL054:** RETURN_REQUIRED / repaired successor candidate banked awaiting independent hostile review. U2 closes the two T2 defects in candidate form with materializer `GT34_V3P1_CORRECTED_OWNER_AUTHENTICATED_ONE_OBJECT_SUBJECT_MATERIALIZER@2.0.0`, accepted-root hash `1563a166...`, permit `3eeea2dc...`. It is not adopted; the old U1 branch remains frozen.
-- **OBL052:** blocked only on OBL054. OBL053 now supplies a current authenticated semantic object/evidence root; after OBL054 repair + hostile PASS + adoption, materialize the exact first-canary subject_ref and receipt.
+- **OBL054:** CLOSED. Corrected materializer is current at adoption blob `fc46d377dafa5b2c4e274d702e7f26268aa429cb`, accepted-root hash `1563a166...`, exact one-object permit `3eeea2dc...`. Historical S2/U1 remain noncurrent history.
+- **OBL052:** RETURN_REQUIRED and unblocked. Execute exactly one current first-canary subject_ref materialization from corrected OBL053 object `9a5fbe9a...` through adopted OBL054; persist its exact production receipt; no classifier or encounter semantics.
 - **OBL048:** blocked on OBL052; only then may the narrow `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL` proposition be defined and adopted.
-- **OBL055:** blocked on OBL054 for its final subject-ingress authentication contract. T3's exact authentication/replay defects remain the repair specification.
+- **OBL055:** RETURN_REQUIRED and unblocked. Repair the exact T3 authentication/replay defects against the final adopted OBL054 materializer/receipt contract; preserve S3 transition/RNG/no-exposure behavior.
 - **OBL031:** now depends on both OBL048 and OBL055 for an operable positive comparator path.
 - **OBL032:** remains blocked on OBL031; Q2 already supplies the exact same-source Q69B+Q86A empirical material.
 - OBL033 remains partially open only beyond the exact Q2 canary composition grain.
@@ -120,13 +122,14 @@ Post-Q, post-S and post-T fan-in obey this rule: worker evidence was banked, exa
 
 Dependency order now begins with one immediate bounded repair:
 
-1. **OBL054 independent hostile review** — independently attack U2 candidate `15002c7f87656d57eb0c56d68942f4b24765d55f`: forged owner/root/permit, historical-root reversion, direct-path bypass, registry re-instantiation, semantic-opacity and shadow/production separation. Only hostile PASS permits HQ adoption.
+1. **PARALLEL LANE A — OBL052:** execute the exact one-object production materialization and persist one current subject_ref + receipt under governed evidence.
+2. **PARALLEL LANE B — OBL055:** repair S3's exact T3 authentication/replay seam against the adopted OBL054 contract; candidate only, then hostile review/adoption.
 
 Then:
 
-`freshly adopted corrected OBL053 -> repaired/adopted OBL054 -> materialize exact adopted OBL053 object -> OBL052 CLOSED`
+`corrected OBL053 + adopted OBL054 -> exact subject_ref materialization -> OBL052 closure -> OBL048 classifier`
 
-Repair OBL054 now against the corrected trust anchor. After OBL054 adoption, repair OBL055 against that exact materializer contract. After OBL052 closes, define/adopt OBL048 classifier.
+Run OBL052 materialization and OBL055 repair in parallel now. As soon as OBL052 closes, launch OBL048 without waiting for OBL055. As soon as OBL055 repair returns, launch its independent hostile audit without waiting for OBL048.
 
 At that point:
 
