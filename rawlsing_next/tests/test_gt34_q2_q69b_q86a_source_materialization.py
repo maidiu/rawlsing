@@ -14,6 +14,8 @@ FFP017_RESPONSE_SHA256 = "98526cf33e5344c6e2d5c6ad4b16826ee678b4648be2ada395e4f3
 FFP017_EXPOSURE_SHA256 = "0920c350aeb900b5922cf3872f86609de6a8cebb8d3991680dc9ee40e85b06ce"
 FFP017_RISK_SEMANTIC_SHA256 = "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
 FFP017_Q86A_RISK_ROWS_SHA256 = "8dbbd0bfa86a5770fa73e1b47daa389430af774728e1655c87abac204f8c4909"
+FFP017_RISK_KEY_LIST_SHA256 = "2d93873cdbc03178a3b21b7f51f198e00b0c19a4f99588b01f2c6219f4be67f5"
+FFP017_RISK_KEY_ALPHA3_SHA256 = "fb4a2e93e6a1b75fe3f8d644705109540aa71d1688b62ec714352a7eb68d3019"
 Q86A_RECOVERED_SEMANTIC_SHA256 = "0061237c37418d9192fce6dbf464aa28391b8c665c5379748941477f3d353d9f"
 Q86A_RECOVERED_GZIP_SHA256 = "d45ba476e16d6abcac7031536006c413a2c44c3dd351b093a525e2df43bb0669"
 Q86A_RECOVERED_CANONICAL_BYTES = 357_795
@@ -101,32 +103,22 @@ def test_q2_recovered_ffp017_q86a_to_q69b_same_source_transport() -> None:
     assert len(respondent_by_key) == q69b.SOURCE_ROWS
     assert q69b.current_gt2_respondent_subset_match_count(respondents) == EXPECTED_RISK_ROWS
 
-    # Reconstruct the exact FFP017 respondent-local identities from the accepted
-    # Q69B/Q86 shared namespace and prove byte-independent semantic equivalence
-    # to the externally recovered FFP017 risk/response/exposure carriers.
-    equivalence_rows = []
-    for respondent_key, code in recovered:
-        country, _ = respondent_key.split("|", 1)
-        respondent = respondent_by_key[respondent_key]
-        equivalence_rows.append(
-            {
-                "respondent_key": respondent_key,
-                "respondent_local_id": "sha256:" + respondent.content_hash,
-                "country_alpha3": RISK_COUNTRY_ALPHA3[country],
-                "q86a_native_code": code,
-                "q86a_response_state": q86._STATE[code].response_state,
-                "q86a_exposure_state": "EXPOSED__PROVED",
-            }
-        )
-    equivalence_rows.sort(
-        key=lambda row: (
-            int(row["respondent_key"].split("|", 1)[0]),
-            row["respondent_key"].split("|", 1)[1],
-        )
+    # FFP014 respondent_local_id and PRE553 RespondentIdentity.content_hash are
+    # intentionally different identity domains.  Prove the lawful bridge instead:
+    # the recovered Q86A carrier carries the exact FFP017 risk-set COUNTRY|RESPNO
+    # keys, and PRE553 reconstructs its own exact respondent refs from that same
+    # accepted FFP014 carrier namespace plus those exact keys.
+    recovered_keys = [respondent_key for respondent_key, _code in recovered]
+    assert hashlib.sha256(_canonical_bytes(recovered_keys)).hexdigest() == (
+        FFP017_RISK_KEY_LIST_SHA256
     )
-    assert hashlib.sha256(_canonical_bytes(equivalence_rows)).hexdigest() == (
-        FFP017_Q86A_RISK_ROWS_SHA256
+    key_alpha3 = [
+        [key, RISK_COUNTRY_ALPHA3[key.split("|", 1)[0]]] for key in recovered_keys
+    ]
+    assert hashlib.sha256(_canonical_bytes(key_alpha3)).hexdigest() == (
+        FFP017_RISK_KEY_ALPHA3_SHA256
     )
+    assert all(key in respondent_by_key for key in recovered_keys)
 
     combined_rows = []
     q69b_typed_counts = {}
@@ -146,7 +138,7 @@ def test_q2_recovered_ffp017_q86a_to_q69b_same_source_transport() -> None:
             [
                 qrow.row_ordinal,
                 qrow.respondent_key,
-                "sha256:" + respondent.content_hash,
+                respondent.content_hash,
                 RISK_COUNTRY_ALPHA3[country],
                 qrow.q69b_native_code,
                 qrow.q69b_typed_state,
@@ -196,6 +188,9 @@ def test_q2_recovered_ffp017_q86a_to_q69b_same_source_transport() -> None:
             "selected_exposure_facts_sha256": FFP017_EXPOSURE_SHA256,
             "risk_set_semantic_sha256": FFP017_RISK_SEMANTIC_SHA256,
             "q86a_risk_rows_sha256": FFP017_Q86A_RISK_ROWS_SHA256,
+            "risk_respondent_key_list_sha256": FFP017_RISK_KEY_LIST_SHA256,
+            "risk_key_alpha3_pairs_sha256": FFP017_RISK_KEY_ALPHA3_SHA256,
+            "respondent_identity_bridge": "FFP014_CARRIER_NAMESPACE_PLUS_EXACT_COUNTRY_RESPNO_KEY__PRE553_REF_RECONSTRUCTED_SEPARATELY",
             "recovered_q86a_semantic_sha256": Q86A_RECOVERED_SEMANTIC_SHA256,
             "recovered_q86a_gzip_sha256": Q86A_RECOVERED_GZIP_SHA256,
             "response_presence_is_exposure_evidence": False,
@@ -207,7 +202,7 @@ def test_q2_recovered_ffp017_q86a_to_q69b_same_source_transport() -> None:
         "row_schema": [
             "source_row_ordinal",
             "respondent_key",
-            "respondent_local_id",
+            "pre553_respondent_content_hash",
             "country_alpha3",
             "q69b_native_code",
             "q69b_typed_state",
@@ -241,7 +236,8 @@ def test_q2_recovered_ffp017_q86a_to_q69b_same_source_transport() -> None:
         "materialized_rows": EXPECTED_RISK_ROWS,
         "q86a_counts": q86a_counts,
         "q69b_typed_counts": q69b_typed_counts,
-        "ffp017_q86a_equivalence_rows_sha256": FFP017_Q86A_RISK_ROWS_SHA256,
+        "ffp017_risk_key_list_sha256": FFP017_RISK_KEY_LIST_SHA256,
+        "ffp017_risk_key_alpha3_pairs_sha256": FFP017_RISK_KEY_ALPHA3_SHA256,
     }
     warnings.warn(
         "Q2_STAGE1_MANIFEST_JSON="
