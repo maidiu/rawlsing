@@ -1,40 +1,35 @@
 # GT34 / TRII FIRST-CANARY CAMPAIGN — FLIGHT MANIFEST R1
 
 Status:
-`ACTIVE_CRITICAL_PATH__TWO_INDEPENDENT_PROOF_OWNERS_IN_FLIGHT__OBL056_HQ_CONSTITUTED`
+`ACTIVE_CRITICAL_PATH__TWO_INDEPENDENT_HOSTILE_PROOF_OWNERS_IN_FLIGHT__OBL056_A1_BANKED`
 
 Campaign branch:
 `agent/sub-vozhd-gt34-trii-first-canary-r1`
 
-Prior manifest tip:
-`3680b0ed7c0e3fd3f89ac55e2dfe14f3dee3f2e4`
-
 This is campaign-local orchestration state only. It does not move central, PRE-MAIN, or main and does not declare any obligation project-current.
 
-## 1. Governing HQ change now consumed
+## 1. Binding prospective governance
 
-HQ disposition:
-`HQ_DISPOSITION__GT34_OBL055_W4_FAIL_ACCEPTED__MISSING_INPUT_AUTHORITY_ACCEPTANCE_LAYER_MUST_BE_CONSTITUTED`
+Consumed by immutable ref only; no rebase/merge was performed merely to consume it:
 
-HQ disposition path:
-`../../GT34_OBL055_ACCEPTANCE_AUTHORITY_HQ_DISPOSITION_R1/00_VOZHD_DISPOSITION.md`
+`924454f38391ca65c5cf35fa2b9e56059fb3160d`
 
-Exact instruction/constitution ref carrying the disposition and OBL056 commission:
-`ee71ea855e722742f97309de36294f55c35623b2`
+- `SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/01_INTER_CAMPAIGN_ORCHESTRATION_LAW_R1.md`
+- `SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/02_VOZHD_ADOPTION_R1.md`
 
-HQ selected Option B and constituted:
+Binding operating rules include:
+- one exact grain / one campaign owner;
+- no direct sibling SUB-VOZHD merges;
+- candidate != current across campaigns;
+- no duplicate proof ownership across campaign boundaries;
+- exact cross-campaign dependencies block only the dependent lane;
+- `PARALLEL_UNLESS_EXACT_DEPENDENCY_PROVED`;
+- central Vozhd retains the global dependency graph and project-current adoption/closure.
 
-`OBL056 — ADP-010 INPUT AUTHORITY ACCEPTANCE BINDING`
+Ownership clarification now binding:
+SUB-VOZHD A owns OBL048, constituted OBL056 campaign execution, OBL055, OBL031 after prerequisites become HQ-current, and OBL032 after OBL031 central closure. HQ retains project-current adoption.
 
-Required candidate grain:
-`GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY@1.0.0`
-
-HQ retained only constitution/adoption authority. Operational campaign execution after constitution belongs to SUB-VOZHD A.
-
-Therefore the prior OBL055 state:
-`READY_FOR_VOZHD_HQ_ADJUDICATION`
-
-is satisfied as an HQ-decision gate and is replaced by the OBL056 execution chain below.
+Completed lawful campaign acts before this supplement remain preserved and are not reopened solely because the later governance law exists.
 
 ## 2. Live flight
 
@@ -46,7 +41,7 @@ State:
 Proof owner:
 `agent/rabochii-gt34-obl048-independent-hostile-review-r1`
 
-Commissioning/start commit:
+Exact commissioning/start commit:
 `bfc76dcedf44c5e54a1388fae741f5708839cf96`
 
 Latest observed worker tip:
@@ -57,126 +52,141 @@ Frozen target:
 - authority hash: `a0cd9714145ea4c7edd862b2a0dfdd50c2912c5ae2de598632dbe6fd2bc62794`
 - proposition hash: `90c69c1d6f548214ae4c33f3aceac76e78b083d5b03218fcf4139f3922e3ea11`
 
-No second OBL048 hostile-review worker is lawful while this sufficient independent proof owner remains in flight.
+No duplicate OBL048 proof owner is lawful while this sufficient hostile reviewer remains in flight.
 
-### Lane B — OBL056 A1 acceptance-binding authority candidate
+### Lane B — OBL056 A1 candidate
 
 State:
-`IN_FLIGHT__REPORTS_TO_SUB_VOZHD_A`
+`A1_PASS_BANKED__INDEPENDENT_HOSTILE_REVIEW_IN_FLIGHT`
 
-Proof owner:
+A1 branch:
 `agent/rabochii-gt34-obl056-adp010-input-authority-acceptance-r1`
 
-Exact working-ancestry / commissioning start:
-`ee71ea855e722742f97309de36294f55c35623b2`
+A1 final tip:
+`3960b0e021ae2b145345d060cca295dcaf4bae03`
 
-Latest observed worker tip:
-`ee71ea855e722742f97309de36294f55c35623b2`
+A1 semantic candidate:
+`966aea1a42b30840670f4b69f779999bfd4a2307`
 
-Profile:
-`SEMANTIC_AUTHORITY`
-
-Frozen terminal:
+A1 terminal:
 `PASS__GT34_OBL056_ADP010_INPUT_AUTHORITY_ACCEPTANCE_BINDING_CANDIDATE_GREEN__NO_ADOPTION`
 
-Authority ceiling:
-acceptance binding only for exact already-existing authorities at exact ADP-010 input roles; no underlying causal-use/applicability/contact/contact-independence semantic truth is created.
+A1 candidate identity:
+- authority/registry: `GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY@1.0.0`
+- authority content hash: `41b79e7f622f3c9eb0d6df649254c812fcb769db45cf6e47a808a95eebe2a50f`
+- registry content hash: `9ef38509ad5798c038bbcfa1b3a6e343df5a7c4f2a1ed4fd2af33f31f19e3a9e`
+- receipt schema: `GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0`
+- current positive registry entries: `0`
 
-Required distinct roles:
-- `CAUSAL_USE_PERMISSION`
-- `POSITIVE_APPLICABILITY`
-- `CONTACT_OCCURRENCE_WITNESS`
-- `CONTACT_WITNESS_INDEPENDENCE`
+A1 governed proof:
+- execution SHA: `f53df8dc7534e41792e2920ff7c8b65f293aa1b2`
+- run/job: `34059241185 / 101556671724`
+- focused court: `21 passed in 0.12s`
+- protocol self-tests: `20 passed in 0.10s`
+- artifact ID: `9996930772`
+- artifact ZIP SHA-256: `4df1ce3c4f78108fc4c1a5770e45af3ff02f992efbfe00b28833428ad53b7c47`
 
-Hard separation:
-- occurrence and independence authorities must be distinct;
-- their positive acceptance receipts must be distinct;
-- caller-derived hashing cannot self-issue competence;
-- synthetic positives remain `NONCURRENT_SYNTHETIC_TEST_ONLY`.
+Campaign bank commit:
+`9823d3d0cdec20f4c12642664daf34a42b10f08e`
 
-SUB-VOZHD A does not modify or assist A1's worker branch while it is in flight. The campaign action is to inspect and adjudicate its completed return when the branch advances to terminal evidence.
+Campaign adjudication:
+`GT34_OBL056_A1_CAMPAIGN_ADJUDICATION_R1/00_ADJUDICATION.md`
 
-### OBL055 — rejected W2 successor awaiting OBL056 chain
+Disposition:
+`PASS__SUB_VOZHD_A_ACCEPTS_OBL056_A1_CANDIDATE_FOR_INDEPENDENT_HOSTILE_REVIEW__NO_ADOPTION`
+
+### Lane B proof owner now in flight — OBL056 H1
+
+Proof owner:
+`agent/rabochii-gt34-obl056-input-authority-acceptance-hostile-audit-r1`
+
+Exact commissioning/start HEAD:
+`658fcd191546c8d3f4918e0bf34b3840e6d518b4`
+
+Handoff:
+`SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/GT34_OBL056_INDEPENDENT_HOSTILE_REVIEW_R1/00_HANDOFF.md`
+
+Profile:
+`HOSTILE_AUDIT`
+
+Frozen PASS ceiling:
+`PASS__GT34_OBL056_INPUT_AUTHORITY_ACCEPTANCE_CANDIDATE_LAWFUL_FOR_HQ_ADOPTION_CONSIDERATION`
+
+H1 must not repair A1 or adopt OBL056. It must independently attack self-issuance, registry authenticity, exact scope/role/currentness binding, synthetic/current masquerade, contact occurrence/independence separation, public composition bypass, content-addressing compatibility, future current-adoption operability, and authority-ceiling widening.
+
+No second OBL056 hostile reviewer is lawful while H1 owns that exact proof.
+
+### OBL055 — rejected W2 successor
 
 State:
-`BLOCKED_ON_OBL056_INDEPENDENT_REVIEW_AND_HQ_ADOPTION`
+`BLOCKED_ON_OBL056_H1_TERMINAL_AND_HQ_ADOPTION`
 
-Frozen rejected-for-adoption target:
+Frozen rejected target:
 - semantic candidate: `39e4efc35cec5f1bbb7aafbf165698e6f6cc72ea`
 - module blob: `54d9acba40f0eb1db8bb03aec3c1bb900f849588`
 
-W4 FAIL remains frozen and accepted by HQ.
+W4 FAIL remains frozen and HQ-accepted.
 
-No OBL055 implementation repair is lawful before OBL056 candidate PASS, independent hostile PASS, and HQ adoption of the exact OBL056 authority/registry/receipt contract.
+No OBL055 repair is lawful before H1 terminal adjudication and exact HQ adoption of OBL056 after a lawful hostile PASS.
 
 ## 3. Immediate trigger table
 
 ### Trigger A — OBL048 hostile PASS
 
-SUB-VOZHD action:
+SUB-VOZHD A:
 1. inspect exact reviewer tip/evidence/court;
 2. adjudicate PASS;
-3. bank lawful reviewer history onto campaign branch;
-4. emit exact `READY_FOR_VOZHD_HQ_ADJUDICATION` OBL048 adoption packet;
-5. do not self-adopt OBL048.
+3. bank lawful reviewer history;
+4. emit exact OBL048 `READY_FOR_VOZHD_HQ_ADJUDICATION` adoption packet;
+5. do not self-adopt.
 
-No sibling wait is required.
+No wait for OBL056 is required.
 
 ### Trigger B — OBL048 hostile FAIL
 
-SUB-VOZHD action:
+SUB-VOZHD A:
 1. bank exact defect evidence;
-2. classify defect before fallback;
-3. if the smallest repair is inside already-current authority, commission one bounded repair owner;
-4. if the defect is an authority/cross-campaign/HQ question, return to HQ;
-5. after repaired candidate PASS, commission exactly one fresh independent hostile reviewer.
-
-### Trigger C — OBL056 A1 candidate PASS
-
-SUB-VOZHD action immediately, without waiting for OBL048:
-1. inspect A1 live branch and exact terminal return;
-2. verify ancestry, candidate identities/hashes, governed court, evidence compatibility, authority ceiling, and synthetic/current separation;
-3. bank lawful A1 history onto the exact current campaign branch;
-4. commission exactly one independent OBL056 hostile reviewer from the resulting current campaign head;
-5. preserve reviewer independence and do not expose it to unnecessary A1 rationale;
-6. do not self-adopt OBL056.
-
-Reserved successor branch name if no equivalent proof owner already exists:
-`agent/rabochii-gt34-obl056-input-authority-acceptance-hostile-audit-r1`
-
-Reviewer frozen proposition:
-The exact A1 candidate either independently proves lawful for bounded HQ adoption or returns an exact defect, with special attacks on self-issued competence, role substitution, current/synthetic masquerade, contact-occurrence/independence identity collapse, receipt reuse, and authority-ceiling widening.
-
-After independent hostile PASS:
-SUB-VOZHD banks the reviewer and emits exact OBL056 `READY_FOR_VOZHD_HQ_ADJUDICATION` adoption packet.
-
-### Trigger D — OBL056 A1 candidate FAIL
-
-SUB-VOZHD action:
-1. bank the exact failed terminal/evidence if lawful;
 2. classify failure before fallback;
-3. do not weaken the HQ-constituted authority grain;
-4. if the defect is a bounded implementation/proof defect within that grain, commission the smallest repair owner;
-5. if it exposes a new authority/cross-campaign contradiction, return to HQ.
+3. repair locally only if wholly inside already-current authority and this charter;
+4. route missing/cross-campaign/ambiguous authority to HQ;
+5. after repaired PASS, commission exactly one fresh hostile proof owner.
 
-### Trigger E — HQ adopts exact OBL056 candidate after hostile PASS
+### Trigger C — OBL056 H1 PASS
 
-Only then commission bounded OBL055 successor repair.
+SUB-VOZHD A immediately:
+1. inspect exact H1 tip/evidence/court and independent matrix;
+2. adjudicate PASS;
+3. bank lawful H1 history;
+4. emit exact OBL056 `READY_FOR_VOZHD_HQ_ADJUDICATION` adoption packet containing A1 + H1 identities, courts, hashes, authority ceiling and requested HQ act;
+5. do not self-adopt OBL056.
 
-Reserved branch name if no equivalent proof owner already exists:
+### Trigger D — OBL056 H1 FAIL
+
+SUB-VOZHD A:
+1. bank exact defect evidence;
+2. do not repair inside H1;
+3. classify whether the smallest successor is a bounded OBL056 repair inside the already-constituted grain or a new authority/trajectory question;
+4. commission one bounded repair only if fully local and already authorized;
+5. otherwise stop only this lane at the appropriate HQ adjudication state;
+6. continue independent OBL048 work.
+
+### Trigger E — HQ adopts exact OBL056 after hostile PASS
+
+Only then commission bounded OBL055 executor repair against the exact adopted OBL056 authority/registry/receipt contract.
+
+Reserved branch if no equivalent proof owner exists:
 `agent/rabochii-gt34-obl055-obl056-acceptance-binding-repair-r1`
 
 Profile:
 `IMPLEMENT -> VERIFY_REGRESSION`
 
 Frozen terminal:
-smallest lawful repair of `GT34_V3P5_ADP010_AUTHENTICATED_REPLAY_EXECUTOR@2.0.0` so the four acceptance roles authenticate exact separately issued OBL056-governed receipts and contact occurrence/independence remain mechanically distinct, while preserving all already-sound W2 semantics and W4 defect reproductions.
+smallest lawful W2-successor repair so all four acceptance roles authenticate exact separately issued OBL056-governed receipts and contact occurrence/independence remain mechanically distinct, preserving sound W2 semantics and W4 defect reproductions.
 
-After repair PASS, commission exactly one fresh independent hostile reviewer:
+After repair PASS, commission exactly one fresh OBL055 hostile reviewer:
 `agent/rabochii-gt34-obl055-repaired-successor-hostile-audit-r1`
 
-After hostile PASS:
-return exact OBL055 HQ adoption packet. SUB-VOZHD does not adopt OBL055.
+After hostile PASS, return exact OBL055 HQ adoption packet. SUB-VOZHD A does not adopt.
 
 ### Trigger F — HQ makes BOTH OBL048 and OBL055 current
 
@@ -185,17 +195,12 @@ Only then commission OBL031 exact actor↔Q69B comparator work.
 Future worker slot:
 `agent/rabochii-gt34-obl031-exact-actor-q69b-comparator-r1`
 
-Do NOT repeat broad comparator-authority archaeology.
-
-Frozen predecessor fact:
+Frozen predecessor gap proof remains:
 - branch: `agent/rabochii-gt34-obl031-comparator-authority-r1`
 - tip: `262d5b55d02fed0ebd4e7d2dae6823b35748db69`
 - terminal: `PASS__GT34_OBL031_NO_EXISTING_COMPETENT_COMPARATOR_AUTHORITY__EXACT_GAP_PROVED`
 
-That predecessor proved the bounded missing object is a field-specific actor↔empirical comparator authority/resolver whose positive ceiling is only:
-`EXACT_D08_EMPIRICAL_PREDICATE + COMPARATOR_PROVENANCE_RECEIPT`.
-
-Current campaign work after the gate constructs/adjudicates the exact Q69B comparator at current canary grain; it does not reprove the gap.
+Do not repeat that archaeology.
 
 ### Trigger G — central HQ closes OBL031
 
@@ -204,37 +209,33 @@ Only then commission OBL032 first unary PSEPF/metabolism transition.
 Future worker slot:
 `agent/rabochii-gt34-obl032-first-unary-psepf-metabolism-transition-r1`
 
-Do NOT repeat broad metabolism-authority archaeology.
-
-Frozen predecessor fact:
+Frozen predecessor gap proof remains:
 - branch: `agent/rabochii-gt34-obl032-metabolism-authority-preflight-r1`
 - tip: `9a1556ee027eec0853faf2991605184e7271ed54`
 - terminal: `PASS__GT34_OBL032_PREFLIGHT_V3_PSEPF_METABOLISM_AUTHORITY_STILL_MISSING__EXACT_GAP_PROVED`
 
-That predecessor proved the missing bounded role is the V3 empirical-possibility metabolism/admission authority at the thin PSEPF -> V3EmpiricalPossibilityInput -> V3 seam.
-
-Current campaign work after OBL031 closure executes/constitutes the exact first unary transition under then-current authority; it does not reprove the gap.
+Do not repeat that archaeology.
 
 ## 4. Critical-path trajectory
 
 ```text
 LANE A
 OBL048 W3 candidate
-    -> [IN FLIGHT] independent hostile review
-    -> SUB-VOZHD adoption packet
+    -> [IN FLIGHT] OBL048 independent hostile review
+    -> SUB-VOZHD A adoption packet
     -> HQ OBL048 adoption
 
 LANE B
 OBL055 W2 candidate
     -> W4 hostile FAIL
     -> HQ constitutes OBL056
-    -> [IN FLIGHT] OBL056 A1 authority candidate
-    -> independent OBL056 hostile review
-    -> SUB-VOZHD OBL056 adoption packet
+    -> A1 candidate PASS [BANKED]
+    -> [IN FLIGHT] H1 independent OBL056 hostile review
+    -> SUB-VOZHD A OBL056 adoption packet
     -> HQ OBL056 adoption
-    -> OBL055 bounded executor repair against adopted OBL056
+    -> OBL055 bounded executor repair
     -> fresh independent OBL055 hostile review
-    -> SUB-VOZHD OBL055 adoption packet
+    -> SUB-VOZHD A OBL055 adoption packet
     -> HQ OBL055 adoption
 
 HQ OBL048 current + HQ OBL055 current
@@ -243,18 +244,16 @@ HQ OBL048 current + HQ OBL055 current
     -> OBL032 first unary PSEPF/metabolism transition
 ```
 
-## 5. Critical-path utilization law
+## 5. Current proof ownership
 
-At this manifest state exactly two independent proof owners are lawful and already in flight:
-- OBL048 independent hostile review;
-- OBL056 A1 authority-candidate construction/proof.
+Exactly two independent proof owners are live:
+- OBL048 hostile reviewer;
+- OBL056 H1 hostile reviewer.
 
-Do not duplicate either proposition merely to increase worker count.
+No duplicate proof owner is commissioned for either proposition.
 
-OBL055 repair is dependency-gated on adopted OBL056.
-OBL031 is dependency-gated on both OBL048 and OBL055 becoming HQ-current.
-OBL032 is dependency-gated on central closure of OBL031.
+OBL055, OBL031 and OBL032 are exact dependency-gated lanes.
 
+`WAITING_CAN_BE_PROGRESS`.
 `ACTIVITY != PROGRESS`.
-
-The next lawful fanout occurs immediately when A1 or the OBL048 hostile reviewer reaches a terminal that unlocks a distinct successor claim.
+`PARALLEL_UNLESS_EXACT_DEPENDENCY_PROVED`.
