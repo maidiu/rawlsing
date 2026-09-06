@@ -1,10 +1,16 @@
 # RAWLSING GROUND R1
 
-**Ground version:** `RAWLSING_GROUND_R1`
+**Ground version:** `RAWLSING_GROUND_R2`
 
 **Constitutional baseline:** PRE-MAIN `564feddf4228759aed970f42061aeae4e6b96478`, independently hostile-audited by W54 `99e1d7d3bab47f494ba3a82a06bb5775eaaddbe9` as succession-ready with explicit bounded primary gaps and no hidden architectural loss.
 
 **Post-W55 bounded authority amendment:** Global HQ adopted the repaired FIELD FORGE R2 terminal semantic/architecture authority at exact grain in `096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`. Canonical grounding route: `PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/01_ADOPTED_AUTHORITY_CAPSULE.md`. This amendment does not rewrite the historical W54/W55 baseline, select a runtime/backend, or close unrelated project obligations.
+
+**Post-PRE-MAIN live-state amendment:** the cumulative descendant line from PRE-MAIN has since executed and integrated WSC002/GT0, closed and HQ-adopted the real GT1/GT2 source-backed CONTEXT-only canary, and advanced GT3/GT4 through Q69B adoption plus bounded pre-positive repairs. The canonical central-state surfaces had not been maintained during that advance and therefore became stale. `RAWLSING_GROUND_R2` restores the rule that `CENTRAL_PROJECT_STATE_R1/` is the authoritative sweep surface for post-PRE-MAIN currentness.
+
+Observed reconciliation start: `integration/pre-main-reconciliation-r1 = d15f8973ddeff46dbaa15f352fe5d7e59e1fe1a3`; cumulative live build head = `acfac12a4ca4b9efa010fd224094ac4dc55d37a8`; relation = strict descendant, 312 commits ahead / 0 behind. A bounded competent reconciliation may fast-forward PRE-MAIN after validation. `main` movement is outside this amendment.
+
+Older W35/W55 “current” prose below remains a constitutional/historical floor. For live post-PRE-MAIN state, always consume `CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md` before project judgment.
 
 This file is the mandatory cognitive front door for any agent exercising project-level decision, redesign, adjudication, acceptance, succession or cross-campaign synthesis authority.
 

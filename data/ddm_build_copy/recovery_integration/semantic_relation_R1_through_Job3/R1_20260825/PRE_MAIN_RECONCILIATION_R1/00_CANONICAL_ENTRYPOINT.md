@@ -1,6 +1,18 @@
 # RAWLSING PRE-MAIN CANONICAL ENTRYPOINT R1
 
-**Status:** `PREMAIN_CANDIDATE__TECHNICALLY_ADMITTED_BY_W35__NOT_GLOBAL_HQ_ADOPTED`
+**Status:** `PREMAIN_PROJECT_HOME_CURRENT__POSTPREMAIN_RECONCILIATION_IN_PROGRESS__NOT_GLOBAL_MAIN_ADOPTED`
+
+## POST-PRE-MAIN LIVE BUILD OVERLAY — 2026-09-06
+
+The W35/W55 material below remains constitutional baseline and authority history; it is no longer, by itself, a complete description of live project state.
+
+After FIELD FORGE R2 reintegration at `d15f8973ddeff46dbaa15f352fe5d7e59e1fe1a3`, one cumulative descendant build line advanced through WSC002/GT0, GT1/GT2, and the current GT3/GT4 pre-positive frontier. At the start of the present reconciliation that live head was `acfac12a4ca4b9efa010fd224094ac4dc55d37a8`, exactly 312 commits ahead of `integration/pre-main-reconciliation-r1` and 0 behind.
+
+For **current project state**, read `CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md` immediately after the Ground. For the exact post-PRE-MAIN succession, read `POST_PREMAIN_CENTRAL_STATE_RECONCILIATION_R1/02_LIVE_LINEAGE.md`.
+
+A competent bounded reconciliation may fast-forward `integration/pre-main-reconciliation-r1` to the reconciled descendant after exact ancestry/state validation. This does **not** authorize movement of `main`.
+
+Where an older section below uses “current” in a W35/W55 sense and conflicts with the post-PRE-MAIN central state, the central-state surface governs **currentness only**. Historical authority ceilings and anti-resurrection constraints remain binding unless separately superseded by competent exact-grain adoption.
 
 ## W55 GROUNDING GATE — PROJECT-LEVEL JUDGMENT
 
@@ -48,7 +60,7 @@ Reading only current law is **not** sufficient preparation for redesign.
 >
 > `LOCAL_COMPLETION != PROJECT_COMPLETION`
 
-## W35 CURRENT CORE — PRESERVED WITHOUT AUTHORITY CHANGE
+## W35 CONSTITUTIONAL CORE — PRESERVED; SEE LIVE OVERLAY FOR POST-PRE-MAIN CURRENTNESS
 
 **Canonical base / frozen global sovereign control entering reconciliation:** `daffee545fc60a8cd635aee9aafbe77a920f4c19`.
 

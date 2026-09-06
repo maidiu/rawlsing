@@ -1,75 +1,114 @@
-# RAWLSING CENTRAL STATE NOW R1
+# RAWLSING CENTRAL STATE NOW R2
 
-This is the recurring Vozhd sweep surface. It summarizes current state; the TSV ledgers are authoritative for exact IDs/routes.
+This is the recurring Vozhd sweep surface for the post-PRE-MAIN project. The TSV ledgers remain authoritative for exact IDs, dependencies, reintegration status and open obligations.
 
-## Constitutional cognition / reintegration state
+## Exact reconciliation basis
 
-W55A Ground and W55B fail-closed governance enforcement are now physically inherited by PRE-MAIN. `00_RAWLSING_GROUND.md` is the mandatory cognitive front door for project-level decision authority; the central state/open-obligation/reintegration ledgers are the sweep surfaces; the validator enforces grounding, exact canonical-head/version matching, touched-obligation disposition, successor return paths, reintegration status, and anti-resurrection acknowledgement.
+- canonical PRE-MAIN ref observed before this repair: `integration/pre-main-reconciliation-r1 = d15f8973ddeff46dbaa15f352fe5d7e59e1fe1a3`;
+- cumulative live build head observed at reconciliation start: `acfac12a4ca4b9efa010fd224094ac4dc55d37a8`;
+- ancestry relation: live head is a strict descendant of PRE-MAIN, `312 ahead / 0 behind`;
+- `main = b53f8843092e776fb83ec584399641f5f2fc3de3` remains outside this bounded repair;
+- Ground version for new project-level decisions after this reconciliation: `RAWLSING_GROUND_R2`.
 
-W55B mechanically counted the Ground at 457 lines / 2,956 words / 24,234 bytes and conservatively flagged the earlier ~3,500–6,000 prose target for Vozhd review. Vozhd disposition `WAVE6/W55B_GROUND_ENFORCEMENT_SEAL/VOZHD_WORDCOUNT_VARIANCE_DISPOSITION_R1.md` rules that variance `ACCEPTED_NONBLOCKING`: the range was an approximate anti-bloat design target, not a constitutional minimum, and W55B otherwise passed all 12 hostile fixtures with zero referential/dependency-return errors, authority promotions, or runtime changes.
+The current project has **one cumulative live ancestry**, not hundreds of competing project truths. Historical/worker branches remain physical refs and evidence surfaces unless separately current at an exact authority grain.
 
-The reconciliation-level next act is therefore **independent W55C hostile constitutional audit**. Global HQ adoption remains prohibited until that audit passes. No PRE-MAIN rollback or Ground padding is required.
+## Current project-level architecture authority
 
-## What Rawlsing currently does
+FIELD FORGE R2 is no longer categorically exploratory. Global HQ adopted its repaired terminal semantic/architecture result at exact FIELD-FORGE grain in:
 
-The W35-selected current runtime plus six accepted W32 reconstructed function units remains the serving functional core. Current delegated source/joint/routing carriers remain governed at their admitted grains. W50-W55 conceptual/home material is inert project cognition, not serving runtime.
+`096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`.
 
-## What currently governs
+Canonical capsule:
 
-Binding/current law is indexed in `../CANONICAL_GOVERNANCE_R1/`. The spine includes Job3/O12, P1-P10, Authority31 physical-neutrality/producer-ownership law and Authority39 living succession. J01-A/C06 are delegated/project-current at exact grains; delegated authority is not global sovereignty.
+`../PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/01_ADOPTED_AUTHORITY_CAPSULE.md`.
 
-## Accepted but inactive / preserved
+The adoption preserves producer ownership, typed relation/query identity, exact scope/risk-set/permission/negative authority, immutable dependency/provenance closure, deterministic replay, relation-specific representation and the PRE-V3/V3 actor firewall. It does **not** select a physical backend, authorize strong nouns without separate owners, close OBL005/OBL006, or infer actor facts.
 
-R5 scale/replay capital remains inactive/non-serving. Z02 remains tested/not-admitted. Historical implementation/prototype material in the project home remains preservation/ideation capital unless an exact competent authority says otherwise.
+## WSC002 / GT0
 
-## Historical but must-factor
+WSC002 GT0 is adopted at its exact audited grain. It proves a cross-spine zero-positive baseline through real checkout while conserving typed negatives and authority boundaries.
 
-Dva producer-owned developmental architecture; Trii information/reconstructibility/jointability law; Chetiri carrier-neutral source-backed theorem; PRE-V3/MX/fracture constraints; originary person-world anti-determinism/evidence-gating; Long Memory/recovery lessons; negative-result capital.
+Terminal:
 
-## Exploratory
+`GT0_ADOPTED_AT_AUDITED_WSC002_GRAIN__PRE_MAIN_REF_MOVEMENT_SEPARATELY_AUTHORIZED_ONLY_BY_COMPETENT_CENTRAL_ACT`.
 
-Field Forge and Structural Pressure Observatory remain exploratory/nonbinding. Their questions matter; their proposals are not self-adopting.
+GT0 does not authorize positive FIELD FORGE relation admission, comparator/PSEPF authority, positive V3 mutation, V2 authority, or a physical architecture winner.
 
-## Highest-cost open / return-required
+## GT1 / GT2
 
-- physical persistent/virtual/source-backed/hybrid architecture winner;
-- PRE553 publication seam vs continuous DAG;
-- remaining learned-world functional coverage;
-- full vertical source→PRE-V3 composition;
-- Dva W3/later implementation frontier;
-- Trii source retirement/discovery/comparator/PSEPF/source-composition/replay/lifecycle/economics;
-- Chetiri C05R2B/C08/final bakeoff/validation/comparability;
-- Job3 BLOCKED/O12 successor obligations;
-- Authority70 WVS7 certification;
-- J01-B/Contract@1;
-- C01 current readmission;
-- measurement portability ownership;
-- Field Forge position-role/crosswalk/observability/geometry/weight/homology/mode questions;
-- SWID runtime successor/equivalence;
-- retained unknown coverage families.
+GT1/GT2 is:
 
-## Blocked / waiting
+`CLOSED_ACCEPTED_CURRENT`.
 
-Authority70 WVS7, C01 readmission and several exact-evidence/primary-source recoveries are blocked at stated grains. `OPEN_OBLIGATIONS.tsv` records the exact dependencies and closure authorities.
+HQ terminal:
 
-## Stranded / unreconciled
+`ADOPTED__GT12_GT1_GT2_REAL_SOURCE_BACKED_STRUCTURAL_CONTEXT_CANARY__V3_ZERO_EFFECT`.
 
-Dva W3 remains `INTERRUPTED_STRANDED` historically and must not be treated as completed implementation. The reintegration ledger also treats any future `LOCAL_COMPLETE_UNRECONCILED`, `CAMPAIGN_ACCEPTED_UNBANKED`, `HQ_BANKED_NOT_CANONICALLY_INHERITED`, or `SPAWNED_SUCCESSOR_RETURN_REQUIRED` state as centrally open until dispositioned.
+A genuine current source-backed empirical relation is proven through FIELD FORGE relation production, PRE-V3 admission, V554, V557 `CONTEXT`-only publication, V558 resolution and the V3 guard with exactly zero positive actor/causal effect.
 
-## Unknown
+The accepted descent remains exactly:
 
-Eight retained coverage-gap families plus SWID runtime-succession and cross-migration control-plane/architecture separation remain synthesis obligations. Unknown is not closed-by-neglect.
+`STRUCTURAL_MEDIATION_INPUT -> CONTEXT -> DENY_ZERO_EFFECT`.
 
-## Major tensions
+This is a current vertical floor and firewall, not whole-project completion and not positive V3 authority.
 
-Physical persistence vs carrier-neutrality; PRE553 seam vs continuous DAG; preservation vs discoverability; source evidence vs person-world inference; geometry vs observability/estimand authority; questionnaire form vs counterfeit topology; delegated current authority vs global sovereignty; fracture recovery vs C01 readmission.
+## GT3 / GT4 current frontier
 
-## Unavailable evidence
+The current frontier is **pre-positive**.
 
-The W53/W54 source home retains explicit primary gaps, including some Dva, originary person-world/Pax and Long Memory originals. They are routed and typed. Do not substitute a local summary as an exact primary.
+Already adopted/current at exact grain:
+
+- Q69B R5 public-clinic-experience D08 conditioner endpoint:
+  `ADOPTED__GT34_R5_Q69B_PUBLIC_CLINIC_EXPERIENCE_D08_CONDITIONER_ENDPOINT__CURRENT`;
+- repaired empirical-possibility metabolism authority at a valid-empty ceiling with zero registered positive operations;
+- CAN-008 internal target-effect authority at a valid-empty ceiling with zero positive rules;
+- ASTRA-001 deep PRE553 immutability closed;
+- ASTRA-002 shared authority-boundary defect closed.
+
+Latest integrated P-wave state:
+
+- **P1 / ASTRA-006:** `PASS__GT34_P1_ASTRA006_FIRST_POSITIVE_PATH_ROLE_AUTHENTICATION_CLOSED__LEGACY_NONCANARY_DEBT_BANKED`. The future first-positive V558 path now has exact content-addressed dependency-role authentication. Legacy unauthenticated noncanary reconstruction debt survives as OBL050.
+- **P2 / comparator:** `BLOCKED__GT34_P2_REQUIRED_SUBJECT_SEMANTIC_OWNER_NOT_CURRENTLY_AVAILABLE`. The O4 field-specific ADP-010↔Q69B comparator candidate remains narrow but is **not adopted** and cannot produce a lawful positive comparator until OBL048 supplies an independent exact actor-side subject semantic owner.
+- **P3 / first PSEPF:** `BLOCKED__GT34_P3_Q69B_Q86_SAME_SOURCE_RELEASE_COMPOSITION_NOT_YET_LAWFUL__EXACT_GAP`. Unary Q86A is the smallest first target, but Q69B and Q86A are not yet co-resident in one lawful respondent-aligned queryable release. OBL049 owns that exact seam.
+
+Therefore:
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+No actor mutation, positive CAN-008 rule, positive metabolism operation, causal cursor movement or V2 effect follows from current GT3/GT4 state.
+
+## Open project fronts materially changed by post-PRE-MAIN work
+
+- OBL004 is partially closed by a real source-backed vertical canary, but full project-wide source→PRE-V3 composition remains open.
+- OBL012 is partially closed at the current canary grain: measurement portability is not required for the current same-source operation; broader transfer portability remains open if later claimed.
+- OBL031 is blocked on OBL048, the exact actor-side public-clinic/hospital subject-semantic owner.
+- OBL032 is blocked on the exact comparator and same-release empirical-production prerequisites.
+- OBL033 now has a concrete descendant gap, OBL049, for Q69B↔Q86A same-source respondent-aligned materialization.
+- OBL050 preserves legacy noncanary V558 role-authentication debt without reopening the first-positive path.
+- OBL039 remains a standing discoverability-maintenance obligation; the Sep 2–6 drift demonstrated that it is real.
+- OBL051 records physical branch-ref retirement as a bounded hygiene task. Ref count observed during reconciliation: 942. Physical ref count does not define project authority.
+
+## Centralization / reintegration state
+
+The post-PRE-MAIN engineering campaign remained one cumulative ancestry with bounded worker fan-out and repeated PR fan-in, but the canonical central-state ledgers were not updated after `d15f8973...`. This reconciliation repairs that defect and re-establishes:
+
+`SIGNIFICANT_HQ_ADOPTION_OR_CENTRAL_FANIN -> CENTRAL_STATE_DELTA_BEFORE_NEXT_MAJOR_WAVE`.
+
+The intended canonical ref after this bounded repair is `integration/pre-main-reconciliation-r1`, advanced only by non-forced fast-forward to the reconciled descendant. The long-lived historical worker/integration branch names are not themselves authority.
 
 ## What Vozhd attacks next
 
-For project development, use `NEXT_ACTIONS.tsv`: it orders only by dependency/readiness, not architectural preference. Before launching work, issue/consume a valid grounding receipt and attach exact state/obligation IDs. Every work unit requires a return destination and central reintegration disposition.
+Dependency order now begins with:
 
-For **PRE-MAIN reconciliation itself**, do not launch another architecture/recovery wave. Run the independent W55C hostile constitutional audit against the exact current PRE-MAIN. Only a passing W55C may authorize the later Global HQ adoption/succession act.
+1. OBL048 — create/adopt the smallest independent exact subject-semantic owner needed by the ADP-010↔Q69B comparator;
+2. OBL049 — create the smallest lawful same-source respondent-aligned Q69B+Q86A materialization seam without mutating predecessor releases;
+3. hostile-review/adopt the field-specific comparator only after OBL048;
+4. construct the first unary Q69B-conditioned Q86A PSEPF only after OBL049 and the comparator prerequisite;
+5. define one exact positive metabolism operation and one exact CAN-008 rule bound to the actual comparator/PSEPF identities;
+6. run the invocation-bound hostile court required before any first positive V3 execution.
+
+OBL048 and OBL049 may proceed in parallel because neither may consume the other's in-flight conclusion.
+
+Branch-ref cleanup OBL051 is maintenance work and must not interrupt the semantic critical path unless ref ambiguity begins to affect project-state discoverability.
+
+**Ground first. Sweep centrally. Launch from the canonical reconciled head. Return explicitly. Reintegrate before the next major wave.**
