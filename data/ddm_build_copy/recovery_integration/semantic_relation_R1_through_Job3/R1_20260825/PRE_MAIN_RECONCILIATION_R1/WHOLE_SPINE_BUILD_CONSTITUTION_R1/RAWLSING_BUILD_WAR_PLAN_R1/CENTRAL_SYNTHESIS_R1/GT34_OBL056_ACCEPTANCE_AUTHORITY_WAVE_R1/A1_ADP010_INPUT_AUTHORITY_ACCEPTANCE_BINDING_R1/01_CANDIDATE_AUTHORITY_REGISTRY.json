@@ -1,0 +1,53 @@
+{
+  "acceptance_authority_ref": {
+    "content_hash": "41b79e7f622f3c9eb0d6df649254c812fcb769db45cf6e47a808a95eebe2a50f",
+    "id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "version": "1.0.0"
+  },
+  "authority_ceiling": [
+    "NO_SUBJECT_IDENTITY_OR_CLASSIFICATION",
+    "NO_CAUSAL_USE_SEMANTIC_TRUTH",
+    "NO_APPLICABILITY_SEMANTIC_TRUTH",
+    "NO_CONTACT_OCCURRENCE",
+    "NO_CONTACT_INDEPENDENCE_FACT",
+    "NO_ENCOUNTER",
+    "NO_EXPOSURE",
+    "NO_EXTERNAL_EVENT_ADMISSION",
+    "NO_COMPARATOR",
+    "NO_PSEPF",
+    "NO_METABOLISM",
+    "NO_CAN_008",
+    "NO_V2",
+    "NO_POSITIVE_V3_ACTOR_MUTATION",
+    "NO_GENERIC_PROJECT_WIDE_AUTHORITY_ADMISSION"
+  ],
+  "consumer": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE@1.0.0",
+  "content_addressing": {
+    "algorithm": "sha256 canonical NFC JSON with OBL056 domain separation; see implementation",
+    "authority_content_hash": "41b79e7f622f3c9eb0d6df649254c812fcb769db45cf6e47a808a95eebe2a50f",
+    "registry_content_hash": "9ef38509ad5798c038bbcfa1b3a6e343df5a7c4f2a1ed4fd2af33f31f19e3a9e"
+  },
+  "contract": {
+    "current_positive_registry_policy": "EMPTY_IS_LAWFUL_FAIL_CLOSED",
+    "owns": "ACCEPTANCE_BINDING_ONLY",
+    "question": "IS_EXACT_AUTHORITY_X_ACCEPTED_FOR_ROLE_R_FOR_ADP010_CONSUMER_SCOPE_S",
+    "underlying_semantic_truth_owner": "SOURCE_AUTHORITIES_UNCHANGED"
+  },
+  "current_positive_entries": [],
+  "generic_project_wide_authority": false,
+  "positive_fallback": false,
+  "receipt_schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+  "registry_ref": {
+    "content_hash": "9ef38509ad5798c038bbcfa1b3a6e343df5a7c4f2a1ed4fd2af33f31f19e3a9e",
+    "id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "version": "1.0.0"
+  },
+  "schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY_ARTIFACT@1.0.0",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "supported_roles": [
+    "CAUSAL_USE_PERMISSION",
+    "POSITIVE_APPLICABILITY",
+    "CONTACT_OCCURRENCE_WITNESS",
+    "CONTACT_WITNESS_INDEPENDENCE"
+  ]
+}
