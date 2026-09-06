@@ -494,8 +494,15 @@ def _rehydrate_accepted_q86_release():
         raise Q2SameSourceMaterializationError(
             "accepted Q86 producer path did not reproduce accepted replay identity"
         )
-    if release.source_artifact_ref != q86.FROZEN_BINDINGS.source_ref:
-        raise Q2SameSourceMaterializationError("accepted Q86 producer source identity drift")
+    expected_source_artifact_ref = ExactRef(
+        "SOURCE_ARTIFACT",
+        q86.FROZEN_BINDINGS.source_artifact_id,
+        q86.FROZEN_BINDINGS.source_sha256,
+    )
+    if release.source_artifact_ref != expected_source_artifact_ref:
+        raise Q2SameSourceMaterializationError("accepted Q86 producer source artifact identity drift")
+    if release.source_snapshot_retention_ref != q86.FROZEN_BINDINGS.source_ref:
+        raise Q2SameSourceMaterializationError("accepted Q86 producer source snapshot identity drift")
     return release
 
 
