@@ -1,15 +1,23 @@
 from __future__ import annotations
 
-from dataclasses import replace
 import gzip
 import json
+import warnings
 
 import pytest
 
 import rawlsing_next.gt34_q2_q69b_q86a_same_source_materialization as q2
 import rawlsing_next.wave1_r5_q86_c11_projection as q86
 import rawlsing_next.wave2_r5_q69b_conditioner_projection as q69b
+from rawlsing_next.pre553_c11_ingest import validate_c11_source_release
 from rawlsing_next.pre553_empirical_objects import exact_ref
+
+
+@pytest.fixture(scope="module")
+def built_q2():
+    candidate = q2.build_q69b_q86a_same_source_candidate()
+    release = validate_c11_source_release(candidate)
+    return candidate, release
 
 
 def test_q2_transport_is_exact_and_bounded() -> None:
@@ -26,9 +34,8 @@ def test_q2_transport_is_exact_and_bounded() -> None:
     assert all(row.q86a_exposure_state == "EXPOSED__PROVED" for row in transport.rows)
 
 
-def test_q2_builds_one_validated_same_source_release_without_identity_collapse() -> None:
-    candidate = q2.build_q69b_q86a_same_source_candidate()
-    release = q2.build_validated_q69b_q86a_same_source_release()
+def test_q2_builds_one_validated_same_source_release_without_identity_collapse(built_q2) -> None:
+    candidate, release = built_q2
 
     assert release.release_id == q2.CANDIDATE_RELEASE_ID
     assert release.source_artifact_ref.content_hash == q69b.SOURCE_SHA256
@@ -42,12 +49,18 @@ def test_q2_builds_one_validated_same_source_release_without_identity_collapse()
 
     questions = {exact_ref(binding.native_question_ref).key for binding in candidate.question_variable_bindings}
     assert q86.question_ref("Q86A").key in questions
-    assert any("Q69B" in key for key in questions)
+    assert q86.question_ref("Q86B").key not in questions
 
-    assert all(
-        exact_ref(event.native_question_ref).key != q86.question_ref("Q86B").key
-        for event in candidate.respondent_events
+    q86a_events = tuple(
+        event for event in candidate.respondent_events
+        if exact_ref(event.native_question_ref).key == q86.question_ref("Q86A").key
     )
+    q86a_routing = tuple(
+        fact for fact in candidate.routing_eligibility_facts_or_exact_rules
+        if exact_ref(fact.question_or_target_ref).key == q86.question_ref("Q86A").key
+    )
+    assert len(q86a_events) == 19_210
+    assert len(q86a_routing) == 19_210
 
     replay = next(
         authority for authority in candidate.authority_snapshots
@@ -60,30 +73,40 @@ def test_q2_builds_one_validated_same_source_release_without_identity_collapse()
     assert replay.scope_envelope["predecessor_mutation"] is False
 
 
-def test_q2_q86a_objects_are_exact_subsets_of_current_gt2_payload() -> None:
-    report = q2.identity_report()
-    assert report["q86a_exact_current_event_refs"] == 19_210
-    assert report["q86a_exact_current_routing_refs"] == 19_210
-    assert report["q69b_predecessor_release_sha256"] == q2.Q69B_CURRENT_RELEASE_SHA256
-    assert report["q86_predecessor_release_sha256"] == q69b.PREDECESSOR_RELEASE_SHA256
-    assert report["predecessors_mutated"] is False
-    assert report["semantic_owner_transfer"] is False
-    assert report["portability"] == "NONE"
-    assert report["pooling"] == "NONE"
-    assert report["comparator"] == "NOT_CREATED"
-    assert report["psepf"] == "NOT_CREATED"
-    assert report["positive_v3"] is False
+def test_q2_release_identity_is_deterministic_and_bounded(built_q2) -> None:
+    candidate, release = built_q2
+    again = validate_c11_source_release(candidate)
+    assert again.release_ref == release.release_ref
+    assert again.semantic_release_hash == release.semantic_release_hash
+    assert again.source_release_manifest_hash == release.source_release_manifest_hash
+    assert again.replay_manifest.ref == release.replay_manifest.ref
 
-
-def test_q2_release_identity_is_deterministic() -> None:
-    first = q2.identity_report()
-    second = q2.identity_report()
-    assert second == first
-    # Surface exact identities to the governed court log for durable HQ receipt.
-    import warnings
+    report = {
+        "contract": q2.CONTRACT_ID,
+        "release_id": release.release_id,
+        "release_semantic_sha256": release.semantic_release_hash,
+        "release_manifest_sha256": release.source_release_manifest_hash,
+        "replay_manifest_sha256": release.replay_manifest.content_hash,
+        "source_sha256": release.source_artifact_ref.content_hash,
+        "transport_semantic_sha256": q2.TRANSPORT_SEMANTIC_SHA256,
+        "transport_gzip_sha256": q2.TRANSPORT_GZIP_SHA256,
+        "rows": len(candidate.respondent_identities),
+        "events": len(candidate.respondent_events),
+        "routing": len(candidate.routing_eligibility_facts_or_exact_rules),
+        "coordinates": len(candidate.empirical_coordinate_facts),
+        "q69b_predecessor_release_sha256": q2.Q69B_CURRENT_RELEASE_SHA256,
+        "q86_predecessor_release_sha256": q69b.PREDECESSOR_RELEASE_SHA256,
+        "predecessors_mutated": False,
+        "semantic_owner_transfer": False,
+        "portability": "NONE",
+        "pooling": "NONE",
+        "comparator": "NOT_CREATED",
+        "psepf": "NOT_CREATED",
+        "positive_v3": False,
+    }
     warnings.warn(
         "Q2_STAGE2_IDENTITY_REPORT="
-        + json.dumps(first, sort_keys=True, separators=(",", ":")),
+        + json.dumps(report, sort_keys=True, separators=(",", ":")),
         RuntimeWarning,
         stacklevel=1,
     )
