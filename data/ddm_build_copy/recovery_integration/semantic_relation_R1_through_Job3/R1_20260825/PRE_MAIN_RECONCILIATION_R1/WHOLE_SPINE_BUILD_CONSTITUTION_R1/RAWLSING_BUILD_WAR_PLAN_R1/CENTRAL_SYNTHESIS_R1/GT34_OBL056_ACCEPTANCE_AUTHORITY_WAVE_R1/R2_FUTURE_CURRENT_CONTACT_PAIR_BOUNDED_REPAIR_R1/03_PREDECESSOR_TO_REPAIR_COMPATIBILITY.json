@@ -1,0 +1,49 @@
+{
+  "schema_id": "GT34_OBL056_R2_PREDECESSOR_TO_REPAIR_COMPATIBILITY@1.0.0",
+  "predecessor": {
+    "a1_final_tip": "3960b0e021ae2b145345d060cca295dcaf4bae03",
+    "semantic_candidate_sha": "966aea1a42b30840670f4b69f779999bfd4a2307",
+    "implementation_blob": "62b9cc43b0acf7cecc4647215929ef12ada955f2",
+    "focused_test_blob": "a5144ff943497d6636810fd6a593d7d0e76e222d",
+    "authority_content_hash": "41b79e7f622f3c9eb0d6df649254c812fcb769db45cf6e47a808a95eebe2a50f",
+    "registry_content_hash": "9ef38509ad5798c038bbcfa1b3a6e343df5a7c4f2a1ed4fd2af33f31f19e3a9e"
+  },
+  "hostile_predecessor": {
+    "h1_final_tip": "e7eb5ddb16f9bf21d4cf6f3d77420d5a2277717c",
+    "terminal": "FAIL__GT34_OBL056_FUTURE_CURRENT_ACCEPTANCE_UNREPRESENTABLE_AND_CONTACT_PAIR_HELPER_BYPASSES_CONSTITUENT_RECEIPT_VALIDATION",
+    "defects_repaired": [
+      "FUTURE_CURRENT_ACCEPTANCE_UNREPRESENTABLE",
+      "CONTACT_PAIR_HELPER_BYPASSES_CONSTITUENT_VALIDATION"
+    ]
+  },
+  "repaired_contract_identity": {
+    "authority_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123",
+    "registry_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "registry_version": "1.0.0",
+    "registry_content_hash": "ca633451bfe56f86e1b463243bf721772a9ff582227411ed5137a346491b957e",
+    "receipt_schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0"
+  },
+  "changed_surface": [
+    "rawlsing_next/gt34_adp010_input_authority_acceptance.py",
+    "rawlsing_next/tests/test_gt34_obl056_adp010_input_authority_acceptance.py",
+    "rawlsing_next/tests/test_gt34_obl056_future_current_contact_pair_repair.py",
+    "R2 repaired candidate artifacts"
+  ],
+  "semantic_change_classification": {
+    "d1": "CURRENT_ACCEPTED is no longer permanently rejected; exact installed registry snapshot membership plus adoption/current-selection evidence is required",
+    "d2": "public contact-pair helper validates each constituent receipt before pair-level distinctness",
+    "other_authority_grain_changes": "NONE",
+    "role_set_changes": "NONE",
+    "consumer_changes": "NONE",
+    "authority_ceiling_changes": "NONE",
+    "project_current_positive_entries_added": 0,
+    "project_current_semantic_authorities_invented": false
+  },
+  "frozen_forbidden_surface": {
+    "rawlsing_next/v3_adp010_oee_executor_authenticated.py_expected_blob": "54d9acba40f0eb1db8bb03aec3c1bb900f849588",
+    "obl055_repaired": false,
+    "obl056_adopted": false
+  }
+}
