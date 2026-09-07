@@ -1,0 +1,66 @@
+{
+  "schema": "AS3R3_NODE4B_VALIDATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "terminal": "AS3R3_NODE4B_COMPLETE_QUERY_INPUT_FREEZE__READY_FOR_NODE5B",
+  "producer": {
+    "commit": "cfc240aa3a64c59509eab97450a7d3603af813cc",
+    "producer_git_blob_sha": "d63370dbcadc043dd2f27f5383cf36f0e84d1235",
+    "producer_file_sha256": "ad7434186e5e72886333f438ed9726cec01a2d2cf740353175da938708a5ef6d",
+    "contract_git_blob_sha": "26a7d123881513524e26f2342ab93dd1141fb5f6",
+    "query_validator": "validate_successor_query_input(record, successor_predicate_refs=...)",
+    "bundle_validator": "validate_future_input_bundle(...)"
+  },
+  "validation_method": "EXACT_FROZEN_VALIDATOR_CONTRACT_REPLAY__IMMUTABLE_PRODUCER_AND_CONTRACT_BLOBS_VERIFIED__NO_CONSTRUCT_CALLS",
+  "query_inputs": {
+    "count": 3,
+    "typed_state": "QUERY_AUTHORIZED_RESOLVABLE",
+    "source_ids": [
+      "T_Q301_2_RAW",
+      "T_Q301_7_RAW",
+      "T_Q301_2_Q301_7_RAW"
+    ],
+    "pass_count": 3,
+    "fail_count": 0,
+    "input_sha256": {
+      "T_Q301_2_RAW": "714dde6e80801a563897f9a5cef707c7147e7fbb649473d707b8c030caecac9e",
+      "T_Q301_7_RAW": "39791ee08a60ba2e8e76724200a32b0afe95411983c5eefc72c3ac19393b9416",
+      "T_Q301_2_Q301_7_RAW": "ec75b212e57736664e33738ffa8d69483c4c6f82c6b8199aabef414d4846b1f1"
+    }
+  },
+  "condition_binding": {
+    "role_source_id": "A000",
+    "evidence": "accepted AS3R2 official candidate grammar baseline_atom_id=A000 for 82/82 rules",
+    "successor_predicate_ref": {
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0",
+      "content_hash": "ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0"
+    },
+    "exact_successor_predicate_ref_set_size": 18,
+    "sole_alias_class": [
+      "A000",
+      "A1RAPP"
+    ],
+    "role_provenance_preserved": true
+  },
+  "complete_bundle": {
+    "schema": "PRE553_AS3R3_SUCCESSOR_RUNTIME_INPUT_BUNDLE@1.0.0",
+    "predicate_input_count": 19,
+    "query_input_count": 3,
+    "node4a_predicate_input_hash_matches": 19,
+    "validation": "PASS",
+    "sha256": "2cf15c20a4c65c2dcb29c6fd015260aa9ed8a70f0537927368c86e561a834e50"
+  },
+  "terrain_invariance": "PASS__FROZEN_TERRAIN_UNCHANGED",
+  "constructor_calls": {
+    "construct_successor_predicate": 0,
+    "construct_successor_query": 0
+  },
+  "prohibited_execution": {
+    "successor_predicate_remints": 0,
+    "successor_query_mints": 0,
+    "discovery_authority_or_frontier_created": 0,
+    "lits_i_i05_c05r2b_run": false,
+    "as4i0_run": false,
+    "v3_entered": false
+  }
+}
