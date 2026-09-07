@@ -507,3 +507,52 @@ The installed registry remains exact content hash `ca633451bfe56f86e1b463243bf72
 Therefore `OBL056 = CLOSED / HQ-CURRENT`; `OBL055 = UNBLOCKED / RETURN_REQUIRED`; `OBL031` still waits on OBL055; and `POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
 
 H3's four broader observations remain preserved as nonblocking outside the adopted acceptance-binding predicates. They are not silently promoted into EvidenceRef field-shape law, whole-snapshot integrity law, current-entry schema-admission law, or semantic role/transition truth.
+
+
+## HQ FAN-IN — B10 PROTOCOL SUCCESSION + SUB-VOZHD D TERMINAL DISPOSITION
+
+HQ fan-in:
+`805418167a57d95e7098105306aff1321a7d9560`.
+
+### B / Chetiri replay evidence
+
+B10 proved the historical Node5A-R2 mapping payload digest
+`081e3b8594be3d9348bc0565cd9085cca1e999ae58ef7881f040d11f5da89c7e`
+irrecoverable at the current evidence surface without target fitting.
+
+HQ selected the prospective-protocol disposition.
+
+Historical digest status:
+`IMMUTABLE_HISTORICAL_PROVENANCE__NONREPLAYABLE_AT_CURRENT_EVIDENCE_SURFACE`.
+
+Project-current prospective protocol:
+`AS3R3_NODE5A_R2_MAPPING_REPLAY_PROTOCOL@2.0.0`.
+
+Protocol spec blob:
+`befee68ee14f6e80e88cb3142947a37a7619fc5b`.
+
+Historical Node6 seal
+`df0395983de34996d33c258d0705cfc178df9cfe7982899431a0002c544481da`
+remains accepted historical comparison evidence but is not falsely treated as an exact prospective replay target because its frozen-input envelope binds the unreplayable historical payload digest.
+
+SUB-VOZHD B must now materialize protocol v2 under exactly one bounded worker, then recommission Node7 to produce a new versioned prospective combined replay seal with unchanged semantic/canonical identities.
+
+### D / current admission, joint authority, succession
+
+`OBL009 = CLOSED / PROJECT-CURRENT` at exact J01-B `CURRENT_JOINT_AUTHORITY_CONTRACT@1` historical-succession grain. J01-A is unchanged; 70 ambiguous succession and 278 unresolved identity rows remain typed and unresolved.
+
+`OBL017 = PARTIALLY_CLOSED`. D9 proved the exact missing edge from current routing/applicability to every operation-required positive premise. Project-current negative ceiling:
+`N025_DOES_NOT_SUPPLY_GENERIC_PRODUCTION_POSITIVE_SOURCE_COMPOSABILITY_LOAD`.
+Concrete B/OBL004 consumers must enumerate and positively bind required P3 premises or fail closed.
+
+`OBL045 = CLOSED BY RETIREMENT` as `RETIRED_AS_NON_REQUIRED_UNDER_CURRENT_AUTHORITY`. The historical Section85 respondent canary remains historically unexecuted.
+
+`SUB_VOZHD_D = STAND_DOWN`.
+
+Active campaign commanders now:
+- A: OBL055 critical path;
+- B: protocol-v2 materialization -> Node7 -> Chetiri;
+- C: dormant Field Forge;
+- D: stood down after local campaign completion.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
