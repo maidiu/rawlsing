@@ -1,0 +1,116 @@
+{
+  "schema": "SUBV_D_OBL009_J01B_GLOBAL_HISTORICAL_CONSERVATION_VIRTUAL_UNION_POINTER@1.0.0",
+  "mode": "EXACT_FIVE_LANE_CONSERVATION_UNION__NO_SEMANTIC_REINTERPRETATION",
+  "global_historical_structures": 2499,
+  "global_historical_identity_digest_sha256": "f7bcbddb5e8ee9ad5c372bd692eb7c15f5293504da5b3cb4823d4195b9886807",
+  "referenced_unique_historical_structures": 689,
+  "residual_unique_historical_structures": 1810,
+  "conservation_equation": "689 + 1810 = 2499",
+  "lane_order": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5"
+  ],
+  "materialization_rule": "For each lane, materialize exact HISTORICAL_RESIDUAL_DISPOSITION.csv and MATCH_EVIDENCE_MANIFEST.csv by SOURCE_LANE_MANIFEST.json. Historical referenced capital is the unique admitted historical ID set referenced by the lane's exact match carrier; residual capital is the exact residual ID set. Each lane union equals its frozen C07 family slice and the sets are disjoint. Preserve lane-local residual_state verbatim.",
+  "lanes": [
+    {
+      "lane": "D1",
+      "tip": "aedbc87e1edae7620c0db2e46de7d05b3cbeeacc",
+      "historical_rows": 722,
+      "referenced": 137,
+      "residual": 585,
+      "id_digest_sha256": "e5b004d53123589c82beb6302c845e706e7635f449e213636f6f73b0ea24307c",
+      "residual_carrier": {
+        "bytes": 308049,
+        "sha256": "3f9bbdcba880a383184632c3f806516b1b863577ac584cce4b966545f86362b0"
+      },
+      "match_carrier": {
+        "bytes": 973361,
+        "sha256": "f5bab95a3d93d3a78f7c95e073514d684f1981be2bdc4e4cf22d2690017c58a5"
+      },
+      "transport_mode": "GIT_BASE64_TAR_XZ"
+    },
+    {
+      "lane": "D2",
+      "tip": "390050d959079a7bff0c0a8582a368d0b1094f96",
+      "historical_rows": 297,
+      "referenced": 115,
+      "residual": 182,
+      "id_digest_sha256": "23d621e2c7b38323c3777be086e2b1b0eb6629bf9d5e8d91735bcb07ea974254",
+      "residual_carrier": {
+        "bytes": 147053,
+        "sha256": "a04e2f20640fc0d08dcdb41d5e4ea7ff78f7ab7e502b76d00f32c04c7a7b08cf",
+        "git_blob": "ec19b1d3c665aac4dc29625c9d7eb0a131f16774"
+      },
+      "match_carrier": {
+        "bytes": 282721,
+        "sha256": "03a9a02c38f58d13fff63e1ac992c4b6afff457683a2c53370a7f1d2f1402ef0",
+        "git_blob": "5ced3b0b659a4aa2486c98156357a18097eb744e"
+      },
+      "transport_mode": "DIRECT_GIT_EXACT_CSV"
+    },
+    {
+      "lane": "D3",
+      "tip": "ca50286f90d15f9ad7c17d5734f26ae65392033b",
+      "historical_rows": 460,
+      "referenced": 187,
+      "residual": 273,
+      "id_digest_sha256": "e76fd08ddd1737d19ebd437666ec6645460639344827e739638a02ec6368c633",
+      "residual_carrier": {
+        "bytes": 248769,
+        "sha256": "7391ee87caca6960bd7658b5379d05ef5b51a39346570424e07c39804debc24d",
+        "git_blob": "7432f7a3028ad39fc77f93db7e9ca44545201f33"
+      },
+      "match_carrier": {
+        "bytes": 296603,
+        "sha256": "53537cbba6e6800c32ab03f68a5030ea5eaf57cc766040135ed0c0426d209bb2",
+        "git_blob": "17b34d09f593402cbf98e16505503fbe55420de4"
+      },
+      "transport_mode": "DIRECT_GIT_EXACT_CSV"
+    },
+    {
+      "lane": "D4",
+      "tip": "49d0fc9d3ef132ccb40406de2407deacec14f028",
+      "historical_rows": 123,
+      "referenced": 72,
+      "residual": 51,
+      "id_digest_sha256": "053a21d1b103aa5ab78f5a0de344897bb24469d2008e3a730ad2a1115fe09e35",
+      "residual_carrier": {
+        "bytes": 15087,
+        "sha256": "5244ffc45952065c75cb0bb065445a2bb9d8c288c7c64a27f559b7d47cbcd49d",
+        "git_blob": "ae5cfffa4385f1f005547f3b3b91539e779351cd"
+      },
+      "match_carrier": {
+        "bytes": 20782,
+        "sha256": "ef9b2d564ae2cdcd0b1869ac41c7c5d057b1990aedf9c07d65778bcd5241e91f",
+        "git_blob": "a844288ea4ceff662ef8288fd3bb42aa1bdf3d6b"
+      },
+      "transport_mode": "DIRECT_GIT_EXACT_CSV"
+    },
+    {
+      "lane": "D5",
+      "tip": "52e5da4d5e4fcce945a2ede6a89095753144d13e",
+      "historical_rows": 897,
+      "referenced": 178,
+      "residual": 719,
+      "id_digest_sha256": "3d2de73472fec7894ebf17aec04d9dd791eaedc0c0e21d46ab54828f5157554a",
+      "residual_carrier": {
+        "bytes": 429364,
+        "sha256": "6890fab1800d98880dfa2bf2bb3d072e8d2ed928f7ba9a5f4b84fd27d3563db7"
+      },
+      "match_carrier": {
+        "bytes": 159057,
+        "sha256": "9c5ffd5a35fccbb676cd828edae41712dbc6ad3f2a1f53a7640b3abe92648506"
+      },
+      "transport_mode": "CHATGPT_LIBRARY_ZIP_EXACT_MEMBERS"
+    }
+  ],
+  "global_residual_state_counts": {
+    "HISTORICAL_ONLY": 1654,
+    "RETIRED_OR_OUT_OF_CURRENT_SCOPE": 0,
+    "AMBIGUOUS_HISTORICAL_RESIDUAL": 44,
+    "UNRESOLVED_HISTORICAL_IDENTITY": 112
+  }
+}

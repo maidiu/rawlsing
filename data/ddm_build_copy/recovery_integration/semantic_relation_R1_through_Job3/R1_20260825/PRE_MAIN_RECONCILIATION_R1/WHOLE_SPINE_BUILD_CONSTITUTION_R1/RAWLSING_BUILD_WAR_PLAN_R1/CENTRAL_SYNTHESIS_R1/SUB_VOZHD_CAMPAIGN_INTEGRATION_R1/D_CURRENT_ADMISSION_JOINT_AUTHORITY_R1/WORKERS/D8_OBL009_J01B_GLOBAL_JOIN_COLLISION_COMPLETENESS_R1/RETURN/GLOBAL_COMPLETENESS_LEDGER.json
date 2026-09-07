@@ -1,0 +1,81 @@
+{
+  "schema": "SUBV_D_OBL009_J01B_GLOBAL_COMPLETENESS_LEDGER@1.0.0",
+  "status": "PASS",
+  "G01_exact_current_universe": {
+    "global_rows": 1411,
+    "unique_ids": 1411,
+    "frozen_rows": 1411,
+    "global_identity_digest_sha256": "7a2e70c0d286e333b3ded6db3c1c5c4b127658507ae0f053d244b9cb61a88121",
+    "exact_frozen_set": true,
+    "duplicates": 0,
+    "missing": 0,
+    "extra": 0
+  },
+  "G02_exact_lane_partition": {
+    "D1_GSS": 662,
+    "D2_WVS_EVS": 239,
+    "D3_ARAB_AFRO_ASIAN": 268,
+    "D4_LATIN": 73,
+    "D5_SOUTHASIA_LITS": 169,
+    "global": 1411,
+    "identity_partition_exact": true
+  },
+  "G03_exact_historical_universe": {
+    "global_structures": 2499,
+    "unique_ids": 2499,
+    "referenced_unique": 689,
+    "residual_unique": 1810,
+    "conservation": "689 + 1810 = 2499",
+    "reference_residual_overlap": 0,
+    "global_identity_digest_sha256": "f7bcbddb5e8ee9ad5c372bd692eb7c15f5293504da5b3cb4823d4195b9886807",
+    "exact_frozen_set": true
+  },
+  "G04_cross_lane_collision_test": {
+    "total_collisions": 0,
+    "report": "GLOBAL_COLLISION_REPORT.csv"
+  },
+  "G05_ambiguity_preservation": {
+    "current_state_counts": {
+      "EXACT_CURRENT_SUCCESSOR": 372,
+      "CURRENT_SUCCESSOR_CHANGED_MEMBERSHIP": 82,
+      "CURRENT_SUCCESSOR_CHANGED_SCOPE": 147,
+      "CURRENT_SUCCESSOR_CHANGED_MEMBERSHIP_AND_SCOPE": 131,
+      "CURRENT_NEW_STRUCTURE": 331,
+      "AMBIGUOUS_SUCCESSION": 70,
+      "UNRESOLVED_IDENTITY": 278
+    },
+    "ambiguous_succession": 70,
+    "unresolved_identity": 278,
+    "lane_ambiguity_manifest_rows": {
+      "D1": 338,
+      "D2": 111,
+      "D3": 43,
+      "D4": 10,
+      "D5": 2
+    },
+    "historical_residual_state_counts": {
+      "HISTORICAL_ONLY": 1654,
+      "RETIRED_OR_OUT_OF_CURRENT_SCOPE": 0,
+      "AMBIGUOUS_HISTORICAL_RESIDUAL": 44,
+      "UNRESOLVED_HISTORICAL_IDENTITY": 112
+    },
+    "strengthening_or_reinterpretation_performed": false
+  },
+  "G06_freeze_integrity": {
+    "all_five_lanes_bind_same_j01a_sha256": true,
+    "j01a_sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64",
+    "freeze_review_requests_total": 0,
+    "j01a_mutated": false,
+    "historical_evidence_decided_current_candidacy": false
+  },
+  "G07_authority_ceiling": {
+    "candidate_not_project_current": true,
+    "project_current_adoption_performed": false,
+    "pre_main_moved": false,
+    "main_moved": false,
+    "j02_j05_authorized": false,
+    "old_c06_contract1_resurrected": false,
+    "family_identity_widened": false
+  },
+  "terminal": "PASS__SUBV_D_OBL009_J01B_GLOBAL_JOIN_COLLISION_COMPLETENESS_R1__READY_FOR_TERMINAL_CONTRACT_HQ_PACKET"
+}

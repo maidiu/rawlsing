@@ -1,0 +1,224 @@
+{
+  "schema": "SUBV_D_OBL009_J01B_GLOBAL_SOURCE_LANE_MANIFEST@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "d8_branch": "agent/rabochii-subv-d-obl009-j01b-global-join-collision-completeness-r1",
+  "d8_command_tip": "4ae330b5d7cd786487b54341395a82936c238f42",
+  "d8_frozen_working_ancestry": "04596326b5fb7c3029e688ad1e651d5cdef14958",
+  "shared_succession_authority_ref": "296300619799df81ebd3d6d9af0d13d011bd0b25",
+  "frozen_current": {
+    "ref": "44e97e420d38b6a2b0c44034929b5994a352d8b6",
+    "library_file_id": "libfile_3f6b0d93bb74819195702d808e3093ec",
+    "file_id": "file_000000005144822fa27f7502f6e9307b",
+    "path": "/Rawlsing/J01A_GLOBAL_FREEZE_R4/CURRENT_J_CANDIDATE_UNIVERSE_FROZEN.csv",
+    "rows": 1411,
+    "bytes": 1641446,
+    "sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64",
+    "global_identity_digest_sha256": "7a2e70c0d286e333b3ded6db3c1c5c4b127658507ae0f053d244b9cb61a88121"
+  },
+  "historical_global": {
+    "c07_ref": "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+    "registry_rows": 2499,
+    "registry_sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd",
+    "global_identity_digest_sha256": "f7bcbddb5e8ee9ad5c372bd692eb7c15f5293504da5b3cb4823d4195b9886807"
+  },
+  "lanes": [
+    {
+      "lane": "D1",
+      "name": "GSS",
+      "families": [
+        "GSS"
+      ],
+      "tip": "aedbc87e1edae7620c0db2e46de7d05b3cbeeacc",
+      "terminal": "PASS__SUBV_D_OBL009_J01B_GSS_SUCCESSION_CURRENT_GRAIN_R1",
+      "current_rows": 662,
+      "historical_rows": 722,
+      "historical_referenced": 137,
+      "historical_residual": 585,
+      "current_id_digest": "a9fde3ca214e086e8afc61fb6543e190c4621becc5d6af984343911ea88dda0c",
+      "historical_id_digest": "e5b004d53123589c82beb6302c845e706e7635f449e213636f6f73b0ea24307c",
+      "admitted_historical_refs": [
+        "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+        "f24a90be78e11c0a234fdc4a14cbafe60390c1f8"
+      ],
+      "transport": {
+        "mode": "GIT_BASE64_TAR_XZ",
+        "archive_bytes": 76736,
+        "archive_sha256": "b414235e8e7cc22a9de97f98807805c94e4aa1a8ceea84c4a0edbbd3485e54ac",
+        "parts": 6,
+        "current": {
+          "bytes": 599193,
+          "sha256": "ca34a1145c346b9fde477364e983356aab41b2bde4f365e2c1aaf522012bf098"
+        },
+        "residual": {
+          "bytes": 308049,
+          "sha256": "3f9bbdcba880a383184632c3f806516b1b863577ac584cce4b966545f86362b0"
+        },
+        "match": {
+          "bytes": 973361,
+          "sha256": "f5bab95a3d93d3a78f7c95e073514d684f1981be2bdc4e4cf22d2690017c58a5"
+        }
+      }
+    },
+    {
+      "lane": "D2",
+      "name": "WVS + EVS",
+      "families": [
+        "WVS",
+        "EVS"
+      ],
+      "tip": "390050d959079a7bff0c0a8582a368d0b1094f96",
+      "terminal": "PASS__SUBV_D_OBL009_J01B_WVS_EVS_SUCCESSION_CURRENT_GRAIN_R1",
+      "current_rows": 239,
+      "historical_rows": 297,
+      "historical_referenced": 115,
+      "historical_residual": 182,
+      "current_id_digest": "8d1678a4aaf54f45cfe77b7d5fe75b3e01dc296fedec7ff6119050ba6b49617e",
+      "historical_id_digest": "23d621e2c7b38323c3777be086e2b1b0eb6629bf9d5e8d91735bcb07ea974254",
+      "admitted_historical_refs": [
+        "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+        "f24a90be78e11c0a234fdc4a14cbafe60390c1f8"
+      ],
+      "transport": {
+        "mode": "DIRECT_GIT_EXACT_CSV",
+        "current": {
+          "bytes": 230723,
+          "sha256": "5a067ad23537c577efbc6f625a2d7ac71ed67eab918f35cc8bc6f2d610b9322c",
+          "git_blob": "5dc05f456ea1ee68c79b8e1989f56c4fa8a1adb3"
+        },
+        "residual": {
+          "bytes": 147053,
+          "sha256": "a04e2f20640fc0d08dcdb41d5e4ea7ff78f7ab7e502b76d00f32c04c7a7b08cf",
+          "git_blob": "ec19b1d3c665aac4dc29625c9d7eb0a131f16774"
+        },
+        "match": {
+          "bytes": 282721,
+          "sha256": "03a9a02c38f58d13fff63e1ac992c4b6afff457683a2c53370a7f1d2f1402ef0",
+          "git_blob": "5ced3b0b659a4aa2486c98156357a18097eb744e"
+        }
+      }
+    },
+    {
+      "lane": "D3",
+      "name": "Arab + Afro + Asian",
+      "families": [
+        "Arab Barometer",
+        "Afrobarometer",
+        "Asian Barometer"
+      ],
+      "tip": "ca50286f90d15f9ad7c17d5734f26ae65392033b",
+      "terminal": "PASS__SUBV_D_OBL009_J01B_ARAB_AFRO_ASIAN_SUCCESSION_CURRENT_GRAIN_R1",
+      "current_rows": 268,
+      "historical_rows": 460,
+      "historical_referenced": 187,
+      "historical_residual": 273,
+      "current_id_digest": "5cbd4f1bcbbbeb294e7ce4d26cf5192cbbd3091a5f77062045544361c54c57bb",
+      "historical_id_digest": "e76fd08ddd1737d19ebd437666ec6645460639344827e739638a02ec6368c633",
+      "admitted_historical_refs": [
+        "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+        "b41957482a3c567a02862334806624910fd4bac5"
+      ],
+      "transport": {
+        "mode": "DIRECT_GIT_EXACT_CSV",
+        "current": {
+          "bytes": 234324,
+          "sha256": "d03ec31c57b306f971d0e08568565e666f68d0b9104601d7be886d501b7f8a95",
+          "git_blob": "c9a5bb25903e20be98d85c112a6a6989659f3f45"
+        },
+        "residual": {
+          "bytes": 248769,
+          "sha256": "7391ee87caca6960bd7658b5379d05ef5b51a39346570424e07c39804debc24d",
+          "git_blob": "7432f7a3028ad39fc77f93db7e9ca44545201f33"
+        },
+        "match": {
+          "bytes": 296603,
+          "sha256": "53537cbba6e6800c32ab03f68a5030ea5eaf57cc766040135ed0c0426d209bb2",
+          "git_blob": "17b34d09f593402cbf98e16505503fbe55420de4"
+        }
+      }
+    },
+    {
+      "lane": "D4",
+      "name": "Latin",
+      "families": [
+        "Latinobarómetro"
+      ],
+      "tip": "49d0fc9d3ef132ccb40406de2407deacec14f028",
+      "terminal": "PASS__SUBV_D_OBL009_J01B_LATIN_SUCCESSION_CURRENT_GRAIN_R1",
+      "current_rows": 73,
+      "historical_rows": 123,
+      "historical_referenced": 72,
+      "historical_residual": 51,
+      "current_id_digest": "cdf2eb17a5a33d35e72c29c2b280d190ce308500bb6e48db38a6b2e046cbe1c6",
+      "historical_id_digest": "053a21d1b103aa5ab78f5a0de344897bb24469d2008e3a730ad2a1115fe09e35",
+      "admitted_historical_refs": [
+        "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+        "b41957482a3c567a02862334806624910fd4bac5"
+      ],
+      "transport": {
+        "mode": "DIRECT_GIT_EXACT_CSV",
+        "current": {
+          "bytes": 33169,
+          "sha256": "d33bbf1a21a24a5f3012ceb9fadc8a531c6b04fb7383df67078829dbe98a18e5",
+          "git_blob": "5a0086b0ebe70e01c58d84c4154f393740b0f5bf"
+        },
+        "residual": {
+          "bytes": 15087,
+          "sha256": "5244ffc45952065c75cb0bb065445a2bb9d8c288c7c64a27f559b7d47cbcd49d",
+          "git_blob": "ae5cfffa4385f1f005547f3b3b91539e779351cd"
+        },
+        "match": {
+          "bytes": 20782,
+          "sha256": "ef9b2d564ae2cdcd0b1869ac41c7c5d057b1990aedf9c07d65778bcd5241e91f",
+          "git_blob": "a844288ea4ceff662ef8288fd3bb42aa1bdf3d6b"
+        }
+      }
+    },
+    {
+      "lane": "D5",
+      "name": "South Asia + LiTS",
+      "families": [
+        "South Asia",
+        "LiTS"
+      ],
+      "tip": "52e5da4d5e4fcce945a2ede6a89095753144d13e",
+      "terminal": "PASS__SUBV_D_OBL009_J01B_SOUTHASIA_LITS_SUCCESSION_CURRENT_GRAIN_R1",
+      "current_rows": 169,
+      "historical_rows": 897,
+      "historical_referenced": 178,
+      "historical_residual": 719,
+      "current_id_digest": "a2fbb10f0656db474d19f86de9dd68a5504a3ae2338f55c5d3ec513f454c2e85",
+      "historical_id_digest": "3d2de73472fec7894ebf17aec04d9dd791eaedc0c0e21d46ab54828f5157554a",
+      "admitted_historical_refs": [
+        "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+        "03de44e4232df9a9c709f60eb3f8c8b628eb034a"
+      ],
+      "transport": {
+        "mode": "CHATGPT_LIBRARY_ZIP_EXACT_MEMBERS",
+        "archive_bytes": 61875,
+        "archive_sha256": "0765b7981fd710b315f8a6439be5a4ca5520c1b5fbd7bc166d72401c72774097",
+        "library_file_id": "libfile_64dd382a81148191a7645c98972802f4",
+        "file_id": "file_00000000d19c81f68b3b98a73c0ef4f1",
+        "library_path": "/Rawlsing/J01B_D5_SOUTHASIA_LITS_SUCCESSION_R1/J01B_D5_EXACT_CARRIERS.zip",
+        "current": {
+          "bytes": 154065,
+          "sha256": "2ffd94620212fc00af49c4e775b99a83144b71c72387c1da69d412c7edc7f33a"
+        },
+        "residual": {
+          "bytes": 429364,
+          "sha256": "6890fab1800d98880dfa2bf2bb3d072e8d2ed928f7ba9a5f4b84fd27d3563db7"
+        },
+        "match": {
+          "bytes": 159057,
+          "sha256": "9c5ffd5a35fccbb676cd828edae41712dbc6ad3f2a1f53a7640b3abe92648506"
+        }
+      }
+    }
+  ],
+  "transport_validation": {
+    "D1": "fresh reconstruction from six committed base64 parts reproduced archive b414... and all five bound member SHA-256s exactly",
+    "D2": "fresh direct Git reads reproduced all pointer-bound SHA-256s used by the global court",
+    "D3": "fresh direct Git reads reproduced all pointer-bound SHA-256s used by the global court",
+    "D4": "fresh direct Git reads reproduced all pointer-bound SHA-256s used by the global court",
+    "D5": "fresh Library materialization reproduced ZIP 0765... and all three exact member SHA-256s exactly"
+  }
+}

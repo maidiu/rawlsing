@@ -1,0 +1,10 @@
+collision_type,count,status,evidence
+DUPLICATE_CURRENT_CANDIDATE_ID,0,PASS,"Each lane current-ID set equals its disjoint frozen J01-A family slice; global union = 1,411."
+CONTRADICTORY_CURRENT_SUCCESSION_STATE,0,PASS,Every frozen current candidate appears exactly once globally.
+CURRENT_FAMILY_JURISDICTION_CONFLICT,0,PASS,Lane family sets exactly match J01-A source_family partitions.
+HISTORICAL_PREDECESSOR_CROSS_FAMILY_COLLISION,0,PASS,Each lane historical union equals its disjoint C07 family slice.
+HISTORICAL_RESIDUAL_REFERENCED_OTHER_LANE,0,PASS,Residual IDs remain within disjoint lane family slices; all cross-lane referenced sets are disjoint.
+CARRIER_HASH_POINTER_MISMATCH,0,PASS,"D1 Git archive, D2-D4 direct Git carriers, and D5 Library archive all byte/hash verified."
+UNAUTHORIZED_CURRENT_SUCCESSION_STATE,0,PASS,Observed state vocabulary is a subset of shared authority allowed current states.
+UNAUTHORIZED_HISTORICAL_RESIDUAL_STATE,0,PASS,Observed residual vocabulary is a subset of shared authority allowed residual states.
+CURRENT_FREEZE_MUTATION_OR_EFFECT,0,PASS,All lane review carriers have zero rows; J01-A carrier remains exact b21a7994... .

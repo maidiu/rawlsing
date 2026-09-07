@@ -1,0 +1,85 @@
+{
+  "schema": "SUBV_D_OBL009_J01B_GLOBAL_CURRENT_SUCCESSION_VIRTUAL_UNION_POINTER@1.0.0",
+  "mode": "EXACT_FIVE_LANE_VIRTUAL_UNION__NO_ROW_REINTERPRETATION",
+  "global_rows": 1411,
+  "global_current_identity_digest_sha256": "7a2e70c0d286e333b3ded6db3c1c5c4b127658507ae0f053d244b9cb61a88121",
+  "frozen_j01a_sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64",
+  "lane_order": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5"
+  ],
+  "materialization_rule": "Materialize each lane's exact CURRENT_SUCCESSION_CROSSWALK.csv using SOURCE_LANE_MANIFEST.json; verify its bound bytes/SHA-256; parse under the shared 15-column minimum schema; remove only the repeated header when physically concatenating in lane_order. Do not alter field bytes or semantic states. The proven global identity set is the set union of current_source_structure_id values and equals the frozen J01-A 1,411-ID set.",
+  "lanes": [
+    {
+      "lane": "D1",
+      "tip": "aedbc87e1edae7620c0db2e46de7d05b3cbeeacc",
+      "rows": 662,
+      "id_digest_sha256": "a9fde3ca214e086e8afc61fb6543e190c4621becc5d6af984343911ea88dda0c",
+      "carrier": {
+        "bytes": 599193,
+        "sha256": "ca34a1145c346b9fde477364e983356aab41b2bde4f365e2c1aaf522012bf098"
+      },
+      "transport_mode": "GIT_BASE64_TAR_XZ"
+    },
+    {
+      "lane": "D2",
+      "tip": "390050d959079a7bff0c0a8582a368d0b1094f96",
+      "rows": 239,
+      "id_digest_sha256": "8d1678a4aaf54f45cfe77b7d5fe75b3e01dc296fedec7ff6119050ba6b49617e",
+      "carrier": {
+        "bytes": 230723,
+        "sha256": "5a067ad23537c577efbc6f625a2d7ac71ed67eab918f35cc8bc6f2d610b9322c",
+        "git_blob": "5dc05f456ea1ee68c79b8e1989f56c4fa8a1adb3"
+      },
+      "transport_mode": "DIRECT_GIT_EXACT_CSV"
+    },
+    {
+      "lane": "D3",
+      "tip": "ca50286f90d15f9ad7c17d5734f26ae65392033b",
+      "rows": 268,
+      "id_digest_sha256": "5cbd4f1bcbbbeb294e7ce4d26cf5192cbbd3091a5f77062045544361c54c57bb",
+      "carrier": {
+        "bytes": 234324,
+        "sha256": "d03ec31c57b306f971d0e08568565e666f68d0b9104601d7be886d501b7f8a95",
+        "git_blob": "c9a5bb25903e20be98d85c112a6a6989659f3f45"
+      },
+      "transport_mode": "DIRECT_GIT_EXACT_CSV"
+    },
+    {
+      "lane": "D4",
+      "tip": "49d0fc9d3ef132ccb40406de2407deacec14f028",
+      "rows": 73,
+      "id_digest_sha256": "cdf2eb17a5a33d35e72c29c2b280d190ce308500bb6e48db38a6b2e046cbe1c6",
+      "carrier": {
+        "bytes": 33169,
+        "sha256": "d33bbf1a21a24a5f3012ceb9fadc8a531c6b04fb7383df67078829dbe98a18e5",
+        "git_blob": "5a0086b0ebe70e01c58d84c4154f393740b0f5bf"
+      },
+      "transport_mode": "DIRECT_GIT_EXACT_CSV"
+    },
+    {
+      "lane": "D5",
+      "tip": "52e5da4d5e4fcce945a2ede6a89095753144d13e",
+      "rows": 169,
+      "id_digest_sha256": "a2fbb10f0656db474d19f86de9dd68a5504a3ae2338f55c5d3ec513f454c2e85",
+      "carrier": {
+        "bytes": 154065,
+        "sha256": "2ffd94620212fc00af49c4e775b99a83144b71c72387c1da69d412c7edc7f33a"
+      },
+      "transport_mode": "CHATGPT_LIBRARY_ZIP_EXACT_MEMBERS"
+    }
+  ],
+  "global_state_counts": {
+    "EXACT_CURRENT_SUCCESSOR": 372,
+    "CURRENT_SUCCESSOR_CHANGED_MEMBERSHIP": 82,
+    "CURRENT_SUCCESSOR_CHANGED_SCOPE": 147,
+    "CURRENT_SUCCESSOR_CHANGED_MEMBERSHIP_AND_SCOPE": 131,
+    "CURRENT_NEW_STRUCTURE": 331,
+    "AMBIGUOUS_SUCCESSION": 70,
+    "UNRESOLVED_IDENTITY": 278
+  },
+  "authority_ceiling": "CANDIDATE != PROJECT_CURRENT"
+}
