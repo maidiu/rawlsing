@@ -251,3 +251,85 @@ Node4A accepted
 ```
 
 Do not retry AS3R2 executable preimage recovery and do not create a duplicate Node5A-R2 branch.
+
+
+## ALL SUB-VOZHD + VERKHOVOD FAN-IN CURRENT STATE
+
+Central multi-parent A/B/C campaign fan-in:
+
+`ad6a19a38ce5c72b7a93513c8d8cb3c4b19ef3d3`
+
+### A — GT34 first-canary
+
+- OBL048 exact candidate has independent hostile PASS at `c06e1d6841a04659983737d2efe3c3d5bd15646d`; SUB-VOZHD A must bank/package before HQ adoption.
+- OBL056 H1 independently FAILed at `e7eb5ddb16f9bf21d4cf6f3d77420d5a2277717c` on:
+  1. future `CURRENT_ACCEPTED` entries being structurally unrepresentable;
+  2. contact-pair helper bypassing constituent receipt validation.
+- A must repair OBL056 locally and fresh-hostile it.
+- OBL055 remains blocked on HQ-current OBL056.
+- OBL031 remains blocked until OBL048 + OBL055 are both HQ-current.
+
+### B — architecture/compiler/Dva/Chetiri
+
+HQ disposition:
+
+`894ca0d9e1d50174fd4ccff7617c3888762ec0c5`
+
+Closed/current at exact grains:
+
+- OBL027;
+- OBL028;
+- OBL003 function-inventory grain;
+- OBL050 current-reachability grain;
+- OBL034 learned-product lifecycle/economics.
+
+OBL037 baseline:
+
+`SYMMETRIC_NO_RETIREMENT_CREDIT`
+
+with identical source/carrier retention across A/B/C.
+
+OBL029 remains open but does not block that exact bakeoff.
+
+General OBL033 does not block that exact bakeoff unless the selected workload requires broader composition.
+
+Correct Chetiri order:
+
+```text
+OBL035 -> OBL036 -> OBL037
+```
+
+Verkhovod Node5A-R2 PASS exists at:
+
+`a208b910a2a254052b8abc75cff9ff2c532ce30d`
+
+and awaits SUB-VOZHD B banking before Node4B.
+
+### C — Field Forge
+
+Current:
+
+- OBL040 adopted/closed;
+- OBL041 adopted/closed at `ee85c59423c4f954a87fc5022aeea1129b071f0c`;
+- OBL042 adopted/closed at `5990c9573e35c40f199ce5691a8b7fbdb2b004c1`.
+
+Immediate frontier:
+
+```text
+OBL005
+ -> HQ adoption
+ -> OBL043
+ -> bounded OBL020 post-R2 synthesis
+```
+
+OBL006 remains claim-conditional.
+
+### Global
+
+Main remains untouched.
+
+The next lawful work is parallel:
+
+1. A packages OBL048 while repairing OBL056;
+2. B banks Node5A-R2 and launches Node4B;
+3. C launches OBL005.
