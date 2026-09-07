@@ -1,0 +1,18 @@
+{
+  "schema_id": "RABOCHII_COURT_SPEC@1.0.0",
+  "semantic_candidate_sha": "a854ac9cfa8ac7820c16ba371aff59ab284cc212",
+  "python_version": "3.12",
+  "determinism_mode": "EXACT",
+  "tests": [
+    "rawlsing_next/tests/test_v3_adp010_oee_executor.py",
+    "rawlsing_next/tests/test_gt34_w2_adp010_successor_compatibility.py",
+    "rawlsing_next/tests/test_gt34_w2_t3_hostile_closure.py",
+    "rawlsing_next/tests/test_gt34_w2_adp010_repair_specific.py",
+    "rawlsing_next/tests/test_gt34_obl056_current_entry_provenance_bounded_repair.py",
+    "rawlsing_next/tests/test_gt34_obl055_obl056_acceptance_bound_repair.py"
+  ],
+  "env": {
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+  }
+}
