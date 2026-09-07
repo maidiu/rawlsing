@@ -18,7 +18,7 @@
     "repaired": "49538b9c36e58e19a6dc293ecac5bc2dff58eebe"
   },
   "new_focused_regression_blob": "fe4c67ab66d574b577be03b7f8848ca79c227310",
-  "h2_compatibility_regression_blob": "60c64a4f8c45dd0bb6f291352fee6086275052e1",
+  "h2_compatibility_regression_blob": "361712bcf93ce4c5a839101b89ce152e9615bdcb",
   "frozen_unchanged_blobs": {
     "inherited_a1_r2_regression": "454407f251c4146a2c0db8780afd7ea2e0b0a10c",
     "r2_future_current_contact_pair_regression": "c86896aa20224695f92ec9b89c27f9d2bb3d7a78",
@@ -27,9 +27,12 @@
   },
   "h2_compatibility_method": {
     "h2_file_unchanged": true,
-    "historical_blocker_case_excluded": "ADOPTION_BLOCKER_current_entry_empty_immutable_provenance_is_accepted",
-    "reason_for_exclusion": "That test intentionally asserts the pre-repair defect succeeds; R3 reverses exactly that expectation in its focused regression.",
-    "all_other_h2_cases_required_green": true
+    "excluded_pre_repair_assertions": [
+      "ADOPTION_BLOCKER_current_entry_empty_immutable_provenance_is_accepted",
+      "repaired_candidate_relevant_git_blobs_are_exact"
+    ],
+    "exclusion_reason": "The first assertion intentionally proves the repaired defect succeeds on the predecessor; the second intentionally pins the predecessor implementation blob. Neither is a preserved semantic attack after R3. All remaining applicable H2 cases must pass.",
+    "all_remaining_h2_cases_required_green": true
   },
   "content_address_disposition": {
     "authority_content_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123",
