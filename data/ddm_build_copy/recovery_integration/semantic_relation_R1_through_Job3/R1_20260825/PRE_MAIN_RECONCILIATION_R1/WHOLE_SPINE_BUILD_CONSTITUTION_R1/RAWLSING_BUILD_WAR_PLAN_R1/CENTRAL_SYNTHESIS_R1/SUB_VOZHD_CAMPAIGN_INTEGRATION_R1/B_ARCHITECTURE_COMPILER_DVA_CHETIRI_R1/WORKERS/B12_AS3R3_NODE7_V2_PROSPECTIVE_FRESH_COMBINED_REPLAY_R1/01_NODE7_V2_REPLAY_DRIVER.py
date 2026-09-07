@@ -236,7 +236,7 @@ def main() -> int:
             "as3_id":sid,
             "source_object_id":src["object_id"],
             "source_content_hash":src["content_hash"],
-            "node4a_input_sha256":input_hash(rec,lf=True),
+            # Node4A PREDICATE_INPUT_HASHES.json freezes compact sorted JSON + one LF.\n            "node4a_input_sha256":input_hash(rec,lf=True),
             "successor_kind":ref["kind"],
             "successor_object_id":ref["object_id"],
             "successor_content_hash":ref["content_hash"],
@@ -347,56 +347,35 @@ def main() -> int:
     canonical_objects=sorted(canonical_predicates,key=lambda x:x["ref"]["object_id"])+sorted(canonical_queries,key=lambda x:x["ref"]["object_id"])
     require(len(canonical_objects)==21,"21 canonical successor objects")
 
+    predicate_mappings=[{
+        "as3_id":sid,
+        "successor_ref":obj.ref.as_dict(),
+        "canonical_representation_sha256":object_representation_hash(obj),
+    } for sid,obj in fresh_predicates]
+    distinct_predicates=[x["ref"] for x in sorted(canonical_predicates,key=lambda x:x["ref"]["kind"]+"|"+x["ref"]["object_id"]+"|"+x["ref"]["content_hash"])]
+    replay_query_mappings=[{
+        "query_source_id":sid,
+        "successor_ref":obj.ref.as_dict(),
+        "canonical_representation_sha256":object_representation_hash(obj),
+    } for sid,obj in query_objects]
     realization={
-        "schema":"AS3R3_NODE7_V2_DETERMINISTIC_REALIZATION@1.0.0",
-        "status":"PASS__PROSPECTIVE_FRESH_COMBINED_REPLAY_V2_REALIZATION",
+        "schema":"AS3R3_NODE7_PROSPECTIVE_REPLAY_REALIZATION@2.0.0",
         "protocol":PROTOCOL_VALUE,
         "protocol_spec_git_blob":PROTOCOL_SPEC_BLOB,
-        "committed_serializer_git_blob":B11_SERIALIZER_BLOB,
-        "committed_serializer_sha256":B11_SERIALIZER_SHA256,
-        "producer":{"commit":PRODUCER_COMMIT,"git_blob":PRODUCER_BLOB,"file_sha256":PRODUCER_SHA256},
-        "inputs":{
-            "node4a_git_blob":NODE4A_BLOB,"node4a_file_sha256":NODE4A_SHA256,
-            "node4b_query_record_sha256":QUERY_INPUT_HASHES,
-            "node4b_ordered_query_package_sha256":ORDERED_QUERY_PACKAGE_SHA256,
-            "node4b_complete_bundle_sha256":COMPLETE_BUNDLE_SHA256,
-        },
-        "execution_counts":{
-            "predicate_validations":pred_validation_count,
-            "predicate_constructor_calls":pred_constructor_count,
-            "query_validations":query_validation_count,
-            "query_constructor_calls":query_constructor_count,
-        },
-        "mapping":{
-            "protocol_v2_payload_sha256":PROSPECTIVE_MAPPING_SHA256,
-            "protocol_v2_payload_git_blob":PROSPECTIVE_MAPPING_BLOB,
-            "protocol_v2_payload_byte_length":PROSPECTIVE_MAPPING_LENGTH,
-            "rows":rows,
-        },
-        "predicates":{
-            "mapping_count":19,"distinct_count":18,
-            "sole_alias_class":["A000","A1RAPP"],
-            "canonical_payload_sha256":PREDICATE_CANONICAL_PAYLOAD_SHA256,
-            "objects":canonical_predicates,
-        },
-        "queries":{
-            "mapping_count":3,"distinct_count":3,
-            "node5b_query_package_sha256":NODE5B_QUERY_PACKAGE_SHA256,
-            "mappings":query_rows,
-            "objects":canonical_queries,
-        },
-        "combined":{"mapping_count":22,"distinct_successor_objects":21,"objects":canonical_objects},
-        "terrain":terrain,
-        "historical_comparison":{
-            "mapping_payload_sha256":HISTORICAL_MAPPING_SHA256,
-            "mapping_payload_disposition":HISTORICAL_MAPPING_DISPOSITION,
-            "historical_preimage_or_law_recovery_claimed":False,
-            "node6_seal":HISTORICAL_NODE6_SEAL,
-            "node6_role":HISTORICAL_NODE6_ROLE,
-            "node6_crosswalk_sha256":HISTORICAL_NODE6_CROSSWALK_SHA256,
-            "node6_canonical_integrity_receipt_sha256":HISTORICAL_NODE6_CANONICAL_INTEGRITY_SHA256,
-            "node6_terrain_receipt_sha256":HISTORICAL_NODE6_TERRAIN_RECEIPT_SHA256,
-        },
+        "prospective_mapping_payload_sha256":PROSPECTIVE_MAPPING_SHA256,
+        "prospective_mapping_payload_git_blob":PROSPECTIVE_MAPPING_BLOB,
+        "prospective_mapping_payload_byte_length":PROSPECTIVE_MAPPING_LENGTH,
+        "predicate_mappings":predicate_mappings,
+        "distinct_predicates":distinct_predicates,
+        "sole_predicate_alias":["A000","A1RAPP"],
+        "query_mappings":replay_query_mappings,
+        "historical_to_successor_row_count":22,
+        "distinct_successor_object_count":21,
+        "terrain_invariant":terrain,
+        "historical_mapping_digest_disposition":HISTORICAL_MAPPING_DISPOSITION,
+        "historical_node6_seal":HISTORICAL_NODE6_SEAL,
+        "historical_node6_role":HISTORICAL_NODE6_ROLE,
+        "historical_mapping_preimage_recovery_claimed":False,
     }
     realization_bytes=canonical_bytes(realization,lf=True)
     realization_sha=sha256(realization_bytes)
