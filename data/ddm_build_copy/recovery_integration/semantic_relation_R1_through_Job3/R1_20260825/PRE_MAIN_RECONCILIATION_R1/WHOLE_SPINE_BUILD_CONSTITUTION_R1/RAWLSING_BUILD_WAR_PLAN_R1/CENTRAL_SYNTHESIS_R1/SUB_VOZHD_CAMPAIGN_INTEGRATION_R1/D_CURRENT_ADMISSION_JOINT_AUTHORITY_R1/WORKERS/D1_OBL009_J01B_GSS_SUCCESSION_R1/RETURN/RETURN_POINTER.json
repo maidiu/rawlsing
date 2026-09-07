@@ -1,0 +1,137 @@
+{
+  "artifact_set_note": "Required large CSV paths are exact transport receipts; exact CSV bytes are packed in the six Git-resident base64 parts and reconstruct to the bound archive/member hashes.",
+  "carrier_transport": {
+    "archive_bytes": 76736,
+    "archive_sha256": "b414235e8e7cc22a9de97f98807805c94e4aa1a8ceea84c4a0edbbd3485e54ac",
+    "base64_chars": 102316,
+    "materialization": "cat EXACT_RETURN_CARRIERS.tar.xz.b64.part* | base64 -d > EXACT_RETURN_CARRIERS.tar.xz && tar -xJf EXACT_RETURN_CARRIERS.tar.xz",
+    "members": {
+      "AMBIGUITIES.csv": {
+        "bytes": 198578,
+        "rows": 338,
+        "sha256": "294e9920755a4faaa6ad7c276c9f8b42db52a242dd34577cc68bf9250a1fa537"
+      },
+      "CURRENT_FREEZE_REVIEW_REQUESTS.csv": {
+        "bytes": 126,
+        "rows": 0,
+        "sha256": "b6b6332a3d8e5d35a2d1346f196d40b57818ef826f327fbdbd1ec13b9a3f1726"
+      },
+      "CURRENT_SUCCESSION_CROSSWALK.csv": {
+        "bytes": 599193,
+        "rows": 662,
+        "sha256": "ca34a1145c346b9fde477364e983356aab41b2bde4f365e2c1aaf522012bf098"
+      },
+      "HISTORICAL_RESIDUAL_DISPOSITION.csv": {
+        "bytes": 308049,
+        "rows": 585,
+        "sha256": "3f9bbdcba880a383184632c3f806516b1b863577ac584cce4b966545f86362b0"
+      },
+      "MATCH_EVIDENCE_MANIFEST.csv": {
+        "bytes": 973361,
+        "rows": 703,
+        "sha256": "f5bab95a3d93d3a78f7c95e073514d684f1981be2bdc4e4cf22d2690017c58a5"
+      }
+    },
+    "parts": [
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part001",
+        "sha256": "f3282737105ed6eed5b46882a8457e06cd29d8dd507951e93c700ec12dc1263c"
+      },
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part002",
+        "sha256": "72f6a92f82a32387ab0412979fda05d603bc9bd6fca01b668e56531ff7276371"
+      },
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part003",
+        "sha256": "457e255f1a7c7ad8e68d395f0f0842282ed564f0cf4a80d3e369101a4ebcf8be"
+      },
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part004",
+        "sha256": "fd559303beab3b5d8f4119e292661db35aa1956e9d5b6f8faa0cb7a0bd5ce44d"
+      },
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part005",
+        "sha256": "95b1852dbc1f086f268abd05cb415b21a660d92228342d3c6aed9ea875d238ce"
+      },
+      {
+        "chars": 12316,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part006",
+        "sha256": "18109a9ecdcfb7be81b8621a812572295a8fdacd01b8fdd5b8bf79d525aeb458"
+      }
+    ]
+  },
+  "current_denominator": {
+    "global": 1411,
+    "gss": 662,
+    "library_file_id": "libfile_3f6b0d93bb74819195702d808e3093ec",
+    "ref": "44e97e420d38b6a2b0c44034929b5994a352d8b6",
+    "sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64"
+  },
+  "direct_artifacts": {
+    "AMBIGUITIES.csv": {
+      "bytes": 483,
+      "exact_carrier_member_rows": 338,
+      "exact_carrier_member_sha256": "294e9920755a4faaa6ad7c276c9f8b42db52a242dd34577cc68bf9250a1fa537",
+      "sha256": "f78f81cbd04c49b4ddb245496d44e954a99e5858db95a8a47284ddba626fc569",
+      "transport_receipt": true
+    },
+    "CHANGED_FILES.txt": {
+      "bytes": 470,
+      "sha256": "f4b912830e048174b659e19526c50d22a3689f3286106308845f34e295994c58"
+    },
+    "COUNTS.json": {
+      "bytes": 5011,
+      "sha256": "c5be3d9c72f60620888db27d33fe2bf3dd38135bccb7b2a7706283283eb0738d"
+    },
+    "CURRENT_FREEZE_REVIEW_REQUESTS.csv": {
+      "bytes": 126,
+      "sha256": "b6b6332a3d8e5d35a2d1346f196d40b57818ef826f327fbdbd1ec13b9a3f1726"
+    },
+    "CURRENT_SUCCESSION_CROSSWALK.csv": {
+      "bytes": 500,
+      "exact_carrier_member_rows": 662,
+      "exact_carrier_member_sha256": "ca34a1145c346b9fde477364e983356aab41b2bde4f365e2c1aaf522012bf098",
+      "sha256": "41c4656ef2690131f32aa62bb11a3d90480dc830d706b2ad2d9dbdb570668b96",
+      "transport_receipt": true
+    },
+    "HISTORICAL_RESIDUAL_DISPOSITION.csv": {
+      "bytes": 503,
+      "exact_carrier_member_rows": 585,
+      "exact_carrier_member_sha256": "3f9bbdcba880a383184632c3f806516b1b863577ac584cce4b966545f86362b0",
+      "sha256": "ccfa830fab7bd2cc91a51cc19e3209bdd34932285c560667f5240f0e7a4661b3",
+      "transport_receipt": true
+    },
+    "MATCH_EVIDENCE_MANIFEST.csv": {
+      "bytes": 495,
+      "exact_carrier_member_rows": 703,
+      "exact_carrier_member_sha256": "f5bab95a3d93d3a78f7c95e073514d684f1981be2bdc4e4cf22d2690017c58a5",
+      "sha256": "edb074481f538bb384e8e4abb8e439f620baf306f525cad7ffb31b28b42f3025",
+      "transport_receipt": true
+    },
+    "RESULT.md": {
+      "bytes": 5133,
+      "sha256": "5b59f3b4956c686cea76e31e8dde379f84722f35c4a65edb2da53afbf464f4ee"
+    },
+    "VALIDATION.json": {
+      "bytes": 5889,
+      "sha256": "05431583334d67b96d5b6fce4c1e6b51ec1da371b829b5c0bb37be9085b54727"
+    }
+  },
+  "final_tip": "THIS_FILE_CONTAINING_COMMIT__RESOLVE_WORKER_BRANCH_TIP",
+  "historical_denominator": {
+    "c07_ref": "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+    "c08_ref": "f24a90be78e11c0a234fdc4a14cbafe60390c1f8",
+    "gss_memberships": 2823,
+    "gss_structures": 722
+  },
+  "repository": "maidiu/rawlsing",
+  "schema": "SUBV_D_OBL009_J01B_GSS_SUCCESSION_RETURN_POINTER@1.0.0",
+  "starting_head": "ba90a8a107c2dcc4e8867977943f0f41c41acee2",
+  "terminal_status": "PASS__SUBV_D_OBL009_J01B_GSS_SUCCESSION_CURRENT_GRAIN_R1",
+  "worker_branch": "agent/rabochii-subv-d-obl009-j01b-gss-succession-r1"
+}

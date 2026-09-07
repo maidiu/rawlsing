@@ -1,0 +1,2 @@
+transport_role,archive_file,archive_sha256,base64_part_count,member_name,member_rows,member_bytes,member_sha256,materialization_command
+EXACT_CARRIER_TRANSPORT_RECEIPT,EXACT_RETURN_CARRIERS.tar.xz,b414235e8e7cc22a9de97f98807805c94e4aa1a8ceea84c4a0edbbd3485e54ac,6,HISTORICAL_RESIDUAL_DISPOSITION.csv,585,308049,3f9bbdcba880a383184632c3f806516b1b863577ac584cce4b966545f86362b0,cat EXACT_RETURN_CARRIERS.tar.xz.b64.part* | base64 -d > EXACT_RETURN_CARRIERS.tar.xz && tar -xJf EXACT_RETURN_CARRIERS.tar.xz

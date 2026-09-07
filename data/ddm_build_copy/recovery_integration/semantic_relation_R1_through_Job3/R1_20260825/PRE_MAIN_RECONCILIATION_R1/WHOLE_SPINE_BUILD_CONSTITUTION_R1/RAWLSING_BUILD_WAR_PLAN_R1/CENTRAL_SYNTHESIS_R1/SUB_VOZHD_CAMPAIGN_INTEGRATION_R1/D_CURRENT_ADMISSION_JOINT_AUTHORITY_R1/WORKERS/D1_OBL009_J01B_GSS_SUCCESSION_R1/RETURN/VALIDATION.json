@@ -1,0 +1,144 @@
+{
+  "carrier_identities": {
+    "c07_archive": {
+      "bytes": 506528,
+      "file_id": "file_000000002c8081f582bbe8da1552f0a4",
+      "library_file_id": "libfile_cec6f3a01f988191b94a97354d0b9143",
+      "ref": "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+      "sha256": "1687b4fea789aabf90e3906f104250f4d7bfa0055586a71066598fd9541f0286"
+    },
+    "c07_memberships": {
+      "bytes": 2752901,
+      "rows": 15990,
+      "sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c"
+    },
+    "c07_registry": {
+      "bytes": 2595849,
+      "rows": 2499,
+      "sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd"
+    },
+    "c08_gss_membership_partition": {
+      "bytes": 499384,
+      "git_blob": "79c29e1e07a2d581b47238d4924ca8f0735796ee",
+      "ref": "f24a90be78e11c0a234fdc4a14cbafe60390c1f8",
+      "rows": 2823,
+      "sha256": "ff79c9d41791f368475820881402a7fc840bcb53cf3fbb4af23d0f75d38a8082"
+    },
+    "c08_gss_structure_partition": {
+      "bytes": 606783,
+      "git_blob": "f50b7cd8aa7056287cab8103886537d31485beac",
+      "ref": "f24a90be78e11c0a234fdc4a14cbafe60390c1f8",
+      "rows": 722,
+      "sha256": "565d0c07431499d8453f5cdeb57b8f803cc6581d886410f22dacdcc6a4b3f358"
+    },
+    "current_j01a": {
+      "bytes": 1641446,
+      "file_id": "file_000000005144822fa27f7502f6e9307b",
+      "library_file_id": "libfile_3f6b0d93bb74819195702d808e3093ec",
+      "ref": "44e97e420d38b6a2b0c44034929b5994a352d8b6",
+      "rows": 1411,
+      "sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64"
+    }
+  },
+  "checks": {
+    "all_current_states_allowed": true,
+    "all_referenced_historical_ids_exist": true,
+    "all_residual_states_allowed": true,
+    "c08_gss_membership_blob_reproduced": true,
+    "c08_gss_structure_blob_reproduced": true,
+    "current_carrier_sha256_exact": true,
+    "current_crosswalk_gss_only": true,
+    "current_crosswalk_rows_equal_gss_denominator": true,
+    "current_freeze_not_mutated": true,
+    "current_freeze_review_requests_are_review_only": true,
+    "current_global_rows_1411": true,
+    "current_gss_rows_662": true,
+    "current_ids_unique": true,
+    "git_transport_preserves_all_required_large_carrier_bytes": true,
+    "historical_capital_conserved_exactly_once": true,
+    "historical_global_rows_2499_15990": true,
+    "historical_gss_rows_722_2823": true,
+    "historical_memberships_sha256_exact": true,
+    "historical_reference_residual_disjoint": true,
+    "historical_registry_sha256_exact": true,
+    "no_duplicate_residual_ids": true,
+    "no_historical_count_to_identity_rule": true,
+    "packed_archive_roundtrip_member_hashes_exact": true,
+    "sibling_j01b_results_not_consumed": true
+  },
+  "exact_carrier_transport": {
+    "archive_bytes": 76736,
+    "archive_sha256": "b414235e8e7cc22a9de97f98807805c94e4aa1a8ceea84c4a0edbbd3485e54ac",
+    "base64_chars": 102316,
+    "members": {
+      "AMBIGUITIES.csv": {
+        "bytes": 198578,
+        "rows": 338,
+        "sha256": "294e9920755a4faaa6ad7c276c9f8b42db52a242dd34577cc68bf9250a1fa537"
+      },
+      "CURRENT_FREEZE_REVIEW_REQUESTS.csv": {
+        "bytes": 126,
+        "rows": 0,
+        "sha256": "b6b6332a3d8e5d35a2d1346f196d40b57818ef826f327fbdbd1ec13b9a3f1726"
+      },
+      "CURRENT_SUCCESSION_CROSSWALK.csv": {
+        "bytes": 599193,
+        "rows": 662,
+        "sha256": "ca34a1145c346b9fde477364e983356aab41b2bde4f365e2c1aaf522012bf098"
+      },
+      "HISTORICAL_RESIDUAL_DISPOSITION.csv": {
+        "bytes": 308049,
+        "rows": 585,
+        "sha256": "3f9bbdcba880a383184632c3f806516b1b863577ac584cce4b966545f86362b0"
+      },
+      "MATCH_EVIDENCE_MANIFEST.csv": {
+        "bytes": 973361,
+        "rows": 703,
+        "sha256": "f5bab95a3d93d3a78f7c95e073514d684f1981be2bdc4e4cf22d2690017c58a5"
+      }
+    },
+    "parts": [
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part001",
+        "sha256": "f3282737105ed6eed5b46882a8457e06cd29d8dd507951e93c700ec12dc1263c"
+      },
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part002",
+        "sha256": "72f6a92f82a32387ab0412979fda05d603bc9bd6fca01b668e56531ff7276371"
+      },
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part003",
+        "sha256": "457e255f1a7c7ad8e68d395f0f0842282ed564f0cf4a80d3e369101a4ebcf8be"
+      },
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part004",
+        "sha256": "fd559303beab3b5d8f4119e292661db35aa1956e9d5b6f8faa0cb7a0bd5ce44d"
+      },
+      {
+        "chars": 18000,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part005",
+        "sha256": "95b1852dbc1f086f268abd05cb415b21a660d92228342d3c6aed9ea875d238ce"
+      },
+      {
+        "chars": 12316,
+        "file": "EXACT_RETURN_CARRIERS.tar.xz.b64.part006",
+        "sha256": "18109a9ecdcfb7be81b8621a812572295a8fdacd01b8fdd5b8bf79d525aeb458"
+      }
+    ]
+  },
+  "method_rules": [
+    "EXACT relation requires same wave + exact native member-code set + exact question-implementation-id set.",
+    "Changed-membership relation requires same wave + strict exact member containment + a unique nonblank historical structure_label that prefixes every current member code.",
+    "Multiple such structurally anchored candidates => AMBIGUOUS_SUCCESSION.",
+    "Member/qimpl overlap without a structural anchor => UNRESOLVED_IDENTITY; overlap alone is never promoted.",
+    "Zero same-wave admitted-historical member/qimpl overlap => CURRENT_NEW_STRUCTURE within the admitted historical carrier.",
+    "Historical structures not referenced by exact/changed/ambiguous current succession are residual-disposed exactly once."
+  ],
+  "pass_terminal": "PASS__SUBV_D_OBL009_J01B_GSS_SUCCESSION_CURRENT_GRAIN_R1",
+  "schema": "SUBV_D_OBL009_J01B_GSS_SUCCESSION_VALIDATION@1.0.0",
+  "status": "PASS"
+}
