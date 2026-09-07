@@ -236,7 +236,7 @@ def main() -> int:
             "as3_id":sid,
             "source_object_id":src["object_id"],
             "source_content_hash":src["content_hash"],
-            "node4a_input_sha256":input_hash(rec,lf=False),
+            "node4a_input_sha256":input_hash(rec,lf=True),
             "successor_kind":ref["kind"],
             "successor_object_id":ref["object_id"],
             "successor_content_hash":ref["content_hash"],
@@ -253,7 +253,7 @@ def main() -> int:
         if k not in by_ref:
             by_ref[k]={"ref":obj.ref.as_dict(),"roles":[],"canonical_representation":obj.as_dict()}
         by_ref[k]["roles"].append(sid)
-    predicate_bundle=list(by_ref.values())
+    predicate_bundle=sorted(by_ref.values(),key=lambda x:x["ref"]["object_id"])
     require(len(predicate_bundle)==18,"18 distinct fresh predicates")
     duplicate=[x["roles"] for x in predicate_bundle if len(x["roles"])>1]
     require(duplicate==[["A000","A1RAPP"]],"sole predicate alias")
