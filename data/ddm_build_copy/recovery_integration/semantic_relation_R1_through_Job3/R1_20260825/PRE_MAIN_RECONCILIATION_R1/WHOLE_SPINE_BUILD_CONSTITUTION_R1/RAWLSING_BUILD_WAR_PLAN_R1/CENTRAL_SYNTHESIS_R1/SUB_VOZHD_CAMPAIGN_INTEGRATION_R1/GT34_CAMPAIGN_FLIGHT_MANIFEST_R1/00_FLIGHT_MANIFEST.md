@@ -1,7 +1,7 @@
 # GT34 / TRII FIRST-CANARY CAMPAIGN — FLIGHT MANIFEST R1
 
 Status:
-`ACTIVE_CRITICAL_PATH__OBL048_AT_HQ__OBL056_H2_FAIL__CURRENT_ENTRY_PROVENANCE_REPAIR_NEXT`
+`ACTIVE_CRITICAL_PATH__OBL048_AT_HQ__OBL056_H2_FAIL_BANKED__CURRENT_ENTRY_PROVENANCE_REPAIR_IN_FLIGHT`
 
 Campaign branch:
 `agent/sub-vozhd-gt34-trii-first-canary-r1`
@@ -85,37 +85,41 @@ Governed court:
 
 H2 confirms D2 remains repaired and future-current exact registry membership is representable. One local adoption blocker remains: a `CURRENT_ACCEPTED` entry can have empty `AcceptanceEntry.immutable_provenance` while registry-level provenance is nonempty.
 
-SUB-VOZHD A classifies this as a bounded local OBL056 repair, not a new authority-ownership or trajectory question.
+H2 history is banked. SUB-VOZHD A classifies this as a bounded local OBL056 repair, not a new authority-ownership or trajectory question.
 
-## Next exact action — provenance-only repair
+### Current-entry provenance repair — in flight
 
-Commission exactly one bounded repair worker to:
+Proof/implementation owner:
+`agent/rabochii-gt34-obl056-current-entry-provenance-bounded-repair-r1`
+
+Exact commission/start HEAD:
+`75897ab89df5fd58c27f7c996e9a818bc8561549`
+
+Handoff:
+`SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/GT34_OBL056_CURRENT_ENTRY_PROVENANCE_BOUNDED_REPAIR_R1/00_HANDOFF.md`
+
+Profile:
+`IMPLEMENT -> VERIFY_REGRESSION`
+
+Preferred PASS terminal:
+`PASS__GT34_OBL056_CURRENT_ACCEPTED_ENTRY_IMMUTABLE_PROVENANCE_BOUNDED_REPAIR_GREEN__NO_ADOPTION`
+
+Repair only:
 1. require nonempty `AcceptanceEntry.immutable_provenance` for every `CURRENT_ACCEPTED` entry during exact current-registry construction;
 2. independently enforce the same condition during current receipt validation;
 3. preserve exact entry/receipt equality and content-addressing;
-4. add regression proving empty current-entry provenance fails closed.
+4. prove empty current-entry provenance fails closed.
 
-Preserve:
-- exactly four roles;
-- consumer/scope/currentness law;
-- exact adoption/current-selection evidence binding;
-- strict synthetic/current separation;
-- no fallback/latest/fuzzy/self-issued currentness;
-- constituent-first contact-pair validation;
-- occurrence/independence distinct authority and receipt rules;
-- all authority ceilings and underlying semantic ownership.
+Preserve all prior R2/H2 sound properties and authority ceilings. Do not invent a project-current positive entry.
 
-After repair PASS, commission exactly one fresh independent hostile reviewer. Only a hostile PASS permits an OBL056 HQ adoption packet.
+After repair PASS, commission exactly one fresh independent hostile reviewer. Only a fresh hostile PASS permits an OBL056 HQ adoption packet.
 
 ## OBL055 hard gate
 
 State:
 `BLOCKED_ON_REPAIRED_OBL056_FRESH_HOSTILE_PASS_AND_EXPLICIT_HQ_ADOPTION`
 
-W2 executor remains frozen at blob:
-`54d9acba40f0eb1db71ce97ecb9e6aa5f6bb`
-
-Authoritative frozen W2 executor blob remains:
+Frozen W2 executor blob:
 `54d9acba40f0eb1db8bb03aec3c1bb900f849588`
 
 Do not repair OBL055 until OBL056 is explicitly HQ-current.
