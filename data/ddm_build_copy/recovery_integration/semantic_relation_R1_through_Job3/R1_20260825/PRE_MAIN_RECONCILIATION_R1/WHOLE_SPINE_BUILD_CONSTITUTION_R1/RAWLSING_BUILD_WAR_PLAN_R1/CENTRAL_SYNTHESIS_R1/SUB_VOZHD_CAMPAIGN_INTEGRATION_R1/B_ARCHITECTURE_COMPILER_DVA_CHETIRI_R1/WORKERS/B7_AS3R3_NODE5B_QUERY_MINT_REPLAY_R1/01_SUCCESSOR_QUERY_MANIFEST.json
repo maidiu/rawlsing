@@ -1,6 +1,6 @@
 {
   "schema": "AS3R3_NODE5B_SUCCESSOR_QUERY_MANIFEST@1.0.0",
-  "status": "MINTED__PENDING_FRESH_REPLAY",
+  "status": "PASS__MINTED_AND_REPLAY_SEALED",
   "producer": {
     "commit": "cfc240aa3a64c59509eab97450a7d3603af813cc",
     "git_blob_sha": "d63370dbcadc043dd2f27f5383cf36f0e84d1235",
@@ -133,5 +133,14 @@
       },
       "canonical_representation_sha256": "0bb9a74d85091e8954206669c1b180ea05426511b644e12075a8bbd96a178bd6"
     }
-  ]
+  ],
+  "terminal": "AS3R3_NODE5B_QUERY_MINT_REPLAY_SEAL_COMPLETE__READY_FOR_COMBINED_SUCCESSOR_RUNTIME_SEAL",
+  "replay_seal": {
+    "primary_mint_manifest_sha256": "ace1b9923d05d2a7a31c27b9df3d1c508441fd05982d1f2751ba3daba899dadd",
+    "fresh_process_replay_receipt_git_blob_sha": "0396e557dff6cd0018349bb7707273acabf797a3",
+    "fresh_replay_count": 2,
+    "fresh_python_crosscheck_count": 2,
+    "byte_identical": true,
+    "predicate_remints": 0
+  }
 }
