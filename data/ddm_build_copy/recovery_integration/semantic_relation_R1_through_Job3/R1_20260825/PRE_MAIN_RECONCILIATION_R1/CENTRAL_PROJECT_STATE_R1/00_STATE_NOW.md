@@ -378,3 +378,53 @@ ASSOCIATION != CAPITAL_VALUE
 CAPITAL_VALUE != CONVERSION
 ASSOCIATION != CONVERSION
 ```
+
+
+## FIELD FORGE ACTIVE LOCAL MISSION COMPLETE
+
+SUB-VOZHD C final active local return:
+
+`6612a4cf193355d8fa321a0fee80856415f0e65c`
+
+OBL043 candidate:
+
+`1ee4cb3302f12900f68ce7d1332f105e7af6175d`
+
+OBL043 independent hostile PASS:
+
+`1e70a7ab7d4195fbf49700f2a69b3ed11ef6670d`
+
+HQ OBL043 adoption:
+
+`dbbf89e5c51c9b6818ad300bf77bbaffd252e398`
+
+OBL020 terminal synthesis:
+
+`d92c6426416b87dc1c6753e3459181c7d79e021b`
+
+Current active-local Field Forge state:
+
+```text
+OBL040 = CLOSED/CURRENT
+OBL041 = CLOSED/CURRENT
+OBL042 = CLOSED/CURRENT
+OBL005 = CLOSED/CURRENT
+OBL043 = CLOSED/CURRENT
+OBL020 = CLOSED
+
+OBL006 = DORMANT CLAIM-CONDITIONAL RETURN REQUIRED
+```
+
+Terminal Field Forge holding:
+
+`PASS__FIELD_FORGE_POST_R2_ACTIVE_LOCAL_OBLIGATIONS_CLOSED__OBL006_PRESERVED_CLAIM_CONDITIONAL__OBL020_CLOSED`
+
+SUB-VOZHD C operational state:
+
+`ACTIVE_LOCAL_MISSION_COMPLETE__STAND_DOWN_UNLESS_EXACT_NEW_FIELD_FORGE_TRIGGER`
+
+No further Field Forge worker is active or required by the current project graph.
+
+OBL006 reactivates only on a concrete exact external political-group transport claim.
+
+No generic FIELD, HOMOLOGY, hegemony, CAPITAL, CONVERSION, transport, V3, or physical/compiler authority is implied by Field Forge closure.
