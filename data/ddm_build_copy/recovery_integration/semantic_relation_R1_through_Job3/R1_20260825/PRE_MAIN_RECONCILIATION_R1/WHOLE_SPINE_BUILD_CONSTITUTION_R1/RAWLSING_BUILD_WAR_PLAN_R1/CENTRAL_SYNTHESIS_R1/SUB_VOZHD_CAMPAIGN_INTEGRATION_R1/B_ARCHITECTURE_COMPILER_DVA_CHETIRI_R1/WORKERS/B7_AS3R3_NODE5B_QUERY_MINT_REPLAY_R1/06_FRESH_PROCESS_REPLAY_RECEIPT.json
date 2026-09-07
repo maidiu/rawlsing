@@ -1,0 +1,103 @@
+{
+  "schema": "AS3R3_NODE5B_FRESH_PROCESS_REPLAY_RECEIPT@1.0.0",
+  "status": "PASS__DETERMINISTIC_FRESH_REPLAY",
+  "minimum_required": 2,
+  "frozen_surface": {
+    "node4b_complete_bundle_sha256": "2cf15c20a4c65c2dcb29c6fd015260aa9ed8a70f0537927368c86e561a834e50",
+    "node4b_ordered_query_input_package_sha256": "fa68d91d4c40ff606cf4f5b06a3b213b57e3ecfc7e0c029627d7fd29413998a6",
+    "producer_commit": "cfc240aa3a64c59509eab97450a7d3603af813cc",
+    "producer_git_blob_sha": "d63370dbcadc043dd2f27f5383cf36f0e84d1235",
+    "producer_file_sha256": "ad7434186e5e72886333f438ed9726cec01a2d2cf740353175da938708a5ef6d",
+    "contract_git_blob_sha": "26a7d123881513524e26f2342ab93dd1141fb5f6",
+    "node5a_r2_distinct_successor_predicate_refs": 18,
+    "condition_role_source_id": "A000",
+    "condition_successor_predicate_hash": "ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0"
+  },
+  "primary_mint": {
+    "checkpoint_commit": "53fcc2dd61c48069caa4b505ee7ca26e4ddafcee",
+    "constructor_invocations": 3,
+    "distinct_successor_query_refs": 3,
+    "query_refs": {
+      "T_Q301_2_RAW": "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+      "T_Q301_7_RAW": "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+      "T_Q301_2_Q301_7_RAW": "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+    },
+    "canonical_representation_sha256": {
+      "T_Q301_2_RAW": "16414b17c709dca60e93c4636540febca73dd44e5d0bcd5b236c5c2a6dad3744",
+      "T_Q301_7_RAW": "2817fa258c30e77f4d9eff632dc570343cab63db28f5b94857b7dd9be170c89e",
+      "T_Q301_2_Q301_7_RAW": "0bb9a74d85091e8954206669c1b180ea05426511b644e12075a8bbd96a178bd6"
+    },
+    "query_package_sha256": "c185a68c3850131f701dae3b2cb20b66d947d40ef447ac69f0bcebe9d467732e",
+    "manifest_file_sha256": "ace1b9923d05d2a7a31c27b9df3d1c508441fd05982d1f2751ba3daba899dadd",
+    "crosswalk_sha256": "079c3760a6ec5a73b73d40d6a6d35f3f5588e9817cde77a2d48c4734ebe905b2",
+    "canonical_representations_file_sha256": "88627299fddc8f6e71a4092a1424501fe3d4fae07e2683f63e4b88ac789b199c",
+    "condition_binding_receipt_sha256": "4c9f59558049a7d7aaf98183cea23dd735f6dc9cfe2351c1d4023383c7f7b51c",
+    "predicate_remints": 0
+  },
+  "isolated_constructor_replays": [
+    {
+      "run": 1,
+      "status": "PASS",
+      "execution_isolation": "FRESH_EXECUTION_ISOLATE",
+      "constructor_invocations": 3,
+      "predicate_remints": 0,
+      "query_refs": {
+        "T_Q301_2_RAW": "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+        "T_Q301_7_RAW": "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+        "T_Q301_2_Q301_7_RAW": "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+      },
+      "canonical_representation_sha256": {
+        "T_Q301_2_RAW": "16414b17c709dca60e93c4636540febca73dd44e5d0bcd5b236c5c2a6dad3744",
+        "T_Q301_7_RAW": "2817fa258c30e77f4d9eff632dc570343cab63db28f5b94857b7dd9be170c89e",
+        "T_Q301_2_Q301_7_RAW": "0bb9a74d85091e8954206669c1b180ea05426511b644e12075a8bbd96a178bd6"
+      },
+      "query_package_sha256": "c185a68c3850131f701dae3b2cb20b66d947d40ef447ac69f0bcebe9d467732e",
+      "manifest_file_sha256": "ace1b9923d05d2a7a31c27b9df3d1c508441fd05982d1f2751ba3daba899dadd",
+      "crosswalk_sha256": "079c3760a6ec5a73b73d40d6a6d35f3f5588e9817cde77a2d48c4734ebe905b2",
+      "canonical_representations_file_sha256": "88627299fddc8f6e71a4092a1424501fe3d4fae07e2683f63e4b88ac789b199c",
+      "condition_binding_receipt_sha256": "4c9f59558049a7d7aaf98183cea23dd735f6dc9cfe2351c1d4023383c7f7b51c"
+    },
+    {
+      "run": 2,
+      "status": "PASS",
+      "execution_isolation": "FRESH_EXECUTION_ISOLATE",
+      "constructor_invocations": 3,
+      "predicate_remints": 0,
+      "query_refs": {
+        "T_Q301_2_RAW": "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+        "T_Q301_7_RAW": "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+        "T_Q301_2_Q301_7_RAW": "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+      },
+      "canonical_representation_sha256": {
+        "T_Q301_2_RAW": "16414b17c709dca60e93c4636540febca73dd44e5d0bcd5b236c5c2a6dad3744",
+        "T_Q301_7_RAW": "2817fa258c30e77f4d9eff632dc570343cab63db28f5b94857b7dd9be170c89e",
+        "T_Q301_2_Q301_7_RAW": "0bb9a74d85091e8954206669c1b180ea05426511b644e12075a8bbd96a178bd6"
+      },
+      "query_package_sha256": "c185a68c3850131f701dae3b2cb20b66d947d40ef447ac69f0bcebe9d467732e",
+      "manifest_file_sha256": "ace1b9923d05d2a7a31c27b9df3d1c508441fd05982d1f2751ba3daba899dadd",
+      "crosswalk_sha256": "079c3760a6ec5a73b73d40d6a6d35f3f5588e9817cde77a2d48c4734ebe905b2",
+      "canonical_representations_file_sha256": "88627299fddc8f6e71a4092a1424501fe3d4fae07e2683f63e4b88ac789b199c",
+      "condition_binding_receipt_sha256": "4c9f59558049a7d7aaf98183cea23dd735f6dc9cfe2351c1d4023383c7f7b51c"
+    }
+  ],
+  "fresh_python_crosschecks": {
+    "process_count": 2,
+    "status": "PASS__BYTE_IDENTICAL_PACKAGE_AND_QUERY_REF_CHECKS",
+    "stdout_byte_identical": true,
+    "stdout_sha256": "f1acee9fc82844f023af5bc264dfb34e28ca3a57a7f56068174ee0a8896c4eec",
+    "package_sha256": "c185a68c3850131f701dae3b2cb20b66d947d40ef447ac69f0bcebe9d467732e",
+    "query_refs": {
+      "T_Q301_2_RAW": "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+      "T_Q301_7_RAW": "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+      "T_Q301_2_Q301_7_RAW": "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+    },
+    "note": "Python subprocesses independently rechecked the sealed package identity/cardinality and exact query refs; the two isolated constructor replays above independently reconstructed from committed Node4B input material."
+  },
+  "byte_identity": {
+    "all_query_refs_identical": true,
+    "all_canonical_representation_hashes_identical": true,
+    "crosswalk_bytes_identical": true,
+    "condition_binding_bytes_identical": true,
+    "package_identity_identical": true
+  }
+}
