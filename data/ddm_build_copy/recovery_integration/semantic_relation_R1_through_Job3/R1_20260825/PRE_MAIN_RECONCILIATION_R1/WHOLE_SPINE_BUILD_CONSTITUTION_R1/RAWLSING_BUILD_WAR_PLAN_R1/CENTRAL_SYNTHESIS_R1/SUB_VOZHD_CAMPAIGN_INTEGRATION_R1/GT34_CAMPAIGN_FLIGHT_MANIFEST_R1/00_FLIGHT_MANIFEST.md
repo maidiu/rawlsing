@@ -1,7 +1,7 @@
 # GT34 / TRII FIRST-CANARY CAMPAIGN — FLIGHT MANIFEST R1
 
 Status:
-`ACTIVE_CRITICAL_PATH__OBL048_AT_HQ__OBL056_R3_PASS_BANKED__H3_FRESH_HOSTILE_REVIEW_IN_FLIGHT`
+`ACTIVE_CRITICAL_PATH__OBL048_AT_HQ__OBL056_READY_FOR_HQ_ADJUDICATION__OBL055_BLOCKED_ON_EXPLICIT_OBL056_HQ_ADOPTION`
 
 Campaign branch:
 `agent/sub-vozhd-gt34-trii-first-canary-r1`
@@ -88,7 +88,7 @@ Evidence execution:
 Terminal:
 `PASS__GT34_OBL056_CURRENT_ACCEPTED_ENTRY_IMMUTABLE_PROVENANCE_BOUNDED_REPAIR_GREEN__NO_ADOPTION`
 
-R3 now requires nonempty current-entry immutable provenance both at current-registry construction and independently during current receipt validation. Registry-level provenance cannot substitute for entry-level provenance.
+R3 requires nonempty current-entry immutable provenance both at current-registry construction and independently during current receipt validation. Registry-level provenance cannot substitute for entry-level provenance.
 
 Repaired implementation blob:
 `49538b9c36e58e19a6dc293ecac5bc2dff58eebe`
@@ -115,7 +115,7 @@ Campaign R3 adjudication commit:
 Disposition:
 `PASS__SUB_VOZHD_A_ACCEPTS_OBL056_R3_CURRENT_ENTRY_PROVENANCE_REPAIR_FOR_FRESH_INDEPENDENT_HOSTILE_REVIEW__NO_ADOPTION`
 
-### H3 fresh independent hostile review — IN FLIGHT
+### H3 fresh independent hostile review — PASS / BANKED
 
 Proof owner:
 `agent/rabochii-gt34-obl056-r3-current-entry-provenance-hostile-audit-r1`
@@ -132,36 +132,85 @@ Profile:
 Frozen target:
 `442a8c16cea45620374c5a73e406483ff59122d8`
 
-PASS ceiling:
+Final worker tip:
+`64256c746cf321925beed10970add4ed24f7f378`
+
+Terminal:
 `PASS__GT34_OBL056_R3_CURRENT_ENTRY_PROVENANCE_INDEPENDENT_HOSTILE_REVIEW__LAWFUL_FOR_HQ_ADOPTION_CONSIDERATION`
 
-H3 must independently reattack entry-level provenance, future-current membership/adoption/current-selection law, caller self-issuance, exact role/scope/currentness/evidence binding, synthetic/current separation, constituent-first contact pair validation, contact distinctness, content addressing/replay, and authority ceiling.
+Independent matrix freeze:
+`f53f81361834db17531ccfcfac3eaac29d6a8f0b`
 
-No duplicate H3 proof owner is lawful while this reviewer is in flight.
+Independent matrix blob:
+`42b3b34d1d97ce0ae76048e27a3b617e40998a8a`
+
+Attack-family count:
+`80`
+
+Hostile-test tip:
+`03ac25a031012e378639b7d93fe24fc787beb866`
+
+Governed evidence execution:
+`c27318f4ccc91e021f29c89b553d6d89a657c9bc`
+
+Governed hostile court:
+- run/job: `34152697206 / 101838084212`;
+- protocol: `20 passed in 0.09s`;
+- court-spec validation: `PASS`;
+- governed hostile wrapper: `2 passed in 0.47s`;
+- PR `#251`: `CLOSED_UNMERGED`;
+- synthetic merge: `33eb8917a3e3b565d2ed684a1e08140e9888baa4`;
+- artifact: `10029903525`;
+- artifact ZIP SHA-256: `c6f5365703e9687870f9bf65cf3c1cf3980e8c4db7623cb821343343bb778c98`.
+
+H3 independently confirms the H2 blocker remains closed at both enforcement points and reattacks exact membership/adoption/current-selection law, caller self-issuance, issuer/registry binding, role/consumer/scope/currentness/owner/source/limits binding, synthetic/current separation, constituent-first contact-pair validation, content addressing/replay, no fallback, and authority ceiling.
+
+Fresh observations are preserved without silently widening OBL056:
+- nonempty provenance collection with structurally empty member fields: `NONBLOCKING_OUTSIDE_FROZEN_R3_REPAIR_PREDICATE`;
+- malformed nonmatched member in a handcrafted snapshot: `NONBLOCKING_NO_FALSE_MATCHED_COMPETENCE`;
+- foreign current-entry schema ID under exact content address: `NONBLOCKING_NO_FROZEN_ENTRY_SCHEMA_ADMISSION_PREDICATE`;
+- noncanonical role/transition pairing under exact registry-selected acceptance scope: `NONBLOCKING_ACCEPTANCE_BINDING_NOT_SEMANTIC_SCOPE_TRUTH`.
+
+Campaign H3 evidence bank commit:
+`6b25148662623e1377b39da3ab3fbe6a02f4cad5`
+
+Campaign H3 adjudication commit:
+`d5e8816becc99e1c5515b98f74ef0bdcc0bc3aff`
+
+Campaign disposition:
+`PASS__SUB_VOZHD_A_OBL056_H3_HOSTILE_REVIEW_ACCEPTED__READY_FOR_VOZHD_HQ_ADJUDICATION`
+
+HQ packet commit:
+`eb69b0978b0b1e6476a5b9ed7c54b5cadb03f783`
+
+State:
+`READY_FOR_VOZHD_HQ_ADJUDICATION`
+
+OBL056 remains `NOT_ADOPTED`. The installed candidate registry remains empty/fail-closed. No further OBL056 Rabochii is lawful absent exact HQ disposition, remand, or contradiction.
 
 ## Next exact trigger
 
-### H3 PASS
+### Explicit HQ adoption/currentization of OBL056
 
-SUB-VOZHD A shall:
-1. inspect H3 matrix/tests/evidence/court and exact final tip;
-2. bank/adjudicate the hostile PASS;
-3. emit exact OBL056 `READY_FOR_VOZHD_HQ_ADJUDICATION` packet;
-4. do not self-adopt OBL056.
+Only if central Vozhd/HQ explicitly adopts/currentizes exact candidate `442a8c16cea45620374c5a73e406483ff59122d8` at the bounded OBL056 acceptance-binding grain shall SUB-VOZHD A:
+1. bank the exact HQ disposition;
+2. reopen the already-bounded OBL055 lane under frozen W2 executor blob `54d9acba40f0eb1db8bb03aec3c1bb900f849588`;
+3. preserve all downstream gates;
+4. not execute current first-canary OEE absent separate exact authorization.
 
-### H3 FAIL
+### HQ remand/reject
 
-Bank and classify the exact blocker. Repair locally only if wholly inside the already-constituted OBL056 grain; otherwise route the exact lane to HQ.
+Bank and classify the exact HQ disposition. Reopen only the exact remanded grain. Do not widen authority by implication.
 
 ## OBL055 hard gate
 
 State:
-`BLOCKED_ON_OBL056_FRESH_HOSTILE_PASS_AND_EXPLICIT_HQ_ADOPTION`
+`BLOCKED_ON_EXPLICIT_OBL056_HQ_ADOPTION`
 
 Frozen W2 executor blob:
 `54d9acba40f0eb1db8bb03aec3c1bb900f849588`
 
-Do not repair OBL055 until OBL056 is explicitly HQ-current.
+Do not repair or execute OBL055 until OBL056 is explicitly HQ-current.
 
 ## Downstream
 
