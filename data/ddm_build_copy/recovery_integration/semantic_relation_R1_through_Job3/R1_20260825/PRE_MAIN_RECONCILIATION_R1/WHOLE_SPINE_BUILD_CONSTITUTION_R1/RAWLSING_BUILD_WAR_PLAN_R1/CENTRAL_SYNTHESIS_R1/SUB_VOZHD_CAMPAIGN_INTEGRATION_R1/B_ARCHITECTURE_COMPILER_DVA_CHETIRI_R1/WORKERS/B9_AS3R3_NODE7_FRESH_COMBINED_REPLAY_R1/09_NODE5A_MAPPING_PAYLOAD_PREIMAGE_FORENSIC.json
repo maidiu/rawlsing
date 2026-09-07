@@ -1,0 +1,40 @@
+{
+  "schema": "AS3R3_NODE7_NODE5A_MAPPING_PAYLOAD_PREIMAGE_FORENSIC@1.0.0",
+  "status": "EXACT_BLOCKER_PROVED",
+  "target_mapping_payload_sha256": "081e3b8594be3d9348bc0565cd9085cca1e999ae58ef7881f040d11f5da89c7e",
+  "node5a_r2": {
+    "terminal_commit": "a208b910a2a254052b8abc75cff9ff2c532ce30d",
+    "material_crosswalk_blob": "26a7c35df2e6454c5e270a03b3571599bdf152fd",
+    "material_crosswalk_rows": 19,
+    "canonical_predicate_payload_sha256": "ef5cd10a5af7fcaad82b7dca39f2035ff829c59fe6f45ec681f872810276ac27",
+    "alias_payload_sha256": "5f3763afced573d70fc72233d3c28d6f2d4d2f3ce8585d050a48a43ef8b00f5d",
+    "replay_package_identity_sha256": "3b2324ff217b627b4b079695f141099ca09741e420c0e1e9fa9ccc363798ceaa"
+  },
+  "committed_preimage_surface": {
+    "exact_payload_bytes_present": false,
+    "executable_hash_preimage_helper_present": false,
+    "adopted_mapping_payload_serialization_law_present": false,
+    "digest_only_present": true,
+    "material_19_row_crosswalk_present": true
+  },
+  "intermediate_history_inspected": [
+    "e2c8637536a158ab5bc84a918c698d75fbda8d59",
+    "367faedcb3c8d3815ce64bf9df9f2cea46f0ea80",
+    "1a8ba44e3ede231b1c95cc59a0eb56321b3f2a60",
+    "13a4e39e710cb4fc75309324ca26e2a5e9ca1840",
+    "642a835e192804f03790a7fa0097cdb889d6e097",
+    "51fb610d8f7d63b09707e6d7ac461250f74d816b",
+    "303cb0fc9c37c15589980e5285212cf13096c5cc",
+    "ccac5d208a1e7763c8c193ec1cb4917915a1c262",
+    "a208b910a2a254052b8abc75cff9ff2c532ce30d"
+  ],
+  "node7_authorization": {
+    "ref": "08313b07afd01a1abe159a06f62f5e7b674dc683",
+    "node5b_query_package_serialization_law_present": true,
+    "node6_new_json_serialization_law_present": true,
+    "node5a_mapping_payload_serialization_law_present": false,
+    "target_hash_reuse_forbidden": true
+  },
+  "blocker": "Fresh reproduction of the Node5A-R2 role-mapping payload hash is under-specified. Supplying the recorded digest as an output would violate the process-independence/no-target-fitting law.",
+  "smallest_lawful_unblock": "Adopt exact preimage bytes or an exact deterministic serialization rule producing the existing 081e3b... digest from the unchanged committed 19 mapping rows."
+}
