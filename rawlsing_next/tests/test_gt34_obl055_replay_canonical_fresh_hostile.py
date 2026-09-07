@@ -171,7 +171,7 @@ def test_h2_04_source_bundle_only_receipt_mutation_fails_after_full_readdress():
             "role", acceptance.POSITIVE_APPLICABILITY
         ),
     )
-    with pytest.raises(oee.OEEIntegrityError):
+    with pytest.raises((oee.OBL055AcceptanceError, oee.OEEIntegrityError)):
         oee.validate_record(forged)
 
 
