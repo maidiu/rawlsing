@@ -178,3 +178,38 @@ active local closures
 OBL006 is not a generic blocker for local FIELD FORGE work. It remains claim-conditional and reactivates only for an exact concrete external political-group transport claim. Without a lawful map, preserve `NO_TRANSPORT / NONCOMPARABLE`.
 
 FIELD FORGE R2 remains the adopted semantic/architecture authority. This trajectory closes only surviving exact post-R2 obligations and does not reopen R2.
+
+
+## FIELD FORGE OBL040 ADOPTION AND RELEASE
+
+OBL040 is now project-current at exact bounded grain:
+
+`ADOPTED__FIELD_FORGE_OBL040_OBSERVABILITY_ROUTING_RELATION_AUTHORITY__EXACT_BOUNDED_GRAIN__OBL040_CLOSED`
+
+Adoption commit:
+
+`6e493c4a0557b894fc0a1e1a2a9c0f56b5bbc095`
+
+Exact candidate:
+
+`FIELD_FORGE_OBL040_OBSERVABILITY_ROUTING_RELATION_AUTHORITY@1.0.0`
+
+Exact HQ-mandated independent hostile PASS:
+
+`e208e6fc23a61112ffe4dad9e3782a1a922ad4b4`
+
+Current Field Forge frontier:
+
+```text
+OBL041
+  ||
+narrowed local OBL042
+
+OBL041 current -> OBL005
+
+OBL005 current + OBL042 current -> OBL043
+
+active local closures -> surviving bounded OBL020
+```
+
+OBL006 remains claim-conditional and is not a generic prerequisite for local OBL042.
