@@ -333,3 +333,48 @@ The next lawful work is parallel:
 1. A packages OBL048 while repairing OBL056;
 2. B banks Node5A-R2 and launches Node4B;
 3. C launches OBL005.
+
+
+## FIELD FORGE OBL005 ADOPTION / OBL043 RELEASE
+
+SUB-VOZHD C returned a campaign-accepted OBL005 candidate plus independent hostile PASS at campaign tip:
+
+`1064d6784181b8738406b8e009455e7adf53bb80`
+
+Central banking merge:
+
+`5525e13a67f8c0f245dbd6bfc56d71133f59031f`
+
+HQ adoption:
+
+`b3012b346b8dbb1569a77d998310e16f28cebf6c`
+
+Current authority:
+
+`FIELD_FORGE_OBL005_CLAIM_BOUNDED_POSITION_ROLE_AUTHORITY_AND_EVIDENCE_CONTRACT@1.0.0`
+
+Terminal:
+
+`ADOPTED__FIELD_FORGE_OBL005_CLAIM_BOUNDED_POSITION_ROLE_AUTHORITY_AND_EVIDENCE_CONTRACT__EXACT_BOUNDED_GRAIN__OBL005_CLOSED`
+
+Current FIELD FORGE frontier:
+
+```text
+OBL043 local mode/form-effects
+  + association/capital/conversion distinctions
+    -> independent hostile review
+    -> HQ adoption
+    -> bounded OBL020 post-R2 synthesis
+```
+
+OBL006 remains claim-conditional and need not be forced closed.
+
+Binding OBL043 noncollapse:
+
+```text
+MODE_OR_FORM_EFFECT != FIELD_STRUCTURE
+RESPONSE_STYLE != FIELD_STRUCTURE
+ASSOCIATION != CAPITAL_VALUE
+CAPITAL_VALUE != CONVERSION
+ASSOCIATION != CONVERSION
+```
