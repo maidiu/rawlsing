@@ -1,0 +1,61 @@
+{
+  "schema": "AS3R3_NODE5A_R2_PROTOCOL_V2_FRESH_PROCESS_MATERIALIZATION_RECEIPT@1.0.0",
+  "status": "PASS__TWO_INDEPENDENT_FRESH_PROCESS_MATERIALIZATIONS_BYTE_IDENTICAL",
+  "required_fresh_processes": 2,
+  "qualifying_fresh_processes": 2,
+  "process_independence": {
+    "separate_os_processes": true,
+    "no_shared_in_memory_state": true,
+    "process_1_output_not_input_to_process_2": true,
+    "distinct_output_paths": true,
+    "isolated_python_flags": [
+      "-I",
+      "-S"
+    ]
+  },
+  "committed_serializer": {
+    "commit": "84a80b6d0aec9525cae704093ae770415371a4aa",
+    "git_blob": "29b61fc7fef8db06e4ba95fedc788a20b8d28d5e",
+    "file_sha256": "47307828a471cc525643f870c32ac15efa26565f063191d50ea32c48c72994b6"
+  },
+  "immutable_inputs": {
+    "protocol_spec_git_blob": "befee68ee14f6e80e88cb3142947a37a7619fc5b",
+    "carrier_git_blob": "26a7c35df2e6454c5e270a03b3571599bdf152fd"
+  },
+  "committed_payload": {
+    "commit": "6c03af3c4aed1ad6f305976d8cf60809167f8976",
+    "git_blob": "d62847e9972362bf2fcaeac515360cd5cf99eab7",
+    "byte_length": 12364,
+    "sha256": "06f874df6bdd2e621886f748c8aa12397533e273649f99e654dc3779b5eb59db"
+  },
+  "runs": [
+    {
+      "run": 1,
+      "command": "/usr/bin/python3 -I -S /mnt/data/b11exec/01_PROTOCOL_V2_SERIALIZER.py --protocol-spec /mnt/data/b11exec/protocol_spec.json --carrier /mnt/data/b11exec/carrier.csv --output /mnt/data/b11exec/qualifying_run_1_payload.json --receipt /mnt/data/b11exec/qualifying_run_1_receipt.json",
+      "exit_status": 0,
+      "stderr": "",
+      "serializer_git_blob_verified_before_run": "29b61fc7fef8db06e4ba95fedc788a20b8d28d5e",
+      "serializer_sha256_verified_before_run": "47307828a471cc525643f870c32ac15efa26565f063191d50ea32c48c72994b6",
+      "output_byte_length": 12364,
+      "output_sha256": "06f874df6bdd2e621886f748c8aa12397533e273649f99e654dc3779b5eb59db",
+      "output_git_blob": "d62847e9972362bf2fcaeac515360cd5cf99eab7",
+      "byte_identical_to_committed_payload": true
+    },
+    {
+      "run": 2,
+      "command": "/usr/bin/python3 -I -S /mnt/data/b11exec/01_PROTOCOL_V2_SERIALIZER.py --protocol-spec /mnt/data/b11exec/protocol_spec.json --carrier /mnt/data/b11exec/carrier.csv --output /mnt/data/b11exec/qualifying_run_2_payload.json --receipt /mnt/data/b11exec/qualifying_run_2_receipt.json",
+      "exit_status": 0,
+      "stderr": "",
+      "serializer_git_blob_verified_before_run": "29b61fc7fef8db06e4ba95fedc788a20b8d28d5e",
+      "serializer_sha256_verified_before_run": "47307828a471cc525643f870c32ac15efa26565f063191d50ea32c48c72994b6",
+      "output_byte_length": 12364,
+      "output_sha256": "06f874df6bdd2e621886f748c8aa12397533e273649f99e654dc3779b5eb59db",
+      "output_git_blob": "d62847e9972362bf2fcaeac515360cd5cf99eab7",
+      "byte_identical_to_committed_payload": true
+    }
+  ],
+  "run_outputs_byte_identical_to_each_other": true,
+  "run_output_sha256_identical": true,
+  "run_output_byte_lengths_identical": true,
+  "proof_note": "Each local serializer file was independently verified byte-identical to the repository serializer committed at the cited Git blob and SHA-256 before the qualifying executions."
+}
