@@ -1,0 +1,70 @@
+{
+  "schema": "AS3R3_NODE5A_R2_PROTOCOL_V2_MAPPING_ROW_PRESERVATION_RECEIPT@1.0.0",
+  "status": "PASS__ALL_MAPPING_ROW_AND_SUCCESSOR_IDENTITY_INVARIANTS_PRESERVED",
+  "source_carrier_git_blob": "26a7c35df2e6454c5e270a03b3571599bdf152fd",
+  "payload_git_blob": "d62847e9972362bf2fcaeac515360cd5cf99eab7",
+  "source_rows": 19,
+  "payload_rows": 19,
+  "exact_row_order_preserved": true,
+  "row_order": [
+    "A000",
+    "A1V1",
+    "A1V2",
+    "A1V3",
+    "A1V4",
+    "A1V5",
+    "A1SSUB",
+    "A1SSPS",
+    "A1SMIS",
+    "A1RAPP",
+    "A2V1",
+    "A2V2",
+    "A2V3",
+    "A2V4",
+    "A2V5",
+    "A2SSUB",
+    "A2SSPS",
+    "A2SMIS",
+    "A2RAPP"
+  ],
+  "exact_nine_fields_preserved": true,
+  "fields": [
+    "as3_id",
+    "source_object_id",
+    "source_content_hash",
+    "node4a_input_sha256",
+    "successor_kind",
+    "successor_object_id",
+    "successor_content_hash",
+    "alias_class",
+    "role_key_lookup_preserved"
+  ],
+  "all_source_to_payload_values_exact_after_required_NFC_and_boolean_parse": true,
+  "source_ids_preserved": true,
+  "source_object_ids_preserved": true,
+  "source_content_hashes_preserved": true,
+  "node4a_input_sha256_preserved": true,
+  "successor_kind_preserved": true,
+  "successor_object_ids_preserved": true,
+  "successor_content_hashes_preserved": true,
+  "alias_strings_preserved": true,
+  "role_key_lookup_preserved_true_for_all_19": true,
+  "distinct_successor_predicate_content_hashes": 18,
+  "duplicate_successor_targets": [
+    {
+      "successor_content_hash": "ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0",
+      "roles": [
+        "A000",
+        "A1RAPP"
+      ]
+    }
+  ],
+  "sole_duplicate_target_is_A000_A1RAPP": true,
+  "alias_rows": {
+    "A000": "{A000,A1RAPP}",
+    "A1RAPP": "{A000,A1RAPP}"
+  },
+  "all_other_alias_rows_empty": true,
+  "mismatches": [],
+  "semantic_or_canonical_identity_drift": false
+}
