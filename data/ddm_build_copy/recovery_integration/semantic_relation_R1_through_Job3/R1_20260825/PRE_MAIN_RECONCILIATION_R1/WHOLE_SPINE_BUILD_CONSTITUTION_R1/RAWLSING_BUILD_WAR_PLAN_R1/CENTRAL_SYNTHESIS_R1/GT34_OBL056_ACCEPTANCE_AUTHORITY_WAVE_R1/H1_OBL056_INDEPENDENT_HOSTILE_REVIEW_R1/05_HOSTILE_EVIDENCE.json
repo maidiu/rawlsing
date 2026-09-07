@@ -1,0 +1,84 @@
+{
+  "schema_id": "GT34_OBL056_H1_INDEPENDENT_HOSTILE_EVIDENCE@1.0.0",
+  "terminal": "FAIL__GT34_OBL056_FUTURE_CURRENT_ACCEPTANCE_UNREPRESENTABLE_AND_CONTACT_PAIR_HELPER_BYPASSES_CONSTITUENT_RECEIPT_VALIDATION",
+  "profile": "HOSTILE_AUDIT",
+  "working_ancestry_start": "658fcd191546c8d3f4918e0bf34b3840e6d518b4",
+  "matrix_first_freeze_sha": "d2508a4561415185e996d9985595c458d413f44d",
+  "matrix_restatement_sha": "471bc8d525479765574972924225b1651ebe80b9",
+  "frozen_semantic_target_sha": "966aea1a42b30840670f4b69f779999bfd4a2307",
+  "a1_final_tip": "3960b0e021ae2b145345d060cca295dcaf4bae03",
+  "hostile_test_candidate_sha": "db6e6f73548ef742f3d5d31ec74192f8b4395376",
+  "evidence_execution_sha": "3047ab3ef12fb2bb5dfa00f058fcb5ea5e7e2400",
+  "pr_synthetic_merge_sha": "b62e2b65aff867395c8269aacf0cebfdad5bfc8d",
+  "attack_matrix_family_count": 36,
+  "governed_hostile_test_case_count": 49,
+  "governed_hostile_test_result": "49 passed in 0.20s",
+  "protocol_self_test_result": "20 passed in 0.09s",
+  "court_spec_validation": "PASS",
+  "determinism_mode": "EXACT",
+  "runtime": {
+    "python": "3.12.14",
+    "implementation": "CPython"
+  },
+  "governed_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 34083797936,
+    "job_id": 101623915192,
+    "conclusion": "SUCCESS",
+    "artifact_id": 10004524459,
+    "artifact_name": "rabochii-court-receipt-34083797936",
+    "artifact_size_bytes": 616,
+    "artifact_zip_sha256": "9e0a544004e2d0f929d22c647bc7c5c635bd1dca4f23a9acfa7cd9ff9273f73f",
+    "trigger_pr": 242,
+    "trigger_pr_state": "CLOSED_UNMERGED"
+  },
+  "candidate_identity": {
+    "authority_registry": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY@1.0.0",
+    "authority_content_hash": "41b79e7f622f3c9eb0d6df649254c812fcb769db45cf6e47a808a95eebe2a50f",
+    "registry_content_hash": "9ef38509ad5798c038bbcfa1b3a6e343df5a7c4f2a1ed4fd2af33f31f19e3a9e",
+    "receipt_schema": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+    "consumer": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE@1.0.0",
+    "current_positive_entry_count": 0
+  },
+  "findings": {
+    "self_issuance_and_mutation_attacks": "SURVIVED_FAIL_CLOSED",
+    "role_and_scope_binding": "SURVIVED_FAIL_CLOSED",
+    "synthetic_current_boundary": "SURVIVED_FAIL_CLOSED",
+    "content_address_recomputation": "MATCHED_FROZEN_CONSTANTS_AND_FIXTURE_IDENTITIES",
+    "canonical_ordering_nfc_replay": "SURVIVED",
+    "authority_ceiling": "INTACT",
+    "future_current_adoption_operability": "ADOPTION_BLOCKING_DEFECT_REPRODUCED",
+    "api_composition_bypass": "ADOPTION_BLOCKING_DEFECT_REPRODUCED"
+  },
+  "defects": [
+    {
+      "id": "FUTURE_CURRENT_ACCEPTANCE_UNREPRESENTABLE",
+      "evidence": "validate_acceptance_receipt unconditionally raises AcceptanceMissingAuthority for required_currentness == CURRENT_ACCEPTED before any current-entry membership path; _CURRENT_ENTRIES is not consulted. Independent test supplies an exact content-addressed future CURRENT_ACCEPTED entry and matching receipt, verifies receipt integrity, installs the entry into _CURRENT_ENTRIES, and the validator still rejects it. candidate_registry_artifact also remains permanently empty-shaped.",
+      "adoption_effect": "Adopting the candidate would freeze an authority contract that cannot validate any future exact HQ-adopted/current positive entry without changing the candidate implementation/contract."
+    },
+    {
+      "id": "CONTACT_PAIR_HELPER_BYPASSES_CONSTITUENT_VALIDATION",
+      "evidence": "validate_contact_acceptance_pair checks only receipt ID/hash distinctness, accepted-authority distinctness, and role labels. Two caller-shaped forged receipts individually rejected by validate_acceptance_receipt for integrity are nevertheless returned successfully by validate_contact_acceptance_pair.",
+      "adoption_effect": "A callable composition helper can be used as a substitute path that confers pair acceptance without full validation of each constituent receipt."
+    }
+  ],
+  "candidate_evidence_compatibility": {
+    "candidate_module_blob_preserved": "62b9cc43b0acf7cecc4647215929ef12ada955f2",
+    "a1_registry_artifact_blob_preserved": "6435b489a37c16f21dfb1ded63bcbd825e4cb65e",
+    "a1_receipt_schema_artifact_blob_preserved": "68c77894d320ac91826efbee4c812bc468cb2dd2",
+    "classification": "COMPATIBLE_RELEVANT_TREE_UNCHANGED; PREEXISTING_COMMISSION_GOVERNANCE_DELTA_PLUS_H1_PROOF_ONLY_ADDITIONS"
+  },
+  "scope_guards": {
+    "candidate_implementation_modified": false,
+    "a1_candidate_json_modified": false,
+    "a1_focused_tests_modified": false,
+    "w2_executor_modified": false,
+    "central_project_state_modified_by_h1": false,
+    "pre_main_moved": false,
+    "main_moved": false,
+    "sub_vozhd_branch_moved": false,
+    "current_oee_executed": false,
+    "obl056_adopted": false,
+    "defect_repaired": false
+  }
+}
