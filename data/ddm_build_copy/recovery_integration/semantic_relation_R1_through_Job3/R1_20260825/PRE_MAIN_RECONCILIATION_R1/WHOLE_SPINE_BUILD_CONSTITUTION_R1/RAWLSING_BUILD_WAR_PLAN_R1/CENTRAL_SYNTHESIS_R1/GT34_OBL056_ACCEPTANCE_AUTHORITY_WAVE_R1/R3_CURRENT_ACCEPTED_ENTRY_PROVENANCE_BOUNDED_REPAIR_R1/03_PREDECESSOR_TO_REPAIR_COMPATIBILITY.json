@@ -8,6 +8,7 @@
   "changed_files_before_governed_evidence": [
     "rawlsing_next/gt34_adp010_input_authority_acceptance.py",
     "rawlsing_next/tests/test_gt34_obl056_current_entry_provenance_bounded_repair.py",
+    "rawlsing_next/tests/test_gt34_obl056_r3_h2_hostile_compatibility.py",
     "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT34_OBL056_ACCEPTANCE_AUTHORITY_WAVE_R1/R3_CURRENT_ACCEPTED_ENTRY_PROVENANCE_BOUNDED_REPAIR_R1/01_REPAIRED_AUTHORITY_REGISTRY.json",
     "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT34_OBL056_ACCEPTANCE_AUTHORITY_WAVE_R1/R3_CURRENT_ACCEPTED_ENTRY_PROVENANCE_BOUNDED_REPAIR_R1/02_REPAIRED_RECEIPT_SCHEMA_AND_CONTRACT_EXAMPLE.json",
     "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT34_OBL056_ACCEPTANCE_AUTHORITY_WAVE_R1/R3_CURRENT_ACCEPTED_ENTRY_PROVENANCE_BOUNDED_REPAIR_R1/03_PREDECESSOR_TO_REPAIR_COMPATIBILITY.json"
@@ -17,11 +18,18 @@
     "repaired": "49538b9c36e58e19a6dc293ecac5bc2dff58eebe"
   },
   "new_focused_regression_blob": "fe4c67ab66d574b577be03b7f8848ca79c227310",
+  "h2_compatibility_regression_blob": "60c64a4f8c45dd0bb6f291352fee6086275052e1",
   "frozen_unchanged_blobs": {
     "inherited_a1_r2_regression": "454407f251c4146a2c0db8780afd7ea2e0b0a10c",
     "r2_future_current_contact_pair_regression": "c86896aa20224695f92ec9b89c27f9d2bb3d7a78",
     "h2_hostile_review": "7f6a7b318f8ba2b9b01a0de45c9ba3058099808d",
     "w2_executor": "54d9acba40f0eb1db8bb03aec3c1bb900f849588"
+  },
+  "h2_compatibility_method": {
+    "h2_file_unchanged": true,
+    "historical_blocker_case_excluded": "ADOPTION_BLOCKER_current_entry_empty_immutable_provenance_is_accepted",
+    "reason_for_exclusion": "That test intentionally asserts the pre-repair defect succeeds; R3 reverses exactly that expectation in its focused regression.",
+    "all_other_h2_cases_required_green": true
   },
   "content_address_disposition": {
     "authority_content_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123",
