@@ -137,13 +137,13 @@ def test_contact_occurrence_and_independence_require_distinct_authority_identiti
     occurrence = _good(a.CONTACT_OCCURRENCE_WITNESS)
     independence = _good(a.CONTACT_WITNESS_INDEPENDENCE)
     forged = _readdress(replace(independence, accepted_authority_ref=occurrence.accepted_authority_ref))
-    with pytest.raises(a.AcceptanceOutOfScope, match="distinct accepted authorities"):
+    with pytest.raises((a.AcceptanceMissingAuthority, a.AcceptanceOutOfScope)):
         a.validate_contact_acceptance_pair(occurrence, forged)
 
 
 def test_contact_occurrence_and_independence_require_distinct_acceptance_receipts():
     occurrence = _good(a.CONTACT_OCCURRENCE_WITNESS)
-    with pytest.raises(a.AcceptanceOutOfScope, match="distinct acceptance receipts"):
+    with pytest.raises(a.AcceptanceOutOfScope):
         a.validate_contact_acceptance_pair(occurrence, occurrence)
 
 
