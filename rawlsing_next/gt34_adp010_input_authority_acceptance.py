@@ -246,6 +246,8 @@ def _make_registry_snapshot(
             raise AcceptanceMissingAuthority("current registry requires adoption/current-selection evidence")
         if not immutable_provenance:
             raise AcceptanceMissingAuthority("current registry requires immutable provenance")
+        if any(not e.immutable_provenance for e in entries):
+            raise AcceptanceMissingAuthority("current registry entry requires immutable provenance")
         allowed = set(adoption_current_selection_evidence_refs)
         if any(e.source_acceptance_evidence_ref not in allowed for e in entries):
             raise AcceptanceMissingAuthority("current entry source evidence is not governed by current registry selection")
@@ -421,8 +423,11 @@ def _validate_against_registry(r: AcceptanceReceipt, snapshot: AcceptanceRegistr
         raise AcceptanceMissingAuthority("no exact positive registry entry")
     e = matches[0]
     _check_entry_integrity(e)
-    if required_currentness == CURRENT_ACCEPTED and e.source_acceptance_evidence_ref not in set(snapshot.adoption_current_selection_evidence_refs):
-        raise AcceptanceMissingAuthority("entry source evidence is not selected by current registry")
+    if required_currentness == CURRENT_ACCEPTED:
+        if not e.immutable_provenance:
+            raise AcceptanceMissingAuthority("current registry entry lacks immutable provenance")
+        if e.source_acceptance_evidence_ref not in set(snapshot.adoption_current_selection_evidence_refs):
+            raise AcceptanceMissingAuthority("entry source evidence is not selected by current registry")
     return r
 
 
@@ -510,6 +515,7 @@ def candidate_registry_artifact() -> dict[str, Any]:
             "representable": True,
             "requires_exact_governed_registry_membership": True,
             "requires_adoption_current_selection_evidence": True,
+            "requires_immutable_entry_provenance": True,
             "requires_immutable_registry_provenance": True,
             "no_latest_default_fuzzy_fallback": True,
             "caller_receipt_cannot_install_registry_membership": True,
@@ -534,6 +540,7 @@ def receipt_schema_artifact() -> dict[str, Any]:
         "positive_decision_state": ACCEPT,
         "current_positive_requires_separate_adoption": True,
         "current_positive_requires_exact_registry_membership": True,
+        "current_entry_requires_immutable_provenance": True,
         "current_registry_requires_adoption_current_selection_evidence": True,
         "contact_pair_validates_constituents_first": True,
         "synthetic_currentness": NONCURRENT_SYNTHETIC_TEST_ONLY,
