@@ -236,7 +236,8 @@ def main() -> int:
             "as3_id":sid,
             "source_object_id":src["object_id"],
             "source_content_hash":src["content_hash"],
-            # Node4A PREDICATE_INPUT_HASHES.json freezes compact sorted JSON + one LF.\n            "node4a_input_sha256":input_hash(rec,lf=True),
+            # Node4A PREDICATE_INPUT_HASHES.json freezes compact sorted JSON + one LF.
+            "node4a_input_sha256":input_hash(rec,lf=True),
             "successor_kind":ref["kind"],
             "successor_object_id":ref["object_id"],
             "successor_content_hash":ref["content_hash"],
