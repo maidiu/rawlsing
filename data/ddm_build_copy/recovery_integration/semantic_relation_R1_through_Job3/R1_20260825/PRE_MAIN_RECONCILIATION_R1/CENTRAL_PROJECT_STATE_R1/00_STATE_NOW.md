@@ -213,3 +213,41 @@ active local closures -> surviving bounded OBL020
 ```
 
 OBL006 remains claim-conditional and is not a generic prerequisite for local OBL042.
+
+
+## CHETIRI AS3R3 NODE5A-R2 REACTIVATION
+
+The exact branch:
+
+`agent/verkhovod-as3r3-node5a-r2-replay-seal`
+
+at:
+
+`127fda6e3275d9dd563903e6827d195db50bdade`
+
+was reclassified by HQ from a falsely inferred in-flight state to:
+
+`CURRENT_LAWFUL_PROOF_OWNER__STRANDED_UNLAUNCHED__REACTIVATION_REQUIRED`.
+
+Binding HQ disposition:
+
+`de1b3e6cfd016c7211a054492795e3e9208dae30`.
+
+Authorities 28/29/30/34 still make Node5A-R2 the exact next causal AS3R3 successor-runtime node after accepted Node4A and before Node4B.
+
+Current Chetiri sequence:
+
+```text
+Node4A accepted
+  -> REACTIVATE Node5A-R2 exact existing branch
+  -> Node4B query-input freeze
+  -> Node5B query mint/replay
+  -> combined successor runtime seal
+  -> fresh combined replay
+  -> successor DiscoveryAuthority/frontier/replay seal
+  -> AS4I0 revalidation + independent hostile validation
+  -> C05R2B real LiTS-I production I05
+  -> C08/G1 reconciliation
+```
+
+Do not retry AS3R2 executable preimage recovery and do not create a duplicate Node5A-R2 branch.
