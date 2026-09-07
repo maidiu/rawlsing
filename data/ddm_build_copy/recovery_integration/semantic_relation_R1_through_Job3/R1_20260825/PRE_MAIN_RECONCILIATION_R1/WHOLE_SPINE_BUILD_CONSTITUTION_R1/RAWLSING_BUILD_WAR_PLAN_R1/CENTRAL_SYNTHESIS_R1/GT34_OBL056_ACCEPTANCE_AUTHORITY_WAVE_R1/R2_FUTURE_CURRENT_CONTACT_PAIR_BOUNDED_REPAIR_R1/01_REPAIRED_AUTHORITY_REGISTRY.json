@@ -1,0 +1,73 @@
+{
+  "schema_id": "GT34_OBL056_R2_REPAIRED_AUTHORITY_REGISTRY@1.0.0",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "predecessor": {
+    "semantic_candidate_sha": "966aea1a42b30840670f4b69f779999bfd4a2307",
+    "authority_content_hash": "41b79e7f622f3c9eb0d6df649254c812fcb769db45cf6e47a808a95eebe2a50f",
+    "registry_content_hash": "9ef38509ad5798c038bbcfa1b3a6e343df5a7c4f2a1ed4fd2af33f31f19e3a9e"
+  },
+  "acceptance_authority_ref": {
+    "id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "version": "1.0.0",
+    "content_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123"
+  },
+  "registry_ref": {
+    "id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "version": "1.0.0",
+    "content_hash": "ca633451bfe56f86e1b463243bf721772a9ff582227411ed5137a346491b957e"
+  },
+  "receipt_schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+  "registry_snapshot_schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY_SNAPSHOT@1.0.0",
+  "consumer": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE@1.0.0",
+  "supported_roles": [
+    "CAUSAL_USE_PERMISSION",
+    "POSITIVE_APPLICABILITY",
+    "CONTACT_OCCURRENCE_WITNESS",
+    "CONTACT_WITNESS_INDEPENDENCE"
+  ],
+  "current_registry": {
+    "state": "CANDIDATE_NOT_ADOPTED",
+    "current_positive_entry_count": 0,
+    "current_positive_entries": [],
+    "positive_fallback": false,
+    "latest_default_fuzzy_selection": false
+  },
+  "future_current_contract": {
+    "representable": true,
+    "required_currentness": "CURRENT_ACCEPTED",
+    "requires_exact_governed_registry_membership": true,
+    "requires_exact_adoption_current_selection_evidence_refs": true,
+    "requires_immutable_registry_provenance": true,
+    "requires_exact_entry_identity_and_hash": true,
+    "requires_exact_receipt_identity_and_hash": true,
+    "caller_receipt_cannot_install_registry_membership": true,
+    "hash_shape_or_currentness_label_alone_is_insufficient": true,
+    "test_proof_mode": "NONPROJECT_IN_MEMORY_CONTRACT_TEST_ONLY"
+  },
+  "contact_pair_contract": {
+    "constituent_validation_precedes_pair_distinctness": true,
+    "occurrence_role": "CONTACT_OCCURRENCE_WITNESS",
+    "independence_role": "CONTACT_WITNESS_INDEPENDENCE",
+    "distinct_accepted_authorities_required": true,
+    "distinct_acceptance_receipts_required": true
+  },
+  "authority_ceiling": [
+    "NO_SUBJECT_IDENTITY_OR_CLASSIFICATION",
+    "NO_CAUSAL_USE_SEMANTIC_TRUTH",
+    "NO_APPLICABILITY_SEMANTIC_TRUTH",
+    "NO_CONTACT_OCCURRENCE",
+    "NO_CONTACT_INDEPENDENCE_FACT",
+    "NO_ENCOUNTER",
+    "NO_EXPOSURE",
+    "NO_EXTERNAL_EVENT_ADMISSION",
+    "NO_COMPARATOR",
+    "NO_PSEPF",
+    "NO_METABOLISM",
+    "NO_CAN_008",
+    "NO_V2",
+    "NO_POSITIVE_V3_ACTOR_MUTATION",
+    "NO_GENERIC_PROJECT_WIDE_AUTHORITY_ADMISSION"
+  ],
+  "project_current_semantic_authorities_created": false,
+  "obl056_adopted": false
+}
