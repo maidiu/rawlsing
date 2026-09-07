@@ -1,0 +1,135 @@
+{
+  "schema_id": "GT34_OBL056_H3_R3_CURRENT_ENTRY_PROVENANCE_INDEPENDENT_HOSTILE_EVIDENCE@1.0.0",
+  "terminal": "PASS__GT34_OBL056_R3_CURRENT_ENTRY_PROVENANCE_INDEPENDENT_HOSTILE_REVIEW__LAWFUL_FOR_HQ_ADOPTION_CONSIDERATION",
+  "state_after_terminal": "CLOSURE_ONLY",
+  "commission_ref": "5116b5f000b14d7028de8f9cae3559a80f72c155",
+  "worker_branch": "agent/rabochii-gt34-obl056-r3-current-entry-provenance-hostile-audit-r1",
+  "frozen_repaired_candidate": "442a8c16cea45620374c5a73e406483ff59122d8",
+  "repair_worker_tip": "ac608afa09a683f6c8a9304cc83d524cc12dde26",
+  "independent_matrix": {
+    "freeze_commit": "f53f81361834db17531ccfcfac3eaac29d6a8f0b",
+    "blob": "42b3b34d1d97ce0ae76048e27a3b617e40998a8a",
+    "attack_family_count": 80,
+    "frozen_before_r3_focused_regression": true,
+    "frozen_before_r3_governed_evidence": true,
+    "frozen_before_r3_return": true,
+    "frozen_before_r3_compatibility_artifact": true
+  },
+  "fresh_hostile_surface": {
+    "primary_path": "rawlsing_next/tests/test_gt34_obl056_r3_current_entry_provenance_hostile_audit.py",
+    "primary_blob": "558b39a0d9c22f8053fa03c3c7f7a3a78917e888",
+    "primary_commit": "071d2843f29cd3e451eb2cf3a006d26b0ca567a4",
+    "court_wrapper_path": "rawlsing_next/tests/test_gt34_obl056_r3_current_entry_provenance_hostile_court.py",
+    "court_wrapper_blob": "d7636fe01d268965d6e01062f35c0441a1fc12e2",
+    "hostile_test_tip": "03ac25a031012e378639b7d93fe24fc787beb866",
+    "wrapper_method": "run all fresh H3 cases except one known scaffold-only error-classification assertion, then separately prove that exact matched-entry corruption at the intended entry-integrity gate",
+    "fresh_h3_selected_cases_inside_wrapper": 51,
+    "corrected_integrity_gate_case": 1
+  },
+  "governed_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run": 34152697206,
+    "job": 101838084212,
+    "evidence_execution_sha": "c27318f4ccc91e021f29c89b553d6d89a657c9bc",
+    "pr": 251,
+    "pr_state_after_capture": "CLOSED_UNMERGED",
+    "pr_synthetic_merge_sha": "33eb8917a3e3b565d2ed684a1e08140e9888baa4",
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "determinism": "EXACT",
+    "protocol_self_test": "20 passed in 0.09s",
+    "court_spec_validation": "PASS",
+    "bounded_court": "2 passed in 0.47s",
+    "court_receipt_result": "PASS",
+    "court_receipt_exit_code": 0,
+    "court_receipt_elapsed_seconds": 0.711013,
+    "court_spec_sha256": "14c40d913df734884e7d0ed4cb7c7c19b290fe3211d793873d838c7b392a15bf",
+    "artifact_id": 10029903525,
+    "artifact_name": "rabochii-court-receipt-34152697206",
+    "artifact_size_bytes": 612,
+    "artifact_zip_sha256": "c6f5365703e9687870f9bf65cf3c1cf3980e8c4db7623cb821343343bb778c98"
+  },
+  "candidate_identity": {
+    "implementation_blob": "49538b9c36e58e19a6dc293ecac5bc2dff58eebe",
+    "authority_content_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123",
+    "present_empty_registry_content_hash": "ca633451bfe56f86e1b463243bf721772a9ff582227411ed5137a346491b957e",
+    "w2_executor_blob": "54d9acba40f0eb1db8bb03aec3c1bb900f849588",
+    "candidate_is_ancestor_of_evidence_execution": true
+  },
+  "h2_blocker_disposition": {
+    "empty_current_entry_provenance_rejected_at_snapshot_construction": true,
+    "empty_current_entry_provenance_rejected_again_at_receipt_validation": true,
+    "registry_provenance_cannot_substitute_for_missing_entry_provenance": true,
+    "lawful_future_current_with_nonempty_entry_provenance_remains_representable": true
+  },
+  "preserved_security": {
+    "installed_candidate_current_positive_entries_zero": true,
+    "current_use_today_fails_closed": true,
+    "exact_registry_membership_required": true,
+    "adoption_current_selection_evidence_required": true,
+    "issuer_registry_substitution_rejected": true,
+    "duplicate_ambiguous_membership_rejected": true,
+    "nonmember_receipt_rejected": true,
+    "authority_role_consumer_scope_owner_source_limits_currentness_decision_mutations_rejected": true,
+    "synthetic_current_separation_strict": true,
+    "contact_constituents_validated_before_pair_distinctness": true,
+    "forged_contact_constituents_rejected": true,
+    "same_contact_authority_rejected": true,
+    "same_or_cross_role_receipt_reuse_rejected": true,
+    "body_mutation_plus_attacker_rehash_cannot_create_membership": true,
+    "canonicalization_nfc_replay_idempotence_deterministic": true,
+    "no_latest_default_fuzzy_positive_fallback": true,
+    "authority_ceiling_preserved": true
+  },
+  "fresh_observations_not_adoption_blockers": [
+    {
+      "id": "O1_NONEMPTY_PROVENANCE_COLLECTION_CAN_CONTAIN_EMPTY_EVIDENCE_REF_FIELDS",
+      "observed": true,
+      "disposition": "NONBLOCKING_OUTSIDE_FROZEN_R3_REPAIR_PREDICATE",
+      "reason": "The frozen H2/R3 repair predicate requires nonempty immutable_provenance, not a newly minted EvidenceRef field-shape law. The hostile reviewer does not widen the commissioned authority contract."
+    },
+    {
+      "id": "O2_HANDCRAFTED_SNAPSHOT_CAN_CONTAIN_INTEGRITY_INVALID_NONMATCHED_MEMBER_WHILE_GOOD_MATCH_VALIDATES",
+      "observed": true,
+      "disposition": "NONBLOCKING_NO_FALSE_MATCHED_COMPETENCE",
+      "reason": "The lawful snapshot constructor independently rejects integrity-invalid members; the malformed nonmatched member cannot validate if selected as the matched receipt entry and does not confer competence on a nonmember."
+    },
+    {
+      "id": "O3_CONTENT_ADDRESSED_ENTRY_WITH_FOREIGN_SCHEMA_ID_CAN_BE_REGISTRY_SELECTED",
+      "observed": true,
+      "disposition": "NONBLOCKING_NO_FROZEN_ENTRY_SCHEMA_ADMISSION_PREDICATE",
+      "reason": "The frozen acceptance contract binds the exact registry-entry ref/hash and receipt schema; it does not authorize this hostile worker to mint a new current-entry schema-admission predicate."
+    },
+    {
+      "id": "O4_REGISTRY_SELECTED_CONTACT_ENTRY_CAN_BIND_ROLE_WITH_NONCANONICAL_TRANSITION_SCOPE_AND_PAIR_HELPER_ACCEPTS_IT",
+      "observed": true,
+      "disposition": "NONBLOCKING_ACCEPTANCE_BINDING_NOT_SEMANTIC_SCOPE_TRUTH",
+      "reason": "OBL056 binds the exact accepted role and exact registry-selected scope; it does not own underlying semantic scope truth. Public pair composition validates governed constituent acceptance before enforcing distinctness and does not create contact truth."
+    }
+  ],
+  "authority_ceiling": {
+    "no_subject_identity_or_classification": true,
+    "no_causal_use_semantic_truth": true,
+    "no_applicability_semantic_truth": true,
+    "no_contact_occurrence_or_independence_fact": true,
+    "no_encounter_or_exposure": true,
+    "no_comparator_psepf_metabolism_can008_v2": true,
+    "no_positive_v3_actor_mutation": true,
+    "no_generic_project_wide_authority": true,
+    "no_obl055_competence": true
+  },
+  "non_actions": {
+    "candidate_repaired": false,
+    "obl056_adopted": false,
+    "obl055_modified": false,
+    "w2_executor_modified": false,
+    "current_first_canary_oee_executed": false,
+    "project_current_positive_authority_created": false,
+    "central_moved": false,
+    "pre_main_moved": false,
+    "main_moved": false,
+    "sub_vozhd_moved": false,
+    "transient_court_spec_removed": true
+  },
+  "next_lawful_state": "SUB_VOZHD_A_MAY_PREPARE_OBL056_FOR_HQ_ADOPTION_CONSIDERATION_ONLY"
+}
