@@ -603,3 +603,39 @@ Therefore:
 - `POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
 
 The next lawful A lane is the exact bounded OBL031 actor↔empirical comparator authority gap already proved by the historical/current J1 discovery return.
+
+
+## OBL031 HQ TRAJECTORY SPLIT — AUTHORITY CONSTITUTION VS POSITIVE INVOCATION
+
+SUB-VOZHD A proved at tip
+`0ed5f1023d61295dc2c480aaa99f4c8a8f157536`
+that no current accepted first-canary ADP-010 ENCOUNTER record exists.
+
+HQ accepted that finding at:
+
+`a2950d3d68eb5599d3d1beccb43784bad6a97094`.
+
+The exact missing current runtime object is:
+
+`CURRENT_ACCEPTED_FIRST_CANARY_ADP010_ENCOUNTER_FACT_REF_HASH_AND_EFFECTIVE_TIME`.
+
+HQ holds:
+
+`NO_CURRENT_ACTOR_FACT != NO_LAWFUL_COMPARATOR_AUTHORITY_CONTRACT`.
+
+Therefore OBL031 is split into two independent bounded lanes:
+
+1. **Comparator-authority lane** — remains active. A may constitute/test an exact one-field comparator authority/resolver using explicit `NONCURRENT_SYNTHETIC_TEST_ONLY` positive fixtures while current real invocation fails closed as `ACTOR_FACT_MISSING_OR_UNAUTHORIZED`.
+2. **First-positive-input preflight lane** — read-only audit of exact competent source authorities/facts for future OBL055 positive execution. No registry mutation or OEE execution is authorized.
+
+Current exact subject classification:
+`SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL`
+under OBL048.
+
+Future positive comparator invocation must combine that separate classification with a separately lawful ADP-010 ENCOUNTER on the same exact subject. OBL048 does not own occurrence; ADP-010 does not own clinic/hospital classification.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+`PROJECT_CURRENT_FIRST_CANARY_OEE = NOT_AUTHORIZED`.
+
+OBL032 remains blocked on explicit HQ OBL031 adoption and subsequent exact production prerequisites.
