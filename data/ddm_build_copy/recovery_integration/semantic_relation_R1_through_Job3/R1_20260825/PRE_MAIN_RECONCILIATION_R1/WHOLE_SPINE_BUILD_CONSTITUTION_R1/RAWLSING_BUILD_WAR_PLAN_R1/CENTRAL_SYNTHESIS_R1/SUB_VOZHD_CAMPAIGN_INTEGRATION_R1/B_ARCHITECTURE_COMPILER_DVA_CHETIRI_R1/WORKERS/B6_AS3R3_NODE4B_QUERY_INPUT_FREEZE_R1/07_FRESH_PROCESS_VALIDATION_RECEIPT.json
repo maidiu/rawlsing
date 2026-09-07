@@ -1,0 +1,50 @@
+{
+  "schema": "AS3R3_NODE4B_FRESH_PROCESS_VALIDATION_RECEIPT@1.0.0",
+  "status": "PASS__TWO_FRESH_PROCESSES_BYTE_IDENTICAL",
+  "immutable_validation_surface": {
+    "producer_commit": "cfc240aa3a64c59509eab97450a7d3603af813cc",
+    "producer_git_blob_sha": "d63370dbcadc043dd2f27f5383cf36f0e84d1235",
+    "contract_git_blob_sha": "26a7d123881513524e26f2342ab93dd1141fb5f6"
+  },
+  "process_results": [
+    {
+      "fresh_process": 1,
+      "status": "PASS",
+      "predicate_validations": 19,
+      "query_validations": 3,
+      "exact_successor_predicate_ref_set_size": 18,
+      "node4a_input_hash_matches": 19,
+      "bundle_sha256": "2cf15c20a4c65c2dcb29c6fd015260aa9ed8a70f0537927368c86e561a834e50",
+      "query_input_sha256": {
+        "T_Q301_2_RAW": "714dde6e80801a563897f9a5cef707c7147e7fbb649473d707b8c030caecac9e",
+        "T_Q301_7_RAW": "39791ee08a60ba2e8e76724200a32b0afe95411983c5eefc72c3ac19393b9416",
+        "T_Q301_2_Q301_7_RAW": "ec75b212e57736664e33738ffa8d69483c4c6f82c6b8199aabef414d4846b1f1"
+      },
+      "construct_successor_predicate_calls": 0,
+      "construct_successor_query_calls": 0
+    },
+    {
+      "fresh_process": 2,
+      "status": "PASS",
+      "predicate_validations": 19,
+      "query_validations": 3,
+      "exact_successor_predicate_ref_set_size": 18,
+      "node4a_input_hash_matches": 19,
+      "bundle_sha256": "2cf15c20a4c65c2dcb29c6fd015260aa9ed8a70f0537927368c86e561a834e50",
+      "query_input_sha256": {
+        "T_Q301_2_RAW": "714dde6e80801a563897f9a5cef707c7147e7fbb649473d707b8c030caecac9e",
+        "T_Q301_7_RAW": "39791ee08a60ba2e8e76724200a32b0afe95411983c5eefc72c3ac19393b9416",
+        "T_Q301_2_Q301_7_RAW": "ec75b212e57736664e33738ffa8d69483c4c6f82c6b8199aabef414d4846b1f1"
+      },
+      "terrain_receipt_sha256": "f221e9c63f0b7ade6668aedde71091789f64deece2ff6ecda3d318dd16c744ec",
+      "construct_successor_predicate_calls": 0,
+      "construct_successor_query_calls": 0
+    }
+  ],
+  "byte_identity": {
+    "complete_bundle_identical": true,
+    "all_three_query_inputs_identical": true,
+    "bundle_sha256": "2cf15c20a4c65c2dcb29c6fd015260aa9ed8a70f0537927368c86e561a834e50"
+  },
+  "successor_queries_minted": 0
+}
