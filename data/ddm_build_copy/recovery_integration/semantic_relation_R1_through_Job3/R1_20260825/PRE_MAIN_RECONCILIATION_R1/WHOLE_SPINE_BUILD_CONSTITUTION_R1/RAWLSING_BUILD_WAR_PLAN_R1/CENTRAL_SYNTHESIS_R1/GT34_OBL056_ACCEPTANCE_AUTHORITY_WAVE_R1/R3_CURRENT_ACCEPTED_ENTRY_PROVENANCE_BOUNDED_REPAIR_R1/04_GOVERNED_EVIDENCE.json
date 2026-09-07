@@ -1,0 +1,103 @@
+{
+  "schema_id": "GT34_OBL056_R3_CURRENT_ENTRY_PROVENANCE_GOVERNED_EVIDENCE@1.0.0",
+  "terminal_candidate": "PASS__GT34_OBL056_CURRENT_ACCEPTED_ENTRY_IMMUTABLE_PROVENANCE_BOUNDED_REPAIR_GREEN__NO_ADOPTION",
+  "commission_ref": "75897ab89df5fd58c27f7c996e9a818bc8561549",
+  "predecessor_semantic_candidate": "54f7a73275127d12f47fffa2a0d6b41addacfa3e",
+  "h2_hostile_tip": "53172d2fe1dba091b1cbaf663c75a4c4e6bcf750",
+  "h2_terminal": "FAIL__GT34_OBL056_CURRENT_ACCEPTED_ENTRY_IMMUTABLE_PROVENANCE_NOT_REQUIRED__REQUIRE_NONEMPTY_CURRENT_ENTRY_PROVENANCE",
+  "repaired_semantic_candidate": "442a8c16cea45620374c5a73e406483ff59122d8",
+  "implementation": {
+    "predecessor_blob": "1bbc83f66f85ab46f4e1732fb43a158c0737dd6d",
+    "repaired_blob": "49538b9c36e58e19a6dc293ecac5bc2dff58eebe",
+    "repair": [
+      "CURRENT_ACCEPTED snapshot construction rejects any entry with empty immutable_provenance",
+      "CURRENT_ACCEPTED receipt validation independently rejects the exact matched entry when immutable_provenance is empty",
+      "runtime contract artifacts explicitly expose the current-entry immutable-provenance requirement"
+    ]
+  },
+  "content_addresses": {
+    "authority_content_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123",
+    "present_empty_registry_content_hash": "ca633451bfe56f86e1b463243bf721772a9ff582227411ed5137a346491b957e",
+    "changed": false,
+    "reason": "R3 closes an enforcement gap against the already-frozen R2 contract and does not mint or widen authority material."
+  },
+  "focused_regression": {
+    "path": "rawlsing_next/tests/test_gt34_obl056_current_entry_provenance_bounded_repair.py",
+    "blob": "fe4c67ab66d574b577be03b7f8848ca79c227310",
+    "claims": [
+      "lawful future CURRENT_ACCEPTED entry with nonempty entry provenance remains representable",
+      "empty current-entry provenance fails snapshot construction",
+      "handcrafted content-addressed malformed current snapshot independently fails receipt validation",
+      "installed candidate registry remains empty and current-positive use fails closed",
+      "authority and empty-registry hashes remain exact",
+      "contact constituent-first repair remains operative",
+      "W2 executor blob remains exact"
+    ]
+  },
+  "h2_compatibility": {
+    "source_blob_unchanged": "7f6a7b318f8ba2b9b01a0de45c9ba3058099808d",
+    "wrapper_blob": "361712bcf93ce4c5a839101b89ce152e9615bdcb",
+    "excluded_predecessor_specific_assertions": [
+      "ADOPTION_BLOCKER_current_entry_empty_immutable_provenance_is_accepted",
+      "repaired_candidate_relevant_git_blobs_are_exact"
+    ],
+    "applicable_h2_cases_green": 55,
+    "disposition": "all applicable H2 semantic attacks preserved green; excluded assertions intentionally encode the pre-R3 defect and predecessor implementation blob identity"
+  },
+  "governed_final_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run": 34151115277,
+    "job": 101833429369,
+    "evidence_execution_sha": "90a6ba5ff7ca30f40a9450c22eed7889b4721f88",
+    "semantic_candidate_sha": "442a8c16cea45620374c5a73e406483ff59122d8",
+    "pr": 249,
+    "pr_state_after_capture": "CLOSED_UNMERGED",
+    "pr_synthetic_merge_sha": "a950017f103624e2fc413fe55004c4dc59508906",
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "determinism": "EXACT",
+    "protocol_self_test": "20 passed in 0.13s",
+    "court_spec_validation": "PASS",
+    "bounded_court": "51 passed in 0.65s",
+    "court_result": "PASS",
+    "court_exit_code": 0,
+    "court_spec_sha256": "654894129106c78a8e95b455a655b69c8944782d9d6b63e5cd53fe003962b6ee",
+    "artifact_id": 10029378313,
+    "artifact_name": "rabochii-court-receipt-34151115277",
+    "artifact_size_bytes": 678,
+    "artifact_zip_sha256": "1e4b83f3308b1489a85cb3a4c2a2101b8b246aca5c15c7288fe19f44b324dba9"
+  },
+  "superseded_diagnostic_court": {
+    "run": 34150916201,
+    "job": 101832832985,
+    "evidence_execution_sha": "0897a89e1954c2f2d597a333c31d0dd0d26abae1",
+    "pr": 248,
+    "pr_state_after_capture": "CLOSED_UNMERGED",
+    "pr_synthetic_merge_sha": "662071760a6bb29fea8070b37ccc859eddddf247",
+    "protocol_self_test": "20 passed in 0.10s",
+    "nested_h2": "55 passed, 1 failed, 1 deselected in 0.16s",
+    "sole_failure": "H2 predecessor-identity test pinned implementation blob 1bbc83f66f85ab46f4e1732fb43a158c0737dd6d while R3 lawfully changed it to 49538b9c36e58e19a6dc293ecac5bc2dff58eebe",
+    "classification": "PROOF_SURFACE_BOOKKEEPING_DIAGNOSTIC_NOT_CANDIDATE_SEMANTIC_FAILURE",
+    "artifact_id": 10029311571,
+    "artifact_size_bytes": 677,
+    "artifact_zip_sha256": "fefbfa84006a054b1d31a320b2138a8ccb7ac20edffd3c761310bb9a3d05b88a"
+  },
+  "candidate_evidence_compatibility": {
+    "final_semantic_candidate": "442a8c16cea45620374c5a73e406483ff59122d8",
+    "final_evidence_execution": "90a6ba5ff7ca30f40a9450c22eed7889b4721f88",
+    "evidence_delta": [".rabochii/court_spec.json"],
+    "transient_spec_removed_after_capture": true,
+    "w2_executor_blob": "54d9acba40f0eb1db8bb03aec3c1bb900f849588"
+  },
+  "non_actions": {
+    "obl055_modified": false,
+    "obl056_adopted": false,
+    "project_current_positive_entry_created": false,
+    "current_first_canary_oee_executed": false,
+    "central_moved": false,
+    "pre_main_moved": false,
+    "main_moved": false,
+    "sub_vozhd_moved": false
+  },
+  "next_authorized_state": "FRESH_INDEPENDENT_HOSTILE_REVIEW_ONLY"
+}
