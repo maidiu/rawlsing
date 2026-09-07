@@ -1,0 +1,80 @@
+{
+  "schema_id": "GT34_OBL056_R2_REPAIRED_RECEIPT_SCHEMA_AND_CONTRACT_EXAMPLE@1.0.0",
+  "receipt_schema": {
+    "schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+    "positive_decision_state": "ACCEPT",
+    "synthetic_currentness": "NONCURRENT_SYNTHETIC_TEST_ONLY",
+    "required_fields": [
+      "acceptance_authority_ref",
+      "registry_ref",
+      "registry_entry_ref",
+      "role",
+      "accepted_authority_ref",
+      "accepted_authority_owner_jurisdiction_ref",
+      "source_acceptance_evidence_ref",
+      "decision_state",
+      "consumer",
+      "scope.transition_use_scope",
+      "scope.family_scope",
+      "scope.subject_scope",
+      "scope.object_scope",
+      "negative_limit_refs",
+      "currentness_state",
+      "immutable_provenance",
+      "receipt_id",
+      "receipt_hash"
+    ],
+    "current_positive_requires_separate_adoption": true,
+    "current_positive_requires_exact_registry_membership": true,
+    "current_registry_requires_adoption_current_selection_evidence": true,
+    "contact_pair_validates_constituents_first": true
+  },
+  "future_current_contract_example": {
+    "effect": "NONPROJECT_CONTRACT_PATTERN_ONLY",
+    "persisted_project_current_entry": false,
+    "persisted_project_current_receipt": false,
+    "required_entry_bindings": [
+      "exact role",
+      "exact accepted authority ID/version/content hash",
+      "accepted authority owner/jurisdiction ref/hash",
+      "source acceptance/adoption/current-selection evidence ref/hash",
+      "ACCEPT decision state",
+      "exact consumer",
+      "exact transition/use/family/subject/object scope",
+      "negative/limit refs",
+      "CURRENT_ACCEPTED currentness",
+      "immutable provenance",
+      "deterministic entry ID/hash"
+    ],
+    "required_registry_bindings": [
+      "exact acceptance-authority ref/hash",
+      "exact registry ID/version/content hash",
+      "exact current entry membership",
+      "exact adoption/current-selection evidence refs",
+      "immutable registry provenance",
+      "CURRENT_ACCEPTED registry state"
+    ],
+    "required_receipt_bindings": [
+      "exact acceptance-authority issuer",
+      "exact content-addressed registry snapshot",
+      "exact registry-entry ref/hash",
+      "entry-equivalent role/authority/evidence/scope/limits/currentness/provenance",
+      "deterministic receipt ID/hash"
+    ]
+  },
+  "contact_pair_composition": {
+    "order": [
+      "validate CONTACT_OCCURRENCE_WITNESS constituent",
+      "validate CONTACT_WITNESS_INDEPENDENCE constituent",
+      "require distinct receipt identities/hashes",
+      "require distinct accepted authority identities"
+    ],
+    "forged_constituent_can_reach_pair_success": false,
+    "underlying_contact_truth_created": false
+  },
+  "synthetic_current_boundary": {
+    "synthetic_receipts_remain": "NONCURRENT_SYNTHETIC_TEST_ONLY",
+    "synthetic_registry_is_distinct": true,
+    "synthetic_receipt_can_masquerade_as_current": false
+  }
+}
