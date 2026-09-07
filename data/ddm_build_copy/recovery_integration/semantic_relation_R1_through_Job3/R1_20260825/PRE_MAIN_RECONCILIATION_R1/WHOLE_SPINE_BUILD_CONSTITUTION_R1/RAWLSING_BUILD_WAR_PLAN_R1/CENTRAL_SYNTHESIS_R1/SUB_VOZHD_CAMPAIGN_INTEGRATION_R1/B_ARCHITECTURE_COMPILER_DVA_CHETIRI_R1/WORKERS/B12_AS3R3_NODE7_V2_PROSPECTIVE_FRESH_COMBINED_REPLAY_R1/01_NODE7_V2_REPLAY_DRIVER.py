@@ -169,8 +169,7 @@ def main() -> int:
     ap=argparse.ArgumentParser()
     ap.add_argument("--execution-root",required=True,type=Path)
     ap.add_argument("--node4a",required=True,type=Path)
-    ap.add_argument("--query-inputs",required=True,type=Path)
-    ap.add_argument("--query-hashes",required=True,type=Path)
+    ap.add_argument("--query-record",required=True,type=Path,action="append")
     ap.add_argument("--protocol-spec",required=True,type=Path)
     ap.add_argument("--b11-serializer",required=True,type=Path)
     ap.add_argument("--output-dir",required=True,type=Path)
@@ -180,16 +179,12 @@ def main() -> int:
     producer_path=args.execution_root/"rawlsing_next/pre553_as3r3_runtime_producer.py"
     contract_path=args.execution_root/"rawlsing_next/pre553_as3r3_runtime_producer_contract.py"
     empirical_path=args.execution_root/"rawlsing_next/pre553_empirical_objects.py"
-    schema_path=args.execution_root/"rawlsing_next/pre553_as3r3_runtime_producer_input.schema.json"
 
     code_ids={
         "producer":file_identity(producer_path,blob=PRODUCER_BLOB,digest=PRODUCER_SHA256),
         "contract":file_identity(contract_path,blob=CONTRACT_BLOB),
         "empirical_objects":file_identity(empirical_path,blob=EMPIRICAL_OBJECTS_BLOB),
-        "input_schema":file_identity(schema_path,blob=INPUT_SCHEMA_BLOB),
         "node4a":file_identity(args.node4a,blob=NODE4A_BLOB,digest=NODE4A_SHA256),
-        "query_inputs":file_identity(args.query_inputs,blob=QUERY_INPUTS_BLOB),
-        "query_hashes":file_identity(args.query_hashes,blob=QUERY_HASHES_BLOB),
         "protocol_spec":file_identity(args.protocol_spec,blob=PROTOCOL_SPEC_BLOB),
         "b11_serializer":file_identity(args.b11_serializer,blob=B11_SERIALIZER_BLOB,digest=B11_SERIALIZER_SHA256),
     }
@@ -202,28 +197,22 @@ def main() -> int:
     require(len(predicate_inputs)==19,"predicate input count")
     require([x["as3_semantic_source_identity"]["as3_id"] for x in predicate_inputs]==EXPECTED_ROW_ORDER,"predicate order")
 
-    query_doc=json.loads(args.query_inputs.read_text(encoding="utf-8"))
-    query_inputs=query_doc["query_inputs"]
-    require([x["as3_semantic_source_identity"]["as3_id"] for x in query_inputs]==QUERY_ORDER,"query order")
-    require(query_doc["query_count"]==3,"query count")
-    require(query_doc["producer_commit"]==PRODUCER_COMMIT,"query producer commit")
-    require(query_doc["producer_file_sha256"]==PRODUCER_SHA256,"query producer sha")
-    require(query_doc["condition_role_rule"]["role_source_id"]=="A000","A000 role provenance")
-
-    qhash_doc=json.loads(args.query_hashes.read_text(encoding="utf-8"))
-    require(qhash_doc["ordered_query_package_sha256"]==ORDERED_QUERY_PACKAGE_SHA256,"frozen ordered query hash receipt")
-    require(qhash_doc["complete_future_input_bundle_sha256"]==COMPLETE_BUNDLE_SHA256,"frozen bundle receipt")
-
-    for rec in query_inputs:
+    require(len(args.query_record)==3,"exactly three query-record files required")
+    query_inputs=[]
+    for p in args.query_record:
+        rec=json.loads(p.read_text(encoding="utf-8"))
         sid=rec["as3_semantic_source_identity"]["as3_id"]
+        require(sid in QUERY_INPUT_HASHES,f"unknown query source {sid}")
         require(input_hash(rec,lf=True)==QUERY_INPUT_HASHES[sid],f"query input hash {sid}")
+        query_inputs.append(rec)
+    require([x["as3_semantic_source_identity"]["as3_id"] for x in query_inputs]==QUERY_ORDER,"query order")
     ordered_q=[{"input_sha256":QUERY_INPUT_HASHES[sid],"query_source_id":sid} for sid in QUERY_ORDER]
     require(sha256(canonical_bytes(ordered_q,lf=True))==ORDERED_QUERY_PACKAGE_SHA256,"ordered query package")
-
+    terrain={"schema":"PRE553_AS3R3_FROZEN_TERRAIN_COMPATIBILITY_CLAIM@1.0.0",**producer.FROZEN_TERRAIN_EXPECTATIONS}
     bundle={"schema":"PRE553_AS3R3_SUCCESSOR_RUNTIME_INPUT_BUNDLE@1.0.0",
-            "predicate_inputs":predicate_inputs,"query_inputs":query_inputs,"terrain_claim":TERRAIN}
+            "predicate_inputs":predicate_inputs,"query_inputs":query_inputs,"terrain_claim":terrain}
     require(sha256(canonical_bytes(bundle,lf=True))==COMPLETE_BUNDLE_SHA256,"complete future input bundle")
-    producer.validate_frozen_terrain_claim(TERRAIN)
+    producer.validate_future_input_bundle(bundle)
 
     pred_validation_count=0
     pred_constructor_count=0
@@ -269,6 +258,7 @@ def main() -> int:
     duplicate=[x["roles"] for x in predicate_bundle if len(x["roles"])>1]
     require(duplicate==[["A000","A1RAPP"]],"sole predicate alias")
     require(sha256(canonical_bytes(predicate_bundle,lf=True))==PREDICATE_CANONICAL_PAYLOAD_SHA256,"predicate canonical payload")
+    require(sha256(canonical_bytes([["A000","A1RAPP"]],lf=True))==ALIAS_PAYLOAD_SHA256,"alias payload")
     a000_ref=next(obj.ref for sid,obj in fresh_predicates if sid=="A000")
     a1rapp_ref=next(obj.ref for sid,obj in fresh_predicates if sid=="A1RAPP")
     require(a000_ref==a1rapp_ref and a000_ref.content_hash==SHARED_PREDICATE_HASH,"A000/A1RAPP exact shared predicate")
@@ -367,7 +357,7 @@ def main() -> int:
         "producer":{"commit":PRODUCER_COMMIT,"git_blob":PRODUCER_BLOB,"file_sha256":PRODUCER_SHA256},
         "inputs":{
             "node4a_git_blob":NODE4A_BLOB,"node4a_file_sha256":NODE4A_SHA256,
-            "node4b_query_inputs_git_blob":QUERY_INPUTS_BLOB,
+            "node4b_query_record_sha256":QUERY_INPUT_HASHES,
             "node4b_ordered_query_package_sha256":ORDERED_QUERY_PACKAGE_SHA256,
             "node4b_complete_bundle_sha256":COMPLETE_BUNDLE_SHA256,
         },
@@ -396,7 +386,7 @@ def main() -> int:
             "objects":canonical_queries,
         },
         "combined":{"mapping_count":22,"distinct_successor_objects":21,"objects":canonical_objects},
-        "terrain":TERRAIN,
+        "terrain":terrain,
         "historical_comparison":{
             "mapping_payload_sha256":HISTORICAL_MAPPING_SHA256,
             "mapping_payload_disposition":HISTORICAL_MAPPING_DISPOSITION,
