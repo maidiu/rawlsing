@@ -1,0 +1,36 @@
+{
+  "schema": "AS3R3_NODE5B_QUERY_IDENTITY_CARDINALITY_RECEIPT@1.0.0",
+  "status": "PASS__THREE_SOURCES_THREE_DISTINCT_CANONICAL_QUERIES",
+  "constructor_invocations": 3,
+  "query_source_rows": 3,
+  "canonical_representations": 3,
+  "distinct_canonical_query_refs": 3,
+  "alias_exception_used": false,
+  "collision": false,
+  "refs": [
+    {
+      "query_source_id": "T_Q301_2_RAW",
+      "successor_query_ref": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+        "content_hash": "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44"
+      }
+    },
+    {
+      "query_source_id": "T_Q301_7_RAW",
+      "successor_query_ref": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+        "content_hash": "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7"
+      }
+    },
+    {
+      "query_source_id": "T_Q301_2_Q301_7_RAW",
+      "successor_query_ref": {
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053",
+        "content_hash": "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+      }
+    }
+  ]
+}
