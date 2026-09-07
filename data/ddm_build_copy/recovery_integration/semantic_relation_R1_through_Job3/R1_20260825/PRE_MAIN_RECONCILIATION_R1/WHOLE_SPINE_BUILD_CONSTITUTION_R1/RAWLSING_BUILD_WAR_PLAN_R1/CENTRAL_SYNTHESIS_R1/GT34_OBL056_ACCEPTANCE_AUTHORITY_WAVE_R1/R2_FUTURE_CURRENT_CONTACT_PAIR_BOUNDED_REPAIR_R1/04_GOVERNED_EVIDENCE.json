@@ -1,0 +1,141 @@
+{
+  "schema_id": "GT34_OBL056_R2_FUTURE_CURRENT_CONTACT_PAIR_REPAIR_GOVERNED_EVIDENCE@1.0.0",
+  "terminal": "PASS__GT34_OBL056_FUTURE_CURRENT_AND_CONTACT_PAIR_BOUNDED_REPAIR_GREEN__NO_ADOPTION",
+  "profile": "IMPLEMENT_TO_VERIFY_REGRESSION",
+  "working_ancestry_start": "2550b9faa981e71f15df73151d283af8f94d601f",
+  "predecessor_semantic_candidate": "966aea1a42b30840670f4b69f779999bfd4a2307",
+  "h1_final_tip": "e7eb5ddb16f9bf21d4cf6f3d77420d5a2277717c",
+  "repaired_semantic_candidate_sha": "54f7a73275127d12f47fffa2a0d6b41addacfa3e",
+  "evidence_execution_sha": "a9ed76b32eed3abab42d6b3dd3ac428cb3fe5ef8",
+  "pr_synthetic_merge_sha": "d4deae2258a73a11d3a6f68502feff3de6bbb110",
+  "candidate_identity": {
+    "authority_registry": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY@1.0.0",
+    "authority_content_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123",
+    "registry_content_hash": "ca633451bfe56f86e1b463243bf721772a9ff582227411ed5137a346491b957e",
+    "receipt_schema": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+    "registry_snapshot_schema": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY_SNAPSHOT@1.0.0",
+    "consumer": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE@1.0.0",
+    "status": "CANDIDATE_NOT_ADOPTED",
+    "current_positive_entry_count": 0
+  },
+  "candidate_files": {
+    "implementation": {
+      "path": "rawlsing_next/gt34_adp010_input_authority_acceptance.py",
+      "blob": "1bbc83f66f85ab46f4e1732fb43a158c0737dd6d"
+    },
+    "inherited_regression_tests": {
+      "path": "rawlsing_next/tests/test_gt34_obl056_adp010_input_authority_acceptance.py",
+      "blob": "454407f251c4146a2c0db8780afd7ea2e0b0a10c"
+    },
+    "repair_regression_tests": {
+      "path": "rawlsing_next/tests/test_gt34_obl056_future_current_contact_pair_repair.py",
+      "blob": "c86896aa20224695f92ec9b89c27f9d2bb3d7a78"
+    },
+    "repaired_registry_artifact": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT34_OBL056_ACCEPTANCE_AUTHORITY_WAVE_R1/R2_FUTURE_CURRENT_CONTACT_PAIR_BOUNDED_REPAIR_R1/01_REPAIRED_AUTHORITY_REGISTRY.json",
+      "blob": "7d9b2f4c4972c8bdcc7d9f958d136bb60532a1d6"
+    },
+    "repaired_receipt_contract_artifact": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT34_OBL056_ACCEPTANCE_AUTHORITY_WAVE_R1/R2_FUTURE_CURRENT_CONTACT_PAIR_BOUNDED_REPAIR_R1/02_REPAIRED_RECEIPT_SCHEMA_AND_CONTRACT_EXAMPLE.json",
+      "blob": "7200514716f568356f6075b3decae29c247b169a"
+    },
+    "compatibility_artifact": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/GT34_OBL056_ACCEPTANCE_AUTHORITY_WAVE_R1/R2_FUTURE_CURRENT_CONTACT_PAIR_BOUNDED_REPAIR_R1/03_PREDECESSOR_TO_REPAIR_COMPATIBILITY.json",
+      "blob": "3bb9f66e6ced30ef52910f4c8eff3f9f9ff3d266"
+    }
+  },
+  "repair_disposition": {
+    "D1_future_current_acceptance": "REPAIRED",
+    "D1_mechanics": "CURRENT_ACCEPTED validation now requires an exact content-addressed installed registry snapshot, exact one-entry membership, exact issuer/registry identity, exact entry/receipt integrity, exact adoption/current-selection evidence binding, and immutable registry provenance",
+    "D1_present_current_registry": "EMPTY_CANDIDATE_REGISTRY_PRESERVED_FAIL_CLOSED",
+    "D1_project_current_fixture_created": false,
+    "D1_contract_operability_test": "NONPROJECT_IN_MEMORY_CONTRACT_TEST_ONLY",
+    "D2_contact_pair_validation": "REPAIRED",
+    "D2_mechanics": "public pair path validates occurrence and independence constituents through validate_acceptance_receipt before pair-level receipt/authority distinctness",
+    "forged_constituent_pair_acceptance": "REJECTED"
+  },
+  "preserved_protections": {
+    "supported_roles": [
+      "CAUSAL_USE_PERMISSION",
+      "POSITIVE_APPLICABILITY",
+      "CONTACT_OCCURRENCE_WITNESS",
+      "CONTACT_WITNESS_INDEPENDENCE"
+    ],
+    "exact_consumer_preserved": true,
+    "scope_binding_preserved": true,
+    "synthetic_current_separation_preserved": true,
+    "caller_self_issuance_rejected": true,
+    "contact_distinct_authority_required": true,
+    "contact_distinct_receipt_required": true,
+    "no_latest_default_fuzzy_fallback": true,
+    "authority_ceiling_preserved": true,
+    "underlying_semantic_truth_created": false
+  },
+  "required_proof_disposition": {
+    "h1_d1_reproduction_closed": "PASS",
+    "h1_d2_reproduction_closed": "PASS",
+    "empty_current_registry_fail_closed": "PASS",
+    "future_current_exact_governed_membership_evidence_binding": "PASS",
+    "current_entry_receipt_mutation": "REJECTED",
+    "current_registry_issuer_substitution": "REJECTED",
+    "source_adoption_current_selection_evidence_mutation": "REJECTED",
+    "synthetic_current_masquerade": "REJECTED",
+    "caller_self_issue_current": "REJECTED",
+    "both_contact_constituents_validated_before_success": "PASS",
+    "one_forged_contact_constituent": "REJECTED",
+    "same_contact_authority": "REJECTED",
+    "same_contact_receipt": "REJECTED",
+    "four_role_scope_protections": "PASS",
+    "replay_idempotence": "PASS",
+    "authority_ceiling": "INTACT",
+    "w2_executor_blob_unchanged": "54d9acba40f0eb1db8bb03aec3c1bb900f849588"
+  },
+  "governed_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 34099946202,
+    "job_id": 101671833530,
+    "result": "PASS",
+    "protocol_self_test": "20 passed in 0.10s",
+    "focused_repair_regression": "42 passed in 0.20s",
+    "spec_validation": "PASS",
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "determinism_mode": "EXACT",
+    "spec_sha256": "9a70af5859f4fd94a22accf72af82c6250f0d140d9911410b35aec1f04fe2dd2",
+    "receipt_exit_code": 0,
+    "receipt_elapsed_seconds": 0.416954,
+    "artifact": {
+      "id": 10010055908,
+      "name": "rabochii-court-receipt-34099946202",
+      "size_bytes": 633,
+      "zip_sha256": "bad94f63d0958e92d5e12f0e2c0703b9989865bffb31d995266a5523476abe53"
+    }
+  },
+  "candidate_evidence_compatibility": {
+    "semantic_candidate_to_evidence_execution_commit_count": 1,
+    "semantic_candidate_to_evidence_execution_delta": [
+      ".rabochii/court_spec.json__TEMPORARY_PROOF_CONFIGURATION_ONLY"
+    ],
+    "semantic_delta": "NONE",
+    "compatibility": "ADMISSIBLE_PROOF_ONLY_DELTA"
+  },
+  "execution_trigger": {
+    "pull_request": 244,
+    "purpose": "EXECUTION_ONLY_GOVERNED_COURT_TRIGGER",
+    "draft": true,
+    "merged": false,
+    "final_state": "CLOSED_UNMERGED"
+  },
+  "scope_guards": {
+    "obl055_repaired": false,
+    "w2_executor_modified": false,
+    "project_current_semantic_authority_invented": false,
+    "project_current_positive_entry_created": false,
+    "obl056_adopted": false,
+    "current_first_canary_oee_executed": false,
+    "central_moved": false,
+    "pre_main_moved": false,
+    "main_moved": false,
+    "sub_vozhd_branch_moved": false
+  }
+}
