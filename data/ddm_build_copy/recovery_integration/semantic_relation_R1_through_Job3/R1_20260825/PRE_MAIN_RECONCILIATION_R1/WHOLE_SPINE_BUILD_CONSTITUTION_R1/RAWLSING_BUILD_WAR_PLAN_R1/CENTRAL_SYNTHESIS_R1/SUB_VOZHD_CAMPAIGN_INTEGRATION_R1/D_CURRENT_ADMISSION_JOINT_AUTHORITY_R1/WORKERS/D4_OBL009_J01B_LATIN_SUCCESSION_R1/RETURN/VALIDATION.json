@@ -1,0 +1,59 @@
+{
+  "authority_ceiling": "Lane classification evidence only. CANDIDATE != PROJECT_CURRENT. This PASS does not close global J01-B and does not alter J01-A.",
+  "checks": {
+    "all_current_states_allowed": true,
+    "all_residual_states_allowed": true,
+    "c07_archive_sha256_match": true,
+    "c07_memberships_sha256_match": true,
+    "c07_registry_sha256_match": true,
+    "current_crosswalk_exactly_one_row_per_latin_candidate": true,
+    "current_freeze_review_requests_zero": true,
+    "current_global_row_count_1411": true,
+    "frozen_current_carrier_sha256_match": true,
+    "historical_conservation_exactly_once": true,
+    "historical_memberships_latin_680": true,
+    "historical_registry_latin_123": true,
+    "historical_residual_ids_unique": true,
+    "mechanical_latin_filter_73": true,
+    "no_current_denominator_mutation": true,
+    "no_historical_count_to_identity_inference": true,
+    "no_label_only_identity_inference": true,
+    "no_out_of_lane_current_candidates": true,
+    "packed_current_binding_ceiling_preserved": true,
+    "sibling_j01b_results_consumed_zero": true,
+    "starting_head_bound": "b4b429f889d7554be281ef3948cd781bc3466ede"
+  },
+  "evidence": {
+    "c07_archive_sha256": "1687b4fea789aabf90e3906f104250f4d7bfa0055586a71066598fd9541f0286",
+    "c07_library_file_id": "libfile_cec6f3a01f988191b94a97354d0b9143",
+    "c07_ref": "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+    "c09_latin_inventory_identity_sha256": "650090f1ebb4aa6481bc6519114e324a6fa5865669ecc86b3e8c7fe167223afc",
+    "c09_latin_membership_identity_sha256": "ebaaf1322499461eccb675d506e335e20e7dfeccb9ad41590b3caea5f04e77f6",
+    "c09_ref": "b41957482a3c567a02862334806624910fd4bac5",
+    "current_j01a_ref": "44e97e420d38b6a2b0c44034929b5994a352d8b6",
+    "current_library_file_id": "libfile_3f6b0d93bb74819195702d808e3093ec",
+    "current_sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64",
+    "latin_r1_evidence_set_locator": "C07:libfile_cec6f3a01f988191b94a97354d0b9143@1687b4fea789aabf90e3906f104250f4d7bfa0055586a71066598fd9541f0286;R@d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd;M@52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c;C09I@650090f1ebb4aa6481bc6519114e324a6fa5865669ecc86b3e8c7fe167223afc;C09M@ebaaf1322499461eccb675d506e335e20e7dfeccb9ad41590b3caea5f04e77f6",
+    "memberships_sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c",
+    "registry_sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd",
+    "shared_succession_ref": "296300619799df81ebd3d6d9af0d13d011bd0b25"
+  },
+  "relation_codebook": {
+    "member_list_sha256": "sha256(JSON canonical ordered member list; ensure_ascii=false; separators=(comma,colon))",
+    "membership_relation": {
+      "CUR_SUB": "CURRENT_STRICT_SUBSET_OF_HISTORICAL_MEMBERSHIP",
+      "CUR_SUPER": "CURRENT_STRICT_SUPERSET_OF_HISTORICAL_MEMBERSHIP",
+      "EQ": "EXACT_ORDERED_MEMBERSHIP"
+    },
+    "relation_evidence_digest_sha256": "sha256(CN=<current_native_members_sha256>|HN=<historical_native_members_sha256>|CI=<current_question_impl_sha256>|HI=<historical_question_impl_sha256>)",
+    "relation_kind": {
+      "CUR_EXPANDS_HIST_RUN": "CURRENT_EXPANDS_HISTORICAL_CONTIGUOUS_RUN",
+      "CUR_REFINES_HIST_RUN": "CURRENT_REFINES_HISTORICAL_CONTIGUOUS_RUN",
+      "EXACT": "EXACT_ORDERED_MEMBER_AND_IMPLEMENTATION_IDENTITY",
+      "P16_EXACT_PARTITION": "CURRENT_BASE_GROUP_PARTITION_OF_HISTORICAL_INTERLEAVED_RUN"
+    }
+  },
+  "schema": "SUBV_D_OBL009_J01B_LATIN_SUCCESSION_VALIDATION@1.0.0",
+  "status": "PASS",
+  "terminal": "PASS__SUBV_D_OBL009_J01B_LATIN_SUCCESSION_CURRENT_GRAIN_R1"
+}

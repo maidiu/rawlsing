@@ -1,0 +1,82 @@
+{
+  "artifact_sha256_excluding_self": {
+    "AMBIGUITIES.csv": "e83711d9ff2747de62c5c8aa61d5932ee0417bf16b5388d2120abb67b8630952",
+    "CHANGED_FILES.txt": "05ae557539e2fc81226376b1696b732efbea3e7d0fe66bc0d7e83792420a6945",
+    "COUNTS.json": "7df7c870f25a8777ce59adbe4f754a4dfe9d7b2c438ba5376abe92ef7669226e",
+    "CURRENT_FREEZE_REVIEW_REQUESTS.csv": "75f6dbe6f682cf38bc1c0f5479b2298b2ff729c90ac4c231313795da01da04e6",
+    "CURRENT_SUCCESSION_CROSSWALK.csv": "d33bbf1a21a24a5f3012ceb9fadc8a531c6b04fb7383df67078829dbe98a18e5",
+    "HISTORICAL_RESIDUAL_DISPOSITION.csv": "5244ffc45952065c75cb0bb065445a2bb9d8c288c7c64a27f559b7d47cbcd49d",
+    "MATCH_EVIDENCE_MANIFEST.csv": "ef9b2d564ae2cdcd0b1869ac41c7c5d057b1990aedf9c07d65778bcd5241e91f",
+    "RESULT.md": "64f3e87b4a842239ac39b89eec6be697de11ad2f34a743cc7497f0c154adff79",
+    "VALIDATION.json": "caea04c4efe132cb40df8fc39629fba5010526f94143508898e0266db22d63c8"
+  },
+  "authority_ceiling": "Lane PASS only; CANDIDATE != PROJECT_CURRENT; no global J01-B closure.",
+  "branch": "agent/rabochii-subv-d-obl009-j01b-latin-succession-r1",
+  "commissioning_ancestry": "66686d7a97fad4310e1b6b390ab3d787d2929e88",
+  "counts": {
+    "ambiguity_rows": 10,
+    "current_complete_exact_binding": 64,
+    "current_freeze_review_requests": 0,
+    "current_global_frozen_candidates": 1411,
+    "current_incomplete_packed_binding": 9,
+    "current_latin_by_wave": {
+      "1995": 13,
+      "2011": 36,
+      "2024": 24
+    },
+    "current_latin_candidates": 73,
+    "distinct_historical_structures_referenced": 72,
+    "historical_latin_by_wave": {
+      "1995": 28,
+      "2011": 74,
+      "2024": 21
+    },
+    "historical_latin_memberships": 680,
+    "historical_latin_structures": 123,
+    "historical_residual_rows": 51,
+    "historical_residual_state_counts": {
+      "AMBIGUOUS_HISTORICAL_RESIDUAL": 1,
+      "HISTORICAL_ONLY": 50
+    },
+    "relation_manifest_rows": 81,
+    "schema": "SUBV_D_OBL009_J01B_LATIN_SUCCESSION_COUNTS@1.0.0",
+    "status": "PASS",
+    "succession_state_counts": {
+      "CURRENT_NEW_STRUCTURE": 2,
+      "CURRENT_SUCCESSOR_CHANGED_MEMBERSHIP": 8,
+      "EXACT_CURRENT_SUCCESSOR": 54,
+      "UNRESOLVED_IDENTITY": 9
+    },
+    "terminal": "PASS__SUBV_D_OBL009_J01B_LATIN_SUCCESSION_CURRENT_GRAIN_R1"
+  },
+  "current_input": {
+    "library_file_id": "libfile_3f6b0d93bb74819195702d808e3093ec",
+    "ref": "44e97e420d38b6a2b0c44034929b5994a352d8b6",
+    "rows_global": 1411,
+    "rows_latin": 73,
+    "sha256": "b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64"
+  },
+  "historical_inputs": [
+    {
+      "archive_sha256": "1687b4fea789aabf90e3906f104250f4d7bfa0055586a71066598fd9541f0286",
+      "latin_memberships": 680,
+      "latin_structures": 123,
+      "library_file_id": "libfile_cec6f3a01f988191b94a97354d0b9143",
+      "memberships_sha256": "52f10099ce98f9fe9bcf161b80d50b05dfd2f584bb78c3bed007d5055f38980c",
+      "ref": "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+      "registry_sha256": "d75d6e30373d1fd45d29ffb34fc14d135c6addf0bbb7aa64d7aed57cf45cd8dd"
+    },
+    {
+      "latin_inventory_identity_sha256": "650090f1ebb4aa6481bc6519114e324a6fa5865669ecc86b3e8c7fe167223afc",
+      "latin_membership_identity_sha256": "ebaaf1322499461eccb675d506e335e20e7dfeccb9ad41590b3caea5f04e77f6",
+      "ref": "b41957482a3c567a02862334806624910fd4bac5",
+      "role": "CORROBORATION_ONLY__ROW_BYTES_NOT_SUBSTITUTED"
+    }
+  ],
+  "repository": "maidiu/rawlsing",
+  "return_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/D_CURRENT_ADMISSION_JOINT_AUTHORITY_R1/WORKERS/D4_OBL009_J01B_LATIN_SUCCESSION_R1/RETURN/",
+  "schema": "SUBV_D_OBL009_J01B_LATIN_SUCCESSION_RETURN_POINTER@1.0.0",
+  "starting_head": "b4b429f889d7554be281ef3948cd781bc3466ede",
+  "status": "PASS",
+  "terminal": "PASS__SUBV_D_OBL009_J01B_LATIN_SUCCESSION_CURRENT_GRAIN_R1"
+}
