@@ -1,0 +1,66 @@
+{
+  "schema": "D9_OBL017_ACCEPTANCE_TESTS@1",
+  "terminal": "PASS__SUBV_D_OBL017_FIRST_EXACT_MISSING_AUTHORITY_EDGE_PROVED__LANE_ROUTED",
+  "tests": [
+    {
+      "id": "A01_EXACT_INPUT_FREEZE",
+      "status": "PASS",
+      "evidence": "D6 central rows and current/delegated authority indices consumed at f8a0f03779755be6e54e19c7008c33554db8c4fa; D6 return pinned at 982c28012f32512c4e903b346322ab1a2700af93; D adjudication consumed at D9 command tip f1571c7a765df39e48d0afb33306d2d616771c12."
+    },
+    {
+      "id": "A02_PREPARATION_NONAUTHORIZING",
+      "status": "PASS",
+      "evidence": "C028/C029 consumed as supporting/history only; E01 relies on independently competent J01-A rather than promotion of preparation."
+    },
+    {
+      "id": "A03_J01A_EXACT_GRAIN_ONLY",
+      "status": "PASS",
+      "evidence": "J01-A used only for 1,879/1,411 current source/candidacy grain; frozen 1,411 carrier identity recorded without materializing bytes because no row-specific proof was needed."
+    },
+    {
+      "id": "A04_C06_EXACT_GRAIN_ONLY",
+      "status": "PASS",
+      "evidence": "Contract@2 used only for current routing/applicability and preserved 18,276 active / 14,386 unresolved; no C02-C05 readjudication."
+    },
+    {
+      "id": "A05_REQUIRED_PREMISE_ENUMERATION",
+      "status": "PASS",
+      "evidence": "P3 premise classes are preserved as distinct. N025 parent proposition names no concrete operation/source set, so D9 refuses to invent an applicable subset; exact operation + source set + required premise subset are required before instance enumeration."
+    },
+    {
+      "id": "A06_POSITIVE_PREMISE_BINDING",
+      "status": "PASS",
+      "evidence": "No positive premise is inferred from P3 jurisdiction/API existence. E03 is classified MISSING because no exact instance load or universal positive-load authority is proved."
+    },
+    {
+      "id": "A07_TARGET_USE_ADMISSION",
+      "status": "PASS",
+      "evidence": "No I04 instance admission is asserted. E04 is not reached after E03; P3 one-exact-use model is not widened into target-use permission."
+    },
+    {
+      "id": "A08_NO_FORBIDDEN_EQUIVALENCE",
+      "status": "PASS",
+      "evidence": "No semantic relation, routing, respondent, pooling, estimand, scale, or measurement authority is inferred from another kind."
+    },
+    {
+      "id": "A09_PARENT_NOT_CHILD_SUBSTITUTION",
+      "status": "PASS",
+      "evidence": "J01-A and C06 child/downstream currentness are individually accounted for and not accepted as N025 parent closure."
+    },
+    {
+      "id": "A10_NO_AUTHORITY_MUTATION",
+      "status": "PASS",
+      "evidence": "No J01-A/C06/source/routing authority or empirical carrier is mutated or readjudicated."
+    },
+    {
+      "id": "A11_NO_SIBLING_USURPATION",
+      "status": "PASS",
+      "evidence": "OBL004 remains B-owned. Exact D→B packet emitted because frozen OBL013 explicitly blocks OBL004; D does not perform B work."
+    },
+    {
+      "id": "A12_EXACT_TERMINAL",
+      "status": "PASS",
+      "evidence": "Return selects FIRST_EXACT_MISSING_AUTHORITY_EDGE_PROVED, names E03, freezes evidence/owner/ceiling/blocked consumer and routes the cross-campaign effect."
+    }
+  ]
+}

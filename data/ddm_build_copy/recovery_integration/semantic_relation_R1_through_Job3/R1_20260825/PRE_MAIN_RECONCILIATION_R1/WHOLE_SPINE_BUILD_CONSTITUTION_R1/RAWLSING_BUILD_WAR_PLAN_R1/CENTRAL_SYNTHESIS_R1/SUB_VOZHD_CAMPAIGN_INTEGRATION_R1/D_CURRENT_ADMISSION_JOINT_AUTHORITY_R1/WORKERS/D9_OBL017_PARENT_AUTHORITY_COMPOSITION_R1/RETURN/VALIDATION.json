@@ -1,0 +1,30 @@
+{
+  "schema": "D9_OBL017_PARENT_AUTHORITY_COMPOSITION_VALIDATION@1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-subv-d-obl017-parent-authority-composition-r1",
+  "command_tip": "f1571c7a765df39e48d0afb33306d2d616771c12",
+  "d6_frozen_state": "f8a0f03779755be6e54e19c7008c33554db8c4fa",
+  "d6_return": "982c28012f32512c4e903b346322ab1a2700af93",
+  "proposition": "N025_CURRENT_ADMISSION_PARENT_AUTHORITY_COMPOSITION@1",
+  "holding": "FIRST_EXACT_MISSING_AUTHORITY_EDGE_PROVED",
+  "first_missing_edge": "E03",
+  "terminal": "PASS__SUBV_D_OBL017_FIRST_EXACT_MISSING_AUTHORITY_EDGE_PROVED__LANE_ROUTED",
+  "checks": {
+    "branch_at_command_tip_before_write": true,
+    "J01A_identity_consumed": true,
+    "J01A_library_bytes_materialized": false,
+    "J01A_library_materialization_needed": false,
+    "C06_contract2_spec_consumed": true,
+    "P3_jurisdiction_law_consumed": true,
+    "D6_state_indices_consumed": true,
+    "D6_OBL013_017_018_rows_consumed": true,
+    "C028_C029_supporting_history_consumed": true,
+    "first_missing_edge_exact": true,
+    "no_later_edge_false_pass": true,
+    "cross_campaign_packet_triggered": true,
+    "OBL004_performed": false,
+    "authority_mutation": false,
+    "project_current_effect": "NONE"
+  },
+  "rationale": "P3 supplies operation-scoped jurisdiction but explicitly not arbitrary positive load; frozen OBL013 is PARTIALLY_CLOSED and requires exact operation/source positive authority. No concrete operation/source set is specified by the parent theorem, and no universal positive-load authority appears in the frozen current authority index."
+}
