@@ -428,3 +428,69 @@ No further Field Forge worker is active or required by the current project graph
 OBL006 reactivates only on a concrete exact external political-group transport claim.
 
 No generic FIELD, HOMOLOGY, hegemony, CAPITAL, CONVERSION, transport, V3, or physical/compiler authority is implied by Field Forge closure.
+
+
+## VOZHD HQ TAKEOVER DELTA — 2026-09-07 POST-FIELD-FORGE
+
+This delta supersedes any earlier sentence in this file that still describes OBL048 as awaiting SUB-VOZHD A packaging or HQ adoption.
+
+### OBL048 — CLOSED / PROJECT-CURRENT AT EXACT ONE-SUBJECT CLASSIFICATION GRAIN
+
+HQ accepts the exact SUB-VOZHD A packet and independent hostile PASS and adopts only:
+
+- candidate commit: `01645806c98b8a83070389e5375e2b7fde781c6a`;
+- authority: `GT34_OBL048_EXACT_FIRST_CANARY_SUBJECT_CLASSIFICATION_AUTHORITY@1.0.0`;
+- authority content hash: `a0cd9714145ea4c7edd862b2a0dfdd50c2912c5ae2de598632dbe6fd2bc62794`;
+- authority artifact blob: `a0be5530a3fab5a0b18746750ff461b0e7ff2d91`;
+- proposition: `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL`;
+- proposition content hash: `90c69c1d6f548214ae4c33f3aceac76e78b083d5b03218fcf4139f3922e3ea11`;
+- proposition artifact blob: `c8c9ec0d708acfe864beede72c062b13b5aa0f58`;
+- exact subject: `urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33`.
+
+Independent hostile reviewer final tip:
+`c06e1d6841a04659983737d2efe3c3d5bd15646d`.
+
+Exact hostile evidence checkout:
+`e3b8e6b3fe0ed7f74b7fb8b6f9d97526e9dccb1f`.
+
+SUB-VOZHD A HQ packet:
+`dc5ba652bc1855a83a0aff01217779d0d5c069ed`.
+
+This closes OBL048 only. It creates no contact, use, encounter, exposure, comparator, PSEPF, metabolism, CAN-008, V2 or positive-V3 actor authority.
+
+OBL031 is now blocked only on OBL055.
+
+### OBL056 — RETURN_REQUIRED AFTER H2 FRESH HOSTILE FAIL
+
+Fresh independent H2 final tip:
+`53172d2fe1dba091b1cbaf663c75a4c4e6bcf750`.
+
+Terminal:
+`FAIL__GT34_OBL056_CURRENT_ACCEPTED_ENTRY_IMMUTABLE_PROVENANCE_NOT_REQUIRED__REQUIRE_NONEMPTY_CURRENT_ENTRY_PROVENANCE`.
+
+R2 closed the earlier H1 future-current representability and contact-pair constituent-validation defects, but H2 proved one narrower remaining adoption blocker: an exact positive `CURRENT_ACCEPTED` entry may carry empty entry-level `immutable_provenance` while registry-level provenance remains nonempty.
+
+Smallest lawful next repair remains wholly inside existing OBL056:
+require nonempty current-entry immutable provenance both at exact current registry construction and at receipt validation, preserve all existing scope/currentness/role/contact-pair protections, add the exact regression, then fresh hostile-review again.
+
+OBL055 remains blocked. No OBL056 adoption is authorized.
+
+### SUB-VOZHD B / AS3R3
+
+B7 exact worker final tip:
+`b26a2b313834e0ba0a1773ebc1c25e46156dac00`.
+
+Terminal:
+`AS3R3_NODE5B_QUERY_MINT_REPLAY_SEAL_COMPLETE__READY_FOR_COMBINED_SUCCESSOR_RUNTIME_SEAL`.
+
+This is campaign-local PASS evidence, not direct HQ adoption. SUB-VOZHD B owns banking/adjudication and the next combined-successor-runtime-seal commission under its charter.
+
+### SUB-VOZHD C / FIELD FORGE
+
+FIELD FORGE active local post-R2 mission remains complete. OBL006 remains dormant claim-conditional. No worker should be manufactured merely to keep C active.
+
+### Global invariant
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+`main` remains untouched.
