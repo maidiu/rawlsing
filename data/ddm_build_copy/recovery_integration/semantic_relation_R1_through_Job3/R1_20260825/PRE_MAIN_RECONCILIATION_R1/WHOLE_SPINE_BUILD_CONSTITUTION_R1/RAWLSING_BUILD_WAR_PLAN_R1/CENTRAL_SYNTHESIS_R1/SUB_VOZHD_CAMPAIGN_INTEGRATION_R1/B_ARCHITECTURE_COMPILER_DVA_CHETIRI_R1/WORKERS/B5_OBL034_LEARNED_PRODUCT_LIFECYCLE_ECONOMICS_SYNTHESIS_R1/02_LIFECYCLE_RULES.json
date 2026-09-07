@@ -1,0 +1,341 @@
+{
+  "candidate_contract_id": "PRE553_LEARNED_PRODUCT_LIFECYCLE_CANDIDATE@1.0.0",
+  "candidate_status": "CANDIDATE__NO_PROJECT_CURRENT_EFFECT__REQUIRES_SUB_VOZHD_B_ADJUDICATION_AND_VOZHD_HQ_ADOPTION",
+  "candidate_owner_grain": "OBL034_LEARNED_PRODUCT_LIFECYCLE",
+  "immutable_worker_handoff": "9bda4cb1ae425fd14e9483199f5a9aa7859d048c",
+  "jurisdiction": {
+    "owns": [
+      "learned-product lifecycle identity registration",
+      "publication lifecycle receipts",
+      "explicit current-selection pointers by exact selection scope",
+      "explicit supersession relations",
+      "withdrawal and learned-product invalidation disposition",
+      "historical lifecycle retention",
+      "replay/rebuild eligibility classification",
+      "optional cache lifecycle classification",
+      "learned-product payload garbage-collection eligibility"
+    ],
+    "does_not_own": [
+      "producer semantic meaning",
+      "semantic authority creation or AuthoritySnapshot adjudication",
+      "source or physical carrier retirement/cutover",
+      "general empirical comparability or measurement portability",
+      "general source composition beyond already-current exact authorities",
+      "physical architecture selection",
+      "PRE553 publication topology selection",
+      "V3 or V2 causal/actor semantics"
+    ],
+    "invariant": "SEMANTIC_OWNER != CARRIER_OWNER != LIFECYCLE_OWNER"
+  },
+  "exact_evidence": {
+    "authority31_blob": "2688e9ad370d0db284f165ec55ff1d84e4a17a8a",
+    "b2_obl034_input_blob": "7ddafa20f40240637af2bdb4ead6e01006333504",
+    "replay_audit_blob": "86e0b9c518633735f2527b89fb72fca1a40dc2cc",
+    "source_equivalence_blob": "0e7f9f6d77ef6efe2c66b04f0527bb1ab99f4ef8",
+    "authority_maintenance_blob": "ac7f3a013129bc148debf8f011597971a2c99442",
+    "c11_repository_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "source_backed_c11_facade_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "m4_publication_repository_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+    "chetiri_c07_blob": "2b694326952cf7bd2b53181007c31537c98cdcbf",
+    "chetiri_c08_blob": "04436d614b439e0f5c6e183580f27642ce832eb7"
+  },
+  "b2_input_ids": [
+    "O34-I01",
+    "O34-I02",
+    "O34-I03",
+    "O34-I04",
+    "O34-I05",
+    "O34-I06",
+    "O34-I07",
+    "O34-I08",
+    "O34-I09",
+    "O34-I10",
+    "O34-I11",
+    "O34-I12",
+    "O34-I13",
+    "O34-I14",
+    "O34-I15",
+    "O34-I16",
+    "O34-I17",
+    "O34-I18"
+  ],
+  "learned_product_identity": {
+    "immutable": true,
+    "required_fields": [
+      "product_ref",
+      "producer_owner_ref",
+      "producer_contract_ref",
+      "semantic_projection_hash",
+      "authority_snapshot_refs",
+      "direct_dependency_refs",
+      "determinant_set_hash",
+      "replay_root_ref",
+      "selection_scope_ref",
+      "build_or_release_receipt_refs"
+    ],
+    "rules": [
+      "publication, current-selection, supersession, withdrawal, invalidation, payload deletion, cache state, or carrier location MUST NOT mutate product_ref or semantic_projection_hash",
+      "a changed semantic determinant that changes semantic output creates a new product_ref; the prior product remains historical",
+      "physical carrier identity and storage locator are not semantic product identity"
+    ]
+  },
+  "orthogonal_states": {
+    "publication": [
+      "UNPUBLISHED",
+      "PUBLISHED"
+    ],
+    "selection": [
+      "NOT_CURRENT",
+      "CURRENT_SELECTED"
+    ],
+    "validity": [
+      "VALID",
+      "INVALIDATED_REBUILD_REQUIRED",
+      "WITHDRAWN"
+    ],
+    "replay": [
+      "REPLAY_COMPLETE",
+      "REPLAY_BLOCKED_MISSING_DETERMINANT",
+      "REPLAY_BLOCKED_MISSING_AUTHORITY",
+      "REPLAY_BLOCKED_MISSING_SOURCE_OR_UPSTREAM",
+      "REPLAY_INTEGRITY_FAILURE"
+    ],
+    "rebuild": [
+      "REBUILD_NOT_REQUESTED",
+      "CURRENT_REBUILD_ELIGIBLE",
+      "HISTORICAL_REPLAY_ELIGIBLE",
+      "REBUILD_BLOCKED"
+    ],
+    "materialization": [
+      "MANDATORY_RETAINED_CAPITAL",
+      "RECOMPUTABLE_PRODUCT_PAYLOAD",
+      "OPTIONAL_CACHE_ACCELERATOR"
+    ]
+  },
+  "event_kinds": [
+    "PRODUCT_REGISTERED",
+    "PRODUCT_PUBLISHED",
+    "CURRENT_SELECTED",
+    "CURRENT_SUPERSEDED",
+    "CURRENT_CLEARED",
+    "PRODUCT_INVALIDATED",
+    "PRODUCT_WITHDRAWN",
+    "REBUILD_ELIGIBILITY_RECORDED",
+    "PRODUCT_REBUILT",
+    "CACHE_MATERIALIZED",
+    "CACHE_DROPPED",
+    "GC_ELIGIBILITY_ATTESTED",
+    "RECOMPUTABLE_PAYLOAD_GC_RECORDED"
+  ],
+  "required_receipt_fields": {
+    "common": [
+      "event_kind",
+      "product_ref",
+      "selection_scope_ref",
+      "event_authority_ref",
+      "event_rule_ref",
+      "parent_lifecycle_event_ref",
+      "evidence_refs",
+      "event_content_hash"
+    ],
+    "publication": [
+      "replay_root_ref",
+      "determinant_set_hash",
+      "authority_snapshot_refs",
+      "producer_permission_ceiling"
+    ],
+    "current_selection": [
+      "selected_product_ref",
+      "previous_current_product_ref_or_null",
+      "selection_attestation_ref"
+    ],
+    "supersession": [
+      "predecessor_product_ref",
+      "successor_product_ref",
+      "supersession_basis_ref"
+    ],
+    "invalidation": [
+      "changed_determinant_refs",
+      "affected_product_refs",
+      "unaffected_product_refs",
+      "dependency_closure_receipt_ref"
+    ],
+    "withdrawal": [
+      "withdrawal_reason_ref",
+      "withdrawal_scope_ref"
+    ],
+    "rebuild": [
+      "old_product_ref",
+      "new_product_ref",
+      "rebuild_determinant_set_hash",
+      "replay_or_execution_receipt_ref"
+    ],
+    "gc": [
+      "materialization_class",
+      "reconstruction_proof_ref",
+      "historical_retention_proof_ref",
+      "source_carrier_retirement_authorized_false"
+    ]
+  },
+  "determinant_classes": [
+    "SEMANTIC_AUTHORITY_REF",
+    "PRODUCER_CONTRACT_REF",
+    "SOURCE_ARTIFACT_OR_RELEASE_REF",
+    "SOURCE_UNIVERSE_OR_RISK_SET_REF",
+    "QUERY_PREDICATE_OR_DISCOVERY_RULE_REF",
+    "VALIDATION_AUTHORITY_REF",
+    "UPSTREAM_LEARNED_PRODUCT_REF",
+    "PUBLICATION_GOVERNANCE_REF",
+    "REPLAY_PROTOCOL_REF",
+    "SEMANTICALLY_RELEVANT_EXECUTOR_OR_SCHEMA_REF"
+  ],
+  "fail_closed_states": [
+    "AMBIGUOUS_PRODUCT_IDENTITY",
+    "MISSING_LIFECYCLE_AUTHORITY",
+    "MISSING_SEMANTIC_AUTHORITY",
+    "MISSING_REPLAY_CLOSURE",
+    "MISSING_DETERMINANT",
+    "CONFLICTING_CURRENT_SELECTION",
+    "UNKNOWN_CURRENTNESS",
+    "INVALIDATED_DEPENDENCY",
+    "WITHDRAWN_NO_CURRENT_REPLACEMENT",
+    "REBUILD_NOT_PROVED",
+    "GC_NOT_AUTHORIZED",
+    "SOURCE_OR_CARRIER_RETIREMENT_AUTHORITY_REQUIRED",
+    "COMPARABILITY_AUTHORITY_REQUIRED_IF_TRANSFER_CLAIMED",
+    "GENERAL_COMPOSITION_AUTHORITY_REQUIRED_IF_BROADER_COMPOSITION_CLAIMED"
+  ],
+  "rules": [
+    {
+      "id": "LCR-001",
+      "name": "IMMUTABLE_PRODUCT_IDENTITY",
+      "holding": "Lifecycle actions never rewrite semantic product identity, producer ownership, or historical semantic projection."
+    },
+    {
+      "id": "LCR-002",
+      "name": "PUBLICATION_REQUIRES_EXACT_CLOSURE",
+      "holding": "A product may be PUBLISHED only with exact product identity, producer contract, authority-snapshot closure, determinant-set hash, replay root, and publication authority/receipt. Repository presence alone is insufficient."
+    },
+    {
+      "id": "LCR-003",
+      "name": "CURRENT_SELECTION_IS_EXPLICIT",
+      "holding": "CURRENT_SELECTED exists only through an exact selection receipt keyed by selection_scope_ref. Chronology, filename, branch age, repository order, latest/default/fuzzy selectors, or mere publication never create currentness."
+    },
+    {
+      "id": "LCR-004",
+      "name": "SUPERSESSION_IS_RELATIONAL_AND_NONDESTRUCTIVE",
+      "holding": "Supersession requires an explicit predecessor->successor receipt and exact selection transition. It does not mutate, reinterpret, or erase the predecessor."
+    },
+    {
+      "id": "LCR-005",
+      "name": "WITHDRAWAL_IS_NONERASURE",
+      "holding": "Withdrawal prohibits current serving in its withdrawal scope but preserves product identity, lifecycle receipts, determinant closure, authority snapshots, replay roots, and historical audit/replay obligations."
+    },
+    {
+      "id": "LCR-006",
+      "name": "CURRENT_WITHDRAWAL_FAILS_CLOSED",
+      "holding": "If the current product is withdrawn or invalidated, current selection must atomically move by exact receipt to another already-lawful product or become NO_CURRENT_SELECTION. Implicit fallback is forbidden."
+    },
+    {
+      "id": "LCR-007",
+      "name": "HISTORICAL_REPLAY_PINS_HISTORICAL_AUTHORITY",
+      "holding": "Replay of a historical product resolves the exact historical authority id/version/hash and exact determinants; a superseding current authority may not reinterpret the historical product."
+    },
+    {
+      "id": "LCR-008",
+      "name": "DETERMINANT_LOCAL_TRANSITIVE_INVALIDATION",
+      "holding": "A changed exact determinant invalidates only directly dependent learned products plus their transitive exact product-dependency closure. Unrelated products remain valid. This is candidate generalization of current AuthoritySnapshot determinant-graph mechanics and C08 evidence, not a claim that final C08 reconciliation is complete."
+    },
+    {
+      "id": "LCR-009",
+      "name": "AUTHORITY_CHANGE_IS_EXPLICIT_DETERMINANT",
+      "holding": "Authority promotion/rollback does not silently rewrite products. Exact affected products are invalidated/rebuilt through determinant closure; unaffected products retain identity/currentness."
+    },
+    {
+      "id": "LCR-010",
+      "name": "REBUILD_CREATES_NEW_IDENTITY_WHEN_SEMANTICS_CHANGE",
+      "holding": "A rebuild under changed semantic determinants produces a new exact product identity. A byte-for-byte or semantic-identity-equivalent reconstruction under unchanged determinants may restore materialization without semantic supersession."
+    },
+    {
+      "id": "LCR-011",
+      "name": "REBUILD_ELIGIBILITY_REQUIRES_EXACT_INPUTS",
+      "holding": "Rebuild eligibility requires exact source/upstream availability, authority closure, producer contract, replay/reconstruction instructions, and deterministic or otherwise governed execution evidence. Missing inputs are REBUILD_BLOCKED, never guessed."
+    },
+    {
+      "id": "LCR-012",
+      "name": "OPTIONAL_CACHE_IS_NONAUTHORITATIVE",
+      "holding": "Caches and accelerators may be materialized or dropped without changing semantic validity/currentness when their loss changes performance only. A cache may become a learned product only through separate governed semantic publication."
+    },
+    {
+      "id": "LCR-013",
+      "name": "MANDATORY_RETENTION_FLOOR",
+      "holding": "Product identity, lifecycle event chain, exact authority snapshots, determinant closure, replay/reconstruction roots, required source/upstream refs, and governance/adjudication receipts are mandatory retained capital even when payload bytes are rebuildable."
+    },
+    {
+      "id": "LCR-014",
+      "name": "PAYLOAD_GC_REQUIRES_PROOF",
+      "holding": "Only RECOMPUTABLE_PRODUCT_PAYLOAD may become GC-eligible, and only after exact reconstruction/replay proof, mandatory-retention proof, serving/reconstruction compatibility, and proof that no lifecycle rule requires those payload bytes. Mandatory retained capital is never GC-eligible here."
+    },
+    {
+      "id": "LCR-015",
+      "name": "SOURCE_CARRIER_RETIREMENT_OUTSIDE_JURISDICTION",
+      "holding": "This lifecycle candidate cannot authorize deletion/retirement/cutover of source snapshots or physical carriers. Source-to-C11 CERTIFIED remains source_retirement_authorized=false and cutover_authorized=false. OBL029 remains separate."
+    },
+    {
+      "id": "LCR-016",
+      "name": "AUTHORITYSNAPSHOT_LIFECYCLE_REMAINS_EXTERNAL",
+      "holding": "AuthoritySnapshot promotion/rollback/invalidation stays owned by PRE553_AUTH40_SEMANTIC_AUTHORITY_MAINTENANCE@1.0.0. Learned-product lifecycle consumes exact authority events as determinants; it never reowns semantic authority."
+    },
+    {
+      "id": "LCR-017",
+      "name": "PERMISSION_CEILING_PRESERVED",
+      "holding": "Lifecycle publication/current-selection may narrow availability but cannot widen producer or publication permissions. Currentness is not permission."
+    },
+    {
+      "id": "LCR-018",
+      "name": "LOGICAL_SERVICE_PHYSICAL_NEUTRALITY",
+      "holding": "A current logical learned product may be served by persistent, source-backed reconstructed, or hybrid physical realization only if exact semantic/replay/service equivalence is preserved. Physical presence does not define currentness."
+    },
+    {
+      "id": "LCR-019",
+      "name": "APPEND_ONLY_LIFECYCLE_JOURNAL",
+      "holding": "All lifecycle events are exact, parent-linked, append-only receipts. Rollback/current reselection points to prior lawful products/receipts; history is never rewritten."
+    },
+    {
+      "id": "LCR-020",
+      "name": "MISSING_OR_CONFLICTING_EVIDENCE_FAILS_CLOSED",
+      "holding": "Missing/conflicting product identity, lifecycle authority, semantic authority, determinant closure, replay evidence, or current-selection evidence yields a typed fail-closed state and no implicit publication/currentness/rebuild/GC."
+    }
+  ],
+  "garbage_collection_eligibility": {
+    "eligible_class": "RECOMPUTABLE_PRODUCT_PAYLOAD",
+    "mandatory_conditions": [
+      "exact product identity and lifecycle history remain retained",
+      "exact reconstruction or replay path is proved and named",
+      "all historical authority/determinant/replay roots required to reproduce/audit remain retained",
+      "current serving contract, if any, can lawfully reconstruct without the payload",
+      "no downstream exact dependency requires the physical bytes rather than the logical product",
+      "source/carrier dependencies remain retained unless separately retired by competent OBL029 authority",
+      "GC attestation is exact and does not alter semantic currentness"
+    ],
+    "never_eligible_here": [
+      "semantic identity records",
+      "lifecycle event journal",
+      "authority snapshots needed for replay",
+      "determinant closure",
+      "replay and reconstruction instructions/receipts",
+      "source/carrier material whose deletion requires OBL029 authority"
+    ]
+  },
+  "economics_binding": {
+    "no_scalar_score": true,
+    "rule": "Compare candidates as equal-obligation cost vectors. Do not weight or aggregate dimensions without separately governed decision authority.",
+    "forbidden_credits": [
+      "unowned source/carrier retirement savings",
+      "assumed cross-source portability or measurement equivalence",
+      "hypothetical general pooling/composition",
+      "optional dormant adaptive/recursive features not activated by workload",
+      "legacy migration work when no materially live caller is proved"
+    ]
+  }
+}
