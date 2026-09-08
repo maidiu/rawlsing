@@ -6,6 +6,9 @@ on:
       - Rabochii Governed Bounded Court
     types:
       - completed
+  push:
+    branches:
+      - 'agent/**'
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:
@@ -25,7 +28,9 @@ permissions:
 concurrency:
   group: >-
     rawlsing-return-beacon-${{
-      github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.run_id
+      github.event_name == 'workflow_run' && github.event.workflow_run.head_branch ||
+      (github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number)) ||
+      'sweep'
     }}
   cancel-in-progress: true
 
@@ -73,8 +78,11 @@ jobs:
           --timeout-seconds 1500
           --interval-seconds 15
 
-  scheduled-sweep:
-    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+  sweep:
+    if: >-
+      ${{ github.event_name == 'schedule' ||
+          github.event_name == 'workflow_dispatch' ||
+          github.event_name == 'push' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
