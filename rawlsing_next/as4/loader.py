@@ -333,7 +333,7 @@ def _load_queries(root: Path, binding: Mapping[str, Any]) -> tuple[EmpiricalQuer
             raise HB04FreezeError("query carrier row malformed")
         obj = _materialize(doc, EmpiricalQuerySpec)
         _eq(obj.ref.as_dict(), dict(ref), "materialized successor query ref")
-        _eq(_sha256_bytes(canonical_json(doc).encode("utf-8")), row.get("canonical_representation_sha256"), "query canonical representation SHA-256")
+        _eq(_sha256_bytes((canonical_json(doc) + "\\n").encode("utf-8")), row.get("canonical_representation_sha256"), "query canonical representation SHA-256")
         by_hash[obj.content_hash] = obj
     qb = binding.get("query_bindings")
     if not isinstance(qb, list) or len(qb) != 3:
