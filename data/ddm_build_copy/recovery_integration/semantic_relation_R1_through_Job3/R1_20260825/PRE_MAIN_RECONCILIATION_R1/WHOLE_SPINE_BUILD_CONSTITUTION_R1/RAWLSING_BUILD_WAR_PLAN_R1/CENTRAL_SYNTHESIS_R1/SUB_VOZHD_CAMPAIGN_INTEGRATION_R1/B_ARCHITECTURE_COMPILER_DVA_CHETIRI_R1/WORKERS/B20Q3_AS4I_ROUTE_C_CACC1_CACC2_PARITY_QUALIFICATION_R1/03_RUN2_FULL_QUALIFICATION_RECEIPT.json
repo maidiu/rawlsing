@@ -1,0 +1,170 @@
+{
+  "schema": "B20Q3_RUN2_FULL_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "b20q3_terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+  "executed_tree": "e7007ff50d1e8577f522d8691486f55c3679dbcb",
+  "clean_pre_execution_git_status": true,
+  "fresh_outer_root": true,
+  "fresh_tmpdir": true,
+  "fresh_python_pycacheprefix": true,
+  "distinct_python_process": true,
+  "driver_blob": "9ed1a68300453bfcd4af4877bab397ed00b0e0e6",
+  "driver_sha256": "497a9cb64fa4a1a57a3bf2ec6882aaf5fd996ea6408e7c7bbaf272fe534321ee",
+  "implementation_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+  "implementation_sha256": "a07e73c514c6216c350ac7a69cb099256cf71680a49fe0796aac6729483b417d",
+  "pyarrow_version": "25.0.1",
+  "exit_code": 0,
+  "stdout_sha256": "deeb97ff79efd4557394589a7a95f03a29e4c961cd0eff17389e7a7c1ce5d835",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "emitted_driver_receipt_sha256": "deeb97ff79efd4557394589a7a95f03a29e4c961cd0eff17389e7a7c1ce5d835",
+  "post_execution_untracked_state": {
+    "count": 17,
+    "material": "CPython .pyc files only under run-specific checkout __pycache__ directories",
+    "semantic_mutation": false,
+    "explanation": "Frozen driver internal replay uses python -I, which ignores PYTHONPYCACHEPREFIX; each outer checkout was nevertheless separate and clean before execution."
+  },
+  "full_driver_receipt": {
+    "schema": "B20_ROUTE_C_IMPLEMENTATION_QUALIFICATION@1.0.0",
+    "status": "PASS",
+    "terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_IMPLEMENTATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+    "single_process": {
+      "status": "PASS",
+      "terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_IMPLEMENTATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+      "cacc1": {
+        "logical": "e683af11b8c3ae9f7ee897c4f6c5080cfefc8d2bd9636624678a3b0205919a2c",
+        "physical": "5f70745f40fe8b21b7bcde8892a17b8f3fd62fdca1111af73c3fba3734d9b2c7",
+        "determinant": "d2cbe706d99e1e21ee9c7d03a5c32ccead83149e3cad0b79f0e4682166ae2b4f"
+      },
+      "cacc2": {
+        "logical": "b1d8bc3a3788256992362228462f1da7c6346416ad862ba71485865ea22f2583",
+        "determinant": "f9ec076044ecf348519dce7a96b8cd1f1df92e0cbad705ce9723d7eb2b36a847",
+        "mask_hashes": {
+          "A000": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+          "A1RAPP": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+          "A1SMIS": "e52d9c508c502347344d8c07ad91cbd6068afc75ff6292f062a09ca381c89e71",
+          "A1SSPS": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A1SSUB": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+          "A1V1": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+          "A1V2": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A1V3": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A1V4": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A1V5": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A2RAPP": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+          "A2SMIS": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A2SSPS": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A2SSUB": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+          "A2V1": "67586e98fad27da0b9968bc039a1ef34c939b9b8e523a8bef89d478608c5ecf6",
+          "A2V2": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A2V3": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A2V4": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+          "A2V5": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+        },
+        "risk_sha256": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879"
+      },
+      "cacheless_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "REL-deterministic",
+        "content_hash": "c5de38a6ca54ebfacbec12f1c77708200b05ae9a2912123d466fd52b8312ec39"
+      },
+      "cacheless_replay_ref": {
+        "kind": "C11Internal:ReplayManifest",
+        "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:6413281417b2fc5d157830df7721d892c207692307a5729a8f5d1bb57e4764ef",
+        "content_hash": "6413281417b2fc5d157830df7721d892c207692307a5729a8f5d1bb57e4764ef"
+      },
+      "query_fact_refs": [
+        {
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:489f211c840f45db9081c6348521daa632f60f4796f239d7fcf16c7ae8d82fae",
+          "content_hash": "489f211c840f45db9081c6348521daa632f60f4796f239d7fcf16c7ae8d82fae"
+        }
+      ],
+      "discovery_frontier_ref": {
+        "kind": "PRE553_I05_EVALUATED_FRONTIER",
+        "object_id": "urn:rawlsing:pre553:i05:frontier:sha256:dade847ca36150e4298c2295dd8f3cbac1e4191f0144fc50e7d0752207d06808",
+        "content_hash": "dade847ca36150e4298c2295dd8f3cbac1e4191f0144fc50e7d0752207d06808"
+      },
+      "discovery_receipt_refs": [
+        {
+          "kind": "DiscoveryResultReceipt@1.0.0",
+          "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a",
+          "content_hash": "cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a"
+        }
+      ],
+      "hostile": {
+        "stale_cacc1": "PASS_FAIL_CLOSED",
+        "corrupt_cacc1": "PASS_FAIL_CLOSED",
+        "stale_cacc2": "PASS_FAIL_CLOSED",
+        "corrupt_cacc2": "PASS_FAIL_CLOSED",
+        "unauthorized_extra_cache_material": "PASS_FAIL_CLOSED"
+      },
+      "delete_rebuild": "PASS_EXACT_IDENTITIES_PRESERVED",
+      "accelerator_count": 2,
+      "pinned_pyarrow_version": "25.0.1",
+      "candidate_execution_count": 1,
+      "real_c09_execution_count": 0,
+      "wvs7_execution_count": 0,
+      "architecture_ranking_count": 0
+    },
+    "pinned_pyarrow_version": "25.0.1",
+    "fresh_process_replay": {
+      "status": "PASS",
+      "process_count": 2,
+      "independent_roots": [
+        "/home/runner/work/_temp/b20q3/run2/tmp/b20-route-c-court-w_f1n1gx/fresh_1",
+        "/home/runner/work/_temp/b20q3/run2/tmp/b20-route-c-court-w_f1n1gx/fresh_2"
+      ],
+      "reproduced_keys": [
+        "cacc1",
+        "cacc2",
+        "cacheless_release_ref",
+        "cacheless_replay_ref",
+        "query_fact_refs",
+        "discovery_frontier_ref",
+        "discovery_receipt_refs"
+      ],
+      "cacc1_logical_content_hash": "e683af11b8c3ae9f7ee897c4f6c5080cfefc8d2bd9636624678a3b0205919a2c",
+      "cacc1_physical_byte_sha256": "5f70745f40fe8b21b7bcde8892a17b8f3fd62fdca1111af73c3fba3734d9b2c7",
+      "cacc2_logical_content_hash": "b1d8bc3a3788256992362228462f1da7c6346416ad862ba71485865ea22f2583",
+      "discovery_frontier_ref": {
+        "kind": "PRE553_I05_EVALUATED_FRONTIER",
+        "object_id": "urn:rawlsing:pre553:i05:frontier:sha256:dade847ca36150e4298c2295dd8f3cbac1e4191f0144fc50e7d0752207d06808",
+        "content_hash": "dade847ca36150e4298c2295dd8f3cbac1e4191f0144fc50e7d0752207d06808"
+      },
+      "query_fact_refs": [
+        {
+          "kind": "EmpiricalFact@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:489f211c840f45db9081c6348521daa632f60f4796f239d7fcf16c7ae8d82fae",
+          "content_hash": "489f211c840f45db9081c6348521daa632f60f4796f239d7fcf16c7ae8d82fae"
+        }
+      ],
+      "discovery_receipt_refs": [
+        {
+          "kind": "DiscoveryResultReceipt@1.0.0",
+          "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a",
+          "content_hash": "cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a"
+        }
+      ]
+    }
+  },
+  "b20q3_adjudication": {
+    "full_route_c_court_completed": true,
+    "cacc1_build_read_identity": true,
+    "cacc2_build_read_and_masks": true,
+    "ordinary_query_cacheless_accelerated_identity_parity": true,
+    "cacheless_i05_completed": true,
+    "accelerated_i05_completed": true,
+    "discovery_receipt_identity_parity": true,
+    "zero_i03_integrity_failure": "PROVED_BY_COMPLETED_FAIL_CLOSED_I05_AND_EXACT_SUPPORTED_ORDINARY_FACT_IDENTITY_FROM_ACCEPTED_B20I03R",
+    "all_hostiles_fail_closed": true,
+    "delete_regenerate_exact_identity": true,
+    "internal_fresh_process_count": 2,
+    "internal_fresh_replay_pass": true,
+    "exactly_two_accelerators": true,
+    "real_c09_execution_count": 0,
+    "wvs7_execution_count": 0,
+    "ranking_execution_count": 0,
+    "hb04_execution_count": 0,
+    "obl037_execution_count": 0,
+    "positive_v3_effect_count": 0
+  }
+}
