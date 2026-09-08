@@ -665,3 +665,26 @@ Existing ADP-007/008/019 authority survives unchanged; their missing first-canar
 No current positive runtime action is authorized.
 
 `POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+
+## OBL057 HQ ADOPTION / OBL031 RESUMED
+
+SUB-VOZHD A returned OBL057 candidate + exactly one fresh hostile PASS at tip `883c2ff03770e145bc99ef2023d32cec83434ff5`.
+
+HQ adopted `GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_AUTHORITY@1.0.0` at content hash `acec40d03b5602aaa553f1f63cf2506bffe0491c008678ff973e39c3f7dcedd4`.
+
+Adoption commit: `ffd580daf88cce0a3be3a87c461c165916bad9cc`.
+
+Current-selection receipt blob: `ee54aa2965e13ba39b77f169170dc857b0fea6aa`.
+
+`OBL057 = CLOSED / PROJECT-CURRENT`.
+
+`OBL031 = RETURN_REQUIRED / ACTIVE`.
+
+SUB-VOZHD A may now perform only the smallest R2 pinning repair against the exact adopted D08 tuple and HQ evidence, then exactly one fresh hostile review.
+
+The real first-canary actor ENCOUNTER remains absent; real comparator invocation remains fail-closed.
+
+SUB-VOZHD E remains independently active on OBL058/059/060. This OBL057 adoption does not alter E ownership or authorize OBL061.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
