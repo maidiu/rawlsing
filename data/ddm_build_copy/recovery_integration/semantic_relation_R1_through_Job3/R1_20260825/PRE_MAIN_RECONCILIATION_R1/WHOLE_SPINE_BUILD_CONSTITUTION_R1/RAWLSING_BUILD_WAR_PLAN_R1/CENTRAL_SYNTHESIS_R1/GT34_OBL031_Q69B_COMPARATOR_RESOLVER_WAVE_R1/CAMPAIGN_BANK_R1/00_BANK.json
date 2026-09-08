@@ -1,0 +1,73 @@
+{
+  "schema_id": "GT34_OBL031_R4_CAMPAIGN_BANK@1.0.0",
+  "status": "BANKED_CANDIDATE_EVIDENCE__NO_ADOPTION",
+  "campaign_parent": "883c2ff03770e145bc99ef2023d32cec83434ff5",
+  "hq_state_consumed_prospectively": "ce3d75ca8882872daf0189c6bef4a2302fcb06cc",
+  "obl057_hq_adoption": {
+    "commit": "ffd580daf88cce0a3be3a87c461c165916bad9cc",
+    "adoption_artifact_blob": "d6270869655c86729150f81fc0e11e0f82ac7a22",
+    "adoption_json_blob": "1f9ce9e9019cbe6451a8a49e5e4bd893b2196755",
+    "current_selection_receipt_blob": "ee54aa2965e13ba39b77f169170dc857b0fea6aa",
+    "status": "CURRENT_ACCEPTED"
+  },
+  "dependency_implementation_blobs": {
+    "r2": "5df5e1fe5459d642aa3aa7f5dc0c3c36cb3ef757",
+    "r3": "71191c004a650b4f6fc778110a84a7ffd9c8786f",
+    "r4": "ff7e13d99aa1ee6b16d4533bd8b1aa19e4dc979e"
+  },
+  "comparator_authority_chain": {
+    "r2": {
+      "version": "1.1.1",
+      "content_hash": "31dd0ae8384962efb69f5f8d67634fcc554826826ebea8901e63474bd52ba8a9"
+    },
+    "r3": {
+      "version": "1.1.2",
+      "content_hash": "0fa6b05a2105fd7f39fc4bc50a10470a7e9184b5006da1a2d411994a93517e96",
+      "semantic_candidate": "b7ccad935e7f5f2906390495d9d1a6ecabae618f",
+      "governed_evidence_execution": "842ef28c2ce93584a6c78e870d29e8c23e5803db",
+      "governed_run": 34193541478,
+      "governed_job": 101956322416,
+      "governed_result": "PASS",
+      "hostile_matrix_freeze": "881c2c509dbcb23836b9bbb66c10348d21bbd75b",
+      "hostile_evidence_execution": "a96ae6844e2c630d08b9f605cfb1a67f12d31daa",
+      "hostile_run": 34193702341,
+      "hostile_job": 101956805489,
+      "hostile_result": "FAIL__EQUALITY_SPOOF_TYPE_CONFUSION",
+      "hostile_tests": "95_PASS_1_FAIL"
+    },
+    "r4": {
+      "authority_id": "GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY",
+      "version": "1.1.3",
+      "content_hash": "e080f7089f27f5851152dfb2ea9b9765159cd647be995a1f41fa65945d27c87c",
+      "semantic_candidate": "a616a07638218a741c3e07753b1f4fd77a87dc73",
+      "repair_grain": "EXACT_FROZEN_D08GrammarBinding_TYPE_AND_VALUE_ONLY",
+      "governed_evidence_execution": "4b662f9e840a607e2875b630ff1134071441e8f9",
+      "governed_run": 34193895137,
+      "governed_job": 101957368066,
+      "governed_protocol_tests": 20,
+      "governed_focused_tests": 67,
+      "governed_artifact": 10043158897,
+      "governed_zip_sha256": "aeacbabaf14c28b02961736ff0e296ea26364b4b9802528cce7f727ac9d13ef3",
+      "hostile_matrix_freeze": "12835dae0a23c9deaaa47457839f18f99cfa7460",
+      "hostile_evidence_execution": "4831f2821dfc6944e5c9d801379db5220ddecf48",
+      "hostile_run": 34194103134,
+      "hostile_job": 101957989720,
+      "hostile_protocol_tests": 20,
+      "hostile_tests": 98,
+      "hostile_artifact": 10043230691,
+      "hostile_zip_sha256": "fb3468f6e0e7f75141b7e4fb7b827cb2334fa31f3fea8458e035f0fc7e4d81f8",
+      "hostile_result": "PASS"
+    }
+  },
+  "real_first_canary_actor_encounter": "ABSENT",
+  "current_real_invocation": "ACTOR_FACT_MISSING_OR_UNAUTHORIZED",
+  "synthetic_positive_mechanics": "NONCURRENT_SYNTHETIC_TEST_ONLY",
+  "hard_gates": {
+    "obl031_self_adoption": "FORBIDDEN",
+    "obl032": "NOT_AUTHORIZED",
+    "encounter_creation": "NOT_AUTHORIZED",
+    "positive_obl056_entries": "NOT_AUTHORIZED",
+    "positive_v3_execution": "NOT_AUTHORIZED",
+    "project_current_first_canary_oee": "NOT_AUTHORIZED"
+  }
+}
