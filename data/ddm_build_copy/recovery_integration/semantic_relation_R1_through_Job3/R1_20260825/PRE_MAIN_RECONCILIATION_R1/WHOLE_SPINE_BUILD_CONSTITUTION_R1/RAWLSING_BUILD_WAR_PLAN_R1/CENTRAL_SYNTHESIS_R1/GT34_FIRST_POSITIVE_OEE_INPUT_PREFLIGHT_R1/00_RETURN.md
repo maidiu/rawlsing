@@ -2,7 +2,9 @@
 
 ## Terminal
 
-`PREFLIGHT_BLOCKED_ON_EXACT_SOURCE_FACTS_AND_AUTHORITY_GRAINS`
+`PREFLIGHT_BLOCKED_ON_HQ_AUTHORITY`
+
+Source fact instances are also missing, but the controlling preflight stop is HQ/source-owner authority because at least `CAUSAL_USE_PERMISSION`, `POSITIVE_APPLICABILITY`, and `CONTACT_WITNESS_INDEPENDENCE` lack an exact competent current source authority recoverable for this first-canary scope.
 
 This is a preflight only. It creates no underlying semantic truth, installs no positive OBL056 registry entry, creates no ENCOUNTER, executes no OBL055, performs no OBL032, and authorizes no positive V3.
 
@@ -195,9 +197,11 @@ Owner:
 
 `V3_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE`
 
-Authority artifact blob:
+Immutable current release authority artifact Git blob:
 
-`9f0d286bc84bd8a3a7ac14ea26e4399df98fd9e7` if resolved by the current release artifact; where a semantic authority-content hash is not separately declared, the immutable authority artifact/blob identity must be used rather than invented.
+`ede5008639e08720b4f72e8b470dfca5bc6fa8df`
+
+The inspected ADP-007 authority JSON does not separately declare a semantic authority-content hash, so this preflight records the exact immutable release artifact blob rather than inventing another hash.
 
 Actor ID scheme:
 
@@ -291,6 +295,6 @@ No step authorizes the next by implication.
 
 The exact subject is ready, and the underlying ADP-007/008/010/019 machinery has bounded authority, but the project does **not** presently possess the complete source-owned positive fact/authority set required for a current first-positive OEE invocation.
 
-`PREFLIGHT_BLOCKED_ON_EXACT_SOURCE_FACTS_AND_AUTHORITY_GRAINS`
+`PREFLIGHT_BLOCKED_ON_HQ_AUTHORITY`
 
 `DEPENDENCY_BLOCKS_THE_LANE_NOT_THE_PROJECT`
