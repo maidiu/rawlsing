@@ -15,4 +15,18 @@ spec.loader.exec_module(module)
 
 
 class TestOBL058R4IndependentReview(module.OBL058R4IndependentReview):
-    pass
+    """Expose the reviewer matrix, correcting one discovery-only API assertion."""
+
+    def test_s08_no_public_registration_or_current_effect_api(self):
+        exported = set(dir(module.candidate))
+        registration_callables = {
+            name for name in exported
+            if "register" in name.lower() and callable(getattr(module.candidate, name))
+        }
+        self.assertFalse(registration_callables)
+        forbidden = {
+            "execute_obl055", "create_encounter", "realize_oee",
+            "install_current_positive_obl056", "unblock_obl061",
+            "activate_current_actor", "create_current_actor",
+        }
+        self.assertTrue(forbidden.isdisjoint(exported))
