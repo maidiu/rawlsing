@@ -1,0 +1,31 @@
+{
+  "schema": "B20R_REPAIR_DIFF_RECEIPT@1.0.0",
+  "status": "PASS__EXACT_AUTHORIZED_NORMALIZATION_ONLY",
+  "repair_commit": "006dea7e1c715b0c6ceeac06d458b9ecfd62e2b2",
+  "parent": "607d3e609f003bdcc0fbf0916d92b3beb9fded17",
+  "changed_file_count": 1,
+  "additions": 2,
+  "deletions": 2,
+  "file": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B20_AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_R1/01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py",
+  "textual_changes": [
+    {
+      "before": "from rawlsing_next.pre553_empirical_objects import ExactRef",
+      "after": "from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref"
+    },
+    {
+      "before": "fact for fact in old.routing if fact.question_or_target_ref in allowed_qrefs",
+      "after": "fact for fact in old.routing if exact_ref(fact.question_or_target_ref, \"routing question_or_target_ref\") in allowed_qrefs"
+    }
+  ],
+  "semantic_change": "Normalize canonical routing question_or_target_ref mapping material through repo-native exact_ref() before exact membership comparison against the unchanged allowed ExactRef set.",
+  "forbidden_changes_absent": {
+    "fuzzy_or_string_identity": false,
+    "object_id_only_comparison": false,
+    "content_hash_only_comparison": false,
+    "routing_fact_mutation": false,
+    "allowed_question_set_change": false,
+    "fixture_semantics_change": false,
+    "route_c_implementation_change": false,
+    "common_semantic_query_discovery_change": false
+  }
+}

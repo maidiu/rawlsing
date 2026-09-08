@@ -1,0 +1,26 @@
+{
+  "schema": "B20R_B20Q2_HANDOFF@1.0.0",
+  "status": "READY_FOR_B20Q2_FULL_QUALIFICATION_ON_REPAIRED_DRIVER",
+  "terminal": "B20_ROUTE_C_QUALIFICATION_DRIVER_REFERENCE_NORMALIZATION_REPAIR_COMPLETE__READY_FOR_B20Q2_FULL_QUALIFICATION",
+  "repaired_driver_commit": "006dea7e1c715b0c6ceeac06d458b9ecfd62e2b2",
+  "repaired_driver_git_blob": "5377c70b5b3b9110cfd719b62ae1c3e2ceb07843",
+  "repaired_driver_sha256": "73d9d9efd5bf70a181a7ddac3d98a5e8f7a90277765945862c402b4656c67350",
+  "former_driver_blocker_removed": true,
+  "b20r_full_qualification_authority": false,
+  "b20q2_required_for_full_qualification": true,
+  "known_out_of_scope_observation": {
+    "likely_b20q2_blocker": true,
+    "location": "rawlsing_next/pre553_route_c_accelerators.py::_routing_membership",
+    "exception": "TypeError: unhashable type: 'dict'",
+    "disposition": "CARRY_FORWARD_TO_SUB_VOZHD_B__B20R_MUST_NOT_PATCH_IMPLEMENTATION"
+  },
+  "hard_stops_preserved": {
+    "real_c09_executed": false,
+    "wvs7_executed": false,
+    "benchmarking_or_ranking": false,
+    "common_harness_entered": false,
+    "obl037_launched": false,
+    "architecture_selected": false,
+    "positive_v3_entered": false
+  }
+}

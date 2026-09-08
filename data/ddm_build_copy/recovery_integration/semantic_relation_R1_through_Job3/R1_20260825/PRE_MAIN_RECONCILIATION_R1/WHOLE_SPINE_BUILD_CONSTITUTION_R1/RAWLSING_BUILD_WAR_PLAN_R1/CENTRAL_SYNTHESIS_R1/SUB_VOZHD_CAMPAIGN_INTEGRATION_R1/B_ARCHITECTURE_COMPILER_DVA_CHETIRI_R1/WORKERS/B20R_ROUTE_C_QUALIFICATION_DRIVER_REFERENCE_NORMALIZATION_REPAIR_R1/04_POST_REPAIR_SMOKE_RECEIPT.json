@@ -1,0 +1,41 @@
+{
+  "schema": "B20R_POST_REPAIR_SMOKE_RECEIPT@1.0.0",
+  "status": "PASS__FORMER_UNHASHABLE_ROUTING_REF_FAILURE_REMOVED",
+  "terminal_scope_only": "FORMER_UNHASHABLE_ROUTING_REF_FAILURE_REMOVED",
+  "repair_commit": "006dea7e1c715b0c6ceeac06d458b9ecfd62e2b2",
+  "environment": {
+    "python_version": "3.13.15",
+    "python_implementation": "CPython",
+    "pyarrow_version": "25.0.1",
+    "pandas_version": "3.0.5"
+  },
+  "execution": {
+    "workflow_run_id": 34272728778,
+    "artifact_id": 10074489445,
+    "artifact_zip_digest": "sha256:676f0521057e4b86784b222dead81adfeb62ce9d6a2a3e47a70814943149fae0",
+    "executed_tree_head": "006dea7e1c715b0c6ceeac06d458b9ecfd62e2b2",
+    "process_exit_code": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "095dbcb2095afa4e3ecc279a5a885846ae62db29e33774c9a3870af6ad29c3f6"
+  },
+  "checkpoints": {
+    "repaired_driver_imported": true,
+    "route_c_fixture_completed": true,
+    "former_driver_typeerror_recurred": false,
+    "first_cacc1_build_entered": true,
+    "first_cacc1_build_completed": false
+  },
+  "repair_scope_result": "PASS",
+  "downstream_out_of_scope_observation": {
+    "class": "NEW_ROUTE_C_IMPLEMENTATION_REPRESENTATION_FAILURE",
+    "authorized_for_b20r_repair": false,
+    "file": "rawlsing_next/pre553_route_c_accelerators.py",
+    "function": "_routing_membership",
+    "line": 343,
+    "expression": "if pair in by_pair:",
+    "pair_construction": "pair = (fact.scoped_respondent_ref, fact.question_or_target_ref)",
+    "exception": "TypeError: unhashable type: 'dict'",
+    "statement": "After the repaired driver successfully constructs the fixture and enters build_cacc1, the frozen Route-C implementation attempts to use canonical mapping refs directly as a dict key. This is outside B20R's driver-only authority and was not modified."
+  },
+  "full_route_c_qualification_claimed": false
+}
