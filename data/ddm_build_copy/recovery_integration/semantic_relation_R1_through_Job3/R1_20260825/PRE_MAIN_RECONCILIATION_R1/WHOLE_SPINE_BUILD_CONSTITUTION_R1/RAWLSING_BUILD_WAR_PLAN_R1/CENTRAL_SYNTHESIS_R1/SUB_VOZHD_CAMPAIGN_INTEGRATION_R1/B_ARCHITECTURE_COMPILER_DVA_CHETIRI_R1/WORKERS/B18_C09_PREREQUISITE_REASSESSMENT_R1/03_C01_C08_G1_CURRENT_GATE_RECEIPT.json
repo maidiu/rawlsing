@@ -1,0 +1,23 @@
+{
+  "schema": "B18_C01_C08_G1_CURRENT_GATE_RECEIPT@1.0.0",
+  "status": "PASS",
+  "evidence_basis": {
+    "historical_ledger_blob": "4eaeefeda73b323ea0d0e534640941a4f7ec262c",
+    "b16_seal_blob": "0ebf319c0e6695b077b9ca70b9119007fecfcdcd",
+    "b17_final_seal_blob": "e2ec74edb20cff0aeacd60529deec4a14e00b883",
+    "hq32_authorization_commit": "68a4d4fb2b21cd1191eb71de585cca8beb68f25e"
+  },
+  "gates": {
+    "C01": "SATISFIED_CURRENT",
+    "C02": "SATISFIED_CURRENT",
+    "C03": "SATISFIED_CURRENT",
+    "C04": "SATISFIED_CURRENT",
+    "C05": "SATISFIED_BY_B16",
+    "C06": "SATISFIED_CURRENT__WVS7_SOURCE_SPECIFIC_REPLAY_CERTIFICATION_REMAINS_SEPARATE_C09_PROVING_SOURCE_BLOCKER",
+    "C07": "SATISFIED_CURRENT__NAMED_LEARNED_WORLD_AUTHORITY_GAPS_REMAIN_TYPED",
+    "C08": "SATISFIED_BY_B17",
+    "HISTORICAL_CHETIRI_G1": "SATISFIED_BY_B17"
+  },
+  "all_c01_c08_g1_closed_at_their_required_gate_grain": true,
+  "does_not_imply_c09_ready": true
+}

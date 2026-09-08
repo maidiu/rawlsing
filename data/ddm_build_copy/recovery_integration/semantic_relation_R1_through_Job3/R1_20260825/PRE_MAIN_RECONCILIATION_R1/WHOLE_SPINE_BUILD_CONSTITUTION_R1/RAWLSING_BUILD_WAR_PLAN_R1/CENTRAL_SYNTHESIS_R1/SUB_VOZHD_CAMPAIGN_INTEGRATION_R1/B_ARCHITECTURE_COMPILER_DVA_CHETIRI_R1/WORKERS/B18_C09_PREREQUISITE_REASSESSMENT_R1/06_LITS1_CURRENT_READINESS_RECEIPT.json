@@ -1,0 +1,43 @@
+{
+  "schema": "B18_LITS1_CURRENT_READINESS@1.0.0",
+  "status": "PASS",
+  "source": {
+    "library_path": "/LITS-2006-data.dta",
+    "file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "bytes": 139531180,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows": 29002,
+    "variables": 1198,
+    "physical_cells": 34744396,
+    "decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "available_on_current_library_capable_surface": true
+  },
+  "accepted_route_b": {
+    "tip": "40a0a0529fa78765c7fc87f7e1f12260a2335f72",
+    "seal_blob": "0ebf319c0e6695b077b9ca70b9119007fecfcdcd",
+    "candidate_count": 82,
+    "covered": 82,
+    "unevaluated": 0,
+    "semantic_replay_parity": "PASS",
+    "zero_forbidden_transformed_persistence": true
+  },
+  "per_candidate": {
+    "A": {
+      "status": "MISSING_IMPLEMENTATION",
+      "source_semantic_replay_inputs_ready": true,
+      "blocker": "narrow R5->C05R2A adapter absent"
+    },
+    "B": {
+      "status": "SATISFIED_BY_B16",
+      "source_semantic_replay_inputs_ready": true,
+      "production_execution_ready": true
+    },
+    "C": {
+      "status": "MISSING_IMPLEMENTATION",
+      "source_semantic_replay_inputs_ready": true,
+      "blocker": "CACC1/CACC2 and parity adapter absent"
+    }
+  },
+  "c09_two_source_readiness": false,
+  "reason": "LiTS-I is not the remaining mandatory proving-source semantic blocker; WVS7 is."
+}

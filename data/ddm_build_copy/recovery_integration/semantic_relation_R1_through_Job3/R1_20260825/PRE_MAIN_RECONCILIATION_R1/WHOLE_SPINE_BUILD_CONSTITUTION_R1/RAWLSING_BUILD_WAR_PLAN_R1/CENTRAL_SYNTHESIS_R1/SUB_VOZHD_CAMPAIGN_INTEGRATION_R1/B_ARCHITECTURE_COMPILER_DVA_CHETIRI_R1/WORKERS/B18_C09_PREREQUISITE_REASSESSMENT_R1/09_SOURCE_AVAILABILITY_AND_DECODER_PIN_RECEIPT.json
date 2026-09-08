@@ -1,0 +1,38 @@
+{
+  "schema": "B18_SOURCE_AVAILABILITY_AND_DECODER_PIN@1.0.0",
+  "status": "PASS",
+  "b18_executed_sources": false,
+  "WVS7": {
+    "source_status": "SATISFIED_CURRENT",
+    "library_carrier": "/WVS Wave 7.sav.zip",
+    "file_id": "file_00000000386c820d8760e748b25ad7e1",
+    "zip_bytes": 26200230,
+    "contained_file": "WVS Wave 7.sav",
+    "contained_bytes": 185163494,
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "decoder": "decode_sav(source_path)",
+    "shape": {
+      "rows": 97220,
+      "variables": 613,
+      "physical_cells": 59595860
+    },
+    "semantic_certification": "EXECUTION_CERTIFICATION_NOT_CLOSED"
+  },
+  "LITS_I": {
+    "source_status": "SATISFIED_CURRENT",
+    "library_path": "/LITS-2006-data.dta",
+    "file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "bytes": 139531180,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "shape": {
+      "rows": 29002,
+      "variables": 1198,
+      "physical_cells": 34744396
+    },
+    "route_b_certification": "SATISFIED_BY_B16"
+  },
+  "decoder_config_pins_frozen": true,
+  "final_host_scratch_extraction_paths_frozen": false,
+  "law": "source transport/scratch extraction location is not semantic source identity"
+}
