@@ -16,4 +16,23 @@ spec.loader.exec_module(module)
 
 
 class TestOBL059R5BoundedRepair(module.CourtR5):
-    pass
+    def test_43_unrelated_programmer_errors_are_not_masked(self):
+        """Route inherited R3 preservation check to R5's actual delegate chain."""
+        original = module.r5._r4._r3._r2.evaluate_direct_positive_applicability
+
+        def raise_type_error(_packet):
+            raise TypeError("deliberate-programmer-error")
+
+        def raise_value_error(_packet):
+            raise ValueError("deliberate-programmer-error")
+
+        try:
+            module.r5._r4._r3._r2.evaluate_direct_positive_applicability = raise_type_error
+            with self.assertRaisesRegex(TypeError, "deliberate-programmer-error"):
+                module.r5.evaluate_direct_positive_applicability(module.fixture())
+
+            module.r5._r4._r3._r2.evaluate_direct_positive_applicability = raise_value_error
+            with self.assertRaisesRegex(ValueError, "deliberate-programmer-error"):
+                module.r5.evaluate_direct_positive_applicability(module.fixture())
+        finally:
+            module.r5._r4._r3._r2.evaluate_direct_positive_applicability = original
