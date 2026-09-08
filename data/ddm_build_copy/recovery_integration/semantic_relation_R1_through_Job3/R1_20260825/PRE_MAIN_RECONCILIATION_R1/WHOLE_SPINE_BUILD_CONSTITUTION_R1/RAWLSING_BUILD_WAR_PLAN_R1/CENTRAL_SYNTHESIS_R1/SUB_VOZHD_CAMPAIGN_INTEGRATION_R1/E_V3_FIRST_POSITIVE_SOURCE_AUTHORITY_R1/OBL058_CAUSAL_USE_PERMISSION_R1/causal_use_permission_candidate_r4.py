@@ -1,10 +1,10 @@
 """OBL058 CAUSAL_USE_PERMISSION R4 bounded repair candidate.
 
-The R4 source-origin boundary is process-isolated. The parent Python module does
-not hold the authoritative issuance ledger. The authority process accepts only
-exact scope/basis inputs, computes each receipt body itself, and binds that body
-to the supplied object identity. Caller-built receipt content is never accepted
-by the issuance protocol.
+Source-origin authority is isolated per issued receipt in a one-shot child
+process. The child performs the source-owned semantic decision exactly once,
+retains only that receipt's immutable object/body binding, and thereafter accepts
+validation requests only. There is no caller-recoverable parent ledger, mutable
+registry, or generic caller-body registration surface.
 """
 from __future__ import annotations
 
@@ -19,8 +19,8 @@ import subprocess
 import sys
 from typing import Any
 
-AUTHORITY_ID = "OBL058_CAUSAL_USE_PERMISSION_SOURCE_AUTHORITY_R1@1.3.0"
-SCHEMA_VERSION = "OBL058_CAUSAL_USE_PERMISSION_RECEIPT@4.0.0"
+AUTHORITY_ID = "OBL058_CAUSAL_USE_PERMISSION_SOURCE_AUTHORITY_R1@1.3.1"
+SCHEMA_VERSION = "OBL058_CAUSAL_USE_PERMISSION_RECEIPT@4.1.0"
 FIXTURE_CLASS = "NONCURRENT_SYNTHETIC"
 DECISION_PERMIT = "PERMIT"
 DECISION_DENY = "DENY"
@@ -233,71 +233,148 @@ def _service_validate_body(*, body_json: str, expected_scope: dict[str, str]) ->
     return str(body["decision"])
 
 
-def _authority_service_loop() -> int:
-    # This dictionary exists only inside the authority subprocess. No parent
-    # function closure/default/global contains or aliases it.
-    issued: dict[int, str] = {}
+def _emit_service(payload: dict[str, Any]) -> None:
+    sys.stdout.write(_canonical_json(payload) + "\n")
+    sys.stdout.flush()
 
-    def emit(payload: dict[str, Any]) -> None:
-        sys.stdout.write(_canonical_json(payload) + "\n")
-        sys.stdout.flush()
+
+def _receipt_authority_service_loop() -> int:
+    """One-shot authority process for exactly one receipt identity/body."""
+    first = sys.stdin.readline()
+    try:
+        request = json.loads(first)
+        if type(request) is not dict or set(request) != {
+            "op", "object_id", "scope", "basis_id", "fixture_class"
+        } or request.get("op") != "initialize":
+            raise PermissionContractError("service_protocol_error")
+        object_id = request["object_id"]
+        if not isinstance(object_id, int) or object_id <= 0:
+            raise PermissionContractError("service_protocol_error")
+        authoritative_body = _service_build_body(
+            scope=request["scope"],
+            basis_id=request["basis_id"],
+            fixture_class=request["fixture_class"],
+        )
+    except PermissionContractError as exc:
+        _emit_service({"ok": False, "error": str(exc)})
+        return 1
+    except Exception:
+        _emit_service({"ok": False, "error": "service_internal_error"})
+        return 1
+
+    _emit_service({"ok": True, "body_json": authoritative_body})
 
     for line in sys.stdin:
         try:
             request = json.loads(line)
-            if type(request) is not dict or not isinstance(request.get("op"), str):
+            if type(request) is not dict or set(request) != {
+                "op", "object_id", "body_json", "expected_scope"
+            } or request.get("op") != "validate":
                 raise PermissionContractError("service_protocol_error")
-            op = request["op"]
-
-            if op == "issue":
-                if set(request) != {"op", "object_id", "scope", "basis_id", "fixture_class"}:
-                    raise PermissionContractError("service_protocol_error")
-                object_id = request["object_id"]
-                if not isinstance(object_id, int) or object_id <= 0:
-                    raise PermissionContractError("service_protocol_error")
-                if object_id in issued:
-                    raise PermissionContractError("object_identity_already_issued")
-                body_json = _service_build_body(
-                    scope=request["scope"],
-                    basis_id=request["basis_id"],
-                    fixture_class=request["fixture_class"],
-                )
-                issued[object_id] = body_json
-                emit({"ok": True, "body_json": body_json})
-
-            elif op == "validate":
-                if set(request) != {"op", "object_id", "body_json", "expected_scope"}:
-                    raise PermissionContractError("service_protocol_error")
-                object_id = request["object_id"]
-                if not isinstance(object_id, int) or object_id <= 0:
-                    raise PermissionContractError("service_protocol_error")
-                decision = _service_validate_body(
-                    body_json=request["body_json"],
-                    expected_scope=request["expected_scope"],
-                )
-                authoritative = issued.get(object_id)
-                if authoritative is None or authoritative != request["body_json"]:
-                    raise PermissionContractError("receipt_not_issued_by_source_authority")
-                emit({"ok": True, "decision": decision})
-
-            else:
+            request_object_id = request["object_id"]
+            if not isinstance(request_object_id, int) or request_object_id <= 0:
                 raise PermissionContractError("service_protocol_error")
-
+            decision = _service_validate_body(
+                body_json=request["body_json"],
+                expected_scope=request["expected_scope"],
+            )
+            if request_object_id != object_id or request["body_json"] != authoritative_body:
+                raise PermissionContractError("receipt_not_issued_by_source_authority")
+            _emit_service({"ok": True, "decision": decision})
         except PermissionContractError as exc:
-            emit({"ok": False, "error": str(exc)})
+            _emit_service({"ok": False, "error": str(exc)})
         except Exception:
-            emit({"ok": False, "error": "service_internal_error"})
+            _emit_service({"ok": False, "error": "service_internal_error"})
     return 0
 
 
-class IssuedReceipt(Mapping[str, Any]):
-    __slots__ = ("_body_json",)
+def _service_roundtrip(write_fd: int, read_fd: int, request: dict[str, Any]) -> dict[str, Any]:
+    if type(write_fd) is not int or type(read_fd) is not int or type(request) is not dict:
+        raise PermissionContractError("authority_service_protocol_error")
+    raw = (_canonical_json(request) + "\n").encode("utf-8")
+    try:
+        offset = 0
+        while offset < len(raw):
+            written = os.write(write_fd, raw[offset:])
+            if written <= 0:
+                raise OSError("short write")
+            offset += written
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(read_fd, 4096)
+            if not chunk:
+                raise OSError("service eof")
+            chunks.append(chunk)
+            if b"\n" in chunk:
+                break
+    except OSError as exc:
+        raise PermissionContractError("authority_service_unavailable") from exc
+    line = b"".join(chunks).split(b"\n", 1)[0]
+    try:
+        response = json.loads(line.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise PermissionContractError("authority_service_protocol_error") from exc
+    if type(response) is not dict or response.get("ok") is not True:
+        error = response.get("error") if isinstance(response, dict) else None
+        raise PermissionContractError(str(error or "authority_service_protocol_error"))
+    return response
 
-    def __init__(self, body_json: str = "") -> None:
-        object.__setattr__(self, "_body_json", body_json)
+
+def _start_receipt_authority(
+    *, object_id: int, scope: ExactScope, basis_id: str, fixture_class: str
+) -> tuple[subprocess.Popen[bytes], int, int, str]:
+    path = str(Path(__file__).resolve())
+    proc = subprocess.Popen(
+        [sys.executable, path, "--receipt-authority-service"],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        text=False,
+        bufsize=0,
+    )
+    if proc.stdin is None or proc.stdout is None:
+        raise PermissionContractError("authority_service_unavailable")
+    write_fd = proc.stdin.fileno()
+    read_fd = proc.stdout.fileno()
+    response = _service_roundtrip(write_fd, read_fd, {
+        "op": "initialize",
+        "object_id": object_id,
+        "scope": scope.canonical(),
+        "basis_id": basis_id,
+        "fixture_class": fixture_class,
+    })
+    body_json = response.get("body_json")
+    if not isinstance(body_json, str) or not body_json:
+        proc.terminate()
+        raise PermissionContractError("authority_service_protocol_error")
+    return proc, write_fd, read_fd, body_json
+
+
+def _terminate_proc(proc: object) -> None:
+    if not isinstance(proc, subprocess.Popen):
+        return
+    try:
+        if proc.poll() is None:
+            proc.terminate()
+            proc.wait(timeout=1)
+    except Exception:
+        pass
+
+
+class IssuedReceipt(Mapping[str, Any]):
+    __slots__ = ("_body_json", "_write_fd", "_read_fd", "_proc")
+
+    def __init__(self) -> None:
+        object.__setattr__(self, "_body_json", "")
+        object.__setattr__(self, "_write_fd", -1)
+        object.__setattr__(self, "_read_fd", -1)
+        object.__setattr__(self, "_proc", None)
 
     def _public_body(self) -> dict[str, Any]:
-        raw = object.__getattribute__(self, "_body_json")
+        try:
+            raw = object.__getattribute__(self, "_body_json")
+        except AttributeError as exc:
+            raise PermissionContractError("receipt_not_issued_by_source_authority") from exc
         if not isinstance(raw, str) or not raw:
             raise PermissionContractError("receipt_not_issued_by_source_authority")
         try:
@@ -329,72 +406,12 @@ class IssuedReceipt(Mapping[str, Any]):
     def __reduce_ex__(self, protocol):
         raise TypeError("source_receipt_not_serializable")
 
-
-def _start_service() -> subprocess.Popen[bytes]:
-    path = str(Path(__file__).resolve())
-    proc = subprocess.Popen(
-        [sys.executable, path, "--authority-service"],
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-        text=False,
-        bufsize=0,
-    )
-    if proc.stdin is None or proc.stdout is None:
-        raise PermissionContractError("authority_service_unavailable")
-    return proc
-
-
-def _build_service_request(write_fd: int, read_fd: int):
-    # The generated request function has no closure/defaults. Its code constants
-    # contain only the process pipe descriptors. Recovering those descriptors
-    # exposes the same narrow protocol, not the subprocess-local ledger.
-    namespace: dict[str, Any] = {}
-    source = f'''
-def service_request(request):
-    if type(request) is not dict:
-        raise PermissionContractError("authority_service_protocol_error")
-    raw = (_canonical_json(request) + "\\n").encode("utf-8")
-    try:
-        offset = 0
-        while offset < len(raw):
-            written = os.write({write_fd}, raw[offset:])
-            if written <= 0:
-                raise OSError("short write")
-            offset += written
-        chunks = []
-        while True:
-            chunk = os.read({read_fd}, 4096)
-            if not chunk:
-                raise OSError("service eof")
-            chunks.append(chunk)
-            if b"\\n" in chunk:
-                break
-    except OSError as exc:
-        raise PermissionContractError("authority_service_unavailable") from exc
-    line = b"".join(chunks).split(b"\\n", 1)[0]
-    try:
-        response = json.loads(line.decode("utf-8"))
-    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-        raise PermissionContractError("authority_service_protocol_error") from exc
-    if type(response) is not dict or response.get("ok") is not True:
-        error = response.get("error") if isinstance(response, dict) else None
-        raise PermissionContractError(str(error or "authority_service_protocol_error"))
-    return response
-'''
-    exec(source, globals(), namespace)
-    return namespace["service_request"]
-
-
-def _register_service_stop(proc: subprocess.Popen[bytes]) -> None:
-    def _stop(_proc=proc):
+    def close(self) -> None:
         try:
-            if _proc.poll() is None:
-                _proc.terminate()
-                _proc.wait(timeout=1)
-        except Exception:
-            pass
-    atexit.register(_stop)
+            proc = object.__getattribute__(self, "_proc")
+        except AttributeError:
+            return
+        _terminate_proc(proc)
 
 
 def issue_noncurrent_synthetic_receipt(
@@ -410,21 +427,14 @@ def issue_noncurrent_synthetic_receipt(
         raise PermissionContractError("missing_basis_id")
 
     receipt = IssuedReceipt()
-    response = _service_request({
-        "op": "issue",
-        "object_id": id(receipt),
-        "scope": scope.canonical(),
-        "basis_id": basis_id,
-        "fixture_class": fixture_class,
-    })
-    body_json = response.get("body_json")
-    if not isinstance(body_json, str) or not body_json:
-        raise PermissionContractError("authority_service_protocol_error")
+    proc, write_fd, read_fd, body_json = _start_receipt_authority(
+        object_id=id(receipt), scope=scope, basis_id=basis_id, fixture_class=fixture_class
+    )
     object.__setattr__(receipt, "_body_json", body_json)
-
-    # Lifetime pinning prevents CPython id reuse while the service is alive. The
-    # pin is not consulted by issuance or validation and has no authority effect.
-    atexit.register(lambda _receipt=receipt: None)
+    object.__setattr__(receipt, "_write_fd", write_fd)
+    object.__setattr__(receipt, "_read_fd", read_fd)
+    object.__setattr__(receipt, "_proc", proc)
+    atexit.register(_terminate_proc, proc)
     return receipt
 
 
@@ -434,11 +444,19 @@ def validate_receipt(receipt: Mapping[str, Any], *, expected_scope: ExactScope) 
         raise PermissionContractError("receipt_not_issued_by_source_authority")
     try:
         body_json = object.__getattribute__(receipt, "_body_json")
+        write_fd = object.__getattribute__(receipt, "_write_fd")
+        read_fd = object.__getattribute__(receipt, "_read_fd")
+        proc = object.__getattribute__(receipt, "_proc")
     except AttributeError as exc:
         raise PermissionContractError("receipt_not_issued_by_source_authority") from exc
-    if not isinstance(body_json, str) or not body_json:
+    if (
+        not isinstance(body_json, str) or not body_json
+        or type(write_fd) is not int or write_fd < 0
+        or type(read_fd) is not int or read_fd < 0
+        or not isinstance(proc, subprocess.Popen) or proc.poll() is not None
+    ):
         raise PermissionContractError("receipt_not_issued_by_source_authority")
-    response = _service_request({
+    response = _service_roundtrip(write_fd, read_fd, {
         "op": "validate",
         "object_id": id(receipt),
         "body_json": body_json,
@@ -451,15 +469,6 @@ def validate_receipt(receipt: Mapping[str, Any], *, expected_scope: ExactScope) 
 
 
 if __name__ == "__main__":
-    if sys.argv[1:] == ["--authority-service"]:
-        raise SystemExit(_authority_service_loop())
+    if sys.argv[1:] == ["--receipt-authority-service"]:
+        raise SystemExit(_receipt_authority_service_loop())
     raise SystemExit("unsupported invocation")
-else:
-    _authority_process = _start_service()
-    assert _authority_process.stdin is not None and _authority_process.stdout is not None
-    _service_request = _build_service_request(
-        _authority_process.stdin.fileno(),
-        _authority_process.stdout.fileno(),
-    )
-    _register_service_stop(_authority_process)
-    del _authority_process
