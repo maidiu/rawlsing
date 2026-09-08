@@ -1,0 +1,39 @@
+attack_id,attack,disposition,exception_class,reason
+H01,historical runtime binding substitution,FAIL_CLOSED,Reject,historical_binding_rejected
+H02,historical DiscoveryAuthority substitution,FAIL_CLOSED,Reject,frontier_refs
+H03,historical official frontier substitution,FAIL_CLOSED,Reject,frontier_refs
+H04,historical replay closure substitution,FAIL_CLOSED,Reject,historical_replay_rejected
+H05,historical grammar substitution,FAIL_CLOSED,Reject,frontier_refs
+H06,remove successor predicate canonical object,FAIL_CLOSED,Reject,predicate_cardinality
+H07,mutate successor predicate ref/content hash,FAIL_CLOSED,Reject,predicate_ref_rep
+H08,remove successor query canonical object,FAIL_CLOSED,Reject,query_cardinality
+H09,mutate successor query ref/content hash,FAIL_CLOSED,Reject,query_ref_rep
+H10,candidate count != 82,FAIL_CLOSED,Reject,frontier_counts
+H11,duplicate candidate identity,FAIL_CLOSED,Reject,frontier_records
+H12,remove candidate identity,FAIL_CLOSED,Reject,frontier_counts
+H13,candidate identity not in successor frontier,FAIL_CLOSED,Reject,frontier_records
+H14,semantic membership delta != 0,FAIL_CLOSED,Reject,frontier_deltas
+H15,candidate addition count != 0,FAIL_CLOSED,Reject,frontier_deltas
+H16,candidate deletion count != 0,FAIL_CLOSED,Reject,frontier_deltas
+H17,canonical order law mutation,FAIL_CLOSED,Reject,frontier_order
+H18,pruning law mutation,FAIL_CLOSED,Reject,pruning
+H19,support threshold mutation,FAIL_CLOSED,Reject,support_threshold
+H20,support-rule substitution,FAIL_CLOSED,Reject,support_rule
+H21,RNG law mutation,FAIL_CLOSED,Reject,rng
+H22,LiTS-I source SHA substitution,FAIL_CLOSED,Reject,source_sha
+H23,C11 logical release substitution,FAIL_CLOSED,Reject,c11
+H24,AS2B ReplayManifest substitution,FAIL_CLOSED,Reject,as2b_replay
+H25,hidden transformed empirical payload survives,FAIL_CLOSED,Reject,HIDDEN_TRANSFORMED_PERSISTENCE_FORBIDDEN
+H26,RouteBSourceSession survivor after close,FAIL_CLOSED,Reject,historical_close_contract
+H27,mutate recovered historical source/session semantics,FAIL_CLOSED,Reject,historical_decode_contract
+H28,remove/bypass B13 successor seal gate,FAIL_CLOSED,Reject,b13_seal_sha
+H29,wrong positive DISCOVERY_FRONTIER authority or snapshot,FAIL_CLOSED,Pre553IntegrityError,content_hash does not match semantic projection
+H30,force stale historical candidate IDs as current,FAIL_CLOSED,Reject,frontier_records
+H31,replace current candidate with another current member,FAIL_CLOSED,Reject,frontier_records
+H32,attempt real LiTS-I open/decode or production I05 before hostile PASS,FAIL_CLOSED,ForbiddenExecution,REAL_SOURCE_AND_PRODUCTION_I05_FORBIDDEN_BEFORE_HOSTILE_PASS
+H33,reinterpret candidate-identity succession as semantic drift,FAIL_CLOSED,Reject,semantic_membership
+H34,corrupt/incomplete DiscoveryResultReceipt,FAIL_CLOSED,Reject,synthetic_terminal_receipts
+H35,fresh-process semantic mismatch,FAIL_CLOSED,Reject,synthetic_runtime_refs
+H36,I04 positive-authority manufacture,FAIL_CLOSED,Reject,synthetic_i04_positive_authority
+H37,UNEVALUATED/nonterminal candidate,FAIL_CLOSED,Reject,synthetic_terminal_receipts
+H38,decoder encoding mutation discovered by code audit,FAIL_CLOSED,Reject,historical_decode_contract
