@@ -16,7 +16,7 @@ jobs:
       - name: Checkout exact committed B21 implementation
         uses: actions/checkout@v4
         with:
-          ref: e28ceba1a2a463a6b143a5e6af7fecae96349dfd
+          ref: 5171dbba53427bfd26478fe08b6ed8c4a280626e
           fetch-depth: 0
 
       - name: Set up Python 3.13
@@ -86,7 +86,7 @@ jobs:
           summary={
             "schema":"B21_HB04_BOUNDED_IMPLEMENTATION_COURT@1.0.0",
             "status":"PASS",
-            "executed_tree":"e28ceba1a2a463a6b143a5e6af7fecae96349dfd",
+            "executed_tree":"5171dbba53427bfd26478fe08b6ed8c4a280626e",
             "direct_candidates":{c:{
               "semantic_identity_sha256":direct[c]["semantic_identity_sha256"],
               "process_id":direct[c]["process_id"],
