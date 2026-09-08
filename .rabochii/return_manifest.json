@@ -1,0 +1,43 @@
+{
+  "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
+  "task_id": "RETURN_BEACON_POSTMERGE_SMOKE_R1",
+  "branch": "agent/return-beacon-smoke-postmerge-r1",
+  "commission": {
+    "authority_ref": "bf864978f8684e6fe8da9aefee039f75fec3b68d",
+    "exact_start_sha": "bf864978f8684e6fe8da9aefee039f75fec3b68d"
+  },
+  "return": {
+    "result": "PASS",
+    "terminal": "RABOCHII_RETURN_BEACON_POSTMERGE_SMOKE_R1__RETURN_TO_INFRASTRUCTURE",
+    "phase": "CLOSURE_ONLY",
+    "completion": {
+      "commission_consumed": true,
+      "all_required_outputs_durable": true,
+      "no_required_work_remaining": true,
+      "no_background_work_remaining": true,
+      "return_packet_durable": true,
+      "terminal_state_entered": true
+    }
+  },
+  "separation": {
+    "performed_only_commissioned_role": true,
+    "no_uncommissioned_repair": true,
+    "no_uncommissioned_review": true
+  },
+  "return_packet": {
+    "path": "data/return_beacon_smoke/RETURN_BEACON_POSTMERGE_SMOKE_R1.md",
+    "blob_sha": "d0a6832b76537af96d03378fc5d6fb18539957c2"
+  },
+  "required_outputs": [
+    {
+      "name": "return_packet",
+      "kind": "path",
+      "path": "data/return_beacon_smoke/RETURN_BEACON_POSTMERGE_SMOKE_R1.md",
+      "blob_sha": "d0a6832b76537af96d03378fc5d6fb18539957c2",
+      "status": "DURABLE"
+    }
+  ],
+  "evidence": {
+    "required": false
+  }
+}
