@@ -16,7 +16,7 @@ import pandas as pd
 
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
-from rawlsing_next.pre553_empirical_objects import ExactRef
+from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
 from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
 from rawlsing_next.pre553_physical_decoder import PhysicalSourceIncidence, PhysicalVariable, PhysicalMissingState
@@ -153,7 +153,7 @@ def _route_c_fixture(tag: str = "b20"):
     )
     allowed_qrefs = {q2_binding.native_question_ref, q7_binding.native_question_ref}
     routing = tuple(
-        fact for fact in old.routing if fact.question_or_target_ref in allowed_qrefs
+        fact for fact in old.routing if exact_ref(fact.question_or_target_ref, "routing question_or_target_ref") in allowed_qrefs
     )
     projection = replace(
         old,
