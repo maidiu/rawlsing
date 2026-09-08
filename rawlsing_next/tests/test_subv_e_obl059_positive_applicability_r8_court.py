@@ -15,4 +15,9 @@ spec.loader.exec_module(module)
 
 
 class TestOBL059R8BoundedRepair(module.CourtR8):
-    pass
+    def test_90_r7_revision_identity_is_exact(self):
+        """Keep the inherited R7 identity assertion bound to frozen R7."""
+        self.assertEqual(
+            module.r8._r7.R7_CANDIDATE_REVISION,
+            "OBL059_POSITIVE_APPLICABILITY_BOUNDED_REPAIR_R7",
+        )
