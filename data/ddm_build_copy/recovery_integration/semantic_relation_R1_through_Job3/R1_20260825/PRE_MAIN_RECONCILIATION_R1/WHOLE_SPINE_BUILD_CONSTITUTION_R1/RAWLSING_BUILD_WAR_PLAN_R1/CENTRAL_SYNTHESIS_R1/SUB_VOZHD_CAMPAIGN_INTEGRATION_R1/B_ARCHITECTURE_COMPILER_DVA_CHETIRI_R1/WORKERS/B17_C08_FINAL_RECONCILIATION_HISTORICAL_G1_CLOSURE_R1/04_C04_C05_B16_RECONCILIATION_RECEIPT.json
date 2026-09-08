@@ -1,0 +1,39 @@
+{
+  "schema": "B17_C04_C05_B16_RECONCILIATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "c04": {
+    "accepted_head": "86f4e979f02fe689b529f5573f41e7b2359cfdf5",
+    "result_blob": "d89c7090a10bdaf308b526423fc82dbf64d511e3",
+    "source_backed_i03_proof_blob": "71b6f79c93468d17b162ac840a610d93986632d0",
+    "holding": "C04_ACCEPTED__FULL_FROZEN_I03_LOGICAL_FRONTIER_REQUIRES_NO_AUTHORITATIVE_PERMANENT_FULL_EVENT_PAYLOAD_TABLE",
+    "i03_query_reachability_seam": "CLOSED__PASS"
+  },
+  "b16": {
+    "final_tip": "40a0a0529fa78765c7fc87f7e1f12260a2335f72",
+    "final_seal_blob": "0ebf319c0e6695b077b9ca70b9119007fecfcdcd",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "fresh_processes": 2,
+    "candidate_count": 82,
+    "covered_candidate_count": 82,
+    "unevaluated": 0,
+    "terminal_state": "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY / COVERAGE_LIMITED",
+    "i05_empirical_queries_per_run": 140,
+    "empirical_fact_refs_per_run": 140,
+    "semantic_replay_parity": "PASS",
+    "pruning": "NONE",
+    "candidate_additions": 0,
+    "candidate_deletions": 0,
+    "route_b_session_closed": true,
+    "zero_forbidden_transformed_persistence": true,
+    "delete_reconstruction": "PASS",
+    "corrected_frozen_oracle": "PASS",
+    "c05_production_source_backed_execution_seam": "CLOSED__PASS"
+  },
+  "conclusion": {
+    "i03_source_backed_executable_without_authoritative_permanent_full_event_payload": true,
+    "i05_source_backed_executable_without_authoritative_permanent_full_event_payload_for_exact_production_frontier": true,
+    "permanent_full_event_payload_required_for_correctness": false,
+    "persistent_governed_outputs_still_required": "exact source/semantic/provenance authority and historically governed learned products/receipts remain durable according to their own lifecycle; this is not a full event-payload table",
+    "route_b_selected": false
+  }
+}

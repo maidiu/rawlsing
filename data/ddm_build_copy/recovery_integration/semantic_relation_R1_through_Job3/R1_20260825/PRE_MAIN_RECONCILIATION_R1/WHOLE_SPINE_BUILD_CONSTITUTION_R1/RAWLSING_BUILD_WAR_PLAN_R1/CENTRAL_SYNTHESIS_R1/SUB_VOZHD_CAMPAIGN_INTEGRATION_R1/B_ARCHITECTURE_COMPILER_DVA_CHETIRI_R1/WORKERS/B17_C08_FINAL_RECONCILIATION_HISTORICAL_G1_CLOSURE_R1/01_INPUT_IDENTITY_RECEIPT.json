@@ -1,0 +1,74 @@
+{
+  "schema": "B17_C08_G1_INPUT_IDENTITY_RECEIPT@1.0.0",
+  "status": "PASS",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-subv-b-c08-final-reconciliation-historical-g1-closure-r1",
+  "exact_starting_head": "6fe4324f5a2aabb074c849e9ab6e6ea6fdc6fcf5",
+  "handoff_commit": "fde1c13099ff9159602ce4a601bce5f0a58e64ae",
+  "worker_ancestry": {
+    "handoff_ahead_of_start": 1,
+    "handoff_behind_start": 0
+  },
+  "campaign_flight_state_commit": "95de8e9c1e31e1a240843c74af9d0488bed79a0a",
+  "campaign_flight_state_consumed_read_only": true,
+  "library_or_raw_source_materialization_performed": false,
+  "inputs": {
+    "authorization_30": {
+      "commit": "6fe4324f5a2aabb074c849e9ab6e6ea6fdc6fcf5"
+    },
+    "authority_33": {
+      "blob": "45bcd75298d4f0930f654fe32d463841f51e5a50"
+    },
+    "c08": {
+      "head": "b433435bfc9ca0c7a7ba9ec349faec069479656c",
+      "result_blob": "04436d614b439e0f5c6e183580f27642ce832eb7",
+      "dependency_model_blob": "865cdaf30b3a37a5fe1b8914d47b2605055c1346",
+      "invalidation_matrix_blob": "15faf711a9c6096d5e6365c9940facc31fe93aa2",
+      "minimum_rebuild_ledger_blob": "d4e50620222c71196a73423b3404a977e68c3f20",
+      "learned_world_dag_blob": "117746b9f7f3b1b5cc5fc913d4f7dc6573d458ac",
+      "persistence_matrix_blob": "2325f1d184f123535c0a47280e90f279072b998f",
+      "trii_crosswalk_blob": "7c47d3cf185b20b20ae069c04947423e38e193dc",
+      "terminal_checksum_blob": "fb23abf3fe6c32f5bce19fcb857b7004363a5681",
+      "unresolved_evidence_blob": "810f7bbf7a247851e9ba66ef105c5cc1f0bb19ed",
+      "rows": 54,
+      "scenarios": 18,
+      "candidate_families": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "c04": {
+      "accepted_head": "86f4e979f02fe689b529f5573f41e7b2359cfdf5",
+      "result_blob": "d89c7090a10bdaf308b526423fc82dbf64d511e3",
+      "i03_access_matrix_blob": "71d24bde06c53266ffd8e7d8b17f6713602312a8",
+      "source_backed_proof_blob": "71b6f79c93468d17b162ac840a610d93986632d0"
+    },
+    "b16": {
+      "final_tip": "40a0a0529fa78765c7fc87f7e1f12260a2335f72",
+      "qualifying_driver": "f43c4be11d4f8fa98f538727337ec075d99d03bc",
+      "campaign_bank_merge": "e09c96196541c867fe99a31d14732c67920a0306",
+      "final_seal_blob": "0ebf319c0e6695b077b9ca70b9119007fecfcdcd",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    },
+    "p10": {
+      "final_commit": "d73907f2a695a10095f9cac08739545aaa844fa7",
+      "acceptance_blob": "3da286a81317dd46d129ef128f97c4a9a71b3914",
+      "census_blob": "7dec265f196d2304f40c8373db67176a5df5973d",
+      "preservation_ledger_blob": "c35ebed29d0972bab3587409fec1e95131c504b5",
+      "crosswalk_blob": "0ec3ea70f390f3fe4e73b89dca8a91add5d6f557",
+      "gap_ledger_blob": "008f36383de846d7bb8e1821c1c8f9886fa518f9",
+      "return_blob": "2ceb89eee65767924321b4d24e42d43d84518e9a"
+    },
+    "sequence_law": {
+      "blob": "447a826f24be92cbc4d016efdd2bea9bdeda4262"
+    },
+    "historical_g1_law": {
+      "gate_ledger_blob": "155dcb35a1bd83dcd671403b42c02aa35fe11052",
+      "sequence_protocol_blob": "4330d67cd0b1606f5e849eaaf166bba58ea9f30d"
+    },
+    "c09_order": {
+      "blob": "e200a9aed7dbdf103ab9306d0dd19b74662faf1b"
+    }
+  }
+}
