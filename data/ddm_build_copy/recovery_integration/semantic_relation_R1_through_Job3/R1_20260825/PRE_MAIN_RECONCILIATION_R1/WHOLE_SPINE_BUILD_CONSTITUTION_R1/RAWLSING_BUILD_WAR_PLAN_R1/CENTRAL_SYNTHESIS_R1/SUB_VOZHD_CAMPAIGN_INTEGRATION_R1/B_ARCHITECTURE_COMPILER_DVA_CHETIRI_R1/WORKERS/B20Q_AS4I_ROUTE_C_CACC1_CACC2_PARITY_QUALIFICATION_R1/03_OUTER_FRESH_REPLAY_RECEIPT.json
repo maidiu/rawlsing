@@ -1,0 +1,39 @@
+{
+  "schema": "B20Q_OUTER_FRESH_REPLAY_RECEIPT@1.0.0",
+  "status": "PASS__SAME_EXACT_BLOCKER_REPRODUCED_IN_TWO_CLEAN_WORKTREES",
+  "commissioned_tree_head": "3cc730b04a4da31b97b80c8d1bf612da4301a9bf",
+  "worktree_count": 2,
+  "process_count": 2,
+  "runs": [
+    {
+      "index": 1,
+      "worktree": "b20q-work-1",
+      "tree_head": "3cc730b04a4da31b97b80c8d1bf612da4301a9bf",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "968eefe83045c74e3158b8a426c2f5c177baf84fdd21ddef7c401da005fc6327",
+      "qualification_receipt_sha256": null
+    },
+    {
+      "index": 2,
+      "worktree": "b20q-work-2",
+      "tree_head": "3cc730b04a4da31b97b80c8d1bf612da4301a9bf",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "66374e7740bcd03772ffbcd569eb00df98e4b5511d4639f7aea8d03f5cdcb96c",
+      "qualification_receipt_sha256": null
+    }
+  ],
+  "raw_stderr_hashes_differ_only_because_absolute_worktree_root_differs": true,
+  "normalized_stderr_sha256": "79c75644492d00c6821dd40bb739478451c10017eb3b252d16db5991d9d52ac5",
+  "normalized_stderr_exact_match": true,
+  "normalized_exception_signature": {
+    "exception": "TypeError: unhashable type: 'dict'",
+    "function": "_route_c_fixture",
+    "line": 156,
+    "expression": "fact.question_or_target_ref in allowed_qrefs"
+  },
+  "internal_driver_two_fresh_process_replay_entered": false,
+  "internal_driver_two_fresh_process_replay_reason": "Primary _run_once failed before _fresh_process_replay was invoked.",
+  "qualification_success_replay_claimed": false
+}
