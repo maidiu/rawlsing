@@ -1,0 +1,32 @@
+{
+  "schema_id": "OBL058_INDEPENDENT_HOSTILE_ATTACK_MATRIX_R1@1.0.0",
+  "review_role": "FRESH_DISTINCT_INDEPENDENT_HOSTILE_REVIEWER",
+  "commission_start": "86a16516cf6647a6de0fff4fe53cf36f8bfa3a06",
+  "frozen_semantic_candidate": "24496c37d07841b05d876c9f14cc8aa8066592e3",
+  "authority_id": "OBL058_CAUSAL_USE_PERMISSION_SOURCE_AUTHORITY_R1@1.0.0",
+  "jurisdiction": "CAUSAL_USE_PERMISSION for exact (actor_id, world_id, subject_id, time_id, transition_id), with no project-current issuance",
+  "attack_families": [
+    {"id":"H01","name":"caller_asserted_permission_boolean","predicate":"A caller must not gain PERMIT solely by supplying explicit_source_permission=True plus the magic basis-kind literal.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H02","name":"handcrafted_receipt_magic_basis","predicate":"A receipt never issued by the source authority must not validate as PERMIT merely because public fields and digests are reproduced.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H03","name":"deny_to_permit_rehash","predicate":"A DENY receipt must not become a valid PERMIT by changing decision and recomputing the public receipt digest.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H04","name":"surrogate_relabel_to_magic_basis","predicate":"A surrogate-derived receipt must not become source-owned permission by relabeling basis_kind and recomputing the public digest.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H05","name":"arbitrary_basis_id_positive","predicate":"PERMIT must require verifiable source-owned basis identity, not any nonempty caller string.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H06","name":"whitespace_basis_id_positive","predicate":"Whitespace-only basis identity must not support PERMIT.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H07","name":"nonstring_basis_id_forgery","predicate":"Validator must reject a forged PERMIT whose basis_id is not a valid source-owned identifier string.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H08","name":"cross_actor_basis_reuse","predicate":"One asserted source basis must not be reusable to PERMIT unrelated actor scopes without an exact binding proof.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H09","name":"cross_world_basis_reuse","predicate":"One asserted source basis must not be reusable to PERMIT unrelated world scopes without an exact binding proof.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H10","name":"cross_subject_basis_reuse","predicate":"One asserted source basis must not be reusable to PERMIT unrelated subject scopes without an exact binding proof.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H11","name":"cross_time_basis_reuse","predicate":"One asserted source basis must not be reusable across stale/different time scopes without an exact binding proof.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H12","name":"cross_transition_basis_reuse","predicate":"One asserted source basis must not be reusable across transitions without an exact binding proof.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H13","name":"project_current_scope_masquerades_as_synthetic","predicate":"The NONCURRENT_SYNTHETIC issuance guard must be bound to scope identity, not only a caller-controlled fixture_class label.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H14","name":"current_subject_inside_synthetic_label","predicate":"An already-current first-canary subject identifier must not silently pass the noncurrent fixture boundary solely under a synthetic label.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H15","name":"authority_string_not_authenticity","predicate":"Knowledge of authority_id/schema strings plus public hashing must not be sufficient to impersonate source authority issuance.","severity":"BLOCKING_IF_ACCEPTED"},
+    {"id":"H16","name":"source_permission_evidence_not_receipted","predicate":"A PERMIT receipt must carry enough bound evidence to validate the claimed source-owned permission, rather than dropping the input assertion after issuance.","severity":"BLOCKING_IF_UNPROVABLE"},
+    {"id":"H17","name":"wrong_authority_control","predicate":"Wrong authority must remain rejected even after rehash.","severity":"CONTROL"},
+    {"id":"H18","name":"surrogate_basis_control","predicate":"Known surrogate basis kinds must remain DENY at issuance.","severity":"CONTROL"},
+    {"id":"H19","name":"wrong_scope_control","predicate":"Exact expected-scope mismatch must remain rejected.","severity":"CONTROL"},
+    {"id":"H20","name":"project_current_label_control","predicate":"Explicit fixture_class=PROJECT_CURRENT must remain rejected.","severity":"CONTROL"}
+  ],
+  "attack_family_count": 20,
+  "adjudication_rule": "Any reproducible BLOCKING_IF_ACCEPTED false-positive defeats hostile PASS even if the hostile test program itself executes green."
+}
