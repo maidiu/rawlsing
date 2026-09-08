@@ -1,0 +1,74 @@
+{
+  "schema": "B20I03R_POST_REPAIR_EXECUTION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "terminal": "B20_ROUTE_C_I03_QUALIFICATION_FIXTURE_REPAIR_COMPLETE__READY_FOR_B20Q3_FULL_QUALIFICATION",
+  "full_b20q3_qualification_claimed": false,
+  "authoritative_smoke": {
+    "workflow_run_id": 34283938457,
+    "artifact_id": 10078718395,
+    "artifact_zip_digest": "sha256:50b69e55efae4e0a81a33423f317aa40cf4cb97f24aa6253ab9f7d1438f1d81d",
+    "executed_tree": "2f087524283ce40ead3ddc24af5b11411fde748e",
+    "environment": {
+      "python_implementation": "CPython",
+      "python_version": "3.13.15",
+      "pyarrow_version": "25.0.1",
+      "pandas_version": "3.0.5"
+    },
+    "stdout_sha256": "f2648d240d3bb4af962e560e666a862fdfbd6d8976645722c3f4f23c1e80e58d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "smoke_result_sha256": "f2648d240d3bb4af962e560e666a862fdfbd6d8976645722c3f4f23c1e80e58d"
+  },
+  "required_smoke_proofs": {
+    "same_source_backed_fixture_built": true,
+    "ordinary_cacheless_i03_completed": true,
+    "ordinary_cacheless_fact_states": [
+      "SUPPORTED"
+    ],
+    "ordinary_cacheless_fact_refs": [
+      {
+        "kind": "EmpiricalFact@1.0.0",
+        "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:489f211c840f45db9081c6348521daa632f60f4796f239d7fcf16c7ae8d82fae",
+        "content_hash": "489f211c840f45db9081c6348521daa632f60f4796f239d7fcf16c7ae8d82fae"
+      }
+    ],
+    "cacheless_i05_candidate_count": 1,
+    "cacheless_i05_completed": true,
+    "cacheless_i05_receipts_emitted": 1,
+    "cacheless_i05_receipt_refs": [
+      {
+        "kind": "DiscoveryResultReceipt@1.0.0",
+        "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a",
+        "content_hash": "cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a"
+      }
+    ],
+    "cacheless_i05_receipt_states": [
+      "DISCOVERED_RESULT_SUPPORTED"
+    ],
+    "cacheless_i05_i03_fact_states": [
+      "SUPPORTED",
+      "SUPPORTED"
+    ],
+    "cacheless_i05_integrity_failure_count": 0,
+    "all_observed_i03_integrity_failure_count": 0,
+    "accelerated_i05_completed": true,
+    "accelerated_i05_receipt_refs": [
+      {
+        "kind": "DiscoveryResultReceipt@1.0.0",
+        "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a",
+        "content_hash": "cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a"
+      }
+    ],
+    "exact_cacheless_accelerated_discovery_receipt_identity_parity": true,
+    "frozen_route_c_implementation_unchanged": true
+  },
+  "hard_stop_counts": {
+    "full_b20q3_qualification": 0,
+    "hb04": 0,
+    "real_c09": 0,
+    "wvs7": 0,
+    "ranking_or_selection": 0,
+    "obl037": 0,
+    "architecture_topology_selection": 0,
+    "positive_v3": 0
+  }
+}

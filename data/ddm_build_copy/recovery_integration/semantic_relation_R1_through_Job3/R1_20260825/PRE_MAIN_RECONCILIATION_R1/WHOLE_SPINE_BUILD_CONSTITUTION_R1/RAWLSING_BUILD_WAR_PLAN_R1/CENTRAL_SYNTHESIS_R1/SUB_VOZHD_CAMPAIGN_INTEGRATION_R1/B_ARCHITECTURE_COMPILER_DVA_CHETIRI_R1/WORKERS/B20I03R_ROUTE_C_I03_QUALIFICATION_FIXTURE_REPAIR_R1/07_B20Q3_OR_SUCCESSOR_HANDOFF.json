@@ -1,0 +1,19 @@
+{
+  "schema": "B20I03R_B20Q3_HANDOFF@1.0.0",
+  "status": "READY_FOR_B20Q3_FULL_QUALIFICATION",
+  "terminal": "B20_ROUTE_C_I03_QUALIFICATION_FIXTURE_REPAIR_COMPLETE__READY_FOR_B20Q3_FULL_QUALIFICATION",
+  "next_gate": "B20Q3_FULL_ROUTE_C_QUALIFICATION_ON_REPAIRED_DRIVER_AND_REPAIRED_IMPLEMENTATION",
+  "repaired_driver": {
+    "commit": "2f087524283ce40ead3ddc24af5b11411fde748e",
+    "git_blob_sha1": "9ed1a68300453bfcd4af4877bab397ed00b0e0e6",
+    "sha256": "497a9cb64fa4a1a57a3bf2ec6882aaf5fd996ea6408e7c7bbaf272fe534321ee"
+  },
+  "repaired_route_c_implementation": {
+    "git_blob_sha1": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+    "sha256": "a07e73c514c6216c350ac7a69cb099256cf71680a49fe0796aac6729483b417d"
+  },
+  "required_pyarrow_version": "25.0.1",
+  "qualification_requirements": "Run the entire Route-C court from clean outer roots; B20I03R smoke is not qualification authority.",
+  "hb04_status": "CLOSED_PENDING_B20Q3_PASS",
+  "common_abc_harness_intake_ready": false
+}
