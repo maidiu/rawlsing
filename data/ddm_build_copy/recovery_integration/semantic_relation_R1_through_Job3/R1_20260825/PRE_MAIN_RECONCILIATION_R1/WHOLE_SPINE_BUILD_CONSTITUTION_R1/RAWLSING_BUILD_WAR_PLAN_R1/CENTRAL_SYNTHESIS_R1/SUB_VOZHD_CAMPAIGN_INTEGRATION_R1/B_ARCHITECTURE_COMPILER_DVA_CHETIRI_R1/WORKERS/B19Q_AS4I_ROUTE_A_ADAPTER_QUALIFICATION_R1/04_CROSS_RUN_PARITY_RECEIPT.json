@@ -1,0 +1,29 @@
+{
+  "schema": "B19Q_CROSS_RUN_PARITY_RECEIPT@1.0.0",
+  "status": "BLOCKER_REPRODUCED_IN_TWO_FRESH_PROCESSES",
+  "run1": {
+    "exit_code": 1,
+    "collected": 8,
+    "passed": 7,
+    "failed": 1
+  },
+  "run2": {
+    "exit_code": 1,
+    "collected": 8,
+    "passed": 7,
+    "failed": 1
+  },
+  "same_failing_test": true,
+  "same_failure_line": true,
+  "same_left_physical_root_id": true,
+  "same_right_physical_root_id": true,
+  "failure_identity": {
+    "test": "test_two_independent_bounded_r5_builds_replay_to_identical_c11_identities",
+    "line": "rawlsing_next/tests/test_pre553_r5_source_backed_adapter.py:130",
+    "left": "a4d45cc535ffa5553a62682e4217433ded9cb4cdbcfaa2ff2bcbbe89d0283235",
+    "right": "acd27ebf58a033a323596ec02889a286faf5a2dc4100160f535a3ddae78c00f7"
+  },
+  "stdout_byte_hashes_equal": false,
+  "stdout_byte_difference_expected_from_distinct_temp_paths_and_runtime_timing": true,
+  "semantic_failure_parity": "EXACT"
+}
