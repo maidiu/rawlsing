@@ -1,0 +1,104 @@
+name: B20R transient repair smoke
+
+on:
+  push:
+    branches:
+      - agent/rabochii-subv-b-as4i-route-c-qualification-driver-reference-normalization-repair-r1
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact repaired B20R commit
+        uses: actions/checkout@v4
+        with:
+          ref: 006dea7e1c715b0c6ceeac06d458b9ecfd62e2b2
+          fetch-depth: 0
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Instantiate pinned smoke environment
+        run: python -m pip install --disable-pip-version-check pyarrow==25.0.1 pandas pytest
+
+      - name: Smoke repaired fixture normalization through first CACC1 build
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/b20r-smoke"
+          mkdir -p "$OUT"
+          DRIVER='data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B20_AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_R1/01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py'
+          python - <<'PY' > "$OUT/environment.json"
+          import json, platform, sys, pandas, pyarrow
+          print(json.dumps({
+              "python_version": sys.version,
+              "python_implementation": platform.python_implementation(),
+              "pyarrow_version": pyarrow.__version__,
+              "pandas_version": pandas.__version__,
+          }, sort_keys=True, separators=(",", ":")))
+          PY
+          git rev-parse HEAD > "$OUT/executed_tree_head.txt"
+          git hash-object rawlsing_next/pre553_route_c_accelerators.py > "$OUT/implementation_git_blob.txt"
+          git hash-object "$DRIVER" > "$OUT/repaired_driver_git_blob.txt"
+          sha256sum rawlsing_next/pre553_route_c_accelerators.py | awk '{print $1}' > "$OUT/implementation_sha256.txt"
+          sha256sum "$DRIVER" | awk '{print $1}' > "$OUT/repaired_driver_sha256.txt"
+
+          set +e
+          PYTHONPATH="$PWD" python - "$PWD/$DRIVER" "$OUT" <<'PY' >"$OUT/stdout.txt" 2>"$OUT/stderr.txt"
+          import importlib.util, json, pathlib, sys, tempfile
+          driver=pathlib.Path(sys.argv[1])
+          out=pathlib.Path(sys.argv[2])
+          spec=importlib.util.spec_from_file_location("_b20r_repaired_driver", driver)
+          if spec is None or spec.loader is None:
+              raise RuntimeError("cannot load repaired B20 driver")
+          m=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+          fx, incidence, stream, projection, determinants = m._route_c_fixture("b20r-smoke")
+          from rawlsing_next.pre553_route_c_accelerators import Cacc1Paths, build_cacc1
+          with tempfile.TemporaryDirectory(prefix="b20r-cacc1-") as td:
+              root=pathlib.Path(td)
+              bundle=build_cacc1(
+                  stream=stream,
+                  projection=projection,
+                  determinants=determinants,
+                  paths=Cacc1Paths(root/"cacc1.arrow", root/"cacc1.manifest.json"),
+              )
+              result={
+                  "schema":"B20R_REFERENCE_NORMALIZATION_SMOKE@1.0.0",
+                  "status":"PASS",
+                  "former_unhashable_routing_ref_failure_removed":True,
+                  "fixture_constructed":True,
+                  "first_cacc1_build_entered":True,
+                  "first_cacc1_build_completed":True,
+                  "cacc1_row_count":len(bundle.rows),
+                  "cacc1_logical_content_hash":bundle.manifest["logical_content_hash"],
+                  "cacc1_physical_byte_sha256":bundle.manifest["physical_byte_sha256"],
+                  "scope_ceiling":"REPAIR_SMOKE_ONLY__NOT_B20Q2_QUALIFICATION_AUTHORITY"
+              }
+              data=json.dumps(result,sort_keys=True,separators=(",",":"))+"\n"
+              (out/"smoke_result.json").write_text(data,encoding="utf-8")
+              print(data,end="")
+          PY
+          code=$?
+          set -e
+          printf '%s\n' "$code" > "$OUT/exit_code.txt"
+          sha256sum "$OUT/stdout.txt" | awk '{print $1}' > "$OUT/stdout_sha256.txt"
+          sha256sum "$OUT/stderr.txt" | awk '{print $1}' > "$OUT/stderr_sha256.txt"
+          if [ -f "$OUT/smoke_result.json" ]; then
+            sha256sum "$OUT/smoke_result.json" | awk '{print $1}' > "$OUT/smoke_result_sha256.txt"
+          fi
+          exit "$code"
+
+      - name: Upload B20R smoke artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b20r-reference-normalization-smoke
+          path: ${{ runner.temp }}/b20r-smoke
+          if-no-files-found: error
