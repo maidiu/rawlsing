@@ -1,0 +1,25 @@
+{
+  "schema": "B20IR_B20Q2_HANDOFF@1.0.0",
+  "status": "READY_FOR_B20Q2_FULL_QUALIFICATION",
+  "terminal": "B20_ROUTE_C_ROUTING_MEMBERSHIP_EXACT_REF_NORMALIZATION_REPAIR_COMPLETE__READY_FOR_B20Q2_FULL_QUALIFICATION",
+  "b20ir_full_qualification_authority": false,
+  "next_court": "B20Q2_ROUTE_C_FULL_QUALIFICATION_ON_REPAIRED_DRIVER_AND_REPAIRED_IMPLEMENTATION",
+  "repaired_driver": {
+    "git_blob_sha1": "5377c70b5b3b9110cfd719b62ae1c3e2ceb07843",
+    "sha256": "73d9d9efd5bf70a181a7ddac3d98a5e8f7a90277765945862c402b4656c67350"
+  },
+  "repaired_implementation": {
+    "commit": "9a98bc8b52f5fb5088afbe86f7917351091ee216",
+    "git_blob_sha1": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+    "sha256": "a07e73c514c6216c350ac7a69cb099256cf71680a49fe0796aac6729483b417d"
+  },
+  "smoke_proof": {
+    "workflow_run_id": 34279192861,
+    "exit_code": 0,
+    "repaired_driver_fixture_completed": true,
+    "routing_membership_completed": true,
+    "first_cacc1_build_completed": true
+  },
+  "b20q2_must_run_full_route_c_court": true,
+  "common_abc_harness_still_gated_on_b20q2_pass": true
+}

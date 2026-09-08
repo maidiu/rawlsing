@@ -1,0 +1,45 @@
+{
+  "schema": "B20IR_POST_REPAIR_SMOKE_RECEIPT@1.0.0",
+  "status": "PASS",
+  "terminal_scope_only": "ROUTING_MEMBERSHIP_EXACT_REF_NORMALIZATION_AND_FIRST_CACC1_BUILD_SMOKE_COMPLETE",
+  "full_route_c_qualification_claimed": false,
+  "executed_tree_head": "9a98bc8b52f5fb5088afbe86f7917351091ee216",
+  "environment": {
+    "python_version": "3.13.15",
+    "python_implementation": "CPython",
+    "pyarrow_version": "25.0.1",
+    "pandas_version": "3.0.5"
+  },
+  "execution": {
+    "workflow_run_id": 34279192861,
+    "artifact_id": 10076933246,
+    "artifact_zip_digest": "sha256:1fa69c03b10d6c735dbe3a9a45d64c53e88f1ce458090ce1db764badc64efabb",
+    "exit_code": 0,
+    "stdout_sha256": "0b5be1900d5a8ff97c5b94ac23420b04416eaf8ce38d4ef3abc43efd7cadcecd",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "smoke_result_sha256": "0b5be1900d5a8ff97c5b94ac23420b04416eaf8ce38d4ef3abc43efd7cadcecd"
+  },
+  "checkpoints": {
+    "repaired_driver_fixture_completed": true,
+    "routing_membership_completed": true,
+    "scoped_respondent_ref_normalization_exercised": true,
+    "question_or_target_ref_normalization_exercised": true,
+    "risk_set_ref_normalization_exercised": true,
+    "first_cacc1_build_entered": true,
+    "first_cacc1_build_completed": true
+  },
+  "cacc1_smoke_output": {
+    "row_count": 3,
+    "logical_content_hash": "e683af11b8c3ae9f7ee897c4f6c5080cfefc8d2bd9636624678a3b0205919a2c",
+    "physical_byte_sha256": "5f70745f40fe8b21b7bcde8892a17b8f3fd62fdca1111af73c3fba3734d9b2c7"
+  },
+  "prohibited_scope_counts": {
+    "real_c09": 0,
+    "wvs7": 0,
+    "common_harness": 0,
+    "benchmark_or_ranking": 0,
+    "obl037": 0,
+    "architecture_selection": 0,
+    "positive_v3": 0
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "B20IR_REPAIR_DIFF_RECEIPT@1.0.0",
+  "status": "PASS__AUTHORIZED_EXACT_REF_NORMALIZATION_ONLY",
+  "authoritative_repair_commit": "9a98bc8b52f5fb5088afbe86f7917351091ee216",
+  "authoritative_repaired_implementation_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+  "net_implementation_diff_against_handoff": {
+    "file": "rawlsing_next/pre553_route_c_accelerators.py",
+    "function": "_routing_membership",
+    "additions": 5,
+    "deletions": 2,
+    "changes": 7,
+    "before": [
+      "pair = (fact.scoped_respondent_ref, fact.question_or_target_ref)",
+      "refs = {fact.risk_set_ref for fact in facts}"
+    ],
+    "after": [
+      "pair = (exact_ref(fact.scoped_respondent_ref, \"routing scoped_respondent_ref\"), exact_ref(fact.question_or_target_ref, \"routing question_or_target_ref\"))",
+      "refs = {exact_ref(fact.risk_set_ref, \"routing risk_set_ref\") for fact in facts}"
+    ],
+    "semantic_effect": "Only canonical mapping-form exact refs are converted to hashable ExactRef values before the pre-existing exact tuple-key/set/equality logic. Routing facts, qrefs, routing states, common-risk checks, CACC1 layout and all downstream semantics are unchanged."
+  },
+  "forbidden_changes_absent": {
+    "changes_outside_routing_membership": false,
+    "stringification": false,
+    "object_id_only_comparison": false,
+    "content_hash_only_comparison": false,
+    "routing_fact_mutation": false,
+    "qref_construction_change": false,
+    "cacc1_layout_change": false,
+    "cacc2_change": false,
+    "query_change": false,
+    "discovery_change": false,
+    "routing_state_condition_change": false,
+    "parity_semantics_change": false
+  },
+  "repair_history": [
+    {
+      "commit": "f089f8e98f168b6877a94ab83809b62ef469e22f",
+      "disposition": "NON_AUTHORITATIVE_INTERMEDIATE__AUTHORIZED_SEMANTIC_EDIT_SERIALIZED_WITH_LITERAL_BACKSLASH_N__SYNTAX_INVALID",
+      "smoke_run_id": 34278964683
+    },
+    {
+      "commit": "9a98bc8b52f5fb5088afbe86f7917351091ee216",
+      "disposition": "AUTHORITATIVE_REPAIR__CORRECT_SOURCE_SERIALIZATION__COMMITTED_BEFORE_GREEN_SMOKE"
+    }
+  ],
+  "stale_pin_smoke_run": {
+    "workflow_run_id": 34279169406,
+    "disposition": "NON_AUTHORITATIVE__AUTOMATIC_PUSH_RUN_STILL_PINNED_TO_PRE_CORRECTION_COMMIT"
+  }
+}

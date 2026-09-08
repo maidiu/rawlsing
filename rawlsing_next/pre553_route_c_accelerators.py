@@ -339,7 +339,10 @@ def _routing_membership(projection: GovernedC11Projection) -> tuple[Mapping[Any,
     rows = {binding.respondent_ref: binding.row_ordinal for binding in projection.row_bindings}
     by_pair: dict[tuple[Any, Any], Any] = {}
     for fact in projection.routing:
-        pair = (fact.scoped_respondent_ref, fact.question_or_target_ref)
+        pair = (
+            exact_ref(fact.scoped_respondent_ref, "routing scoped_respondent_ref"),
+            exact_ref(fact.question_or_target_ref, "routing question_or_target_ref"),
+        )
         if pair in by_pair:
             raise RouteCAcceleratorError("duplicate q301 routing fact")
         by_pair[pair] = fact
@@ -352,7 +355,7 @@ def _routing_membership(projection: GovernedC11Projection) -> tuple[Mapping[Any,
             if fact is None:
                 raise RouteCAcceleratorError("missing exact q301 routing fact")
             facts.append(fact)
-        refs = {fact.risk_set_ref for fact in facts}
+        refs = {exact_ref(fact.risk_set_ref, "routing risk_set_ref") for fact in facts}
         if len(refs) != 1:
             raise RouteCAcceleratorError("q301 common routing facts disagree on exact risk ref")
         current_ref = next(iter(refs))
