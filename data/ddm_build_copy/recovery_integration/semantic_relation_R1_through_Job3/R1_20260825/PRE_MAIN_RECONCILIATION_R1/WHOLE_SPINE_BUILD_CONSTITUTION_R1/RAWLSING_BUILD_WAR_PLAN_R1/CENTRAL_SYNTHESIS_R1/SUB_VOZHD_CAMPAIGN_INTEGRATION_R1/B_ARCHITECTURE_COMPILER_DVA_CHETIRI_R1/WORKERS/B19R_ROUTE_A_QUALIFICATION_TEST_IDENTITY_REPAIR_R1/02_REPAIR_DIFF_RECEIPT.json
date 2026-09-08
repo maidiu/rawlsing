@@ -1,0 +1,28 @@
+{
+  "schema": "B19R_REPAIR_DIFF_RECEIPT@1.0.0",
+  "repair_commit": "8103a70b43dc657a41d2f42401eef9dfadcd3c1f",
+  "parent_handoff": "304956409268a4bed50d72754f21ce2cf4a8cd40",
+  "files_changed": [
+    "rawlsing_next/tests/test_pre553_r5_source_backed_adapter.py"
+  ],
+  "additions": 3,
+  "deletions": 2,
+  "exact_diff": [
+    "-    left = _reader(tmp_path, fx, name=\"left\")",
+    "-    right = _reader(tmp_path, fx, name=\"right\")",
+    "+    shared_identity = _identity(fx, tag=\"replay\")",
+    "+    left = _reader(tmp_path, fx, name=\"left\", identity=shared_identity)",
+    "+    right = _reader(tmp_path, fx, name=\"right\", identity=shared_identity)"
+  ],
+  "preserved": {
+    "distinct_target_directories": [
+      "left",
+      "right"
+    ],
+    "equality_assertions_unchanged": true,
+    "route_a_implementation_unchanged": true,
+    "r5_runtime_unchanged": true,
+    "carrier_hashing_law_unchanged": true,
+    "c05r2a_semantics_unchanged": true
+  }
+}

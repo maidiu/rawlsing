@@ -1,0 +1,17 @@
+{
+  "schema": "B19R_TO_B19Q2_HANDOFF@1.0.0",
+  "status": "READY_FOR_B19Q2_FULL_QUALIFICATION",
+  "b19r_terminal": "B19_ROUTE_A_QUALIFICATION_TEST_IDENTITY_REPAIR_COMPLETE__READY_FOR_B19Q2_FULL_QUALIFICATION",
+  "repair_commit": "8103a70b43dc657a41d2f42401eef9dfadcd3c1f",
+  "repaired_test_blob": "25e905868a21bb36035269065b7bc3640201b7d8",
+  "route_a_implementation_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+  "required_b19q2": {
+    "target": "rawlsing_next/tests/test_pre553_r5_source_backed_adapter.py",
+    "required_tests": 8,
+    "fresh_process_runs": 2,
+    "requirement": "all 8 tests must pass in both fresh processes"
+  },
+  "b19r_did_not_claim_route_a_qualification": true,
+  "common_harness_authorized": false,
+  "next_owner": "SEPARATE_B19Q2_FULL_QUALIFICATION"
+}

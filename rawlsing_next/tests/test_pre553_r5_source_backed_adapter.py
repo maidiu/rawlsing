@@ -123,8 +123,9 @@ def test_r5_reopened_cells_match_decoder_cells_and_c05r2a_release_replay_exactly
 
 def test_two_independent_bounded_r5_builds_replay_to_identical_c11_identities(tmp_path):
     fx = _fixture("r5-route-a-replay")
-    left = _reader(tmp_path, fx, name="left")
-    right = _reader(tmp_path, fx, name="right")
+    shared_identity = _identity(fx, tag="replay")
+    left = _reader(tmp_path, fx, name="left", identity=shared_identity)
+    right = _reader(tmp_path, fx, name="right", identity=shared_identity)
     _, lrelease, ldesc = build_r5_source_backed_c11_repository(left, fx["projection"])
     _, rrelease, rdesc = build_r5_source_backed_c11_repository(right, fx["projection"])
     assert ldesc.physical_root_id == rdesc.physical_root_id

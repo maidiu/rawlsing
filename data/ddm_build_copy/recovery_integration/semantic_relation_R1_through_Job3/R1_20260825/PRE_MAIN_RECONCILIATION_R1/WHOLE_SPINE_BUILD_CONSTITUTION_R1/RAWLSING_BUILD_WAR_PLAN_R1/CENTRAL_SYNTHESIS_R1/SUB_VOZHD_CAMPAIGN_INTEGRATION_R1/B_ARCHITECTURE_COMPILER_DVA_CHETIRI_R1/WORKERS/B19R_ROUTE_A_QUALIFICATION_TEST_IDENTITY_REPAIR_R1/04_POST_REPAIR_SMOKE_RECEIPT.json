@@ -1,0 +1,24 @@
+{
+  "schema": "B19R_POST_REPAIR_SMOKE_RECEIPT@1.0.0",
+  "status": "PASS",
+  "repair_commit": "8103a70b43dc657a41d2f42401eef9dfadcd3c1f",
+  "execution_tree_sha": "604d7b8d976627ec56847211701ed76e1b273fb2",
+  "execution_test_blob": "25e905868a21bb36035269065b7bc3640201b7d8",
+  "python_version": "3.13.5",
+  "pytest_version": "9.0.2",
+  "command": "python -m pytest -q rawlsing_next/tests/test_pre553_r5_source_backed_adapter.py::test_two_independent_bounded_r5_builds_replay_to_identical_c11_identities",
+  "isolation": {
+    "tmpdir": "fresh /tmp/b19r_smoke",
+    "pycache": "fresh /tmp/b19r_pycache"
+  },
+  "exit_code": 0,
+  "collected": 1,
+  "passed": 1,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "stdout_sha256": "364fae48cbe8f4ef8e995f8fb3224d43792e784eb9919ceefea2fe0106918edf",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "pytest_reported_elapsed_seconds": 0.26,
+  "full_qualification_executed": false
+}
