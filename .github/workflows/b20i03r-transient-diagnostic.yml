@@ -186,7 +186,16 @@ jobs:
               "terminal_exception":terminal_exception,
               "integrity_failure_count":len(negative),
           }
-          data=json.dumps(payload,sort_keys=True,separators=(",",":"))+"\n"
+          from collections.abc import Mapping
+          def _json_default(value):
+              if hasattr(value, "as_dict"):
+                  return value.as_dict()
+              if isinstance(value, Mapping):
+                  return dict(value)
+              if isinstance(value, (tuple, set, frozenset)):
+                  return list(value)
+              raise TypeError(f"not JSON serializable: {type(value).__name__}")
+          data=json.dumps(payload,sort_keys=True,separators=(",",":"),default=_json_default)+"\n"
           (out/"diagnostic.json").write_text(data,encoding="utf-8")
           print(json.dumps({
               "integrity_failure_count":len(negative),
@@ -194,7 +203,7 @@ jobs:
               "roles":[x["role"] for x in negative],
               "details":[x["facts"][0]["execution_detail"] for x in negative],
               "underlying":[x["underlying_exceptions"] for x in negative],
-          },sort_keys=True))
+          },sort_keys=True,default=_json_default))
           if not negative:
               raise SystemExit("diagnostic failed to expose INTEGRITY_FAILURE fact")
           PY
