@@ -1,0 +1,36 @@
+{
+  "schema": "B20I03R_REPAIR_DIFF_RECEIPT@1.0.0",
+  "status": "PASS__DRIVER_LOCAL_FIXTURE_QUERY_REPRESENTATION_REPAIR_ONLY",
+  "repair_commit": "2f087524283ce40ead3ddc24af5b11411fde748e",
+  "repaired_file": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B20_AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_R1/01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py",
+  "pre_repair_git_blob_sha1": "5377c70b5b3b9110cfd719b62ae1c3e2ceb07843",
+  "post_repair_git_blob_sha1": "9ed1a68300453bfcd4af4877bab397ed00b0e0e6",
+  "net_diff": {
+    "additions": 28,
+    "deletions": 4
+  },
+  "exact_changes": [
+    "Import EmpiricalQuerySpec for driver-local reconstruction of the generic helper query.",
+    "Add _route_c_response_leaf(), preserving the imported helper structure but restoring exact_value to the integer supplied by this Route-C fixture.",
+    "Add _route_c_query(), preserving the imported helper query semantics/authorities/refs while changing each scalar target component domain from generic string ('0','1') values to exact integer (0,1) values used by the source-backed fixture.",
+    "Use _route_c_response_leaf for the X==1 CACC2/I05 predicate.",
+    "Use _route_c_query for the ordinary M query and discovery-template M query."
+  ],
+  "preserved": {
+    "physical_fixture": true,
+    "source_and_release_identity_law": true,
+    "risk_set_identity": true,
+    "query_authority": true,
+    "target_question_refs": true,
+    "topology": "SCALAR_SINGULAR",
+    "included_response_states": [
+      "SUBSTANTIVE_RESPONSE"
+    ],
+    "cacc1_layout": true,
+    "cacc2_semantics": true,
+    "shared_i03": true,
+    "shared_i05": true,
+    "route_c_implementation": true
+  },
+  "forbidden_files_modified": []
+}

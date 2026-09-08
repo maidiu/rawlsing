@@ -1,0 +1,26 @@
+{
+  "schema": "B20I03R_DEFECT_LAYER_ADJUDICATION@1.0.0",
+  "status": "PASS__CLASS_A_PROVED",
+  "classification": "QUALIFICATION_FIXTURE_OR_DRIVER_DEFECT",
+  "classification_code": "A",
+  "exact_minimal_reproducer": {
+    "source_fixture": "B20 _route_c_fixture('deterministic')",
+    "source_physical_values_for_q301_2_and_q301_7": "integers 0/1 (plus q301_2 system missing)",
+    "source_backed_event_semantics": [
+      "ResponseValueRule canonical_value defaults to None",
+      "source-backed facade stores raw_response_value=canonicalize(cell.raw_value)",
+      "_semantic_value returns canonical_response_value_if_authorized when present, otherwise raw_response_value"
+    ],
+    "imported_generic_test_helper_semantics": [
+      "_query declares each scalar target domain as string values ['0','1']",
+      "_response_leaf converts exact_value with str(value)"
+    ],
+    "observed_break": "BASELINE selects respondents and realizes integer target value 0 or 1; _evaluate_index_group cannot find that integer canonical cell among string-declared domain keys and emits EmpiricalQueryExecutionError."
+  },
+  "why_shared_i03_is_not_defective": "Shared I03 correctly detects that a realized exact target cell is outside the query-declared exact domain, converts the execution error into an INTEGRITY_FAILURE EmpiricalFact, and preserves the exact message.",
+  "why_shared_i05_is_not_defective": "Shared I05 correctly refuses to launder the I03 INTEGRITY_FAILURE into an exact discovery coverage state.",
+  "why_source_backed_c11_is_not_defective": "The source-backed facade lawfully preserves the physical integer response values because no canonical value transform was authorized by the fixture.",
+  "why_route_c_implementation_is_not_defective": "The failure is reproduced in the cacheless I03/I05 path before Route-C accelerated discovery is invoked.",
+  "repair_authorized": true,
+  "repair_scope": "qualification driver only"
+}
