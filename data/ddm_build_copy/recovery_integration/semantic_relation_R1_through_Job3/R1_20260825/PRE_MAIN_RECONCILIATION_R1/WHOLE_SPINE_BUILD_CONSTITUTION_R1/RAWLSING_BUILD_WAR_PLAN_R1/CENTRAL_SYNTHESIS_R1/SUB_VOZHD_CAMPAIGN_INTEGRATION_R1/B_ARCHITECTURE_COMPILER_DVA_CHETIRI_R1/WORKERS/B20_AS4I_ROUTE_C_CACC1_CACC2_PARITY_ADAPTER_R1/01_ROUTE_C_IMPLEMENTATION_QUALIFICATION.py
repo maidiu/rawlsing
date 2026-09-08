@@ -32,6 +32,7 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
 )
 from rawlsing_next.pre553_route_c_accelerators import (
     CACC2_FROZEN_ROLE_ORDER,
+    PINNED_PYARROW_VERSION,
     Cacc1Paths,
     Cacc2AtomBinding,
     Cacc2Determinants,
@@ -473,6 +474,7 @@ def _run_once(root: Path):
         },
         "delete_rebuild": "PASS_EXACT_IDENTITIES_PRESERVED",
         "accelerator_count": 2,
+        "pinned_pyarrow_version": PINNED_PYARROW_VERSION,
         "candidate_execution_count": 1,
         "real_c09_execution_count": 0,
         "wvs7_execution_count": 0,
@@ -543,6 +545,7 @@ def main():
             "status": "PASS",
             "terminal": PASS,
             "single_process": single,
+            "pinned_pyarrow_version": PINNED_PYARROW_VERSION,
             "fresh_process_replay": replay,
         }
         if args.output:
