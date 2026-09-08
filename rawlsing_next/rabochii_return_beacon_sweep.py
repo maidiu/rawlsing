@@ -12,11 +12,18 @@ import sys
 from datetime import datetime, timedelta, timezone
 from typing import Any, Mapping, Sequence
 
-from rabochii_return_beacon import (
-    DEFAULT_INBOX_ISSUE,
-    GitHubClient,
-    notify_if_certified,
-)
+try:  # package import under pytest / module use
+    from .rabochii_return_beacon import (
+        DEFAULT_INBOX_ISSUE,
+        GitHubClient,
+        notify_if_certified,
+    )
+except ImportError:  # direct script execution from rawlsing_next/
+    from rabochii_return_beacon import (
+        DEFAULT_INBOX_ISSUE,
+        GitHubClient,
+        notify_if_certified,
+    )
 
 
 def _branch_from_node(node: Mapping[str, Any], *, cutoff: datetime) -> str | None:
