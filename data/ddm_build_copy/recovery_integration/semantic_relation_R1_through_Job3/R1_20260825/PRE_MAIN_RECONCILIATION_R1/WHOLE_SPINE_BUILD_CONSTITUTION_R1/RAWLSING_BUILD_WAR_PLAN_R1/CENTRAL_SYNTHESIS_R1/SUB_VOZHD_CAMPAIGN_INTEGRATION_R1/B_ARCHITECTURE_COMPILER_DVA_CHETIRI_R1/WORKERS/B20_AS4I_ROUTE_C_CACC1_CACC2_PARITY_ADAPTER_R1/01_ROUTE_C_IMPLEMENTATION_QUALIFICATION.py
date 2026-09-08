@@ -16,7 +16,7 @@ import pandas as pd
 
 from rawlsing_next.pre553_c11_repository import C11Repository
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
-from rawlsing_next.pre553_empirical_objects import ExactRef, exact_ref
+from rawlsing_next.pre553_empirical_objects import EmpiricalQuerySpec, ExactRef, exact_ref
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
 from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
 from rawlsing_next.pre553_physical_decoder import PhysicalSourceIncidence, PhysicalVariable, PhysicalMissingState
@@ -190,6 +190,30 @@ def _runtime_source(fx, release):
     }
 
 
+def _route_c_response_leaf(source, qauth, q, value):
+    leaf = dict(_response_leaf(source, qauth, q, value))
+    leaf["exact_value"] = value
+    return leaf
+
+
+def _route_c_query(source, qauth, predicate, targets, *, tag):
+    base = _query(source, qauth, predicate, targets, tag=tag)
+    topology = dict(base.target_arity_and_topology)
+    topology["components"] = tuple(
+        {**dict(component), "domain": (0, 1)}
+        for component in topology["components"]
+    )
+    fields = dict(base.semantic_fields)
+    fields["target_arity_and_topology"] = topology
+    return EmpiricalQuerySpec(
+        typed_state=base.typed_state,
+        authority_snapshot_refs=base.authority_snapshot_refs,
+        dependency_refs=base.dependency_refs,
+        producer_replay_locator_or_reference_root=base.producer_replay_locator_or_reference_root,
+        **fields,
+    )
+
+
 def _atom_bindings(all_predicate, x1_predicate):
     dummy = {}
     for role in CACC2_FROZEN_ROLE_ORDER:
@@ -243,10 +267,10 @@ def _run_once(root: Path):
     x1 = _predicate(
         source_cacheless,
         qauth,
-        _response_leaf(source_cacheless, qauth, "X", 1),
+        _route_c_response_leaf(source_cacheless, qauth, "X", 1),
         tag="b20-x1",
     )
-    query = _query(source_cacheless, qauth, all_p, ("M",), tag="b20-query")
+    query = _route_c_query(source_cacheless, qauth, all_p, ("M",), tag="b20-query")
     registry = _registry(source_cacheless, qauth)
     cacheless_query = execute_empirical_query(
         repository=source_cacheless["repo"],
@@ -303,7 +327,7 @@ def _run_once(root: Path):
     # both paths invoke the same unmodified exact discovery engine over byte-identical C11.
     dauth = _d_auth("b20-route-c-discovery")
     operation = "I03-OP-b20-route-c-discovery"
-    dquery = _query(source_cacheless, qauth, all_p, ("M",), tag="b20-discovery-template")
+    dquery = _route_c_query(source_cacheless, qauth, all_p, ("M",), tag="b20-discovery-template")
     grammar = _grammar(
         operation=operation,
         atoms=[_atom("ALL", all_p, "BRANCH"), _atom("X1", x1, "RESPONSE")],
