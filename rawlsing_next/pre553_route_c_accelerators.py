@@ -27,6 +27,7 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
 
 ROUTE_C_CANDIDATE_HASH = "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c"
 ROUTE_C_DELETE_REBUILD_LAW_HASH = "a582e303c8cd4ffabd3971ddc0b2d4b37d6d7327707e4df9778660088171cacc"
+PINNED_PYARROW_VERSION = "25.0.1"
 FROZEN_LITS1_SOURCE_SHA256 = "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
 FROZEN_LITS1_C11_RELEASE_HASH = "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
 FROZEN_PREDICATE_SEMANTIC_CATALOG_HASH = "8c559917640242e017b03e206d5a0a950cb2973c36a90e0be43d3c0fe7cc9293"
@@ -284,6 +285,11 @@ def _pa():
             "CACC1 requires pinned pyarrow to emit AS3 canonical Arrow IPC; "
             "no substitute physical format is authorized"
         ) from exc
+    if str(pa.__version__) != PINNED_PYARROW_VERSION:
+        raise RouteCUnsupportedEnvironment(
+            "CACC1 Arrow implementation/version mismatch: "
+            f"required pyarrow=={PINNED_PYARROW_VERSION}, observed {pa.__version__}"
+        )
     return pa
 
 
@@ -533,7 +539,6 @@ def read_cacc1(
     *,
     paths: Cacc1Paths,
     expected_determinants: RouteCDeterminants,
-    expected_arrow_version: str | None = None,
 ) -> Cacc1Bundle:
     manifest = _load_json_object(paths.manifest)
     if manifest.get("accelerator_id") != CACC1_ID or manifest.get("format") != CACC1_FORMAT:
@@ -550,7 +555,9 @@ def read_cacc1(
         raise RouteCCorruptAccelerator("CACC1 batch/compression law mismatch")
     if manifest.get("dictionary_encoding") != "NONE":
         raise RouteCCorruptAccelerator("CACC1 dictionary encoding forbidden")
-    if expected_arrow_version is not None and manifest.get("arrow_version") != expected_arrow_version:
+    if manifest.get("arrow_implementation") != "pyarrow":
+        raise RouteCDeterminantMismatch("CACC1 Arrow implementation mismatch")
+    if manifest.get("arrow_version") != PINNED_PYARROW_VERSION:
         raise RouteCDeterminantMismatch("CACC1 Arrow implementation/version mismatch")
     if not paths.arrow_ipc.is_file():
         raise RouteCCorruptAccelerator("CACC1 Arrow IPC bytes missing")
@@ -1007,7 +1014,7 @@ def execute_route_c_exact_bounded_discovery(
 
 
 __all__ = [
-    "ROUTE_C_CANDIDATE_HASH", "ROUTE_C_DELETE_REBUILD_LAW_HASH",
+    "ROUTE_C_CANDIDATE_HASH", "ROUTE_C_DELETE_REBUILD_LAW_HASH", "PINNED_PYARROW_VERSION",
     "FROZEN_LITS1_SOURCE_SHA256", "FROZEN_LITS1_C11_RELEASE_HASH",
     "FROZEN_PREDICATE_SEMANTIC_CATALOG_HASH", "FROZEN_RISK_TOPOLOGY_PARTITION_HASH",
     "SUCCESSOR_DISCOVERY_AUTHORITY_HASH", "SUCCESSOR_OFFICIAL_FRONTIER_HASH",
