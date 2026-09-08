@@ -268,12 +268,9 @@ def _load_predicates(root: Path, binding: Mapping[str, Any]) -> tuple[Mapping[st
         rows = json.loads(decoded)
     except json.JSONDecodeError as exc:
         raise HB04FreezeError("predicate carrier canonical bundle is not JSON") from exc
-    canonical_decoded = (
-        json.dumps(rows, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
-        + b"\\n"
-    )
+    decoded_with_trailing_newline = decoded if decoded.endswith(b"\\n") else decoded + b"\\n"
     _eq(
-        _sha256_bytes(canonical_decoded),
+        _sha256_bytes(decoded_with_trailing_newline),
         bundle.get("decoded_canonical_json_sha256_with_trailing_newline"),
         "predicate decoded canonical JSON SHA-256",
     )
