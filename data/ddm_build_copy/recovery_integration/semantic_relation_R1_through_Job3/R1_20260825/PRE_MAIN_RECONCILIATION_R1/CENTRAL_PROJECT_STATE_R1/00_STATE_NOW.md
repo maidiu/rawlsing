@@ -688,3 +688,44 @@ The real first-canary actor ENCOUNTER remains absent; real comparator invocation
 SUB-VOZHD E remains independently active on OBL058/059/060. This OBL057 adoption does not alter E ownership or authorize OBL061.
 
 `POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+
+## OBL031 HQ ADOPTION — COMPARATOR AUTHORITY CURRENT, REAL INVOCATION STILL EMPTY
+
+HQ adopted:
+
+`GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY@1.1.3`
+
+content hash:
+
+`e080f7089f27f5851152dfb2ea9b9765159cd647be995a1f41fa65945d27c87c`
+
+at adoption commit:
+
+`d8da0f554ba2dcb9cce81496b6111fa759462489`.
+
+Current-selection receipt blob:
+
+`778b287eb04d8d25f61dfc21364f170ad54ff0dd`.
+
+Final implementation blob:
+
+`ff7e13d99aa1ee6b16d4533bd8b1aa19e4dc979e`.
+
+The adopted authority is exact one-field comparator law only. It does not create actor facts, ENCOUNTER, OBL056 positive entries, predicates, PSEPF, metabolism, CAN-008, or positive V3 effects.
+
+The current real first-canary actor ENCOUNTER remains absent. Therefore current real invocation remains:
+
+`ACTOR_FACT_MISSING_OR_UNAUTHORIZED`
+
+with no emitted predicate.
+
+Project effect:
+
+- `OBL031 = CLOSED / PROJECT-CURRENT`;
+- `OBL032 = BLOCKED_ON_OBL061`;
+- SUB-VOZHD A = STAND DOWN / WAITING_ON_OBL061;
+- SUB-VOZHD E remains active on OBL058/059/060 and later OBL061.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+`PROJECT_CURRENT_FIRST_CANARY_OEE = NOT_AUTHORIZED`.
