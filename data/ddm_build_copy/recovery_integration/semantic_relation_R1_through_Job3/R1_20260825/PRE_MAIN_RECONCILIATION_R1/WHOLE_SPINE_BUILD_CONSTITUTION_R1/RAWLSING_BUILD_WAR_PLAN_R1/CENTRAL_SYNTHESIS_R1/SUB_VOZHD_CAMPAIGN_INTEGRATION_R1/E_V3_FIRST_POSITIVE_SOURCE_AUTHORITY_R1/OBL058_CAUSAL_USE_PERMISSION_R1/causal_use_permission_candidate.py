@@ -1,9 +1,10 @@
-"""R2 bounded repaired candidate for OBL058 CAUSAL_USE_PERMISSION.
+"""R3 bounded repaired candidate for OBL058 CAUSAL_USE_PERMISSION.
 
-This module is deliberately lane-local and NONCURRENT_SYNTHETIC only.  It does
+This module is deliberately lane-local and NONCURRENT_SYNTHETIC only. It does
 not install runtime state, call ADP-010, create project-current permission, or
-claim HQ adoption.  R2 repairs provenance, exact-basis binding, receipt-origin,
-and fixture-boundary defects found by the independent R1 review.
+claim HQ adoption. R3 preserves the R2 source-basis/scope/fixture repairs while
+replacing caller-reproducible receipt provenance with exact issued-object
+identity plus immutable source-owned ledger content.
 """
 from __future__ import annotations
 
@@ -14,8 +15,8 @@ import json
 from types import MappingProxyType
 from typing import Any
 
-AUTHORITY_ID = "OBL058_CAUSAL_USE_PERMISSION_SOURCE_AUTHORITY_R1@1.1.0"
-SCHEMA_VERSION = "OBL058_CAUSAL_USE_PERMISSION_RECEIPT@2.0.0"
+AUTHORITY_ID = "OBL058_CAUSAL_USE_PERMISSION_SOURCE_AUTHORITY_R1@1.2.0"
+SCHEMA_VERSION = "OBL058_CAUSAL_USE_PERMISSION_RECEIPT@3.0.0"
 FIXTURE_CLASS = "NONCURRENT_SYNTHETIC"
 DECISION_PERMIT = "PERMIT"
 DECISION_DENY = "DENY"
@@ -85,13 +86,13 @@ class _SourceBasisRecord:
 
 
 REGISTERED_POSITIVE_SCOPE = ExactScope(
-    actor_id="NONCURRENT_SYNTHETIC::actor::obl058-r2-a1",
-    world_id="NONCURRENT_SYNTHETIC::world::obl058-r2-w1",
-    subject_id="NONCURRENT_SYNTHETIC::subject::obl058-r2-s1",
-    time_id="NONCURRENT_SYNTHETIC::time::obl058-r2-t1",
-    transition_id="NONCURRENT_SYNTHETIC::transition::obl058-r2-tr1",
+    actor_id="NONCURRENT_SYNTHETIC::actor::obl058-r3-a1",
+    world_id="NONCURRENT_SYNTHETIC::world::obl058-r3-w1",
+    subject_id="NONCURRENT_SYNTHETIC::subject::obl058-r3-s1",
+    time_id="NONCURRENT_SYNTHETIC::time::obl058-r3-t1",
+    transition_id="NONCURRENT_SYNTHETIC::transition::obl058-r3-tr1",
 )
-REGISTERED_POSITIVE_BASIS_ID = "NONCURRENT_SYNTHETIC::basis::obl058-r2-source-owned-permit-001"
+REGISTERED_POSITIVE_BASIS_ID = "NONCURRENT_SYNTHETIC::basis::obl058-r3-source-owned-permit-001"
 
 _REGISTERED_POSITIVE_RECORD = _SourceBasisRecord(
     basis_id=REGISTERED_POSITIVE_BASIS_ID,
@@ -123,156 +124,183 @@ def _receipt_integrity_payload(receipt: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def receipt_digest(receipt: Mapping[str, Any]) -> str:
-    """Content-integrity digest only; authority provenance is checked separately."""
+    """Content-integrity digest only; source origin is established separately."""
     return hashlib.sha256(_canonical_json(_receipt_integrity_payload(receipt)).encode("utf-8")).hexdigest()
 
 
-def _build_source_authority_receipt_boundary():
-    """Return source-owned issue/validation provenance functions.
+def _freeze_receipt_body(body: Mapping[str, Any]) -> Mapping[str, Any]:
+    frozen = dict(body)
+    scope_value = frozen.get("scope")
+    if not isinstance(scope_value, Mapping):
+        raise PermissionContractError("malformed_scope")
+    frozen["scope"] = MappingProxyType(dict(scope_value))
+    return MappingProxyType(frozen)
 
-    The issuance marker and concrete receipt class are closure-local.  Public callers
-    may inspect receipt fields, but cannot turn an arbitrary Mapping into a receipt
-    recognized as emitted by this bounded source-authority instance.
+
+def _build_source_authority_surface():
+    """Build the exact bounded issuer/validator surface.
+
+    Source origin is not represented by a transferable marker or a mutable payload
+    stored on the receipt. The closure owns a strong ledger of exact issued object
+    identities and the immutable body produced for each identity. Validation uses
+    identity (``is``), exact concrete type, and that ledger body; caller-visible
+    Mapping behavior is informational only and cannot rewrite validation content.
     """
-    issuance_marker = object()
+
+    issued_ledger: list[tuple[object, Mapping[str, Any]]] = []
 
     class IssuedReceipt(Mapping[str, Any]):
-        __slots__ = ("_data", "_marker")
+        __slots__ = ()
 
-        def __init__(self, data: Mapping[str, Any], marker: object) -> None:
-            if marker is not issuance_marker:
-                raise PermissionContractError("receipt_not_issued_by_source_authority")
-            self._data = MappingProxyType(dict(data))
-            self._marker = marker
+        def _ledger_body(self) -> Mapping[str, Any]:
+            for issued, body in issued_ledger:
+                if self is issued:
+                    return body
+            raise PermissionContractError("receipt_not_issued_by_source_authority")
 
         def __getitem__(self, key: str) -> Any:
-            return self._data[key]
+            value = self._ledger_body()[key]
+            if key == "scope":
+                return dict(value)
+            return value
 
         def __iter__(self) -> Iterator[str]:
-            return iter(self._data)
+            return iter(self._ledger_body())
 
         def __len__(self) -> int:
-            return len(self._data)
+            return len(self._ledger_body())
 
-        def _has_source_provenance(self) -> bool:
-            return self._marker is issuance_marker
+    def _new_issued_receipt(body: Mapping[str, Any]) -> Mapping[str, Any]:
+        receipt = object.__new__(IssuedReceipt)
+        issued_ledger.append((receipt, _freeze_receipt_body(body)))
+        return receipt
 
-    def wrap(data: Mapping[str, Any]) -> Mapping[str, Any]:
-        return IssuedReceipt(data, issuance_marker)
-
-    def has_provenance(receipt: Mapping[str, Any]) -> bool:
-        return isinstance(receipt, IssuedReceipt) and receipt._has_source_provenance()
-
-    return wrap, has_provenance
-
-
-_wrap_source_issued_receipt, _has_source_issued_provenance = _build_source_authority_receipt_boundary()
-
-
-def issue_noncurrent_synthetic_receipt(
-    *,
-    scope: ExactScope,
-    basis_id: str,
-    fixture_class: str = FIXTURE_CLASS,
-) -> Mapping[str, Any]:
-    """Issue one bounded candidate receipt from source-owned basis state only."""
-    scope.validate()
-    if fixture_class != FIXTURE_CLASS:
-        raise PermissionContractError("project_current_or_unknown_fixture_not_authorized")
-    if not isinstance(basis_id, str) or not basis_id.strip():
-        raise PermissionContractError("missing_basis_id")
-
-    sd = scope_digest(scope)
-    record = _SOURCE_BASIS_REGISTRY.get(basis_id)
-    if record is not None and record.scope_digest == sd:
-        decision = record.decision
-        basis_kind = record.basis_kind
-        basis_scope_digest = record.scope_digest
-        basis_proof_digest = record.proof_digest()
-    else:
-        decision = DECISION_DENY
-        basis_kind = NO_MATCHING_BASIS_KIND
-        basis_scope_digest = sd
-        basis_proof_digest = _basis_proof_for_denial(
-            basis_id=basis_id,
-            expected_scope_digest=sd,
-        )
-
-    body: dict[str, Any] = {
-        "authority_id": AUTHORITY_ID,
-        "schema_version": SCHEMA_VERSION,
-        "fixture_class": FIXTURE_CLASS,
-        "scope": scope.canonical(),
-        "scope_digest": sd,
-        "decision": decision,
-        "basis_kind": basis_kind,
-        "basis_id": basis_id,
-        "basis_scope_digest": basis_scope_digest,
-        "basis_proof_digest": basis_proof_digest,
-    }
-    body["receipt_digest"] = receipt_digest(body)
-    return _wrap_source_issued_receipt(body)
-
-
-def validate_receipt(receipt: Mapping[str, Any], *, expected_scope: ExactScope) -> str:
-    """Validate exact scope, source basis, and source-issued provenance; fail closed."""
-    expected_scope.validate()
-    required = {
-        "authority_id", "schema_version", "fixture_class", "scope",
-        "scope_digest", "decision", "basis_kind", "basis_id",
-        "basis_scope_digest", "basis_proof_digest", "receipt_digest",
-    }
-    if not isinstance(receipt, Mapping):
-        raise PermissionContractError("malformed_receipt")
-    if not _has_source_issued_provenance(receipt):
+    def _lookup_exact_issued_body(receipt: Mapping[str, Any]) -> Mapping[str, Any]:
+        if type(receipt) is not IssuedReceipt:
+            raise PermissionContractError("receipt_not_issued_by_source_authority")
+        for issued, body in issued_ledger:
+            if receipt is issued:
+                return body
         raise PermissionContractError("receipt_not_issued_by_source_authority")
-    if set(receipt.keys()) != required:
-        raise PermissionContractError("malformed_receipt_keys")
-    if receipt["authority_id"] != AUTHORITY_ID:
-        raise PermissionContractError("wrong_authority")
-    if receipt["schema_version"] != SCHEMA_VERSION:
-        raise PermissionContractError("wrong_schema")
-    if receipt["fixture_class"] != FIXTURE_CLASS:
-        raise PermissionContractError("project_current_or_unknown_fixture_not_authorized")
-    if receipt["decision"] not in {DECISION_PERMIT, DECISION_DENY}:
-        raise PermissionContractError("invalid_decision")
-    if not isinstance(receipt["scope"], Mapping):
-        raise PermissionContractError("malformed_scope")
-    if dict(receipt["scope"]) != expected_scope.canonical():
-        raise PermissionContractError("scope_mismatch_or_stale")
 
-    sd = scope_digest(expected_scope)
-    if receipt["scope_digest"] != sd:
-        raise PermissionContractError("scope_digest_mismatch")
-    if receipt["basis_scope_digest"] != sd:
-        raise PermissionContractError("basis_scope_mismatch")
-    if receipt["receipt_digest"] != receipt_digest(receipt):
-        raise PermissionContractError("receipt_integrity_mismatch")
-    if not isinstance(receipt["basis_id"], str) or not receipt["basis_id"].strip():
-        raise PermissionContractError("missing_basis_id")
+    def issue(
+        *,
+        scope: ExactScope,
+        basis_id: str,
+        fixture_class: str = FIXTURE_CLASS,
+    ) -> Mapping[str, Any]:
+        scope.validate()
+        if fixture_class != FIXTURE_CLASS:
+            raise PermissionContractError("project_current_or_unknown_fixture_not_authorized")
+        if not isinstance(basis_id, str) or not basis_id.strip():
+            raise PermissionContractError("missing_basis_id")
 
-    record = _SOURCE_BASIS_REGISTRY.get(receipt["basis_id"])
-    if receipt["decision"] == DECISION_PERMIT:
-        if record is None:
-            raise PermissionContractError("positive_decision_without_registered_source_basis")
-        if record.scope_digest != sd:
-            raise PermissionContractError("positive_basis_not_bound_to_exact_scope")
-        if receipt["basis_kind"] != record.basis_kind or record.basis_kind != SOURCE_BASIS_KIND:
-            raise PermissionContractError("positive_decision_without_source_owned_basis")
-        if receipt["basis_proof_digest"] != record.proof_digest():
-            raise PermissionContractError("source_basis_proof_mismatch")
-        if record.decision != DECISION_PERMIT:
-            raise PermissionContractError("source_basis_does_not_permit")
-    else:
-        if record is not None and record.scope_digest == sd and record.decision == DECISION_PERMIT:
-            raise PermissionContractError("denial_conflicts_with_registered_source_basis")
-        if receipt["basis_kind"] != NO_MATCHING_BASIS_KIND:
-            raise PermissionContractError("invalid_denial_basis_kind")
-        expected_proof = _basis_proof_for_denial(
-            basis_id=receipt["basis_id"],
-            expected_scope_digest=sd,
-        )
-        if receipt["basis_proof_digest"] != expected_proof:
-            raise PermissionContractError("denial_basis_proof_mismatch")
+        sd = scope_digest(scope)
+        record = _SOURCE_BASIS_REGISTRY.get(basis_id)
+        if record is not None and record.scope_digest == sd:
+            decision = record.decision
+            basis_kind = record.basis_kind
+            basis_scope_digest = record.scope_digest
+            basis_proof_digest = record.proof_digest()
+        else:
+            decision = DECISION_DENY
+            basis_kind = NO_MATCHING_BASIS_KIND
+            basis_scope_digest = sd
+            basis_proof_digest = _basis_proof_for_denial(
+                basis_id=basis_id,
+                expected_scope_digest=sd,
+            )
 
-    return str(receipt["decision"])
+        body: dict[str, Any] = {
+            "authority_id": AUTHORITY_ID,
+            "schema_version": SCHEMA_VERSION,
+            "fixture_class": FIXTURE_CLASS,
+            "scope": scope.canonical(),
+            "scope_digest": sd,
+            "decision": decision,
+            "basis_kind": basis_kind,
+            "basis_id": basis_id,
+            "basis_scope_digest": basis_scope_digest,
+            "basis_proof_digest": basis_proof_digest,
+        }
+        body["receipt_digest"] = receipt_digest(body)
+        return _new_issued_receipt(body)
+
+    def validate(receipt: Mapping[str, Any], *, expected_scope: ExactScope) -> str:
+        expected_scope.validate()
+        body = _lookup_exact_issued_body(receipt)
+
+        required = {
+            "authority_id", "schema_version", "fixture_class", "scope",
+            "scope_digest", "decision", "basis_kind", "basis_id",
+            "basis_scope_digest", "basis_proof_digest", "receipt_digest",
+        }
+        if set(body.keys()) != required:
+            raise PermissionContractError("malformed_receipt_keys")
+        if body["authority_id"] != AUTHORITY_ID:
+            raise PermissionContractError("wrong_authority")
+        if body["schema_version"] != SCHEMA_VERSION:
+            raise PermissionContractError("wrong_schema")
+        if body["fixture_class"] != FIXTURE_CLASS:
+            raise PermissionContractError("project_current_or_unknown_fixture_not_authorized")
+        if body["decision"] not in {DECISION_PERMIT, DECISION_DENY}:
+            raise PermissionContractError("invalid_decision")
+        if not isinstance(body["scope"], Mapping):
+            raise PermissionContractError("malformed_scope")
+        if dict(body["scope"]) != expected_scope.canonical():
+            raise PermissionContractError("scope_mismatch_or_stale")
+
+        sd = scope_digest(expected_scope)
+        if body["scope_digest"] != sd:
+            raise PermissionContractError("scope_digest_mismatch")
+        if body["basis_scope_digest"] != sd:
+            raise PermissionContractError("basis_scope_mismatch")
+
+        digest_view = {
+            "authority_id": body["authority_id"],
+            "schema_version": body["schema_version"],
+            "fixture_class": body["fixture_class"],
+            "scope": dict(body["scope"]),
+            "scope_digest": body["scope_digest"],
+            "decision": body["decision"],
+            "basis_kind": body["basis_kind"],
+            "basis_id": body["basis_id"],
+            "basis_scope_digest": body["basis_scope_digest"],
+            "basis_proof_digest": body["basis_proof_digest"],
+        }
+        if body["receipt_digest"] != receipt_digest(digest_view):
+            raise PermissionContractError("receipt_integrity_mismatch")
+        if not isinstance(body["basis_id"], str) or not body["basis_id"].strip():
+            raise PermissionContractError("missing_basis_id")
+
+        record = _SOURCE_BASIS_REGISTRY.get(body["basis_id"])
+        if body["decision"] == DECISION_PERMIT:
+            if record is None:
+                raise PermissionContractError("positive_decision_without_registered_source_basis")
+            if record.scope_digest != sd:
+                raise PermissionContractError("positive_basis_not_bound_to_exact_scope")
+            if body["basis_kind"] != record.basis_kind or record.basis_kind != SOURCE_BASIS_KIND:
+                raise PermissionContractError("positive_decision_without_source_owned_basis")
+            if body["basis_proof_digest"] != record.proof_digest():
+                raise PermissionContractError("source_basis_proof_mismatch")
+            if record.decision != DECISION_PERMIT:
+                raise PermissionContractError("source_basis_does_not_permit")
+        else:
+            if record is not None and record.scope_digest == sd and record.decision == DECISION_PERMIT:
+                raise PermissionContractError("denial_conflicts_with_registered_source_basis")
+            if body["basis_kind"] != NO_MATCHING_BASIS_KIND:
+                raise PermissionContractError("invalid_denial_basis_kind")
+            expected_proof = _basis_proof_for_denial(
+                basis_id=body["basis_id"],
+                expected_scope_digest=sd,
+            )
+            if body["basis_proof_digest"] != expected_proof:
+                raise PermissionContractError("denial_basis_proof_mismatch")
+
+        return str(body["decision"])
+
+    return issue, validate
+
+
+issue_noncurrent_synthetic_receipt, validate_receipt = _build_source_authority_surface()
+del _build_source_authority_surface
