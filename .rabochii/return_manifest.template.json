@@ -1,0 +1,43 @@
+{
+  "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
+  "task_id": "REPLACE_WITH_COMMISSION_TASK_ID",
+  "branch": "agent/replace-with-exact-worker-branch",
+  "commission": {
+    "authority_ref": "0000000000000000000000000000000000000000",
+    "exact_start_sha": "0000000000000000000000000000000000000000"
+  },
+  "return": {
+    "result": "PASS",
+    "terminal": "RABOCHII_REPLACE_ME__RETURN_TO_REPLACE_ME",
+    "phase": "CLOSURE_ONLY",
+    "completion": {
+      "commission_consumed": true,
+      "all_required_outputs_durable": true,
+      "no_required_work_remaining": true,
+      "no_background_work_remaining": true,
+      "return_packet_durable": true,
+      "terminal_state_entered": true
+    }
+  },
+  "separation": {
+    "performed_only_commissioned_role": true,
+    "no_uncommissioned_repair": true,
+    "no_uncommissioned_review": true
+  },
+  "return_packet": {
+    "path": "replace/with/return_packet.md",
+    "blob_sha": "0000000000000000000000000000000000000000"
+  },
+  "required_outputs": [
+    {
+      "name": "return_packet",
+      "kind": "path",
+      "path": "replace/with/return_packet.md",
+      "blob_sha": "0000000000000000000000000000000000000000",
+      "status": "DURABLE"
+    }
+  ],
+  "evidence": {
+    "required": false
+  }
+}
