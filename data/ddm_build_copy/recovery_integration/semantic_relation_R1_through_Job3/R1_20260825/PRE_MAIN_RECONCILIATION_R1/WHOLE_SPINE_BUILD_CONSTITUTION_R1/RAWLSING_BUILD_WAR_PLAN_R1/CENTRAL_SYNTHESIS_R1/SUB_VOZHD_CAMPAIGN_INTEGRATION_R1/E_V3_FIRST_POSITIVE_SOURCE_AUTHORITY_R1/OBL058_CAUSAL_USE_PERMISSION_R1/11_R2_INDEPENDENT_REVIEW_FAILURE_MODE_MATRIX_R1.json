@@ -1,0 +1,28 @@
+{
+  "review_id": "OBL058_R2_INDEPENDENT_REVIEW_R1",
+  "worker_branch": "agent/rabochii-subv-e-obl058-causal-use-permission-r2-independent-review-r1",
+  "exact_start": "292fba5789a78c85041a3ad02ed8be3358ce1c9c",
+  "frozen_candidate": "f735c85393280557284b3a309cafc0847fb48aec",
+  "review_method": "fresh_distinct_negative_path_robustness_review",
+  "producer_tests_consumed_before_matrix_freeze": false,
+  "families": [
+    "source_origin_wrapper_not_caller_invocable",
+    "issued_receipt_internal_state_not_caller_rebindable",
+    "source_origin_marker_not_recoverable_from_issued_object",
+    "receipt_subclass_cannot_self_assert_provenance",
+    "plain_mapping_and_reconstructed_copy_rejected",
+    "registered_basis_exact_scope_binding",
+    "unregistered_basis_denies",
+    "decision_and_basis_proof_consistency",
+    "exact_noncurrent_namespace_per_scope_field",
+    "project_current_identifier_rejected",
+    "wrong_authority_schema_fixture_rejected",
+    "wrong_expected_scope_and_stale_scope_rejected",
+    "receipt_content_integrity_rechecked",
+    "positive_receipt_bound_to_registered_source_basis",
+    "denial_conflict_with_registered_positive_basis_rejected",
+    "no_project_current_state_or_downstream_execution"
+  ],
+  "blocking_rule": "Any caller-accessible path that creates or transforms a receipt into one accepted as source-issued without passing through the source-owned issuance decision is blocking. Any acceptance of project-current scope or positive permission without the exact registered source-owned basis is blocking.",
+  "adjudication_boundary": "This reviewer may PASS or FAIL only the frozen R2 candidate. It must not repair the candidate, adopt OBL058, create current-positive state, execute OBL055, or unblock OBL061."
+}
