@@ -62,7 +62,6 @@ jobs:
             set +e
             PYTHONPATH="$work" python "$work/$DRIVER" --output "$out/qualification_receipt.json" >"$out/stdout.txt" 2>"$out/stderr.txt"
             code=$?
-            set -e
             printf '%s\n' "$code" > "$out/exit_code.txt"
             sha256sum "$out/stdout.txt" | awk '{print $1}' > "$out/stdout_sha256.txt"
             sha256sum "$out/stderr.txt" | awk '{print $1}' > "$out/stderr_sha256.txt"
