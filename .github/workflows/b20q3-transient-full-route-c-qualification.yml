@@ -93,10 +93,8 @@ jobs:
             export PYTHONPYCACHEPREFIX="$R/pycache"
             export PYTHONHASHSEED=0
 
-            set +e
-            python "$DRIVER" --output "$R/qualification_receipt.json" >"$R/stdout.txt" 2>"$R/stderr.txt"
+            PYTHONPATH="$ROOT" python "$DRIVER" --output "$R/qualification_receipt.json" >"$R/stdout.txt" 2>"$R/stderr.txt"
             ec=$?
-            set -e
             printf '%s\n' "$ec" > "$R/exit_code.txt"
             sha256sum "$R/stdout.txt" | awk '{print $1}' > "$R/stdout_sha256.txt"
             sha256sum "$R/stderr.txt" | awk '{print $1}' > "$R/stderr_sha256.txt"
