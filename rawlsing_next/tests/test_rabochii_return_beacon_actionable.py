@@ -42,3 +42,5 @@ def test_certified_pass_also_explicitly_says_safe_to_cancel():
 def test_manifest_task_id_is_fallback_label():
     c = cert("agent/custom-worker", result="BLOCKED", task_id="MY_TASK_R1")
     assert action.worker_label(c) == "MY TASK R1"
+
+# Temporary branch-only touch so GitHub executes the pull-request self-test.
