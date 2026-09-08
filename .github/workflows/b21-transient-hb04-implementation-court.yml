@@ -47,7 +47,7 @@ jobs:
           PY
 
           set +e
-          pytest -q rawlsing_next/tests/test_as4_hb04_common_harness.py >"$OUT/pytest_stdout.txt" 2>"$OUT/pytest_stderr.txt"
+          PYTHONPATH="$PWD" python -m pytest -q rawlsing_next/tests/test_as4_hb04_common_harness.py >"$OUT/pytest_stdout.txt" 2>"$OUT/pytest_stderr.txt"
           PEC=$?
           set -e
           echo "$PEC" > "$OUT/pytest_exit_code.txt"
