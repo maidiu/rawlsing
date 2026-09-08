@@ -264,11 +264,19 @@ def _load_predicates(root: Path, binding: Mapping[str, Any]) -> tuple[Mapping[st
         raise HB04FreezeError("predicate carrier decode failed") from exc
     _eq(len(compressed), bundle.get("gzip_byte_length"), "predicate carrier gzip length")
     _eq(len(decoded), bundle.get("decoded_byte_length"), "predicate carrier decoded length")
-    _eq(_sha256_bytes(decoded), bundle.get("decoded_canonical_json_sha256_with_trailing_newline"), "predicate decoded SHA-256")
     try:
         rows = json.loads(decoded)
     except json.JSONDecodeError as exc:
         raise HB04FreezeError("predicate carrier canonical bundle is not JSON") from exc
+    canonical_decoded = (
+        json.dumps(rows, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+        + b"\\n"
+    )
+    _eq(
+        _sha256_bytes(canonical_decoded),
+        bundle.get("decoded_canonical_json_sha256_with_trailing_newline"),
+        "predicate decoded canonical JSON SHA-256",
+    )
     if not isinstance(rows, list) or len(rows) != 18:
         raise HB04FreezeError("predicate canonical bundle cardinality changed")
     by_hash: dict[str, EmpiricalPredicate] = {}
