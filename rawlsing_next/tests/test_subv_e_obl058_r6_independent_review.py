@@ -5,8 +5,10 @@ modify or repair the frozen semantic candidate.
 """
 from __future__ import annotations
 
+import gc
 import importlib.util
 import sys
+import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,4 +25,34 @@ spec.loader.exec_module(module)
 
 
 class TestOBL058R6IndependentReview(module.OBL058R6IndependentReview):
-    pass
+    def test_b01_detached_finalizer_leaves_stale_record_for_later_exact_type_generation(self):
+        """Prove stale authority deterministically; allocator reuse is not required."""
+        original = module.issue_noncurrent_synthetic_receipt(
+            scope=module.REGISTERED_POSITIVE_SCOPE,
+            basis_id=module.REGISTERED_POSITIVE_BASIS_ID,
+        )
+        old_id = id(original)
+        body_json = object.__getattribute__(original, "_body_json")
+        fin = module._find_receipt_finalizer(original)
+        detached = fin.detach()
+        self.assertIsNotNone(detached)
+        del detached
+        del fin
+        del original
+        gc.collect()
+
+        try:
+            response = module.candidate._bound_broker_request({
+                "op": "validate",
+                "object_id": old_id,
+                "body_json": body_json,
+                "expected_scope": module.REGISTERED_POSITIVE_SCOPE.canonical(),
+                "request_id": uuid.uuid4().hex,
+            })
+            self.assertEqual(module.DECISION_PERMIT, response.get("decision"))
+        finally:
+            module.candidate._bound_broker_request({
+                "op": "close",
+                "object_id": old_id,
+                "request_id": uuid.uuid4().hex,
+            })
