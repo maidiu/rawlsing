@@ -639,3 +639,29 @@ Future positive comparator invocation must combine that separate classification 
 `PROJECT_CURRENT_FIRST_CANARY_OEE = NOT_AUTHORIZED`.
 
 OBL032 remains blocked on explicit HQ OBL031 adoption and subsequent exact production prerequisites.
+
+
+## GT34 POST-TRANSFER DUAL-LANE HQ ADJUDICATION
+
+HQ consumed SUB-VOZHD A tip `eba17fadb00492a08bfcf6163b60d09158fbb583`.
+
+Lane A:
+- fresh hostile defect accepted;
+- no current exact D08 `EmpiricalPredicate@1.0.0` PREDICATE_GRAMMAR authority snapshot recovered;
+- `OBL057` created as exact D08 grammar-authority prerequisite;
+- `OBL031` is blocked on OBL057;
+- SUB-VOZHD A retains OBL057 -> OBL031.
+
+Lane B:
+- first-positive OEE preflight accepted;
+- `OBL058` causal-use source authority OPEN;
+- `OBL059` direct positive-applicability source authority OPEN;
+- `OBL060` contact-witness-independence source authority OPEN;
+- `OBL061` first-canary current runtime instance chain BLOCKED on OBL058/059/060;
+- new SUB-VOZHD E owns OBL058-061.
+
+Existing ADP-007/008/019 authority survives unchanged; their missing first-canary fact instances are not reclassified as missing authority.
+
+No current positive runtime action is authorized.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
