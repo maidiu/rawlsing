@@ -1,0 +1,211 @@
+name: B20I03R transient exact negative-fact diagnostic
+
+on:
+  push:
+    branches:
+      - agent/rabochii-subv-b-as4i-route-c-i03-qualification-fixture-repair-r1
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact B20I03R handoff tree
+        uses: actions/checkout@v4
+        with:
+          ref: 1c609a5b6ac3c093a37420e8dc7b7ed0e98449b8
+          fetch-depth: 0
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Instantiate exact diagnostic environment
+        run: python -m pip install --disable-pip-version-check pyarrow==25.0.1 pandas pytest
+
+      - name: Expose exact I03 negative fact and originating exception
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT="$RUNNER_TEMP/b20i03r-diagnostic"
+          mkdir -p "$OUT"
+          DRIVER='data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B20_AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_R1/01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py'
+
+          python - <<'PY' > "$OUT/environment.json"
+          import json, platform, sys, pandas, pyarrow
+          print(json.dumps({
+              "python_version": sys.version,
+              "python_implementation": platform.python_implementation(),
+              "pyarrow_version": pyarrow.__version__,
+              "pandas_version": pandas.__version__,
+          }, sort_keys=True, separators=(",", ":")))
+          PY
+          git rev-parse HEAD > "$OUT/executed_tree_head.txt"
+          git hash-object rawlsing_next/pre553_route_c_accelerators.py > "$OUT/implementation_git_blob.txt"
+          git hash-object "$DRIVER" > "$OUT/driver_git_blob.txt"
+
+          PYTHONPATH="$PWD" python - "$PWD/$DRIVER" "$OUT" <<'PY' >"$OUT/stdout.txt" 2>"$OUT/stderr.txt"
+          import importlib.util, json, pathlib, sys, tempfile, traceback
+
+          driver_path=pathlib.Path(sys.argv[1]); out=pathlib.Path(sys.argv[2])
+          spec=importlib.util.spec_from_file_location("_b20i03r_driver", driver_path)
+          if spec is None or spec.loader is None:
+              raise RuntimeError("cannot load driver")
+          m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+
+          import rawlsing_next.pre553_discovery_exact as d
+          import rawlsing_next.pre553_empirical_query as q
+          from rawlsing_next.pre553_c11_repository import C11Repository
+          from rawlsing_next.pre553_source_backed_c11_facade import build_validated_source_backed_c11_release
+
+          # Reconstruct only the proven-good cacheless frontier, no Route-C implementation required.
+          fx, incidence, stream, projection, determinants = m._route_c_fixture("deterministic")
+          release = build_validated_source_backed_c11_release(incidence, projection)
+          source = m._runtime_source(fx, release)
+          qauth = m._query_authority("b20-route-c-query")
+          all_p = m._branch_predicate(source, qauth, tag="b20-all")
+          x1 = m._predicate(
+              source, qauth,
+              m._response_leaf(source, qauth, "X", 1),
+              tag="b20-x1",
+          )
+          dauth = m._d_auth("b20-route-c-discovery")
+          operation = "I03-OP-b20-route-c-discovery"
+          dquery = m._query(source, qauth, all_p, ("M",), tag="b20-discovery-template")
+          grammar = m._grammar(
+              operation=operation,
+              atoms=[m._atom("ALL", all_p, "BRANCH"), m._atom("X1", x1, "RESPONSE")],
+              templates=[m._qt("M", dquery)],
+              rules=[m._rule(
+                  "minority", "MINORITY_OR_NONMODAL_DEPARTURE", "SINGLE_ATOM",
+                  atom_ids=("X1",), baseline_atom_id="ALL", query_template_id="M",
+                  validation={"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
+              )],
+          )
+          da = m._discovery_authority(source, grammar, dauth, tag="b20-da")
+          registry = m._registry(source, qauth, dauth)
+
+          # Compile exact frontier so query refs can be labelled CONDITION / BASELINE.
+          definition=d._verify_discovery_authority(da, registry)
+          atoms=d._catalog_atoms(definition, (all_p,x1))
+          templates=d._catalog_templates(definition, (dquery,))
+          candidates=d._compile_frontier(definition, atoms, templates)
+          role_by_query={}
+          role_material=[]
+          for c in candidates:
+              for role in c.query_roles:
+                  role_by_query[role.query.ref.key]=role.role
+                  role_material.append({
+                      "candidate_id":c.candidate_id,
+                      "candidate_hash":c.candidate_hash,
+                      "role":role.role,
+                      "query_ref":role.query.ref.as_dict(),
+                      "predicate_ref":role.predicate.ref.as_dict(),
+                      "condition_predicate_ref":role.query.condition_predicate_ref,
+                  })
+
+          original_eval=q._evaluate_index_group
+          underlying=[]
+          def traced_eval(*args,**kwargs):
+              try:
+                  return original_eval(*args,**kwargs)
+              except Exception as exc:
+                  underlying.append({
+                      "exception_class":f"{type(exc).__module__}.{type(exc).__qualname__}",
+                      "exception_message":str(exc),
+                      "traceback":traceback.format_exc(),
+                  })
+                  raise
+          q._evaluate_index_group=traced_eval
+
+          original_exec=d.execute_empirical_query
+          calls=[]
+          def traced_exec(**kwargs):
+              before=len(underlying)
+              result=original_exec(**kwargs)
+              new_underlying=underlying[before:]
+              calls.append({
+                  "role":role_by_query.get(kwargs["query"].ref.key,"UNKNOWN"),
+                  "query_ref":kwargs["query"].ref.as_dict(),
+                  "predicate_ref":kwargs["predicate"].ref.as_dict(),
+                  "condition_predicate_ref":kwargs["query"].condition_predicate_ref,
+                  "risk_set_ref":kwargs["query"].risk_set_ref,
+                  "target_refs":list(kwargs["query"].target_refs),
+                  "target_topology":kwargs["query"].target_arity_and_topology,
+                  "query_universe_refs":list(kwargs["query"].empirical_universe_refs),
+                  "release_refs":[r.as_dict() for r in kwargs["release_refs"]],
+                  "underlying_exceptions":new_underlying,
+                  "facts":[{
+                      "fact_ref":f.ref.as_dict(),
+                      "typed_state":f.typed_state,
+                      "execution_detail":f.execution_detail,
+                      "empirical_universe_refs":list(f.empirical_universe_refs),
+                      "source_empirical_provenance_refs":list(f.source_empirical_provenance_refs),
+                      "risk_set_ref":f.risk_set_ref,
+                      "target_topology":f.target_topology,
+                      "condition_predicate_ref":f.condition_predicate_ref,
+                      "p02_failure_state":getattr(f,"p02_failure_state",None),
+                  } for f in result.facts],
+              })
+              return result
+          d.execute_empirical_query=traced_exec
+
+          terminal_exception=None
+          try:
+              d.execute_exact_bounded_discovery(
+                  repository=source["repo"],
+                  discovery_authority=da,
+                  authority_registry=registry,
+                  release_refs=(release.release_ref,),
+                  predicate_catalog=(all_p,x1),
+                  query_template_catalog=(dquery,),
+              )
+          except Exception as exc:
+              terminal_exception={
+                  "exception_class":f"{type(exc).__module__}.{type(exc).__qualname__}",
+                  "exception_message":str(exc),
+                  "traceback":traceback.format_exc(),
+              }
+
+          negative=[]
+          for call in calls:
+              for f in call["facts"]:
+                  if f["typed_state"]=="INTEGRITY_FAILURE":
+                      negative.append({**call,"facts":[f]})
+
+          payload={
+              "schema":"B20I03R_EXACT_NEGATIVE_FACT_DIAGNOSTIC@1.0.0",
+              "executed_tree":"1c609a5b6ac3c093a37420e8dc7b7ed0e98449b8",
+              "role_material":role_material,
+              "i03_calls":calls,
+              "integrity_failure_calls":negative,
+              "terminal_exception":terminal_exception,
+              "integrity_failure_count":len(negative),
+          }
+          data=json.dumps(payload,sort_keys=True,separators=(",",":"))+"\n"
+          (out/"diagnostic.json").write_text(data,encoding="utf-8")
+          print(json.dumps({
+              "integrity_failure_count":len(negative),
+              "terminal_exception":terminal_exception and terminal_exception["exception_message"],
+              "roles":[x["role"] for x in negative],
+              "details":[x["facts"][0]["execution_detail"] for x in negative],
+              "underlying":[x["underlying_exceptions"] for x in negative],
+          },sort_keys=True))
+          if not negative:
+              raise SystemExit("diagnostic failed to expose INTEGRITY_FAILURE fact")
+          PY
+          sha256sum "$OUT/diagnostic.json" | awk '{print $1}' > "$OUT/diagnostic_sha256.txt"
+          sha256sum "$OUT/stdout.txt" | awk '{print $1}' > "$OUT/stdout_sha256.txt"
+          sha256sum "$OUT/stderr.txt" | awk '{print $1}' > "$OUT/stderr_sha256.txt"
+
+      - name: Upload B20I03R diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b20i03r-exact-negative-fact-diagnostic
+          path: ${{ runner.temp }}/b20i03r-diagnostic
+          if-no-files-found: error
