@@ -1,0 +1,43 @@
+{
+  "schema": "B20Q2_COMMON_HARNESS_INTAKE_HANDOFF@1.0.0",
+  "status": "NOT_READY__RETURN_TO_SUB_VOZHD_B",
+  "terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION__EXACT_BLOCKER_PROVED",
+  "ready_for_common_abc_harness_intake": false,
+  "pass_target": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+  "pass_target_achieved": false,
+  "exact_blocker": {
+    "class": "EXACT_BOUNDED_DISCOVERY_I03_INTEGRITY_FAILURE",
+    "exception_type": "rawlsing_next.pre553_discovery_exact.ExactBoundedCoverageError",
+    "exception_message": "I03 integrity failure cannot be laundered into discovery coverage",
+    "driver_function": "_run_once",
+    "driver_line": 323,
+    "driver_operation": "cacheless_discovery = execute_exact_bounded_discovery(...)",
+    "discovery_call_chain": [
+      "execute_exact_bounded_discovery line 1005",
+      "_evaluate_candidate line 927",
+      "_terminal_fact_class line 770"
+    ],
+    "stage": "CACHELESS_I05_DISCOVERY__BEFORE_ACCELERATED_DISCOVERY_AND_RECEIPT_PARITY",
+    "normalized_stderr_sha256": "4c72e94c6e401fb17cd811485d86284b0597aff1c0681a079dfe1a639350f7f5"
+  },
+  "evidence": {
+    "workflow_run_id": 34280598705,
+    "artifact_id": 10077452545,
+    "normalized_stderr_sha256": "4c72e94c6e401fb17cd811485d86284b0597aff1c0681a079dfe1a639350f7f5",
+    "independent_clean_outer_reproductions": 2,
+    "frozen_implementation_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+    "frozen_driver_blob": "5377c70b5b3b9110cfd719b62ae1c3e2ceb07843"
+  },
+  "smallest_lawful_next_action": "SUB_VOZHD_B must adjudicate the exact I03-integrity failure surfaced by the frozen Route-C full qualification driver before any new repair or Q3 court.",
+  "forbidden_here": [
+    "modify frozen implementation",
+    "modify frozen qualification driver",
+    "claim Route-C qualification PASS",
+    "enter common A/B/C harness",
+    "execute C09 or WVS7",
+    "benchmark or rank",
+    "launch OBL037",
+    "select architecture/topology",
+    "enter positive V3"
+  ]
+}

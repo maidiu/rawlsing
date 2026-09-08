@@ -1,0 +1,79 @@
+{
+  "schema": "B20Q2_RUN2_FULL_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "EXACT_BLOCKER_PROVED",
+  "terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION__EXACT_BLOCKER_PROVED",
+  "pass_target": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+  "pass_target_achieved": false,
+  "outer_run_index": 2,
+  "clean_outer_root_pre_status": "",
+  "executed_tree_head": "41c14af0523ffb2050774fcce14e8944cba17436",
+  "frozen_inputs": {
+    "implementation": {
+      "path": "rawlsing_next/pre553_route_c_accelerators.py",
+      "git_blob_sha1": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "sha256": "a07e73c514c6216c350ac7a69cb099256cf71680a49fe0796aac6729483b417d"
+    },
+    "driver": {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B20_AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_R1/01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py",
+      "git_blob_sha1": "5377c70b5b3b9110cfd719b62ae1c3e2ceb07843",
+      "sha256": "73d9d9efd5bf70a181a7ddac3d98a5e8f7a90277765945862c402b4656c67350"
+    },
+    "pyarrow_version": "25.0.1"
+  },
+  "environment": {
+    "python_version": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+    "python_implementation": "CPython",
+    "pyarrow_version": "25.0.1",
+    "pandas_version": "3.0.5"
+  },
+  "exact_command": "PYTHONPATH=/home/runner/work/_temp/b20q2-outer-2 python /home/runner/work/_temp/b20q2-outer-2/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B20_AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_R1/01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py --output /home/runner/work/_temp/b20q2-artifact/run2/qualification_receipt.json",
+  "exit_code": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "74937b18951e57e980eedf0dad37ba52c83d3c26e85723183a7d8951b1898f80",
+  "normalized_stderr_sha256": "4c72e94c6e401fb17cd811485d86284b0597aff1c0681a079dfe1a639350f7f5",
+  "driver_output_receipt_emitted": false,
+  "driver_output_receipt_sha256": null,
+  "reached_before_failure": {
+    "repaired_driver_fixture": true,
+    "cacheless_source_backed_c11_release": true,
+    "cacc1_build": true,
+    "cacc1_read": true,
+    "cacc1_rehydrated_release_identity_parity": true,
+    "cacheless_empirical_query": true,
+    "cacc2_build": true,
+    "cacc2_read": true,
+    "cacc2_mask_membership_checks": true,
+    "accelerated_empirical_query": true,
+    "cacheless_vs_accelerated_query_identity_parity": true,
+    "cacheless_i05_discovery_entered": true
+  },
+  "not_reached_due_to_failure": {
+    "cacheless_i05_discovery_completed": false,
+    "accelerated_i05_discovery": false,
+    "i05_discovery_result_receipt_identity_parity": false,
+    "stale_cacc1_hostile": false,
+    "corrupt_cacc1_hostile": false,
+    "stale_cacc2_hostile": false,
+    "corrupt_cacc2_hostile": false,
+    "unauthorized_extra_cache_material_hostile": false,
+    "delete_regenerate_proof": false,
+    "internal_two_fresh_process_replay": false,
+    "qualification_pass_receipt": false
+  },
+  "exact_failure": {
+    "class": "EXACT_BOUNDED_DISCOVERY_I03_INTEGRITY_FAILURE",
+    "exception_type": "rawlsing_next.pre553_discovery_exact.ExactBoundedCoverageError",
+    "exception_message": "I03 integrity failure cannot be laundered into discovery coverage",
+    "driver_function": "_run_once",
+    "driver_line": 323,
+    "driver_operation": "cacheless_discovery = execute_exact_bounded_discovery(...)",
+    "discovery_call_chain": [
+      "execute_exact_bounded_discovery line 1005",
+      "_evaluate_candidate line 927",
+      "_terminal_fact_class line 770"
+    ],
+    "stage": "CACHELESS_I05_DISCOVERY__BEFORE_ACCELERATED_DISCOVERY_AND_RECEIPT_PARITY",
+    "normalized_stderr_sha256": "4c72e94c6e401fb17cd811485d86284b0597aff1c0681a079dfe1a639350f7f5"
+  },
+  "frozen_code_modified": false
+}

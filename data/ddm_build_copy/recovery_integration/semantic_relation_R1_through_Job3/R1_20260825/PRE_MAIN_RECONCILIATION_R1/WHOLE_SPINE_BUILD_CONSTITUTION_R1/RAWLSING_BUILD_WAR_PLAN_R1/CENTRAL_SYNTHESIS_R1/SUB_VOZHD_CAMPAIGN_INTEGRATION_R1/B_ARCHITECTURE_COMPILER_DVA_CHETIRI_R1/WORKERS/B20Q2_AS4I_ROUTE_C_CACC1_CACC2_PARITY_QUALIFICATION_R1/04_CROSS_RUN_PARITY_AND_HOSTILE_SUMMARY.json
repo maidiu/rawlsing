@@ -1,0 +1,58 @@
+{
+  "schema": "B20Q2_CROSS_RUN_PARITY_AND_HOSTILE_SUMMARY@1.0.0",
+  "status": "EXACT_BLOCKER_REPRODUCED",
+  "terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION__EXACT_BLOCKER_PROVED",
+  "pass_target": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+  "pass_target_achieved": false,
+  "outer_run_count": 2,
+  "both_outer_roots_clean_at_start": true,
+  "both_exact_tree_heads": true,
+  "both_frozen_blob_identities_match": true,
+  "both_exit_codes": 1,
+  "raw_stderr_hashes_differ_only_due_to_outer_root_path": true,
+  "normalized_stderr_exact_match": true,
+  "normalized_stderr_sha256": "4c72e94c6e401fb17cd811485d86284b0597aff1c0681a079dfe1a639350f7f5",
+  "exact_failure": {
+    "class": "EXACT_BOUNDED_DISCOVERY_I03_INTEGRITY_FAILURE",
+    "exception_type": "rawlsing_next.pre553_discovery_exact.ExactBoundedCoverageError",
+    "exception_message": "I03 integrity failure cannot be laundered into discovery coverage",
+    "driver_function": "_run_once",
+    "driver_line": 323,
+    "driver_operation": "cacheless_discovery = execute_exact_bounded_discovery(...)",
+    "discovery_call_chain": [
+      "execute_exact_bounded_discovery line 1005",
+      "_evaluate_candidate line 927",
+      "_terminal_fact_class line 770"
+    ],
+    "stage": "CACHELESS_I05_DISCOVERY__BEFORE_ACCELERATED_DISCOVERY_AND_RECEIPT_PARITY",
+    "normalized_stderr_sha256": "4c72e94c6e401fb17cd811485d86284b0597aff1c0681a079dfe1a639350f7f5"
+  },
+  "parity_reached": {
+    "cacc1_source_backed_release_identity_parity": true,
+    "cacheless_vs_accelerated_query_identity_parity": true
+  },
+  "required_full_court_not_reached": {
+    "i05_discovery_result_receipt_identity_parity": true,
+    "hostile_court": true,
+    "delete_regenerate": true,
+    "internal_fresh_process_replay": true
+  },
+  "hostile_summary": {
+    "status": "NOT_ENTERED__BLOCKED_BEFORE_HOSTILE_SECTION",
+    "stale_cacc1": "NOT_REACHED",
+    "corrupt_cacc1": "NOT_REACHED",
+    "stale_cacc2": "NOT_REACHED",
+    "corrupt_cacc2": "NOT_REACHED",
+    "unauthorized_extra_cache_material": "NOT_REACHED"
+  },
+  "prohibited_execution": {
+    "real_c09": 0,
+    "wvs7": 0,
+    "benchmark_or_ranking": 0,
+    "common_harness": 0,
+    "obl037": 0,
+    "architecture_selection": 0,
+    "positive_v3": 0
+  },
+  "full_route_c_qualification_claimed": false
+}
