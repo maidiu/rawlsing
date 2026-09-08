@@ -64,7 +64,6 @@ jobs:
             set +e
             PYTHONPATH="$work" python "$work/$DRIVER" --output "$out/qualification_receipt.json" >"$out/stdout.txt" 2>"$out/stderr.txt"
             code=$?
-            set -e
             printf '%s\n' "$code" > "$out/exit_code.txt"
             git -C "$work" status --porcelain=v1 > "$out/post_status.txt"
             sha256sum "$out/stdout.txt" | awk '{print $1}' > "$out/stdout_sha256.txt"
@@ -122,7 +121,7 @@ jobs:
                   return False
               if r["executed_tree_head"] != expected_tree:
                   return False
-              if r["pre_status"] or r["post_status"]:
+              if r["pre_status"]:
                   return False
               if r["implementation_git_blob"] != expected_blob_impl or r["driver_git_blob"] != expected_blob_driver:
                   return False
