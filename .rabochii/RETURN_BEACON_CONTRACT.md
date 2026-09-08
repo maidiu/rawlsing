@@ -37,7 +37,7 @@ If any of those checks fails, the beacon MUST NOT emit a certified-completion no
 
 For all newly commissioned `agent/*` repository work:
 
-- final commit message SHOULD begin with or clearly contain `Return`;
+- final commit message MUST begin with or clearly contain `Return`, so detached/older ancestry remains discoverable by the universal fallback sweep;
 - final return packet and `.rabochii/return_manifest.json` MUST be written together;
 - a worker MUST NOT write the manifest while required work is still pending;
 - a worker MUST NOT use the manifest to promise future/background work;
@@ -46,12 +46,13 @@ For all newly commissioned `agent/*` repository work:
 
 ## Notification paths
 
-The central workflow `.github/workflows/rabochii-return-beacon.yml` provides two paths:
+The central workflow `.github/workflows/rabochii-return-beacon.yml` provides three complementary paths:
 
-1. **Fast governed-return watch:** completion of `Rabochii Governed Bounded Court` starts a bounded watcher for that exact worker branch. It waits for a certified durable return instead of relying on the ChatGPT UI.
-2. **Repository sweep:** every five minutes, and on manual dispatch, the beacon checks recent `agent/*` branch tips whose commit headline is a return. This covers repo work that does not use the governed court and recovers notifications missed by the fast path.
+1. **Immediate moved-branch check:** an `agent/**` push on ancestry carrying the beacon checks that exact moved branch immediately. Intermediate pushes are silent; only a certifiable terminal tip is announced.
+2. **Fast governed-return watch:** completion of `Rabochii Governed Bounded Court` starts a bounded watcher for that exact worker branch. This protects workers whose ancestry predates the push trigger and waits for a certified durable return instead of relying on the ChatGPT UI.
+3. **Universal fallback sweep:** every five minutes, and on manual dispatch, the default-branch beacon scans the complete `refs/heads/` namespace, filters recent `agent/*` tips whose commit headline contains `Return`, and submits them to the same certification core. This recovers notifications missed by either fast path and covers repository work that does not use the governed court.
 
-Both paths deduplicate by exact `branch + certified tip SHA` and post to issue `#304` (`Rawlsing Worker Return Inbox`).
+All certification paths use the same exact `branch + certified tip SHA` marker in issue `#304` (`Rawlsing Worker Return Inbox`). Repeated observation of the same certified tip is therefore notification-idempotent.
 
 ## Legacy compatibility
 
