@@ -1,0 +1,101 @@
+{
+  "schema": "B20Q3_CROSS_RUN_PARITY_AND_HOSTILE_SUMMARY@1.0.0",
+  "status": "PASS",
+  "terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+  "outer_run_count": 2,
+  "complete_court_executions": 6,
+  "explanation": "Each of two outer driver executions ran one direct _run_once court plus two independent -I child-process _run_once courts.",
+  "raw_driver_receipt_sha256": {
+    "run1": "9d3136a27c334a2103b9d7767e47da2da698c521ee763cef8e826712f6500e66",
+    "run2": "deeb97ff79efd4557394589a7a95f03a29e4c961cd0eff17389e7a7c1ce5d835",
+    "equal": false,
+    "sole_reason_for_difference": "fresh_process_replay.independent_roots contains genuinely distinct filesystem roots"
+  },
+  "structural_diff_between_driver_receipts": [
+    "/fresh_process_replay/independent_roots/0",
+    "/fresh_process_replay/independent_roots/1"
+  ],
+  "normalized_semantic_receipt_sha256": {
+    "run1": "4fc92152d3c3f6590635d94ce619767acd0ec719ca854a161550a5ee1ba76355",
+    "run2": "4fc92152d3c3f6590635d94ce619767acd0ec719ca854a161550a5ee1ba76355",
+    "equal": true,
+    "normalization": "Replace only the two diagnostic independent-root path strings with common placeholders."
+  },
+  "exact_cross_run_identities": {
+    "cacc1": {
+      "determinant": "d2cbe706d99e1e21ee9c7d03a5c32ccead83149e3cad0b79f0e4682166ae2b4f",
+      "logical": "e683af11b8c3ae9f7ee897c4f6c5080cfefc8d2bd9636624678a3b0205919a2c",
+      "physical": "5f70745f40fe8b21b7bcde8892a17b8f3fd62fdca1111af73c3fba3734d9b2c7"
+    },
+    "cacc2": {
+      "determinant": "f9ec076044ecf348519dce7a96b8cd1f1df92e0cbad705ce9723d7eb2b36a847",
+      "logical": "b1d8bc3a3788256992362228462f1da7c6346416ad862ba71485865ea22f2583",
+      "risk_sha256": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+      "mask_hashes": {
+        "A000": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+        "A1RAPP": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+        "A1SMIS": "e52d9c508c502347344d8c07ad91cbd6068afc75ff6292f062a09ca381c89e71",
+        "A1SSPS": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A1SSUB": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+        "A1V1": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+        "A1V2": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A1V3": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A1V4": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A1V5": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A2RAPP": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+        "A2SMIS": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A2SSPS": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A2SSUB": "ca358758f6d27e6cf45272937977a748fd88391db679ceda7dc7bf1f005ee879",
+        "A2V1": "67586e98fad27da0b9968bc039a1ef34c939b9b8e523a8bef89d478608c5ecf6",
+        "A2V2": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A2V3": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A2V4": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "A2V5": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+      }
+    },
+    "cacheless_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-deterministic",
+      "content_hash": "c5de38a6ca54ebfacbec12f1c77708200b05ae9a2912123d466fd52b8312ec39"
+    },
+    "cacheless_replay_ref": {
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:6413281417b2fc5d157830df7721d892c207692307a5729a8f5d1bb57e4764ef",
+      "content_hash": "6413281417b2fc5d157830df7721d892c207692307a5729a8f5d1bb57e4764ef"
+    },
+    "ordinary_query_fact_ref": {
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:489f211c840f45db9081c6348521daa632f60f4796f239d7fcf16c7ae8d82fae",
+      "content_hash": "489f211c840f45db9081c6348521daa632f60f4796f239d7fcf16c7ae8d82fae"
+    },
+    "discovery_frontier_ref": {
+      "kind": "PRE553_I05_EVALUATED_FRONTIER",
+      "object_id": "urn:rawlsing:pre553:i05:frontier:sha256:dade847ca36150e4298c2295dd8f3cbac1e4191f0144fc50e7d0752207d06808",
+      "content_hash": "dade847ca36150e4298c2295dd8f3cbac1e4191f0144fc50e7d0752207d06808"
+    },
+    "discovery_receipt_ref": {
+      "kind": "DiscoveryResultReceipt@1.0.0",
+      "object_id": "urn:rawlsing:pre553:DiscoveryResultReceipt:sha256:cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a",
+      "content_hash": "cdb6dd705accfaf30a58547109c208ef72bf8531c1287f74b0faf19e3743db6a"
+    }
+  },
+  "hostiles_both_runs": {
+    "stale_cacc1": "PASS_FAIL_CLOSED",
+    "corrupt_cacc1": "PASS_FAIL_CLOSED",
+    "stale_cacc2": "PASS_FAIL_CLOSED",
+    "corrupt_cacc2": "PASS_FAIL_CLOSED",
+    "unauthorized_extra_cache_material": "PASS_FAIL_CLOSED"
+  },
+  "delete_regenerate_both_runs": "PASS_EXACT_IDENTITIES_PRESERVED",
+  "internal_fresh_process_replay_both_runs": "PASS",
+  "exact_accelerator_count": 2,
+  "zero_counts": {
+    "real_c09": 0,
+    "wvs7": 0,
+    "ranking_or_benchmark": 0,
+    "hb04": 0,
+    "obl037": 0,
+    "architecture_or_topology_selection": 0,
+    "positive_v3": 0
+  }
+}
