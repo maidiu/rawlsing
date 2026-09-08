@@ -368,18 +368,26 @@ def _routing_membership(projection: GovernedC11Projection) -> tuple[Mapping[Any,
 
 
 def _state_envelope(cell: PhysicalCell, projected_state: str) -> str:
+    if cell.source_missing_declaration is not None:
+        raise RouteCAcceleratorError(
+            "frozen CACC1 logical layout has no source-missing-declaration field; "
+            "fallback to cacheless exact source rather than widen accelerator semantics"
+        )
     return _cjson({
         "physical_missing_state": cell.missing_state.value,
         "projected_response_typed_state": projected_state,
-        "source_missing_declaration": canonicalize(cell.source_missing_declaration),
     })
 
 
 def _coordinate_envelope(cell: PhysicalCell) -> str:
+    if cell.source_missing_declaration is not None:
+        raise RouteCAcceleratorError(
+            "frozen CACC1 coordinate layout has no source-missing-declaration field; "
+            "fallback to cacheless exact source rather than widen accelerator semantics"
+        )
     return _cjson({
         "raw_value": canonicalize(cell.raw_value),
         "physical_missing_state": cell.missing_state.value,
-        "source_missing_declaration": canonicalize(cell.source_missing_declaration),
     })
 
 
@@ -503,10 +511,7 @@ def _validate_cacc1_row(row: Mapping[str, Any], expected_ordinal: int) -> None:
         state = _load_cjson(row[name])
         if not isinstance(state, Mapping):
             raise RouteCCorruptAccelerator("CACC1 response state envelope malformed")
-        if set(state) != {
-            "physical_missing_state", "projected_response_typed_state",
-            "source_missing_declaration",
-        }:
+        if set(state) != {"physical_missing_state", "projected_response_typed_state"}:
             raise RouteCCorruptAccelerator("CACC1 response state envelope changed")
         try:
             PhysicalMissingState(state["physical_missing_state"])
@@ -515,7 +520,7 @@ def _validate_cacc1_row(row: Mapping[str, Any], expected_ordinal: int) -> None:
     for name in CACC1_COORDINATE_NAMES:
         envelope = _load_cjson(row[f"{name}_raw_cjson"])
         if not isinstance(envelope, Mapping) or set(envelope) != {
-            "raw_value", "physical_missing_state", "source_missing_declaration",
+            "raw_value", "physical_missing_state",
         }:
             raise RouteCCorruptAccelerator("CACC1 coordinate envelope changed")
         try:
@@ -557,10 +562,10 @@ def read_cacc1(
         if reader.num_record_batches != 1:
             raise RouteCCorruptAccelerator("CACC1 must contain exactly one record batch")
         batch = reader.get_batch(0)
-    if not batch.schema.equals(_cacc1_schema(pa), check_metadata=True):
-        raise RouteCCorruptAccelerator("CACC1 Arrow schema changed")
-    data = batch.to_pydict()
-    row_count = batch.num_rows
+        if not batch.schema.equals(_cacc1_schema(pa), check_metadata=True):
+            raise RouteCCorruptAccelerator("CACC1 Arrow schema changed")
+        data = batch.to_pydict()
+        row_count = batch.num_rows
     rows = []
     for index in range(row_count):
         row = {name: data[name][index] for name in CACC1_FIELD_ORDER}
@@ -591,9 +596,8 @@ def _row_to_cells(row: Mapping[str, Any], projection: GovernedC11Projection) -> 
         raw = _load_cjson(row[f"{name}_raw"])
         state = _load_cjson(row[f"{name}_state"])
         physical_state = PhysicalMissingState(state["physical_missing_state"])
-        declaration = state["source_missing_declaration"]
         cell = PhysicalCell(
-            row["row_ordinal"], ordinals[name], name, raw, physical_state, declaration, None
+            row["row_ordinal"], ordinals[name], name, raw, physical_state, None, None
         )
         projected = _projected_response_state(cell, response[name])
         if projected != state["projected_response_typed_state"]:
@@ -606,7 +610,7 @@ def _row_to_cells(row: Mapping[str, Any], projection: GovernedC11Projection) -> 
         result.append(PhysicalCell(
             row["row_ordinal"], ordinals[name], name, envelope["raw_value"],
             PhysicalMissingState(envelope["physical_missing_state"]),
-            envelope["source_missing_declaration"], None,
+            None, None,
         ))
     return tuple(result)
 
