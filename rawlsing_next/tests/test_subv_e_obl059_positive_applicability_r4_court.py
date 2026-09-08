@@ -15,4 +15,23 @@ spec.loader.exec_module(module)
 
 
 class TestOBL059R4BoundedRepair(module.CourtR4):
-    pass
+    def test_43_unrelated_programmer_errors_are_not_masked(self):
+        """Route the inherited R3 preservation check to R4's actual R3 module."""
+        original = module.r4._r3.evaluate_direct_positive_applicability
+
+        def raise_type_error(_packet):
+            raise TypeError("deliberate-programmer-error")
+
+        def raise_value_error(_packet):
+            raise ValueError("deliberate-programmer-error")
+
+        try:
+            module.r4._r3.evaluate_direct_positive_applicability = raise_type_error
+            with self.assertRaisesRegex(TypeError, "deliberate-programmer-error"):
+                module.r4.evaluate_direct_positive_applicability(module.fixture())
+
+            module.r4._r3.evaluate_direct_positive_applicability = raise_value_error
+            with self.assertRaisesRegex(ValueError, "deliberate-programmer-error"):
+                module.r4.evaluate_direct_positive_applicability(module.fixture())
+        finally:
+            module.r4._r3.evaluate_direct_positive_applicability = original
