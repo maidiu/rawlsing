@@ -1,0 +1,44 @@
+{
+  "schema": "B20Q_COMMON_HARNESS_INTAKE_HANDOFF@1.0.0",
+  "status": "NOT_READY__RETURN_TO_SUB_VOZHD_B",
+  "terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION__EXACT_BLOCKER_PROVED",
+  "ready_for_common_abc_harness_intake": false,
+  "pass_target": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+  "pass_target_achieved": false,
+  "exact_blocker": {
+    "class": "FROZEN_QUALIFICATION_DRIVER_CODE_FAILURE",
+    "id": "B20Q-B01__ROUTING_FACT_QUESTION_REF_UNHASHABLE_IN_FROZEN_FIXTURE_FILTER",
+    "exception": "TypeError: unhashable type: 'dict'",
+    "file": "01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py",
+    "function": "_route_c_fixture",
+    "line": 156,
+    "expression": "fact.question_or_target_ref in allowed_qrefs",
+    "statement": "The frozen qualification driver attempts set-membership using fact.question_or_target_ref, which is a dict at runtime. Python raises TypeError before CACC1 construction begins.",
+    "execution_boundary": "PRE_CACC1_BUILD__NO_ACCELERATOR_QUALIFICATION_ENTERED",
+    "self_repair_authorized": false
+  },
+  "evidence": {
+    "authoritative_workflow_run_id": 34266788615,
+    "authoritative_artifact_id": 10072160387,
+    "environment": {
+      "python_version": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+      "python_implementation": "CPython",
+      "pyarrow_version": "25.0.1",
+      "pandas_version": "3.0.5"
+    },
+    "normalized_stderr_sha256": "79c75644492d00c6821dd40bb739478451c10017eb3b252d16db5991d9d52ac5",
+    "independent_clean_worktree_reproductions": 2
+  },
+  "smallest_lawful_next_action": "SUB_VOZHD_B must adjudicate/commission any qualification-driver repair; B20Q has no self-repair authority.",
+  "forbidden_here": [
+    "edit frozen Route-C implementation",
+    "edit frozen qualification driver",
+    "claim Route-C qualification PASS",
+    "enter common A/B/C harness",
+    "execute C09",
+    "execute WVS7",
+    "rank/select architecture",
+    "launch OBL037",
+    "enter positive V3"
+  ]
+}

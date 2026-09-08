@@ -1,0 +1,53 @@
+{
+  "schema": "B20Q_PRIMARY_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "EXACT_BLOCKER_PROVED",
+  "terminal": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION__EXACT_BLOCKER_PROVED",
+  "pass_target": "AS4I_ROUTE_C_CACC1_CACC2_PARITY_QUALIFICATION_COMPLETE__READY_FOR_COMMON_ABC_HARNESS_INTAKE",
+  "pass_target_achieved": false,
+  "environment": {
+    "python_version": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]",
+    "python_implementation": "CPython",
+    "pyarrow_version": "25.0.1",
+    "pandas_version": "3.0.5"
+  },
+  "exact_command_pattern": "PYTHONPATH=<exact-worktree> python <exact-worktree>/data/.../B20_AS4I_ROUTE_C_CACC1_CACC2_PARITY_ADAPTER_R1/01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py --output <private-output>/qualification_receipt.json",
+  "runs": [
+    {
+      "index": 1,
+      "worktree": "b20q-work-1",
+      "tree_head": "3cc730b04a4da31b97b80c8d1bf612da4301a9bf",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "968eefe83045c74e3158b8a426c2f5c177baf84fdd21ddef7c401da005fc6327",
+      "qualification_receipt_sha256": null
+    },
+    {
+      "index": 2,
+      "worktree": "b20q-work-2",
+      "tree_head": "3cc730b04a4da31b97b80c8d1bf612da4301a9bf",
+      "exit_code": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "66374e7740bcd03772ffbcd569eb00df98e4b5511d4639f7aea8d03f5cdcb96c",
+      "qualification_receipt_sha256": null
+    }
+  ],
+  "normalized_stderr_sha256": "79c75644492d00c6821dd40bb739478451c10017eb3b252d16db5991d9d52ac5",
+  "normalized_failure_reproduced": true,
+  "driver_qualification_receipt_emitted": false,
+  "driver_qualification_receipt_sha256": null,
+  "absence_reason": "Driver exited with TypeError before main() could assemble/write B20_ROUTE_C_IMPLEMENTATION_QUALIFICATION receipt.",
+  "exact_blocker": {
+    "class": "FROZEN_QUALIFICATION_DRIVER_CODE_FAILURE",
+    "id": "B20Q-B01__ROUTING_FACT_QUESTION_REF_UNHASHABLE_IN_FROZEN_FIXTURE_FILTER",
+    "exception": "TypeError: unhashable type: 'dict'",
+    "file": "01_ROUTE_C_IMPLEMENTATION_QUALIFICATION.py",
+    "function": "_route_c_fixture",
+    "line": 156,
+    "expression": "fact.question_or_target_ref in allowed_qrefs",
+    "statement": "The frozen qualification driver attempts set-membership using fact.question_or_target_ref, which is a dict at runtime. Python raises TypeError before CACC1 construction begins.",
+    "execution_boundary": "PRE_CACC1_BUILD__NO_ACCELERATOR_QUALIFICATION_ENTERED",
+    "self_repair_authorized": false
+  },
+  "frozen_code_modified": false,
+  "qualification_repair_attempted": false
+}
