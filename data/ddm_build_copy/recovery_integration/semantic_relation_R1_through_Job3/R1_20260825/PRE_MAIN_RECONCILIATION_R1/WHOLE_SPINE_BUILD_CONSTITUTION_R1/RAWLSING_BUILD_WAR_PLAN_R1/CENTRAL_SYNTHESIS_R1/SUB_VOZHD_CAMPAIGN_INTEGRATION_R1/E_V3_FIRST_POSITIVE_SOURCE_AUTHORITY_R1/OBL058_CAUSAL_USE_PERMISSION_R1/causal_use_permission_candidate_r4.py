@@ -432,7 +432,10 @@ def validate_receipt(receipt: Mapping[str, Any], *, expected_scope: ExactScope) 
     expected_scope.validate()
     if type(receipt) is not IssuedReceipt:
         raise PermissionContractError("receipt_not_issued_by_source_authority")
-    body_json = object.__getattribute__(receipt, "_body_json")
+    try:
+        body_json = object.__getattribute__(receipt, "_body_json")
+    except AttributeError as exc:
+        raise PermissionContractError("receipt_not_issued_by_source_authority") from exc
     if not isinstance(body_json, str) or not body_json:
         raise PermissionContractError("receipt_not_issued_by_source_authority")
     response = _service_request({
