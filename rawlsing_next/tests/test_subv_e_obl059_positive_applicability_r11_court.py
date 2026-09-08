@@ -1,6 +1,7 @@
 """Governed-court wrapper for frozen OBL059 R11 bounded repair."""
 from __future__ import annotations
 
+import copy
 import importlib.util
 from pathlib import Path
 
@@ -15,4 +16,19 @@ spec.loader.exec_module(module)
 
 
 class TestOBL059R11BoundedRepair(module.CourtR11):
-    pass
+    def test_131_unrelated_error_after_successful_preparation_remains_visible(self):
+        """Route inherited preservation check to R11's actual frozen delegate."""
+        original = module.r11._r10._r9._evaluate_prepared
+        packet = module.fixture()
+        packet["opportunity"] = module.r10_wrapper.module.MutableCarrier(
+            copy.deepcopy(packet["opportunity"])
+        )
+        try:
+            for exc_type in (TypeError, ValueError, RuntimeError):
+                def deliberate(_packet, exc_type=exc_type):
+                    raise exc_type("r10-post-preparation-programmer-error")
+                module.r11._r10._r9._evaluate_prepared = deliberate
+                with self.assertRaisesRegex(exc_type, "r10-post-preparation-programmer-error"):
+                    module.r11.evaluate_direct_positive_applicability(packet)
+        finally:
+            module.r11._r10._r9._evaluate_prepared = original
