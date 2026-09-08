@@ -7,6 +7,9 @@ The three overrides below correct runner-mechanics discovered by the first
 execution: CPython address reuse is allocator-dependent, and a second dynamic
 module must be registered in sys.modules before dataclass execution. The frozen
 matrix and the deterministic forked-process source-origin finding are unchanged.
+
+Evidence-of-record execution before this documentary annotation:
+`f36c039fd3d56314f8f95db615a1a90a4c162f78` / run `34251098195`.
 """
 from __future__ import annotations
 
@@ -59,9 +62,6 @@ class TestOBL058R5IndependentReview(module.OBL058R5IndependentReview):
                 replacement.close()
             return
 
-        # The runner did not recycle this address in the bounded loop. Prove the
-        # authoritative broker mapping nevertheless outlived the Python object:
-        # the same integer identity remains occupied until explicitly closed.
         try:
             with self.assertRaisesRegex(
                 module.PermissionContractError, "object_identity_already_issued"
