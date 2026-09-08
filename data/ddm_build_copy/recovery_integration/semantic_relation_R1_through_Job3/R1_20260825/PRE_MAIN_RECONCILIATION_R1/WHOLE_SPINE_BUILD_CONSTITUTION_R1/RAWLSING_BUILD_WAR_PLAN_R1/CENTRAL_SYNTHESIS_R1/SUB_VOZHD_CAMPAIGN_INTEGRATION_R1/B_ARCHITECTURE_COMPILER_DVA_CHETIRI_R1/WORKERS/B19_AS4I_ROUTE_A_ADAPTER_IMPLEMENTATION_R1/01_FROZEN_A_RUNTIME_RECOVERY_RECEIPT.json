@@ -1,0 +1,38 @@
+{
+  "schema": "B19_FROZEN_A_RUNTIME_RECOVERY_RECEIPT@1.0.0",
+  "status": "COMPLETE",
+  "frozen_runtime_ref": "d6206cd0e351100b64cdf3ace997733153c18eb7",
+  "implementation_commit": "c935c7003c6081f699968ee4385d6a91bba5f13e",
+  "recovery_mode": "EXACT_GIT_BLOB_IDENTITY__NO_HISTORY_MERGE",
+  "recovered_files": [
+    {
+      "path": "rawlsing_next/pre553_r5_model.py",
+      "blob_sha": "62ce608829c3d9c2fb7c999aefe40188637edf80"
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "blob_sha": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540"
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_seam.py",
+      "blob_sha": "cef326ebbc40468428378f7fdbe76e4756179f39"
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_compact_carrier.py",
+      "blob_sha": "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_single_pass_audit69.py",
+      "blob_sha": "ffb063b93c86e215604eecb29a9545c7efdff399"
+    }
+  ],
+  "verified_on_implementation_commit": true,
+  "excluded_historical_runtime": [
+    "rawlsing_next/pre553_r5_serial_turbo66.py",
+    "rawlsing_next/pre553_r5_shadow.py",
+    "rawlsing_next/pre553_r5_compact_shadow.py",
+    "rawlsing_next/pre553_r5_c11.py"
+  ],
+  "exclusion_reason": "NOT_IN_EXECUTABLE_IMPORT_CLOSURE_OF_THE_AUTHORIZED_REOPENED_PHYSICAL_CELL_TO_C05R2A_BRIDGE",
+  "unrelated_history_merged": false
+}
