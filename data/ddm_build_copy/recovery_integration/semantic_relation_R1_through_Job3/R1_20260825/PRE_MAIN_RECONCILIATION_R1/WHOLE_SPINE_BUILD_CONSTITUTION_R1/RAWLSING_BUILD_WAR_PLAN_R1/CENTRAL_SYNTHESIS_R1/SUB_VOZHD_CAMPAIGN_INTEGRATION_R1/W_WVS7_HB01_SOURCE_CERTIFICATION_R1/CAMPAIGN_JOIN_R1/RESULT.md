@@ -1,12 +1,12 @@
 # SUB-VOZHD W — WVS7 / HB01 SOURCE CERTIFICATION R1
 
-Status: `RETURNED_FAIL_CLOSED__HB01_NOT_CLOSABLE`
+Status: `ACTIVE__D12_PASS__D03_EXACT_ROUTING_UNKNOWN__D11_SUPPORTED_SCOPE_COMMISSION_REQUIRED`
 
-This campaign join supersedes its earlier same-path D12 wording that said the raw carrier was unavailable. The retained carrier is positively identified as `WVS Wave 7.sav.zip`; the remaining D12 problem is execution-host materialization, not carrier absence.
+This result supersedes every earlier campaign-grain D12 transport blocker.
 
-## Seven-lane join
+## Joined worker returns
 
-Documentary returns:
+Documentary:
 - W1R4 `1929f9535ea8a169af7a06d545dda2573cc44ebc`
 - W2R4 `b70cb97a3b309b1c13593fe2e15a265705d51419`
 - W3R4 `cac6b7f6495a93218070656ee2410f86bfa4a87e`
@@ -14,78 +14,64 @@ Documentary returns:
 - W5R4 `96298a26f459d271f0c0dc980b6058903d207a9d`
 - W6R4 `72f9ec8c5a10112bb9540e92b6c5cdd305845b96`
 
-Corrected D03/D12 replay return:
-- `1d4768b478750146b3b2d27787b0fd96fbeeefe5`
+D03/D12 source-backed replay:
+- `e404bc097f48a09265f1aec06e3d011a892f69c4`
 
-## Documentary result
+## Documentary state
 
-The R4 documentary residual search produced no lawful new positive claim-grain promotions.
+Unchanged:
+- 3/66 FULL
+- 3/66 PARTIAL
+- 60/66 UNRESOLVED
+- 222/585 documentary routing cells unresolved
 
-Exact campaign state therefore remains:
+Netherlands 2022 and Romania 2018 contradictions remain preserved.
 
-- country target/frame/design: **3/66 FULL**
-- **3 PARTIAL**
-- **60 UNRESOLVED**
-- documentary routing: **222/585 unresolved**
-- Netherlands 2022 source-owner title contradiction preserved without correction
-- Romania 2018 sample-size contradiction preserved without reconciliation
+The three documentary-full country scopes are:
+1. Australia 2018
+2. United Kingdom - Great Britain 2022
+3. United Kingdom - Northern Ireland 2022
 
-No source incidence, missingness, row complement, `I_PSU`, weights, neighboring wave, generic survey practice, or another-country design was converted into positive authority.
+## D12 — PASS
 
-## Corrected D12 result
+The exact Library ZIP was materialized and the contained SAV independently verified at SHA-256
+`2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`.
 
-Exact retained carrier:
+Two fresh exact raw-source executions reproduced:
+- 97,220 scoped respondents
+- 66 exact source scopes
+- ordered row-binding digest `895fed8dd6811307c4452194e8fa1a1fba4c670644da8f17f5b7a628d610bac9`
+- replay ref hash `9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b`
 
-- `WVS Wave 7.sav.zip`
-- File Library ID `file_00000000386c820d8760e748b25ad7e1`
-- historical/source-native archive identity `F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip`
-- contained source `WVS Wave 7.sav`
-- required contained SAV SHA-256 `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`
+D12 coverage is now 66/66.
 
-The carrier is **identified and retained**. It is not absent.
+`D_INTERVIEW` and `S007` remain source-native only.
 
-This execution host cannot materialize raw File Library ZIP bytes from the opaque File Library object ID. Therefore the contained SAV cannot be freshly byte-verified or executed here.
+## D03 — exact typed unknown
 
-D12:
-`BLOCKED__EXACT_RAW_SOURCE_CARRIER_IDENTIFIED__CURRENT_RUNTIME_CANNOT_MATERIALIZE_FILE_LIBRARY_OBJECT`
+The exact 613-variable source dictionary and source-owner questionnaire were adjudicated against the accepted routing law.
 
-Replay coverage remains 0/66 in newly accepted governed authority.
+For all nine person-position targets
+`Q276/Q276A/Q277/Q277A/Q278/Q278A/Q280/Q282/Q283`,
+no independent governed spouse/mother/father presence determinant exists in the accepted source authority.
 
-The populated physical probe was not substituted. Prior/remembered hashes were not treated as fresh execution proof. `D_INTERVIEW` and `S007` were not promoted into canonical respondent identity.
+All nine remain exactly `ROUTING_UNKNOWN`.
 
-## D03
+This is a fresh source-backed disposition, not an inherited carrier-block placeholder.
 
-The inherited HQ holding remains:
+## D11 gate
 
-`BLOCKING_ROUTING_UNKNOWN`
+The old `DO_NOT_COMMISSION` decision is superseded.
 
-No independently governed respondent-level spouse/mother/father person-position presence determinant was newly recovered. No presence was inferred from target responses or missingness.
+The D12 replay root now exists. Documentary-positive prerequisites are complete for exactly 3/66 country scopes, so the charter requires D11 EmpiricalUniverse materialization for those three supported countries only.
 
-## D11 gate decision
+The remaining 63 countries must remain fail-closed with no universe object minted.
 
-**Do not commission D11 EmpiricalUniverse materialization.**
+D11 is therefore:
+`COMMISSION_REQUIRED__SUPPORTED_COUNTRIES_ONLY__3_OF_66`
 
-Even apart from D12's current execution-host blocker, documentary prerequisites remain incomplete for 63/66 countries (60 unresolved + 3 partial). D11 objects may not be created for countries lacking the required positive target/frame/design premises, and no governed replay root is newly available in this execution.
+Full GSR07 certification remains unauthorized because the required global semantic/routing scope is incomplete.
 
-Accepted exact EmpiricalUniverse refs therefore remain 0/66.
+No HB05/HB06/HB07/C09/architecture selection.
 
-## Certification/downstream disposition
-
-The semantic/replay gate is not closed. Therefore this campaign did not execute:
-
-- bounded hostile C05-R2A WVS7 projection/replay parity
-- the full 59,595,860-cell GSR07 WVS7 source-backed certification court
-- HB05
-- HB06
-- HB07
-- C09
-- architecture selection
-- A/B/C ranking
-
-SUB-VOZHD W does not self-adopt HB01.
-
-HQ owns project-current closure.
-
-Terminal:
-
-`WVS7_HB01_SOURCE_CERTIFICATION_R1__RETURNED_FAIL_CLOSED__DOCUMENTARY_RESIDUAL_UNCHANGED__D12_CARRIER_IDENTIFIED_RUNTIME_MATERIALIZATION_BLOCKED__D03_ROUTING_UNKNOWN__D11_NOT_COMMISSIONABLE__HQ_DISPOSITION_REQUIRED`
+SUB-VOZHD W remains active pending D11 return and final HQ packet.
