@@ -46,9 +46,7 @@ Nine person-position targets remain exact `ROUTING_UNKNOWN`:
 
 The exact SAV contains no independently governed spouse/mother/father presence roster sufficient to resolve those targets. This is substantive authority absence, not a carrier problem.
 
-These unknowns are not automatically positive-recovery obligations. HQ must adjudicate each affected projection as:
-- `POSITIVE_RESOLUTION_REQUIRED`; or
-- `NONBLOCKING_EXCLUDED` where the projection can lawfully be excluded.
+These unknowns are not automatically positive-recovery obligations. HQ must decide whether each affected target/rule family remains inside the required certified WVS7 projection. If it remains in scope, unresolved determinants stay `ROUTING_UNKNOWN` and must be positively resolved. If HQ lawfully narrows the certification projection to exclude that target/rule family, the unresolved routing no longer blocks that narrower projection — but respondent-level UNKNOWN is never relabeled as negative or inapplicable.
 
 No missingness, response incidence or row-complement inference is allowed.
 

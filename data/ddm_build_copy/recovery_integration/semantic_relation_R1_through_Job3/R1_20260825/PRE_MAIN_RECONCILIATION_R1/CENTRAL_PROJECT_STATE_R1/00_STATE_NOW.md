@@ -826,10 +826,10 @@ Permanent corrections:
 Current routing state:
 - 222/585 documentary routing cells unresolved;
 - nine D03 person-position targets remain exact `ROUTING_UNKNOWN`;
-- these are not automatically positive-recovery obligations. HQ will adjudicate necessity versus lawful `NONBLOCKING_EXCLUDED`.
+- these are not automatically positive-recovery obligations. HQ will adjudicate whether each target remains inside the certified projection or is explicitly removed from it; any in-scope unresolved determinant remains `ROUTING_UNKNOWN`.
 
 Current HB01 topology is parallel:
 1. SUB-VOZHD W — 63-scope D11 documentary authority recovery;
-2. VOZHD/HQ — routing/D03 necessity/exclusion court.
+2. VOZHD/HQ — routing/D03 certified-projection scope court.
 
 No C05-R2A, full GSR07, HB01 closure, HB05, HB06, HB07 or C09 has been authorized by this fan-in. B remains stood down.

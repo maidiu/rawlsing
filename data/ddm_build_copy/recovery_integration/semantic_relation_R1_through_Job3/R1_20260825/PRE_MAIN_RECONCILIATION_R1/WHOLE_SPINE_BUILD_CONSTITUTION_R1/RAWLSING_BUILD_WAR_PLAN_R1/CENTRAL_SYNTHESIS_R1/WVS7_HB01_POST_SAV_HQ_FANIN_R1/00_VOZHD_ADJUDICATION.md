@@ -16,7 +16,7 @@ HQ does NOT close HB01.
 
 HQ trajectory:
 - W owns positive documentary universe-authority recovery for exactly the 63 non-full country scopes.
-- HQ owns routing/D03 necessity versus lawful exclusion disposition.
+- HQ owns routing/D03 certified-projection inclusion versus explicit HQ scope removal disposition.
 - only after both close may the certification lane run C05-R2A and full GSR07.
 - only separate HQ HB01 closure may wake B for HB05 + HB06 -> HB07 -> C09.
 
