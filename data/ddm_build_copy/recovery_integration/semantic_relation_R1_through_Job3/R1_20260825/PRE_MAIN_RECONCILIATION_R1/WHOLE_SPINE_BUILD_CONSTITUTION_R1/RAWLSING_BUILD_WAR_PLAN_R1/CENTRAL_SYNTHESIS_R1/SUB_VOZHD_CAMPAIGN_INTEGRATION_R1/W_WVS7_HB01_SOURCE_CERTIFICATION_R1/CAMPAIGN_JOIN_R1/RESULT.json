@@ -1,49 +1,46 @@
 {
-  "court": "SUB_VOZHD_W_WVS7_HB01_SOURCE_CERTIFICATION_R1",
-  "status": "ACTIVE__D12_PASS__D03_EXACT_ROUTING_UNKNOWN__D11_SUPPORTED_SCOPE_COMMISSION_REQUIRED",
-  "campaign_branch": "agent/sub-vozhd-wvs7-hb01-source-certification-r1",
-  "commissioned_head": "f114144f00a146b9f283ff483cb1749e60a7ad16",
-  "worker_returns": {
-    "W1R4": "1929f9535ea8a169af7a06d545dda2573cc44ebc",
-    "W2R4": "b70cb97a3b309b1c13593fe2e15a265705d51419",
-    "W3R4": "cac6b7f6495a93218070656ee2410f86bfa4a87e",
-    "W4R4": "5640be357d706d96a8c81de0fd68c154b685e02a",
-    "W5R4": "96298a26f459d271f0c0dc980b6058903d207a9d",
-    "W6R4": "72f9ec8c5a10112bb9540e92b6c5cdd305845b96",
-    "D03_D12": "e404bc097f48a09265f1aec06e3d011a892f69c4"
+  "court": "SUB_VOZHD_W_WVS7_HB01_POST_SAV_AUTHORITY_CLOSURE_JOIN_R1",
+  "status": "ACTIVE__SOURCE_ACCESS_SOLVED__D12_66_OF_66_ACCEPTED__D11_3_OF_66_ACCEPTED__AUTHORITY_CLOSURE_REQUIRED",
+  "consumed": {
+    "D03_D12": "e404bc097f48a09265f1aec06e3d011a892f69c4",
+    "D11": "76180820663bcd61ec4fbb298a273853094393a8"
   },
-  "documentary": {
-    "full": 3,
-    "partial": 3,
-    "unresolved": 60,
-    "routing_unresolved": 222,
-    "routing_total": 585,
-    "supported_countries": [
-      "Australia 2018",
-      "United Kingdom - Great Britain 2022",
-      "United Kingdom - Northern Ireland 2022"
-    ]
+  "raw_source": {
+    "status": "SOLVED",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "variables": 613
   },
   "d12": {
-    "status": "PASS",
+    "status": "ACCEPTED",
     "coverage": "66/66",
-    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
-    "ordered_row_binding_digest": "895fed8dd6811307c4452194e8fa1a1fba4c670644da8f17f5b7a628d610bac9",
     "replay_ref_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
   },
-  "d03": {
-    "status": "EXACTLY_DISPOSITIONED__ROUTING_UNKNOWN",
-    "targets": 9,
-    "positive_presence_facts": 0
-  },
   "d11": {
-    "status": "COMMISSION_REQUIRED__SUPPORTED_COUNTRIES_ONLY__3_OF_66",
-    "accepted_exact_empirical_universe_refs": 0,
-    "authorized_to_materialize": 3,
-    "forbidden_to_materialize": 63
+    "status": "ACCEPTED_PARTIAL",
+    "accepted": "3/66",
+    "positive_recovery_required": 63
   },
-  "full_gsr07_authorized": false,
-  "downstream_executed": {
+  "d03": {
+    "status": "ROUTING_UNKNOWN",
+    "targets": 9,
+    "source_access_blocker": false
+  },
+  "routing": {
+    "unresolved": 222,
+    "total": 585,
+    "allowed_dispositions": [
+      "POSITIVE_RESOLUTION_REQUIRED",
+      "NONBLOCKING_EXCLUDED"
+    ]
+  },
+  "next_parallel": [
+    "SUB_VOZHD_W_D11_63_SCOPE_DOCUMENTARY_AUTHORITY_RECOVERY",
+    "VOZHD_HQ_ROUTING_D03_NECESSITY_EXCLUSION_COURT"
+  ],
+  "downstream_authorized": {
+    "C05_R2A": false,
+    "FULL_GSR07": false,
     "HB05": false,
     "HB06": false,
     "HB07": false,

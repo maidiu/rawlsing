@@ -1,19 +1,18 @@
-# SUB-VOZHD W — HQ RETURN PACKET
+# SUB-VOZHD W — HQ RETURN / CONTINUATION PACKET — POST-SAV R1
 
-Status: `WITHDRAWN__SUPERSEDED_BY_D12_SOURCE_BACKED_PASS__CAMPAIGN_REOPENED_FOR_D11`
+Terminal:
+`READY_FOR_VOZHD_HQ_POST_SAV_AUTHORITY_CLOSURE_TRAJECTORY__D12_66_OF_66__D11_3_OF_66`
 
-The prior HQ return from this path is no longer dispositive.
+The SAV/source-carrier blocker is closed. D12 is 66/66 accepted. D11 is 3/66 accepted; 63 country universes remain fail-closed for missing positive documentary authority.
 
-Exact D03/D12 worker PASS:
-`e404bc097f48a09265f1aec06e3d011a892f69c4`
+HB01 is NOT closed.
 
-D12 is 66/66 complete. D03 is freshly source-adjudicated as exact `ROUTING_UNKNOWN` for all nine person-position targets.
+Requested parallel continuation:
+1. W continues D11 country-documentary authority recovery across exactly the 63 unsupported/partial scopes. No SAV work and no cross-country inference.
+2. HQ separately adjudicates the 222 routing unknowns and nine D03 ROUTING_UNKNOWN targets for `POSITIVE_RESOLUTION_REQUIRED` versus lawful `NONBLOCKING_EXCLUDED`.
 
-Per the campaign charter, D11 is now commissionable for exactly the three documentary-full country scopes:
-- Australia 2018
-- United Kingdom - Great Britain 2022
-- United Kingdom - Northern Ireland 2022
+The 63 missing D11 universes are the true mandatory positive-recovery problem. Routing/D03 gaps are not presumed to require archaeological recovery.
 
-SUB-VOZHD W has therefore reopened the campaign and withdrawn the earlier HQ return pending D11 execution and a new final disposition.
+After both grains close, recompute the join. Only D11 66/66 + D12 66/66 + lawful routing/D03/contradiction disposition can unlock C05-R2A and full GSR07 certification.
 
-No HB01 closure and no downstream release is requested by this superseded packet.
+No B release is requested.

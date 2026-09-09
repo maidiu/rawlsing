@@ -1,77 +1,71 @@
-# SUB-VOZHD W — WVS7 / HB01 SOURCE CERTIFICATION R1
+# SUB-VOZHD W — WVS7 / HB01 SOURCE CERTIFICATION R1 — POST-SAV AUTHORITY-CLOSURE JOIN
 
-Status: `ACTIVE__D12_PASS__D03_EXACT_ROUTING_UNKNOWN__D11_SUPPORTED_SCOPE_COMMISSION_REQUIRED`
+Status: `ACTIVE__SOURCE_ACCESS_SOLVED__D12_66_OF_66_ACCEPTED__D11_3_OF_66_ACCEPTED__AUTHORITY_CLOSURE_REQUIRED`
 
-This result supersedes every earlier campaign-grain D12 transport blocker.
+This join supersedes every campaign-grain adjudication that depended on the raw SAV being absent or unmaterializable.
 
-## Joined worker returns
+## Exact worker returns consumed
+- D03/D12 source-backed replay: `e404bc097f48a09265f1aec06e3d011a892f69c4`
+- D11 supported empirical-universe materialization: `76180820663bcd61ec4fbb298a273853094393a8`
 
-Documentary:
-- W1R4 `1929f9535ea8a169af7a06d545dda2573cc44ebc`
-- W2R4 `b70cb97a3b309b1c13593fe2e15a265705d51419`
-- W3R4 `cac6b7f6495a93218070656ee2410f86bfa4a87e`
-- W4R4 `5640be357d706d96a8c81de0fd68c154b685e02a`
-- W5R4 `96298a26f459d271f0c0dc980b6058903d207a9d`
-- W6R4 `72f9ec8c5a10112bb9540e92b6c5cdd305845b96`
+## Source-access state
+Exact `WVS Wave 7.sav` SHA-256:
+`2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`
 
-D03/D12 source-backed replay:
-- `e404bc097f48a09265f1aec06e3d011a892f69c4`
+97,220 rows × 613 variables. Two independent raw-SAV decodes agreed.
 
-## Documentary state
+`RAW_SOURCE_ACCESS_BLOCKER = CLOSED`
 
-Unchanged:
-- 3/66 FULL
-- 3/66 PARTIAL
-- 60/66 UNRESOLVED
-- 222/585 documentary routing cells unresolved
+Do not touch the SAV again absent a newly proved source-integrity contradiction.
 
-Netherlands 2022 and Romania 2018 contradictions remain preserved.
+## D12
+`D12 = ACCEPTED__66_OF_66`
 
-The three documentary-full country scopes are:
+All 97,220 respondents use deterministic `SOURCE_SHA256 + SOURCE_ROW_ORDINAL` identity. Replay ref:
+`9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b`.
+
+`D_INTERVIEW` and `S007` remain noncanonical.
+
+## D11
+`D11 = ACCEPTED__3_OF_66`
+
+Accepted scopes:
 1. Australia 2018
 2. United Kingdom - Great Britain 2022
 3. United Kingdom - Northern Ireland 2022
 
-## D12 — PASS
+Exactly three AuthoritySnapshots and three EmpiricalUniverse objects are banked with two-run byte-identical replay. No fourth universe exists.
 
-The exact Library ZIP was materialized and the contained SAV independently verified at SHA-256
-`2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`.
+The remaining `63/66` scopes stay fail-closed. They are the actual positive-recovery bottleneck: the 3 prior PARTIAL + 60 UNRESOLVED scopes need sufficient positive documentary authority for target population/coverage, sampling frame and actual sampling design before their EmpiricalUniverse objects and D11 `HQ_ACCEPTED` bindings can exist.
 
-Two fresh exact raw-source executions reproduced:
-- 97,220 scoped respondents
-- 66 exact source scopes
-- ordered row-binding digest `895fed8dd6811307c4452194e8fa1a1fba4c670644da8f17f5b7a628d610bac9`
-- replay ref hash `9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b`
+## Routing / D03
+Documentary routing remains 222/585 unresolved.
 
-D12 coverage is now 66/66.
+Nine person-position targets remain exact `ROUTING_UNKNOWN`:
+`Q276/Q276A/Q277/Q277A/Q278/Q278A/Q280/Q282/Q283`.
 
-`D_INTERVIEW` and `S007` remain source-native only.
+The exact SAV contains no independently governed spouse/mother/father presence roster sufficient to resolve those targets. This is substantive authority absence, not a carrier problem.
 
-## D03 — exact typed unknown
+These unknowns are not automatically positive-recovery obligations. HQ must adjudicate each affected projection as:
+- `POSITIVE_RESOLUTION_REQUIRED`; or
+- `NONBLOCKING_EXCLUDED` where the projection can lawfully be excluded.
 
-The exact 613-variable source dictionary and source-owner questionnaire were adjudicated against the accepted routing law.
+No missingness, response incidence or row-complement inference is allowed.
 
-For all nine person-position targets
-`Q276/Q276A/Q277/Q277A/Q278/Q278A/Q280/Q282/Q283`,
-no independent governed spouse/mother/father presence determinant exists in the accepted source authority.
+## Exact residual
+1. 63 D11 country universes: mandatory positive documentary-authority recovery for global D11 closure.
+2. 222 routing unknowns + nine D03 targets: necessity/exclusion disposition, not blind recovery.
+3. Netherlands/Romania contradictions preserved.
 
-All nine remain exactly `ROUTING_UNKNOWN`.
+## Next topology
+Parallel:
+- SUB-VOZHD W owns the 63-scope D11 documentary-authority recovery wave and may partition it locally without overlapping ownership.
+- VOZHD/HQ owns the routing/D03 necessity-versus-exclusion court.
 
-This is a fresh source-backed disposition, not an inherited carrier-block placeholder.
+Only after D11 = 66/66 HQ-accepted, D12 = 66/66, and D03/routing/contradictions are lawfully dispositioned:
+`C05-R2A projection/replay hostile parity -> full GSR07 WVS7 source-backed certification -> HQ HB01 closure`.
 
-## D11 gate
+Only HQ HB01 closure may wake B for:
+`HB05 + HB06 -> HB07 -> C09 readiness`.
 
-The old `DO_NOT_COMMISSION` decision is superseded.
-
-The D12 replay root now exists. Documentary-positive prerequisites are complete for exactly 3/66 country scopes, so the charter requires D11 EmpiricalUniverse materialization for those three supported countries only.
-
-The remaining 63 countries must remain fail-closed with no universe object minted.
-
-D11 is therefore:
-`COMMISSION_REQUIRED__SUPPORTED_COUNTRIES_ONLY__3_OF_66`
-
-Full GSR07 certification remains unauthorized because the required global semantic/routing scope is incomplete.
-
-No HB05/HB06/HB07/C09/architecture selection.
-
-SUB-VOZHD W remains active pending D11 return and final HQ packet.
+No downstream execution is authorized by this join.
