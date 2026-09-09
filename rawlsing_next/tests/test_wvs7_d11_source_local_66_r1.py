@@ -88,6 +88,18 @@ def test_wvs7_d11_source_local_66_two_outer_processes_exact_and_bounded():
     assert universes["total_members"] == 97220
     assert receipt["scope_count"] == 66
     assert receipt["total_members"] == 97220
+    assert (
+        receipt["d12_ledger_producer_sha256"]
+        == "cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9"
+    )
+    assert (
+        receipt["d12_ledger_checkout_sha256"]
+        == "cd17c8efbe7492dd23e9654fa4a507b56edb8984b62272e58596a432ad34a8a4"
+    )
+    assert (
+        receipt["d12_ledger_git_blob_sha1"]
+        == "4875b9499dee06dfaa6dd6182656c3d55c2c4ce1"
+    )
 
     authority_rows = authorities["authorities"]
     universe_rows = universes["universes"]
