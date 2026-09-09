@@ -1,43 +1,84 @@
 {
-  "status": "BLOCKED__WVS7_D12_EXACT_RAW_SOURCE_CARRIER_IDENTIFIED__CURRENT_RUNTIME_CANNOT_MATERIALIZE_FILE_LIBRARY_OBJECT",
-  "supersedes": "BLOCKED__WVS7_D12_EXACT_RAW_SOURCE_CARRIER_NOT_AVAILABLE",
-  "supersession_reason": "ACTUAL_RETAINED_CARRIER_IS_ZIP__EARLIER_SEARCH_USED_UNCOMPRESSED_FILENAME",
+  "status": "PASS",
+  "terminal": "WVS7_D12_SCOPED_RESPONDENT_REPLAY_AUTHORITY_COMPLETE__D03_PERSON_POSITION_PRESENCE_EXACTLY_DISPOSITIONED__READY_FOR_SUB_VOZHD_W_JOIN",
   "repository": "maidiu/rawlsing",
   "worker_branch": "agent/rabochii-subv-w-hb01-wvs7-d03-d12-respondent-replay-r1",
   "commissioned_head": "f114144f00a146b9f283ff483cb1749e60a7ad16",
-  "carrier": {
-    "file_library_name": "WVS Wave 7.sav.zip",
-    "file_library_id": "file_00000000386c820d8760e748b25ad7e1",
-    "historical_source_archive_name": "F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip",
-    "contained_source": "WVS Wave 7.sav",
-    "required_contained_sav_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
-    "source_rows": 97220,
-    "source_variables": 613,
-    "existence_and_identity": "POSITIVE",
-    "raw_bytes_materialized_in_current_runtime": false,
-    "contained_sav_sha_verified_in_current_runtime": false
-  },
-  "accepted_replay_identity_law": "SOURCE_SHA256_PLUS_SOURCE_ROW_ORDINAL",
-  "current_runtime_materialization_attempts": [
-    "FILE_LIBRARY_EXACT_NAME_AND_ID_SEARCH",
-    "FILE_LIBRARY_UPLOAD_WINDOW_NAVIGATION",
-    "CONNECTED_GOOGLE_DRIVE_SEARCH",
-    "ACTIVE_EXECUTION_FILESYSTEM_SEARCH",
-    "COMMISSIONED_GIT_TREE_SEARCH",
-    "SOURCE_OWNER_WVS_DOWNLOAD_DISCOVERY"
+  "supersedes": [
+    "BLOCKED__WVS7_D12_EXACT_RAW_SOURCE_CARRIER_NOT_AVAILABLE",
+    "BLOCKED__WVS7_D12_EXACT_RAW_SOURCE_CARRIER_IDENTIFIED__CURRENT_RUNTIME_CANNOT_MATERIALIZE_FILE_LIBRARY_OBJECT"
   ],
-  "populated_probe_substituted": false,
-  "prior_hash_substituted_for_fresh_execution": false,
-  "d12": "BLOCKED__EXACT_RAW_SOURCE_CARRIER_IDENTIFIED__CURRENT_RUNTIME_CANNOT_MATERIALIZE_FILE_LIBRARY_OBJECT",
-  "d03": "NOT_ADJUDICATED__RAW_SOURCE_EXECUTION_GATE_NOT_CROSSED",
-  "canonical_key_promotions": {
-    "D_INTERVIEW": false,
-    "S007": false
+  "source": {
+    "library_name": "WVS Wave 7.sav.zip",
+    "library_file_id": "file_00000000386c820d8760e748b25ad7e1",
+    "contained_source": "WVS Wave 7.sav",
+    "size_bytes": 185163494,
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "variables": 613,
+    "physical_cells": 59595860,
+    "materialized": true,
+    "sha_verified": true,
+    "populated_probe_used": false
+  },
+  "d12": {
+    "status": "PASS",
+    "identity_protocol": "SOURCE_SHA256_PLUS_SOURCE_ROW_ORDINAL",
+    "row_coverage": 97220,
+    "required_rows": 97220,
+    "source_scope_coverage": 66,
+    "required_source_scopes": 66,
+    "exact_scope_partition": "S025_PLUS_B_COUNTR_PLUS_A_YEAR",
+    "country_scope_ledger_sha256": "cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9",
+    "ordered_row_binding_digest": "895fed8dd6811307c4452194e8fa1a1fba4c670644da8f17f5b7a628d610bac9",
+    "replay_ref": {
+      "kind": "SCOPED_RESPONDENT_REPLAY",
+      "object_id": "urn:rawlsing:pre553:gsr07:wvs7:d12-scoped-respondent-replay:sha256:9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b",
+      "content_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b"
+    },
+    "parity": {
+      "fresh_raw_executions": 2,
+      "selected_projection_sha256": "7e69d799e37d26c2e6ae749674d4994a276f93aaf89e43085bed34a5fd122ec9",
+      "full_generated_manifest_sha256": "3b5b0ee0997fcd483786a428be97cf2fca6a1c46a09d4c5c878f971759ff6f24",
+      "exact": true
+    }
+  },
+  "source_native_identity_inputs": {
+    "D_INTERVIEW": {
+      "canonical": false,
+      "row_count": 97220,
+      "distinct_count": 96221,
+      "largest_duplicate_value": "858069901",
+      "largest_duplicate_count": 1000
+    },
+    "S007": {
+      "canonical": false,
+      "row_count": 97220,
+      "distinct_count": 97220
+    }
+  },
+  "d03": {
+    "status": "EXACTLY_DISPOSITIONED__ROUTING_UNKNOWN",
+    "targets": [
+      "Q276",
+      "Q276A",
+      "Q277",
+      "Q277A",
+      "Q278",
+      "Q278A",
+      "Q280",
+      "Q282",
+      "Q283"
+    ],
+    "routing_state_for_all_targets": "ROUTING_UNKNOWN",
+    "positive_presence_facts_minted": 0,
+    "negative_presence_facts_minted": 0,
+    "source_dictionary_inspected": true,
+    "no_missingness_response_incidence_or_complement_inference": true
   },
   "downstream": {
     "d11_created": false,
     "full_gsr07_run": false,
     "c09_run": false
-  },
-  "terminal": "BLOCKED__WVS7_D12_EXACT_RAW_SOURCE_CARRIER_IDENTIFIED__CURRENT_RUNTIME_CANNOT_MATERIALIZE_FILE_LIBRARY_OBJECT"
+  }
 }
