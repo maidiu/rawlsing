@@ -729,3 +729,28 @@ Project effect:
 
 `POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
 `PROJECT_CURRENT_FIRST_CANARY_OEE = NOT_AUTHORIZED`.
+
+## PSYCHIC FIELD FORGE — NEW BANKED POST-V3 / PRE-V2 FRONTIER
+
+A new must-factor terminal-demand architecture frontier is banked as:
+
+`S040 / OBL062 — PSYCHIC_FIELD_FORGE`.
+
+Canonical bank route:
+
+`../WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PSYCHIC_FIELD_FORGE_R1/`
+
+Status:
+
+`VISION_BANKED__ARCHITECTURE_NOT_YET_ADOPTED__NO_PRODUCTION_IMPLEMENTATION_AUTHORITY`.
+
+The bank preserves the required distinction among total durable personhood, standing conscious self, relationship/turn-specific activation, present conscious field, and intentional/involuntary expression. It further requires a machine-defined interaction coordinate space; constrained LLM discourse encoding with numerical/directional/multiple-reading semantics where governed; persona-specific perception/distortion; an actually stored Relational Activation Workspace with hysteresis; consciousness and defense/presentation mediation; bounded hidden-cause-safe rendering; self-output feedback; and strict separation between V2/session change and durable V3 mutation.
+
+Sequencing is explicitly non-monolithic:
+
+- PFF architecture/forensics may begin now in parallel with current V3 first-positive and Chetiri work;
+- PFF interface freeze waits only on the exact durable V3 semantic contracts it consumes, not on all V3 completion;
+- production PFF state-transition semantics remain dependency-gated;
+- terminal V2 implementation must not harden a direct objective-V3 -> renderer route that bypasses the frozen PFF seam.
+
+No current Sub-Vozhd lane is ordered to stop for PFF. Dedicated PFF campaign activation is ACT039.
