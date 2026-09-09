@@ -9,7 +9,7 @@ HB01 is NOT closed.
 
 Requested parallel continuation:
 1. W continues D11 country-documentary authority recovery across exactly the 63 unsupported/partial scopes. No SAV work and no cross-country inference.
-2. HQ separately adjudicates the 222 routing unknowns and nine D03 ROUTING_UNKNOWN targets for `POSITIVE_RESOLUTION_REQUIRED` versus lawful `NONBLOCKING_EXCLUDED`.
+2. HQ separately adjudicates the 222 routing unknowns and nine D03 ROUTING_UNKNOWN targets to decide whether each target remains in the certified projection or is explicitly removed from that projection; any in-scope unresolved determinant remains `ROUTING_UNKNOWN`.
 
 The 63 missing D11 universes are the true mandatory positive-recovery problem. Routing/D03 gaps are not presumed to require archaeological recovery.
 
