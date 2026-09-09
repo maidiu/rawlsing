@@ -35,6 +35,13 @@ jobs:
           mkdir -p "$OUT"
           git rev-parse HEAD > "$OUT/executed_tree.txt"
           git status --porcelain=v1 --untracked-files=all > "$OUT/pre_status.txt"
+          export PYTHONDONTWRITEBYTECODE=1
+          {
+            for FILE in               rawlsing_next/as4/__init__.py               rawlsing_next/as4/loader.py               rawlsing_next/as4/bounded_fixture.py               rawlsing_next/as4/protocol.py               rawlsing_next/as4/run_candidate.py               rawlsing_next/as4/run_all.py               rawlsing_next/as4/pins/discovery_frontier_authority_snapshot.json               rawlsing_next/tests/test_as4_hb04_common_harness.py
+            do
+              printf '%s\t%s\t%s\n' "$FILE" "$(git hash-object "$FILE")" "$(sha256sum "$FILE" | awk '{print $1}')"
+            done
+          } > "$OUT/implementation_file_identities.tsv"
           python - <<'PY' > "$OUT/environment.json"
           import json,platform,sys,pyarrow,pandas
           print(json.dumps({
