@@ -870,3 +870,30 @@ BOUNDED RUNTIME ADMISSIBILITY / FINISHABILITY
 Only after OBL063 implementation and independent hostile PASS may HQ rewire downstream runtime launch dependencies away from global 100% archival certification.
 
 WVS7 documentary recovery therefore continues aggressively, but an inaccessible historical methodology document is no longer accepted as a permanent architectural veto over Rawlsing's ability to exist as runnable software.
+
+
+## WVS7 / HB01 SOURCE-LOCAL 66/66 HQ ADOPTION — 2026-09-09
+
+HQ consumes Sub-Vozhd W CAMPAIGN_JOIN_R2 at `5ecff6817d10916d72dc06346609ba9970342797` against project-current source-local admission authority `0712ef462e8c442231fb2071bc9a7ec2292c4b4e`.
+
+Accepted holdings:
+
+- WVS7 exact source-local empirical availability: **66/66 scopes**;
+- respondent source identity/replay: **97,220/97,220**;
+- source-local admission authorities: **66**;
+- source-local `EmpiricalUniverse` objects: **66**;
+- governed W qualification workflow `34409312146`: **PASS**;
+- claim ceiling remains RAW/source-indexed only under the four negative limits.
+
+The former D11 `3/66` population-documentary ceiling is therefore **retired as a source-local runtime gate**. Population certification remains a separate positive-authority overlay. Missing target/frame/design documentation may block population generalization, governed weighting, pooling or other population-sensitive uses locally; it does not make the exact survey source unusable.
+
+HB01 itself is **not yet closed**. Current critical path is:
+
+1. HQ routing/D03 certified-projection scope court R2;
+2. W C05-R2A hostile parity;
+3. W full GSR07 WVS7 source-backed certification under the source-local ceiling;
+4. separate HQ HB01 closure.
+
+Population-document recovery continues in parallel as strengthening. Romania and New Zealand positive recoveries are not treated as adopted overlays until their normal overlay materialization/adjudication completes; Ukraine remains an exact-document/body-transport recovery case.
+
+No weighted population use, cross-universe pooling, harmonization, backfill, HB05, HB06, HB07 or C09 is released by this adoption. B remains stood down pending separate HQ HB01 closure.
