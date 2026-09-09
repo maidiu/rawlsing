@@ -1,57 +1,139 @@
-# WVS7/HB01 — D03 + D12 RESPONDENT REPLAY R1
+# WVS7/HB01 — D03 + D12 RESPONDENT REPLAY AUTHORITY R1
 
-Status: `BLOCKED__WVS7_D12_EXACT_RAW_SOURCE_CARRIER_IDENTIFIED__CURRENT_RUNTIME_CANNOT_MATERIALIZE_FILE_LIBRARY_OBJECT`
+Status:
+`WVS7_D12_SCOPED_RESPONDENT_REPLAY_AUTHORITY_COMPLETE__D03_PERSON_POSITION_PRESENCE_EXACTLY_DISPOSITIONED__READY_FOR_SUB_VOZHD_W_JOIN`
 
-This result **supersedes** the earlier same-branch finding
-`BLOCKED__WVS7_D12_EXACT_RAW_SOURCE_CARRIER_NOT_AVAILABLE`.
-That finding was factually too strong because it searched for the uncompressed SAV name rather than the actual retained archive name.
+This result supersedes both earlier same-branch transport blockers. The exact Library carrier was successfully materialized and executed.
 
-Commissioned HEAD: `f114144f00a146b9f283ff483cb1749e60a7ad16`
+## Exact source gate — PASS
 
-Worker branch: `agent/rabochii-subv-w-hb01-wvs7-d03-d12-respondent-replay-r1`
+Carrier:
 
-## Exact carrier correction
+- Library object: `WVS Wave 7.sav.zip`
+- Library file ID: `file_00000000386c820d8760e748b25ad7e1`
+- contained source: `WVS Wave 7.sav`
+- contained SAV size: 185,163,494 bytes
+- exact contained SAV SHA-256:
+  `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`
+- exact shape: 97,220 rows × 613 released variables = 59,595,860 physical cells
 
-The retained source carrier is:
+The populated physical probe was not used.
 
-- File Library object: `WVS Wave 7.sav.zip`
-- File Library ID: `file_00000000386c820d8760e748b25ad7e1`
-- historical/source-native archive identity: `F00010733-WVS_Cross-National_Wave_7_spss_v6_0.zip`
-- contained source object: `WVS Wave 7.sav`
-- required contained SAV SHA-256: `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`
-- required source shape: 97,220 rows × 613 variables
+## D12 — PASS
 
-Accepted replay identity law:
-`SOURCE_SHA256_PLUS_SOURCE_ROW_ORDINAL`.
+Accepted respondent identity protocol:
 
-The carrier is therefore **identified and retained**. Source absence is not the blocker.
+`SOURCE_SHA256_PLUS_SOURCE_ROW_ORDINAL`
 
-## Current execution-host boundary
+For every source row 1..97,220, the worker deterministically constituted a scoped respondent ref from the exact source snapshot SHA plus source row ordinal. Exact source scope is bound independently by source-native `S025 + B_COUNTR + A_YEAR`.
 
-This runtime can search and read indexed File Library artifacts, but it has no operation that materializes the raw bytes of the identified ZIP from its opaque File Library ID. Exact-name File Library search, upload-window navigation, connected Drive search, active execution filesystem inspection, commissioned Git tree inspection, and source-owner WVS download discovery did not yield a materializable exact archive in this runtime.
+The exact source partitions into 66 non-overlapping contiguous source scopes covering all 97,220 rows exactly once.
 
-The source-owner WVS site confirms Wave-7 data are downloadable under the WVS data-use flow, but the exact archive is served through a registration/download mechanism that this execution host cannot lawfully complete as an arbitrary POST/download transaction.
+Compact ledger:
 
-Therefore:
+`COUNTRY_SOURCE_SCOPE_ROW_RANGES.csv`
 
-- exact carrier existence/identity: POSITIVE
-- raw archive bytes materialized in this runtime: NO
-- contained SAV bytes independently SHA-verified in this runtime: NO
-- populated probe substituted: NO
-- remembered/prior hash treated as execution proof: NO
+Ledger SHA-256:
 
-## Consequence
+`cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9`
 
-D12 cannot lawfully PASS until the exact retained archive is byte-materialized and the contained SAV is independently SHA-verified before replay construction.
+Global ordered row-binding digest:
 
-- D12: `BLOCKED__EXACT_RAW_SOURCE_CARRIER_IDENTIFIED__CURRENT_RUNTIME_CANNOT_MATERIALIZE_FILE_LIBRARY_OBJECT`
-- D03: `NOT_ADJUDICATED__RAW_SOURCE_EXECUTION_GATE_NOT_CROSSED`
-- `D_INTERVIEW` remains source-native only; no canonical-key promotion
-- `S007` remains source-native only; no canonical-key promotion
-- no spouse/mother/father presence inferred from target response or missingness
-- no D11 EmpiricalUniverse object created
-- no full GSR07 court
-- no C09
+`895fed8dd6811307c4452194e8fa1a1fba4c670644da8f17f5b7a628d610bac9`
+
+Exact replay ref:
+
+`urn:rawlsing:pre553:gsr07:wvs7:d12-scoped-respondent-replay:sha256:9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b`
+
+Replay content hash:
+
+`9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b`
+
+### Fresh replay parity
+
+Two independent executions each began from the exact raw SAV and independently decoded all 97,220 rows.
+
+Both raw projections reproduced:
+
+`7e69d799e37d26c2e6ae749674d4994a276f93aaf89e43085bed34a5fd122ec9`
+
+Both replay builds reproduced:
+
+- the same 66-scope ledger SHA;
+- the same ordered row-binding digest;
+- the same exact replay ref;
+- the same full generated manifest SHA
+  `3b5b0ee0997fcd483786a428be97cf2fca6a1c46a09d4c5c878f971759ff6f24`.
+
+The two raw projections, scope ledgers, and generated replay manifests were byte-identical across executions.
+
+### D_INTERVIEW / S007 anti-promotion proof
+
+`D_INTERVIEW` is not unique in the exact source:
+
+- 97,220 rows
+- 96,221 distinct values
+- value `858069901` occurs 1,000 times
+
+`S007` has 97,220 distinct values in this exact release, but uniqueness does not authorize canonical identity. It remains source-native only because the accepted identity protocol is source snapshot SHA + row ordinal.
+
+Neither `D_INTERVIEW` nor `S007` participates in scoped respondent identity.
+
+## D03 — exact fail-closed disposition
+
+Targets:
+
+`Q276/Q276A/Q277/Q277A/Q278/Q278A/Q280/Q282/Q283`
+
+All nine remain:
+
+`ROUTING_UNKNOWN`
+
+This is now a source-backed adjudication, not an unexecuted inherited placeholder.
+
+The entire 613-variable source dictionary was inspected for independent spouse/mother/father person-position presence inputs.
+
+### Spouse
+
+The source contains `Q273` marital status, but neither the accepted routing law nor the source-owner instrument supplies an exact Q273-category → spouse/partner-presence routing map. Ordinary-language assumptions are not authority.
+
+The spouse target fields themselves encode not-applicable/filter states, but using target response/missingness to determine their own applicability is forbidden.
+
+Therefore no positive or negative spouse-presence fact was minted.
+
+### Mother
+
+The source contains mother migration/birth/co-residence material such as `Q264`, `Q267`, `V002`, `V002A_01`, and `Q271`. These encode immigration, birthplace, or co-residence content; none is an independent mother-existence/person-position roster.
+
+The mother target fields cannot self-route from their response/missingness.
+
+Therefore no positive or negative mother-presence fact was minted.
+
+### Father
+
+The source contains father migration/birth/co-residence material such as `Q265`, `Q268`, `V001`, `V001A_01`, and `Q271`. These are not independent father-existence/person-position presence inputs.
+
+For `Q283`, the source-owner questionnaire explicitly requires last-job fallback even when the father had already died when the respondent was 14; current survival/presence therefore cannot substitute for the governed historical person-position determinant.
+
+Therefore no positive or negative father-presence fact was minted.
+
+Exact per-target adjudication is banked in:
+
+- `D03_PERSON_POSITION_ADJUDICATION.csv`
+- `D03_SOURCE_FIELD_INVENTORY.csv`
+
+## Boundary
+
+This worker did not:
+
+- create D11 EmpiricalUniverse objects;
+- execute GSR07 full certification;
+- execute C09;
+- alter C11/I03/I04/I05 semantics;
+- infer routing from missingness, response incidence, frequencies, or row complement.
+
+D12 is complete for all 66 source scopes. D03 remains exact typed `ROUTING_UNKNOWN` for the nine person-position targets.
 
 Terminal:
-`BLOCKED__WVS7_D12_EXACT_RAW_SOURCE_CARRIER_IDENTIFIED__CURRENT_RUNTIME_CANNOT_MATERIALIZE_FILE_LIBRARY_OBJECT`
+
+`WVS7_D12_SCOPED_RESPONDENT_REPLAY_AUTHORITY_COMPLETE__D03_PERSON_POSITION_PRESENCE_EXACTLY_DISPOSITIONED__READY_FOR_SUB_VOZHD_W_JOIN`
