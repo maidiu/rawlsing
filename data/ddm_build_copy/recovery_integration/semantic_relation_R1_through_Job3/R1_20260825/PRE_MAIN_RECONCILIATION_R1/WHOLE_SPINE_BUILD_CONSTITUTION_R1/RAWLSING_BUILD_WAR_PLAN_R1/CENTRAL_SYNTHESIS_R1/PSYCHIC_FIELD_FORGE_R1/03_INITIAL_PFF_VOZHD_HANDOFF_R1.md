@@ -69,3 +69,11 @@ A final architecture that can be replaced by:
 `persona dossier + conversation history + one LLM prompt`
 
 has failed the mission.
+
+## Mandatory zero-loss inheritance
+
+Before any architecture synthesis or Rabochii fanout, read in full:
+
+`04_ZERO_LOSS_CONVERSATIONAL_VISION_APPENDIX_R1.md`
+
+Do not treat `00_VISION_BANK_R1.md` as an exhaustive substitute. The appendix deliberately preserves examples, interaction dynamics, persistence-timescale distinctions, renderer-discourse re-entry, encoder nonmutation law, dyadic chemistry/anti-chemistry, and other nuances that were compressed in the initial bank.
