@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   qualification:
-    name: HB04Q outer \${{ matrix.outer }}
+    name: HB04Q outer ${{ matrix.outer }}
     strategy:
       fail-fast: false
       matrix:
@@ -35,7 +35,7 @@ jobs:
       - name: Execute complete frozen HB04Q outer court
         shell: bash
         env:
-          OUTER_ID: \${{ matrix.outer }}
+          OUTER_ID: ${{ matrix.outer }}
         run: |
           set -euo pipefail
           EXPECTED_HEAD="0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
@@ -383,8 +383,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: b21q-outer-\${{ matrix.outer }}
-          path: \${{ runner.temp }}/b21q_outer_\${{ matrix.outer }}/evidence
+          name: b21q-outer-${{ matrix.outer }}
+          path: ${{ runner.temp }}/b21q_outer_${{ matrix.outer }}/evidence
           if-no-files-found: error
 
   parity:
@@ -397,7 +397,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           pattern: b21q-outer-*
-          path: \${{ runner.temp }}/b21q_parity
+          path: ${{ runner.temp }}/b21q_parity
 
       - name: Prove cross-run semantic parity
         shell: bash
@@ -469,5 +469,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: b21q-cross-run-parity
-          path: \${{ runner.temp }}/b21q_parity/cross_run_parity.json
+          path: ${{ runner.temp }}/b21q_parity/cross_run_parity.json
           if-no-files-found: error
