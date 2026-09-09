@@ -70,5 +70,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: rabochii-court-receipt-${{ github.run_id }}
-          path: .rabochii/court_receipt.json
+          path: |
+            .rabochii/court_receipt.json
+            .rabochii/generated_wvs7_d11_source_local_66
           if-no-files-found: warn
