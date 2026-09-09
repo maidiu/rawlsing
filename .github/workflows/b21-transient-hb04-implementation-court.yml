@@ -64,6 +64,7 @@ jobs:
             sha256sum "$OUT/direct_$C/stderr.txt" | awk '{print $1}' > "$OUT/direct_$C/stderr_sha256.txt"
           done
 
+          mkdir -p "$OUT/run_all"
           python -m rawlsing_next.as4.run_all             --workdir "$OUT/run_all/work"             --output "$OUT/run_all/receipt.json"             --bounded-fixture             >"$OUT/run_all/stdout.txt" 2>"$OUT/run_all/stderr.txt"
           sha256sum "$OUT/run_all/receipt.json" | awk '{print $1}' > "$OUT/run_all/receipt_sha256.txt"
           sha256sum "$OUT/run_all/stderr.txt" | awk '{print $1}' > "$OUT/run_all/stderr_sha256.txt"
