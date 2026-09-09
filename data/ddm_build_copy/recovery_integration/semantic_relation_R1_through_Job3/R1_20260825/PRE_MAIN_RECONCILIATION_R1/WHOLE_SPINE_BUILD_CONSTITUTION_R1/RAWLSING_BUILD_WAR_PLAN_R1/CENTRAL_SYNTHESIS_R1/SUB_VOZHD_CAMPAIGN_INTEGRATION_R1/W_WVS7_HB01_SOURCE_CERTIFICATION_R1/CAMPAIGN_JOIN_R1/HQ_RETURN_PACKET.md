@@ -1,21 +1,19 @@
 # SUB-VOZHD W — HQ RETURN PACKET
 
-Campaign join: `1f91f1bd0a7c4fba58146e1b1493feef43055561`
+Status: `WITHDRAWN__SUPERSEDED_BY_D12_SOURCE_BACKED_PASS__CAMPAIGN_REOPENED_FOR_D11`
 
-Corrected replay worker: `1d4768b478750146b3b2d27787b0fd96fbeeefe5`
+The prior HQ return from this path is no longer dispositive.
 
-Return to HQ:
+Exact D03/D12 worker PASS:
+`e404bc097f48a09265f1aec06e3d011a892f69c4`
 
-- **HB01 remains OPEN / fail-closed.**
-- Documentary gate remains **3 FULL / 3 PARTIAL / 60 UNRESOLVED** with **222/585 routing cells unresolved**.
-- D03 remains `BLOCKING_ROUTING_UNKNOWN`.
-- D12 carrier is positively identified as `WVS Wave 7.sav.zip`; the current runtime cannot materialize its File Library raw bytes for fresh contained-SAV SHA verification and replay execution.
-- D11 is not commissionable at current premises.
-- Full GSR07 certification is not authorized.
-- Do not release HB05/HB06/HB07/C09 from this return.
-- SUB-VOZHD W does not self-adopt HB01.
+D12 is 66/66 complete. D03 is freshly source-adjudicated as exact `ROUTING_UNKNOWN` for all nine person-position targets.
 
-Downstream B remains waiting at:
-`8676569af1e6580979a7265aeca1c499165fde24`
+Per the campaign charter, D11 is now commissionable for exactly the three documentary-full country scopes:
+- Australia 2018
+- United Kingdom - Great Britain 2022
+- United Kingdom - Northern Ireland 2022
 
-`HQ_RETURN__HB01_REMAINS_OPEN__NO_DOWNSTREAM_RELEASE`
+SUB-VOZHD W has therefore reopened the campaign and withdrawn the earlier HQ return pending D11 execution and a new final disposition.
+
+No HB01 closure and no downstream release is requested by this superseded packet.
