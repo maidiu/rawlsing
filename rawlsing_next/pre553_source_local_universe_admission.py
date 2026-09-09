@@ -109,7 +109,7 @@ def negative_limit_ref(name: str) -> ExactRef:
     )
 
 
-REQUIRED_NEGATIVE_LIMIT_REFS = tuple(
+REQUIRED_NEGATIVE_LIMIT_REFS = _canonical_ref_set(
     negative_limit_ref(name) for name in REQUIRED_NEGATIVE_LIMIT_NAMES
 )
 
@@ -461,6 +461,69 @@ def validate_source_local_universe(
             "source-local universe must resolve exactly one admission authority"
         )
     snapshot = matches[0]
+    scope = snapshot.scope_envelope
+    if not isinstance(scope, Mapping):
+        raise SourceLocalUniverseAdmissionError(
+            "source-local universe admission authority scope must remain exact mapping"
+        )
+    if scope.get("claim_ceiling") != CLAIM_CEILING:
+        raise SourceLocalUniverseAdmissionError(
+            "source-local universe authority claim ceiling drift"
+        )
+    if scope.get("population_generalization") != "DENIED_UNLESS_SEPARATELY_AUTHORIZED":
+        raise SourceLocalUniverseAdmissionError(
+            "source-local universe authority lost population-generalization denial"
+        )
+    if scope.get("default_measure_ceiling") != "RAW_ONLY":
+        raise SourceLocalUniverseAdmissionError(
+            "source-local universe authority lost RAW_ONLY default measure ceiling"
+        )
+
+    dependencies = _canonical_ref_set(universe.dependency_refs)
+    scoped_source = _scope_exact_ref(scope, "source_artifact_ref")
+    scoped_respondents = _scope_exact_ref(scope, "respondent_scope_ref")
+    scoped_replay = _scope_exact_ref(scope, "replay_scope_ref")
+    for required in (scoped_source, scoped_respondents, scoped_replay):
+        if required not in dependencies:
+            raise SourceLocalUniverseAdmissionError(
+                "source-local universe dependency closure no longer matches admission authority scope"
+            )
+    replay_root = _ref(
+        universe.producer_replay_locator_or_reference_root,
+        "universe.producer_replay_locator_or_reference_root",
+    )
+    if replay_root != scoped_replay:
+        raise SourceLocalUniverseAdmissionError(
+            "source-local universe replay root differs from admission-authority replay scope"
+        )
+
+    for field_name in ("target_population_and_sample_frame", "sampling_design_regime"):
+        material = getattr(universe, field_name)
+        if not isinstance(material, Mapping):
+            raise SourceLocalUniverseAdmissionError(
+                f"{field_name} must remain typed documentary material"
+            )
+        state = material.get("state")
+        if state not in DOCUMENTARY_STATES:
+            raise SourceLocalUniverseAdmissionError(
+                f"{field_name} documentary state drift"
+            )
+        if material.get("claim_ceiling") != CLAIM_CEILING:
+            raise SourceLocalUniverseAdmissionError(
+                f"{field_name} exceeds source-local claim ceiling"
+            )
+        content = material.get("content")
+        provenance = material.get("provenance_refs")
+        if state == "NOT_POPULATION_CERTIFIED" and content is not None:
+            raise SourceLocalUniverseAdmissionError(
+                f"{field_name} smuggles content into NOT_POPULATION_CERTIFIED"
+            )
+        if state == "DOCUMENTARY_CONTENT_PRESENT__POPULATION_USE_NOT_GRANTED":
+            if content is None or not provenance:
+                raise SourceLocalUniverseAdmissionError(
+                    f"{field_name} preserved documentary content lost provenance"
+                )
+
     negatives = _canonical_ref_set(
         _ref(value, "authority.negative_limit_refs")
         for value in snapshot.negative_limit_refs
