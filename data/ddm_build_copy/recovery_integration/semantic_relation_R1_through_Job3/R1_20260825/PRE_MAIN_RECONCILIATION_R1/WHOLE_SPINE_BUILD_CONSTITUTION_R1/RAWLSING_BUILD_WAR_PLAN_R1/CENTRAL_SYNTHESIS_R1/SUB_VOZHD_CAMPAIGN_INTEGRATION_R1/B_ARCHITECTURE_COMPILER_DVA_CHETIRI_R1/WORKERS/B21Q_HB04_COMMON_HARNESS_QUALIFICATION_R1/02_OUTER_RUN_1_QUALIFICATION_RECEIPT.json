@@ -1,0 +1,127 @@
+{
+  "schema": "B21Q_HB04_OUTER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "outer_id": 1,
+  "workflow_run_id": 34307877327,
+  "job_id": 102328240189,
+  "artifact": {
+    "id": 10087309518,
+    "name": "b21q-outer-1",
+    "digest": "sha256:7009aaff3c53ce8eee2df265d0bd3b702af5ef8aec607a3cd45e5e0aebf5e2ca"
+  },
+  "executed_head": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+  "environment": {
+    "implementation": "CPython",
+    "python": "3.13.15",
+    "pyarrow": "25.0.1",
+    "pandas": "3.0.5"
+  },
+  "identity_gate": {
+    "status": "PASS",
+    "frozen_identity_receipt": "01_FROZEN_IDENTITY_RECEIPT.json",
+    "successor_package_sha256": "7ec46373c314db96f4b1e130bbbcae85316f1529a948a1447c30bb4c5dbca9e1"
+  },
+  "tests": {
+    "command": "python -m pytest -q rawlsing_next/tests/test_as4_hb04_common_harness.py",
+    "passed": 29,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfail_xpass_masking": 0,
+    "exit_code": 0,
+    "stdout_sha256": "1d86a39294dde80df1fb0ffac507906eb6c734d4b29ed8a0d67d0650ce7b0865",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "direct_candidates": {
+    "A": {
+      "process_id": 2110,
+      "receipt_sha256": "a034f9d9c7f4ba873a45d9473ee2cda302adb1e1ee2aa1a0fb20f4e78c4d29ab",
+      "stdout_sha256": "a034f9d9c7f4ba873a45d9473ee2cda302adb1e1ee2aa1a0fb20f4e78c4d29ab",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "B": {
+      "process_id": 2120,
+      "receipt_sha256": "2159eee47624913d26ab7087c5eb841b3f2abbebe19a825e9a19043f69e39697",
+      "stdout_sha256": "2159eee47624913d26ab7087c5eb841b3f2abbebe19a825e9a19043f69e39697",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "C": {
+      "process_id": 2130,
+      "receipt_sha256": "c9dd357b5f7a2a051f7ef20aa6c0b7de77b12455c023151e4235385588c42790",
+      "stdout_sha256": "c9dd357b5f7a2a051f7ef20aa6c0b7de77b12455c023151e4235385588c42790",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "semantic_projection": {
+    "source_sha256": "9ced16d5f747b54408d8703e5ca61f485ce7e6e3e046147bdc4ec979a180b8b5",
+    "i03_fact": "bae0b0dbdf5fec58305cbaf583c30e25aae8f07d219350d90425a02df48a2b75",
+    "i05_frontier": "8be39b3ae9e8a2b849ce22480ad0eaea508c6416473d408f38e5652a5b701e85",
+    "discovery_result_receipt": "6704074278d90db80a35038175fa5c5a8598837a541f1322bf62eec93e9f7c36",
+    "candidate_count": 1,
+    "covered_candidate_count": 1
+  },
+  "semantic_projection_sha256": "7a8c5bbb48549e35c70de92b945b6c13781bb009e6f84174bdbed95d10f5fd09",
+  "run_all": {
+    "receipt_sha256": "e0416d22b23d2bc008d46ab12f2a9fe495bdefe99fc8277487b2579fb2e21aab",
+    "stdout_sha256": "e0416d22b23d2bc008d46ab12f2a9fe495bdefe99fc8277487b2579fb2e21aab",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "process_count": 3,
+    "distinct_process_count": 3,
+    "child_process_ids": [
+      2144,
+      2148,
+      2151
+    ],
+    "child_receipt_sha256": [
+      "604ef5830efc53f3471d8438712d35b2f7f12314f711a351c31b1300428f9563",
+      "51143d847d36c5a9225203aeb5d5d09b827496a0f0e1d42eb52c6c8689300028",
+      "941a4eac79c7873f681a91c6d45c377fec3a0c57970348ddb8fab07cd3b924f5"
+    ],
+    "sequential_no_overlap": true,
+    "all_sessions_closed": true,
+    "all_cleanup_passed": true
+  },
+  "hostile_matrix": {
+    "wrong_intake_freeze_or_route_c_binding": "PASS_FAIL_CLOSED",
+    "wrong_route_a_pin": "PASS_FAIL_CLOSED",
+    "wrong_route_b_production_seal_or_driver_pin": "PASS_FAIL_CLOSED",
+    "stale_successor_alias": "PASS_FAIL_CLOSED",
+    "wrong_discovery_authority": "PASS_FAIL_CLOSED",
+    "wrong_candidate_grammar": "PASS_FAIL_CLOSED",
+    "wrong_official_frontier": "PASS_FAIL_CLOSED",
+    "wrong_replay_closure": "PASS_FAIL_CLOSED",
+    "missing_predicate_carrier_or_runtime_object": "PASS_FAIL_CLOSED",
+    "missing_query_carrier_or_runtime_object": "PASS_FAIL_CLOSED",
+    "alias_or_cardinality_violation": "PASS_FAIL_CLOSED",
+    "illegal_candidate": "PASS_FAIL_CLOSED",
+    "source_mismatch": "PASS_FAIL_CLOSED_BEFORE_SEMANTIC_EXECUTION",
+    "extra_accelerator_or_cacc3_request": "PASS_FAIL_CLOSED",
+    "ranking_or_selection_directive": "PASS_FAIL_CLOSED"
+  },
+  "zero_counts": {
+    "ranking_logic": 0,
+    "selection_logic": 0,
+    "comparative_early_stop": 0,
+    "real_lits1_open": 0,
+    "real_wvs7_open": 0,
+    "c09_execution": 0,
+    "hb05_hb06_hb07_execution": 0,
+    "persistent_transformed_payload_files": 0,
+    "persistent_transformed_payload_bytes": 0,
+    "result_cache_present": false
+  },
+  "git_state": {
+    "pre_clean": true,
+    "post_clean": true
+  },
+  "raw_transcript_sha256": "d270cc46a906b3973525777890ef24bda1de3d8ea90572904765c6d054f60900",
+  "diagnostic_only": {
+    "tmp_root": "/home/runner/work/_temp/b21q_outer_1",
+    "python_pycache_prefix": "/home/runner/work/_temp/b21q_outer_1/pycache"
+  }
+}

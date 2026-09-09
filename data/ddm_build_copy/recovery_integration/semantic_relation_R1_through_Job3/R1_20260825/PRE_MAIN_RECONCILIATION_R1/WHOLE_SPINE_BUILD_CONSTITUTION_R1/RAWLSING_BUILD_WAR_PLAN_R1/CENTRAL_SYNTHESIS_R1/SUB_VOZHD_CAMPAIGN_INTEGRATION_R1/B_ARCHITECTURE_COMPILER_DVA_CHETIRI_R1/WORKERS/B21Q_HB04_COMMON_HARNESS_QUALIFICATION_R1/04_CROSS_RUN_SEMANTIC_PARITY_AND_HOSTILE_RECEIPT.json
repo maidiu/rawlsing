@@ -1,0 +1,91 @@
+{
+  "schema": "B21Q_HB04_CROSS_RUN_SEMANTIC_PARITY_AND_HOSTILE_RECEIPT@1.0.0",
+  "status": "PASS",
+  "workflow_run_id": 34307877327,
+  "parity_job_id": 102328405490,
+  "artifact": {
+    "id": 10087313071,
+    "name": "b21q-cross-run-parity",
+    "digest": "sha256:52c0fb58ad10a36d3d6a13f3da3377b6cc45464f2519327d2360f179af94de76"
+  },
+  "parity_receipt_sha256": "b9bd69f2a2fad445747f038de4871e8f72e3692459847408703f06abfd426807",
+  "executed_head_each": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+  "outer_runs": [
+    1,
+    2
+  ],
+  "exact_agreement": {
+    "freezes": true,
+    "frozen_files": true,
+    "successor_package": true,
+    "semantic_projection": true,
+    "semantic_projection_sha256": "7a8c5bbb48549e35c70de92b945b6c13781bb009e6f84174bdbed95d10f5fd09",
+    "candidate_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "candidate_process_count_each": 3,
+    "distinct_child_process_count_each": 3,
+    "sequential_no_overlap_each": true,
+    "all_sessions_closed_each": true,
+    "all_cleanup_passed_each": true,
+    "hostile_dispositions": true,
+    "zero_prohibited_execution_counts": true
+  },
+  "semantic_projection": {
+    "source_sha256": "9ced16d5f747b54408d8703e5ca61f485ce7e6e3e046147bdc4ec979a180b8b5",
+    "i03_fact": "bae0b0dbdf5fec58305cbaf583c30e25aae8f07d219350d90425a02df48a2b75",
+    "i05_frontier": "8be39b3ae9e8a2b849ce22480ad0eaea508c6416473d408f38e5652a5b701e85",
+    "discovery_result_receipt": "6704074278d90db80a35038175fa5c5a8598837a541f1322bf62eec93e9f7c36",
+    "candidate_count": 1,
+    "covered_candidate_count": 1
+  },
+  "hostile_matrix": {
+    "wrong_intake_freeze_or_route_c_binding": "PASS_FAIL_CLOSED",
+    "wrong_route_a_pin": "PASS_FAIL_CLOSED",
+    "wrong_route_b_production_seal_or_driver_pin": "PASS_FAIL_CLOSED",
+    "stale_successor_alias": "PASS_FAIL_CLOSED",
+    "wrong_discovery_authority": "PASS_FAIL_CLOSED",
+    "wrong_candidate_grammar": "PASS_FAIL_CLOSED",
+    "wrong_official_frontier": "PASS_FAIL_CLOSED",
+    "wrong_replay_closure": "PASS_FAIL_CLOSED",
+    "missing_predicate_carrier_or_runtime_object": "PASS_FAIL_CLOSED",
+    "missing_query_carrier_or_runtime_object": "PASS_FAIL_CLOSED",
+    "alias_or_cardinality_violation": "PASS_FAIL_CLOSED",
+    "illegal_candidate": "PASS_FAIL_CLOSED",
+    "source_mismatch": "PASS_FAIL_CLOSED_BEFORE_SEMANTIC_EXECUTION",
+    "extra_accelerator_or_cacc3_request": "PASS_FAIL_CLOSED",
+    "ranking_or_selection_directive": "PASS_FAIL_CLOSED"
+  },
+  "hostile_pytest_case_accounting": {
+    "positive_cases": 6,
+    "hostile_cases": 23,
+    "total_cases": 29,
+    "stale_successor_variants": 5,
+    "missing_carrier_variants": 2,
+    "illegal_candidate_variants": 4,
+    "ranking_selection_or_cacc3_directive_variants": 7
+  },
+  "zero_counts": {
+    "ranking_logic": 0,
+    "selection_logic": 0,
+    "comparative_early_stop": 0,
+    "real_lits1_open": 0,
+    "real_wvs7_open": 0,
+    "c09_execution": 0,
+    "hb05_hb06_hb07_execution": 0,
+    "persistent_transformed_payload_files": 0,
+    "persistent_transformed_payload_bytes": 0,
+    "result_cache_present": false
+  },
+  "diagnostic_differences_allowed": [
+    "process IDs",
+    "filesystem roots",
+    "timing/RSS/resource observations",
+    "receipt hashes binding diagnostic material",
+    "raw transcript hashes"
+  ],
+  "validator_weakening": false,
+  "candidate_semantics_modified": false
+}
