@@ -62,7 +62,7 @@ def _sha_file(path: Path) -> str:
 
 
 def _git_blob_sha1(data: bytes) -> str:
-    header = b"blob " + str(len(data)).encode("ascii") + b"\\x00"
+    header = b"blob " + str(len(data)).encode("ascii") + b"\x00"
     return hashlib.sha1(header + data).hexdigest()
 
 
@@ -296,11 +296,11 @@ def _load_inputs(
         raise WVS7SourceLocalBuildError(
             f"D12 Git blob identity mismatch: {ledger_git_blob_sha1}"
         )
-    if b"\\r" in ledger_checkout_bytes:
+    if b"\r" in ledger_checkout_bytes:
         raise WVS7SourceLocalBuildError(
             "D12 Git-normalized ledger unexpectedly contains carriage returns"
         )
-    ledger_producer_bytes = ledger_checkout_bytes.replace(b"\\n", b"\\r\\n")
+    ledger_producer_bytes = ledger_checkout_bytes.replace(b"\n", b"\r\n")
     ledger_producer_sha = _sha_bytes(ledger_producer_bytes)
     if ledger_producer_sha != EXPECTED_LEDGER_PRODUCER_SHA256:
         raise WVS7SourceLocalBuildError(
