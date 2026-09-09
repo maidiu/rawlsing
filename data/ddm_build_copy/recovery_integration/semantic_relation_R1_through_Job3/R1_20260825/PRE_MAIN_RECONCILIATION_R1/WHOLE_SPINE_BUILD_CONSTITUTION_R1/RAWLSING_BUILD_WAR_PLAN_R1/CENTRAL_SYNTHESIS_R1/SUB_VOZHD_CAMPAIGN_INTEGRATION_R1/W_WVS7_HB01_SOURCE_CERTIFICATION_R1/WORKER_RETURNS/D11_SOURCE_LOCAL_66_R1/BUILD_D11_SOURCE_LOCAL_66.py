@@ -34,7 +34,9 @@ from rawlsing_next.pre553_source_local_universe_admission import (
 
 BUILD_CONTRACT_ID = "WVS7_D11_SOURCE_LOCAL_66_MATERIALIZER_R1@1.0.0"
 EXPECTED_SOURCE_SHA256 = "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
-EXPECTED_LEDGER_SHA256 = "cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9"
+EXPECTED_LEDGER_PRODUCER_SHA256 = "cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9"
+EXPECTED_LEDGER_CHECKOUT_SHA256 = "cd17c8efbe7492dd23e9654fa4a507b56edb8984b62272e58596a432ad34a8a4"
+EXPECTED_LEDGER_GIT_BLOB_SHA1 = "4875b9499dee06dfaa6dd6182656c3d55c2c4ce1"
 EXPECTED_SCOPE_COUNT = 66
 EXPECTED_ROW_COUNT = 97220
 EXPECTED_D12_REPLAY_ID = (
@@ -57,6 +59,11 @@ def _sha_bytes(data: bytes) -> str:
 
 def _sha_file(path: Path) -> str:
     return _sha_bytes(path.read_bytes())
+
+
+def _git_blob_sha1(data: bytes) -> str:
+    header = b"blob " + str(len(data)).encode("ascii") + b"\\x00"
+    return hashlib.sha1(header + data).hexdigest()
 
 
 def _write_json(path: Path, value: Any) -> None:
@@ -268,14 +275,38 @@ def _spec_for_scope(
     )
 
 
-def _load_inputs(root: Path) -> tuple[list[dict[str, str]], Mapping[str, Any], str, str]:
+def _load_inputs(
+    root: Path,
+) -> tuple[list[dict[str, str]], Mapping[str, Any], str, str, str, str]:
     ledger_path = root / "D12_COUNTRY_SOURCE_SCOPE_ROW_RANGES.csv"
     manifest_path = root / "D12_SCOPED_RESPONDENT_REPLAY_MANIFEST.json"
-    ledger_sha = _sha_file(ledger_path)
-    if ledger_sha != EXPECTED_LEDGER_SHA256:
+
+    # D12 recorded the CSV SHA from Python csv.DictWriter's CRLF worktree
+    # bytes before Git normalized text to LF on commit.  Preserve both exact
+    # identities rather than pretending the producer receipt and Git blob are
+    # the same byte representation.
+    ledger_checkout_bytes = ledger_path.read_bytes()
+    ledger_checkout_sha = _sha_bytes(ledger_checkout_bytes)
+    if ledger_checkout_sha != EXPECTED_LEDGER_CHECKOUT_SHA256:
         raise WVS7SourceLocalBuildError(
-            f"D12 ledger SHA mismatch: {ledger_sha}"
+            f"D12 normalized checkout SHA mismatch: {ledger_checkout_sha}"
         )
+    ledger_git_blob_sha1 = _git_blob_sha1(ledger_checkout_bytes)
+    if ledger_git_blob_sha1 != EXPECTED_LEDGER_GIT_BLOB_SHA1:
+        raise WVS7SourceLocalBuildError(
+            f"D12 Git blob identity mismatch: {ledger_git_blob_sha1}"
+        )
+    if b"\\r" in ledger_checkout_bytes:
+        raise WVS7SourceLocalBuildError(
+            "D12 Git-normalized ledger unexpectedly contains carriage returns"
+        )
+    ledger_producer_bytes = ledger_checkout_bytes.replace(b"\\n", b"\\r\\n")
+    ledger_producer_sha = _sha_bytes(ledger_producer_bytes)
+    if ledger_producer_sha != EXPECTED_LEDGER_PRODUCER_SHA256:
+        raise WVS7SourceLocalBuildError(
+            f"D12 producer-worktree ledger SHA mismatch: {ledger_producer_sha}"
+        )
+
     manifest_bytes = manifest_path.read_bytes()
     manifest_sha = _sha_bytes(manifest_bytes)
     manifest = json.loads(manifest_bytes)
@@ -290,7 +321,7 @@ def _load_inputs(root: Path) -> tuple[list[dict[str, str]], Mapping[str, Any], s
         partition["scope_key"] != SCOPE_KEY
         or int(partition["scope_count"]) != EXPECTED_SCOPE_COUNT
         or int(partition["row_count"]) != EXPECTED_ROW_COUNT
-        or partition["ledger_sha256"] != EXPECTED_LEDGER_SHA256
+        or partition["ledger_sha256"] != EXPECTED_LEDGER_PRODUCER_SHA256
         or partition["coverage"] != "EXACTLY_ALL_SOURCE_ROWS_ONCE"
     ):
         raise WVS7SourceLocalBuildError("D12 source-scope partition drift")
@@ -324,20 +355,34 @@ def _load_inputs(root: Path) -> tuple[list[dict[str, str]], Mapping[str, Any], s
         seen_scope_refs.add(scope_key)
     if expected_first != EXPECTED_ROW_COUNT + 1 or total != EXPECTED_ROW_COUNT:
         raise WVS7SourceLocalBuildError("D12 ledger does not cover all rows exactly once")
-    return rows, manifest, ledger_sha, manifest_sha
+    return (
+        rows,
+        manifest,
+        ledger_producer_sha,
+        ledger_checkout_sha,
+        ledger_git_blob_sha1,
+        manifest_sha,
+    )
 
 
 def build(output_dir: Path) -> Mapping[str, Any]:
     root = Path(__file__).resolve().parent
-    rows, manifest, ledger_sha, manifest_sha = _load_inputs(root)
+    (
+        rows,
+        manifest,
+        ledger_producer_sha,
+        ledger_checkout_sha,
+        ledger_git_blob_sha1,
+        manifest_sha,
+    ) = _load_inputs(root)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     source_ref = _source_ref()
     replay_ref = _d12_replay_ref()
     ledger_ref = ExactRef(
         "WVS7_D12_SOURCE_SCOPE_LEDGER",
-        f"urn:rawlsing:pre553:wvs7:d12-source-scope-ledger:sha256:{ledger_sha}",
-        ledger_sha,
+        f"urn:rawlsing:pre553:wvs7:d12-source-scope-ledger:sha256:{ledger_producer_sha}",
+        ledger_producer_sha,
     )
 
     authority_rows: list[Mapping[str, Any]] = []
@@ -414,7 +459,9 @@ def build(output_dir: Path) -> Mapping[str, Any]:
         "source_local_contract": SOURCE_LOCAL_CONTRACT_ID,
         "qualification_state": "SINGLE_BUILD__OUTER_PROCESS_PARITY_REQUIRED",
         "source_sha256": EXPECTED_SOURCE_SHA256,
-        "d12_ledger_sha256": ledger_sha,
+        "d12_ledger_producer_sha256": ledger_producer_sha,
+        "d12_ledger_checkout_sha256": ledger_checkout_sha,
+        "d12_ledger_git_blob_sha1": ledger_git_blob_sha1,
         "d12_compact_manifest_sha256": manifest_sha,
         "d12_replay_ref": replay_ref.as_dict(),
         "scope_count": len(universe_rows),
