@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -31,9 +32,13 @@ FILES = (
 
 def _run(out: Path) -> subprocess.CompletedProcess[str]:
     out.mkdir(parents=True, exist_ok=True)
+    env = os.environ.copy()
+    prior = env.get("PYTHONPATH")
+    env["PYTHONPATH"] = str(ROOT) if not prior else str(ROOT) + os.pathsep + prior
     return subprocess.run(
         [sys.executable, str(SCRIPT), "--output-dir", str(out)],
         cwd=ROOT,
+        env=env,
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
