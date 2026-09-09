@@ -1,0 +1,71 @@
+{
+  "schema": "B21_HB04_RUNNER_FRESH_PROCESS_ORDER_AND_CLEANUP_RECEIPT@1.0.0",
+  "status": "PASS",
+  "authoritative_execution": {
+    "workflow_run_id": 34304376739,
+    "artifact_id": 10086111518,
+    "artifact_zip_digest": "sha256:4954c7e2e7c2592704eb001dba3ceca5446c81a5446460c1137f5856ce97bcab",
+    "executed_tree": "51f36497985ba2a0fdf3caae835832b3f66ea897",
+    "court_summary_sha256": "a08f5e7d26507fc3022e38e890a75ce2801b60f20301228b4a4325b945209bce"
+  },
+  "environment": {
+    "python": "3.13.15",
+    "implementation": "CPython",
+    "pyarrow": "25.0.1",
+    "pandas": "3.0.5"
+  },
+  "tests": {
+    "command": "PYTHONPATH=$PWD python -m pytest -q rawlsing_next/tests/test_as4_hb04_common_harness.py",
+    "passed": 29,
+    "failed": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "direct_process_ids": {
+    "A": 2124,
+    "B": 2133,
+    "C": 2141
+  },
+  "run_all": {
+    "command": "python -m rawlsing_next.as4.run_all --workdir $OUT/run_all/work --output $OUT/run_all/receipt.json --bounded-fixture",
+    "receipt_sha256": "8f16f8d6470f4458e050f5df5b9361656aba77130d54e0923a4d0f357c90f582",
+    "order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "process_count": 3,
+    "distinct_process_count": 3,
+    "child_process_ids": [
+      2152,
+      2155,
+      2158
+    ],
+    "child_receipt_sha256": [
+      "6cef4c60453be30bdbb80f12442b3263140079d25b00f9af2d0a92d33f5be9e2",
+      "d3c8065649d526f0261b5eaa786dfe3f5ac9376321e9b55e384a7c884c0c9f1c",
+      "593197a3161eb67e37874c27feb928feed1f0aaad6cdcc5ae0ce49c967150507"
+    ],
+    "sequential_no_overlap": true,
+    "all_sessions_closed": true,
+    "all_cleanup_passed": true
+  },
+  "git_worktree": {
+    "pre_status_clean": true,
+    "post_status_clean": true,
+    "python_bytecode_suppressed": true
+  },
+  "zero_counts": {
+    "ranking_logic": 0,
+    "selection_logic": 0,
+    "comparative_early_stop": 0,
+    "real_lits1_open": 0,
+    "real_wvs7_open": 0,
+    "c09_execution": 0,
+    "hb05_hb06_hb07_execution": 0
+  },
+  "cleanup": {
+    "persistent_transformed_payload_files": 0,
+    "persistent_transformed_payload_bytes": 0,
+    "result_cache_present": false
+  }
+}

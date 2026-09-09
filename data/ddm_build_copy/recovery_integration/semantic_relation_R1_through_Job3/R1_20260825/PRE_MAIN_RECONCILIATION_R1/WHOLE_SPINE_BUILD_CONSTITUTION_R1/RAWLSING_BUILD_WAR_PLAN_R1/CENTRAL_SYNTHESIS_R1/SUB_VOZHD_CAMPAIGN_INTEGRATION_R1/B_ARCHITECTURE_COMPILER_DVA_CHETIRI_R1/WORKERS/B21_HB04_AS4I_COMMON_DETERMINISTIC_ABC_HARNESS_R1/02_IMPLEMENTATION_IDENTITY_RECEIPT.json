@@ -1,0 +1,58 @@
+{
+  "schema": "B21_HB04_IMPLEMENTATION_IDENTITY_RECEIPT@1.0.0",
+  "status": "PASS__COMMON_PACKAGE_COMMITTED_BEFORE_AUTHORITATIVE_COURT",
+  "semantic_implementation_commit": "51f36497985ba2a0fdf3caae835832b3f66ea897",
+  "files": [
+    {
+      "path": "rawlsing_next/as4/__init__.py",
+      "git_blob_sha1": "0a31d52e144e55e0bb0a0f1a637022c2f1536918",
+      "sha256": "a8becc598142002a3f7c5e3c2fb0cfc80a0249537f84602a1c3237af686cb046"
+    },
+    {
+      "path": "rawlsing_next/as4/loader.py",
+      "git_blob_sha1": "f608f72f711610ef6d07fd7c96f450a6ba2cac2a",
+      "sha256": "de31b14fcace34df3f1293e027f14f2c3c75bd942c9b7b27b3eef5b91d8a55c5"
+    },
+    {
+      "path": "rawlsing_next/as4/bounded_fixture.py",
+      "git_blob_sha1": "caa81812f31347826b9fc0279c0543b8b52c7b99",
+      "sha256": "d4f5f8c1a3a51d773d5f6ac0b2f06ad8b99a402e1a4e3872d49e17e96d88fd01"
+    },
+    {
+      "path": "rawlsing_next/as4/protocol.py",
+      "git_blob_sha1": "590da3a2cc54666bd9786130409170b73310a700",
+      "sha256": "f32bc76346565345042e742f05f195bf8c4ca36b98fd4e7996119e45883a595d"
+    },
+    {
+      "path": "rawlsing_next/as4/run_candidate.py",
+      "git_blob_sha1": "0acb4cd17906b1c316c5ae381d3214ea98ac5baa",
+      "sha256": "027cda2dafc0785dbbe52ce83c7aab7c9c1d4b99ca432f632f734c1e30714bfb"
+    },
+    {
+      "path": "rawlsing_next/as4/run_all.py",
+      "git_blob_sha1": "b7b4c3e8782ac2dc85010e8b3a5afd8e40212edf",
+      "sha256": "967ae15e54757190c72d2d0aca7b148ae7d1167df221e2719041f3683563ea3f"
+    },
+    {
+      "path": "rawlsing_next/as4/pins/discovery_frontier_authority_snapshot.json",
+      "git_blob_sha1": "2f2cbce9c9abaa61048424f2191b81b19847ccdd",
+      "sha256": "bf4c1c3898d1405c1aa28f339fd14da051fc8b386db30f99b2a310aea0e89a24"
+    },
+    {
+      "path": "rawlsing_next/tests/test_as4_hb04_common_harness.py",
+      "git_blob_sha1": "0333f0133977fcb14d86d41c5d7386836a53aa99",
+      "sha256": "ca11d17295d3436db08296dc8a9db4cf31c23c127170d2e967fea92d65e72521"
+    }
+  ],
+  "code_scope": [
+    "rawlsing_next/as4/",
+    "rawlsing_next/tests/test_as4_hb04_common_harness.py"
+  ],
+  "preexisting_route_or_shared_files_modified": false,
+  "transient_workflow_is_not_implementation_authority": true,
+  "entry_points": [
+    "python -m rawlsing_next.as4.run_candidate --candidate A|B|C --workdir <dir> --output <json> --bounded-fixture",
+    "python -m rawlsing_next.as4.run_all --workdir <dir> --output <json> --bounded-fixture"
+  ],
+  "implementation_boundary": "B21 supplies the common HB04 execution/session/receipt shell and bounded governed fixture court. Production real-source preparation remains separately gated and was not executed."
+}

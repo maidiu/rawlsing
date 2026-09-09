@@ -1,0 +1,45 @@
+{
+  "schema": "B21_HB04_COMMON_LOADER_VALIDATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "exact_intake_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88",
+  "local_candidate_pins_verified": [
+    "Route-A implementation/test",
+    "B16 production seal/effective-driver pin",
+    "B14 successorized bootstrap",
+    "Route-C implementation",
+    "HQ23",
+    "HQ24",
+    "predicate carrier",
+    "query carrier",
+    "frontier adoption AuthoritySnapshot"
+  ],
+  "successor_package": {
+    "role_predicate_count": 19,
+    "distinct_predicate_count": 18,
+    "query_count": 3,
+    "distinct_canonical_object_count": 21,
+    "candidate_count": 82,
+    "sole_alias": [
+      "A000",
+      "A1RAPP"
+    ],
+    "runtime_binding": "8af38e94e1840b60461b1fead707332f250750295bb5902405836c77deb8ca5b",
+    "discovery_authority": "2e153a153c59bd0b920f8db376478ad1b07000710e79a158471490c11b610cea",
+    "candidate_grammar": "7194b79298c97ff83575e43de472c0e0e1f1ba697d99c666dcba69266da51e06",
+    "official_frontier": "7aca4dbe1ccd36c48444d6858d378084e41aa30b3197662b6225753d5fc82e24",
+    "replay_closure": "45aeaba15ad003b0f734f7c54d68ec22de0e582840a8b239b4a58814e8ee4da1",
+    "zero_remints": true
+  },
+  "authority_registry": {
+    "common_frontier_adoption_snapshot_git_blob": "2f2cbce9c9abaa61048424f2191b81b19847ccdd",
+    "exact_snapshot_materialized": true,
+    "exact_registry_resolution_pass": true,
+    "note": "The common loader materializes the exact DiscoveryAuthority-bound frontier-adoption snapshot. Source-specific query/predicate authority registries are supplied by the prepared source/workload; B21 does not invent missing authority preimages."
+  },
+  "carrier_serialization_laws": {
+    "predicate_bundle": "gzip+base64; decoded canonical JSON binds governed trailing-newline hash",
+    "query_representations": "canonical_json(document) plus one trailing newline byte"
+  },
+  "authoritative_test": "test_hb04_exact_loader_reconstructs_current_successor_package_without_remints",
+  "zero_latest_lookup": true
+}
