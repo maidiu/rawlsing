@@ -1,6 +1,7 @@
 """Governed-court wrapper for frozen OBL059 R12 semantic-view redesign."""
 from __future__ import annotations
 
+import copy
 import importlib.util
 from pathlib import Path
 
@@ -15,4 +16,49 @@ spec.loader.exec_module(module)
 
 
 class TestOBL059R12SemanticViewRedesign(module.CourtR12):
-    pass
+    def test_131_unrelated_error_after_successful_preparation_remains_visible(self):
+        """Route inherited R10 visibility check to R12's actual evaluator delegate."""
+        original = module.r12._r11._r10._r9._evaluate_prepared
+        packet = module.fixture()
+        packet["opportunity"] = module.r11_court.r10_wrapper.module.MutableCarrier(
+            copy.deepcopy(packet["opportunity"])
+        )
+        try:
+            for exc_type in (TypeError, ValueError, RuntimeError):
+                def deliberate(_packet, exc_type=exc_type):
+                    raise exc_type("r10-post-preparation-programmer-error")
+                module.r12._r11._r10._r9._evaluate_prepared = deliberate
+                with self.assertRaisesRegex(exc_type, "r10-post-preparation-programmer-error"):
+                    module.r12.evaluate_direct_positive_applicability(packet)
+        finally:
+            module.r12._r11._r10._r9._evaluate_prepared = original
+
+    def test_140_parent_slot_change_from_composed_validation_is_child_local_and_negative(self):
+        """R12 semantic authority ignores child-local private-state change itself."""
+        packet = module.fixture()
+        original_actor = packet["evidence"]["actor_activation"]
+        composed = module.r11_court.CallbackLayered(
+            copy.deepcopy(packet["opportunity"]),
+            {},
+            callback=lambda: packet["evidence"].__setitem__("actor_activation", None),
+        )
+        packet["opportunity"] = composed
+        result = module.r12.evaluate_direct_positive_applicability(packet)
+        self.assertEqual(result["decision"], module.r12.POSITIVE_DECISION, result)
+        self.assertIs(packet["evidence"]["actor_activation"], original_actor)
+        self.assert_no_effect_r12(result)
+
+    def test_145_unrelated_errors_after_composed_view_established_remain_visible(self):
+        """Route inherited R11 visibility check to R12's actual evaluator delegate."""
+        original = module.r12._r11._r10._r9._evaluate_prepared
+        packet = module.fixture()
+        packet["opportunity"] = module.ChainMap(copy.deepcopy(packet["opportunity"]), {})
+        try:
+            for exc_type in (TypeError, ValueError, RuntimeError):
+                def deliberate(_packet, exc_type=exc_type):
+                    raise exc_type("r11-post-view-programmer-error")
+                module.r12._r11._r10._r9._evaluate_prepared = deliberate
+                with self.assertRaisesRegex(exc_type, "r11-post-view-programmer-error"):
+                    module.r12.evaluate_direct_positive_applicability(packet)
+        finally:
+            module.r12._r11._r10._r9._evaluate_prepared = original
