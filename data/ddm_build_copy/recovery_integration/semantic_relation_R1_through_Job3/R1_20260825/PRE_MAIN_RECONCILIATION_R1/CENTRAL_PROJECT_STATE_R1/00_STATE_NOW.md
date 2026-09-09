@@ -811,3 +811,25 @@ All three first-positive source-authority contracts OBL058/059/060 are therefore
 `OBL061` is no longer blocked on authority-contract adoption. HQ decomposed it into: runtime anchors -> separate source-owned permission/applicability/contact facts -> witness independence -> four exact OBL056 admissions -> independent OBL055 preflight -> separate HQ current-effect gate -> first current ENCOUNTER/OEE.
 
 No current actor, phase, contact, permission, applicability, independence fact, OBL056 positive entry, ENCOUNTER, OEE or OBL032 effect was created by this HQ action.
+
+
+## WVS7 / HB01 POST-SAV AUTHORITY-CLOSURE FAN-IN — 2026-09-09
+
+HQ consumed SUB-VOZHD W post-SAV join `c6c8425135d6881e53e0dc11a9da8bd4a5d5678d`.
+
+Permanent corrections:
+- raw `WVS Wave 7.sav` access is solved; do not reopen source-carrier archaeology;
+- D12 is accepted `66/66`;
+- D11 is accepted `3/66`, with exact replayed AuthoritySnapshot + EmpiricalUniverse objects for Australia 2018, Great Britain 2022 and Northern Ireland 2022;
+- 63 country scopes remain fail-closed for insufficient positive target/frame/design documentary authority.
+
+Current routing state:
+- 222/585 documentary routing cells unresolved;
+- nine D03 person-position targets remain exact `ROUTING_UNKNOWN`;
+- these are not automatically positive-recovery obligations. HQ will adjudicate necessity versus lawful `NONBLOCKING_EXCLUDED`.
+
+Current HB01 topology is parallel:
+1. SUB-VOZHD W — 63-scope D11 documentary authority recovery;
+2. VOZHD/HQ — routing/D03 necessity/exclusion court.
+
+No C05-R2A, full GSR07, HB01 closure, HB05, HB06, HB07 or C09 has been authorized by this fan-in. B remains stood down.
