@@ -443,3 +443,15 @@ It does not:
 - assign final ownership of every sub-operation.
 
 The dedicated Psychic Field Forge campaign must derive those from upstream V3, accepted V3/V2 authority, recovered continuity where lawful, psychology/cognitive-science evidence where useful, and whole-machine terminal demand.
+
+## 15. Zero-loss originating-design appendix
+
+The compressed vision above is NOT the sole preservation surface.
+
+The dedicated zero-loss requirements reservoir is:
+
+`04_ZERO_LOSS_CONVERSATIONAL_VISION_APPENDIX_R1.md`
+
+A future PFF Vozhd must consume that appendix alongside this file. Where this compressed bank omits an originating nuance but the appendix preserves it without contradicting later competent authority, the nuance remains `MUST_FACTOR` design input.
+
+`COMPRESSED_VISION != COMPLETE_ORIGINATING_REQUIREMENTS_RESERVOIR`.
