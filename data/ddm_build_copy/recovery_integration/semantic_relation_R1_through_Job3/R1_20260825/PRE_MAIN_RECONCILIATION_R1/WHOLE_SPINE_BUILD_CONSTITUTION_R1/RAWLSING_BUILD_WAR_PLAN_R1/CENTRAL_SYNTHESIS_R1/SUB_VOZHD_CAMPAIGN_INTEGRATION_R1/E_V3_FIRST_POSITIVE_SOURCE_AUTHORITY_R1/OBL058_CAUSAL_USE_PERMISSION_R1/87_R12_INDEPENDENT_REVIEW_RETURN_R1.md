@@ -129,7 +129,13 @@ This FAIL is narrow. The independent court separately confirms the ordinary genu
 
 `OBL061_UNBLOCKED = NO`
 
-No central, PRE-MAIN, main, campaign, sibling-lane, producer, frozen-candidate, R11, or unrelated authority branch was moved by this reviewer.
+No lasting central, PRE-MAIN, main, campaign, sibling-lane, producer, frozen-candidate, R11, or unrelated authority branch effect remains from this review.
+
+## Procedural connector incident and restoration
+
+During terminal Return assembly, a connector write mistakenly created an empty file named `NOOP` on the repository default branch in commit `d8133f2db0654cb31a3bc66dc8d371fdff9268f1`. That accidental commit had the exact prior `main` tip `4ba3569d2d69a89ade1ffa0b4ca8e0869654cf7e` as its sole parent.
+
+Before terminal completion, `main` was restored exactly to `4ba3569d2d69a89ade1ffa0b4ca8e0869654cf7e`; verification after restoration showed `main` at that exact SHA and its original tree `d876c88493a1a38e83f1533d8285e8a093321d9d`. The accidental `NOOP` commit is not referenced by `main`, and there is no lasting main ref/tree effect. The frozen R12 candidate, governed evidence execution, semantic finding, campaign branch, producer branch, and other governed branches were unaffected.
 
 ## Required next gate
 
@@ -139,7 +145,7 @@ Any successor must be a newly commissioned bounded repair or redesign addressing
 
 ## Return Beacon completion
 
-The accompanying `.rabochii/return_manifest.json` is committed in the same final branch-tip commit as this return packet and declares the completed `FAIL` outcome, `CLOSURE_ONLY`, durable required outputs, completed governed evidence, no required/background work remaining, and review/repair separation under `RABOCHII_RETURN_MANIFEST@1.0.0`.
+The accompanying `.rabochii/return_manifest.json` is committed in the same final branch-tip commit as this return packet and declares the completed `FAIL` outcome, `CLOSURE_ONLY`, durable required outputs, completed governed evidence, no required/background work remaining, review/repair separation, and the fully restored procedural connector incident under `RABOCHII_RETURN_MANIFEST@1.0.0`.
 
 Exact terminal:
 
