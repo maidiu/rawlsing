@@ -754,3 +754,45 @@ Sequencing is explicitly non-monolithic:
 - terminal V2 implementation must not harden a direct objective-V3 -> renderer route that bypasses the frozen PFF seam.
 
 No current Sub-Vozhd lane is ordered to stop for PFF. Dedicated PFF campaign activation is ACT039.
+
+
+## SUB-VOZHD E HQ ZOOM-OUT — OBL058/060 CLOSED; OBL059 SOLE ACTIVE AUTHORITY LANE
+
+HQ consumed SUB-VOZHD E tip `81778f0bf1ea944d812470897ae757a64a0b8531` and adjudicated the over-deep OBL058 native-build-provenance descent.
+
+Adoption commit:
+
+`31dbfc741b945ed46c831cba90d59f3370c376e7`
+
+OBL058:
+
+- `OBL058_CAUSAL_USE_PERMISSION_SOURCE_AUTHORITY_R1@1.5.0` is project-current at the bounded semantic authority-contract grain;
+- current-selection receipt blob: `5d1275a84906c67b69e692fd1ada6156d2dc8243`;
+- the R12 reviewer FAIL remains preserved;
+- its binary-to-frozen-source build-attestation proposition is valid technical evidence but not a current OBL058 semantic acceptance requirement under the project execution trust model;
+- no R13 provenance work is authorized;
+- current positive permission facts = 0.
+
+OBL060:
+
+- `V3_CONTACT_WITNESS_INDEPENDENCE_SOURCE_AUTHORITY_CANDIDATE@1.0.0` R2 is project-current at the exact independence-authority grain;
+- current-selection receipt blob: `e59d8dc58ad3bc9441b6bc1d2a4c779c4a1c75bf`;
+- current positive independence facts = 0.
+
+OBL059:
+
+- sole active E authority lane;
+- R13 producer PASS already exists at `cfd6d3b8971063c73178e819b9ec28acaa134a79`;
+- exact next duty is one fresh distinct independent R13 review, then HQ return.
+
+Therefore:
+
+`OBL058 = CLOSED`
+
+`OBL060 = CLOSED`
+
+`OBL059 = RETURN_REQUIRED`
+
+`OBL061 = BLOCKED_ON_OBL059`
+
+No actor/current phase/contact/OBL056/OBL055/ENCOUNTER/OEE runtime action is authorized.
