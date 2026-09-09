@@ -1,0 +1,27 @@
+{
+  "schema": "B21_HB04_HOSTILE_FAIL_CLOSED_RECEIPT@1.0.0",
+  "status": "PASS",
+  "authoritative_test_file": "rawlsing_next/tests/test_as4_hb04_common_harness.py",
+  "test_file_blob": "0333f0133977fcb14d86d41c5d7386836a53aa99",
+  "total_pytest_cases_passed": 29,
+  "required_hostiles": {
+    "wrong_intake_freeze_sha": "PASS_FAIL_CLOSED",
+    "wrong_route_a_implementation_blob": "PASS_FAIL_CLOSED",
+    "wrong_b16_route_b_seal_or_driver_pin": "PASS_FAIL_CLOSED",
+    "wrong_route_c_qualified_intake_identity": "PASS_FAIL_CLOSED__BOUND_BY_CANONICAL_FREEZE_SHA_AND_EXPLICIT_DEFAULT_FREEZE_FIELD_PIN",
+    "historical_or_stale_runtime_binding": "PASS_FAIL_CLOSED__CURRENT_ROLE_ALIAS_AND_CURRENT_CARRIER_RESOLUTION_REQUIRED",
+    "wrong_discovery_authority": "PASS_FAIL_CLOSED",
+    "wrong_candidate_grammar": "PASS_FAIL_CLOSED",
+    "wrong_official_frontier": "PASS_FAIL_CLOSED",
+    "wrong_replay_closure": "PASS_FAIL_CLOSED",
+    "missing_predicate_carrier_or_runtime_object": "PASS_FAIL_CLOSED",
+    "missing_query_carrier_or_runtime_object": "PASS_FAIL_CLOSED",
+    "alias_or_cardinality_violation": "PASS_FAIL_CLOSED",
+    "candidate_other_than_A_B_C": "PASS_FAIL_CLOSED",
+    "source_sha_mismatch": "PASS_FAIL_CLOSED_BEFORE_SEMANTIC_EXECUTION",
+    "extra_ungoverned_accelerator_request": "PASS_FAIL_CLOSED",
+    "ranking_or_selection_directive": "PASS_FAIL_CLOSED"
+  },
+  "no_validator_weakened": true,
+  "no_candidate_semantics_modified": true
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "B21_HB04_CANDIDATE_INTERFACE_PARITY_RECEIPT@1.0.0",
+  "status": "PASS",
+  "bounded_fixture": "GOVERNED_SYNTHETIC__NO_REAL_LITS1_OR_WVS7",
+  "common_protocol": [
+    "repository",
+    "run_i03()",
+    "run_i05()",
+    "close()",
+    "measurements"
+  ],
+  "candidates": {
+    "A": {
+      "transport": "R5_FROZEN_REOPEN",
+      "wrapper": "accepted pre553_r5_source_backed_adapter -> C05R2A source-backed repository"
+    },
+    "B": {
+      "transport": "SOURCE_BACKED_VIRTUAL_C11",
+      "wrapper": "accepted source-backed C11 facade with cache=None"
+    },
+    "C": {
+      "transport": "ROUTE_C_EXACT_STREAM",
+      "wrapper": "accepted Route-C implementation with exactly CACC1+CACC2"
+    }
+  },
+  "exact_semantic_projection_parity": {
+    "source_sha256": "9ced16d5f747b54408d8703e5ca61f485ce7e6e3e046147bdc4ec979a180b8b5",
+    "row_count": 3,
+    "i03_fact_ref": "bae0b0dbdf5fec58305cbaf583c30e25aae8f07d219350d90425a02df48a2b75",
+    "i05_frontier_ref": "8be39b3ae9e8a2b849ce22480ad0eaea508c6416473d408f38e5652a5b701e85",
+    "i05_receipt_ref": "6704074278d90db80a35038175fa5c5a8598837a541f1322bf62eec93e9f7c36",
+    "candidate_count": 1,
+    "covered_candidate_count": 1
+  },
+  "all_sessions_closed": true,
+  "all_cleanup_status": "PASS_CLOSED_AND_SCRATCH_REMOVED",
+  "all_persistent_transformed_payload_file_count": 0,
+  "all_result_cache_present": false,
+  "resource_measurement_identity_effect": "NONE_DESCRIPTIVE_ONLY",
+  "direct_candidate_receipt_sha256": {
+    "A": "0d7468dce510f2d50ccc16a36dce911cd65cce3f2ccc18366c63c376b644764a",
+    "B": "e884eb13df6065e2bfe54d2e2c6f9861514244b3fc00710986973ce07a56a46d",
+    "C": "089154a87404da6c4602d9a7c0c01ac12839811a90c89c4fcbd56e5bd00d6945"
+  },
+  "note": "Whole per-candidate semantic receipt hashes intentionally differ because the candidate identifier is receipted; the governed I03/I05 identity projection is exact across A/B/C."
+}
