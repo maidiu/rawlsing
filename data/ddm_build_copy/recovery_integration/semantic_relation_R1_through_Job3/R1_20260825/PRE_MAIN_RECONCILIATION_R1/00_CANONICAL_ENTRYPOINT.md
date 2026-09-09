@@ -180,3 +180,15 @@ W55 adds `LOCAL_COMPLETION != PROJECT_COMPLETION` and makes reintegration state 
 W35 validation remains under `WAVE3/W35_TERMINAL_JOIN_VALIDATION/`; W50 conceptual-synthesis/materialization receipts live under `WAVE4/W50_GLOBAL_CONCEPTUAL_INHERITANCE/`; W53 project-home seal and W54 hostile audit establish the succession-ready PRE-MAIN baseline consumed by W55.
 
 For operating correctness, trust W35's exact runtime/current-authority receipts. For redesign inheritance, start at the Ground, then use the central state to route into W50-W54 evidence and any later exact adopted-authority capsules such as FIELD FORGE R2. Neither mode substitutes for the other.
+
+## PSYCHIC FIELD FORGE VISION-BANK ROUTE — 2026-09-08
+
+For redesign or terminal personality-generator work spanning the V3->V2 seam, also route through:
+
+`WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PSYCHIC_FIELD_FORGE_R1/`.
+
+This is a banked terminal-demand/war-plan frontier, not current runtime authority. Its status is:
+
+`VISION_BANKED__ARCHITECTURE_NOT_YET_ADOPTED__NO_PRODUCTION_IMPLEMENTATION_AUTHORITY`.
+
+It must factor into future V3/V2 architecture so that durable generated personhood is mediated through relationship-specific activation, present consciousness, inhibition/defense/presentation and involuntary leakage rather than flattened into a static persona prompt. See central `S040 / OBL062 / ACT039` for sequencing and competent-authority routing.
