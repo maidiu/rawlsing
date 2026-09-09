@@ -897,3 +897,33 @@ HB01 itself is **not yet closed**. Current critical path is:
 Population-document recovery continues in parallel as strengthening. Romania and New Zealand positive recoveries are not treated as adopted overlays until their normal overlay materialization/adjudication completes; Ukraine remains an exact-document/body-transport recovery case.
 
 No weighted population use, cross-universe pooling, harmonization, backfill, HB05, HB06, HB07 or C09 is released by this adoption. B remains stood down pending separate HQ HB01 closure.
+
+
+## PSYCHIC FIELD FORGE — HQ TRAJECTORY REVIEW / CONVERGENCE ORDER — 2026-09-09
+
+HQ reviewed dedicated PFF prearchitecture head `1fed8c1bc65db56acb767f68d342b088df227dc6` against current PRE-MAIN `327db94ab50e087cd7abfa614aae30441832a487`.
+
+The later PFF work remains deliberately **off PRE-MAIN**: project-current PFF authority still consists only of the original charter/vision/sequencing bank. Artifacts 05–56 are research evidence, not adopted architecture or V3 authority.
+
+HQ accepts the research direction as highly productive but changes the campaign's operating mode from open-ended exploration to **bounded prearchitecture convergence**.
+
+Primary finding to preserve:
+
+`ONE_PERSON != V3_PERSON_PLUS_PFF_PERSON`
+
+The strongest current decomposition is:
+
+`V3 durable owners + shared person-transition logic + PFF fast/live mediation + V2 expression + exact V3 durable-return seam`.
+
+This means PFF may legitimately discover missing general V3 psychology, but such findings become **upstream architecture-delta candidates returned to HQ**, not PFF-owned V3 redesign.
+
+Current boundary law:
+
+- PFF may continue the already-open relational problem / pursuit / frustration / durable-condition / attractor cluster only far enough to run science/theory, rival-model, synthetic-life scenario and conceptual-elimination tests;
+- new conceptual continents are frozen unless required to close an explicit architecture-input gap;
+- Enneagram-derived latent-topology work is classified as a non-adopted general developmental hypothesis pending those courts, not as current PFF or V3 runtime law;
+- PFF must now produce an upstream V3 delta docket partitioned into interface-blocking deltas, nonblocking V3 enrichments and speculative theory;
+- PFF must separately identify PFF-fast-only, V2-expression-only and durable-return-seam responsibilities;
+- PFF interface freeze and implementation remain closed until exact consumed V3 semantic interfaces are stable and HQ admits architecture.
+
+Global sequencing is unchanged: PFF does not block W/HB01, B's later HB05/HB06 chain, or independent V3 OBL061/A progress. PFF becomes a terminal V2 prerequisite only at interface-freeze/integration time.
