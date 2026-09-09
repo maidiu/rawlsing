@@ -1,0 +1,88 @@
+{
+  "schema": "B21Q_HB04_FROZEN_IDENTITY_RECEIPT@1.0.0",
+  "status": "PASS",
+  "executed_head": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+  "authoritative_workflow_run_id": 34307877327,
+  "environment": {
+    "implementation": "CPython",
+    "python": "3.13.15",
+    "pyarrow": "25.0.1",
+    "pandas": "3.0.5"
+  },
+  "freezes": {
+    "hb04_implementation": {
+      "artifact": "51A_HB04_COMMON_HARNESS_IMPLEMENTATION_FREEZE_R1.json",
+      "canonical_sha256": "138482116b566482075e191800229f81357541d674646552e8c269e7640a755e",
+      "raw_sha256": "138482116b566482075e191800229f81357541d674646552e8c269e7640a755e"
+    },
+    "abc_intake": {
+      "artifact": "49A_HB04_QUALIFIED_ABC_INTAKE_FREEZE_R1.json",
+      "canonical_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88",
+      "raw_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88"
+    }
+  },
+  "frozen_files": [
+    {
+      "path": "rawlsing_next/as4/__init__.py",
+      "git_blob_sha1": "0a31d52e144e55e0bb0a0f1a637022c2f1536918",
+      "sha256": "a8becc598142002a3f7c5e3c2fb0cfc80a0249537f84602a1c3237af686cb046"
+    },
+    {
+      "path": "rawlsing_next/as4/loader.py",
+      "git_blob_sha1": "f608f72f711610ef6d07fd7c96f450a6ba2cac2a",
+      "sha256": "de31b14fcace34df3f1293e027f14f2c3c75bd942c9b7b27b3eef5b91d8a55c5"
+    },
+    {
+      "path": "rawlsing_next/as4/bounded_fixture.py",
+      "git_blob_sha1": "caa81812f31347826b9fc0279c0543b8b52c7b99",
+      "sha256": "d4f5f8c1a3a51d773d5f6ac0b2f06ad8b99a402e1a4e3872d49e17e96d88fd01"
+    },
+    {
+      "path": "rawlsing_next/as4/protocol.py",
+      "git_blob_sha1": "590da3a2cc54666bd9786130409170b73310a700",
+      "sha256": "f32bc76346565345042e742f05f195bf8c4ca36b98fd4e7996119e45883a595d"
+    },
+    {
+      "path": "rawlsing_next/as4/run_candidate.py",
+      "git_blob_sha1": "0acb4cd17906b1c316c5ae381d3214ea98ac5baa",
+      "sha256": "027cda2dafc0785dbbe52ce83c7aab7c9c1d4b99ca432f632f734c1e30714bfb"
+    },
+    {
+      "path": "rawlsing_next/as4/run_all.py",
+      "git_blob_sha1": "b7b4c3e8782ac2dc85010e8b3a5afd8e40212edf",
+      "sha256": "967ae15e54757190c72d2d0aca7b148ae7d1167df221e2719041f3683563ea3f"
+    },
+    {
+      "path": "rawlsing_next/as4/pins/discovery_frontier_authority_snapshot.json",
+      "git_blob_sha1": "2f2cbce9c9abaa61048424f2191b81b19847ccdd",
+      "sha256": "bf4c1c3898d1405c1aa28f339fd14da051fc8b386db30f99b2a310aea0e89a24"
+    },
+    {
+      "path": "rawlsing_next/tests/test_as4_hb04_common_harness.py",
+      "git_blob_sha1": "0333f0133977fcb14d86d41c5d7386836a53aa99",
+      "sha256": "ca11d17295d3436db08296dc8a9db4cf31c23c127170d2e967fea92d65e72521"
+    }
+  ],
+  "loader_successor_package": {
+    "candidate_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "predicate_role_count": 19,
+    "distinct_predicate_count": 18,
+    "query_count": 3,
+    "sole_alias": [
+      "A000",
+      "A1RAPP"
+    ],
+    "discovery_authority": "2e153a153c59bd0b920f8db376478ad1b07000710e79a158471490c11b610cea",
+    "candidate_grammar": "7194b79298c97ff83575e43de472c0e0e1f1ba697d99c666dcba69266da51e06",
+    "official_frontier": "7aca4dbe1ccd36c48444d6858d378084e41aa30b3197662b6225753d5fc82e24",
+    "replay_closure": "45aeaba15ad003b0f734f7c54d68ec22de0e582840a8b239b4a58814e8ee4da1",
+    "runtime_binding": "8af38e94e1840b60461b1fead707332f250750295bb5902405836c77deb8ca5b",
+    "zero_remints": true,
+    "successor_package_sha256": "7ec46373c314db96f4b1e130bbbcae85316f1529a948a1447c30bb4c5dbca9e1"
+  },
+  "both_outer_runs_reverified_independently": true
+}
