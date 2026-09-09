@@ -833,3 +833,40 @@ Current HB01 topology is parallel:
 2. VOZHD/HQ — routing/D03 certified-projection scope court.
 
 No C05-R2A, full GSR07, HB01 closure, HB05, HB06, HB07 or C09 has been authorized by this fan-in. B remains stood down.
+
+
+## BOUNDED EMPIRICAL INCOMPLETENESS / RUNTIME ADMISSIBILITY — 2026-09-09
+
+HQ adopted the project-level law:
+
+`FULL_SOURCE_CERTIFICATION != APPLICATION_RUNTIME_ADMISSIBLE`.
+
+Canonical adoption surface:
+
+`../WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/BOUNDED_EMPIRICAL_INCOMPLETENESS_RUNTIME_R1/00_VOZHD_ADOPTION.md`
+
+Project effect:
+
+- strict source/documentary certification remains unchanged and continues as an independent coverage-quality track;
+- unavailable or partially authorized evidence may not masquerade as population evidence;
+- missing evidence must not be converted to zero, nearest-neighbor evidence, implicit backfill or automatic reweighting of surviving sources;
+- the runtime architecture must support typed degraded evidence, explicit non-empirical/model-prior fallbacks where versioned, wider uncertainty/support envelopes, omission of unsupported contributions and deterministic coverage receipts;
+- no individual survey family or country methodology archive may remain an unavoidable single point of failure for application existence.
+
+`OBL063` is now the exact implementation/hostile-runtime obligation.
+
+Its court must prove a per-driver missing-evidence matrix, population-claim guards, relation/backfill guards, no-renormalization semantics, terminal-vector integration and representative deletion cases including complete WVS7 population-certified contribution absence and complete absence of one survey family.
+
+This law **does not** close WVS7 HB01, does not weaken D11 documentary authority requirements, and does not wake HB05/HB06/HB07/C09 today.
+
+Instead the project now runs two parallel tracks:
+
+```text
+FULL SOURCE CERTIFICATION / AUTHORITY MAXIMIZATION
+    ||
+BOUNDED RUNTIME ADMISSIBILITY / FINISHABILITY
+```
+
+Only after OBL063 implementation and independent hostile PASS may HQ rewire downstream runtime launch dependencies away from global 100% archival certification.
+
+WVS7 documentary recovery therefore continues aggressively, but an inaccessible historical methodology document is no longer accepted as a permanent architectural veto over Rawlsing's ability to exist as runnable software.
