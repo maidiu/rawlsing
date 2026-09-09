@@ -1,14 +1,14 @@
 {
   "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
-  "task_id": "OBL058_CAUSAL_USE_PERMISSION_R11_INDEPENDENT_REVIEW_R1",
-  "branch": "agent/rabochii-subv-e-obl058-causal-use-permission-r11-independent-review-r1",
+  "task_id": "OBL058_CAUSAL_USE_PERMISSION_AUTHORITY_CLIENT_BOUNDARY_R12",
+  "branch": "agent/rabochii-subv-e-obl058-causal-use-permission-authority-client-boundary-r12",
   "commission": {
-    "authority_ref": "2be93091bd5b1b6b479bd9c46686d0fc4ce35b81",
-    "exact_start_sha": "9087deafcf9fc8adbd8e893ac8f63b20cbf48c71"
+    "authority_ref": "cd96e61c073522383a1315148a5e58aa169d2a1a",
+    "exact_start_sha": "b921b140041d9b102bda9a12e14047c626083fca"
   },
   "return": {
-    "result": "FAIL",
-    "terminal": "RABOCHII_SUBV_E_OBL058_CAUSAL_USE_PERMISSION_R11_INDEPENDENT_REVIEW__RETURN_TO_SUB_VOZHD_E",
+    "result": "PASS",
+    "terminal": "RABOCHII_SUBV_E_OBL058_CAUSAL_USE_PERMISSION_AUTHORITY_CLIENT_BOUNDARY_R12__RETURN_TO_SUB_VOZHD_E",
     "phase": "CLOSURE_ONLY",
     "completion": {
       "commission_consumed": true,
@@ -22,74 +22,114 @@
   "separation": {
     "performed_only_commissioned_role": true,
     "no_uncommissioned_repair": true,
-    "no_uncommissioned_review": true
+    "no_uncommissioned_review": true,
+    "self_review_performed": false,
+    "independent_review_performed_by_r12_worker": false,
+    "r11_independent_review_repeated": false,
+    "r12_independent_review_commissioned_by_worker": false
   },
   "return_packet": {
-    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/79_R11_INDEPENDENT_REVIEW_RETURN_R1.md",
-    "blob_sha": "c18c812aa2a9c2e8d947e278eb525f943fd4c26b"
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/83_RETURN_TO_SUB_VOZHD_E_R12.md",
+    "blob_sha": "3f2488cf3a0ea07522a00fe749d87729effacf30"
   },
   "required_outputs": [
     {
       "name": "return_packet",
       "kind": "path",
-      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/79_R11_INDEPENDENT_REVIEW_RETURN_R1.md",
-      "blob_sha": "c18c812aa2a9c2e8d947e278eb525f943fd4c26b",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/83_RETURN_TO_SUB_VOZHD_E_R12.md",
+      "blob_sha": "3f2488cf3a0ea07522a00fe749d87729effacf30",
       "status": "DURABLE"
     },
     {
       "name": "frozen_candidate",
       "kind": "commit",
-      "sha": "c11d7c15626f0d249a3b44b87d5cb46dcfe7feef",
+      "sha": "fe0e3211ac2ae908e92fdc5a0351991747e6cbbb",
       "status": "DURABLE"
     },
     {
-      "name": "independent_matrix",
+      "name": "candidate_python_surface",
       "kind": "path",
-      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/77_R11_INDEPENDENT_REVIEW_MATRIX_R1.md",
-      "blob_sha": "bd2055bbf1120b8e395dc5738029b8ce414f17d4",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/causal_use_permission_candidate_r12.py",
+      "blob_sha": "307b28f6c6dac96c711732d40b8949c45f1a2db9",
       "status": "DURABLE"
     },
     {
-      "name": "independent_test_surface",
+      "name": "authority_client_native_source",
       "kind": "path",
-      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/test_independent_review_r11.py",
-      "blob_sha": "ca2fb1a44f0196b2e8b3cb212855245e678340bf",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/obl058_r12_authority_client.c",
+      "blob_sha": "924f5bbcdffda0d0ce937d365e6bd1a24f73d119",
+      "status": "DURABLE"
+    },
+    {
+      "name": "producer_test_surface",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/test_authority_client_boundary_r12.py",
+      "blob_sha": "1517fdd93991a8dd6b2447e653d6c67a3fa124ea",
+      "status": "DURABLE"
+    },
+    {
+      "name": "corrected_producer_test_adapter",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/test_authority_client_boundary_r12_corrected.py",
+      "blob_sha": "83692004e5e6d48cf66318051a809879789dd52e",
+      "status": "DURABLE"
+    },
+    {
+      "name": "frozen_authority_packet",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/81_FROZEN_SUPERSEDING_AUTHORITY_CLIENT_BOUNDARY_CANDIDATE_R12.md",
+      "blob_sha": "49ef3bc97ae75f8932c085c0aa682cab8d42ab31",
       "status": "DURABLE"
     },
     {
       "name": "governed_wrapper",
       "kind": "path",
-      "path": "rawlsing_next/tests/test_subv_e_obl058_causal_use_permission_r11_independent_review.py",
-      "blob_sha": "2173660caf8cda45b0a9e88dd3277c23f0836b83",
+      "path": "rawlsing_next/tests/test_subv_e_obl058_causal_use_permission_authority_client_boundary_r12_court.py",
+      "blob_sha": "2921b7763a06c4ee77abb61b93fe6b03166a103f",
       "status": "DURABLE"
     },
     {
       "name": "governed_court_spec",
       "kind": "path",
       "path": ".rabochii/court_spec.json",
-      "blob_sha": "36417f5fa7a60ca00a205201da6c901099295bcc",
+      "blob_sha": "1463e2de813ae486d22071f350cef46ad8340eee",
       "status": "DURABLE"
     },
     {
       "name": "governed_evidence_packet",
       "kind": "path",
-      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/78_R11_INDEPENDENT_REVIEW_GOVERNED_EVIDENCE_R1.md",
-      "blob_sha": "045b822976f0b0a9920b21c66880a1454bee3120",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/E_V3_FIRST_POSITIVE_SOURCE_AUTHORITY_R1/OBL058_CAUSAL_USE_PERMISSION_R1/82_GOVERNED_AUTHORITY_CLIENT_BOUNDARY_COURT_EVIDENCE_R12.md",
+      "blob_sha": "be8d2d90d74883470d382148af368a351166411b",
       "status": "DURABLE"
     },
     {
       "name": "governed_evidence_execution",
       "kind": "commit",
-      "sha": "9cf941cec1ad75c927a6ece067c5c889b261bc7a",
+      "sha": "d95865abc7c86da8ba64c9106ed11b2c231e0b6c",
       "status": "DURABLE"
     }
   ],
   "evidence": {
     "required": true,
-    "workflow_run_id": 34304823684,
+    "workflow_run_id": 34319175950,
     "conclusion": "success",
-    "evidence_execution_sha": "9cf941cec1ad75c927a6ece067c5c889b261bc7a",
+    "evidence_execution_sha": "d95865abc7c86da8ba64c9106ed11b2c231e0b6c",
     "workflow_name": "Rabochii Governed Bounded Court",
-    "artifact_id": 10086260974
+    "artifact_id": 10091200070,
+    "artifact_zip_sha256": "376fbb1b353a9b2ed07df5df280183f0f7c58a9373d5aff8ee2f229fedb25e0a",
+    "bounded_court_result": "PASS",
+    "bounded_court_exit_code": 0
+  },
+  "no_current_effect": {
+    "project_current_positive_causal_use_permission_created": false,
+    "project_current_obl056_positive_entry_installed": false,
+    "current_actor_or_runtime_mutation": false,
+    "obl055_executed": false,
+    "encounter_created": false,
+    "project_current_oee_realized": false,
+    "authority_index_effect_created": false,
+    "sub_vozhd_e_adoption_claimed": false,
+    "hq_adoption_claimed": false,
+    "obl061_unblocked": false
   }
 }
