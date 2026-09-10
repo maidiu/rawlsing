@@ -1,0 +1,189 @@
+# M9 — LURIA NEGATIVE CEILINGS R1
+
+STATUS: `NEGATIVE_CEILINGS_SEALED`
+
+These ceilings are the main Rawlsing value of this source excavation. They prevent historically loaded population labels from silently becoming actor psychology.
+
+## NC-01 — No culture-to-cognition edge
+
+FORBIDDEN:
+
+```text
+CULTURE -> COGNITIVE_STYLE
+TRADITIONAL_CULTURE -> CONCRETE_THINKING
+MODERN_CULTURE -> ABSTRACT_THINKING
+```
+
+Required decomposition:
+
+```text
+specific actor-relative schooling/activity/communication/information/practice history
++ specified task context
+-> observed performance evidence
+```
+
+## NC-02 — No socialism / collectivization-to-psychology edge
+
+FORBIDDEN:
+
+```text
+SOCIALISM -> NEW COGNITIVE STRUCTURE
+COLLECTIVIZATION -> ABSTRACT REASONING
+KOLKHOZ_MEMBERSHIP -> PSYCHOLOGICAL TRAIT
+```
+
+The historical regime changes multiple activity/institutional conditions simultaneously. Only concrete, separately evidenced bindings may enter.
+
+## NC-03 — No population category as psychological prior
+
+Forbidden priors include, without limitation:
+
+```text
+UZBEK
+KIRGHIZ
+PEASANT
+WOMAN
+ICHKARI WOMAN
+MUSLIM
+ILLITERATE
+COLLECTIVE-FARMER
+"BACKWARD"
+"TRADITIONAL"
+"CULTURALLY ADVANCED"
+```
+
+None licenses motive, abstraction level, inferential capacity, self-awareness, imagination, compliance, or task interpretation.
+
+## NC-04 — Illiteracy is not cognitive incapacity
+
+Illiteracy may be an actor-relative fact about reading/writing practice. It cannot be converted into a general deficit prior.
+
+The book contains multiple illiterate participants who reason effectively in practical domains and some who solve formal inferences under suitable framing.
+
+## NC-05 — Refusal is not failure of capacity
+
+FORBIDDEN:
+
+```text
+REFUSES PREMISE -> CANNOT INFER
+REFUSES GROUPING -> CANNOT CATEGORIZE
+REFUSES CONFLICT PROBLEM -> CANNOT REASON
+REFUSES FREE-FORM QUESTION -> LACKS IMAGINATION
+REFERS TO MATERIAL SHORTAGE -> LACKS SELF-AWARENESS
+```
+
+Required first inquiry: what task did the actor believe was being asked, and what epistemic/pragmatic norm governed the response?
+
+## NC-06 — Task performance is not a total-person state
+
+A result in color grouping, geometric naming, classification, syllogisms, problem solving, question production, or self-description stays local to that task family unless a competent downstream model separately earns generalization.
+
+No scalar `COGNITIVE_DEVELOPMENT_LEVEL` is authorized.
+
+## NC-07 — No perceptual-structure claim from lexical naming alone
+
+Object-oriented names and taxonomic geometric names are observed outputs. They do not by themselves identify changed low-level visual perception.
+
+## NC-08 — No logical-incapacity claim from epistemic caution
+
+A person who will not conclude facts about an unknown place from an investigator's statements may be enforcing a rule of evidence, not failing formal inference.
+
+Actor knowledge/access and objective/stipulated truth must remain separate.
+
+## NC-09 — No schooling-only causal effect
+
+Schooling is confounded with:
+
+- age/cohort;
+- literacy;
+- institutional selection;
+- information exposure;
+- new communicative routines;
+- collective-farm/administrative roles in many comparisons;
+- test familiarity.
+
+The source can support a schooling-mediated hypothesis, not an isolated effect estimate.
+
+## NC-10 — No collective-work-only causal effect
+
+Collective work is confounded with leadership selection, schooling/literacy, broader networks, state contact, information access, and age. Membership alone is insufficient; concrete recurrent activities must be represented.
+
+## NC-11 — No communication scalar
+
+"More complex communication" cannot be a generic numeric cause. Decompose:
+
+```text
+counterpart(s)
+channel
+content
+frequency/duration
+role/authority relation
+institutional context
+actual transfer / feedback
+```
+
+## NC-12 — No religion-to-psychology edge
+
+Luria's claims about Islamic influence are not independent causal evidence. Religion can matter only through separately evidenced institutional/relational mechanisms such as authority, sanctions, mobility, schooling access, role obligations, or information channels.
+
+## NC-13 — No within-person temporal inference
+
+The study is not longitudinal. Historical co-presence of exposed and less-exposed groups cannot be rewritten as:
+
+```text
+same person before -> same person after
+```
+
+Retrospective biography does not repair this.
+
+## NC-14 — No transition-effect timing or dose
+
+The study does not identify exposure onset, duration, dose-response, lag, persistence, or reversibility for the proposed cognitive changes.
+
+## NC-15 — No durable-learning inference from within-session help
+
+Prompting, examples, or reframing can change current performance. They do not establish retention, transfer, or durable capacity.
+
+## NC-16 — No standardized latent-score inference
+
+Administration is intentionally clinical and interactive. Prompt history, social setting, group discussion, and interviewer follow-up differ. The data must not be treated as if generated by a standardized invariant measurement instrument.
+
+## NC-17 — No translation-free assumption
+
+The interview language, lexical equivalence, quantifier semantics, generic terms, and meanings of words such as "similar" or "shortcoming" are part of the evidence situation. A translated transcript is not semantically frictionless.
+
+## NC-18 — No selection erasure
+
+School attendees, activists, chairmen, brigade leaders, and course participants are not random draws from a common baseline. Prior differences and institutional selection remain plausible.
+
+## NC-19 — No colonial/evolutionary category import
+
+Terms such as "primitive," "backward," "culturally advanced," "higher/lower stage," or "leap of centuries" may be recorded as source framing. They must not become Rawlsing ontology, priors, labels, or target states.
+
+## NC-20 — No practical-reasoning deficit
+
+Practical/situational reasoning is often highly competent and task-relevant. A taxonomic answer is not intrinsically more cognitively valid outside the experimenter's chosen scoring convention.
+
+## NC-21 — No hidden `GROUP -> ACTIVITY` shortcut
+
+Even when a group is described as collective-farm activists, Rawlsing must bind the actor to the actual relevant activity: planning, accounting, meeting, supervision, evaluation, information exchange, etc. Group membership alone does not prove the activity occurred at the needed time/intensity.
+
+## NC-22 — No hidden `ACTIVITY -> PSYCHOLOGY` shortcut
+
+D1 may derive an actor-relative social/activity ecology. It must not then mint motive, belief, trait, capacity, memory, practice change, or durable attractor. Existing V3 owners retain that jurisdiction.
+
+## NC-23 — No D2 inflation from historical transition language
+
+The source supports the importance of recurrent activity and changing social roles in theory. It does not provide sufficient temporal observation to authorize a new transition/trajectory mechanism beyond representing independently established intervals/changes.
+
+## NC-24 — No D3 authority from this source
+
+The source does not trace actor-generated action through an external institutional response into a provenance-preserved structural update and then back into later actor ecology with sufficient event-level evidence. Do not cite Luria as positive authority for reciprocal world-update law.
+
+## NC-25 — No causal laundering through "development"
+
+The word `development` does not convert a cross-sectional association into a temporal causal fact.
+
+## Terminal
+
+`NO_GROUP_TO_PSYCHOLOGY_PRIOR__NO_BUNDLED_REGIME_CAUSE__TASK_AND_TEMPORAL_CEILINGS_SEALED`
