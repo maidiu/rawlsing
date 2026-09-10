@@ -1,0 +1,114 @@
+{
+  "schema": "OBL061_A3W_EXACT_BLOCKER_PROOF_R1",
+  "task_id": "OBL061_A3W_FIRST_CANARY_GENERATED_WORLD_CONTEXT_RECEIPT_ONLY",
+  "result": "BLOCKER",
+  "terminal_token": "OBL061_A3W_FIRST_CANARY_WORLD_CONTEXT_RECEIPT__EXACT_AUTHORITY_OR_MATERIALIZATION_BLOCKER_PROVED",
+  "branch": "agent/rabochii-v3-obl061-a3w-first-canary-world-context-receipt-r1",
+  "commission_identity": {
+    "actual_branch_head_at_execution_start": "b44cb25c0f3f9c6f8d617536a122672317129741",
+    "user_supplied_tip": "b44cb25264edd0bc87c8fcfc5022dcfe2cb15e6b",
+    "disposition": "USED_EXISTING_BRANCH_HEAD; NO REPLACEMENT_BRANCH; NO REBASE; NO FORCE_REPOINT"
+  },
+  "first_canary_scope": {
+    "subject_id": "urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+    "authenticated_subject_materialization_receipt": "urn:rawlsing:v3:authenticated-subject-materialization-receipt:sha256:e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f",
+    "subject_materialization_artifact_git_blob": "fb1820a4b13e1e26f20f4c32873bf0d5ddd0a804"
+  },
+  "accepted_upstream_blocker": {
+    "return_commit": "e72f1d897812bfe726f1cd008327250104c968be",
+    "return_artifact_git_blob": "eccfc436ae91912200ec77e0c2b6704a454f7c0b",
+    "blocker_proof_git_blob": "d7502079ca3a86b42645a3f643ef38eda6a133b3",
+    "code": "NO_PROJECT_CURRENT_EXACT_CONTEXT_OR_WORLD_RECEIPT_FOR_FIRST_CANARY"
+  },
+  "blocker": {
+    "code": "NO_LAWFUL_PROJECT_CURRENT_A3W_GENERATED_WORLD_OR_CONTEXT_RECEIPT_MATERIALIZATION_PATH",
+    "indispensable_condition": "A3W requires either an accepted project-current concrete content-addressed generated-world/world-context instance or receipt for the exact first-canary scope, or a complete accepted canonical V558 exact-resolution input tuple consumable without A3W creating the downstream runtime time basis.",
+    "why_smallest": "Those are the two accepted materialization routes exposed by the commissioned authority surface. Both are closed before any downstream runtime fact is evaluated."
+  },
+  "route_closures": [
+    {
+      "route": "PROJECT_CURRENT_GENERATED_WORLD_RECEIPT",
+      "status": "CLOSED",
+      "blocker": "NO_PROJECT_CURRENT_CONCRETE_GENERATED_WORLD_INSTANCE_OR_RECEIPT",
+      "proof": [
+        "The accepted A3 proof records no project-current exact generated-world/world-context receipt for this first canary.",
+        "The current V3 execution surface carries V3_SIM_WORLD_R1 as a world designator/study-world assertion, not as a concrete content-addressed generated-world instance receipt.",
+        "The A3W commission expressly forbids manufacturing a world instance from V3_SIM_WORLD_R1.",
+        "The commissioned accepted-authority sweep found no current concrete generated-world instance or receipt identity for the exact first-canary scope."
+      ]
+    },
+    {
+      "route": "CANONICAL_V558_EXACT_CONTEXT_RESOLUTION",
+      "status": "CLOSED",
+      "blocker": "NO_COMPLETE_LAWFUL_CANONICAL_V558_INPUT_TUPLE_WITHIN_A3W_CEILING",
+      "proof": [
+        "V558_CONTEXT_RESOLVER_POLICY@1.0.0 is exact and fail-closed: lawful resolution is from immutable repository/query authority, not latest/default/fuzzy state.",
+        "The accepted A3 proof records no current first-canary exact repository/query/context receipt tuple and no current first-canary runtime time basis/cursor/effective interval.",
+        "A3W is expressly forbidden to create the runtime time basis; A3T is a separate downstream grain that must bind to the exact A3W receipt identity.",
+        "The deterministic M4 implementation can hash complete exact inputs into V558REC:, but implementation availability does not authorize minting missing canonical query inputs or substituting a time-free helper shape for the accepted policy contract."
+      ]
+    },
+    {
+      "route": "GENERATED_POSITION_BOOTSTRAP",
+      "status": "NOT_AN_INDEPENDENT_MATERIALIZATION_ROUTE",
+      "blocker": "GENERATED_POSITION_BINDING_REQUIRES_OUT_OF_SCOPE_ACTOR_AND_EFFECTIVE_TIME",
+      "proof": [
+        "V3_GENERATED_POSITION_BINDING_CONTRACT@1.0.0 binds generated position to actor/position identities and effective-time/current-view provenance.",
+        "A3W has no authority to create actor or runtime effective-time state, so generated position cannot lawfully bootstrap the missing context input tuple."
+      ]
+    }
+  ],
+  "accepted_authority_identities": {
+    "v558_context_resolver_policy": {
+      "authority_id": "V558_CONTEXT_RESOLVER_POLICY@1.0.0",
+      "policy_sha256": "4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f",
+      "authority_git_blob": "d741e2177fc3d952a5b3114af0aeee515a00ae25"
+    },
+    "generated_position_binding_contract": {
+      "authority_id": "V3_GENERATED_POSITION_BINDING_CONTRACT@1.0.0",
+      "authority_git_blob": "35023866dd7e322b2e9503eabf6e3a4a9be90933"
+    },
+    "v558_v3_refresh_requery_contract": {
+      "authority_id": "V558_V3_CONTEXT_REFRESH_REQUERY_CONTRACT@1.0.0",
+      "authority_git_blob": "58751c162bebfb1124dc54530f495bac22e63736"
+    },
+    "v557_v558_implementation": {
+      "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360"
+    },
+    "v3_world_designator_implementation": {
+      "path": "rawlsing_next/v3_adp010_oee_executor_obl055_replay_canonical.py",
+      "git_blob": "e8c6edab3b310b797997a3826b8acb32f7f08ce9",
+      "world_designator": "V3_SIM_WORLD_R1",
+      "status": "DESIGNATOR_ONLY__NOT_A_GENERATED_WORLD_INSTANCE_RECEIPT"
+    }
+  },
+  "missing_indispensable_current_inputs": {
+    "concrete_generated_world_instance_or_receipt": null,
+    "complete_canonical_v558_repository_query_input_tuple": null,
+    "lawful_first_canary_runtime_time_basis": null
+  },
+  "forbidden_substitutions_not_used": [
+    "V3_SIM_WORLD_R1_AS_CONCRETE_WORLD_INSTANCE",
+    "WALL_CLOCK",
+    "HISTORICAL_FIXTURE",
+    "MUTABLE_LATEST_STATE",
+    "UNADOPTED_SIBLING_BRANCH_FACTS",
+    "NONCANONICAL_TIME_FREE_V558_QUERY_AS_AUTHORITY_REPLACEMENT"
+  ],
+  "scope_ceiling_attestation": {
+    "created_runtime_time_basis": false,
+    "created_actor": false,
+    "created_phase_or_scheduler_state": false,
+    "created_obl058_permission": false,
+    "created_obl059_applicability": false,
+    "created_adp019_contact": false,
+    "created_obl060_witness": false,
+    "created_obl056_acceptance": false,
+    "executed_obl055": false,
+    "created_parent_available": false,
+    "created_adp010_opportunity": false,
+    "created_encounter_or_oee": false,
+    "created_obl032_or_can008_response_facts": false
+  }
+}
