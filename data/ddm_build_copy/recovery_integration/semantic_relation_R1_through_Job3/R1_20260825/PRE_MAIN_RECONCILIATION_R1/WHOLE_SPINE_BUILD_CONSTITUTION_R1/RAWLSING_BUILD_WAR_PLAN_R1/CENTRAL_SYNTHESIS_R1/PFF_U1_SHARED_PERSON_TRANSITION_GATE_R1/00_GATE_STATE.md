@@ -2,7 +2,7 @@
 
 Status: `ACTIVE__TWO_PARALLEL_SEMANTIC_COURTS__NO_PRODUCTION__NO_ARCHITECTURE_ADOPTION`
 
-HQ adoption basis: `__HQ_ADOPTION_COMMIT__`
+HQ adoption basis: `6cf6dbaa81f00eda49bf4ed39ade0f3947fe18a9`
 
 Worker return adopted: `f4a61361ae9da371a0319594c297fbf93f0326ad`
 
@@ -20,7 +20,11 @@ No other PFF-interface U1 blocker is current.
 - `U1-C` — minimal composition / authority topology court
 - `U1-H` — independent hostile scenario court
 
-These lanes return separately to HQ. Neither may self-adopt architecture or mutate production authority.
+They begin from the same HQ adoption state and must return independently. Neither may self-adopt architecture or mutate production authority.
+
+## Sequencing
+
+U1-01 and U1-02 are **not yet released as two sequential implementation tasks**. The next gate first determines whether G1 requires a distinct shared contract at all and what exact CAN-008 generalization G2 needs. U1-C and U1-H therefore run in parallel; HQ synthesis follows both.
 
 ## Closed-for-now frontiers
 
