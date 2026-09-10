@@ -927,3 +927,17 @@ Current boundary law:
 - PFF interface freeze and implementation remain closed until exact consumed V3 semantic interfaces are stable and HQ admits architecture.
 
 Global sequencing is unchanged: PFF does not block W/HB01, B's later HB05/HB06 chain, or independent V3 OBL061/A progress. PFF becomes a terminal V2 prerequisite only at interface-freeze/integration time.
+
+
+## PFF SECOND HQ CHECK — EXPLICIT FRONTIER CUTOFF — 2026-09-09
+
+Live PFF advanced after the first HQ convergence order to `199a2493cd63188fedaaec14eca201bee9763698` (File 63).
+
+The branch remains prearchitecture/no-runtime, but it continued opening new conceptual territory: secondary organization, PRE-V3->V3 developmental bridge, Absolute Horizon, motivational priority and affect. File 63 proposed normative commitment/cost-bearing fidelity as the next frontier.
+
+HQ therefore freezes this cycle's research horizon at **File 63**.
+
+`NO_FILE_64_OR_NEW_FRONTIER_WITHOUT_HQ_AUTHORIZATION`.
+
+Files 57-63 are to be harvested, falsified, classified by owner and returned through an architecture-input constitution. File 58 is treated as upstream PRE-V3/V3 delta research; Files 59-60 remain deferred AH theory capital; Files 62-63 remain semantic-remainder hypotheses. None is current architecture or V3 authority.
+
