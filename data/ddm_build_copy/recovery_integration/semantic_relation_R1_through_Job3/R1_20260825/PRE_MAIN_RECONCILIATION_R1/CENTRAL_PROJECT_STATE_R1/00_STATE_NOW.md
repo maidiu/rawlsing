@@ -941,3 +941,15 @@ HQ therefore freezes this cycle's research horizon at **File 63**.
 
 Files 57-63 are to be harvested, falsified, classified by owner and returned through an architecture-input constitution. File 58 is treated as upstream PRE-V3/V3 delta research; Files 59-60 remain deferred AH theory capital; Files 62-63 remain semantic-remainder hypotheses. None is current architecture or V3 authority.
 
+
+
+## PFF / V3 CLARIFICATION — TWO-ENDED CONVERGENCE — 2026-09-09
+
+HQ clarifies the File-63 cutoff after explicit user intent and reverse V3 authority review.
+
+The cutoff prohibits **untethered frontier expansion**; it does not prohibit PFF from continuing to reimagine PFF as the fast/live modality of the same person psychology operating inside V3.
+
+Reverse V3 reading confirms substantial overlap: TD-R05 and CAN/ADP authorities already own or anticipate event-sourced person development, response transactions, needs/expectations/strivings, middle-state mediators/tensions/practices, memory, epistemic accessibility, attractor trajectory and durable V3->V2 boundaries.
+
+Therefore the next architecture move is **two-ended convergence**: continue chat-side personhood reasoning while simultaneously crosswalking from current V3 authority outward. New PFF work must be tethered to an exact existing owner, missing shared transition or falsifier. Free-standing adjacent psychology frontiers remain deferred.
+
