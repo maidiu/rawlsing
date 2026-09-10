@@ -1,0 +1,188 @@
+{
+  "schema": "OBL061_A3_WORLD_CONTEXT_OPPORTUNITY_EXACT_BLOCKER_PROOF@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-v3-obl061-a3-world-context-opportunity-binding-r1",
+  "commission_ref": "acd7764fddaa5ca2fc87584c7bf0c0eb93caacb2",
+  "commission_parent_ref": "c5bc5607760d8d9e65f391fe53e26de4a15def33",
+  "commission_tree_ref": "50bbb225c9c8b66bec82f72400430a1b9e738f1d",
+  "commissioned_grain": "OBL061_A3_CURRENT_WORLD_TIME_CONTEXT_OPPORTUNITY_BINDING_ONLY",
+  "terminal": "OBL061_A3_CURRENT_WORLD_CONTEXT_OPPORTUNITY_BINDING__EXACT_BLOCKER_PROVED",
+  "status": "BLOCKED",
+  "smallest_exact_blocker": {
+    "code": "NO_PROJECT_CURRENT_EXACT_CONTEXT_OR_WORLD_RECEIPT_FOR_FIRST_CANARY",
+    "required_consumer_slot": "V3OEERealizationRecord.context_or_world_receipt_refs",
+    "required_cardinality": "1..n",
+    "current_cardinality": 0,
+    "why_decisive": "The current OBL055 executor requires at least one exact context-or-world receipt before BASIS_TO_AVAILABLE. A world designator, authority contract, test fixture, resolver capability, or narrative context is not such a current instance receipt.",
+    "minimum_lawful_unblock": [
+      "Supply one project-current content-addressed generated-world instance receipt or one project-current V558 context-resolution receipt for the exact first-canary scope.",
+      "Bind that receipt to a separately governed runtime time basis and effective interval without using wall-clock, mutable-latest, fixture, or inferred actor facts.",
+      "Leave actor activation, active phase, positive applicability, and ADP-010 OPPORTUNITY realization to their separately owned grains."
+    ]
+  },
+  "current_subject_anchor": {
+    "state": "CURRENT",
+    "subject_ref": "urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+    "subject_ref_hash": "a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+    "materialization_receipt_ref": "urn:rawlsing:v3:authenticated-subject-materialization-receipt:sha256:e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f",
+    "materialization_receipt_hash": "e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f",
+    "artifact_blob": "fb1820a4b13e1e26f20f4c32873bf0d5ddd0a804",
+    "ceiling": "SUBJECT_IDENTITY_ONLY__NO_WORLD_LOCATION_ACTOR_CONTACT_USE_ENCOUNTER_OR_EXPOSURE"
+  },
+  "world_binding": {
+    "designator": "V3_SIM_WORLD_R1",
+    "designator_state": "PERMISSIBLE_NAME_ONLY",
+    "current_generated_world_instance_ref": null,
+    "current_generated_world_instance_receipt_ref": null,
+    "finding": "The current preflight states that a permissible world constant is not evidence that an exact current actor is bound to a generated world/context at an event time.",
+    "evidence_artifact_blob": "a197a363c14b3bad0dcbef9f1ec2bc428b2e0981"
+  },
+  "time_binding": {
+    "current_runtime_time_basis_ref": null,
+    "current_scheduler_cursor_ref": null,
+    "current_effective_interval": null,
+    "authority": {
+      "id": "V3_HYBRID_CAUSAL_SCHEDULER_POLICY",
+      "version": "1.0.0",
+      "artifact_blob": "1db081786d2b7d4465a9efa7d69b6a05741b47bc"
+    },
+    "authority_state": "AUTHORITY_CONTRACT_PRESENT__V3_IMPLEMENTED_FALSE",
+    "finding": "ADP-021 forbids hidden wall clock and defines no universal time unit. No governed first-canary trigger, time basis, or scheduler cursor is supplied at the commission ref."
+  },
+  "context_binding": {
+    "current_context_query_ref": null,
+    "current_resolution_receipt_ref": null,
+    "current_resolved_context_ref": null,
+    "resolver_authority": {
+      "id": "V558_CONTEXT_RESOLVER_POLICY",
+      "version": "1.0.0",
+      "policy_hash": "4e34517b78547ef555c4025abff4f682b6eb201a3dfda2cce2c4ec3bec9b6f2f",
+      "artifact_blob": "d741e2177fc3d952a5b3114af0aeee515a00ae25"
+    },
+    "generated_position_binding_authority": {
+      "id": "V3_GENERATED_POSITION_BINDING_CONTRACT",
+      "version": "1.0.0",
+      "artifact_blob": "35023866dd7e322b2e9503eabf6e3a4a9be90933",
+      "v558_implemented": false,
+      "v3_implemented": false
+    },
+    "refresh_authority": {
+      "id": "V558_V3_CONTEXT_REFRESH_REQUERY_CONTRACT",
+      "version": "1.0.0",
+      "artifact_blob": "58751c162bebfb1124dc54530f495bac22e63736",
+      "production_released": false
+    },
+    "current_exact_resolver_implementation": {
+      "module_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "capability": "EXACT_V558_RESOLUTION_RECEIPT_FROM_EXACT_REPOSITORY_AND_QUERY",
+      "first_canary_repository_instance_ref": null,
+      "first_canary_query_instance_ref": null,
+      "first_canary_resolution_receipt_ref": null
+    },
+    "finding": "Authority and executable capability do not substitute for an executed current first-canary repository/query/resolution instance. Creating source objects, geography, position, or temporal anchors to force such an instance is outside A3."
+  },
+  "opportunity_binding": {
+    "current_adp010_opportunity_record_ref": null,
+    "current_adp010_opportunity_id": null,
+    "authority": {
+      "id": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE",
+      "version": "1.0.0",
+      "registry_id": "V3_OEE_REALIZATION_RULE_REGISTRY",
+      "registry_version": "1.0.0",
+      "artifact_blob": "0eac41d081b112255dcfc6dd42a6afab15a2928b"
+    },
+    "current_executor": {
+      "id": "GT34_V3P5_ADP010_OBL056_CANONICAL_RECONSTRUCTED_REPLAY_EXECUTOR",
+      "version": "3.1.1",
+      "implementation_blob": "e8c6edab3b310b797997a3826b8acb32f7f08ce9"
+    },
+    "required_but_separately_owned_inputs": [
+      "A1_ADP007_CURRENT_ACTOR_ACTIVATION",
+      "A2_ADP008_CURRENT_ACTIVE_PHASE",
+      "B2_OBL059_CURRENT_POSITIVE_APPLICABILITY",
+      "EXACT_PARENT_AVAILABLE_RECORD"
+    ],
+    "finding": "ADP-010 defines OPPORTUNITY as an actor-specific time-bounded possibility with no occurrence. It cannot be realized before the separately owned actor, active phase, positive applicability, and parent AVAILABLE record exist. A3 is expressly forbidden to create those inputs."
+  },
+  "authority_and_provenance_refs": [
+    {
+      "kind": "HQ_OBL061_TRAJECTORY_DECISION",
+      "blob": "655c8948a92232bb64797ab1e56d7d494d4a9e91"
+    },
+    {
+      "kind": "GT34_FIRST_POSITIVE_OEE_INPUT_PREFLIGHT",
+      "blob": "a197a363c14b3bad0dcbef9f1ec2bc428b2e0981"
+    },
+    {
+      "kind": "CAN005_CONTEXT_RESOLVER_AUTHORITY",
+      "blob": "d741e2177fc3d952a5b3114af0aeee515a00ae25"
+    },
+    {
+      "kind": "CAN006_GENERATED_POSITION_BINDING_AUTHORITY",
+      "blob": "35023866dd7e322b2e9503eabf6e3a4a9be90933"
+    },
+    {
+      "kind": "CAN007_CONTEXT_REFRESH_AUTHORITY",
+      "blob": "58751c162bebfb1124dc54530f495bac22e63736"
+    },
+    {
+      "kind": "ADP021_SCHEDULER_AUTHORITY",
+      "blob": "1db081786d2b7d4465a9efa7d69b6a05741b47bc"
+    },
+    {
+      "kind": "ADP010_OPPORTUNITY_AUTHORITY",
+      "blob": "0eac41d081b112255dcfc6dd42a6afab15a2928b"
+    },
+    {
+      "kind": "CURRENT_M4_V558_IMPLEMENTATION",
+      "blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360"
+    },
+    {
+      "kind": "CURRENT_OBL055_EXECUTOR",
+      "blob": "e8c6edab3b310b797997a3826b8acb32f7f08ce9"
+    }
+  ],
+  "current_effects": {
+    "world_instance_created": false,
+    "context_resolution_executed": false,
+    "actor_created_or_activated": false,
+    "active_phase_created": false,
+    "obl058_positive_fact_created": false,
+    "obl059_positive_fact_created": false,
+    "obl060_positive_fact_created": false,
+    "adp019_contact_occurrence_created": false,
+    "obl056_acceptance_created": false,
+    "obl055_executed": false,
+    "available_record_created": false,
+    "opportunity_record_created": false,
+    "encounter_created": false,
+    "oee_created": false,
+    "obl032_executed": false
+  },
+  "replay": {
+    "canonicalization": "UTF8_JSON_SORTED_KEYS_COMPACT_SEPARATORS_UNESCAPED_UNICODE",
+    "determinants": [
+      "commission_ref",
+      "commission_parent_ref",
+      "commission_tree_ref",
+      "smallest_exact_blocker",
+      "current_subject_anchor",
+      "world_binding",
+      "time_binding",
+      "context_binding",
+      "opportunity_binding",
+      "authority_and_provenance_refs",
+      "current_effects"
+    ],
+    "forbidden_inputs": [
+      "WALL_CLOCK",
+      "MUTABLE_LATEST",
+      "NETWORK_LOOKUP_AS_SEMANTIC_TRUTH",
+      "TEST_FIXTURE_IDENTITY",
+      "COLOCATION_OR_COPRESENCE_INFERENCE",
+      "CALLER_ASSERTION",
+      "UNMERGED_A1_OR_A2_FACTS"
+    ],
+    "same_commission_tree_and_authority_blobs_reproduce_same_blocker": true
+  }
+}
