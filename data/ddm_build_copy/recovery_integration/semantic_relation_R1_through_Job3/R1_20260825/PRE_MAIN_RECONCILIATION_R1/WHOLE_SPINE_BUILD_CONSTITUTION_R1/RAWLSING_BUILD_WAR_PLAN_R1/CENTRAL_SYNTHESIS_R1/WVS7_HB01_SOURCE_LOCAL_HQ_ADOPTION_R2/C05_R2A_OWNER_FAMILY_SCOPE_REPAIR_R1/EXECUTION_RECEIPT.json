@@ -1,0 +1,52 @@
+{
+  "schema": "HB01_C05_R2A_OWNER_FAMILY_SCOPE_REPAIR_EXECUTION_RECEIPT_R1",
+  "producer_side_only": true,
+  "independent_requalification": false,
+  "production_blob_constant_across_runs": "c3647800f52fa81fdef34be6692207e092c48ee2",
+  "attempts": [
+    {
+      "workflow_run_id": 34584742140,
+      "job_id": 103216229272,
+      "execution_sha": "d9032264c554bae46b4383aa1993a4c73f37eb66",
+      "result": "TEST_HARNESS_FAILURE",
+      "focused_summary": "12 passed, 1 failed",
+      "failure": "revoked-authority test attempted dataclasses.replace on immutable non-dataclass AuthoritySnapshot",
+      "production_defect_exposed": false,
+      "receipt_artifact_id": 10193089644,
+      "receipt_zip_sha256": "58dffa3b4d39383fcef279e4b7250fcbb878ad01b41a5175a26668229b1fb381"
+    },
+    {
+      "workflow_run_id": 34584995759,
+      "job_id": 103217037557,
+      "execution_sha": "6f0c393354a082e34aaffa31ec15f00ca0ade252",
+      "result": "TEST_HARNESS_COLLECTION_FAILURE",
+      "focused_summary": "collection interrupted",
+      "failure": "test-only helper imported pandas-dependent fixture into minimal pytest-only governed runner",
+      "production_defect_exposed": false,
+      "receipt_artifact_id": 10193192110,
+      "receipt_zip_sha256": "4573ee478df0d871e3d38d1c785d2f568efe17bdb2b4f44d2ca409c233ed9c89"
+    },
+    {
+      "workflow_run_id": 34585107635,
+      "job_id": 103217387305,
+      "execution_sha": "3def224db0efd57b2a12246cfbbc2c2deca567b3",
+      "semantic_candidate_sha": "5a769840d6b78300e67068da87b609d41916ca77",
+      "result": "PASS",
+      "python": "3.12.14",
+      "protocol_self_tests": "20 passed in 0.07s",
+      "court_spec_validation": "PASS",
+      "focused_summary": "13 passed in 0.43s",
+      "receipt_artifact_id": 10193238139,
+      "receipt_artifact_size_bytes": 626,
+      "receipt_zip_sha256": "541ef608003279ac1096a0bee9408feaf7530edcf7ce52929d181e8e96fad597"
+    }
+  ],
+  "temporary_execution_pr": {
+    "number": 352,
+    "purpose": "trigger repository governed bounded-court workflow only",
+    "draft": true,
+    "merged": false,
+    "closed_after_receipt": true
+  },
+  "qualification_credit": "PRODUCER_FOCUSED_REPAIR_PROOF_ONLY__FRESH_INDEPENDENT_REQUALIFICATION_STILL_REQUIRED"
+}
