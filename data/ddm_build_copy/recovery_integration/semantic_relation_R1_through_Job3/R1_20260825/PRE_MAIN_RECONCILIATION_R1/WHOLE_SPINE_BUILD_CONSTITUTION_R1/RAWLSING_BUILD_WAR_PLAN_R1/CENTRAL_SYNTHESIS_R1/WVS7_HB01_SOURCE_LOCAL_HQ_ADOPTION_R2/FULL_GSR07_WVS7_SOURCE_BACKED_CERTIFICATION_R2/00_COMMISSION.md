@@ -45,9 +45,9 @@ Shape:
 - only excluded source slot: `PWGHT`
 
 Previously reproduced accepted selected-projection SHA-256:
-`7e69d799...22ec9`
+`7e69d799e37d26c2e6ae749674d4994a276f93aaf89e43085bed34a5fd122ec9`
 
-Recover the exact full value from governed project authority before execution; do not use this abbreviated display string as an executable identity.
+This exact hash was reproduced in both source-preflight executions of the prior governed GSR07 R1 return.
 
 ## Binding source-local scope
 
