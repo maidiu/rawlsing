@@ -1,0 +1,44 @@
+{
+  "schema": "HB01_C05_R2A_MULTI_OWNER_SLOT_FRESH_HOSTILE_QUALIFICATION_RESULT_R1",
+  "terminal": "HB01_C05_R2A_MULTI_OWNER_SLOT_FRESH_HOSTILE_QUALIFICATION__EXACT_BLOCKER_PROVED",
+  "qualified": false,
+  "smallest_exact_blocker": {
+    "id": "OWNER_AUTHORITY_FAMILY_SCOPE_NOT_ENFORCED",
+    "obligation": 2,
+    "description": "A declared owner authority ref need only be packaged/required; the frozen facade does not require its snapshot to govern the declared owner family.",
+    "witness": "COORDINATE_SEMANTICS authority governing only EmpiricalCoordinateFact@1.0.0 is accepted as the explicit owner authority for RespondentEvent@1.0.0 and the release still validates."
+  },
+  "frozen_candidate": {
+    "producer_return_parent": "4eacc5a6031e41e260dd22db19b6b2e167f20945",
+    "tested_evidence_tip": "cbe3aa6610df1c48d07b4be535b0c9a519688216",
+    "implementation_blob": "4f64b3ab0b56b948831893d2e86f51d9e216a465",
+    "facade_contract": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "owner_set_contract": "PRE553_C11_PHYSICAL_SLOT_OWNER_SET@1.0.0"
+  },
+  "independent_test": {
+    "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+    "blob": "2693d4778eb6b977832033cbadf05be79a527256",
+    "evidence_sha": "424927c49a979039ecd6adf132f3cdcb83e90cb5"
+  },
+  "executions": [
+    {
+      "workflow_run": 34579246618,
+      "job": 103198723374,
+      "protocol_tests": "20/20",
+      "hostile_tests": "2/2",
+      "artifact_id": 10190902937,
+      "artifact_sha256": "c1d02f5e89fccce6d8e03aa82a63b13f034afcf36b6dc96807397731ee8c448c"
+    },
+    {
+      "workflow_run": 34579246618,
+      "job": 103198892900,
+      "protocol_tests": "20/20",
+      "hostile_tests": "2/2",
+      "artifact_id": 10190924604,
+      "artifact_sha256": "199422a9970e1b1069c71bbac0970ca6be46ee7ef95a361e84385a9b7c248ccc"
+    }
+  ],
+  "production_repair_performed": false,
+  "full_gsr07_run": false,
+  "hb01_closed": false
+}
