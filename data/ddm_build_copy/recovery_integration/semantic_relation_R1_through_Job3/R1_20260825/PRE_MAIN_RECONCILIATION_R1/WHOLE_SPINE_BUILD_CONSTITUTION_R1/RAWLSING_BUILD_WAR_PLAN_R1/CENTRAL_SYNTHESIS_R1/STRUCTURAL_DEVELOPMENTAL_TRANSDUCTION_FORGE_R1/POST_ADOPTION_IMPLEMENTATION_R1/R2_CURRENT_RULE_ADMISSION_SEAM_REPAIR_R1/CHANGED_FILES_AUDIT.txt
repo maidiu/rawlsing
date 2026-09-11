@@ -1,0 +1,41 @@
+SDTF R4 R2 CURRENT-RULE ADMISSION SEAM REPAIR — CHANGED FILES AUDIT
+
+Commission tip:
+f6c96200edd14dda924293e20f0c3cd7ce20a2ab
+
+Evidence execution tip:
+2d9c1dc2def3c515a1d10cc90434a79d261c273b
+
+Compare state before governed return:
+- status: ahead
+- ahead_by: 4
+- behind_by: 0
+- merge base: exact commission tip
+
+Changed files:
+1. .rabochii/court_spec.json — added court configuration
+2. rawlsing_next/sdtf_r4_d1_hosting_replay.py — authorized R2 production seam repair only
+3. rawlsing_next/tests/test_sdtf_r4_d1_hosting_replay.py — exact R2 regression adaptation for required R1 admission
+4. rawlsing_next/tests/test_sdtf_r4_r2_current_rule_admission_seam.py — focused hostile seam court
+
+Exact repaired/test blobs:
+- R2 production: 7f5a2f677e60cd4d218737faa61140dddc55cc28
+- exact R2 regression: cd4a3c0b81853205d825c6cd0b507c0ca971f850
+- focused seam court: aadc215c1561552461cf84df64243d0da60fb24e
+
+Frozen production candidates unchanged:
+- R1 rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py = c94997f5c7f2bbee9cd99c570554fd48c0f47556
+- R3 rawlsing_next/sdtf_r4_witness_currentness.py = 06c8a2259436e7209bad4e4b3f8c314b18446fe6
+- R4 rawlsing_next/sdtf_r4_world_response_redrive.py = 9964a24e25467fa53cc9f5529b6f40be9f11f53a
+
+Prohibited production mutations:
+- R1: NONE
+- R3: NONE
+- R4: NONE
+- main/HQ adoption surfaces: NONE
+- rebase: NO
+- rule minting: NONE
+- authority selection: NONE
+- calibration selection: NONE
+- OBL062 closure: NONE
+- integration qualification: NONE

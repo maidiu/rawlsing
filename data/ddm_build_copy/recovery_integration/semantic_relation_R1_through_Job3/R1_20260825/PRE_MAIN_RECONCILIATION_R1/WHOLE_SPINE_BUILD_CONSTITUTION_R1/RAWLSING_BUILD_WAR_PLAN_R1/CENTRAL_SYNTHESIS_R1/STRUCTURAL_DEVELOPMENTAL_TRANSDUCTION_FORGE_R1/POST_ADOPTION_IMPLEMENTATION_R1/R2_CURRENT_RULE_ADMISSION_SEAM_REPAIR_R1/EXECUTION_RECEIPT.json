@@ -1,0 +1,28 @@
+{
+  "schema": "SDTF_R4_R2_CURRENT_RULE_ADMISSION_SEAM_EXECUTION_RECEIPT_R1",
+  "evidence_execution_sha": "2d9c1dc2def3c515a1d10cc90434a79d261c273b",
+  "workflow_run_id": 34584793057,
+  "executions": [
+    {
+      "job_id": 103216387780,
+      "protocol": "20/20 PASS",
+      "commissioned_court": "35/35 PASS",
+      "artifact_id": 10193112341,
+      "artifact_digest": "sha256:5d8f55ab962395ffe01405286c0c4291c560e1c9fa0f3f44dcce30fe1e8a318b"
+    },
+    {
+      "job_id": 103216570316,
+      "protocol": "20/20 PASS",
+      "commissioned_court": "35/35 PASS",
+      "artifact_id": 10193132980,
+      "artifact_digest": "sha256:1c88e920f9bafbd880b1832d9c92d277422e9b8957856b4dbc39e3b7bb6dde52"
+    }
+  ],
+  "tests": [
+    "rawlsing_next/tests/test_sdtf_r4_r2_current_rule_admission_seam.py",
+    "rawlsing_next/tests/test_sdtf_r4_d1_hosting_replay.py",
+    "rawlsing_next/tests/test_sdtf_r4_mechanism_rule_authority_binding.py"
+  ],
+  "determinism_mode": "EXACT",
+  "result": "PASS"
+}

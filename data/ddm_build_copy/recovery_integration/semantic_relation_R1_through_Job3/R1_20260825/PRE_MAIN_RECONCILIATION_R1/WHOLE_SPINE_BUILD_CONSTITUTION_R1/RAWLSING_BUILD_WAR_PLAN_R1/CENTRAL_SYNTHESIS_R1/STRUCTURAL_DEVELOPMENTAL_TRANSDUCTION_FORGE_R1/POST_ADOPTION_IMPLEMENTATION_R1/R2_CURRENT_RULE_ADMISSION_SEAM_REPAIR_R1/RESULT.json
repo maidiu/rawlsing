@@ -1,0 +1,37 @@
+{
+  "schema": "SDTF_R4_R2_CURRENT_RULE_ADMISSION_SEAM_REPAIR_RESULT_R1",
+  "authorized_grain": "SDTF_R4_R2_EXACT_R1_CURRENT_RULE_ADMISSION_CONSERVATION_REPAIR_R1_ONLY",
+  "terminal": "SDTF_R4_R2_CURRENT_RULE_ADMISSION_SEAM_REPAIR_COMPLETE__READY_FOR_FRESH_INTEGRATION_REQUALIFICATION",
+  "commission_tip": "f6c96200edd14dda924293e20f0c3cd7ce20a2ab",
+  "repair_production_commit": "2c559f81c5a2b0641dbbabc1ef168dffad46b4fa",
+  "evidence_execution_tip": "2d9c1dc2def3c515a1d10cc90434a79d261c273b",
+  "production": {
+    "path": "rawlsing_next/sdtf_r4_d1_hosting_replay.py",
+    "blob": "7f5a2f677e60cd4d218737faa61140dddc55cc28",
+    "contract_before": "SDTF_R4_D1_HOSTING_REPLAY_R1@1.0.0",
+    "contract_after": "SDTF_R4_D1_HOSTING_REPLAY_R1@2.0.0",
+    "admission_conservation_contract": "SDTF_R4_R2_CURRENT_RULE_ADMISSION_CONSERVATION_R1@1.0.0"
+  },
+  "tests": {
+    "r2_regression_blob": "cd4a3c0b81853205d825c6cd0b507c0ca971f850",
+    "focused_seam_blob": "aadc215c1561552461cf84df64243d0da60fb24e",
+    "commissioned_test_count": 35,
+    "protocol_test_count": 20,
+    "clean_executions": 2
+  },
+  "frozen_production_preserved": {
+    "R1": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+    "R3": "06c8a2259436e7209bad4e4b3f8c314b18446fe6",
+    "R4": "9964a24e25467fa53cc9f5529b6f40be9f11f53a"
+  },
+  "workflow": {
+    "run_id": 34584793057,
+    "first_job_id": 103216387780,
+    "first_receipt_artifact_id": 10193112341,
+    "first_receipt_digest": "sha256:5d8f55ab962395ffe01405286c0c4291c560e1c9fa0f3f44dcce30fe1e8a318b",
+    "second_job_id": 103216570316,
+    "second_receipt_artifact_id": 10193132980,
+    "second_receipt_digest": "sha256:1c88e920f9bafbd880b1832d9c92d277422e9b8957856b4dbc39e3b7bb6dde52"
+  },
+  "prohibited_actions_performed": []
+}
