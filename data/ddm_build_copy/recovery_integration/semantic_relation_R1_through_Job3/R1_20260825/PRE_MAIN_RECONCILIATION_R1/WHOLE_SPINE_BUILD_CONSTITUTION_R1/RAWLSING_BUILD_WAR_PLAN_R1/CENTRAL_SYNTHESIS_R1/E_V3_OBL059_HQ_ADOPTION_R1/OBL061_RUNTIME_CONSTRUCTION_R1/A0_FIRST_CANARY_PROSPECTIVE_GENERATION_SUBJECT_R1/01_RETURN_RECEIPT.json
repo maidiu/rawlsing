@@ -1,0 +1,60 @@
+{
+  "schema": "OBL061_A0_FIRST_CANARY_PROSPECTIVE_GENERATION_SUBJECT_RETURN@R1",
+  "authorized_grain": "OBL061_A0_FIRST_CANARY_PROSPECTIVE_ACTOR_GENERATION_SUBJECT_ONLY",
+  "commission_tip": "3717d1ddf53d072752972fd2fd725ead90250897",
+  "base_hq_state": "a24e9774ad41f6aa595219e29b841c0c4b5a1b99",
+  "status": "BLOCKER",
+  "terminal": "OBL061_A0_FIRST_CANARY_PROSPECTIVE_GENERATION_SUBJECT__EXACT_OWNER_OR_MATERIALIZATION_BLOCKER_PROVED",
+  "blocker_code": "A0_BLOCKER__MISSING_CURRENT_FIRST_CANARY_ROOT_GENERATION_REQUEST_OWNER_AND_CAUSAL_RUN_BINDING",
+  "generation_subject_created": false,
+  "generation_subject_ref": null,
+  "generation_subject_hash": null,
+  "generation_subject_owner_authority": null,
+  "causal_run_id": null,
+  "causal_parent_refs": null,
+  "replay_executed": false,
+  "replay_disposition": "NOT_LAWFULLY_INSTANTIABLE__SEMANTIC_INPUTS_NOT_OWNER_BOUND",
+  "authority_consumed": {
+    "commission_blob": "3e637ce49220279470d529002a7a5618b045f61d",
+    "hq_a0_wake_blob": "7a012ce5a265dc631bcf551b7487d0fcbc6d42af",
+    "a1_return_commit": "6c16e455bf3ded1c16875e173821cf65ec5bd725",
+    "a1_return_blob": "509b8ce7e23dacba187b29921fcd96e48ccdf95e",
+    "adp007_authority_id": "V3_ACTOR_INITIALIZATION_RULE",
+    "adp007_authority_version": "1.0.0",
+    "adp007_owner": "V3_ACTOR_DEVELOPMENTAL_CAUSALITY_ENGINE",
+    "adp007_authority_md_blob": "28813c575c681abf3c6235ff23c6f01f7123acc7",
+    "adp007_authority_json_blob": "004f549e20e18d3cf7f947ca50bc3c6e803b6ec8",
+    "obl053_repaired_candidate_blob": "14ff405cfb77ccfe30adbce16e9c0ff14fa540f9",
+    "obl053_hq_disposition_blob": "6a63e5eef8e84af5ab748d0549517ce11a62d9b0",
+    "obl053_hq_adoption_blob": "f561765bad4fdad2bbf4591f35fe7f81f8486428",
+    "obl053_nonactor_generation_seed_hash": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53",
+    "first_canary_oee_subject_ref": "urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+    "first_canary_oee_subject_hash": "a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+    "adp020_authority_commit": "c2bd6a6bc309702e1b76f1e73c7af2c1040c84f1"
+  },
+  "proved_non_substitutions": [
+    "ADP007_INPUT_SHAPE != ROOT_GENERATION_REQUEST_CREATION_AUTHORITY",
+    "OBL053_GENERATION_SEED != ADP007_ACTOR_GENERATION_REQUEST",
+    "OBL053_NONACTOR_SEMANTIC_OBJECT != ADP007_ACTOR_GENERATION_REQUEST",
+    "FIRST_CANARY_OEE_TARGET_SUBJECT != ADP007_ACTOR_GENERATION_REQUEST",
+    "ADP020_ROOT_SEED_POLICY != CAUSAL_RUN_SEMANTIC_OWNER",
+    "RNG != GENERATION_SUBJECT_AUTHORITY",
+    "DETERMINISTIC_ACTOR_ID_FORMULA != AUTHORITY_TO_INVENT_ITS_INPUTS"
+  ],
+  "smallest_required_owner_disposition": [
+    "accepted semantic owner authority ID/version for exactly one first-canary root prospective actor-generation request",
+    "exact first-canary causal_run_id plus owner/binding law",
+    "root-versus-nonroot causal-parent decision and exact parent refs if nonroot",
+    "deterministic content-addressing/materialization law for generation_subject_ref/hash"
+  ],
+  "scope_preserved": {
+    "actor_created": false,
+    "actor_activated": false,
+    "adp008_phase_created": false,
+    "requested_effective_time_created": false,
+    "world_context_opportunity_created": false,
+    "encounter_created": false,
+    "oee_created": false,
+    "obl032_executed": false
+  }
+}
