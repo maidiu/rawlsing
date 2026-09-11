@@ -1,0 +1,94 @@
+{
+  "schema": "SDTF_R4_R1_R4_FRESH_INTEGRATION_CONFORMANCE_RESULT@1.0.0",
+  "verdict": "BLOCKED",
+  "terminal": "SDTF_R4_R1_R4_FRESH_INDEPENDENT_INTEGRATION_CONFORMANCE__EXACT_BLOCKER_PROVED",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-hq-sdtf-r4-r1-r4-fresh-integration-conformance-r1",
+  "commission_tip": "9a4b43da2502c1df77b9d1b73adcdf3498390476",
+  "assembled_candidate_parent": "64c4c40118c874cfecf9c14ee9a063bdaafa1bd7",
+  "authorized_grain": "SDTF_R4_R1_R4_FRESH_INDEPENDENT_INTEGRATION_CONFORMANCE_ONLY",
+  "blocker": {
+    "code": "R1_R2_CURRENT_RULE_ADMISSION_AND_EXACT_RULE_IDENTITY_CHAIN_NOT_CONSERVED",
+    "smallest_owning_family": "R2_G2_D1_HOSTING_REPLAY",
+    "smallest_owning_commissioned_grain": "SDTF_R4_D1_HOSTING_DIRECT_DERIVATION_REVERSE_DEPENDENCY_INVALIDATION_REPLAY_R1_ONLY",
+    "summary": "R2 can host a SUPPORTED_CURRENT rule application and current derived consequence from raw rule id/version/hash without consuming R1 MechanismRuleAuthorityBinding, require_current_rule_admission, or exact rule-current-selection evidence.",
+    "identity_mismatch": {
+      "R1_rule_ref_kind": "SDTF_R4_MECHANISM_RULE",
+      "R2_reconstructed_rule_ref_kind": "MECHANISM_RULE_RECORD",
+      "ExactRef_equality": false
+    },
+    "forbidden_path_exists": true,
+    "repair_owner_reason": "R1 already supplies exact fail-closed current-rule admission. The missing enforcement is the R2 hosting consumer seam.",
+    "repair_ceiling": "Require and conserve exact R1 current-rule admission identity/proof before R2 application hosting/redrive; no rule minting, authority selection, calibration choice, or semantic redesign."
+  },
+  "authority_basis": {
+    "frozen_r4": "dfd935f77554ff5c177eeddeef50a9aba8ab46e8",
+    "final_companion_blob": "4e77479afa3cce4cce7e38168f7ee9c6bf021cd0",
+    "s5_baseline": "8ad68cd5731db6a4c4c75f5cc1bddbf95018f882",
+    "s5_canonical_vectors": 90,
+    "s5_metamorphic_relations": 30,
+    "k4_active_augmentations": "BINDING"
+  },
+  "candidate_identities": {
+    "production": {
+      "R1": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+      "R2": "66ffd2e1df9ab81970af9264f27de1f449752064",
+      "R3": "06c8a2259436e7209bad4e4b3f8c314b18446fe6",
+      "R4": "9964a24e25467fa53cc9f5529b6f40be9f11f53a"
+    },
+    "focused_tests": {
+      "R1": "7a63dae14a6d3bf95f70e8b92d7f18e8b27f0538",
+      "R2": "b18c3c4b3e13e00da97412dba8d647cbd3c2b1cd",
+      "R3": "e3ccedf6ffd694aa01728b8282582e5229b6bc4f",
+      "R4": "324ca6095a74e4e3dd2cc27ccb25334318d1bf4a"
+    },
+    "production_candidate_mutated_by_court": false,
+    "focused_tests_mutated_by_court": false
+  },
+  "independent_findings": {
+    "R1": {
+      "local_holding": "P1-P5-only rule authority/currentness envelope; mandatory current rule-selection proof; independent causal-use authority; numeric calibration authority required",
+      "integration_holding": "NOT SUFFICIENT because R2 does not consume the gate"
+    },
+    "R2": {
+      "local_holding": "content-addressed determinant/application/output lineage, reverse dependency, scoped redrive, no opposite synthesis, history/replay/self-ancestry guards",
+      "integration_holding": "BLOCKER: current hosting does not require R1 current-rule proof"
+    },
+    "R3": {
+      "local_holding": "orthogonal K1-K4/polarity/currentness/modality, bare ACTIVE noncollapse, K4 A/B, explicit negative proof, UNKNOWN_NOT_PROVEN on failed currentness",
+      "integration_holding": "does not cure R1-R2 blocker"
+    },
+    "R4": {
+      "local_holding": "requires admitted external occurrence plus competent admitted objective world response; rejects private V3/simulation/interpretation/OEE as world-response author",
+      "integration_holding": "does not cure R1-R2 blocker"
+    },
+    "OBL062": "OPEN__UNCHANGED"
+  },
+  "court_local_hostile_proof": {
+    "id": "R1_R2_CURRENT_RULE_ADMISSION_BYPASS",
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/STRUCTURAL_DEVELOPMENTAL_TRANSDUCTION_FORGE_R1/POST_ADOPTION_IMPLEMENTATION_R1/FRESH_INTEGRATION_CONFORMANCE_R1/HOSTILE_R1_R2_CURRENTNESS_BYPASS_PROOF.py",
+    "creation_commit": "5640f4ea03dd271da0b61be0ce45a23ffc4a2d05",
+    "verdict": "FAIL__BLOCKER_REPRODUCED"
+  },
+  "execution": {
+    "producer_pass_reports_used_as_evidence": false,
+    "fresh_focused_suites": "NOT_REACHED_AFTER_DECISIVE_PRE_EXECUTION_INTEGRATION_BLOCKER",
+    "fresh_s5_90_30": "NOT_REACHED_AFTER_DECISIVE_PRE_EXECUTION_INTEGRATION_BLOCKER",
+    "second_fresh_replay": "NOT_REACHED_AFTER_DECISIVE_PRE_EXECUTION_INTEGRATION_BLOCKER",
+    "runtime_adoption_qualification_credit": false,
+    "reason": "A candidate with a proved public currentness bypass cannot earn PASS from successful local suites. The court records early blocker termination rather than fabricating execution."
+  },
+  "mutation_receipt": {
+    "production_code_edits": 0,
+    "focused_test_edits": 0,
+    "semantic_redesign": 0,
+    "concrete_rules_minted": 0,
+    "actor_facts_minted": 0,
+    "numeric_values_chosen": 0,
+    "source_authorities_minted": 0,
+    "world_writes": 0,
+    "obl062_closed": false,
+    "rebase": false
+  },
+  "hq_disposition": "DO_NOT_ADOPT_RUNTIME__RETURN_EXACT_BLOCKER_TO_R2_G2_OWNER__REFREEZE_COMBINED_CANDIDATE_AND_RERUN_FRESH_COURT_AFTER_REPAIR"
+}
