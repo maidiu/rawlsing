@@ -1,0 +1,70 @@
+{
+  "schema": "HB01_C05_R2A_OWNER_FAMILY_SCOPE_REPAIR_RESULT_R1",
+  "verdict": "PASS",
+  "terminal": "HB01_C05_R2A_OWNER_FAMILY_SCOPE_REPAIR_COMPLETE__READY_FOR_FRESH_INDEPENDENT_REQUALIFICATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-subv-w-hb01-c05-r2a-owner-family-scope-repair-r1",
+  "commission_tip": "064946c4f662bdaff16b0f21fdae00404e070e65",
+  "authorized_grain": "HB01_C05_R2A_OWNER_AUTHORITY_FAMILY_SCOPE_ENFORCEMENT_REPAIR_R1_ONLY",
+  "repair": {
+    "production_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+    "production_blob": "c3647800f52fa81fdef34be6692207e092c48ee2",
+    "prior_production_blob": "4f64b3ab0b56b948831893d2e86f51d9e216a465",
+    "mechanism": "AuthorityRegistry(self.authority_snapshots).require(ref, object_family=owner.owner_family) for every declared owner authority ref",
+    "new_authority_semantics": false,
+    "source_specific_logic": false
+  },
+  "tests": {
+    "focused_path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+    "focused_blob": "a1154d18c2c7ab06b99b6c713d090575f9d8ebcd",
+    "existing_multi_owner_path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py",
+    "existing_multi_owner_blob": "d3fe1620e1d04694665f25c7dfcd67d375ce168a",
+    "final_execution": {
+      "workflow_run_id": 34585107635,
+      "job_id": 103217387305,
+      "execution_tree": "3def224db0efd57b2a12246cfbbc2c2deca567b3",
+      "semantic_candidate": "5a769840d6b78300e67068da87b609d41916ca77",
+      "protocol_self_tests_passed": 20,
+      "focused_tests_passed": 13,
+      "receipt_artifact_id": 10193238139,
+      "receipt_artifact_sha256": "541ef608003279ac1096a0bee9408feaf7530edcf7ce52929d181e8e96fad597"
+    }
+  },
+  "hostile_disposition": {
+    "coordinate_authority_as_response_owner": "FAIL_CLOSED",
+    "response_authority_as_coordinate_owner": "FAIL_CLOSED",
+    "nonweight_authority_as_weight_owner": "FAIL_CLOSED",
+    "non_allow_owner_authority": "FAIL_CLOSED",
+    "empty_owner_authority_refs": "FAIL_CLOSED"
+  },
+  "preserved": {
+    "generic_multi_owner_semantics": true,
+    "deterministic_identity": true,
+    "legacy_single_owner_parity": true,
+    "routing_ceiling": true,
+    "population_ceiling": true,
+    "design_ceiling": true,
+    "weight_ceiling": true,
+    "wvs7_q_number_special_casing": false
+  },
+  "contract_disposition": {
+    "facade_contract": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "slot_owner_set_contract": "PRE553_C11_PHYSICAL_SLOT_OWNER_SET@1.0.0",
+    "version_bump": false,
+    "new_public_schema": false,
+    "new_owner_family_ontology": false,
+    "disposition": "EXISTING_CONTRACT_SEMANTICS_ENFORCED_MORE_STRICTLY__NO_VERSION_BUMP__NO_NEW_OWNER_FAMILY_ONTOLOGY"
+  },
+  "forbidden_actions_performed": {
+    "gsr07": false,
+    "hb01_closure": false,
+    "b_wake": false,
+    "self_qualification": false,
+    "routing_repair": false,
+    "population_design_recovery": false,
+    "weight_policy_expansion": false,
+    "rebase": false,
+    "replacement_branch": false
+  },
+  "next_state": "FRESH_INDEPENDENT_C05_R2A_REQUALIFICATION_REQUIRED"
+}
