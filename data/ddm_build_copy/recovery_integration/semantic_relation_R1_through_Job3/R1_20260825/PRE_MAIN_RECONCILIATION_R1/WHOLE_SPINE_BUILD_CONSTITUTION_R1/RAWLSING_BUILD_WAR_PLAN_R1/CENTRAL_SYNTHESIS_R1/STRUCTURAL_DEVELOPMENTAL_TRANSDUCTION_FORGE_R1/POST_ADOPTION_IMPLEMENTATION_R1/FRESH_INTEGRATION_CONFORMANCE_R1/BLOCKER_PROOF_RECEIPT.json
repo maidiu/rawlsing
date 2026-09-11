@@ -1,0 +1,56 @@
+{
+  "schema": "SDTF_R4_R1_R4_INTEGRATION_EXACT_BLOCKER_PROOF@1.0.0",
+  "terminal": "SDTF_R4_R1_R4_FRESH_INDEPENDENT_INTEGRATION_CONFORMANCE__EXACT_BLOCKER_PROVED",
+  "blocker_code": "R1_R2_CURRENT_RULE_ADMISSION_AND_EXACT_RULE_IDENTITY_CHAIN_NOT_CONSERVED",
+  "smallest_owning_family": "R2_G2_D1_HOSTING_REPLAY",
+  "smallest_owning_commissioned_grain": "SDTF_R4_D1_HOSTING_DIRECT_DERIVATION_REVERSE_DEPENDENCY_INVALIDATION_REPLAY_R1_ONLY",
+  "candidate_blobs": {
+    "R1": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+    "R2": "66ffd2e1df9ab81970af9264f27de1f449752064"
+  },
+  "adopted_law": {
+    "currentness_firewall": "CURRENT(D1' CONSTITUTION) != CURRENT(MECHANISM RULE) != CURRENT(RULE APPLICATION) != CURRENT(CONSEQUENCE FACT) != CURRENT(WITNESS/STATE SUPPORT)",
+    "derivation_chain": "EXACT DIRECT DETERMINANT(S) -> EXACT RULE_APPLICATION_ID / RULE_VERSION -> DERIVED CONSEQUENCE FACT",
+    "source_trace_requirement": "FUTURE CONCRETE EXECUTABLE RULE REQUIRES GOVERNED RULE/CURRENTNESS/CAUSAL_USE/CALIBRATION TRACE"
+  },
+  "r1_holding": {
+    "rule_ref_kind": "SDTF_R4_MECHANISM_RULE",
+    "binding_ref_kind": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING",
+    "current_gate": "require_current_rule_admission",
+    "gate_requires": [
+      "MechanismRuleAuthorityBinding",
+      "RuleCurrentness.CURRENT_ACCEPTED",
+      "nonempty rule_current_selection_evidence_refs"
+    ]
+  },
+  "r2_holding": {
+    "application_constructor_inputs": [
+      "rule_application_id",
+      "rule_id",
+      "rule_version",
+      "rule_hash"
+    ],
+    "reconstructed_rule_ref_kind": "MECHANISM_RULE_RECORD",
+    "consumes_r1_binding": false,
+    "calls_r1_current_gate": false,
+    "requires_rule_current_selection_evidence": false,
+    "host_direct_derivation_status": "SUPPORTED_CURRENT",
+    "host_direct_derivation_can_publish_current_output": true
+  },
+  "exact_identity_holding": {
+    "ExactRef_key_includes_kind": true,
+    "r1_and_r2_rule_refs_equal_for_same_id_version_hash": false,
+    "reason": "R1 uses kind SDTF_R4_MECHANISM_RULE while R2 reconstructs kind MECHANISM_RULE_RECORD."
+  },
+  "forbidden_path": [
+    "construct exact R1 MechanismRuleIdentity only; do not create/current-admit MechanismRuleAuthorityBinding",
+    "copy its rule_id/rule_version/rule_content_hash into R2 D1RuleApplicationRef",
+    "call R2 D1HostingAdapter.host_direct_derivation",
+    "R2 creates a SUPPORTED_CURRENT application revision and exposes the derived output as current"
+  ],
+  "why_decisive": "The combined candidate therefore permits current rule-application/current consequence state without exact proof that the governing mechanism rule is current under R1. This is exactly the cross-candidate integration invariant the fresh court must enforce.",
+  "why_r2_owns_the_blocker": "R1 already supplies a fail-closed exact current-rule admission contract. The missing enforcement is at the downstream R2 hosting consumer, which accepts only reconstructed raw rule identity fields and does not consume the R1 binding/currentness proof.",
+  "repair_ceiling_for_owner": "Require and conserve the exact R1 current-rule admission identity/proof at R2 application hosting/redrive. Do not mint rules, choose authority, choose calibration, or redesign R4 semantics.",
+  "court_local_proof_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/STRUCTURAL_DEVELOPMENTAL_TRANSDUCTION_FORGE_R1/POST_ADOPTION_IMPLEMENTATION_R1/FRESH_INTEGRATION_CONFORMANCE_R1/HOSTILE_R1_R2_CURRENTNESS_BYPASS_PROOF.py",
+  "production_repair_performed": false
+}
