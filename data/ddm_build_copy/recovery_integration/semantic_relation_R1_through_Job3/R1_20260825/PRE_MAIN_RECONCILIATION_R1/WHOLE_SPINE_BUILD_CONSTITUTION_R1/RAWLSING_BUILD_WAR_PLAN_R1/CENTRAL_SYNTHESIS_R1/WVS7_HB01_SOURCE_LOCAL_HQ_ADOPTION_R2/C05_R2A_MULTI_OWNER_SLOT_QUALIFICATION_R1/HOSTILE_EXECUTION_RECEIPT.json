@@ -1,0 +1,29 @@
+{
+  "schema": "HB01_C05_R2A_FRESH_HOSTILE_EXECUTION_RECEIPT_R1",
+  "evidence_execution_sha": "424927c49a979039ecd6adf132f3cdcb83e90cb5",
+  "test_path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+  "test_blob": "2693d4778eb6b977832033cbadf05be79a527256",
+  "witnesses": [
+    "lawful response+coordinate dual-owner control with family-scoped authorities",
+    "wrong-family owner-authority substitution accepted by frozen facade after canonical authority API rejects it"
+  ],
+  "clean_executions": [
+    {
+      "workflow_run_id": 34579246618,
+      "job_id": 103198723374,
+      "protocol_self_test": "20 passed",
+      "hostile_court": "2 passed",
+      "artifact_id": 10190902937,
+      "artifact_digest": "sha256:c1d02f5e89fccce6d8e03aa82a63b13f034afcf36b6dc96807397731ee8c448c"
+    },
+    {
+      "workflow_run_id": 34579246618,
+      "job_id": 103198892900,
+      "protocol_self_test": "20 passed",
+      "hostile_court": "2 passed",
+      "artifact_id": 10190924604,
+      "artifact_digest": "sha256:199422a9970e1b1069c71bbac0970ca6be46ee7ef95a361e84385a9b7c248ccc"
+    }
+  ],
+  "interpretation": "The hostile court passes because it successfully reproduces the exact defect; this is qualification BLOCKER evidence, not candidate PASS evidence."
+}
