@@ -45,9 +45,9 @@ def _fixture(*, dual_owner: bool, explicit_owner_set: bool = False):
     replay_auth = _auth("multi-owner-replay", "REPLAY_PROTOCOL", families=("ReplayReceipt@1.0.0",))
     projection_auth = _auth("multi-owner-projection", "SOURCE_SEMANTICS_TOPOLOGY",
                             families=("RespondentEvent@1.0.0", "EmpiricalCoordinateFact@1.0.0"))
-    response_owner_auth = _auth("multi-owner-response-owner", "PHYSICAL_SLOT_SEMANTIC_OWNER",
+    response_owner_auth = _auth("multi-owner-response-owner", "SOURCE_SEMANTICS_TOPOLOGY",
                                 families=(RESPONSE_OWNER_FAMILY,))
-    coordinate_owner_auth = _auth("multi-owner-coordinate-owner", "PHYSICAL_SLOT_SEMANTIC_OWNER",
+    coordinate_owner_auth = _auth("multi-owner-coordinate-owner", "COORDINATE_SEMANTICS",
                                   families=(COORDINATE_OWNER_FAMILY,))
 
     authorities = [source_auth, coord_auth, routing_auth, replay_auth, projection_auth]
@@ -265,9 +265,9 @@ def test_accepted_wvs7_42_slot_authority_shape_is_representable_without_source_s
     assert len(set(WVS7_COORDINATE_DUAL_OWNER_42)) == 42
     assert tuple(sorted(WVS7_COORDINATE_DUAL_OWNER_42)) == tuple(sorted(set(WVS7_COORDINATE_DUAL_OWNER_42)))
 
-    response_owner = _auth("wvs7-shape-response-owner", "PHYSICAL_SLOT_SEMANTIC_OWNER",
+    response_owner = _auth("wvs7-shape-response-owner", "SOURCE_SEMANTICS_TOPOLOGY",
                            families=(RESPONSE_OWNER_FAMILY,)).authority_ref
-    coordinate_owner = _auth("wvs7-shape-coordinate-owner", "PHYSICAL_SLOT_SEMANTIC_OWNER",
+    coordinate_owner = _auth("wvs7-shape-coordinate-owner", "COORDINATE_SEMANTICS",
                              families=(COORDINATE_OWNER_FAMILY,)).authority_ref
     owner_sets = tuple(
         PhysicalSlotOwnerSet(
