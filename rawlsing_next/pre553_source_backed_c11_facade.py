@@ -314,6 +314,11 @@ class GovernedC11Projection:
             raise SourceBackedC11FacadeError("physical-slot owner authority must be explicitly required")
         if not owner_authorities.issubset(packaged):
             raise SourceBackedC11FacadeError("physical-slot owner authority absent from projection closure")
+        owner_registry = AuthorityRegistry(self.authority_snapshots)
+        for owner_set in owner_sets.values():
+            for owner in owner_set.owners:
+                for ref in owner.authority_refs:
+                    owner_registry.require(ref, object_family=owner.owner_family)
 
     @property
     def cache_identity(self) -> str:
