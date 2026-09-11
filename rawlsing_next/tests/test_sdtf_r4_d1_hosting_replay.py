@@ -11,9 +11,10 @@ from rawlsing_next.sdtf_r4_d1_hosting_replay import (
     D1Evaluation,
     D1FactPointer,
     D1HostingIntegrityError,
-    D1HostingAdapter,
+    D1HostingAdapter as ProductionD1HostingAdapter,
     D1RuleApplicationRef,
 )
+from rawlsing_next.tests.test_sdtf_r4_mechanism_rule_authority_binding import _binding
 
 
 def _sha(label: str) -> str:
@@ -32,12 +33,36 @@ def _fact(object_id: str, *, state_version: str = "sv1", valid_time: str = "t1")
 
 
 def _app(app_id: str, version: str = "1.0.0") -> D1RuleApplicationRef:
+    binding = _binding(tag=app_id)
+    assert binding.rule_identity.rule_version == version
     return D1RuleApplicationRef(
         rule_application_id=app_id,
-        rule_id=f"rule:{app_id}",
-        rule_version=version,
-        rule_hash=_sha(f"rule:{app_id}:{version}"),
+        rule_id=binding.rule_identity.rule_id,
+        rule_version=binding.rule_identity.rule_version,
+        rule_hash=binding.rule_identity.rule_content_hash,
     )
+
+
+def _admission(application: D1RuleApplicationRef):
+    return _binding(tag=application.rule_id.removeprefix("RULE-"))
+
+
+class D1HostingAdapter(ProductionD1HostingAdapter):
+    """Regression harness supplying exact deterministic R1 admissions to R2."""
+
+    def host_direct_derivation(self, application, **kwargs):
+        return super().host_direct_derivation(
+            application,
+            rule_admission=_admission(application),
+            **kwargs,
+        )
+
+    def redrive(self, changed_determinant_refs, evaluator):
+        return super().redrive(
+            changed_determinant_refs,
+            evaluator,
+            rule_admission_resolver=lambda application, before: _admission(application),
+        )
 
 
 def _build_chain() -> tuple[
@@ -74,7 +99,7 @@ def test_direct_derivation_pins_exact_rule_application_version_and_reverse_edge(
     repo, determinant, out_a, _, _, app_a, _, _ = _build_chain()
     revision = repo.current_revision(app_a)
 
-    assert CONTRACT_ID.endswith("@1.0.0")
+    assert CONTRACT_ID.endswith("@2.0.0")
     assert revision.application.rule_application_id == "app-A"
     assert revision.application.rule_version == "1.0.0"
     assert revision.output_fact == out_a
@@ -82,6 +107,8 @@ def test_direct_derivation_pins_exact_rule_application_version_and_reverse_edge(
     assert repo.reverse_dependents(determinant.fact_ref) == (app_a,)
     assert revision.evidence_witness_refs[0].kind == "EVIDENCE_WITNESS_RECORD"
     assert app_a.mechanism_rule_ref in repo.hosted_mechanism_rule_refs()
+    assert revision.rule_authority_binding_ref in repo.hosted_rule_authority_binding_refs()
+    assert revision.current_rule_admission_ref == revision.rule_authority_binding_ref
     assert revision.evidence_witness_refs[0] in repo.hosted_evidence_witness_refs()
     assert app_a.exact_ref.kind == "RULE_APPLICATION_RECORD"
 
