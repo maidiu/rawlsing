@@ -1,0 +1,40 @@
+{
+  "schema": "HB01_ROUTING_D03_CERTIFIED_PROJECTION_SCOPE_DISPOSITION_R2",
+  "verdict": "PASS",
+  "terminal": "HB01_ROUTING_D03_CERTIFIED_PROJECTION_SCOPE_COURT_R2_COMPLETE__REQUIRED_AND_REMOVED_PROJECTIONS_FROZEN__READY_FOR_HQ",
+  "branch": "agent/rabochii-vozhd-hb01-routing-d03-certified-projection-scope-r2",
+  "commission_sha": "3add29f84329512aa351e5cc64dea18f6466b305",
+  "authorized_grain": "HB01_ROUTING_D03_CERTIFIED_PROJECTION_SCOPE_DISPOSITION_R2_ONLY",
+  "documentary_cells": {
+    "total": 222,
+    "disposition": "IN_SCOPE__POSITIVE_ROUTING_RESOLUTION_REQUIRED",
+    "routing_truth": "ROUTING_UNKNOWN",
+    "by_gap": {"D01":63,"D02":65,"D04":13,"D05":4,"D06":4,"D07":1,"D08":5,"D09":5,"D10":62},
+    "lawful_scope_removals": 0,
+    "scope_authority_unresolved": 0
+  },
+  "d03_targets": {
+    "total": 9,
+    "targets": ["Q276","Q276A","Q277","Q277A","Q278","Q278A","Q280","Q282","Q283"],
+    "disposition": "IN_SCOPE__POSITIVE_ROUTING_RESOLUTION_REQUIRED",
+    "routing_truth": "ROUTING_UNKNOWN",
+    "positive_presence_facts_minted": 0,
+    "negative_presence_facts_minted": 0
+  },
+  "overall": {
+    "in_scope_positive_resolution_required": 231,
+    "out_of_scope_explicit_removal_supported": 0,
+    "scope_authority_unresolved_fail_closed": 0
+  },
+  "holding": "Accepted project-current authority positively retains the complete inherited WVS7 HB01 routing residual inside the certified source-local projection. No accepted authority positively removes any D01/D02/D04-D10 residual family or any of the nine D03 targets. Missing determinant evidence therefore remains routing debt, not projection-removal authority.",
+  "identity_note": "SCOPE_DISPOSITION_MATRIX_PART1.csv and PART2.csv enumerate all 222 documentary cells with court-local audit ordinals only; they do not remint or reinterpret upstream routing identity.",
+  "routing_truth_preserved": "Every unresolved determinant remains ROUTING_UNKNOWN until its named positive recovery grain is supplied.",
+  "prohibitions_observed": {
+    "sav_touched": false,
+    "population_documentary_recovery_performed": false,
+    "c05_r2a_run": false,
+    "hb01_closed": false,
+    "B_woken": false
+  },
+  "next_authority": "Return to VOZHD/HQ only. HQ may consume this scope freeze and commission the exact positive routing-recovery grains. This PASS does not itself authorize C05-R2A and does not close HB01."
+}
