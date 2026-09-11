@@ -1,138 +1,128 @@
-# M8 — TIMING, TRANSITIONS, TRAJECTORIES COURT R1
+# M8 — LINKED LIVES COURT R1
 
-## 1. Age is not a free-standing mechanism
+## Issue
 
-Elder repeatedly shows that chronological age matters because it changes what social position a person occupies when the historical shock arrives.
+Does frozen-candidate D1 (`TYPED_ACTOR_RELATIVE_SOCIAL_ECOLOGY_DERIVATION`) adequately represent person-to-person transduction, or does Elder require a new capability?
 
-Pages 15–16 distinguish:
-- parents, directly implicated in provider responsibilities and economic failure;
-- the Oakland cohort (born 1920–21), too young for Depression-era adult labor-market failure but old enough for household contributions;
-- an older cohort, entering the labor market at the nadir;
-- a younger cohort, more completely dependent on family conditions.
+## Elder's strongest linked-life mechanism
 
-Pages 106–107 restate the difference: younger children are more vulnerable to the interior disruption of family dependency; older youth face education/work opportunity constraints; Oakland children sit between those routes.
-
-Therefore:
+The clearest chain is not psychological contagion. It is a material-relational transfer of workload and obligation:
 
 ```text
-AGE / DEVELOPMENTAL PHASE
-+ HISTORICAL TIME
-→ role eligibility / dependency / school-work position / transition opportunity
-→ mechanism selection and intensity
+family economic loss
+→ mother's paid-employment transition and/or father's work incapacity/absence
+→ parental time/resource/contribution pattern changes
+→ household task requirement remains or grows
+→ child is assigned/assumes specific domestic/economic responsibility
+→ child repeatedly performs the activity
+→ child's time, dependence, authority relations, counterpart set and opportunities change
+→ later development is conditioned through those realized activities
 ```
 
-**Verdict C:** age operates primarily as a **qualifier and route selector**. It is causally consequential only through the positions, capacities, obligations, gates and opportunities indexed by age in that historical setting. `AGE -> OUTCOME` is too coarse.
+Source basis: pp. 62, 67–70, 114–115.
 
-## 2. Same household shock + different age = different process
+Page 67 is especially probative: Elder says change in parental roles **typically preceded** a shift in responsibilities to children. Page 69 explicitly treats mother's role change as an example of family interdependence: change in mother's role initiates change in children's household role.
 
-Elder supports the proposition.
-
-A younger child exposed to father job loss may experience:
-- intensified dependency on a disrupted family;
-- fewer capacities to offset household loss through work;
-- greater exposure to altered parental availability/control.
-
-An Oakland adolescent can experience:
-- new domestic or paid-work obligations;
-- greater contact with nonfamily adults;
-- altered parental control;
-- changed school/work tradeoffs.
-
-An older youth/young adult can experience:
-- direct unemployment;
-- blocked labor-market entry;
-- postponed education, marriage, or family formation.
-
-This is not three magnitudes of the same mechanism. It is three different mechanism pathways selected by historical age-position.
-
-## 3. Transition inventory
-
-Elder's adult analysis requires explicit transitions rather than snapshots:
-
-- completion/termination of formal education;
-- entry into full-time employment;
-- stable career-line entry;
-- marriage;
-- first child/parenthood;
-- military induction and discharge;
-- wife's labor-force entry/reentry;
-- leaving parental household (where available);
-- job/occupational moves.
-
-Ch. 7 states that young adulthood compresses multiple transitions—education completion, job entry, marriage, first child—and adds wartime military induction (pp. 155–158). Ch. 8 shows that women's careers depend strongly on the timing/order of marriage, childbearing and paid work (pp. 202–239).
-
-A lawful trajectory representation therefore requires:
+A second linked-life chain concerns father:
 
 ```text
-ordered transitions
-+ intervals between them
-+ historical opportunity context
-+ actor position before/after
-+ relation/resource changes
+father unemployment/status loss
+→ altered contribution/authority and, in some cases, withdrawal/distress
+→ changed marital power / paternal control / paternal availability
+→ child's actual parent relation changes
+→ child's use of mother, peers, teachers, and other adults changes
 ```
 
-A bag of life events is insufficient.
+Source basis: ch. 5, especially pp. 95–106, with substantial evidence ceilings.
 
-## 4. WWII / military service hostile test
+## D1 hostile test
 
-Elder shows that WWII materially reset the opportunity field:
-- most Oakland men served;
-- civilian work/education/marriage schedules were interrupted;
-- some obtained veteran educational support;
-- postwar organizational growth and labor demand altered career opportunities (pp. 154–161, 200).
+Frozen D1 already requires:
 
-But the source does **not** justify:
+- exact actor binding;
+- exact position binding;
+- counterpart/household/institution binding where relational;
+- a typed mechanism rule;
+- history where applicable;
+- typed Stage-A and Stage-B social facts;
+- `LINKED_LIFE_TRANSMISSION` as an admitted mechanism family;
+- an explicit example: linked person's transition + dependency relation → focal actor resource/time/obligation update applicability.
 
-`MILITARY_SERVICE -> TURNING_POINT`.
+That is the correct jurisdiction.
 
-Service is an event/transition with potential downstream consequences. Whether it became a turning point for an individual must be adjudicated from the later trajectory.
+### Failure mode if D1 is implemented too loosely
 
-## 5. Turning-point court
-
-Frozen D2 distinguishes:
-
-`EVENT`, `CONDITION`, `RELATION`, `RECURRENT_ACTIVITY`, `TRANSITION`, `TRAJECTORY`, and `TURNING_POINT`, with turning point defined as a derived predicate after sustained redirection.
-
-Elder supports this distinction strongly even though the book does not use "turning point" as a primitive analytic category.
-
-Why:
-
-1. Similar large events do not redirect everyone similarly.
-2. Household deprivation changes routes without necessarily changing final adult status.
-3. WWII/military service/education/marriage are major transitions but may be temporary interruptions, opportunities, or schedule changes rather than durable redirection.
-4. Adult continuity from Depression experience depends on later situations (pp. 277–282).
-5. The book repeatedly distinguishes **path**, **timing**, and **endpoint**.
-
-### Earned predicate
-
-Rawlsing should call a transition a turning point only if later history demonstrates:
+A generic representation such as:
 
 ```text
-pre-transition trajectory T0
-→ transition X
-→ post-transition reorganization of position/activity/relation/resource pattern
-→ persistence across a meaningful interval
-→ counterfactual/within-history evidence sufficient to call the new course a redirection rather than ordinary continuation
+PARENT_JOB_LOSS
+→ CHILD_STRESS
 ```
 
-Elder usually supplies the first four descriptively for selected trajectories, but not always the identification needed for a strong causal attribution to X. The architecture should therefore support `TURNING_POINT_CANDIDATE` analytically without forcing a positive causal predicate.
+would be unlawful even if empirically correlated. Elder requires at least:
 
-## 6. Cumulation
+```text
+SOURCE_ACTOR = father
+SOURCE_REALIZED_STATE/TRANSITION = unemployment/job loss
+RELATION = father-of / provider-in household H
+HOUSEHOLD_RESOURCE/ROLE CONSEQUENCE = specified
+TARGET_ACTOR = child C
+TARGET ECOLOGY DIMENSION = time/resource/obligation/authority/support/etc.
+REALIZATION = exact child activity/relation if it occurred
+TIME/INTERVAL = explicit
+PROVENANCE = source evidence
+```
 
-Elder contains genuine iterative mechanisms:
-- unemployment ↔ drinking/unemployability can become a deteriorating loop (p. 61);
-- repeated work/household tasks can accumulate experience, obligations and social independence;
-- early family role changes can alter later education/work/marriage paths, which then alter subsequent opportunities.
+The linked person is not just provenance metadata; the relation is part of the causal rule.
 
-But the book does not license a generic "cumulative disadvantage" quantity. Each iteration must retain domain and transition identity.
+## Is a separate relation-qualified D4 required?
 
-## D2 verdict
+**No.**
 
-**D2 suffices and is strongly supported.** Elder is nearly a direct empirical argument for why conditions, recurrent activities, transitions and trajectories cannot be collapsed into events.
+Elder requires a **relation-qualified invariant inside D1**, not a fourth capability. The frozen candidate already has the necessary semantic hooks. Adding a separate `D4_LINKED_LIFE` would duplicate D1's counterpart/relation binding and its explicit `LINKED_LIFE_TRANSMISSION` family.
 
-No widening is needed beyond one implementation discipline: `TURNING_POINT` must remain derived, and transition rebinding must preserve the before/after actor-relative ecology rather than merely append an event record.
+The required narrowing is implementation-level:
 
-## Court answers E and H
+> A D1 linked-life derivation MUST NOT emit a target-actor update from another person's state unless the rule carries `(source_actor, target_actor, exact_relation/household binding, source realized state/transition, target ecology dimension, valid interval, realization status, provenance)`.
 
-- **E — Does D2 suffice?** Yes.
-- **H — Does Elder support turning point as derived rather than primitive?** Yes, strongly. Major events become developmentally decisive only through demonstrated sustained trajectory reorganization.
+If a source transition changes several target dimensions across time, D1 composes with D2's transition rebinding.
+
+## Relation to D2
+
+Linked life is often temporal rebinding:
+
+```text
+mother begins paid work at t
+→ prior household labor allocation deactivates/modifies
+→ child obligation activates at t/t+1
+→ recurrent domestic activity persists over interval
+```
+
+That is not a new causal family; it is D1 mechanism + D2 temporal realization.
+
+## Relation to D3
+
+Most Elder household-linked-life mechanisms do **not** require D3. D3 should be reserved for cases where an actor's realized action encounters an external counterpart/institutional gate and changes later social-world facts.
+
+Example where D3 may apply:
+
+```text
+boy seeks job
+→ employer gate hires him
+→ new wage/resource + employer relation
+→ later household/child ecology changes
+```
+
+But if the source cannot distinguish whether preexisting independence caused job acquisition or job experience caused independence, D3 must preserve that identification uncertainty rather than assert both arrows.
+
+## Court answer B
+
+**Strongest linked-life mechanism:** parent work/resource transition → household labor/resource reallocation → child obligation/activity → changed child time/resource/authority/counterpart ecology.
+
+## Court answer D
+
+**D1 suffices semantically, provided relation qualification is mandatory.** No D4 is needed.
+
+## Smallest architectural consequence
+
+Add no new top-level capability. Tighten the D1 mechanism-rule schema/tests so linked-life transmissions cannot be expressed without exact source actor, target actor, binding relation, source realized condition/transition, time, target ecology delta, and provenance.

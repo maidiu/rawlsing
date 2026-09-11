@@ -1,128 +1,264 @@
-# M8 — LINKED LIVES COURT R1
+# M8 — ELDER MECHANISM CARDS R1
 
-## Issue
+Source: Glen H. Elder, Jr., *Children of the Great Depression* (1974).  
+Rule: every card preserves the distinction `macro event != actor exposure != household condition != linked-person response != child activity/experience != developmental outcome`.
 
-Does frozen-candidate D1 (`TYPED_ACTOR_RELATIVE_SOCIAL_ECOLOGY_DERIVATION`) adequately represent person-to-person transduction, or does Elder require a new capability?
+## Card M8-01 — macro contraction to household exposure
 
-## Elder's strongest linked-life mechanism
+**Chain**
 
-The clearest chain is not psychological contagion. It is a material-relational transfer of workload and obligation:
+`DEPRESSION-ERA ECONOMIC CONTRACTION`
+→ `father's work-sector/occupation is exposed`
+→ `layoff / underemployment / wage-salary-sales loss / business loss / absence`
+→ `measured family-income change`
+→ `household deprivation status within pre-Depression class context`
 
-```text
-family economic loss
-→ mother's paid-employment transition and/or father's work incapacity/absence
-→ parental time/resource/contribution pattern changes
-→ household task requirement remains or grows
-→ child is assigned/assumes specific domestic/economic responsibility
-→ child repeatedly performs the activity
-→ child's time, dependence, authority relations, counterpart set and opportunities change
-→ later development is conditioned through those realized activities
-```
+**Evidence:** pp. 43–49, `HISTORICAL_CONTEXT + DIRECT_ASSOCIATIONAL`.
 
-Source basis: pp. 62, 67–70, 114–115.
+**Critical qualification:** the macro event is not sufficient. Elder observes large within-cohort variation in loss and unemployment. Pre-Depression occupation/self-employment and birthplace are associated with exposure.
 
-Page 67 is especially probative: Elder says change in parental roles **typically preceded** a shift in responsibilities to children. Page 69 explicitly treats mother's role change as an example of family interdependence: change in mother's role initiates change in children's household role.
+**Rawlsing:** `STRUCTURAL_SOURCE_FACTS + POSITION_BINDING -> D1 actor-relative resource/work exposure`; actual job loss/income change is Stage-B realization.
 
-A second linked-life chain concerns father:
+---
 
-```text
-father unemployment/status loss
-→ altered contribution/authority and, in some cases, withdrawal/distress
-→ changed marital power / paternal control / paternal availability
-→ child's actual parent relation changes
-→ child's use of mother, peers, teachers, and other adults changes
-```
+## Card M8-02 — economic loss to household maintenance regime
 
-Source basis: ch. 5, especially pp. 95–106, with substantial evidence ceilings.
+**Chain**
 
-## D1 hostile test
+`income/assets/work loss`
+→ `shortfall against household needs`
+→ `expenditure reduction + altered consumption priorities`
+→ `supplemental income/labor strategy`
+→ `{mother employment | kin transfers | boarders | public assistance | more home production}`
 
-Frozen D1 already requires:
+**Evidence:** pp. 49–53, 62, 114; `DIRECT_ASSOCIATIONAL + QUALITATIVE_TEMPORAL`.
 
-- exact actor binding;
-- exact position binding;
-- counterpart/household/institution binding where relational;
-- a typed mechanism rule;
-- history where applicable;
-- typed Stage-A and Stage-B social facts;
-- `LINKED_LIFE_TRANSMISSION` as an admitted mechanism family;
-- an explicit example: linked person's transition + dependency relation → focal actor resource/time/obligation update applicability.
+**Ceiling:** these strategies are alternatives. No generic "deprivation adaptation" object should erase which strategy occurred.
 
-That is the correct jurisdiction.
+**Rawlsing:** `RESOURCE_DEPENDENCY`, `TIME_ALLOCATION`, `HOUSEHOLD_CARE_DEPENDENCY`, `ROLE_OBLIGATION`.
 
-### Failure mode if D1 is implemented too loosely
+---
 
-A generic representation such as:
+## Card M8-03 — mother's work as linked-life transduction
 
-```text
-PARENT_JOB_LOSS
-→ CHILD_STRESS
-```
+**Chain**
 
-would be unlawful even if empirically correlated. Elder requires at least:
+`family economic need`
+→ `mother enters paid employment`
+→ `mother's available household labor/time changes`
+→ `household domestic-work requirement is redistributed`
+→ `child receives domestic responsibility`
+→ `recurrent child household activity`
 
-```text
-SOURCE_ACTOR = father
-SOURCE_REALIZED_STATE/TRANSITION = unemployment/job loss
-RELATION = father-of / provider-in household H
-HOUSEHOLD_RESOURCE/ROLE CONSEQUENCE = specified
-TARGET_ACTOR = child C
-TARGET ECOLOGY DIMENSION = time/resource/obligation/authority/support/etc.
-REALIZATION = exact child activity/relation if it occurred
-TIME/INTERVAL = explicit
-PROVENANCE = source evidence
-```
+**Evidence:** pp. 62, 67, 69, 114; direct associations plus temporal qualitative evidence. With deprivation controlled, children of employed mothers were more likely to have domestic responsibilities (p. 67).
 
-The linked person is not just provenance metadata; the relation is part of the causal rule.
+**Ceiling:** maternal employment is a relatively weak statistical mediator of the deprivation-child-role association and was measured at a different date from child roles; do not overstate.
 
-## Is a separate relation-qualified D4 required?
+**Rawlsing:** this is canonical `LINKED_LIFE_TRANSMISSION` and requires source actor, target actor, exact household relation, source transition/state, time, and output dimension.
 
-**No.**
+---
 
-Elder requires a **relation-qualified invariant inside D1**, not a fourth capability. The frozen candidate already has the necessary semantic hooks. Adding a separate `D4_LINKED_LIFE` would duplicate D1's counterpart/relation binding and its explicit `LINKED_LIFE_TRANSMISSION` family.
+## Card M8-04 — father's job loss/status loss to family relation ecology
 
-The required narrowing is implementation-level:
+**Chain**
 
-> A D1 linked-life derivation MUST NOT emit a target-actor update from another person's state unless the rule carries `(source_actor, target_actor, exact_relation/household binding, source realized state/transition, target ecology dimension, valid interval, realization status, provenance)`.
+`job/income loss`
+→ `provider/status contribution changes`
+→ `marital bargaining/authority configuration and/or parent distress changes`
+→ `{withdrawal, drinking, diminished warmth/support, conflict, changed parental control}`
+→ `child's relation to father/mother and nonfamily adults changes`
 
-If a source transition changes several target dimensions across time, D1 composes with D2's transition rebinding.
+**Evidence:** pp. 53–63, 83–105; `DIRECT_ASSOCIATIONAL + MODEL_MEDIATION + QUALITATIVE_TEMPORAL`.
 
-## Relation to D2
+**Ceiling:** father was not interviewed. His interpretation of failure is largely unknown (pp. 104–105; Appendix B p. 323). Some deprived families remained father-dominant and emotionally stable (p. 106). Therefore parent behavior cannot be inferred automatically from loss.
 
-Linked life is often temporal rebinding:
+**Rawlsing:** D1 must separate `economic state`, `parent uptake`, `parent behavior`, `child relation/experience`.
 
-```text
-mother begins paid work at t
-→ prior household labor allocation deactivates/modifies
-→ child obligation activates at t/t+1
-→ recurrent domestic activity persists over interval
-```
+---
 
-That is not a new causal family; it is D1 mechanism + D2 temporal realization.
+## Card M8-05 — paid work and boys' social independence
 
-## Relation to D3
+**Chain**
 
-Most Elder household-linked-life mechanisms do **not** require D3. D3 should be reserved for cases where an actor's realized action encounters an external counterpart/institutional gate and changes later social-world facts.
+`family deprivation / spending-money constraint`
+→ `boy obtains paid job`
+→ `recurrent work outside household + employer/coworker relations + own money`
+→ `reduced dependence on parental provisioning/supervision`
+→ `greater social independence in high school`
 
-Example where D3 may apply:
+**Evidence:** pp. 73, 77–79; strongest prospective mechanism in the volume for a near-term developmental outcome. Boys who later worked were not more independent in junior high; by high school employed boys had the largest gains, and employment accounted for much of the deprivation association.
 
-```text
-boy seeks job
-→ employer gate hires him
-→ new wage/resource + employer relation
-→ later household/child ecology changes
-```
+**Identification ceiling:** job acquisition is not randomized. Selection by industry, mastery, or other unmeasured traits remains possible (pp. 70, 75).
 
-But if the source cannot distinguish whether preexisting independence caused job acquisition or job experience caused independence, D3 must preserve that identification uncertainty rather than assert both arrows.
+**Rawlsing:** `ACTIVITY_ORGANIZATION + RESOURCE_DEPENDENCY + AUTHORITY_CONTROL_SANCTION`; recurrent activity must have interval/duration identity under D2.
 
-## Court answer B
+---
 
-**Strongest linked-life mechanism:** parent work/resource transition → household labor/resource reallocation → child obligation/activity → changed child time/resource/authority/counterpart ecology.
+## Card M8-06 — gendered domestic work, not sex essence
 
-## Court answer D
+**Chain**
 
-**D1 suffices semantically, provided relation qualification is mandatory.** No D4 is needed.
+`deprived household's labor need`
++ `historically gendered family division of labor`
+→ `girls assigned domestic work at higher rates`
+→ `less free time / stronger household embedding in specific strata`
+→ `domestic role exposure and, in the middle class, stronger domestic preference`
 
-## Smallest architectural consequence
+**Evidence:** pp. 64–80.
 
-Add no new top-level capability. Tighten the D1 mechanism-rule schema/tests so linked-life transmissions cannot be expressed without exact source actor, target actor, binding relation, source realized condition/transition, time, target ecology delta, and provenance.
+**Critical null:** deprivation has little reliable general effect on girls' social independence. The restricted-leisure path is clearest among working-class girls; domestic preference is clearest among deprived middle-class girls.
+
+**Rawlsing:** reject `SEX -> DEVELOPMENT`. Encode `sex/gender classification + historically active role rule + household need + assigned activity -> realized experience`.
+
+---
+
+## Card M8-07 — scarce resources to family conflict
+
+**Chain**
+
+`income shortfall`
+→ `forced allocation/sacrifice decisions`
+→ `disagreement over priorities / changed reciprocal contributions`
+→ `relation-specific marital or parent-child conflict`
+→ `child exposure to conflict`
+
+**Evidence:** pp. 91–94; child reports and family material.
+
+**Ceiling:** conflict is not a universal deprivation outcome; relation and authority structure matter.
+
+**Rawlsing:** `RESOURCE_DEPENDENCY + AUTHORITY_CONTROL_SANCTION + LINKED_LIFE_TRANSMISSION`.
+
+---
+
+## Card M8-08 — parent withdrawal to compensatory social world
+
+**Chain**
+
+`father economic/status loss`
+→ `some fathers withdraw socially/emotionally`
+→ `reduced paternal support/control`
+→ `child increases practical/affective use of mother, peers, teachers, other adults`
+→ `expanded nonfamily relational ecology`
+
+**Evidence:** pp. 95–106; mixed association/mediation/qualitative.
+
+**Ceiling:** not all deprived fathers withdraw; father-response data are sparse. Objective relational change and child perception must be distinct.
+
+**Rawlsing:** `COUNTERPART_FORMATION + NETWORK_INFORMATION_SUPPORT`; D1 relation-qualified outputs.
+
+---
+
+## Card M8-09 — age/historical timing qualifies the route
+
+**Chain**
+
+`same Depression-period shock`
++ `age/life-stage at exposure`
+→ `different dependency, role eligibility, school/work position, and opportunity structure`
+→ `different mechanism path`
+
+**Examples:** pp. 15–16 and 106–107. Younger children are more dependent on family interior; older youth face labor-market/education constraints; Oakland youth were old enough for household economic roles but reached adulthood as opportunities improved.
+
+**Verdict:** age is principally a **mechanism qualifier/selector**, not an independent developmental mechanism. It acts through role, dependency, eligibility and historical opportunity.
+
+**Rawlsing:** `HISTORICAL_TIMING_QUALIFICATION + D2 transition/interval binding`.
+
+---
+
+## Card M8-10 — household role experience to adult trajectory
+
+**Chain**
+
+`adolescent paid/domestic activity`
+→ `skills/orientations + altered education/work/marriage options`
+→ `transition sequence`
+→ `adult career/family pathway`
+
+**Evidence:** chs. 7–8, especially pp. 153–173, 202–239; ch. 10 pp. 278–282.
+
+**Ceiling:** final adult status often converges despite different paths. Strongest evidence concerns **routes and timing**, not deterministic adult endpoints.
+
+**Rawlsing:** D2 must represent trajectory as ordered typed history. No direct persistence scalar.
+
+---
+
+## Card M8-11 — war/military transition as external opportunity reset
+
+**Chain**
+
+`WWII mobilization / postwar institutional expansion`
+→ `military induction + interruption of work/education/marriage schedules`
+→ `service experience / veteran benefits / postwar labor and education opportunity`
+→ `new transition opportunities`
+→ `career continuation or redirection`
+
+**Evidence:** pp. 154–161, 200; `HISTORICAL_CONTEXT + longitudinal life histories`.
+
+**Ceiling:** military service is not by itself a "turning point." The book lacks a design showing that service caused sustained redirection for each individual.
+
+**Rawlsing:** external historical change produces new Stage-A opportunity and Stage-B transitions; `TURNING_POINT` is only earned after observed sustained redirection.
+
+---
+
+## Card M8-12 — reciprocal selection loop
+
+**Chain A**
+
+`child industry/mastery/social independence`
+→ `job acquisition probability`
+→ `work experience`
+→ `later independence/skill/orientation`
+
+**Chain B**
+
+`father job loss`
+→ `increased drinking in some cases`
+→ `reduced employability`
+→ `continued unemployment/status failure`
+
+**Evidence:** pp. 61, 70, 75.
+
+**Verdict:** Elder explicitly refuses a simple one-way model. Some causal directions remain unidentified.
+
+**Rawlsing:** D3 can represent reciprocal selection only when an actual external gate/response is observed. Where Elder cannot identify direction, Rawlsing must retain competing hypotheses/evidence ceilings rather than mint a bidirectional causal fact.
+
+---
+
+## Card M8-13 — resilience decomposed
+
+**Not licensed:** `HARDSHIP -> RESILIENCE`.
+
+**Licensed decomposition:**
+
+`problem demand`
++ `cognitive/personal resources`
++ `family/social support`
++ `prior successful problem-solving experience`
++ `available institutional options`
+→ `particular coping action`
+→ `observed short-run result`
+→ `possibly accumulated competence if repeated and sustained`
+
+**Evidence:** pp. 34–40, 240–268, 276–282.
+
+**Rawlsing:** resources/support/opportunity are distinct state/relations. "Resilience" may be an analyst summary only after an observed pattern; it is not a primitive trait generated by adversity.
+
+---
+
+## Card M8-14 — family adaptation has multiple welfare referents
+
+**Chain**
+
+`family survival requirement`
+→ `adaptation`
+→ simultaneously different consequences for:
+- household economic survival,
+- marital relation,
+- child workload,
+- child's education/social freedom,
+- mother's burden,
+- father's status.
+
+**Evidence:** pp. 12–15.
+
+**Rawlsing:** effects require target actor/domain. An adaptation cannot be stamped globally `adaptive` or `maladaptive`.

@@ -1,110 +1,112 @@
-# M8 — MACRO TO HOUSEHOLD TO CHILD COURT R1
+# M8 — IDENTIFICATION, NULLS, AND BOUNDARIES R1
 
-## Question before the court
+## Design
 
-What is the longest macro→person chain in Elder that can be represented without collapsing historical event, household exposure, linked-person response, child activity, and developmental outcome?
+Elder reanalyzes the Oakland Growth Study, begun before his Depression inquiry.
 
-## Court rule
+Appendix B documents:
+- 167 children: 84 boys, 83 girls;
+- fifth graders selected in northeastern Oakland;
+- selection by willingness to participate and expected residential permanence;
+- all participants white; more than 80% Protestant;
+- approximately three-fifths of families intact and headed by native-born parents;
+- continuous childhood study through the 1930s;
+- adult follow-ups, with 76 women and 69 men participating in at least one major follow-up;
+- mother interviews, repeated child questionnaires, staff observations/ratings, family-relation ratings, psychiatric/physical adult assessments, and adult occupational/family histories.
 
-No arrow is admitted merely because adjacent nodes are plausible. Each edge is labeled by the strongest evidence status actually available in the book.
+The source is longitudinal and unusually rich, but it is not a probability sample, natural experiment, or randomized exposure design.
 
-## Strongest chain
+## Identification strengths
 
-```text
-U.S./Oakland Depression-era contraction
-  [HISTORICAL_CONTEXT]
-→ father's situated exposure in occupation/business/labor market
-  [HISTORICAL_CONTEXT + DIRECT_ASSOCIATIONAL]
-→ layoff / unemployment / underemployment / wage-sales-income loss
-  [DIRECT HOUSEHOLD DATA]
-→ large measured family-income loss (deprived >35% loss, 1929–33)
-  [DIRECT HOUSEHOLD DATA]
-→ household resource shortfall / reduced parental provisioning
-  [DIRECT + QUALITATIVE]
-→ survival adaptation:
-     expenditure cuts / labor-intensive home production /
-     mother employment / kin-boarder income / relief
-  [DIRECT_ASSOCIATIONAL + QUALITATIVE_TEMPORAL]
-→ change in parental role/time/resource contribution
-  [QUALITATIVE_TEMPORAL; p. 67 says parental-role change typically preceded child responsibility shift]
-→ child receives actual economic/domestic obligation
-  [DIRECT role reports]
-→ child repeatedly performs paid work or domestic labor
-  [DIRECT role reports]
-→ altered immediate relation/activity ecology
-     (own money, employer/nonfamily adults, less parental dependence,
-      or greater household embedding/restricted leisure)
-  [DIRECT_ASSOCIATIONAL + repeated/prospective child measures]
-→ measured developmental/social outcome
-     (for boys, gain in social independence is the best-supported case)
-  [PROSPECTIVE ASSOCIATIONAL; pp. 78–79]
-```
+1. **Pre-existing cohort.** The children were selected before Elder's Depression analysis, reducing outcome-driven recruitment.
+2. **Pre- and post-shock household information.** Income/status information around 1929 and 1933 permits measured economic change rather than retrospective hardship alone.
+3. **Repeated child measures.** Social/emotional questionnaires and staff observations allow some temporal tests, notably junior-high vs high-school independence.
+4. **Multiple informants/measurement modes.** Mother interview, child self-report, staff observation, judges, and later adult histories sometimes triangulate a mechanism.
+5. **Within-class deprived/nondeprived comparisons.** Elder attempts to separate relative economic loss from class origin.
+6. **Explicit mediation logic.** The analysis asks whether household adaptations account for portions of deprivation-outcome associations rather than treating correlation as mechanism.
+7. **Long follow-up.** Adult work, marriage, family and health trajectories can be related to childhood records.
 
-### Edge adjudication
+## Identification limits
 
-| Edge | Verdict | Source basis |
-|---|---|---|
-| Macro contraction → every household suffers | **REJECT** | Oakland families varied sharply in income loss/unemployment; the source's whole design depends on exposed vs less-exposed families (pp. 43–49). |
-| Structural downturn + father's position → job/income shock | **ADMIT WITH SELECTION** | Employment sector, self-employment, birthplace and work status condition loss; not random exposure (pp. 46–49, 61). |
-| Job/income shock → measured household deprivation | **ADMIT** | Income in 1929/1933 and unemployment histories support the relation (pp. 43–46). |
-| Deprivation → maintenance changes | **ADMIT AS MULTIPLE ROUTES** | Working mother, kin, boarders, relief, expenditure cuts/labor substitution (pp. 49–53, 62). |
-| Maintenance/parent role change → child obligation | **ADMIT, strongest linked-life edge** | Direct qualitative temporal statement plus role associations (pp. 67–70). |
-| Child obligation → actual child work | **ADMIT** | Mothers reported employment and domestic tasks; sex-typed pattern strongly measured (pp. 65–69). |
-| Paid work → boys' social independence | **ADMIT WITH NONRANDOM-SELECTION CEILING** | Future workers were not more independent in junior high; employed boys later show largest gains and employment accounts for deprivation association (pp. 77–79). Selection on industry/mastery remains possible (pp. 70, 75). |
-| Social independence → durable adult personality | **NOT ESTABLISHED** | Elder traces later careers and values, but this specific direct persistence edge is not cleanly identified. |
+### Nonrandom exposure and selection
 
-## Why "deprivation" is not a mechanism
+Economic loss/unemployment are socially patterned. Occupation, self-employment, birthplace, education and other pre-Depression conditions predict exposure. Even within deprivation groups, unmeasured family/parent characteristics may drive both adaptation and child outcomes.
 
-Elder's deprivation category is a measured household condition: a large relative income loss inside a class context. It is useful for comparison but it is not causally complete. The book repeatedly opens the category and finds:
+### Nonrepresentative cohort
 
-```text
-loss
-→ altered resources
-→ household strategy
-→ changed parent roles
-→ child obligations/activities
-→ relational and developmental consequences
-```
+Appendix B is explicit that the sample is a particular universe, not a probability sample. Residential permanence and willingness to participate are selection criteria. Generalization to Oakland, the United States, racialized populations, rural populations, the very poor, or other national crises is not identified.
 
-Rawlsing must preserve that opening. A single `DEPRIVATION_EXPOSURE` carrier that directly activates person development would destroy the source's main empirical contribution.
+### Race/religion/class boundary
 
-## Parent-response branch
+All sample children are white, overwhelmingly Protestant, and the lower class is sparsely represented. Elder himself says the study contributes little to crisis/adaptation among the lowest stratum (p. 106).
 
-A second well-supported branch runs:
+### Missing father data
 
-```text
-father unemployment / status loss
-→ reduced family contribution/status
-→ in some families: dissatisfaction / withdrawal / drinking /
-   altered marital power / conflict / reduced paternal warmth/control
-→ child relation to father/mother changes
-→ greater salience of mother and/or nonfamily adults/peers
-```
+Fathers were not interviewed. Mothers were rarely asked about husbands (Appendix B pp. 322–323). Claims about paternal interpretation, shame, withdrawal or emotional response often rely on children, qualitative records or external literature.
 
-This branch is **heterogeneous** and weaker in causal identification than the work-role chain. Fathers were not interviewed; their internal interpretation is largely unmeasured; some deprived homes remained father-dominant and emotionally stable (pp. 104–106).
+### Retrospective data
 
-## Extended trajectory chain
+Some childhood conditions—especially adult recollections of parental behavior/drinking—are retrospective. Elder explicitly calls the validity of retrospective drinking reports uncertain (p. 61). Adult retrospective Depression rationales are not substitutes for longitudinal evidence (p. 283).
 
-Elder further traces child/adolescent experience into adult education, work, marriage, parenthood and health (chs. 7–10). The extension is real but should be stored at lower confidence:
+### Single-item and archival measurement constraints
 
-```text
-child/adolescent role ecology
-→ orientation/skill/constraint
-→ transition opportunity and decision
-→ education/work/marriage sequence
-→ adult pathway
-```
+Appendix B pp. 326–329 notes missing measures, single-item indicators, ordinal measures, measurement error and adaptation of archival data collected for other purposes. Some theoretically central variables (duration/intensity of child work; child's perception of hardship; detailed family histories) were not measured.
 
-The adult endpoint cannot be attached directly to Depression exposure. WWII, military induction, the GI Bill, postwar labor markets, marriage partners, later status, and other adult situations intervene.
+### Study reactivity
 
-## Court answer A
+Oakland study members experienced repeated assessments, adult contact, special activities, etc. Appendix B p. 328 says without a control group their impact cannot be satisfactorily identified.
 
-**Strongest macro→person mechanism actually demonstrated:**
+### Temporal mismatch
 
-`historical contraction -> situated paternal work/income loss -> household resource shortfall -> household maintenance/parent-role reorganization -> child receives and performs a concrete economic/domestic role -> altered recurrent activity/authority/resource relations -> measured near-term developmental/social change`.
+Some linked measures are from different years. Example: maternal employment is measured in 1934 while child-role data are from 1936 (p. 69), attenuating or complicating mediation.
 
-For causal cleanliness, the best terminal outcome is **boys' gain in social independence through paid employment**, not an adult personality trait.
+### Reverse causality / reciprocal selection
 
-## Rawlsing consequence
+Elder explicitly identifies unresolved direction:
+- work may produce independence, but independent boys may be more likely to seek/obtain work (pp. 78–79);
+- industry may be an outcome of work or a selector into work (p. 75);
+- mastery/economic aspirations may lead to jobs and be reinforced by them (p. 70);
+- drinking can be both cause and consequence of unemployment (p. 61).
 
-D1 is strongly supported as the macro-to-actor qualification/realization seam, but it must never allow the macro event itself to stand in for realized household exposure. D2 is required once the chain contains persistent conditions, recurrent work, and role transitions. D3 is required only for genuinely reciprocal external updates, not to make every household feedback loop bidirectional by fiat.
+These are not defects to "repair" by choosing a direction. They are evidence ceilings.
+
+## Material nulls
+
+The following nulls are architecturally important:
+
+1. **No homogeneous family collapse.** Many deprived families were father-dominant and emotionally stable (p. 106).
+2. **No generalized deprivation effect on girls' independence.** Effects are small/contextual; working-class burden is the clearest restriction (pp. 77–80).
+3. **No broad popularity penalty from child work/deprivation.** Staff observations do not support severe social exclusion (p. 78).
+4. **No simple class-only explanation of child tasks.** Deprivation/household need and family size are stronger proximate organizers of role allocation (pp. 65–70).
+5. **No proof that household task experience automatically produces durable adult values.** Elder calls some adult financial evidence fragile and says duration/demand of tasks were not directly measured (pp. 74–76).
+6. **No uniform adult pathology.** Deprivation's health association differs by class and adult situation; some middle-class deprived adults fare comparatively well (chs. 9–10).
+7. **No stable event-to-outcome meaning across cohorts.** Age at Depression exposure changes the process (pp. 15–16, 106–107, 271–275).
+8. **No simple persistence law.** Continuity of values/behavior is stronger where adult situations make childhood lessons relevant (pp. 277–282).
+
+## Historical specificity
+
+The Oakland children reached adolescence as the economy recovered and adulthood during WWII/postwar expansion. This matters causally. Their later opportunities cannot be treated as if they were generic consequences of childhood deprivation.
+
+Appendix C further warns that the same nominal economic indicator (e.g. unemployment) can have different social meaning in different sociohistorical contexts.
+
+## Evidence ceiling to Rawlsing
+
+Rawlsing may encode:
+- measured relations and transitions;
+- source-qualified mechanism hypotheses;
+- heterogeneous/null pathways;
+- temporal order when supported;
+- reciprocal ambiguity;
+- provenance and boundary conditions.
+
+Rawlsing may **not** upgrade this source into:
+- population-general causal effects;
+- racial/gender psychological priors;
+- deterministic adversity/resilience rules;
+- direct Depression→personality edges;
+- father internal-state facts absent direct evidence;
+- a causal turning point merely because an event is historically dramatic.
+
+## Terminal identification verdict
+
+`PASS_WITH_STRICT_CAUSAL_CEILINGS__LONGITUDINAL_MECHANISM_SOURCE_NOT_EXPERIMENTAL_CAUSAL_AUTHORITY`
