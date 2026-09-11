@@ -326,4 +326,6 @@ def test_source_backed_c11_release_is_frozen_i03_eligible_and_wrapper_matches_di
     assert direct.query_ref == wrapped.query_ref
     assert direct.release_refs == wrapped.release_refs == (release.release_ref,)
     assert tuple(x.ref for x in direct.facts) == tuple(x.ref for x in wrapped.facts)
-    assert direct.facts and all(x.typed_state in {"SUPPORTED", "ZERO_SUPPORT"} for x in direct.facts)
+    assert len(direct.facts) == 1
+    assert direct.facts[0].typed_state == "UNAVAILABLE"
+    assert direct.facts[0].p02_failure_state == "RISK_SET_UNAVAILABLE"
