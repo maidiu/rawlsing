@@ -2,8 +2,10 @@
 """Bounded D1' hosting, reverse-dependency, invalidation, and replay adapter.
 
 This module does not define mechanism rules, decide rule authority, or write a
-world.  It hosts exact references supplied by upstream owners and orchestrates
-only direct derivation lineage plus determinant-scoped redrive.
+world. It hosts exact references supplied by upstream owners and orchestrates
+only direct derivation lineage plus determinant-scoped redrive. Any current
+rule consequence is admitted only through the frozen R1 rule-authority binding
+contract; R2 never infers, selects, or mints rule authority.
 """
 from __future__ import annotations
 
@@ -13,8 +15,17 @@ import re
 from typing import Callable, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.sdtf_r4_mechanism_rule_authority_binding import (
+    MechanismRuleAuthorityBinding,
+    MechanismRuleIdentity,
+    R4MechanismRuleAuthorityBindingError,
+    require_current_rule_admission,
+)
 
-CONTRACT_ID = "SDTF_R4_D1_HOSTING_REPLAY_R1@1.0.0"
+CONTRACT_ID = "SDTF_R4_D1_HOSTING_REPLAY_R1@2.0.0"
+CURRENT_RULE_ADMISSION_CONSERVATION_CONTRACT_ID = (
+    "SDTF_R4_R2_CURRENT_RULE_ADMISSION_CONSERVATION_R1@1.0.0"
+)
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -94,7 +105,7 @@ class D1FactPointer:
 
 @dataclass(frozen=True, order=True)
 class D1RuleApplicationRef:
-    """Exact rule-application identity; authority/currentness is decided upstream."""
+    """Exact rule-application descriptor; R1 alone proves rule currentness."""
 
     rule_application_id: str
     rule_id: str
@@ -105,10 +116,15 @@ class D1RuleApplicationRef:
         for field in ("rule_application_id", "rule_id", "rule_version"):
             object.__setattr__(self, field, _text(getattr(self, field), field))
         object.__setattr__(self, "rule_hash", _hash(self.rule_hash, "rule_hash"))
+        try:
+            MechanismRuleIdentity(self.rule_id, self.rule_version, self.rule_hash)
+        except R4MechanismRuleAuthorityBindingError as exc:
+            raise D1HostingIntegrityError("rule application must carry an exact lawful R1 rule identity") from exc
 
-    def semantic_projection(self) -> dict[str, str]:
+    def semantic_projection(self) -> dict[str, object]:
         return {
             "contract_id": CONTRACT_ID,
+            "admission_conservation_contract_id": CURRENT_RULE_ADMISSION_CONSERVATION_CONTRACT_ID,
             "rule_application_id": self.rule_application_id,
             "rule_id": self.rule_id,
             "rule_version": self.rule_version,
@@ -118,12 +134,12 @@ class D1RuleApplicationRef:
 
     @property
     def mechanism_rule_ref(self) -> ExactRef:
-        """Exact private record identity for the already-authorized mechanism rule."""
-        return ExactRef(
-            kind="MECHANISM_RULE_RECORD",
-            object_id=f"{self.rule_id}@{self.rule_version}",
-            content_hash=self.rule_hash,
-        )
+        """The exact canonical R1 mechanism-rule identity; no R2 re-kind is permitted."""
+        return MechanismRuleIdentity(
+            self.rule_id,
+            self.rule_version,
+            self.rule_hash,
+        ).ref
 
     @property
     def exact_ref(self) -> ExactRef:
@@ -180,19 +196,43 @@ class D1ApplicationRevision:
     status: str
     prior_revision_ref: ExactRef | None
     trigger_refs: tuple[ExactRef, ...]
+    rule_authority_binding_ref: ExactRef | None
+    current_rule_admission_ref: ExactRef | None
 
     def __post_init__(self) -> None:
         if self.status not in {"SUPPORTED_CURRENT", "CLOSED_UNSUPPORTED"}:
             raise D1HostingIntegrityError("application revision status invalid")
-        if self.status == "SUPPORTED_CURRENT" and self.output_fact is None:
-            raise D1HostingIntegrityError("supported revision requires output_fact")
+        for name in ("rule_authority_binding_ref", "current_rule_admission_ref"):
+            value = getattr(self, name)
+            if value is not None and not isinstance(value, ExactRef):
+                raise D1HostingIntegrityError(f"{name} must be ExactRef or None")
+        if self.status == "SUPPORTED_CURRENT":
+            if self.output_fact is None:
+                raise D1HostingIntegrityError("supported revision requires output_fact")
+            if self.current_rule_admission_ref is None:
+                raise D1HostingIntegrityError(
+                    "SUPPORTED_CURRENT revision requires exact R1 current-rule admission proof"
+                )
+            if self.rule_authority_binding_ref != self.current_rule_admission_ref:
+                raise D1HostingIntegrityError(
+                    "current rule admission must conserve the exact R1 authority-binding identity"
+                )
         if self.status == "CLOSED_UNSUPPORTED" and self.output_fact is not None:
             raise D1HostingIntegrityError("closed revision may not carry an opposite output")
+        if (
+            self.current_rule_admission_ref is not None
+            and self.rule_authority_binding_ref != self.current_rule_admission_ref
+        ):
+            raise D1HostingIntegrityError(
+                "current rule admission ref cannot diverge from consumed R1 authority binding"
+            )
 
     def semantic_projection(self) -> dict[str, object]:
         return {
             "contract_id": CONTRACT_ID,
+            "admission_conservation_contract_id": CURRENT_RULE_ADMISSION_CONSERVATION_CONTRACT_ID,
             "application_ref": self.application.exact_ref.as_dict(),
+            "mechanism_rule_ref": self.application.mechanism_rule_ref.as_dict(),
             "rule_application_id": self.application.rule_application_id,
             "rule_version": self.application.rule_version,
             "determinant_facts": [fact.as_dict() for fact in self.determinant_facts],
@@ -203,6 +243,16 @@ class D1ApplicationRevision:
                 None if self.prior_revision_ref is None else self.prior_revision_ref.as_dict()
             ),
             "trigger_refs": [ref.as_dict() for ref in self.trigger_refs],
+            "rule_authority_binding_ref": (
+                None
+                if self.rule_authority_binding_ref is None
+                else self.rule_authority_binding_ref.as_dict()
+            ),
+            "current_rule_admission_ref": (
+                None
+                if self.current_rule_admission_ref is None
+                else self.current_rule_admission_ref.as_dict()
+            ),
         }
 
     @property
@@ -222,6 +272,8 @@ class D1ReplayStep:
     after_revision_ref: ExactRef
     disposition: str
     changed_output_refs: tuple[ExactRef, ...]
+    rule_authority_binding_ref: ExactRef | None
+    current_rule_admission_ref: ExactRef | None
 
     def as_dict(self) -> dict[str, object]:
         return {
@@ -230,6 +282,16 @@ class D1ReplayStep:
             "after_revision_ref": self.after_revision_ref.as_dict(),
             "disposition": self.disposition,
             "changed_output_refs": [ref.as_dict() for ref in self.changed_output_refs],
+            "rule_authority_binding_ref": (
+                None
+                if self.rule_authority_binding_ref is None
+                else self.rule_authority_binding_ref.as_dict()
+            ),
+            "current_rule_admission_ref": (
+                None
+                if self.current_rule_admission_ref is None
+                else self.current_rule_admission_ref.as_dict()
+            ),
         }
 
 
@@ -245,6 +307,7 @@ class D1ReplayReceipt:
     def semantic_projection(self) -> dict[str, object]:
         return {
             "contract_id": CONTRACT_ID,
+            "admission_conservation_contract_id": CURRENT_RULE_ADMISSION_CONSERVATION_CONTRACT_ID,
             "trigger_refs": [ref.as_dict() for ref in self.trigger_refs],
             "before_current_output_refs": [ref.as_dict() for ref in self.before_current_output_refs],
             "after_current_output_refs": [ref.as_dict() for ref in self.after_current_output_refs],
@@ -266,19 +329,46 @@ class D1ReplayReceipt:
 
 
 Evaluator = Callable[[D1RuleApplicationRef, D1ApplicationRevision], D1Evaluation]
+RuleAdmissionResolver = Callable[
+    [D1RuleApplicationRef, D1ApplicationRevision],
+    MechanismRuleAuthorityBinding | None,
+]
+
+
+def _require_exact_current_rule_admission(
+    application: D1RuleApplicationRef,
+    binding: MechanismRuleAuthorityBinding | None,
+) -> MechanismRuleAuthorityBinding:
+    if not isinstance(binding, MechanismRuleAuthorityBinding):
+        raise D1HostingIntegrityError(
+            "exact R1 MechanismRuleAuthorityBinding current-rule admission is required"
+        )
+    try:
+        admitted = require_current_rule_admission(binding)
+    except R4MechanismRuleAuthorityBindingError as exc:
+        raise D1HostingIntegrityError(
+            "exact R1 current-rule admission failed closed"
+        ) from exc
+    if admitted.rule_identity.ref != application.mechanism_rule_ref:
+        raise D1HostingIntegrityError(
+            "R1 admitted rule identity does not exactly match R2 rule application identity"
+        )
+    return admitted
 
 
 class D1HostingAdapter:
     """Append-only exact-ref adapter with logical-current indexes and reverse edges.
 
     This is deliberately not a database or a V558 replacement: semantic bodies stay
-    with their competent existing owners/CAS.  The adapter keeps only exact refs,
-    immutable derivation revisions, logical-current pointers, and reverse indexes.
+    with their competent existing owners/CAS. The adapter keeps only exact refs,
+    immutable derivation revisions, logical-current pointers, reverse indexes, and
+    the exact R1 rule-authority binding identities consumed at the admission seam.
     """
 
     def __init__(self) -> None:
         self._fact_context: dict[str, D1Context] = {}
         self._mechanism_rule_refs: dict[str, ExactRef] = {}
+        self._rule_authority_binding_refs: dict[str, ExactRef] = {}
         self._evidence_witness_refs: dict[str, ExactRef] = {}
         self._fact_pointer: dict[str, D1FactPointer] = {}
         self._application_by_key: dict[str, D1RuleApplicationRef] = {}
@@ -306,6 +396,12 @@ class D1HostingAdapter:
 
     def hosted_mechanism_rule_refs(self) -> tuple[ExactRef, ...]:
         return tuple(self._mechanism_rule_refs[key] for key in sorted(self._mechanism_rule_refs))
+
+    def hosted_rule_authority_binding_refs(self) -> tuple[ExactRef, ...]:
+        return tuple(
+            self._rule_authority_binding_refs[key]
+            for key in sorted(self._rule_authority_binding_refs)
+        )
 
     def hosted_evidence_witness_refs(self) -> tuple[ExactRef, ...]:
         return tuple(self._evidence_witness_refs[key] for key in sorted(self._evidence_witness_refs))
@@ -416,6 +512,11 @@ class D1HostingAdapter:
                 raise D1HostingIntegrityError("exact consequence fact cannot have two producer applications")
             self._producer_revision_by_fact[revision.output_fact.fact_ref.key] = revision
 
+    def _record_admission(self, binding: MechanismRuleAuthorityBinding) -> None:
+        rule_ref = binding.rule_identity.ref
+        self._mechanism_rule_refs[rule_ref.key] = rule_ref
+        self._rule_authority_binding_refs[binding.ref.key] = binding.ref
+
     def host_direct_derivation(
         self,
         application: D1RuleApplicationRef,
@@ -423,9 +524,11 @@ class D1HostingAdapter:
         determinant_facts: Sequence[D1FactPointer],
         output_fact: D1FactPointer,
         evidence_witness_refs: Sequence[ExactRef] = (),
+        rule_admission: MechanismRuleAuthorityBinding | None = None,
     ) -> D1ApplicationRevision:
         if not isinstance(application, D1RuleApplicationRef):
             raise D1HostingIntegrityError("host_direct_derivation requires exact application")
+        admitted = _require_exact_current_rule_admission(application, rule_admission)
         if application.key in self._current_revision:
             raise D1HostingIntegrityError("rule application already hosted; use determinant-scoped redrive")
         determinants = tuple(determinant_facts)
@@ -443,7 +546,7 @@ class D1HostingAdapter:
             application, evaluation.determinant_facts, output_fact
         )
         self._application_by_key[application.key] = application
-        self._mechanism_rule_refs[application.mechanism_rule_ref.key] = application.mechanism_rule_ref
+        self._record_admission(admitted)
         for witness_ref in evaluation.evidence_witness_refs:
             self._evidence_witness_refs[witness_ref.key] = witness_ref
         revision = D1ApplicationRevision(
@@ -454,6 +557,8 @@ class D1HostingAdapter:
             status="SUPPORTED_CURRENT",
             prior_revision_ref=None,
             trigger_refs=(),
+            rule_authority_binding_ref=admitted.ref,
+            current_rule_admission_ref=admitted.ref,
         )
         self._replace_current_reverse_edges(application.key, (), revision.determinant_facts)
         self._append_revision(revision)
@@ -503,14 +608,16 @@ class D1HostingAdapter:
         before: D1ApplicationRevision,
         evaluation: D1Evaluation,
         trigger_refs: tuple[ExactRef, ...],
+        admitted: MechanismRuleAuthorityBinding,
     ) -> tuple[D1ApplicationRevision, str, tuple[ExactRef, ...]]:
+        admitted = _require_exact_current_rule_admission(application, admitted)
         self._host_many(evaluation.determinant_facts)
         if evaluation.output_fact is not None:
             self.host_fact(evaluation.output_fact)
             self._assert_no_same_context_self_ancestry(
                 application, evaluation.determinant_facts, evaluation.output_fact
             )
-        self._mechanism_rule_refs[application.mechanism_rule_ref.key] = application.mechanism_rule_ref
+        self._record_admission(admitted)
         for witness_ref in evaluation.evidence_witness_refs:
             self._evidence_witness_refs[witness_ref.key] = witness_ref
         after = D1ApplicationRevision(
@@ -521,12 +628,16 @@ class D1HostingAdapter:
             status="SUPPORTED_CURRENT" if evaluation.supported else "CLOSED_UNSUPPORTED",
             prior_revision_ref=before.exact_ref,
             trigger_refs=trigger_refs,
+            rule_authority_binding_ref=admitted.ref,
+            current_rule_admission_ref=admitted.ref,
         )
         same_semantics = (
             before.status == after.status
             and before.determinant_facts == after.determinant_facts
             and before.output_fact == after.output_fact
             and before.evidence_witness_refs == after.evidence_witness_refs
+            and before.rule_authority_binding_ref == after.rule_authority_binding_ref
+            and before.current_rule_admission_ref == after.current_rule_admission_ref
         )
         if same_semantics:
             return before, "UNCHANGED", ()
@@ -547,16 +658,64 @@ class D1HostingAdapter:
         )
         return after, disposition, changed
 
+    def _close_for_rule_admission_failure(
+        self,
+        application: D1RuleApplicationRef,
+        before: D1ApplicationRevision,
+        trigger_refs: tuple[ExactRef, ...],
+        supplied_binding: MechanismRuleAuthorityBinding | None,
+        disposition: str,
+    ) -> tuple[D1ApplicationRevision, str, tuple[ExactRef, ...]]:
+        binding_ref = (
+            supplied_binding.ref
+            if isinstance(supplied_binding, MechanismRuleAuthorityBinding)
+            else None
+        )
+        if isinstance(supplied_binding, MechanismRuleAuthorityBinding):
+            self._rule_authority_binding_refs[binding_ref.key] = binding_ref
+        after = D1ApplicationRevision(
+            application=application,
+            determinant_facts=before.determinant_facts,
+            output_fact=None,
+            evidence_witness_refs=before.evidence_witness_refs,
+            status="CLOSED_UNSUPPORTED",
+            prior_revision_ref=before.exact_ref,
+            trigger_refs=trigger_refs,
+            rule_authority_binding_ref=binding_ref,
+            current_rule_admission_ref=None,
+        )
+        same_semantics = (
+            before.status == after.status
+            and before.determinant_facts == after.determinant_facts
+            and before.output_fact == after.output_fact
+            and before.evidence_witness_refs == after.evidence_witness_refs
+            and before.rule_authority_binding_ref == after.rule_authority_binding_ref
+            and before.current_rule_admission_ref is None
+        )
+        if same_semantics:
+            return before, "UNCHANGED", ()
+        changed = self._changed_output_refs(before, after)
+        self._replace_current_reverse_edges(
+            application.key, before.determinant_facts, after.determinant_facts
+        )
+        if before.output_fact is not None:
+            self._current_derived_outputs.discard(before.output_fact.fact_ref.key)
+        self._append_revision(after)
+        return after, disposition, changed
+
     def redrive(
         self,
         changed_determinant_refs: Sequence[ExactRef],
         evaluator: Evaluator,
+        rule_admission_resolver: RuleAdmissionResolver | None = None,
     ) -> D1ReplayReceipt:
         triggers = _unique_refs(changed_determinant_refs, "changed_determinant_refs")
         if not triggers:
             raise D1HostingIntegrityError("redrive requires at least one changed determinant ref")
         if not callable(evaluator):
             raise D1HostingIntegrityError("redrive evaluator must be callable")
+        if rule_admission_resolver is not None and not callable(rule_admission_resolver):
+            raise D1HostingIntegrityError("rule_admission_resolver must be callable or None")
 
         before_outputs = self.current_output_refs()
         pending: list[tuple[int, str, str]] = []
@@ -599,12 +758,37 @@ class D1HostingAdapter:
                     (determinant.fact_ref.key, application.exact_ref.key, before_output_key)
                 )
 
-            evaluation = evaluator(application, before)
-            if not isinstance(evaluation, D1Evaluation):
-                raise D1HostingIntegrityError("evaluator must return D1Evaluation")
-            after, disposition, changed_outputs = self._apply_evaluation(
-                application, before, evaluation, step_triggers
+            supplied_binding = (
+                None
+                if rule_admission_resolver is None
+                else rule_admission_resolver(application, before)
             )
+            try:
+                admitted = _require_exact_current_rule_admission(application, supplied_binding)
+            except D1HostingIntegrityError as exc:
+                mismatch = (
+                    isinstance(supplied_binding, MechanismRuleAuthorityBinding)
+                    and supplied_binding.rule_identity.ref != application.mechanism_rule_ref
+                )
+                disposition = (
+                    "CLOSED_RULE_ADMISSION_IDENTITY_MISMATCH"
+                    if mismatch
+                    else "CLOSED_RULE_NOT_CURRENT_OR_UNADMITTED"
+                )
+                after, disposition, changed_outputs = self._close_for_rule_admission_failure(
+                    application,
+                    before,
+                    step_triggers,
+                    supplied_binding,
+                    disposition,
+                )
+            else:
+                evaluation = evaluator(application, before)
+                if not isinstance(evaluation, D1Evaluation):
+                    raise D1HostingIntegrityError("evaluator must return D1Evaluation")
+                after, disposition, changed_outputs = self._apply_evaluation(
+                    application, before, evaluation, step_triggers, admitted
+                )
             steps.append(
                 D1ReplayStep(
                     application_ref=application.exact_ref,
@@ -612,6 +796,8 @@ class D1HostingAdapter:
                     after_revision_ref=after.exact_ref,
                     disposition=disposition,
                     changed_output_refs=changed_outputs,
+                    rule_authority_binding_ref=after.rule_authority_binding_ref,
+                    current_rule_admission_ref=after.current_rule_admission_ref,
                 )
             )
             for changed_ref in changed_outputs:
@@ -620,6 +806,7 @@ class D1HostingAdapter:
         after_outputs = self.current_output_refs()
         receipt_material = {
             "contract_id": CONTRACT_ID,
+            "admission_conservation_contract_id": CURRENT_RULE_ADMISSION_CONSERVATION_CONTRACT_ID,
             "trigger_refs": [ref.as_dict() for ref in triggers],
             "before_current_output_refs": [ref.as_dict() for ref in before_outputs],
             "after_current_output_refs": [ref.as_dict() for ref in after_outputs],
@@ -640,6 +827,7 @@ class D1HostingAdapter:
 
 __all__ = [
     "CONTRACT_ID",
+    "CURRENT_RULE_ADMISSION_CONSERVATION_CONTRACT_ID",
     "D1HostingIntegrityError",
     "D1ReplayParityError",
     "D1Context",
@@ -649,5 +837,7 @@ __all__ = [
     "D1ApplicationRevision",
     "D1ReplayStep",
     "D1ReplayReceipt",
+    "Evaluator",
+    "RuleAdmissionResolver",
     "D1HostingAdapter",
 ]
