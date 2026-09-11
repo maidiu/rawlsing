@@ -1,0 +1,172 @@
+{
+  "schema": "SDTF_R4_G1_G6_EXACT_REUSE_IDENTITIES_R1",
+  "commission_sha": "8ecf78abff012553e3de78852690495a2b889f0d",
+  "hq_semantic_adoption": {
+    "commit": "0fad59785b94cd9c0fe9e04863736dbb75b411eb",
+    "artifact_blob": "6193367a97f99a2eb231497a50d7662e31bb6ba7",
+    "companion_blob": "4e77479afa3cce4cce7e38168f7ee9c6bf021cd0",
+    "semantic_baseline": "8ad68cd5731db6a4c4c75f5cc1bddbf95018f882"
+  },
+  "reusable": [
+    {
+      "id": "PRE553_EXACT_AUTHORITY_REGISTRY",
+      "families": ["G1", "G6"],
+      "path": "rawlsing_next/pre553_empirical_authority.py",
+      "blob": "c824bcf17257c0318e86497fc12ee31101bb6daf",
+      "reuse": "exact positive authority registration/resolution and fail-closed authority presence"
+    },
+    {
+      "id": "PRE553_CONTENT_ADDRESSED_EMPIRICAL_OBJECTS",
+      "families": ["G1", "G2", "G6"],
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "reuse": "immutable exact refs, authority refs, dependency refs, replay refs and content-addressed object identities"
+    },
+    {
+      "id": "GT34_D08_AUTHORITY_CURRENTNESS_PATTERN",
+      "families": ["G1"],
+      "path": "rawlsing_next/gt34_d08_empirical_predicate_grammar_authority.py",
+      "blob": "4b162386c3c473b4ae0a4bf61de21e7cd62672ed",
+      "reuse": "candidate-not-current separation, exact authority tuple and explicit HQ adoption/current-selection evidence"
+    },
+    {
+      "id": "GT12_PERMISSION_TRANSLATION_BINDING",
+      "families": ["G1", "G6"],
+      "path": "rawlsing_next/gt12_permission_translation_authority.py",
+      "blob": "2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6",
+      "reuse": "exact adoption receipt, upstream rule/current-selection binding and permission narrowing"
+    },
+    {
+      "id": "M4_V557_V558_IMMUTABLE_REPOSITORY",
+      "families": ["G2", "G5", "G6"],
+      "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "reuse": "content-addressed hosting, governance refs, exact locators, reference edges, dependency closure, permission ceilings, logical indexes and context-resolution receipts"
+    },
+    {
+      "id": "PRE553_REPLAY_AUDIT",
+      "families": ["G2"],
+      "path": "rawlsing_next/pre553_replay_audit.py",
+      "blob": "86e0b9c518633735f2527b89fb72fca1a40dc2cc",
+      "reuse": "deterministic recomputation and exact digest/trace parity checking"
+    },
+    {
+      "id": "PRE553_C11_REPOSITORY",
+      "families": ["G2"],
+      "path": "rawlsing_next/pre553_c11_repository.py",
+      "blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "reuse": "canonical content-addressed persistence and reload-integrity pattern"
+    },
+    {
+      "id": "M1_TEMPORAL_V554_ADMISSION",
+      "families": ["G2", "G3"],
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "reuse": "exact rule/time/source/authority fingerprints, temporal completeness and fail-closed temporal states"
+    },
+    {
+      "id": "OBL060_WITNESS_INDEPENDENCE_CANDIDATE_R2",
+      "families": ["G3"],
+      "path": "rawlsing_next/v3_contact_witness_independence_source_authority_candidate_r2.py",
+      "blob": "7f5901639107abf2ca40142f76b8fecb44b4c755",
+      "supporting_schema_path": "rawlsing_next/v3_contact_witness_independence_source_authority_candidate_r1.py",
+      "supporting_schema_blob": "1d01a35347950688dbff5913d10614928e72a764",
+      "reuse": "type-specific source-owner witness separation, exact occurrence binding, validity window and stale-witness rejection",
+      "ceiling": "candidate-only/noncurrent; pattern reuse only"
+    },
+    {
+      "id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS",
+      "families": ["G4"],
+      "path": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+      "blob": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+      "reuse": "typed actor-independent relation transport with exact authority/source/provenance/permission checks"
+    },
+    {
+      "id": "WSC_GT0_CONSERVATION_PROTOCOL",
+      "families": ["G4", "G5"],
+      "path": "rawlsing_next/wsc_gt0_protocol.py",
+      "blob": "243630dcbcb64f0c717c46d3a4303320e70e515a",
+      "v3_runtime_path": "rawlsing_next/wsc_gt0_v3_runtime.py",
+      "v3_runtime_blob": "6c0494def59fc683241d8bff45bcbd68a25a7f3d",
+      "reuse": "producer/authority/current-selection/dependency/replay conservation and fail-closed permission narrowing across seams"
+    },
+    {
+      "id": "CAN008_R2_ADOPTED_RESPONSE_BOUNDARY",
+      "families": ["G5"],
+      "semantic_blob": "b80dd6925066510ecbbfec7b427bf9f688475663",
+      "hq_adoption_commit": "379e259c71c6e36d22a957f94e81afb83f582462",
+      "fresh_hostile_qualification_commit": "79829a2fe5ae6579c92cf4be4aab4a71b05bdc62",
+      "reuse": "immediate actor response/metabolism boundary with occurrence gate and target-owner sovereignty",
+      "ceiling": "not an objective world-history writer"
+    },
+    {
+      "id": "OBL061_WORLD_CONTEXT_OPPORTUNITY_BOUNDARY",
+      "families": ["G5"],
+      "a3_worker_return": "e72f1d897812bfe726f1cd008327250104c968be",
+      "hq_disposition_blob": "1b7cdf978296eb6b236c49a4001ccecafd802509",
+      "reuse": "explicit world/context/time/opportunity identity requirements and no hidden wall-clock/world-by-label substitution",
+      "current_blocker": "NO_PROJECT_CURRENT_EXACT_CONTEXT_OR_WORLD_RECEIPT_FOR_FIRST_CANARY"
+    },
+    {
+      "id": "OBL063_BOUNDED_EMPIRICAL_RUNTIME",
+      "families": ["G6"],
+      "path": "rawlsing_next/bounded_empirical_runtime.py",
+      "blob": "5677751c36a8cd15daa7679232126a4ab69bdd89",
+      "reuse": "typed evidence tiers, claim ceilings, exact source refs, relation-authorized fallback, no missing-as-zero and no implicit coefficient reallocation",
+      "ceiling": "generic executable DriverPolicy shape is not production semantic policy authority"
+    },
+    {
+      "id": "PRE553_SOURCE_LOCAL_UNIVERSE_ADMISSION",
+      "families": ["G6"],
+      "path": "rawlsing_next/pre553_source_local_universe_admission.py",
+      "blob": "b968fa16c6620cd06b191ebdb5da7da86f524393",
+      "reuse": "exact source/respondent/replay authority with explicit population/weight/pooling/backfill negative ceilings"
+    },
+    {
+      "id": "FIELD_FORGE_CONDITIONAL_SUPPORT",
+      "families": ["G6"],
+      "path": "rawlsing_next/field_forge_conditional_support.py",
+      "blob": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "reuse": "exact empirical query/fact/authority/replay/provenance closure while refusing causal/metric promotion"
+    }
+  ],
+  "explicit_do_not_reuse_as": [
+    {
+      "identity": "CAN008_R2_ADOPTED_RESPONSE_BOUNDARY",
+      "for_role": "G5_OBJECTIVE_WORLD_HISTORY_WRITER",
+      "reason": "private/current actor-response semantics cannot directly author objective social history"
+    },
+    {
+      "identity": "rawlsing_next/v3_adp010_oee_executor_obl055_acceptance_bound.py@fa169dbb525475c17b2495a5b35aa300aa809881",
+      "for_role": "G4_GENERIC_NON_EVENT_V3_INGRESS",
+      "reason": "event laundering is forbidden; lawful non-event conditions/relations/recurrent activities may not be converted into OEE/encounter tokens"
+    },
+    {
+      "identity": "rawlsing_next/bounded_empirical_runtime.py@5677751c36a8cd15daa7679232126a4ab69bdd89:DriverPolicy",
+      "for_role": "G6_PRODUCTION_POLICY_OR_CALIBRATION_AUTHORITY",
+      "reason": "HQ accepted REAL_DRIVER_VECTOR_CONSUMER_POLICY_AUTHORITY_ABSENT; executable defaults are not semantic authority"
+    }
+  ],
+  "external_dependencies": [
+    {
+      "family": "G4",
+      "owner": "OBL062",
+      "state": "OPEN__NOT_CLOSED_BY_R4_ADOPTION_OR_THIS_AUDIT",
+      "authority_evidence": "0fad59785b94cd9c0fe9e04863736dbb75b411eb"
+    },
+    {
+      "family": "G5",
+      "owner": "OBL061/V558 world-context-time owners plus competent external world/source owners",
+      "state": "A3_BLOCKED_AT_COMMISSION_STATE",
+      "blocker": "NO_PROJECT_CURRENT_EXACT_CONTEXT_OR_WORLD_RECEIPT_FOR_FIRST_CANARY",
+      "hq_disposition_blob": "1b7cdf978296eb6b236c49a4001ccecafd802509"
+    },
+    {
+      "family": "G6_ANALOGOUS_TERMINAL_POLICY_BOUNDARY",
+      "owner": "OBL063 terminal driver/vector policy authority",
+      "state": "OPEN_BLOCKED",
+      "blocker": "REAL_DRIVER_VECTOR_CONSUMER_POLICY_AUTHORITY_ABSENT",
+      "hq_disposition_blob": "7ed318864f61863f6010617a73e503f3bd4a2fa5"
+    }
+  ]
+}
