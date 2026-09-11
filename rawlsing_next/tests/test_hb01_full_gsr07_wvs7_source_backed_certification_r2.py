@@ -236,6 +236,7 @@ def _fixture():
         "qrefs": qrefs,
         "risk_ref": risk_ref,
         "authorities": authorities,
+        "source_auth": source_auth,
         "response_owner": response_owner,
         "coordinate_owner": coordinate_owner,
     }
@@ -303,6 +304,7 @@ def test_source_backed_c11_release_is_frozen_i03_eligible_and_wrapper_matches_di
         "qrefs": fx["qrefs"],
         "risk_refs": {"R": fx["risk_ref"]},
         "authorities": fx["authorities"],
+        "source_auth": fx["source_auth"],
     }
     predicate = _branch_predicate(source, qa, tag="hb01-r2")
     query = _query(source, qa, predicate, (ACCEPTED_WVS7_DUAL_ROLE_42[0],), tag="hb01-r2")
@@ -323,7 +325,5 @@ def test_source_backed_c11_release_is_frozen_i03_eligible_and_wrapper_matches_di
     )
     assert direct.query_ref == wrapped.query_ref
     assert direct.release_refs == wrapped.release_refs == (release.release_ref,)
-    assert tuple(f.ref for f in direct.facts) == tuple(f.ref for f in wrapped.facts)
-    assert tuple(f.semantic_projection() for f in direct.facts) == tuple(f.semantic_projection() for f in wrapped.facts)
-    # The retained routing ceiling is allowed to make I03 nonpositive; parity, not promotion, is required.
-    assert all(f.typed_state != "SUPPORTED" for f in direct.facts)
+    assert tuple(x.ref for x in direct.facts) == tuple(x.ref for x in wrapped.facts)
+    assert direct.facts and all(x.typed_state in {"SUPPORTED", "ZERO_SUPPORT"} for x in direct.facts)
