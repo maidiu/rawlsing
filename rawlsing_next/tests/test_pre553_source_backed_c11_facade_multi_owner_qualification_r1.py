@@ -11,13 +11,14 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
     RESPONSE_OWNER_FAMILY,
     WEIGHT_OWNER_FAMILY,
     GovernedC11Projection,
+    PhysicalSlot,
     PhysicalSlotOwnerAuthorization,
     PhysicalSlotOwnerSet,
     SourceBackedC11FacadeError,
+    WeightSlotRule,
     build_validated_source_backed_c11_release_from_stream,
 )
 from rawlsing_next.tests.test_pre553_empirical_query import _auth, _h, _ref
-from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture as _facade_fixture
 from rawlsing_next.tests.test_pre553_source_backed_c11_facade_multi_owner_r1 import _fixture as _multi_owner_fixture
 
 
@@ -64,6 +65,51 @@ def _deny_snapshot(tag: str, *, family: str) -> AuthoritySnapshot:
     )
 
 
+def _projection_with_weight_owner(owner_ref, *, owner_snapshot):
+    fx = _multi_owner_fixture(dual_owner=True, explicit_owner_set=True)
+    projection = fx["projection"]
+    slot = PhysicalSlot(1, "X")
+    weight_auth = _auth(
+        "qual-weight-semantic",
+        "WEIGHT_DESIGN_ESTIMAND",
+        families=(WEIGHT_OWNER_FAMILY,),
+    )
+    weight_slot = WeightSlotRule(
+        slot,
+        "W",
+        _ref("WEIGHT_SOURCE", "qual-weight-W"),
+        weight_auth.authority_ref,
+        weight_auth.authority_ref,
+        _ref("SCOPE", "qual-weight-W"),
+        copy_observed_numeric=True,
+    )
+    base_owner = projection.slot_owner_sets[0]
+    owner_set = PhysicalSlotOwnerSet(
+        slot,
+        (
+            *base_owner.owners,
+            PhysicalSlotOwnerAuthorization(WEIGHT_OWNER_FAMILY, (owner_ref,)),
+        ),
+    )
+    snapshots = projection.authority_snapshots + tuple(
+        snapshot
+        for snapshot in (weight_auth, owner_snapshot)
+        if snapshot.authority_ref not in {x.authority_ref for x in projection.authority_snapshots}
+    )
+    required = projection.required_authority_refs + tuple(
+        ref
+        for ref in (weight_auth.authority_ref, owner_snapshot.authority_ref)
+        if ref not in set(projection.required_authority_refs)
+    )
+    return replace(
+        projection,
+        weight_slots=(weight_slot,),
+        authority_snapshots=snapshots,
+        required_authority_refs=required,
+        slot_owner_sets=(owner_set,),
+    )
+
+
 def test_control_exact_dual_owner_with_family_scoped_authorities_closes_deterministically():
     fx = _multi_owner_fixture(dual_owner=True, explicit_owner_set=True)
     first = build_validated_source_backed_c11_release_from_stream(fx["stream"], fx["projection"])
@@ -102,33 +148,27 @@ def test_reciprocal_response_authority_as_coordinate_owner_fails_closed():
 
 
 def test_weight_owner_family_is_independently_validated_without_weight_policy_expansion():
-    fx = _facade_fixture("owner-family-weight")
-    projection = fx["projection"]
-    weight_slot = projection.weight_slots[0]
-
-    lawful_owner_set = PhysicalSlotOwnerSet(
-        weight_slot.slot,
-        (
-            PhysicalSlotOwnerAuthorization(
-                WEIGHT_OWNER_FAMILY, (fx["weight_auth"].authority_ref,)
-            ),
-        ),
+    lawful_owner = _auth(
+        "qual-weight-owner-control",
+        "WEIGHT_DESIGN_ESTIMAND",
+        families=(WEIGHT_OWNER_FAMILY,),
     )
-    lawful = replace(projection, slot_owner_sets=(lawful_owner_set,))
+    lawful = _projection_with_weight_owner(
+        lawful_owner.authority_ref, owner_snapshot=lawful_owner
+    )
     assert lawful.slot_owner_sets[0].authority_refs_for(WEIGHT_OWNER_FAMILY) == (
-        fx["weight_auth"].authority_ref,
+        lawful_owner.authority_ref,
     )
 
-    wrong_owner_set = PhysicalSlotOwnerSet(
-        weight_slot.slot,
-        (
-            PhysicalSlotOwnerAuthorization(
-                WEIGHT_OWNER_FAMILY, (fx["coord_auth"].authority_ref,)
-            ),
-        ),
+    wrong_owner = _auth(
+        "qual-wrong-weight-owner",
+        "COORDINATE_SEMANTICS",
+        families=(COORDINATE_OWNER_FAMILY,),
     )
     with pytest.raises(Pre553AuthorityError, match="object family not named"):
-        replace(projection, slot_owner_sets=(wrong_owner_set,))
+        _projection_with_weight_owner(
+            wrong_owner.authority_ref, owner_snapshot=wrong_owner
+        )
 
 
 @pytest.mark.parametrize(
