@@ -1,0 +1,17 @@
+{
+  "schema": "HB01_C05_R2A_MULTI_OWNER_SLOT_REQUALIFICATION_R2_INVARIANT_DISPOSITIONS@1.0.0",
+  "terminal": "HB01_C05_R2A_MULTI_OWNER_SLOT_FRESH_INDEPENDENT_REQUALIFICATION_R2_PASS__READY_FOR_HQ_ADOPTION_AND_FULL_GSR07_RECOMMISSION",
+  "invariants": [
+    {"id": 1, "disposition": "PASS", "detail": "Every emitted owner family requires exact required+packaged ALLOW authority positively governing that same family."},
+    {"id": 2, "disposition": "PASS", "detail": "Coordinate-as-response, response-as-coordinate, wrong-family weight, DENY, DEFER, SUPERSEDED_NOT_REPLAYABLE, unrequired and unpackaged owner authority all fail closed."},
+    {"id": 3, "disposition": "PASS", "detail": "One exact physical slot lawfully emits both RespondentEvent and EmpiricalCoordinateFact with separate owner authority refs."},
+    {"id": 4, "disposition": "PASS", "detail": "Implicit, empty-authority, duplicate-authority, duplicate-family, incomplete, unsupported-family and orphan owner sets fail closed."},
+    {"id": 5, "disposition": "PASS", "detail": "Owner/snapshot/required-authority ordering preserves cache, release, replay and public-object identities."},
+    {"id": 6, "disposition": "PASS", "detail": "Legacy single-owner v1 cache material and event replay-root identity remain exact."},
+    {"id": 7, "disposition": "PASS", "detail": "Accepted 42-slot WVS7 dual-role shape fully executes through generic slot-owner machinery; production has no WVS7, Q138 or 42-member conditional."},
+    {"id": 8, "disposition": "PASS", "detail": "All independently constructed unresolved routing determinants remain ROUTING_UNKNOWN."},
+    {"id": 9, "disposition": "PASS", "detail": "Source-local projection preserves NO_POPULATION_GENERALIZATION and DESIGN_AUTHORITY_NOT_PROMOTED; no population/design/estimand expansion observed."},
+    {"id": 10, "disposition": "PASS", "detail": "Unprojected PWGHT physical cell emits no WeightMeasureFact; no implicit/default weight behavior occurs."},
+    {"id": 11, "disposition": "PASS", "detail": "No C05-R2B, C09, Full GSR07, frozen-I03 certification, HB01 closure or B wake performed."}
+  ]
+}

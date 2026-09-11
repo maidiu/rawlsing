@@ -1,0 +1,27 @@
+{
+  "schema": "HB01_C05_R2A_MULTI_OWNER_SLOT_REQUALIFICATION_R2_INDEPENDENT_HOSTILE_TEST_IDENTITIES@1.0.0",
+  "independent_test": {
+    "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_requalification_r2.py",
+    "blob": "52519097af8c7788c6dd76d2c9ee5e6509450f8e",
+    "producer_fixture_imported": false,
+    "covered_attacks": [
+      "coordinate_authority_as_response_owner",
+      "response_authority_as_coordinate_owner",
+      "wrong_family_weight_owner",
+      "DENY_owner_authority",
+      "DEFER_owner_authority",
+      "SUPERSEDED_NOT_REPLAYABLE_owner_authority",
+      "missing_unrequired_unpackaged_owner_authority",
+      "implicit_empty_duplicate_incomplete_unsupported_orphan_owner_sets",
+      "lawful_dual_owner_same_physical_slot",
+      "canonical_ordering_and_release_replay_determinism",
+      "legacy_single_owner_v1_identity_parity",
+      "fully_executed_exact_42_slot_dual_role_shape",
+      "ROUTING_UNKNOWN_preservation",
+      "NO_POPULATION_GENERALIZATION_and_DESIGN_AUTHORITY_NOT_PROMOTED",
+      "PWGHT_physical_decoy_no_implicit_weight"
+    ]
+  },
+  "court_spec_execution_sha": "1db1ebdbb4a2d66b405643cc51b0ff0d6a8780a7",
+  "frozen_candidate_blob": "c3647800f52fa81fdef34be6692207e092c48ee2"
+}
