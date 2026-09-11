@@ -1,0 +1,77 @@
+{
+  "attempts": [
+    {
+      "artifact_id": 10184123079,
+      "artifact_zip_sha256": "f31b018a7dd3bcbf3b0e46b13bfc6d1c2617955abbf9ed59ad8d9f9a9ab54b88",
+      "attempt": 1,
+      "focused_court": "10 passed in 0.97s",
+      "job_id": 103141953902,
+      "protocol_self_tests": "20 passed in 0.09s",
+      "raw_receipt_sha256": "7c8b7e871c44ba49ce7dcb671563498a3d6720db267d48ec4f20dec2fa8fb17b",
+      "receipt": {
+        "determinism_mode": "EXACT",
+        "elapsed_seconds": 1.258543,
+        "env": {"PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1", "PYTHONHASHSEED": "0"},
+        "evidence_execution_sha": "8988644ea61b4bb59fe750a1e012c227ca6170ab",
+        "exit_code": 0,
+        "implementation": "CPython",
+        "pr_synthetic_merge_sha": "8c9f5f0b2cd7e5c61cf2bcfd4d3fa2fbd757b39b",
+        "python": "3.12.14",
+        "result": "PASS",
+        "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+        "semantic_candidate_sha": "f138a6c7e415756eaa1e9b077a11fdf21b468ac0",
+        "spec_sha256": "8579dd42939f0267a02fe8a44d632a5a760f2a0a86ef3dc25391c324bc322011",
+        "tests": ["rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"]
+      },
+      "region": "eastus2",
+      "runner_id": 1000000870,
+      "worker_id": "3f356bae-6ea6-47e3-ba00-6783c3344f47"
+    },
+    {
+      "artifact_id": 10184136775,
+      "artifact_zip_sha256": "e6d5051ed6ce0f1a03ca71691df878f0799e73043de788df978e207c73437a36",
+      "attempt": 2,
+      "focused_court": "10 passed in 1.03s",
+      "job_id": 103142070131,
+      "protocol_self_tests": "20 passed in 0.17s",
+      "raw_receipt_sha256": "dd67cde8e1ae55a3c9f886581905e15eb56b47ac924076887d50a9507a559d4c",
+      "receipt": {
+        "determinism_mode": "EXACT",
+        "elapsed_seconds": 1.331899,
+        "env": {"PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1", "PYTHONHASHSEED": "0"},
+        "evidence_execution_sha": "8988644ea61b4bb59fe750a1e012c227ca6170ab",
+        "exit_code": 0,
+        "implementation": "CPython",
+        "pr_synthetic_merge_sha": "8c9f5f0b2cd7e5c61cf2bcfd4d3fa2fbd757b39b",
+        "python": "3.12.14",
+        "result": "PASS",
+        "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+        "semantic_candidate_sha": "f138a6c7e415756eaa1e9b077a11fdf21b468ac0",
+        "spec_sha256": "8579dd42939f0267a02fe8a44d632a5a760f2a0a86ef3dc25391c324bc322011",
+        "tests": ["rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"]
+      },
+      "region": "eastus",
+      "runner_id": 1000000871,
+      "worker_id": "d43feb30-af16-4414-b9ad-374ceeff1a26"
+    }
+  ],
+  "draft_pr": 348,
+  "evidence_execution_sha": "8988644ea61b4bb59fe750a1e012c227ca6170ab",
+  "nonqualifying_harness_probe": {
+    "cause": "pandas absent from generic bounded-court dependency install",
+    "commit": "3613a93e0b687230e1624770f886ef8764d3d621",
+    "qualification_evidence": false,
+    "result": "HARNESS_CAPABILITY_FAILURE_BEFORE_FOCUSED_COLLECTION",
+    "workflow_run_id": 34560395550
+  },
+  "normalized_parity": {
+    "attempt_1_sha256": "a615f796fd90bf700eb2a84d04fdefc12ccbfc81da67eda3ae0343fe7c79753e",
+    "attempt_2_sha256": "a615f796fd90bf700eb2a84d04fdefc12ccbfc81da67eda3ae0343fe7c79753e",
+    "exact_governed_result_parity": true,
+    "rule": "remove elapsed_seconds only; canonical JSON sort_keys=true,separators=(',',':')"
+  },
+  "pr_synthetic_merge_sha": "8c9f5f0b2cd7e5c61cf2bcfd4d3fa2fbd757b39b",
+  "schema_id": "HB01_W_C05_R2A_EXECUTION_RECEIPTS_R1",
+  "semantic_candidate_sha": "f138a6c7e415756eaa1e9b077a11fdf21b468ac0",
+  "workflow_run_id": 34560465379
+}
