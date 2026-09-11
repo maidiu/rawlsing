@@ -1,0 +1,17 @@
+{
+  "schema": "HB01_C05_R2A_FRESH_HOSTILE_TEST_RECEIPT_R1",
+  "test_path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py",
+  "test_blob": "2693d4778eb6b977832033cbadf05be79a527256",
+  "independent_of_producer_test_blob": "d3fe1620e1d04694665f25c7dfcd67d375ce168a",
+  "cases": [
+    {
+      "name": "test_control_exact_dual_owner_with_family_scoped_authority_closes",
+      "purpose": "Positive control for generic response+coordinate dual ownership with explicit family-scoped owner authorities and preserved routing/population/design ceilings."
+    },
+    {
+      "name": "test_blocker_coordinate_only_authority_is_accepted_as_response_owner",
+      "purpose": "Proves canonical authority rejects a coordinate-only snapshot for RespondentEvent, while the frozen facade nevertheless accepts that ref as the response-owner authority and validates the release."
+    }
+  ],
+  "terminal_effect": "EXACT_BLOCKER_PROVED"
+}
