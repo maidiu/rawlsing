@@ -1,0 +1,20 @@
+{
+  "schema":"SDTF_R4_R1_R4_FRESH_INTEGRATION_CONFORMANCE_R2_EXECUTION_TEST_RECEIPT@1.0.0",
+  "semantic_candidate":"de7f7dc9f34e1d0e1ebb1486ed3d960a4a82ffa8",
+  "court_spec_execution_1":"85bd87d3d914595f5319a35ca36ab64d37a82e08",
+  "court_spec_execution_2":"af085d527292bbff161e396451223a4bf030ac4a",
+  "test_set_unchanged_between_executions":true,
+  "execution_1":{"run":34633981768,"job":103377316234,"protocol_pass":20,"qualification_pass":99,"fail":0,"artifact":10277512624,"artifact_sha256":"ef1b008b65ddc6823a0feb2d4edf5ab64838046c241da060afc7d400aafaafb2"},
+  "execution_2":{"run":34634041851,"job":103377515584,"protocol_pass":20,"qualification_pass":99,"fail":0,"artifact":10277557533,"artifact_sha256":"0a2627c180142129ccab2bd0a00d2344d2944fd6f6c3cdd31a6f1c81d450aff0"},
+  "executed_suites":[
+    "test_sdtf_r4_mechanism_rule_authority_binding.py",
+    "test_sdtf_r4_d1_hosting_replay.py",
+    "test_sdtf_r4_r2_current_rule_admission_seam.py",
+    "test_sdtf_r4_witness_currentness.py",
+    "test_sdtf_r4_world_response_redrive.py",
+    "test_sdtf_r4_fresh_integration_conformance_r2_hostile.py"
+  ],
+  "s5":{"baseline":"8ad68cd5731db6a4c4c75f5cc1bddbf95018f882","vectors":"90/90 PASS","metamorphic":"30/30 PASS","k4_active_augmentations":"PASS"},
+  "producer_pass_reports_used_as_evidence":false,
+  "verdict":"PASS"
+}
