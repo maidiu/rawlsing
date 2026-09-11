@@ -1,0 +1,19 @@
+{
+  "schema": "HB01_C05_R2A_MULTI_OWNER_SLOT_INVARIANT_DISPOSITIONS_R1",
+  "terminal": "HB01_C05_R2A_MULTI_OWNER_SLOT_FRESH_HOSTILE_QUALIFICATION__EXACT_BLOCKER_PROVED",
+  "dispositions": {
+    "1_explicit_complete_owner_set_required": "NOT_DISPROVED_BY_BLOCKER_WITNESS",
+    "2_each_emitted_family_independently_authority_closed": "FAIL__WRONG_FAMILY_AUTHORITY_ACCEPTED",
+    "3_malformed_owner_sets_fail_closed": "PARTIALLY_EXERCISED__OWNER_AUTHORITY_SUBSTITUTION_FAILS_OPEN",
+    "4_owner_order_permutation_canonical": "NOT_REACHED_AFTER_EXACT_BLOCKER",
+    "5_legacy_single_owner_identity_parity": "NOT_REACHED_AFTER_EXACT_BLOCKER",
+    "6_multi_owner_identity_noncollision": "NOT_REACHED_AFTER_EXACT_BLOCKER",
+    "7_no_physical_slot_aliasing": "CONTROL_WITNESS_PRESERVED_ONE_SLOT_IDENTITY",
+    "8_wvs7_42_slot_generic_representability": "NOT_DISPOSITIVE_AFTER_EXACT_BLOCKER",
+    "9_no_routing_inference_or_repair": "CONTROL_WITNESS_PRESERVED_ROUTING_UNKNOWN",
+    "10_no_population_weight_pool_harmonization_design_promotion": "CONTROL_WITNESS_PRESERVED_SOURCE_LOCAL_NO_POPULATION_GENERALIZATION_AND_NO_DESIGN_PROMOTION",
+    "11_no_pweight_fallback": "ACCEPTED_WVS7_AUTHORITY_BRIDGE_EXPLICITLY_EXCLUDES_PWGHT_FROM_WEIGHT_PROJECTION; NOT A CURE FOR BLOCKER",
+    "12_existing_single_owner_fail_closed_and_replay_determinism": "NOT_REACHED_AFTER_EXACT_BLOCKER"
+  },
+  "stop_rule": "Commission requires stopping at the smallest exact blocker and forbids repair."
+}
