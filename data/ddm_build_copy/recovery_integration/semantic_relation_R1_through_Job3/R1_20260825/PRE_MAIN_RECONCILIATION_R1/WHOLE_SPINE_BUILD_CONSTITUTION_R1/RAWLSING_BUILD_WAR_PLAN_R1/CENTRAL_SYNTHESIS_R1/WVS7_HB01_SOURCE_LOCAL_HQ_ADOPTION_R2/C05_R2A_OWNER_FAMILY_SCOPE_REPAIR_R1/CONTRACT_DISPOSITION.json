@@ -1,0 +1,27 @@
+{
+  "schema": "HB01_C05_R2A_OWNER_FAMILY_SCOPE_REPAIR_CONTRACT_DISPOSITION_R1",
+  "production_contract": {
+    "id": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "changed": false,
+    "version_bump": false
+  },
+  "owner_set_contract": {
+    "id": "PRE553_C11_PHYSICAL_SLOT_OWNER_SET@1.0.0",
+    "changed": false,
+    "version_bump": false
+  },
+  "authority_law": {
+    "reused": "AuthorityRegistry.require(ref, object_family=owner.owner_family)",
+    "new_authority_kind": false,
+    "new_authority_state": false,
+    "new_scope_selector": false,
+    "new_family_semantics": false
+  },
+  "identity_law": {
+    "single_owner_v1_material_unchanged": true,
+    "multi_owner_material_unchanged": true,
+    "owner_order_canonicalization_unchanged": true,
+    "repair_changes_validation_only": true
+  },
+  "disposition": "EXISTING_CONTRACT_SEMANTICS_ENFORCED_MORE_STRICTLY__NO_VERSION_BUMP__NO_NEW_OWNER_FAMILY_ONTOLOGY"
+}
