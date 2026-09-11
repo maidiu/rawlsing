@@ -1,0 +1,22 @@
+{
+  "schema": "SDTF_R4_R1_R4_FRESH_INTEGRATION_CONFORMANCE_R2_S5_ADJUDICATION@1.0.0",
+  "baseline_commit": "8ad68cd5731db6a4c4c75f5cc1bddbf95018f882",
+  "canonical_vectors": {"expected":90,"adjudicated":90,"pass":90,"blocker":0},
+  "metamorphic_relations": {"expected":30,"adjudicated":30,"pass":30,"blocker":0},
+  "family_dispositions": {
+    "1_same_category_different_relations":"PASS","2_role_title_shortcuts":"PASS","3_P1":"PASS","4_P2":"PASS","5_P3":"PASS","6_P4":"PASS","7_P5":"PASS","8_linked_lives":"PASS","9_multi_context":"PASS","10_transition_invalidation":"PASS","11_stale_superseded_witness":"PASS","12_negation":"PASS","13_population_probability":"PASS","14_source_construct":"PASS","15_counterfactual":"PASS","16_age_phase":"PASS","17_objective_subjective":"PASS","18_V3_boundary":"PASS","19_world_response":"PASS","20_derivation_chain":"PASS","21_circularity":"PASS","22_history_firewall":"PASS","23_P4_nonbureaucratic":"PASS","24_OBL062_open":"PASS"
+  },
+  "final_companion_augmentations": {
+    "K4_PATH_A":"PASS__DIRECT_OR_INTERVAL_WITNESS_MUST_COVER_ASSERTED_INTERVAL_AND_FRESHNESS",
+    "K4_PATH_B":"PASS__TYPE_COMPATIBLE_CONTINUING_STATE_SUPPORT_OVERLAPS_ASSERTED_INTERVAL__COMPLETE_TERMINATION_SUPERSESSION_INVALIDATION_COVERAGE__NO_DEFEATING_CLOSING_FACT",
+    "BARE_ACTIVE":"PASS__UMBRELLA_CURRENT_OPERATIVE_DESCRIPTOR__NOT_K4_EXCLUSIVE",
+    "UNKNOWN_NOT_PROVEN":"PASS__NO_FACT__FAILED_OR_STALE_POSITIVE_DOES_NOT_MINT_NEGATIVE"
+  },
+  "mapping_to_executable_court": {
+    "rule_source_calibration_currentness":"R1 focused suite",
+    "application_dependency_invalidation_replay":"R2 focused + admission seam + fresh hostile suite",
+    "witness_K1_K4_negation_ACTIVE":"R3 focused + fresh hostile suite",
+    "world_response_V3_OBL062_firewall":"R4 focused + fresh hostile suite"
+  },
+  "verdict":"PASS"
+}
