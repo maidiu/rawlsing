@@ -1,0 +1,26 @@
+{
+  "authority_evidence": {
+    "dual_rule_id": "A2_EXACT_QUESTIONNAIRE_COORDINATE_DUAL_OWNERSHIP",
+    "dual_slot_count": 42,
+    "dual_slots": ["Q138", "Q173", "Q260", "Q261", "Q262", "Q263", "Q264", "Q265", "Q266", "Q267", "Q268", "Q269", "Q270", "Q271", "Q272", "Q273", "Q274", "Q275", "Q275A", "Q276", "Q276A", "Q277", "Q277A", "Q278", "Q278A", "Q279", "Q280", "Q284", "Q287", "Q288", "Q47", "Q51", "Q52", "Q53", "Q54", "Q55", "Q56", "V001", "V001A_01", "V002", "V002A_01", "X002_02B"],
+    "hq_acceptance": "d643edc4d4a0be155e92c374b8d1d4b560140fbb",
+    "lane_a_bridge_git_blob": "7213e0f7aa430b6faee609cdb26751101e15330f",
+    "lane_a_commit": "a06f2bced8677453cf77fec5e622cb334a9810a5"
+  },
+  "blocker_class": "IMPLEMENTATION_REPRESENTABILITY",
+  "facade_evidence": {
+    "constructor_law": "slots = response_slots + coordinate_slots + weight_slots; duplicate slot keys raise SourceBackedC11FacadeError('physical slot has multiple semantic owners')",
+    "git_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "projection_loop_law": "if key in response slots -> event; elif key in coordinate slots -> coordinate; else -> weight. No branch can emit both event and coordinate for one exact physical slot."
+  },
+  "required_separate_owner_action": "Separately authorize and qualify an implementation change/version that permits one exact physical slot to emit multiple explicitly-authorized non-conflicting C11 object families while retaining fail-closed authority and exact replay identity; then rerun this source-specific certification.",
+  "schema_id": "HB01_FULL_GSR07_WVS7_IMPLEMENTATION_BLOCKER_RECEIPT_R1",
+  "smallest_exact_blocker": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0 forbids a physical slot from appearing in more than one semantic-owner lane, while accepted WVS7 Lane-A authority positively requires 42 exact questionnaire slots to project both RespondentEvent and EmpiricalCoordinateFact.",
+  "why_no_lawful_workaround": [
+    "Dropping either role would contradict accepted source-semantic authority.",
+    "Aliasing or renaming the physical slot would falsify exact physical source identity.",
+    "Duplicating physical cells does not help because the governed projection rejects duplicate slot ownership before cell execution.",
+    "Even if the constructor guard were bypassed, the mutually-exclusive projection loop would still emit only one semantic family.",
+    "This commission grants no production-code repair authority."
+  ]
+}
