@@ -1,0 +1,228 @@
+{
+  "schema": "OBL063_MODEL_SEMANTIC_OWNER_DISPOSITION_TEMPLATE@1.0.0",
+  "authority_effect": "NONE_UNTIL_HQ_MODEL_OWNER_ADOPTION",
+  "source_commission_tip": "52e22dde5fc133093e5c10282324f6168c3b2834",
+  "accepted_blocker_return": "bdd35cd611125722022d6d068c553aff8dc40b39",
+  "accepted_boundary": "EMPIRICAL_TO_DRIVER_VECTOR_PRE_V3",
+  "decisions": {
+    "D01_CONSTRUCTOR": {
+      "owner_choice": null,
+      "admissible_options": [
+        "FORMALIZE_NEW_EXPLICIT_CONSTRUCTOR_AT_EMPIRICAL_TO_DRIVER_VECTOR_PRE_V3",
+        "BIND_EXISTING_ACCEPTED_IMMUTABLE_CONSTRUCTOR_IF_EXACT_REF_SUPPLIED"
+      ],
+      "constructor_id": null,
+      "constructor_version": null,
+      "existing_authority_ref_if_used": null,
+      "recommendation_not_authority": "FORMALIZE_NEW_EXPLICIT_CONSTRUCTOR_AT_EMPIRICAL_TO_DRIVER_VECTOR_PRE_V3"
+    },
+    "D02_DRIVER_SCOPE": {
+      "owner_choice": null,
+      "admissible_options": [
+        "REGISTRY_40__R1_ACTIVE_22__18_PENDING",
+        "ACTIVE_40__NEW_WEIGHTS_REQUIRED_BEFORE_RUNTIME"
+      ],
+      "registry_40": [
+        "materialSecurity",
+        "economicInequality",
+        "collectivism",
+        "hierarchy",
+        "secularization",
+        "moralGrammar",
+        "education",
+        "genderEquality",
+        "tightness",
+        "politicalStability",
+        "colonialTrauma",
+        "urbanization",
+        "trustEcology",
+        "authorityStyle",
+        "moralElasticity",
+        "temporalOrientation",
+        "existentialLocus",
+        "postColonialIdentity",
+        "genderSystemCoherence",
+        "collectiveAffectTone",
+        "institutionalMemory",
+        "culturalPlasticity",
+        "trustEcologyExtended",
+        "aestheticOrientation",
+        "conflictExpression",
+        "timePressure",
+        "fatalism",
+        "ritualDensity",
+        "environmentalRelation",
+        "narrativeCoherence",
+        "memoryOfCatastrophe",
+        "humorOrientation",
+        "hospitality",
+        "shameAesthetics",
+        "eschatologicalMood",
+        "playfulness",
+        "symbolicSubstitution",
+        "intergenerationalReciprocity",
+        "thresholdManagement",
+        "emotionalLiteracy"
+      ],
+      "legacy_weighted_22": [
+        "materialSecurity",
+        "economicInequality",
+        "collectivism",
+        "hierarchy",
+        "secularization",
+        "moralGrammar",
+        "education",
+        "genderEquality",
+        "tightness",
+        "politicalStability",
+        "colonialTrauma",
+        "urbanization",
+        "trustEcology",
+        "authorityStyle",
+        "moralElasticity",
+        "temporalOrientation",
+        "existentialLocus",
+        "postColonialIdentity",
+        "genderSystemCoherence",
+        "collectiveAffectTone",
+        "institutionalMemory",
+        "culturalPlasticity"
+      ],
+      "schema_only_18": [
+        "trustEcologyExtended",
+        "aestheticOrientation",
+        "conflictExpression",
+        "timePressure",
+        "fatalism",
+        "ritualDensity",
+        "environmentalRelation",
+        "narrativeCoherence",
+        "memoryOfCatastrophe",
+        "humorOrientation",
+        "hospitality",
+        "shameAesthetics",
+        "eschatologicalMood",
+        "playfulness",
+        "symbolicSubstitution",
+        "intergenerationalReciprocity",
+        "thresholdManagement",
+        "emotionalLiteracy"
+      ],
+      "recommendation_not_authority": "REGISTRY_40__R1_ACTIVE_22__18_PENDING"
+    },
+    "D03_CHANNEL_TRANSFORM_COEFFICIENT": {
+      "owner_choice": null,
+      "admissible_options": [
+        "EXPLICIT_OWNER_ROSTER_WITH_PER_CHANNEL_TRANSFORM_AND_NONNEGATIVE_COEFFICIENTS",
+        "EXPLICIT_OWNER_SUBSET_OF_RECOVERED_ROSTER"
+      ],
+      "per_driver_disposition_file": "03_DRIVER_CHANNEL_ROSTER.csv",
+      "transform_contract_id": null,
+      "coefficient_law_id": null,
+      "negative_relation_encoding": "ORIENT_IN_TRANSFORM_NOT_NEGATIVE_COEFFICIENT",
+      "implicit_equal_weighting_authorized": false,
+      "recommendation_not_authority": "EXPLICIT_OWNER_ROSTER_WITH_PER_CHANNEL_TRANSFORM_AND_NONNEGATIVE_COEFFICIENTS"
+    },
+    "D04_VECTOR_FUSION": {
+      "owner_choice": null,
+      "admissible_options": [
+        "DRIVER_LOCAL_FUSION_WITH_FIXED_DECLARED_RULE",
+        "FAMILY_SUBSCORES_THEN_DRIVER_WITH_NEW_EXPLICIT_FAMILY_RULES"
+      ],
+      "driver_scale_contract": null,
+      "driver_scalarization_rule": null,
+      "partial_channel_scalarization_policy": null,
+      "availability_based_renormalization_authorized": false,
+      "recommendation_not_authority": "DRIVER_LOCAL_FUSION_WITH_FIXED_DECLARED_RULE",
+      "recommendation_detail_not_authority": "Do not scalarize incomplete intended channel sets unless the owner explicitly declares a partial-fixed-weight rule; otherwise carry typed no-numeric driver state."
+    },
+    "D05_TYPE_NORMALIZATION": {
+      "owner_choice": null,
+      "admissible_options": [
+        "SOFTMAX_WITH_EXPLICIT_OWNER_TEMPERATURE",
+        "LEGACY_MIN_MAX_BY_EXPLICIT_OWNER_OVERRIDE"
+      ],
+      "softmax_temperature_if_selected": null,
+      "recommendation_not_authority": "SOFTMAX_WITH_EXPLICIT_OWNER_TEMPERATURE",
+      "numeric_temperature_default_authorized": false
+    },
+    "D06_CLAIM_CEILING_REQUIREDNESS": {
+      "owner_choice_rule": null,
+      "claim_ceiling_enum": [
+        "POPULATION_STATISTIC",
+        "SOURCE_LOCAL_STATISTIC",
+        "SUPPORTED_COMPONENT_ONLY"
+      ],
+      "per_channel_requiredness_values": [
+        "REQUIRED_FOR_RUNTIME",
+        "OPTIONAL_FOR_RUNTIME"
+      ],
+      "per_driver_disposition_file": "03_DRIVER_CHANNEL_ROSTER.csv",
+      "recommendation_not_authority": "SOURCE_LOCAL_WHERE_TERMINAL_CLAIM_DOES_NOT_REQUIRE_POPULATION__OPTIONAL_UNLESS_CONSTITUTIVE_BY_OWNER_RULE",
+      "source_authority_may_not_be_upgraded_by_model_owner": true
+    },
+    "D07_FALLBACK": {
+      "owner_default_choice": null,
+      "admissible_options": [
+        "NO_FALLBACK",
+        "AUTHORIZED_ALTERNATE_SOURCE",
+        "AUTHORIZED_BROADER_PRIOR",
+        "VERSIONED_MODEL_PRIOR",
+        "WIDEN_UNCERTAINTY",
+        "OMIT_CONTRIBUTION"
+      ],
+      "recommendation_not_authority": "NO_FALLBACK_AS_R1_DEFAULT__EXCEPT_EXPLICIT_OWNER_RULE",
+      "relation_ref_required_for": [
+        "AUTHORIZED_ALTERNATE_SOURCE",
+        "AUTHORIZED_BROADER_PRIOR"
+      ],
+      "model_prior_fields_required": [
+        "prior_id",
+        "version",
+        "value"
+      ],
+      "widening_amount_required_for": [
+        "WIDEN_UNCERTAINTY"
+      ]
+    },
+    "D08_TYPED_DIMENSIONALITY": {
+      "owner_choice": null,
+      "admissible_options": [
+        "FIXED_DECLARED_DRIVER_SLOTS_WITH_TYPED_STATE",
+        "BLOCK_ON_ANY_NONNUMERIC_DRIVER"
+      ],
+      "typed_slot_states_required": [
+        "NUMERIC",
+        "TYPED_NO_NUMERIC",
+        "BLOCKED_TERMINAL_REQUIREMENT"
+      ],
+      "missing_numeric_encoded_as_zero": false,
+      "driver_weight_renormalization_on_missing": false,
+      "minimum_numeric_driver_rule": null,
+      "recommendation_not_authority": "FIXED_DECLARED_DRIVER_SLOTS_WITH_TYPED_STATE",
+      "recommendation_detail_not_authority": "Require at least one numeric active driver before driver-to-type normalization; carry exact coverage for every missing active slot."
+    }
+  },
+  "deferred_if_recommended_r1_package_is_adopted": [
+    "type-weight activation for the 18 schema-only drivers",
+    "advanced family-subscore fusion",
+    "model priors",
+    "uncertainty widening fallbacks",
+    "alternate-source/broader-prior fallbacks without already accepted relation authority",
+    "population-claim upgrades where source-local use is sufficient",
+    "stricter terminal coverage threshold above at-least-one-numeric-active-driver"
+  ],
+  "forbidden_inference": [
+    "recommendation => authority",
+    "missing evidence => zero",
+    "typed no-numeric => zero",
+    "missing channel => coefficient renormalization",
+    "missing channel => coefficient redistribution",
+    "executable default => semantic authority",
+    "schema-only driver => zero-weight driver",
+    "model prior => empirical evidence",
+    "nearest country/wave => same-scope authority"
+  ],
+  "owner_adoption_commit": null,
+  "owner_adoption_artifact": null
+}
