@@ -1,0 +1,27 @@
+{
+  "authorized_grain": "HB01_FULL_GSR07_WVS7_SOURCE_BACKED_CERTIFICATION_ONLY",
+  "blocker_class": "IMPLEMENTATION_REPRESENTABILITY",
+  "blocker_summary": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0 forbids a physical slot from appearing in more than one semantic-owner lane, while accepted WVS7 Lane-A authority positively requires 42 exact questionnaire slots to project both RespondentEvent and EmpiricalCoordinateFact.",
+  "branch": "agent/rabochii-subv-w-hb01-full-gsr07-wvs7-source-backed-certification-r1",
+  "c11_release_minted": false,
+  "commission_tip": "79354c39473308c378255bb7027343cb3aee706f",
+  "i03_executed": false,
+  "main_or_coordinator_mutated": false,
+  "next_owner_grain": "SEPARATE_IMPLEMENTATION_AUTHORITY_REQUIRED__MULTI_ROLE_EXACT_PHYSICAL_SLOT_PROJECTION_AND_REQUALIFICATION",
+  "preflight": {
+    "exact_source_verified": true,
+    "routing_ceiling": {"d03": "9/9", "documentary": "222/222", "removals": 0, "state": "ROUTING_UNKNOWN"},
+    "slot_authority": {"authorized_projection_slots": 612, "exact_slots": 613, "excluded": ["PWGHT"]},
+    "source_local_scope_authority": {"respondents": 97220, "scopes": 66},
+    "source_shape_verified": {"physical_cells": 59595860, "rows": 97220, "variables": 613},
+    "two_fresh_source_decodes_exact_parity": true
+  },
+  "production_semantics_changed": false,
+  "prohibited_actions": {"c05_r2b_run": false, "c09_run": false, "d11_reopened_as_predecessor": false, "generic_production_repair": false, "hb01_closed": false, "positive_routing_recovery": false, "sub_vozhd_b_woken": false},
+  "repository": "maidiu/rawlsing",
+  "return_artifacts": ["RESULT.md", "RESULT.json", "AUTHORITY_RECEIPT.json", "SOURCE_IDENTITY_RECEIPT.json", "SOURCE_SLOT_DISPOSITIONS_POINTER.json", "SOURCE_LOCAL_SCOPE_RECEIPT.json", "ROUTING_CEILING_RECEIPT.json", "IMPLEMENTATION_BLOCKER_RECEIPT.json", "C11_RELEASE_RECEIPT.json", "I03_PARITY_RECEIPT.json", "EXECUTION_RECEIPTS.json", "CHANGED_FILES.txt"],
+  "schema_id": "HB01_FULL_GSR07_WVS7_SOURCE_BACKED_CERTIFICATION_RETURN_R1",
+  "status": "BLOCKER",
+  "terminal": "HB01_FULL_GSR07_WVS7_SOURCE_BACKED_CERTIFICATION__EXACT_BLOCKER_PROVED",
+  "test_semantics_changed": false
+}
