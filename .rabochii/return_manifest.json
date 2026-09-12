@@ -1,0 +1,78 @@
+{
+  "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
+  "task_id": "PREV3_V3_SEAM_GROUNDED_RECONSTRUCTION_R1",
+  "branch": "agent/vozhd-grounded-prev3-v3-seam-reconstruction-r1",
+  "commission": {
+    "authority_ref": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+    "exact_start_sha": "9b60d3936ad7919f0b5583b4024a821e4591c9c8"
+  },
+  "return": {
+    "result": "PASS",
+    "terminal": "PREV3_V3_SEAM_GROUNDED_DECISION_PASS__RETURN_TO_VOZHD_HQ",
+    "phase": "CLOSURE_ONLY",
+    "completion": {
+      "commission_consumed": true,
+      "all_required_outputs_durable": true,
+      "no_required_work_remaining": true,
+      "no_background_work_remaining": true,
+      "return_packet_durable": true,
+      "terminal_state_entered": true
+    }
+  },
+  "separation": {
+    "performed_only_commissioned_role": true,
+    "no_uncommissioned_repair": true,
+    "no_uncommissioned_review": true
+  },
+  "return_packet": {
+    "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PREV3_V3_SEAM_GROUNDED_RECONSTRUCTION_R1/99_RETURN_TO_VOZHD_HQ.md",
+    "blob_sha": "d1f4f99a4955997b6be8df210637ef687126d905"
+  },
+  "required_outputs": [
+    {
+      "name": "grounding_receipt",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PREV3_V3_SEAM_GROUNDED_RECONSTRUCTION_R1/00_GROUNDING_RECEIPT_R1.md",
+      "blob_sha": "725b6abdf3967597408119f0679d753a1aced55f",
+      "status": "DURABLE"
+    },
+    {
+      "name": "hq_packet",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PREV3_V3_SEAM_GROUNDED_RECONSTRUCTION_R1/01_HQ_PACKET_R1.md",
+      "blob_sha": "50ec9d7ccf97bed802a3a185542fb4bcb02cb804",
+      "status": "DURABLE"
+    },
+    {
+      "name": "authority_history_ledger",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PREV3_V3_SEAM_GROUNDED_RECONSTRUCTION_R1/02_SEAM_AUTHORITY_AND_HISTORY_LEDGER.csv",
+      "blob_sha": "f7463a9feccbd4e18b667101b8a3574b77686f61",
+      "status": "DURABLE"
+    },
+    {
+      "name": "hostile_comparison_matrix",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PREV3_V3_SEAM_GROUNDED_RECONSTRUCTION_R1/03_HOSTILE_COMPARISON_MATRIX.csv",
+      "blob_sha": "706eb4d9abc5bf33de8788cd486a29458be4767e",
+      "status": "DURABLE"
+    },
+    {
+      "name": "seam_requirement_derivation",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PREV3_V3_SEAM_GROUNDED_RECONSTRUCTION_R1/04_SEAM_REQUIREMENT_DERIVATION_R1.md",
+      "blob_sha": "867d26b5b76d833e387caab37f0f997f64e8bdde",
+      "status": "DURABLE"
+    },
+    {
+      "name": "return_packet",
+      "kind": "path",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PREV3_V3_SEAM_GROUNDED_RECONSTRUCTION_R1/99_RETURN_TO_VOZHD_HQ.md",
+      "blob_sha": "d1f4f99a4955997b6be8df210637ef687126d905",
+      "status": "DURABLE"
+    }
+  ],
+  "evidence": {
+    "required": false
+  }
+}
