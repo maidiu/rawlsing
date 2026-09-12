@@ -1,0 +1,124 @@
+{
+  "schema": "ASTRA_C06_OWNERSHIP_AND_FAMILY_BINDINGS_R1",
+  "commission_id": "ASTRA-C06",
+  "exact_grain": "PREV3_OBJECTIVE_NON_EVENT_SERVING_AND_V3_INGRESS_R1_ONLY",
+  "candidate_contract_id": "PREV3_OBJECTIVE_NON_EVENT_SERVING_AND_V3_INGRESS_CONTRACT@1.0.0-CANDIDATE.C06",
+  "result": "PASS_AT_BOUNDED_CONTRACT_OWNER_GRAIN",
+  "governance_status": "CANDIDATE_NOT_HQ_ADOPTED",
+  "branch": "agent/rabochii-astra-c06-non-event-serving-v3-ingress-r1",
+  "commission_tip": "f167a696984647979e5438083a3d09cf871c00be",
+  "dispatch_parent": "2a88795031d80cb5bc49979c34ace0dd2427ca6e",
+  "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+  "scope_grounding": {
+    "current_obl062_identity": "POST_V3_PRE_V2_PSYCHIC_FIELD_FORGE_TERMINAL_ARCHITECTURE_AND_INTEGRATION",
+    "c06_uses_obl062_identifier": false,
+    "reason": "C01 owns obligation-name reconciliation; C06 uses a distinct exact non-event grain and does not overwrite current OBL062.",
+    "quarantined_obl063_terminal_semantics_consumed": false,
+    "sibling_worker_returns_consumed": false
+  },
+  "read_set": [
+    {
+      "name": "USER-BRIEF",
+      "path": "ASTRA_PREV3_COMPLETION_AUDIT_R1/evidence/user-brief.md",
+      "card_sha256": "218d31342b63e413e716ab1eeaac98f6ff899a5e1798fc3c966d564c5e0db3e0",
+      "observed_git_blob_on_worker_tip": "a277aafd52b0925f28252c5db00bb5df00c11a27"
+    },
+    {
+      "name": "SDTF-COMPANION",
+      "commit": "43e52f12bb7e175d108446c6c852e5532d22b9ad",
+      "git_blob": "4e77479afa3cce4cce7e38168f7ee9c6bf021cd0"
+    },
+    {
+      "name": "CAN008",
+      "commit": "3468673673db2f3de804d6e825585f86ff98e870",
+      "git_blob": "a6bc1555489271e1adb2271ed02d46bb7f888170"
+    },
+    {
+      "name": "M4",
+      "commit": "3468673673db2f3de804d6e825585f86ff98e870",
+      "git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360"
+    },
+    {
+      "name": "M5",
+      "commit": "3468673673db2f3de804d6e825585f86ff98e870",
+      "git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5"
+    },
+    {
+      "name": "STATE",
+      "commit": "3468673673db2f3de804d6e825585f86ff98e870",
+      "git_blob": "85de538b3fa3b719abdf0a2118d86f3f84b98035"
+    }
+  ],
+  "eligible_non_event_baseline": {
+    "temporal_forms": ["CONDITION", "DIRECTED_RELATION", "RECURRENT_ACTIVITY"],
+    "assertion_kinds": ["K1_CONSTITUTIVE_POSITIONAL", "K2_QUALIFIED_POSSIBILITY", "K4_ACTIVE_DURATIVE"],
+    "excluded_from_generic_non_event_ingress": ["EVENT", "K3_REALIZED_OCCURRENCE", "TRANSITION_WITHOUT_EXACT_OWNER_ROUTE", "ORDERED_HISTORY_WITHOUT_EXACT_OWNER_ROUTE"],
+    "proof_adjudication_no_fact": "UNKNOWN_NOT_PROVEN"
+  },
+  "producer_ownership": {
+    "semantic_owner": "EXACT_UPSTREAM_PRODUCER_OR_SOURCE_OWNER",
+    "serving_contract_owner": "BOUNDED_NON_EVENT_RECEIPT_BINDING_ONLY",
+    "receipt_may_reauthor_payload": false,
+    "receipt_may_reclassify_temporal_form": false,
+    "receipt_may_infer_person_state": false,
+    "objective_actor_indexing_allowed": true,
+    "objective_actor_indexing_effect": "APPLICABILITY_BINDING_ONLY"
+  },
+  "family_bindings": [
+    {
+      "family": "SDTF_D1_PRIME_OBJECTIVE_POSITIONED_CONSEQUENCE",
+      "eligible_scope": "K1_K2_K4_NON_EVENT_OBJECTIVE_FACTS_ONLY",
+      "producer_owner_preserved": true,
+      "generic_m4_publication_binding": "MISSING_NOT_PROVED",
+      "current_status": "SEMANTICALLY_BINDABLE_BUT_RUNTIME_ADAPTER_REQUIRED"
+    },
+    {
+      "family": "FIELD_FORGE_OR_OTHER_ACCEPTED_OBJECTIVE_STRUCTURAL_PRODUCER",
+      "eligible_scope": "ONLY_EXACT_PRODUCER_AUTHORIZED_OBJECTS_AND_USES",
+      "producer_owner_preserved": true,
+      "generic_m4_publication_binding": "DO_NOT_INFER_FROM_EXISTING_V553_V556_ALLOWLIST",
+      "current_status": "CLAIM_CONDITIONAL"
+    },
+    {
+      "family": "M4_V557_V558_SERVING_PATTERN",
+      "eligible_scope": "EXACT_IDENTITY_HASH_CLOSURE_PERMISSION_PRESERVING_RESOLUTION",
+      "producer_owner_preserved": true,
+      "current_status": "CURRENT_ACCEPTED_PATTERN__NOT_GENERIC_D1_ADAPTER"
+    },
+    {
+      "family": "M5_RSC_STRUCTURAL_PEER_SEAM",
+      "eligible_scope": "CURRENT_COMPLETE_EXACT_STRUCTURAL_CONTEXT_WITH_EXPLICIT_V3_OWNER_DECLARATION",
+      "producer_owner_preserved": true,
+      "effect": "STRUCTURAL_CONTEXT_ELIGIBILITY_ONLY__NOT_V3_MUTATION_PERMISSION",
+      "actor_state_effect": false,
+      "current_status": "CURRENT_ACCEPTED_PATTERN"
+    },
+    {
+      "family": "CAN008_PERSON_EVENT_COUPLING",
+      "eligible_scope": "EXACT_GENERATED_OR_ADMITTED_PRECIPITATING_EVENT_BASIS_ONLY",
+      "non_event_receipt_may_be_precipitating_event": false,
+      "current_status": "CURRENT_HQ_ADOPTED_SEMANTICS__NO_NON_EVENT_RECLASSIFICATION"
+    }
+  ],
+  "permission_law": {
+    "relationship": "resolver_allowed_uses SUBSET publication_allowed_uses SUBSET producer_allowed_uses",
+    "permission_widening_allowed": false,
+    "latest_default_fuzzy_repair_allowed": false
+  },
+  "v3_boundary": {
+    "availability_context_owned_by_prev3": true,
+    "uptake_owned_by_v3": true,
+    "appraisal_owned_by_v3": true,
+    "interpretation_owned_by_v3": true,
+    "response_owned_by_v3": true,
+    "durable_person_state_owned_by_v3": true,
+    "biography_owned_by_v3": true
+  },
+  "separate_completion_fields": {
+    "authority_candidate": "PRESENT_THIS_RETURN__NOT_ADOPTED",
+    "code_body": "MISSING_GENERIC_D1_PRIME_NON_EVENT_ADAPTER",
+    "source_instance": "MISSING_FOR_GENERIC_NON_EVENT_VERTICAL",
+    "qualification_result": "MISSING_INDEPENDENT_HOSTILE_RUNTIME_COURT"
+  },
+  "successor_gate": "GATE-NON-EVENT"
+}

@@ -1,0 +1,135 @@
+{
+  "schema": "ASTRA_C06_NON_EVENT_POSITIVE_NEGATIVE_CASES_R1",
+  "candidate_contract_id": "PREV3_OBJECTIVE_NON_EVENT_SERVING_AND_V3_INGRESS_CONTRACT@1.0.0-CANDIDATE.C06",
+  "court_result": "PASS_AT_CONTRACT_OWNER_GRAIN",
+  "positive_cases": [
+    {
+      "id": "P01_CURRENT_K1_ACTOR_INDEXED_DIRECTED_RELATION",
+      "input": "Current competent rule/source proves an objective actor-position directed relation with exact context/time binding.",
+      "expected": "SERVE_AS_OBJECTIVE_CONTEXT",
+      "v3_effect": "STRUCTURAL_CONTEXT_ELIGIBILITY_ONLY",
+      "actor_state_effect": false
+    },
+    {
+      "id": "P02_CURRENT_K2_OBJECTIVE_OPPORTUNITY",
+      "input": "Admitted objective possibility/route/channel plus exact actor applicability/reachability.",
+      "expected": "SERVE_AS_OBJECTIVE_OPPORTUNITY_CONTEXT",
+      "must_not_infer": ["UPTAKE", "AWARENESS", "USE", "APPRAISAL", "RESPONSE"]
+    },
+    {
+      "id": "P03_K4_PATH_A_DIRECT_INTERVAL_WITNESS",
+      "input": "Competent current/interval witness directly covers the asserted interval and freshness/recurrence semantics.",
+      "expected": "SERVE_CURRENT_ACTIVE_DURATIVE_CONTEXT"
+    },
+    {
+      "id": "P04_K4_PATH_B_CONTINUING_STATE",
+      "input": "Owner persistence semantics + supportable validity interval overlap + complete termination/supersession/invalidation coverage through query time + no closing fact.",
+      "expected": "SERVE_CURRENT_ACTIVE_DURATIVE_CONTEXT"
+    },
+    {
+      "id": "P05_EXPLICIT_NEGATIVE_OBJECTIVE_NON_EVENT",
+      "input": "Competent explicit negative/denial/termination/non-occurrence evidence or exact authorized closed-world proof at the same grain.",
+      "expected": "SERVE_EXACT_NEGATIVE_OBJECTIVE_FACT_WITH_PROVENANCE",
+      "must_not_infer": "OPPOSITE_PERSON_STATE"
+    },
+    {
+      "id": "P06_HISTORICAL_NONCURRENT_OBJECTIVE_CONTEXT",
+      "input": "Exact historical noncurrent non-event fact with preserved valid-time and producer identity.",
+      "expected": "MAY_REMAIN_HISTORICAL_OBJECTIVE_CONTEXT_UNDER_EXACT_CONSUMER_AUTHORITY",
+      "forbidden": "RELABEL_AS_CURRENT_TO_FORCE_M5_PEER_EFFECT"
+    },
+    {
+      "id": "P07_REAL_EVENT_PLUS_SEPARATE_STANDING_CONTEXT",
+      "input": "A real admitted precipitating event exists and a separate current non-event structural condition exists.",
+      "expected": "KEEP_TWO_IDENTITIES_DISTINCT",
+      "routing": "EVENT_TO_EVENT_OWNER_OR_CAN008_IF_AUTHORIZED__NON_EVENT_TO_STRUCTURAL_CONTEXT_SEAM"
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "N01_OLD_ESTABLISHMENT_EVENT_PLUS_SILENCE",
+      "input": "Historical establishment event; no competent continuing-state proof or closure coverage.",
+      "expected": "UNKNOWN_NOT_PROVEN",
+      "forbidden": "SYNTHESIZE_CURRENT_K4"
+    },
+    {
+      "id": "N02_STANDING_CONDITION_EVENT_LAUNDERING",
+      "input": "Standing condition is re-encoded as a fake event solely to obtain V3 ingress.",
+      "expected": "REJECT_STOP_THE_LINE"
+    },
+    {
+      "id": "N03_K3_ROUTED_AS_NON_EVENT",
+      "input": "Realized occurrence K3 is submitted to generic non-event ingress.",
+      "expected": "REJECT_OR_ROUTE_TO_EXACT_EVENT_OWNER"
+    },
+    {
+      "id": "N04_OPPORTUNITY_TO_UPTAKE_COLLAPSE",
+      "input": "Objective opportunity is treated as actor uptake/awareness/use.",
+      "expected": "REJECT_STOP_THE_LINE"
+    },
+    {
+      "id": "N05_MACHINE_READING_TO_APPRAISAL_COLLAPSE",
+      "input": "Resolver selected context is treated as proof the actor interpreted or appraised it.",
+      "expected": "REJECT_STOP_THE_LINE"
+    },
+    {
+      "id": "N06_ACTOR_INDEX_TO_PERSONA_INFERENCE",
+      "input": "Objective actor identifier/position binding is used to infer belief, preference, trait, psyche, or biography.",
+      "expected": "REJECT_STOP_THE_LINE"
+    },
+    {
+      "id": "N07_PERMISSION_WIDENING",
+      "input": "Producer/publication authorizes CONTEXT but adapter requests ACTIVE_CAUSAL.",
+      "expected": "REJECT_PERMISSION_DENIED"
+    },
+    {
+      "id": "N08_GENERIC_D1_OBJECT_ASSUMED_IN_OLD_M4_ALLOWLIST",
+      "input": "Generic SDTF D1-prime object is treated as already publishable solely because M4 serves V553-V556 roots.",
+      "expected": "REJECT_UNPROVED_ADAPTER",
+      "classification": "CODE_BODY_MISSING_NOT_SEMANTIC_OWNER_CONFLICT"
+    },
+    {
+      "id": "N09_STALE_CONTEXT_FORCED_CURRENT",
+      "input": "Structural currentness is STALE/REFRESH_REQUIRED/INVALID but downstream requests current peer use.",
+      "expected": "FAIL_CLOSED_ZERO_STRUCTURAL_PEER_EFFECT"
+    },
+    {
+      "id": "N10_NON_EVENT_AS_CAN008_PRECIPITATING_EVENT",
+      "input": "Condition/relation/opportunity/recurring context receipt is supplied as CAN-008 precipitating event basis without a real event.",
+      "expected": "REJECT_STOP_THE_LINE"
+    },
+    {
+      "id": "N11_STRUCTURAL_PEER_MUTATES_ACTOR",
+      "input": "Structural peer use receipt has actor_state_effect=true or directly writes person state.",
+      "expected": "REJECT_STOP_THE_LINE"
+    },
+    {
+      "id": "N12_FUZZY_LATEST_REPAIR",
+      "input": "Missing exact identity/hash is repaired by latest/default/fuzzy selection.",
+      "expected": "REJECT_UNRESOLVED_EXACT_KEY"
+    },
+    {
+      "id": "N13_FAILED_POSITIVE_BECOMES_NEGATIVE",
+      "input": "No record, stale positive, expired positive, or failed proof is emitted as a negative fact.",
+      "expected": "REJECT_NEGATION_COLLAPSE"
+    },
+    {
+      "id": "N14_OBL062_IDENTIFIER_OVERWRITE",
+      "input": "C06 overwrites current OBL062 PFF identity to force bookkeeping closure.",
+      "expected": "REJECT_SCOPE_VIOLATION",
+      "routing": "C01_OBLIGATION_RECONCILIATION"
+    }
+  ],
+  "implementation_court_required_after_adoption": [
+    "positive K1/K2/K4 exact-instance replay",
+    "K4 Path-A and Path-B hostile cases",
+    "event-laundering rejection",
+    "permission-widening rejection",
+    "stale/currentness fail-closed behavior",
+    "actor-index without person-state leakage",
+    "generic D1-prime producer binding identity preservation",
+    "M4 exact-resolution parity",
+    "M5 actor_state_effect=false parity",
+    "CAN008 precipitating-event separation"
+  ]
+}
