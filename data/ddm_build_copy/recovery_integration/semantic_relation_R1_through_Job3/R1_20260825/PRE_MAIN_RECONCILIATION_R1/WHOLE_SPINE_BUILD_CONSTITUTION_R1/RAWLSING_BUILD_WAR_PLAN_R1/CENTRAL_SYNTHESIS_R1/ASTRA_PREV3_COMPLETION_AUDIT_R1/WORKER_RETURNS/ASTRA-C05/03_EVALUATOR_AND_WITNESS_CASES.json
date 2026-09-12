@@ -1,0 +1,111 @@
+{
+  "commission_id": "ASTRA-C05",
+  "exact_grain": "SDTF_OBJECTIVE_RULE_BODY_AND_WORLD_POPULATION_R1_ONLY",
+  "artifact": "03_EVALUATOR_AND_WITNESS_CASES.json",
+  "artifact_status": "CANONICAL_REPACKAGING_OF_COMMITTED_PASS_SUBSTANCE",
+  "source_substantive_tip": "366c002bd1c51a6538bbad92f663bb20bea1c476",
+  "world_write_effect": "NONE__QUALIFICATION_TARGETS_ONLY",
+  "identity_rule": "source_grain_digest is semantic_hash of candidate_key, sorted exact source-object refs, exact actor/position/counterpart bindings as applicable, world_id, state_id, state_version, valid_time_id, and exact specialized rule-content hash; no latest/default/fuzzy resolution",
+  "population_sequence": [
+    "freeze exact immutable source refs and one D1 context",
+    "resolve candidate evidence packet by exact identity",
+    "require exact current R1 admission",
+    "require complete objective determinant closure",
+    "evaluate without inverse synthesis",
+    "materialize application/consequence only on support",
+    "use type-specific K1-K4 witness owner",
+    "redrive only exact dependents after relevant determinant/authority/witness change"
+  ],
+  "common_control_vectors": [
+    {"control": "POSITIVE_COMPLETE_CURRENT", "expected": "candidate direct K1/K2 target may be supported only with exact current admission, complete current determinants, and compatible witness/owner proof"},
+    {"control": "MISSING_REQUIRED_DETERMINANT", "expected": "CLOSED_UNSUPPORTED / UNKNOWN_NOT_PROVEN; no opposite fact"},
+    {"control": "STALE_OR_REVOKED_WITNESS", "expected": "no current proof/output"},
+    {"control": "RULE_CANDIDATE_NOT_CURRENT", "expected": "admission rejection before execution"},
+    {"control": "CONTEXT_MISMATCH", "expected": "rejection; no cross-context stitching"},
+    {"control": "K3_PROMOTION_ATTEMPT", "expected": "K3 UNKNOWN_NOT_PROVEN; no occurrence fact"},
+    {"control": "K4_PROMOTION_ATTEMPT", "expected": "K4 UNKNOWN_NOT_PROVEN without lawful Path A/B"},
+    {"control": "EXPLICIT_NEGATIVE", "expected": "negative adjudication only for the exact proposition authorized by competent negative or proved closed-world evidence"}
+  ],
+  "candidate_cases": [
+    {
+      "candidate_key": "C05-P1-REQUIRED-MATERIAL-ACCESS-GATE-R1",
+      "mechanism_class": "P1 MATERIAL_ACCESS_DEPENDENCY",
+      "population_target": "C05-WPOP-P1-R1",
+      "source_grain": "actor/position x operation x resource x context x interval",
+      "required_determinant_roles": ["P1_PREREQUISITE_DECLARATION", "P1_ACCESS_STATE", "P1_REACHABILITY_STATE when source-declared"],
+      "direct_supported_consequence": "K2 MATERIAL_ROUTE_AVAILABLE",
+      "unsupported_control": "missing/stale prerequisite/access/reachability => CLOSED_UNSUPPORTED / UNKNOWN_NOT_PROVEN; no NO_ACCESS fact",
+      "assertion_cases": [
+        {"assertion_kind": "K1_CONSTITUTIVE_POSITIONAL", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate competent K1 proof under exact owner/type binding", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_ASSERTION_KIND_PROOF", "negative_control": "direct K2 proof only and no separate K1 proof", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_CROSS_KIND_PROMOTION", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_CROSS_KIND_PROMOTION"},
+        {"assertion_kind": "K2_QUALIFIED_POSSIBILITY", "direct_support": "DIRECT", "positive_witness_contract": "exact current R1 admission + complete determinants + compatible current type-specific witness/owner proof", "positive_expected": "ACCEPT_PROVEN_AND_APPLICATION_ELIGIBLE", "negative_control": "missing/stale determinant OR witness not current OR context mismatch OR rule not current", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__CLOSED_UNSUPPORTED__NO_OPPOSITE_FACT", "application_effect": "SUPPORTED_CURRENT only after exact current admission; otherwise no write"},
+        {"assertion_kind": "K3_REALIZED_OCCURRENCE", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate exact type-compatible competent occurrence witness at actor/context/time grain", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_K3_OCCURRENCE_PROOF__NO_AUTO_PROMOTION", "negative_control": "K1/K2 proof present but occurrence witness absent/stale", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_OCCURRENCE_FACT", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_K3_PROMOTION_ATTEMPT"},
+        {"assertion_kind": "K4_ACTIVE_DURATIVE", "direct_support": "SEPARATE_CURRENTNESS_PATH_REQUIRED", "positive_witness_contract": "K4 Path A current/interval witness OR Path B owner-declared continuing state + interval support + complete invalidation coverage + no defeating closing fact", "positive_expected": "ACCEPT_PROVEN_ONLY_IF_K4_PATH_AND_WITNESS_CURRENTNESS_PASS", "negative_control": "no lawful Path A/B OR stale/revoked witness OR incomplete termination/supersession/invalidation coverage", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_DURATIVE_FACT", "application_effect": "NO_AUTO_PROMOTION_FROM_CURRENT_K1_OR_K2"}
+      ]
+    },
+    {
+      "candidate_key": "C05-P2-DIRECTED-OBLIGATION-IN-FORCE-R1",
+      "mechanism_class": "P2 DIRECTED_AUTHORITY_OBLIGATION_SANCTION",
+      "population_target": "C05-WPOP-P2-R1",
+      "source_grain": "authority x addressee/position x duty x jurisdiction/context x interval",
+      "required_determinant_roles": ["P2_AUTHORITY_SCOPE_STATE", "P2_ADDRESSEE_BINDING_STATE", "P2_DUTY_RULE_STATE", "P2_EFFECTIVE_VALIDITY_STATE"],
+      "direct_supported_consequence": "K1 DIRECTED_OBLIGATION_IN_FORCE",
+      "unsupported_control": "revoked/out-of-scope/unknown binding => CLOSED_UNSUPPORTED / UNKNOWN_NOT_PROVEN; no opposite duty fact",
+      "assertion_cases": [
+        {"assertion_kind": "K1_CONSTITUTIVE_POSITIONAL", "direct_support": "DIRECT", "positive_witness_contract": "exact current R1 admission + complete determinants + compatible current type-specific witness/owner proof", "positive_expected": "ACCEPT_PROVEN_AND_APPLICATION_ELIGIBLE", "negative_control": "missing/stale determinant OR witness not current OR context mismatch OR rule not current", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__CLOSED_UNSUPPORTED__NO_OPPOSITE_FACT", "application_effect": "SUPPORTED_CURRENT only after exact current admission; otherwise no write"},
+        {"assertion_kind": "K2_QUALIFIED_POSSIBILITY", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate competent K2 proof under exact owner/type binding", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_ASSERTION_KIND_PROOF", "negative_control": "direct K1 proof only and no separate K2 proof", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_CROSS_KIND_PROMOTION", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_CROSS_KIND_PROMOTION"},
+        {"assertion_kind": "K3_REALIZED_OCCURRENCE", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate exact type-compatible competent occurrence witness at actor/context/time grain", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_K3_OCCURRENCE_PROOF__NO_AUTO_PROMOTION", "negative_control": "K1/K2 proof present but occurrence witness absent/stale", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_OCCURRENCE_FACT", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_K3_PROMOTION_ATTEMPT"},
+        {"assertion_kind": "K4_ACTIVE_DURATIVE", "direct_support": "SEPARATE_CURRENTNESS_PATH_REQUIRED", "positive_witness_contract": "K4 Path A current/interval witness OR Path B owner-declared continuing state + interval support + complete invalidation coverage + no defeating closing fact", "positive_expected": "ACCEPT_PROVEN_ONLY_IF_K4_PATH_AND_WITNESS_CURRENTNESS_PASS", "negative_control": "no lawful Path A/B OR stale/revoked witness OR incomplete termination/supersession/invalidation coverage", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_DURATIVE_FACT", "application_effect": "NO_AUTO_PROMOTION_FROM_CURRENT_K1_OR_K2"}
+      ]
+    },
+    {
+      "candidate_key": "C05-P3-ORGANIZED-ACTIVITY-WINDOW-R1",
+      "mechanism_class": "P3 ORGANIZED_ACTIVITY_TIME",
+      "population_target": "C05-WPOP-P3-R1",
+      "source_grain": "organization x activity x actor/position x context x interval",
+      "required_determinant_roles": ["P3_ACTIVITY_DEFINITION_STATE", "P3_SCHEDULE_WINDOW_STATE", "P3_APPLICABILITY_STATE", "P3_REACHABILITY_STATE"],
+      "direct_supported_consequence": "K2 ORGANIZED_ACTIVITY_ROUTE_AVAILABLE",
+      "unsupported_control": "closed/stale schedule or failed/unknown applicability/reachability => CLOSED_UNSUPPORTED; no attendance fact",
+      "assertion_cases": [
+        {"assertion_kind": "K1_CONSTITUTIVE_POSITIONAL", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate competent K1 proof under exact owner/type binding", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_ASSERTION_KIND_PROOF", "negative_control": "direct K2 proof only and no separate K1 proof", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_CROSS_KIND_PROMOTION", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_CROSS_KIND_PROMOTION"},
+        {"assertion_kind": "K2_QUALIFIED_POSSIBILITY", "direct_support": "DIRECT", "positive_witness_contract": "exact current R1 admission + complete determinants + compatible current type-specific witness/owner proof", "positive_expected": "ACCEPT_PROVEN_AND_APPLICATION_ELIGIBLE", "negative_control": "missing/stale determinant OR witness not current OR context mismatch OR rule not current", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__CLOSED_UNSUPPORTED__NO_OPPOSITE_FACT", "application_effect": "SUPPORTED_CURRENT only after exact current admission; otherwise no write"},
+        {"assertion_kind": "K3_REALIZED_OCCURRENCE", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate exact type-compatible competent occurrence witness at actor/context/time grain", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_K3_OCCURRENCE_PROOF__NO_AUTO_PROMOTION", "negative_control": "K1/K2 proof present but occurrence witness absent/stale", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_OCCURRENCE_FACT", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_K3_PROMOTION_ATTEMPT"},
+        {"assertion_kind": "K4_ACTIVE_DURATIVE", "direct_support": "SEPARATE_CURRENTNESS_PATH_REQUIRED", "positive_witness_contract": "K4 Path A current/interval witness OR Path B owner-declared continuing state + interval support + complete invalidation coverage + no defeating closing fact", "positive_expected": "ACCEPT_PROVEN_ONLY_IF_K4_PATH_AND_WITNESS_CURRENTNESS_PASS", "negative_control": "no lawful Path A/B OR stale/revoked witness OR incomplete termination/supersession/invalidation coverage", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_DURATIVE_FACT", "application_effect": "NO_AUTO_PROMOTION_FROM_CURRENT_K1_OR_K2"}
+      ]
+    },
+    {
+      "candidate_key": "C05-P4-INSTITUTIONAL-GATE-ELIGIBILITY-R1",
+      "mechanism_class": "P4 INSTITUTIONAL_GATE_TREATMENT",
+      "population_target": "C05-WPOP-P4-R1",
+      "source_grain": "institution x gate rule x actor/position x context x interval",
+      "required_determinant_roles": ["P4_GATE_RULE_STATE", "one exact determinant for every ordered source-owned required predicate", "context determinant when not carried by predicates", "optional source-authorized override determinant"],
+      "direct_supported_consequence": "K1 INSTITUTIONAL_GATE_ELIGIBLE",
+      "unsupported_control": "any missing/unknown required predicate => CLOSED_UNSUPPORTED / UNKNOWN_NOT_PROVEN; not INELIGIBLE",
+      "assertion_cases": [
+        {"assertion_kind": "K1_CONSTITUTIVE_POSITIONAL", "direct_support": "DIRECT", "positive_witness_contract": "exact current R1 admission + complete determinants + compatible current type-specific witness/owner proof", "positive_expected": "ACCEPT_PROVEN_AND_APPLICATION_ELIGIBLE", "negative_control": "missing/stale determinant OR witness not current OR context mismatch OR rule not current", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__CLOSED_UNSUPPORTED__NO_OPPOSITE_FACT", "application_effect": "SUPPORTED_CURRENT only after exact current admission; otherwise no write"},
+        {"assertion_kind": "K2_QUALIFIED_POSSIBILITY", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate competent K2 proof under exact owner/type binding", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_ASSERTION_KIND_PROOF", "negative_control": "direct K1 proof only and no separate K2 proof", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_CROSS_KIND_PROMOTION", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_CROSS_KIND_PROMOTION"},
+        {"assertion_kind": "K3_REALIZED_OCCURRENCE", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate exact type-compatible competent occurrence witness at actor/context/time grain", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_K3_OCCURRENCE_PROOF__NO_AUTO_PROMOTION", "negative_control": "K1/K2 proof present but occurrence witness absent/stale", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_OCCURRENCE_FACT", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_K3_PROMOTION_ATTEMPT"},
+        {"assertion_kind": "K4_ACTIVE_DURATIVE", "direct_support": "SEPARATE_CURRENTNESS_PATH_REQUIRED", "positive_witness_contract": "K4 Path A current/interval witness OR Path B owner-declared continuing state + interval support + complete invalidation coverage + no defeating closing fact", "positive_expected": "ACCEPT_PROVEN_ONLY_IF_K4_PATH_AND_WITNESS_CURRENTNESS_PASS", "negative_control": "no lawful Path A/B OR stale/revoked witness OR incomplete termination/supersession/invalidation coverage", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_DURATIVE_FACT", "application_effect": "NO_AUTO_PROMOTION_FROM_CURRENT_K1_OR_K2"}
+      ]
+    },
+    {
+      "candidate_key": "C05-P5-COUNTERPART-CHANNEL-AVAILABLE-R1",
+      "mechanism_class": "P5 COUNTERPART_CHANNEL_RELATION",
+      "population_target": "C05-WPOP-P5-R1",
+      "source_grain": "actor/position x counterpart x channel x context x interval",
+      "required_determinant_roles": ["P5_COUNTERPART_RELATION_STATE", "P5_CHANNEL_ENDPOINT_STATE", "P5_REACHABILITY_STATE", "directionality when source-declared"],
+      "direct_supported_consequence": "K2 COUNTERPART_CHANNEL_AVAILABLE",
+      "unsupported_control": "absent/stale relation/channel/reachability => CLOSED_UNSUPPORTED / UNKNOWN_NOT_PROVEN; no contact/exchange fact",
+      "assertion_cases": [
+        {"assertion_kind": "K1_CONSTITUTIVE_POSITIONAL", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate competent K1 proof under exact owner/type binding", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_ASSERTION_KIND_PROOF", "negative_control": "direct K2 proof only and no separate K1 proof", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_CROSS_KIND_PROMOTION", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_CROSS_KIND_PROMOTION"},
+        {"assertion_kind": "K2_QUALIFIED_POSSIBILITY", "direct_support": "DIRECT", "positive_witness_contract": "exact current R1 admission + complete determinants + compatible current type-specific witness/owner proof", "positive_expected": "ACCEPT_PROVEN_AND_APPLICATION_ELIGIBLE", "negative_control": "missing/stale determinant OR witness not current OR context mismatch OR rule not current", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__CLOSED_UNSUPPORTED__NO_OPPOSITE_FACT", "application_effect": "SUPPORTED_CURRENT only after exact current admission; otherwise no write"},
+        {"assertion_kind": "K3_REALIZED_OCCURRENCE", "direct_support": "NOT_FROM_RULE_ALONE", "positive_witness_contract": "separate exact type-compatible competent occurrence witness at actor/context/time grain", "positive_expected": "ACCEPT_PROVEN_ONLY_BY_SEPARATE_K3_OCCURRENCE_PROOF__NO_AUTO_PROMOTION", "negative_control": "K1/K2 proof present but occurrence witness absent/stale", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_OCCURRENCE_FACT", "application_effect": "NO_CANDIDATE_APPLICATION_FROM_K3_PROMOTION_ATTEMPT"},
+        {"assertion_kind": "K4_ACTIVE_DURATIVE", "direct_support": "SEPARATE_CURRENTNESS_PATH_REQUIRED", "positive_witness_contract": "K4 Path A current/interval witness OR Path B owner-declared continuing state + interval support + complete invalidation coverage + no defeating closing fact", "positive_expected": "ACCEPT_PROVEN_ONLY_IF_K4_PATH_AND_WITNESS_CURRENTNESS_PASS", "negative_control": "no lawful Path A/B OR stale/revoked witness OR incomplete termination/supersession/invalidation coverage", "negative_expected": "REJECT_UNKNOWN_NOT_PROVEN__NO_DURATIVE_FACT", "application_effect": "NO_AUTO_PROMOTION_FROM_CURRENT_K1_OR_K2"}
+      ]
+    }
+  ],
+  "coverage_count": 20,
+  "coverage_formula": "5 candidates x 4 assertion kinds",
+  "all_candidates_current_admission": "CANDIDATE_NOT_CURRENT",
+  "temporal_form_firewall": "Preserve EVENT, CONDITION, DIRECTED_RELATION, RECURRENT_ACTIVITY, TRANSITION, ORDERED_HISTORY as supplied by competent owner; never event-launder a standing condition/relation.",
+  "v3_firewall": "Objective D1 facts only; no subjective uptake/experience, psychology, D2/D3/D4/P6, OBL062 solution, or OBL063 closure."
+}
