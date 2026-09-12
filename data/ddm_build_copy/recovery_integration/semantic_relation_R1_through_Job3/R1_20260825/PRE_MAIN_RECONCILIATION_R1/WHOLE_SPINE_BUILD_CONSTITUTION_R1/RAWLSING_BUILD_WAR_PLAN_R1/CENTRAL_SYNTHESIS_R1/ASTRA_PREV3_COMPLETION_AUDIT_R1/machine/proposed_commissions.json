@@ -1,0 +1,1357 @@
+[
+  {
+    "commission_id": "ASTRA-C01",
+    "role": "RABOCHII to VOZHD/HQ",
+    "mission": "Reconcile audit coverage and exact central-state drift.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_COMPLETION_SCOPE_AND_OBLIGATION_RECONCILIATION_R1_ONLY",
+    "read_set": [
+      "USER-BRIEF",
+      "USER-RETURN",
+      "STATE",
+      "COMP",
+      "B-INVENTORY",
+      "WVS",
+      "B16",
+      "B17",
+      "B21Q",
+      "SDTF-RUNTIME"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker.",
+      "Separate acceptance of audit evidence from adoption of its recommendations and from implementation release.",
+      "Produce a concrete per-row incorporation patch candidate; do not edit the live ledger before HQ adoption."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_COMPLETION_COVERAGE_CANDIDATE.json",
+      "02_OBLIGATION_RECONCILIATION.tsv",
+      "03_EXACT_GATE_DISPOSITIONS_CANDIDATE.md"
+    ],
+    "requires_library": "NO: exact repository evidence sufficient for this reconciliation.",
+    "ready_now": true,
+    "ready_now_semantics": "READY_AFTER_AUDIT_ACCEPTANCE_AND_HQ_RELEASE; not already commissioned",
+    "blocking_gate": [],
+    "dependencies": [],
+    "target_gap_ids": [
+      "GAP-PREV3-001",
+      "GAP-PREV3-002",
+      "GAP-PREV3-003",
+      "GAP-PREV3-030"
+    ],
+    "parallel_with": [
+      "ASTRA-C02",
+      "ASTRA-C03",
+      "ASTRA-C04",
+      "ASTRA-C05",
+      "ASTRA-C06",
+      "ASTRA-C07",
+      "ASTRA-C08"
+    ],
+    "pass_condition": "All required capabilities/domains have scoped duties and owners; stale rows and OBL062 identity meanings are separately disposed in a reviewable candidate.",
+    "blocker_return": "EXACT_SCOPE_OR_INCORPORATION_AUTHORITY_BLOCKER with conflicting source refs, unowned row and competent return owner.",
+    "successor_wake": [
+      "GATE-SCOPE",
+      "GATE-B-LAUNCH"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-C02",
+    "role": "RABOCHII to SUB-VOZHD II",
+    "mission": "Close the exact objective-world/time bootstrap owner/input question.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_OBJECTIVE_WORLD_RELEASE_AND_VALID_TIME_BOOTSTRAP_R1_ONLY",
+    "read_set": [
+      "USER-BRIEF",
+      "A3W",
+      "M4",
+      "M5",
+      "SDTF-COMPANION"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker.",
+      "Account for objective entity/position ownership; distinguish world validity from V3 runtime cursor.",
+      "Return the minimal implementable constructor input contract; do not create facts in this court."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_OBJECTIVE_OWNER_INPUT_MAP.json",
+      "02_WORLD_ROOT_CONTRACT_CANDIDATE.md",
+      "03_BOOTSTRAP_AND_REPLAY_CASES.json"
+    ],
+    "requires_library": "NO for ownership/contract court; later actual source population may require source access.",
+    "ready_now": true,
+    "ready_now_semantics": "READY_AFTER_AUDIT_ACCEPTANCE_AND_HQ_RELEASE; not already commissioned",
+    "blocking_gate": [],
+    "dependencies": [],
+    "target_gap_ids": [
+      "GAP-PREV3-014",
+      "GAP-PREV3-020",
+      "GAP-PREV3-021"
+    ],
+    "parallel_with": [
+      "ASTRA-C01",
+      "ASTRA-C03",
+      "ASTRA-C04",
+      "ASTRA-C05",
+      "ASTRA-C06",
+      "ASTRA-C07",
+      "ASTRA-C08"
+    ],
+    "pass_condition": "Acyclic objective world/release/context/valid-time input contract with exact existing reuse and smallest new-owner/input grain; no V3 actor initialization dependency invented.",
+    "blocker_return": "EXACT_WORLD_VALID_TIME_OWNER_OR_INPUT_BLOCKER; name missing tuple field, source/owner and why designator/hash cannot substitute.",
+    "successor_wake": [
+      "GATE-WORLD"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-C03",
+    "role": "RABOCHII to SUB-VOZHD I",
+    "mission": "Freeze a real positive learned-world workload and exact missing validation/admission premises.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_SOURCE_AND_LEARNED_WORLD_POSITIVE_WORKLOAD_R1_ONLY",
+    "read_set": [
+      "B16",
+      "B-INVENTORY",
+      "DISCOVERY",
+      "ADAPTIVE",
+      "QUERY",
+      "MANUAL",
+      "VISION",
+      "WVS"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker.",
+      "Do not rerun B16 or call all 82 limited outputs positive learned products.",
+      "Begin from existing inherited functions and source evidence; align the final workload to GATE-SCOPE before execution."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_POSITIVE_WORKLOAD_CANDIDATE.json",
+      "02_AUTHORITY_AND_SOURCE_REQUIREMENTS.tsv",
+      "03_VALIDATION_OWNER_DISPOSITION_CANDIDATE.md"
+    ],
+    "requires_library": "CONDITIONAL: metadata/review begins in repo; source/document bodies are needed only where exact claims require them.",
+    "ready_now": true,
+    "ready_now_semantics": "READY_AFTER_AUDIT_ACCEPTANCE_AND_HQ_RELEASE; not already commissioned",
+    "blocking_gate": [],
+    "dependencies": [],
+    "target_gap_ids": [
+      "GAP-PREV3-008",
+      "GAP-PREV3-009",
+      "GAP-PREV3-010",
+      "GAP-PREV3-011",
+      "GAP-PREV3-013",
+      "GAP-PREV3-027"
+    ],
+    "parallel_with": [
+      "ASTRA-C01",
+      "ASTRA-C02",
+      "ASTRA-C04",
+      "ASTRA-C05",
+      "ASTRA-C06",
+      "ASTRA-C07",
+      "ASTRA-C08"
+    ],
+    "pass_condition": "Concrete authorized-search candidate workload includes a defensible positive product class and required joint/higher-order coverage; every missing premise/source is individually named.",
+    "blocker_return": "EXACT_DISCOVERY_VALIDATION_OR_SOURCE_AUTHORITY_BLOCKER; missing object/owner/document and affected operation identified.",
+    "successor_wake": [
+      "GATE-LEARNED"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-C04",
+    "role": "RABOCHII to SUB-VOZHD I",
+    "mission": "Turn current Field Forge semantics into a finite structural-production docket.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_FIELD_FORGE_STRUCTURAL_PRODUCTION_COVERAGE_R1_ONLY",
+    "read_set": [
+      "FF",
+      "FF-CLOSE",
+      "GT12",
+      "M1-FF",
+      "M2",
+      "M3",
+      "VISION"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker.",
+      "Keep OBL006 dormant unless a named required transport operation triggers it.",
+      "Do not wait for C03 to inventory direct source-backed structural operations; qualified learned inputs can be consumed later."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_STRUCTURAL_OPERATION_DOCKET.json",
+      "02_REUSE_AND_MISSING_AUTHORITY.tsv",
+      "03_PRODUCER_HANDOFFS.md"
+    ],
+    "requires_library": "CONDITIONAL for exact new source evidence; initial contract/reuse mapping is repo-backed.",
+    "ready_now": true,
+    "ready_now_semantics": "READY_AFTER_AUDIT_ACCEPTANCE_AND_HQ_RELEASE; not already commissioned",
+    "blocking_gate": [],
+    "dependencies": [],
+    "target_gap_ids": [
+      "GAP-PREV3-015",
+      "GAP-PREV3-016"
+    ],
+    "parallel_with": [
+      "ASTRA-C01",
+      "ASTRA-C02",
+      "ASTRA-C03",
+      "ASTRA-C05",
+      "ASTRA-C06",
+      "ASTRA-C07",
+      "ASTRA-C08"
+    ],
+    "pass_condition": "Required concrete relation/position/channel operations map to existing law and exact source evidence; new work is separated from already closed R2 semantics.",
+    "blocker_return": "EXACT_STRUCTURAL_OPERATION_OWNER_OR_EVIDENCE_BLOCKER, with no speculative general ontology extension.",
+    "successor_wake": [
+      "GATE-STRUCTURAL"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-C05",
+    "role": "RABOCHII to SUB-VOZHD II",
+    "mission": "Produce actual objective mechanism-rule candidates, not another hosting constitution.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "SDTF_OBJECTIVE_RULE_BODY_AND_WORLD_POPULATION_R1_ONLY",
+    "read_set": [
+      "SDTF-SEM",
+      "SDTF-COMPANION",
+      "SDTF-R1",
+      "SDTF-R2",
+      "SDTF-R3",
+      "SDTF-R4",
+      "SDTF-RUNTIME"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker.",
+      "Use already accepted SDTF R4 categories; no D2/D3/D4/P6 and no subjective effect law.",
+      "Produce reviewable rule bodies using existing evidence; issue no current facts or authority grants in this candidate court."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_CONCRETE_RULE_CANDIDATES.json",
+      "02_SOURCE_CAUSAL_CALIBRATION_PREMISES.tsv",
+      "03_EVALUATOR_AND_WITNESS_CASES.json"
+    ],
+    "requires_library": "CONDITIONAL: use exact authoritative source bodies when required; do not reopen unrelated full-book excavation.",
+    "ready_now": true,
+    "ready_now_semantics": "READY_AFTER_AUDIT_ACCEPTANCE_AND_HQ_RELEASE; not already commissioned",
+    "blocking_gate": [],
+    "dependencies": [],
+    "target_gap_ids": [
+      "GAP-PREV3-017",
+      "GAP-PREV3-018",
+      "GAP-PREV3-019",
+      "GAP-PREV3-022"
+    ],
+    "parallel_with": [
+      "ASTRA-C01",
+      "ASTRA-C02",
+      "ASTRA-C03",
+      "ASTRA-C04",
+      "ASTRA-C06",
+      "ASTRA-C07",
+      "ASTRA-C08"
+    ],
+    "pass_condition": "Finite concrete P1-P5/K1-K4-applicable objective rule candidates specify executable semantics, falsifiers, evidence/witness scope and separate calibration; exact population successor identified.",
+    "blocker_return": "EXACT_RULE_BODY_EVIDENCE_OR_CALIBRATION_AUTHORITY_BLOCKER; distinguish absent body, absent code and absent data.",
+    "successor_wake": [
+      "GATE-SDTF"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-C06",
+    "role": "RABOCHII to SUB-VOZHD III with V3 semantic owner",
+    "mission": "Close the narrow generic objective non-event receipt/ingress contract.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_OBJECTIVE_NON_EVENT_SERVING_AND_V3_INGRESS_R1_ONLY",
+    "read_set": [
+      "USER-BRIEF",
+      "SDTF-COMPANION",
+      "CAN008",
+      "M4",
+      "M5",
+      "STATE"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker.",
+      "Use a distinct exact non-event grain while C01 reconciles OBL062 naming.",
+      "Do not wait for actual world population to specify this receipt contract."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_NON_EVENT_RECEIPT_CONTRACT_CANDIDATE.md",
+      "02_OWNERSHIP_AND_FAMILY_BINDINGS.json",
+      "03_POSITIVE_NEGATIVE_CASES.json"
+    ],
+    "requires_library": "NO for the bounded contract/owner court.",
+    "ready_now": true,
+    "ready_now_semantics": "READY_AFTER_AUDIT_ACCEPTANCE_AND_HQ_RELEASE; not already commissioned",
+    "blocking_gate": [],
+    "dependencies": [],
+    "target_gap_ids": [
+      "GAP-PREV3-003",
+      "GAP-PREV3-004",
+      "GAP-PREV3-023",
+      "GAP-PREV3-024",
+      "GAP-PREV3-025"
+    ],
+    "parallel_with": [
+      "ASTRA-C01",
+      "ASTRA-C02",
+      "ASTRA-C03",
+      "ASTRA-C04",
+      "ASTRA-C05",
+      "ASTRA-C07",
+      "ASTRA-C08"
+    ],
+    "pass_condition": "Standing/durative/context input can be served losslessly with exact owner/time/permissions; objective actor indexing allowed; uptake/appraisal remains V3.",
+    "blocker_return": "EXACT_NON_EVENT_OWNER_OR_INGRESS_CONFLICT, both authority sources retained and precise target gate named.",
+    "successor_wake": [
+      "GATE-NON-EVENT"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-C07",
+    "role": "RABOCHII to SUB-VOZHD III; separate independent qualifier",
+    "mission": "Prepare the smallest enforceable M3 result-contract repair and resolve three test-contract deltas.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_PRODUCER_RESULT_FIREWALL_AND_CONTRACT_DRIFT_REPAIR_COURT_R1_ONLY",
+    "read_set": [
+      "M3",
+      "LOCAL-M3",
+      "LOCAL-TEST",
+      "RELATIONS",
+      "M4-BINDING",
+      "USER-BRIEF"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker.",
+      "Reproduce only if needed to resolve a contradiction; durable probe and selected-test evidence are provided.",
+      "This ready-now grain specifies the repair; code changes wait for GATE-FIREWALL, avoiding unadopted schema invention."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_RESULT_CONTRACT_REPAIR_CANDIDATE.md",
+      "02_ERROR_CALLER_TEST_DISPOSITION.tsv",
+      "03_HOSTILE_CASES_AND_IMPLEMENTATION_SPEC.json"
+    ],
+    "requires_library": "NO: frozen code, tests and attached audit evidence are sufficient.",
+    "ready_now": true,
+    "ready_now_semantics": "READY_AFTER_AUDIT_ACCEPTANCE_AND_HQ_RELEASE; not already commissioned",
+    "blocking_gate": [],
+    "dependencies": [],
+    "target_gap_ids": [
+      "GAP-PREV3-005",
+      "GAP-PREV3-006",
+      "GAP-PREV3-007"
+    ],
+    "parallel_with": [
+      "ASTRA-C01",
+      "ASTRA-C02",
+      "ASTRA-C03",
+      "ASTRA-C04",
+      "ASTRA-C05",
+      "ASTRA-C06",
+      "ASTRA-C08"
+    ],
+    "pass_condition": "Exact repair contract/spec closes the reproduced alias hole, permits objective actor facts, and preserves stronger relation/use guards; implementation successor is bounded.",
+    "blocker_return": "EXACT_RESULT_SCHEMA_OR_CONTRACT_OWNER_BLOCKER; do not guess new payload meaning or weaken guards.",
+    "successor_wake": [
+      "GATE-FIREWALL"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-C08",
+    "role": "RABOCHII to SUB-VOZHD III with objective consumer owners",
+    "mission": "Bind generic incompleteness law to named objective consumer policies and correct B dependency reasoning.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_OBJECTIVE_CONSUMER_BOUNDED_EVIDENCE_POLICY_R1_ONLY",
+    "read_set": [
+      "BOUNDED",
+      "OBL063-GENERIC",
+      "BLOCKER1",
+      "BLOCKER2",
+      "WVS",
+      "B-WAIT",
+      "B21Q"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker.",
+      "Do not wake B or treat this recommendation as launch authority.",
+      "No broad invented priors or implicit renormalization."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_OBJECTIVE_CONSUMER_POLICY_CANDIDATES.json",
+      "02_LOSS_AND_REFUSAL_MATRIX.tsv",
+      "03_B_GATE_REQUIREMENT_RECOMMENDATION.md"
+    ],
+    "requires_library": "NO for policy/repository gate analysis; subsequent real loss tests may require admitted data.",
+    "ready_now": true,
+    "ready_now_semantics": "READY_AFTER_AUDIT_ACCEPTANCE_AND_HQ_RELEASE; not already commissioned",
+    "blocking_gate": [],
+    "dependencies": [],
+    "target_gap_ids": [
+      "GAP-PREV3-028",
+      "GAP-PREV3-029",
+      "GAP-PREV3-030",
+      "GAP-PREV3-031"
+    ],
+    "parallel_with": [
+      "ASTRA-C01",
+      "ASTRA-C02",
+      "ASTRA-C03",
+      "ASTRA-C04",
+      "ASTRA-C05",
+      "ASTRA-C06",
+      "ASTRA-C07"
+    ],
+    "pass_condition": "Each named objective consumer has explicit evidence requirements, authorized fallback/omission/refusal and no-renormalization; exact B holds assessed without psychic-terminal premise.",
+    "blocker_return": "EXACT_OBJECTIVE_CONSUMER_POLICY_OWNER_BLOCKER; missing policy is not evidence for a universal Enneagram terminal.",
+    "successor_wake": [
+      "GATE-DEGRADED",
+      "GATE-B-LAUNCH"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W01",
+    "role": "SUB-VOZHD III",
+    "mission": "Implement and independently qualify the adopted result/contract repair.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_RESULT_FIREWALL_AND_CONTRACT_IMPLEMENTATION_R1_ONLY",
+    "read_set": [
+      "M3",
+      "LOCAL-M3",
+      "LOCAL-TEST"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-FIREWALL"
+    ],
+    "dependencies": [
+      "GATE-FIREWALL"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-006",
+      "GAP-PREV3-007"
+    ],
+    "parallel_with": [
+      "ASTRA-W02"
+    ],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-V2"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W02",
+    "role": "SUB-VOZHD II / III",
+    "mission": "Materialize lawful objective roots and objective entity/position bindings.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_OBJECTIVE_ROOT_AND_POSITION_MATERIALIZATION_R1_ONLY",
+    "read_set": [
+      "A3W",
+      "M4",
+      "SDTF-SEM"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-WORLD"
+    ],
+    "dependencies": [
+      "GATE-WORLD"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-015",
+      "GAP-PREV3-021"
+    ],
+    "parallel_with": [
+      "ASTRA-W01"
+    ],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-V1",
+      "GATE-V2",
+      "GATE-V3",
+      "GATE-V4"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W03",
+    "role": "SUB-VOZHD I",
+    "mission": "Implement missing learned functions and run admitted positive learned workload.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_POSITIVE_LEARNED_PRODUCT_EXECUTION_R1_ONLY",
+    "read_set": [
+      "B16",
+      "DISCOVERY",
+      "VISION"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-SCOPE",
+      "GATE-LEARNED"
+    ],
+    "dependencies": [
+      "GATE-SCOPE",
+      "GATE-LEARNED"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-008",
+      "GAP-PREV3-009",
+      "GAP-PREV3-011",
+      "GAP-PREV3-012",
+      "GAP-PREV3-013",
+      "GAP-PREV3-027"
+    ],
+    "parallel_with": [
+      "ASTRA-W04"
+    ],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-V2"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W04",
+    "role": "SUB-VOZHD I",
+    "mission": "Execute and populate qualified structural/Field Forge operations.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_STRUCTURAL_PRODUCTION_EXECUTION_R1_ONLY",
+    "read_set": [
+      "FF",
+      "FF-CLOSE",
+      "GT12"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-SCOPE",
+      "GATE-STRUCTURAL"
+    ],
+    "dependencies": [
+      "GATE-SCOPE",
+      "GATE-STRUCTURAL"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-016"
+    ],
+    "parallel_with": [
+      "ASTRA-W03"
+    ],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-V2"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W05",
+    "role": "SUB-VOZHD II",
+    "mission": "Implement exact SDTF evaluators and populate current rule applications/facts/occurrences.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "SDTF_OBJECTIVE_RULE_AND_WORLD_EXECUTION_R1_ONLY",
+    "read_set": [
+      "SDTF-RUNTIME",
+      "SDTF-R2",
+      "SDTF-R3",
+      "SDTF-R4"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-SCOPE",
+      "GATE-SDTF",
+      "GATE-WORLD"
+    ],
+    "dependencies": [
+      "GATE-SCOPE",
+      "GATE-SDTF",
+      "GATE-WORLD"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-018",
+      "GAP-PREV3-019",
+      "GAP-PREV3-022"
+    ],
+    "parallel_with": [],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-V3",
+      "GATE-V4"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W06",
+    "role": "SUB-VOZHD III",
+    "mission": "Implement objective non-event/D1-prime serving and named degraded consumer policies.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_OBJECTIVE_SERVING_AND_DEGRADATION_BINDING_R1_ONLY",
+    "read_set": [
+      "M4",
+      "CAN008",
+      "BOUNDED"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-NON-EVENT",
+      "GATE-DEGRADED"
+    ],
+    "dependencies": [
+      "GATE-NON-EVENT",
+      "GATE-DEGRADED"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-024",
+      "GAP-PREV3-029"
+    ],
+    "parallel_with": [],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-V3",
+      "GATE-V4"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W07",
+    "role": "Existing B coordinator",
+    "mission": "Release HB05 final workload.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "HB05_EXACT_EQUAL_WORKLOAD_FINALIZATION_ONLY",
+    "read_set": [
+      "B21Q",
+      "B-WAIT",
+      "WVS"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-B-LAUNCH"
+    ],
+    "dependencies": [
+      "GATE-B-LAUNCH"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-031"
+    ],
+    "parallel_with": [
+      "ASTRA-W08"
+    ],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-B-INTAKE"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W08",
+    "role": "Existing B coordinator",
+    "mission": "Release HB06 oracle independently of HB05.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "HB06_EXACT_ORACLE_FINALIZATION_ONLY",
+    "read_set": [
+      "B21Q",
+      "B-WAIT"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-B-LAUNCH"
+    ],
+    "dependencies": [
+      "GATE-B-LAUNCH"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-031"
+    ],
+    "parallel_with": [
+      "ASTRA-W07"
+    ],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-B-INTAKE"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W09",
+    "role": "Existing B coordinator",
+    "mission": "Assemble HB07 host/scratch/cleanup launch packet then seek separate C09 launch.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "HB07_PHYSICAL_COURT_LAUNCH_PACKET_ONLY",
+    "read_set": [
+      "B21Q",
+      "B-WAIT"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-B-INTAKE"
+    ],
+    "dependencies": [
+      "GATE-B-INTAKE"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-031"
+    ],
+    "parallel_with": [],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-C09"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W11",
+    "role": "Independent qualifier reporting directly to VOZHD",
+    "mission": "Run H1-H6 on frozen composed candidates, independent of producers.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_HORIZONTAL_AND_COMPOSED_HOSTILE_QUALIFICATION_R1_ONLY",
+    "read_set": [
+      "VISION",
+      "COMP",
+      "LOCAL-M3"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-QUALIFICATION"
+    ],
+    "dependencies": [
+      "GATE-QUALIFICATION"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-033"
+    ],
+    "parallel_with": [],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": [
+      "GATE-RELEASE"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W12",
+    "role": "VOZHD/HQ release authority",
+    "mission": "Adopt qualified objective release and adjudicate separate final border freeze.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_RELEASE_ADOPTION_AND_BORDER_FREEZE_R1_ONLY",
+    "read_set": [
+      "COMP",
+      "STATE",
+      "CAN008"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_INPUT_IDENTITY_FREEZE.json",
+      "02_EXECUTION_OR_ADOPTION_EVIDENCE.json",
+      "03_EXACT_GAP_DISPOSITIONS.tsv"
+    ],
+    "requires_library": "CONDITIONAL: only if the exact admitted real-data workload needs source bytes/documents.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-RELEASE"
+    ],
+    "dependencies": [
+      "GATE-RELEASE"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-034"
+    ],
+    "parallel_with": [],
+    "pass_condition": "Every named input gate is satisfied at exact identities and each target gap PASS condition is proved at its authorized grain.",
+    "blocker_return": "EXACT_REQUIRED_GATE_OR_PRODUCER_INPUT_BLOCKER; return missing identity, owner and dependent claim only.",
+    "successor_wake": []
+  },
+  {
+    "commission_id": "ASTRA-W10V1",
+    "role": "SUB-VOZHD III with exact producers",
+    "mission": "Reuse accepted GT12 through lawful shared roots without changing its CONTEXT-only identity/use.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_REAL_OBJECTIVE_V1_COMPOSITION_R1_ONLY",
+    "read_set": [
+      "GT12",
+      "M4",
+      "SDTF-RUNTIME"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_EXACT_INPUT_FREEZE.json",
+      "02_REAL_COMPOSITION_REPLAY_EVIDENCE.json"
+    ],
+    "requires_library": "CONDITIONAL: use retained admitted producer objects; reacquire empirical bytes only for a changed dependency requiring it.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-V1"
+    ],
+    "dependencies": [
+      "GATE-V1"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-025",
+      "GAP-PREV3-026",
+      "GAP-PREV3-032"
+    ],
+    "parallel_with": [
+      "ASTRA-W10V2",
+      "ASTRA-W10V3",
+      "ASTRA-W10V4"
+    ],
+    "pass_condition": "The exact V1 claim is proved on governed current inputs with preserved permissions and reproducible roots.",
+    "blocker_return": "EXACT_V1_PRODUCER_INPUT_OR_COMPOSITION_BLOCKER; do not reopen unrelated proved routes.",
+    "successor_wake": [
+      "GATE-QUALIFICATION"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W10V2",
+    "role": "SUB-VOZHD III with exact producers",
+    "mission": "Serve real positive validated learned/higher-order structural products through shared roots.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_REAL_OBJECTIVE_V2_COMPOSITION_R1_ONLY",
+    "read_set": [
+      "GT12",
+      "M4",
+      "SDTF-RUNTIME"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_EXACT_INPUT_FREEZE.json",
+      "02_REAL_COMPOSITION_REPLAY_EVIDENCE.json"
+    ],
+    "requires_library": "CONDITIONAL: use retained admitted producer objects; reacquire empirical bytes only for a changed dependency requiring it.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-V2"
+    ],
+    "dependencies": [
+      "GATE-V2"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-025",
+      "GAP-PREV3-026",
+      "GAP-PREV3-032"
+    ],
+    "parallel_with": [
+      "ASTRA-W10V1",
+      "ASTRA-W10V3",
+      "ASTRA-W10V4"
+    ],
+    "pass_condition": "The exact V2 claim is proved on governed current inputs with preserved permissions and reproducible roots.",
+    "blocker_return": "EXACT_V2_PRODUCER_INPUT_OR_COMPOSITION_BLOCKER; do not reopen unrelated proved routes.",
+    "successor_wake": [
+      "GATE-QUALIFICATION"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W10V3",
+    "role": "SUB-VOZHD III with exact producers",
+    "mission": "Serve actual actor-indexed objective position/standing/durative consequences without an encounter.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_REAL_OBJECTIVE_V3_COMPOSITION_R1_ONLY",
+    "read_set": [
+      "GT12",
+      "M4",
+      "SDTF-RUNTIME"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_EXACT_INPUT_FREEZE.json",
+      "02_REAL_COMPOSITION_REPLAY_EVIDENCE.json"
+    ],
+    "requires_library": "CONDITIONAL: use retained admitted producer objects; reacquire empirical bytes only for a changed dependency requiring it.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-V3"
+    ],
+    "dependencies": [
+      "GATE-V3"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-025",
+      "GAP-PREV3-026",
+      "GAP-PREV3-032"
+    ],
+    "parallel_with": [
+      "ASTRA-W10V1",
+      "ASTRA-W10V2",
+      "ASTRA-W10V4"
+    ],
+    "pass_condition": "The exact V3 claim is proved on governed current inputs with preserved permissions and reproducible roots.",
+    "blocker_return": "EXACT_V3_PRODUCER_INPUT_OR_COMPOSITION_BLOCKER; do not reopen unrelated proved routes.",
+    "successor_wake": [
+      "GATE-QUALIFICATION"
+    ]
+  },
+  {
+    "commission_id": "ASTRA-W10V4",
+    "role": "SUB-VOZHD III with exact producers",
+    "mission": "Prove objective occurrence/world-response succession, selective invalidation and historical replay.",
+    "starting_authority": {
+      "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+      "observed_pre_main": "9b60d3936ad7919f0b5583b4024a821e4591c9c8",
+      "required_dispatch_authority": "HQ_ACCEPTED_AUDIT_AND_EXPLICIT_BOUNDED_COMMISSION_RELEASE",
+      "packet_status": "PROPOSAL_NOT_DISPATCHED"
+    },
+    "exact_grain": "PREV3_REAL_OBJECTIVE_V4_COMPOSITION_R1_ONLY",
+    "read_set": [
+      "GT12",
+      "M4",
+      "SDTF-RUNTIME"
+    ],
+    "do": [
+      "Read the exact source identities and scope ceilings below.",
+      "Freeze the actual branch/base and emit a scope-grounding receipt; if current authority changed, return the exact delta before changing scope.",
+      "Reuse already adopted producers/contracts. Produce the listed finite outputs and one independently reviewable PASS or exact blocker."
+    ],
+    "do_not": [
+      "Do not modify MAIN or PRE-MAIN or self-adopt authority.",
+      "Do not revive quarantined driver/type semantics, recreate closed canaries without contradictory evidence, or change accepted identity history.",
+      "Do not construct persona, traits, beliefs, uptake, response or developmental biography.",
+      "Do not consume unqualified sibling output as current authority; return frozen candidate identities through the integrator."
+    ],
+    "expected_artifacts": [
+      "00_RETURN.md",
+      "01_EXACT_INPUT_FREEZE.json",
+      "02_REAL_COMPOSITION_REPLAY_EVIDENCE.json"
+    ],
+    "requires_library": "CONDITIONAL: use retained admitted producer objects; reacquire empirical bytes only for a changed dependency requiring it.",
+    "ready_now": false,
+    "ready_now_semantics": "WAITING_FOR_EXACT_GATE",
+    "blocking_gate": [
+      "GATE-V4"
+    ],
+    "dependencies": [
+      "GATE-V4"
+    ],
+    "target_gap_ids": [
+      "GAP-PREV3-025",
+      "GAP-PREV3-026",
+      "GAP-PREV3-032"
+    ],
+    "parallel_with": [
+      "ASTRA-W10V1",
+      "ASTRA-W10V2",
+      "ASTRA-W10V3"
+    ],
+    "pass_condition": "The exact V4 claim is proved on governed current inputs with preserved permissions and reproducible roots.",
+    "blocker_return": "EXACT_V4_PRODUCER_INPUT_OR_COMPOSITION_BLOCKER; do not reopen unrelated proved routes.",
+    "successor_wake": [
+      "GATE-QUALIFICATION"
+    ]
+  }
+]
