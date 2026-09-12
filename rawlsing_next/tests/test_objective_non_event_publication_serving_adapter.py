@@ -211,6 +211,16 @@ def test_k4_current_durative_requires_exact_closure_or_termination_coverage():
 
 
 def test_publication_and_resolver_cannot_widen_producer_permissions():
+    active_capable = _item(
+        "active-ceiling", uses=("REVIEW", "CONTEXT", "ACTIVE_CAUSAL")
+    )
+    with pytest.raises(NonEventPermissionError, match="ACTIVE_CAUSAL"):
+        make_non_event_publication_entry(
+            active_capable,
+            publication_authority_ref=_authority("publication-active"),
+            publication_allowed_uses=("ACTIVE_CAUSAL",),
+        )
+
     review_only = _item("review-only", uses=("REVIEW",))
     with pytest.raises(NonEventPermissionError):
         make_non_event_publication_entry(
