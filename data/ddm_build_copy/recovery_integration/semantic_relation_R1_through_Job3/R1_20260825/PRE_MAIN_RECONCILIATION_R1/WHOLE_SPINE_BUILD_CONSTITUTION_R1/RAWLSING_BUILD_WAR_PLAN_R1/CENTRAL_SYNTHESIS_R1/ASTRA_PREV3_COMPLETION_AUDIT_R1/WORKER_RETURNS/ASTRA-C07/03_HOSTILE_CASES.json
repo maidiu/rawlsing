@@ -1,0 +1,129 @@
+{
+  "artifact": "ASTRA-C07_PREV3_PRODUCER_RESULT_FIREWALL_HOSTILE_CASES_R1",
+  "status": "QUALIFICATION_VECTORS_FOR_GATE_FIREWALL__NOT_PRODUCTION_AUTHORITY",
+  "semantic_floor": "3468673673db2f3de804d6e825585f86ff98e870",
+  "current_evidence": {
+    "literal_actor_state": {"payload": {"actor_state": "x"}, "current_state": "DENIED", "current_positive_object": false},
+    "psychometric_motivation_alias": {"payload": {"psychometric_type": 4, "motivation": "approval"}, "current_state": "SUPPORTED", "current_positive_object": true},
+    "preference_trait_alias": {"payload": {"subject_ref": "urn:audit:subject:1", "preference": "deference", "psychological_trait": "submissive"}, "current_state": "SUPPORTED", "current_positive_object": true},
+    "structural_control": {"payload": {"relation_kind": "TEST_HIGHER_ORDER"}, "current_state": "SUPPORTED", "current_positive_object": true}
+  },
+  "qualification_contract": {
+    "positive_requirement": "Exact current competent PRE_V3_OBJECTIVE_WORLD result-schema/semantic-owner binding plus payload conformance.",
+    "actor_indexing_modes": ["NO_ACTOR_INDEX", "OBJECTIVE_ACTOR_INDEXED"],
+    "person_state_semantics": "FORBIDDEN",
+    "lexical_blacklist_is_positive_authority": false,
+    "note": "Fixture schema labels below are hostile-court fixtures only; they are not production authority."
+  },
+  "cases": [
+    {
+      "id": "M3-H01",
+      "class": "known_alias_person_state",
+      "payload": {"psychometric_type": 4, "motivation": "approval"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_STRUCTURAL_RESULT@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "NO_ACTOR_INDEX"},
+      "required_successor_outcome": "DENIED_RESULT_SCHEMA_NONCONFORMANCE",
+      "positive_object": false,
+      "reason": "Psychometric type and motivation are V3/person-state semantics and cannot conform to an objective structural result contract."
+    },
+    {
+      "id": "M3-H02",
+      "class": "known_alias_person_state_with_subject_ref",
+      "payload": {"subject_ref": "urn:audit:subject:1", "preference": "deference", "psychological_trait": "submissive"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_ACTOR_POSITION@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "OBJECTIVE_ACTOR_INDEXED"},
+      "required_successor_outcome": "DENIED_RESULT_SCHEMA_NONCONFORMANCE",
+      "positive_object": false,
+      "reason": "An actor/subject identifier does not legalize preference or psychological-trait production."
+    },
+    {
+      "id": "M3-H03",
+      "class": "nested_alias_without_current_forbidden_key_tokens",
+      "payload": {"relation_kind": "TEST_HIGHER_ORDER", "attributes": {"drive": "approval", "temperament": "submissive"}},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_STRUCTURAL_RESULT@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "NO_ACTOR_INDEX"},
+      "required_successor_outcome": "DENIED_RESULT_SCHEMA_NONCONFORMANCE",
+      "positive_object": false,
+      "reason": "The firewall must not depend on whether future aliases appear in a string blacklist."
+    },
+    {
+      "id": "M3-H04",
+      "class": "value_level_person_semantics",
+      "payload": {"relation_kind": "TEST_HIGHER_ORDER", "semantic_class": "psychological_trait", "value": "submissive"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_STRUCTURAL_RESULT@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "NO_ACTOR_INDEX"},
+      "required_successor_outcome": "DENIED_RESULT_SCHEMA_NONCONFORMANCE",
+      "positive_object": false,
+      "reason": "A key-only token scan cannot be the jurisdiction proof; typed schema enums/classes must exclude person-state."
+    },
+    {
+      "id": "M3-H05",
+      "class": "obfuscated_person_state",
+      "payload": {"p_type": 4, "goal": "approval"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_STRUCTURAL_RESULT@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "NO_ACTOR_INDEX"},
+      "required_successor_outcome": "DENIED_RESULT_SCHEMA_NONCONFORMANCE",
+      "positive_object": false,
+      "reason": "Unknown/non-schema fields fail closed regardless of lexical resemblance."
+    },
+    {
+      "id": "M3-H06",
+      "class": "lawful_non_actor_structural_positive_control",
+      "payload": {"relation_kind": "TEST_HIGHER_ORDER", "condition_ref": "urn:audit:condition:1", "constraint_ref": "urn:audit:constraint:1"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_STRUCTURAL_RESULT@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "NO_ACTOR_INDEX", "person_state_semantics": "FORBIDDEN"},
+      "required_successor_outcome": "SUPPORTED",
+      "positive_object": true,
+      "reason": "Exact schema-bound objective structural semantics remain lawful."
+    },
+    {
+      "id": "M3-H07",
+      "class": "lawful_objective_actor_indexed_positive_control",
+      "payload": {"actor_ref": "urn:audit:actor:1", "institution_ref": "urn:audit:institution:1", "position_kind": "EMPLOYEE_OF"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_ACTOR_POSITION@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "OBJECTIVE_ACTOR_INDEXED", "person_state_semantics": "FORBIDDEN"},
+      "required_successor_outcome": "SUPPORTED",
+      "positive_object": true,
+      "reason": "Objective actor position is not person-state; an actor identifier is allowed only under exact objective actor-indexed schema authority."
+    },
+    {
+      "id": "M3-H08",
+      "class": "objective_actor_opportunity_positive_control",
+      "payload": {"actor_ref": "urn:audit:actor:1", "opportunity_ref": "urn:audit:opportunity:1", "availability_state": "AVAILABLE"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_ACTOR_OPPORTUNITY@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "OBJECTIVE_ACTOR_INDEXED", "person_state_semantics": "FORBIDDEN"},
+      "required_successor_outcome": "SUPPORTED",
+      "positive_object": true,
+      "reason": "Objective availability may be actor-indexed without asserting uptake, experience, preference, or response."
+    },
+    {
+      "id": "M3-H09",
+      "class": "opportunity_to_uptake_laundering",
+      "payload": {"actor_ref": "urn:audit:actor:1", "opportunity_ref": "urn:audit:opportunity:1", "uptake": "accepted"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_ACTOR_OPPORTUNITY@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "OBJECTIVE_ACTOR_INDEXED"},
+      "required_successor_outcome": "DENIED_RESULT_SCHEMA_NONCONFORMANCE",
+      "positive_object": false,
+      "reason": "OBJECTIVE_OPPORTUNITY is not ACTOR_UPTAKE."
+    },
+    {
+      "id": "M3-H10",
+      "class": "missing_result_contract_binding",
+      "payload": {"relation_kind": "TEST_HIGHER_ORDER"},
+      "fixture_binding": null,
+      "required_successor_outcome": "FAIL_CLOSED_NO_POSITIVE_OBJECT",
+      "positive_object": false,
+      "reason": "A generic mapping cannot self-authorize as objective."
+    },
+    {
+      "id": "M3-H11",
+      "class": "unresolvable_exact_schema_ref",
+      "payload": {"relation_kind": "TEST_HIGHER_ORDER"},
+      "fixture_binding": {"schema_ref": {"kind": "M3ResultSchema@1", "object_id": "missing", "content_hash": "0000000000000000000000000000000000000000000000000000000000000000"}, "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "NO_ACTOR_INDEX"},
+      "required_successor_outcome": "INTEGRITY_FAILURE_NO_POSITIVE_OBJECT",
+      "positive_object": false,
+      "reason": "Supplied exact schema refs must resolve exactly; no default/latest/fuzzy fallback."
+    },
+    {
+      "id": "M3-H12",
+      "class": "binding_identity_replay_attack",
+      "payload": {"actor_ref": "urn:audit:actor:1", "institution_ref": "urn:audit:institution:1", "position_kind": "EMPLOYEE_OF"},
+      "fixture_binding": {"schema": "HOSTILE_FIXTURE_OBJECTIVE_ACTOR_POSITION@1", "jurisdiction": "PRE_V3_OBJECTIVE_WORLD", "actor_indexing_mode": "OBJECTIVE_ACTOR_INDEXED"},
+      "mutation": {"schema": "HOSTILE_FIXTURE_DIFFERENT_RESULT@1"},
+      "required_successor_outcome": "OBJECT_OR_REPLAY_IDENTITY_CHANGES_OR_MUTATION_IS_REJECTED",
+      "positive_object": true,
+      "reason": "Result-contract identity is part of positive object/replay identity and cannot be swapped without consequence."
+    }
+  ]
+}
