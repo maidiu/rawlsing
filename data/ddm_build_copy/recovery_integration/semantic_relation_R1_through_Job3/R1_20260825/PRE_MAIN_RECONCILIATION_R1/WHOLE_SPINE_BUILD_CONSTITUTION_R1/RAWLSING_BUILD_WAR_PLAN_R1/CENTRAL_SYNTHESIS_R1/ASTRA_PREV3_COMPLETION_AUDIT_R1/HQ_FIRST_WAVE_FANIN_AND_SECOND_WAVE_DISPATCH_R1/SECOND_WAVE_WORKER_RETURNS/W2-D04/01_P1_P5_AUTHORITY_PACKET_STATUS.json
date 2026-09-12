@@ -1,0 +1,219 @@
+{
+  "schema": "W2_D04_P1_P5_AUTHORITY_PACKET_STATUS_R1",
+  "commission": "SDTF_CONCRETE_RULE_EVIDENCE_AND_CALIBRATION_AUTHORITY_PACKET_R1_ONLY",
+  "commission_tip": "d2d16daec28c1d10945f222338f7d02c8668b816",
+  "branch": "agent/rabochii-prev3-w2-d04-sdtf-evidence-calibration-r1",
+  "c05_authority_tip": "1553cb678754e577d19e56d20460e53527d472c9",
+  "r4_rule_authority_binding_contract": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0",
+  "result": "PASS_WITH_EXACT_CANDIDATE_SPECIFIC_AUTHORITY_BLOCKERS",
+  "library_use": {
+    "performed": false,
+    "reason": "Immutable source ledgers already contain exact source locations, claim statuses, design ceilings, and coordinator full-text spot-checks sufficient for the bounded source/claim packet. The remaining blockers are project-governance authority objects; additional source-body reading cannot create them."
+  },
+  "global_law": {
+    "source_citation_is_not_causal_use_authority": true,
+    "constitution_current_is_not_rule_current": true,
+    "all_candidates_value_mode": "NONNUMERIC",
+    "numeric_calibration_authority_required": false,
+    "explicit_nonnumeric_calibration_na_basis_required": true,
+    "no_rule_admitted_on_worker_branch": true,
+    "no_actor_fact_minted": true,
+    "no_k1_k2_to_k3_k4_promotion": true,
+    "no_d2_d3_d4_p6": true
+  },
+  "source_ledger_refs": {
+    "coordinator_theory_source_ledger": {
+      "commit": "43e52f12bb7e175d108446c6c852e5532d22b9ad",
+      "git_blob": "ec79656b498411e3c78927d2bf8c8df6e31e1da2"
+    },
+    "r4_source_rule_traceability_companion": {
+      "commit": "43e52f12bb7e175d108446c6c852e5532d22b9ad",
+      "git_blob": "7c92c924d45aa36bf0b7b64bd516c3dd2a297df7"
+    },
+    "second_pass_corpus_audit": {
+      "commit": "43e52f12bb7e175d108446c6c852e5532d22b9ad",
+      "git_blob": "dd6bca8febde0d6316638ecac0bacb8b3bf00e7d"
+    },
+    "t3_source_ledger": {
+      "commit": "6406fa1d8921cdb66e3f14b3bac136de4e0a7b82",
+      "git_blob": "de6a0dfe06b627b0592a5ab2ef324f0d57b9db42"
+    },
+    "t4_source_ledger": {
+      "commit": "90ed1790019663817144fc7ee05cdc0563ba504e",
+      "git_blob": "a3fbf25272f39d141d73515f7739181e735f768d"
+    },
+    "t6_source_ledger": {
+      "commit": "cb17dcdaca36895961c5aca4f90a5f5ebd51ff5d",
+      "git_blob": "f55e11caa6be2d12b6940df0fdf0f0a2a565d011"
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "C05-P1-REQUIRED-MATERIAL-ACCESS-GATE-R1",
+      "mechanism_class": "P1 MATERIAL_ACCESS_DEPENDENCY",
+      "assertion_kind": "K2_QUALIFIED_POSSIBILITY",
+      "target": "MATERIAL_ROUTE_AVAILABLE",
+      "value_mode": "NONNUMERIC",
+      "source_claim_packet": {
+        "status": "BOUND_AT_RULE_SHAPE_GRAIN",
+        "anchors": [
+          "T3:S01 Marx Capital I ch6 — property separation / recurrent material dependency",
+          "T3:S04 Marx Capital I ch23 — recurrent reproduction of material dependency",
+          "T3:S08 Wright Class Counts ch1 pp16-18 — property/authority/skill relations as concrete mechanisms",
+          "COORDINATOR:MC01 / P1 source-grounding — Wright, Elder, social-reproduction materials"
+        ],
+        "claim_ceiling": "Supports an exact resource/access/dependency rule shape only when concrete resource/right/access and actor-position/context/time determinants are independently proven. It does not license CLASS -> RESOURCE STATE or missing evidence -> NO_ACCESS."
+      },
+      "permitted_rule_shape": "SOURCE_DEFINED_OBJECTIVE_OPERATION + REQUIRED_RESOURCE_OR_ACCESS_RELATION + EXACT_ACTOR_POSITION_CONTEXT_TIME_BINDING -> QUALIFIED_MATERIAL_ROUTE_AVAILABLE",
+      "objective_determinants_required": [
+        "P1_PREREQUISITE_DECLARATION_REF",
+        "P1_ACCESS_STATE_REF",
+        "P1_REACHABILITY_STATE_REF_WHEN_SOURCE_DECLARED",
+        "VALID_TIME_BINDING_REF"
+      ],
+      "measurement_estimand_identification": "NOT_APPLICABLE_FOR_THIS_NONNUMERIC_CONSTITUTIVE_POSSIBILITY_RULE_SHAPE; exact N/A scope basis must be conserved at admission",
+      "calibration": "NOT_APPLICABLE_NONNUMERIC; any later numeric quantity/threshold specialization is a distinct rule requiring current calibration authority",
+      "packet_status": "SOURCE_TRACE_READY__ADMISSION_AUTHORITY_BLOCKED",
+      "smallest_exact_blockers": [
+        "MISSING_COMPETENT_P1_RULE_OWNER_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_COMPETENT_P1_CAUSAL_USE_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_P1_RULE_CURRENT_SELECTION_EVIDENCE_REF"
+      ]
+    },
+    {
+      "candidate_id": "C05-P2-DIRECTED-OBLIGATION-IN-FORCE-R1",
+      "mechanism_class": "P2 DIRECTED_AUTHORITY_OBLIGATION_SANCTION",
+      "assertion_kind": "K1_CONSTITUTIVE_POSITIONAL",
+      "target": "DIRECTED_OBLIGATION_IN_FORCE",
+      "value_mode": "NONNUMERIC",
+      "source_claim_packet": {
+        "status": "BOUND_AT_RULE_SHAPE_GRAIN",
+        "anchors": [
+          "T3:S03 Marx Capital I ch15 — concrete supervision/penalty/authority conditions",
+          "T3:S08 Wright Class Counts ch1 pp16-18 — authority/surveillance/sanction relations",
+          "T6:S05 Merton Role-Set pp113-118 — counterpart-specific expectations/powers/sanctions",
+          "COORDINATOR:P2 grounding — Wright, Kohn/Schooler, Merton, Dreier, care/household materials"
+        ],
+        "claim_ceiling": "Supports directed authority/obligation/sanction rule shapes only from actual operative relation and duty authority. TITLE != AUTHORITY; obligation != performance/enforcement."
+      },
+      "permitted_rule_shape": "COMPETENT_OPERATIVE_AUTHORITY_OR_DUTY_RULE + EXACT_ADDRESSEE_POSITION_CONTEXT_TIME_BINDING -> DIRECTED_OBLIGATION_IN_FORCE",
+      "objective_determinants_required": [
+        "AUTHORITY_SCOPE_REF",
+        "ADDRESSEE_BINDING_REF",
+        "DUTY_RULE_REF",
+        "EFFECTIVE_VALIDITY_REF",
+        "SANCTION_ROUTE_REF_IF_CLAIMED"
+      ],
+      "measurement_estimand_identification": "NOT_APPLICABLE_FOR_THIS_NONNUMERIC_CONSTITUTIVE_RULE_SHAPE",
+      "calibration": "NOT_APPLICABLE_NONNUMERIC",
+      "packet_status": "SOURCE_TRACE_READY__ADMISSION_AUTHORITY_BLOCKED",
+      "smallest_exact_blockers": [
+        "MISSING_COMPETENT_P2_RULE_OWNER_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_COMPETENT_P2_CAUSAL_USE_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_P2_RULE_CURRENT_SELECTION_EVIDENCE_REF"
+      ]
+    },
+    {
+      "candidate_id": "C05-P3-ORGANIZED-ACTIVITY-WINDOW-R1",
+      "mechanism_class": "P3 ORGANIZED_ACTIVITY_TIME",
+      "assertion_kind": "K2_QUALIFIED_POSSIBILITY",
+      "target": "ORGANIZED_ACTIVITY_ROUTE_AVAILABLE",
+      "value_mode": "NONNUMERIC",
+      "source_claim_packet": {
+        "status": "BOUND_AT_RULE_SHAPE_GRAIN",
+        "anchors": [
+          "T3:S03 Marx Capital I ch15 — concrete technical/work organization and pacing",
+          "T3:S05 Braverman pp78-83 — division of labour/conception-execution separation",
+          "T4:S02 Kohn/Schooler 1982 pp1258,1261,1281-82 — actual job-condition decomposition; occupational title is insufficient",
+          "T4:S13 Staff/Mortimer 2024 — within-person work-quality variation with explicit direction/lag ceiling",
+          "COORDINATOR:MC03/MC05 / P3 grounding — actual work/activity/time conditions"
+        ],
+        "claim_ceiling": "Supports organization-owned activity/schedule and task/time availability shapes. Schedule/opportunity != attendance or performed activity; occupation/employment label != task content or work quality."
+      },
+      "permitted_rule_shape": "ORGANIZATION_OWNED_ACTIVITY_DEFINITION + OPERATIVE_SCHEDULE_WINDOW + EXACT_APPLICABILITY_REACHABILITY + ACTOR_POSITION_CONTEXT_TIME_BINDING -> ORGANIZED_ACTIVITY_ROUTE_AVAILABLE",
+      "objective_determinants_required": [
+        "ACTIVITY_DEFINITION_REF",
+        "SCHEDULE_WINDOW_REF",
+        "APPLICABILITY_REF",
+        "REACHABILITY_REF",
+        "VALID_TIME_BINDING_REF"
+      ],
+      "measurement_estimand_identification": "NOT_APPLICABLE_FOR_NONNUMERIC_ROUTE_AVAILABILITY; empirical work-quality measures may not be imported as actor facts",
+      "calibration": "NOT_APPLICABLE_NONNUMERIC; any numeric timing/capacity threshold requires a distinct calibrated rule",
+      "packet_status": "SOURCE_TRACE_READY__ADMISSION_AUTHORITY_BLOCKED",
+      "smallest_exact_blockers": [
+        "MISSING_COMPETENT_P3_RULE_OWNER_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_COMPETENT_P3_CAUSAL_USE_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_P3_RULE_CURRENT_SELECTION_EVIDENCE_REF"
+      ]
+    },
+    {
+      "candidate_id": "C05-P4-INSTITUTIONAL-GATE-ELIGIBILITY-R1",
+      "mechanism_class": "P4 INSTITUTIONAL_GATE_TREATMENT",
+      "assertion_kind": "K1_CONSTITUTIVE_POSITIONAL",
+      "target": "INSTITUTIONAL_GATE_ELIGIBLE",
+      "value_mode": "NONNUMERIC",
+      "source_claim_packet": {
+        "status": "BOUND_AT_RULE_SHAPE_GRAIN_WITH_STRONG_REALIZATION_COMPARATORS",
+        "anchors": [
+          "T6:S06 Bertrand/Mullainathan 2004 AER 94(4):991-1013 — field experiment, cue -> callback under study gate",
+          "T6:S07 Pager 2003 AJS 108(5):937-975 — matched field audit, record/cue -> callback treatment under study gate",
+          "T6:S08 Correll/Benard/Paik 2007 AJS 112(5):1297-1338 — lab + field audit gate-treatment evidence",
+          "COORDINATOR:MC06 / P4 grounding — eligibility/credential/policy structures plus bounded gate-treatment evidence"
+        ],
+        "claim_ceiling": "The experiments strongly support bounded cue/gate/treatment causal identification for their designs, but they do not issue a universal gate rule or authorize ATTRIBUTE -> TREATMENT. This C05 candidate is K1 eligibility, not K3 callback/treatment occurrence; exact institution-owned eligibility predicates remain mandatory."
+      },
+      "permitted_rule_shape": "INSTITUTION_OWNED_OPERATIVE_GATE_RULE + COMPLETE_REQUIRED_OBJECTIVE_PREDICATES + EXACT_PERSON_OR_POSITION_CONTEXT_TIME_BINDING -> INSTITUTIONAL_GATE_ELIGIBLE",
+      "objective_determinants_required": [
+        "GATE_RULE_REF",
+        "ONE_REF_PER_REQUIRED_PREDICATE",
+        "CONTEXT_BINDING_REF_WHEN_REQUIRED",
+        "OVERRIDE_REF_IF_APPLICABLE",
+        "VALID_TIME_BINDING_REF"
+      ],
+      "measurement_estimand_identification": "NOT_APPLICABLE_TO_K1_ELIGIBILITY_RULE_BODY; experimental identification evidence is retained as mechanism/negative-ceiling evidence and may not be relabeled as generic eligibility authority",
+      "calibration": "NOT_APPLICABLE_NONNUMERIC; later numeric cutoff or probability is a distinct calibrated rule",
+      "packet_status": "SOURCE_TRACE_READY__STRONG_CAUSAL_EVIDENCE_EXISTS__PROJECT_CAUSAL_USE_AUTHORITY_STILL_BLOCKED",
+      "smallest_exact_blockers": [
+        "MISSING_COMPETENT_P4_RULE_OWNER_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_COMPETENT_P4_CAUSAL_USE_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE_FOR_THIS_EXACT_K1_RULE_SHAPE",
+        "MISSING_P4_RULE_CURRENT_SELECTION_EVIDENCE_REF"
+      ]
+    },
+    {
+      "candidate_id": "C05-P5-COUNTERPART-CHANNEL-AVAILABLE-R1",
+      "mechanism_class": "P5 COUNTERPART_CHANNEL_RELATION",
+      "assertion_kind": "K2_QUALIFIED_POSSIBILITY",
+      "target": "COUNTERPART_CHANNEL_AVAILABLE",
+      "value_mode": "NONNUMERIC",
+      "source_claim_packet": {
+        "status": "BOUND_AT_RULE_SHAPE_GRAIN",
+        "anchors": [
+          "T6:S01 Feld 1981 AJS 86(5):1015-1035 — foci organize joint activity/counterpart opportunity, not automatic ties",
+          "T6:S02 Granovetter 1973 AJS 78(6):1360-1380 — bridge caveat and nonredundant information route",
+          "T6:S04 Coleman 1988 AJS supplement S95-S120 — decomposed information/obligation/sanction channels, generic social-capital stock rejected",
+          "COORDINATOR:MC09/MC10 / P5 grounding — counterpart/channel relation and reachability with transfer/contact ceilings"
+        ],
+        "claim_ceiling": "Supports exact counterpart/channel/reachability possibility only. SHARED_FOCUS != TIE; TIE != CONTACT; CHANNEL != TRANSFER/RECEIPT/SUPPORT; NETWORK_METRIC != BENEFIT."
+      },
+      "permitted_rule_shape": "COMPETENT_EXACT_ACTOR_COUNTERPART_RELATION + CHANNEL_ENDPOINT + OPERATIVE_REACHABILITY + DIRECTIONALITY_IF_REQUIRED + CONTEXT_TIME_BINDING -> COUNTERPART_CHANNEL_AVAILABLE",
+      "objective_determinants_required": [
+        "COUNTERPART_RELATION_REF",
+        "CHANNEL_ENDPOINT_REF",
+        "REACHABILITY_REF",
+        "DIRECTIONALITY_REF_IF_REQUIRED",
+        "VALID_TIME_BINDING_REF"
+      ],
+      "measurement_estimand_identification": "NOT_APPLICABLE_FOR_NONNUMERIC_CHANNEL_AVAILABILITY; network measures may support source claims but do not become actor channel facts",
+      "calibration": "NOT_APPLICABLE_NONNUMERIC",
+      "packet_status": "SOURCE_TRACE_READY__ADMISSION_AUTHORITY_BLOCKED",
+      "smallest_exact_blockers": [
+        "MISSING_COMPETENT_P5_RULE_OWNER_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_COMPETENT_P5_CAUSAL_USE_AUTHORITY_REF_AND_CURRENT_SELECTION_EVIDENCE",
+        "MISSING_P5_RULE_CURRENT_SELECTION_EVIDENCE_REF"
+      ]
+    }
+  ],
+  "successor_gate": "GATE-SDTF-ADMISSION",
+  "successor_readiness": "NOT_READY_FOR_RULE_ADMISSION__READY_FOR_HQ_AUTHORITY_MINT_OR_BINDING_DISPOSITION"
+}
