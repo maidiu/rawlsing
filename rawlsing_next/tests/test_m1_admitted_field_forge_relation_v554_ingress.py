@@ -448,17 +448,13 @@ def test_empirical_m1_contract_and_signature_registry_remain_unchanged():
     }
 
 
-def test_m4_binding_accepts_exact_relation_contract_and_keeps_v554_producer_family():
+def test_m4_binding_rejects_caller_minted_relation_producer_uses():
     result = _evaluate([_prep("m4")])
-    objects = structural_objects_from_accepted_m1(
-        result,
-        producer_allowed_uses=["REVIEW", "CONTEXT"],
-    )
-    assert objects
-    assert {obj.producer_family for obj in objects} == {"V554"}
-    assert {obj.semantic_class for obj in objects} <= {"F1", "F2", "B1"}
-    assert all(obj.source_stage == "M1_RELATION_V554_TO_V557" for obj in objects)
-
+    with pytest.raises(M4IntegrityError, match="caller-selected"):
+        structural_objects_from_accepted_m1(
+            result,
+            producer_allowed_uses=["REVIEW", "CONTEXT"],
+        )
 
 def test_m4_binding_rejects_unknown_m1_contract_and_acceptance_set_is_exact():
     result = _evaluate([_prep("unknown")])
