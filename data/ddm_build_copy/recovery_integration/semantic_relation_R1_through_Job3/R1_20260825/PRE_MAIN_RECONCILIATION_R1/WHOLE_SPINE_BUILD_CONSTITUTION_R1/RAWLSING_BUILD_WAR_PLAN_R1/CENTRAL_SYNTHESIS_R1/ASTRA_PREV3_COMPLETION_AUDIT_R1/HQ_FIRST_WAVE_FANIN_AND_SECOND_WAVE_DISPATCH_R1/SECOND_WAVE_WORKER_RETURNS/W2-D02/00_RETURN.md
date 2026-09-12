@@ -55,7 +55,7 @@ D02 freezes a finite same-source LiTS-I workload with:
 - exact C11 release `LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79 / e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26`;
 - exact empirical universe `83af05f5891e8accc18eeb99e5a1fd99242a509d9a38276004675c0e26be8080`;
 - exact risk set `31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45`;
-- RAW measure basis `25e90c83f1f226ce7eb6a337018635b28427ae90446f3f2d455f49235aac4d240291ad3` is **not** used; the correct frozen RAW measure basis is `25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec`;
+- exact RAW measure basis `25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec`;
 - exact existing Q301_2 and Q301_7 scalar/joint query refs;
 - exact existing Q301_2 endpoint predicates for source-native cells 1 and 5;
 - six pre-data source selectors over q310/q311 values 1–3, resolved to exact predicates only before empirical result access.
