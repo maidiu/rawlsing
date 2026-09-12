@@ -1,0 +1,64 @@
+{
+  "schema_id": "PREV3_W2_D09_TYPED_NEGATIVE_AND_ADMISSION_BLOCKER_COURT@1.0.0",
+  "candidate": "FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1",
+  "court_result": "PASS__NEGATIVES_PRESERVED__POSITIVE_PREV3_ADMISSION_REFUSED_WITHOUT_EXACT_AUTHORITY",
+  "typed_negative_evidence": {
+    "observed_joint_states": 812,
+    "support_admitted": 441,
+    "ABSTAIN__ZERO_DENOMINATOR__DO_NOT_FABRICATE": 371,
+    "EXACT_ZERO_DIFFERENCE_IN_REALIZED_SAMPLE": 126,
+    "EXACT_DIRECTIONAL_REVERSAL": 130,
+    "EXACT_DIRECTIONAL_PERSISTENCE": 185
+  },
+  "hostile_holdings": [
+    {
+      "attack": "drop_zero_denominator_states",
+      "expected": "REFUSE",
+      "observed_authority_holding": "FFP034 explicitly preserves all 371 abstentions",
+      "d09_disposition": "PASS__NO_DELETION"
+    },
+    {
+      "attack": "promote_exact_zero_difference_to_positive_effect",
+      "expected": "REFUSE",
+      "d09_disposition": "PASS__126_EXACT_ZERO_STATES_REMAIN_TYPED_ZERO"
+    },
+    {
+      "attack": "reuse_gt2_admission_by_substituting_Q73A_for_Q86B",
+      "expected": "REFUSE",
+      "d09_disposition": "PASS__PARTICIPANT_AND_OPERATION_AUTHORITY_MISMATCH"
+    },
+    {
+      "attack": "relabel_second_canary_as_EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+      "expected": "REFUSE",
+      "d09_disposition": "PASS__RELATION_FAMILY_SEMANTICS_NOT_INTERCHANGEABLE"
+    },
+    {
+      "attack": "infer_causal_or_person_truth_from_directional_heterogeneity",
+      "expected": "REFUSE",
+      "d09_disposition": "PASS__SOURCE_BACKED_STRUCTURAL_EVIDENCE_CEILING_PRESERVED"
+    },
+    {
+      "attack": "use_M1_to_mint_missing_relation_admission_authority",
+      "expected": "REFUSE",
+      "d09_disposition": "PASS__M1_IS_CONSUMER_ONLY"
+    },
+    {
+      "attack": "treat_missing_admission_authority_as_negative_empirical_evidence",
+      "expected": "REFUSE",
+      "d09_disposition": "PASS__AUTHORITY_BLOCKER_NOT_EMPIRICAL_FALSEHOOD"
+    }
+  ],
+  "exact_blocker": {
+    "code": "PREV3_RELATION_ADMISSION_AUTHORITY_ABSENT_FOR_SECOND_GENUINE_FIELD_FORGE_CANARY",
+    "expanded": "NO_CURRENT_COMPETENT_PREV3_RELATION_ADMISSION_AUTHORITY_BINDS__FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1__TO__STRUCTURAL_MEDIATION_INPUT__AND__M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+    "missing_authority": true,
+    "missing_source_instance": false,
+    "missing_empirical_execution": false,
+    "missing_replay": false,
+    "missing_generic_field_forge_grammar": false,
+    "missing_generic_m1_consumer": false,
+    "new_generic_code_required": false,
+    "smallest_successor": "EXACT_SECOND_CANARY_PREV3_RELATION_ADMISSION_AUTHORITY_AND_BOUNDED_INSTANTIATION"
+  },
+  "gate": "GATE-STRUCTURAL-REAL-PRODUCTION"
+}
