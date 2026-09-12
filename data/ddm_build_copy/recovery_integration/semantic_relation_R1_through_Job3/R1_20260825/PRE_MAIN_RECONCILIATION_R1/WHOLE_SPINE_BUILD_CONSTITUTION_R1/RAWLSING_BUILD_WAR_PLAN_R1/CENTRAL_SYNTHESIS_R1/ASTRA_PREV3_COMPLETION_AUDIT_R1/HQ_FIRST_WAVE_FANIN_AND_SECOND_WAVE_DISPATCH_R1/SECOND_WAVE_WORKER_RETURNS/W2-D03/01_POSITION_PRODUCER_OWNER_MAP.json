@@ -1,0 +1,149 @@
+{
+  "schema_id": "PREV3_OBJECTIVE_POSITION_PRODUCER_OWNER_MAP_R1",
+  "commission_id": "W2-D03",
+  "exact_grain": "PREV3_OBJECTIVE_POSITION_PRODUCER_OWNERSHIP_AND_MATERIALIZER_CONTRACT_R1_ONLY",
+  "status": "PASS_CANDIDATE__REQUIRES_HQ_ADOPTION_BEFORE_IMPLEMENTATION",
+  "scope_grounding": {
+    "repository": "maidiu/rawlsing",
+    "branch": "agent/rabochii-prev3-w2-d03-objective-position-owner-r1",
+    "commission_tip": "2074f0ca2292a4b77195130a2a7c993446c14489",
+    "frozen_branch_parent": "107fb80308dafb6dc2e9ba1dd15b8b2d9e7ac2d2",
+    "c04_adopted_tip": "ae5666fa461f8baaa017fd0b4eff1d9ecfc1c0e5",
+    "c02_adopted_tip": "7a3def9262da5891f86f5e4f00384c07902e77b9",
+    "field_forge_obl005_adoption_commit": "b3012b346b8dbb1569a77d998310e16f28cebf6c",
+    "semantic_floor_for_reused_runtime": "3468673673db2f3de804d6e825585f86ff98e870"
+  },
+  "constitutional_noncollapses": [
+    "OBJECTIVE_ACTOR_POSITION != PERSON_STATE",
+    "WORLD_ROOT_OWNER != OBJECTIVE_POSITION_PRODUCER",
+    "POSITION_ROLE_AUTHORITY != UNIVERSAL_POSITION_ONTOLOGY",
+    "SOURCE_SEMANTICS != CLAIM_BOUNDED_ANALYTIC_ROLE",
+    "GEOMETRY != POSITION_ROLE_AUTHORITY",
+    "DOWNSTREAM_NEED != POSITION_ROLE_EVIDENCE",
+    "OBJECTIVE_OPPORTUNITY != ACTOR_UPTAKE",
+    "STRUCTURAL_RELATION != PSYCHOLOGICAL_DISPOSITION"
+  ],
+  "jurisdiction_allocation": [
+    {
+      "role": "OBJECTIVE_POSITION_SEMANTIC_OWNER",
+      "owner": "EXACT_COMPETENT_OBJECTIVE_DOMAIN_AUTHORITY",
+      "positive_power": "Authorizes the exact objective position/role kind and conditions under which the asserted relation to an entity/actor is objectively meaningful.",
+      "required_binding": "position_semantic_authority_ref",
+      "may_mint_fact": false,
+      "ceiling": "No universal ontology; exact to domain/claim/context/use/time."
+    },
+    {
+      "role": "OBJECTIVE_POSITION_PRODUCER_AUTHORITY_OWNER",
+      "owner": "HQ_OR_DELEGATED_EXACT_OBJECTIVE_DOMAIN_AUTHORITY",
+      "positive_power": "Designates a PRE-V3 producer as competent to materialize the exact position fact class/grain.",
+      "required_binding": "position_producer_authority_ref",
+      "may_mint_fact": false,
+      "ceiling": "Designation cannot widen semantic, source, permission or temporal authority."
+    },
+    {
+      "role": "OBJECTIVE_POSITION_MATERIALIZER",
+      "owner": "EXACT_DESIGNATED_PREV3_OBJECTIVE_POSITION_PRODUCER",
+      "positive_power": "May emit a content-addressed objective position fact only after every contract input validates.",
+      "required_binding": "position_producer_authority_ref",
+      "may_mint_fact": true,
+      "ceiling": "Mechanical materialization only; no inference from demographics, geometry, labels, downstream need or V3 person state."
+    },
+    {
+      "role": "SOURCE_CLAIM_EVIDENCE_OWNER",
+      "owner": "EXACT_SOURCE_AND_CLAIM_AUTHORITY",
+      "positive_power": "Supplies exact source/snapshot/context, claim identity, supporting evidence and source-local negative limits.",
+      "required_binding": "source_claim_authority_ref + supporting_evidence_refs",
+      "may_mint_fact": false,
+      "ceiling": "Evidence does not self-promote into position authority."
+    },
+    {
+      "role": "POSITION_ROLE_ADJUDICATION_OWNER",
+      "owner": "FIELD_FORGE_OBL005_OR_EXACT_DOMAIN_EQUIVALENT_WHERE_APPLICABLE",
+      "positive_power": "Supplies claim-bounded role/position adjudication and result-independence evidence where required.",
+      "required_binding": "position_role_receipt_ref_or_not_applicable_with_authority",
+      "may_mint_fact": false,
+      "ceiling": "OBL005 is not a universal ontology or runtime classifier."
+    },
+    {
+      "role": "VALID_TIME_CURRENTNESS_OWNER",
+      "owner": "EXACT_OBJECTIVE_TIME_AND_CURRENTNESS_AUTHORITY",
+      "positive_power": "Authorizes valid-time/as-of basis and currentness state for the exact assertion.",
+      "required_binding": "valid_time_authority_ref + valid_time_basis_ref + currentness_authority_ref + currentness_receipt_ref",
+      "may_mint_fact": false,
+      "ceiling": "Wall clock, bare timestamp, latest/default and V3 cursor are insufficient."
+    },
+    {
+      "role": "WORLD_ROOT_OWNER",
+      "owner": "PREV3_OBJECTIVE_WORLD_RELEASE_ROOT_OWNER",
+      "positive_power": "May bind already-authorized position refs into a world/release root or make them resolvable.",
+      "required_binding": "world_root_ref_when_world_binding_occurs",
+      "may_mint_fact": false,
+      "ceiling": "Cannot act as fallback objective-position producer."
+    },
+    {
+      "role": "M2_FIELD_FORGE_DOWNSTREAM_CONSUMER",
+      "owner": "EXACT_M2_ROUTE_OR_FIELD_FORGE_OPERATION_OWNER",
+      "positive_power": "May consume exact materialized position refs under its own route/operation authority.",
+      "required_binding": "exact_position_fact_ref",
+      "may_mint_fact": false,
+      "ceiling": "Cannot reconstruct positions from labels, coordinates, actor requests or missing refs."
+    },
+    {
+      "role": "V3_PERSON_OWNER",
+      "owner": "V3_ONLY",
+      "positive_power": "May use objective position/context downstream subject to V3 law.",
+      "required_binding": "none_for_PREV3_materialization",
+      "may_mint_fact": false,
+      "ceiling": "V3 subject receipts, beliefs, preferences, uptake, experience and biography cannot bootstrap PRE-V3 position truth."
+    }
+  ],
+  "positive_materialization_rule": {
+    "rule": "A positive objective position fact exists only when the exact designated PRE-V3 materializer consumes a complete canonical tuple and every semantic/source/applicability/permission/time/currentness/provenance requirement validates under competent authority.",
+    "fact_schema": "PREV3_OBJECTIVE_POSITION_FACT@1.0.0",
+    "contract_schema": "PREV3_OBJECTIVE_POSITION_MATERIALIZER_CONTRACT@1.0.0",
+    "positive_state": "POSITION_FACT_AUTHORIZED",
+    "identity": "PREV3POS:<semantic_hash(canonical_fact_material)>"
+  },
+  "typed_result_states": [
+    "POSITION_FACT_AUTHORIZED",
+    "VALID_EMPTY",
+    "MISSING_POSITION_PRODUCER_AUTHORITY",
+    "MISSING_POSITION_SEMANTIC_AUTHORITY",
+    "MISSING_ROLE_AUTHORITY",
+    "MISSING_SOURCE_OR_CLAIM_AUTHORITY",
+    "MISSING_REQUIRED_EVIDENCE",
+    "IDENTITY_UNRESOLVED",
+    "APPLICABILITY_UNRESOLVED",
+    "USE_DENIED",
+    "MISSING_VALID_TIME_AUTHORITY",
+    "CURRENTNESS_UNRESOLVED",
+    "STALE_OR_HISTORICAL_NONCURRENT",
+    "NONCOMPARABLE",
+    "OUT_OF_SCOPE",
+    "INTEGRITY_FAILURE"
+  ],
+  "downstream_bindings": {
+    "C04-SO-002": "This contract is the owner/materializer authority predecessor. Real population and implementation remain successor work.",
+    "C04-SO-003": "M2 source_structural_position_ref and receiving_structural_position_ref may bind only exact authorized position fact refs or other separately authorized exact position refs; M2 retains its own route authority and F1 closure.",
+    "C04-SO-007": "Objective constraint/opportunity prerequisites may use exact objective position refs but may not infer uptake, interpretation, belief, preference, response or development.",
+    "WORLD_ROOT": "May reference/publish/resolve exact position facts; may not produce them.",
+    "V3": "Downstream consumer only; no bootstrap dependency."
+  },
+  "successor": {
+    "gate": "GATE-POSITION-PRODUCTION",
+    "candidate_grain": "PREV3_OBJECTIVE_POSITION_MATERIALIZER_IMPLEMENTATION_AND_REAL_SOURCE_POPULATION_R1_ONLY",
+    "preconditions": [
+      "HQ/Sub-Vozhd II adoption or narrowing of this D03 owner/materializer contract",
+      "at least one real source-backed objective position row with complete exact input tuple",
+      "no unresolved MISSING_* authority state for the positive row"
+    ],
+    "does_not_authorize": [
+      "universal position ontology",
+      "generic inference from demographic coordinates",
+      "person-state construction",
+      "world-root fallback production",
+      "V3 bootstrap of objective truth",
+      "broad production without row-specific source and authority"
+    ]
+  }
+}
