@@ -1,0 +1,165 @@
+{
+  "cases": [
+    {
+      "expected": "ACCEPT_CANDIDATE_ROOT",
+      "id": "C02-01",
+      "inputs": [
+        "exact release_authority_ref",
+        "exact V558 repository/publication/index refs",
+        "exact objective_world_scope_ref",
+        "exact valid_time_authority_ref",
+        "typed concrete world_validity_ref",
+        "predecessor=null"
+      ],
+      "name": "genesis_bootstrap_exact_inputs",
+      "reason": "All world/root inputs are upstream objective authorities; no V3 dependency."
+    },
+    {
+      "expected": "SAME_PREV3WORLD_ID",
+      "id": "C02-02",
+      "inputs": [
+        "identical canonical constructor tuple twice"
+      ],
+      "name": "deterministic_replay_same_tuple",
+      "reason": "Content addressing makes replay identity deterministic."
+    },
+    {
+      "expected": "NEW_SUCCESSOR_ROOT_PRESERVE_PRIOR",
+      "id": "C02-03",
+      "inputs": [
+        "same authorities/scope/valid-time semantics",
+        "different exact repository_ref",
+        "predecessor=prior root"
+      ],
+      "name": "successor_release_changes_repository",
+      "reason": "Release succession changes identity without mutating history."
+    },
+    {
+      "expected": "NEW_SUCCESSOR_ROOT_PRESERVE_PRIOR",
+      "id": "C02-04",
+      "inputs": [
+        "same repository",
+        "new typed world_validity_ref",
+        "predecessor=prior root"
+      ],
+      "name": "successor_validity_changes",
+      "reason": "World validity is identity-bearing objective state, not a mutable cursor."
+    },
+    {
+      "expected": "REJECT",
+      "id": "C02-05",
+      "inputs": [
+        "V3_SIM_WORLD_R1 designator",
+        "no concrete root tuple"
+      ],
+      "name": "designator_only_world",
+      "reason": "A designator is not a content-addressed objective world instance."
+    },
+    {
+      "expected": "REJECT",
+      "id": "C02-06",
+      "inputs": [
+        "wall_clock_now used as world_validity_ref"
+      ],
+      "name": "wall_clock_bootstrap",
+      "reason": "Wall clock cannot mint objective valid-time authority."
+    },
+    {
+      "expected": "REJECT",
+      "id": "C02-07",
+      "inputs": [
+        "V3 runtime cursor substituted for world_validity_ref"
+      ],
+      "name": "v3_cursor_bootstrap",
+      "reason": "Downstream runtime selection cannot be an upstream world-truth source."
+    },
+    {
+      "expected": "REJECT",
+      "id": "C02-08",
+      "inputs": [
+        "repository=latest/default/fuzzy"
+      ],
+      "name": "latest_default_repository",
+      "reason": "M4 exact resolver/repository law forbids mutable/fuzzy repair."
+    },
+    {
+      "expected": "ALLOW_RESOLUTION_ATTEMPT",
+      "id": "C02-09",
+      "inputs": [
+        "accepted world root",
+        "exact M4 ContextQuery",
+        "exact objective entity/position ref from competent producer"
+      ],
+      "name": "actor_position_query_exact_objective_binding",
+      "reason": "Actor indexing is lawful when it remains an objective fact and exact producer identity is preserved."
+    },
+    {
+      "expected": "REJECT",
+      "id": "C02-10",
+      "inputs": [
+        "accepted world root",
+        "V3 subject/actor request",
+        "no objective position producer ref"
+      ],
+      "name": "actor_request_mints_position",
+      "reason": "World root must not absorb GAP-PREV3-014 or create person-derived objective positions."
+    },
+    {
+      "expected": "ALLOW_M5_CURRENTNESS_EVALUATION",
+      "id": "C02-11",
+      "inputs": [
+        "exact M4 resolution",
+        "explicit structural_currentness_basis_ref",
+        "exact decision_effective_time_ref"
+      ],
+      "name": "m5_currentness_downstream",
+      "reason": "M5 currentness is downstream and cannot bootstrap root identity."
+    },
+    {
+      "expected": "ALLOW_HISTORICAL_REPLAY_ATTEMPT",
+      "id": "C02-12",
+      "inputs": [
+        "historical exact root ref",
+        "historical exact query/valid-time selector",
+        "same resolver policy identity"
+      ],
+      "name": "historical_replay",
+      "reason": "Historical roots are immutable replay anchors and need not be rewritten as current."
+    },
+    {
+      "expected": "REJECT_STOP_LINE",
+      "id": "C02-13",
+      "inputs": [
+        "persona/belief/affect/preference/motivation/uptake/response field"
+      ],
+      "name": "person_state_field_in_root",
+      "reason": "PRE-V3 root is objective-world only."
+    },
+    {
+      "expected": "REJECT",
+      "id": "C02-14",
+      "inputs": [
+        "root identity plus blanket current=true for every contained fact"
+      ],
+      "name": "world_root_claims_all_facts_current",
+      "reason": "SDTF currentness dimensions remain independent; root validity cannot promote rule/application/fact/witness currentness."
+    }
+  ],
+  "commission_id": "ASTRA-C02",
+  "court_result": "PASS",
+  "exact_grain": "PREV3_OBJECTIVE_WORLD_RELEASE_AND_VALID_TIME_BOOTSTRAP_R1_ONLY",
+  "gap_effects": {
+    "GAP-PREV3-014": "not absorbed",
+    "GAP-PREV3-020": "contract candidate sufficient for HQ gate",
+    "GAP-PREV3-021": "not executed"
+  },
+  "method": "STATIC_SEMANTIC_CONTRACT_CASE_COURT__NO_PRODUCTION_RUNTIME_EXECUTION_AUTHORIZED",
+  "schema": "ASTRA_C02_BOOTSTRAP_AND_REPLAY_CASES_R1",
+  "successor_gate": "GATE-WORLD",
+  "summary": {
+    "pass_expected_cases": 5,
+    "rejection_guard_cases": 9,
+    "total_cases": 14,
+    "unexpected_results": 0
+  }
+}
