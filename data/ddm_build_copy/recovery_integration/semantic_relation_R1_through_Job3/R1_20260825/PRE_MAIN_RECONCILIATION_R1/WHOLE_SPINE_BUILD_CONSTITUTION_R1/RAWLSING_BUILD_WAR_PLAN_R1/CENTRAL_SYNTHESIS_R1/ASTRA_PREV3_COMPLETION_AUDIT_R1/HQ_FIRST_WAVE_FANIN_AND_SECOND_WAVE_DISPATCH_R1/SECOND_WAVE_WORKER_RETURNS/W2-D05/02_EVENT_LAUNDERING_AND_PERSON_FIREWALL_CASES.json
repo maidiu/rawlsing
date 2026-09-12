@@ -1,0 +1,143 @@
+{
+  "schema": "W2_D05_EVENT_LAUNDERING_AND_PERSON_FIREWALL_CASES_R1",
+  "status": "PASS",
+  "commission_id": "W2-D05",
+  "implementation_blob": "a1e2ae8775707eb30097279cde91f30271b6d243",
+  "test_blob": "535f9a8e5e44f3a58248702374f2cc1ae61f05d8",
+  "constitutional_noncollapse": [
+    "OBJECTIVE_ACTOR_POSITION != PERSON_STATE",
+    "OBJECTIVE_OPPORTUNITY != ACTOR_UPTAKE",
+    "STANDING_CONDITION != PRECIPITATING_EVENT",
+    "MACHINE_READING != ACTOR_UPTAKE",
+    "STRUCTURAL_CONTEXT_ELIGIBILITY != V3_MUTATION_PERMISSION",
+    "CURRENT_OBJECTIVE_FACT != ACTOR_EXPERIENCE"
+  ],
+  "cases": [
+    {
+      "case_id": "D05-FW-001",
+      "input": "CONDITION + K1_CONSTITUTIVE_POSITIONAL + exact objective refs",
+      "expected": "ADMIT_AS_OBJECTIVE_NON_EVENT_CONTEXT",
+      "observed": "PASS",
+      "actor_state_effect": false
+    },
+    {
+      "case_id": "D05-FW-002",
+      "input": "DIRECTED_RELATION + K2_QUALIFIED_POSSIBILITY + exact objective refs",
+      "expected": "ADMIT_AS_OBJECTIVE_NON_EVENT_CONTEXT",
+      "observed": "PASS",
+      "actor_state_effect": false
+    },
+    {
+      "case_id": "D05-FW-003",
+      "input": "RECURRENT_ACTIVITY + K4_ACTIVE_DURATIVE + CURRENT + exact closure refs",
+      "expected": "ADMIT_AS_OBJECTIVE_NON_EVENT_CONTEXT",
+      "observed": "PASS",
+      "actor_state_effect": false
+    },
+    {
+      "case_id": "D05-FW-004",
+      "input": "lawful objective actor binding + objective position-context binding",
+      "expected": "PRESERVE_ACTOR_INDEXING_AS_OBJECTIVE_CONTEXT_ONLY",
+      "observed": "PASS",
+      "forbidden_inference": "belief/appraisal/motivation/memory/response/persona/uptake"
+    },
+    {
+      "case_id": "D05-FW-005",
+      "input": "temporal_form=EVENT",
+      "expected": "REJECT_GENERIC_NON_EVENT_INGRESS",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-006",
+      "input": "temporal_form=TRANSITION",
+      "expected": "REJECT_GENERIC_NON_EVENT_INGRESS",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-007",
+      "input": "temporal_form=ORDERED_HISTORY",
+      "expected": "REJECT_GENERIC_NON_EVENT_INGRESS",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-008",
+      "input": "assertion_kind=K3_REALIZED_OCCURRENCE",
+      "expected": "REJECT__KEEP_ON_OCCURRENCE_EVENT_ROUTE",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-009",
+      "input": "proof_adjudication=UNKNOWN_NOT_PROVEN",
+      "expected": "REJECT_AS_POSITIVE_OBJECTIVE_FACT",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-010",
+      "input": "CURRENT without world_or_release_root_ref",
+      "expected": "FAIL_CLOSED",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-011",
+      "input": "CURRENT K4 durative without termination/supersession/closure refs",
+      "expected": "FAIL_CLOSED",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-012",
+      "input": "producer REVIEW only; publication requests CONTEXT",
+      "expected": "FAIL_CLOSED_PERMISSION_WIDENING",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-013",
+      "input": "producer includes ACTIVE_CAUSAL; generic non-event publication requests ACTIVE_CAUSAL",
+      "expected": "REJECT_GENERIC_NON_EVENT_ACTIVE_CAUSAL_USE",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-014",
+      "input": "publication REVIEW only; resolver requests CONTEXT",
+      "expected": "PERMISSION_DENIED_WITH_EMPTY_RESOLVER_USES",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-015",
+      "input": "CURRENT selected context without currentness receipt ref",
+      "expected": "FAIL_CLOSED_BEFORE_SERVING_RECEIPT",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-016",
+      "input": "HISTORICAL selected context",
+      "expected": "PRESERVE_HISTORICAL__DO_NOT_PROMOTE_CURRENT",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-017",
+      "input": "serving receipt content hash tampered",
+      "expected": "FAIL_CLOSED_IDENTITY_HASH_MISMATCH",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-018",
+      "input": "serving receipt actor_state_effect=true",
+      "expected": "FAIL_CLOSED_PERSON_FIREWALL",
+      "observed": "PASS"
+    },
+    {
+      "case_id": "D05-FW-019",
+      "input": "unknown exact resolution key",
+      "expected": "UNRESOLVED_EXACT_KEY__NO_FUZZY_OR_LATEST_REPAIR",
+      "observed": "PASS"
+    }
+  ],
+  "real_world_e2e_case": {
+    "status": "NOT_MINTED",
+    "reason": "W2-D01 has no lawful real world root because exact objective world-scope, valid-time authority and world-validity inputs remain missing.",
+    "d01_tip": "77a4b225030fc8452de170054e693d972a0f066c",
+    "d01_blocker": "D01_REAL_WORLD_ROOT_MATERIALIZATION_BLOCKED__MISSING_AUTHORIZED_OBJECTIVE_WORLD_SCOPE_REF__VALID_TIME_AUTHORITY_REF__WORLD_VALIDITY_REF",
+    "correct_d05_behavior": "WAIT_FOR_REAL_WORLD_ROOT_AUTHORITY_INPUTS__DO_NOT_SYNTHESIZE_EVENT_OR_WORLD_ROOT"
+  },
+  "terminal": "PASS__EVENT_LAUNDERING_BLOCKED__PERSON_FIREWALL_PRESERVED__REAL_WORLD_E2E_DEFERRED"
+}

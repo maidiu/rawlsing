@@ -1,0 +1,156 @@
+{
+  "schema": "W2_D05_ADAPTER_CONFORMANCE_RECEIPTS_R1",
+  "status": "PASS_WITH_DOWNSTREAM_REAL_WORLD_QUALIFICATION_GATE",
+  "commission_id": "W2-D05",
+  "exact_grain": "PREV3_OBJECTIVE_NON_EVENT_PUBLICATION_SERVING_ADAPTER_IMPLEMENTATION_R1_ONLY",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-prev3-w2-d05-non-event-adapter-r1",
+  "commission_tip": "877ad94112afc94e2c4daf756ae65e126f186b38",
+  "commission_parent": "107fb80308dafb6dc2e9ba1dd15b8b2d9e7ac2d2",
+  "adapter_contract_id": "PREV3_OBJECTIVE_NON_EVENT_PUBLICATION_SERVING_ADAPTER@1.0.0",
+  "implementation": {
+    "path": "rawlsing_next/objective_non_event_publication_serving_adapter.py",
+    "git_blob": "a1e2ae8775707eb30097279cde91f30271b6d243",
+    "canonical_producer_family": "SDTF_D1_PRIME_OBJECTIVE_POSITIONED_CONSEQUENCE",
+    "serving_receipt_schema": "OBJECTIVE_NON_EVENT_SERVING_RECEIPT@1.0.0",
+    "ingress_effect": "STRUCTURAL_CONTEXT_ELIGIBILITY_ONLY__NOT_V3_MUTATION_PERMISSION",
+    "actor_state_effect": false
+  },
+  "tests": {
+    "path": "rawlsing_next/tests/test_objective_non_event_publication_serving_adapter.py",
+    "git_blob": "535f9a8e5e44f3a58248702374f2cc1ae61f05d8",
+    "targeted_case_count": 15,
+    "isolated_harness_result": "15 passed in 0.17s",
+    "syntax_compile": "PASS",
+    "execution_scope": "FINAL_ADAPTER_LOGIC_WITH_MINIMAL_EXACT_M4_PRIMITIVE_INTERFACE_SHIM",
+    "governed_repository_actions_receipt": "NOT_CLAIMED__NO_CHECKOUT_BACKED_WORKER_RUNNER_EXPOSED"
+  },
+  "inherited_authority": {
+    "hq_fanin_dispatch_blob": "8a5741e8f7d698f9f98e7b23df66751a7cbfab6a",
+    "c06_non_event_contract_blob": "a1bc0e483fb4a298ae803c192f51a00ddc19a029",
+    "c06_family_bindings_blob": "e65f7e06f152d4cffd0c74a0f9525fc2857520ef",
+    "m4_implementation_blob_unchanged": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+    "m5_implementation_blob_unchanged": "18735bdb31a220aed032aa722574d685e2bdddf5"
+  },
+  "admission_ceiling": {
+    "temporal_forms": [
+      "CONDITION",
+      "DIRECTED_RELATION",
+      "RECURRENT_ACTIVITY"
+    ],
+    "assertion_kinds": [
+      "K1_CONSTITUTIVE_POSITIONAL",
+      "K2_QUALIFIED_POSSIBILITY",
+      "K4_ACTIVE_DURATIVE"
+    ],
+    "rejected_generic_assertion_kinds": [
+      "K3_REALIZED_OCCURRENCE"
+    ],
+    "rejected_temporal_forms": [
+      "EVENT",
+      "TRANSITION",
+      "ORDERED_HISTORY"
+    ],
+    "publication_and_resolution_use_ceiling": [
+      "REVIEW",
+      "CONTEXT"
+    ],
+    "active_causal_via_generic_non_event_adapter": false
+  },
+  "preserved_fields": [
+    "producer_object_ref",
+    "producer_locator_ref",
+    "canonical_producer_family",
+    "producer_semantic_class",
+    "producer_owner_authority_ref",
+    "producer_schema_ref",
+    "temporal_form",
+    "assertion_kind",
+    "polarity",
+    "currentness",
+    "modality",
+    "proof_adjudication",
+    "valid_time_binding_ref",
+    "decision_effective_time_ref",
+    "objective_actor_binding_ref_or_null",
+    "objective_position_context_binding_ref_or_null",
+    "world_or_release_root_ref_or_null",
+    "source_evidence_refs",
+    "determinant_or_witness_refs",
+    "negative_or_closure_refs",
+    "producer_allowed_uses",
+    "publication_allowed_uses",
+    "resolver_allowed_uses",
+    "publication_bundle_ref",
+    "repository_ref",
+    "context_query_ref",
+    "resolution_receipt_ref",
+    "selection_record_ref",
+    "currentness_receipt_ref_or_null",
+    "v3_transition_owner_declaration_ref_or_null",
+    "structural_peer_use_receipt_ref_or_null",
+    "ingress_effect",
+    "actor_state_effect"
+  ],
+  "conformance": [
+    {
+      "id": "D05-CF-001",
+      "claim": "CONDITION + K1 publishes and resolves as objective non-event context",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-002",
+      "claim": "DIRECTED_RELATION + K2 publishes and resolves as objective non-event context",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-003",
+      "claim": "RECURRENT_ACTIVITY + K4 publishes and resolves only with exact closure/termination evidence when CURRENT",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-004",
+      "claim": "lawful objective actor indexing is preserved without person-state mutation",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-005",
+      "claim": "resolver_allowed_uses subset publication_allowed_uses subset producer_allowed_uses",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-006",
+      "claim": "generic non-event publication/resolution cannot carry ACTIVE_CAUSAL even when producer ceiling is broader",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-007",
+      "claim": "CURRENT serving requires exact world/release root and exact currentness receipt refs",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-008",
+      "claim": "HISTORICAL is not relabelled CURRENT",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-009",
+      "claim": "selection/resolution/serving identities are content-addressed and revalidated",
+      "result": "PASS"
+    },
+    {
+      "id": "D05-CF-010",
+      "claim": "fuzzy/latest/default repair is absent from exact-key resolution",
+      "result": "PASS"
+    }
+  ],
+  "real_world_qualification": {
+    "status": "WAITING_ON_OBJECTIVE_WORLD_ROOT_AUTHORITY_INPUTS",
+    "d01_observed_frozen_return_tip": "77a4b225030fc8452de170054e693d972a0f066c",
+    "d01_real_root_materialized": false,
+    "d01_blocker": "D01_REAL_WORLD_ROOT_MATERIALIZATION_BLOCKED__MISSING_AUTHORIZED_OBJECTIVE_WORLD_SCOPE_REF__VALID_TIME_AUTHORITY_REF__WORLD_VALIDITY_REF",
+    "d05_minted_substitute_root": false,
+    "successor_gate": "GATE-NON-EVENT-QUALIFICATION"
+  },
+  "terminal": "PASS__W2_D05_GENERIC_NON_EVENT_ADAPTER_IMPLEMENTED__15_TARGETED_PASS__REAL_E2E_BLOCKED_ON_D01_WORLD_ROOT_AUTHORITY_INPUTS"
+}
