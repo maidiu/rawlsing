@@ -1,0 +1,94 @@
+{
+  "schema": "W2_D01_REAL_MATERIALIZATION_AND_REPLAY_CASES_R1",
+  "status": "REAL_ROOT_WITHHELD_FAIL_CLOSED_ON_MISSING_AUTHORITATIVE_INPUTS",
+  "commission_tip": "60648fc5709ce4f4f870eb2a15283a1791f6b338",
+  "known_current_objective_inputs": {
+    "gt12_r1c": {
+      "predicate_sha256": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "query_sha256": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "fact_sha256": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "replay_sha256": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+      "fact_state": "SUPPORTED",
+      "raw_denominator_support": 19210
+    },
+    "gt12_publication_governance": {
+      "bundle_content_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+      "adoption_content_hash": "ff3c0db1ee346b176f240523f36048d88beb6216722988ea087040b4840cd492",
+      "v557_state": "ALLOW_CONTEXT_ONLY",
+      "v557_use": "CONTEXT"
+    },
+    "m4_repository_implementation_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+    "m5_currentness_implementation_blob": "18735bdb31a220aed032aa722574d685e2bdddf5"
+  },
+  "required_root_tuple_state": {
+    "release_authority_ref": "EXACT_AUTHORITY_MECHANISM_AVAILABLE_BUT_NO_D01_SELF_MINT",
+    "repository_ref": "CONSTRUCTIBLE_FROM_CURRENT_OBJECTIVE_PREV3_MATERIAL",
+    "publication_bundle_ref": "CONSTRUCTIBLE_FROM_CURRENT_OBJECTIVE_PREV3_MATERIAL",
+    "index_manifest_ref": "CONSTRUCTIBLE_FROM_CURRENT_OBJECTIVE_PREV3_MATERIAL",
+    "objective_world_scope_ref": "MISSING_AUTHORIZED_CONCRETE_INSTANCE",
+    "valid_time_authority_ref": "MISSING_AUTHORIZED_CONCRETE_INSTANCE_AT_WORLD_ROOT_GRAIN",
+    "world_validity_ref": "MISSING_AUTHORIZED_CONCRETE_INSTANCE",
+    "predecessor_world_root_ref": "NULL_ALLOWED_FOR_FIRST_ROOT"
+  },
+  "real_root_materialized": false,
+  "real_root_ref": null,
+  "materialization_disposition": "WITHHELD_BY_CONTRACT__DO_NOT_MINT_ROOT_UNTIL_ALL_EXACT_AUTHORITATIVE_INPUTS_EXIST",
+  "cases": [
+    {
+      "case_id": "D01-RM-01",
+      "case": "current objective PRE-V3 empirical/publication/repository material exists",
+      "result": "EVIDENCE_AVAILABLE",
+      "note": "Current GT12 repo-native exact query/fact/replay and adopted CONTEXT publication-governance identities are present."
+    },
+    {
+      "case_id": "D01-RM-02",
+      "case": "objective world scope instance",
+      "result": "MISSING_AUTHORITY_INSTANCE",
+      "note": "No exact PREV3_OBJECTIVE_WORLD_SCOPE ref in the commissioned evidence set may be promoted by D01."
+    },
+    {
+      "case_id": "D01-RM-03",
+      "case": "valid-time authority at objective world-root grain",
+      "result": "MISSING_AUTHORITY_INSTANCE",
+      "note": "A timestamp, wall clock, runtime cursor, or downstream currentness receipt is not equivalent to source-owned valid-time authority."
+    },
+    {
+      "case_id": "D01-RM-04",
+      "case": "concrete objective world-validity instance",
+      "result": "MISSING_AUTHORITY_INSTANCE",
+      "note": "No concrete PREV3_OBJECTIVE_WORLD_VALIDITY ref may be inferred from V3 state, actor request, designator, or M5 receipt."
+    },
+    {
+      "case_id": "D01-RM-05",
+      "case": "real root construction",
+      "result": "BLOCKED_BEFORE_IDENTITY_MINT",
+      "note": "Constructor implementation is present; root identity is deliberately not minted from incomplete authority material."
+    },
+    {
+      "case_id": "D01-RM-06",
+      "case": "real root replay",
+      "result": "NOT_APPLICABLE_NO_REAL_ROOT_YET",
+      "note": "Deterministic replay logic is implemented and targeted by tests, but no real-root replay receipt is fabricated."
+    }
+  ],
+  "exact_blocker": {
+    "token": "D01_REAL_WORLD_ROOT_MATERIALIZATION_BLOCKED__MISSING_AUTHORIZED_OBJECTIVE_WORLD_SCOPE_REF__VALID_TIME_AUTHORITY_REF__WORLD_VALIDITY_REF",
+    "missing": [
+      "objective_world_scope_ref",
+      "valid_time_authority_ref",
+      "world_validity_ref"
+    ],
+    "competent_owner": "VOZHD/HQ OBJECTIVE WORLD / VALID-TIME AUTHORITY",
+    "wake": "Issue/adopt exact objective scope + valid-time authority + concrete objective world-validity instance, then invoke the committed D01 constructor and replay path."
+  },
+  "forbidden_substitutions_preserved": [
+    "V3_RUNTIME_CURSOR",
+    "ACTOR_REQUEST",
+    "PERSON_OR_PERSONA_STATE",
+    "WALL_CLOCK_OR_BARE_TIMESTAMP",
+    "LATEST_DEFAULT_OR_FUZZY_SELECTION",
+    "WORLD_DESIGNATOR_WITHOUT_CONCRETE_AUTHORITY",
+    "M5_STRUCTURAL_CURRENTNESS_RECEIPT_AS_WORLD_AUTHOR"
+  ],
+  "terminal": "PREV3_WORLD_ROOT_IMPLEMENTATION_COMPLETE__REAL_ROOT_MATERIALIZATION_BLOCKED_ONLY_ON_MISSING_EXACT_OBJECTIVE_SCOPE_AND_WORLD_VALIDITY_INPUTS__READY_FOR_GATE_WORLD_RUNTIME"
+}

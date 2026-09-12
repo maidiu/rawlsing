@@ -1,0 +1,71 @@
+{
+  "schema": "W2_D01_WORLD_ROOT_IMPLEMENTATION_RECEIPT_R1",
+  "status": "PASS_WITH_EXACT_AUTHORITATIVE_INPUT_BLOCKER",
+  "commission_id": "W2-D01",
+  "exact_grain": "PREV3_WORLD_ROOT_IMPLEMENTATION_AND_REAL_MATERIALIZATION_R1_ONLY",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-prev3-w2-d01-world-root-implementation-r1",
+  "commission_tip": "60648fc5709ce4f4f870eb2a15283a1791f6b338",
+  "commission_parent": "107fb80308dafb6dc2e9ba1dd15b8b2d9e7ac2d2",
+  "c02_governed_return_tip": "7a3def9262da5891f86f5e4f00384c07902e77b9",
+  "adopted_world_root_contract_blob": "340fbc2bca491f0cf63bd506776f178d3db805e4",
+  "implementation": {
+    "path": "rawlsing_next/prev3_objective_world_release_root.py",
+    "git_blob": "73c38f273adcad843d3ca95ddd387248ccb9aa76",
+    "contract": "PREV3_OBJECTIVE_WORLD_RELEASE_ROOT_R1",
+    "entrypoints": [
+      "build_objective_world_release_root",
+      "replay_objective_world_release_root"
+    ]
+  },
+  "tests": {
+    "path": "rawlsing_next/tests/test_prev3_objective_world_release_root.py",
+    "git_blob": "93cc2e78e7d639c08e1adc7ba819d39d8f0fc48d",
+    "targeted_case_count": 8,
+    "syntax_compile": "PASS",
+    "governed_pytest_execution": {
+      "status": "NOT_EXECUTED_IN_CONNECTOR_ENVIRONMENT",
+      "reason": "No repository checkout or governed test runner is exposed by the connected GitHub execution surface. No pytest PASS is claimed without an execution receipt."
+    }
+  },
+  "implemented_invariants": [
+    "ROOT_ID_EQUALS_PREV3WORLD_COLON_SEMANTIC_HASH_OF_CANONICAL_CONSTRUCTOR_MATERIAL",
+    "REPOSITORY_MUST_BE_EXACT_VALIDATED_V558_REPOSITORY_BUNDLE",
+    "PUBLICATION_BUNDLE_REF_MUST_EQUAL_REPOSITORY_PUBLICATION_BUNDLE_REF",
+    "INDEX_MANIFEST_REF_MUST_EQUAL_REPOSITORY_INDEX_MANIFEST_REF",
+    "OBJECTIVE_WORLD_SCOPE_REF_IS_EXACT_TYPED_OBJECTIVE_REF",
+    "WORLD_VALIDITY_REF_IS_EXACT_TYPED_OBJECTIVE_REF",
+    "VALID_TIME_AUTHORITY_IS_SEPARATE_EXACT_AUTHORITY_REF",
+    "PREDECESSOR_ROOT_IS_OPTIONAL_EXACT_IMMUTABLE_WORLD_ROOT_REF",
+    "SAME_TUPLE_REPLAY_PRESERVES_EXACT_ROOT_IDENTITY",
+    "CHANGED_VALIDITY_MATERIAL_CHANGES_ROOT_IDENTITY_WITHOUT_MUTATING_PRODUCER_REFS",
+    "LATEST_DEFAULT_FUZZY_SELECTORS_FAIL_CLOSED",
+    "V3_ACTOR_PERSON_PERSONA_RUNTIME_CURSOR_AND_WALL_CLOCK_CANNOT_AUTHOR_WORLD_VALIDITY",
+    "WORLD_ROOT_CONSTRUCTOR_DOES_NOT_CALL_V558_RESOLUTION",
+    "WORLD_ROOT_CONSTRUCTOR_DOES_NOT_DEPEND_ON_M5_CURRENTNESS"
+  ],
+  "remaining_materialization_blocker": {
+    "token": "D01_REAL_WORLD_ROOT_MATERIALIZATION_BLOCKED__MISSING_AUTHORIZED_OBJECTIVE_WORLD_SCOPE_REF__VALID_TIME_AUTHORITY_REF__WORLD_VALIDITY_REF",
+    "missing_authoritative_inputs": [
+      "objective_world_scope_ref:ExactRef<PREV3_OBJECTIVE_WORLD_SCOPE>",
+      "valid_time_authority_ref:AuthorityRef",
+      "world_validity_ref:ExactRef<PREV3_OBJECTIVE_WORLD_VALIDITY>"
+    ],
+    "repairable_by_d01_implementation": false,
+    "competent_owner": "VOZHD/HQ OBJECTIVE WORLD / VALID-TIME AUTHORITY",
+    "successor_gate": "GATE-WORLD-RUNTIME"
+  },
+  "authority_ceiling": {
+    "real_root_materialized": false,
+    "mints_world_validity": false,
+    "mints_objective_scope": false,
+    "mints_valid_time_authority": false,
+    "mints_empirical_facts": false,
+    "mints_positions": false,
+    "mints_events": false,
+    "mints_rules_or_calibration": false,
+    "uses_v3_person_state": false,
+    "widens_m4_m5_permissions": false
+  },
+  "terminal": "PREV3_WORLD_ROOT_IMPLEMENTATION_COMPLETE__REAL_ROOT_MATERIALIZATION_BLOCKED_ONLY_ON_MISSING_EXACT_OBJECTIVE_SCOPE_AND_WORLD_VALIDITY_INPUTS__READY_FOR_GATE_WORLD_RUNTIME"
+}
