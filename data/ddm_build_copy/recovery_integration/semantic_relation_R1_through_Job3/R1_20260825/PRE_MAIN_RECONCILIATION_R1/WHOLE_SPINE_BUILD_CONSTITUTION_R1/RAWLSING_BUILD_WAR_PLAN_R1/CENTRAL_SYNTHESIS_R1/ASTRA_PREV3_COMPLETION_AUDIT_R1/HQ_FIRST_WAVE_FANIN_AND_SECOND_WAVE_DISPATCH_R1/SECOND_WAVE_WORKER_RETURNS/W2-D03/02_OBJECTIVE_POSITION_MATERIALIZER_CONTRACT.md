@@ -58,6 +58,7 @@ A materializer MUST receive a complete immutable tuple equivalent to:
 ```text
 schema = PREV3_OBJECTIVE_POSITION_MATERIALIZER_CONTRACT@1.0.0
 
+materializer_implementation_ref
 position_producer_authority_ref
 position_semantic_authority_ref
 
@@ -101,19 +102,20 @@ All `*_ref` values are exact immutable references containing semantic kind, obje
 
 A materializer may emit `POSITION_FACT_AUTHORIZED` only if all of the following are true:
 
-1. `position_producer_authority_ref` names this producer and covers the exact position fact class, source/claim, scope, use and temporal grain.
-2. `position_semantic_authority_ref` competently authorizes the exact `objective_position_role_identity_ref`.
-3. `entity_or_actor_ref` is an objective identity at the asserted grain and is not merely a V3 subject/person materialization receipt.
-4. Source universe, release, claim, authority and supporting evidence resolve exactly and agree.
-5. Any required OBL005/domain-equivalent role receipt binds the same actor grain, claim/docket/use, position/role, scope/context/time and supporting evidence.
-6. OBL005 target-outcome/result-independence requirements are satisfied whenever the role adjudication is constitutive of the target claim.
-7. Applicability is positively established at the exact entity/actor, context and time grain.
-8. Requested/declared allowed uses are a subset of source, semantic-owner, producer and permission ceilings.
-9. `negative_ceiling_ref` is preserved; absence/missing/noncomparability cannot be promoted to a positive fact.
-10. Valid-time and currentness authorities resolve exactly; the currentness receipt covers the asserted position fact at the claimed as-of/interval.
-11. Provenance and dependency refs are closed and immutable.
-12. Deterministic replay over the same canonical tuple reproduces the same fact identity.
-13. No forbidden person-state field or person-side inference is present.
+1. `materializer_implementation_ref` exactly identifies the executing implementation/hash and is covered by the producer authority.
+2. `position_producer_authority_ref` names this producer and covers the exact position fact class, source/claim, scope, use and temporal grain.
+3. `position_semantic_authority_ref` competently authorizes the exact `objective_position_role_identity_ref`.
+4. `entity_or_actor_ref` is an objective identity at the asserted grain and is not merely a V3 subject/person materialization receipt.
+5. Source universe, release, claim, authority and supporting evidence resolve exactly and agree.
+6. Any required OBL005/domain-equivalent role receipt binds the same actor grain, claim/docket/use, position/role, scope/context/time and supporting evidence.
+7. OBL005 target-outcome/result-independence requirements are satisfied whenever the role adjudication is constitutive of the target claim.
+8. Applicability is positively established at the exact entity/actor, context and time grain.
+9. Requested/declared allowed uses are a subset of source, semantic-owner, producer and permission ceilings.
+10. `negative_ceiling_ref` is preserved; absence/missing/noncomparability cannot be promoted to a positive fact.
+11. Valid-time and currentness authorities resolve exactly; the currentness receipt covers the asserted position fact at the claimed as-of/interval.
+12. Provenance and dependency refs are closed and immutable.
+13. Deterministic replay over the same canonical tuple reproduces the same fact identity.
+14. No forbidden person-state field or person-side inference is present.
 
 A source name, questionnaire block, coordinate, embedding, geometric region, label/code, recurrence, favorable target result, downstream need, demographic category or shared measurement ancestry cannot satisfy any missing positive condition.
 
@@ -124,6 +126,7 @@ For a positive result, canonical fact material is:
 ```text
 schema
 state = POSITION_FACT_AUTHORIZED
+materializer_implementation_ref
 position_producer_authority_ref
 position_semantic_authority_ref
 entity_or_actor_ref
@@ -171,10 +174,14 @@ Changing the entity, position identity, source/release/claim, authority, evidenc
 
 The materializer must fail closed with a typed state and no positive `PREV3POS:` fact when the corresponding requirement is not proved.
 
+`EXPLICIT_NEGATIVE_OBJECTIVE_POSITION` is permitted only as a decision/negative-fact disposition backed by exact competent negative proposition authority and evidence; it is never inferred from failed positive proof. `UNAVAILABLE` is an explicit source/input availability state and never means false.
+
 Frozen D03 result vocabulary:
 
 ```text
 POSITION_FACT_AUTHORIZED
+EXPLICIT_NEGATIVE_OBJECTIVE_POSITION
+UNAVAILABLE
 VALID_EMPTY
 MISSING_POSITION_PRODUCER_AUTHORITY
 MISSING_POSITION_SEMANTIC_AUTHORITY
@@ -202,7 +209,7 @@ NONCOMPARABLE != NEGATIVE_POSITION
 VALID_EMPTY != UNIVERSAL_NEGATIVE
 ```
 
-An explicit negative objective position assertion, if a downstream domain ever requires one, needs its own competent negative authority/evidence at that exact proposition grain; D03 does not infer it from failed positive proof.
+An explicit negative objective position assertion needs its own competent negative authority/evidence at that exact proposition grain; D03 does not infer it from failed positive proof. `UNAVAILABLE`, missing, stale and noncomparable states likewise remain nonpositive.
 
 ## 7. M2 / Field Forge handoff
 
