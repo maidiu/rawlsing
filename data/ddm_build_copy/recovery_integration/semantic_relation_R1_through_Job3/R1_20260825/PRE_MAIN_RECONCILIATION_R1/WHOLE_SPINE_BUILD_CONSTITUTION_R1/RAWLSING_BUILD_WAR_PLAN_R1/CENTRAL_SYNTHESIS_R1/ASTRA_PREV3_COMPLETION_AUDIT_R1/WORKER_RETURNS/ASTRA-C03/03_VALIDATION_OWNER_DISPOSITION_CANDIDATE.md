@@ -16,7 +16,7 @@ Therefore:
 
 and:
 
-`SOURCE/C11 OWNER != LEARNED_PRODUCT_SEMANTIC_OWNER != LIFECYCLE_OWNER`
+`SOURCE/C11_OWNER != LEARNED_PRODUCT_SEMANTIC_OWNER != LIFECYCLE_OWNER`
 
 The adopted OBL034 lifecycle law remains reusable at its exact declarative grain, but lifecycle/currentness may not widen producer permission.
 
@@ -134,6 +134,6 @@ Nothing above is executable authority until competent owners act at:
 
 Successor wake candidate:
 
-`GATE-LEARNED__ADJUDICATE_AST​RA_C03_WORKLOAD_AND_OWNER_SOURCE_REQUIREMENTS`
+`GATE-LEARNED__ADJUDICATE_ASTRA_C03_WORKLOAD_AND_OWNER_SOURCE_REQUIREMENTS`
 
 (The wake is a gate/adjudication handoff, not automatic implementation or production execution.)
