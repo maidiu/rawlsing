@@ -1,0 +1,65 @@
+{
+  "schema": "HB06_ORACLE_PACKAGE_IDENTITY@1.0.0",
+  "status": "PASS__IMMUTABLE_PACKAGE_IDENTITY_SEALED",
+  "package_id": "HB06_FINAL_COMMON_TWO_SOURCE_PARITY_ORACLE_PACKAGE_R1",
+  "package_canonical_sha256": "caf478a072ca558de8c86f6d89a60399636ed71d7772ad43d7d0167bc59f20f8",
+  "canonicalization": "UTF8_JSON_SORT_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE",
+  "canonical_identity_payload": {
+    "schema": "HB06_ORACLE_PACKAGE_IDENTITY@1.0.0",
+    "package_id": "HB06_FINAL_COMMON_TWO_SOURCE_PARITY_ORACLE_PACKAGE_R1",
+    "oracle_component_commit": "e1197b736a550e806f4346b75147499e7bc6d166",
+    "commission_tip": "fe7b376a93810cedc4f901301305ff18c546d789",
+    "d08_return_head": "122f6d8813bf3297a0d79d7802893a03700b6e46",
+    "hq_fanin": "018ef13413b24a3bc131fd0c769d37b832854135",
+    "component_git_blobs": {
+      "01_FINAL_COMMON_TWO_SOURCE_PARITY_ORACLE.json": "4ca86c4b3f629457ef1f3780e5b00d896c2fa99f",
+      "02_ORACLE_AUTHORITY_TRACE.tsv": "4bb8a0e1e79537106b4d955c75b45bebd52547ca",
+      "03_ORACLE_INDEPENDENCE_AND_HOSTILE_COURT.md": "88f24445092f91a57743b6d06eddabf80d04762c",
+      "04_OPERATION_ID_CROSSWALK.tsv": "29a0c5c354b33c7005e9b8cbed815a3c4abb361a"
+    },
+    "source_sha256": {
+      "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "LiTS-I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    },
+    "comparison_spine": {
+      "hb04_abc_intake_canonical_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88",
+      "hb04_implementation_canonical_sha256": "138482116b566482075e191800229f81357541d674646552e8c269e7640a755e",
+      "c09_order_blob": "e200a9aed7dbdf103ab9306d0dd19b74662faf1b",
+      "c09_measurement_law_blob": "2729ab4dca887f22fb3c90265f10c70020afdd3e",
+      "d02_hq_adopted_return": "40cb8585f076a66d9884b99022a59bb909606c03",
+      "terminal_vision_checksum_blob": "fb23abf3fe6c32f5bce19fcb857b7004363a5681"
+    },
+    "counts": {
+      "sources": 2,
+      "candidates": 3,
+      "parity_dimensions": 13,
+      "operation_ids": 20,
+      "oracle_rows": 41,
+      "explicit_governed_negative_or_refusal_rows": 8
+    },
+    "hard_zeroes": {
+      "candidate_output_truth_inputs": 0,
+      "bakeoff_executions": 0,
+      "comparative_resource_measurements": 0,
+      "ranking_or_selection_actions": 0,
+      "library_lookups": 0
+    }
+  },
+  "integrity_checks": {
+    "two_mandatory_sources_bound": true,
+    "three_candidate_spine_bound": true,
+    "thirteen_parity_dimensions_bound": true,
+    "twenty_operation_ids_bound": true,
+    "forty_one_oracle_rows_bound": true,
+    "eight_explicit_governed_negative_rows_bound": true,
+    "candidate_self_oracle_inputs": 0,
+    "candidate_majority_vote_truth": false,
+    "bakeoff_executed": false,
+    "comparative_resource_data_collected": false,
+    "ranking_or_selection_performed": false,
+    "library_used": false,
+    "person_terminal_fallback": false
+  },
+  "successor_gate": "GATE-HB06-FROZEN__PASS__READY_FOR_HB05_HB06_CONVERGENCE",
+  "terminal": "HB06_FINAL_COMMON_TWO_SOURCE_PARITY_ORACLE_PACKAGE_R1_COMPLETE__READY_FOR_HB05_HB06_CONVERGENCE"
+}
