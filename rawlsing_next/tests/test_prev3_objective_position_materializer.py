@@ -1,4 +1,5 @@
 import hashlib
+from dataclasses import replace
 
 import pytest
 
@@ -15,6 +16,8 @@ from rawlsing_next.prev3_objective_position_materializer import (
     replay_objective_position,
     typed_nonpositive_result,
 )
+
+_DEFAULT = object()
 
 
 def _h(label: str) -> str:
@@ -34,35 +37,40 @@ def _input(
     tag: str = "base",
     entity_ref: ExactRef | None = None,
     role_ref: ExactRef | None = None,
-    role_receipt: ExactRef | None = None,
-    role_na_authority: AuthorityRef | None = None,
+    role_receipt=_DEFAULT,
+    role_na_authority=_DEFAULT,
     firewall: ExactRef | None = None,
     allowed_uses=("M2_SOURCE_STRUCTURAL_POSITION", "OBJECTIVE_CONTEXT"),
-    evidence=None,
-    provenance=None,
-    dependencies=None,
+    evidence=_DEFAULT,
+    provenance=_DEFAULT,
+    dependencies=_DEFAULT,
     predecessor=None,
 ) -> ObjectivePositionInput:
-    if role_receipt is None and role_na_authority is None:
+    if role_receipt is _DEFAULT and role_na_authority is _DEFAULT:
         role_receipt = _ref("POSITION_ROLE_RECEIPT", f"{tag}-pra")
+        role_na_authority = None
+    else:
+        if role_receipt is _DEFAULT:
+            role_receipt = None
+        if role_na_authority is _DEFAULT:
+            role_na_authority = None
+    if evidence is _DEFAULT:
+        evidence = (_ref("EVIDENCE", f"{tag}-e2"), _ref("EVIDENCE", f"{tag}-e1"))
+    if provenance is _DEFAULT:
+        provenance = (_ref("PROVENANCE", f"{tag}-p2"), _ref("PROVENANCE", f"{tag}-p1"))
+    if dependencies is _DEFAULT:
+        dependencies = (_ref("DEPENDENCY", f"{tag}-d2"), _ref("DEPENDENCY", f"{tag}-d1"))
     return ObjectivePositionInput(
         materializer_implementation_ref=_ref("IMPLEMENTATION", tag),
         position_producer_authority_ref=_aref(f"{tag}-producer"),
         position_semantic_authority_ref=_aref(f"{tag}-semantic"),
         entity_or_actor_ref=entity_ref or _ref("OBJECTIVE_ACTOR", f"{tag}-actor"),
-        objective_position_role_identity_ref=role_ref
-        or _ref("OBJECTIVE_POSITION_ROLE", f"{tag}-role"),
+        objective_position_role_identity_ref=role_ref or _ref("OBJECTIVE_POSITION_ROLE", f"{tag}-role"),
         source_universe_ref=_ref("SOURCE_UNIVERSE", tag),
         source_release_ref=_ref("SOURCE_RELEASE", tag),
         source_claim_ref=_ref("SOURCE_CLAIM", tag),
         source_claim_authority_ref=_aref(f"{tag}-claim"),
-        supporting_evidence_refs=tuple(
-            evidence
-            or (
-                _ref("EVIDENCE", f"{tag}-e2"),
-                _ref("EVIDENCE", f"{tag}-e1"),
-            )
-        ),
+        supporting_evidence_refs=tuple(evidence),
         position_role_receipt_ref=role_receipt,
         position_role_not_applicable_authority_ref=role_na_authority,
         target_outcome_firewall_ref=firewall,
@@ -75,20 +83,8 @@ def _input(
         valid_time_basis_ref=_ref("VALID_TIME_BASIS", tag),
         currentness_authority_ref=_aref(f"{tag}-currentness"),
         currentness_receipt_ref=_ref("CURRENTNESS_RECEIPT", tag),
-        provenance_refs=tuple(
-            provenance
-            or (
-                _ref("PROVENANCE", f"{tag}-p2"),
-                _ref("PROVENANCE", f"{tag}-p1"),
-            )
-        ),
-        dependency_refs=tuple(
-            dependencies
-            or (
-                _ref("DEPENDENCY", f"{tag}-d2"),
-                _ref("DEPENDENCY", f"{tag}-d1"),
-            )
-        ),
+        provenance_refs=tuple(provenance),
+        dependency_refs=tuple(dependencies),
         replay_authority_ref=_aref(f"{tag}-replay"),
         predecessor_position_fact_ref=predecessor,
     )
@@ -107,48 +103,13 @@ def test_positive_fact_is_content_addressed_and_replays_exactly():
 
 
 def test_set_like_order_does_not_change_identity():
-    a = _input(
-        tag="order",
-        evidence=(
-            _ref("EVIDENCE", "order-a"),
-            _ref("EVIDENCE", "order-b"),
-        ),
-        provenance=(
-            _ref("PROVENANCE", "order-a"),
-            _ref("PROVENANCE", "order-b"),
-        ),
-        dependencies=(
-            _ref("DEPENDENCY", "order-a"),
-            _ref("DEPENDENCY", "order-b"),
-        ),
-        allowed_uses=("OBJECTIVE_CONTEXT", "M2_SOURCE_STRUCTURAL_POSITION"),
-    )
-    b = ObjectivePositionInput(
-        materializer_implementation_ref=a.materializer_implementation_ref,
-        position_producer_authority_ref=a.position_producer_authority_ref,
-        position_semantic_authority_ref=a.position_semantic_authority_ref,
-        entity_or_actor_ref=a.entity_or_actor_ref,
-        objective_position_role_identity_ref=a.objective_position_role_identity_ref,
-        source_universe_ref=a.source_universe_ref,
-        source_release_ref=a.source_release_ref,
-        source_claim_ref=a.source_claim_ref,
-        source_claim_authority_ref=a.source_claim_authority_ref,
+    a = _input(tag="order")
+    b = replace(
+        a,
         supporting_evidence_refs=tuple(reversed(a.supporting_evidence_refs)),
-        position_role_receipt_ref=a.position_role_receipt_ref,
-        position_role_not_applicable_authority_ref=None,
-        target_outcome_firewall_ref=None,
-        applicability_authority_ref=a.applicability_authority_ref,
-        applicability_receipt_ref=a.applicability_receipt_ref,
-        permission_authority_ref=a.permission_authority_ref,
         allowed_uses=tuple(reversed(a.allowed_uses)),
-        negative_ceiling_ref=a.negative_ceiling_ref,
-        valid_time_authority_ref=a.valid_time_authority_ref,
-        valid_time_basis_ref=a.valid_time_basis_ref,
-        currentness_authority_ref=a.currentness_authority_ref,
-        currentness_receipt_ref=a.currentness_receipt_ref,
         provenance_refs=tuple(reversed(a.provenance_refs)),
         dependency_refs=tuple(reversed(a.dependency_refs)),
-        replay_authority_ref=a.replay_authority_ref,
     )
     assert materialize_objective_position(a).fact_ref == materialize_objective_position(b).fact_ref
 
@@ -173,13 +134,8 @@ def test_role_authority_path_is_exactly_one_of_receipt_or_explicit_na_authority(
 
 
 def test_directly_constitutive_position_can_use_explicit_role_na_authority():
-    payload = _input(
-        tag="na",
-        role_receipt=None,
-        role_na_authority=_aref("na-role-authority"),
-    )
-    fact = materialize_objective_position(payload)
-    assert fact.fact_ref.kind == FACT_REF_KIND
+    payload = _input(tag="na", role_receipt=None, role_na_authority=_aref("na-role-authority"))
+    assert materialize_objective_position(payload).fact_ref.kind == FACT_REF_KIND
 
 
 def test_v3_or_person_state_cannot_bootstrap_objective_position_identity():
@@ -198,21 +154,14 @@ def test_constitutive_role_path_can_require_outcome_firewall():
     payload = _input(tag="firewall")
     with pytest.raises(PositionMaterializerError, match="target_outcome_firewall_ref"):
         materialize_objective_position(payload, require_target_outcome_firewall=True)
-    guarded = _input(
-        tag="firewall-positive",
-        firewall=_ref("TARGET_OUTCOME_FIREWALL", "frozen-before-result"),
-    )
+    guarded = _input(tag="firewall-positive", firewall=_ref("TARGET_OUTCOME_FIREWALL", "frozen-before-result"))
     assert materialize_objective_position(
         guarded, require_target_outcome_firewall=True
     ).fact_ref.kind == FACT_REF_KIND
 
 
 def test_missing_evidence_provenance_or_dependencies_fails_closed():
-    for kwargs in (
-        {"evidence": ()},
-        {"provenance": ()},
-        {"dependencies": ()},
-    ):
+    for kwargs in ({"evidence": ()}, {"provenance": ()}, {"dependencies": ()}):
         with pytest.raises(PositionMaterializerError, match="must not be empty"):
             _input(tag=f"missing-{next(iter(kwargs))}", **kwargs)
 
@@ -220,12 +169,7 @@ def test_missing_evidence_provenance_or_dependencies_fails_closed():
 def test_mutable_authority_selector_is_rejected():
     bad = AuthorityRef("LATEST", "1.0.0", _h("latest"))
     with pytest.raises(PositionMaterializerError, match="latest/default/fuzzy/nearest"):
-        ObjectivePositionInput(
-            **{
-                **_input(tag="authority").__dict__,
-                "position_producer_authority_ref": bad,
-            }
-        )
+        replace(_input(tag="authority"), position_producer_authority_ref=bad)
 
 
 def test_nonpositive_states_never_mint_positive_fact_ref():
