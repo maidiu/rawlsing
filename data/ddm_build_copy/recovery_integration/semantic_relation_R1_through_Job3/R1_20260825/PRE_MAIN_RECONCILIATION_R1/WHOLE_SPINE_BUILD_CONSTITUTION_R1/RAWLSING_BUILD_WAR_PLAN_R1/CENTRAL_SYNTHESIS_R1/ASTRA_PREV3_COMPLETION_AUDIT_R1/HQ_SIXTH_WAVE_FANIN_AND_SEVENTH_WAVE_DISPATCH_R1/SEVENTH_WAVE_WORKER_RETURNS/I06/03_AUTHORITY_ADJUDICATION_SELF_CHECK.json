@@ -1,0 +1,28 @@
+{
+  "schema": "I06_V555_SIG004_AUTHORITY_ADJUDICATION_SELF_CHECK@1.0.0",
+  "result": "PASS",
+  "passed": 16,
+  "failed": 0,
+  "authority_key_sha256": "f9b9c8f4e57fe6eefceb737567578dec96e54aa7a251885b7d4fe1b22a152cc0",
+  "authority_artifact_sha256": "9e43b6b7cc29fd591987985130fabaf2f529953cda730affe8fe67efc095c7d7",
+  "closure_requirements_sha256": "9711734c271553b2024eadc98b7edcdcfe06f26cf214de46b31a3278fbd87df4",
+  "tests": [
+    {"id":"I06-T01","name":"COMMISSION_TIP_EXACT","status":"PASS","evidence":"477676bd55959615b58e7ba7d3caf27e4635d9d6"},
+    {"id":"I06-T02","name":"HQ_AUTHORITY_EXACT","status":"PASS","evidence":"449fbb836044e2f7df9b0456a163b412ad9fc259"},
+    {"id":"I06-T03","name":"H06_BLOCKER_CONSUMED","status":"PASS","evidence":"H06_BLOCK__V555_RR001_DOES_NOT_ADMIT_V554_SIG004_ADMITTED_RELATION_F1"},
+    {"id":"I06-T04","name":"G07_QUALIFIED_SECOND_CANARY_EXACT","status":"PASS","evidence":"8079d627069736e10ccc35acf675bcd4c967d62d"},
+    {"id":"I06-T05","name":"SIG004_PRESERVED_NO_DOWNGRADE","status":"PASS","evidence":"V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT"},
+    {"id":"I06-T06","name":"F1_B1_EXACT","status":"PASS","evidence":"06f96892... / 95dfb567..."},
+    {"id":"I06-T07","name":"TARGET_USE_SINGLETON","status":"PASS","evidence":"STRUCTURAL_MEDIATION_INPUT"},
+    {"id":"I06-T08","name":"RR001_UNCHANGED","status":"PASS","evidence":"existing_rr001_modified=false"},
+    {"id":"I06-T09","name":"NEW_RULE_CLAIM_SPECIFIC_ONLY","status":"PASS","evidence":"generic_sig004_rule=false"},
+    {"id":"I06-T10","name":"EXISTING_V555_ROUTE_SHAPE_REUSED","status":"PASS","evidence":"V555-RS-001-SOURCE-EXACT-CHANNEL-EXACT-RECEIVER@1.0.0"},
+    {"id":"I06-T11","name":"PARTICIPANT_AUTOMAP_NOT_AUTHORIZED","status":"PASS","evidence":"Q73A/Q86A/Q70B/Q70C/Q84 are not route refs"},
+    {"id":"I06-T12","name":"EXACT_CLOSURE_REQUIRED","status":"PASS","evidence":"source/channel/receiver/authority/seal required"},
+    {"id":"I06-T13","name":"NO_ROUTE_OR_REPLAY_EXECUTED","status":"PASS","evidence":"0 routes; 0 replay"},
+    {"id":"I06-T14","name":"NO_M2_IMPLEMENTATION_CHANGE","status":"PASS","evidence":"current runtime unchanged"},
+    {"id":"I06-T15","name":"NO_PUBLICATION_M3_V3_PERSON_PROMOTION","status":"PASS","evidence":"hard zeroes"},
+    {"id":"I06-T16","name":"PREV3_OBJECTIVE_WORLD_ONLY","status":"PASS","evidence":"OBL063 excluded"}
+  ],
+  "successor": "SIG004_AUTHORITY_SATISFIED__COMPOSITION_REMAINS_BLOCKED_PENDING_EXACT_CLOSURE"
+}
