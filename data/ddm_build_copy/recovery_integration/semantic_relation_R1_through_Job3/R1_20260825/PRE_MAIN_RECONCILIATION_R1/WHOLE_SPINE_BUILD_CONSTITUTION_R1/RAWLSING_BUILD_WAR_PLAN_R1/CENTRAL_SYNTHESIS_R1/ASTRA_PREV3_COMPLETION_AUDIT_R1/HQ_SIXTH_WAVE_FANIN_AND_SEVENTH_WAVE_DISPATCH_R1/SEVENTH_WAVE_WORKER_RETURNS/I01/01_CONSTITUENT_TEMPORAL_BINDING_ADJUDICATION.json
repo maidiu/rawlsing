@@ -1,0 +1,108 @@
+{
+  "schema": "W7_I01_E01_BOUNDED_RELEASE_CONSTITUENT_TEMPORAL_BINDING_ADJUDICATION_ARTIFACT_R1",
+  "grain": "PREV3_E01_BOUNDED_RELEASE_COMPLETE_CONSTITUENT_TEMPORAL_STATUS_BINDING_SET_R1_ONLY",
+  "branch": "agent/rabochii-prev3-w7-i01-world-constituent-temporal-bindings-r1",
+  "commission_tip": "8032bdd98e422cda95a610db97568e6f4d7f39ac",
+  "commission_blob": "70e64576bed7d990361157bec3f8bbf113ce2857",
+  "hq_authority_commit": "449fbb836044e2f7df9b0456a163b412ad9fc259",
+  "hq_authority_blob": "710d32d8a119f9d2227830405ddf9704195971d4",
+  "h01_parent": "604f015f639234455cab81dea9e76f32bff81e54",
+  "h01_contract_blob": "8d3efbd6b13d3dac9993a2bc6bab3948435c80c3",
+  "hash_law": "SHA256_OF_UTF8_CANONICAL_JSON_SORT_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE_ALLOW_NAN_FALSE",
+  "decision_material": {
+    "schema": "W7_I01_E01_BOUNDED_RELEASE_CONSTITUENT_TEMPORAL_BINDING_ADJUDICATION_R1",
+    "objective_world_scope_ref": {
+      "kind": "PREV3_OBJECTIVE_WORLD_SCOPE",
+      "object_id": "PREV3SCOPE:f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320",
+      "content_hash": "f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320"
+    },
+    "immutable_release_identity": {
+      "publication_governance_bundle_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+      "v557_publication_bundle_hash": "2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a",
+      "v558_repository_hash": "47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1"
+    },
+    "h01_producer_contract_ref": {
+      "id": "PREV3_OBJECTIVE_WORLD_TIME_PRODUCER",
+      "version": "1.0.0",
+      "content_hash": "aed3a09f303a381aae7b2a893033dbb6de0dc84332432dea5caaa6bd962b046a"
+    },
+    "constituent_enumeration": {
+      "repository_entry_object_ref_denominator": 1,
+      "constituent_refs": [
+        {
+          "kind": "F1",
+          "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+          "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb"
+        }
+      ],
+      "enumeration_basis": [
+        "ACTUAL_GT12_E2B_DIRECT_V557_HANDOFF_HAS_EXACTLY_ONE_F1_OBJECT_REF",
+        "STRUCTURAL_OBJECT_ADAPTER_MATERIALIZES_EXACTLY_HANDOFF_OBJECT_REFS",
+        "CURRENT_M4_BRIDGE_BUILDS_V558_REPOSITORY_DIRECTLY_FROM_THOSE_OBJECTS",
+        "ACTUAL_V558_RESOLUTION_RETURNS_THE_SAME_SINGLE_F1_CONSTITUENT"
+      ],
+      "excludes_repository_metadata_as_constituents": [
+        "V557_GOVERNANCE_RECORD",
+        "V558_LOCATOR",
+        "V558_INDEX_MANIFEST",
+        "V558_CONTEXT_QUERY",
+        "V558_RESOLUTION_RECEIPT"
+      ]
+    },
+    "binding_adjudication": [
+      {
+        "constituent_object_ref": {
+          "kind": "F1",
+          "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+          "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb"
+        },
+        "producer_family": "V554",
+        "semantic_class": "F1",
+        "source_stage": "M1_RELATION_V554_TO_V557",
+        "required_allowed_status_classes": [
+          "ACCEPTED_VALID_TIME_CURRENTNESS",
+          "EXPLICIT_HISTORICAL_TIME_SEMANTICS"
+        ],
+        "observed_temporal_semantics": {
+          "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+          "relation_temporal_disposition": "NO_NEW_V553_TEMPORAL_MEANING_REQUIRED",
+          "effective_time_or_interval_refs_required_by_target_use": [],
+          "selected_basis_temporal_semantics_added": false,
+          "source_family": "Afrobarometer",
+          "source_wave": "R5"
+        },
+        "non_authority_distinctions": {
+          "source_wave_R5": "SOURCE_WAVE_IDENTITY_ONLY__NOT_AN_EXACT_EFFECTIVE_TIME_OR_HISTORICAL_TIME_AUTHORITY_REF",
+          "relation_admission_current_selection": "CURRENT_FOR_FROZEN_GT2_CANARY_ONLY__NOT_CONSTITUENT_VALID_TIME_OR_HISTORICAL_TIME_AUTHORITY",
+          "historical_authority_material_hash": "REPLAY_AUTHORITY_CLOSURE_HASH__NOT_TEMPORAL_SEMANTICS",
+          "sig004_nontemporal_disposition": "AUTHORIZES_NO_NEW_V553_TEMPORAL_MEANING__DOES_NOT_ITSELF_ATTEST_HISTORICAL_TIME"
+        },
+        "competent_temporal_authority_ref": null,
+        "effective_time_or_historical_time_ref": null,
+        "temporal_status_class": null,
+        "binding_status": "BLOCKED_NO_LAWFUL_H01_STATUS_BINDING",
+        "exact_missing_input": "COMPETENT_TEMPORAL_AUTHORITY_REF_PLUS_ACCEPTED_VALID_TIME_CURRENTNESS_OR_EXPLICIT_HISTORICAL_TIME_REF_FOR_SOLE_V554_F1_CONSTITUENT"
+      }
+    ],
+    "coverage": {
+      "constituent_denominator": 1,
+      "lawfully_bound": 0,
+      "blocked": 1,
+      "duplicate_bindings": 0,
+      "extra_bindings": 0,
+      "complete": false
+    },
+    "binding_set_status": "WITHHELD_INCOMPLETE_FAIL_CLOSED",
+    "exact_blocker": "I01_BINDING_SET_BLOCKED__SOLE_F1_CONSTITUENT_LACKS_ACCEPTED_TEMPORAL_STATUS_AUTHORITY",
+    "smallest_missing_input": "COMPETENT_TEMPORAL_AUTHORITY_REF_PLUS_ACCEPTED_TEMPORAL_STATUS_REF_FOR_F1_A008553D"
+  },
+  "decision_material_sha256": "fbb2abeda12b989aea64cf64b707cc41622d1343a46c8a0007dad917d36538d1",
+  "evidence_identities": {
+    "actual_gt12_runtime_checkpoint_blob": "8aa537937c6c44a47def06ac375b5f2c2337011e",
+    "relation_sig004_ingress_blob": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+    "gt12_d_to_m4_bridge_blob": "ca3d6b8d832d7ca8d959bd19e19a23b08cabde76",
+    "m4_m1_binding_blob": "dfc91d93d7d23d9d6cfe6d601d7d5734e7d5042f",
+    "gt2_relation_admission_blob": "c5fb675fd6f95cb7dc9e0ad505224803839cc645"
+  },
+  "terminal": "I01_PASS_WITH_EXACT_BLOCKER__DENOMINATOR_1__SOLE_F1_TEMPORAL_AUTHORITY_ABSENT"
+}
