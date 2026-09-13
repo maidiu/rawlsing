@@ -13,7 +13,8 @@ import runpy
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[11]
+HERE = Path(__file__).resolve()
+ROOT = next(parent for parent in HERE.parents if (parent / "rawlsing_next").is_dir())
 FIXTURE = ROOT / "rawlsing_next/tests/test_m3_v556_higher_order_structural.py"
 ns = runpy.run_path(str(FIXTURE))
 
@@ -92,7 +93,6 @@ def rebind_same_rule(rule, binding):
 def main() -> None:
     rows: list[dict[str, str]] = []
 
-    # A01: flat undeclared person-state alias cannot enter a closed structural schema.
     rule = _rule(tag="e06-a01")
     x = eval_payload(rule, {"relation_kind": "TEST_HIGHER_ORDER", "temperament_code": "T4"})
     require(
@@ -102,7 +102,6 @@ def main() -> None:
         rows,
     )
 
-    # A02: nested object alias cannot hide under an otherwise objective grouping.
     nested = _object(
         {"status": _string("OBJECTIVE_STATUS", ["OPEN", "CLOSED"])},
         ("status",),
@@ -122,7 +121,6 @@ def main() -> None:
         rows,
     )
 
-    # A03: aliases inside array items are also recursively rejected.
     item = _object(
         {
             "actor_ref": _string("OBJECTIVE_ACTOR_INDEX"),
@@ -148,7 +146,6 @@ def main() -> None:
         rows,
     )
 
-    # S01: a schema cannot legalize person-state by hiding a forbidden semantic role under a neutral field name.
     schema = _schema_structural(
         extra_fields={"signal": _string("MOTIVATION")},
         required_extra=("signal",),
@@ -163,7 +160,6 @@ def main() -> None:
         rows,
     )
 
-    # S02: open/additional-field result schemas are invalid authority, not permissive fallback.
     schema = _schema_structural(schema_id="E06_OPEN_SCHEMA")
     schema["root"]["additional_fields"] = True
     rule = _rule(schema=schema, tag="e06-s02")
@@ -175,7 +171,6 @@ def main() -> None:
         rows,
     )
 
-    # S03/S04: actor indexing is explicit and structurally checked both directions.
     rule = _rule(schema=_schema_actor_position(), actor_mode="NO_ACTOR_INDEX", tag="e06-s03")
     x = eval_payload(
         rule,
@@ -196,7 +191,6 @@ def main() -> None:
         rows,
     )
 
-    # O01: semantic-owner current-selection mutation without re-binding is detected.
     a, b = pair()
     rule = _rule(tag="e06-o01")
     binding = copy.deepcopy(rule.result_contract)
@@ -212,7 +206,6 @@ def main() -> None:
         rows,
     )
 
-    # O02: even after rehashing the binding, the active rule's old exact binding ref blocks substitution.
     binding = copy.deepcopy(rule.result_contract)
     binding["result_semantic_owner_ref"] = _ref("M3_RESULT_SEMANTIC_OWNER", "owner:e06-substitute")
     material = {
@@ -229,7 +222,6 @@ def main() -> None:
         rows,
     )
 
-    # I01: coherent owner mutation with binding+rule re-derived is a new valid identity, never the old identity.
     a, b = pair()
     base_rule = _rule(tag="e06-i01")
     base_req = _request(base_rule, [_bind(a, "CAUSE", 1), _bind(b, "EFFECT", 2)])
@@ -255,7 +247,6 @@ def main() -> None:
         rows,
     )
 
-    # I02: lawful objective actor-indexed position remains positive.
     rule = _rule(schema=_schema_actor_position(), actor_mode="OBJECTIVE_ACTOR_INDEXED", tag="e06-i02")
     x = eval_payload(
         rule,
@@ -270,7 +261,6 @@ def main() -> None:
         rows,
     )
 
-    # I03: opportunity availability is positive; actor uptake alias is not.
     rule = _rule(schema=_schema_actor_opportunity(), actor_mode="OBJECTIVE_ACTOR_INDEXED", tag="e06-i03")
     good = {
         "actor_ref": "urn:e06:actor:9",
@@ -290,7 +280,6 @@ def main() -> None:
         rows,
     )
 
-    # F01: fuzzy/default result-binding version selection is forbidden.
     a, b = pair()
     rule = _rule(tag="e06-f01")
     binding = copy.deepcopy(rule.result_contract)
