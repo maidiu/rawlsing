@@ -1,0 +1,50 @@
+{
+  "schema": "W7_I01_H01_PRODUCER_EXECUTION_BLOCKER_R1",
+  "grain": "PREV3_E01_BOUNDED_RELEASE_COMPLETE_CONSTITUENT_TEMPORAL_STATUS_BINDING_SET_R1_ONLY",
+  "h01_producer_contract_ref": {
+    "id": "PREV3_OBJECTIVE_WORLD_TIME_PRODUCER",
+    "version": "1.0.0",
+    "content_hash": "aed3a09f303a381aae7b2a893033dbb6de0dc84332432dea5caaa6bd962b046a"
+  },
+  "constituent_adjudication_artifact_blob": "5a3e7d53f4e374b07de534f56b0a560caae39b1f",
+  "producer_decision_material": {
+    "schema": "W7_I01_H01_PRODUCER_EXECUTION_DECISION_R1",
+    "objective_world_scope_ref": {
+      "kind": "PREV3_OBJECTIVE_WORLD_SCOPE",
+      "object_id": "PREV3SCOPE:f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320",
+      "content_hash": "f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320"
+    },
+    "immutable_release_identity": {
+      "publication_governance_bundle_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+      "v557_publication_bundle_hash": "2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a",
+      "v558_repository_hash": "47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1"
+    },
+    "producer_contract_ref": {
+      "id": "PREV3_OBJECTIVE_WORLD_TIME_PRODUCER",
+      "version": "1.0.0",
+      "content_hash": "aed3a09f303a381aae7b2a893033dbb6de0dc84332432dea5caaa6bd962b046a"
+    },
+    "constituent_binding_adjudication_sha256": "fbb2abeda12b989aea64cf64b707cc41622d1343a46c8a0007dad917d36538d1",
+    "constituent_denominator": 1,
+    "lawful_binding_count": 0,
+    "required_binding_count": 1,
+    "precondition": "REQUIRE_TEMPORAL_BINDING_KEYS_EXACTLY_EQUAL_THE_ENUMERATED_CONSTITUENT_REF_SET",
+    "precondition_result": "FAIL_CLOSED",
+    "producer_execution": "STOPPED_BEFORE_RECEIPT_HASHING",
+    "receipt_issuance": "WITHHELD",
+    "receipt_ref": null,
+    "receipt_replay": "NOT_EXECUTED_NO_LAWFUL_RECEIPT",
+    "exact_blocker": "I01_BINDING_SET_BLOCKED__SOLE_F1_CONSTITUENT_LACKS_ACCEPTED_TEMPORAL_STATUS_AUTHORITY",
+    "smallest_missing_input": "COMPETENT_TEMPORAL_AUTHORITY_REF_PLUS_ACCEPTED_TEMPORAL_STATUS_REF_FOR_F1_A008553D"
+  },
+  "producer_decision_material_sha256": "35d816d9d1363010038a55c893a15726d25cf26cd86d629694645485461c5b0c",
+  "world_grain_currentness_receipt": {
+    "status": "WITHHELD_FAIL_CLOSED",
+    "kind": "PREV3_OBJECTIVE_WORLD_GRAIN_CURRENTNESS",
+    "ref": null
+  },
+  "world_validity_ref": null,
+  "world_root": "NOT_CONSTRUCTED__OUTSIDE_I01_AUTHORITY_AND_NO_RECEIPT",
+  "authority_ceiling_preserved": true,
+  "terminal": "I01_H01_PRODUCER_PRECONDITION_FAIL_CLOSED__NO_RECEIPT_ISSUED"
+}
