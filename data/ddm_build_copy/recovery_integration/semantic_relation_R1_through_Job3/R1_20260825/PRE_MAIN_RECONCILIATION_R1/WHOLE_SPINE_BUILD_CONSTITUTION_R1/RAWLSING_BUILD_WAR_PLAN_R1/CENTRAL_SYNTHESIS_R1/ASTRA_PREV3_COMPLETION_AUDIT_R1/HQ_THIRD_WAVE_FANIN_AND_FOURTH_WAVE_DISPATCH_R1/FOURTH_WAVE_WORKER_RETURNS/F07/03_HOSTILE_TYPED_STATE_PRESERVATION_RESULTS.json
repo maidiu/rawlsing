@@ -1,0 +1,94 @@
+{
+  "authority_key_sha256": "33c6f8b2e33758ef91d57d3eb3fa8bab7c65dfb7a6498495fb08d5261dc3a5fd",
+  "cases": [
+    {
+      "case": "E10 authority identity mismatch",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N01"
+    },
+    {
+      "case": "relation family substitution / GT2 relabel",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N02"
+    },
+    {
+      "case": "claim identity substitution",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N03"
+    },
+    {
+      "case": "operand coordinate mutation",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N04"
+    },
+    {
+      "case": "operand order mutation",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N05"
+    },
+    {
+      "case": "371-abstention state deletion",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N06"
+    },
+    {
+      "case": "126 exact-zero reinterpretation/drop",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N07"
+    },
+    {
+      "case": "permission widening",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N08"
+    },
+    {
+      "case": "support evidence identity mutation",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N09"
+    },
+    {
+      "case": "replay-key identity mutation",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N10"
+    },
+    {
+      "case": "D09 full-roster artifact mutation",
+      "expected_and_observed": "FAIL_CLOSED",
+      "id": "F07-N11"
+    },
+    {
+      "case": "instantiated receipt permission mutation",
+      "expected_and_observed": "TYPED_INTEGRITY_FAILURE",
+      "id": "F07-N12"
+    },
+    {
+      "case": "instantiated receipt authority mutation",
+      "expected_and_observed": "TYPED_INTEGRITY_FAILURE",
+      "id": "F07-N13"
+    }
+  ],
+  "full_roster_artifact_sha256": "1cc810979eb80d52d1e5efcd1a916e309be1b60e8d5cc4eed1575bce30f38814",
+  "gt2_widening": "NONE",
+  "m3_promotion": "NONE",
+  "partition_checks": {
+    "441_eq_185_plus_130_plus_126": true,
+    "812_eq_441_plus_371": true
+  },
+  "permission_ceiling": [
+    "STRUCTURAL_MEDIATION_INPUT"
+  ],
+  "person_state_promotion": "NONE",
+  "publication_promotion": "NONE",
+  "relation_identity_sha256": "1a3b1d28cecdb5b06c7b8ac927848249693324da733d1ee9649a94e50d4322ee",
+  "replay_key_sha256": "0615a8668d87c5641c8a7bba4b144011d297c653a5369d6db2bd979e824fd19d",
+  "result": "PASS",
+  "schema_id": "PREV3_F07_HOSTILE_TYPED_STATE_PRESERVATION_RESULTS@1.0.0",
+  "typed_state_summary": {
+    "directional_persistence": 185,
+    "directional_reversal": 130,
+    "exact_zero_difference": 126,
+    "observed_joint_states": 812,
+    "support_admitted": 441,
+    "zero_denominator_abstentions": 371
+  }
+}
