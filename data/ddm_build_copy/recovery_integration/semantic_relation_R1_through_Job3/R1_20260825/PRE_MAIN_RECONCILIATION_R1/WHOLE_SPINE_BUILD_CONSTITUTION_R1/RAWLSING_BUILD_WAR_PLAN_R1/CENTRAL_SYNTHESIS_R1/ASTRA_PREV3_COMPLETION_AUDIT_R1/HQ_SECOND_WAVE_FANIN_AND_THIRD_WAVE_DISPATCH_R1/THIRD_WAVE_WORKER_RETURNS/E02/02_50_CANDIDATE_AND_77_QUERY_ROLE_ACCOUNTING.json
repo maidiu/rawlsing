@@ -1,0 +1,76 @@
+{
+  "schema": "PREV3_E02_FROZEN_FRONTIER_EXECUTION_ACCOUNTING_R1",
+  "status": "BLOCKED_BEFORE_FRONTIER_EXECUTION",
+  "blocker": "BLOCKED__FROZEN_SOURCE_SELECTOR_RESOLUTION_FAILED",
+  "declared_frontier": {
+    "candidate_count": 50,
+    "query_role_execution_count": 77,
+    "order_law": "CANONICAL_CANDIDATE_HASH_ORDER",
+    "pruning": "NONE_EXACT_EVALUATE_ALL",
+    "rng": "NONE"
+  },
+  "lane_accounting": [
+    {
+      "lane": "P0_REAL_POSITIVE_CONTROL",
+      "form": "BASE_QUERY",
+      "validation": "TARGET_CELL_SUPPORTED",
+      "declared_candidates": 5,
+      "declared_query_roles": 5,
+      "executed_candidates": 0,
+      "executed_query_roles": 0,
+      "state": "NOT_ENTERED__GLOBAL_PREEXECUTION_SELECTOR_HARD_STOP"
+    },
+    {
+      "lane": "P1_JOINT_DEPENDENCE",
+      "form": "JOINT_DEPENDENCE",
+      "validation": "JOINT_NOT_PRODUCT_OF_MARGINALS",
+      "declared_candidates": 1,
+      "declared_query_roles": 3,
+      "executed_candidates": 0,
+      "executed_query_roles": 0,
+      "state": "NOT_ENTERED__GLOBAL_PREEXECUTION_SELECTOR_HARD_STOP"
+    },
+    {
+      "lane": "P2_HIGHER_ORDER_CONDITIONING",
+      "form": "AND_CARTESIAN_GROUPS",
+      "validation": "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+      "declared_candidates": 18,
+      "declared_query_roles": 36,
+      "executed_candidates": 0,
+      "executed_query_roles": 0,
+      "state": "UNCOMPILABLE_UNDER_FROZEN_AUTHORITY__Q310_Q311_PREDICATE_SLOTS_UNRESOLVED"
+    },
+    {
+      "lane": "P3_CONDITIONAL_REVERSAL",
+      "form": "REVERSAL_GRID",
+      "validation": "CONDITIONAL_REVERSAL",
+      "declared_candidates": 1,
+      "declared_query_roles": 8,
+      "executed_candidates": 0,
+      "executed_query_roles": 0,
+      "state": "UNCOMPILABLE_UNDER_FROZEN_AUTHORITY__Q310_STRATA_PREDICATE_SLOTS_UNRESOLVED"
+    },
+    {
+      "lane": "P4_MINORITY_NONMODAL_TARGET_CELLS",
+      "form": "BASE_QUERY",
+      "validation": "TARGET_CELL_SUPPORTED",
+      "declared_candidates": 25,
+      "declared_query_roles": 25,
+      "executed_candidates": 0,
+      "executed_query_roles": 0,
+      "state": "NOT_ENTERED__GLOBAL_PREEXECUTION_SELECTOR_HARD_STOP"
+    }
+  ],
+  "totals": {
+    "declared_candidates": 50,
+    "executed_candidates": 0,
+    "declared_query_roles": 77,
+    "executed_query_roles": 0,
+    "terminal_discovery_result_receipts": 0,
+    "canonical_empirical_fact_refs": 0,
+    "positive_p0_receipts": 0
+  },
+  "accounting_law": "ZERO_EXECUTION_IS_NOT_A_NEGATIVE_EMPIRICAL_OUTCOME. IT IS THE EXACT CONSEQUENCE OF THE MANDATORY PREEXECUTION AUTHORITY HARD STOP.",
+  "partial_execution_forbidden": true,
+  "reason_partial_execution_forbidden": "The E02 commission requires resolution of all six frozen q310/q311 selectors before empirical result access and then execution of every candidate. Running P0/P1/P4 alone would violate the frozen workload and convert an authority defect into selective reachability."
+}
