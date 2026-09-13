@@ -1,0 +1,58 @@
+{
+  "schema": "F02_Q310_Q311_SELECTOR_BINDINGS_R1",
+  "status": "PASS__Q310_Q311_GOVERNED_NATIVE_BINDINGS_AND_SIX_SELECTOR_PREDICATES_RESOLVED",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "new_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+  },
+  "semantic_ceiling": "Q310_Q311_OPAQUE_NATIVE_CONDITIONERS__NO_ORDINAL_DIRECTIONAL_STRUCTURAL_POSITION_PSYCHOLOGICAL_OR_CAUSAL_MEANING",
+  "questions": {
+    "q310": {
+      "ledger_row_index": 229,
+      "source_label": "attitude towards market economy vs. planned economy",
+      "semantic_lane": "STRUCTURAL_CONTEXT__TOPOLOGY",
+      "directionality": "PRESERVED_NON_DIRECTIONAL__NO_SIGN",
+      "question_ref": {"kind": "QUESTION_NATIVE", "content_hash": "c4b0f76b7a37d8083a103ffd316f2eb009eeca7b5cbf5910e51d364b39641534"},
+      "response_slot_ref": {"kind": "RESPONSE_SLOT", "content_hash": "fa63b7f74c1fc2c587b485031f0ee841abcaff964368c6eb33862da34b198593"},
+      "routing_ref": {"kind": "ROUTING_BINDING", "content_hash": "5799578dfbe21f2997578a43edae97c4818f693ee85ed3d345cdc4574374e013"},
+      "response_value_state_refs": {
+        "1": {"content_hash": "e94b7665fffc55b564c33b139bc8a1608d381f89e81b63d99db42c9129a697da", "native_label": "market economy preferable"},
+        "2": {"content_hash": "23589e5578c5a80749600bb3e4385705e8ac0f8d4297c2faaac457b0ce5f0ed4", "native_label": "planned economy preferable under some circumstances"},
+        "3": {"content_hash": "fe9fc4a890814f6b2f4882fc4c4127f27091b704fc9ce1eb90392173556f60e1", "native_label": "doesn't matter"},
+        "MISSING": {"content_hash": "57af6ec1e41dfbb7c4d9946dcad5c34c58526bc239c012d8cda22c6ae1975244", "selector_eligible": false}
+      },
+      "real_source_counts": {"1": 12340, "2": 7511, "3": 9085, "MISSING": 66},
+      "row_semantic_root_sha256": "a979c15c93502b77979041ffd8451c602f63a7fcbb145106d68a78414be92455"
+    },
+    "q311": {
+      "ledger_row_index": 230,
+      "source_label": "attitude towards democratic vs. authoritarian gov.",
+      "semantic_lane": "STRUCTURAL_CONTEXT__TOPOLOGY",
+      "directionality": "PRESERVED_NON_DIRECTIONAL__NO_SIGN",
+      "question_ref": {"kind": "QUESTION_NATIVE", "content_hash": "8680064d936efb99d64457edc3a2385e8862a2aac6bf50efd423afe83e77aed9"},
+      "response_slot_ref": {"kind": "RESPONSE_SLOT", "content_hash": "0d1ff28f5bf8200920c596449229c5e965ba407cadc4f54ec3292e204a1220e7"},
+      "routing_ref": {"kind": "ROUTING_BINDING", "content_hash": "fc7530bf63bd3662d0f49545363947e1f18379ecd03583de9cc7ca2845d318bf"},
+      "response_value_state_refs": {
+        "1": {"content_hash": "09d12eb8563ed35b371bddc5829c3bd85b1acd0aa4a4f30fbe6795a0a0588234", "native_label": "democracy preferable"},
+        "2": {"content_hash": "dc457fb064cfcab1d353ab3032a48519e5a62f003d32b6b1b240c79d51578775", "native_label": "authoritarian preferable under some circumstances"},
+        "3": {"content_hash": "4492fc52c88c0a11c0ccfc45521879a53c46fab843808032cd1ccf061d995641", "native_label": "doesn't matter"},
+        "MISSING": {"content_hash": "02aef63755380ce3c6b54350282dd79d789264999943e1c18dec6ddc77ffb392", "selector_eligible": false}
+      },
+      "real_source_counts": {"1": 16582, "2": 4548, "3": 7826, "MISSING": 46},
+      "row_semantic_root_sha256": "af193e948fd2199bb784f476475d6dd4c6b96698a01e1804e5a6ce69b93c49aa"
+    }
+  },
+  "selectors": {
+    "urn:rawlsing:prev3:d02:lits2006:q310:eq:1": {"atom": "Q310V1", "operation": "survey_response_EQ", "native_value": 1, "predicate_kind": "EmpiricalPredicate@1.0.0", "predicate_hash": "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a", "support_count": 12340, "membership_root_sha256": "0a62f6f0e3d78b429022b95c2594a3fcbf053b8af588f0ceb304ac3dafe700d2"},
+    "urn:rawlsing:prev3:d02:lits2006:q310:eq:2": {"atom": "Q310V2", "operation": "survey_response_EQ", "native_value": 2, "predicate_kind": "EmpiricalPredicate@1.0.0", "predicate_hash": "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df", "support_count": 7511, "membership_root_sha256": "0bad1e397f5b74b6136ba82e8d81fc608d1df7124e6ff043048cc5cd91ef9c83"},
+    "urn:rawlsing:prev3:d02:lits2006:q310:eq:3": {"atom": "Q310V3", "operation": "survey_response_EQ", "native_value": 3, "predicate_kind": "EmpiricalPredicate@1.0.0", "predicate_hash": "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca", "support_count": 9085, "membership_root_sha256": "b477bf705a93bb672d9ae670a1daa38013c2aa2841d0c506f722ab1bbdbb2f3d"},
+    "urn:rawlsing:prev3:d02:lits2006:q311:eq:1": {"atom": "Q311V1", "operation": "survey_response_EQ", "native_value": 1, "predicate_kind": "EmpiricalPredicate@1.0.0", "predicate_hash": "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8", "support_count": 16582, "membership_root_sha256": "bffb9d2e9da447a27aaf7c8f889a07d5c47389a58ad933d3ea9867f83e127869"},
+    "urn:rawlsing:prev3:d02:lits2006:q311:eq:2": {"atom": "Q311V2", "operation": "survey_response_EQ", "native_value": 2, "predicate_kind": "EmpiricalPredicate@1.0.0", "predicate_hash": "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849", "support_count": 4548, "membership_root_sha256": "43ffb4ef1de60354b9c943135fd0f31ee54d31edbcd3bb6abf147e5bff1dce1f"},
+    "urn:rawlsing:prev3:d02:lits2006:q311:eq:3": {"atom": "Q311V3", "operation": "survey_response_EQ", "native_value": 3, "predicate_kind": "EmpiricalPredicate@1.0.0", "predicate_hash": "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d", "support_count": 7826, "membership_root_sha256": "642a70ba00a4f7292d96267647068c3bfc83f5efc75451ce00a7df4cd2d62837"}
+  },
+  "selector_law": "EXACT_NATIVE_EQUALITY_ONLY__NO_NEAREST_DEFAULT_FUZZY_OR_DIRECTIONAL_FALLBACK",
+  "missingness_law": "SOURCE_NATIVE_MISSING_IS_PRESERVED_AND_IS_NOT_ANY_OF_SELECTORS_1_2_3",
+  "learned_workload_execution": "NOT_EXECUTED"
+}
