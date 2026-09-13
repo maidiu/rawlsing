@@ -1,0 +1,68 @@
+{
+  "case_count": 9,
+  "cases": [
+    {
+      "case_id": "G05-Q01",
+      "left_hash": "d602804bc2228764d9227ad41a804daf57f5a793a7e6a420ee01c4901ae33894",
+      "result": "PASS",
+      "right_hash": "cef4fb35687e04cb0934a33de86dc3552ff88ad1956da059f825d9b673b468c8",
+      "state": "PARTIAL_OBJECTIVE_RESULT"
+    },
+    {
+      "case_id": "G05-Q02",
+      "left_hash": "df15c3ce45d5225a65f7b88ec3cee5064248a7a37759886d16689b25ae04bb31",
+      "result": "PASS",
+      "right_hash": "222d0eb8cbf5b8a2f43f5bc172447c9c18e1f4d3285b55b00f42348ea3ffc99c",
+      "state": "SUPPORTED_OBJECTIVE_RESULT"
+    },
+    {
+      "case_id": "G05-Q03",
+      "receipt_hash": "58b2725c6598021ebd352b0084acd27f6c01f41dff39034b7f9fa1c736185c10",
+      "result": "PASS"
+    },
+    {
+      "case_id": "G05-Q04",
+      "receipt_hash": "d91cdc96a1f5a9bd04ece8cd8598e699cdc7589937bb9e761acb75a1c6aef832",
+      "result": "PASS",
+      "state": "REFUSED_REQUIRED_OBJECTIVE_EVIDENCE"
+    },
+    {
+      "case_id": "G05-Q05",
+      "left_hash": "cbf037c6454e44b6f9d2d360ca3c607cb8b3f7fa464ea2517120376323b032f3",
+      "result": "PASS",
+      "right_hash": "5402613b69675406a9d4d24a04fb4a1ce11e47f9f624477067e9dc6d73b133db",
+      "state": "REFUSED_REQUIRED_OBJECTIVE_EVIDENCE"
+    },
+    {
+      "case_id": "G05-Q06",
+      "positive_completion": false,
+      "result": "PASS",
+      "state": "REFUSED_REQUIRED_OBJECTIVE_EVIDENCE"
+    },
+    {
+      "case_id": "G05-Q07",
+      "positive_completion": false,
+      "prior_guard": true,
+      "result": "PASS",
+      "state": "ALL_UNAVAILABLE__NOT_POSITIVE_COMPLETION"
+    },
+    {
+      "case_id": "G05-Q08",
+      "renormalization_forbidden": true,
+      "result": "PASS"
+    },
+    {
+      "case_id": "G05-Q09",
+      "not_yet_applicable": [
+        "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1",
+        "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1",
+        "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "fail_count": 0,
+  "pass_count": 9,
+  "schema": "G05_BOUNDED_EVIDENCE_INDEPENDENT_REQUALIFICATION_R1",
+  "status": "PASS"
+}
