@@ -1,0 +1,58 @@
+{
+  "schema": "F02_TEST_AND_REPLAY_RECEIPT_R1",
+  "status": "PASS__GOVERNED_BOUNDED_COURT_AND_DETERMINISTIC_SELECTOR_REPLAY",
+  "semantic_candidate_sha": "db0a2790b3bd5ae38e44166083a659d213d8c6ee",
+  "evidence_execution_sha": "883758861038f3aed966126600bb8ef4d2309acf",
+  "governed_court": {
+    "run_id": 34777899941,
+    "job_id": 103779271015,
+    "conclusion": "success",
+    "bounded_test_result": "24 passed in 0.44s",
+    "protocol_self_test_result": "17 passed in 0.07s",
+    "receipt_verdict": "PASS",
+    "artifact_id": 10323393710,
+    "artifact_name": "rabochii-court-receipt-34777899941",
+    "artifact_digest": "sha256:1fe30a8d8676cd6ae916cef3762a9afc37ce6489aa61d075a7cd5eaa6940b72a",
+    "compiler_identity": "python:3.12.12|pytest:9.0.2",
+    "determinism_mode": "EXACT"
+  },
+  "bounded_tests": [
+    "rawlsing_next/tests/test_prev3_lits1_selector_closure.py",
+    "rawlsing_next/tests/test_pre553_empirical_objects_authority.py"
+  ],
+  "production_identity": {
+    "path": "rawlsing_next/prev3_lits1_selector_closure.py",
+    "git_blob_sha1": "7b45b277164fa90c3da739aab26b516f7a8cb8dc"
+  },
+  "test_identity": {
+    "path": "rawlsing_next/tests/test_prev3_lits1_selector_closure.py",
+    "git_blob_sha1": "aef15872cd7bfbc4336f8f12eae9c46318589bf7"
+  },
+  "real_source_replay": {
+    "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "library_version": "1",
+    "expected_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "materialized_sha256_match": true,
+    "rows": 29002,
+    "q310_row_semantic_root_sha256": "a979c15c93502b77979041ffd8451c602f63a7fcbb145106d68a78414be92455",
+    "q311_row_semantic_root_sha256": "af193e948fd2199bb784f476475d6dd4c6b96698a01e1804e5a6ce69b93c49aa",
+    "new_release_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+    "new_replay_hash": "89bb3e9140ae0e0fcc9a3e205fd6b60ae721153d88a4730dd66f4fc16e238b1f"
+  },
+  "predicate_identity_proof": "All six selector projections were reconstructed by the repository EmpiricalPredicate@1.0.0 constructor and reproduced their exact F02 predicate refs.",
+  "nonterminal_court_provenance": {
+    "run_id": 34777837411,
+    "job_id": 103779103619,
+    "result": "23 passed, 1 failed",
+    "disposition": "NONTERMINAL_TEST_ASSERTION_WORDING_DEFECT_ONLY",
+    "semantic_object_change_required": false,
+    "repair": "Test assertion changed from requiring literal NO_PSYCHOLOGICAL token to checking the actual PSYCHOLOGICAL and CAUSAL negative-ceiling terms."
+  },
+  "temporary_pr": {
+    "number": 361,
+    "purpose": "governed bounded court trigger only",
+    "state": "closed",
+    "merged": false
+  },
+  "learned_workload_execution": "NOT_EXECUTED"
+}
