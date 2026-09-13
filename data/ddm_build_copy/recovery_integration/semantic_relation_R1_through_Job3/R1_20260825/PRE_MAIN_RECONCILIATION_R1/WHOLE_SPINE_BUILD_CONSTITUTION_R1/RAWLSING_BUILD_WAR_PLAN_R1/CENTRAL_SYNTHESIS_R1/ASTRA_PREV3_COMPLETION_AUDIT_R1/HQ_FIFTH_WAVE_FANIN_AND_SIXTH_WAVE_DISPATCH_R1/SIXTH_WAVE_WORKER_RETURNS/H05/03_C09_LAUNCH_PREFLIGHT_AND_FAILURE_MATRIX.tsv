@@ -1,0 +1,19 @@
+check_id	state	check_or_requirement	failure_state
+H05-P01	STATIC_PASS	commission/HQ authority exact	BLOCK__AUTHORITY_IDENTITY_MISMATCH
+H05-P02	STATIC_PASS	HB05 manifest return/blob/payload exact	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P03	STATIC_PASS	HB06 base package/oracle/crosswalk exact	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P04	STATIC_PASS	G06 correction exact; one additive OP014 row; zero rewritten/removed base rows	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P05	STATIC_PASS	OP014 retest: exact manifest-grain match count 1; governed blocker preserved	C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM
+H05-P06	STATIC_PASS	all other 19 HB05 manifest rows retain unique accepted oracle coverage	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P07	STATIC_PASS	WVS7 and LiTS-I source hashes/decoder contracts agree between HB05 and HB06	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P08	STATIC_PASS	A/B/C intake and HB04 harness identities agree	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P09	STATIC_PASS	candidate-neutral host layout and cleanup law frozen	C09_BLOCK__RESOURCE_COURT_UNTRUSTWORTHY
+H05-P10	LAUNCH_TIME_REQUIRED	/tmp/rawlsing-prev3-c09-hb07-r1 absent or empty and isolated from repository/source authority	C09_BLOCK__RESOURCE_COURT_UNTRUSTWORTHY
+H05-P11	LAUNCH_TIME_REQUIRED	WVS7 path exists, bytes=185163494, sha256=2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P12	LAUNCH_TIME_REQUIRED	LiTS-I path exists, bytes=139531180, sha256=7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P13	LAUNCH_TIME_REQUIRED	all eight frozen HB04 implementation/test identities match exact blob+sha256 pins	C09_BLOCK__SOURCE_OR_ORACLE_IDENTITY_FAILURE
+H05-P14	LAUNCH_TIME_REQUIRED	candidate A/B/C work,scratch,cache,capture roots are exclusive and empty	C09_BLOCK__RESOURCE_COURT_UNTRUSTWORTHY
+H05-P15	LAUNCH_TIME_REQUIRED	no live candidate process/session/file descriptor/cache/IPC from previous candidate	C09_BLOCK__RESOURCE_COURT_UNTRUSTWORTHY
+H05-P16	LAUNCH_TIME_REQUIRED	output capture schema identical across A/B/C and semantic truth bound only to corrected HB06	C09_BLOCK__PARITY_FAILURE
+H05-P17	HARD_STOP	H05 must not execute C09 or any A/B/C benchmark	COMMISSION_VIOLATION
+H05-P18	HARD_STOP	no ranking, candidate selection, architecture/topology selection	COMMISSION_VIOLATION
