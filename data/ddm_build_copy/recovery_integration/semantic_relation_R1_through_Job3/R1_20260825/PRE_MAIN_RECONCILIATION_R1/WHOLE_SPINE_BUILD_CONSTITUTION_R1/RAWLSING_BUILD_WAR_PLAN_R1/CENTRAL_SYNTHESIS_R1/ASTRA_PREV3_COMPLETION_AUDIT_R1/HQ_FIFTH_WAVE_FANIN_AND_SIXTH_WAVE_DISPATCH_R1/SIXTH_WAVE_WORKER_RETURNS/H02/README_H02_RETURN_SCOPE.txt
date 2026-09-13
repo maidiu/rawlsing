@@ -1,0 +1,1 @@
+H02 independent qualification only. Zero repair authority. Exact result is a blocker at the required P0 target-resolution gate. Governed court receipt pending temporary-PR execution; no producer mutation authorized.
