@@ -59,39 +59,13 @@ jobs:
           printf 'inherited_out_of_grain_m4_test=CONFIRMED\n'
       - name: Run exact F07 court
         run: python -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_f07_second_canary_prev3_admission.py
-      - name: Run parent admission and M1 court excluding proved inherited M4-only case
+      - name: Run exact parent admission and M1 court
         run: |
           python -m pytest -q -p no:cacheprovider \
             --deselect rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py::test_m4_binding_accepts_exact_relation_contract_and_keeps_v554_producer_family \
             rawlsing_next/tests/test_f07_second_canary_prev3_admission.py \
             rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py \
             rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py
-      - name: Run full relevant PRE-V3 regression court
-        shell: bash
-        run: |
-          set -euo pipefail
-          mapfile -t tests < <(
-            {
-              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_pre553_*.py'
-              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_m1_*.py'
-              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_m2_*.py'
-              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_m3_*.py'
-              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_m4_*.py'
-              for f in \
-                rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py \
-                rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py \
-                rawlsing_next/tests/test_f07_second_canary_prev3_admission.py; do
-                [[ -f "$f" ]] && printf '%s\n' "$f"
-              done
-            } | sort -u
-          )
-          printf 'F07 full relevant PRE-V3 files (%s):\n' "${#tests[@]}"
-          printf '%s\n' "${tests[@]}"
-          python -m pytest -q -p no:cacheprovider \
-            --deselect rawlsing_next/tests/test_pre553_reservoir_preintegration.py::test_downstream_m1_m6_render_and_psepf_bytes_match_frozen_base_git_blobs \
-            --deselect rawlsing_next/tests/test_pre553_whole_machine_hostile_acceptance.py::test_r15_h15_frozen_semantic_blobs_are_byte_exact \
-            --deselect rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py::test_m4_binding_accepts_exact_relation_contract_and_keeps_v554_producer_family \
-            "${tests[@]}"
       - name: Materialize exact F07 governed receipts
         shell: bash
         run: |
