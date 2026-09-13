@@ -1,0 +1,44 @@
+{
+  "schema": "PREV3_G04_D05_CURRENTNESS_COMPATIBILITY_AUTHORITY_R1",
+  "status": "PASS__BOUNDED_D05_CURRENTNESS_COMPATIBILITY_CONTRACT_FROZEN",
+  "contract_hash_law": "SHA256_OF_UTF8_CANONICAL_JSON_SORT_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE_ALLOW_NAN_FALSE",
+  "contract_content_hash": "80d361179530d84e08b48094a6cc68d0864365dc396d8740e4dffd20d80bb6c0",
+  "contract_ref": {
+    "kind": "PREV3_D05_NON_EVENT_CURRENTNESS_COMPATIBILITY_CONTRACT",
+    "object_id": "D05CURCOMPAT:80d361179530d84e08b48094a6cc68d0864365dc396d8740e4dffd20d80bb6c0",
+    "content_hash": "80d361179530d84e08b48094a6cc68d0864365dc396d8740e4dffd20d80bb6c0"
+  },
+  "contract_material": {
+    "schema": "PREV3_D05_NON_EVENT_CURRENTNESS_COMPATIBILITY_CONTRACT_R1",
+    "contract_id": "PREV3_D05_NON_EVENT_CURRENTNESS_COMPATIBILITY@1.0.0",
+    "bridge_receipt_schema": "PREV3_OBJECTIVE_NON_EVENT_CURRENTNESS_RECEIPT@1.0.0",
+    "bridge_receipt_ref_kind": "PREV3_OBJECTIVE_NON_EVENT_CURRENTNESS_RECEIPT",
+    "bridge_receipt_id_prefix": "D05CUR:",
+    "state_vocabulary": ["CURRENT", "STALE", "REFRESH_REQUIRED", "INVALID"],
+    "hash_bearing_fields": ["schema", "compatibility_contract_ref", "state", "authority_ref", "structural_currentness_basis_ref", "decision_effective_time_ref", "non_event_resolution_receipt_ref", "selection_record_ref", "producer_object_ref", "world_or_release_root_ref"],
+    "current_validation": ["actual_receipt_object_not_ref_only", "exact_bridge_schema_type_and_recomputed_identity", "compatibility_contract_ref_equals_this_contract_ref", "revalidate_D05_resolution_and_require_RESOLUTION_COMPLETE", "bind_exact_D05_resolution_receipt", "bind_exactly_one_SELECTED_record_for_requested_key", "bind_exact_selected_producer_object", "bind_exact_nonnull_CURRENT_world_or_release_root", "authority_ref_equals_exact_competent_currentness_authority_input", "structural_currentness_basis_ref_equals_exact_competent_basis_input", "decision_effective_time_ref_equals_selected_D05_item_effective_time", "state_equals_CURRENT", "all_other_states_or_binding_mismatches_fail_closed", "no_latest_default_fuzzy_wall_clock_or_implicit_authority_repair"],
+    "historical_law": ["HISTORICAL_may_keep_null_currentness_receipt", "HISTORICAL_to_CURRENT_relabel_forbidden"],
+    "nonclaims": ["no_currentness_truth_minted", "D05_resolution_not_M4_ResolutionResult", "no_M4_root_family_widening", "no_M5_semantic_change", "no_D05_permission_widening", "no_V3_or_person_state_mutation", "no_OBL063_terminal_semantics"],
+    "authority": {
+      "hq_commit": "9203a15e0c8a18da5588b7b0ceb7cf823ce9af2a",
+      "commission_commit": "a9597a70ecfda64ee423cb54c7f093e9dc884aae",
+      "commission_blob": "5ca55598f7595d653830b3bb4749e914f559e012",
+      "f04_return_blob": "2d1152245d5e8c7b7ddaed6c444be26fe4a8641f"
+    },
+    "frozen_inputs": {
+      "d05_blob": "a1e2ae8775707eb30097279cde91f30271b6d243",
+      "m5_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+      "m4_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "c06_blob": "a1bc0e483fb4a298ae803c192f51a00ddc19a029"
+    },
+    "downstream": ["implement_this_exact_D05_specific_receipt_and_validator", "add_current_stale_refresh_invalid_binding_mismatch_and_tamper_tests", "independent_requalification_required"],
+    "successor_gate": "GATE-NON-EVENT-REQUALIFICATION"
+  },
+  "tests_executed": "NONE__AUTHORITY_CONTRACT_GRAIN_ONLY",
+  "inherited_tests": {
+    "d05": "535f9a8e5e44f3a58248702374f2cc1ae61f05d8",
+    "m5": "ef4faaa84b24b9b6ca62ae7eaa29018d57439c0c"
+  },
+  "production_changes": "NONE",
+  "successor_gate_disposition": "NOT_YET_SATISFIED__AUTHORITY_BLOCKER_CLOSED__IMPLEMENTATION_AND_INDEPENDENT_REQUALIFICATION_DOWNSTREAM"
+}
