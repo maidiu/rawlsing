@@ -1,0 +1,93 @@
+{
+  "schema": "W3_E01_OBJECTIVE_WORLD_AUTHORITY_ISSUANCE_R1",
+  "grain": "PREV3_WORLD_SCOPE_VALIDITY_AUTHORITY_AND_FIRST_REAL_ROOT_R1_ONLY",
+  "branch": "agent/rabochii-prev3-w3-e01-world-scope-validity-root-r1",
+  "commission_tip": "34dce70a5f7f607f6fe2bf9b98ff964e0a407931",
+  "commission_blob": "c9bb16e131bb93f0835ea8d43796291f81ec75a2",
+  "hq_fanin_authority_commit": "018ef13413b24a3bc131fd0c769d37b832854135",
+  "hq_fanin_file_blob": "112217671e78dbf6a95a6c4077c1ac7150da6326",
+  "inherited_d01_return_head": "77a4b225030fc8452de170054e693d972a0f066c",
+  "hash_law": "SHA256_OF_UTF8_CANONICAL_JSON_SORT_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE_ALLOW_NAN_FALSE",
+  "objective_world_scope": {
+    "status": "ISSUED_EXACT_BOUNDED",
+    "material": {
+      "schema": "PREV3_OBJECTIVE_WORLD_SCOPE_R1",
+      "constitution": "PREV3_OBJECTIVE_WORLD_ONLY",
+      "bootstrap_grain": "PREV3_OBJECTIVE_WORLD_RELEASE_ROOT_R1",
+      "accepted_immutable_release_repository_closure": {
+        "publication_governance_bundle_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+        "v557_publication_bundle_hash": "2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a",
+        "v558_repository_hash": "47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1",
+        "v557_state": "ALLOW_CONTEXT_ONLY",
+        "allowed_use": "CONTEXT"
+      },
+      "scope_rule": "ONLY_OBJECTIVE_PREV3_CONTENT_ADDRESSABLE_RELEASE_REPOSITORY_CONTENT_ACCEPTED_AT_THIS_CLOSURE",
+      "excludes": [
+        "ACTOR_PERSON_STATE",
+        "OBL063_DRIVER_TYPE_PERSON_TERMINAL_SEMANTICS",
+        "V3_RUNTIME_CURSOR",
+        "WALL_CLOCK_LATEST_DEFAULT_DESIGNATOR"
+      ]
+    },
+    "semantic_hash": "f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320",
+    "ref": {
+      "kind": "PREV3_OBJECTIVE_WORLD_SCOPE",
+      "object_id": "PREV3SCOPE:f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320",
+      "content_hash": "f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320"
+    },
+    "derivation_ceiling": "EXACT_CURRENT_ACCEPTED_GT12_IMMUTABLE_PREV3_PUBLICATION_REPOSITORY_CLOSURE_ONLY"
+  },
+  "valid_time_authority": {
+    "status": "ISSUED_EXACT_BOUNDED",
+    "material": {
+      "schema": "PREV3_OBJECTIVE_WORLD_VALID_TIME_AUTHORITY_R1",
+      "delegation": {
+        "hq_fanin_commit": "018ef13413b24a3bc131fd0c769d37b832854135",
+        "hq_fanin_file_blob": "112217671e78dbf6a95a6c4077c1ac7150da6326",
+        "commission_tip": "34dce70a5f7f607f6fe2bf9b98ff964e0a407931",
+        "commission_blob": "c9bb16e131bb93f0835ea8d43796291f81ec75a2"
+      },
+      "jurisdiction": "PREV3_OBJECTIVE_WORLD_VALIDITY_AT_WORLD_ROOT_BOOTSTRAP_ONLY",
+      "issuance_rule": "ATTEST_ONLY_TYPED_CONTENT_ADDRESSED_OBJECTIVE_WORLD_VALIDITY_DERIVED_FROM_PROJECT_CURRENT_OBJECTIVE_CURRENTNESS_AUTHORITY",
+      "forbidden_bootstrap_sources": [
+        "WALL_CLOCK",
+        "LATEST",
+        "DEFAULT",
+        "V3_RUNTIME_CURSOR",
+        "ACTOR_REQUEST",
+        "DESIGNATOR"
+      ],
+      "creates_no": [
+        "SOURCE_FACTS",
+        "OBJECTIVE_POSITIONS",
+        "EVENTS",
+        "ACTOR_PERSON_STATE",
+        "OBL063_DRIVER_TYPE_PERSON_TERMINAL_SEMANTICS"
+      ]
+    },
+    "semantic_hash": "4a912bd0bf1217b1095eaa5da4376bc1d55314fcfc80c62d2ef7fa085b5e3c02",
+    "ref": {
+      "id": "PREV3_OBJECTIVE_WORLD_VALID_TIME_AUTHORITY",
+      "version": "1.0.0",
+      "content_hash": "4a912bd0bf1217b1095eaa5da4376bc1d55314fcfc80c62d2ef7fa085b5e3c02"
+    },
+    "derivation_ceiling": "AUTHORITY_TO_ATTEST_WORLD_VALIDITY_ONLY_WHEN_COMPLETE_OBJECTIVE_CURRENTNESS_BASIS_EXISTS"
+  },
+  "objective_world_validity": {
+    "status": "WITHHELD_BLOCKED",
+    "ref": null,
+    "exact_blocker": "E01_REAL_WORLD_ROOT_BLOCKED__NO_PROJECT_CURRENT_CONTENT_ADDRESSED_OBJECTIVE_WORLD_VALIDITY_BASIS",
+    "reason": "PROJECT_CURRENT_EVIDENCE_PROVES_LOCAL_CURRENTNESS_BUT_NOT_A_COMPLETE_WORLD_GRAIN_TEMPORAL_RECEIPT_OR_CURRENT_ROOTED_WORLD"
+  },
+  "forbidden_semantic_promotions_preserved": [
+    "SOURCE_LOCAL_CURRENTNESS_TO_WHOLE_WORLD_TRUTH",
+    "WALL_CLOCK_OR_BARE_TIMESTAMP_TO_VALIDITY_AUTHORITY",
+    "LATEST_DEFAULT_OR_FUZZY_SELECTION",
+    "V3_RUNTIME_CURSOR_TO_PREV3_WORLD_VALIDITY",
+    "ACTOR_REQUEST_TO_WORLD_AUTHORITY",
+    "WORLD_DESIGNATOR_TO_CONCRETE_WORLD_INSTANCE",
+    "M5_STRUCTURAL_CURRENTNESS_RECEIPT_TO_WORLD_AUTHORITY",
+    "OBL063_DRIVER_TYPE_PERSON_TERMINAL_SEMANTICS"
+  ],
+  "terminal": "E01_SCOPE_AND_VALID_TIME_AUTHORITY_ISSUED__CONCRETE_WORLD_VALIDITY_WITHHELD__REAL_ROOT_REMAINS_BLOCKED_ON_ONE_EXACT_INPUT"
+}

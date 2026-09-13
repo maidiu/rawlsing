@@ -1,0 +1,105 @@
+{
+  "schema": "W3_E01_REAL_ROOT_REPLAY_OR_BLOCKER_R1",
+  "grain": "PREV3_WORLD_SCOPE_VALIDITY_AUTHORITY_AND_FIRST_REAL_ROOT_R1_ONLY",
+  "scope_ref": {
+    "kind": "PREV3_OBJECTIVE_WORLD_SCOPE",
+    "object_id": "PREV3SCOPE:f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320",
+    "content_hash": "f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320"
+  },
+  "valid_time_authority_ref": {
+    "id": "PREV3_OBJECTIVE_WORLD_VALID_TIME_AUTHORITY",
+    "version": "1.0.0",
+    "content_hash": "4a912bd0bf1217b1095eaa5da4376bc1d55314fcfc80c62d2ef7fa085b5e3c02"
+  },
+  "world_validity_ref": null,
+  "decision_material": {
+    "schema": "W3_E01_WORLD_VALIDITY_DECISION_R1",
+    "objective_world_scope_ref": {
+      "kind": "PREV3_OBJECTIVE_WORLD_SCOPE",
+      "object_id": "PREV3SCOPE:f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320",
+      "content_hash": "f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320"
+    },
+    "valid_time_authority_ref": {
+      "id": "PREV3_OBJECTIVE_WORLD_VALID_TIME_AUTHORITY",
+      "version": "1.0.0",
+      "content_hash": "4a912bd0bf1217b1095eaa5da4376bc1d55314fcfc80c62d2ef7fa085b5e3c02"
+    },
+    "observed_currentness_state": {
+      "local_currentness_contracts": "CURRENT",
+      "whole_world_temporal_receipt": "NOT_PROVED",
+      "current_rooted_world": "ABSENT",
+      "complete_lawful_world_bootstrap_tuple": "ABSENT"
+    },
+    "authority_constraints": {
+      "world_validity_must_be": "TYPED_CONTENT_ADDRESSED_OBJECTIVE_WORLD_VALIDITY",
+      "source_local_currentness_may_not_be_promoted_to_world_truth": true,
+      "forbidden_substitutions": [
+        "WALL_CLOCK",
+        "BARE_TIMESTAMP",
+        "LATEST",
+        "DEFAULT",
+        "FUZZY_SELECTION",
+        "V3_RUNTIME_CURSOR",
+        "ACTOR_REQUEST",
+        "WORLD_DESIGNATOR",
+        "M5_STRUCTURAL_CURRENTNESS_RECEIPT_AS_WORLD_AUTHORITY"
+      ]
+    },
+    "conclusion": "E01_REAL_WORLD_ROOT_BLOCKED__NO_PROJECT_CURRENT_CONTENT_ADDRESSED_OBJECTIVE_WORLD_VALIDITY_BASIS"
+  },
+  "decision_input_sha256": "865aa2aba1cd95b985918658207f5c59746cd78339d0da5b796842146991eebe",
+  "deterministic_blocker_replay": {
+    "evaluation_1": "E01_REAL_WORLD_ROOT_BLOCKED__NO_PROJECT_CURRENT_CONTENT_ADDRESSED_OBJECTIVE_WORLD_VALIDITY_BASIS",
+    "evaluation_2": "E01_REAL_WORLD_ROOT_BLOCKED__NO_PROJECT_CURRENT_CONTENT_ADDRESSED_OBJECTIVE_WORLD_VALIDITY_BASIS",
+    "cross_evaluation_parity": "PASS"
+  },
+  "real_root": {
+    "materialized": false,
+    "ref": null,
+    "reason": "REQUIRED_PREV3_OBJECTIVE_WORLD_VALIDITY_REF_ABSENT"
+  },
+  "real_root_replay": {
+    "executed": false,
+    "receipt": null,
+    "reason": "BLOCKED_BEFORE_FIRST_REAL_ROOT_IDENTITY"
+  },
+  "changed_validity_real_case": {
+    "executed": false,
+    "reason": "NO_FIRST_LAWFUL_CONCRETE_WORLD_VALIDITY_INSTANCE_EXISTS",
+    "inherited_constructor_property_test": {
+      "path": "rawlsing_next/tests/test_prev3_objective_world_release_root.py",
+      "blob": "93cc2e78e7d639c08e1adc7ba819d39d8f0fc48d",
+      "coverage": "CHANGED_WORLD_VALIDITY_CHANGES_ROOT_IDENTITY_WITH_UNAFFECTED_PRODUCER_IDENTITIES_STABLE",
+      "this_worker_execution": "NOT_RERUN"
+    }
+  },
+  "evidence": {
+    "d01_real_materialization_cases_blob": "5efcc680fe0d3374872a898863349653791cd483",
+    "current_system_map_blob": "f483496282090db030d2ee48a56f044be23babdb",
+    "gap_register_blob": "97c327ab8df5e613ba54f70db581fe92c9b601b8",
+    "hq_a3_world_context_blocker_commit": "9ed6a1d72cf5cc72d47f9b0214ac3294343aec2c",
+    "a3w_exact_blocker_return_commit": "797d62d46da6ea570d56070800af19bf633e1c85",
+    "wvs7_source_local_hq_closure_blob": "fd7c0b364a59d78454a510abacd4a5d0b6d4ce55"
+  },
+  "smallest_exact_blocker": {
+    "token": "E01_REAL_WORLD_ROOT_BLOCKED__NO_PROJECT_CURRENT_CONTENT_ADDRESSED_OBJECTIVE_WORLD_VALIDITY_BASIS",
+    "missing": [
+      "world_validity_ref"
+    ],
+    "competent_owner": "OBJECTIVE_WORLD_TIME_AUTHORITY_OWNER_VIA_HQ",
+    "required_upstream_proof": "COMPLETE_PROJECT_CURRENT_OBJECTIVE_WORLD_GRAIN_TEMPORAL_CURRENTNESS_BASIS",
+    "wake": "Supply or adopt a typed content-addressed PREV3_OBJECTIVE_WORLD_VALIDITY basis from complete objective currentness authority; then invoke the inherited D01 constructor and exact replay path."
+  },
+  "successor_gate": {
+    "id": "GATE-WORLD-REAL-ROOT",
+    "status": "BLOCKED_ONLY_ON_WORLD_VALIDITY_REF"
+  },
+  "scope_ceiling": {
+    "prev3": "OBJECTIVE_WORLD_ONLY",
+    "v3_person_persona_subjective_semantics": "UNTOUCHED",
+    "obl063_driver_type_person_terminal_semantics": "QUARANTINED_UNTOUCHED",
+    "main": "UNTOUCHED",
+    "pre_main": "UNTOUCHED"
+  },
+  "terminal": "E01_REAL_ROOT_MATERIALIZATION_WITHHELD__ONE_EXACT_WORLD_VALIDITY_INPUT_REMAINS"
+}
