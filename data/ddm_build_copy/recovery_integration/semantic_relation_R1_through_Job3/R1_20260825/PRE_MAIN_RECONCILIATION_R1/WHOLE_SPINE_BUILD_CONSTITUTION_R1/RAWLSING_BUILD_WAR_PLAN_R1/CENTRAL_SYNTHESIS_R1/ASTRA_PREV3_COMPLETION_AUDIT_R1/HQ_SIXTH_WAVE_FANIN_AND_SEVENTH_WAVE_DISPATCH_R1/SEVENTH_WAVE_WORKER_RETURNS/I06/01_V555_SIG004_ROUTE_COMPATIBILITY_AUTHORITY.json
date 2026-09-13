@@ -1,0 +1,165 @@
+{
+  "schema": "V555_SIG004_ADMITTED_RELATION_ROUTE_COMPATIBILITY_AUTHORITY_OBJECT@1.0.0",
+  "status": "PASS__BOUNDED_AUTHORITY_ISSUED__ROUTE_INSTANCE_WITHHELD_PENDING_EXACT_CLOSURE",
+  "commission": {
+    "grain": "V555_SIG004_ADMITTED_RELATION_ROUTE_COMPATIBILITY_AUTHORITY_ADJUDICATION_R1_ONLY",
+    "tip": "477676bd55959615b58e7ba7d3caf27e4635d9d6",
+    "hq_authority": "449fbb836044e2f7df9b0456a163b412ad9fc259",
+    "h06_return": "1d1223fa7a3d3e58bb5dd4b0afb991e3acb98ecf"
+  },
+  "accepted_inputs": {
+    "g07_qualified_return": "8079d627069736e10ccc35acf675bcd4c967d62d",
+    "f07_admission_blob": "fe3f776dd0c07dae67f2e41373368961fa55bb0c",
+    "f07_m1_ingress_replay_blob": "a975dd774a22e9d1a2f9e1378c10fa6533280df3",
+    "e10_relation_authority_blob": "48168c4ed96ab34c906db74cf96054e765f57d7a",
+    "existing_v555_route_authority_blob": "2bde6dfdb472e324607591ae820e8986f6d04055",
+    "current_m2_runtime_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+    "current_m2_test_blob": "8c641da532889f0a43e6bd4a5dbb5f8f0fb711ce"
+  },
+  "adjudication": {
+    "holding": "ISSUABLE_AT_EXACT_SECOND_CANARY_GRAIN_ONLY",
+    "reason": "The qualified SIG-004 F1/B1 carries exact singleton STRUCTURAL_MEDIATION_INPUT permission and may be consumed by a new claim-specific V555 route-rule entry without relabeling it as SIG-001/002/003. Existing V555 atomic route semantics can be reused unchanged, but the relation M1 product does not itself supply exact structural source/channel/receiver refs. Route instantiation therefore remains fail-closed until a separately authorized content-addressed reference closure exists.",
+    "existing_rr001_modified": false,
+    "generic_sig004_acceptance_created": false,
+    "m2_implementation_modified": false,
+    "route_composed": false,
+    "route_replay_executed": false
+  },
+  "authority_key": {
+    "authority_id": "V555_SIG004_ADMITTED_RELATION_ROUTE_COMPATIBILITY_AUTHORITY",
+    "authority_version": "1.0.0",
+    "semantic_owner": "V555",
+    "decision_state": "ALLOW_BOUNDED_COMPATIBILITY_RULE__ROUTE_INSTANCE_REQUIRES_EXACT_CLOSURE",
+    "scope": {
+      "claim_id": "FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1",
+      "relation_sha256": "1a3b1d28cecdb5b06c7b8ac927848249693324da733d1ee9649a94e50d4322ee",
+      "relation_admission_id": "urn:rawlsing:prev3:f07:second-canary-admission:sha256:05456f3d21ab3426af6a6c924843fecb8417c11620dce7213a36c8a819e8dd2c",
+      "relation_admission_content_hash": "05456f3d21ab3426af6a6c924843fecb8417c11620dce7213a36c8a819e8dd2c",
+      "m1_contract_id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+      "m1_signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+      "f1_id": "urn:rawlsing:v554:f1:sha256:06f96892b9d7cad5a2d506345203b3634509d2492997326031a98b44d83973f8",
+      "b1_id": "urn:rawlsing:v554:b1:sha256:95dfb5670c7e9a88c0620cce2dd372c434b0c1fd6a1dc9ddba9da3380e3e448a",
+      "target_use": "STRUCTURAL_MEDIATION_INPUT"
+    },
+    "route_rule": {
+      "route_rule_id": "V555-RR-004-SIG004-EXACT-ADMITTED-RELATION-CLOSURE",
+      "route_rule_version": "1.0.0",
+      "route_shape_id": "V555-RS-001-SOURCE-EXACT-CHANNEL-EXACT-RECEIVER",
+      "route_shape_version": "1.0.0",
+      "semantic_family": "STRUCTURAL_MEDIATION_ROUTE_CANDIDATE",
+      "epistemic_class": "ACTOR_INDEPENDENT_STRUCTURAL_PRIOR",
+      "input_match": {
+        "exact_claim_id_required": "FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1",
+        "exact_relation_sha256_required": "1a3b1d28cecdb5b06c7b8ac927848249693324da733d1ee9649a94e50d4322ee",
+        "exact_relation_admission_content_hash_required": "05456f3d21ab3426af6a6c924843fecb8417c11620dce7213a36c8a819e8dd2c",
+        "exact_m1_contract_id_required": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+        "exact_signature_id_required": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+        "exact_f1_id_required": "urn:rawlsing:v554:f1:sha256:06f96892b9d7cad5a2d506345203b3634509d2492997326031a98b44d83973f8",
+        "exact_b1_id_required": "urn:rawlsing:v554:b1:sha256:95dfb5670c7e9a88c0620cce2dd372c434b0c1fd6a1dc9ddba9da3380e3e448a",
+        "required_f1_state": "ELIGIBLE",
+        "required_b1_allowed_v555_structural_use": true,
+        "required_target_use": "STRUCTURAL_MEDIATION_INPUT",
+        "signature_downgrade_allowed": false,
+        "temporal_m1_masquerade_allowed": false
+      },
+      "reference_closure_schema": {
+        "required_fields": [
+          "exact_v554_f1_ref",
+          "exact_v554_b1_ref",
+          "exact_relation_admission_ref",
+          "exact_field_forge_relation_ref",
+          "source_structural_position_ref",
+          "structural_channel_ref",
+          "receiving_structural_position_ref",
+          "closure_authority_ref",
+          "closure_content_hash"
+        ],
+        "exact_v554_f1_ref_must_match_frozen_f1": true,
+        "exact_v554_b1_ref_must_match_frozen_b1": true,
+        "relation_refs_must_match_frozen_second_canary": true,
+        "source_structural_position_ref_nonnull": true,
+        "structural_channel_ref_nonnull": true,
+        "receiving_structural_position_ref_nonnull": true,
+        "closure_authority_ref_content_addressed": true,
+        "closure_content_hash_covers_all_fields_except_itself": true,
+        "descriptive_or_fuzzy_binding_allowed": false,
+        "survey_variable_or_participant_role_auto_promotion_allowed": false,
+        "relation_direction_as_channel_inference_allowed": false,
+        "respondent_or_person_binding_allowed": false
+      },
+      "route_identity_law": {
+        "canonical_tuple_order": [
+          "EXACT_V554_F1_REF",
+          "route_rule_id@route_rule_version",
+          "route_shape_id@route_shape_version",
+          "channel_structural_role_id",
+          "EXACT_STRUCTURAL_CHANNEL_REF",
+          "receiving_constraint_kind",
+          "EXACT_TARGET_RECEIVING_POSITION_REF"
+        ],
+        "channel_structural_role_id": "V555-LCR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL",
+        "receiving_constraint_kind": "V555-RC-001-EXACT-STRUCTURAL-POSITION-REF",
+        "source_ref_is_replay_material_not_eighth_identity_field": true,
+        "same_tuple_same_route_identity": true,
+        "different_f1_requires_different_route_identity": true
+      },
+      "route_born_predicate_state": "VALID_EMPTY",
+      "authorized_unary_effects": [],
+      "additional_hop_policy": "EACH_ADDITIONAL_HOP_REQUIRES_AN_ADDITIONAL_ATOMIC_V555_ROUTE",
+      "direct_v557_publication_authority": "NONE",
+      "v556_or_higher_order_semantics": "NOT_AUTHORIZED_BY_THIS_RULE"
+    },
+    "negative_law": {
+      "missing_or_unsealed_reference_closure": "ROUTE_IDENTITY_UNRESOLVED",
+      "missing_exact_structural_channel_ref": "NO_GOVERNED_ROUTE_AUTHORITY",
+      "closure_ref_or_hash_mismatch": "CONSTRUCTION_FAILURE__NOT_STRUCTURAL_NEGATIVE",
+      "signature_or_f1_or_b1_mismatch": "NO_GOVERNED_ROUTE_AUTHORITY",
+      "permission_widening": "DENIED__NO_ROUTE",
+      "descriptive_mapping_or_relation_role_promotion": "DENIED__NO_ROUTE",
+      "causal_or_population_or_person_promotion": "DENIED__NO_ROUTE"
+    },
+    "hard_ceiling": {
+      "generic_sig004_rule": false,
+      "other_claims_or_f1s": false,
+      "gt2_widening": false,
+      "causal_promotion": false,
+      "population_generalization": false,
+      "direct_v557_publication": false,
+      "m3_production": false,
+      "v3_or_person_state": false,
+      "obl063_driver_type_person_terminal": false
+    }
+  },
+  "authority_key_sha256": "f9b9c8f4e57fe6eefceb737567578dec96e54aa7a251885b7d4fe1b22a152cc0",
+  "participant_reference_closure_disposition": {
+    "current_exact_closure_present": false,
+    "missing_material": [
+      "source_structural_position_ref",
+      "structural_channel_ref",
+      "receiving_structural_position_ref",
+      "closure_authority_ref",
+      "closure_content_hash"
+    ],
+    "relation_participant_roles_are_not_structural_route_refs": true,
+    "q73a_q86a_q70b_q70c_q84_auto_mapping_forbidden": true,
+    "next_route_state_until_closure": "ROUTE_IDENTITY_UNRESOLVED",
+    "competent_closure_source": "SEPARATELY_AUTHORIZED_OBJECTIVE_STRUCTURAL_PARTICIPANT_CHANNEL_BINDING_AUTHORITY__EXACT_CONTENT_ADDRESSED_REF_REQUIRED",
+    "no_new_closure_owner_id_minted": true
+  },
+  "successor_gate": {
+    "v555_sig004_authority": "SATISFIED_AT_EXACT_SECOND_CANARY_GRAIN",
+    "composition": "BLOCKED_PENDING_EXACT_PARTICIPANT_REFERENCE_CLOSURE_AND_IMPLEMENTATION_COMPATIBILITY",
+    "allowed_next_step": "A separately commissioned lane may bind exact objective structural participant/channel refs under competent authority, implement the exact new rule without altering RR-001, and then execute one route/replay court."
+  },
+  "hard_zeroes": {
+    "library_lookups": 0,
+    "sibling_seventh_wave_returns_consumed": 0,
+    "main_or_pre_main_mutations": 0,
+    "gt2_widening": 0,
+    "causal_promotions": 0,
+    "population_generalizations": 0,
+    "direct_v557_publications": 0,
+    "m3_or_v3_person_state_outputs": 0,
+    "obl063_semantics": 0
+  }
+}
