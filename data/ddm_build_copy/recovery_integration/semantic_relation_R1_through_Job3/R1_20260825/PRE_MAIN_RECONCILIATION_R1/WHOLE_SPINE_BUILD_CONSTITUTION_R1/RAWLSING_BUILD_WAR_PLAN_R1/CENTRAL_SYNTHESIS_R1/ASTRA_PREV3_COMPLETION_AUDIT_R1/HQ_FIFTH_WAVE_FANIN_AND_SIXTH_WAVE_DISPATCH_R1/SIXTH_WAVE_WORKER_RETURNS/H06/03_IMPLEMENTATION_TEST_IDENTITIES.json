@@ -1,0 +1,49 @@
+{
+  "schema": "H06_M2_IMPLEMENTATION_TEST_IDENTITIES@1.0.0",
+  "commission_tip": "bf4ce549a5ab8ee8b81dfd98455ac35789d65a5e",
+  "inputs": {
+    "g07_qualified_return": "8079d627069736e10ccc35acf675bcd4c967d62d",
+    "f07_m1_receipt_blob": "a975dd774a22e9d1a2f9e1378c10fa6533280df3",
+    "relation_m1_runtime": {
+      "path": "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py",
+      "blob": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+      "contract_id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+      "signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT"
+    },
+    "temporal_m1_runtime": {
+      "path": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "blob": "e8bd6376720a2de132b384e7771d71d8d39cf261",
+      "contract_id": "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0",
+      "accepted_signatures": [
+        "V554-SIG-001-NONTEMPORAL-EXACT",
+        "V554-SIG-002-TEMPORAL-POINT-EXACT",
+        "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT"
+      ]
+    },
+    "m2_runtime": {
+      "path": "rawlsing_next/m2_v555_atomic_route.py",
+      "blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+      "contract_id": "M2_V554_V555_ATOMIC_ROUTE_EXACT_SEAM_CONTRACT@1.0.0"
+    },
+    "m2_test": {
+      "path": "rawlsing_next/tests/test_m2_v555_atomic_route.py",
+      "blob": "8c641da532889f0a43e6bd4a5dbb5f8f0fb711ce",
+      "positive_fixture_signature": "V554-SIG-001-NONTEMPORAL-EXACT"
+    },
+    "v555_route_authority": {
+      "path": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/release/W1_CRITICAL_AUTHORITY_EXPANSION/ADP_002_V555_ROUTE_RULE/AUTHORITY.json",
+      "blob": "2bde6dfdb472e324607591ae820e8986f6d04055",
+      "authority_id": "V555_MEDIATION_ROUTE_RULE_REGISTRY",
+      "authority_version": "1.0.0",
+      "active_rule": "V555-RR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL@1.0.0"
+    }
+  },
+  "execution": {
+    "route_composition_test_run": "NOT_RUN__AUTHORITY_BLOCKER_PRECEDES_LAWFUL_ROUTE_REQUEST",
+    "route_replay_test_run": "NOT_RUN__NO_AUTHORIZED_ROUTE_EXISTS",
+    "static_exact_identity_checks": "PASS",
+    "authority_signature_membership_check": "FAIL_FOR_SIG004_AS_EXPECTED",
+    "m2_upstream_contract_compatibility_check": "FAIL_FOR_RELATION_M1_CONTRACT_AS_EXPECTED"
+  },
+  "result": "BLOCKED__NO_CURRENT_EXACT_M2_AUTHORITY_FOR_SIG004_SECOND_CANARY_F1"
+}
