@@ -1,0 +1,25 @@
+{
+  "schema":"H02_CANONICAL_I03_CONFLICT_RECEIPT@1.0.0",
+  "status":"EXACT_CONFLICT_PROVED",
+  "canonical_engine":{
+    "path":"rawlsing_next/_pre553_query_eval.py",
+    "git_blob_sha1":"e2d91984541df7c692a1b2f32370500838a2a000",
+    "law":"raw_resolved != raw_denominator => UNRESOLVED"
+  },
+  "g02_engine":{
+    "path":"rawlsing_next/prev3_learned_real_execution_r2.py",
+    "git_blob_sha1":"7a9b8b53e36041b453eb62e7a22a52ff0d392c16",
+    "behavior":"raw_denominator_support=len(condition-selected rows); q301 target cells only native values 1..5; validator does not reject raw_complete_cell_support < raw_denominator_support"
+  },
+  "p0_exact_carrier_case":{
+    "query":"T_Q301_2_RAW",
+    "condition":"A000",
+    "raw_denominator_support":29002,
+    "raw_resolved_target_support_under_frozen_substantive_domain_1_5":28787,
+    "difference":215,
+    "canonical_fact_state":"UNRESOLVED",
+    "g02_claimed_candidate_states":"5 x EVALUATED_SUPPORTED"
+  },
+  "qualification_disposition":"REJECT_G02_PASS_AT_REQUIRED_P0_GATE",
+  "repair_authority":"NONE"
+}
