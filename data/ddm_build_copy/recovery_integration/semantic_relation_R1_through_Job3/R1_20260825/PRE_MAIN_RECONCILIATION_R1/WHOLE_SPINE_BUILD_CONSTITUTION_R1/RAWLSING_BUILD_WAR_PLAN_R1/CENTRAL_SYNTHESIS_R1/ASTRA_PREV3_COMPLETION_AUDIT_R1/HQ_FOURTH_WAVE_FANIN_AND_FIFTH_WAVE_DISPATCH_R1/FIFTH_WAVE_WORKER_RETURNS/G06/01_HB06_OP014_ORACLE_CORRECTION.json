@@ -1,0 +1,80 @@
+{
+  "schema": "HB06_OP014_ORACLE_CORRECTION@1.0.0",
+  "status": "PASS__CANDIDATE_NEUTRAL_OP014_ROW_STATE_ADDED",
+  "base_hb06": {
+    "return_head": "161ea51b80816450323091e566ce46e5b485b7c3",
+    "package_id": "HB06_FINAL_COMMON_TWO_SOURCE_PARITY_ORACLE_PACKAGE_R1",
+    "package_canonical_sha256": "caf478a072ca558de8c86f6d89a60399636ed71d7772ad43d7d0167bc59f20f8",
+    "identity_blob": "69f105e7aec4d5212ad856fdb2878cf7078d067d",
+    "oracle_blob": "4ca86c4b3f629457ef1f3780e5b00d896c2fa99f",
+    "authority_trace_blob": "4bb8a0e1e79537106b4d955c75b45bebd52547ca",
+    "crosswalk_blob": "29a0c5c354b33c7005e9b8cbed815a3c4abb361a"
+  },
+  "authority": {
+    "hq_fifth_wave_authority": "9203a15e0c8a18da5588b7b0ceb7cf823ce9af2a",
+    "commission_tip": "1d2bd0079f0c5ee267cf45da8fccf63284fa72c9",
+    "f06_return": "c6c7051a5f28b46cecb18147b885dd556cc0d84f",
+    "f06_blocker": "HB07_BLOCK__HB05_OP014_HAS_NO_HB06_ORACLE_ROW",
+    "hb05_return": "f48faf4ec957bfc7f1f726f9b7a430f34bb12c39",
+    "hb05_manifest_blob": "e2bd3415c02bf7c8879773d09133f25d2c4d6a0c",
+    "hb05_manifest_payload_sha256": "9c99ad778020edf5ed67f4da1f30e4eb14647d46535663a6f027bd04ef8417af",
+    "c09_measurement_law_blob": "2729ab4dca887f22fb3c90265f10c70020afdd3e"
+  },
+  "correction": {
+    "row_id": "HB06-CORR-HB05-OP014",
+    "operation_id": "HB05_OP014_AUTONOMOUS_DISCOVERY_PROGRAM",
+    "hb05_operation_id": "HB05-OP-014",
+    "name": "autonomous_discovery_program",
+    "logical_contract": "run only a frozen genuine search/termination program; otherwise preserve the exact governed blocker",
+    "source_scope": [
+      "WVS7",
+      "LiTS-I"
+    ],
+    "candidate_scope": [
+      "A",
+      "B",
+      "C"
+    ],
+    "state_class": "EXPECTED_GOVERNED_NEGATIVE_OR_REFUSAL_STATE",
+    "basis_key": "AUTON_DISCOVERY_NEG",
+    "dimension_profile": "I05_DISCOVERY_PROGRAM",
+    "candidate_neutrality": "NO_A_B_C_OUTPUT_AS_TRUTH",
+    "expected": {
+      "typed_state": "BLOCKED_MISSING_AUTHORITY",
+      "blocker": "C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM",
+      "WVS7_state": "BLOCKED_MISSING_AUTHORITY:C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM",
+      "LiTS_I_state": "BLOCKED_MISSING_AUTHORITY:C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM",
+      "execution_dimensions": [
+        "cold",
+        "warm",
+        "repeat"
+      ],
+      "relation_to_existing_hb06_op12": "DISTINCT__DO_NOT_COLLAPSE",
+      "execution_authorized": false
+    }
+  },
+  "effective_counts": {
+    "sources": 2,
+    "candidates": 3,
+    "parity_dimensions": 13,
+    "operation_ids": 21,
+    "oracle_rows": 42,
+    "explicit_governed_negative_or_refusal_rows": 9
+  },
+  "preservation": {
+    "existing_hb06_oracle_truth_changes": 0,
+    "existing_hb06_rows_removed": 0,
+    "existing_hb06_rows_rewritten": 0,
+    "new_oracle_rows": 1,
+    "hb05_modified": false,
+    "hb07_executed": false,
+    "c09_executed": false,
+    "comparative_performance_collected": false,
+    "candidate_ranking_or_selection": false,
+    "architecture_or_topology_selection": false,
+    "library_used": false,
+    "pre_v3_scope": "OBJECTIVE_WORLD_ONLY",
+    "obl063_driver_type_person_terminal": "QUARANTINED"
+  },
+  "successor": "HB07_CONVERGENCE_RERUN_REMAINS_SEPARATE"
+}
