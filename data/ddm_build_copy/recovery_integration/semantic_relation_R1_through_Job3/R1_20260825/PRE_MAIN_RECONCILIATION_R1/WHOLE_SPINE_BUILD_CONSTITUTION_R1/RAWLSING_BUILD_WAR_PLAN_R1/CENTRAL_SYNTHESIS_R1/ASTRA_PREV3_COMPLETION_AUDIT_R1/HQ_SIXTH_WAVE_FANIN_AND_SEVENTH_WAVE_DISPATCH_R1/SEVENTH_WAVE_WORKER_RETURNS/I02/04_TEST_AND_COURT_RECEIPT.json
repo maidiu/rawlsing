@@ -1,0 +1,44 @@
+{
+  "schema": "I02_TEST_AND_GOVERNED_COURT_RECEIPT@1.0.0",
+  "status": "PASS",
+  "semantic_candidate_sha": "e6e437292ccb4baf26aeccb9ca925715b73f581b",
+  "evidence_execution_sha": "ee02c0280d1b43a78ba540872edb673d28c230d3",
+  "pr_synthetic_merge_sha": "55808056b37e8655e4396cd10a81d1a1024b137c",
+  "temporary_pr": {"number": 366, "state": "CLOSED_UNMERGED"},
+  "workflow": {
+    "name": "Rabochii Governed Bounded Court",
+    "run_id": 34787701925,
+    "job_id": 103806093826,
+    "run_number": 412,
+    "conclusion": "success",
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "determinism_mode": "EXACT",
+    "exit_code": 0,
+    "elapsed_seconds": 0.43763
+  },
+  "tests": {
+    "bounded_test_paths": [
+      "rawlsing_next/tests/test_prev3_learned_i03_repair_r1.py",
+      "rawlsing_next/tests/test_prev3_learned_real_execution_r2.py"
+    ],
+    "bounded_test_count": 21,
+    "bounded_result": "21 passed in 0.22s",
+    "protocol_self_test_count": 20,
+    "protocol_self_test_result": "20 passed in 0.11s",
+    "i02_test_blob_sha1": "4644c9461a27ee54e59b32d6883e90262106f02b",
+    "inherited_g02_test_blob_sha1": "129e350915ba3401690eccdfadf6b9acf779bee4"
+  },
+  "artifact": {
+    "id": 10327022717,
+    "name": "rabochii-court-receipt-34787701925",
+    "size_bytes": 561,
+    "digest": "sha256:5ebf4aaa7d02ba70de8cae07ccb8b28de268a86d577035a62ab5d688ee853e51"
+  },
+  "court_receipt": {
+    "result": "PASS",
+    "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+    "spec_sha256": "829f6876c0db23d63eac8022cb39be4c09714fcb5ea43e0e28568619e52589e0"
+  },
+  "qualification_scope": "REPAIR_IMPLEMENTATION_AND_FROZEN_INVARIANTS_ONLY__NOT_INDEPENDENT_QUALIFICATION_OF_LEARNED_POSITIVE_WORKLOAD"
+}
