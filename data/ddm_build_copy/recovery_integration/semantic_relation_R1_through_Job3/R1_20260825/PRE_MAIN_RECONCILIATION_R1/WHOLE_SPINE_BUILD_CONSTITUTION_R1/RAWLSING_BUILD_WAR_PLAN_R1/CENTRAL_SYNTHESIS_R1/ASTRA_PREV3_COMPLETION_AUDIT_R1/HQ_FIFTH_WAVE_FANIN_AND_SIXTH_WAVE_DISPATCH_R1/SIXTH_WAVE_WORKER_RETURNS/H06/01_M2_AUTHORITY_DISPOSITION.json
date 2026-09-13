@@ -1,0 +1,58 @@
+{
+  "schema": "H06_M2_AUTHORITY_DISPOSITION@1.0.0",
+  "status": "BLOCKED__EXISTING_M2_AUTHORITY_INCOMPATIBLE_WITH_SECOND_CANARY_SIG004",
+  "grain": "PREV3_SECOND_CANARY_POST_M1_TO_M2_V555_COMPOSITION_AND_REPLAY_R1_ONLY",
+  "commission_tip": "bf4ce549a5ab8ee8b81dfd98455ac35789d65a5e",
+  "hq_authority": "f0adc9db42277669bbd359adb14da795f998135b",
+  "qualified_second_canary": {
+    "g07_return": "8079d627069736e10ccc35acf675bcd4c967d62d",
+    "claim_id": "FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1",
+    "relation_sha256": "1a3b1d28cecdb5b06c7b8ac927848249693324da733d1ee9649a94e50d4322ee",
+    "permission_ceiling": ["STRUCTURAL_MEDIATION_INPUT"],
+    "m1_contract_id": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+    "m1_signature_id": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+    "m1_basis_id": "urn:rawlsing:v554:basis:sha256:a34deb4ba5d52990b966ac67cb1e0e51ab76ba05fbfae4c3f8db996d26b1d81b",
+    "m1_f1_id": "urn:rawlsing:v554:f1:sha256:06f96892b9d7cad5a2d506345203b3634509d2492997326031a98b44d83973f8",
+    "m1_b1_id": "urn:rawlsing:v554:b1:sha256:95dfb5670c7e9a88c0620cce2dd372c434b0c1fd6a1dc9ddba9da3380e3e448a"
+  },
+  "accepted_m2_authority": {
+    "authority_id": "V555_MEDIATION_ROUTE_RULE_REGISTRY",
+    "authority_version": "1.0.0",
+    "authority_blob": "2bde6dfdb472e324607591ae820e8986f6d04055",
+    "active_rule_id": "V555-RR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL",
+    "active_rule_version": "1.0.0",
+    "active_shape_id": "V555-RS-001-SOURCE-EXACT-CHANNEL-EXACT-RECEIVER",
+    "accepted_signature_ids": [
+      "V554-SIG-001-NONTEMPORAL-EXACT",
+      "V554-SIG-002-TEMPORAL-POINT-EXACT",
+      "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT"
+    ],
+    "signature_downgrade_allowed": false,
+    "requires_exact_nonnull_structural_channel_ref": true
+  },
+  "current_m2_runtime": {
+    "path": "rawlsing_next/m2_v555_atomic_route.py",
+    "blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+    "contract_id": "M2_V554_V555_ATOMIC_ROUTE_EXACT_SEAM_CONTRACT@1.0.0",
+    "required_upstream_m1_contract_id": "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0"
+  },
+  "disposition": {
+    "authorized_v555_route_composable": false,
+    "route_receipt_produced": false,
+    "deterministic_route_replay_executed": false,
+    "smallest_exact_blocker": "H06_BLOCK__V555_RR001_DOES_NOT_ADMIT_V554_SIG004_ADMITTED_RELATION_F1",
+    "runtime_boundary_manifestation": "CURRENT_M2_REQUIRES_M1_TEMPORAL_V554_INGRESS_SEAM_NOT_RELATION_M1_CONTRACT",
+    "competent_owner": "V555 semantic owner of V555_MEDIATION_ROUTE_RULE_REGISTRY / M2 V555 route authority",
+    "required_successor_action": "Adjudicate a bounded V555 route-authority compatibility for the exact SIG-004 admitted-relation F1 and any exact route-participant/reference-closure bindings required by the chosen lawful route shape. Do not infer or fabricate them from the current relation M1 output."
+  },
+  "hard_zeroes": {
+    "new_m2_authority_minted": 0,
+    "m2_rule_widening": 0,
+    "routes_composed": 0,
+    "v557_publications": 0,
+    "m3_productions": 0,
+    "v3_person_state_promotions": 0,
+    "library_lookups": 0,
+    "sibling_sixth_wave_returns_consumed": 0
+  }
+}
