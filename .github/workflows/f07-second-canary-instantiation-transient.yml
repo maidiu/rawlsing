@@ -38,11 +38,31 @@ jobs:
           test "$(git hash-object data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/ASTRA_PREV3_COMPLETION_AUDIT_R1/HQ_FIRST_WAVE_FANIN_AND_SECOND_WAVE_DISPATCH_R1/SECOND_WAVE_WORKER_RETURNS/W2-D09/01_REAL_STRUCTURAL_RELATION_EXECUTION_REGISTER.json)" = "00c458bd60688f7fb46fe11f3f8f7c65e8ef37af"
           test "$(git hash-object data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/ASTRA_PREV3_COMPLETION_AUDIT_R1/HQ_FIRST_WAVE_FANIN_AND_SECOND_WAVE_DISPATCH_R1/SECOND_WAVE_WORKER_RETURNS/W2-D09/02_SELECTED_CANDIDATE_EVIDENCE_RECEIPT.json)" = "354b849202e0e2350e5ae775b8d87760c0a04092"
           test "$(git hash-object data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/ASTRA_PREV3_COMPLETION_AUDIT_R1/HQ_FIRST_WAVE_FANIN_AND_SECOND_WAVE_DISPATCH_R1/SECOND_WAVE_WORKER_RETURNS/W2-D09/03_TYPED_NEGATIVE_AND_ADMISSION_BLOCKER_COURT.json)" = "8440e50f70789dc6b50470ca1fc9cf93450eaf7f"
+      - name: Prove inherited out-of-grain M4 regression at commission tip
+        shell: bash
+        run: |
+          set -euo pipefail
+          TEST='rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py::test_m4_binding_accepts_exact_relation_contract_and_keeps_v554_producer_family'
+          git worktree add --detach /tmp/f07-commission 7f5dd315c7fdbfea1e06cfb23e23899acf3eecfc
+          set +e
+          (cd /tmp/f07-commission && python -m pytest -q -p no:cacheprovider "$TEST") > /tmp/f07-commission-m4.log 2>&1
+          base_rc=$?
+          python -m pytest -q -p no:cacheprovider "$TEST" > /tmp/f07-current-m4.log 2>&1
+          current_rc=$?
+          set -e
+          printf '%s\n' '--- commission-tip inherited result ---'
+          cat /tmp/f07-commission-m4.log
+          printf '%s\n' '--- current-head result ---'
+          cat /tmp/f07-current-m4.log
+          test "$base_rc" -ne 0
+          test "$current_rc" -ne 0
+          printf 'inherited_out_of_grain_m4_test=CONFIRMED\n'
       - name: Run exact F07 court
         run: python -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_f07_second_canary_prev3_admission.py
-      - name: Run exact parent admission and M1 court
+      - name: Run parent admission and M1 court excluding proved inherited M4-only case
         run: |
           python -m pytest -q -p no:cacheprovider \
+            --deselect rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py::test_m4_binding_accepts_exact_relation_contract_and_keeps_v554_producer_family \
             rawlsing_next/tests/test_f07_second_canary_prev3_admission.py \
             rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py \
             rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py
@@ -70,6 +90,7 @@ jobs:
           python -m pytest -q -p no:cacheprovider \
             --deselect rawlsing_next/tests/test_pre553_reservoir_preintegration.py::test_downstream_m1_m6_render_and_psepf_bytes_match_frozen_base_git_blobs \
             --deselect rawlsing_next/tests/test_pre553_whole_machine_hostile_acceptance.py::test_r15_h15_frozen_semantic_blobs_are_byte_exact \
+            --deselect rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py::test_m4_binding_accepts_exact_relation_contract_and_keeps_v554_producer_family \
             "${tests[@]}"
       - name: Materialize exact F07 governed receipts
         shell: bash
