@@ -1,0 +1,116 @@
+{
+  "case_count": 12,
+  "cases": [
+    {
+      "case_id": "D07-L01",
+      "description": "source-local lawful service survives population-authority absence at source-local ceiling",
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "receipt_hash": "f956c11b66a0cbcce27ed314a35e1831837eb29c10c934da26370a03ff8c0e5e",
+      "result": "PASS",
+      "state": "SUPPORTED_OBJECTIVE_RESULT"
+    },
+    {
+      "case_id": "D07-L02",
+      "description": "source-local evidence does not become population evidence",
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "receipt_hash": "9c9575b0999260cba895a866f0f215bf623abb6ea7e77a9ff57a14f92d7fb5c9",
+      "result": "PASS",
+      "state": "REFUSED_REQUIRED_OBJECTIVE_EVIDENCE"
+    },
+    {
+      "case_id": "D07-L03",
+      "description": "required determinant loss refuses affected operation while unrelated lawful family remains replayable",
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "receipt_hash": "7d789251ba2404f5f0a336498ad1a065ea0456f7376cf4d87dd6f3d89e5f25a6",
+      "result": "PASS",
+      "selected_input_ids": ["independent_family"],
+      "state": "REFUSED_REQUIRED_OBJECTIVE_EVIDENCE"
+    },
+    {
+      "case_id": "D07-L04",
+      "description": "alternate/backfill without exact relation authority refuses",
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "result": "PASS",
+      "state": "RELATION_AUTHORITY_REQUIRED"
+    },
+    {
+      "case_id": "D07-L05",
+      "description": "all-unavailable never becomes successful zero/empty completion",
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "receipt_hash": "5ebabb1af0b8f30a67ef44b3ac291d65f91bee01836c74fb35d09d9ad30d3720",
+      "result": "PASS",
+      "state": "ALL_UNAVAILABLE__NOT_POSITIVE_COMPLETION"
+    },
+    {
+      "case_id": "D07-L06",
+      "description": "discovery support survives as lineage but cannot promote without structural-admission authority",
+      "policy_id": "OC02_LEARNED_STRUCTURAL_ADMISSION_R1",
+      "receipt_hash": "1270a9ac70f67742f5a95e251e4ad363de9cfcbfb6034c417fccf6933f369afe",
+      "result": "PASS",
+      "state": "REFUSED_REQUIRED_OBJECTIVE_EVIDENCE"
+    },
+    {
+      "case_id": "D07-L07",
+      "description": "cross-source comparability loss blocks promotion without renormalizing surviving support",
+      "policy_id": "OC02_LEARNED_STRUCTURAL_ADMISSION_R1",
+      "receipt_hash": "a107aef110ead811eb569b30aed8ef7ef5e8c1e93c52af28c848f27c1c6e2086",
+      "result": "PASS",
+      "state": "REFUSED_REQUIRED_OBJECTIVE_EVIDENCE"
+    },
+    {
+      "case_id": "D07-L08",
+      "description": "current structural-admission seam can produce a positive receipt only at its exact structural ceiling",
+      "policy_id": "OC02_LEARNED_STRUCTURAL_ADMISSION_R1",
+      "receipt_hash": "cdaad28625411914b792b9bdcc1d7190f3ff43ecf12e4addf2ca4b044157152f",
+      "result": "PASS",
+      "state": "SUPPORTED_OBJECTIVE_RESULT"
+    },
+    {
+      "case_id": "D07-L09",
+      "description": "model prior is separately authorized/non-empirical and cannot create empirical positive completion",
+      "non_empirical_input_ids": ["authorized_prior"],
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "receipt_hash": "c074cd283eaaa241d9db12d1ff12d8cd6036204635c5de0a96a31ee3094e0b5b",
+      "result": "PASS",
+      "state": "ALL_UNAVAILABLE__NOT_POSITIVE_COMPLETION"
+    },
+    {
+      "case_id": "D07-L10",
+      "description": "coefficient/confidence/semantic-scope renormalization refuses",
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "result": "PASS",
+      "state": "RENORMALIZATION_FORBIDDEN"
+    },
+    {
+      "case_id": "D07-L11",
+      "description": "future consumers are explicit typed residuals, not synthetic whole-system coverage",
+      "policies": ["OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1", "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1", "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1"],
+      "policy_id": "OC03/OC04/OC05",
+      "result": "PASS",
+      "state": "NOT_YET_APPLICABLE_ENFORCED"
+    },
+    {
+      "case_id": "D07-L12",
+      "description": "optional local loss preserves unrelated lawful objective service without scope transfer",
+      "omitted_optional_input_ids": ["family_b"],
+      "policy_id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1",
+      "receipt_hash": "6526dd0e82f23b5704f1faf51720fb8d701af17de109093a06fcbeb9e88697db",
+      "result": "PASS",
+      "selected_input_ids": ["family_a"],
+      "state": "PARTIAL_OBJECTIVE_RESULT"
+    }
+  ],
+  "executed_policy_ids": ["OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1", "OC02_LEARNED_STRUCTURAL_ADMISSION_R1"],
+  "fail_count": 0,
+  "installation_manifest": [
+    {"consumer_seam":"rawlsing_next.pre553_empirical_query.execute_empirical_query","current_applicability":"APPLICABLE_CURRENT","policy_id":"OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1","reason":"current exact source-local empirical query/statistic seam"},
+    {"consumer_seam":"rawlsing_next.pre553_structural_admission","current_applicability":"APPLICABLE_CURRENT","policy_id":"OC02_LEARNED_STRUCTURAL_ADMISSION_R1","reason":"current P06/I04 structural-admission decision/refusal seam"},
+    {"consumer_seam":null,"current_applicability":"NOT_YET_APPLICABLE","policy_id":"OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1","reason":"P1-P5 remain CANDIDATE_NOT_CURRENT pending W2-D04 and later admission"},
+    {"consumer_seam":null,"current_applicability":"NOT_YET_APPLICABLE","policy_id":"OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1","reason":"generic non-event adapter is W2-D05; real world rooting is W2-D01"},
+    {"consumer_seam":null,"current_applicability":"NOT_YET_APPLICABLE","policy_id":"OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1","reason":"terminal objective-world root/resolver is not current; no universal terminal may be invented"}
+  ],
+  "not_yet_applicable_policy_ids": ["OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1", "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1", "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1"],
+  "pass_count": 12,
+  "schema": "W2_D07_BOUNDED_LOSS_DELETION_RESULTS_R1",
+  "status": "PASS"
+}
