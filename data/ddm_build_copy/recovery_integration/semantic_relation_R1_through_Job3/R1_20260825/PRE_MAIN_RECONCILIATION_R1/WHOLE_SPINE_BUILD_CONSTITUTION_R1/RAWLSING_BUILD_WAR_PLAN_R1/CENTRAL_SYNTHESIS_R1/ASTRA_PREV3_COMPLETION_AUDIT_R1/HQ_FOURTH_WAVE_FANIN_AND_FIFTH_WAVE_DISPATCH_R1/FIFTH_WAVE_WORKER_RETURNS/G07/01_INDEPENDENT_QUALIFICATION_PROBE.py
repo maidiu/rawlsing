@@ -62,6 +62,18 @@ def canonical_hash(value: Any) -> str:
     return hashlib.sha256(encoded).hexdigest()
 
 
+def json_normalized(value: Any) -> Any:
+    return json.loads(
+        json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        )
+    )
+
+
 ROOT = repo_root()
 F07_RETURN = ROOT / "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/ASTRA_PREV3_COMPLETION_AUDIT_R1/HQ_THIRD_WAVE_FANIN_AND_FOURTH_WAVE_DISPATCH_R1/FOURTH_WAVE_WORKER_RETURNS/F07"
 
@@ -168,7 +180,7 @@ def p06() -> None:
     assert ev["f1"]["f1_id"] == EXPECTED["f1_id"]
     assert ev["direct_v557_handoff"] is None
     assert out["m1_replay_sha256"] == EXPECTED["m1_replay_sha256"]
-    assert committed["m1_evaluation"] == ev
+    assert committed["m1_evaluation"] == json_normalized(ev)
     assert committed["m1_replay_sha256"] == EXPECTED["m1_replay_sha256"]
     assert committed["same_input_replay"] == "EXACT_MATCH"
 
