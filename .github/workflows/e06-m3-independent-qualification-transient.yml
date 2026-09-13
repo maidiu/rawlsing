@@ -37,7 +37,7 @@ jobs:
       - name: Reproduce D06 H01-H12 firewall qualification cases
         run: python -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_m3_v556_higher_order_structural.py
       - name: Run independent E06 alias and structural-shape probes
-        run: python data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/ASTRA_PREV3_COMPLETION_AUDIT_R1/HQ_SECOND_WAVE_FANIN_AND_THIRD_WAVE_DISPATCH_R1/THIRD_WAVE_WORKER_RETURNS/E06/02_INDEPENDENT_QUALIFICATION_PROBE.py
+        run: PYTHONPATH=. python data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/ASTRA_PREV3_COMPLETION_AUDIT_R1/HQ_SECOND_WAVE_FANIN_AND_THIRD_WAVE_DISPATCH_R1/THIRD_WAVE_WORKER_RETURNS/E06/02_INDEPENDENT_QUALIFICATION_PROBE.py
       - name: Targeted M3 and guard regression court
         run: |
           python -m pytest -q -p no:cacheprovider \
