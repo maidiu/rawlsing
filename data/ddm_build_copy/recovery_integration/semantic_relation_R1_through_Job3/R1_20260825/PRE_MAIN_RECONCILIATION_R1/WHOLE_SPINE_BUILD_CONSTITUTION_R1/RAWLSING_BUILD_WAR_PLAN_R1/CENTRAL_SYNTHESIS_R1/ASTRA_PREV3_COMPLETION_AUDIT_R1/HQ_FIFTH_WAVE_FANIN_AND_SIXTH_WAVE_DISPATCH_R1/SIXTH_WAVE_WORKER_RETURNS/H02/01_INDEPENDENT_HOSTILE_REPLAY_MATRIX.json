@@ -1,7 +1,7 @@
 {
-  "schema": "H02_INDEPENDENT_HOSTILE_REPLAY_MATRIX@1.0.0",
+  "schema": "H02_INDEPENDENT_HOSTILE_REPLAY_MATRIX@1.1.0",
   "commission": "PREV3_LEARNED_WORLD_REAL_EXECUTION_INDEPENDENT_QUALIFICATION_R1_ONLY",
-  "status": "BLOCKER_PROVED",
+  "status": "BLOCKER_PROVED__CORRECTED_CARRIER_COUNTS",
   "producer_under_review": {
     "branch": "agent/rabochii-prev3-w5-g02-learned-real-execution-r2",
     "final_tip": "01e1e8071ea98587dfbb755ec0fdc0da2f5e1663",
@@ -32,11 +32,10 @@
       "id": "P0_5_OF_5_POSITIVE_CONTROL_CANONICAL_I03_TARGET_RESOLUTION",
       "result": "FAIL_EXACT_SEMANTIC_DEFECT",
       "evidence": {
-        "frozen_target": "q301_2 native substantive domain 1..5; source-native specials 6/7 excluded",
-        "source_counts": {"1":4501,"2":7141,"3":6460,"4":7631,"5":3054,"6":137,"7":62,"MISSING":16},
+        "q301_2_exact_carrier_counts": {"1":4377,"2":6440,"3":5226,"4":6972,"5":1882,"6":1774,"7":2327,"MISSING":4},
         "g02_raw_denominator_support": 29002,
-        "resolved_substantive_target_support": 28787,
-        "unresolved_denominator_members": 215,
+        "g02_projected_target_support_cells_1_5": 24897,
+        "selected_denominator_members_outside_g02_projection": 4105,
         "canonical_i03_law": "raw_resolved_target_support != raw_denominator_support => UNRESOLVED",
         "g02_behavior": "_query counts every condition-selected row in the denominator but emits only target cells 1..5; _validate then treats positive target-cell counts as EVALUATED_SUPPORTED without rejecting incomplete target resolution"
       }
@@ -47,6 +46,7 @@
       "reason": "Commission PASS requires P0 5/5 positive controls. Independent court stops on the smaller proved P0 semantic defect rather than manufacturing broader producer conclusions."
     }
   ],
-  "smallest_exact_blocker": "BLOCKED__G02_P0_TARGET_RESOLUTION_DIVERGES_FROM_CANONICAL_I03__29002_DENOMINATOR_VS_28787_RESOLVED_Q301_2_TARGET_SUPPORT__REQUIRED_5_OF_5_POSITIVE_CONTROL_NOT_QUALIFIED",
-  "repair_authority": "NONE"
+  "smallest_exact_blocker": "BLOCKED__G02_P0_TARGET_RESOLUTION_DIVERGES_FROM_CANONICAL_I03__29002_DENOMINATOR_VS_24897_G02_PROJECTED_Q301_2_TARGET_SUPPORT__REQUIRED_5_OF_5_POSITIVE_CONTROL_NOT_QUALIFIED",
+  "repair_authority": "NONE",
+  "correction_note":"Supersedes staged H02 counts that did not match the exact frozen carrier. The blocker remains and is stronger under the corrected scan."
 }
