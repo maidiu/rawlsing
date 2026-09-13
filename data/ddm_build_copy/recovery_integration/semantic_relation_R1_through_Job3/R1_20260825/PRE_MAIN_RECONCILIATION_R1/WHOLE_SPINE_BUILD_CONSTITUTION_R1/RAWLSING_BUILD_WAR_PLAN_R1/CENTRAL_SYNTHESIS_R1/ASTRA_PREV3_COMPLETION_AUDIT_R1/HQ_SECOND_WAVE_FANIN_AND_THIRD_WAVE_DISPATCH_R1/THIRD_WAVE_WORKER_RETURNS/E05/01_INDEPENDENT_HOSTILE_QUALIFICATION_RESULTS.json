@@ -1,0 +1,106 @@
+{
+  "schema": "PREV3_E05_OBJECTIVE_NON_EVENT_ADAPTER_INDEPENDENT_QUALIFICATION_R1",
+  "commission_id": "E05",
+  "exact_grain": "PREV3_OBJECTIVE_NON_EVENT_ADAPTER_INDEPENDENT_QUALIFICATION_R1_ONLY",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-prev3-w3-e05-nonevent-independent-qualification-r1",
+  "commission_tip": "bba9b34a3acf83cb062682396232f8c996bc797a",
+  "inherited_d05_return_head": "84861f42d51379d03702d996271b5d8c60719919",
+  "hq_fanin_authority": "018ef13413b24a3bc131fd0c769d37b832854135",
+  "tested_implementation": {
+    "path": "rawlsing_next/objective_non_event_publication_serving_adapter.py",
+    "git_blob": "a1e2ae8775707eb30097279cde91f30271b6d243",
+    "contract_id": "PREV3_OBJECTIVE_NON_EVENT_PUBLICATION_SERVING_ADAPTER@1.0.0"
+  },
+  "inherited_targeted_test_source": {
+    "path": "rawlsing_next/tests/test_objective_non_event_publication_serving_adapter.py",
+    "git_blob": "535f9a8e5e44f3a58248702374f2cc1ae61f05d8",
+    "d05_self_run_claim": "15 passed in 0.17s",
+    "e05_disposition": "NOT_PROMOTED_TO_INDEPENDENT_QUALIFICATION_EVIDENCE"
+  },
+  "independent_runtime_reexecution": {
+    "repository_actions_run_on_inherited_d05_head": "NONE_FOUND",
+    "fresh_checkout_runner": "UNAVAILABLE_IN_THIS_WORKER_RUNTIME",
+    "qualification_basis": "EXACT_BLOB_SOURCE_PATH_PROOF_AGAINST_HQ_ADOPTED_C06_M5_AUTHORITY",
+    "note": "The exact code blocker below is source-path complete and does not depend on a timing-sensitive or environment-sensitive runtime observation."
+  },
+  "required_hostile_classes": [
+    {
+      "id": "E05-H01",
+      "class": "event laundering",
+      "result": "NO_BLOCKER_FOUND_AT_EXACT_CODE_PATH",
+      "evidence": "Eligible temporal forms are CONDITION/DIRECTED_RELATION/RECURRENT_ACTIVITY only; EVENT is rejected."
+    },
+    {
+      "id": "E05-H02",
+      "class": "K3/TRANSITION/ORDERED_HISTORY leakage",
+      "result": "NO_BLOCKER_FOUND_AT_EXACT_CODE_PATH",
+      "evidence": "K3 is outside eligible assertion kinds; TRANSITION and ORDERED_HISTORY are outside eligible temporal forms."
+    },
+    {
+      "id": "E05-H03",
+      "class": "permission widening",
+      "result": "NO_BLOCKER_FOUND_AT_EXACT_CODE_PATH",
+      "evidence": "Resolver uses are checked as a subset of publication uses, publication uses as a subset of producer uses, with the generic non-event REVIEW/CONTEXT ceiling."
+    },
+    {
+      "id": "E05-H04",
+      "class": "fuzzy/latest/default repair",
+      "result": "NO_BLOCKER_FOUND_AT_EXACT_CODE_PATH",
+      "evidence": "Mutable latest/default/* selectors are rejected and resolution remains exact-key only."
+    },
+    {
+      "id": "E05-H05",
+      "class": "stale/currentness laundering",
+      "result": "BLOCKER_PROVED",
+      "blocker_id": "E05_D05_STALE_CURRENTNESS_RECEIPT_REF_LAUNDERING",
+      "evidence": "D05 accepts currentness_receipt_ref_or_null as an opaque ExactRef and, for CURRENT serving, checks only non-null presence. It never validates the referenced receipt schema/type/hash, exact resolution binding, authority/basis/effective-time binding, or CURRENT state. M5's accepted currentness seam requires all of those and explicitly rejects any state other than CURRENT. Therefore an exact ref to a STALE, REFRESH_REQUIRED, INVALID, unrelated, or resolution-mismatched receipt can satisfy D05's CURRENT gate."
+    },
+    {
+      "id": "E05-H06",
+      "class": "K4 termination/supersession omission",
+      "result": "NO_BLOCKER_FOUND_AT_LITERAL_OMISSION_BOUNDARY",
+      "evidence": "CURRENT K4 is rejected when negative_or_closure_refs is empty. This result does not upgrade opaque closure refs into separately validated authoritative termination coverage."
+    },
+    {
+      "id": "E05-H07",
+      "class": "person-state/uptake mutation",
+      "result": "NO_BLOCKER_FOUND_AT_EXACT_CODE_PATH",
+      "evidence": "Serving receipt fixes actor_state_effect=false and ingress effect to structural-context eligibility only."
+    },
+    {
+      "id": "E05-H08",
+      "class": "objective actor-index false rejection",
+      "result": "NO_BLOCKER_FOUND_AT_EXACT_CODE_PATH",
+      "evidence": "Objective actor and objective position-context bindings are carried as optional exact refs and are not rejected merely for actor indexing."
+    },
+    {
+      "id": "E05-H09",
+      "class": "producer identity/replay tamper",
+      "result": "NO_BLOCKER_FOUND_AT_EXACT_CODE_PATH",
+      "evidence": "Selection is checked against exact producer/publication refs and content-addressed serving identity is recomputed."
+    },
+    {
+      "id": "E05-H10",
+      "class": "historical->current promotion",
+      "result": "NO_BLOCKER_FOUND_AT_EXACT_CODE_PATH",
+      "evidence": "Resolved staged item currentness is copied into the serving receipt; no serving-time relabel from HISTORICAL to CURRENT is present."
+    }
+  ],
+  "primary_code_qualification": {
+    "status": "FAIL",
+    "smallest_exact_proved_blocker": "E05_D05_STALE_CURRENTNESS_RECEIPT_REF_LAUNDERING",
+    "why_it_blocks": "HQ/C06 require an exact CURRENT structural-currentness receipt for the M5-style ingress shape, while the D05 adapter proves only that some ExactRef is present. Exact identity of a reference is not proof of the referenced object's currentness state or binding."
+  },
+  "real_current_world_e2e": {
+    "status": "SEPARATELY_BLOCKED_ON_E01_AUTHORITY_MATERIALIZATION",
+    "inherited_d01_blocker": "D01_REAL_WORLD_ROOT_MATERIALIZATION_BLOCKED__MISSING_AUTHORIZED_OBJECTIVE_WORLD_SCOPE_REF__VALID_TIME_AUTHORITY_REF__WORLD_VALIDITY_REF",
+    "e05_minted_substitute_world_root": false
+  },
+  "production_repair_performed": false,
+  "main_mutated": false,
+  "pre_main_mutated": false,
+  "obl063_quarantined_driver_type_person_terminal_semantics_consumed": false,
+  "successor_gate": "GATE-NON-EVENT-QUALIFIED",
+  "successor_gate_disposition": "NOT_SATISFIED"
+}
