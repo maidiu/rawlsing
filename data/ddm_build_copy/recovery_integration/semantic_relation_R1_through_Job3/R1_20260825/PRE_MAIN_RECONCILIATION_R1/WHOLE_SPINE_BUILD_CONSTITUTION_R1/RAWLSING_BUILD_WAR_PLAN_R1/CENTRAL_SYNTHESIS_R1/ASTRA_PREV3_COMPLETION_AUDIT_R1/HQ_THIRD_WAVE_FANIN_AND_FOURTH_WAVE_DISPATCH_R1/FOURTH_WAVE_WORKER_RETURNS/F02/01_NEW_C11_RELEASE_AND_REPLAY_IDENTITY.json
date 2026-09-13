@@ -1,0 +1,72 @@
+{
+  "schema": "F02_NEW_C11_RELEASE_AND_REPLAY_IDENTITY_R1",
+  "status": "PASS__NEW_IMMUTABLE_BOUNDED_COMPOSITE_C11_LOGICAL_RELEASE_AND_REPLAY_IDENTITY",
+  "commission_tip": "468fd77d624e6cb73f9c14825d6b75cb433cca36",
+  "grain": "PREV3_LITS1_Q310_Q311_C11_SELECTOR_CLOSURE_AND_LEARNED_FRONTIER_READOPTION_R1_ONLY",
+  "release_form": "IMMUTABLE_BOUNDED_COMPOSITE_LOGICAL_RELEASE__EXACT_BASE_PLUS_Q310_Q311_EXTENSION",
+  "source": {
+    "name": "LITS-2006-data.dta",
+    "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "library_version": "1",
+    "bytes": 139531180,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows": 29002,
+    "variables": 1198
+  },
+  "base_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+    "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+  },
+  "base_replay_hash": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+  "new_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+  },
+  "new_replay_ref": {
+    "kind": "ReplayReceipt@1.0.0",
+    "object_id": "urn:rawlsing:prev3:f02:lits1-c11-selector-replay:sha256:89bb3e9140ae0e0fcc9a3e205fd6b60ae721153d88a4730dd66f4fc16e238b1f",
+    "content_hash": "89bb3e9140ae0e0fcc9a3e205fd6b60ae721153d88a4730dd66f4fc16e238b1f"
+  },
+  "membership_law": "EXACT_BASE_RELEASE_MEMBERS_UNCHANGED_BY_REFERENCE_UNION_GOVERNED_Q310_Q311_EXTENSION",
+  "f02_authority_refs": {
+    "source_semantics": {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:source-semantics",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "47142de560f66e725283aaf96024bfad06fb0b33eeb56e3c8cfdc8afcc745bc0"
+    },
+    "routing": {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:routing",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "52e741a07b75c475254628dfdf191a77f969e0a7cd7bbdf9b7a90addf324d540"
+    },
+    "predicate_grammar": {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b"
+    },
+    "replay": {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:replay",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "0b2ac266ec09db440156e3c1ab62dec2aac78290932d20396b753ca8763c9e4c"
+    }
+  },
+  "parent_authority_ceiling": {
+    "d02_source_semantics_hash": "5f671f2cf9342820026af287009d1d9220e3f9f29d92134582d77eeebbdcd638",
+    "d02_routing_hash": "703f629c5d2b66e1ea5fccfddec80130bbb9b2ea5f8f93c4f69ad5797158d89a",
+    "d02_i03_query_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+  },
+  "real_source_replay": {
+    "q310": {
+      "counts": {"1": 12340, "2": 7511, "3": 9085, "MISSING": 66},
+      "row_semantic_root_sha256": "a979c15c93502b77979041ffd8451c602f63a7fcbb145106d68a78414be92455"
+    },
+    "q311": {
+      "counts": {"1": 16582, "2": 4548, "3": 7826, "MISSING": 46},
+      "row_semantic_root_sha256": "af193e948fd2199bb784f476475d6dd4c6b96698a01e1804e5a6ce69b93c49aa"
+    }
+  },
+  "precision_ceiling": "This is an immutable bounded composite logical C11 release: the exact prior C11 is preserved by immutable reference and only q310/q311 governed members are added. It does not claim monolithic reserialization of every unrelated base member.",
+  "learned_workload_execution": "NOT_EXECUTED"
+}
