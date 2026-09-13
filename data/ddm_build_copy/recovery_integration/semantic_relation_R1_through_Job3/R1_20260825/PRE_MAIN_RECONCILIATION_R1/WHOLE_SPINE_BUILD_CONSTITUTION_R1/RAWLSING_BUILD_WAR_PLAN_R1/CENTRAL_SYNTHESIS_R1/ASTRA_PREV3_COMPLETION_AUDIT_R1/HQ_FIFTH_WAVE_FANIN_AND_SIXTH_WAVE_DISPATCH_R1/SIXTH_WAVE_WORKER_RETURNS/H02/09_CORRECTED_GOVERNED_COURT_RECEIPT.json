@@ -1,0 +1,14 @@
+{
+  "schema":"H02_CORRECTED_GOVERNED_COURT_RECEIPT@1.0.0",
+  "status":"PASS__H02_INDEPENDENT_COURT_QUALIFIES_EXACT_G02_BLOCKER",
+  "commission":"PREV3_LEARNED_WORLD_REAL_EXECUTION_INDEPENDENT_QUALIFICATION_R1_ONLY",
+  "semantic_holding":"BLOCKED__G02_P0_TARGET_RESOLUTION_DIVERGES_FROM_CANONICAL_I03__29002_DENOMINATOR_VS_24897_G02_PROJECTED_Q301_2_TARGET_SUPPORT__REQUIRED_5_OF_5_POSITIVE_CONTROL_NOT_QUALIFIED",
+  "source":{"file_id":"file_0000000036dc81f8b8b546e356590a03","version":1,"name":"LITS-2006-data.dta","sha256":"7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09","bytes":139531180,"rows":29002,"variables":1198},
+  "corrected_test":{"semantic_candidate_sha":"23aaa4880c9a7a03d25c0974c549817c238993e4","git_blob_sha1":"ccaa668c16cc4cb4b31c3941c277b5d62acc1959","path":"rawlsing_next/tests/test_prev3_learned_real_execution_independent_qualification_h02.py","test_count":6},
+  "corrected_court":{"run_id":34785033253,"job_id":103798832383,"result":"PASS","evidence_execution_sha":"3172c6e19d29bf9f48349b59bb384575f9a09276","pr_synthetic_merge_sha":"68795e867e6aea59e8309bea69c5a580b5fd84cb","python":"3.12.14","implementation":"CPython","determinism_mode":"EXACT","exit_code":0,"elapsed_seconds":0.375721,"spec_sha256":"5195274d7da2d1a043ecb845dd2f48f0df8ce3c9accdc62a3b6c7eca88b45db4","artifact_id":10326610742,"artifact_name":"rabochii-court-receipt-34785033253","artifact_digest":"sha256:d5da8b4c3b179ac4d5d6a314a631c1199b4f411b19d4aa32b39e27379005b07a","temporary_pr":365,"temporary_pr_closed_unmerged":true},
+  "stale_first_court":{"run_id":34784813389,"job_id":103798233031,"artifact_id":10325699086,"artifact_digest":"sha256:1b3412dd6d7d15a56e534641fb79488bd493858c9308df01aa9d2e8f34a0c031","disposition":"SUPERSEDED__NOT_QUALIFICATION_EVIDENCE","reason":"It qualified an earlier H02 hard-coded q301 source-count fixture that did not match the exact frozen LiTS-I carrier. PR 364 was closed unmerged and marked stale."},
+  "p0_exact_carrier":{"q301_2_counts":{"1":4377,"2":6440,"3":5226,"4":6972,"5":1882,"6":1774,"7":2327,"MISSING":4},"selected_denominator":29002,"g02_projected_cells_1_5_support":24897,"selected_but_not_projected":4105,"canonical_i03_law":"raw_resolved != raw_denominator => UNRESOLVED"},
+  "cleanup":{"temporary_court_spec_removed_commit":"76479698a1dfd1d3ed35fcbc0022053c757b877f","pending_marker_removed_commit":"011f80d73cc470c3cfe0da632d4f92f755439117"},
+  "repair_authority":"NONE",
+  "interpretation":"Court PASS qualifies H02's blocker evidence. It does not qualify G02 and does not authorize production repair."
+}
