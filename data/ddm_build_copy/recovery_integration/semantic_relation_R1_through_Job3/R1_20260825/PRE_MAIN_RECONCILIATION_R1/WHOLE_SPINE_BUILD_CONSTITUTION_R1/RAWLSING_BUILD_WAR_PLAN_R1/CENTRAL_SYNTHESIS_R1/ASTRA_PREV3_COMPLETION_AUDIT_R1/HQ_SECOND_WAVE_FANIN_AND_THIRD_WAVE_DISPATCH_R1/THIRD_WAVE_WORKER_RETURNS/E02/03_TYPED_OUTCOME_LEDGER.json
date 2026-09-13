@@ -1,0 +1,36 @@
+{
+  "schema": "PREV3_E02_TYPED_OUTCOME_LEDGER_R1",
+  "status": "NO_EMPIRICAL_OUTCOMES_PRODUCED__PREEXECUTION_AUTHORITY_BLOCKER",
+  "blocker_state": "BLOCKED__FROZEN_SOURCE_SELECTOR_RESOLUTION_FAILED",
+  "empirical_outcome_rows": [],
+  "frontier_level_typed_state": {
+    "kind": "PREEXECUTION_AUTHORITY_BLOCKER",
+    "detail": "Six frozen q310/q311 selector slots cannot resolve to exact QUESTION_NATIVE objects and exact EmpiricalPredicate refs in the frozen LiTS-I C11 release because the exact release producer projected only country/city/region/tablec/tabled/q301_2/q301_7.",
+    "source_carrier_identity": "VERIFIED",
+    "source_variable_physical_presence": "VERIFIED_Q310_AND_Q311",
+    "semantic_release_membership": "ABSENT_Q310_AND_Q311",
+    "result_truth_effect": "NONE",
+    "structural_truth_effect": "NONE",
+    "causal_truth_effect": "NONE",
+    "person_or_v3_truth_effect": "NONE"
+  },
+  "per_lane_states": [
+    {"lane":"P0","declared_candidates":5,"state":"NOT_EVALUATED_BY_LAWFUL_HARD_STOP","may_be_interpreted_as_valid_empty":false,"may_be_interpreted_as_unsupported":false},
+    {"lane":"P1","declared_candidates":1,"state":"NOT_EVALUATED_BY_LAWFUL_HARD_STOP","may_be_interpreted_as_valid_empty":false,"may_be_interpreted_as_unsupported":false},
+    {"lane":"P2","declared_candidates":18,"state":"FROZEN_SELECTOR_PREIMAGE_UNAVAILABLE_IN_C11","may_be_interpreted_as_coverage_limited_result":false,"may_be_interpreted_as_noncomparable_result":false},
+    {"lane":"P3","declared_candidates":1,"state":"FROZEN_SELECTOR_PREIMAGE_UNAVAILABLE_IN_C11","may_be_interpreted_as_coverage_limited_result":false,"may_be_interpreted_as_noncomparable_result":false},
+    {"lane":"P4","declared_candidates":25,"state":"NOT_EVALUATED_BY_LAWFUL_HARD_STOP","may_be_interpreted_as_valid_empty":false,"may_be_interpreted_as_unsupported":false}
+  ],
+  "forbidden_rewrites": [
+    "RAW_CARRIER_PRESENCE_TO_C11_SEMANTIC_MEMBERSHIP",
+    "MISSING_SELECTOR_AUTHORITY_TO_EMPIRICAL_NEGATIVE",
+    "PARTIAL_FRONTIER_EXECUTION_TO_COMPLETE_WORKLOAD",
+    "UNEXECUTED_P0_TO_NO_POSITIVE_RESULT_CLAIM",
+    "POST_DATA_SELECTOR_SUBSTITUTION",
+    "NEW_C11_OBJECT_MINTING_INSIDE_E02",
+    "EMPIRICAL_SUPPORT_TO_STRUCTURAL_OR_CAUSAL_TRUTH",
+    "PREV3_TO_PERSON_OR_V3_STATE"
+  ],
+  "positive_p0_receipt": null,
+  "positive_p0_receipt_reason": "P0 was not legally reachable because selector resolution is a workload-global precondition before any empirical result access."
+}
