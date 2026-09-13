@@ -1,0 +1,52 @@
+{
+  "schema": "H02_INDEPENDENT_HOSTILE_REPLAY_MATRIX@1.0.0",
+  "commission": "PREV3_LEARNED_WORLD_REAL_EXECUTION_INDEPENDENT_QUALIFICATION_R1_ONLY",
+  "status": "BLOCKER_PROVED",
+  "producer_under_review": {
+    "branch": "agent/rabochii-prev3-w5-g02-learned-real-execution-r2",
+    "final_tip": "01e1e8071ea98587dfbb755ec0fdc0da2f5e1663",
+    "implementation_blob": "7a9b8b53e36041b453eb62e7a22a52ff0d392c16",
+    "test_blob": "129e350915ba3401690eccdfadf6b9acf779bee4"
+  },
+  "attacks": [
+    {
+      "id": "SOURCE_IDENTITY",
+      "result": "PASS",
+      "evidence": {"name": "LITS-2006-data.dta", "bytes": 139531180, "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09", "rows": 29002, "variables": 1198}
+    },
+    {
+      "id": "F02_Q310_Q311_SELECTOR_REPLAY",
+      "result": "PASS",
+      "evidence": {
+        "q310_row_root": "a979c15c93502b77979041ffd8451c602f63a7fcbb145106d68a78414be92455",
+        "q311_row_root": "af193e948fd2199bb784f476475d6dd4c6b96698a01e1804e5a6ce69b93c49aa",
+        "all_six_selector_roots_exact": true
+      }
+    },
+    {
+      "id": "FROZEN_50_77_MEMBERSHIP_AND_NO_POST_DATA_MUTATION",
+      "result": "PASS_AS_STATIC_PRODUCER_EVIDENCE",
+      "evidence": {"candidate_count": 50, "query_role_count": 77, "preexecution_frontier_seal_hash": "ca47c52f925b126878cd9e0be433bd6a28bec5a8623784bfbf5eaf7523b21bea"}
+    },
+    {
+      "id": "P0_5_OF_5_POSITIVE_CONTROL_CANONICAL_I03_TARGET_RESOLUTION",
+      "result": "FAIL_EXACT_SEMANTIC_DEFECT",
+      "evidence": {
+        "frozen_target": "q301_2 native substantive domain 1..5; source-native specials 6/7 excluded",
+        "source_counts": {"1":4501,"2":7141,"3":6460,"4":7631,"5":3054,"6":137,"7":62,"MISSING":16},
+        "g02_raw_denominator_support": 29002,
+        "resolved_substantive_target_support": 28787,
+        "unresolved_denominator_members": 215,
+        "canonical_i03_law": "raw_resolved_target_support != raw_denominator_support => UNRESOLVED",
+        "g02_behavior": "_query counts every condition-selected row in the denominator but emits only target cells 1..5; _validate then treats positive target-cell counts as EVALUATED_SUPPORTED without rejecting incomplete target resolution"
+      }
+    },
+    {
+      "id": "P3_VALID_EMPTY_AND_REMAINING_LANES",
+      "result": "NOT_REACHED_AFTER_SMALLEST_GLOBAL_PASS_BLOCKER",
+      "reason": "Commission PASS requires P0 5/5 positive controls. Independent court stops on the smaller proved P0 semantic defect rather than manufacturing broader producer conclusions."
+    }
+  ],
+  "smallest_exact_blocker": "BLOCKED__G02_P0_TARGET_RESOLUTION_DIVERGES_FROM_CANONICAL_I03__29002_DENOMINATOR_VS_28787_RESOLVED_Q301_2_TARGET_SUPPORT__REQUIRED_5_OF_5_POSITIVE_CONTROL_NOT_QUALIFIED",
+  "repair_authority": "NONE"
+}
