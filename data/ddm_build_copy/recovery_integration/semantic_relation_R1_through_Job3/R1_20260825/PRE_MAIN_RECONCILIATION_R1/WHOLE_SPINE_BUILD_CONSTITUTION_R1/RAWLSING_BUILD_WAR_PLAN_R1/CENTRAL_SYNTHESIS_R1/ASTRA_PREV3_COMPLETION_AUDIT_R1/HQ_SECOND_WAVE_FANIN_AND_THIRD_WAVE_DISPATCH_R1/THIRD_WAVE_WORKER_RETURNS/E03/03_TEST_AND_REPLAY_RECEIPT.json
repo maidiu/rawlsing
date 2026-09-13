@@ -1,0 +1,55 @@
+{
+  "schema": "E03_OBJECTIVE_POSITION_MATERIALIZER_TEST_AND_REPLAY_RECEIPT_R1",
+  "semantic_candidate_sha": "2b3038f014a40ec4c89023012211690ecc775626",
+  "evidence_execution_sha": "07dec489bee2409626abcb1ed1cb19c749997f75",
+  "governed_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 34774291726,
+    "job_id": 103769429116,
+    "status": "completed",
+    "conclusion": "success",
+    "receipt_artifact_id": 10323147071,
+    "receipt_artifact_digest": "sha256:9ffb0ada5b22ac5b4339aa2797635602072097b14735135693df5e7f091e36c7",
+    "temporary_pr": 358,
+    "temporary_pr_final_state": "closed_unmerged"
+  },
+  "focused_test_blobs": [
+    {
+      "path": "rawlsing_next/tests/test_prev3_objective_position_materializer.py",
+      "git_blob": "2e4d0d950444587c966384cb1c3dd47b34ea86f1",
+      "coverage": [
+        "content-addressed exact replay",
+        "set-like canonical ordering",
+        "determinant identity drift",
+        "role receipt XOR explicit role-NA authority",
+        "V3/person-state bootstrap rejection",
+        "objective allowed-use ceiling",
+        "target-outcome firewall",
+        "evidence/provenance/dependency fail-closed",
+        "mutable authority selector rejection",
+        "typed nonpositive vs explicit-negative law",
+        "M2 exact-ref handoff and permission ceiling",
+        "predecessor kind validation"
+      ]
+    },
+    {
+      "path": "rawlsing_next/tests/test_prev3_objective_position_materializer_controls.py",
+      "git_blob": "5a9c7434a4e4f85b98726ab599e0e47cd4467af2",
+      "coverage": [
+        "currentness receipt changes immutable fact identity",
+        "successor conserves exact predecessor without rewriting old fact",
+        "UNAVAILABLE / NONCOMPARABLE / USE_DENIED remain distinct nonpositive states"
+      ]
+    }
+  ],
+  "existing_regression_suites_in_same_court": [
+    "rawlsing_next/tests/test_a05_z08_positioned_admission.py",
+    "rawlsing_next/tests/test_pre553_empirical_objects_authority.py"
+  ],
+  "protocol_self_test": "success",
+  "court_spec_validation": "success",
+  "bounded_court_execution": "success",
+  "replay_law": "same complete canonical tuple -> same PREV3POS ref; changed determinant/currentness/predecessor -> different ref",
+  "real_positive_replay": "NOT_EXECUTED__POSITIVE_FACT_NOT_MINTED_DUE_EXACT_PRODUCER_AUTHORITY_BLOCKER",
+  "negative_control_law": "failed positive proof never mints explicit negative; explicit negative requires separate authority and evidence"
+}
