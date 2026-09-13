@@ -1,6 +1,6 @@
 {
-  "schema": "H02_INDEPENDENT_SOURCE_SELECTOR_REPLAY_RECEIPT@1.0.0",
-  "status": "PASS",
+  "schema": "H02_INDEPENDENT_SOURCE_SELECTOR_REPLAY_RECEIPT@1.1.0",
+  "status": "PASS__CORRECTED_DIRECT_CARRIER_SCAN",
   "library_scope": "EXACT_LITS1_CARRIER_ONLY",
   "source": {
     "file_id": "file_0000000036dc81f8b8b546e356590a03",
@@ -31,7 +31,11 @@
       "MISSING":"847c4e89a7336a5cb5ac6d73953b87091640231ba7cd5c5376e37044a12a03fb"
     }
   },
-  "q301_2_independent_counts": {"1":4501,"2":7141,"3":6460,"4":7631,"5":3054,"6":137,"7":62,"MISSING":16},
-  "q301_7_independent_counts": {"1":4324,"2":7820,"3":6070,"4":7135,"5":3388,"6":100,"7":145,"MISSING":20},
-  "method": "INDEPENDENT_DIRECT_CARRIER_SCAN__NO_G02_RUNNER_CALL"
+  "q301_2_independent_counts": {"1":4377,"2":6440,"3":5226,"4":6972,"5":1882,"6":1774,"7":2327,"MISSING":4},
+  "q301_7_independent_counts": {"1":2889,"2":6112,"3":6511,"4":10334,"5":2479,"6":224,"7":442,"MISSING":11},
+  "q301_2_projected_1_5_support": 24897,
+  "q301_2_selected_denominator": 29002,
+  "q301_2_selected_but_not_projected": 4105,
+  "method": "INDEPENDENT_DIRECT_CARRIER_SCAN__PANDAS_READ_STATA_CONVERT_CATEGORICALS_FALSE__NO_G02_RUNNER_CALL",
+  "correction_note": "Supersedes the earlier staged H02 hard-coded q301 counts, which did not match the exact frozen carrier. q310/q311 replay identities were and remain exact."
 }
