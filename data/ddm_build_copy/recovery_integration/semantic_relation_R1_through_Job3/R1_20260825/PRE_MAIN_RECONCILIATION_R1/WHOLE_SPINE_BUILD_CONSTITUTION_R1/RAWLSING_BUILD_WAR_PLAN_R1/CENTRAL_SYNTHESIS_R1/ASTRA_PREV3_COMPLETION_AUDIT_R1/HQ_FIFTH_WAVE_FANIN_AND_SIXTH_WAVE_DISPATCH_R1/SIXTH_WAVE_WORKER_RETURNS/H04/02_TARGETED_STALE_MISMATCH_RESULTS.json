@@ -1,0 +1,28 @@
+{
+  "schema": "PREV3_H04_TARGETED_CURRENTNESS_RESULTS_R1",
+  "status": "TARGETED_CASES_FROZEN__EXECUTION_NOT_CLAIMED",
+  "cases": [
+    {"id": "H04-C01", "case": "CURRENT with actual compatible D05 currentness receipt", "expected": "ACCEPT"},
+    {"id": "H04-C02", "case": "legacy exact-looking ref without receipt object", "expected": "REJECT"},
+    {"id": "H04-C03", "case": "HISTORICAL with null currentness receipt", "expected": "ACCEPT_AS_HISTORICAL"},
+    {"id": "H04-C04", "case": "STALE receipt used for CURRENT service", "expected": "REJECT"},
+    {"id": "H04-C05", "case": "REFRESH_REQUIRED receipt used for CURRENT service", "expected": "REJECT"},
+    {"id": "H04-C06", "case": "INVALID receipt used for CURRENT service", "expected": "REJECT"},
+    {"id": "H04-C07", "case": "currentness authority differs from exact expected authority", "expected": "REJECT"},
+    {"id": "H04-C08", "case": "currentness basis differs from exact expected basis", "expected": "REJECT"},
+    {"id": "H04-C09", "case": "receipt content identity differs from recomputed identity", "expected": "REJECT"},
+    {"id": "H04-C10", "case": "receipt resolution binding differs from selected D05 resolution", "expected": "REJECT"}
+  ],
+  "regression_invariant": {
+    "prior_d05_blob_preserved_verbatim": "a1e2ae8775707eb30097279cde91f30271b6d243",
+    "unchanged_behavior_delegated_to_preserved_blob": true,
+    "m4_blob_unchanged": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+    "m5_blob_unchanged": "18735bdb31a220aed032aa722574d685e2bdddf5"
+  },
+  "execution": {
+    "github_actions_run": "NONE_FOUND",
+    "checkout_backed_runner": "UNAVAILABLE",
+    "fresh_pytest_pass": "NOT_CLAIMED"
+  },
+  "qualification": "CANDIDATE_IMPLEMENTATION_ONLY__SEPARATE_INDEPENDENT_REQUALIFICATION_REQUIRED"
+}

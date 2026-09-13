@@ -1,0 +1,46 @@
+{
+  "schema": "PREV3_H04_D05_CURRENTNESS_COMPATIBILITY_IMPLEMENTATION_R1",
+  "status": "PASS__IMPLEMENTATION_COMPLETE__INDEPENDENT_REQUALIFICATION_PENDING",
+  "commission_tip": "edc34f924657cd4ec3143e9051b035a690050f36",
+  "hq_authority": "f0adc9db42277669bbd359adb14da795f998135b",
+  "contract_id": "PREV3_D05_NON_EVENT_CURRENTNESS_COMPATIBILITY@1.0.0",
+  "contract_content_hash": "80d361179530d84e08b48094a6cc68d0864365dc396d8740e4dffd20d80bb6c0",
+  "production": {
+    "adapter_path": "rawlsing_next/objective_non_event_publication_serving_adapter.py",
+    "adapter_blob": "9baa6e73f683cea723de5ac56889ef6e5a7b5dee",
+    "contract_model_path": "rawlsing_next/objective_non_event_currentness_contract.py",
+    "contract_model_blob": "69a740fa8f6a213fed1df5b0a5686651b8b6a6f8",
+    "validation_path": "rawlsing_next/objective_non_event_currentness_validation.py",
+    "validation_blob": "aebcf109cf5b5cbb8ffc92a377f0c29f929746ba",
+    "preserved_legacy_path": "rawlsing_next/objective_non_event_publication_serving_adapter_legacy.py",
+    "preserved_legacy_blob": "a1e2ae8775707eb30097279cde91f30271b6d243"
+  },
+  "implemented_law": {
+    "current_requires_actual_receipt_object": true,
+    "receipt_schema": "PREV3_OBJECTIVE_NON_EVENT_CURRENTNESS_RECEIPT@1.0.0",
+    "required_state": "CURRENT",
+    "bound_fields": [
+      "compatibility_contract_ref",
+      "authority_ref",
+      "structural_currentness_basis_ref",
+      "decision_effective_time_ref",
+      "non_event_resolution_receipt_ref",
+      "selection_record_ref",
+      "producer_object_ref",
+      "world_or_release_root_ref"
+    ],
+    "ref_only_currentness_input_accepted": false,
+    "historical_to_current_relabel_allowed": false,
+    "m4_changed": false,
+    "m5_changed": false
+  },
+  "tests": {
+    "adapter_test_path": "rawlsing_next/tests/test_objective_non_event_publication_serving_adapter.py",
+    "adapter_test_blob": "e0c27bbf8a699be196624751d25b5cadcd13e41a",
+    "compatibility_test_path": "rawlsing_next/tests/test_objective_non_event_currentness_compatibility.py",
+    "compatibility_test_blob": "df2f12f5fcad32aaf9bbc3e0cb5a2f6010b9b73e",
+    "fresh_pytest_result": "NOT_CLAIMED__NO_CHECKOUT_BACKED_RUNNER_OR_ACTIONS_RUN_AVAILABLE",
+    "independent_qualification": "NOT_CLAIMED"
+  },
+  "successor_gate": "READY_FOR_SEPARATE_INDEPENDENT_REQUALIFICATION__H04_SELF_QUALIFICATION_NOT_CLAIMED"
+}
