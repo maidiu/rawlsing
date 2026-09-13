@@ -1,0 +1,77 @@
+{
+  "schema": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_E02_EXECUTION_REPLAY_BLOCKER_RECEIPT_R1",
+  "commission": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_REAL_EXECUTION_AND_REPLAY_R1_ONLY",
+  "status": "BLOCKED_PREEXECUTION",
+  "terminal": "BLOCKED__FROZEN_SOURCE_SELECTOR_RESOLUTION_FAILED",
+  "branch": "agent/rabochii-prev3-w3-e02-learned-positive-execution-r1",
+  "commission_tip": "00f58fc52cdd2876d9b22b9e411ff3334a2d9191",
+  "inherited_d02_head": "40cb8585f076a66d9884b99022a59bb909606c03",
+  "hq_fanin_authority": "018ef13413b24a3bc131fd0c769d37b832854135",
+  "d02_frontier_authority": {
+    "git_blob": "5399a3f64642c8d9f8a0644db0adc15d38642971",
+    "workload_id": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_R1",
+    "declared_candidate_count": 50,
+    "declared_query_role_execution_count": 77,
+    "maximum_conditioner_arity_K": 3,
+    "maximum_target_arity_J": 2,
+    "preexecution_rule": "ALL_SIX_FROZEN_Q310_Q311_SELECTORS_MUST_RESOLVE_IN_THE_EXACT_SEALED_LITS1_C11_RELEASE_BEFORE_ANY_EMPIRICAL_RESULT_QUERY"
+  },
+  "exact_source_identity_verification": {
+    "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "library_name": "LITS-2006-data.dta",
+    "observed_byte_length": 139531180,
+    "observed_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "expected_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "observed_rows": 29002,
+    "observed_variables": 1198,
+    "status": "PASS_EXACT_CARRIER_IDENTITY",
+    "scope_note": "Library use was limited to exact LiTS-I carrier rematerialization and narrow selector/source identity verification; no frozen workload result was executed."
+  },
+  "exact_c11_release": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+    "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+  },
+  "producer_projection_proof": {
+    "accepted_historical_route_b_tip": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "driver_path": "rawlsing_next/pre553_as4i0_route_b_driver.py",
+    "driver_git_blob": "bc369555dfc34bc0bafa28a16c0275d93b77deaf",
+    "selected_physical_names_before_c11_projection": [
+      "city",
+      "country",
+      "q301_2",
+      "q301_7",
+      "region",
+      "tablec",
+      "tabled"
+    ],
+    "driver_release_assertion": "release.semantic_release_hash == e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "q310_in_selected_projection": false,
+    "q311_in_selected_projection": false,
+    "conclusion": "The exact constructor of the frozen C11 release excludes q310 and q311 before projection. Therefore neither can resolve to a QUESTION_NATIVE object inside that exact immutable release."
+  },
+  "selector_resolution": [
+    {"selector_id": "urn:rawlsing:prev3:d02:lits2006:q310:eq:1", "physical_var_name": "q310", "source_native_value": 1, "carrier_presence": "VERIFIED", "exact_c11_question_native_resolution": "FAIL_NOT_IN_FROZEN_RELEASE"},
+    {"selector_id": "urn:rawlsing:prev3:d02:lits2006:q310:eq:2", "physical_var_name": "q310", "source_native_value": 2, "carrier_presence": "VERIFIED", "exact_c11_question_native_resolution": "FAIL_NOT_IN_FROZEN_RELEASE"},
+    {"selector_id": "urn:rawlsing:prev3:d02:lits2006:q310:eq:3", "physical_var_name": "q310", "source_native_value": 3, "carrier_presence": "VERIFIED", "exact_c11_question_native_resolution": "FAIL_NOT_IN_FROZEN_RELEASE"},
+    {"selector_id": "urn:rawlsing:prev3:d02:lits2006:q311:eq:1", "physical_var_name": "q311", "source_native_value": 1, "carrier_presence": "VERIFIED", "exact_c11_question_native_resolution": "FAIL_NOT_IN_FROZEN_RELEASE"},
+    {"selector_id": "urn:rawlsing:prev3:d02:lits2006:q311:eq:2", "physical_var_name": "q311", "source_native_value": 2, "carrier_presence": "VERIFIED", "exact_c11_question_native_resolution": "FAIL_NOT_IN_FROZEN_RELEASE"},
+    {"selector_id": "urn:rawlsing:prev3:d02:lits2006:q311:eq:3", "physical_var_name": "q311", "source_native_value": 3, "carrier_presence": "VERIFIED", "exact_c11_question_native_resolution": "FAIL_NOT_IN_FROZEN_RELEASE"}
+  ],
+  "hard_stop_application": {
+    "empirical_result_access_after_selector_audit": false,
+    "candidate_execution_started": false,
+    "replay_execution_started": false,
+    "post_data_frontier_mutation": false,
+    "semantic_ref_minting_to_bypass_blocker": false,
+    "structural_or_causal_promotion": false,
+    "person_or_v3_construction": false
+  },
+  "pass_condition": {
+    "p0_discovered_result_supported_required": true,
+    "p0_positive_receipt_generated": false,
+    "pass_reachable": false
+  },
+  "successor_gate": "GATE-LEARNED-REAL-EXECUTION",
+  "successor_gate_state": "BLOCKED_PENDING_COMPETENT_C11_SELECTOR_CLOSURE_REPAIR_AND_FRONTIER_READOPTION"
+}
