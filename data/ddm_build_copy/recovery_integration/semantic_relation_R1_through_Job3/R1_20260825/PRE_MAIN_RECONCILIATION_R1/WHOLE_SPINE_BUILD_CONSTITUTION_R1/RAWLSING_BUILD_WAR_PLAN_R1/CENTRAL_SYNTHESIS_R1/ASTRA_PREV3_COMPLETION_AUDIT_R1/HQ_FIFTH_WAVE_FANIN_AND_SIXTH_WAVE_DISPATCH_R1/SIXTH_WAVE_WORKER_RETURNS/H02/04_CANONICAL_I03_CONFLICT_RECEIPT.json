@@ -1,6 +1,6 @@
 {
-  "schema":"H02_CANONICAL_I03_CONFLICT_RECEIPT@1.0.0",
-  "status":"EXACT_CONFLICT_PROVED",
+  "schema":"H02_CANONICAL_I03_CONFLICT_RECEIPT@1.1.0",
+  "status":"EXACT_CONFLICT_PROVED__CORRECTED_CARRIER_COUNTS",
   "canonical_engine":{
     "path":"rawlsing_next/_pre553_query_eval.py",
     "git_blob_sha1":"e2d91984541df7c692a1b2f32370500838a2a000",
@@ -9,17 +9,19 @@
   "g02_engine":{
     "path":"rawlsing_next/prev3_learned_real_execution_r2.py",
     "git_blob_sha1":"7a9b8b53e36041b453eb62e7a22a52ff0d392c16",
-    "behavior":"raw_denominator_support=len(condition-selected rows); q301 target cells only native values 1..5; validator does not reject raw_complete_cell_support < raw_denominator_support"
+    "behavior":"raw_denominator_support=len(condition-selected rows); q301_2 target projection emits only cells 1..5; validator does not reject raw_complete_cell_support < raw_denominator_support"
   },
   "p0_exact_carrier_case":{
     "query":"T_Q301_2_RAW",
     "condition":"A000",
     "raw_denominator_support":29002,
-    "raw_resolved_target_support_under_frozen_substantive_domain_1_5":28787,
-    "difference":215,
-    "canonical_fact_state":"UNRESOLVED",
+    "g02_projected_target_support_cells_1_5":24897,
+    "selected_denominator_members_outside_g02_projection":4105,
+    "q301_2_exact_counts":{"1":4377,"2":6440,"3":5226,"4":6972,"5":1882,"6":1774,"7":2327,"MISSING":4},
+    "canonical_i03_required_state_if_target_resolution_is_incomplete":"UNRESOLVED",
     "g02_claimed_candidate_states":"5 x EVALUATED_SUPPORTED"
   },
   "qualification_disposition":"REJECT_G02_PASS_AT_REQUIRED_P0_GATE",
-  "repair_authority":"NONE"
+  "repair_authority":"NONE",
+  "note":"The conflict does not require H02 to choose a repair for source-native 6/7. Either they require governed target-state treatment or they remain unresolved for the declared 1..5 projection; G02 may not count all 29,002 rows in the denominator and simultaneously validate only 24,897 projected target rows as fully supported."
 }
