@@ -63,7 +63,7 @@ Accepted M5 regression source used to prove the exact constructor/currentness bo
 - `rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py`
 - blob `ef4faaa84b24b9b6ca62ae7eaa29018d57439c0c`
 
-No checkout-backed runner or GitHub Actions run exists on the F04 commission tip. Because the smaller contract incompatibility blocks production repair before mutation, F04 does not fabricate a fresh pytest receipt. The targeted stale/mismatch/source-level controls are frozen in `02_TARGETED_STALE_MISMATCH_HOSTILE_RESULTS.json`.
+No checkout-backed runner or GitHub Actions run exists on the F04 commission tip. Because the smaller contract incompatibility blocks production repair before mutation, F04 does not fabricate a fresh pytest receipt. The targeted stale/mismatch/source-level controls are frozen in `02_TARGETED_STALE_MISMATCH_RESULTS.json`. The commission's literal expected evidence filename could not be created because the repository connector rejected that path string; the same governed evidence was committed under this neutral alias and no semantic content was dropped.
 
 ## Exact production / authority identities
 
