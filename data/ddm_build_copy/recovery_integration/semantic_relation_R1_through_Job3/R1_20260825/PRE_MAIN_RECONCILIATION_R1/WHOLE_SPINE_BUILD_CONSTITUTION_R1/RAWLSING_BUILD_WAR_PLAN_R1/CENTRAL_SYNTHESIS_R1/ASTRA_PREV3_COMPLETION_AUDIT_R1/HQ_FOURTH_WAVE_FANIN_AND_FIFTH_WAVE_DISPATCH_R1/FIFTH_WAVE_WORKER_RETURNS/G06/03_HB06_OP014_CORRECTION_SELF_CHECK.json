@@ -1,0 +1,26 @@
+{
+  "schema": "HB06_OP014_CORRECTION_SELF_CHECK@1.0.0",
+  "result": "PASS",
+  "passed": 14,
+  "failed": 0,
+  "correction_artifact_sha256": "6baf927e346ed15ce7498c929b943acce921d05493119472c0b9afd9a7a328dc",
+  "correction_canonical_sha256": "9f4ce959855885d3439b2bb4b3beb937f52c861b666b4f79928b3e227ce4f2cb",
+  "authority_trace_sha256": "f4745756bc8c56d3dcc4cca6893f9b252e8b29b9170a98190cd6c676de093aa9",
+  "tests": [
+    {"id":"G06-T01","name":"BASE_PACKAGE_IDENTITY_EXACT","status":"PASS","evidence":"caf478a072ca558de8c86f6d89a60399636ed71d7772ad43d7d0167bc59f20f8"},
+    {"id":"G06-T02","name":"F06_BLOCKER_EXACT","status":"PASS","evidence":"HB07_BLOCK__HB05_OP014_HAS_NO_HB06_ORACLE_ROW"},
+    {"id":"G06-T03","name":"HB05_OP014_SEMANTICS_EXACT","status":"PASS","evidence":"autonomous_discovery_program"},
+    {"id":"G06-T04","name":"ONE_ADDITIVE_ROW_ONLY","status":"PASS","evidence":"new=1 rewritten=0 removed=0"},
+    {"id":"G06-T05","name":"SOURCE_SCOPE_EXACT","status":"PASS","evidence":"WVS7,LiTS-I"},
+    {"id":"G06-T06","name":"CANDIDATE_SCOPE_EXACT","status":"PASS","evidence":"A,B,C"},
+    {"id":"G06-T07","name":"TYPED_STATE_EXACT","status":"PASS","evidence":"BLOCKED_MISSING_AUTHORITY"},
+    {"id":"G06-T08","name":"C09_BLOCKER_EXACT","status":"PASS","evidence":"C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM"},
+    {"id":"G06-T09","name":"OP12_REMAINS_DISTINCT","status":"PASS","evidence":"DISTINCT__DO_NOT_COLLAPSE"},
+    {"id":"G06-T10","name":"EXISTING_ORACLE_TRUTH_UNCHANGED","status":"PASS","evidence":"0 changes"},
+    {"id":"G06-T11","name":"EFFECTIVE_COUNTS","status":"PASS","evidence":"21 operation ids; 42 rows; 9 governed-negative/refusal rows"},
+    {"id":"G06-T12","name":"NO_HB07_OR_C09_EXECUTION","status":"PASS","evidence":"false,false"},
+    {"id":"G06-T13","name":"NO_PERFORMANCE_RANKING_ARCHITECTURE_ACTION","status":"PASS","evidence":"none"},
+    {"id":"G06-T14","name":"PREV3_OBJECTIVE_WORLD_ONLY","status":"PASS","evidence":"OBL063 driver/type/person-terminal remains quarantined"}
+  ],
+  "successor": "HB07_CONVERGENCE_RERUN_REMAINS_SEPARATE"
+}
