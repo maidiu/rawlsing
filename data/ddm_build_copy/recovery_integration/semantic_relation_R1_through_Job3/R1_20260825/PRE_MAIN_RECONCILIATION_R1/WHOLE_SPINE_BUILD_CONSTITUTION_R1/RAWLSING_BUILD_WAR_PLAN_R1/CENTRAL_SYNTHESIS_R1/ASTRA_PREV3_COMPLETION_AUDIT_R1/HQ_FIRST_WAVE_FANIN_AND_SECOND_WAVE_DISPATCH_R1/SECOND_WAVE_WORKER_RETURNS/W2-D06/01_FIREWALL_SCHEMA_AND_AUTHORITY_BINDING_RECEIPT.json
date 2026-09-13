@@ -1,0 +1,112 @@
+{
+  "worker": "W2-D06",
+  "operation": "PREV3_M3_OBJECTIVE_RESULT_FIREWALL_IMPLEMENTATION_R1_ONLY",
+  "verdict": "PASS_SELF_IMPLEMENTATION_ONLY",
+  "branch": "agent/rabochii-prev3-w2-d06-m3-firewall-implementation-r1",
+  "commission_tip": "516c0dccd27763640f69bd4bf4794e1a45677fc9",
+  "frozen_parent": "107fb80308dafb6dc2e9ba1dd15b8b2d9e7ac2d2",
+  "c07_predecessor_commit": "9ef74ff14dacf7dd3c224b5b4cab336ec1f6bf0e",
+  "implementation_tip_before_return_seal": "44fb4b2c6b75425fc4893739a6bf4362d2c0350b",
+  "contracts": {
+    "m3_contract_id": "M3_V555_V556_HIGHER_ORDER_STRUCTURAL_EXACT_SEAM_CONTRACT@2.0.0",
+    "scr556_contract_id": "SCR556_V556_INTERACTION_TOPOLOGY_EXACT_CONTRACT@scr556.v2",
+    "result_schema_ref_kind": "M3ResultSchema@2.0.0",
+    "result_contract_binding_ref_kind": "M3ResultContractBinding@2.0.0",
+    "semantic_jurisdiction": "PRE_V3_OBJECTIVE_WORLD",
+    "actor_indexing_modes": [
+      "NO_ACTOR_INDEX",
+      "OBJECTIVE_ACTOR_INDEXED"
+    ],
+    "person_state_semantics": "FORBIDDEN"
+  },
+  "positive_requirements": [
+    "exact_current_result_contract_binding",
+    "exact_result_schema_ref_and_content_hash",
+    "exact_semantic_owner_ref",
+    "exact_semantic_owner_current_selection_ref",
+    "semantic_jurisdiction_PRE_V3_OBJECTIVE_WORLD",
+    "explicit_actor_indexing_mode",
+    "person_state_semantics_FORBIDDEN",
+    "closed_recursive_schema_conformance_before_positive_result",
+    "canonical_governed_payload"
+  ],
+  "no_default_or_generic_result_schema_fallback": true,
+  "payload_lexical_self_certification_allowed": false,
+  "fail_closed_states": [
+    "UNKNOWN_AUTHORITY",
+    "INTEGRITY_FAILURE",
+    "RESULT_CONTRACT_NOT_CURRENT",
+    "RESULT_SCHEMA_NONCONFORMING"
+  ],
+  "identity_commits": [
+    "rule_material",
+    "result_contract_binding_ref",
+    "result_schema_ref_and_hash",
+    "semantic_owner_authority",
+    "semantic_jurisdiction",
+    "actor_indexing_mode",
+    "canonical_governed_payload"
+  ],
+  "modified_artifacts": [
+    {
+      "path": "rawlsing_next/m3_v556_higher_order_structural.py",
+      "blob_sha": "9a4b26b214686364a43d108dabf0d57dac0ed3b2"
+    },
+    {
+      "path": "rawlsing_next/tests/test_m3_v556_higher_order_structural.py",
+      "blob_sha": "0276bd18282216853ba1f92e558db767d8c1f9ec"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_source_relations.py",
+      "blob_sha": "2487ed757c0254e7227cf43664abc6ae08f1dfb3"
+    },
+    {
+      "path": "rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py",
+      "blob_sha": "e6a456865470fe587aae9480a81eb2ccbc8b7b51"
+    },
+    {
+      "path": "rawlsing_next/tests/pre553_reservoir_harness.py",
+      "blob_sha": "c2c9752d745b06fa34c4e1c3345d90de7e66feea"
+    }
+  ],
+  "contract_drift_disposition": {
+    "pre553_exact_ref_integrity_weakened": false,
+    "pre553_stale_test_expectations_corrected": true,
+    "relation_m1_raw_caller_selected_producer_use_allowed": false,
+    "m4_guard_weakened": false,
+    "reservoir_harness_aligned_to_versioned_m3_r2_binding": true
+  },
+  "regression": {
+    "targeted": {
+      "github_actions_run_id": 34715577734,
+      "passed": 145,
+      "seconds": 0.75,
+      "files": [
+        "rawlsing_next/tests/test_m3_v556_higher_order_structural.py",
+        "rawlsing_next/tests/test_m2_v555_atomic_route.py",
+        "rawlsing_next/tests/test_pre553_source_relations.py",
+        "rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py",
+        "rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py"
+      ]
+    },
+    "full_relevant_current_prev3": {
+      "github_actions_run_id": 34768148484,
+      "selected_files": 35,
+      "passed": 714,
+      "skipped": 1,
+      "deselected": 2,
+      "seconds": 20.0,
+      "historical_deselections": [
+        "rawlsing_next/tests/test_pre553_reservoir_preintegration.py::test_downstream_m1_m6_render_and_psepf_bytes_match_frozen_base_git_blobs",
+        "rawlsing_next/tests/test_pre553_whole_machine_hostile_acceptance.py::test_r15_h15_frozen_semantic_blobs_are_byte_exact"
+      ],
+      "historical_deselection_tests_modified": false
+    }
+  },
+  "final_net_modified_code_test_files": 5,
+  "transient_workflow_present_final": false,
+  "generated_python_cache_artifacts_present_final": false,
+  "successor_gate": "GATE-FIREWALL-HOSTILE-QUALIFICATION",
+  "broad_m3_stop_lifted": false,
+  "library": "No"
+}

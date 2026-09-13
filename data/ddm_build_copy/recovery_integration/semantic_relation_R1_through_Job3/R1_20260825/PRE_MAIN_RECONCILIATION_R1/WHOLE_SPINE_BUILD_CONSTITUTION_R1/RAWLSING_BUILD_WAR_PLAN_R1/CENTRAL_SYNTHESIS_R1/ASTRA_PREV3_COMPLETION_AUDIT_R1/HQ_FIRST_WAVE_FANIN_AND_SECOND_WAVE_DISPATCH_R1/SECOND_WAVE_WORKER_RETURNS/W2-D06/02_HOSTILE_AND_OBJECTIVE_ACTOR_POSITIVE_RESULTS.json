@@ -1,0 +1,124 @@
+{
+  "worker": "W2-D06",
+  "operation": "PREV3_M3_OBJECTIVE_RESULT_FIREWALL_IMPLEMENTATION_R1_ONLY",
+  "predecessor_fixture_commit": "9ef74ff14dacf7dd3c224b5b4cab336ec1f6bf0e",
+  "predecessor_hostile_fixture_blob": "88871bd03af2fd7f828d470f18a1425b5fb7bb74",
+  "implementation_tip_before_return_seal": "44fb4b2c6b75425fc4893739a6bf4362d2c0350b",
+  "verdict": "PASS_SELF_IMPLEMENTATION_ONLY",
+  "cases": [
+    {
+      "id": "H01",
+      "fixture": "psychometric_type_plus_motivation",
+      "observed": "RESULT_SCHEMA_NONCONFORMING",
+      "positive_v556_object": false,
+      "basis": "closed objective result schema rejects undeclared person-semantic aliases"
+    },
+    {
+      "id": "H02",
+      "fixture": "subject_ref_plus_preference_plus_psychological_trait",
+      "observed": "RESULT_SCHEMA_NONCONFORMING",
+      "positive_v556_object": false,
+      "basis": "closed objective result schema rejects undeclared person-semantic aliases"
+    },
+    {
+      "id": "H03",
+      "fixture": "nested_drive_and_temperament_aliases",
+      "observed": "RESULT_SCHEMA_NONCONFORMING",
+      "positive_v556_object": false,
+      "basis": "recursive closed-schema validation prevents nested semantic laundering"
+    },
+    {
+      "id": "H04",
+      "fixture": "psychological_trait_semantic_class_plus_value",
+      "observed": "RESULT_SCHEMA_NONCONFORMING",
+      "positive_v556_object": false,
+      "basis": "payload lexical labels cannot self-certify objective jurisdiction"
+    },
+    {
+      "id": "H05",
+      "fixture": "p_type_plus_goal",
+      "observed": "RESULT_SCHEMA_NONCONFORMING",
+      "positive_v556_object": false,
+      "basis": "closed objective result schema rejects undeclared person-semantic aliases"
+    },
+    {
+      "id": "H06",
+      "fixture": "lawful_non_actor_structural_relation_condition_constraint",
+      "observed": "SUPPORTED",
+      "positive_v556_object": true,
+      "actor_indexing_mode": "NO_ACTOR_INDEX",
+      "basis": "exact current objective result schema and authority binding"
+    },
+    {
+      "id": "H07",
+      "fixture": "lawful_objective_actor_indexed_position",
+      "observed": "SUPPORTED",
+      "positive_v556_object": true,
+      "actor_indexing_mode": "OBJECTIVE_ACTOR_INDEXED",
+      "objective_actor_identifier_preserved": true,
+      "person_state_absent": true,
+      "basis": "actor identity is lawful when explicitly typed as objective actor indexing"
+    },
+    {
+      "id": "H08",
+      "fixture": "lawful_objective_actor_indexed_opportunity_availability",
+      "observed": "SUPPORTED",
+      "positive_v556_object": true,
+      "actor_indexing_mode": "OBJECTIVE_ACTOR_INDEXED",
+      "basis": "objective opportunity availability conforms to exact actor-indexed result schema"
+    },
+    {
+      "id": "H09",
+      "fixture": "objective_opportunity_plus_actor_uptake_laundering",
+      "observed": "RESULT_SCHEMA_NONCONFORMING",
+      "positive_v556_object": false,
+      "basis": "undeclared uptake field is rejected by the closed objective schema"
+    },
+    {
+      "id": "H10",
+      "fixture": "missing_result_contract_binding",
+      "observed": "UNKNOWN_AUTHORITY",
+      "positive_v556_object": false,
+      "basis": "no default or generic result schema fallback exists"
+    },
+    {
+      "id": "H11",
+      "fixture": "unresolvable_or_hash_mismatched_result_schema_binding",
+      "observed": "INTEGRITY_FAILURE",
+      "positive_v556_object": false,
+      "basis": "exact active binding and schema content address are mandatory"
+    },
+    {
+      "id": "H11_STALE_VARIANT",
+      "fixture": "stale_result_contract_binding",
+      "observed": "RESULT_CONTRACT_NOT_CURRENT",
+      "positive_v556_object": false,
+      "basis": "noncurrent result authority is typed separately and never becomes positive"
+    },
+    {
+      "id": "H12",
+      "fixture": "result_schema_or_binding_identity_mutation",
+      "observed": "IDENTITY_CHANGED_OR_REJECTED",
+      "positive_old_identity_reusable": false,
+      "replay_key_hash_changes": true,
+      "v556_object_id_changes": true,
+      "rule_content_hash_changes": true,
+      "basis": "result-contract identity is committed into rule and replay/object identity"
+    }
+  ],
+  "targeted_regression": {
+    "github_actions_run_id": 34715577734,
+    "passed": 145,
+    "seconds": 0.75
+  },
+  "full_relevant_current_prev3_regression": {
+    "github_actions_run_id": 34768148484,
+    "passed": 714,
+    "skipped": 1,
+    "deselected_historical_frozen_byte_pins": 2,
+    "seconds": 20.0
+  },
+  "successor_gate": "GATE-FIREWALL-HOSTILE-QUALIFICATION",
+  "broad_m3_stop_lifted": false,
+  "library": "No"
+}
