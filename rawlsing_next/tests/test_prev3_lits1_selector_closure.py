@@ -39,7 +39,8 @@ def test_q310_q311_are_native_nondirectional_and_missing_distinct():
         assert item["value_state_refs"]["MISSING"] not in [
             item["value_state_refs"][str(v)] for v in (1, 2, 3)
         ]
-        assert "NO_PSYCHOLOGICAL" in item["negative_ceiling"]
+        assert "PSYCHOLOGICAL" in item["negative_ceiling"]
+        assert "CAUSAL" in item["negative_ceiling"]
 
 
 def test_selector_refs_are_canonical_empirical_predicates():
