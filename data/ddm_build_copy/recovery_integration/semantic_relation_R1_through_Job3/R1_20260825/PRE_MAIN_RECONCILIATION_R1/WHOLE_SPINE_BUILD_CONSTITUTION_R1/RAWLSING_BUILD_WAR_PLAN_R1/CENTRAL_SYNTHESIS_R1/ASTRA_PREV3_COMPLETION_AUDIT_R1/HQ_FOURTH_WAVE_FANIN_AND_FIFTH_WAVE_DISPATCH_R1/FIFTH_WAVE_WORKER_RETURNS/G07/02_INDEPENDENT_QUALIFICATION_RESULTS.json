@@ -1,0 +1,158 @@
+{
+  "case_count": 20,
+  "cases": [
+    {
+      "description": "independent E10 relation/authority/replay hash binding",
+      "detail": "exact assertion satisfied",
+      "id": "G07-P01",
+      "status": "PASS"
+    },
+    {
+      "description": "exact claim/source/risk/operand identity",
+      "detail": "exact assertion satisfied",
+      "id": "G07-P02",
+      "status": "PASS"
+    },
+    {
+      "description": "fresh admission equals committed receipt and independent content hash",
+      "detail": "exact assertion satisfied",
+      "id": "G07-P03",
+      "status": "PASS"
+    },
+    {
+      "description": "full typed-state roster and both partitions preserved",
+      "detail": "exact assertion satisfied",
+      "id": "G07-P04",
+      "status": "PASS"
+    },
+    {
+      "description": "singleton structural permission ceiling with broader promotions denied",
+      "detail": "exact assertion satisfied",
+      "id": "G07-P05",
+      "status": "PASS"
+    },
+    {
+      "description": "M1/V554 exact ELIGIBLE result and frozen basis/F1/replay identities",
+      "detail": "exact assertion satisfied",
+      "id": "G07-P06",
+      "status": "PASS"
+    },
+    {
+      "description": "same-input end-to-end replay deterministic",
+      "detail": "exact assertion satisfied",
+      "id": "G07-P07",
+      "status": "PASS"
+    },
+    {
+      "description": "authority current-status mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N01",
+      "status": "PASS"
+    },
+    {
+      "description": "authority decision mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N02",
+      "status": "PASS"
+    },
+    {
+      "description": "relation source identity mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N03",
+      "status": "PASS"
+    },
+    {
+      "description": "risk-set member identity mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N04",
+      "status": "PASS"
+    },
+    {
+      "description": "claim identity mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N05",
+      "status": "PASS"
+    },
+    {
+      "description": "operand coordinate mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N06",
+      "status": "PASS"
+    },
+    {
+      "description": "typed roster support count mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N07",
+      "status": "PASS"
+    },
+    {
+      "description": "permission widening fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N08",
+      "status": "PASS"
+    },
+    {
+      "description": "D09 evidence source provenance mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N09",
+      "status": "PASS"
+    },
+    {
+      "description": "replay provenance/full-roster artifact mutation fails closed",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N10",
+      "status": "PASS"
+    },
+    {
+      "description": "instantiated receipt relation identity mutation becomes integrity failure",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N11",
+      "status": "PASS"
+    },
+    {
+      "description": "instantiated receipt permission mutation becomes integrity failure",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N12",
+      "status": "PASS"
+    },
+    {
+      "description": "instantiated receipt provenance mutation becomes integrity failure",
+      "detail": "exact assertion satisfied",
+      "id": "G07-N13",
+      "status": "PASS"
+    }
+  ],
+  "expected_exact_identities": {
+    "admission_hash": "05456f3d21ab3426af6a6c924843fecb8417c11620dce7213a36c8a819e8dd2c",
+    "authority_key_sha256": "33c6f8b2e33758ef91d57d3eb3fa8bab7c65dfb7a6498495fb08d5261dc3a5fd",
+    "basis_id": "urn:rawlsing:v554:basis:sha256:a34deb4ba5d52990b966ac67cb1e0e51ab76ba05fbfae4c3f8db996d26b1d81b",
+    "claim_id": "FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1",
+    "f1_id": "urn:rawlsing:v554:f1:sha256:06f96892b9d7cad5a2d506345203b3634509d2492997326031a98b44d83973f8",
+    "m1_replay_sha256": "5d6e26ef30210ad7766c95d660c99cb6b91e38ebc291dd025e154201fdeec25b",
+    "permission": "STRUCTURAL_MEDIATION_INPUT",
+    "relation_identity_sha256": "1a3b1d28cecdb5b06c7b8ac927848249693324da733d1ee9649a94e50d4322ee",
+    "replay_key_sha256": "0615a8668d87c5641c8a7bba4b144011d297c653a5369d6db2bd979e824fd19d",
+    "risk_set_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+    "risk_set_member_set_sha256": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b",
+    "risk_set_rows": 19210,
+    "roster_artifact_sha256": "1cc810979eb80d52d1e5efcd1a916e309be1b60e8d5cc4eed1575bce30f38814",
+    "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"
+  },
+  "fail_count": 0,
+  "grain": "PREV3_SECOND_CANARY_ADMISSION_AND_M1_V554_INDEPENDENT_QUALIFICATION_R1_ONLY",
+  "partition_checks": {
+    "441_eq_185_plus_130_plus_126": true,
+    "812_eq_441_plus_371": true
+  },
+  "pass_count": 20,
+  "result": "PASS",
+  "schema_id": "PREV3_G07_SECOND_CANARY_INDEPENDENT_QUALIFICATION_RESULTS@1.0.0",
+  "typed_state_summary": {
+    "directional_persistence": 185,
+    "directional_reversal": 130,
+    "exact_zero_difference": 126,
+    "observed_joint_states": 812,
+    "support_admitted": 441,
+    "zero_denominator_abstentions": 371
+  }
+}
