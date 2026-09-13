@@ -1,0 +1,45 @@
+{
+  "schema_id": "PREV3_E10_PERMISSION_NEGATIVE_STATE_REPLAY_LEDGER@1.0.0",
+  "authority_ref": {"authority_id":"PREV3_SECOND_CANARY_RELATION_ADMISSION_AUTHORITY","authority_version":"1.0.0","authority_content_hash":"33c6f8b2e33758ef91d57d3eb3fa8bab7c65dfb7a6498495fb08d5261dc3a5fd"},
+  "relation_ref": {"kind":"FIELD_FORGE_CLAIM_SPECIFIC_RELATION","object_id":"FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1","content_hash":"1a3b1d28cecdb5b06c7b8ac927848249693324da733d1ee9649a94e50d4322ee"},
+  "permission": {"decision":"ALLOW","allowed":["STRUCTURAL_MEDIATION_INPUT"],"downstream_contract":"M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0","scope":"EXACT_CURRENT_SECOND_CANARY_INSTANCE_ONLY","not_generic":true},
+  "typed_state_preservation": {
+    "observed_joint_states":812,
+    "support_admitted":441,
+    "zero_denominator_abstentions":{"count":371,"state":"ABSTAIN__ZERO_DENOMINATOR__DO_NOT_FABRICATE","admission_effect":"PRESERVE_INSIDE_RELATION"},
+    "exact_zero_difference":{"count":126,"state":"EXACT_ZERO_DIFFERENCE_IN_REALIZED_SAMPLE","admission_effect":"PRESERVE_INSIDE_RELATION__NO_POSITIVE_EFFECT_PROMOTION"},
+    "directional_reversal":{"count":130,"state":"EXACT_DIRECTIONAL_REVERSAL","admission_effect":"PRESERVE_INSIDE_RELATION__NO_CAUSAL_REINTERPRETATION"},
+    "directional_persistence":{"count":185,"state":"EXACT_DIRECTIONAL_PERSISTENCE","admission_effect":"PRESERVE_INSIDE_RELATION__NO_CAUSAL_REINTERPRETATION"},
+    "partition_checks":{"812_eq_441_plus_371":true,"441_eq_185_plus_130_plus_126":true}
+  },
+  "refusal_matrix": [
+    {"attack":"reuse_GT2_Q86B_to_Q86A_rule","result":"DENIED__EXACT_RULE_AND_PARTICIPANT_MISMATCH"},
+    {"attack":"relabel_as_EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0","result":"DENIED__RELATION_FAMILY_MISMATCH"},
+    {"attack":"drop_371_abstentions","result":"INTEGRITY_FAILURE"},
+    {"attack":"promote_126_exact_zero_states_to_positive_effect","result":"INTEGRITY_FAILURE"},
+    {"attack":"harmonize_Q84_across_countries","result":"NONCOMPARABLE__NO_ADMISSION"},
+    {"attack":"add_weighting_or_population_inference","result":"BLOCKED_EXPLICIT_AUTHORITY"},
+    {"attack":"infer_causality_person_state_field_capital_homology_hegemony_conversion_or_mechanism","result":"BLOCKED_EXPLICIT_AUTHORITY"},
+    {"attack":"send_to_M3","result":"DENIED__OUTSIDE_E10_AND_BROAD_M3_STOP"},
+    {"attack":"direct_publish_without_separate_publication_authority","result":"DENIED"}
+  ],
+  "replay_key": {
+    "schema_id":"PREV3_SECOND_CANARY_RELATION_ADMISSION_REPLAY_KEY@1.0.0",
+    "relation_ref":{"kind":"FIELD_FORGE_CLAIM_SPECIFIC_RELATION","object_id":"FFR2_R5_Q73A_Q86A_EXACT_JOINT_CONDITIONED_DIRECTIONAL_HETEROGENEITY_CANARY@1","content_hash":"1a3b1d28cecdb5b06c7b8ac927848249693324da733d1ee9649a94e50d4322ee"},
+    "authority_ref":{"authority_id":"PREV3_SECOND_CANARY_RELATION_ADMISSION_AUTHORITY","authority_version":"1.0.0","authority_content_hash":"33c6f8b2e33758ef91d57d3eb3fa8bab7c65dfb7a6498495fb08d5261dc3a5fd"},
+    "source_execution_artifacts": {
+      "00_MACHINE_RETURN.json":"d971fec55df2a5b74f43a5a6d79e36e2210d3df1d740ad48c6ce41c238a4f1c2",
+      "01_COMMON_INPUT_REPLAY_RECEIPT.json":"7175af441c4e66c89c49aeaceb4f9b936d6f6923805f5d36b2ce0939e9605712",
+      "02_BROAD_TARGET_EVIDENCE.json":"4a85c6553a07c06fc67e61af7d49e1bbdd759161fa27ca655adbe45a0f7315ca",
+      "03_JOINT_STATE_ROSTER_SUPPORT.tsv.gz":"1cc810979eb80d52d1e5efcd1a916e309be1b60e8d5cc4eed1575bce30f38814",
+      "04_WITHIN_STATE_TARGET_EVIDENCE.tsv.gz":"c3f4750418d4f7c73a3aa837540e65e86b47a94d7c952d5aa2bb84dcd171a1bb",
+      "05_DIRECTIONAL_DISPOSITIONS.json":"2874721dc99444909637cc60a1605ffa9404a5d234f4fc6332d8a916639be980",
+      "15_HOSTILE_REPLAY_RECEIPT.json":"8a95416c6310fffa144f79525b629e86b596e76597b26d1907598515337b6d8a",
+      "18_W4_OF002_EXACT_JOINT_RELATION.tsv.gz":"e554514446bdeb6dff750945a19ad8c1e3055b63071235bedaa7ed862cce58c6"
+    },
+    "replay_proof":{"runA_runB_byte_identity":"20/20","cold_library_runA_byte_identity":"20/20","independent_reconstruction":"EXACT_MATCH","required_terminal_result":{"broad_delta":"1308605/25287342","broad_sign":1,"observed_states":812,"support_admitted":441,"zero_denominator_abstentions":371,"directional_persistence":185,"directional_reversal":130,"exact_zero_difference":126}},
+    "m1_v554_handoff":{"authorized":true,"target_use":"STRUCTURAL_MEDIATION_INPUT","downstream_contract":"M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0","basis_semantic_class":"ADMITTED_FIELD_FORGE_RELATION","temporal_disposition":"NO_NEW_V553_TEMPORAL_MEANING_REQUIRED","information_loss":"NONE__REFERENCE_PRESERVING"}
+  },
+  "replay_key_sha256":"0615a8668d87c5641c8a7bba4b144011d297c653a5369d6db2bd979e824fd19d",
+  "successor_gate":"GATE-SECOND-CANARY-ADMISSION"
+}

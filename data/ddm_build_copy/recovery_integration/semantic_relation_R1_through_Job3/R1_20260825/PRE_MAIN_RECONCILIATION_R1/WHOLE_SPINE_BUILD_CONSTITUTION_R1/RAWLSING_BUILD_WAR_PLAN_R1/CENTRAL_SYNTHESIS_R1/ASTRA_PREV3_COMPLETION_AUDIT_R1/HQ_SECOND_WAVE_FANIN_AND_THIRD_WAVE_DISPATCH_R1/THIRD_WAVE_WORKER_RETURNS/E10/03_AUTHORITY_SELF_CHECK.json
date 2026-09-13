@@ -1,0 +1,30 @@
+{
+  "schema_id":"PREV3_E10_AUTHORITY_SELF_CHECK@1.0.0",
+  "suite_id":"E10_SECOND_CANARY_CLAIM_SPECIFIC_ADMISSION_AUTHORITY_SELF_CHECK_R1",
+  "branch":"agent/rabochii-prev3-w3-e10-second-canary-admission-r1",
+  "commission_tip":"aab02125efc2067342f754c99a2f072d482736cd",
+  "hash_expectations":{"relation_identity_sha256":"1a3b1d28cecdb5b06c7b8ac927848249693324da733d1ee9649a94e50d4322ee","authority_key_sha256":"33c6f8b2e33758ef91d57d3eb3fa8bab7c65dfb7a6498495fb08d5261dc3a5fd","replay_key_sha256":"0615a8668d87c5641c8a7bba4b144011d297c653a5369d6db2bd979e824fd19d"},
+  "checks":[
+    {"id":"claim_id_exact","pass":true},
+    {"id":"not_gt2_family","pass":true},
+    {"id":"not_gt2_operation","pass":true},
+    {"id":"permission_exact_singleton","pass":true},
+    {"id":"m1_exact","pass":true},
+    {"id":"participants_5","pass":true},
+    {"id":"participant_ordinals","pass":true},
+    {"id":"z_order_exact","pass":true},
+    {"id":"roster_partition","pass":true},
+    {"id":"admitted_partition","pass":true},
+    {"id":"q84_no_cross_country","pass":true},
+    {"id":"no_pooling","pass":true},
+    {"id":"no_backoff","pass":true},
+    {"id":"no_state_deletion","pass":true},
+    {"id":"relation_identity_hash_recomputes","pass":true},
+    {"id":"authority_key_hash_recomputes","pass":true},
+    {"id":"replay_key_hash_recomputes","pass":true},
+    {"id":"no_runtime_code_changed","pass":true}
+  ],
+  "passed":18,
+  "failed":0,
+  "terminal":"PASS__18_OF_18_DETERMINISTIC_AUTHORITY_INVARIANTS"
+}
