@@ -1,0 +1,71 @@
+{
+  "authority": {
+    "accepted_as2b_commit": "923f2c00b6145182a5e2be5038f579845951da19",
+    "canonical_i03_blob": "e2d91984541df7c692a1b2f32370500838a2a000",
+    "d02_commit": "40cb8585f076a66d9884b99022a59bb909606c03",
+    "d02_frontier_blob": "5399a3f64642c8d9f8a0644db0adc15d38642971",
+    "f02_commit": "482bb884a99e31ba77e904d0df39fffc872cbed3",
+    "f02_frontier_readoption_hash": "07c6175b1d3828f8dc8763c51f3eb44a3cba6812bb128d4f0b84ffc5096cb851",
+    "f02_release_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+    "g02_preexecution_seal": "ca47c52f925b126878cd9e0be433bd6a28bec5a8623784bfbf5eaf7523b21bea"
+  },
+  "execution": {
+    "candidate_count": 50,
+    "candidate_terminal_counts": {
+      "EVALUATED_UNRESOLVED": 50
+    },
+    "lane_accounting": {
+      "P0": {"candidate_count": 5, "candidate_terminal_counts": {"EVALUATED_UNRESOLVED": 5}, "query_fact_state_counts": {"SUPPORTED": 0, "UNRESOLVED": 5, "ZERO_SUPPORT": 0}, "query_role_count": 5},
+      "P1": {"candidate_count": 1, "candidate_terminal_counts": {"EVALUATED_UNRESOLVED": 1}, "query_fact_state_counts": {"SUPPORTED": 0, "UNRESOLVED": 3, "ZERO_SUPPORT": 0}, "query_role_count": 3},
+      "P2": {"candidate_count": 18, "candidate_terminal_counts": {"EVALUATED_UNRESOLVED": 18}, "query_fact_state_counts": {"SUPPORTED": 1, "UNRESOLVED": 35, "ZERO_SUPPORT": 0}, "query_role_count": 36},
+      "P3": {"candidate_count": 1, "candidate_terminal_counts": {"EVALUATED_UNRESOLVED": 1}, "query_fact_state_counts": {"SUPPORTED": 0, "UNRESOLVED": 8, "ZERO_SUPPORT": 0}, "query_role_count": 8},
+      "P4": {"candidate_count": 25, "candidate_terminal_counts": {"EVALUATED_UNRESOLVED": 25}, "query_fact_state_counts": {"SUPPORTED": 0, "UNRESOLVED": 25, "ZERO_SUPPORT": 0}, "query_role_count": 25}
+    },
+    "learned_positive_workload_gate": "BLOCKED__NO_P0_SUPPORTED_AFTER_CANONICAL_I03_REPAIR",
+    "p0_supported_count": 0,
+    "query_fact_state_counts": {"SUPPORTED": 1, "UNRESOLVED": 76, "ZERO_SUPPORT": 0},
+    "query_role_count": 77
+  },
+  "grain": "PREV3_LEARNED_WORLD_CANONICAL_I03_TARGET_RESOLUTION_REPAIR_AND_REAL_REEXECUTION_R1_ONLY",
+  "implementation": {
+    "git_blob_sha1": "c2550207ffa76469282f747002520987cad81343",
+    "implementation_commit": "fb724c0d910dde30b7c711c1fac46bf830557e85",
+    "path": "rawlsing_next/prev3_learned_i03_repair_r1.py"
+  },
+  "mutation_and_ceiling": {
+    "causal_promotion_count": 0,
+    "frontier_mutation_count": 0,
+    "negative_ceiling": "PREV3_LEARNED_EMPIRICAL_ONLY__NO_STRUCTURAL_ADMISSION__NO_CAUSAL_PROMOTION__NO_POPULATION_GENERALIZATION__NO_PERSON_STATE__NO_V3",
+    "person_state_count": 0,
+    "population_generalization_count": 0,
+    "pruning_count": 0,
+    "ranking_count": 0,
+    "selector_substitution_count": 0,
+    "structural_admission_count": 0,
+    "v3_state_count": 0
+  },
+  "replay": {
+    "byte_identical": true,
+    "candidate_ledger_root": "d174cb8c5dffa479b68253d54f9b1e59727c1c30719b1c76774fa069ade0a28d",
+    "fresh_process_runs": 2,
+    "full_output_bytes": 108824,
+    "full_output_sha256": "9ae0002a5b2eaa8c63081289dfeb823de3fd76ec5d41a39a9b0819b401b18cfb",
+    "role_ledger_root": "a86550b88cc3ea250ec74d11d98f84703af47dc7be1fe2bcb965fa8dae9e55a5",
+    "semantic_replay_hash": "9f21f1e6f68ee929299f1f25a73d6719c4a141c0b01d7746b53c71ed2fe7222e"
+  },
+  "schema": "I02_REAL_REEXECUTION_AND_REPLAY_RECEIPT@1.0.0",
+  "selector_replay": {
+    "q310": {"counts": {"1": 12340, "2": 7511, "3": 9085, "MISSING": 66}, "row_root": "a979c15c93502b77979041ffd8451c602f63a7fcbb145106d68a78414be92455", "selector_roots": {"1": "0a62f6f0e3d78b429022b95c2594a3fcbf053b8af588f0ceb304ac3dafe700d2", "2": "0bad1e397f5b74b6136ba82e8d81fc608d1df7124e6ff043048cc5cd91ef9c83", "3": "b477bf705a93bb672d9ae670a1daa38013c2aa2841d0c506f722ab1bbdbb2f3d", "MISSING": "810a81a5663c05dcd0e2f4c2c972f66dc16e7446c87054bb412242632dc57348"}},
+    "q311": {"counts": {"1": 16582, "2": 4548, "3": 7826, "MISSING": 46}, "row_root": "af193e948fd2199bb784f476475d6dd4c6b96698a01e1804e5a6ce69b93c49aa", "selector_roots": {"1": "bffb9d2e9da447a27aaf7c8f889a07d5c47389a58ad933d3ea9867f83e127869", "2": "43ffb4ef1de60354b9c943135fd0f31ee54d31edbcd3bb6abf147e5bff1dce1f", "3": "642a70ba00a4f7292d96267647068c3bfc83f5efc75451ce00a7df4cd2d62837", "MISSING": "847c4e89a7336a5cb5ac6d73953b87091640231ba7cd5c5376e37044a12a03fb"}}
+  },
+  "source": {
+    "bytes": 139531180,
+    "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "name": "LITS-2006-data.dta",
+    "rows": 29002,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "variables": 1198,
+    "version": 1
+  },
+  "status": "PASS__CANONICAL_I03_REPAIR_AND_FULL_FROZEN_REEXECUTION_COMPLETE"
+}
