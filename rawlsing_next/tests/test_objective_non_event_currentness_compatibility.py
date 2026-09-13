@@ -2,14 +2,13 @@ from dataclasses import replace
 
 import pytest
 
-from rawlsing_next.m4_v557_v558_publication_repository import AuthorityRef, ExactRef, semantic_hash
 from rawlsing_next.objective_non_event_publication_serving_adapter import (
     NonEventAdapterIntegrityError,
     make_objective_non_event_currentness_receipt,
     make_objective_non_event_serving_receipt,
     validate_objective_non_event_currentness_receipt,
 )
-from test_objective_non_event_publication_serving_adapter import _auth, _chain, _ref
+from rawlsing_next.tests.test_objective_non_event_publication_serving_adapter import _auth, _chain, _ref
 
 
 @pytest.mark.parametrize("state", ("STALE", "REFRESH_REQUIRED", "INVALID"))

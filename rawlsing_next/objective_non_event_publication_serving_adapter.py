@@ -12,6 +12,10 @@ make_objective_non_event_currentness_receipt = make_currentness_receipt
 validate_objective_non_event_currentness_receipt = validate_currentness_receipt
 
 
+def __getattr__(name):
+    return getattr(legacy, name)
+
+
 def validate_objective_non_event_serving_receipt(
     receipt, *, currentness_receipt_or_null=None, repository=None, query=None,
     resolution=None, resolution_key=None, expected_currentness_authority_ref=None,
