@@ -1,0 +1,74 @@
+{
+  "schema": "PREV3_F04_CURRENTNESS_VALIDATION_REPAIR_RECEIPT_R1",
+  "status": "PASS_WITH_SMALLER_INCOMPATIBLE_M5_CONTRACT_BLOCKER",
+  "commission_id": "F04",
+  "exact_grain": "PREV3_NON_EVENT_ADAPTER_CURRENTNESS_RECEIPT_VALIDATION_REPAIR_R1_ONLY",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-prev3-w4-f04-nonevent-currentness-repair-r1",
+  "commission_tip": "593ecbd65c0006803e6f61e1089d0f34b5f07c23",
+  "parent_e05_return": "a00d9e71c1317163071f1d086f498d492589e078",
+  "hq_fanin_authority": "3781860269c20006d82f9bec40df3a24b90861a0",
+  "repair_target": "E05_D05_STALE_CURRENTNESS_RECEIPT_REF_LAUNDERING",
+  "production_mutation_performed": false,
+  "why_no_production_mutation": "The accepted M5 currentness contract is exact-M4-ResolutionResult-bound, while D05 has a distinct NonEventResolutionResult and its D1-prime producer family is outside M4 ALLOWED_ROOT_FAMILIES. Repairing by manual M5 receipt construction or M4 family widening would change forbidden authority surfaces.",
+  "smallest_exact_blocker": {
+    "token": "F04_BLOCKER__M5_CURRENTNESS_IS_EXACT_M4_RESOLUTION_BOUND__D05_NON_EVENT_RESOLUTION_IS_DISTINCT_AND_D1_PRIME_IS_OUTSIDE_M4_ALLOWED_ROOT_FAMILIES",
+    "competent_owner": "HQ / NON_EVENT_TO_M5_CURRENTNESS_COMPATIBILITY_AUTHORITY_OWNER",
+    "required_authority": "An exact adopted bridge/currentness-binding contract for D05 non-event resolutions, or an explicit competent M4/M5 semantic extension.",
+    "forbidden_shortcuts": [
+      "Treat opaque ExactRef presence as currentness proof",
+      "Manually relabel a D05 resolution-bound dataclass instance as accepted M5 currentness",
+      "Widen M4 ALLOWED_ROOT_FAMILIES to SDTF D1-prime within F04",
+      "Change M5 exact-M4-resolution semantics within F04",
+      "Use latest/default/fuzzy or wall-clock repair"
+    ]
+  },
+  "exact_source_proof": {
+    "d05_adapter": {
+      "path": "rawlsing_next/objective_non_event_publication_serving_adapter.py",
+      "git_blob": "a1e2ae8775707eb30097279cde91f30271b6d243",
+      "resolution_type": "NonEventResolutionResult",
+      "resolution_receipt_kind": "PREV3_OBJECTIVE_NON_EVENT_RESOLUTION_RECEIPT",
+      "canonical_producer_family": "SDTF_D1_PRIME_OBJECTIVE_POSITIONED_CONSEQUENCE"
+    },
+    "m5_runtime": {
+      "path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5",
+      "currentness_schema": "M5_STRUCTURAL_CURRENTNESS_RECEIPT@1.0.0",
+      "constructor_requires": "isinstance(resolution, M4 ResolutionResult)",
+      "runtime_requires": "_exact_m4_resolution deterministic V558 replay before _validate_currentness",
+      "state_requirement": "StructuralCurrentnessState.CURRENT",
+      "resolution_binding_requirement": "currentness.resolution_receipt_ref == exact M4 resolution.receipt.ref"
+    },
+    "m4_runtime": {
+      "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+      "git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "allowed_root_families": ["V553", "V554", "V555", "V556"],
+      "d05_d1_prime_family_admitted": false
+    },
+    "c06_contract_blob": "a1bc0e483fb4a298ae803c192f51a00ddc19a029",
+    "e05_blocker_proof_blob": "014bf138f2922f58ea148409d54f3fb18526f1bc",
+    "e05_matrix_blob": "cce72bf828d5c97c6a976af77f3177200f4eddd5"
+  },
+  "test_identity": {
+    "d05_tests": {
+      "path": "rawlsing_next/tests/test_objective_non_event_publication_serving_adapter.py",
+      "git_blob": "535f9a8e5e44f3a58248702374f2cc1ae61f05d8",
+      "fresh_f04_run": "NOT_RUN__BLOCKED_BEFORE_REPAIR_AND_NO_CHECKOUT_BACKED_RUNNER",
+      "inherited_historical_claim": "15 passed in 0.17s"
+    },
+    "m5_tests": {
+      "path": "rawlsing_next/tests/test_m5_runtime_rsc_peer_prior.py",
+      "git_blob": "ef4faaa84b24b9b6ca62ae7eaa29018d57439c0c",
+      "fresh_f04_run": "NOT_RUN__SOURCE_IDENTITY_USED_FOR_CONTRACT_BOUNDARY_PROOF"
+    },
+    "github_actions_runs_on_commission_tip": 0
+  },
+  "successor_gate": "GATE-NON-EVENT-REQUALIFICATION",
+  "successor_gate_disposition": "BLOCKED_ON_EXACT_D05_TO_M5_CURRENTNESS_COMPATIBILITY_AUTHORITY",
+  "independent_requalification_claimed": false,
+  "main_mutated": false,
+  "pre_main_mutated": false,
+  "obl063_quarantined_semantics_consumed": false,
+  "terminal": "F04_SMALLER_M5_COMPATIBILITY_BLOCKER_PROVED__NO_UNAUTHORIZED_CURRENTNESS_BRIDGE_MINTED"
+}
