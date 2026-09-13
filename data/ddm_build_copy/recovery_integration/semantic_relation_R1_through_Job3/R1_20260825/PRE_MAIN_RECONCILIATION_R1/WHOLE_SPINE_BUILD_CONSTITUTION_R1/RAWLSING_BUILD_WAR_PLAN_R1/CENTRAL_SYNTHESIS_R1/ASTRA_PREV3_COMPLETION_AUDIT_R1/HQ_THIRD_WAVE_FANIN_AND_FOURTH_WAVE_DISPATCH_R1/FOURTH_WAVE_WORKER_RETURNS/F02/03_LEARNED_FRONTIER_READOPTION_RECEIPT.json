@@ -1,0 +1,48 @@
+{
+  "schema": "F02_LEARNED_FRONTIER_READOPTION_RECEIPT_R1",
+  "status": "PASS__UNCHANGED_50_CANDIDATE_77_ROLE_FRONTIER_READOPTED_BY_SELECTOR_PREIMAGE_SUBSTITUTION_ONLY",
+  "prior_e02_blocker": "BLOCKED__FROZEN_SOURCE_SELECTOR_RESOLUTION_FAILED",
+  "d02_frontier_source": {
+    "commit": "40cb8585f076a66d9884b99022a59bb909606c03",
+    "artifact": "01_FROZEN_DISCOVERY_FRONTIER_AUTHORITY.json",
+    "git_blob_sha1": "5399a3f64642c8d9f8a0644db0adc15d38642971",
+    "artifact_bytes_mutated": false
+  },
+  "new_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+  },
+  "selector_preimage_substitutions": {
+    "urn:rawlsing:prev3:d02:lits2006:q310:eq:1": {"kind": "EmpiricalPredicate@1.0.0", "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a", "content_hash": "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a"},
+    "urn:rawlsing:prev3:d02:lits2006:q310:eq:2": {"kind": "EmpiricalPredicate@1.0.0", "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df", "content_hash": "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df"},
+    "urn:rawlsing:prev3:d02:lits2006:q310:eq:3": {"kind": "EmpiricalPredicate@1.0.0", "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca", "content_hash": "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca"},
+    "urn:rawlsing:prev3:d02:lits2006:q311:eq:1": {"kind": "EmpiricalPredicate@1.0.0", "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8", "content_hash": "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8"},
+    "urn:rawlsing:prev3:d02:lits2006:q311:eq:2": {"kind": "EmpiricalPredicate@1.0.0", "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849", "content_hash": "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849"},
+    "urn:rawlsing:prev3:d02:lits2006:q311:eq:3": {"kind": "EmpiricalPredicate@1.0.0", "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d", "content_hash": "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"}
+  },
+  "frozen_invariants": {
+    "expected_compiled_candidate_count": 50,
+    "expected_i03_query_execution_count": 77,
+    "family_candidate_counts": {"P0": 5, "P1": 1, "P2": 18, "P3": 1, "P4": 25},
+    "family_query_role_counts": {"P0": 5, "P1": 3, "P2": 36, "P3": 8, "P4": 25},
+    "maximum_conditioner_arity_K": 3,
+    "maximum_target_arity_J": 2,
+    "validators": ["CONDITIONAL_REVERSAL", "DISTRIBUTION_DIFFERS_FROM_BASELINE", "JOINT_NOT_PRODUCT_OF_MARGINALS", "TARGET_CELL_SUPPORTED"],
+    "pruning_contract": {"kind": "NONE_EXACT_EVALUATE_ALL"},
+    "rng_policy_if_any": "NONE",
+    "candidate_scoring_or_ranking_rule_if_any": null,
+    "tie_order_rules": "CANONICAL_CANDIDATE_HASH_ORDER",
+    "frontier_frozen_before_empirical_evaluation": true
+  },
+  "allowed_mutation": "SELECTOR_PREIMAGE_SUBSTITUTION_ONLY",
+  "candidate_grammar_changed": false,
+  "validator_set_changed": false,
+  "truth_law_changed": false,
+  "stop_line_changed": false,
+  "post_result_mutation": "FORBIDDEN",
+  "workload_execution": "NOT_EXECUTED",
+  "readoption_hash_sha256": "07c6175b1d3828f8dc8763c51f3eb44a3cba6812bb128d4f0b84ffc5096cb851",
+  "successor_gate": "GATE-LEARNED-REAL-EXECUTION-REDISPATCH",
+  "successor_gate_disposition": "READY"
+}
