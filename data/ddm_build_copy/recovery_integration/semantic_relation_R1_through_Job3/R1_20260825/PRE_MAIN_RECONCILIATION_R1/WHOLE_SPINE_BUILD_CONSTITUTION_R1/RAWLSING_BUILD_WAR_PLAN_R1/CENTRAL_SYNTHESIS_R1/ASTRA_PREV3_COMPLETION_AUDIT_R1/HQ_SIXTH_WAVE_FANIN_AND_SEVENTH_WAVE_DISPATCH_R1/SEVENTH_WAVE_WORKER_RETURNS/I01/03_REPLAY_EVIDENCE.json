@@ -1,0 +1,37 @@
+{
+  "schema": "W7_I01_CONSTITUENT_TEMPORAL_BINDING_BLOCKER_REPLAY_R1",
+  "grain": "PREV3_E01_BOUNDED_RELEASE_COMPLETE_CONSTITUENT_TEMPORAL_STATUS_BINDING_SET_R1_ONLY",
+  "hash_law": "SHA256_OF_UTF8_CANONICAL_JSON_SORT_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE_ALLOW_NAN_FALSE",
+  "constituent_binding_adjudication": {
+    "artifact_blob": "5a3e7d53f4e374b07de534f56b0a560caae39b1f",
+    "evaluation_1": "fbb2abeda12b989aea64cf64b707cc41622d1343a46c8a0007dad917d36538d1",
+    "evaluation_2": "fbb2abeda12b989aea64cf64b707cc41622d1343a46c8a0007dad917d36538d1",
+    "constituent_denominator": 1,
+    "lawfully_bound": 0,
+    "exact_blocker": "I01_BINDING_SET_BLOCKED__SOLE_F1_CONSTITUENT_LACKS_ACCEPTED_TEMPORAL_STATUS_AUTHORITY",
+    "parity": "PASS"
+  },
+  "h01_producer_precondition_decision": {
+    "artifact_blob": "ed56f3b58e92225f604456f61fcdc181a70b581f",
+    "evaluation_1": "35d816d9d1363010038a55c893a15726d25cf26cd86d629694645485461c5b0c",
+    "evaluation_2": "35d816d9d1363010038a55c893a15726d25cf26cd86d629694645485461c5b0c",
+    "parity": "PASS"
+  },
+  "world_grain_currentness_receipt_replay": {
+    "status": "NOT_EXECUTED_NO_LAWFUL_RECEIPT_ISSUED",
+    "reason": "SOLE_F1_CONSTITUENT_HAS_NO_LAWFUL_H01_TEMPORAL_STATUS_BINDING"
+  },
+  "implementation_test_disposition": {
+    "production_code_changed": false,
+    "pytest_executed": false,
+    "governed_replay_kind": "CANONICAL_DECISION_MATERIAL_HASH_REPLAY",
+    "inspected_runtime_blobs": {
+      "actual_gt12_runtime_checkpoint": "8aa537937c6c44a47def06ac375b5f2c2337011e",
+      "relation_sig004_ingress": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+      "gt12_d_to_m4_bridge": "ca3d6b8d832d7ca8d959bd19e19a23b08cabde76",
+      "m4_m1_binding": "dfc91d93d7d23d9d6cfe6d601d7d5734e7d5042f",
+      "gt2_relation_admission": "c5fb675fd6f95cb7dc9e0ad505224803839cc645"
+    }
+  },
+  "terminal": "I01_BLOCKER_REPLAY_PASS__NO_RECEIPT_REPLAY_APPLICABLE"
+}
