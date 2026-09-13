@@ -4,8 +4,11 @@ from rawlsing_next import _pre553_query_eval as canonical_i03
 from rawlsing_next import prev3_learned_real_execution_r2 as g02
 
 
-Q301_2_SOURCE_COUNTS = {1: 4501, 2: 7141, 3: 6460, 4: 7631, 5: 3054, 6: 137, 7: 62, None: 16}
-Q301_7_SOURCE_COUNTS = {1: 4324, 2: 7820, 3: 6070, 4: 7135, 5: 3388, 6: 100, 7: 145, None: 20}
+# Exact independent direct-carrier counts from Library file
+# file_0000000036dc81f8b8b546e356590a03 / LITS-2006-data.dta
+# SHA-256 7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09
+Q301_2_SOURCE_COUNTS = {1: 4377, 2: 6440, 3: 5226, 4: 6972, 5: 1882, 6: 1774, 7: 2327, None: 4}
+Q301_7_SOURCE_COUNTS = {1: 2889, 2: 6112, 3: 6511, 4: 10334, 5: 2479, 6: 224, 7: 442, None: 11}
 
 
 def _synthetic_records(target):
@@ -17,22 +20,22 @@ def _synthetic_records(target):
     return rows
 
 
-def test_exact_source_q301_2_has_215_denominator_members_outside_frozen_substantive_domain():
+def test_exact_source_q301_2_has_4105_denominator_members_outside_g02_projected_domain():
     assert sum(Q301_2_SOURCE_COUNTS.values()) == 29002
-    substantive = sum(Q301_2_SOURCE_COUNTS[x] for x in range(1, 6))
-    excluded = Q301_2_SOURCE_COUNTS[6] + Q301_2_SOURCE_COUNTS[7] + Q301_2_SOURCE_COUNTS[None]
-    assert substantive == 28787
-    assert excluded == 215
-    assert substantive + excluded == 29002
+    projected = sum(Q301_2_SOURCE_COUNTS[x] for x in range(1, 6))
+    outside = Q301_2_SOURCE_COUNTS[6] + Q301_2_SOURCE_COUNTS[7] + Q301_2_SOURCE_COUNTS[None]
+    assert projected == 24897
+    assert outside == 4105
+    assert projected + outside == 29002
 
 
-def test_exact_source_q301_7_has_265_denominator_members_outside_frozen_substantive_domain():
+def test_exact_source_q301_7_has_677_denominator_members_outside_g02_projected_domain():
     assert sum(Q301_7_SOURCE_COUNTS.values()) == 29002
-    substantive = sum(Q301_7_SOURCE_COUNTS[x] for x in range(1, 6))
-    excluded = Q301_7_SOURCE_COUNTS[6] + Q301_7_SOURCE_COUNTS[7] + Q301_7_SOURCE_COUNTS[None]
-    assert substantive == 28737
-    assert excluded == 265
-    assert substantive + excluded == 29002
+    projected = sum(Q301_7_SOURCE_COUNTS[x] for x in range(1, 6))
+    outside = Q301_7_SOURCE_COUNTS[6] + Q301_7_SOURCE_COUNTS[7] + Q301_7_SOURCE_COUNTS[None]
+    assert projected == 28325
+    assert outside == 677
+    assert projected + outside == 29002
 
 
 def test_g02_query_uses_all_selected_rows_as_denominator_but_projects_only_1_to_5_q301_2():
@@ -58,13 +61,13 @@ def test_canonical_i03_requires_unresolved_when_resolved_target_support_differs_
 
 def test_h02_smallest_blocker_hits_required_p0_before_any_broader_lane_claim():
     # P0 uses A000 + T_Q301_2_RAW for each required target cell 1..5.
-    # The exact carrier therefore has denominator 29002 but only 28787 rows
-    # inside D02's frozen q301_2 substantive target domain 1..5.
+    # G02 counts all 29,002 selected source rows in the denominator but only
+    # emits target cells 1..5, whose exact carrier support sums to 24,897.
     denominator = sum(Q301_2_SOURCE_COUNTS.values())
-    resolved = sum(Q301_2_SOURCE_COUNTS[x] for x in range(1, 6))
+    projected = sum(Q301_2_SOURCE_COUNTS[x] for x in range(1, 6))
     assert denominator == 29002
-    assert resolved == 28787
-    assert resolved != denominator
+    assert projected == 24897
+    assert projected != denominator
     assert g02.LANE_EXPECTATIONS["P0"] == {
         "rule_id": "D02_P0_REAL_POSITIVE_CONTROL",
         "candidate_count": 5,
