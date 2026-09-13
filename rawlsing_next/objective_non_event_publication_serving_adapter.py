@@ -6,37 +6,24 @@ from rawlsing_next import objective_non_event_publication_serving_adapter_legacy
 from rawlsing_next.objective_non_event_publication_serving_adapter_legacy import *  # noqa: F401,F403
 from rawlsing_next.m4_v557_v558_publication_repository import AuthorityRef, ExactRef
 from rawlsing_next.objective_non_event_currentness_contract import ObjectiveNonEventCurrentnessReceipt
-from rawlsing_next.objective_non_event_currentness_validation import (
-    make_currentness_receipt,
-    validate_currentness_receipt,
-)
+from rawlsing_next.objective_non_event_currentness_validation import make_currentness_receipt, validate_currentness_receipt
 
 make_objective_non_event_currentness_receipt = make_currentness_receipt
 validate_objective_non_event_currentness_receipt = validate_currentness_receipt
 
 
 def validate_objective_non_event_serving_receipt(
-    receipt,
-    *,
-    currentness_receipt_or_null=None,
-    repository=None,
-    query=None,
-    resolution=None,
-    resolution_key=None,
-    expected_currentness_authority_ref=None,
+    receipt, *, currentness_receipt_or_null=None, repository=None, query=None,
+    resolution=None, resolution_key=None, expected_currentness_authority_ref=None,
     expected_structural_currentness_basis_ref=None,
 ):
     legacy.validate_objective_non_event_serving_receipt(receipt)
     if receipt.currentness == "CURRENT":
-        if None in (
-            currentness_receipt_or_null,
-            repository,
-            query,
-            resolution,
-            resolution_key,
-            expected_currentness_authority_ref,
-            expected_structural_currentness_basis_ref,
-        ):
+        required = (
+            currentness_receipt_or_null, repository, query, resolution, resolution_key,
+            expected_currentness_authority_ref, expected_structural_currentness_basis_ref,
+        )
+        if any(value is None for value in required):
             raise NonEventAdapterIntegrityError(
                 "CURRENT serving validation requires actual D05 currentness object and exact validation context"
             )
@@ -54,12 +41,7 @@ def validate_objective_non_event_serving_receipt(
 
 
 def make_objective_non_event_serving_receipt(
-    publication,
-    repository,
-    query,
-    resolution,
-    *,
-    resolution_key: str,
+    publication, repository, query, resolution, *, resolution_key: str,
     currentness_receipt_or_null: ObjectiveNonEventCurrentnessReceipt | None = None,
     currentness_authority_ref_or_null: AuthorityRef | None = None,
     structural_currentness_basis_ref_or_null: ExactRef | Mapping[str, str] | None = None,
@@ -69,6 +51,10 @@ def make_objective_non_event_serving_receipt(
 ):
     if currentness_receipt_ref_or_null is not None:
         raise NonEventAdapterIntegrityError("ref-only currentness input is not accepted")
+    if currentness_receipt_or_null is not None and not isinstance(
+        currentness_receipt_or_null, ObjectiveNonEventCurrentnessReceipt
+    ):
+        raise NonEventAdapterIntegrityError("currentness input must be the actual D05 receipt object")
     current_ref = currentness_receipt_or_null.ref if currentness_receipt_or_null is not None else None
     receipt = legacy.make_objective_non_event_serving_receipt(
         publication, repository, query, resolution,
