@@ -1,0 +1,15 @@
+case_id	policy_id	court	law_or_boundary	observed	result	blocker
+D07-L02	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	clean inherited rerun	source-local != population	REFUSED_REQUIRED_OBJECTIVE_EVIDENCE	PASS	-
+D07-L04	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	clean inherited rerun	alternate/backfill requires exact relation authority	RELATION_AUTHORITY_REQUIRED	PASS	-
+D07-L05	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	clean inherited rerun	missing/all-unavailable != zero/false/positive completion	ALL_UNAVAILABLE__NOT_POSITIVE_COMPLETION	PASS	-
+D07-L09	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	clean inherited rerun	model prior separately typed/authorized and nonempirical	ALL_UNAVAILABLE__NOT_POSITIVE_COMPLETION with authorized prior listed nonempirical	PASS	-
+D07-L10	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	clean inherited rerun	no renormalization	RENORMALIZATION_FORBIDDEN	PASS	-
+D07-L11	OC03/OC04/OC05	clean inherited rerun	future consumers remain NOT_YET_APPLICABLE	NOT_YET_APPLICABLE_ENFORCED	PASS	-
+D07-L12	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	clean inherited rerun	unrelated lawful service survives optional local loss where partiality permits	PARTIAL_OBJECTIVE_RESULT; family_a preserved	PASS	-
+E07-H01	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	independent	source-local != population	REFUSED_REQUIRED_OBJECTIVE_EVIDENCE	PASS	-
+E07-H02	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	independent	omissions/refusals provenance replayable	changing only omission_reason yields identical receipt_hash and identical serialized receipt	FAIL	E07_BLOCKER__D07_RECEIPT_REPLAY_COLLISION__OMISSION_REASON_AND_SELECTED_INPUT_AUTHORITY_REFS_NOT_PROVENANCE_BEARING
+E07-H03	OC02_LEARNED_STRUCTURAL_ADMISSION_R1	independent	exact authority dependencies replayable / tamper-sensitive	changing only selected input authority_refs yields identical receipt_hash and identical serialized receipt	FAIL	E07_BLOCKER__D07_RECEIPT_REPLAY_COLLISION__OMISSION_REASON_AND_SELECTED_INPUT_AUTHORITY_REFS_NOT_PROVENANCE_BEARING
+E07-H04	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	independent	no renormalization	RENORMALIZATION_FORBIDDEN	PASS	-
+E07-H05	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	independent	all-unavailable never positive completion	ALL_UNAVAILABLE__NOT_POSITIVE_COMPLETION	PASS	-
+E07-H06	OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1	independent	unrelated lawful service survives localized required loss as replayable surviving selection	affected operation refused; unrelated selected input retained	PASS	-
+E07-H07	OC03/OC04/OC05	independent	no synthetic future-consumer coverage	all three raise NotYetApplicableConsumer	PASS	-

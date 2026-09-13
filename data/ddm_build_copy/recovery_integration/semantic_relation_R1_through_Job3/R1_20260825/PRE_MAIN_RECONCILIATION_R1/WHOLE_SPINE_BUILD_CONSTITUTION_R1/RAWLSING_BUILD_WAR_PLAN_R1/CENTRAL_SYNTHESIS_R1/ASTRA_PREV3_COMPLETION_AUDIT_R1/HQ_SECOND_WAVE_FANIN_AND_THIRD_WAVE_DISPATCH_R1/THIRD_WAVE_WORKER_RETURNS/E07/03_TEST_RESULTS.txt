@@ -1,0 +1,44 @@
+E07 independent qualification execution record
+
+Commission tip: b6fb9daa95ff82984ac49728e3b50f1164035464
+Inherited D07 head: 12e83fa226cb200cc4de38812d89c5c3b71ea42e
+
+Exact D07 blob verification in isolated work directory:
+9738399d5e454808235a91b10a2d473cdd851d97  rawlsing_next/objective_consumer_bounded_evidence.py
+74a393f11d986e89a21d192495dc1bf985ace0e4  rawlsing_next/tests/d07_bounded_loss_harness.py
+4e4c47e006f29137deeba05499a9eab2c03396e2  rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py
+
+Clean process command:
+env -i PATH="$PATH" PYTHONPATH=<isolated-root> HOME=/tmp python -m pytest -q rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py
+Observed:
+...                                                                      [100%]
+3 passed in 0.06s
+
+Clean process command:
+env -i PATH="$PATH" PYTHONPATH=<isolated-root> HOME=/tmp python rawlsing_next/tests/d07_bounded_loss_harness.py
+Observed summary:
+harness=PASS cases=12 pass=12 fail=0
+
+Independent court source:
+02_INDEPENDENT_HOSTILE_QUALIFICATION.py
+pre-commit Git blob: 42823511fe532546ce24af77468c0eca4816f3a8
+pre-commit SHA-256: d80e5ded33e7bbfc281d23cc8961054ce726ee9fff736292a7654a7c94fe210b
+
+Clean process command:
+env -i PATH="$PATH" PYTHONPATH=<isolated-root> HOME=/tmp python 02_INDEPENDENT_HOSTILE_QUALIFICATION.py
+Observed:
+E07-H01: PASS: REFUSED_REQUIRED_OBJECTIVE_EVIDENCE
+E07-H02: FAIL: same_hash=True; same_receipt=True
+E07-H03: FAIL: same_hash=True; same_receipt=True
+E07-H04: PASS: RENORMALIZATION_FORBIDDEN
+E07-H05: PASS: ALL_UNAVAILABLE__NOT_POSITIVE_COMPLETION
+E07-H06: PASS: state=REFUSED_REQUIRED_OBJECTIVE_EVIDENCE; selected=('unrelated',)
+E07-H07: PASS: OC03/OC04/OC05 NOT_YET_APPLICABLE
+SUMMARY: pass=5 fail=2 total=7
+process exit: 1
+
+Exact blocker:
+E07_BLOCKER__D07_RECEIPT_REPLAY_COLLISION__OMISSION_REASON_AND_SELECTED_INPUT_AUTHORITY_REFS_NOT_PROVENANCE_BEARING
+
+No production repair performed.
+GATE-DEGRADED-QUALIFIED: NOT_ISSUED
