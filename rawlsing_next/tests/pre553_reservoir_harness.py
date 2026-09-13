@@ -37,8 +37,13 @@ from rawlsing_next.m2_v555_atomic_route import (
     evaluate_m2_v555_atomic_route,
 )
 from rawlsing_next.m3_v556_higher_order_structural import (
+    M3_CONTRACT_ID,
     M3DecisionState,
     M3Evaluation,
+    PERSON_STATE_SEMANTICS,
+    RESULT_CONTRACT_BINDING_REF_KIND,
+    RESULT_JURISDICTION,
+    RESULT_SCHEMA_REF_KIND,
     evaluate_m3_v556_higher_order_structural,
 )
 from rawlsing_next.m4_v557_v558_publication_repository import (
@@ -400,14 +405,70 @@ def _route_ref(m2: M2Evaluation) -> dict[str, str]:
     }
 
 
-def v556_rule_stub() -> dict[str, Any]:
+def _v556_result_schema_stub() -> dict[str, Any]:
     return {
-        "authority_id": "PRE553_R13_TEST_ONLY_V556_AUTHORITY_STUB",
-        "authority_version": "test-only-1",
-        "authority_content_hash": _h("v556-authority-stub"),
-        "rule_id": "PRE553_R13_TEST_ONLY_V556_PAIR_RULE",
-        "rule_version": "test-only-1",
-        "rule_content_hash": _h("v556-rule-stub"),
+        "schema_id": "PRE553_R13_TEST_ONLY_OBJECTIVE_TOPOLOGY",
+        "schema_version": "2.0.0",
+        "semantic_class": "OBJECTIVE_STRUCTURAL_RESULT",
+        "root": {
+            "type": "object",
+            "semantic_role": "OBJECTIVE_GROUPING",
+            "fields": {
+                "topology_kind": {
+                    "type": "string",
+                    "semantic_role": "OBJECTIVE_STRUCTURAL_RELATION",
+                    "allowed_values_or_unbounded_marker": ["PRE553_R13_EXACT_PAIR_FIXTURE"],
+                },
+            },
+            "required": ["topology_kind"],
+            "additional_fields": False,
+        },
+    }
+
+
+def _v556_result_contract_stub(rule_id: str, rule_version: str) -> tuple[dict[str, Any], dict[str, str]]:
+    schema = _v556_result_schema_stub()
+    schema_ref = {
+        "kind": RESULT_SCHEMA_REF_KIND,
+        "object_id": f"{schema['schema_id']}@{schema['schema_version']}",
+        "content_hash": semantic_hash(schema),
+    }
+    material = {
+        "contract_id": M3_CONTRACT_ID,
+        "binding_id": "PRE553_R13_TEST_ONLY_V556_RESULT_BINDING",
+        "binding_version": "2.0.0",
+        "authorization_state": "AUTHORIZED_CURRENT",
+        "bound_rule_id": rule_id,
+        "bound_rule_version": rule_version,
+        "result_schema_ref": schema_ref,
+        "result_semantic_owner_ref": _ref("M3_RESULT_SEMANTIC_OWNER", "PRE553_R13_TEST_ONLY_OBJECTIVE_OWNER"),
+        "result_semantic_owner_current_selection_ref": _ref(
+            "M3_RESULT_OWNER_CURRENT_SELECTION", "PRE553_R13_TEST_ONLY_OBJECTIVE_OWNER_CURRENT"
+        ),
+        "semantic_jurisdiction": RESULT_JURISDICTION,
+        "actor_indexing_mode": "NO_ACTOR_INDEX",
+        "person_state_semantics": PERSON_STATE_SEMANTICS,
+        "result_schema": schema,
+    }
+    binding_hash = semantic_hash(material)
+    binding = {k: v for k, v in material.items() if k != "contract_id"}
+    binding["binding_content_hash"] = binding_hash
+    binding_ref = {
+        "kind": RESULT_CONTRACT_BINDING_REF_KIND,
+        "object_id": f"{binding['binding_id']}@{binding['binding_version']}",
+        "content_hash": binding_hash,
+    }
+    return binding, binding_ref
+
+
+def v556_rule_stub() -> dict[str, Any]:
+    rule_id = "PRE553_R13_TEST_ONLY_V556_PAIR_RULE"
+    rule_version = "test-only-2"
+    _, result_ref = _v556_result_contract_stub(rule_id, rule_version)
+    body_material = {
+        "contract_id": M3_CONTRACT_ID,
+        "rule_id": rule_id,
+        "rule_version": rule_version,
         "semantic_family": "V556_TOPOLOGY",
         "participant_roles": ["SOURCE_SIDE", "RECEIVER_SIDE"],
         "participant_order_policy": "ORDERED",
@@ -416,10 +477,19 @@ def v556_rule_stub() -> dict[str, Any]:
         "multiplicity_policy": "EXACT_OCCURRENCE_INDEX",
         "same_route_reuse_policy": "FORBIDDEN",
         "source_composition_policy": "NONE_BY_DEFAULT",
-        "allowed_typed_outcome_states": ["SUPPORTED", "VALID_EMPTY", "DENIED", "NONCOMPARABLE", "CONFLICTING_AUTHORITY"],
+        "allowed_typed_outcome_states": sorted({
+            "SUPPORTED", "VALID_EMPTY", "DENIED", "NONCOMPARABLE", "CONFLICTING_AUTHORITY"
+        }),
         "producer_allowed_uses": ["REVIEW"],
+        "result_contract_binding_ref": result_ref,
     }
-
+    return {
+        "authority_id": "PRE553_R13_TEST_ONLY_V556_AUTHORITY_STUB",
+        "authority_version": "test-only-2",
+        "authority_content_hash": _h("v556-authority-stub-r2"),
+        **{k: v for k, v in body_material.items() if k != "contract_id"},
+        "rule_content_hash": semantic_hash(body_material),
+    }
 
 def _rule_key(rule: Mapping[str, Any]) -> tuple[str, ...]:
     return tuple(rule[k] for k in (
@@ -477,12 +547,16 @@ def evaluate_v556(
     composition: Mapping[str, Any] | None = None,
 ) -> M3Evaluation:
     rule = v556_rule_stub()
+    result_contract, result_ref = _v556_result_contract_stub(rule["rule_id"], rule["rule_version"])
+    if rule["result_contract_binding_ref"] != result_ref:
+        raise HarnessFixtureError("R2 result-contract stub does not match rule binding reference")
     bindings = v556_bindings(routes, sources)
     request = {
         "higher_order_semantics_required": True,
         "rule_authority": rule,
         "participant_bindings": bindings,
         "source_composition_authority": composition,
+        "result_contract_binding": result_contract,
         "governed_result": {
             "state": governed_state,
             "semantic_payload": {"topology_kind": "PRE553_R13_EXACT_PAIR_FIXTURE"},
@@ -495,6 +569,7 @@ def evaluate_v556(
         request,
         active_rule_keys=[_rule_key(rule)],
         active_source_composition_keys=active_composition,
+        active_result_contract_refs=[result_ref],
     )
 
 
