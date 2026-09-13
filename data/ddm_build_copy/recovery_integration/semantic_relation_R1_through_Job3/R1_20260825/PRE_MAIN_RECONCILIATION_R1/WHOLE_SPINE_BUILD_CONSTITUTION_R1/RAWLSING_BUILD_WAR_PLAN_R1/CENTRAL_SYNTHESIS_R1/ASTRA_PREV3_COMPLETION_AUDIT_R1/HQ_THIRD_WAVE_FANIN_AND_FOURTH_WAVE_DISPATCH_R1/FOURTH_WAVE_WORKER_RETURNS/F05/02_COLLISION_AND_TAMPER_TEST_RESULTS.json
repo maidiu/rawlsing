@@ -1,0 +1,77 @@
+{
+  "schema": "F05_COLLISION_AND_TAMPER_TEST_RESULTS_R1",
+  "status": "PASS",
+  "commission_tip": "abd63d4340d5c296d3ae483b98473a747e6b75db",
+  "runs": [
+    {
+      "id": "D07_INHERITED_SELF_COURT",
+      "identity": "rawlsing_next/tests/d07_bounded_loss_harness.py@74a393f11d986e89a21d192495dc1bf985ace0e4",
+      "command": "PYTHONPATH=. python rawlsing_next/tests/d07_bounded_loss_harness.py",
+      "pass": 12,
+      "fail": 0,
+      "total": 12
+    },
+    {
+      "id": "D07_TARGETED_AND_REGRESSION_PYTEST",
+      "identity": "rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py@75df736d118ffff7e8803606ca29e05047395ee9",
+      "command": "PYTHONPATH=. pytest -q rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py",
+      "pass": 6,
+      "fail": 0,
+      "total": 6
+    },
+    {
+      "id": "E07_INHERITED_INDEPENDENT_CASE_REPLAY",
+      "identity": "THIRD_WAVE_WORKER_RETURNS/E07/02_INDEPENDENT_HOSTILE_QUALIFICATION.py@42823511fe532546ce24af77468c0eca4816f3a8",
+      "pass": 7,
+      "fail": 0,
+      "total": 7,
+      "former_collision_cases": {
+        "E07-H02": "PASS__same_hash_false__same_receipt_false",
+        "E07-H03": "PASS__same_hash_false__same_receipt_false"
+      }
+    },
+    {
+      "id": "F05_TARGETED_COLLISION_CONTROLS",
+      "pass": 5,
+      "fail": 0,
+      "total": 5
+    }
+  ],
+  "targeted_controls": [
+    {
+      "case": "F05-O1",
+      "property": "omission reason is provenance-bearing",
+      "left_hash": "b426e68959fd5cce997e0132b44a509d7b3092cebb482123ddbea2e26b0dd3cf",
+      "right_hash": "1f8561b082d538e95b704d5ab19eff57a95f3e1647792914dbd6cc7e9125ae4c",
+      "result": "PASS__DISTINCT"
+    },
+    {
+      "case": "F05-A1",
+      "property": "selected-input authority refs are provenance-bearing",
+      "left_hash": "6df0309f83b668627626cb8c899ff5228ed841339970ed10cf3567c39abd7dc1",
+      "right_hash": "2c17b0bf8d9525782034a6201290f9c7a3316c33caeecdd5eadc228c407419aa",
+      "result": "PASS__DISTINCT"
+    },
+    {
+      "case": "F05-C1",
+      "property": "equivalent input/ref ordering canonicalizes identically",
+      "canonical_hash": "c1369162f64a17c2e6e7769253ad82505bbc3299d31407cd4f36332268afa559",
+      "result": "PASS__IDENTICAL"
+    },
+    {
+      "case": "F05-M1",
+      "property": "authority association swap across input identities does not collide",
+      "left_hash": "c8b7b552eb4942e0560d733cb610bc0cb412d8ebc42a22bacb335916e8970602",
+      "right_hash": "c9dd976826489ff0576f816fc4a643654073c48a27724f5f4dcf706cb591ba6a",
+      "result": "PASS__DISTINCT"
+    },
+    {
+      "case": "F05-M2",
+      "property": "omission-reason association swap across unavailable input identities does not collide",
+      "left_hash": "b5ad89bbbf1067dc634d3a84b713e02524a2920929b14e94ce1af6d59823a76e",
+      "right_hash": "5a47f4f80a16e95c4bf88b3965141dc4852b51b8893d17de99ed6982e8485894",
+      "result": "PASS__DISTINCT"
+    }
+  ],
+  "independent_qualification_performed": false
+}

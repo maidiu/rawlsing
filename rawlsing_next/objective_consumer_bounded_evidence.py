@@ -95,13 +95,17 @@ class Receipt:
     policy_id:str; consumer_seam:str; operation_id:str; state:DecisionState; requested_claim_ceiling:ClaimCeiling
     selected_input_ids:tuple[str,...]; selected_producer_refs:tuple[ExactRef,...]; missing_required_input_ids:tuple[str,...]
     omitted_optional_input_ids:tuple[str,...]; non_empirical_input_ids:tuple[str,...]; refusal_reasons:tuple[str,...]
-    relation_authority_refs:tuple[ExactRef,...]; coefficient_reallocated:bool; positive_completion:bool; receipt_hash:str
+    relation_authority_refs:tuple[ExactRef,...]; selected_input_authority_refs:tuple[tuple[str,tuple[ExactRef,...]],...]
+    unavailable_input_omission_reasons:tuple[tuple[str,str],...]; coefficient_reallocated:bool; positive_completion:bool; receipt_hash:str
     def as_dict(self):
         def refs(xs): return [x.as_dict() for x in xs]
         return {"contract_id":CONTRACT_ID,"policy_id":self.policy_id,"consumer_seam":self.consumer_seam,"operation_id":self.operation_id,"state":self.state.value,
           "requested_claim_ceiling":self.requested_claim_ceiling.value,"selected_input_ids":list(self.selected_input_ids),"selected_producer_refs":refs(self.selected_producer_refs),
           "missing_required_input_ids":list(self.missing_required_input_ids),"omitted_optional_input_ids":list(self.omitted_optional_input_ids),"non_empirical_input_ids":list(self.non_empirical_input_ids),
-          "refusal_reasons":list(self.refusal_reasons),"relation_authority_refs":refs(self.relation_authority_refs),"coefficient_reallocated":False,"positive_completion":self.positive_completion,"receipt_hash":self.receipt_hash}
+          "refusal_reasons":list(self.refusal_reasons),"relation_authority_refs":refs(self.relation_authority_refs),
+          "selected_input_authority_refs":[{"input_id":input_id,"authority_refs":refs(authority_refs)} for input_id,authority_refs in self.selected_input_authority_refs],
+          "unavailable_input_omission_reasons":[{"input_id":input_id,"omission_reason":reason} for input_id,reason in self.unavailable_input_omission_reasons],
+          "coefficient_reallocated":False,"positive_completion":self.positive_completion,"receipt_hash":self.receipt_hash}
 
 def _satisfies(x:PolicyInput,c:ClaimCeiling)->bool:
     if x.evidence_kind is EvidenceKind.NON_EMPIRICAL_MODEL:return False
@@ -119,6 +123,7 @@ def evaluate_current_consumer(*,policy_id:str,operation_id:str,inputs:Sequence[P
     items=tuple(sorted(inputs,key=lambda x:x.input_id)); _text(operation_id,"operation_id")
     if not items or len({x.input_id for x in items})!=len(items): raise PolicyError("finite unique input manifest required")
     missing=tuple(x.input_id for x in items if x.required and not x.available); omitted=tuple(x.input_id for x in items if not x.required and not x.available)
+    omission_reasons=tuple((x.input_id,x.omission_reason) for x in items if not x.available and x.omission_reason is not None)
     nonemp=tuple(x.input_id for x in items if x.available and x.evidence_kind is EvidenceKind.NON_EMPIRICAL_MODEL)
     empirical=tuple(x for x in items if x.available and x.evidence_kind is EvidenceKind.EMPIRICAL); selected=tuple(x for x in empirical if _satisfies(x,requested_claim_ceiling))
     refusal=[]
@@ -132,11 +137,15 @@ def evaluate_current_consumer(*,policy_id:str,operation_id:str,inputs:Sequence[P
     else: state=DecisionState.SUPPORTED_OBJECTIVE_RESULT; positive=True
     if positive and not selected: state=DecisionState.REFUSED_REQUIRED_OBJECTIVE_EVIDENCE; refusal.append("NO_SELECTED_EMPIRICAL_INPUT_SATISFIES_REQUESTED_CLAIM"); positive=False
     selected_refs=tuple(sorted(x.producer_ref for x in selected if x.producer_ref)); relation_refs=tuple(sorted(x.relation_authority_ref for x in items if x.relation_authority_ref))
+    selected_authority_refs=tuple((x.input_id,x.authority_refs) for x in selected)
     core={"contract_id":CONTRACT_ID,"policy_id":policy_id,"consumer_seam":b.seam,"operation_id":operation_id,"state":state.value,"requested_claim_ceiling":requested_claim_ceiling.value,
       "selected_input_ids":[x.input_id for x in selected],"selected_producer_refs":[x.as_dict() for x in selected_refs],"missing_required_input_ids":list(missing),"omitted_optional_input_ids":list(omitted),"non_empirical_input_ids":list(nonemp),
-      "refusal_reasons":refusal,"relation_authority_refs":[x.as_dict() for x in relation_refs],"coefficient_reallocated":False,"positive_completion":positive,
+      "refusal_reasons":refusal,"relation_authority_refs":[x.as_dict() for x in relation_refs],
+      "selected_input_authority_refs":[{"input_id":input_id,"authority_refs":[ref.as_dict() for ref in authority_refs]} for input_id,authority_refs in selected_authority_refs],
+      "unavailable_input_omission_reasons":[{"input_id":input_id,"omission_reason":reason} for input_id,reason in omission_reasons],
+      "coefficient_reallocated":False,"positive_completion":positive,
       "authority_basis":{"c08_policy_commit":C08_POLICY_COMMIT,"c08_policy_blob":C08_POLICY_BLOB,"hq_adoption_blob":HQ_ADOPTION_BLOB}}
-    return Receipt(policy_id,b.seam,operation_id,state,requested_claim_ceiling,tuple(x.input_id for x in selected),selected_refs,missing,omitted,nonemp,tuple(refusal),relation_refs,False,positive,_hash(core))
+    return Receipt(policy_id,b.seam,operation_id,state,requested_claim_ceiling,tuple(x.input_id for x in selected),selected_refs,missing,omitted,nonemp,tuple(refusal),relation_refs,selected_authority_refs,omission_reasons,False,positive,_hash(core))
 
 def evaluate_oc01_pre553_source_local(*,operation_id,inputs,requested_claim_ceiling,partial_allowed=True,renormalization_requested=False):
     return evaluate_current_consumer(policy_id=OC01,operation_id=operation_id,inputs=inputs,requested_claim_ceiling=requested_claim_ceiling,partial_allowed=partial_allowed,renormalization_requested=renormalization_requested)

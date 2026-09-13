@@ -1,0 +1,46 @@
+{
+  "schema": "F05_REPLAY_PROVENANCE_REPAIR_RECEIPT_R1",
+  "status": "PASS__REPAIR_IMPLEMENTED__NOT_INDEPENDENTLY_QUALIFIED",
+  "commission_tip": "abd63d4340d5c296d3ae483b98473a747e6b75db",
+  "grain": "PREV3_BOUNDED_EVIDENCE_REPLAY_PROVENANCE_COLLISION_REPAIR_R1_ONLY",
+  "repaired_blocker": "E07_BLOCKER__D07_RECEIPT_REPLAY_COLLISION__OMISSION_REASON_AND_SELECTED_INPUT_AUTHORITY_REFS_NOT_PROVENANCE_BEARING",
+  "production_identity": {
+    "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+    "blob": "f30fca20e7b56e00348e82765d95f974b4b6a195"
+  },
+  "test_identity": {
+    "path": "rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py",
+    "blob": "75df736d118ffff7e8803606ca29e05047395ee9"
+  },
+  "canonical_replay_material": [
+    {
+      "field": "selected_input_authority_refs",
+      "association": "selected input_id -> canonical ExactRef tuple",
+      "serialization_bearing": true,
+      "hash_bearing": true
+    },
+    {
+      "field": "unavailable_input_omission_reasons",
+      "association": "unavailable required-or-optional input_id -> exact omission_reason",
+      "serialization_bearing": true,
+      "hash_bearing": true
+    }
+  ],
+  "canonicalization": {
+    "input_order": "ascending input_id through pre-existing sorted finite input manifest",
+    "authority_ref_order": "pre-existing PolicyInput sorted/deduplicated ExactRef tuple",
+    "association_preserved": true
+  },
+  "behavior_preservation": {
+    "missing_not_zero_or_false": true,
+    "source_local_not_population": true,
+    "alternate_source_requires_exact_relation_authority": true,
+    "nonempirical_prior_separately_authorized": true,
+    "renormalization_forbidden": true,
+    "local_loss_survival_preserved_where_permitted": true,
+    "all_unavailable_not_positive_completion": true,
+    "oc03_oc04_oc05_not_yet_applicable": true
+  },
+  "self_qualification_claimed": false,
+  "successor_gate": "GATE-DEGRADED-REQUALIFICATION__OPEN_TO_SEPARATE_INDEPENDENT_WORKER_ONLY"
+}
