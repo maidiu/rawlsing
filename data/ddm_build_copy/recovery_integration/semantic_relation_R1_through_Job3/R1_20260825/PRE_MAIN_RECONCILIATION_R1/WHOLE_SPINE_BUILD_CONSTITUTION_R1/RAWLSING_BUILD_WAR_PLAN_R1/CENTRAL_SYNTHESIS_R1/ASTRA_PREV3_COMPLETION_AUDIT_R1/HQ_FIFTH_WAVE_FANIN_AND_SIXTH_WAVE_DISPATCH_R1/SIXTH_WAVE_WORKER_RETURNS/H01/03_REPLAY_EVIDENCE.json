@@ -1,0 +1,33 @@
+{
+  "schema": "W6_H01_WORLD_TIME_PRODUCER_AND_BLOCKER_REPLAY_EVIDENCE_R1",
+  "grain": "PREV3_OBJECTIVE_WORLD_TIME_PRODUCER_AND_FIRST_WORLD_GRAIN_CURRENTNESS_RECEIPT_R1_ONLY",
+  "producer_contract_artifact_blob": "8d3efbd6b13d3dac9993a2bc6bab3948435c80c3",
+  "adjudication_artifact_blob": "5a8f15d63a51eca5b3df4c00136329387044988e",
+  "hash_law": "SHA256_OF_UTF8_CANONICAL_JSON_SORT_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE_ALLOW_NAN_FALSE",
+  "producer_contract_replay": {
+    "evaluation_1": "aed3a09f303a381aae7b2a893033dbb6de0dc84332432dea5caaa6bd962b046a",
+    "evaluation_2": "aed3a09f303a381aae7b2a893033dbb6de0dc84332432dea5caaa6bd962b046a",
+    "expected_contract_ref": {
+      "id": "PREV3_OBJECTIVE_WORLD_TIME_PRODUCER",
+      "version": "1.0.0",
+      "content_hash": "aed3a09f303a381aae7b2a893033dbb6de0dc84332432dea5caaa6bd962b046a"
+    },
+    "parity": "PASS"
+  },
+  "blocker_decision_replay": {
+    "evaluation_1": "ae8951e2f1124c1736f291ba436d29fd3f2bb586845257bc057017bd4bc5e9b5",
+    "evaluation_2": "ae8951e2f1124c1736f291ba436d29fd3f2bb586845257bc057017bd4bc5e9b5",
+    "exact_blocker": "H01_FIRST_WORLD_GRAIN_CURRENTNESS_RECEIPT_BLOCKED__NO_EXACT_COMPLETE_CONSTITUENT_TEMPORAL_STATUS_BINDING_SET",
+    "parity": "PASS"
+  },
+  "receipt_replay": {
+    "status": "NOT_EXECUTED_NO_LAWFUL_RECEIPT_ISSUED",
+    "reason": "EXACT_COMPLETE_CONSTITUENT_TEMPORAL_STATUS_BINDING_SET_FOR_E01_BOUNDED_RELEASE_ABSENT"
+  },
+  "test_disposition": {
+    "production_code_changed": false,
+    "pytest_executed": false,
+    "replay_kind": "CANONICAL_GOVERNED_MATERIAL_HASH_REPLAY_ONLY"
+  },
+  "terminal": "H01_CONTRACT_AND_BLOCKER_CANONICAL_REPLAY_PASS__RECEIPT_REPLAY_NOT_APPLICABLE"
+}
