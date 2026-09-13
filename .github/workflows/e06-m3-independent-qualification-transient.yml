@@ -1,0 +1,84 @@
+name: E06 M3 independent qualification
+
+on:
+  push:
+    branches:
+      - agent/rabochii-prev3-w3-e06-m3-hostile-qualification-r1
+
+permissions:
+  contents: write
+
+jobs:
+  e06-qualification:
+    runs-on: ubuntu-24.04
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install qualification dependencies
+        run: python -m pip install pytest pandas pyarrow duckdb pyreadstat
+      - name: Verify exact commissioned implementation identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor c09ef40bca2efd1b3e20ee751b00ece8453db2c0 HEAD
+          test "$(git hash-object rawlsing_next/m3_v556_higher_order_structural.py)" = "9a4b26b214686364a43d108dabf0d57dac0ed3b2"
+          test "$(git hash-object rawlsing_next/tests/test_m3_v556_higher_order_structural.py)" = "0276bd18282216853ba1f92e558db767d8c1f9ec"
+          test "$(git hash-object rawlsing_next/tests/test_pre553_source_relations.py)" = "2487ed757c0254e7227cf43664abc6ae08f1dfb3"
+          test "$(git hash-object rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py)" = "e6a456865470fe587aae9480a81eb2ccbc8b7b51"
+          test "$(git hash-object rawlsing_next/tests/pre553_reservoir_harness.py)" = "c2c9752d745b06fa34c4e1c3345d90de7e66feea"
+          printf 'commission_tip=%s\n' c09ef40bca2efd1b3e20ee751b00ece8453db2c0
+          printf 'implementation_blob=%s\n' 9a4b26b214686364a43d108dabf0d57dac0ed3b2
+      - name: Reproduce D06 H01-H12 firewall qualification cases
+        run: python -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_m3_v556_higher_order_structural.py
+      - name: Run independent E06 alias and structural-shape probes
+        run: python data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/ASTRA_PREV3_COMPLETION_AUDIT_R1/HQ_SECOND_WAVE_FANIN_AND_THIRD_WAVE_DISPATCH_R1/THIRD_WAVE_WORKER_RETURNS/E06/02_INDEPENDENT_QUALIFICATION_PROBE.py
+      - name: Targeted M3 and guard regression court
+        run: |
+          python -m pytest -q -p no:cacheprovider \
+            rawlsing_next/tests/test_m3_v556_higher_order_structural.py \
+            rawlsing_next/tests/test_m2_v555_atomic_route.py \
+            rawlsing_next/tests/test_pre553_source_relations.py \
+            rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py \
+            rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py
+      - name: Full relevant PRE-V3 regression court
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t tests < <(
+            {
+              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_pre553_*.py'
+              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_m1_*.py'
+              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_m2_*.py'
+              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_m3_*.py'
+              find rawlsing_next/tests -maxdepth 1 -type f -name 'test_m4_*.py'
+              for f in \
+                rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py \
+                rawlsing_next/tests/test_gt12_d_to_m4_typed_bridge.py; do
+                [[ -f "$f" ]] && printf '%s\n' "$f"
+              done
+            } | sort -u
+          )
+          printf 'E06 full relevant PRE-V3 files (%s):\n' "${#tests[@]}"
+          printf '%s\n' "${tests[@]}"
+          python -m pytest -q -p no:cacheprovider \
+            --deselect rawlsing_next/tests/test_pre553_reservoir_preintegration.py::test_downstream_m1_m6_render_and_psepf_bytes_match_frozen_base_git_blobs \
+            --deselect rawlsing_next/tests/test_pre553_whole_machine_hostile_acceptance.py::test_r15_h15_frozen_semantic_blobs_are_byte_exact \
+            "${tests[@]}"
+      - name: Remove transient qualification workflow
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/e06-m3-independent-qualification-transient.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/e06-m3-independent-qualification-transient.yml
+          git diff --cached --check
+          git commit -m "E06: remove transient M3 qualification workflow"
+          git push origin HEAD:agent/rabochii-prev3-w3-e06-m3-hostile-qualification-r1
