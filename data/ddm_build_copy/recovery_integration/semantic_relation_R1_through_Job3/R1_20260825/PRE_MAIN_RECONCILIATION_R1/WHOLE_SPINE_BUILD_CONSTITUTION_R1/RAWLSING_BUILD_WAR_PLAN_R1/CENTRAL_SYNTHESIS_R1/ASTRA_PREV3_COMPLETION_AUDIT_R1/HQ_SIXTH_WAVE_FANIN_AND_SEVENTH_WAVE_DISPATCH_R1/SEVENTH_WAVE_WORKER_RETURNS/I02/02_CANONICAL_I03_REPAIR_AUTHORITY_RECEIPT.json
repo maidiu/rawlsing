@@ -1,0 +1,32 @@
+{
+  "accepted_source_authority": {
+    "all_29002_rows_remain_in_unconditional_q301_risk_set": true,
+    "as2b_commit": "923f2c00b6145182a5e2be5038f579845951da19",
+    "physical_missing_state": "SYSTEM_MISSING",
+    "q301_6_7_are_not": "AUTOMATIC_DK_OR_IAP",
+    "q301_6_7_state": "SOURCE_SPECIFIC_SPECIAL"
+  },
+  "canonical_i03": {
+    "git_blob_sha1": "e2d91984541df7c692a1b2f32370500838a2a000",
+    "law": "raw_resolved_target_support != raw_denominator_support => UNRESOLVED",
+    "path": "rawlsing_next/_pre553_query_eval.py",
+    "precedence": "TARGET_RESOLUTION_STATE_PRECEDES_SEMANTIC_VALIDATION"
+  },
+  "empirical_only": true,
+  "exact_carrier_counts": {
+    "q301_2": {"1": 4377, "2": 6440, "3": 5226, "4": 6972, "5": 1882, "6": 1774, "7": 2327, "SYSTEM_MISSING": 4, "denominator": 29002, "resolved_substantive_1_5": 24897, "unresolved": 4105},
+    "q301_2_x_q301_7": {"denominator": 29002, "resolved_complete_5x5": 24630, "unresolved": 4372},
+    "q301_7": {"1": 2889, "2": 6112, "3": 6511, "4": 10334, "5": 2479, "6": 224, "7": 442, "SYSTEM_MISSING": 11, "denominator": 29002, "resolved_substantive_1_5": 28325, "unresolved": 677}
+  },
+  "h02_blocker": "H02_BLOCKER__G02_REQUIRED_P0_5_OF_5_POSITIVE_CONTROL_NOT_INDEPENDENTLY_QUALIFIED__CANONICAL_I03_REQUIRES_UNRESOLVED_WHEN_29002_SELECTED_DENOMINATOR_EXCEEDS_24897_G02_PROJECTED_Q301_2_TARGET_SUPPORT__4105_SELECTED_ROWS_UNPROJECTED",
+  "repair_decision": {
+    "drop_unresolved_denominator_members": false,
+    "lawful_treatment": "KEEP_DENOMINATOR_AND_TYPED_SPECIAL/MISSING; EMIT UNRESOLVED WHEN TARGET_CONFIGURATION_NOT_FULLY_RESOLVED",
+    "mutate_frontier": false,
+    "mutate_target_domain": false,
+    "recode_6_7": false,
+    "validator_action": "DO_NOT_RUN_SEMANTIC_VALIDATOR_FOR_CANDIDATE_WHEN_REQUIRED_QUERY_ROLE_IS_UNRESOLVED"
+  },
+  "schema": "I02_CANONICAL_I03_REPAIR_AUTHORITY_RECEIPT@1.0.0",
+  "status": "REPAIR_AUTHORITY_RESOLVED"
+}
