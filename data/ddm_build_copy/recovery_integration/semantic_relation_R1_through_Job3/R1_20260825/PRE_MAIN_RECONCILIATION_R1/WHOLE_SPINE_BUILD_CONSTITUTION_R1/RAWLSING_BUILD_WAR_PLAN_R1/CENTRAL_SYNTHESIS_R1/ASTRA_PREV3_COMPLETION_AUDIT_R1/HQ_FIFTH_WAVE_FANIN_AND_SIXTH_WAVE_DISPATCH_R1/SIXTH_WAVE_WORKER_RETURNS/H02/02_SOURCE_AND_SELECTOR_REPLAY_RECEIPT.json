@@ -1,0 +1,37 @@
+{
+  "schema": "H02_INDEPENDENT_SOURCE_SELECTOR_REPLAY_RECEIPT@1.0.0",
+  "status": "PASS",
+  "library_scope": "EXACT_LITS1_CARRIER_ONLY",
+  "source": {
+    "file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "version": 1,
+    "name": "LITS-2006-data.dta",
+    "bytes": 139531180,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows": 29002,
+    "variables": 1198
+  },
+  "q310": {
+    "counts": {"1":12340,"2":7511,"3":9085,"MISSING":66},
+    "row_semantic_root_sha256": "a979c15c93502b77979041ffd8451c602f63a7fcbb145106d68a78414be92455",
+    "selector_roots": {
+      "1":"0a62f6f0e3d78b429022b95c2594a3fcbf053b8af588f0ceb304ac3dafe700d2",
+      "2":"0bad1e397f5b74b6136ba82e8d81fc608d1df7124e6ff043048cc5cd91ef9c83",
+      "3":"b477bf705a93bb672d9ae670a1daa38013c2aa2841d0c506f722ab1bbdbb2f3d",
+      "MISSING":"810a81a5663c05dcd0e2f4c2c972f66dc16e7446c87054bb412242632dc57348"
+    }
+  },
+  "q311": {
+    "counts": {"1":16582,"2":4548,"3":7826,"MISSING":46},
+    "row_semantic_root_sha256": "af193e948fd2199bb784f476475d6dd4c6b96698a01e1804e5a6ce69b93c49aa",
+    "selector_roots": {
+      "1":"bffb9d2e9da447a27aaf7c8f889a07d5c47389a58ad933d3ea9867f83e127869",
+      "2":"43ffb4ef1de60354b9c943135fd0f31ee54d31edbcd3bb6abf147e5bff1dce1f",
+      "3":"642a70ba00a4f7292d96267647068c3bfc83f5efc75451ce00a7df4cd2d62837",
+      "MISSING":"847c4e89a7336a5cb5ac6d73953b87091640231ba7cd5c5376e37044a12a03fb"
+    }
+  },
+  "q301_2_independent_counts": {"1":4501,"2":7141,"3":6460,"4":7631,"5":3054,"6":137,"7":62,"MISSING":16},
+  "q301_7_independent_counts": {"1":4324,"2":7820,"3":6070,"4":7135,"5":3388,"6":100,"7":145,"MISSING":20},
+  "method": "INDEPENDENT_DIRECT_CARRIER_SCAN__NO_G02_RUNNER_CALL"
+}
