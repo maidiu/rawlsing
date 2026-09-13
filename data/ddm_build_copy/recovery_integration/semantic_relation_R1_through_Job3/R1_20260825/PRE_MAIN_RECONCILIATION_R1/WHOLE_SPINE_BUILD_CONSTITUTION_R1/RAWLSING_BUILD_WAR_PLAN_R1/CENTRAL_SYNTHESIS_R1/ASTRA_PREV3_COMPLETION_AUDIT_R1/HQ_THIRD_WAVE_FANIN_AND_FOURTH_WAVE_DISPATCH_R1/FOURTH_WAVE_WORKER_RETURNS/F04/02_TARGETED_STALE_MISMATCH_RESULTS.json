@@ -1,0 +1,98 @@
+{
+  "schema": "PREV3_F04_TARGETED_STALE_MISMATCH_RESULTS_R1",
+  "status": "SOURCE_LEVEL_INCOMPATIBILITY_PROOF_COMPLETE",
+  "commission_id": "F04",
+  "target_blocker": "E05_D05_STALE_CURRENTNESS_RECEIPT_REF_LAUNDERING",
+  "tested_implementation_identity": {
+    "path": "rawlsing_next/objective_non_event_publication_serving_adapter.py",
+    "git_blob": "a1e2ae8775707eb30097279cde91f30271b6d243"
+  },
+  "accepted_m5_identity": {
+    "path": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+    "git_blob": "18735bdb31a220aed032aa722574d685e2bdddf5"
+  },
+  "accepted_m4_identity": {
+    "path": "rawlsing_next/m4_v557_v558_publication_repository.py",
+    "git_blob": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360"
+  },
+  "controls": [
+    {
+      "id": "F04-C01",
+      "case": "opaque exact-looking currentness ref",
+      "current_d05_result": "ACCEPTED_IF_NON_NULL_ON_CURRENT_PATH",
+      "required_result": "MUST_NOT_AUTHORIZE_CURRENT_SERVING",
+      "disposition": "ORIGINAL_E05_BLOCKER_CONFIRMED"
+    },
+    {
+      "id": "F04-C02",
+      "case": "actual M5 currentness object with state STALE",
+      "m5_result": "FAIL_CLOSED",
+      "reason": "_validate_currentness rejects every state except CURRENT",
+      "d05_repair_feasibility": "NO_DIRECT_ACCEPTED_BINDING_PATH_TO_D05_NON_EVENT_RESOLUTION"
+    },
+    {
+      "id": "F04-C03",
+      "case": "actual M5 currentness object with state REFRESH_REQUIRED",
+      "m5_result": "FAIL_CLOSED",
+      "reason": "_validate_currentness rejects every state except CURRENT",
+      "d05_repair_feasibility": "NO_DIRECT_ACCEPTED_BINDING_PATH_TO_D05_NON_EVENT_RESOLUTION"
+    },
+    {
+      "id": "F04-C04",
+      "case": "actual M5 currentness object with state INVALID",
+      "m5_result": "FAIL_CLOSED",
+      "reason": "_validate_currentness rejects every state except CURRENT",
+      "d05_repair_feasibility": "NO_DIRECT_ACCEPTED_BINDING_PATH_TO_D05_NON_EVENT_RESOLUTION"
+    },
+    {
+      "id": "F04-C05",
+      "case": "actual M5 CURRENT receipt bound to unrelated or mismatched M4 resolution",
+      "m5_result": "FAIL_CLOSED",
+      "reason": "receipt.resolution_receipt_ref must equal the exact deterministic M4 resolution receipt ref"
+    },
+    {
+      "id": "F04-C06",
+      "case": "pass D05 NonEventResolutionResult to M5 currentness constructor",
+      "m5_result": "FAIL_CLOSED_BEFORE_IDENTITY_MINT",
+      "reason": "make_structural_currentness_receipt requires isinstance(resolution, M4 ResolutionResult)",
+      "proof_class": "TYPE_AND_CONTRACT_INCOMPATIBILITY"
+    },
+    {
+      "id": "F04-C07",
+      "case": "pass D05 NonEventResolutionResult through M5 runtime exact-resolution path",
+      "m5_result": "FAIL_CLOSED",
+      "reason": "_exact_m4_resolution requires an exact M4 ResolutionResult and deterministic resolve_v558 parity",
+      "proof_class": "TYPE_AND_REPLAY_INCOMPATIBILITY"
+    },
+    {
+      "id": "F04-C08",
+      "case": "mediate D05 D1-prime producer through M4 so M5 can bind currentness",
+      "m4_result": "OUTSIDE_ACCEPTED_ROOT_FAMILY_AUTHORITY",
+      "reason": "ALLOWED_ROOT_FAMILIES is exactly V553/V554/V555/V556; D05 producer family is SDTF_D1_PRIME_OBJECTIVE_POSITIONED_CONSEQUENCE",
+      "f04_authority": "FORBIDDEN_TO_WIDEN_M4_OR_CHANGE_PRODUCER_FAMILY"
+    },
+    {
+      "id": "F04-C09",
+      "case": "manually instantiate M5 StructuralCurrentnessReceipt with D05 resolution ref and recomputed hash",
+      "result": "NOT_LAWFUL_REPAIR",
+      "reason": "would bypass accepted M5 constructor/exact-M4-resolution semantics and relabel a non-M4 binding as M5 currentness",
+      "f04_authority": "FORBIDDEN_TO_CHANGE_M5_SEMANTICS"
+    },
+    {
+      "id": "F04-C10",
+      "case": "HISTORICAL D05 item with null currentness receipt",
+      "result": "UNCHANGED_BY_BLOCKER_DISPOSITION",
+      "reason": "the commissioned defect concerns CURRENT serving only; no historical-to-current promotion is authorized"
+    }
+  ],
+  "fresh_runtime_execution": {
+    "inherited_d05_pytest": "NOT_RUN",
+    "m5_pytest": "NOT_RUN",
+    "reason": "The exact contract incompatibility blocks production repair before mutation and no checkout-backed runner or GitHub Actions run exists on the commission tip. No fresh test-pass claim is fabricated.",
+    "github_actions_runs_on_commission_tip": 0
+  },
+  "smallest_exact_blocker": "F04_BLOCKER__M5_CURRENTNESS_IS_EXACT_M4_RESOLUTION_BOUND__D05_NON_EVENT_RESOLUTION_IS_DISTINCT_AND_D1_PRIME_IS_OUTSIDE_M4_ALLOWED_ROOT_FAMILIES",
+  "gate": "GATE-NON-EVENT-REQUALIFICATION",
+  "gate_disposition": "BLOCKED_ON_EXACT_D05_TO_M5_CURRENTNESS_COMPATIBILITY_AUTHORITY",
+  "terminal": "TARGETED_CURRENTNESS_CONTROLS_PROVE_SMALLER_CONTRACT_INCOMPATIBILITY__NO_UNAUTHORIZED_REPAIR"
+}
