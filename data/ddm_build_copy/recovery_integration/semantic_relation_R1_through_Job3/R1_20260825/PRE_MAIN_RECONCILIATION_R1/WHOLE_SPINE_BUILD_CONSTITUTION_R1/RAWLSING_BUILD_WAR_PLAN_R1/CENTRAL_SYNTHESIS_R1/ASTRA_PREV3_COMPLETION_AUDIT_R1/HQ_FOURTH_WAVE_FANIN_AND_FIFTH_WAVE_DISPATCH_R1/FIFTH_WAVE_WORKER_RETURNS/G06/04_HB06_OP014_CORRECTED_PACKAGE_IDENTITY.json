@@ -1,0 +1,50 @@
+{
+  "schema": "HB06_OP014_CORRECTED_PACKAGE_IDENTITY@1.0.0",
+  "status": "PASS__DETERMINISTIC_CORRECTED_PACKAGE_IDENTITY_SEALED",
+  "canonicalization": "UTF8_JSON_SORT_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE",
+  "package_canonical_sha256": "87145396928d28e97d147d67a2071eb41bdd92bbece33666162b95d9b3971242",
+  "canonical_identity_payload": {
+    "schema": "HB06_OP014_CORRECTED_PACKAGE_IDENTITY@1.0.0",
+    "package_id": "HB06_FINAL_COMMON_TWO_SOURCE_PARITY_ORACLE_PACKAGE_R1_PLUS_G06_OP014_CORRECTION",
+    "base_package_canonical_sha256": "caf478a072ca558de8c86f6d89a60399636ed71d7772ad43d7d0167bc59f20f8",
+    "base_identity_blob": "69f105e7aec4d5212ad856fdb2878cf7078d067d",
+    "g06_commission_tip": "1d2bd0079f0c5ee267cf45da8fccf63284fa72c9",
+    "hq_authority": "9203a15e0c8a18da5588b7b0ceb7cf823ce9af2a",
+    "f06_blocker_return": "c6c7051a5f28b46cecb18147b885dd556cc0d84f",
+    "hb05_manifest_blob": "e2bd3415c02bf7c8879773d09133f25d2c4d6a0c",
+    "c09_measurement_law_blob": "2729ab4dca887f22fb3c90265f10c70020afdd3e",
+    "correction_artifact_sha256": "6baf927e346ed15ce7498c929b943acce921d05493119472c0b9afd9a7a328dc",
+    "correction_canonical_sha256": "9f4ce959855885d3439b2bb4b3beb937f52c861b666b4f79928b3e227ce4f2cb",
+    "authority_trace_sha256": "f4745756bc8c56d3dcc4cca6893f9b252e8b29b9170a98190cd6c676de093aa9",
+    "self_check_artifact_sha256": "29700698eea3fa5a287177ca1eb9e6384dfda11b822d6a9bad4bcd8fa90e6261",
+    "effective_counts": {
+      "sources": 2,
+      "candidates": 3,
+      "parity_dimensions": 13,
+      "operation_ids": 21,
+      "oracle_rows": 42,
+      "explicit_governed_negative_or_refusal_rows": 9
+    },
+    "hard_zeroes": {
+      "existing_oracle_truth_changes": 0,
+      "hb05_changes": 0,
+      "hb07_executions": 0,
+      "c09_executions": 0,
+      "comparative_measurements": 0,
+      "ranking_or_selection_actions": 0,
+      "architecture_or_topology_selection_actions": 0,
+      "library_lookups": 0
+    }
+  },
+  "integrity_checks": {
+    "base_package_unchanged": true,
+    "one_additive_oracle_row_state": true,
+    "autonomous_discovery_distinct_from_op12": true,
+    "candidate_neutral": true,
+    "source_scope_two_mandatory_sources": true,
+    "self_check_passed_14_of_14": true,
+    "hb07_not_executed": true,
+    "c09_not_executed": true
+  },
+  "successor": "READY_FOR_SEPARATE_HB07_CONVERGENCE_RERUN"
+}
