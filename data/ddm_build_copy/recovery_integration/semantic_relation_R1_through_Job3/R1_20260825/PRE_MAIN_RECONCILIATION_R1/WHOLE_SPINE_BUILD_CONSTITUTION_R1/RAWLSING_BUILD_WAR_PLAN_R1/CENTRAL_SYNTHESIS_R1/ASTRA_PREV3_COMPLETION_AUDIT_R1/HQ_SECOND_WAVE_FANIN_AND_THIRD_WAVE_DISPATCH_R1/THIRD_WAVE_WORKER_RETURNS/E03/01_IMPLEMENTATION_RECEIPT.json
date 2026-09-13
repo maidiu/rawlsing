@@ -1,0 +1,60 @@
+{
+  "schema": "E03_OBJECTIVE_POSITION_MATERIALIZER_IMPLEMENTATION_RECEIPT_R1",
+  "commission_tip": "42ead64b00c4e73c550f997de54e6da362c06575",
+  "grain": "PREV3_OBJECTIVE_POSITION_MATERIALIZER_IMPLEMENTATION_AND_REAL_SOURCE_POPULATION_R1_ONLY",
+  "inherited_contract": "PREV3_OBJECTIVE_POSITION_MATERIALIZER_CONTRACT@1.0.0",
+  "fact_schema": "PREV3_OBJECTIVE_POSITION_FACT@1.0.0",
+  "implementation": {
+    "path": "rawlsing_next/prev3_objective_position_materializer.py",
+    "git_blob": "3c7527d3129387e8fd010b56dc981cf2e12542f7",
+    "semantic_candidate_commit": "2b3038f014a40ec4c89023012211690ecc775626",
+    "positive_identity_law": "PREV3POS:<semantic_hash(canonical_fact_material)>",
+    "positive_state": "POSITION_FACT_AUTHORIZED"
+  },
+  "implemented_laws": [
+    "exact immutable canonical D03 input tuple",
+    "exactly one role-authority path: role receipt XOR explicit not-applicable authority",
+    "nonempty evidence, provenance, dependencies and objective allowed-use ceiling",
+    "no latest/default/fuzzy authority selectors",
+    "no V3/person/psychological bootstrap of objective position truth",
+    "content-addressed deterministic replay",
+    "typed nonpositive outcomes with no positive fact ref",
+    "explicit negative requires separate exact authority plus evidence",
+    "currentness and predecessor/successor material participate in immutable identity",
+    "M2 exact-ref handoff only; M2 route authority and F1 closure remain separate"
+  ],
+  "qualification": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run": 34774291726,
+    "job": 103769429116,
+    "result": "success",
+    "semantic_candidate_sha": "2b3038f014a40ec4c89023012211690ecc775626",
+    "evidence_execution_sha": "07dec489bee2409626abcb1ed1cb19c749997f75",
+    "temporary_pr": 358,
+    "temporary_pr_state": "CLOSED_UNMERGED",
+    "receipt_artifact_id": 10323147071,
+    "receipt_artifact_name": "rabochii-court-receipt-34774291726",
+    "receipt_artifact_digest": "sha256:9ffb0ada5b22ac5b4339aa2797635602072097b14735135693df5e7f091e36c7"
+  },
+  "tests": [
+    {
+      "path": "rawlsing_next/tests/test_prev3_objective_position_materializer.py",
+      "git_blob": "2e4d0d950444587c966384cb1c3dd47b34ea86f1"
+    },
+    {
+      "path": "rawlsing_next/tests/test_prev3_objective_position_materializer_controls.py",
+      "git_blob": "5a9c7434a4e4f85b98726ab599e0e47cd4467af2"
+    },
+    {
+      "path": "rawlsing_next/tests/test_a05_z08_positioned_admission.py",
+      "role": "existing positioned-admission regression"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_empirical_objects_authority.py",
+      "role": "existing exact-authority/object regression"
+    }
+  ],
+  "production_fact_minted": false,
+  "reason_no_real_fact": "MISSING_EXACT_POST_IMPLEMENTATION_POSITION_PRODUCER_AUTHORITY_BINDING",
+  "authority_ceiling": "IMPLEMENTATION_QUALIFIED__DOES_NOT_SELF_ISSUE_POSITION_SEMANTICS_OR_PRODUCER_AUTHORITY"
+}
