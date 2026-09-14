@@ -1,0 +1,76 @@
+{
+  "adapter_id": "PRE553_SOURCE_STATE_TARGET_DISPOSITION_ADAPTER@1.0.0",
+  "bounds": {
+    "independent_qualification_performed": false,
+    "k03_consumed": false,
+    "learned_workload_executed": false,
+    "native_code_table_in_generic_runtime": false,
+    "source_specific_semantics_in_generic_runtime": false,
+    "structural_v553_plus_changed": false,
+    "v3_v2_changed": false,
+    "world_scope": "OBJECTIVE_ONLY"
+  },
+  "branch": "agent/rabochii-prev3-w9-k02-source-state-target-production-integration-r1",
+  "candidate_content_sha256": {
+    "evidence/selftest/prev3_source_state_target_disposition_production.py": "663f3ec3ea0d1d838b8a75b1ee75759a6d971b4ef2cbae9a37d1cb09545ee220",
+    "rawlsing_next/pre553_source_state_target_disposition.py": "918f0a7e7c8622cc07b9234740e260ac2e4e7560a5aab3ddf534db9b3c36aa6e",
+    "rawlsing_next/source_state_target_disposition_contract.py": "8c75d41d846363329147ad30187bd30cbfd6dc2e1105f2304e3d94db4150f1d4"
+  },
+  "commission_parent_j02": "4c86fb44d06e27763b004dbd3181271cfb83efc1",
+  "commission_tip": "d2e025a4199cd631521b815705de02ec89d9adf3",
+  "contract_id": "PREV3_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_PRODUCTION@1.0.0",
+  "contract_stages": [
+    "RAW_SOURCE_STATE",
+    "SOURCE_LOCAL_GOVERNED_STATE",
+    "PRODUCT_TARGET_DISPOSITION",
+    "DENOMINATOR_RESOLUTION_CHECK",
+    "EMPIRICAL_RESULT"
+  ],
+  "grain": "PREV3_SOURCE_AGNOSTIC_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_PRODUCTION_INTEGRATION_R1_ONLY",
+  "production_api": [
+    "rawlsing_next.source_state_target_disposition_contract.normalize_contract",
+    "rawlsing_next.source_state_target_disposition_contract.denominator_resolution_check",
+    "rawlsing_next.source_state_target_disposition_contract.empirical_result_receipt",
+    "rawlsing_next.source_state_target_disposition_contract.replay_identity",
+    "rawlsing_next.pre553_source_state_target_disposition.execute_source_state_target_disposition_query",
+    "rawlsing_next.pre553_source_state_target_disposition.replay_source_state_target_disposition_query"
+  ],
+  "receipt_id": "PREV3_SOURCE_AGNOSTIC_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_PRODUCTION_INTEGRATION_R1",
+  "selftest": {
+    "check_count": 15,
+    "check_ids": [
+      "same_native_material_no_universal_meaning",
+      "unmapped_and_nonresponse_fail_closed",
+      "unresolved_denominator_member_retained",
+      "result_emission_after_gate_only",
+      "exact_record_accounting",
+      "no_post_outcome_denominator_deletion",
+      "risk_target_authority_distinct",
+      "risk_authority_preoutcome_frozen",
+      "native_code_table_inexpressible",
+      "raw_value_fallback_forbidden",
+      "resolved_support_equals_denominator",
+      "deterministic_replay_identity",
+      "supported_fact_support_equality_enforced",
+      "adapter_source_agnostic",
+      "quarantined_legacy_vocabulary_absent"
+    ],
+    "contract_hash": "7d0f34e62ca4ae1d1806de6e9aeaf8c3e6af463c2d0d206539f94fcd50dbe798",
+    "resolved_gate_hash": "7710fcc7a32dbea7aeff11b2039adf586f6a02390572b196cae8da1123ccaefd",
+    "resolved_replay_identity": "505cd5e1b3611e600b55267e9245135035cc9e56c0a2d16396cf6cf9427bf014",
+    "resolved_result_hash": "6cb2b30265cedec2dedda35fbbedb61cfa7b34ae1fdb47f05677c22d9d79b3de",
+    "status": "PASS"
+  },
+  "status": "PASS",
+  "successor_gate": "Fresh independent qualification is required before central production integration. K02 and K03 must return separately to HQ before learned-world re-execution.",
+  "verification": {
+    "executed_exact_candidate_content_commands": [
+      "python3 evidence/selftest/prev3_source_state_target_disposition_production.py",
+      "python3 -m py_compile rawlsing_next/source_state_target_disposition_contract.py rawlsing_next/pre553_source_state_target_disposition.py evidence/selftest/prev3_source_state_target_disposition_production.py"
+    ],
+    "repo_replay_commands_after_checkout": [
+      "python3 evidence/selftest/prev3_source_state_target_disposition_production.py",
+      "python3 -m py_compile rawlsing_next/source_state_target_disposition_contract.py rawlsing_next/pre553_source_state_target_disposition.py evidence/selftest/prev3_source_state_target_disposition_production.py"
+    ]
+  }
+}
