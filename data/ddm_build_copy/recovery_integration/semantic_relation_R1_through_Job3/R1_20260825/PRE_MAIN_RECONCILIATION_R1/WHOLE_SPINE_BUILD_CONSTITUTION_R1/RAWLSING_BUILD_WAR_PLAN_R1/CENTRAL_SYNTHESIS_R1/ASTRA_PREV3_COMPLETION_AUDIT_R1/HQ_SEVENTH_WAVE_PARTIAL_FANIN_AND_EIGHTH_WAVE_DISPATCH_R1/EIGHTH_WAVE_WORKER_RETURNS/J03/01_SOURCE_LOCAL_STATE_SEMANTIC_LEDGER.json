@@ -1,0 +1,157 @@
+{
+  "schema": "W8_J03_LITS_I_Q301_SOURCE_LOCAL_STATE_SEMANTIC_LEDGER_ARTIFACT_R1",
+  "grain": "LITS_I_Q301_SOURCE_LOCAL_STATE_SEMANTIC_AUTHORITY_R1_ONLY",
+  "branch": "agent/rabochii-prev3-w8-j03-lits-q301-source-state-semantics-r1",
+  "commission_tip": "1f12e8ef941e6054176c56925eb66e7ee027b0cf",
+  "commission_blob": "0933637ec7870588692af340a8fcca3cb475bef2",
+  "ledger_material": {
+    "schema": "LITS_I_Q301_SOURCE_LOCAL_STATE_SEMANTIC_AUTHORITY_R1",
+    "grain": "LITS_I_Q301_SOURCE_LOCAL_STATE_SEMANTIC_AUTHORITY_R1_ONLY",
+    "authority_scope": {
+      "source_family": "LiTS",
+      "wave": "2006/LiTS-I",
+      "question_family": "Q.3.01",
+      "variables": [
+        "q301_2",
+        "q301_7"
+      ],
+      "scope_basis": "OFFICIAL_Q3_01_SHARED_SCALE_APPLIES_TO_ALL_ELEVEN_Q301_ITEMS"
+    },
+    "source_evidence": {
+      "carrier": {
+        "name": "LITS-2006-data.dta",
+        "bytes": 139531180,
+        "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "rows": 29002
+      },
+      "official_questionnaire": {
+        "name": "LiTSI_Questionnaire.pdf",
+        "bytes": 240732,
+        "sha256": "b94bdcf4a9f2e2e025bf35e5364f79acf0b1f5fa05c035064e674fa58a921eae",
+        "locator": "page 10, Q.3.01, SHOW CARD 8",
+        "scale": {
+          "1": "Strongly disagree",
+          "2": "Disagree",
+          "3": "Neither disagree nor agree",
+          "4": "Agree",
+          "5": "Strongly agree",
+          "6": "Not applicable",
+          "7": "Don't know"
+        }
+      },
+      "source_codebook_identity": {
+        "name": "LITS I codebook.csv",
+        "bytes": 208277,
+        "sha256": "91698cbc22d7498c3587bcacd7f96be47323d2bc9867cec5103e954e5099eb0c",
+        "use_in_this_adjudication": "IDENTITY_RECORDED; DIRECT_SEMANTIC RULING GROUNDED IN OFFICIAL QUESTIONNAIRE PLUS RELEASED DTA METADATA"
+      }
+    },
+    "family_scale_semantics": [
+      {
+        "native_state": "1",
+        "source_label": "strongly disagree",
+        "semantic_class": "SOURCE_NATIVE_SUBSTANTIVE",
+        "governed_state": "SUBSTANTIVE_SCALE_POINT__STRONGLY_DISAGREE"
+      },
+      {
+        "native_state": "2",
+        "source_label": "disagree",
+        "semantic_class": "SOURCE_NATIVE_SUBSTANTIVE",
+        "governed_state": "SUBSTANTIVE_SCALE_POINT__DISAGREE"
+      },
+      {
+        "native_state": "3",
+        "source_label_questionnaire": "Neither disagree nor agree",
+        "source_label_dta": "neither disagree not agree",
+        "semantic_class": "SOURCE_NATIVE_SUBSTANTIVE",
+        "governed_state": "SUBSTANTIVE_SCALE_POINT__NEITHER_DISAGREE_NOR_AGREE",
+        "evidence_note": "TEXT_VARIANT_RECORDED__NO_CODE_ASSIGNMENT_CONFLICT"
+      },
+      {
+        "native_state": "4",
+        "source_label": "agree",
+        "semantic_class": "SOURCE_NATIVE_SUBSTANTIVE",
+        "governed_state": "SUBSTANTIVE_SCALE_POINT__AGREE"
+      },
+      {
+        "native_state": "5",
+        "source_label": "strongly agree",
+        "semantic_class": "SOURCE_NATIVE_SUBSTANTIVE",
+        "governed_state": "SUBSTANTIVE_SCALE_POINT__STRONGLY_AGREE"
+      },
+      {
+        "native_state": "6",
+        "source_label": "not applicable",
+        "semantic_class": "TYPED_INAPPLICABLE_SPECIAL_STATE",
+        "governed_state": "SOURCE_SPECIAL__NOT_APPLICABLE"
+      },
+      {
+        "native_state": "7",
+        "source_label": "don't know",
+        "semantic_class": "TYPED_NONRESPONSE_SPECIAL_STATE",
+        "governed_state": "SOURCE_SPECIAL__DONT_KNOW"
+      },
+      {
+        "native_state": "SYSTEM_MISSING",
+        "source_label": null,
+        "semantic_class": "PHYSICAL_SYSTEM_MISSING",
+        "governed_state": "PHYSICAL_SYSTEM_MISSING__REASON_UNSPECIFIED",
+        "authority_ceiling": "NO_INFERENCE_TO_DK_IAP_REFUSAL_OR_ROUTING_REASON"
+      }
+    ],
+    "variable_observation_ledger": {
+      "q301_2": {
+        "question_label": "perception of present political sit. w.r.t. 1989",
+        "observed_counts": {
+          "1": 4377,
+          "2": 6440,
+          "3": 5226,
+          "4": 6972,
+          "5": 1882,
+          "6": 1774,
+          "7": 2327,
+          "SYSTEM_MISSING": 4
+        },
+        "total_rows": 29002,
+        "all_observed_native_states_accounted": true
+      },
+      "q301_7": {
+        "question_label": "perception of present life satisfaction",
+        "observed_counts": {
+          "1": 2889,
+          "2": 6112,
+          "3": 6511,
+          "4": 10334,
+          "5": 2479,
+          "6": 224,
+          "7": 442,
+          "SYSTEM_MISSING": 11
+        },
+        "total_rows": 29002,
+        "all_observed_native_states_accounted": true
+      }
+    },
+    "critical_ruling": {
+      "code_6": "NOT_APPLICABLE",
+      "code_7": "DONT_KNOW",
+      "q301_2_q301_7_difference": "NONE_AT_SOURCE_STATE_SEMANTIC_LAYER__SAME_Q3_01_FAMILY_SCALE",
+      "family_scope_proved": true,
+      "family_scope_basis": "OFFICIAL_QUESTIONNAIRE_DECLARES_ONE_Q3_01_SCALE_THEN_LISTS_ALL_11_ITEMS_UNDER_THAT_SCALE"
+    },
+    "nonownership": {
+      "does_not_decide": [
+        "PRODUCT_TARGET_DOMAIN_MEMBERSHIP",
+        "RESOLVED_NON_TARGET_DISPOSITION",
+        "QUERY_DENOMINATOR_EXCLUSION",
+        "LEARNED_WORLD_POSITIVE_CONTROL_RESTORATION"
+      ],
+      "no_recode": true,
+      "no_denominator_mutation": true,
+      "no_target_domain_widening": true
+    },
+    "unresolved_source_semantics": [],
+    "terminal": "J03_PASS__Q301_SOURCE_LOCAL_STATES_1_7_AND_SYSTEM_MISSING_RESOLVED__6_NOT_APPLICABLE__7_DONT_KNOW"
+  },
+  "ledger_material_sha256": "37fa3395b61902b7049d4c26f09e62af314cea7a30783d21ab87e4512f46febb",
+  "terminal": "J03_PASS__Q301_SOURCE_LOCAL_STATES_1_7_AND_SYSTEM_MISSING_RESOLVED__6_NOT_APPLICABLE__7_DONT_KNOW"
+}
