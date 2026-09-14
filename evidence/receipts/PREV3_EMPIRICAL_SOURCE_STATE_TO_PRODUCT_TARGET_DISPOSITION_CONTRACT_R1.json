@@ -1,0 +1,49 @@
+{
+  "receipt_id": "PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1",
+  "status": "PASS",
+  "branch": "agent/rabochii-prev3-w8-j02-source-state-target-disposition-r1",
+  "commission_parent": "decaa46fe285ad22b6e8f9d1c54eb98be21cf02a",
+  "grain": "PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1_ONLY",
+  "contract_stages": [
+    "RAW_SOURCE_STATE",
+    "SOURCE_LOCAL_GOVERNED_STATE",
+    "PRODUCT_TARGET_DISPOSITION",
+    "DENOMINATOR_RESOLUTION_CHECK",
+    "EMPIRICAL_RESULT"
+  ],
+  "dispositions": [
+    "NUMERATOR_AND_DENOMINATOR",
+    "DENOMINATOR_ONLY",
+    "EXCLUDED_FROM_TARGET_DENOMINATOR",
+    "UNRESOLVED"
+  ],
+  "artifacts": [
+    "tools/prev3_source_state_target_disposition.py",
+    "evidence/fixtures/prev3_source_state_target_disposition_fixture.json",
+    "evidence/selftest/prev3_source_state_target_disposition_contract.py",
+    "evidence/receipts/PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1.json",
+    "evidence/validation/prev3/PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1.md"
+  ],
+  "checks": [
+    "same_native_code_source_local_divergence",
+    "governed_state_may_remain_unresolved",
+    "unresolved_blocks_empirical_result",
+    "arithmetic_after_gate_only",
+    "excluded_state_absent_from_denominator",
+    "synthetic_only_source_identifiers",
+    "auditable_stage_sequence",
+    "new_artifacts_free_of_prohibited_legacy_vocabulary"
+  ],
+  "commands": [
+    "python3 evidence/selftest/prev3_source_state_target_disposition_contract.py",
+    "python3 -m py_compile tools/prev3_source_state_target_disposition.py evidence/selftest/prev3_source_state_target_disposition_contract.py"
+  ],
+  "bounds": {
+    "world_scope": "OBJECTIVE_ONLY",
+    "source_specific_semantics": false,
+    "numeric_native_meanings_inferred": false,
+    "positive_empirical_execution": false,
+    "unrelated_files_changed": false
+  },
+  "successor_gate": "HQ must combine this reusable contract with separately governed source-local semantic authority before any later learned positive empirical execution."
+}

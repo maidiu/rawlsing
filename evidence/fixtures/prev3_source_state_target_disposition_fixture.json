@@ -1,0 +1,81 @@
+{
+  "contract_id": "PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1",
+  "resolved_case": {
+    "target_id": "SYNTHETIC_OBJECTIVE_TARGET_ALPHA",
+    "world_scope": "OBJECTIVE",
+    "records": [
+      {
+        "record_id": "SYNTHETIC_RECORD_A",
+        "raw_source_state": {
+          "source_id": "SYNTHETIC_SOURCE_ALPHA",
+          "native_state": 7
+        },
+        "source_local_governed_state": {
+          "authority_id": "SYNTHETIC_AUTHORITY_ALPHA",
+          "semantic_state": "SYNTHETIC_ALPHA_STATE"
+        },
+        "product_target_disposition": "NUMERATOR_AND_DENOMINATOR"
+      },
+      {
+        "record_id": "SYNTHETIC_RECORD_B",
+        "raw_source_state": {
+          "source_id": "SYNTHETIC_SOURCE_BETA",
+          "native_state": 7
+        },
+        "source_local_governed_state": {
+          "authority_id": "SYNTHETIC_AUTHORITY_BETA",
+          "semantic_state": "SYNTHETIC_BETA_STATE"
+        },
+        "product_target_disposition": "DENOMINATOR_ONLY"
+      },
+      {
+        "record_id": "SYNTHETIC_RECORD_C",
+        "raw_source_state": {
+          "source_id": "SYNTHETIC_SOURCE_GAMMA",
+          "native_state": 3
+        },
+        "source_local_governed_state": {
+          "authority_id": "SYNTHETIC_AUTHORITY_GAMMA",
+          "semantic_state": "SYNTHETIC_GAMMA_STATE"
+        },
+        "product_target_disposition": "EXCLUDED_FROM_TARGET_DENOMINATOR"
+      }
+    ],
+    "expected": {
+      "numerator": 1,
+      "denominator": 2,
+      "excluded": 1,
+      "value": 0.5
+    }
+  },
+  "unresolved_case": {
+    "target_id": "SYNTHETIC_OBJECTIVE_TARGET_BETA",
+    "world_scope": "OBJECTIVE",
+    "records": [
+      {
+        "record_id": "SYNTHETIC_RECORD_D",
+        "raw_source_state": {
+          "source_id": "SYNTHETIC_SOURCE_DELTA",
+          "native_state": 9
+        },
+        "source_local_governed_state": {
+          "authority_id": "SYNTHETIC_AUTHORITY_DELTA",
+          "semantic_state": "SYNTHETIC_DELTA_STATE"
+        },
+        "product_target_disposition": "UNRESOLVED"
+      },
+      {
+        "record_id": "SYNTHETIC_RECORD_E",
+        "raw_source_state": {
+          "source_id": "SYNTHETIC_SOURCE_EPSILON",
+          "native_state": 2
+        },
+        "source_local_governed_state": {
+          "authority_id": "SYNTHETIC_AUTHORITY_EPSILON",
+          "semantic_state": "SYNTHETIC_EPSILON_STATE"
+        },
+        "product_target_disposition": "NUMERATOR_AND_DENOMINATOR"
+      }
+    ]
+  }
+}
