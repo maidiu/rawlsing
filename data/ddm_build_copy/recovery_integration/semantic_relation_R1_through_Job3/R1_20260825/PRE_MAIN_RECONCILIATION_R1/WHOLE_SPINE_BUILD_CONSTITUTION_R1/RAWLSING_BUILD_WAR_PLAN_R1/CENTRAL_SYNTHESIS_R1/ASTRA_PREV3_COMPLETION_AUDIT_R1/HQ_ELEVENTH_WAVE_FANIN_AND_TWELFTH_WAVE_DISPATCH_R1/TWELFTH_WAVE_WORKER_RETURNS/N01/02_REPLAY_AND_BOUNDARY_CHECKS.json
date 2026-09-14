@@ -1,0 +1,36 @@
+{
+  "schema": "N01_REPLAY_AND_BOUNDARY_CHECKS@1.0.0",
+  "status": "PASS",
+  "checks": [
+    {"id":"N01-C01","claim":"commission branch/tip exact","result":"PASS"},
+    {"id":"N01-C02","claim":"predecessor root #1 and original F1 identity preserved unchanged","result":"PASS"},
+    {"id":"N01-C03","claim":"PREV3POS identity, J04 authority, carrier blob and central integration identity exact","result":"PASS"},
+    {"id":"N01-C04","claim":"PROJECT_CURRENT_OBJECTIVE_WORLD_RELEASE != PRESENT_DAY_WORLD_TRUTH preserved","result":"PASS"},
+    {"id":"N01-C05","claim":"release-selection authority limited to exactly F1 + PREV3POS","result":"PASS"},
+    {"id":"N01-C06","claim":"successor scope and immutable release identity content-addressed","result":"PASS"},
+    {"id":"N01-C07","claim":"F1 reuses exact J01 release-status binding unchanged","result":"PASS"},
+    {"id":"N01-C08","claim":"PREV3POS binding uses exact observation-grain valid-time/currentness basis without present-day promotion","result":"PASS"},
+    {"id":"N01-C09","claim":"producer v1.2 limited to exact successor scope; no generic denominator widening","result":"PASS"},
+    {"id":"N01-C10","claim":"receipt denominator 2, bound 2, blocked 0, extra 0","result":"PASS"},
+    {"id":"N01-C11","claim":"same canonical input reproduces exact receipt hash cee63962a249f1e9f55f6ddef7a3e7cd88df3cbf8042ecd30af54c2c10315d07","result":"PASS"},
+    {"id":"N01-C12","claim":"no world validity or world root #2 constructed","result":"PASS"}
+  ],
+  "check_count": 12,
+  "pass_count": 12,
+  "semantic_identity_hashes": {
+    "release_selection_authority": "affcb7dfba87a0a7a0aa4538e2d049aa3fce5de7ee13474e70f5b2ebdd710158",
+    "objective_world_scope": "e38b9675844060d0baa5f5253a9d1c8f921319489a3b0136c228189f74259bb5",
+    "immutable_release": "c1973cf59447e3ed973713feab18b499856902a1a48d348a62bf4d8628ce5108",
+    "prev3pos_release_status_binding": "7fca450c37127f94355e2453bc75dde6373734a3d7f732baab78d19aa0a31f0b",
+    "producer_contract": "39d72c7ad85f6c39e32580a9458f9e8ae79c8a12a7c2c83505c901eae04a58fa",
+    "world_currentness_receipt": "cee63962a249f1e9f55f6ddef7a3e7cd88df3cbf8042ecd30af54c2c10315d07"
+  },
+  "replay_parity": "PASS",
+  "production_runtime_code_changed": false,
+  "pytest_claimed": false,
+  "governed_actions_court_claimed": false,
+  "court_surface_note": "N04 separately owns governed bounded-court execution surface recovery.",
+  "world_validity_ref": null,
+  "world_root_2": null,
+  "terminal": "N01_PASS__MECHANICAL_SECOND_WORLD_ROOT_SUCCESSION_REPLAY_READY_FOR_SEPARATE_WORKER"
+}
