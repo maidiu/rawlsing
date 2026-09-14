@@ -1,0 +1,24 @@
+{
+  "schema": "K01_WORLD_TIME_CONTRACT_AND_RECEIPT_REPLAY_EVIDENCE@1.0.0",
+  "result": "PASS",
+  "tests": [
+    {"id":"K01-T01","name":"COMMISSION_TIP_AND_PARENT_EXACT","status":"PASS"},
+    {"id":"K01-T02","name":"J01_AUTHORITY_AND_BINDING_EXACT","status":"PASS"},
+    {"id":"K01-T03","name":"H01_V1_LEGACY_CLASSES_PRESERVED","status":"PASS"},
+    {"id":"K01-T04","name":"NONTEMPORAL_CLASS_ADDED_WITHOUT_TIME_COERCION","status":"PASS"},
+    {"id":"K01-T05","name":"EXACT_1_OF_1_CONSTITUENT_COVERAGE","status":"PASS"},
+    {"id":"K01-T06","name":"NO_EVENT_EFFECTIVE_HISTORICAL_TIME_CREATED","status":"PASS"},
+    {"id":"K01-T07","name":"NO_PRESENT_DAY_OR_WALL_CLOCK_INFERENCE","status":"PASS"},
+    {"id":"K01-T08","name":"CONTRACT_CANONICAL_HASH_REPLAY","status":"PASS","first":"e5c0ea62a7ff2ae006fa9722676245addbcba0d079f2e1d2079f3a9ffe247e10","second":"e5c0ea62a7ff2ae006fa9722676245addbcba0d079f2e1d2079f3a9ffe247e10"},
+    {"id":"K01-T09","name":"RECEIPT_CANONICAL_HASH_REPLAY","status":"PASS","first":"dd71fa2c3ff7781a196a98a63c4984602e213f31d3264bd6875e7f9923926bc9","second":"dd71fa2c3ff7781a196a98a63c4984602e213f31d3264bd6875e7f9923926bc9"},
+    {"id":"K01-T10","name":"WORLD_VALIDITY_ROOT_NOT_CONSTRUCTED","status":"PASS"}
+  ],
+  "passed": 10,
+  "failed": 0,
+  "contract_hash": "e5c0ea62a7ff2ae006fa9722676245addbcba0d079f2e1d2079f3a9ffe247e10",
+  "receipt_hash": "dd71fa2c3ff7781a196a98a63c4984602e213f31d3264bd6875e7f9923926bc9",
+  "receipt_object_id": "PREV3WCT:dd71fa2c3ff7781a196a98a63c4984602e213f31d3264bd6875e7f9923926bc9",
+  "production_code_tests": "NOT_APPLICABLE__GOVERNED_CONTRACT_RECONCILIATION_AND_CANONICAL_RECEIPT_RERUN_ONLY",
+  "pytest": "NOT_RUN",
+  "successor_gate": "K01_RECEIPT_PASS__WORLD_VALIDITY_AND_FIRST_REAL_WORLD_ROOT_CONSTRUCTION_READY_FOR_SEPARATE_HQ_DISPATCH"
+}
