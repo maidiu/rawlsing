@@ -1,0 +1,84 @@
+{
+  "artifact_kind": "PREV3_SECOND_WORLD_ROOT_SUCCESSION_AUTHORITY_COURT_R1",
+  "grain": "PREV3_SECOND_REAL_OBJECTIVE_WORLD_ROOT_POSITION_PUBLICATION_SUCCESSION_REPLAY_R1_ONLY",
+  "status": "BLOCKER",
+  "terminal": "M01_BLOCK__PREV3POS_HAS_NO_ACCEPTED_OBJECTIVE_WORLD_RELEASE_STATUS_BINDING_FOR_EXACT_TWO_CONSTITUENT_SUCCESSOR_RELEASE",
+  "commission_tip": "856cf8f55cdb28067a20cc7744cfecbb8ba3cce8",
+  "hq_authority": "917f7bdc21998bf585fa58f2f960e0aaecf0ff86",
+  "predecessor": {
+    "world_root_ref": "PREV3WORLD:800a9301ce81207e82c849ee81b220131d31800676deff93801b7dc659946146",
+    "world_validity_ref": "PREV3WVALID:ef99c3f95c3f92c779f3da1681a2fca57a0ff2bfcdc42a83d5e56aae06397b4f",
+    "return_commit": "d419aaabe30c87d9aaa50721ba01391ea5fdf8c5",
+    "mutated": false
+  },
+  "unchanged_original_constituent": {
+    "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+    "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+    "release_status_binding": "urn:rawlsing:prev3:nontemporal-release-status-binding:sha256:de1726bfb708840212e7b2968eef37ab68e3c897fedf9947fbf1cddf8c16d880",
+    "release_status_binding_hash": "de1726bfb708840212e7b2968eef37ab68e3c897fedf9947fbf1cddf8c16d880"
+  },
+  "qualified_position_publication": {
+    "fact_ref": "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02",
+    "fact_hash": "c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02",
+    "carrier_blob": "7d2a5dbb3e0979c599632645867aa48a336a8e79",
+    "carrier_contract": "PREV3_OBJECTIVE_POSITION_FACT_OWNER_PRESERVING_V557_V558_PUBLICATION@1.0.0",
+    "carrier_contract_hash": "cb608401080b164ab0c8d9dbb0ffd0efb39b8a1713ac3ca840c279f696f04737",
+    "j04_authority_material_hash": "7cd66ca4f8a413c3ad9bf5559a9b83d34103c421251081dad31aac580813c630",
+    "l04_qualification_return": "daa347d86645aff62db700f66dc83d07f534297b",
+    "identity_preserved": true,
+    "replay_qualified": true,
+    "authority_ceiling": "EXACT_SINGLETON_SOURCE_DOMAIN_USE__CONTEXT_ONLY__NO_TEMPORAL_OR_PRESENT_DAY_PERSISTENCE_PROMOTION"
+  },
+  "proposed_successor_release": {
+    "state": "PROPOSAL_ONLY__NOT_AN_ACCEPTED_WORLD_RELEASE",
+    "constituent_count": 2,
+    "constituents": [
+      "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+      "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02"
+    ],
+    "exact_addition_only": "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02"
+  },
+  "accepted_authority_limits": {
+    "j01_rule": "PREV3_NONTEMPORAL_STRUCTURAL_PRODUCT_RELEASE_STATUS_AUTHORITY@1.0.0",
+    "j01_rule_hash": "65c0cfcf8d33bcbf9bb88813eb43c6951377bd0ce5d268bd03f1c72799059509",
+    "j01_proving_scope": "SOLE_E01_F1",
+    "j01_position_fact_binding_present": false,
+    "k01_world_time_producer_contract_hash": "e5c0ea62a7ff2ae006fa9722676245addbcba0d079f2e1d2079f3a9ffe247e10",
+    "k01_existing_receipt": "PREV3WCT:dd71fa2c3ff7781a196a98a63c4984602e213f31d3264bd6875e7f9923926bc9",
+    "k01_release_selection_scope": "EXACT_E01_BOUNDED_RELEASE_ONLY",
+    "k01_accepted_denominator": 1,
+    "k01_lawfully_bound": 1,
+    "k01_extra": 0,
+    "denominator_widening_authorized": false
+  },
+  "blocker": {
+    "smallest_missing_object": "ACCEPTED_RELEASE_STATUS_BINDING_FOR_PREV3POS_IN_THE_EXACT_TWO_CONSTITUENT_SUCCESSOR_RELEASE",
+    "why_terminal_here": "The position fact's accepted valid-time/currentness material is observation-grain only and cannot establish project-current world-release membership. J01 froze release-status authority and an exact binding for the sole E01 F1, not PREV3POS. Without a competent binding for PREV3POS, the proposed two-member release cannot become an accepted bound release and K01 cannot lawfully issue a new world-currentness receipt.",
+    "coupled_scope_limit": "The inherited K01 receipt and release-selection authority are additionally exact to E01 denominator 1; they cannot be reused or widened to denominator 2.",
+    "required_upstream_owner": "A competent PRE-V3 objective-world release-status/release-selection authority owner must explicitly admit the exact two-constituent successor release and issue the exact PREV3POS release-status binding (or an authority-equivalent exact governed object) before K01 receipt construction can be rerun."
+  },
+  "outputs_not_created": {
+    "successor_world_currentness_receipt": null,
+    "second_world_validity": null,
+    "second_world_root": null,
+    "predecessor_linkage_object": null
+  },
+  "evidence_checks": [
+    {"id": "M01-C01", "holding": "commission branch and tip exact", "result": "PASS"},
+    {"id": "M01-C02", "holding": "root #1 and validity #1 exact and immutable", "result": "PASS"},
+    {"id": "M01-C03", "holding": "original F1 identity and J01 binding unchanged", "result": "PASS"},
+    {"id": "M01-C04", "holding": "PREV3POS publication carrier blob and singleton identity exact", "result": "PASS"},
+    {"id": "M01-C05", "holding": "L04 independently qualified deterministic publication and no temporal promotion", "result": "PASS"},
+    {"id": "M01-C06", "holding": "proposed successor contains exactly F1 plus PREV3POS", "result": "PASS"},
+    {"id": "M01-C07", "holding": "J01 accepted release-status binding exists for F1 only; no PREV3POS world-release binding is accepted", "result": "PASS"},
+    {"id": "M01-C08", "holding": "K01 accepted release-selection/currentness scope remains exact E01 denominator 1", "result": "PASS"},
+    {"id": "M01-C09", "holding": "denominator widening or observation-currentness laundering would exceed authority", "result": "PASS"},
+    {"id": "M01-C10", "holding": "no receipt, validity, root #2, or root #1 mutation was fabricated", "result": "PASS"}
+  ],
+  "evidence_check_summary": "10/10 PASS__BLOCKER_PROVED",
+  "runtime_test_execution": "NOT_ENTERED__AUTHORITY_BLOCKER_PRECEDES_LAWFUL_SUCCESSOR_RECEIPT_CONSTRUCTION",
+  "library_used": false,
+  "main_mutated": false,
+  "pre_main_mutated": false,
+  "obl063_revived": false
+}
