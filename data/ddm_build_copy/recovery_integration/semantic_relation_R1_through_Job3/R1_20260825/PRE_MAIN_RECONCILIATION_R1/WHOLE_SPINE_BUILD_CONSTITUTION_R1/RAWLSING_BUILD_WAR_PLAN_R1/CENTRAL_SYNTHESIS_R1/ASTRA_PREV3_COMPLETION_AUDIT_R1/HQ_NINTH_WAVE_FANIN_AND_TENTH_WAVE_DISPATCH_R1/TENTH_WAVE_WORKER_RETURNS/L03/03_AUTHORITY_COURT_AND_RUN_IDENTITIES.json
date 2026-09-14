@@ -1,0 +1,59 @@
+{
+  "schema": "L03_LITS_I_LEARNED_QUERY_ENVELOPE_AUTHORITY_COURT_R1@1.0.0",
+  "court_id": "L03_LITS_I_LEARNED_QUERY_ENVELOPE_AUTHORITY_COURT_R1",
+  "court_kind": "PRE_OUTCOME_QUERY_ENVELOPE_AND_EXPECTED_RECORD_SET_AUTHORITY_ADJUDICATION",
+  "commission_tip": "eee532f0927db99ad2040d987772a506680192dc",
+  "result": "BLOCK__EXACT_EXPECTED_RECORD_ID_EXTENSION_NOT_MATERIALIZED",
+  "checks": [
+    {"id": "C01_EXACT_C11_RELEASE_BOUND", "status": "PASS"},
+    {"id": "C02_COMPLETE_29002_RECORD_UNIVERSE_ACCOUNTING_REQUIRED", "status": "PASS"},
+    {"id": "C03_K03_Q301_2_TARGET_LOCAL_RISK_AUTHORITY_EXACT", "status": "PASS"},
+    {"id": "C04_K03_Q301_7_TARGET_LOCAL_RISK_AUTHORITY_EXACT", "status": "PASS"},
+    {"id": "C05_CODE6_NOT_APPLICABLE_PRESERVED_DISTINCT", "status": "PASS"},
+    {"id": "C06_CODE7_DONT_KNOW_PRESERVED_DISTINCT", "status": "PASS"},
+    {"id": "C07_SYSTEM_MISSING_REASON_UNSPECIFIED_PRESERVED_DISTINCT", "status": "PASS"},
+    {"id": "C08_P0_AND_Q301_2_MARGINAL_BIND_TO_R2", "status": "PASS"},
+    {"id": "C09_Q301_7_MARGINAL_P2_P3_BIND_TO_R7", "status": "PASS"},
+    {"id": "C10_P1_JOINT_AND_P4_BIND_TO_MECHANICAL_R2_INTERSECTION_R7", "status": "PASS"},
+    {"id": "C11_NO_PREDICTOR_MISSINGNESS_DENOMINATOR_RULE_INVENTED", "status": "PASS"},
+    {"id": "C12_F02_Q310_Q311_SELECTOR_ROOTS_EXACT_AND_PREDICATE_ONLY", "status": "PASS"},
+    {"id": "C13_50_CANDIDATE_77_ROLE_FRONTIER_PRESERVED", "status": "PASS"},
+    {"id": "C14_CANONICAL_CANDIDATE_HASH_ORDER_PRESERVED", "status": "PASS"},
+    {"id": "C15_ZERO_LEARNED_OUTCOME_EXECUTION", "status": "PASS"},
+    {"id": "C16_K02_NOT_CONSUMED_AS_QUALIFIED_PRODUCTION_AUTHORITY", "status": "PASS"},
+    {"id": "C17_NO_MAIN_PREMAIN_OR_OBL063_MUTATION", "status": "PASS"},
+    {"id": "C18_EXACT_R2_R7_R27_MEMBER_ID_EXTENSIONS_AND_CANONICAL_ROOTS_FROZEN", "status": "BLOCK", "reason": "K03 explicitly leaves member IDs for mechanical materialization from the exact carrier; no accepted repository artifact persists them; the exact Library carrier was materialized but this worker execution surface failed all attempted local binary/code execution calls before DTA decode, so extensional IDs/roots were not truthfully derivable in this run."}
+  ],
+  "passed_checks": 17,
+  "blocked_checks": 1,
+  "failed_checks": 0,
+  "library": {
+    "used": true,
+    "file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "version": "1",
+    "filename": "LITS-2006-data.dta",
+    "materialization_status": "PASS",
+    "materialized_byte_length": 139531180,
+    "accepted_sha256_from_frozen_authority": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "new_local_byte_hash_execution_completed": false,
+    "dta_decode_completed": false
+  },
+  "runtime_attempt_disposition": {
+    "container_execution": "WORKER_SURFACE_TRANSPORT_FAILURE",
+    "private_python_execution": "WORKER_SURFACE_TRANSPORT_FAILURE",
+    "user_visible_python_execution": "WORKER_SURFACE_TRANSPORT_FAILURE",
+    "semantic_interpretation": "NOT_A_NEW_RAWLSING_AUTHORITY_DEFECT__ONLY_PREVENTS_CLAIMING_UNDERIVED_EXTENSIONAL_SET_ROOTS"
+  },
+  "frozen_without_outcome": {
+    "candidate_count": 50,
+    "query_role_count": 77,
+    "R2_expected_cardinality": 24897,
+    "R7_expected_cardinality": 28325,
+    "R27_definition": "R2 INTERSECTION R7",
+    "R27_expected_cardinality": null,
+    "learned_workload_executed": false,
+    "learned_outcomes_observed": false
+  },
+  "blocker": "L03_BLOCK__K03_Q301_2_Q301_7_MEMBER_RECORD_ID_EXTENSIONS_AND_THEIR_COMMON_INTERSECTION_HAVE_NOT_BEEN_MATERIALIZED_FROM_THE_EXACT_CARRIER",
+  "terminal": "L03_BLOCK__QUERY_ENVELOPE_AND_PREQUERY_COMPOSITION_LAW_FROZEN_FOR_ALL_50_CANDIDATES_77_ROLES__EXACT_EXPECTED_RECORD_ID_EXTENSIONS_NOT_FABRICATED__REQUIRES_CARRIER_DERIVATION_BEFORE_LEARNED_EXECUTION"
+}
