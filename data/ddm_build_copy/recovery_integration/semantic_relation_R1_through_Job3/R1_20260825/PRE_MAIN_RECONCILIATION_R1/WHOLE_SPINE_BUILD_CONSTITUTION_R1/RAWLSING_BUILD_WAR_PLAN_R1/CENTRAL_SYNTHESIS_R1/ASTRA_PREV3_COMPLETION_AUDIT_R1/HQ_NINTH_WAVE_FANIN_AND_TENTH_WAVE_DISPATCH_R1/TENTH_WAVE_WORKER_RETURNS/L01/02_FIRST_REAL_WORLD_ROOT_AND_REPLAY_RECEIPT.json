@@ -1,0 +1,79 @@
+{
+  "schema": "L01_FIRST_REAL_OBJECTIVE_WORLD_ROOT_AND_REPLAY_RECEIPT_R1",
+  "status": "PASS__FIRST_REAL_OBJECTIVE_WORLD_ROOT_MATERIALIZED__REPLAY_EXACT",
+  "commission_tip": "4a15f7767668375233c2ee0c03acb91aee07a4ad",
+  "world_validity_ref": {
+    "kind": "PREV3_OBJECTIVE_WORLD_VALIDITY",
+    "object_id": "PREV3WVALID:ef99c3f95c3f92c779f3da1681a2fca57a0ff2bfcdc42a83d5e56aae06397b4f",
+    "content_hash": "ef99c3f95c3f92c779f3da1681a2fca57a0ff2bfcdc42a83d5e56aae06397b4f"
+  },
+  "constructor": {
+    "path": "rawlsing_next/prev3_objective_world_release_root.py",
+    "git_blob": "73c38f273adcad843d3ca95ddd387248ccb9aa76",
+    "entrypoint": "build_objective_world_release_root",
+    "replay_entrypoint": "replay_objective_world_release_root"
+  },
+  "root_material": {
+    "schema": "PREV3_OBJECTIVE_WORLD_RELEASE_ROOT_R1",
+    "release_authority_ref": {
+      "id": "GT12_RELATION_V554_TO_V557_F1_CONTEXT_PUBLICATION_AUTHORITY",
+      "version": "1.0.0",
+      "content_hash": "1b2c1238139287e30acaa418e28967585a34a7fae9c937a9322b7c9e9a76322a"
+    },
+    "repository_ref": {
+      "kind": "V558_REPOSITORY_BUNDLE",
+      "object_id": "V558REPO:47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1",
+      "content_hash": "47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1"
+    },
+    "publication_bundle_ref": {
+      "kind": "V557_PUBLICATION_BUNDLE",
+      "object_id": "V557PUB:2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a",
+      "content_hash": "2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a"
+    },
+    "index_manifest_ref": {
+      "kind": "V558_INDEX_MANIFEST",
+      "object_id": "V558IDX:68762efbcf404016d697327807f54884ea07959511ffbbc38b5ee0e75dd33c4d",
+      "content_hash": "68762efbcf404016d697327807f54884ea07959511ffbbc38b5ee0e75dd33c4d"
+    },
+    "objective_world_scope_ref": {
+      "kind": "PREV3_OBJECTIVE_WORLD_SCOPE",
+      "object_id": "PREV3SCOPE:f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320",
+      "content_hash": "f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320"
+    },
+    "valid_time_authority_ref": {
+      "id": "PREV3_OBJECTIVE_WORLD_VALID_TIME_AUTHORITY",
+      "version": "1.0.0",
+      "content_hash": "4a912bd0bf1217b1095eaa5da4376bc1d55314fcfc80c62d2ef7fa085b5e3c02"
+    },
+    "world_validity_ref": {
+      "kind": "PREV3_OBJECTIVE_WORLD_VALIDITY",
+      "object_id": "PREV3WVALID:ef99c3f95c3f92c779f3da1681a2fca57a0ff2bfcdc42a83d5e56aae06397b4f",
+      "content_hash": "ef99c3f95c3f92c779f3da1681a2fca57a0ff2bfcdc42a83d5e56aae06397b4f"
+    },
+    "predecessor_world_root_ref": null
+  },
+  "root_ref": {
+    "kind": "PREV3_OBJECTIVE_WORLD_RELEASE_ROOT_R1",
+    "object_id": "PREV3WORLD:800a9301ce81207e82c849ee81b220131d31800676deff93801b7dc659946146",
+    "content_hash": "800a9301ce81207e82c849ee81b220131d31800676deff93801b7dc659946146"
+  },
+  "same_tuple_replay_ref": {
+    "kind": "PREV3_OBJECTIVE_WORLD_RELEASE_ROOT_R1",
+    "object_id": "PREV3WORLD:800a9301ce81207e82c849ee81b220131d31800676deff93801b7dc659946146",
+    "content_hash": "800a9301ce81207e82c849ee81b220131d31800676deff93801b7dc659946146"
+  },
+  "replay_parity": "PASS",
+  "accepted_release": {
+    "publication_governance_bundle_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+    "v557_publication_bundle_hash": "2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a",
+    "v558_repository_hash": "47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1",
+    "constituent_denominator": 1,
+    "constituent_ref": {
+      "kind": "F1",
+      "object_id": "urn:rawlsing:v554:f1:sha256:3530f08f43e704ad67e0fb74984b03b7ad0f068ea1de4bcf658f3b2d591bd56d",
+      "content_hash": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb"
+    }
+  },
+  "predecessor_world_root_ref": null,
+  "first_root": true
+}
