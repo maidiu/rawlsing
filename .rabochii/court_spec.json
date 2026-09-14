@@ -1,7 +1,11 @@
 {
   "schema_id": "RABOCHII_COURT_SPEC@1.0.0",
-  "semantic_candidate_sha": "da1c728a4f25777090ed12e3740e268cce2a53ea",
+  "semantic_candidate_sha": "745a080ed705938428b4688f23f6d3c6440fd000",
   "python_version": "3.12",
-  "tests": ["rawlsing_next/tests/test_c09_hb05_op014_autonomous_program_m04_fresh.py"],
-  "determinism_mode": "EXACT"
+  "tests": ["rawlsing_next/tests/test_rabochii_governed_court_surface_smoke_n04.py"],
+  "determinism_mode": "EXACT",
+  "env": {
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+  }
 }
