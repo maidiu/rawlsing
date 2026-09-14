@@ -1,1 +1,21 @@
-{"schema":"J01_SELF_CHECK@1.0.0","result":"PASS"}
+{
+  "schema": "J01_NONTEMPORAL_TEMPORAL_STATUS_AUTHORITY_SELF_CHECK@1.0.0",
+  "result": "PASS",
+  "passed": 8,
+  "failed": 0,
+  "authority_artifact_blob": "1482e0ac3d2fc5346e50361e29c99d8f79272347",
+  "authority_rule_content_hash": "65c0cfcf8d33bcbf9bb88813eb43c6951377bd0ce5d268bd03f1c72799059509",
+  "binding_artifact_blob": "9f1d9e540cf5cc569bb5bcd34537a228f113e673",
+  "binding_content_hash": "de1726bfb708840212e7b2968eef37ab68e3c897fedf9947fbf1cddf8c16d880",
+  "tests": [
+    {"id":"J01-T01","name":"COMMISSION_AND_PARENT_EXACT","status":"PASS"},
+    {"id":"J01-T02","name":"SOLE_F1_IDENTITY_EXACT","status":"PASS"},
+    {"id":"J01-T03","name":"SIG004_NONTEMPORAL_SEMANTICS_PRESERVED","status":"PASS"},
+    {"id":"J01-T04","name":"EXACT_SCOPE_RELEASE_AND_MEMBERSHIP_BOUND","status":"PASS"},
+    {"id":"J01-T05","name":"RELEASE_STATUS_DISTINCT_FROM_PRODUCT_TIME","status":"PASS"},
+    {"id":"J01-T06","name":"AUTHORITY_AND_BINDING_HASH_REPLAY","status":"PASS"},
+    {"id":"J01-T07","name":"H01_V1_TWO_CLASS_MISMATCH_PROVED","status":"PASS"},
+    {"id":"J01-T08","name":"COMMISSION_CEILINGS_PRESERVED","status":"PASS"}
+  ],
+  "successor": "AUTHORITY_AND_F1_BINDING_ISSUED__H01_V1_CONTRACT_RECONCILIATION_REQUIRED_BEFORE_RECEIPT_RERUN"
+}
