@@ -1,81 +1,55 @@
 {
-  "contract_id": "PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1",
-  "resolved_case": {
-    "target_id": "SYNTHETIC_OBJECTIVE_TARGET_ALPHA",
-    "world_scope": "OBJECTIVE",
-    "records": [
-      {
-        "record_id": "SYNTHETIC_RECORD_A",
-        "raw_source_state": {
-          "source_id": "SYNTHETIC_SOURCE_ALPHA",
-          "native_state": 7
-        },
-        "source_local_governed_state": {
-          "authority_id": "SYNTHETIC_AUTHORITY_ALPHA",
-          "semantic_state": "SYNTHETIC_ALPHA_STATE"
-        },
-        "product_target_disposition": "NUMERATOR_AND_DENOMINATOR"
-      },
-      {
-        "record_id": "SYNTHETIC_RECORD_B",
-        "raw_source_state": {
-          "source_id": "SYNTHETIC_SOURCE_BETA",
-          "native_state": 7
-        },
-        "source_local_governed_state": {
-          "authority_id": "SYNTHETIC_AUTHORITY_BETA",
-          "semantic_state": "SYNTHETIC_BETA_STATE"
-        },
-        "product_target_disposition": "DENOMINATOR_ONLY"
-      },
-      {
-        "record_id": "SYNTHETIC_RECORD_C",
-        "raw_source_state": {
-          "source_id": "SYNTHETIC_SOURCE_GAMMA",
-          "native_state": 3
-        },
-        "source_local_governed_state": {
-          "authority_id": "SYNTHETIC_AUTHORITY_GAMMA",
-          "semantic_state": "SYNTHETIC_GAMMA_STATE"
-        },
-        "product_target_disposition": "EXCLUDED_FROM_TARGET_DENOMINATOR"
-      }
-    ],
-    "expected": {
-      "numerator": 1,
-      "denominator": 2,
-      "excluded": 1,
-      "value": 0.5
+  "authorities": {
+    "replay": {
+      "authority_content_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "authority_id": "SYNTHETIC_REPLAY_AUTHORITY",
+      "authority_kind": "REPLAY_PROTOCOL",
+      "authority_version": "1.0.0"
+    },
+    "risk": {
+      "authority_content_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "authority_id": "SYNTHETIC_RISK_AUTHORITY",
+      "authority_kind": "ROUTING_RISK_SET",
+      "authority_version": "1.0.0"
+    },
+    "source_alpha": {
+      "authority_content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "authority_id": "SYNTHETIC_SOURCE_AUTHORITY_ALPHA",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "authority_version": "1.0.0"
+    },
+    "source_beta": {
+      "authority_content_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "authority_id": "SYNTHETIC_SOURCE_AUTHORITY_BETA",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "authority_version": "1.0.0"
+    },
+    "target": {
+      "authority_content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "authority_id": "SYNTHETIC_TARGET_AUTHORITY",
+      "authority_kind": "TARGET_USE_PERMISSION",
+      "authority_version": "1.0.0"
     }
   },
-  "unresolved_case": {
-    "target_id": "SYNTHETIC_OBJECTIVE_TARGET_BETA",
-    "world_scope": "OBJECTIVE",
-    "records": [
-      {
-        "record_id": "SYNTHETIC_RECORD_D",
-        "raw_source_state": {
-          "source_id": "SYNTHETIC_SOURCE_DELTA",
-          "native_state": 9
-        },
-        "source_local_governed_state": {
-          "authority_id": "SYNTHETIC_AUTHORITY_DELTA",
-          "semantic_state": "SYNTHETIC_DELTA_STATE"
-        },
-        "product_target_disposition": "UNRESOLVED"
-      },
-      {
-        "record_id": "SYNTHETIC_RECORD_E",
-        "raw_source_state": {
-          "source_id": "SYNTHETIC_SOURCE_EPSILON",
-          "native_state": 2
-        },
-        "source_local_governed_state": {
-          "authority_id": "SYNTHETIC_AUTHORITY_EPSILON",
-          "semantic_state": "SYNTHETIC_EPSILON_STATE"
-        },
-        "product_target_disposition": "NUMERATOR_AND_DENOMINATOR"
-      }
-    ]
+  "case_record_ids": {
+    "missing_case": ["SYNTHETIC_RECORD_E"],
+    "not_applicable_member_case": ["SYNTHETIC_RECORD_F"],
+    "prequery_exclusion_case": ["SYNTHETIC_RECORD_G"],
+    "resolved_case": ["SYNTHETIC_RECORD_A", "SYNTHETIC_RECORD_B", "SYNTHETIC_RECORD_C"],
+    "unknown_case": ["SYNTHETIC_RECORD_D"]
+  },
+  "contract_id": "PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1",
+  "records": [
+    ["SYNTHETIC_RECORD_A", "SYNTHETIC_SOURCE_ALPHA", 7, "source_alpha", "ALPHA_LOCAL_SEMANTIC", "SOURCE_SUBSTANTIVE", "DENOMINATOR_MEMBER", "TARGET_MEMBER", "TARGET_DOMAIN_MEMBER", "2"],
+    ["SYNTHETIC_RECORD_B", "SYNTHETIC_SOURCE_BETA", 7, "source_beta", "BETA_LOCAL_SEMANTIC", "SOURCE_SUBSTANTIVE", "DENOMINATOR_MEMBER", "RESOLVED_NON_TARGET", "TARGET_DOMAIN_RESOLVED_COMPLEMENT", "3"],
+    ["SYNTHETIC_RECORD_C", "SYNTHETIC_SOURCE_ALPHA", 3, "source_alpha", "ALPHA_OTHER_LOCAL_SEMANTIC", "SOURCE_SUBSTANTIVE", "PREQUERY_EXCLUDED", "AUTHORIZED_PREQUERY_EXCLUSION", "PREQUERY_ELIGIBILITY_EXCLUSION_BINDING", "4"],
+    ["SYNTHETIC_RECORD_D", "SYNTHETIC_SOURCE_ALPHA", 9, "source_alpha", "ALPHA_SPECIAL", "SOURCE_SPECIFIC_SPECIAL", "DENOMINATOR_MEMBER", "UNRESOLVED", "NO_COMPETENT_BINDING", "5"],
+    ["SYNTHETIC_RECORD_E", "SYNTHETIC_SOURCE_BETA", "opaque-missing-token", "source_beta", "BETA_MISSING", "TYPED_MISSING_NONRESPONSE", "DENOMINATOR_MEMBER", "TYPED_MISSING_NONRESPONSE", "MISSING_NONRESPONSE_BINDING", "6"],
+    ["SYNTHETIC_RECORD_F", "SYNTHETIC_SOURCE_BETA", "opaque-na-token", "source_beta", "BETA_LOCAL_NA", "SOURCE_NOT_APPLICABLE_OR_INELIGIBLE", "DENOMINATOR_MEMBER", "NOT_APPLICABLE_OR_INELIGIBLE", "NOT_APPLICABLE_OR_INELIGIBLE_BINDING", "7"],
+    ["SYNTHETIC_RECORD_G", "SYNTHETIC_SOURCE_BETA", "opaque-any-token", "source_beta", "BETA_LOCAL_ANY", "SOURCE_SUBSTANTIVE", "PREQUERY_EXCLUDED", "AUTHORIZED_PREQUERY_EXCLUSION", "PREQUERY_ELIGIBILITY_EXCLUSION_BINDING", "8"]
+  ],
+  "refs": {
+    "risk_set": {"content_hash": "1111111111111111111111111111111111111111111111111111111111111111", "kind": "SyntheticRiskSet", "object_id": "SYNTHETIC_RISK_SET"},
+    "target_domain": {"content_hash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", "kind": "SyntheticTargetDomain", "object_id": "SYNTHETIC_TARGET_DOMAIN"}
   }
 }

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rawlsing:prev3:PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1",
+  "title": "PRE-V3 empirical source-state to product-target-disposition contract R1",
+  "type": "object",
+  "required": ["query_envelope", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "query_envelope": {
+      "type": "object",
+      "required": ["query_id", "target_id", "world_scope", "authority_phase", "expected_record_ids", "source_semantic_authority_refs", "target_authority_ref", "risk_set_authority_ref", "replay_authority_ref", "target_domain_ref", "risk_set_ref"],
+      "properties": {
+        "query_id": {"type": "string", "minLength": 1},
+        "target_id": {"type": "string", "minLength": 1},
+        "world_scope": {"const": "OBJECTIVE"},
+        "authority_phase": {"const": "FROZEN_PRE_OUTCOME"},
+        "expected_record_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "source_semantic_authority_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/sourceAuthority"}},
+        "target_authority_ref": {"$ref": "#/$defs/targetAuthority"},
+        "risk_set_authority_ref": {"$ref": "#/$defs/riskAuthority"},
+        "replay_authority_ref": {"$ref": "#/$defs/replayAuthority"},
+        "target_domain_ref": {"$ref": "#/$defs/exactRef"},
+        "risk_set_ref": {"$ref": "#/$defs/exactRef"},
+        "query_envelope_hash": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["record_id", "raw_source_state", "source_local_governed_state", "prequery_eligibility", "product_target_disposition"],
+        "properties": {
+          "record_id": {"type": "string", "minLength": 1},
+          "raw_source_state": {"type": "object", "required": ["source_id", "native_state"], "properties": {"source_id": {"type": "string", "minLength": 1}, "native_state": {}}, "additionalProperties": false},
+          "source_local_governed_state": {
+            "type": "object", "required": ["semantic_state", "state_class", "authority_ref"],
+            "properties": {"semantic_state": {"type": "string", "minLength": 1}, "state_class": {"enum": ["SOURCE_SUBSTANTIVE", "TYPED_MISSING_NONRESPONSE", "SOURCE_NOT_APPLICABLE_OR_INELIGIBLE", "SOURCE_SPECIFIC_SPECIAL", "SOURCE_UNKNOWN"]}, "authority_ref": {"$ref": "#/$defs/sourceAuthority"}}, "additionalProperties": false
+          },
+          "prequery_eligibility": {
+            "type": "object", "required": ["decision", "phase", "authority_ref", "risk_set_ref", "basis_ref"],
+            "properties": {"decision": {"enum": ["DENOMINATOR_MEMBER", "PREQUERY_EXCLUDED", "ELIGIBILITY_UNRESOLVED"]}, "phase": {"const": "PRE_QUERY"}, "authority_ref": {"$ref": "#/$defs/riskAuthority"}, "risk_set_ref": {"$ref": "#/$defs/exactRef"}, "basis_ref": {"$ref": "#/$defs/exactRef"}}, "additionalProperties": false
+          },
+          "product_target_disposition": {
+            "type": "object", "required": ["disposition", "resolution_basis", "authority_ref", "target_domain_ref"],
+            "properties": {"disposition": {"enum": ["TARGET_MEMBER", "RESOLVED_NON_TARGET", "TYPED_MISSING_NONRESPONSE", "NOT_APPLICABLE_OR_INELIGIBLE", "AUTHORIZED_PREQUERY_EXCLUSION", "UNRESOLVED"]}, "resolution_basis": {"enum": ["TARGET_DOMAIN_MEMBER", "TARGET_DOMAIN_RESOLVED_COMPLEMENT", "MISSING_NONRESPONSE_BINDING", "NOT_APPLICABLE_OR_INELIGIBLE_BINDING", "PREQUERY_ELIGIBILITY_EXCLUSION_BINDING", "NO_COMPETENT_BINDING"]}, "authority_ref": {"$ref": "#/$defs/targetAuthority"}, "target_domain_ref": {"$ref": "#/$defs/exactRef"}}, "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "exactRef": {"type": "object", "required": ["kind", "object_id", "content_hash"], "properties": {"kind": {"type": "string", "minLength": 1}, "object_id": {"type": "string", "minLength": 1}, "content_hash": {"$ref": "#/$defs/sha256"}}, "additionalProperties": false},
+    "authorityBase": {"type": "object", "required": ["authority_id", "authority_version", "authority_content_hash", "authority_kind"], "properties": {"authority_id": {"type": "string", "minLength": 1}, "authority_version": {"type": "string", "minLength": 1}, "authority_content_hash": {"$ref": "#/$defs/sha256"}, "authority_kind": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+    "sourceAuthority": {"allOf": [{"$ref": "#/$defs/authorityBase"}, {"properties": {"authority_kind": {"const": "SOURCE_SEMANTICS_TOPOLOGY"}}}]},
+    "targetAuthority": {"allOf": [{"$ref": "#/$defs/authorityBase"}, {"properties": {"authority_kind": {"const": "TARGET_USE_PERMISSION"}}}]},
+    "riskAuthority": {"allOf": [{"$ref": "#/$defs/authorityBase"}, {"properties": {"authority_kind": {"const": "ROUTING_RISK_SET"}}}]},
+    "replayAuthority": {"allOf": [{"$ref": "#/$defs/authorityBase"}, {"properties": {"authority_kind": {"const": "REPLAY_PROTOCOL"}}}]}
+  },
+  "x-cross-field-law": [
+    "raw native values are opaque and never imply source-local semantics",
+    "SOURCE_SPECIFIC_SPECIAL and SOURCE_UNKNOWN fail closed to UNRESOLVED in the universal layer",
+    "only PREQUERY_EXCLUDED under exact PRE_QUERY ROUTING_RISK_SET authority changes denominator membership",
+    "TARGET_MEMBER and RESOLVED_NON_TARGET are the only resolved dispositions for denominator members",
+    "typed missing/nonresponse and not-applicable states do not self-delete denominator members",
+    "record ids must exactly account for the frozen expected_record_ids set",
+    "all source, target, risk-set, target-domain and replay identities are content-addressed and replay-bound"
+  ]
+}

@@ -2,38 +2,44 @@
   "receipt_id": "PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1",
   "status": "PASS",
   "branch": "agent/rabochii-prev3-w8-j02-source-state-target-disposition-r1",
-  "commission_parent": "decaa46fe285ad22b6e8f9d1c54eb98be21cf02a",
+  "commission_tip": "decaa46fe285ad22b6e8f9d1c54eb98be21cf02a",
   "grain": "PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1_ONLY",
-  "contract_stages": [
-    "RAW_SOURCE_STATE",
-    "SOURCE_LOCAL_GOVERNED_STATE",
-    "PRODUCT_TARGET_DISPOSITION",
-    "DENOMINATOR_RESOLUTION_CHECK",
-    "EMPIRICAL_RESULT"
-  ],
-  "dispositions": [
-    "NUMERATOR_AND_DENOMINATOR",
-    "DENOMINATOR_ONLY",
-    "EXCLUDED_FROM_TARGET_DENOMINATOR",
-    "UNRESOLVED"
-  ],
-  "artifacts": [
-    "tools/prev3_source_state_target_disposition.py",
-    "evidence/fixtures/prev3_source_state_target_disposition_fixture.json",
-    "evidence/selftest/prev3_source_state_target_disposition_contract.py",
-    "evidence/receipts/PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1.json",
-    "evidence/validation/prev3/PREV3_EMPIRICAL_SOURCE_STATE_TO_PRODUCT_TARGET_DISPOSITION_CONTRACT_R1.md"
-  ],
-  "checks": [
-    "same_native_code_source_local_divergence",
-    "governed_state_may_remain_unresolved",
-    "unresolved_blocks_empirical_result",
-    "arithmetic_after_gate_only",
-    "excluded_state_absent_from_denominator",
-    "synthetic_only_source_identifiers",
-    "auditable_stage_sequence",
-    "new_artifacts_free_of_prohibited_legacy_vocabulary"
-  ],
+  "contract_stages": ["RAW_SOURCE_STATE", "SOURCE_LOCAL_GOVERNED_STATE", "PRODUCT_TARGET_DISPOSITION", "DENOMINATOR_RESOLUTION_CHECK", "EMPIRICAL_RESULT"],
+  "source_state_classes": ["SOURCE_SUBSTANTIVE", "TYPED_MISSING_NONRESPONSE", "SOURCE_NOT_APPLICABLE_OR_INELIGIBLE", "SOURCE_SPECIFIC_SPECIAL", "SOURCE_UNKNOWN"],
+  "product_dispositions": ["TARGET_MEMBER", "RESOLVED_NON_TARGET", "TYPED_MISSING_NONRESPONSE", "NOT_APPLICABLE_OR_INELIGIBLE", "AUTHORIZED_PREQUERY_EXCLUSION", "UNRESOLVED"],
+  "denominator_law": {
+    "membership_authority_kind": "ROUTING_RISK_SET",
+    "exclusion_phase": "PRE_QUERY",
+    "resolved_member_dispositions": ["TARGET_MEMBER", "RESOLVED_NON_TARGET"],
+    "result_gate": "raw_resolved_target_support == raw_denominator_support AND unresolved_record_ids == []",
+    "post_data_denominator_deletion": "FORBIDDEN",
+    "post_data_target_expansion": "FORBIDDEN"
+  },
+  "authority_inputs": ["SOURCE_SEMANTICS_TOPOLOGY", "TARGET_USE_PERMISSION", "ROUTING_RISK_SET", "REPLAY_PROTOCOL"],
+  "determinism": "SHA256_CANONICAL_SEMANTIC_MATERIAL",
+  "selftest": {
+    "status": "PASS",
+    "check_count": 17,
+    "check_ids": [
+      "resolved_target_and_complement_accounting",
+      "same_native_code_has_no_universal_semantics",
+      "source_specific_special_fails_closed",
+      "source_specific_special_fails_closed_result_blocked",
+      "typed_missing_member_does_not_self_delete_or_resolve",
+      "typed_missing_member_does_not_self_delete_or_resolve_result_blocked",
+      "not_applicable_response_does_not_self_delete_denominator",
+      "not_applicable_response_does_not_self_delete_denominator_result_blocked",
+      "prequery_authorized_exclusion_is_the_only_denominator_deletion_path",
+      "post_data_denominator_deletion_forbidden",
+      "post_data_target_domain_substitution_forbidden",
+      "complete_expected_record_accounting_required",
+      "unmapped_source_special_cannot_be_promoted_by_universal_layer",
+      "source_semantic_authority_must_be_frozen_and_exact",
+      "exclusion_requires_exact_prequery_risk_authority",
+      "deterministic_replay_identity",
+      "production_helper_has_no_native_code_table"
+    ]
+  },
   "commands": [
     "python3 evidence/selftest/prev3_source_state_target_disposition_contract.py",
     "python3 -m py_compile tools/prev3_source_state_target_disposition.py evidence/selftest/prev3_source_state_target_disposition_contract.py"
@@ -41,9 +47,9 @@
   "bounds": {
     "world_scope": "OBJECTIVE_ONLY",
     "source_specific_semantics": false,
-    "numeric_native_meanings_inferred": false,
-    "positive_empirical_execution": false,
-    "unrelated_files_changed": false
+    "universal_numeric_code_meanings": false,
+    "learned_positive_execution": false,
+    "producer_self_test_only": true
   },
-  "successor_gate": "HQ must combine this reusable contract with separately governed source-local semantic authority before any later learned positive empirical execution."
+  "successor_gate": "HQ must reconcile this reusable contract with separately governed source-local semantic authority before any learned positive empirical re-execution."
 }
