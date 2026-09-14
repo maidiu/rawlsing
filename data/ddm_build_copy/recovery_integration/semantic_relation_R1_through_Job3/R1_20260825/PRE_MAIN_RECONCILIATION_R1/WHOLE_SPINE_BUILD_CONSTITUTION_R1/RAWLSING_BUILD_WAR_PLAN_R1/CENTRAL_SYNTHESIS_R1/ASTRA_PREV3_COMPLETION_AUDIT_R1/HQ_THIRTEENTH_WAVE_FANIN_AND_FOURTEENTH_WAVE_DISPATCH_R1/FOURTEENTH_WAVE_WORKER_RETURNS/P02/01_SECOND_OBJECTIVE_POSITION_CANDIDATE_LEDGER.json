@@ -1,0 +1,73 @@
+{
+  "blocker": "P02_BLOCK__NO_SECOND_DISTINCT_ACCEPTED_OBJECTIVE_STRUCTURAL_POSITION_POSITIVELY_OWNED",
+  "candidates": [
+    {
+      "basis": "HQ-adopted authority: disposition/person-level; not receiving objective structural position",
+      "decision": "REJECT",
+      "id": "Q86A"
+    },
+    {
+      "basis": "exact source-backed public-clinic experience status; respondent experience, not actor-independent structural position",
+      "decision": "REJECT",
+      "id": "Q69B"
+    },
+    {
+      "basis": "objective source/risk-set context only; no accepted semantic owner/classification establishing structural position; bare-coordinate promotion forbidden",
+      "decision": "REJECT",
+      "id": "COUNTRY_ALPHA3"
+    },
+    {
+      "basis": "reference-only MATRIX_GRID source structure 'Current-versus-past freedoms and equality'; no structural-position owner",
+      "decision": "REJECT",
+      "id": "WSC002B_F0"
+    },
+    {
+      "basis": "no exact accepted semantic owner found; commission forbids promotion from labels alone",
+      "decision": "REJECT",
+      "id": "BARE_EMPLOYMENT_INDUSTRY_OCCUPATION_SECTOR_LABELS"
+    }
+  ],
+  "commission_tip": "26662cd2aa4452fa14460ff472c19717b298674b",
+  "content_hash": "6e95982e2c9847d3fb20465aca3411d3d65e766ea31baebf2df89a859f2f0dcf",
+  "launch_base": "aa9e7829f76a47abbae8085d4de87f11e12741d5",
+  "library_used": false,
+  "positive_baseline": {
+    "class": "FIELD_FORGE_STRUCTURAL_POSITION_CONTEXT_ONLY",
+    "decision": "POSITIVE_BUT_EXCLUDED_NOT_SECOND",
+    "fact": "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02",
+    "owner": "ACTIVE_POSITION__FISCAL_INCORPORATION_OR_OBLIGATION_POSITION",
+    "variable": "Q73A"
+  },
+  "receiver_lane_open": false,
+  "schema": "P02_SECOND_OBJECTIVE_STRUCTURAL_POSITION_CANDIDATE_LEDGER_R1",
+  "search_order": [
+    "repo-native variable semantics: exhausted without second positive owner",
+    "accepted structural classifications: exhausted without second positive owner",
+    "exact source-backed semantic bridges: exhausted without second positive owner",
+    "accepted non-person world/system variables outside frozen canary line: exhausted without second positive owner",
+    "Library: NOT USED"
+  ],
+  "source_proof": [
+    {
+      "blob": "7d2a5dbb3e0979c599632645867aa48a336a8e79",
+      "path": "rawlsing_next/prev3_objective_position_v557_v558_publication.py"
+    },
+    {
+      "blob": "751de0dc54dacfeceb08115fe7cda71b75bce110",
+      "path": "rawlsing_next/wave2_r5_q69b_conditioner_projection.py"
+    },
+    {
+      "blob": "d96933180d310b4078f23127bb5a97a3677728d1",
+      "path": "rawlsing_next/wave1_r5_q86_c11_projection.py"
+    },
+    {
+      "blob": "afdf38a7effe72fa1f4af22d545dcfb3b28aa03d",
+      "path": "rawlsing_next/gt34_q2_q69b_q86a_same_source_materialization.py"
+    },
+    {
+      "blob": "8c6d82b0e1c7dc3f5ba7354f64380231f72f82fb",
+      "path": "rawlsing_next/wsc_gt0_source_preff.py"
+    }
+  ],
+  "status": "BLOCKED"
+}
