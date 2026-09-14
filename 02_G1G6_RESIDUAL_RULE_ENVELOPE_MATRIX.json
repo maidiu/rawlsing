@@ -1,0 +1,393 @@
+{
+  "schema": "R03_M10_M01_G1_G6_RESIDUAL_RULE_ENVELOPE_READINESS_FREEZE_R1",
+  "status": "PASS_COMPLETE_DETERMINISTIC_RESIDUAL_MATRIX__NO_CONCRETE_RULE",
+  "terminal": "R03_PASS__M10_M01_COMPLETE_G1_G6_RESIDUAL_RULE_ENVELOPE_MATRIX_FROZEN__RULE_REMAINS_NONCURRENT",
+  "commission": {
+    "branch": "agent/rabochii-prev3-w16-r03-m10-g1g6-residual-envelope-r1",
+    "tip": "7c5680c426667dccd9d42d08e09d9cb8fb7a415b",
+    "hq_parent": "3b1c59d08bfa5fdb7345811edfe1eb0d546317cb",
+    "grain": "SDTF_M10_M01_G1_G6_RESIDUAL_RULE_ENVELOPE_REQUIREMENTS_AND_READINESS_FREEZE_R1_ONLY",
+    "library_used": false
+  },
+  "contract": {
+    "id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0",
+    "path": "rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py",
+    "blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+    "qualified_runtime_adoption_commit": "73f33a8a4c185c46faec5ac47332153ca079ca5f",
+    "inventory": {
+      "required_matrix_rows": 28,
+      "rule_identity_atoms": 3,
+      "mechanism_class_fields": 1,
+      "constitution_current_selection_fields": 1,
+      "trace_binding_fields": 13,
+      "authority_role_bindings": 6,
+      "value_mode_fields": 1,
+      "rule_currentness_fields": 3
+    }
+  },
+  "named_upstream": {
+    "q01_pass": "aeb377d25f649d6743c4347709cf34a65238e330",
+    "q02_blocker": "ff277902459cbf786e8f7d839b4f786546bd5610",
+    "q03_pass": "e84eb2d35a9711fdf49ec984295cc7b5e3d0ef48",
+    "p03_return": "903079c179abca4eabd163c99b19efdef1855ce9",
+    "m10_source_worker": "0ebca9ff111bea63838f9b68c8e5c3cb93d9d128",
+    "m10_source_ledger_blob": "606de007e0f6dcb28e552bd8c959f3c4ec1fd2a7"
+  },
+  "classification_law": {
+    "SATISFIED_CURRENT": "Exact project-current binding/ref is positively owned and named by adopted upstream authority.",
+    "SATISFIED_CANDIDATE_ONLY": "Upstream fixes candidate semantic/evidentiary content, but no current contract-shaped concrete-rule ref/binding exists yet.",
+    "MISSING": "The contract requires an object/ref/disposition not supplied by the named adopted inputs.",
+    "BLOCKED": "An adopted holding or prerequisite prevents lawful closure without new competent authority/proof.",
+    "NOT_APPLICABLE": "Only where the contract itself makes the field inapplicable for the stated path/state; never inferred from absence."
+  },
+  "candidate": {
+    "id": "M10-M01",
+    "name": "PROPERTY SEPARATION / WAGE DEPENDENCY",
+    "mechanism_class_candidate": "P1 MATERIAL_ACCESS_DEPENDENCY",
+    "q03_position_semantic_candidate": "PRODUCTIVE_ASSET_SEPARATED_ACTIVE_WAGE_LABOUR_POSITION",
+    "q03_candidate_identity": "urn:rawlsing:prev3:objective-position-admission-candidate:sha256:e040ae101388d0c9a87befa4fcd88ab3e861424376ad00b9e864c885d5bb12f9"
+  },
+  "requirement_matrix": [
+    {
+      "id": "R03-G1G6-001",
+      "field": "rule_identity.rule_id",
+      "classification": "MISSING",
+      "requirement": "Exact immutable non-selector rule id.",
+      "closure": "Separately authorized concrete-rule construction must select an exact rule_id; R03 may not mint it.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-002",
+      "field": "rule_identity.rule_version",
+      "classification": "MISSING",
+      "requirement": "Exact immutable non-range rule version.",
+      "closure": "Select exact version; latest/default/range selectors are forbidden.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-003",
+      "field": "rule_identity.rule_content_hash",
+      "classification": "MISSING",
+      "requirement": "Lowercase SHA-256 binding exact concrete rule body.",
+      "closure": "Freeze exact rule body first, then hash it; R03 may not invent the body/hash.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-004",
+      "field": "mechanism_classes",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Nonempty exact P1-P5 class tuple.",
+      "basis": "P03 adopts P1 MATERIAL_ACCESS_DEPENDENCY as the narrowest M10-M01 candidate class.",
+      "closure": "Carry P1 only if future rule body remains within the adopted M10-M01 meaning; widening requires new adjudication.",
+      "blocks_full_envelope": false
+    },
+    {
+      "id": "R03-G1G6-005",
+      "field": "constitution_current_selection_ref",
+      "classification": "MISSING",
+      "requirement": "Exact constitution-current-selection ExactRef independent of rule currentness.",
+      "basis": "HQ runtime adoption 73f33a8a4c185c46faec5ac47332153ca079ca5f makes the R4 package project-current, but a commit SHA is not silently retyped as this ExactRef.",
+      "closure": "Supply the exact immutable constitution-current-selection ExactRef for the concrete envelope.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-006",
+      "field": "trace.source_refs",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Nonempty tuple of exact source ExactRefs.",
+      "basis": "M10 worker 0ebca9ff111bea63838f9b68c8e5c3cb93d9d128; ledger blob 606de007e0f6dcb28e552bd8c959f3c4ec1fd2a7.",
+      "closure": "Materialize contract-shaped source ExactRef(s); raw commit/blob identities remain evidence until typed by competent authority.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-007",
+      "field": "trace.claim_refs",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Nonempty tuple of exact claim ExactRefs.",
+      "basis": "P03 fixes M10-M01 and Wright Ch.3 supplied loci 857-909, 951-959, 978-996; Q03 preserves those claims.",
+      "closure": "Issue immutable claim ExactRef(s); citation/locus prose alone is not the contract-shaped claim ref.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-008",
+      "field": "trace.evidence_status_ref",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact evidence-status/ceiling ref.",
+      "basis": "M10 ledger explicitly says extraction/adjudication evidence is not automatic architecture authority; P03 adopts that ceiling.",
+      "closure": "Freeze that status as an ExactRef without widening source evidence into causal-use or rule authority.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-009",
+      "field": "trace.normalized_mechanism_ref",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact normalized-mechanism ref.",
+      "basis": "P03 fixes the bounded M10-M01 kernel and P1 class.",
+      "closure": "Freeze claim-bounded normalized-mechanism ExactRef preserving P1 ceiling and no P5/topology/person widening.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-010",
+      "field": "trace.permitted_rule_shape_ref",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact permitted concrete rule-shape ref.",
+      "basis": "P03 supplies a documentary kernel but explicitly mints no concrete rule; Q01 owns future semantic-shape adjudication only.",
+      "closure": "Competent rule-shape adjudication must freeze the permitted shape as an ExactRef before rule-body hashing.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-011",
+      "field": "trace.required_objective_inputs_bindings_ref",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact ref covering required objective inputs and counterpart/binding requirements.",
+      "basis": "P03 requires insufficient productive assets + active wage position + employer/counterpart binding; Q03 admits a semantic position candidate only.",
+      "closure": "Freeze exact objective-input/binding ref. Actor-indexed Q03 position input still needs independent qualification/materialization; R01 provisional output is not consumed.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-012",
+      "field": "trace.qualification_realization_proof_contract_ref",
+      "classification": "MISSING",
+      "requirement": "Exact qualification/realization proof-contract ref.",
+      "basis": "HQ says Q03 independent position qualification/materialization is not yet satisfied; R03 may not consume R01 provisional output.",
+      "closure": "Supply project-current proof-contract ExactRef and later only adopted qualification evidence.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-013",
+      "field": "trace.temporal_currentness_contract_ref",
+      "classification": "MISSING",
+      "requirement": "Exact temporal/currentness contract ref.",
+      "closure": "Supply exact valid-time/as-of/currentness contract ref for the concrete rule.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-014",
+      "field": "trace.portability_ceiling_ref",
+      "classification": "MISSING",
+      "requirement": "Exact portability ceiling ref.",
+      "basis": "M10 evidence is historically/institutionally qualified and does not establish universal portability.",
+      "closure": "Supply exact portability ceiling; absence never means universal portability.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-015",
+      "field": "trace.currentness_ceiling_ref",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact currentness-noncollapse ceiling ref.",
+      "basis": "P03 preserves CONSTITUTION CURRENT != RULE CURRENT != APPLICATION CURRENT != FACT CURRENT != WITNESS CURRENT; HQ says no rule/topology current.",
+      "closure": "Freeze that noncollapse as exact currentness-ceiling ExactRef.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-016",
+      "field": "trace.historical_institutional_validity_ref",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact historical/institutional-validity ref.",
+      "basis": "M10 conditions the relation on asset/property/institutional rules; Q03 requires exact institutional-rule context.",
+      "closure": "Freeze historical/institutional validity bounds as an ExactRef; no present-day persistence inference.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-017",
+      "field": "trace.negative_ceiling_ref",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact negative-ceiling ref.",
+      "basis": "Q01 forbids CAUSAL_USE/current-rule/topology widening; Q03 forbids mechanism/topology/causal/person promotion; M10 forbids direct person inference.",
+      "closure": "Consolidate applicable ceilings into one immutable rule-envelope ExactRef without weakening upstream prohibitions.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-018",
+      "field": "trace.v3_stop_boundary_ref",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact V3 stop-boundary ref.",
+      "basis": "P03/Q01/Q03/HQ preserve PRE-V3 objective-world-only and no person-state semantics.",
+      "closure": "Freeze the adopted stop boundary as an exact rule-trace ExactRef; V3/person evidence cannot satisfy objective-rule requirements.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-019",
+      "field": "rule_owner",
+      "classification": "SATISFIED_CURRENT",
+      "requirement": "Mandatory BOUND RULE_OWNER with exact scope, AuthorityRef and nonempty authority-current-selection evidence.",
+      "basis": {
+        "q01_tip": "aeb377d25f649d6743c4347709cf34a65238e330",
+        "artifact_blob": "d5af499bd6cb9a196c869bd86dd0f5c7864b2fc3",
+        "authority_hash": "80fd8e9a59b76e36392872c13536cdebf7de6273e5233d6bd285c1d0027a7289",
+        "scope_ref": "SDTF_RULE_OWNER_SCOPE|M10-M01:RULE_OWNER|b6f0bb622158e797aaf4a90b609497ae94c089986e93356532241a64732f4e12",
+        "selection_ref": "SDTF_RULE_OWNER_CURRENT_SELECTION_EVIDENCE|M10-M01:RULE_OWNER:Q01_R1|4d62f67ede66fe0b3b60d46b16934c90024048716d7cc460095807762f14f9b5",
+        "binding_ref": "SDTF_R4_RULE_OWNER_AUTHORITY_BINDING|M10-M01:RULE_OWNER@1.0.0|8b98c6095cc401d58b054b458d4b6b5cfc69176c82b98b62d6bd0735b3f51040"
+      },
+      "closure": "No residual RULE_OWNER work while future rule remains within Q01 exact scope.",
+      "blocks_full_envelope": false
+    },
+    {
+      "id": "R03-G1G6-020",
+      "field": "measurement_authority",
+      "classification": "MISSING",
+      "requirement": "Explicit MEASUREMENT AuthorityCeilingBinding: BOUND with AuthorityRef+selection evidence or NOT_APPLICABLE with exact N/A-basis ref.",
+      "closure": "Competent authority must explicitly choose disposition; absence is not NOT_APPLICABLE.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-021",
+      "field": "estimand_authority",
+      "classification": "MISSING",
+      "requirement": "Explicit ESTIMAND AuthorityCeilingBinding: BOUND with AuthorityRef+selection evidence or NOT_APPLICABLE with exact N/A-basis ref.",
+      "closure": "Competent authority must explicitly choose disposition; absence is not NOT_APPLICABLE.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-022",
+      "field": "identification_authority",
+      "classification": "MISSING",
+      "requirement": "Explicit IDENTIFICATION AuthorityCeilingBinding: BOUND with AuthorityRef+selection evidence or NOT_APPLICABLE with exact N/A-basis ref.",
+      "closure": "Competent authority must explicitly choose disposition; absence is not NOT_APPLICABLE.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-023",
+      "field": "causal_use_authority",
+      "classification": "BLOCKED",
+      "requirement": "Mandatory BOUND CAUSAL_USE with exact scope, competent AuthorityRef and nonempty authority-current-selection evidence.",
+      "basis": "Q02 ff277902459cbf786e8f7d839b4f786546bd5610: Q02_BLOCK__NO_EXACT_PROJECT_CURRENT_EXTERNAL_CAUSAL_USE_AUTHORITY_PLUS_CURRENT_SELECTION_EVIDENCE_FOR_M10_M01; HQ adopts blocker.",
+      "closure": "Competent external causal-use owner must supply exact M10-M01 authority, scope and selection evidence. SOURCE_CITATION != CAUSAL_USE_AUTHORITY; P1_CLASS_MEMBERSHIP != CLAIM_SPECIFIC_CAUSAL_USE_AUTHORITY. R03 does not consume W16 R02.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-024",
+      "field": "calibration_authority",
+      "classification": "MISSING",
+      "requirement": "NUMERIC requires BOUND current CALIBRATION authority; NONNUMERIC requires explicit CALIBRATION NOT_APPLICABLE with exact N/A-basis ref.",
+      "closure": "Close only after value_mode is frozen; no calibration disposition may be inferred from prose.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-025",
+      "field": "value_mode",
+      "classification": "MISSING",
+      "requirement": "Exact RuleValueMode NUMERIC or NONNUMERIC.",
+      "basis": "Current source/P03 kernel is qualitative, but no concrete rule body is minted.",
+      "closure": "Concrete rule-shape construction must explicitly freeze NUMERIC vs NONNUMERIC; R03 does not infer NONNUMERIC from prose.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-026",
+      "field": "rule_currentness",
+      "classification": "SATISFIED_CANDIDATE_ONLY",
+      "requirement": "Exact enum CANDIDATE_NOT_CURRENT, CURRENT_ACCEPTED or HISTORICAL_NONCURRENT.",
+      "basis": "HQ terminal says NO_RULE_OR_TOPOLOGY_CURRENT; R03 forbids CURRENT_ACCEPTED.",
+      "closure": "At this frontier any first assembled rule may only remain CANDIDATE_NOT_CURRENT; future CURRENT_ACCEPTED needs independent selection.",
+      "blocks_full_envelope": false
+    },
+    {
+      "id": "R03-G1G6-027",
+      "field": "rule_current_selection_evidence_refs",
+      "classification": "BLOCKED",
+      "condition": "MANDATORY_FOR_CURRENT_ACCEPTED",
+      "requirement": "Nonempty exact independent rule-current-selection refs for CURRENT_ACCEPTED.",
+      "basis": "HQ says residual envelope closure/independent rule-current-selection is not yet proved; contract requires nonempty refs; R03 forbids CURRENT_ACCEPTED.",
+      "closure": "Only after rule identity and all mandatory envelope bindings close may a separately competent selector issue these refs; Q01 authority currentness/source citation cannot substitute.",
+      "blocks_full_envelope": true
+    },
+    {
+      "id": "R03-G1G6-028",
+      "field": "rule_noncurrent_disposition_refs",
+      "classification": "NOT_APPLICABLE",
+      "condition": "NOT_APPLICABLE_TO_FIRST_CANDIDATE_PATH",
+      "requirement": "Empty for CANDIDATE_NOT_CURRENT/CURRENT_ACCEPTED; nonempty with prior selection only for HISTORICAL_NONCURRENT.",
+      "basis": "No prior current M10-M01 concrete rule exists; CANDIDATE_NOT_CURRENT carries no current or historical disposition proof.",
+      "closure": "No ref now. If a previously-current rule is later retired, both prior selection and noncurrent disposition refs become mandatory.",
+      "blocks_full_envelope": false
+    }
+  ],
+  "classification_counts": {
+    "SATISFIED_CURRENT": 1,
+    "SATISFIED_CANDIDATE_ONLY": 12,
+    "MISSING": 12,
+    "BLOCKED": 2,
+    "NOT_APPLICABLE": 1
+  },
+  "smallest_exact_remaining_dependency_set": [
+    {
+      "id": "DEP-A_RULE_IDENTITY_SHAPE_VALUE",
+      "rows": ["R03-G1G6-001", "R03-G1G6-002", "R03-G1G6-003", "R03-G1G6-009", "R03-G1G6-010", "R03-G1G6-025"],
+      "state": "OPEN",
+      "parallelism": "MAY_PROCEED_NOW_IN_PARALLEL_WITH_DEP_B_DEP_C_DEP_D_DEP_E",
+      "closure": "Freeze exact permitted rule shape/body, normalized-mechanism ref, rule id/version/hash and value_mode."
+    },
+    {
+      "id": "DEP-B_CAUSAL_USE_AUTHORITY",
+      "rows": ["R03-G1G6-023"],
+      "state": "BLOCKED_BY_ADOPTED_Q02",
+      "parallelism": "MAY_BE_ADJUDICATED_INDEPENDENTLY_IN_PARALLEL; R03 DOES_NOT_CONSUME_W16_R02",
+      "closure": "Competent external M10-M01 CAUSAL_USE AuthorityRef + exact scope + nonempty authority-current-selection evidence."
+    },
+    {
+      "id": "DEP-C_AUXILIARY_AUTHORITY_DISPOSITIONS",
+      "rows": ["R03-G1G6-020", "R03-G1G6-021", "R03-G1G6-022", "R03-G1G6-024"],
+      "state": "OPEN",
+      "parallelism": "MEASUREMENT_ESTIMAND_IDENTIFICATION_MAY_PROCEED_NOW; CALIBRATION_WAITS_ON_DEP_A_VALUE_MODE",
+      "closure": "Explicit BOUND or NOT_APPLICABLE dispositions with exact contract material; calibration follows value_mode."
+    },
+    {
+      "id": "DEP-D_TRACE_EXACT_REF_LIFT",
+      "rows": ["R03-G1G6-005", "R03-G1G6-006", "R03-G1G6-007", "R03-G1G6-008", "R03-G1G6-011", "R03-G1G6-015", "R03-G1G6-016", "R03-G1G6-017", "R03-G1G6-018"],
+      "state": "OPEN_WITH_CANDIDATE_EVIDENCE",
+      "parallelism": "MAY_PROCEED_NOW_IN_PARALLEL",
+      "closure": "Lift already-fixed constitution/source/claim/evidence/input/currentness/historical/negative/V3-stop material into exact contract-shaped refs without widening."
+    },
+    {
+      "id": "DEP-E_QUALIFICATION_TEMPORAL_PORTABILITY",
+      "rows": ["R03-G1G6-012", "R03-G1G6-013", "R03-G1G6-014"],
+      "state": "OPEN",
+      "parallelism": "MAY_PROCEED_NOW_IN_PARALLEL; Q03_POSITION_REALIZATION_EVIDENCE_WAITS_FOR_INDEPENDENT_ADOPTED_QUALIFICATION",
+      "closure": "Supply exact qualification/realization proof-contract, temporal/currentness contract and portability ceiling refs."
+    },
+    {
+      "id": "DEP-F_INDEPENDENT_RULE_CURRENT_SELECTION",
+      "rows": ["R03-G1G6-027"],
+      "state": "FINAL_SERIAL_GATE_BLOCKED_UNTIL_DEP_A_THROUGH_DEP_E_CLOSE",
+      "parallelism": "MUST_RUN_LAST_FOR_CURRENT_ACCEPTED",
+      "closure": "After complete valid concrete envelope exists, separately competent selector may issue nonempty exact rule-current-selection evidence."
+    }
+  ],
+  "derived_outputs_not_independent_requirements": [
+    "mechanism_class_composition_ref is derived from contract_id + mechanism_classes",
+    "binding_hash is derived from complete canonical envelope material",
+    "binding.ref is derived from rule identity + binding_hash"
+  ],
+  "noncollapses": [
+    "CONSTITUTION_CURRENT != RULE_CURRENT != APPLICATION_CURRENT != FACT_CURRENT != WITNESS_CURRENT",
+    "AUTHORITY_CURRENT != RULE_CURRENT",
+    "SOURCE_CITATION != CAUSAL_USE_AUTHORITY",
+    "P1_CLASS_MEMBERSHIP != CLAIM_SPECIFIC_CAUSAL_USE_AUTHORITY",
+    "Q03_POSITION_SEMANTIC_ADMISSION != ACTOR_POSITION_FACT",
+    "RULE_OWNER != CAUSAL_USE",
+    "MISSING_AUTHORITY != NOT_APPLICABLE"
+  ],
+  "readiness": {
+    "full_concrete_envelope_validatable_now": false,
+    "current_rule_admission_possible_now": false,
+    "only_exact_current_authority_role_closed": "RULE_OWNER",
+    "adopted_hard_blocker": "CAUSAL_USE authority/current-selection",
+    "first_legal_rule_currentness_before_independent_selection": "CANDIDATE_NOT_CURRENT",
+    "current_accepted_forbidden_at_r03_grain": true
+  },
+  "boundary_preservation": {
+    "new_authority_issued": false,
+    "causal_use_invented": false,
+    "concrete_mechanism_rule_minted": false,
+    "rule_current_accepted_issued": false,
+    "topology_constructed": false,
+    "actor_position_materialized": false,
+    "w16_r01_provisional_output_consumed": false,
+    "w16_r02_provisional_output_consumed": false,
+    "v3_person_state_used": false,
+    "obl063_used": false,
+    "library_used": false,
+    "main_mutated": false,
+    "pre_main_mutated": false
+  }
+}
