@@ -1,0 +1,49 @@
+{
+  "schema": "K05_C09_RERUN_PREFLIGHT_AND_AUTHORITY_RECEIPT_R1",
+  "status": "PASS__SOURCE_RECOVERY_BLOCKER_CLOSED__C09_AUTHORITY_RESOLVED",
+  "grain": "C09_FINAL_CANDIDATE_NEUTRAL_PHYSICAL_COMPARISON_RERUN_R1_ONLY",
+  "commission_tip": "5ee80843b26382f39298c63c269afad15a5c361b",
+  "commission_parent_j05": "e6ebd5b6aa5d40b2781775a11bc16245b3f24333",
+  "frozen_authority": {
+    "c09_exact_order_blob": "e200a9aed7dbdf103ab9306d0dd19b74662faf1b",
+    "c09_measurement_law_blob": "2729ab4dca887f22fb3c90265f10c70020afdd3e",
+    "hb05_manifest_blob": "e2bd3415c02bf7c8879773d09133f25d2c4d6a0c",
+    "hb06_oracle_blob": "4ca86c4b3f629457ef1f3780e5b00d896c2fa99f",
+    "hb07_host_packet_blob": "a017071ef4edcb313e62cefdf4f8e7fa9c939f40",
+    "hb07_launch_authority_blob": "a2770bab82174f8ae606afecc7134a9fb829ad30"
+  },
+  "sources": {
+    "WVS7": {
+      "library_package_file_id": "file_00000000386c820d8760e748b25ad7e1",
+      "version": 1,
+      "package_name": "WVS Wave 7.sav.zip",
+      "package_bytes": 26200230,
+      "materialized_current_turn": true,
+      "j05_package_sha256": "ce92993a022edbe39823f4a95d3f33522179ce4f388e2de2c1778c4ae6f1059a",
+      "selected_member": "WVS Wave 7.sav",
+      "member_bytes": 185163494,
+      "member_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "dimensions": [97220, 613],
+      "identity_basis": "EXACT_LIBRARY_FILE_ID_VERSION_CURRENTLY_MATERIALIZED_PLUS_IMMEDIATE_J05_PARENT_CONTENT_ADDRESSED_EXTRACTION_RECEIPTS"
+    },
+    "LiTS-I": {
+      "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+      "version": 1,
+      "name": "LITS-2006-data.dta",
+      "bytes": 139531180,
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "dimensions": [29002, 1198],
+      "materialized_current_turn": true,
+      "identity_basis": "EXACT_LIBRARY_FILE_ID_VERSION_CURRENTLY_MATERIALIZED_PLUS_FROZEN_H05_HB06_SOURCE_IDENTITY"
+    }
+  },
+  "previous_i05_source_blocker": "H05-P11__EXACT_WVS7_CARRIER_NOT_MATERIALIZABLE_AT_FROZEN_PATH_WITH_REQUIRED_BYTES_AND_SHA256",
+  "previous_i05_source_blocker_disposition": "CLOSED_BY_J05_AND_CURRENT_EXACT_LIBRARY_MATERIALIZATION",
+  "candidate_order": ["A", "B", "C"],
+  "candidate_processes_launched": 0,
+  "reason_no_launch": "GLOBAL_C09_TERMINAL_BLOCKER_RESOLVED_FROM_FROZEN_OP014_AND_MEASUREMENT_LAW_BEFORE_PARTIAL_PERFORMANCE_EXECUTION",
+  "main_mutated": false,
+  "pre_main_mutated": false,
+  "obl063_revived": false,
+  "pre_v3_scope": "OBJECTIVE_WORLD_ONLY"
+}
