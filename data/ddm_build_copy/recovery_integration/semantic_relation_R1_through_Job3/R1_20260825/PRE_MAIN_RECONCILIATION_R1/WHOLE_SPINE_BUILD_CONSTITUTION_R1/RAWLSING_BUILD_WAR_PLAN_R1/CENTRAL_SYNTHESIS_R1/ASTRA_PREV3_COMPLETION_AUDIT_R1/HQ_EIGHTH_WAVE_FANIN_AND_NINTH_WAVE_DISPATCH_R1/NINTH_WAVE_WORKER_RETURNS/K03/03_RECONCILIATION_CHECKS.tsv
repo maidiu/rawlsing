@@ -1,0 +1,17 @@
+check_id	check	result	detail
+K03-C01	J02 bound head exact	PASS	4c86fb44d06e27763b004dbd3181271cfb83efc1
+K03-C02	J03 bound head exact	PASS	9a61151246ebf6ad5866aecc4b7e593282ac0f6f
+K03-C03	q301_2 all carrier rows accounted	PASS	29002
+K03-C04	q301_7 all carrier rows accounted	PASS	29002
+K03-C05	q301_2 substantive member count	PASS	24897
+K03-C06	q301_2 excluded partition	PASS	1774+2327+4=4105
+K03-C07	q301_7 substantive member count	PASS	28325
+K03-C08	q301_7 excluded partition	PASS	224+442+11=677
+K03-C09	J03 code 6 kept distinct	PASS	NOT_APPLICABLE
+K03-C10	J03 code 7 kept distinct	PASS	DONT_KNOW
+K03-C11	system missing reason not inferred	PASS	UNSPECIFIED__NO_INFERENCE
+K03-C12	all non-substantive routes are exact PREQUERY exclusions	PASS	6/7/SYSTEM_MISSING
+K03-C13	all substantive states remain target members	PASS	1..5
+K03-C14	target authorities are J02 TARGET_USE_PERMISSION kind	PASS	q301_2,q301_7
+K03-C15	risk authorities are J02 ROUTING_RISK_SET kind	PASS	q301_2,q301_7
+K03-C16	authority is pre-outcome and target-local	PASS	both targets
