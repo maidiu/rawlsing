@@ -1,0 +1,29 @@
+case_id	qualification	result
+J04-H00	exact proving fact publication and replay	PASS
+J04-H01	V552 re-identification rejected	PASS
+J04-H02	V553/V554/V555/V556 re-identification rejected	PASS
+J04-H03	schema/version mutation rejected	PASS
+J04-H04	ref-kind/semantic-class mutation rejected	PASS
+J04-H05	PREV3POS object-id mutation rejected	PASS
+J04-H06	content-hash mutation rejected	PASS
+J04-H07	nonpositive state cannot publish	PASS
+J04-H08	source-domain use widening rejected	PASS
+J04-H09	bare CONTEXT without exact domain binding rejected	PASS
+J04-H10	ACTIVE_CAUSAL rejected	PASS
+J04-H11	REVIEW not inferred	PASS
+J04-H12	dependency loss rejected	PASS
+J04-H13	dependency invention rejected	PASS
+J04-H14	negative-ceiling mutation rejected	PASS
+J04-H15	runtime-clock temporal surrogate rejected	PASS
+J04-H16	present-day persistence substitution rejected	PASS
+J04-H17	evidence/provenance mutation rejected	PASS
+J04-H18	exact authority-ref mutation rejected	PASS
+J04-H19	nonexact latest/default/fuzzy key rejected	PASS
+J04-H20	person/V3/psychological semantics rejected	PASS
+J04-H21	M2/M3 authority not inferred	PASS
+J04-H22	set-like reordering replays identically	PASS
+J04-H23	V558 locator re-identification rejected	PASS
+L04-F24	exact bound V558 path fails closed when exact dependency bodies are absent	PASS
+L04-F25	wrong source-domain binding ref rejected	PASS
+L04-F26	generic M4 position-family boundary remains closed	PASS
+L04-F27	locator identity mutation remains invalid	PASS
