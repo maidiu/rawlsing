@@ -1,0 +1,162 @@
+{
+  "schema": "K01_WORLD_TIME_CONTRACT_RECONCILIATION_ARTIFACT@1.0.0",
+  "status": "PASS__H01_V1_RECONCILED_TO_V1_1_FOR_LAWFUL_NONTEMPORAL_RELEASE_STATUS",
+  "grain": "PREV3_WORLD_TIME_NONTEMPORAL_RELEASE_STATUS_CONTRACT_RECONCILIATION_AND_RECEIPT_RERUN_R1_ONLY",
+  "commission_tip": "34461439f274ea1630f76c9b9bfec803e73a6b46",
+  "commission_parent_j01": "c871233e1584cfa0600430fbde844f85c9e31f56",
+  "hq_authority": "a93e3717d9bea1857937a3fa278a933283948acc",
+  "j01_authority_ref": {
+    "id": "PREV3_NONTEMPORAL_STRUCTURAL_PRODUCT_RELEASE_STATUS_AUTHORITY",
+    "version": "1.0.0",
+    "content_hash": "65c0cfcf8d33bcbf9bb88813eb43c6951377bd0ce5d268bd03f1c72799059509",
+    "artifact_blob": "1482e0ac3d2fc5346e50361e29c99d8f79272347"
+  },
+  "j01_binding_ref": {
+    "object_id": "urn:rawlsing:prev3:nontemporal-release-status-binding:sha256:de1726bfb708840212e7b2968eef37ab68e3c897fedf9947fbf1cddf8c16d880",
+    "content_hash": "de1726bfb708840212e7b2968eef37ab68e3c897fedf9947fbf1cddf8c16d880",
+    "artifact_blob": "9f1d9e540cf5cc569bb5bcd34537a228f113e673"
+  },
+  "contract_material": {
+    "schema": "PREV3_OBJECTIVE_WORLD_TIME_PRODUCER_CONTRACT_R1_1",
+    "contract_id": "PREV3_OBJECTIVE_WORLD_TIME_PRODUCER",
+    "version": "1.1.0",
+    "supersedes": {
+      "id": "PREV3_OBJECTIVE_WORLD_TIME_PRODUCER",
+      "version": "1.0.0",
+      "content_hash": "aed3a09f303a381aae7b2a893033dbb6de0dc84332432dea5caaa6bd962b046a"
+    },
+    "jurisdiction": {
+      "objective_world_scope_ref": {
+        "kind": "PREV3_OBJECTIVE_WORLD_SCOPE",
+        "object_id": "PREV3SCOPE:f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320",
+        "content_hash": "f5ff97d598f6e3535643216e30427692f3d564fbe55e7de389c6ac2e0fdfb320"
+      },
+      "scope_ceiling": "ONLY_OBJECTIVE_PREV3_CONTENT_ADDRESSABLE_RELEASE_REPOSITORY_CONTENT_ACCEPTED_AT_E01_BOUNDED_CLOSURE",
+      "governing_law": "PROJECT_CURRENT_OBJECTIVE_WORLD_RELEASE != PRESENT_DAY_WORLD_TRUTH"
+    },
+    "required_positive_inputs": [
+      "EXACT_BOUNDED_OBJECTIVE_WORLD_SCOPE_REF",
+      "EXACT_IMMUTABLE_RELEASE_MANIFEST_IDENTITY",
+      "EXACT_COMPLETE_CONSTITUENT_WORLD_TIME_STATUS_BINDING_SET",
+      "EXACT_RELEASE_SELECTION_CURRENT_SELECTION_AUTHORITY",
+      "EXPLICIT_BOUNDED_COMPLETENESS_DECLARATION",
+      "DETERMINISTIC_REPLAY_MATERIAL"
+    ],
+    "constituent_status_binding_law": {
+      "coverage": "EVERY_EXACT_IN_SCOPE_CONSTITUENT_OBJECT_REF_EXACTLY_ONCE",
+      "allowed_status_classes": [
+        "ACCEPTED_VALID_TIME_CURRENTNESS",
+        "EXPLICIT_HISTORICAL_TIME_SEMANTICS",
+        "NONTEMPORAL_PRODUCT__PROJECT_CURRENT_RELEASE_MEMBERSHIP"
+      ],
+      "legacy_temporal_classes": {
+        "classes": [
+          "ACCEPTED_VALID_TIME_CURRENTNESS",
+          "EXPLICIT_HISTORICAL_TIME_SEMANTICS"
+        ],
+        "requirements": [
+          "EXACT_EFFECTIVE_TIME_OR_HISTORICAL_TIME_REF",
+          "EXACT_COMPETENT_TEMPORAL_AUTHORITY_REF"
+        ],
+        "semantics_unchanged_from_v1_0": true
+      },
+      "nontemporal_release_membership_class": {
+        "class": "NONTEMPORAL_PRODUCT__PROJECT_CURRENT_RELEASE_MEMBERSHIP",
+        "status_domain": "RELEASE_STATUS_ONLY__NOT_PRODUCT_TIME",
+        "authority_rule_ref": {
+          "id": "PREV3_NONTEMPORAL_STRUCTURAL_PRODUCT_RELEASE_STATUS_AUTHORITY",
+          "version": "1.0.0",
+          "content_hash": "65c0cfcf8d33bcbf9bb88813eb43c6951377bd0ce5d268bd03f1c72799059509"
+        },
+        "covered_product_requirements": {
+          "producer_family": "V554",
+          "semantic_family": "F1",
+          "m1_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+          "signature": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+          "temporal_disposition": "NO_NEW_V553_TEMPORAL_MEANING_REQUIRED",
+          "effective_time_refs": []
+        },
+        "required_evidence": [
+          "EXACT_J01_BINDING_REF",
+          "EXACT_OBJECTIVE_WORLD_SCOPE_REF",
+          "EXACT_IMMUTABLE_RELEASE_IDENTITY",
+          "EXACT_RELEASE_MEMBERSHIP_PROOF",
+          "EXACT_PROJECT_CURRENT_RELEASE_SELECTION_AUTHORITY"
+        ],
+        "effective_time_or_historical_time_ref_must_be_null": true,
+        "does_not_assert": [
+          "PRODUCT_EFFECTIVE_TIME",
+          "PRODUCT_HISTORICAL_TIME",
+          "EVENT_TIME",
+          "PRESENT_DAY_PERSISTENCE"
+        ]
+      },
+      "forbidden_inference": "PROJECT_ACCEPTANCE_OR_SOURCE_WAVE_OR_DECLARED_TEMPORAL_INDEX_ALONE_DOES_NOT_PROVE_PRODUCT_TIME"
+    },
+    "bounded_completeness_law": {
+      "meaning": "COMPLETE_ONLY_RELATIVE_TO_THE_EXACT_E01_BOUNDED_RELEASE_SCOPE",
+      "requirements": [
+        "RELEASE_IDENTITY_EQUALS_THE_EXACT_E01_ACCEPTED_IMMUTABLE_CLOSURE",
+        "MANIFEST_ENUMERATES_THE_EXACT_IN_SCOPE_CONSTITUENT_SET",
+        "EVERY_IN_SCOPE_CONSTITUENT_HAS_EXACTLY_ONE_ACCEPTED_STATUS_BINDING",
+        "NO_UNBOUND_EXTRA_CONSTITUENTS_ARE_ADMITTED",
+        "RELEASE_SELECTION_AUTHORITY_IS_EXACT_AND_PROJECT_CURRENT_ONLY"
+      ],
+      "forbids": "SILENT_WHOLE_WORLD_GENERALIZATION"
+    },
+    "receipt_schema": {
+      "kind": "PREV3_OBJECTIVE_WORLD_GRAIN_CURRENTNESS",
+      "material_fields": [
+        "schema",
+        "objective_world_scope_ref",
+        "immutable_release_identity",
+        "constituent_status_bindings",
+        "release_selection_authority_ref",
+        "bounded_completeness_declaration",
+        "producer_authority_ref"
+      ],
+      "object_id_rule": "PREV3WCT:<SHA256_CANONICAL_RECEIPT_MATERIAL>",
+      "content_hash_rule": "SHA256_CANONICAL_RECEIPT_MATERIAL"
+    },
+    "issuance_rule": "ISSUE_EXACTLY_ONE_RECEIPT_ONLY_IF_ALL_REQUIRED_POSITIVE_INPUTS_VALIDATE_WITHOUT_TEMPORAL_INFERENCE",
+    "replay_rule": "SAME_CANONICAL_INPUT_TUPLE_MUST_REPRODUCE_THE_EXACT_SAME_RECEIPT_OBJECT_ID_AND_CONTENT_HASH",
+    "change_rule": "ANY_CHANGE_TO_SCOPE_RELEASE_SELECTION_COMPLETENESS_OR_ANY_CONSTITUENT_STATUS_BINDING_MUST_CHANGE_RECEIPT_IDENTITY",
+    "forbidden_sources": [
+      "WALL_CLOCK",
+      "LATEST",
+      "DEFAULT",
+      "FUZZY_SELECTION",
+      "V3_RUNTIME_CURSOR",
+      "ACTOR_REQUEST",
+      "SOURCE_LOCAL_CURRENTNESS_PROMOTED_TO_WORLD_CURRENTNESS",
+      "M5_LOCAL_STRUCTURAL_CURRENTNESS_PROMOTED_TO_WORLD_CURRENTNESS",
+      "DOWNSTREAM_ROOT_NEED_AS_TEMPORAL_TRUTH",
+      "PERSON_STATE_SEMANTICS",
+      "OBL063_DRIVER_TYPE_PERSON_TERMINAL_SEMANTICS"
+    ],
+    "creates_no": [
+      "PRODUCT_TEMPORAL_TRUTH",
+      "FIRST_WORLD_ROOT",
+      "PREV3_OBJECTIVE_WORLD_VALIDITY",
+      "PERSON_STATE"
+    ],
+    "execution_procedure": [
+      "REQUIRE_OBJECTIVE_WORLD_SCOPE_REF_EXACTLY_EQUALS_FROZEN_E01_SCOPE_REF",
+      "REQUIRE_IMMUTABLE_RELEASE_IDENTITY_EXACTLY_EQUALS_FROZEN_E01_ACCEPTED_CLOSURE",
+      "ENUMERATE_EXACT_IN_SCOPE_CONSTITUENT_OBJECT_REFS_FROM_THE_CONTENT_ADDRESSED_RELEASE_REPOSITORY",
+      "REQUIRE_STATUS_BINDING_KEYS_EXACTLY_EQUAL_THE_ENUMERATED_CONSTITUENT_REF_SET",
+      "VALIDATE_EACH_BINDING_AGAINST_ITS_EXACT_STATUS_CLASS_AUTHORITY_WITHOUT_CROSS_CLASS_COERCION",
+      "REQUIRE_EXACT_BOUNDED_PROJECT_CURRENT_RELEASE_SELECTION_AUTHORITY",
+      "REQUIRE_BOUNDED_COMPLETENESS_DECLARATION_MATCHES_THIS_CONTRACT",
+      "SORT_CONSTITUENT_BINDINGS_BY_KIND_OBJECT_ID_CONTENT_HASH",
+      "HASH_CANONICAL_RECEIPT_MATERIAL_AND_ISSUE_EXACT_REF",
+      "REBUILD_FROM_THE_SAME_CANONICAL_INPUT_AND_REQUIRE_IDENTICAL_REF"
+    ]
+  },
+  "contract_hash": "e5c0ea62a7ff2ae006fa9722676245addbcba0d079f2e1d2079f3a9ffe247e10",
+  "hash_law": "SHA256_OF_UTF8_CANONICAL_JSON_SORT_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE_ALLOW_NAN_FALSE",
+  "reconciliation_effect": "ADDS_ONLY_THE_J01_LAWFUL_NONTEMPORAL_RELEASE_MEMBERSHIP_CLASS_WITH_CLASS_SPECIFIC_NULL_TIME_REQUIREMENT__LEGACY_TEMPORAL_CLASSES_UNCHANGED",
+  "production_code_changed": false,
+  "world_validity_or_root_constructed": false,
+  "terminal": "K01_H01_CONTRACT_RECONCILED__READY_FOR_EXACT_1_OF_1_RECEIPT_RERUN"
+}
