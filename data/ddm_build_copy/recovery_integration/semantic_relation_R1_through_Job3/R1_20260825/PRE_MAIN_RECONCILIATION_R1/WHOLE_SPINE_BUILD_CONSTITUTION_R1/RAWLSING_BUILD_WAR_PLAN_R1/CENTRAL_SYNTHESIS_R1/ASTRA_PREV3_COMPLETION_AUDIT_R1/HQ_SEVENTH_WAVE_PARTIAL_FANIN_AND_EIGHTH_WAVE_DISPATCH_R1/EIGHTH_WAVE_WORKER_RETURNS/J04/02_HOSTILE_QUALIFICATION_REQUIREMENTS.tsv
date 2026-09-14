@@ -1,0 +1,25 @@
+case_id	mutation_or_probe	required_oracle	qualification_disposition
+J04-H00	exact proving fact under exact J04 authority	ALLOW_PUBLICATION_ROOT	PASS__SAME_PREV3POS_IDENTITY
+J04-H01	relabel producer family as V552	REJECT_REIDENTIFICATION	PASS__REJECT
+J04-H02	relabel producer family as V553/V554/V555/V556	REJECT_REIDENTIFICATION	PASS__REJECT
+J04-H03	mutate producer fact schema/version	REJECT_SCHEMA_MISMATCH	PASS__REJECT
+J04-H04	mutate fact ref kind	REJECT_REF_KIND_MISMATCH	PASS__REJECT
+J04-H05	mutate PREV3POS object id while retaining payload/hash	REJECT_IDENTITY_MISMATCH	PASS__REJECT
+J04-H06	mutate content hash while retaining canonical payload	REJECT_CONTENT_HASH_MISMATCH	PASS__REJECT
+J04-H07	wrap any nonpositive PositionResultState as positive publication root	REJECT_NONPOSITIVE_ROOT	PASS__REJECT
+J04-H08	widen/substitute exact source domain-use token	REJECT_ITEM_USE_WIDENING	PASS__REJECT
+J04-H09	request bare M4 CONTEXT without exact source domain-use binding	REJECT_MISSING_DOMAIN_USE_BINDING	PASS__REJECT
+J04-H10	request/grant ACTIVE_CAUSAL	REJECT_AUTHORITY_WIDENING	PASS__REJECT
+J04-H11	infer REVIEW permission from CONTEXT mapping	REJECT_PERMISSION_INFERENCE	PASS__REJECT
+J04-H12	drop canonical dependency ref	REJECT_CLOSURE_LOSS	PASS__REJECT
+J04-H13	invent dependency ref	REJECT_CLOSURE_REINTERPRETATION	PASS__REJECT
+J04-H14	remove/mutate negative_ceiling_ref or map it as positive dependency	REJECT_NEGATIVE_CEILING_CORRUPTION	PASS__REJECT
+J04-H15	replace observation valid-time/currentness with runtime clock/current cursor	REJECT_TEMPORAL_SURROGATE	PASS__REJECT
+J04-H16	interpret current project representation as present-day respondent persistence	REJECT_PRESENT_DAY_PERSISTENCE	PASS__REJECT
+J04-H17	strip/mutate supporting evidence or provenance from canonical payload	REJECT_PRODUCER_HASH_OR_BINDING_MISMATCH	PASS__REJECT
+J04-H18	mutate any exact producer/semantic/source/applicability/permission/temporal/currentness/replay authority ref	REJECT_AUTHORITY_BINDING_MISMATCH	PASS__REJECT
+J04-H19	resolve through latest/default/fuzzy/raw-stage repair surface	REJECT_NONEXACT_RESOLUTION	PASS__REJECT
+J04-H20	inject person-state/V3/psychological/OBL063 use or semantics	REJECT_OBJECTIVE_WORLD_FIREWALL	PASS__REJECT
+J04-H21	infer M2/M3 route/composition authority from publication admission	REJECT_STAGE_AUTHORITY_WIDENING	PASS__REJECT
+J04-H22	reorder set-like evidence/provenance/dependency inputs then canonicalize	REPLAY_IDENTICAL	PASS__SAME_PREV3POS_IDENTITY
+J04-H23	re-identify producer object in V558 locator/repository	REJECT_LOCATOR_REIDENTIFICATION	PASS__REJECT
