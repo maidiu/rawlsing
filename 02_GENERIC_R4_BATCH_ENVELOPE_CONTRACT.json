@@ -1,0 +1,217 @@
+{
+  "schema": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_INTAKE_AND_CONSTRUCTOR_CONTRACT_R1",
+  "schema_version": "1.0.0",
+  "status": "PASS_GENERIC_INTERFACE_FREEZE__NO_ADAPTER_OR_CONCRETE_RULE",
+  "terminal": "S03_PASS__GENERIC_R4_BATCH_ENVELOPE_CONTRACT_FROZEN__SEPARATE_GENERIC_ADAPTER_REQUIRED",
+  "authority": {
+    "commission_tip": "a50a8c3ad18a3e5033ffe6572bc3d5f733cdb49f",
+    "hq_base": "8306aab9a3174f65c611f8157530307dabaf539c",
+    "r4_contract_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0",
+    "r4_contract_blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+    "r03_tip": "0e9458a189d870406797564de7142f6a73a15ad2",
+    "r03_matrix_blob": "a182df47286ece3fd2f27de0a1c2d4adac333a64",
+    "s01_consumed": false,
+    "s02_consumed": false,
+    "library_used": false
+  },
+  "contract_identity": {
+    "ref": {
+      "kind": "SDTF_R4_GENERIC_BATCH_ENVELOPE_CONTRACT",
+      "object_id": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_INTAKE_AND_CONSTRUCTOR_CONTRACT_R1@1.0.0",
+      "content_hash": "abc44b2b4ff04e164b5188e5929b0c10ca1b6e582b28207bb7e464ace698a83d"
+    },
+    "canonical_identity_material": {
+      "schema_id": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_CONTRACT_R1",
+      "schema_version": "1.0.0",
+      "base_r4_contract": {
+        "contract_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0",
+        "implementation_blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556"
+      },
+      "adopted_r03_requirement_inventory": {
+        "return_tip": "0e9458a189d870406797564de7142f6a73a15ad2",
+        "matrix_blob": "a182df47286ece3fd2f27de0a1c2d4adac333a64",
+        "external_determinant_count": 28
+      },
+      "status_vocabulary": [
+        "SATISFIED_CURRENT",
+        "SATISFIED_CANDIDATE_ONLY",
+        "MISSING",
+        "BLOCKED",
+        "NOT_APPLICABLE"
+      ],
+      "determinant_catalog": [
+        {"ordinal": 1, "determinant_id": "GBE-R4-001", "field_path": "rule_identity.rule_id", "value_type": "NonEmptyExactText", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 2, "determinant_id": "GBE-R4-002", "field_path": "rule_identity.rule_version", "value_type": "ExactVersionText", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 3, "determinant_id": "GBE-R4-003", "field_path": "rule_identity.rule_content_hash", "value_type": "LowercaseSHA256", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 4, "determinant_id": "GBE-R4-004", "field_path": "mechanism_classes", "value_type": "MechanismClassList", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 5, "determinant_id": "GBE-R4-005", "field_path": "constitution_current_selection_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 6, "determinant_id": "GBE-R4-006", "field_path": "trace.source_refs", "value_type": "ExactRefListNonEmpty", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 7, "determinant_id": "GBE-R4-007", "field_path": "trace.claim_refs", "value_type": "ExactRefListNonEmpty", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 8, "determinant_id": "GBE-R4-008", "field_path": "trace.evidence_status_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 9, "determinant_id": "GBE-R4-009", "field_path": "trace.normalized_mechanism_ref", "value_type": "ExactRef", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 10, "determinant_id": "GBE-R4-010", "field_path": "trace.permitted_rule_shape_ref", "value_type": "ExactRef", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 11, "determinant_id": "GBE-R4-011", "field_path": "trace.required_objective_inputs_bindings_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 12, "determinant_id": "GBE-R4-012", "field_path": "trace.qualification_realization_proof_contract_ref", "value_type": "ExactRef", "package": "PKG-E_QUALIFICATION_TEMPORAL_PORTABILITY", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 13, "determinant_id": "GBE-R4-013", "field_path": "trace.temporal_currentness_contract_ref", "value_type": "ExactRef", "package": "PKG-E_QUALIFICATION_TEMPORAL_PORTABILITY", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 14, "determinant_id": "GBE-R4-014", "field_path": "trace.portability_ceiling_ref", "value_type": "ExactRef", "package": "PKG-E_QUALIFICATION_TEMPORAL_PORTABILITY", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 15, "determinant_id": "GBE-R4-015", "field_path": "trace.currentness_ceiling_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 16, "determinant_id": "GBE-R4-016", "field_path": "trace.historical_institutional_validity_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 17, "determinant_id": "GBE-R4-017", "field_path": "trace.negative_ceiling_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 18, "determinant_id": "GBE-R4-018", "field_path": "trace.v3_stop_boundary_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 19, "determinant_id": "GBE-R4-019", "field_path": "rule_owner", "value_type": "AuthorityCeilingBinding", "package": "PKG-B_MANDATORY_AUTHORITIES", "requirement_mode": "mandatory_bound", "na_permitted_conditionally": false},
+        {"ordinal": 20, "determinant_id": "GBE-R4-020", "field_path": "measurement_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "requirement_mode": "explicit_bound_or_na", "na_permitted_conditionally": true},
+        {"ordinal": 21, "determinant_id": "GBE-R4-021", "field_path": "estimand_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "requirement_mode": "explicit_bound_or_na", "na_permitted_conditionally": true},
+        {"ordinal": 22, "determinant_id": "GBE-R4-022", "field_path": "identification_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "requirement_mode": "explicit_bound_or_na", "na_permitted_conditionally": true},
+        {"ordinal": 23, "determinant_id": "GBE-R4-023", "field_path": "causal_use_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-B_MANDATORY_AUTHORITIES", "requirement_mode": "mandatory_bound", "na_permitted_conditionally": false},
+        {"ordinal": 24, "determinant_id": "GBE-R4-024", "field_path": "calibration_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "requirement_mode": "conditional", "na_permitted_conditionally": true},
+        {"ordinal": 25, "determinant_id": "GBE-R4-025", "field_path": "value_mode", "value_type": "RuleValueMode", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 26, "determinant_id": "GBE-R4-026", "field_path": "rule_currentness", "value_type": "RuleCurrentness", "package": "PKG-F_RULE_CURRENTNESS_SELECTION", "requirement_mode": "required", "na_permitted_conditionally": false},
+        {"ordinal": 27, "determinant_id": "GBE-R4-027", "field_path": "rule_current_selection_evidence_refs", "value_type": "ExactRefList", "package": "PKG-F_RULE_CURRENTNESS_SELECTION", "requirement_mode": "conditional", "na_permitted_conditionally": true},
+        {"ordinal": 28, "determinant_id": "GBE-R4-028", "field_path": "rule_noncurrent_disposition_refs", "value_type": "ExactRefList", "package": "PKG-F_RULE_CURRENTNESS_SELECTION", "requirement_mode": "conditional", "na_permitted_conditionally": true}
+      ],
+      "package_partition": [
+        {"package_id": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "ordinals": [1, 2, 3, 4, 9, 10, 25]},
+        {"package_id": "PKG-B_MANDATORY_AUTHORITIES", "ordinals": [19, 23]},
+        {"package_id": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "ordinals": [20, 21, 22, 24]},
+        {"package_id": "PKG-D_TRACE_EXACT_REF_LIFT", "ordinals": [5, 6, 7, 8, 11, 15, 16, 17, 18]},
+        {"package_id": "PKG-E_QUALIFICATION_TEMPORAL_PORTABILITY", "ordinals": [12, 13, 14]},
+        {"package_id": "PKG-F_RULE_CURRENTNESS_SELECTION", "ordinals": [26, 27, 28]}
+      ],
+      "canonicalization_profile": "RAWLSING_PRE553_CANONICAL_JSON_SHA256",
+      "candidate_row_kind": "SDTF_R4_GENERIC_BATCH_CANDIDATE_ROW",
+      "batch_kind": "SDTF_R4_GENERIC_BATCH",
+      "candidate_receipt_kind": "SDTF_R4_GENERIC_BATCH_CANDIDATE_RECEIPT",
+      "negative_laws": [
+        "NO_LATEST_DEFAULT_FUZZY_NEAREST_SEMVER_SELECTOR",
+        "NO_SILENT_NOT_APPLICABLE",
+        "SOURCE_CITATION_DOES_NOT_IMPLY_CAUSAL_USE",
+        "CONSTITUTION_CURRENT_DOES_NOT_IMPLY_RULE_CURRENT",
+        "AUTHORITY_CURRENT_DOES_NOT_IMPLY_RULE_CURRENT",
+        "CANDIDATE_STATUS_DOES_NOT_IMPLY_CURRENT_ACCEPTED",
+        "NO_CANDIDATE_SPECIFIC_DEFAULTS_IN_GENERIC_SCHEMA",
+        "NO_ACTOR_FACT_OR_TOPOLOGY_MATERIALIZATION",
+        "NO_V3_PERSON_STATE_OR_OBL063"
+      ]
+    },
+    "hash_law": "sha256(UTF-8 canonical JSON); recursively sorted keys; separators ',', ':'; ensure_ascii=false; allow_nan=false; floats forbidden."
+  },
+  "status_cell": {
+    "states": ["SATISFIED_CURRENT", "SATISFIED_CANDIDATE_ONLY", "MISSING", "BLOCKED", "NOT_APPLICABLE"],
+    "shape": ["determinant_id", "state", "resolved_value", "candidate_material_refs", "blocker_refs", "na_basis_ref", "basis_text"],
+    "laws": {
+      "SATISFIED_CURRENT": "resolved_value required and runtime-shaped; blocker_refs empty; na_basis_ref null; field readiness != rule currentness.",
+      "SATISFIED_CANDIDATE_ONLY": "runtime projection forbidden; candidate_material_refs nonempty; blocker_refs empty.",
+      "MISSING": "resolved_value/blocker_refs/na_basis_ref empty; absence != N/A.",
+      "BLOCKED": "resolved_value null; blocker_refs nonempty.",
+      "NOT_APPLICABLE": "only when determinant condition permits; never inferred; authority N/A requires exact na_basis_ref and no authority/selection tuple."
+    }
+  },
+  "types": {
+    "ExactRef": {"fields": ["kind", "object_id", "content_hash"], "hash": "lowercase sha256", "list_order": "ExactRef.key"},
+    "AuthorityRef": {"fields": ["authority_id", "authority_version", "authority_content_hash"], "hash": "lowercase sha256"},
+    "AuthorityCeilingBinding": {
+      "fields": ["role", "disposition", "scope_or_na_ref", "authority_ref", "current_selection_evidence_refs"],
+      "roles": ["RULE_OWNER", "MEASUREMENT", "ESTIMAND", "IDENTIFICATION", "CAUSAL_USE", "CALIBRATION"],
+      "bound": "authority_ref + nonempty selection refs required",
+      "na": "authority_ref/selection refs forbidden",
+      "mandatory_bound": ["RULE_OWNER", "CAUSAL_USE"]
+    },
+    "MechanismClassList": ["P1 MATERIAL_ACCESS_DEPENDENCY", "P2 DIRECTED_AUTHORITY_OBLIGATION_SANCTION", "P3 ORGANIZED_ACTIVITY_TIME", "P4 INSTITUTIONAL_GATE_TREATMENT", "P5 COUNTERPART_CHANNEL_RELATION"],
+    "RuleValueMode": ["NONNUMERIC", "NUMERIC"],
+    "RuleCurrentness": ["CANDIDATE_NOT_CURRENT", "CURRENT_ACCEPTED", "HISTORICAL_NONCURRENT"]
+  },
+  "determinants": [
+    {"ordinal": 1, "determinant_id": "GBE-R4-001", "field_path": "rule_identity.rule_id", "value_type": "NonEmptyExactText", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 2, "determinant_id": "GBE-R4-002", "field_path": "rule_identity.rule_version", "value_type": "ExactVersionText", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 3, "determinant_id": "GBE-R4-003", "field_path": "rule_identity.rule_content_hash", "value_type": "LowercaseSHA256", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 4, "determinant_id": "GBE-R4-004", "field_path": "mechanism_classes", "value_type": "MechanismClassList", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 5, "determinant_id": "GBE-R4-005", "field_path": "constitution_current_selection_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 6, "determinant_id": "GBE-R4-006", "field_path": "trace.source_refs", "value_type": "ExactRefListNonEmpty", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 7, "determinant_id": "GBE-R4-007", "field_path": "trace.claim_refs", "value_type": "ExactRefListNonEmpty", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 8, "determinant_id": "GBE-R4-008", "field_path": "trace.evidence_status_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 9, "determinant_id": "GBE-R4-009", "field_path": "trace.normalized_mechanism_ref", "value_type": "ExactRef", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 10, "determinant_id": "GBE-R4-010", "field_path": "trace.permitted_rule_shape_ref", "value_type": "ExactRef", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 11, "determinant_id": "GBE-R4-011", "field_path": "trace.required_objective_inputs_bindings_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 12, "determinant_id": "GBE-R4-012", "field_path": "trace.qualification_realization_proof_contract_ref", "value_type": "ExactRef", "package": "PKG-E_QUALIFICATION_TEMPORAL_PORTABILITY", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 13, "determinant_id": "GBE-R4-013", "field_path": "trace.temporal_currentness_contract_ref", "value_type": "ExactRef", "package": "PKG-E_QUALIFICATION_TEMPORAL_PORTABILITY", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 14, "determinant_id": "GBE-R4-014", "field_path": "trace.portability_ceiling_ref", "value_type": "ExactRef", "package": "PKG-E_QUALIFICATION_TEMPORAL_PORTABILITY", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 15, "determinant_id": "GBE-R4-015", "field_path": "trace.currentness_ceiling_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 16, "determinant_id": "GBE-R4-016", "field_path": "trace.historical_institutional_validity_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 17, "determinant_id": "GBE-R4-017", "field_path": "trace.negative_ceiling_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 18, "determinant_id": "GBE-R4-018", "field_path": "trace.v3_stop_boundary_ref", "value_type": "ExactRef", "package": "PKG-D_TRACE_EXACT_REF_LIFT", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 19, "determinant_id": "GBE-R4-019", "field_path": "rule_owner", "value_type": "AuthorityCeilingBinding", "package": "PKG-B_MANDATORY_AUTHORITIES", "requirement_mode": "mandatory_bound", "na_permitted_conditionally": false},
+    {"ordinal": 20, "determinant_id": "GBE-R4-020", "field_path": "measurement_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "requirement_mode": "explicit_bound_or_na", "na_permitted_conditionally": true},
+    {"ordinal": 21, "determinant_id": "GBE-R4-021", "field_path": "estimand_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "requirement_mode": "explicit_bound_or_na", "na_permitted_conditionally": true},
+    {"ordinal": 22, "determinant_id": "GBE-R4-022", "field_path": "identification_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "requirement_mode": "explicit_bound_or_na", "na_permitted_conditionally": true},
+    {"ordinal": 23, "determinant_id": "GBE-R4-023", "field_path": "causal_use_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-B_MANDATORY_AUTHORITIES", "requirement_mode": "mandatory_bound", "na_permitted_conditionally": false},
+    {"ordinal": 24, "determinant_id": "GBE-R4-024", "field_path": "calibration_authority", "value_type": "AuthorityCeilingBinding", "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "requirement_mode": "conditional", "na_permitted_conditionally": true},
+    {"ordinal": 25, "determinant_id": "GBE-R4-025", "field_path": "value_mode", "value_type": "RuleValueMode", "package": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 26, "determinant_id": "GBE-R4-026", "field_path": "rule_currentness", "value_type": "RuleCurrentness", "package": "PKG-F_RULE_CURRENTNESS_SELECTION", "requirement_mode": "required", "na_permitted_conditionally": false},
+    {"ordinal": 27, "determinant_id": "GBE-R4-027", "field_path": "rule_current_selection_evidence_refs", "value_type": "ExactRefList", "package": "PKG-F_RULE_CURRENTNESS_SELECTION", "requirement_mode": "conditional", "na_permitted_conditionally": true},
+    {"ordinal": 28, "determinant_id": "GBE-R4-028", "field_path": "rule_noncurrent_disposition_refs", "value_type": "ExactRefList", "package": "PKG-F_RULE_CURRENTNESS_SELECTION", "requirement_mode": "conditional", "na_permitted_conditionally": true}
+  ],
+  "conditional_laws": {
+    "selectors": "Reject LATEST, DEFAULT, FUZZY, NEAREST, SEMVER, '*', selector prefixes, and version ranges/wildcards.",
+    "rule_owner": "RULE_OWNER must be BOUND.",
+    "causal_use": "CAUSAL_USE must be BOUND; source citation/class membership does not substitute.",
+    "aux_roles": "MEASUREMENT/ESTIMAND/IDENTIFICATION require explicit BOUND or explicit NOT_APPLICABLE.",
+    "calibration": "NUMERIC => CALIBRATION BOUND; NONNUMERIC => CALIBRATION NOT_APPLICABLE with exact N/A basis.",
+    "candidate_not_current": "rows 27 and 28 empty.",
+    "current_accepted": "row 27 nonempty; row 28 empty; independent final selection required.",
+    "historical_noncurrent": "rows 27 and 28 both nonempty; prior current-selection required."
+  },
+  "packages": [
+    {"id": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS", "ordinals": [1, 2, 3, 4, 9, 10, 25], "parallelism": "MAY_RUN_IN_PARALLEL_WITH_PKG_B_PKG_C_PKG_D_PKG_E"},
+    {"id": "PKG-B_MANDATORY_AUTHORITIES", "ordinals": [19, 23], "parallelism": "RULE_OWNER_AND_CAUSAL_USE_MAY_CLOSE_INDEPENDENTLY_AND_IN_PARALLEL"},
+    {"id": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS", "ordinals": [20, 21, 22, 24], "parallelism": "MEASUREMENT_ESTIMAND_IDENTIFICATION_MAY_RUN_IN_PARALLEL; CALIBRATION_WAITS_ON_VALUE_MODE"},
+    {"id": "PKG-D_TRACE_EXACT_REF_LIFT", "ordinals": [5, 6, 7, 8, 11, 15, 16, 17, 18], "parallelism": "MAY_RUN_IN_PARALLEL_WITH_PKG_A_PKG_B_PKG_C_PKG_E"},
+    {"id": "PKG-E_QUALIFICATION_TEMPORAL_PORTABILITY", "ordinals": [12, 13, 14], "parallelism": "MAY_RUN_IN_PARALLEL_WITH_PKG_A_PKG_B_PKG_C_PKG_D"},
+    {"id": "PKG-F_RULE_CURRENTNESS_SELECTION", "ordinals": [26, 27, 28], "parallelism": "CANDIDATE_NOT_CURRENT_STATE_CAN_BE_RECORDED_EARLY; TRANSITION_TO_CURRENT_ACCEPTED_IS_FINAL_SERIAL_GATE"}
+  ],
+  "serial_gate": "CURRENT_ACCEPTED transition in PKG-F only after PKG-A..PKG-E close for exact row and a separately authorized adapter/base R4 constructor validate exact projection.",
+  "candidate_row": {
+    "key": {"candidate_namespace": "exact text", "candidate_id": "exact text; no mutable selectors"},
+    "snapshot": {"row_generation": "nonnegative int", "predecessor_row_ref": "null only for g0 else exact prior row ref", "requirement_cells": "exactly 28 in ordinal order", "provenance_refs": "canonical duplicate-free ExactRef list"},
+    "identity_material": ["contract_ref", "key", "row_generation", "predecessor_row_ref", "governed requirement cells excluding free-text diagnostics", "provenance_refs"],
+    "ref": {"kind": "SDTF_R4_GENERIC_BATCH_CANDIDATE_ROW", "object_id": "namespace:id:gN", "content_hash": "sha256 canonical identity material"},
+    "law": "Any governed change creates successor generation/ref. No max-generation/latest/default selection."
+  },
+  "batch": {
+    "input": ["batch_namespace", "batch_id", "candidate_row_refs", "batch_provenance_refs"],
+    "ref": {"kind": "SDTF_R4_GENERIC_BATCH", "object_id": "namespace:batch_id", "content_hash": "sha256(contract_ref + exact batch header + sorted unique row/provenance refs)"},
+    "dedup": ["Exact duplicate row refs collapse idempotently.", "Same namespace/id/generation with different hashes => ROW_IDENTITY_CONFLICT; no winner.", "Different generations require exact predecessor lineage.", "Never merge merely similar candidates/source families."],
+    "execution": ["Rows independent and parallel.", "PKG-A..E parallel subject to local calibration/value-mode dependency.", "Mandatory MISSING/CANDIDATE_ONLY/BLOCKED => no runtime projection.", "Batch layer never issues CURRENT_ACCEPTED."]
+  },
+  "receipt": {
+    "shape": ["contract_ref", "batch_ref", "candidate_row_ref", "28 determinant states", "6 package states", "integrity_failures", "blocking_refs", "runtime_projection_state", "runtime_binding_ref", "current_selection_state", "receipt_predecessor_ref"],
+    "runtime_projection_state": ["NOT_PROJECTABLE", "READY_FOR_ADAPTER_PROJECTION", "ADAPTER_VALIDATED_CANDIDATE_NOT_CURRENT", "ELIGIBLE_FOR_SEPARATE_CURRENT_SELECTION", "HISTORICAL_NONCURRENT_VALIDATED"],
+    "current_selection_state": ["NOT_REQUESTED", "SERIAL_GATE_BLOCKED", "ELIGIBLE_FOR_SEPARATE_SELECTION", "SELECTION_EVIDENCE_PRESENT"],
+    "ref": {"kind": "SDTF_R4_GENERIC_BATCH_CANDIDATE_RECEIPT", "object_id": "candidate_row_ref.object_id", "content_hash": "sha256 canonical governed receipt material"},
+    "replay": "Execution order, worker count and duplicate presentation cannot change semantic receipt identity."
+  },
+  "fail_closed_codes": ["MALFORMED_EXACT_REF", "MUTABLE_SELECTOR_FORBIDDEN", "SILENT_NA_FORBIDDEN", "ROLE_DISPOSITION_INVALID", "VALUE_MODE_CALIBRATION_MISMATCH", "CURRENTNESS_EVIDENCE_MISMATCH", "ROW_IDENTITY_CONFLICT", "PREDECESSOR_CHAIN_INVALID", "CANDIDATE_BLOCKED"],
+  "noncollapses": ["CONSTITUTION_CURRENT != RULE_CURRENT != APPLICATION_CURRENT != FACT_CURRENT != WITNESS_CURRENT", "AUTHORITY_CURRENT != RULE_CURRENT", "SOURCE_CITATION != CAUSAL_USE_AUTHORITY", "MISSING_AUTHORITY != NOT_APPLICABLE", "CANDIDATE_EVIDENCE != CONTRACT_READY_EXACT_REF", "BATCH_ACCEPTED != RULE_CURRENT_ACCEPTED", "CANDIDATE_ROW_IDENTITY != RUNTIME_RULE_IDENTITY", "RULE_ENVELOPE != ACTOR_POSITION_FACT", "RULE_ENVELOPE != TOPOLOGY"],
+  "runtime_boundary": {
+    "direct_existing_runtime_consumption": false,
+    "reason": "Existing R4 constructor accepts fully resolved MechanismRuleIdentity/RuleTraceBinding/six AuthorityCeilingBinding slots/refs/enums, not batch status cells, dedup, lineage or receipts.",
+    "follow_on": "Separately authorized generic adapter required. It may project only exact resolved cells into the existing R4 constructor and emit receipts; it may not mint authority/refs/rules/facts/topology or issue CURRENT_ACCEPTED.",
+    "projection": {"1-3": "MechanismRuleIdentity", "4": "mechanism_classes", "5": "constitution_current_selection_ref", "6-18": "RuleTraceBinding", "19-24": "six AuthorityCeilingBinding slots", "25": "RuleValueMode", "26": "RuleCurrentness", "27-28": "current/noncurrent ref tuples"}
+  },
+  "candidate_specific_boundary": {
+    "generic_owns": ["field paths/types", "status laws", "authority/value-mode/currentness laws", "package DAG", "identity/dedup/replay/receipt grammar"],
+    "candidate_supplies": ["candidate key/generation", "all 28 values/evidence/blocker/N-A data", "candidate provenance"],
+    "generic_defaults_forbidden": ["source family", "author/theory", "mechanism name/class", "authority ids", "source/claim refs", "rule id/version/hash", "value_mode", "actor/entity/topology"]
+  },
+  "m10_fixture": {
+    "normative": false,
+    "purpose": "Conformance only; no M10 term is a generic determinant/default.",
+    "hq_fanin": "8306aab9a3174f65c611f8157530307dabaf539c",
+    "generic_slots": [
+      {"field": "rule_owner", "state": "SATISFIED_CURRENT", "basis": "adopted Q01 candidate-specific binding"},
+      {"field": "causal_use_authority", "state": "SATISFIED_CURRENT", "basis": "adopted R02 candidate-specific binding"},
+      {"field": "rule_currentness", "state": "SATISFIED_CANDIDATE_ONLY", "basis": "no concrete M10 rule exists"}
+    ],
+    "excluded_from_contract_identity": true
+  },
+  "boundaries": {"concrete_rule_minted": false, "current_accepted_issued": false, "authority_issued": false, "position_or_topology_materialized": false, "v3_or_obl063_used": false, "main_mutated": false, "pre_main_mutated": false}
+}
