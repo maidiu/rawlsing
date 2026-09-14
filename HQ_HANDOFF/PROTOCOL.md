@@ -103,11 +103,23 @@ A new HQ MUST:
 5. obey all constitutional laws and quarantine/supersession declarations in the checkpoint;
 6. continue active lanes and wake only successors whose explicit gates are satisfied;
 7. never reconstruct deprecated semantics merely because Git ancestry contains them;
-8. after material HQ state changes, create a new immutable checkpoint and advance `LATEST.json`.
+8. maintain the handoff state continuously: after every material HQ state change, append any durable decision to `DECISION_LEDGER.jsonl`, create a new immutable checkpoint, and advance `HQ_HANDOFF/LATEST.json` before treating the transition as fully sealed.
+
+A **material HQ state change** includes at minimum:
+
+- adoption, rejection, supersession, or quarantine of authority;
+- integration of qualified production/runtime code;
+- worker fan-in that changes the operative blocker/wake graph;
+- commissioning, cancellation, completion, or replacement of active HQ lanes when it changes what a successor should do;
+- creation of a new world root, release root, or other project-current canonical identity;
+- opening or closing a project-critical execution capability gate;
+- any decision whose absence from the handoff could cause a successor to redo work, revive rejected semantics, miss an active lane, or take an unlawful next step.
+
+Mere commentary, exploratory reads, and non-operative observations do not require a checkpoint.
 
 ## Outgoing HQ procedure
 
-Before succession, HQ SHOULD:
+Before succession, HQ MUST ensure the current operative state is checkpointed. HQ SHOULD:
 
 1. fan in all returns actually received;
 2. perform any lawful HQ integration/adoption;
@@ -115,7 +127,10 @@ Before succession, HQ SHOULD:
 4. create a new checkpoint directory with `CURRENT.md` and `CURRENT.json`;
 5. commit the checkpoint;
 6. update `HQ_HANDOFF/LATEST.json` to that checkpoint commit;
-7. hand the next agent the one-line succession instruction.
+7. verify that resolving `LATEST.json` reproduces the intended checkpoint;
+8. hand the next agent the one-line succession instruction.
+
+A handoff is stale if material operative state has changed since the checkpoint named by `LATEST.json`.
 
 ## Decision ledger law
 
@@ -138,7 +153,7 @@ Do not turn the ledger into a diary. Record decisions whose rediscovery would wa
 
 The canonical human handoff is:
 
-> Become Rawlsing HQ. Read `HQ_HANDOFF/LATEST.json` on `integration/pre-main-reconciliation-r1`, verify and read the immutable checkpoint it names, then execute its succession instructions. Do not reconstruct state from conversational memory when the checkpoint supplies it.
+> Become Rawlsing HQ. Read `HQ_HANDOFF/LATEST.json` on `integration/pre-main-reconciliation-r1`, verify and read the immutable checkpoint it names, then execute its succession instructions. Treat the repository handoff as operative memory rather than reconstructing state from conversational memory. After every material HQ state change, update the decision ledger as needed, create a new immutable checkpoint, advance `HQ_HANDOFF/LATEST.json`, and verify the pointer before considering that transition sealed.
 
 Terminal:
 
