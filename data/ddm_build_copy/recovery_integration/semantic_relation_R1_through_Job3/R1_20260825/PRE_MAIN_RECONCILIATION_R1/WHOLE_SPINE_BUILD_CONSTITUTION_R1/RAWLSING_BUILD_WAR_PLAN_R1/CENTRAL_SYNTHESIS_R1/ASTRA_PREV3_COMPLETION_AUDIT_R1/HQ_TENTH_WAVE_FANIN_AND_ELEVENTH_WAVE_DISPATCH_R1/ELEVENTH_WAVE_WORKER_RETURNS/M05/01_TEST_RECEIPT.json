@@ -1,0 +1,42 @@
+{
+  "schema": "M05_PREV3_OBJECTIVE_STRUCTURAL_TOPOLOGY_SELF_TEST_R1@1.0.0",
+  "result": "PASS",
+  "commission_tip": "88045917e84df1b4fc015015e7db4cda59d1f219",
+  "grain": "PREV3_OBJECTIVE_STRUCTURAL_TOPOLOGY_PRODUCT_CONTRACT_AND_PRODUCER_R1_ONLY",
+  "contract_ids": [
+    "PREV3_OBJECTIVE_STRUCTURAL_TOPOLOGY_PRODUCT_CONTRACT_R1@1.0.0",
+    "PREV3_OBJECTIVE_STRUCTURAL_TOPOLOGY_CLOSURE_AUTHORITY_R1@1.0.0",
+    "PREV3_OBJECTIVE_STRUCTURAL_TOPOLOGY_REPLAY_R1@1.0.0"
+  ],
+  "implementation": {
+    "path": "rawlsing_next/prev3_objective_structural_topology.py",
+    "git_blob_sha": "f306745b9604fd434c681a6943c44e2adea03ff7"
+  },
+  "tests": {
+    "path": "rawlsing_next/tests/test_prev3_objective_structural_topology.py",
+    "git_blob_sha": "3fc499cdb0d6912ebbf6cb55e756758c4116cbd9",
+    "command": "python -m unittest discover -s rawlsing_next/tests -p 'test_prev3_objective_structural_topology.py' -v",
+    "tests_run": 7,
+    "failures": 0,
+    "errors": 0,
+    "status": "OK",
+    "test_identities": [
+      "test_closure_payload_hash_mismatch_fails_closed",
+      "test_deterministic_production_and_replay_identity",
+      "test_exact_ref_rebinding_requires_new_closure",
+      "test_exact_structured_product_and_content_addressed_closure",
+      "test_generic_runtime_contains_no_claim_specific_identifiers",
+      "test_missing_or_untyped_refs_fail_closed",
+      "test_owner_or_scope_rebinding_changes_payload_and_invalidates_closure"
+    ]
+  },
+  "syntax_check": {
+    "command": "python -m py_compile rawlsing_next/prev3_objective_structural_topology.py rawlsing_next/tests/test_prev3_objective_structural_topology.py",
+    "status": "PASS"
+  },
+  "test_environment": "Bounded local self-test harness using the governed ExactRef, AuthorityRef, and semantic_hash public surface; candidate implementation/test Git blob identities exactly match the files tested.",
+  "library_used": false,
+  "claim_specific_production_performed": false,
+  "downstream_composition_performed": false,
+  "independent_qualification_claimed": false
+}
