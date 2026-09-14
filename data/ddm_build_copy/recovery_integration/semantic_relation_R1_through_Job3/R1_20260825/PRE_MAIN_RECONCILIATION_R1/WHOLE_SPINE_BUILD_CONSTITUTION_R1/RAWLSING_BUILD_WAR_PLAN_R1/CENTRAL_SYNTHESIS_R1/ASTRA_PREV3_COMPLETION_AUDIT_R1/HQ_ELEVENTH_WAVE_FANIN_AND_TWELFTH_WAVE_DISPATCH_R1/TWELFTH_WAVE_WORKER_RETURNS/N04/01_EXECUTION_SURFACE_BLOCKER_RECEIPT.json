@@ -1,0 +1,81 @@
+{
+  "schema": "N04_GOVERNED_BOUNDED_COURT_EXECUTION_SURFACE_BLOCKER@1.0.0",
+  "status": "BLOCKED__GITHUB_HOSTED_RUNNER_NOT_ALLOCATED",
+  "blocker_class": "BLOCKED_EXECUTION_CAPABILITY",
+  "grain": "RABOCHII_GOVERNED_BOUNDED_COURT_EXECUTION_SURFACE_RECOVERY_R1_ONLY",
+  "branch": "agent/rabochii-prev3-w12-n04-governed-court-surface-recovery-r1",
+  "commission_tip": "b0bd8321addda0aff5298d5d61b2c69863b46003",
+  "blocker": "N04_BLOCK__UBUNTU_LATEST_RUNNER_NOT_ALLOCATED__ZERO_STEP__NO_REPO_CONTENT_REPAIR_COMPETENT",
+  "workflow_path": ".github/workflows/rabochii-governed-bounded-court.yml",
+  "workflow_git_blob": "a974469aa1d83514d896e3de591d7618310ca493",
+  "control_success": {
+    "workflow_run": 34806672726,
+    "run_number": 420,
+    "job": 103859784864,
+    "head_sha": "828a301a35caa41dd8bf97caaf69e8c7a3bb39dc",
+    "conclusion": "success",
+    "runner_id": 1000001019,
+    "runner_name": "GitHub Actions 1000001019",
+    "first_step": "Set up job"
+  },
+  "frozen_m04_failures": [
+    {
+      "workflow_run": 34817399347,
+      "run_number": 422,
+      "job": 103890925367,
+      "conclusion": "failure",
+      "runner_label": "ubuntu-latest",
+      "runner_id": 0,
+      "executed_steps": 0
+    },
+    {
+      "workflow_run": 34817464330,
+      "run_number": 423,
+      "job": 103891130623,
+      "conclusion": "failure",
+      "runner_label": "ubuntu-latest",
+      "runner_id": 0,
+      "executed_steps": 0
+    }
+  ],
+  "independent_same_period_runner_failure": {
+    "workflow": "Rawlsing Worker Return Beacon",
+    "workflow_run": 34817473049,
+    "job": 103891159112,
+    "head_branch": "main",
+    "conclusion": "failure",
+    "runner_label": "ubuntu-latest",
+    "runner_id": 0,
+    "executed_steps": 0
+  },
+  "neutral_smoke": {
+    "fixture_candidate_sha": "745a080ed705938428b4688f23f6d3c6440fd000",
+    "fixture_test": "rawlsing_next/tests/test_rabochii_governed_court_surface_smoke_n04.py",
+    "fixture_test_git_blob": "a28be7e15757c162e7eb7c64f198aac3dc768a86",
+    "court_spec": ".rabochii/court_spec.json",
+    "court_spec_git_blob": "1f7662580de38e12ddbc3ecd8afd6747e55da4f0",
+    "evidence_execution_sha": "8c0e4e56299b7fcce716cdbabfb446149234731d",
+    "pr": 374,
+    "pr_merged": false,
+    "workflow_run": 34819866310,
+    "run_number": 424,
+    "job": 103898721968,
+    "conclusion": "failure",
+    "runner_label": "ubuntu-latest",
+    "runner_id": 0,
+    "executed_steps": 0,
+    "receipt_artifacts": 0,
+    "job_log_blob_present": false
+  },
+  "repo_local_workflow_repair": "NONE__SAME_WORKFLOW_BLOB_PREVIOUSLY_RAN_SUCCESSFULLY_AND_NEUTRAL_PROBE_DIED_BEFORE_RUNNER_ALLOCATION",
+  "pass": false,
+  "successor_gate_woken": false,
+  "m02_qualified": false,
+  "m04_qualified": false,
+  "m05_qualified": false,
+  "c09_rerun": false,
+  "main_mutated": false,
+  "pre_main_mutated": false,
+  "obl063_revived": false,
+  "world_scope": "OBJECTIVE_ONLY"
+}
