@@ -1,0 +1,179 @@
+{
+  "artifact_id": "SDTF_M10_M01_RULE_OWNER_AUTHORITY_R1@1.0.0",
+  "authority_material": {
+    "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_RULE_OWNER",
+    "authority_role": "RULE_OWNER",
+    "authority_version": "1.0.0",
+    "current_selection_evidence_refs": [
+      {
+        "content_hash": "4d62f67ede66fe0b3b60d46b16934c90024048716d7cc460095807762f14f9b5",
+        "kind": "SDTF_RULE_OWNER_CURRENT_SELECTION_EVIDENCE",
+        "object_id": "M10-M01:RULE_OWNER:Q01_R1"
+      }
+    ],
+    "current_selection_state": "CURRENT_SELECTED_UNDER_EXACT_Q01_DELEGATION",
+    "negative_ceilings": [
+      "RULE_OWNER_ONLY",
+      "M10_M01_ONLY",
+      "SOURCE_CITATION_DOES_NOT_SELF_ISSUE_RULE_OWNER_AUTHORITY",
+      "P1_CLASS_MEMBERSHIP_DOES_NOT_SELF_ISSUE_RULE_OWNER_AUTHORITY",
+      "HQ_DESIRE_WITHOUT_EXACT_COMMITTED_DELEGATION_DOES_NOT_SELF_ISSUE_RULE_OWNER_AUTHORITY",
+      "NO_CAUSAL_USE_AUTHORITY",
+      "NO_CONCRETE_MECHANISM_RULE",
+      "NO_RULE_CURRENT_ACCEPTED",
+      "NO_RECEIVING_POSITION_OR_TOPOLOGY",
+      "NO_V555_M2",
+      "NO_V3_PERSON_STATE",
+      "NO_OBL063"
+    ],
+    "provenance": {
+      "binding_contract_blob_sha1": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+      "binding_contract_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0",
+      "binding_contract_path": "rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py",
+      "hq_fanin_commit": "4c2a0e9b0423be77a51284b34e87a3f8ae59a321",
+      "mechanism_class_ceiling": "P1 MATERIAL_ACCESS_DEPENDENCY",
+      "p03_return_commit": "903079c179abca4eabd163c99b19efdef1855ce9",
+      "q01_commission_commit": "8a5bac3c88353f84cadfc1642e5d1ead0051c3e8",
+      "source_ledger_blob_sha1": "606de007e0f6dcb28e552bd8c959f3c4ec1fd2a7",
+      "source_ledger_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/STRUCTURAL_DEVELOPMENTAL_TRANSDUCTION_FORGE_R1/M10_WRIGHT_FULL_SOURCE_LEDGER_R1.md",
+      "source_worker_commit": "0ebca9ff111bea63838f9b68c8e5c3cb93d9d128"
+    },
+    "schema_id": "SDTF_M10_M01_RULE_OWNER_AUTHORITY_R1",
+    "schema_version": "1.0.0",
+    "scope_ref": {
+      "content_hash": "b6f0bb622158e797aaf4a90b609497ae94c089986e93356532241a64732f4e12",
+      "kind": "SDTF_RULE_OWNER_SCOPE",
+      "object_id": "M10-M01:RULE_OWNER"
+    },
+    "semantic_owner_ref": {
+      "content_hash": "a75a1f35da0775343d1098d34268861b991cfccd63922fbf7161cbf73a8ce0cd",
+      "kind": "SDTF_SEMANTIC_OWNER",
+      "object_id": "RAWLSING_HQ_PREV3_SDTF_RULE_SEMANTICS:M10-M01"
+    }
+  },
+  "authority_ref": {
+    "authority_content_hash": "80fd8e9a59b76e36392872c13536cdebf7de6273e5233d6bd285c1d0027a7289",
+    "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_RULE_OWNER",
+    "authority_version": "1.0.0"
+  },
+  "candidate": {
+    "candidate_id": "M10-M01",
+    "candidate_name": "PROPERTY SEPARATION / WAGE DEPENDENCY",
+    "mechanism_class_ceiling": "P1 MATERIAL_ACCESS_DEPENDENCY"
+  },
+  "current_selection_evidence_material": {
+    "delegated_lane": "Q01: M10-M01 rule-owner/current-selection authority adjudication only",
+    "evidence_id": "Q01_M10_M01_RULE_OWNER_CURRENT_SELECTION_R1",
+    "hq_fanin_commit": "4c2a0e9b0423be77a51284b34e87a3f8ae59a321",
+    "nonimplication_statement": "Authority current-selection does not issue CAUSAL_USE authority and does not make any concrete rule, application, fact, or witness current.",
+    "q01_commission_commit": "8a5bac3c88353f84cadfc1642e5d1ead0051c3e8",
+    "selected_authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_RULE_OWNER",
+    "selected_authority_version": "1.0.0",
+    "selection_statement": "Select this exact authority as the current RULE_OWNER authority for M10-M01 only under the Q01 delegation."
+  },
+  "current_selection_evidence_ref": {
+    "content_hash": "4d62f67ede66fe0b3b60d46b16934c90024048716d7cc460095807762f14f9b5",
+    "kind": "SDTF_RULE_OWNER_CURRENT_SELECTION_EVIDENCE",
+    "object_id": "M10-M01:RULE_OWNER:Q01_R1"
+  },
+  "replay_law": {
+    "canonicalization": "UTF-8 JSON with keys sorted recursively, separators ',' and ':', ensure_ascii=false, allow_nan=false; all hashed materials here contain only JSON primitives, lists, and mappings",
+    "hash_algorithm": "SHA-256 lowercase hexadecimal",
+    "replay_steps": [
+      "hash semantic_owner_material and require equality with semantic_owner_ref.content_hash",
+      "hash scope_material and require equality with scope_ref.content_hash",
+      "hash current_selection_evidence_material and require equality with current_selection_evidence_ref.content_hash",
+      "hash authority_material and require equality with authority_ref.authority_content_hash",
+      "hash rule_owner_binding_material and require equality with rule_owner_binding_ref.content_hash",
+      "require rule_owner_binding_material.rule_owner.role == RULE_OWNER and disposition == BOUND",
+      "require exact M10-M01 scope and the committed HQ/Q01/source provenance identities",
+      "fail if any consumer treats this object as CAUSAL_USE authority, a concrete mechanism rule, or rule CURRENT_ACCEPTED evidence"
+    ]
+  },
+  "rule_owner_binding_material": {
+    "contract_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0",
+    "rule_owner": {
+      "authority_ref": {
+        "authority_content_hash": "80fd8e9a59b76e36392872c13536cdebf7de6273e5233d6bd285c1d0027a7289",
+        "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_RULE_OWNER",
+        "authority_version": "1.0.0"
+      },
+      "current_selection_evidence_refs": [
+        {
+          "content_hash": "4d62f67ede66fe0b3b60d46b16934c90024048716d7cc460095807762f14f9b5",
+          "kind": "SDTF_RULE_OWNER_CURRENT_SELECTION_EVIDENCE",
+          "object_id": "M10-M01:RULE_OWNER:Q01_R1"
+        }
+      ],
+      "disposition": "BOUND",
+      "role": "RULE_OWNER",
+      "scope_or_na_ref": {
+        "content_hash": "b6f0bb622158e797aaf4a90b609497ae94c089986e93356532241a64732f4e12",
+        "kind": "SDTF_RULE_OWNER_SCOPE",
+        "object_id": "M10-M01:RULE_OWNER"
+      }
+    }
+  },
+  "rule_owner_binding_ref": {
+    "content_hash": "8b98c6095cc401d58b054b458d4b6b5cfc69176c82b98b62d6bd0735b3f51040",
+    "kind": "SDTF_R4_RULE_OWNER_AUTHORITY_BINDING",
+    "object_id": "M10-M01:RULE_OWNER@1.0.0"
+  },
+  "scope_material": {
+    "authority_role": "RULE_OWNER",
+    "candidate_id": "M10-M01",
+    "candidate_name": "PROPERTY SEPARATION / WAGE DEPENDENCY",
+    "excluded_scope": [
+      "CAUSAL_USE authority",
+      "concrete mechanism-rule minting or execution",
+      "rule CURRENT_ACCEPTED selection",
+      "application currentness",
+      "fact currentness",
+      "witness currentness",
+      "receiving-position binding",
+      "topology construction",
+      "V555/M2 routing",
+      "V3/person semantics",
+      "OBL063 semantics"
+    ],
+    "mechanism_class_ceiling": "P1 MATERIAL_ACCESS_DEPENDENCY",
+    "permitted_scope": [
+      "own and adjudicate semantic identity, semantic shape, and version lineage for future M10-M01 concrete-rule proposals",
+      "accept or reject whether a future proposed rule body stays within the documentary M10-M01 mechanism meaning"
+    ]
+  },
+  "scope_ref": {
+    "content_hash": "b6f0bb622158e797aaf4a90b609497ae94c089986e93356532241a64732f4e12",
+    "kind": "SDTF_RULE_OWNER_SCOPE",
+    "object_id": "M10-M01:RULE_OWNER"
+  },
+  "semantic_owner_material": {
+    "competence_basis": [
+      {
+        "commit_sha1": "4c2a0e9b0423be77a51284b34e87a3f8ae59a321",
+        "kind": "HQ_FIFTEENTH_WAVE_DELEGATION",
+        "statement": "Q01: M10-M01 rule-owner/current-selection authority adjudication only"
+      },
+      {
+        "commit_sha1": "8a5bac3c88353f84cadfc1642e5d1ead0051c3e8",
+        "grain": "SDTF_M10_M01_RULE_OWNER_AND_CURRENT_SELECTION_AUTHORITY_R1_ONLY",
+        "kind": "Q01_EXACT_COMMISSION"
+      }
+    ],
+    "competence_scope": "M10-M01 RULE_OWNER authority adjudication and semantic ownership only",
+    "excluded_competence": [
+      "CAUSAL_USE",
+      "concrete mechanism-rule minting",
+      "rule current-selection",
+      "application/fact/witness currentness",
+      "receiving-position binding",
+      "topology construction"
+    ],
+    "owner_id": "RAWLSING_HQ_PREV3_SDTF_RULE_SEMANTICS"
+  },
+  "semantic_owner_ref": {
+    "content_hash": "a75a1f35da0775343d1098d34268861b991cfccd63922fbf7161cbf73a8ce0cd",
+    "kind": "SDTF_SEMANTIC_OWNER",
+    "object_id": "RAWLSING_HQ_PREV3_SDTF_RULE_SEMANTICS:M10-M01"
+  }
+}
