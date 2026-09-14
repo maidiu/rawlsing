@@ -1,0 +1,109 @@
+{
+  "schema": "L03_LITS_I_LEARNED_QUERY_ENVELOPE_AND_EXPECTED_SET_BINDING_R1@1.0.0",
+  "status": "LOGIC_FROZEN__EXTENSIONAL_MEMBER_ROOTS_BLOCKED",
+  "grain": "LITS_I_LEARNED_EXACT_QUERY_ENVELOPE_EXPECTED_RECORD_AND_PREQUERY_RISK_SET_COMPOSITION_FREEZE_R1_ONLY",
+  "commission_tip": "eee532f0927db99ad2040d987772a506680192dc",
+  "hq_authority": "dbcedcc6bd2ceeda2de9c23543a392f70fb7bac2",
+  "authorities": {
+    "j02": "4c86fb44d06e27763b004dbd3181271cfb83efc1",
+    "j03": "9a61151246ebf6ad5866aecc4b7e593282ac0f6f",
+    "k03": "9c765641a0c1c32c1becbc308feec488c136c30d",
+    "f02_selector_closure": "482bb884a99e31ba77e904d0df39fffc872cbed3"
+  },
+  "source": {
+    "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "library_version": "1",
+    "filename": "LITS-2006-data.dta",
+    "byte_length": 139531180,
+    "accepted_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows": 29002,
+    "variables": 1198,
+    "c11_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+      "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+    },
+    "empirical_universe_hash": "83af05f5891e8accc18eeb99e5a1fd99242a509d9a38276004675c0e26be8080"
+  },
+  "expected_sets": {
+    "R2": {
+      "definition": "exact C11 respondent records whose K03 q301_2 PRE_QUERY routing disposition is DENOMINATOR_MEMBER",
+      "target_variable": "q301_2",
+      "expected_cardinality": 24897,
+      "target_domain_hash": "6f80fc3c628e58f67777f9e60c1d1e433941b74297fb3387873d56f5aa162873",
+      "target_use_authority_hash": "6002c1b572e3fff7a60554fda4e6b6749a80c88e5ee87da06d610a900568606d",
+      "risk_set_rule_hash": "1ec233e682e06e4befe434b166411a98ed97e2ca8927c02f3ff6f6aec1807a82",
+      "routing_risk_authority_hash": "88a34f2a6bc46426c77bde88f87b0b704db06ea6cf358306ec5f7f88c0331c03",
+      "member_native_states": ["1", "2", "3", "4", "5"],
+      "excluded_partition": {"6_NOT_APPLICABLE": 1774, "7_DONT_KNOW": 2327, "SYSTEM_MISSING_REASON_UNSPECIFIED": 4},
+      "member_id_extension": null,
+      "canonical_member_set_root": null,
+      "materialization_state": "REQUIRED_FROM_EXACT_CARRIER_BEFORE_OUTCOME__NOT_COMPLETED_BY_L03"
+    },
+    "R7": {
+      "definition": "exact C11 respondent records whose K03 q301_7 PRE_QUERY routing disposition is DENOMINATOR_MEMBER",
+      "target_variable": "q301_7",
+      "expected_cardinality": 28325,
+      "target_domain_hash": "5aca6389fb3fcf6584cde2a2d8c84a1b99fa5d27ef3b8e115714f2c31b3256df",
+      "target_use_authority_hash": "d4d0af7aeb4313c5fa826b8a20a5c2a80cc107bb53c2bd9bdc1e51c7f8c62a5b",
+      "risk_set_rule_hash": "fd1bc16d5eae5f2763f03274a5b07de6289791c3042a6988b37d648186d9a95a",
+      "routing_risk_authority_hash": "4626363db7ebaef6e719ddc0805fc3b00ba3c6de835c702ea7a77f97e098e7db",
+      "member_native_states": ["1", "2", "3", "4", "5"],
+      "excluded_partition": {"6_NOT_APPLICABLE": 224, "7_DONT_KNOW": 442, "SYSTEM_MISSING_REASON_UNSPECIFIED": 11},
+      "member_id_extension": null,
+      "canonical_member_set_root": null,
+      "materialization_state": "REQUIRED_FROM_EXACT_CARRIER_BEFORE_OUTCOME__NOT_COMPLETED_BY_L03"
+    },
+    "R27": {
+      "definition": "R2 INTERSECTION R7",
+      "composition_class": "COMMON_ELIGIBLE_RECORDS_ACROSS_VARIABLES",
+      "composition_basis": "mechanical intersection of independently authorized target-local K03 PRE_QUERY denominator memberships under J02/I03 accounting law",
+      "expected_cardinality": null,
+      "member_id_extension": null,
+      "canonical_member_set_root": null,
+      "forbidden_alternatives": ["UNION", "LEFT_PRIORITY", "RIGHT_PRIORITY", "IMPUTATION", "FALLBACK", "POST_OUTCOME_DROP", "MISSING_VALUE_COLLAPSE"],
+      "materialization_state": "BLOCKED_UNTIL_R2_AND_R7_EXTENSIONS_ARE_DERIVED_FROM_EXACT_CARRIER"
+    }
+  },
+  "workload": {
+    "authority_id": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_R1",
+    "candidate_count": 50,
+    "query_role_count": 77,
+    "candidate_order_law": "CANONICAL_CANDIDATE_HASH_ORDER",
+    "families": {
+      "P0": {"candidate_count": 5, "role_count": 5, "expected_set": "R2"},
+      "P1": {"candidate_count": 1, "role_count": 3, "role_expected_sets": ["R2", "R7", "R27"]},
+      "P2": {"candidate_count": 18, "role_count": 36, "expected_set": "R7", "condition_law": "q301_2 endpoint x q310 x q311 are predicates inside R7, not denominator-removal rules"},
+      "P3": {"candidate_count": 1, "role_count": 8, "expected_set": "R7", "condition_law": "q301_2 endpoint and q310 stratum are predicates inside R7; q301_7 cell5 target preserved"},
+      "P4": {"candidate_count": 25, "role_count": 25, "expected_set": "R27"}
+    },
+    "raw_query_hashes": {
+      "q301_2": "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+      "q301_7": "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+      "q301_2_x_q301_7": "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+    }
+  },
+  "f02_exact_selector_memberships": {
+    "Q310V1": {"count": 12941, "root": "8652031a8c7753051f521bcf30aefb8dbfeeed623f0387e9a2c34e42ee45526d"},
+    "Q310V2": {"count": 5916, "root": "7d5ab913560088d8602165cdc6752b27a2d262129b2d3fe0ad08e2b4d5e7d25"},
+    "Q310V3": {"count": 9375, "root": "04a0f054095510057eb75b23bdd6de82bb5b9372cdf9a234d79f9852889511a6"},
+    "Q311V1": {"count": 20527, "root": "4f0a903ee2fe803d156575105dfa51702dda824aa59e76c487a5df532c17f2a2"},
+    "Q311V2": {"count": 1312, "root": "f6b11e45fc6250ea32e10d36077a18bc282ace1652464241174a1b6d0b3fe7e"},
+    "Q311V3": {"count": 6359, "root": "77910ca898aec053a03690c77798755c51f7d0495a0341442133087142953788"}
+  },
+  "preserved_law": {
+    "complete_29002_record_accounting_required": true,
+    "code6_code7_system_missing_remain_distinct": true,
+    "predictor_predicate_nonmatch_is_not_denominator_deletion": true,
+    "predictor_missingness_exclusion_authority_created": false,
+    "post_outcome_denominator_change_forbidden": true,
+    "k02_candidate_consumed_as_qualified_authority": false,
+    "learned_workload_executed": false,
+    "learned_outcomes_observed": false,
+    "main_mutated": false,
+    "pre_main_mutated": false,
+    "obl063_revived": false
+  },
+  "blocker": "L03_BLOCK__K03_Q301_2_Q301_7_MEMBER_RECORD_ID_EXTENSIONS_AND_THEIR_COMMON_INTERSECTION_HAVE_NOT_BEEN_MATERIALIZED_FROM_THE_EXACT_CARRIER",
+  "successor_gate": "GATE-LITS-I-LEARNED-POSITIVE-REEXECUTION = BLOCKED__EXACT_R2_R7_R27_EXPECTED_RECORD_ID_EXTENSIONS_MUST_BE_FROZEN__AND_K02_PRODUCTION_MUST_STILL_PASS_INDEPENDENT_QUALIFICATION_AND_HQ_CONVERGENCE"
+}
