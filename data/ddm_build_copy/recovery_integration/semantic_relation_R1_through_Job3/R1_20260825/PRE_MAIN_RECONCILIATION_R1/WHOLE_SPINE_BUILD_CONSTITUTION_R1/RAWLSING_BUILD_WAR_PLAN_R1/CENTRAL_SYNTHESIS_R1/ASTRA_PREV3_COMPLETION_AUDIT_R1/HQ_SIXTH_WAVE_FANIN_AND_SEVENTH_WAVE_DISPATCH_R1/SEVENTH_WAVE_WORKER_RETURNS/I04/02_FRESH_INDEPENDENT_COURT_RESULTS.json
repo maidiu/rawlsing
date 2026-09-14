@@ -1,0 +1,57 @@
+{
+  "cases": [
+    {"detail": {"rawlsing_next/objective_non_event_currentness_contract.py": "69a740fa8f6a213fed1df5b0a5686651b8b6a6f8", "rawlsing_next/objective_non_event_currentness_validation.py": "aebcf109cf5b5cbb8ffc92a377f0c29f929746ba", "rawlsing_next/objective_non_event_publication_serving_adapter.py": "9baa6e73f683cea723de5ac56889ef6e5a7b5dee"}, "id": "I04-T01", "name": "EXACT_H04_TARGET_BLOBS", "status": "PASS"},
+    {"detail": {"keys": ["schema", "compatibility_contract_ref", "state", "authority_ref", "structural_currentness_basis_ref", "decision_effective_time_ref", "non_event_resolution_receipt_ref", "selection_record_ref", "producer_object_ref", "world_or_release_root_ref"], "receipt_hash": "91ea01f6537cd5d4245305bd848e6ae2bb17fae78106c38d1c3c8423ff1b7bda"}, "id": "I04-T02", "name": "FROZEN_HASH_BEARING_FIELD_SET", "status": "PASS"},
+    {"detail": {"receipt_hash": "7f47622ebae9ac1c20201d5d02994a2a98d8d40caca486a479b830356d3afaf1", "receipt_id": "D05CUR:7f47622ebae9ac1c20201d5d02994a2a98d8d40caca486a479b830356d3afaf1"}, "id": "I04-T03", "name": "LAWFUL_CURRENT_ACTUAL_RECEIPT_ACCEPTS", "status": "PASS"},
+    {"detail": "ExactRef and lookalike both rejected", "id": "I04-T04", "name": "ACTUAL_OBJECT_REQUIRED_REF_ONLY_MALFORMED_REJECT", "status": "PASS"},
+    {"detail": "schema, contract, unknown state rejected", "id": "I04-T05", "name": "SCHEMA_CONTRACT_UNKNOWN_STATE_REJECT", "status": "PASS"},
+    {"detail": "hash and id tamper rejected", "id": "I04-T06", "name": "RECOMPUTED_IDENTITY_TAMPER_REJECT", "status": "PASS"},
+    {"detail": {"INVALID": "5ca5aaa58428fdf20ebb327189611fa3262d86b33b8c740ff3cf55827544324b", "REFRESH_REQUIRED": "bbc966c143242744fb556100bb1ea30ccba1af0672870de496afb79ed52204bc", "STALE": "3e3cf37edc48ca35e432b3438031825ba3a66a1302c5b74d919d148dfabc6798"}, "id": "I04-T07", "name": "STALE_REFRESH_REQUIRED_INVALID_REJECT", "status": "PASS"},
+    {"detail": "authority and basis mismatch rejected", "id": "I04-T08", "name": "AUTHORITY_AND_BASIS_BINDING", "status": "PASS"},
+    {"detail": ["resolution", "selection", "producer", "world", "effective_time", "authority", "basis"], "id": "I04-T09", "name": "RESEALED_RESOLUTION_SELECTION_PRODUCER_WORLD_TIME_AUTHORITY_BASIS_MISMATCH_REJECT", "status": "PASS"},
+    {"detail": "different valid D05 context rejected", "id": "I04-T10", "name": "RUNTIME_CONTEXT_SWAP_REJECT", "status": "PASS"},
+    {"detail": "incomplete resolution rejected", "id": "I04-T11", "name": "RESOLUTION_COMPLETE_REQUIRED", "status": "PASS"},
+    {"detail": "duplicate selection and duplicate entry rejected", "id": "I04-T12", "name": "EXACTLY_ONE_SELECTION_AND_ENTRY_REQUIRED", "status": "PASS"},
+    {"detail": "producer mismatch rejected", "id": "I04-T13", "name": "SELECTED_PRODUCER_BINDING_REQUIRED", "status": "PASS"},
+    {"detail": "historical remains historical with null currentness receipt", "id": "I04-T14", "name": "HISTORICAL_NONPROMOTION_NULL_ACCEPT", "status": "PASS"},
+    {"detail": "historical attachment rejected", "id": "I04-T15", "name": "HISTORICAL_CURRENTNESS_ATTACHMENT_REJECT", "status": "PASS"},
+    {"detail": "ref-only construction rejected", "id": "I04-T16", "name": "REF_ONLY_CONSTRUCTION_REJECT", "status": "PASS"},
+    {"detail": {"serving_currentness_ref": {"content_hash": "e6774bf80813d438672e0d4cc5f04455638283b1448e2a92cd407f876be915be", "kind": "PREV3_OBJECTIVE_NON_EVENT_CURRENTNESS_RECEIPT", "object_id": "D05CUR:e6774bf80813d438672e0d4cc5f04455638283b1448e2a92cd407f876be915be"}}, "id": "I04-T17", "name": "CURRENT_SERVING_ACTUAL_OBJECT_CONTEXT_AND_REF_BINDING", "status": "PASS"},
+    {"detail": "missing basis context rejected", "id": "I04-T18", "name": "CURRENT_VALIDATION_CONTEXT_REQUIRED", "status": "PASS"},
+    {"detail": "embedded serving ref mismatch rejected", "id": "I04-T19", "name": "SERVING_TO_CURRENTNESS_REF_BINDING", "status": "PASS"},
+    {"detail": "latest/default/*/non-sha resolution keys rejected", "id": "I04-T20", "name": "NO_LATEST_DEFAULT_FUZZY_REPAIR", "status": "PASS"},
+    {"detail": {"current": "6ea2aa3df565015e25bd8d18c24ab9fe59d3c29bf02c4ddd8a1f04285fd3665b", "stale": "7df2f0c69d1623ad86a7ce4bde498cec9469d473c21129a6f84cc7c1e5d50fa0"}, "id": "I04-T21", "name": "STATE_HASH_BEARING_AND_CURRENT_ONLY", "status": "PASS"},
+    {"detail": {"base": "9822424d924fc4a1e67c635a7b59e75dc2405f09c57e65103811f472a456c7f2", "effective": "385f76427a8e713e051a2e38012d234604204fc38cd074232e227854b613f93c", "world": "d66505cce56aae86cd0a81e72a4b796cfdb208b8337f754e30e44164fffdd946"}, "id": "I04-T22", "name": "WORLD_AND_EFFECTIVE_TIME_ARE_HASH_BEARING", "status": "PASS"},
+    {"detail": ["ec40ad8bf58c53b5c0be58a455ba7fc3967d9462273199f6317dd4d6b0ddb7a3", "d95d8c877f2dc615eec580adaf01a288f9c5b5b45fded97ad47f63aa0bd64963", "fa7f17706ec239ac00fda4dc7ab33a697165b75697daf68ca860092b60ac37f6", "3893abf29fdf70b7f60c07c0d677da236c385772febadf8a602543f52650df9b"], "id": "I04-T23", "name": "RESOLUTION_SELECTION_PRODUCER_ARE_HASH_BEARING", "status": "PASS"},
+    {"detail": {"authority": "c73fd1bba404d02020ad1507c5d68bd0d8bbbf2ac4ac1b6a8173ae8b91b92a72", "base": "c754f26efaf7c3734e386477a4388c288749314f83cffc8845054447c8f31ca9", "basis": "55a647a6c33d9b99ea23852d8ff54cb0712a225498f17690cacaa955946dc23a"}, "id": "I04-T24", "name": "AUTHORITY_AND_BASIS_ARE_HASH_BEARING", "status": "PASS"}
+  ],
+  "commission_tip": "b177b5c287dc1db74f2f1779f9214613fbc8d344",
+  "contract_hash": "80d361179530d84e08b48094a6cc68d0864365dc396d8740e4dffd20d80bb6c0",
+  "h04_return": "aa516d5db8d8459482405e3616d56994c5d2c33a",
+  "production_repair_performed": false,
+  "run": {
+    "execution_model": "Source-exact isolated seam execution of the three altered H04 blobs plus separate exact-identity/diff checks for frozen legacy D05 and M4/M5 preservation.",
+    "failed": 0,
+    "harness_git_blob": "3133ada5ff1db552982d60efe668afe64b91db1c",
+    "harness_sha256": "6e89da1dc40e83bd3cbecba2f918409792fdb1f90e8eb2783f05940469f4c06d",
+    "passed": 24,
+    "qualification_independence": "Fresh I04-authored court; H04 self-tests were not used as qualification evidence.",
+    "raw_local_results_git_blob": "4ba46a306980298423098620bb536f37ad6fa8ec",
+    "raw_local_results_sha256": "34729a3cd719db4695e03ffbb98482ad5e794ce2e1777f8ece9c3e47e4d92787",
+    "total": 24
+  },
+  "schema": "I04_FRESH_INDEPENDENT_COURT_RESULTS_R1",
+  "self_test_evidence_used": false,
+  "static_preservation_checks": [
+    {"detail": "a1e2ae8775707eb30097279cde91f30271b6d243", "id": "I04-S01", "name": "LEGACY_D05_BLOB_PRESERVED", "status": "PASS"},
+    {"detail": {"base": "edc34f924657cd4ec3143e9051b035a690050f36", "head": "aa516d5db8d8459482405e3616d56994c5d2c33a"}, "id": "I04-S02", "name": "NO_M4_M5_WIDENING_IN_H04_DIFF", "status": "PASS"},
+    {"detail": {"base": "aa516d5db8d8459482405e3616d56994c5d2c33a", "head": "b177b5c287dc1db74f2f1779f9214613fbc8d344"}, "id": "I04-S03", "name": "NO_PRODUCTION_DRIFT_BETWEEN_H04_RETURN_AND_I04_COMMISSION", "status": "PASS"},
+    {"detail": ["actor_state_effect=False enforced", "ingress_effect structural-context-only enforced", "serving use ceiling REVIEW/CONTEXT remains"], "id": "I04-S04", "name": "PREV3_V3_FIREWALL_PRESERVED_BY_UNCHANGED_LEGACY_VALIDATOR", "status": "PASS"}
+  ],
+  "status": "PASS",
+  "target_code_blobs": {
+    "rawlsing_next/objective_non_event_currentness_contract.py": "69a740fa8f6a213fed1df5b0a5686651b8b6a6f8",
+    "rawlsing_next/objective_non_event_currentness_validation.py": "aebcf109cf5b5cbb8ffc92a377f0c29f929746ba",
+    "rawlsing_next/objective_non_event_publication_serving_adapter.py": "9baa6e73f683cea723de5ac56889ef6e5a7b5dee"
+  }
+}
