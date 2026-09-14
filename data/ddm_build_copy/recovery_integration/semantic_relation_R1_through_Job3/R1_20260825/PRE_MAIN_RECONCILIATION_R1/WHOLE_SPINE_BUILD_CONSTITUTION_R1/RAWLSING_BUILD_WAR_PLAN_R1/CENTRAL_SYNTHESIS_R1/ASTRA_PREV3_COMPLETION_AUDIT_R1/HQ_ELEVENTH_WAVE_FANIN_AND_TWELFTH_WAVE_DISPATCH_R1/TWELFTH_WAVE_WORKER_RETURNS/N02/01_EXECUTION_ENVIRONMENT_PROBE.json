@@ -1,0 +1,63 @@
+{
+  "schema_id": "N02_LITS_I_R2_R7_R27_EXECUTION_ENVIRONMENT_PROBE_R1",
+  "grain": "LITS_I_Q301_R2_R7_R27_EXACT_RECORD_ID_EXTENSION_MATERIALIZATION_R2_ONLY",
+  "commission_tip": "69a5dbf0492b618413d39f50d1a7fc251dfa4d34",
+  "source": {
+    "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "version": "1",
+    "filename": "LITS-2006-data.dta",
+    "bytes_observed": 139531180,
+    "sha256_observed": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows_observed_by_diagnostic_decoder": 29002
+  },
+  "accepted_decoder": {
+    "path": "rawlsing_next/pre553_physical_decoder.py",
+    "blob_sha1": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+    "required_backend_module": "pyreadstat",
+    "required_exact_sha_encoding_override": "latin1",
+    "row_ordinal_law": "one_based_source_row_ordinal",
+    "backend_import_available": false,
+    "accepted_decode_completed": false
+  },
+  "environment": {
+    "pyreadstat_import": "ModuleNotFoundError: No module named 'pyreadstat'",
+    "pyreadstat_install_attempt": "FAILED_NETWORK_NAME_RESOLUTION",
+    "external_package_resolution_available": false
+  },
+  "non_authoritative_diagnostic_only": {
+    "status": "QUARANTINED_NON_AUTHORITY_DIAGNOSTIC__NOT_A_MATERIALIZATION_RESULT",
+    "reader": "pandas.read_stata",
+    "pandas_version": "2.2.3",
+    "columns_read": [
+      "q301_2",
+      "q301_7"
+    ],
+    "q301_2_native_state_counts": {
+      "1": 4377,
+      "2": 6440,
+      "3": 5226,
+      "4": 6972,
+      "5": 1882,
+      "6": 1774,
+      "7": 2327,
+      "SYSTEM_MISSING": 4
+    },
+    "q301_2_states_1_through_5_count": 24897,
+    "q301_7_native_state_counts": {
+      "1": 2889,
+      "2": 6112,
+      "3": 6511,
+      "4": 10334,
+      "5": 2479,
+      "6": 224,
+      "7": 442,
+      "SYSTEM_MISSING": 11
+    },
+    "q301_7_states_1_through_5_count": 28325,
+    "r27_candidate_intersection_count": 24630,
+    "same_input_probe_replay_equal": true,
+    "authority_warning": "These diagnostics were not produced by the accepted PRE553 pyreadstat decoder and therefore do not freeze R2, R7, R27, their member extensions, or canonical roots."
+  },
+  "authoritative_materialization_emitted": false,
+  "blocker": "N02_BLOCK__ACCEPTED_PRE553_DTA_DECODER_BACKEND_UNAVAILABLE__NO_AUTHORIZED_R2_R7_R27_EXTENSION_FREEZE"
+}
