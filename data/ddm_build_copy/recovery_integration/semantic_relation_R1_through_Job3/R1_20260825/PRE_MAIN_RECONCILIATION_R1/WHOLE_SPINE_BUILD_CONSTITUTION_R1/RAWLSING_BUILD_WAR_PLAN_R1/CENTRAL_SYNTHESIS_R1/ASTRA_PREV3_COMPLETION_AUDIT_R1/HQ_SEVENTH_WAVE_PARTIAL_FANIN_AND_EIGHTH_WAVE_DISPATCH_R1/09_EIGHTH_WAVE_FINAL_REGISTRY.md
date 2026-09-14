@@ -1,9 +1,15 @@
 # PRE-V3 Eighth-Wave Final Registry R1
 
-Status: `W8_J01_J06_COMMISSIONED__I04_SEVENTH_WAVE_COMMISSION_STILL_ACTIVE`
+Status: `W8_J01_J06_COMMISSIONED__I04_RETURNED_QUALIFIED_AND_H04_IMPLEMENTATION_INTEGRATED`
 
 HQ seventh-wave partial fan-in authority:
 `fa92b441eec609386de7c6220c3ec743e9d35b4f`
+
+I04 late-return disposition:
+- return: `PASS__INDEPENDENT_REQUALIFICATION_COMPLETE__H04_D05_CURRENTNESS_COMPATIBILITY_QUALIFIED`
+- court: `24/24 PASS`
+- qualified H04 implementation integrated into PRE-MAIN at `de960ad070dd0a620cd90306ec445163b041234a`
+- no J01-J06 commission is superseded or altered by this disposition
 
 | ID | Branch | Commission tip | Exact grain | Library |
 |---|---|---|---|---|
@@ -14,15 +20,8 @@ HQ seventh-wave partial fan-in authority:
 | J05 | `agent/rabochii-prev3-w8-j05-wvs7-carrier-recovery-r1` | `49daa83a3f46e59a56e0adf341fce9207ddad1b9` | `C09_EXACT_WVS7_CARRIER_RECOVERY_MATERIALIZATION_AND_IDENTITY_RECEIPT_R1_ONLY` | YES — exact WVS7 package/carrier only |
 | J06 | `agent/rabochii-prev3-w8-j06-sig004-structural-reference-closure-r1` | `d99e038e795d83e3fb61aa0de28bf498376c1b25` | `V555_SIG004_EXACT_STRUCTURAL_PARTICIPANT_CHANNEL_REFERENCE_CLOSURE_R1_ONLY` | NO by default |
 
-Still-active prior commission:
-
-| ID | Branch | Commission tip | Exact grain | Status |
-|---|---|---|---|---|
-| I04 | `agent/rabochii-prev3-w7-i04-nonevent-independent-requal-r1` | `b177b5c287dc1db74f2f1779f9214613fbc8d344` | `PREV3_D05_CURRENTNESS_COMPATIBILITY_IMPLEMENTATION_INDEPENDENT_REQUALIFICATION_R1_ONLY` | NOT RETURNED — execute existing commission; no replacement branch |
-
 Parallelism:
 - J01-J06 may all begin immediately.
-- I04 remains independently executable now.
 - J02 and J03 are deliberately parallel and must not consume one another as authority; HQ reconciles them before learned-world positive re-execution.
 - J05 does not launch C09; exact carrier recovery wakes a separate C09 rerun.
 - J06 does not compose M2; exact closure wakes a separate mechanical route implementation/composition/replay lane.
@@ -39,4 +38,4 @@ Preserved law:
 PRE-V3 remains `NOT_PROJECT_COMPLETE`.
 
 Terminal:
-`PREV3_EIGHTH_WAVE_J01_J06__COMMISSIONED__PARALLEL_RELEASE_ACTIVE__I04_STILL_ACTIVE`
+`PREV3_EIGHTH_WAVE_J01_J06__COMMISSIONED__PARALLEL_RELEASE_ACTIVE__I04_QUALIFIED_AND_INTEGRATED`
