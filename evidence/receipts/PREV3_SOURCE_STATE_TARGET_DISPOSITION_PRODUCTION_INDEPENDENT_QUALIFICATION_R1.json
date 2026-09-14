@@ -1,0 +1,77 @@
+{
+  "receipt_id": "PREV3_SOURCE_STATE_TARGET_DISPOSITION_PRODUCTION_INDEPENDENT_QUALIFICATION_R1",
+  "status": "BLOCKER",
+  "branch": "agent/rabochii-prev3-w10-l02-source-state-target-independent-qual-r1",
+  "commission_tip": "44d19b442d480df0585507b99d9eec3e0cdd8539",
+  "grain": "PREV3_SOURCE_STATE_TARGET_DISPOSITION_PRODUCTION_INDEPENDENT_QUALIFICATION_R1_ONLY",
+  "authority_ceiling": "INDEPENDENT_QUALIFICATION_ONLY_ZERO_REPAIR",
+  "candidate_sha": "639aec0e6b8310f07283922faf0afdc7e3dc7c48",
+  "accepted_parent_contract_sha": "4c86fb44d06e27763b004dbd3181271cfb83efc1",
+  "smallest_exact_blocker": {
+    "blocker_id": "K02_J02_CONTRACT_SCHEMA_DRIFT_R1",
+    "summary": "K02's generic production contract is not schema-compatible with the accepted J02 contract it was commissioned to productionize.",
+    "j02_schema_git_blob_sha1": "a4d916a553b6c5039c57ea8607a15c5ac2df5c47",
+    "failures": [
+      {
+        "accepted_j02_surface": "source_local_governed_state.state_class",
+        "accepted_token": "SOURCE_NOT_APPLICABLE_OR_INELIGIBLE",
+        "k02_runtime_result": "REJECTED_AS_UNKNOWN_SOURCE_LOCAL_STATE_CLASS"
+      },
+      {
+        "accepted_j02_surface": "product_target_disposition.disposition",
+        "accepted_token": "TYPED_MISSING_NONRESPONSE",
+        "k02_runtime_result": "REJECTED_AS_UNKNOWN_PRODUCT_TARGET_DISPOSITION"
+      },
+      {
+        "accepted_j02_surface": "product_target_disposition.disposition",
+        "accepted_token": "NOT_APPLICABLE_OR_INELIGIBLE",
+        "k02_runtime_result": "REJECTED_AS_UNKNOWN_PRODUCT_TARGET_DISPOSITION"
+      }
+    ],
+    "scope_note": "K02 can coerce typed missing to UNRESOLVED and remain fail-closed; this court does not claim silent denominator self-deletion. The blocker is exact contract incompatibility with accepted J02 law."
+  },
+  "candidate_content_sha256": {
+    "rawlsing_next/source_state_target_disposition_contract.py": "8c75d41d846363329147ad30187bd30cbfd6dc2e1105f2304e3d94db4150f1d4",
+    "rawlsing_next/pre553_source_state_target_disposition.py": "918f0a7e7c8622cc07b9234740e260ac2e4e7560a5aab3ddf534db9b3c36aa6e",
+    "evidence/selftest/prev3_source_state_target_disposition_production.py": "663f3ec3ea0d1d838b8a75b1ee75759a6d971b4ef2cbae9a37d1cb09545ee220"
+  },
+  "governed_court": {
+    "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+    "semantic_candidate_sha": "639aec0e6b8310f07283922faf0afdc7e3dc7c48",
+    "evidence_execution_sha": "a72f8d571fd2d7d103700be00600e6cb2cc6d6a2",
+    "pr_synthetic_merge_sha": "d512a81eff8d1719da0005ac10ac81c66f241211",
+    "spec_sha256": "59d2d94b73cf6cd6af8c8d652180fedc32ebac4e5cca44018cdef8f4d081ebae",
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "determinism_mode": "EXACT",
+    "result": "PASS",
+    "exit_code": 0,
+    "test_path": "rawlsing_next/tests/test_prev3_source_state_target_disposition_independent_qualification.py",
+    "independent_hostile_tests": "5 passed in 0.03s",
+    "protocol_selftests": "20 passed in 0.06s",
+    "workflow_run_id": 34806152954,
+    "workflow_run_number": 417,
+    "artifact_id": 10333235919,
+    "artifact_name": "rabochii-court-receipt-34806152954",
+    "artifact_zip_sha256": "96d03830e7375e93150ebd7a72b61840856fcdcfcfde69f8669f6ac0efe747f2",
+    "execution_surface": {
+      "temporary_draft_pr": 368,
+      "base_branch": "agent/rabochii-prev3-w9-k02-source-state-target-production-integration-r1",
+      "base_sha": "639aec0e6b8310f07283922faf0afdc7e3dc7c48",
+      "closed": true,
+      "merged": false
+    }
+  },
+  "bounds": {
+    "production_files_modified": false,
+    "repair_performed": false,
+    "k03_consumed_as_proof": false,
+    "learned_workload_executed": false,
+    "main_mutated": false,
+    "pre_main_mutated": false,
+    "world_scope": "OBJECTIVE_ONLY",
+    "obl063_driver_type_person_terminal_semantics_revived": false
+  },
+  "qualification_disposition": "K02_NOT_QUALIFIED",
+  "successor_gate": "K02 requires competent producer-owner repair/recommissioning and a fresh independent qualification before HQ may treat L02 as converged with L03 or authorize learned positive re-execution."
+}
