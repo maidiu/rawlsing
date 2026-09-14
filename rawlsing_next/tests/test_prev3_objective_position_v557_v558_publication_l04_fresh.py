@@ -21,7 +21,7 @@ from rawlsing_next.prev3_objective_position_v557_v558_publication import (
     validate_objective_position_publication_carrier,
 )
 from rawlsing_next.tests import test_prev3_objective_position_v557_v558_publication as hcases
-from rawlsing_next.tests.test_prev3_objective_position_v557_v558_publication import _carrier, _r
+from rawlsing_next.tests.test_prev3_objective_position_v557_v558_publication import _carrier
 
 
 H00_H23 = tuple(getattr(hcases, f"test_j04_h{i:02d}_" + suffix) for i, suffix in (
@@ -75,10 +75,10 @@ def test_l04_f25_wrong_domain_binding_ref_is_rejected():
     item = ContextQueryItem(
         exact_resolution_key(carrier.root_entry.locator), (M4_CONTEXT_USE,)
     )
-    fake = _r(
-        "PREV3_OBJECTIVE_POSITION_DOMAIN_USE_BINDING",
-        "PREV3POSUSE:" + "8" * 64,
-        "8" * 64,
+    fake = replace(
+        carrier.domain_use_binding.ref,
+        object_id="PREV3POSUSE:" + "8" * 64,
+        content_hash="8" * 64,
     )
     query = make_context_query((item,), generated_binding_refs=(fake,))
     with pytest.raises(ObjectivePositionPublicationError):
