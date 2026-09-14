@@ -1,0 +1,61 @@
+{
+  "schema": "W9_K04_GOVERNED_TEST_COURT_RECEIPT_R1",
+  "status": "PASS",
+  "test_suite_id": "J04_PREV3_OBJECTIVE_POSITION_FACT_V557_PUBLICATION_HOSTILE_QUALIFICATION_R1",
+  "production_candidate_sha": "895285f1bff8b5d7c37e52e26e3aed7233097839",
+  "test_scaffolding_commit": "de4392dd478915d74e6732696a1ef01571d6dc4b",
+  "evidence_execution_sha": "7258cf26e7820692bc7d1dd0ef284577f9873d52",
+  "test_path": "rawlsing_next/tests/test_prev3_objective_position_v557_v558_publication.py",
+  "test_blob": "bf48e285d716d06c2dcedbc4c72231be7c5935cc",
+  "court_spec": {
+    "historical_blob": "0d0d1e7958186e19c19c650be3f9b5acc0e479e5",
+    "spec_sha256": "42889cb033200b3b04ec813888378d7270805fe99b593252c07c520ffe524653",
+    "determinism_mode": "EXACT",
+    "python_version_requested": "3.12",
+    "env": {
+      "PYTHONHASHSEED": "0",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+    },
+    "temporary_trigger_removed_after_evidence": true,
+    "trigger_removal_commit": "16ba948a300eb98dc7d258cbd1fdaab1bf3a55d4"
+  },
+  "github_actions": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 34804935155,
+    "run_number": 413,
+    "job_id": 103854846316,
+    "job_name": "governed-court",
+    "job_conclusion": "success",
+    "pull_request": 367,
+    "pull_request_disposition": "CLOSED_UNMERGED_AFTER_EVIDENCE_CAPTURE",
+    "pr_synthetic_merge_sha": "33019f1888aa3a24bfc8158c4f31b2f6dfc671cf"
+  },
+  "bounded_court": {
+    "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+    "result": "PASS",
+    "exit_code": 0,
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "elapsed_seconds": 0.52561,
+    "pytest_result": "24 passed in 0.32s",
+    "passed": 24,
+    "failed": 0
+  },
+  "protocol_self_test": {
+    "result": "PASS",
+    "pytest_result": "20 passed in 0.15s"
+  },
+  "uploaded_receipt_artifact": {
+    "artifact_id": 10332598181,
+    "artifact_name": "rabochii-court-receipt-34804935155",
+    "artifact_size_bytes": 604,
+    "artifact_zip_sha256": "263ae377deb09f7673d7b982c216679f251504df2637049cfff53662dcfc8e72"
+  },
+  "j04_hostile_requirements": {
+    "artifact_blob": "29186cf5b114140755fe092592bd4ee1180ebf6d",
+    "requirements_content_sha256": "d2e89876ef766ff167ef6d10cf5eb46377fc62533beed3f08d59e7aad1b1045e",
+    "required_case_count": 24,
+    "covered_case_ids": "H00_THROUGH_H23"
+  },
+  "terminal": "K04_GOVERNED_COURT_PASS__24_OF_24__PRODUCTION_CANDIDATE_QUALIFIED_AT_PRODUCER_SIDE"
+}
