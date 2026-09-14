@@ -1,0 +1,34 @@
+{
+  "authority_ceiling": "SOURCE_MATERIALIZATION_AND_IDENTITY_ONLY__NO_C09_EXECUTION__NO_ARCHITECTURE_SELECTION",
+  "contract_identity_sha256": "c550c7fa64881c26f5a011f61c14256640410adbb63cafe6cdb47769eee0365b",
+  "downstream_steps": [
+    "Materialize Library file_id file_00000000386c820d8760e748b25ad7e1 version 1 as raw_file.",
+    "Verify package filename WVS Wave 7.sav.zip, byte count 26200230, and package SHA-256 ce92993a022edbe39823f4a95d3f33522179ce4f388e2de2c1778c4ae6f1059a.",
+    "Extract only archive member named exactly WVS Wave 7.sav; do not use __MACOSX resource-fork material or any derived CSV/parquet/shard/codebook.",
+    "Before any C09 candidate launch, verify extracted member byte count 185163494 and SHA-256 2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d.",
+    "Verify decoded dimensions 97220 rows x 613 variables.",
+    "On any identity mismatch, stop fail-closed; do not substitute another WVS7 release or derived representation."
+  ],
+  "frozen_package": {
+    "bytes": 26200230,
+    "library_file_id": "file_00000000386c820d8760e748b25ad7e1",
+    "name": "WVS Wave 7.sav.zip",
+    "sha256": "ce92993a022edbe39823f4a95d3f33522179ce4f388e2de2c1778c4ae6f1059a",
+    "version_id": "1"
+  },
+  "required_carrier": {
+    "bytes": 185163494,
+    "expected_dimensions": {
+      "rows": 97220,
+      "variables": 613
+    },
+    "member_name": "WVS Wave 7.sav",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "zip_compressed_bytes": 26199623,
+    "zip_compression_method": 8,
+    "zip_crc32": "d0308f1a"
+  },
+  "schema": "J05_C09_WVS7_SOURCE_MATERIALIZATION_CONTRACT@1.0.0",
+  "status": "READY_FOR_SEPARATE_C09_RERUN",
+  "successor_gate": "J05_PASS_WAKES_SEPARATE_C09_RERUN"
+}
