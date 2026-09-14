@@ -20,7 +20,42 @@ from rawlsing_next.prev3_objective_position_v557_v558_publication import (
     resolve_bound_objective_position_context,
     validate_objective_position_publication_carrier,
 )
+from rawlsing_next.tests import test_prev3_objective_position_v557_v558_publication as hcases
 from rawlsing_next.tests.test_prev3_objective_position_v557_v558_publication import _carrier, _r
+
+
+H00_H23 = tuple(getattr(hcases, f"test_j04_h{i:02d}_" + suffix) for i, suffix in (
+    (0, "exact_proving_fact_publication_and_replay"),
+    (1, "relabel_producer_family_as_v552_rejected"),
+    (2, "relabel_as_v553_v554_v555_v556_rejected"),
+    (3, "schema_or_version_mutation_rejected"),
+    (4, "fact_ref_kind_mutation_rejected"),
+    (5, "prev3pos_object_id_mutation_rejected"),
+    (6, "content_hash_mutation_rejected"),
+    (7, "nonpositive_position_result_not_publication_root"),
+    (8, "source_domain_use_widen_or_substitute_rejected"),
+    (9, "bare_context_without_domain_binding_rejected"),
+    (10, "active_causal_request_rejected"),
+    (11, "review_is_not_inferred_from_context_mapping"),
+    (12, "drop_canonical_dependency_rejected"),
+    (13, "invent_dependency_ref_rejected"),
+    (14, "negative_ceiling_mutation_rejected"),
+    (15, "runtime_clock_temporal_surrogate_rejected"),
+    (16, "present_day_persistence_substitution_rejected"),
+    (17, "strip_evidence_or_provenance_rejected"),
+    (18, "authority_ref_mutation_rejected"),
+    (19, "latest_default_fuzzy_resolution_rejected"),
+    (20, "person_v3_psychological_use_rejected"),
+    (21, "m2_m3_stage_authority_not_inferred_from_publication"),
+    (22, "setlike_reordering_replays_identically"),
+    (23, "v558_locator_reidentification_rejected"),
+))
+
+
+def test_l04_reproduce_complete_h00_h23_matrix_in_fresh_execution():
+    assert len(H00_H23) == 24
+    for case in H00_H23:
+        case()
 
 
 def test_l04_f24_exact_bound_query_fails_closed_without_exact_dependency_bodies():
