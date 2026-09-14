@@ -1,0 +1,50 @@
+{
+  "schema": "L04_OBJECTIVE_POSITION_PUBLICATION_INDEPENDENT_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "grain": "PREV3_OBJECTIVE_POSITION_V557_V558_PUBLICATION_INDEPENDENT_HOSTILE_QUALIFICATION_R1_ONLY",
+  "commission_tip": "769aed584ee2eb792b9b9f04273fcddba59d4243",
+  "hq_authority": "dbcedcc6bd2ceeda2de9c23543a392f70fb7bac2",
+  "candidate": {
+    "k04_return": "3d412aae0517b6e168431268b099cd3992a5f043",
+    "production_candidate": "895285f1bff8b5d7c37e52e26e3aed7233097839",
+    "implementation_path": "rawlsing_next/prev3_objective_position_v557_v558_publication.py",
+    "implementation_blob": "7d2a5dbb3e0979c599632645867aa48a336a8e79",
+    "carrier_contract": "PREV3_OBJECTIVE_POSITION_FACT_OWNER_PRESERVING_V557_V558_PUBLICATION@1.0.0",
+    "carrier_contract_hash": "cb608401080b164ab0c8d9dbb0ffd0efb39b8a1713ac3ca840c279f696f04737",
+    "j04_authority_hash": "7cd66ca4f8a413c3ad9bf5559a9b83d34103c421251081dad31aac580813c630",
+    "proving_fact": "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02"
+  },
+  "successful_execution": {
+    "evidence_execution_sha": "5a0a9a22a293c46cec9fdc90ad9726198794ba39",
+    "workflow_run": 34806188678,
+    "job": 103858424607,
+    "python": "3.12.14",
+    "protocol_self_tests": "20 passed in 0.11s",
+    "qualification_nodes": "5 passed in 0.33s",
+    "required_h00_h23_reproduced_inside_meta_node": 24,
+    "fresh_probes": 4,
+    "artifact_id": 10333133524,
+    "artifact_digest": "sha256:e1ed812c07b2b49ade74c8e2194a9174c6146fb7e3f1b1f9f85405b5e257183c"
+  },
+  "first_execution_fixture_correction": {
+    "run": 34806145956,
+    "job": 103858305493,
+    "disposition": "TEST_FIXTURE_TYPE_MISMATCH_ONLY__NO_PRODUCTION_CHANGE",
+    "correction": "F25 now mutates the candidate's own M4 ExactRef binding type before query construction",
+    "production_code_changed": false
+  },
+  "independent_holding": {
+    "exact_prev3pos_identity_preserved": true,
+    "singleton_source_domain_use_preserved": true,
+    "generic_m4_whitelist_widened": false,
+    "v552_v556_reidentification": false,
+    "dependency_and_negative_ceiling_closure_preserved": true,
+    "temporal_or_present_day_substitution": false,
+    "m2_m3_person_causal_promotion": false,
+    "deterministic_replay": true,
+    "v558_without_exact_dependency_bodies": "FAILS_CLOSED_RESOLUTION_INTEGRITY_FAILED"
+  },
+  "production_repair_authority_used": false,
+  "central_integration_performed": false,
+  "successor_gate": "L04_INDEPENDENT_QUALIFICATION_PASS__K04_PUBLICATION_CANDIDATE_READY_FOR_HQ_CENTRAL_INTEGRATION"
+}
