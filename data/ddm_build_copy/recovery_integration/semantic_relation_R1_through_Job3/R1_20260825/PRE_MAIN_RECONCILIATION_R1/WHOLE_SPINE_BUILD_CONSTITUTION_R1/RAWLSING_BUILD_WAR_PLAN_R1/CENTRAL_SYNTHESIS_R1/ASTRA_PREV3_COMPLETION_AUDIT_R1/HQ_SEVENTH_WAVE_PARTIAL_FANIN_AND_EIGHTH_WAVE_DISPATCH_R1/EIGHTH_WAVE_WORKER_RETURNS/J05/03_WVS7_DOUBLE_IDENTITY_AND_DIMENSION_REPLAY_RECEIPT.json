@@ -1,0 +1,63 @@
+{
+  "all_checks_equal": true,
+  "carrier_ref": {
+    "bytes": 185163494,
+    "expected_dimensions": {
+      "rows": 97220,
+      "variables": 613
+    },
+    "member_name": "WVS Wave 7.sav",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "zip_compressed_bytes": 26199623,
+    "zip_compression_method": 8,
+    "zip_crc32": "d0308f1a"
+  },
+  "dimension_decodes": [
+    {
+      "check_id": "A",
+      "continuation_records": 32,
+      "first_nonvariable_record_offset": 62360,
+      "first_nonvariable_record_type": 3,
+      "method": "fresh-process SPSS SAV binary header/dictionary decode using struct",
+      "nominal_case_elements": 645,
+      "rows": 97220,
+      "variable_records": 645,
+      "variables": 613
+    },
+    {
+      "check_id": "B",
+      "continuation_records": 32,
+      "first_nonvariable_record_offset": 62360,
+      "first_nonvariable_record_type": 3,
+      "method": "fresh-process independent SPSS SAV header/dictionary decode using int.from_bytes",
+      "nominal_case_elements": 645,
+      "rows": 97220,
+      "variable_records": 645,
+      "variables": 613
+    }
+  ],
+  "full_statistical_decoder_note": "pyreadstat was not installed in the execution environment and external package installation was unavailable; dimensions were independently decoded directly from the exact SAV header and variable dictionary twice. No C09 workload execution was performed.",
+  "independent_extractions": [
+    {
+      "bytes": 185163494,
+      "check_id": "A",
+      "extraction": "fresh unzip member extraction",
+      "hash_method": "coreutils sha256sum",
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    },
+    {
+      "bytes": 185163494,
+      "check_id": "B",
+      "extraction": "separate fresh unzip member extraction",
+      "hash_method": "coreutils sha256sum plus bytewise cmp against A",
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    }
+  ],
+  "independent_hash_crosscheck": {
+    "method": "Python hashlib.sha256 over separately materialized exact member",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "receipt_identity_sha256": "2e9ee5662f3f19cd5fc911c500f5a96de2ab886d53663e756b7fe6eca7f42c77",
+  "schema": "J05_WVS7_DOUBLE_IDENTITY_AND_DIMENSION_REPLAY_RECEIPT@1.0.0",
+  "status": "PASS__TWO_INDEPENDENT_EXTRACTIONS_HASH_AND_DIMENSION_DECODES_EQUAL"
+}
