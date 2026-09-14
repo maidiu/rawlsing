@@ -1,0 +1,157 @@
+{
+  "schema": "T01_REPAIRED_Q03_OBJECTIVE_POSITION_HOSTILE_QUALIFICATION_R1",
+  "status": "PASS_INDEPENDENT_QUALIFICATION__SEPARATE_ACTOR_FACT_MATERIALIZATION_SOURCE_APPLICABILITY_LANE_ONLY",
+  "terminal": "T01_PASS__REPAIRED_Q03_OBJECTIVE_POSITION_INDEPENDENTLY_QUALIFIED__ACTOR_FACT_MATERIALIZATION_REMAINS_SEPARATELY_GATED",
+  "commission": {
+    "id": "T01",
+    "branch": "agent/rabochii-prev3-w18-t01-repaired-position-hostile-qualification-r1",
+    "tip": "7f06a1408b94dc33eccafc6185392954f296c363",
+    "base": "452b6588878e484c1c4b430fd970c248bddfe7bb",
+    "grain": "PREV3_REPAIRED_Q03_OBJECTIVE_POSITION_INDEPENDENT_HOSTILE_QUALIFICATION_R1_ONLY",
+    "library_used": false
+  },
+  "input": {
+    "s01_governed_return": "e5e1f53589f1947970591bf7358a6f9d2fee5a51",
+    "s01_candidate_artifact_blob": "856708f57e8a9fa8389a64dccfa985aa0a9b0a57",
+    "s01_replay_artifact_blob": "3c8b75040c53337cb3db08a178f3615b65af0b1b",
+    "candidate_content_hash": "60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505",
+    "candidate_id": "urn:rawlsing:prev3:objective-position-admission-candidate:sha256:60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505"
+  },
+  "qualification_matrix": {
+    "actor_independent_semantic_identity": {
+      "decision": "PASS",
+      "holding": "The semantic identity contains no exact occupant identity. It hashes only the reusable structural-position proof shape and provenance/authority/distinctness/use-ceiling material. An occupant change belongs to a later fact identity and cannot change this semantic identity unless the semantic definition itself is changed.",
+      "checks": [
+        "EXACT_OBJECTIVE_ACTOR_OR_ENTITY_IDENTITY is absent from admitted constitutive requirements and canonical identity material.",
+        "The phrase objective actor/entity structural position names the domain of possible occupancy; it does not bind a concrete occupant.",
+        "EXACT_EMPLOYER_OR_COUNTERPART_IDENTITY and EXACT_INSTITUTIONAL_RULE_CONTEXT are requirement kinds only; no concrete employer/counterpart or institutional-rule instance is embedded in the semantic candidate hash."
+      ]
+    },
+    "objective_world_and_no_person_state_leakage": {
+      "decision": "PASS",
+      "holding": "All positive constitutive requirements are objective relation/context requirements. Self-report, belief, preference, appraisal, motivation, disposition, biography and other person-state shortcuts remain explicitly nonconstitutive/forbidden."
+    },
+    "source_claim_provenance_closure": {
+      "decision": "PASS",
+      "holding": "The candidate preserves the exact M10/Wright source worker tip, source-ledger blob and three documentary loci. The frozen extraction supports productive-asset/property relation, exchange/work strategy, active wage-labour counterpart relation and institutional-rule context while separately distinguishing structural positions from incumbents.",
+      "source_worker_tip": "0ebca9ff111bea63838f9b68c8e5c3cb93d9d128",
+      "source_ledger_blob": "606de007e0f6dcb28e552bd8c959f3c4ec1fd2a7",
+      "documentary_loci": [
+        "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_857_909",
+        "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_951_959",
+        "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_978_996"
+      ],
+      "authority_ceiling": "The source extraction remains evidence only and does not self-issue project semantic authority or actor-fact truth."
+    },
+    "distinctness_from_q73a_prev3pos": {
+      "decision": "PASS",
+      "holding": "The repaired candidate is constituted by productive-asset noncontrol plus an active wage-labour counterpart relation under institutional rules. Q73A's owned semantic axis is fiscal incorporation/obligation. Neither semantic identity entails the other, and the repaired candidate preserves the exact baseline fact/owner/variable identity used for the distinction.",
+      "baseline_fact": "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02",
+      "baseline_owner": "ACTIVE_POSITION__FISCAL_INCORPORATION_OR_OBLIGATION_POSITION",
+      "baseline_variable": "Q73A"
+    },
+    "constitutive_closure_no_hidden_inference": {
+      "decision": "PASS",
+      "holding": "Materialization cannot infer the position from an employment code, occupation, industry, sector, job title, income, unemployment, manager label, subjective state, bounded-exit restriction, or exploitation classification. All four objective constitutive predicates must be separately proven at the asserted source/context grain.",
+      "required_predicates": [
+        "PRODUCTIVE_ASSET_CONTROL_INSUFFICIENT_FOR_INDEPENDENT_PRODUCTION",
+        "ACTIVE_WAGE_LABOUR_SALE_RELATION",
+        "EXACT_EMPLOYER_OR_COUNTERPART_IDENTITY",
+        "EXACT_INSTITUTIONAL_RULE_CONTEXT"
+      ]
+    },
+    "negative_ceilings": {
+      "decision": "PASS",
+      "holding": "The repaired candidate remains semantic-only and does not emit an actor-indexed PREV3POS fact, current empirical truth, mechanism/channel rule, topology/source-receiver edge, causal-use permission, exploitation fact, person uptake, V555/M2, V3/person state or OBL063 semantics."
+    },
+    "deterministic_replay_and_change_sensitivity": {
+      "decision": "PASS",
+      "canonicalization": "UTF-8 JSON of canonical_identity_material with lexicographically sorted object keys, compact separators ',', ':', arrays preserved in declared order, no identity/hash field included.",
+      "hash_algorithm": "SHA-256",
+      "replayed_content_hash": "60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505",
+      "holding": "Independent replay reproduces the S01 hash exactly. Mutating semantic name/definition, any constitutive requirement, source tip/blob/loci, semantic owner authority, commission/HQ authority, baseline distinctness, or use ceiling changes the hash. Varying an external occupant identity without changing semantic material leaves the semantic hash unchanged."
+    },
+    "later_actor_fact_materializer_suitability": {
+      "decision": "PASS",
+      "holding": "The semantic candidate now supplies a stable candidate identity and exact proof shape while leaving instance truth to a separate actor-fact lane. A later materializer must independently bind exact occupant identity, candidate identity, applicability, permission, valid-time/currentness, provenance/dependency and deterministic fact replay.",
+      "later_fact_requirements": [
+        "EXACT_OBJECTIVE_ACTOR_OR_ENTITY_IDENTITY",
+        "EXACT_POSITION_SEMANTIC_CANDIDATE_IDENTITY",
+        "EXACT_APPLICABILITY",
+        "EXACT_PERMISSION",
+        "EXACT_VALID_TIME_OR_CURRENTNESS",
+        "EXACT_PROVENANCE_AND_DEPENDENCY",
+        "DETERMINISTIC_FACT_REPLAY"
+      ],
+      "nonimplication": "T01 does not prove that any real actor/entity occupies the position and does not wake direct fact emission."
+    }
+  },
+  "canonical_identity_material": {
+    "schema": "PREV3_OBJECTIVE_POSITION_ADMISSION_IDENTITY_R1",
+    "semantic_class": "OBJECTIVE_STRUCTURAL_POSITION",
+    "canonical_name": "PRODUCTIVE_ASSET_SEPARATED_ACTIVE_WAGE_LABOUR_POSITION",
+    "definition": "An objective actor/entity structural position constituted at the asserted source/context grain by both (a) lack of effective control over productive assets sufficient for independent production and (b) an active wage-labour sale relation to an exact employer/counterpart under exact institutional rules.",
+    "constitutive_requirements": [
+      "PRODUCTIVE_ASSET_CONTROL_INSUFFICIENT_FOR_INDEPENDENT_PRODUCTION",
+      "ACTIVE_WAGE_LABOUR_SALE_RELATION",
+      "EXACT_EMPLOYER_OR_COUNTERPART_IDENTITY",
+      "EXACT_INSTITUTIONAL_RULE_CONTEXT"
+    ],
+    "source_worker_tip": "0ebca9ff111bea63838f9b68c8e5c3cb93d9d128",
+    "source_ledger_blob": "606de007e0f6dcb28e552bd8c959f3c4ec1fd2a7",
+    "documentary_loci": [
+      "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_857_909",
+      "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_951_959",
+      "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_978_996"
+    ],
+    "semantic_owner_authority": "Q03_M10_M01_OBJECTIVE_POSITION_SOURCE_AUTHORITY_R1",
+    "commission_tip": "0da683aa116857d2319bd008ed4c49631111e441",
+    "hq_authority": "4c2a0e9b0423be77a51284b34e87a3f8ae59a321",
+    "baseline_distinct_from": {
+      "fact": "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02",
+      "owner": "ACTIVE_POSITION__FISCAL_INCORPORATION_OR_OBLIGATION_POSITION",
+      "variable": "Q73A"
+    },
+    "use_ceiling": [
+      "SOURCE_BACKED_OBJECTIVE_POSITION_SEMANTIC_ADMISSION_CANDIDATE_ONLY",
+      "INDEPENDENT_QUALIFICATION_OR_MATERIALIZATION_INPUT_ONLY"
+    ]
+  },
+  "replay_assertions": {
+    "expected_content_hash": "60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505",
+    "expected_candidate_id": "urn:rawlsing:prev3:objective-position-admission-candidate:sha256:60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505",
+    "forbidden_semantic_occupant_token": "EXACT_OBJECTIVE_ACTOR_OR_ENTITY_IDENTITY",
+    "expected_constitutive_requirements": [
+      "PRODUCTIVE_ASSET_CONTROL_INSUFFICIENT_FOR_INDEPENDENT_PRODUCTION",
+      "ACTIVE_WAGE_LABOUR_SALE_RELATION",
+      "EXACT_EMPLOYER_OR_COUNTERPART_IDENTITY",
+      "EXACT_INSTITUTIONAL_RULE_CONTEXT"
+    ]
+  },
+  "boundary_preservation": {
+    "actor_indexed_prev3pos_fact_emitted": false,
+    "real_actor_or_entity_materialized": false,
+    "mechanism_channel_or_topology_created": false,
+    "v555_or_m2_used": false,
+    "v3_or_person_state_used": false,
+    "obl063_semantics_used": false,
+    "t02_provisional_output_consumed": false,
+    "t03_provisional_output_consumed": false,
+    "library_used": false,
+    "main_mutated": false,
+    "pre_main_mutated": false
+  },
+  "successor_gate": {
+    "decision": "WAKE_SEPARATE_MATERIALIZATION_SOURCE_APPLICABILITY_LANE_ONLY",
+    "required_before_fact": [
+      "EXACT_OBJECTIVE_ACTOR_OR_ENTITY_IDENTITY",
+      "EXACT_POSITION_SEMANTIC_CANDIDATE_IDENTITY",
+      "EXACT_APPLICABILITY",
+      "EXACT_PERMISSION",
+      "EXACT_VALID_TIME_OR_CURRENTNESS",
+      "EXACT_PROVENANCE_AND_DEPENDENCY",
+      "DETERMINISTIC_FACT_REPLAY"
+    ],
+    "direct_actor_fact_materialization_authorized": false
+  }
+}
