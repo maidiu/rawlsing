@@ -1,0 +1,64 @@
+{
+  "schema": "W8_J03_LITS_I_Q301_SOURCE_LOCAL_EVIDENCE_RECEIPT_ARTIFACT_R1",
+  "grain": "LITS_I_Q301_SOURCE_LOCAL_STATE_SEMANTIC_AUTHORITY_R1_ONLY",
+  "evidence_material": {
+    "schema": "LITS_I_Q301_SOURCE_LOCAL_EVIDENCE_RECEIPT_R1",
+    "grain": "LITS_I_Q301_SOURCE_LOCAL_STATE_SEMANTIC_AUTHORITY_R1_ONLY",
+    "commission_tip": "1f12e8ef941e6054176c56925eb66e7ee027b0cf",
+    "commission_blob": "0933637ec7870588692af340a8fcca3cb475bef2",
+    "carrier_verification": {
+      "name": "LITS-2006-data.dta",
+      "observed_bytes": 139531180,
+      "observed_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "expected_bytes": 139531180,
+      "expected_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "identity_match": "PASS"
+    },
+    "metadata_verification": {
+      "q301_2": {
+        "variable_label": "perception of present political sit. w.r.t. 1989",
+        "categorical_labels": ["strongly disagree","disagree","neither disagree not agree","agree","strongly agree","not applicable","don't know"],
+        "observed_numeric_states": [1,2,3,4,5,6,7],
+        "system_missing_count": 4
+      },
+      "q301_7": {
+        "variable_label": "perception of present life satisfaction",
+        "categorical_labels": ["strongly disagree","disagree","neither disagree not agree","agree","strongly agree","not applicable","don't know"],
+        "observed_numeric_states": [1,2,3,4,5,6,7],
+        "system_missing_count": 11
+      }
+    },
+    "questionnaire_verification": {
+      "name": "LiTSI_Questionnaire.pdf",
+      "sha256": "b94bdcf4a9f2e2e025bf35e5364f79acf0b1f5fa05c035064e674fa58a921eae",
+      "page": 10,
+      "question": "Q.3.01",
+      "shared_scale_exact": [
+        {"code":1,"label":"Strongly disagree"},{"code":2,"label":"Disagree"},{"code":3,"label":"Neither disagree nor agree"},{"code":4,"label":"Agree"},{"code":5,"label":"Strongly agree"},{"code":6,"label":"Not applicable"},{"code":7,"label":"Don't know"}
+      ],
+      "q301_2_statement": "The political situation in this country is better today than around 1989",
+      "q301_7_statement": "All things considered, I am satisfied with my life now",
+      "family_scope": "Q3_01_SHARED_SCALE_COVERS_ALL_LISTED_ITEMS"
+    },
+    "documentation_metadata_disposition": {
+      "code_assignment_conflict": "NONE",
+      "label_text_variant": {
+        "code": 3,
+        "questionnaire": "Neither disagree nor agree",
+        "released_dta_metadata": "neither disagree not agree",
+        "disposition": "PRESERVE_BOTH_STRINGS__QUESTIONNAIRE_IS_RESPONDENT_FACING_SOURCE_WORDING__NO_EFFECT_ON_6_OR_7"
+      }
+    },
+    "semantic_ledger_sha256": "37fa3395b61902b7049d4c26f09e62af314cea7a30783d21ab87e4512f46febb",
+    "execution_environment": {
+      "library_materialized_exact_carrier": true,
+      "library_exact_questionnaire_read": true,
+      "library_source_codebook_identity_recorded": true,
+      "production_code_changed": false,
+      "pytest_executed": false
+    },
+    "terminal": "J03_EVIDENCE_RECEIPT_PASS__DTA_AND_OFFICIAL_Q3_01_SCALE_CONVERGE"
+  },
+  "evidence_material_sha256": "b0ec1beb09d114f926ef610198771a4caebd8b345db2efc5cb9b13626a644c9d",
+  "terminal": "J03_EVIDENCE_RECEIPT_PASS__DTA_AND_OFFICIAL_Q3_01_SCALE_CONVERGE"
+}
