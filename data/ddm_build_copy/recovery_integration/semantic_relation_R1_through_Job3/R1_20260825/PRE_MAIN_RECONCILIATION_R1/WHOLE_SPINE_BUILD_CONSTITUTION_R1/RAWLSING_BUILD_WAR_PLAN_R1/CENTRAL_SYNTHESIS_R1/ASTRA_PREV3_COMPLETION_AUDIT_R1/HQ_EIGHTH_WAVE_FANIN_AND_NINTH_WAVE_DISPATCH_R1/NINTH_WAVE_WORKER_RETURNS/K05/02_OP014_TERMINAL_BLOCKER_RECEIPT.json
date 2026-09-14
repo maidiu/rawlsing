@@ -1,0 +1,20 @@
+{
+  "schema": "K05_C09_OP014_TERMINAL_BLOCKER_RECEIPT_R1",
+  "status": "BLOCKED",
+  "operation_id": "HB05-OP-014",
+  "operation_name": "autonomous_discovery_program",
+  "hb05_frozen_state_WVS7": "BLOCKED_MISSING_AUTHORITY:C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM",
+  "hb05_frozen_state_LiTS_I": "BLOCKED_MISSING_AUTHORITY:C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM",
+  "hb07_launch_authority": {
+    "typed_state": "BLOCKED_MISSING_AUTHORITY",
+    "blocker": "C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM",
+    "execution_authorized": false,
+    "effect": "C09 may be launched under the packet, but a full architectural performance verdict remains unavailable while the autonomous-discovery program is unfrozen; primitive-I05 results cannot substitute."
+  },
+  "c09_measurement_law": "IF_NO_SUFFICIENTLY_FROZEN_EXECUTABLE_AUTONOMOUS_DISCOVERY_SEARCH_TERMINATION_PROGRAM__C09_SHALL_RETURN_C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM",
+  "primitive_i05_substitution": false,
+  "positive_op014_execution": false,
+  "candidate_output_used_as_oracle": false,
+  "architecture_selected": false,
+  "terminal": "C09_BLOCK__UNFROZEN_AUTONOMOUS_DISCOVERY_PROGRAM"
+}
