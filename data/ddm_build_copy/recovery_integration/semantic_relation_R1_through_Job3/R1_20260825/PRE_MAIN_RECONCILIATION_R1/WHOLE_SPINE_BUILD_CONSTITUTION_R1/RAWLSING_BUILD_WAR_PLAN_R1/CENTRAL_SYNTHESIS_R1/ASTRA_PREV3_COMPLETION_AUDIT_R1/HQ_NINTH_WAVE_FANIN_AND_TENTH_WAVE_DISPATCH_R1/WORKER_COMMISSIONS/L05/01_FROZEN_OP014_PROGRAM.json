@@ -1,0 +1,88 @@
+{
+  "artifact_id": "C09_HB05_OP014_FROZEN_AUTONOMOUS_DISCOVERY_PROGRAM_R1",
+  "authority_ceiling": {
+    "commission_blob_sha": "36cb39b70b9562d6f9ca0269bd4e0b4cc718883a",
+    "commission_tip": "600abba7d3c805e1f1e3e85de395a431021ee6e9",
+    "no_new_semantic_authority_snapshot_minted": true
+  },
+  "disposition": {
+    "architecture_ranking_or_selection": false,
+    "c09_rerun_executed": false,
+    "primitive_i05_outputs_substituted": false,
+    "recovered_existing_competent_engine": true
+  },
+  "executable_entrypoint": "rawlsing_next.c09_hb05_op014_autonomous_program.execute_op014_autonomous_discovery",
+  "program_payload": {
+    "authority": {
+      "commission_blob": "36cb39b70b9562d6f9ca0269bd4e0b4cc718883a",
+      "commission_tip": "600abba7d3c805e1f1e3e85de395a431021ee6e9",
+      "parent_blocker": "66e3c90718bc11d080003e71571bfbdb7cfd4a22"
+    },
+    "engine": {
+      "accepted_completion_commit": "6a75433b9a12b66e75f1def97f69163587970fd1",
+      "contract": "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0",
+      "git_blob": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+      "module": "rawlsing_next.pre553_discovery_exact"
+    },
+    "forbidden": [
+      "ARCHITECTURE_RANKING_OR_SELECTION",
+      "A_B_C_SEARCH_STEERING",
+      "PRIMITIVE_I05_OUTPUT_SUBSTITUTION",
+      "POST_OUTCOME_FRONTIER_CHANGE",
+      "SOURCE_SPECIFIC_POST_OUTCOME_TUNING",
+      "C09_COMPARISON_VERDICT",
+      "V553_V3_V2_PROMOTION"
+    ],
+    "grain": "C09_HB05_OP014_AUTONOMOUS_DISCOVERY_SEARCH_TERMINATION_PROGRAM_AUTHORITY_AND_EXECUTABLE_CANDIDATE_R1_ONLY",
+    "inputs": [
+      "repository",
+      "discovery_authority",
+      "authority_registry",
+      "release_refs",
+      "predicate_catalog",
+      "query_template_catalog"
+    ],
+    "law": {
+      "c09_measurement_blob": "2729ab4dca887f22fb3c90265f10c70020afdd3e",
+      "hb05_manifest_blob": "e2bd3415c02bf7c8879773d09133f25d2c4d6a0c",
+      "operation": "HB05-OP-014"
+    },
+    "program_id": "C09_HB05_OP014_EXACT_BOUNDED_AUTONOMOUS_DISCOVERY_PROGRAM_R1",
+    "replay": {
+      "architecture_identity": false,
+      "canonical_catalog_order": true,
+      "covers": [
+        "program",
+        "inputs",
+        "result_replay",
+        "receipts",
+        "facts",
+        "termination"
+      ],
+      "preexecution_input_hash": true
+    },
+    "search": {
+      "frontier": "EXACT_PRESEARCH_DISCOVERY_AUTHORITY_CANDIDATE_UNIVERSE",
+      "mode": "EXACT_BOUNDED",
+      "order": "CANONICAL_CANDIDATE_HASH_ORDER",
+      "pruning": "NONE_EXACT_EVALUATE_ALL",
+      "result_controls_frontier": false,
+      "rng": "NONE"
+    },
+    "termination": {
+      "reason": "COMPLETE_EXACT_DECLARED_FRONTIER_EXHAUSTED",
+      "rule": "EVERY_PRECOMPILED_CANDIDATE_HAS_ONE_TERMINAL_COVERAGE_RECEIPT",
+      "terminal_states": [
+        "EVALUATED_DENIED_BY_EXACT_AUTHORITY",
+        "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY",
+        "EVALUATED_NONCOMPARABLE",
+        "EVALUATED_SUPPORTED",
+        "EVALUATED_UNDERPOWERED",
+        "EVALUATED_VALID_EMPTY"
+      ]
+    }
+  },
+  "program_payload_sha256": "5ccdde46139acbc94b07afd23db62450b997deffbc094617e5a61010b3e853c8",
+  "successor_gate": "FRESH_INDEPENDENT_QUALIFICATION_AND_AUTHORIZATION_REQUIRED_BEFORE_ANOTHER_C09_RERUN",
+  "typed_state": "FROZEN_EXECUTABLE_CANDIDATE__PRODUCER_SELFTEST_PASS__INDEPENDENT_QUALIFICATION_REQUIRED"
+}

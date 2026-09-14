@@ -1,0 +1,54 @@
+{
+  "artifact_id": "C09_HB05_OP014_AUTONOMOUS_PROGRAM_PRODUCER_SELFTEST_RECEIPT_R1",
+  "status": "PASS",
+  "grain": "C09_HB05_OP014_AUTONOMOUS_DISCOVERY_SEARCH_TERMINATION_PROGRAM_AUTHORITY_AND_EXECUTABLE_CANDIDATE_R1_ONLY",
+  "commission_tip": "600abba7d3c805e1f1e3e85de395a431021ee6e9",
+  "program_id": "C09_HB05_OP014_EXACT_BOUNDED_AUTONOMOUS_DISCOVERY_PROGRAM_R1",
+  "program_payload_sha256": "5ccdde46139acbc94b07afd23db62450b997deffbc094617e5a61010b3e853c8",
+  "recovered_engine": {
+    "path": "rawlsing_next/pre553_discovery_exact.py",
+    "git_blob_sha": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+    "contract_id": "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0",
+    "accepted_completion_commit": "6a75433b9a12b66e75f1def97f69163587970fd1"
+  },
+  "new_artifacts": {
+    "production_blob": "d9c480f7ea1f297e387b2579cf972a47008ed2a5",
+    "test_blob": "b1b1fedc0f629758ead6b9f0cf01e90bcf5022f1",
+    "frozen_program_manifest_blob": "6bff970527aac1646f3797d569ce7765651e7241"
+  },
+  "commands": [
+    "PYTHONPATH=/tmp/l05 pytest -q rawlsing_next/tests/test_c09_hb05_op014_autonomous_program.py",
+    "python3 -m py_compile rawlsing_next/c09_hb05_op014_autonomous_program.py rawlsing_next/tests/test_c09_hb05_op014_autonomous_program.py"
+  ],
+  "test_count": 15,
+  "test_ids": [
+    "test_program_hash",
+    "test_public_contract_candidate_neutral",
+    "test_no_primitive_output_input",
+    "test_engine_exact_blob_frozen",
+    "test_complete_frontier",
+    "test_input_order_invariant",
+    "test_outcomes_do_not_change_presearch_identity",
+    "test_incomplete_fails_closed",
+    "test_nonterminal_fails_closed",
+    "test_adaptive_authority_rejected",
+    "test_pruning_or_rng_rejected",
+    "test_result_controlled_frontier_rejected",
+    "test_nonexact_ref_and_duplicate_catalog_rejected",
+    "test_engine_error_typed_and_no_verdict_output",
+    "test_public_executor_rejects_hidden_architecture_kw"
+  ],
+  "law_proved": {
+    "candidate_neutral_abc_input_contract": true,
+    "exact_presearch_frontier": true,
+    "canonical_candidate_hash_order": true,
+    "evaluate_all_no_pruning": true,
+    "rng_none": true,
+    "complete_frontier_termination": true,
+    "preexecution_input_replay_identity": true,
+    "primitive_i05_output_substitution": false,
+    "architecture_ranking_or_selection": false,
+    "c09_rerun_executed": false
+  },
+  "successor_gate": "FRESH_INDEPENDENT_QUALIFICATION_AND_AUTHORIZATION_REQUIRED_BEFORE_ANOTHER_C09_RERUN"
+}
