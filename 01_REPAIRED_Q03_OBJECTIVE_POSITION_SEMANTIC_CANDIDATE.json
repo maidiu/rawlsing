@@ -1,0 +1,206 @@
+{
+  "schema": "S01_Q03_OBJECTIVE_POSITION_SEMANTIC_OCCUPANT_SPLIT_REPAIR_R1",
+  "status": "PASS_REPAIR_CANDIDATE__INDEPENDENT_QUALIFICATION_REQUIRED",
+  "terminal": "S01_PASS__Q03_POSITION_SEMANTIC_OCCUPANT_SPLIT_REPAIRED_RECONTENT_ADDRESSED_R1",
+  "commission": {
+    "id": "S01",
+    "branch": "agent/rabochii-prev3-w17-s01-q03-position-occupant-split-repair-r1",
+    "tip": "01608ad5ae492c432816db3b1b91a06632a86ad0",
+    "base": "8306aab9a3174f65c611f8157530307dabaf539c",
+    "grain": "PREV3_Q03_OBJECTIVE_POSITION_SEMANTIC_OCCUPANT_SPLIT_REPAIR_AND_RECONTENT_ADDRESS_R1_ONLY",
+    "library_used": false
+  },
+  "inputs": {
+    "q03_governed_return": "e84eb2d35a9711fdf49ec984295cc7b5e3d0ef48",
+    "q03_artifact_blob": "8cd19dd0907fdfc849bfa72d595c603702ecf02c",
+    "r01_blocker_return": "c4066d35fc49364682fcf50df968918c7d5fccf3",
+    "r01_return_blob": "8f13710d6b2739ae59341cfad006dab2c345c597",
+    "blocked_candidate_hash": "e040ae101388d0c9a87befa4fcd88ab3e861424376ad00b9e864c885d5bb12f9",
+    "blocked_candidate_id": "urn:rawlsing:prev3:objective-position-admission-candidate:sha256:e040ae101388d0c9a87befa4fcd88ab3e861424376ad00b9e864c885d5bb12f9"
+  },
+  "repair_holding": {
+    "type_error": "POSITION_SEMANTIC_IDENTITY != OCCUPANT_ACTOR_INDEXED_OBJECTIVE_POSITION_FACT_IDENTITY",
+    "repair": "Remove EXACT_OBJECTIVE_ACTOR_OR_ENTITY_IDENTITY from the structural-position semantic constitutive requirements and canonical identity material; bind exact occupant identity only in a later actor-indexed objective-position fact/materialization.",
+    "scope": "No other Q03 source-backed semantic, provenance, distinctness, or negative-ceiling holding is widened or replaced."
+  },
+  "source_authority": {
+    "source": "Erik Olin Wright, Classes (Verso, first published 1985), as frozen in the M10 full-source extraction",
+    "source_worker_tip": "0ebca9ff111bea63838f9b68c8e5c3cb93d9d128",
+    "source_ledger_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/STRUCTURAL_DEVELOPMENTAL_TRANSDUCTION_FORGE_R1/M10_WRIGHT_FULL_SOURCE_LEDGER_R1.md",
+    "source_ledger_blob": "606de007e0f6dcb28e552bd8c959f3c4ec1fd2a7",
+    "documentary_loci": [
+      {
+        "locus": "Wright, Classes, Ch. 3 supplied lines 857-909",
+        "source_claim": "Unequal productive assets generate structurally different exchange/work strategies; wage labour is one institutional form rather than the mechanism itself."
+      },
+      {
+        "locus": "Wright, Classes, Ch. 3 supplied lines 951-959",
+        "source_claim": "Productive-asset control/property is upstream of available exchange strategies and dependency outcomes."
+      },
+      {
+        "locus": "Wright, Classes, Ch. 3 supplied lines 978-996",
+        "source_claim": "Exploitation adds appropriation/interdependence and counterpart productive activity; unemployed/excluded status is not interchangeable with an active exploited wage position."
+      }
+    ],
+    "supporting_ledger_claims": [
+      "Ch. 1 supplied lines 250-275 and 321-333: structural class analysis concerns relations/empty positions distinct from incumbents and collective actors.",
+      "Full-ledger source-level verdict: productive-asset/property relation plus counterpart position plus institutional rules is upstream of objective material stakes/dependencies.",
+      "The source extraction is evidence, not automatic architecture authority; Q03 authority below supplies only the bounded project-side semantic admission."
+    ]
+  },
+  "project_semantic_authority": {
+    "authority_id": "Q03_M10_M01_OBJECTIVE_POSITION_SOURCE_AUTHORITY_R1",
+    "authority_version": "1.0.0",
+    "authority_source": [
+      "HQ 4c2a0e9b0423be77a51284b34e87a3f8ae59a321 authorizes Q03 specifically for M10-M01-derived second objective structural-position source-authority/admission adjudication.",
+      "Commission 0da683aa116857d2319bd008ed4c49631111e441 delegates exactly PREV3_M10_M01_SECOND_OBJECTIVE_STRUCTURAL_POSITION_SOURCE_AUTHORITY_AND_ADMISSION_R1_ONLY."
+    ],
+    "positive_power": "Admit one bounded source-backed objective structural-position semantic candidate at Q03 grain for later independent qualification/materialization.",
+    "does_not_authorize": [
+      "PREV3_OBJECTIVE_POSITION_FACT materialization",
+      "current empirical actor/entity position truth",
+      "mechanism or channel rule",
+      "topology or source-to-receiver relation",
+      "causal-use permission",
+      "V555/M2, V3, OBL063, or person-state semantics"
+    ]
+  },
+  "admitted_position": {
+    "semantic_class": "OBJECTIVE_STRUCTURAL_POSITION",
+    "canonical_name": "PRODUCTIVE_ASSET_SEPARATED_ACTIVE_WAGE_LABOUR_POSITION",
+    "definition": "An objective actor/entity structural position constituted at the asserted source/context grain by both (a) lack of effective control over productive assets sufficient for independent production and (b) an active wage-labour sale relation to an exact employer/counterpart under exact institutional rules.",
+    "constitutive_requirements": [
+      "PRODUCTIVE_ASSET_CONTROL_INSUFFICIENT_FOR_INDEPENDENT_PRODUCTION",
+      "ACTIVE_WAGE_LABOUR_SALE_RELATION",
+      "EXACT_EMPLOYER_OR_COUNTERPART_IDENTITY",
+      "EXACT_INSTITUTIONAL_RULE_CONTEXT"
+    ],
+    "nonconstitutive_or_forbidden_shortcuts": [
+      "bare employment-status code",
+      "occupation, industry, sector, or job title alone",
+      "income level or inequality alone",
+      "self-report, belief, preference, appraisal, motivation, disposition, biography, or person-state",
+      "unemployment/exclusion alone",
+      "manager/supervisor label alone",
+      "bounded-exit restriction unless separately evidenced for the same asserted position",
+      "exploitation classification inferred from the position identity alone",
+      "exact actor/entity occupant identity as part of position-semantic identity"
+    ],
+    "not_a_mechanism": "The candidate is an endpoint/state-of-objective-relations identity. It says what objective position is occupied when its constitutive relations are proven; it does not encode the causal transition from property separation to wage dependency or any downstream effect."
+  },
+  "semantic_fact_split": {
+    "position_semantic_identity": "Reusable structural-position meaning; does not identify any incumbent.",
+    "position_semantic_constitutive_requirements": [
+      "PRODUCTIVE_ASSET_CONTROL_INSUFFICIENT_FOR_INDEPENDENT_PRODUCTION",
+      "ACTIVE_WAGE_LABOUR_SALE_RELATION",
+      "EXACT_EMPLOYER_OR_COUNTERPART_IDENTITY",
+      "EXACT_INSTITUTIONAL_RULE_CONTEXT"
+    ],
+    "forbidden_in_position_semantic_identity": [
+      "EXACT_OBJECTIVE_ACTOR_OR_ENTITY_IDENTITY",
+      "CURRENT_EMPIRICAL_OCCUPANCY_TRUTH",
+      "ACTOR_INDEXED_PREV3POS_FACT_IDENTITY"
+    ],
+    "later_actor_fact_materialization_requirements": [
+      "EXACT_OBJECTIVE_ACTOR_OR_ENTITY_IDENTITY",
+      "EXACT_POSITION_SEMANTIC_CANDIDATE_IDENTITY",
+      "EXACT_APPLICABILITY",
+      "EXACT_PERMISSION",
+      "EXACT_VALID_TIME_OR_CURRENTNESS",
+      "EXACT_PROVENANCE_AND_DEPENDENCY",
+      "DETERMINISTIC_FACT_REPLAY"
+    ],
+    "law": "A qualifying occupant may instantiate the repaired semantic candidate only through a separate authorized objective-position fact/materialization. Changing the occupant changes the later fact identity, not this position-semantic candidate identity."
+  },
+  "distinctness_from_existing_positive_baseline": {
+    "baseline_variable": "Q73A",
+    "baseline_fact": "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02",
+    "baseline_owner": "ACTIVE_POSITION__FISCAL_INCORPORATION_OR_OBLIGATION_POSITION",
+    "baseline_class": "FIELD_FORGE_STRUCTURAL_POSITION_CONTEXT_ONLY",
+    "holding": "Distinct. Q73A's owned semantic axis is fiscal incorporation/obligation. The Q03 candidate is constituted by productive-asset noncontrol plus an active wage-labour counterpart relation. Neither identity entails the other and no shared label/coordinate is used to collapse them."
+  },
+  "admission_and_current_selection": {
+    "decision": "REISSUE_Q03_CURRENT_SOURCE_BACKED_POSITION_SEMANTIC_CANDIDATE_AFTER_OCCUPANT_SPLIT_REPAIR",
+    "selection_authority": [
+      "4c2a0e9b0423be77a51284b34e87a3f8ae59a321",
+      "0da683aa116857d2319bd008ed4c49631111e441"
+    ],
+    "repair_authority": [
+      "01608ad5ae492c432816db3b1b91a06632a86ad0",
+      "c4066d35fc49364682fcf50df968918c7d5fccf3"
+    ],
+    "negative_currentness_law": "Candidate currentness is semantic-admission currentness only. It is not a current PREV3POS fact, not present-day world truth, and not a current mechanism/application witness.",
+    "successor_gate": "Only a separate independent qualification of this repaired content-addressed semantic candidate may wake next. Actor/entity materialization remains separately gated by applicability, permission, valid-time/currentness, provenance/dependency, and replay authority."
+  },
+  "use_ceiling": {
+    "allowed": [
+      "SOURCE_BACKED_OBJECTIVE_POSITION_SEMANTIC_ADMISSION_CANDIDATE_ONLY",
+      "POSITION_SEMANTIC_AUTHORITY_INPUT_FOR_INDEPENDENT_QUALIFICATION_ONLY",
+      "SOURCE_CLAIM_AUTHORITY_INPUT_FOR_INDEPENDENT_QUALIFICATION_ONLY"
+    ],
+    "forbidden": [
+      "DIRECT_PREV3POS_FACT_EMISSION",
+      "ACTOR_OR_ENTITY_OCCUPANCY_ASSERTION",
+      "MECHANISM_OR_CHANNEL_RULE",
+      "TOPOLOGY_OR_SOURCE_RECEIVER_EDGE",
+      "EXPLOITATION_FACT_FROM_POSITION_ALONE",
+      "CAUSAL_EFFECT_OR_PERSON_UPTAKE",
+      "V555_OR_M2_USE",
+      "V3_OR_PERSON_STATE",
+      "OBL063_DRIVER_TYPE_OR_PERSON_TERMINAL_SEMANTICS"
+    ]
+  },
+  "identity_replay": {
+    "canonicalization": "UTF-8 JSON of canonical_identity_material with lexicographically sorted object keys, compact separators ',', ':', arrays preserved in declared order, no identity/hash field included.",
+    "hash_algorithm": "SHA-256",
+    "canonical_identity_material": {
+      "schema": "PREV3_OBJECTIVE_POSITION_ADMISSION_IDENTITY_R1",
+      "semantic_class": "OBJECTIVE_STRUCTURAL_POSITION",
+      "canonical_name": "PRODUCTIVE_ASSET_SEPARATED_ACTIVE_WAGE_LABOUR_POSITION",
+      "definition": "An objective actor/entity structural position constituted at the asserted source/context grain by both (a) lack of effective control over productive assets sufficient for independent production and (b) an active wage-labour sale relation to an exact employer/counterpart under exact institutional rules.",
+      "constitutive_requirements": [
+        "PRODUCTIVE_ASSET_CONTROL_INSUFFICIENT_FOR_INDEPENDENT_PRODUCTION",
+        "ACTIVE_WAGE_LABOUR_SALE_RELATION",
+        "EXACT_EMPLOYER_OR_COUNTERPART_IDENTITY",
+        "EXACT_INSTITUTIONAL_RULE_CONTEXT"
+      ],
+      "source_worker_tip": "0ebca9ff111bea63838f9b68c8e5c3cb93d9d128",
+      "source_ledger_blob": "606de007e0f6dcb28e552bd8c959f3c4ec1fd2a7",
+      "documentary_loci": [
+        "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_857_909",
+        "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_951_959",
+        "WRIGHT_CLASSES_CH3_SUPPLIED_LINES_978_996"
+      ],
+      "semantic_owner_authority": "Q03_M10_M01_OBJECTIVE_POSITION_SOURCE_AUTHORITY_R1",
+      "commission_tip": "0da683aa116857d2319bd008ed4c49631111e441",
+      "hq_authority": "4c2a0e9b0423be77a51284b34e87a3f8ae59a321",
+      "baseline_distinct_from": {
+        "fact": "PREV3POS:c823a816ce6f71431c99b1a466c7313f3766e5d1e7832fc36b6a31f15835dd02",
+        "owner": "ACTIVE_POSITION__FISCAL_INCORPORATION_OR_OBLIGATION_POSITION",
+        "variable": "Q73A"
+      },
+      "use_ceiling": [
+        "SOURCE_BACKED_OBJECTIVE_POSITION_SEMANTIC_ADMISSION_CANDIDATE_ONLY",
+        "INDEPENDENT_QUALIFICATION_OR_MATERIALIZATION_INPUT_ONLY"
+      ]
+    },
+    "prior_content_hash": "e040ae101388d0c9a87befa4fcd88ab3e861424376ad00b9e864c885d5bb12f9",
+    "content_hash": "60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505",
+    "candidate_id": "urn:rawlsing:prev3:objective-position-admission-candidate:sha256:60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505",
+    "replay_law": "Same canonical identity material MUST reproduce the same content_hash and candidate_id. Occupant identity is not part of this material; changing an occupant MUST NOT alter this semantic candidate identity. Any change to the position semantics, source tip/blob/loci, project authority, baseline distinctness, or use ceiling creates a different candidate identity."
+  },
+  "boundary_preservation": {
+    "actor_indexed_prev3pos_fact_emitted": false,
+    "real_actor_or_entity_materialized": false,
+    "mechanism_or_channel_rule_created": false,
+    "topology_created": false,
+    "v555_or_m2_used": false,
+    "v3_or_person_state_used": false,
+    "obl063_used": false,
+    "s02_provisional_output_consumed": false,
+    "s03_provisional_output_consumed": false,
+    "library_used": false,
+    "main_mutated": false,
+    "pre_main_mutated": false
+  }
+}
