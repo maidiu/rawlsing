@@ -1,0 +1,10 @@
+family	role_class	role_count	target_variables	prequery_expected_set	set_definition	known_expected_count	query_predicate_law	status
+P0	q301_2_target_cell_roles	5	q301_2	R2	K03_q301_2_DENOMINATOR_MEMBER	24897	q301_2 exact native target cell predicate 1..5 inside R2	FROZEN
+P1	q301_2_marginal	1	q301_2	R2	K03_q301_2_DENOMINATOR_MEMBER	24897	D02 exact q301_2 marginal query	FROZEN
+P1	q301_7_marginal	1	q301_7	R7	K03_q301_7_DENOMINATOR_MEMBER	28325	D02 exact q301_7 marginal query	FROZEN
+P1	q301_2_x_q301_7_joint	1	q301_2;q301_7	R27	R2_INTERSECTION_R7	NOT_MATERIALIZED	D02 exact joint query; no union/fallback/downgrade	LOGIC_FROZEN__EXTENSION_BLOCKED
+P2	baseline_q301_7	18	q301_7	R7	K03_q301_7_DENOMINATOR_MEMBER	28325	baseline role remains target-local; no predictor denominator deletion	FROZEN
+P2	conditioned_q301_7	18	q301_7	R7	K03_q301_7_DENOMINATOR_MEMBER	28325	q301_2 endpoint x exact F02 q310 x q311 predicates select subpopulation inside R7	FROZEN
+P3	conditional_reversal_roles	8	q301_7	R7	K03_q301_7_DENOMINATOR_MEMBER	28325	q301_2 endpoint and exact q310 stratum predicates select subpopulation inside R7; q301_7 cell5 target preserved	FROZEN
+P4	complete_5x5_joint_cells	25	q301_2;q301_7	R27	R2_INTERSECTION_R7	NOT_MATERIALIZED	exact q301_2 cell x q301_7 cell predicates inside common target-eligible set	LOGIC_FROZEN__EXTENSION_BLOCKED
+TOTAL	ALL_FROZEN_WORKLOAD_ROLES	77	q301_2;q301_7	R2;R7;R27	EXACT_TARGET_LOCAL_PLUS_BOUNDED_COMMON_INTERSECTION		50 candidates / 77 query roles; canonical candidate-hash order; zero learned execution	BLOCKED_ONLY_ON_EXTENSIONAL_SET_MATERIALIZATION
