@@ -72,3 +72,11 @@ jobs:
           name: rabochii-court-receipt-${{ github.run_id }}
           path: .rabochii/court_receipt.json
           if-no-files-found: warn
+
+      - name: Upload transient N04-R3 export
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: n04-r3-export-${{ github.run_id }}
+          path: .rabochii/n04r3_export/
+          if-no-files-found: warn
