@@ -1,8 +1,11 @@
 {
-  "schema": "RAWLSING_PSC03_A04_VALIDATION_RECEIPT@1.0.0",
+  "schema": "RAWLSING_PSC03_A04_VALIDATION_RECEIPT@1.1.0",
   "worker_id": "PSC03-A04",
   "terminal": "PASS",
+  "terminal_statement": "PSC03_A04_PASS__72_WVS_POSITIVE_CANDIDATES_ADJUDICATED_AT_STRONGEST_EXACT_SOURCE_NATIVE_CEILING__COUNTRY_ISO_COW_ALPHA_AND_V77_REMAINDERS_PRESERVED__READY_FOR_HQ_FAN_IN",
   "exact_grain": "PREV3_PSC03_WVS_RETURNED_CANDIDATE_ADJUDICATION_R1_ONLY",
+  "commission_tip": "fd27120141610e531a0b4d614b7c159e5bcc9135",
+  "concurrent_same_branch_tip_observed_before_repair": "c031ead8418b1b3a620d734a1bdb2616856b48c4",
   "counts": {
     "assigned_items": 72,
     "unique_item_identities": 72,
@@ -15,41 +18,48 @@
     "DOCUMENTARY_CONFLICT__REMAINS_BLOCKED": 0,
     "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED_ASSIGNED": 0,
     "preserved_nonassigned_W1_blocked_remainders": 2,
-    "preserved_partial_crosswalk_remainders": 1,
-    "distinct_crosswalk_control_objects": 1
+    "preserved_V68_V77_partial_crosswalk": "9/10",
+    "source_boundary_overlay_rows": 12
   },
-  "hashes": {
-    "01_WVS_72_ITEM_ADJUDICATION_LEDGER.csv_sha256": "3f8ce452e29dd4b8ae8a03904b6f2a74211e61221ad1cf1d27f359ee90c0586a",
-    "02_EVIDENCE_CURRENT_AUTHORITY_MANIFEST.json_sha256": "c7e840071e1becef3a6938c53591278351f4a07865ff1e45cb7f80f1c23d6f9c",
-    "03_PRESERVED_REMAINDER_LEDGER.csv_sha256": "f1464aabd087d630b5daf08d4c364d2ba3fb8ff2f7f85de4886cd3a29c6193d3",
-    "ordered_72_item_identity_stream_sha256": "c9b560d46801db671029a49b1f1bd843630265bba5d7916c2fee1b03cf87ea6b",
-    "ordered_72_source_native_proposition_stream_sha256": "f5c5246b7cce3cfd2f9b61942867841a672b37dc3e0f7d6e021f9d29a03a7a79"
+  "artifact_sha256": {
+    "00_RETURN.md": "83cee553fa67c379a40076f22e0d699737813b1d7174faba26be1fe414fa6899",
+    "01_WVS_72_ITEM_ADJUDICATION_LEDGER.csv": "3f8ce452e29dd4b8ae8a03904b6f2a74211e61221ad1cf1d27f359ee90c0586a",
+    "02_EVIDENCE_CURRENT_AUTHORITY_MANIFEST.json": "7c9ca939bd666c601eee7bc1f3cdcd111e1e2b8ca939da0b560d4703bebb998a",
+    "03_PRESERVED_REMAINDER_LEDGER.csv": "f1464aabd087d630b5daf08d4c364d2ba3fb8ff2f7f85de4886cd3a29c6193d3",
+    "05_EXACT_SOURCE_BOUNDARY_REPAIR.csv": "8cd5432800722e871cbf7e4d673faad920480a1298e112bc132b84b829a2bc82"
+  },
+  "ordered_stream_sha256": {
+    "72_item_identity_stream": "c9b560d46801db671029a49b1f1bd843630265bba5d7916c2fee1b03cf87ea6b",
+    "72_governed_source_native_proposition_plus_exact_boundary_stream": "9396320094e9083e18f47ea9a6bd65c850abe877a18f99acb783fb84076b95af"
   },
   "checks": {
     "assigned_count_72": true,
     "assigned_unique_identity_count_72": true,
-    "r5_objects_70": true,
     "wave_counts_exact": true,
-    "all_allowed_disposition": true,
     "all_assigned_disposed": true,
+    "all_allowed_disposition": true,
     "country_iso_preserved_blocked": true,
     "cow_alpha_preserved_blocked": true,
     "v68_v77_exact_partial_9_of_10": true,
-    "v74_v77_distinct_full": true,
-    "exact_evidence_provenance_rule_present_in_manifest": true,
-    "current_authority_resolution_rule_present_in_manifest": true
+    "v74_v77_distinct_full_4_of_4": true,
+    "strongest_exact_source_native_overlay_present_for_weaker_or_opaque_rows": true,
+    "s018_printed_label_and_range_preserved_exactly": true,
+    "s019_printed_label_and_range_preserved_exactly_without_correction": true,
+    "library_escalation_only_exact_named_source_docs_and_pages": true,
+    "concurrent_same_branch_return_not_consumed_as_semantic_authority": true,
+    "no_family_rediscovery": true,
+    "no_provisional_sibling_authority": true,
+    "no_main_pre_main_hq_control_mutation": true,
+    "prev3_objective_world_only": true,
+    "obl063_quarantine_preserved": true
   },
   "boundaries": {
-    "main_mutated": false,
-    "semantic_pre_main_mutated": false,
-    "hq_control_branch_mutated": false,
-    "provisional_sibling_output_consumed_as_authority": false,
-    "learned_product_or_structural_admission_created": false,
+    "HQ_final_adoption_required": true,
+    "routing_authority_created": false,
+    "cross_wave_equivalence_created": false,
+    "structural_admission_created": false,
+    "learned_product_created": false,
     "mechanism_or_topology_created": false,
-    "person_state_created": false,
-    "OBL063_revived": false,
-    "PRE_V3_objective_world_boundary_preserved": true,
-    "HQ_final_adoption_required": true
-  },
-  "terminal_statement": "PSC03_A04_PASS__72_WVS_POSITIVE_CANDIDATES_ADJUDICATED_AT_SOURCE_NATIVE_CEILING__COUNTRY_ISO_COW_ALPHA_AND_V77_REMAINDERS_PRESERVED__READY_FOR_HQ_FAN_IN"
+    "person_state_created": false
+  }
 }
