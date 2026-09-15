@@ -1,0 +1,481 @@
+{
+  "accepted_authority_refs": {
+    "causal_use": {
+      "authority_ref": {
+        "authority_content_hash": "ebd9554437a9e14905b5a8fe8d75e20660805a9d481909856509576ba5958c07",
+        "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_CAUSAL_USE",
+        "authority_version": "1.0.0"
+      },
+      "current_selection_evidence_ref": {
+        "content_hash": "6687e9b20795c905b2bbf5c8edc99dcdbf4ed3fc7c649b1f7037a923b5351c2a",
+        "kind": "SDTF_CAUSAL_USE_CURRENT_SELECTION_EVIDENCE",
+        "object_id": "M10-M01:CAUSAL_USE:R02_R1"
+      },
+      "scope_ref": {
+        "content_hash": "e102456438f4441f6e3f3057c4008e4a68a3f25bf78012154ab490a5b88dee56",
+        "kind": "SDTF_CAUSAL_USE_SCOPE",
+        "object_id": "M10-M01:CAUSAL_USE"
+      },
+      "source_claim_ref": {
+        "content_hash": "a6f984b0b9cfd17d8c0892ac976b5858339dcd048fbfa9dd37ca7980b2c7ad05",
+        "kind": "SDTF_M10_SOURCE_CLAIM",
+        "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY"
+      }
+    },
+    "rule_owner": {
+      "authority_ref": {
+        "authority_content_hash": "80fd8e9a59b76e36392872c13536cdebf7de6273e5233d6bd285c1d0027a7289",
+        "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_RULE_OWNER",
+        "authority_version": "1.0.0"
+      },
+      "current_selection_evidence_ref": {
+        "content_hash": "4d62f67ede66fe0b3b60d46b16934c90024048716d7cc460095807762f14f9b5",
+        "kind": "SDTF_RULE_OWNER_CURRENT_SELECTION_EVIDENCE",
+        "object_id": "M10-M01:RULE_OWNER:Q01_R1"
+      },
+      "scope_ref": {
+        "content_hash": "b6f0bb622158e797aaf4a90b609497ae94c089986e93356532241a64732f4e12",
+        "kind": "SDTF_RULE_OWNER_SCOPE",
+        "object_id": "M10-M01:RULE_OWNER"
+      }
+    }
+  },
+  "accepted_inputs": {
+    "adopted_repaired_t02_implementation_blob": "f6427a42524086194ed6fca9ba2387561ff00891",
+    "q01_rule_owner_tip": "aeb377d25f649d6743c4347709cf34a65238e330",
+    "r02_causal_use_tip": "17320729b411f8e339d65c3491c1d30fe7364ea3",
+    "r03_matrix": {
+      "blob": "a182df47286ece3fd2f27de0a1c2d4adac333a64",
+      "return_tip": "0e9458a189d870406797564de7142f6a73a15ad2"
+    },
+    "s03_contract": {
+      "blob": "0a2eb3da6d755f12197348a71cfa7d1dd97d7b4d",
+      "ref": {
+        "content_hash": "abc44b2b4ff04e164b5188e5929b0c10ca1b6e582b28207bb7e464ace698a83d",
+        "kind": "SDTF_R4_GENERIC_BATCH_ENVELOPE_CONTRACT",
+        "object_id": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_INTAKE_AND_CONSTRUCTOR_CONTRACT_R1@1.0.0"
+      },
+      "return_tip": "a718682521fe9b5c1d3b90e6a9c9e765ed892e8a"
+    }
+  },
+  "authority_effect": "CANDIDATE_CONCRETE_RULE_SHAPE_PAYLOAD_ONLY__HQ_ADOPTION_REQUIRED__NO_RULE_CURRENTNESS",
+  "candidate": {
+    "candidate_id": "M10-M01",
+    "candidate_name": "PROPERTY SEPARATION / WAGE DEPENDENCY"
+  },
+  "commission": {
+    "branch": "agent/rabochii-prev3-astra-d05-rule-shape-payload-r1",
+    "grain": "PSC06_M10_M01_PKG_A_CONCRETE_RULE_SHAPE_IDENTITY_VALUE_PAYLOAD_ONLY",
+    "hq_adoption_base": "98279580ffcccdd764663107aa65835fb6929228",
+    "library_permission": "NO",
+    "tip": "2c9a6dee4e8657ba0ace41cd3e1d458ecea6d17e"
+  },
+  "materials": {
+    "mechanism_class_material": {
+      "candidate_id": "M10-M01",
+      "ceiling": "P1_ONLY_FOR_THIS_RULE_BODY__WIDENING_REQUIRES_NEW_ADJUDICATION",
+      "mechanism_classes": [
+        "P1 MATERIAL_ACCESS_DEPENDENCY"
+      ],
+      "schema_id": "SDTF_R4_M10_M01_MECHANISM_CLASS_DISPOSITION_R1",
+      "schema_version": "1.0.0"
+    },
+    "normalized_mechanism_material": {
+      "candidate": {
+        "candidate_id": "M10-M01",
+        "candidate_name": "PROPERTY SEPARATION / WAGE DEPENDENCY"
+      },
+      "causal_use_authority_ref": {
+        "authority_content_hash": "ebd9554437a9e14905b5a8fe8d75e20660805a9d481909856509576ba5958c07",
+        "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_CAUSAL_USE",
+        "authority_version": "1.0.0"
+      },
+      "derivation": {
+        "derived_objective_relations": [
+          "DEPENDENCE_ON_LABOUR_MARKET_SALE_FOR_INCOME_SUBSISTENCE",
+          "EMPLOYER_RELATION",
+          "BOUNDED_EXIT_SET"
+        ],
+        "operator": "ALL_REQUIRED_PREMISES"
+      },
+      "input_law": "THE_RULE_DOES_NOT_INFER_OR_MINT_ITS_PREMISES__EACH_PREMISE_MUST_ARRIVE_AS_INDEPENDENTLY_EVIDENCED_AND_BOUND_OBJECTIVE_INPUT",
+      "mechanism_class_ceiling": "P1 MATERIAL_ACCESS_DEPENDENCY",
+      "negative_ceilings": [
+        "NO_ACTOR_OR_ENTITY_FACT_MINTING",
+        "NO_PRESENT_DAY_TRUTH",
+        "NO_AUTOMATIC_REALIZATION",
+        "NO_NUMERIC_COEFFICIENT_PROBABILITY_THRESHOLD_OR_CALIBRATION",
+        "NO_PERSONALITY_BEHAVIOR_EXPERIENCE_CONSCIOUSNESS_IDEOLOGY_MOTIVE_OR_ACTION_INFERENCE",
+        "NO_TOPOLOGY_OR_RECEIVING_POSITION_BINDING",
+        "NO_RULE_CURRENT_ACCEPTED",
+        "NO_APPLICATION_FACT_OR_WITNESS_CURRENTNESS",
+        "NO_V555_M2",
+        "NO_V3_PERSON_STATE",
+        "NO_OBL063"
+      ],
+      "premises": [
+        {
+          "predicate": "INSUFFICIENT_INDEPENDENT_PRODUCTIVE_ASSETS",
+          "requirement": "INDEPENDENTLY_EVIDENCED_AND_BOUND",
+          "semantic_role": "MATERIAL_ACCESS_CONSTRAINT"
+        },
+        {
+          "predicate": "ACTIVE_WAGE_POSITION",
+          "requirement": "INDEPENDENTLY_EVIDENCED_AND_BOUND",
+          "semantic_role": "LABOUR_MARKET_POSITION"
+        },
+        {
+          "predicate": "EXACT_EMPLOYER_CONTRACT_BINDING",
+          "requirement": "INDEPENDENTLY_EVIDENCED_AND_BOUND",
+          "semantic_role": "COUNTERPART_BINDING"
+        }
+      ],
+      "realization_boundary": "RULE_SEMANTICS_DO_NOT_ESTABLISH_ACTUAL_REALIZATION_APPLICATION_FACT_PRESENT_DAY_TRUTH_OR_WITNESS_CURRENTNESS",
+      "schema_id": "SDTF_R4_M10_M01_NORMALIZED_MECHANISM_R1",
+      "schema_version": "1.0.0",
+      "source_claim_ref": {
+        "content_hash": "a6f984b0b9cfd17d8c0892ac976b5858339dcd048fbfa9dd37ca7980b2c7ad05",
+        "kind": "SDTF_M10_SOURCE_CLAIM",
+        "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY"
+      }
+    },
+    "permitted_rule_shape_material": {
+      "adjudication_law": {
+        "forbids": [
+          "NO_ACTOR_OR_ENTITY_FACT_MINTING",
+          "NO_PRESENT_DAY_TRUTH",
+          "NO_AUTOMATIC_REALIZATION",
+          "NO_NUMERIC_COEFFICIENT_PROBABILITY_THRESHOLD_OR_CALIBRATION",
+          "NO_PERSONALITY_BEHAVIOR_EXPERIENCE_CONSCIOUSNESS_IDEOLOGY_MOTIVE_OR_ACTION_INFERENCE",
+          "NO_TOPOLOGY_OR_RECEIVING_POSITION_BINDING",
+          "NO_RULE_CURRENT_ACCEPTED",
+          "NO_APPLICATION_FACT_OR_WITNESS_CURRENTNESS",
+          "NO_V555_M2",
+          "NO_V3_PERSON_STATE",
+          "NO_OBL063"
+        ],
+        "permits": "ONLY_THE_BOUNDED_R02_SOURCE_CLAIM_GROUNDED_OBJECTIVE_STRUCTURAL_DEPENDENCY_DERIVATION"
+      },
+      "candidate_id": "M10-M01",
+      "causal_use_authority_ref": {
+        "authority_content_hash": "ebd9554437a9e14905b5a8fe8d75e20660805a9d481909856509576ba5958c07",
+        "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_CAUSAL_USE",
+        "authority_version": "1.0.0"
+      },
+      "mechanism_classes": [
+        "P1 MATERIAL_ACCESS_DEPENDENCY"
+      ],
+      "normalized_mechanism_ref": {
+        "content_hash": "0b69f9d04c09fad479ab05582c9bcf8d21951c6f7ea94e2f8c7c3ab3545e3411",
+        "kind": "SDTF_R4_NORMALIZED_MECHANISM",
+        "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY:R1"
+      },
+      "output_relations": [
+        "DEPENDENCE_ON_LABOUR_MARKET_SALE_FOR_INCOME_SUBSISTENCE",
+        "EMPLOYER_RELATION",
+        "BOUNDED_EXIT_SET"
+      ],
+      "premise_operator": "ALL_REQUIRED",
+      "premise_predicates": [
+        "INSUFFICIENT_INDEPENDENT_PRODUCTIVE_ASSETS",
+        "ACTIVE_WAGE_POSITION",
+        "EXACT_EMPLOYER_CONTRACT_BINDING"
+      ],
+      "rule_owner_authority_ref": {
+        "authority_content_hash": "80fd8e9a59b76e36392872c13536cdebf7de6273e5233d6bd285c1d0027a7289",
+        "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_RULE_OWNER",
+        "authority_version": "1.0.0"
+      },
+      "schema_id": "SDTF_R4_M10_M01_PERMITTED_RULE_SHAPE_R1",
+      "schema_version": "1.0.0",
+      "shape_id": "CONJUNCTIVE_OBJECTIVE_STRUCTURAL_DEPENDENCY_DERIVATION",
+      "value_mode": "NONNUMERIC"
+    },
+    "rule_body": {
+      "candidate_id": "M10-M01",
+      "candidate_name": "PROPERTY SEPARATION / WAGE DEPENDENCY",
+      "derive": {
+        "objective_relations": [
+          "DEPENDENCE_ON_LABOUR_MARKET_SALE_FOR_INCOME_SUBSISTENCE",
+          "EMPLOYER_RELATION",
+          "BOUNDED_EXIT_SET"
+        ],
+        "only_when": "ALL_REQUIRED_PREMISES_ARE_INDEPENDENTLY_EVIDENCED_AND_BOUND"
+      },
+      "mechanism_classes": [
+        "P1 MATERIAL_ACCESS_DEPENDENCY"
+      ],
+      "negative_ceilings": [
+        "NO_ACTOR_OR_ENTITY_FACT_MINTING",
+        "NO_PRESENT_DAY_TRUTH",
+        "NO_AUTOMATIC_REALIZATION",
+        "NO_NUMERIC_COEFFICIENT_PROBABILITY_THRESHOLD_OR_CALIBRATION",
+        "NO_PERSONALITY_BEHAVIOR_EXPERIENCE_CONSCIOUSNESS_IDEOLOGY_MOTIVE_OR_ACTION_INFERENCE",
+        "NO_TOPOLOGY_OR_RECEIVING_POSITION_BINDING",
+        "NO_RULE_CURRENT_ACCEPTED",
+        "NO_APPLICATION_FACT_OR_WITNESS_CURRENTNESS",
+        "NO_V555_M2",
+        "NO_V3_PERSON_STATE",
+        "NO_OBL063"
+      ],
+      "normalized_mechanism_ref": {
+        "content_hash": "0b69f9d04c09fad479ab05582c9bcf8d21951c6f7ea94e2f8c7c3ab3545e3411",
+        "kind": "SDTF_R4_NORMALIZED_MECHANISM",
+        "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY:R1"
+      },
+      "operator": "ALL_REQUIRED",
+      "permitted_rule_shape_ref": {
+        "content_hash": "bf8ce59029360280ad7a08c8c50e5a3200c0298cb6248d4cd1b75435f3a7588e",
+        "kind": "SDTF_R4_PERMITTED_RULE_SHAPE",
+        "object_id": "M10-M01:CONJUNCTIVE_OBJECTIVE_STRUCTURAL_DEPENDENCY_DERIVATION:R1"
+      },
+      "required_objective_premises": [
+        {
+          "predicate": "INSUFFICIENT_INDEPENDENT_PRODUCTIVE_ASSETS",
+          "requirement": "INDEPENDENTLY_EVIDENCED_AND_BOUND",
+          "semantic_role": "MATERIAL_ACCESS_CONSTRAINT"
+        },
+        {
+          "predicate": "ACTIVE_WAGE_POSITION",
+          "requirement": "INDEPENDENTLY_EVIDENCED_AND_BOUND",
+          "semantic_role": "LABOUR_MARKET_POSITION"
+        },
+        {
+          "predicate": "EXACT_EMPLOYER_CONTRACT_BINDING",
+          "requirement": "INDEPENDENTLY_EVIDENCED_AND_BOUND",
+          "semantic_role": "COUNTERPART_BINDING"
+        }
+      ],
+      "schema_id": "SDTF_R4_M10_M01_CONCRETE_RULE_BODY_R1",
+      "schema_version": "1.0.0",
+      "value_mode": "NONNUMERIC"
+    },
+    "rule_identity_material": {
+      "candidate_id": "M10-M01",
+      "rule_content_hash": "7d6efc3c36be0caff06022c0d951e5b4f535d6900c5c06751b3accacd48b39c8",
+      "rule_id": "SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY",
+      "rule_ref": {
+        "content_hash": "7d6efc3c36be0caff06022c0d951e5b4f535d6900c5c06751b3accacd48b39c8",
+        "kind": "SDTF_R4_MECHANISM_RULE",
+        "object_id": "SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+      },
+      "rule_version": "1.0.0",
+      "schema_id": "SDTF_R4_M10_M01_RULE_IDENTITY_CANDIDATE_R1",
+      "schema_version": "1.0.0"
+    },
+    "value_mode_material": {
+      "basis": "THE_CONCRETE_BODY_IS_A_QUALITATIVE_CONJUNCTIVE_STRUCTURAL_DERIVATION_AND_CONTAINS_NO_NUMERIC_COEFFICIENT_PROBABILITY_THRESHOLD_OR_CALIBRATED_VALUE",
+      "calibration_effect": "DOES_NOT_ITSELF_ISSUE_CALIBRATION_NOT_APPLICABLE__WAKES_SEPARATE_D09_CALIBRATION_DISPOSITION",
+      "candidate_id": "M10-M01",
+      "schema_id": "SDTF_R4_M10_M01_VALUE_MODE_ADJUDICATION_R1",
+      "schema_version": "1.0.0",
+      "value_mode": "NONNUMERIC"
+    }
+  },
+  "package_ref": {
+    "content_hash": "7773eedaabcdbd6f5e887144d249dbf29bdddf8b989b257675f6272f73420c2b",
+    "kind": "SDTF_R4_PKG_A_RULE_IDENTITY_SHAPE_VALUE_CLASS",
+    "object_id": "M10-M01:PKG-A:R1"
+  },
+  "prohibitions": [
+    "NO_AUTOMATIC_CURRENT_ACCEPTED",
+    "NO_FULL_ENVELOPE_PROJECTION",
+    "NO_CALIBRATION_DISPOSITION_ISSUED_HERE",
+    "NO_SOURCE_TRACE_PKG_D_COMPLETION",
+    "NO_QUALIFICATION_TEMPORAL_PORTABILITY_PKG_E_COMPLETION",
+    "NO_MEASUREMENT_ESTIMAND_IDENTIFICATION_DISPOSITIONS",
+    "NO_ACTOR_ENTITY_FACT_OR_TOPOLOGY",
+    "NO_V3_PERSON_STATE_OR_OBL063",
+    "NO_LIBRARY_USE"
+  ],
+  "refs": {
+    "mechanism_class_ref": {
+      "content_hash": "0af742277e5c65ccb71d826b3b74ad13f3f212857447d0bb0e5a9d27d58975d9",
+      "kind": "SDTF_R4_MECHANISM_CLASS_DISPOSITION",
+      "object_id": "M10-M01:P1_ONLY:R1"
+    },
+    "normalized_mechanism_ref": {
+      "content_hash": "0b69f9d04c09fad479ab05582c9bcf8d21951c6f7ea94e2f8c7c3ab3545e3411",
+      "kind": "SDTF_R4_NORMALIZED_MECHANISM",
+      "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY:R1"
+    },
+    "permitted_rule_shape_ref": {
+      "content_hash": "bf8ce59029360280ad7a08c8c50e5a3200c0298cb6248d4cd1b75435f3a7588e",
+      "kind": "SDTF_R4_PERMITTED_RULE_SHAPE",
+      "object_id": "M10-M01:CONJUNCTIVE_OBJECTIVE_STRUCTURAL_DEPENDENCY_DERIVATION:R1"
+    },
+    "rule_identity_ref": {
+      "content_hash": "f7b80c0c1c4570e3264bcf5ce6432d4d455011914ca4d040ddc7f65d5bcb6bb2",
+      "kind": "SDTF_R4_RULE_IDENTITY_CANDIDATE",
+      "object_id": "M10-M01:SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+    },
+    "rule_ref": {
+      "content_hash": "7d6efc3c36be0caff06022c0d951e5b4f535d6900c5c06751b3accacd48b39c8",
+      "kind": "SDTF_R4_MECHANISM_RULE",
+      "object_id": "SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+    },
+    "value_mode_ref": {
+      "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4",
+      "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+      "object_id": "M10-M01:NONNUMERIC:R1"
+    }
+  },
+  "s03_package_a_projection": {
+    "cells": [
+      {
+        "basis_text": "D05 freezes one exact immutable rule id; no selector syntax.",
+        "blocker_refs": [],
+        "candidate_material_refs": [
+          {
+            "content_hash": "f7b80c0c1c4570e3264bcf5ce6432d4d455011914ca4d040ddc7f65d5bcb6bb2",
+            "kind": "SDTF_R4_RULE_IDENTITY_CANDIDATE",
+            "object_id": "M10-M01:SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+          }
+        ],
+        "determinant_id": "GBE-R4-001",
+        "field_path": "rule_identity.rule_id",
+        "na_basis_ref": null,
+        "ordinal": 1,
+        "resolved_value": "SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY",
+        "state": "SATISFIED_CANDIDATE_ONLY"
+      },
+      {
+        "basis_text": "D05 freezes exact non-range version 1.0.0.",
+        "blocker_refs": [],
+        "candidate_material_refs": [
+          {
+            "content_hash": "f7b80c0c1c4570e3264bcf5ce6432d4d455011914ca4d040ddc7f65d5bcb6bb2",
+            "kind": "SDTF_R4_RULE_IDENTITY_CANDIDATE",
+            "object_id": "M10-M01:SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+          }
+        ],
+        "determinant_id": "GBE-R4-002",
+        "field_path": "rule_identity.rule_version",
+        "na_basis_ref": null,
+        "ordinal": 2,
+        "resolved_value": "1.0.0",
+        "state": "SATISFIED_CANDIDATE_ONLY"
+      },
+      {
+        "basis_text": "SHA-256 binds the exact canonical concrete rule body in this payload.",
+        "blocker_refs": [],
+        "candidate_material_refs": [
+          {
+            "content_hash": "f7b80c0c1c4570e3264bcf5ce6432d4d455011914ca4d040ddc7f65d5bcb6bb2",
+            "kind": "SDTF_R4_RULE_IDENTITY_CANDIDATE",
+            "object_id": "M10-M01:SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+          },
+          {
+            "content_hash": "7d6efc3c36be0caff06022c0d951e5b4f535d6900c5c06751b3accacd48b39c8",
+            "kind": "SDTF_R4_MECHANISM_RULE",
+            "object_id": "SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+          }
+        ],
+        "determinant_id": "GBE-R4-003",
+        "field_path": "rule_identity.rule_content_hash",
+        "na_basis_ref": null,
+        "ordinal": 3,
+        "resolved_value": "7d6efc3c36be0caff06022c0d951e5b4f535d6900c5c06751b3accacd48b39c8",
+        "state": "SATISFIED_CANDIDATE_ONLY"
+      },
+      {
+        "basis_text": "P1 only; widening beyond MATERIAL_ACCESS_DEPENDENCY is not authorized.",
+        "blocker_refs": [],
+        "candidate_material_refs": [
+          {
+            "content_hash": "0af742277e5c65ccb71d826b3b74ad13f3f212857447d0bb0e5a9d27d58975d9",
+            "kind": "SDTF_R4_MECHANISM_CLASS_DISPOSITION",
+            "object_id": "M10-M01:P1_ONLY:R1"
+          }
+        ],
+        "determinant_id": "GBE-R4-004",
+        "field_path": "mechanism_classes",
+        "na_basis_ref": null,
+        "ordinal": 4,
+        "resolved_value": [
+          "P1 MATERIAL_ACCESS_DEPENDENCY"
+        ],
+        "state": "SATISFIED_CANDIDATE_ONLY"
+      },
+      {
+        "basis_text": "Content-addressed normalized M10-M01 mechanism preserving R02 source-claim causal-use ceiling.",
+        "blocker_refs": [],
+        "candidate_material_refs": [
+          {
+            "content_hash": "0b69f9d04c09fad479ab05582c9bcf8d21951c6f7ea94e2f8c7c3ab3545e3411",
+            "kind": "SDTF_R4_NORMALIZED_MECHANISM",
+            "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY:R1"
+          }
+        ],
+        "determinant_id": "GBE-R4-009",
+        "field_path": "trace.normalized_mechanism_ref",
+        "na_basis_ref": null,
+        "ordinal": 9,
+        "resolved_value": {
+          "content_hash": "0b69f9d04c09fad479ab05582c9bcf8d21951c6f7ea94e2f8c7c3ab3545e3411",
+          "kind": "SDTF_R4_NORMALIZED_MECHANISM",
+          "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY:R1"
+        },
+        "state": "SATISFIED_CANDIDATE_ONLY"
+      },
+      {
+        "basis_text": "Permitted shape is one nonnumeric ALL_REQUIRED objective structural dependency derivation.",
+        "blocker_refs": [],
+        "candidate_material_refs": [
+          {
+            "content_hash": "bf8ce59029360280ad7a08c8c50e5a3200c0298cb6248d4cd1b75435f3a7588e",
+            "kind": "SDTF_R4_PERMITTED_RULE_SHAPE",
+            "object_id": "M10-M01:CONJUNCTIVE_OBJECTIVE_STRUCTURAL_DEPENDENCY_DERIVATION:R1"
+          }
+        ],
+        "determinant_id": "GBE-R4-010",
+        "field_path": "trace.permitted_rule_shape_ref",
+        "na_basis_ref": null,
+        "ordinal": 10,
+        "resolved_value": {
+          "content_hash": "bf8ce59029360280ad7a08c8c50e5a3200c0298cb6248d4cd1b75435f3a7588e",
+          "kind": "SDTF_R4_PERMITTED_RULE_SHAPE",
+          "object_id": "M10-M01:CONJUNCTIVE_OBJECTIVE_STRUCTURAL_DEPENDENCY_DERIVATION:R1"
+        },
+        "state": "SATISFIED_CANDIDATE_ONLY"
+      },
+      {
+        "basis_text": "No coefficient, probability, threshold, or numeric calibration appears in the concrete body.",
+        "blocker_refs": [],
+        "candidate_material_refs": [
+          {
+            "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4",
+            "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+            "object_id": "M10-M01:NONNUMERIC:R1"
+          }
+        ],
+        "determinant_id": "GBE-R4-025",
+        "field_path": "value_mode",
+        "na_basis_ref": null,
+        "ordinal": 25,
+        "resolved_value": "NONNUMERIC",
+        "state": "SATISFIED_CANDIDATE_ONLY"
+      }
+    ],
+    "hq_adoption_effect": "ONLY_AFTER_EXACT_HQ_ADOPTION_MAY_A_SUCCESSOR_RETYPE_THE_ACCEPTED_VALUES_AS_SATISFIED_CURRENT_FOR_S03_ASSEMBLY",
+    "ordinals": [
+      1,
+      2,
+      3,
+      4,
+      9,
+      10,
+      25
+    ],
+    "package_id": "PKG-A_RULE_IDENTITY_SHAPE_VALUE_CLASS",
+    "package_state": "SATISFIED_CANDIDATE_ONLY"
+  },
+  "schema": "ASTRA_D05_PSC06_M10_M01_PKG_A_RULE_SHAPE_PAYLOAD_R1",
+  "schema_version": "1.0.0",
+  "terminal": "ASTRA_D05_PASS__M10_M01_PKG_A_CONCRETE_RULE_SHAPE_IDENTITY_VALUE_PAYLOAD_FROZEN__NONNUMERIC__HQ_ADOPTION_REQUIRED",
+  "wake_conditions": [
+    "HQ_ACCEPTED_VALUE_MODE_NONNUMERIC -> D09 CALIBRATION DISPOSITION",
+    "HQ_ACCEPTED_PKG_A -> D10 CONCRETE CANDIDATE ENVELOPE ASSEMBLY WHEN OTHER REQUIRED PACKAGES ARE ACCEPTED"
+  ],
+  "worker_id": "ASTRA-D05"
+}

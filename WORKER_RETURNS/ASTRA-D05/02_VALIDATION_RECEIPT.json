@@ -1,0 +1,89 @@
+{
+  "artifacts_covered": {
+    "00_RETURN.md": {
+      "bytes": 6067,
+      "sha256": "7fac6025acb695a04e3338baef320d0adb0e46b8586a6e2b538f860fdf90b9b4"
+    },
+    "01_PKG_A_RULE_SHAPE_PAYLOAD.json": {
+      "bytes": 20055,
+      "sha256": "307bded197045e627511dd39e02993ce3c25473f2d34208e996b7f2460a85fcc"
+    }
+  },
+  "authority_effect": "CANDIDATE_CONCRETE_RULE_SHAPE_PAYLOAD_ONLY__HQ_ADOPTION_REQUIRED__NO_RULE_CURRENTNESS",
+  "branch": "agent/rabochii-prev3-astra-d05-rule-shape-payload-r1",
+  "commission_tip": "2c9a6dee4e8657ba0ace41cd3e1d458ecea6d17e",
+  "counts": {
+    "candidate_only_cells": 7,
+    "current_cells": 0,
+    "derived_objective_relations": 3,
+    "mechanism_classes": 1,
+    "required_objective_premises": 3,
+    "s03_pkg_a_determinants": 7
+  },
+  "grain": "PSC06_M10_M01_PKG_A_CONCRETE_RULE_SHAPE_IDENTITY_VALUE_PAYLOAD_ONLY",
+  "hq_adoption_base": "98279580ffcccdd764663107aa65835fb6929228",
+  "receipt_scope": "SHA-256 values bind exact UTF-8 bytes of artifacts 00-01. This receipt does not assert a self-hash.",
+  "schema": "ASTRA_D05_PSC06_M10_M01_PKG_A_VALIDATION_RECEIPT_R1",
+  "semantic_hashes": {
+    "mechanism_class_ref": {
+      "content_hash": "0af742277e5c65ccb71d826b3b74ad13f3f212857447d0bb0e5a9d27d58975d9",
+      "kind": "SDTF_R4_MECHANISM_CLASS_DISPOSITION",
+      "object_id": "M10-M01:P1_ONLY:R1"
+    },
+    "normalized_mechanism_ref": {
+      "content_hash": "0b69f9d04c09fad479ab05582c9bcf8d21951c6f7ea94e2f8c7c3ab3545e3411",
+      "kind": "SDTF_R4_NORMALIZED_MECHANISM",
+      "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY:R1"
+    },
+    "package_ref": {
+      "content_hash": "7773eedaabcdbd6f5e887144d249dbf29bdddf8b989b257675f6272f73420c2b",
+      "kind": "SDTF_R4_PKG_A_RULE_IDENTITY_SHAPE_VALUE_CLASS",
+      "object_id": "M10-M01:PKG-A:R1"
+    },
+    "permitted_rule_shape_ref": {
+      "content_hash": "bf8ce59029360280ad7a08c8c50e5a3200c0298cb6248d4cd1b75435f3a7588e",
+      "kind": "SDTF_R4_PERMITTED_RULE_SHAPE",
+      "object_id": "M10-M01:CONJUNCTIVE_OBJECTIVE_STRUCTURAL_DEPENDENCY_DERIVATION:R1"
+    },
+    "rule_body_sha256": "7d6efc3c36be0caff06022c0d951e5b4f535d6900c5c06751b3accacd48b39c8",
+    "rule_identity_ref": {
+      "content_hash": "f7b80c0c1c4570e3264bcf5ce6432d4d455011914ca4d040ddc7f65d5bcb6bb2",
+      "kind": "SDTF_R4_RULE_IDENTITY_CANDIDATE",
+      "object_id": "M10-M01:SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+    },
+    "value_mode_ref": {
+      "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4",
+      "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+      "object_id": "M10-M01:NONNUMERIC:R1"
+    }
+  },
+  "terminal": "ASTRA_D05_PASS__M10_M01_PKG_A_CONCRETE_RULE_SHAPE_IDENTITY_VALUE_PAYLOAD_FROZEN__NONNUMERIC__HQ_ADOPTION_REQUIRED",
+  "validation_checks": {
+    "V01_COMMISSION_TIP_EXACT": true,
+    "V02_GRAIN_EXACT": true,
+    "V03_LIBRARY_PERMISSION_NO": true,
+    "V04_ACCEPTED_INPUT_IDENTITIES_EXACT": true,
+    "V05_RULE_ID_EXACT_NO_MUTABLE_SELECTOR": true,
+    "V06_RULE_VERSION_EXACT_NONRANGE": true,
+    "V07_RULE_BODY_HASH_REPLAYS": true,
+    "V08_RULE_IDENTITY_HASH_BINDS_BODY": true,
+    "V09_MECHANISM_CLASSES_EXACT_P1_ONLY": true,
+    "V10_NORMALIZED_MECHANISM_REF_REPLAYS": true,
+    "V11_PERMITTED_RULE_SHAPE_REF_REPLAYS": true,
+    "V12_VALUE_MODE_EXPLICIT_NONNUMERIC": true,
+    "V13_S03_PACKAGE_A_ORDINALS_EXACT": true,
+    "V14_ALL_PACKAGE_A_CELLS_CANDIDATE_ONLY": true,
+    "V15_REQUIRED_PREMISES_EXACT": true,
+    "V16_DERIVED_RELATIONS_EXACT_R02_SCOPE": true,
+    "V17_PACKAGE_REF_REPLAYS": true,
+    "V18_NO_CURRENT_ACCEPTED_OR_FULL_PROJECTION": true,
+    "V19_D09_WAKE_ONLY_AFTER_ACCEPTED_VALUE_MODE": true,
+    "V20_D10_WAKE_REQUIRES_ACCEPTED_PKG_A_AND_OTHER_PACKAGES": true
+  },
+  "validation_terminal": "PASS",
+  "wake_conditions": [
+    "HQ_ACCEPTED_VALUE_MODE_NONNUMERIC -> D09 CALIBRATION DISPOSITION",
+    "HQ_ACCEPTED_PKG_A -> D10 CONCRETE CANDIDATE ENVELOPE ASSEMBLY WHEN OTHER REQUIRED PACKAGES ARE ACCEPTED"
+  ],
+  "worker_id": "ASTRA-D05"
+}
