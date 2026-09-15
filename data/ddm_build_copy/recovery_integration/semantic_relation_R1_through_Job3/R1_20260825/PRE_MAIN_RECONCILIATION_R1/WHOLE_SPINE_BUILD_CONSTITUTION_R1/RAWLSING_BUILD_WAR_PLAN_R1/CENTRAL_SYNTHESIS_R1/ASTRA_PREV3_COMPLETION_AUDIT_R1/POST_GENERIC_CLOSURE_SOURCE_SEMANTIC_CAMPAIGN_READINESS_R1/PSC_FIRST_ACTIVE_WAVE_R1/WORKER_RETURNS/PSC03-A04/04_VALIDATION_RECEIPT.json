@@ -1,0 +1,55 @@
+{
+  "schema": "RAWLSING_PSC03_A04_VALIDATION_RECEIPT@1.0.0",
+  "worker_id": "PSC03-A04",
+  "terminal": "PASS",
+  "exact_grain": "PREV3_PSC03_WVS_RETURNED_CANDIDATE_ADJUDICATION_R1_ONLY",
+  "counts": {
+    "assigned_items": 72,
+    "unique_item_identities": 72,
+    "R5_source_native_objects": 70,
+    "W4": 32,
+    "W7": 38,
+    "W1": 2,
+    "CURRENT_AUTHORITY_ALREADY_RESOLVES": 0,
+    "ADJUDICATED_SOURCE_NATIVE_SEMANTIC_PROPOSITION__READY_FOR_HQ_ADOPTION": 72,
+    "DOCUMENTARY_CONFLICT__REMAINS_BLOCKED": 0,
+    "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED_ASSIGNED": 0,
+    "preserved_nonassigned_W1_blocked_remainders": 2,
+    "preserved_partial_crosswalk_remainders": 1,
+    "distinct_crosswalk_control_objects": 1
+  },
+  "hashes": {
+    "01_WVS_72_ITEM_ADJUDICATION_LEDGER.csv_sha256": "3f8ce452e29dd4b8ae8a03904b6f2a74211e61221ad1cf1d27f359ee90c0586a",
+    "02_EVIDENCE_CURRENT_AUTHORITY_MANIFEST.json_sha256": "c7e840071e1becef3a6938c53591278351f4a07865ff1e45cb7f80f1c23d6f9c",
+    "03_PRESERVED_REMAINDER_LEDGER.csv_sha256": "f1464aabd087d630b5daf08d4c364d2ba3fb8ff2f7f85de4886cd3a29c6193d3",
+    "ordered_72_item_identity_stream_sha256": "c9b560d46801db671029a49b1f1bd843630265bba5d7916c2fee1b03cf87ea6b",
+    "ordered_72_source_native_proposition_stream_sha256": "f5c5246b7cce3cfd2f9b61942867841a672b37dc3e0f7d6e021f9d29a03a7a79"
+  },
+  "checks": {
+    "assigned_count_72": true,
+    "assigned_unique_identity_count_72": true,
+    "r5_objects_70": true,
+    "wave_counts_exact": true,
+    "all_allowed_disposition": true,
+    "all_assigned_disposed": true,
+    "country_iso_preserved_blocked": true,
+    "cow_alpha_preserved_blocked": true,
+    "v68_v77_exact_partial_9_of_10": true,
+    "v74_v77_distinct_full": true,
+    "exact_evidence_provenance_rule_present_in_manifest": true,
+    "current_authority_resolution_rule_present_in_manifest": true
+  },
+  "boundaries": {
+    "main_mutated": false,
+    "semantic_pre_main_mutated": false,
+    "hq_control_branch_mutated": false,
+    "provisional_sibling_output_consumed_as_authority": false,
+    "learned_product_or_structural_admission_created": false,
+    "mechanism_or_topology_created": false,
+    "person_state_created": false,
+    "OBL063_revived": false,
+    "PRE_V3_objective_world_boundary_preserved": true,
+    "HQ_final_adoption_required": true
+  },
+  "terminal_statement": "PSC03_A04_PASS__72_WVS_POSITIVE_CANDIDATES_ADJUDICATED_AT_SOURCE_NATIVE_CEILING__COUNTRY_ISO_COW_ALPHA_AND_V77_REMAINDERS_PRESERVED__READY_FOR_HQ_FAN_IN"
+}
